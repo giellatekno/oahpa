@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN"
+"http://forrest.apache.org/dtd/document-v20.dtd">
+<document xml:lang="en">
+  <header>
+    <title>Sámi dialogue based language learning system: Design
+    document</title>
+  </header>
+
+  <body>
+    <section>
+      <title>Introduction</title>
+
+      <p></p>
+
+      <section>
+        <title>Architecture Overview</title>
+
+        <p></p>
+      </section>
+    </section>
+
+    <section>
+      <title>Component Design</title>
+
+      <p>Why the software is needed.</p>
+
+      <section>
+        <title>Sentence parser</title>
+
+        <p>The system is able to parse sentences, also incorrect ones. At the
+        moment, there is an analyzator and disambiguator and we are able to
+        get full syntactic analysis of the sentences that belong to the
+        language. Is it possible to parse also sentences which contain errors?
+        There are two classes of errors: spelling errors and grammatical
+        errors. The spelling errors can be recognized by the speller, which
+        can suggest an alternative. (the user has to be able to select the
+        alternative she wants). The grammatical errors are words in wrong
+        forms. The grammatical analysis should be such that the words receive
+        an analysis although they belong to an ungrammatical sentence. The
+        suggestion mechanism for grammatical errors is described below.</p>
+      </section>
+
+      <section>
+        <title>Dialogue system</title>
+
+        <p>The dialogue system consists of three parts: dialogue context,
+        dialogue manager, and </p>
+      </section>
+
+      <section>
+        <title>Tutorial dialogue</title>
+
+        <p>The system gives feedback and makes suggestions on the basis of
+        errors produced by the user. The sentence-frames for the feedback are
+        created beforehand, such as "Did you mean ___?", or "Perhaps you meant
+        ___ or ___ or ?", what other frames are there?</p>
+      </section>
+
+      <section>
+        <title>Sentence generator</title>
+
+        <p>The sentence generator is part of the dialogue system. It does not
+        involve any semantic representation, but the words and correct forms
+        are provided by the dialogue system.</p>
+      </section>
+
+      <section>
+        <title>Speller</title>
+
+        <p>Speller for North and Lule Sámi will be used in correcting spelling
+        errors by the user.</p>
+      </section>
+    </section>
+
+    <section>
+      <title>Quality assurance</title>
+
+      <p></p>
+    </section>
+
+    <section>
+      <title>Algorithms</title>
+
+      <p></p>
+    </section>
+  </body>
+</document>

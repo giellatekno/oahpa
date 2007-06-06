@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN"
+"http://forrest.apache.org/dtd/document-v20.dtd">
+<document xml:lang="en">
+  <header>
+    <title>Sámi dialogue based language learning system: Requirements
+    document</title>
+  </header>
+
+  <body>
+    <section>
+      <title>Introduction</title>
+
+      <p>(See the plan in the application)</p>
+
+      <section>
+        <title>Purposes and objectives</title>
+
+        <p>(See the plan in the application)</p>
+      </section>
+
+      <section>
+        <title>Project team</title>
+
+        <p>(See the plan in the application)</p>
+      </section>
+
+      <section>
+        <title>Project overview, the most important features</title>
+
+        <p>(See the plan in the application)</p>
+      </section>
+    </section>
+
+    <section>
+      <title>Description of the problem</title>
+
+      <p>Why the software is needed. General considerations of the pedagogical
+      issues. Something we have to keep in mind when developing the program
+      (See the plan in the application)</p>
+    </section>
+
+    <section>
+      <title>Description of the software </title>
+
+      <p>(See the plan in the application)</p>
+
+      <section>
+        <title>Features and functional capacities</title>
+
+        <p>Table listing the features and their priority.</p>
+      </section>
+
+      <section>
+        <title>Other requirements</title>
+
+        <p>Platforms, web, tools</p>
+      </section>
+
+      <section>
+        <title>Usability</title>
+
+        <p>There is a web-pased interface. Other usability considreations,
+        plans for user manuals etc.</p>
+      </section>
+
+      <section>
+        <title>Long-term plans and maintenance</title>
+
+        <p></p>
+      </section>
+    </section>
+
+    <section>
+      <title>Prototypical conversations</title>
+
+      <p>Examples of how the conversation could proceed.</p>
+
+      <section>
+        <title>Dialogue 1. Situation?</title>
+
+        <ul>
+          <li>Bures!</li>
+
+          <li></li>
+
+          <li></li>
+        </ul>
+      </section>
+    </section>
+
+    <section>
+      <title>Question types</title>
+
+      <p>What kind of questions the computer asks together with different
+      types of answers. (I have only the examples we have discussed. Please
+      fill in the exact list of different types of questions together with
+      acceptable answers with the correct grammatical specification if it's
+      clear. The details of which verb requires which kind of arguments are
+      not listed here.)</p>
+
+      <section>
+        <title>go-questions</title>
+
+        <p>Jugatgo gáfe?</p>
+
+        <p>Different possible answers together with comments:</p>
+
+        <ul>
+          <li>Jugan.</li>
+
+          <li>In.</li>
+
+          <li>In juga.</li>
+        </ul>
+      </section>
+
+      <section>
+        <title>Maid-questions</title>
+
+        <p>Maid don jugat?</p>
+
+        <ul>
+          <li>Gáfe</li>
+
+          <li></li>
+        </ul>
+      </section>
+
+      <section>
+        <title>(Next type)</title>
+
+        <p></p>
+
+        <ul>
+          <li></li>
+
+          <li></li>
+        </ul>
+      </section>
+    </section>
+
+    <section>
+      <title>Other resposes to the user.</title>
+
+      <p>The other things that the computer says, like "I like coffee too",
+      followed by the next question. These are described in more detail in
+      each dialogue, but something general guidlines, ideas, situations where
+      the computer can comment the user could be listed here.</p>
+
+      <section>
+        <title>Comment type 1.</title>
+
+        <p>Description</p>
+      </section>
+    </section>
+
+    <section>
+      <title>Tutorial dialogue</title>
+
+      <p>(I just write here some ofmy considerations, please rewrite where
+      needed) The system gives feedback and makes suggestions on the basis of
+      errors produced by the user. The language of the feedback? If we have
+      feedback only in Sámi, then it must be really simple (avoid grammatical
+      terms). It is not difficult to do different versions of feedback for
+      different languages, since the sentences that are used in feedback are
+      static.</p>
+
+      <p>The tutorial dialogue can be implemented as part of the general
+      dialogue as: -What did you buy? - I buy bread. - Did you mean: You
+      bought bread? (perhaps alternatives) - Yes ... Or the tutorial dialogue
+      can be separate from the actual dialogue, it can be a pop-up window or
+      something more pleasant: a side bar that contains the feedback, or..</p>
+
+      <p>Are there different levels in the feedback? First, "There is a wrong
+      form in the sentence the word "___" , Let's try again" If the form is
+      wrong again, then provide the grammatical form where the word should be
+      in "The correct form is nominative", if the user fails then give the
+      correct alternatives "Perhaps you meant __ or __?".</p>
+
+      <p>How the user responds to the feedback? Does she merely choose from
+      the list or is she required to write the sentence again?</p>
+
+      <p>The form of the feedback is created beforehand. The feedback is
+      different in different situations. We probably want to "teach" the user,
+      give grammatical information, reasons why the form she used is wrong,
+      etc. The types of feedback have to be thought carefully. (I just add
+      couple of examples, please fill in the list of feedback sentences in
+      desired languages.)</p>
+
+      <section>
+        <title>Word was not recognized, there is a spelling error.</title>
+
+        <p></p>
+
+        <ul>
+          <li>1. feedback: "Wrong word form".</li>
+
+          <li>2. feedback: "Did you mean __?" or "Did you mean __ or __?"</li>
+        </ul>
+      </section>
+
+      <section>
+        <title>Word is recognized, but it's not in the correct form.</title>
+
+        <p></p>
+
+        <ul>
+          <li>1. feedback: "Wrong word form".</li>
+
+          <li>2. feedback: "The word __ is in __ form, but this sentence
+          requires __ form which is __"</li>
+        </ul>
+      </section>
+
+      <section>
+        <title>(Next type..)</title>
+
+        <p></p>
+
+        <ul>
+          <li></li>
+
+          <li></li>
+        </ul>
+      </section>
+    </section>
+
+    <section>
+      <title>Comparison with the existing approaches</title>
+
+      <p>(Did you find any? links and comments here)</p>
+    </section>
+  </body>
+</document>
