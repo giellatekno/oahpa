@@ -77,14 +77,38 @@
       <p>Examples of how the conversation could proceed.</p>
 
       <section>
-        <title>Dialogue 1. Situation?</title>
+        <title>Dialogue 1. Oahpásmuvvan.</title>
 
         <ul>
-          <li>Bures!</li>
+          <li>M: Buorre beaivi!</li>
 
-          <li></li>
+          <li>S: Ipmel atti! / Buorre beaivi! / Buorre beaivi fal! </li>
 
-          <li></li>
+          <li>M: Gii don leat?</li>
+          
+          <li>S: Mun lean Anne. / Anne. (The question allows also this kind of answer: Mun lean studeanta. The machine could compare to the Prop-lex? If it can´t handle it, we could use "Mii du namma lea?") </li>
+          	
+          <li>M: Mun lean Risten. Suohtas deaivat du, Anne. Gos don orut? (demands Loc)</li>
+          
+          <li>S: Mun orun Romssas.</li>
+          
+          <li>M: Gos don leat eret? (demands Loc)</li>
+          
+          <li>S: Mun lean Omasvuonas eret./ Omasvuonas.</li>
+          
+          <li>M: Leat go barggus?</li>
+          
+          <li>S: De lean. (pos > quostion(s) about work)</li>
+          <li>S: In leat. / (In.) (mainverb should be compulsory)</li>
+          
+          <li>M: Gos don barggat? (demands Loc)</li>
+          
+          <li>S: Mun barggan skuvllas. / Skuvllas.</li>
+          
+          <li>M: Leago dus biila?</li>
+          
+          <li>S: De lea. / Mus lea (biila/Ford). / Lea. / Ii leat. / Mus ii leat biila.</li>	
+          <li> More tricky answers: Mus leamaš biila. Mus lei biila ovdal. </li>
         </ul>
       </section>
     </section>
@@ -93,11 +117,15 @@
       <title>Question types</title>
 
       <p>What kind of questions the computer asks together with different
-      types of answers. (I have only the examples we have discussed. Please
-      fill in the exact list of different types of questions together with
-      acceptable answers with the correct grammatical specification if it's
-      clear. The details of which verb requires which kind of arguments are
-      not listed here.)</p>
+      types of answers.  
+      Two kinds of questions, with Interr and go. 
+      Wh-questions: Case of wh-word tells which case of the noun should have in the answer. 
+      If the student uses wrong case, then she get response, and she gets the same question again. And then she gets a new question with the same kind of Interr so she learns it better.
+      
+      Go-questions: In some dialogs a positive answer will lead to a new section of questions, f.i. if the student answer that she has got a car, then the machine asks 3-4 questions about the car, before the machine continue. The questions about the car, can be single questions (like how old the car is, what kind of, what colour, is it a good car), so it is not important for the machine t "understand" the answer.
+      Go-questions are especially for training verb-inflection, so verb can be compulsory, so the student has to train.       
+      
+      </p>
 
       <section>
         <title>go-questions</title>
@@ -107,30 +135,33 @@
         <p>Different possible answers together with comments:</p>
 
         <ul>
-          <li>Jugan.</li>
+          <li>Jugan / Mun jugan / De jugan / Juo, mun jugan. (verbinflection is the same)</li>
 
           <li>In.</li>
 
-          <li>In juga.</li>
+          <li>In juga. / In juga gáfe / In juga maidege. (verbinflection is the same)</li>
+          
+          <li> In juga gáfe, mun jugan deaja. (neg verb + pos verb)<li>
         </ul>
       </section>
 
       <section>
-        <title>Maid-questions</title>
+        <title>Wh-questions</title>
 
         <p>Maid don jugat?</p>
 
         <ul>
-          <li>Gáfe</li>
+          <li>Bruvssa.</li>
 
-          <li></li>
+          <li>Mun jugan bruvssa.</li>
+          
+          <li>In juga maidege.</li>
         </ul>
       </section>
-
       <section>
-        <title>(Next type)</title>
+        <title>Settings</title>
 
-        <p></p>
+        <p>The questions are grouped in settings, we could also have settings with pictures, and ask about things the student will see in the picture, f.i. articles in a shop with prices, and ask the students what she will buy, what it will cost and so on..</p>
 
         <ul>
           <li></li>
@@ -141,7 +172,7 @@
     </section>
 
     <section>
-      <title>Other resposes to the user.</title>
+      <title>Other responses to the user.</title>
 
       <p>The other things that the computer says, like "I like coffee too",
       followed by the next question. These are described in more detail in
@@ -158,11 +189,11 @@
     <section>
       <title>Tutorial dialogue</title>
 
-      <p>(I just write here some ofmy considerations, please rewrite where
+      <p>(I just write here some of my considerations, please rewrite where
       needed) The system gives feedback and makes suggestions on the basis of
       errors produced by the user. The language of the feedback? If we have
       feedback only in Sámi, then it must be really simple (avoid grammatical
-      terms). It is not difficult to do different versions of feedback for
+      terms). (Should it avoid grammtical terms? Lene). It is not difficult to do different versions of feedback for
       different languages, since the sentences that are used in feedback are
       static.</p>
 
@@ -170,16 +201,16 @@
       dialogue as: -What did you buy? - I buy bread. - Did you mean: You
       bought bread? (perhaps alternatives) - Yes ... Or the tutorial dialogue
       can be separate from the actual dialogue, it can be a pop-up window or
-      something more pleasant: a side bar that contains the feedback, or..</p>
+      something more pleasant: a side bar that contains the feedback, or.. (shuold be separated from the actual dialogue. Lene)</p>
 
-      <p>Are there different levels in the feedback? First, "There is a wrong
+      <p>Are there different levels in the feedback? (Yes, it should be. Lene) First, "There is a wrong
       form in the sentence the word "___" , Let's try again" If the form is
       wrong again, then provide the grammatical form where the word should be
       in "The correct form is nominative", if the user fails then give the
-      correct alternatives "Perhaps you meant __ or __?".</p>
+      correct alternatives "Perhaps you meant __ or __?". It would be an idea to use sets, f.i. LIQUIDS. So if the student spell "brufssa" instead of "bruvssa", then she first get as responce that there is a wrong spelling, second would be correct alternatives, but only from the LIQUID set. The speller of today, gives also alternative like "Bruåsa"..... We have allready some sets in the sme-dis.rle, and I could improve them (also good for the sme-dis.) </p>
 
       <p>How the user responds to the feedback? Does she merely choose from
-      the list or is she required to write the sentence again?</p>
+      the list or is she required to write the sentence again? (Lene: The student should write again, and then afterwords get 1-2 questions of the same grammtical kind so she get training.)</p>
 
       <p>The form of the feedback is created beforehand. The feedback is
       different in different situations. We probably want to "teach" the user,
