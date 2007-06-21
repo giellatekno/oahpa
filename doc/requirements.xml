@@ -98,7 +98,7 @@
           
           <li>M: Leat go barggus?</li>
           
-          <li>S: De lean. (pos > quostion(s) about work)</li>
+          <li>S: De lean. (pos > question(s) about work)</li>
           <li>S: In leat. / (In.) (mainverb should be compulsory)</li>
           
           <li>M: Gos don barggat? (demands Loc)</li>
@@ -182,8 +182,8 @@
       <section>
         <title>Comment type 1.</title>
 
-        <p>The computer cuold have a personality and it´s own "lifestory", like name, age, where she/he lives, kind of work and so on, and could make comments like: "I live in Tromsø. Where do you live?" "I am 30 years old. How old are you?" It will make the conversation more natural, and also be good teaching because the student will get a model for her own answer, especially when the computer is introducing a new kind of question. We could use this way of conversation also in the settings, like in the store: "I want to buy a book. What do you want to buy?" "My book costs 50 kr. How much does your pencil cost?" With a map: "I will go to Rovaniemi. Where will you go?"  </p>
-        <p>Humor: A "personality" will make it possible for the computer to give some funny comments about herself.  </p>
+        <p>The computer should have a personality and it´s own "lifestory", like name, age, where she/he lives, kind of work and so on, and could make comments like: "I live in Tromsø. Where do you live?" "I am 30 years old. How old are you?" It will make the conversation more natural, and also be good teaching because the student will get a model for her own answer, especially when the computer is introducing a new kind of question. We could use this way of conversation also in the settings, like in the store: "I want to buy a book. What do you want to buy?" "My book costs 50 kr. How much does your pencil cost?" With a map: "I will go to Rovaniemi. Where will you go?"  </p>
+        <p>A "personality" will make it possible for the computer to give some funny comments about herself. It will also give the impression of a two-way communication, the student will get information about the other part.And it should have f.i. four alternative personalities. When the student begins, she has to fill out a form, about sex and what kind of school she is at, or if she is an adult. It the computer is a young boy, then the computer is a boy with hobby like football, and the computer will not ask: "Do you hav a car?", and so on.    </p>
       </section>
     </section>
 
@@ -194,7 +194,7 @@
       needed) The system gives feedback and makes suggestions on the basis of
       errors produced by the user. The language of the feedback? If we have
       feedback only in Sámi, then it must be really simple (avoid grammatical
-      terms). (Should it avoid grammtical terms? Lene). It is not difficult to do different versions of feedback for
+      terms). (Should it avoid grammtical terms? If the users are pupils/students, then there should be grammatical terms. Lene). It is not difficult to do different versions of feedback for
       different languages, since the sentences that are used in feedback are
       static.</p>
 
@@ -204,14 +204,49 @@
       can be separate from the actual dialogue, it can be a pop-up window or
       something more pleasant: a side bar that contains the feedback, or.. (shuold be separated from the actual dialogue. Lene)</p>
 
-      <p>Are there different levels in the feedback? (Yes, it should be. Lene) First, "There is a wrong
-      form in the sentence the word "___" , Let's try again" If the form is
-      wrong again, then provide the grammatical form where the word should be
-      in "The correct form is nominative", if the user fails then give the
+
+<p>Altenative (Lene). The tutorial dialogue should be in a pop-up window/side bar and not implemented as part of the general dialogue. Every time the student type an incorrect answer, she gets help from the sidebar/pop-up, and then she has to type again. When she has succeeded to type a correct answer, then the computer continue. But there should be a kind of "emergency exit" after f.i. 4 feedbacks. </p>
+
+<p>There are different kinds of errors and feedback: </p>
+      
+      
+      <p>Orthographical error - the computer doesn´t know the word. The computer runs the standard spellchecking test, with a large editing distance (3!), (delete, add, exchange 1,2,3... times) but on a limited set of words:
+
+<p> 1. orthographical error</p>
+<ul>
+          <li>a. common answering words for all dialogues </li>
+<li>b. dialogue-specific words for each dialogue </li>
+ <li>Mus lea brufssa</li>
+          <li>1. feedback: "Wrong word form. Let´s try again.".</li>
+
+          <li>2. feedback: "Did you mean bruvssa?" or "Did you mean bruvssa or __?"</li>
+        </ul>
+      
+      <p> If the student uses a word (correct spelling) which is not in the computers lexicon/set, then it coul be like:</p>
+<ul>
+
+  
+ <li>Minulla on konjakkia </li>
+ <li>Tarkotatko että sinulla on kotikaljaa?</li> </ul>
+
+      
+<p> 2. verbinflection or case error - the question demands special kind of verbinflection and case. </p>
+<ul>
+          <li>Maid don jugat? (demands Acc)</li>
+          <li>Mun jugan gáffe. (wrong case) </li>
+          <li> 1. feedback: "Wrong case. Let´s try again."</li>
+          <li> 2. feedback: "Answer should be in accusative." </li>
+          <li> 3. feedback. "Do you want to learn about accusative? Try again." (link) </li>
+          <li> 4. feedback: "Try to use ......."</li>
+          <li> 5. feedback: "Let´s change subject...." or something nicer....</li>
+      
+      <p>
+      
+      If the user fails then give the
       correct alternatives "Perhaps you meant __ or __?". It would be an idea to use sets, f.i. LIQUIDS. So if the student spell "brufssa" instead of "bruvssa", then she first get as responce that there is a wrong spelling, second would be correct alternatives, but only from the LIQUID set. The speller of today, gives also alternative like "Bruåsa"..... We have already some sets in the sme-dis.rle, and I could improve them (also good for the sme-dis.) </p>
 
       <p>How the user responds to the feedback? Does she merely choose from
-      the list or is she required to write the sentence again? (Lene: The student should write again, and then afterwards get 1-2 questions of the same grammtical kind so she get training.)</p>
+      the list or is she required to write the sentence again? (Lene: The student should write again, and then afterwards get 1-2 questions of the same grammatical kind so she get training.)</p>
 
       <p>The form of the feedback is created beforehand. The feedback is
       different in different situations. We probably want to "teach" the user,
