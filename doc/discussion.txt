@@ -125,6 +125,45 @@ M analyses -- is it c
 Tasks
 =====
 
+Flow chart of the dialog processing
+- different modules and their interaction (Saara)
+Flow chart of the dialog process
+- different modules and their interaction (Lene)
+
+user: ... maitten ... maiden ...
+comp: ... maiden ... (?)
+
+User may use any form from within a relative wide form
+Comp should use one form only (Guovdageaidnu?)
+User could pick what dialect the comp should use
+
+      boy  girl  adult
+!EAST Ánde Biret ..
+!WEST
+
+Gives six parameters, boy-topic, girl-topic, adult-topic for east and west dialect
+Drawing persons
+
+Alpha version in one column, eventually with colour
+Normal Black                     Teacher to the right
+C where do you live  Black
+P I live from Tromsø Grey
+                                 T do you mean "in"?
+P I live in Tromsø   Grey..                      
+P I live in Tromsø   Blach
+
+
+For beta version considering multiple coloums
+Normal Black            Normal? Grey?         Teacher to the right
+C where do you live
+                        P I live from Tromsø
+                                              T do you mean "in"?
+                                              T Do you want to practice <locative>?
+                        P I live in Tromsø                      
+P I live in Tromsø
+
+
+                      
 technical
 mastering generation
 alpha generator
@@ -150,10 +189,54 @@ other part of the project: visl sentences
  revise the cg2visl.pl script (has some ps in it)
  write a visl2ps component (treebank projects, conversion visl2tigerxml)
 
+linguistic
+ what grammatical categories should be generated 
+ (go thorough the isme.fst to make it generate unique forms only)
+ working on sets
+ 
+ 
+ 
  
 Time plan
 =========
 
+Saara: 
+Nothing before holiday
+August: Planning, including correction mechanism
+Autumn: Regular meeting, monthly or so
+
+Lene, Trond
+Autumn:
+Visl: Work
+Look at lærebøker Davvin/Univ.kompendium/Language center´s komp./Johnskareng´s books for primary/sec.school: Kind of questions, word-lists...
+
+Interactive: 
+Make sets
+Make dialogue frames
+Make two unique generators (east, west)
+Investigate error recognition
+Collect corpus of errors???
+ Collect student text (Laila, other sources)
+ Make a grammar checker, actually (be able to correct errors)
+ Make a template for the answer, and be able to check it.
+ "Minä ostan leipä"
+ IF Nom-Sg1 TV-Sg1 Nom
+ THEN suggest Nom-Sg1 TV-Sg1 Acc
+ Flexible disambiguator
+
+
+Minæ Pron Sg1
+näen TV Sg1
+tuli N Nom     
+     V Sg3 Prt
+
+SE Obj IF (0 Acc)(-1 TV);
+
+SE Obj IF (0 N)(-1 TV LINK -1 SUBJ)(nowhere else Acc);
+RE VFIN IF (V)(-1 TV LINK -1 SUBJ);
+     
+     
+     
      
 
 
