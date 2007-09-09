@@ -1,0 +1,159 @@
+Error report for improving the cg2visl.pl script
+
+
+First of all: Good work, Saara!
+
+Then: comments to things to improve:
+
+
+- Coordination
+==============
+S:n('juolgi',pl,nom)    Juolggit
+CO:conj-s('ja') ja
+S:n('giehta',pl,nom)    gieđat
+P:v('leat',IV,ind,pr,3pl)       leat
+=H:v('seargat',IV,pcp2) seargan
+.
+
+Coordination structures should be collected into one phrase, of type X:par (not X:g), like this:
+
+S:par
+=CJT:n('juolgi',pl,nom)    Juolggit
+=CO:conj-s('ja') ja
+=CJT:n('giehta',pl,nom)    gieđat
+Pg
+=D:v('leat',IV,ind,pr,3pl)       leat
+=H:v('seargat',IV,pcp2) seargan
+.
+
+Rule:
+For a constituent CO, identify the identical constituents X before and after it, and make a par group X:par.
+
+
+
+
+
+
+
+- Discontinuous constituents:
+
+SOURCE: text
+SME42 In monge háliidivčče.
+A1
+P:g
+=D:vaux:v('ii',IV,neg,ind,1sg)  In
+S:pron('mun',<pers>,1sg,nom,foc/ge)     monge
+=H:v('háliidit',TV,cond,pr,conneg)      háliidivčče
+.
+
+
+- P:v as a group
+In several cases we have this pattern:
+
+S:n('ruhta',pl,nom)     Ruđat
+P:v('leat',IV,ind,pr,3pl)       leat
+=H:v('nohkat',IV,pcp2)  nohkan
+
+P:v('leat',IV,cond,pr,1sg)      livččen
+=H:v('boahtit',IV,pcp2) boahtán
+.
+
+Target, in each case, is:
+
+P:g
+=D:v('leat',IV,cond,pr,1sg)      livččen
+=H:v('boahtit',IV,pcp2) boahtán
+.
+
+So, the quasicode is:
+In a structure
+P:v
+=H:v
+expand to
+P:g
+=D:v
+=H:v
+
+or, more general
+A:x
+=H:y
+.
+assume that A is the group and go for
+A:g
+=D:x
+=H:y
+
+This seems to be a problem with head-final phrases:
+
+A1
+A1
+=D:pron('mun',<pers>,1sg,gen)   Mu
+=D:adj('ođas',attr)     ođđa
+S:n('ustit',sg,nom)     ustit
+P:v('boahtit',IV,ind,pr,3sg)    boahtá
+.
+
+Here, we want the head of the phrase to be picked up by the group:
+
+A1
+S:g
+=D:pron('mun',<pers>,1sg,gen)   Mu
+=D:adj('ođas',attr)     ođđa
+=H:n('ustit',sg,nom)     ustit
+P:v('boahtit',IV,ind,pr,3sg)    boahtá
+.
+
+
+
+
+Sentence-initial =D-s
+=====================
+
+Since they are sentence-initial, their H comes to the right.
+Thus, the following structures 
+A1
+:g
+=D:pron('buot',<idef>)  Buot
+S:n('oahppi',pl,nom)    oahppit
+P:v('leat',IV,ind,pr,3pl)       leat
+=H:v('mannat',IV,pcp2)  mannan
+
+A1
+:g
+=D:pron('juohke',<idef>)        Juohke
+S:n('loddi',sg,nom)     loddi
+
+may safely be made into
+
+
+S:g
+=D:pron('buot',<idef>)  Buot
+=H:n('oahppi',pl,nom)    oahppit
+P:v('leat',IV,ind,pr,3pl)       leat
+=H:v('mannat',IV,pcp2)  mannan
+
+A1
+S:g
+=D:pron('juohke',<idef>)        Juohke
+=H:n('loddi',sg,nom)     loddi
+
+
+
+Neutralised homonymy
+====================
+Words are represented twice when there are several homonym analyses. But in several cases these are neutralised during cg2visl, e.g.
+
+SOURCE: text
+SME85 Orun stuora stuora vilges vilges viesus.
+A1
+P:v('orrut',IV,ind,pr,1sg)      Orun
+=D:adj('stuoris',attr)  stuora
+=D:adj('stuoris',attr)  stuora
+=D:adj('vielgat',attr)  vilges
+=D:adj('vielgat',attr)  vilges
+A:n('viessu',sg,loc)    viesus
+.
+
+In those cases, the resulting structure may be uniq-ed.
+
+
