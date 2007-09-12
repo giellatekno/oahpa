@@ -38,6 +38,8 @@ For a constituent CO, identify the identical constituents X before and after it,
 - Discontinuous constituents:
 =============================
 
+Trond: More text here!!
+
 SOURCE: text
 SME42 In monge háliidivčče.
 A1
@@ -148,6 +150,43 @@ S:g
 =D:adj('boaris',sup,attr)       boarráseamos
 =H:n('viellja',sg,nom)   viellja
 
+BOS and chain of =D:
+Take the first non-=D constituent and make into head of the :g
+
+today
+:g
+=D:n Pekan    Det @N>
+=D:adj vanha  Adj @N>
+S:n kaveri    @SUBJ
+on
+tullut
+
+S:g
+=D:n Pekan    @DN>
+=D:adj vanha  @AN>
+=H:n kaveri    @SUBJ
+
+Finding the head of preposition and postposition
+@ADVL     tänään
+@GP>      ilman
+@ADVL     maitoa
+
+@ADVL     maidon
+@GP<      takia
+@ADVL     tänään
+
+
+
+A:g
+=D:n
+=H:po
+A:adv
+
+A:adv
+A:g
+=D:n
+=H:po
+
 
 
 Neutralised homonymy
@@ -167,6 +206,60 @@ A:n('viessu',sg,loc)    viesus
 
 In those cases, the resulting structure may be uniq-ed.
 
+
+
+
+=D:pron('dat',<dem>,sg,acc)     Dan
+Od:n('oassi',sg,acc)    oasi
+=D:n('joavku',sg,gen)   joavkku
+A:n('mandáhta',sg,loc)  mandáhtas
+=H:v('ollašuhttit',TV,inf)      ollašuhttit
+A:pron('mii',<rel>,sg,loc)      mas
+P:g
+=D:vaux:v('galgat',IV,ind,pr,3sg)       galgá
+"
+=H:v('čielggadit',TV,inf)       čielggadit
+Od:n('stáhta',sg,acc)   stáhta
+A:adv('nu')     nu
+=D:TV('gohčodit',Der/PassL,v,pcp2,<V>)  gohčoduvvon
+S:n('stáhta',sg,gen)    stáhta
+=D:TV('matrikuleret',vabe,adj,attr,<V>) matrikulerekeahtes
+=D:n('eana',pl,gen)     eatnamiid
+A:v('háhkat',TV,actio,gen)      háhkama
+"
+,
+P:g
+=D:vaux:v('leat',IV,ind,pr,3sg) lea
+A:adv('liikká') liikká
+S:n('riekte#ovdáneapmi',sg,nom) riekteovdáneapmi
+=H:TV('váldit',Der/PassS,v,pcp2,<V>)    váldon
+A:adv('mielde') mielde
+A:adv('eanet',comp)     eanet
+:cl
+=SUB:conj-c('go')       go
+@COMP-CS<:pron('mii',<rel>,sg,nom)      mii
+A:adv('duođaid')        duođaid
+P:v('leat',IV,cond,pr,3sg)      livččii
+=D:vaux:v('leat',IV,pcp2)       leamaš
+Cs:adj('dárbbašlaš',sg,nom)     dárbbašlaš
+S:v('čielggadit',TV,inf)        čielggadit
+=D:adj('dálá',attr)     dálá
+Od:n('njuolggadus',pl,acc)      njuolggadusaid
+,
+Od:cl
+=SUB:conj-c('go')       go
+=P:v('leat',IV,ind,pr,3sg)      lea
+=A:adv('maid')  maid
+==D:vaux:v('fertet',IV,pcp2)    ferten
+==H:v('geahčadit',TV,inf)       geahčadit
+==D:prop('Finnmárku',plc,sg,gen)        Finnmárkku
+=Od:n('vuoigatvuohta',sg,acc)   vuoigatvuođa
+=CO:conj-s('ja')        ja
+==D:n('ráđđejupmi',sg,gen)      ráđđejumi
+==D:n('dilálašvuohta',pl,gen)   dilálašvuođaid
+=Od:num('20',sg,acc)    20
+=Co:n('ovdáneapmi',sg,acc)      ovdáneami
+.
 
 
 
