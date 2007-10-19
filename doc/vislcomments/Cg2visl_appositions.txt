@@ -1,0 +1,279 @@
+Appositions
+===========
+
+And then it is a question, shall we give then DNapp as suggested in cafeteria, or shall we follow the convention in the Norwegiion and Danish corpus: D, like in
+HHX180) Landets største IT-selskab, IBM, er ligesom konkurrenterne ramt af faldet i pc-salget og en mindre eksport.
+A1/1
+STA:cl
+S:g
+=H:g
+==D:n	Landets
+==H:g
+===D:adj	største
+===H:n	IT-selskab
+=,
+=D:prop	IBM  <===========
+=,
+P:g-
+=D:v	er
+............
+
+The apposition doesn´t nessesserally angle to a noun, so perhaps D is the best solution? And it will get it´s right position in the syntactic tree. Then it would be like this: 
+
+
+- @APP-N<, @APP-Pron< is D to the noun/pronoun. @APP-ADVL< is D to an Adv
+
+699:
+Minun vanhempani, sekä isä etä äiti, ovat tulleet
+
+SOURCE: text
+SME699 Mu vánhemat, sihke áhčči ja eadni, leaba jápmán.
+A1
+S:g
+									<==== =H:g    
+=D:pron('mun',<pers>,1sg,gen)   Mu	<==== =       
+=H:n('vánhen',pl,nom)   vánhemat	<==== =       
+,									
+									<==== =D:par    
+A:conj-s('sihke')       sihke		<==== ==CO:conj   ("sihke" should always get CO even if it has @ADVL in CG)		
+D-N<:par							<==== remove
+=CJT:n('áhčči',sg,nom)  áhčči		<==== ==CJT:n
+=SUB:conj-s('ja')       ja			<==== ==CC:conj
+=CJT:n('eadni',sg,nom)  eadni		<==== ==CJT:n
+,
+P:g
+=D:vaux:v('leat',IV,ind,pr,3sg,foc/ba)  leaba
+=H:v('jápmit',IV,pcp2)  jápmán
+.
+SOURCE: text
+SME700 Muhtun sámi biktasiid, nugo gápmagiid ja vuoddagiid, sii geavahedje guhkit, gitta 1960-logu rádjai.
+
+OBS!!!   1960-logu rádjai disappears!
+A1
+TÄÄLLÄ
+Od:g
+										<==== =H:g
+=D:pron('muhtun',<idef>,attr)	Muhtun	<==== =
+=D:n('sápmi',sg,gen)	sámi			<==== =
+=H:n('bivttas',pl,acc)	biktasiid		<==== =
+,:par									<==== =D:par
+=CJT:par								<==== remove
+==CJT									<==== remove
+==SUB:conj-c('nugo')	nugo			<==== ==CC:conj
+==D-N<:n('gáma'CJTPl,acc)	gápmagiid	<==== ==CJT:
+=SUB:conj-s('ja')	ja					<==== ==CC:conj
+=D-N<:n('vuotta'CJTPl,acc)	vuoddagiid	<==== ==CJT:
+,
+S:pron('son',<pers>,3pl,nom)	sii
+P:v('geavahit',TV,ind,impf,3pl)	geavahedje
+										<==== A:g
+A:adv('guhkit',comp)	guhkit			<==== =H:
+,										<==== =D:acl     <===== it acl a good definition here?
+A:adv('gitta')	gitta					<==== ==A:
+										<==== ==A:g
+										<==== ===D:    1960-logu		
+D-ADVL<:g								<==== ===H:		rádjai
+.
+
+
+SOURCE: text
+SME702 Dolin, ovdal soađi, olbmot lávejedje vuovdit joŋaid.
+A1
+										<==== A:g
+A:adv('dolin')	Dolin					<==== =H:
+,										 	
+D-ADVL<:g								<==== =D:g		 
+=H:prp-pre('ovdal')	ovdal				<==== ==H:
+=D:n('soahti',sg,gen)	soađi			<==== ==D:
+,
+S:n('olmmoš',pl,nom)	olbmot
+P:g
+=D:vaux:v('lávet',TV,ind,impf,3pl)	lávejedje
+=H:v('vuovdit',TV,inf)	vuovdit
+Od:n('jokŋa',pl,acc)	joŋaid
+.
+SOURCE: text
+SME703 Mu viellja, Tore, sáhttá boahtit deike.
+A1
+S:g
+=D:pron('mun',<pers>,1sg,gen)	Mu
+										<==== =H:g
+=H:n('viellja',sg,nom)	viellja			<==== ==H:
+,
+D-N<:prop('Tore',Mal,sg,nom)	Tore	<==== ==D		
+,
+P:g
+=D:vaux:v('sáhttit',IV,ind,pr,3sg)	sáhttá
+=H:v('boahtit',IV,inf)	boahtit
+A:adv('deike')	deike
+.
+
+SOURCE: text
+SME705 Návetgoađis ledje ealut, nugo sávzzat, gáiccat ja gusat.
+A1
+A:n('návet#goahti',sg,loc)	Návetgoađis
+P:v('leat',IV,ind,impf,3pl)	ledje
+									<==== S:g
+S:n('eallu',pl,nom)	ealut			<==== =H:
+,:par								<==== =D:par				
+=CJT								
+=SUB:conj-c('nugo')	nugo			<==== ==CO:conj     
+=D-N<:n('sávza'CJTPl,nom)	sávzzat <==== ==CJT:n
+,
+D-N<:par							<==== remove
+=CJT:n('gáica',pl,nom)	gáiccat		<==== ==CJT:n
+=SUB:conj-s('ja')	ja				<==== ==CC:conj
+=CJT:n('gussa',pl,nom)	gusat		<==== ==CJT:n
+.
+
+
+SOURCE: text
+SME708 Romssas, Davvi-Norgga stuorimus gávpogis, leat vaikko man ollu studeanttat.
+A1
+TÄÄLLÄ
+										<==== A:g
+A:prop('Romsa',plc,sg,loc)	Romssas		<==== =H:
+,
+D-N<:g									<==== words have disappeared! they should be =D:g
+,
+P:v('leat',IV,ind,pr,3pl)	leat
+S:g
+=D:pron('vaikko mii',<idef>,sg,gen)	vaikko man			
+=D:adj('ollu',attr)	ollu
+=H:n('studeanta',pl,nom)	studeanttat
+.
+
+
+SOURCE: text
+SME715 Viimmat mun ohppen čállit sámegiela, mu eatnigiela.
+A1
+TÄÄLLÄ
+A:adv('viimmat')	Viimmat
+S:pron('mun',<pers>,1sg,nom)	mun
+P:v('oahppat',TV,ind,impf,1sg)	ohppen
+											<==== Od:cl
+Od:v('čállit',TV,inf)	čállit				<==== =P:v(ninf)
+											<==== =Od:g
+@-FOBJ:n('sáme#giella',sg,acc)	sámegiela	<==== ==H:n
+,
+D-N<:g										<==== words have disappeared! they should be ==D:g
+
+.
+
+SME806 Mon oainnán fierpmi, su mearkka, ja dieđán ahte Spider-Man lea leamaš das.
+A1										<==== STA:par
+										<==== CJT:cl
+S:pron('mun',<pers>,1sg,nom)    Mon		<==== =
+P:v('oaidnit',TV,ind,pr,1sg)    oainnán	<==== =
+										<==== =Od:g
+Od:n('fierbmi',sg,acc)  fierpmi			<==== ==H:n
+,										
+										<==== ==D:g
+D-N<:g	<===?							<==== ===D:pron
+										<==== ===H:n
+,
+SUB:conj-s('ja')        ja				<==== CC:conj
+										<==== CJT:cl
+P:v('diehtit',TV,ind,pr,1sg)    dieđán	<==== =
+Od:cl									<==== =
+										<==== ==SUB:conj     (ahte)	
+=S:prop('Spider-Man',Mal,sg,nom)Spider-Man <==== =
+=P:g									<==== =
+==D:vaux:v('leat',IV,ind,pr,3sg)        lea <==== =
+==H:v('leat',IV,pcp2)   leamaš			<==== =
+=A:pron('dat',<pers>,3sg,loc)   das		<==== =
+=.										
+
+
+
+SOURCE: text
+SME963 Son lea nuppes vuoitán FMX-máilmmecupa vaikko ii dahkange iežas ođđa goanstta, backflip 360.
+A1
+S:pron('son',<pers>,3sg,nom)	Son
+P:g-
+=D:vaux:v('leat',IV,ind,pr,3sg)	lea
+A:adv('nuppes')	nuppes
+-P:g
+=H:v('vuoitit',TV,pcp2)	vuoitán
+Od:n('FMX-#máilmme#cup',sg,acc)	FMX-máilmmecupa
+									<==== "vaikko" CS fails
+Od:cl								<==== A:cl
+=P:g
+==D:vaux:v('ii',IV,neg,ind,3sg)	ii
+==H:v('dahkat',TV,pcp2,foc/ge)	dahkange
+=Od:g
+==D:pron('ieš',<refl>,gen,poss3sg)	iežas
+==D:adj('ođas',attr)	ođđa
+										<==== ==H:g
+==H:n('goansta',sg,acc)	goanstta		<==== =
+=,										
+=S:n('backflip',sg,nom)	backflip		<==== ===D:n backflip 360 (as one word)
+=Co:num('360',sg,acc)	360   			<====  preprocessing fails
+=.
+
+
+VOC OR APP?
+==================
+
+According to Nickel I have made VOC to @APP, like in 
+
+
+Oaččut beare boahtit, bonjuoaivvat horti. (bonjuoaivvat horti is the "you"-person) 
+"<Oaččut>" S:4513, 4513, 4513, 4513
+        "oažžut" V TV Ind Prs Sg2 S:4020 @+FMAINV
+"<beare>" S:4647
+        "beare" Adv S:4306 @ADVL
+"<boahtit>" S:9584
+        "boahtit" V IV Inf S:4063 @-FMAINV
+"<,>"
+        "," CLB
+"<bonjuoaivvat>" S:4440, 9211, 9211, 9211, 9214, 9215, 9215
+        "bonju" A* Attr Der2 Der/oaivvat A Attr S:3007 @>N
+"<horti>"
+        "horti" N Sg Nom S:3820 @APP
+"<.>"
+        "." CLB <<<
+
+VISL-cafeteria suggests VOC, but in use is A, like in HHX150 and some experiments with machine-analyse.
+Because of that our CG-analyse gives @APP, it is difficult to handle an other way as the other appositions, but still the D doen´t function here. Perhaps I should give them another tag in CG, like @APP-VOC, so they in VISL dan get VOC??
+
+SME718 Oaččut beare boahtit, bonjuoaivvat horti.
+A1
+P:v('oažžut',TV,ind,pr,2sg)	Oaččut
+A:adv('beare')	beare
+H:v('boahtit',IV,inf)	boahtit
+,
+D:g												<==== VOC:g   ????
+=D:attr('bonju',Der/oaivvat,adj,attr,<A>)	bonjuoaivvat
+=H:n('horti',sg,nom)	horti
+.
+
+SAME PROBLEM AS ABOVE:
+
+
+SOURCE: text
+SME807 Gilette, Mr. Sparrowis lea diibmu harcamuoras ja lea vahát jus boahtá maŋŋit.
+A1
+D:prop('Gilette',Fem,sg,nom)	Gilette   	<==== VOC:g   ????
+,
+											<==== STA:par
+											<==== CJT:cl
+S:g										 	<==== =A:g
+=D:abbr('Mr',n,attr)	Mr.					<==== =
+=A:prop('Sparrow',Sur,sg,loc)	Sparrowis	<==== ==H:prop
+=P:v('leat',IV,ind,pr,3sg)	lea				
+=H:n('diibmu',sg,nom)	diibmu				<==== =S:n
+A:n('harca#muorra',sg,loc)	harcamuoras		<==== =
+SUB:conj-s('ja')	ja						<==== CO:conj
+											<==== CJT:cl
+P:v('leat',IV,ind,pr,3sg)	lea				<==== =
+Cs:n('vahát',sg,nom)	vahát				<==== =
+Od:cl										<==== =A:cl
+											<==== =SUB:conj jus
+=P:v('boahtit',IV,ind,pr,3sg)	boahtá			
+=A:adv('maŋŋit')	maŋŋit
+=.											
+
+
+
+
