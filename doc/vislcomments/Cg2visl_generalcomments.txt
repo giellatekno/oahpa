@@ -1,0 +1,203 @@
+To Saara:
+(I have marked <==== where I suggest other marking. 
+<===== = means that the to original marking there should be added a =,
+like =H:n should be ==H:n.)
+
+New tags
+========
+I have changed some of the tags in sme-dis.rle:
+@ADVL> is now: @>ADVL 
+@N> is now: @>N 
+@A> is now: @>A 
+@P> is now: @>P 
+@Num> is now: @>Num
+@Pron< is now: @Pron< 
+@APP-Pron> is now: @APP>Pron 
+
+Input doesn´t match
+===================
+I get this when I use the cg-analyze of bigkorpusVISL.txt as input to cg2visl script: 
+Input did not match:    "gilli" N* Der1 Der/Dimin N Sg Loc @ADVL>
+Input did not match:    "gullevaš" A* Der3 Der/vuohta N Sg Acc @OBJ
+Input did not match:    "vuoiŋŋastit" V* IV* Der2 Der/ahtti V TV Ind Prs Sg3 @+FMAINV
+
+Errors
+======
+I see that CS disappears!
+
+When there is a propernoun involved, the grouping doesn´t function.
+
+"1960-logu rádjai" disappears in: 
+Muhtun sámi biktasiid, nugo gápmagiid ja vuoddagiid, sii geavahedje guhkit, gitta 1960-logu rádjai.
+
+About some tags:
+================
+- All infinite verbs should get :v(ninf) 
+- CC @CVP should get CO:conj (now it gets SUB:conj-s)
+
+
+@-FOBJ > Od
+============
+SME433 Dál de viimmat asttan čállit reivve.
+A1
+A:adv('dál')	Dál
+A:adv('de')	de
+A:adv('viimmat')	viimmat
+P:v('astat',TV,ind,pr,1sg)	asttan
+									<==== Od:cl
+Od:v('čállit',TV,inf)	čállit		<==== =P:v(nfin)
+@-FOBJ:n('reive',sg,acc)	reivve 	<==== =Od:n
+.
+
+SME690 Mus lea viežžat čázi.  
+A1
+A:pron('mun',<pers>,1sg,loc)	Mus
+									<==== P:g
+P:v('leat',IV,ind,pr,3sg)	lea		<==== =D:
+H:v('viežžat',TV,inf)	viežžat		<==== =
+@-FOBJ:n('čáhci',sg,acc)	čázi	<==== Od:n	
+.
+
+
+ 
+@PRON< is D to the pronoun, like in:
+====================================
+
+Moai Birehiin barge mánáidgárddis.
+				S:g
+Moai 			=H
+Birehiin   		=D 		(@PRON<)
+barge			P:v
+mánáidgárddis.	A:n
+
+
+Son ii máhttán ieš vuodjit biillain.
+			S:g-
+Son			=H:pron-
+			P:g-	
+ii			=D:
+máhttán 	=D:
+			-S:g
+ieš 		=D:pron		(@PRON<)
+			-P:g
+vuodjit		=H:v(ninf)
+billain.	A:n
+
+
+
+D+H+D
+=======
+SME566 Vuosttaš logi minuvtta lei buorre áigodat Nordlysa ektui.
+A1
+S:g
+=D:adj('vuosttaš',ord,attr)	Vuosttaš
+									<==== =H:g	
+=H:num('logi',sg,nom)	logi        <==== ==H:
+D:n('minukta',sg,gen)	minuvtta	<==== ==D:n  
+P:v('leat',IV,ind,impf,3sg)	lei
+Cs:g
+=D:adj('buorre',sg,nom)	buorre
+=H:n('áigodat',sg,nom)	áigodat
+A:g
+=D:prop('Nordlys',Obj,sg,gen)	Nordlysa
+=H:prp-post('ektui')	ektui
+
+
+@>A should be D
+===============
+
+SME658 Muhtun guovlluid gávttiin eai leat nu ollu čiŋat oskku geažil.
+A1
+A:g
+=D:pron('muhtun',<idef>,attr)	Muhtun
+=D:n('guovlu',pl,gen)	guovlluid
+=H:n('gákti',pl,loc)	gávttiin
+P:g
+=D:vaux:v('ii',IV,neg,ind,3pl)	eai
+=H:v('leat',IV,ind,pr,conneg)	leat
+									<==== S:g
+D:adv('nu')	nu						<==== =D:  (@>A)
+S:g									<==== remove
+=D:pron('ollu',<idef>)	ollu		
+=H:n('čikŋa',pl,nom)	čiŋat
+A:g
+=D:n('osku',sg,gen)	oskku
+=H:prp-post('geažil')	geažil
+.
+
+
+Num @SUBJ + @Q< should be grouped, like in:
+===========================================
+SME599 Mis leat moadde beatnaga.
+A1
+A:pron('mun',<pers>,1pl,loc)	Mis
+P:v('leat',IV,ind,pr,3pl)	leat
+								<==== S:g
+S:num('moadde',sg,nom)	moadde	<==== H:
+D:n('beana',sg,gen)	beatnaga	<==== D:
+.
+
+SME427 Áiggun geahččat dušše moadde filmma.
+A1
+P:g
+=D:vaux:v('áigut',TV,ind,pr,1sg)	Áiggun
+=H:v('geahččat',TV,inf)	geahččat
+A:adv('dušše')	dušše
+								<==== Od:g
+Od:num('moadde',sg,acc)	moadde 	<==== =H:num
+D:n('filbma',sg,gen)	filmma	<==== =D:n
+.
+
+
+Paratagmes
+==========
+And the paratagmes are not quite good yet, when there is a comma.
+eg:
+SOURCE: text
+SME377 Mii oahppat lohkat ja čállit sámegillii.
+A1
+S:pron('mun',<pers>,1pl,nom)	Mii
+P:v('oahppat',TV,ind,pr,1pl)	oahppat
+											<==== Od:par
+Od:v('lohkat',TV,inf)	lohkat				<==== =CJT:v(ninf)
+SUB:conj-s('ja')	ja						<==== =CC:conj
+Od:v('čállit',TV,inf)	čállit				<==== =CJT:v(ninf)
+A:n('sáme#giella',sg,ill)	sámegillii		
+.
+
+SOURCE: text
+SME378 Doppe mii sáhttit oastit gáfe, deaja, sávtta dahje bruvssa.
+A1
+A:adv('doppe')	Doppe
+S:pron('mun',<pers>,1pl,nom)	mii
+P:g
+=D:vaux:v('sáhttit',IV,ind,pr,1pl)	sáhttit
+=H:v('oastit',TV,inf)	oastit
+								<==== Od:par
+Od:n('gáffe',sg,acc)	gáfe	<==== =CJT:n
+,
+Od:n('deadja',sg,acc)	deaja	<==== =CJT:n
+,
+Od:par							<==== remove
+=CJT:n('sákta',sg,acc)	sávtta	
+=SUB:conj-s('dahje')	dahje	<==== =CO:conj
+=CJT:n('bruvsa',sg,acc)	bruvssa
+.
+SME390 Garraskerrui don vurket visot iežat čállosiid ja govaid ja prográmmaid.
+A1
+A:n('garra#skearru',sg,ill)	Garraskerrui
+S:pron('don',<pers>,2sg,nom)	don
+P:v('vurket',TV,ind,pr,2sg)	vurket
+A:adv('visot')	visot
+Od:par
+=CJT:par								<==== remove
+==CJT:g									<==== =CJT:g
+===D:pron('ieš',<refl>,gen,poss2sg)	iežat	<==== ==D:
+===H:n('čálus',pl,acc)	čállosiid			<==== ==H:
+==SUB:conj-s('ja')	ja						<==== =CC:conj
+==CJT:n('govva',pl,acc)	govaid				<==== =CTJ:n
+=SUB:conj-s('ja')	ja						<==== =CC:conj
+=CJT:n('prográmma',pl,acc)	prográmmaid		<==== =CTJ:n
+.
+
+

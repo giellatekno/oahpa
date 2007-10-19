@@ -1,0 +1,84 @@
+Look at the last part of this, where there are @+FAUXV and then @+FAUXV @FMAINV.
+A verbgroup can not have two finite verbs!
+
+"<Muhtun>" S:4440, 8575
+        "muhtun" Pron Indef Attr S:2899 @>N
+"<geasi>" S:9699, 11078
+        "geassi" N Sg Gen S:3610 @ADVL
+"<nieida>" S:4440, 15618, 16367
+        "nieida" N Sg Nom S:4191 @SUBJ
+"<jávkkai>"
+        "jávkat" V IV Ind Prt Sg3 S:4020 @+FMAINV
+"<,>"
+        "," CLB
+"<ja>" S:8059
+        "ja" CC S:2786 @CVP
+"<olbmot>" S:4440, 4440, 5805, 5805, 5805, 5805, 5805, 5805, 15618, 16367
+        "olmmoš" N Pl Nom S:4191 @SUBJ
+"<ohce>" S:14180
+        "ohcat" V TV Ind Prt Pl3 S:4020 @+FMAINV
+"<su>" S:4440, 16369
+        "son" Pron Pers Sg3 Acc S:4242 @OBJ
+"<,>"
+        "," CLB
+"<muhto>" S:8115
+        "muhto" CC S:2786 @CVP
+"<eai>"
+        "ii" V IV Neg Ind Pl3 S:3847 @+FAUXV
+"<gávdnan>" S:4440, 9719
+        "gávdnat" V TV PrfPrc S:4032 @-FMAINV
+"<su>" S:12095, 16039
+        "son" Pron Pers Sg3 Acc S:4242 @OBJ
+"<eai>"
+        "ii" V IV Neg Ind Pl3 S:3847 @+FAUXV    <====
+"<gostege>" S:4616, 4616, 4616, 4616, 4616
+        "gostege" Adv S:4306 @ADVL
+"<,>"
+        "," CLB
+"<eaige>"
+        "ii" V IV Neg Ind Pl3 Foc/ge S:3847 @+FAUXV   <====
+"<diehtán>"
+        "diehtit" V TV PrfPrc S:4032 @-FMAINV   <====
+"<gosa>" S:7635
+        "gosa" Adv S:4306 @ADVL
+"<lei>" S:15527
+        "leat" V IV Ind Prt Sg3 S:3971 @+FAUXV
+"<šaddan>" S:4440, 4440, 4497, 4497, 4497, 4497, 9737
+        "šaddat" V IV PrfPrc S:4024 @-FMAINV
+"<.>"
+        "." CLB <<<
+
+
+In the VISL-version the last verbs are included into the same group, which is not so good:
+
+SME1 Muhtun geasi nieida jávkkai, ja olbmot ohce su, muhto eai gávdnan su
+ eai gostege, eaige diehtán gosa lei šaddan.
+A1
+@>N:pron('muhtun',<idef>,attr)  Muhtun
+A:n('geassi',sg,gen)    geasi
+S:n('nieida',sg,nom)    nieida
+P:v('jávkat',IV,ind,impf,3sg)   jávkkai
+,
+SUB:conj-s('ja')        ja
+S:n('olmmoš',pl,nom)    olbmot
+P:v('ohcat',TV,ind,impf,3pl)    ohce
+Od:pron('son',<pers>,3sg,acc)   su
+,
+SUB:conj-s('muhto')     muhto
+P:g
+=D:vaux:v('ii',IV,neg,ind,3pl)  eai
+=H:v('gávdnat',TV,pcp2) gávdnan
+Od:pron('son',<pers>,3sg,acc)   su
+P:g-									<==== remove
+=D:vaux:v('ii',IV,neg,ind,3pl)  eai		<==== P:vaux:v
+A:adv('gostege')        gostege
+,
+										<==== P:g
+D:vaux:v('ii',IV,neg,ind,3pl,foc/ge) eaige <==== =D: 
+-P:g									<==== remove	  
+=H:v('diehtit',TV,pcp2) diehtán			<==== =H:
+A:adv('gosa')   gosa
+P:g
+=D:vaux:v('leat',IV,ind,impf,3sg)       lei
+=H:v('šaddat',IV,pcp2)  šaddan
+.
