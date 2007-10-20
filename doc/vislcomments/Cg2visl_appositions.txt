@@ -18,10 +18,10 @@ P:g-
 =D:v	er
 ............
 
-The apposition doesn´t nessesserally angle to a noun, so perhaps D is the best solution? And it will get it´s right position in the syntactic tree. Then it would be like this: 
+The apposition doesn´t nessesserally points to a noun, so perhaps D is the best solution? And it will get it´s right position in the syntactic tree. Then it would be like this: 
 
 
-- @APP-N<, @APP-Pron< is D to the noun/pronoun. @APP-ADVL< is D to an Adv
+- @APP-N<, @APP-Pron< is D to the noun/pronoun. @APP-ADVL< is D to an adverbial
 
 699:
 Minun vanhempani, sekä isä etä äiti, ovat tulleet
@@ -68,12 +68,37 @@ S:pron('son',<pers>,3pl,nom)	sii
 P:v('geavahit',TV,ind,impf,3pl)	geavahedje
 										<==== A:g
 A:adv('guhkit',comp)	guhkit			<==== =H:
-,										<==== =D:acl     <===== it acl a good definition here?
-A:adv('gitta')	gitta					<==== ==A:
-										<==== ==A:g
+,										<==== =D:g     
+A:adv('gitta')	gitta					<==== ==D:
+										<==== ==H:g
 										<==== ===D:    1960-logu		
 D-ADVL<:g								<==== ===H:		rádjai
 .
+
+Vuolggán ihttin, bearjadaga.
+
+SME1 Vuolggán ihttin, bearjadaga.
+A1
+P:v('vuolgit',IV,ind,pr,1sg)    Vuolggán 
+				 						<==== A:g
+A:adv('ihttin') ihttin					<==== =H:adv
+,										
+D-ADVL<:n('bearjadat',sg,gen)   bearjadaga <==== =D:n  
+.
+
+
+SME1 Mii leimmet doppe bearjadaga, mu riegádanbeaivvi.
+A1
+S:pron('mun',<pers>,1pl,nom)    Mii
+P:v('leat',IV,ind,impf,1pl)     leimmet
+A:adv('doppe')  doppe
+										<==== A:g
+A:n('bearjadat',sg,gen) bearjadaga		<==== =H:n	
+,										<==== =D:g
+@>N:pron('mun',<pers>,1sg,gen)  mu		<==== ==D:pron
+D-ADVL<:n('riegádan#beaivi',sg,gen) riegádanbeaivvi <==== ==H:n 
+.
+
 
 
 SOURCE: text
