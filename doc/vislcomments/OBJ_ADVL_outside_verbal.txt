@@ -1,0 +1,135 @@
+The verbal outside the verbal can be Inf, VAbess and Ger
+
+We should use "icl" when there is no finite verb (?). see http://visl.sdu.dk/cafeteria.html        
+
+Example with VAbess from bigkorpusVISL - the @-FOBJ is an attribute of the VAbess. VAbess can also have a @-FSUBJ in Gen.
+"<Goappaš>"
+	"goappaš" Pron Indef S:2943 @>N
+"<joavkkut>" S:4444, 15622, 16371
+	"joavku" N Pl Nom S:4195 @SUBJ
+"<manne>" S:7806, 9522, 9522, 9554, 14184, 14270
+	"mannat" V IV Ind Prt Pl3 S:4024 @+FMAINV
+"<moala>" S:15871
+	"moalla" N Sg Acc S:3914 @-FOBJ
+"<bážikeahttá>"
+	"báhčit" V TV VAbess S:4319 @ADVL
+"<molssodanlatnjii>"
+	"molssodan#latnja" N Sg Ill S:4328 @ADVL
+"<maŋŋel>" S:6801, 6846
+	"maŋŋel" Pr S:4316 @ADVL
+"<vuosttaš>" S:9215, 9218, 9219
+	"vuosttaš" A Ord Attr S:3008 @>N
+"<vuoru>" S:10848
+	"vuorru" N Sg Gen S:3472 @P<
+"<.>"
+	"." CLB <<<
+
+SME1 Goappaš joavkkut manne moala bážikeahttá molssodanlatnjii maŋŋel vuosttaš vuoru.
+A1
+												<==== S:g
+@>N:pron('goappaš',<idef>)      Goappaš     	<==== =D:	
+S:n('joavku',pl,nom)    joavkkut				<==== =H:
+P:v('mannat',IV,ind,impf,3pl)   manne
+												<==== A:icl	
+@-FOBJ:n('moalla',sg,acc)       moala			<==== =Od:	
+A:v('báhčit',TV,vabe)   bážikeahttá				<==== =P:v(inf)
+A:n('molssodan#latnja',sg,ill)  molssodanlatnjii <==== A:n
+												<==== A:g
+A:prp-pre('maŋŋel')     maŋŋel					<==== =H:
+												<==== =D:g
+@>N:adj('vuosttaš',ord,attr)    vuosttaš		<==== ==D:
+D:n('vuorru',sg,gen)    vuoru					<==== ==H:
+.
+
+
+Example with Ger (it is not in bigkorpusVISL, but I will add it to it, because there should be sentences with Ger also) - the @-FSUBJ/@-FOBJ/@-FADVL is attribute to the Ger (which always is @ADVL):
+
+"<Son>" S:4457, 5629, 15635, 16384
+        "son" Pron Pers Sg3 Nom S:4204 @SUBJ
+"<muitalii>"
+        "muitalit" V TV Ind Prt Sg3 S:4033 @+FMAINV
+"<dan>" S:8783, 8783, 12112, 16061
+        "dat" Pron Pers Sg3 Acc S:4255 @OBJ
+"<buot>" S:8652
+        "buot" Pron Indef S:2943 @>N
+"<olbmuid>" S:10998
+        "olmmoš" N Pl Gen S:3618 @-FSUBJ
+"<guladettiin>" S:4530
+        "gullat" V TV Ger S:4338 @ADVL
+"<.>"
+        "." CLB <<<
+  
+SME1 Son muitalii dan buot olbmuid guladettiin.
+A1
+S:pron('son',<pers>,3sg,nom)    Son
+P:v('muitalit',TV,ind,impf,3sg) muitalii
+Od:pron('dat',<pers>,3sg,acc)   dan
+									<==== A:icl
+									<==== =S:g
+@>N:pron('buot',<idef>) buot		<==== ==D:
+S:n('olmmoš',pl,gen)    olbmuid		<==== ==H:
+A:v('gullat',TV,ger)    guladettiin	<==== =P:v(inf)
+.
+  
+        
+"<Sii>" S:4459, 4485, 15641, 16390
+        "son" Pron Pers Pl3 Nom S:4206 @SUBJ
+"<galget>" S:6036, 15547
+        "galgat" V IV Ind Prs Pl3 S:3986 @+FAUXV
+"<áššiid>" S:11003
+        "ášši" N Pl Acc S:3897 @-FOBJ
+"<meannudettiin>"
+        "meannudit" V TV Ger S:4340 @ADVL
+"<doalahit>" S:4532, 4532, 4532, 4532, 9603
+        "doalahit" V TV Inf S:4078 @-FMAINV
+"<sorjjakeahtesvuođa>" S:12118, 16062
+        "sorjjakeahtesvuohta" N Sg Acc S:4257 @OBJ
+"<.>"
+        "." CLB <<<
+ 
+SME1 Sii galget áššiid meannudettiin doalahit sorjjakeahtesvuođa.
+A1
+S:pron('son',<pers>,3pl,nom)    Sii
+P:g-
+=D:vaux:v('galgat',IV,ind,pr,3pl)       galget
+												<==== A:icl
+@-FOBJ:n('ášši',pl,acc) áššiid					<==== =Od:
+A:v('meannudit',TV,ger) meannudettiin			<==== =P:v(inf)
+-P:g
+=H:v('doalahit',TV,inf) doalahit
+Od:n('sorjjakeahtesvuohta',sg,acc)sorjjakeahtesvuođa
+.
+ 
+        
+This one is tricky because it has to verbs outside the verbal:
+"<Lea>" S:4461, 4461, 9027, 9027, 9027, 9969, 9969, 9969, 16390
+        "leat" V IV Ind Prs Sg3 S:3988 @+FMAINV
+"<dehálaš>" S:4461, 9135, 15643, 15689
+        "dehálaš" A Sg Nom S:4208 @SPRED
+"<beassat>" S:4461, 4461, 9570, 9570, 9660
+        "beassat" V IV Inf S:3977 @-FAUXV
+"<geavahit>" S:4534, 4534, 4534, 4534, 9605
+        "geavahit" V TV Inf S:3869 @SUBJ
+"<eatnigielas>" S:4461, 4982, 12244
+        "eatni#giella" N Sg Acc PxSg3 S:3897 @-FOBJ
+"<ságastaladettiin>" S:4534
+        "ságastallat" V IV Ger S:4342 @ADVL
+"<doaktáriin>" S:13152
+        "doavttir" N Sg Com S:3943 @-FADVL
+"<.>"
+        "." CLB <<<
+        
+SME1 Lea dehálaš beassat geavahit eatnigielas ságastaladettiin doaktáriin.
+A1
+P:v('leat',IV,ind,pr,3sg)       Lea
+Cs:adj('dehálaš',sg,nom)        dehálaš
+													<==== S:icl
+													<==== =P:g
+D:vaux:v('beassat',IV,inf)      beassat 			<==== ==D:v(inf)
+S:v('geavahit',TV,inf)  geavahit					<==== ==H:
+@-FOBJ:n('eatni#giella',sg,acc,poss3sg) eatnigielas <==== =Od:
+													<==== A:icl
+A:v('ságastallat',IV,ger)       ságastaladettiin 	<==== =P:v(inf)
+@-FADVL:n('doavttir',sg,com)    doaktáriin			<==== =A:n
+.
+        
