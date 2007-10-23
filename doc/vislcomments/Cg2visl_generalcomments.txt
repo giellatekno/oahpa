@@ -3,6 +3,9 @@ To Saara:
 <===== = means that the to original marking there should be added a =,
 like =H:n should be ==H:n.)
 
+:::: Saara's comments
+
+
 New tags
 ========
 I have changed some of the tags in sme-dis.rle:
@@ -14,6 +17,8 @@ I have changed some of the tags in sme-dis.rle:
 @Pron< is now: @Pron< 
 @APP-Pron> is now: @APP>Pron 
 
+::: These are now in the code
+
 Input doesn´t match
 ===================
 I get this when I use the cg-analyze of bigkorpusVISL.txt as input to cg2visl script: 
@@ -21,20 +26,30 @@ Input did not match:    "gilli" N* Der1 Der/Dimin N Sg Loc @ADVL>
 Input did not match:    "gullevaš" A* Der3 Der/vuohta N Sg Acc @OBJ
 Input did not match:    "vuoiŋŋastit" V* IV* Der2 Der/ahtti V TV Ind Prs Sg3 @+FMAINV
 
+::: I am aware of this error, we were hesitating what to do with
+them (the tags), in the meantime I could of course add them to the structure.
+
 Errors
 ======
 I see that CS disappears!
+::: Fixed.
 
 When there is a propernoun involved, the grouping doesn´t function.
+::: Fixed
 
 "1960-logu rádjai" disappears in: 
 Muhtun sámi biktasiid, nugo gápmagiid ja vuoddagiid, sii geavahedje guhkit, gitta 1960-logu rádjai.
+::: Fixed.
 
 About some tags:
 ================
 - All infinite verbs should get :v(ninf) 
-- CC @CVP should get CO:conj (now it gets SUB:conj-s)
+::: Fixed.
+::: Another question: How the sentences like mun lean nohkan should be
+marked the group +FMAINV and -FMAINV?
 
+- CC @CVP should get CO:conj (now it gets SUB:conj-s)
+::: Fixed
 
 @-FOBJ > Od
 ============
@@ -58,6 +73,7 @@ H:v('viežžat',TV,inf)	viežžat		<==== =
 @-FOBJ:n('čáhci',sg,acc)	čázi	<==== Od:n	
 .
 
+::: Fixed.
 
  
 @PRON< is D to the pronoun, like in:
@@ -69,6 +85,8 @@ Moai 			=H
 Birehiin   		=D 		(@PRON<)
 barge			P:v
 mánáidgárddis.	A:n
+
+::: Fixed.
 
 
 Son ii máhttán ieš vuodjit biillain.
@@ -83,7 +101,9 @@ ieš 		=D:pron		(@PRON<)
 vuodjit		=H:v(ninf)
 billain.	A:n
 
-
+::: I implemented this, but it needs to be tested. So these tags in
+::: vislcg they don't have to be symmetric? 
+::: As in here, the tags cross:  S:g- P:g- -S:g -P:g
 
 D+H+D
 =======
@@ -102,6 +122,10 @@ A:g
 =D:prop('Nordlys',Obj,sg,gen)	Nordlysa
 =H:prp-post('ektui')	ektui
 
+::: Problem:
+::: The @>N in Vuosttaš points to N in minuvtta which again points to
+::: logi. The above visl-format cannot be derived from those tags, since
+::: the head is Num and @>N cannot point to Num.
 
 @>A should be D
 ===============
@@ -124,6 +148,10 @@ A:g
 =D:n('osku',sg,gen)	oskku
 =H:prp-post('geažil')	geažil
 .
+
+::: Problem is that @>A modifies adjectives. There is no adjective in
+the rest of the text. it seems that here it should be interpreted as
+modifying adverbial. So @>A modifies first adjectives, and if not found, adverbials?
 
 
 Num @SUBJ + @Q< should be grouped, like in:
@@ -148,6 +176,7 @@ Od:num('moadde',sg,acc)	moadde 	<==== =H:num
 D:n('filbma',sg,gen)	filmma	<==== =D:n
 .
 
+::: Fixed
 
 Paratagmes
 ==========
@@ -183,6 +212,9 @@ Od:par							<==== remove
 =SUB:conj-s('dahje')	dahje	<==== =CO:conj
 =CJT:n('bruvsa',sg,acc)	bruvssa
 .
+
+::: These are fixed.
+
 SME390 Garraskerrui don vurket visot iežat čállosiid ja govaid ja prográmmaid.
 A1
 A:n('garra#skearru',sg,ill)	Garraskerrui
@@ -200,4 +232,5 @@ Od:par
 =CJT:n('prográmma',pl,acc)	prográmmaid		<==== =CTJ:n
 .
 
-
+::: This is a matter of selection. I did not fix it yet, since it is
+::: more complicated.
