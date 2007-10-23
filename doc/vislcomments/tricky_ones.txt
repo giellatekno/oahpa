@@ -23,6 +23,77 @@ Od:cl
 =A:n('johka',pl,loc)	jogain
 =.
 
+I get a different analysis now:
+
+SME1 Dihkkádeaddji rávve skohtervuddjiid várrugasat mátkkoštit, go dán jagi lea erenoamán heajos jiekŋa jogain.
+A1
+S:TV('dihkkádit',actor,n,sg,nom,<V>)    Dihkkádeaddji
+P:v('rávvet',TV,ind,pr,3sg)     rávve
+Od:n('skohter#vuoddji',pl,acc)  skohtervuddjiid
+@-FADVL:adv('várrugasat')       várrugasat
+H:v('mátkkoštit',IV,inf)        mátkkoštit
+,
+Od:cl
+=@>N:pron('dát',<dem>,sg,gen)   dán
+=A:n('jahki',sg,gen)    jagi
+=P:v('leat',IV,ind,pr,3sg)      lea
+=@>N:adj('erenoamán',attr)      erenoamán
+=@>N:adj('headju',attr) heajos
+=S:n('jiekŋa',sg,nom)   jiekŋa
+=A:n('johka',pl,loc)    jogain
+=.
+
+These are the Accusative with Infinitive constructions.
+visl does them like this:
+
+SOURCE: AN INTRODUCTION TO ENGLISH SENTENCE ANALYSIS, EXERCISE 9.A
+9.A3) The bowler hat made him look like a retired general.
+A1
+STA:cl
+S:g
+=D:art('the',<def>)	The
+=D:n('bowler',sg,nom)	bowler
+=H:n('hat',sg,nom)	hat
+P:v('make',fin,impf)	made
+Od:cl
+=S:pron('he',<pers> m,3sg,acc)	him
+=P:v('look',nfin,inf)	look
+=Cs:g
+==H:prp	like
+==D:g
+===D:art('a',<idef>)	a
+===D:adj	retired
+===H:n('general',sg,nom)	general
+&&
+A2
+STA:cl
+S:g
+=D:art('the',<def>)	The
+=D:n('bowler',sg,nom)	bowler
+=H:n('hat',sg,nom)	hat
+P:v('make',fin,impf)	made
+Od:pron('he',<pers> m,3sg,acc)	him
+Co:cl
+=P:v('look',nfin,inf)	look
+=Cs:g
+==H:prp	like
+==D:g
+===D:art('a',<idef>)	a
+===D:adj	retired
+===H:n('general',sg,nom)	general
+
+Thus, the accusative is analysed as the subject of the infinitive ("look", in our example "mátkkoštit"):
+
+For us, this would imply:
+
+Od:g
+=S:n('skohter#vuoddji',pl,acc)  skohtervuddjiid
+=A:adv('várrugasat')       várrugasat
+=P:v('mátkkoštit',IV,inf)        mátkkoštit
+
+
+
+
 TRICKY (seammálágan)
 
 SOURCE: text
@@ -45,10 +116,27 @@ Od:cl
 =D:n('luodda',sg,gen)	luotta
 =.
 
+Now:
+
+Od:g
+=H:n('olmmoš',pl,acc)   olbmuid
+=D:v('čuovvut',TV,inf)  čuovvut
+Od:n('skohter#máđii',sg,acc)    skohtermáđii
+A:adv('dárkil',<A>)     dárkilit
+
+According to the visl AcI analysis:
+
+Od:g
+=S:n('olmmoš',pl,acc)   olbmuid
+=P:v('čuovvut',TV,inf)  čuovvut
+=Od:n('skohter#máđii',sg,acc)    skohtermáđii
+=A:adv('dárkil',<A>)     dárkilit
 
 
 
-TRICKY - I don´t know how it should be when there is a Po inbetween. I have suggested the same kind of solution as in DBM17, ".. avtaler med USA som gir amerikanerne myndighet.."
+
+LA: TRICKY - I don´t know how it should be when there is a Po inbetween. I have suggested the same kind of solution as in DBM17, ".. avtaler med USA som gir amerikanerne myndighet.."
+TT: I suggest a similar solution (see below) but it might be I lost track somewhere.
 
 SME1 Su vuosttaš girji bođii jagi 1986, ja girji lea muitalus nuorra sámenieidda birra gii šaddá bajás internáhtas.
 A1
@@ -81,5 +169,35 @@ A:adv('bajás')  bajás					<==== ====A:adv
 A:n('internáhtta',sg,loc) internáhtas	<==== ====A:adv
 .
 
+So, this is a discintinuous constituent.
 
+What about this solution?
 
+A1
+S:g
+=D:pron('son',<pers>,3sg,gen)  Su
+=D:adj('vuosttaš',ord,attr)    vuosttaš
+=H:n('girji',sg,nom)     girji
+P:v('boahtit',IV,ind,impf,3sg)  bođii
+A:g
+=H:n('jahki',sg,gen)    jagi
+=D:num('1986',sg,nom)   1986
+,
+SUB:conj-s('ja')        ja
+S:n('girji',sg,nom)     girji
+P:v('leat',IV,ind,pr,3sg)       lea
+Cs:g										     <= Not as in script
+=H:n('muitalus',sg,nom) muitalus			     <= Not as in script
+=A:g										     <= Not as in script
+==D:g-										     <= Not as in script
+===D:adj('nuorra',attr)  nuorra				     <= Not as in script
+===H:n('sáme#nieida',sg,gen)     sámenieidda     <= Not as in script
+==H:prp-post('birra')     birra				     <= Not as in script
+==-D:g										     <= Not as in script
+===D:cl										     <= Not as in script
+====S:pron('gii',<rel>,sg,nom)      gii		     <= Not as in script
+====P:v('šaddat',IV,ind,pr,3sg)     šaddá	     <= Not as in script
+====A:adv('bajás')  bajás					     <= Not as in script
+====A:n('internáhtta',sg,loc)       internáhtas  <= Not as in script
+
+TT: Hmm, I would have liked to see this in a tree structure, but this is what I can figure out now.
