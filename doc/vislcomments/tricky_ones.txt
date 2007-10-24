@@ -43,8 +43,8 @@ Od:cl
 =A:n('johka',pl,loc)    jogain
 =.
 
-These are the Accusative with Infinitive constructions.
-visl does them like this:
+TT: These are the Accusative with Infinitive constructions.
+TT: visl does them like this:
 
 SOURCE: AN INTRODUCTION TO ENGLISH SENTENCE ANALYSIS, EXERCISE 9.A
 9.A3) The bowler hat made him look like a retired general.
@@ -157,18 +157,22 @@ S:n('girji',sg,nom)     girji			<==== =
 P:v('leat',IV,ind,pr,3sg)       lea		<==== =
 Cs:n('muitalus',sg,nom) muitalus		<==== =
 A:g										<==== =
-										<==== =H:g
-=D:g									<==== ==D:g
-==D:adj('nuorra',attr)  nuorra			<==== ===D:adj
-==H:n('sáme#nieida',sg,gen)sámenieidda	<==== ===H:n
-=H:prp-post('birra')    birra			<==== ==H:prp
-										<==== ===D:cl    <====== In the same level as "sámenieidda" which the Rel points at 
+										<==== =H:g     1
+=D:g									<==== ==D:g    2
+==D:adj('nuorra',attr)  nuorra			<==== ===D:adj 3
+==H:n('sáme#nieida',sg,gen)sámenieidda	<==== ===H:n   3
+=H:prp-post('birra')    birra			<==== ==H:prp  2
+										<==== ===-D:cl  3 <====== In the same level as "sámenieidda" which the Rel points at 
 S:pron('gii',<rel>,sg,nom)      gii		<==== ====S:pron        
 P:v('šaddat',IV,ind,pr,3sg)     šaddá	<==== ====P:v
 A:adv('bajás')  bajás					<==== ====A:adv
 A:n('internáhtta',sg,loc) internáhtas	<==== ====A:adv
 .
-
+ 1 2       3           32      1
+ ( (nuorra (sámenieidda)) birra) (gii šaddá bajás internáhtas.)
+   |       |                     |
+                  ----------------
+                  
 So, this is a discintinuous constituent.
 
 What about this solution?
@@ -188,7 +192,7 @@ S:n('girji',sg,nom)     girji
 P:v('leat',IV,ind,pr,3sg)       lea
 Cs:g										     <= Not as in script
 =H:n('muitalus',sg,nom) muitalus			     <= Not as in script
-=A:g										     <= Not as in script
+=D:g										     <= Not as in script
 ==D:g-										     <= Not as in script
 ===D:adj('nuorra',attr)  nuorra				     <= Not as in script
 ===H:n('sáme#nieida',sg,gen)     sámenieidda     <= Not as in script
