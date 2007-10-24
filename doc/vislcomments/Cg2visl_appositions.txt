@@ -49,6 +49,8 @@ SOURCE: text
 SME700 Muhtun sámi biktasiid, nugo gápmagiid ja vuoddagiid, sii geavahedje guhkit, gitta 1960-logu rádjai.
 
 OBS!!!   1960-logu rádjai disappears!
+Fixed by Saara :-)
+
 A1
 TÄÄLLÄ
 Od:g
@@ -74,6 +76,35 @@ A:adv('gitta')	gitta					<==== ==D:
 										<==== ===D:    1960-logu		
 D-ADVL<:g								<==== ===H:		rádjai
 .
+
+For reference: Version 24.10:
+(Here "1960-logu" is included, but "nugo" is missing)
+
+SME1 Muhtun sámi biktasiid, nugo gápmagiid ja vuoddagiid, sii geavahedje guhkit, gitta 1960-logu rádjai.
+A1
+Od:g
+=D:pron('muhtun',<idef>,attr)   Muhtun
+=D:n('sápmi',sg,gen)    sámi
+=H:n('bivttas',pl,acc)  biktasiid
+D:par
+=CJT:g-
+==H:n('gáma',pl,acc)    gápmagiid
+=SUB:conj-s('ja')       ja
+=-CJT:g
+==D:n('vuotta',pl,acc)  vuoddagiid
+,
+S:pron('son',<pers>,3pl,nom)    sii
+P:v('geavahit',TV,ind,impf,3pl) geavahedje
+A:adv('guhkit',comp)    guhkit
+,
+A:g
+=H:adv('gitta') gitta
+=D:g
+==D:n('1960-#lohku',sg,gen)     1960-logu
+==H:prp-post('rádjai')  rádjai
+.
+
+
 
 Vuolggán ihttin, bearjadaga.
 
@@ -263,6 +294,9 @@ VISL-cafeteria suggests VOC, but in use is A, like in HHX150 and some experiment
 Because of that our CG-analyse gives @APP, it is difficult to handle an other way as the other appositions, but still the D doen´t function here. 
 
 I will change to @VOC in CG, so they in VISL dan get VOC.
+
+TT: This seems a good solution. I think Nickel refrains from Voc as he sees "vocative" as a case, whereas we talk of @VOC as a grammatical function.
+
 
 SME718 Oaččut beare boahtit, bonjuoaivvat horti.
 A1
