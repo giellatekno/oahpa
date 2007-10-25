@@ -23,6 +23,46 @@ Od:cl
 =A:n('johka',pl,loc)	jogain
 =.
 
+<<<<<<< tricky_ones.txt
+In this suggestion the "várrugasat mátkkoštit" are attributes to "skohtervuddjiid":
+
+SME1 Dihkkádeaddji rávve skohtervuddjiid várrugasat mátkkoštit, go dán jagi lea erenoamán heajos jiekŋa jogain.
+A1
+S:TV('dihkkádit',actor,n,sg,nom,<V>)    Dihkkádeaddji
+P:v('rávvet',TV,ind,pr,3sg)     rávve
+												<==== Od:icl
+Od:n('skohter#vuoddji',pl,acc)  skohtervuddjiid	<==== =Od:
+@-FADVL:adv('várrugasat')       várrugasat		<==== =A:adv	
+H:v('mátkkoštit',IV,inf)        mátkkoštit		<==== =P:v(inf)  
+.
+Od:cl
+=@>N:pron('dát',<dem>,sg,gen)   dán
+=A:n('jahki',sg,gen)    jagi
+=P:v('leat',IV,ind,pr,3sg)      lea
+=@>N:adj('erenoamán',attr)      erenoamán
+=@>N:adj('headju',attr) heajos
+=S:n('jiekŋa',sg,nom)   jiekŋa
+=A:n('johka',pl,loc)    jogain
+.
+
+    SUBJ			V							O	
+Dihkkádeaddji    rávve			_____________________________________
+								|						|			|
+							skohtervuddjiid			várrogasat  mátkkoštit
+
+A solution with attributes:
+    SUBJ			V			    O	
+Dihkkádeaddji    rávve		skohtervuddjiid	
+									|							
+								mátkkoštit
+									|
+								várrogasat
+
+
+
+
+
+=======
 I get a different analysis now:
 
 SME1 Dihkkádeaddji rávve skohtervuddjiid várrugasat mátkkoštit, go dán jagi lea erenoamán heajos jiekŋa jogain.
@@ -91,9 +131,10 @@ Od:g
 =A:adv('várrugasat')       várrugasat
 =P:v('mátkkoštit',IV,inf)        mátkkoštit
 
+LA: I think we have to go for this solution, that S can be Acc when the verbal is infinite. 
 
 
-
+>>>>>>> 1.2
 TRICKY (seammálágan)
 
 SOURCE: text
@@ -205,3 +246,36 @@ Cs:g										     <= Not as in script
 ====A:n('internáhtta',sg,loc)       internáhtas  <= Not as in script
 
 TT: Hmm, I would have liked to see this in a tree structure, but this is what I can figure out now.
+
+
+LA: same solution as TT, but with -D:cl instead of -D:g + =D:cl, as in DBM17, and with phrasemarkings
+A1
+STA:par
+CJT:cl
+=S:g
+==D:pron('son',<pers>,3sg,gen)  Su
+==D:adj('vuosttaš',ord,attr)    vuosttaš
+==H:n('girji',sg,nom)     girji
+=P:v('boahtit',IV,ind,impf,3sg)  bođii
+=A:g
+==H:n('jahki',sg,gen)    jagi
+==D:num('1986',sg,nom)   1986
+,
+CC:conj-s('ja')        ja
+CJT:cl
+=S:n('girji',sg,nom)     girji
+=P:v('leat',IV,ind,pr,3sg)       lea
+=Cs:g										     
+==H:n('muitalus',sg,nom) muitalus			     
+==D:g
+===D:g-										     
+====D:adj('nuorra',attr)  nuorra				     
+====H:n('sáme#nieida',sg,gen)     sámenieidda     
+===H:prp-post('birra')     birra				     
+===-D:cl										  							
+====S:pron('gii',<rel>,sg,nom)      gii		     
+====P:v('šaddat',IV,ind,pr,3sg)     šaddá	     
+====A:adv('bajás')  bajás					     
+====A:n('internáhtta',sg,loc)       internáhtas  
+
+
