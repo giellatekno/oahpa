@@ -217,7 +217,9 @@ A:n('internáhtta',sg,loc) internáhtas	<==== ====A:adv
 So, this is a discintinuous constituent.
 
 What about this solution?
+LA:  This one doesn´t work in the visl Tree Builder.
 
+SME1 Su vuosttaš girji bođii jagi 1986, ja girji lea muitalus nuorra sámenieidda birra gii šaddá bajás internáhtas.
 A1
 S:g
 =D:pron('son',<pers>,3sg,gen)  Su
@@ -231,24 +233,27 @@ A:g
 SUB:conj-s('ja')        ja
 S:n('girji',sg,nom)     girji
 P:v('leat',IV,ind,pr,3sg)       lea
-Cs:g										     <= Not as in script
-=H:n('muitalus',sg,nom) muitalus			     <= Not as in script
-=D:g										     <= Not as in script
-==D:g-										     <= Not as in script
-===D:adj('nuorra',attr)  nuorra				     <= Not as in script
-===H:n('sáme#nieida',sg,gen)     sámenieidda     <= Not as in script
-==H:prp-post('birra')     birra				     <= Not as in script
-==-D:g										     <= Not as in script
-===D:cl										     <= Not as in script
-====S:pron('gii',<rel>,sg,nom)      gii		     <= Not as in script
-====P:v('šaddat',IV,ind,pr,3sg)     šaddá	     <= Not as in script
-====A:adv('bajás')  bajás					     <= Not as in script
-====A:n('internáhtta',sg,loc)       internáhtas  <= Not as in script
+Cs:g										     
+=H:n('muitalus',sg,nom) muitalus			     
+=D:g										     
+==D:g-										     
+===D:adj('nuorra',attr)  nuorra				     
+===H:n('sáme#nieida',sg,gen)     sámenieidda     
+==H:prp-post('birra')     birra				     
+==-D:g										     
+===D:cl										     
+====S:pron('gii',<rel>,sg,nom)      gii		     
+====P:v('šaddat',IV,ind,pr,3sg)     šaddá	     
+====A:adv('bajás')  bajás					     
+====A:n('internáhtta',sg,loc)       internáhtas  
+.
 
 TT: Hmm, I would have liked to see this in a tree structure, but this is what I can figure out now.
 
 
-LA: same solution as TT, but with -D:cl instead of -D:g + =D:cl, as in DBM17, and with phrasemarkings
+LA: same solution as TT, but with -D:cl instead of -D:g + =D:cl, as in DBM17, and with phrasemarkings. This one works well in the visl Tree Builder.
+
+SME1 Su vuosttaš girji bođii jagi 1986, ja girji lea muitalus nuorra sámenieidda birra gii šaddá bajás internáhtas.
 A1
 STA:par
 CJT:cl
@@ -276,6 +281,7 @@ CJT:cl
 ====S:pron('gii',<rel>,sg,nom)      gii		     
 ====P:v('šaddat',IV,ind,pr,3sg)     šaddá	     
 ====A:adv('bajás')  bajás					     
-====A:n('internáhtta',sg,loc)       internáhtas  
+====A:n('internáhtta',sg,loc)       internáhtas
+.  
 
 
