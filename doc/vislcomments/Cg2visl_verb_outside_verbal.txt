@@ -15,6 +15,9 @@ Cs:g
 :v('geahččat',TV,inf,n<)	geahččat <===== ==P:v(nfin)
 @-FOBJ:n('sávza',pl,acc)	sávzzaid <===== ==O:n
 .
+
+::: This is not yet fixed, I have to examine it in more detail.
+
 SOURCE: text
 SME971 Áddjá lea čeahppi muitalit ságaid.
 A1
@@ -26,6 +29,9 @@ Cs:adj('čeahppi',sg,nom)	čeahppi	<===== =H:adj
 :v('muitalit',TV,inf,adj<)	muitalit <===== ==P:v(nfin)	
 @-FOBJ:n('sáhka',pl,acc)	ságaid	<===== ==Od:n
 .
+
+::: I did not add icl yet, otherwise fixed.
+
 SOURCE: text
 SME972 Mus livččii miella mannat teáhteris.
 A1
@@ -37,6 +43,10 @@ S:n('miella',sg,nom)	miella	<===== =H:n
 :v('mannat',IV,inf,n<)	mannat	<===== ==P:v(nfin)
 @-FADVL:n('teáhter',sg,loc)	teáhteris <===== ==A:n
 .
+
+::: I don't remember how the -FADVL was defined.. It was discussed
+somewhere. I now interpreted it so that it goes together with the
+nearest verb. Fixed.
 
 SOURCE: text
 SME974 Gurssa ulbmil lea oahppat goarrut Ivgu gávtti.
@@ -53,6 +63,11 @@ Cs:v('oahppat',TV,inf)	oahppat		<===== =P:v(nfin)
 =D:prop('Ivgu',plc,sg,gen)	Ivgu	<===== ===D:n
 =H:n('gákti',sg,acc)	gávtti		<===== ===H:n
 .
+
+::: Fixed the Od:g. The analysis of goarrut is nowadays "goarrut" V TV Inf
+@ADVL, thus the group is now A:cl and the result is also otherwise different.
+
+
 SOURCE: text
 SME975 Megabyte lea dán áiggi dábálaš vuohki mihtidit sturrodaga.
 A1
@@ -69,6 +84,15 @@ Cs:g								<===== Cs:g
 :v('mihtidit',TV,inf,n<)	mihtidit <===== ==P:v(nfin)
 @-FOBJ:n('sturrodat',sg,acc)	sturrodaga <===== ==Od:n
 .
+
+::: Here there is a clash between the different modifiers. -FOBJ is
+now parsed, but otherwise the parse is not the same as you
+suggest. I have not implemented all the alternative parses so the >N
+dábálaš is at the moment interpreted as modifying a the whole "vuohki
+mihtidit sturrodat", even though it should modify only vuohki if I
+understood correctly..
+
+
 SOURCE: text
 SME976 E-boasta lea hui álkes ja jođánis vuohki sáddet reivviid birra máilmmi.
 A1
@@ -92,6 +116,9 @@ Cs:g
 =D:n('máilbmi',sg,gen)	máilmmi		<===== ====D:n
 .
 
+::: Still problems with coordination.. otherwise fixed. icl tag still
+not there.
+
 SOURCE: text
 SME978 Lea hávski oažžut reivve.
 A1
@@ -101,6 +128,9 @@ Cs:adj('hávski',sg,nom)	hávski
 S:v('oažžut',TV,inf)	oažžut		<===== =P:v(nfin)	
 @-FOBJ:n('reive',sg,acc)	reivve	<===== =Od:n
 .
+
+::: Fixed
+
 SOURCE: text
 SME979 Mu mielas lea suohtas oahppat sámegiela.
 A1
@@ -113,6 +143,9 @@ Cs:adj('suohtas',sg,nom)	suohtas			<===== Cs:adj
 S:v('oahppat',TV,inf)	oahppat				<===== =P:v(nfin)
 @-FOBJ:n('sáme#giella',sg,acc)	sámegiela 	<===== =Od:n	
 .
+
+::: This does not have -FOBJ tag anymore.
+
 SOURCE: text
 SME982 Gean vuorru lea dál bálkestit birccu?
 A1
@@ -125,6 +158,8 @@ A:adv('dál')	dál
 S:v('bálkestit',TV,inf)	bálkestit	<===== 	=P:v(nfin)
 @-FOBJ:n('bircu',sg,acc)	birccu   <=====	=Od:n
 ?
+
+::: Fixed.
  
 This one is TRICKY because of the "riikkas riikii" (from land to land) which  really is a A + A, in other words: Head + Head. It cannot be CJT:cl because there is no verbal?  
  
@@ -153,7 +188,7 @@ S:v('johtit',IV,inf)	johtit		<===== ==H:v(nfin)
 @-FADVL:n('báiki',sg,ill)	báikái	<===== ===A:n  
 .
 
-
+::: Not fixed yet.
 
 SOURCE: text
 SME980 Dus ii leat lohpi dan dahkat!
@@ -169,6 +204,9 @@ S:n('lohpi',sg,nom)	lohpi				<===== =H:n
 :v('dahkat',TV,inf,n<)	dahkat			<===== ==P:v(nfin)
 !
 
+::: Where does the -FOBJ point in this case?
+
+
 SME1 Biret-guovttos Juffáin leaba čeahpit duddjot.
 A1
 S:g
@@ -181,3 +219,4 @@ Cs:adj('čeahppi',pl,nom)        čeahpit	<==== =H:adj
 .
 
 
+::: Fixed.
