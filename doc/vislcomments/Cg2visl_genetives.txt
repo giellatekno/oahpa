@@ -16,7 +16,12 @@ Cs:g									<==== S:g
 =D:adj('vuosttaš',ord,attr)	vuosttaš	<====  
 =H:n('jođiheaddji',sg,nom)	jođiheaddji	<====  
 .
-		
+
+::: I think this is a matter of choice. I added a command line
+argument -e that does embedding for the right pointing tags. With
+"cg2visl.pl -e" you will get the correct result for this sentence,
+without -e, the original one.
+
 		
 		SOURCE: text
 SME566 Vuosttaš logi minuvtta lei buorre áigodat Nordlysa ektui.
@@ -35,3 +40,6 @@ A:g
 =H:prp-post('ektui')	ektui
 
 .
+
+::: I did not implement the same for the left-pointing modifiers. This
+sentence has other problems not yet fixed.
