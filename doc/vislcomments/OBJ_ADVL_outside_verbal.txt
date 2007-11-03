@@ -25,6 +25,7 @@ Example with VAbess from bigkorpusVISL - the @-FOBJ is an attribute of the VAbes
 "<.>"
 	"." CLB <<<
 
+
 SME1 Goappaš joavkkut manne moala bážikeahttá molssodanlatnjii maŋŋel vuosttaš vuoru.
 A1
 												<==== S:g
@@ -41,6 +42,9 @@ A:prp-pre('maŋŋel')     maŋŋel					<==== =H:
 @>N:adj('vuosttaš',ord,attr)    vuosttaš		<==== ==D:
 D:n('vuorru',sg,gen)    vuoru					<==== ==H:
 .
+
+::: Fixed by adding search for VAbess and Ger and searching from the
+right if there is no infinitive verb form on the right.
 
 
 Example with Ger (it is not in bigkorpusVISL, but I will add it to it, because there should be sentences with Ger also) - the @-FSUBJ/@-FOBJ/@-FADVL is attribute to the Ger (which always is @ADVL):
@@ -71,7 +75,8 @@ Od:pron('dat',<pers>,3sg,acc)   dan
 S:n('olmmoš',pl,gen)    olbmuid		<==== ==H:
 A:v('gullat',TV,ger)    guladettiin	<==== =P:v(nfin)
 .
-  
+
+::: Fixed.  
         
 "<Sii>" S:4459, 4485, 15641, 16390
         "son" Pron Pers Pl3 Nom S:4206 @SUBJ
@@ -100,7 +105,8 @@ A:v('meannudit',TV,ger) meannudettiin			<==== =P:v(nfin)
 =H:v('doalahit',TV,inf) doalahit
 Od:n('sorjjakeahtesvuohta',sg,acc)sorjjakeahtesvuođa
 .
- 
+
+::: Fixed.
         
 This one is tricky because it has two verbs outside the verbal:
 "<Lea>" S:4461, 4461, 9027, 9027, 9027, 9969, 9969, 9969, 16390
@@ -133,4 +139,7 @@ S:v('geavahit',TV,inf)  geavahit					<==== ==H:
 A:v('ságastallat',IV,ger)       ságastaladettiin 	<==== =P:v(nfin)
 @-FADVL:n('doavttir',sg,com)    doaktáriin			<==== =A:n
 .
-        
+
+:: Yes, this is partly fixed now, but there is a problem with
+alternative grouping of elements, which was present in connection with
+other examples as well. I have to think it through still.
