@@ -1,3 +1,5 @@
+LA has added comments, this time with date (LA051107)
+
 NEW VERSION OF THIS DOCUMENT, BECAUSE OF A NEW SUGGESTION TO SEM981!
 
 Here are som sentences with a verbal as SUBJ or as an attribute (@N< or @A<). 
@@ -65,6 +67,42 @@ Cs:v('oahppat',TV,inf)	oahppat		<===== =P:v(nfin)
 ::: Fixed the Od:g. The analysis of goarrut is nowadays "goarrut" V TV Inf
 @ADVL, thus the group is now A:cl and the result is also otherwise different.
 
+LA051107: I have fixed the problem ("goarrut" can also be read as (N Pl Nom)). The analyze is: 
+
+"<Gurssa>" S:11124, 11124, 11124
+        "gursa" N Sg Gen S:3512 @>N
+"<ulbmil>" S:4488, 4492, 11519, 16466
+        "ulbmil" N Sg Nom S:4230 @SUBJ
+"<lea>" S:16464
+        "leat" V IV Ind Prs Sg3 S:4010 @+FMAINV
+"<oahppat>" S:4488, 4492, 5862, 5862, 9222
+        "oahppat" V TV Inf S:3891 @SPRED
+"<goarrut>" S:4488, 4488, 4492, 4492, 4554, 4554, 9639
+        "goarrut" V TV Inf S:3908 @-FOBJ
+"<Ivgu>" S:4492, 11004, 11281, 11281, 12067
+        "Ivgu" N Prop Plc Sg Gen S:3512 @>N
+"<gávtti>" S:10412
+        "gákti" N Sg Acc S:3916 @-FOBJ
+"<.>"
+        "." CLB <<<
+And in VISL:
+
+SME1 Gurssa ulbmil lea oahppat goarrut Ivgu gávtti.
+A1
+S:g
+=D:n('gursa',sg,gen)    Gurssa
+=H:n('ulbmil',sg,nom)   ulbmil
+P:v('leat',IV,ind,pr,3sg)       lea
+Cs:icl
+=P:v(nfin)('oahppat',TV,inf)    oahppat
+=Od:icl
+==P:v(nfin)('goarrut',TV,inf)   goarrut
+==Od:g
+===D:prop('Ivgu',plc,sg,gen)    Ivgu
+===H:n('gákti',sg,acc)  gávtti
+.
+This looks good! I wanted to see it as a tree, but visl inlog didn´t work today..
+
 
 SOURCE: text
 SME975 Megabyte lea dán áiggi dábálaš vuohki mihtidit sturrodaga.
@@ -89,6 +127,30 @@ suggest. I have not implemented all the alternative parses so the >N
 dábálaš is at the moment interpreted as modifying a the whole "vuohki
 mihtidit sturrodat", even though it should modify only vuohki if I
 understood correctly..
+LA051107: It seems for me that your analyse is correct. "dábálaš" modifies the whole icl.
+
+VISL 051107:
+740 sets (using 9801 different tags)
+517 mappings
+29 constraint sections
+3047 constraint rules
+SOURCE: text
+SME1 Megabyte lea dán áiggi dábálaš vuohki mihtidit sturrodaga.
+A1
+S:n('megabyte',sg,nom)  Megabyte
+P:v('leat',IV,ind,pr,3sg)       lea
+A:g
+=D:pron('dát',<dem>,sg,gen)     dán
+=H:n('áigi',sg,gen)     áiggi
+Cs:g
+=D:adj('dábálaš',attr)  dábálaš
+=H:g
+==H:n('vuohki',sg,nom)  vuohki
+==D:icl
+===P:v(nfin)('mihtidit',TV,inf) mihtidit
+===Od:n('sturrodat',sg,acc)     sturrodaga
+.
+
 
 
 SOURCE: text
@@ -143,6 +205,36 @@ S:v('oahppat',TV,inf)	oahppat				<===== =P:v(nfin)
 .
 
 ::: This does not have -FOBJ tag anymore.
+LA051107: It has (at least at the moment), and the VISL works well:
+
+"<Mu>" S:11080
+        "mun" Pron Pers Sg1 Gen S:3512 @>N
+"<mielas>" S:4488, 5929, 7864, 7864
+        "miella" N Sg Loc S:4375 @ADVL
+"<lea>" S:15613
+        "leat" V IV Ind Prs Sg3 S:4010 @+FMAINV
+"<suohtas>" S:4488, 4492, 9169, 11441, 11814, 15885
+        "suohtas" A Sg Nom S:4230 @SPRED
+"<oahppat>" S:4488, 4492, 5862, 5862, 9694
+        "oahppat" V TV Inf S:3873 @SUBJ
+"<sámegiela>" S:12158, 16053
+        "sáme#giella" N Sg Acc S:4281 @-FOBJ
+"<.>"
+        "." CLB <<<
+
+SOURCE: text
+SME1 Mu mielas lea suohtas oahppat sámegiela.
+A1
+A:g
+=D:pron('mun',<pers>,1sg,gen)   Mu
+=H:n('miella',sg,loc)   mielas
+P:v('leat',IV,ind,pr,3sg)       lea
+Cs:adj('suohtas',sg,nom)        suohtas
+S:icl
+=P:v(nfin)('oahppat',TV,inf)    oahppat
+=Od:n('sáme#giella',sg,acc)     sámegiela
+.
+
 
 SOURCE: text
 SME982 Gean vuorru lea dál bálkestit birccu?
