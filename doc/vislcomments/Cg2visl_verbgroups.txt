@@ -1,6 +1,11 @@
 Look at the last part of this, where there are @+FAUXV and then @+FAUXV @FMAINV.
 A verbgroup can not have two finite verbs!
 
+Yes, I agree! 
+I suggest to make redundant P:vaux as a D to the following constituent. The rule will be: Neg (and no PrfPrc following), gives D to the following constituent, which can be Od or A. 
+Od, like in this sentence: In gullan in sáni dan birra.
+
+
 "<Muhtun>" S:4440, 8575
         "muhtun" Pron Indef Attr S:2899 @>N
 "<geasi>" S:9699, 11078
@@ -51,8 +56,7 @@ A verbgroup can not have two finite verbs!
 
 In the VISL-version the last verbs are included into the same group, which is not so good:
 
-SME1 Muhtun geasi nieida jávkkai, ja olbmot ohce su, muhto eai gávdnan su
- eai gostege, eaige diehtán gosa lei šaddan.
+SME1 Muhtun geasi nieida jávkkai, ja olbmot ohce su, muhto eai gávdnan su eai gostege, eaige diehtán gosa lei šaddan.
 A1
 @>N:pron('muhtun',<idef>,attr)  Muhtun
 A:n('geassi',sg,gen)    geasi
@@ -86,3 +90,39 @@ P:g
 ::: Improved script so that the verb groups do not continue when there
 is a comma. Other punctuation can be added when needed. The tags are
 bit different than here still.
+
+LA 051107: Now it functions quite well, but there should be a sub.cl (which was not mentioned above):
+
+VISL 051107:
+SME1 Muhtun geasi nieida jávkkai, ja olbmot ohce su, muhto eai gávdnan su eai gostege, eaige diehtán gosa lei šaddan.
+A1
+A:g
+=D:pron('muhtun',<idef>,attr)   Muhtun
+=H:n('geassi',sg,gen)   geasi
+S:n('nieida',sg,nom)    nieida
+P:v('jávkat',IV,ind,impf,3sg)   jávkkai
+,
+CO:conj-s('ja') ja
+S:n('olmmoš',pl,nom)    olbmot
+P:v('ohcat',TV,ind,impf,3pl)    ohce
+Od:pron('son',<pers>,3sg,acc)   su
+,
+CO:conj-s('muhto')      muhto
+P:g
+=D:vaux:v('ii',IV,neg,ind,3pl)  eai
+=H:v(nfin)('gávdnat',TV,pcp2)   gávdnan
+Od:pron('son',<pers>,3sg,acc)   su
+										<==== A:g
+P:vaux:v('ii',IV,neg,ind,3pl)   eai    	<==== =D:vaux
+A:adv('gostege')        gostege			<==== =A:adv
+,
+P:g
+=D:vaux:v('ii',IV,neg,ind,3pl,foc/ge)   eaige
+=H:v(nfin)('diehtit',TV,pcp2)   diehtán
+										<==== Od:cl
+A:adv('gosa')   gosa					<==== =
+P:g										<==== =
+=D:vaux:v('leat',IV,ind,impf,3sg) lei	<==== =
+=H:v(nfin)('šaddat',IV,pcp2)    šaddan	<==== =
+.
+
