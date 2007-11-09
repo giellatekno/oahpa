@@ -1,0 +1,104 @@
+Problems of making a tree when there is one @+FAUXV and two @-FMAINV
+like in:
+Son áigu oastit eatnamiid ja vuovdit válmmaš viesuid.
+
+In the norwegian and danish pre-analyzed korpus, I found only one example, which has got X:par and the second PrfPrc  has got P:v, instead of H:v. This is not the best analyze.
+
+HHX169) Rasmus havde ligget på den blå sofa og set TV det meste af dagen.
+A1/1
+STA:cl
+S:prop	Rasmus
+X:par
+=CJT:cl
+==P:g
+===D:v	havde
+===H:v	ligget
+==A:g
+===H:prp	på
+===D:g
+====D:art	den
+====D:adj	blå
+====H:n	sofa
+=CO:conj	og
+=CJT:cl
+==P:v	set
+==Od:n	TV
+==A:g
+===D:art	det
+===H:adj	meste
+===D:g
+====H:prp	af
+====D:n	dagen
+. 
+
+
+A possible solution. The paratagme has got X like in the Danish one, but I have held the vaux outside the paratagme.
+
+SME1 Son áigu oastit eatnamiid ja vuovdit válmmaš viesuid.
+A1
+STA:cl
+S:pron('son',<pers>,3sg,nom)    Son
+P:g
+=D:vaux:v('áigut',TV,ind,pr,3sg)       áigu
+=X:par
+==CJT:icl
+===P:v(nfin)('oastit',TV,inf)    oastit
+===Od:n('eanan',pl,acc)   eatnamiid
+==CO:conj-s('ja') ja
+==CJT:icl
+===P:v(nfin)('vuovdit',TV,inf)    vuovdit
+===Od:g
+====D:adj('válmmaš',attr) válmmaš
+====H:n('viessu',pl,acc)  viesuid
+.
+
+A more complicated one:
+CORRECTED:
+SME1 Oahpaheaddji čilge govt mii galgat sojahit sániid ja ráhkadit cealkagiid.
+A1
+STA:cl
+S:n('oahpaheaddji',sg,nom)      Oahpaheaddji
+P:v('čilget',TV,ind,pr,3sg)     čilge
+Od:cl
+=A:adv('govt')   govt
+=S:pron('mun',<pers>,1pl,nom)    mii
+=P:g
+==D:vaux:v('galgat',IV,ind,pr,1pl)      galgat
+==X:par
+===CJT:icl
+====P:v(nfin)('sojahit',TV,inf)   sojahit
+====Od:n('sátni',pl,acc)   sániid
+===CO:conj-s('ja') ja
+===CJT:icl
+====P:v(nfin)('ráhkadit',TV,inf)   ráhkadit
+====Od:n('cealkka',pl,acc) cealkagiid
+.
+
+Even more complicated:
+
+CORRECTED:
+SME1 Dalle mun ferten iskat lea go dus feber, ja mihtidit dus varradeattu.
+A1
+STA:par
+CJT:cl
+=A:adv('dalle')  Dalle
+=S:pron('mun',<pers>,1sg,nom)    mun
+=P:g
+==D:vaux:v('fertet',IV,ind,pr,1sg)       ferten
+==X:par
+===CJT:icl
+====P:v(nfin)('iskat',TV,inf)      iskat
+====Od:cl
+=====P:v('leat',IV,ind,pr,3sg)       lea
+=====Apcle:part('go')        go
+=====HAB:pron('don',<pers>,2sg,loc)    dus
+=====S:n('feber',sg,nom)     feber
+=====,
+===CO:conj-s('ja') ja
+===CJT:icl
+====P:v('mihtidit',TV,ind,pr,3pl)   mihtidit
+====HAB:pron('don',<pers>,2sg,loc)    dus
+====Od:n('varra#deaddu',sg,acc)     varradeattu
+.
+
+
