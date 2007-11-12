@@ -130,7 +130,27 @@ A:g
 ::: The @>N in Vuosttaš points to N in minuvtta which again points to
 ::: logi. The above visl-format cannot be derived from those tags, since
 ::: the head is Num and @>N cannot point to Num.
-LA121107: Well, I see that the tags are not so logical. I will fix in sme-dis.rle, so vuosttaš gets @>Num.
+LA121107: Well, I see that the tags are not so logical. I will fix in sme-dis.rle, so vuosttaš gets @>Num. And it should be @SUBJ, not @ADVL.
+
+CORRECT - ((It works perfectly after changing sme-dis.rle, except from what is Dum??):
+SOURCE: text
+SMEB1 Vuosttaš logi minuvtta lei buorre áigodat Nordlysa ektui.
+A1
+STA:cl
+S:g
+=Dum:adj('vuosttaš',ord,attr)   Vuosttaš
+=H:g
+==H:num('logi',sg,nom)  logi
+==D:n('minukta',sg,gen) minuvtta
+P:v('leat',IV,ind,impf,3sg)     lei
+Cs:g
+=D:adj('buorre',sg,nom) buorre
+=H:n('áigodat',sg,nom)  áigodat
+A:g
+=D:prop('Nordlys',Obj,sg,gen)   Nordlysa
+=H:prp-post('ektui')    ektui
+.
+
 
 @>A should be D
 ===============
@@ -158,6 +178,28 @@ A:g
 the rest of the text. it seems that here it should be interpreted as
 modifying adverbial. So @>A modifies first adjectives, and if not found, adverbials?
 LA121107: "nu" modifies "ollu". I will fix the tags in sme-dis.rle
+
+CORRECT (It works perfectly after changing sme-dis.rle):
+SMEB1 Muhtun guovlluid gávttiin eai leat nu ollu čiŋat oskku geažil.
+A1
+STA:cl
+A:g
+=D:pron('muhtun',<idef>,attr)   Muhtun
+=D:n('guovlu',pl,gen)   guovlluid
+=H:n('gákti',pl,loc)    gávttiin
+P:g
+=D:vaux:v('ii',IV,neg,ind,3pl)  eai
+=H:v(nfin)('leat',IV,ind,pr,conneg)     leat
+S:g
+=D:g
+==D:adv('nu')   nu
+==H:adj('ollu',attr)    ollu
+=H:n('čikŋa',pl,nom)    čiŋat
+A:g
+=D:n('osku',sg,gen)     oskku
+=H:prp-post('geažil')   geažil
+.
+
 
 
 Num @SUBJ + @Q< should be grouped, like in:
@@ -221,7 +263,9 @@ Od:par							<==== remove
 
 ::: These are fixed.
 
-CORRECT:
+-------
+LA121107: I have changed this one, also in sme-dis.rle. 
+CORRECT (how it should be):
 SME390 Garraskerrui don vurket visot iežat čállosiid ja govaid ja prográmmaid.
 STA:cl
 A1
@@ -241,4 +285,3 @@ Od:g
 
 ::: This does not work still. It is the general problem with
 coordination: which constituents form a pair.
-LA121107: I have changed this one, also in sme-dis.rle. It makes a nice tree.
