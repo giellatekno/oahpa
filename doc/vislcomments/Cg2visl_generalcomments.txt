@@ -47,7 +47,7 @@ Muhtun sámi biktasiid, nugo gápmagiid ja vuoddagiid, sii geavahedje guhkit, gi
 
 About some tags:
 ================
-- All infinite verbs should get :v(ninf) 
+- All infinite verbs should get :v(nfin) 
 ::: Fixed.
 ::: Another question: How the sentences like mun lean nohkan should be
 marked the group +FMAINV and -FMAINV?
@@ -102,7 +102,7 @@ máhttán 	=D:
 			-S:g
 ieš 		=D:pron		(@PRON<)
 			-P:g
-vuodjit		=H:v(ninf)
+vuodjit		=H:v(nfin)
 billain.	A:n
 
 ::: I implemented this, but it needs to be tested. So these tags in
@@ -236,9 +236,9 @@ A1
 S:pron('mun',<pers>,1pl,nom)	Mii
 P:v('oahppat',TV,ind,pr,1pl)	oahppat
 											<==== Od:par
-Od:v('lohkat',TV,inf)	lohkat				<==== =CJT:v(ninf)
+Od:v('lohkat',TV,inf)	lohkat				<==== =CJT:v(nfin)
 SUB:conj-s('ja')	ja						<==== =CC:conj
-Od:v('čállit',TV,inf)	čállit				<==== =CJT:v(ninf)
+Od:v('čállit',TV,inf)	čállit				<==== =CJT:v(nfin)
 A:n('sáme#giella',sg,ill)	sámegillii		
 .
 
