@@ -5,6 +5,7 @@ like =H:n should be ==H:n.)
 
 :::: Saara's comments
 TT:  Tronds comments
+LA121107 - Lene newest comments
 
 New tags
 ========
@@ -129,6 +130,7 @@ A:g
 ::: The @>N in Vuosttaš points to N in minuvtta which again points to
 ::: logi. The above visl-format cannot be derived from those tags, since
 ::: the head is Num and @>N cannot point to Num.
+LA121107: Well, I see that the tags are not so logical. I will fix in sme-dis.rle, so vuosttaš gets @>Num.
 
 @>A should be D
 ===============
@@ -155,6 +157,7 @@ A:g
 ::: Problem is that @>A modifies adjectives. There is no adjective in
 the rest of the text. it seems that here it should be interpreted as
 modifying adverbial. So @>A modifies first adjectives, and if not found, adverbials?
+LA121107: "nu" modifies "ollu". I will fix the tags in sme-dis.rle
 
 
 Num @SUBJ + @Q< should be grouped, like in:
@@ -218,22 +221,24 @@ Od:par							<==== remove
 
 ::: These are fixed.
 
+CORRECT:
 SME390 Garraskerrui don vurket visot iežat čállosiid ja govaid ja prográmmaid.
+STA:cl
 A1
 A:n('garra#skearru',sg,ill)	Garraskerrui
 S:pron('don',<pers>,2sg,nom)	don
 P:v('vurket',TV,ind,pr,2sg)	vurket
-A:adv('visot')	visot
-Od:par
-=CJT:par								<==== remove
-==CJT:g									<==== =CJT:g
-===D:pron('ieš',<refl>,gen,poss2sg)	iežat	<==== ==D:
-===H:n('čálus',pl,acc)	čállosiid			<==== ==H:
-==SUB:conj-s('ja')	ja						<==== =CC:conj
-==CJT:n('govva',pl,acc)	govaid				<==== =CTJ:n
-=SUB:conj-s('ja')	ja						<==== =CC:conj
-=CJT:n('prográmma',pl,acc)	prográmmaid		<==== =CTJ:n
+Od:g
+=D:adj('visot',attr)   visot
+=D:pron('ieš',<refl>,gen,poss2sg)	iežat	 
+=H:par
+==CJT:n('čálus',pl,acc)	čállosiid			 
+==CC:conj-s('ja')	ja						 
+==CJT:n('govva',pl,acc)	govaid				 
+==CC:conj-s('ja')	ja						 
+==CJT:n('prográmma',pl,acc)	prográmmaid		 
 .
 
 ::: This does not work still. It is the general problem with
 coordination: which constituents form a pair.
+LA121107: I have changed this one, also in sme-dis.rle. It makes a nice tree.
