@@ -1,4 +1,5 @@
 LA121107: I have corrected SMEB1973-988 (started in the end). have a look, Trond.
+LA131107: I have corrected SMEB1-232.
 
 SOURCE: text
 SMEB1 Biekkastii.
@@ -201,14 +202,16 @@ H:v(nfin)('boahtit',IV,inf)	boahtit
 SOURCE: text
 SMEB29 In máhte juoigat inge lávlut.
 A1
-STA:cl
-P:g
-=D:vaux:v('ii',IV,neg,ind,1sg)	In
-=D:vaux:v(nfin)('máhttit',TV,ind,pr,conneg)	máhte
-=H:v('juoigat',IV,inf)	juoigat
-P:g
-=D:vaux:v('ii',IV,neg,ind,1sg,foc/ge)	inge
-=H:v(nfin)('lávlut',TV,inf)	lávlut
+STA:par
+CJT:cl
+=P:g
+==D:vaux:v('ii',IV,neg,ind,1sg)	In
+==D:vaux:v(nfin)('máhttit',TV,ind,pr,conneg)	máhte
+==H:v('juoigat',IV,inf)	juoigat
+CJT:cl
+=P:g
+==D:vaux:v('ii',IV,neg,ind,1sg,foc/ge)	inge
+==H:v(nfin)('lávlut',TV,inf)	lávlut
 .
 SOURCE: text
 SMEB30 Beana ruohttá.
@@ -229,7 +232,7 @@ SMEB32 Gákti gorrojuvvo.
 A1
 STA:cl
 S:n('gákti',sg,nom)	Gákti
-P:TV('goarrut',Der/PassL,v,ind,pr,3sg,<V>)	gorrojuvvo
+P:v('goarrut',Der/PassL,TV,ind,pr,3sg,<V>)	gorrojuvvo
 .
 SOURCE: text
 SMEB33 Dat sakŋida.
@@ -278,7 +281,7 @@ SMEB39 Son čálligođii.
 A1
 STA:cl
 S:pron('son',<pers>,3sg,nom)	Son
-P:TV('čállit',Der/goahti,v,ind,impf,3sg,<V>)	čálligođii
+P:v('čállit',Der/goahti,TV,ind,impf,3sg,<V>)	čálligođii
 .
 SOURCE: text
 SMEB40 In monge háliidivčče.
@@ -418,7 +421,7 @@ STA:cl
 S:n('nieida',pl,nom)	Nieiddat
 P:g
 =D:vaux:v('orrut',IV,ind,impf,3pl)	orro
-=H:IV('váibat',Der/goahti,v,pcp2,<V>)	váibagoahtán
+=H:v('váibat',Der/goahti,IV,pcp2,<V>)	váibagoahtán
 .
 SOURCE: text
 SMEB54 Sihke áhčči ja eadni leaba jápmán.
@@ -708,7 +711,7 @@ COM:cl
 A:g
 =D:n('Spider-Man-#govva',sg,gen)	Spider-Man-gova
 =H:prp-post('ovddas')	ovddas
-P:TV('máksit',Der/PassL,v,ind,pr,3sg,<V>)	máksojuvvo
+P:v('máksit',Der/PassL,TV,ind,pr,3sg,<V>)	máksojuvvo
 A:adv('bures')	bures
 !
 SOURCE: text
@@ -780,7 +783,7 @@ A1
 QUE:cl
 P:g-
 =D:vaux:v('leat',IV,ind,pr,3pl,qst)	Leatgo
-D:adv('áibbas')	áibbas
+A:adv('áibbas')	áibbas
 -P:g
 =H:v(nfin)('bázahallat',TV,pcp2)	bázahallan
 A:n('dihtor#máilbmi',sg,loc)	dihtormáilmmis
@@ -788,7 +791,7 @@ A:n('dihtor#máilbmi',sg,loc)	dihtormáilmmis
 SOURCE: text
 SMEB96 Mun heahpanan jámas!
 A1
-COM:cl
+STA:cl
 S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('heahpanit',IV,ind,pr,1sg)	heahpanan
 A:adv('jámas')	jámas
@@ -918,7 +921,7 @@ SMEB112 Mun bovdejuvvojin heajaide.
 A1
 STA:cl
 S:pron('mun',<pers>,1sg,nom)	Mun
-P:TV('bovdet',Der/j,v*,Der/PassL,v,ind,impf,1sg,<V>)	bovdejuvvojin
+P:v('bovdet',Der/j,v*,Der/PassL,TV,ind,impf,1sg,<V>)	bovdejuvvojin
 A:n('heajat',pl,ill)	heajaide
 .
 SOURCE: text
@@ -926,7 +929,7 @@ SMEB113 Mun bovdehallen heajaide.
 A1
 STA:cl
 S:pron('mun',<pers>,1sg,nom)	Mun
-P:TV('bovdehit',Der/alla,v,ind,impf,1sg,<V>)	bovdehallen
+P:v('bovdehit',Der/alla,TV,ind,impf,1sg,<V>)	bovdehallen
 A:n('heajat',pl,ill)	heajaide
 .
 SOURCE: text
@@ -1327,8 +1330,9 @@ A:g
 =D:pron('juohke',<idef>)	Juohke
 =H:n('beaivi',sg,gen)	beaivvi
 P:v('dáhpáhuvvat',IV,ind,pr,3sg)	dáhpáhuvvá
-D:adv('nu')	nu
-A:adv('olu')	olu
+A:g
+=D:adv('nu')	nu
+=H:adv('olu')	olu
 .
 SOURCE: text
 SMEB159 Nieida lea Ohcejogas eret.
@@ -1553,11 +1557,13 @@ S:g
 SOURCE: text
 SMEB180 Miss Swanna rivvema dihte sii leat dáppe!
 A1
-COM:cl
-D:abbr('Miss',n,attr)	Miss
-D:prop('Swann',Sur,sg,gen)	Swanna
+STA:cl
 A:g
-=D:v('rivvet',TV,actio,gen)	rivvema
+=D:g
+==D:g
+===D:abbr('Miss',n,attr)	Miss
+===H:prop('Swann',Sur,sg,gen)	Swanna
+==H:v('rivvet',TV,actio,gen)	rivvema
 =H:prp-post('dihte')	dihte
 S:pron('son',<pers>,3pl,nom)	sii
 P:v('leat',IV,ind,pr,3pl)	leat
@@ -1609,7 +1615,7 @@ S:g
 SOURCE: text
 SMEB185 Toga manai ođđa tunealla čađa!
 A1
-COM:cl
+STA:cl
 S:n('toga',sg,nom)	Toga
 P:v('mannat',IV,ind,impf,3sg)	manai
 A:g
@@ -1783,7 +1789,7 @@ S:pron('mun',<pers>,1sg,nom)	Mun
 A:adv('gal')	gal
 P:v('ceavzit',IV,ind,pr,1sg)	ceavzzán
 A:pron('don',<pers>,2sg,loc)	dus
-A:IV('goargŋut',Der/n,n,sg,loc,<V>)	goargŋumis
+A:v('goargŋut',Der/n,n,sg,loc,<V>)	goargŋumis
 .
 SOURCE: text
 SMEB202 Son fárrii Finnmárkkus Osloi.
@@ -1828,8 +1834,9 @@ STA:cl
 S:pron('mun',<pers>,1pl,nom)	Mii
 P:v('fitnat',IV,ind,impf,1pl)	finaimet
 A:adv('doppe')	doppe
-D:num('guhtta',sg,gen)	guđa
-A:adv('geardde')	geardde
+A:g
+=D:num('guhtta',sg,gen)	guđa
+=H:adv('geardde')	geardde
 .
 SOURCE: text
 SMEB207 Gáre-goaski barggai suohkanis guhtta mánu.
@@ -2071,8 +2078,9 @@ STA:cl
 S:pron('diet',<dem>,sg,nom)	Diet
 A:adv('gal')	gal
 P:v('leat',IV,ind,pr,3sg)	lea
-D:adv('beare')	beare
-Cs:pron('unnán',<idef>,sg,nom)	unnán
+Cs:g
+=D:adv('beare')	beare
+=H:pron('unnán',<idef>,sg,nom)	unnán
 .
 SOURCE: text
 SMEB229 Dat gal lea boastut.
@@ -2098,11 +2106,11 @@ A1
 STA:cl
 A:adv('dálvet')	Dálvet
 H:v(nfin)('leat',IV,inf)	leat
-Cs:n('heasta',pl,nom)	heasttat
+S:n('heasta',pl,nom)	heasttat
 A:g
 =D:adj('eanas',attr)	eanas
 =D:n('áigi',sg,gen)	áigge
-=H:n('stállja',sg,loc)	stáljas
+A:n('stállja',sg,loc)	stáljas
 .
 SOURCE: text
 SMEB232 Nuppi vuorus duostagohte lunttat eambbo.
