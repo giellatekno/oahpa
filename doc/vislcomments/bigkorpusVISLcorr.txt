@@ -4,7 +4,8 @@ LA121107: I have corrected SMEB1973-988 (started in the end). have a look, Trond
 TT131107: SMEB983 X:par?? Otherwise fine. SMEB984 :acl is ellipsis?
 LA131107: I have corrected SMEB1-232.
 TT131107: Corrected 233-239. Have a look at CJT:IV of 239.
-LA141107: Corrected 239-346. Have a look at SMEB235
+LA141107: Corrected 239-367. Have a look at SMEB235 and SMEB347, 350
+
 -->
 
 SOURCE: text
@@ -3374,13 +3375,13 @@ STA:cl
 S:n('oahppi',pl,nom)	Oahppit
 P:v('geahččalit',TV,ind,pr,3pl)	geahččalit
 Od:v('sámástit',IV,inf)	sámástit
-D<:g
+A:g
 =H:g
 ==D:adv('nu')	nu
 ==A:adv('olu')	olu
-==CC:conj-c('go')	go
-==H:adj('vejolaš',sg,nom)	vejolaš
-=D<:adj('vejolaš',sg,nom)	vejolaš
+==CC:g
+===H:conj-c('go')	go
+===D:adj('vejolaš',sg,nom)	vejolaš
 .
 SOURCE: text
 SMEB348 Maid mii galgat muitalit sutnje?
@@ -3415,10 +3416,10 @@ S:n('báhppa',sg,nom)	Báhppa
 P:g
 =D:vaux:v('leat',IV,ind,impf,3sg)	lei
 =H:v(nfin)('juohkit',TV,pcp2)	juohkán
-Od:g
+A:g
 =D:num('guokte',sg,gen)	guovtti
 =A:prp-post('sadjái')	sadjái
-=H:n('oassi',pl,acc)	osiid
+Od:n('oassi',pl,acc)	osiid
 .
 SOURCE: text
 SMEB351 Bártniide lei juohkán stuoribuš osiid go nieiddaide.
@@ -3433,7 +3434,7 @@ Od:g
 =H:n('oassi',pl,acc)	osiid
 CC:g
 =H:conj-c('go')	go
-=D<:n('nieida',pl,ill)	nieiddaide
+=D:n('nieida',pl,ill)	nieiddaide
 .
 SOURCE: text
 SMEB352 Son lea čállán ollu girjjiid, erenoamážit nuoraide.
@@ -3478,13 +3479,13 @@ SOURCE: text
 SMEB355 Nissonat dat eanaš duddjojit sámi biktasiid.
 A1
 STA:cl
-S:n('nisu',pl,nom)	Nissonat
-S:pron('dat',<pers>,3pl,nom)	dat
-A:adv('eanaš')	eanaš
-P:v('duddjot',TV,ind,pr,3pl)	duddjojit
+S:n('nisu',pl,nom)      Nissonat
+Apcle:part('dat')       dat
+A:adv('eanaš')  eanaš
+P:v('duddjot',TV,ind,pr,3pl)    duddjojit
 Od:g
-=D:n('sápmi',sg,gen)	sámi
-=H:n('bivttas',pl,acc)	biktasiid
+=D:n('sápmi',sg,gen)    sámi
+=H:n('bivttas',pl,acc)  biktasiid
 .
 SOURCE: text
 SMEB356 Mun lean áŋgirit lohkan sámegiela olles dálvvi.
@@ -3502,22 +3503,20 @@ A:g
 =H:n('dálvi',sg,acc)	dálvvi
 .
 SOURCE: text
-SMEB357 Skuvllas mun lean čoavdán ollu ollu ollu cealkagiid maŋimuš áiggi áiggi.
+SMEB357 Skuvllas mun lean čoavdán ollu cealkagiid maŋimuš áiggi.
 A1
 STA:cl
-A:n('skuvla',sg,loc)	Skuvllas
-S:pron('mun',<pers>,1sg,nom)	mun
+A:n('skuvla',sg,loc)    Skuvllas
+S:pron('mun',<pers>,1sg,nom)    mun
 P:g
-=D:vaux:v('leat',IV,ind,pr,1sg)	lean
-=H:v(nfin)('čoavdit',TV,pcp2)	čoavdán
-A:adv('ollu')	ollu
+=D:vaux:v('leat',IV,ind,pr,1sg) lean
+=H:v(nfin)('čoavdit',TV,pcp2)   čoavdán
+Od:g
+=D:adj('ollu',attr)     ollu
+=H:n('cealkka',pl,acc)  cealkagiid
 A:g
-=D:adj('ollu',attr)	ollu
-=D:pron('ollu',<idef>)	ollu
-=D:n('cealkka',pl,gen)	cealkagiid
-=D:adj('maŋimuš',attr)	maŋimuš
-=H:n('áigi',sg,acc)	áiggi
-A:n('áigi',sg,gen)	áiggi
+=D:adj('maŋimuš',attr)  maŋimuš
+=H:n('áigi',sg,gen)     áiggi
 .
 SOURCE: text
 SMEB358 Dan gal juohkehaš fuobmá dakkaviđe.
@@ -3574,8 +3573,9 @@ A:n('nuorra',ess)	Nuorran
 S:pron('son',<pers>,3sg,nom)	son
 A:adv('juo')	juo
 P:v('mearridit',TV,ind,impf,3sg)	mearridii
-A:adv('dohko')	dohko
-Od:v('vuolgit',IV,inf)	vuolgit
+Od:icl
+=A:adv('dohko')	dohko
+=P:v('vuolgit',IV,inf)	vuolgit
 .
 SOURCE: text
 SMEB363 Mii váldit dušše giehtaváđu mielde.
