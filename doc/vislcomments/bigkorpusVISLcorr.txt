@@ -4,7 +4,7 @@ LA121107: I have corrected SMEB1973-988 (started in the end). have a look, Trond
 TT131107: SMEB983 X:par?? Otherwise fine. SMEB984 :acl is ellipsis?
 LA131107: I have corrected SMEB1-232.
 TT131107: Corrected 233-239. Have a look at CJT:IV of 239.
-LA141107: Corrected 239-367. Have a look at SMEB235 and SMEB347, 350
+LA141107: Corrected 239-496. Have a look at SMEB235 and SMEB347, 350
 
 -->
 
@@ -3641,8 +3641,9 @@ P:v('bállet',IV,ind,pr,3sg)	bálle
 A:g
 =D:n('rákkas',sg,gen)	rággasa
 =H:prp-post('siste')	siste
-Od:v('nohkkat',IV,inf)	nohkkat
-A:n('ráfi',sg,loc)	ráfis
+Od:icl
+=P:v('nohkkat',IV,inf)	nohkkat
+=A:n('ráfi',sg,loc)	ráfis
 .
 SOURCE: text
 SMEB369 Gáktemállet čuvvot suopmanrájiid, maiddái riikkarájiid rastá.
@@ -3674,8 +3675,9 @@ SMEB371 Nuppi vuoru goalmmát minuvttas Anette nivkalii čiehkačievččastaga �
 A1
 STA:cl
 A:g
-=D:pron('nubbi',<idef>,sg,gen)	Nuppi
-=D:n('vuorru',sg,gen)	vuoru
+=D:g
+==D:pron('nubbi',<idef>,sg,gen)	Nuppi
+==H:n('vuorru',sg,gen)	vuoru
 =D:adj('goalmmát',ord,attr)	goalmmát
 =H:n('minukta',sg,loc)	minuvttas
 S:prop('Anette',Fem,sg,nom)	Anette
@@ -3753,8 +3755,8 @@ S:pron('mun',<pers>,1sg,nom)	Mun
 P:g
 =D:vaux:v('máhttit',TV,ind,pr,1sg)	máhtán
 =H:v(nfin)('láibut',TV,inf)	láibut
-A:conj-s('sihke')	sihke
 Od:par
+=CC:conj-s('sihke')	sihke
 =CJT:n('šuhkoláda#gáhkku',sg,acc)	šuhkoládagáhku
 =CC:conj-s('ja')	ja
 =CJT:n('lákca#gáhkku',sg,acc)	lákcagáhku
@@ -3819,11 +3821,11 @@ A1
 STA:cl
 S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('lasihit',TV,ind,pr,1sg)	lasihan
-Od:n('rušpi',pl,acc)	rušppiid
-CC:conj-s('ja')	ja
-A:g
-=D:n('buđet',pl,gen)	buđehiid
-=H:n('mális',sg,ill)	mállásii
+Od:par
+=CJT:n('rušpi',pl,acc)	rušppiid
+=CC:conj-s('ja')	ja
+=CJT:n('buđet',pl,gen)	buđehiid
+A:n('mális',sg,ill)	mállásii
 .
 SOURCE: text
 SMEB382 Liepmasii olbmot bidje guolleoivviid, dáraid, debbuid, buđeittaid, boares rásiid ja rohkajáffuid.
@@ -3969,16 +3971,15 @@ STA:cl
 A:n('garra#skearru',sg,ill)	Garraskerrui
 S:pron('don',<pers>,2sg,nom)	don
 P:v('vurket',TV,ind,pr,2sg)	vurket
-Od:par
-=CJT:g
-==D:adj('visot',attr)	visot
-==D:pron('ieš',<refl>,gen,poss2sg)	iežat
-==H:n('čálus',pl,acc)	čállosiid
-=CC:conj-s('ja')	ja
-=CJT:par
+Od:g
+=D:adj('visot',attr)	visot
+=D:pron('ieš',<refl>,gen,poss2sg)	iežat
+=H:par
+==CJT:n('čálus',pl,acc)	čállosiid
+==CC:conj-s('ja')	ja
 ==CJT:n('govva',pl,acc)	govaid
 ==CC:conj-s('ja')	ja
-=CJT:n('prográmma',pl,acc)	prográmmaid
+==CJT:n('prográmma',pl,acc)	prográmmaid
 .
 SOURCE: text
 SMEB391 Máhtátgo sámegiela?
@@ -4012,7 +4013,7 @@ SOURCE: text
 SMEB395 Veahkehastte mu!
 A1
 COM:cl
-P:TV('veahkehit',Der/asti,v,imp,pr,2sg,<V>)	Veahkehastte
+P:v('veahkehit',Der/asti,TV,imp,pr,2sg,<V>)	Veahkehastte
 Od:pron('mun',<pers>,1sg,acc)	mu
 !
 SOURCE: text
@@ -4041,7 +4042,7 @@ SMEB399 Nillá-mága gasttihišgođii.
 A1
 STA:cl
 Od:n('Nillá-#máhka',sg,acc)	Nillá-mága
-P:TV('gasttihit',Der/goahti,v,ind,impf,3sg,<V>)	gasttihišgođii
+P:v('gasttihit',Der/goahti,TV,ind,impf,3sg,<V>)	gasttihišgođii
 .
 SOURCE: text
 SMEB400 Dárbbašatgo veahki?
