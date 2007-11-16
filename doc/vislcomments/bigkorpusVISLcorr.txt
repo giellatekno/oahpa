@@ -1,11 +1,13 @@
 
 <!--
-LA121107: I have corrected SMEB1973-988 (started in the end). have a look, Trond.
-TT131107: SMEB983 X:par?? Otherwise fine. SMEB984 :acl is ellipsis?
-LA131107: I have corrected SMEB1-232.
-TT131107: Corrected 233-239. Have a look at CJT:IV of 239.
-LA141107: Corrected 239-496. Have a look at SMEB235 and SMEB347, 350
-
+Comments here. Let us keep them ordered from 1 to 988.
+LA131107:   1-232 corrected 
+TT131107: 233-239 corrected. 
+LA141107: 239-496 corrected. Have a look at 235 and 347, 350
+TT151107:         Looked at 235, 350, ok now. Still hard: 347.
+TT151107: 962-972 corrected. Hard: 961.
+LA121107: 973-988 I have corrected  (started in the end). have a look, Trond.
+TT131107:         They are fine.
 -->
 
 SOURCE: text
@@ -2173,10 +2175,11 @@ A:icl
 A:g
 =H:prp-pre('badjel')	badjel
 =D:g
-==H:num('100',sg,gen)	100
-==D:n('jahki',sg,gen)	jagi
-=D:adv('dás')	dás
-=H:adv('ovdal')	ovdal
+==H:g
+===H:num('100',sg,gen)	100
+===D:n('jahki',sg,gen)	jagi
+==D:adv('dás')	dás
+==D:adv('ovdal')	ovdal
 .
 SOURCE: text
 SMEB236 Govt lei vuodjit Olmmáivákkis diehke?
@@ -11711,14 +11714,15 @@ STA:cl
 Od:cl
 =CO:conj-c('jus')	Jus
 =P:v('leat',IV,ind,impf,3sg)	lei
-=S:g
-==D:adj('heittot',attr)	heittogis
-==H:n('geassi',sg,nom)	geassi
-=,
-=CC:conj-s('dahe')	dahe
-=S:g
-==D:adj('heittot',attr)	heittogis
-==H:n('guolle#bivdu',sg,nom)	guollebivdu
+=S:par
+==CJT:g
+===D:adj('heittot',attr)	heittogis
+===H:n('geassi',sg,nom)	geassi
+==,
+==CC:conj-s('dahe')	dahe
+==CJT:g
+===D:adj('heittot',attr)	heittogis
+===H:n('guolle#bivdu',sg,nom)	guollebivdu
 =,
 =Od:cl
 ==CO:conj-c('de')	de
@@ -11759,11 +11763,11 @@ A1
 STA:cl
 S:pron('ollugat',<idef>,pl,nom)	Ollugat
 P:v('vuolgit',IV,ind,pr,3pl)	vulget
+A:g
+=D:pron('dát',<dem>,sg,gen)	dán
+=D:n('áigi',sg,gen)	áigge
 A:par
-=CJT:g
-==D:pron('dát',<dem>,sg,gen)	dán
-==D:n('áigi',sg,gen)	áigge
-==H:prop('Finnmárku',plc,sg,ill)	Finnmárkui
+=CJT:prop('Finnmárku',plc,sg,ill)	Finnmárkui
 =CO:conj-s('ja')	ja
 =CJT:prop('Ruoŧŧa',plc,sg,ill)	Ruŧŧii
 A:icl
