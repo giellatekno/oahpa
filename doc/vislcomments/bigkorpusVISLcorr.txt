@@ -11,18 +11,20 @@ Comments here. Let us keep them ordered from 1 to 988.
 LA131107:   1-232 corrected 
 TT131107: 233-239 corrected. 
 LA141107: 239-496 corrected.  
-           347, 351, 555, 568, 797, 845: How do we do with @COMP-CS< 
+           347, 351, 555, 568, 797, 845, 924, 950: How do we do with @COMP-CS< 
+           LA181107: have suggested a new solution for them, the same way as in Danish examples.
 TT151107:         Looked at 235, 350, ok now. Still hard: 347.
 LA161107: 570 696 938 attribuhtta? (dáppe Gáivuonas, deike galbma guovlluide.)
-LA161107:667: what is jnv?
+LA161107:667: what is jnv?  LA181107: evttohan CJT.
 LA161107:676 - discontinous S
 LA161107:722: S ja imp, is it OK?
-LA161107:777: double denial
+LA181107:777: Should the first A be outside the first CJT:cl?
 LA161107:799: The VOC should not be inside the first CJT:cl ?
+	LA181107: Tried to make a solution with X:par
 LA161107:803, 806, 809: The first is A for two cl - how to get the right structure? I have used X:par (found it in Danish examples, OPG12.03))
-LA161107: 810, 847 (two mainphrases?)
+LA181107: 810 The S is for both prases, should use X:par?
 LA161107: 898 doesn´t function!
-LA161107: 903, 910
+LA181107: 903, 910 - Trond, have a look!
 TT151107: 962-972 corrected. Hard: 961. LA161107: Made a suggestion with X:par.
 LA121107: 973-988 I have corrected  (started in the end). have a look, Trond.
 TT131107:         They are fine.
@@ -3747,7 +3749,7 @@ A:g
 =H:g
 ==D:adv('nu')	nu
 ==A:adv('olu')	olu
-=CC:g
+=D:g
 ==H:conj-c('go')	go
 ==D:adj('vejolaš',sg,nom)	vejolaš
 .
@@ -3802,11 +3804,12 @@ P:g
 =D:v('leat',IV,ind,impf,3sg)	lei
 =H:v(nfin)('juohkit',TV,pcp2)	juohkán
 Od:g
-=D:comp('stuoris',Der/Dimin,adj,attr,<A>)	stuoribuš
-=H:n('oassi',pl,acc)	osiid
-CC:g
-=H:conj-c('go')	go
-=D:n('nieida',pl,ill)	nieiddaide
+=H:g
+==D:adj('stuoris',Der/Dimin,comp,attr,<A>)	stuoribuš
+==H:n('oassi',pl,acc)	osiid
+=D:g
+==H:conj-c('go')	go
+==D:n('nieida',pl,ill)	nieiddaide
 .
 
 SOURCE: text
@@ -6134,10 +6137,11 @@ A1
 STA:cl
 S:pron('son',<pers>,3sg,nom)	Son
 P:v('leat',IV,ind,pr,3sg)	lea
-Cs:adj('viššal',comp,sg,nom)	viššaleabbo
-CC:g
-=H:conj-c('go')	go
-=D<:pron('mun',<pers>,1sg,nom)	mun
+Cs:g
+=H:adj('viššal',comp,sg,nom)	viššaleabbo
+=D:g
+==H:conj-c('go')	go
+==D:pron('mun',<pers>,1sg,nom)	mun
 .
 
 SOURCE: text
@@ -6319,12 +6323,13 @@ STA:cl
 S:n('šibit',pl,nom)     Šibihat
 P:v('leat',IV,ind,impf,3pl)     ledje
 A:adv('ovdal')  ovdal
-Cs:adj('unni',comp,pl,nom)      unnibut
-CC:g
-=H:conj-c('go') go
+Cs:g
+=H:adj('unni',comp,pl,nom)      unnibut
 =D:g
-==D:pron('dát',<dem>,sg,gen)     dán
-==H:n('áigi',sg,gen)     áigge
+==H:conj-c('go') go
+==D:g
+===D:pron('dát',<dem>,sg,gen)     dán
+===H:n('áigi',sg,gen)     áigge
 .
 
 SOURCE: text
@@ -7519,7 +7524,7 @@ S:par
 =CJT:n('bierggas',pl,nom)	biergasat
 =,
 =CJT:n('goikeborramuš',pl,nom)	goikeborramušat
-=A:abbr('jnv',adv)	jnv.
+=CJT:abbr('jnv',adv)	jnv.
 .
 
 SOURCE: text
@@ -9257,24 +9262,25 @@ CJT:cl
 =Od:pron('son',<pers>,3sg,acc)	su
 =,
 CO:conj-s('muhto')	muhto
-CJT:cl
+CJT:par
+=CJT:cl
+==P:g
+===D:v('ii',IV,neg,ind,3pl)	eai
+===H:v(nfin)('gávdnat',TV,pcp2)	gávdnan
+==Od:pron('son',<pers>,3sg,acc)	su
+=CJT:cl
+==P:v('ii',IV,neg,ind,3pl)	eai
+==A:adv('gostege')	gostege
+==,
+=CJT:cl
 =P:g
-==D:v('ii',IV,neg,ind,3pl)	Eai
-==H:v(nfin)('gávdnat',TV,pcp2)	gávdnan
-=Od:pron('son',<pers>,3sg,acc)	su
-CJT:cl
-=P:v('ii',IV,neg,ind,3pl)	eai
-=A:adv('gostege')	gostege
-=,
-CJT:cl
-P:g
-=D:v('ii',IV,neg,ind,3pl,foc/ge)	eaige
-=H:v(nfin)('diehtit',TV,pcp2)	diehtán
-Od:cl
-=A:adv('gosa')	gosa
-=P:g
-==D:v('leat',IV,ind,impf,3sg)	lei
-==H:v(nfin)('šaddat',IV,pcp2)	šaddan
+==D:v('ii',IV,neg,ind,3pl,foc/ge)	eaige
+==H:v(nfin)('diehtit',TV,pcp2)	diehtán
+=Od:cl
+==A:adv('gosa')	gosa
+==P:g
+===D:v('leat',IV,ind,impf,3sg)	lei
+===H:v(nfin)('šaddat',IV,pcp2)	šaddan
 .
 
 SOURCE: text
@@ -9688,7 +9694,7 @@ CJT:cl
 =A:adv('de')	de
 =S:pron('son',<pers>,3sg,nom)	son
 =P:v('goargŋut',IV,ind,pr,3sg)	goargŋu
-=CC:g
+=A:g
 ==H:conj-c('dego')	dego
 ==D:n('heavdni',sg,nom)	heavdni
 =A:n('fierbmi',sg,loc)	fierpmis
@@ -9723,24 +9729,25 @@ CJT:cl
 SOURCE: text
 SMEB799 Gilette, Mr. Sparrowis lea diibmu harcamuoras ja lea vahát jus boahtá maŋŋit.
 A1
-STA:par
-CJT:cl
-=VOC:prop('Gilette',Fem,sg,nom)	Gilette
-=,
-=HAB:g
-==D:abbr('Mr',n,attr)	Mr.
-==H:prop('Sparrow',Sur,sg,loc)	Sparrowis
-=P:v('leat',IV,ind,pr,3sg)	lea
-=S:n('diibmu',sg,nom)	diibmu
-=A:n('harcamuorra',sg,loc)	harcamuoras
-CO:conj-s('ja')	ja
-CJT:cl
-=P:v('leat',IV,ind,pr,3sg)	lea
-=S:n('vahát',sg,nom)	vahát
-=A:cl
-==CO:conj-c('jus')	jus
-==P:v('boahtit',IV,ind,pr,3sg)	boahtá
-==A:adv('maŋŋit')	maŋŋit
+STA:cl
+VOC:prop('Gilette',Fem,sg,nom)	Gilette
+,
+X:par
+=CJT:cl
+==HAB:g
+===D:abbr('Mr',n,attr)	Mr.
+===H:prop('Sparrow',Sur,sg,loc)	Sparrowis
+==P:v('leat',IV,ind,pr,3sg)	lea
+==S:n('diibmu',sg,nom)	diibmu
+==A:n('harcamuorra',sg,loc)	harcamuoras
+=CO:conj-s('ja')	ja
+=CJT:cl
+==P:v('leat',IV,ind,pr,3sg)	lea
+==S:n('vahát',sg,nom)	vahát
+==A:cl
+===CO:conj-c('jus')	jus
+===P:v('boahtit',IV,ind,pr,3sg)	boahtá
+===A:adv('maŋŋit')	maŋŋit
 .
 
 SOURCE: text
@@ -10698,11 +10705,12 @@ A1
 STA:cl
 S:pron('dat',<pers>,3sg,nom)	Dat
 P:v('dáidit',IV,ind,pr,3sg)	dáidá
-Cs:adj('rikkis',comp,sg,nom)	riggát
-A:cl
-=CO:conj-c('go')	go
-=S:pron('mun',<pers>,1pl,nom)	mii
-=P:v('jáhkkit',TV,ind,pr,1pl)	jáhkkit
+Cs:g
+=H:adj('rikkis',comp,sg,nom)	riggát
+=D:cl
+==CO:conj-c('go')	go
+==S:pron('mun',<pers>,1pl,nom)	mii
+==P:v('jáhkkit',TV,ind,pr,1pl)	jáhkkit
 .
 
 SOURCE: text
@@ -11565,10 +11573,10 @@ A:cl
 ==H:v(nfin)('leat',IV,inf)	leat
 =S:n('suddi',sg,nom)	suddi
 =A:g
-==D:pron('goappašat',<idef>,pl,gen)	goappašiid
 ==H:g
+===D:pron('goappašat',<idef>,pl,gen)	goappašiid
 ===H:prp-pre('beale')	beale
-===D:n('luodda',sg,gen)	luotta
+==D:n('luodda',sg,gen)	luotta
 .
 
 SOURCE: text
@@ -12101,11 +12109,12 @@ A:g
 ==CO:conj-c('go')	go
 ==S:n('ruhtadilli',sg,nom)	ruhtadilli
 ==P:v('leat',IV,ind,pr,3sg)	lea
-==Cs:adj('buorre',comp,sg,nom)	buoret
-==CC:g
-===H:conj-c('go')	go
-===D:adv('ovdal')	ovdal
-===,
+==Cs:g
+===H:adj('buorre',comp,sg,nom)	buoret
+===D:g
+====H:conj-c('go')	go
+====D:adv('ovdal')	ovdal
+====,
 CO:conj-c('de')	de
 P:v('leat',IV,ind,pr,3pl)	leat
 A:n('gákti',sg,loc)	gávttis
@@ -12644,15 +12653,16 @@ S:g
 ==,
 P:v('geavahit',TV,ind,pr,3pl)	geavahit
 Od:g
-=D:pron('seammá',<idef>,attr)	seammá
-=H:n('gákti',sg,acc)	gávtti
-A:cl
-=CO:conj-c('go')	go
-=S:n('sápmelaš',pl,nom)	sápmelaččat
-=A:g
-==D:prop('Suopma',plc,sg,gen)	Suoma
-==H:g
-===H:prp-pre('bealde')	bealde
+=H:g
+==D:pron('seammá',<idef>,attr)	seammá
+==H:n('gákti',sg,acc)	gávtti
+=D:cl
+==CO:conj-c('go')	go
+==S:n('sápmelaš',pl,nom)	sápmelaččat
+==A:g
+===H:g
+====D:prop('Suopma',plc,sg,gen)	Suoma
+====H:prp-pre('bealde')	bealde
 ===D:prop('Deatnu',plc,sg,gen)	Deanu
 .
 
