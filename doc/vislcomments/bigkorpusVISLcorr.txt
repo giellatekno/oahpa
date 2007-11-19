@@ -15,11 +15,13 @@ LA141107: 239-496 corrected.
            347, 351, 555, 568, 797, 845, 924, 950: How do we do with @COMP-CS< 
            LA181107: have suggested a new solution for them, the same way as in Danish examples.
 TT151107:         Looked at 235, 350, ok now. Still hard: 347.
+LA191107:491 - Agens + Actio Gen, look at my suggestion with icl and OBJ!
 LA161107: 570 696 938 attribuhtta? (dáppe Gáivuonas, deike galbma guovlluide.)
 LA161107:667: what is jnv?  LA181107: evttohan CJT.
 LA161107:676 - discontinous S
 LA161107:722: S ja imp, is it OK?
 LA181107:777: Should the first A be outside the first CJT:cl?
+LA191107: 785 - the verbal is devided into three pieces!
 LA161107:799: The VOC should not be inside the first CJT:cl ?
 	LA181107: Tried to make a solution with X:par
 LA161107:803, 806, 809: The first is A for two cl - how to get the right structure? I have used X:par (found it in Danish examples, OPG12.03))
@@ -1689,7 +1691,7 @@ S:pron('mun',<pers>,1pl,nom)	Mii
 P:v('vuodjit',TV,ind,impf,1pl)	vujiimet
 A:g
 =D:pron('duot',<dem>,sg,gen)	duon
-=H:n('luodda',sg,acc)	luotta
+=H:n('luodda',sg,gen)	luotta
 .
 
 SOURCE: text
@@ -3549,7 +3551,7 @@ S:pron('don',<pers>,2sg,nom)	don
 P:v('gávdnat',TV,ind,pr,2sg)	gávnnat
 A:g
 =D:adj('gurut',attr)	gurut
-=H:prp-pre('bealde')	bealde
+=H:adv('bealde')	bealde
 .
 
 SOURCE: text
@@ -3792,7 +3794,7 @@ P:g
 =H:v(nfin)('juohkit',TV,pcp2)	juohkán
 A:g
 =D:num('guokte',sg,gen)	guovtti
-=H:prp-post('sadjái')	sadjái
+=H:n('sadji',sg,ill)	sadjái
 Od:n('oassi',pl,acc)	osiid
 .
 
@@ -4889,8 +4891,9 @@ A:g
 P:v('lonuhit',TV,ind,pr,3pl)	lonuhit
 Od:n('čiekči',pl,acc)	čikčiid
 A:g
-=D:pron('juohke',<idef>)	juohke
-=D:adj('viđát',ord,attr)	viđát
+=D:g
+==D:pron('juohke',<idef>)	juohke
+==H:adj('viđát',ord,attr)	viđát
 =H:n('minukta',sg,loc)	minuvttas
 .
 
@@ -5399,10 +5402,10 @@ SOURCE: text
 SMEB491 Máreha čállin girji lei hui buorre.
 A1
 STA:cl
-S:g
-=D:prop('Máret',Fem,sg,gen)	Máreha
-=D:v('čállit',TV,actio,gen)	čállin
-=H:n('girji',sg,nom)	girji
+S:icl
+=S:prop('Máret',Fem,sg,gen)	Máreha
+=P:v('čállit',TV,actio,gen)	čállin
+=O:n('girji',sg,nom)	girji
 P:v('leat',IV,ind,impf,3sg)	lei
 Cs:g
 =D:adv('hui')	hui
@@ -7554,8 +7557,9 @@ P:g
 =D:v('ii',IV,neg,ind,3sg)	ii
 =H:v(nfin)('leat',IV,pcp2)	lean
 S:g
-=D:pron('seamma',<idef>,attr)	seamma
-=D:adj('buorre',sg,nom)	buorre
+=D:g
+==D:adv('seamma')	seamma
+==H:adj('buorre',sg,nom)	buorre
 =H:n('dienas',sg,nom)	dienas
 A:g
 =D:pron('juohke',<idef>)	juohke
@@ -7806,7 +7810,7 @@ SOURCE: text
 SMEB690 Dain lea fáktemuš juohke balvva.
 A1
 STA:cl
-A:pron('dat',<pers>,3pl,loc)	Dain
+HAB:pron('dat',<pers>,3pl,loc)	Dain
 P:v('leat',IV,ind,pr,3sg)	lea
 S:n('fáktemuš',sg,nom)	fáktemuš
 Od:g
@@ -9437,13 +9441,14 @@ CJT:cl
 =-P:g
 ==D:v(nfin)('leat',IV,pcp2)	leamaš
 =A:adv('mielde')	mielde
-=Od:g
-==D:n('ráhkadeapmi',sg,gen)	ráhkadeame
-==H:n('oahpponeavvu',pl,acc)	oahpponeavvuid
+=-P:g
+==H:n('ráhkadit',actio,ess)	ráhkadeame
+=Od:n('oahpponeavvu',pl,acc)	oahpponeavvuid
 =A:n('sámegiella',sg,ill)	sámegillii
 =CO:conj-s('ja')	ja
-=P:v('leat',IV,ind,pr,3sg)	lea
-=-P:g
+CJT:cl
+=P:g
+==D:v('leat',IV,ind,pr,3sg)	lea
 ==H:v('jorgalit',TV,pcp2)	jorgalan
 =Od:n('oahppogirji',pl,acc)	oahppogirjjiid
 =A:n('sámegiella',sg,ill)	sámegillii
@@ -9629,8 +9634,9 @@ SMEB795 In mannan galmmas, muhto veallájin guhká.
 A1
 STA:par
 CJT:cl
-=P:v('ii',IV,neg,ind,1sg)	In
-=D:n('manna',sg,gen,poss1sg)	mannan
+=P:g
+==D:v('ii',IV,neg,ind,1sg)	In
+==H:n('manna',sg,gen,poss1sg)	mannan
 =A:adv('galmmas')	galmmas
 =,
 CO:conj-s('muhto')	muhto
@@ -11550,8 +11556,9 @@ A:cl
 ==H:n('jahki',sg,gen)	jagi
 =P:v('leat',IV,ind,pr,3sg)	lea
 =S:g
-==D:adj('erenoamán',attr)	erenoamán
-==D:adj('headju',attr)	heajos
+==D:g
+===D:adj('erenoamán',attr)	erenoamán
+===H:adj('headju',attr)	heajos
 ==H:n('jiekŋa',sg,nom)	jiekŋa
 =A:n('johka',pl,loc)	jogain
 .
@@ -12304,8 +12311,9 @@ S:cl
 ==H:n('mánná',pl,nom)	mánát
 =P:v('deaivat',TV,ind,pr,3pl)	deivet
 =Od:g
-==D:pron('nubbi',<idef>,sg,gen)	nuppi
-==D:n('máilbmi',sg,gen)	máilmmi
+==D:g
+===D:pron('nubbi',<idef>,sg,gen)	nuppi
+===H:n('máilbmi',sg,gen)	máilmmi
 ==H:n('ássi',pl,acc)	ássiid
 .
 
@@ -13198,7 +13206,7 @@ A:g
 P:v(nfin)('leat',IV,ind,pr,3sg)	lea
 Cs:adj('suohtas',sg,nom)	suohtas
 S:icl
-=P:vaux:icl
+=P:icl
 ==D:v(nfin)('beassat',IV,inf)	beassat
 ==H:v(nfin)('johtit',IV,inf)	johtit
 =A:par
@@ -13258,7 +13266,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB982 Go bárdni bođii dállui, de lei áibbas galmmas.
+SMEB982 Go bárdni bođii dállui, de son lei áibbas galmmas.
 A1
 STA:cl
 A:cl
@@ -13268,6 +13276,7 @@ A:cl
 =A:n('dállu',sg,ill)	dállui
 =,
 CO:conj-c('de')	de
+S:pron('son',<pers>,3sg,nom)  son
 P:v('leat',IV,ind,impf,3sg)	lei
 Cs:g
 =D:adv('áibbas')	áibbas
