@@ -2,7 +2,7 @@ Problems of making a tree when there is one @+FAUXV and two @-FMAINV
 like in:
 Son áigu oastit eatnamiid ja vuovdit válmmaš viesuid.
 
-In the norwegian and danish pre-analyzed korpus, I found only one example, which has got X:par and the second PrfPrc  has got P:v, instead of H:v. This is not the best analyze.
+In the norwegian and danish pre-analyzed korpus, I found one example, which has got X:par and the second PrfPrc  has got P:v, instead of H:v. This is not the best analyze.
 
 HHX169) Rasmus havde ligget på den blå sofa og set TV det meste af dagen.
 A1/1
@@ -31,6 +31,64 @@ X:par
 ====D:n	dagen
 . 
 
+Another example:
+OPG4.30a) Medens Peters blev offer for sit udgangstempo og måtte udgå med krampe senere i løbet, kunne Zatopek fortsætte i sit stabile tempo og overtage føringen foran svenskeren ved 25 km-mærket.(OPG2.30a)
+A1/1
+STA:cl
+A:par
+=CJT:cl
+==SUB:conj	Medens
+==S:prop	Peters
+==P:v(fin)	blev
+==Cs:g
+===H:n	offer
+===D:g
+====H:prp	for
+====D:g
+=====D:pron	sit
+=====H:n	udgangstempo
+=CO:conj	og
+=CJT:cl
+==P:g
+===D:v(fin)	måtte
+===H:v(nfin)	udgå
+==A:g
+===H:prp	med
+===D:n	krampe
+==A:g
+===D:adv	senere
+===H:g
+====H:prp	i
+====D:n	løbet
+=,
+X:par						<====
+=CJT:cl
+==P:g-
+===D:v(fin)	kunne   		<====
+==S:prop	Zatopek
+==-P:g						<====
+===H:v(nfin)	fortsætte	<====
+==A:g
+===H:prp	i
+===D:g
+====D:pron	sit
+====D:adj	stabile
+====H:n	tempo
+=CO:conj	og
+=CJT:cl
+==P:g
+===D:0	(kunne)				<====
+===H:v(nfin)	overtage	<====
+==Od:g
+===H:n	føringen
+===D:g
+====H:prp	foran
+====D:n	svenskeren
+==A:g
+===H:prp	ved
+===D:g
+====D:num	25
+====H:n	km-mærket
 
 A possible solution. The paratagme has got X like in the Danish one, but I have held the vaux outside the paratagme. 
 CORRECTED LA121107:
