@@ -146,19 +146,6 @@ COM:cl
 P:v('vástidit',TV,imp,pr,2sg)	Vástit
 !
 
-SOURCE: text
-SMEB16 Čájet!
-A1
-COM:cl
-P:v('čájehit',TV,imp,pr,2sg)	Čájet
-!
-
-SOURCE: text
-SMEB17 Gillešitgo?
-A1
-QUE:cl
-P:v('gillet',IV,cond,pr,2sg,qst)	Gillešitgo
-?
 
 SOURCE: text
 SMEB18 Verrošiigo?
@@ -331,29 +318,6 @@ P:v('boahtit',IV,ind,pr,3sg,qst)	Boahtágo
 S:prop('Biret',Fem,sg,nom)	Biret
 ?
 
-SOURCE: text
-SMEB37 Leago nieida?
-A1
-QUE:cl
-P:v('leat',IV,ind,pr,3sg,qst)	Leago
-Cs:n('nieida',sg,nom)	nieida
-?
-
-SOURCE: text
-SMEB38 Goabbá vuoitá?
-A1
-QUE:cl
-S:pron('goabbá',<int>,sg,nom)	Goabbá
-P:v('vuoitit',TV,ind,pr,3sg)	vuoitá
-?
-
-SOURCE: text
-SMEB39 Son čálligođii.
-A1
-STA:cl
-S:pron('son',<pers>,3sg,nom)	Son
-P:v('čállit',Der/goahti,TV,ind,impf,3sg,<V>)	čálligođii
-.
 
 SOURCE: text
 SMEB40 In monge háliidivčče.
@@ -605,14 +569,6 @@ A:adv('maŋŋeleappos')	maŋŋeleappos
 .
 
 SOURCE: text
-SMEB64 Boađátgo dál?
-A1
-QUE:cl
-P:v('boahtit',IV,ind,pr,2sg,qst)	Boađátgo
-A:adv('dál')	dál
-?
-
-SOURCE: text
 SMEB65 Boađátgo mielde?
 A1
 QUE:cl
@@ -659,38 +615,6 @@ QUE:cl
 P:v('liikot',IV,ind,pr,1pl,qst)	Liikotgo
 A:n('guolli',sg,ill)	guollái
 ?
-
-SOURCE: text
-SMEB71 Balatgo beatnagis?
-A1
-QUE:cl
-P:v('ballat',TV,ind,pr,2sg,qst)	Balatgo
-A:n('beana',sg,loc)	beatnagis
-?
-
-SOURCE: text
-SMEB72 Vuolggátgo girdiin?
-A1
-QUE:cl
-P:v('vuolgit',IV,ind,pr,2sg,qst)	Vuolggátgo
-A:n('girdi',sg,com)	girdiin
-?
-
-SOURCE: text
-SMEB73 Čájet munnje!
-A1
-COM:cl
-P:v('čájehit',TV,imp,pr,2sg)	Čájet
-A:pron('mun',<pers>,1sg,ill)	munnje
-!
-
-SOURCE: text
-SMEB74 Muital midjiide!
-A1
-COM:cl
-P:v('muitalit',TV,imp,pr,2sg)	Muital
-A:pron('mun',<pers>,1pl,ill)	midjiide
-!
 
 SOURCE: text
 SMEB75 Leago arván diehko?
@@ -905,18 +829,6 @@ A:adv('ruoktot')	ruoktot
 .
 
 SOURCE: text
-SMEB95 Leatgo áibbas bázahallan dihtormáilmmis?
-A1
-QUE:cl
-P:g-
-=D:v('leat',IV,ind,pr,3pl,qst)	Leatgo
-A:adv('áibbas')	áibbas
--P:g
-=H:v(nfin)('bázahallat',TV,pcp2)	bázahallan
-A:n('dihtormáilbmi',sg,loc)	dihtormáilmmis
-?
-
-SOURCE: text
 SMEB96 Mun heahpanan jámas!
 A1
 STA:cl
@@ -1022,51 +934,6 @@ STA:cl
 S:pron('son',<pers>,3sg,nom)	Son
 P:v('liikot',IV,ind,impf,3sg)	liikui
 A:n('guolli',sg,ill)	guollái
-.
-
-SOURCE: text
-SMEB108 Mun čohkkán láhttis.
-A1
-STA:cl
-S:pron('mun',<pers>,1sg,nom)	Mun
-P:v('čohkkát',IV,ind,pr,1sg)	čohkkán
-A:n('láhtti',sg,loc)	láhttis
-.
-
-SOURCE: text
-SMEB109 Mii fillehalaimet sidjiide.
-A1
-STA:cl
-S:pron('mun',<pers>,1pl,nom)	Mii
-P:v('fillehallat',IV,ind,impf,1pl)	fillehalaimet
-A:pron('son',<pers>,3pl,ill)	sidjiide
-.
-
-SOURCE: text
-SMEB110 Elle beahtahalai gávpeolbmái.
-A1
-STA:cl
-S:prop('Elle',Fem,sg,nom)	Elle
-P:v('beahtahallat',IV,ind,impf,3sg)	beahtahalai
-A:n('gávpeolmmái',sg,ill)	gávpeolbmái
-.
-
-SOURCE: text
-SMEB111 Miessi borahalai gumpii.
-A1
-STA:cl
-S:n('miessi',sg,nom)	Miessi
-P:v('borahallat',TV,ind,impf,3sg)	borahalai
-A:n('gumpe',sg,ill)	gumpii
-.
-
-SOURCE: text
-SMEB112 Mun bovdejuvvojin heajaide.
-A1
-STA:cl
-S:pron('mun',<pers>,1sg,nom)	Mun
-P:v('bovdet',Der/j,v*,Der/PassL,TV,ind,impf,1sg,<V>)	bovdejuvvojin
-A:n('heajat',pl,ill)	heajaide
 .
 
 SOURCE: text
@@ -2731,43 +2598,6 @@ S:pron('mun',<pers>,1pl,nom)	Mii
 P:v('čoaggit',TV,ind,pr,1pl)	čoaggit
 Od:n('eatnanmuorji',pl,acc)	eatnanmurjjiid
 .
-
-SOURCE: text
-SMEB261 Sarridiid mii boraimet.
-A1
-STA:cl
-Od:n('sarrit',pl,acc)	Sarridiid
-S:pron('mun',<pers>,1pl,nom)	mii
-P:v('borrat',TV,ind,impf,1pl)	boraimet
-.
-
-SOURCE: text
-SMEB262 Gean don oidnet?
-A1
-QUE:cl
-Od:pron('gii',<int>,sg,acc)	Gean
-S:pron('don',<pers>,2sg,nom)	don
-P:v('oaidnit',TV,ind,impf,2sg)	oidnet
-?
-
-SOURCE: text
-SMEB263 Gii osttii biilla?
-A1
-QUE:cl
-S:pron('gii',<int>,sg,nom)	Gii
-P:v('oastit',TV,ind,impf,3sg)	osttii
-Od:n('biila',sg,acc)	biilla
-?
-
-SOURCE: text
-SMEB264 Oahpaigo Sire sámegiela?
-A1
-QUE:cl
-P:v('oahppat',TV,ind,impf,3sg,qst)	Oahpaigo
-S:prop('Sire',Fem,sg,nom)	Sire
-Od:n('sámegiella',sg,acc)	sámegiela
-?
-
 SOURCE: text
 SMEB265 Goaruigo Niilas gávtti?
 A1
@@ -3159,46 +2989,6 @@ S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('čállit',TV,ind,impf,1sg)	čállen
 Od:n('reive',sg,acc)	reivve
 A:n('sámegiella',sg,ill)	sámegillii
-.
-
-SOURCE: text
-SMEB298 Mun ohppen čállit eŋgelasgillii.
-A1
-STA:cl
-S:pron('mun',<pers>,1sg,nom)	Mun
-P:v('oahppat',TV,ind,impf,1sg)	ohppen
-Od:v('čállit',TV,inf)	čállit
-A:n('eŋgelasgiella',sg,ill)	eŋgelasgillii
-.
-
-SOURCE: text
-SMEB299 Duopmár bosádii vuoru johtui.
-A1
-STA:cl
-S:n('duopmár',sg,nom)	Duopmár
-P:v('bosádit',TV,ind,impf,3sg)	bosádii
-Od:n('vuorru',sg,acc)	vuoru
-A:n('johtu',sg,ill)	johtui
-.
-
-SOURCE: text
-SMEB300 Son nahkehii spáppa mollii.
-A1
-STA:cl
-S:pron('son',<pers>,3sg,nom)	Son
-P:v('nahkehit',TV,ind,impf,3sg)	nahkehii
-Od:n('spábba',sg,acc)	spáppa
-A:n('moalla',sg,ill)	mollii
-.
-
-SOURCE: text
-SMEB301 Loahpas son bážii moala.
-A1
-STA:cl
-A:n('loahppa',sg,loc)	Loahpas
-S:pron('son',<pers>,3sg,nom)	son
-P:v('báhčit',TV,ind,impf,3sg)	bážii
-Od:n('moalla',sg,acc)	moala
 .
 
 SOURCE: text
@@ -4400,36 +4190,12 @@ Od:g
 .
 
 SOURCE: text
-SMEB391 Máhtátgo sámegiela?
-A1
-QUE:cl
-P:v('máhttit',TV,ind,pr,2sg,qst)	Máhtátgo
-Od:n('sámegiella',sg,acc)	sámegiela
-?
-
-SOURCE: text
 SMEB392 Dovddatgo su?
 A1
 QUE:cl
 P:v('dovdat',TV,ind,pr,2sg,qst)	Dovddatgo
 Od:pron('son',<pers>,3sg,acc)	su
 ?
-
-SOURCE: text
-SMEB393 Mu gasttiha.
-A1
-STA:cl
-Od:pron('mun',<pers>,1sg,acc)	Mu
-P:v('gasttihit',TV,ind,pr,3sg)	gasttiha
-.
-
-SOURCE: text
-SMEB394 Mu vuovssihii.
-A1
-STA:cl
-Od:pron('mun',<pers>,1sg,acc)	Mu
-P:v('vuovssihit',TV,ind,impf,3sg)	vuovssihii
-.
 
 SOURCE: text
 SMEB395 Veahkehastte mu!
@@ -4454,14 +4220,6 @@ COM:cl
 P:v('gokčat',TV,imp,pr,2sg)	Govčča
 Od:n('uksa',sg,acc)	uvssa
 !
-
-SOURCE: text
-SMEB398 Bijai muohttaga.
-A1
-STA:cl
-P:v('bidjat',TV,ind,impf,3sg)	Bijai
-Od:n('muohta',sg,acc)	muohttaga
-.
 
 SOURCE: text
 SMEB399 Nillá-mága gasttihišgođii.
@@ -4664,43 +4422,6 @@ P:v('oahppat',TV,imp,pr,2sg)	Oahpa
 Od:n('lávlla',sg,acc)	lávlaga
 A:adv('bajil')	bajil
 !
-
-SOURCE: text
-SMEB420 Máhtátgo suomagiela maid?
-A1
-QUE:cl
-P:v('máhttit',TV,ind,pr,2sg,qst)	Máhtátgo
-Od:n('suomagiella',sg,acc)	suomagiela
-A:adv('maid')	maid
-?
-
-SOURCE: text
-SMEB421 Maid siđat odne?
-A1
-QUE:cl
-Od:pron('mii',<int>,sg,acc)	Maid
-P:v('sihtat',TV,ind,pr,2sg)	siđat
-A:adv('odne')	odne
-?
-
-SOURCE: text
-SMEB422 Bija gahpira oaivái.
-A1
-STA:cl
-P:v('bidjat',TV,imp,pr,2sg)	Bija
-Od:n('gahpir',sg,acc)	gahpira
-A:n('oaivi',sg,ill)	oaivái
-.
-
-SOURCE: text
-SMEB423 Muhto Parkera gal deavččastetne.
-A1
-STA:cl
-CO:conj-s('muhto')	Muhto
-Od:prop('Parker',Sur,sg,acc)	Parkera
-A:adv('gal')	gal
-P:v('deavččastit',TV,ind,pr,1du)	deavččastetne
-.
 
 SOURCE: text
 SMEB424 Buktet deike su pistovlla!
@@ -4982,15 +4703,6 @@ Cs:adj('boaris',sg,nom)	boaris
 .
 
 SOURCE: text
-SMEB449 Vuolgit lea suohtas.
-A1
-STA:cl
-S:v('vuolgit',IV,inf)	Vuolgit
-P:v('leat',IV,ind,pr,3sg)	lea
-Cs:adj('suohtas',sg,nom)	suohtas
-.
-
-SOURCE: text
 SMEB450 Buot lei divrras.
 A1
 STA:cl
@@ -5081,24 +4793,6 @@ Cs:adj('čuovgat',sg,nom)	čuovgat
 .
 
 SOURCE: text
-SMEB460 Son lea boarráseamos.
-A1
-STA:cl
-S:pron('son',<pers>,3sg,nom)	Son
-P:v('leat',IV,ind,pr,3sg)	lea
-Cs:adj('boaris',sup,sg,nom)	boarráseamos
-.
-
-SOURCE: text
-SMEB461 Girji lea Máreha.
-A1
-STA:cl
-S:n('girji',sg,nom)	Girji
-P:v('leat',IV,ind,pr,3sg)	lea
-Cs:prop('Máret',Fem,sg,gen)	Máreha
-.
-
-SOURCE: text
 SMEB462 Bahádahkki son lea!
 A1
 COM:cl
@@ -5126,65 +4820,12 @@ Cs:n('intensiivagursa',sg,nom)	intensiivagursa
 .
 
 SOURCE: text
-SMEB465 Gean dat lea?
-A1
-QUE:cl
-Cs:pron('gii',<int>,sg,gen)	Gean
-S:pron('dat',<pers>,3sg,nom)	dat
-P:v('leat',IV,ind,pr,3sg)	lea
-?
-
-SOURCE: text
 SMEB466 Dat lea áhči.
 A1
 STA:cl
 S:pron('dat',<pers>,3sg,nom)	Dat
 P:v('leat',IV,ind,pr,3sg)	lea
 Cs:n('áhčči',sg,gen)	áhči
-.
-
-SOURCE: text
-SMEB467 Gárttaigo divrrasin?
-A1
-QUE:cl
-P:v('gártat',IV,ind,impf,3sg,qst)	Gárttaigo
-Cs:adj('divrras',ess)	divrrasin
-?
-
-SOURCE: text
-SMEB468 Dat lea juhkki.
-A1
-STA:cl
-S:pron('dat',<pers>,3sg,nom)	Dat
-P:v('leat',IV,ind,pr,3sg)	lea
-Cs:adj('juhkki',sg,nom)	juhkki
-.
-
-SOURCE: text
-SMEB469 Diibmu lea vihtta.
-A1
-STA:cl
-S:n('diibmu',sg,nom)	Diibmu
-P:v('leat',IV,ind,pr,3sg)	lea
-Cs:num('vihtta',sg,nom)	vihtta
-.
-
-SOURCE: text
-SMEB470 Leatgo don cyber-sápmelaš?
-A1
-QUE:cl
-P:v('leat',IV,ind,pr,2sg,qst)	Leatgo
-S:pron('don',<pers>,2sg,nom)	don
-Cs:n('cyber-sápmelaš',sg,nom)	cyber-sápmelaš
-?
-
-SOURCE: text
-SMEB471 Boađus šattai 3-2.
-A1
-STA:cl
-S:n('boađus',sg,nom)	Boađus
-P:v('šaddat',IV,ind,impf,3sg)	šattai
-Cs:num('3-2',sg,nom)	3-2
 .
 
 SOURCE: text
@@ -7062,15 +6703,6 @@ STA:cl
 A:n('jeaggi',sg,loc)	Jeakkis
 P:v('leat',IV,ind,pr,3pl)	leat
 S:n('luomi',pl,nom)	luopmánat
-.
-
-SOURCE: text
-SMEB630 Ihttin lea bearjadat.
-A1
-STA:cl
-A:adv('ihttin')	Ihttin
-P:v('leat',IV,ind,pr,3sg)	lea
-S:n('bearjadat',sg,nom)	bearjadat
 .
 
 SOURCE: text
