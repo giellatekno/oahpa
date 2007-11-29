@@ -4,13 +4,22 @@
 # CEALKKALAHTUIN LEA DUŠŠE OKTA SÁTNI
 # -----------------------------------	
 
-# Verbála
-# - - - -
+# Subjeakta + Verbála + Adverbiála
+# - - - - - - - - - - - - - - - - -
+
 SOURCE: text
 SMEB1 Biekkastii.
 A1
 STA:cl
 P:v('biekkastit',IV,ind,impf,3sg)	Biekkastii
+.
+
+SOURCE: text
+SMEB34 Máhtte boahtá.
+A1
+STA:cl
+S:prop('Máhtte',Mal,sg,nom)	Máhtte
+P:v('boahtit',IV,ind,pr,3sg)	boahtá
 .
 
 SOURCE: text
@@ -20,7 +29,13 @@ COM:cl
 P:v('guldalit',TV,imp,pr,2sg)	Guldal
 !
 
-#Boađán.
+SOURCE: text
+SMEB35 Biret čállá.
+A1
+STA:cl
+S:prop('Biret',Fem,sg,nom)	Biret
+P:v('čállit',TV,ind,pr,3sg)	čállá
+.
 
 SOURCE: text
 SMEB14 In.
@@ -36,9 +51,6 @@ STA:cl
 P:IV('arvit',Der/goahti,v,ind,impf,3sg,<V>)	Arvigođii
 .
 
-
-# Subjeakta + Verbála
-# - - - - - - - - - - 
 SOURCE: text
 SMEB32 Gákti gorrojuvvo.
 A1
@@ -47,99 +59,6 @@ S:n('gákti',sg,nom)	Gákti
 P:v('goarrut',Der/PassL,TV,ind,pr,3sg,<V>)	gorrojuvvo
 .
 
-
-SOURCE: text
-SMEB34 Máhtte boahtá.
-A1
-STA:cl
-S:prop('Máhtte',Mal,sg,nom)	Máhtte
-P:v('boahtit',IV,ind,pr,3sg)	boahtá
-.
-
-SOURCE: text
-SMEB35 Biret čállá.
-A1
-STA:cl
-S:prop('Biret',Fem,sg,nom)	Biret
-P:v('čállit',TV,ind,pr,3sg)	čállá
-.
-
-
-# Objeakta + Verbála
-# - - - - - - - - - - 
-SOURCE: text
-SMEB392 Dovddatgo su?
-A1
-QUE:cl
-P:v('dovdat',TV,ind,pr,2sg,qst)	Dovddatgo
-Od:pron('son',<pers>,3sg,acc)	su
-?
-
-SOURCE: text
-SMEB395 Veahkehastte mu!
-A1
-COM:cl
-P:v('veahkehit',Der/asti,TV,imp,pr,2sg,<V>)	Veahkehastte
-Od:pron('mun',<pers>,1sg,acc)	mu
-!
-
-SOURCE: text
-SMEB396 Bálkes birccu!
-A1
-COM:cl
-P:v('bálkestit',TV,imp,pr,2sg)	Bálkes
-Od:n('bircu',sg,acc)	birccu
-!
-
-SOURCE: text
-SMEB397 Govčča uvssa!
-A1
-COM:cl
-P:v('gokčat',TV,imp,pr,2sg)	Govčča
-Od:n('uksa',sg,acc)	uvssa
-!
-
-# Subjeakta + Verbála + Objeakta
-# - - - - - - - - - - - - - - - -
-SOURCE: text
-SMEB248 Mun ráhkistan su.
-A1
-STA:cl
-S:pron('mun',<pers>,1sg,nom)	Mun
-P:v('ráhkistit',TV,ind,pr,1sg)	ráhkistan
-Od:pron('son',<pers>,3sg,acc)	su
-.
-
-SOURCE: text
-SMEB249 Áhčči čálii reivve.
-A1
-STA:cl
-S:n('áhčči',sg,nom)	Áhčči
-P:v('čállit',TV,ind,impf,3sg)	čálii
-Od:n('reive',sg,acc)	reivve
-.
-
-SOURCE: text
-SMEB250 Boanda gottii vuovssá.
-A1
-STA:cl
-S:n('boanda',sg,nom)	Boanda
-P:v('goddit',TV,ind,impf,3sg)	gottii
-Od:n('vuoksá',sg,acc)	vuovssá
-.
-
-SOURCE: text
-SMEB251 Vuovssá gottii boanda.
-A1
-STA:cl
-Od:n('vuoksá',sg,acc)	Vuovssá
-P:v('goddit',TV,ind,impf,3sg)	gottii
-S:n('boanda',sg,nom)	boanda
-.
-
-
-# Advearbiála
-# - - - - - - -
 SOURCE: text
 SMEB58 Boađe deike!
 A1
@@ -243,6 +162,109 @@ A:n('guolli',sg,ill)	guollái
 .
 
 SOURCE: text
+SMEB631 Goađis lea árran.
+A1
+STA:cl
+A:n('goahti',sg,loc)	Goađis
+P:v('leat',IV,ind,pr,3sg)	lea
+S:n('árran',sg,nom)	árran
+.
+
+SOURCE: text
+SMEB632 Stálles lea ivguheasta.
+A1
+STA:cl
+A:n('stálle',sg,loc)	Stálles
+P:v('leat',IV,ind,pr,3sg)	lea
+S:n('ivguheasta',sg,nom)	ivguheasta
+.
+
+SOURCE: text
+SMEB633 Bealddus leat eatnanmuorjjit.
+A1
+STA:cl
+A:n('bealdu',sg,loc)	Bealddus
+P:v('leat',IV,ind,pr,3pl)	leat
+S:n('eatnanmuorji',pl,nom)	eatnanmuorjjit
+.
+
+
+
+
+# Subjeakta + Objeakta + Verbála
+# - - - - - - - - - - - - - - - -
+SOURCE: text
+SMEB392 Dovddatgo su?
+A1
+QUE:cl
+P:v('dovdat',TV,ind,pr,2sg,qst)	Dovddatgo
+Od:pron('son',<pers>,3sg,acc)	su
+?
+
+SOURCE: text
+SMEB395 Veahkehastte mu!
+A1
+COM:cl
+P:v('veahkehit',Der/asti,TV,imp,pr,2sg,<V>)	Veahkehastte
+Od:pron('mun',<pers>,1sg,acc)	mu
+!
+
+SOURCE: text
+SMEB396 Bálkes birccu!
+A1
+COM:cl
+P:v('bálkestit',TV,imp,pr,2sg)	Bálkes
+Od:n('bircu',sg,acc)	birccu
+!
+
+SOURCE: text
+SMEB397 Govčča uvssa!
+A1
+COM:cl
+P:v('gokčat',TV,imp,pr,2sg)	Govčča
+Od:n('uksa',sg,acc)	uvssa
+!
+
+SOURCE: text
+SMEB248 Mun ráhkistan su.
+A1
+STA:cl
+S:pron('mun',<pers>,1sg,nom)	Mun
+P:v('ráhkistit',TV,ind,pr,1sg)	ráhkistan
+Od:pron('son',<pers>,3sg,acc)	su
+.
+
+SOURCE: text
+SMEB249 Áhčči čálii reivve.
+A1
+STA:cl
+S:n('áhčči',sg,nom)	Áhčči
+P:v('čállit',TV,ind,impf,3sg)	čálii
+Od:n('reive',sg,acc)	reivve
+.
+
+SOURCE: text
+SMEB250 Boanda gottii vuovssá.
+A1
+STA:cl
+S:n('boanda',sg,nom)	Boanda
+P:v('goddit',TV,ind,impf,3sg)	gottii
+Od:n('vuoksá',sg,acc)	vuovssá
+.
+
+SOURCE: text
+SMEB251 Vuovssá gottii boanda.
+A1
+STA:cl
+Od:n('vuoksá',sg,acc)	Vuovssá
+P:v('goddit',TV,ind,impf,3sg)	gottii
+S:n('boanda',sg,nom)	boanda
+.
+
+
+# Advearbiála
+# - - - - - - -
+SOURCE: text
 SMEB290 Moai bivddiime guoli vanccas.
 A1
 STA:cl
@@ -317,34 +339,6 @@ P:v('oahppat',TV,imp,pr,2sg)	Oahpa
 Od:n('lávlla',sg,acc)	lávlaga
 A:adv('bajil')	bajil
 !
-
-SOURCE: text
-SMEB631 Goađis lea árran.
-A1
-STA:cl
-A:n('goahti',sg,loc)	Goađis
-P:v('leat',IV,ind,pr,3sg)	lea
-S:n('árran',sg,nom)	árran
-.
-
-SOURCE: text
-SMEB632 Stálles lea ivguheasta.
-A1
-STA:cl
-A:n('stálle',sg,loc)	Stálles
-P:v('leat',IV,ind,pr,3sg)	lea
-S:n('ivguheasta',sg,nom)	ivguheasta
-.
-
-SOURCE: text
-SMEB633 Bealddus leat eatnanmuorjjit.
-A1
-STA:cl
-A:n('bealdu',sg,loc)	Bealddus
-P:v('leat',IV,ind,pr,3pl)	leat
-S:n('eatnanmuorji',pl,nom)	eatnanmuorjjit
-.
-
 
 
 # Habitatiiva
