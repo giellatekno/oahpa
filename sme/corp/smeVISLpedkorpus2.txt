@@ -4,8 +4,9 @@
 # CEALKKALAHTUIN LEA DUŠŠE OKTA SÁTNI
 # -----------------------------------	
 
-# Verbála
-# - - - -
+# Subjeakta + Verbála + Adverbiála
+# - - - - - - - - - - - - - - - - -
+
 SOURCE: text
 SMEB5 Boađán.
 A1
@@ -28,9 +29,6 @@ P:v('arvit',IV,ind,pr,3sg)	Arvá
 .
 
 
-			
-# Subjeakta + Verbála
-# - - - - - - - - - - 
 SOURCE: text
 SMEB30 Beana ruohttá.
 A1
@@ -63,103 +61,6 @@ P:v('leat',IV,ind,impf,3sg)	Lei
 S:n('soahti',sg,nom)	soahti
 .
 
-SOURCE: text
-SMEB679 Lea buolaš.
-A1
-STA:cl
-P:v('leat',IV,ind,pr,3sg)	Lea
-Cs:adj('buolaš',sg,nom)	buolaš
-.
-
-
-
-# Objeakta + Verbála
-# - - - - - - - - - - 
-SOURCE: text
-SMEB399 Nillá-mága gasttihišgođii.
-A1
-STA:cl
-Od:n('Nillá-máhka',sg,acc)	Nillá-mága
-P:v('gasttihit',Der/goahti,TV,ind,impf,3sg,<V>)	gasttihišgođii
-.
-
-SOURCE: text
-SMEB400 Dárbbašatgo veahki?
-A1
-QUE:cl
-P:v('dárbbašit',TV,ind,pr,1pl,qst)	Dárbbašatgo
-Od:n('veahkki',sg,acc)	veahki
-?
-
-SOURCE: text
-SMEB401 Guldalatgo musihka?
-A1
-QUE:cl
-P:v('guldalit',TV,ind,pr,1pl,qst)	Guldalatgo
-Od:n('musihkka',sg,acc)	musihka
-?
-
-SOURCE: text
-SMEB402 Geahčatgo TV?
-A1
-QUE:cl
-P:v('geahččat',TV,ind,pr,2sg,qst)	Geahčatgo
-Od:n('TV',acr,sg,acc)	TV
-?
-
-
-
-# Subjeakta + Verbála + Objeakta
-# - - - - - - - - - - - - - - - -
-SOURCE: text
-SMEB252 Eadni boraha máná.
-A1
-STA:cl
-S:n('eadni',sg,nom)	Eadni
-P:v('borahit',TV,ind,pr,3sg)	boraha
-Od:n('mánná',sg,acc)	máná
-.
-
-SOURCE: text
-SMEB253 Eadni goarru gávtti.
-A1
-STA:cl
-S:n('eadni',sg,nom)	Eadni
-P:v('goarrut',TV,ind,pr,3sg)	goarru
-Od:n('gákti',sg,acc)	gávtti
-.
-
-SOURCE: text
-SMEB254 Áhkku goarui láđđegávtti.
-A1
-STA:cl
-S:n('áhkku',sg,nom)	Áhkku
-P:v('goarrut',TV,ind,impf,3sg)	goarui
-Od:n('láđđegákti',sg,acc)	láđđegávtti
-.
-
-SOURCE: text
-SMEB255 Áhčči lohká áviissa.
-A1
-STA:cl
-S:n('áhčči',sg,nom)	Áhčči
-P:v('lohkat',TV,ind,pr,3sg)	lohká
-Od:n('áviisa',sg,acc)	áviissa
-.
-
-SOURCE: text
-SMEB256 Juvvá-eanu borrá gáhkuid.
-A1
-STA:cl
-S:n('Juvvá-eanu',sg,nom)	Juvvá-eanu
-P:v('borrat',TV,ind,pr,3sg)	borrá
-Od:n('gáhkku',pl,acc)	gáhkuid
-.
-
-
-
-# Advearbiála
-# - - - - - -  
 SOURCE: text
 SMEB65 Boađátgo mielde?
 A1
@@ -263,6 +164,110 @@ P:v('leat',IV,ind,pr,3pl)	leat
 ?
 
 SOURCE: text
+SMEB628 Ikte lei duorastat.
+A1
+STA:cl
+A:adv('ikte')	Ikte
+P:v('leat',IV,ind,impf,3sg)	lei
+S:n('duorastat',sg,nom)	duorastat
+.
+
+SOURCE: text
+SMEB629 Jeakkis leat luopmánat.
+A1
+STA:cl
+A:n('jeaggi',sg,loc)	Jeakkis
+P:v('leat',IV,ind,pr,3pl)	leat
+S:n('luomi',pl,nom)	luopmánat
+.
+
+
+
+
+# Cealkagat main lea objeakta 
+# - - - - - - - - - - - - - -  
+
+SOURCE: text
+SMEB252 Eadni boraha máná.
+A1
+STA:cl
+S:n('eadni',sg,nom)	Eadni
+P:v('borahit',TV,ind,pr,3sg)	boraha
+Od:n('mánná',sg,acc)	máná
+.
+
+SOURCE: text
+SMEB253 Eadni goarru gávtti.
+A1
+STA:cl
+S:n('eadni',sg,nom)	Eadni
+P:v('goarrut',TV,ind,pr,3sg)	goarru
+Od:n('gákti',sg,acc)	gávtti
+.
+
+SOURCE: text
+SMEB254 Áhkku goarui láđđegávtti.
+A1
+STA:cl
+S:n('áhkku',sg,nom)	Áhkku
+P:v('goarrut',TV,ind,impf,3sg)	goarui
+Od:n('láđđegákti',sg,acc)	láđđegávtti
+.
+
+SOURCE: text
+SMEB255 Áhčči lohká áviissa.
+A1
+STA:cl
+S:n('áhčči',sg,nom)	Áhčči
+P:v('lohkat',TV,ind,pr,3sg)	lohká
+Od:n('áviisa',sg,acc)	áviissa
+.
+
+SOURCE: text
+SMEB256 Juvvá-eanu borrá gáhkuid.
+A1
+STA:cl
+S:n('Juvvá-eanu',sg,nom)	Juvvá-eanu
+P:v('borrat',TV,ind,pr,3sg)	borrá
+Od:n('gáhkku',pl,acc)	gáhkuid
+.
+
+
+SOURCE: text
+SMEB399 Nillá-mága gasttihišgođii.
+A1
+STA:cl
+Od:n('Nillá-máhka',sg,acc)	Nillá-mága
+P:v('gasttihit',Der/goahti,TV,ind,impf,3sg,<V>)	gasttihišgođii
+.
+
+SOURCE: text
+SMEB400 Dárbbašatgo veahki?
+A1
+QUE:cl
+P:v('dárbbašit',TV,ind,pr,1pl,qst)	Dárbbašatgo
+Od:n('veahkki',sg,acc)	veahki
+?
+
+SOURCE: text
+SMEB401 Guldalatgo musihka?
+A1
+QUE:cl
+P:v('guldalit',TV,ind,pr,1pl,qst)	Guldalatgo
+Od:n('musihkka',sg,acc)	musihka
+?
+
+SOURCE: text
+SMEB402 Geahčatgo TV?
+A1
+QUE:cl
+P:v('geahččat',TV,ind,pr,2sg,qst)	Geahčatgo
+Od:n('TV',acr,sg,acc)	TV
+?
+
+
+
+SOURCE: text
 SMEB294 Mun čállen muitalusaid ruovttusiidui.
 A1
 STA:cl
@@ -270,22 +275,6 @@ S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('čállit',TV,ind,impf,1sg)	čállen
 Od:n('muitalus',pl,acc)	muitalusaid
 A:n('ruovttusiidu',sg,ill)	ruovttusiidui
-.
-
-SOURCE: text
-SMEB295 Mun lean lohkan ollu girjjiid dán dálvvi.
-A1
-STA:cl
-S:pron('mun',<pers>,1sg,nom)	Mun
-P:g
-=D:v('leat',IV,ind,pr,1sg)	lean
-=H:v(nfin)('lohkat',TV,pcp2)	lohkan
-Od:g
-=D:adj('ollu',attr)	ollu
-=H:n('girji',pl,acc)	girjjiid
-A:g
-=D:pron('dát',<dem>,sg,gen)	dán
-=H:n('dálvi',sg,gen)	dálvvi
 .
 
 SOURCE: text
@@ -326,33 +315,6 @@ A:pron('mun',<pers>,1sg,ill,foc/ge)	munnjege
 Od:n('gáffe',sg,acc)	gáfe
 .
 
-SOURCE: text
-SMEB415 Máhtátgo olu sámegiela?
-A1
-QUE:cl
-P:v('máhttit',TV,ind,pr,2sg,qst)	Máhtátgo
-Od:g
-=D:adj('olu',attr)	olu
-=H:n('sámegiella',sg,acc)	sámegiela
-?
-
-SOURCE: text
-SMEB628 Ikte lei duorastat.
-A1
-STA:cl
-A:adv('ikte')	Ikte
-P:v('leat',IV,ind,impf,3sg)	lei
-S:n('duorastat',sg,nom)	duorastat
-.
-
-SOURCE: text
-SMEB629 Jeakkis leat luopmánat.
-A1
-STA:cl
-A:n('jeaggi',sg,loc)	Jeakkis
-P:v('leat',IV,ind,pr,3pl)	leat
-S:n('luomi',pl,nom)	luopmánat
-.
 
 
 # Habitatiiva
@@ -423,6 +385,15 @@ S:n('čoarvebeallječikŋa',pl,nom)	Čoarvebeallječiŋat
 P:v('leat',IV,ind,pr,3pl)	leat
 Cs:adj('bivnnut',pl,nom)	bivnnuhat
 .
+
+SOURCE: text
+SMEB679 Lea buolaš.
+A1
+STA:cl
+P:v('leat',IV,ind,pr,3sg)	Lea
+Cs:adj('buolaš',sg,nom)	buolaš
+.
+
 
 SOURCE: text
 SMEB443 Mii leimmet viđas.
@@ -693,8 +664,9 @@ S:n('mátkedihtor',sg,nom)	mátkedihtor
 # CEALKKALAHTUIN LEAT EANET GO OKTA SÁTNI	
 # ---------------------------------------		
 
-# Verbála
-# - - - - 
+# Subjeakta + Verbála + Adverbiála
+# - - - - - - - - - - - - - - - - -
+
 SOURCE: text
 SMEB21 Itgo boađe?
 A1
@@ -732,10 +704,98 @@ P:g
 =H:v(nfin)('duddjot',TV,inf)	duddjot
 ?
 
+SOURCE: text
+SMEB153 Máhtte ii sáhttán boahtit ovdal.
+A1
+STA:cl
+S:prop('Máhtte',Mal,sg,nom)	Máhtte
+P:g
+=D:v('ii',IV,neg,ind,3sg)	ii
+=D:v(nfin)('sáhttit',IV,pcp2)	sáhttán
+=H:v('boahtit',IV,inf)	boahtit
+A:adv('ovdal')	ovdal
+.
+
+SOURCE: text
+SMEB154 Áddjágo duo lea boahtime?
+A1
+QUE:cl
+S:n('áddjá',sg,nom,qst)	Áddjágo
+A:adv('duo')	duo
+P:g
+=D:v('leat',IV,ind,pr,3sg)	lea
+=H:v(nfin)('boahtit',IV,actio,ess)	boahtime
+?
+
+SOURCE: text
+SMEB146 Nuvttohat leat gorrojuvvon bohcconáhkis.
+A1
+STA:cl
+S:n('nuvttot',pl,nom)	Nuvttohat
+P:g
+=D:v('leat',IV,ind,pr,3pl)	leat
+=H:v(nfin)('goarrut',Der/PassL,v,pcp2,<V>)	gorrojuvvon
+A:n('bohcconáhkki',sg,loc)	bohcconáhkis
+.
+
+SOURCE: text
+SMEB155 Mun lean heaitán borgguheames.
+A1
+STA:cl
+S:pron('mun',<pers>,1sg,nom)	Mun
+P:g
+=D:v('leat',IV,ind,pr,1sg)	lean
+=H:v(nfin)('heaitit',TV,pcp2)	heaitán
+A:v('borgguhit',TV,actio,loc)	borgguheames
+.
+
+SOURCE: text
+SMEB156 Áhkku ii leat dáppe.
+A1
+STA:cl
+S:n('áhkku',sg,nom)	Áhkku
+P:g
+=D:v('ii',IV,neg,ind,3sg)	ii
+=H:v(nfin)('leat',IV,ind,pr,conneg)	leat
+A:adv('dáppe')	dáppe
+.
+
+SOURCE: text
+SMEB157 Mun láven árrat lihkkat.
+A1
+STA:cl
+S:pron('mun',<pers>,1sg,nom)	Mun
+P:g-
+=D:v('lávet',TV,ind,pr,1sg)	láven
+A:adv('árrat')	árrat
+-P:g
+=H:v(nfin)('lihkkat',IV,inf)	lihkkat
+.
+
+SOURCE: text
+SMEB646 Leago mu vuorru dál?
+A1
+QUE:cl
+P:v('leat',IV,ind,pr,3sg,qst)	Leago
+S:g
+=D:pron('mun',<pers>,1sg,gen)	mu
+=H:n('vuorru',sg,nom)	vuorru
+A:adv('dál')	dál
+?
+
+SOURCE: text
+SMEB647 Dál lea du vuorru!
+A1
+STA:cl
+A:adv('dál')	Dál
+P:v('leat',IV,ind,pr,3sg)	lea
+S:g
+=D:pron('don',<pers>,2sg,gen)	du
+=H:n('vuorru',sg,nom)	vuorru
+!
 
 
-# Subjeakta + Verbála + (Advearbiála)
-# - - - - - - - - - - 
+
 SOURCE: text
 SMEB52 Son šaddá ganjaldallat.
 A1
@@ -778,28 +838,6 @@ P:g
 .
 
 SOURCE: text
-SMEB56 Boahtágo eadni vai áhčči?
-A1
-QUE:cl
-P:v('boahtit',IV,ind,pr,3sg,qst)	Boahtágo
-S:par
-=CJT:n('eadni',sg,nom)	eadni
-=CC:conj-s('vai')	vai
-=CJT:n('áhčči',sg,nom)	áhčči
-?
-
-SOURCE: text
-SMEB57 Eadni ja áhčči boahtiba.
-A1
-STA:cl
-S:par
-=CJT:n('eadni',sg,nom)	Eadni
-=CC:conj-s('ja')	ja
-=CJT:n('áhčči',sg,nom)	áhčči
-P:v('boahtit',IV,ind,pr,3du)	boahtiba
-.
-
-SOURCE: text
 SMEB75 Leago arván diehko?
 A1
 QUE:cl
@@ -810,8 +848,9 @@ A:adv('diehko')	diehko
 ?
 
 
-# Objeakta + Verbála
-# - - - - - - - - - - 
+# Cealkagat main lea objeakta 
+# - - - - - - - - - - - - - -  
+
 SOURCE: text
 SMEB409 Máhtátgo olu sámegiela?
 A1
@@ -845,9 +884,6 @@ Od:g
 ?
 
  	
- 			
-# Subjeakta + Verbála + Objeakta + (Adverbiála)
-# - - - - - - - - - - - - - - - - - - - - - - - 
 SOURCE: text
 SMEB80 Allet geahča dárogiel teavstta!
 A1
@@ -859,6 +895,17 @@ Od:g
 =D:adj('dárogiel',attr)	dárogiel
 =H:n('teaksta',sg,acc)	teavstta
 !
+
+SOURCE: text
+SMEB415 Máhtátgo olu sámegiela?
+A1
+QUE:cl
+P:v('máhttit',TV,ind,pr,2sg,qst)	Máhtátgo
+Od:g
+=D:adj('olu',attr)	olu
+=H:n('sámegiella',sg,acc)	sámegiela
+?
+
 
 SOURCE: text
 SMEB272 Máhtte-vilbealle duddjui ođđa fatnasa.
@@ -944,8 +991,10 @@ A:n('gálvu',pl,com)	gálvvuiguin
 
 
 
-# Kompleaksa advearbiála dahje eanet go okta adverabiála
-# - - - - - - - - - - - - - - - -
+
+# Cealkagat main lea kompleaksa advearbiála dahje eanet go okta adverabiála
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - -
+
 SOURCE: text
 SMEB81 Fertet jáhkkigoahtit dakkár balddonasmuitalusaide.
 A1
@@ -1011,73 +1060,6 @@ A:g
 =H:n('bargu',sg,ill)	bargui
 .
 
-SOURCE: text
-SMEB153 Máhtte ii sáhttán boahtit ovdal.
-A1
-STA:cl
-S:prop('Máhtte',Mal,sg,nom)	Máhtte
-P:g
-=D:v('ii',IV,neg,ind,3sg)	ii
-=D:v(nfin)('sáhttit',IV,pcp2)	sáhttán
-=H:v('boahtit',IV,inf)	boahtit
-A:adv('ovdal')	ovdal
-.
-
-SOURCE: text
-SMEB154 Áddjágo duo lea boahtime?
-A1
-QUE:cl
-S:n('áddjá',sg,nom,qst)	Áddjágo
-A:adv('duo')	duo
-P:g
-=D:v('leat',IV,ind,pr,3sg)	lea
-=H:v(nfin)('boahtit',IV,actio,ess)	boahtime
-?
-
-SOURCE: text
-SMEB146 Nuvttohat leat gorrojuvvon bohcconáhkis.
-A1
-STA:cl
-S:n('nuvttot',pl,nom)	Nuvttohat
-P:g
-=D:v('leat',IV,ind,pr,3pl)	leat
-=H:v(nfin)('goarrut',Der/PassL,v,pcp2,<V>)	gorrojuvvon
-A:n('bohcconáhkki',sg,loc)	bohcconáhkis
-.
-
-SOURCE: text
-SMEB155 Mun lean heaitán borgguheames.
-A1
-STA:cl
-S:pron('mun',<pers>,1sg,nom)	Mun
-P:g
-=D:v('leat',IV,ind,pr,1sg)	lean
-=H:v(nfin)('heaitit',TV,pcp2)	heaitán
-A:v('borgguhit',TV,actio,loc)	borgguheames
-.
-
-SOURCE: text
-SMEB156 Áhkku ii leat dáppe.
-A1
-STA:cl
-S:n('áhkku',sg,nom)	Áhkku
-P:g
-=D:v('ii',IV,neg,ind,3sg)	ii
-=H:v(nfin)('leat',IV,ind,pr,conneg)	leat
-A:adv('dáppe')	dáppe
-.
-
-SOURCE: text
-SMEB157 Mun láven árrat lihkkat.
-A1
-STA:cl
-S:pron('mun',<pers>,1sg,nom)	Mun
-P:g-
-=D:v('lávet',TV,ind,pr,1sg)	láven
-A:adv('árrat')	árrat
--P:g
-=H:v(nfin)('lihkkat',IV,inf)	lihkkat
-.
 
 SOURCE: text
 SMEB158 Juohke beaivvi dáhpáhuvvá nu olu.
@@ -1191,6 +1173,24 @@ A:n('báhti',sg,ill)	báhtái
 .
 
 SOURCE: text
+SMEB295 Mun lean lohkan ollu girjjiid dán dálvvi.
+A1
+STA:cl
+S:pron('mun',<pers>,1sg,nom)	Mun
+P:g
+=D:v('leat',IV,ind,pr,1sg)	lean
+=H:v(nfin)('lohkat',TV,pcp2)	lohkan
+Od:g
+=D:adj('ollu',attr)	ollu
+=H:n('girji',pl,acc)	girjjiid
+A:g
+=D:pron('dát',<dem>,sg,gen)	dán
+=H:n('dálvi',sg,gen)	dálvvi
+.
+
+
+
+SOURCE: text
 SMEB337 Ovdal soađi badjeolbmot álge atnit fabrihkkaránuid.
 A1
 STA:cl
@@ -1228,28 +1228,6 @@ A:g
 P:v('leat',IV,ind,pr,3sg)	lea
 Cs:adj('suohtas',sg,nom)	suohtas
 .
-
-SOURCE: text
-SMEB646 Leago mu vuorru dál?
-A1
-QUE:cl
-P:v('leat',IV,ind,pr,3sg,qst)	Leago
-S:g
-=D:pron('mun',<pers>,1sg,gen)	mu
-=H:n('vuorru',sg,nom)	vuorru
-A:adv('dál')	dál
-?
-
-SOURCE: text
-SMEB647 Dál lea du vuorru!
-A1
-STA:cl
-A:adv('dál')	Dál
-P:v('leat',IV,ind,pr,3sg)	lea
-S:g
-=D:pron('don',<pers>,2sg,gen)	du
-=H:n('vuorru',sg,nom)	vuorru
-!
 
 SOURCE: text
 SMEB648 Badjin vákkis leat meahccelájut.
@@ -1518,6 +1496,30 @@ Cs:g
  	
 # Paratagmat
 # - - - - - -
+
+SOURCE: text
+SMEB56 Boahtágo eadni vai áhčči?
+A1
+QUE:cl
+P:v('boahtit',IV,ind,pr,3sg,qst)	Boahtágo
+S:par
+=CJT:n('eadni',sg,nom)	eadni
+=CC:conj-s('vai')	vai
+=CJT:n('áhčči',sg,nom)	áhčči
+?
+
+SOURCE: text
+SMEB57 Eadni ja áhčči boahtiba.
+A1
+STA:cl
+S:par
+=CJT:n('eadni',sg,nom)	Eadni
+=CC:conj-s('ja')	ja
+=CJT:n('áhčči',sg,nom)	áhčči
+P:v('boahtit',IV,ind,pr,3du)	boahtiba
+.
+
+
 SOURCE: text
 SMEB238 Sii barget sihke Kárášjogas ja Guovdageainnus.
 A1
