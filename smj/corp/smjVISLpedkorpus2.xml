@@ -449,7 +449,7 @@ A1
 STA:cl
 S:pron('mun',<pers>,2pl,nom)	Dii
 P:v('leat',ind,impf,2pl)	leiddet
-Cs:n('viđas',num,sg,nom)	viđas
+Cs:n('viđas',Num,sg,nom)	viđas
 .
 
 SOURCE: text
@@ -521,7 +521,7 @@ A1
 STA:cl
 S:n('filbma',sg,nom)	Filbma
 P:v('álgit',ind,pr,3sg)	álgá
-A:num('čieža',sg,loc)	čiežas
+A:Num('čieža',sg,loc)	čiežas
 .
 
 SOURCE: text
@@ -1066,7 +1066,7 @@ SMJB101) Máŋga gávpeolbmo lonuhedje fáhcaid gálvvuiguin.
 A1
 STA:cl
 S:g
-=H:num('máŋga',sg,nom)	Máŋga
+=H:Num('máŋga',sg,nom)	Máŋga
 =D:n('gávpeolmmoš',sg,gen)	gávpeolbmo
 P:v('lonuhit',ind,impf,3pl)	lonuhedje
 Od:n('fáhcca',pl,acc)	fáhcaid
@@ -1558,7 +1558,7 @@ STA:cl
 S:n('miehkki',sg,nom)	Miehkki
 P:v('leat',ind,pr,3sg)	lea
 A:g
-=D:num('guokte',sg,gen)	guovtti
+=D:Num('guokte',sg,gen)	guovtti
 =H:n('ávju',sg,ill)	ávjui
 .
 
@@ -1571,7 +1571,7 @@ S:g
 =H:n('fiilu',sg,nom)	fiilu
 P:v('leat',ind,pr,3sg)	lea
 A:g
-=D:num('golbma',sg,gen)	golmma
+=D:Num('golbma',sg,gen)	golmma
 =H:n('borri',sg,ill)	borrái
 .
 
@@ -1823,16 +1823,16 @@ HAB:pron('mun',<pers>,1du,loc)	Munnos
 P:v('leat',ind,pr,3pl)	leat
 S:g
 =H:g
-==H:num('golbma',sg,nom)	golbma
+==H:Num('golbma',sg,nom)	golbma
 ==D:n('mánná',sg,gen)	máná
 ==,
 =D:par
 ==CJT:g
-===H:num('guokte',sg,nom)	guokte
+===H:Num('guokte',sg,nom)	guokte
 ===D:n('nieida',sg,gen)	nieidda
 ==CC:conj-s('ja')	ja
 ==CJT:g
-===D:num('okta',sg,nom)	okta
+===D:Num('okta',sg,nom)	okta
 ===H:n('bárdni',sg,nom)	bárdni
 .
 
@@ -1860,11 +1860,11 @@ HAB:pron('son',<pers>,3sg,loc)	Sus
 P:v('leat',ind,pr,3pl)	leat
 S:par
 =CJT:g
-==H:num('guokte',sg,nom)	guokte
+==H:Num('guokte',sg,nom)	guokte
 ==D:n('viellja',sg,gen)	vielja
 =CC:conj-s('ja')	ja
 =CJT:g
-==D:num('okta',sg,nom)	okta
+==D:Num('okta',sg,nom)	okta
 ==H:n('oabbá',sg,nom)	oabbá
 .
 
@@ -3025,7 +3025,7 @@ CJT:cl
 =P:v('leat',ind,pr,3sg)	lea
 =Cs:g
 ==D:g
-===H:num('35',sg,acc)	35
+===H:Num('35',sg,acc)	35
 ===D:n('jahki',sg,gen)	jagi
 ==H:adj('boaris',sg,nom)	boaris
 .
@@ -3238,7 +3238,7 @@ CJT:cl
 =S:n('spábba',sg,nom)	Spábba
 =P:v('guoskat',ind,impf,3sg)	guoskkai
 =A:g
-==D:num('okta',sg,gen)	ovtta
+==D:Num('okta',sg,gen)	ovtta
 ==D:prop('Snøgg',Org,sg,gen)	Snøgga
 ==H:n('čiekči',sg,ill)	čiekčái
 CO:conj-s('ja')	ja
@@ -3324,7 +3324,7 @@ CJT:cl
 =P:v('darvehit',ind,pr,1du)	darveheimme
 =A:adv('maiddái')	maiddái
 =Od:g
-==H:num('moadde',sg,acc)	moadde
+==H:Num('moadde',sg,acc)	moadde
 ==D:n('dorski',sg,gen)	dorski
 .
 
@@ -3722,7 +3722,7 @@ S:g
 P:v('boahtit',ind,impf,3sg)	bođii
 A:g
 =H:n('jahki',sg,gen)	jagi
-=D:num('1971',sg,nom)	1971
+=D:Num('1971',sg,nom)	1971
 .
 
 SOURCE: text
