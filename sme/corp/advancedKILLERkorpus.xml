@@ -11,6 +11,9 @@
 
 </corpussource>
 
+<!--
+This corpus contains poss, refl, prp* and Num - so in the script those should be the options, and tags belonging to the wordclasses should be visible. For Numerals should no tag be visible. A possible option could also be n.-->
+
 
 <section>
 
@@ -1188,7 +1191,7 @@ P:v('leat',ind,pr,3pl)	leat
 -HAB:g
 =D:pron('ieš',<refl>,loc,poss3du)	alddiska
 S:g
-=H:num('máŋga',sg,nom)	máŋga
+=H:Num('máŋga',sg,nom)	máŋga
 =D:n('mánná',sg,gen)	máná
 .
 
@@ -2803,7 +2806,7 @@ A1
 STA:cl
 D:g
 =D:pron('buot',<idef>)	Buot
-=S:num('njeallje',sg,nom)	njeallje
+=S:Num('njeallje',sg,nom)	njeallje
 =H:n('mánná',sg,gen)	máná
 P:g
 =D:v('leat',ind,impf,3pl)	ledje
@@ -2821,7 +2824,7 @@ S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('oaidnit',ind,impf,1sg)	oidnen
 A:adv('dušše')	dušše
 Od:g
-=D:num('okta',sg,acc)	ovtta
+=D:Num('okta',sg,acc)	ovtta
 =H:n('nieida',sg,acc)	nieidda
 .
 
@@ -2832,7 +2835,7 @@ STA:cl
 S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('oaidnit',ind,impf,1sg)	oidnen
 Od:g
-=D:num('guokte',sg,acc)	guokte
+=D:Num('guokte',sg,acc)	guokte
 =H:n('nieida',sg,acc)	nieidda
 .
 
@@ -2845,7 +2848,7 @@ P:g
 =D:v('berret',cond,pr,3sg)	berrešii
 =H:v('birget',inf)	birget
 A:g
-=D:num('vihtta',sg,com)	viđain
+=D:Num('vihtta',sg,com)	viđain
 =H:n('girji',sg,com)	girjjiin
 .
 
@@ -2859,7 +2862,7 @@ P:g
 =H:v('orrut',pcp2)	orron
 A:adv('doppe')	doppe
 A:g
-=H:num('moadde',sg,acc)	moadde
+=H:Num('moadde',sg,acc)	moadde
 =D:n('jahki',sg,gen)	jagi
 .
 
@@ -2870,7 +2873,7 @@ STA:cl
 S:pron('son',<pers>,3pl,nom)	Sii
 P:v('boahtit',ind,impf,3pl)	bohte
 A:g
-=D:num('guokte',sg,com)	guvttiin
+=D:Num('guokte',sg,com)	guvttiin
 =H:n('biila',sg,com)	biillain
 .
 
@@ -2883,7 +2886,7 @@ Apcle:part('go')	go
 Od:g
 =H:g
 ==D:pron('dat',<dem>,sg,acc)	dan
-==D:num('vihtta',sg,acc)	vihtta
+==D:Num('vihtta',sg,acc)	vihtta
 ==H:n('bárdni',sg,acc)	bártni
 =D:cl
 ==S:pron('gii',<rel>,pl,nom)	geat
@@ -2901,7 +2904,7 @@ Apcle:part('go')	go
 -P:g
 =H:v('hupmat',pcp2)	hupman
 A:g
-=D:num('guokte',sg,com)	guvttiin
+=D:Num('guokte',sg,com)	guvttiin
 =H:n('dievdu',sg,com)	dievdduin
 ?
 
@@ -2914,7 +2917,7 @@ A:adv('gal')	gal
 P:v('leat',ind,pr,3sg)	lea
 Cs:g
 =D:g
-==H:num('máŋga',sg,gen)	máŋgga
+==H:Num('máŋga',sg,gen)	máŋgga
 ==D:n('olmmoš',sg,gen)	olbmo
 =H:n('bargu',sg,nom)	bargu
 .
@@ -2926,7 +2929,7 @@ STA:cl
 HAB:prop('Mihkkal',sg,loc)	Mihkkalis
 P:v('leat',ind,pr,3pl)	leat
 S:g
-=H:num('guokte',pl,nom)	guovttit
+=H:Num('guokte',pl,nom)	guovttit
 =D:n('sabet',pl,nom)	sabehat
 .
 
@@ -2937,7 +2940,7 @@ STA:cl
 S:pron('mun',<pers>,1pl,nom)	Mii
 P:v('fitnat',ind,impf,1pl)	finaimet
 A:g
-=D:num('máŋga',sg,gen)	máŋgga
+=D:Num('máŋga',sg,gen)	máŋgga
 =H:n('buvda',sg,loc)	buvddas
 .
 
@@ -2948,7 +2951,7 @@ STA:cl
 S:pron('son',<pers>,3sg,nom)	Son
 P:v('mannat',ind,impf,3sg)	manai
 A:g
-=D:num('guhtta',sg,gen)	guđa
+=D:Num('guhtta',sg,gen)	guđa
 =H:n('viessu',sg,loc)	viesus
 ,
 A:cl
@@ -2967,7 +2970,7 @@ A:adv('ikte')	Ikte
 S:pron('mun',<pers>,1du,nom)	moai
 P:v('fitnat',ind,impf,1du)	finaime
 A:g
-=D:num('golbma',pl,loc)	golmmain
+=D:Num('golbma',pl,loc)	golmmain
 =H:n('mális',pl,loc)	mállásiin
 .
 
@@ -2983,7 +2986,7 @@ A:adv('doppe')	doppe
 -P:g
 =H:v('leat',pcp2)	leamaš
 A:g
-=D:num('máŋga',sg,gen)	máŋgga
+=D:Num('máŋga',sg,gen)	máŋgga
 =H:n('jahki',sg,ill)	jahkái
 .
 
@@ -2997,7 +3000,7 @@ P:g
 =D:v('leat',ind,pr,conneg)	leat
 =H:v('riŋget',pcp2)	riŋgen
 A:g
-=D:num('moadde',sg,gen)	moatti
+=D:Num('moadde',sg,gen)	moatti
 =H:n('beaivi',sg,ill)	beaivái
 .
 
@@ -3009,7 +3012,7 @@ S:prop('Elle',sg,nom)	Elle
 P:v('leat',ind,pr,3sg)	lea
 Cs:g
 =D:gr
-==H:num('vihtta',sg,gen)	viđa
+==H:Num('vihtta',sg,gen)	viđa
 ==D:n('mánná',sg,gen)	máná
 =H:n('eadni',sg,nom)	eadni
 .
@@ -3021,7 +3024,7 @@ STA:cl
 HAB:prop('Jovnna',sg,loc)	Jovnnas
 P:v('leat',ind,pr,3pl)	leat
 S:g
-=H:num('guhtta',sg,nom)	guhtta
+=H:Num('guhtta',sg,nom)	guhtta
 =D:n('vilbealli',sg,gen)	vilbeali
 .
 
@@ -3030,7 +3033,7 @@ SMED250 Golbma olbmo bohtet.
 A1
 STA:cl
 S:g
-=H:num('golbma',sg,nom)	Golbma
+=H:Num('golbma',sg,nom)	Golbma
 =D:n('olmmoš',sg,gen)	olbmo
 P:v('boahtit',ind,pr,3pl)	bohtet
 .
@@ -3042,7 +3045,7 @@ STA:cl
 A:n('skuvla',sg,loc)	Skuvllas
 P:v('leat',ind,pr,3pl)	leat
 S:g
-=H:num('čuođiguoktelogi',sg,nom)	čuođiguoktelogi
+=H:Num('čuođiguoktelogi',sg,nom)	čuođiguoktelogi
 =D:n('mánná',sg,gen)	máná
 .
 
@@ -3055,7 +3058,7 @@ P:g
 =D:v('leat',ind,pr,1du)	letne
 =H:v('bovdejuvvot',pcp2)	bovdejuvvon
 A:g
-=D:num('golbma',pl,ill)	golmmaide
+=D:Num('golbma',pl,ill)	golmmaide
 =H:n('heajat',pl,ill)	heajaide
 A:g
 =D:pron('dát',<dem>,pl,gen)	dáid
@@ -3070,7 +3073,7 @@ S:n('suohkan',sg,nom)	Suohkan
 P:v('addit',ind,pr,3sg)	addá
 Od:n('stipeanda',sg,acc)	stipeandda
 A:g
-=D:num('golbma',sg,gen)	golmma
+=D:Num('golbma',sg,gen)	golmma
 =H:n('studeanta',sg,ill)	studentii
 .
 
@@ -3085,7 +3088,7 @@ S:g
 =H:n('oahpahus',sg,nom)	oahpahus
 A:adv('dušše')	dušše
 A:g
-=D:num('okta',sg,gen)	ovtta
+=D:Num('okta',sg,gen)	ovtta
 =H:n('skuvla',sg,loc)	skuvllas
 .
 
@@ -3099,7 +3102,7 @@ S:g
 =D:n('sámegiella',sg,gen)	sámegiela
 =H:n('oahpahus',sg,nom)	oahpahus
 A:g
-=D:num('guokte',sg,gen)	guovtti
+=D:Num('guokte',sg,gen)	guovtti
 =H:n('skuvla',sg,loc)	skuvllas
 .
 
@@ -3110,7 +3113,7 @@ STA:cl
 S:prop('Máret',sg,nom)	Máret
 P:v('goarrut',ind,impf,3sg)	goarui
 Od:g
-=D:num('vihtta',pl,acc)	viđaid
+=D:Num('vihtta',pl,acc)	viđaid
 =H:n('gáma',pl,acc)	gápmagiid
 .
 
@@ -3120,7 +3123,7 @@ A1
 COM:cl
 A:adv('gal')	Gal
 A:g
-=D:num('golbma',pl,com)	golmmaiguin
+=D:Num('golbma',pl,com)	golmmaiguin
 =H:n('fáhcca',pl,com)	fáhcaiguin
 P:g
 =D:v('galgat',cond,pr,3sg)	galggašii
@@ -3135,7 +3138,7 @@ STA:cl
 HAB:pron('mun',<pers>,1sg,loc)	Mus
 P:v('leat',ind,pr,3sg)	lea
 S:g
-=D:num('okta',sg,nom)	okta
+=D:Num('okta',sg,nom)	okta
 =H:n('guolli',sg,nom)	guolli
 .
 
@@ -3148,7 +3151,7 @@ Apcle:part('go')	go
 HAB:pron('don',<pers>,2sg,loc)	dus
 A:adv('dušše')	dušše
 S:g
-=D:num('okta',sg,nom)	okta
+=D:Num('okta',sg,nom)	okta
 =H:n('mánná',sg,nom)	mánná
 ?
 
@@ -3160,7 +3163,7 @@ S:pron('dát',<dem>,sg,nom)	Dát
 P:v('leat',ind,pr,3sg)	lea
 Cs:g
 =D:g
-==D:num('máŋga',sg,gen)	máŋgga
+==D:Num('máŋga',sg,gen)	máŋgga
 ==H:n('olmmoš',sg,acc)	olbmo
 =H:n('niesti',sg,nom)	niesti
 .
@@ -3174,7 +3177,7 @@ P:v('leat',ind,pr,3sg)	lea
 A:adv('dušše')	dušše
 Cs:g
 =D:g
-==D:num('okta',sg,gen)	ovtta
+==D:Num('okta',sg,gen)	ovtta
 ==D:n('olmmoš',sg,gen)	olbmo
 =H:n('niesti',sg,nom)	niesti
 .
@@ -3187,7 +3190,7 @@ S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('addit',ind,pr,1sg)	attán
 Od:n('girji',sg,acc)	girjji
 A:g
-=D:num('ovtta',sg,gen)	ovtta
+=D:Num('ovtta',sg,gen)	ovtta
 =H:n('oahppi',sg,ill)	oahppái
 .
 
@@ -3199,7 +3202,7 @@ S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('addit',ind,pr,1sg)	attán
 Od:n('girji',pl,acc)	girjjiid
 A:g
-=D:num('guokte',sg,gen)	guovtti
+=D:Num('guokte',sg,gen)	guovtti
 =H:n('oahppi',sg,ill)	oahppái
 .
 
@@ -3209,7 +3212,7 @@ A1
 STA:cl
 A:adv('dušše')	Dušše
 A:g
-=D:num('okta',sg,gen)	ovtta
+=D:Num('okta',sg,gen)	ovtta
 =H:n('latnja',sg,loc)	lanjas
 P:v('leat',ind,pr,3pl)	leat
 S:g
@@ -3222,7 +3225,7 @@ SMED265 Guovtti lanjas leat jorba beavddit.
 A1
 STA:cl
 A:g
-=D:num('guokte',sg,gen)	Guovtti
+=D:Num('guokte',sg,gen)	Guovtti
 =H:n('latnja',sg,loc)	lanjas
 P:v('leat',ind,pr,3pl)	leat
 S:g
@@ -3238,7 +3241,7 @@ S:pron('son',<pers>,3pl,nom)	Sii
 P:v('boahtit',ind,pr,3pl)	bohtet
 A:n('gávpot',sg,ill)	gávpogii
 A:g
-=D:num('okta',sg,com)	ovttain
+=D:Num('okta',sg,com)	ovttain
 =H:n('biila',sg,com)	biillain
 .
 
@@ -3249,7 +3252,7 @@ STA:cl
 S:pron('mun',<pers>,1pl,nom)	Mii
 P:v('bargat',ind,impf,1pl)	barggaimet
 Cs:g
-=D:num('okta',ess)	oktan
+=D:Num('okta',ess)	oktan
 =H:n('joavku',ess)	joavkun
 .
 
@@ -3260,7 +3263,7 @@ STA:cl
 S:pron('mun',<pers>,1pl,nom)	Mii
 P:v('bargat',ind,impf,1pl)	barggaimet
 Cs:g
-=D:num('guokte',ess)	guoktin
+=D:Num('guokte',ess)	guoktin
 =H:n('joavku',ess)	joavkun
 .
 
@@ -3271,7 +3274,7 @@ STA:cl
 HAB:pron('mun',<pers>,1sg,loc)	Mus
 P:v('leat',ind,pr,3pl)	leat
 S:g
-=D:num('guokte',pl,nom)	guovttit
+=D:Num('guokte',pl,nom)	guovttit
 =H:n('buksa',pl,nom)	buvssat
 .
 
@@ -3282,7 +3285,7 @@ STA:cl
 HAB:pron('mun',<pers>,1sg,loc)	Mus
 P:v('leat',ind,pr,3pl)	leat
 S:g
-=D:num('njeallje',pl,nom)	njealjit
+=D:Num('njeallje',pl,nom)	njealjit
 =H:n('fáhcca',pl,nom)	fáhcat
 .
 
@@ -3294,11 +3297,11 @@ S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('oastit',ind,impf,1sg)	osten
 Od:par
 =CJT:g
-==D:num('guokte',pl,acc)	guvttiid
+==D:Num('guokte',pl,acc)	guvttiid
 ==H:n('buksa',pl,acc)	buvssaid
 =CC:conj-s('ja')	ja
 =CJT:g
-==D:num('okta',sg,acc)	ovtta
+==D:Num('okta',sg,acc)	ovtta
 ==H:n('jáhkka',sg,acc)	jáhka
 .
 
@@ -3307,7 +3310,7 @@ SMED272 Golmma luohkás leat dušše nieiddat.
 A1
 STA:cl
 A:g
-=D:num('golbma',sg,gen)	Golmma
+=D:Num('golbma',sg,gen)	Golmma
 =H:n('luohkká',sg,loc)	luohkás
 P:v('leat',ind,pr,3pl)	leat
 A:adv('dušše')	dušše
@@ -3319,7 +3322,7 @@ SMED273 Golbma máná leat olgun dál.
 A1
 STA:cl
 S:g
-=H:num('golbma',sg,nom)	Golbma
+=H:Num('golbma',sg,nom)	Golbma
 =D:n('mánná',sg,gen)	máná
 P:v('leat',ind,pr,3pl)	leat
 A:adv('olgun')	olgun
@@ -3331,7 +3334,7 @@ SMED274 Guovtti olbmos lea beana.
 A1
 STA:cl
 HAB:g
-=D:num('guokte',sg,gen)	Guovtti
+=D:Num('guokte',sg,gen)	Guovtti
 =H:n('olmmoš',sg,loc)	olbmos
 P:v('leat',ind,pr,3sg)	lea
 S:n('beana',sg,nom)	beana
@@ -3346,11 +3349,11 @@ P:v('vuolgit',ind,pr,1pl)	vuolgit
 A:prop('London',plc,sg,ill)	Londonii
 A:par
 =CJT:g
-==D:num('golbma',sg,com)	golmmain
+==D:Num('golbma',sg,com)	golmmain
 ==H:n('mánná',sg,com)	mánáin
 =CC:conj-s('ja')	ja
 =CJT:g
-==D:num('okta',sg,com)	ovttain
+==D:Num('okta',sg,com)	ovttain
 ==H:n('beana',sg,com)	beatnagiin
 .
 
@@ -3362,7 +3365,7 @@ S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('bidjat',ind,impf,1sg)	bidjen
 Od:n('girji',pl,acc)	girjjiid
 A:g
-=D:num('njeallje',sg,gen)	njealji
+=D:Num('njeallje',sg,gen)	njealji
 =H:n('kássa',sg,ill)	kássii
 .
 
@@ -3372,7 +3375,7 @@ A1
 STA:cl
 S:g
 =D:g
-==D:num('vihtta',sg,gen)	Viđa
+==D:Num('vihtta',sg,gen)	Viđa
 ==H:n('mánná',sg,gen)	máná
 =H:n('bivttas',pl,nom)	biktasat
 P:g
@@ -3387,7 +3390,7 @@ STA:cl
 S:pron('mun',<pers>,1du,nom)	Moai
 P:v('leat',ind,impf,1du)	leimme
 A:g
-=D:num('golbma',pl,loc)	golmmain
+=D:Num('golbma',pl,loc)	golmmain
 =H:n('heajat',pl,loc)	heajain
 .
 
@@ -3396,7 +3399,7 @@ SMED279 Galliid sabehiid don osten?
 A1
 QUE:cl
 Od:g
-=D:num('galle',pl,acc)	Galliid
+=D:Num('galle',pl,acc)	Galliid
 =H:n('sabet',pl,acc)	sabehiid
 S:pron('don',<pers>,2sg,nom)	don
 P:v('oastit',ind,impf,1sg)	osten
@@ -3410,7 +3413,7 @@ S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('oastit',ind,impf,1sg)	osten
 A:adv('dušše')	dušše
 Od:g
-=D:num('okta',pl,acc)	ovttaid
+=D:Num('okta',pl,acc)	ovttaid
 =H:n('sabet',pl,acc)	sabehiid
 .
 
@@ -3422,7 +3425,7 @@ S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('oaidnit',ind,impf,1sg)	oidnen
 Od:g
 =D:pron('dat',<dem>,sg,acc)	dan
-=H:n('golmmas',num,sg,acc)	golbmasa
+=H:n('golmmas',Num,sg,acc)	golbmasa
 A:n('gávpešillju',sg,loc)	gávpešiljus
 .
 
@@ -3434,7 +3437,7 @@ P:v('fállat',imp,pr,2sg)	Fála
 Od:n('gáffe',sg,acc)	gáfe
 A:g
 =D:pron('duot',<dem>,sg,gen)	duon
-=H:n('golmmas',num,sg,ill)	golbmasii
+=H:n('golmmas',Num,sg,ill)	golbmasii
 A:adv('maid')	maid
 .
 
@@ -3444,7 +3447,7 @@ A1
 STA:cl
 A:g
 =D:pron('dát',<dem>,sg,gen)	Dán
-=H:n('golmmas',num,sg,loc)	golbmasis
+=H:n('golmmas',Num,sg,loc)	golbmasis
 P:g
 =D:v('ii',neg,ind,3sg)	ii
 =H:v('leat',ind,pr,conneg)	leat
@@ -4501,7 +4504,7 @@ STA:cl
 S:prop('Ánne',sg,nom)	Ánne
 P:v('goddit',ind,impf,3sg)	gottii
 Od:g
-=H:num('golbma',sg,acc)	golbma
+=H:Num('golbma',sg,acc)	golbma
 =D:n('guolli',sg,acc)	guoli
 .
 
@@ -4511,7 +4514,7 @@ A1
 STA:cl
 A:pron('son',<pers>,3pl,loc)	Sis
 P:v('mannet',ind,pr,3sg)	manne
-S:n('máŋggas',num,sg,nom)	máŋggas
+S:n('máŋggas',Num,sg,nom)	máŋggas
 A:adv('dohko')	dohko
 .
 
@@ -4521,7 +4524,7 @@ A1
 STA:cl
 S:n('diibmu',sg,nom)	Diibmu
 P:v('leat',ind,pr,3sg)	lea
-Cs:num('ovcci',sg,nom)	ovcci
+Cs:Num('ovcci',sg,nom)	ovcci
 .
 
 SOURCE: text
@@ -4529,7 +4532,7 @@ SMED352 Galliin heajain dii lehpet leamaš?
 A1
 QUE:cl
 A:g
-=D:num('galle',pl,loc)	Galliin
+=D:Num('galle',pl,loc)	Galliin
 =H:n('heajat',pl,loc)	heajain
 S:pron('don',<pers>,2pl,nom)	dii
 P:g
@@ -4542,7 +4545,7 @@ SMED353 Galliid heajaid dii lehpet doallan?
 A1
 QUE:cl
 Od:g
-=D:num('galle',pl,acc)	Galliid
+=D:Num('galle',pl,acc)	Galliid
 =H:n('heajat',pl,acc)	heajaid
 S:pron('don',<pers>,2pl,nom)	dii
 P:g
@@ -4558,7 +4561,7 @@ A:n('čoahkkin',sg,loc)	Čoahkkimis
 P:v('leat',ind,impf,3pl)	ledje
 A:adv('dušše')	dušše
 S:g
-=H:num('moadde',sg,nom)	moadde
+=H:Num('moadde',sg,nom)	moadde
 =D:n('olmmoš',sg,gen)	olbmo
 .
 
@@ -4568,7 +4571,7 @@ A1
 STA:cl
 S:pron('mun',<pers>,1pl,nom)	Mii
 P:v('oažžut',ind,impf,1pl)	oaččuimet
-Od:n('moattis',num,sg,acc)	moaddása
+Od:n('moattis',Num,sg,acc)	moaddása
 Co:n('veahkki',ess)	veahkkin
 .
 
@@ -4578,7 +4581,7 @@ A1
 STA:cl
 S:pron('mun',<pers>,1pl,nom)	Mii
 P:v('leat',ind,impf,1pl)	leimmet
-Cs:n('viđas',num,sg,nom)	viđas
+Cs:n('viđas',Num,sg,nom)	viđas
 A:g
 =D:pron('seamma',<idef>,attr)	seamma
 =H:n('joavku',sg,loc)	joavkkus
@@ -4589,13 +4592,13 @@ SMED357 Golbmasis ledje bliánttat mielde ja guoktásis ledje peannat.
 A1
 STA:par
 CJT:cl
-=HAB:n('golmmas',num,sg,loc)	Golbmasis
+=HAB:n('golmmas',Num,sg,loc)	Golbmasis
 =P:v('leat',ind,impf,3pl)	ledje
 =S:n('bliánta',pl,nom)	bliánttat
 =A:adv('mielde')	mielde
 CO:conj-s('ja')	ja
 CJT:cl
-=HAB:n('guovttis',num,sg,loc)	guoktásis
+=HAB:n('guovttis',Num,sg,loc)	guoktásis
 =P:v('leat',ind,impf,3pl)	ledje
 =S:n('peanna',pl,nom)	peannat
 .
@@ -4608,7 +4611,7 @@ S:pron('mun',<pers>,1pl,nom)	Mii
 P:v('leat',ind,pr,1pl)	leat
 A:adv('oktiibuot')	oktiibuot
 Cs:g
-=H:num('guoktelogiguokte',sg,nom)	guoktelogiguokte
+=H:Num('guoktelogiguokte',sg,nom)	guoktelogiguokte
 =D:n('studeanta',sg,gen)	studeantta
 .
 
@@ -4617,7 +4620,7 @@ SMED359 Gallit buvssat dus leat?
 A1
 QUE:cl
 S:g
-=D:num('galle',pl,nom)	Gallit
+=D:Num('galle',pl,nom)	Gallit
 =H:n('buksa',sg,gen,poss2sg)	buvssat
 HAB:pron('don',<pers>,2sg,loc)	dus
 P:v('leat',ind,pr,3pl)	leat
@@ -4628,7 +4631,7 @@ SMED360 Galle báiddi don leat coggan otne?
 A1
 QUE:cl
 Od:g
-=D:num('galle',sg,acc)	Galle
+=D:Num('galle',sg,acc)	Galle
 =H:n('báidi',sg,acc)	báiddi
 S:pron('don',<pers>,2sg,nom)	don
 P:g
@@ -4642,7 +4645,7 @@ SMED361 Galle báiddi dus leat?
 A1
 QUE:cl
 S:g
-=H:num('galle',sg,nom)	Galle
+=H:Num('galle',sg,nom)	Galle
 =D:n('báidi',sg,gen)	báiddi
 HAB:pron('don',<pers>,2sg,loc)	dus
 P:v('leat',ind,pr,3pl)	leat
@@ -4655,7 +4658,7 @@ STA:cl
 HAB:pron('mun',<pers>,1sg,loc)	Mus
 P:v('leat',ind,pr,3pl)	leat
 S:g
-=D:num('guokte',pl,nom)	guovttit
+=D:Num('guokte',pl,nom)	guovttit
 =H:n('buksa',pl,nom)	buvssat
 .
 
@@ -4668,7 +4671,7 @@ P:g
 =D:v('leat',ind,pr,1sg)	lean
 =H:v('coggat',pcp2)	coggan
 Od:g
-=D:num('máŋga',sg,acc)	máŋga
+=D:Num('máŋga',sg,acc)	máŋga
 =H:n('báidi',sg,acc)	báiddi
 A:adv('otne')	otne
 .
