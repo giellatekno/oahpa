@@ -36,7 +36,7 @@ SOURCE: text
 SMEC3) Guldalehket!
 A1
 COM:cl
-P:v('guldalit',imp,pr,2PL)	Guldalehket
+P:v('guldalit',Imp,2PL)	Guldalehket
 !
 
 SOURCE: text
@@ -59,7 +59,7 @@ SOURCE: text
 SMEC6) Viehkaleadnu dohko!
 A1
 COM:cl
-P:v('viehkalit',imp,pr,1DU)	Viehkaleadnu
+P:v('viehkalit',Imp,1DU)	Viehkaleadnu
 A:adv('dohko')	dohko
 !
 
@@ -75,7 +75,7 @@ SOURCE: text
 SMEC8) Čájeheahkki munnje!
 A1
 COM:cl
-P:v('čájehit',imp,pr,2DU)	Čájeheahkki
+P:v('čájehit',Imp,2DU)	Čájeheahkki
 A:pron('mun',<pers>,1sg,ill)	munnje
 !
 
@@ -83,7 +83,7 @@ SOURCE: text
 SMEC9) Muital midjiide!
 A1
 COM:cl
-P:v('muitalit',imp,pr,2SG)	Muital
+P:v('muitalit',Imp,2SG)	Muital
 A:pron('mun',<pers>,1pl,ill)	midjiide
 !
 
@@ -91,7 +91,7 @@ SOURCE: text
 SMEC10) Áilu vujii skohteriin.
 A1
 STA:cl
-S:prop('Áilu',Mal,sg,nom)	Áilu
+S:prop('Áilu',sg,nom)	Áilu
 P:v('vuodjit',ind,impf,3sg)	vujii
 A:n('skohter',sg,com)	skohteriin
 .
@@ -109,7 +109,7 @@ SOURCE: text
 SMEC12) Elle beahtahalai gávpeolbmái.
 A1
 STA:cl
-S:prop('Elle',Fem,sg,nom)	Elle
+S:prop('Elle',sg,nom)	Elle
 P:v('beahtahallat',ind,impf,3sg)	beahtahalai
 A:n('gávpeolmmái',sg,ill)	gávpeolbmái
 .
@@ -221,7 +221,7 @@ A1
 QUE:cl
 P:v('oahppat',ind,impf,3sg)	Oahpai
 Vpcle:part('go')	go
-S:prop('Sire',Fem,sg,nom)	Sire
+S:prop('Sire',sg,nom)	Sire
 Od:n('sámegiella',sg,acc)	sámegiela
 ?
 
@@ -288,7 +288,7 @@ SOURCE: text
 SMEC31) Bija gahpira oaivái.
 A1
 STA:cl
-P:v('bidjat',imp,pr,2SG)	Bija
+P:v('bidjat',Imp,2SG)	Bija
 Od:n('gahpir',sg,acc)	gahpira
 A:n('oaivi',sg,ill)	oaivái
 .
@@ -414,7 +414,7 @@ A1
 STA:cl
 S:n('girji',sg,nom)	Girji
 P:v('leat',ind,pr,3sg)	lea
-Cs:prop('Máret',Fem,sg,gen)	Máreha
+Cs:prop('Máret',sg,gen)	Máreha
 .
 
 SOURCE: text
@@ -479,7 +479,7 @@ SOURCE: text
 SMEC49) Máret barggai oahpaheaddjin.
 A1
 STA:cl
-S:prop('Máret',Fem,sg,nom)	Máret
+S:prop('Máret',sg,nom)	Máret
 P:v('bargat',ind,impf,3sg)	barggai
 Cs:n('oahpaheaddji',ess)	oahpaheaddjin
 .
@@ -490,14 +490,14 @@ A1
 STA:cl
 S:pron('son',<pers>,3sg,nom)	Son
 P:v('gohčodit',Pass,ind,impf,3sg)	gohčoduvvui
-Cs:prop('Mihkkalaš',Mal,ess)	Mihkkalažžan
+Cs:prop('Mihkkalaš',ess)	Mihkkalažžan
 .
 
 SOURCE: text
 SMEC51) Niillas válljejuvvošii áirrasin.
 A1
 STA:cl
-S:prop('Niillas',Mal,sg,nom)	Niillas
+S:prop('Niillas',sg,nom)	Niillas
 P:v('válljet',Pass,cond,pr,3sg)	válljejuvvošii
 Cs:n('áirras',ess)	áirrasin
 .
@@ -506,7 +506,7 @@ SOURCE: text
 SMEC52) Ánde bázii leaskan.
 A1
 STA:cl
-S:prop('Ánde',Mal,sg,nom)	Ánde
+S:prop('Ánde',sg,nom)	Ánde
 P:v('báhcit',ind,impf,3sg)	bázii
 Cs:n('leaska',ess)	leaskan
 .
@@ -608,7 +608,7 @@ SOURCE: text
 SMEC62) Márehis lea oaivi bávččas.
 A1
 STA:cl
-HAB:prop('Máret',Fem,sg,loc)	Márehis
+HAB:prop('Máret',sg,loc)	Márehis
 P:v('leat',ind,pr,3sg)	lea
 S:n('oaivi',sg,nom)	oaivi
 Cs:adj('bávččas',sg,nom)	bávččas
@@ -618,7 +618,7 @@ SOURCE: text
 SMEC63) Susánná lei mus biigán diibmá.
 A1
 STA:cl
-S:prop('Susánná',Fem,sg,nom)	Susánná
+S:prop('Susánná',sg,nom)	Susánná
 P:v('leat',ind,impf,3sg)	lei
 A:pron('mun',<pers>,1sg,loc)	mus
 Cs:n('biigá',ess)	biigán
@@ -694,7 +694,7 @@ A1
 QUE:cl
 P:v('goarrut',cond,pr,3sg)	Goarušii
 Vpcle:part('go')	go
-S:prop('Niilas',Mal,sg,nom)	Niilas
+S:prop('Niilas',sg,nom)	Niilas
 Od:n('gákti',sg,acc)	gávtti
 ?
 
@@ -741,7 +741,7 @@ SOURCE: text
 SMEC76) Áile liikošii stoahkat mánáiguin.
 A1
 STA:cl
-S:prop('Áile',Fem,sg,nom)	Áile
+S:prop('Áile',sg,nom)	Áile
 P:v('liikot',cond,pr,3sg)	liikošii
 A:v('stoahkat',inf)	stoahkat
 A:n('mánná',pl,com)	mánáiguin
@@ -858,7 +858,7 @@ SOURCE: text
 SMEC88) Boahtti veahkkin!
 A1
 COM:cl
-P:v('boahtit',imp,pr,2DU)	Boahtti
+P:v('boahtit',Imp,2DU)	Boahtti
 Cs:n('veahkki',ess)	veahkkin
 !
 
@@ -866,7 +866,7 @@ SOURCE: text
 SMEC89) Álgge oahpaheaddjin!
 A1
 COM:cl
-P:v('álgit',imp,pr,2SG)	Álgge
+P:v('álgit',Imp,2SG)	Álgge
 Cs:n('oahpaheaddji',ess)	oahpaheaddjin
 !
 ]]>
@@ -897,7 +897,7 @@ SOURCE: text
 SMEC91) Máhtte sáhtášii boahtit.
 A1
 STA:cl
-S:prop('Máhtte',Mal,sg,nom)	Máhtte
+S:prop('Máhtte',sg,nom)	Máhtte
 P:g
 =D:v('sáhttit',cond,pr,3sg)	sáhtášii
 =H:v('boahtit',inf)	boahtit
@@ -907,7 +907,7 @@ SOURCE: text
 SMEC92) Orrot jaska!
 A1
 COM:cl
-P:v('orrut',imp,pr,2PL)	Orrot
+P:v('orrut',Imp,2PL)	Orrot
 A:adv('jaska')	jaska
 !
 
@@ -925,7 +925,7 @@ SOURCE: text
 SMEC94) Máhtte heittii vuollaga juhkamis.
 A1
 STA:cl
-S:prop('Máhtte',Mal,sg,nom)	Máhtte
+S:prop('Máhtte',sg,nom)	Máhtte
 P:v('heaitit',ind,impf,3sg)	heittii
 A:icl
 =Od:n('vuola',sg,acc)	vuollaga
@@ -947,7 +947,7 @@ SMEC96) Allet mana vuos!
 A1
 COM:cl
 P:g
-=D:v('ii',neg,imp,2PL)	Allet
+=D:v('ii',neg,Imp,2PL)	Allet
 =H:v('mannat',pr,conneg)	mana
 A:adv('vuos')	vuos
 !
@@ -986,7 +986,7 @@ A1
 STA:cl
 S:g
 =H:pron('mun',<pers>,1du,nom)	Moai
-=D:prop('Biret',Fem,sg,com)	Birehiin
+=D:prop('Biret',sg,com)	Birehiin
 P:v('bargat',cond,pr,1du)	barggašeimme
 A:n('mánáidgárdi',sg,loc)	mánáidgárddis
 .
@@ -1063,7 +1063,7 @@ S:pron('son',<pers>,3sg,nom)	son
 P:g
 =D:v('nagodit',cond,pr,3sg)	nagodivččii
 =H:v('bissehit',inf)	bissehit
-Od:prop('Octavius',Mal,sg,acc)	Octavius
+Od:prop('Octavius',sg,acc)	Octavius
 .
 
 SOURCE: text
@@ -1339,7 +1339,7 @@ SOURCE: text
 SMEC127) Máhtte vuolgá Ohcejohkii čuoigamiidda.
 A1
 STA:cl
-S:prop('Máhtte',Mal,sg,nom)	Máhtte
+S:prop('Máhtte',sg,nom)	Máhtte
 P:v('vuolgit',ind,pr,3sg)	vuolgá
 A:prop('Ohcejohka',plc,sg,ill)	Ohcejohkii
 A:n('čuoigan',pl,ill)	čuoigamiidda
@@ -1481,7 +1481,7 @@ Od:g
 =D:adj('njálggat',attr)	njálgga
 =H:n('gáhkku',pl,acc)	gáhkuid
 A:g
-=D:prop('Hánsa',Mal,sg,gen)	Hánssa
+=D:prop('Hánsa',sg,gen)	Hánssa
 =H:g
 ==D:adj('ođas',attr)	ođđa
 ==H:n('láibbohat',sg,loc)	láibbohagas
@@ -1566,7 +1566,7 @@ SOURCE: text
 SMEC144) Máhtes leat ođđa sabehat.
 A1
 STA:cl
-HAB:prop('Máhtte',Mal,sg,loc)	Máhtes
+HAB:prop('Máhtte',sg,loc)	Máhtes
 P:v('leat',ind,pr,3pl)	leat
 S:g
 =D:adj('ođas',attr)	ođđa
@@ -1618,7 +1618,7 @@ SOURCE: text
 SMEC148) Ánne lea munno nuoramus nieida.
 A1
 STA:cl
-S:prop('Ánne',Fem,sg,nom)	Ánne
+S:prop('Ánne',sg,nom)	Ánne
 P:v('leat',ind,pr,3sg)	lea
 Cs:g
 =D:pron('mun',<pers>,1du,gen)	munno
@@ -1643,7 +1643,7 @@ A1
 STA:cl
 S:g
 =H:n('Biret-guovttos',sg,nom)	Biret-guovttos
-=D:prop('Juffá',Mal,sg,com)	Juffáin
+=D:prop('Juffá',sg,com)	Juffáin
 P:v('leat',ind,pr,3du)	leaba
 Cs:g
 =H:adj('čeahppi',pl,nom)	čeahpit
@@ -1657,7 +1657,7 @@ QUE:cl
 Cs:pron('gii',<int>,sg,nom)	Gii
 S:g
 =D:pron('dat',<dem>,sg,nom)	dat
-=H:prop('Spider-Man',Mal,sg,nom)	Spider-Man
+=H:prop('Spider-Man',sg,nom)	Spider-Man
 P:v('leat',ind,pr,3sg)	lea
 ?
 
@@ -1676,7 +1676,7 @@ SOURCE: text
 SMEC153) Máret beasai dálu eamidin.
 A1
 STA:cl
-S:prop('Máret',Fem,sg,nom)	Máret
+S:prop('Máret',sg,nom)	Máret
 P:v('beassat',ind,impf,3sg)	beasai
 Cs:g
 =D:n('dállu',sg,gen)	dálu
@@ -1687,7 +1687,7 @@ SOURCE: text
 SMEC154) Máhtte lea viššalis bargi.
 A1
 STA:cl
-S:prop('Máhtte',Mal,sg,nom)	Máhtte
+S:prop('Máhtte',sg,nom)	Máhtte
 P:v('leat',ind,pr,3sg)	lea
 Cs:g
 =D:adj('viššal',attr)	viššalis
@@ -1723,7 +1723,7 @@ SMEC157) Kirsti Paltto lei Sámi Girječálliid Searvvi vuosttaš jođiheaddji.
 A1
 STA:cl
 S:g
-=D:prop('Kirsti',Fem,sg,attr)	Kirsti
+=D:prop('Kirsti',sg,attr)	Kirsti
 =H:prop('Paltto',Sur,sg,nom)	Paltto
 P:v('leat',ind,impf,3sg)	lei
 Cs:g
@@ -1976,7 +1976,7 @@ SOURCE: text
 SMEC176) Márehis lea oaivi nu bávččas.
 A1
 STA:cl
-HAB:prop('Máret',Fem,sg,loc)	Márehis
+HAB:prop('Máret',sg,loc)	Márehis
 P:v('leat',ind,pr,3sg)	lea
 S:n('oaivi',sg,nom)	oaivi
 Cs:g
@@ -2197,7 +2197,7 @@ S:pron('son',<pers>,3pl,nom)	sii
 P:v('goarrut',ind,impf,3pl)	gorro
 Od:par
 =CJT:n('roavgu',pl,acc)	roavgguid
-=,
+,
 =CJT:n('dorka',pl,acc)	dorkkaid
 =CC:conj-s('ja')	ja
 =CJT:n('gáma',pl,acc)	gápmagiid
@@ -2215,9 +2215,9 @@ P:v('oaidnit',ind,pr,1pl)	oaidnit
 Od:n('gákti',pl,acc)	gávttiid
 A:par
 =CJT:n('heajat',pl,loc)	heajain
-=,
+,
 =CJT:n('konfirmašuvdna',sg,loc)	konfirmašuvnnas
-=,
+,
 =CJT:n('gásta',sg,loc)	gásttas
 =CC:conj-s('ja')	ja
 =CJT:n('juovlafeasta',sg,loc)	juovlafeasttas
@@ -2241,7 +2241,7 @@ A:icl
 ==D:g
 ===D:pron('buot',<idef>)	buot
 ===H:adj('ođas',sup,attr)	ođđaseamos
-==D:prop('Harry',Mal,sg,gen)	Harry
+==D:prop('Harry',sg,gen)	Harry
 ==H:n('Potter-filbma',sg,acc)	Potter-filmma
 .
 
@@ -2288,7 +2288,7 @@ S:pron('mun',<pers>,1pl,nom)	Mii
 P:v('leat',ind,pr,1pl)	leat
 Cs:par
 =CJT:adj('birolaš',pl,nom)	birolaččat
-=,
+,
 =CJT:n('bahágas',pl,nom)	bahágasat
 =CC:conj-s('ja')	ja
 =CJT:n('vearrodahkki',pl,nom)	vearrodahkkit
@@ -2353,7 +2353,7 @@ A:g
 =H:g
 ==H:Num('15-20',sg,acc)	15-20
 ==D:n('jahki',sg,gen)	jagi
-=,
+,
 A:par
 =CC:conj-s('sihke')	sihke
 =CJT:n('mánáidskuvla',sg,loc)	mánáidskuvllas
@@ -2370,9 +2370,9 @@ P:v('leat',ind,impf,3pl)	ledje
 A:adv('maiddái')	maiddái
 S:par
 =CJT:n('bivttas',pl,nom)	biktasat
-=,
+,
 =CJT:n('bierggas',pl,nom)	biergasat
-=,
+,
 =CJT:n('goikeborramuš',pl,nom)	goikeborramušat
 =CJT:abbr('jnv',adv)	jnv.
 .
@@ -2385,7 +2385,7 @@ A:n('mearragáddi',sg,loc)	Mearragáttis
 P:v('leat',ind,pr,3pl)	leat
 S:par
 =CJT:n('fiervábuvri',sg,nom)	fiervábuvri
-=,
+,
 =CJT:n('návsti',sg,nom)	návsti
 =CC:conj-s('ja')	ja
 =CJT:n('vancagoahti',sg,nom)	vancagoahti
@@ -2449,14 +2449,14 @@ A:g
 P:v('leat',ind,pr,3sg)	lea
 S:par
 =CJT:n('vuostá',sg,nom)	vuostá
-=,
+,
 =CJT:par
 ==CJT:n('sáltemárfi',sg,nom)	sáltemárfi
 ==CC:conj-s('ja')	ja
 ==CJT:n('majonesa',sg,nom)	majonesa
-=,
+,
 =CJT:n('vuoivvasmeastu',sg,nom)	vuoivvasmeastu
-=,
+,
 =CJT:n('muorjemeastu',sg,nom)	muorjemeastu
 =CC:conj-s('dahje')	dahje
 =CJT:n('luossa',sg,nom)	luossa
@@ -2471,7 +2471,7 @@ SMEC206) Jack Sparrow sártnui Čáhppes Bearrala birra.
 A1
 STA:cl
 S:g
-=D:prop('Jack',Mal,sg,attr)	Jack
+=D:prop('Jack',sg,attr)	Jack
 =H:prop('Sparrow',Sur,sg,nom)	Sparrow
 P:v('sárdnut',ind,impf,3sg)	sártnui
 A:g
@@ -2912,7 +2912,7 @@ A:g
 ==H:n('vuorru',sg,gen)	vuoru
 =D:adj('goalmmát',ord,attr)	goalmmát
 =H:n('minukta',sg,loc)	minuvttas
-S:prop('Anette',Fem,sg,nom)	Anette
+S:prop('Anette',sg,nom)	Anette
 P:v('nivkalit',ind,impf,3sg)	nivkalii
 Od:n('čiehkačievččastat',sg,acc)	čiehkačievččastaga
 A:adv('čáppat',<A>)	čábbát
@@ -2957,7 +2957,7 @@ SMEC242) Ailo Gaup vuittii nuppi maŋemuš máilmmicupgilvvu freestyle motocross
 A1
 STA:cl
 S:g
-=D:prop('Ailo',Mal,sg,attr)	Ailo
+=D:prop('Ailo',sg,attr)	Ailo
 =H:prop('Gaup',Sur,sg,nom)	Gaup
 P:v('vuoitit',ind,impf,3sg)	vuittii
 Od:g
@@ -2976,7 +2976,7 @@ SOURCE: text
 SMEC243) Bija fal ruđaid njuolgga mu kontui.
 A1
 STA:cl
-P:v('bidjat',imp,pr,2SG)	Bija
+P:v('bidjat',Imp,2SG)	Bija
 A:adv('fal')	fal
 Od:n('ruhta',pl,acc)	ruđaid
 A:adv('njuolgga')	njuolgga
@@ -3149,7 +3149,7 @@ A1
 STA:cl
 S:g
 =D:adj('guovdageaidnulaš',attr)	Guovdageaidnulaš
-=D:prop('Jostein',Mal,sg,attr)	Jostein
+=D:prop('Jostein',sg,attr)	Jostein
 =H:prop('Biti',Sur,sg,nom)	Biti
 P:v('šaddat',ind,impf,3sg)	šattai
 Cs:n('Eurohpameašttir',ess)	Eurohpameašttirin
@@ -3236,7 +3236,7 @@ SOURCE: text
 SMEC262) Juhán vulggii viđain nieiddain.
 A1
 STA:cl
-S:prop('Juhán',Mal,sg,nom)	Juhán
+S:prop('Juhán',sg,nom)	Juhán
 P:v('vuolgit',ind,impf,3sg)	vulggii
 A:g
 =D:Num('vihtta',sg,com)	viđain
@@ -3481,13 +3481,13 @@ S:g
 =D:pron('mun',<pers>,1sg,gen)	Mu
 =H:g
 ==H:n('vánhen',pl,nom)	vánhemat
-==,
+,
 ==D:par
 ===CC:conj-s('sihke')	sihke
 ===CJT:n('áhčči',sg,nom)	áhčči
 ===CC:conj-s('ja')	ja
 ===CJT:n('eadni',sg,nom)	eadni
-===,
+,
 P:g
 =D:v('leat',ind,pr,3sg,foc/ba)	leaba
 =H:v('jápmit',pcp2)	jápmán
@@ -3501,7 +3501,7 @@ Od:g
 =D:pron('muhtun',<idef>,attr)	Muhtun
 =D:n('sápmi',sg,gen)	sámi
 =H:n('bivttas',pl,acc)	biktasiid
-=,
+,
 =D:par
 ==CC:conj-c('nugo')	nugo
 ==CJT:n('gáma',pl,acc)	gápmagiid
@@ -3512,7 +3512,7 @@ S:pron('son',<pers>,3pl,nom)	sii
 P:v('geavahit',ind,impf,3pl)	geavahedje
 A:g
 =H:adv('guhkit',comp)	guhkit
-=,
+,
 =D:g
 ==D:adv('gitta')	gitta
 ==H:g
@@ -3534,7 +3534,7 @@ A:g
 =H:g
 ==D:adj('eanaš',attr)	eanaš
 ==H:n('guovlu',pl,loc)	guovlluin
-==,
+,
 =D:acl
 ==CC:conj-c('nugo')	nugo
 ==A:g
@@ -3558,7 +3558,7 @@ Od:g
 =D:pron('mun',<pers>,1sg,gen)	mu
 =H:n('viellja',sg,acc)	vielja
 ,
-VOC:prop('Tore',Mal,sg,nom)	Tore
+VOC:prop('Tore',sg,nom)	Tore
 ?
 
 SOURCE: text
@@ -3569,11 +3569,11 @@ A:n('návetgoahti',sg,loc)	Návetgoađis
 P:v('leat',ind,impf,3pl)	ledje
 S:g
 =H:n('eallu',pl,nom)	ealut
-=,
+,
 =D:par
 ==CC:conj-c('nugo')	nugo
 ==CJT:n('sávza',pl,nom)	sávzzat
-==,
+,
 ==CJT:n('gáica',pl,nom)	gáiccat
 ==CC:conj-s('ja')	ja
 ==CJT:n('gussa',pl,nom)	gusat
@@ -3587,12 +3587,12 @@ S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('leat',ind,pr,1sg)	lean
 Cs:g
 =H:g
-==D:prop('Will',Mal,sg,attr)	Will
+==D:prop('Will',sg,attr)	Will
 ==H:prop('Turner',Sur,sg,nom)	Turner
-==,
+,
 =D:g
-==D:prop('Sáppatbáddi',Mal,sg,gen)	Sáppatbátti
-==D:prop('Turner',Mal,sg,gen)	Turnera
+==D:prop('Sáppatbáddi',sg,gen)	Sáppatbátti
+==D:prop('Turner',sg,gen)	Turnera
 ==H:n('bárdni',sg,nom)	bárdni
 !
 
@@ -3609,13 +3609,13 @@ S:g
 ===H:adj('ollu',attr)	ollu
 ==H:g-
 ===H:n('muorji',pl,nom)	muorjjit
-=,
+,
 =D:par
 ==CO:conj-s('sihke')	sihke
 ==CJT:n('jokŋa',pl,nom)	joŋat
-==,
+,
 ==CJT:n('sarrit',pl,nom)	sarridat
-==,
+,
 ==CJT:n('čáhppesmuorji',pl,nom)	čáhppesmuorjjit
 ==CC:conj-s('ja')	ja
 ==CJT:n('váran',pl,nom)	váramat
@@ -3630,7 +3630,7 @@ P:v('leat',ind,impf,1pl)	leimmet
 A:adv('doppe')	doppe
 A:g
 =H:n('bearjadat',sg,gen)	bearjadaga
-=,
+,
 =D:g
 ==D:pron('mun',<pers>,1sg,gen)	mu
 ==H:n('riegádanbeaivi',sg,gen)	riegádanbeaivvi
@@ -3647,7 +3647,7 @@ Od:icl
 =P:v('čállit',inf)	čállit
 =Od:g
 ==H:n('sámegiella',sg,acc)	sámegiela
-==,
+,
 ==D:g
 ===D:pron('mun',<pers>,1sg,gen)	mu
 ===H:n('eatnigiella',sg,acc)	eatnigiela
@@ -3661,9 +3661,9 @@ CO:conj-s('muhto')	Muhto
 S:g
 =D:g
 ==D:pron('diet',<dem>,sg,nom)	diet
-==D:prop('Will',Mal,sg,attr)	Will
+==D:prop('Will',sg,attr)	Will
 ==H:prop('Turner',Sur,sg,nom)	Turner
-=,
+,
 =H:pron('son',<pers>,3sg,nom)	son
 Apcle:part('nai')	nai
 P:v('leat',ind,pr,3sg)	lea
@@ -3682,7 +3682,7 @@ A1
 STA:cl
 Ainterj:intj('hei')	Hei
 ,
-P:v('boahtit',imp,pr,2SG)	boađe
+P:v('boahtit',Imp,2SG)	boađe
 S:pron('don',<pers>,2sg,nom,foc/ge)	donge
 !
 
@@ -3716,7 +3716,7 @@ CJT:cl
 =P:g
 ==D:v('leat',ind,pr,3sg)	lea
 ==H:v('jápmit',pcp2)	jápmán
-=,
+,
 CO:conj-s('muhto')	muhto
 CJT:cl
 =S:g
@@ -3770,7 +3770,7 @@ CJT:cl
 ==H:prp-post('ovddabeallái')	ovddabeallái
 CO:conj-s('ja')	ja
 CJT:cl
-=S:prop('Asllat',Mal,sg,nom)	Asllat
+=S:prop('Asllat',sg,nom)	Asllat
 =P:g
 ==D:v('nagodit',ind,impf,3sg)	nagodii
 ==H:v('hoigadit',inf)	hoigadit
@@ -3794,7 +3794,7 @@ CJT:cl
 =A:g
 ==D:adj('báhkas',attr)	báhkka
 ==H:n('čáhci',sg,com)	čáziin
-=,
+,
 CO:conj-s('ja')	ja
 CJT:cl
 =A:adv('de')	de
@@ -3810,7 +3810,7 @@ SMEC297) Harry viežžá báđi návsttis ja dainna vuoššat guliid dolas.
 A1
 STA:par
 CJT:cl
-=S:prop('Harry',Mal,sg,nom)	Harry
+=S:prop('Harry',sg,nom)	Harry
 =P:v('viežžat',ind,pr,3sg)	viežžá
 =Od:n('báhti',sg,acc)	báđi
 =A:n('návsti',sg,loc)	návsttis
@@ -3837,7 +3837,7 @@ CJT:cl
 ==D:adj('ollu',attr)	ollu
 ==H:n('láddelaš',pl,nom)	láddelaččat
 =A:prop('Sápmi',plc,sg,ill)	Sápmái
-=,
+,
 CO:conj-s('ja')	ja
 CJT:cl
 =HAB:pron('son',<pers>,3pl,loc)	sis
@@ -3883,7 +3883,7 @@ CJT:cl
 ==D:pron('ieš',<refl>,gen,poss3sg)	iežas
 ==D:n('guovlu',sg,gen)	guovllu
 ==H:n('gáktemálle',sg,acc)	gáktemálle
-=,
+,
 CO:conj-s('muhto')	muhto
 CJT:cl
 =P:g
@@ -3908,7 +3908,7 @@ CJT:cl
 =A:g
 ==D:prop('Olmmáivággi',plc,sg,loc)	Olmmáivákkis
 ==H:adv('eret')	eret
-=,
+,
 CO:conj-s('ja')	ja
 CJT:cl
 =P:g
@@ -3929,7 +3929,7 @@ CJT:cl
 =A:adv('de')	De
 =P:v('rahpasit',ind,impf,3sg)	rahpasii
 =S:n('uksa',sg,nom)	uksa
-=,
+,
 CO:conj-s('ja')	ja
 CJT:cl
 =S:g
@@ -3942,7 +3942,7 @@ CJT:cl
 ===D:pron('dát',<dem>,sg,gen)	dán
 ===H:n('eana',sg,gen)	eatnama
 ==H:prp-post('nalde')	nalde
-=,
+,
 CO:conj-s('ja')	ja
 CJT:cl
 =S:pron('son',<pers>,3sg,nom)	son
@@ -3960,13 +3960,13 @@ CJT:cl
 ==H:n('geassi',sg,gen)	geasi
 =S:n('nieida',sg,nom)	nieida
 =P:v('jávkat',ind,impf,3sg)	jávkkai
-=,
+,
 CO:conj-s('ja')	ja
 CJT:cl
 =S:n('olmmoš',pl,nom)	olbmot
 =P:v('ohcat',ind,impf,3pl)	ohce
 =Od:pron('son',<pers>,3sg,acc)	su
-=,
+,
 CO:conj-s('muhto')	muhto
 CJT:par
 =CJT:cl
@@ -3977,7 +3977,7 @@ CJT:par
 =CJT:cl
 ==P:v('ii',neg,ind,3pl)	eai
 ==A:adv('gostege')	gostege
-==,
+,
 =CJT:cl
 =P:g
 ==D:v('ii',neg,ind,3pl,foc/ge)	eaige
@@ -4001,7 +4001,7 @@ CJT:cl
 ==CJT:n('árgabivttas',sg,nom)	árgabivttas
 ==CC:conj-s('ja')	ja
 ==CJT:n('bargobivttas',sg,nom)	bargobivttas
-=,
+,
 CO:conj-s('muhto')	muhto
 CJT:cl
 =A:adv('dál')	dál
@@ -4024,7 +4024,7 @@ CJT:cl
 =A:g
 ==D:n('dálki',sg,gen)	dálkki
 ==H:prp-post('dihte')	dihte
-=,
+,
 CO:conj-s('muhto')	muhto
 CJT:cl
 =P:v('vuosihit',ind,pr,3pl)	vuosihit
@@ -4066,7 +4066,7 @@ CJT:cl
 =S:g
 ==D:adj('čáppat',attr)	čáppa
 ==H:n('dálki',sg,nom)	dálki
-=,
+,
 CO:conj-s('muhto')	muhto
 CJT:cl
 =P:g
@@ -4084,7 +4084,7 @@ CJT:cl
 =A:prop('Paris',plc,sg,loc)	Parisas
 =P:v('leat',ind,impf,3sg)	lei
 =S:adj('fiinnis',sg,nom)	fiinnis
-=,
+,
 CO:conj-s('muhto')	muhto
 CJT:cl
 =P:v('leat',ind,impf,3sg)	lei
@@ -4117,7 +4117,7 @@ CJT:cl
 =S:pron('mun',<pers>,1sg,nom)	Mun
 =P:v('lihkkat',ind,pr,1sg)	lihkan
 =A:adv('árrat')	árrat
-=,
+,
 CJT:cl
 =P:v('coggat',ind,pr,1sg)	cokkan
 =Od:n('bivttas',pl,acc)	biktasiid
@@ -4133,8 +4133,8 @@ A1
 STA:par
 CJT:cl
 =S:g
-==D:prop('Nils',Mal,sg,attr)	Nils
-==D:prop('Aslak',Mal,sg,attr)	Aslak
+==D:prop('Nils',sg,attr)	Nils
+==D:prop('Aslak',sg,attr)	Aslak
 ==H:prop('Valkeapää',Sur,sg,nom)	Valkeapää
 =P:v('riegádit',ind,impf,3sg)	riegádii
 =A:g
@@ -4143,7 +4143,7 @@ CJT:cl
 =A:g
 ==D:prop('Suopma',plc,sg,gen)	Suoma
 ==H:prp-post('bealde')	bealde
-=,
+,
 CO:conj-s('ja')	ja
 CJT:cl
 =S:pron('son',<pers>,3sg,nom)	son
@@ -4151,7 +4151,7 @@ CJT:cl
 =Cs:par
 ==CC:conj-s('sihke')	sihke
 ==CJT:n('musihkkačeahppi',sg,nom)	musihkkačeahppi
-==,
+,
 ==CJT:n('govvadáiddár',sg,nom)	govvadáiddár
 ==CC:conj-s('ja')	ja
 ==CJT:n('diktačálli',sg,nom)	diktačálli
@@ -4163,7 +4163,7 @@ A1
 STA:par
 CJT:cl
 =S:g
-==D:prop('Kirsti',Fem,sg,attr)	Kirsti
+==D:prop('Kirsti',sg,attr)	Kirsti
 ==H:prop('Paltto',Sur,sg,nom)	Paltto
 =P:g
 ==D:v('leat',ind,pr,3sg)	lea
@@ -4182,9 +4182,9 @@ CJT:cl
 ==H:v('čállit',pcp2)	čállán
 =Od:par
 ==CJT:n('diktagirji',pl,acc)	diktagirjjiid
-==,
+,
 ==CJT:n('novealla',pl,acc)	noveallaid
-==,
+,
 ==CJT:n('romána',pl,acc)	románaid
 ==CC:conj-s('ja')	ja
 ==CJT:n('gullugovva',pl,acc)	gullugovaid
@@ -4207,7 +4207,7 @@ CJT:cl
 ===D:pron('son',<pers>,3sg,gen)	su
 ===H:n('giehta',sg,loc)	gieđas
 ==H:prp-post('eret')	eret
-=,
+,
 CO:conj-s('ja')	ja
 CJT:cl
 =A:adv('de')	de
@@ -4228,17 +4228,17 @@ CJT:cl
 =P:v('oaidnit',ind,pr,1sg)	oainnán
 =Od:g
 ==H:n('fierbmi',sg,acc)	fierpmi
-==,
+,
 ==D:g
 ===D:pron('son',<pers>,3sg,gen)	su
 ===H:n('mearka',sg,acc)	mearkka
-===,
+,
 CO:conj-s('ja')	ja
 CJT:cl
 =P:v('diehtit',ind,pr,1sg)	dieđán
 =Od:cl
 ==CO:conj-c('ahte')	ahte
-==S:prop('Spider-Man',Mal,sg,nom)	Spider-Man
+==S:prop('Spider-Man',sg,nom)	Spider-Man
 ==P:g
 ===D:v('leat',ind,pr,3sg)	lea
 ===H:v('leat',pcp2)	leamaš
@@ -4249,7 +4249,7 @@ SOURCE: text
 SMEC315) Gilette, Mr. Sparrowis lea diibmu harcamuoras ja lea vahát jus boahtá maŋŋit.
 A1
 STA:cl
-VOC:prop('Gilette',Fem,sg,nom)	Gilette
+VOC:prop('Gilette',sg,nom)	Gilette
 ,
 X:par
 =CJT:cl
@@ -4280,7 +4280,7 @@ CJT:cl
 ==D:adj('eanet',comp,attr)	eanet
 ==H:n('láttat',pl,nom)	láttagat
 =A:prop('Olmmáivággi',plc,sg,loc)	Olmmáivákkis
-=,
+,
 CO:conj-s('muhto')	muhto
 CJT:cl
 =S:n('boanda',pl,nom)	boanddat
@@ -4323,7 +4323,7 @@ STA:cl
 A:cl
 =CO:conj-c('jus')	Jus
 =P:v('diehtit',cond,pr,1SG)	dieđášin
-=,
+,
 CO:conj-c('de')	de
 P:v('dadjat',cond,pr,1SG)	dajašin
 .
@@ -4356,7 +4356,7 @@ A:cl
 ===S:pron('gii',<rel>,sg,nom)	gii
 ===A:adv('issorasat')	issorasat
 ===P:v('dolastit',ind,pr,3sg)	dolasta
-===,
+,
 X:par
 =CJT:cl
 ==CO:conj-c('de')	de
@@ -4366,7 +4366,7 @@ X:par
 ==P:v('leat',ind,pr,3sg)	lea
 ==A:pron('don',<pers>,2sg,ill)	dutnje
 ==S:n('vašši',sg,nom)	vašši
-==,
+,
 =CO:conj-s('ja')	ja
 =CJT:cl
 ==P:g-
@@ -4389,7 +4389,7 @@ CJT:cl
 =A:g
 ==H:n('jahki',sg,gen)	jagi
 ==D:Num('1986',sg,nom)	1986
-=,
+,
 CO:conj-s('ja')	ja
 CJT:cl
 =S:n('girji',sg,nom)	girji
@@ -4418,7 +4418,7 @@ CJT:cl
 =S:pron('son',<pers>,3pl,nom)	sii
 =P:v('seailluhit',ind,pr,3pl)	seailluhit
 =Od:n('diŋga',pl,acc)	diŋggaid
-=,
+,
 CC:conj-s('muhto')	muhto
 CJT:cl
 =A:cl
@@ -4428,7 +4428,7 @@ CJT:cl
 ==S:g
 ===D:adj('ollu',attr)	ollu
 ===H:n('olmmoš',pl,nom)	olbmot
-==,
+,
 =CO:conj-c('de')	de
 =P:g-
 ==D:v('sáhttit',ind,pr,3pl)	sáhttet
@@ -4449,14 +4449,14 @@ A:cl
 ==H:n('bearaš',sg,loc)	bearrašis
 =P:v('leat',ind,impf,3sg)	lei
 =S:n('gussa',sg,nom)	gussa
-=,
+,
 X:par
 =CJT:cl
 ==CO:conj-c('de')	de
 ==P:v('leat',ind,impf,3sg)	lei
 ==A:adv('maid')	maid
 ==S:n('mielki',sg,nom)	mielki
-==,
+,
 =CO:conj-s('ja')	ja
 =CJT:cl
 ==S:pron('son',<pers>,3pl,nom)	sii
@@ -4483,7 +4483,7 @@ S:par
 ===H:n('geahči',sg,loc)	geažis
 ==P:v('orrut',ind,impf,3pl)	orro
 ==S:pron('ieš',<refl>,pl,nom)	ieža
-==,
+,
 =CO:conj-s('ja')	ja
 =CJT:cl
 ==A:g
@@ -4510,7 +4510,7 @@ CJT:cl
 ==D:cl
 ===Od:pron('mii',<rel>,sg,acc)	maid
 ===P:v('guođohit',ind,impf,3pl)	guođohedje
-===,
+,
 CO:conj-s('muhto')	muhto
 CJT:cl
 =S:pron('dat',<pers>,3pl,nom)	dat
@@ -4532,14 +4532,14 @@ A:cl
 =CO:conj-c('jus')	Jus
 =S:n('stállu',sg,nom)	stállu
 =P:v('vuoitit',ind,pr,3sg)	vuoitá
-=,
+,
 X:par
 =CJT:cl
 ==CO:conj-c('de')	de
 ==S:pron('son',<pers>,3sg,nom)	son
 ==P:v('goddit',ind,pr,3sg)	goddá
 ==Od:n('olmmoš',sg,acc)	olbmo
-==,
+,
 =CO:conj-s('ja')	ja
 =CJT:cl
 ==P:g-
@@ -4565,7 +4565,7 @@ CJT:cl
 ===P:g
 ====D:v('leat',ind,pr,3sg)	lea
 ====H:v('vuolgit',pcp2)	vuolgán
-====,
+,
 =P:g
 ==D:v('ii',neg,ind,3sg)	ii
 ==H:v('oažžut',ind,pr,conneg)	oaččo
@@ -4609,7 +4609,7 @@ CO:conj-s('muhto')	Muhto
 A:cl
 =CO:conj-c('go')	go
 =S:g
-==D:prop('Martha',Fem,sg,attr)	Martha
+==D:prop('Martha',sg,attr)	Martha
 ==H:prop('Hoffmann',Sur,sg,nom)	Hoffmann
 =A:adv('dáppe')	dáppe
 =P:v('oastigoahtit',ind,impf,3sg)	oastigođii
@@ -4621,13 +4621,13 @@ A:cl
 ===P:v('vuovdit',ind,impf,3sg)	vuvddii
 ===A:g
 ====H:prop('Lulli-Norga',plc,sg,ill)	Lulli-Norgii
-====,
+,
 ====D:par
 =====CC:conj-s('sihke')	sihke
 =====CJT:n('musea',pl,ill)	museaide
 =====CC:conj-s('ja')	ja
 =====CJT:n('olmmoš',pl,ill)	olbmuide
-=====,
+,
 CO:conj-c('de')	de
 P:v('šaddat',ind,impf,3sg)	šattai
 A:adv('fas')	fas
@@ -4648,7 +4648,7 @@ CJT:cl
 =Od:g
 ==H:par
 ===CJT:n('bivttas',pl,acc)	biktasiid
-===,
+,
 ===CJT:n('gávdni',pl,acc)	gávnniid
 ===CC:conj-s('ja')	ja
 ===CJT:n('bierggas',pl,acc)	biergasiid
@@ -4656,7 +4656,7 @@ CJT:cl
 ===Od:pron('mii',<rel>,pl,acc)	maid
 ===S:pron('ieš',<refl>,pl,nom)	ieža
 ===P:v('atnit',ind,impf,3pl)	atne
-===,
+,
 CO:conj-s('muhto')	muhto
 CJT:cl
 =Od:pron('ollu',<idef>)	ollu
@@ -4664,7 +4664,7 @@ CJT:cl
 =P:v('vuovdit',ind,impf,3pl)	vuvde
 =A:g
 ==H:n('márkan',pl,loc)	márkaniin
-==,
+,
 ==D:par
 ===CC:conj-s('sihke')	sihke
 ===CJT:prop('Bossegohppi',plc,sg,loc)	Bossegohpis
@@ -4681,7 +4681,7 @@ CJT:cl
 ==D:v('ii',neg,ind,1SG)	In
 ==H:v('máhttit',ind,pr,conneg)	máhte
 =Od:n('suomagiella',sg,acc)	suomagiela
-=,
+,
 CJT:cl
 =P:g-
 ==D:v('ii',neg,ind,3pl,foc/ge)	eaige
@@ -4719,7 +4719,7 @@ Od:par
 =====D:adj('earenoamáš',attr)	earenoamáš
 =====H:adj('čielggas',attr)	čielga
 ====H:n('niehku',sg,acc)	niegu
-====,
+,
 =CO:conj-s('ja')	ja
 =CJT:cl
 ==A:adv('de')	de
@@ -4745,19 +4745,19 @@ A1
 STA:cl
 S:g
 =H:n('soagŋu-girji',sg,nom)	Soagŋu-girji
-=,
+,
 =D:cl
 ==A:pron('mii',<rel>,sg,loc)	mas
 ==P:v('leat',ind,pr,3pl)	leat
 ==S:n('novealla',pl,nom)	noveallat
-==,
+,
 X:par
 =CJT:cl
 ==P:v('boahtit',ind,impf,3sg)	bođii
 ==A:g
 ===H:n('jahki',sg,gen)	jagi
 ===D:Num('1971',sg,nom)	1971
-==,
+,
 =CO:conj-s('ja')	ja
 =CJT:cl
 ==P:v('leat',ind,impf,3sg)	lei
@@ -4785,7 +4785,7 @@ CJT:cl
 ===S:pron('mii',<rel>,pl,nom)	mat
 ===A:adv('dohko')	dohko
 ===P:v('boahtit',ind,pr,3pl)	bohtet
-===,
+,
 =P:g
 ==D:v('ii',neg,ind,3pl)	eai
 ==H:v('leat',ind,pr,conneg)	leat
@@ -4793,7 +4793,7 @@ CJT:cl
 =A:g
 ==D:prop('Ruoŧŧa',plc,sg,loc)	Ruoŧas
 ==H:adv('eret')	eret
-=,
+,
 CO:conj-s('muhto')	muhto
 CJT:cl
 =S:n('ránnjá',pl,nom)	ránnját
@@ -4819,7 +4819,7 @@ CJT:cl
 =Cs:g
 ==D:adj('hirbmat',attr)	hirbmat
 ==H:adj('gievra',sg,nom)	gievra
-=,
+,
 CO:conj-s('muhto')	muhto
 CJT:cl
 =P:g
@@ -4828,7 +4828,7 @@ CJT:cl
 =Cs:g
 ==D:adv('nu')	nu
 ==H:adj('jierbmái',sg,nom)	jierbmái
-=,
+,
 CO:conj-c('nu ahte')	nu ahte
 CJT:cl
 =S:n('olmmoš',sg,nom)	olmmoš
@@ -4846,7 +4846,7 @@ CJT:cl
 =A:adv('odne')	Odne
 =P:v('leat',ind,pr,3sg)	lea
 =Cs:adj('goalki',sg,nom)	goalki
-=,
+,
 CJT:cl
 =CO:conj-c('nu ahte')	nu ahte
 =P:v('leat',ind,pr,3sg)	lea
@@ -4873,7 +4873,7 @@ CJT:cl
 =S:icl
 ==P:v('vuovdit',inf)	vuovdit
 ==Od:n('rátnu',pl,acc)	ránuid
-=,
+,
 CJT:cl
 =CO:conj-c('nu ahte')	nu ahte
 =A:g
@@ -4894,7 +4894,7 @@ CJT:cl
 =S:pron('son',<pers>,3sg,nom)	Son
 =P:v('leat',ind,pr,3sg)	lea
 =A:n('skuvla',sg,loc)	skuvllas
-=,
+,
 CJT:cl
 =P:v('ii',neg,ind,3sg,foc/ge)	iige
 =A:n('ruoktu',sg,loc)	ruovttus
@@ -5023,7 +5023,7 @@ A:cl
 =S:pron('mun',<pers>,1pl,nom)	mii
 =P:v('cegget',ind,pr,1pl)	cegget
 =Od:n('lávvu',sg,acc)	lávu
-=,
+,
 CO:conj-c('de')	de
 S:pron('mun',<pers>,1pl,nom)	mii
 P:v('dárbbašit',ind,pr,1pl)	dárbbašit
@@ -5034,7 +5034,7 @@ SOURCE: text
 SMEC348) Muitaleastte fal munnje goas doavttir sáhttá boahtit.
 A1
 STA:cl
-P:v('muitalastit',imp,pr,2SG)	Muitaleastte
+P:v('muitalastit',Imp,2SG)	Muitaleastte
 A:adv('fal')	fal
 A:pron('mun',<pers>,1sg,ill)	munnje
 Od:cl
@@ -5097,7 +5097,7 @@ SOURCE: text
 SMEC352) Bora vai ealát.
 A1
 STA:cl
-P:v('borrat',imp,pr,2SG)	Bora
+P:v('borrat',Imp,2SG)	Bora
 A:cl
 =CO:conj-c('vai')	vai
 =P:v('eallit',ind,pr,2SG)	ealát
@@ -5128,7 +5128,7 @@ A:cl
 =S:g
 ==D:adj('lossat',comp,attr)	losit
 ==H:n('siivu',sg,nom)	siivu
-=,
+,
 CO:conj-c('dađe')	dađe
 A:adv('njoazebut')	njoazebut
 P:v('mannat',ind,pr,3sg)	manná
@@ -5203,7 +5203,7 @@ A1
 STA:cl
 S:g
 =H:pron('buohkat',<idef>,pl,nom)	Buohkat
-=,
+,
 =D:cl
 ==S:pron('gii',<rel>,pl,nom)	geat
 ==P:g-
@@ -5211,7 +5211,7 @@ S:g
 ==Od:n('bileahtta',pl,acc)	bileahtaid
 ==-P:g
 ===H:v('oastit',inf)	oastit
-==,
+,
 P:g
 =D:v('fertet',ind,pr,3pl)	fertejit
 =H:v('boahtit',inf)	boahtit
@@ -5228,7 +5228,7 @@ S:g
 =H:n('jokŋa',pl,nom)	joŋat
 A:g
 =H:adv('doppe')	doppe
-=,
+,
 =D:cl
 ==A:adv('gos')	gos
 ==S:pron('mun',<pers>,1pl,nom)	mii
@@ -5243,11 +5243,11 @@ STA:cl
 P:g
 =D:v('ii',neg,ind,1PL)	Eat
 =H:v('diehtit',ind,pr,conneg)	dieđe
-=,
+,
 Od:cl
 =P:v('boahtit',pot,pr,conneg)	bođeš
 =Apcle:part('go')	go
-=S:prop('Elle',Fem,sg,nom)	Elle
+=S:prop('Elle',sg,nom)	Elle
 =A:adv('ihttin')	ihttin
 .
 
@@ -5260,7 +5260,7 @@ A:cl
 =S:pron('don',<pers>,2sg,nom)	don
 =P:v('geargat',ind,pr,2sg)	gearggat
 =A:n('čállit',actio,loc)	čállimis
-=,
+,
 CO:conj-c('de')	de
 S:pron('mun',<pers>,1du,nom)	moai
 P:v('vuolgit',ind,pr,1du)	vulge
@@ -5286,7 +5286,7 @@ STA:cl
 P:g
 =D:v('ii',neg,ind,1SG)	In
 =H:v('diehtit',ind,pr,conneg)	dieđe
-=,
+,
 Od:cl
 =CO:conj-c('vaikko')	vaikko
 =P:g
@@ -5300,15 +5300,15 @@ SMEC365) Ánne, geasa Mihkkal lei liikostan, lei hui čeavlái.
 A1
 STA:cl
 S:g
-=H:prop('Ánne',Fem,sg,nom)	Ánne
-=,
+=H:prop('Ánne',sg,nom)	Ánne
+,
 =D:cl
 ==A:pron('gii',<rel>,sg,ill)	geasa
-==S:prop('Mihkkal',Mal,sg,nom)	Mihkkal
+==S:prop('Mihkkal',sg,nom)	Mihkkal
 ==P:g
 ===D:v('leat',ind,impf,3sg)	lei
 ===H:v('liikostit',pcp2)	liikostan
-==,
+,
 P:v('leat',ind,impf,3sg)	lei
 Cs:g
 =D:adv('hui')	hui
@@ -5321,12 +5321,12 @@ A1
 STA:cl
 S:g
 =H:n('olmmoš',pl,nom)	Olbmot
-=,
+,
 =D:cl
 ==S:pron('gii',<rel>,pl,nom)	geat
 ==A:adv('dávjá')	dávjá
 ==P:v('viehkat',ind,pr,3pl)	vihket
-==,
+,
 P:v('leat',ind,pr,3pl)	leat
 Cs:adj('sávri',pl,nom)	sávrrit
 .
@@ -5352,7 +5352,7 @@ SOURCE: text
 SMEC368) Harry diehtá buori báikki gos mii sáhttit bivdit guliid.
 A1
 STA:cl
-S:prop('Harry',Mal,sg,nom)	Harry
+S:prop('Harry',sg,nom)	Harry
 P:v('diehtit',ind,pr,3sg)	diehtá
 Od:g
 =H:g
@@ -5422,7 +5422,7 @@ SOURCE: text
 SMEC372) Sáppatbáddi ii liikon maid barggaimet Jack Sparrowiin.
 A1
 STA:cl
-S:prop('Sáppatbáddi',Mal,sg,nom)	Sáppatbáddi
+S:prop('Sáppatbáddi',sg,nom)	Sáppatbáddi
 P:g
 =D:v('ii',neg,ind,3sg)	ii
 =H:v('liikot',pcp2)	liikon
@@ -5430,7 +5430,7 @@ A:cl
 =Od:pron('mii',<rel>,sg,acc)	maid
 =P:v('bargat',ind,impf,1PL)	barggaimet
 =A:g
-==D:prop('Jack',Mal,sg,attr)	Jack
+==D:prop('Jack',sg,attr)	Jack
 ==H:prop('Sparrow',Sur,sg,com)	Sparrowiin
 .
 
@@ -5476,7 +5476,7 @@ S:g
 ==S:pron('gii',<rel>,sg,nom)	Gii
 ==Od:adj('buorre',sg,acc)	buori
 ==P:v('hilgut',ind,pr,3sg)	hilgu
-==,
+,
 =H:pron('son',<pers>,3sg,nom)	son
 Od:adj('bahá',sg,acc)	bahá
 P:v('gávdnat',ind,pr,3sg)	gávdná
@@ -5491,7 +5491,7 @@ A:cl
 =S:n('geađgi',pl,nom)	geađggit
 =P:v('gahččat',ind,impf,3pl)	gahčče
 =A:n('báhti',sg,ill)	báhtái
-=,
+,
 CO:conj-c('de')	de
 S:n('báhti',sg,nom)	báhti
 P:v('cuovkanit',ind,impf,3sg)	cuovkanii
@@ -5520,7 +5520,7 @@ P:g-
 =D:v('ii',neg,ind,1PL)	Eat
 S:pron('mun',<pers>,1pl,nom)	mii
 -P:g
-=D:v('sáhttit',imp,pr,2sg)	sáhte
+=D:v('sáhttit',conneg,2sg)	sáhte
 =H:v('vuolgit',inf)	vuolgit
 A:cl
 =CO:conj-c('go')	go
@@ -5553,8 +5553,8 @@ P:g
 =D:v('leat',ind,pr,3sg)	lea
 =H:v('náitalit',pcp2)	náitalan
 A:g
-=H:prop('Robert',Mal,sg,com)	Robertiin
-=,
+=H:prop('Robert',sg,com)	Robertiin
+,
 =D:cl
 ==S:pron('gii',<rel>,sg,nom)	gii
 ==P:v('leat',ind,pr,3sg)	lea
@@ -5572,7 +5572,7 @@ A:cl
 =P:g
 ==D:v('fertet',ind,impf,3pl)	fertejedje
 ==H:v('oastit',inf)	oastit
-=,
+,
 CO:conj-c('nu ahte')	nu ahte
 S:n('láđđegákti',sg,nom)	láđđegákti
 P:v('leat',ind,impf,3sg)	lei
@@ -5588,7 +5588,7 @@ A:cl
 =S:n('náittosbárra',sg,nom)	náittosbárra
 =P:v('vuolgit',ind,pr,3sg)	vuolgá
 =A:n('girku',sg,loc)	girkus
-=,
+,
 CO:conj-c('de')	de
 P:v('čuovvolit',ind,pr,3pl)	čuovvolit
 S:n('mielvázzi',pl,nom)	mielvázzit
@@ -5641,7 +5641,7 @@ a:cl
 ==D:v('leat',ind,pr,2sg)	leat
 ==H:v('čađahit',pcp2)	čađahan
 =Od:n('álgogursa',sg,acc)	álgogurssa
-=,
+,
 CO:conj-c('de')	de
 P:g
 =D:v('sáhttit',ind,pr,2sg)	sáhtát
@@ -5681,7 +5681,7 @@ A:cl
 =P:v('rahpat',ind,pr,1PL)	rahpat
 =Od:n('uksa',sg,acc)	uvssa
 =A:n('suoidnelatnja',sg,ill)	suoidnelatnjii
-=,
+,
 CO:conj-c('de')	de
 S:n('heasta',pl,nom)	heasttat
 P:v('šaddat',ind,pr,3pl)	šaddet
@@ -5841,7 +5841,7 @@ A:cl
 =A:g
 ==D:pron('nubbi',<idef>,sg,gen)	nuppi
 ==H:n('olmmoš',sg,ill)	olbmui
-=,
+,
 CO:conj-c('de')	de
 P:g
 =D:v('sáhttit',ind,impf,3sg)	sáhtii
@@ -5865,7 +5865,7 @@ A:cl
 =-P:g
 ==H:v('čierastallat',actio,ess)	čierastallame
 =Od:n('juovlabassi',pl,acc)	juovlabasiid
-=,
+,
 CO:conj-c('de')	de
 P:g
 =D:v('sáhttit',ind,pr,3pl)	sáhttet
@@ -5880,7 +5880,7 @@ SOURCE: text
 SMEC398) Vulgot gávpogii, ovdalgo girjerádju manná gitta.
 A1
 STA:cl
-P:v('vuolgit',imp,pr,1pl)	Vulgot
+P:v('vuolgit',Imp,1PL)	Vulgot
 A:n('gávpot',sg,ill)	gávpogii
 ,
 A:cl
@@ -5906,7 +5906,7 @@ Cs:g
 ==P:v('váldit',ind,impf,2du)	válddiide
 ==A:adv('gitta')	gitta
 ==Od:g
-===D:prop('Jack',Mal,sg,attr)	Jack
+===D:prop('Jack',sg,attr)	Jack
 ===H:prop('Sparrow',Sur,sg,acc)	Sparrowa
 !
 
@@ -5921,7 +5921,7 @@ A:g
 =H:n('vihtta',pl,com)	vihtaiguin
 =D:cl
 ==Od:pron('mii',<rel>,pl,acc)	maid
-==S:prop('Harry',Mal,sg,nom)	Harry
+==S:prop('Harry',sg,nom)	Harry
 ==P:g
 ===D:v('leat',ind,pr,3sg)	lea
 ===H:v('oahppat',pcp2)	oahppan
@@ -6068,7 +6068,7 @@ A:cl
 =A:g
 ==D:n('tunealla',sg,gen)	tunealla
 ==H:prp-post('lahka')	lahka
-=,
+,
 CO:conj-c('de')	de
 P:v('leat',ind,pr,3sg)	lea
 Cs:adj('álki',sg,nom)	álki
@@ -6124,7 +6124,7 @@ SOURCE: text
 SMEC410) Sire riŋgii sutnje, go lei geargan bihtáid bargamis.
 A1
 STA:cl
-S:prop('Sire',Fem,sg,nom)	Sire
+S:prop('Sire',sg,nom)	Sire
 P:v('riŋget',ind,impf,3sg)	riŋgii
 A:pron('son',<pers>,3sg,ill)	sutnje
 ,
@@ -6147,10 +6147,10 @@ CJT:cl
 =A:adv('gal')	gal
 =P:v('vuoddját',ind,impf,1pl)	vuoddjáimet
 =A:prop('Gáivuotna',plc,sg,ill)	Gáivutnii
-=,
+,
 CO:conj-s('muhto')	muhto
 CJT:cl
-=S:prop('Iŋgá',Fem,sg,nom)	Iŋgá
+=S:prop('Iŋgá',sg,nom)	Iŋgá
 =P:v('báhcit',ind,impf,3sg)	bázii
 =A:adv('vel')	vel
 =A:prop('Álaheadju',plc,sg,ill)	Álahedjui
@@ -6171,7 +6171,7 @@ Od:g
 ===D:pron('mii',<rel>,sg,gen)	man
 ===H:n('namma',sg,nom)	namma
 ==P:('leat',ind,pr,3sg)	lea
-==Cs:prop('Mellet',Mal,sg,nom)	Mellet
+==Cs:prop('Mellet',sg,nom)	Mellet
 .
 
 SOURCE: text
@@ -6313,7 +6313,7 @@ A:g
 ===D:g
 ====H:conj-c('go')	go
 ====D:adv('ovdal')	ovdal
-====,
+,
 CO:conj-c('de')	de
 P:v('leat',ind,pr,3pl)	leat
 A:n('gákti',sg,loc)	gávttis
@@ -6400,7 +6400,7 @@ P:v('leat',ind,pr,3pl)	leat
 S:g
 =D:adj('ollu',attr)	ollu
 =H:n('váran',pl,nom)	váramat
-=,
+,
 A:par
 =CC:conj-s('sihke')	sihke
 =CJT:prop('Dálošvággi',plc,sg,loc)	Dálošvákkis
@@ -6426,7 +6426,7 @@ A:cl
 ==D:v('áigut',ind,pr,1pl)	áigut
 ==H:v('cegget',inf)	cegget
 =Od:n('lávvu',sg,acc)	lávu
-=,
+,
 CO:conj-c('de')	de
 S:pron('mun',<pers>,1pl,nom)	mii
 P:v('dárbbašit',ind,pr,1pl)	dárbbašit
@@ -6444,7 +6444,7 @@ A:cl
 ==D:v('leat',ind,pr,1pl)	leat
 ==H:v('goikadit',pcp2)	goikadan
 =Od:n('gáhkku',pl,acc)	gáhkuid
-=,
+,
 CO:conj-c('de')	de
 S:v('álgit',ind,pr,1pl)	álgit
 Od:v('málestit',inf)	málestit
@@ -6462,7 +6462,7 @@ A:cl
 =A:adv('doarvái')	doarvái
 =-P:g
 ==H:v('duoldat',pcp2)	duoldan
-=,
+,
 CO:conj-c('de')	de
 P:v('bidjat',ind,pr,1pl)	bidjat
 Od:n('buđeita',pl,acc)	buđeittaid
@@ -6578,7 +6578,7 @@ A:cl
 ==H:n('ávnnas',pl,nom)	ávdnasat
 =A:adv('dáppe')	dáppe
 =A:prop('Gáivuotna',plc,sg,loc)	Gáivuonas
-=,
+,
 CO:conj-c('de')	de
 P:v('šaddat',ind,impf,3sg)	šattai
 S:g
@@ -6710,7 +6710,7 @@ P:g
 Od:g
 =D:n('niehku',sg,gen)	niegu
 =H:n('veardádus',pl,acc)	veardádusaid
-=,
+,
 A:cl
 =CO:conj-c('ovdalgo')	ovdalgo
 =P:g-
@@ -6730,7 +6730,7 @@ A:cl
 =CO:conj-c('jus')	Jus
 =Od:n('dulvi',sg,acc)	dulvvi
 =P:v('niegadit',ind,pr,2SG)	niegadat
-=,
+,
 CO:conj-c('de')	de
 P:g
 =D:v('boahtit',ind,pr,2SG)	boađát
@@ -6754,7 +6754,7 @@ P:g-
 S:g
 =D:prop('Sørøy Glimt',Org,sg,gen)	Sørøy Glimt
 =D:v('čiekčat',pcp1)	čiekči
-=D:prop('Stig',Mal,sg,attr)	Stig
+=D:prop('Stig',sg,attr)	Stig
 =H:prop('Martinsen',Sur,sg,nom)	Martinsen
 -P:g
 =H:v('dulbet',inf)	dulbet
@@ -6771,8 +6771,8 @@ STA:cl
 A:adv('álggos')	Álggos
 P:v('coggalit',ind,impf,3sg)	coggalii
 S:g
-=D:prop('Svein',Mal,sg,attr)	Svein
-=D:prop('Kristian',Mal,sg,attr)	Kristian
+=D:prop('Svein',sg,attr)	Svein
+=D:prop('Kristian',sg,attr)	Kristian
 =H:prop('Anti',Sur,sg,nom)	Anti
 Od:g
 =D:adj('vuosttaš',ord,attr)	vuosttaš
@@ -6851,7 +6851,7 @@ S:g
 ===H:g
 ====H:prp-pre('bealde')	bealde
 ====D:prop('Deatnu',plc,sg,gen)	Deanu
-==,
+,
 P:v('geavahit',ind,pr,3pl)	geavahit
 Od:g
 =H:g
@@ -6896,7 +6896,7 @@ S:g
 =D:cl
 ==Od:pron('mii',<rel>,sg,acc)	maid
 ==A:g
-===D:prop('Will',Mal,sg,attr)	Will
+===D:prop('Will',sg,attr)	Will
 ===H:prop('Turner',Sur,sg,loc)	Turneris
 ==P:v('oaidnit',ind,impf,1PL)	oinniimet
 P:v('leat',ind,impf,3sg)	lei
@@ -7008,7 +7008,7 @@ A:cl
 ===H:n('dálki',pl,nom)	dálkkit
 ==CC:conj-s('ja')	ja
 ==CJT:n('beaivvádat',sg,nom)	beaivvádat
-=,
+,
 CO:conj-c('de')	de
 S:n('olmmoš',pl,nom)	olbmot
 P:v('liikot',ind,pr,3pl)	liikojit
@@ -7036,7 +7036,7 @@ A:cl
 ==CJT:cl
 ===P:v('málestit',ind,pr,3pl)	málestit
 ===A:n('siida',sg,loc)	siiddas
-===,
+,
 CO:conj-c('de')	de
 P:g-
 =D:v('sáhttit',ind,pr,1pl)	sáhttit
@@ -7062,7 +7062,7 @@ CJT:cl
 ==Od:pron('mii',<rel>,sg,acc)	maid
 ==S:n('niehku',pl,nom)	niegut
 ==P:v('dieđihit',ind,impf,3pl)	dieđihedje
-==,
+,
 CO:conj-s('ja')	ja
 CJT:cl
 =A:adv('dan dihte')	dan dihte
@@ -7099,7 +7099,7 @@ A:cl
 ===D:pron('ieš',<refl>,gen,poss3sg)	iežas
 ===D:adj('ođas',attr)	ođđa
 ===H:n('goansta',sg,acc)	goanstta
-===,
+,
 ==D:n('backflip 360',sg,nom)	backflip 360
 .
 ]]>
@@ -7183,12 +7183,12 @@ A:cl
 ==CJT:g
 ===D:adj('heittot',attr)	heittogis
 ===H:n('geassi',sg,nom)	geassi
-===,
+,
 ==CC:conj-s('dahe')	dahe
 ==CJT:g
 ===D:adj('heittot',attr)	heittogis
 ===H:n('guollebivdu',sg,nom)	guollebivdu
-===,
+,
 X:par
 =CJT:cl
 ==CO:conj-c('de')	de
@@ -7200,7 +7200,7 @@ X:par
 ===CO:conj-c('go')	go
 ===P:v('vuovdit',ind,impf,3pl)	vuvde
 ===Od:n('duodji',pl,acc)	dujiid
-===,
+,
 =CJT:cl
 ==P:g
 ===D:v('ii',neg,ind,3pl,foc/ge)	eaige
@@ -7215,7 +7215,7 @@ SOURCE: text
 SMEC460) Boađe mu lusa geahččat ođđa govaid!
 A1
 COM:cl
-P:v('boahtit',imp,pr,2sg)	Boađe
+P:v('boahtit',Imp,2sg)	Boađe
 A:g
 =D:pron('mun',<pers>,1sg,gen)	mu
 =H:prp-post('lusa')	lusa
@@ -7252,7 +7252,7 @@ CJT:cl
 =A:n('stállu',sg,loc)	Stálus
 =P:v('boahtit',ind,impf,3sg)	bođii
 =S:n('baikahoahppu',sg,nom)	baikahoahppu
-=,
+,
 CO:conj-s('ja')	ja
 CJT:cl
 =S:pron('son',<pers>,3sg,nom)	son
@@ -7306,7 +7306,7 @@ STA:cl
 A:adv('dál')	Dál
 P:v('leat',ind,pr,3sg)	lea
 S:g
-=D:prop('Biret',Fem,sg,gen)	Bireha
+=D:prop('Biret',sg,gen)	Bireha
 =H:g
 ==H:n('vuorru',sg,nom)	vuorru
 ==D:icl
@@ -7344,9 +7344,9 @@ SOURCE: text
 SMEC468) Máhtes lea Jovnna reaŋgan.
 A1
 STA:cl
-HAB:prop('Máhtte',Mal,sg,loc)	Máhtes
+HAB:prop('Máhtte',sg,loc)	Máhtes
 P:v('leat',ind,pr,3sg)	lea
-S:prop('Jovnna',Mal,sg,nom)	Jovnna
+S:prop('Jovnna',sg,nom)	Jovnna
 Cs:n('reaŋga',ess)	reaŋgan
 .
 
@@ -7538,7 +7538,7 @@ A:cl
 =S:n('bárdni',sg,nom)	bárdni
 =P:v('boahtit',ind,impf,3sg)	bođii
 =A:n('dállu',sg,ill)	dállui
-=,
+,
 CO:conj-c('de')	de
 S:pron('son',<pers>,3sg,nom)	son
 P:v('leat',ind,impf,3sg)	lei
@@ -7585,7 +7585,7 @@ A:cl
 ==D:pron('don',<pers>,2sg,gen)	du
 ==H:n('dihtor',sg,loc)	dihtoris
 =P:v('leat',ind,pr,3sg)	lea
-=,
+,
 CO:conj-c('dađe')	dađe
 Od:g
 =D:adj('eanet',comp,attr)	eanet
@@ -7690,7 +7690,7 @@ X:par
 ===Apcle:part('go')	go
 ===A:pron('don',<pers>,2sg,loc)	dus
 ===S:n('feber',sg,nom)	feber
-===,
+,
 =CO:conj-s('ja')	ja
 =CJT:cl
 ==P:v('mihtidit',ind,pr,3pl)	mihtidit
@@ -7710,7 +7710,7 @@ CJT:cl
 =Od:g
 ==D:n('eadni',sg,gen)	eatni
 ==H:n('aski',sg,acc)	askki
-=,
+,
 CJT:acl
 =S:g
 ==D:adj('stuoris',attr)	stuora
@@ -7726,7 +7726,7 @@ STA:par
 CJT:cl
 =A:g-
 ==D:n('gussa',sgGenCmp)	Gusa-
-=,
+,
 =-A:g
 ==D:n('gálbi',sgNomCmp)	gálbe-
 =CC:conj-s('ja')	ja
@@ -7737,7 +7737,7 @@ CJT:cl
 ==H:n('sápmi',pl,nom)	sámit
 =P:v('ráhkadit',ind,impf,3pl)	ráhkadedje
 =Od:n('gáma',pl,acc)	gápmagiid
-=,
+,
 CC:conj-s('ja')	ja
 CJT:acl
 =A:n('sávzzanáhkki',sg,loc)	sávzzanáhkis
@@ -7758,7 +7758,7 @@ CJT:cl
 =Od:n('liidna',sg,acc)	liinna
 =-P:g
 ==H:v('seaktit',inf)	seaktit
-=,
+,
 CJT:icl
 =CO:conj-c('de')	de
 =P:v('suohpput',inf)	suohpput
@@ -7770,7 +7770,7 @@ CJT:icl
 =A:adv('fas')	fas
 =H:v('geassit',inf)	geassit
 =Od:pron('dat',<pers>,3sg,acc)	dan
-=.
+.
 
 SOURCE: text
 SMEC494) Nuorat ođđe buvrriin geasset, muhtumin dálvet maid.
@@ -7781,7 +7781,7 @@ CJT:cl
 =P:v('oađđit',ind,impf,3pl)	ođđe
 =A:n('buvri',pl,loc)	buvrriin
 =A:adv('geasset')	geasset
-=,
+,
 CJT:acl
 =A:adv('muhtumin')	muhtumin
 =A:adv('dálvet')	dálvet
@@ -7802,7 +7802,7 @@ Od:par
 ===S:n('gávttehas',sg,nom)	gávttehas
 ===P:v('leat',ind,pr,3sg)	lea
 ===Cs:adj('sápmelaš',sg,nom)	sápmelaš
-===,
+,
 =CC:conj-s('ja')	ja
 =CJT:acl
 ==A:n('sápmelaš',pl,ill)	sápmelaččaide
