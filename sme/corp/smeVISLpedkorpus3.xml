@@ -1299,7 +1299,7 @@ P:g
 A:g
 =D:adj('boaris',attr)	boares
 =D:v('divvut',Pass,pcp2)	divvojuvvon
-=H:n('viessu',sg,ill)	vissui
+=H:n('viessu',sg,Ill)	vissui
 .
 
 SOURCE: text
@@ -1401,12 +1401,12 @@ P:v('boahtit',ind,pr,2sg)	boađát
 ?
 
 SOURCE: text
-SMEC133) Mu CD:id don gávnnat gurut bealde.
+SMEC133) Mu girjjiid don gávnnat gurut bealde.
 A1
 STA:cl
 Od:g
 =D:pron('mun',<pers>,1sg,gen)	Mu
-=H:n('CD',acr,pl,acc)	CD:id
+=H:n('girji',pl,acc)	girjjiid
 S:pron('don',<pers>,2sg,nom)	don
 P:v('gávdnat',ind,pr,2sg)	gávnnat
 A:g
@@ -3050,7 +3050,7 @@ S:pron('dat',<pers>,3sg,nom)	Dat
 P:v('leat',ind,impf,3sg)	lei
 Cs:g
 =D:adj('stuoris',attr)	stuora
-=H:n('vahát',ess)	vahágin
+=H:n('vahát',Ess)	vahágin
 A:pron('mun',<pers>,1sg,ill)	munnje
 .
 
@@ -6858,7 +6858,7 @@ Od:g
 .
 
 SOURCE: text
-SMEC445) Sihkkarvuođa dihtii mii váldit EKG:a mii vuosiha govt váibmu bargá.
+SMEC445) Sihkkarvuođa dihtii mii váldit EKG mii vuosiha govt váibmu bargá.
 A1
 STA:cl
 A:g
@@ -6867,7 +6867,7 @@ A:g
 S:pron('mun',<pers>,1pl,nom)	mii
 P:v('váldit',ind,pr,1pl)	váldit
 Od:g
-=H:n('EKG',acr,sg,acc)	EKG:a
+=H:n('EKG',acr,sg,acc)	EKG
 =D:cl
 ==S:pron('mii',<rel>,sg,nom)	mii
 ==P:v('vuosihit',ind,pr,3sg)	vuosiha
@@ -7013,33 +7013,34 @@ A:par
 .
 
 SOURCE: text
-SMEC452) Go bassat lihtiid dahje málestit siiddas, de sáhttit seammás guldalit giellakasseahtaid ja sámeradio P2-kanála.
-A1
-STA:cl
-A:cl
-=CO:conj-c('go')	Go
-=X:par
-==CJT:cl
-===P:v('bassat',ind,pr,1pl)	bassat
-===Od:n('lihtti',pl,acc)	lihtiid
-==CO:conj-s('dahje')	dahje
-==CJT:cl
-===P:v('málestit',ind,pr,3pl)	málestit
-===A:n('siida',sg,loc)	siiddas
-,
-CO:conj-c('de')	de
-P:g-
-=D:v('sáhttit',ind,pr,1pl)	sáhttit
-A:adv('seammás')	seammás
--P:g
-=H:v('guldalit',ind,pr,3pl)	guldalit
-Od:par
-=CJT:n('giellakasseahtta',pl,acc)	giellakasseahtaid
-=CC:conj-s('ja')	ja
-=CJT:g
-==D:n('sámeradio',sg,gen)	sámeradio
-==H:n('P',acr,sg,acc)	P2-kanála
-.
+SMEC452) Go bassat lihtiid dahje málestit siiddas, de sáhttit seammás guldalit \
+giellakasseahtaid ja sámeradio P2-kanálas.                                      
+A1                                                                              
+STA:cl                                                                          
+A:cl                                                                            
+=CO:conj-c('go')        Go                                                      
+=X:par                                                                          
+==CJT:cl                                                                        
+===P:v('bassat',ind,pr,1pl)     bassat                                          
+===Od:n('lihtti',pl,acc)        lihtiid                                         
+==CO:conj-s('dahje')    dahje                                                   
+==CJT:cl                                                                        
+===P:v('málestit',ind,pr,3pl)   málestit                                        
+===A:n('siida',sg,loc)  siiddas                                                 
+,                                                                               
+CO:conj-c('de') de                                                              
+P:g-                                                                            
+=D:v('sáhttit',ind,pr,1pl)      sáhttit                                         
+A:adv('seammás')        seammás                                                 
+-P:g                                                                            
+=H:v('guldalit',ind,pr,3pl)     guldalit                                        
+Od:par                                                                          
+=CJT:n('giellakasseahtta',pl,acc)       giellakasseahtaid                       
+=CC:conj-s('ja')        ja                                                      
+=CJT:acl                                                                        
+==Od:n('sámeradio',sg,gen)      sámeradio                                       
+==A:n('P2-kanála',acr,sg,loc)   P2-kanálas                                      
+.         
 
 SOURCE: text
 SMEC453) Olbmot dihte maid niegut dieđihedje, ja dan dihte sii ledje dávjá gergosat deaivvadit boahttevuođa dáhpáhusaiguin.
@@ -7169,7 +7170,7 @@ STA:cl
 A:cl
 =CO:conj-c('jus')	Jus
 =P:v('leat',ind,impf,3sg)	lei
-=S:par
+=S:par 
 ==CJT:g
 ===D:adj('heittot',attr)	heittogis
 ===H:n('geassi',sg,nom)	geassi
