@@ -322,18 +322,27 @@
           <title>The dialogue structure</title>
 
           <p>Each conversation is stored in an xml-document that has e.g. the
-          format below. The conversation consists of topics. Each topic
-          contains an unordered list of questions. Each yes/no questions may
-          contain three elements that contain the instructions for different
-          actions: affirmative, negative and default action. Action may be an
-          utterance or a link to the next question. The default action is used
-          if none of the other actions are not activated. If there is no
-          action at all, next topic is selected. Regardless of how the
-          conversation proceeds, there may be opening or ending statements for
-          both the conversation and the topic.</p>
+          format below. The conversation consists of topics that are listed in
+          the order they are assumed to appear if the order is not stated in
+          the topic definition, see below.</p>
 
-          <source>&lt;conversation name="cafe"&gt;
- &lt;topic name="juhkat"&gt;
+          <source>&lt;dialogue name="cafe"&gt;
+   &lt;topic name="juhkat"/&gt;
+   &lt;topic name="syöminen"/&gt;
+   &lt;topic name="maksaminen"/&gt;
+&lt;/dialogue&gt;</source>
+
+          <p>The structure for the topic is given below. Each topic contains
+          an unordered list of questions. Each yes/no questions may contain
+          three elements that contain the instructions for different actions:
+          affirmative, negative and default action. Action may be an utterance
+          or a link to the next question. The default action is used if none
+          of the other actions are not activated. If there is no action at
+          all, next topic is selected. Regardless of how the conversation
+          proceeds, there may be opening or ending statements for both the
+          conversation and the topic.</p>
+
+          <source>&lt;topic name="juhkat"&gt;
    &lt;opening&gt;Mitä joisimme?&lt;/opening&gt;
    &lt;question name="jugatgo_gáfe"&gt;
      &lt;aff&gt;
@@ -358,18 +367,15 @@
       &lt;q link="maito"/&gt;
      &lt;/default&gt;
    &lt;/question&gt;
+&lt;/topic&gt;
 
- &lt;/topic&gt;
-
- &lt;topic name="syöminen"&gt;
+&lt;topic name="syöminen"&gt;
   ..
- &lt;/topic&gt;
+&lt;/topic&gt;
 
- &lt;topic name="maksaminen.."&gt;
+&lt;topic name="maksaminen.."&gt;
   ..
- &lt;/topic&gt;
-...
-&lt;/conversation&gt;</source>
+&lt;/topic&gt;</source>
 
           <p>This xml-structure does not contain the selection criteria for
           affirmative and negative answers but they are in separate document.
