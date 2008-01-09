@@ -16,10 +16,10 @@
       <section>
         <title>Architecture Overview</title>
 
-        <p>The software consists of Dialogue manager, Sentence parser and
-        Speller together with suggestion mechanism. In addition, user Feedback
-        and Tutorial section are integrated to the dialogue. The software is
-        used via web interface.</p>
+        <p>The software consists of a Dialogue manager, a Sentence parser and
+        a Speller together with a suggestion mechanism. In addition, user Feedback
+        and a Tutorial section are integrated to the dialogue. The software is
+        used via a web interface.</p>
       </section>
     </section>
 
@@ -29,7 +29,7 @@
       <p>The heart of the system is the dialogue manager. It conducts the
       dialogue by selecting the next utterance made by the machine. It reacts
       to the user's replies and starts feedback and tutorial dialogues when
-      needed. Dialogue manager calls sentence parser and speller to parse the
+      needed. The Dialogue manager calls the sentence parser and speller to parse the
       user replies.</p>
 
       <section>
@@ -37,42 +37,42 @@
 
         <p>The system is able to parse sentences, also incorrect ones. At the
         moment, there is an analyzator and disambiguator and we are able to
-        get full syntactic analysis of the sentences that belong to the
+        get a full syntactic analysis of the sentences that belong to the
         language.</p>
 
-        <p>The parser process involves three steps: check against predefined
+        <p>The parser process involves three steps: check against a predefined
         set of correct answers, speller and grammar check. First of all, each
         question has a predefined set of answers that can be generated
         beforehand. If the answer does not belong to the set of predefined
-        answers, the sentence is sent to speller. If the words in the
-        utterance are not recognized, the problematic word receives
+        answers, the sentence is sent to the speller. If the words in the
+        utterance are not recognized, the problematic words receive
         suggestions. When all the words are recognized, the predefined set of
         answers is checked again. If that check fails, the utterance is sent
         to the analyzer. In this final step, the sentence undergoes either
-        overall grammar check or there is more fine-grained check where the
-        type of the question is taken into account. We have to decide which
+        overall grammar check or there is a more fine-grained check where the
+        type of question is taken into account. We have to decide which
         one. The two classes of errors, spelling errors and grammatical errors
-        are described in more detail separate sections.</p>
+        are described in more detail in separate sections.</p>
 
         <section>
           <title>Spelling errors</title>
 
-          <p>Spelling errors are recognized by the speller. Speller suggests
+          <p>Spelling errors are recognized by the speller. The Speller suggests
           an alternative, or a list of alternatives, from where the user
-          selects the correct one. Suggestion mechanism is restricted.</p>
+          selects the correct one. The Suggestion mechanism is restricted.</p>
         </section>
 
         <section>
           <title>Grammatical errors</title>
 
-          <p>Grammatical errors are words in wrong forms. Grammatical analysis
+          <p>Grammatical errors are words in wrong forms. The grammatical analysis
           should be such that the words receive an analysis although they
           belong to an ungrammatical sentence.</p>
 
           <p>There are two classes of grammatical errors: question-specific
           errors and common errors. <strong> Question-specific errors
           </strong> are the type where the user is expected to use some
-          pronoun. For example, if the question is "Jugatgo gáfe?", then the
+          pronoun (TT: ???). For example, if the question is "Jugatgo gáfe?", then the
           user should use first person singular in the answer, both in the
           pronoun and the verb form. Does the question always determine the
           grammatical form of the answer, or do we need a general class of
@@ -86,10 +86,10 @@
           know how this should be done. Usage of syntactic information
           etc.</p>
 
-          <p><strong>Common errors </strong>could be deteceted in sentences
+          <p><strong>Common errors </strong> could be detected in sentences
           that do not belong to the predefined set of answers for the
           question. I.e. basic grammar checking. Each grammatical error has a
-          type. For example, if a sg1 subject is paired with a verb in wrong
+          type. For example, if a sg1 subject is paired with a verb in the wrong
           form, we may ask the user to change the verb form. The errors are
           classified and the actions they cause are stored in an xml-structure
           which is described below, in the tutorial section.</p>
@@ -102,7 +102,7 @@
         <p>The system gives feedback about spelling errors and grammatical
         errors. See the section speller for spelling errors. Whenever a
         grammatical error is detected, a feedback window and the tutorial
-        section are activated. Feedback may be more fine-grained than
+        section are activated. The feedback may be more fine-grained than the
         tutorial. One suggestion for the format is described below. You may
         decide the classes of feedback as you like, this example just
         illustrates the xml-structure. Note that the individual feedback may
@@ -126,7 +126,7 @@
 &lt;/error&gt;</source>
 
         <p>The tutorial section consists of longer sections of text that
-        describe certain grammatical phenomenon. They are attached only to
+        describe certain grammatical phenomena. They are attached only to
         grammatical errors (since we don't have any mechanism to detect the
         type of spelling error). Each type of grammatical error has its own
         tutorial section, which can be opened when an error is
@@ -143,16 +143,16 @@
         <title>Dialogue context</title>
 
         <p>The dialogue system in this program is machine-governed, which
-        means that machine asks questions, user answers and the machine
+        means that the machine asks questions, the user answers and the machine
         commentes upon the answers before it carries on. The conversation may
         also involve questions posed by the user, but the type of questions is
         defined by the machine. In the first version, we will have only
         questions asked by the machine. The dialogue system consists of two
         parts: dialogue context and dialogue manager.</p>
 
-        <p>When the program starts, the user first selects the conversation he
-        wants to try. In addition, he may select some grammatical properties
-        he wants to practice. Since the language learning system concentrates
+        <p>When the program starts, the user first selects the conversation s/he
+        wants to try. In addition, s/he may select some grammatical properties
+        s/he wants to practice. Since the language learning system concentrates
         on learning the verb inflection, the grammatical properties would be
         Tense and Person-Number. Perhaps others as well. When the grammatical
         properties are selected (e.g. Present and Sg1), the questions are
@@ -162,15 +162,15 @@
         <p>The context can be selected from a list of dialogues. In the later
         versions, there may be dialogues based on a picture, etc. The
         dialogues may be planned for different common situations that involve
-        interaction: shopping, cafe etc., or by taking into account user's
+        interaction: shopping, cafe etc., or by taking into account the user's
         interests and age for example. All the utterances made by the program
         are prepared beforehand.</p>
 
-        <p>Dialogue context consists of a list of topics that may be included
+        <p>The dialogue context consists of a list of topics that may be included
         in the conversation. When the user selects some conversation, the
         topics are selected and the conversation is generated. The list of
         questions may split to branches if the conversation contains yes/no
-        -questions that are used as a selection criteria for the next
+        -questions that are used as selection criteria for the next
         questions. When all the questions in the branch are used, a new topic
         is selected.</p>
       </section>
@@ -178,7 +178,7 @@
       <section>
         <title>Dialogue manager</title>
 
-        <p>Dialogue manager selects the next utterance based on the dialogue
+        <p>The dialogue manager selects the next utterance based on the dialogue
         context and user input. In the simplest dialogues, there is only one
         route through the dialogue. The program asks a question from the user
         and the user replies. To create a feeling of a conversation, the next
@@ -199,19 +199,22 @@
           lists of possible answers:</p>
 
           <source>  affirmative: Jugan, Mun jugan, De jugan, Juo, mun jugan
-  negative: In juga, In juga gáfe, In juga maidege</source>
+  negative: In, in, In juga, In juga gáfe, In juga maidege</source>
 
-          <p>If the user input is one of these, then the next question can be
-          selected reliably on the basis of the answer. Otherwise, the next
-          question is selected following the discourse context. We could think
-          of some heuristics here, for example if the answer starts with "Juo"
-          then we conclude that the sentence is affirmative even though it was
-          not listed in the set of answers and similarly with the negation
-          verb. However, then there is a chance to do false predictions, for
-          example if the user enters "Yes, but.." In the first prototype, the
-          selection will be based on a preformatted list of answers.</p>
+          <p>If the user input is one of these, then the next question
+          can be selected reliably on the basis of the
+          answer. Otherwise, the next question is selected following
+          the discourse context. We could think of some heuristics
+          here, for example if the answer starts with "Juo" or the
+          main verb is in sg1, then we conclude that the sentence is
+          affirmative even though it was not listed in the set of
+          answers, and similarly with the negation verb. However, then
+          there is a chance to do false predictions, for example if
+          the user enters "Yes, but.." In the first prototype, the
+          selection will be based on a preformatted list of
+          answers.</p>
 
-          <p>Also, we want to be able to change the format of the question so
+          <p>We also want to be able to change the format of the question so
           that instead of asking in Sg2, the question could be in Pl2 or Du2
           for example. This means that the example above is too simplistic.
           The question should be paired with the morphological information.
@@ -237,13 +240,13 @@
           answers</title>
 
           <p>The idea is that the question may be represented using very
-          general terms. This way, we may vary the grammatical properties of
-          sentences, for example Tense and Person-Number. When the user
-          selects the Tense and Person-Number he likes, the questions are
+          general terms. in this way, we may vary the grammatical properties of
+          the sentences, for example Tense and Person-Number. When the user
+          selects the Tense and Person-Number s/he likes, the questions are
           generated accordingly. Some questions may be more restricted, but
           that's fine. I would like to include the possibility to use both
-          very general format for the question and more specific where the
-          utterances and questions made by machine are explicitely stated. We
+          a very general format for the question and more specific formats where the
+          utterances and questions made by the machine are explicitely stated. We
           will use the same names for tags and tagsets that are defined in
           korpustags.txt.</p>
 
@@ -273,11 +276,11 @@
   &lt;q&gt;V+MV_GRAM+Qst N+SG+ACC&lt;/q&gt;
 &lt;/proto_question&gt;</source>
 
-          <p>This formulation allows the properties of verb to be parametrized
-          and selected by the program (or the user when he selects the
-          grammatical properties he wants to practice).</p>
+          <p>This formulation allows the properties of the verb to be parametrized
+          and selected by the program (or the user when s/he selects the
+          grammatical properties s/he wants to practice).</p>
 
-          <p>When the question are in general format, we would like the
+          <p>When the question is in a general format, we would like the
           answers have the similar format. In this case, the verb and object
           are recieved from the program so it doesn't have to be specified
           again. Nevertheless, if the question can be answered using different
@@ -311,7 +314,7 @@
   &lt;neg&gt;
 &lt;/proto_answer&gt;</source>
 
-          <p>The idea is that these protoquestions and protoanswers can always
+          <p>The idea is that these protoquestions and protoanswers always may
           be overridden by more specific questions and answers. For example it
           is possible to write down the question and answers in the exact
           forms without any variation. This more specific format can be used
@@ -335,10 +338,10 @@
           <p>The structure for the topic is given below. Each topic contains
           an unordered list of questions. Each yes/no questions may contain
           three elements that contain the instructions for different actions:
-          affirmative, negative and default action. Action may be an utterance
+          affirmative, negative and default action. The action may be an utterance
           or a link to the next question. The default action is used if none
           of the other actions are not activated. If there is no action at
-          all, next topic is selected. Regardless of how the conversation
+          all, the next topic is selected. Regardless of how the conversation
           proceeds, there may be opening or ending statements for both the
           conversation and the topic.</p>
 
@@ -378,7 +381,7 @@
 &lt;/topic&gt;</source>
 
           <p>This xml-structure does not contain the selection criteria for
-          affirmative and negative answers but they are in separate document.
+          affirmative and negative answers but they are in a separate document.
           In this way, the questions can also be reused in different
           conversations.</p>
 
@@ -391,8 +394,8 @@
           coffee). In the first versions, we will not have this
           functionality.</p>
 
-          <p>In addition, there is a list of answers that may be cause
-          different kind of reactions. For example, incomplete answers cause
+          <p>In addition, there is a list of answers that may cause
+          different kinds of reactions. For example, incomplete answers cause
           feedback in all the conversations:</p>
 
           <source>&lt;error link="incomplete_answer"&gt;
@@ -408,7 +411,7 @@
       <section>
         <title>Speller</title>
 
-        <p>Speller for North and Lule Sámi will be used in correcting spelling
+        <p>The Speller for North and Lule Sámi will be used in correcting spelling
         errors by the user.</p>
 
         <section>
@@ -416,45 +419,48 @@
 
           <p>The suggestion mechanism can be restricted by having
           conversation-based lexicons, which contain thematically restricted
-          vocabularies. On the other hand, the whole project needs a lexicon
+          vocabularies. In the other hand, the whole project needs a lexicon
           of common words that may occur in each dialogue (containing
-          pronouns, auxiliaries, common verbs,..) It may even turn out that
+          pronouns, auxiliaries, common verbs,..). It may even turn out that
           one restricted lexicon is suitable for all the discussions.</p>
 
-          <p>There is one problem: If the user tries to write the correct
-          grammatical form of a verb, but has a spelling error, the speller
-          may suggest grammatically wrong form.</p>
+          <p>There are several problems with the correction
+          mechanisms: If the user tries to write the correct
+          grammatical form of a verb, but has a spelling error, the
+          speller may suggest a grammatically wrong form. another
+          problem is that there will be very many correct suggestions
+          for each spelling error</p>
         </section>
       </section>
 
       <section>
         <title>Web interface</title>
 
-        <p>The system is accessed via web interface. When the user selects the
-        conversation, it is generated, and the topics are selected and put in
+        <p>The system is accessed via a web interface. When the user selects the
+        conversation, the interface is generated, and the topics are selected and put in
         some order. Thus the conversation is ready when the user starts it.
         The yes/no questions are taken into account when the conversation is
         generated. The wh-questions may cause topic changes that cannot be
-        taken into account beforehand and require the conversation to be
+        taken into account in beforehand and require the conversation to be
         regenerated, and in addition, there has to be a logging mechanism of
         already used topics. The topic changes by the user are not included in
         the first version of the system.</p>
 
         <p>Spelling errors cause a small window to open which briefly states
-        the error and lists the suggestions.</p>
+        the error and lists suggestions.</p>
 
-        <p>Grammatical errors cause similar window to open, with brief
+        <p>Grammatical errors cause a similar window to open, with brief
         description of the error and some assistance. In addition, the
         tutorial section in the side bar is activated and the correct tutorial
         page is opened.</p>
 
         <p>A risk for the program and especially for the usage of the
-        interface is the speed. To avoid waiting times in case of correct
-        sentences, the dialogue is generated beforehand as much as possible.
+        interface is the speed. To avoid waiting time in cases of correct
+        sentences, the dialogue is generated in beforehand as much as possible.
         When the user's answer is not found from the predefined set of
-        answers, a speller call is required, after that there may be analyzer
-        call and all of these take time. Therefore, attention has to be paid
-        to the speech already at start of the development.</p>
+        answers, a speller call is required, thereafter there may be an analyzer
+        call, and all of these take time. Therefore, attention has to be paid
+        to the speech already at the start of the development.</p>
       </section>
     </section>
 
