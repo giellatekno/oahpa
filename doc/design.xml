@@ -16,14 +16,21 @@
       <section>
         <title>Architecture Overview</title>
 
-        <p>The software consists of</p>
+        <p>The software consists of Dialogue manager, Sentence parser and
+        Speller together with suggestion mechanism. In addition, user Feedback
+        and Tutorial section are integrated to the dialogue. The software is
+        used via web interface.</p>
       </section>
     </section>
 
     <section>
       <title>Component Design</title>
 
-      <p>Why the software is needed.</p>
+      <p>The heart of the system is the dialogue manager. It conducts the
+      dialogue by selecting the next utterance made by the machine. It reacts
+      to the user's replies and starts feedback and tutorial dialogues when
+      needed. Dialogue manager calls sentence parser and speller to parse the
+      user replies.</p>
 
       <section>
         <title>Sentence parser</title>
@@ -31,8 +38,21 @@
         <p>The system is able to parse sentences, also incorrect ones. At the
         moment, there is an analyzator and disambiguator and we are able to
         get full syntactic analysis of the sentences that belong to the
-        language. There are two classes of errors: spelling errors and
-        grammatical errors, they are described in separate sections.</p>
+        language.</p>
+
+        <p>The parser process involves three steps: check against predefined
+        set of correct answers, speller and grammar check. First of all, each
+        question has a predefined set of answers that can be generated
+        beforehand. If the answer does not belong to the set of predefined
+        answers, the sentence is sent to speller. If the words in the
+        utterance are not recognized, the problematic word receives
+        suggestions. When all the words are recognized, the predefined set of
+        answers is checked again. If that check fails, the utterance is sent
+        to the analyzer. In this final step, the sentence undergoes either
+        overall grammar check or there is more fine-grained check where the
+        type of the question is taken into account. We have to decide which
+        one. The two classes of errors, spelling errors and grammatical errors
+        are described in more detail separate sections.</p>
 
         <section>
           <title>Spelling errors</title>
@@ -50,11 +70,11 @@
           belong to an ungrammatical sentence.</p>
 
           <p>There are two classes of grammatical errors: question-specific
-          errors and common errors. <strong> Question-specific errors</strong>
-          are the type where the user is expected to use some pronoun. For
-          example, if the question is "Jugatgo gáfe?", then the user should
-          use first person singular in the answer, both in the pronoun and the
-          verb form. The question is, does the question always determine the
+          errors and common errors. <strong> Question-specific errors
+          </strong> are the type where the user is expected to use some
+          pronoun. For example, if the question is "Jugatgo gáfe?", then the
+          user should use first person singular in the answer, both in the
+          pronoun and the verb form. Does the question always determine the
           grammatical form of the answer, or do we need a general class of
           grammatical errors?</p>
 
@@ -63,12 +83,12 @@
           below). However, if we want to allow the user to use also other
           verbs than what is provided in the question, the correct grammatical
           information that is expected has to be specified somehow. I don't
-          know how this should be done. Usage of syntactic information etc.
-          </p>
+          know how this should be done. Usage of syntactic information
+          etc.</p>
 
           <p><strong>Common errors </strong>could be deteceted in sentences
-          that are not recognized as affirmative or negative answers by the
-          system. I.e. basic grammar checking. Each grammatical error has a
+          that do not belong to the predefined set of answers for the
+          question. I.e. basic grammar checking. Each grammatical error has a
           type. For example, if a sg1 subject is paired with a verb in wrong
           form, we may ask the user to change the verb form. The errors are
           classified and the actions they cause are stored in an xml-structure
@@ -84,23 +104,27 @@
         grammatical error is detected, a feedback window and the tutorial
         section are activated. Feedback may be more fine-grained than
         tutorial. One suggestion for the format is described below. You may
-        decide the classes of feedback as you like, I just illustrate that the
-        individual feedback may be more fine-grained than the tutorial.</p>
+        decide the classes of feedback as you like, this example just
+        illustrates the xml-structure. Note that the individual feedback may
+        be more fine-grained than the tutorial. </p>
 
-        <source>&lt;error pos="V" type="Sg1"&gt;
+        <source>&lt;error type="MAINV_SG1"&gt;
   &lt;fb&gt;Select a verb in first person singular.&lt;/fb&gt;
   &lt;tut type="verb_inflection"/&gt;
 &lt;/error&gt;
 ..
-&lt;error pos="V" type="_Pl1"&gt;
+&lt;error type="MAINV_PL1"&gt;
   &lt;fb&gt;The pronoun "we" requires first person plural for the verb form.&lt;/fb&gt;
   &lt;tut link="verb_inflection"/&gt;
 &lt;/error&gt;
 
 &lt;error type="incomplete_answer"&gt;
   &lt;fb&gt;Answer with complete clauses.&lt;/fb&gt;
-  &lt;tutorial link="complete_clauses"/&gt;
+  &lt;tut link="complete_clauses"/&gt;
 &lt;/error&gt;</source>
+
+        <p>The error types have to be compatible with the error types that are
+        recognized by the sentence parser.</p>
       </section>
 
       <section>
@@ -115,7 +139,7 @@
       </section>
 
       <section>
-        <title>Dialogue system</title>
+        <title>Dialogue context</title>
 
         <p>The dialogue system in this program is machine-governed, which
         means that machine asks questions, user answers and the machine
@@ -123,117 +147,191 @@
         also involve questions posed by the user, but the type of questions is
         defined by the machine. In the first version, we will have only
         questions asked by the machine. The dialogue system consists of two
-        parts: dialogue context and dialogue manager</p>
+        parts: dialogue context and dialogue manager.</p>
+
+        <p>When the program starts, the user first selects the conversation he
+        wants to try. In addition, he may select some grammatical properties
+        he wants to practice. Since the language learning system concentrates
+        on learning the verb inflection, the grammatical properties would be
+        Tense and Person-Number. Perhaps others as well. When the grammatical
+        properties are selected (e.g. Present and Sg1), the questions are
+        formatted so that at least some of them expect answer in the form
+        selected by the user (Present and Sg1).</p>
+
+        <p>The context can be selected from a list of dialogues. In the later
+        versions, there may be dialogues based on a picture, etc. The
+        dialogues may be planned for different common situations that involve
+        interaction: shopping, cafe etc., or by taking into account user's
+        interests and age for example. All the utterances made by the program
+        are prepared beforehand.</p>
+
+        <p>Dialogue context consists of a list of topics that may be included
+        in the conversation. When the user selects some conversation, the
+        topics are selected and the conversation is generated. The list of
+        questions may split to branches if the conversation contains yes/no
+        -questions that are used as a selection criteria for the next
+        questions. When all the questions in the branch are used, a new topic
+        is selected.</p>
+      </section>
+
+      <section>
+        <title>Dialogue manager</title>
+
+        <p>Dialogue manager selects the next utterance based on the dialogue
+        context and user input. In the simplest dialogues, there is only one
+        route through the dialogue. The program asks a question from the user
+        and the user replies. To create a feeling of a conversation, the next
+        question is based on the user input whenever possible.</p>
 
         <section>
-          <title>Dialogue context</title>
+          <title>Selecting the next question</title>
 
-          <p>The context can be selected from a list of dialogues. In the
-          later versions, there may be dialogues based on a picture, etc. The
-          dialogues may be planned for different common situations that
-          involve interaction: shopping, cafe etc., or by taking into account
-          user's interests and age for example. All the utterances made by the
-          program are prepared beforehand.</p>
+          <p>There are two types of questions: yes/no questions and
+          wh-questions. In addition, there are questions that have a fixed
+          answer, such as "How are you?". The yes/no questions create branches
+          to the conversation, where the next utterance by the machine depends
+          on the user answer. The selection must be done reliably, therefore
+          each question is stored together with a list of probable affirmative
+          answers and a list of probable negative answers.</p>
 
-          <p>Dialogue context consists of a list of questions of each topic
-          that is considered in the conversation. To get variation to the
-          conversations, not all the topics are used in each conversation. The
-          list of questions may split to branches if the conversation contains
-          yes/no -questions that are used as a selection criteria for the next
-          questions. When all the questions in the branch are used, a new
-          topic is selected.</p>
+          <p>For example, the question "Jugatgo gáfe?" is paired with two
+          lists of possible answers:</p>
+
+          <source>  affirmative: Jugan, Mun jugan, De jugan, Juo, mun jugan
+  negative: In juga, In juga gáfe, In juga maidege</source>
+
+          <p>If the user input is one of these, then the next question can be
+          selected reliably on the basis of the answer. Otherwise, the next
+          question is selected following the discourse context. We could think
+          of some heuristics here, for example if the answer starts with "Juo"
+          then we conclude that the sentence is affirmative even though it was
+          not listed in the set of answers and similarly with the negation
+          verb. However, then there is a chance to do false predictions, for
+          example if the user enters "Yes, but.." In the first prototype, the
+          selection will be based on a preformatted list of answers.</p>
+
+          <p>Also, we want to be able to change the format of the question so
+          that instead of asking in Sg2, the question could be in Pl2 or Du2
+          for example. This means that the example above is too simplistic.
+          The question should be paired with the morphological information.
+          The conversation may be selected so that the same form is used in
+          most of the questions.</p>
+
+          <source>  Juotteko kahvia?
+  aff: Juomme, Kyllä juomme, kyllä, juomme kahvia, kyllä, me juomme kahvia.
+  neg: Emme juo, Emme juo kahvia</source>
+
+          <p>Therefore, the question could be formed using the base form or,
+          alternatively, the morphological information alone. The form may be
+          given either straight in the xml-structure or it can be generated.
+          There may also be alternative questions for one question type to get
+          variability to the conversation. Since there may be variability at
+          least in the Person-Number and perhaps also otherwise, we have to
+          find some general format for the questions. Let's start with a
+          simple yes/no question.</p>
         </section>
 
         <section>
-          <title>Dialogue manager</title>
+          <title>Specifying a general form for a yes/no -question and its
+          answers</title>
 
-          <p>Dialogue manager selects the next utterance based on the user
-          input. In the simplest dialogues, there is only one route through
-          the dialogue. The program asks a question from the user and the user
-          replies. To create a feeling of a conversation, the next question is
-          based on the user input whenever possible.</p>
+          <p>The idea is that the question may be represented using very
+          general terms. This way, we may vary the grammatical properties of
+          sentences, for example Tense and Person-Number. When the user
+          selects the Tense and Person-Number he likes, the questions are
+          generated accordingly. Some questions may be more restricted, but
+          that's fine. I would like to include the possibility to use both
+          very general format for the question and more specific where the
+          utterances and questions made by machine are explicitely stated. We
+          will use the same names for tags and tagsets that are defined in
+          korpustags.txt.</p>
 
-          <section>
-            <title>Selecting the next question</title>
-
-            <p>There are two types of questions yes/no questions and
-            wh-questions. For yes/no questions, the next question may be
-            selected on the basis of the user input. The selection must be
-            done reliably, therefore each question is stored together with a
-            list of probable affirmative answers and a list of probable
-            negative answers.</p>
-
-            <p>For example, the question "Jugatgo gáfe?" is paired with two
-            lists of possible answers:</p>
-
-            <source>  affirmative: Jugan, Mun jugan, De jugan, Juo, mun jugan
-  negative: In juga, In juga gáfe, In juga maidege</source>
-
-            <p>If the user input is one of these, then the next question can
-            be selected reliably on the basis of the answer. Otherwise, the
-            next question is selected following the discourse context. We
-            could think of some heuristics here, for example if the answer
-            starts with "Juo" then we conclude that the sentence is
-            affirmative even though it was not listed in the set of answers
-            and similarly with the negation verb. However, then there is a
-            chance to do false predictions, for example if the user enters
-            "Yes, but.." In the first prototype, the selection will be based
-            on a preformatted list of answers.</p>
-
-            <p>Also, we want to be able to change the format of the question
-            so that instead of asking in 2.person singular, the question could
-            be in 2.person plural or dual for example. This means that the
-            example above is too simplistic. The question should be paired
-            with the morphological information. The conversation may be
-            selected so that the same form is used in most of the
-            questions.</p>
-
-            <source>Juotteko kahvia?
-aff: Juomme, Kyllä juomme, kyllä, juomme kahvia, kyllä, me juomme kahvia.
-neg: Emme juo, Emme juo kahvia</source>
-
-            <p>Therefore the question could be formed using the base form or,
-            alternatively, the morphological information alone. The form may
-            be given either straight in the xml-structure or it can be
-            generated. There may also be alternative questions for one
-            question type to get variability to the conversation.</p>
-
-            <source>&lt;question name="jugatgo_gáfe"&gt;
-  &lt;q type="Sg2"&gt;Jugatgo gáfe?&lt;/q&gt;
+          <source>&lt;question name="jugatgo_gáfe"&gt;
+  &lt;q Tense="Prs" PN="Sg2"&gt;Jugatgo gáfe?&lt;/q&gt;
+  &lt;q Tense="Prs" PN="Sg2"&gt;Jugatgo gáfe?&lt;/q&gt;
   ...
 &lt;/question&gt;
 
 &lt;question name="jugatgo_gáfe"&gt;
-  &lt;q&gt;&lt;grammar&gt;Juhkat+MV_GRAM+Qst gáfe?&lt;/grammar&gt;&lt;/q&gt;
-  ...
+  &lt;q&gt;&lt;grammar V="juhkat" N="gáffe"&gt;V+MV_GRAM+Qst N+Sg+Acc&lt;/grammar&gt;&lt;/q&gt;
 &lt;/question&gt;
 
 &lt;grammar type="MV_GRAM"&gt;
-  &lt;tag type="Sg2"&gt;V+Ind+Prs+Sg2&lt;/tag&gt;
-  &lt;tag type="Pl2"&gt;V+Ind+Prs+Pl2&lt;/tag&gt;
+  &lt;tag&gt;V+Ind+Tense+PersonNumber&lt;/tag&gt;
 &lt;/grammar&gt;</source>
 
-            <p>Or, we may simplify still more and define basic question types.
-            For example (these are only examples, you may define the tag
-            classes as you like).</p>
+          <p>Or, it is possible to use even more general types of questions.
+          For example (these are only examples, you may define the tag classes
+          as you like):</p>
 
-            <source>&lt;question name="mainv_obj"&gt;
-  &lt;q&gt;V+MV_GRAM+Qst N+OBJ_SG&lt;/q&gt;
-  ...
-&lt;/question&gt;</source>
+          <source>&lt;question name="jugatgo_gáfe"&gt;
+  &lt;q type="go_objsg"&gt;&lt;grammar V="juhkat" N="gáffe"/&gt;&lt;/q&gt;
+&lt;/question&gt;
 
-            <p>Each conversation is stored in an xml-document that has e.g.
-            the format below. The conversation consists of topics. Each topic
-            contains an unordered list of questions. Each yes/no questions may
-            contain three elements that contain the instructions for different
-            actions: affirmative, negative and default action. Action may be
-            an utterance or a link to the next question. If there is a default
-            action, it is always used. If there is no action at all, next
-            topic is selected. Regardless of how the conversation proceeds,
-            there may be opening or ending statements for both the
-            conversation and the topic.</p>
+&lt;proto_question type="go_objsg"&gt;
+  &lt;q&gt;V+MV_GRAM+Qst N+SG+ACC&lt;/q&gt;
+&lt;/proto_question&gt;</source>
 
-            <source>&lt;conversation name="cafe"&gt;
+          <p>This formulation allows the properties of verb to be parametrized
+          and selected by the program (or the user when he selects the
+          grammatical properties he wants to practice).</p>
+
+          <p>When the question are in general format, we would like the
+          answers have the similar format. In this case, the verb and object
+          are recieved from the program so it doesn't have to be specified
+          again. Nevertheless, if the question can be answered using different
+          verbs, then a list of verbs can be provided.</p>
+
+          <source>&lt;answer name="jugatgo_gáfe"&gt;
+  &lt;aff&gt;
+    &lt;ans&gt;V+MV_GRAM&lt;/ans&gt;
+    &lt;ans&gt;Pron V+MV_GRAM&lt;/ans&gt;
+    &lt;ans&gt;De V+MV_GRAM&lt;/ans&gt;
+    &lt;ans&gt;Juo, Pron V+MV_GRAM&lt;/ans&gt;
+  &lt;/aff&gt;
+  &lt;neg&gt;
+    &lt;ans&gt;Neg+NEG_GRAM V+CONNEG&lt;/ans&gt;
+    &lt;ans&gt;Neg+NEG_GRAM V+CONNEG N+SG+ACC&lt;/ans&gt;
+    &lt;ans&gt;Neg+NEG_GRAM V+CONNEG maidege&lt;/ans&gt;
+  &lt;neg&gt;
+&lt;/answer&gt;</source>
+
+          <p>Or, we may abstract words like "De" and "Juo" away and provide
+          them by the program, so that an answer to a yes/no question may
+          start with "De" or "Juo" and only what follows is parsed. It is also
+          possible to mark optionality straight in the input:</p>
+
+          <source>&lt;proto_answer type="go_objsg"&gt;
+  &lt;aff&gt;
+    &lt;ans&gt;(Pron) V+MV_GRAM (N+SG+ACC)&lt;/ans&gt;
+  &lt;/aff&gt;
+  &lt;neg&gt;
+    &lt;ans&gt;Neg+NEG_GRAM V+CONNEG (N+SG+ACC)&lt;/ans&gt;
+  &lt;neg&gt;
+&lt;/proto_answer&gt;</source>
+
+          <p>The idea is that these protoquestions and protoanswers can always
+          be overridden by more specific questions and answers. For example it
+          is possible to write down the question and answers in the exact
+          forms without any variation. This more specific format can be used
+          by specifying the name of it in the dialogue.</p>
+        </section>
+
+        <section>
+          <title>The dialogue structure</title>
+
+          <p>Each conversation is stored in an xml-document that has e.g. the
+          format below. The conversation consists of topics. Each topic
+          contains an unordered list of questions. Each yes/no questions may
+          contain three elements that contain the instructions for different
+          actions: affirmative, negative and default action. Action may be an
+          utterance or a link to the next question. The default action is used
+          if none of the other actions are not activated. If there is no
+          action at all, next topic is selected. Regardless of how the
+          conversation proceeds, there may be opening or ending statements for
+          both the conversation and the topic.</p>
+
+          <source>&lt;conversation name="cafe"&gt;
  &lt;topic name="juhkat"&gt;
    &lt;opening&gt;Mitä joisimme?&lt;/opening&gt;
    &lt;question name="jugatgo_gáfe"&gt;
@@ -268,85 +366,35 @@ neg: Emme juo, Emme juo kahvia</source>
 
  &lt;topic name="maksaminen.."&gt;
   ..
- &lt;/topic&gt;</source>
+ &lt;/topic&gt;
+...
+&lt;/conversation&gt;</source>
 
-            <p>This xml-structure does not contain the selection criteria for
-            affirmative and negative answers. To keep the dialogue structure
-            clear, they could be in separate document. In this way, the
-            questions can also be reused in different conversations.</p>
+          <p>This xml-structure does not contain the selection criteria for
+          affirmative and negative answers but they are in separate document.
+          In this way, the questions can also be reused in different
+          conversations.</p>
 
-            <source>&lt;answer name="jugatgo_gáfe"&gt;
-  &lt;aff&gt;
-    &lt;ans&gt;Jugan&lt;/ans&gt;
-    &lt;ans&gt;Mun jugan&lt;/ans&gt;
-    &lt;ans&gt;De jugan&lt;/ans&gt;
-    &lt;ans&gt;Juo, mun jugan&lt;/ans&gt;
-  &lt;/aff&gt;
-  &lt;neg&gt;
-    &lt;ans&gt;In juga&lt;/ans&gt;
-    &lt;ans&gt;In juga gáfe&lt;/ans&gt;
-    &lt;ans&gt;In juga maidege&lt;/ans&gt;
-  &lt;neg&gt;
-&lt;/answer&gt;</source>
+          <p>In the case of wh-questions, the next question is selected
+          following the discourse context. The topic of the conversation can
+          be changed partly randomly. However, in some cases the user input
+          could conduct the conversation e.g. if the user mentions a topic
+          that is listed in available topics. For example "Maid don jugat?"
+          and we have prepared a conversation regarding that topic (tea,
+          coffee). In the first versions, we will not have this
+          functionality.</p>
 
-            <p>The verb and the type of questions are given as parameters to
-            the program, for example if we want the questions to be in
-            2.person singular, the program selects the correct grammatical
-            forms and verbs. Also, the answers follow a pattern: 2Sg requires
-            answer in 1Sg, etc. When the main question types are defined they
-            can be easily reused when needed. For example, the following
-            conversation would start by:</p>
+          <p>In addition, there is a list of answers that may be cause
+          different kind of reactions. For example, incomplete answers cause
+          feedback in all the conversations:</p>
 
-            <source>&lt;conversation name="cafe"&gt;
- &lt;topic name="juhkat"&gt;
-   &lt;opening&gt;Mitä joisimme?&lt;/opening&gt;
-   &lt;question name="jugatgo_gáfe" type="mainv_obj" V="juhkat" OBJ="gáffe"&gt;
-     &lt;aff&gt;
-       &lt;q link="otatko_sokeria"/&gt;
-       &lt;q link="otatko_maitoa"/&gt;
-     &lt;/aff&gt;
-     &lt;neg&gt;
-       &lt;q link="jugatgo_deaja"/&gt;
-       &lt;q link="jugatgo_maidege"/&gt;
-     &lt;/neg&gt;
-     &lt;default&gt;
-       &lt;q link=".."/&gt;
-     &lt;/default&gt;
-   &lt;/question&gt;
-
-   &lt;question name="otatko_sokeria" type="mainv_obj" V=".." OBJ=".."&gt;
-     &lt;aff&gt;
-       &lt;utt&gt;Ole hyvä!&lt;/utt&gt;
-     &lt;/aff&gt;
-     &lt;default&gt;
-      &lt;q link="otatko_maitoa"/&gt;
-     &lt;/default&gt;
-   &lt;/question&gt;
-
- &lt;/topic&gt;</source>
-
-            <p>In the case of wh-questions, the next question is selected
-            following the discourse context. The topic of the conversation can
-            be changed partly randomly. However, in some cases the user input
-            could conduct the conversation e.g. if the user mentions a topic
-            that is listed in available topics. For example "Maid don jugat?"
-            and we have prepared a conversation regarding that topic (tea,
-            coffee). In the first versions, we will not have this
-            functionality.</p>
-
-            <p>In addition, there is a list of answers that may be cause
-            different kind of reactions. For example, incomplete answers cause
-            feedback in all the conversations:</p>
-
-            <source>&lt;error link="incomplete_answer"&gt;
+          <source>&lt;error link="incomplete_answer"&gt;
   &lt;ans&gt;In&lt;/ans&gt;
   &lt;ans&gt;Juo&lt;/ans&gt;
 &lt;/error&gt;</source>
 
-            <p>Some answers may cause tutorial window to open etc. The
-            structure of feedback and tutorial is described in the section
-            below.</p>
-          </section>
+          <p>Some answers may cause tutorial window to open etc. The structure
+          of feedback and tutorial is described in the section below.</p>
         </section>
       </section>
 
@@ -368,7 +416,7 @@ neg: Emme juo, Emme juo kahvia</source>
 
           <p>There is one problem: If the user tries to write the correct
           grammatical form of a verb, but has a spelling error, the speller
-          may suggest grammatically wrong form. </p>
+          may suggest grammatically wrong form.</p>
         </section>
       </section>
 
@@ -383,7 +431,7 @@ neg: Emme juo, Emme juo kahvia</source>
         taken into account beforehand and require the conversation to be
         regenerated, and in addition, there has to be a logging mechanism of
         already used topics. The topic changes by the user are not included in
-        the first version of the system. </p>
+        the first version of the system.</p>
 
         <p>Spelling errors cause a small window to open which briefly states
         the error and lists the suggestions.</p>
@@ -392,6 +440,14 @@ neg: Emme juo, Emme juo kahvia</source>
         description of the error and some assistance. In addition, the
         tutorial section in the side bar is activated and the correct tutorial
         page is opened.</p>
+
+        <p>A risk for the program and especially for the usage of the
+        interface is the speed. To avoid waiting times in case of correct
+        sentences, the dialogue is generated beforehand as much as possible.
+        When the user's answer is not found from the predefined set of
+        answers, a speller call is required, after that there may be analyzer
+        call and all of these take time. Therefore, attention has to be paid
+        to the speech already at start of the development.</p>
       </section>
     </section>
 
