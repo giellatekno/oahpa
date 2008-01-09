@@ -436,10 +436,11 @@ A:prop('Norga',plc,sg,loc)	Norggas
 .
 
 SOURCE: text
-SMEA45) Ollugo dus lea ruhta?
+SMEA45) Ollu go dus lea ruhta?
 A1
 QUE:cl
-A:adv('ollu',qst)	Ollugo
+A:adv('ollu')	Ollu
+Vpcle:part('go')        go
 HAB:pron('don',<pers>,2sg,loc)	dus
 P:v('leat',ind,pr,3sg)	lea
 Cs:n('ruhta',sg,nom)	ruhta
@@ -819,7 +820,7 @@ SMEA83) Eat leat.
 A1
 STA:cl
 P:g
-=D:v('ii',neg,ind,1PL)	Eai
+=D:v('ii',neg,ind,1PL)	Eat
 =H:v('leat',ind,pr,conneg)	leat
 .
 
@@ -850,7 +851,7 @@ STA:cl
 S:prop('Biret',sg,nom)	Biret
 P:g
 =D:v('leat',ind,pr,3sg)	lea
-=H:v('čállit',actio,ess)	čállime
+=H:v('čállit',actio,ess)	čállime/čállimin
 .
 
 SOURCE: text
@@ -1015,7 +1016,7 @@ STA:cl
 S:n('eadni',sg,nom)	Eadni
 P:g
 =D:v('leat',ind,pr,3sg)	lea
-=H:v('bassat',actio,ess)	bassame
+=H:v('bassat',actio,ess)	bassame/bassamin
 Od:n('vuokta',pl,acc)	vuovttaid
 .
 
@@ -1169,7 +1170,7 @@ A1
 COM:cl
 A:adv('dá')	Dá
 P:v('leat',ind,pr,3sg)	lea
-A:pron('don',<pers>,2sg,Ill)	dutnje
+A:pron('don',<pers>,2sg,ill)	dutnje
 S:n('biebmu',sg,nom)	biebmu
 !
 
@@ -1633,9 +1634,9 @@ A1
 STA:cl
 S:pron('mun',<pers>,1pl,nom)	Mii
 P:par
-=CJT:v('rievidit',ind,pr,1pl)	rievidit
+=CJT:v('rievidit',ind,pr,1pl)	rievidit/rievidat
 =CO:conj-s('ja')	ja
-=CJT:v('hearjidit',ind,pr,1pl)	hearjidit
+=CJT:v('hearjidit',ind,pr,1pl)	hearjidit/hearjidat
 A:adv('jávohaga')	jávohaga
 .
 
@@ -2054,7 +2055,7 @@ A1
 STA:cl
 Od:n('gáhkku',pl,acc)	Gáhkuid
 S:pron('mun',<pers>,1pl,nom)	mii
-P:v('goikadit',ind,pr,1pl)	goikadit
+P:v('goikadit',ind,pr,1pl)	goikadit/goikadat
 A:g
 =D:n('geađgi',sg,gen)	geađggi
 =H:prp-post('nalde')	nalde
@@ -2188,7 +2189,7 @@ Cs:g
 .
 
 SOURCE: text
-SMEA195) Odne lei hui buolaš.
+SMEA195) Odne lea hui buolaš.
 A1
 STA:cl
 A:adv('ikte')	Odne
