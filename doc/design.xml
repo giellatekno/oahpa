@@ -106,9 +106,11 @@
         tutorial. One suggestion for the format is described below. You may
         decide the classes of feedback as you like, this example just
         illustrates the xml-structure. Note that the individual feedback may
-        be more fine-grained than the tutorial. </p>
+        be more fine-grained than the tutorial.</p>
 
-        <source>&lt;error type="MAINV_SG1"&gt;
+        <source>feedback.xml
+
+&lt;error type="MAINV_SG1"&gt;
   &lt;fb&gt;Select a verb in first person singular.&lt;/fb&gt;
   &lt;tut type="verb_inflection"/&gt;
 &lt;/error&gt;
@@ -129,6 +131,12 @@
         type of spelling error). Each type of grammatical error has its own
         tutorial section, which can be opened when an error is
         encountered.</p>
+
+        <source>tutorial.xml
+
+&lt;tut name="verb_inflection"&gt;
+..text and explanations with examples and formatting..
+&lt;/tut&gt;</source>
       </section>
 
       <section>
