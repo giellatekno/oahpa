@@ -1,41 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- topics_cafe.xml: Test dialogue in cafe                        -->
+<!-- Specifies the structure for a dialogue                        -->
+<!-- The exact format of the questions is not given here, neither  -->
+<!-- feedback or anything other that does no immediately belong to -->
+<!-- the main discussion.                                          --> 
+<!-- This file is potentially language-independent (it would require -->
+<!-- moving utterances etc. also to links.)                          -->
+<!-- The topics follow each other in the order given here.         -->
+<!-- Topic changes when there are no further links to questions.   -->
+<!-- $Id$ -->
+
+<dialogue name="cafe">
+
 <topic name="juhkat">
+   <!-- The file may contain elements that lead the discussion -->
+   <!-- You may invent your own tags and later standardize.     -->
    <opening>Mitä joisimme?</opening>
    <question name="jugatgo_gáfe">
-     <aff>
-       <q link="sokeri"/>
-     </aff>
-     <neg>
-       <q link="jugatgo_deaja"/>
-     </neg>
-     <default>
-       <q link=".."/>
-     </default>
+     <!-- The link attribute points to another questions inside the
+     topic -->
+     <aff link="otatko_sokeria"/>
+     <neg link="jugatgo_deaja"/>
+     <default link=".."/>
    </question>
 
-   <question name="sokeri">
-     <q>Otatko sokeria?</q>
+   <question name="otatko_sokeria">
+     <aff>
+       <!-- Answers do not have to contain any link forward -->
+       <!-- If the link is not given, and default is specified, -->
+       <!-- the default link is followed -->
+       <utt>Ole hyvä!</utt>
+     </aff>
+     <default link="otatko_maito"/>
+   </question>
+
+   <question name="otatko_maitoa">
      <aff>
        <utt>Ole hyvä!</utt>
      </aff>
-     <default>
-      <q link="maito"/>
-     </default>
+   <!-- Since there are no further links, the branch ends and -->
+   <!-- the dialogue continues to the next topic -->
    </question>
 </topic>
 
-   <question name="maito">
-     <q>Otatko maitoa?</q>
-     <aff>
-       <utt>Ole hyvä!</utt><!--final_state-->
-     </aff>
-    </question>
+<!-- The structure of a maid-question is given here -->
+<!-- In this case, it could be used instead the topic "juhkat" -->
+<topic name="juhkat_substance">
+   <question name="Máid háliidat juhkat?">
+     <!-- If the answer is not in the list of beverages, the problem -->
+     <!-- is handled in the feedback discussion window. -->
+     <!-- Here you specify only the structure of the main dialogue -->
+     <aff link="other_juhkat_question"/>
+     <neg link="other_juhkat_question"/>
+     <default/>
+   </question>
+
+   <question name="other_juhkat_question">
+   ...
+   </question>
+
 </topic>
 
 <topic name="syöminen">
-  ..
+..
 </topic>
 
-<topic name="maksaminen..">
-  ..
+
+<topic name="maksaminen">
+..
 </topic>
 
+
+
+</dialogue>
