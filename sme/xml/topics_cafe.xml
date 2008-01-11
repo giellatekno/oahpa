@@ -1,0 +1,41 @@
+<topic name="juhkat">
+   <opening>Mitä joisimme?</opening>
+   <question name="jugatgo_gáfe">
+     <aff>
+       <q link="sokeri"/>
+     </aff>
+     <neg>
+       <q link="jugatgo_deaja"/>
+     </neg>
+     <default>
+       <q link=".."/>
+     </default>
+   </question>
+
+   <question name="sokeri">
+     <q>Otatko sokeria?</q>
+     <aff>
+       <utt>Ole hyvä!</utt>
+     </aff>
+     <default>
+      <q link="maito"/>
+     </default>
+   </question>
+</topic>
+
+   <question name="maito">
+     <q>Otatko maitoa?</q>
+     <aff>
+       <utt>Ole hyvä!</utt><!--final_state-->
+     </aff>
+    </question>
+</topic>
+
+<topic name="syöminen">
+  ..
+</topic>
+
+<topic name="maksaminen..">
+  ..
+</topic>
+
