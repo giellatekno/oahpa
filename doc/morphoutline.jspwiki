@@ -1,0 +1,73 @@
+!!!Morphology game
+
+This is a separate game, made to train morphological patterns. It draws wordform specifications at random, and the user has to answer with the wordform. This game will be accessed by the dialogue game if the user makes (too many) errors there, but it can also be accessed in its own right.
+
+!!Overview
+
+A short explanation of how to form the word, and then 15 words s/he has to inflect. The student gets statistics and comments about her/his achievement, and a proposal of doing a new training session. If not, s/he goes back to the conversation (and continues where s/he was).
+
+!!How it works:
+
+Bisyllabic, trisyllabic and contracted verbs/nouns/adjectives, but random in every group (from pedagogical lexicons so the students trains useful words).
+
+The training will then be a predefined set of morphosyntactic features, paired with a set of words, combined with a random function. The student shall provide correct wordforms.
+
+!!An outline of how it can work:
+
+A lexicon of nouns, verbs, adjectives - numbered. Every lexicon is devided into three parts, one for bisyllabic (e.g 1-100), one for trisyllabic (e.g 101-200) and one for contracted stems (e.g 200-250).
+ 
+There will be three random functions (or you can put in a fixed choice) so it is possible to run different kinds, e.g:
+
+* Nouns
+** N (random 1-100)(Sg)(Ill)			<this will use only bisyllabic nouns, only Sg Ill>
+** N (random 1-250)(Pl)(random case)	<this will pick from the whole noun lexicon, all cases in Pl>
+** N (random 1-250)(random Sg/Pl)(random case)	<this will pick from the whole nounlexicon, all cases in both Pl and Sg>
+* Verbs:
+** V (random 1-100)(Ind/Cond/Pot/Imp)(random Pr/Prt)(random Sg/Pl)(random 1/2/3) if possible, if not: (random Sg1, Sg2...)
+* Adjectives:
+** A (random 1-100)(Ø/Comp/Sup)(random Sg/Pl)(random case)
+
+The user will have the following choices:
+
+{{{
+- Part of speech (N, A, V)
+- Stem type (bisyllabic, trisyllabic, contracted, any)
+- Scope (one word with random forms / random words with one form / random words with random forms)
+- Dialect form (eastern, western) (?)
+}}}
+
+In the {{scope}} session the user should be able to restrict the scope, and thereby also the level of difficulty. The choice tablau could be menus or radio buttons, with one likely situation preset as default.
+
+{{{
+If N
+- User choses one word, program draws from all cases and numbers
+- User choses one or more grammatical features, program draws from set
+-- Default is random bisyllabic word, all cases, all numbers, no Px
+If A
+- User choses one word, program draws from attributive, comparision, cases and numbers
+- User choses one or more grammatical features, program draws from set
+-- Default is random bisyllabic word, attributive, comparision
+If V
+- User choses one word, program draws from all tenses, moods, persons, participles and infinitives
+- User choses one or more grammatical features, program draws from set
+-- Default is random bisyllabic word, indicative, present, all persons, all numbers
+}}}
+
+We should consider having the questions coming in series of 10, with a point score function, inspired by the visl system.
+
+
+!!Outline of work to do
+
+!Linguistic work
+
+We need to make a generation  transducer {{risme.fst}} (restricted inverted sme.fst) which gives only one form (possibly {{wrisme.fst, erisme.fst}}, for western and eastern)
+
+!Programming work
+
+* Web interface
+* Random function
+* Query - answer mechanism
+* Response if correct or wrong (cf. visl mechanism)
+* Point score?
+
+
