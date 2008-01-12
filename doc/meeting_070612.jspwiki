@@ -122,7 +122,7 @@ Picture of a shop, with objects
 
 * Goal. Train a special way of making questions, for a special purpose.
 * Challenge: Write the grammar of all possible questions
-* paljonko N-Nom {maksaa/olla+V+Ind+Sg3}
+* paljonko N-Nom (maksaa/olla+V+Ind+Sg3)
 * ... 
 * FSIG
 * S -> NP VP
@@ -156,10 +156,11 @@ M analyses -- is it c
 * Comp should use one form only (Guovdageaidnu?)
 * User could pick what dialect the comp should use
 
+
 {{{
       boy  girl  adult
-!EAST Ánde Biret ..
-!WEST
+EAST Ánde Biret ..
+WEST
 }}}
 
 Gives six parameters, boy-topic, girl-topic, adult-topic for east and west dialect
@@ -249,6 +250,7 @@ P I live in Tromsø
 **  IF Nom-Sg1 TV-Sg1 Nom
 **  THEN suggest Nom-Sg1 TV-Sg1 Acc
 **  Flexible disambiguator
+
 
 
 {{{
