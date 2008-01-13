@@ -9,14 +9,15 @@ The student can choose an identity for computer for the conversation (s/he choos
 * Isak from Karasjok - (child)
 * Biera from Kautokeino - (adult)
 * Biret from Kautokeino - (child)
-* Oliva from Kåfjord - (adult)
-* Hánsa from Kåfjord - (child)
+?* Oliva from Kåfjord - (adult)
+?* Hánsa from Kåfjord - (child)
 
 These identities will act as parameters for choice of comments from the computer, and for dialogue topics and dialect forms:
 
 * dialect
 **  eastern - Karasjok
-**  western - Kautokeino, Kåfjord
+**  western - Kautokeino 
+?**  Kåfjord
 * topic
 **  adult
 **  child
@@ -31,17 +32,17 @@ The student can choose tutorial language:
 * Sami (for sami-speaking students who want to train writing and grammar)
 
 
-!!Page: Choose conversation topic
+!!Page: Choose conversation
 
 
 The purpose of the conversations are:
 
 * training useful words and expressions
-* training grammar (to every topic belong naturally grammatical functions.)
+* training grammar (to every setting belong naturally grammatical functions.)
 
-To every topic there will be drawings.
+To each setting there will be drawings.
 
-Topics - e.g:
+Settings - e.g:
 
 * Get to know each other (Oahpásmuvvan)
 **   Verbs: 1sg, 2sg?
@@ -71,7 +72,7 @@ Topics - e.g:
 **   Adverbs
 
 	
-The student can do some choices according to some of the topics, e.g:
+The student can do some choices according to some of the conversations, e.g:
 
 * Verbs are only in present tense
 * Adjectives without comparision
@@ -88,18 +89,192 @@ The questions are made so the student usually gets a couple of the same kind, so
 The student gets feedback about a grammatical error. In the tutorial section s/he can get a proposal like: "Do you want to take a training session of illative?" 
 
 
-!!!Page: Grammar training session (parallell page)
+!!Page: QA drill
 
-This will lead the student to [morphoutline.html the morphology game].
+Inbetween the "natural" dialogues, mimicking real life dialogues, and the pure grammar training session, inquiring paradigm forms, we may make a question-answer drill. The drill has two question types: Yes/no questions and wh-questions.
 
-!!Page: Choose a new topic or close the conversation?
+There are two motives for making this game type. First, our tailored dialogues run the risk of getting quickly consumed. With a QA drill of the type sketched here we may make an indefinite number of questions. Second, The students need to automatise the question-answer routine. 
 
-Go to "Page: Farewell" or to "Page: Choose conversation topic"
+!Yes/no-questions
+
+We need a grammatical verb lexicon, where the verbs are ordered according to sentence frame:
+
+* Transitive: {{SUBJ TV OBJ (ADVL)}}
+* Intransitive: {{SUBJ IV OBJ (ADVL)}}
+
+Here, {{SUBJ, TV, OBJ, ADVL, IV}} are variables representing sets of words or phrases.
+
+We then make matrix questions of the form (where {{LEAT}} is the copula verb, {{QPN}} is a random person-number value for the question.
+
+{{{
+   TV-QPN SUBJ OBJ (ADVL) 
+   LEAT-QPN SUBJ TV-PRTPTC OBJ (ADVL)
+   IV-QPN SUBJ (ADVL)
+   LEAT-QPN SUBJ IV-PRTPTC (ADVL)
+}}}
+
+In the question we may specify intended answer, say with a "+" or "-". The answer is then expected to be either of the minimal form, repeating only the verb,
+
+{{{
+   TV-APN 
+   LEAT-APN (TV-PRTPTC
+   IV-APN
+   LEAT-APN (IV-PRTPTC)
+}}}
+
+or in the maximal form, with a fuller sentence
+
+{{{
+   SUBJ TV-APN OBJ (ADVL) 
+   SUBJ LEAT-APN TV-PRTPTC OBJ (ADVL)
+   SUBJ IV-APN (ADVL)
+   SUBJ LEAT-APN IV-PRTPTC (ADVL)
+}}}
+
+The QPN and APN are related to each other in the following, obvious way:
+
+|| QPN || APN || QPN || APN || QPN || APN
+| Sg1  |  Sg2 |  Du1 |  Du2 
+| Sg2  |  Sg1 |  Du2 |  Du1 
+| Sg3  |  Sg3 |  Du3 |  Du3 |  Pl3 |  Pl3
+
+Thus, when {{QPN}} is Du2, then {{APN}} should be Du1, etc.
+
+We may probably not pair any {{TV, OBJ}}. Rather, we could group the objects in semantically defined sets ({{DRINK, FOOD, COMMODITY, ...}}, and have each TV subcategorise for one or more of the sets (a verb like ''to see'' could e.g. subcategorise for all).
+
+The sets may be populated as follows:
+{{{
+   SUBJ = a set of surnames and nouns denoting humans.
+   OBJ = semantically defined nouns
+   ADVL = a set of plc propernouns in locative, a set of time adverbials 
+}}}
+
+!Correction mechanism
+
+The answer may fail to match the expected answer in various ways. For a yes/no-question, the machine will always know the correct answer, and may present it to the user.
+
+!wh-questions
+
+We may reuse the sets defined above, but instead generate questions like
+
+{{{
+   Maid SUBJ TV-QPN (ADVL) 
+   Maid SUBJ LEAT-APN TV-PRTPTC (ADVL)
+   Goas IV-QPN (ADVL)
+   Goas LEAT-QPN IV-PRTPTC (ADVL)
+   Gos IV-QPN (ADVL)
+   Gos LEAT-QPN IV-PRTPTC (ADVL)
+}}}
+In this case, we may accept any noun in the appropriate case.
+
+{{{
+   SUBJ TV-APN X-ACC (ADVL) 
+   SUBJ LEAT-APN TV-PRTPTC X-ACC (ADVL)
+   X-NOM IV-APN (ADVL)
+   X-NOM LEAT-APN IV-PRTPTC (ADVL)
+}}}
+
+
+!Correction mechanism
+
+Here, the correct answer is an open set. The machine should correct the verb, and comment if it is not correct. If the subject or object (X-NOM, X-ACC) are unknown, or in the wrong case (say, Nom for expected Acc), the machine could suggest the correct case.
+
+
+
+
+
+
+!!Page: Grammar training session (parallell page)
+
+This will lead the student to [the morphology game|morphoutline.html].
+
+!!Page: Choose a new conversation or leave the program?
+
+Go to "Page: Farewell" or to "Page: Choose conversation"
 
 
 !!Page: Farewell
 
-Some comments about her/his achievement? Links to useful sites? Links to VISL
+Some comments about the user´s achievement? Links to useful sites? Links to VISL
 
 Close down or go to "Page: Welcome - choose conversation mate" to do it once more or to choose another conversation mate.
+
+
+!Testing xml structure for the dialogues
+
+Here, we write suggestions for dialogues (or, eventually in a separate doc)
+
+Terminology:
+
+Every dialogue has a setting, e.g. cafe.
+The dialogue contains several topics, e.g. drinking, eating, paying. = 
+Every topic contains several questions. e.g. Do you drink coffee?
+
+{{{
+<topic name="juhkat">
+   <opening>Bures boahtin!</opening>
+   <question name="Jugatgo_gáfe?"><!--here, name = question-->
+     <aff link="Áiggutgo_sohkkara?"/>
+     <neg link="Jugatgo_deaja?"/>
+     <default link=".."/>
+   </question>
+
+   <question name="Áiggutgo_sohkkara?">
+     <aff>
+       <utt>Ole hyvä!</utt>
+     </aff>
+     <default>
+      <q link="maito"/>
+     </default>
+   </question>
+</topic>
+
+   <question name="maito">
+     <q>Otatko maitoa?</q>
+     <aff>
+       <utt>Ole hyvä!</utt><!--final_state-->
+     </aff>
+    </question>
+</topic>
+
+<topic name="syöminen">
+  ..
+</topic>
+
+<topic name="maksaminen..">
+  ..
+</topic>
+
+
+<!--testing without y/n-->
+<topic name="juhkat_substance">
+   <opening>Mitä joisimme?</opening>
+   <question name="Máid háliidat juhkat?">
+     <known ans="bev"><!--if answer is in list of beverages then maksaminen-->
+       <q link="maksaminen"/>
+     </known>
+     <unknown>
+      <q link="is_this_a_beverage">
+     </unknown>
+     <neg>
+       <q link="syöminen"/>
+     </neg>
+     <default>
+       <q link=".."/>
+     </default>
+   </question>
+
+   <question name="sokeri">
+     <q>Otatko sokeria?</q>
+     <aff>
+       <utt>Ole hyvä!</utt>
+     </aff>
+     <default>
+      <q link="maito"/>
+     </default>
+   </question>
+</topic>
+}}}
+
+
 
