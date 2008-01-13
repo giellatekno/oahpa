@@ -3,32 +3,37 @@
 
 Phase II, first meeting in 2008.
 
-ln -s /Users/lene/ped/doc xtdoc/gtuit/src/documentation/content/xdocs/ped
 
+Note: In order to use forrest for the documentation, write in this command:
+
+{{{
+ln -s /Users/lene/ped/doc xtdoc/gtuit/src/documentation/content/xdocs/ped
+}}}
 
 
 !!!Initiative routines:
 
+{{{
 M asks
 U answers negative                U answers affirmative
 M must know it is negative        M gives follow-up question
-
+}}}
 
 Challenge: Be able to distinguish between affirmative and negative answer.
 
-M Haluatko kahvia?
-U En pidä kahvista / en halua / en, kiitos / en / en tiedä / ehkä en
+* M Haluatko kahvia?
+* U En pidä kahvista / en halua / en, kiitos / en / en tiedä / ehkä en
 
-=> If answer contains V Neg Sg1, then it is negative.
-=> If answer contains V Sg1, then it is affirmative.
+* => If answer contains V Neg Sg1, then it is negative.
+* => If answer contains V Sg1, then it is affirmative.
 
 
 !!!Overall system:
 
-Ond document for dialogue structure, 
-which specifies how topics are linked
+Ond document for dialogue structure, which specifies how topics are linked
 
 Requires lists of beverages, lists of food, lists of beverage accessories.
+
 {{{
 <dialogue name="cafe">
    <topic name="juhkat"/>
@@ -259,7 +264,8 @@ q1a1q11a14=neither
 q1a2=neg
 q1a2q11=...
 }}}                
-                
+
+(Note: Instead of this format, use xml format instead.)                
 
 {{{
 <proto_answer type="go_objsg">
