@@ -5,7 +5,7 @@
 <!-- feedback or anything other that does no immediately belong to -->
 <!-- the main discussion.                                          --> 
 <!-- This file is potentially language-independent (it would require -->
-<!-- moving utterances etc. also to links.)                          -->
+<!-- moving uttances etc. also to links.)                          -->
 <!-- The topics follow each other in the order given here.         -->
 <!-- Topic changes when there are no further links to questions.   -->
 <!-- $Id$ -->
@@ -13,7 +13,8 @@
 <dialogue name="visiting">
 
 <topic name="bures_boahtin">
- <comment>Buorre_beaivi!_Bures_boahtin_mu_geahčái</comment>
+ <utt>Buorre_beaivi!_Bures_boahtin_mu_geahčái</utt>  <!-- This gets a ! in the end, or should it be inside it? -->
+
  <default link="čohkkát"/> 
  </topic>
 
@@ -23,23 +24,24 @@
      <default link="Na_moai_čohkkájetne_dás"/>
    </question>
    
-   <comment name="Gievkkanis_lea_vuogas_čohkkát">
+   <utt name="Gievkkanis_lea_vuogas_čohkkát">
    <question name="Manne_go_gievkkanii">
      <pos link="Gievkkanis_lea_buorre"/>
 	 <default link="Na_moai_čohkkájetne_dás"/>
    </question>
-<comment name="Gievkkanis_lea_buorre"</comment>
+<utt name="Gievkkanis_lea_buorre"</utt>
      <default link="juhkat"/> 
-<comment name="Na_moai_čohkkájetne_dás"</comment>
+<utt name="Na_moai_čohkkájetne_dás"</utt>
      <default link="juhkat"/> 
     </question>
 </topic>
     
 <topic name="juhkat">    
 <question name="Háliidat_go_gáfe_vai_deaja">
-	<affobj obj="gáffe" obj="deadja" link="Geavahat_go_mielkki"/>
+	<affobj obj="gáffe" obj="deadja" link="Geavahat_go_mielkki"/>  <!--only one of objects should be in the answer -->
 	<neg link="Háliidat_go_juoida_eará"/>
-	<afflist list="juhkamušat" link="Mun_buvttán_dutnje_OBJ">
+	<afflist list="juhkamušat" link="Mun_buvttán_dutnje_OBJ"><!--the object should be in the list -->
+
 	<default link="Mus_ii_leat">
 </question>
 
@@ -52,25 +54,26 @@
 </question>
 
 <question name="Háliidat_go_juoida_eará"/>
-	<afflist list="juhkamušat" link="Mun_buvttán_dutnje_OBJ">
+	<afflist list="juhkamušat" link="Mun_buvttán_dutnje_OBJ"><!--the object should be in the list -->
+
 	<neg link="gáhkku">
 	<default link="Mus_ii_leat">
-</question>
-<comment name="Mun_buvttán_dutnje_OBJ">
-<comment name="Mus_ii_leat">
-<comment name="Dá_lea_dutnje_Leage_buorre"</comment>   <!--chosen OBJ to this? Dá_lea_OBJ_dutnje_Leage_buorre -->
+</question>ytring
+<utt name="Mun_buvttán_dutnje_OBJ">
+<utt name="Mus_ii_leat">
+<utt name="Dá_lea_dutnje_Leage_buorre"</utt>   <!--chosen OBJ to this? Dá_lea_OBJ_dutnje_Leage_buorre -->
 
 </topic>
 
 <topic name="gáhkku">
-<comment name="Mus_livččii_lákcagáhkku"</comment>
+<utt name="Mus_livččii_lákcagáhkku"</utt>
 <default link="Háliidat_go_gáhku"/>
 
 <question name="Háliidat_go_gáhku">
 	<aff link=Mun_buvttán_gáhku"/>
 	<default link="Giitu_fitnamis"/>
 </question>
-<comment name=Mun_buvttán_gáhku</comment>
+<utt name=Mun_buvttán_gáhku</utt>
 </topic>
 
 <topic name="Giitu_fitnamis">
