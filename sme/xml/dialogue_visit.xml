@@ -13,9 +13,7 @@
 <dialogue name="visiting">
 
 <topic name="bures_boahtin">
- <utt>Buorre_beaivi!_Bures_boahtin_mu_geahčái</utt>  <!-- This gets a ! in the end, or should it be inside it? -->
-
- <default link="čohkkát"/> 
+ <utt>Buorre_beaivi!_Bures_boahtin_mu_geahčái</utt>  <!-- This gets a "!" in the end of the utterance, or should it be inside it? -->
  </topic>
 
 <topic name="čohkkát">
@@ -32,7 +30,6 @@
 <utt name="Gievkkanis_lea_buorre"</utt>
      <default link="juhkat"/> 
 <utt name="Na_moai_čohkkájetne_dás"</utt>
-     <default link="juhkat"/> 
     </question>
 </topic>
     
@@ -41,7 +38,6 @@
 	<affobj obj="gáffe" obj="deadja" link="Geavahat_go_mielkki"/>  <!--only one of objects should be in the answer -->
 	<neg link="Háliidat_go_juoida_eará"/>
 	<afflist list="juhkamušat" link="Mun_buvttán_dutnje_OBJ"><!--the object should be in the list -->
-
 	<default link="Mus_ii_leat">
 </question>
 
@@ -70,10 +66,11 @@
 <default link="Háliidat_go_gáhku"/>
 
 <question name="Háliidat_go_gáhku">
-	<aff link=Mun_buvttán_gáhku"/>
-	<default link="Giitu_fitnamis"/>
+	<aff link="Mun_buvttán_gáhku"/>
+	<default link="In_sáhte_fállat_eará_odne"/>
 </question>
-<utt name=Mun_buvttán_gáhku</utt>
+<utt name="In_sáhte_fállat_eará_odne"</utt>
+<utt name="Mun_buvttán_gáhku"</utt>
 </topic>
 
 <topic name="Giitu_fitnamis">
