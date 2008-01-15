@@ -1,0 +1,66 @@
+<!--This is a start. -->
+
+<!--Pcle can be many places. Many of the particles are defined as Adv in our analysator, but not all of them.  -->
+
+<question>
+<question name="čohkkájetne_go_dás">
+  <grammar V="čohkkát"/>
+  <q type="IV-QPN_go_Adv"/>
+  <aff type="de_(pers)_IV-APN_(Adv)"/>
+  <aff type="juo_(pers)_IV-APN_(Adv)"/> <!--Juo, čohkkájetne dás dál -->
+  
+  <neg type="Neg-APN_IVconneg_(Adv)"/>  <!-- can be followed by a positiv phrase -->
+</question>
+
+<question>
+<question name="manne_go_gievkkanii">
+<q type="IV-QPN_go_N-Ill"/>
+  <aff type="de_(pers)_IV-APN_(N-Ill)_(Adv)"/>
+  <aff type="juo_(pers)_IV-APN_(N-Ill)_(Adv)"/>
+  <aff type="juo_IV-imp-APN_(N-Ill)_(Adv)"/> <!-- 1du --> <!--Juo, mannu fal. -->
+  
+  <neg type="Neg-APN_IVconneg_(N-Ill)_(Adv)"/>  <!-- can be followed by a positiv phrase -->
+
+</question>
+
+<question>
+<question name="manat_go_ihttin">  <!--Not in the dialogue_visit.xml  -->
+<q type="IV-QPN_go_Adv"/>
+  <aff type="de_(pers)_IV-APN_(Adv)"/>
+  <aff type="juo_(pers)_IV-APN_(Adv)"/>
+
+  <neg type="Neg-APN_IVconneg_(Adv)"/>  <!-- can be followed by a positiv phrase -->
+
+</question>
+
+<question>
+<question name="háliidat_go_gáfe_vai_deaja?">
+<q type="TV-QPN_go_OBJ_vai_OBJ"/>
+  <aff type="(pers)_TV-APN_OBJ_(Adv)"/> 
+  <aff type="OBJ_(Adv)"/> <!-- should we allow an answer without the verb? -->
+  
+  <neg type="Neg-APN_IVconneg_maidege"/>  <!-- can be followed by a positiv phrase -->
+
+</question>
+
+<question>
+<question name="geavahat_go_mielkki">
+  <q type="TV-QPN_go_OBJ"/>			<!-- can be followed by a positiv phrase -->
+
+  <aff type="juo_TV-APN_(OBJ)_(Adv)"/>
+    <aff type="de_TV-APN_(OBJ)_(Adv)"/>
+</question>
+
+<question>
+<question name="háliidat_go_juoida_eará">
+<q type="TV-QPN_go_juoida_eará"/>	
+
+<afflist list="juhkamušat" type="(pers)_TV-APN_OBJ"> <!--the OBJ is in the list="juhkamušat"-->
+
+<aff type="(pers)_TV-APN_OBJ">
+
+<neg type="Neg-APN_TVconneg_(maidege)">
+<neg type="Neg-APN_giitu"> <!-- should we allow an answer without the verb? -->
+<neg type="giitu_.....Neg-APN_TVconneg_(maidege)"><!--Giitu jearramis muhto in hálit šat maidege.-->
+</question>
+
