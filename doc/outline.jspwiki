@@ -97,6 +97,8 @@ There are two motives for making this game type. First, our tailored dialogues r
 
 !Yes/no-questions
 
+The intention is to drill verb conjugation. So here we will use many verbs, of all inflectional classes.
+
 We need a grammatical verb lexicon, where the verbs are ordered according to sentence frame:
 
 * Transitive: {{SUBJ TV OBJ (ADVL)}}
@@ -153,11 +155,12 @@ The sets may be populated as follows:
    ADVL = a set of plc propernouns in locative, a set of time adverbials
    TV = a set of transitive verbs
    IV = a set of intransitive verbs
-   LOC-V = a set of verbs demanding locative noun
-   ILL-V = a set of verbs demanding illative noun
-   COM-V = a set of verbs demanding commitative noun
-   ESS-V = a set of verbs demanding essive noun
+   LOC-V = a set of verbs, to which belong noun in locative
+   ILL-V = a set of verbs, to which belong noun in illative
+   COM-V = a set of verbs, to which belong noun in commitative
+   ESS-V = a set of verbs, to which belong noun in essive
 }}}
+
 
 !Correction mechanism
 
@@ -165,11 +168,13 @@ The answer may fail to match the expected answer in various ways. For a yes/no-q
 
 !wh-questions
 
+The intention is to drill the use of cases. So here we will use many nouns, of all inflectional classes. We will also use verbs to which belongs a noun in an oblique case.
+
 We may reuse the sets defined above, but instead generate questions like
 
 {{{
-   Maid SUBJ TV-QPN (ADVL) 
-   Maid SUBJ LEAT-APN TV-PRTPTC (ADVL)
+   Maid (SUBJ) TV-QPN (ADVL) 
+   Maid (SUBJ) LEAT-APN TV-PRTPTC (ADVL)
    Goas IV-QPN (ADVL)
    Goas LEAT-QPN IV-PRTPTC (ADVL)
    Gos IV-QPN (ADVL)
@@ -183,7 +188,7 @@ We may reuse the sets defined above, but instead generate questions like
    Geain LEAT-Q3N SUBJ
    Mas LEAT-Q3N SUBJ
 }}}
-In this case, we may accept any noun in the appropriate case. This will be espeacially useful for training verbs demanding oblique nouns.
+In this case, we may accept any noun in the appropriate case. This will be especially useful for training verbs with oblique nouns.
 
 {{{
    SUBJ TV-APN X-ACC (ADVL) 
