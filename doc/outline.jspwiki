@@ -89,7 +89,7 @@ The questions are made so the student usually gets a couple of the same kind, so
 The student gets feedback about a grammatical error. In the tutorial section s/he can get a proposal like: "Do you want to take a training session of illative?" 
 
 
-!!Page: QA drill
+!!Page: QA drill (parallell page)
 
 Inbetween the "natural" dialogues, mimicking real life dialogues, and the pure grammar training session, inquiring paradigm forms, we may make a question-answer drill. The drill has two question types: Yes/no questions and wh-questions.
 
@@ -104,20 +104,20 @@ We need a grammatical verb lexicon, where the verbs are ordered according to sen
 
 Here, {{SUBJ, TV, OBJ, ADVL, IV}} are variables representing sets of words or phrases.
 
-We then make matrix questions of the form (where {{LEAT}} is the copula verb, {{QPN}} is a random person-number value for the question.
+We then make matrix questions of the form (where {{LEAT}} is the copula verb, {{QPN}} is a random person-number value for the question and {{APN}} is a random person-number value for the answer.
 
 {{{
-   TV-QPN SUBJ OBJ (ADVL) 
-   LEAT-QPN SUBJ TV-PRTPTC OBJ (ADVL)
-   IV-QPN SUBJ (ADVL)
-   LEAT-QPN SUBJ IV-PRTPTC (ADVL)
+   TV-QPN go (SUBJ) OBJ (ADVL) 
+   LEAT-QPN go (SUBJ) TV-PRTPTC OBJ (ADVL)
+   IV-QPN go (SUBJ) (ADVL)
+   LEAT-QPN go (SUBJ) IV-PRTPTC (ADVL)
 }}}
 
 In the question we may specify intended answer, say with a "+" or "-". The answer is then expected to be either of the minimal form, repeating only the verb,
 
 {{{
    TV-APN 
-   LEAT-APN (TV-PRTPTC
+   LEAT-APN (TV-PRTPTC)
    IV-APN
    LEAT-APN (IV-PRTPTC)
 }}}
@@ -140,13 +140,23 @@ The QPN and APN are related to each other in the following, obvious way:
 
 Thus, when {{QPN}} is Du2, then {{APN}} should be Du1, etc.
 
-We may probably not pair any {{TV, OBJ}}. Rather, we could group the objects in semantically defined sets ({{DRINK, FOOD, COMMODITY, ...}}, and have each TV subcategorise for one or more of the sets (a verb like ''to see'' could e.g. subcategorise for all).
+We may probably not pair any {{TV, OBJ}}. Rather, we could group the objects in semantically defined sets ({{DRINK, FOOD, COMMODITY, ...}}, and have each TV subcategorise for one or more of the sets (a verb like ''to see'' could e.g. subcategorise for all). The best solution would perhaps be to use the same set system as in sme-dis.rle, but smaller sets.
+
+To some of the verbs belongs a noun in an oblique case. e.g. Loc or Ill.
+
+Also pronouns will should be included to the sets.
 
 The sets may be populated as follows:
 {{{
    SUBJ = a set of surnames and nouns denoting humans.
    OBJ = semantically defined nouns
-   ADVL = a set of plc propernouns in locative, a set of time adverbials 
+   ADVL = a set of plc propernouns in locative, a set of time adverbials
+   TV = a set of transitive verbs
+   IV = a set of intransitive verbs
+   LOC-V = a set of verbs demanding locative noun
+   ILL-V = a set of verbs demanding illative noun
+   COM-V = a set of verbs demanding commitative noun
+   ESS-V = a set of verbs demanding essive noun
 }}}
 
 !Correction mechanism
@@ -164,8 +174,16 @@ We may reuse the sets defined above, but instead generate questions like
    Goas LEAT-QPN IV-PRTPTC (ADVL)
    Gos IV-QPN (ADVL)
    Gos LEAT-QPN IV-PRTPTC (ADVL)
+   Masa LEAT-QPN TV-PRTPTC OBJ
+   Gosa LEAT-QPN TV-PRTPTC OBJ
+   Mainna LEAT-QPN IV-PRTPTC OBJ
+   Geainna LEAT-QPN IV-PRTPTC OBJ
+   Geaidda LEAT-QPN TV-PRTPTC OBJ
+   Geas LEAT-Q3N SUBJ
+   Geain LEAT-Q3N SUBJ
+   Mas LEAT-Q3N SUBJ
 }}}
-In this case, we may accept any noun in the appropriate case.
+In this case, we may accept any noun in the appropriate case. This will be espeacially useful for training verbs demanding oblique nouns.
 
 {{{
    SUBJ TV-APN X-ACC (ADVL) 
