@@ -3,9 +3,63 @@
 # 1. What case for the noun? (TV, ILL-V...)
 # 2. What kind of noun-set would suit to the verb? 
 # Can the verb be a member of two sets, or should it have a tag?
+# 
+# Examples of basic questions for drills
+# pers = personal pronoun
+# 
+# IV - intransitive verb
+# Q: IV-QPN go (pers-QPN) PLACE-Loc? 
+# A: De IV-APN 
+# A: Neg-APN IV-conneg
+# 
+# TV - transitive verb, the noun will be in Acc
+# The N-Acc has to fit - verbset vs. nounset (e.g. V-FOOD + FOOD)
+# Q: TV-QPN go (pers-QPN) N-Acc? 
+# A: De TV-APN 
+# A: Neg-APN TV-conneg (N-Acc)
+# 
+# ILLV - the noun will be in Ill
+# The N-Ill has to fit - verbset vs. nounset (e.g. V-FOOD + FOOD)
+# Q: ILLV-QPN go (pers-QPN) N-Ill? 
+# A: De ILLV-APN 
+# A: Neg-APN ILLV-conneg (N-Ill)
+# 
+# COMV - the noun will be in Com
+# The N-Com has to fit - verbset vs. nounset (e.g. V-FOOD + FOOD)
+# Q: COMV-QPN go (pers-QPN) N-Com? 
+# A: De COMV-APN 
+# A: Neg-APN COMV-conneg (N-Com)
+# 
+# LOCV - the noun will be in Loc
+# The N-Loc has to fit - verbset vs. nounset (e.g. V-FOOD + FOOD)
+# Q: LOCV-QPN go (pers-QPN) N-Loc? 
+# A: De LOCV-APN 
+# A: Neg-APN LOCV-conneg (N-Loc)
+# 
+# Easiest kind of essive-question:
+
+# ESSV - the noun will be in Ess
+# The N-Ess has to fit - verbset vs. nounset (e.g. V-FOOD + FOOD)
+# Q: ESSV-QPN go (pers-QPN) dan danin? 
+# A: De ESSV-APN 
+# A: Neg-APN ESSV-conneg (dan)
+# 
+# dan = dat+Pron+Pers+Sg3+Acc
+# danin = dat+Pron+Pers+Ess
+# 
+# 
+#  
+# PLACE (nouns)
+# siida
+# latnja
+# stohpu
+# hotealla
+
+FOOD (nouns)
+
+BEVERAGES (nouns) 
  
 
-# E.g. Gos ...? .... go place-ADVL?
 IV
 boradit
 leat
@@ -19,23 +73,23 @@ oastit
 váldit
 vuovdit
 
-ILL-V
+ILLV
 čujuhit
 liikot
 suhttat
 
-LOC-V
+LOCV
 ballat
 beroštit
 dolkat
 
-COM-V
+COMV
 birget
 deaivvadit
 joatkit
 servvoštallat
 
-ESS-V
+ESSV
 atnit
 gohčodit
 
