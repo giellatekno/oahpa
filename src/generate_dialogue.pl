@@ -54,7 +54,7 @@ sub process_question {
 	print "$qstring?\n";
 	print ": ";
 
-	my $ans=<>;
+	my $ans=<STDIN>;
 	chomp $ans;
 	my $action;
 
