@@ -51,8 +51,10 @@ if ($tree) { print_tree(); }
 if (! $interactive) { exit; }
 
 for my $t (@topic_list) {
+	if ($topics{$t}{opening}) { print "$topics{$t}{opening}\n"; }
 	my $q = $topics{$t}{first};
 	process_question($q, $t);
+	if ($topics{$t}{closing}) { print "$topics{$t}{closing}\n"; }
 }
 
 sub process_question {
