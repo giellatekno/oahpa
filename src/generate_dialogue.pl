@@ -7,6 +7,15 @@
 #
 # $Id$
 
+use utf8;
+
+# These definitions ensure that the script works 
+# also in environments, where PERL_UNICODE is not set.
+binmode( STDIN, ':utf8' );
+binmode( STDOUT, ':utf8' );
+binmode( STDERR, ':utf8' );
+use open 'utf8';
+
 use Carp;
 use pedTools::XMLStruct;
 
