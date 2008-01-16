@@ -69,6 +69,8 @@ sub process_question {
 
 	if ($ans eq "y") { $action = "aff"; }
 	elsif ($ans eq "n") { $action = "neg";}
+	elsif ($ans eq "1") { $action = "alt1";}
+	elsif ($ans eq "2") { $action = "alt2";}
 	if (! $topics{$t}{$q}{$action}) { $action = "default"; }
 	if (! $topics{$t}{$q}{$action}) { print "No actions, moving to next topic.\n"; return; }
 
@@ -110,7 +112,7 @@ sub print_question {
 	print "$embed Q: $qstring?\n";
 	$embed .= "    ";
 	my $action;
-	for my $action ("aff","pos","neg","default") {
+	for my $action ("alt1","alt2","aff","pos","neg","default") {
 		if ($topics{$t}{$q}{$action}) {
 			print "$embed $action:\n";
 			for my $u ( @{$topics{$t}{$q}{$action}{utt}}) { 
