@@ -15,61 +15,69 @@
 <topic name="Buorre_beaivi">
 <opening>Buorre beaivi! Bures boahtin mu geahčái!</opening>
 </topic>  
-<!-- This gets a "!" in the end of the utterance, or should it be inside it? -->
 
 <topic name="čohkkát">
    <question name="Čohkkájetne_go_dás">
-     <neg><utt link="Gievkkanis_lea_vuogas_čohkkát"/></neg>
+     <neg qlink="Manne_go_gievkkanii"><utt>Gievkkanis lea vuogas čohkkát</utt></neg>
      <default><utt link="Na_moai_čohkkájetne_dás"/></default>
    </question>
    
    <question name="Manne_go_gievkkanii">
-     <pos><utt link="Gievkkanis_lea_buorre"/>
-          <utt link="Mun_lean_okto_ruovttus_odne"/>
+     <pos><utt>Gievkkanis lea buorre.</utt>
     </pos>
-	 <default><utt link="Na_moai_čohkkájetne_dás"/>
+	 <default>
+	 <utt>Na moai čohkkájetne dás.</utt>
     </default>
    </question>
 
-
+	 <closing>Mun lean okto ruovttus odne.</closing>            
 </topic>
 
 <topic name="juhkat">    
   <question name="Háliidat_go_gáfe_vai_deaja">
-	<aff obj="gáffe" obj2="deadja" qlink="Geavahat_go_mielkki"/>  
+	<aff obj="gáffe" obj2="deadja"/>  
    <!--only one of objects should be in the answer -->
+    <alt1 qlink="Geavahat_go_mielkki">
+    <alt2 qlink="Háliidat_go_honnega">
 	<neg qlink="Háliidat_go_juoida_eará"/>
 	<aff><utt list="juhkamušat" link="Mun_buvttán_dutnje_OBJ"/></aff>
    <!--the object should be in the list -->
-	<default><utt link="Mus_ii_leat"/></default>
+	<default><utt>Mus ii leat.</utt>
   </question>
 
-  <question name="Geavahat_go_mielkki">
-     <default qlink="Geavahat_go_sohkkara"><utt link="Dá_lea_dutnje_Leage_buorre"/></default>
+  <question name="Háliidat_go_honnega">
+     <neg qlink="Geavahat_go_sohkkara"></neg>  
+       <default qlink="Geavahat_go_mielkki"></default>
   </question>
 
   <question name="Geavahat_go_sohkkara">
-    <default><utt link="Dá_lea_dutnje_Leage_buorre"/></default>
-    <!--chosen OBJ to this? Dá_lea_OBJ_dutnje_Leage_buorre -->
+       <default qlink="Geavahat_go_mielkki"></default>  <!-- no need for this one? -->
+  </question>
+
+  <question name="Geavahat_go_mielkki">
+    <default><utt>Dá lea dutnje. Leage buorre.</utt></default>
+        <!--chosen OBJ to this? Dá_lea_OBJ_dutnje_Leage_buorre -->
+
   </question>
 
   <question name="Háliidat_go_juoida_eará">
 	<aff><utt list="juhkamušat" link="Mun_buvttán_dutnje_OBJ"/></aff>
 <!--the object should be in the list -->
-	<default><utt llink="Mus_ii_leat"/></default>
+	<default><utt>Mus ii leat.</utt></default>
   </question>
 
-  <closing>Mus_dáidá_leat_gáhkku</closing>
+  <closing>Mus dáidá leat gáhkku.</closing>
 </topic>
 
 <topic name="gáhkku">
   <opening>Mus_livččii_lákcagáhkku</opening>
   <question name="Háliidat_go_gáhku">
-	<aff><utt>Mun_buvttán_gáhku</utt></aff>
-	<default><utt>In_sáhte_fállat_eará_odne</utt>
-             <utt>Suohtas_duinna_humadit</utt>
-   </default>
+	<aff><utt>Mun buvttán gáhku!</utt></aff>
+	<default><utt>In sáhte fállat eará odne.</utt>
+               </default>
   </question>
+
+ <closing>Suohtas duinna humadit.</closing>
 
   
 </topic>
