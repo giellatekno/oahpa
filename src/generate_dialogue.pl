@@ -117,7 +117,7 @@ sub print_question {
 			print "$embed $action:\n";
 			for my $u ( @{$topics{$t}{$q}{$action}{utt}}) { 
 				$u =~ s/_/ /g;
-				print "$embed U: $u.\n";
+				print "$embed U: $u\n";
 			}
 #			if ($topics{$t}{$q}{$action}{ulink}) { 
 #				(my $utt = $topics{$t}{$q}{$action}{ulink}) =~ s/_/ /g;
