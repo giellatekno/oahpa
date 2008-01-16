@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- topics_cafe.xml: Test dialogue in shop                        -->
+<!-- Specifies the structure for a dialogue                        -->
+<!-- The exact format of the questions is not given here, neither  -->
+<!-- feedback or anything other that does no immediately belong to -->
+<!-- the main discussion.                                          --> 
+<!-- This file is potentially language-independent (it would require -->
+<!-- moving uttances etc. also to qlinks.)                          -->
+<!-- The topics follow each other in the order given here.         -->
+<!-- Topic changes when there are no further qlinks to questions.   -->
+<!-- $Id$ -->
+
+<dialogue name="phone">
+
+<topic name="Hyvää iltaa">
+<opening>Hyvää päivää! Oletan, että sinä olet kiinnostunut kielestä!</opening>
+</topic>  
+
+<topic name="kielet">
+   <question name="Puhutko_norjaa?">
+     <neg qlink="Aiotko_opiskella_sitä"><utt>Ai, etkö?</utt></neg>
+     <aff qlink="Puhutko_sitä_joka_päivää?"><utt>No, sepä hauskaa</utt></aff>
+     <default qlink="Puhutko_saamea,_sitten?"><utt>Ahaa.</utt></default>
+   </question>
+   <question name="Aiotko_opiskella_sitä">
+     <aff qlink="Puhutko_saamea,_sitten?"><utt>Meillä on norjan opinnot Tromssan yliopostossa.</utt></aff>
+     <neg qlink="Puhutko_saamea,_sitten?"><utt>Vai etkö aio.</utt></neg>
+	 <default qlink="Puhutko_saamea,_sitten?"><utt>Vai niin.</utt></default>
+   </question>
+   <question name="Puhutko_sitä_joka_päivää?">
+     <neg qlink="Puhutko_saamea,_sitten?"><utt>Helpo unohtaa.</utt></neg>
+     <aff qlink="Puhutko_saamea,_sitten?"><utt>No, sepä hauskaa</utt></aff>
+     <default  qlink="Puhutko_saamea,_sitten?"><utt>Ahaa.</utt></default>
+   </question>
+   <question name="Puhutko_saamea,_sitten?">
+     <aff qlink="Eikö_niin?"><utt>No niin, saamehan muistuttaa suomea.</utt></aff>
+     <neg qlink="Eikö_niin?"><utt>Saame kuin on niin lähellä suomea!</utt></neg>
+	 <default qlink="Eikö_niin?"><utt>Saame muistuttaa suomea aika paljon</utt></default>
+   </question>
+   <question name="Eikö_niin?">
+     <aff qlink="Mitä_muuta_kieltä_puhut?"><utt>Siinä ollaan samaa mieltä.</utt></aff>
+     <neg qlink="Mitä_muuta_kieltä_puhut?"><utt>No, kyll minun mielestäni.</utt></neg>
+	 <default qlink="Mitä_muuta_kieltä_puhut?"><utt>Mun mielestä kuitenkin muistuttavat toisiaan.</utt></default>
+   </question>
+   <question name="Mitä_muuta_kieltä_puhut?">
+     <aff obj="OBJ" qlink="Onko_se_vaikea,_sinun_mielestäsi?"><utt>Mun mielestä OBJ-Nom on vaikea kieli</utt></aff>
+     <neg><utt>Jos osaat suomea ja saamea tai norjaa, niin sekin on paljon.</utt></neg>
+	 <default qlink="Muita"><utt>Mun mielestä kuitenkin muistuttavat toisiaan.</utt></default>
+   </question>
+   <question name="Onko_se_vaikea,_sinun_mielestäsi?">
+     <aff><utt>Siinä ollaan samaa mieltä!</utt></aff>
+     <neg><utt>No, siinä ei olla samaa mieltä!</utt></neg>
+   </question>
+	 <closing>Kiitos keskustelusta!</closing>            
+</topic>
+
+</dialogue>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- topics_cafe.xml: Test dialogue in cafe                        -->
+<!-- Specifies the structure for a dialogue                        -->
+<!-- The exact format of the questions is not given here, neither  -->
+<!-- feedback or anything other that does no immediately belong to -->
+<!-- the main discussion.                                          --> 
+<!-- This file is potentially language-independent (it would require -->
+<!-- moving uttances etc. also to links.)                          -->
+<!-- The topics follow each other in the order given here.         -->
+<!-- Topic changes when there are no further links to questions.   -->
+<!-- $Id$ -->
+
+
+<!-- This dialogue is not finished -->
+
+<dialogue name="visit">
+
+<topic name="Hyvää päivää">
+<opening>Hyvää päivää! Tervetuloa meitä katsomaan!</opening>
+</topic>  
+
+<topic name="istua">
+   <question name="Istutteko_tässä">
+     <neg qlink="Mennänkö_keittiöön"><utt>Keittiössä on hauskaa istua</utt></neg>
+     <default><utt link="No, istutaan tässä"/></default>
+   </question>
+   
+   <question name="Mennänkö_keittiöön">
+     <aff><utt>Keittiössä on nyvää.</utt>
+    </aff>
+	 <default>
+	 <utt>No, istumme täällä.</utt>
+    </default>
+   </question>
+
+	 <closing>Olen yksin kotona tänään.</closing>            
+</topic>
+
+<topic name="juoda">    
+  <question name="Haluatko_kahvia_vai_teetä">
+	<aff obj="kahvia" obj2="teetä"/>  
+   <!--only one of objects should be in the answer -->
+    <alt1 qlink="Haluatko_maitoa"/>
+    <alt2 qlink="Haluatko_hunajaa"/>
+	<neg qlink="Haluatko_jotain_muuta"/>
+	<aff><utt list="juomiset" link="Minä_tuon_sinulle_OBJ"/></aff>
+   <!--the object should be in the list -->
+	<default><utt>Ei minulla valitettavasti ole sitä.</utt></default>
+  </question>
+
+  <question name="Haluatko_hunajaa">
+     <neg qlink="Käytätkö_sokeria"></neg>  
+       <default qlink="Käytätkö_maitoa"></default>
+  </question>
+
+  <question name="Käytätkö_sokeria">
+       <default qlink="Käytätkö_maitoa"></default>  <!-- no need for this one? -->
+  </question>
+
+  <question name="Käytätkö_maitoa">
+    <default><utt>Tässä sinulle. Ole hyvä.</utt></default>
+        <!--chosen OBJ to this? Dá_lea_OBJ_dutnje_Leage_buorre -->
+
+  </question>
+
+  <question name="Haluatko_jotain_muuta">
+	<aff><utt list="juomiset" link="Minä_tuon_sinulle_OBJ"/></aff>
+<!--the object should be in the list -->
+	<default><utt>Ei minulla valitettavasti ole sitä.</utt></default>
+  </question>
+
+  <closing>Haluatko myös jotain syömistä</closing>
+</topic>
+
+<topic name="kakkua">
+  <opening>Minulla on ylimääräistä täytekakkua minun syntymäpäiväjuhlasta.</opening>
+  <question name="Haluatko_kakkua">
+	<aff><utt>Minä tuon kakkua!</utt></aff>
+	<default><utt>Ei minulla oikein muuta ole.</utt>
+               </default>
+  </question>
+
+ <closing>Oli hauskaa puhua kanssasi.</closing>
+
+  
+</topic>
+
+<topic name="Kiitos_käymisestä">
+  <closing>Kiitos_käymisestä!</closing>
+</topic>
+
+</dialogue>
