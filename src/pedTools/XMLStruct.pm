@@ -75,9 +75,11 @@ sub parse_topic {
 		my $aff = $q->first_child('aff');
 		my $neg = $q->first_child('neg');
 		my $pos = $q->first_child('pos');
+		my $alt1 = $q->first_child('alt1');
+		my $alt2 = $q->first_child('alt2');
 		my $default = $q->first_child('default');
 
-		for my $el ($aff,$neg,$default,$pos) {
+		for my $el ($aff,$neg,$default,$pos,$alt1,$alt2) {
 			next if (! $el );
 			my $elname = $el->name;
 			my $qlink = $el->{'att'}->{'qlink'};
