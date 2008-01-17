@@ -656,7 +656,7 @@ QUE:cl
 Od:pron('mii',<int>,sg,acc)	Maid
 S:prop('Máret',sg,nom)	Máret
 P:v('sihtat',ind,impf,3sg)	siđai
-A:v('goarrut',sg,actio,loc)	goarrumis
+A:n('goarrun',sg,loc)	goarrumis
 ?
 
 SOURCE: text
@@ -1239,7 +1239,7 @@ A:g
 =D:n('hápma',sg,gen)	háma
 =H:prp-post('duohken')	duohken
 P:v('hehttet',ind,pr,3sg)	hehtte
-Od:v('suoládit',actio,acc)	suoládeame
+Od:n('suoládeapmi',acc)	suoládeame
 .
 
 SOURCE: text
@@ -1463,10 +1463,11 @@ SOURCE: text
 SMEB132) Máreha čállin girji lei hui buorre.
 A1
 STA:cl
-S:icl
-=S:prop('Máret',sg,gen)	Máreha
-=P:v('čállit',actio,gen)	čállin
-=O:n('girji',sg,nom)	girji
+S:g
+=D:g
+==D:prop('Máret',sg,gen)	Máreha
+==H:n('čállin',gen)	čállin
+=H:n('girji',sg,nom)	girji
 P:v('leat',ind,impf,3sg)	lei/leai
 Cs:g
 =D:adv('hui')	hui
@@ -2058,7 +2059,7 @@ A:g
 ==D:g
 ===D:abbr('Miss',n,attr)	Miss
 ===H:prop('Swann',Sur,sg,gen)	Swanna
-==H:v('rivvet',actio,gen)	rivvema
+==H:n('rivven',gen)	rivvema
 =H:prp-post('dihte')	dihte
 S:pron('son',<pers>,3pl,nom)	sii
 P:v('leat',ind,pr,3pl)	leat
