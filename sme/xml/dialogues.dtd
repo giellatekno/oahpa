@@ -1,0 +1,31 @@
+<!ELEMENT dialogue (topic+)>
+
+<!ELEMENT topic (opening, question+, closing)>
+<!ATTLIST topic name (#PCDATA)>
+
+<!ELEMENT opening (#PCDATA)>
+
+<!ELEMENT question (neg, aff, default, alt1, alt2)>
+<!ATTLIST question name (#PCDATA)>
+
+<!ELEMENT utt (#PCDATA)>
+
+<!ELEMENT neg (#PCDATA)>
+<!ATTLIST neg qlink (#PCDATA)>
+
+<!ELEMENT aff (#PCDATA)>
+<!ATTLIST aff qlink (#PCDATA)>
+
+<!ELEMENT default (#PCDATA)>
+<!ATTLIST default qlink (#PCDATA)>
+
+<!ELEMENT alt1 (#PCDATA)>
+<!ATTLIST alt1 qlink (#PCDATA)>
+
+<!ELEMENT alt2 (#PCDATA)>
+<!ATTLIST alt2 qlink (#PCDATA)>
+
+<!ELEMENT closing (#PCDATA)>
+
+
+
