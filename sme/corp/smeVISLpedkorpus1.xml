@@ -926,7 +926,7 @@ SMEA93) Ollu ustibat bohtet.
 A1
 STA:cl
 S:g
-=D:pron('ollu',<idef>)	Ollu
+=D:Adj('ollu',attr)	Ollu
 =H:n('ustit',pl,nom)	ustibat
 P:v('boahtit',ind,pr,3pl)	bohtet
 .
@@ -967,7 +967,7 @@ A1
 STA:cl
 P:v('oaidnit',ind,pr,1SG)	Oainnán
 Od:g
-=D:adj('ollu',attr)	ollu
+=D:Adj('ollu',attr)	ollu
 =H:n('olmmoš',pl,acc)	olbmuid
 .
 
@@ -1005,7 +1005,7 @@ P:g
 =D:v('leat',ind,pr,3pl)	leat
 =H:v('lohkat',pcp2)	lohkan
 Od:g
-=D:adj('ollu',attr)	ollu
+=D:Adj('ollu',attr)	ollu
 =H:n('girji',pl,acc)	girjjiid
 .
 
@@ -1445,7 +1445,7 @@ STA:cl
 HAB:n('olmmoš',pl,loc)	Olbmuin
 P:v('leat',ind,pr,3sg)	lea
 Cs:g
-=D:adj('ollu',attr)	ollu
+=D:Adj('ollu',attr)	ollu
 =H:n('ruhta',sg,nom)	ruhta
 .
 
@@ -1635,7 +1635,7 @@ STA:cl
 S:pron('mun',<pers>,1pl,nom)	Mii
 P:par
 =CJT:v('rievidit',ind,pr,1pl)	rievidit/rievidat
-=CO:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:v('hearjidit',ind,pr,1pl)	hearjidit/hearjidat
 A:adv('jávohaga')	jávohaga
 .
@@ -1648,7 +1648,7 @@ A:n('loaidu',sg,loc)	Loaiddus
 S:n('olmmoš',pl,nom)	olbmot
 P:par
 =CJT:v('veallát',ind,pr,3pl)	veallájit
-=CO:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:v('nohkkat',ind,pr,3pl)	nohkket
 .
 
@@ -1659,7 +1659,7 @@ STA:cl
 A:adv('maid')	Maid
 S:par
 =CJT:n('moarsi',sg,nom)	moarsi
-=CC:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:n('irgi',sg,nom)	irgi
 P:g
 =D:v('leat',ind,pr,3du)	leaba
@@ -1676,9 +1676,9 @@ P:g
 =D:v('máhttit',ind,pr,1sg)	máhtán
 =H:v('láibut',inf)	láibut
 Od:par
-=CC:conj-s('sihke')	sihke
+=CO:conj-c('sihke')	sihke
 =CJT:n('šuhkoládagáhkku',sg,acc)	šuhkoládagáhku
-=CC:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:n('lákcagáhkku',sg,acc)	lákcagáhku
 .
 
@@ -1691,7 +1691,7 @@ S:pron('mun',<pers>,1pl,nom)	Mii
 P:v('bivdit',ind,pr,1pl)	bivdit
 Od:par
 =CJT:n('dorski',pl,acc)	dorskiid
-=CC:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:n('juksu',pl,acc)	juvssuid
 .
 
@@ -1704,7 +1704,7 @@ S:n('nisu',pl,nom)	nissonat
 P:v('gođđit',ind,pr,3pl)	gođđet
 Od:par
 =CJT:n('bivttas',pl,acc)	biktasiid
-=CC:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:n('rátnu',pl,acc)	ránuid
 .
 
@@ -1717,7 +1717,7 @@ P:v('bidjat',ind,pr,1pl)	bidjat
 Od:n('dávvir',pl,acc)	dávviriid
 A:par
 =CJT:n('skáhppe',pl,ill)	skáhpiide
-=CC:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:n('lođá',pl,ill)	lođáide
 .
 
@@ -1729,7 +1729,7 @@ S:pron('mun',<pers>,1sg,nom)	Mun
 P:v('lasihit',ind,pr,1sg)	lasihan
 Od:par
 =CJT:n('rušpi',pl,acc)	rušppiid
-=CC:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:n('buđet',pl,gen)	buđehiid
 A:n('mális',sg,ill)	mállásii
 .
@@ -1743,7 +1743,7 @@ S:pron('mun',<pers>,1pl,nom)	mii
 P:v('bidjat',ind,pr,1pl)	bidjat
 Od:par
 =CJT:n('borramuš',pl,acc)	borramušaid
-=CC:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:n('lihtti',pl,acc)	lihtiid
 .
 
@@ -1756,7 +1756,7 @@ P:v('sihtat',ind,pr,2PL)	Sihtabehtet
 Vpcle:part('go')	go
 Od:par
 =CJT:n('mielki',sg,acc)	mielkki
-=CC:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:n('sohkar',sg,acc)	sohkkara
 ?
 
@@ -1768,7 +1768,7 @@ S:n('juovlastállu',sg,nom)	Juovlastállu
 P:v('leat',ind,pr,3sg)	lea
 Cs:par
 =CJT:adj('čalmmeheapme',sg,nom)	čalmmeheapme
-=CC:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:adj('juolggeheapme',sg,nom)	juolggeheapme
 .
 
@@ -1780,7 +1780,7 @@ HAB:pron('mun',<pers>,1sg,loc)	Mus
 P:v('leat',ind,pr,3pl)	leat
 Cs:par
 =CJT:n('fuolki',pl,nom)	fuolkkit
-=CC:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:g
 ==D:adj('buorre',pl,nom)	buorit
 ==H:n('ustit',pl,nom)	ustibat
@@ -1800,7 +1800,7 @@ Cs:par
 =CJT:g
 ==H:Num('guokte',sg,nom)	guokte
 ==D:n('oambealli',sg,gen)	oambeali
-=CC:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:g
 ==D:Num('okta',sg,nom)	okta
 ==H:n('vilbealli',sg,nom)	vilbealli
@@ -1814,9 +1814,9 @@ A:adv('dáppe')	Dáppe
 H:v('leat',inf)	leat
 Cs:par
 =CJT:g
-==D:adj('ollu',attr)	ollu
+==D:Adj('ollu',attr)	ollu
 ==H:n('olmmoš',pl,nom)	olbmot
-=CC:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:n('biila',pl,nom)	biillat
 .
 
@@ -1828,7 +1828,7 @@ A:adv('do')	Do
 P:v('boahtit',ind,pr,3du)	boahtiba
 S:par
 =CJT:prop('Niillas',sg,nom)	Niillas
-=CC:conj-s('ja')	ja
+=CO:conj-c('ja')	ja
 =CJT:prop('Ánde',sg,nom)	Ánde
 .
 
@@ -1999,7 +1999,7 @@ SOURCE: text
 SMEA180) Doai leahppi áŋgirit lohkan sámegiela olles dálvvi.
 A1
 STA:cl
-S:pron('mun',<pers>,2du,nom)	Doai
+S:pron('don',<pers>,2du,nom)	Doai
 P:g-
 =D:v('leat',ind,pr,2du)	leahppi
 A:adv('áŋgir',<A>)	áŋgirit
@@ -2170,7 +2170,7 @@ S:prop('Spider-Man',sg,nom)	Spider-Man
 A:adv('gal')	gal
 P:v('leat',ind,pr,3sg)	lea
 Cs:g
-=D:adv('albma')	albma
+=D:adj('albma')	albma
 =H:n('ruovdi',sg,nom)	ruovdi
 .
 
@@ -2282,7 +2282,7 @@ P:v('leat',ind,pr,3sg)	Lea
 Vpcle:part('go')	go
 Cs:par
 =CJT:n('nieida',sg,nom)	nieida
-=CC:conj-s('vai')	vai
+=CO:conj-c('vai')	vai
 =CJT:n('bárdni',sg,nom)	bárdni
 ?
 
