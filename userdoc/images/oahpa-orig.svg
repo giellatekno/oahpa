@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  Copyright 2002-2004 The Apache Software Foundation
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!--
+       SVG Anteater logo
+
+To get started with SVG, I'd recommend getting the Adobe SVG plugin, and the
+xml-batik CVS module. Then have a look at the xml-batik/samples files. Use the
+SVG spec (http://www.w3.org/TR/SVG/) as a reference.
+-->
+<!-- See Forrest Issue: FOR-229
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd"
+[
+ <!ATTLIST svg xmlns:for CDATA #FIXED "http://apache.org/forrest">
+ <!ENTITY % textExt "|for:project-name">
+ <!ELEMENT for:project-name (#PCDATA)>
+]>
+-->
+<svg
+   xmlns:for="http://apache.org/forrest"
+   xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xsl:version="1.0"
+   width="220"
+   height="65"
+   id="svg1385"
+   sodipodi:version="0.32"
+   inkscape:version="0.45.1"
+   sodipodi:docname="oahpa-orig.svg"
+   sodipodi:docbase="/Users/boerre/Shared/ped/userdoc/images"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="/Users/boerre/Shared/ped/userdoc/images/oahpa.png"
+   inkscape:export-xdpi="138.27"
+   inkscape:export-ydpi="138.27">
+  <metadata
+     id="metadata1408">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:window-height="848"
+     inkscape:window-width="1386"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     borderopacity="1.0"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     id="base"
+     inkscape:zoom="2.9954545"
+     inkscape:cx="116.72698"
+     inkscape:cy="-17.521902"
+     inkscape:window-x="2208"
+     inkscape:window-y="323"
+     inkscape:current-layer="svg1385" />
+  <title
+     id="title1387">Anteater logo</title>
+  <defs
+     id="defs1389">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient3314">
+      <stop
+         style="stop-color:#8c7979;stop-opacity:1;"
+         offset="0"
+         id="stop3316" />
+      <stop
+         style="stop-color:#8c7979;stop-opacity:0;"
+         offset="1"
+         id="stop3318" />
+    </linearGradient>
+<!--
+    <radialGradient id="radialGradient">
+      <stop style="stop-color:gold" offset="0"/>
+      <stop style="stop-color:orange" offset=".5"/>
+      <stop style="stop-color:crimson" offset="1"/>
+    </radialGradient>
+    <linearGradient id="linearGradient">
+      <stop style="stop-color:gold" offset="0"/>
+      <stop style="stop-color:orange" offset=".5"/>
+      <stop style="stop-color:crimson" offset="1"/>
+    </linearGradient>
+    -->    <linearGradient
+       id="gradient"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="1">
+      <stop
+         style="stop-color:white"
+         offset="0"
+         id="stop1392" />
+      <stop
+         style="stop-color:lightgreen"
+         offset="1"
+         id="stop1394" />
+    </linearGradient>
+    <filter
+       id="shadowFilter"
+       filterUnits="objectBoundingBox">
+<!-- Takes the alpha channel (black outline of the text), blurs it and saves as 'blur' -->      <feGaussianBlur
+         in="SourceAlpha"
+         stdDeviation="2 2"
+         result="blur"
+         id="feGaussianBlur1397" />
+<!-- Takes saved 'blur' and offsets it by 4 pixels, saves as 'offsetBlur' -->      <feOffset
+         in="blur"
+         dx="4"
+         dy="4"
+         result="offsetBlur"
+         id="feOffset1399" />
+<!-- Merges SourceGraphic (original image) and 'offsetBlur', putting the
+      former 'over' the latter, and using the merged result as the finished
+      image -->      <feComposite
+         in="SourceGraphic"
+         in2="offsetBlur"
+         operator="over"
+         id="feComposite1401" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient3314"
+       id="linearGradient3324"
+       x1="19.500113"
+       y1="26.485115"
+       x2="276.84875"
+       y2="26.485115"
+       gradientUnits="userSpaceOnUse" />
+    <filter
+       inkscape:collect="always"
+       id="filter3326">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.53500637"
+         id="feGaussianBlur3328" />
+    </filter>
+  </defs>
+  <g
+     filter="url(#shadowFilter)"
+     fill="url(#gradient)"
+     id="g1403">
+    <text
+       x="51%"
+       y="75%"
+       style="font-size:32pt; font-family:Verdana ; text-anchor: middle"
+       id="text1405">
+      <for:project-name />
+    </text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="asdf">
+    <text
+       id="text1523"
+       y="7.036582"
+       x="19.378042"
+       style="font-size:8.71936035px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:url(#linearGradient3324);fill-opacity:1.0;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:FreeSans;opacity:1;filter:url(#filter3326)"
+       xml:space="preserve"
+       transform="scale(0.779876,1.2822551)"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan1457"
+         x="19.378042"
+         y="7.036582"
+         style="fill:url(#linearGradient3324);fill-opacity:1.0">vokála#guovddáš:vokála#guovddáž LEXDIMINC ;</tspan><tspan
+         sodipodi:role="line"
+         id="tspan1459"
+         x="19.378042"
+         y="17.935782"
+         style="fill:url(#linearGradient3324);fill-opacity:1.0">giella#guovddáš:giella#guovddáž LEXDIMINC ;</tspan><tspan
+         sodipodi:role="line"
+         id="tspan1461"
+         x="19.378042"
+         y="28.834983"
+         style="fill:url(#linearGradient3324);fill-opacity:1.0">skuvla#guovddáš:skuvla#guovddáž LEXDIMINC ;</tspan><tspan
+         sodipodi:role="line"
+         id="tspan1463"
+         x="19.378042"
+         y="39.734183"
+         style="fill:url(#linearGradient3324);fill-opacity:1.0">konsonánta#guovddáš:konsonánta#guovddáž LEXDIMINC ;</tspan><tspan
+         sodipodi:role="line"
+         id="tspan1465"
+         x="19.378042"
+         y="50.633384"
+         style="fill:url(#linearGradient3324);fill-opacity:1.0">eapme#guovddáš:eapme#guovddáž LEXDIMINC ;</tspan></text>
+  </g>
+  <text
+     xml:space="preserve"
+     style="font-size:81.35385895px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;opacity:1;fill:#ff0000;fill-opacity:0.8;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Century Schoolbook L"
+     x="112.63838"
+     y="46.998459"
+     id="text1478"
+     sodipodi:linespacing="100%"
+     transform="scale(0.915235,1.0926155)"><tspan
+       sodipodi:role="line"
+       id="tspan1484"
+       x="112.63839"
+       y="46.998459"
+       style="font-size:81.35385895px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;writing-mode:lr-tb;text-anchor:middle;font-family:Delphine">OAHPA!</tspan></text>
+</svg>
