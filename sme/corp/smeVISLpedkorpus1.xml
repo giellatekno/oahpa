@@ -188,34 +188,6 @@ P:v('liikot',ind,pr,3sg)	liiko
 A:n('guolli',sg,ill)	guollái
 .
 
-SOURCE: text
-SMEA20) Goađis lea árran.
-A1
-STA:cl
-A:n('goahti',sg,loc)	Goađis
-P:v('leat',ind,pr,3sg)	lea
-S:n('árran',sg,nom)	árran
-.
-
-SOURCE: text
-SMEA21) Stálles lea ivguheasta.
-A1
-STA:cl
-A:n('stálle',sg,loc)	Stálles
-P:v('leat',ind,pr,3sg)	lea
-Cs:n('ivguheasta',sg,nom)	ivguheasta
-.
-
-SOURCE: text
-SMEA22) Bealddus leat eatnanmuorjjit.
-A1
-STA:cl
-A:n('bealdu',sg,loc)	Bealddus
-P:v('leat',ind,pr,3pl)	leat
-Cs:n('eatnanmuorji',pl,nom)	eatnanmuorjjit
-.
-
-
 
 
 ]]>
@@ -238,7 +210,7 @@ SOURCE: text
 SMEA24) Veahkehastte mu!
 A1
 COM:cl
-P:v('veahkehastit',Imp,2SG,<V>)	Veahkehastte
+P:v('veahkehastit',Imp,2SG)	Veahkehastte
 Od:pron('mun',<pers>,1sg,acc)	mu
 !
 
@@ -385,7 +357,7 @@ A1
 STA:cl
 HAB:prop('Máhtte',sg,loc)	Máhtes
 P:v('leat',ind,pr,3sg)	lea
-Cs:n('beana',sg,nom)	beana
+fC:n('beana',sg,nom)	beana
 .
 
 SOURCE: text
@@ -394,7 +366,7 @@ A1
 STA:cl
 HAB:n('áhkku',sg,loc)	Áhkus
 P:v('leat',ind,pr,3pl)	leat
-Cs:n('sávza',pl,nom)	sávzzat
+fC:n('sávza',pl,nom)	sávzzat
 .
 
 SOURCE: text
@@ -404,7 +376,7 @@ QUE:cl
 P:v('leat',ind,pr,3sg)	Lea
 Vpcle:part('go')	go
 HAB:pron('don',<pers>,2pl,loc)	dis
-Cs:n('ruhta',sg,nom)	ruhta
+fC:n('ruhta',sg,nom)	ruhta
 ?
 
 SOURCE: text
@@ -413,7 +385,7 @@ A1
 STA:cl
 HAB:pron('don',<pers>,2sg,loc)	Dus
 P:v('leat',ind,pr,3sg)	lea
-Cs:adj('njuolga')	njuolga
+fC:adj('njuolga')	njuolga
 !
 
 SOURCE: text
@@ -422,7 +394,7 @@ A1
 STA:cl
 HAB:pron('mun',<pers>,1sg,loc)	Mus
 P:v('leat',ind,pr,3sg)	lea
-Cs:n('oaivebávččas',sg,nom)	oaivebávččas
+fC:n('oaivebávččas',sg,nom)	oaivebávččas
 .
 
 SOURCE: text
@@ -431,7 +403,7 @@ A1
 STA:cl
 HAB:pron('son',<pers>,3sg,loc)	Sus
 P:v('leat',ind,pr,3pl)	leat
-Cs:n('fuolki',pl,nom)	fuolkkit
+fC:n('fuolki',pl,nom)	fuolkkit
 A:prop('Norga',plc,sg,loc)	Norggas
 .
 
@@ -443,13 +415,48 @@ A:adv('ollu')	Ollu
 Vpcle:part('go')        go
 HAB:pron('don',<pers>,2sg,loc)	dus
 P:v('leat',ind,pr,3sg)	lea
-Cs:n('ruhta',sg,nom)	ruhta
+fC:n('ruhta',sg,nom)	ruhta
 ?
 
 
 
 ]]>
 </section>
+
+<section name="Ekstensiáls - Extensial">
+
+<![CDATA[
+
+SOURCE: text
+SMEA20) Goađis lea árran.
+A1
+STA:cl
+A:n('goahti',sg,loc)	Goađis
+P:v('leat',ind,pr,3sg)	lea
+fC:n('árran',sg,nom)	árran
+.
+
+SOURCE: text
+SMEA21) Stálles lea ivguheasta.
+A1
+STA:cl
+A:n('stálle',sg,loc)	Stálles
+P:v('leat',ind,pr,3sg)	lea
+fC:n('ivguheasta',sg,nom)	ivguheasta
+.
+
+SOURCE: text
+SMEA22) Bealddus leat eatnanmuorjjit.
+A1
+STA:cl
+A:n('bealdu',sg,loc)	Bealddus
+P:v('leat',ind,pr,3pl)	leat
+fC:n('eatnanmuorji',pl,nom)	eatnanmuorjjit
+.
+
+]]>
+</section>
+
 
 <section name="Kopula - Copula">
 
@@ -546,12 +553,12 @@ P:v('oahpahit',ind,pr,3sg)	oahpaha
 .
 
 SOURCE: text
-SMEA55) Juhán-gázzi báhcet mearragáddái.
+SMEA55) Juhán-gázzi báhcet gáddái.
 A1
 STA:cl
 S:n('Juhán-gázzi',sg,nom)	Juhán-gázzi
 P:v('báhcit',ind,pr,3pl)	báhcet
-A:n('mearragáddi',sg,ill)	mearragáddái
+A:n('gáddi',sg,ill)	gáddái
 .
 
 SOURCE: text
@@ -838,9 +845,8 @@ SMEA85) Ean dáidde boahtit.
 A1
 STA:cl
 P:g
-=D:g
-==D:v('ii',neg,ind,1DU)	Ean
-==H:v('dáidit',ind,pr,conneg)	dáidde
+=D:v('ii',neg,ind,1DU)	Ean
+=D:v('dáidit',ind,pr,conneg)	dáidde
 =H:v('boahtit',inf)	boahtit
 .
 
@@ -899,7 +905,6 @@ A:g
 =H:prp-post('lusa')	lusa
 .
 
-
 SOURCE: text
 SMEA91) Dál fertebehtet geargat.
 A1
@@ -931,8 +936,6 @@ S:g
 P:v('boahtit',ind,pr,3pl)	bohtet
 .
  
-
-
 ]]>
 </section>
 
@@ -970,7 +973,6 @@ Od:g
 =D:Adj('ollu',attr)	ollu
 =H:n('olmmoš',pl,acc)	olbmuid
 .
-
 
 SOURCE: text
 SMEA97) Mu čeahci duddjo čáppa niibbi.
@@ -1086,7 +1088,7 @@ Od:n('ruovttusiidu',sg,acc)	ruovttusiiddu
 ]]>
 </section>
 
-<section name="Cealkagat main lea kompleaksa advearbiála dahje eanet go okta adverabiála - Sentencew with complex adverbial or more than one adverbial">
+<section name="Cealkagat main lea kompleaksa advearbiála dahje eanet go okta adverbiála - Sentences with complex adverbial or more than one adverbial">
 
 <![CDATA[
 
@@ -1340,6 +1342,163 @@ A:g
 =H:n('vuorru',sg,loc)	vuorus
 .
 
+
+]]>
+</section>
+
+<section name="Habitatiiva - Habitive">
+
+<![CDATA[
+
+SOURCE: text
+SMEA130) Juohke guovllu gávttis lea sierralágan holbi.
+A1
+STA:cl
+A:g
+=D:g
+==D:pron('juohke',<idef>)	Juohke
+==H:n('guovlu',sg,gen)	guovllu
+=H:n('gákti',sg,loc)	gávttis
+P:v('leat',ind,pr,3sg)	lea
+Cs:g
+=D:adj('sierralágan',attr)	sierralágan
+=H:n('holbi',sg,nom)	holbi
+.
+
+
+SOURCE: text
+SMEA133) Ádjás lea ođđa gákti.
+A1
+STA:cl
+HAB:n('áddjá',sg,loc)	Ádjás
+P:v('leat',ind,pr,3sg)	lea
+fC:g
+=D:adj('ođas',attr)	ođđa
+=H:n('gákti',sg,nom)	gákti
+.
+
+SOURCE: text
+SMEA134) Mus leat boares sabehat.
+A1
+STA:cl
+HAB:pron('mun',<pers>,1sg,loc)	Mus
+P:v('leat',ind,pr,3pl)	leat
+fC:g
+=D:adj('boaris',attr)	boares
+=H:n('sabet',pl,nom)	sabehat
+.
+
+SOURCE: text
+SMEA135) Nieiddain leat ođđa buvssat.
+A1
+STA:cl
+HAB:n('nieida',pl,loc)	Nieiddain
+P:v('leat',ind,pr,3pl)	leat
+fC:g
+=D:adj('ođas',attr)	ođđa
+=H:n('buksa',pl,nom)	buvssat
+.
+
+SOURCE: text
+SMEA136) Olbmuin lea ollu ruhta.
+A1
+STA:cl
+HAB:n('olmmoš',pl,loc)	Olbmuin
+P:v('leat',ind,pr,3sg)	lea
+fC:g
+=D:Adj('ollu',attr)	ollu
+=H:n('ruhta',sg,nom)	ruhta
+.
+
+SOURCE: text
+SMEA137) Min bussás leat alit čalmmit.
+A1
+STA:cl
+HAB:g
+=D:pron('mun',<pers>,1pl,gen)	Min
+=H:n('bussá',sg,loc)	bussás
+P:v('leat',ind,pr,3pl)	leat
+fC:g
+=D:adj('alit',attr)	alit
+=H:n('čalbmi',pl,nom)	čalmmit
+.
+
+
+SOURCE: text
+SMEA138) Mus eai leat girjjit mielde.
+A1
+STA:cl
+HAB:pron('mun',<pers>,1sg,loc)	Mus
+P:g
+=D:v('ii',neg,ind,3pl)	eai
+=H:v('leat',ind,pr,conneg)	leat
+fC:n('girji',pl,nom)	girjjit
+A:adv('mielde')	mielde
+.
+
+SOURCE: text
+SMEA139) Mis lea varas láibi odne.
+A1
+STA:cl
+HAB:pron('mun',<pers>,1pl,loc)	Mis
+P:v('leat',ind,pr,3sg)	lea
+fC:g
+=D:adj('varas',attr)	varas
+=H:n('láibi',sg,nom)	láibi
+A:adv('odne')	odne
+.
+
+SOURCE: text
+SMEA140) Mus leat ustibat dáppe Londonis.
+A1
+STA:cl
+HAB:pron('mun',<pers>,1sg,loc)	Mus
+P:v('leat',ind,pr,3pl)	leat
+fC:n('ustit',sg,nom)	ustit
+A:adv('dáppe')	dáppe
+A:prop('London',plc,sg,loc)	Londonis
+.
+
+]]>
+</section>
+
+<section name="Ekstensiála - Extensial">
+
+<![CDATA[
+
+
+SOURCE: text
+SMEA131) Lávus leat guokte amas olbmo.
+A1
+STA:cl
+A:n('lávvu',sg,loc)	Lávus
+P:v('leat',ind,pr,3pl)	leat
+fC:g
+=H:Num('guokte',sg,nom)	guokte
+=D:g
+==D:adj('amas',attr)	amas
+==H:n('olmmoš',sg,gen)	olbmo
+.
+
+SOURCE: text
+SMEA132) Do bohtet guokte olbmo.
+A1
+STA:cl
+A:adv('do')	Do
+P:v('boahtit',ind,pr,3pl)	bohtet
+fC:g
+=H:Num('guokte',sg,nom)	guokte
+=D:n('olmmoš',sg,gen)	olbmo
+.
+
+]]>
+</section>
+
+
+<section name="Kopula - Copula">
+
+<![CDATA[
+
 SOURCE: text
 SMEA128) Njiŋŋelasheasta lea dámmá.
 A1
@@ -1358,153 +1517,6 @@ P:v('leat',ind,pr,3sg)	lea
 Cs:n('ore',sg,nom)	ore
 .
 
-SOURCE: text
-SMEA130) Juohke guovllu gávttis lea sierralágan holbi.
-A1
-STA:cl
-A:g
-=D:pron('juohke',<idef>)	Juohke
-=D:n('guovlu',sg,gen)	guovllu
-=H:n('gákti',sg,loc)	gávttis
-P:v('leat',ind,pr,3sg)	lea
-Cs:g
-=D:adj('sierralágan',attr)	sierralágan
-=H:n('holbi',sg,nom)	holbi
-.
-
-SOURCE: text
-SMEA131) Lávus leat guokte amas olbmo.
-A1
-STA:cl
-A:n('lávvu',sg,loc)	Lávus
-P:v('leat',ind,pr,3pl)	leat
-Cs:g
-=H:Num('guokte',sg,nom)	guokte
-=D:g
-==D:adj('amas',attr)	amas
-==H:n('olmmoš',sg,gen)	olbmo
-.
-
-SOURCE: text
-SMEA132) Do bohtet guokte olbmo.
-A1
-STA:cl
-A:adv('do')	Do
-P:v('boahtit',ind,pr,3pl)	bohtet
-Cs:g
-=H:Num('guokte',sg,nom)	guokte
-=D:n('olmmoš',sg,gen)	olbmo
-.
-
-
-]]>
-</section>
-
-<section name="Habitatiiva - Habitive">
-
-<![CDATA[
-
-
-SOURCE: text
-SMEA133) Ádjás lea ođđa gákti.
-A1
-STA:cl
-HAB:n('áddjá',sg,loc)	Ádjás
-P:v('leat',ind,pr,3sg)	lea
-Cs:g
-=D:adj('ođas',attr)	ođđa
-=H:n('gákti',sg,nom)	gákti
-.
-
-SOURCE: text
-SMEA134) Mus leat boares sabehat.
-A1
-STA:cl
-HAB:pron('mun',<pers>,1sg,loc)	Mus
-P:v('leat',ind,pr,3pl)	leat
-Cs:g
-=D:adj('boaris',attr)	boares
-=H:n('sabet',pl,nom)	sabehat
-.
-
-SOURCE: text
-SMEA135) Nieiddain leat ođđa buvssat.
-A1
-STA:cl
-HAB:n('nieida',pl,loc)	Nieiddain
-P:v('leat',ind,pr,3pl)	leat
-Cs:g
-=D:adj('ođas',attr)	ođđa
-=H:n('buksa',pl,nom)	buvssat
-.
-
-SOURCE: text
-SMEA136) Olbmuin lea ollu ruhta.
-A1
-STA:cl
-HAB:n('olmmoš',pl,loc)	Olbmuin
-P:v('leat',ind,pr,3sg)	lea
-Cs:g
-=D:Adj('ollu',attr)	ollu
-=H:n('ruhta',sg,nom)	ruhta
-.
-
-SOURCE: text
-SMEA137) Min bussás leat alit čalmmit.
-A1
-STA:cl
-HAB:g
-=D:pron('mun',<pers>,1pl,gen)	Min
-=H:n('bussá',sg,loc)	bussás
-P:v('leat',ind,pr,3pl)	leat
-Cs:g
-=D:adj('alit',attr)	alit
-=H:n('čalbmi',pl,nom)	čalmmit
-.
-
-
-SOURCE: text
-SMEA138) Mus eai leat girjjit mielde.
-A1
-STA:cl
-HAB:pron('mun',<pers>,1sg,loc)	Mus
-P:g
-=D:v('ii',neg,ind,3pl)	eai
-=H:v('leat',ind,pr,conneg)	leat
-Cs:n('girji',pl,nom)	girjjit
-A:adv('mielde')	mielde
-.
-
-SOURCE: text
-SMEA139) Mis lea varas láibi odne.
-A1
-STA:cl
-HAB:pron('mun',<pers>,1pl,loc)	Mis
-P:v('leat',ind,pr,3sg)	lea
-Cs:g
-=D:adj('varas',attr)	varas
-=H:n('láibi',sg,nom)	láibi
-A:adv('odne')	odne
-.
-
-SOURCE: text
-SMEA140) Mus leat ustibat dáppe Londonis.
-A1
-STA:cl
-HAB:pron('mun',<pers>,1sg,loc)	Mus
-P:v('leat',ind,pr,3pl)	leat
-Cs:n('ustit',sg,nom)	ustit
-A:adv('dáppe')	dáppe
-A:prop('London',plc,sg,loc)	Londonis
-.
-
-
-]]>
-</section>
-
-<section name="Kopula - Copula">
-
-<![CDATA[
 
 SOURCE: text
 SMEA141) Heasta lea luohttevaš ustit.
@@ -1536,8 +1548,9 @@ S:n('beana',sg,nom)	Beana
 P:v('leat',ind,pr,3sg)	lea
 Cs:g
 =D:n('olmmoš',sg,gen)	olbmo
-=D:adj('buorre',sup,attr)	buoremus
-=H:n('ustit',sg,nom)	ustit
+=H:g
+==D:adj('buorre',sup,attr)	buoremus
+==H:n('ustit',sg,nom)	ustit
 .
 
 SOURCE: text
@@ -1641,7 +1654,7 @@ A:adv('jávohaga')	jávohaga
 .
 
 SOURCE: text
-SMEA152) Loaiddus olbmot veallájit ja nohkket.
+SMEA152) Loaiddus olbmot veallájit ja ođđet.
 A1
 STA:cl
 A:n('loaidu',sg,loc)	Loaiddus
@@ -1649,7 +1662,7 @@ S:n('olmmoš',pl,nom)	olbmot
 P:par
 =CJT:v('veallát',ind,pr,3pl)	veallájit
 =CO:conj-c('ja')	ja
-=CJT:v('nohkkat',ind,pr,3pl)	nohkket
+=CJT:v('oađđit',ind,pr,3pl)	ođđet
 .
 
 SOURCE: text
@@ -1812,7 +1825,7 @@ A1
 STA:cl
 A:adv('dáppe')	Dáppe
 H:v('leat',inf)	leat
-Cs:par
+fC:par
 =CJT:g
 ==D:Adj('ollu',attr)	ollu
 ==H:n('olmmoš',pl,nom)	olbmot
@@ -2002,7 +2015,7 @@ STA:cl
 S:pron('don',<pers>,2du,nom)	Doai
 P:g-
 =D:v('leat',ind,pr,2du)	leahppi
-A:adv('áŋgir',<A>)	áŋgirit
+A:adv('áŋgirit')	áŋgirit
 -P:g
 =H:v('lohkat',pcp2)	lohkan
 Od:n('sámegiella',sg,acc)	sámegiela
@@ -2063,7 +2076,7 @@ A:n('goardda',sg,loc)	goardagis
 .
 
 SOURCE: text
-SMEA185) Čuoikan olmmoš bálle rággasa siste nohkkat ráfis.
+SMEA185) Čuoikan olmmoš bálle rággasa siste oađđit ráfis.
 A1
 STA:cl
 A:n('čuoika',ess)	Čuoikan
@@ -2073,7 +2086,7 @@ A:g
 =D:n('rákkas',sg,gen)	rággasa
 =H:prp-post('siste')	siste
 Od:icl
-=P:v('nohkkat',inf)	nohkkat
+=P:v('oađđit',inf)	oađđit
 =A:n('ráfi',sg,loc)	ráfis
 .
 
@@ -2194,7 +2207,7 @@ A1
 STA:cl
 A:adv('ikte')	Odne
 P:v('leat',ind,pr,3sg)	lea
-S:g
+fC:g
 =D:adv('hui')	hui
 =H:adj('buolaš',sg,nom)	buolaš
 .
@@ -2205,7 +2218,7 @@ A1
 STA:cl
 A:prop('Jávregáddi',plc,sg,loc)	Jávregáttis
 P:v('leat',ind,pr,3pl)	leat
-Cs:g
+fC:g
 =H:Num('guokte',sg,nom)	guokte
 =D:n('olmmái',sg,gen)	olbmá
 .
@@ -2216,7 +2229,7 @@ A1
 STA:cl
 A:n('jeaggi',sg,loc)	Jeakkis
 P:v('leat',ind,pr,3pl)	leat
-Cs:g
+fC:g
 =D:adj('ollu',attr)	ollu
 =H:n('luomi',pl,nom)	luopmánat
 .
@@ -2236,7 +2249,7 @@ SOURCE: text
 SMEA199) Divrras ii leat gal barggu ektui.
 A1
 STA:cl
-S:adj('divrras',sg,nom)	Divrras
+Cs:adj('divrras',sg,nom)	Divrras
 P:g
 =D:v('ii',neg,ind,3sg)	ii
 =H:v('leat',ind,pr,conneg)	leat
@@ -2269,7 +2282,7 @@ P:g-
 A:adv('álo')	álo
 -P:g
 =H:v('leat',pcp2)	leamaš
-S:g
+fC:g
 =D:adj('buorre',sg,nom)	buorre
 =H:n('haddi',sg,nom)	haddi
 .
