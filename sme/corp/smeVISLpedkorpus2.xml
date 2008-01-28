@@ -410,7 +410,7 @@ SMEB43) Lea buolaš.
 A1
 STA:cl
 P:v('leat',ind,pr,3sg)	Lea
-fC:adj('buolaš',sg,nom)	buolaš
+fC:n('buolaš',sg,nom)	buolaš
 .
 
 
@@ -1282,21 +1282,6 @@ P:g
 ==Od:n('fabrihkkarátnu',pl,acc)	fabrihkkaránuid
 .
 
-SOURCE: text
-SMEB122) Lea go duohtavuohta sukcasiin Jack Sparrow birra?
-A1
-QUE:cl
-P:v('leat',ind,pr,3sg)	Lea
-Apcle:part('go')	go
-S:n('duohtavuohta',sg,nom)	duohtavuohta
-A:n('suvccas',pl,loc)	sukcasiin
-A:g
-=D:g
-==D:prop('Jack',sg,attr)	Jack
-==H:prop('Sparrow',Sur,sg,gen)	Sparrow
-=H:prp-post('birra')	birra
-?
-
 
 
 ]]>
@@ -1395,9 +1380,26 @@ A:pron('mii',<rel>,sg,ill,foc/ge)	masage
 ]]>
 </section>
 
-<section name="Kopula - Copula">
+<section name="Ekstensiála - extensial">
 
 <![CDATA[
+
+SOURCE: text
+SMEB122) Lea go duohtavuohta sukcasiin Jack Sparrow birra?
+A1
+QUE:cl
+P:v('leat',ind,pr,3sg)	Lea
+Apcle:part('go')	go
+fC:n('duohtavuohta',sg,nom)	duohtavuohta
+A:n('suvccas',pl,loc)	sukcasiin
+A:g
+=D:g
+==D:prop('Jack',sg,attr)	Jack
+==H:prop('Sparrow',Sur,sg,gen)	Sparrow
+=H:prp-post('birra')	birra
+?
+
+
 SOURCE: text
 SMEB119) Dáid juovllaid lei issoras buolaš.
 A1
@@ -1422,29 +1424,6 @@ P:v('leat',ind,pr,3pl)	leat
 fC:n('meahcceládju',pl,nom)	meahccelájut
 .
 
-SOURCE: text
-SMEB139) Miehkki lea guovtti ávjui.
-A1
-STA:cl
-S:n('miehkki',sg,nom)	Miehkki
-P:v('leat',ind,pr,3sg)	lea
-A:g
-=D:Num('guokte',sg,gen)	guovtti
-=H:n('ávju',sg,ill)	ávjui
-.
-
-SOURCE: text
-SMEB140) Dat fiilu lea golmma borrái.
-A1
-STA:cl
-S:g
-=D:pron('dat',<dem>,sg,nom)	Dat
-=H:n('fiilu',sg,nom)	fiilu
-P:v('leat',ind,pr,3sg)	lea
-A:g
-=D:Num('golbma',sg,gen)	golmma
-=H:n('borri',sg,ill)	borrái
-.
 
 ]]>
 </section>
@@ -1588,6 +1567,29 @@ Cs:g
 =H:adv('láhkai')	láhkai
 .
 
+SOURCE: text
+SMEB139) Miehkki lea guovtti ávjui.
+A1
+STA:cl
+S:n('miehkki',sg,nom)	Miehkki
+P:v('leat',ind,pr,3sg)	lea
+Cs:g
+=D:Num('guokte',sg,gen)	guovtti
+=H:n('ávju',sg,ill)	ávjui
+.
+
+SOURCE: text
+SMEB140) Dat fiilu lea golmma borrái.
+A1
+STA:cl
+S:g
+=D:pron('dat',<dem>,sg,nom)	Dat
+=H:n('fiilu',sg,nom)	fiilu
+P:v('leat',ind,pr,3sg)	lea
+Cs:g
+=D:Num('golbma',sg,gen)	golmma
+=H:n('borri',sg,ill)	borrái
+.
 
  	
 ]]>
