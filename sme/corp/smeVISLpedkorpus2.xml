@@ -202,9 +202,6 @@ fC:n('duorastat',sg,nom)	duorastat
 .
 
 
-
-
-
 ]]>
 </section>
 
@@ -257,7 +254,6 @@ S:n('Juvvá-eanu',sg,nom)	Juvvá-eanu
 P:v('borrat',ind,pr,3sg)	borrá
 Od:n('gáhkku',pl,acc)	gáhkuid
 .
-
 
 SOURCE: text
 SMEB27) Nillá-mága gasttihišgođii.
@@ -328,7 +324,7 @@ SOURCE: text
 SMEB34) Bidjet dámmá hiŋgalii!
 A1
 COM:cl
-P:v('bidjat',Imp,2PL)	Bidjet
+P:v('bidjat',Imp,2PL)	Bidjet/Biddjit
 Od:n('dámmá',sg,acc)	dámmá
 A:n('hiŋggal',sg,ill)	hiŋgalii
 !
@@ -341,8 +337,6 @@ P:v('váldit',Imp,2SG)	Váldde
 A:pron('mun',<pers>,1sg,ill,foc/ge)	munnjege
 Od:n('gáffe',sg,acc)	gáfe
 .
-
-
 
 ]]>
 </section>
@@ -397,7 +391,7 @@ fC:n('e-boasta',sg,nom)	e-boasta
 <![CDATA[
 
 SOURCE: text
-SMEB21) Jeakkis leat luopmánat.
+SMEB40) Jeakkis leat luopmánat.
 A1
 STA:cl
 A:n('jeaggi',sg,loc)	Jeakkis
@@ -406,7 +400,7 @@ fC:n('luomi',pl,nom)	luopmánat
 .
 
 SOURCE: text
-SMEB43) Lea buolaš.
+SMEB41) Lea buolaš.
 A1
 STA:cl
 P:v('leat',ind,pr,3sg)	Lea
@@ -422,7 +416,16 @@ fC:n('buolaš',sg,nom)	buolaš
 <![CDATA[
 
 SOURCE: text
-SMEB41) Don han leat árgi!
+SMEB42) Čoarvebeallječiŋat leat bivnnuhat.
+A1
+STA:cl
+S:n('čoarvebeallječikŋa',pl,nom)	Čoarvebeallječiŋat
+P:v('leat',ind,pr,3pl)	leat
+Cs:adj('bivnnut',pl,nom)	bivnnuhat
+.
+
+SOURCE: text
+SMEB43) Don han leat árgi!
 A1
 COM:cl
 S:pron('don',<pers>,2sg,nom)	Don 
@@ -431,14 +434,6 @@ P:v('leat',ind,pr,2sg)	leat
 Cs:adj('árgi',sg,nom)	árgi
 !
 
-SOURCE: text
-SMEB42) Čoarvebeallječiŋat leat bivnnuhat.
-A1
-STA:cl
-S:n('čoarvebeallječikŋa',pl,nom)	Čoarvebeallječiŋat
-P:v('leat',ind,pr,3pl)	leat
-Cs:adj('bivnnut',pl,nom)	bivnnuhat
-.
 
 SOURCE: text
 SMEB44) Dii leiddet viđas.
@@ -491,7 +486,7 @@ A1
 STA:cl
 S:pron('son',<pers>,3du,nom)	Soai
 P:v('orrut',ind,impf,3du)	oruiga
-A:prop('Divttasvuotna',plc,sg,loc)	Divttasvuonas
+A:prop('Divttasvuotna',sg,loc)	Divttasvuonas
 .
 
 SOURCE: text
@@ -713,6 +708,21 @@ HAB:pron('don',<pers>,2du,loc)	dudnos
 fC:n('mátkedihtor',sg,nom)	mátkedihtor
 ?
 
+SOURCE: text
+SMEB73) Mana dearvan!
+A1
+COM:cl
+P:v('mannat',Imp,2SG)	Mana
+A:adv('dearvan')	dearvan
+!
+
+SOURCE: text
+SMEB74) Báhcet dearvan!
+A1
+COM:cl
+P:v('báhcit',Imp,2PL)	Báhcet
+A:adv('dearvan')	dearvan
+!
 
 
 ]]>
@@ -726,30 +736,6 @@ fC:n('mátkedihtor',sg,nom)	mátkedihtor
 <section name="Subjeakta + Verbála + Adverbiála - Subject + Verbal + Adverbial">
 
 <![CDATA[
-
-
-SOURCE: text
-SMEB73) Eahppi go boađe?
-A1
-QUE:cl
-P:g-
-=D:v('ii',neg,ind,2DU)	Eahppi
-Vpcle:part('go')	go
--P:g
-=H:v('boahtit',ind,pr,conneg)	boađe
-?
-
-SOURCE: text
-SMEB74) Eat go sáhttán vuolgit?
-A1
-QUE:cl
-P:g-
-=D:v('ii',neg,ind,1PL)	Eat
-Vpcle:part('go')	go
--P:g
-=D:v('sáhttit',ind,impf,conneg)	sáhttán
-=H:v('vuolgit',inf)	vuolgit
-?
 
 SOURCE: text
 SMEB75) Dáiddán boahtit.
@@ -919,7 +905,16 @@ Vpcle:part('go')	go
 A:adv('diehko')	diehko
 ?
 
-
+SOURCE: text
+SMEB90) Eahppi go boađe?
+A1
+QUE:cl
+P:g-
+=D:v('ii',neg,ind,2DU)	Eahppi
+Vpcle:part('go')	go
+-P:g
+=H:v('boahtit',ind,pr,conneg)	boađe
+?
 
 ]]>
 </section>
@@ -1061,8 +1056,6 @@ A:n('gálvu',pl,com)	gálvvuiguin
 .
 
 
-
-
 ]]>
 </section>
 
@@ -1156,7 +1149,7 @@ STA:cl
 S:n('nieida',sg,nom)	Nieida
 P:v('leat',ind,pr,3sg)	lea
 A:g
-=D:prop('Ohcejohka',plc,sg,loc)	Ohcejogas
+=D:prop('Ohcejohka',sg,loc)	Ohcejogas
 =H:adv('eret')	eret
 .
 
@@ -1282,6 +1275,17 @@ P:g
 ==Od:n('fabrihkkarátnu',pl,acc)	fabrihkkaránuid
 .
 
+SOURCE: text
+SMEB119) Eat go sáhttán vuolgit?
+A1
+QUE:cl
+P:g-
+=D:v('ii',neg,ind,1PL)	Eat
+Vpcle:part('go')	go
+-P:g
+=D:v('sáhttit',ind,impf,conneg)	sáhttán
+=H:v('vuolgit',inf)	vuolgit
+?
 
 
 ]]>
@@ -1385,7 +1389,7 @@ A:pron('mii',<rel>,sg,ill,foc/ge)	masage
 <![CDATA[
 
 SOURCE: text
-SMEB122) Lea go duohtavuohta sukcasiin Jack Sparrow birra?
+SMEB130) Lea go duohtavuohta sukcasiin Jack Sparrow birra?
 A1
 QUE:cl
 P:v('leat',ind,pr,3sg)	Lea
@@ -1401,7 +1405,7 @@ A:g
 
 
 SOURCE: text
-SMEB119) Dáid juovllaid lei issoras buolaš.
+SMEB131) Dáid juovllaid lei issoras buolaš.
 A1
 STA:cl
 A:g
@@ -1415,7 +1419,7 @@ fC:g
 
 
 SOURCE: text
-SMEB121) Badjin vákkis leat meahccelájut.
+SMEB132) Badjin vákkis leat meahccelájut.
 A1
 STA:cl
 A:adv('badjin')	Badjin
@@ -1434,7 +1438,7 @@ fC:n('meahcceládju',pl,nom)	meahccelájut
 
 
 SOURCE: text
-SMEB120) Dudno mielas lea suohtas.
+SMEB133) Dudno mielas lea suohtas.
 A1
 STA:cl
 A:g
@@ -1445,60 +1449,12 @@ Cs:adj('suohtas',sg,nom)	suohtas
 .
 
 SOURCE: text
-SMEB130) Diet lea mu.
+SMEB134) Diet lea mu.
 A1
 STA:cl
 S:pron('diet',<dem>,sg,nom)	Diet
 P:v('leat',ind,pr,3sg)	lea
 Cs:pron('mun',<pers>,1sg,gen)	mu
-.
-
-SOURCE: text
-SMEB131) Dát ášši lea dehálaš.
-A1
-STA:cl
-S:g
-=D:pron('dát',<dem>,sg,nom)	Dát
-=H:n('ášši',sg,nom)	ášši
-P:v('leat',ind,pr,3sg)	lea
-Cs:adj('dehálaš',sg,nom)	dehálaš
-.
-
-SOURCE: text
-SMEB132) Máreha čállin girji lei hui buorre.
-A1
-STA:cl
-S:g
-=D:g
-==D:prop('Máret',sg,gen)	Máreha
-==H:n('čállin',gen)	čállin
-=H:n('girji',sg,nom)	girji
-P:v('leat',ind,impf,3sg)	lei/leai
-Cs:g
-=D:adv('hui')	hui
-=H:adj('buorre',sg,nom)	buorre
-.
-
-SOURCE: text
-SMEB133) Diet gápmagat leat áhči.
-A1
-STA:cl
-S:g
-=D:pron('diet',<dem>,pl,nom)	Diet
-=H:n('gáma',pl,nom)	gápmagat
-P:v('leat',ind,pr,3pl)	leat
-Cs:n('áhčči',sg,gen)	áhči
-.
-
-SOURCE: text
-SMEB134) Divtta temá lea ráhkisvuohta.
-A1
-STA:cl
-S:g
-=D:n('dikta',sg,gen)	Divtta
-=H:n('temá',sg,nom)	temá
-P:v('leat',ind,pr,3sg)	lea
-Cs:n('ráhkisvuohta',sg,nom)	ráhkisvuohta
 .
 
 SOURCE: text
@@ -1546,7 +1502,57 @@ P:v('leat',ind,pr,3pl)	leat
 .
 
 SOURCE: text
-SMEB141) Gean láhkai son lea?
+SMEB139) Dát ášši lea dehálaš.
+A1
+STA:cl
+S:g
+=D:pron('dát',<dem>,sg,nom)	Dát
+=H:n('ášši',sg,nom)	ášši
+P:v('leat',ind,pr,3sg)	lea
+Cs:adj('dehálaš',sg,nom)	dehálaš
+.
+
+SOURCE: text
+SMEB140) Máreha čállin girji lei hui buorre.
+A1
+STA:cl
+S:g
+=D:g
+==D:prop('Máret',sg,gen)	Máreha
+==H:n('čállin',gen)	čállin
+=H:n('girji',sg,nom)	girji
+P:v('leat',ind,impf,3sg)	lei/leai
+Cs:g
+=D:adv('hui')	hui
+=H:adj('buorre',sg,nom)	buorre
+.
+
+SOURCE: text
+SMEB141) Diet gápmagat leat áhči.
+A1
+STA:cl
+S:g
+=D:pron('diet',<dem>,pl,nom)	Diet
+=H:n('gáma',pl,nom)	gápmagat
+P:v('leat',ind,pr,3pl)	leat
+Cs:n('áhčči',sg,gen)	áhči
+.
+
+SOURCE: text
+SMEB142) Divtta temá lea ráhkisvuohta.
+A1
+STA:cl
+S:g
+=D:n('dikta',sg,gen)	Divtta
+=H:n('temá',sg,nom)	temá
+P:v('leat',ind,pr,3sg)	lea
+Cs:n('ráhkisvuohta',sg,nom)	ráhkisvuohta
+.
+
+
+
+SOURCE: text
+SMEB143) Gean láhkai son lea?
 A1
 QUE:cl
 Cs:g
@@ -1557,7 +1563,7 @@ P:v('leat',ind,pr,3sg)	lea
 ?
 
 SOURCE: text
-SMEB142) Son lea áhčis láhkai.
+SMEB144) Son lea áhčis láhkai.
 A1
 STA:cl
 S:pron('son',<pers>,3sg,nom)	Son
@@ -1568,7 +1574,7 @@ Cs:g
 .
 
 SOURCE: text
-SMEB139) Miehkki lea guovtti ávjui.
+SMEB145) Miehkki lea guovtti ávjui.
 A1
 STA:cl
 S:n('miehkki',sg,nom)	Miehkki
@@ -1579,7 +1585,7 @@ Cs:g
 .
 
 SOURCE: text
-SMEB140) Dat fiilu lea golmma borrái.
+SMEB146) Dat fiilu lea golmma borrái.
 A1
 STA:cl
 S:g
@@ -1599,62 +1605,6 @@ Cs:g
 
 <![CDATA[
 
-
-SOURCE: text
-SMEB143) Boahtágo eadni vai áhčči?
-A1
-QUE:cl
-P:v('boahtit',ind,pr,3sg)	Boahtá
-Vpcle:part('go')	go
-S:par
-=CJT:n('eadni',sg,nom)	eadni
-=CO:conj-c('vai')	vai
-=CJT:n('áhčči',sg,nom)	áhčči
-?
-
-SOURCE: text
-SMEB144) Eadni ja áhčči boahtiba.
-A1
-STA:cl
-S:par
-=CJT:n('eadni',sg,nom)	Eadni
-=CO:conj-c('ja')	ja
-=CJT:n('áhčči',sg,nom)	áhčči
-P:v('boahtit',ind,pr,3du)	boahtiba
-.
-
-
-SOURCE: text
-SMEB145) Sii barget sihke Kárášjogas ja Guovdageainnus.
-A1
-STA:cl
-S:pron('son',<pers>,3pl,nom)	Sii
-P:v('bargat',ind,pr,3pl)	barget
-A:par
-=CO:conj-c('sihke')	sihke
-=CJT:prop('Kárášjohka',plc,sg,loc)	Kárášjogas
-=CO:conj-c('ja')	ja
-=CJT:prop('Guovdageaidnu',plc,sg,loc)	Guovdageainnus
-.
-
-SOURCE: text
-SMEB146) Sámit ledje doloža rájes eallán meahcástemiin ja mearrabivdduin.
-A1
-STA:cl
-S:n('sápmi',pl,nom)	Sámit
-P:g-
-=D:v('leat',ind,impf,3pl)	ledje
-A:g
-=D:adj('dološ',sg,gen)	doloža
-=H:prp-post('rájes')	rájes
--P:g
-=H:v('eallit',pcp2)	eallán
-A:par
-=CJT:n('meahcásteapmi',n,pl,loc)	meahcástemiin
-=CO:conj-c('ja')	ja
-=CJT:n('mearrabivdu',pl,loc)	mearrabivdduin
-.
-
 SOURCE: text
 SMEB147) Dakkár gákti geavahuvvo Guovdageainnus, Álttás ja Heahtás Suomas.
 A1
@@ -1664,12 +1614,12 @@ S:g
 =H:n('gákti',sg,nom)	gákti
 P:v('geavahuvvot',ind,pr,3sg)	geavahuvvo
 A:par
-=CJT:prop('Guovdageaidnu',plc,sg,loc)	Guovdageainnus
+=CJT:prop('Guovdageaidnu',sg,loc)	Guovdageainnus
 ,
-=CJT:prop('Áltá',plc,sg,loc)	Álttás
+=CJT:prop('Áltá',sg,loc)	Álttás
 =CO:conj-c('ja')	ja
-=CJT:prop('Heahttá',plc,sg,loc)	Heahtás
-A:prop('Suopma',plc,sg,loc)	Suomas
+=CJT:prop('Heahttá',sg,loc)	Heahtás
+A:prop('Suopma',sg,loc)	Suomas
 .
 
 SOURCE: text
@@ -1774,7 +1724,7 @@ SOURCE: text
 SMEB154) Bidjet uvssa ja lásaid gitta!
 A1
 COM:cl
-P:v('bidjat',Imp,2PL)	Bidjet
+P:v('bidjat',Imp,2PL)	Bidjet/Biddjit
 Od:par
 =CJT:n('uksa',sg,acc)	uvssa
 =CO:conj-c('ja')	ja
@@ -1907,9 +1857,9 @@ SMEB163) Norggas ja Ruoŧas leat julevsápmelaččat.
 A1
 STA:cl
 A:par
-=CJT:prop('Norga',plc,sg,loc)	Norggas
+=CJT:prop('Norga',sg,loc)	Norggas
 =CO:conj-c('ja')	ja
-=CJT:prop('Ruoŧŧa',plc,sg,loc)	Ruoŧas
+=CJT:prop('Ruoŧŧa',sg,loc)	Ruoŧas
 P:v('leat',ind,pr,3pl)	leat
 fC:n('julevsápmelaš',pl,nom)	julevsápmelaččat
 .
@@ -1948,6 +1898,61 @@ P:v('leat',ind,pr,3pl)	leat
 fC:n('feasta',pl,nom)	feasttat
 .
 
+SOURCE: text
+SMEB166) Boahtágo eadni vai áhčči?
+A1
+QUE:cl
+P:v('boahtit',ind,pr,3sg)	Boahtá
+Vpcle:part('go')	go
+S:par
+=CJT:n('eadni',sg,nom)	eadni
+=CO:conj-c('vai')	vai
+=CJT:n('áhčči',sg,nom)	áhčči
+?
+
+SOURCE: text
+SMEB167) Eadni ja áhčči boahtiba.
+A1
+STA:cl
+S:par
+=CJT:n('eadni',sg,nom)	Eadni
+=CO:conj-c('ja')	ja
+=CJT:n('áhčči',sg,nom)	áhčči
+P:v('boahtit',ind,pr,3du)	boahtiba
+.
+
+
+SOURCE: text
+SMEB168) Sii barget sihke Kárášjogas ja Guovdageainnus.
+A1
+STA:cl
+S:pron('son',<pers>,3pl,nom)	Sii
+P:v('bargat',ind,pr,3pl)	barget
+A:par
+=CO:conj-c('sihke')	sihke
+=CJT:prop('Kárášjohka',sg,loc)	Kárášjogas
+=CO:conj-c('ja')	ja
+=CJT:prop('Guovdageaidnu',sg,loc)	Guovdageainnus
+.
+
+SOURCE: text
+SMEB169) Sámit ledje doloža rájes eallán meahcástemiin ja mearrabivdduin.
+A1
+STA:cl
+S:n('sápmi',pl,nom)	Sámit
+P:g-
+=D:v('leat',ind,impf,3pl)	ledje
+A:g
+=D:adj('dološ',sg,gen)	doloža
+=H:prp-post('rájes')	rájes
+-P:g
+=H:v('eallit',pcp2)	eallán
+A:par
+=CJT:n('meahcásteapmi',n,pl,loc)	meahcástemiin
+=CO:conj-c('ja')	ja
+=CJT:n('mearrabivdu',pl,loc)	mearrabivdduin
+.
+
  
  			
 ]]>
@@ -1956,8 +1961,10 @@ fC:n('feasta',pl,nom)	feasttat
 <section name="Seaguhuvvon - Mixed sentences">
 <![CDATA[
 
+
+
 SOURCE: text
-SMEB166) Mii čuoiggaimet gitta don dievás.
+SMEB176) Mii čuoiggaimet gitta don dievás.
 A1
 STA:cl
 S:pron('mun',<pers>,1pl,nom)	Mii
@@ -1969,7 +1976,7 @@ A:g
 .
 
 SOURCE: text
-SMEB167) Lásse, Iŋgá ja mun leimmet Romssas.
+SMEB177) Lásse, Iŋgá ja mun leimmet Romssas.
 A1
 STA:cl
 S:par
@@ -1979,11 +1986,11 @@ S:par
 =CO:conj-c('ja')	ja
 =CJT:pron('mun',<pers>,1sg,nom)	mun
 P:v('leat',ind,impf,1pl)	leimmet
-A:prop('Romsa',plc,sg,loc)	Romssas
+A:prop('Romsa',sg,loc)	Romssas
 .
 
 SOURCE: text
-SMEB168) Ándde-guovttos Rihtáin gávnnadeigga gávpogis.
+SMEB178) Ándde-guovttos Rihtáin gávnnadeigga gávpogis.
 A1
 STA:cl
 S:g
@@ -1994,7 +2001,7 @@ A:n('gávpot',sg,loc)	gávpogis
 .
 
 SOURCE: text
-SMEB169) Iŋgá bođii mánáidisguin deike.
+SMEB179) Iŋgá bođii mánáidisguin deike.
 A1
 STA:cl
 S:prop('Iŋgá',sg,nom)	Iŋgá
@@ -2004,7 +2011,7 @@ A:adv('deike')	deike
 .
 
 SOURCE: text
-SMEB170) Unna mánáš gahčai johkii.
+SMEB180) Unna mánáš gahčai johkii.
 A1
 STA:cl
 S:g
@@ -2015,7 +2022,7 @@ A:n('johka',sg,ill)	johkii
 .
 
 SOURCE: text
-SMEB171) Dii vujiidet duon luotta.
+SMEB181) Dii vujiidet duon luotta.
 A1
 STA:cl
 S:pron('mun',<pers>,2pl,nom)	Dii
@@ -2026,7 +2033,7 @@ A:g
 .
 
 SOURCE: text
-SMEB172) Munno mánát eai láve jávkat skuvllas.
+SMEB182) Munno mánát eai láve jávkat skuvllas.
 A1
 STA:cl
 S:g
@@ -2040,7 +2047,7 @@ A:n('skuvla',sg,loc)	skuvllas
 .
 
 SOURCE: text
-SMEB173) Min márkanii lea ráhkaduvvon ođđa skuvla.
+SMEB183) Min márkanii lea ráhkaduvvon ođđa skuvla.
 A1
 STA:cl
 A:g
@@ -2055,7 +2062,7 @@ S:g
 .
 
 SOURCE: text
-SMEB174) Miss Swanna rivvema dihte sii leat dáppe!
+SMEB184) Miss Swanna rivvema dihte sii leat dáppe!
 A1
 STA:cl
 A:g
@@ -2071,7 +2078,7 @@ A:adv('dáppe')	dáppe
 !
 
 SOURCE: text
-SMEB175) Ollu nuorat čoahkkanit dáidda meassuide.
+SMEB185) Ollu nuorat čoahkkanit dáidda meassuide.
 A1
 STA:cl
 S:g
@@ -2084,7 +2091,7 @@ A:g
 .
 
 SOURCE: text
-SMEB176) Dat bahkkejit min jurdagiidda.
+SMEB186) Dat bahkkejit min jurdagiidda.
 A1
 STA:cl
 S:pron('dat',<pers>,3pl,nom)	Dat
@@ -2095,7 +2102,7 @@ A:g
 .
 
 SOURCE: text
-SMEB177) Mun maid ferten málestit guktii vahkus.
+SMEB187) Mun maid ferten málestit guktii vahkus.
 A1
 STA:cl
 S:pron('mun',<pers>,1sg,nom)	Mun
@@ -2109,21 +2116,21 @@ A:g
 .
 
 SOURCE: text
-SMEB178) Doai soaitibeahtti boahtit Gáivutnii boahtte geasi.
+SMEB188) Doai soaitibeahtti boahtit Gáivutnii boahtte geasi.
 A1
 STA:cl
 S:pron('don',<pers>,2du,nom)	Doai
 P:g
 =D:v('soaitit',ind,pr,2du)	soaitibeahtti
 =H:v('boahtit',inf)	boahtit
-A:prop('Gáivuotna',plc,sg,ill)	Gáivutnii
+A:prop('Gáivuotna',sg,ill)	Gáivutnii
 A:g
 =D:adj('boahtte',attr)	boahtte
 =H:n('geassi',sg,gen)	geasi
 .
 
 SOURCE: text
-SMEB179) Moai orro hálbbes hoteallas Hyde Park lahka.
+SMEB189) Moai orro hálbbes hoteallas Hyde Park lahka.
 A1
 STA:cl
 S:pron('mun',<pers>,1du,nom)	Moai
@@ -2132,12 +2139,12 @@ A:g
 =D:adj('hálbi',attr)	hálbbes
 =H:n('hotealla',sg,loc)	hoteallas
 A:g
-=D:prop('Hyde Park',plc,sg,gen)	Hyde Park
+=D:prop('Hyde Park',sg,gen)	Hyde Park
 =H:prp-post('lahka')	lahka
 .
 
 SOURCE: text
-SMEB180) Odne áigo mannat Madame Tussauda kabinehttii.
+SMEB190) Odne áigo mannat Madame Tussauda kabinehttii.
 A1
 STA:cl
 A:adv('odne')	Odne
@@ -2150,7 +2157,7 @@ A:g
 .
 
 SOURCE: text
-SMEB181) Diet gal lea beare unnán.
+SMEB191) Diet gal lea beare unnán.
 A1
 STA:cl
 S:pron('diet',<dem>,sg,nom)	Diet
@@ -2162,7 +2169,7 @@ Cs:g
 .
 
 SOURCE: text
-SMEB182) Dat gal lea boastut.
+SMEB192) Dat gal lea boastut.
 A1
 STA:cl
 S:pron('dat',<pers>,3sg,nom)	Dat
@@ -2172,7 +2179,7 @@ A:adv('boastut')	boastut
 .
 
 SOURCE: text
-SMEB183) Gal diet šattai botnjut.
+SMEB193) Gal diet šattai botnjut.
 A1
 STA:cl
 A:adv('gal')	Gal
@@ -2182,7 +2189,7 @@ A:adv('botnjut')	botnjut
 .
 
 SOURCE: text
-SMEB184) Mun áiggun geahččat TV-ođđasiid.
+SMEB194) Mun áiggun geahččat TV-ođđasiid.
 A1
 STA:cl
 S:pron('mun',<pers>,1sg,nom)	Mun
@@ -2193,7 +2200,7 @@ Od:n('TV-ođas',pl,acc)	TV-ođđasiid
 .
 
 SOURCE: text
-SMEB185) Doai fertebeahtti viežžat čázi.
+SMEB195) Doai fertebeahtti viežžat čázi.
 A1
 STA:cl
 S:pron('mun',<pers>,2du,nom)	Doai
@@ -2204,7 +2211,7 @@ Od:n('čáhci',sg,acc)	čázi
 .
 
 SOURCE: text
-SMEB186) Dakkár stuora gávpogis olmmoš sáhttá bargat vaikko maid.
+SMEB196) Dakkár stuora gávpogis olmmoš sáhttá bargat vaikko maid.
 A1
 STA:cl
 A:g
@@ -2220,10 +2227,10 @@ Od:pron('vaikko mii',<idef>,sg,acc)	vaikko maid
 .
 
 SOURCE: text
-SMEB187) Guovdageaidnu čájehii fámuid vuosttaš minuvtta rájes.
+SMEB197) Guovdageaidnu čájehii fámuid vuosttaš minuvtta rájes.
 A1
 STA:cl
-S:prop('Guovdageaidnu',plc,sg,nom)	Guovdageaidnu
+S:prop('Guovdageaidnu',sg,nom)	Guovdageaidnu
 P:v('čájehit',ind,impf,3sg)	čájehii
 Od:n('fápmu',pl,acc)	fámuid
 A:g
@@ -2234,7 +2241,7 @@ A:g
 .
 
 SOURCE: text
-SMEB188) Nissonat dat eanaš duddjojit sámi biktasiid.
+SMEB198) Nissonat dat eanaš duddjojit sámi biktasiid.
 A1
 STA:cl
 S:n('nisu',pl,nom)	Nissonat
@@ -2247,21 +2254,21 @@ Od:g
 .
 
 SOURCE: text
-SMEB189) Mánnodagaid gehčče vel Sámi mánáid-TV ovttas mánáiguin.
+SMEB199) Mánnodagaid gehčče vel Sámi mánáid-TV ovttas mánáiguin.
 A1
 STA:cl
 A:n('mánnodat',pl,gen)	Mánnodagaid
 P:v('geahččat',ind,pr,1DU)	gehčče
 A:adv('vel')	vel
 Od:g
-=D:prop('Sápmi',plc,sg,gen)	Sámi
+=D:prop('Sápmi',sg,gen)	Sámi
 =H:n('mánáid-TV',acr,sg,acc)	mánáid-TV
 A:adv('ovttas')	ovttas
 A:n('mánná',pl,com)	mánáiguin
 .
 
 SOURCE: text
-SMEB190) Muhtumin moai geahčaime filmma eahkedis.
+SMEB200) Muhtumin moai geahčaime filmma eahkedis.
 A1
 STA:cl
 A:adv('muhtumin')	Muhtumin
@@ -2272,7 +2279,7 @@ A:n('eahket',sg,loc)	eahkedis
 .
 
 SOURCE: text
-SMEB191) Son aiddo bidjalii spáppa rabas mollii.
+SMEB201) Son aiddo bidjalii spáppa rabas mollii.
 A1
 STA:cl
 S:pron('son',<pers>,3sg,nom)	Son
@@ -2285,7 +2292,7 @@ A:g
 .
 
 SOURCE: text
-SMEB192) Flash gal suige ánssáhii dien.
+SMEB202) Flash gal suige ánssáhii dien.
 A1
 STA:cl
 S:prop('Flash',sg,nom)	Flash
@@ -2296,7 +2303,7 @@ Od:pron('diet',<dem>,sg,acc)	dien
 .
 
 SOURCE: text
-SMEB193) Gos daid lehpet goldán?
+SMEB203) Gos daid lehpet goldán?
 A1
 QUE:cl
 A:adv('gos')	Gos
@@ -2307,7 +2314,7 @@ P:g
 ?
 
 SOURCE: text
-SMEB194) Beaskka geavahedje gávtti badjel.
+SMEB204) Beaskka geavahedje gávtti badjel.
 A1
 STA:cl
 Od:n('beaska',sg,acc)	Beaskka
@@ -2318,7 +2325,7 @@ A:g
 .
 
 SOURCE: text
-SMEB195) Dorkka geavahedje gávtti vuolde.
+SMEB205) Dorkka geavahedje gávtti vuolde.
 A1
 STA:cl
 Od:n('dorka',sg,acc)	Dorkka
@@ -2329,7 +2336,7 @@ A:g
 .
 
 SOURCE: text
-SMEB196) Leahppi go oahppan suomagiela skuvllas?
+SMEB206) Leahppi go oahppan suomagiela skuvllas?
 A1
 QUE:cl
 P:g-
@@ -2342,7 +2349,7 @@ A:n('skuvla',sg,loc)	skuvllas
 ?
 
 SOURCE: text
-SMEB197) Ean gille láibut gáhku odne.
+SMEB207) Ean gille láibut gáhku odne.
 A1
 STA:cl
 P:g
@@ -2354,7 +2361,7 @@ A:adv('odne')	odne
 .
 
 SOURCE: text
-SMEB198) Dál de viimmat asttan čállit reivve.
+SMEB208) Dál de viimmat asttan čállit reivve.
 A1
 STA:cl
 A:adv('dál')	Dál
@@ -2367,7 +2374,7 @@ Od:icl
 .
 
 SOURCE: text
-SMEB199) In háliit duinna doarrut.
+SMEB209) In háliit duinna doarrut.
 A1
 STA:cl
 P:g-
@@ -2379,7 +2386,7 @@ A:pron('don',<pers>,2sg,com)	duinna
 .
 
 SOURCE: text
-SMEB200) Stállu lea hui rikkis.
+SMEB210) Stállu lea hui rikkis.
 A1
 STA:cl
 S:n('stállu',sg,nom)	Stállu
@@ -2390,7 +2397,7 @@ Cs:g
 .
 
 SOURCE: text
-SMEB201) Dat ii leat nu váttis.
+SMEB211) Dat ii leat nu váttis.
 A1
 STA:cl
 S:pron('dat',<pers>,3sg,nom)	Dat
@@ -2403,7 +2410,7 @@ Cs:g
 .
 
 SOURCE: text
-SMEB202) Ii dat leat bahá.
+SMEB212) Ii dat leat bahá.
 A1
 STA:cl
 P:g-
@@ -2415,7 +2422,7 @@ Cs:adj('bahá',sg,nom)	bahá
 .
 
 SOURCE: text
-SMEB203) Diet lea lohkkis mánná.
+SMEB213) Diet lea lohkkis mánná.
 A1
 STA:cl
 S:pron('diet',<dem>,sg,nom)	Diet
@@ -2426,7 +2433,7 @@ Cs:g
 .
 
 SOURCE: text
-SMEB204) Deatnojohtin sáhttá leat váralaš.
+SMEB214) Deatnojohtin sáhttá leat váralaš.
 A1
 STA:cl
 S:n('deatnojohtin',sg,nom)	Deatnojohtin
@@ -2437,7 +2444,7 @@ Cs:adj('váralaš',sg,nom)	váralaš
 .
 
 SOURCE: text
-SMEB205) Galgá go buot bivttasráhkadeapmi leat nissoniid bargu?
+SMEB215) Galgá go buot bivttasráhkadeapmi leat nissoniid bargu?
 A1
 QUE:cl
 P:g-
@@ -2454,7 +2461,7 @@ Cs:g
 ?
 
 SOURCE: text
-SMEB206) Spider-Man gal lea measta vuoitemeahttun.
+SMEB216) Spider-Man gal lea measta vuoitemeahttun.
 A1
 STA:cl
 S:prop('Spider-Man',sg,nom)	Spider-Man
@@ -2465,7 +2472,7 @@ Cs:adj('vuoitemeahttun',sg,nom)	vuoitemeahttun
 .
 
 SOURCE: text
-SMEB207) Márjjás leat ođđa sabehat.
+SMEB217) Márjjás leat ođđa sabehat.
 A1
 STA:cl
 HAB:prop('Márjá',sg,loc)	Márjjás
@@ -2476,7 +2483,7 @@ fC:g
 .
 
 SOURCE: text
-SMEB208) Doppe ledje ollu olbmot.
+SMEB218) Doppe ledje ollu olbmot.
 A1
 STA:cl
 A:adv('doppe')	Doppe
@@ -2487,7 +2494,7 @@ fC:g
 .
 
 SOURCE: text
-SMEB209) Dán báhkis šaddá čáppa gohppu.
+SMEB219) Dán báhkis šaddá čáppa gohppu.
 A1
 STA:cl
 A:g
@@ -2500,7 +2507,7 @@ fC:g
 .
 
 SOURCE: text
-SMEB210) Dán jagi eai leat luopmánat.
+SMEB220) Dán jagi eai leat luopmánat.
 A1
 STA:cl
 A:g
@@ -2513,7 +2520,7 @@ fC:n('luomi',pl,nom)	luopmánat
 .
 
 SOURCE: text
-SMEB211) Meastagis leat ollu váramat.
+SMEB221) Meastagis leat ollu váramat.
 A1
 STA:cl
 A:n('meastta',sg,loc)	Meastagis
@@ -2524,7 +2531,7 @@ fC:g
 .
 
 SOURCE: text
-SMEB212) Ovddeš áiggiid čoakkalmasviesut ledje nuoraid áidna deaivvadansajit.
+SMEB222) Ovddeš áiggiid čoakkalmasviesut ledje nuoraid áidna deaivvadansajit.
 A1
 STA:cl
 A:g
@@ -2540,7 +2547,7 @@ Cs:g
 .
 
 SOURCE: text
-SMEB213) Gal dat lea njalkkas odne.
+SMEB223) Gal dat lea njalkkas odne.
 A1
 STA:cl
 A:adv('gal')	Gal
@@ -2551,7 +2558,7 @@ A:adv('odne')	odne
 .
 
 SOURCE: text
-SMEB214) Beassážiid leat dábálaččat heargevuodjingilvvut, sihke Kárášjogas ja Guovdageainnus.
+SMEB224) Beassážiid leat dábálaččat heargevuodjingilvvut, sihke Kárášjogas ja Guovdageainnus.
 A1
 STA:cl
 A:n('beassáš',pl,gen)	Beassážiid
@@ -2561,13 +2568,13 @@ fC:n('heargevuodjingilvu',pl,nom)	heargevuodjingilvvut
 ,
 A:par
 =CO:conj-c('sihke')	sihke
-=CJT:prop('Kárášjohka',plc,sg,loc)	Kárášjogas
+=CJT:prop('Kárášjohka',sg,loc)	Kárášjogas
 =CO:conj-c('ja')	ja
-=CJT:prop('Guovdageaidnu',plc,sg,loc)	Guovdageainnus
+=CJT:prop('Guovdageaidnu',sg,loc)	Guovdageainnus
 .
 
 SOURCE: text
-SMEB215) Gerge go vuolgit ihttin?
+SMEB225) Gerge go vuolgit ihttin?
 A1
 QUE:cl
 P:v('gerget',ind,pr,1DU)	Gerge
@@ -2577,7 +2584,7 @@ A:adv('ihttin')	ihttin
 ?
 
 SOURCE: text
-SMEB216) In leat diehtán maidege.
+SMEB226) In leat diehtán maidege.
 A1
 STA:cl
 P:g
@@ -2601,7 +2608,7 @@ Od:pron('mihkkege',<idef>,pl,acc)	maidege
 <![CDATA[
 
 SOURCE: text
-SMEB217) Dolin, ovdal soađi, olbmot lávejedje vuovdit joŋaid.
+SMEB227) Dolin, ovdal soađi, olbmot lávejedje vuovdit joŋaid.
 A1
 STA:cl
 A:g
@@ -2619,7 +2626,7 @@ Od:n('jokŋa',pl,acc)	joŋaid
 .
 
 SOURCE: text
-SMEB218) Oinniide go Mihkkala, munno nuoramus bártni?
+SMEB228) Oinniide go Mihkkala, munno nuoramus bártni?
 A1
 QUE:cl
 P:v('oaidnit',ind,impf,2DU)	Oinniide
@@ -2635,7 +2642,7 @@ Od:g
 ?
 
 SOURCE: text
-SMEB219) Dan mun muitalan dušše dutnje, mu buoremus olbmái.
+SMEB229) Dan mun muitalan dušše dutnje, mu buoremus olbmái.
 A1
 STA:cl
 Od:pron('dat',<pers>,3sg,acc)	Dan
@@ -2653,21 +2660,21 @@ A:g
 .
 
 SOURCE: text
-SMEB220) Ánde orru Oslos, Norgga oaivegávpogis.
+SMEB230) Ánde orru Oslos, Norgga oaivegávpogis.
 A1
 STA:cl
 S:prop('Ánde',sg,nom)	Ánde
 P:v('orrut',ind,pr,3sg)	orru
 A:g
-=H:prop('Oslo',plc,sg,loc)	Oslos
+=H:prop('Oslo',sg,loc)	Oslos
 ,
 =D:g
-==D:prop('Norga',plc,sg,gen)	Norgga
+==D:prop('Norga',sg,gen)	Norgga
 ==H:n('oaivegávpot',sg,loc)	oaivegávpogis
 .
 
 SOURCE: text
-SMEB221) Mun hupmen Máhte-Iŋggáin, Niillas-Máhte eamidiin.
+SMEB231) Mun hupmen Máhte-Iŋggáin, Niillas-Máhte eamidiin.
 A1
 STA:cl
 S:pron('mun',<pers>,1sg,nom)	Mun
@@ -2681,7 +2688,7 @@ A:g
 .
 
 SOURCE: text
-SMEB222) Vuolggán ihttin, bearjadaga.
+SMEB232) Vuolggán ihttin, bearjadaga.
 A1
 STA:cl
 P:v('vuolgit',ind,pr,1SG)	Vuolggán
@@ -2692,7 +2699,7 @@ A:g
 .
 
 SOURCE: text
-SMEB223) Do boahtá Lemet Niillas, min ođđa oahpaheaddji.
+SMEB233) Do boahtá Lemet Niillas, min ođđa oahpaheaddji.
 A1
 STA:cl
 A:adv('do')	Do
@@ -2708,7 +2715,7 @@ S:g
 .
 
 SOURCE: text
-SMEB224) Mu viellja, Tore, sáhttá boahtit deike.
+SMEB234) Mu viellja, Tore, sáhttá boahtit deike.
 A1
 STA:cl
 S:g
@@ -2725,14 +2732,14 @@ A:adv('deike')	deike
 .
 
 SOURCE: text
-SMEB225) Romssas, Davvi-Norgga stuorimus gávpogis, leat vaikko man ollu studeanttat.
+SMEB235) Romssas, Davvi-Norgga stuorimus gávpogis, leat vaikko man ollu studeanttat.
 A1
 STA:cl
 A:g
-=H:prop('Romsa',plc,sg,loc)	Romssas
+=H:prop('Romsa',sg,loc)	Romssas
 ,
 =D:g
-==D:prop('Davvi-Norga',plc,sg,gen)	Davvi-Norgga
+==D:prop('Davvi-Norga',sg,gen)	Davvi-Norgga
 ==H:g
 ===D:adj('stuoris',sup,attr)	stuorimus
 ===H:n('gávpot',sg,loc)	gávpogis
@@ -2755,7 +2762,7 @@ fC:g
 <![CDATA[
 
 SOURCE: text
-SMEB226) Elizabeth, gal don juo leat čáppat.
+SMEB236) Elizabeth, gal don juo leat čáppat.
 A1
 STA:cl
 VOC:prop('Elizabeth',sg,nom)	Elizabeth
@@ -2768,7 +2775,7 @@ Cs:adj('čáppat',sg,nom)	čáppat
 .
 
 SOURCE: text
-SMEB227) Vuoi, doai leahppi nu čeahpit!
+SMEB237) Vuoi, doai leahppi nu čeahpit!
 A1
 STA:cl
 Ainterj:intj('vuoi')	Vuoi
@@ -2781,7 +2788,7 @@ Cs:g
 !
 
 SOURCE: text
-SMEB228) Gea, son boahtá dál juo!
+SMEB238) Gea, son boahtá dál juo!
 A1
 STA:cl
 Ainterj:intj('gea')	Gea
@@ -2801,7 +2808,7 @@ A:adv('juo')	juo
 <![CDATA[
 
 SOURCE: text
-SMEB229) Njiŋŋelasheasta lea dámmá ja varrisheasta lea ore.
+SMEB239) Njiŋŋelasheasta lea dámmá ja varrisheasta lea ore.
 A1
 STA:par
 CJT:cl
@@ -2816,7 +2823,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB230) Boahtá go eadni, vai ii go boađe?
+SMEB240) Boahtá go eadni, vai ii go boađe?
 A1
 QUE:par
 CJT:cl
@@ -2834,7 +2841,7 @@ CJT:cl
 ?
 
 SOURCE: text
-SMEB231) Munnos lea válmmas dáigi gáhkkogáris ja moai njuzzo das jorba gáhkuid.
+SMEB241) Munnos lea válmmas dáigi gáhkkogáris ja moai njuzzo das jorba gáhkuid.
 A1
 STA:par
 CJT:cl
@@ -2855,7 +2862,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB232) Vuolgge dál mu mielde, dus ii galgga leat heahti.
+SMEB242) Vuolgge dál mu mielde, dus ii galgga leat heahti.
 A1
 STA:par
 CJT:cl
@@ -2875,7 +2882,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB233) Nieidda eadni ii sihtan vuolgit, muhto nisu hásttii.
+SMEB243) Nieidda eadni ii sihtan vuolgit, muhto nisu hásttii.
 A1
 STA:par
 CJT:cl
@@ -2894,7 +2901,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB234) Čálii gal, muhto ii gártan sáddet.
+SMEB244) Čálii gal, muhto ii gártan sáddet.
 A1
 STA:par
 CJT:cl
@@ -2910,7 +2917,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB235) Elle lávllui ja Biret juoiggai.
+SMEB245) Elle lávllui ja Biret juoiggai.
 A1
 STA:par
 CJT:cl
@@ -2923,7 +2930,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB236) Mun lean náitalan, ja mu eamit bargá girdišiljus.
+SMEB246) Mun lean náitalan, ja mu eamit bargá girdišiljus.
 A1
 STA:par
 CJT:cl
@@ -2942,7 +2949,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB237) Mun orun gávpogis, muhto lean unna gilážis eret.
+SMEB247) Mun orun gávpogis, muhto lean unna gilážis eret.
 A1
 STA:par
 CJT:cl
@@ -2961,7 +2968,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB238) Son doalai seahkkanjálmmi rabas ja duosttui mánáid sehkkii.
+SMEB248) Son doalai seahkkanjálmmi rabas ja duosttui mánáid sehkkii.
 A1
 STA:par
 CJT:cl
@@ -2977,7 +2984,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB239) De bođii stállu, ja sus lei seahkka mielde.
+SMEB249) De bođii stállu, ja sus lei seahkka mielde.
 A1
 STA:par
 CJT:cl
@@ -2994,7 +3001,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB240) Mun lean doavttir ja barggan buohcceviesus.
+SMEB250) Mun lean doavttir ja barggan buohcceviesus.
 A1
 STA:par
 CJT:cl
@@ -3008,7 +3015,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB241) Son lea mu oabbá, ja lea 35 jagi boaris.
+SMEB251) Son lea mu oabbá, ja lea 35 jagi boaris.
 A1
 STA:par
 CJT:cl
@@ -3029,7 +3036,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB242) Soai vácciiga veahá gaskka, ja doppe lei stuora bovdna.
+SMEB252) Soai vácciiga veahá gaskka, ja doppe lei stuora bovdna.
 A1
 STA:par
 CJT:cl
@@ -3048,7 +3055,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB243) Dál lea boddu, ja bargit leat gáffádagas.
+SMEB253) Dál lea boddu, ja bargit leat gáffádagas.
 A1
 STA:par
 CJT:cl
@@ -3064,7 +3071,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB244) Dáppe lea kino, muhto kinobileahtta lea divrras.
+SMEB254) Dáppe lea kino, muhto kinobileahtta lea divrras.
 A1
 STA:par
 CJT:cl
@@ -3080,7 +3087,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB245) In mannan galmmas, muhto veallájin guhká.
+SMEB255) In mannan galmmas, muhto veallájin guhká.
 A1
 STA:par
 CJT:cl
@@ -3096,7 +3103,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB246) Áibbas dolin nissonat botne láiggi snálduin, dál sii botnet dorttiin.
+SMEB256) Áibbas dolin nissonat botne láiggi snálduin, dál sii botnet dorttiin.
 A1
 STA:par
 CJT:cl
@@ -3116,11 +3123,11 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB247) Gáivuonas eai leat stuora jeakkit, ja dan dihte eai leat ollu láttagat.
+SMEB257) Gáivuonas eai leat stuora jeakkit, ja dan dihte eai leat ollu láttagat.
 A1
 STA:par
 CJT:cl
-=A:prop('Gáivuotna',plc,sg,loc)	Gáivuonas
+=A:prop('Gáivuotna',sg,loc)	Gáivuonas
 =P:g
 ==D:v('ii',neg,ind,3pl)	eai
 ==H:v('leat',ind,pr,conneg)	leat
@@ -3140,7 +3147,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB248) Olmmáivuovddis ledje badjeolbmot, ja Čorrogiettis sis lei geasseorohat.
+SMEB258) Olmmáivuovddis ledje badjeolbmot, ja Čorrogiettis sis lei geasseorohat.
 A1
 STA:par
 CJT:cl
@@ -3157,7 +3164,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB249) Dárbbahat go dálkasa vai hálidat go doaktáriin sárdnut?
+SMEB259) Dárbbahat go dálkasa vai hálidat go doaktáriin sárdnut?
 A1
 QUE:par
 CJT:cl
@@ -3175,7 +3182,7 @@ CJT:cl
 ?
 
 SOURCE: text
-SMEB250) Bures dat manná, muhto mun lean heittohit oađđán.
+SMEB260) Bures dat manná, muhto mun lean heittohit oađđán.
 A1
 STA:par
 CJT:cl
@@ -3194,7 +3201,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB251) Bovnnas lei viessu, ja viesus lei nuorra nisu mánnáváivvis.
+SMEB261) Bovnnas lei viessu, ja viesus lei nuorra nisu mánnáváivvis.
 A1
 STA:par
 CJT:cl
@@ -3213,7 +3220,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB252) Bovnnas rahpasii uksa, ja soai manaiga sisa.
+SMEB262) Bovnnas rahpasii uksa, ja soai manaiga sisa.
 A1
 STA:par
 CJT:cl
@@ -3229,7 +3236,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB253) Spábba guoskkai ovtta Snøgga čiekčái ja manai mollii.
+SMEB263) Spábba guoskkai ovtta Snøgga čiekčái ja manai mollii.
 A1
 STA:par
 CJT:cl
@@ -3237,8 +3244,9 @@ CJT:cl
 =P:v('guoskat',ind,impf,3sg)	guoskkai
 =A:g
 ==D:Num('okta',sg,gen)	ovtta
-==D:prop('Snøgg',Org,sg,gen)	Snøgga
-==H:n('čiekči',sg,ill)	čiekčái
+==H:g
+===D:prop('Snøgg',sg,gen)	Snøgga
+===H:n('čiekči',sg,ill)	čiekčái
 CO:conj-c('ja')	ja
 CJT:cl
 =P:v('mannat',ind,impf,3sg)	manai
@@ -3246,7 +3254,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB254) Kulihkka lea hui dábálaš, ja heasttas sáhttá maid leat nuorvu.
+SMEB264) Kulihkka lea hui dábálaš, ja heasttas sáhttá maid leat nuorvu.
 A1
 STA:par
 CJT:cl
@@ -3268,24 +3276,24 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB255) Mun orun Romssas, muhto lean Vuošvákkis eret.
+SMEB265) Mun orun Romssas, muhto lean Vuošvákkis eret.
 A1
 STA:par
 CJT:cl
 =S:pron('mun',<pers>,1sg,nom)	Mun
 =P:v('orrut',ind,pr,1sg)	orun
-=A:prop('Romsa',plc,sg,loc)	Romssas
+=A:prop('Romsa',sg,loc)	Romssas
 ,
 CO:conj-c('muhto')	muhto
 CJT:cl
 =P:v('leat',ind,pr,1sg)	lean
 =A:g
-==D:prop('Vuošvággi',plc,sg,loc)	Vuošvákkis
+==D:prop('Vuošvággi',sg,loc)	Vuošvákkis
 ==H:adv('eret')	eret
 .
 
 SOURCE: text
-SMEB256) Ollu turisttat leat boahtán Kárášjohkii, ja sisge soapmásat servet heargevuodjimii.
+SMEB266) Ollu turisttat leat boahtán Kárášjohkii, ja sisge soapmásat servet heargevuodjimii.
 A1
 STA:par
 CJT:cl
@@ -3295,7 +3303,7 @@ CJT:cl
 =P:g
 ==D:v('leat',ind,pr,3pl)	leat
 ==H:v('boahtit',pcp2)	boahtán
-=A:prop('Kárášjohka',plc,sg,ill)	Kárášjohkii
+=A:prop('Kárášjohka',sg,ill)	Kárášjohkii
 ,
 CO:conj-c('ja')	ja
 CJT:cl
@@ -3306,7 +3314,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB257) Gal leat ollu muorttut, muhto moai darveheimme maiddái moadde dorski.
+SMEB267) Gal leat ollu muorttut, muhto moai darveheimme maiddái moadde dorski.
 A1
 STA:par
 CJT:cl
@@ -3327,7 +3335,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB258) Mii suhkat dohko ja bivdigoahtit sáiddiid.
+SMEB268) Mii suhkat dohko ja bivdigoahtit sáiddiid.
 A1
 STA:par
 CJT:cl
@@ -3341,7 +3349,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB259) Mun hálidan geahččat Evita, muhto in oaččo bileahta.
+SMEB269) Mun hálidan geahččat Evita, muhto in oaččo bileahta.
 A1
 STA:par
 CJT:cl
@@ -3360,7 +3368,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB260) Heasta dárbbaša ollu suinniid, ja dasa ferte maid oastit heastabiergasiid.
+SMEB270) Heasta dárbbaša ollu suinniid, ja dasa ferte maid oastit heastabiergasiid.
 A1
 STA:par
 CJT:cl
@@ -3382,7 +3390,7 @@ CJT:cl
 .
 
 SOURCE: text
-SMEB261) Mu isidis lea rukses persovdnabiila, ja son vuodjá bargui juohke iđida.
+SMEB271) Mu isidis lea rukses persovdnabiila, ja son vuodjá bargui juohke iđida.
 A1
 STA:par
 CJT:cl
@@ -3413,7 +3421,7 @@ CJT:cl
 <![CDATA[
 
 SOURCE: text
-SMEB262) Ollugat lávejit jearahit, velgo váldet oahpahalliid.
+SMEB272) Ollugat lávejit jearahit, velgo váldet oahpahalliid.
 A1
 STA:cl
 S:pron('ollugat',<idef>,pl,nom)	Ollugat
@@ -3428,7 +3436,7 @@ Od:cl
 .
 
 SOURCE: text
-SMEB263) Go olbmot jaskkodit, de sáhpánat álget jurdit.
+SMEB273) Go olbmot jaskkodit, de sáhpánat álget jurdit.
 A1
 STA:cl
 A:cl
@@ -3444,7 +3452,7 @@ P:g
 .
 
 SOURCE: text
-SMEB264) Son muitalii ahte son boahtá ihttin.
+SMEB274) Son muitalii ahte son boahtá ihttin.
 A1
 STA:cl
 S:pron('son',<pers>,3sg,nom)	Son
@@ -3457,7 +3465,7 @@ Od:cl
 .
 
 SOURCE: text
-SMEB265) Mun oainnán ahte dii lehpet boahtán.
+SMEB275) Mun oainnán ahte dii lehpet boahtán.
 A1
 STA:cl
 S:pron('mun',<pers>,1sg,nom)	Mun
@@ -3471,7 +3479,7 @@ Od:cl
 .
 
 SOURCE: text
-SMEB266) Olbmot mat dohko bohtet, eai leat Ruoŧas eret. 
+SMEB276) Olbmot mat dohko bohtet, eai leat Ruoŧas eret. 
 A1
 STA:cl
 S:g
@@ -3485,12 +3493,12 @@ P:g
 =D:v('ii',neg,ind,3pl)	eai
 =H:v('leat',ind,pr,conneg)	leat
 A:g
-=D:prop('Ruoŧŧa',plc,sg,loc)	Ruoŧas
+=D:prop('Ruoŧŧa',sg,loc)	Ruoŧas
 =H:adv('eret')	eret
 .
 	
 SOURCE: text
-SMEB267) Moai bohte go gerge.
+SMEB277) Moai bohte go gerge.
 A1
 STA:cl
 S:pron('mun',<pers>,1du,nom)	Moai
@@ -3501,7 +3509,7 @@ A:cl
 .
 
 SOURCE: text
-SMEB268) Viellja veahkeha du, go astá.
+SMEB278) Viellja veahkeha du, go astá.
 A1
 STA:cl
 S:n('viellja',sg,nom)	Viellja
@@ -3514,7 +3522,7 @@ A:cl
 .
 
 SOURCE: text
-SMEB269) Go mii leat goikadan gáhkuid, de álgit málestit.
+SMEB279) Go mii leat goikadan gáhkuid, de álgit málestit.
 A1
 STA:cl
 A:cl
@@ -3531,7 +3539,7 @@ Od:v('málestit',inf)	málestit
 .
 
 SOURCE: text
-SMEB270) Go biergu lea giksan, de bidjat buđehiid mállásii.
+SMEB280) Go biergu lea giksan, de bidjat buđehiid mállásii.
 A1
 STA:cl
 A:cl
@@ -3548,7 +3556,7 @@ A:n('mális',sg,ill)	mállásii
 .
 
 SOURCE: text
-SMEB271) Vákkiin leat ollu váramat, jus lea buorre geassi.
+SMEB281) Vákkiin leat ollu váramat, jus lea buorre geassi.
 A1
 STA:cl
 A:n('vággi',pl,loc)	Vákkiin
@@ -3566,7 +3574,7 @@ A:cl
 .
 
 SOURCE: text
-SMEB272) Ránut liggejedje bures reagas jus eai lean roavggut.
+SMEB282) Ránut liggejedje bures reagas jus eai lean roavggut.
 A1
 STA:cl
 S:n('rátnu',pl,nom)	Ránut
@@ -3582,7 +3590,7 @@ A:cl
 .
 
 SOURCE: text
-SMEB273) Dat, guhte vuoitá, oažžu silbabastte.
+SMEB283) Dat, guhte vuoitá, oažžu silbabastte.
 A1
 STA:cl
 S:g
@@ -3597,7 +3605,7 @@ Od:n('silbabaste',sg,acc)	silbabastte
 .
 
 SOURCE: text
-SMEB274) Sii eai liiko, go mii hárdit sin.
+SMEB284) Sii eai liiko, go mii hárdit sin.
 A1
 STA:cl
 S:pron('son',<pers>,3pl,nom)	Sii
@@ -3613,7 +3621,7 @@ A:cl
 .
 
 SOURCE: text
-SMEB275) Muital eadnásat, gean lusa don manat!
+SMEB285) Muital eadnásat, gean lusa don manat!
 A1
 COM:cl
 P:v('muitalit',Imp,2SG)	Muital
@@ -3628,7 +3636,7 @@ Od:g
 !
 
 SOURCE: text
-SMEB276) Oahpaheaddji dadjá ahte mii galgat dan bargat ruovttus.
+SMEB286) Oahpaheaddji dadjá ahte mii galgat dan bargat ruovttus.
 A1
 STA:cl
 S:n('oahpaheaddji',sg,nom)	Oahpaheaddji
@@ -3645,7 +3653,7 @@ Od:cl
 .
 
 SOURCE: text
-SMEB277) Son čájeha midjiide mo galgat guliid čoallut.
+SMEB287) Son čájeha midjiide mo galgat guliid čoallut.
 A1
 STA:cl
 S:pron('son',<pers>,3sg,nom)	Son
@@ -3661,7 +3669,7 @@ Od:cl
 .
 
 SOURCE: text
-SMEB278) Mii leat sullii diimmu fávllis ovdalgo suhkat gáddái.
+SMEB288) Mii leat sullii diimmu fávllis ovdalgo suhkat gáddái.
 A1
 STA:cl
 S:pron('mun',<pers>,1pl,nom)	Mii
@@ -3676,7 +3684,7 @@ A:cl
 .
 
 SOURCE: text
-SMEB279) Muiti ahte stuora fámut buktet stuora ovddasvástádusa.
+SMEB289) Muiti ahte stuora fámut buktet stuora ovddasvástádusa.
 A1
 STA:cl
 P:v('muitit',Imp,2DU)	Muiti
@@ -3692,7 +3700,7 @@ Od:cl
 .
 
 SOURCE: text
-SMEB280) Áhčči vulggii, ovdalgo mun bohten.
+SMEB290) Áhčči vulggii, ovdalgo mun bohten.
 A1
 STA:cl
 S:n('áhčči',sg,nom)	Áhčči
@@ -3705,7 +3713,7 @@ A:cl
 .
 
 SOURCE: text
-SMEB281) Soagŋu-girji, mas leat noveallat, bođii jagi 1971.
+SMEB291) Soagŋu-girji, mas leat noveallat, bođii jagi 1971.
 A1
 STA:cl
 S:g
@@ -3723,7 +3731,7 @@ A:g
 .
 
 SOURCE: text
-SMEB282) Olmmoš gean lusa stállu lea vuolgán, ii oaččo šat ráfi.
+SMEB292) Olmmoš gean lusa stállu lea vuolgán, ii oaččo šat ráfi.
 A1
 STA:cl
 S:g
@@ -3745,7 +3753,7 @@ Od:n('ráfi',sg,acc)	ráfi
 .
 
 SOURCE: text
-SMEB283) Go son boahtá goađi lahka, de son huiká eammái.
+SMEB293) Go son boahtá goađi lahka, de son huiká eammái.
 A1
 STA:cl
 A:cl
@@ -3763,7 +3771,7 @@ A:n('eammi',sg,ill)	eammái
 .
 
 SOURCE: text
-SMEB284) Go olmmoš lea goddán stálu, de son galgá hávdádit su.
+SMEB294) Go olmmoš lea goddán stálu, de son galgá hávdádit su.
 A1
 STA:cl
 A:cl
@@ -3783,7 +3791,7 @@ Od:pron('son',<pers>,3sg,acc)	su
 .
 
 SOURCE: text
-SMEB285) Jus stálu beana njoallu stálu háviid, de hávit savvojit.
+SMEB295) Jus stálu beana njoallu stálu háviid, de hávit savvojit.
 A1
 STA:cl
 A:cl
@@ -3802,7 +3810,7 @@ P:v('savvot',ind,pr,3pl)	savvojit
 .
 
 SOURCE: text
-SMEB286) Go stállu boahtá, de njurgugoahtá.
+SMEB296) Go stállu boahtá, de njurgugoahtá.
 A1
 STA:cl
 A:cl
@@ -3815,7 +3823,7 @@ P:v('njurgugoahtit',inf)	njurgugoahtá
 .
 
 SOURCE: text
-SMEB287) Jus in leat váiban, de manan nohkkat easkka gaskaija.
+SMEB297) Jus in leat váiban, de manan nohkkat easkka gaskaija.
 A1
 STA:cl
 A:cl
@@ -3833,7 +3841,7 @@ A:n('gaskaidja',sg,gen)	gaskaija
 .
 
 SOURCE: text
-SMEB288) Dii geargabehtet justa ovdal go Sámi ođđasat álget.
+SMEB298) Dii geargabehtet justa ovdal go Sámi ođđasat álget.
 A1
 STA:cl
 S:pron('mun',<pers>,2pl,nom)	Dii
@@ -3842,13 +3850,13 @@ A:adv('justa')	justa
 A:cl
 =SUB:conj-s('ovdal go')	ovdal go
 =S:g
-==D:prop('Sápmi',plc,sg,gen)	Sámi
+==D:prop('Sápmi',sg,gen)	Sámi
 ==H:n('ođas',pl,nom)	ođđasat
 =P:v('álgit',ind,pr,3pl)	álget
 .
 
 SOURCE: text
-SMEB289) Láiki bargagoahtá go beaivváš luoitáda.
+SMEB299) Láiki bargagoahtá go beaivváš luoitáda.
 A1
 STA:cl
 S:adj('láiki',sg,nom)	Láiki
@@ -3860,7 +3868,7 @@ A:cl
 .
 
 SOURCE: text
-SMEB290) Buorre lei go bohtet.
+SMEB300) Buorre lei go bohtet.
 A1
 STA:cl
 Cs:adj('buorre',sg,nom)	Buorre
@@ -3871,7 +3879,7 @@ S:cl
 .
 
 SOURCE: text
-SMEB291) Mánná lei balus go galggai skuvlii.
+SMEB301) Mánná lei balus go galggai skuvlii.
 A1
 STA:cl
 S:n('mánná',sg,nom)	Mánná
