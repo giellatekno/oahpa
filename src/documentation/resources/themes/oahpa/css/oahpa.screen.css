@@ -50,11 +50,21 @@ h5     { font-size : 0.9em; margin: 14px 0px 0px 0px; padding: 0px; font-weight 
 }
 
 #content {
-    padding: 20px 20px 20px 220px;
-    margin: 0;
+    padding: 20px 20px 20px 20px;
+    margin-left: 190px;
     font-family : Verdana, Helvetica, sans-serif;
     font-size: 0.95em;
 /* 	border-style: solid; */
+    border-right: groove;
+    border-left: groove;
+	border-top: groove;
+}
+
+#content a:link { color: #000000;}
+#content a:visited { color: #000000;}
+#content a:hover {
+        background-color: #4A6D8C;
+        color: #000000;
 }
 
 #content ul {
@@ -64,6 +74,7 @@ h5     { font-size : 0.9em; margin: 14px 0px 0px 0px; padding: 0px; font-weight 
 #content li {
     padding: 0 5px;
 }
+
 #content li, #content th, #content td {
   line-height: 110%;  
   margin-top: .1em;
@@ -149,7 +160,7 @@ table caption {
 /* branding-logo Template */
 #header .logo {
     padding: 7px 0px 10px 10px;
-    float: left;
+    float: right;
     text-align: left;
 }
 
@@ -220,9 +231,12 @@ table caption {
 /*     background-image: url(../themes/images/roundcorner-t-r-5-bg294563-strokeB5C7E7-fgB5C7E7.png); */
     background-repeat: no-repeat;
     background-position: top right;
-/*     background-color: #B5C7E7; */
     margin: 0 3px 0 0;
     padding: 0;
+	border-right: groove;
+	border-bottom: groove;
+	border-color: lightgray;
+	background-color: lightgray;
 }
 
 #nav-main li a {
@@ -230,7 +244,6 @@ table caption {
     display: block;
     font-family: verdana, arial, sans-serif;
     text-decoration: none;
-    color: black;
     white-space: nowrap;
 /*     background-image: url(../themes/images/roundcorner-t-l-5-bg294563-strokeB5C7E7-fgB5C7E7.png); */
     background-repeat: no-repeat;
@@ -249,23 +262,26 @@ table caption {
 /* End IE5-Mac hack */
 
 #nav-main .current {
-/*     background-color: #4A6D8C; */
+    background-color: gray;
 /*     background-image: url(../themes/images/roundcorner-t-r-5-bg294563-stroke4A6D8C-fg4A6D8C.png); */
     background-repeat: no-repeat;
     background-position: top right;
+	border-right: groove;
+	border-bottom: groove;
+	border-color: gray;
 }
+
 #nav-main .current a {
     font-weight: bold;
     padding-bottom: 5px;
-    color: #000000;
 /*     background-image: url(../themes/images/roundcorner-t-l-5-bg294563-stroke4A6D8C-fg4A6D8C.png); */
     background-repeat: no-repeat;
     background-position: top left;
 }
 
-#nav-main .current a:link {  color: #000000;  }
+/*#nav-main .current a:link {  color: #000000;  }
 #nav-main .current a:visited { color: #000000; }
-#nav-main .current a:hover { color: #000000; }
+#nav-main .current a:hover { color: #000000; }*/
 
 #publishedStrip {
     position: relative;
@@ -305,7 +321,7 @@ table caption {
 /**
 * Round corner
 */
-#roundtop {
+/*#roundtop {
     background-image: url(../themes/images/roundcorner-t-r-15-bgFFFFFF-stroke4A6D8C-fg4A6D8C.png);
     background-repeat: no-repeat;
     background-position: top right;
@@ -347,7 +363,7 @@ img.cornersmall {
    height: 5px;
    border: none;
    display: block !important;
-}
+}*/
 
 /* Navigation - Left Side Vertical Navigation */
 
@@ -358,8 +374,8 @@ img.cornersmall {
 }
 
 #leftbar a {  font-weight: normal;}
-#leftbar a:link { color: #000000; }
-#leftbar a:visited { color: #000000; }
+#leftbar a:link { color: blue; }
+#leftbar a:visited { color: blue; }
 #leftbar a:active { color: #000000; }
 #leftbar a:hover { color: red; }
 
@@ -378,7 +394,8 @@ img.cornersmall {
     font-size: 0.9em;
     color: #000000;
 /*     border-style: groove; */
-    border-right: groove;
+/*     border-right: groove; */
+	border-top: groove;
 }
 
 
@@ -428,7 +445,7 @@ img.cornersmall {
 #nav-section .selectedmenuitemgroup{
         margin: 0px 0px 6px 8px;
         padding: 0px;
-        font-weight : bold; }
+        /*font-weight : bold;*/ }
 
 #nav-section .menuitem {
         padding: 0px 0px 2px 12px;
@@ -440,8 +457,9 @@ img.cornersmall {
 }
 
 #nav-section .menupage {
-        margin: 5px 0px 5px 10px;
-        padding: 0px 3px 0px 12px;
+/*         margin: 5px 0px 5px 10px; */
+/*         padding: 0px 3px 0px 12px; */
+	margin-left: 15px;
         background-image: url('../themes/images/current.gif');
         background-repeat: no-repeat;
         background-position: top left;
@@ -477,6 +495,7 @@ img.cornersmall {
         border-width: 0px;
         font-size: 0.9em;
 }
+
 #nav-section .menupageitem a:link { color: #000000;}
 #nav-section .menupageitem a:visited { color: #000000;}
 #nav-section .menupageitem a:hover {

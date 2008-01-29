@@ -176,28 +176,7 @@ p.quote {
               <hr/>
             </forrest:property>
     </forrest:contract>-->
-          <forrest:contract name="content-motd-page">
-            <forrest:property name="content-motd-page">
-              <motd>
-                <!--FIXME: motd-page location needs removing
-These options are not effective anymore in dispatcher
- Need to be removed in Structurer and contracts usage/decription-->
-                <!--<motd-option pattern="index.html">
-                  <motd-title>sample</motd-title>
-                  <motd-page location="page">
-                    This is an example of a Message of the day (MOTD).
-                  </motd-page>
-                  <motd-page-url>index.html</motd-page-url>
-	  </motd-option>-->
-                <motd-option pattern="samples/faq.html">
-                  <motd-title></motd-title>
-                  <motd-page location="both"> How to enable this MOTD is on 
-                    this page. </motd-page>
-                  <motd-page-url>#motd</motd-page-url>
-                </motd-option>
-              </motd>
-            </forrest:property>
-          </forrest:contract>
+          
 <!--           <forrest:contract name="nav-section-round-bottom"/> -->
         </forrest:hook>
         <forrest:hook name="export-link">
