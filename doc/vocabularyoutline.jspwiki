@@ -3,14 +3,17 @@
 We would like to make a set of vocabulary games. The idea is to divide the vocabulary according to part of speech, adjective, verb, noun, adverb. 
 
 
-!!Outlike
+!!Outline
 
 The vocabulary lists may be found as follows:
 
 # Find the 1000 most common Norwegian nouns and verbs, and the 500 most common adjectives and adverbs. 
-# Translate them by using the {{nobsme.fst}} tool.
+# Translate them by using the {{ismenob.fst}} tool (words/dicts/smenob/ismenob.fst(.
+## Problem: The ismenob.fst is not that good, it is just the inverse of the smenob.fst. A better tool will be achieved by converting the underlying xml document from smenob.xml to ismenob.xml, and then make a {{nobsme.fst}} from that.
+## Eventually we would like to take a Sámi frequency list as starting point, and translate via smenob.fst.
 # check whether important Sámi words are missing, and add them
 # Divide the word pairs into three groups according to frequency.
+# In order to be able to reverse the game, we actually need two lists, one sme-nob and one nob-sme, in order to limit variation to one-many, and not many-many.
 
 The target program should have the following characteristics:
 
@@ -25,6 +28,8 @@ In addition to the frequency-based games we should have games ordered after sema
 
 !!Discussion
 
-What do you think?
+* What do you think?
+* We need a spec for the format of the lists. While waiting, smeTABnobCR should be ok.
+
 
 
