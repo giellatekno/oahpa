@@ -1,0 +1,117 @@
+!!!Page: QA drill (parallell page)
+
+Inbetween the "natural" dialogues, mimicking real life dialogues, and the pure grammar training session, inquiring paradigm forms, we may make a question-answer drill. The drill has two question types: Yes/no questions and wh-questions.
+
+There are two motives for making this game type. First, our tailored dialogues run the risk of getting quickly consumed. With a QA drill of the type sketched here we may make an indefinite number of questions. Second, The students need to automatise the question-answer routine. 
+
+!!Yes/no-questions
+
+The intention is to drill verb conjugation. So here we will use many verbs, of all inflectional classes.
+
+We need a grammatical verb lexicon, where the verbs are ordered according to sentence frame:
+
+* Transitive: {{SUBJ TV OBJ (ADVL)}}
+* Intransitive: {{SUBJ IV OBJ (ADVL)}}
+
+Here, {{SUBJ, TV, OBJ, ADVL, IV}} are variables representing sets of words or phrases.
+
+We then make matrix questions of the form (where {{LEAT}} is the copula verb, {{QPN}} is a random person-number value for the question and {{APN}} is a random person-number value for the answer.
+
+{{{
+   TV-QPN go (SUBJ) OBJ (ADVL) 
+   LEAT-QPN go (SUBJ) TV-PRTPTC OBJ (ADVL)
+   IV-QPN go (SUBJ) (ADVL)
+   LEAT-QPN go (SUBJ) IV-PRTPTC (ADVL)
+}}}
+
+In the question we may specify intended answer, say with a "+" or "-". The answer is then expected to be either of the minimal form, repeating only the verb,
+
+{{{
+   TV-APN 
+   LEAT-APN (TV-PRTPTC)
+   IV-APN
+   LEAT-APN (IV-PRTPTC)
+}}}
+
+or in the maximal form, with a fuller sentence
+
+{{{
+   SUBJ TV-APN OBJ (ADVL) 
+   SUBJ LEAT-APN TV-PRTPTC OBJ (ADVL)
+   SUBJ IV-APN (ADVL)
+   SUBJ LEAT-APN IV-PRTPTC (ADVL)
+}}}
+
+The QPN and APN are related to each other in the following, obvious way:
+
+|| QPN || APN || QPN || APN || QPN || APN || QPNI || APNI
+| Sg1  |  Sg2 |  Du1 |  Du2 |  Pl1 |  Pl2 |  Du1  |  Du1
+| Sg2  |  Sg1 |  Du2 |  Du1 |  Pl2 |  Pl1 |  Pl1  |  Pl1
+| Sg3  |  Sg3 |  Du3 |  Du3 |  Pl3 |  Pl3 |
+
+Thus, when {{QPN}} is Du2, then {{APN}} should be Du1, etc.
+QPNI and APNI are for inclusive forms - the user belongs to the "we".
+
+We may probably not pair any {{TV, OBJ}}. Rather, we could group the objects in semantically defined sets ({{DRINK, FOOD, COMMODITY, ...}}, and have each TV subcategorise for one or more of the sets (a verb like ''to see'' could e.g. subcategorise for all). The best solution would perhaps be to use the same set system as in sme-dis.rle, but smaller sets.
+
+To some of the verbs belongs a noun in an oblique case. e.g. Loc or Ill.
+
+Also pronouns will should be included to the sets.
+
+The sets may be populated as follows:
+{{{
+   SUBJ = a set of surnames and nouns denoting humans.
+   OBJ = semantically defined nouns
+   ADVL = a set of plc propernouns in locative, a set of time adverbials
+   TV = a set of transitive verbs
+   IV = a set of intransitive verbs
+   LOC-V = a set of verbs, to which belong noun in locative
+   ILL-V = a set of verbs, to which belong noun in illative
+   COM-V = a set of verbs, to which belong noun in commitative
+   ESS-V = a set of verbs, to which belong noun in essive
+}}}
+
+
+
+!!Correction mechanism
+
+The answer may fail to match the expected answer in various ways. For a yes/no-question, the machine will always know the correct answer, and may present it to the user.
+
+!!wh-questions
+
+The intention is to drill the use of cases. So here we will use many nouns, of all inflectional classes. We will also use verbs to which belongs a noun in an oblique case.
+
+We may reuse the sets defined above, but instead generate questions like
+
+{{{
+   Maid (SUBJ) TV-QPN (ADVL) 
+   Maid (SUBJ) LEAT-APN TV-PRTPTC (ADVL)
+   Goas IV-QPN (ADVL)
+   Goas LEAT-QPN IV-PRTPTC (ADVL)
+   Gos IV-QPN (ADVL)
+   Gos LEAT-QPN IV-PRTPTC (ADVL)
+   Masa LEAT-QPN TV-PRTPTC OBJ
+   Gosa LEAT-QPN TV-PRTPTC OBJ
+   Mainna LEAT-QPN IV-PRTPTC OBJ
+   Geainna LEAT-QPN IV-PRTPTC OBJ
+   Geaidda LEAT-QPN TV-PRTPTC OBJ
+   Geas LEAT-Q3N SUBJ
+   Geain LEAT-Q3N SUBJ
+   Mas LEAT-Q3N SUBJ
+}}}
+In this case, we may accept any noun in the appropriate case. This will be especially useful for training verbs with oblique nouns.
+
+{{{
+   SUBJ TV-APN X-ACC (ADVL) 
+   SUBJ LEAT-APN TV-PRTPTC X-ACC (ADVL)
+   X-NOM IV-APN (ADVL)
+   X-NOM LEAT-APN IV-PRTPTC (ADVL)
+}}}
+
+
+!!Correction mechanism
+
+Here, the correct answer is an open set. The machine should correct the verb, and comment if it is not correct. If the subject or object (X-NOM, X-ACC) are unknown, or in the wrong case (say, Nom for expected Acc), the machine could suggest the correct case.
+
+
+
