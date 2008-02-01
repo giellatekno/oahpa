@@ -7,7 +7,7 @@
 
 <icon>/icons/5svans.gif</icon>
 
-<title>PRE-ANALYZED SÁMI SENTENCES - LEVEL 1</title>
+<title>ANALYSEREJUVVON DAVVISAMI CEALKAGAT - DÁSSI 1 --- PRE-ANALYZED SÁMI SENTENCES - LEVEL 1</title>
 
 <authors></authors>
 
@@ -80,7 +80,7 @@ SMEA7) Boađát go dál?
 A1
 QUE:cl
 P:v('boahtit',ind,pr,2SG)	Boađát
-Vpcle:part('go')	go
+PART:part('go')	go
 A:adv('dál')	dál
 ?
 
@@ -97,7 +97,7 @@ SMEA9) Balat go beatnagis?
 A1
 QUE:cl
 P:v('ballat',ind,pr,2SG)	Balat
-Vpcle:part('go')	go
+PART:part('go')	go
 A:n('beana',sg,loc)	beatnagis
 ?
 
@@ -106,7 +106,7 @@ SMEA10) Vuolgibeahtti go girdiin?
 A1
 QUE:cl
 P:v('vuolgit',ind,pr,2DU)	Vuolgibeahtti
-Vpcle:part('go')	go
+PART:part('go')	go
 A:n('girdi',sg,com)	girdiin
 ?
 
@@ -210,7 +210,7 @@ SMEA23) Dovddat go su?
 A1
 QUE:cl
 P:v('dovdat',ind,pr,2SG)	Dovddat
-Vpcle:part('go')	go
+PART:part('go')	go
 Od:pron('son',<pers>,3sg,acc)	su
 ?
 
@@ -382,7 +382,7 @@ SMEA41) Lea go dis ruhta?
 A1
 QUE:cl
 P:v('leat',ind,pr,3sg)	Lea
-Vpcle:part('go')	go
+PART:part('go')	go
 HAB:pron('don',<pers>,2pl,loc)	dis
 fC:n('ruhta',sg,nom)	ruhta
 ?
@@ -412,7 +412,7 @@ SMEA45) Ollu go dus lea ruhta?
 A1
 QUE:cl
 A:adv('ollu')	Ollu
-Vpcle:part('go')        go
+PART:part('go')        go
 HAB:pron('don',<pers>,2sg,loc)	dus
 P:v('leat',ind,pr,3sg)	lea
 fC:n('ruhta',sg,nom)	ruhta
@@ -975,7 +975,7 @@ A1
 QUE:cl
 P:g-
 =D:v('ii',neg,ind,2sg)	It
-Vpcle:part('go')	go
+PART:part('go')	go
 -P:g
 =D:v('sáhttit',ind,pr,conneg)	sáhte
 =H:v('muitalit',inf)	muitalit
@@ -1024,7 +1024,7 @@ SMEA106) Dovdet go William Turnera?
 A1
 QUE:cl
 P:v('dovdat',ind,pr,3PL)	Dovdet
-Vpcle:part('go')	go
+PART:part('go')	go
 Od:g
 =D:prop('William',sg,attr)	William
 =H:prop('Turner',Sur,sg,acc)	Turnera
@@ -1302,7 +1302,7 @@ SMEA130) Boahtibehtet go skuvllas dál?
 A1
 QUE:cl
 P:v('boahtit',ind,pr,2PL)	Boahtibehtet
-Vpcle:part('go')	go
+PART:part('go')	go
 A:n('skuvla',sg,loc)	skuvllas
 A:adv('dál')	dál
 ?
@@ -1537,7 +1537,7 @@ SOURCE: text
 SMEA152) Varisheasta lea ore.
 A1
 STA:cl
-S:n('Varisheasta',sg,nom)	Varisheasta
+S:n('varisheasta',sg,nom)	Varisheasta
 P:v('leat',ind,pr,3sg)	lea
 Cs:n('ore',sg,nom)	ore
 .
@@ -1568,7 +1568,7 @@ Cs:n('vársá',sg,nom)	vársá
 ]]>
 </section>
 
-<section name="Paratagmat - Paratagms">
+<section name="Paratávssat - Paratagms">
 
 <![CDATA[
 
@@ -1697,7 +1697,7 @@ SMEA164) Sihtabehtet go mielkki ja sohkkara?
 A1
 QUE:cl
 P:v('sihtat',ind,pr,2PL)	Sihtabehtet
-Vpcle:part('go')	go
+PART:part('go')	go
 Od:par
 =CJT:n('mielki',sg,acc)	mielkki
 =CO:conj-c('ja')	ja
@@ -1808,12 +1808,13 @@ A:adv('gitta')	gitta
 .
 
 SOURCE: text
-SMEA172) Orun stuora vilges viesus.
+SMEA172) Mun orun stuorra vilges viesus.
 A1
 STA:cl
-P:v('orrut',ind,pr,1SG)	Orun
+S:pron('mun',<pers>,1sg,nom)	Mun
+P:v('orrut',ind,pr,1SG)	orun
 A:g
-=D:adj('stuoris',attr)	stuora
+=D:adj('stuoris',attr)	stuorra
 =D:adj('vielgat',attr)	vilges
 =H:n('viessu',sg,loc)	viesus
 .
@@ -2180,7 +2181,7 @@ SMEA202) Lea go nieida vai bárdni?
 A1
 QUE:cl
 P:v('leat',ind,pr,3sg)	Lea
-Vpcle:part('go')	go
+PART:part('go')	go
 Cs:par
 =CJT:n('nieida',sg,nom)	nieida
 =CO:conj-c('vai')	vai
