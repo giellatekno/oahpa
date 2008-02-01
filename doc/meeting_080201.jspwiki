@@ -1,0 +1,158 @@
+!!!Meeting notes, Pedagogical programs, 080201
+
+Present: Lene, Saara, Trond.
+
+Goal: Prepare for the forthcoming meeting in Tromsø.
+
+
+!!The games, overall look
+
+Look at the different games. Requirements for each of these:
+
+# An idea/vision of what we want
+# A rough spec for the ling resources in order to prepare them (file format, etc)
+# an alpha version
+# work on beta
+
+The different games fulfil this to a variying degree. For the dialogue game the points 1-3 are fulfilled, or at least partly. Missing is alpha for the other side of the dialogue and, btw, the perl script for the dialogue is broken.
+
+We should have a bug database for this. See below for a sketch of the component structure.
+
+The visl games are already up and running, now also with documentation.
+
+For the other games 1 and to a certain extent also 2 are found in the respective outline documents (links from the TechDoc main page). The goal now is to complement 2, and to provide linguistic data in order to make alpha versions of these as well.
+
+The point 2 is missing the question generation format, which we will consider in the Tromsø meeting. It will be very similar to that of qa-drill, we will use the same xml for both.
+
+
+
+!!Discussion on (common) lexicon format for the games
+
+* how to make sets (what kind of structure so they can be used in all games/drills/dialogues)
+* sets for food, clothes, moving verbs.... which belong to the basic ped.vocabulary
+* big sets with all kind of words for the same... to use in the dialogues when there is no limit (meny, picture and so on)
+
+Saara: We could have some kind of structured format, where each word has a type and a subtype etc.
+I think if you want to start making sets now, you could just use the simple format we have had for
+a specific tasks, and then when we know the bigger picture, I can convert them to xml, where the same
+word may belong to several categories etc. 
+
+Lene: Verbs have to be marked with which case they "take". And nouns should be in sets according to what verb suits for questions and answers
+
+Trond: Lene, do you consider common sets for qa and vocabulary? That could be possible, but they need different things:
+
+* morph: basic lexemes linked to (i)sme.fst - tagged for stem type and final vowel, to ensure balance
+* qa:    Valency and semantic classification
+* voca:  Translation to Norw (Finn?! English?), and ordered partly acc to frequency, and party acc to semantic sets.
+       
+Trond: I see two arguments for common lexical resources for this:
+
+# one lexicon is always better than two
+# the semantic sets needed for vocabulary and qa may be similar / even the same, and can also be useful for dilogues (for giving comments to the answers.. - or we can at least try do it..)
+
+I see some arguments against:
+
+# It will result in a more complex lexicon format (but not so hard we cannot manage)
+# I imagined the voc training would need _two_ lists, one for sme-nob and ond for nob-sme, since we would like only one-to-many-relations, not many-to-many, in the voc drill: The machine asks ONE word, it accepts SEVERAL, but (when you give in) it preferably gives only ONE as correct (or all?)
+
+Saara: I think we should keep the dictionary separate. We could also have two files for semantic and syntactic information, which are combined according to lemma or some index, but it could be the same file as well. xml-file. A good intermediat format can be e.g.
+
+{{{
+smeTABnob
+smeTABsemcategory
+or whatever.
+}}}
+
+I think we could discuss in the meeting about moving to xml, but if you do it that way, it is easy to process it when we agree about the structure. I think the exact xml-structure needs some planning.
+
+Trond: So, at least one way for Lene and me to prepare for the week would be to build a reservoir of ling 
+resources with which we may arrive at a structure, so that we have things to test out.
+
+!!List of things to do, ling-wise:
+
+!dialogues
+
+Trond: I would suggest we make some more dialogues, perhaps different types, to test out ideas on turntaking, etc.
+
+Saara:  yes, to find out what we need from the other resources.
+
+Lene: OK- I´ll do it. I have some ideas... 
+
+
+!vocabulary training
+
+* T starts picking  words after frequency: the basic 500, next 500, etc., translates and handles over some rouugh output to Lene for evaluation.
+* L collects words after sem fields (partly the same as the ones used in qa) and translates
+* S writes a script that picks words randomly and generates the pattern
+
+
+!qa-drill
+
+Make reasonable-sized sets of verbs subcategorising for different cases decide upon semantic fields, and populate them. I take it the sme-dis.rle way of writing such sets is ok, seen from Saara's perspective (in that case we may switch the sets to and fro).
+
+{{SETNAME = "verb1" "verb2" ; }} is one possibility. Also the korpustags.txt format is ok, of course, they can be converted:
+
+{{{
+SETNAME
+verb1
+verb2
+}}}
+
+Saara:  I have written a prototype for this, but I will not do anything complicated before the meeting. ok, if you want to use the same info there. I thinking of moving to an xml-structure which would combine the syntactic and semantic information, so if define the classes already, you can have a simple format like that. (I'm not sure if combining them is a good idea, but we could think of that). Having the information nicely structured, reusing is easier.
+
+!morph-game
+
+Task: make sets with verbs, nouns, adjectives, sorted after stem class and final vowel. The point is that we want a balanced representation of even, contracted and odd stems, and for the first two we would like a distribution of different vowel types. The thing is that certain forms (especially involving -i- in the suffix) behave differently acc to final vowel
+ 
+Suggestion:
+
+* T greps out non-compounded members of an array of contlex-es (GOAHTI, etc), sorts them acc to final vowel --hmmm, not sure that this is the best way to find the basic voc... but we can have a look together
+* L has a look at the results, and picks words she likes
+* S looks at a way of implementing it
+* We all have a look at the morphoutline to see whether there are unclear things
+
+ 
+!visl-games (but they manage well)
+
+Here, the dialogue continues between T, L, the teachers and Odense.
+
+!text analysis (but here we have only vague ideas)
+
+We will postpone this for now. What is needed here is anyway more texts from our corpus into the Oslo interface, a job for S and T.
+
+!single-word-analysis with translation
+
+should be with "give all forms" beacause of that disambiguation doesn´t work for single words => gives wrong result
+
+!paradigms 
+
+(but they stand fine as-is) - except from Sg gen double forms in Standard par (eg. viesu - vieso)
+You could file a bug report about that, with test cases so I could see what's wrong.
+
+
+!!The common site OAHPA:
+
+Trond: Now, it is only in Sámi. I kind of like that. At some point there will be a request for translations. In order to prepare for that, S could at some convenient point set up an infrastructure for the  oahpa! documentation portal which matches these requirements: Pictures and layout should be specified once. Natural language in three (or four?) langugages should be written in a separate place, and glued together to finished documents.
+
+Saara: I'll see how it would work. but not very soon.
+
+Trond: That is ok, as I said, they may be in Sámi, for a while, and it is easier to visualise in one lg.  Also, give us non-techies a thought: I do not know whether it should be one master lg (i.e. one page written as today, with other lgs put in instead, so that we "see what we get", or whether all lgs should be in one and the same xml doc, so that the rendering machine picks only one of them. Hmm, the last one is perhaps ok.
+
+Saara: Yes, I have to think about that, we will anyway use Forrest, so we have to do it the way it's possible there.
+
+Trond: Keeping document integrity may be good: so that the Syntris documentation is in the Syntris.xml
+ file, and that all lgs are there. Then it is also easy to see which lgs are missing. An ugly file, 
+ of course, but we may give it a try.
+
+
+
+!!Division for pedagogical product in Bugzilla
+
+{{{
+Pedagogical
+ Infrastructure
+ Ling-related
+ Visl
+}}}
+
+Trond to add the components after eventual feedback.
