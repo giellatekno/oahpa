@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dialogue PUBLIC "-//UIT//DTD Corpus V1.0//EN" "dialogues.dtd">
+
+<!-- $Id$ -->
+
+<dialogue name="firstmeeting">
+
+<topic name="Buorre_beaivi">
+<opening>Buorre beaivi! Mun lean Káre!</opening>
+</topic>  
+
+<topic name="presentation">
+<question name="Mii_du_namma_lea">
+<!-- What is you name? Accept any kind of name or should it make comments?-->
+<default><utt>Suohtas go don leat chatas odne. Mun lean Leavvajogas eret.</utt></default> 
+</question>
+
+<question name="Gos_don_leat_eret">
+<!-- Where are you from? The placename has to bee in Loc followed by 'eret', + correct verbconj.-->
+<default><utt>Mun orun Kárášjogas dán áigge.</utt></default>
+</question>
+<question name="Gos_don_orut_dál">
+<!-- Where do you live now? The placename has to bee in Loc, + correct verbconj. -->
+</question>
+<closing>Doppe sáhttá leat buorre orrut.</closing>
+</topic>
+
+<topic name="Work_or_school">
+<opening>Mun lean 40 jagi boaris.</opening>
+
+<question name="Man_boaris_don_leat">
+<!-- How old are you? 1-17 young, 18-100 adult  -->
+<young qlink="Váccát_go_skuvlla"/>
+<adult qlink="Leat_go_barggus?"/>
+</question>
+
+<question name="Váccát_go_skuvlla"><utt>Mun barggan Sámedikkis.</utt>
+<aff qlink="Makkár_skuvlla_don_váccát"/>
+<neg qlink="Leat_go_barggus"/>
+</question>
+
+<question name="Makkár_skuvlla_don_váccát">
+<!-- What school? The answer should contain a word from school set in Acc.-->
+<not qlink="Lea_go_dat_skuvla"/> 
+<default qlink=""/>
+</question>
+
+<question name="Lea_go_dat_skuvla">
+<!-- Is it a school? -->
+<neg qlink="Mii_dat_lea_dalle"/>
+
+<default link to closing>
+</question>
+
+<question name="Mii_dat_lea_dalle">
+<!-- What it is then?-->
+<default link to closing>
+</question>
+
+
+<question name="Leat_go_barggus">
+<!-- Do you work??-->
+<aff qlink="Makkár_bargu_dus_lea"/>
+<default link to closing>
+</question>
+
+<question name="Makkár_bargu_dus_lea">
+<!-- What kind of job do you have?-->
+<default link to closing>
+</question>
+
+
+<closing>Ja nu!</closing>
+</topic>
+
+
+
+</dialogue>
