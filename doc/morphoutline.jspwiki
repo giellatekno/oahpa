@@ -12,7 +12,10 @@ Bisyllabic, trisyllabic and contracted verbs/nouns/adjectives, but random in eve
 
 The training will then be a predefined set of morphosyntactic features, paired with a set of words, combined with a random function. The student shall provide correct wordforms.
 
-!!An outline of how it can work:
+Note: We make two versions of the game: The ''bare m-game'' and the ''contextual m-game''. The bare m-game consists of singleton words only. The contextual m-game gives matrix questions, in order to strengthen the linguistic context
+
+
+!!An outline of how the bare m-game can work:
 
 A lexicon of nouns, verbs, adjectives - numbered. Every lexicon is devided into three parts, one for bisyllabic (e.g 1-100), one for trisyllabic (e.g 101-200) and one for contracted stems (e.g 200-250).
  
@@ -55,7 +58,217 @@ If V
 
 We should consider having the questions coming in series of 10, with a point score function, inspired by the visl system.
 
+Within each set, we would like different levels of difficulty. Selection for the verbs:
 
+# singular/plural present (also neg)
+# present  (also neg)
+# preterite  (also neg)
+# conditional  (also neg)
+# imperative  (also neg)
+# potential  (also neg)
+
+Selection for the nouns:
+
+Selection for the adjectives: 
+
+
+Selection for the numerals:
+
+We would like a numeral game both ways.
+
+
+
+
+!!Outline of the contextual m-game
+
+{{{
+LEXICON AND MORPH-DRILL
+========================
+Some thoughts and explanations:
+
+Lexiconfiles in ped/sme/src/
+----------------------------
+I am working with lexicon, devided into POS-files in ped/sme/src/
+This is the ped-lexicon that means that it includes all words from 
+•	Davvin 1-4 
+•	schoolbooks for sami as second language 1-7. class (Norway)
+•	University/sami language center introductory course 1
+•	words from daily life to complete lists of common food, drinks and so on
+
+In the files the words are devided into groups lingvistically and semantically. The latter one to make it easier to find out what words are missing, but also to make it easier to make sets for the drills (and also dialogues). I will devide the semantical sets into smaller sets that there are now.
+
+
+Morph-drill
+------------
+The user can choose between two levels: 
+•	introductory level –  from sets of  about 200 words (which I will make)
+•	medial level – from the ped-lexicon
+
+We will use questions or phrases so the drill also support the user´s “languagefeeling”. The machine give a (s)he has to use, and the norwegian tranlation is visible - discrete (light colour): 
+e.g. to drill illative:
+M: Masa don liikot?(guolli - fisk)				(What do you like?)
+S: guollái		⇐ should accept both  small and big first letter
+The machine picks guolli from food-and-drink-set.
+
+M: Geasa don attát skeaŋkka?(oahpaheaddji - lærer)	(To whom do you give the gift?)
+S: oahpaheaddjái
+The machine picks oahpaheaddji from human-set.
+
+M: Gosa don manat dál?(Suopma - Finland)			(Where do you go?)
+S: Supmii
+The machine picks Suopma from place-set.
+
+The sets make the nouns match the verbs.
+
+Questions connected to grammatical forms – some ideas:
+
+CASE:
+Questions:
+Lokative:  (have to find more questions with plural) 
+Geas lea váralaš beana?  (Who has dangerous dog?)
+Geain lea váralaš beana?  (Who has dangerous dog? - plural)
+Gos Ánne lea dál?  (Where is Anne now?)
+Gos Anne boahtá dál? (From where is Anne coming now?)
+Gos biktasat leat?  (Where is the cloths? - plural)
+Mas don balat? 	(What are you afraid of?)
+
+Accusative: The machine can give both sg- and pl-words
+Maid áiggut oastit?		(What do you want to buy?)
+Maid oainnát?	(What du you see?)
+
+Genetive:
+Gean girji dát lea?  
+Geaid girjjit dát lea?  
+Goas don áiggut lohkat dán girjji?
+
+Comitative:
+Geainna don humat?
+Geaiguin don humat?
+Mainna don manta ruoktot?
+
+Essive:
+(Have to think about it.)
+
+VERBS - TENSE:
+Questions
+Presens: 
+M: Maid don barggat odne? (stoahkat)
+U: Mun ……………….   ⇐ “Mun” is visible, the user write only the verb.
+The machine picks stoahkat from human-doing-set.
+
+M: Maid doai bargabeahtti odne? (stoahkat) [leke]
+U: Moai ……………….    
+The machine picks stoahkat from human-doing-set.
+
+M: Maid dii bargabehtet odne? (	)
+U: Mii ……………….    
+The machine picks stoahkat from human-doing-set.
+
+M: Maid mun barggan odne? (stoahkat)
+U: Don ……………….   ⇐ “Mun” is visible, the user write only the verb.
+The machine picks stoahkat from human-doing-set.
+
+M: Maid moai barge odne? (stoahkat)
+U: Doai ……………….    
+The machine picks stoahkat from human-doing-set.
+
+M: Maid mii bargat odne? (stoahkat)
+U: Dii ……………….    
+The machine picks stoahkat from human-doing-set.
+
+
+M: Maid bárdni bargá odne? (stoahkat)
+U: Son ……………….    
+The machine picks bárdni from human-set, stoahkat from human-doing-set.
+
+
+M: Maid bártnit barget odne? (stoahkat)
+U: Sii ……………….    
+The machine picks bárdni from human-set, stoahkat from human-doing-set.
+
+M: Maid bártni-guovttos bargaba odne? (stoahkat)
+U: Soai ……………….    
+The machine picks bárdni from human-set, stoahkat from human-doing-set.
+
+
+
+Preteritum (the same as presens, just use prt instead, pluss “ikte” istead of “odne”)
+M: Maid bártnit barge ikte? (stoahkat)
+U: Sii ……………….   
+
+Perfectum:
+M: Maid bártnit leat  bargan? (stoahkat)
+U: Sii ……………….   
+
+VERBS - NEGATING:
+Same variants as above
+
+Presens: 
+M: Stohket go bártnit odne? 
+U: Sii ……………….   
+
+Presens: 
+M: Stohke go bártnit ikte? 
+U: Sii ……………….   
+
+VERBS - CONDITIONAL:
+Same as above
+
+
+VERBS - POTENTIAL:
+Same as above
+
+VERBS - IMPERATIVE:
+M: Mun áiggošin oastit mielkki.
+U: ……… mielkki!
+M: Mii áiggošeimmet oastit mielkki.
+U: ……… mielkki!
+
+M: Mun áiggošin vuolgit dál.
+U: ……… !
+
+We can tell the user that now (s)he is included and has to use 1. person:
+M: Mii áiggošeimmet oastit mielkki.
+U: ……… mielkki!
+
+M: Moai áiggošeimme vuolgit dál.
+U: ……… !
+
+
+
+ADJECTIVES:
+Matrisesentences
+
+Plural: 
+Mus lea alit buvssat. Buvssat leat ………………..   (I have blue trousers. My trousers are …..)
+The machine picks alit from colour-set, buvssat from cloths-set.
+Sii leat láikkes bártnit. Bártnit leat ……………. (They are lazy boys. Boys are ….)
+The machine picks láikkes from human-caracter-set, bárdni from human-set.
+
+Comparative: 
+Mu bardni lea láiki, muhto du bárdni lea ……………  (singular)
+Mu bartnit leat láikkit, muhto du bártnit leat ……………  (plural)
+The machine picks láiki from human-caracter-set, bárdni from human-set.
+
+Mu girji lea divrras, muhto du girji lea ……………  (singular)
+Mu girjjit leat divrasat, muhto du girjjit leat ……………  (plural)
+The machine picks divrras from thing-caracter-set, girji from things-set.
+
+Superlative:
+Gal dáppe leat láikkes bártnit, muhto du bárdni lea ……………  (singular)
+Gal dáppe leat láikkes bártnit, muhto du bártnit leat ……………  (plural)
+The machine picks láiki from human-caracter-set, bárdni from human-set.
+
+Gal dáppe leat divrras girjjit, muhto du girji lea ……………  (singular)
+Gal dáppe leat divrras girjjit, muhto du girjjit leat ……………  (plural)
+The machine picks divrras from thing-caracter-set, girji from things-set.
+}}}
+
+
+
+
+
+ 
 !!Outline of work to do
 
 !Linguistic work
@@ -69,5 +282,7 @@ We need to make a generation  transducer {{risme.fst}} (restricted inverted sme.
 * Query - answer mechanism
 * Response if correct or wrong (cf. visl mechanism)
 * Point score?
+
+
 
 
