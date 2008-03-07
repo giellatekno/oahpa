@@ -16,8 +16,7 @@
 
 </corpussource>
 
-<!--
-This corpus contains poss, refl, prp* and Num - so in the script those should be the options, and tags belonging to the wordclasses should be visible. For Numerals should no tag be visible. A possible option could also be n.-->
+<!-- This corpus is made for the options n and v.-->
 
 <section>
 
@@ -69,7 +68,7 @@ STA:cl
 :conj-s('jïh')	jih
 :pron('dïhte',<dem>,sg,ine)	desnie
 :v('lea',ind,impf,3pl)	lin
-:num('gøøkte')	gøøkte/göökte
+:Num('gøøkte')	gøøkte/göökte
 :n('nierretjh')	nierretjh
 :v('årrodh',ger)	årroeminie
 :pron('mij',<int>,pl,gen)	maj
@@ -190,7 +189,7 @@ STA:cl
 :n('biejjie',sg,gen)	biejjien
 :adv('dellie')	dellie
 :pron('dïhte',<dem>,sg,nom)	dihte
-:num('akte')	akte
+:Num('akte')	akte
 :?('tuhtji')	tuhtji
 ,
 :conj-c('men')	men
@@ -271,7 +270,7 @@ STA:cl
 :v('byøpmedidh'ind,pr,1du)	byøpmedien/byöpmedien
 ,
 :adv('die')	die
-:n('tæjmoe',sg,ela)	tæjmoste
+:n('tæjmoe',sg,ela)	tæjmoste/täjmoste
 :?('måbpan')	måbpan
 :a('stuerebe')	stuerebe
 :v('sjïdtedh',ind,pr,1du)	sjidtien
@@ -457,7 +456,7 @@ SMEB34  Karijuse jeehti, manne veele måjhtam ihke ikth hov baenide skubpi.
 A1
 STA:cl
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 ,
 :pron('mån',<pers>,1sg,nom)	manne
 :?('veele')	veele
@@ -485,7 +484,7 @@ STA:cl
 :?('våhkoeh')	våhkoeh
 :n('nåhkeme',sg,nom)	nåhkeme
 :pron('dïhte',<dem>,sg,gen)	dan
-:?('mænngan')	mænngan
+:?('mænngan')	mænngan/männgan
 .
 
 SOURCE: text
@@ -546,7 +545,7 @@ STA:cl
 :v('årrodh',inf)	årrodh
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -560,7 +559,7 @@ STA:cl
 :v('tjåadtjodh',ind,impf,3sg)	tjåadtjoeji
 :conj-s('jïh')	jih
 :?('vuartesji')	vuartesji
-:adv('bæjjese')	bæjjese
+:adv('bæjjese')	bæjjese/bäjjese
 :pron('dohte',<dem>,sg,gen)	don
 :?('veelkes')	veelkes
 :?('skaavhte-baanan')	skaavhte-baanan
@@ -676,7 +675,7 @@ STA:cl
 :n('beapmoe',pl,nom)	Beapmoeh
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 ,
 :pron('mån',<pers>,1du,nom)	månnoeh
 :pron('dïhte',<dem>,sg,gen)	dan
@@ -701,7 +700,7 @@ STA:cl
 :v('årrodh',pcp2)	orreme
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -740,7 +739,7 @@ STA:cl
 :n('Karijuse',sg,nom)	Karijuse
 :?('iktsth')	iktsth
 :v('sïjhtedh',ind,pr,2sg)	sijhth
-:?('soptsestidh')	soptsestidh
+:v('soptsestidh',inf)	soptsestidh
 :?('dagkeren')	dagkeren
 :prp-post('bïjre')	bijre
 :pron('mij',<int>,sg,nom)	mij
@@ -754,7 +753,7 @@ STA:cl
 :pron('dån',<pers>,2sg,nom)	Datne
 :?('iktsth')	iktsth
 :v('sïjhtedh',ind,pr,2sg)	sijhth
-:?('soptsestidh')	soptsestidh
+:v('soptsestidh',inf)	soptsestidh
 :?('viskesroehtsi')	viskesroehtsi
 :conj-s('jïh')	jih
 :?('kruepies')	kruepies
@@ -863,7 +862,7 @@ SMEB69 Doh gøøkte kaarretjh hijven utnigan.
 A1
 STA:cl
 :pron('dohte',<dem>,pl,nom)	Doh
-:num('gøøkte')	gøøkte/göökte
+:Num('gøøkte')	gøøkte/göökte
 :n('kaarretjh',pl,nom)	kaarretjh
 :part('hijven')	hijven
 :v('utnedh',ind,impf,3du)	utnigan
@@ -902,9 +901,9 @@ STA:cl
 :?('Baktush')	Baktush
 :pron('dïhte',<dem>,pl,nom)	dah
 :?('baenide')	baenide
-:?('raejkiedægan')	raejkiedægan
+:v('raejkiedidh',ind,pr,3du)	raejkiedægan/raejkiedägan
 :conj-s('jïh')	jih
-:?('øølegkijægan')	øølegkijægan/öölegkijægan
+:v('øølegidh',ind,pr,3du)	øølegkijægan/öölegkijägan
 .
 
 SOURCE: text
@@ -914,7 +913,7 @@ STA:cl
 :conj-s('jïh')	Jih
 :adv('dellie')	dellie
 :?('bååktjehke')	bååktjehke
-:v('sjïdtedh',ind,pr,3sg)	sjædta
+:v('sjïdtedh',ind,pr,3sg)	sjædta/sjädta
 ,
 :pron('dïhte',<dem>,sg,acc)	dam
 :?('gaajhkesh')	gaajhkesh
@@ -947,10 +946,10 @@ SOURCE: text
 SMEB74 Gøøkte biejjieh lea mænngan.
 A1
 STA:cl
-:num('gøøkte')	Gøøkte/Göökte
+:Num('gøøkte')	Gøøkte/Göökte
 :n('biejjie',pl,nom)	biejjieh
 :v('lea',ind,pr,3sg)	lea
-:prp('mænngan')	mænngan
+:prp('mænngan')	mænngan/männgan
 .
 
 SOURCE: text
@@ -1119,7 +1118,7 @@ STA:cl
 :v('goltelidh',ind,pr,1du)	goltelien
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -1133,7 +1132,7 @@ STA:cl
 :?('gujrie')	gujrie
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -1143,7 +1142,7 @@ QUE:cl
 :pron('dån',<pers>,2sg,nom)	Datne
 :v('govledh',ind,impf,3sg)	govli
 :pron('mij',<int>,sg,acc)	maam
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 ?
 
 
@@ -1171,13 +1170,13 @@ STA:cl
 :n('Jense',sg,nom)	Jense
 :adv('dellie')	dellie
 :?('riektes')	riektes
-:n('snjæjroehtæjja',sg,nom)	snjæjroehtæjja
+:n('snjæjroehtæjja',sg,nom)	snjæjroehtæjja/snjäjroehtäjja
 :n('maana',sg,nom)	maana
 :pron('mån',<pers>,1sg,nom)	manne
 :?('tuhtjem')	tuhtjem
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -1193,7 +1192,7 @@ STA:cl
 ,
 :n('Karijuse',sg,nom)	Karijuse
 :n('eadtjohke',sg,nom)	eadtjohke
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -1253,7 +1252,7 @@ STA:cl
 :?('AU')	AU
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -1320,7 +1319,7 @@ STA:cl
 :n('tjidtjie',sg,nom)	tjidtjie
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 
@@ -1371,7 +1370,7 @@ STA:cl
 :?('skubph')	skubph
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -1379,7 +1378,7 @@ SMEB124  Månnoeh gæljoen ahte ij edtjh darjodh numhtie guktie tjidtjebe jeahta
 A1
 STA:cl
 :pron('mån',<pers>,1du,nom)	Månnoeh
-:v('gæljodh',ind,pr,1du)	gæljoen
+:v('gæljodh',ind,pr,1du)	gæljoen/gäljoen
 :conj-c('ahte')	ahte
 :v('ij',neg,ind,pr,3sg)	ij
 :v('edtjedh',conneg)	edtjh
@@ -1396,7 +1395,7 @@ A1
 STA:cl
 :pron('mån',<pers>,1du,nom)	Månnoeh
 :?('gåabpatjahkh')	gåabpatjahkh
-:v('gæljodh',ind,pr,1du)	gæljoen
+:v('gæljodh',ind,pr,1du)	gæljoen/gäljoen
 .
 
 SOURCE: text
@@ -1408,7 +1407,7 @@ COM:cl
 :v('ij',neg,Imp,2sg)	aellieh
 :v('darjodh',conneg)	darjoeh
 :conj-c('guktie')	guktie
-:?('tjædtjedh')	tjædtjedh
+:?('tjædtjedh')	tjædtjedh/tjädtjedh
 :v('jiehtedh',ind,pr,3sg)	jeahta
 !
 
@@ -1419,7 +1418,7 @@ COM:cl
 :v('ij',neg,Imp,2sg)	Aellieh
 :v('darjodh',conneg)	darjoeh
 :conj-c('guktie')	guktie
-:?('tjædtjedh')	tjædtjedh
+:?('tjædtjedh')	tjædtjedh/tjädtjedh
 :v('jiehtedh',ind,pr,3sg)	jeahta
 !
 
@@ -1428,7 +1427,7 @@ SMEB129   Ae læjhkan dorje!
 A1
 COM:cl
 :?('Ae')	Ae
-:?('læjhkan')	læjhkan
+:?('læjhkan')	læjhkan/läjhkan
 :v('darjodh',ind,pr,3sg)	dorje
 !
 
@@ -1437,7 +1436,7 @@ SMEB130  Baktuse gæljoeji.
 A1
 STA:cl
 :n('Baktuse',sg,nom)	Baktuse
-:v('gæljodh',ind,impf,3sg)	gæljoeji
+:v('gæljodh',ind,impf,3sg)	gæljoeji/gäljoeji
 .
 
 SOURCE: text
@@ -1587,7 +1586,7 @@ STA:cl
 :?('leavede')	leavede
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 
@@ -1621,7 +1620,7 @@ STA:cl
 :?('tjaebpieslaakan')	tjaebpieslaakan
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 :conj-s('jïh')	jih
 :n('okse',sg,acc)	oksem
 :?('ånnetji')	ånnetji
@@ -1637,7 +1636,7 @@ STA:cl
 :v('vååjnedh',pcp2)	vååjneme
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -1714,14 +1713,14 @@ STA:cl
 :pron('mij',<int>,sg,nom)	mij
 :?('karamellerh')	karamellerh
 :?('gååvnesh')	gååvnesh
-:?('gænn')	gænn
+:?('gænn')	gænn/gänn
 :?(''')	'
 :v('ij',neg,ind,pr,3sg)	ij
 :?(''')	'
 :?('nje')	nje
 :adv('vielie')	vielie
 :n('loffe',sg,nom)	loffe
-:?('gænn')	gænn
+:?('gænn')	gænn/gänn
 :?(''')	'
 .
 
@@ -1731,7 +1730,7 @@ A1
 COM:cl
 :conj-c('guktie')	Guktie
 :pron('daate',<dem>,sg,nom)	daate
-:v('sjïdtedh',ind,pr,3sg)	sjædta
+:v('sjïdtedh',ind,pr,3sg)	sjædta/sjädta
 :adv('die')	die
 !
 
@@ -1828,7 +1827,7 @@ STA:cl
 :v('bårrestovvedh',ger)	bårrestovveminie
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -1842,7 +1841,7 @@ STA:cl
 :v('båetedh',ind,pr,3pl)	båetieh
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -1863,7 +1862,7 @@ STA:cl
 :v('edtjedh',ind,impf,1du)	edtjimen
 :?('voejhkelidh')	voejhkelidh
 :n('Jensine',sg,nom)	Jensine
-:?('soptsestidh')	soptsestidh
+:v('soptsestidh',inf)	soptsestidh
 .
 
 SOURCE: text
@@ -1872,7 +1871,7 @@ A1
 COM:cl
 :?('Soptsestidh')	Soptsestidh
 ,
-:?('soptsestidh')	soptsestidh
+:v('soptsestidh',inf)	soptsestidh
 !
 
 
@@ -1893,14 +1892,14 @@ A1
 STA:cl
 :conj-c('jis')	Jis
 :?('aktesne')	aktesne
-:v('gæljodh',ind,pr,1du)	gæljoen
+:v('gæljodh',ind,pr,1du)	gæljoen/gäljoen
 -
 :adv('die')	die
 :?('kaanne')	kaanne
 :v('govledh',ind,pr,3sg)	gåvla
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -1909,7 +1908,7 @@ A1
 QUE:cl
 :pron('mij',<int>,sg,acc)	Maam
 :v('edtjedh',ind,pr,1du)	edtjien
-:v('gæljodh',inf)	gæljodh
+:v('gæljodh',inf)	gæljodh/gäljodh
 ?
 
 
@@ -1918,7 +1917,7 @@ SMEB173  Månnoeh gæljoen jih jiehtien ahte loffem sijhtien.
 A1
 STA:cl
 :pron('mån',<pers>,1du,nom)	Månnoeh
-:v('gæljodh',ind,pr,1du)	gæljoen
+:v('gæljodh',ind,pr,1du)	gæljoen/gäljoen
 :conj-s('jïh')	jih
 :v('jiehtedh',ind,pr,1du)	jiehtien
 :conj-c('ahte')	ahte
@@ -1936,7 +1935,7 @@ STA:cl
 :adv('dellie')	dellie
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -1946,7 +1945,7 @@ STA:cl
 :conj-s('jïh')	Jih
 :adv('dellie')	dellie
 :?('gåabpatjahkh')	gåabpatjahkh
-:v('gæljodh',ind,impf,3du)	gæljoejigan
+:v('gæljodh',ind,impf,3du)	gæljoejigan/gäljoejigan
 :
 
 SOURCE: text
@@ -1979,13 +1978,13 @@ SOURCE: text
 SMEB180  Akte kaarre soptsesti,  Baktuse bååhperisnie jeehti.
 A1
 STA:cl
-:num('akte')	Akte
-:n('aarre',sg,nom)	kaarre
+:Num('akte')	Akte
+:n('kaarre',sg,nom)	kaarre
 :?('soptsesti')	soptsesti
 ,
 :n('Baktuse',sg,nom)	Baktuse
 :n('bååhpere',sg,ine)	bååhperisnie
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 
@@ -1998,7 +1997,7 @@ STA:cl
 ,
 :intj('jaa')	jaa
 :pron('dïhte',<dem>,sg,acc)	dam
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2010,7 +2009,7 @@ STA:cl
 :?('rovnege')	rovnege
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2019,15 +2018,15 @@ A1
 STA:cl
 :?('Kaanne')	Kaanne
 :pron('dohte',<dem>,sg,nom)	dohte
-:n('laejpieh-jurjiehtæjja',sg,nom)	laejpieh-jurjiehtæjja
+:n('laejpieh-jurjiehtæjja',sg,nom)	laejpieh-jurjiehtæjja/laejpieh-jurjiehtäjja
 :pron('dïhte',<dem>,sg,nom)	dihte
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 :v('geehpedh'Imp,2sg)	geehph
 :n('njaelmie',sg,acc)	njaelmiem
 ,
 :n('Baktuse',sg,nom)	Baktuse
 :?('geerjene')	geerjene
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2038,7 +2037,7 @@ COM:cl
 :v('lea',ind,impf,3sg)	lij
 :?('viehkie')	viehkie
 :conj-c('ihke')	ihke
-:v('gæljodh',ind,impf,1du)	gæljoejimen
+:v('gæljodh',ind,impf,1du)	gæljoejimen/gäljoejimen
 !
 
 SOURCE: text
@@ -2110,7 +2109,7 @@ STA:cl
 :v('båetedh',ind,pr,3pl)	båetieh
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2130,7 +2129,7 @@ STA:cl
 :v('båetedh',pcp2)	båateme
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2152,7 +2151,7 @@ STA:cl
 :v('daejredh',conneg)	daejrieh
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2330,7 +2329,7 @@ STA:cl
 :?('vesties')	vesties
 :conj-s('jïh')	jih
 :pron('dïhte',<dem>,sg,gen)	dan
-:v('gïjkedh',ind,pr,3sg)	gæjka
+:v('gïjkedh',ind,pr,3sg)	gæjka/gäjka
 :conj-s('jïh')	jih
 :adv('dellie')	dellie
 :?('tuvrede')	tuvrede
@@ -2359,15 +2358,14 @@ STA:cl
 .
 
 SOURCE: text
-SMEB215  Gietskiebasse gietskiebasse båata,  Baktuse gæljoeji.
+SMEB215  Gietskiebasse båata,  Baktuse gæljoeji.
 A1
 STA:cl
 :?('Gietskiebasse')	Gietskiebasse
-:?('gietskiebasse')	gietskiebasse
 :v('båetedh',ind,pr,3sg)	båata
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('gæljodh',ind,impf,3sg)	gæljoeji
+:v('gæljodh',ind,impf,3sg)	gæljoeji/gäljoeji
 .
 
 SOURCE: text
@@ -2519,7 +2517,7 @@ STA:cl
 :?('garresh')	garresh
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2532,7 +2530,7 @@ STA:cl
 :?('garvestidh')	garvestidh
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2546,7 +2544,7 @@ STA:cl
 :?('viehkene')	viehkene
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2564,7 +2562,7 @@ STA:cl
 :?('beenghkedh')	beenghkedh
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('gæljodh',ind,impf,3sg)	gæljoeji
+:v('gæljodh',ind,impf,3sg)	gæljoeji/gäljoeji
 .
 
 SOURCE: text
@@ -2628,7 +2626,7 @@ STA:cl
 :?('jåapoedihkie')	jåapoedihkie
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2694,7 +2692,7 @@ STA:cl
 :?('duvhtele')	duvhtele
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('gæljodh',ind,impf,3sg)	gæljoeji
+:v('gæljodh',ind,impf,3sg)	gæljoeji/gäljoeji
 .
 
 SOURCE: text
@@ -2747,7 +2745,7 @@ STA:cl
 :v('govledh',conneg)	govlh
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2760,7 +2758,7 @@ STA:cl
 :v('govledh',inf)	govledh
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2776,7 +2774,7 @@ STA:cl
 :v('darjodh',inf)	darjodh
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2831,7 +2829,7 @@ STA:cl
 :?('gaarvanamme')	gaarvanamme
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -2845,7 +2843,7 @@ STA:cl
 :part('gænnah')	gænnah
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -3063,7 +3061,7 @@ STA:cl
 :v('åeredh',inf)	åeredh
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -3118,7 +3116,7 @@ STA:cl
 :v('vuejnedh',inf)	vuejnedh
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -3214,7 +3212,7 @@ STA:cl
 :?('goegkerdidh')	goegkerdidh
 ,
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -3229,7 +3227,7 @@ STA:cl
 :?('tjiekedidh')	tjiekedidh
 ,
 :n('Baktuse',sg,nom)	Baktuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 .
 
 SOURCE: text
@@ -3253,12 +3251,12 @@ A1
 STA:cl
 :pron('dïhte',<dem>,pl,nom)	dah
 :?('fueriehkadtjh')	fueriehkadtjh
-:v('gæljodh',ind,impf,3du)	gæljoejigan
+:v('gæljodh',ind,impf,3du)	gæljoejigan/gäljoejigan
 ,
 :conj-s('jïh')	jih
 :adv('dellie')	dellie
 :n('Karijuse',sg,nom)	Karijuse
-:v('jeehti',ind,impf,3sg)	jeehti
+:v('jiehtedh',ind,impf,3sg)	jeehti
 :
 
 SOURCE: text
@@ -3335,7 +3333,7 @@ SMEB305  Baktuse gæljoeji.
 A1
 STA:cl
 :n('Baktuse',sg,nom)	Baktuse
-:v('gæljodh',ind,impf,3sg)	gæljoeji
+:v('gæljodh',ind,impf,3sg)	gæljoeji/gäljoeji
 .
 
 SOURCE: text
@@ -3355,9 +3353,9 @@ COM:cl
 :pron('mån',<pers>,1sg,nom)	manne
 :v('nahkesjidh',conneg)	nahkesjh
 -
-:v('viehkehth',imp,2sg)	viehkehth
+:v('viehkehth',Imp,2sg)	viehkehth
 ,
-:v('viehkehth',imp,2sg)	viehkehth
+:v('viehkehth',Imp,2sg)	viehkehth
 !
 
 SOURCE: text
@@ -3366,7 +3364,7 @@ A1
 COM:cl
 :n('Laarve-saehpie',sg,nom)	Laarve-saehpie
 ,
-:v('luejhtedh',imp,2sg)	luejhtieh
+:v('luejhtedh',Imp,2sg)	luejhtieh
 :pron('mån',<pers>,1sg,acc)	mannem
 !
 
@@ -3374,7 +3372,7 @@ SOURCE: text
 SMEB309   Viehkehth!
 A1
 COM:cl
-:v('Viehkehth',imp,2sg)	Viehkehth
+:v('Viehkehth',Imp,2sg)	Viehkehth
 !
 
 SOURCE: text
@@ -3464,7 +3462,7 @@ SMEB315 Men akte lij geerjene ihke gåaredi numhtie guktie gåaredi.
 A1
 STA:cl
 :conj-c('men')	Men
-:num('akte')	akte
+:Num('akte')	akte
 :v('lea',ind,impf,3sg)	lij
 :?('geerjene')	geerjene
 :conj-c('ihke')	ihke
