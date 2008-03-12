@@ -12,7 +12,7 @@ Bisyllabic, trisyllabic and contracted verbs/nouns/adjectives, but random in eve
 
 The training will then be a predefined set of morphosyntactic features, paired with a set of words, combined with a random function. The student shall provide correct wordforms.
 
-Note: We make two versions of the game: The ''bare m-game'' and the ''contextual m-game''. The bare m-game consists of singleton words only. The contextual m-game gives matrix questions, in order to strengthen the linguistic context
+Note: We make two versions of the game: The ''bare m-game'' and the ''contextual m-game''. The bare m-game consists of singleton words only. The contextual m-game gives matrix questions, in order to strengthen the linguistic context.
 
 
 !!An outline of how the bare m-game can work:
@@ -88,23 +88,20 @@ Some thoughts and explanations:
 
 Lexiconfiles in ped/sme/src/
 ----------------------------
-I am working with lexicon, devided into POS-files in ped/sme/src/
+The lexicon is devided into POS-files in ped/sme/src/
 This is the ped-lexicon that means that it includes all words from 
 •	Davvin 1-4 
-•	schoolbooks for sami as second language 1-7. class (Norway)
+•	schoolbooks for sami as second language 1-7. class (Norway): Sárá ja su ustibat, Bures, bures fas, Oaidnalit
 •	University/sami language center introductory course 1
 •	words from daily life to complete lists of common food, drinks and so on
 
-In the files the words are devided into groups lingvistically and semantically. The latter one to make it easier to find out what words are missing, but also to make it easier to make sets for the drills (and also dialogues). I will devide the semantical sets into smaller sets that there are now.
-
+In the files the words are devided into groups lingvistically and semantically. The latter one to make it easier to find out what words are missing, but also to make it easier to make sets for the drills (and also dialogues).  
 
 Morph-drill
 ------------
-The user can choose between two levels: 
-•	introductory level –  from sets of  about 200 words (which I will make)
-•	medial level – from the ped-lexicon
+The user can choose vocabulary from certain schoolbooks, or choose to use the whole ped-vocabulary.
 
-We will use questions or phrases so the drill also support the user´s “languagefeeling”. The machine give a (s)he has to use, and the norwegian tranlation is visible - discrete (light colour): 
+We will use questions or phrases so the drill also support the user´s “languagefeeling”. The machine give a (s)he has to use, and the Norwegian translation is visible - discrete (light colour): 
 e.g. to drill illative:
 M: Masa don liikot?(guolli - fisk)				(What do you like?)
 S: guollái		⇐ should accept both  small and big first letter
@@ -147,13 +144,13 @@ Geaiguin don humat?
 Mainna don manta ruoktot?
 
 Essive:
-(Have to think about it.)
+(Not ready yet...)
 
 VERBS - TENSE:
 Questions
 Presens: 
 M: Maid don barggat odne? (stoahkat)
-U: Mun ……………….   ⇐ “Mun” is visible, the user write only the verb.
+U: Mun ……………….   ⇐ “Mun” is visible, the user writes only the verb.
 The machine picks stoahkat from human-doing-set.
 
 M: Maid doai bargabeahtti odne? (stoahkat) [leke]
@@ -165,7 +162,7 @@ U: Mii ……………….
 The machine picks stoahkat from human-doing-set.
 
 M: Maid mun barggan odne? (stoahkat)
-U: Don ……………….   ⇐ “Mun” is visible, the user write only the verb.
+U: Don ……………….   
 The machine picks stoahkat from human-doing-set.
 
 M: Maid moai barge odne? (stoahkat)
@@ -192,7 +189,7 @@ The machine picks bárdni from human-set, stoahkat from human-doing-set.
 
 
 
-Preteritum (the same as presens, just use prt instead, pluss “ikte” istead of “odne”)
+Preteritum (the same as presens, just use prt instead, pluss “ikte” instead of “odne”)
 M: Maid bártnit barge ikte? (stoahkat)
 U: Sii ……………….   
 
@@ -239,6 +236,15 @@ U: ……… !
 ADJECTIVES:
 Matrisesentences
 
+Attributive:
+-----------
+Mu báidi lea fiskat. Mus lea _______ báidi. (My sweater is yellow. I have a ______ sweater.
+
+(The adjective lexicon will be devided into sets - e.g. adjectives for clothes and things, adjectives for human, adjectives for food and drink.)
+
+
+Predicative:
+------------
 Plural: 
 Mus lea alit buvssat. Buvssat leat ………………..   (I have blue trousers. My trousers are …..)
 The machine picks alit from colour-set, buvssat from cloths-set.
