@@ -1,0 +1,29 @@
+<!ELEMENT lexicon (e+) >
+<!ELEMENT e (lemma, sources?, translations, valency?, semantics?) >
+<!ELEMENT lemma (#PCDATA) >
+<!ELEMENT sources (book+) >
+<!ELEMENT book (#PCDATA) >
+<!ATTLIST book 
+	name ( d1 | d2 | d3 | d4 | eg ) #IMPLIED 
+>
+<!-- davvin 1-4, eatnigiella -->
+<!ELEMENT translations (tr+) >
+<!ELEMENT tr (#PCDATA) >
+<!ATTLIST tr 
+	lang ( nob | fin | eng ) #IMPLIED
+>
+<!ELEMENT valency (class+) >
+<!ELEMENT class (#PCDATA) >
+<!ATTLIST class
+	val ( transitive | intransitive | inf | illv | locv | comv | essv ) #IMPLIED
+>
+<!ELEMENT semantics (class+) >
+<!ELEMENT class (#PCDATA) >
+<!ATTLIST class
+	sem ( animate | inanimate | speech ) #IMPLIED
+>	
+<!ELEMENT stem (class+) >
+<!ELEMENT class (#PCDATA) >
+<!ATTLIST class
+	type ( even | odd | contracted ) #IMPLIED
+>	
