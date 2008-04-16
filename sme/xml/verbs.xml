@@ -1,27 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE oahpa_lexicon PUBLIC "-//UIT//DTD Corpus V1.0//EN">
-
+<!DOCTYPE lexicon PUBLIC "-//UIT//DTD Corpus V1.0//EN"
+"verbs.dtd">
+<?xml-stylesheet type="text/css" href="verbs.css"?>
 <lexicon pos="V">
   <e>
-    <lemma>lemma</lemma>
-  <sources>
-    <book name=""/>
-  </sources>
-  <translations>
-    <tr lang="nob">norwegian translation</tr>
-    <tr lang="fin">finnish translation</tr>
-  </translations>
-  <valency>
-    <class name="transitive"/>
-    <class name="intransitive"/>
-  </valency>
-  <semantics>
-    ...
-  </semantics>
-  <stem class="contracted"/>
-  </e>
-  <e>
-    ...
+    <lemma>astat</lemma>
+    <sources>
+      <book name="d1" />
+    </sources>
+    <translations>
+      <tr lang="nob">å ha tid</tr>
+      <tr lang="fin">ehtiä</tr>
+      <tr lang="eng">to have time</tr>
+    </translations>
+    <valency>
+      <class val="inf" />
+    </valency>
+    <semantics>
+    	<class sem="speech" />
+    </semantics>
+    <stem class="even" />
   </e>
 
-</lexicon>
+  <e>
+    <lemma>hupmat</lemma>
+    <sources>
+      <book name="d1" />
+    </sources>
+    <translations>
+      <tr lang="nob">snakke</tr>
+      <tr lang="fin">puhua</tr>
+    </translations>
+    <valency>
+      <class name="comv" />
+    </valency>
+    <semantics>...</semantics>
+    <stem type="contracted" />
+  </e>
+
+ </lexicon>
