@@ -7,13 +7,14 @@ lexicon {
 
 e {
     display: block;
-<!--    collapsible: yes;-->
+    collapsible: yes;
     not-collapsible-head: 1;
     margin-bottom: 1.33ex;
     background-color: #eeeeee;
 }
 
 lemma {
+    collapsible: yes;
 	font-weight: bold;
 	color: blue;
 }
@@ -59,9 +60,10 @@ valency {
 valency:before {
 	content: " Val:";
     font-size: smaller;
+	font-weight: bold;
 	}
 	
-class[val]:after {
+valclass[val]:after {
     display: inline;
     content: " " attr(val) ', ' ;
 }
@@ -69,10 +71,19 @@ class[val]:after {
 
 
 semantics {
-	content: attr(sem) ;
     font-style: italic;
 }
 
+semantics:before {
+	content: " Sem:";
+	font-weight: bold;
+    font-size: smaller;
+	}
+
+semclass[sem]:after {
+	display: inline;
+	content: " " attr(sem) ', ' ;
+}	
 
 stem
  	{
@@ -82,9 +93,10 @@ stem
 stem:before {
 	content: " Stem:";
     font-size: smaller;
+	font-weight: bold;
 	}
 	
-stem:after {
+stem[type]:after {
     display: inline;
     content: " " attr(type) ', ' ;
 }

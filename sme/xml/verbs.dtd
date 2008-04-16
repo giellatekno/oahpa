@@ -12,18 +12,17 @@
 <!ATTLIST tr 
 	lang ( nob | fin | eng ) #IMPLIED
 >
-<!ELEMENT valency (class+) >
-<!ELEMENT class (#PCDATA) >
-<!ATTLIST class
+<!ELEMENT valency (valclass+) >
+<!ELEMENT valclass (#PCDATA) >
+<!ATTLIST valclass
 	val ( transitive | intransitive | inf | illv | locv | comv | essv ) #IMPLIED
 >
-<!ELEMENT semantics (class+) >
-<!ELEMENT class (#PCDATA) >
-<!ATTLIST class
+<!ELEMENT semantics (semclass+) >
+<!ELEMENT semclass (#PCDATA) >
+<!ATTLIST semclass
 	sem ( animate | inanimate | speech ) #IMPLIED
 >	
-<!ELEMENT stem (class+) >
-<!ELEMENT class (#PCDATA) >
-<!ATTLIST class
+<!ELEMENT stem (#PCDATA) >
+<!ATTLIST stem
 	type ( even | odd | contracted ) #IMPLIED
 >	
