@@ -1,0 +1,28 @@
+<!ELEMENT lexicon (entry+)>
+
+<!ELEMENT entry (lemma, translation*, valency*, semantics*, stem)>
+
+<!ELEMENT lemma (#PCDATA)>
+
+<!ELEMENT translation (tr*)>
+
+<!ELEMENT tr (#PCDATA)>
+<!ATTLIST tr xml:lang ( nob | fin | smj | sma | swe )>
+
+<!ELEMENT valency (val*)>
+
+<!ELEMENT val EMPTY>
+<!ATTLIST val class ( transitive | intrasitive )>
+
+<!ELEMENT semantics (sem*)>
+
+<!ELEMENT sem EMPTY>
+<!ATTLIST sem class (#PCDATA)>
+
+ <!ELEMENT stem EMPTY>
+<!ATTLIST stem class ( bisyllabic | trisyllabic | contracted ) "bisyllabic"
+
+
+
+
+
