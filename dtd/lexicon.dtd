@@ -1,28 +1,29 @@
 <!ELEMENT lexicon (entry+)>
 
-<!ELEMENT entry (lemma, translation*, valency*, semantics*, stem)>
+<!ELEMENT entry (lemma, sources?, translations, valency?, semantics?, stem?) >
 
 <!ELEMENT lemma (#PCDATA)>
 
-<!ELEMENT translation (tr*)>
+<!ELEMENT sources (book+) >
+<!ELEMENT book EMPTY >
+<!ATTLIST book 
+	name ( d1 | d2 | d3 | d4 | eg ) #IMPLIED 
+>
+<!-- davvin 1-4, eatnigiella -->
 
-<!ELEMENT tr (#PCDATA)>
-<!ATTLIST tr xml:lang ( nob | fin | smj | sma | swe )>
+<!ELEMENT translations (tr+) >
+<!ELEMENT tr (#PCDATA) >
+<!ATTLIST tr xml:lang ( nob | fin | smj | sma | swe | eng ) "nob" >
 
 <!ELEMENT valency (val*)>
 
 <!ELEMENT val EMPTY>
-<!ATTLIST val class ( transitive | intrasitive )>
+<!ATTLIST val class ( transitive | intrasitive  | inf | illv | locv | comv | essv) #IMPLIED >
 
 <!ELEMENT semantics (sem*)>
 
 <!ELEMENT sem EMPTY>
-<!ATTLIST sem class (#PCDATA)>
+<!ATTLIST sem class ( animate | inanimate | speech ) #IMPLIED >
 
  <!ELEMENT stem EMPTY>
-<!ATTLIST stem class ( bisyllabic | trisyllabic | contracted ) "bisyllabic"
-
-
-
-
-
+<!ATTLIST stem class ( bisyllabic | trisyllabic | contracted ) "bisyllabic" >

@@ -1,0 +1,103 @@
+lexicon {
+    display: block;
+    border: 1 solid gray;
+    margin-bottom: 1.33ex;
+    background-color: #eeeeee;
+}
+
+entry {
+    display: block;
+    collapsible: yes;
+    not-collapsible-head: 1;
+    margin-bottom: 1.33ex;
+    background-color: #eeeeee;
+}
+
+lemma {
+    collapsible: yes;
+	font-weight: bold;
+	color: blue;
+}
+
+book {
+	font-weight: bold;
+}
+
+book:after {
+    display: inline;
+    content: " " attr(name) ', ' ;
+    font-style: italic;
+    font-size: smaller;
+}
+
+
+
+translations {
+    display: block;
+    collapsible: yes;
+    border: 1 solid gray;
+    margin-bottom: 1.33ex;
+    background-color: #ffffff;
+}
+
+tr + tr:before {
+    content: "; ";
+}
+
+
+tr[lang]:after {
+    display: inline;
+    content: attr(lang);
+    font-style: italic;
+    color: gray;
+    vertical-align: super;
+}
+
+val {
+	font-style: italic;
+}
+
+valency:before {
+	content: " Val:";
+    font-size: smaller;
+	font-weight: bold;
+	}
+	
+val[class]:after {
+    display: inline;
+    content: " " attr(class) ', ' ;
+}
+
+semantics {
+    font-style: italic;
+}
+
+semantics:before {
+	content: " Sem:";
+	font-weight: bold;
+    font-size: smaller;
+	}
+
+sem[class]:after {
+	display: inline;
+	content: " " attr(class) ', ' ;
+}	
+
+stem
+ 	{
+	font-style: italic;
+}
+
+stem:before {
+	content: " Stem:";
+    font-size: smaller;
+	font-weight: bold;
+	}
+	
+stem[class]:after {
+    display: inline;
+    content: " " attr(class) ', ' ;
+}
+
+
+
