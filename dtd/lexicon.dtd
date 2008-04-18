@@ -1,14 +1,22 @@
+<!-- lexicon.dtd -->
+<!-- DTD for lexicons used in OAHPA -->
+
 <!ELEMENT lexicon (entry+)>
 
-<!ELEMENT entry (lemma, sources?, translations, valency?, semantics?, stem?) >
+<!ELEMENT entry (lemma, translations, valency?, semantics?, stem?, sources?) >
 
 <!ELEMENT lemma (#PCDATA)>
 
 <!ELEMENT sources (book+) >
 <!ELEMENT book EMPTY >
+<!ATTLIST book name CDATA #IMPLIED >
+<!-- The attribute may not be empty, now there are empty entries -->
+
+<!-- 
 <!ATTLIST book 
 	name ( d1 | d2 | d3 | d4 | eg ) #IMPLIED 
 >
+-->
 <!-- davvin 1-4, eatnigiella -->
 
 <!ELEMENT translations (tr+) >
@@ -18,12 +26,49 @@
 <!ELEMENT valency (val*)>
 
 <!ELEMENT val EMPTY>
-<!ATTLIST val class ( transitive | intrasitive  | inf | illv | locv | comv | essv) #IMPLIED >
+<!-- <!ATTLIST val class ( transitive | intrasitive  | inf | illv | locv | comv | essv) #IMPLIED > -->
+<!ATTLIST val class CDATA #IMPLIED >
+
+<!ELEMENT stem EMPTY>
+<!ATTLIST stem class ( bisyllabic | trisyllabic | contracted ) "bisyllabic" >
 
 <!ELEMENT semantics (sem*)>
-
 <!ELEMENT sem EMPTY>
-<!ATTLIST sem class ( animate | inanimate | speech ) #IMPLIED >
+<!ATTLIST sem class  CDATA #IMPLIED >
 
- <!ELEMENT stem EMPTY>
-<!ATTLIST stem class ( bisyllabic | trisyllabic | contracted ) "bisyllabic" >
+<!-- <!ATTLIST sem class ( animate | inanimate | speech ) #IMPLIED > -->
+<!-- This list does not correspond reality at the moment. Semantic classes in the lexicons: -->
+<!-- These will be fixed when the correct classes are chosen. -->
+<!--
+ABSTRACTS
+ACTIONS
+AMOUNTS
+ANIMALS
+BODYPART
+CHRISTMAS
+CLOTHINGS / CLOTHES
+CONTAINERS
+CONVERSATION
+EDUCATION
+FAMILY
+FEELINGS
+GROUPS
+HUMANS
+HANDICRAFTS
+ILLNESS
+JOB
+NATURE
+OTHERS
+PLACES
+PLANTS
+PROFESSION
+SCHOOL
+SOUNDS
+SOUP
+SUBJECTS
+THINGS
+TIME
+TRAVELLING
+WEATHER
+-->
+
