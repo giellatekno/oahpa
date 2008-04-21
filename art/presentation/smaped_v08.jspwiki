@@ -1,0 +1,257 @@
+
+
+!!!Opplegg for presentasjon av pedagogiske læremiddel
+
+!!Bakgrunn
+
+1 1/2 års prosjekt, Sametinget, Universitetet.
+
+Bakgrunnen for prosjektet var at vi ville utnytte dei grammatiske analysatorane våre i undervisningssamanheng.
+
+Alle spela våre er laga for nordsamisk, med eitt unntak: Vi har ein prøveversjon av Killerfiller på sørsamisk. Vi har ikkje konkrete planar om å lage fleire spel for sør- eller lulesamisk, men det er mogleg å gjere det.
+
+Om lag halvparten av spela våre lagar vi heilt sjølv.
+
+For den andre halvparten bruker vi ein ferdig infrastruktur, laga ved Syddansk Universitet, som er i bruk for ca. 30 språk, m.a. for nynorsk og bokmål. Det er god dokumentasjon tilgjengeleg for desse spela, og det kan vere ein fordel å bruke dei same spela både i norsk- og samisktimane.
+
+* [http://www.tekstlab.uio.no/grei]
+
+
+!!Filosofien bak de pedagogiske programma for nordsamisk
+
+De pedagogiske programmene er så langt ikke tenkt som et selvstendig "læreverk", men spillene og bøyingsrommene skal være et verktøy i undervisninga for at elevene skal trene på spesielle språklige ferdigheter. Læreren vil kunne bruke dem der hvor han/hun synes det passer i undervisninga, og velge oppgavetype, nivå og ordforråd.
+
+For brukere som ikke er i en skole-/kurssituasjon, vil man kunne gå inn for å trene seg på visse ting. For denne brukergruppen er det kanskje de interaktive dialogene som vil passe best.
+
+Nordsamisk er i mange områder i samme situasjon som sørsamisk på den måten at nye språkbrukere i for liten grad får trent opp de språklige ferdighetene på en naturlig måte ute i språksamfunnet. Dermed kan våre programmer som er tilgjengelig for alle på internett, være en nyttig tilleggsressurs i språklæringa.
+
+
+
+"Digitale læremiddel" kan være så mangt. Man kan dele dem opp i tre hovedtyper:
+
+# Vanlege papirbaserte læremiddel, distribuert via nettet (pdf)
+# Interaktive spel der datamaskina ikkje kan grammatikk
+# Interaktive spel der datamaskina kan grammatikk
+
+Våre spel er av den tredje typen.
+
+
+
+!!Heimesidene våre
+
+* For brukarar: [http://giellatekno.uit.no/oahpa/]
+* For utviklarar (meir om filosofien bak): [http://giellatekno/doc/ped/]
+
+
+!!Speltypar
+
+Spela våre er av to typar: __Språklæringsspel__ og __grammatikklæringsspel__. 
+
+Den første typen er laga for å lære språk - ord, uttrykk og grammatikk, og den andre typen er laga for dem som kan språket, men trenger å lære grammatikk. I utgangspunktet er språklæringsspela laga for andre- og framandspråksundervisning, mens grammatikklæringsspela er laga for morsmålselevar. Det er likevel mogleg for meir avanserte framandspråkselevar å bruke grammatikklæringsspela også.
+
+I tillegg til spela har vi også  grammatiske analyseverkty og ordbøker, som kan vere grei å bruke for elevane.
+
+
+!! Valg av metaspråk
+
+For å kunne velje svensk eller norsk som metaspråk må vi kode omsetjingane våre for språk:
+
+{{{
+  <entry>
+    <lemma>oahpaheaddji</lemma>
+    <translations>
+      <tr xml:lang="fin">opettaja</tr>
+      <tr xml:lang="nob">lærer</tr>
+      <tr xml:lang="swe">lärare</tr>
+      <tr xml:lang="eng">teacher</tr>
+    </translations>
+    <semantics>
+      <sem class="PROFESSION"/>
+    </semantics>
+    <stem class="trisyllabic"/>
+  </entry>
+}}}  
+
+På denne måten vil det same spelet fungere for ulike målgrupper. Det vil vere mogleg å velje metaspråk, og programmet tar den omsetjinga som passar.
+
+
+
+!!Dei einskilde språklæringsspela
+
+
+! Quiz
+
+Dette er spel for å øve opp ordforrådet. Her kan man velge tema, ordklasse og nivå, og så får man presentert samiske ord man skal oversette til metaspråket, eller motsatt - at man selv skal skrive det samiske ordet. Eller man skal skrive synonymer, eller knytte sammen samiske ord med samiske forklaringer.
+
+I dag har vi eitt slikt spel, Animal Quiz, som er for litt meir avanserte elevar. I dette spillet skal man gjette hvilket dyr programmet "tenker på" utfra opplysninger man får.
+
+
+! Bøyingsrom
+
+I bøyingsrommet skal brukeren bøye ord i en setning eller som svar på et spørsmål. Her arbeider man systematisk, f.eks. med kasusbøygning, eller komparering av adjektiv.  
+
+Fordeler ved bøyingsrommene/Quiz:
+
+* elevene får straks tilbakemelding på om de gjør riktig eller feil
+* elevene kan bruke dette også hjemme som en del av ukeplanen
+* På en del av programmene kan læreren/eleven velge oppgavetype og -nivå ut fra følgende parametre:
+** ordklasse 
+** stammetype (likest, ulikest, kontrakte, eller kombinasjoner)
+** ordforråd (læreverk eller tema) 
+** eleven kan få fram norsk oversettelse på alle ord, hvis behov. Slik tilpassing kan også være viktig når man har nivåspredning blant elevene i gruppa.
+* læreren kan også løsrive seg fra læreverk og heller arbeide tematisk 
+* vi kan lage varianter av bøyingsrom og quizer med spesielle temaer hvis læreren kan sende oss ordlister og/eller tekster som brukes i opplæringa - f.eks. duodji. Gjerne samisk-samisk (samisk ord og forklaring på samisk) for at elevene skal kunne trene på terminologi uten å gå vegen om norsk.
+
+Grammatikklæringsspill:
+
+* også her får eleven rask tilbakemelding, også med poengberegning og registrering av "high score"
+* elevene kan velge hvilket korpus eller setningstyper de vil arbeide med.
+* ordforrådet er tilpasset morsmålselever, og man får heller ikke oversetting til norsk.
+
+
+!Killerfiller
+
+Killerfiller er eit spel der elevane skal fylle ut rett bøyingsform, og får poeng for hver riktig utfylling. Fordelen med Killerfiller er at det er svært lett for systemet å lage slike utfyllingsoppgåver. 
+
+# Vi tar ein tekst, og analyserer den automatisk. 
+# Deretter les vi korrektur
+# Den korrigerte teksten er input til Killerfiller, som automatisk lagar utfyllingsoppgåver
+# Killerfiller inneheld også det ferdige speloppsettet, med animasjon, osb.
+
+Som eit alternativ til å lage oppgåver sjølv kan lærarar gje oss tekstar eller samlinger av setninger, og vi kan analysere dei automatisk og leggje dei ut til bruk i Killerfiller. For lærere som har elever på høyere nivå, kan det kanskje være motiverende for elevene at de selv kan skrive tekster eller setninger vi igjen bruker i Killerfiller eller i noen av de andre spillene.
+
+
+Killerfiller - kan tilpasses både morsmålsbrukere og 2. språks elever/kursdeltakere etter nivået på teksten man bruker. 
+
+
+! Spørre/svare-trening
+
+Dette ligner på bøyingsrommene, men her presenterer programmet spørsmål som eleven skal svare på. Det vil spesielt bli trening på å svare med riktig form av verbet, og riktig kasus, i forhold til spørsmålet. Også her kan man velge nivå og ordforråd.
+
+
+! Dialog-trening med interaktive dialoger
+
+Dette er en videreutvikling av spørre/svare-programmet og vil være en trening i å føre dialog (chatte) om dagligdagse temaer. Målet er å øve verbbøing, kasusbruk, og bygge ut ordforrådet. Man kan svare på spørsmåla på mange måtar, men i og med at målet er å øve på ordbøying skal man t.d. på "go"-spørsmåla svare med same verb som man blir spurt om.
+        
+Ofte er det opne spørsmål. Til disse kan det være knytta en ordliste (f.eks. matmeny eller en tegning), eller man kan svare kva som helst, bare det er i riktig kasus. Ofte vil neste spørsmål vere diktert av svaret man gav på førre spørsmål.     
+
+Programmet gjer deg framfor alt merksam på skrive-, verbbøyings- og kasusfeil. Viss man gjer mange liknande feil etter kvarandre, kan programmet invitere deg til bøyingsrommet, t.d. for å øve bå å bøye ord i illativ. I noen dialogar øver man på spesielle grammatiske konstruksjonar. I andre dialoger vektlegger vi ord og uttrykk. Vår mål er dette skal være en tilnærmet naturlig måte å trene på samisk.
+
+Eksempler på temaer i dialogane:
+
+* Bli kjent
+* På besøk
+* Bytur
+* I klesbutikken
+* Planlegge reise
+* Samtale om kalender med tidsuttrykk osv
+
+
+!!Ordtilfanget
+
+Vi har samla orda som finst i lærebøker for samisk som 2. språk opp til et visst nivå. I tillegg har vi lagt til ein del dagligdagse ord som ein treng, f.eks. matrettar, klede, skoleord. I OAHPA!-ordtilfang er orda henta frå følgjande lærebøker:
+
+* Davvin 1-4
+* Sárá ja su ustibat
+* Bures, bures fas
+* Oaidnalit
+* Universitetet i Tromsøs SAM-0010 kompendium
+* Kåfjord Samisk språksenters Álgu-kurs-kompendium
+
+Ordtilfanget merkes med lærebok, ordklasse og tema. Brukaren kan velge å arbeide med ord fra eit tema eller ein lærebok i t.d. ordquiz eller grammatikkøvingar.
+
+Ordtilfanget brukes aktivt i spela våre, quizane og i dialogane. Men brukeren kan i dialogane og i analyseverktya bruke mange fleire ord. Programmet bruker då leksikon med omtrent 100.000 ord (blant dem er det ca. 40.000 namn).
+
+
+!!Språklige variasjoner
+Vi kan i leksikonene våre legge inn dialektvarianter av samme ord, eller også merke ord med hvilken hoveddialekt de tilhører. Vi kan også legge inn dialektvariasjoner i den morfologiske generatoren, dvs at vi kan ta hensyn til at bøyinger i skriftspråket vil variere geografisk. Dermed kan brukeren gjøre et dialektvalg. Programmet vil da bare presentere ord og setninger i forhold til dette valget, men samtidig godta alle varianter hos brukeren.
+
+Når det gjelder sørsamisk, vil dette ikke minst være aktuelt når det gjelder ''ø'' vs ''ö'' og ''æ'' vs ''ä''.
+
+
+!!Dei einskilde grammatikklæringsspela
+
+Fleire av desse spela blir laga i samarbeid med Syddansk Universitet. Av tekniske grunnar er vi enno ikkje klar til å leggje til nye samiske språk i dei spela, men når det kjem, vil det vere relativt enkelt å leggje til ordklassespel. Setningsanalysespela vil innebere meir lingvistisk grunnarbeid, og ligg lenger fram i tid.
+
+! Ordklassespel
+
+Her skal elevane øve på å kjenne att ordklasser, f.eks. gi farge etter ordkallse til ord i setninger, eller skyte ned adverb eller pronomen i setninger som flyr forbi.
+
+! Setningsanalyse-spel
+
+Her skal elevane øve på å kjenne att ledd og setningsfunksjonar i setninger. 
+
+! Setningstre
+
+Her skal elevane lage hierarkiske setningsanalyser. Dette er et verktøy som i utgangspunktet vart laga for forprøveundervisninga for studentane ved Syddansk Universitet, og dei passar for avanserte studentar. Før vi kan lage slike verktøy for sørsamisk må vi arbeide meir med dei syntaktiske analysatorane våre, og dette spelet ligg fleire år fram i tid.
+
+
+!!Grammatiske ressursar
+
+Vi har også grammatiske ressursar som ikkje i seg sjølv er del av det pedagogiske prosjektet vårt, men som kan vere nyttig for elevane.
+
+! Grammatikk og paradigme
+
+Grammatikk: risten.no har korte tekstar om samisk grammatikk på nettet.
+
+Paradigme: Det er mogleg å gå til datamaskina og få datamaskina til å skrive ut bøyingsparadigme for alle samiske ord (for sørsamisk har vi i prinsippet alle substantiva (men med ein del feil!) og vi har dei 1500 viktigaste verba. Den sørsamiske analysatoren vil bli langt betre i løpet av den neste toårsperioden.
+
+! Ordbok og talord
+
+Vi har ein talordsgenerator for sørsamisk.
+
+Vi har ikkje noko sørsamisk digital ordbok, men vi har ei for nordsamisk. I prinsippet kan vi godt gjere det same for eksisterande sørsamiske ordbøker.
+
+! Ord- og tekstanalyse 
+
+Dette er tekstanalyseverktya våre. Dei sørsamiske analysatorane er framleis litt for dårlege til å bruke desse verktya, men elevar som treng å finne grunnforma av ordet for å kunne finne det i ordboka, vil kunne ha nytte av analysatorane våre allereie i dag.
+
+
+
+!!Samarbeid med lærarar og undervisningsinstitusjonar?
+
+Oahpa-prosjektet blir ferdig i 2008, og det inneheld i utgangspunktet berre planar for nordsamisk. Vi kjem allikevel til å halde fram med pedagogisk arbeid, og vi vil gjerne gjere noko for sørsamisk og lulesamisk også.
+
+Vi har tekniske løysingar, ferdig infrastruktur, og etterkvart også analyseverkty for sørsamisk. Men vi kan ikkje sørsamisk, vi har dermed heller ikkje erfaring fra undervisning i sørsamisk, og vi har ikkje eigne prosjektpengar for å arbeide med sørsamisk.
+
+Skal det bli sørsamiske pedagogiske program treng vi med andre ord samarbeidspartnarar.
+
+Frå sørsamisk side er dette eit godt høve til å utnytte ressursar som allereie finst, og dermed til å få gode interaktive program.
+
+Vi vil gjerne ha samarbeid for å få til program som er tilpassa opplæringa som foregår i sørsamisk, både i grunnskolen, videregående skole og på kurs for voksne.
+
+
+
+
+!Samarbeid om grunnlagsmateriale:
+
+Innhaldet i spela våre er avhengig av kva vi puttar inn i dei. Viss det er ord eller tekstar de vil ha med, må vi få dei.
+
+
+!Samarbeid om terminologi
+
+Det er ein fordel viss terminologien og analysene vi bruker er dei same som dei som er i bruk i skolen. Dette vil vi gjerne ha samarbeid om.
+
+
+!Samarbeid om digitale program integrert i eksisterande eller nye læreverk
+
+Viss det er planar om å lage læreverk for sørsamisk, er det mogleg å integrere spela våre med desse læreverka. For å få til det må vi ha eit samarbeidsprosjekt mellom oss og forfattarane.
+
+
+!Samarbeidsform
+
+Viss vi skal få gjort noko med sørsamisk, treng vi i Tromsø ein samarbeidspartner, i form av t.d. eit nettverk av lærarar eller institusjonar, eller i form av ein sørsamisk institusjon.
+
+Fordelar med ei slik formalisering:
+
+# Det blir lettare å koordinere arbeidet på sørsamisk side
+# For oss i Tromsø er det lettare viss språklege og grammatiske spørsmål er gjennomdiskutert på sørsamisk side
+# Det blir lettare å søke om evt. støtte til framtidig samarbeid, f.eks. Sametinget for produksjon av læremiddel (siste søknadsfrist var 1.3 2008, men det kommer nye sjansar).
+
+!Samarbeid Norge/Sverige
+Fordi det er mulig å tilrettelegge disse programmene for både norsk og svensk som metaspråk, og også ta hensyn til språklige varisjoner, så burde det være mulig å få til felles prosjekter mellom sørsamiske institusjoner i Norge og Sverige.
+
+
+
+
+
