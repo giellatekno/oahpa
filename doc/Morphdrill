@@ -128,95 +128,107 @@ M: Manin 'eadni' (FAMILY Sg Nom) lei 'Deanus' (PLACE-NAME Sg Loc)?  (In what fun
 U: doavttirin
 
 
-================
-=     Verbs    =
-================
+===============
+=    Verbs    =
+===============
 
+Present tense
+=============
 
-VERBS - TENSE:
-Questions
-Presens: 
-M: Maid don barggat odne? (stoahkat)
-U: Mun ……………….   ⇐ “Mun” is visible, the user write only the verb.
-The machine picks stoahkat from human-doing-set.
+M: Maid don barggat odne?   (What do you do today?)
+'stoahkat' (ACTIVITY Inf > Prs Sg1)
+U: Mun stoagan.   ⇐ Pronomen is visible, the user writes only the verb.
 
-M: Maid doai bargabeahtti odne? (stoahkat) [leke]
-U: Moai ……………….    
-The machine picks stoahkat from human-doing-set.
+M: Maid doai bargabeahtti odne?  
+'stoahkat' (ACTIVITY Inf > Prs Du1)
+U: Moai ........    
 
-M: Maid dii bargabehtet odne? (	)
-U: Mii ……………….    
-The machine picks stoahkat from human-doing-set.
+M: Maid dii bargabehtet odne?  
+'stoahkat' (ACTIVITY Inf > Prs Pl1)
+U: Mii .......    
 
-M: Maid mun barggan odne? (stoahkat)
-U: Don ……………….   ⇐ “Mun” is visible, the user write only the verb.
-The machine picks stoahkat from human-doing-set.
+M: Maid mun barggan odne?  
+'stoahkat' (ACTIVITY Inf > Prs Sg2)
+U: Don ……………….    
 
-M: Maid moai barge odne? (stoahkat)
+M: Maid moai barge odne? 
+'stoahkat' (ACTIVITY Inf > Prs Du2)
 U: Doai ……………….    
-The machine picks stoahkat from human-doing-set.
 
-M: Maid mii bargat odne? (stoahkat)
+M: Maid mii bargat odne?  
+'stoahkat' (ACTIVITY Inf > Prs Pl2)
 U: Dii ……………….    
-The machine picks stoahkat from human-doing-set.
 
-
-M: Maid bárdni bargá odne? (stoahkat)
+M: Maid 'bárdni' (HUMAN Sg Nom) bargá odne? 
+'stoahkat' (ACTIVITY Inf > Prs Sg3)
 U: Son ……………….    
-The machine picks bárdni from human-set, stoahkat from human-doing-set.
 
-
-M: Maid bártnit barget odne? (stoahkat)
-U: Sii ……………….    
-The machine picks bárdni from human-set, stoahkat from human-doing-set.
-
-M: Maid bártni-guovttos bargaba odne? (stoahkat)
+M: Maid 'bárdni' (HUMAN Sg Nom) ja 'nieida' (HUMAN Sg Nom) bargaba odne? 
+'stoahkat' (ACTIVITY Inf > Prs Du3)
 U: Soai ……………….    
-The machine picks bárdni from human-set, stoahkat from human-doing-set.
+
+M: Maid 'bártnit' (HUMAN Pl Nom) barget odne? 
+'stoahkat' (ACTIVITY Inf > Prs Pl3)
+U: Sii ……………….    
 
 
 
-Preteritum (the same as presens, just use prt instead, pluss “ikte” istead of “odne”)
-M: Maid bártnit barge ikte? (stoahkat)
-U: Sii ……………….   
-
-Perfectum:
-M: Maid bártnit leat  bargan? (stoahkat)
-U: Sii ……………….   
-
-VERBS - NEGATING:
-Same variants as above
-
-Presens: 
-M: Stohket go bártnit odne? 
-U: Sii ……………….   
-
-Presens: 
-M: Stohke go bártnit ikte? 
-U: Sii ……………….   
-
-VERBS - CONDITIONAL:
-Same as above
+Past tense 
+===========
+the same as present tense, just use Prt instead of Prs, pluss “ikte” istead of “odne”
 
 
-VERBS - POTENTIAL:
-Same as above
+Negation
+========
 
-VERBS - IMPERATIVE:
-M: Mun áiggošin oastit mielkki.
-U: ……… mielkki!
-M: Mii áiggošeimmet oastit mielkki.
-U: ……… mielkki!
+the same as present and past tense - But  demands  (Neg and Conneg) or (Neg and PrfPrc)
 
-M: Mun áiggošin vuolgit dál.
-U: ……… !
+e.g.
+Present tense: 
+M: 'Stohket' (ACTIVITY Prs Pl3) go 'bártnit' (HUMAN Pl Nom) odne? 
+U: Sii ........   .  (> ii Neg Pl3 + ACTIVITY > ConNeg)  
+
+Past tense: 
+M: 'Stohke' (ACTIVITY Prt Pl3) go 'bártnit' (HUMAN Pl Nom) ikte? 
+U: Sii ……………….   (> ii Neg Pl3 + ACTIVITY > PrfPrc)
+
+Conditional
+==========
+Same as present tense, but with Cond. Also "bargat" Cond:
+M: Maid don barggašit luomus? 
+
+
+Potential
+=========
+Have to think a little...
+
+
+Imperative
+===========
+
+M: Mun áiggošin 'stoahkat' (ACTIVITY Inf > Imprt Sg2).
+U: Stoaga!
+M: Mii áiggošeimmet 'stoahkat' (ACTIVITY Inf > Imprt Pl2).
+U: Stohket!
+
+
+M: Mun áiggošin 'vuolgit' (MOVEMENT Inf > Imprt Sg2).
+U: Vuolgge!
+M: Mii áiggošeimmet 'vuolgit' (MOVEMENT Inf > Imprt Pl2).
+U: Vulget!
+
 
 We can tell the user that now (s)he is included and has to use 1. person:
-M: Mii áiggošeimmet oastit mielkki.
-U: ……… mielkki!
 
-M: Moai áiggošeimme vuolgit dál.
-U: ……… !
+M: Mii áiggošeimmet 'vuolgit' (MOVEMENT Inf > Imprt Pl1).
+U: Vuolgut !
+M: Moai áiggošeimme 'vuolgit' (MOVEMENT Inf > Imprt Du1).
+U: Vuolgu !
+M: Mii áiggošeimmet 'stoahkat' (ACTIVITY Inf > Imprt Pl1).
+U: Stohkot !
+M: Moai áiggošeimme 'stoahkat' (ACTIVITY Inf > Imprt Du1).
+U: Stohkku !
+
 
 
 
