@@ -3,34 +3,35 @@ LEXICON AND MORPH-DRILL
 ========================
 Some thoughts and explanations:
 
-Lexiconfiles in ped/sme/src/
+Lexiconfiles in ped/sme/xml
 ----------------------------
-I am working with lexicon, devided into POS-files in ped/sme/src/
+I am working with lexicon, devided into POS-files 
 This is the ped-lexicon that means that it includes all words from 
 •	Davvin 1-4 
 •	schoolbooks for sami as second language 1-7. class (Norway)
 •	University/sami language center introductory course 1
 •	words from daily life to complete lists of common food, drinks and so on
 
-In the files the words are devided into groups lingvistically and semantically. The latter one to make it easier to find out what words are missing, but also to make it easier to make sets for the drills (and also dialogues). I will devide the semantical sets into smaller sets that there are now.
-
+In the files there are info about stem and semantics. The latter one to make it easier to find out what words are missing, but also to make it easier to make sets for the drills (and also dialogues).  
 
 Morph-drill
 ------------
 The user can choose between :
 •	Lexicon: words from a certain book. That means that if the user choose Davvin 3, then s/he gets also words from Davvin 1 and 2. if s/he chooses Bures bures fas, then s/he gets also words from Sárá ja su ustibat and Buresboahtin, which belong to the same serie. Default is all books. 
 •	Morphologically, e.g. only bisyllabic stems. Default is all three classes.
-•	Dialectally, eastern or western. We could have western as default.
+•	Dialectally, eastern or western. Default is western.
+•	Norwegian tranlation or not. Default is "no translation".
 
- 
-We will use questions or phrases so the drill also support the user´s “languagefeeling”. The machine give a (s)he has to use, and the norwegian tranlation is visible - discrete (light colour). 
+We will use questions or phrases so the drill also support the user´s “languagefeeling”. The norwegian tranlation is visible - discrete (light colour). 
+
+------------
 
 All variables are inside ''. Setnames with big letters.
 "FOOD/DRINK Sg Nom > Sg Ill" means that machine gives a word form set FOOD/DRINK in Sg Nom, and accept answer in Sg Ill.
 
-superset FOOD/DRINK = FOOD + DRINK)
+superset FOOD/DRINK = FOOD + DRINK
 superset HUMAN = FAMILY + PROFESSION + OTHERS + ACTOR
-superset PLACE (= NATURE-PLACE + PLACE-NAME)  PLACE-NAME-set contents about 100 important placenames.
+superset PLACE = NATURE-PLACE + PLACE-NAME  
 
 M - machine
 U - user
@@ -63,12 +64,12 @@ S: Supmii
 Locative
 ========
 
-M: Geas lea váralaš 'cat' (ANIMAL Sg Nom)?  (Who has dangerous ANIMAL? Variable just for fun/variation)
+M: Geas lea váralaš 'bussá' (ANIMAL Sg Nom)?  (Who has dangerous ANIMAL? Variable just for fun/variation)
 'oahpheaddji' (HUMAN Sg Nom > Sg Loc)
 U: oahpaheaddjis
 
 
-M: Geain lea váralaš 'buššá' (ANIMAL Sg Nom)?  (Who has dangerous ANIMAL? - plural)
+M: Geain lea váralaš 'bussá' (ANIMAL Sg Nom)?  (Who has dangerous ANIMAL? - plural)
 'oahpheaddjit' (HUMAN Pl Nom > Pl Loc)
 U: oahpaheddjiin
 
@@ -84,48 +85,56 @@ M: Mas don balat? 	(What are you afraid of?)
 'beatnagat'  (HUMAN Pl Nom > Pl Loc)			
 U: beatnagiin
 
-Accusative: The machine can give both sg- and pl-words
-======================================================
-
+Accusative: 
+===========
+The machine can give both sg- and pl-words in this one:
 M: Maid áiggut oastit?		(What do you want to buy?)  Maid is here both Sg and Pl.
 'bivttas' (CLOTHING Sg Nom > Sg Acc)
 'biktasat' (CLOTHING Pl Nom > Pl Acc)
+U: biktasa/biktasiid
 
 M: Gean oainnát?	(What du you see?)
 'nieida' (HUMAN Sg Nom > Sg Acc)
+U: Nieidda.
 
 M: Geaid oainnát?	(What du you see?)
 'nieiddat' (HUMAN Pl Nom > Pl Acc)
+U: Nieiddaid.
 
-Genetive
+
+Genitive
 =========
 
-M: Gean girji dát lea?  
+M: Gean 'girji' (OBJECT Sg Nom) dát lea?  
 'nieida' (HUMAN Sg Nom > Sg Gen)
+U: Nieidda
 
-M: Geaid girjjit dát lea?
+M: Geaid 'girjjit' (OBJECT Pl Nom) dát leat?
 'nieiddat' (HUMAN Pl Nom > Pl Gen)
-  
+U: Nieiddaid  
+
 
 Comitative
 ===========
 
 M: Geainna don humat?
 'nieida' (HUMAN Sg Nom > Sg Com)
+U: Nieiddain
 
 M: Mainna don manat ruoktot?
 'biila' (VEHICLE Sg Nom > Sg Com)
-
+U: Biillain
 
 M: Geaiguin don humat?
 'nieiddat' (HUMAN Pl Nom > Pl Com)
+U: Nieiddaiguin
 
 
 Essive
 =======
 M: Manin 'eadni' (FAMILY Sg Nom) lei 'Deanus' (PLACE-NAME Sg Loc)?  (In what function was mother in Deatnu? variables just for fun)
 'doavttir' (PROFESSION Sg Nom > Ess)
-U: doavttirin
+U: Doavttirin
 
 
 ===============
@@ -137,39 +146,39 @@ Present tense
 
 M: Maid don barggat odne?   (What do you do today?)
 'stoahkat' (ACTIVITY Inf > Prs Sg1)
-U: Mun stoagan.   ⇐ Pronomen is visible, the user writes only the verb.
+U: (Mun) stoagan.   ⇐ Pronomen is visible, the user writes only the verb.
 
 M: Maid doai bargabeahtti odne?  
 'stoahkat' (ACTIVITY Inf > Prs Du1)
-U: Moai ........    
+U: (Moai) stohke    
 
 M: Maid dii bargabehtet odne?  
 'stoahkat' (ACTIVITY Inf > Prs Pl1)
-U: Mii .......    
+U: (Mii) stoahkat.    
 
 M: Maid mun barggan odne?  
 'stoahkat' (ACTIVITY Inf > Prs Sg2)
-U: Don ……………….    
+U: (Don) stoagat    
 
 M: Maid moai barge odne? 
 'stoahkat' (ACTIVITY Inf > Prs Du2)
-U: Doai ……………….    
+U: (Doai) stoahkabeahtti     
 
 M: Maid mii bargat odne?  
 'stoahkat' (ACTIVITY Inf > Prs Pl2)
-U: Dii ……………….    
+U: (Dii) stoahkabehtet    
 
 M: Maid 'bárdni' (HUMAN Sg Nom) bargá odne? 
 'stoahkat' (ACTIVITY Inf > Prs Sg3)
-U: Son ……………….    
+U: (Son) stoahká    
 
-M: Maid 'bárdni' (HUMAN Sg Nom) ja 'nieida' (HUMAN Sg Nom) bargaba odne? 
+M: Maid 'bártni'-guovttos (HUMAN Sg Gen) bargaba odne? 
 'stoahkat' (ACTIVITY Inf > Prs Du3)
-U: Soai ……………….    
+U: (Soai) stoahkaba    
 
 M: Maid 'bártnit' (HUMAN Pl Nom) barget odne? 
 'stoahkat' (ACTIVITY Inf > Prs Pl3)
-U: Sii ……………….    
+U: (Sii) stohket.    
 
 
 
@@ -181,21 +190,22 @@ the same as present tense, just use Prt instead of Prs, pluss “ikte” istead 
 Negation
 ========
 
-the same as present and past tense - But  demands  (Neg and Conneg) or (Neg and PrfPrc)
+the same as present and past tense - but  demands  (Neg and Conneg) or (Neg and PrfPrc)
 
 e.g.
 Present tense: 
 M: 'Stohket' (ACTIVITY Prs Pl3) go 'bártnit' (HUMAN Pl Nom) odne? 
-U: Sii ........   .  (> ii Neg Pl3 + ACTIVITY > ConNeg)  
+U: (Sii) eai stoaga.  (> ii Neg Pl3 + ACTIVITY > ConNeg)  
 
 Past tense: 
 M: 'Stohke' (ACTIVITY Prt Pl3) go 'bártnit' (HUMAN Pl Nom) ikte? 
-U: Sii ……………….   (> ii Neg Pl3 + ACTIVITY > PrfPrc)
+U: (Sii) eai stoohkan.   (> ii Neg Pl3 + ACTIVITY > PrfPrc)
 
 Conditional
 ==========
-Same as present tense, but with Cond. Also "bargat" Cond:
+Same as present tense, but with Cond. OBS! barggašit:
 M: Maid don barggašit luomus? 
+ACTIVITY Inf > Cond .....
 
 
 Potential
@@ -242,41 +252,41 @@ Plural
 ======
 
 M: Mus leat 'alit' (CLOTHES-adj Attr > Pl Nom) 'buvssat' (CLOTHING Pl Nom). 
-U: 'Buvssat' leat ………………..   					(I have blue trousers. My trousers are …..)
+U: ('Buvssat' leat) alihat.   (User writes only "alihat")					(I have blue trousers. My trousers are …..)
 
 M: Sii leat 'láikkes' (HUMAN-adj Attr > Pl Nom) 'bártnit' (HUMAN Pl Nom). 
-U: 'Bártnit' leat ……………. 						(They are lazy boys. Boys are ….)
+U: ('Bártnit' leat) láikkit. 						(They are lazy boys. Boys are ….)
 
 Comparative
 ============
 
 M: Mu 'bardni' (FAMILY Sg Nom) lea 'láiki' (HUMAN-adj Sg Nom > Comp Sg Nom).
-U: Muhto mu 'bárdni' lea ……………   
+U: (Muhto mu 'bárdni' lea) láikkit.   
 
 M: Mu 'bartnit' (FAMILY Pl Nom) lea 'láikkit' (HUMAN-adj Pl Nom > Comp Pl Nom).
-U: Muhto mu 'bárnit' leat ……………   
+U: (Muhto mu 'bárnit' leat) láikkibut   
 
 M: Mu 'báidi' (CLOTHING Sg Nom) lea 'divrras' (CLOTHES-adj Sg Nom > Comp Sg Nom ). 
-U: Muhto mu 'báidi' lea ……………   
+U: (Muhto mu 'báidi' lea) divraseabbu   
 
 M: Mu 'buvssat' (CLOTHING Pl Nom) leat 'divrasat' (CLOTHES-adj Pl Nom > Comp Pl Nom ). 
-U: Muhto mu 'buvssat' leat ……………   
+U: (Muhto mu 'buvssat' leat) divraseappot   
 
 
 Superlative
 ===========
 
 M: Gal dáppe leat 'láikkes' (HUMAN-adj Attr > Superl Sg Nom) 'bártnit' (HUMAN Pl Nom) .
-U: Muhto mu 'bárdni' (HUMAN Sg Nom) lea ……………  
+U: (Muhto mu 'bárdni' (HUMAN Sg Nom) lea) láikkimus 
 
 M: Gal dáppe leat 'láikkes' (HUMAN-adj Attr > Superl Pl Nom) 'bártnit' (HUMAN Pl Nom). 
-U: Muhto mu 'bártnit' (HUMAN Pl Nom) leat ……………   
+U: (Muhto mu 'bártnit' (HUMAN Pl Nom) leat) láikkimusat   
 
 M: Gal dáppe leat 'divrras' (CLOTHES-adj Attr > Superl Sg Nom) 'báiddit' (CLOTHING Pl Nom).
-U: Muhto mu 'báidi' (CLOTHING Sg Nom ) lea ……………  
+U: (Muhto mu 'báidi' (CLOTHING Sg Nom) lea) divraseamos  
 
 M: Gal dáppe leat 'divrras' (CLOTHES-adj Attr > Superl Pl Nom) 'buvssat' (CLOTHING Pl Nom) 
-U: Muhto mu 'buvssat' leat ……………   
+U: (Muhto mu 'buvssat' leat) divrasepmosat   
 
 }}}
 
