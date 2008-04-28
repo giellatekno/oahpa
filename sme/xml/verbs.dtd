@@ -1,5 +1,5 @@
-<!ELEMENT lexicon (e+) >
-<!ELEMENT e (lemma, sources?, translations, valency?, semantics?) >
+<!ELEMENT lexicon (entry+) >
+<!ELEMENT entry (lemma, sources?, translations, valency?, semantics?, stem?) >
 <!ELEMENT lemma (#PCDATA) >
 <!ELEMENT sources (book+) >
 <!ELEMENT book (#PCDATA) >
