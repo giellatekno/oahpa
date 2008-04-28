@@ -1,0 +1,69 @@
+Outline for writing dialogues
+=============================
+
+These are important documents:  
+
+ped/sme/xml/dialogue_visit.xml -   
+ped/sme/xml/dialoguepart_calendar.xml - with questions/anwers/feedback - now with translations to English
+ped/sme/xml/dialogue_firstmeeting.xml - with open questions
+ped/doc/dialogueparts.txt - ideas for topics
+
+The dialogues are made of elements, and we can write the dialogues if we can agree on the possible type of elements even if not all the programming is ready. 
+
+
+Elements
+========
+
+Setting
+-------
+Every dialogue has a setting, e.g. cafe. The dialogue contains several topics, e.g. drinking, eating, paying. 
+The setting is given to U by M as an utterance or as a set of utterances in the beginning of the dialogue.
+
+Topic
+-------
+Every topic contains several questions and utterances. e.g. Do you drink coffee?
+
+Every topic starts with s "opening"-utt and in the end is a "closing"-utt. This make it easy to put many topics together.
+
+
+Utterances
+----------
+M gives utterances to make the conversation more natural and give the impression of a two-way communication. It is also good teaching because U will get a model for her own answer.
+
+The utterances may be encoded in the dialogue source code as the following type of elements (note the underscore):
+<question name="utterance_string">
+<utt>utterance string</utt>
+<opening>utterance string</opening>
+<closing>utterance string</closing>
+
+
+4 types of questions
+---------------------
+- Open Wh-question - the answer should be in right case, but it has no consequenses for the next question. First speller and then to default.
+	Eks.	What is your name?
+		 	What kind of work do you have?
+	
+- Closed Wh-question - answer alternatives are in a list or a picture, or is implisit in the question. The answer determines the next question. If U answers something outside the alternatives, then M comments like "I have not got that. Here you see what I have got." M does not have to "understand" the answer.
+	Eks. 	What do you want to eat? (pick from a meny)
+			Do you want coffee or tea?
+	
+- Correct/not-correct Wh-question - there is only one correct answer, in a picture or something else. Feedback to U about the correct formulation.
+	Eks. 	When is Lemet´s birhtday?  
+			Which car is the most expensive one?
+			In which month is Easter?
+			When does the school start up after the summervacation?
+
+
+- go-question (yes-no-questions) - answer determines the next question.
+	Eks.	Do you want coffee?
+
+	
+Tutorial comments - this is not ready.... - some examples in ped/sme/xml/dialoguepart_calendar.xml
+---------------------------	
+1. speller - if the words are not correctly spelled, M will not know them. 
+2. clarifying question, eks. In which month does school start? It can not be the correct month!
+3. Lexical help: You perhaps do not know the name of the months? + a list of the months names.
+4. Grammatical help, like: "liikot-verb demands illative - e.g. Mun liikon guollái." "Do you want to learn more about illative?"
+or "In sami we write date like this - borgemánu 20.b."
+ 
+
