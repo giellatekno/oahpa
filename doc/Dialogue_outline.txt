@@ -23,7 +23,7 @@ Topic
 -------
 Every topic contains several questions and utterances. e.g. Do you drink coffee?
 
-Every topic starts with s "opening"-utt and in the end is a "closing"-utt. This make it easy to put many topics together.
+Every topic starts with s "opening"-utt and in the end is a "closing"-utt. This makes it easy to put many topics together.
 
 
 Utterances
@@ -37,15 +37,15 @@ The utterances may be encoded in the dialogue source code as the following type 
 <closing>utterance string</closing>
 
 
-4 types of questions
+4 types of questions (all of them should be implemented in the perl-demo)
 ---------------------
-- Open Wh-question - the answer should be in right case, but it has no consequenses for the next question. First speller and then to default.
-	Eks.	What is your name?
-		 	What kind of work do you have?
+- Open Wh-question - the answer should be in right case, but it has no consequenses for the next question.    If the answer cannot be processed, we may run the answer through the orthographical speller (not for person names), and then to default. (Person names may be accounted for by making a ped-transducer with a name guesser).
+
+	Eks.	What kind of work do you have?
 	
-- Closed Wh-question - answer alternatives are in a list or a picture, or is implisit in the question. The answer determines the next question. If U answers something outside the alternatives, then M comments like "I have not got that. Here you see what I have got." M does not have to "understand" the answer.
-	Eks. 	What do you want to eat? (pick from a meny)
-			Do you want coffee or tea?
+- Alternative-question - with answer alternatives (gived as a list to the program) - it can be presented for U as a picture, or be implicit in the question. The answer determines the next action. If U answers something outside the alternatives, then M comments like "I have not got that. Here you see what I have got." M does not have to "understand" the answer.
+	Eks. 	What do you want to eat? (answer is from the list, or an unknown object, or no object)
+			Do you want coffee or tea? (answer is coffee, or tea, or negation)
 	
 - Correct/not-correct Wh-question - there is only one correct answer, in a picture or something else. Feedback to U about the correct formulation.
 	Eks. 	When is Lemet´s birhtday?  
@@ -54,16 +54,19 @@ The utterances may be encoded in the dialogue source code as the following type 
 			When does the school start up after the summervacation?
 
 
-- go-question (yes-no-questions) - answer determines the next question.
+- go-question (yes-no-questions) - answer determines the next action.
 	Eks.	Do you want coffee?
 
 	
-Tutorial comments - this is not ready.... - some examples in ped/sme/xml/dialoguepart_calendar.xml
+Tutorial comments - a start - some examples in ped/sme/xml/dialoguepart_calendar.xml
 ---------------------------	
-1. speller - if the words are not correctly spelled, M will not know them. 
+1. speller - (if the words are not correctly spelled, M will not know them.)
+   (We may eventually consider another option: Have a lexicon-free speller (i.e., take a standalone Levenshtein implementation, and try to match the user feedback to the target list; e.g. borkemannu is considered a hit for borgemánu, since it has levenshtein-disctance 3. With such a small set of targets, we may even allow long distances, but always pick the closest candidate.)
+  
+
 2. clarifying question, eks. In which month does school start? It can not be the correct month!
-3. Lexical help: You perhaps do not know the name of the months? + a list of the months names.
+3. Lexical help: You perhaps do not know the name of the months? + a list of the months names. (Also here, we may combine this with a lexicon-free speller, and comment upon the error: When do you arrive? (target X-mánus, answer. borgemánnus, feedback: "You wrote 'borgemánnus' but the correct form is 'borgemánus')
 4. Grammatical help, like: "liikot-verb demands illative - e.g. Mun liikon guollái." "Do you want to learn more about illative?"
-or "In sami we write date like this - borgemánu 20.b."
+or "We write dates like this - borgemánu 20.b."
  
 
