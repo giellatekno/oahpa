@@ -1,29 +1,41 @@
 {{{
-LEXICON AND MORPH-DRILL
+CONTEXTUAL MORPH-DRILL
 ========================
-Some thoughts and explanations:
 
-Lexiconfiles in ped/sme/xml
-----------------------------
-I am working with lexicon, devided into POS-files 
-This is the ped-lexicon that means that it includes all words from 
-•	Davvin 1-4 
-•	schoolbooks for sami as second language 1-7. class (Norway)
-•	University/sami language center introductory course 1
-•	words from daily life to complete lists of common food, drinks and so on
+We will use questions or phrases so the drill also support the user´s “languagefeeling”. The norwegian tranlation can be visible - discrete (light colour). 
 
-In the files there are info about stem and semantics. The latter one to make it easier to find out what words are missing, but also to make it easier to make sets for the drills (and also dialogues).  
+The user can choose between these drill-types:
 
-Morph-drill
-------------
-The user can choose between :
-•	Lexicon: words from a certain book. That means that if the user choose Davvin 3, then s/he gets also words from Davvin 1 and 2. if s/he chooses Bures bures fas, then s/he gets also words from Sárá ja su ustibat and Buresboahtin, which belong to the same serie. Default is all books. 
-•	Morphologically, e.g. only bisyllabic stems. Default is all three classes.
+•	POS: nouns, adjectives or verbs
+	•	Adjectives: attributive or predicative drill
+	•	Nouns: which case
+	•	Verbs: 
+		•	modus
+			•	indicative:
+					•	present tense or past tense
+							•	affirmative or negative
+			•	conditional (only present tense)
+			•	potential (only present tense)
+			•	imperative
+
+We should think about numerals.	
+
+----
+
+User´s options (there will be default, so the user does not have to make all choices):
+
+•	Lexicon:
+The ped-lexicon includes all words from 
+		•	Davvin 1-4 
+		•	schoolbooks for sami as second language 1-7. class (Norway)
+		•	University/sami language center introductory course 1
+		•	words from daily life to complete lists of common food, drinks and so on
+
+In the files there are info about stem and semantics and also translation. If the user chooses Davvin 3, then s/he gets also words from Davvin 1 and 2. if s/he chooses Bures bures fas, then s/he gets also words from Sárá ja su ustibat and Buresboahtin, which belong to the same serie. Default is all books. 
+•	Morphologically: stems and number. Default is all three classes and both singular and plural.
 •	Dialectally, eastern or western. Default is western.
 •	Norwegian translation or not. Default is "no translation".
-•	Verbs - are in levels:
 
-We will use questions or phrases so the drill also support the user´s “languagefeeling”. The norwegian tranlation is visible - discrete (light colour). 
 
 ------------
 
@@ -32,14 +44,15 @@ All variables are inside ''. Setnames with big letters.
 
 superset FOOD/DRINK = FOOD + DRINK
 superset HUMAN = FAMILY + PROFESSION + OTHERS + ACTOR
-superset PLACE = NATURE-PLACE + PLACE-NAME  
+superset PLACE = NATURE-PLACE + PLACE-NAME 
+superset OBJECT = TOOL + THING + ....
 
 M - machine
 U - user
 
 ================
 = Noun - cases =
-================
+================ 
 
 Illative - fixed questions. 
 ============================
@@ -55,7 +68,7 @@ U: oahpaheaddjái
 The same question with "Geaidda" which is pl, and question has go be in Pl.
 M: Geaidda don attát 'skeaŋkka' (OBJECT Sg Acc)?
 'oahpaheaddjit'	(HUMAN Pl Nom > Pl Ill)
-U: oahpaheaddjiide
+U: oahpaheddjiide
 
 
 M: Gosa don manat dál?		(Where do you go?)
@@ -200,7 +213,7 @@ U: (Sii) eai stoaga.  (> ii Neg Pl3 + ACTIVITY > ConNeg)
 
 Past tense: 
 M: 'Stohke' (ACTIVITY Prt Pl3) go 'bártnit' (HUMAN Pl Nom) ikte? 
-U: (Sii) eai stoohkan.   (> ii Neg Pl3 + ACTIVITY > PrfPrc)
+U: (Sii) eai stoahkan.   (> ii Neg Pl3 + ACTIVITY > PrfPrc)
 
 Conditional
 ==========
@@ -211,8 +224,10 @@ ACTIVITY Inf > Cond .....
 
 Potential
 =========
-Have to think a little...
+Same questions as in Negation present tense: 
 
+M: 'Stohket' (ACTIVITY Ind Prs Pl3 > Pot Prs Pl3) go 'bártnit' (HUMAN Pl Nom)? 
+U: (In dieđe,) stoagažit (go) .    
 
 Imperative
 ===========
