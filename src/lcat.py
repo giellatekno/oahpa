@@ -31,71 +31,74 @@ parser.add_option("-a", "--all", dest="print_all",
 
 (options, args) = parser.parse_args()
 
- 
+# Store options recieved from user
+option={}
+entries={}
+all=[]
+for opt, value in options.__dict__.items():
+    if value and opt != "infile" and opt != "print_all":
+        option[opt] = value
+        entries[opt] = []
+
+def print_entries(entries, all):
+    allset = set(all)
+    for key in entries.keys():
+        elist = entries[key]
+        eset = set(elist)
+        allset =  allset & eset
+
+    for e in list(allset):
+        if options.print_all:
+            print e.toxml()
+        else:
+            ltext=e.getElementsByTagName("lemma")[0].firstChild.data
+            print ltext
+            
 infile = "/Users/saara/ped/sme/xml/verbs.xml"
 xmlfile=file(infile)
 tree = _dom.parse(infile)
 #print tree.toprettyxml(' ')
-for e in tree.getElementsByTagName("entry"):
 
+for e in tree.getElementsByTagName("entry"):
+    all.append(e)
+    
     if options.book:
         s=e.getElementsByTagName("sources")[0]
         for b in  s.getElementsByTagName("book"):
             if b.getAttribute("name").encode('utf8') == options.book:                
-                if options.print_all:
-                    print e.toxml()
-                    #raw_input()
-                    #break
-                else:
-                    ltext=e.getElementsByTagName("lemma")[0].firstChild.data
-                    print ltext
-
+                entries['book'].append(e)
+        
     if options.lemma:
+        etrs = []
         ltext=e.getElementsByTagName("lemma")[0].firstChild.data
         if ltext and ltext == options.lemma:
-            if options.print_all:
-                print e.toxml()
-            else:
-                print ltext
+            entries['lemma'].append(e)
                     
     if options.valency:
         v=e.getElementsByTagName("valency")[0]
         for b in v.getElementsByTagName("val"):
             if b.getAttribute("class").encode('utf8') == options.valency:
-                if options.print_all:
-                    print e.toxml()
-                else:
-                    ltext=e.getElementsByTagName("lemma")[0].firstChild.data
-                    print ltext
+                entries['valency'].append(e)
 
     if options.semclass:
         s=e.getElementsByTagName("semantics")[0]
         for b in  s.getElementsByTagName("sem"):
             if b.getAttribute("class").encode('utf8') == options.semclass:
-                if options.print_all:
-                    print e.toxml()
-                else:
-                    ltext=e.getElementsByTagName("lemma")[0].firstChild.data
-                    print ltext
+                entries['semclass'].append(e)
+
     if options.stemclass:
         s=e.getElementsByTagName("stem")[0]
         if s.getAttribute("class").encode('utf8') == options.stemclass:
-            if options.print_all:
-                print e.toxml()
-            else:
-                ltext=e.getElementsByTagName("lemma")[0].firstChild.data
-                print ltext
+            entries['stemclass'].append(e)
 
     if options.dialect:
         s=e.getElementsByTagName("dialect")[0]
         if s.getAttribute("class").encode('utf8') == options.dialect:
-            if options.print_all:
-                print e.toxml()
-            else:
-                ltext=e.getElementsByTagName("lemma")[0].firstChild.data
-                print ltext
+            entries['dialect'].append(e)
                     
   
+print_entries(entries,all)
+
 
 """
 p=ParserCreate('utf-8')
