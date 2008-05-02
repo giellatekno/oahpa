@@ -29,7 +29,7 @@ parser.add_option("-d", "--dialect", dest="dialect",
                   help="Dialect class")
 parser.add_option("-r", "--regex", dest="regex",
                   action="store_true", default=False,
-                  help="Search criteria are given as regular expressions")
+                  help="Search for match for lemma and book information")
 parser.add_option("-a", "--all", dest="print_all",
                   action="store_true", default=False,
                   help="print the whole entry, not just lemma")
