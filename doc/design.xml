@@ -412,7 +412,7 @@
         <title>Speller</title>
 
         <p>The Speller for North and Lule Sámi will be used in correcting spelling
-        errors by the user.</p>
+        errors by the user. For an addition mechanism, see the section on Levenshtein below.</p>
 
         <section>
           <title>Suggestion mechanism</title>
@@ -431,6 +431,10 @@
           problem is that there will be very many correct suggestions
           for each spelling error</p>
         </section>
+	<section>
+	  <title>Levenshtein</title>
+	  <p>As a supplement to the ordinary speller, we may consider adding a separate speller reacting to specific answers. So, when asked for a drink, the user will answer with some word, and the question-specific speller can check the sentence up against a set of drinks, instead of against the whole lexicon. See <a href="levenshtein.html">a separate document on this</a>.</p>
+	</section>
       </section>
 
       <section>
