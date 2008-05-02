@@ -1,5 +1,9 @@
 #! /usr/bin/env python -w
 # -*- coding: utf-8 -*- 
+#
+# Script for extracting information from Oahpa -lexicons.
+# Usage: python lcat.py -h
+
 
 import sys
 import re
