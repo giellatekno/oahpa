@@ -405,7 +405,9 @@ U: (Muhto mu 'buvssat' leat) divrasepmosat
 
 !Linguistic work
 
-We need to make a generation  transducer {{risme.fst}} (restricted inverted sme.fst) which gives only one form (possibly {{wrisme.fst, erisme.fst}}, for western and eastern)
+We have started the work on a generation  transducer {{isme-restr.fst}} (restricted inverted sme.fst) which gives only one form. Today, the restricted transducer has a western bias (eastern forms are deprecated) but we might add an eastern version as well, so that it would be {{wisme-restr.fst, eisme-restr.fst}}, for western and eastern). The restricted transducer does not give SUB form, not Eastern forms, and not forms marked with __^NG^__. There are probably doublet forms still left in the transducer, but at least the basic noun case and verb person variation been removed. Adjectives (multiple attributes) are still not catered for.
+
+Lexicon work is underway.
 
 !Programming work
 
