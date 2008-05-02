@@ -53,10 +53,9 @@ def print_entries(entries, all):
         else:
             ltext=e.getElementsByTagName("lemma")[0].firstChild.data
             print ltext
-            
-infile = "/Users/saara/ped/sme/xml/verbs.xml"
-xmlfile=file(infile)
-tree = _dom.parse(infile)
+
+xmlfile=file(options.infile)
+tree = _dom.parse(options.infile)
 #print tree.toprettyxml(' ')
 
 for e in tree.getElementsByTagName("entry"):
