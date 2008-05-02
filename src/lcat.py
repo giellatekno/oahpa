@@ -4,7 +4,6 @@
 import sys
 import re
 from xml.dom import minidom as _dom
-import getopt
 from optparse import OptionParser
 
 
@@ -42,7 +41,9 @@ for opt, value in options.__dict__.items():
         option[opt] = value
         entries[opt] = []
 
-
+# The options give conditions for the entry they are combined with
+# AND operation, thus forming an intersection of all the entries.
+# This does not work with multiple options of the same type, is is still OR.
 def print_entries(entries, all):
     allset = set(all)
     for key in entries.keys():
@@ -59,8 +60,10 @@ def print_entries(entries, all):
 
 xmlfile=file(options.infile)
 tree = _dom.parse(options.infile)
-#print tree.toprettyxml(' ')
 
+# Go through all the entries and check if they satisfy the search criteria.
+# Store entries that fill different search criteria to separate dictionary entries
+# The search results are combined in function print_entries.
 for e in tree.getElementsByTagName("entry"):
     all.append(e)
     
@@ -109,19 +112,4 @@ for e in tree.getElementsByTagName("entry"):
                     
   
 print_entries(entries,all)
-
-
-"""
-p=ParserCreate('utf-8')
-
-def start_element(name, attrs):
-    if name=="entry"
-
-p.StartElementHandler = start_element
-p.EndElementHandler = end_element
-p.CharacterDataHandler = char_data
-
-
-p.ParseFile(xmlfile)
-"""
 
