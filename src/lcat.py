@@ -3,7 +3,6 @@
 
 import sys
 import re
-import os, subprocess as su
 from xml.dom import minidom as _dom
 import getopt
 from optparse import OptionParser
@@ -25,6 +24,9 @@ parser.add_option("-t", "--stem", dest="stemclass",
                   help="Stem class")
 parser.add_option("-d", "--dialect", dest="dialect",
                   help="Dialect class")
+parser.add_option("-r", "--regex", dest="regex",
+                  action="store_true", default=False,
+                  help="Search criteria are given as regular expressions")
 parser.add_option("-a", "--all", dest="print_all",
                   action="store_true", default=False,
                   help="print the whole entry, not just lemma")
@@ -36,9 +38,10 @@ option={}
 entries={}
 all=[]
 for opt, value in options.__dict__.items():
-    if value and opt != "infile" and opt != "print_all":
+    if value and opt != "infile" and opt != "print_all" and opt!="regex":
         option[opt] = value
         entries[opt] = []
+
 
 def print_entries(entries, all):
     allset = set(all)
@@ -64,14 +67,23 @@ for e in tree.getElementsByTagName("entry"):
     if options.book:
         s=e.getElementsByTagName("sources")[0]
         for b in  s.getElementsByTagName("book"):
-            if b.getAttribute("name").encode('utf8') == options.book:                
-                entries['book'].append(e)
-        
+            if options.regex:
+                matchObj = re.search(options.book, b.getAttribute("name").encode('utf8'))
+                if matchObj:
+                    entries['book'].append(e)
+            else:
+                if b.getAttribute("name").encode('utf8') == options.book:                
+                    entries['book'].append(e)
+                            
     if options.lemma:
-        etrs = []
         ltext=e.getElementsByTagName("lemma")[0].firstChild.data
-        if ltext and ltext == options.lemma:
-            entries['lemma'].append(e)
+        if options.regex:
+            matchObj = re.search(options.lemma, ltext)
+            if matchObj:
+                entries['lemma'].append(e)
+        else:
+            if ltext and ltext == options.lemma:
+                entries['lemma'].append(e)
                     
     if options.valency:
         v=e.getElementsByTagName("valency")[0]
