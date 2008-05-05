@@ -2,11 +2,11 @@
 CONTEXTUAL MORPH-DRILL
 ========================
 
-We will use questions or phrases so the drill also support the user´s “languagefeeling”. The norwegian tranlation can be visible - discrete (light colour). 
+We will use questions or phrases in order to strengthen the linguistic context. The norwegian tranlation can be visible - discrete (light colour). 
 
 The user can choose between these drill-types:
 
-•	POS: nouns, adjectives or verbs
+•	POS: nouns, adjectives, verbs, numerals
 	•	Adjectives: attributive or predicative drill
 	•	Nouns: which case
 	•	Verbs: 
@@ -17,10 +17,12 @@ The user can choose between these drill-types:
 			•	conditional (only present tense)
 			•	potential (only present tense)
 			•	imperative
+	•	Numerals: 
+			• 	as attribute to nouns, in all cases. Also plural numbers
+			•	collective numerals, in all cases
 
-We should think about numerals.	
 
-----
+OPTIONS
 
 User´s options (there will be default, so the user does not have to make all choices):
 
@@ -37,7 +39,15 @@ In the files there are info about stem and semantics and also translation. If th
 •	Norwegian translation or not. Default is "no translation".
 
 
-------------
+TUTORIAL FUNCTION
+
+If the user doesn´t succeed writing the correct wordform, s/he will get help. E.g. the task is to inflect a noun in illative sg:
+	1. A reminder like "This word has contracted stem" (stem information in the pedlex)
+	2. "Do you need help?" > Short explanation about contracted stems in illative
+	3. "Do you want the correct wordform?" > The correct form
+
+
+SETS
 
 All variables are inside ''. Setnames with big letters.
 "FOOD/DRINK Sg Nom > Sg Ill" means that machine gives a word form set FOOD/DRINK in Sg Nom, and accept answer in Sg Ill.
@@ -386,15 +396,15 @@ M: Gallin joavkun 'mánát' (HUMAN Pl Nom) barge?
 U: Guoktin joavkun 
 
 
-Cellective Numerals
+Collective Numerals
 ====================
 
-To this one we have to make a list which shows which numbers belong to whicc noun, like:
+To this one we have to make a list which shows which numbers belong to which noun, like:
 guokte	guovttis
 golbma	golmmas
 njeallje	njealjis...
 
-Or we could give the colletiv numeral in Sg Nom to the user... 
+Or we could give the colletive numeral in Sg Nom to the user... 
 
 
 Nominative
