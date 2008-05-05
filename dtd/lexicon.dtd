@@ -3,7 +3,7 @@
 
 <!ELEMENT lexicon (entry+)>
 
-<!ELEMENT entry (lemma, translations, valency?, semantics?, stem?, sources?) >
+<!ELEMENT entry (lemma, translations, valency?, semantics?, stem, sources?) >
 
 <!ELEMENT lemma (#PCDATA)>
 
@@ -14,10 +14,14 @@
 
 <!-- 
 <!ATTLIST book 
-	name ( d1 | d2 | d3 | d4 | eg ) #IMPLIED 
+	name ( d1 | d2 | d3 | d4 | álgu | sárá | bures | oainalit ) #IMPLIED 
 >
 -->
-<!-- davvin 1-4, eatnigiella -->
+<!-- 
+"A < B" means that a word in A is contained in B as well.
+Sárá < Bures < Oaidnalit = Berit Johnskareng
+D1 < ... < D4 davvin 1-4 
+-->
 
 <!ELEMENT translations (tr+) >
 <!ELEMENT tr (#PCDATA) >
@@ -26,7 +30,7 @@
 <!ELEMENT valency (val*)>
 
 <!ELEMENT val EMPTY>
-<!-- <!ATTLIST val class ( transitive | intrasitive  | inf | illv | locv | comv | essv) #IMPLIED > -->
+<!-- <!ATTLIST val class ( TV | IT | illv | locv | comv | essv ) #IMPLIED > -->
 <!ATTLIST val class CDATA #IMPLIED >
 
 <!ELEMENT stem EMPTY>
@@ -36,39 +40,86 @@
 <!ELEMENT sem EMPTY>
 <!ATTLIST sem class  CDATA #IMPLIED >
 
-<!-- <!ATTLIST sem class ( animate | inanimate | speech ) #IMPLIED > -->
+<!-- <!ATTLIST sem class ( ACTIVITY | MOVEMENT | VERBAL | WEATHER-verb | AUX ) #IMPLIED > -->
 <!-- This list does not correspond reality at the moment. Semantic classes in the lexicons: -->
 <!-- These will be fixed when the correct classes are chosen. -->
 <!--
-ABSTRACTS
-ACTIONS
-AMOUNTS
-ANIMALS
+ACTIVITY
+AUX
+MOVEMENT
+VERBAL
+WEATHER-verb
+ABSTRACT
+ACTION
+ACTOR
+AMOUNT
+ANIMAL
+ANIMAL-DOM
+ANIMAL-PET
+ANIMAL-WILD
+ARRANGEMENT
+ARRANGEMENT-PL
+BIRD
 BODYPART
+BUILDING
 CHRISTMAS
-CLOTHINGS / CLOTHES
-CONTAINERS
-CONVERSATION
+CLOTHING
+CLOTHING-PL
+CONSTRUCTION
+CONTAINER
+DRINK
 EDUCATION
 FAMILY
-FEELINGS
-GROUPS
-HUMANS
+FEELING
+FINANCE
+FISH
+FOOD-DISH
+FOOD-GROCERY
+FOOD-OTHER
+GROUP
 HANDICRAFTS
 ILLNESS
+IN-ROOM
+INSTRUMENT
 JOB
+KITCHEN
+LANGUAGE
+LANGUAGEPART
 NATURE
+NATURE-PLACE
+ORGANIZATION
 OTHERS
-PLACES
-PLANTS
+PLACE
+PLACE-NAME
+PLANT
 PROFESSION
+ROAD
+ROOM
 SCHOOL
-SOUNDS
-SOUP
-SUBJECTS
-THINGS
+SHOP
+SHOW
+SOUND
+SPORT
+STIMULANT
+TEXT
+THING
+THOUGHT
 TIME
+TIME-DURABILITY
+TIME-POINT-GEN
+TIME-POINT-LOC
+TIME-SEASON
+TOOL
+TOY
 TRAVELLING
+VEHICLE
 WEATHER
+ANIMAL-adj
+CLOTHES-adj
+HUMAN-adj
+OBJECT-adj
+ROAD-adj
+SOUP-adj
+WEATHER-adj
 -->
 
