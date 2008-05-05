@@ -2,6 +2,13 @@
 <!DOCTYPE lexicon PUBLIC "-//XMLmind//DTD lexicon//FI"
 "../../dtd/lexicon.dtd">
 <?xml-stylesheet type="text/css" href="../../dtd/lexicon.css"?>
+<!-- About semantical classes:
+ACTIVITY -  as a answer to "What do you do?" and it doesn´t need an Obj.
+MOVEMENT is ment for going from one place to anohter.
+VERBAL is all kind of verbal verbs.
+WEATHER-verb about weather - most of them can only be used in Sg3
+AUX-set is quite big - it contains many verbs which can be followed by an Inf.
+-->
 <lexicon>
   <entry>
     <lemma>astat</lemma>
@@ -14,7 +21,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -93,7 +100,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -279,7 +286,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="MOVEMENT"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -338,7 +345,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -376,7 +383,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="WEATHER-verb"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -478,7 +485,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -491,14 +498,14 @@
     <lemma>rávkat</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob"></tr>
+      <tr xml:lang="nob">kalle på</tr>
     </translations>
     <valency>
       <val class=""/>
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -579,7 +586,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -702,7 +709,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -780,7 +787,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -799,7 +806,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1017,7 +1024,7 @@
       <tr xml:lang="nob">å bli lei</tr>
     </translations>
     <valency>
-      <val class=""/>
+      <val class="locv"/>
       <val class=""/>
     </valency>
     <semantics>
@@ -1200,7 +1207,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1385,7 +1392,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="o"/>
@@ -1405,7 +1412,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="n"/>
@@ -1420,7 +1427,7 @@
       <tr xml:lang="nob">å bli ferdig</tr>
     </translations>
     <valency>
-      <val class=""/>
+      <val class="locv"/>
       <val class=""/>
     </valency>
     <semantics>
@@ -1543,7 +1550,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1766,7 +1773,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="WEATHER-verb"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1804,7 +1811,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="WEATHER-verb"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1858,7 +1865,7 @@
     <lemma>diktit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å tillate</tr>
+      <tr xml:lang="nob">å tillvate</tr>
       <tr xml:lang="nob">å la</tr>
     </translations>
     <valency>
@@ -1965,7 +1972,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1996,7 +2003,7 @@
     <lemma>sihtat</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å ville ha</tr>
+      <tr xml:lang="nob">å villve ha</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -2013,7 +2020,7 @@
     </sources>
   </entry>
   <entry>
-    <lemma>illudahttit</lemma>
+    <lemma>illvudahttit</lemma>
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å glede noen</tr>
@@ -2113,7 +2120,7 @@
     <lemma>speallat</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å spille</tr>
+      <tr xml:lang="nob">å spillve</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -2202,7 +2209,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2281,7 +2288,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="WEATHER-verb"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2301,7 +2308,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2467,7 +2474,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="WEATHER-verb"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2546,7 +2553,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2587,7 +2594,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="MOVEMENT"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2627,7 +2634,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="MOVEMENT"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2726,7 +2733,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="MOVEMENT"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3028,7 +3035,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="WEATHER-verb"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3099,7 +3106,7 @@
     </sources>
   </entry>
    <entry>
-    <lemma>billahuvvat</lemma>
+    <lemma>billvahuvvat</lemma>
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å bli ødelagt</tr>
@@ -3128,7 +3135,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3167,7 +3174,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3430,7 +3437,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3510,7 +3517,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3573,7 +3580,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="WEATHER-verb"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -3592,7 +3599,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3748,7 +3755,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3846,7 +3853,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="WEATHER-verb"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4002,7 +4009,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4023,7 +4030,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4139,7 +4146,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="WEATHER-verb"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -4177,7 +4184,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="WEATHER-verb"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -4299,7 +4306,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4473,14 +4480,14 @@
     <lemma>njávgit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å smøre (utover)</tr>
+      <tr xml:lang="nob">å mjaue</tr>
     </translations>
     <valency>
       <val class=""/>
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4496,7 +4503,7 @@
       <tr xml:lang="nob">å frykte</tr>
     </translations>
     <valency>
-      <val class="LOC"/>
+      <val class="locv"/>
       <val class=""/>
     </valency>
     <semantics>
@@ -4598,7 +4605,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -4700,7 +4707,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4731,14 +4738,14 @@
     <lemma>áigut</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å ville</tr>
+      <tr xml:lang="nob">å villve</tr>
     </translations>
     <valency>
       <val class=""/>
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4759,7 +4766,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4882,7 +4889,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="MOVEMENT"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5160,7 +5167,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5179,7 +5186,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5226,7 +5233,7 @@
     </sources>
   </entry>
   <entry>
-    <lemma>billistit</lemma>
+    <lemma>billvistit</lemma>
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å ødelegge</tr>
@@ -5290,7 +5297,7 @@
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å ringe</tr>
-      <tr xml:lang="nob">å spille</tr>
+      <tr xml:lang="nob">å spillve</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -5317,7 +5324,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5375,7 +5382,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5396,7 +5403,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5769,7 +5776,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class="o"/>
@@ -5784,11 +5791,11 @@
       <tr xml:lang="nob">å treffes</tr>
     </translations>
     <valency>
-      <val class=""/>
+      <val class="comv"/>
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5808,7 +5815,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5906,7 +5913,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5945,7 +5952,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6101,7 +6108,7 @@
       <tr xml:lang="nob">å peke</tr>
     </translations>
     <valency>
-      <val class=""/>
+      <val class="illv"/>
       <val class=""/>
     </valency>
     <semantics>
@@ -6144,7 +6151,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6456,7 +6463,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6802,11 +6809,11 @@
       <tr xml:lang="nob">å prate</tr>
     </translations>
     <valency>
-      <val class=""/>
+      <val class="comv"/>
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class="n"/>
@@ -6819,15 +6826,15 @@
     <lemma>háliidit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å ville lyst til</tr>
-      <tr xml:lang="nob">å ville ha</tr>
+      <tr xml:lang="nob">å villve lyst til</tr>
+      <tr xml:lang="nob">å villve ha</tr>
     </translations>
     <valency>
       <val class=""/>
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6838,7 +6845,7 @@
     </sources>
   </entry>
   <entry>
-    <lemma>illudit</lemma>
+    <lemma>illvudit</lemma>
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å glede seg</tr>
@@ -6868,7 +6875,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6887,7 +6894,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6964,7 +6971,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7021,7 +7028,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="WEATHER-verb"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7160,7 +7167,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class="o"/>
@@ -7338,7 +7345,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7436,7 +7443,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="MOVEMENT"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7464,7 +7471,7 @@
     </sources>
   </entry>
    <entry>
-    <lemma>váillahit</lemma>
+    <lemma>váillvahit</lemma>
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å savne</tr>
@@ -7532,7 +7539,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7804,7 +7811,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7903,7 +7910,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -8138,7 +8145,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8176,7 +8183,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8197,7 +8204,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8429,7 +8436,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8508,7 +8515,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="WEATHER-verb"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8587,7 +8594,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8672,7 +8679,7 @@
     </sources>
   </entry>
   <entry>
-    <lemma>gillet</lemma>
+    <lemma>gillvet</lemma>
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å gidde</tr>
@@ -8741,7 +8748,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="AUX"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8938,7 +8945,7 @@
       <val class=""/>
     </valency>
     <semantics>
-      <sem class=""/>
+      <sem class="VERBAL"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9048,7 +9055,7 @@
     <lemma>diŋgot</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å bestille</tr>
+      <tr xml:lang="nob">å bestillve</tr>
       <tr xml:lang="nob">å abonnere</tr>
     </translations>
     <valency>

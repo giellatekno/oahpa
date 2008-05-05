@@ -2,6 +2,23 @@
 <!DOCTYPE lexicon PUBLIC "-//XMLmind//DTD lexicon//FI"
 "../../dtd/lexicon.dtd">
 <?xml-stylesheet type="text/css" href="../../dtd/lexicon.css"?>
+
+<!-- About semantical classes:
+ANIMALs are devided into four:
+ANIMAL-DOM (domestic), ANIMAL-WILD, ANIMAL-PET, ANIMAL (which not belong to the ohter subsets)
+CLOTHING-PL and ARRANGEMENT-PL: the numeral has go be plural - especially for the Morph-drill
+superset HUMAN will contain FAMILY, PROFESSION, ACTOR and OTHERS
+GROUP is also human but contains collective nouns
+BIRD-set is connected to flying, so it contains also some insects
+FISH-set is connected to living in water, so it contains also some animals
+In CONTAINER-set there are objects which can be in local case if the question is "where is ..." og "where do you put ..."
+superset FOOD will contain FOOD-DISH (you can order in a restaurant), FOOD-GROCERY (you can buy in a shop) and FOOD-OTHER (only for quizes and wordlists) 
+NATURE-PLACE are both naturewords and place, like "To where are you going now?"
+SHOW is for watching - geahččat
+There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POINT-LOC (it happened then - Loc), TIME-POINT-GEN (it happened then - Gen), TIME-SEASON (these are used both in Gen and as adverb) and TIME (for the leftovers). 
+
+-->
+
 <lexicon>
   <entry>
     <lemma>dohkká</lemma>
@@ -138,7 +155,7 @@
       <tr xml:lang="nob">forkortning</tr>
     </translations>
     <semantics>
-      <sem class="LANGUAGE-PART"/>
+      <sem class="LANGUAGEPART"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -419,7 +436,7 @@
       <tr xml:lang="nob">sammensatt ord</tr>
     </translations>
     <semantics>
-      <sem class="LANGUAGE-PART"/>
+      <sem class="LANGUAGEPART"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -433,7 +450,7 @@
       <tr xml:lang="nob">spørsmål</tr>
     </translations>
     <semantics>
-      <sem class="LANGUAGE-PART"/>
+      <sem class="LANGUAGEPART"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -447,7 +464,7 @@
       <tr xml:lang="nob">spørsmål</tr>
     </translations>
     <semantics>
-      <sem class="LANGUAGE-PART"/>
+      <sem class="LANGUAGEPART"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -461,7 +478,7 @@
       <tr xml:lang="nob">stedsnavn</tr>
     </translations>
     <semantics>
-      <sem class="LANGUAGE-PART"/>
+      <sem class="LANGUAGEPART"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -475,7 +492,7 @@
       <tr xml:lang="nob">bokstav</tr>
     </translations>
     <semantics>
-      <sem class="LANGUAGE-PART"/>
+      <sem class="LANGUAGEPART"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -8836,7 +8853,7 @@
       <tr xml:lang="nob">påskeferie</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -8852,7 +8869,7 @@
     </translations>
     <semantics>
       <sem class="CHRISTMAS"/>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -8869,7 +8886,7 @@
       <tr xml:lang="nob">friminutt</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -8885,7 +8902,7 @@
       <tr xml:lang="nob">spisepause</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -8900,7 +8917,7 @@
       <tr xml:lang="nob">august</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -8917,7 +8934,7 @@
       <tr xml:lang="nob">spisepause</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -8933,7 +8950,7 @@
       <tr xml:lang="nob">april</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -8997,7 +9014,7 @@
       <tr xml:lang="nob">høstferie</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9012,7 +9029,7 @@
       <tr xml:lang="nob">september</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9145,7 +9162,7 @@
       <tr xml:lang="nob">kveldsstund</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9160,7 +9177,7 @@
       <tr xml:lang="nob">friminutt</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9222,7 +9239,7 @@
       <tr xml:lang="nob">kaffepause</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9237,7 +9254,7 @@
       <tr xml:lang="nob">sommerferie</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9252,7 +9269,7 @@
       <tr xml:lang="nob">juni</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9332,7 +9349,7 @@
       <tr xml:lang="nob">oktober</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9365,7 +9382,7 @@
       <tr xml:lang="nob">februar</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9566,7 +9583,7 @@
       <tr xml:lang="nob">desember</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9615,7 +9632,7 @@
       <tr xml:lang="nob">ferie</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9683,7 +9700,7 @@
       <tr xml:lang="nob">mai</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9765,7 +9782,7 @@
       <tr xml:lang="nob">mars</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9826,7 +9843,7 @@
       <tr xml:lang="nob">januar</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9907,7 +9924,7 @@
       <tr xml:lang="nob">mørketid</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9936,7 +9953,7 @@
       <tr xml:lang="nob">mørketid</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9952,7 +9969,7 @@
       <tr xml:lang="nob">november</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -10030,7 +10047,7 @@
       <tr xml:lang="nob">juli</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -10064,7 +10081,7 @@
       <tr xml:lang="nob">helg</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -10126,7 +10143,7 @@
       <tr xml:lang="nob">kveld</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -10143,7 +10160,7 @@
       <tr xml:lang="nob">morgen</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -10778,7 +10795,7 @@
       <tr xml:lang="nob">barne-TV</tr>
     </translations>
     <semantics>
-      <sem class="ARRANGEMENT"/>
+      <sem class="SHOW"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -15475,7 +15492,7 @@
       <tr xml:lang="nob">skutercross</tr>
     </translations>
     <semantics>
-      <sem class="ARRANGEMENT"/>
+      <sem class="SHOW"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -17146,7 +17163,7 @@
       <tr xml:lang="nob">barnetime</tr>
     </translations>
     <semantics>
-      <sem class="ARRANGEMENT"/>
+      <sem class="SHOW"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -17891,7 +17908,7 @@
     </sources>
   </entry>
   <entry>
-    <lemma>márkanábáiki</lemma>
+    <lemma>márkanbáiki</lemma>
 	<pos class="N"/>
     <translations>
       <tr xml:lang="nob">kirkested</tr>
@@ -18844,7 +18861,7 @@
       <tr xml:lang="nob">høytid</tr>
     </translations>
     <semantics>
-      <sem class="TIME-POINT"/>
+      <sem class="TIME-POINT-LOC"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -19867,7 +19884,7 @@
       <tr xml:lang="nob">konkurranse</tr>
     </translations>
     <semantics>
-      <sem class="ARRANGEMENT"/>
+      <sem class="SHOW"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -19913,7 +19930,7 @@
       <tr xml:lang="nob">joikekonsert</tr>
     </translations>
     <semantics>
-      <sem class="ARRANGEMENT"/>
+      <sem class="SHOW"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -20034,7 +20051,7 @@
       <tr xml:lang="nob">teater</tr>
     </translations>
     <semantics>
-      <sem class="ARRANGEMENT"/>
+      <sem class="SHOW"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -20083,7 +20100,7 @@
       <tr xml:lang="nob">skirenn</tr>
     </translations>
     <semantics>
-      <sem class="ARRANGEMENT"/>
+      <sem class="SHOW"/>
     </semantics>
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -20098,7 +20115,7 @@
       <tr xml:lang="nob">reinkappkjøring</tr>
     </translations>
     <semantics>
-      <sem class="ARRANGEMENT"/>
+      <sem class="SHOW"/>
     </semantics>
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -20131,7 +20148,7 @@
       <tr xml:lang="nob">bryllup</tr>
     </translations>
     <semantics>
-      <sem class="ARRANGEMENT"/>
+      <sem class="SHOW"/>
     </semantics>
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -20909,7 +20926,7 @@
       <tr xml:lang="nob">reinkappkjøring</tr>
     </translations>
     <semantics>
-      <sem class="ARRANGEMENT"/>
+      <sem class="SHOW"/>
     </semantics>
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -21183,7 +21200,7 @@
       <tr xml:lang="nob">duodjeutstilling</tr>
     </translations>
     <semantics>
-      <sem class="ARRANGEMENT"/>
+      <sem class="SHOW"/>
     </semantics>
     <stem class="bisyllabic"/>
     <dialect class=""/>
