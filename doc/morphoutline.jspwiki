@@ -1,6 +1,6 @@
-!!!Morphology game
+!!!Morphologycal drill
 
-This is a separate game, made to train morphological patterns. It draws wordform specifications at random, and the user has to answer with the wordform. This game will be accessed by the dialogue game if the user makes (too many) errors there, but it can also be accessed in its own right.
+This is a separate drill, made to train morphological patterns. It draws wordform specifications at random, and the user has to answer with the wordform. This drill will be accessed by the dialogue game if the user makes (too many) errors there, but it can also be accessed in its own right.
 
 !!Overview
 
@@ -8,16 +8,16 @@ A short explanation of how to form the word, and then 15 words s/he has to infle
 
 !!How it works:
 
-Bisyllabic, trisyllabic and contracted verbs/nouns/adjectives, but random in every group (from pedagogical lexicons so the students trains useful words).
+Bisyllabic, trisyllabic and contracted verbs/nouns/adjectives/numerals, but random in every group (from pedagogical lexicons so the students trains useful words).
 
 The training will then be a predefined set of morphosyntactic features, paired with a set of words, combined with a random function. The student shall provide correct wordforms.
 
-Note: We make two versions of the game: The ''bare m-game'' and the ''contextual m-game''. The bare m-game consists of singleton words only. The contextual m-game gives matrix questions, in order to strengthen the linguistic context.
+Note: We make two versions of the drill: The ''bare morph-drill'' and the ''contextual morph-drill''. The bare morph-drill consists of singleton words only. The contextual morph-drill gives matrix questions, in order to strengthen the linguistic context.
 
 
-!!An outline of how the bare m-game can work:
+!!An outline of how the bare morph-drill can work:
 
-A lexicon of nouns, verbs, adjectives - numbered. Every lexicon is devided into three parts, one for bisyllabic (e.g 1-100), one for trisyllabic (e.g 101-200) and one for contracted stems (e.g 200-250).
+A lexicon of nouns, verbs, adjectives - numbered. In the lexicons are information about stem, and they are numbered, like bisyllabic (e.g 1-100), trisyllabic (e.g 101-200) and contracted stems (e.g 200-250).
  
 There will be three random functions (or you can put in a fixed choice) so it is possible to run different kinds, e.g:
 
@@ -33,10 +33,12 @@ There will be three random functions (or you can put in a fixed choice) so it is
 The user will have the following choices:
 
 {{{
-- Part of speech (N, A, V)
+- Part of speech (N, A, V, Num)
 - Stem type (bisyllabic, trisyllabic, contracted, any)
 - Scope (one word with random forms / random words with one form / random words with random forms)
 - Dialect form (eastern, western) (?)
+- Translation or not
+- Lexicon belongs to a textbook
 }}}
 
 In the {{scope}} session the user should be able to restrict the scope, and thereby also the level of difficulty. The choice tablau could be menus or radio buttons, with one likely situation preset as default.
@@ -74,22 +76,18 @@ Selection for the adjectives:
 
 Selection for the numerals:
 
-We would like a numeral game both ways.
 
 
 
 
-!!Outline of the contextual m-game
+!!Outline of the contextual morph-drill
 
 {{{
-CONTEXTUAL MORPH-DRILL
-========================
-
-We will use questions or phrases so the drill also support the user´s “languagefeeling”. The norwegian tranlation can be visible - discrete (light colour). 
+We will use questions or phrases in order to strengthen the linguistic context. The norwegian tranlation can be visible - discrete (light colour). 
 
 The user can choose between these drill-types:
 
-•	POS: nouns, adjectives or verbs
+•	POS: nouns, adjectives, verbs, numerals
 	•	Adjectives: attributive or predicative drill
 	•	Nouns: which case
 	•	Verbs: 
@@ -100,10 +98,12 @@ The user can choose between these drill-types:
 			•	conditional (only present tense)
 			•	potential (only present tense)
 			•	imperative
+	•	Numerals: 
+			• 	as attribute to nouns, in all cases. Also plural numbers
+			•	collective numerals, in all cases
 
-We should think about numerals.	
 
-----
+OPTIONS
 
 User´s options (there will be default, so the user does not have to make all choices):
 
@@ -120,7 +120,15 @@ In the files there are info about stem and semantics and also translation. If th
 •	Norwegian translation or not. Default is "no translation".
 
 
-------------
+TUTORIAL FUNCTION
+
+If the user doesn´t succeed writing the correct wordform, s/he will get help. E.g. the task is to inflect a noun in illative sg:
+	1. A reminder like "This word has contracted stem" (stem information in the pedlex)
+	2. "Do you need help?" > Short explanation about contracted stems in illative
+	3. "Do you want the correct wordform?" > The correct form
+
+
+SETS
 
 All variables are inside ''. Setnames with big letters.
 "FOOD/DRINK Sg Nom > Sg Ill" means that machine gives a word form set FOOD/DRINK in Sg Nom, and accept answer in Sg Ill.
@@ -135,7 +143,7 @@ U - user
 
 ================
 = Noun - cases =
-================
+================ 
 
 Illative - fixed questions. 
 ============================
@@ -166,7 +174,7 @@ M: Geas lea váralaš 'bussá' (ANIMAL Sg Nom)?  (Who has dangerous ANIMAL? Vari
 U: oahpaheaddjis
 
 
-M: Geain lea váralaš 'bussá' (ANIMAL Sg Nom)?  (Who has dangerous ANIMAL? - plural)
+M: Geain lea váralaš 'bussá' (ANIMAL Pl Nom)?  (Who has dangerous ANIMALs? - who is plural)
 'oahpheaddjit' (HUMAN Pl Nom > Pl Loc)
 U: oahpaheddjiin
 
@@ -296,7 +304,7 @@ U: (Sii) eai stoaga.  (> ii Neg Pl3 + ACTIVITY > ConNeg)
 
 Past tense: 
 M: 'Stohke' (ACTIVITY Prt Pl3) go 'bártnit' (HUMAN Pl Nom) ikte? 
-U: (Sii) eai stoohkan.   (> ii Neg Pl3 + ACTIVITY > PrfPrc)
+U: (Sii) eai stoahkan.   (> ii Neg Pl3 + ACTIVITY > PrfPrc)
 
 Conditional
 ==========
@@ -311,7 +319,6 @@ Same questions as in Negation present tense:
 
 M: 'Stohket' (ACTIVITY Ind Prs Pl3 > Pot Prs Pl3) go 'bártnit' (HUMAN Pl Nom)? 
 U: (In dieđe,) stoagažit (go) .    
-
 
 Imperative
 ===========
@@ -394,6 +401,7 @@ U: (Muhto mu 'báidi' (CLOTHING Sg Nom) lea) divraseamos
 
 M: Gal dáppe leat 'divrras' (CLOTHES-adj Attr > Superl Pl Nom) 'buvssat' (CLOTHING Pl Nom) 
 U: (Muhto mu 'buvssat' leat) divrasepmosat   
+
 
 
 ===============================
@@ -522,27 +530,6 @@ U: Guoktásiin.
 
 
 }}}
-
-
-
-
-
- 
-!!Outline of work to do
-
-!Linguistic work
-
-We have started the work on a generation  transducer {{isme-restr.fst}} (restricted inverted sme.fst) which gives only one form. Today, the restricted transducer has a western bias (eastern forms are deprecated) but we might add an eastern version as well, so that it would be {{wisme-restr.fst, eisme-restr.fst}}, for western and eastern). The restricted transducer does not give SUB form, not Eastern forms, and not forms marked with __^NG^__. There are probably doublet forms still left in the transducer, but at least the basic noun case and verb person variation been removed. Adjectives (multiple attributes) are still not catered for.
-
-Lexicon work is underway.
-
-!Programming work
-
-* Web interface
-* Random function
-* Query - answer mechanism
-* Response if correct or wrong (cf. visl mechanism)
-* Point score?
 
 
 
