@@ -57,10 +57,10 @@ def print_entries(entries, all):
 
     for e in list(allset):
         if options.print_all:
-            print e.toxml()
+            print e.toxml(encoding="utf-8")
         else:
             ltext=e.getElementsByTagName("lemma")[0].firstChild.data
-            print ltext
+            print ltext.encode('utf8')
 
 xmlfile=file(options.infile)
 tree = _dom.parse(options.infile)
