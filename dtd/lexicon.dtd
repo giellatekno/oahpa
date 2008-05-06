@@ -40,6 +40,10 @@ D1 < ... < D4 davvin 1-4
 <!ELEMENT sem EMPTY>
 <!ATTLIST sem class  CDATA #IMPLIED >
 
+<!ELEMENT pos EMPTY>
+<!ELEMENT pos (#PCDATA) >
+<!ATTLIST pos class ( A | V | N )  >
+
 <!-- <!ATTLIST sem class ( ACTIVITY | MOVEMENT | VERBAL | WEATHER-verb | AUX ) #IMPLIED > -->
 <!-- This list does not correspond reality at the moment. Semantic classes in the lexicons: -->
 <!-- These will be fixed when the correct classes are chosen. -->
@@ -88,6 +92,7 @@ LANGUAGE
 LANGUAGEPART
 NATURE
 NATURE-PLACE
+NATURE-WATER
 ORGANIZATION
 OTHERS
 PLACE
