@@ -1,0 +1,193 @@
+!!!XML-structure for questions and answers
+
+This document contains thoughts about xml-structure for questions for
+qa-drill and also for the dialogue game. The suggestions are based on
+two documents: Morphdrill and qaoutline. 
+
+We should first think what kind of information we need for
+qa-system. There is a general form for questions and answers that is
+described in qaoutline-document. Here are couple of examples of proto-questions:
+
+{{{
+   Maid (SUBJ) TV-QPN (ADVL) 
+   Goas IV-QPN (ADVL)
+   TV-QPN go (SUBJ) OBJ (ADVL) 
+   LEAT-QPN go (SUBJ) TV-PRTPTC OBJ (ADVL)
+}}}
+
+The grammatical form for basic questions is thus quite nicely
+determined. But how do we select the elements to these sentences?
+When you are learning a language, you should try to use the word
+combinations that are familiar for the user and sentences from
+real-life situations. New words or word combinations
+may confuse the user. For example, if the user concentrates on
+inflecting nouns, the questions could be quite fixed so that the meaning of
+the sentence is clear and the learner may better concentrate to the task.
+There are couple of things we can do:  
+
+1. Form set that limit the set of words where the elements are picked
+to the sentences.
+
+This may not be enough, since it may be customary to
+use a certain sentence for asking certain things. Some questions are
+more idiomatic than others, and since this is a pedagocial program, we
+should take those uses into account. 
+
+In addition, the user can at the same time learn sentences that are not
+akward if used in a conversation. For example, practising conditional
+and potential requires different kind of setting thatn practising
+e.g. present tense. However, more advanced student may have more fun with
+random sentences.
+
+2. Design the questions more detailly. 
+
+Morphdrill-document contains examples of more detailled
+questions. Another thing that has to be taken into account is the
+expected answer. For example, the same question may be used for both
+verb and noun inflection:
+{{
+Menittekö kouluun?
+Ei, me __ __ kouluun. (emme menneet)
+Ei, me __ uimaan. (menimme)
+Ei, me menimme __ . (uimaan)
+}}
+
+How is this information presented? Do we have different sets of
+questions for testing verbs and nouns or can we use the same set of
+questions?
+
+There are two kinds of grammatical information that has to be taken
+into account in the program:
+
+* Dependencies inside a sentence: agreement
+* Answer is dependent on the forms that are used in the question.
+
+So for example:
+{{
+M: Maid Pron+Pers+QPN+Nom bargat+Ind+Prs+QPN odne?
+V (ACTIVITY Inf)
+U: (Pron+Pers+QPN+Nom) V+Ind+Prs+QPN
+
+M: Maid mun barggan odne?  
+'stoahkat' (ACTIVITY Inf > Prs Sg2)
+U: (Don) stoagat    
+}}
+
+* Agreement
+** Subject-verb agreement inside the question (N+QPN=V+QPN)
+** case and number inflection for adjectives and other elements inside an NP.
+** Time adverbials selected according to the tense (not actually agreement)
+** Other?
+
+* Question-answer dependencies
+** QPN = APN
+** Preserve tense and mood in the main verb
+** Other?
+
+Then there should be possibility to select the properties of sentences
+according to the settings. Perhaps we should decide first what kind of
+settings we have, and tag the questions accordingly? Lene has listed
+the following in the Morphdrill-docu:
+
+* Adjectives: attributive or predicative drill
+* Nouns: which case
+* Verbs: 
+** indicative:
+*** present tense or past tense
+** affirmative or negative
+** conditional (only present tense)
+** potential (only present tense)
+** imperative
+* Numerals: 
+** as attribute to nouns, in all cases. Also plural numbers
+** collective numerals, in all cases
+
+These sets all require a bit different kind of question setting.
+
+If we think about the general question type, there are the following
+variables, which have a grammatical status, i.e. they agree with each
+other etc. So they have to be explicitely marked in the sentence.
+{{
+SUBJ, MAINV, LEAT, PRTPTC?, NEG, ADJ, other?
+}}
+
+In addition to these, any element may be a variable. The idea of the
+xml-structure that I suggest is that sentences contain this
+kind of variables, which have the grammatical information specified.
+For example, we may have questions where everything else is given, but the answer is
+selected from a set. I have marked the variable as "ANSWER" here, but
+it could have any name:
+{{
+M: Gosa don manat dál?	(Where do you go?)
+'Suopma'  (PLACE Sg Nom > Sg Ill)			
+S: Supmii
+
+<q>
+  <question>
+    <text>Gosa don manat dál</text>
+  </question>
+  <answer> 
+    <text>Mun manan ANSWER</text>
+    <element pos="N">
+      <grammar tag="N+Sg+Ill"/>
+      <sem class="PLACE"/>
+     </element>
+  </answer>
+</q>
+}}
+
+The information for the word 'Suopma', Sg+Nom is assumed in the
+program, so that the suggested answer is in N+Sg+Nom or for
+verbs, V+Inf. (or it can be explicitely specified if needed)
+
+Information for the variables in the sentences are given inside
+<element> -tags. The order of the elements should be the same as the
+order of the variables inside the sentence. (Or the elements should be
+marked otherwise, we have to see if the order is too error-prone). Let
+us generalize the example above.
+{{
+<q>
+  <question>
+    <text>Gosa SUBJ MAINV dál</text>
+    <element pos="Pron">
+      <grammar tag="Pron+Pers+Person-Number+Nom"/>
+     </element>
+    <element pos="V">
+      <grammar tag="V+Ind+Prs+Person-Number"/>
+      <lemma>manat</lemma>
+     </element>
+  </question>
+  <answer> 
+    <text>SUBJ MAINV ANSWER</text>
+    <element/>
+    <element/>
+    <element pos="N">
+      <grammar tag="N+Sg+Ill"/>
+      <sem class="PLACE"/>
+     </element>
+  </answer>
+</q>
+}}
+
+Here the variables SUBJ and MAINV in the answer depend fully on the
+SUBJ and MAINV in the question, thus they do not require any other
+information. The information for the ANSWER-variable is given. This
+question could be used also in contexts:
+{{
+Gosa don manat dál?
+Mun __ Supmii.
+}}
+
+Now how do we present this information that this question can be used
+in different drills? The question could be tagged according to which
+type of drill they can be used in.
+
+Thus, I think that we do not have try to find the most general
+format for the questions. Instead we should write the questions quite
+explicitely so that they have a natural feeling. This means use of
+small words and word combinations that are familiar to the user. In
+addition, we need quite specified questions in the dialogue game, so
+there should be a way to represent them. However, some generality can be
+achieved by using variables, when part of the grammatical information
+e.g. subject-verb agreement is handled by the program.
+
