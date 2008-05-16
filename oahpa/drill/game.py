@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from django.template import Context, loader
-from ped.morph.models import *
-from ped.morph.forms import *
+from oahpa.drill.models import *
+from oahpa.drill.forms import *
 from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404, render_to_response
