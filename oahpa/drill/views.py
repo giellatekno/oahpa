@@ -6,13 +6,13 @@ from django.shortcuts import get_list_or_404, render_to_response
 from random import randint
 from django.contrib.admin.views.decorators import _encode_post_data, _decode_post_data
 from game import *
-from qagame import *
+#from qagame import *
 
 
 class Info:
     pass
 
-def index(request):
+def mgame(request):
     
     count=0
     correct=0
