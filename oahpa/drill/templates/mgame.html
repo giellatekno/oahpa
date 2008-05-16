@@ -1,0 +1,68 @@
+{% extends "game.html" %}
+{% load i18n %}
+
+{% block name %}{% trans "Morphology" %}{% endblock %}
+
+{% block settings %}
+
+<form method="post" action="">
+<table width="550">
+<tr>
+<td>{% trans "Game type" %}</td>
+<td>
+{% trans "Part of speech" %}</td><td>{% trans "Type of the word" %}</td><td>{% trans "Dialect" %} (not used)</td>
+</tr>
+<tr>
+<td>{{ settingsform.gametype }}</td>
+<td>{{ settingsform.pos }}</td>
+<td>
+{{ settingsform.bisyllabic }}{% trans "bisyllabic" %}<br/>
+{{ settingsform.trisyllabic }}{% trans "trisyllabic" %}<br/>
+{{ settingsform.contracted }}{% trans "contracted" %}<br/>
+</td>
+<td>
+<input type="radio" name="dialect" value="western" checked="checked" />{% trans "Western" %}<br/>
+<input type="radio" name="dialect" value="eastern" />{% trans "Eastern" %}<br/>
+</td>
+</tr>
+</table>
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+
+{% endblock %}
+
+
+{% block question %}
+
+{% ifequal gametype "bare" %}
+<td>
+{% if forloop.first %}
+<div id='lemma'>
+{% else %}
+<div id='lemma_{{ forloop.counter0 }}'>
+{% endif %}
+
+{{ form.lemma }}+{{ form.tag }}
+</div>
+{% if forloop.first %}
+<div id='tooltip' style="display:none; margi:5px; packground-color:red;">
+{{ form.translations }} <br/>
+</div>
+<script type="text/javascript">
+var lemma_tooltip = new Tooltip('lemma','tooltip')
+</script>
+{% else %}
+<div id='tooltip_{{ forloop.counter0 }}' style="display:none; margi:5px; packground-color:red;">
+{{ form.translations }} <br/>
+</div>
+<script type="text/javascript">
+var lemma_{{ forloop.counter0 }}_tooltip = new Tooltip('lemma_{{ forloop.counter0 }}','tooltip_{{ forloop.counter0 }}')
+</script>
+{% endif %}
+
+</td>
+{% else %}
+     <td>{{ form.question }} ({{ form.lemma }})</td>
+{% endifequal %}
+
+{% endblock %}
+
