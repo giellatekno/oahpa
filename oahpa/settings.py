@@ -1,4 +1,6 @@
 # Django settings for oahpa project.
+import os.path
+import sys
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -80,7 +82,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
-    'dril',
+    'drill',
 )
 
 LANGUAGES = (
