@@ -21,6 +21,7 @@ def mgame(request):
     settings = Info()
     settings.syll = []
     settings.partofsp="N"
+    settings.books=[]
     gametype="bare"
     settings.semtype="NATURE"
 
@@ -41,6 +42,10 @@ def mgame(request):
 
         if settings_form.data['pos']:
             settings.partofsp= settings_form.data['pos']
+        if settings_form.data['book']:
+            settings.books.append(settings_form.data['book'])
+        else:
+            settings.books.append('all')
         if settings_form.data['gametype']:
             settings.gametype= settings_form.data['gametype']
 
@@ -67,6 +72,7 @@ def mgame(request):
     else:
         settings_form = MorphForm()
         settings.syll.append('bisyllabic')
+        settings.books.append('all')
         game = BareGame(settings)
         game.new_game()
 
