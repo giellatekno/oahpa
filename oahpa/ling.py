@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
+
 from settings import *
-from morph.models import *
+from drill.models import *
 from xml.dom import minidom as _dom
 from optparse import OptionParser
 from django.db.models import Q
@@ -38,10 +40,12 @@ class Paradigm:
                     string = matchObj.expand(r'\g<tagString>')
                     self.tagset[string]=tagclass
 
-    def read_paradigms(self, parafile):
-        
-        fileObj = codecs.open(parafile, "r", "utf-8" )
-        genObj=re.compile(r'^(?P<lemmaString>[\w]+)\+(?P<tagString>[\w\+]+)[\t\s]+(?P<formString>[\w]*)$', re.U)
+    def read_paradigms(self,paradigmfile):
+        if not self.tagset:
+            self.handle_tags()
+
+        fileObj = codecs.open(paradigmfile, "r", "utf-8" )
+        genObj=re.compile(r'^(?P<posString>[\w]+)\+.*$', re.U)
 
         while True:
             line = fileObj.readline()
@@ -49,23 +53,43 @@ class Paradigm:
             if not line.strip(): continue
             matchObj=genObj.search(line)
             if matchObj:
+                pos=matchObj.expand(r'\g<posString>')
+            if not self.paradigms.has_key(pos):
+                self.paradigms[pos]=[]
+            self.paradigms[pos].append(line)
+
+    def create_paradigm(self, lemma, pos):
+        print lemma
+        if not self.tagset:
+            self.handle_tags()
+
+        self.paradigm = []
+							  
+        genObj=re.compile(r'^(?P<lemmaString>[\w]+)\+(?P<tagString>[\w\+]+)[\t\s]+(?P<formString>[\w]*)$', re.U)
+        all=""
+        for a in self.paradigms[pos]:
+            all = all + lemma + "+" + a
+        # generator call
+        fstdir="/opt/smi/sme/bin"
+        gen_norm_fst = fstdir + "/isme-norm.fst"
+        gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        lines_tmp = os.popen(gen_norm_lookup).readlines()
+        for line in lines_tmp:
+            if not line.strip(): continue
+            matchObj=genObj.search(line)
+            if matchObj:
                 g = Entry()
                 g.classes={}
                 lemma = matchObj.expand(r'\g<lemmaString>')
-                if not self.paradigms.has_key(lemma):
-                    self.paradigms[lemma] = []
                 g.form = matchObj.expand(r'\g<formString>')
-                if re.compile("\?").match(g.form.encode('utf-8')): continue
+                if re.compile("\?").match(g.form): continue
                 g.tags = matchObj.expand(r'\g<tagString>')
                 for t in g.tags.split('+'):
-                    #print "JEE", t
+                    #print "JEE" + t
                     if self.tagset.has_key(t):
                         tagclass=self.tagset[t]
-                        #print tagclass
                         g.classes[tagclass]=t
-                self.paradigms[lemma].append(g)
-                
-        fileObj.close()
+                self.paradigm.append(g)
 
 class Questions:
 
@@ -75,8 +99,8 @@ class Questions:
 
     def read_elements(self,head,type, question_element):
         
-            i=1
-            for el in head.getElementsByTagName("element"):
+        i=1
+        for el in head.getElementsByTagName("element"):
 
                 pos=el.getAttribute("pos")
                 lemmas=el.getElementsByTagName("lemma")
