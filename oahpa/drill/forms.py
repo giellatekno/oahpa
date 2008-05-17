@@ -8,8 +8,20 @@ from models import Word, Form, Question
 
 POS_CHOICES = (
     ('N', _('noun')),
-#    ('V', _('verb')),
+    ('V', _('verb')),
 #    ('A', _('adjective')),
+)
+
+BOOK_CHOICES = (
+    ('d1', _('Davvin 1')),
+    ('d2', _('Davvin 2')),
+    ('d3', _('Davvin 3')),
+	('d4', _('Davvin 4')),
+    ('algu', _('álgu')),
+    ('sara', _('sárá')),
+    ('bures', _('Bures')),
+    ('oaidnalit', _('Oaidnalid')),
+    ('all', _('All')),
 )
 
 GAME_CHOICES = (
@@ -96,6 +108,7 @@ def set_hidden(self, userans_val,correct_val):
 
 class MorphForm(forms.Form):
     pos = forms.ChoiceField(initial='N', choices=POS_CHOICES, widget=forms.RadioSelect)
+    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.RadioSelect)
     gametype = forms.ChoiceField(initial='bare', choices=GAME_CHOICES, widget=forms.RadioSelect)
     bisyllabic = forms.BooleanField(required=False, initial='1')
     trisyllabic = forms.BooleanField(required=False,initial='1')
