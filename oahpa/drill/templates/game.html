@@ -20,32 +20,48 @@
 {% block question %}{% endblock %}
 </tr>
 <tr>
-<td>
-      {% ifnotequal form.userans "" %}
-
-       {% ifequal form.error "correct" %}
-       <font color="green">{{ form.userans }}</font>
-       {% else %}
-       {% ifequal form.error "error" %}
+  <!-- Show correct answers if "show correct" is pressed -->
+  {% if show_correct %}
+    <td>  
+    {% ifequal form.error "correct" %}
+      <font color="green">{{ form.userans }}</font>
+    {% else %}
+    {% ifequal form.error "error" %}
        <font color="red">{{ form.userans }}</font>
-       {% endifequal %}
-       {% endifequal %}
+       </td>
+     {% endifequal %}
+       <td>
+       {{ form.correct_answers }}
+       </td>
+     {% endifequal %}
+   {% else %}
 
-       {% else %}
-       {{ form.answer }} 
-     {% endifnotequal %}
-
-</td>
-<td>
-  {% if form.correct_answers %}
-  {% ifnotequal form.error "correct" %}
-  {{ form.correct_answers }}
-  {% endifnotequal %}
-  {% else %}
-  {% ifequal form.error "error" %}
-  error
-  {% endifequal %}
-{% endif %}
+   <!-- If just test answers, mark user answers as green or red -->
+  <td>
+      {% ifnotequal form.userans "" %}
+        {% ifequal form.error "correct" %}
+          <font color="green">{{ form.userans }}</font>
+        {% else %}
+          {% ifequal form.error "error" %}
+            <font color="red">{{ form.userans }}</font>
+          {% endifequal %}
+        {% endifequal %}
+      {% else %}
+	    <!-- Answer field -->
+        {{ form.answer }} 
+      {% endifnotequal %}
+     </td>
+     <td>
+    {% if show_correct %}
+      {% ifnotequal form.error "correct" %}
+        {{ form.correct_answers }}
+      {% endifnotequal %}
+    {% else %}
+      {% ifequal form.error "error" %}
+        error
+      {% endifequal %}
+    {% endif %}
+  {% endif %}
 </td>
 <td>
        {{ form.word_id }}       {{ form.tag_id }} {{ form.userans_stored }} {{ form.correct }}
@@ -70,7 +86,9 @@
 <tr><td></td>
 <td>
 {% if not all_correct %}
+   {% if not show_correct %}
    <input type="submit" name="test" value="{% trans "Test answers" %}">
+   {% endif %}
    {% ifequal count 1 %}
    <input type="submit" name="show_correct" value="{% trans "Show correct answers" %}" >
    {% endifequal %}

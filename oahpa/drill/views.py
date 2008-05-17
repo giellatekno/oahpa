@@ -84,6 +84,7 @@ def mgame(request):
         'gametype': gametype,
         'score': game.score,
         'all_correct': game.all_correct,
+        'show_correct': game.show_correct,
     })
     return render_to_response('mgame.html', c)
 
@@ -116,7 +117,7 @@ def quizz(request):
         if 'test' in data:
             game.count=1
         if "show_correct" in data:
-            show_data = 1
+            game.show_correct = 1
 
         
     # If there is no POST data, default settings are applied
@@ -132,6 +133,7 @@ def quizz(request):
         'count': game.count,
         'score': game.score,
         'all_correct': game.all_correct,
+        'show_correct': game.show_correct,
     })
 
     return render_to_response('quizz.html', c)
@@ -163,7 +165,7 @@ def numgame(request):
         if 'test' in data:
             game.count=1
         if "show_correct" in data:
-            show_data = 1
+            game.show_correct = 1
 
         
     # If there is no POST data, default settings are applied
@@ -179,6 +181,7 @@ def numgame(request):
         'count': game.count,
         'score': game.score,
         'all_correct': game.all_correct,
+        'show_correct': game.show_correct,
     })
 
     return render_to_response('num.html', c)
@@ -211,7 +214,7 @@ def qagame(request):
         if 'test' in data:
             game.count=1
         if "show_correct" in data:
-            show_data = 1
+            game.show_correct = 1
 
         
     # If there is no POST data, default settings are applied
@@ -228,6 +231,7 @@ def qagame(request):
         'count': game.count,
         'score': game.score,
         'all_correct': game.all_correct,
+        'show_correct': game.show_correct,
     })
 
     return render_to_response('qa.html', c)

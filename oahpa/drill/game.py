@@ -21,6 +21,7 @@ class Game:
         self.score = ""
         self.settings = settings
         self.all_correct = ""
+        self.show_correct = 0
         self.num_fields = 5
 
         
@@ -75,6 +76,7 @@ class Game:
 
         # Add correct forms for words to the page
         if "show_correct" in data:
+            self.show_correct = 1
             for form in self.form_list:
                 form.set_correct()
                 self.count=2
@@ -89,7 +91,7 @@ class Game:
                 if i == len(self.form_list):
                     self.all_correct=1
 
-        if "show_correct" in data or self.all_correct:
+        if self.show_correct or self.all_correct:
             self.score = self.score.join([`i`, "/", `len(self.form_list)`])
 
 
@@ -174,7 +176,6 @@ class BareGame(Game):
                 word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll))
             else:
                 word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(source__name__in=books))
-            print books
             word_id = word_list[randint(0, len(word_list)-1)].id
                 
             form_list = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id))
