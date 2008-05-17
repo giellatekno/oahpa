@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import string
 import sys
 from django import newforms as forms
@@ -16,9 +17,9 @@ BOOK_CHOICES = (
     ('d1', _('Davvin 1')),
     ('d2', _('Davvin 2')),
     ('d3', _('Davvin 3')),
-	('d4', _('Davvin 4')),
-    ('algu', _('álgu')),
-    ('sara', _('sárá')),
+    ('d4', _('Davvin 4')),
+    ('álgu', _('algu')),
+    ('sárá', _('sara')),
     ('bures', _('Bures')),
     ('oaidnalit', _('Oaidnalid')),
     ('all', _('All')),
