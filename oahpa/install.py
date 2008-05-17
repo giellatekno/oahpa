@@ -2,7 +2,7 @@ from os import environ
 environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 from settings import *
-from morph.models import *
+from drill.models import *
 from xml.dom import minidom as _dom
 from optparse import OptionParser
 from django.db.models import Q
@@ -19,8 +19,8 @@ parser.add_option("-p", "--pos", dest="pos",
                   help="Pos info")
 parser.add_option("-t", "--tagfile", dest="tagfile",
                   help="List of tags and tagsets")
-parser.add_option("-r", "--parafile", dest="parafile",
-                  help="List of paradigms")
+parser.add_option("-r", "--paradigmfile", dest="paradigmfile",
+                  help="Generate paradigms")
 parser.add_option("-q", "--questionfile", dest="questionfile",
                   help="XML-file that contains questions")
 parser.add_option("-u", "--update", dest="update",
@@ -36,10 +36,9 @@ if options.tagfile:
     linginfo.handle_tags(options.tagfile)
     #print linginfo.tagset
 
-if options.parafile:
-    linginfo.read_paradigms(options.parafile)
-    #print linginfo.paradigms
-    #exit()
+if options.paradigmfile:
+    linginfo.read_paradigms(options.paradigmfile)
+    #print linginfo.tagset
 
 if options.questionfile:
     questions.read_questions(options.questionfile)
@@ -83,23 +82,22 @@ for e in tree.getElementsByTagName("entry"):
     w.save()
     
     # Add forms and tags
-    if options.parafile:
-        if not linginfo.paradigms.has_key(lemma):
-            print "No paradigm found for ", lemma
-        else:
-            for form in linginfo.paradigms[lemma]:
-                g=form.classes
-                t,created=Tag.objects.get_or_create(string=form.tags,pos=g.get('Wordclass', ""),\
-                                                    number=g.get('Number',""),case=g.get('Case',""),\
-                                                    possessive=g.get('Possessive',""),grade=g.get('Grade',""),\
-                                                    infinite=g.get('Infinite',""), \
-                                                    personnumber=g.get('Person-Number',""),\
-                                                    polarity=g.get('Polarity',""),\
-                                                    tense=g.get('Tense',""),mood=g.get('Mood',""), \
-                                                    subclass=g.get('Subclass',""),attributive=g.get('Attributive',""))
-                t.save()
-                form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
-                form.save()
+    if options.paradigmfile:
+        linginfo.create_paradigm(lemma,pos)		
+        for form in linginfo.paradigm:
+            g=form.classes
+            t,created=Tag.objects.get_or_create(string=form.tags,pos=g.get('Wordclass', ""),\
+                                                number=g.get('Number',""),case=g.get('Case',""),\
+                                                possessive=g.get('Possessive',""),grade=g.get('Grade',""),\
+                                                infinite=g.get('Infinite',""), \
+                                                personnumber=g.get('Person-Number',""),\
+                                                polarity=g.get('Polarity',""),\
+                                                tense=g.get('Tense',""),mood=g.get('Mood',""), \
+                                                subclass=g.get('Subclass',""),attributive=g.get('Attributive',""))
+
+            t.save()
+            form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
+            form.save()
                 
     # Create many-to-many fields
     translations = e.getElementsByTagName("translations")[0]
