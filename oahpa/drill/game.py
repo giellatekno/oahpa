@@ -109,14 +109,12 @@ class ContextGame(Game):
         semtype = self.settings.semtype
 
         while True:
-            random_tag = tag_list[randint(0, num_tags-1)]
-            tag_id = random_tag.id
+            tag_id = tag_list[randint(0, len(tag_list)-1)].id
 
             question_list=Question.objects.filter(tag__pk=tag_id)
             if not question_list:
                 continue
-            num_questions=len(question_list)
-            random_question = question_list[randint(0, num_questions-1)]
+            random_question = question_list[randint(0, len(question_list)-1)]
             question_id = random_question.id
             qtype=random_question.semtype
 
@@ -124,10 +122,7 @@ class ContextGame(Game):
                 word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem=syll[0]) & Q(semtype=qtype))
             else:
                 word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(semtype=qtype))
-            
-                num_words=len(word_list)
-                random_word = word_list[randint(0, num_words-1)]
-                word_id = random_word.id
+                word_id = word_list[randint(0, len(word_list)-1)].id
                 
                 form_list = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id))
                 if word_list and form_list:
@@ -169,17 +164,14 @@ class BareGame(Game):
         num_tags=len(tag_list)
 
         while True:
-            random_tag = tag_list[randint(0, num_tags-1)]
-            tag_id = random_tag.id
+            tag_id = tag_list[randint(0, num_tags-1)].id
 
             if len(syll) == 1:
                 word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem=syll[0]))
             else:
                 word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll))
             
-            num_words=len(word_list)
-            random_word = word_list[randint(0, num_words-1)]
-            word_id = random_word.id
+            word_id = word_list[randint(0, len(word_list)-1)].id
                 
             form_list = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id))
             if word_list and form_list:
@@ -224,9 +216,9 @@ class NumGame(Game):
 
         numstring =""
         # Add generator call here
-        fstdir="/Users/saara/gt/sme/bin"
+        fstdir="/opt/smi/sme/bin"
         gen_norm_fst = fstdir + "/sme-num.fst"
-        gen_norm_lookup = "echo " + str(db_info.numeral) + " | /Users/saara/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        gen_norm_lookup = "echo " + str(db_info.numeral) + " | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
         num_tmp = os.popen(gen_norm_lookup).readlines()
         num_list=[]
         for num in num_tmp:
@@ -252,11 +244,11 @@ class QuizzGame(Game):
 
         while True:
             word_list=Word.objects.filter(Q(pos=partofsp) & Q(semtype=semtype))
-            num_words=len(word_list)
-            random_word = word_list[randint(0, num_words-1)]
-            word_id = random_word.id
-
-            tr_list=random_word.translations.all()
+            word_list=Word.objects.filter(Q(pos=partofsp))
+            random_word = word_list[randint(0, len(word_list)-1)]
+            word_id=random_word.id
+			
+            tr_list=random_word.translation.all()
             if tr_list:
                 db_info.word_id = word_id
                 db_info.question_id = ""
