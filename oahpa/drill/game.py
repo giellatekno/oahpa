@@ -159,6 +159,7 @@ class BareGame(Game):
         syll = self.settings.syll
         partofsp = self.settings.partofsp
         semtype = self.settings.semtype
+        books = self.settings.books
 
         tag_list=Tag.objects.filter(Q(pos=partofsp) & Q(possessive=""))
         num_tags=len(tag_list)
@@ -166,11 +167,14 @@ class BareGame(Game):
         while True:
             tag_id = tag_list[randint(0, num_tags-1)].id
 
-            if len(syll) == 1:
-                word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem=syll[0]))
-            else:
+            #if len(syll) == 1:
+            #    word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem=syll[0]))
+            #else:
+            if books[0] == 'all':
                 word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll))
-            
+            else:
+                word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(source__name__in=books))
+            print books
             word_id = word_list[randint(0, len(word_list)-1)].id
                 
             form_list = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id))
