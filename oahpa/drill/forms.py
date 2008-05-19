@@ -57,7 +57,7 @@ NUMGAME_CHOICES = (
 
 
 
-def is_correct(self, userans_val, correct_val):
+def is_correct(self):
     """
     Determines if the given answer is correct (for a bound form).
     """
@@ -131,7 +131,7 @@ class MorphQuestion(forms.Form):
         else:
             self.tag = tag.string
 
-        self.is_correct(userans_val, correct_val)
+        self.is_correct()
 
         # set correct and error values
         if correct_val == "correct":
