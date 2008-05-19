@@ -42,15 +42,15 @@
         {% ifequal form.error "correct" %}
           <font color="green">{{ form.userans }}</font>
         {% else %}
-          {% ifequal form.error "error" %}
-            <font color="red">{{ form.userans }}</font>
-          {% endifequal %}
-        {% endifequal %}
-      {% else %}
 	    <!-- Answer field -->
         {{ form.answer }} 
+	{% endifequal %}
+      {% else %}
+      <!-- Answer field -->
+      {{ form.answer }} 
       {% endifnotequal %}
      </td>
+  <!-- If show correct, correct answers are here -->
      <td>
     {% if show_correct %}
       {% ifnotequal form.error "correct" %}
@@ -64,9 +64,15 @@
   {% endif %}
 </td>
 <td>
-       {{ form.word_id }}       {{ form.tag_id }} {{ form.userans_stored }} {{ form.correct }}
+       {{ form.word_id }}       {{ form.tag_id }}
 {{ form.question_id }} 
-
+{% if forloop.first %}
+<input type="hidden" name="userans" value="{{ form.userans }}" />
+<input type="hidden" name="correct" value="{{ form.error }}" />
+{% else %}
+<input type="hidden" name="{{ forloop.counter0 }}-userans" value="{{ form.userans }}" />
+<input type="hidden" name="{{ forloop.counter0 }}-correct" value="{{ form.error }}" />
+{% endif %}
 </td>
 </tr>
      {% endfor %}

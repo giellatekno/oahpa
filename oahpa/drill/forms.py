@@ -57,36 +57,20 @@ NUMGAME_CHOICES = (
 
 
 
-def is_correct(self):
+def is_correct(self, userans_val, correct_val):
     """
     Determines if the given answer is correct (for a bound form).
     """
     if not self.is_valid():
         return False
 
+    self.userans = self.cleaned_data['answer']
+
     self.error = "error"
     for item in self.correct_anslist:
         if self.cleaned_data['answer'] == item:
             self.error = "correct"
-            self.userans = self.cleaned_data['answer']
-            #print >> sys.stderr, self.error
-            #sys.stderr.flush()
-            userans_widget =""
-            correct_widget=""
-            correct_val = "correct"
-            userans_val = self.cleaned_data['answer']
-            user_widget = forms.HiddenInput(attrs={'value' : self.cleaned_data['answer']})
-            corr_widget = forms.HiddenInput(attrs={'value' : "correct"})
-            self.fields['userans_stored'] = forms.CharField(widget=user_widget, required=False)
-            self.fields['correct'] = forms.CharField(widget=corr_widget, required=False)
 
-            return
-
-    if self.error != "correct":
-        user_widget = forms.HiddenInput(attrs={'value' : self.cleaned_data['answer']})
-        corr_widget = forms.HiddenInput(attrs={'value' : "error"})
-        self.fields['userans_stored'] = forms.CharField(widget=user_widget, required=False)
-        self.fields['correct'] = forms.CharField(widget=corr_widget, required=False)        
             
 def set_correct(self):
     """
@@ -94,18 +78,7 @@ def set_correct(self):
     """    
     for e in self.correct_anslist:
         self.correct_answers += " "+e
-
-def set_hidden(self, userans_val,correct_val):
-
-    userans_widget = forms.HiddenInput()
-    correct_widget = forms.HiddenInput()
-    if userans_val:
-        userans_widget = forms.HiddenInput(attrs={'value' : userans_val})
-        correct_widget = forms.HiddenInput(attrs={'value' : correct_val})            
-            
-    self.fields['userans_stored'] = forms.CharField(widget=userans_widget, required=False)
-    self.fields['correct'] = forms.CharField(widget=correct_widget, required=False)
-
+        
 
 class MorphForm(forms.Form):
     pos = forms.ChoiceField(initial='N', choices=POS_CHOICES, widget=forms.RadioSelect)
@@ -123,7 +96,6 @@ class MorphQuestion(forms.Form):
     """
     is_correct = is_correct
     set_correct = set_correct
-    set_hidden = set_hidden
 
     answer = forms.CharField()
 
@@ -159,15 +131,12 @@ class MorphQuestion(forms.Form):
         else:
             self.tag = tag.string
 
-        self.set_hidden(userans_val,correct_val)
-        self.is_correct()
+        self.is_correct(userans_val, correct_val)
 
         # set correct and error values
         if correct_val == "correct":
+            print "settings correct.. "
             self.error="correct"
-        if correct_val == "error":
-            self.error="error"
-
 
 class QuizzForm(forms.Form):
     semtype = forms.ChoiceField(initial='NATURE', choices=SEMTYPE_CHOICES, widget=forms.RadioSelect)
@@ -181,7 +150,6 @@ class QuizzQuestion(forms.Form):
 
     is_correct = is_correct
     set_correct = set_correct
-    set_hidden = set_hidden
     
     def __init__(self, word, translations, question, userans_val, correct_val, *args, **kwargs):
 
@@ -200,8 +168,7 @@ class QuizzQuestion(forms.Form):
 
         for item in translations:
             self.correct_anslist.append(item.translation)
-            
-        self.set_hidden(userans_val, correct_val)
+
         self.is_correct()
 
         # set correct and error values
@@ -209,7 +176,6 @@ class QuizzQuestion(forms.Form):
             self.error="correct"
         if correct_val == "error":
             self.error="error"
-
 
 class NumForm(forms.Form):
     maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
@@ -223,7 +189,6 @@ class NumQuestion(forms.Form):
 
     is_correct = is_correct
     set_correct = set_correct
-    set_hidden = set_hidden
     
     def __init__(self, numeral, num_string, num_list, gametype, userans_val, correct_val, *args, **kwargs):
 
@@ -244,7 +209,6 @@ class NumQuestion(forms.Form):
             for item in num_list:
                 self.correct_anslist.append(item)
                 
-        self.set_hidden(userans_val, correct_val)
         self.is_correct()
 
         # set correct and error values
@@ -265,7 +229,6 @@ class QAQuestion(forms.Form):
 
     is_correct = is_correct
     set_correct = set_correct
-    set_hidden = set_hidden
     
     def __init__(self, qstring, question, userans_val, correct_val, *args, **kwargs):
 
@@ -278,7 +241,6 @@ class QAQuestion(forms.Form):
         self.correct_answers =""
         self.error="empty"
 
-        self.set_hidden(userans_val, correct_val)
         self.is_correct()
 
         # set correct and error values
