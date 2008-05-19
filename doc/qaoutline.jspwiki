@@ -13,9 +13,11 @@ We need a grammatical verb lexicon, where the verbs are ordered according to sen
 * Transitive: {{SUBJ TV OBJ (ADVL)}}
 * Intransitive: {{SUBJ IV OBJ (ADVL)}}
 
+
 Here, {{SUBJ, TV, OBJ, ADVL, IV}} are variables representing sets of words or phrases.
 
 We then make matrix questions of the form (where {{LEAT}} is the copula verb, {{QPN}} is a random person-number value for the question and {{APN}} is a random person-number value for the answer.
+
 
 {{{
    TV-QPN go (SUBJ) OBJ (ADVL) 
@@ -59,6 +61,7 @@ To some of the verbs belongs a noun in an oblique case. e.g. Loc or Ill.
 Also pronouns will should be included to the sets.
 
 The sets may be populated as follows:
+
 {{{
    SUBJ = a set of surnames and nouns denoting humans.
    OBJ = semantically defined nouns
@@ -99,6 +102,7 @@ We may reuse the sets defined above, but instead generate questions like
    Geain LEAT-Q3N SUBJ
    Mas LEAT-Q3N SUBJ
 }}}
+
 In this case, we may accept any noun in the appropriate case. This will be especially useful for training verbs with oblique nouns.
 
 {{{
