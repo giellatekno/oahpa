@@ -107,9 +107,10 @@ These sets all require a bit different kind of question setting.
 If we think about the general question type, there are the following
 variables, which have a grammatical status, i.e. they agree with each
 other etc. So they have to be explicitely marked in the sentence.
-{{
+
+{{{
 SUBJ, MAINV, LEAT, PRTPTC?, NEG, ADJ, other?
-}}
+}}}
 
 In addition to these, any element may be a variable. The idea of the
 xml-structure that I suggest is that sentences contain this
@@ -117,7 +118,8 @@ kind of variables, which have the grammatical information specified.
 For example, we may have questions where everything else is given, but the answer is
 selected from a set. I have marked the variable as "ANSWER" here, but
 it could have any name:
-{{
+
+{{{
 M: Gosa don manat dál?	(Where do you go?)
 'Suopma'  (PLACE Sg Nom > Sg Ill)			
 S: Supmii
@@ -134,7 +136,7 @@ S: Supmii
      </element>
   </answer>
 </q>
-}}
+}}}
 
 The information for the word 'Suopma', Sg+Nom is assumed in the
 program, so that the suggested answer is in N+Sg+Nom or for
@@ -145,7 +147,8 @@ Information for the variables in the sentences are given inside
 order of the variables inside the sentence. (Or the elements should be
 marked otherwise, we have to see if the order is too error-prone). Let
 us generalize the example above.
-{{
+
+{{{
 <q>
   <question>
     <text>Gosa SUBJ MAINV dál</text>
@@ -158,25 +161,27 @@ us generalize the example above.
      </element>
   </question>
   <answer> 
-    <text>SUBJ MAINV ANSWER</text>
-    <element/>
-    <element/>
+    <text>(SUBJ) MAINV N-ILL</text>
+    <element/>  <!-- inherited from the question -->
+    <element/>  <!-- inherited from the question -->
     <element pos="N">
       <grammar tag="N+Sg+Ill"/>
       <sem class="PLACE"/>
      </element>
   </answer>
 </q>
-}}
+}}}
 
 Here the variables SUBJ and MAINV in the answer depend fully on the
 SUBJ and MAINV in the question, thus they do not require any other
 information. The information for the ANSWER-variable is given. This
 question could be used also in contexts:
-{{
+
+
+{{{
 Gosa don manat dál?
 Mun __ Supmii.
-}}
+}}}
 
 Now how do we present this information that this question can be used
 in different drills? The question could be tagged according to which
