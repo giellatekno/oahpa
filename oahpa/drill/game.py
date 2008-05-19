@@ -26,6 +26,7 @@ class Game:
 
         
     def new_game(self):
+        self.form_list = []
         for n in range (0, self.num_fields):
             db_info = Info()
             db_info.userans = ""
@@ -49,14 +50,14 @@ class Game:
                 n_tag_id = "tag_id"
                 n_question_id = "question_id"
                 n_numeral_id = "numeral_id"
-                n_userans = "userans_stored"
+                n_userans = "userans"
                 n_correct = "correct"
             else:
                 n_word_id = str(n) + "-word_id"
                 n_tag_id = str(n) + "-tag_id"
                 n_question_id = str(n) + "-question_id"
                 n_numeral_id = str(n) + "-numeral_id"
-                n_userans = str(n) + "-userans_stored"
+                n_userans = str(n) + "-userans"
                 n_correct = str(n) + "-correct"
 
             if "word_id" in data:
