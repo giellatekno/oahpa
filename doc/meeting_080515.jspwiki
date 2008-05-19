@@ -1,0 +1,227 @@
+!!!Meeting notes, Pedagogical programs, 080415
+
+Last meeting: Exactly month ago.
+
+
+!!Status report
+
+Saara has coded xml format for the plans for qa and dialogues, and made better interfaces, also for the numeral drill. We now have an mysql database in victorio, but there are some problems there. Steinar TH is configuring the Apache server for it, in the best case we have a working version next week.
+
+Lene has done a lot of work on the lexica, and on design issues.
+
+Trond has also worked on design issues, and has started making an unambiguous {{isme-restr.fst}}  generator. ^NG^ added to words which should not be generated.
+
+The "Remove ^NG^ and East" is implemented in the Makefile, but the remove East/West {{isme-restr-west.fst, isme-restr-east.fst}} is not. Cf. the Makefile:
+
+{{{
+$(RESTRFILES): $(SRCS)
+        @echo
+        @echo "*** Removing non-orthographic entries ***" ;
+	@echo
+	@egrep -v '(SUB|\^NG\^|East)' $(patsubst $(TARGET)/int/%.restr,$(TARGET)/src/%.txt,$@) > $@
+}}}
+
+
+The tags used in the source code is: SUB, West, East, ^P^ 
+
+West: remove SUB, East, ^P^
+East: remove SUB, West, ^P^
+
+Quoting from the sme-lex.txt documentation:
+{{{
+! Testing instruction:                                                                                                                                                                 
+! For testing purposes, the string !^C^ is added to every line that causes                                                                                                             
+! circularity. In order to use the "check-all" option of lexc (that lists all                                                                                                          
+! generated forms), the file  should be generated without the lines containing                                                                                                         
+! the sequence "^C^" This is done by the command "make rec-clean". The resulting                                                                                                       
+! binary file will be called nonrec-sme.save, and it will be stored in                                                                                                                 
+! sme/int.                                                                                                                                                                             
+
+! Other similar textual flags include:                                                                                                                                                 
+! !SUB = substandard forms                                                                                                                                                             
+! ^P^  = pedagogical, i.e. forms to be removed for the pedagogical speller                                                                                                             
+! ^NG^ = not-generate, i.e. forms to be deprecated for natural language generation.                                                                                                    
+! ^N^  = Numerals, are removed with ^C^                                                                                                                                                
+}}}
+
+Example of tagging:
+
+{{{                                no dial               dial
+ +Der3+Der/n+N+Ess:»Y5me K ;                            !West
+ +Der3+Der/n+N+Ess:»Y5min K ;     !^NG^                 !East                                                                                                                              
+ +Der3+Der/n+N+Ess:»Y5men K ;     !SUB                  !SUB                                                                                                                               
+ +Der3+Der/n+N+SgCmp:»Y5n R ;
+
+ +V+IV+Pot+Prs+Sg3:%>eažžá%> K ;        !^NG^     		!West                                                                                                                                    
+ +V+IV+Pot+Prs+Sg3:%>eaš K ;            !^NG^                                                                                                                                            
+ +V+IV+Pot+Prs+Sg3:%>eš K ;                             !East
+ +V+IV+Pot+Prs+ConNeg:%>eačča%> K ;     !^NG^    		!West                                                                                                                                      
+ +V+IV+Pot+Prs+ConNeg:%>eaš K ;         !^NG^                                                                                                                                            
+ +V+IV+Pot+Prs+ConNeg:%>eš K ;							!East
+
+
+The rule is: 
+No dialect. All are NG or SUB save one unmarked, 
+East/west:  All are NG or SUB save two, one West and one East
+}}}
+
+
+!!QA xml format
+
+There is a fundamental difference in the porposes (and the design) of the dialogue-game and the qa-game.
+ 
+#) The dialogues will be made of explicite questions because they are connected to settings and for exercising quite spesific things.
+#) The qa-drill will be made of more general questions without any logical connection, because the porpose is:
+## to train some "automatic" skills - verb- ja caseinflection. The questions should be short and simple, so the student uses her/his efforts for this.
+## it should generate houndreds of different questions  - so the questions will be quite general.
+ 
+Question-types:
+
+#) Verbinflectionquestions - the verb will vary:  ''Borat go niestti odne?'' (2 possible answers: affirmative and negative)
+#) Case- and verbinflectionquestions: ''Gosa don "manat"? "Suopma"'' (answer: correct pron + verbinfl + case is according to the interr pron/adv) alt. Gosa don MOVEMENT?
+#) Case- and verbinflectionquestions: ''Masa don liikot?''  (answer: correct pron + verbinfl + case is according to the interr pron/adv)
+
+Saara: Should we have a restricted vocabulary for the questions (say, 10-15 transitive verbs with matching nouns), and generate questions from that?
+
+Lene: It might be better making several ready-made questions, and making noun-sets for them.
+
+{{{
+Gosá don vuolggát? (Suopma) <= reuse this ill question as a verb question?
+Gii vuolgá Supmii (...
+
+    <text>SUBJ MAINV N-ILL</text>
+
+Where are you going today (Suopma)
+Supmii.
+
+Where are you swimming today?
+
+__ swimming today to Finland.
+I'm __ today to Finland.
+I'm swimming today to __
+I'm __ today __
+
+__ __ __ __
+}}}
+
+* M: Gosa don vuojat odne?
+* U: (Mun) vuojan Supmii (odne).
+* U: ? Supmii ?
+
+If user says __Supmii__ then response: "Please answer with a full sentence".
+
+The question comes in two varieties, with and without answer word given in nominative (sometimes in Pl to get the student to answer in Pl):
+
+* M: Where are you swimming today? (no suggestion given)
+* U: (blank answer) (answer must contain {{QVERB-Ind-Prs-Sg1 + N/Pron-Ill}}
+
+* M: Where are you swimming today? (suggestion given in Nom: __Suopma__)
+* U: I swim to Finland  (answer must contain {{QVERB-Ind-Prs-Sg1 + Suopma-Ill}})
+
+The second option, with the given answer, will be used to govern the inflection: We can assure the user knows all stem types, and plural as well as singular. We could mix the two types randomly.
+
+
+Correction procedures for different error types:
+
+{{{
+U: One-word answer
+M:  "Please answer with a full sentence".
+
+U: Wrong verb form
+M: Points out that the verb is wrong, and asks for correction.
+U1: Wrong verb form again
+M1: Correct verb form
+U2: Correct verb form
+M2: Gives positive feedback
+
+U: Wrong case form. 
+M: Points out that the case is wrong, ans asks for correction. Offer Ill-help (error in CG)
+U1: Wrong Ill form again
+M1: Correct ill form
+
+U: Wrong case form (viessus pro viesus). 
+M: Points out that the case is wrong, ans asks for correction. Offer Loc-help (Locative needs WG)
+U1: Wrong Loc form again (viezus)
+M1: Correct Loc form (viesus)
+
+etc.
+
+N/Pron-ILL => Locative Sg explanation for case error
+N/Pron-LOC => Locative explanation for case error
+etc.
+}}}
+
+* Mun manan Supmii
+* SUBJ MAINV N-ILL
+
+We will have to make an error-message lexicon, containing pairs:
+
+* Target grammar form (in cg format) TAB explanation 
+* EVEN MAINV Ind Prs Sg1 TAB First person singular of even syllabic verbs should be in weak grade
+
+
+Info to the lexicon:
+
+* bisyllabic
+* stemtype vowel
+* consonant gradation
+
+<stem class="bisyllabic" stemvowel="i" diphthong="yes" gradation="no" />
+
+default: diphthong yes, gradation yes, 
+
+
+!!Dictionary
+
+Should we offer our translations? Yes, we do that, rather than using the full-scale smenob dictionary. Our internal translations are the ones found in the textbooks, and therefore more suitable.
+
+How  should we do it? As a tooltip: Point at the word, and get the translation.
+
+Words in the matrix questions are not covered by this, for them, the users will have to use other dictionaries, or we can eventually include those in our tooltips, too.
+
+
+
+
+!!Online beta
+
+We hope for next week.
+
+
+!!Priority
+
+
+# configure victorio
+# qa system working
+# dialogues
+# tutorials
+
+
+
+
+!!!Next meeting:
+
+In exactly one week.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
