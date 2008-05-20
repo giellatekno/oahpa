@@ -90,7 +90,6 @@ class MorphForm(forms.Form):
     default_data = {'pos': 'N'}
     allbooks = []
     for b in BOOK_CHOICES:
-        print b[0]
         allbooks.append(b[0])
 
 class MorphQuestion(forms.Form):
@@ -147,11 +146,9 @@ class QuizzForm(forms.Form):
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.RadioSelect)
     allbooks = []
     for b in BOOK_CHOICES:
-        print b[0]
         allbooks.append(b[0])
     allsem = []
     for b in SEMTYPE_CHOICES:
-        print b[0]
         allsem.append(b[0])        
 
 class QuizzQuestion(forms.Form):
