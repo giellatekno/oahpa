@@ -24,6 +24,22 @@ class Game:
         self.show_correct = 0
         self.num_fields = 5
 
+        if self.settings.books:
+            if self.settings.books == 'all':
+                self.settings.books=self.settings.allbooks
+            else:
+                books=self.settings.books
+                self.settings.books=[]
+                self.settings.books.append(books)
+                
+        if self.settings.semtype:
+            if self.settings.semtype == 'all':
+                self.settings.semtype=self.settings.allsem
+            else:
+                semtype=self.settings.semtype
+                self.settings.semtype=[]
+                self.settings.semtype.append(semtype)
+
         
     def new_game(self):
         self.form_list = []
@@ -67,6 +83,7 @@ class Game:
                 db_info.tag_id=data[n_tag_id]
             if "numeral_id" in data:
                 db_info.numeral=data[n_numeral_id]
+                
             db_info.userans = data[n_userans]
             db_info.correct = data[n_correct]
 
@@ -150,25 +167,16 @@ class BareGame(Game):
     def get_db_info(self, db_info):
 
         syll = self.settings.syll
-        partofsp = self.settings.partofsp
-        semtype = self.settings.semtype
-        books = self.settings.allbooks
-            
+        partofsp = self.settings.partofsp            
+        books=self.settings.books
+
         tag_count=Tag.objects.filter(Q(pos=partofsp) & Q(possessive="")).count()
-        print tag_count
 
         while True:
             tag_id = Tag.objects.filter(Q(pos=partofsp) & Q(possessive=""))[randint(0,tag_count-1)].id
 
-            #if len(syll) == 1:
-            #    word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem=syll[0]))
-            #else:
-            if books[0] == 'all':
-                w_count=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll)).count()
-                word_id = Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll))[randint(0,w_count-1)].id
-            else:
-                w_count=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(source__name__in=books)).count()
-                word_id=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)].id
+            w_count=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(source__name__in=books)).count()
+            word_id=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)].id
                 
             form_count = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id)).count()
             if word_id and form_count>0:
@@ -231,18 +239,8 @@ class QuizzGame(Game):
 
     def get_db_info(self, db_info):
 
-        books=[]
-        semtypes=[]
-
-        if self.settings.book == 'all':
-            books=self.settings.allbooks
-        else:
-            books.append(self.settings.book)
-        if self.settings.semtype == 'all':
-            semtypes=self.settings.allsem
-        else:
-            semtypes.append(self.settings.semtype)
-            
+        semtypes=self.settings.semtype
+        books=self.settings.books
         while True:
             w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) & Q(source__name__in=books)).count()
             random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & Q(source__name__in=books))[randint(0,w_count-1)]
