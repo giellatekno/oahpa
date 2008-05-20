@@ -4,14 +4,16 @@
 {% block settings %}
 
 <form method="post" action="">
-<table width="550">
+<table width="700">
 <tr>
-<td>{% trans "Select the type of words you would like to practice" %}</td>
+<td>{% trans "Set" %}</td>
+<td>{% trans "Book" %}</td>
 <td>{% trans "Select the language pair" %}</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
 <td>{{ settingsform.semtype }}</td>
+<td>{{ settingsform.book }}</td>
 <td>{{ settingsform.transtype }}</td>
 <td>&nbsp;</td>
 </tr>
