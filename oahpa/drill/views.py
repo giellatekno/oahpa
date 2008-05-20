@@ -24,6 +24,7 @@ def mgame(request):
     settings.books=[]
     gametype="bare"
     settings.semtype="NATURE"
+    settings.allbooks=[]
 
     if request.method == 'POST':
         data = request.POST.copy()
@@ -73,6 +74,8 @@ def mgame(request):
         settings_form = MorphForm()
         settings.syll.append('bisyllabic')
         settings.books.append('all')
+        if settings_form.allbooks:
+            settings.allbooks=settings_form.allbooks
         game = BareGame(settings)
         game.new_game()
 
@@ -95,7 +98,9 @@ def quizz(request):
     settings = Info()
     settings.semtype="NATURE"
     settings.transtype="nobsme"
-    settings.partofsp='N'
+    settings.book="all"
+    settings.allbooks=[]
+    settings.allsem=[]
 
     if request.method == 'POST':
         data = request.POST.copy()
@@ -105,6 +110,13 @@ def quizz(request):
         
         settings.semtype = settings_form.data['semtype']
         settings.transtype = settings_form.data['transtype']
+        settings.book = settings_form.data['book']
+
+        if settings_form.allbooks:
+            settings.allbooks=settings_form.allbooks
+        if settings_form.allsem:
+            settings.allsem=settings_form.allsem
+
 
         game = QuizzGame(settings)
 
@@ -123,6 +135,10 @@ def quizz(request):
     # If there is no POST data, default settings are applied
     else:
         settings_form = QuizzForm()
+        if settings_form.allbooks:
+            settings.allbooks=settings_form.allbooks
+        if settings_form.allsem:
+            settings.allsem=settings_form.allsem
         game = QuizzGame(settings)
         game.new_game()
 
