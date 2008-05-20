@@ -40,7 +40,6 @@ class Game:
 
     def check_game(self, data=None):
 
-        morph_list=[]
         db_info = Info()
 
         # If POST data was data check, regenerate the form using ids.
@@ -101,38 +100,31 @@ class ContextGame(Game):
     
     def get_db_info(self, db_info):
 
-        question_list=[]
-        morph_list=[]
-
-        tag_list=Tag.objects.filter(pos=settings.partofsp)
-        num_tags=len(tag_list)
-
         syll = self.settings.syll
         partofsp = self.settings.partofsp
         semtype = self.settings.semtype
+        tag_count=Tag.objects.filter(pos=settings.partofsp).count()
 
         while True:
-            tag_id = tag_list[randint(0, len(tag_list)-1)].id
 
-            question_list=Question.objects.filter(tag__pk=tag_id)
-            if not question_list:
+            tag_id = Tag.objects.filter(pos=settings.partofsp)[randint(0, tag_count-1)].id
+
+            q_count=Question.objects.filter(tag__pk=tag_id).count()
+            if q_count==0:
                 continue
-            random_question = question_list[randint(0, len(question_list)-1)]
+            random_question = Question.objects.filter(tag__pk=tag_id)[randint(0, q_count-1)]
             question_id = random_question.id
             qtype=random_question.semtype
 
-            if len(syll) == 1:
-                word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem=syll[0]) & Q(semtype=qtype))
-            else:
-                word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(semtype=qtype))
-                word_id = word_list[randint(0, len(word_list)-1)].id
-                
-                form_list = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id))
-                if word_list and form_list:
-                    db_info.word_id = word_id
-                    db_info.tag_id = tag_id
-                    db_info.question_id = question_id
-                    return
+            w_count=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(semtype=qtype)).count()
+            word_id=Word.objects.filter(Q(pos=partofsp)&Q(stem__in=syll)&Q(semtype=qtype))[randint(0,w_count-1)].id
+            
+            form_count = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id)).count()
+            if word_id and form_count>0:
+                db_info.word_id = word_id
+                db_info.tag_id = tag_id
+                db_info.question_id = question_id
+                return
 
     def create_form(self, db_info, n, data=None):
 
@@ -144,12 +136,12 @@ class ContextGame(Game):
         if not form_list:
             return HttpResponse("No forms found.")
         
-        word_list = Word.objects.filter(Q(id=word_id))
-        tag_list = Tag.objects.filter(Q(id=tag_id))
+        word = Word.objects.filter(Q(id=word_id))[0]
+        tag = Tag.objects.filter(Q(id=tag_id))[0]
         question_list = Question.objects.filter(Q(id=question_id))
         tr_list=Translationnob.objects.filter(Q(word__pk=word_id))
         
-        morph = (MorphQuestion(word_list[0], tag_list[0], form_list, tr_list, question_list[0], db_info.userans, db_info.correct, data, prefix=n))
+        morph = (MorphQuestion(word, tag, form_list, tr_list, question_list[0], db_info.userans, db_info.correct, data, prefix=n))
         self.form_list.append(morph)
 
 
@@ -157,30 +149,29 @@ class BareGame(Game):
 
     def get_db_info(self, db_info):
 
-        word_list=[]
-
         syll = self.settings.syll
         partofsp = self.settings.partofsp
         semtype = self.settings.semtype
-        books = self.settings.books
-
-        tag_list=Tag.objects.filter(Q(pos=partofsp) & Q(possessive=""))
-        num_tags=len(tag_list)
+        books = self.settings.allbooks
+            
+        tag_count=Tag.objects.filter(Q(pos=partofsp) & Q(possessive="")).count()
+        print tag_count
 
         while True:
-            tag_id = tag_list[randint(0, num_tags-1)].id
+            tag_id = Tag.objects.filter(Q(pos=partofsp) & Q(possessive=""))[randint(0,tag_count-1)].id
 
             #if len(syll) == 1:
             #    word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem=syll[0]))
             #else:
             if books[0] == 'all':
-                word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll))
+                w_count=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll)).count()
+                word_id = Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll))[randint(0,w_count-1)].id
             else:
-                word_list=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(source__name__in=books))
-            word_id = word_list[randint(0, len(word_list)-1)].id
+                w_count=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(source__name__in=books)).count()
+                word_id=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)].id
                 
-            form_list = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id))
-            if word_list and form_list:
+            form_count = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id)).count()
+            if word_id and form_count>0:
                 db_info.word_id = word_id
                 db_info.tag_id = tag_id
                 return
@@ -195,11 +186,10 @@ class BareGame(Game):
         if not form_list:
             return HttpResponse("No forms found.")
         
-        word_list = Word.objects.filter(Q(id=word_id))
-        tag_list = Tag.objects.filter(Q(id=tag_id))
+        word = Word.objects.get(Q(id=word_id))
+        tag = Tag.objects.get(Q(id=tag_id))
         tr_list=Translationnob.objects.filter(Q(word__pk=word_id))
-
-        morph = (MorphQuestion(word_list[0], tag_list[0], form_list, tr_list, "", db_info.userans, db_info.correct, data, prefix=n))
+        morph = (MorphQuestion(word, tag, form_list, tr_list, "", db_info.userans, db_info.correct, data, prefix=n))
         self.form_list.append(morph)
 
 
@@ -241,19 +231,24 @@ class QuizzGame(Game):
 
     def get_db_info(self, db_info):
 
-        word_list=[]
-        morph_list=[]
-        question_list=[]
-        
-        partofsp = self.settings.partofsp
-        semtype = self.settings.semtype
+        books=[]
+        semtypes=[]
 
+        if self.settings.book == 'all':
+            books=self.settings.allbooks
+        else:
+            books.append(self.settings.book)
+        if self.settings.semtype == 'all':
+            semtypes=self.settings.allsem
+        else:
+            semtypes.append(self.settings.semtype)
+            
         while True:
-            word_list=Word.objects.filter(Q(pos=partofsp) & Q(semtype=semtype))
-            word_list=Word.objects.filter(Q(pos=partofsp))
-            random_word = word_list[randint(0, len(word_list)-1)]
+            w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) & Q(source__name__in=books)).count()
+            random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & Q(source__name__in=books))[randint(0,w_count-1)]
+                
             word_id=random_word.id
-			
+
             tr_list=random_word.translation.all()
             if tr_list:
                 db_info.word_id = word_id
