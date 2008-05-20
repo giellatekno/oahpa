@@ -37,9 +37,9 @@ TRANS_CHOICES = (
 
 SEMTYPE_CHOICES = (
     ('NATURE', _('nature')),
-    ('PLACES', _('places')),
-    ('TIME', _('time expressions')),
-#    ('ALL', _('all')),
+    ('PROFESSION', _('profession')),
+    ('FAMILY', _('family')),
+    ('all', _('all')),
 )
 
 NUM_CHOICES = (
@@ -88,7 +88,10 @@ class MorphForm(forms.Form):
     trisyllabic = forms.BooleanField(required=False,initial='1')
     contracted = forms.BooleanField(required=False,initial='1')
     default_data = {'pos': 'N'}
-
+    allbooks = []
+    for b in BOOK_CHOICES:
+        print b[0]
+        allbooks.append(b[0])
 
 class MorphQuestion(forms.Form):
     """
@@ -139,8 +142,17 @@ class MorphQuestion(forms.Form):
             self.error="correct"
 
 class QuizzForm(forms.Form):
-    semtype = forms.ChoiceField(initial='NATURE', choices=SEMTYPE_CHOICES, widget=forms.RadioSelect)
-    transtype = forms.ChoiceField(initial='nobsme', choices=TRANS_CHOICES, widget=forms.RadioSelect)
+    semtype = forms.ChoiceField(initial='all', choices=SEMTYPE_CHOICES, widget=forms.RadioSelect)
+    transtype = forms.ChoiceField(initial='smenob', choices=TRANS_CHOICES, widget=forms.RadioSelect)
+    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.RadioSelect)
+    allbooks = []
+    for b in BOOK_CHOICES:
+        print b[0]
+        allbooks.append(b[0])
+    allsem = []
+    for b in SEMTYPE_CHOICES:
+        print b[0]
+        allsem.append(b[0])        
 
 class QuizzQuestion(forms.Form):
     """
