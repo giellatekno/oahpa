@@ -82,9 +82,9 @@ function write_form(divanswer, diverr) {
 
 <div id="language">
 {% get_current_language as LANGUAGE_CODE %}
-
 <form action="/oahpa/i18n/setlang/" method="post">
-<input name="next" type="hidden" value="/oahpa/mgame/" />
+
+<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
 <select name="language">
 
 {% ifequal LANGUAGE_CODE "sme" %}
