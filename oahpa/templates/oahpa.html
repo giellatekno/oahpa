@@ -82,6 +82,7 @@ function write_form(divanswer, diverr) {
 
 <div id="language">
 {% get_current_language as LANGUAGE_CODE %}
+
 <form action="/i18n/setlang/" method="post">
 <input name="next" type="hidden" value="/oahpa/mgame/" />
 <select name="language">
@@ -112,6 +113,8 @@ function write_form(divanswer, diverr) {
 
 </select>
 <input type="submit" value="{% trans 'Change language' %}" />
+</form>
+
 </div>
 
 <!--
