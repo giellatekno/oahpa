@@ -3,7 +3,7 @@ from django.conf.urls.defaults import *
 urlpatterns = patterns('',
     # Example:
     # (r'^oahpa/', include('oahpa.foo.urls')),
-    (r'^i18n/', include('django.conf.urls.i18n')),
+    (r'^oahpa/i18n/', include('django.conf.urls.i18n')),
 #    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/home/saara/ped'}),
 #    (r'^oahpa/admin/', include('django.contrib.admin.urls')),
     (r'^oahpa/mgame/$', 'oahpa.drill.views.mgame'),
