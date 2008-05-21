@@ -65,7 +65,8 @@ def mgame(request):
         else:
             game.check_game(data)
             game.get_score(data)
-                
+
+        print "OK"
         if 'test' in data:
             game.count=1
         if "show_correct" in data:
@@ -165,6 +166,8 @@ def numgame(request):
     settings = Info()
     settings.maxnum = 10
     settings.numgame = "numeral"
+    settings.books = []
+    settings.semtype=""
 
     if request.method == 'POST':
         data = request.POST.copy()
