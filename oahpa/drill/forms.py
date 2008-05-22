@@ -16,13 +16,13 @@ POS_CHOICES = (
 
 BOOK_CHOICES = (
     ('d1', _('Davvin 1')),
-    ('d2', _('Davvin 2')),
-    ('d3', _('Davvin 3')),
-    ('d4', _('Davvin 4')),
+    ('d2', _('Davvin 1-2')),
+    ('d3', _('Davvin 1-3')),
+    ('d4', _('Davvin 1-4')),
     ('álgu', _('algu')),
     ('sárá', _('sara')),
-    ('bures', _('Bures')),
-    ('oaidnalit', _('Oaidnalid')),
+    ('bures', _('Bures bures fas')),
+    ('oaidnalit', _('Oaidnalit')),
     ('all', _('All')),
 )
 
