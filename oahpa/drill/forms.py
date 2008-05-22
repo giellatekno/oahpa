@@ -40,7 +40,7 @@ LANGUAGE_CHOICES = (
     ('sme', _('North Sami')),
     ('smj', _('Lule Sami')),
     ('sma', _('South Sami')),
-    ('smn', _('South Sami')),
+    ('smn', _('Inari Sami')),
 )
 
 SEMTYPE_CHOICES = (
