@@ -25,6 +25,7 @@ def mgame(request):
     gametype="bare"
     settings.semtype="NATURE"
     settings.allbooks=[]
+    settings.language="sme"
 
     if request.method == 'POST':
         data = request.POST.copy()
@@ -107,6 +108,7 @@ def quizz(request):
     settings.books="all"
     settings.allbooks=[]
     settings.allsem=[]
+    settings.language="sme"
 
     if request.method == 'POST':
         data = request.POST.copy()
@@ -168,6 +170,7 @@ def numgame(request):
     settings.numgame = "numeral"
     settings.books = []
     settings.semtype=""
+    settings.language="sme"
 
     if request.method == 'POST':
         data = request.POST.copy()
@@ -177,6 +180,7 @@ def numgame(request):
         
         settings.maxnum = settings_form.data['maxnum']
         settings.numgame = settings_form.data['numgame']
+        settings.language = settings_form.data['language']
 
         game = NumGame(settings)
 
