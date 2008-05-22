@@ -36,6 +36,12 @@ TRANS_CHOICES = (
     ('smenob', _('North Sami to Norwegian')),
 )
 
+LANGUAGE_CHOICES = (
+    ('sme', _('North Sami')),
+    ('smj', _('Lule Sami')),
+    ('sma', _('South Sami')),
+)
+
 SEMTYPE_CHOICES = (
     ('NATURE', _('nature')),
     ('PROFESSION', _('profession')),
@@ -190,6 +196,7 @@ class QuizzQuestion(forms.Form):
 class NumForm(forms.Form):
     maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
     numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
+    language = forms.ChoiceField(initial='sme', choices=LANGUAGE_CHOICES, widget=forms.RadioSelect)
 
 class NumQuestion(forms.Form):
     """
