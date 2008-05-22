@@ -217,12 +217,17 @@ class NumGame(Game):
 
     def create_form(self, db_info, n, data=None):
 
-
+        language=self.settings.language
         numstring =""
         # Add generator call here
-        fstdir="/opt/smi/sme/bin"
-        gen_norm_fst = fstdir + "/sme-num.fst"
+        #fstdir="/Users/saara/gt/" + language + "/bin"        
+    
+        fstdir="/opt/smi/" + language + "/bin"
+        gen_norm_fst = fstdir + "/" + language + "-num.fst"
+        
         gen_norm_lookup = "echo " + str(db_info.numeral) + " | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        #gen_norm_lookup = "echo " + str(db_info.numeral) + " | /Users/saara/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        print gen_norm_lookup
         num_tmp = os.popen(gen_norm_lookup).readlines()
         num_list=[]
         for num in num_tmp:
@@ -256,17 +261,20 @@ class QuizzGame(Game):
     def create_form(self, db_info, n, data=None):
 
         word_id = db_info.word_id
-
-        tr_list=Translationnob.objects.filter(Q(word__pk=word_id))
-        if not tr_list:
-            return HttpResponse("No forms found.")
-        
+        translations=Translationnob.objects.filter(Q(word__pk=word_id))
         word_list = Word.objects.filter(Q(id=word_id))
         question_list=[]
+
+        if not translations:
+            return HttpResponse("No forms found.")        
+
+        word = word_list[0]
+        tr_list = translations
+            
         #if db_info.question_id:
         #    question_list = Question.objects.filter(Q(id=db_info.question_id))
             
-        form = (QuizzQuestion(word_list[0], tr_list, question_list, db_info.userans, db_info.correct, data, prefix=n))
+        form = (QuizzQuestion(word, tr_list, question_list, db_info.userans, db_info.correct, data, prefix=n))
         self.form_list.append(form)
 
 
