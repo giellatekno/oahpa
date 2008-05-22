@@ -1,0 +1,157 @@
+!!!Meeting notes, Pedagogical programs, 0804
+
+Last meeting: Exactly one week ago [meeting_080515.html].
+
+!!Status report
+
+Saara has added files to the interface for the Vocabulary and Morphology games, using __django__.
+
+
+!!The django interface
+
+
+If we install django, then we can generate the translations.
+
+{{{
+cd ped/oahpa/
+/home/saara/django-trunk/django/bin/make-messages.py -l sme
+Update the texts in the django.po -file.
+ped/oahpa/locale/sme/LC_MESSAGES/django.po
+}}}
+
+
+
+
+The files in the oahpa directory
+
+* __init__.py
+* djlocale
+** technical translations: sme/LC_MESSAGES/django.po
+* drill
+** project directory, all the code
+** drill/templates/
+*** game.html (for all games), mgame.html (one for each game, etc.), quizz.html, num.html
+* install.py
+* ling.py
+* locale
+** translations for the 
+* manage.py
+* media
+* settings.py
+* templates
+** ped/oahpa/templates/oahpa.html (setup for the whole project)
+* urls.py
+** This file contains urls for our games.
+
+
+We go for two-letter language codes for the interface lgs.
+
+
+!!QA
+
+!!Vocabulary game
+
+Reassign the ENTER key from __New set__ to __Test answers__.
+
+Problems šhen the tørr ved	 tørr vedtranslation contains space:
+
+{{{
+1: tørrved -- no
+2: tørr ved	-- no
+C: tørr ved
+}}}
+
+* collation of characters: normalising ä to a + ¨ etc.
+* What we need is a minimal collation: Respecting  glyph identity.
+
+The several translation problem: Saara is working on it
+
+d.g. "mann" (dievdu, almmái, almmáiolmmoš, dievdoolmmoš, olmmái)
+
+
+{{{
+    <lemma>olmmái</lemma>
+	<pos class="N"/>
+    <translations>
+      <tr xml:lang="nob">venn</tr>
+      <tr xml:lang="nob">mann</tr>
+      <tr xml:lang="nob">kamerat</tr>
+
+    <lemma>dievdu</lemma>
+	<pos class="N"/>
+    <translations>
+      <tr xml:lang="nob">mann</tr>
+
+    <lemma>sápmi</lemma>
+	<pos class="N"/>
+    <translations>
+      <tr xml:lang="nob">same</tr>
+      <tr xml:lang="nob">samisk språk</tr>
+      <tr xml:lang="nob">samisk</tr>
+    </translations>
+}}}
+
+Different feedbacks:
+
+* error - ? "It is not like that in our list."
+* show correct answer > show our answer (?)
+
+
+!!Morphology game   
+
+* N: Select case
+* Verb: Select tense and mood ( )
+* Adj: Select attribute or predicative
+
+{{{
+boazu+N+Sg+Acc  >  'boazu'  
+boazu+N+Pl+Acc  >  'bohccot'
+}}}
+
+
+
+!!QA game
+
+Awaiting the other games.
+
+!!Dialogue game
+
+Awaiting the other games.
+
+
+!!Work onwards, next week.
+
+
+Short-term goals
+
+# Get the mgame, quizz, numgame up and running
+# Have a sma numeral game before June 12th.
+
+Next goals
+
+# Logos for the different games, error logo, ok logo, result logo
+# Error: :-/ vs :-), but drawn. There is the green v and the red x.
+
+
+
+Works for each of us:
+
+* Saara:
+** xml
+** django interface 
+** Prepare for several target languages
+* Lene
+** Localisation
+** Think of game names
+** Contact the artist - Kjellaug
+* Trond
+** Localisation
+** South and Lule numeral files
+
+!!Next meeting
+
+June 5th 10.00.
+
+
+
+
