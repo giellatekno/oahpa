@@ -145,7 +145,6 @@ class MorphQuestion(forms.Form):
 
         # set correct and error values
         if correct_val == "correct":
-            print "settings correct.. "
             self.error="correct"
 
 class QuizzForm(forms.Form):
@@ -191,8 +190,6 @@ class QuizzQuestion(forms.Form):
         # set correct and error values
         if correct_val == "correct":
             self.error="correct"
-        if correct_val == "error":
-            self.error="error"
 
 class NumForm(forms.Form):
     maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
