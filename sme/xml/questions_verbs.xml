@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- xml-structure for questions in morphdrill -->
+<!-- Questions for verbs -->
+
+<questions>
+  <q>
+   <question>
+      <text>Maid SUBJ MAINV odne</text>
+      <element type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element type="MAINV">
+	<lemma>bargat</lemma> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV</text>
+      <element type="MAINV">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </answer>
+  </q>
+  <q>
+    <question>
+      <text>Maid SUBJ MAINV ikte</text>
+      <element  type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element type="MAINV">
+	<lemma>bargat</lemma> 
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV</text>
+      <element  type="MAINV">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <question>
+      <text>Maid SUBJ MAINV odne</text>
+      <element type="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar pos="N"/>
+      </element>
+      <element  type="MAINV">
+	<lemma>bargat</lemma> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV</text>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <question>
+      <text>Maid SUBJ-guovttos MAINV odne</text>
+      <element type="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Sg+Gen"/>
+      </element>
+      <element type="MAINV">
+	<lemma>bargat</lemma> 
+	<grammar tag="V+Ind+Prs+Du3"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV</text>
+      <element type="SUBJ">
+	<grammar tag="Pron+Pers+Du3+Nom"/>
+      </element>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Prs+Du3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <question>
+      <text>MAINV go SUBJ odne</text>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<sem class="ACTIVITY"/>
+      </element>
+      <element type="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar pos="N"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ NEG CONNEG</text>
+      <element type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element type="NEG">
+	<grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element type="CONNEG">
+	<grammar tag="V+Ind+Prs+ConNeg"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+</questions>
+
+
+
+
