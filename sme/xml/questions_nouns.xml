@@ -109,4 +109,65 @@
       </element>
     </answer>
   </q>
+
+  <q>
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element type="MAINV">
+	<lemma>oaidnit</lemma>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ACC</text>
+      <element type="N-ACC">
+	<grammar tag="N+Sg+Acc"/>
+	<sem class="OBJECT"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Gean SUBJ MAINV</text>
+      <element type="SUBJ">
+	<grammar tag="Pron"/>
+      </element>
+      <element type="MAINV">
+	<lemma>oaidnit</lemma>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ACC</text>
+      <element type="N-ACC">
+	<grammar tag="N+Sg+Acc"/>
+	<sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Geaid SUBJ MAINV</text>
+      <element type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element type="MAINV">
+	<lemma>dovdat</lemma>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ACC</text>
+      <element type="N-ACC">
+	<grammar tag="N+Pl+Acc"/>
+	<sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+
 </questions>
