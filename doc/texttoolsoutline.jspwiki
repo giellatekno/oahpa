@@ -1,0 +1,82 @@
+!!!Text tools
+
+We would like to make a suite of text analysis tools for the Sámi students. The idea is to use our grammatical tools and interactive dictionaries as aid in text analysis and translation. What follows is an outline of ideas.
+
+!!Tool types
+
+At present, we envisage four different tool types:
+
+# Morphological analysis
+# Syntactic analysis
+# Text-to-lemma
+# Aided translation to Norwegian
+
+Each tool type uses our analysers in different ways.
+
+
+!!Morphological analysis
+
+Here is one possible implementation:
+
+The student is presented with a text, and with a set of options for the task at hand:
+
+# Find certain POS (Adv, Po, etc.)
+# Assign POS to all words in the text
+# For the open POS (N, A, V), assign grammatical features (Number, Case; Number, Case, Attributive, Comparision; Mood, Tense, Person-Number)
+
+The game has three phases.
+
+!!!Phase 1
+
+After the choice has been made, the analysis of the first 3-4 lines are preanalysed in order to show the idea, the rest is not. For the rest of the text, the student clicks on the words of his or her choice, and adds appropriate information (according to game type). The machine will not protest, so, in a noun task, the student may errouneously add __N Sg Gen__ to an indeclineable sentence adverbial like ''odne'', for example. 
+
+The interface should be related to the game type: At face value, the text is bare, but with line spacing. When pointed at, the words will offer space for filling in one or more values of the required variable (POS, Case, etc.)
+
+When s/he is done, the student __assigns__ the document to phase 2.
+
+!!!Phase 2
+
+Here, the computer presents the student with a modified version of the assignment from phase 1: The student's assignment, but with indication showing which words have got the correct analysis, and which words have not.
+
+The student is then allowed to change values of the incorrect answers, and to __assign__ the document to the teacher.
+
+!!!Phase 3
+
+The machine sends the answer from phase 2 to the teacher, and returns the correct scheme to the student, as an immediate response. The corrected version will give the correct POS and analyses for all target words, as well as for all words errouneously singeled out by the student.
+
+The philosphy behind the three phases is as follows:
+
+* The student shall have the possibility to correct sloppy mistakes
+* The teacher should get the second version of the answer, in order to be 
+  able to prepare a lecture focussing upon the isses which have proven
+  difficult for the students
+* The student shall get immediate response (phase 3) and not be left 
+  wondering whether s/he got it right.
+  
+The tool may also be used without a human teacher, but in that case, there will only be the feedback from the computer.
+
+
+
+!!Syntactic text tool
+
+This will work in the same way as the morphology text tool, but with syntactic functions in stead of morphological categories.
+
+!!Text-to-lemma
+
+Here, the text is converted to a string of lemmas, and the task at hand is to convert each lemma to the appropriate inflected form.
+
+!!Aided translation to Norwegian
+
+This text tool is intended to lower the barrier for beginners when they read Sámi text. The text is stored on our machine, and there is access to our dictionary via that interface.
+
+At some future point, we may of course hope that all Sámi students have access to our dictionaries on their own computer, but this is certainly not the case today. A tailored game would also make it possible to eventually restrict the translations for this particular text.
+
+The translation tool may then be combined with questions to the text, either formulated such that the machine may check the answer, or with an email option to the teacher.
+
+
+
+
+
+
+
+
