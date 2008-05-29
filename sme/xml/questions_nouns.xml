@@ -11,11 +11,12 @@
 	<grammar pos="Pron"/>
       </element>
       <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<lemma>liikot</lemma>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-ILL</text>
+      <text>(CLADV)(SUBJ) MAINV N-ILL</text>
       <element type="N-ILL">
 	<sem class="OBJECT"/>
 	<grammar pos="N"/>
@@ -31,6 +32,7 @@
 	<grammar pos="Pron"/>
       </element>
       <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<lemma>addit</lemma>
       </element>
       <element type="OBJ">
@@ -39,7 +41,7 @@
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV OBJ N-ILL</text>
+      <text>(CLADV)(SUBJ) MAINV OBJ N-ILL</text>
       <element type="N-ILL">
 	<grammar tag="N+Sg+Ill"/>
 	<sem class="HUMAN"/>
@@ -55,6 +57,7 @@
 	<grammar pos="Pron" />
       </element>
       <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<lemma>addit</lemma>
       </element>
       <element type="OBJ">
@@ -63,7 +66,7 @@
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV OBJ N-ILL</text>
+      <text>(CLADV)(SUBJ) MAINV OBJ N-ILL</text>
       <element type="N-ILL">
 	<grammar tag="N+Pl+Ill"/>
 	<sem class="HUMAN"/>
@@ -80,11 +83,11 @@
       </element>
       <element type="MAINV">
 	<grammar tag="V+Ind+Prs+Person-Number"/>
-	<lemma>mánnat</lemma>
+	<lemma>mannat</lemma>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-ILL</text>
+      <text>(CLADV)(SUBJ) MAINV N-ILL</text>
       <element type="N-ILL">
 	<grammar tag="N+Sg+Ill"/>
 	<sem class="PLACE"/>
@@ -95,17 +98,220 @@
   <q>
     <qtype>N-LOC</qtype>
     <question>
-      <text>Geas lea váralaš NOUN</text>
-      <element type="NOUN">
-	<grammar tag="N+Sg+Nom"/>
+      <text>Geas MAINV váralaš SUBJ</text>
+      <element type="SUBJ">
+	<grammar tag="N+Number+Nom"/>
 	<sem class="ANIMAL"/>
+      </element>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<lemma>leat</lemma>
       </element>
     </question>
     <answer> 
-      <text>N-LOC lea váralaš NOUN </text>
+      <text>(CLADV) N-LOC MAINV váralaš SUBJ</text>
       <element type="N-LOC">
 	<grammar tag="N+Sg+Loc"/>
 	<sem class="HUMAN"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) N-LOC MAINV</text>
+      <element type="N-LOC">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Geain MAINV váralaš SUBJ</text>
+      <element type="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="ANIMAL"/>
+      </element>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<lemma>leat</lemma>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) N-LOC MAINV váralaš SUBJ</text>
+      <element type="N-LOC">
+	<grammar tag="N+Pl+Loc"/>
+	<sem class="HUMAN"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) N-LOC MAINV</text>
+      <element type="N-LOC">
+	<grammar tag="N+Pl+Loc"/>
+	<sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+
+   <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Gos SUBJ lea dál</text>
+      <element type="SUBJ">
+	<grammar pos="N+Sg+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) SUBJ lea N-LOC (CLADV)</text>
+      <element type="N-LOC">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) Son lea N-LOC (CLADV)</text>
+      <element type="N-LOC">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE"/>
+      </element>
+    </answer>
+  </q>
+ 
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Gos SUBJ leat dál</text>
+      <element type="SUBJ">
+	<grammar pos="N+Pl+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) SUBJ leat N-LOC (CLADV)</text>
+      <element type="N-LOC">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) Sii leat N-LOC (CLADV)</text>
+      <element type="N-LOC">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE"/>
+      </element>
+    </answer>
+  </q>
+ 
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Gos SUBJ boahtá dál</text>
+      <element type="SUBJ">
+	<grammar pos="N+Sg+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) SUBJ boahtá N-LOC (CLADV)</text>
+      <element type="N-LOC">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) Son boahtá N-LOC (CLADV)</text>
+      <element type="N-LOC">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE"/>
+      </element>
+    </answer>
+  </q>
+ 
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Gos SUBJ bohtet dál</text>
+      <element type="SUBJ">
+	<grammar pos="N+Pl+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) SUBJ bohtet N-LOC (CLADV)</text>
+      <element type="N-LOC">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) Sii bohtet N-LOC (CLADV)</text>
+      <element type="N-LOC">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Mas SUBJ MAINV</text>
+      <element type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<lemma>ballat</lemma>
+      </element>
+   </question>
+    <answer> 
+      <text>(CLADV) SUBJ MAINV N-LOC (CLADV)</text>
+      <element type="N-LOC">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="ANIMAL"/>
+      </element>
+    </answer>
+  </q>
+  
+  <q>
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<lemma>oaidnit</lemma>
+      </element>
+    </question>
+    <answer> 
+      <text>(SUBJ) MAINV N-ACC</text>
+      <element type="N-ACC">
+	<grammar tag="N+Number+Acc"/>
+	<sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+  
+  <q>
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<lemma>oastit</lemma>
+      </element>
+    </question>
+    <answer> 
+      <text>(SUBJ) MAINV N-ACC</text>
+      <element type="N-ACC">
+	<grammar tag="N+Number+Acc"/>
+	<sem class="CLOTHING"/>
       </element>
     </answer>
   </q>
@@ -118,14 +324,15 @@
 	<grammar pos="Pron"/>
       </element>
       <element type="MAINV">
-	<lemma>oaidnit</lemma>
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<lemma>sárgut</lemma>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-ACC</text>
+      <text>(SUBJ) MAINV N-ACC</text>
       <element type="N-ACC">
-	<grammar tag="N+Sg+Acc"/>
-	<sem class="OBJECT"/>
+	<grammar tag="N+Number+Acc"/>
+	<sem class="ANIMAL"/>
       </element>
     </answer>
   </q>
@@ -138,11 +345,12 @@
 	<grammar tag="Pron"/>
       </element>
       <element type="MAINV">
-	<lemma>oaidnit</lemma>
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<lemma>dovdat</lemma>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-ACC</text>
+      <text>(SUBJ) MAINV N-ACC</text>
       <element type="N-ACC">
 	<grammar tag="N+Sg+Acc"/>
 	<sem class="HUMAN"/>
@@ -158,6 +366,7 @@
 	<grammar pos="Pron"/>
       </element>
       <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<lemma>dovdat</lemma>
       </element>
     </question>
@@ -169,5 +378,108 @@
       </element>
     </answer>
   </q>
+
+  <q>
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>Gean SUBJ dát lea</text>
+      <element type="SUBJ">
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="OBJECT"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(Dát) lea N-GEN (SUBJ)</text>
+      <element type="N-GEN">
+	<grammar tag="N+Sg+Gen"/>
+	<sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>Geaid SUBJ dát leat</text>
+      <element type="SUBJ">
+	<grammar tag="N+Pl+Nom"/>
+	<sem class="OBJECT"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(Dát) leat N-GEN (SUBJ)</text>
+      <element type="N-GEN">
+	<grammar tag="N+Pl+Gen"/>
+	<sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>N-COM</qtype>
+    <question>
+      <text>Geainna SUBJ MAINV</text>
+      <element type="SUBJ">
+	<grammar tag="Pron"/>
+      </element>
+       <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<valency>COMV</valency>
+      </element>
+   </question>
+    <answer> 
+      <text>(SUBJ) MAINV N-COM</text>
+      <element type="N-COM">
+	<grammar tag="N+Number+Gen"/>
+	<sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>N-COM</qtype>
+    <question>
+      <text>Mainna SUBJ MAINV ruoktot</text>
+      <element type="SUBJ">
+	<grammar tag="Pron"/>
+      </element>
+       <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<lemma>mannat</lemma>
+      </element>
+   </question>
+    <answer> 
+      <text>(CLADV) (SUBJ) MAINV (ruoktot) N-COM (ruoktot) (CLADV)</text>
+      <element type="N-COM">
+	<grammar tag="N+Sg+Gen"/>
+	<sem class="VEHICLE"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ bargá Deanus</text>
+      <element type="SUBJ">
+	<grammar tag="N+Sg+Nom"/>
+      </element>
+   </question>
+    <answer> 
+      <text>(CLADV) SUBJ bargá (Deanus) N-ESS (Deanus) (CLADV)</text>
+      <element type="N-ESS">
+	<grammar tag="N+Ess"/>
+	<sem class="PROFESSION"/>
+      </element>
+    </answer>
+     <answer> 
+      <text>(CLADV) son bargá (Deanus) N-ESS (Deanus) (CLADV)</text>
+      <element type="N-ESS">
+	<grammar tag="N+Ess"/>
+	<sem class="PROFESSION"/>
+      </element>
+    </answer>
+ </q>
+
 
 </questions>
