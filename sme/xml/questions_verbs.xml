@@ -15,29 +15,10 @@
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV</text>
+      <text>(CLADV) (odne) (SUBJ) MAINV (odne) (CLADV)</text>
       <element type="MAINV">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Ind+Prs+Person-Number"/>
-      </element>
-    </answer>
-  </q>
-  <q>
-    <question>
-      <text>Maid SUBJ MAINV ikte</text>
-      <element  type="SUBJ">
-	<grammar pos="Pron"/>
-      </element>
-      <element type="MAINV">
-	<lemma>bargat</lemma> 
-	<grammar tag="V+Ind+Prt+Person-Number"/>
-      </element>
-    </question>
-    <answer> 
-      <text>SUBJ MAINV</text>
-      <element  type="MAINV">
-	<sem class="ACTIVITY"/>
-	<grammar tag="V+Ind+Prt+Person-Number"/>
       </element>
     </answer>
   </q>
@@ -47,21 +28,57 @@
       <text>Maid SUBJ MAINV odne</text>
       <element type="SUBJ">
 	<sem class="HUMAN"/>
-	<grammar pos="N"/>
+	<grammar pos="N+Sg+Nom"/>
       </element>
       <element  type="MAINV">
 	<lemma>bargat</lemma> 
-	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<grammar tag="V+Ind+Prs+Sg3"/>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV</text>
+      <text>(CLADV) (odne) SUBJ MAINV (odne) (CLADV)</text>
       <element type="MAINV">
-	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<grammar tag="V+Ind+Prs+Sg3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) (odne) son MAINV (odne) (CLADV)</text>
+<element type="MAINV">
+	<grammar tag="V+Ind+Prs+Sg3"/>
 	<sem class="ACTIVITY"/>
       </element>
     </answer>
   </q>
+
+  <q>
+    <question>
+      <text>Maid SUBJ MAINV odne</text>
+      <element type="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar pos="N+Pl+Nom"/>
+      </element>
+      <element  type="MAINV">
+	<lemma>bargat</lemma> 
+	<grammar tag="V+Ind+Prs+Pl3"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) (odne) SUBJ MAINV (odne) (CLADV)</text>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Prs+Pl3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) (odne) sii MAINV (odne) (CLADV)</text>
+<element type="MAINV">
+	<grammar tag="V+Ind+Prs+Pl3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+
 
   <q>
     <question>
@@ -76,7 +93,17 @@
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV</text>
+      <text>(CLADV) (odne) (SUBJ) MAINV (odne) (CLADV)</text>
+      <element type="SUBJ">
+	<grammar tag="HUMAN"/>
+      </element>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Prs+Du3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) (odne) (SUBJ) MAINV (odne) (CLADV)</text>
       <element type="SUBJ">
 	<grammar tag="Pron+Pers+Du3+Nom"/>
       </element>
@@ -87,11 +114,99 @@
     </answer>
   </q>
 
+    <q>
+   <question>
+      <text>Maid SUBJ MAINV ikte</text>
+      <element type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element type="MAINV">
+	<lemma>bargat</lemma> 
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) (ikte) (SUBJ) MAINV (ikte) (CLADV)</text>
+      <element type="MAINV">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <question>
+      <text>Maid SUBJ MAINV ikte</text>
+      <element type="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar pos="N"/>
+      </element>
+      <element  type="MAINV">
+	<lemma>bargat</lemma> 
+	<grammar tag="V+Ind+Prt"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) (ikte) SUBJ MAINV (ikte) (CLADV)</text>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Prt"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) (ikte) SUBJ MAINV (ikte) (CLADV)</text>
+<element type="MAINV">
+	<grammar tag="V+Ind+Prt"/>
+	<sem class="ACTIVITY"/>
+      </element>
+ <element type="SUBJ">
+	<grammar tag="son+Pron+Pers+Person-Number"/>
+      </element>
+   </answer>
+  </q>
+
+
+  <q>
+    <question>
+      <text>Maid SUBJ-guovttos MAINV ikte</text>
+      <element type="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Sg+Gen"/>
+      </element>
+      <element type="MAINV">
+	<lemma>bargat</lemma> 
+	<grammar tag="V+Ind+Prt+Du3"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) (ikte) (SUBJ) MAINV (ikte) (CLADV)</text>
+      <element type="SUBJ">
+	<grammar tag="HUMAN"/>
+      </element>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Prt+Du3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) (ikte) (SUBJ) MAINV (ikte) (CLADV)</text>
+      <element type="SUBJ">
+	<grammar tag="Pron+Pers+Du3+Nom"/>
+      </element>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Prt+Du3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+
+<! ---==========  Here start the go-questions =========   -->
+
   <q>
     <question>
       <text>MAINV go SUBJ odne</text>
       <element type="MAINV">
-	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<grammar tag="V+Ind+Prs"/>
 	<sem class="ACTIVITY"/>
       </element>
       <element type="SUBJ">
@@ -100,7 +215,20 @@
       </element>
     </question>
     <answer> 
-      <text>SUBJ NEG CONNEG</text>
+      <text>(CLADV) SUBJ MAINV (odne) (CLADV)</text>
+      <element type="SUBJ">
+	<grammar pos="N"/>
+      </element>
+    </answer>
+    <answer> 
+    <answer> 
+      <text>(CLADV) SUBJ MAINV (odne) (CLADV)</text>
+      <element type="SUBJ">
+	<grammar pos="Pron+Pers+sii+Person-Number"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(odne) (SUBJ) NEG CONNEG (odne) (CLADV)</text>
       <element type="SUBJ">
 	<grammar pos="Pron"/>
       </element>
@@ -113,6 +241,48 @@
       </element>
     </answer>
   </q>
+
+
+  <q>
+    <question>
+      <text>MAINV go SUBJ ikte</text>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Prt"/>
+	<sem class="ACTIVITY"/>
+      </element>
+      <element type="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar pos="N"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) SUBJ MAINV (ikte) (CLADV)</text>
+      <element type="SUBJ">
+	<grammar pos="N"/>
+      </element>
+    </answer>
+    <answer> 
+    <answer> 
+      <text>(CLADV) SUBJ MAINV (ikte) (CLADV)</text>
+      <element type="SUBJ">
+	<grammar pos="Pron+Pers+sii+Person-Number"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(odne) (SUBJ) NEG PRFPRC (ikte) (CLADV)</text>
+      <element type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element type="NEG">
+	<grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element type="PRFPRC">
+	<grammar tag="V+PrfPrc"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+
 </questions>
 
 
