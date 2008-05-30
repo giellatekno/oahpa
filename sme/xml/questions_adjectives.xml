@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- xml-structure for questions in morphdrill -->
+<!-- Questions for adjectives -->
+
+<questions>
+
+<!-- Attribute -->
+
+  <q>
+   <question>
+      <text>Mu SUBJ MAINV PRED. Makkár SUBJ mus MAINV</text>
+      <element type="SUBJ">   
+	<grammar pos="N"/>
+	<sem class="CLOTHING"/>
+      </element>
+      <element type="MAINV">
+	<lemma>leat</lemma> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>   
+      </element>
+      <element type="PRED">     
+	<grammar pos="A+Number+Nom"/>   <!-- same number as SUBJ -->
+	<sem class="CLOTHES-adj"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Dus MAINV ATTR SUBJ</text>
+      <element type="ATTR">   <!-- Same A as PRED -->
+	<grammar tag="A+Attr"/>  <!-- no number -->
+      </element>
+    </answer>
+  </q>
+
+
+<!-- predicative - sg and pl -->
+
+  <q>
+   <question>
+      <text>Mus MAINV ATTR SUBJ. Makkár SUBJ MAINV</text>
+      <element type="SUBJ">   
+	<grammar pos="N"/>
+	<sem class="CLOTHING"/>
+      </element>
+      <element type="MAINV">
+	<lemma>leat</lemma> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>   
+      </element>
+      <element type="ATTR">
+	<grammar tag="A+Attr"/>  <!-- no number -->
+	<sem class="CLOTHES-adj"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV PRED</text>
+      <element type="PRED">     <!-- Same A as ATTR -->
+	<grammar pos="A+Number+Nom"/>   <!-- same number as SUBJ -->
+      </element>
+    </answer>
+  </q>
+ 
+ <!-- comparative predicative - sg and pl-->
+ 
+    <q>
+   <question>
+      <text>Mu SUBJ MAINV PRED. Makkár du SUBJ MAINV</text>
+      <element type="SUBJ">   
+	<grammar pos="N"/>
+	<sem class="FAMILY"/>
+      </element>
+      <element type="MAINV">
+	<lemma>leat</lemma> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>   
+      </element>
+      <element type="PRED">     
+	<grammar pos="A+Number+Nom"/>   <!-- same number as SUBJ -->
+	<sem class="HUMAN-adj"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Mu SUBJ MAINV PREDCOMP</text>
+      <element type="PREDCOMP">   <!-- Same A as PRED -->
+	<grammar tag="A+Comp+Number+Nom"/>  <!-- same number as SUBJ -->
+      </element>
+    </answer>
+  </q>
+
+
+
+<!-- superlative predicative - sg and pl -->
+
+    <q>
+   <question>
+      <text>Gal dáppe MAINV ATTR SUBJ</text>
+      <element type="SUBJ">   
+	<grammar pos="N"/>
+	<sem class="CLOTHING"/>
+      </element>
+      <element type="ATTR">
+	<grammar tag="A+Attr"/>  <!-- no number -->
+	<sem class="CLOTHES-adj"/>
+      </element>
+      <element type="MAINV">
+	<lemma>leat</lemma> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>   
+      </element>
+      <element type="PRED">     
+	<grammar pos="A+Number+Nom"/>   <!-- same number as SUBJ -->
+	<sem class="HUMAN-adj"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Muhto mu SUBJ MAINV PREDSUP</text>
+      <element type="PREDSUP">   <!-- Same A as ATTR -->
+	<grammar tag="A+Superl+Number+Nom"/>  <!-- same number as SUBJ -->
+      </element>
+    </answer>
+  </q>
+
+  </questions>
+
