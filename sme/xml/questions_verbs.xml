@@ -28,7 +28,7 @@
       <text>Maid SUBJ MAINV odne</text>
       <element type="SUBJ">
 	<sem class="HUMAN"/>
-	<grammar pos="N+Sg+Nom"/>
+	<grammar tag="N+Sg+Nom"/>
       </element>
       <element  type="MAINV">
 	<lemma>bargat</lemma> 
@@ -56,7 +56,7 @@
       <text>Maid SUBJ MAINV odne</text>
       <element type="SUBJ">
 	<sem class="HUMAN"/>
-	<grammar pos="N+Pl+Nom"/>
+	<grammar tag="N+Pl+Nom"/>
       </element>
       <element  type="MAINV">
 	<lemma>bargat</lemma> 
@@ -155,11 +155,11 @@
     </answer>
     <answer> 
       <text>(CLADV) (ikte) SUBJ MAINV (ikte) (CLADV)</text>
-<element type="MAINV">
+      <element type="MAINV">
 	<grammar tag="V+Ind+Prt"/>
 	<sem class="ACTIVITY"/>
       </element>
- <element type="SUBJ">
+      <element type="SUBJ">
 	<grammar tag="son+Pron+Pers+Person-Number"/>
       </element>
    </answer>
@@ -200,31 +200,30 @@
     </answer>
   </q>
 
-<! ---==========  Here start the go-questions =========   -->
+<!--- ==========  Here start the go-questions =========   -->
 
-  <q>
-    <question>
-      <text>MAINV go SUBJ odne</text>
-      <element type="MAINV">
-	<grammar tag="V+Ind+Prs"/>
-	<sem class="ACTIVITY"/>
-      </element>
-      <element type="SUBJ">
-	<sem class="HUMAN"/>
-	<grammar pos="N"/>
-      </element>
-    </question>
+<q>
+  <question>
+    <text>MAINV go SUBJ odne</text>
+    <element type="MAINV">
+      <grammar tag="V+Ind+Prs"/>
+      <sem class="ACTIVITY"/>
+    </element>
+    <element type="SUBJ">
+      <sem class="HUMAN"/>
+      <grammar pos="N"/>
+    </element>
+  </question>
+  <answer> 
+    <text>(CLADV) SUBJ MAINV (odne) (CLADV)</text>
+    <element type="SUBJ">
+      <grammar pos="N"/>
+    </element>
+  </answer>
     <answer> 
       <text>(CLADV) SUBJ MAINV (odne) (CLADV)</text>
       <element type="SUBJ">
-	<grammar pos="N"/>
-      </element>
-    </answer>
-    <answer> 
-    <answer> 
-      <text>(CLADV) SUBJ MAINV (odne) (CLADV)</text>
-      <element type="SUBJ">
-	<grammar pos="Pron+Pers+sii+Person-Number"/>
+	<grammar tag="Pron+Pers+sii+Person-Number"/>
       </element>
     </answer>
     <answer> 
@@ -262,10 +261,9 @@
       </element>
     </answer>
     <answer> 
-    <answer> 
       <text>(CLADV) SUBJ MAINV (ikte) (CLADV)</text>
       <element type="SUBJ">
-	<grammar pos="Pron+Pers+sii+Person-Number"/>
+	<grammar tag="Pron+Pers+sii+Person-Number"/>
       </element>
     </answer>
     <answer> 
