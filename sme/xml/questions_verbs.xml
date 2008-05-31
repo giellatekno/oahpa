@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- xml-structure for questions in morphdrill -->
-<!-- Questions for verbs -->
-
+<!-- Questions for verbs. Not yet potential -->
 <questions>
+
+<!-- Both Morfa and QA, but in QA there is the answer does not have to be ACTIVITY, but any verb: -->
   <q>
    <question>
       <text>Maid SUBJ MAINV odne</text>
@@ -23,63 +24,40 @@
     </answer>
   </q>
 
+<!-- Both Morfa and QA, but in QA there is the answer does not have to be ACTIVITY, but any verb: -->
   <q>
     <question>
       <text>Maid SUBJ MAINV odne</text>
       <element type="SUBJ">
 	<sem class="HUMAN"/>
-	<grammar tag="N+Sg+Nom"/>
+	<grammar tag="N+Number+Nom"/>
       </element>
       <element  type="MAINV">
 	<lemma>bargat</lemma> 
-	<grammar tag="V+Ind+Prs+Sg3"/>
+	<grammar tag="V+Ind+Prs+Person-Number"/>
       </element>
     </question>
     <answer> 
       <text>(CLADV) (odne) SUBJ MAINV (odne) (CLADV)</text>
       <element type="MAINV">
-	<grammar tag="V+Ind+Prs+Sg3"/>
+	<grammar tag="V+Ind+Prs+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
     </answer>
     <answer> 
-      <text>(CLADV) (odne) son MAINV (odne) (CLADV)</text>
-<element type="MAINV">
-	<grammar tag="V+Ind+Prs+Sg3"/>
-	<sem class="ACTIVITY"/>
-      </element>
-    </answer>
-  </q>
-
-  <q>
-    <question>
-      <text>Maid SUBJ MAINV odne</text>
+      <text>(CLADV) (odne) SUBJ MAINV (odne) (CLADV)</text>
       <element type="SUBJ">
-	<sem class="HUMAN"/>
-	<grammar tag="N+Pl+Nom"/>
+	<grammar tag="son+Pron+Pers+Person-Number+Nom"/>
       </element>
-      <element  type="MAINV">
-	<lemma>bargat</lemma> 
-	<grammar tag="V+Ind+Prs+Pl3"/>
-      </element>
-    </question>
-    <answer> 
-      <text>(CLADV) (odne) SUBJ MAINV (odne) (CLADV)</text>
-      <element type="MAINV">
-	<grammar tag="V+Ind+Prs+Pl3"/>
-	<sem class="ACTIVITY"/>
-      </element>
-    </answer>
-    <answer> 
-      <text>(CLADV) (odne) sii MAINV (odne) (CLADV)</text>
 <element type="MAINV">
-	<grammar tag="V+Ind+Prs+Pl3"/>
+	<grammar tag="V+Ind+Prs+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
     </answer>
   </q>
 
 
+<!-- Both Morfa and QA, but in QA there is the answer does not have to be ACTIVITY, but any verb: -->
   <q>
     <question>
       <text>Maid SUBJ-guovttos MAINV odne</text>
@@ -105,7 +83,7 @@
     <answer> 
       <text>(CLADV) (odne) (SUBJ) MAINV (odne) (CLADV)</text>
       <element type="SUBJ">
-	<grammar tag="Pron+Pers+Du3+Nom"/>
+	<grammar tag="son+Pron+Pers+Du3+Nom"/>
       </element>
       <element type="MAINV">
 	<grammar tag="V+Ind+Prs+Du3"/>
@@ -114,6 +92,8 @@
     </answer>
   </q>
 
+
+<!-- Both Morfa and QA, but in QA there is the answer does not have to be ACTIVITY, but any verb: -->
     <q>
    <question>
       <text>Maid SUBJ MAINV ikte</text>
@@ -134,6 +114,7 @@
     </answer>
   </q>
 
+<!-- Both Morfa and QA, but in QA there is the answer does not have to be ACTIVITY, but any verb: -->
   <q>
     <question>
       <text>Maid SUBJ MAINV ikte</text>
@@ -165,7 +146,7 @@
    </answer>
   </q>
 
-
+<!-- Both Morfa and QA, but in QA there is the answer does not have to be ACTIVITY, but any verb: -->
   <q>
     <question>
       <text>Maid SUBJ-guovttos MAINV ikte</text>
@@ -200,8 +181,219 @@
     </answer>
   </q>
 
-<!--- ==========  Here start the go-questions =========   -->
+<!--- ==========  conditional =========   -->
 
+<!-- Both Morfa and QA, but in QA there is the answer does not have to be ACTIVITY, but any verb: -->
+  <q>
+   <question>
+      <text>Maid SUBJ MAINV luomus</text>
+      <element type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element type="MAINV">
+	<lemma>bargat</lemma> 
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) (luomus) (SUBJ) MAINV (odne) (luomus)</text>
+      <element type="MAINV">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+      </element>
+    </answer>
+  </q>
+
+<!-- Both Morfa and QA, but in QA there is the answer does not have to be ACTIVITY, but any verb: -->
+  <q>
+    <question>
+      <text>Maid SUBJ MAINV luomus</text>
+      <element type="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Number+Nom"/>
+      </element>
+      <element  type="MAINV">
+	<lemma>bargat</lemma> 
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) (luomus) SUBJ MAINV (luomus) (CLADV)</text>
+      <element type="MAINV">
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) (luomus) SUBJ MAINV (luomus) (CLADV)</text>
+      <element type="SUBJ">
+	<grammar tag="son+Pron+Pers+Person-Number+Nom"/>
+      </element>
+<element type="MAINV">
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+
+
+<!-- Both Morfa and QA, but in QA there is the answer does not have to be ACTIVITY, but any verb: -->
+  <q>
+    <question>
+      <text>Maid SUBJ-guovttos MAINV luomus</text>
+      <element type="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Sg+Gen"/>
+      </element>
+      <element type="MAINV">
+	<lemma>bargat</lemma> 
+	<grammar tag="V+Cond+Prs+Du3"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) (luomus) (SUBJ) MAINV (luomus) (CLADV)</text>
+      <element type="SUBJ">
+	<grammar tag="HUMAN"/>
+      </element>
+      <element type="MAINV">
+	<grammar tag="V+Cond+Prs+Du3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) (luomus) (SUBJ) MAINV (luomus) (CLADV)</text>
+      <element type="SUBJ">
+	<grammar tag="son+Pron+Pers+Du3+Nom"/>
+      </element>
+      <element type="MAINV">
+	<grammar tag="V+Cond+Prs+Du3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+
+
+<!--- ==========  Imperative, all of them only for Morfa =========   -->
+
+  <q>
+   <question>
+      <text>SUBJ MAINV MAINV2</text>
+      <element type="SUBJ">
+	<grammar pos="Pron+Pers+Sg1"/>
+      </element>
+      <element type="MAINV">
+	<lemma>áigut</lemma> 
+	<grammar tag="V+Cond+Prs+Sg1"/>
+      </element>
+       <element type="MAINV2">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Inf"/>
+      </element>
+   </question>
+    <answer> 
+      <text>MAINV2</text>
+      <element type="MAINV2">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Imprt+Prs+Sg2"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+   <question>
+      <text>SUBJ MAINV MAINV2</text>
+      <element type="SUBJ">
+	<grammar pos="Pron+Pers+Du1"/>
+      </element>
+      <element type="MAINV">
+	<lemma>áigut</lemma> 
+	<grammar tag="V+Cond+Prs+Du1"/>
+      </element>
+       <element type="MAINV2">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Inf"/>
+      </element>
+   </question>
+    <answer> 
+      <text>MAINV2</text>
+      <element type="MAINV2">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Imprt+Prs+Du2"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+   <question>
+      <text>SUBJ MAINV MAINV2</text>
+      <element type="SUBJ">
+	<grammar pos="Pron+Pers+Pl1+Nom"/>
+      </element>
+      <element type="MAINV">
+	<lemma>áigut</lemma> 
+	<grammar tag="V+Cond+Prs+Pl1"/>
+      </element>
+       <element type="MAINV2">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Inf"/>
+      </element>
+   </question>
+    <answer> 
+      <text>MAINV2</text>
+      <element type="MAINV2">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Imprt+Prs+Pl2"/>
+      </element>
+    </answer>
+  </q>
+
+
+  <q>
+   <question>
+      <text>Sihke don ja mun MAINV MAINV2</text>
+      <element type="MAINV">
+	<lemma>áigut</lemma> 
+	<grammar tag="V+Cond+Prs+Du1"/>
+      </element>
+       <element type="MAINV2">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Inf"/>
+      </element>
+   </question>
+    <answer> 
+      <text>MAINV2</text>
+      <element type="MAINV2">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Imprt+Prs+Du1"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+   <question>
+      <text>Sihke don ja mii MAINV MAINV2</text>
+      <element type="MAINV">
+	<lemma>áigut</lemma> 
+	<grammar tag="V+Cond+Prs+Pl1"/>
+      </element>
+       <element type="MAINV2">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Inf"/>
+      </element>
+   </question>
+    <answer> 
+      <text>MAINV2</text>
+      <element type="MAINV2">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Imprt+Prs+Pl1"/>
+      </element>
+    </answer>
+  </q>
+
+
+<!--- ==========  go-questions =========   -->
+
+<!-- Both Morfa and QA: -->
 <q>
   <question>
     <text>MAINV go SUBJ odne</text>
@@ -241,7 +433,7 @@
     </answer>
   </q>
 
-
+<!-- Both Morfa and QA: -->
   <q>
     <question>
       <text>MAINV go SUBJ ikte</text>
@@ -263,11 +455,11 @@
     <answer> 
       <text>(CLADV) SUBJ MAINV (ikte) (CLADV)</text>
       <element type="SUBJ">
-	<grammar tag="Pron+Pers+sii+Person-Number"/>
+	<grammar tag="Pron+Pers+son+Person-Number"/>
       </element>
     </answer>
     <answer> 
-      <text>(odne) (SUBJ) NEG PRFPRC (ikte) (CLADV)</text>
+      <text>(ikte) (SUBJ) NEG PRFPRC (ikte) (CLADV)</text>
       <element type="SUBJ">
 	<grammar pos="Pron"/>
       </element>
@@ -276,6 +468,46 @@
       </element>
       <element type="PRFPRC">
 	<grammar tag="V+PrfPrc"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+
+<!-- Both Morfa and QA: -->
+<q>
+  <question>
+    <text>MAINV go SUBJ luomus</text>
+    <element type="MAINV">
+      <grammar tag="V+Cond+Prs"/>
+      <sem class="ACTIVITY"/>
+    </element>
+    <element type="SUBJ">
+      <sem class="HUMAN"/>
+      <grammar pos="N"/>
+    </element>
+  </question>
+  <answer> 
+    <text>(CLADV) SUBJ MAINV (luomus) (CLADV)</text>
+    <element type="SUBJ">
+      <grammar pos="N"/>
+    </element>
+  </answer>
+    <answer> 
+      <text>(CLADV) SUBJ MAINV (luomus) (CLADV)</text>
+      <element type="SUBJ">
+	<grammar tag="Pron+Pers+sii+Person-Number"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(luomus) (SUBJ) NEG CONNEG (luomus) (CLADV)</text>
+      <element type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element type="NEG">
+	<grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element type="CONNEG">
+	<grammar tag="V+Cond+Prs+ConNeg"/>
 	<sem class="ACTIVITY"/>
       </element>
     </answer>
