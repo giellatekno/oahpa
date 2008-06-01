@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- xml-structure for questions in morphdrill -->
+<!-- Questions for numerals  -->
+
+<questions>
+
+<!-- Attribute - only for Morfa -->
+
+  <q>
+   <question>
+      <text>Maid MAINV MAINV2</text>
+      </element>
+      <element type="MAINV">
+	<lemma>áigut</lemma> 
+	<grammar tag="V+Ind+Prs+Sg2"/>
+      </element>
+      <element type="MAINV2">
+	<lemma>oastit</lemma> 
+	<grammar tag="V+Inf"/>   
+      </element>
+    </question>
+    <answer> 
+      <text>(SUBJ) MAINV MAINV2 NUM-ATTR NOUN</text>
+    <element type="SUBJ">    
+	<grammar tag="Pron+Pers+mun+Sg1"/>         
+	</element>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Sg+Acc"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Sg+Acc"/>         
+	<sem class="CLOTHING"/>
+	</element>
+    </answer>
+    <answer> 
+      <text>(SUBJ) MAINV MAINV2 NUM-ATTR NOUN</text>
+    <element type="SUBJ">    
+	<grammar tag="Pron+Pers+mun+Sg1"/>         
+	</element>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Pl+Acc"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Pl+Acc"/>         
+	<sem class="CLOTHING-PL"/>
+	</element>
+    </answer>
+  </q>
+
+  <q>
+   <question>
+      <text>Maid MAINV</text>
+      </element>
+      <element type="MAINV">
+	<lemma>oaidnit</lemma> 
+	<grammar tag="V+Ind+Prs+Sg2"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(SUBJ) MAINV MAINV2 NUM-ATTR NOUN</text>
+    <element type="SUBJ">    
+	<grammar tag="Pron+Pers+mun+Sg1"/>         
+	</element>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Sg+Acc"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Sg+Acc"/>         
+	<sem class="ANIMAL"/>
+	</element>
+    </answer>
+  </q>
+
+  <q>
+   <question>
+      <text>Geaid SUBJ dát MAINV</text>
+    <element type="SUBJ">    
+	<grammar tag="N+Number+Nom"/>         
+	<sem class="OBJECT"/>
+	</element>
+      <element>
+      <element type="MAINV">
+	<lemma>leat</lemma> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(Dát) MAINV NUM-ATTR NOUN SUBJ</text>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Sg+Gen"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Sg+Gen"/>         
+	<sem class="HUMAN"/>
+	</element>
+    </answer>
+  </q>
+
+  <q>
+   <question>
+      <text>Geaidda don attát OBJ</text>
+    <element type="OBJ">    
+	<grammar tag="N+Pl+Acc"/>         
+	<sem class="OBJECT"/>
+	</element>
+    </question>
+    <answer> 
+      <text>Attán OBJ NUM-ATTR NOUN</text>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Sg+Gen"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Sg+Ill"/>         
+	<sem class="HUMAN"/>
+	</element>
+    </answer>
+  </q>
+
+  <q>
+   <question>
+      <text>Masa don bijat duogŋasa</text>
+    </question>
+    <answer> 
+      <text>(Mun) bijan duogŋasa NUM-ATTR NOUN</text>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Sg+Gen"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Sg+Ill"/>         
+	<sem class="CLOTHING"/>
+	</element>
+    </answer>
+  </q>
+
+  <q>
+   <question>
+      <text>Masa don bijat duogŋasa</text>
+    </question>
+    <answer> 
+      <text>(Mun) bijan duogŋasa NUM-ATTR NOUN</text>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Pl+Gen"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Pl+Ill"/>         
+	<sem class="CLOTHING-PL"/>
+	</element>
+    </answer>
+  </q>
+
+  <q>
+   <question>
+      <text>Geain lea váralaš SUBJ</text>
+    <element type="SUBJ">    
+	<grammar tag="N+Sg+Nom"/>         
+	<sem class="ANIMAL"/>
+	</element>
+    </question>
+    <answer> 
+      <text>NUM-ATTR NOUN lea</text>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Sg+Gen"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Sg+Loc"/>         
+	<sem class="HUMAN"/>
+	</element>
+    </answer>
+    <answer> 
+      <text>NUM-ATTR NOUN lea váralaš SUBJ</text>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Sg+Gen"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Sg+Loc"/>         
+	<sem class="HUMAN"/>
+	</element>
+    </answer>
+  </q>
+
+  <q>
+   <question>
+      <text>Gos SUBJ leat</text>
+    <element type="SUBJ">    
+	<grammar tag="N+Pl+Nom"/>         
+	<sem class="HUMAN"/>
+	</element>
+    </question>
+    <answer> 
+      <text>Sii leat NUM-ATTR NOUN</text>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Sg+Gen"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Sg+Loc"/>         
+	<sem class="BUILDING"/>
+	</element>
+    </answer>
+  </q>
+
+  <q>
+   <question>
+      <text>Gos SUBJ lei</text>
+    <element type="SUBJ">    
+	<grammar tag="N+Sg+Nom"/>         
+	<sem class="HUMAN"/>
+	</element>
+    </question>
+    <answer> 
+      <text>SUBJ lei NUM-ATTR NOUN</text>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Pl+Gen"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Pl+Loc"/>         
+	<sem class="ARRANGEMENT-PL"/>
+	</element>
+    </answer>
+    <answer> 
+      <text>SUBJ lei NUM-ATTR NOUN</text>
+    <element type="SUBJ">    
+	<grammar tag="Pron+son+Person-Number+Nom"/>         
+	</element>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Pl+Gen"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Pl+Loc"/>         
+	<sem class="ARRANGEMENT-PL"/>
+	</element>
+    </answer>
+  </q>
+
+  <q>
+   <question>
+      <text>Geaiguin SUBJ MAINV</text>
+    <element type="SUBJ">    
+	<grammar tag="Pron+Person-Number+Nom"/>         
+	</element>
+    <element type="MAINV">    
+	<grammar tag="V+Ind+Tense+Person-Number"/>         
+	<sem class="COMV"/>
+	</element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV NUM-ATTR NOUN</text>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Sg+Com"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Sg+Com"/>         
+	<sem class="HUMAN"/>
+	</element>
+    </answer>
+  </q>
+ 
+<!-- For Morfa, but also for QA with any Num: -->  
+    <q>
+   <question>
+      <text>Gallin joavkun SUBJ MAINV</text>
+    <element type="SUBJ">    
+	<grammar tag="N+Number+Nom"/>         
+	<sem class="HUMAN"/>
+	</element>
+    <element type="MAINV">    
+	<grammar tag="V+Ind+Tense+Person-Number"/>         
+	<lemma>bargat</lemma> 
+	</element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV NUM-ATTR NOUN</text>
+      <element type="NUM-ATTR">    
+	<grammar tag="Num+Ess"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Ess"/>         
+	<lemma>joavku</lemma>
+	</element>
+    </answer>
+    <answer> 
+      <text>SUBJ MAINV NUM-ATTR NOUN</text>
+    <element type="SUBJ">    
+	<grammar tag="Pron+Person-Number+Nom"/>         
+	</element>
+    <element type="NUM-ATTR">    
+	<grammar tag="Num+Ess"/>         
+	</element>
+    <element type="NOUN">    
+	<grammar tag="N+Ess"/>         
+	<lemma>joavku</lemma>
+	</element>
+    </answer>
+  </q>
+
+<!-- For Morfa, but also for QA with any COLL-NUM: -->  
+
+  <q>
+   <question>
+      <text>Gallis MAINV N-ILL</text>
+    <element type="N-ILL">    
+	<grammar tag="N+Sg+Ill"/>         
+	<lemma>skuvla</lemma> 
+	</element>
+    <element type="MAINV">    
+	<grammar tag="V+Ind+Tense+Pl3"/>         
+	<lemma>boahtit</lemma> 
+	</element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV (N-ILL)</text>
+      <element type="SUBJ">    
+	<grammar tag="N+Num+Sg+Nom"/>         
+	<sem class="COLL-NUM"/>
+	</element>
+    </answer>
+  </q>
+
+<!-- For Morfa, but also for QA with any COLL-NUM: -->  
+  <q>
+   <question>
+      <text>Gallása don MAINV</text>
+    <element type="MAINV">    
+	<grammar tag="V+Ind+Tense+Sg2"/>         
+	<lemma>oaidnit</lemma> 
+	</element>
+    </question>
+    <answer> 
+      <text>(SUBJ) MAINV OBJ</text>
+      <element type="SUBJ">    
+	<grammar tag="Pron+Pers+mun+Sg1+Nom"/>         
+	</element>
+      <element type="OBJ">    
+	<grammar tag="N+Num+Sg+Acc"/>         
+	<sem class="COLL-NUM"/>
+	</element>
+    </answer>
+  </q>
+
+<!-- Only for Morfa: -->  
+  <q>
+   <question>
+      <text>Geaid SUBJ dát MAINV</text>
+      <element type="SUBJ">    
+	<sem class="OBJECT"/>
+	<grammar tag="N"/>         
+	</element>
+    <element type="MAINV">    
+	<grammar tag="V+Ind+Person-Number"/>         
+	<lemma>leat</lemma> 
+	</element>
+    </question>
+    <answer> 
+      <text>Dan N-GEN</text>
+      <element type="N-GEN">    
+	<grammar tag="N+Num+Sg+Gen"/>         
+	<sem class="COLL-NUM"/>
+	</element>
+    </answer>
+  </q>
+
+<!-- For Morfa, but also for QA with any COLL-NUM: -->  
+  <q>
+   <question>
+      <text>Gallásii SUBJ MAINV</text>
+      <element type="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number"/>         
+	</element>
+    <element type="MAINV">    
+	<grammar tag="V+Ind+Person-Number"/>         
+	<lemma>muitalit</lemma> 
+	</element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ILL</text>
+      <element type="N-ILL">    
+	<grammar tag="N+Num+Sg+Ill"/>         
+	<sem class="COLL-NUM"/>
+	</element>
+    </answer>
+  </q>
+
+<!-- For Morfa, but also for QA with any COLL-NUM: -->  
+  <q>
+   <question>
+      <text>Gallásis lea dilli MAINV2</text>
+    <element type="MAINV2">    
+	<grammar tag="V+Inf"/>         
+	<sem class="ACTIVITY"/>
+	</element>
+    </question>
+    <answer> 
+      <text>SUBJ lea (dilli)</text>
+      <element type="SUBJ">    
+	<grammar tag="N+Num+Sg+Loc"/>         
+	<sem class="COLL-NUM"/>
+	</element>
+    </answer>
+  </q>
+
+<!-- For Morfa, but also for QA with any COLL-NUM: -->  
+  <q>
+   <question>
+      <text>Gallásiin don vuolggát N-ILL</text>
+    <element type="N-ILL">    
+	<grammar tag="N+Sg+Ill"/>         
+	<sem class="PLACE-NAME"/>
+	</element>
+    </question>
+    <answer> 
+      <text>(N-ILL) (mun) vuolggán N-COM (N-ILL)</text>
+      <element type="N-COM">    
+	<grammar tag="N+Num+Sg+Com"/>         
+	<sem class="COLL-NUM"/>
+	</element>
+    </answer>
+  </q>
+
+
+  </questions>
+
