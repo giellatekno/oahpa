@@ -50,7 +50,6 @@
     <answer> 
       <text>(CLADV) (SUBJ) MAINV OBJ N-ILL (CLADV)</text>
       <element type="N-ILL">
-	<grammar tag="N+Number+Ill"/>
 	<sem class="HUMAN"/>
       </element>
     </answer>
@@ -107,7 +106,6 @@
     <answer> 
       <text>(CLADV) N-LOC MAINV</text>
       <element type="N-LOC">
-	<grammar tag="N+Number+Loc"/>
 	<sem class="HUMAN"/>
       </element>
     </answer>
@@ -167,14 +165,12 @@
     <answer> 
       <text>(CLADV) SUBJ MAINV N-LOC (CLADV)</text>
       <element type="N-LOC">
-	<grammar tag="N+Number+Loc"/>
 	<sem class="PLACE"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) SUBJ MAINV N-LOC (CLADV)</text>
       <element type="N-LOC">
-	<grammar tag="N+Number+Loc"/>
 	<sem class="PLACE"/>
       </element>
       <element type="SUBJ">
@@ -223,7 +219,6 @@
     <answer> 
       <text>(CLADV) (SUBJ) MAINV N-ACC (CLADV)</text>
       <element type="N-ACC">
-	<grammar tag="N+Number+Acc"/>
 	<sem class="OBJECT"/>
       </element>
     </answer>
@@ -245,7 +240,6 @@
     <answer> 
       <text>(CLADV) (SUBJ) MAINV N-ACC (CLADV)</text>
       <element type="N-ACC">
-	<grammar tag="N+Number+Acc"/>
 	<sem class="CLOTHING"/>
       </element>
     </answer>
@@ -267,7 +261,6 @@
     <answer> 
       <text>(CLADV) (SUBJ) MAINV N-ACC (CLADV)</text>
       <element type="N-ACC">
-	<grammar tag="N+Number+Acc"/>
 	<sem class="ANIMAL"/>
       </element>
     </answer>
@@ -293,7 +286,6 @@
     <answer> 
       <text>(CLADV) (SUBJ) MAINV N-ACC (CLADV)</text>
       <element type="N-ACC">
-	<grammar tag="N+Number+Acc"/>
 	<sem class="HUMAN"/>
       </element>
     </answer>
@@ -321,7 +313,6 @@
     <answer> 
       <text>(CLADV) (Dát) MAINV N-GEN (SUBJ)</text>
       <element type="N-GEN">
-	<grammar tag="N+Number+Gen"/>
 	<sem class="HUMAN"/>
       </element>
     </answer>
@@ -348,7 +339,6 @@
     <answer> 
       <text>(CLADV) (SUBJ) MAINV N-COM (CLADV)</text>
       <element type="N-COM">
-	<grammar tag="N+Number+Com"/>
 	<sem class="HUMAN"/>
       </element>
     </answer>
@@ -374,7 +364,6 @@
     <answer> 
       <text>(CLADV) (SUBJ) MAINV (ruoktot) N-COM (ruoktot) (CLADV)</text>
       <element type="N-COM">
-	<grammar tag="N+Number+Com"/>
 	<sem class="VEHICLE"/>
       </element>
     </answer>
@@ -406,12 +395,12 @@
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<lemma>son</lemma>
       </element>
-<element type="N-ESS">
-	<grammar tag="N+Ess"/>
-	<sem class="PROFESSION"/>
-      </element>
-    </answer>
- </q>
+    <element type="N-ESS">
+      <grammar tag="N+Ess"/>
+      <sem class="PROFESSION"/>
+    </element>
+     </answer>
+  </q>
 
 
 </questions>
