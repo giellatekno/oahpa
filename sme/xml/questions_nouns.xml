@@ -32,7 +32,8 @@
     <question>
       <text>INTERR SUBJ MAINV OBJ</text>
       <element type="INTERR">
-	<grammar pos="gii+Pron+Interr+Number+Ill"/>
+	<grammar tag="Pron+Interr+Number+Ill"/>
+	<lemma>gii</lemma>
       </element>
       <element type="SUBJ">
 	<grammar pos="Pron"/>
@@ -84,7 +85,8 @@
     <question>
       <text>INTERR MAINV váralaš SUBJ</text>
       <element type="INTERR">
-	<grammar pos="gii+Pron+Interr+Number+Loc"/>
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<lemma>gii</lemma>
       </element>
       <element type="SUBJ">
 	<grammar tag="N+Number+Nom"/>
@@ -118,7 +120,7 @@
     <question>
       <text>Gos SUBJ MAINV</text>
       <element type="SUBJ">
-	<grammar pos="N+Sg+Nom"/>
+	<grammar tag="N+Sg+Nom"/>
 	<sem class="HUMAN"/>
       </element>
       <element type="MAINV">
@@ -136,8 +138,9 @@
     <answer> 
       <text>(CLADV) SUBJ MAINV N-LOC (CLADV)</text>
       <element type="SUBJ">
-	<grammar pos="son+Pron+Pers+Person-Number+Nom"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<sem class="HUMAN"/>
+	<lemma>son</lemma>
       </element>
       <element type="N-LOC">
 	<grammar tag="N+Sg+Loc"/>
@@ -153,7 +156,7 @@
     <question>
       <text>Gos SUBJ MAINV</text>
       <element type="SUBJ">
-	<grammar pos="N+Number+Nom"/>
+	<grammar tag="N+Number+Nom"/>
 	<sem class="HUMAN"/>
       </element>
       <element type="MAINV">
@@ -175,7 +178,8 @@
 	<sem class="PLACE"/>
       </element>
       <element type="SUBJ">
-	<grammar pos="son+Pron+Pers+Person-Number+Nom"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+	<lemma>son</lemma>
       </element>
     </answer>
   </q>
@@ -275,7 +279,8 @@
     <question>
       <text>INTERR SUBJ MAINV</text>
       <element type="INTERR">
-	<grammar pos="gii+Pron+Interr+Number+Acc"/>
+	<grammar tag="Pron+Interr+Number+Acc"/>
+	<lemma>gii</lemma>
       </element>
       <element type="SUBJ">
 	<grammar tag="Pron"/>
@@ -301,7 +306,8 @@
     <question>
       <text>INTERR SUBJ dát MAINV</text>
       <element type="INTERR">
-	<grammar pos="gii+Pron+Interr+Number+Gen"/>
+	<grammar tag="Pron+Interr+Number+Gen"/>
+	<lemma>gii</lemma>
       </element>
       <element type="SUBJ">
 	<grammar tag="N+Number+Nom"/>
@@ -328,7 +334,8 @@
     <question>
       <text>INTERR SUBJ MAINV</text>
       <element type="INTERR">
-	<grammar pos="gii+Pron+Interr+Number+Com"/>
+	<grammar tag="Pron+Interr+Number+Com"/>
+	<lemma>gii</lemma>
       </element>
       <element type="SUBJ">
 	<grammar tag="Pron"/>
@@ -353,7 +360,8 @@
     <question>
       <text>INTERR SUBJ MAINV ruoktot</text>
       <element type="INTERR">
-	<grammar pos="mii+Pron+Interr+Number+Com"/>
+	<grammar tag="Pron+Interr+Number+Com"/>
+	<lemma>mii</lemma>
       </element>
       <element type="SUBJ">
 	<grammar tag="Pron"/>
@@ -395,7 +403,8 @@
      <answer> 
       <text>(CLADV) SUBJ MAINV (Deanus) N-ESS (Deanus) (CLADV)</text>
     <element type="SUBJ">
-	<grammar pos="son+Pron+Pers+Person-Number+Nom"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+	<lemma>son</lemma>
       </element>
 <element type="N-ESS">
 	<grammar tag="N+Ess"/>
