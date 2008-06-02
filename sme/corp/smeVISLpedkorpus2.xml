@@ -472,13 +472,13 @@ Cs:n('viđas',Num,sg,nom)	viđas
 .
 
 SOURCE: text
-SMEBe45) Ledje go hilbadat mánát?
+SMEBe45) Ledje go mánát hilbadat?
 A1
 QUE:cl
 P:v('leat',ind,impf,3pl)	Ledje
 PART:part('go')	go
-Cs:adj('hilbat',pl,nom)	hilbadat
 S:n('mánná',pl,nom)	mánát
+Cs:adj('hilbat',pl,nom)	hilbadat
 ?
 
 SOURCE: text
@@ -1295,10 +1295,10 @@ A:g
 =H:prp-pre('ovdal')	Ovdal
 =D:n('soahti',sg,gen)	soađi
 S:n('badjeolmmoš',pl,nom)	badjeolbmot
-P:g
-=D:v('álgit',ind,impf,3pl)	álge
-=H:v('atnit',inf)	atnit
-Od:n('fabrihkkarátnu',pl,acc)	fabrihkkaránuid
+P:v('álgit',ind,impf,3pl)	álge
+Od:icl
+=P:v('atnit',inf)	atnit
+=Od:n('fabrihkkarátnu',pl,acc)	fabrihkkaránuid
 .
 
 SOURCE: text
@@ -3088,14 +3088,15 @@ CJT:cl
 .
 
 SOURCE: text
-SMEBr252) Soai vácciiga veahá gaskka, ja doppe lei stuora bovdna.
+SMEBr252) Soai vácciiga ovtta gaskka, ja doppe lei stuora bovdna.
 A1
 STA:par
 CJT:cl
 =S:pron('son',<pers>,3du,nom)	Soai
 =P:v('vázzit',ind,impf,3du)	vácciiga
-=A:adv('veahá')	veahá
-=Od:n('gaska',sg,acc)	gaskka
+=Od:g                                                                                             
+==D:num('okta',sg,acc)  ovtta                                                                     
+==H:n('gaska',sg,acc)   gaskka
 ,
 CO:conj-c('ja')	ja
 CJT:cl
