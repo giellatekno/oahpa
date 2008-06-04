@@ -244,8 +244,6 @@ class NumQuestion(forms.Form):
         # set correct and error values
         if correct_val == "correct":
             self.error="correct"
-        if correct_val == "error":
-            self.error="error"
 
 class QAForm(forms.Form):
     maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
