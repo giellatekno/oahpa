@@ -59,9 +59,8 @@ class Form(models.Model):
     fullform = models.CharField(max_length=200, core=True)
 
 class Element(models.Model):
-    semtype = models.ForeignKey(Semtype, null=True)
-    word = models.ForeignKey(Word, null=True)
     tagspec = models.CharField(max_length=50)
+    syntax = models.CharField(max_length=50)
     pos = models.CharField(max_length=5)
     #independent = models.BooleanField()
     #optional = models.BooleanField()
@@ -69,10 +68,12 @@ class Element(models.Model):
 class Question(models.Model):
     question = models.CharField(max_length=200)
     answer = models.CharField(max_length=200)
+    qtype = models.CharField(max_length=20)
 
 class QElement(models.Model):
     element=models.ForeignKey(Element)
     question=models.ForeignKey(Question)
-    number = models.IntegerField()
     elementtype = models.CharField(max_length=20)
+    semtype = models.ForeignKey(Semtype, null=True)
+    word = models.ForeignKey(Word, null=True)
 
