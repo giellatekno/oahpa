@@ -8,35 +8,54 @@
   var my_tooltip = new Tooltip('product_1', 'tooltip')
  </script>
 
-{% block settings %}{% endblock %}
 
 <hr/>
+{% block instructions %}{% endblock %}
+
 <table>
 <tr><td>
 <table>
 <tr>
      {% for form in forms %}
+
+{% ifequal gametype "context" %} 
+{% ifnotequal forloop.counter0 0 %}
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+{% endifnotequal %}
+{% endifequal %}
+
 {% block question %}{% endblock %}
 </tr>
+
 <tr>
   <!-- Show correct answers if "show correct" is pressed -->
   {% if show_correct %}
-    <td>  
+  <td> 
+    {% if form.answertext1 %}{{ form.answertext1 }}{% endif %}
+    
     {% ifequal form.error "correct" %}
-      <font color="green">{{ form.userans }}</font>
+    <font color="green">{{ form.userans }}</font>
     {% else %}
-    {% ifequal form.error "error" %}
+      {% ifequal form.error "error" %}
        <font color="red">{{ form.userans }}</font>
-       </td>
-     {% endifequal %}
-       <td>
-       {{ form.correct_answers }}
-       </td>
-     {% endifequal %}
-   {% else %}
+       {% else %}
+       ___________________
+      {% endifequal %}
 
-   <!-- If just test answers, mark user answers as green or red -->
+    {% endifequal %}
+
+    {% if form.answertext2 %}{{ form.answertext2 }}{% endif %}
+  </td>
+
+  {% else %}
+
+   <!-- If just test answers, mark correct answers as green -->
   <td>
+    {% if form.answertext1 %}{{ form.answertext1 }}{% endif %}
       {% ifnotequal form.userans "" %}
         {% ifequal form.error "correct" %}
           <font color="green">{{ form.userans }}</font>
@@ -48,23 +67,25 @@
       <!-- Answer field -->
       {{ form.answer }} 
       {% endifnotequal %}
+    {% if form.answertext2 %}{{ form.answertext2 }}{% endif %}
      </td>
-  <!-- If show correct, correct answers are here -->
-     <td>
-    {% if show_correct %}
-      {% ifnotequal form.error "correct" %}
-        {{ form.correct_answers }}
-      {% endifnotequal %}
-    {% else %}
+  {% endif %}
+    <td>
+  {% if show_correct %}
+    {% ifnotequal form.error "correct" %}
+       {{ form.correct_answers }}
+    {% endifnotequal %}
+  {% else %}
       {% ifequal form.error "error" %}
         error
       {% endifequal %}
-    {% endif %}
   {% endif %}
+      </td>
 </td>
 <td>
        {{ form.word_id }}       {{ form.tag_id }}
 {{ form.question_id }} 
+{{ form.qstring }} {{ form.astring }}
 {% if forloop.first %}
 <input type="hidden" name="userans" value="{{ form.userans }}" />
 <input type="hidden" name="correct" value="{{ form.error }}" />
@@ -72,8 +93,9 @@
 <input type="hidden" name="{{ forloop.counter0 }}-userans" value="{{ form.userans }}" />
 <input type="hidden" name="{{ forloop.counter0 }}-correct" value="{{ form.error }}" />
 {% endif %}
-</td>
+</td
 </tr>
+
      {% endfor %}
 </table>
 
