@@ -55,8 +55,12 @@ for e in tree.getElementsByTagName("entry"):
 
     # Store first unique fields
     lemma=e.getElementsByTagName("lemma")[0].firstChild.data
-    stem=e.getElementsByTagName("stem")[0].getAttribute("class")
-    dialect=e.getElementsByTagName("dialect")[0].getAttribute("class")
+    stem=""
+    dialect=""
+    if e.getElementsByTagName("stem"):
+        stem=e.getElementsByTagName("stem")[0].getAttribute("class")
+    if e.getElementsByTagName("dialect"):
+        dialect=e.getElementsByTagName("dialect")[0].getAttribute("class")
 
     # Part of speech information
     # Is it in lexicon file or not..
@@ -115,38 +119,41 @@ for e in tree.getElementsByTagName("entry"):
                 w.translation.add(tr_entry)
                 w.save()
 
-    sources = e.getElementsByTagName("sources")[0]
-    elements=sources.getElementsByTagName("book")
-    for el in elements:
-        book=el.getAttribute("name")
-        if book:
-            # Add book to the database
-            # Leave this if DTD is used
-            book_entry, created = Source.objects.get_or_create(name=book)
-            if created:
-                print "Created book entry with name ", book
-            w.source.add(book_entry)
-            w.save()
+    
+    if e.getElementsByTagName("sources"):
+        sources = e.getElementsByTagName("sources")[0]
+        elements=sources.getElementsByTagName("book")
+        for el in elements:
+            book=el.getAttribute("name")
+            if book:
+                # Add book to the database
+                # Leave this if DTD is used
+                book_entry, created = Source.objects.get_or_create(name=book)
+                if created:
+                    print "Created book entry with name ", book
+                w.source.add(book_entry)
+                w.save()
 
-    semantics = e.getElementsByTagName("semantics")[0]
-    elements=semantics.getElementsByTagName("sem")
-    for el in elements:
-        sem=el.getAttribute("class")
-        if sem:
-            # Add semantics entry if not found.
-            # Leave this if DTD is used.
-            sem_entry, created = Semtype.objects.get_or_create(semtype=sem)
-            if created:
-                print "Created semtype entry with name ", sem
-            w.semtype.add(sem_entry)
-            w.save()
+    if e.getElementsByTagName("semantics"):
+        semantics = e.getElementsByTagName("semantics")[0]
+        elements=semantics.getElementsByTagName("sem")
+        for el in elements:
+            sem=el.getAttribute("class")
+            if sem:
+                # Add semantics entry if not found.
+                # Leave this if DTD is used.
+                sem_entry, created = Semtype.objects.get_or_create(semtype=sem)
+                if created:
+                    print "Created semtype entry with name ", sem
+                w.semtype.add(sem_entry)
+                w.save()
 
-    elements=semantics.getElementsByTagName("valency")
-    for el in elements:
-        val=el.getAttribute("class")
-        if val:
-            w.valency = val
-            w.save()
+        elements=semantics.getElementsByTagName("valency")
+        for el in elements:
+            val=el.getAttribute("class")
+            if val:
+                w.valency = val
+                w.save()
 
 
 """
