@@ -6,7 +6,7 @@ from django.shortcuts import get_list_or_404, render_to_response
 from random import randint
 from django.contrib.admin.views.decorators import _encode_post_data, _decode_post_data
 from game import *
-#from qagame import *
+from qagame import *
 
 
 class Info:
@@ -21,11 +21,12 @@ def mgame(request):
     settings = Info()
     settings.syll = []
     settings.partofsp="N"
+    settings.case="N-ILL"
     settings.books=[]
-    gametype="bare"
     settings.semtype="NATURE"
     settings.allbooks=[]
     settings.language="sme"
+    settings.gametype="bare"
 
     if request.method == 'POST':
         data = request.POST.copy()
@@ -45,6 +46,9 @@ def mgame(request):
         if settings_form.data['pos']:
             settings.partofsp= settings_form.data['pos']
 
+        if settings_form.data['case']:
+            settings.case= settings_form.data['case']
+
         settings.books = settings_form.data['book']
 
         if settings_form.allbooks:
@@ -54,11 +58,13 @@ def mgame(request):
             settings.gametype= settings_form.data['gametype']
 
         # Create game
-        if gametype == "bare":
+        if settings.gametype == "bare":
             game = BareGame(settings)
         else:
-            game = ContextGame(settings)
-
+            print "OK"
+            game = QAGame(settings)
+            game.init_tags()
+            
         # If settings are changed, a new game is created
         # Otherwise the game is created using the user input.
         if "settings" in data:
@@ -67,7 +73,6 @@ def mgame(request):
             game.check_game(data)
             game.get_score(data)
 
-        print "OK"
         if 'test' in data:
             game.count=1
         if "show_correct" in data:
@@ -91,8 +96,9 @@ def mgame(request):
         'syllabic': settings.syll,
         'forms': game.form_list,
         'count': game.count,
-        'gametype': gametype,
+        'gametype': settings.gametype,
         'score': game.score,
+        'case': settings.case,
         'all_correct': game.all_correct,
         'show_correct': game.show_correct,
     })
@@ -218,16 +224,14 @@ def numgame(request):
 def qagame(request):
 
     settings = Info()
-    settings.maxnum = 10
-    settings.numgame = "numeral"
 
     if request.method == 'POST':
         data = request.POST.copy()
 
         # Settings form is checked and handled.
-        settings_form = NumForm(request.POST)
+        settings_form = MorphForm(request.POST)
         
-        settings.maxnum = settings_form.data['maxnum']
+        settings.pos = settings_form.data['maxnum']
         settings.numgame = settings_form.data['numgame']
 
         game = QAGame(settings)
