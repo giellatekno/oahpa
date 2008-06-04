@@ -89,9 +89,9 @@ def set_correct(self):
         
 
 class MorphForm(forms.Form):
-    pos = forms.ChoiceField(initial='N', choices=POS_CHOICES, widget=forms.RadioSelect)
-    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.RadioSelect)
-    gametype = forms.ChoiceField(initial='bare', choices=GAME_CHOICES, widget=forms.RadioSelect)
+    pos = forms.ChoiceField(initial='N', choices=POS_CHOICES, widget=forms.Select)
+    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
+    gametype = forms.ChoiceField(initial='bare', choices=GAME_CHOICES, widget=forms.CheckboxInput)
     bisyllabic = forms.BooleanField(required=False, initial='1')
     trisyllabic = forms.BooleanField(required=False,initial='1')
     contracted = forms.BooleanField(required=False,initial='1')
@@ -148,9 +148,9 @@ class MorphQuestion(forms.Form):
             self.error="correct"
 
 class QuizzForm(forms.Form):
-    semtype = forms.ChoiceField(initial='all', choices=SEMTYPE_CHOICES, widget=forms.RadioSelect)
+    semtype = forms.ChoiceField(initial='all', choices=SEMTYPE_CHOICES, widget=forms.Select)
     transtype = forms.ChoiceField(initial='smenob', choices=TRANS_CHOICES, widget=forms.RadioSelect)
-    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.RadioSelect)
+    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
     allbooks = []
     for b in BOOK_CHOICES:
         allbooks.append(b[0])
