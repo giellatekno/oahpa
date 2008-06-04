@@ -23,6 +23,8 @@ parser.add_option("-r", "--paradigmfile", dest="paradigmfile",
                   help="Generate paradigms")
 parser.add_option("-q", "--questionfile", dest="questionfile",
                   help="XML-file that contains questions")
+parser.add_option("-g", "--grammarfile", dest="grammarfile",
+                  help="XML-file for grammar defaults for questions")
 parser.add_option("-u", "--update", dest="update",
                   action="store_true", default=False,
                   help="If update data")
@@ -34,12 +36,14 @@ questions = Questions()
 
 if options.tagfile:
     linginfo.handle_tags(options.tagfile)
-    #print linginfo.tagset
 
 if options.paradigmfile:
     linginfo.read_paradigms(options.paradigmfile)
-    #print linginfo.tagset
 
+if options.grammarfile:
+    questions.read_grammar(options.grammarfile)
+    exit()
+    
 if options.questionfile:
     questions.read_questions(options.questionfile)
     exit()
