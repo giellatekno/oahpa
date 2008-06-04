@@ -9,12 +9,14 @@
 <table width="700">
 <tr>
 <td>{% trans "Game type" %}</td>
-<td>
-{% trans "Part of speech" %}</td><td>{% trans "Stem" %}</td><td>{% trans "Book" %}</td><td>{% trans "Dialect" %} (not used)</td>
+<td>{{ settingsform.gametype }}</td>
 </tr>
 <tr>
-<td>{{ settingsform.gametype }}</td>
+<td>{% trans "Part of speech" %}</td><td>{% trans "Case" %}</td><td>{% trans "Stem" %}</td><td>{% trans "Book" %}</td><td>{% trans "Dialect" %} (not used)</td>
+</tr>
+<tr>
 <td>{{ settingsform.pos }}</td>
+<td>{{ settingsform.case }}</td>
 <td>
 {{ settingsform.bisyllabic }}{% trans "bisyllabic" %}<br/>
 {{ settingsform.trisyllabic }}{% trans "trisyllabic" %}<br/>
@@ -30,7 +32,9 @@
 <input type="submit" name="settings" value="{% trans "New set" %}" />
 
 {% endblock %}
-
+{% block instructions %}
+<p>{% trans "Practice " %}{{ case }}</p>
+{% endblock %}
 
 {% block question %}
 
@@ -42,7 +46,7 @@
 <div id='lemma_{{ forloop.counter0 }}'>
 {% endif %}
 
-{{ form.lemma }}+{{ form.tag }}
+{{ form.lemma }} {{ form.tag }}
 </div>
 {% if forloop.first %}
 <div id='tooltip' style="display:none; margi:5px; packground-color:red;">
