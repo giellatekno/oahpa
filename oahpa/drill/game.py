@@ -65,6 +65,8 @@ class Game:
                 n_tag_id = "tag_id"
                 n_question_id = "question_id"
                 n_numeral_id = "numeral_id"
+                n_qstring = "qstring"
+                n_astring = "astring"
                 n_userans = "userans"
                 n_correct = "correct"
             else:
@@ -72,6 +74,8 @@ class Game:
                 n_tag_id = str(n) + "-tag_id"
                 n_question_id = str(n) + "-question_id"
                 n_numeral_id = str(n) + "-numeral_id"
+                n_qstring = str(n) + "-qstring"
+                n_astring = str(n) + "-astring"
                 n_userans = str(n) + "-userans"
                 n_correct = str(n) + "-correct"
 
@@ -83,6 +87,11 @@ class Game:
                 db_info.tag_id=data[n_tag_id]
             if "numeral_id" in data:
                 db_info.numeral=data[n_numeral_id]
+
+            if "qstring" in data:
+                db_info.qstring=data[n_qstring]
+            if "astring" in data:
+                db_info.astring=data[n_astring]
                 
             db_info.userans = data[n_userans]
             db_info.correct = data[n_correct]
@@ -164,16 +173,20 @@ class ContextGame(Game):
 
 class BareGame(Game):
 
+    casetable = {'N-ILL':'Ill', 'N-ESS':'Ess', 'N-GEN':'Gen', 'N-LOC':'Loc', 'N-ACC':'Acc', 'N-COM':'Com'}
+
     def get_db_info(self, db_info):
 
         syll = self.settings.syll
         partofsp = self.settings.partofsp            
         books=self.settings.books
+        case=self.settings.case
+        case = self.casetable[case]
 
-        tag_count=Tag.objects.filter(Q(pos=partofsp) & Q(possessive="")).count()
+        tag_count=Tag.objects.filter(Q(pos=partofsp) & Q(possessive="") & Q(case=case)).count()
 
         while True:
-            tag_id = Tag.objects.filter(Q(pos=partofsp) & Q(possessive=""))[randint(0,tag_count-1)].id
+            tag_id = Tag.objects.filter(Q(pos=partofsp) & Q(possessive="") & Q(case=case))[randint(0,tag_count-1)].id
 
             w_count=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(source__name__in=books)).count()
             word_id=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)].id
