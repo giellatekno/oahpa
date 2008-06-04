@@ -8,6 +8,88 @@
 <html lang="sme">
 <head>
     <title>{% block title %}{% endblock %}</title>
+  <style type="text/css">
+
+html {
+  overflow: hidden;
+}
+
+body {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+font-family: Georgia, "Times New Roman",
+Times, serif;
+
+color: #093970;
+}
+
+#header {
+  padding: 5px 5px 5px 10px;
+  margin: 0;
+  position: absolute;
+  top: 0px;    
+  left: 0px;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+<!-- background: #6E935C; -->
+<!--  background: #699929;-->
+
+}
+
+#navbar {    
+  padding: 5px 5px 5px 5px;
+  margin: 0;
+  position: absolute;    
+  top: 120px;
+  left: 0px;
+  bottom: 20px;
+  overflow: auto;    
+  width: 160px;  
+  background: #5C8A93;
+<!--  background: #296999;-->
+}
+
+#content {
+  padding: 10px 5px 5px 5px;
+  margin: 0;
+  position: absolute;    
+  top: 110px;
+  left: 180px;
+  right: 20px;
+  bottom: 20px;
+  overflow: auto;
+  clear: both;
+}
+.title {
+  float: left;
+}
+
+
+.language {
+   float: right;
+  padding: 5px 15px 10px 10px;
+}
+
+a {
+    text-decoration: underline }
+  a:link {
+    color: #693129}
+  a:visited {
+    color: #662800 }
+
+
+h1 {
+    font-family: Helvetica, Geneva, Arial,
+          SunSans-Regular, sans-serif }
+
+
+
+
+  </style>
 
 <!-- <link rel="stylesheet" href="/site_media/css/ped.css" type="text/css"> 
 <script src="/site_media/js/prototype.js" type="text/javascript"></script>
@@ -16,54 +98,6 @@
     var my_tooltip = new Tooltip('id_of_trigger_element', 'id_of_tooltip_to_show_element')
 </script>
 -->
-<script type="text/javascript">
-
-<!--document.write("Hello World!");-->
-
-function noenter(field,diverr,divcorr,divanswer,correctvalue) {
-  if (window.event && window.event.keyCode == 13) {
-
-    if (field.value == "") { return false; }
-
-      if (field.value != correctvalue) 
-      {
-      errormsg = document.getElementById(diverr); 
-      errormsg.style.display = "";
-      corrmsg = document.getElementById(divcorr); 
-      corrmsg.style.display = "none";
-
-      field.focus( ); 
-      return false;
-      }
-      if (field.value == correctvalue) 
-      {
-      corrmsg = document.getElementById(divcorr); 
-      corrmsg.style.display = "";
-      errormsg = document.getElementById(diverr); 
-      errormsg.style.display = "none";
-
-      return false;
-   }
-   return false;
-  }
-      errormsg = document.getElementById(diverr); 
-      errormsg.style.display = "none";
-      corrmsg = document.getElementById(divcorr); 
-      corrmsg.style.display = "none";
-      corrmsg = document.getElementById(divanswer); 
-      corrmsg.style.display = "none";
-}
-
-function write_form(divanswer, diverr) {
-
-      corrmsg = document.getElementById(diverr); 
-      corrmsg.style.display = "none";
-      answer = document.getElementById(divanswer);
-      answer.style.display = "";
-
-}
-
-</script>
 
 </head>
 
@@ -76,11 +110,13 @@ function write_form(divanswer, diverr) {
     This is product 1
  </div>
 -->
-<div id="container"><h1>OAHPA!</h1>
-<h2>&nbsp;{% block name %}{% endblock %}<h2>
+<div id="header">
+
+<div class="title">
+<img src="http://giellatekno.uit.no/oahpa/images/oahpa.png"/>
 </div>
 
-<div id="language">
+<div class="language">
 {% get_current_language as LANGUAGE_CODE %}
 <form action="/oahpa/i18n/setlang/" method="post">
 
@@ -112,20 +148,24 @@ function write_form(divanswer, diverr) {
 {% endifequal %}
 
 </select>
+<br/>
 <input type="submit" value="{% trans 'Change language' %}" />
 </form>
 
 </div>
 
-<!--
-</div>
-
-<div id="navigation">
-	  <h2>{%trans 'Contents' %}</h2>
-	  <a href=".">{% trans 'Main page' %}</a></br>
 
 </div>
--->
+
+<div id="navbar">
+<h2>{% block name %}{% endblock %}</h2>
+
+	  <a href="/oahpa/morfa/">{% trans 'Morfa' %}</a><br/>
+	  <a href="/oahpa/leksa/">{% trans 'Leksa' %}</a><br/>
+	  <a href="/oahpa/logut/">{% trans 'Logut' %}</a><br/>
+
+</div>
+
 <div id="content">
 
     {% block content %}{% endblock %}
