@@ -48,7 +48,7 @@ class Tag(models.Model):
     polarity = models.CharField(max_length=5)
     tense = models.CharField(max_length=5)
     mood = models.CharField(max_length=5)
-    subclass = models.CharField(max_length=5)
+    subclass = models.CharField(max_length=10)
     attributive = models.CharField(max_length=5)
     class Admin:
         pass
