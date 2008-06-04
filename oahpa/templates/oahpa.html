@@ -35,7 +35,26 @@ color: #093970;
   width: 100%;
   height: 100px;
   overflow: hidden;
+background: #231E78;
 <!-- background: #6E935C; -->
+<!--  background: #699929;-->
+
+}
+
+#subheader {
+  padding: 10px 5px 5px 10px;
+  margin: 0;
+  position: absolute;
+  top: 100px;    
+  left: 0px;
+  right: 20px;
+  width: 100%;
+  height: 40px;
+  overflow: hidden;
+   background: #231E78; 
+  color: #C7260C;
+
+<!-- background: #447D34; -->
 <!--  background: #699929;-->
 
 }
@@ -44,21 +63,38 @@ color: #093970;
   padding: 5px 5px 5px 5px;
   margin: 0;
   position: absolute;    
-  top: 120px;
+  top: 150px;
   left: 0px;
   bottom: 20px;
   overflow: auto;    
-  width: 160px;  
-background: #447D34;
+  width: 80px;  
+ background: #231E78; 
+
+<!-- background: #447D34; -->
+
+<!--  background: #296999;-->
+}
+
+#rightbar {    
+  padding: 5px 5px 5px 5px;
+  margin: 0;
+  position: absolute;    
+  top: 150px;
+  right: 0px;
+  bottom: 20px;
+  overflow: auto;    
+  width: 80px;  
+  background: #231E78; 
+<!-- background: #447D34; -->
 <!--  background: #296999;-->
 }
 
 #content {
-  padding: 10px 5px 5px 5px;
+  padding: 10px 5px 10px 20px;
   margin: 0;
   position: absolute;    
-  top: 110px;
-  left: 180px;
+  top: 170px;
+  left: 90px;
   right: 20px;
   bottom: 20px;
   overflow: auto;
@@ -67,7 +103,6 @@ background: #447D34;
 .title {
   float: left;
 }
-
 
 .language {
    float: right;
@@ -81,7 +116,7 @@ font-size: 80%
 a {
     text-decoration: underline }
   a:link {
-    color: #693129}
+    color: #C7260C}
   a:visited {
     color: #662800 }
 
@@ -157,12 +192,13 @@ h1 {
 </form>
 
 </div>
+</div>
 
-
+<div id="subheader">
+<font size="+2"><b>{% block name %}{% endblock %}</b></font>
 </div>
 
 <div id="navbar">
-<h2>{% block name %}{% endblock %}</h2>
 
 	  <a href="/oahpa/morfa/">{% trans 'Morfa' %}</a><br/>
 	  <a href="/oahpa/leksa/">{% trans 'Leksa' %}</a><br/>
@@ -170,7 +206,9 @@ h1 {
 
 </div>
 
-
+<div id="rightbar">
+<p>&nbsp;</p>
+</div>
 <div id="content">
 
 <div class="settings">
