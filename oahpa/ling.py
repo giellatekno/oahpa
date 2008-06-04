@@ -65,19 +65,22 @@ class Paradigm:
 
         self.paradigm = []
 							  
-        genObj=re.compile(r'^(?P<lemmaString>[\w]+)\+(?P<tagString>[\w\+]+)[\t\s]+(?P<formString>[\w]*)$', re.U)
+        genObj=re.compile(r'^(?P<lemmaString>[\wá]+)\+(?P<tagString>[\w\+]+)[\t\s]+(?P<formString>[\wá]*)$', re.U)
         all=""
         for a in self.paradigms[pos]:
             all = all + lemma + "+" + a
         # generator call
-        fstdir="/opt/smi/sme/bin"
+        #fstdir="/opt/smi/sme/bin"
+        fstdir="/Users/saara/gt/sme/bin"
         gen_norm_fst = fstdir + "/isme-norm.fst"
-        gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+#        gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | /Users/saara/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
         lines_tmp = os.popen(gen_norm_lookup).readlines()
         for line in lines_tmp:
             if not line.strip(): continue
             matchObj=genObj.search(line)
             if matchObj:
+                #print line
                 g = Entry()
                 g.classes={}
                 lemma = matchObj.expand(r'\g<lemmaString>')
@@ -91,71 +94,83 @@ class Paradigm:
                         g.classes[tagclass]=t
                 self.paradigm.append(g)
 
+
 class Questions:
 
     def __init__(self):
         self.tagset = {}
         self.questions = {}
 
-    def read_elements(self,head,type, question_element):
-        
-        i=1
+    # Read elements attached to particular question or answer.
+    def read_elements(self,head,elementtype, question_element):
+
         for el in head.getElementsByTagName("element"):
 
-                pos=el.getAttribute("pos")
-                lemmas=el.getElementsByTagName("lemma")
-                lemma=""
-                tagstring=""
-                semclass=""
-                if lemmas:
-                    lemma = lemmas[0].firstChild.data
-                tagstrings = el.getElementsByTagName("grammar")
-                if tagstrings:
-                    tagstring= tagstrings[0].getAttribute("tag")
-                semclasses=el.getElementsByTagName("sem")
-                if semclasses:
-                    semclass=semclasses[0].getAttribute("class")
+            syntax=el.getAttribute("type")
+            
+            lemma=""
+            tag=""
+            semclass=""
+            pos=""
+            tagstrings = el.getElementsByTagName("grammar")
+            if tagstrings:
+                tag= tagstrings[0].getAttribute("tag")
+                pos= tagstrings[0].getAttribute("pos")
+                
+            semclasses=el.getElementsByTagName("sem")
+            if semclasses:
+                semclass=semclasses[0].getAttribute("class")
 
-                # Search for existing word in the database.
-                w=None
+            # Search for existing word in the database.
+            w=None
+            lemmas=el.getElementsByTagName("lemma")
+            for l in lemmas:
+                lemma = l.firstChild.data
                 if lemma:
-                    word_elements = Word.objects.filter(Q(lemma=lemma) & Q(pos=pos))
+                    print lemma
+                    # Add pos information here!
+                    word_elements = Word.objects.filter(Q(lemma=lemma))
                     if word_elements:
                         w=word_elements[0]
-
-                # Search for existing semtype
-                s=None
-                if semclass:
-                    s, created = Semtype.objects.get_or_create(semtype=semclass)
+                    else:
+                        print "Word not found! " + lemma
                         
-                # Create new element
-                # Get does not work properly with NoneType foreign keys.
-                try:
-                    if w==None:
-                        if s==None:
-                            element = Element.objects.get(word__isnull=True,semtype__isnull=True,\
-                                                          tagspec=tagstring,pos=pos)
-                        else:
-                            element = Element.objects.get(word__isnull=True,semtype=s,\
-                                                          tagspec=tagstring,pos=pos)
-                    if not w==None:
-                        if s==None:
-                            element = Element.objects.get(word=w,semtype__isnull=True,\
-                                                          tagspec=tagstring,pos=pos)
-                        else:
-                            element = Element.objects.get(word=w,semtype=s,\
-                                                          tagspec=tagstring,pos=pos)
-                except Element.DoesNotExist:
-                    element = Element(semtype=s,word=w,\
-                                      tagspec=tagstring,pos=pos)
-                    element.save()
+            # Search for existing semtype
+            # If not found, create a new one
+            s=None
+            if semclass:
+                s, created = Semtype.objects.get_or_create(semtype=semclass)
+                        
+            # Try to find an element matching the specification.
+            # Attach an element to a manytomany-table qelement.
+            # If element was not found, create a new one.
+            elements=None
+            if not tag:
+                if not pos:
+                    elements=Element.objects.filter(syntax=syntax)
+                else:
+                    elements=Element.objects.filter(pos=pos, syntax=syntax)
+            else:
+                elements=Element.objects.filter(tagspec=tag)
 
+            # create qelement object that connects element and question
+            if elements:
+                for element in elements:
+                    qe, created = QElement.objects.get_or_create(element=element, \
+                                                                 question=question_element,\
+                                                                 elementtype=elementtype, \
+                                                                 word=w,semtype=s)
+                    qe.save()
+            else:
+                if tag: pos = tag.split('+')[0]                    
+                element, created = Element.objects.get_or_create(tagspec=tag, pos=pos, syntax=syntax)
+                print tag + " " + " " + pos + " " + syntax
                 qe, created = QElement.objects.get_or_create(element=element, \
                                                              question=question_element,\
-                                                             elementtype=type,number=i)
+                                                             elementtype=elementtype, \
+                                                             word=w,semtype=s)
                 qe.save()
                 
-                i=i+1
                 
     def read_questions(self, infile):
     
@@ -166,9 +181,34 @@ class Questions:
         for q in tree.getElementsByTagName("q"):
 
             # Store question
+            qtype = q.getElementsByTagName("qtype")[0].firstChild.data
             question=q.getElementsByTagName("question")[0]
             text=question.getElementsByTagName("text")[0].firstChild.data
             
-            question_element, created = Question.objects.get_or_create(question=text)
+            question_element = Question.objects.create(question=text, qtype=qtype)
             print text
             self.read_elements(question,"question",question_element)
+            
+            answer=q.getElementsByTagName("answer")[0]
+            text=answer.getElementsByTagName("text")[0].firstChild.data
+            question_element.answer=text
+            question_element.save()
+            print text
+            self.read_elements(answer, "answer", question_element)
+
+
+    def read_grammar(self, infile):
+    
+        xmlfile=file(infile)
+        tree = _dom.parse(infile)
+
+        print "Created elements:"
+        for el in tree.getElementsByTagName("element"):
+
+            syntax=el.getAttribute("type")
+            for gr in el.getElementsByTagName("grammar"):
+                pos=gr.getAttribute("pos")
+                tag=gr.getAttribute("tag")
+                print syntax + " " + pos + " " + tag
+                element, created = Element.objects.get_or_create(tagspec=tag, pos=pos, syntax=syntax)
+                element.save()
