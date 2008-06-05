@@ -1,0 +1,128 @@
+!!!Meeting notes, Pedagogical programs, 080605
+
+
+!!Participants
+
+Today we have the joy of welcoming our new worker at the project, Biret Anne.
+So, present at the meeting: Biret Ánne, Lene, Saara, Trond.
+
+!!Status
+
+Saara made the first version of the contextual morfa. Next step is qa, and thereafter thinking of dialogues.
+
+How does everything work, do we have all the information we want, etc.
+
+There are things missing from the interface:
+
+# Translations
+# Tutorial
+
+We should at least have ideas about the tutorial.
+
+Lene and Trond had had a meeting with Kjellaug, our graphical designer. She will do the bulk of the work in the autumn, but she got an impression of our programs.
+
+Lene has made a question file for numerals
+
+!!Issues in the programs
+
+!Leksa
+
+The combination of __Books__ and __Sets__ is not good, the resulting intersections are too small. Thus, the two options should be interdependent, so that you can choose either __Books__ ''or'' __Sets__.
+
+We could make either a long list or interdependent sets:
+
+1. The long list option:
+
+
+{{{
+WORDS
+  Books
+   Davvin 1
+   ...
+  Sets
+   luondu
+   profession
+   family
+}}}
+
+2. The interdependent list option:
+
+If either Books or Sets is choosen, the other one is greyed out.
+
+!Morfa
+
+We should block the selection of __Verbs__ and __Case__. We should perhaps use Javascript for this. __Verbs__ should imply verbal categories, etc.
+
+Issue to Morfa - words:
+
+Add an option "Number"
+
+Give sg in any case, convert the same case to plural
+
+Issues to Morfa - sentences:
+
+Add an option: "All cases". In that way, good pupils, who already know how to make case forms, may here train their verb subcategorisation skills. This option should also have 
+
+An argument against this is that the verbs very often are ambiguous. A variant of this idea would thus be to make a totally different file, with contrastive instances of case usage. Then we would avoid the ambiguities for the "mix all" option.
+
+
+There are other places where the menu could be improved as well.
+
+
+!!Bugs
+
+In leksa, Norwegian to Sámi does not work
+
+Do not work: Morfa: Essive, Genitive, Verbs
+
+In morfa, we get error when we add a period.
+
+!!Localisation
+
+In order to create new strings:
+
+Go to victorio:
+
+{{{
+cd ped/oahpa
+/home/saara/django-trunk/django/bin/make-messages.py -a
+... then cvs up to locate the M files:
+cvs ci -m "new generated files" ocale/fi/LC_MESSAGES/django.po
+etc.
+}}}
+
+After that, we work on the respective django.po files, and check them in again.
+
+
+!!Workplan forward
+
+!Tasks
+
+* Implementing ideas
+* Localising the interface to our 4 languages
+* Adding
+
+!Assigning tasks
+
+
+* Biret Ánne
+** Look at the sentences/questions visible in Morfa
+* Lene
+** Look at the sentences/questions visible in Morfa
+** Put more into semantic_sets.xml
+* Saara
+** qa
+** look at Lenes input to the dialogues
+** postpone technicalities with dialogues to after qa is working
+* Trond
+** Localise
+** Look at smenob.xml
+** Test the games :-)
+
+
+!!Holidays
+
+* Trond: last week of June ->
+* Saara: first week of July ->
+* 
+* 
