@@ -393,7 +393,7 @@ class QAGame(Game):
                 if w.count("(") > 0:
                     w = w.replace("(","")
                     w = w.replace(")","")
-                    if w!='SUBJ': continue
+                    if w!='SUBJ' and w!='Dát': continue
                         
                 if not awords.has_key(w):
                     astring = astring + " " + w
@@ -402,9 +402,12 @@ class QAGame(Game):
                     astring = astring + " " + awords[w]
 
             # Remove leading whitespace
+            # And capitalize.
             astring = astring.lstrip()
             qstring = qstring.lstrip()
-            
+            astring = astring[0].capitalize() + astring[1:]
+            qstring = qstring[0].capitalize() + qstring[1:]
+
             # Store everything for the html form 
             db_info.question_id = question_id
             db_info.qstring = qstring + "?"
