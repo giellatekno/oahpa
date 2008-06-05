@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-05-22 13:51+0200\n"
+"POT-Creation-Date: 2008-06-05 11:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,107 +25,150 @@ msgid "verb"
 msgstr "vearba"
 
 #: drill/forms.py:18
-msgid "Davvin 1"
-msgstr ""
+#, fuzzy
+msgid "accusative"
+msgstr "adjektiiva"
 
 #: drill/forms.py:19
-msgid "Davvin 1-2"
+msgid "illative"
 msgstr ""
 
 #: drill/forms.py:20
-msgid "Davvin 1-3"
+msgid "locative"
 msgstr ""
 
 #: drill/forms.py:21
-msgid "Davvin 1-4"
-msgstr ""
+#, fuzzy
+msgid "comitative"
+msgstr "kontrakšuvdnamátta"
 
 #: drill/forms.py:22
-msgid "algu"
+msgid "genitive"
 msgstr ""
 
 #: drill/forms.py:23
-msgid "sara"
+msgid "essive"
 msgstr ""
 
-#: drill/forms.py:24
-msgid "Bures bures fas"
+#: drill/forms.py:27
+msgid "Davvin 1"
 msgstr ""
 
-#: drill/forms.py:25
-msgid "Oaidnalit"
+#: drill/forms.py:28
+msgid "Davvin 1-2"
 msgstr ""
 
-#: drill/forms.py:26
-msgid "All"
+#: drill/forms.py:29
+msgid "Davvin 1-3"
 msgstr ""
 
 #: drill/forms.py:30
+msgid "Davvin 1-4"
+msgstr ""
+
+#: drill/forms.py:31
+msgid "algu"
+msgstr ""
+
+#: drill/forms.py:32
+msgid "sara"
+msgstr ""
+
+#: drill/forms.py:33
+msgid "Bures bures fas"
+msgstr ""
+
+#: drill/forms.py:34
+msgid "Oaidnalit"
+msgstr ""
+
+#: drill/forms.py:35
+msgid "All"
+msgstr ""
+
+#: drill/forms.py:39
 msgid "bare"
 msgstr "Eaŋkilsánit"
 
-#: drill/forms.py:31
+#: drill/forms.py:40
 msgid "context"
 msgstr "Cealkagat"
 
-#: drill/forms.py:35
+#: drill/forms.py:44
 msgid "Norwegian to North Sami"
 msgstr "Dárogielas sámegillii"
 
-#: drill/forms.py:36
+#: drill/forms.py:45
 msgid "North Sami to Norwegian"
 msgstr "Sámegielas dárogillii"
 
-#: drill/forms.py:40
+#: drill/forms.py:49
+#, fuzzy
+msgid "North Sami"
+msgstr "Dárogielas sámegillii"
+
+#: drill/forms.py:50
+msgid "Lule Sami"
+msgstr ""
+
+#: drill/forms.py:51
+msgid "South Sami"
+msgstr ""
+
+#: drill/forms.py:52
+msgid "Inari Sami"
+msgstr ""
+
+#: drill/forms.py:56
 msgid "nature"
 msgstr "luondu"
 
-#: drill/forms.py:41
+#: drill/forms.py:57
 #, fuzzy
 msgid "profession"
 msgstr "áigi"
 
-#: drill/forms.py:42
+#: drill/forms.py:58
 msgid "family"
 msgstr ""
 
-#: drill/forms.py:43
+#: drill/forms.py:59
 msgid "all"
 msgstr ""
 
-#: drill/forms.py:47
+#: drill/forms.py:63
 msgid "0-10"
 msgstr ""
 
-#: drill/forms.py:48
+#: drill/forms.py:64
 msgid "0-20"
 msgstr ""
 
-#: drill/forms.py:49
+#: drill/forms.py:65
 msgid "0-100"
 msgstr ""
 
-#: drill/forms.py:50
+#: drill/forms.py:66
 msgid "0-1000"
 msgstr ""
 
-#: drill/forms.py:55
+#: drill/forms.py:71
 msgid "Numeral to string"
 msgstr "Čále lohkosániid"
 
-#: drill/forms.py:56
+#: drill/forms.py:72
 msgid "String to numeral"
 msgstr "Čále loguid"
 
-#: drill/models.py:7 drill/templates/mgame.html:19
+#: drill/models.py:7 drill/templates/mgame.html:21
 msgid "bisyllabic"
 msgstr "bárrastávvalmátta"
 
-#: drill/models.py:8 drill/templates/mgame.html:20
+#: drill/models.py:8 drill/templates/mgame.html:22
 msgid "trisyllabic"
 msgstr "bárahisstávvalmátta"
 
-#: drill/models.py:9 drill/templates/mgame.html:21
+#: drill/models.py:9 drill/templates/mgame.html:23
 msgid "contracted"
 msgstr "kontrakšuvdnamátta"
 
@@ -133,19 +176,19 @@ msgstr "kontrakšuvdnamátta"
 msgid "adjective"
 msgstr "adjektiiva"
 
-#: drill/templates/game.html:84
+#: drill/templates/game.html:106
 msgid "Congratulations!"
 msgstr "Ollu lihkku!"
 
-#: drill/templates/game.html:88
+#: drill/templates/game.html:110
 msgid "Your score:"
 msgstr "Du boađus:"
 
-#: drill/templates/game.html:95
+#: drill/templates/game.html:117
 msgid "Test answers"
 msgstr "Iskka du vástádusaid"
 
-#: drill/templates/game.html:98
+#: drill/templates/game.html:120
 msgid "Show correct answers"
 msgstr "Čájet rivttes vástádusaid"
 
@@ -157,34 +200,42 @@ msgstr "Morfologiija"
 msgid "Game type"
 msgstr "Makkár speallu"
 
-#: drill/templates/mgame.html:13
+#: drill/templates/mgame.html:15
 msgid "Part of speech"
 msgstr "Sátneluohkká"
 
-#: drill/templates/mgame.html:13
+#: drill/templates/mgame.html:15
+msgid "Case"
+msgstr ""
+
+#: drill/templates/mgame.html:15
 msgid "Stem"
 msgstr ""
 
-#: drill/templates/mgame.html:13 drill/templates/quizz.html:13
+#: drill/templates/mgame.html:15 drill/templates/quizz.html:13
 msgid "Book"
 msgstr ""
 
-#: drill/templates/mgame.html:13
+#: drill/templates/mgame.html:15
 msgid "Dialect"
 msgstr "Suopman"
 
-#: drill/templates/mgame.html:25
+#: drill/templates/mgame.html:27
 msgid "Western"
 msgstr "Oarjesuopman"
 
-#: drill/templates/mgame.html:26
+#: drill/templates/mgame.html:28
 msgid "Eastern"
 msgstr "Nuortasuopman"
 
-#: drill/templates/mgame.html:30 drill/templates/num.html:21
+#: drill/templates/mgame.html:32 drill/templates/num.html:22
 #: drill/templates/quizz.html:24
 msgid "New set"
 msgstr "Ođđa sánit"
+
+#: drill/templates/mgame.html:36
+msgid "Practise "
+msgstr ""
 
 #: drill/templates/num.html:4
 #, fuzzy
@@ -211,18 +262,28 @@ msgstr ""
 msgid "Select the language pair"
 msgstr "Vállje giellabára"
 
-#: templates/oahpa.html:115
+#: templates/oahpa.html:191
 #, fuzzy
 msgid "Change language"
 msgstr "Veahkkegiella"
 
-#: templates/oahpa.html:124
-msgid "Contents"
-msgstr "Sisdoallu"
+#: templates/oahpa.html:203
+msgid "Morfa"
+msgstr ""
 
-#: templates/oahpa.html:125
-msgid "Main page"
-msgstr "Váldosiidu"
+#: templates/oahpa.html:204
+msgid "Leksa"
+msgstr ""
+
+#: templates/oahpa.html:205
+msgid "Logut"
+msgstr ""
+
+#~ msgid "Contents"
+#~ msgstr "Sisdoallu"
+
+#~ msgid "Main page"
+#~ msgstr "Váldosiidu"
 
 #~ msgid "places"
 #~ msgstr "báikkit"
