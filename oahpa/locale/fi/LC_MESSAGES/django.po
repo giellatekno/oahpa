@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-05-20 20:54+0300\n"
+"POT-Creation-Date: 2008-06-05 11:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,115 +16,158 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: drill/forms.py:11 drill/models.py:13
+#: drill/forms.py:12 drill/models.py:13
 msgid "noun"
 msgstr "substantiivi"
 
-#: drill/forms.py:12 drill/models.py:14
+#: drill/forms.py:13 drill/models.py:14
 msgid "verb"
 msgstr "verbi"
 
-#: drill/forms.py:17
-msgid "Davvin 1"
-msgstr "Davvin 1"
-
 #: drill/forms.py:18
-msgid "Davvin 1-2"
-msgstr ""
+#, fuzzy
+msgid "accusative"
+msgstr "adjektiivi"
 
 #: drill/forms.py:19
-msgid "Davvin 1-3"
+msgid "illative"
 msgstr ""
 
 #: drill/forms.py:20
-msgid "Davvin 1-4"
+msgid "locative"
 msgstr ""
 
 #: drill/forms.py:21
+#, fuzzy
+msgid "comitative"
+msgstr "supistumavartalo"
+
+#: drill/forms.py:22
+msgid "genitive"
+msgstr ""
+
+#: drill/forms.py:23
+msgid "essive"
+msgstr ""
+
+#: drill/forms.py:27
+msgid "Davvin 1"
+msgstr "Davvin 1"
+
+#: drill/forms.py:28
+msgid "Davvin 1-2"
+msgstr ""
+
+#: drill/forms.py:29
+msgid "Davvin 1-3"
+msgstr ""
+
+#: drill/forms.py:30
+msgid "Davvin 1-4"
+msgstr ""
+
+#: drill/forms.py:31
 msgid "algu"
 msgstr "Álgu"
 
-#: drill/forms.py:22
+#: drill/forms.py:32
 msgid "sara"
 msgstr "Sárá ja su ustibat"
 
-#: drill/forms.py:23
+#: drill/forms.py:33
 msgid "Bures bures fas"
 msgstr ""
 
-#: drill/forms.py:24
+#: drill/forms.py:34
 msgid "Oaidnalit"
 msgstr ""
 
-#: drill/forms.py:25
+#: drill/forms.py:35
 msgid "All"
 msgstr "Kaikki"
 
-#: drill/forms.py:29
+#: drill/forms.py:39
 msgid "bare"
 msgstr "Sanat"
 
-#: drill/forms.py:30
+#: drill/forms.py:40
 msgid "context"
 msgstr "Lauseet"
 
-#: drill/forms.py:34
+#: drill/forms.py:44
 msgid "Norwegian to North Sami"
 msgstr "Norjasta Pohjoissaameen"
 
-#: drill/forms.py:35
+#: drill/forms.py:45
 msgid "North Sami to Norwegian"
 msgstr "Pohjoissaamesta Norjaan"
 
-#: drill/forms.py:39
+#: drill/forms.py:49
+#, fuzzy
+msgid "North Sami"
+msgstr "Norjasta Pohjoissaameen"
+
+#: drill/forms.py:50
+msgid "Lule Sami"
+msgstr ""
+
+#: drill/forms.py:51
+msgid "South Sami"
+msgstr ""
+
+#: drill/forms.py:52
+msgid "Inari Sami"
+msgstr ""
+
+#: drill/forms.py:56
 msgid "nature"
 msgstr "luonto"
 
-#: drill/forms.py:40
+#: drill/forms.py:57
 msgid "profession"
 msgstr "ammatit"
 
-#: drill/forms.py:41
+#: drill/forms.py:58
 msgid "family"
 msgstr "perhe"
 
-#: drill/forms.py:42
+#: drill/forms.py:59
 msgid "all"
 msgstr "kaikki"
 
-#: drill/forms.py:46
+#: drill/forms.py:63
 msgid "0-10"
 msgstr ""
 
-#: drill/forms.py:47
+#: drill/forms.py:64
 msgid "0-20"
 msgstr ""
 
-#: drill/forms.py:48
+#: drill/forms.py:65
 msgid "0-100"
 msgstr ""
 
-#: drill/forms.py:49
+#: drill/forms.py:66
 msgid "0-1000"
 msgstr ""
 
-#: drill/forms.py:54
+#: drill/forms.py:71
 msgid "Numeral to string"
 msgstr "Numero - sana"
 
-#: drill/forms.py:55
+#: drill/forms.py:72
 msgid "String to numeral"
 msgstr "Sana - numero"
 
-#: drill/models.py:7 drill/templates/mgame.html:19
+#: drill/models.py:7 drill/templates/mgame.html:21
 msgid "bisyllabic"
 msgstr "kaksitavuinen"
 
-#: drill/models.py:8 drill/templates/mgame.html:20
+#: drill/models.py:8 drill/templates/mgame.html:22
 msgid "trisyllabic"
 msgstr "kolmetavuinen"
 
-#: drill/models.py:9 drill/templates/mgame.html:21
+#: drill/models.py:9 drill/templates/mgame.html:23
 msgid "contracted"
 msgstr "supistumavartalo"
 
@@ -132,79 +175,111 @@ msgstr "supistumavartalo"
 msgid "adjective"
 msgstr "adjektiivi"
 
-#: drill/templates/game.html:4 drill/templates/mgame.html:4
-msgid "Morphology"
-msgstr "Morfologia"
-
-#: drill/templates/game.html:85
+#: drill/templates/game.html:106
 msgid "Congratulations!"
 msgstr "Onneksi olkoon!"
 
-#: drill/templates/game.html:89
+#: drill/templates/game.html:110
 msgid "Your score:"
 msgstr "Pisteesi"
 
-#: drill/templates/game.html:96
+#: drill/templates/game.html:117
 msgid "Test answers"
 msgstr "Testaa vastauksesi"
 
-#: drill/templates/game.html:99
+#: drill/templates/game.html:120
 msgid "Show correct answers"
 msgstr "Näytä oikeat vastaukset"
+
+#: drill/templates/mgame.html:4
+msgid "Morphology"
+msgstr "Morfologia"
 
 #: drill/templates/mgame.html:11
 msgid "Game type"
 msgstr "Pelin tyyppi"
 
-#: drill/templates/mgame.html:13
+#: drill/templates/mgame.html:15
 msgid "Part of speech"
 msgstr "Sanaluokka"
 
-#: drill/templates/mgame.html:13
+#: drill/templates/mgame.html:15
+msgid "Case"
+msgstr ""
+
+#: drill/templates/mgame.html:15
 msgid "Stem"
 msgstr "Vartalon tyyppi"
 
-#: drill/templates/mgame.html:13 drill/templates/quizz.html:10
+#: drill/templates/mgame.html:15 drill/templates/quizz.html:13
 msgid "Book"
 msgstr "Oppikirja"
 
-#: drill/templates/mgame.html:13
+#: drill/templates/mgame.html:15
 msgid "Dialect"
 msgstr "Murre"
 
-#: drill/templates/mgame.html:25
+#: drill/templates/mgame.html:27
 msgid "Western"
 msgstr "Läntinen"
 
-#: drill/templates/mgame.html:26
+#: drill/templates/mgame.html:28
 msgid "Eastern"
 msgstr "Itäinen"
 
-#: drill/templates/mgame.html:30 drill/templates/num.html:19
-#: drill/templates/quizz.html:21
+#: drill/templates/mgame.html:32 drill/templates/num.html:22
+#: drill/templates/quizz.html:24
 msgid "New set"
 msgstr "Uusi peli"
 
-#: drill/templates/num.html:10
+#: drill/templates/mgame.html:36
+msgid "Practise "
+msgstr ""
+
+#: drill/templates/num.html:4
+#, fuzzy
+msgid "Numerals"
+msgstr "Numero - sana"
+
+#: drill/templates/num.html:12
 msgid "Select the range of numerals"
 msgstr "Valitse lukujoukko"
 
-#: drill/templates/quizz.html:9
+#: drill/templates/quizz.html:4
+msgid "Quizz"
+msgstr ""
+
+#: drill/templates/quizz.html:6
+msgid "Instructions.."
+msgstr ""
+
+#: drill/templates/quizz.html:12
 msgid "Set"
 msgstr "Aihepiiri"
 
-#: drill/templates/quizz.html:11
+#: drill/templates/quizz.html:14
 msgid "Select the language pair"
 msgstr "Kielipari"
 
-#: templates/oahpa.html:87
-msgid "Interface language"
+#: templates/oahpa.html:191
+#, fuzzy
+msgid "Change language"
 msgstr "Käyttöliittymän kieli"
 
-#: templates/oahpa.html:97
-msgid "Contents"
-msgstr "Sisältö"
+#: templates/oahpa.html:203
+msgid "Morfa"
+msgstr ""
 
-#: templates/oahpa.html:98
-msgid "Main page"
-msgstr "Etusivu"
+#: templates/oahpa.html:204
+msgid "Leksa"
+msgstr ""
+
+#: templates/oahpa.html:205
+msgid "Logut"
+msgstr ""
+
+#~ msgid "Contents"
+#~ msgstr "Sisältö"
+
+#~ msgid "Main page"
+#~ msgstr "Etusivu"
