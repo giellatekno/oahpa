@@ -267,7 +267,10 @@
   </q>
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  Or Pers : -->   
+
+
   <q>
+<!-- Interr and N-Acc must agree in number and SUBJ and MAINV must agree in number but all four variables do not have to agree --> 
     <qtype>N-ACC</qtype>
     <question>
       <text>INTERR SUBJ MAINV</text>
@@ -286,6 +289,7 @@
     <answer> 
       <text>(CLADV) (SUBJ) MAINV N-ACC (CLADV)</text>
       <element type="N-ACC">
+	<grammar tag="N+Acc+Number"/>
 	<sem class="HUMAN"/>
       </element>
     </answer>
