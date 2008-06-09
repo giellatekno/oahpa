@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Specify subsets for sematic supersets here -->
 <lexicon>
-    <subclasses class="HUMAN">
-      <sem class="FAMILY"/>
+    <subclasses class="HUMAN">  <!--Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to "Who do you see?"  -->
+      <sem class="FAMILY"/> <!-- Also words like friend..  -->
       <sem class="PROFESSION"/>
       <sem class="ACTOR"/>
       <sem class="OTHERS"/>
     </subclasses>
-    <subclasses class="ANIMAL">
+    <subclasses class="ANIMAL"> <!-- Leksa-set -->
       <sem class="ANIMAL-DOM"/>
       <sem class="ANIMAL-WILD"/>
       <sem class="ANIMAL-PET"/>
       <sem class="ANIMAL-OTHER"/>
+      <sem class="BIRD"/>
+      <sem class="FISH"/>
     </subclasses>
-    <subclasses class="FOOD">
+    <subclasses class="FOOD/DRINK"> <!-- Leksa-set -->
       <sem class="FOOD-GROCERY"/>
       <sem class="FOOD-DISH"/>
       <sem class="FOOD-OTHER"/>
+      <sem class="DRINK"/>
     </subclasses>
-    <subclasses class="TIME">
+    <subclasses class="TIME">   <!-- Leksa-set -->
       <sem class="TIME-DURABILITY"/>
       <sem class="TIME-POINT-LOC"/>
       <sem class="TIME-POINT-LOC-PL"/>
@@ -27,29 +30,67 @@
       <sem class="TIME-POINT-GEN-PL"/>
       <sem class="TIME-OTHER"/>
     </subclasses>
-    <subclasses class="PLACE">
-      <sem class="NATURE-PLACE"/>
-      <sem class="PLACE-NAME"/>
+    <subclasses class="PLACE">  <!-- Fit as answer to "Where is the girl?"  -->
+      <sem class="PLACE-NAME"/>  
       <sem class="PLACE-STAYING"/>
-      <sem class="PLACE-OTHER"/>
       <sem class="ROOM"/>
       <sem class="BUILDING"/>
     </subclasses>
-    <subclasses class="OBJECT">
+    <subclasses class="OBJECT"> <!-- Fit as answer to "What do you see?"  -->
       <sem class="THING"/>
       <sem class="TOOL"/>
       <sem class="TOY"/>
       <sem class="SLIDE-TOOL"/>
+      <sem class="FURNITURE"/>
     </subclasses>
     <subclasses class="CLADV">
       <sem class="CLADVinit"/>
       <sem class="CLADVmedial"/>
       <sem class="CLADVfinal"/>
     </subclasses>
-    <subclasses class="IN-ROOM">
+    <subclasses class="IN-ROOM">  <!-- Leksa-set -->
       <sem class="FURNITURE"/>
       <sem class="ROOM-PART"/>
       <sem class="ROOM-OTHER"/>
     </subclasses>
-
+    <subclasses class="BODY">  <!-- Leksa-set -->
+      <sem class="BODY-PART"/>
+      <sem class="BODY-PART-PL"/>
+    </subclasses>
+    <subclasses class="CLOTHES">  <!-- Leksa-set -->
+      <sem class="CLOTHING"/>
+      <sem class="CLOTHING-PL"/>
+    </subclasses>
+    <subclasses class="BUILDINGS/ROOMS">  <!-- Leksa-set -->
+      <sem class="BUILDING"/>
+      <sem class="ROOM"/>
+      <sem class="SHOP"/>
+      <sem class="CONSTRUCTION"/>
+    </subclasses>
+    <subclasses class="NATUREWORDS">  <!-- Leksa-set -->
+      <sem class="NATURE"/>
+      <sem class="NATURE-WATER"/>
+      <sem class="NATURE-PLACE"/>
+      <sem class="PLANT"/>
+      <sem class="WEATHER"/>
+      <sem class="WEATHER-PL"/>
+    </subclasses>
+    <subclasses class="TRAVELWORDS">  <!-- Leksa-set -->
+      <sem class="TRAVELLING"/>
+      <sem class="VEHICLE"/>
+      <sem class="VEHICLE-PL"/>
+      <sem class="ROAD"/>
+    </subclasses>
+    <subclasses class="SPORT/PLAY">  <!-- Leksa-set -->
+      <sem class="SPORT"/>
+      <sem class="SLIDE-TOOL"/>
+      <sem class="TOY"/>
+    </subclasses>
+    <subclasses class="PLACES">  <!-- Leksa-set -->
+      <sem class="PLACE-NAME"/>  
+      <sem class="PLACE-STAYING"/>
+      <sem class="PLACE-OTHER"/>
+      <sem class="PLACE-LOCAL"/>
+    </subclasses>
+<!-- Other Leksa-sets: CHRISTMAS, SCHOOL -->
 </lexicon>
