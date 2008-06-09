@@ -374,6 +374,31 @@
   </q>
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
+<q>
+    <qtype>N-COM</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element type="INTERR">
+	<grammar tag="Pron+Interr+Number+Com"/>
+	<lemma>mii</lemma>
+      </element>
+      <element type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<lemma>čierastit</lemma>
+      </element>
+   </question>
+    <answer> 
+      <text>(CLADV) (SUBJ) MAINV (ruoktot) N-COM (CLADV)</text>
+      <element type="N-COM">
+	<sem class="SLIDE-TOOL"/>
+      </element>
+    </answer>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
   <q>
     <qtype>N-ESS</qtype>
     <question>
