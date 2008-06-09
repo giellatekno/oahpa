@@ -32,7 +32,7 @@
 	<sem class="HUMAN"/>
 	<grammar tag="N+Number+Nom"/>
       </element>
-      <element  type="MAINV">
+      <element type="MAINV">
 	<lemma>bargat</lemma> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>
       </element>
@@ -47,9 +47,10 @@
     <answer> 
       <text>(CLADV) (odne) SUBJ MAINV (odne) (CLADV)</text>
       <element type="SUBJ">
-	<grammar tag="son+Pron+Pers+Person-Number+Nom"/>
+	<lemma>son</lemma>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
-<element type="MAINV">
+      <element type="MAINV">
 	<grammar tag="V+Ind+Prs+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
@@ -58,6 +59,7 @@
 
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+<!-- Taken these -guovttos forms out for a while /sh
   <q>
     <question>
       <text>Maid SUBJ-guovttos MAINV odne</text>
@@ -83,7 +85,8 @@
     <answer> 
       <text>(CLADV) (odne) (SUBJ) MAINV (odne) (CLADV)</text>
       <element type="SUBJ">
-	<grammar tag="son+Pron+Pers+Du3+Nom"/>
+	<lemma>son</lemma>
+	<grammar tag="Pron+Pers+Du3+Nom"/>
       </element>
       <element type="MAINV">
 	<grammar tag="V+Ind+Prs+Du3"/>
@@ -91,7 +94,7 @@
       </element>
     </answer>
   </q>
-
+-->
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
     <q>
@@ -124,29 +127,31 @@
       </element>
       <element  type="MAINV">
 	<lemma>bargat</lemma> 
-	<grammar tag="V+Ind+Prt"/>
+	<grammar tag="V+Ind+Prt+Person-Number"/>
       </element>
     </question>
     <answer> 
       <text>(CLADV) (ikte) SUBJ MAINV (ikte) (CLADV)</text>
       <element type="MAINV">
-	<grammar tag="V+Ind+Prt"/>
+	<grammar tag="V+Ind+Prt+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) (ikte) SUBJ MAINV (ikte) (CLADV)</text>
       <element type="MAINV">
-	<grammar tag="V+Ind+Prt"/>
+	<grammar tag="V+Ind+Prt+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
       <element type="SUBJ">
-	<grammar tag="son+Pron+Pers+Person-Number"/>
+	<lemma>son</lemm>
+	<grammar tag="Pron+Pers+Person-Number"/>
       </element>
    </answer>
   </q>
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+<!-- taken out -guovttos /sh
   <q>
     <question>
       <text>Maid SUBJ-guovttos MAINV ikte</text>
@@ -180,7 +185,7 @@
       </element>
     </answer>
   </q>
-
+-->
 <!--- ==========  conditional =========   -->
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
@@ -229,7 +234,8 @@
     <answer> 
       <text>(CLADV) (luomus) SUBJ MAINV (luomus) (CLADV)</text>
       <element type="SUBJ">
-	<grammar tag="son+Pron+Pers+Person-Number+Nom"/>
+	<lemma>son</lemma>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
 <element type="MAINV">
 	<grammar tag="V+Cond+Prs+Person-Number"/>
@@ -240,6 +246,7 @@
 
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+<!-- taken out -guovttos /sh
   <q>
     <qtype>V-COND</qtype>
     <question>
@@ -266,7 +273,8 @@
     <answer> 
       <text>(CLADV) (luomus) (SUBJ) MAINV (luomus) (CLADV)</text>
       <element type="SUBJ">
-	<grammar tag="son+Pron+Pers+Du3+Nom"/>
+	<lemma>son</lemma>
+	<grammar tag="Pron+Pers+Du3+Nom"/>
       </element>
       <element type="MAINV">
 	<grammar tag="V+Cond+Prs+Du3"/>
@@ -274,7 +282,7 @@
       </element>
     </answer>
   </q>
-
+-->
 
 <!--- ==========  Imperative, all of them only for Morfa =========   -->
 
@@ -407,7 +415,7 @@
   <question>
     <text>MAINV go SUBJ odne</text>
     <element type="MAINV">
-      <grammar tag="V+Ind+Prs"/>
+      <grammar tag="V+Ind+Prs+Person-Number"/>
       <sem class="ACTIVITY"/>
     </element>
     <element type="SUBJ">
@@ -417,14 +425,12 @@
   </question>
   <answer> 
     <text>(CLADV) SUBJ MAINV (odne) (CLADV)</text>
-    <element type="SUBJ">
-      <grammar pos="N"/>
-    </element>
   </answer>
     <answer> 
       <text>(CLADV) SUBJ MAINV (odne) (CLADV)</text>
       <element type="SUBJ">
-	<grammar tag="Pron+Pers+sii+Person-Number"/>
+	<lemma>son</lemma>
+	<grammar tag="Pron+Pers+Person-Number"/>
       </element>
     </answer>
     <answer> 
@@ -448,7 +454,7 @@
     <question>
       <text>MAINV go SUBJ ikte</text>
       <element type="MAINV">
-	<grammar tag="V+Ind+Prt"/>
+	<grammar tag="V+Ind+Prt+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
       <element type="SUBJ">
@@ -458,14 +464,12 @@
     </question>
     <answer> 
       <text>(CLADV) SUBJ MAINV (ikte) (CLADV)</text>
-      <element type="SUBJ">
-	<grammar pos="N"/>
-      </element>
     </answer>
     <answer> 
       <text>(CLADV) SUBJ MAINV (ikte) (CLADV)</text>
       <element type="SUBJ">
-	<grammar tag="Pron+Pers+son+Person-Number"/>
+	<lemma>son</lemma>
+	<grammar tag="Pron+Pers+Person-Number"/>
       </element>
     </answer>
     <answer> 
@@ -489,7 +493,7 @@
   <question>
     <text>MAINV go SUBJ luomus</text>
     <element type="MAINV">
-      <grammar tag="V+Cond+Prs"/>
+      <grammar tag="V+Cond+Prs+Person-Number"/>
       <sem class="ACTIVITY"/>
     </element>
     <element type="SUBJ">
@@ -499,21 +503,16 @@
   </question>
   <answer> 
     <text>(CLADV) SUBJ MAINV (luomus) (CLADV)</text>
-    <element type="SUBJ">
-      <grammar pos="N"/>
-    </element>
   </answer>
     <answer> 
       <text>(CLADV) SUBJ MAINV (luomus) (CLADV)</text>
       <element type="SUBJ">
-	<grammar tag="Pron+Pers+sii+Person-Number"/>
+	<lemma>son</lemma>
+	<grammar tag="Pron+Pers+Person-Number"/>
       </element>
     </answer>
     <answer> 
       <text>(luomus) (SUBJ) NEG CONNEG (luomus) (CLADV)</text>
-      <element type="SUBJ">
-	<grammar pos="Pron"/>
-      </element>
       <element type="NEG">
 	<grammar tag="Neg+Ind+Person-Number"/>
       </element>
