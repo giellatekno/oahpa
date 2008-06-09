@@ -162,7 +162,7 @@
     <answer> 
       <text>(CLADV) (ikte) (SUBJ) MAINV (ikte) (CLADV)</text>
       <element type="SUBJ">
-	<grammar tag="HUMAN"/>
+	<sem class="HUMAN"/>
       </element>
       <element type="MAINV">
 	<grammar tag="V+Ind+Prt+Du3"/>
@@ -185,7 +185,8 @@
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
   <q>
-   <question>
+    <qtype>V-COND</qtype>
+    <question>
       <text>Maid SUBJ MAINV luomus</text>
       <element type="SUBJ">
 	<grammar pos="Pron"/>
@@ -206,6 +207,7 @@
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
   <q>
+    <qtype>V-COND</qtype>
     <question>
       <text>Maid SUBJ MAINV luomus</text>
       <element type="SUBJ">
@@ -239,6 +241,7 @@
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
   <q>
+    <qtype>V-COND</qtype>
     <question>
       <text>Maid SUBJ-guovttos MAINV luomus</text>
       <element type="SUBJ">
@@ -253,7 +256,7 @@
     <answer> 
       <text>(CLADV) (luomus) (SUBJ) MAINV (luomus) (CLADV)</text>
       <element type="SUBJ">
-	<grammar tag="HUMAN"/>
+	<sem class="HUMAN"/>
       </element>
       <element type="MAINV">
 	<grammar tag="V+Cond+Prs+Du3"/>
@@ -276,10 +279,11 @@
 <!--- ==========  Imperative, all of them only for Morfa =========   -->
 
   <q>
+    <qtype>V-IMPRT</qtype>
    <question>
       <text>SUBJ MAINV MAINV2</text>
       <element type="SUBJ">
-	<grammar pos="Pron+Pers+Sg1"/>
+	<grammar tag="Pron+Pers+Sg1"/>
       </element>
       <element type="MAINV">
 	<lemma>áigut</lemma> 
@@ -300,10 +304,11 @@
   </q>
 
   <q>
+    <qtype>V-IMPRT</qtype>
    <question>
       <text>SUBJ MAINV MAINV2</text>
       <element type="SUBJ">
-	<grammar pos="Pron+Pers+Du1"/>
+	<grammar tag="Pron+Pers+Du1"/>
       </element>
       <element type="MAINV">
 	<lemma>áigut</lemma> 
@@ -324,10 +329,11 @@
   </q>
 
   <q>
+    <qtype>V-IMPRT</qtype>
    <question>
       <text>SUBJ MAINV MAINV2</text>
       <element type="SUBJ">
-	<grammar pos="Pron+Pers+Pl1+Nom"/>
+	<grammar tag="Pron+Pers+Pl1+Nom"/>
       </element>
       <element type="MAINV">
 	<lemma>áigut</lemma> 
@@ -349,6 +355,7 @@
 
 
   <q>
+    <qtype>V-IMPRT</qtype>
    <question>
       <text>Sihke don ja mun MAINV MAINV2</text>
       <element type="MAINV">
@@ -370,6 +377,7 @@
   </q>
 
   <q>
+    <qtype>V-IMPRT</qtype>
    <question>
       <text>Sihke don ja mii MAINV MAINV2</text>
       <element type="MAINV">
@@ -395,6 +403,7 @@
 
 <!-- Both Morfa and QA: -->
 <q>
+    <qtype>V-GO</qtype>
   <question>
     <text>MAINV go SUBJ odne</text>
     <element type="MAINV">
@@ -435,6 +444,7 @@
 
 <!-- Both Morfa and QA: -->
   <q>
+    <qtype>V-GO</qtype>
     <question>
       <text>MAINV go SUBJ ikte</text>
       <element type="MAINV">
@@ -475,6 +485,7 @@
 
 <!-- Both Morfa and QA: -->
 <q>
+  <qtype>V-GO</qtype>
   <question>
     <text>MAINV go SUBJ luomus</text>
     <element type="MAINV">
