@@ -5,14 +5,17 @@
 {% block pagename %}/oahpa/morfa/{% endblock %}
 {% block settings %}
 
-<form method="post" action="">
 <table width="700">
 <tr>
 <td>{% trans "Game type" %}</td>
 <td>{{ settingsform.gametype }}</td>
 </tr>
 <tr>
-<td>{% trans "Part of speech" %}</td><td>{% trans "Case" %}</td><td>{% trans "Stem" %}</td><td>{% trans "Book" %}</td><td>{% trans "Dialect" %} (not used)</td>
+<td>{% trans "Part of speech" %}</td>
+<td>{% trans "Case" %}</td>
+<td>{% trans "Stem" %}</td>
+<td>{% trans "Book" %}</td>
+<td>{% trans "Dialect" %} (not used)</td>
 </tr>
 <tr>
 <td>{{ settingsform.pos }}</td>
@@ -39,35 +42,36 @@
 {% block question %}
 
 {% ifequal gametype "bare" %}
-<td>
-{% if forloop.first %}
-<div id='lemma'>
-{% else %}
-<div id='lemma_{{ forloop.counter0 }}'>
-{% endif %}
+  <td>
+  {% if forloop.first %}
+    <div id='lemma'>
+  {% else %}
+    <div id='lemma_{{ forloop.counter0 }}'>
+  {% endif %}
 
-{{ form.lemma }} {{ form.tag }}
-</div>
-{% if forloop.first %}
-<div id='tooltip' style="display:none; margi:5px; packground-color:red;">
-{{ form.translations }} <br/>
-</div>
-<script type="text/javascript">
-var lemma_tooltip = new Tooltip('lemma','tooltip')
-</script>
-{% else %}
-<div id='tooltip_{{ forloop.counter0 }}' style="display:none; margi:5px; packground-color:red;">
-{{ form.translations }} <br/>
-</div>
-<script type="text/javascript">
-var lemma_{{ forloop.counter0 }}_tooltip = new Tooltip('lemma_{{ forloop.counter0 }}','tooltip_{{ forloop.counter0 }}')
-</script>
-{% endif %}
+  {{ form.lemma }} {{ form.tag }}
+  </div>
 
-</td>
+  {% if forloop.first %}
+    <div id='tooltip' style="display:none; margi:5px; packground-color:red;">
+    {{ form.translations }} <br/>
+    </div>
+
+    <script type="text/javascript">
+    var lemma_tooltip = new Tooltip('lemma','tooltip')
+    </script>
+  {% else %}
+    <div id='tooltip_{{ forloop.counter0 }}' style="display:none; margi:5px; packground-color:red;">
+    {{ form.translations }} <br/>
+    </div>
+    <script type="text/javascript">
+      var lemma_{{ forloop.counter0 }}_tooltip = new Tooltip('lemma_{{ forloop.counter0 }}','tooltip_{{ forloop.counter0 }}')
+    </script>
+  {% endif %}
+
+  </td>
 {% else %}
      <td>{{ form.question }} ({{ form.lemma }})</td>
 {% endifequal %}
 
 {% endblock %}
-

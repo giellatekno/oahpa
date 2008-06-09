@@ -5,7 +5,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<html lang="sme">
 <head>
     <title>{% block title %}{% endblock %}</title>
   <style type="text/css">
@@ -152,7 +151,7 @@ h1 {
 <div id="header">
 
 <div class="title">
-<img src="http://giellatekno.uit.no/oahpa/images/oahpa.png"/>
+<img src="http://giellatekno.uit.no/oahpa/images/oahpa.png" alt="OAHPA!"/>
 </div>
 
 <div class="language">
@@ -211,6 +210,8 @@ h1 {
 </div>
 <div id="content">
 
+<form method="post" action="">
+
 <div class="settings">
 {% block settings %}{% endblock %}
 </div>
@@ -221,7 +222,10 @@ h1 {
     {% endblock %}
 
 </div>
+
+</form>
 </div>
+
 
 </body>
 </html>

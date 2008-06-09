@@ -15,25 +15,22 @@
 <table>
 <tr><td>
 <table>
-<tr>
      {% for form in forms %}
 
 {% ifequal gametype "context" %} 
-{% ifnotequal forloop.counter0 0 %}
-</tr>
-<tr>
-<td>&nbsp;</td>
-</tr>
-<tr>
-{% endifnotequal %}
+    {% ifnotequal forloop.counter0 0 %}
+    <tr>
+    <td>&nbsp;</td>
+    </tr>
+    {% endifnotequal %}
 {% endifequal %}
-
+<tr>
 {% block question %}{% endblock %}
 </tr>
 
 <tr>
   <!-- Show correct answers if "show correct" is pressed -->
-  {% if show_correct %}
+{% if show_correct %}
   <td> 
     {% if form.answertext1 %}{{ form.answertext1 }}{% endif %}
     
@@ -81,7 +78,6 @@
       {% endifequal %}
   {% endif %}
       </td>
-</td>
 <td>
        {{ form.word_id }}       {{ form.tag_id }}
 {{ form.question_id }} 
@@ -93,7 +89,7 @@
 <input type="hidden" name="{{ forloop.counter0 }}-userans" value="{{ form.userans }}" />
 <input type="hidden" name="{{ forloop.counter0 }}-correct" value="{{ form.error }}" />
 {% endif %}
-</td
+</td>
 </tr>
 
      {% endfor %}
@@ -109,23 +105,22 @@
 <br/>
 {% trans "Your score:" %} {{ score }}
 {% endif %}
-</td></tr>
-<tr><td></td>
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
 <td>
 {% if not all_correct %}
    {% if not show_correct %}
-   <input type="submit" name="test" value="{% trans "Test answers" %}">
+   <input type="submit" name="test" value="{% trans "Test answers" %}"/>
    {% endif %}
    {% ifequal count 1 %}
-   <input type="submit" name="show_correct" value="{% trans "Show correct answers" %}" >
+   <input type="submit" name="show_correct" value="{% trans "Show correct answers" %}" />
    {% endifequal %}
 {% endif %}
 </td>
 </tr>
 </table>
-
- </form>
-
 
 
 {% endblock %}
