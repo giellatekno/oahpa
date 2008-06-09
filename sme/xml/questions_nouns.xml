@@ -402,10 +402,14 @@
   <q>
     <qtype>N-ESS</qtype>
     <question>
-      <text>Manin SUBJ MAINV Deanus</text>
+      <text>Manin SUBJ MAINV PLACE</text>
       <element type="SUBJ">
 	<grammar tag="N+Sg+Nom"/>
 	<sem class="FAMILY"/>
+      </element>
+      <element type="PLACE">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE-NAME"/>
       </element>
        <element type="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -413,14 +417,14 @@
       </element>
    </question>
     <answer> 
-      <text>(CLADV) SUBJ MAINV (Deanus) (CLADV) N-ESS (Deanus) (CLADV)</text>
+      <text>(CLADV) SUBJ MAINV (PLACE) (CLADV) N-ESS (PLACE) (CLADV)</text>
       <element type="N-ESS">
 	<grammar tag="N+Ess"/>
 	<sem class="PROFESSION"/>
       </element>
     </answer>
      <answer> 
-      <text>(CLADV) SUBJ MAINV (Deanus) (CLADV) N-ESS (Deanus) (CLADV)</text>
+      <text>(CLADV) SUBJ MAINV (PLACE) (CLADV) N-ESS (PLACE) (CLADV)</text>
     <element type="SUBJ">
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
