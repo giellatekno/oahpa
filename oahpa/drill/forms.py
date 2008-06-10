@@ -11,7 +11,8 @@ from models import Word, Form, Question
 POS_CHOICES = (
     ('N', _('noun')),
     ('V', _('verb')),
-#    ('A', _('adjective')),
+    ('A', _('adjective')),
+    ('Num', _('numeral')),
 )
 
 CASE_CHOICES = (
@@ -22,6 +23,24 @@ CASE_CHOICES = (
     ('N-GEN', _('genitive')),
     ('N-ESS', _('essive')),
 )
+
+VTYPE_CHOICES = (
+    ('VERB', _('tense')),
+    ('V-COND', _('conditional')),
+#    ('V-IMPRT', _('imperative')),
+    ('V-GO', _('go-questions')),
+)
+
+
+VTYPE_BARE_CHOICES = (
+    ('PRS', _('present')),
+    ('PRT', _('past')),
+   ('COND', _('conditional')),
+    ('IMPRT', _('imperative')),
+    ('POT', _('potential')),
+)
+
+
 
 BOOK_CHOICES = (
     ('d1', _('Davvin 1')),
@@ -98,8 +117,9 @@ def set_correct(self):
         
 
 class MorphForm(forms.Form):
-    pos = forms.ChoiceField(initial='N', choices=POS_CHOICES, widget=forms.RadioSelect)
     case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
+    vtype = forms.ChoiceField(initial='VERB', choices=VTYPE_CHOICES, widget=forms.Select)
+    vtype_bare = forms.ChoiceField(initial='PRS', choices=VTYPE_BARE_CHOICES, widget=forms.Select)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
     gametype = forms.ChoiceField(initial='bare', choices=GAME_CHOICES, widget=forms.Select)
     bisyllabic = forms.BooleanField(required=False, initial='1')
@@ -110,6 +130,7 @@ class MorphForm(forms.Form):
     for b in BOOK_CHOICES:
         allbooks.append(b[0])
 
+    
 class MorphQuestion(forms.Form):
     """
     Questions for morphology game 
@@ -131,13 +152,14 @@ class MorphQuestion(forms.Form):
         super(MorphQuestion, self).__init__(*args, **kwargs)
         self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
         self.fields['tag_id'] = forms.CharField(widget=tag_widget, required=False)
+        self.lemma=word.lemma
 
         if tag.pos=="N":
             if tag.number=="Sg":
                 self.lemma = word.lemma
             else:
                 self.lemma = Form.objects.filter(Q(word__pk=word.id) & Q(tag__string="N+Pl+Nom"))[0].fullform
-                
+               
         self.correct_answers =""
         self.case = ""
         self.userans = userans_val
@@ -274,6 +296,7 @@ class QAQuestion(forms.Form):
         self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
         self.fields['tag_id'] = forms.CharField(widget=tag_widget, required=False)
 
+        self.lemma = word.lemma
         if tag.pos=="N":
             if tag.number=="Sg":
                 self.lemma = word.lemma
