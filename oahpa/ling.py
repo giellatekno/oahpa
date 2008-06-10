@@ -13,6 +13,7 @@ import codecs
 class Entry:
     pass
 
+
 class Paradigm:
 
     def __init__(self):
@@ -102,7 +103,7 @@ class Questions:
         self.questions = {}
 
     # Read elements attached to particular question or answer.
-    def read_elements(self,head,elementtype, question_element):
+    def read_elements(self,head,qaelement):
 
         for el in head.getElementsByTagName("element"):
 
@@ -127,7 +128,7 @@ class Questions:
             for l in lemmas:
                 lemma = l.firstChild.data
                 if lemma:
-                    print lemma
+                    print "Searching lemma: " + lemma
                     # Add pos information here!
                     word_elements = Word.objects.filter(Q(lemma=lemma))
                     if word_elements:
@@ -157,8 +158,7 @@ class Questions:
             if elements:
                 for element in elements:
                     qe, created = QElement.objects.get_or_create(element=element, \
-                                                                 question=question_element,\
-                                                                 elementtype=elementtype, \
+                                                                 question=qaelement,\
                                                                  word=w,semtype=s)
                     qe.save()
             else:
@@ -166,9 +166,8 @@ class Questions:
                 element, created = Element.objects.get_or_create(tagspec=tag, pos=pos, syntax=syntax)
                 print tag + " " + " " + pos + " " + syntax
                 qe, created = QElement.objects.get_or_create(element=element, \
-                                                             question=question_element,\
-                                                             elementtype=elementtype, \
-                                                             word=w,semtype=s)
+                                                                 question=qaelement,\
+                                                                 word=w,semtype=s)
                 qe.save()
                 
                 
@@ -181,20 +180,26 @@ class Questions:
         for q in tree.getElementsByTagName("q"):
 
             # Store question
-            qtype = q.getElementsByTagName("qtype")[0].firstChild.data
+            qtype=""
+            qtype_el = q.getElementsByTagName("qtype")
+            if qtype_el:
+                qtype = q.getElementsByTagName("qtype")[0].firstChild.data
             question=q.getElementsByTagName("question")[0]
             text=question.getElementsByTagName("text")[0].firstChild.data
             
-            question_element = Question.objects.create(question=text, qtype=qtype)
+            question_element = Question.objects.create(string=text, qtype=qtype, qatype="question")
             print text
-            self.read_elements(question,"question",question_element)
-            
-            answer=q.getElementsByTagName("answer")[0]
-            text=answer.getElementsByTagName("text")[0].firstChild.data
-            question_element.answer=text
-            question_element.save()
-            print text
-            self.read_elements(answer, "answer", question_element)
+            self.read_elements(question,question_element)
+
+            # There can be more than one answer for each question,
+            # Store them separately.
+            answers=q.getElementsByTagName("answer")
+            for ans in answers:                
+                text=ans.getElementsByTagName("text")[0].firstChild.data
+                answer_element = Question.objects.create(string=text,qatype="answer",answer=question_element)
+                
+                print text
+                self.read_elements(ans, answer_element)
 
 
     def read_grammar(self, infile):
@@ -212,3 +217,18 @@ class Questions:
                 print syntax + " " + pos + " " + tag
                 element, created = Element.objects.get_or_create(tagspec=tag, pos=pos, syntax=syntax)
                 element.save()
+
+
+    def read_semtypes(self, infile):
+
+        xmlfile=file(infile)
+        tree = _dom.parse(infile)
+
+        for el in tree.getElementsByTagName("subclasses"):
+            semclass=el.getAttribute("class")
+            s, created = Semtype.objects.get_or_create(semtype=semclass)
+            for el2 in el.getElementsByTagName('sem'):
+               subclass  = el2.getAttribute("class").firstChild.data
+               for w in Word.objects.filter(semtype=subclass):
+                   if not w.semtype_set.filter(semtype=semclass):
+                       w.semtype.add(s)
