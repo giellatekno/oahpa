@@ -21,7 +21,8 @@ class QAGame(Game):
         self.num_fields = 3
         self.tagset = {}
         self.tagclasses = {}
-        self.syntax = ('N-ILL','N-LOC','N-ACC','N-GEN','N-COM','N-ESS','OBJ','NOUN')
+        self.syntax = ('N-ILL','N-LOC','N-ACC','N-GEN','N-COM','N-ESS','OBJ','NOUN','MAINV2','NEG')
+        self.qtype_verbs = set(['VERB','V-COND','V-IMPRT','V-GO'])
 
         # Default tense and mood for testing
         self.tense = "Prs"
@@ -71,6 +72,7 @@ class QAGame(Game):
                          'Pl1':'mun','Pl2':'don','Pl3':'son',\
                          'Du1':'mun','Du2':'don','Du3':'son'}
         self.NounPN=['Sg','Pl']
+        self.NountoPronPN={'Sg':'Sg3','Pl':'Pl3'}
 
     # Find a value for a tag.
     def get_tagvalue(self, t, pnval, pos):
@@ -148,17 +150,15 @@ class QAGame(Game):
 
         return "", word
 
-    def get_element(self, question, syntax, elementtype, word_id=None, pnval=None, tagvalue=None):
+    def get_element(self, question, syntax, word_id=None, pnval=None, tagvalue=None):
 
         pos=""
         tagspec=""
         if not pnval:
             el_count=Element.objects.filter(Q(qelement__question=question) \
-                                            & Q(qelement__elementtype=elementtype) \
                                             & Q(syntax=syntax)).count()
             if el_count > 0:
                 elem = Element.objects.filter(Q(qelement__question=question) \
-                                              & Q(qelement__elementtype=elementtype)\
                                               & Q(syntax=syntax))[0]
                 if elem.pos=="Pron":
                     pnval = self.PronPN[randint(0, len(self.PronPN)-1)]
@@ -175,15 +175,14 @@ class QAGame(Game):
         tagstring =""
         qelement=None
         qelement_count = QElement.objects.filter(Q(question=question) \
-                                           & Q(elementtype=elementtype) \
-                                           & Q(element__syntax=syntax)).count()
+                                                 & Q(element__syntax=syntax)).count()
         if qelement_count > 0:
             qelement = QElement.objects.filter(Q(question=question) \
-                                               & Q(elementtype=elementtype) \
                                                & Q(element__syntax=syntax))[0]
             element = Element.objects.filter(Q(qelement__question=question)\
-                                             & Q(qelement__elementtype=elementtype)\
                                              & Q(syntax=syntax))[0]
+            if element.pos == "Pron" and not pnval in set(self.PronPN):
+                pnval = self.NountoPronPN[pnval]
             if not element.tagspec:
                 print "ERROR TAGSPEC"
 
@@ -198,8 +197,8 @@ class QAGame(Game):
                 #print "TAG " + t
                 tagstr = self.get_tagvalue(t, pnval, pos)
                 tags.append(tagstr)
-            
-            tagstring= "+".join(tags)
+            if tags:
+                tagstring= "+".join(tags)
         
         print "Correct tagstring " + tagstring
         fullform, word = self.get_word(qelement, tagstring, word_id)
@@ -210,20 +209,27 @@ class QAGame(Game):
 
     def get_db_info(self, db_info):
 
-        anslist=[]        
-        qtype=self.settings.case
+        anslist=[]
+        pos=self.settings.pos
+        if pos == "N":
+            qtype=self.settings.case
+        else:
+            qtype=self.settings.vtype
 
+        print "QTYPE: " + qtype
+        
         qelement = None
         if True:
             # Limit number of questions for testing
             q_count=Question.objects.filter(qtype=qtype).count()
             question = Question.objects.filter(qtype=qtype)[randint(0, q_count-1)]
-            question_id=question.id
-            print "QUESTION_ID " + str(question_id)
+            print "QUESTION_ID " + str(question.id)
 
-            question=Question.objects.get(id=question_id)
-            qtext=question.question
-            atext=question.answer
+            qtext=question.string
+            a_count=question.answer_set.count()
+            answer=question.answer_set.all()[randint(0,a_count-1)]
+            atext=answer.string
+            print "ANSWER_ID " + str(answer.id)
 
             qstring = ""
             astring=""
@@ -241,12 +247,11 @@ class QAGame(Game):
             # Create question and answer in parallel.
             # Handle all grammatical elements one at the time
             # 1. SUBJ-MAINV argreement
-            subjumber=None
+            subjnumber=None
             word=None
             word_id=None
             if qwords.has_key('SUBJ'):
-                subj_el = Element.objects.filter(Q(qelement__question__id=question_id) \
-                                                 & Q(qelement__elementtype="question") \
+                subj_el = Element.objects.filter(Q(qelement__question=question) \
                                                  & Q(syntax="SUBJ"))[0]
                 if subj_el.pos=="Pron":
                     subjnumber = self.PronPN[randint(0, len(self.PronPN)-1)]
@@ -254,7 +259,7 @@ class QAGame(Game):
                     word_id = Word.objects.get(Q(lemma=pronbase)).id
                 else:
                     subjnumber = self.NounPN[randint(0, len(self.NounPN)-1)]                    
-                fullform, subjword, subjtag  = self.get_element(question, 'SUBJ', "question", word_id, subjnumber)
+                fullform, subjword, subjtag  = self.get_element(question, 'SUBJ', word_id, subjnumber)
                 if subjtag.count('Sg+')>0 or subjtag.count('Pl+')>0:
                     dbtag = Tag.objects.filter(Q(string=subjtag))[0]
                     if dbtag.number: subjnumber= dbtag.number
@@ -267,6 +272,7 @@ class QAGame(Game):
 
             # Subject for the answer
             a_number=None
+            v_number=None
             word_id=None
             pronbase=""
             if subjnumber:
@@ -283,22 +289,21 @@ class QAGame(Game):
 
                 # Check first if there are elements
                 # that are specified for the answer subject.
-                ans_subj_count = Element.objects.filter(Q(qelement__question__id=question_id) \
-                                                & Q(qelement__elementtype="answer") \
-                                                & Q(syntax="SUBJ")).count()
+                ans_subj_count = Element.objects.filter(Q(qelement__question=answer) \
+                                                        & Q(syntax="SUBJ")).count()
                 if ans_subj_count > 0:
                     fullform, asubj_word, asubjtag = \
-                              self.get_element(question, 'SUBJ', "answer", word_id, a_number)
+                              self.get_element(answer, 'SUBJ', word_id, a_number)
 
                 # Otherwise search answer subject using question subject
                 else:
                     if pronbase:
                         fullform, asubj_word, asubjtag = \
-                                  self.get_element(question, 'SUBJ', "answer", word_id, a_number, asubjtag)
+                                  self.get_element(answer, 'SUBJ', word_id, a_number, asubjtag)
                     else:
                         if subjword:
                             fullform, asubj_word, asubjtag = \
-                                      self.get_element(question, 'SUBJ', "answer", subjword.id, a_number, asubjtag)
+                                      self.get_element(answer, 'SUBJ', subjword.id, a_number, asubjtag)
                         
                             
                 if fullform:
@@ -307,7 +312,7 @@ class QAGame(Game):
                     awords['SUBJ'] = "SUBJ+" + a_number
                     
             if qwords.has_key('MAINV'):
-                fullform, mainv_word, mainvtag = self.get_element(question, 'MAINV', 'question', None, v_number)
+                fullform, mainv_word, mainvtag = self.get_element(question, 'MAINV', None, v_number)
                 if fullform:
                     qwords['MAINV'] = fullform
                     print "FULLFORM: " + fullform
@@ -315,50 +320,83 @@ class QAGame(Game):
                     qwords['MAINV'] = "MAINV+" + subjnumber
 
             # The same mainverb for both question and answer.
-
+            # or the same form for mainverb.
             if awords.has_key('MAINV'):
                 if a_number:
                     va_number=self.SVPN[a_number]
                     print "va_number " + va_number
                 else:
                     va_number=None
-                if mainv_word:
-                    amainvtag = mainvtag.replace(v_number,va_number)
+                    
+                amainvtag = mainvtag.replace(v_number,va_number)
+                if mainv_word and not qtype in self.qtype_verbs:
                     fullform, ans_word, amainvtag= \
-                              self.get_element(question, 'MAINV', 'answer', mainv_word.id, v_number, amainvtag)
+                              self.get_element(answer, 'MAINV', mainv_word.id, v_number, amainvtag)
                 else:
-                     fullform, ans_word, amainvtag=self.get_element(question, 'MAINV', 'answer', None, v_number)
+                    fullform, ans_word, amainvtag=\
+                              self.get_element(answer, 'MAINV', None, v_number, amainvtag)
+                    if not fullform:
+                        fullform, ans_word, amainvtag= \
+                                  self.get_element(answer, 'MAINV', mainv_word.id, v_number, amainvtag) 
                 if fullform:
                      awords['MAINV'] = fullform
                 else:
                     awords['MAINV'] = "MAINV+" + a_number
 
+            if awords.has_key('CONNEG'):
+                fullform, ans_word, connegtag= \
+                          self.get_element(answer, 'CONNEG', mainv_word.id, v_number)
+                awords['CONNEG'] = "Q"
+                db_info.word_id=mainv_word.id
+                db_info.tag_id=Tag.objects.get(string=connegtag).id
+
+            if awords.has_key('PRFPRC'):
+                fullform, ans_word, prfprctag= \
+                          self.get_element(answer, 'PRFPRC', mainv_word.id, v_number)
+                awords['PRFPRC'] = "Q"
+                db_info.word_id=mainv_word.id
+                db_info.tag_id=Tag.objects.get(string=prfprctag).id
+
+            # If question is verbtype, then target is MAINV.
+            if qtype in self.qtype_verbs and awords.has_key('MAINV'):
+                db_info.word_id=ans_word.id
+                print "MAINV LEMMA: " + ans_word.lemma
+                db_info.tag_id=Tag.objects.get(string=amainvtag).id
+                awords['MAINV'] = "Q"
+            
             # INTERR number matches the number of asked element.
+            # Select singular or plural if asked element is a noun.
             interrnumber=None
             if qwords.has_key('INTERR'):
-                interr_el = Element.objects.filter(Q(qelement__question__id=question_id) \
-                                                 & Q(qelement__elementtype="question") \
+                interr_el = Element.objects.filter(Q(qelement__question=question) \
                                                  & Q(syntax="INTERR"))[0]
                 if interr_el.pos=="Pron":
                     interrnumber = self.NounPN[randint(0, len(self.NounPN)-1)]
-                fullform, mainv_word, mainvtag = self.get_element(question, 'INTERR', 'question', None, interrnumber)
+                fullform, mainv_word, mainvtag = self.get_element(question, 'INTERR', None, interrnumber)
                 if fullform:
                     qwords['INTERR'] = fullform
                 else:
                     qwords['INTERR'] = "INTERR+" + subjnumber
 
-            # Handle answer element separately
-            awords[qtype] = "Q"
-            fullform, word, stag = self.get_element(question, qtype, "answer", None, interrnumber) 
-            if not fullform:
-                print "FATAL ERROR"
-            if not word:
-                print "FATAL ERROR2"
-            if not stag:
-                print "FATAL ERROR3"
-            db_info.word_id=word.id
-            db_info.tag_id=Tag.objects.get(string=stag).id
+                # Handle ANSWER element separately
+                if interrnumber:
+                    print "INTERRNUMBER: " + interrnumber
 
+                
+            if not qtype in self.qtype_verbs:
+                fullform, word, stag = self.get_element(answer, qtype, None, interrnumber) 
+            
+                if not fullform:
+                    print "FATAL ERROR"
+                if not word:
+                    print "FATAL ERROR2"
+                if not stag:
+                    print "FATAL ERROR3"
+
+                db_info.word_id=word.id
+                db_info.tag_id=Tag.objects.get(string=stag).id
+
+                awords[qtype] = "Q"
                     
             # 2. Other grammatical elements
             for s in self.syntax:
@@ -366,7 +404,7 @@ class QAGame(Game):
                 fullform=""
                 word=None
                 if qwords.has_key(s):
-                    fullform, word, stag = self.get_element(question, s, "question")
+                    fullform, word, stag = self.get_element(question, s)
                     if fullform:
                         qwords[s] = fullform
                         print "FULLFORM: " + fullform
@@ -375,7 +413,7 @@ class QAGame(Game):
                         
                 if awords.has_key(s):
                     if not fullform:
-                        fullform, word, stag = self.get_element(question, s, "answer")
+                        fullform, word, stag = self.get_element(answer, s)
                     if fullform:
                         awords[s] = fullform
                     else:
@@ -393,7 +431,7 @@ class QAGame(Game):
                 if w.count("(") > 0:
                     w = w.replace("(","")
                     w = w.replace(")","")
-                    if w!='SUBJ' and w!='Dát': continue
+                    if w!='SUBJ': continue
                         
                 if not awords.has_key(w):
                     astring = astring + " " + w
@@ -409,7 +447,7 @@ class QAGame(Game):
             qstring = qstring[0].capitalize() + qstring[1:]
 
             # Store everything for the html form 
-            db_info.question_id = question_id
+            db_info.question_id = question.id
             db_info.qstring = qstring + "?"
             db_info.astring = astring 
 
