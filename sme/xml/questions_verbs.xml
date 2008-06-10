@@ -284,6 +284,32 @@
   </q>
 -->
 
+<!--- ==========  Potential , only for Morfa =========   -->
+
+<q>
+    <qtype>V-POT</qtype>
+  <question>
+    <text>MAINV go SUBJ</text>
+    <element type="MAINV">
+      <grammar tag="V+Ind+Prs+Person-Number"/>
+      <sem class="ACTIVITY"/>
+    </element>
+    <element type="SUBJ">
+      <sem class="HUMAN"/>
+      <grammar pos="N"/>
+    </element>
+  </question>
+  <answer> 
+    <text>In diede V-POT go </text>
+      <element type="V-POT">
+	<grammar tag="V+Pot+Person-Number"/>
+      </element>
+    </answer>
+  </q>
+
+
+
+
 <!--- ==========  Imperative, all of them only for Morfa =========   -->
 
   <q>
@@ -410,43 +436,6 @@
 <!--- ==========  go-questions =========   -->
 
 <!-- Both Morfa and QA: -->
-<q>
-    <qtype>V-GO</qtype>
-  <question>
-    <text>MAINV go SUBJ odne</text>
-    <element type="MAINV">
-      <grammar tag="V+Ind+Prs+Person-Number"/>
-      <sem class="ACTIVITY"/>
-    </element>
-    <element type="SUBJ">
-      <sem class="HUMAN"/>
-      <grammar pos="N"/>
-    </element>
-  </question>
-  <answer> 
-    <text>(CLADV) SUBJ MAINV (odne) (CLADV)</text>
-  </answer>
-    <answer> 
-      <text>(CLADV) SUBJ MAINV (odne) (CLADV)</text>
-      <element type="SUBJ">
-	<lemma>son</lemma>
-	<grammar tag="Pron+Pers+Person-Number"/>
-      </element>
-    </answer>
-    <answer> 
-      <text>(odne) (SUBJ) NEG CONNEG (odne) (CLADV)</text>
-      <element type="SUBJ">
-	<grammar pos="Pron"/>
-      </element>
-      <element type="NEG">
-	<grammar tag="Neg+Ind+Person-Number"/>
-      </element>
-      <element type="CONNEG">
-	<grammar tag="V+Ind+Prs+ConNeg"/>
-	<sem class="ACTIVITY"/>
-      </element>
-    </answer>
-  </q>
 
 <!-- Both Morfa and QA: -->
   <q>
