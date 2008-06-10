@@ -74,7 +74,7 @@ class Paradigm:
         #fstdir="/opt/smi/sme/bin"
         fstdir="/Users/saara/gt/sme/bin"
         gen_norm_fst = fstdir + "/isme-norm.fst"
-#        gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        #gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
         gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | /Users/saara/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
         lines_tmp = os.popen(gen_norm_lookup).readlines()
         for line in lines_tmp:
@@ -228,7 +228,8 @@ class Questions:
             semclass=el.getAttribute("class")
             s, created = Semtype.objects.get_or_create(semtype=semclass)
             for el2 in el.getElementsByTagName('sem'):
-               subclass  = el2.getAttribute("class").firstChild.data
-               for w in Word.objects.filter(semtype=subclass):
-                   if not w.semtype_set.filter(semtype=semclass):
-                       w.semtype.add(s)
+               subclass  = el2.getAttribute("class")
+               for w in Word.objects.filter(Q(semtype__semtype=subclass) & ~Q(semtype__semtype=semclass)):
+                   print w.lemma + ": adding semtype " + semclass
+                   w.semtype.add(s)
+                   w.save()
