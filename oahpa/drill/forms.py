@@ -72,9 +72,25 @@ LANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-    ('NATURE', _('nature')),
-    ('PROFESSION', _('profession')),
     ('FAMILY', _('family')),
+    ('PROFESSION', _('profession')),
+    ('HUMAN/-LIKE', _('human/-like')),
+    ('ANIMAL', _('animal')),
+    ('FOOD/DRINK', _('food/drink')),
+    ('TIME', _('time')),
+    ('CONCRETES', _('concretes')),
+    ('IN-ROOM', _('in-room')),
+    ('BODY', _('body')),
+    ('CLOTHES', _('clothes')),
+    ('BUILDINGS/ROOMS', _('buildings/rooms')),
+    ('NATUREWORDS', _('naturewords')),
+    ('TRAVELWORDS', _('travelwords')),
+    ('LEISURETIME/AT_HOME', _('leisuretime/at_home')),
+    ('PLACES', _('places')),
+    ('LITERATURE', _('literature')),
+    ('SCHOOL/EDUCATION', _('school/education')),
+    ('ABSTRACTS', _('abstracts')),
+    ('WORD/ECONOMY/TOOLS', _('word/economy/tools')),
     ('all', _('all')),
 )
 
