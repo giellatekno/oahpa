@@ -127,13 +127,13 @@ class ContextGame(Game):
     def get_db_info(self, db_info):
 
         syll = self.settings.syll
-        partofsp = self.settings.partofsp
+        pos = self.settings.pos
         semtype = self.settings.semtype
-        tag_count=Tag.objects.filter(pos=settings.partofsp).count()
+        tag_count=Tag.objects.filter(pos=settings.pos).count()
 
         while True:
 
-            tag_id = Tag.objects.filter(pos=settings.partofsp)[randint(0, tag_count-1)].id
+            tag_id = Tag.objects.filter(pos=settings.pos)[randint(0, tag_count-1)].id
 
             q_count=Question.objects.filter(tag__pk=tag_id).count()
             if q_count==0:
@@ -142,8 +142,8 @@ class ContextGame(Game):
             question_id = random_question.id
             qtype=random_question.semtype
 
-            w_count=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(semtype=qtype)).count()
-            word_id=Word.objects.filter(Q(pos=partofsp)&Q(stem__in=syll)&Q(semtype=qtype))[randint(0,w_count-1)].id
+            w_count=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(semtype=qtype)).count()
+            word_id=Word.objects.filter(Q(pos=pos)&Q(stem__in=syll)&Q(semtype=qtype))[randint(0,w_count-1)].id
             
             form_count = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id)).count()
             if word_id and form_count>0:
@@ -178,18 +178,41 @@ class BareGame(Game):
     def get_db_info(self, db_info):
 
         syll = self.settings.syll
-        partofsp = self.settings.partofsp            
+        pos = self.settings.pos
         books=self.settings.books
         case=self.settings.case
-        case = self.casetable[case]
-
-        tag_count=Tag.objects.filter(Q(pos=partofsp) & Q(possessive="") & Q(case=case)).count()
+        if self.settings.pos == "N":
+            case = self.casetable[case]
+        else:
+            case = ""
+        
+        if self.settings.pos == "V":
+            if self.settings.vtype_bare == "PRS":
+                mood = "Ind"
+                tense = "Prs"
+            if self.settings.vtype_bare == "PRT":
+                mood = "Ind"
+                tense = "Prt"
+            if self.settings.vtype_bare == "COND":
+                mood = "Cond"
+                tense = "Prs"
+            if self.settings.vtype_bare == "IMPRT":
+                mood = "Imprt"
+                tense = "Prs"
+            if self.settings.vtype_bare == "POT":
+                mood = "Pot"
+                tense = "Prs"
+        else:
+            mood=""
+            tense=""
+            
+        tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & Q(conneg="")).count()
 
         while True:
-            tag_id = Tag.objects.filter(Q(pos=partofsp) & Q(possessive="") & Q(case=case))[randint(0,tag_count-1)].id
+            tag_id = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & Q(conneg=""))[randint(0,tag_count-1)].id
 
-            w_count=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(source__name__in=books)).count()
-            word_id=Word.objects.filter(Q(pos=partofsp) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)].id
+            w_count=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books)).count()
+            word_id=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)].id
                 
             form_count = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id)).count()
             if word_id and form_count>0:
@@ -233,13 +256,13 @@ class NumGame(Game):
         language=self.settings.language
         numstring =""
         # Add generator call here
-        #fstdir="/Users/saara/gt/" + language + "/bin"        
+        fstdir="/Users/saara/gt/" + language + "/bin"        
     
-        fstdir="/opt/smi/" + language + "/bin"
+        #fstdir="/opt/smi/" + language + "/bin"
         gen_norm_fst = fstdir + "/" + language + "-num.fst"
         
-        gen_norm_lookup = "echo " + str(db_info.numeral) + " | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
-        #gen_norm_lookup = "echo " + str(db_info.numeral) + " | /Users/saara/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        #gen_norm_lookup = "echo " + str(db_info.numeral) + " | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        gen_norm_lookup = "echo " + str(db_info.numeral) + " | /Users/saara/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
         print gen_norm_lookup
         num_tmp = os.popen(gen_norm_lookup).readlines()
         num_list=[]
