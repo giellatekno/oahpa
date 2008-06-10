@@ -11,15 +11,13 @@
 <td>{{ settingsform.gametype }}</td>
 </tr>
 <tr>
-<td>{% trans "Part of speech" %}</td>
-<td>{% trans "Case" %}</td>
+<td>{% block selectionname %}{% endblock %}</td>
 <td>{% trans "Stem" %}</td>
 <td>{% trans "Book" %}</td>
 <td>{% trans "Dialect" %} (not used)</td>
 </tr>
 <tr>
-<td>{{ settingsform.pos }}</td>
-<td>{{ settingsform.case }}</td>
+<td>{% block selection %}{% endblock %}</td>
 <td>
 {{ settingsform.bisyllabic }}{% trans "bisyllabic" %}<br/>
 {{ settingsform.trisyllabic }}{% trans "trisyllabic" %}<br/>
@@ -34,9 +32,6 @@
 </table>
 <input type="submit" name="settings" value="{% trans "New set" %}" />
 
-{% endblock %}
-{% block instructions %}
-<p>{% trans "Practise " %}{{ case }}</p>
 {% endblock %}
 
 {% block question %}
