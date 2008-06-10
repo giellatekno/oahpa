@@ -25,6 +25,8 @@ parser.add_option("-q", "--questionfile", dest="questionfile",
                   help="XML-file that contains questions")
 parser.add_option("-g", "--grammarfile", dest="grammarfile",
                   help="XML-file for grammar defaults for questions")
+parser.add_option("-s", "--sem", dest="semtypefile",
+                  help="XML-file semantic subclasses")
 parser.add_option("-u", "--update", dest="update",
                   action="store_true", default=False,
                   help="If update data")
@@ -47,6 +49,11 @@ if options.grammarfile:
 if options.questionfile:
     questions.read_questions(options.questionfile)
     exit()
+
+if options.semtypefile:
+    questions.read_semtypes(options.semtypefile)
+    exit()
+
     
 xmlfile=file(options.infile)
 tree = _dom.parse(options.infile)
