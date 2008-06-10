@@ -256,13 +256,13 @@ class NumGame(Game):
         language=self.settings.language
         numstring =""
         # Add generator call here
-        fstdir="/Users/saara/gt/" + language + "/bin"        
+        #fstdir="/Users/saara/gt/" + language + "/bin"        
     
-        #fstdir="/opt/smi/" + language + "/bin"
+        fstdir="/opt/smi/" + language + "/bin"
         gen_norm_fst = fstdir + "/" + language + "-num.fst"
         
-        #gen_norm_lookup = "echo " + str(db_info.numeral) + " | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
-        gen_norm_lookup = "echo " + str(db_info.numeral) + " | /Users/saara/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        gen_norm_lookup = "echo " + str(db_info.numeral) + " | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        #gen_norm_lookup = "echo " + str(db_info.numeral) + " | /Users/saara/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
         print gen_norm_lookup
         num_tmp = os.popen(gen_norm_lookup).readlines()
         num_list=[]
