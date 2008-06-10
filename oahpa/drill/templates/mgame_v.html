@@ -1,0 +1,13 @@
+{% extends "mgame.html" %}
+{% load i18n %}
+
+{% block instructions %}<p>{% trans "Practise " %}</p>{% endblock %}
+
+{% block selectionname %}{% trans "Type" %}{% endblock %}
+{% block selection %}
+  {% ifequal gametype "bare" %}
+    {{ settingsform.vtype_bare }}
+  {% else %}
+    {{ settingsform.vtype }}
+  {% endifequal %}
+{% endblock %}
