@@ -74,7 +74,7 @@ LANGUAGE_CHOICES = (
 SEMTYPE_CHOICES = (
     ('FAMILY', _('family')),
     ('PROFESSION', _('profession')),
-    ('HUMAN/-LIKE', _('human/-like')),
+    ('HUMAN-LIKE', _('human-like')),
     ('ANIMAL', _('animal')),
     ('FOOD/DRINK', _('food/drink')),
     ('TIME', _('time')),
