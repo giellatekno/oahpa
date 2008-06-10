@@ -36,12 +36,12 @@ class Word(models.Model):
     translation = models.ManyToManyField(Translationnob)
  
 class Tag(models.Model):
-    string = models.CharField(max_length=20)
+    string = models.CharField(max_length=25)
     pos = models.CharField(max_length=5)
     case = models.CharField(max_length=5)
     number = models.CharField(max_length=5)
     possessive = models.CharField(max_length=5)
-    grade = models.CharField(max_length=5)
+    grade = models.CharField(max_length=10)
     infinite = models.CharField(max_length=10)
     personnumber = models.CharField(max_length=6)
     conneg = models.CharField(max_length=5)
@@ -62,18 +62,16 @@ class Element(models.Model):
     tagspec = models.CharField(max_length=50)
     syntax = models.CharField(max_length=50)
     pos = models.CharField(max_length=5)
-    #independent = models.BooleanField()
-    #optional = models.BooleanField()
 
 class Question(models.Model):
-    question = models.CharField(max_length=200)
-    answer = models.CharField(max_length=200)
+    string = models.CharField(max_length=200)
     qtype = models.CharField(max_length=20)
+    qatype = models.CharField(max_length=20)
+    answer = models.ForeignKey('self', blank=True, null=True, related_name='answer_set')    
 
 class QElement(models.Model):
     element=models.ForeignKey(Element)
     question=models.ForeignKey(Question)
-    elementtype = models.CharField(max_length=20)
     semtype = models.ForeignKey(Semtype, null=True)
     word = models.ForeignKey(Word, null=True)
 
