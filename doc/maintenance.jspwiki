@@ -4,7 +4,15 @@ Much to say here, but for now only notes on first-aid.
 
 !!mysqld down?
 
-The magic command is:
+The reason might be a memory leak. Check that on victorio by writing:
 
-__sudo /etc/init.d/mysqld start__
+__ps aux | grep http__
+
+If the result indicates memory use too close to 100, this is a clear problem indication. The answer is to restart the apache web server, and thereafter, if need, to restart mysql. 
+
+
+The magic commands are (you must have root rights):
+
+* __sudo /etc/init.d/httpd restart__
+* __sudo /etc/init.d/mysqld start__
 
