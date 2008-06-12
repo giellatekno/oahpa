@@ -6,13 +6,20 @@ Much to say here, but for now only notes on first-aid.
 
 The reason might be a memory leak. Check that on victorio by writing:
 
-__ps aux | grep http__
+{{{ps aux | grep http}}}
 
 If the result indicates memory use too close to 100, this is a clear problem indication. The answer is to restart the apache web server, and thereafter, if need, to restart mysql. 
 
 
 The magic commands are (you must have root rights):
 
-* __sudo /etc/init.d/httpd restart__
-* __sudo /etc/init.d/mysqld start__
+{{{
+sudo /etc/init.d/httpd restart
+}}}
+
+And then, if needed, 
+
+{{{
+sudo /etc/init.d/mysqld start
+}}}
 
