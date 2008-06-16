@@ -17,6 +17,11 @@
       <sem class="OTHERS"/> <!-- 52 words -->
       <sem class="MYTH-HUMAN"/> <!-- 7 words -->
       <sem class="GROUP"/> <!-- 11 words -->
+      <sem class="HUMAN-V"/> <!--  -->
+      <sem class="HUMAN-adj2"/> <!--  -->
+      <sem class="VERBAL-V"/> <!--  -->      
+      <sem class="EXPERIENCE-V"/> <!--  -->      
+      <sem class="AUX-V"/> <!-- More widely defined than in sme-dis.rle  -->
     </subclasses>
     <subclasses class="MYTH">  <!-- Morfa-set, for Essive -->
       <sem class="MYTH-HUMAN"/> <!--  words -->
@@ -29,12 +34,16 @@
       <sem class="ANIMAL-OTHER"/>
       <sem class="BIRD"/> <!-- 20 words -->
       <sem class="FISH"/> <!-- 17 words -->
+      <sem class="ANIMAL-V"/>
+      <sem class="ANIMAL-adj"/>
     </subclasses>
     <subclasses class="FOOD/DRINK"> <!-- Leksa-set -->
       <sem class="FOOD-GROCERY"/>  <!-- 87 words -->
       <sem class="FOOD-DISH"/>
       <sem class="FOOD-OTHER"/>
       <sem class="DRINK"/> <!-- 14 words -->
+      <sem class="FOOD/DRINK-V"/> <!--   words -->
+      <sem class="SOUP-adj"/> <!--   words -->
     </subclasses>
     <subclasses class="TIME">   <!-- Leksa-set - 86 words -->
       <sem class="TIME-DURABILITY"/>
@@ -50,6 +59,7 @@
       <sem class="PLACE-STAYING"/>
       <sem class="ROOM"/>
       <sem class="BUILDING"/>
+      <sem class="MOVE-V"/>
     </subclasses>
     <subclasses class="OBJECT"> <!-- Fit as answer to "What do you see?"  -->  
       <sem class="THING"/> <!-- 124 words -->
@@ -69,6 +79,8 @@
       <sem class="HANDICRAFT-PL"/> <!-- 26 words -->
       <sem class="CONTAINER"/> <!-- 23 words -->
       <sem class="INSTRUMENT"/> <!-- 4 words -->
+      <sem class="EXPOSURE-V"/> <!-- 4 words -->
+      <sem class="OBJECT-adj"/> <!--   words -->     
     </subclasses>
     <subclasses class="IN-ROOM">  <!-- Leksa-set -->
       <sem class="FURNITURE"/> <!-- 29 words -->
@@ -79,10 +91,14 @@
       <sem class="BODY-PART"/>  <!-- 43 words -->
       <sem class="BODY-PART-PL"/>
       <sem class="ILLNESS"/> <!-- 17 words -->
+       <sem class="BODY-V"/> <!--   words -->
+       <sem class="BODY-adj"/> <!--   words -->
     </subclasses>
     <subclasses class="CLOTHES">  <!-- Leksa-set, 73 words -->
       <sem class="CLOTHING"/>
       <sem class="CLOTHING-PL"/>
+      <sem class="CLOTHES-V"/> <!--   words -->
+      <sem class="CLOTHES-adj"/> <!--   words -->
     </subclasses>
     <subclasses class="BUILDINGS/ROOMS">  <!-- Leksa-set -->
       <sem class="BUILDING"/> <!-- 70 words -->
@@ -97,12 +113,10 @@
       <sem class="PLANT"/> <!-- has 28 words -->
       <sem class="WEATHER"/>  <!-- weathersets have 27 words -->
       <sem class="WEATHER-PL"/>
-    </subclasses>
-    <subclasses class="TRAVELWORDS">  <!-- Leksa-set -->
-      <sem class="TRAVELLING"/>  <!-- 14 words -->
-      <sem class="VEHICLE"/> <!-- vehiclesets 21 words -->
-      <sem class="VEHICLE-PL"/>
-      <sem class="ROAD"/> <!-- 16 words -->
+      <sem class="WEATHER-V"/>
+      <sem class="NATURE-V"/>
+      <sem class="WEATHER-adj"/>
+      <sem class="NATURE-adj"/> <!--   words -->
     </subclasses>
     <subclasses class="LEISURETIME/AT_HOME">  <!-- Leksa-set -->
       <sem class="ARRANGEMENT"/> <!-- 19 words -->
@@ -111,6 +125,7 @@
       <sem class="SPORT"/> <!-- 2 words -->
       <sem class="SLIDE-TOOL"/> <!-- 5 words -->
       <sem class="TOY"/> <!-- 7 words -->
+      <sem class="LEISURETIME/AT_HOME-V"/> <!--   words -->
       <sem class="SHOW"/>  <!-- 15 words --> <!-- For Morfa: "Maid don geahčat?" -->
     </subclasses>
     <subclasses class="PLACES">  <!-- Leksa-set - 100 words-->
@@ -119,15 +134,22 @@
       <sem class="PLACE-STAYING"/>
       <sem class="PLACE-OTHER"/>
       <sem class="PLACE-LOCAL"/>
+      <sem class="TRAVELLING"/>  <!-- 14 words -->
+      <sem class="VEHICLE"/> <!-- vehiclesets 21 words -->
+      <sem class="VEHICLE-PL"/>
+      <sem class="ROAD"/> <!-- 16 words -->
+      <sem class="TRAVEL-V"/> <!--   words -->
     </subclasses>
     <subclasses class="LITERATURE">  <!-- Leksa-set, not good name -->
       <sem class="LANGUAGE"/>  <!-- 30 words -->
       <sem class="LANGUAGE-PART"/> 
       <sem class="TEXT"/>  <!-- 43 words -->
+      <sem class="ISSUE-adj"/>  <!-- 43 words -->
     </subclasses>
     <subclasses class="SCHOOL/EDUCATION">  <!-- Leksa-set, not good name -->
       <sem class="SCHOOL"/>  <!-- 43 words -->
       <sem class="EDUCATION"/> <!-- 24 words -->
+      <sem class="SCHOOL-V"/> <!--   words -->
     </subclasses>
         <subclasses class="ABSTRACTS">  <!-- Leksa-set,  -->
       <sem class="FEELING"/>  <!-- 14 words -->
@@ -136,6 +158,7 @@
       <sem class="ABSTRACT"/> <!-- 22 words -->
       <sem class="SOUND"/> <!-- 7 words -->
       <sem class="AMOUNT"/> <!-- 13 words -->
+      <sem class="ACTION-V"/> <!-- 13 words -->
     </subclasses>
         <subclasses class="WORK/ECONOMY/TOOLS">  <!-- Leksa-set,  -->
       <sem class="JOB"/>  <!-- 23 words -->
@@ -144,6 +167,7 @@
       <sem class="HANDICRAFTS-PL"/>  <!-- 2 words -->
       <sem class="TOOL"/> <!-- 13 words -->
       <sem class="HANDICRAFTS"/>  <!-- 22 words -->
+      <sem class="WORK/ECONOMY-V"/>  <!--   -->
     </subclasses>
 
 </lexicon>
