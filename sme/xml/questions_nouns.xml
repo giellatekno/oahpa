@@ -434,6 +434,73 @@
     </element>
      </answer>
   </q>
+ 
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
+  <q>
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV máidnasis</text>
+      <element type="SUBJ">
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+       <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<lemma>šaddat</lemma>
+      </element>
+   </question>
+    <answer> 
+      <text>(CLADV) SUBJ MAINV (máidnasis) (CLADV) N-ESS (máidnasis) (CLADV)</text>
+      <element type="N-ESS">
+	<grammar tag="N+Ess"/>
+	<sem class="MYTH"/>
+      </element>
+    </answer>
+     <answer> 
+      <text>(CLADV) SUBJ MAINV (máidnasis) (CLADV) N-ESS (máidnasis) (CLADV)</text>
+    <element type="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+    <element type="N-ESS">
+      <grammar tag="N+Ess"/>
+      <sem class="MYTH"/>
+    </element>
+     </answer>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
+  <q>
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV karneválas</text>
+      <element type="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<lemma>gárvodit</lemma>
+      </element>
+   </question>
+    <answer> 
+      <text>(CLADV) SUBJ MAINV (karneválas) (CLADV) N-ESS (karneválas) (CLADV)</text>
+      <element type="N-ESS">
+	<grammar tag="N+Ess"/>
+	<sem class="MYTH-HUMAN"/>
+      </element>
+    </answer>
+     <answer> 
+      <text>(CLADV) SUBJ MAINV (karneválas) (CLADV) N-ESS (karneválas) (CLADV)</text>
+    <element type="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+    <element type="N-ESS">
+      <grammar tag="N+Ess"/>
+      <sem class="MYTH-HUMAN"/>
+    </element>
+     </answer>
+  </q>
+
+
 
 
 </questions>
