@@ -1,10 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/lexicon.dtd'><?xml-stylesheet type="text/css" href="../../dtd/lexicon.css"?><!-- About semantical classes:
+These sets are for Morfa:
 ACTIVITY -  as a answer to "What do you do?" and it doesn´t need an Obj.
-MOVEMENT is ment for going from one place to anohter.
-VERBAL is all kind of verbal verbs.
+MOVEMENT is ment for going from one place to another.
+And then these sets are are included in the Leksa supersets: 
+VERBAL-V is all kind of verbal verbs.
 WEATHER-V about weather - most of them can only be used in Sg3
-AUX-set is quite big - it contains many verbs which can be followed by an Inf.
---><lexicon>
+ACTION-V
+ANIMAL-V - what animals do and we do to animals
+BODY-V
+CLOTHES-V
+EXPERIENCE-V
+EXPOSURE-V
+FOOD/DRINK-V
+HUMAN-V
+LEISURETIME/AT_HOME-V
+NATURE-V
+SCHOOL-V
+TRAVEL-V
+WEATHER-V
+WORK/ECONOMY-V
+AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
+-->
+<lexicon>
   <entry>
     <lemma>searvat</lemma>
 	<pos class="V"/>
@@ -16,7 +33,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class="ILLV"/>
     </valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -34,7 +51,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class="TV"/>
     </valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -85,10 +102,9 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class="TV"/>
     </valency>
     <semantics>
-      <sem class=""/>
     </semantics>    
     <stem class="trisyllabic"/>
-    <dialect class="HOME-V"/>
+    <dialect class=""/>
     <sources>
     </sources>
   </entry>
@@ -136,7 +152,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class="TV"/>
     </valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -153,7 +169,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class="TV"/>
     </valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -170,10 +186,9 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class="TV"/>
     </valency>
     <semantics>
-      <sem class=""/>
     </semantics>    
     <stem class="trisyllabic"/>
-    <dialect class="INTERCOURSE-V"/>
+    <dialect class=""/>
     <sources>
     </sources>
   </entry>
@@ -187,8 +202,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class="IV"/>
     </valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -222,7 +236,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class="IV"/>
     </valency>
     <semantics>
-      <sem class="ACTION-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -240,7 +254,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class="TV"/>
     </valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -274,8 +288,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class="IV"/>
     </valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -293,8 +306,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -315,7 +327,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="POSITION-MOTION-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -334,7 +346,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="POSITION-MOTION-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -373,8 +385,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -394,8 +405,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-       <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -415,7 +426,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -436,7 +447,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -456,8 +467,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -478,7 +489,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -501,7 +512,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
           <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="n"/>
@@ -522,7 +533,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
           <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="o"/>
@@ -543,7 +554,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -565,9 +576,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -589,8 +599,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
-      <sem class="MOVE-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -609,7 +618,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -629,10 +638,10 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class=""/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="contracted"/>
-    <dialect class="WORK-V"/>
+    <dialect class=""/>
     <sources>
       <book name="oaidnalit"/>
     </sources>
@@ -648,7 +657,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -689,7 +698,6 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class=""/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -729,7 +737,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -748,7 +756,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -769,8 +777,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -790,8 +797,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -812,7 +818,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -833,7 +839,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -853,9 +859,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -876,8 +881,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -919,7 +923,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="EXPOSURE-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -940,7 +944,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="CLOTHES-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -981,7 +985,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="ACTION-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1002,7 +1006,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1042,7 +1046,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1061,7 +1065,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1080,8 +1084,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1100,8 +1103,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1120,7 +1122,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1142,9 +1144,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1163,8 +1164,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="ANIMAL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1186,7 +1187,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1207,7 +1208,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1226,7 +1227,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1268,7 +1269,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="ACTION-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1310,7 +1311,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1368,7 +1369,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="CLOTHES-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1428,8 +1429,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1450,7 +1450,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="EXPOSURE-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1469,7 +1469,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1511,8 +1511,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1554,7 +1553,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1678,7 +1677,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="EXPOSURE-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1698,8 +1697,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class="COMV"/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="o"/>
@@ -1719,8 +1717,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="COMV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="n"/>
@@ -1761,7 +1758,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1782,7 +1779,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1820,7 +1817,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -1858,8 +1855,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class="TV"/>
     <val class="LOC"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1880,7 +1876,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1902,7 +1898,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1922,7 +1918,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1943,7 +1939,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="SCHOOL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1964,8 +1960,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -1984,7 +1980,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     </valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2004,7 +2000,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2026,7 +2022,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2047,7 +2043,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2067,7 +2063,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2105,7 +2101,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="EXPOSURE-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2186,7 +2182,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2205,7 +2201,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="CLOTHES-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -2224,7 +2220,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="CLOTHES-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2265,7 +2261,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2285,8 +2281,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="COMV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2305,7 +2300,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2344,7 +2339,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2383,7 +2378,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2402,7 +2397,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2441,8 +2436,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2483,7 +2478,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2524,8 +2519,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2545,8 +2539,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2625,8 +2619,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2649,7 +2642,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2670,7 +2663,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2692,7 +2685,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2712,7 +2705,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2752,7 +2745,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="ACTION-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2814,7 +2807,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2873,8 +2866,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2896,7 +2888,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2916,7 +2908,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2937,7 +2929,6 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2957,7 +2948,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -2978,7 +2969,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="o"/>
@@ -3018,7 +3009,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3057,7 +3048,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3096,7 +3087,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="ACTION-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3137,8 +3128,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+        <sem class="SCHOOL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3299,7 +3290,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3340,7 +3331,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="ACTION-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3379,7 +3370,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3420,7 +3411,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="n"/>
@@ -3461,7 +3452,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="ACTION-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3480,7 +3471,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3500,8 +3491,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3521,7 +3511,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3560,7 +3550,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3581,7 +3571,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3600,7 +3590,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3662,7 +3652,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="n"/>
@@ -3681,7 +3671,6 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class=""/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3703,7 +3692,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3765,8 +3754,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3786,8 +3774,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="NATURE-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3847,8 +3835,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3871,7 +3858,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3930,8 +3917,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -3971,8 +3957,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="ANIMAL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="o"/>
@@ -3992,8 +3978,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="SCHOOL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4014,7 +4000,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4033,8 +4019,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="ACTIVITY"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -4053,8 +4039,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4073,8 +4059,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="ANIMAL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4093,8 +4079,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="COMV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4114,8 +4099,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="WORK/ECONOMY-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4134,7 +4119,6 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class=""/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4154,7 +4138,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="n"/>
@@ -4233,7 +4217,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4254,7 +4238,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4273,7 +4257,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="ACTION-V"/>
+      <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4292,7 +4276,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4330,7 +4314,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4350,8 +4334,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4372,8 +4355,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4470,7 +4452,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4508,8 +4490,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="WORK/ECONOMY-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4547,7 +4529,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -4587,7 +4569,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4608,7 +4590,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
+      <sem class="SCHOOL-V"/>
+      <sem class="ACTIVITY"/>
       <sem class="EXPERIENCE-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
@@ -4630,8 +4613,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4652,8 +4635,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4675,7 +4657,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4696,7 +4678,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -4715,7 +4697,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="ACTION-V"/>
+      <sem class="CLOTHES-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -4734,8 +4716,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
+      <sem class="TRAVEL-V"/>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4756,7 +4738,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4777,7 +4759,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4798,7 +4780,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4818,7 +4800,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4837,8 +4819,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -4879,7 +4860,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="ACTION-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="n"/>
@@ -4899,7 +4880,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="ACTION-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="n"/>
@@ -4919,7 +4900,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="ACTION-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="o"/>
@@ -4940,7 +4921,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="ACTION-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class="o"/>
@@ -4960,8 +4941,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5000,7 +4980,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5042,7 +5022,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5064,8 +5044,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5084,7 +5063,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5103,8 +5082,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5125,8 +5103,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5147,7 +5124,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5188,7 +5165,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5208,7 +5185,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5229,7 +5206,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5250,7 +5227,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5289,7 +5266,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5329,7 +5306,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5348,7 +5325,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5367,8 +5344,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="CLOTHES-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5389,8 +5366,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5409,8 +5386,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="SCHOOL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5430,7 +5407,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5449,8 +5426,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="NATURE-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5471,7 +5448,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5492,7 +5469,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5513,7 +5490,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5534,8 +5511,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5554,8 +5530,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="COMV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5573,8 +5548,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="SCHOOL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -5594,7 +5569,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5674,8 +5649,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="ACTION-V"/>
+      <sem class="ACTIVITY"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5695,8 +5670,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5715,7 +5690,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5754,8 +5729,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="ACTIVITY"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5776,8 +5751,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5798,7 +5773,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5858,7 +5833,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5898,7 +5873,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     </valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5908,7 +5883,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     </sources>
   </entry>
   <entry>
-    <lemma>johtalit</lemma>
+    <lemma>joksatalit</lemma>
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å ferdes (kontinuerlig)</tr>
@@ -5918,7 +5893,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5937,7 +5912,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -5959,7 +5934,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -5979,7 +5954,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6018,7 +5993,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     </valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6057,7 +6032,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6115,8 +6090,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6155,8 +6130,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="COMV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class="o"/>
@@ -6176,7 +6150,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6197,7 +6171,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6216,7 +6190,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6237,7 +6211,6 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6256,8 +6229,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6277,7 +6250,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6296,8 +6269,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6316,8 +6288,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="ANIMAL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6337,8 +6309,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6399,7 +6370,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6458,8 +6429,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="SCHOOL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6479,7 +6450,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6518,7 +6489,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6538,8 +6509,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6559,7 +6529,6 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6578,7 +6547,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6597,7 +6566,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class="n"/>
@@ -6617,7 +6586,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6637,7 +6606,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6657,7 +6626,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6677,7 +6646,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="SCHOOL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6696,7 +6665,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6716,7 +6685,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6793,7 +6762,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     </valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6832,7 +6801,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -6852,8 +6821,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6874,7 +6842,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6951,7 +6919,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6970,7 +6938,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -6988,7 +6956,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7007,7 +6975,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7026,7 +6994,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="CLOTHES-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7085,7 +7053,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7104,8 +7072,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="WORK/ECONOMY-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7125,8 +7093,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="ACTIVITY"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class="o"/>
@@ -7166,7 +7134,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7185,7 +7153,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7206,8 +7174,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class="n"/>
@@ -7228,8 +7195,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7270,8 +7236,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7290,8 +7255,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     </valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7368,8 +7332,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     </valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7388,7 +7351,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7407,7 +7370,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7446,7 +7409,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7465,7 +7428,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7485,7 +7448,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="ACTION-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7504,7 +7467,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="EXPOSURE-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7567,8 +7530,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class="o"/>
@@ -7627,7 +7589,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7667,7 +7629,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7687,7 +7649,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7708,7 +7670,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7726,7 +7688,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7747,8 +7709,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7768,7 +7729,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7788,7 +7749,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7808,7 +7769,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -7848,7 +7809,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
       <sem class="MOVEMENT"/>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7905,7 +7866,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7924,8 +7885,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+        <sem class="FOOD/DRINK-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7945,8 +7906,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -7985,7 +7945,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -8023,7 +7983,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -8044,8 +8004,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="ANIMAL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -8083,7 +8043,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="ACTION-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -8102,8 +8062,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="SCHOOL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -8143,7 +8103,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -8182,7 +8142,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="ACTION-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -8221,8 +8181,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -8241,7 +8200,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -8283,7 +8242,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -8322,8 +8281,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -8344,7 +8302,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8365,8 +8323,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="SCHOOL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8443,7 +8401,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     </valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8482,7 +8440,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8501,7 +8459,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8520,7 +8478,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8560,7 +8518,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8579,7 +8537,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8599,7 +8557,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8620,8 +8578,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8640,7 +8597,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="AUX"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8660,8 +8617,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+        <sem class="LEISURETIME/AT_HOME-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8681,7 +8638,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8779,7 +8736,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8799,7 +8756,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8837,7 +8794,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8857,7 +8814,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8898,8 +8855,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="ANIMAL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8919,7 +8876,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8958,7 +8915,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="AUX"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -8979,7 +8936,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9018,8 +8975,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9057,7 +9013,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -9076,7 +9032,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -9114,7 +9070,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="AUX"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9135,7 +9091,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9153,7 +9109,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class="n"/>
@@ -9174,8 +9130,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="AUX"/>
-      <sem class="HOME-V"/>
+      <sem class="AUX-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9214,7 +9169,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="trisyllabic"/>
     <dialect class=""/>
@@ -9234,7 +9189,6 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9254,7 +9208,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9275,7 +9229,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class="o"/>
@@ -9295,7 +9249,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="TV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
     <dialect class=""/>
@@ -9314,10 +9268,10 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class=""/>
+      <sem class="BODY-V"/>
     </semantics>    
     <stem class="contracted"/>
-    <dialect class="MOVE-V"/>
+    <dialect class=""/>
     <sources>
     </sources>
   </entry>
@@ -9333,7 +9287,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="MOVE-V"/>
+      <sem class="ANIMAL-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9353,7 +9307,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9375,8 +9329,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-       <sem class="VERBAL"/>
-      <sem class="INTERCOURSE-V"/>
+       <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9394,7 +9347,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="FOOD/DRINK-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9413,7 +9366,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="ACTION-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9455,8 +9408,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="SCHOOL-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9495,7 +9448,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="ACTION-V"/>
+      <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9516,8 +9469,8 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-        <sem class="ACTIVITY"/>
-      <sem class="HOME-V"/>
+      <sem class="WORK/ECONOMY-V"/>
+      <sem class="ACTIVITY"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9538,7 +9491,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="VERBAL-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9558,7 +9511,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9578,7 +9531,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="HOME-V"/>
+      <sem class="LEISURETIME/AT_HOME-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9637,7 +9590,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-      <sem class="INTERCOURSE-V"/>
+      <sem class="HUMAN-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9676,7 +9629,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
     <val class="IV"/></valency>
     <semantics>
         <sem class="ACTIVITY"/>
-      <sem class="WORK-V"/>
+      <sem class="NATURE-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
@@ -9695,7 +9648,7 @@ AUX-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="IV"/></valency>
     <semantics>
-      <sem class="MOVE-V"/>
+      <sem class="TRAVEL-V"/>
     </semantics>    
     <stem class="contracted"/>
     <dialect class=""/>
