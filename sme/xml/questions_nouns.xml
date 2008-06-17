@@ -223,6 +223,29 @@
       </element>
     </answer>
   </q>
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron : -->   
+  <q>
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element type="SUBJ">
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="FAMILY"/>
+      </element>
+      <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<lemma>niegadit</lemma>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) (SUBJ) MAINV (CLADV) N-ACC (CLADV)</text>
+      <element type="N-ACC">
+	<sem class="OBJECT"/>
+      </element>
+    </answer>
+  </q>
+
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron : -->     
   <q>
