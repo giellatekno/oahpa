@@ -1,0 +1,30 @@
+!!!NUMERAL - DRILL:
+
+1. Machine gives an arabic, the user writes it with letters.
+
+* M: 28
+* U: guoktelogigávcci
+
+2. Machine gives a numeral written with letters, the user writes the arabic.
+
+* M: guoktelogigávcci
+* U: 28
+
+The same should be done for clock (time) practice also.
+
+For the numeral drill, the programs are __sme-num.fst__, etc. Now, we 
+have clock transducers for sme and smj also (and in principle for sma, 
+but that one is not checked). They should be incorporated just as the 
+number games. The files are:
+
+* gt/sme/bin/clock-sme.fst
+* gt/sme/bin/iclock-sme.fst
+* gt/sme/bin/clock-smj.fst
+* gt/sme/bin/iclock-smj.fst
+
+The files are compiled via the standard makefile, or via the command 
+''make iclock TARGET=sme'' etc.
+
+
+
+
