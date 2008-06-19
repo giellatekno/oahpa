@@ -12,6 +12,7 @@ urlpatterns = patterns('',
     (r'^oahpa/morfa_a/$', 'oahpa.drill.views.mgame_a'),
     (r'^oahpa/leksa/$', 'oahpa.drill.views.quizz'),
     (r'^oahpa/logut/$', 'oahpa.drill.views.numgame'),
+    (r'^oahpa/numra/$', 'oahpa.drill.views.numgame'),
     (r'^oahpa/qa/$', 'oahpa.drill.views.qagame'), 
         
 
