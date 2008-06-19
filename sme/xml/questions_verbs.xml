@@ -20,7 +20,7 @@
       </element>
     </question>
     <answer> 
-      <text>(CLADV) (odne) (SUBJ) MAINV (odne) (CLADV)</text>
+      <text>(CLADV) (odne) ANSWERSUBJECT MAINV (odne) (CLADV)</text>
       <element type="MAINV">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Ind+Prs+Person-Number"/>
@@ -113,7 +113,7 @@
       </element>
     </question>
     <answer> 
-      <text>(CLADV) (ikte) (SUBJ) MAINV (ikte) (CLADV)</text>
+      <text>(CLADV) (ikte) ANSWERSUBJECT MAINV (ikte) (CLADV)</text>
       <element type="MAINV">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Ind+Prt+Person-Number"/>
@@ -206,7 +206,7 @@
       </element>
     </question>
     <answer> 
-      <text>(CLADV) (luomus) (SUBJ) MAINV (odne) (luomus)</text>
+      <text>(CLADV) (luomus) ANSWERSUBJECT MAINV (odne) (luomus)</text>
       <element type="MAINV">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Cond+Prs+Person-Number"/>
@@ -292,6 +292,7 @@
 
 <q>
     <qtype>V-POT</qtype>
+    <agreement>SUBJ/V-POT</agreement>
   <question>
     <text>MAINV go SUBJ</text>
     <element type="MAINV">
@@ -444,6 +445,7 @@
 <!-- Both Morfa and QA: -->
   <q>
     <qtype>V-GO</qtype>
+    <agreement>ANSWERSUBJECT/NEG</agreement>
     <question>
       <text>MAINV go SUBJ ikte</text>
       <element type="MAINV">
@@ -466,7 +468,7 @@
       </element>
     </answer>
     <answer> 
-      <text>(ikte) (SUBJ) NEG PRFPRC (ikte) (CLADV)</text>
+      <text>(ikte) ANSWERSUBJECT NEG PRFPRC (ikte) (CLADV)</text>
       <element type="SUBJ">
 	<grammar pos="Pron"/>
       </element>
@@ -483,6 +485,7 @@
 <!-- Both Morfa and QA: -->
 <q>
   <qtype>V-GO</qtype>
+  <agreement>ANSWERSUBJECT/NEG</agreement>
   <question>
     <text>MAINV go SUBJ luomus</text>
     <element type="MAINV">
@@ -505,7 +508,7 @@
       </element>
     </answer>
     <answer> 
-      <text>(luomus) (SUBJ) NEG CONNEG (luomus) (CLADV)</text>
+      <text>(luomus) ANSWERSUBJECT NEG CONNEG (luomus) (CLADV)</text>
       <element type="NEG">
 	<grammar tag="Neg+Ind+Person-Number"/>
       </element>
