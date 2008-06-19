@@ -1,0 +1,448 @@
+!!!Meeting notes, Pedagogical programs, 080619
+
+
+!!Participants
+
+Biret Ánne, Lene, Saara, Trond.
+
+
+
+!!Identical lemmas
+
+Some words have identical lemma forms, but different inflection. How should they be marked?
+
+bassi-prof vs bassi-time
+bassit			basit
+
+{{{
+  <entry id="bassi_actor">
+    <lemma>bassi</lemma>
+	<pos class="N"/>
+    <translations>
+      <tr xml:lang="nob">reingjører</tr>
+      <tr xml:lang="nob">rengjøringsassistent</tr>
+      <tr xml:lang="nob">vasker</tr>
+    </translations>
+    <semantics>
+      <sem class="PROFESSION"/>
+    </semantics>
+    <stem class="bisyllabic" diphthong="no" gradation="no" rime="i"/>
+    <dialect class=""/>
+    <sources>
+    </sources>
+    <forms>
+    <form tag="N+Sg+Gen">bassi</form>
+    </forms>
+  </entry>
+
+  <entry id="bassi_time">
+    <lemma>bassi</lemma>
+	<pos class="N"/>
+    <translations>
+      <tr xml:lang="nob">helligdag</tr>
+    </translations>
+    <semantics>
+      <sem class="TIME"/>
+    </semantics>
+    <stem class="bisyllabic" diphthong="no" gradation="yes" rime="i"/>
+    <dialect class=""/>
+    <sources>
+    </sources>
+    <forms>
+    <form tag="N+Sg+Gen">basi</form>
+    </forms>
+  </entry>
+}}}
+
+In the questions, we use lemma as id, cf:
+
+
+  <q>
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element type="SUBJ">
+        <grammar pos="Pron"/>
+      </element>
+      <element type="MAINV">
+        <grammar tag="V+Ind+Tense+Person-Number"/>
+        <id>liikot</id>
+      </element>
+    </question>
+    <answer>
+      <text>(CLADV) (SUBJ) MAINV (CLADV) N-ILL (CLADV)</text>
+      <element type="N-ILL">
+        <sem class="OBJECT"/>
+        <grammar pos="N"/>
+      </element>
+    </answer>
+  </q>
+
+
+So, instead of referring to <lemma>, we refer to <id>. 
+
+The questions_nouns.xml etc. documents will be changed from <lemma> 
+to <id>, and conversely for the relevant dtds (Saara).
+
+{{{
+        <grammar tag="V+Ind+Tense+Person-Number"/>
+        <lemma>liikot</lemma>
+}}}
+
+Solution:
+
+{{{
+        <grammar tag="V+Ind+Tense+Person-Number"/>
+        <id>liikot</id>
+}}}
+
+Saara looks into this.
+
+But this solution works only as long as we are within the ped universe.
+When we take words from the big lexicon there is no way to refer to 
+identical entries. Here both are __bassi__ and not ''bassi_actor'' and 
+''bassi_time''. When we analyse the answers, and when we go to isme.fst, 
+we do not have a way to distinguish between the two bassis in isme.fst:
+
+{{{
+bassi BASSI ;        ! II-I cg Acc: bassi+N+Sg+Acc:basi
+bassi:bassi¤ ACTOR ; ! no cg Acc: bassi+N+Sg+Acc:bassi
+}}}
+
+The answer is that we store our generated forms, but use sme.fst only for
+analysis. So, generation is not a problem.
+
+
+
+!!Reference to grammar in questions
+
+{{{
+<q>
+<qtype>N-ILL</qtype>
+  <question>
+      <text>Masa SUBJ MAINV</text>
+      <element type="SUBJ">
+        <grammar pos="Pron"/>
+      </element>
+      <element type="MAINV">
+        <grammar tag="V+Ind+Tense+Person-Number"/>
+        <lemma>liikot</lemma>
+      </element>
+    </question>
+    <answer>
+      <text>(CLADV) (SUBJ) MAINV (CLADV) N-ILL (CLADV)</text>
+      <element type="N-ILL">
+	<sem class="OBJECT"/>
+        <grammar pos="N"/>
+      </element>
+    </answer>
+  </q>
+  
+  <q>
+    <qtype>V-POT</qtype>
+  <question>
+    <text>MAINV go SUBJ</text>
+    <element type="MAINV">
+      <grammar tag="V+Ind+Prs+Person-Number"/>
+      <sem class="ACTIVITY"/>
+    </element>
+    <element type="SUBJ">
+      <sem class="HUMAN"/>
+      <grammar pos="N"/>
+    </element>
+  </question>
+  <answer>
+    <text>In dieđe MAINV go </text>
+      <element type="MAINV">
+        <grammar tag="V+Pot+1sg"/>
+      </element>
+    </answer>
+  </q>
+
+<q>
+  <qtype>V-GO</qtype>
+  <question>
+    <text>MAINV go SUBJ luomus</text>
+    <element type="MAINV">
+      <grammar tag="V+Cond+Prs+Person-Number"/>
+      <sem class="ACTIVITY"/>
+    </element>
+    <element type="SUBJ">
+      <sem class="HUMAN"/>
+      <grammar pos="N"/>
+    </element>
+  </question>
+  <answer>
+    <text>(CLADV) SUBJ MAINV (luomus) (CLADV)</text>
+  </answer>
+    <answer>
+      <text>(CLADV) SUBJ MAINV (luomus) (CLADV)</text>
+      <element type="SUBJ">
+        <lemma>son</lemma>
+        <grammar tag="Pron+Pers+Person-Number"/>
+      </element>
+    </answer>
+    <answer>
+	  <type>NEG</type>
+	  <type>CONNEG</type>
+      <text>(luomus) (SUBJ) NEG CONNEG (luomus) (CLADV)</text>
+      <element type="NEG">
+        <grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element type="CONNEG">
+        <grammar tag="V+Cond+Prs+ConNeg"/>
+        <sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+}}}
+
+
+The <type> element means that when this answer in the contextual Morfa game 
+is presented to the user, the NEG and CONNEG should be left empty.
+
+If <type> is left unspecified, then the left-out element is the default element
+for each question-type.
+
+PN for the verb in the answer inherited from SUBJ in question.
+The PN is given to the most prominent verb form of this ordered list:
+
+* NEG > AUX > MAINV
+
+
+For imperative we need to give contextual clues to the use, to trigger
+an imperative form:
+
+{{{
+  <q>
+    <qtype>V-IMPRT</qtype>
+   <question>
+      <text>SUBJ MAINV MAINV2</text>
+      <element type="SUBJ">
+	<grammar tag="Pron+Pers+Sg1"/>
+      </element>
+      <element type="MAINV">
+	<lemma>áigut</lemma> 
+	<grammar tag="V+Cond+Prs+Sg1"/>
+      </element>
+       <element type="MAINV2">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Inf"/>
+      </element>
+   </question>
+    <answer> 
+      <text>MAINV2</text>
+      <element type="MAINV2">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Imprt+Prs+Sg2"/>
+      </element>
+    </answer>
+  </q>
+}}}
+
+We need to distinguish between inclusive and exclusive we for the imperative:
+
+Here are the sets:
+
+* Sihke don ja mun MAINV MAINV2 - includes the user
+* Sihke don ja mii MAINV MAINV2 - includes the user
+* Sihke son ja mun MAINV MAINV2 - excludes the user
+* Sihke son ja mii MAINV MAINV2 - excludes the user
+* Sihke don ja son MAINV MAINV2 - excludes the machine
+* Sihke don ja sii MAINV MAINV2 - excludes the machine
+
+For imperative, we need to force the student to use 1Du and 1Pl imperatives:
+
+* M: We should eat (Better: you and I, etc.)
+* Ua: Eat-Imp-1Du
+* Ub: eat-Imp-2Du
+
+
+Since __we__ is ambiguous in non-Polynesian languages, we should consider 
+acepting both first and second person answers, at least in Sahka, perhaps also
+in Vasta. In contextual Morfa we can always specify.
+
+Saara: Let us not put this in the xml file. Perhaps we will have to take
+this into account in Sahka.
+
+We will need marking of which elements to leave blank, Saara will look at it.
+
+!!Noun questions
+
+Essive
+
+Hello
+
+In the question of whether the SUBJ should be marked as optional or
+obligatory in the answers, we have encountered a problem. Grammatically, the
+third person subject is always obligatory, whereas the first and second
+person are optional. We cannot differentiate between first and second person
+optional subjects on the one hand, and third person obligatory subjects on
+the other hand, because number and person are merged in the pronouns and we
+cannot access just 1st and 2nd person. This is not a problem for Morfa,
+since the first answer option can show the subject as obligatory regardless
+of person.
+
+If we have the next answer with an optional subject, this will apply to all
+persons, not just first and second person. For the QA program, called Vasta
+from now on, this is a problem because users can generate subject-less
+sentences that are ungrammatical, without being told so.
+
+We want to be able to allow optional subjects for 1st and 2nd person, but
+not for 3rd. How could this be done most efficiently?
+
+* Q: Maid SUBJ MAINV [oaidnit]
+* A: (CLADV) (SUBJ) MAINV N-ACC (CLADV)
+
+* Q: Gosa SUBJ MAINV [mannat]
+* A: (CLADV) (SUBJ) MAINV N-ILL
+
+Could the pattern be the start of the question?
+
+* ANSWERSTART: (CLADV) (SUBJ) vs. (CLADV) SUBJ
+
+Or should it concern just the subject?
+
+* ANSWERSUBJECT: SUBJ vs. (SUBJ)
+
+In the second case, we could have two choices for the subject in
+questions_defaults.xml (I have added dual, although I don't know if it
+patterns this way):
+
+{{{
+  <part name="ANSWERSUBJECT">
+     <answer>
+     <text>SUBJ</text>
+     <element type="SUBJ">
+        <grammar tag="N+Sg+Nom"/>
+        <grammar tag="N+Pl+Nom"/>
+        <grammar tag="Pron+Pers+Sg3+Nom"/>
+        <grammar tag="Pron+Pers+Pl3+Nom"/>
+        <grammar tag="Pron+Pers+Du3+Nom"/>
+      </element>
+    </answer>
+    <answer>
+     <text>(SUBJ)</text>
+     <element type="SUBJ">
+        <grammar tag="Pron+Pers+Sg1+Nom"/>
+        <grammar tag="Pron+Pers+Sg2+Nom"/>
+        <grammar tag="Pron+Pers+Pl1+Nom"/>
+        <grammar tag="Pron+Pers+Pl2+Nom"/>
+        <grammar tag="Pron+Pers+Du1+Nom"/>
+        <grammar tag="Pron+Pers+Du2+Nom"/>
+      </element>
+    </answer>
+  </part>
+}}}
+
+Now we could replace the start in the answers in questions_nouns.xml like
+this:
+
+* (CLADV) (SUBJ) MAINV N-ACC (CLADV) -->
+* (CLADV) ANSWERSUBJECT MAINV N-ACC (CLADV)
+
+
+{{{
+  <q>
+    <qtype>N-ESS</qtype>
+    <agreement>SUBJ/N-ESS</agreement> 
+    <question>
+      <text>Manin SUBJ MAINV PLACE</text>
+      <element type="SUBJ">
+	<grammar tag="N+Sg+Nom"/>       <!--example Number inherited from here-->
+	<sem class="FAMILY"/> 
+      </element>
+      <element type="PLACE">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE-NAME"/>
+      </element>
+       <element type="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>bargat</id>
+      </element>
+   </question>
+    <answer> 
+      <text>(CLADV) SUBJ MAINV (PLACE) (CLADV) N-ESS (PLACE) (CLADV)</text>
+      <element type="N-ESS">
+	<grammar tag="N+Ess"/>
+	<sem class="PROFESSION"/>  <!--The example word should agree with the SUBJ in number-->
+      </element>
+    </answer>
+     <answer> 
+      <text>(CLADV) SUBJ MAINV (PLACE) (CLADV) N-ESS (PLACE) (CLADV)</text>
+    <element type="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+    <element type="N-ESS">
+     <grammar tag="N+Ess"/>
+      <sem class="PROFESSION"/>
+    </element>
+     </answer>
+  </q>
+}}}
+
+{{{
+<q>
+    <qtype>N-COM</qtype>
+    <agreement>INTERR/N-COM</agreement>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element type="INTERR">
+        <grammar tag="Pron+Interr+Number+Com"/>
+        <lemma>mii</lemma>
+      </element>
+      <element type="SUBJ">
+        <grammar pos="Pron"/>
+      </element>
+       <element type="MAINV">
+        <grammar tag="V+Ind+Tense+Person-Number"/>
+        <lemma>čierastit</lemma>
+      </element>
+   </question>
+    <answer>
+      <text>(CLADV) (SUBJ) MAINV (CLADV) N-COM (CLADV)</text>
+      <element type="N-COM">
+        <sem class="SLIDE-TOOL"/>
+      </element>
+    </answer>
+  </q>
+}}}
+
+So, the conclusion is to specify the agreement in a separate xml entity, above
+as following the <qtype>.
+
+!!Place names excluded from comitative and plural forms and essive
+
+The placenames should not be put in comitative, essive or in plural, in the exercises.
+
+TODO: Put it in a Bugzilla error, to remind Saara about it.
+
+
+!!Vasta
+
+Saara has questions, but will have to code more before they can be formulated. 
+We take them in the next meeting.
+
+!!Game names
+
+The numeral games should be called __Numra__. We have published __Logut__, so
+we would like to keep a working link telling it is __Numra__ now.
+
+We will also need one more name, for the clock (but not today).
+
+
+!!Work until next meeting
+
+* Saara: Coding Vasta, jotting dowm open issues.
+* Lene/BA: 
+** Put ANSWERSUBJECT and agreementinformation into the question-files 
+** Lemma-id into the nouns.xml
+* Trond: Documentation
+
+
+!!Next meeting
+
+* Tuesday afternoon, 13.00 Norw time.
+
+
+
