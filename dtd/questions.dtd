@@ -1,0 +1,156 @@
+<!-- question.dtd							  -->
+<!-- DTD for question templates used in OAHPA -->
+
+<!-- The dtd as it is now is strictly descriptive, the attlists are	  -->
+<!-- collected as follows:											  -->
+<!-- cat questions_* | grep ' class' | cut -d"\"" -f2 | sort -u | see -->
+
+
+<!ELEMENT questions (q+)>
+
+<!ELEMENT q (qtype, question, answer)>
+
+<!ELEMENT qtype (#PCDATA)>
+
+<!ELEMENT question (text, element+)>
+
+<!ELEMENT text (#PCDATA)>
+
+<!ELEMENT element (grammar?, id?, sem?, )>
+<!ATTLIST element
+    type ( CONNEG
+         | INTERR
+         | MAINV
+         | MAINV2
+         | N-ACC
+         | N-COM
+         | N-ESS
+         | N-GEN
+         | N-ILL
+         | N-LOC
+         | NEG
+         | NOUN
+         | NUM-ATTR
+         | OBJ
+         | PLACE
+         | PRED
+         | PREDCOMP
+         | PREDSUP
+         | PRFPRC
+         | SUBJ
+         | V-POT
+         ) #IMPLIED
+>
+
+<!ELEMENT grammar EMPTY >
+<!ATTLIST grammar
+    pos ( A+Number+Nom
+        | N
+        | Pron
+        ) #IMPLIED
+>    
+<!ATTLIST grammar
+	tag ( A+Attr
+        | A+Comp+Number+Nom
+        | A+Superl+Number+Nom
+        | HUMAN
+        | N
+        | N+Acc+Number
+        | N+Ess
+        | N+Num+Sg+Acc
+        | N+Num+Sg+Com
+        | N+Num+Sg+Gen
+        | N+Num+Sg+Ill
+        | N+Num+Sg+Loc
+        | N+Num+Sg+Nom
+        | N+Number+Loc
+        | N+Number+Nom
+        | N+Pl+Acc
+        | N+Pl+Ill
+        | N+Pl+Loc
+        | N+Pl+Nom
+        | N+Sg+Acc
+        | N+Sg+Com
+        | N+Sg+Gen
+        | N+Sg+Ill
+        | N+Sg+Loc
+        | N+Sg+Nom
+        | Neg+Ind+Person-Number
+        | Num+Ess
+        | Num+Pl+Acc
+        | Num+Pl+Gen
+        | Num+Sg+Acc
+        | Num+Sg+Com
+        | Num+Sg+Gen
+        | Pron+Interr+Number+Acc
+        | Pron+Interr+Number+Com
+        | Pron+Interr+Number+Gen
+        | Pron+Interr+Number+Ill
+        | Pron+Interr+Number+Loc
+        | Pron+Pers+Du1
+        | Pron+Pers+Du3+Nom
+        | Pron+Pers+Person-Number
+        | Pron+Pers+Person-Number+Nom
+        | Pron+Pers+Pl1+Nom
+        | Pron+Pers+Sg1
+        | Pron+Pers+mun+Sg1
+        | Pron+Pers+mun+Sg1+Nom
+        | Pron+Person-Number+Nom
+        | Pron+son+Person-Number+Nom
+        | V+Cond+Prs+ConNeg
+        | V+Cond+Prs+Du1
+        | V+Cond+Prs+Du3
+        | V+Cond+Prs+Person-Number
+        | V+Cond+Prs+Pl1
+        | V+Cond+Prs+Sg1
+        | V+Imprt+Prs+Du1
+        | V+Imprt+Prs+Du2
+        | V+Imprt+Prs+Pl1
+        | V+Imprt+Prs+Pl2
+        | V+Imprt+Prs+Sg2
+        | V+Ind+Person-Number
+        | V+Ind+Prs+Du3
+        | V+Ind+Prs+Person-Number
+        | V+Ind+Prs+Sg2
+        | V+Ind+Prt+Du3
+        | V+Ind+Prt+Person-Number
+        | V+Ind+Tense+Person-Number
+        | V+Ind+Tense+Pl3
+        | V+Ind+Tense+Sg2
+        | V+Inf
+        | V+Pot+Person-Number
+        | V+PrfPrc
+	    ) #IMPLIED
+>
+	      
+<!ELEMENT id (#PCDATA)>
+
+<!ELEMENT sem EMPTY >
+<!ATTLIST sem 
+    class ( ACTIVITY
+          | ANIMAL
+          | ARRANGEMENT-PL
+          | BUILDING
+          | CLOTHES-adj
+          | CLOTHING
+          | CLOTHING-PL
+          | COLL-NUM
+          | COMV
+          | FAMILY
+          | HUMAN
+          | HUMAN-adj
+          | MYTH
+          | MYTH-HUMAN
+          | OBJECT
+          | PLACE
+          | PLACE-NAME
+          | PROFESSION
+          | SLIDE-TOOL
+          | TIME-POINT-GEN
+          | VEHICLE
+          ) #IMPLIED 
+>
+
+<!ELEMENT answer (text, element+)>
+
+
