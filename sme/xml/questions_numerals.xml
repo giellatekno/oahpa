@@ -24,7 +24,7 @@
       </element>
     </question>
     <answer> 
-      <text>(SUBJ) MAINV MAINV2 NUM-ATTR NOUN</text>
+      <text>ANSWERSUBJECT MAINV MAINV2 NUM-ATTR NOUN</text>
     <element type="SUBJ">    
 	<grammar tag="Pron+Pers+mun+Sg1"/>         
 	</element>
@@ -37,7 +37,7 @@
 	</element>
     </answer>
     <answer> 
-      <text>(SUBJ) MAINV MAINV2 NUM-ATTR NOUN</text>
+      <text>ANSWERSUBJECT MAINV MAINV2 NUM-ATTR NOUN</text>
     <element type="SUBJ">    
 	<grammar tag="Pron+Pers+mun+Sg1"/>         
 	</element>
@@ -61,7 +61,7 @@
       </element>
     </question>
     <answer> 
-      <text>(SUBJ) MAINV MAINV2 NUM-ATTR NOUN</text>
+      <text>ANSWERSUBJECT MAINV NUM-ATTR NOUN</text>
     <element type="SUBJ">    
 	<grammar tag="Pron+Pers+mun+Sg1"/>         
 	</element>
@@ -247,7 +247,7 @@
 	</element>
     </question>
     <answer> 
-      <text>SUBJ MAINV NUM-ATTR NOUN</text>
+      <text>ANSWERSUBJECT MAINV NUM-ATTR NOUN</text>
       <element type="NUM-ATTR">    
 	<grammar tag="Num+Sg+Com"/>         
 	</element>
@@ -329,7 +329,7 @@
 	</element>
     </question>
     <answer> 
-      <text>(SUBJ) MAINV OBJ</text>
+      <text>ANSWERSUBJECT MAINV OBJ</text>
       <element type="SUBJ">    
 	<grammar tag="Pron+Pers+mun+Sg1+Nom"/>         
 	</element>
@@ -365,7 +365,7 @@
 <!-- For Morfa, but also for QA with any COLL-NUM: -->  
   <q>
    <question>
-      <text>Gallásii SUBJ MAINV</text>
+      <text>Gallásii SUBJ MAINV ságaid</text>
       <element type="SUBJ">    
 	<grammar tag="Pron+Pers+Person-Number"/>         
 	</element>
@@ -375,7 +375,7 @@
 	</element>
     </question>
     <answer> 
-      <text>SUBJ MAINV N-ILL</text>
+      <text>ANSWERSUBJECT MAINV (ságaid) N-ILL (ságaid)</text>
       <element type="N-ILL">    
 	<grammar tag="N+Num+Sg+Ill"/>         
 	<sem class="COLL-NUM"/>
@@ -411,7 +411,7 @@
 	</element>
     </question>
     <answer> 
-      <text>(N-ILL) (mun) vuolggán N-COM (N-ILL)</text>
+      <text>(N-ILL) ANSWERSUBJECT vuolggán N-COM (N-ILL)</text>
       <element type="N-COM">    
 	<grammar tag="N+Num+Sg+Com"/>         
 	<sem class="COLL-NUM"/>
