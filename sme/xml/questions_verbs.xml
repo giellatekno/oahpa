@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
+-->
+
 <!-- xml-structure for questions in morphdrill -->
 <!-- Questions for verbs. Not yet potential -->
 <questions>
@@ -11,7 +15,7 @@
 	<grammar pos="Pron"/>
       </element>
       <element type="MAINV">
-	<lemma>bargat</lemma> 
+	<id>bargat</id> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>
       </element>
     </question>
@@ -33,7 +37,7 @@
 	<grammar tag="N+Number+Nom"/>
       </element>
       <element type="MAINV">
-	<lemma>bargat</lemma> 
+	<id>bargat</id> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>
       </element>
     </question>
@@ -47,7 +51,7 @@
     <answer> 
       <text>(CLADV) (odne) SUBJ MAINV (odne) (CLADV)</text>
       <element type="SUBJ">
-	<lemma>son</lemma>
+	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element type="MAINV">
@@ -68,7 +72,7 @@
 	<grammar tag="N+Sg+Gen"/>
       </element>
       <element type="MAINV">
-	<lemma>bargat</lemma> 
+	<id>bargat</id> 
 	<grammar tag="V+Ind+Prs+Du3"/>
       </element>
     </question>
@@ -85,7 +89,7 @@
     <answer> 
       <text>(CLADV) (odne) (SUBJ) MAINV (odne) (CLADV)</text>
       <element type="SUBJ">
-	<lemma>son</lemma>
+	<id>son</id>
 	<grammar tag="Pron+Pers+Du3+Nom"/>
       </element>
       <element type="MAINV">
@@ -104,7 +108,7 @@
 	<grammar pos="Pron"/>
       </element>
       <element type="MAINV">
-	<lemma>bargat</lemma> 
+	<id>bargat</id> 
 	<grammar tag="V+Ind+Prt+Person-Number"/>
       </element>
     </question>
@@ -126,7 +130,7 @@
 	<grammar pos="N"/>
       </element>
       <element  type="MAINV">
-	<lemma>bargat</lemma> 
+	<id>bargat</id> 
 	<grammar tag="V+Ind+Prt+Person-Number"/>
       </element>
     </question>
@@ -144,7 +148,7 @@
 	<sem class="ACTIVITY"/>
       </element>
       <element type="SUBJ">
-	<lemma>son</lemm>
+	<id>son</lemm>
 	<grammar tag="Pron+Pers+Person-Number"/>
       </element>
    </answer>
@@ -160,7 +164,7 @@
 	<grammar tag="N+Sg+Gen"/>
       </element>
       <element type="MAINV">
-	<lemma>bargat</lemma> 
+	<id>bargat</id> 
 	<grammar tag="V+Ind+Prt+Du3"/>
       </element>
     </question>
@@ -197,7 +201,7 @@
 	<grammar pos="Pron"/>
       </element>
       <element type="MAINV">
-	<lemma>bargat</lemma> 
+	<id>bargat</id> 
 	<grammar tag="V+Cond+Prs+Person-Number"/>
       </element>
     </question>
@@ -220,7 +224,7 @@
 	<grammar tag="N+Number+Nom"/>
       </element>
       <element  type="MAINV">
-	<lemma>bargat</lemma> 
+	<id>bargat</id> 
 	<grammar tag="V+Cond+Prs+Person-Number"/>
       </element>
     </question>
@@ -234,7 +238,7 @@
     <answer> 
       <text>(CLADV) (luomus) SUBJ MAINV (luomus) (CLADV)</text>
       <element type="SUBJ">
-	<lemma>son</lemma>
+	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
 <element type="MAINV">
@@ -256,7 +260,7 @@
 	<grammar tag="N+Sg+Gen"/>
       </element>
       <element type="MAINV">
-	<lemma>bargat</lemma> 
+	<id>bargat</id> 
 	<grammar tag="V+Cond+Prs+Du3"/>
       </element>
     </question>
@@ -273,7 +277,7 @@
     <answer> 
       <text>(CLADV) (luomus) (SUBJ) MAINV (luomus) (CLADV)</text>
       <element type="SUBJ">
-	<lemma>son</lemma>
+	<id>son</id>
 	<grammar tag="Pron+Pers+Du3+Nom"/>
       </element>
       <element type="MAINV">
@@ -320,7 +324,7 @@
 	<grammar tag="Pron+Pers+Sg1"/>
       </element>
       <element type="MAINV">
-	<lemma>áigut</lemma> 
+	<id>áigut</id> 
 	<grammar tag="V+Cond+Prs+Sg1"/>
       </element>
        <element type="MAINV2">
@@ -345,7 +349,7 @@
 	<grammar tag="Pron+Pers+Du1"/>
       </element>
       <element type="MAINV">
-	<lemma>áigut</lemma> 
+	<id>áigut</id> 
 	<grammar tag="V+Cond+Prs+Du1"/>
       </element>
        <element type="MAINV2">
@@ -370,7 +374,7 @@
 	<grammar tag="Pron+Pers+Pl1+Nom"/>
       </element>
       <element type="MAINV">
-	<lemma>áigut</lemma> 
+	<id>áigut</id> 
 	<grammar tag="V+Cond+Prs+Pl1"/>
       </element>
        <element type="MAINV2">
@@ -393,7 +397,7 @@
    <question>
       <text>Sihke don ja mun MAINV MAINV2</text>
       <element type="MAINV">
-	<lemma>áigut</lemma> 
+	<id>áigut</id> 
 	<grammar tag="V+Cond+Prs+Du1"/>
       </element>
        <element type="MAINV2">
@@ -415,7 +419,7 @@
    <question>
       <text>Sihke don ja mii MAINV MAINV2</text>
       <element type="MAINV">
-	<lemma>áigut</lemma> 
+	<id>áigut</id> 
 	<grammar tag="V+Cond+Prs+Pl1"/>
       </element>
        <element type="MAINV2">
@@ -457,7 +461,7 @@
     <answer> 
       <text>(CLADV) SUBJ MAINV (ikte) (CLADV)</text>
       <element type="SUBJ">
-	<lemma>son</lemma>
+	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number"/>
       </element>
     </answer>
@@ -496,7 +500,7 @@
     <answer> 
       <text>(CLADV) SUBJ MAINV (luomus) (CLADV)</text>
       <element type="SUBJ">
-	<lemma>son</lemma>
+	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number"/>
       </element>
     </answer>
