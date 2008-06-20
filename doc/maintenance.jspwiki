@@ -2,6 +2,24 @@
 
 Much to say here, but for now only notes on first-aid.
 
+!!Updating the localisation
+
+In order to create new strings:
+
+Go to victorio:
+
+{{{
+cd ped/oahpa
+/home/saara/django-trunk/django/bin/make-messages.py -a
+... then cvs up to locate the M files:
+cvs ci -m "new generated files" ocale/fi/LC_MESSAGES/django.po
+etc.
+}}}
+
+After that, we work on the respective django.po files, and check them in again.
+
+
+
 !!mysqld down?
 
 The reason might be a memory leak. Check that on victorio by writing:
