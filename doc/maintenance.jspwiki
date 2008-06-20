@@ -11,9 +11,11 @@ Go to victorio:
 {{{
 cd ped/oahpa
 /home/saara/django-trunk/django/bin/make-messages.py -a
-... then cvs up to locate the M files:
-cvs ci -m "new generated files" ocale/fi/LC_MESSAGES/django.po
-etc.
+   ... then 
+cvs up 
+   ... to locate the M files. Thereafter check them in:
+cvs ci -m "new generated files" locale/fi/LC_MESSAGES/django.po
+   ... etc. for the other files. 
 }}}
 
 After that, we work on the respective django.po files, and check them in again.
