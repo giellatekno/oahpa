@@ -623,6 +623,31 @@
      </answer>
   </q>
 
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron : -->   
+  <q>
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Goas heive MAINV</text>
+      <element type="MAINV">
+	<grammar tag="V+Inf"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </question>
+    <answer> 
+      <text>(CLADV) N-ESS heive MAINV (CLADV)</text>
+      <element type="N-ESS">
+      <grammar tag="N+Ess"/>
+	<sem class="TIME-POINT-ESS"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>(CLADV) MAINV heive N-ESS (CLADV)</text>
+      <element type="N-ESS">
+      <grammar tag="N+Ess"/>
+	<sem class="TIME-POINT-ESS"/>
+      </element>
+    </answer>
+  </q>
 
 
 
