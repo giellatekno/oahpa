@@ -13,17 +13,17 @@
     <qtype>N-ILL</qtype>
     <question>
       <text>Masa SUBJ MAINV</text>
-      <element type="SUBJ">
-	   <grammar pos="Pron"/>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	   <grammar tag="V+Ind+Tense+Person-Number"/>
 	  <id>liikot</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ILL (CLADV)</text>
-      <element type="N-ILL">
+      <element id="N-ILL">
 	    <sem class="OBJECT"/>
 	    <grammar pos="N"/>
       </element>
@@ -35,18 +35,18 @@
     <qtype>N-ILL</qtype>
     <question>
       <text>INTERR SUBJ MAINV OBJ</text>
-      <element type="INTERR">
+      <element id="INTERR">
 	<grammar tag="Pron+Interr+Number+Ill"/>
 	<id>gii</id>
       </element>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>addit</id>
       </element>
-      <element type="OBJ">
+      <element id="OBJ">
 	<grammar pos="N"/>
 	<sem class="OBJECT"/>
       </element>
