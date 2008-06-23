@@ -33,7 +33,6 @@
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron Pers : -->
   <q>
     <qtype>N-ILL</qtype>
-    <agreement>INTERR/N-ILL</agreement>
     <question>
       <text>INTERR SUBJ MAINV OBJ</text>
       <element type="INTERR">
@@ -54,7 +53,8 @@
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) OBJ N-ILL (CLADV)</text>
-      <element type="N-ILL">
+      <element id="N-ILL">
+	<agreement id="INTERR"/>
 	<sem class="HUMAN"/>
       </element>
     </answer>
@@ -66,17 +66,17 @@
     <qtype>N-ILL</qtype>
     <question>
       <text>Gosa SUBJ MAINV</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>mannat</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ILL</text>
-      <element type="N-ILL">
+      <element id="N-ILL">
 	<grammar tag="N+Sg+Ill"/>
 	<sem class="PLACE"/>
       </element>
@@ -86,32 +86,32 @@
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N Loc or Pron Pers: -->
   <q>
     <qtype>N-LOC</qtype>
-    <agreement>INTERR/N-LOC</agreement>
     <question>
       <text>INTERR MAINV váralaš SUBJ</text>
-      <element type="INTERR">
+      <element id="INTERR">
 	<grammar tag="Pron+Interr+Number+Loc"/>
 	<id>gii</id>
       </element>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="N+Number+Nom"/>
 	<sem class="ANIMAL"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>leat</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) N-LOC MAINV (CLADV) váralaš SUBJ</text>
-      <element type="N-LOC">
+      <element id="N-LOC">
 	<grammar tag="N+Number+Loc"/>
 	<sem class="HUMAN"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) N-LOC MAINV</text>
-      <element type="N-LOC">
+      <element id="N-LOC">
+	<agreement id="INTERR"/>
 	<sem class="HUMAN"/>
       </element>
     </answer>
@@ -123,30 +123,30 @@
     <qtype>N-LOC</qtype>
     <question>
       <text>Gos SUBJ MAINV</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="N+Sg+Nom"/>
 	<sem class="HUMAN"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>leat</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) SUBJ MAINV (CLADV) N-LOC (CLADV)</text>
-      <element type="N-LOC">
+      <element id="N-LOC">
 	<grammar tag="N+Sg+Loc"/>
 	<sem class="PLACE"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) SUBJ MAINV (CLADV) N-LOC (CLADV)</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<sem class="HUMAN"/>
 	<id>son</id>
       </element>
-      <element type="N-LOC">
+      <element id="N-LOC">
 	<grammar tag="N+Sg+Loc"/>
 	<sem class="PLACE"/>
       </element>
@@ -159,27 +159,27 @@
     <qtype>N-LOC</qtype>
     <question>
       <text>Gos SUBJ MAINV</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="N+Number+Nom"/>
 	<sem class="HUMAN"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>boahtit</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) SUBJ MAINV (CLADV) N-LOC (CLADV)</text>
-      <element type="N-LOC">
+      <element id="N-LOC">
 	<sem class="PLACE"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) SUBJ MAINV (CLADV) N-LOC (CLADV)</text>
-      <element type="N-LOC">
+      <element id="N-LOC">
 	<sem class="PLACE"/>
       </element>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<id>son</id>
       </element>
@@ -192,17 +192,17 @@
     <qtype>N-LOC</qtype>
     <question>
       <text>Mas SUBJ MAINV</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-       <element type="MAINV">
+       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>ballat</id>
       </element>
    </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-LOC (CLADV)</text>
-      <element type="N-LOC">
+      <element id="N-LOC">
 	<grammar tag="N+Sg+Loc"/>
 	<sem class="ANIMAL"/>
       </element>
@@ -214,17 +214,17 @@
     <qtype>N-ACC</qtype>
     <question>
       <text>Maid SUBJ MAINV</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>oaidnit</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ACC (CLADV)</text>
-      <element type="N-ACC">
+      <element id="N-ACC">
 	<sem class="OBJECT"/>
       </element>
     </answer>
@@ -235,18 +235,18 @@
     <qtype>N-ACC</qtype>
     <question>
       <text>Maid SUBJ MAINV</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="N+Sg+Nom"/>
 	<sem class="FAMILY"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>niegadit</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ACC (CLADV)</text>
-      <element type="N-ACC">
+      <element id="N-ACC">
 	<sem class="OBJECT"/>
       </element>
     </answer>
@@ -258,17 +258,17 @@
     <qtype>N-ACC</qtype>
     <question>
       <text>Maid SUBJ MAINV</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>oastit</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ACC (CLADV)</text>
-      <element type="N-ACC">
+      <element id="N-ACC">
 	<sem class="CLOTHING"/>
       </element>
     </answer>
@@ -279,17 +279,17 @@
     <qtype>N-ACC</qtype>
     <question>
       <text>Maid SUBJ MAINV</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>sárgut</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ACC (CLADV)</text>
-      <element type="N-ACC">
+      <element id="N-ACC">
 	<sem class="ANIMAL"/>
       </element>
     </answer>
@@ -301,24 +301,24 @@
   <q>
 <!-- Interr and N-Acc must agree in number and SUBJ and MAINV must agree in number but all four variables do not have to agree --> 
     <qtype>N-ACC</qtype>
-    <agreement>INTERR/N-ACC</agreement>
     <question>
       <text>INTERR SUBJ MAINV</text>
-      <element type="INTERR">
+      <element id="INTERR">
 	<grammar tag="Pron+Interr+Number+Acc"/>
 	<id>gii</id>
       </element>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>dovdat</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ACC (CLADV)</text>
-      <element type="N-ACC">
+      <element id="N-ACC">
+	<agreement id="INTERR"/>
 	<grammar tag="N+Acc+Number"/>
 	<sem class="HUMAN"/>
       </element>
@@ -329,25 +329,25 @@
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->   
   <q>
     <qtype>N-GEN</qtype>
-    <agreement>INTERR/N-GEN</agreement>
     <question>
       <text>INTERR SUBJ dát MAINV</text>
-      <element type="INTERR">
+      <element id="INTERR">
 	<grammar tag="Pron+Interr+Number+Gen"/>
 	<id>gii</id>
       </element>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="N+Number+Nom"/>
 	<sem class="OBJECT"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>leat</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) (Dát) MAINV (CLADV) N-GEN (SUBJ)</text>
-      <element type="N-GEN">
+      <element id="N-GEN">
+	<agreement id="INTERR"/>
 	<sem class="HUMAN"/>
       </element>
     </answer>
@@ -358,18 +358,18 @@
     <qtype>N-GEN</qtype>
     <question>
       <text>Goas SUBJ MAINV</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="N+Number+Nom"/>
 	<sem class="FAMILY"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
-	<lemma>vuoiŋŋastit</lemma>
+	<id>vuoiŋŋastit</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-GEN (CLADV)</text>
-      <element type="N-GEN">
+      <element id="N-GEN">
 	<sem class="TIME-POINT-GEN"/>
       </element>
     </answer>
@@ -380,18 +380,18 @@
     <qtype>N-GEN</qtype>
     <question>
       <text>Goas SUBJ MAINV</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="N+Number+Nom"/>
 	<sem class="FAMILY"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
-	<lemma>hárjehallat</lemma>
+	<id>hárjehallat</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-GEN (CLADV)</text>
-      <element type="N-GEN">
+      <element id="N-GEN">
 	<sem class="TIME-POINT-GEN"/>
       </element>
     </answer>
@@ -402,18 +402,18 @@
     <qtype>N-GEN</qtype>
     <question>
       <text>Goas SUBJ MAINV</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="N+Number+Nom"/>
 	<sem class="FAMILY"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
-	<lemma>vuoiŋŋastit</lemma>
+	<id>vuoiŋŋastit</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-GEN (CLADV)</text>
-      <element type="N-GEN">
+      <element id="N-GEN">
       <grammar tag="N+Pl+Gen"/>
 	<sem class="TIME-POINT-GEN-PL"/>
       </element>
@@ -425,18 +425,18 @@
     <qtype>N-GEN</qtype>
     <question>
       <text>Goas SUBJ MAINV</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="N+Number+Nom"/>
 	<sem class="FAMILY"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
-	<lemma>hárjehallat</lemma>
+	<id>hárjehallat</id>
       </element>
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-GEN (CLADV)</text>
-      <element type="N-GEN">
+      <element id="N-GEN">
       <grammar tag="N+Pl+Gen"/>
 	<sem class="TIME-POINT-GEN-PL"/>
       </element>
@@ -446,24 +446,24 @@
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->   
   <q>
     <qtype>N-COM</qtype>
-    <agreement>INTERR/N-COM</agreement>
     <question>
       <text>INTERR SUBJ MAINV</text>
-      <element type="INTERR">
+      <element id="INTERR">
 	<grammar tag="Pron+Interr+Number+Com"/>
 	<id>gii</id>
       </element>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-       <element type="MAINV">
+       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<valency>COMV</valency>
       </element>
    </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-COM (CLADV)</text>
-      <element type="N-COM">
+      <element id="N-COM">
+	<agreement id="INTERR" />
 	<sem class="HUMAN"/>
       </element>
     </answer>
@@ -472,24 +472,24 @@
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
   <q>
     <qtype>N-COM</qtype>
-    <agreement>INTERR/N-COM</agreement>
     <question>
       <text>INTERR SUBJ MAINV ruoktot</text>
-      <element type="INTERR">
+      <element id="INTERR">
 	<grammar tag="Pron+Interr+Number+Com"/>
 	<id>mii</id>
       </element>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-       <element type="MAINV">
+       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>mannat</id>
       </element>
    </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (ruoktot) (CLADV) N-COM (ruoktot) (CLADV)</text>
-      <element type="N-COM">
+      <element id="N-COM">
+	<agreement id="INTERR"/>    
 	<sem class="VEHICLE"/>
       </element>
     </answer>
@@ -498,24 +498,24 @@
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
 <q>
     <qtype>N-COM</qtype>
-    <agreement>INTERR/N-COM</agreement>
     <question>
       <text>INTERR SUBJ MAINV</text>
-      <element type="INTERR">
+      <element id="INTERR">
 	<grammar tag="Pron+Interr+Number+Com"/>
 	<id>mii</id>
       </element>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-       <element type="MAINV">
+       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>čierastit</id>
       </element>
    </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-COM (CLADV)</text>
-      <element type="N-COM">
+      <element id="N-COM">
+	<agreement id="INTERR"/>
 	<sem class="SLIDE-TOOL"/>
       </element>
     </answer>
@@ -526,32 +526,32 @@
     <qtype>N-ESS</qtype>
     <question>
       <text>Manin SUBJ MAINV PLACE</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="N+Sg+Nom"/>
 	<sem class="FAMILY"/>
       </element>
-      <element type="PLACE">
+      <element id="PLACE">
 	<grammar tag="N+Sg+Loc"/>
 	<sem class="PLACE-NAME"/>
       </element>
-       <element type="MAINV">
+       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>bargat</id>
       </element>
    </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (PLACE) (CLADV) N-ESS (PLACE) (CLADV)</text>
-      <element type="N-ESS">
+      <element id="N-ESS">
 	<grammar tag="N+Ess"/>
 	<sem class="PROFESSION"/>
       </element>
     </answer>
      <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (PLACE) (CLADV) N-ESS (PLACE) (CLADV)</text>
-    <element type="SUBJ">
+    <element id="SUBJ">
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
-    <element type="N-ESS">
+    <element id="N-ESS">
       <grammar tag="N+Ess"/>
       <sem class="PROFESSION"/>
     </element>
@@ -563,28 +563,28 @@
     <qtype>N-ESS</qtype>
     <question>
       <text>Manin SUBJ MAINV máidnasis</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="N+Sg+Nom"/>
 	<sem class="HUMAN"/>
       </element>
-       <element type="MAINV">
+       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>šaddat</id>
       </element>
    </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (máidnasis) (CLADV) N-ESS (máidnasis) (CLADV)</text>
-      <element type="N-ESS">
+      <element id="N-ESS">
 	<grammar tag="N+Ess"/>
 	<sem class="MYTH"/>
       </element>
     </answer>
      <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (máidnasis) (CLADV) N-ESS (máidnasis) (CLADV)</text>
-    <element type="SUBJ">
+    <element id="SUBJ">
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
-    <element type="N-ESS">
+    <element id="N-ESS">
       <grammar tag="N+Ess"/>
       <sem class="MYTH"/>
     </element>
@@ -596,27 +596,27 @@
     <qtype>N-ESS</qtype>
     <question>
       <text>Manin SUBJ MAINV karneválas</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-       <element type="MAINV">
+       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
 	<id>gárvodit</id>
       </element>
    </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (karneválas) (CLADV) N-ESS (karneválas) (CLADV)</text>
-      <element type="N-ESS">
+      <element id="N-ESS">
 	<grammar tag="N+Ess"/>
 	<sem class="MYTH-HUMAN"/>
       </element>
     </answer>
      <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (karneválas) (CLADV) N-ESS (karneválas) (CLADV)</text>
-    <element type="SUBJ">
+    <element id="SUBJ">
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
-    <element type="N-ESS">
+    <element id="N-ESS">
       <grammar tag="N+Ess"/>
       <sem class="MYTH-HUMAN"/>
     </element>
@@ -628,21 +628,21 @@
     <qtype>N-ESS</qtype>
     <question>
       <text>Goas heive MAINV</text>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Inf"/>
 	<sem class="ACTIVITY"/>
       </element>
     </question>
     <answer> 
       <text>(CLADV) N-ESS heive MAINV (CLADV)</text>
-      <element type="N-ESS">
+      <element id="N-ESS">
       <grammar tag="N+Ess"/>
 	<sem class="TIME-POINT-ESS"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) MAINV heive N-ESS (CLADV)</text>
-      <element type="N-ESS">
+      <element id="N-ESS">
       <grammar tag="N+Ess"/>
 	<sem class="TIME-POINT-ESS"/>
       </element>
