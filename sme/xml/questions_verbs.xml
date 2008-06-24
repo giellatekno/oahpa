@@ -8,8 +8,10 @@
 <questions>
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+<!-- MAINV must agree with ANSWERSUBJECT in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
   <q>
    <question>
+   <agreement>ANSWERSUBJECT/MAINV</agreement>
       <text>Maid SUBJ MAINV odne</text>
       <element type="SUBJ">
 	<grammar pos="Pron"/>
@@ -101,8 +103,10 @@
 -->
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+<!-- MAINV must agree with ANSWERSUBJECT in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
     <q>
    <question>
+   <agreement>ANSWERSUBJECT/MAINV</agreement>
       <text>Maid SUBJ MAINV ikte</text>
       <element type="SUBJ">
 	<grammar pos="Pron"/>
@@ -193,8 +197,10 @@
 <!--- ==========  conditional =========   -->
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+<!-- MAINV must agree with ANSWERSUBJECT in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
   <q>
     <qtype>V-COND</qtype>
+    <agreement>ANSWERSUBJECT/MAINV</agreement>
     <question>
       <text>Maid SUBJ MAINV luomus</text>
       <element type="SUBJ">
