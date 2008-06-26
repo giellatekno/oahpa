@@ -1,0 +1,213 @@
+!!!Meeting notes, Pedagogical programs, 080626
+
+
+!!Participants
+
+Biret Ánne, Lene, Saara, Trond.
+
+
+!!Status quo
+
+Saara:
+
+Has had technical problems, and solved them instad of coding.
+
+Witn morfa, the info to the webpage is small: I need to know the correpct answer.
+All the info wihich is availabel muyst be in the page
+
+With vasta, there is much more info which is neede in order to find out wheter it is correct:
+
+The q id, the set to which the word belongs. I must remember all that in order to know whether the answer is correct.
+
+In morfa , I only had to remember thecorrect answer, and hecvk it.
+No I need to know what the subject is, 
+The user may anser with sae owrd, with pronoun, or use other things.
+
+There must be a method of storing the user data when I send it to the web page.
+
+So vasta is more complicated than contestual morfa.
+
+Solving that prolem  has taken two days, but seems now solved.
+
+There is a database with questions and answers, the set of possible answers provides a space against which the questions can be checked against.
+
+The answer will be parsed on a word-for-word basis:
+
+# Take the answer
+# Take out the first word
+# Try to match it against our answer patterns
+# If there is a match, proceed along that path.
+# If there is no match in the first word, proceed.
+# If enough slots are filled for a legal answers, then the unparsable fields are ignored (?)
+# If not enough slots are filled, then it is not legal.
+
+!!Response
+
+We have a 4-way information about our noun stems:
+
+Cf. this example, whee the parameters are class, dihphtong, gradation and rime:
+
+{{{
+  <entry>
+    <lemma>Álaheadju</lemma>
+	<pos class="N"/>
+    <translations>
+      <tr xml:lang="nob">Alta</tr>
+    </translations>
+    <semantics>
+      <sem class="PLACE-NAME"/>
+    </semantics>
+    <stem class="bisyllabic" diphthong="yes" gradation="yes" rime="u"/>
+    <dialect class=""/>
+    <sources>
+      <book name="d1"/>
+    </sources>
+  </entry>
+}}}
+
+In a given instance, the corrct answer is:
+
+Álahedjui
+Álahejui   <= wrong cg
+Álaheadjui  <= wrong diphthong
+Álahedjii  <= wrong rime
+
+We may make our response in two ways:
+
+# The response is modular: Each error type 
+# The response is non-modular: For each stem parameter combination there is a standardised answer.
+
+An intermediate solution, with a two-part error message. We write two classes of
+
+Response:
+automat: This is a bisyllabic stem (written for all class="bisyllabic")
+dithpton + rime
+
+<class="bisyllabic" diphthong="yes" gradation="yes" rime="u"/>
+sg ill, bisyllabic, diphtong..
+
+the explanation how to inflect
+
+
+
+So, M knows that the target form is Ill Sg, and knows the 4 class parameters.
+
+Say, we fix the stem parameter:
+
+This means that for each of the 3 stem types there will be separate messages.
+
+{{{
+Non-modular:
+                    di  cg   ri
+sg ill bisyllabic:  2 x 2  x  6 = 24 messages
+
+Modular:
+                    di  cg   ri
+sg ill bisyllabic:  2 + 2  +  6 = 10 messages
+}}}
+
+!!Leksa
+
+Biret Ánnes question:
+
+I think we should allow for more answer types in Leksa than we do now, i.e.
+more Norwegian translations. For adjectives, for example, the computer does
+not accept neuter forms. For example the word "seavdnjat" (dark), the
+computer only accepts "mørk",not "mørkt". As a native speaker, I feel that
+the neuter form is generally a more natural translation for adjectives when
+they are not followed by nouns.
+
+Another thing we should look at, is whether we should allow verb
+translations without the infinitive marker "å". As it is now, the computer
+does not allow bare infinitives.
+
+If we want to allow for neuter forms of adjectives, is there a quicker way
+to do this than to add these forms to the translations?
+
+
+{{{
+  <entry>
+    <lemma>oadjebas</lemma>
+    <pos class="A"/>
+    <translations>
+      <tr xml:lang="nob">trygg</tr> <!-- suggest this for the nobsme game-->
+      <tr xml:lang="nob">trygt</tr> <!-- add this one -->
+    </translations>
+    <semantics>
+      <sem class="ANIMAL-adj"/>
+    </semantics>
+    <stem class="bisyllabic" compare="yes"/>
+    <dialect class=""/>
+    <sources>
+    </sources>
+  </entry>
+}}}
+
+We will add neuter forms to adjectives.
+
+Verbs are different:
+
+{{{
+  <entry>
+    <lemma>gahččat</lemma>
+	<pos class="V"/>
+    <translations>
+      <tr xml:lang="nob">å falle</tr> <!-- the user might skip the IM å-->
+      <tr xml:lang="nob">falle</tr> <!-- the user might skip the IM å-->
+    </translations>
+...  </entry>
+}}}  
+
+For verbs, we (Saara, that is) adds å-less entries into the {{verbs.xml}} file.
+
+
+Semantic sets: We target big sets, hundred-some in each set.
+
+!!Dialogues
+
+If B-Á has time she can look at them.
+
+We consider 4 question types.
+
+* Type 1. Open Wh-question
+** - the answer should be in right case, but it has no consequenses for the next question. If the answer cannot be processed, we may run the answer through the orthographical speller (not for person names), and then to default. (Person names may be accounted for by making a ped-transducer with a name guesser). 
+** Example:  What kind of work do you have?
+* Type 2. Alternative-question
+** - with answer alternatives (gived as a list to the program) - it can be presented for U as a picture, or be implicit in the question. The answer determines the next action. If U answers something outside the alternatives, then M comments like "I have not got that. Here you see what I have got." M does not have to "understand" the answer. Example: 
+** What do you want to eat? (answer is from the list, or an unknown object, or no object)
+** Do you want coffee or tea? (answer is coffee, or tea, or negation)
+* Type 3. Correct/not-correct Wh-question
+** - there is only one correct answer, in a picture or something else. Feedback to U about the correct formulation. Example:
+** When is Lemet´s birhtday?
+** Which car is the most expensive one?
+** In which month is Easter?
+** When does the school start up after the summervacation?
+* Type 4. go-question (yes-no-questions)
+** - answer determines the next action. Example:
+** Do you want coffee?
+
+These are important documents:
+
+* {{ped/sme/xml/dialogue_visit.xml}} -
+* {{ped/sme/xml/dialoguepart_calendar.xml}} - with questions/anwers/feedback - now with translations to English
+* {{ped/sme/xml/dialogue_firstmeeting.xml}} - with open questions
+* {{ped/doc/dialogueparts.txt}} - ideas for topics
+* {{http://giellatekno.uit.no/ped/Dialogue_outline.html}}
+
+The dialogues are made of elements, and we can write the dialogues if we can agree on the possible type of elements even if not all the programming is ready.
+
+
+
+
+Format for writing dialogues:
+One line for each replique, marked differently, with initial q and a or m and u.
+
+
+
+
+
+!!Summer
+
+
+
+
