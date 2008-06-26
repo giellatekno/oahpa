@@ -42,7 +42,8 @@ D1 < ... < D4 davvin 1-4
 
 <!ELEMENT pos EMPTY>
 <!ELEMENT pos (#PCDATA) >
-<!ATTLIST pos class ( A | V | N )  >
+<!ATTLIST pos class ( A | V | N ) #IMPLIED
+>
 
 <!-- <!ATTLIST sem class ( ACTIVITY | MOVEMENT | VERBAL | WEATHER-verb | AUX ) #IMPLIED > -->
 <!-- This list does not correspond reality at the moment. Semantic classes in the lexicons: -->
