@@ -12662,6 +12662,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
     </sources>
   </entry>
   <entry>
+  <entry id="vuovdi_obj">
     <lemma>vuovdi</lemma>
 	<pos class="N"/>
     <translations>
@@ -12675,6 +12676,27 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
     <sources>
       <book name="d4"/>
     </sources>
+    <forms>
+    <form tag="N+Sg+Gen">vuovddi</form>
+    </forms>
+  </entry>
+  <entry>
+  <entry id="vuovdi_actor">
+    <lemma>vuovdi</lemma>
+	<pos class="N"/>
+    <translations>
+      <tr xml:lang="nob">selger</tr>
+    </translations>
+    <semantics>
+      <sem class="PROFESSION"/>
+    </semantics>
+    <stem class="bisyllabic" diphthong="yes" gradation="no" rime="i"/>
+    <dialect class=""/>
+    <sources>
+    </sources>
+    <forms>
+    <form tag="N+Sg+Gen">vuovdi</form>
+    </forms>
   </entry>
   <entry>
     <lemma>vággi</lemma>
@@ -13841,6 +13863,8 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
     <lemma>teadja</lemma>
+    <id>teadja</id>
+    <only-sg/>
 	<pos class="N"/>
     <translations>
       <tr xml:lang="nob">te</tr>
@@ -13858,6 +13882,8 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
  <entry>
     <lemma>deadja</lemma>
+    <id>deadja</id>
+    <only-sg/>
 	<pos class="N"/>
     <translations>
       <tr xml:lang="nob">te</tr>
@@ -13866,7 +13892,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sem class="DRINK"/>
     </semantics>
     <stem class="bisyllabic" diphthong="yes" gradation="yes" rime="a"/>
-    <dialect class=""/>
+    <dialect class="o"/>
     <sources>
       <book name="d1"/>
       <book name="álgu"/>
@@ -13874,7 +13900,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
     </sources>
   </entry>
   <entry>
-    <lemma>deajat</lemma>
+    <lemma>deadja</lemma>
+    <id>deajat</id>
+    <only-pl/>
 	<pos class="N"/>
     <translations>
       <tr xml:lang="nob">ukokt te</tr>
@@ -13883,11 +13911,29 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sem class="FOOD-GROCERY-PL"/>
     </semantics>
     <stem class="bisyllabic" diphthong="no" gradation="yes"/>
-    <dialect class=""/>
+    <dialect class="o"/>
     <sources>
       <book name="d1"/>
     </sources>
   </entry>
+  <entry>
+    <lemma>teadja</lemma>
+    <id>teajat</id>
+    <only-pl/>
+	<pos class="N"/>
+    <translations>
+      <tr xml:lang="nob">ukokt te</tr>
+    </translations>
+    <semantics>
+      <sem class="FOOD-GROCERY-PL"/>
+    </semantics>
+    <stem class="bisyllabic" diphthong="no" gradation="yes"/>
+    <dialect class="n"/>
+    <sources>
+      <book name="d1"/>
+    </sources>
+  </entry>
+
   <entry>
     <lemma>eahketborramuš</lemma>
 	<pos class="N"/>
@@ -14055,7 +14101,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
     </sources>
   </entry>
   <entry>
-    <lemma>gáfet</lemma>
+    <lemma>gáffe</lemma>
+    <id>gáfet</id>
+    <only-pl/>
 	<pos class="N"/>
     <translations>
       <tr xml:lang="nob">ukokt kaffe</tr>
@@ -14070,7 +14118,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
     </sources>
   </entry>
   <entry>
-    <lemma>káfet</lemma>
+    <lemma>káffe</lemma>
+    <id>káfet</id>
+    <only-pl/>
 	<pos class="N"/>
     <translations>
       <tr xml:lang="nob">ukokt kaffe</tr>
@@ -14087,6 +14137,8 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
   <entry>
     <lemma>gáffe</lemma>
+    <id>gáffe</id>
+    <only-sg/>
 	<pos class="N"/>
     <translations>
       <tr xml:lang="nob">kaffe</tr>
@@ -14103,6 +14155,8 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
   <entry>
     <lemma>káffe</lemma>
+    <id>káffe</id>
+    <only-sg/>
 	<pos class="N"/>
     <translations>
       <tr xml:lang="nob">kaffe</tr>
