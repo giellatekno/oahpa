@@ -12,6 +12,7 @@
 <!-- comment from saara: The mainv-answersubject agreement is implemented otherwise, -->
 <!-- because it is so special. It does not have to be marked explicitely. -->
   <q>
+    <qtype>VERB</qtype>
    <question>
       <text>Maid SUBJ MAINV odne</text>
       <element id="SUBJ">
@@ -33,6 +34,7 @@
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
   <q>
+    <qtype>VERB</qtype>
     <question>
       <text>Maid SUBJ MAINV odne</text>
       <element id="SUBJ">
@@ -106,6 +108,7 @@
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
 <!-- MAINV must agree with ANSWERSUBJECT in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
     <q>
+    <qtype>VERB</qtype>
    <question>
       <text>Maid SUBJ MAINV ikte</text>
       <element id="SUBJ">
@@ -127,6 +130,7 @@
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
   <q>
+    <qtype>VERB</qtype>
     <question>
       <text>Maid SUBJ MAINV ikte</text>
       <element id="SUBJ">
@@ -152,7 +156,7 @@
 	<sem class="ACTIVITY"/>
       </element>
       <element id="SUBJ">
-	<id>son</lemm>
+	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number"/>
       </element>
    </answer>
