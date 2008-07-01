@@ -25,13 +25,19 @@ class Game:
         self.num_fields = 5
 
         if self.settings.books:
-            if self.settings.books == 'all':
+            books=self.settings.books[:]
+            self.settings.books=[]
+            self.settings.books.append(books)
+
+            if 'all' in set(self.settings.books):
                 self.settings.books=self.settings.allbooks
-            else:
-                books=self.settings.books
-                self.settings.books=[]
-                self.settings.books.append(books)
-                
+            if self.settings.books == 'd2':
+                self.settings.books= ['d1', 'd2']
+            if self.settings.books == 'd3':
+                self.settings.books= ['d1', 'd2', 'd3']
+            if self.settings.books == 'd4':
+                self.settings.books= ['d1', 'd2', 'd3', 'd4']
+
         if self.settings.semtype:
             if self.settings.semtype == 'all':
                 self.settings.semtype=self.settings.allsem
@@ -82,6 +88,7 @@ class Game:
 
         # If POST data was data check, regenerate the form using ids.
         for n in range (1, self.num_fields):
+            db_info = {}
             qwords = {}
             awords = {}
             selected_awords = {}
@@ -99,7 +106,11 @@ class Game:
                     db_info['awords'] = awords
                     db_info[d] = value
 
-            new_db_info = self.get_db_info(db_info)
+            new_db_info = {}
+            if self.settings.gametype == 'qa' or self.settings.gametype == 'context':
+                new_db_info = self.get_db_info(db_info)
+            if not new_db_info:
+                new_db_info = db_info
             self.create_form(new_db_info, n, data)
             
     def get_score(self, data):
@@ -252,22 +263,22 @@ class NumGame(Game):
             random_num = randint(0, int(self.settings.maxnum))
 
             if random_num:
-                db_info['numeral'] = random_num
-                return 
-
+                db_info['numeral_id'] = random_num
+                return db_info
+        
+        
     def create_form(self, db_info, n, data=None):
 
         language=self.settings.language
         numstring =""
         # Add generator call here
-        #fstdir="/Users/saara/gt/" + language + "/bin"        
+        fstdir="/Users/saara/gt-cvs/" + language + "/bin"        
     
-        fstdir="/opt/smi/" + language + "/bin"
+        #fstdir="/opt/smi/" + language + "/bin"
         gen_norm_fst = fstdir + "/" + language + "-num.fst"
         
-        gen_norm_lookup = "echo " + str(db_info['numeral']) + " | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
-        #gen_norm_lookup = "echo " + str(db_info['numeral']) + " | /Users/saara/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
-        print gen_norm_lookup
+        #gen_norm_lookup = "echo " + str(db_info['numeral_id']) + " | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        gen_norm_lookup = "echo " + str(db_info['numeral_id']) + " | /Users/saara/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
         num_tmp = os.popen(gen_norm_lookup).readlines()
         num_list=[]
         for num in num_tmp:
@@ -276,7 +287,7 @@ class NumGame(Game):
                 nums = line.split('\t')
                 num_list.append(nums[1].decode('utf-8'))
         numstring = num_list[0]
-        form = (NumQuestion(db_info['numeral'], numstring, num_list, self.settings.numgame, db_info['userans'], db_info['correct'], data, prefix=n))
+        form = (NumQuestion(db_info['numeral_id'], numstring, num_list, self.settings.numgame, db_info['userans'], db_info['correct'], data, prefix=n))
         self.form_list.append(form)
 
 
@@ -284,11 +295,20 @@ class QuizzGame(Game):
 
     def get_db_info(self, db_info):
 
-        semtypes=self.settings.semtype
         books=self.settings.books
+        semtypes=self.settings.semtype
+
+        if semtypes:
+            semtype_intersect = set(semtypes).difference(set(self.settings.allsem))
+
         while True:
-            w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) & Q(source__name__in=books)).count()
-            random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & Q(source__name__in=books))[randint(0,w_count-1)]
+            if semtype_intersect:
+                w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes)).count()
+                random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes))[randint(0,w_count-1)]
+            else:
+                w_count=Word.objects.filter( Q(source__name__in=books)).count()
+                random_word=Word.objects.filter( Q(source__name__in=books))[randint(0,w_count-1)]
+                
                 
             word_id=random_word.id
 
