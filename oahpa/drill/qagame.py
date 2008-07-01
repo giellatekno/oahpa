@@ -49,7 +49,7 @@ class QAGame(Game):
 
     
     # Select a word matching semtype and return full form.
-    def get_word(self, qelement, tag_el):
+    def get_word(self, qelement, tag_el=None):
 
         word_ids = []
         if qelement:
@@ -73,9 +73,10 @@ class QAGame(Game):
                         semstring = "HUMAN"
                     if semstring == "SLIDE-TOOL":
                         semstring = "TOOL"
-                    for word in list(Word.objects.filter(Q(semtype__semtype=semstring))):
-                        if Form.objects.filter(Q(tag=tag_el.id) & Q(word=word.id)).count()>0:
-                            word_ids.append(word.id)
+                    if tag_el:
+                        for word in list(Word.objects.filter(Q(semtype__semtype=semstring))):
+                            if Form.objects.filter(Q(tag=tag_el.id) & Q(word=word.id)).count()>0:
+                                word_ids.append(word.id)
 
         return word_ids
 
@@ -266,13 +267,21 @@ class QAGame(Game):
                 word_ids.append(Word.objects.get(Q(lemma=pronbase)).id)
                 print "SUBJECT: " + Word.objects.get(Q(lemma=pronbase)).lemma
 
-        # Subject for the answer
-        # Check if there are elements
-        # that are specified for the answer subject.
-        #ans_subject = self.get_element(answer,'SUBJ')
-
+        
         if not word_ids:
             word_ids = qwords['SUBJ']['word'][:]
+
+            # Subject for the answer
+            # Check if there are elements
+            # that are specified for the answer subject.
+            #for ans in answers:
+            #    ans_subj = self.get_element(ans,'SUBJ')
+            #    if not ans_subj:
+            #        ans_subj = self.get_element(ans,'ANSWERSUBJECT')
+            #    if ans_subj:
+            #        subjwords = self.get_word(ans_subj)
+            #        if subjwords:
+            #            word_ids.append(subjwords)
 
         awords[subj]['tag'].append(asubjtag_el.id)
         if a_number:
@@ -416,6 +425,7 @@ class QAGame(Game):
             awords=db_info['awords']
         else:
             # Generate the set of possible answers
+            # Here only the text of the first answer is considered!!
             atext=answer.string
             words_strings = set(atext.split())
             
