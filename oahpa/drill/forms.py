@@ -159,7 +159,8 @@ class MorphQuestion(forms.Form):
     Questions for morphology game 
     """
     is_correct = is_correct
-
+    set_correct = set_correct
+    
     answer = forms.CharField()
 
     def __init__(self, word, tag, fullforms, tr_list, question, userans_val, correct_val, *args, **kwargs):
@@ -222,6 +223,7 @@ class QuizzQuestion(forms.Form):
     answer = forms.CharField()
 
     is_correct = is_correct
+    set_correct = set_correct
     
     def __init__(self, word, translations, question, userans_val, correct_val, *args, **kwargs):
 
@@ -256,6 +258,7 @@ class NumQuestion(forms.Form):
     answer = forms.CharField()
 
     is_correct = is_correct
+    set_correct = set_correct
     
     def __init__(self, numeral, num_string, num_list, gametype, userans_val, correct_val, *args, **kwargs):
 
