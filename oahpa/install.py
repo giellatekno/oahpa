@@ -57,14 +57,18 @@ if options.semtypefile:
     questions.read_semtypes(options.semtypefile)
     exit()
 
-    
+if not options.infile:
+    exit()
 xmlfile=file(options.infile)
 tree = _dom.parse(options.infile)
 
 for e in tree.getElementsByTagName("entry"):
 
     # Store first unique fields
+    id=e.getAttribute("id")
     lemma=e.getElementsByTagName("lemma")[0].firstChild.data
+    if not id:
+        id=lemma
     stem=""
     dialect=""
     if e.getElementsByTagName("stem"):
@@ -83,7 +87,7 @@ for e in tree.getElementsByTagName("entry"):
             sys.exit()
 
     # Search for existing word in the database.
-    word_elements = Word.objects.filter(Q(lemma=lemma) & Q(pos=pos))
+    word_elements = Word.objects.filter(Q(word_id=id) & Q(pos=pos))
 
     # Update old one if the word was found
     if word_elements:
@@ -96,7 +100,7 @@ for e in tree.getElementsByTagName("entry"):
         if options.update:
             print "Adding entry for ", lemma , ".";
         # Otherwise create new word
-        w=Word(lemma=lemma,pos=pos,stem=stem,dialect=dialect);
+        w=Word(word_id=id, lemma=lemma,pos=pos,stem=stem,dialect=dialect);
     w.save()
     
     # Add forms and tags
