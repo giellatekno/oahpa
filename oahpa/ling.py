@@ -160,17 +160,17 @@ class Questions:
             agreement = el.getElementsByTagName("agreement")
 
             # Search for existing word in the database.
-            lemmas=el.getElementsByTagName("id")
-            for l in lemmas:
-                lemma = l.firstChild.data
-                if lemma:
+            ids=el.getElementsByTagName("id")
+            for i in ids:
+                word_id = i.firstChild.data
+                if word_id:
                     #print "Searching lemma: " + lemma
                     # Add pos information here!
-                    word_elements = Word.objects.filter(Q(lemma=lemma))
+                    word_elements = Word.objects.filter(Q(word_id=word_id))
                     if word_elements:
                         w=word_elements[0]
                     else:
-                        print "Word not found! " + lemma
+                        print "Word not found! " + word_id
                                             
             # Try to find an element matching the specification.
             # Attach an element to a manytomany-table qelement.
