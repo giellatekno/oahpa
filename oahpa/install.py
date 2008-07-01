@@ -17,6 +17,9 @@ parser.add_option("-f", "--file", dest="infile",
                   help="lexicon file name")
 parser.add_option("-p", "--pos", dest="pos",
                   help="Pos info")
+parser.add_option("-d", "--db", dest="add_db",
+                  action="store_true", default=False,
+                  help="Add pos-info to database")
 parser.add_option("-t", "--tagfile", dest="tagfile",
                   help="List of tags and tagsets")
 parser.add_option("-r", "--paradigmfile", dest="paradigmfile",
@@ -37,10 +40,10 @@ linginfo = Paradigm()
 questions = Questions()
 
 if options.tagfile:
-    linginfo.handle_tags(options.tagfile)
+    linginfo.handle_tags(options.tagfile, options.add_db)
 
 if options.paradigmfile:
-    linginfo.read_paradigms(options.paradigmfile)
+    linginfo.read_paradigms(options.paradigmfile, options.tagfile)
 
 if options.grammarfile:
     questions.read_grammar(options.grammarfile)
