@@ -9,21 +9,22 @@
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
 <!-- MAINV must agree with ANSWERSUBJECT in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
+<!-- comment from saara: The mainv-answersubject agreement is implemented otherwise, -->
+<!-- because it is so special. It does not have to be marked explicitely. -->
   <q>
    <question>
-   <agreement>ANSWERSUBJECT/MAINV</agreement>
       <text>Maid SUBJ MAINV odne</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>bargat</id> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>
       </element>
     </question>
     <answer> 
       <text>(CLADV) (odne) ANSWERSUBJECT MAINV (odne) (CLADV)</text>
-      <element type="MAINV">
+      <element id="MAINV">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Ind+Prs+Person-Number"/>
       </element>
@@ -34,29 +35,29 @@
   <q>
     <question>
       <text>Maid SUBJ MAINV odne</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<sem class="HUMAN"/>
 	<grammar tag="N+Number+Nom"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>bargat</id> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>
       </element>
     </question>
     <answer> 
       <text>(CLADV) (odne) SUBJ MAINV (odne) (CLADV)</text>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Prs+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) (odne) SUBJ MAINV (odne) (CLADV)</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Prs+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
@@ -69,32 +70,32 @@
   <q>
     <question>
       <text>Maid SUBJ-guovttos MAINV odne</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<sem class="HUMAN"/>
 	<grammar tag="N+Sg+Gen"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>bargat</id> 
 	<grammar tag="V+Ind+Prs+Du3"/>
       </element>
     </question>
     <answer> 
       <text>(CLADV) (odne) (SUBJ) MAINV (odne) (CLADV)</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="HUMAN"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Prs+Du3"/>
 	<sem class="ACTIVITY"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) (odne) (SUBJ) MAINV (odne) (CLADV)</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<id>son</id>
 	<grammar tag="Pron+Pers+Du3+Nom"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Prs+Du3"/>
 	<sem class="ACTIVITY"/>
       </element>
@@ -106,19 +107,18 @@
 <!-- MAINV must agree with ANSWERSUBJECT in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
     <q>
    <question>
-   <agreement>ANSWERSUBJECT/MAINV</agreement>
       <text>Maid SUBJ MAINV ikte</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>bargat</id> 
 	<grammar tag="V+Ind+Prt+Person-Number"/>
       </element>
     </question>
     <answer> 
       <text>(CLADV) (ikte) ANSWERSUBJECT MAINV (ikte) (CLADV)</text>
-      <element type="MAINV">
+      <element id="MAINV">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Ind+Prt+Person-Number"/>
       </element>
@@ -129,29 +129,29 @@
   <q>
     <question>
       <text>Maid SUBJ MAINV ikte</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<sem class="HUMAN"/>
 	<grammar pos="N"/>
       </element>
-      <element  type="MAINV">
+      <element  id="MAINV">
 	<id>bargat</id> 
 	<grammar tag="V+Ind+Prt+Person-Number"/>
       </element>
     </question>
     <answer> 
       <text>(CLADV) (ikte) SUBJ MAINV (ikte) (CLADV)</text>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Prt+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) (ikte) SUBJ MAINV (ikte) (CLADV)</text>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Prt+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<id>son</lemm>
 	<grammar tag="Pron+Pers+Person-Number"/>
       </element>
@@ -163,31 +163,31 @@
   <q>
     <question>
       <text>Maid SUBJ-guovttos MAINV ikte</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<sem class="HUMAN"/>
 	<grammar tag="N+Sg+Gen"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>bargat</id> 
 	<grammar tag="V+Ind+Prt+Du3"/>
       </element>
     </question>
     <answer> 
       <text>(CLADV) (ikte) (SUBJ) MAINV (ikte) (CLADV)</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<sem class="HUMAN"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Prt+Du3"/>
 	<sem class="ACTIVITY"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) (ikte) (SUBJ) MAINV (ikte) (CLADV)</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="Pron+Pers+Du3+Nom"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Prt+Du3"/>
 	<sem class="ACTIVITY"/>
       </element>
@@ -200,20 +200,19 @@
 <!-- MAINV must agree with ANSWERSUBJECT in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
   <q>
     <qtype>V-COND</qtype>
-    <agreement>ANSWERSUBJECT/MAINV</agreement>
     <question>
       <text>Maid SUBJ MAINV luomus</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>bargat</id> 
 	<grammar tag="V+Cond+Prs+Person-Number"/>
       </element>
     </question>
     <answer> 
       <text>(CLADV) (luomus) ANSWERSUBJECT MAINV (odne) (luomus)</text>
-      <element type="MAINV">
+      <element id="MAINV">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Cond+Prs+Person-Number"/>
       </element>
@@ -225,29 +224,29 @@
     <qtype>V-COND</qtype>
     <question>
       <text>Maid SUBJ MAINV luomus</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<sem class="HUMAN"/>
 	<grammar tag="N+Number+Nom"/>
       </element>
-      <element  type="MAINV">
+      <element  id="MAINV">
 	<id>bargat</id> 
 	<grammar tag="V+Cond+Prs+Person-Number"/>
       </element>
     </question>
     <answer> 
       <text>(CLADV) (luomus) SUBJ MAINV (luomus) (CLADV)</text>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Cond+Prs+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) (luomus) SUBJ MAINV (luomus) (CLADV)</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
-<element type="MAINV">
+<element id="MAINV">
 	<grammar tag="V+Cond+Prs+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
@@ -261,32 +260,32 @@
     <qtype>V-COND</qtype>
     <question>
       <text>Maid SUBJ-guovttos MAINV luomus</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<sem class="HUMAN"/>
 	<grammar tag="N+Sg+Gen"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>bargat</id> 
 	<grammar tag="V+Cond+Prs+Du3"/>
       </element>
     </question>
     <answer> 
       <text>(CLADV) (luomus) (SUBJ) MAINV (luomus) (CLADV)</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<sem class="HUMAN"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Cond+Prs+Du3"/>
 	<sem class="ACTIVITY"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) (luomus) (SUBJ) MAINV (luomus) (CLADV)</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<id>son</id>
 	<grammar tag="Pron+Pers+Du3+Nom"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Cond+Prs+Du3"/>
 	<sem class="ACTIVITY"/>
       </element>
@@ -298,21 +297,21 @@
 
 <q>
     <qtype>V-POT</qtype>
-    <agreement>SUBJ/V-POT</agreement>
   <question>
     <text>MAINV go SUBJ</text>
-    <element type="MAINV">
+    <element id="MAINV">
       <grammar tag="V+Ind+Prs+Person-Number"/>
       <sem class="ACTIVITY"/>
     </element>
-    <element type="SUBJ">
+    <element id="SUBJ">
       <sem class="HUMAN"/>
       <grammar pos="N"/>
     </element>
   </question>
   <answer> 
     <text>In dieđe V-POT go </text>
-      <element type="V-POT">
+      <element id="V-POT">
+	<agreement id="SUBJ"/>
 	<grammar tag="V+Pot+Person-Number"/>
       </element>
     </answer>
@@ -327,21 +326,21 @@
     <qtype>V-IMPRT</qtype>
    <question>
       <text>SUBJ MAINV MAINV2</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="Pron+Pers+Sg1"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>áigut</id> 
 	<grammar tag="V+Cond+Prs+Sg1"/>
       </element>
-       <element type="MAINV2">
+       <element id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Inf"/>
       </element>
    </question>
     <answer> 
       <text>MAINV2</text>
-      <element type="MAINV2">
+      <element id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Imprt+Prs+Sg2"/>
       </element>
@@ -352,21 +351,21 @@
     <qtype>V-IMPRT</qtype>
    <question>
       <text>SUBJ MAINV MAINV2</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="Pron+Pers+Du1"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>áigut</id> 
 	<grammar tag="V+Cond+Prs+Du1"/>
       </element>
-       <element type="MAINV2">
+       <element id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Inf"/>
       </element>
    </question>
     <answer> 
       <text>MAINV2</text>
-      <element type="MAINV2">
+      <element id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Imprt+Prs+Du2"/>
       </element>
@@ -377,21 +376,21 @@
     <qtype>V-IMPRT</qtype>
    <question>
       <text>SUBJ MAINV MAINV2</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar tag="Pron+Pers+Pl1+Nom"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>áigut</id> 
 	<grammar tag="V+Cond+Prs+Pl1"/>
       </element>
-       <element type="MAINV2">
+       <element id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Inf"/>
       </element>
    </question>
     <answer> 
       <text>MAINV2</text>
-      <element type="MAINV2">
+      <element id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Imprt+Prs+Pl2"/>
       </element>
@@ -403,18 +402,18 @@
     <qtype>V-IMPRT</qtype>
    <question>
       <text>Sihke don ja mun MAINV MAINV2</text>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>áigut</id> 
 	<grammar tag="V+Cond+Prs+Du1"/>
       </element>
-       <element type="MAINV2">
+       <element id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Inf"/>
       </element>
    </question>
     <answer> 
       <text>MAINV2</text>
-      <element type="MAINV2">
+      <element id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Imprt+Prs+Du1"/>
       </element>
@@ -425,18 +424,18 @@
     <qtype>V-IMPRT</qtype>
    <question>
       <text>Sihke don ja mii MAINV MAINV2</text>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>áigut</id> 
 	<grammar tag="V+Cond+Prs+Pl1"/>
       </element>
-       <element type="MAINV2">
+       <element id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Inf"/>
       </element>
    </question>
     <answer> 
       <text>MAINV2</text>
-      <element type="MAINV2">
+      <element id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Imprt+Prs+Pl1"/>
       </element>
@@ -451,14 +450,13 @@
 <!-- Both Morfa and QA: -->
   <q>
     <qtype>V-GO</qtype>
-    <agreement>ANSWERSUBJECT/NEG</agreement>
     <question>
       <text>MAINV go SUBJ ikte</text>
-      <element type="MAINV">
+      <element id="MAINV">
 	<grammar tag="V+Ind+Prt+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<sem class="HUMAN"/>
 	<grammar pos="N"/>
       </element>
@@ -468,20 +466,20 @@
     </answer>
     <answer> 
       <text>(CLADV) SUBJ MAINV (ikte) (CLADV)</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number"/>
       </element>
     </answer>
     <answer> 
       <text>(ikte) ANSWERSUBJECT NEG PRFPRC (ikte) (CLADV)</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-      <element type="NEG">
+      <element id="NEG">
 	<grammar tag="Neg+Ind+Person-Number"/>
       </element>
-      <element type="PRFPRC">
+      <element id="PRFPRC">
 	<grammar tag="V+PrfPrc"/>
 	<sem class="ACTIVITY"/>
       </element>
@@ -491,14 +489,13 @@
 <!-- Both Morfa and QA: -->
 <q>
   <qtype>V-GO</qtype>
-  <agreement>ANSWERSUBJECT/NEG</agreement>
   <question>
     <text>MAINV go SUBJ luomus</text>
-    <element type="MAINV">
+    <element id="MAINV">
       <grammar tag="V+Cond+Prs+Person-Number"/>
       <sem class="ACTIVITY"/>
     </element>
-    <element type="SUBJ">
+    <element id="SUBJ">
       <sem class="HUMAN"/>
       <grammar pos="N"/>
     </element>
@@ -508,17 +505,17 @@
   </answer>
     <answer> 
       <text>(CLADV) SUBJ MAINV (luomus) (CLADV)</text>
-      <element type="SUBJ">
+      <element id="SUBJ">
 	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number"/>
       </element>
     </answer>
     <answer> 
       <text>(luomus) ANSWERSUBJECT NEG CONNEG (luomus) (CLADV)</text>
-      <element type="NEG">
+      <element id="NEG">
 	<grammar tag="Neg+Ind+Person-Number"/>
       </element>
-      <element type="CONNEG">
+      <element id="CONNEG">
 	<grammar tag="V+Cond+Prs+ConNeg"/>
 	<sem class="ACTIVITY"/>
       </element>
