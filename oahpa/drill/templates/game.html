@@ -17,7 +17,7 @@
 <table>
      {% for form in forms %}
 
-{% ifnotequal gametype "bare" %} 
+{% ifnotequal gametype 'bare' %} 
     {% ifnotequal forloop.counter 1 %}
     <tr>
     <td>&nbsp;</td>
