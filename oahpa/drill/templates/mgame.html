@@ -65,8 +65,13 @@
   {% endif %}
 
   </td>
+
 {% else %}
+  {% ifequal gametype "qa" %}
+     <td>{{ form.question }}</td>
+  {% else %}
      <td>{{ form.question }} ({{ form.lemma }})</td>
+  {% endifequal %}
 {% endifequal %}
 
 {% endblock %}
