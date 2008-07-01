@@ -8,7 +8,6 @@ from django.contrib.admin.views.decorators import _encode_post_data, _decode_pos
 from game import *
 from qagame import *
 
-
 class Info:
     pass
 
