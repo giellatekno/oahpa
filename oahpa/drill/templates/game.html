@@ -17,13 +17,13 @@
 <table>
      {% for form in forms %}
 
-{% ifequal gametype "context" %} 
-    {% ifnotequal forloop.counter0 0 %}
+{% ifnotequal gametype "bare" %} 
+    {% ifnotequal forloop.counter 1 %}
     <tr>
     <td>&nbsp;</td>
     </tr>
     {% endifnotequal %}
-{% endifequal %}
+{% endifnotequal %}
 <tr>
 {% block question %}{% endblock %}
 </tr>
@@ -42,7 +42,9 @@
        {% else %}
        ___________________
       {% endifequal %}
-
+       {% ifequal gametype "qa" %}
+        (error in {{ form.problems }})
+       {% endifequal %}
     {% endifequal %}
 
     {% if form.answertext2 %}{{ form.answertext2 }}{% endif %}
@@ -62,9 +64,10 @@
 	{% endifequal %}
       {% else %}
       <!-- Answer field -->
-      {{ form.answer }} 
+      {{ form.answer}} 
       {% endifnotequal %}
     {% if form.answertext2 %}{{ form.answertext2 }}{% endif %}
+
      </td>
   {% endif %}
     <td>
@@ -74,21 +77,24 @@
     {% endifnotequal %}
   {% else %}
       {% ifequal form.error "error" %}
-        error
+        {{ form.problems }}
       {% endifequal %}
   {% endif %}
       </td>
 <td>
        {{ form.word_id }}       {{ form.tag_id }}
-{{ form.question_id }} 
+{{ form.question_id }} {{ form.answer_id }} 
+{{ form.questiondetails }}
 {{ form.qstring }} {{ form.astring }}
-{% if forloop.first %}
-<input type="hidden" name="userans" value="{{ form.userans }}" />
-<input type="hidden" name="correct" value="{{ form.error }}" />
-{% else %}
-<input type="hidden" name="{{ forloop.counter0 }}-userans" value="{{ form.userans }}" />
-<input type="hidden" name="{{ forloop.counter0 }}-correct" value="{{ form.error }}" />
-{% endif %}
+<input type="hidden" name="{{ forloop.counter }}-userans" value="{{ form.userans }}" />
+<input type="hidden" name="{{ forloop.counter }}-correct" value="{{ form.error }}" />
+  {% for detail, value in form.qattrs.items %}
+       <input type="hidden" name="{{ forloop.parentloop.counter }}-{{ detail }}" value="{{ value }}" />
+  {% endfor %}
+  {% for detail, value in form.aattrs.items %}
+       <input type="hidden" name="{{ forloop.parentloop.counter }}-{{ detail }}" value="{{ value }}" />
+  {% endfor %}
+
 </td>
 </tr>
 
