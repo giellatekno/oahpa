@@ -1,30 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- default grammatical information for elements in question files -->
 
-<tags>
-  <element type="SUBJ">
-    <grammar pos="Pron" tag="Pron+Pers+Person-Number+Nom"/>
-    <grammar pos="N" tag="N+Number+Nom"/>
-  </element>
-  <element type="MAINV">
-    <grammar pos="V" tag="V+Mood+Tense+Person-Number"/>
-  </element>  
-  <element type="N-ILL">
-    <grammar pos="N" tag="N+Number+Ill"/>
-  </element>
-  <element type="N-LOC">
-    <grammar pos="N" tag="N+Number+Loc"/>
-  </element>
-  <element type="N-COM">
-    <grammar pos="N" tag="N+Number+Com"/>
-  </element>
-  <element type="N-ACC">
-    <grammar pos="N" tag="N+Number+Acc"/>
-  </element>
-  <element type="N-GEN">
-    <grammar pos="N" tag="N+Number+Gen"/>
-  </element>
-  <element type="OBJ">
-    <grammar pos="N" tag="N+Number+Acc"/>
-  </element>
-</tags>
+<definitions>
+  <tags>
+    <element id="SUBJ">
+      <grammar pos="Pron" tag="Pron+Pers+Person-Number+Nom"/>
+      <grammar pos="N" tag="N+Number+Nom"/>
+    </element>
+    <element id="MAINV">
+      <grammar pos="V" tag="V+Mood+Tense+Person-Number"/>
+    </element>  
+    <element id="N-ILL">
+      <grammar pos="N" tag="N+Number+Ill"/>
+    </element>
+    <element id="N-LOC">
+      <grammar pos="N" tag="N+Number+Loc"/>
+    </element>
+    <element id="N-COM">
+      <grammar pos="N" tag="N+Number+Com"/>
+    </element>
+    <element id="N-ACC">
+      <grammar pos="N" tag="N+Number+Acc"/>
+    </element>
+    <element id="N-GEN">
+      <grammar pos="N" tag="N+Number+Gen"/>
+    </element>
+    <element id="OBJ">
+      <grammar pos="N" tag="N+Number+Acc"/>
+    </element>
+  </tags>
+  <!-- These tags replace information from question files -->
+  <partitions>
+    <part name="ANSWERSUBJECT">
+      <select>
+	<element id="SUBJ">
+	  <grammar pos="N" tag="N+Number+Nom"/>
+	  <grammar pos="Pron" tag="Pron+Pers+Sg3+Nom"/>
+	  <grammar pos="Pron" tag="Pron+Pers+Pl3+Nom"/>
+	  <grammar pos="Pron" tag="Pron+Pers+Du3+Nom"/>
+	</element>
+      </select>
+      <select>
+	<element id="SUBJ" optional="1">
+          <grammar pos="Pron" tag="Pron+Pers+Sg1+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Sg2+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Pl1+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Pl2+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Du1+Nom"/>
+          <grammar pos="Pron" tag="Pron+Pers+Du2+Nom"/>
+	</element>
+      </select>
+    </part>
+  </partitions>
+</definitions>
