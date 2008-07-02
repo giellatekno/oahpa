@@ -42,7 +42,7 @@ class Game:
             if self.settings.semtype == 'all':
                 self.settings.semtype=self.settings.allsem
             else:
-                semtype=self.settings.semtype
+                semtype=self.settings.semtype[:]
                 self.settings.semtype=[]
                 self.settings.semtype.append(semtype)
 
@@ -298,13 +298,15 @@ class QuizzGame(Game):
         books=self.settings.books
         semtypes=self.settings.semtype
 
-        if semtypes:
-            semtype_intersect = set(semtypes).difference(set(self.settings.allsem))
+        #if semtypes:
+        #    semtype_intersect = set(semtypes).difference(set(self.settings.allsem))
 
         while True:
-            if semtype_intersect:
-                w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes)).count()
-                random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes))[randint(0,w_count-1)]
+            if semtypes:
+                w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) &\
+                                            Q(source__name__in=books)).count()
+                random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                Q(source__name__in=books))[randint(0,w_count-1)]
             else:
                 w_count=Word.objects.filter( Q(source__name__in=books)).count()
                 random_word=Word.objects.filter( Q(source__name__in=books))[randint(0,w_count-1)]
