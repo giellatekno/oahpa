@@ -71,7 +71,7 @@ class Game:
                 words[syntax][type] = []
             words[syntax][type].append(value)
  
-            print syntax, value
+            #print syntax, value
 
         return words
 
@@ -272,13 +272,13 @@ class NumGame(Game):
         language=self.settings.language
         numstring =""
         # Add generator call here
-        fstdir="/Users/saara/gt-cvs/" + language + "/bin"        
+        #fstdir="/Users/saara/gt-cvs/" + language + "/bin"        
     
-        #fstdir="/opt/smi/" + language + "/bin"
+        fstdir="/opt/smi/" + language + "/bin"
         gen_norm_fst = fstdir + "/" + language + "-num.fst"
         
-        #gen_norm_lookup = "echo " + str(db_info['numeral_id']) + " | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
-        gen_norm_lookup = "echo " + str(db_info['numeral_id']) + " | /Users/saara/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        gen_norm_lookup = "echo " + str(db_info['numeral_id']) + " | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        #gen_norm_lookup = "echo " + str(db_info['numeral_id']) + " | /Users/saara/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
         num_tmp = os.popen(gen_norm_lookup).readlines()
         num_list=[]
         for num in num_tmp:
