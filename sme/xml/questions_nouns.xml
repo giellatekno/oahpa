@@ -23,9 +23,13 @@
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ILL (CLADV)</text>
-      <element id="N-ILL">
+      <element game='morfa' id="N-ILL">
 	    <sem class="OBJECT"/>
 	    <grammar pos="N"/>
+      </element>
+      <element game='qa' id="N-ILL">
+            <grammar pos="Pron"/>
+            <grammar pos="N"/>
       </element>
     </answer>
   </q>
@@ -53,9 +57,14 @@
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) OBJ N-ILL (CLADV)</text>
-      <element id="N-ILL">
+      <element game='morfa' id="N-ILL">
 	<agreement id="INTERR"/>
 	<sem class="HUMAN"/>
+      </element>
+      <element game='qa' id="N-ILL">
+        <agreement id="INTERR"/>
+        <grammar pos="Pron"/>
+	<grammar pos="N"/>
       </element>
     </answer>
   </q>
@@ -76,9 +85,20 @@
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ILL</text>
-      <element id="N-ILL">
+      <element game='morfa' id="N-ILL">
 	<grammar tag="N+Sg+Ill"/>
 	<sem class="PLACE"/>
+      </element>
+      <element game='qa' id="N-ILL">
+        <grammar tag="N+Sg+Ill"/>
+        <sem class="PLACE"/>
+	<sem class="NATURE-PLACE"/>
+	<sem class="SHOW"/>	
+	<sem class="SHOP"/>
+	<sem class="EDUCATION"/>
+	<sem class="ARRANGEMENT"/>
+	<sem class="ARRANGEMENT-PL"/>
+	<sem class="DOHKO"/>     
       </element>
     </answer>
   </q>
@@ -103,16 +123,26 @@
     </question>
     <answer> 
       <text>(CLADV) N-LOC MAINV (CLADV) váralaš SUBJ</text>
-      <element id="N-LOC">
+      <element game='morfa' id="N-LOC">
 	<grammar tag="N+Number+Loc"/>
 	<sem class="HUMAN"/>
+      </element>
+      <element game='qa' id="N-LOC">
+        <grammar tag="N+Number+Loc"/>
+        <sem class="HUMAN"/>
+	<grammar pos="Pron"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) N-LOC MAINV</text>
-      <element id="N-LOC">
+      <element game='morfa' id="N-LOC">
 	<agreement id="INTERR"/>
 	<sem class="HUMAN"/>
+      </element>
+      <element game='qa' id="N-LOC">
+        <grammar tag="N+Number+Loc"/>
+        <sem class="HUMAN"/>
+	<grammar pos="Pron"/>
       </element>
     </answer>
   </q>
@@ -134,9 +164,20 @@
     </question>
     <answer> 
       <text>(CLADV) SUBJ MAINV (CLADV) N-LOC (CLADV)</text>
-      <element id="N-LOC">
+      <element game='morfa' id="N-LOC">
 	<grammar tag="N+Sg+Loc"/>
 	<sem class="PLACE"/>
+      </element>
+      <element game='qa' id="N-LOC">
+        <grammar tag="N+Sg+Loc"/>
+        <sem class="PLACE"/>
+        <sem class="NATURE-PLACE"/>
+        <sem class="SHOW"/>
+        <sem class="SHOP"/>
+        <sem class="EDUCATION"/>
+        <sem class="ARRANGEMENT"/>
+        <sem class="ARRANGEMENT-PL"/>
+        <sem class="DOPPE"/>
       </element>
     </answer>
     <answer> 
@@ -170,14 +211,34 @@
     </question>
     <answer> 
       <text>(CLADV) SUBJ MAINV (CLADV) N-LOC (CLADV)</text>
-      <element id="N-LOC">
+      <element game='morfa' id="N-LOC">
 	<sem class="PLACE"/>
       </element>
-    </answer>
+      <element game='qa' id="N-LOC">
+        <sem class="PLACE"/>
+        <sem class="NATURE-PLACE"/>
+        <sem class="SHOW"/>
+        <sem class="SHOP"/>
+        <sem class="EDUCATION"/>
+        <sem class="ARRANGEMENT"/>
+        <sem class="ARRANGEMENT-PL"/>
+        <sem class="DOPPE"/>
+      </element>
+ </answer>
     <answer> 
       <text>(CLADV) SUBJ MAINV (CLADV) N-LOC (CLADV)</text>
-      <element id="N-LOC">
+      <element game='morfa' id="N-LOC">
 	<sem class="PLACE"/>
+      </element>
+      <element game='qa' id="N-LOC">
+	<sem class="PLACE"/>
+        <sem class="NATURE-PLACE"/>
+        <sem class="SHOW"/>
+        <sem class="SHOP"/>
+        <sem class="EDUCATION"/>
+        <sem class="ARRANGEMENT"/>
+        <sem class="ARRANGEMENT-PL"/>
+        <sem class="DOPPE"/>
       </element>
       <element id="SUBJ">
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
@@ -202,11 +263,16 @@
    </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-LOC (CLADV)</text>
-      <element id="N-LOC">
+      <element game='morfa' id="N-LOC">
 	<grammar tag="N+Sg+Loc"/>
 	<sem class="ANIMAL"/>
       </element>
-    </answer>
+      <element game='qa' id="N-LOC">
+        <grammar tag="N+Sg+Loc"/>
+        <grammar pos="N"/>
+	<grammar pos="Pron"/>
+      </element>   
+ </answer>
   </q>
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron : -->   
@@ -224,10 +290,14 @@
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ACC (CLADV)</text>
-      <element id="N-ACC">
+      <element game='morfa' id="N-ACC">
 	<sem class="OBJECT"/>
       </element>
-    </answer>
+      <element game='qa' id="N-ACC">
+        <grammar pos="N"/>
+	<grammar pos="Pron"/>
+      </element>    
+</answer>
   </q>
   
   <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron : -->   
@@ -246,10 +316,14 @@
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ACC (CLADV)</text>
-      <element id="N-ACC">
+      <element game='morfa' id="N-ACC">
 	<sem class="OBJECT"/>
       </element>
-    </answer>
+      <element game='qa' id="N-ACC">
+        <grammar pos="N"/>
+	<grammar pos="Pron"/>
+      </element>
+ </answer>
   </q>
 
 
@@ -268,10 +342,13 @@
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ACC (CLADV)</text>
-      <element id="N-ACC">
+      <element game='morfa' id="N-ACC">
 	<sem class="CLOTHING"/>
       </element>
-    </answer>
+      <element game='qa' id="N-ACC">
+        <grammar pos="N"/>
+      </element>   
+ </answer>
   </q>
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron : -->   
@@ -289,10 +366,14 @@
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ACC (CLADV)</text>
-      <element id="N-ACC">
+      <element game='morfa' id="N-ACC">
 	<sem class="ANIMAL"/>
       </element>
-    </answer>
+      <element game='qa' id="N-ACC">
+        <grammar pos="N"/>
+	<grammar pos="Pron"/>
+      </element>   
+ </answer>
   </q>
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  Or Pers : -->   
@@ -317,12 +398,18 @@
     </question>
     <answer> 
       <text>(CLADV) ANSWERSUBJECT MAINV (CLADV) N-ACC (CLADV)</text>
-      <element id="N-ACC">
+      <element game='morfa' id="N-ACC">
 	<agreement id="INTERR"/>
 	<grammar tag="N+Acc+Number"/>
 	<sem class="HUMAN"/>
       </element>
-    </answer>
+      <element game='qa' id="N-ACC">
+        <agreement id="INTERR"/>
+        <grammar tag="N+Acc+Number"/>
+        <sem class="HUMAN"/>
+	<grammar pos="Pron"/>
+      </element>   
+ </answer>
   </q>
 
 
