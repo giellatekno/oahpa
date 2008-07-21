@@ -322,13 +322,13 @@ Od:nposs('juoiganattáldat',pl,acc,poss3SG)	juoiganattáldagaidis
 .
 
 SOURCE: text
-SMED27 Váldet din dávviriiddát eret mu ovddas!
+SMED27 Váldet din dávviriiddádet eret mu ovddas!
 A1
 COM:cl
 P:v('váldit',2pl)	Váldet
 Od:g
 =D:pron('don',<pers>,2pl,gen)	din
-=H:nposs('dávvir',pl,acc,poss2SG)	dávviriiddát
+=H:nposs('dávvir',pl,acc,poss2PL)	dávviriiddádet
 A:prp-post('eret')	eret
 A:g
 =D:pron('mun',<pers>,1sg,gen)	mu
@@ -582,7 +582,7 @@ A1
 COM:cl
 P:v('gullat',Imp,2SG)	Gula
 ,
-P:nposs('bártnáš',sg,nom,poss1SG)	bártnážan
+S:nposs('bártnáš',sg,nom,poss1SG)	bártnážan
 !
 
 SOURCE: text
@@ -1320,11 +1320,11 @@ A:n('speajal',sg,loc)	speadjalis
 .
 
 SOURCE: text
-SMED111 Soai ráđđádalai iežaineaskka.
+SMED111 Soai ráđđádalaiga iežaineaskka.
 A1
 STA:cl
 S:pron('son',<pers>,3du,nom)	Soai
-P:v('ráđđádallat',ind,impf,3sg)	ráđđádalai
+P:v('ráđđádallat',ind,impf,3du)	ráđđádalaiga
 A:reflpron('ieš',<refl>,com,poss3du)	iežaineaskka
 .
 
@@ -2006,13 +2006,13 @@ CJT:cl
 .
 
 SOURCE: text
-SMED167 Ean váidal morrašiiddámet geasage.
+SMED167 Ean váidal morrašiiddáme geasage.
 A1
 STA:cl
 P:g
 =D:v('ii',neg,ind,1du)	Ean
 =H:v('váidalit',ind,pr,conneg)	váidal
-Od:nposs('moraš',pl,acc,poss1du)	morrašiiddámet
+Od:nposs('moraš',pl,acc,poss1du)	morrašiiddáme
 A:pron('gii',<rel>,sg,ill,foc/ge)	geasage
 .
 
@@ -2629,12 +2629,12 @@ P:g
 =D:v('ii',neg,ind,3sg)	ii
 =D:v('leat',ind,pr,conneg)	leat
 =H:v('oaidnit',pcp2)	oaidnán
-Od:nposs('viellja',sg,acc,poss3PL)	vieljaidis
+Od:nposs('viellja',pl,acc,poss3SG)	vieljaidis
 A:n('jahki',sg,ill)	jahkái
 .
 
 SOURCE: text
-SMED220 Mun in leat oaidnán vieljaidis jahkái.
+SMED220 Mun in leat oaidnán vieljaidan jahkái.
 A1
 STA:cl
 S:pron('mun',<pron>,1sg,nom)	Mun
@@ -2642,7 +2642,7 @@ P:g
 =D:v('ii',neg,ind,1sg)	in
 =D:v('leat',ind,pr,conneg)	leat
 =H:v('oaidnit',pcp2)	oaidnán
-Od:nposs('viellja',sg,acc,poss1PL)	vieljaidan
+Od:nposs('viellja',pl,acc,poss1SG)	vieljaidan
 A:n('jahki',sg,ill)	jahkái
 .
 
@@ -2756,7 +2756,7 @@ A:nposs('biila',pl,com,poss2PL)	biillaideattetguin
 ?
 
 SOURCE: text
-SMED230 Lávebehtet go vuovdit guliideaset?
+SMED230 Lávebehtet go vuovdit guliideattet?
 A1
 QUE:cl
 P:g-
@@ -4247,20 +4247,6 @@ Od:g
 ====H:prp-pre('bealde')	bealde
 ===D:prop('Deatnu',plc,sg,gen)	Deanu
 .
-
-SOURCE: text
-SMED323 Váldet din dávviriiddát eret mu ovddas!
-A1
-COM:cl
-P:v('váldit',Imp,2PL)	Váldet
-Od:g
-=D:pron('don',<pers>,2pl,gen)	din
-=H:nposs('dávvir',pl,acc,poss2SG)	dávviriiddát
-A:prp-post('eret')	eret
-A:g
-=D:pron('mun',<pers>,1sg,gen)	mu
-=H:prp-post('ovddas')	ovddas
-!
 
 SOURCE: text
 SMED324 Váldde biergasiid iežat fárrui!
@@ -5799,11 +5785,11 @@ Cs:adj('čeahppi',pl,nom)	čeahpit
 
 
 SOURCE: text
-SMED445) Buot lea divraseabbo ovdal.
+SMED445) Buot lei divraseabbo ovdal.
 A1
 STA:cl
 S:pron('buot',<idef>)	Buot
-P:v('leat',ind,pr,3sg)	lea
+P:v('leat',ind,impf,3sg)	lei
 Cs:adj('divrras',comp,sg,nom)	divraseabbo/divrasat
 .
 
@@ -6437,7 +6423,7 @@ Od:g
 ?
 
 SOURCE: text
-SMED497) Dan mun muitalan dušše dutnje, mu buoremus olbmái.
+SMED497) Dan mun muitalan dušše dutnje, iežan buoremus olbmái.
 A1
 STA:cl
 Od:pron('dat',<pers>,3sg,acc)	Dan
@@ -6448,7 +6434,7 @@ A:g
 =H:pron('don',<pers>,2sg,ill)	dutnje
 ,
 =D:g
-==D:pron('mun',<pers>,1sg,gen)	mu
+==D:reflpron('ieš',<refl>,gen,poss1SG)	iežan
 ==D:adj('buorre',sup,attr)	buoremus
 ==H:n('olmmái',sg,ill)	olbmái
 .
@@ -7198,18 +7184,16 @@ Cs:g
 .
 
 SOURCE: text
-SMED558) Muhto diet Will Turner, son nai lea fiinna olmmái.
+SMED558) Gal diet Will Turner nai lea fiinna olmmái.
 A1
 STA:cl
-CO:conj-s('muhto')	Muhto
+A:adv('gal')	Gal
 S:g
 =D:g
-==D:pron('diet',<dem>,sg,nom)	diet
-==D:prop('Will',sg,attr)	Will
-==H:prop('Turner',Sur,sg,nom)	Turner
-,
-=H:pron('son',<pers>,3sg,nom)	son
-Apcle:part('nai')	nai
+==D:pron('diet',dem,sg,nom)	diet
+==D:n-prop('Will',sg,attr)	Will
+==H:n-prop('Turner',Sur,sg,nom)	Turner
+PART:part('nai')	nai
 P:v('leat',ind,pr,3sg)	lea
 Cs:g
 =D:adj('fiinnis',attr)	fiinna
