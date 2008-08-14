@@ -1,0 +1,175 @@
+!!!Meeting notes, Pedagogical programs, 080814
+
+
+!!Participants
+
+Biret Ánne, Ciprian, Lene, Saara, Trond.
+
+
+!!Status quo
+
+!Biret Ánne:
+
+Working with QA
+
+In Saaras last mail there was discused different semantic sets for VASTA (QA) and LEKSA (vocabulary game). Biret Ánne has been working on these sets, but is not done yet.
+
+In Morfa you get the noun in brackets, you don't get that in Vasta. Vasta allows more 
+
+The reason why Vasta does not accept all our words is technical. The goal is to have Vasta accept any word from the ped lexicon, disregarding semantic roles. (note for later considering: Should it accept al words from the analyser as well).
+
+Now, Vasta and Morfa have the same guestions. Genitive questions for time are ok in Morfa, with words in paranthesis, but not in Vasta. This means we do not want to have the same questions in Vasta and Morfa. So, there should be a partly overlap only.
+
+
+!Saara:
+
+Saara's summer report:
+
+Hi,
+
+I updated the interface with the last versions in svn. I got first version
+of the qa to victorio. You can select it from page
+[http://victorio.uit.no/oahpa/morfa/]
+
+Game type:
+* bare / context / qa
+
+Not all the features are implemented, but the system should be otherwise
+stable. For example, I did not implement negative answers for
+go-questions which I had earlier etc. Some things to be noted for qa:
+
+* Word order is free (but see forthcoming discussion)
+* Extra words are ignored
+
+What kind of words should be accepted/ignored?
+
+{{{
+	CLADV
+	A Attr + N (good)   (stuorra guovžžas)   NOUN = (A Attr) N 
+	A Nom + N (not good)  (stuoris guovžžas)
+}}}
+
+* Only obligatory words are checked
+* ANSWERSUBJECT is not implemented
+* There is only one answer for each question, so not all the answers in xml-files are taken into account.
+* There are no correct answers provided by the program (need a speller)
+* The semantic sets for qa are the same as in morfa (this will be removed, cf. discussion).
+* Adjectives do not have context / qa -games
+* It is a bit slow (especially off-campus), will be improved
+
+The error message gives the id's of erroneous elements, it is later
+replaced with the tutorial message. Now there are lot of things that can
+be done to improve the system, here a couple of them:
+
+- Add different semantic sets to qa and morfa. For example, it should be
+possible to answer using a pronoun etc. Mark the information that is
+specific for qa. For example using attribute game='qa' or game='morfa':
+
+{{{
+<element game='qa' id="N-ILL">
+ <grammar pos="N"/>
+ <grammar pos="Pron"/>
+</element>
+<element game='morfa' id="N-ILL">
+ <sem class="OBJECT"/>
+ <grammar pos="N"/>
+</element>
+}}}
+
+* As in previous example, qa should allow also pronouns as answers in most cases, this information should be added in xml-files.
+* In the qa, a list of possible words that can be used as answer could be given as a link, this is easily implemented.
+* Testing and reporting.. obviously, I do not spot the agreement errors well enough.
+
+There is a new feature: translations as tooltips in bare morfa.
+Unfortunately they are not quite in correct places yet.. The
+functionality could be changed so that clicking the word gives the
+translation instead of just pointing at it, if the tooltip feels
+distrubing. This means that javascript is working, so also other
+usability issues regarding the interface will be solved in the autumn.
+
+I have also some technical problems with the semantic sets for leksa, but
+I hope to fix them already today.
+
+I won't be reading my email much before 20.7. Have a nice holiday!
+
+
+
+!Lene:
+
+Has been working with VISL - corrections. Presented VISL-syntactic tree for sami teachers at the university.
+
+!Trond:
+
+Has translated the user documentation into English
+
+Has added (gone through and completed from the Sammallahti dictionary) place names to our smenob.xml dictionary (now appr 440), these may be added to our Leksa game.
+
+
+
+
+
+!!Short-term plans forwards
+
+!Leksa:
+
+# Tromsø: Read through the lexicon and fix worst translations
+# Saara: Implement an inverted Leksa
+# Tromsø: Test and see whether we want to make a different nobsme lexicon. 
+
+!Bugs
+
+# Use Bugzilla more actively
+# Add bugs
+# Fix them
+
+
+!Saara
+
+Away 22.8-31.8
+
+
+
+
+!!Topics
+
+!Work on the xml files
+
+* Remark the question types in questions_nouns.xml (vasta or morfa)
+* Mark the essive-able time expression nouns in the nouns.xml
+
+
+!Choices in Vasta:
+
+* Drop the case choice (the idea being that in Vasta the user will have to detect that himself/herself) and the stem choice.
+
+
+!Restrictions on word order
+
+Now, the word order is too free. We want it quite free, but will have to work on that.
+
+Example: Mas mii ballat?
+Dii ballabehtet (stuorra) guovžžas.  OK
+(Stuorra) Guovžžas dii ballabehtet.  OK
+
+Allow any noun to be expanded to NP?
+
+# Tromsø: Look at the possible wordorders
+
+!Place names
+
+For Leksa we should do a basic list based upon the dictionary as it is today.
+
+For a more advanced Language Resource (on a par with the analysers etc.) we should complete the names we have,  from [http://yr.no], or directly from Statens Kartverk.
+
+
+
+!!Next meeting  
+
+!Virtual meeting
+
+* 20.08.08 10.00
+
+
+!Real-life meeting
+
+* third week of September (15-19.9)
