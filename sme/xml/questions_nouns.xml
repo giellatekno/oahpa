@@ -28,7 +28,6 @@
 	    <grammar pos="N"/>
       </element>
       <element game='qa' id="N-ILL">
-            <grammar pos="Pron"/>
             <grammar pos="N"/>
       </element>
     </answer>
@@ -90,15 +89,7 @@
 	<sem class="PLACE"/>
       </element>
       <element game='qa' id="N-ILL">
-        <grammar tag="N+Sg+Ill"/>
-        <sem class="PLACE"/>
-	<sem class="NATURE-PLACE"/>
-	<sem class="SHOW"/>	
-	<sem class="SHOP"/>
-	<sem class="EDUCATION"/>
-	<sem class="ARRANGEMENT"/>
-	<sem class="ARRANGEMENT-PL"/>
-	<sem class="DOHKO"/>     
+        <grammar pos="N"/>
       </element>
     </answer>
   </q>
@@ -129,7 +120,7 @@
       </element>
       <element game='qa' id="N-LOC">
         <grammar tag="N+Number+Loc"/>
-        <sem class="HUMAN"/>
+        <grammar pos="N"/>
 	<grammar pos="Pron"/>
       </element>
     </answer>
@@ -140,8 +131,8 @@
 	<sem class="HUMAN"/>
       </element>
       <element game='qa' id="N-LOC">
-        <grammar tag="N+Number+Loc"/>
-        <sem class="HUMAN"/>
+        <agreement id="INTERR"/>
+        <grammar pos="N"/>
 	<grammar pos="Pron"/>
       </element>
     </answer>
@@ -169,15 +160,7 @@
 	<sem class="PLACE"/>
       </element>
       <element game='qa' id="N-LOC">
-        <grammar tag="N+Sg+Loc"/>
-        <sem class="PLACE"/>
-        <sem class="NATURE-PLACE"/>
-        <sem class="SHOW"/>
-        <sem class="SHOP"/>
-        <sem class="EDUCATION"/>
-        <sem class="ARRANGEMENT"/>
-        <sem class="ARRANGEMENT-PL"/>
-        <sem class="DOPPE"/>
+        <grammar pos="N"/>
       </element>
     </answer>
     <answer> 
