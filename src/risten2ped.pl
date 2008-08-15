@@ -28,7 +28,7 @@ while ($line = <> ) {
 	= split /\t/, $line ;
 #    print "samisk: $sme\n";
 #    print "pos: $smepos\n";
-    print "  <entry>\n    <lg>\n      <lemma>$sme</lemma>\n    <pos class=\"N\"/>\n    <translations>\n      <tr xml:lang=\"nob\">$nob</tr>\n    </translations>\n    <semantic>\n      <sem class=\"PLACE-NAME\"/>\n    </semantics>\n      <stem class=\"bisyllabic\" diphthong=\"no\" gradation=\"yes\" rime=\"\"/>\n    <dialect class=\"\"/>\n    <sources>\n    </sources>\n  </entry>\n\n" ;
+    print "  <entry>\n    <lg>\n      <lemma>$sme</lemma>\n    <pos class=\"N\"/>\n    <translations>\n      <tr xml:lang=\"nob\">$nob</tr>\n    </translations>\n    <semantics>\n      <sem class=\"PLACE-NAME\"/>\n    </semantics>\n      <stem class=\"bisyllabic\" diphthong=\"no\" gradation=\"yes\" rime=\"\"/>\n    <dialect class=\"\"/>\n    <sources>\n    </sources>\n  </entry>\n\n" ;
 
 }
   
