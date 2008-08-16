@@ -58,12 +58,11 @@ BOOK_CHOICES = (
 GAME_CHOICES = (
     ('bare', _('bare')),
     ('context', _('context')),
-    ('qa', _('qa')),
 )
 
 TRANS_CHOICES = (
-    ('nobsme', _('Norwegian to North Sami')),
     ('smenob', _('North Sami to Norwegian')),
+    ('nobsme', _('Norwegian to North Sami')),
 )
 
 LANGUAGE_CHOICES = (
@@ -159,6 +158,10 @@ def set_settings(self):
     for b in SEMTYPE_CHOICES:
         self.allsem.append(b[0])        
         
+    self.allcase = []
+    for b in CASE_CHOICES:
+        self.allcase.append(b[0])                
+
             
 class MorphForm(forms.Form):
 
@@ -234,7 +237,7 @@ class QuizzForm(forms.Form):
     set_settings = set_settings
 
     semtype = forms.ChoiceField(initial='all', choices=SEMTYPE_CHOICES, widget=forms.Select)
-    transtype = forms.ChoiceField(initial='nobsme', choices=TRANS_CHOICES, widget=forms.Select)
+    transtype = forms.ChoiceField(initial='smenob', choices=TRANS_CHOICES, widget=forms.Select)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
 
     def __init__(self, *args, **kwargs):
@@ -422,6 +425,21 @@ def qa_is_correct(self, atext):
         self.error = "correct"
 
     return
+
+
+class QAForm(forms.Form):
+
+    set_settings = set_settings
+
+    vtype = forms.ChoiceField(initial='VERB', choices=VTYPE_CHOICES, widget=forms.Select)
+    vtype_bare = forms.ChoiceField(initial='PRS', choices=VTYPE_BARE_CHOICES, widget=forms.Select)
+    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
+    default_data = {'pos': 'N'}
+
+    def __init__(self, *args, **kwargs):
+        self.set_settings()
+        super(QAForm, self).__init__(*args, **kwargs)
+
 
 class QAQuestion(forms.Form):
     """
