@@ -63,15 +63,10 @@
       var lemma_{{ forloop.counter0 }}_tooltip = new Tooltip('lemma_{{ forloop.counter0 }}','tooltip_{{ forloop.counter0 }}')
     </script>
   {% endif %}
-
   </td>
 
 {% else %}
-  {% ifequal gametype "qa" %}
-     <td>{{ form.question }}</td>
-  {% else %}
-     <td>{{ form.question }} ({{ form.lemma }})</td>
-  {% endifequal %}
+<td>{{ form.question }} ({{ form.lemma }})</td>
 {% endifequal %}
 
 {% endblock %}
