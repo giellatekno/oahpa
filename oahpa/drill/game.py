@@ -286,24 +286,33 @@ class QuizzGame(Game):
 
         print "BOOKS"
         print books
+        print semtypes
 
         while True:
             if self.settings.transtype == "smenob":            
                 if semtypes:
-                    w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) &\
-                                                Q(source__name__in=books)).count()
-                    random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                Q(source__name__in=books))[randint(0,w_count-1)]
+                    if self.settings.book.count('all') > 0:
+                        w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes)).count()
+                        random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes))[randint(0,w_count-1)]
+                    else:
+                        w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) &\
+                                                    Q(source__name__in=books)).count()
+                        random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                        Q(source__name__in=books))[randint(0,w_count-1)]
                 else:
                     w_count=Word.objects.filter( Q(source__name__in=books)).count()
                     random_word=Word.objects.filter( Q(source__name__in=books))[randint(0,w_count-1)]
 
             else:
                 if semtypes:
-                    w_count=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) &\
-                                                   Q(source__name__in=books)).count()
-                    random_word=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                       Q(source__name__in=books))[randint(0,w_count-1)]
+                    if self.settings.book.count('all') > 0:
+                        w_count=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes)).count()
+                        random_word=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes))[randint(0,w_count-1)]
+                    else:
+                        w_count=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) &\
+                                                    Q(source__name__in=books)).count()
+                        random_word=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                           Q(source__name__in=books))[randint(0,w_count-1)]
                 else:
                     w_count=Wordnob.objects.filter( Q(source__name__in=books)).count()
                     random_word=Wordnob.objects.filter( Q(source__name__in=books))[randint(0,w_count-1)]
