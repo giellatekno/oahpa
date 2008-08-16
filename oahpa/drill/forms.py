@@ -81,18 +81,16 @@ SEMTYPE_CHOICES = (
     ('FOOD/DRINK', _('food/drink')),
     ('TIME', _('time')),
     ('CONCRETES', _('concretes')),
-    ('IN-ROOM', _('in-room')),
     ('BODY', _('body')),
     ('CLOTHES', _('clothes')),
     ('BUILDINGS/ROOMS', _('buildings/rooms')),
     ('NATUREWORDS', _('naturewords')),
-    ('TRAVELWORDS', _('travelwords')),
     ('LEISURETIME/AT_HOME', _('leisuretime/at_home')),
     ('PLACES', _('places')),
     ('LITERATURE', _('literature')),
     ('SCHOOL/EDUCATION', _('school/education')),
     ('ABSTRACTS', _('abstracts')),
-    ('WORD/ECONOMY/TOOLS', _('word/economy/tools')),
+    ('WORK/ECONOMY/TOOLS', _('work/economy/tools')),
     ('all', _('all')),
 )
 
@@ -137,9 +135,35 @@ def set_correct(self):
     """
     for e in self.correct_anslist:
         self.correct_answers += " "+e
+
+def set_settings(self):
+
+    # Construct arrays for book choices.
+    self.books = {}
+    self.books['all'] = []
+    for b in BOOK_CHOICES:
+        if b[0] != 'all':
+            self.books[b[0]] = []
+            self.books['all'].append(b[0])
+
+        self.books[b[0]].append(b[0])
+
+        
+    self.books['d2'].append('d1')
+    for b in ['d1', 'd2']:
+        self.books['d3'].append(b)
+    for b in ['d1', 'd2', 'd3']:
+        self.books['d4'].append(b)
+
+    self.allsem = []
+    for b in SEMTYPE_CHOICES:
+        self.allsem.append(b[0])        
         
             
 class MorphForm(forms.Form):
+
+    set_settings = set_settings
+
     case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
     vtype = forms.ChoiceField(initial='VERB', choices=VTYPE_CHOICES, widget=forms.Select)
     vtype_bare = forms.ChoiceField(initial='PRS', choices=VTYPE_BARE_CHOICES, widget=forms.Select)
@@ -149,11 +173,11 @@ class MorphForm(forms.Form):
     trisyllabic = forms.BooleanField(required=False,initial='1')
     contracted = forms.BooleanField(required=False,initial='1')
     default_data = {'pos': 'N'}
-    allbooks = []
-    for b in BOOK_CHOICES:
-        allbooks.append(b[0])
 
-    
+    def __init__(self, *args, **kwargs):
+        self.set_settings()
+        super(MorphForm, self).__init__(*args, **kwargs)
+        
 class MorphQuestion(forms.Form):
     """
     Questions for morphology game 
@@ -163,7 +187,7 @@ class MorphQuestion(forms.Form):
     
     answer = forms.CharField()
 
-    def __init__(self, word, tag, fullforms, tr_list, question, userans_val, correct_val, *args, **kwargs):
+    def __init__(self, word, tag, fullforms, translations, question, userans_val, correct_val, *args, **kwargs):
 
         lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
         tag_widget = forms.HiddenInput(attrs={'value' : tag.id})
@@ -186,8 +210,8 @@ class MorphQuestion(forms.Form):
         self.error="empty"
         self.problems="error"
         self.translations = []
-        for item in tr_list:
-            self.translations.append(item.translation)
+        for item in translations:
+            self.translations.append(item.lemma)
         
         for item in fullforms:
             self.correct_anslist.append(item.fullform)
@@ -206,15 +230,17 @@ class MorphQuestion(forms.Form):
 
 
 class QuizzForm(forms.Form):
+
+    set_settings = set_settings
+
     semtype = forms.ChoiceField(initial='all', choices=SEMTYPE_CHOICES, widget=forms.Select)
-    transtype = forms.ChoiceField(initial='smenob', choices=TRANS_CHOICES, widget=forms.Select)
+    transtype = forms.ChoiceField(initial='nobsme', choices=TRANS_CHOICES, widget=forms.Select)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
-    allbooks = []
-    for b in BOOK_CHOICES:
-        allbooks.append(b[0])
-    allsem = []
-    for b in SEMTYPE_CHOICES:
-        allsem.append(b[0])        
+
+    def __init__(self, *args, **kwargs):
+        self.set_settings()
+        super(QuizzForm, self).__init__(*args, **kwargs)
+
 
 class QuizzQuestion(forms.Form):
     """
@@ -238,7 +264,7 @@ class QuizzQuestion(forms.Form):
         self.problems="error"
         
         for item in translations:
-            self.correct_anslist.append(item.translation)
+            self.correct_anslist.append(item.lemma)
 
         self.is_correct()
 
@@ -247,9 +273,16 @@ class QuizzQuestion(forms.Form):
             self.error="correct"
 
 class NumForm(forms.Form):
+
+    set_settings = set_settings
+
     maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
     numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
     language = forms.ChoiceField(initial='sme', choices=LANGUAGE_CHOICES, widget=forms.RadioSelect)
+
+    def __init__(self, *args, **kwargs):
+        self.set_settings
+        super(NumForm, self).__init__(*args, **kwargs)
 
 class NumQuestion(forms.Form):
     """
