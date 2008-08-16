@@ -112,6 +112,8 @@ class Gameview:
             })
         return c
 
+
+
 def mgame_n(request):
 
     mgame = Gameview()
@@ -141,65 +143,169 @@ def mgame_a(request):
     return render_to_response('mgame_a.html', c)
 
 
+class Vastaview:
+
+    def init_settings(self):
+
+        show_data=0
+        self.settings=Info()
+        self.settings.syll = ['bisyllabic', 'trisyllabic', 'contracted']
+        self.settings.pos="N"
+        self.settings.book = []
+        self.settings.semtype='all'
+        self.settings.language="sme"
+        self.settings.vtype_bare="PRS"
+        self.settings.vtype="VERB"
+
+    def create_vastagame(self,request):
+
+        count=0
+        correct=0
+
+        if request.method == 'POST':
+            data = request.POST.copy()
             
+            # Settings form is checked and handled.
+            settings_form = QAForm(request.POST)
+
+            self.settings.allsem=settings_form.allsem
+            self.settings.allcase=settings_form.allcase
+            
+            self.syll_settings(settings_form)
+
+            if settings_form.data.has_key('vtype'):
+                self.settings.vtype= settings_form.data['vtype']
+
+            if settings_form.data.has_key('vtype_bare'):
+                self.settings.vtype_bare= settings_form.data['vtype_bare']
+
+            if settings_form.data['book']:
+                self.settings.book = settings_form.books[settings_form.data['book']]
+                
+                        
+            # Create game
+            game = QAGame(self.settings)
+            game.init_tags()
+            
+            # If settings are changed, a new game is created
+            # Otherwise the game is created using the user input.
+            if "settings" in data:
+                game.new_game()
+            else:
+                game.check_game(data)
+                game.get_score(data)
+
+            if 'test' in data:
+                game.count=1
+            if "show_correct" in data:
+                show_correct = 1
+
+        # If there is no POST data, default settings are applied
+        else:
+            settings_form = QAForm()
+            self.settings.book=settings_form.books['all']
+            self.settings.allsem=settings_form.allsem
+            self.settings.allcase=settings_form.allcase
+            
+            game = QAGame(self.settings)
+            game.new_game()
+
+        c = Context({
+            'settingsform': settings_form,
+            'forms': game.form_list,
+            'count': game.count,
+            'score': game.score,
+            'case': self.settings.case,
+            'all_correct': game.all_correct,
+            'show_correct': game.show_correct,
+            })
+        return c
+
+
+def vasta(request):
+
+    vastagame = Vastaview()
+    vastagame.init_settings()
+
+    c = vastagame.create_vastagame(request)
+    return render_to_response('vasta.html', c)
+
+            
+class Quizzview(Gameview):
+
+    def create_quizzgame(self,request):
+
+        if request.method == 'POST':
+            data = request.POST.copy()
+            
+            # Settings form is checked and handled.
+            settings_form = QuizzForm(request.POST)
+            
+            self.settings.semtype = settings_form.data['semtype']
+            self.settings.transtype = settings_form.data['transtype']
+            self.settings.book = settings_form.books[settings_form.data['book']]
+            self.settings.books = settings_form.books
+            
+            if settings_form.allsem:
+                self.settings.allsem=settings_form.allsem
+                
+            game = QuizzGame(self.settings)
+                
+            if "settings" in data:
+                game.new_game()
+            else:
+                game.check_game(data)
+                game.get_score(data)
+
+            if 'test' in data:
+                game.count=1
+            if "show_correct" in data:
+                game.show_correct = 1
+
+        
+        # If there is no POST data, default settings are applied
+        else:
+            settings_form = QuizzForm()
+            self.settings.allsem=settings_form.allsem
+            self.settings.book = settings_form.books['all']
+            self.settings.books = settings_form.books
+        
+            game = QuizzGame(self.settings)
+            game.new_game()
+
+
+        c = Context({
+            'settingsform': settings_form,
+            'forms': game.form_list,
+            'count': game.count,
+            'score': game.score,
+            'all_correct': game.all_correct,
+            'show_correct': game.show_correct,
+            })
+        
+        return c
+
+def quizz_n(request):
+
+    quizzgame = Quizzview()
+    quizzgame.init_settings()
+    quizzgame.settings.transtype="smenob"
+    quizzgame.settings.allsem=[]
+
+    quizzgame.settings.semtype = "PLACE-NAME-LEKSA"
+
+    c = quizzgame.create_quizzgame(request)
+    return render_to_response('quizz_n.html', c)
+
 def quizz(request):
 
-    mgame = Gameview()
-    mgame.init_settings()
+    quizzgame = Quizzview()
+    quizzgame.init_settings()
+    quizzgame.settings.transtype="smenob"
+    quizzgame.settings.allsem=[]
 
-    mgame.settings.transtype="nobsme"
-    mgame.settings.allsem=[]
-
-    if request.method == 'POST':
-        data = request.POST.copy()
-
-        # Settings form is checked and handled.
-        settings_form = QuizzForm(request.POST)
-        
-        mgame.settings.semtype = settings_form.data['semtype']
-        mgame.settings.transtype = settings_form.data['transtype']
-        mgame.settings.book = settings_form.books[settings_form.data['book']]
-        mgame.settings.books = settings_form.books
-
-        if settings_form.allsem:
-            mgame.settings.allsem=settings_form.allsem
-
-        game = QuizzGame(mgame.settings)
-
-        if "settings" in data:
-            game.new_game()
-        else:
-            game.check_game(data)
-            game.get_score(data)
-
-        if 'test' in data:
-            game.count=1
-        if "show_correct" in data:
-            game.show_correct = 1
-
-        
-    # If there is no POST data, default settings are applied
-    else:
-        settings_form = QuizzForm()
-        mgame.settings.allsem=settings_form.allsem
-        mgame.settings.book = settings_form.books['all']
-        mgame.settings.books = settings_form.books
-        
-        game = QuizzGame(mgame.settings)
-        game.new_game()
-
-
-    c = Context({
-        'settingsform': settings_form,
-        'forms': game.form_list,
-        'count': game.count,
-        'score': game.score,
-        'all_correct': game.all_correct,
-        'show_correct': game.show_correct,
-    })
-
+    c = quizzgame.create_quizzgame(request)
     return render_to_response('quizz.html', c)
-
 
 def numgame(request):
 
