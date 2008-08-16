@@ -24,20 +24,6 @@ class Game:
         self.show_correct = 0
         self.num_fields = 5
 
-        if self.settings.books:
-            books=self.settings.books[:]
-            self.settings.books=[]
-            self.settings.books.append(books)
-
-            if 'all' in set(self.settings.books):
-                self.settings.books=self.settings.allbooks
-            if self.settings.books == 'd2':
-                self.settings.books= ['d1', 'd2']
-            if self.settings.books == 'd3':
-                self.settings.books= ['d1', 'd2', 'd3']
-            if self.settings.books == 'd4':
-                self.settings.books= ['d1', 'd2', 'd3', 'd4']
-
         if self.settings.semtype:
             if self.settings.semtype == 'all':
                 self.settings.semtype=self.settings.allsem
@@ -180,9 +166,9 @@ class ContextGame(Game):
         word = Word.objects.filter(Q(id=word_id))[0]
         tag = Tag.objects.filter(Q(id=tag_id))[0]
         question_list = Question.objects.filter(Q(id=question_id))
-        tr_list=Translationnob.objects.filter(Q(word__pk=word_id))
+        translations=word.translations.all()
         
-        morph = (MorphQuestion(word, tag, form_list, tr_list, question_list[0], db_info['userans'], db_info['correct'], data, prefix=n))
+        morph = (MorphQuestion(word, tag, form_list, translations, question_list[0], db_info['userans'], db_info['correct'], data, prefix=n))
         self.form_list.append(morph)
 
 
@@ -194,7 +180,7 @@ class BareGame(Game):
 
         syll = self.settings.syll
         pos = self.settings.pos
-        books=self.settings.books
+        books=self.settings.book
         case=self.settings.case
         if self.settings.pos == "N":
             case = self.casetable[case]
@@ -247,8 +233,8 @@ class BareGame(Game):
         
         word = Word.objects.get(Q(id=word_id))
         tag = Tag.objects.get(Q(id=tag_id))
-        tr_list=Translationnob.objects.filter(Q(word__pk=word_id))
-        morph = (MorphQuestion(word, tag, form_list, tr_list, "", db_info['userans'], db_info['correct'], data, prefix=n))
+        translations=word.translations.all()
+        morph = (MorphQuestion(word, tag, form_list, translations, "", db_info['userans'], db_info['correct'], data, prefix=n))
         self.form_list.append(morph)
 
 
@@ -295,27 +281,38 @@ class QuizzGame(Game):
 
     def get_db_info(self, db_info):
 
-        books=self.settings.books
+        books=self.settings.book
         semtypes=self.settings.semtype
 
-        #if semtypes:
-        #    semtype_intersect = set(semtypes).difference(set(self.settings.allsem))
+        print "BOOKS"
+        print books
 
         while True:
-            if semtypes:
-                w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) &\
-                                            Q(source__name__in=books)).count()
-                random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
+            if self.settings.transtype == "smenob":            
+                if semtypes:
+                    w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) &\
+                                                Q(source__name__in=books)).count()
+                    random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
                                                 Q(source__name__in=books))[randint(0,w_count-1)]
+                else:
+                    w_count=Word.objects.filter( Q(source__name__in=books)).count()
+                    random_word=Word.objects.filter( Q(source__name__in=books))[randint(0,w_count-1)]
+
             else:
-                w_count=Word.objects.filter( Q(source__name__in=books)).count()
-                random_word=Word.objects.filter( Q(source__name__in=books))[randint(0,w_count-1)]
-                
+                if semtypes:
+                    w_count=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) &\
+                                                   Q(source__name__in=books)).count()
+                    random_word=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                       Q(source__name__in=books))[randint(0,w_count-1)]
+                else:
+                    w_count=Wordnob.objects.filter( Q(source__name__in=books)).count()
+                    random_word=Wordnob.objects.filter( Q(source__name__in=books))[randint(0,w_count-1)]
                 
             word_id=random_word.id
+        
+            translations=random_word.translations.all()
 
-            tr_list=random_word.translation.all()
-            if tr_list:
+            if translations:
                 db_info['word_id'] = word_id
                 db_info['question_id'] = ""
                 return db_info
@@ -323,20 +320,20 @@ class QuizzGame(Game):
     def create_form(self, db_info, n, data=None):
 
         word_id = db_info['word_id']
-        translations=Translationnob.objects.filter(Q(word__pk=word_id))
-        word_list = Word.objects.filter(Q(id=word_id))
+        if self.settings.transtype == "smenob":
+            word=Word.objects.get(Q(id=word_id))
+            translations=word.translations.all()
+
+        else:
+            word=Wordnob.objects.filter(Q(word__pk=word_id))[0]
+            translations=word.translations.all()
+
         question_list=[]
 
         if not translations:
             return HttpResponse("No forms found.")        
-
-        word = word_list[0]
-        tr_list = translations
             
-        #if db_info.question_id:
-        #    question_list = Question.objects.filter(Q(id=db_info.question_id))
-            
-        form = (QuizzQuestion(word, tr_list, question_list, db_info['userans'], db_info['correct'], data, prefix=n))
+        form = (QuizzQuestion(word, translations, question_list, db_info['userans'], db_info['correct'], data, prefix=n))
         self.form_list.append(form)
 
 
