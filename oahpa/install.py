@@ -43,7 +43,7 @@ if options.tagfile:
     linginfo.handle_tags(options.tagfile, options.add_db)
 
 if options.paradigmfile:
-    linginfo.read_paradigms(options.paradigmfile, options.tagfile)
+    linginfo.read_paradigms(options.paradigmfile, options.tagfile, options.add_db)
 
 if options.grammarfile:
     questions.read_grammar(options.grammarfile)
@@ -59,8 +59,14 @@ if options.semtypefile:
 
 if not options.infile:
     exit()
+
 xmlfile=file(options.infile)
 tree = _dom.parse(options.infile)
+
+lex = tree.getElementsByTagName("lexicon")[0]
+mainlang = lex.getAttribute("xml:lang")
+if not mainlang:
+    mainlang="sme"
 
 for e in tree.getElementsByTagName("entry"):
 
@@ -71,8 +77,19 @@ for e in tree.getElementsByTagName("entry"):
         id=lemma
     stem=""
     dialect=""
+    diphthong=0
+    gradation=0
+    rime=""
     if e.getElementsByTagName("stem"):
         stem=e.getElementsByTagName("stem")[0].getAttribute("class")
+        diphthong_text=e.getElementsByTagName("stem")[0].getAttribute("diphthong")
+        if diphthong_text == "no": diphthong = 0
+        else: diphthong = 1
+        gradation_text=e.getElementsByTagName("stem")[0].getAttribute("gradation")
+        if gradation_text == "no": gradation = 0
+        else: gradation = 1
+        rime=e.getElementsByTagName("stem")[0].getAttribute("rime")
+
     if e.getElementsByTagName("dialect"):
         dialect=e.getElementsByTagName("dialect")[0].getAttribute("class")
 
@@ -87,20 +104,29 @@ for e in tree.getElementsByTagName("entry"):
             sys.exit()
 
     # Search for existing word in the database.
-    word_elements = Word.objects.filter(Q(word_id=id) & Q(pos=pos))
+    if mainlang == "nob":
+        word_elements = Wordnob.objects.filter(Q(wordid=id))
+    else:
+        word_elements = Word.objects.filter(Q(wordid=id) & Q(pos=pos))
 
     # Update old one if the word was found
     if word_elements:
         if not options.update:
             print "Entry exists for ", lemma;
         w=word_elements[0]
+        w.pos=pos
+        w.lemma=lemma
         w.stem=stem
         w.dialect=dialect
+        w.save()
     else:
         if options.update:
             print "Adding entry for ", lemma , ".";
         # Otherwise create new word
-        w=Word(word_id=id, lemma=lemma,pos=pos,stem=stem,dialect=dialect);
+        if mainlang=="nob":
+            w=Wordnob(wordid=id,lemma=id,pos=pos);
+        else:   
+            w=Word(wordid=id,lemma=lemma,pos=pos,stem=stem,diphthong=diphthong,rime=rime,gradation=gradation,dialect=dialect);
     w.save()
     
     # Add forms and tags
@@ -121,19 +147,6 @@ for e in tree.getElementsByTagName("entry"):
             form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
             form.save()
                 
-    # Create many-to-many fields
-    translations = e.getElementsByTagName("translations")[0]
-    elements=translations.getElementsByTagName("tr")
-    for el in elements:
-        if el.firstChild:
-            translation=el.firstChild.data
-            lang=el.getAttribute("xml:lang")
-            if translation and lang == "nob":
-                tr_entry, created = Translationnob.objects.get_or_create(translation=translation)
-                w.translation.add(tr_entry)
-                w.save()
-
-    
     if e.getElementsByTagName("sources"):
         sources = e.getElementsByTagName("sources")[0]
         elements=sources.getElementsByTagName("book")
@@ -168,6 +181,31 @@ for e in tree.getElementsByTagName("entry"):
             if val:
                 w.valency = val
                 w.save()
+
+    # Add translations
+    translations = e.getElementsByTagName("translations")[0]
+    elements=translations.getElementsByTagName("tr")
+    for el in elements:        
+        if el.firstChild:
+            translation=el.firstChild.data
+            lang=el.getAttribute("xml:lang")
+            if lang == "sme":
+                transl, created = Word.objects.get_or_create(wordid=translation)
+                if created:
+                    transl.lemma=translation
+                    transl.save()
+            else:
+                if lang == "nob":
+                    transl, created = Wordnob.objects.get_or_create(wordid=translation)
+                    if created:
+                        transl.lemma=translation
+                        transl.save()
+
+                else: continue
+
+            # Add reference to the new word object as translation.
+            w.translations.add(transl)
+            w.save()                   
 
 
 """
