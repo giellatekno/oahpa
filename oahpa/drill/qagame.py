@@ -393,8 +393,13 @@ class QAGame(Game):
 
         anslist=[]
         pos=self.settings.pos
-        if pos == "N": qtype=self.settings.case
-        else: qtype=self.settings.vtype
+
+        print self.settings.allcase
+        # Select random question type.
+        if pos == "N":
+            qtype = self.settings.allcase[randint(0, len(self.settings.allcase)-1)]
+        else:
+            qtype=self.settings.vtype
         print "QTYPE: " + qtype
 
         # If the question id is received from the interface, use that question info
