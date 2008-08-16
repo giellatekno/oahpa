@@ -22,10 +22,8 @@ class Source(models.Model):
     type = models.CharField(max_length=20)
     name = models.CharField(max_length=20)
 
-class Translationnob(models.Model):
-    translation = models.CharField(max_length=200, core=True)
-
 class Word(models.Model):
+    wordid = models.CharField(max_length=200)
     lemma = models.CharField(max_length=200)
     pos = models.CharField(max_length=5)
     stem = models.CharField(max_length=20)
@@ -33,8 +31,18 @@ class Word(models.Model):
     valency = models.CharField(max_length=10)
     semtype = models.ManyToManyField(Semtype)
     source = models.ManyToManyField(Source)
-    translation = models.ManyToManyField(Translationnob)
+    diphthong=models.BooleanField(null=True)
+    gradation=models.BooleanField(null=True)
+    rime = models.CharField(max_length=10)
+    translations = models.ManyToManyField('Wordnob')
 
+class Wordnob(models.Model):
+    wordid = models.CharField(max_length=200)
+    lemma = models.CharField(max_length=200)
+    pos = models.CharField(max_length=5)
+    semtype = models.ManyToManyField(Semtype)
+    source = models.ManyToManyField(Source)
+    translations = models.ManyToManyField(Word)
 
 class Tagset(models.Model):
     tagset = models.CharField(max_length=25)
