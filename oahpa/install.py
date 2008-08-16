@@ -30,6 +30,9 @@ parser.add_option("-g", "--grammarfile", dest="grammarfile",
                   help="XML-file for grammar defaults for questions")
 parser.add_option("-s", "--sem", dest="semtypefile",
                   help="XML-file semantic subclasses")
+parser.add_option("-l", "--place", dest="placenamefile",
+                  action="store_true", default=False,
+                  help="If placenames")
 parser.add_option("-u", "--update", dest="update",
                   action="store_true", default=False,
                   help="If update data")
@@ -59,6 +62,7 @@ if options.semtypefile:
 
 if not options.infile:
     exit()
+
 
 xmlfile=file(options.infile)
 tree = _dom.parse(options.infile)
@@ -111,6 +115,9 @@ for e in tree.getElementsByTagName("entry"):
 
     # Update old one if the word was found
     if word_elements:
+        # If adding placenames, do not update already existing entries.
+        if options.placenamefile: continue            
+
         if not options.update:
             print "Entry exists for ", lemma;
         w=word_elements[0]
@@ -162,20 +169,33 @@ for e in tree.getElementsByTagName("entry"):
                 w.save()
 
     if e.getElementsByTagName("semantics"):
-        semantics = e.getElementsByTagName("semantics")[0]
-        elements=semantics.getElementsByTagName("sem")
-        for el in elements:
-            sem=el.getAttribute("class")
-            if sem:
-                # Add semantics entry if not found.
-                # Leave this if DTD is used.
-                sem_entry, created = Semtype.objects.get_or_create(semtype=sem)
-                if created:
-                    print "Created semtype entry with name ", sem
-                w.semtype.add(sem_entry)
-                w.save()
 
-        elements=semantics.getElementsByTagName("valency")
+        # Give placenames special semantic tag
+        # This is temporary solution.
+        if options.placenamefile:
+            sem_entry, created = Semtype.objects.get_or_create(semtype="PLACE-NAME-LEKSA")
+            if created:
+                print "Created semtype entry with name PLACE-NAME-LEKSA"
+            w.semtype.add(sem_entry)
+            w.save()
+        else:
+            semantics = e.getElementsByTagName("semantics")[0]
+            elements=semantics.getElementsByTagName("sem")
+
+            for el in elements:
+                sem=el.getAttribute("class")
+                if sem:
+                    # Add semantics entry if not found.
+                    # Leave this if DTD is used.
+                    sem_entry, created = Semtype.objects.get_or_create(semtype=sem)
+                    if created:
+                        print "Created semtype entry with name ", sem
+                    w.semtype.add(sem_entry)
+                    w.save()        
+        
+
+    if e.getElementsByTagName("valency"):
+        elements=e.getElementsByTagName("valency")
         for el in elements:
             val=el.getAttribute("class")
             if val:
