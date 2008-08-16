@@ -11,6 +11,7 @@ from qagame import *
 class Info:
     pass
 
+
 class Gameview:
 
     def init_settings(self):
@@ -22,9 +23,8 @@ class Gameview:
         self.settings.case="N-ILL"
         self.settings.mood="Ind"
         self.settings.tense="Prs"
-        self.settings.books=[]
+        self.settings.book = []
         self.settings.semtype="NATURE"
-        self.settings.allbooks=[]
         self.settings.language="sme"
         self.settings.gametype="bare"
         self.settings.vtype_bare="PRS"
@@ -40,6 +40,7 @@ class Gameview:
             self.settings.syll.append('contracted')
         if len(self.settings.syll) == 0:
             self.settings.syll.append('bisyllabic')        
+
 
     def create_mgame(self,request):
 
@@ -63,10 +64,8 @@ class Gameview:
             if settings_form.data.has_key('vtype_bare'):
                 self.settings.vtype_bare= settings_form.data['vtype_bare']
 
-            self.settings.books = settings_form.data['book']
-                
-            if settings_form.allbooks:
-                self.settings.allbooks=settings_form.allbooks
+            if settings_form.data['book']:
+                self.settings.book = settings_form.books[settings_form.data['book']]
                 
             if settings_form.data['gametype']:
                 self.settings.gametype= settings_form.data['gametype']
@@ -95,11 +94,8 @@ class Gameview:
         else:
             settings_form = MorphForm()
             self.settings.syll.append('bisyllabic')
-            self.settings.books="all"
+            self.settings.book=settings_form.books['all']
 
-            if settings_form.allbooks:
-                self.settings.allbooks=settings_form.allbooks
-            
             game = BareGame(self.settings)
             game.new_game()
 
@@ -150,10 +146,8 @@ def quizz(request):
 
     mgame = Gameview()
     mgame.init_settings()
-    
+
     mgame.settings.transtype="nobsme"
-    mgame.settings.books="all"
-    mgame.settings.allbooks=[]
     mgame.settings.allsem=[]
 
     if request.method == 'POST':
@@ -164,13 +158,11 @@ def quizz(request):
         
         mgame.settings.semtype = settings_form.data['semtype']
         mgame.settings.transtype = settings_form.data['transtype']
-        mgame.settings.books = settings_form.data['book']
+        mgame.settings.book = settings_form.books[settings_form.data['book']]
+        mgame.settings.books = settings_form.books
 
-        if settings_form.allbooks:
-            mgame.settings.allbooks=settings_form.allbooks
         if settings_form.allsem:
             mgame.settings.allsem=settings_form.allsem
-
 
         game = QuizzGame(mgame.settings)
 
@@ -189,10 +181,10 @@ def quizz(request):
     # If there is no POST data, default settings are applied
     else:
         settings_form = QuizzForm()
-        if settings_form.allbooks:
-            mgame.settings.allbooks=settings_form.allbooks
-        if settings_form.allsem:
-            mgame.settings.allsem=settings_form.allsem
+        mgame.settings.allsem=settings_form.allsem
+        mgame.settings.book = settings_form.books['all']
+        mgame.settings.books = settings_form.books
+        
         game = QuizzGame(mgame.settings)
         game.new_game()
 
@@ -216,7 +208,7 @@ def numgame(request):
 
     mgame.settings.maxnum = 10
     mgame.settings.numgame = "numeral"
-    mgame.settings.books = []
+    mgame.settings.book = []
     mgame.settings.semtype=""
     mgame.settings.language="sme"
 
