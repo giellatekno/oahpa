@@ -16,7 +16,7 @@ POS_CHOICES = (
 )
 
 class Semtype(models.Model):
-    semtype = models.CharField(max_length=20)
+    semtype = models.CharField(max_length=50)
 
 class Source(models.Model):
     type = models.CharField(max_length=20)
