@@ -62,6 +62,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>rievdadit</lemma>
 	<pos class="V"/>
     <translations>
+      <tr xml:lang="nob">å forandre</tr>
       <tr xml:lang="nob">å endre</tr>
     </translations>
     <valency>
@@ -113,6 +114,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å styrke</tr>
+      <tr xml:lang="nob">å bekrefte</tr>
     </translations>
     <valency>
       <val class="TV"/>
@@ -160,9 +162,27 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     </sources>
   </entry>
   <entry>
+    <lemma>guorahaddat</lemma>
+	<pos class="V"/>
+    <translations>
+      <tr xml:lang="nob">å undersøke</tr>
+    </translations>
+    <valency>
+      <val class="TV"/>
+    </valency>
+    <semantics>
+      <sem class="WORK/ECONOMY-V"/>
+    </semantics>    
+    <stem class="bisyllabic"/>
+    <dialect class=""/>
+    <sources>
+    </sources>
+  </entry>
+  <entry>
     <lemma>gieđahallat</lemma>
 	<pos class="V"/>
     <translations>
+      <tr xml:lang="nob">å bearbeide</tr>
       <tr xml:lang="nob">å behandle</tr>
     </translations>
     <valency>
@@ -196,7 +216,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>dáidit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å kunne kanskje</tr>
+      <tr xml:lang="nob">å kanskje kunne</tr>
+      <tr xml:lang="nob">å kunne</tr>
     </translations>
     <valency>
       <val class="IV"/>
@@ -247,8 +268,9 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>dieđihit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å fortelle</tr>
+      <tr xml:lang="nob">å orientere</tr>
       <tr xml:lang="nob">å opplyse</tr>
+      <tr xml:lang="nob">å meddele</tr>
     </translations>
     <valency>
       <val class="TV"/>
@@ -339,7 +361,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>njiedjat</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å stige ned</tr>
+      <tr xml:lang="nob">å gå ned</tr>
+      <tr xml:lang="nob">å dale</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -378,7 +401,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>soaitit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å kanskje</tr>
+      <tr xml:lang="nob">å kanskje kunne</tr>
+      <tr xml:lang="nob">å kunne</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -398,8 +422,9 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>bassaladdat</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å vaske</tr>
       <tr xml:lang="nob">å vaske klær</tr>
+      <tr xml:lang="nob">å vaske tøy</tr>
+      <tr xml:lang="nob">å vaske</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -500,20 +525,18 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
       <book name="sárá"/>
     </sources>
   </entry>
-  <entry>
+  <entry id="batnit_activity">
     <lemma>batnit</lemma>
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å spinne</tr>
-      <tr xml:lang="nob">å male (om katt)</tr>
-      <tr xml:lang="nob">å male</tr>
     </translations>
     <valency>
       <val class=""/>
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-          <sem class="ACTIVITY"/>
+      <sem class="ACTIVITY"/>
       <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
@@ -523,7 +546,26 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
       <book name="bures"/>
     </sources>
   </entry>
-  <entry>
+  <entry id="batnit_animal-v">
+    <lemma>batnit</lemma>
+	<pos class="V"/>
+    <translations>
+      <tr xml:lang="nob">å male (om katt)</tr>
+      <tr xml:lang="nob">å male</tr>
+    </translations>
+    <valency>
+      <val class=""/>
+      <val class=""/>
+    <val class="TV"/></valency>
+    <semantics>
+      <sem class="ANIMAL-V"/>
+    </semantics>    
+    <stem class="bisyllabic"/>
+    <dialect class="n"/>
+    <sources>
+    </sources>
+  </entry>
+  <entry id="botnit_activity">
     <lemma>botnit</lemma>
 	<pos class="V"/>
     <translations>
@@ -534,7 +576,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
       <val class=""/>
     <val class="TV"/></valency>
     <semantics>
-          <sem class="ACTIVITY"/>
+      <sem class="ACTIVITY"/>
       <sem class="WORK/ECONOMY-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
@@ -542,6 +584,25 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <sources>
       <book name="álgu"/>
       <book name="bures"/>
+    </sources>
+  </entry>
+  <entry id="botnit_animal-v">
+    <lemma>botnit</lemma>
+	<pos class="V"/>
+    <translations>
+      <tr xml:lang="nob">å male (om katt)</tr>
+      <tr xml:lang="nob">å male</tr>
+    </translations>
+    <valency>
+      <val class=""/>
+      <val class=""/>
+    <val class="TV"/></valency>
+    <semantics>
+      <sem class="ANIMAL-V"/>
+    </semantics>    
+    <stem class="bisyllabic"/>
+    <dialect class="o"/>
+    <sources>
     </sources>
   </entry>
   <entry>
@@ -570,8 +631,9 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>beassat</lemma>
 	<pos class="V"/>
     <translations>
+      <tr xml:lang="nob">å slippe inn</tr>
+      <tr xml:lang="nob">å fritas</tr>
       <tr xml:lang="nob">å slippe</tr>
-      <tr xml:lang="nob">å få gjøre</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -793,7 +855,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>rávkat</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">kalle på</tr>
+      <tr xml:lang="nob">å be om</tr>
+      <tr xml:lang="nob">å vekke</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -940,8 +1003,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>hervet</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å pynte</tr>
        <tr xml:lang="nob">å dekorere</tr>
+      <tr xml:lang="nob">å pynte</tr>
   </translations>
     <valency>
       <val class="IT"/>
@@ -1041,8 +1104,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>joksat</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å nå</tr>
       <tr xml:lang="nob">å innhente</tr>
+      <tr xml:lang="nob">å nå</tr>
       <tr xml:lang="nob">å oppnå</tr>
     </translations>
     <valency>
@@ -1062,6 +1125,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>bearráigeahččat</lemma>
 	<pos class="V"/>
     <translations>
+      <tr xml:lang="nob">å inspisere</tr>
       <tr xml:lang="nob">å passe på</tr>
     </translations>
     <valency>
@@ -1422,9 +1486,10 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>dohppet</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å gripe</tr>
+      <tr xml:lang="nob">å gripe en gang</tr>
       <tr xml:lang="nob">å nappe en gang</tr>
       <tr xml:lang="nob">å nappe</tr>
+      <tr xml:lang="nob">å gripe</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -1564,13 +1629,30 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
       <book name="sárá"/>
     </sources>
   </entry>
-  <entry>
+  <entry id="guoddit_animal-v">
+    <lemma>guoddit</lemma>
+	<pos class="V"/>
+    <translations>
+       <tr xml:lang="nob">å føde (om dyr)</tr>
+       <tr xml:lang="nob">å føde</tr>
+   </translations>
+    <valency>
+      <val class=""/>
+      <val class=""/>
+    <val class="TV"/></valency>
+    <semantics>
+      <sem class="ANIMAL-V"/>
+    </semantics>    
+    <stem class="bisyllabic"/>
+    <dialect class=""/>
+    <sources>
+    </sources>
+  </entry>
+  <entry id="guoddit_action-v">
     <lemma>guoddit</lemma>
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å bære</tr>
-       <tr xml:lang="nob">å føde (om dyr)</tr>
-       <tr xml:lang="nob">å føde</tr>
    </translations>
     <valency>
       <val class=""/>
@@ -1632,6 +1714,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>geahkat</lemma>
 	<pos class="V"/>
     <translations>
+      <tr xml:lang="nob">å ymte om</tr>
       <tr xml:lang="nob">å planlegge uten at noe blir gjort</tr>
     </translations>
     <valency>
@@ -1956,6 +2039,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å lese</tr>
+      <tr xml:lang="nob">å telle</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -2039,7 +2123,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å sovne</tr>
-      <tr xml:lang="nob">å legge seg</tr>
+      <tr xml:lang="nob">å sove</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -2059,8 +2143,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>coggat</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å stappe</tr>
-      <tr xml:lang="nob">å putte</tr>
+    <tr xml:lang="nob">å stappe</tr>
+     <tr xml:lang="nob">å putte</tr>
     </translations>
     <valency>
       <val class="ILLV"/>
@@ -2119,6 +2203,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å komme til syne</tr>
+      <tr xml:lang="nob">å vise seg</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -2279,6 +2364,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å lete</tr>
+      <tr xml:lang="nob">å leite</tr>
       <tr xml:lang="nob">å søke</tr>
     </translations>
     <valency>
@@ -2300,6 +2386,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å grave fram</tr>
+      <tr xml:lang="nob">å grave opp</tr>
+      <tr xml:lang="nob">å grave</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -2318,7 +2406,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>ságastallat</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å snakke med</tr>
+      <tr xml:lang="nob">å snakke sammen</tr>
       <tr xml:lang="nob">å samtale</tr>
     </translations>
     <valency>
@@ -2396,8 +2484,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>iskat</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å se til</tr>
       <tr xml:lang="nob">å undersøke</tr>
+      <tr xml:lang="nob">å prøve</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -2515,8 +2603,10 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>suohpput</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å sette ut line el.</tr>
-      <tr xml:lang="nob">å kaste lasso, tau el.</tr>
+      <tr xml:lang="nob">å sette ut line etc.</tr>
+      <tr xml:lang="nob">å kaste lasso, tau etc.</tr>
+      <tr xml:lang="nob">å sette ut</tr>
+      <tr xml:lang="nob">å kaste</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -2536,8 +2626,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>stuorrut</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å vokse</tr>
       <tr xml:lang="nob">å bli større</tr>
+      <tr xml:lang="nob">å vokse</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -2558,6 +2648,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å si</tr>
+      <tr xml:lang="nob">å uttale</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -2578,6 +2669,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å leke</tr>
+      <tr xml:lang="nob">å støye</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -2968,7 +3060,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>giksat</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å bli gjennomkokt</tr>
+      <tr xml:lang="nob">å bli ferdigkokt</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -3147,8 +3239,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>dievvat</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å fylles</tr>
       <tr xml:lang="nob">å bli full</tr>
+      <tr xml:lang="nob">å flø</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -3390,8 +3482,10 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>goardit</lemma>
 	<pos class="V"/>
     <translations>
+      <tr xml:lang="nob">å gratinere</tr>
       <tr xml:lang="nob">å varme</tr>
       <tr xml:lang="nob">å steke</tr>
+      <tr xml:lang="nob">å steike</tr>
    </translations>
     <valency>
       <val class=""/>
@@ -3410,7 +3504,9 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>golgat</lemma>
 	<pos class="V"/>
     <translations>
+      <tr xml:lang="nob">å reke</tr>
       <tr xml:lang="nob">å renne</tr>
+      <tr xml:lang="nob">å drive</tr>
    </translations>
     <valency>
       <val class=""/>
@@ -3452,7 +3548,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>fitnat</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å ta seg en tur</tr>
+      <tr xml:lang="nob">å ta en tur</tr>
+      <tr xml:lang="nob">å dra innom</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -3530,6 +3627,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>gurput</lemma>
 	<pos class="V"/>
     <translations>
+      <tr xml:lang="nob">å bære ei bør</tr>
       <tr xml:lang="nob">å bære</tr>
     </translations>
     <valency>
@@ -3550,7 +3648,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å erte</tr>
-      <tr xml:lang="nob">å narre</tr>
+      <tr xml:lang="nob">å terge</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -3624,12 +3722,12 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <sources>
     </sources>
   </entry>
-
    <entry>
     <lemma>lihkkat</lemma>
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å stå opp</tr>
+      <tr xml:lang="nob">å bevege seg</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -3769,8 +3867,9 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>johtit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å ferdes</tr>
       <tr xml:lang="nob">å reise</tr>
+      <tr xml:lang="nob">å ferdes</tr>
+      <tr xml:lang="nob">å flytte</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -3833,8 +3932,10 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>biškut</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å skrike (on fugl)</tr>
+      <tr xml:lang="nob">å skrike (om fugl)</tr>
       <tr xml:lang="nob">å skrike</tr>
+      <tr xml:lang="nob">å hyle</tr>
+      <tr xml:lang="nob">å gale</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -3959,7 +4060,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>bissut</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å holdes</tr>
+      <tr xml:lang="nob">å forbli</tr>
+      <tr xml:lang="nob">å holde seg</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -4140,6 +4242,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å slakte</tr>
+      <tr xml:lang="nob">å flå</tr>
    </translations>
     <valency>
       <val class=""/>
@@ -4320,6 +4423,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å framføre</tr>
+      <tr xml:lang="nob">å framvise</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -4514,7 +4618,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å forhindre</tr>
-    </translations>
+       <tr xml:lang="nob">å støtte opp</tr>
+   </translations>
     <valency>
       <val class=""/>
       <val class=""/>
@@ -4838,6 +4943,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>vuolgit</lemma>
 	<pos class="V"/>
     <translations>
+      <tr xml:lang="nob">å reise avsted</tr>
       <tr xml:lang="nob">å dra</tr>
     </translations>
     <valency>
@@ -4903,7 +5009,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å rydde</tr>
-      <tr xml:lang="nob">å sette bort</tr>
+      <tr xml:lang="nob">å oppbevare</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -5181,6 +5287,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>áigut</lemma>
 	<pos class="V"/>
     <translations>
+      <tr xml:lang="nob">å skulle</tr>
       <tr xml:lang="nob">å ville</tr>
     </translations>
     <valency>
@@ -5239,11 +5346,30 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
       <book name="bures"/>
     </sources>
   </entry>
-  <entry>
+  <entry id="doaivut_tro">
     <lemma>doaivut</lemma>
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å tro</tr>
+    </translations>
+    <valency>
+      <val class=""/>
+      <val class=""/>
+    <val class="TV"/></valency>
+    <semantics>
+      <sem class="EXPERIENCE-V"/>
+    </semantics>    
+    <stem class="bisyllabic"/>
+    <dialect class="o"/>
+    <sources>
+      <book name="d2"/>
+      <book name="sárá"/>
+    </sources>
+  </entry>
+  <entry id="doaivut_håpe">
+    <lemma>doaivut</lemma>
+	<pos class="V"/>
+    <translations>
       <tr xml:lang="nob">å håpe</tr>
     </translations>
     <valency>
@@ -5254,7 +5380,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
       <sem class="EXPERIENCE-V"/>
     </semantics>    
     <stem class="bisyllabic"/>
-    <dialect class=""/>
+    <dialect class="n"/>
     <sources>
       <book name="d2"/>
       <book name="sárá"/>
@@ -5264,7 +5390,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>čuovvut</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å følge med</tr>
+      <tr xml:lang="nob">å følge</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -5304,8 +5430,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>dáhttut</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å be</tr>
-      <tr xml:lang="nob">å invitere</tr>
+      <tr xml:lang="nob">å ønske</tr>
+      <tr xml:lang="nob">å ville</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -5526,6 +5652,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å fiske med snøre</tr>
+      <tr xml:lang="nob">å fiske</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -5590,6 +5717,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å bo</tr>
+      <tr xml:lang="nob">å være</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -5707,6 +5835,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å sette i gang</tr>
+      <tr xml:lang="nob">å få i gang</tr>
       <tr xml:lang="nob">å starte</tr>
     </translations>
     <valency>
@@ -5827,7 +5956,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>boradit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å holde måltid</tr>
+      <tr xml:lang="nob">å ha måltid</tr>
       <tr xml:lang="nob">å spise</tr>
     </translations>
     <valency>
@@ -5891,9 +6020,9 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>almmuhit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å gjøre kjent</tr>
       <tr xml:lang="nob">å bekjentgjøre</tr>
       <tr xml:lang="nob">å annonsere</tr>
+      <tr xml:lang="nob">å gjøre kjent</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -5994,6 +6123,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <translations>
       <tr xml:lang="nob">å ferdes kontinuerlig</tr>
       <tr xml:lang="nob">å ferdes</tr>
+      <tr xml:lang="nob">å slarke</tr>
+      <tr xml:lang="nob">å glippe</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -6210,8 +6341,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>heavvanit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å bli slått ut</tr>
       <tr xml:lang="nob">å drukne</tr>
+      <tr xml:lang="nob">å bli slått ut</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -6271,6 +6402,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å vasse</tr>
+      <tr xml:lang="nob">å bade</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -6369,6 +6501,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>duolddahit</lemma>
 	<pos class="V"/>
     <translations>
+      <tr xml:lang="nob">å få til å koke</tr>
       <tr xml:lang="nob">å la koke</tr>
     </translations>
     <valency>
@@ -6744,6 +6877,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>vuojašit</lemma>
 	<pos class="V"/>
     <translations>
+      <tr xml:lang="nob">å stadig kjøre</tr>
       <tr xml:lang="nob">å kjøre omkring</tr>
     </translations>
     <valency>
@@ -7136,6 +7270,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>geahčastit</lemma>
 	<pos class="V"/>
     <translations>
+      <tr xml:lang="nob">å se litt på</tr>
       <tr xml:lang="nob">å kaste et blikk på</tr>
     </translations>
     <valency>
@@ -7156,6 +7291,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å se lenge på</tr>
+      <tr xml:lang="nob">å forhåndsgranske</tr>
       <tr xml:lang="nob">å se på</tr>
     </translations>
     <valency>
@@ -7715,7 +7851,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>firrestit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å røre</tr>
+      <tr xml:lang="nob">å røre litt rundt</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -7874,8 +8010,8 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>garvilit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å kjøre rundt</tr>
       <tr xml:lang="nob">å unnvike</tr>
+      <tr xml:lang="nob">å kjøre rundt</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -8744,7 +8880,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>bállet</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å få fred til</tr>
+      <tr xml:lang="nob">å ha fred til</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -9082,6 +9218,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å få tak i</tr>
+      <tr xml:lang="nob">å få</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -9121,6 +9258,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å rope en gang</tr>
+      <tr xml:lang="nob">å rope</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -9158,8 +9296,9 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>sugadit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å ro fiske</tr>
       <tr xml:lang="nob">å disse</tr>
+      <tr xml:lang="nob">å gynge</tr>
+      <tr xml:lang="nob">å ro</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -9314,7 +9453,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
     <lemma>liekkadit</lemma>
 	<pos class="V"/>
     <translations>
-      <tr xml:lang="nob">å varme seg</tr>
+      <tr xml:lang="nob">å varme</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -9736,6 +9875,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å komme bort</tr>
+      <tr xml:lang="nob">å gå seg vill</tr>
     </translations>
     <valency>
       <val class=""/>
@@ -9813,6 +9953,7 @@ AUX-V-set is quite big - it contains many verbs which can be followed by an Inf.
 	<pos class="V"/>
     <translations>
       <tr xml:lang="nob">å begynne å flytte med rein</tr>
+      <tr xml:lang="nob">å begynne å flytte</tr>
     </translations>
     <valency>
       <val class=""/>
