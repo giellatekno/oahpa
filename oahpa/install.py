@@ -19,7 +19,7 @@ parser.add_option("-p", "--pos", dest="pos",
                   help="Pos info")
 parser.add_option("-d", "--db", dest="add_db",
                   action="store_true", default=False,
-                  help="Add pos-info to database")
+                  help="Used for adding tag infoformation to database")
 parser.add_option("-t", "--tagfile", dest="tagfile",
                   help="List of tags and tagsets")
 parser.add_option("-r", "--paradigmfile", dest="paradigmfile",
@@ -178,6 +178,7 @@ for e in tree.getElementsByTagName("entry"):
                 print "Created semtype entry with name PLACE-NAME-LEKSA"
             w.semtype.add(sem_entry)
             w.save()
+
         else:
             semantics = e.getElementsByTagName("semantics")[0]
             elements=semantics.getElementsByTagName("sem")
@@ -219,6 +220,16 @@ for e in tree.getElementsByTagName("entry"):
                     transl, created = Wordnob.objects.get_or_create(wordid=translation)
                     if created:
                         transl.lemma=translation
+                        transl.save()
+
+                    # If placenames
+                    # Give norwegian words same semantic classes as sami words.
+                    # Temporary solution.
+                    if options.placenamefile:
+                        sem_entry, created = Semtype.objects.get_or_create(semtype="PLACE-NAME-LEKSA")
+                        if created:
+                            print "Created semtype entry with name PLACE-NAME-LEKSA"
+                        transl.semtype.add(sem_entry)
                         transl.save()
 
                 else: continue
