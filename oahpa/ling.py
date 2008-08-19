@@ -166,7 +166,7 @@ class Questions:
                 if word_id:
                     #print "Searching lemma: " + lemma
                     # Add pos information here!
-                    word_elements = Word.objects.filter(Q(word_id=word_id))
+                    word_elements = Word.objects.filter(Q(wordid=word_id))
                     if word_elements:
                         w=word_elements[0]
                     else:
@@ -192,7 +192,7 @@ class Questions:
                         elements = qel.tag.filter(pos=pos)
                 else:
                     if QElement.objects.filter(Q(question__isnull=True) & \
-                                               Q(identifier=syntax))>0:
+                                               Q(identifier=syntax)).count()>0:
                         qel = QElement.objects.filter(Q(question__isnull=True) & \
                                                       Q(identifier=syntax))[0]
                         elements = qel.tag.all()
