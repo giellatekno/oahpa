@@ -1,0 +1,227 @@
+!!!Meeting notes, Pedagogical programs, 080814
+
+
+!!!Participants
+
+Biret Ánne, Ciprian, Lene, Saara, Trond.
+
+
+!!!Status quo
+
+Saara: 
+* Added conversion from smenob to nobsme lexica.
+* Added place names
+
+Lene and Trond:
+* Improved translations in sme and fixed the order of them.
+* Looked at the outcome of nobsme.
+
+Biret Anne:
+* Cleaned up mess in question-files
+
+
+
+!!!Vasta
+
+Temporally divided according to POS.
+
+** Have a look at the wordorder - and suggest for Saara how it should be
+
+
+!!Numerals
+
+Numeral attributes
+
+They are not present for all numerals, only for certain long forms.
+
+Also for the numerals ''with'' attribute forms, we are unable to generate them.
+
+__TODO__:
+
+* Trond and Thomas to look at the lexc code.
+
+!!!Leksa
+
+Concepts lexicalised in Sámi, not in Norwegian:
+
+* bártnáš = little boy (liten gutt) guttunge
+*        	gánddáš lunttaš
+* eanu = mors bror
+
+* guoika = stryk
+* guoikkaš = lite stryk
+* njavvi = lite stryk / stryk
+
+The leading principle will be to ask for lexicalised concepts.
+The family set (and other similar ones?) will be kept, and the phrases
+of the Norwegian translations are made into nob lemmas.
+
+
+!!The nobsme lexica
+
+In the nob nouns.xml, every entry has itself as an id.
+
+For the next conversion, translations of the same nob lemma will
+be unified under the same lemma.
+
+nob nouns:
+
+more than one nob lemma with the same id.
+we agreed to take the first translation from the sme nouns.xml
+but this gives ries to a problem:
+
+Picking {{dokke}} only and not {{dukke}} is ok
+but if the second translation is a lemma in other contexts, we
+have a problem:
+
+* lieđđi > blomst (i.e. blomst becomes lemma in nobsme)
+* rássi > plante, gress, blomst (i.e. plante becomes lemma in nobsme)
+
+The problem is then that we loose the {{blomst > lieđđi}} translation, 
+when the user answers lieđđi, it is deemed wrong by the computer.
+
+So, we do not need {{dukke}} (which is a formal variant of {{dokke}}), but
+we desperately need the rássi = blomst link under blomst in nobsme.
+
+The id issue:
+
+sme:
+
+    <lemma>ášši</lemma>
+
+  <entry id="bassi_time">
+    <lemma>bassi</lemma>
+
+nob
+
+  <entry id="hjørne">
+    <lemma>hjørne</lemma>
+
+In nob we don´t have to differ between lemmas in sámi with different inflecting, like:
+* vasker = bassi	(in sme: bassi_actor)
+* høytid = bassi	(in sme: bassi_time)
+
+Now, we go for the nob id policy (separate id-s all the time).
+
+Bug: too many å-s removed in the verb file: <tr xml:lang="nob">å gå på ski</tr>
+
+There are some (surprisingly few) homonyms across POS borders (N, V {{pleie}} a 
+case in point. We are satisfied with unique ids modulo each file (i.e. POS), and
+leave it at that.
+
+__TODO__:
+
+* Lexicon conversion
+** Saara to convert again
+** All to test the result, before we do too much manual work
+** Lene, Trond to manually add the homonyms from the {{dehálasdubl.txt}} file.
+** Remove some entries (expressions), add more synonyms.
+
+
+
+!!The place names
+
+** Make contact with yr.no to get the big lists for giellatekno.no (probably Statens Kartverk)
+
+Today, we have a small placename list (389 entries), with the major names (the list 
+might be too long rather than to short?)
+
+__TODO__:
+
+* Look through the sme propernouns.xml file and prune marginal
+
+
+!!!Interface translation
+
+Run a new conversion of the translations, and keep it up-to-date.
+
+The documentation was found here:
+http://giellatekno.uit.no/ped/maintenance.html
+
+{{{
+In order to create new strings:
+Go to victorio:
+
+cd ped/oahpa
+/home/saara/django-trunk/django/bin/make-messages.py -a
+   ... then 
+cvs up 
+   ... to locate the M files. Thereafter check them in:
+cvs ci -m "new generated files" locale/fi/LC_MESSAGES/django.po
+   ... etc. for the other files. 
+After that, we work on the respective django.po files, and check them in again.
+}}}
+
+
+!!!Morfa
+
+!!Response
+
+The issue was discussed on [the meeting on 26th of June|meeting_080626.html].
+ 
+The feedback, the consonant gradation, diphthongs, rime...
+
+The lexicon contains this information:
+
+{{{
+    <stem class="bisyllabic" diphthong="yes" gradation="yes" rime="u"/>
+}}}
+
+__TODO__:
+
+* Lene, Trond and Biret Ánne (at least) to present a more concrete model for Morfa user feedback to implement to the next meeting.
+
+
+!!!Forward
+
+We systematise our meeting memos into todo-lists the way the proofing 
+meetings do it. The way forward is thus specified in the task list.
+
+
+
+!!!Next meeting
+
+Tuesday 080902 at 10.00.
+
+
+!!!Task list 
+
+!!Biret Ánne
+* Clean up more mess in question-files
+* Work on dialogues
+* Look through the sme propernouns.xml file and prune marginal place names
+* Have a look at the wordorder - and suggest for Saara how to do
+* present a more concrete model for Morfa user feedback (with Lene, Trond)
+
+
+!!Ciprian
+* Testing the games :-)
+* Have a look at the ped lexica and compare with the general ones
+* Nothing developmental yet
+
+!!Lene
+* Look at the lexicon conversion: manually add the homonyms from the {{dehálasdubl.txt}} file.
+* Remove some entries (expressions), add more synonyms.
+* Have a look at the wordorder - and suggest for Saara how to do
+* Look through the sme propernouns.xml file and prune marginal place names
+* present a more concrete model for Morfa user feedback (with Biret Ánne, Trond)
+
+!!Saara
+* Run interface generation
+** done
+* Look at the missing feedback in 
+* Convert nobsme again (fix å)
+** done
+* Fix bugs in vasta (Bug 714)
+* Away next week
+
+!!Trond
+* Play
+* Translate interface
+* Look at the lexicon conversion: manually add the homonyms from the {{dehálasdubl.txt}} file.
+* Discuss yr.no with Sjur and Børre, get name pairs
+* present a more concrete model for Morfa user feedback (with Biret Ánne, Lene)
+
+
+
+
