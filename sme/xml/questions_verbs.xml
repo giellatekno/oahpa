@@ -25,8 +25,12 @@
     </question>
     <answer> 
       <text>(CLADV) (odne) ANSWERSUBJECT MAINV (odne) (CLADV)</text>
-      <element id="MAINV">
+      <element game='morfa' id="MAINV">
 	<sem class="ACTIVITY"/>
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+      <element game='qa' id="MAINV">
+	<grammar pos="V"/>
 	<grammar tag="V+Ind+Prs+Person-Number"/>
       </element>
     </answer>
@@ -48,20 +52,32 @@
     </question>
     <answer> 
       <text>(CLADV) (odne) SUBJ MAINV (odne) (CLADV)</text>
-      <element id="MAINV">
+      <element game='morfa' id="MAINV">
 	<grammar tag="V+Ind+Prs+Person-Number"/>
 	<sem class="ACTIVITY"/>
+      </element>
+      <element game='qa' id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<grammar pos="V"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) (odne) SUBJ MAINV (odne) (CLADV)</text>
-      <element id="SUBJ">
+      <element game='morfa' id="SUBJ">
 	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
-      <element id="MAINV">
+      <element game='morfa' id="MAINV">
 	<grammar tag="V+Ind+Prs+Person-Number"/>
 	<sem class="ACTIVITY"/>
+      </element>
+      <element game='qa' id="SUBJ">
+	<id>son</id>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element game='qa' id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<grammar pos="V"/>
       </element>
     </answer>
   </q>
@@ -121,8 +137,12 @@
     </question>
     <answer> 
       <text>(CLADV) (ikte) ANSWERSUBJECT MAINV (ikte) (CLADV)</text>
-      <element id="MAINV">
+      <element game='morfa' id="MAINV">
 	<sem class="ACTIVITY"/>
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element>
+      <element game='qa' id="MAINV">
+	<grammar pos="V"/>
 	<grammar tag="V+Ind+Prt+Person-Number"/>
       </element>
     </answer>
@@ -144,18 +164,30 @@
     </question>
     <answer> 
       <text>(CLADV) (ikte) SUBJ MAINV (ikte) (CLADV)</text>
-      <element id="MAINV">
+      <element game='morfa' id="MAINV">
 	<grammar tag="V+Ind+Prt+Person-Number"/>
 	<sem class="ACTIVITY"/>
+      </element>
+      <element game='qa' id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<grammar pos="V"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) (ikte) SUBJ MAINV (ikte) (CLADV)</text>
-      <element id="MAINV">
+      <element game='morfa' id="MAINV">
 	<grammar tag="V+Ind+Prt+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
-      <element id="SUBJ">
+      <element game='morfa' id="SUBJ">
+	<id>son</id>
+	<grammar tag="Pron+Pers+Person-Number"/>
+      </element>
+      <element game='qa' id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<grammar pos="V"/>
+      </element>
+      <element game='qa' id="SUBJ">
 	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number"/>
       </element>
@@ -216,8 +248,12 @@
     </question>
     <answer> 
       <text>(CLADV) (luomus) ANSWERSUBJECT MAINV (odne) (luomus)</text>
-      <element id="MAINV">
+      <element game='morfa' id="MAINV">
 	<sem class="ACTIVITY"/>
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+      </element>
+      <element game='qa' id="MAINV">
+	<grammar pos="V"/>
 	<grammar tag="V+Cond+Prs+Person-Number"/>
       </element>
     </answer>
@@ -239,20 +275,32 @@
     </question>
     <answer> 
       <text>(CLADV) (luomus) SUBJ MAINV (luomus) (CLADV)</text>
-      <element id="MAINV">
+      <element game='morfa' id="MAINV">
 	<grammar tag="V+Cond+Prs+Person-Number"/>
 	<sem class="ACTIVITY"/>
+      </element>
+      <element game='qa' id="MAINV">
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+	<grammar pos="V"/>
       </element>
     </answer>
     <answer> 
       <text>(CLADV) (luomus) SUBJ MAINV (luomus) (CLADV)</text>
-      <element id="SUBJ">
+      <element game='morfa' id="SUBJ">
 	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
-<element id="MAINV">
+<element game='morfa' id="MAINV">
 	<grammar tag="V+Cond+Prs+Person-Number"/>
 	<sem class="ACTIVITY"/>
+      </element>
+      <element game= 'qa' id="SUBJ">
+	<id>son</id>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+<element game='qa' id="MAINV">
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+	<grammar pos="V"/>
       </element>
     </answer>
   </q>
@@ -314,9 +362,8 @@
   </question>
   <answer> 
     <text>In dieđe V-POT go </text>
-      <element id="V-POT">
+      <element game='morfa' id="V-POT">
 	<agreement id="SUBJ"/>
-	<grammar tag="V+Pot+Person-Number"/>
       </element>
     </answer>
   </q>
@@ -344,7 +391,7 @@
    </question>
     <answer> 
       <text>MAINV2</text>
-      <element id="MAINV2">
+      <element game='morfa' id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Imprt+Prs+Sg2"/>
       </element>
@@ -369,7 +416,7 @@
    </question>
     <answer> 
       <text>MAINV2</text>
-      <element id="MAINV2">
+      <element game='morfa' id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Imprt+Prs+Du2"/>
       </element>
@@ -394,7 +441,7 @@
    </question>
     <answer> 
       <text>MAINV2</text>
-      <element id="MAINV2">
+      <element game='morfa' id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Imprt+Prs+Pl2"/>
       </element>
@@ -417,7 +464,7 @@
    </question>
     <answer> 
       <text>MAINV2</text>
-      <element id="MAINV2">
+      <element game='morfa' id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Imprt+Prs+Du1"/>
       </element>
@@ -439,7 +486,7 @@
    </question>
     <answer> 
       <text>MAINV2</text>
-      <element id="MAINV2">
+      <element game='morfa' id="MAINV2">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Imprt+Prs+Pl1"/>
       </element>
