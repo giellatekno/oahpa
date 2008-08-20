@@ -69,11 +69,13 @@ class Gameview:
                 
             if settings_form.data['gametype']:
                 self.settings.gametype= settings_form.data['gametype']
-                        
+            self.settings.allcase=settings_form.allcase
+            
             # Create game
             if self.settings.gametype == "bare":
                 game = BareGame(self.settings)
             else:
+                # Contextual morfa
                 game = QAGame(self.settings)
                 game.init_tags()
             
@@ -94,9 +96,17 @@ class Gameview:
         else:
             settings_form = MorphForm()
             self.settings.syll.append('bisyllabic')
+            self.settings.syll.append('trisyllabic')
+            self.settings.syll.append('contracted')
+            self.settings.allcase=settings_form.allcase
             self.settings.book=settings_form.books['all']
 
-            game = BareGame(self.settings)
+            if self.settings.pos == "Num":
+                game = QAGame(self.settings)
+                game.init_tags()
+            else:
+                game = BareGame(self.settings)
+
             game.new_game()
 
         c = Context({
@@ -142,6 +152,16 @@ def mgame_a(request):
     c = mgame.create_mgame(request)
     return render_to_response('mgame_a.html', c)
 
+def mgame_l(request):
+
+    mgame = Gameview()
+    mgame.init_settings()
+    mgame.settings.pos = "Num"
+
+    c = mgame.create_mgame(request)
+    return render_to_response('mgame_l.html', c)
+
+
 
 class Vastaview:
 
@@ -170,8 +190,7 @@ class Vastaview:
 
             self.settings.allsem=settings_form.allsem
             self.settings.allcase=settings_form.allcase
-            
-            self.syll_settings(settings_form)
+
 
             if settings_form.data.has_key('vtype'):
                 self.settings.vtype= settings_form.data['vtype']
@@ -181,9 +200,10 @@ class Vastaview:
 
             if settings_form.data['book']:
                 self.settings.book = settings_form.books[settings_form.data['book']]
-                
+
+            self.settings.gametype = "qa"
                         
-            # Create game
+            # Vasta
             game = QAGame(self.settings)
             game.init_tags()
             
@@ -206,8 +226,11 @@ class Vastaview:
             self.settings.book=settings_form.books['all']
             self.settings.allsem=settings_form.allsem
             self.settings.allcase=settings_form.allcase
-            
+            self.settings.gametype = "qa"
+
+            # Vasta
             game = QAGame(self.settings)
+            game.init_tags()
             game.new_game()
 
         c = Context({
@@ -215,7 +238,7 @@ class Vastaview:
             'forms': game.form_list,
             'count': game.count,
             'score': game.score,
-            'case': self.settings.case,
+            #'case': self.settings.case,
             'all_correct': game.all_correct,
             'show_correct': game.show_correct,
             })
@@ -229,6 +252,16 @@ def vasta(request):
 
     c = vastagame.create_vastagame(request)
     return render_to_response('vasta.html', c)
+
+def vasta_n(request):
+
+    vastagame = Vastaview()
+    vastagame.init_settings()
+    vastagame.settings.pos="N"
+    
+    c = vastagame.create_vastagame(request)
+    return render_to_response('vasta.html', c)
+
 
             
 class Quizzview(Gameview):
