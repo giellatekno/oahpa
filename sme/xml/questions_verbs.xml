@@ -524,15 +524,25 @@
     </answer>
     <answer> 
       <text>(ikte) ANSWERSUBJECT NEG PRFPRC (ikte) (CLADV)</text>
-      <element id="SUBJ">
+      <element game='morfa id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
-      <element id="NEG">
+      <element game='morfa' id="NEG">
 	<grammar tag="Neg+Ind+Person-Number"/>
       </element>
-      <element id="PRFPRC">
+      <element game='morfa' id="PRFPRC">
 	<grammar tag="V+PrfPrc"/>
 	<sem class="ACTIVITY"/>
+      </element>
+      <element game='qa' id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element game='qa' id="NEG">
+	<grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element game='qa' id="PRFPRC">
+	<grammar tag="V+PrfPrc"/>
+	<grammar pos="V"/>
       </element>
     </answer>
   </q>
@@ -563,12 +573,19 @@
     </answer>
     <answer> 
       <text>(luomus) ANSWERSUBJECT NEG CONNEG (luomus) (CLADV)</text>
-      <element id="NEG">
+      <element game='morfa' id="NEG">
 	<grammar tag="Neg+Ind+Person-Number"/>
       </element>
-      <element id="CONNEG">
+      <element game='morfa' id="CONNEG">
 	<grammar tag="V+Cond+Prs+ConNeg"/>
 	<sem class="ACTIVITY"/>
+      </element>
+      <element game='qa' id="NEG">
+	<grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element game='qa' id="CONNEG">
+	<grammar tag="V+Cond+Prs+ConNeg"/>
+	<grammar pos="V"/>
       </element>
     </answer>
   </q>
