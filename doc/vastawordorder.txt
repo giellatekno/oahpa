@@ -1,0 +1,289 @@
+
+Vasta - about wordorder
+#######################
+
+
+Allowing a tag or not:
+======================
+If the word has a reading that matches, then it is allowed. That means that the grammar has to define what is allowed, not what is not allowed. E.g.
+
+ruoná
+ruoná	ruoná+A+Attr
+ruoná	ruoná+A+Sg+Acc
+ruoná	ruoná+A+Sg+Gen
+ruoná	ruoná+A+Sg+Nom
+
+where the word "ruoná" is allowed as A Attr inside the NP, even if it also has Nom-reading.   
+
+
+
+TIME-expressions - when the question starts with "goas":
+========================================================
+
+The following block is a definition of TIME-expressions
+(acceptable answers to "goas"-questions):
+
+(Dem+Sg+Gen | TIME-MOD) TIME-GEN + Sg+Gen
+(Dem+Pl+Gen | TIME-MOD) TIME-GEN + Pl+Gen
+(Dem+Sg+Gen | TIME-MOD) TIME-LOC + Sg+Loc
+TIME-ESS + Ess
+TIME-ADV
+TIME-PP
+ii+V+Neg+Ind goasse+Adv+Foc/ge
+
+... where the variables are defined in the following lists:
+
+TIME-MOD 
+boahtte 
+juohke
+čuovvovaš 
+maŋemus 
+maŋimus 
+ovddit+A+Comp+Attr 
+mannat+V+IV+PrfPrc 
+vássit+V+IV+PrfPrc 
+nubbi+Pron+Indef+Sg+Gen
+mánnávuohta+N+Sg+Gen
+nuorravuohta+N+Sg+Gen
+
+
+TIME-GEN
+jándor
+bodda
+čakča
+čakčageassi
+giđđageassi
+čakčadálvi
+giđđadálvi
+dálvi
+geassi 
+giđđa
+skábmaáigi 
+skábmadálvi
+skábma
+eahketbodda
+idja
+iđitbodda
+jahki
+jahkebealle
+kaleanddarjahki
+loahppajahki
+njealjádasjahki
+skuvlajahki
+beaivi
+eamiálbmotjahki
+gaskaidja
+luomejahki
+mihcamárat
+muorjejahki
+albmáimannanbeaivi 
+bargočoahkkinbeaivi 
+beassášbeaivi 
+mánnodat 
+vuossárga 
+disdat 
+maŋŋebárga 
+gaskavahkku 
+duorastat 
+bearjadat 
+juovlabeaivi 
+lávvardat 
+lávvordat 
+sotnabeaivi 
+sábbát 
+skilleduorastat
+riegádanbeaivi
+juovllat
+beassážat
+hellodagat
+ovdditbeaivi
+
+
+TIME-LOC
+čuohtejahki
+diibmu
+eahket
+jahkečuohti
+mánnu
+minukta
+tiibma
+vahkkoloahppa
+vahkku
+bivdoáigi
+ođđajagemánnu 
+ođđajagimánnu 
+guovvamánnu 
+njukčamánnu 
+njuvččamánnu 
+cuoŋománnu 
+cuoŋosmánnu 
+gáranasmánnu 
+miessemánnu 
+geassemánnu 
+suoidnemánnu 
+borgemánnu 
+šnjilčamánnu 
+šnjilžamánnu 
+čakčamánnu 
+golggotmánnu 
+skábmamánnu 
+ritnemánnu 
+juovlamánnu
+baoresáigi
+vássánáigi
+
+TIME-ADV
+dál
+dalle
+eske
+dovle
+duvle
+ovdal
+gieskat
+odne
+ikte
+ihttin
+beaivet
+ihkku
+iđđes
+eahkes
+diibmá
+dolin
+hárve
+dávjá
+álo
+čakčat
+dálvet
+dálvit
+geassit
+geasset 
+giđđat 
+
+TIME-ESS
+nuorra
+mánná
+čakčaseavdnjat
+seavdnjat
+skábma
+
+TIME-PO/PR
+maŋŋá
+maŋŋel
+maŋŋil
+ovdal
+
+TIME-PR
+gasku
+
+TIME-PO
+áigi
+geahčen
+
+Definition of TIME-PP:
+
+Prepositional Phrases:
+TIME-PO/PR (TIME-MOD) TIME-GEN + Sg+Gen
+TIME-PO/PR (TIME-MOD) TIME-GEN + Pl+Gen
+TIME-PO/PR (TIME-MOD) TIME-LOC + Sg+Gen
+TIME-PO/PR (TIME-MOD) TIME-LOC + Pl+Gen
+
+TIME-PR (TIME-MOD) TIME-GEN + Sg+Gen 
+TIME-PR (TIME-MOD) TIME-GEN + Pl+Gen 
+TIME-PR (TIME-MOD) TIME-LOC + Sg+Gen 
+
+Postpositional Phrases:
+(TIME-MOD) TIME-GEN + Sg+Gen TIME-PO/PR
+(TIME-MOD) TIME-GEN + Pl+Gen TIME-PO/PR
+(TIME-MOD) TIME-LOC + Sg+Gen TIME-PO/PR
+(TIME-MOD) TIME-LOC + Pl+Gen TIME-PO/PR
+
+(Num+Sg+Gen) TIME-GEN + Sg+Gen TIME-PO
+(Num+Pl+Gen) TIME-GEN + Pl+Gen TIME-PO
+(Num+Sg+Gen) TIME-LOC + Sg+Gen TIME-PO
+
+
+
+Definition of NP:
+=================
+
+We also define NP (excluding relative clauses)
+
+Ordinary NP
+(Pron+Dem-PA) ( N+Gen | Pron+Pers+Gen ) A N
+  
+Reflexive NP
+(Pron+Pers-XPerson-YNumber) Refl+Gen+XYPx A N
+
+Quantified NP
+(Num-PA)  ( N+Gen | Pers+Gen ) (A) N-OBL
+(Num-Nom) ( N+Gen | Pers+Gen ) (A) N-Gen
+
+where:
+A  = (nubbi-PA) ((A+Attr|buorre-PA) ((ja|,) (A+Attr|buorre-PA)*)
+PA = Partial Agreement with head noun in case and number according to table
+X  = 1, 2, 3
+Y  = Sg, Du, Pl
+
+Reflexive NPs need antecedents in the same person, ordinary and quantified NPs may be used in any NP position (this is just as for Finnish)
+
+
+
+Word order:
+===========
+
+Word order is constrained as follows:
+
+Vasta defines, for each question, ordered answer templates. These constitute minimal requirements for the word order (note that the templates will contain NP variables, so that there is considerable variation within each NP),
+
+We will accept any material added to the minimal template, with some restrictions:
+
+The following words and/or POS are restricted to certain positions in the sentence:
+
+Only initial:
+------------
+na+Pcle
+
+Only non-initial:
+------------
+fal+Adv
+
+Only initial/Only final:
+------------------------
+Interj
+
+Only within NP:
+--------------
+N
+Num
+A
+Pron
+
+Free occurrence:
+----------------
+Pcle
+Adv
+CC
+V
+
+Thus, the members of the free occurrence set are the ones which can be added everywhere in addition to the defined templates. Note that For Pcle and Adv there are two exceptions, mentioned above (fal and na).
+
+Verbs can occur anywhere, but they must have correct inflections, as defined in the person-number corresponcency tables.
+
+Open questions on free occurence:
+---------------------------------
+
+We still need to work on adverbial constituents, such as PPs and NPs in adverbial cases
+
+PP:
+The PP is only partially defined yet (see above). We need a general PP template, NP + Po, and the resulting PP shall be in free occurence in the sentence. Thus, an NP is licensed if followed by a postposition.
+
+NPs in adverbial cases:
+We might want to freely allow for NPs in some of the adverbial cases.
+
+The problem here is that opening for these will at the same time allow for false positives (errouneous case for valence-bounded arguments, analysed as free adverbial NPs). We are still not in a position to implement PPs and adverbial NPs in free variation.
+
+It will probably not be realistic to include those within the frame of the present Ped project either, so we will leave it at that.
+
+Pronouns:
+---------
+For pedagogical reasons, the plural/dual first person pronoun subject in questions (moai/mii), is interpreted with the "exclusive" reading, so that the answer only accepts second person pronouns/verbs of the same number. Thus, answering a question containing e.g. "mii" (we) with the inclusive "mii" (we) is disallowed, rather the user must answer "dii" (you).
