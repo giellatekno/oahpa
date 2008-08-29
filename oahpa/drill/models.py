@@ -32,8 +32,9 @@ class Word(models.Model):
     semtype = models.ManyToManyField(Semtype)
     source = models.ManyToManyField(Source)
     diphthong=models.BooleanField(null=True)
-    gradation=models.BooleanField(null=True)
-    rime = models.CharField(max_length=10)
+    gradation=models.CharField(max_length=5)
+    rime = models.CharField(max_length=20)
+    soggi = models.CharField(max_length=10)
     translations = models.ManyToManyField('Wordnob')
 
 class Wordnob(models.Model):
@@ -96,3 +97,20 @@ class SemtypeElement(models.Model):
     semtype = models.ForeignKey(Semtype, null=True)
     qelement = models.ForeignKey(QElement, null=True)
     game = models.CharField(max_length=20)
+
+
+class Feedbackmsg(models.Model):
+    number = models.CharField(max_length=3)
+    message = models.CharField(max_length=200)
+
+class Feedback(models.Model):
+    messages = models.ManyToManyField(Feedbackmsg)
+    pos = models.CharField(max_length=5)
+    stem = models.CharField(max_length=20)
+    diphthong=models.NullBooleanField(blank=True)
+    gradation=models.CharField(max_length=5)
+    rime = models.CharField(max_length=20)
+    soggi = models.CharField(max_length=10)
+    case = models.CharField(max_length=5)
+    number = models.CharField(max_length=5)
+
