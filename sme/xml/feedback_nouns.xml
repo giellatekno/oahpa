@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feedback>
+
+  <stems>
+    <stem class="bisyllabic">
+      <msg>1</msg>
+    </stem>
+    <stem class="trisyllabic">
+      <msg>2</msg>
+    </stem>
+    <stem class="contracted">
+      <msg>3</msg>
+    </stem>
+    <stem gradation="inv">
+      <msg>5</msg>
+    </stem>
+    <stem gradation="no">
+      <msg>4</msg>
+    </stem>
+
+    <stem class="bisyllabic" diphthong="yes" soggi="i">
+      <!-- what is AG? -->
+      <msg case="AG" number="Pl">8</msg>
+      <msg case="Ill" number="Pl">8</msg>
+      <msg case="Loc" number="Pl">8</msg>
+      <msg case="Com" number="Sg">8</msg>
+      <msg case="Com" number="Pl">8</msg>
+      <note>guolli, diftforenkling</note>
+    </stem>
+    
+    <stem class="bisyllabic" diphthong="yes" soggi="u">
+      <msg case="Ill" number="Sg">8</msg>
+      <note>viessu, diftforenkling</note>
+    </stem>
+    
+    <stem class="bisyllabic" diphthong="yes" soggi="u">
+      <msg case="AG" number="Sg">10</msg>
+      <msg case="Ill" number="Sg">10</msg>
+      <msg case="Loc" number="Sg">10</msg>
+      <msg case="Com" number="Sg">10</msg>
+      <note>gumppus, u>o</note>
+    </stem>
+
+    <stem rime="s-ss">
+      <msg case="AG" number="Sg">35</msg>
+      <msg case="AG" number="Pl">37</msg>
+      <msg case="Ill" number="Sg">18</msg>
+      <msg case="Ill" number="Pl">39</msg>
+      <msg case="Loc" number="Sg">50</msg>
+      <msg case="Loc" number="Pl">41</msg>
+      <msg case="Com" number="Sg">41</msg>
+      <msg case="Com" number="Pl">42</msg>
+      <msg case="Ess">53</msg>
+      <note>muitalus rime</note>
+    </stem>
+  </stems>
+
+  <messages xml:lang="nob"> 
+    <message id="1">LEMMA har likestavelsesstamme.</message>
+    <message id="2">LEMMA har ulikestavelsesstamme.</message>
+    <message id="3">LEMMA har kontrakt stamme.</message>
+    <message id="4">uten stadieveksling.</message>
+    <message id="5">uten synlig stadieveksling.</message>
+    <message id="6">og skal ha sterkt stadium. </message>
+    <message id="7">og skal ha svakt stadium.</message>
+    <message id="8">Husk diftongforenkling.</message>
+    <message id="9">Husk diftongforenkling og a > i.</message>
+    <message id="10">u > o.</message>
+    <message id="18">ss og -ii-ending.</message>
+    <message id="35">-a-ending</message>
+    <message id="37">-id-ending</message>
+    <message id="39">-ide-ending</message>
+    <message id="41">-in-ending</message>
+    <message id="42">-iguin-ending</message>
+    <message id="50">-as-ending</message>
+    <message id="53">ss og -an-ending</message>
+  </messages>
+
+</feedback>
