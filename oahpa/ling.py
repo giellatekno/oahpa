@@ -63,11 +63,10 @@ class Paradigm:
             if not self.paradigms.has_key(pos):
                 self.paradigms[pos]=[]
             self.paradigms[pos].append(line)
-                
 
 
     def create_paradigm(self, lemma, pos):
-        #print lemma
+        print lemma
         if not self.tagset:
             self.handle_tags()
 
@@ -75,14 +74,19 @@ class Paradigm:
 							  
         genObj=re.compile(r'^(?P<lemmaString>[\wá]+)\+(?P<tagString>[\w\+]+)[\t\s]+(?P<formString>[\wá]*)$', re.U)
         all=""
+
         for a in self.paradigms[pos]:
             all = all + lemma + "+" + a
         # generator call
         #fstdir="/opt/smi/sme/bin"
+        #lookup = /usr/local/bin/lookup
+
         fstdir="/Users/saara/gt/sme/bin"
+        lookup = "/Users/saara/bin/lookup"
+
         gen_norm_fst = fstdir + "/isme-norm.fst"
-        #gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | /usr/local/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
-        gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | /Users/saara/bin/lookup -flags mbTT -utf8 -d " + gen_norm_fst
+
+        gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
         lines_tmp = os.popen(gen_norm_lookup).readlines()
         for line in lines_tmp:
             if not line.strip(): continue
@@ -101,9 +105,59 @@ class Paradigm:
                 self.paradigm.append(g)
 
 
-class Questions:
+    def generate_numerals(self):
+        """
+        Generate all the cardinal numbers
+        Create paradigms and store to db
+        """
 
-#    def __init__(self):
+        language = "sme"
+        #fstdir="/opt/smi/" + language + "/bin"
+        #lookup = /usr/local/bin/lookup
+        
+        fstdir="/Users/saara/gt/" + language + "/bin"        
+        lookup = "/Users/saara/bin/lookup"
+
+        numfst = fstdir + "/" + language + "-num.fst"
+
+        for num in range(0,100):
+
+            num_lookup = "echo \"" + str(num) + "\" | " + lookup + " -flags mbTT -utf8 -d " + numfst
+            numerals = os.popen(num_lookup).readlines()
+
+            # Take only first one.
+            # Change this if needed!
+            num_list=[]
+            for num in numerals:
+                line = num.strip()
+                if line:
+                    nums = line.split('\t')
+                    num_list.append(nums[1].decode('utf-8'))
+            numstring = num_list[0]
+
+            w, created = Word.objects.get_or_create(wordid=num, lemma=numstring, pos="Num")
+            w.save()
+
+            print numstring
+            self.create_paradigm(numstring, "Num")
+            for form in self.paradigm:
+                g=form.classes
+                t,created=Tag.objects.get_or_create(string=form.tags,pos=g.get('Wordclass', ""),\
+                                                    number=g.get('Number',""),case=g.get('Case',""),\
+                                                    possessive=g.get('Possessive',""),grade=g.get('Grade',""),\
+                                                    infinite=g.get('Infinite',""), \
+                                                    personnumber=g.get('Person-Number',""),\
+                                                    polarity=g.get('Polarity',""),\
+                                                    tense=g.get('Tense',""),mood=g.get('Mood',""), \
+                                                    subclass=g.get('Subclass',""), \
+                                                    attributive=g.get('Attributive',""))
+                
+                t.save()
+                form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
+                form.save()
+
+
+class Questions:
 
 
     def read_element(self,head,qaelement,el,syntax,optional):
@@ -465,3 +519,151 @@ class Questions:
                    print w.lemma + ": adding semtype " + semclass
                    w.semtype.add(s)
                    w.save()
+               for w in Wordnob.objects.filter(Q(semtype__semtype=subclass) & ~Q(semtype__semtype=semclass)):
+                   print w.lemma + ": adding semtype " + semclass
+                   w.semtype.add(s)
+                   w.save()
+
+    def read_feedback(self, infile, pos):
+
+        xmlfile=file(infile)
+        tree = _dom.parse(infile)
+
+        stem_messages = {}
+        gradation_messages = {}
+
+        for el in tree.getElementsByTagName("message"):
+            mid=el.getAttribute("id")
+            message = el.firstChild.data
+            
+            fm, created = Feedbackmsg.objects.get_or_create(number=mid, message=message)
+            fm.save()
+
+        # Find out different values for variables.
+        # Others can be listed, but soggi is searched at the moment.
+        rimes={}
+        soggis={}
+        wordforms = tree.getElementsByTagName("stems")[0]
+        for el in wordforms.getElementsByTagName("stem"):
+            if el.getAttribute("rime"):
+                rime = el.getAttribute("rime")
+                rimes[rime] = 1
+
+            if el.getAttribute("soggi"):
+                soggi = el.getAttribute("soggi")
+                soggis[soggi] = 1
+
+        soggis[""] = 1
+        rimes[""] = 1
+            
+        # Create different combinations that are associated with feedback.
+        for stem in ["bisyllabic","trisyllabic","contracted"]:
+            for diphthong in ["0","1"]:
+                for gradation in ["inv","no","yes"]:
+                    for soggi in soggis.keys():
+                        for rime in rimes.keys():
+                            # Create Essive since it has no number inflection
+                            f, created = Feedback.objects.get_or_create(stem=stem,diphthong=diphthong,\
+                                                                        gradation=gradation,rime=rime,\
+                                                                        soggi=soggi,\
+                                                                        case="Ess")
+                            f.save()
+                        
+                            for case in ["Acc", "Gen", "Ill","Loc","Com"]:
+                                for number in ["Sg","Pl"]:
+
+                                    f2, created = Feedback.objects.get_or_create(stem=stem,diphthong=diphthong,\
+                                                                                 gradation=gradation,rime=rime,\
+                                                                                 case=case,number=number,
+                                                                                 soggi=soggi)
+                                    f2.save()
+
+
+        print "Total", Feedback.objects.count()
+        wordforms = tree.getElementsByTagName("stems")[0]
+        for el in wordforms.getElementsByTagName("stem"):
+            feedback = None
+            stem =""
+            diphthong_text =""
+            rime =""
+            gradation=""
+            case = ""
+            number = ""
+
+            if el.getAttribute("class"):
+                stem=el.getAttribute("class")                
+                if Feedback.objects.filter(Q(stem=stem)):
+                    feedback = Feedback.objects.filter(stem=stem)
+                print "stem:", stem
+
+                print feedback.count()
+
+            if el.getAttribute("gradation"):
+                gradation = el.getAttribute("gradation")
+                if feedback:
+                    feedback = feedback.filter(gradation=gradation)
+                else:
+                    feedback = Feedback.objects.filter(gradation=gradation)
+                print "gradation:", gradation
+
+                print "2", feedback.count()
+                
+            if el.getAttribute("diphthong"):
+                diphthong = el.getAttribute("diphthong")
+                if diphthong_text == "no": diphthong = 0
+                else: diphthong = 1
+                if feedback:
+                    feedback = feedback.filter(diphthong=diphthong)
+                else:
+                    feedback = Feedback.objects.filter(diphthong=diphthong)
+                print "diphthong:", diphthong
+
+                print "3", feedback.count()
+                    
+            if el.getAttribute("soggi"):
+                soggi = el.getAttribute("soggi")
+                if feedback:
+                    feedback = feedback.filter(soggi=soggi)
+                else:
+                    feedback = Feedback.objects.filter(soggi=soggi)
+                print "soggi:", soggi
+
+                print "4", feedback.count()
+                    
+            if el.getAttribute("rime"):
+                rime = el.getAttribute("rime")
+                print "Rime:", rime
+                if feedback:
+                    feedback = feedback.filter(rime=rime)
+                else:
+                    feedback = Feedback.objects.filter(rime=rime)
+                    print "Filtering Feedback..", 
+
+            print "5", feedback.count()
+
+            old_feedback = feedback
+            messages = el.getElementsByTagName("msg")
+            for mel in messages:
+                feedback = old_feedbackfo
+                msgnum = mel.firstChild.data
+                print "Message number", msgnum
+                
+                if mel.getAttribute("case"):
+                    case=mel.getAttribute("case")
+                    if feedback:
+                        feedback = feedback.filter(case=case)
+                        
+                if mel.getAttribute("number"):
+                    number=mel.getAttribute("number")
+                    if feedback:
+                        feedback = feedback.filter(number=number)
+
+                if not feedback:
+                    print "No feedback found!"
+
+                message = Feedbackmsg.objects.get(number=msgnum)
+                for f in feedback:
+                    if not f.messages.filter(number=msgnum):
+                        f.messages.add(message)
+                        f.save()
+
