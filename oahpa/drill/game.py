@@ -182,7 +182,7 @@ class BareGame(Game):
         pos = self.settings.pos
         books=self.settings.book
         case=self.settings.case
-        if self.settings.pos == "N":
+        if self.settings.pos == "N" or self.settings.pos == "Num":
             case = self.casetable[case]
         else:
             case = ""
@@ -212,8 +212,12 @@ class BareGame(Game):
         while True:
             tag_id = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & Q(conneg=""))[randint(0,tag_count-1)].id
 
-            w_count=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books)).count()
-            word_id=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)].id
+            if self.settings.pos == "Num":
+                w_count=Word.objects.filter(Q(pos=pos)).count()
+                word_id=Word.objects.filter(Q(pos=pos))[randint(0,w_count-1)].id
+            else:
+                w_count=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books)).count()
+                word_id=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)].id
                 
             form_count = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id)).count()
             if word_id and form_count>0:
