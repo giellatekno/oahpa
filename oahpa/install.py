@@ -28,8 +28,13 @@ parser.add_option("-q", "--questionfile", dest="questionfile",
                   help="XML-file that contains questions")
 parser.add_option("-g", "--grammarfile", dest="grammarfile",
                   help="XML-file for grammar defaults for questions")
+parser.add_option("-e", "--feedbackfile", dest="feedbackfile",
+                  help="XML-file for feedback")
 parser.add_option("-s", "--sem", dest="semtypefile",
                   help="XML-file semantic subclasses")
+parser.add_option("-n", "--num", dest="numerals",
+                  action="store_true", default=False,
+                  help="Generate numerals")
 parser.add_option("-l", "--place", dest="placenamefile",
                   action="store_true", default=False,
                   help="If placenames")
@@ -60,6 +65,14 @@ if options.semtypefile:
     questions.read_semtypes(options.semtypefile)
     exit()
 
+if options.feedbackfile:
+    questions.read_feedback(options.feedbackfile, options.pos)
+    exit()
+
+if options.numerals:
+    linginfo.generate_numerals()
+    exit()
+
 if not options.infile:
     exit()
 
@@ -82,17 +95,17 @@ for e in tree.getElementsByTagName("entry"):
     stem=""
     dialect=""
     diphthong=0
-    gradation=0
+    gradation=""
     rime=""
+    soggi=""
     if e.getElementsByTagName("stem"):
         stem=e.getElementsByTagName("stem")[0].getAttribute("class")
         diphthong_text=e.getElementsByTagName("stem")[0].getAttribute("diphthong")
         if diphthong_text == "no": diphthong = 0
         else: diphthong = 1
-        gradation_text=e.getElementsByTagName("stem")[0].getAttribute("gradation")
-        if gradation_text == "no": gradation = 0
-        else: gradation = 1
+        gradation=e.getElementsByTagName("stem")[0].getAttribute("gradation")
         rime=e.getElementsByTagName("stem")[0].getAttribute("rime")
+        soggi=e.getElementsByTagName("stem")[0].getAttribute("soggi")
 
     if e.getElementsByTagName("dialect"):
         dialect=e.getElementsByTagName("dialect")[0].getAttribute("class")
@@ -124,6 +137,10 @@ for e in tree.getElementsByTagName("entry"):
         w.pos=pos
         w.lemma=lemma
         w.stem=stem
+        w.rime=rime
+        w.soggi=soggi
+        w.gradation=gradation
+        w.diphthong=diphthong
         w.dialect=dialect
         w.save()
     else:
@@ -133,7 +150,8 @@ for e in tree.getElementsByTagName("entry"):
         if mainlang=="nob":
             w=Wordnob(wordid=id,lemma=id,pos=pos);
         else:   
-            w=Word(wordid=id,lemma=lemma,pos=pos,stem=stem,diphthong=diphthong,rime=rime,gradation=gradation,dialect=dialect);
+            w=Word(wordid=id,lemma=lemma,pos=pos,stem=stem,diphthong=diphthong,\
+                   rime=rime,soggi=soggi,gradation=gradation,dialect=dialect);
     w.save()
     
     # Add forms and tags
