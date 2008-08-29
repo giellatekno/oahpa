@@ -136,6 +136,20 @@ h1 {
     var my_tooltip = new Tooltip('id_of_trigger_element', 'id_of_tooltip_to_show_element')
 </script>
 
+<script type="text/javascript">
+function feedback(msg)
+{
+  var generator=window.open('','name','height=400,width=500');
+  
+  generator.document.write('<html><head><title>Tutorial</title>');
+  generator.document.write('</head><body>');
+  generator.document.write('<p>msg</p>');
+  generator.document.write('<p><a href="javascript:self.close()">close</a></p>');
+  generator.document.write('</body></html>');
+  generator.document.close();
+}
+</script>
+
 
 </head>
 
@@ -204,6 +218,7 @@ h1 {
 	    <li><a href="/oahpa/morfa_s/">{% trans 'Nouns' %}</a></li>
 	    <li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>
 	    <li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li>
+<!--	    <li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>-->
 	  </ul>
 	  <a href="/oahpa/vasta/">{% trans 'Vasta' %}</a><br/>
 	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
