@@ -48,16 +48,15 @@
   </div>
 
   {% if forloop.first %}
-    <div id='tooltip' style="display:none; margi:5px; packground-color:red;">
-    {{ form.translations }} <br/>
+    <div id='tooltip' style="display:none; margin:5px; background-color:white;">
+    {{ form.translations }}
     </div>
-
-    <script type="text/javascript">
-    var lemma_tooltip = new Tooltip('lemma','tooltip')
+    <script type="text/javascript"> 
+	var lemma_tooltip = new Tooltip('lemma','tooltip')
     </script>
   {% else %}
-    <div id='tooltip_{{ forloop.counter0 }}' style="display:none; margi:5px; packground-color:red;">
-    {{ form.translations }} <br/>
+    <div id='tooltip_{{ forloop.counter0 }}' style="display:none; background-color:white;">
+    {{ form.translations }} 
     </div>
     <script type="text/javascript">
       var lemma_{{ forloop.counter0 }}_tooltip = new Tooltip('lemma_{{ forloop.counter0 }}','tooltip_{{ forloop.counter0 }}')
