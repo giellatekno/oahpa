@@ -101,11 +101,7 @@ class Gameview:
             self.settings.allcase=settings_form.allcase
             self.settings.book=settings_form.books['all']
 
-            if self.settings.pos == "Num":
-                game = QAGame(self.settings)
-                game.init_tags()
-            else:
-                game = BareGame(self.settings)
+            game = BareGame(self.settings)
 
             game.new_game()
 
@@ -191,7 +187,6 @@ class Vastaview:
             self.settings.allsem=settings_form.allsem
             self.settings.allcase=settings_form.allcase
 
-
             if settings_form.data.has_key('vtype'):
                 self.settings.vtype= settings_form.data['vtype']
 
@@ -261,7 +256,6 @@ def vasta_n(request):
     
     c = vastagame.create_vastagame(request)
     return render_to_response('vasta.html', c)
-
 
             
 class Quizzview(Gameview):
