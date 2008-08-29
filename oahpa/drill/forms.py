@@ -200,12 +200,26 @@ class MorphQuestion(forms.Form):
         self.fields['tag_id'] = forms.CharField(widget=tag_widget, required=False)
         self.lemma=word.lemma
 
+        # Get lemma and feedback
+        self.feedback=""
+        messages = []
         if tag.pos=="N":
             if tag.number=="Sg":
                 self.lemma = word.lemma
             else:
                 self.lemma = Form.objects.filter(Q(word__pk=word.id) & Q(tag__string="N+Pl+Nom"))[0].fullform
-               
+
+            print word.lemma, word.stem, word.gradation, word.diphthong, "ok",  word.rime, "jes", word.soggi, tag.case, tag.number
+            feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
+                                               Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
+                                               Q(soggi=word.soggi) & Q(case=tag.case) & \
+                                               Q(number = tag.number))
+            for f in feedbacks:
+                msgs = f.messages.all()
+                for m in msgs:
+                    self.feedback = self.feedback + " " + m.message
+            self.feedback = self.feedback.replace("LEMMA", "\"" + word.lemma + "\"") 
+            
         self.correct_answers =""
         self.case = ""
         self.userans = userans_val
@@ -474,6 +488,7 @@ class QAQuestion(forms.Form):
 
         super(QAQuestion, self).__init__(*args, **kwargs)
 
+        answer_size = 20
         if gametype == 'context':
             answer_size=20
         if gametype == 'qa':
