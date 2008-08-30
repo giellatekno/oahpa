@@ -124,7 +124,15 @@ h1 {
     font-family: Helvetica, Geneva, Arial,
           SunSans-Regular, sans-serif }
 
-
+.popupcontent{
+   position: absolute;
+   visibility: hidden;
+   overflow: hidden;
+   border:1px solid #CCC;
+   background-color:#F9F9F9;
+   border:1px solid #333;
+   padding:5px;
+}
 
 
   </style>
@@ -136,14 +144,39 @@ h1 {
     var my_tooltip = new Tooltip('id_of_trigger_element', 'id_of_tooltip_to_show_element')
 </script>
 
+
 <script type="text/javascript">
+var baseText = null;
+ 
+function showPopup(w,h,elid){
+   var popUp = document.getElementById(elid);
+
+   popUp.style.top = "200px";
+   popUp.style.left = "400px";
+   popUp.style.width = w + "px";
+   popUp.style.height = h + "px";
+ 
+   if (baseText == null) baseText = popUp.innerHTML;
+   popUp.innerHTML = baseText + 
+      "<div id=\"statusbar\"><button onclick=\"hidePopup(elid);\">Close window<button></div>";
+ 
+   var sbar = document.getElementById("statusbar");
+   sbar.style.marginTop = (parseInt(h)-60) + "px";
+   popUp.style.visibility = "visible";
+}
+
+function hidePopup(elid){
+   var popUp = document.getElementById(elid);
+   popUp.style.visibility = "hidden";
+}
+
 function feedback(msg)
 {
-  var generator=window.open('','name','height=400,width=500');
-  
+  var generator=window.open('','name','height=200,width=300');
+  generator.moveTo(50,50);
   generator.document.write('<html><head><title>Tutorial</title>');
   generator.document.write('</head><body>');
-  generator.document.write('<p>msg</p>');
+  generator.document.write('<p>' + msg + '</p>');
   generator.document.write('<p><a href="javascript:self.close()">close</a></p>');
   generator.document.write('</body></html>');
   generator.document.close();
@@ -217,8 +250,8 @@ function feedback(msg)
 	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
 	    <li><a href="/oahpa/morfa_s/">{% trans 'Nouns' %}</a></li>
 	    <li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>
-	    <li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li>
-<!--	    <li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>-->
+<!--	    <li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li> -->
+    <li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>
 	  </ul>
 	  <a href="/oahpa/vasta/">{% trans 'Vasta' %}</a><br/>
 	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
