@@ -74,7 +74,9 @@
 	   <!-- Feedback -->
           {% if form.feedback %}
            {{ form.problems }}
-	    <a href="javascript:feedback({{ form.feedback }});"><small>help</small></a>
+		    <div class='popupcontent' id='popup_{{ forloop.counter }}'>{{ form.feedback }}</div>
+			<a href="#" onclick="showPopup(300,100,'popup_{{ forloop.counter }}');" ><small>help</small></a>
+<!--	    <a href="javascript:feedback('{{ form.feedback }}');"><small>help</small></a>-->
 <!--	    {{ form.feedback }}-->
           {% else %}
            {{ form.problems }}
