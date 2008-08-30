@@ -64,10 +64,10 @@ class Gameview:
             if settings_form.data.has_key('vtype_bare'):
                 self.settings.vtype_bare= settings_form.data['vtype_bare']
 
-            if settings_form.data['book']:
+            if settings_form.data.has_key('book'):
                 self.settings.book = settings_form.books[settings_form.data['book']]
                 
-            if settings_form.data['gametype']:
+            if settings_form.data.has_key('gametype'):
                 self.settings.gametype= settings_form.data['gametype']
             self.settings.allcase=settings_form.allcase
             
