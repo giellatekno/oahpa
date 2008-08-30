@@ -17,11 +17,15 @@ class Info:
 class QAGame(Game):
 
     def init_tags(self):
-
+        """
+        Initialize the grammatical information.
+        This information should be moved to parameters
+        """
         self.num_fields = 3
         #self.syntax = ('N-ILL','N-LOC','N-ACC','N-GEN','N-COM','N-ESS','OBJ','NOUN','MAINV2','NEG','INTERR')
         self.syntax =('NEG','MAINV','SUBJ','ANSWERSUBJECT')
         self.qtype_verbs = set(['VERB','V-COND','V-IMPRT','V-GO'])
+        self.numerals = ['NUM-ATTR']
 
         # Default tense and mood for testing
         self.tense = "Prs"
@@ -58,6 +62,7 @@ class QAGame(Game):
                 print "word found: " + str(qelement.word_id)
                 word_ids.append(qelement.word_id)
             else:
+                # Otherwise use semantic classes for searching the word.
                 # Only one semtype allowed at the moment.
                 # Change this.
                 if SemtypeElement.objects.filter(qelement=qelement, game='morfa').count()>0:
@@ -78,17 +83,18 @@ class QAGame(Game):
                             if Form.objects.filter(Q(tag=tag_el.id) & Q(word=word.id)).count()>0:
                                 word_ids.append(word.id)
 
+                
         return word_ids
 
     def get_element(self, question_element, syntax):
 
-        if self.gametype:
-            if QElement.objects.filter(Q(question=question_element) & \
-                                       Q(syntax=syntax) &\
-                                       Q(gametype=self.gametype)).count()>0:
-                return QElement.objects.filter(Q(question=question_element) & \
-                                               Q(syntax=syntax) &\
-                                               Q(gametype=self.gametype))[0]
+        #if self.gametype:
+        #    if QElement.objects.filter(Q(question=question_element) & \
+        #                               Q(syntax=syntax) &\
+        #                               Q(gametype=self.gametype)).count()>0:
+        #        return QElement.objects.filter(Q(question=question_element) & \
+        #                                       Q(syntax=syntax) &\
+        #                                       Q(gametype=self.gametype))[0]
             
         if QElement.objects.filter(Q(question=question_element) &\
                                    Q(syntax=syntax)).count()>0:
@@ -154,6 +160,7 @@ class QAGame(Game):
 
         if 'MAINV' in set(qwords_list):
 
+
             qwords['MAINV'] = {}
 
             # Resolve answer subject and question mainverb numbers
@@ -186,17 +193,17 @@ class QAGame(Game):
                 if mainv_words:
                     mainv_word = mainv_words[randint(0, len(mainv_words)-1)]
 
-            if mainv_tag:
-                qwords['MAINV']['tag'] = []
-                qwords['MAINV']['tag'].append(mainv_tag.id)
             if mainv_word:
                 qwords['MAINV']['word'] = []
                 qwords['MAINV']['word'].append(mainv_word)
-            if Form.objects.filter(Q(word__pk=mainv_word) &\
-                                   Q(tag__pk=mainv_tag.id)).count() > 0:
-                qwords['MAINV']['fullform'] = []
-                qwords['MAINV']['fullform'].append(Form.objects.filter(Q(word__pk=mainv_word) &\
-                                                                       Q(tag__pk=mainv_tag.id))[0].fullform)
+            if mainv_tag:
+                qwords['MAINV']['tag'] = []
+                qwords['MAINV']['tag'].append(mainv_tag.id)
+                if Form.objects.filter(Q(word__pk=mainv_word) &\
+                                       Q(tag__pk=mainv_tag.id)).count() > 0:
+                    qwords['MAINV']['fullform'] = []
+                    qwords['MAINV']['fullform'].append(Form.objects.filter(Q(word__pk=mainv_word) &\
+                                                                           Q(tag__pk=mainv_tag.id))[0].fullform)
                 
         # 2. Other grammatical elements
         # At the moment, agreement is not taken into account
@@ -249,7 +256,8 @@ class QAGame(Game):
         
         word_ids=[]
         a_number=""
-                
+        asubjtag_el=None
+        
         if qwords.has_key('SUBJ'):
             subjtag_id=qwords['SUBJ']['tag'][0]
             subjtag = Tag.objects.get(id=subjtag_id)
@@ -269,21 +277,15 @@ class QAGame(Game):
 
         
         if not word_ids:
-            word_ids = qwords['SUBJ']['word'][:]
+            if qwords.has_key('SUBJ'):
+                word_ids = qwords['SUBJ']['word'][:]
+            #else:
+                # Check if there are elements
+                # that are specified for the answer subject.
+             #   word_ids.append = self.get_element(answer,'SUBJ')
 
-            # Subject for the answer
-            # Check if there are elements
-            # that are specified for the answer subject.
-            #for ans in answers:
-            #    ans_subj = self.get_element(ans,'SUBJ')
-            #    if not ans_subj:
-            #        ans_subj = self.get_element(ans,'ANSWERSUBJECT')
-            #    if ans_subj:
-            #        subjwords = self.get_word(ans_subj)
-            #        if subjwords:
-            #            word_ids.append(subjwords)
-
-        awords[subj]['tag'].append(asubjtag_el.id)
+        if asubjtag_el:
+            awords[subj]['tag'].append(asubjtag_el.id)
         if a_number:
             awords[subj]['number'] = a_number
         awords[subj]['word'] = word_ids[:]
@@ -308,7 +310,7 @@ class QAGame(Game):
             a_number=awords['SUBJ']['number']
             va_number=self.SVPN[a_number]
         if qwords.has_key('MAINV') and va_number:
-            mainvtag_id=qwords['MAINV']['tag'][0]
+            mainvtag_id = qwords['MAINV']['tag'][0]
             mainvtag = Tag.objects.get(id=mainvtag_id)
             v_number = mainvtag.personnumber
             print v_number, mainvtag_id, va_number
@@ -377,6 +379,12 @@ class QAGame(Game):
                                 
             if tag_el:
                 words = self.get_word(element, tag_el)
+                # Special treatment for numerals.
+                if (qtype == "NUM-ATTR" and element.identifier=="NUM-ATTR"):
+                    words = []
+                    w_count=Word.objects.filter(Q(pos="Num")).count()
+                    word_id=Word.objects.filter(Q(pos="Num"))[randint(0,w_count-1)].id
+                    words.append(word_id)
                 
         if not words and qwords.has_key(s) and qwords[s].has_key('word'):
             words = qwords[s]['word'][:]
@@ -399,7 +407,12 @@ class QAGame(Game):
         if pos == "N":
             qtype = self.settings.allcase[randint(0, len(self.settings.allcase)-1)]
         else:
-            qtype=self.settings.vtype
+            if pos == "V":
+                qtype=self.settings.vtype
+            else:
+                if pos == "Num":
+                    qtype = self.numerals[randint(0, len(self.numerals)-1)]
+
         print "QTYPE: " + qtype
 
         # If the question id is received from the interface, use that question info
