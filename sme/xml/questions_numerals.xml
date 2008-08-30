@@ -11,40 +11,40 @@
 <!-- Attribute - only for Morfa -->
 
   <q>
+    <qtype>NUM-ATTR</qtype>
    <question>
       <text>Maid MAINV MAINV2</text>
-      </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>áigut</id> 
 	<grammar tag="V+Ind+Prs+Sg2"/>
       </element>
-      <element type="MAINV2">
+      <element id="MAINV2">
 	<id>oastit</id> 
 	<grammar tag="V+Inf"/>   
       </element>
     </question>
     <answer> 
       <text>ANSWERSUBJECT MAINV MAINV2 NUM-ATTR NOUN</text>
-    <element type="SUBJ">    
+    <element id="SUBJ">    
 	<grammar tag="Pron+Pers+mun+Sg1"/>         
 	</element>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Sg+Acc"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Sg+Acc"/>         
 	<sem class="CLOTHING"/>
 	</element>
     </answer>
     <answer> 
       <text>ANSWERSUBJECT MAINV MAINV2 NUM-ATTR NOUN</text>
-    <element type="SUBJ">    
+    <element id="SUBJ">    
 	<grammar tag="Pron+Pers+mun+Sg1"/>         
 	</element>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Pl+Acc"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Pl+Acc"/>         
 	<sem class="CLOTHING-PL"/>
 	</element>
@@ -52,23 +52,23 @@
   </q>
 
   <q>
+    <qtype>NUM-ATTR</qtype>
    <question>
       <text>Maid MAINV</text>
-      </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>oaidnit</id> 
 	<grammar tag="V+Ind+Prs+Sg2"/>
       </element>
     </question>
     <answer> 
       <text>ANSWERSUBJECT MAINV NUM-ATTR NOUN</text>
-    <element type="SUBJ">    
+    <element id="SUBJ">    
 	<grammar tag="Pron+Pers+mun+Sg1"/>         
 	</element>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Sg+Acc"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Sg+Acc"/>         
 	<sem class="ANIMAL"/>
 	</element>
@@ -76,24 +76,24 @@
   </q>
 
   <q>
-   <question>
+    <qtype>NUM-ATTR</qtype>
+    <question>
       <text>Geaid SUBJ dát MAINV</text>
-    <element type="SUBJ">    
+      <element id="SUBJ">    
 	<grammar tag="N+Number+Nom"/>         
 	<sem class="OBJECT"/>
-	</element>
-      <element>
-      <element type="MAINV">
-	<id>leat</id> 
-	<grammar tag="V+Ind+Prs+Person-Number"/>
       </element>
-    </question>
+	<element id="MAINV">
+	  <id>leat</id> 
+	  <grammar tag="V+Ind+Prs+Person-Number"/>
+	</element>
+      </question>
     <answer> 
       <text>(Dát) MAINV NUM-ATTR NOUN SUBJ</text>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Sg+Gen"/>         
 	</element>
-    <element type="NOUN">    
+      <element id="NOUN">    
 	<grammar tag="N+Sg+Gen"/>         
 	<sem class="HUMAN"/>
 	</element>
@@ -101,19 +101,20 @@
   </q>
 
   <q>
+    <qtype>NUM-ATTR</qtype>
    <question>
       <text>Geaidda don attát OBJ</text>
-    <element type="OBJ">    
+    <element id="OBJ">    
 	<grammar tag="N+Pl+Acc"/>         
 	<sem class="OBJECT"/>
 	</element>
     </question>
     <answer> 
       <text>Attán OBJ NUM-ATTR NOUN</text>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Sg+Gen"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Sg+Ill"/>         
 	<sem class="HUMAN"/>
 	</element>
@@ -121,15 +122,16 @@
   </q>
 
   <q>
+    <qtype>NUM-ATTR</qtype>
    <question>
       <text>Masa don bijat duogŋasa</text>
     </question>
     <answer> 
       <text>(Mun) bijan duogŋasa NUM-ATTR NOUN</text>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Sg+Gen"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Sg+Ill"/>         
 	<sem class="CLOTHING"/>
 	</element>
@@ -137,15 +139,16 @@
   </q>
 
   <q>
+    <qtype>NUM-ATTR</qtype>
    <question>
       <text>Masa don bijat duogŋasa</text>
     </question>
     <answer> 
       <text>(Mun) bijan duogŋasa NUM-ATTR NOUN</text>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Pl+Gen"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Pl+Ill"/>         
 	<sem class="CLOTHING-PL"/>
 	</element>
@@ -153,29 +156,30 @@
   </q>
 
   <q>
+    <qtype>NUM-ATTR</qtype>
    <question>
       <text>Geain lea váralaš SUBJ</text>
-    <element type="SUBJ">    
+    <element id="SUBJ">    
 	<grammar tag="N+Sg+Nom"/>         
 	<sem class="ANIMAL"/>
 	</element>
     </question>
     <answer> 
       <text>NUM-ATTR NOUN lea</text>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Sg+Gen"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Sg+Loc"/>         
 	<sem class="HUMAN"/>
 	</element>
     </answer>
     <answer> 
       <text>NUM-ATTR NOUN lea váralaš SUBJ</text>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Sg+Gen"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Sg+Loc"/>         
 	<sem class="HUMAN"/>
 	</element>
@@ -183,19 +187,20 @@
   </q>
 
   <q>
+    <qtype>NUM-ATTR</qtype>
    <question>
       <text>Gos SUBJ leat</text>
-    <element type="SUBJ">    
+    <element id="SUBJ">    
 	<grammar tag="N+Pl+Nom"/>         
 	<sem class="HUMAN"/>
 	</element>
     </question>
     <answer> 
       <text>Sii leat NUM-ATTR NOUN</text>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Sg+Gen"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Sg+Loc"/>         
 	<sem class="BUILDING"/>
 	</element>
@@ -203,32 +208,33 @@
   </q>
 
   <q>
+    <qtype>NUM-ATTR</qtype>
    <question>
       <text>Gos SUBJ lei</text>
-    <element type="SUBJ">    
+    <element id="SUBJ">    
 	<grammar tag="N+Sg+Nom"/>         
 	<sem class="HUMAN"/>
 	</element>
     </question>
     <answer> 
       <text>SUBJ lei NUM-ATTR NOUN</text>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Pl+Gen"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Pl+Loc"/>         
 	<sem class="ARRANGEMENT-PL"/>
 	</element>
     </answer>
     <answer> 
       <text>SUBJ lei NUM-ATTR NOUN</text>
-    <element type="SUBJ">    
+    <element id="SUBJ">    
 	<grammar tag="Pron+son+Person-Number+Nom"/>         
 	</element>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Pl+Gen"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Pl+Loc"/>         
 	<sem class="ARRANGEMENT-PL"/>
 	</element>
@@ -236,22 +242,23 @@
   </q>
 
   <q>
+    <qtype>NUM-ATTR</qtype>
    <question>
       <text>Geaiguin SUBJ MAINV</text>
-    <element type="SUBJ">    
+    <element id="SUBJ">    
 	<grammar tag="Pron+Person-Number+Nom"/>         
 	</element>
-    <element type="MAINV">    
-	<grammar tag="V+Ind+Tense+Person-Number"/>         
+    <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
 	<sem class="COMV"/>
 	</element>
     </question>
     <answer> 
       <text>ANSWERSUBJECT MAINV NUM-ATTR NOUN</text>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Sg+Com"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Sg+Com"/>         
 	<sem class="HUMAN"/>
 	</element>
@@ -260,36 +267,37 @@
  
 <!-- For Morfa, but also for QA with any Num: -->  
     <q>
+    <qtype>NUM-ATTR</qtype>
    <question>
       <text>Gallin joavkun SUBJ MAINV</text>
-    <element type="SUBJ">    
+    <element id="SUBJ">    
 	<grammar tag="N+Number+Nom"/>         
 	<sem class="HUMAN"/>
 	</element>
-    <element type="MAINV">    
-	<grammar tag="V+Ind+Tense+Person-Number"/>         
+    <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
 	<id>bargat</id> 
 	</element>
     </question>
     <answer> 
       <text>SUBJ MAINV NUM-ATTR NOUN</text>
-      <element type="NUM-ATTR">    
+      <element id="NUM-ATTR">    
 	<grammar tag="Num+Ess"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Ess"/>         
 	<id>joavku</id>
 	</element>
     </answer>
     <answer> 
       <text>SUBJ MAINV NUM-ATTR NOUN</text>
-    <element type="SUBJ">    
+    <element id="SUBJ">    
 	<grammar tag="Pron+Person-Number+Nom"/>         
 	</element>
-    <element type="NUM-ATTR">    
+    <element id="NUM-ATTR">    
 	<grammar tag="Num+Ess"/>         
 	</element>
-    <element type="NOUN">    
+    <element id="NOUN">    
 	<grammar tag="N+Ess"/>         
 	<id>joavku</id>
 	</element>
@@ -299,20 +307,21 @@
 <!-- For Morfa, but also for QA with any COLL-NUM: -->  
 
   <q>
+    <qtype>COLL-NUM</qtype>
    <question>
       <text>Gallis MAINV N-ILL</text>
-    <element type="N-ILL">    
+    <element id="N-ILL">    
 	<grammar tag="N+Sg+Ill"/>         
 	<id>skuvla</id> 
 	</element>
-    <element type="MAINV">    
+    <element id="MAINV">    
 	<grammar tag="V+Ind+Tense+Pl3"/>         
 	<id>boahtit</id> 
 	</element>
     </question>
     <answer> 
       <text>SUBJ MAINV (N-ILL)</text>
-      <element type="SUBJ">    
+      <element id="SUBJ">    
 	<grammar tag="N+Num+Sg+Nom"/>         
 	<sem class="COLL-NUM"/>
 	</element>
@@ -321,19 +330,20 @@
 
 <!-- For Morfa, but also for QA with any COLL-NUM: -->  
   <q>
+    <qtype>COLL-NUM</qtype>
    <question>
       <text>Gallása don MAINV</text>
-    <element type="MAINV">    
+    <element id="MAINV">    
 	<grammar tag="V+Ind+Tense+Sg2"/>         
 	<id>oaidnit</id> 
 	</element>
     </question>
     <answer> 
       <text>ANSWERSUBJECT MAINV OBJ</text>
-      <element type="SUBJ">    
+      <element id="SUBJ">    
 	<grammar tag="Pron+Pers+mun+Sg1+Nom"/>         
 	</element>
-      <element type="OBJ">    
+      <element id="OBJ">    
 	<grammar tag="N+Num+Sg+Acc"/>         
 	<sem class="COLL-NUM"/>
 	</element>
@@ -342,41 +352,43 @@
 
 <!-- Only for Morfa: -->  
   <q>
+    <qtype>COLL-NUM</qtype>
    <question>
       <text>Geaid SUBJ dát MAINV</text>
-      <element type="SUBJ">    
+      <element id="SUBJ">    
 	<sem class="OBJECT"/>
 	<grammar tag="N"/>         
 	</element>
-    <element type="MAINV">    
-	<grammar tag="V+Ind+Person-Number"/>         
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
 	<id>leat</id> 
-	</element>
-    </question>
-    <answer> 
-      <text>Dan N-GEN</text>
-      <element type="N-GEN">    
-	<grammar tag="N+Num+Sg+Gen"/>         
-	<sem class="COLL-NUM"/>
-	</element>
-    </answer>
+      </element>
+   </question>
+   <answer> 
+     <text>Dan N-GEN</text>
+     <element id="N-GEN">    
+       <grammar tag="N+Num+Sg+Gen"/>         
+       <sem class="COLL-NUM"/>
+     </element>
+   </answer>
   </q>
 
 <!-- For Morfa, but also for QA with any COLL-NUM: -->  
   <q>
-   <question>
+    <qtype>COLL-NUM</qtype>
+    <question>
       <text>Gallásii SUBJ MAINV ságaid</text>
-      <element type="SUBJ">    
+      <element id="SUBJ">    
 	<grammar tag="Pron+Pers+Person-Number"/>         
-	</element>
-    <element type="MAINV">    
-	<grammar tag="V+Ind+Person-Number"/>         
+      </element>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
 	<id>muitalit</id> 
-	</element>
+      </element>
     </question>
     <answer> 
       <text>ANSWERSUBJECT MAINV (ságaid) N-ILL (ságaid)</text>
-      <element type="N-ILL">    
+      <element id="N-ILL">    
 	<grammar tag="N+Num+Sg+Ill"/>         
 	<sem class="COLL-NUM"/>
 	</element>
@@ -385,16 +397,17 @@
 
 <!-- For Morfa, but also for QA with any COLL-NUM: -->  
   <q>
+    <qtype>COLL-NUM</qtype>
    <question>
       <text>Gallásis lea dilli MAINV2</text>
-    <element type="MAINV2">    
+    <element id="MAINV2">    
 	<grammar tag="V+Inf"/>         
 	<sem class="ACTIVITY"/>
 	</element>
     </question>
     <answer> 
       <text>SUBJ lea (dilli)</text>
-      <element type="SUBJ">    
+      <element id="SUBJ">    
 	<grammar tag="N+Num+Sg+Loc"/>         
 	<sem class="COLL-NUM"/>
 	</element>
@@ -403,16 +416,17 @@
 
 <!-- For Morfa, but also for QA with any COLL-NUM: -->  
   <q>
+    <qtype>COLL-NUM</qtype>
    <question>
       <text>Gallásiin don vuolggát N-ILL</text>
-    <element type="N-ILL">    
+    <element id="N-ILL">    
 	<grammar tag="N+Sg+Ill"/>         
 	<sem class="PLACE-NAME"/>
 	</element>
     </question>
     <answer> 
-      <text>(N-ILL) ANSWERSUBJECT vuolggán N-COM (N-ILL)</text>
-      <element type="N-COM">    
+      <text>(N-ILL) mun vuolggán N-COM (N-ILL)</text>
+      <element id="N-COM">    
 	<grammar tag="N+Num+Sg+Com"/>         
 	<sem class="COLL-NUM"/>
 	</element>
