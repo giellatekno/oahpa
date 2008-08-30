@@ -53,8 +53,8 @@
         {% ifequal form.error "correct" %}
           <font color="green">{{ form.userans }}</font>
         {% else %}
-	    <!-- Answer field -->
-        {{ form.answer }} 
+	  <!-- Answer field -->
+          {{ form.answer }} 
 	{% endifequal %}
       {% else %}
       <!-- Answer field -->
@@ -71,7 +71,14 @@
     {% endifnotequal %}
   {% else %}
       {% ifequal form.error "error" %}
-        {{ form.problems }}
+	   <!-- Feedback -->
+          {% if form.feedback %}
+           {{ form.problems }}
+	    <a href="javascript:feedback({{ form.feedback }});"><small>help</small></a>
+<!--	    {{ form.feedback }}-->
+          {% else %}
+           {{ form.problems }}
+          {% endif %}
       {% endifequal %}
   {% endif %}
       </td>
