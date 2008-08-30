@@ -1,0 +1,62 @@
+{% extends "game.html" %}
+{% load i18n %}
+
+{% block name %}{% trans "Morphology" %}{% endblock %}
+{% block pagename %}/oahpa/morfa/{% endblock %}
+{% block settings %}
+
+<table width="700">
+<tr>
+<td>{% trans "Game type" %}&nbsp; &nbsp; {{ settingsform.gametype }}</td>
+</tr>
+<tr>
+<td>{% trans "Case" %}</td>
+<td>{% trans "Dialect" %} (not used)</td>
+</tr>
+<tr>
+<td>{{ settingsform.case }}</td>
+<td>
+<input type="radio" name="dialect" value="western" checked="checked" />{% trans "Western" %}<br/>
+<input type="radio" name="dialect" value="eastern" />{% trans "Eastern" %}<br/>
+</td>
+</tr>
+</table>
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+
+{% endblock %}
+
+{% block question %}
+
+{% ifequal gametype "bare" %}
+  <td>
+  {% if forloop.first %}
+    <div id='lemma'>
+  {% else %}
+    <div id='lemma_{{ forloop.counter0 }}'>
+  {% endif %}
+
+  {{ form.lemma }} {{ form.tag }}
+  </div>
+
+  {% if forloop.first %}
+    <div id='tooltip' style="display:none; margin:5px; background-color:white;">
+    {{ form.translations }}
+    </div>
+    <script type="text/javascript"> 
+	var lemma_tooltip = new Tooltip('lemma','tooltip')
+    </script>
+  {% else %}
+    <div id='tooltip_{{ forloop.counter0 }}' style="display:none; background-color:white;">
+    {{ form.translations }} 
+    </div>
+    <script type="text/javascript">
+      var lemma_{{ forloop.counter0 }}_tooltip = new Tooltip('lemma_{{ forloop.counter0 }}','tooltip_{{ forloop.counter0 }}')
+    </script>
+  {% endif %}
+  </td>
+
+{% else %}
+<td>{{ form.question }} ({{ form.lemma }})</td>
+{% endifequal %}
+
+{% endblock %}
