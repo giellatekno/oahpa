@@ -209,7 +209,7 @@ class MorphQuestion(forms.Form):
             else:
                 self.lemma = Form.objects.filter(Q(word__pk=word.id) & Q(tag__string="N+Pl+Nom"))[0].fullform
 
-            print word.lemma, word.stem, word.gradation, word.diphthong, "ok",  word.rime, "jes", word.soggi, tag.case, tag.number
+            #print word.lemma, word.stem, word.gradation, word.diphthong, "ok",  word.rime, "jes", word.soggi, tag.case, tag.number
             feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
                                                Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
                                                Q(soggi=word.soggi) & Q(case=tag.case) & \
@@ -346,59 +346,41 @@ def select_words(self, qwords, awords):
     selected_awords = {}
 
     for syntax in awords.keys():
-        #print "SYNTAX ", syntax
+
         word = None        
         tag = None
         selected_awords[syntax] = {}
-        selected_awords[syntax]['fullform'] = []
 
         # Select answer words and fullforms for interface
         # Use first the answer elements, but if there are none,
         # take the corresponding question element        
-        if awords[syntax].has_key('word') and awords[syntax]['word']:
-            word_id = awords[syntax]['word'][randint(0,len(awords[syntax]['word'])-1)]
-            selected_awords[syntax]['word'] = word_id
-            #print "found word id", word_id
+        if awords.has_key(syntax) and len(awords[syntax]) > 0:
+            print "SYNTAX", syntax
+            aword = awords[syntax][randint(0,len(awords[syntax])-1)]
+            if aword.has_key('word'):
+                selected_awords[syntax]['word'] = aword['word']
+            if aword.has_key('tag'):
+                selected_awords[syntax]['tag'] = aword['tag']
+            if aword.has_key('fullform'):
+                print "AWORD", aword['fullform']
+                selected_awords[syntax]['fullform'] = aword['fullform'][:]
         else:
             # If there was no word form, take the same word form as in question
-            if qwords.has_key(syntax) and qwords[syntax].has_key('word'):
-                selected_awords[syntax]['word'] = qwords[syntax]['word'][0]
-                #print "takind qwords word id", word
-        if awords[syntax].has_key('tag') and awords[syntax]['tag']:
-            tag_id = awords[syntax]['tag'][randint(0,len(awords[syntax]['tag'])-1)]
-            selected_awords[syntax]['tag'] = tag_id
-            #print "found tag id", tag_id
-        else:
-            # If there was tag form, take the same tag as in question
-            if qwords.has_key(syntax) and qwords[syntax].has_key('tag'):
-                selected_awords[syntax]['tag'] = qwords[syntax]['tag'][0] 
-                #print "taking qwords word id", tag
-        if awords[syntax].has_key('fullform') and awords[syntax]['fullform']:
-            #print "taking awords fullform"
-            fullform = awords[syntax]['fullform'][randint(0,len(awords[syntax]['fullform'])-1)]
-            selected_awords[syntax]['fullform'].append(fullform)
-        else:
-            if selected_awords[syntax].has_key('word') and selected_awords[syntax].has_key('tag'):
-                #print "searching fullforms"
-                word = selected_awords[syntax]['word']
-                tag = selected_awords[syntax]['tag']
-                if Form.objects.filter(Q(word__pk=word) & Q(tag__id=tag)).count()>0:
-                    #print "found fullforms"
-                    fullforms = Form.objects.filter(Q(word__pk=word) & Q(tag__id=tag))
-                    for f in list(fullforms):
-                        selected_awords[syntax]['fullform'].append(f.fullform)
-                        #print "generating awords fullform"
-                        
-            # If there was no fullform, take the same fullform as in question
-            if not selected_awords[syntax].has_key('fullform'):
-                if qwords.has_key(syntax) and qwords[syntax].has_key('fullform'):
-                    selected_awords[syntax]['fullform'].append(qwords[syntax]['fullform'][0])
-                    #print "taking qwords fullform"
+            if qwords.has_key(syntax):
+                qword = qwords[syntax]
+                if qwords.has_key('word'):
+                    selected_awords[syntax]['word'] = qwords['word']
+                if qwords.has_key('tag'):
+                    selected_awords[syntax]['tag'] = qwords['tag']
+                if qwords.has_key('fullform'):
+                    selected_awords[syntax]['fullform'] = qwords['fullform'][:]
                         
         # make sure that theres is something to print
-        if not selected_awords[syntax]['fullform']:
+        if not selected_awords[syntax].has_key('fullform'):
+            selected_awords[syntax]['fullform'] = []
             selected_awords[syntax]['fullform'].append(syntax)
-        
+
+    #print "SELECTED2:", selected_awords
     return selected_awords
 
 
@@ -507,19 +489,20 @@ class QAQuestion(forms.Form):
         if (gametype == 'qa'):
             for w in atext.split():
                 self.qa_correct_anslist[w] = []
-                form_list=[]
-                if awords[w].has_key('word') and awords[w]['word'] and \
-                   awords[w].has_key('tag') and awords[w]['tag'] :
-                    form_list=Form.objects.filter(Q(word__in=awords[w]['word']) &\
-                                                  Q(tag__pk=awords[w]['tag'][0]))
-                    for item in list(form_list):
-                        self.qa_correct_anslist[w].append(item.fullform)
-                        #print "adding forms..", item.fullform
-                else:
-                    if awords[w].has_key('fullform') and awords[w]['fullform']: 
-                        self.qa_correct_anslist[w] = awords[w]['fullform'][:]
+                if awords.has_key(w):
+                    awords = awords[w]
+                    for awords in awords:
+                        if awords.has_key('fullform'):
+                            form_list.append(awords['fullform'])
+                        else:
+                            form_list.append(Form.objects.filter(Q(word__in=aword['word']) &\
+                                                                 Q(tag__pk=aword['tag'])))
+
+                    if not form_list:
+                        self.qa_correct_anslist[w].append(w)
                     else:
-                        self.qa_correct_anslist[w] = w
+                        for item in list(form_list):
+                            self.qa_correct_anslist[w].append(item.fullform)
 
             self.qa_is_correct(atext)
             
@@ -528,14 +511,15 @@ class QAQuestion(forms.Form):
             self.is_correct()
             
         self.qattrs= {}
-        self.aattrs= {}
+        self.aattrs= {}        
         for syntax in qwords.keys():
-            if qwords[syntax].has_key('word'):
-                self.qattrs['question_word_' + syntax] = qwords[syntax]['word'][0]
-            if qwords[syntax].has_key('tag') and qwords[syntax]['tag']:
-                self.qattrs['question_tag_' + syntax] = qwords[syntax]['tag'][0]
-            if qwords[syntax].has_key('fullform') and qwords[syntax]['fullform']:
-                self.qattrs['question_fullform_' + syntax] = qwords[syntax]['fullform'][0]
+            qword = qwords[syntax]
+            if qword.has_key('word'):
+                self.qattrs['question_word_' + syntax] = qword['word']
+            if qword.has_key('tag') and qword['tag']:
+                self.qattrs['question_tag_' + syntax] = qword['tag']
+            if qword.has_key('fullform') and qword['fullform']:
+                self.qattrs['question_fullform_' + syntax] = qword['fullform'][0]
 
         for syntax in selected_awords.keys():
             if selected_awords[syntax].has_key('word'):
@@ -544,7 +528,7 @@ class QAQuestion(forms.Form):
                 self.aattrs['answer_tag_' + syntax] = selected_awords[syntax]['tag']
             if selected_awords[syntax].has_key('fullform') and len(selected_awords[syntax]['fullform']) == 1:
                 self.aattrs['answer_fullform_' + syntax] = selected_awords[syntax]['fullform'][0]
-                
+
         # Forms question string and answer string out of grammatical elements and other strings.
         qstring = ""
         astring= ""
@@ -569,6 +553,8 @@ class QAQuestion(forms.Form):
             answer_word_el = Word.objects.get(id=answer_word)
             answer_tag_el = Tag.objects.get(id=answer_tag)
             self.lemma = answer_word_el.lemma
+            
+            # If the asked word is in Pl, generate nominal form
             if answer_tag_el.pos=="N":
                 if answer_tag_el.number=="Sg":
                     self.lemma = answer_word_el.lemma
@@ -583,6 +569,7 @@ class QAQuestion(forms.Form):
         #        selected_awords[p]['fullform'][0] = Q
             
         # Format answer string
+        print "SELECTED", selected_awords
         for w in atext.split():
             if w.count("(") > 0: continue
             if w== 'ANSWERSUBJECT': w='SUBJ'
