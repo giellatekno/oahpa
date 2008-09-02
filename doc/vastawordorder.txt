@@ -1,6 +1,6 @@
 
-Vasta - about wordorder
-#######################
+Vasta - about wordorder in the answers
+######################################
 
 
 Allowing a tag or not:
@@ -23,13 +23,14 @@ TIME-expressions - when the question starts with "goas":
 The following block is a definition of TIME-expressions
 (acceptable answers to "goas"-questions):
 
-(Dem+Sg+Gen | TIME-MOD) TIME-GEN + Sg+Gen
-(Dem+Pl+Gen | TIME-MOD) TIME-GEN + Pl+Gen
-(Dem+Sg+Gen | TIME-MOD) TIME-LOC + Sg+Loc
-TIME-ESS + Ess
-TIME-ADV
-TIME-PP
-ii+V+Neg+Ind goasse+Adv+Foc/ge
+The time-expression-part of the answer: 
+( (Dem+Sg+Gen | TIME-MOD) TIME-GEN + Sg+Gen ) |
+( (Dem+Pl+Gen | TIME-MOD) TIME-GEN + Pl+Gen ) |
+( (Dem+Sg+Gen | TIME-MOD) TIME-LOC + Sg+Loc ) |
+( TIME-ESS + Ess                            ) |
+( TIME-ADV                                  ) |
+( TIME-PP                                   ) |
+( ii+V+Neg+Ind goasse+Adv+Foc/ge            ) 
 
 ... where the variables are defined in the following lists:
 
@@ -209,17 +210,17 @@ Definition of NP:
 We also define NP (excluding relative clauses)
 
 Ordinary NP
-(Pron+Dem-PA) ( N+Gen | Pron+Pers+Gen ) A N
+(Pron+Dem-PA) ( N+Gen | Pron+Pers+Gen ) ( A ) N
   
 Reflexive NP
-(Pron+Pers-XPerson-YNumber) Refl+Gen+XYPx A N
+(Pron+Pers-XPerson-YNumber) Refl+Gen+XYPx ( A ) N
 
 Quantified NP
 (Num-PA)  ( N+Gen | Pers+Gen ) (A) N-OBL
 (Num-Nom) ( N+Gen | Pers+Gen ) (A) N-Gen
 
 where:
-A  = (nubbi-PA) ((A+Attr|buorre-PA) ((ja|,) (A+Attr|buorre-PA)*)
+A  = (nubbi-PA) ((A+Attr|buorre-PA) ((ja|,) (A+Attr|buorre-PA)*
 PA = Partial Agreement with head noun in case and number according to table
 X  = 1, 2, 3
 Y  = Sg, Du, Pl
@@ -265,12 +266,16 @@ Adv
 CC
 V
 
-Thus, the members of the free occurrence set are the ones which can be added everywhere in addition to the defined templates. Note that For Pcle and Adv there are two exceptions, mentioned above (fal and na).
+Thus, the members of the free occurrence set are the ones which can be added everywhere in addition to the defined templates. Note that for Pcle and Adv there are two exceptions, mentioned above ("fal" and "na").
 
 Verbs can occur anywhere, but they must have correct inflections, as defined in the person-number corresponcency tables.
 
+
+
 Open questions on free occurence:
 ---------------------------------
+
+These will not be implemented.
 
 We still need to work on adverbial constituents, such as PPs and NPs in adverbial cases
 
