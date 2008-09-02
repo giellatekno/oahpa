@@ -1,0 +1,230 @@
+
+!!!Meeting notes, Pedagogical programs, 080902
+
+
+!!!Participants
+
+Biret Ánne, Ciprian, Lene, Saara, Trond.
+
+
+!!!Task list from last time
+
+!!Biret Ánne
+* Clean up more mess in question-files
+* Work on dialogues (have not started yet)
+* Look through the sme propernouns.xml file and prune marginal place names
+* Have a look at the wordorder - and suggest for Saara how to do
+* present a more concrete model for Morfa user feedback (with Lene, Trond)
+
+
+!!Ciprian
+* Testing the games (still waiting to start the Saami course) :-)
+* Have a look at the ped lexica and compare with the general ones
+* Nothing developmental yet
+
+!!Lene
+* Look at the lexicon conversion: manually add the homonyms from the {{dehálasdubl.txt}} file. - not done because I have waited new version from Saara
+* Remove some entries (expressions), add more synonyms. - same as above
+* Have a look at the wordorder - and suggest for Saara how to do - done
+* Look through the sme propernouns.xml file and prune marginal place names - done
+* present a more concrete model for Morfa user feedback (with Biret Ánne, Trond) - done
+
+!!Saara
+* Run interface generation
+** done
+* Look at the missing feedback in 
+** missing? Implemented first, test version of the feedback.
+* Convert nobsme again (fix å)
+** done
+* Fix bugs in vasta (Bug 714)
+** Started fixing
+* Away next week
+* Other
+** Added Numerals and a version of questions_numerals.xml to the interface.
+
+!!Trond
+* Play
+** Done. We should identify what games are mature enough for bugreports
+* Translate interface
+** Gone through and
+* Look at the lexicon conversion: manually add the homonyms from the {{dehálasdubl.txt}} file.
+** Not done
+* Discuss yr.no with Sjur and Børre, get name pairs
+** Passed issue on to Thomas
+* present a more concrete model for Morfa user feedback (with Biret Ánne, Lene)
+** Lots of discussion here
+
+!!!Status quo
+
+Here we quickly go through things. Are we waiting for each other at some point?
+
+
+!!Technical things.
+
+* The Norwegian lexicon is recompiled and in svn.
+* The numerals are added to the interface, also Num Attr
+* Added feedback to the interface, a preliminary feedback window 
+  (gives some info for i- and u-stems).
+* Started reorganising Vasta, the contextual game, this is still 
+  under way. There are several features not taken into account in Vasta, 
+  the situation is complex, there are several small things to be  
+
+!!Linguistics
+
+* We have discussed word order and made a document {{vastawordorder.txt}}
+  to formalise the restrictions we want.
+
+
+
+!!!The games
+!!Common technical issues
+
+!Interface
+Our interface does not look good in Windows. What should we do with the design?
+
+Kjellaug Isaksen is scheduled to design work, and now she is ready to begin working with it. We should have a meeting with her. Lene makes contact with her for a common meeting - when Saara is here.
+
+!!Numra
+The clock is still out in the blue. Let us wait with it.
+
+!!Morfa
+
+!Nouns
+There was a mix of cases in the contextual morfa, it will be fixed.
+
+The nouns manage to have case exercises without tags (only the stray N-ILL tag,which is not needed, and can be removed or replaced with ''illative'')
+
+!Verbs
+Now, the setup for bare verbs in Morfa is:
+
+{{{
+heavahit V+Ind+Prs+Sg3
+__________
+dárbbašit V+Ind+Prs+Du2
+__________
+nohkat V+Ind+Prs+Pl2
+__________
+hupmat V+Ind+Prs+Pl1
+__________
+}}}
+
+Instead, let us strive at the minimalistic approach we know from the nouns and do the following:
+
+{{{
+Practice present
+son __________ (heavahit)
+doai __________ (dárbbašit)
+sii __________ (nohkat)
+mii __________ (hupmat)
+}}}
+
+
+
+!Adjectives
+* disappeared from the deep blue menu
+
+!Numerals 
+* for the bare, we should give the option: 1-20/Sg.
+* we should restrict the numerals in the contextual game, eg. 1-12. (zero does not function as a numeral in that sense in the language, and should be left out) 
+
+Also numerals have tags now.
+
+Do we need a translation for the numerals? Yes -- to arabic, and we already have it: logi -> 10
+
+!Feedback
+
+The windows are implemented, for -i and -u stems, and give info on stem type (bisyllabic). Forthcoming: The rest of the info
+
+Improvement: Now the window must be closed via the close the button window. Better: It should disappear when you click the main window.
+
+Improvement: Get the paradigm of the word in question - according to the dialect-option. We parametrise the dialects in the lexc source code, resulting in isme-kj.fst, isme-gg.fst, isme-gs.fst, etc. for different dialects. For now, there is the isme-restr.fst.
+
+The feedback format may be the same for the other POS also. They may also be written directly into the xml format of {{sme/xml/feedback_nouns.xml}}.
+
+!!Vasta
+
+Work underway, as always.
+
+!Sets
+Vasta should not accept only words from the sets, but rather all words. This is the difference between Morfa and Vasta: We take away the sets in the answer, so that the answering person may pick any word.
+
+!Wordorder
+
+Saara will fix other things first, and next week look at the word order document and implement some version of it. We will then test it out.
+
+
+!!Sahka
+
+The next step here is for Biret Ánne (Lene) to write more templates. There will be several weeks before Saara con look into Sahka again.
+
+!!Leksa
+!Words
+Now, there are only nouns there (there are only nouns converted with translations). Saara will run a new translation today, so that we may get the other POSes as well.
+
+!Names
+Split names? 
+Lene can mark them into easy and difficult ones.
+xml format comparable to the books format for the other lexica. default / "difficult" + geografical
+
+!!Testing
+
+* Testing-ready: bare Morfa, Numra
+* Not ready for testing yet: Leksa, Vasta, Sahka
+* Selection of books, stems, cases, should work.
+
+!!!Other issues
+
+!!Promotion (Lule Sámi conference)
+
+The target group is parents.
+
+!!Promotion (University of Oulu) 08.09.08
+Biret Ánne will present OAHPA/VISL, and should tell Saara when the interface
+should be up and running.
+
+it would also be nice to have a look at the Finnish interface before Oulu. 
+
+
+!!!Forward
+
+Keep up the good work.
+
+
+!!!Next meeting
+
+Tuesday, 9.9. at 10.00.
+
+
+!!!Task list 
+
+Edit your task lists as we go:
+
+!!Biret Ánne
+* Clean up more mess in question-files
+* Work on dialogues
+* Look through the sme propernouns.xml file and prune marginal place names
+* Have a look at the wordorder - and suggest for Saara how to do
+* present a more concrete model for Morfa user feedback (with Lene, Trond)
+
+
+!!Ciprian
+* Testing the games :-)
+* Have a look at the ped lexica and compare with the general ones
+* Nothing developmental yet
+
+!!Lene
+* Look at the lexicon conversion: manually add the homonyms from the {{dehálasdubl.txt}} file.
+* Remove some entries (expressions), add more synonyms.
+* Make Morfa user feedback for verbs, adjectives and numerals (with Biret Ánne, Trond)
+
+!!Saara
+* Move adjectives and verbs to Leksa interface
+* New format for verb input in Morfa
+* Restrict numerals: 1-20 option for bare morfa, 1-12 for contextual morfa 
+* Fix bugs in Vasta (Bug 714)
+* Look at Vasta word order
+* Add paradigms to feedback
+* Translate the interface to Finnish
+
+!!Trond
+
