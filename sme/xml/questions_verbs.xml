@@ -12,7 +12,7 @@
 <!-- comment from saara: The mainv-answersubject agreement is implemented otherwise, -->
 <!-- because it is so special. It does not have to be marked explicitely. -->
   <q>
-    <qtype>VERB</qtype>
+    <qtype>MAINV</qtype>
    <question>
       <text>Maid SUBJ MAINV odne</text>
       <element id="SUBJ">
@@ -38,7 +38,7 @@
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
   <q>
-    <qtype>VERB</qtype>
+    <qtype>MAINV</qtype>
     <question>
       <text>Maid SUBJ MAINV odne</text>
       <element id="SUBJ">
@@ -124,7 +124,7 @@
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
 <!-- MAINV must agree with ANSWERSUBJECT in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
     <q>
-    <qtype>VERB</qtype>
+    <qtype>MAINV</qtype>
    <question>
       <text>Maid SUBJ MAINV ikte</text>
       <element id="SUBJ">
@@ -150,7 +150,7 @@
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
   <q>
-    <qtype>VERB</qtype>
+    <qtype>MAINV</qtype>
     <question>
       <text>Maid SUBJ MAINV ikte</text>
       <element id="SUBJ">
@@ -290,7 +290,7 @@
 	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
-<element game='morfa' id="MAINV">
+      <element game='morfa' id="MAINV">
 	<grammar tag="V+Cond+Prs+Person-Number"/>
 	<sem class="ACTIVITY"/>
       </element>
@@ -298,7 +298,7 @@
 	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
-<element game='qa' id="MAINV">
+      <element game='qa' id="MAINV">
 	<grammar tag="V+Cond+Prs+Person-Number"/>
 	<grammar pos="V"/>
       </element>
@@ -514,9 +514,6 @@
     </question>
     <answer> 
       <text>SUBJ MAINV (ikte)</text>
-    </answer>
-    <answer> 
-      <text>SUBJ MAINV (ikte)</text>
       <element id="SUBJ">
 	<id>son</id>
 	<grammar tag="Pron+Pers+Person-Number"/>
@@ -524,7 +521,7 @@
     </answer>
     <answer> 
       <text>(ikte) ANSWERSUBJECT NEG PRFPRC (ikte)</text>
-      <element game='morfa id="SUBJ">
+      <element game='morfa' id="SUBJ">
 	<grammar pos="Pron"/>
       </element>
       <element game='morfa' id="NEG">
@@ -542,7 +539,6 @@
       </element>
       <element game='qa' id="PRFPRC">
 	<grammar tag="V+PrfPrc"/>
-	<grammar pos="V"/>
       </element>
     </answer>
   </q>
@@ -585,7 +581,6 @@
       </element>
       <element game='qa' id="CONNEG">
 	<grammar tag="V+Cond+Prs+ConNeg"/>
-	<grammar pos="V"/>
       </element>
     </answer>
   </q>
