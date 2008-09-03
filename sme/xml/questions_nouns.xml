@@ -24,12 +24,11 @@
     <answer> 
       <text> ANSWERSUBJECT MAINV N-ILL</text>
       <element game='morfa' id="N-ILL">
-	    <sem class="OBJECT"/>
-	    <grammar pos="N"/>
+	<sem class="OBJECT"/>
       </element>
       <element game='qa' id="N-ILL">
-            <grammar pos="N"/>
-            <grammar pos="Pron"/>
+        <grammar pos="N"/>
+        <grammar pos="Pron"/>
       </element>
     </answer>
   </q>
@@ -51,7 +50,6 @@
 	<id>addit</id>
       </element>
       <element id="OBJ">
-	<grammar pos="N"/>
 	<sem class="OBJECT"/>
       </element>
     </question>
@@ -60,7 +58,6 @@
       <element game='morfa' id="N-ILL">
 	<agreement id="INTERR"/>
 	<sem class="HUMAN"/>
-	<grammar pos="N"/>
       </element>
       <element game='qa' id="N-ILL">
         <agreement id="INTERR"/>
@@ -175,7 +172,6 @@
       <text>SUBJ MAINV N-LOC</text>
       <element game='morfa' id="SUBJ">
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
-	<sem class="HUMAN"/>
 	<id>son</id>
       </element>
       <element game='morfa' id="N-LOC">
@@ -184,8 +180,11 @@
       </element>
       <element game='qa' id="SUBJ">
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>
-	<sem class="HUMAN"/>
 	<id>son</id>
+      </element>
+      <element game='qa' id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar pos="N"/>
       </element>
       <element game='qa' id="N-LOC">
 	<grammar tag="N+Sg+Loc"/>
@@ -214,8 +213,8 @@
     <answer> 
       <text>SUBJ MAINV N-LOC</text>
       <element game='morfa' id="N-LOC">
-      <grammar tag="N+Sg+Loc"/>
-	   <sem class="PLACE"/>
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE"/>
       </element>
       <element game='qa' id="N-LOC">
         <grammar tag="N+Sg+Loc"/>
@@ -269,7 +268,8 @@
       </element>
       <element game='qa' id="N-LOC">
         <grammar tag="N+Sg+Loc"/>
-        <grammar pos="N"/>
+      </element>   
+      <element game='qa' id="N-LOC">
 	<grammar pos="Pron"/>
       </element>   
  </answer>
