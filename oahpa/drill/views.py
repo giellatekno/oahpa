@@ -42,9 +42,6 @@ class Gameview:
                            'COND'  : _('conditional'), \
                            'IMPRT' : _('imperative'),\
                            'POT'   : _('potential') }
-
-
-        self.gamename = self.gamenames[self.settings.case]
         
     def syll_settings(self,settings_form):
 
@@ -120,6 +117,14 @@ class Gameview:
             game = BareGame(self.settings)
 
             game.new_game()
+            
+        if self.settings.pos == "N" or self.settings.pos == "Num":
+            self.settings.gamename = self.gamenames[self.settings.case]
+        if self.settings.pos == "V":
+            self.settings.gamename = self.gamenames[self.settings.vtype_bare]
+        if self.settings.pos == "A":
+            self.settings.gamename = ""
+
 
         c = Context({
             'settingsform': settings_form,
@@ -142,8 +147,8 @@ def mgame_n(request):
     mgame = Gameview()
     mgame.init_settings()
     mgame.settings.pos = "N"
-    mgame.settings.gamename = mgame.gamenames[mgame.settings.case]
 
+    
     c = mgame.create_mgame(request)
     return render_to_response('mgame_n.html', c)
 
@@ -153,7 +158,6 @@ def mgame_v(request):
     mgame = Gameview()
     mgame.init_settings()
     mgame.settings.pos = "V"
-    mgame.settings.gamename = mgame.gamenames[mgame.settings.vtype_bare]
 
     c = mgame.create_mgame(request)
     return render_to_response('mgame_v.html', c)
@@ -163,7 +167,6 @@ def mgame_a(request):
     mgame = Gameview()
     mgame.init_settings()
     mgame.settings.pos = "A"
-    mgame.settings.gamename = ""
     
     c = mgame.create_mgame(request)
     return render_to_response('mgame_a.html', c)
@@ -173,7 +176,6 @@ def mgame_l(request):
     mgame = Gameview()
     mgame.init_settings()
     mgame.settings.pos = "Num"
-    mgame.settings.gamename = mgame.gamenames[mgame.settings.case]
     
     c = mgame.create_mgame(request)
     return render_to_response('mgame_l.html', c)
