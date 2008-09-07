@@ -4,6 +4,7 @@ from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404, render_to_response
 from random import randint
+from django.utils.translation import ugettext as _
 from django.contrib.admin.views.decorators import _encode_post_data, _decode_post_data
 from game import *
 from qagame import *
@@ -28,8 +29,23 @@ class Gameview:
         self.settings.language="sme"
         self.settings.gametype="bare"
         self.settings.vtype_bare="PRS"
-        self.settings.vtype="VERB"
+        self.settings.vtype="MAINV"
 
+        self.gamenames = { 'N-ILL' :  _('illative'),\
+                           'N-ACC' :  _('accusative'),\
+                           'N-COM' :  _('comitative'),\
+                           'N-ESS' :  _('essive'),\
+                           'N-GEN' :  _('genitive'),\
+                           'N-LOC' :  _('locative'),\
+                           'PRS'   :  _('present'),\
+                           'PRT'   : _('past'),\
+                           'COND'  : _('conditional'), \
+                           'IMPRT' : _('imperative'),\
+                           'POT'   : _('potential') }
+
+
+        self.gamename = self.gamenames[self.settings.case]
+        
     def syll_settings(self,settings_form):
 
         if 'bisyllabic' in settings_form.data:
@@ -113,6 +129,7 @@ class Gameview:
             'gametype': self.settings.gametype,
             'score': game.score,
             'case': self.settings.case,
+            'gamename': self.settings.gamename,
             'all_correct': game.all_correct,
             'show_correct': game.show_correct,
             })
@@ -125,6 +142,7 @@ def mgame_n(request):
     mgame = Gameview()
     mgame.init_settings()
     mgame.settings.pos = "N"
+    mgame.settings.gamename = mgame.gamenames[mgame.settings.case]
 
     c = mgame.create_mgame(request)
     return render_to_response('mgame_n.html', c)
@@ -135,6 +153,7 @@ def mgame_v(request):
     mgame = Gameview()
     mgame.init_settings()
     mgame.settings.pos = "V"
+    mgame.settings.gamename = mgame.gamenames[mgame.settings.vtype_bare]
 
     c = mgame.create_mgame(request)
     return render_to_response('mgame_v.html', c)
@@ -144,7 +163,8 @@ def mgame_a(request):
     mgame = Gameview()
     mgame.init_settings()
     mgame.settings.pos = "A"
-
+    mgame.settings.gamename = ""
+    
     c = mgame.create_mgame(request)
     return render_to_response('mgame_a.html', c)
 
@@ -153,7 +173,8 @@ def mgame_l(request):
     mgame = Gameview()
     mgame.init_settings()
     mgame.settings.pos = "Num"
-
+    mgame.settings.gamename = mgame.gamenames[mgame.settings.case]
+    
     c = mgame.create_mgame(request)
     return render_to_response('mgame_l.html', c)
 
@@ -171,8 +192,10 @@ class Vastaview:
         self.settings.semtype='all'
         self.settings.language="sme"
         self.settings.vtype_bare="PRS"
-        self.settings.vtype="VERB"
-
+        self.settings.vtype="MAINV"
+        self.gametype="qa"
+        self.settings.gametype = "qa"
+        
     def create_vastagame(self,request):
 
         count=0
@@ -197,11 +220,12 @@ class Vastaview:
                 self.settings.book = settings_form.books[settings_form.data['book']]
 
             self.settings.gametype = "qa"
-                        
             # Vasta
             game = QAGame(self.settings)
             game.init_tags()
-            
+
+            game.gametype="qa"
+
             # If settings are changed, a new game is created
             # Otherwise the game is created using the user input.
             if "settings" in data:
@@ -212,7 +236,7 @@ class Vastaview:
 
             if 'test' in data:
                 game.count=1
-            if "show_correct" in data:
+            if 'show_correct' in data:
                 show_correct = 1
 
         # If there is no POST data, default settings are applied
@@ -222,10 +246,12 @@ class Vastaview:
             self.settings.allsem=settings_form.allsem
             self.settings.allcase=settings_form.allcase
             self.settings.gametype = "qa"
-
+ 
             # Vasta
             game = QAGame(self.settings)
             game.init_tags()
+            game.gametype="qa"
+
             game.new_game()
 
         c = Context({
