@@ -1,0 +1,144 @@
+
+!!!Meeting notes, Pedagogical programs, 080902
+
+
+!!!Participants
+
+Biret Ánne, Ciprian, Lene, Saara, Trond.
+
+
+!!!Task list 
+
+Edit your task lists as we go:
+
+!!Biret Ánne
+* Work on dialogues (not started yet)
+* Mark dialects in the sme-lex - together with Lene (in progress)
+* Test the games (in progress)
+* Present the programs in Oulu (done)
+
+!!Ciprian
+* Testing the games :-)
+** still to do
+* Have a look at the ped lexica and compare with the general ones
+* Nothing developmental yet
+
+!!Lene
+* Look at the lexicon conversion: manually add the homonyms from the {{dehálasdubl.txt}} file. 
+** done
+* Remove some entries (expressions), add more synonyms.
+** done
+* Make Morfa user feedback for verbs, adjectives and numerals (with Biret Ánne, Trond) 
+** done
+* Mark placenames into easy and difficult ones + geografical
+** done
+* Contact Kjellaug Isaksen about design - and meeting when Saara is here
+** done
+* Mark dialects in the sme-lex - together with BA
+** not finished
+* Test the games 
+** done some..
+
+!!Saara
+* Move adjectives and verbs to Leksa interface
+** done, but only updated, not removed the old ones.
+* New format for verb input in Morfa
+* not done
+* Restrict numerals: 1-20 option for bare morfa, 1-12 for contextual morfa 
+** not done properly
+* Fix bugs in Vasta (Bug 714)
+** fixed partially
+* Look at Vasta word order
+** looked at it
+* Add paradigms to feedback
+** not done
+* Translate the interface to Finnish
+** done
+
+!!Trond
+* Played games, mostly.
+* Discussed feedback with Lene
+
+
+!!!Status quo
+
+There is work forthcoming not checked in for Vasta. The interface will
+then be more reliable, the grammatical tags should be removed. There are
+still problems with the pronouns, but they are forthcoming.
+
+Lene has worked with the feedback, for N, A, V. Much metadata added to the
+adjectives, to the lexicon (usage not as / only as attributes, etc.).
+
+
+
+The bilingual names arrived 4700 nob-sme, 
+
+
+!!!The games
+!!Common
+!!Numra
+
+!!Morfa
+Pronouns instead of tags is in the pipeline.
+
+!Feedback
+The messages can be reused across POS borders. They must have unique IDs.
+It does not need to be numbers, may be text. Feedback messages in different
+languages should be stacked on top of each other in the file for ease of
+comparison. 
+
+!!Vasta
+
+Saara looked at the word order file, and implemented q-a-dependencies (this holds for contextual Morfa as well). Subject main verb, subject negation is implementet, but not more.
+
+We may either make a new grammar for this, or use some tools. One possibility 
+would be to use our own tools. Are they fast enough? We may make a leaner version 
+of it, if the reaction time is too long.
+
+We may also use the technology behind sme-grc.rle to provide feedback.
+
+Make a taylored dis for analysis.
+
+!!Leksa
+!Names
+Names have arrived. We (Ciprian) will add them to the dictionaries.
+
+!!!Bugzilla
+Check Biret Ánnes status at Bz.
+
+!!!Next meeting
+
+IRL
+
+Saara will have a look at flights.
+
+!!!Graphical design
+
+Kjellaug for wednesday next week would be nice.
+
+
+!!!Task list 
+
+Edit your task lists as we go:
+
+!! Lene
+* Make uniq messagenames for feedback
+* Look at CG3 for wordorder
+
+
+
+!!Saara
+* New format for verb input in Morfa
+* Restrict numerals: 1-20 option for bare morfa, 1-12 for contextual morfa 
+* Fix bugs in Vasta (Bug 714)
+* Add paradigms to feedback
+* New interface for verbs.
+
+!!Biret Ánne
+* Work on dialogues
+* Mark dialects in the sme-lex - together with Lene 
+* Test the games 
+
+!!Trond
+* Look at new incoming names
+
