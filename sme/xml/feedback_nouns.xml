@@ -1,469 +1,470 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feedback>
 
-<!-- Messageorder: LEMMA A B C D E
-A: 1-3   
-B: 4-7
-C: 8-9
-D: 10-34
-E: 35-58  -->
+<!-- Messageorder nouns: LEMMA A B C D E
+A: 
+bisyllabic_stem
+trisyllabic_stem
+contracted_stem
+                 
+B: 
+inv_gradiation
+no_gradiation
+weak_grade
+strong_grade
 
+C:
+diphthong_simplification
+diphthong_simplification_and_a
+
+D: 
+u_o
+čč_and_a 
+žž_and_ii   
+g_and_a
+hk_and_ii   
+is_á
+oš_o
+š_ž
+ss_and_ii
+áš_á
+i_j
+a_i
+e_i
+i_á
+o_u
+oš_u
+šš_ja_ii
+n_m
+t_g
+t_h
+t_d
+t_b
++g
++n
++m
+
+E:  
+a-suffix
+no_suffix
+id-suffix
+i-suffix
+ide-suffix
+s-suffix
+in-suffix
+iguin-suffix
+n-suffix
+ii-suffix
+iidda-suffix
+is-suffix
+iin-suffix
+iid-suffix
+as-suffix
+žž_and_an
+hk_and_an
+ss_and_an
+šš_and_an
+čč_and_as
+čč_and_ain
+g_and_as
+g_and_ain
+-->
 
   <stems>
     <stem class="bisyllabic">
-      <msg>1</msg>
+      <msg>bisyllabic_stem</msg>
     </stem>
     <stem class="trisyllabic">
-      <msg>2</msg>
+      <msg>trisyllabic_stem</msg>
     </stem>
     <stem class="contracted">
-      <msg>3</msg>
+      <msg>contracted_stem</msg>
     </stem>
     <stem gradation="inv">
-      <msg>5</msg>
+      <msg>inv_gradiation</msg>
     </stem>
     <stem gradation="no">
-      <msg>4</msg>
+      <msg>no_gradiation</msg>
     </stem>
 
     <stem class="bisyllabic" diphthong="yes" soggi="i">
-      <msg case="Acc" number="Pl">8</msg>
-      <msg case="Gen" number="Pl">8</msg>
-      <msg case="Ill" number="Pl">8</msg>
-      <msg case="Loc" number="Pl">8</msg>
-      <msg case="Com" number="Sg">8</msg>
-      <msg case="Com" number="Pl">8</msg>
+      <msg case="Acc" number="Pl">diphthong_simplification</msg>
+      <msg case="Gen" number="Pl">diphthong_simplification</msg>
+      <msg case="Ill" number="Pl">diphthong_simplification</msg>
+      <msg case="Loc" number="Pl">diphthong_simplification</msg>
+      <msg case="Com" number="Sg">diphthong_simplification</msg>
+      <msg case="Com" number="Pl">diphthong_simplification</msg>
       <note>guolli, diftforenkling</note>
     </stem>
     
     <stem class="bisyllabic" diphthong="yes" soggi="u">
-      <msg case="Ill" number="Sg">8</msg>
+      <msg case="Ill" number="Sg">diphthong_simplification</msg>
       <note>viessu, diftforenkling</note>
     </stem>
     
     <stem class="trisyllabic" soggi="u">
-      <msg case="Acc" number="Sg">10</msg>
-      <msg case="Gen" number="Sg">10</msg>
-      <msg case="Ill" number="Sg">10</msg>
-      <msg case="Loc" number="Sg">10</msg>
-      <msg case="Com" number="Sg">10</msg>
+      <msg case="Acc" number="Sg">u_o</msg>
+      <msg case="Gen" number="Sg">u_o</msg>
+      <msg case="Ill" number="Sg">u_o</msg>
+      <msg case="Loc" number="Sg">u_o</msg>
+      <msg case="Com" number="Sg">u_o</msg>
       <note>gumppus, u>o</note>
     </stem>
 
     <stem class="contracted" soggi="u">
-      <msg case="Acc" number="Sg">10</msg>
-      <msg case="Gen" number="Sg">10</msg>
-      <msg case="Acc" number="Pl">24</msg>
-      <msg case="Gen" number="Pl">24</msg>
-      <msg case="Ill" number="Pl">24</msg>
-      <msg case="Loc" number="Sg">10</msg>
-      <msg case="Loc" number="Pl">24</msg>
-      <msg case="Com" number="Pl">24</msg>
+      <msg case="Acc" number="Sg">u_o</msg>
+      <msg case="Gen" number="Sg">u_o</msg>
+      <msg case="Acc" number="Pl">o_u</msg>
+      <msg case="Gen" number="Pl">o_u</msg>
+      <msg case="Ill" number="Pl">o_u</msg>
+      <msg case="Loc" number="Sg">u_o</msg>
+      <msg case="Loc" number="Pl">o_u</msg>
+      <msg case="Com" number="Pl">o_u</msg>
       <msg case="Ess"> </msg>
       <note>suolu, sg:u>o pl:o>u</note>
     </stem>
 
     <stem class="bisyllabic" diphthong="yes" soggi="u">
-      <msg case="Ill" number="Sg">8</msg>
+      <msg case="Ill" number="Sg">diphthong_simplification</msg>
       <note>viessu, diftforenkling</note>
     </stem>
 
     <stem diphthong="no" soggi="a">
-      <msg case="Ill" number="Sg">21</msg>
+      <msg case="Ill" number="Sg">a_i</msg>
       <note>lávka, a>i </note>
     </stem>
 
     <stem diphthong="yes" soggi="a">
-      <msg case="Ill" number="Sg">9</msg>
+      <msg case="Ill" number="Sg">diphthong_simplification_and_a</msg>
       <note>giehta, soggi + dift.for</note>
     </stem>
 
     <stem class="bisyllabic" soggi="i">
-      <msg case="Ill" number="Sg">23</msg>
+      <msg case="Ill" number="Sg">i_á</msg>
       <note>láibi, i>á </note>
     </stem>
 
     <stem class="trisyllabic" soggi="i">
-      <msg case="Acc" number="Sg">23</msg>
-      <msg case="Gen" number="Sg">23</msg>
-      <msg case="Ill" number="Sg">23</msg>
-      <msg case="Loc" number="Sg">23</msg>
-      <msg case="Com" number="Sg">23</msg>
+      <msg case="Acc" number="Sg">i_á</msg>
+      <msg case="Gen" number="Sg">i_á</msg>
+      <msg case="Ill" number="Sg">i_á</msg>
+      <msg case="Loc" number="Sg">i_á</msg>
+      <msg case="Com" number="Sg">i_á</msg>
       <note>luomi, i>á</note>
     </stem>
 
     <stem class="trisyllabic" diphthong="yes" soggi="u">
-      <msg case="Acc" number="Sg">8</msg>
-      <msg case="Gen" number="Sg">8</msg>
-      <msg case="Ill" number="Sg">8</msg>
-      <msg case="Loc" number="Sg">8</msg>
-      <msg case="Com" number="Sg">8</msg>
+      <msg case="Acc" number="Sg">diphthong_simplification</msg>
+      <msg case="Gen" number="Sg">diphthong_simplification</msg>
+      <msg case="Ill" number="Sg">diphthong_simplification</msg>
+      <msg case="Loc" number="Sg">diphthong_simplification</msg>
+      <msg case="Com" number="Sg">diphthong_simplification</msg>
       <note>čoarvvus, dift.for</note>
     </stem>
 
     <stem class="contracted" diphthong="yes" soggi="u">
-      <msg case="Acc" number="Sg">8</msg>
-      <msg case="Gen" number="Sg">8</msg>
-      <msg case="Ill" number="Sg">8</msg>
-      <msg case="Loc" number="Sg">8</msg>
-      <msg case="Com" number="Sg">8</msg>
+      <msg case="Acc" number="Sg">diphthong_simplification</msg>
+      <msg case="Gen" number="Sg">diphthong_simplification</msg>
+      <msg case="Ill" number="Sg">diphthong_simplification</msg>
+      <msg case="Loc" number="Sg">diphthong_simplification</msg>
+      <msg case="Com" number="Sg">diphthong_simplification</msg>
       <note>suolu, dift.for</note>
     </stem>
 
     <stem class="bisyllabic" gradation="yes">
-      <msg case="Acc" number="Sg">7</msg>
-      <msg case="Gen" number="Sg">7</msg>
-      <msg case="Acc" number="Pl">7</msg>
-      <msg case="Gen" number="Pl">7</msg>
-      <msg case="Ill" number="Sg">6</msg>
-      <msg case="Ill" number="Pl">7</msg>
-      <msg case="Loc" number="Sg">7</msg>
-      <msg case="Loc" number="Pl">7</msg>
-      <msg case="Com" number="Sg">7</msg>
-      <msg case="Com" number="Pl">7</msg>
-      <msg case="Ess">6</msg>
+      <msg case="Acc" number="Sg">weak_grade</msg>
+      <msg case="Gen" number="Sg">weak_grade</msg>
+      <msg case="Acc" number="Pl">weak_grade</msg>
+      <msg case="Gen" number="Pl">weak_grade</msg>
+      <msg case="Ill" number="Sg">strong_grade</msg>
+      <msg case="Ill" number="Pl">weak_grade</msg>
+      <msg case="Loc" number="Sg">weak_grade</msg>
+      <msg case="Loc" number="Pl">weak_grade</msg>
+      <msg case="Com" number="Sg">weak_grade</msg>
+      <msg case="Com" number="Pl">weak_grade</msg>
+      <msg case="Ess">strong_grade</msg>
       <note>giehta, gradiation</note>
     </stem>
 
     <stem class="trisyllabic" gradation="yes">
-      <msg case="Acc" number="Sg">6</msg>
-      <msg case="Gen" number="Sg">6</msg>
-      <msg case="Acc" number="Pl">6</msg>
-      <msg case="Gen" number="Pl">6</msg>
-      <msg case="Ill" number="Sg">6</msg>
-      <msg case="Ill" number="Pl">6</msg>
-      <msg case="Loc" number="Sg">6</msg>
-      <msg case="Loc" number="Pl">6</msg>
-      <msg case="Com" number="Sg">6</msg>
-      <msg case="Com" number="Pl">6</msg>
-      <msg case="Ess">7</msg>
+      <msg case="Acc" number="Sg">strong_grade</msg>
+      <msg case="Gen" number="Sg">strong_grade</msg>
+      <msg case="Acc" number="Pl">strong_grade</msg>
+      <msg case="Gen" number="Pl">strong_grade</msg>
+      <msg case="Ill" number="Sg">strong_grade</msg>
+      <msg case="Ill" number="Pl">strong_grade</msg>
+      <msg case="Loc" number="Sg">strong_grade</msg>
+      <msg case="Loc" number="Pl">strong_grade</msg>
+      <msg case="Com" number="Sg">strong_grade</msg>
+      <msg case="Com" number="Pl">strong_grade</msg>
+      <msg case="Ess">weak_grade</msg>
       <note>boagán, gradiation</note>
     </stem>
 
     <stem class="contracted" gradation="yes">
-      <msg case="Acc" number="Sg">6</msg>
-      <msg case="Gen" number="Sg">6</msg>
-      <msg case="Acc" number="Pl">6</msg>
-      <msg case="Gen" number="Pl">6</msg>
-      <msg case="Ill" number="Sg">6</msg>
-      <msg case="Ill" number="Pl">6</msg>
-      <msg case="Loc" number="Sg">6</msg>
-      <msg case="Loc" number="Pl">6</msg>
-      <msg case="Com" number="Sg">6</msg>
-      <msg case="Com" number="Pl">6</msg>
-      <msg case="Ess">7</msg>
+      <msg case="Acc" number="Sg">strong_grade</msg>
+      <msg case="Gen" number="Sg">strong_grade</msg>
+      <msg case="Acc" number="Pl">strong_grade</msg>
+      <msg case="Gen" number="Pl">strong_grade</msg>
+      <msg case="Ill" number="Sg">strong_grade</msg>
+      <msg case="Ill" number="Pl">strong_grade</msg>
+      <msg case="Loc" number="Sg">strong_grade</msg>
+      <msg case="Loc" number="Pl">strong_grade</msg>
+      <msg case="Com" number="Sg">strong_grade</msg>
+      <msg case="Com" number="Pl">strong_grade</msg>
+      <msg case="Ess">weak_grade</msg>
       <note>bálggis, gradiation</note>
     </stem>
 
     <stem soggi="e">
-      <msg case="Acc" number="Pl">22</msg>
-      <msg case="Gen" number="Pl">22</msg>
-      <msg case="Ill" number="Sg">22</msg>
-      <msg case="Ill" number="Pl">22</msg>
-      <msg case="Loc" number="Pl">22</msg>
-      <msg case="Com" number="Sg">22</msg>
-      <msg case="Com" number="Pl">22</msg>
+      <msg case="Acc" number="Pl">e_i</msg>
+      <msg case="Gen" number="Pl">e_i</msg>
+      <msg case="Ill" number="Sg">e_i</msg>
+      <msg case="Ill" number="Pl">e_i</msg>
+      <msg case="Loc" number="Pl">e_i</msg>
+      <msg case="Com" number="Sg">e_i</msg>
+      <msg case="Com" number="Pl">e_i</msg>
       <note>baste, e>i</note>
     </stem>
 
     <stem soggi="o">
-      <msg case="Acc" number="Pl">24</msg>
-      <msg case="Gen" number="Pl">24</msg>
-      <msg case="Ill" number="Sg">24</msg>
-      <msg case="Ill" number="Pl">24</msg>
-      <msg case="Loc" number="Pl">24</msg>
-      <msg case="Com" number="Sg">24</msg>
-      <msg case="Com" number="Pl">24</msg>
+      <msg case="Acc" number="Pl">o_u</msg>
+      <msg case="Gen" number="Pl">o_u</msg>
+      <msg case="Ill" number="Sg">o_u</msg>
+      <msg case="Ill" number="Pl">o_u</msg>
+      <msg case="Loc" number="Pl">o_u</msg>
+      <msg case="Com" number="Sg">o_u</msg>
+      <msg case="Com" number="Pl">o_u</msg>
       <note>reŋko, o>u</note>
     </stem>
 
     <stem rime="s-ss">
-      <msg case="Acc" number="Sg">35</msg>
-      <msg case="Gen" number="Sg">35</msg>
-      <msg case="Acc" number="Pl">37</msg>
-      <msg case="Gen" number="Pl">37</msg>
-      <msg case="Ill" number="Sg">18</msg>
-      <msg case="Ill" number="Pl">39</msg>
-      <msg case="Loc" number="Sg">50</msg>
-      <msg case="Loc" number="Pl">41</msg>
-      <msg case="Com" number="Sg">41</msg>
-      <msg case="Com" number="Pl">42</msg>
-      <msg case="Ess">53</msg>
+      <msg case="Acc" number="Sg">a-suffix</msg>
+      <msg case="Gen" number="Sg">a-suffix</msg>
+      <msg case="Acc" number="Pl">id-suffix</msg>
+      <msg case="Gen" number="Pl">id-suffix</msg>
+      <msg case="Ill" number="Sg">ss_and_ii</msg>
+      <msg case="Ill" number="Pl">ide-suffix</msg>
+      <msg case="Loc" number="Sg">as-suffix</msg>
+      <msg case="Loc" number="Pl">in-suffix</msg>
+      <msg case="Com" number="Sg">in-suffix</msg>
+      <msg case="Com" number="Pl">iguin-suffix</msg>
+      <msg case="Ess">ss_and_an</msg>
       <note>muitalus rime</note>
     </stem>
 
     <stem rime="š-šš">
-      <msg case="Acc" number="Sg">35</msg>
-      <msg case="Gen" number="Sg">35</msg>
-      <msg case="Acc" number="Pl">37</msg>
-      <msg case="Gen" number="Pl">37</msg>
-      <msg case="Ill" number="Sg">26</msg>
-      <msg case="Ill" number="Pl">39</msg>
-      <msg case="Loc" number="Sg">50</msg>
-      <msg case="Loc" number="Pl">41</msg>
-      <msg case="Com" number="Sg">41</msg>
-      <msg case="Com" number="Pl">42</msg>
-      <msg case="Ess">54</msg>
+      <msg case="Acc" number="Sg">a-suffix</msg>
+      <msg case="Gen" number="Sg">a-suffix</msg>
+      <msg case="Acc" number="Pl">id-suffix</msg>
+      <msg case="Gen" number="Pl">id-suffix</msg>
+      <msg case="Ill" number="Sg">šš_ja_ii</msg>
+      <msg case="Ill" number="Pl">ide-suffix</msg>
+      <msg case="Loc" number="Sg">as-suffix</msg>
+      <msg case="Loc" number="Pl">in-suffix</msg>
+      <msg case="Com" number="Sg">in-suffix</msg>
+      <msg case="Com" number="Pl">iguin-suffix</msg>
+      <msg case="Ess">šš_and_an</msg>
       <note>borramuš rime</note>
     </stem>
 
     <stem rime="š-čč-žž">
-      <msg case="Acc" number="Sg">11</msg>
-      <msg case="Gen" number="Sg">11</msg>
-      <msg case="Acc" number="Pl">37</msg>
-      <msg case="Gen" number="Pl">37</msg>
-      <msg case="Ill" number="Sg">12</msg>
-      <msg case="Ill" number="Pl">39</msg>
-      <msg case="Loc" number="Sg">55</msg>
-      <msg case="Loc" number="Pl">41</msg>
-      <msg case="Com" number="Sg">56</msg>
-      <msg case="Com" number="Pl">42</msg>
-      <msg case="Ess">51</msg>
+      <msg case="Acc" number="Sg">čč_and_a</msg>
+      <msg case="Gen" number="Sg">čč_and_a</msg>
+      <msg case="Acc" number="Pl">id-suffix</msg>
+      <msg case="Gen" number="Pl">id-suffix</msg>
+      <msg case="Ill" number="Sg">žž_and_ii</msg>
+      <msg case="Ill" number="Pl">ide-suffix</msg>
+      <msg case="Loc" number="Sg">čč_and_as</msg>
+      <msg case="Loc" number="Pl">in-suffix</msg>
+      <msg case="Com" number="Sg">čč_and_ain</msg>
+      <msg case="Com" number="Pl">iguin-suffix</msg>
+      <msg case="Ess">žž_and_an</msg>
       <note>sápmelaš rime</note>
     </stem>
 
     <stem rime="t-g-hk">
-      <msg case="Acc" number="Sg">13</msg>
-      <msg case="Gen" number="Sg">13</msg>
-      <msg case="Acc" number="Pl">37</msg>
-      <msg case="Gen" number="Pl">37</msg>
-      <msg case="Ill" number="Sg">14</msg>
-      <msg case="Ill" number="Pl">39</msg>
-      <msg case="Loc" number="Sg">57</msg>
-      <msg case="Loc" number="Pl">41</msg>
-      <msg case="Com" number="Sg">58</msg>
-      <msg case="Com" number="Pl">42</msg>
-      <msg case="Ess">52</msg>
+      <msg case="Acc" number="Sg">g_and_a</msg>
+      <msg case="Gen" number="Sg">g_and_a</msg>
+      <msg case="Acc" number="Pl">id-suffix</msg>
+      <msg case="Gen" number="Pl">id-suffix</msg>
+      <msg case="Ill" number="Sg">hk_and_ii</msg>
+      <msg case="Ill" number="Pl">ide-suffix</msg>
+      <msg case="Loc" number="Sg">g_and_as</msg>
+      <msg case="Loc" number="Pl">in-suffix</msg>
+      <msg case="Com" number="Sg">g_and_ain</msg>
+      <msg case="Com" number="Pl">iguin-suffix</msg>
+      <msg case="Ess">hk_and_an</msg>
       <note>mánnodat rime</note>
     </stem>
     
     <stem rime="is">
-      <msg case="Acc" number="Sg">15</msg>
-      <msg case="Gen" number="Sg">15</msg>
-      <msg case="Ill" number="Sg">15</msg>
-      <msg case="Loc" number="Sg">15</msg>
-      <msg case="Com" number="Sg">15</msg>
+      <msg case="Acc" number="Sg">is_á</msg>
+      <msg case="Gen" number="Sg">is_á</msg>
+      <msg case="Ill" number="Sg">is_á</msg>
+      <msg case="Loc" number="Sg">is_á</msg>
+      <msg case="Com" number="Sg">is_á</msg>
       <note>bálggis rime</note>
     </stem>
     
     <stem rime="oš">
-      <msg case="Acc" number="Sg">16</msg>
-      <msg case="Gen" number="Sg">16</msg>
-      <msg case="Acc" number="Pl">24</msg>
-      <msg case="Gen" number="Pl">24</msg>
-      <msg case="Ill" number="Sg">25</msg>
-      <msg case="Ill" number="Pl">24</msg>
-      <msg case="Loc" number="Sg">25</msg>
-      <msg case="Loc" number="Pl">24</msg>
-      <msg case="Com" number="Sg">25</msg>
-      <msg case="Com" number="Pl">24</msg>
-      <msg case="Ess">17</msg>
+      <msg case="Acc" number="Sg">oš_o</msg>
+      <msg case="Gen" number="Sg">oš_o</msg>
+      <msg case="Acc" number="Pl">o_u</msg>
+      <msg case="Gen" number="Pl">o_u</msg>
+      <msg case="Ill" number="Sg">oš_u</msg>
+      <msg case="Ill" number="Pl">o_u</msg>
+      <msg case="Loc" number="Sg">oš_u</msg>
+      <msg case="Loc" number="Pl">o_u</msg>
+      <msg case="Com" number="Sg">oš_u</msg>
+      <msg case="Com" number="Pl">o_u</msg>
+      <msg case="Ess">š_ž</msg>
       <note>olmmoš rime</note>
     </stem>
     
     <stem rime="ái">
-      <msg case="Acc" number="Sg">19</msg>
-      <msg case="Gen" number="Sg">19</msg>
-      <msg case="Ill" number="Sg">19</msg>
-      <msg case="Loc" number="Sg">19</msg>
-      <msg case="Com" number="Sg">19</msg>
-      <msg case="Ess">20</msg>
+      <msg case="Acc" number="Sg">áš_á</msg>
+      <msg case="Gen" number="Sg">áš_á</msg>
+      <msg case="Ill" number="Sg">áš_á</msg>
+      <msg case="Loc" number="Sg">áš_á</msg>
+      <msg case="Com" number="Sg">áš_á</msg>
+      <msg case="Ess">i_j</msg>
       <note>olmmái rime</note>
     </stem>
     
     <stem rime="š-ž">
-      <msg case="Acc" number="Sg">17</msg>
-      <msg case="Gen" number="Sg">17</msg>
-      <msg case="Ill" number="Sg">17</msg>
-      <msg case="Loc" number="Sg">17</msg>
-      <msg case="Com" number="Sg">17</msg>
-      <msg case="Ess">17</msg>
+      <msg case="Acc" number="Sg">š_ž</msg>
+      <msg case="Gen" number="Sg">š_ž</msg>
+      <msg case="Ill" number="Sg">š_ž</msg>
+      <msg case="Loc" number="Sg">š_ž</msg>
+      <msg case="Com" number="Sg">š_ž</msg>
+      <msg case="Ess">š_ž</msg>
       <note>muitalus rime</note>
     </stem>
     
      <stem rime="n-m">
-      <msg case="Acc" number="Sg">27</msg>
-      <msg case="Gen" number="Sg">27</msg>
-      <msg case="Ill" number="Sg">27</msg>
-      <msg case="Loc" number="Sg">27</msg>
-      <msg case="Com" number="Sg">27</msg>
-      <msg case="Ess">27</msg>
+      <msg case="Acc" number="Sg">n_m</msg>
+      <msg case="Gen" number="Sg">n_m</msg>
+      <msg case="Ill" number="Sg">n_m</msg>
+      <msg case="Loc" number="Sg">n_m</msg>
+      <msg case="Com" number="Sg">n_m</msg>
+      <msg case="Ess">n_m</msg>
       <note>varan rime</note>
     </stem>
 
     <stem rime="t-g">
-      <msg case="Acc" number="Sg">28</msg>
-      <msg case="Gen" number="Sg">28</msg>
-      <msg case="Ill" number="Sg">28</msg>
-      <msg case="Loc" number="Sg">28</msg>
-      <msg case="Com" number="Sg">28</msg>
-      <msg case="Ess">17</msg>
+      <msg case="Acc" number="Sg">t_g</msg>
+      <msg case="Gen" number="Sg">t_g</msg>
+      <msg case="Ill" number="Sg">t_g</msg>
+      <msg case="Loc" number="Sg">t_g</msg>
+      <msg case="Com" number="Sg">t_g</msg>
+      <msg case="Ess">š_ž</msg>
       <note>hivsset rime</note>
     </stem>
 
     <stem rime="t-h">
-      <msg case="Acc" number="Sg">29</msg>
-      <msg case="Gen" number="Sg">29</msg>
-      <msg case="Ill" number="Sg">29</msg>
-      <msg case="Loc" number="Sg">29</msg>
-      <msg case="Com" number="Sg">29</msg>
-      <msg case="Ess">29</msg>
+      <msg case="Acc" number="Sg">t_h</msg>
+      <msg case="Gen" number="Sg">t_h</msg>
+      <msg case="Ill" number="Sg">t_h</msg>
+      <msg case="Loc" number="Sg">t_h</msg>
+      <msg case="Com" number="Sg">t_h</msg>
+      <msg case="Ess">t_h</msg>
       <note>gállot rime</note>
     </stem>
 
     <stem rime="t-d">
-      <msg case="Acc" number="Sg">30</msg>
-      <msg case="Gen" number="Sg">30</msg>
-      <msg case="Ill" number="Sg">30</msg>
-      <msg case="Loc" number="Sg">30</msg>
-      <msg case="Com" number="Sg">30</msg>
-      <msg case="Ess">30</msg>
+      <msg case="Acc" number="Sg">t_d</msg>
+      <msg case="Gen" number="Sg">t_d</msg>
+      <msg case="Ill" number="Sg">t_d</msg>
+      <msg case="Loc" number="Sg">t_d</msg>
+      <msg case="Com" number="Sg">t_d</msg>
+      <msg case="Ess">t_d</msg>
       <note>eamit rime</note>
     </stem>
  
      <stem rime="t-b">
-      <msg case="Acc" number="Sg">31</msg>
-      <msg case="Gen" number="Sg">31</msg>
-      <msg case="Ill" number="Sg">31</msg>
-      <msg case="Loc" number="Sg">31</msg>
-      <msg case="Com" number="Sg">31</msg>
-      <msg case="Ess">31</msg>
+      <msg case="Acc" number="Sg">t_b</msg>
+      <msg case="Gen" number="Sg">t_b</msg>
+      <msg case="Ill" number="Sg">t_b</msg>
+      <msg case="Loc" number="Sg">t_b</msg>
+      <msg case="Com" number="Sg">t_b</msg>
+      <msg case="Ess">t_b</msg>
       <note>ustit rime</note>
     </stem>
  
      <stem rime="+g">
-      <msg case="Acc" number="Sg">32</msg>
-      <msg case="Gen" number="Sg">32</msg>
-      <msg case="Ill" number="Sg">32</msg>
-      <msg case="Loc" number="Sg">32</msg>
-      <msg case="Com" number="Sg">32</msg>
+      <msg case="Acc" number="Sg">+g</msg>
+      <msg case="Gen" number="Sg">+g</msg>
+      <msg case="Ill" number="Sg">+g</msg>
+      <msg case="Loc" number="Sg">+g</msg>
+      <msg case="Com" number="Sg">+g</msg>
       <note>doaivva rime</note>
     </stem>
     
     <stem rime="+n">
-      <msg case="Acc" number="Sg">33</msg>
-      <msg case="Gen" number="Sg">33</msg>
-      <msg case="Ill" number="Sg">33</msg>
-      <msg case="Loc" number="Sg">33</msg>
-      <msg case="Com" number="Sg">33</msg>
+      <msg case="Acc" number="Sg">+n</msg>
+      <msg case="Gen" number="Sg">+n</msg>
+      <msg case="Ill" number="Sg">+n</msg>
+      <msg case="Loc" number="Sg">+n</msg>
+      <msg case="Com" number="Sg">+n</msg>
       <note>nisu rime</note>
     </stem>
     
     <stem rime="+m">
-      <msg case="Acc" number="Sg">34</msg>
-      <msg case="Gen" number="Sg">34</msg>
-      <msg case="Ill" number="Sg">34</msg>
-      <msg case="Loc" number="Sg">34</msg>
-      <msg case="Com" number="Sg">34</msg>
+      <msg case="Acc" number="Sg">+m</msg>
+      <msg case="Gen" number="Sg">+m</msg>
+      <msg case="Ill" number="Sg">+m</msg>
+      <msg case="Loc" number="Sg">+m</msg>
+      <msg case="Com" number="Sg">+m</msg>
       <note>bavssa rime</note>
     </stem>
 
     <stem class="bisyllabic" rime="0">
-      <msg case="Acc" number="Sg">36</msg>
-      <msg case="Gen" number="Sg">36</msg>
-      <msg case="Acc" number="Pl">37</msg>
-      <msg case="Gen" number="Pl">37</msg>
-      <msg case="Ill" number="Sg">38</msg>
-      <msg case="Ill" number="Pl">39</msg>
-      <msg case="Loc" number="Sg">40</msg>
-      <msg case="Loc" number="Pl">41</msg>
-      <msg case="Com" number="Sg">41</msg>
-      <msg case="Com" number="Pl">42</msg>
-      <msg case="Ess">43</msg>
+      <msg case="Acc" number="Sg">no_suffix</msg>
+      <msg case="Gen" number="Sg">no_suffix</msg>
+      <msg case="Acc" number="Pl">id-suffix</msg>
+      <msg case="Gen" number="Pl">id-suffix</msg>
+      <msg case="Ill" number="Sg">i-suffix</msg>
+      <msg case="Ill" number="Pl">ide-suffix</msg>
+      <msg case="Loc" number="Sg">s-suffix</msg>
+      <msg case="Loc" number="Pl">in-suffix</msg>
+      <msg case="Com" number="Sg">in-suffix</msg>
+      <msg case="Com" number="Pl">iguin-suffix</msg>
+      <msg case="Ess">n-suffix</msg>
       <note>suffixes</note>
     </stem>
 
     <stem class="trisyllabic">
-      <msg case="Acc" number="Sg">35</msg>
-      <msg case="Gen" number="Sg">35</msg>
-      <msg case="Acc" number="Pl">49</msg>
-      <msg case="Gen" number="Pl">49</msg>
-      <msg case="Ill" number="Sg">45</msg>
-      <msg case="Ill" number="Pl">46</msg>
-      <msg case="Loc" number="Sg">47</msg>
-      <msg case="Loc" number="Pl">48</msg>
-      <msg case="Com" number="Sg">48</msg>
-      <msg case="Com" number="Pl">42</msg>
-      <msg case="Ess">41</msg>
+      <msg case="Acc" number="Sg">a-suffix</msg>
+      <msg case="Gen" number="Sg">a-suffix</msg>
+      <msg case="Acc" number="Pl">iid-suffix</msg>
+      <msg case="Gen" number="Pl">iid-suffix</msg>
+      <msg case="Ill" number="Sg">ii-suffix</msg>
+      <msg case="Ill" number="Pl">iidda-suffix</msg>
+      <msg case="Loc" number="Sg">is-suffix</msg>
+      <msg case="Loc" number="Pl">iin-suffix</msg>
+      <msg case="Com" number="Sg">iin-suffix</msg>
+      <msg case="Com" number="Pl">iguin-suffix</msg>
+      <msg case="Ess">in-suffix</msg>
       <note>suffixes</note>
     </stem>
 
     <stem class="contracted">
-      <msg case="Acc" number="Sg">36</msg>
-      <msg case="Gen" number="Sg">36</msg>
-      <msg case="Acc" number="Pl">37</msg>
-      <msg case="Gen" number="Pl">37</msg>
-      <msg case="Ill" number="Sg">38</msg>
-      <msg case="Ill" number="Pl">39</msg>
-      <msg case="Loc" number="Sg">40</msg>
-      <msg case="Loc" number="Pl">41</msg>
-      <msg case="Com" number="Sg">41</msg>
-      <msg case="Com" number="Pl">42</msg>
-      <msg case="Ess">41</msg>
+      <msg case="Acc" number="Sg">no_suffix</msg>
+      <msg case="Gen" number="Sg">no_suffix</msg>
+      <msg case="Acc" number="Pl">id-suffix</msg>
+      <msg case="Gen" number="Pl">id-suffix</msg>
+      <msg case="Ill" number="Sg">i-suffix</msg>
+      <msg case="Ill" number="Pl">ide-suffix</msg>
+      <msg case="Loc" number="Sg">s-suffix</msg>
+      <msg case="Loc" number="Pl">in-suffix</msg>
+      <msg case="Com" number="Sg">in-suffix</msg>
+      <msg case="Com" number="Pl">iguin-suffix</msg>
+      <msg case="Ess">in-suffix</msg>
       <note>suffixes</note>
     </stem>
 
   </stems>
 
-  <messages xml:lang="nob"> 
-    <message id="1">LEMMA har likestavelsesstamme </message>
-    <message id="2">LEMMA har ulikestavelsesstamme </message>
-    <message id="3">LEMMA har kontrakt stamme </message>
-    <message id="4">uten stadieveksling. </message>
-    <message id="5">uten synlig stadieveksling. </message>
-    <message id="6">og skal ha sterkt stadium. </message>
-    <message id="7">og skal ha svakt stadium. </message>
-    <message id="8">Husk diftongforenkling. </message>
-    <message id="9">Husk diftongforenkling og a > i. </message>
-    <message id="10">u > o. </message>
-    <message id="11">š > čč og –a-ending.</message>    
-    <message id="12">š > žž og –ii-ending.</message>    
-    <message id="13">t > g og –a-ending.</message>    
-    <message id="14">t > hk og –ii-ending.</message>    
-    <message id="15">is > á. </message>    
-    <message id="16">oš > o. </message>    
-    <message id="17">š > ž. </message>    
-    <message id="18">-ss- og -ii-ending.</message>
-    <message id="19">ái > á. </message>    
-    <message id="20">i > j. </message>    
-    <message id="21">a > i. </message>    
-    <message id="22">e > i. </message>    
-    <message id="23">i > á. </message>    
-    <message id="24">o > u. </message>    
-    <message id="25">oš > u. </message>    
-    <message id="26">š > šš og –ii-ending.</message>    
-    <message id="27">n > m. </message>    
-    <message id="28">t > g. </message>    
-    <message id="29">t > h. </message>    
-    <message id="30">t > d. </message>    
-    <message id="31">t > b. </message>    
-    <message id="32">Stammekonsonant: g. </message>    
-    <message id="33">Stammekonsonant: n. </message>    
-    <message id="34">Stammekonsonant: m. </message>    
-    <message id="35">-a-ending.</message>
-    <message id="36">Ingen ending.</message>    
-    <message id="37">-id-ending.</message>
-    <message id="38">–i-ending.</message>    
-    <message id="39">-ide-ending.</message>
-    <message id="40">–s-ending.</message>    
-    <message id="41">-in-ending.</message>
-    <message id="42">-iguin-ending.</message>
-    <message id="43">–n-ending.</message>    
-    <message id="44">–a-ending.</message>    
-    <message id="45">–ii-ending.</message>    
-    <message id="46">–iidda-ending.</message>    
-    <message id="47">–is-ending.</message>    
-    <message id="48">–iin-ending.</message>    
-    <message id="49">–iid-ending.</message>    
-    <message id="50">-as-ending.</message>
-    <message id="51">š > žž og -an-ending.</message>    
-    <message id="52">t > hk og -an-ending.</message>    
-    <message id="53">-ss- og -an-ending.</message>
-    <message id="54">š > šš og -an-ending.</message>    
-    <message id="55">š > čč og –as-ending.</message>    
-    <message id="56">š > čč og -ain-ending.</message>    
-    <message id="57">t > g og –as-ending.</message>    
-    <message id="58">t > g og –ain-ending.</message>    
-  </messages>
 
 </feedback>
