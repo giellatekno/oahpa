@@ -80,27 +80,28 @@ class Question(models.Model):
     qtype = models.CharField(max_length=20)
     qatype = models.CharField(max_length=20)
     answer = models.ForeignKey('self', blank=True, null=True, related_name='answer_set')
-
-
+    gametype = models.CharField(max_length=5)
+    
 class QElement(models.Model):
     question=models.ForeignKey(Question, null=True)
 #    semtype = models.ForeignKey(Semtype, null=True)
-    word = models.ForeignKey(Word, null=True)
+#    word = models.ForeignKey(Word, null=True)
     optional = models.BooleanField(null=True)
     syntax = models.CharField(max_length=50)
     identifier = models.CharField(max_length=20)
     gametype = models.CharField(max_length=5)
     agreement = models.ForeignKey('self', blank=True, null=True, related_name='agreement_set')
-    tag = models.ManyToManyField(Tag)
-
-class SemtypeElement(models.Model):
-    semtype = models.ForeignKey(Semtype, null=True)
-    qelement = models.ForeignKey(QElement, null=True)
+    tags = models.ManyToManyField(Tag)
     game = models.CharField(max_length=20)
+    copy = models.ForeignKey('self', blank=True, null=True, related_name='copy_set')
 
+class WordQElement(models.Model):
+    word = models.ForeignKey(Word, null=True)
+    qelement = models.ForeignKey(QElement, null=True)
+    semtype = models.ForeignKey(Semtype, null=True)
 
 class Feedbackmsg(models.Model):
-    number = models.CharField(max_length=3)
+    msgid = models.CharField(max_length=50)
     message = models.CharField(max_length=200)
 
 class Feedback(models.Model):
@@ -113,4 +114,8 @@ class Feedback(models.Model):
     soggi = models.CharField(max_length=10)
     case = models.CharField(max_length=5)
     number = models.CharField(max_length=5)
+    personnumber = models.CharField(max_length=5)
+    tense = models.CharField(max_length=5)
+    mood = models.CharField(max_length=10)
+    grade = models.CharField(max_length=10)
 
