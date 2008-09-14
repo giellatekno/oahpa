@@ -26,10 +26,15 @@ CASE_CHOICES = (
 )
 
 VTYPE_CHOICES = (
-    ('VERB', _('tense')),
+    ('MAINV', _('tense')),
     ('V-COND', _('conditional')),
-#    ('V-IMPRT', _('imperative')),
+    ('V-IMPRT', _('imperative')),
     ('V-GO', _('go-questions')),
+)
+
+NUM_CONTEXT_CHOICES = (
+    ('NUM-ATTR', _('attributive')),
+    ('COLL-NUM', _('collective')),
 )
 
 
@@ -167,8 +172,9 @@ class MorphForm(forms.Form):
 
     set_settings = set_settings
 
+    num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
     case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
-    vtype = forms.ChoiceField(initial='VERB', choices=VTYPE_CHOICES, widget=forms.Select)
+    vtype = forms.ChoiceField(initial='MAINV', choices=VTYPE_CHOICES, widget=forms.Select)
     vtype_bare = forms.ChoiceField(initial='PRS', choices=VTYPE_BARE_CHOICES, widget=forms.Select)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
     gametype = forms.ChoiceField(initial='bare', choices=GAME_CHOICES, widget=forms.Select)
@@ -203,7 +209,7 @@ class MorphQuestion(forms.Form):
         # Get lemma and feedback
         self.feedback=""
         messages = []
-        if tag.pos=="N":
+        if tag.pos=="N" or tag.pos=="A":
             if tag.number=="Sg":
                 self.lemma = word.lemma
             else:
@@ -219,6 +225,18 @@ class MorphQuestion(forms.Form):
                 for m in msgs:
                     self.feedback = self.feedback + " " + m.message
             self.feedback = self.feedback.replace("LEMMA", "\"" + word.lemma + "\"") 
+
+        if tag.pos == "V":
+            feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
+                                               Q(diphthong=word.diphthong) & Q(soggi=word.soggi) & \
+                                               Q(mood=tag.mood) & Q(tense=tag.tense) & \
+                                               Q(personnumber = tag.personnumber))
+            for f in feedbacks:
+                msgs = f.messages.all()
+                for m in msgs:
+                    self.feedback = self.feedback + " " + m.message
+            self.feedback = self.feedback.replace("LEMMA", "\"" + word.lemma + "\"") 
+
             
         self.correct_answers =""
         self.case = ""
@@ -226,6 +244,11 @@ class MorphQuestion(forms.Form):
         self.correct_anslist = []
         self.error="empty"
         self.problems="error"
+        self.pron=""
+        self.PronPNBase={'Sg1':'mun','Sg2':'don','Sg3':'son',\
+                         'Pl1':'mun','Pl2':'don','Pl3':'son',\
+                         'Du1':'mun','Du2':'don','Du3':'son'}
+        
         tmp_translations = []
         for item in translations:
             tmp_translations.append(item.lemma.encode('utf-8'))
@@ -237,8 +260,17 @@ class MorphQuestion(forms.Form):
         if tag.pos=="N":
             self.tag = ""
             self.case = tag.case
+        if tag.pos=="V":
+            self.tag = ""
         else:
             self.tag = tag.string
+
+        if tag.pos=="V" and tag.personnumber and not tag.personnumber == "ConNeg" :
+            pronbase = self.PronPNBase[tag.personnumber]
+            self.pron = Form.objects.filter(Q(word__lemma=pronbase) & \
+                                            Q(tag__string="Pron+Pers+" +tag.personnumber+ "+Nom"))[0].fullform
+
+            print self.pron
 
         self.is_correct()
 
@@ -269,7 +301,7 @@ class QuizzQuestion(forms.Form):
     is_correct = is_correct
     set_correct = set_correct
     
-    def __init__(self, word, translations, question, userans_val, correct_val, *args, **kwargs):
+    def __init__(self, transtype, word, translations, question, userans_val, correct_val, *args, **kwargs):
 
         lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
         super(QuizzQuestion, self).__init__(*args, **kwargs)
@@ -280,7 +312,11 @@ class QuizzQuestion(forms.Form):
         self.correct_answers =""
         self.error="empty"
         self.problems="error"
+        oo = "å "
         
+        if word.pos == 'V' and transtype=="nobsme":
+            self.lemma = oo.decode('utf-8') + self.lemma
+            
         for item in translations:
             self.correct_anslist.append(item.lemma)
 
@@ -346,7 +382,7 @@ def select_words(self, qwords, awords):
     selected_awords = {}
 
     for syntax in awords.keys():
-
+        print "SYNTAX", syntax
         word = None        
         tag = None
         selected_awords[syntax] = {}
@@ -355,25 +391,57 @@ def select_words(self, qwords, awords):
         # Use first the answer elements, but if there are none,
         # take the corresponding question element        
         if awords.has_key(syntax) and len(awords[syntax]) > 0:
-            print "SYNTAX", syntax
             aword = awords[syntax][randint(0,len(awords[syntax])-1)]
-            if aword.has_key('word'):
-                selected_awords[syntax]['word'] = aword['word']
             if aword.has_key('tag'):
                 selected_awords[syntax]['tag'] = aword['tag']
-            if aword.has_key('fullform'):
-                print "AWORD", aword['fullform']
-                selected_awords[syntax]['fullform'] = aword['fullform'][:]
+            if aword.has_key('word') and aword['word']:
+                selected_awords[syntax]['word'] = aword['word']
+            else:
+                if aword.has_key('qelement') and selected_awords[syntax].has_key('tag'):
+
+                    form_list = None
+                    max=50
+                    i=0
+                    while not form_list and i<max:
+                        i=i+1
+                        word_count = WordQElement.objects.filter(qelement__id=aword['qelement']).count()
+                        wqel = WordQElement.objects.filter(qelement__id=aword['qelement'])[randint(0,word_count-1)]
+                        selected_awords[syntax]['word'] = wqel.word.id
+                        form_list = Form.objects.filter(Q(word__id=selected_awords[syntax]['word']) &\
+                                                        Q(tag__id=selected_awords[syntax]['tag']))
+                    if form_list:
+                        fullf=[]
+                        for f in form_list:
+                            fullf.append(f.fullform)
+                        selected_awords[syntax]['fullform'] = fullf[:]
+
+                else:
+                    if aword.has_key('fullform') and len(aword['fullform'])>0:
+                        selected_awords[syntax]['fullform'] = aword['fullform'][:]
         else:
             # If there was no word form, take the same word form as in question
             if qwords.has_key(syntax):
                 qword = qwords[syntax]
-                if qwords.has_key('word'):
-                    selected_awords[syntax]['word'] = qwords['word']
-                if qwords.has_key('tag'):
-                    selected_awords[syntax]['tag'] = qwords['tag']
-                if qwords.has_key('fullform'):
-                    selected_awords[syntax]['fullform'] = qwords['fullform'][:]
+                if qwords[syntax].has_key('word'):
+                    selected_awords[syntax]['word'] = qwords[syntax]['word']
+                if qwords[syntax].has_key('tag'):
+                    selected_awords[syntax]['tag'] = qwords[syntax]['tag']
+                
+        if not selected_awords[syntax].has_key('fullform'):
+            if selected_awords[syntax].has_key('word') and selected_awords[syntax].has_key('tag'):
+
+                form_list = None
+                max=50
+                i=0
+                while not form_list and i<max:
+                    i=i+1
+                    form_list = Form.objects.filter(Q(word__id=selected_awords[syntax]['word']) &\
+                                                    Q(tag__id=selected_awords[syntax]['tag']))
+                if form_list:
+                    fullf=[]
+                    for f in form_list:
+                        fullf.append(f.fullform)
+                    selected_awords[syntax]['fullform'] = fullf[:]
                         
         # make sure that theres is something to print
         if not selected_awords[syntax].has_key('fullform'):
@@ -384,7 +452,7 @@ def select_words(self, qwords, awords):
     return selected_awords
 
 
-def qa_is_correct(self, atext):
+def qa_is_correct(self, atext, awords):
     """
     Determines if the given answer is correct (for a bound form).
     """
@@ -402,21 +470,37 @@ def qa_is_correct(self, atext):
     problems = []
     answer_words = answer.split()
                 
-    for w in atext.split():
-        if w.count("(") > 0:
+    for word in atext.split():
+        if word.count("(") > 0:
             continue
-        found = False
-        for a in answer_words:
-            if not a: continue
-            #print w, a, self.qa_correct_anslist[w]
-            if a.lower() in self.qa_correct_anslist[w] or \
-               a in self.qa_correct_anslist[w]:
-                found = True
-                #print w, "found", a
-        if not found:
-            problems.append(w)
 
-    #print problems
+        if awords.has_key(word):
+            found = False
+            for a in answer_words:
+                if not a: continue
+                
+                aword_list = awords[word]
+                for aw in aword_list:
+                    form_elements=None
+                    if aw.has_key('fullform') and a in set(aw['fullform']):
+                        found = True
+                        break
+
+                    if aw.has_key('qelement') and aw.has_key('tag'):
+                        qelement = aw['qelement']
+                        tag = aw['tag']
+                        fullforms = Form.objects.filter(fullform=a.lower(), tag__id=tag)
+                        if not fullforms:
+                            fullforms = Form.objects.filter(fullform=a, tag__id=tag)
+                        if fullforms:
+                            for f in fullforms:
+                                if WordQElement.objects.filter(word=f.word, qelement=qelement).count()>0:
+                                    found = True
+                                    break
+            if not found:
+                problems.append(word)
+
+    print "********************", problems
     self.problems = string.join(problems, ', ' )
     if not problems:
         self.error = "correct"
@@ -428,7 +512,8 @@ class QAForm(forms.Form):
 
     set_settings = set_settings
 
-    vtype = forms.ChoiceField(initial='VERB', choices=VTYPE_CHOICES, widget=forms.Select)
+    num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
+    vtype = forms.ChoiceField(initial='MAINV', choices=VTYPE_CHOICES, widget=forms.Select)
     vtype_bare = forms.ChoiceField(initial='PRS', choices=VTYPE_BARE_CHOICES, widget=forms.Select)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
     default_data = {'pos': 'N'}
@@ -447,7 +532,7 @@ class QAQuestion(forms.Form):
     set_correct = set_correct
     is_correct = is_correct
     qa_is_correct = qa_is_correct
-    qtype_verbs = set(['VERB','V-COND','V-IMPRT','V-GO'])
+    qtype_verbs = set(['MAINV','V-COND','V-IMPRT','V-GO'])
 
         
     def __init__(self, gametype, question, qanswer, \
@@ -460,6 +545,8 @@ class QAQuestion(forms.Form):
         self.error='empty'
         self.problems="error"
         self.lemma = ""
+        self.pron = ""
+        
         qtype=question.qtype
         if qtype in self.qtype_verbs:
             qtype = 'MAINV'
@@ -486,29 +573,39 @@ class QAQuestion(forms.Form):
 
         # In qagame, all words are considered as answers.
         #print awords
+        form_list=[]
         if (gametype == 'qa'):
-            for w in atext.split():
-                self.qa_correct_anslist[w] = []
-                if awords.has_key(w):
-                    awords = awords[w]
-                    for awords in awords:
-                        if awords.has_key('fullform'):
-                            form_list.append(awords['fullform'])
-                        else:
-                            form_list.append(Form.objects.filter(Q(word__in=aword['word']) &\
-                                                                 Q(tag__pk=aword['tag'])))
+            self.qa_is_correct(atext,awords)
 
-                    if not form_list:
-                        self.qa_correct_anslist[w].append(w)
-                    else:
-                        for item in list(form_list):
-                            self.qa_correct_anslist[w].append(item.fullform)
+            #    for word in atext.split():
+            #    self.qa_correct_anslist[word] = []
+             #   if awords.has_key(word):
+             #       aword_list = awords[word]
+             #       for aw in aword_list:
+             #           form_elements=None
+             #           if aw.has_key('fullform'):
+             #               form_list.append(aw['fullform'])
+             #           else:
+             #               if aw.has_key('qelement'):
+             #                   wq_els = WordQElement.objects.filter(qelement__id=aw['qelement'])
+             #                   for w in wq_els:
+             #                       form_elements = Form.objects.filter(Q(word=w.word) &\
+             #                                                           Q(tag__pk=aw['tag']))
+             #           if form_elements:
+             #               for f in form_elements:
+             #                   form_list.append(f.fullform)
 
-            self.qa_is_correct(atext)
+              #      if not form_list:
+              #          self.qa_correct_anslist[word].append(word)
+              #      else:
+              #          self.qa_correct_anslist[word] = [ form_list ]
+
+            #self.qa_is_correct(atext,awords)
             
         if (gametype == 'context'):
             self.correct_anslist = selected_awords[qtype]['fullform'][:]
             self.is_correct()
+                
             
         self.qattrs= {}
         self.aattrs= {}        
@@ -544,7 +641,6 @@ class QAQuestion(forms.Form):
                     qstring = qstring + " " + w
                     
         if gametype == 'context':
-           
             answer_word= selected_awords[qtype]['word']
             answer_tag =selected_awords[qtype]['tag']
             selected_awords[qtype]['fullform'][0] = 'Q'
@@ -562,6 +658,7 @@ class QAQuestion(forms.Form):
                     self.lemma = Form.objects.filter(Q(word__pk=answer_word) & \
                                                      Q(tag__string="N+Pl+Nom"))[0].fullform
 
+                
         # If there are errors in the qa input, give the user the opportunity to try again
         # with the problematic fields
         #if gametype == 'qa':
@@ -569,7 +666,7 @@ class QAQuestion(forms.Form):
         #        selected_awords[p]['fullform'][0] = Q
             
         # Format answer string
-        print "SELECTED", selected_awords
+        #print "SELECTED", selected_awords
         for w in atext.split():
             if w.count("(") > 0: continue
             if w== 'ANSWERSUBJECT': w='SUBJ'
