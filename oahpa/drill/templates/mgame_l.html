@@ -14,7 +14,13 @@
 <td>{% trans "Dialect" %} (not used)</td>
 </tr>
 <tr>
-<td>{{ settingsform.case }}</td>
+<td>
+  {% ifequal gametype "bare" %}
+    {{ settingsform.case }}
+  {% else %}
+    {{ settingsform.num_context }}
+  {% endifequal %}
+</td>
 <td>
 <input type="radio" name="dialect" value="western" checked="checked" />{% trans "Western" %}<br/>
 <input type="radio" name="dialect" value="eastern" />{% trans "Eastern" %}<br/>
