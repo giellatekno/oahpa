@@ -30,6 +30,7 @@ class Gameview:
         self.settings.gametype="bare"
         self.settings.vtype_bare="PRS"
         self.settings.vtype="MAINV"
+        self.settings.num_context="NUM-ATTR"
 
         self.gamenames = { 'N-ILL' :  _('illative'),\
                            'N-ACC' :  _('accusative'),\
@@ -76,6 +77,9 @@ class Gameview:
 
             if settings_form.data.has_key('vtype_bare'):
                 self.settings.vtype_bare= settings_form.data['vtype_bare']
+
+            if settings_form.data.has_key('num_context'):
+                self.settings.num_context= settings_form.data['num_context']
 
             if settings_form.data.has_key('book'):
                 self.settings.book = settings_form.books[settings_form.data['book']]
@@ -195,6 +199,7 @@ class Vastaview:
         self.settings.language="sme"
         self.settings.vtype_bare="PRS"
         self.settings.vtype="MAINV"
+        self.settings.num_context="NUM-ATTR"
         self.gametype="qa"
         self.settings.gametype = "qa"
         
@@ -217,6 +222,9 @@ class Vastaview:
 
             if settings_form.data.has_key('vtype_bare'):
                 self.settings.vtype_bare= settings_form.data['vtype_bare']
+
+            if settings_form.data.has_key('num_context'):
+                self.settings.num_context= settings_form.data['num_context']
 
             if settings_form.data['book']:
                 self.settings.book = settings_form.books[settings_form.data['book']]
