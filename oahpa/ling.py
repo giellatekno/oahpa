@@ -66,7 +66,7 @@ class Paradigm:
 
 
     def create_paradigm(self, lemma, pos):
-        print lemma
+
         if not self.tagset:
             self.handle_tags()
 
@@ -75,8 +75,9 @@ class Paradigm:
         genObj=re.compile(r'^(?P<lemmaString>[\wá]+)\+(?P<tagString>[\w\+]+)[\t\s]+(?P<formString>[\wá]*)$', re.U)
         all=""
 
-        for a in self.paradigms[pos]:
-            all = all + lemma + "+" + a
+        if self.paradigms.has_key(pos):
+            for a in self.paradigms[pos]:
+                all = all + lemma + "+" + a
         # generator call
         #fstdir="/opt/smi/sme/bin"
         #lookup = /usr/local/bin/lookup
@@ -120,7 +121,7 @@ class Paradigm:
 
         numfst = fstdir + "/" + language + "-num.fst"
 
-        for num in range(0,100):
+        for num in range(1,20):
 
             num_lookup = "echo \"" + str(num) + "\" | " + lookup + " -flags mbTT -utf8 -d " + numfst
             numerals = os.popen(num_lookup).readlines()
@@ -141,6 +142,7 @@ class Paradigm:
             print numstring
             self.create_paradigm(numstring, "Num")
             for form in self.paradigm:
+                form.form = form.form.replace("#","")
                 g=form.classes
                 t,created=Tag.objects.get_or_create(string=form.tags,pos=g.get('Wordclass', ""),\
                                                     number=g.get('Number',""),case=g.get('Case',""),\
@@ -159,23 +161,55 @@ class Paradigm:
 
 class Questions:
 
+    def read_element(self,qaelement,el,el_id,optional):
 
-    def read_element(self,head,qaelement,el,syntax,optional):
+        print "Creating element", el_id
 
-        lemma=""
-        tag=""
-        semclass=""
-        pos=""
-        gametype=""
-        w=None
-        s=None
+        # Syntactic function of the element
+        if self.values.has_key(el_id) and self.values[el_id].has_key('syntax'):
+            syntax = self.values[el_id]['syntax']
+        else:
+            syntax = el_id
+
+        # Search for the same element in question side
+        if QElement.objects.filter(Q(question__id=qaelement.answer_id) & \
+                                   Q(identifier=el_id)).count() > 0:
+            question_qelements = QElement.objects.filter(Q(question__id=qaelement.answer_id) & \
+                                                         Q(identifier=el_id))
+            if not el:
+                print "LUOMASSA", syntax
+                for q in question_qelements:
+                    qe = QElement.objects.create(question=q.question,\
+                                                 optional=q.optional,\
+                                                 identifier=el_id,\
+                                                 syntax=q.syntax,\
+                                                 gametype=q.gametype)
+
+                    for w in WordQElement.objects.filter(qelement=q):
+                        we = WordQElement.objects.create(word=w.word,\
+                                                         qelement=qe)
+                    for t in q.tags.all():
+                        qe.tags.add(t)
+                        
+                    # mark as a copy
+                    qe.copy_set.add(q)
+                    qe.save()
+                    
+                return
+            
+        gametype = ""
+        if el: gametype = el.getAttribute("game")
+        if gametype:
+            gametypes = [gametype]
+        else:
+            gametypes = ['morfa','qa']
+
+        print "gametypes", gametypes
+        
+        ############### AGREEMENT
+        # Search for elementes that agree
         agr_elements=None
-        elements=None
-        agreement=None
-        print "ELEMENT " + syntax
-
-        # Add subject-mainverb agreement by default.
-        if syntax=="MAINV":
+        if el_id=="MAINV":
             agr_id="SUBJ"
             print "TRYING verb agreement " + agr_id + " " + qaelement.qatype
             if QElement.objects.filter(Q(question=qaelement) & Q(syntax=agr_id) &\
@@ -184,167 +218,198 @@ class Questions:
                                                        Q(syntax=agr_id) &\
                                                        Q(question__qatype=qaelement.qatype))
                 print "*** found agreement elements 0"
+        
 
-        # If there is an xml-element, collect information from there.
-        if el:
-            gametype= el.getAttribute("game")
-            
-            grammar = el.getElementsByTagName("grammar")
-            if grammar:
-                tag= grammar[0].getAttribute("tag")
-                pos= grammar[0].getAttribute("pos")
+        agreement = ""
+        if el: agreement = el.getElementsByTagName("agreement")
+        
+        # Agreement from xml-files
+        # Try first inside question or answer
+        # Then in answer-question level
+        if agreement:
+            agr_id=agreement[0].getAttribute("id")
+            if QElement.objects.filter(Q(question=qaelement) & Q(syntax=agr_id) & \
+                                       Q(question__qatype=qaelement.qatype)).count() > 0:
+                agr_elements = QElement.objects.filter(Q(question=qaelement) & \
+                                                       Q(syntax=agr_id) &\
+                                                       Q(question__qatype=qaelement.qatype))
+                print "*** found agreement elementes 1"
+                
+            else:
+                if Question.objects.filter(id=qaelement.answer_id).count() > 0:
+                    q=Question.objects.filter(id=qaelement.answer_id)[0]
+                    if QElement.objects.filter(Q(question__id=qaelement.answer_id) & \
+                                               Q(syntax=agr_id)).count() > 0:
+                        agr_elements = QElement.objects.filter(Q(question__id=qaelement.answer_id) & \
+                                                               Q(syntax=agr_id))
+                        print "*** found agreement elementes 2"
 
-            # Search for existing semtype
-            # If not found, create a new one                
-            semclasses=el.getElementsByTagName("sem")
-            semgame=[]
+
+        ############ WORDS
+        # Search for existing word in the database.
+        ids = []
+        if el: ids=el.getElementsByTagName("id")
+        words = {}
+        word_elements = None
+        for i in ids:
+            word_id = i.firstChild.data
+            if word_id:
+                # Add pos information here!
+                word_elements = Word.objects.filter(Q(wordid=word_id))
+                if not word_elements:
+                    print "Word not found! " + word_id            
+                    
+        # Search for existing semtype
+        # Semtype overrides the word id selection
+        if not word_elements:
+            semclasses= []
+            if el: semclasses=el.getElementsByTagName("sem")
             if semclasses:
                 semclass=semclasses[0].getAttribute("class")
-                semgame_str = semclasses[0].getAttribute("game")
-                if semgame_str:
-                    semgame.append(semgame_str)
-            if semclass:
-                s, created = Semtype.objects.get_or_create(semtype=semclass)
+                word_elements = Word.objects.filter(Q(semtype__semtype=semclass))
 
-            # if the game was not given, using both
-            if not semgame and s:
-                semgame= ["morfa", "qa"]
-                
-            # Search for agreement, only one allowed at the moment
-            agreement = el.getElementsByTagName("agreement")
+        # If still no words, get the default words for this element:
+        if not word_elements:
+            if self.values.has_key(el_id) and self.values[el_id].has_key('words'):
+                word_elements = self.values[el_id]['words']
 
-            # Search for existing word in the database.
-            ids=el.getElementsByTagName("id")
-            for i in ids:
-                word_id = i.firstChild.data
-                if word_id:
-                    #print "Searching lemma: " + lemma
-                    # Add pos information here!
-                    word_elements = Word.objects.filter(Q(wordid=word_id))
-                    if word_elements:
-                        w=word_elements[0]
-                    else:
-                        print "Word not found! " + word_id
-                                            
-            # Try to find an element matching the specification.
-            # Attach an element to a manytomany-table qelement.
-            # If element was not found, create a new one.
-            if tag:
-                print "SEARCHING TAGS " + tag
-                tagvalues = []
-                self.get_tagvalues(tag,"",tagvalues)
-                elements=Tag.objects.filter(Q(string__in=tagvalues))
-            else:
-                if pos:
-                    print "POS " + pos
-                    if QElement.objects.filter(Q(question__isnull=True) & \
-                                               Q(identifier=syntax) & \
-                                               Q(tag__pos=pos)).count()>0:
-                        qel = QElement.objects.filter(Q(question__isnull=True) & \
-                                                      Q(identifier=syntax) & \
-                                                      Q(tag__pos=pos))[0]
-                        elements = qel.tag.filter(pos=pos)
+        if word_elements:
+            for w in word_elements:
+                if not words.has_key(w.pos): words[w.pos] = []
+                words[w.pos].append(w)
+
+
+        ############# GRAMAMR
+        tagelements = None
+        optional_tagelements = None
+        grammars = []
+        if el: grammars = el.getElementsByTagName("grammar")
+        if not el or not grammars:
+            # If there is no grammatical specification, the element is created solely
+            # on the basis of grammar.
+            if self.values.has_key(el_id):
+                if self.values[el_id].has_key('tags'):
+                    tagelements = self.values[el_id]['tags']
+                if self.values[el_id].has_key('optional_tags'):
+                    optional_tagelements = self.values[el_id]['optional_tags']
+
+        # An element for each different grammatical specification.
+        else:
+            poses = []
+            tags = []
+            for gr in grammars:
+                tags.append(gr.getAttribute("tag"))
+                poses.append(gr.getAttribute("pos"))
+
+            tagstrings = []
+            if poses:
+                if self.values.has_key(el_id):
+                    if self.values[el_id].has_key('tags'):
+                        tagelements = self.values[el_id]['tags'].filter(pos__in=poses)
+                    if self.values[el_id].has_key('optional_tags'):
+                        optional_tagelements= self.values[el_id]['optional_tags'].filter(pos__in=poses)
+
+            if tags:
+                for tag in tags:
+                    tagvalues = []
+                    self.get_tagvalues(tag,"",tagvalues)
+                    tagstrings.extend(tagvalues)
+                if tagelements:
+                    tagelements = tagelements | Tag.objects.filter(Q(string__in=tagstrings))
                 else:
-                    if QElement.objects.filter(Q(question__isnull=True) & \
-                                               Q(identifier=syntax)).count()>0:
-                        qel = QElement.objects.filter(Q(question__isnull=True) & \
-                                                      Q(identifier=syntax))[0]
-                        elements = qel.tag.all()
+                    tagelements = Tag.objects.filter(Q(string__in=tagstrings))
 
-            # Agreement from xml-files
-            # Try first inside question or answer
-            # Then in answer-question level
-            if agreement:
-                agr_id=agreement[0].getAttribute("id")
-                if QElement.objects.filter(Q(question=qaelement) & Q(syntax=agr_id) & \
-                                           Q(question__qatype=qaelement.qatype)).count() > 0:
-                    agr_elements = QElement.objects.filter(Q(question=qaelement) & \
-                                                           Q(syntax=agr_id) &\
-                                                           Q(question__qatype=qaelement.qatype))
-                    print "*** found agreement elementes 1"
-                        
-                else:
-                    if Question.objects.filter(id=qaelement.answer_id).count() > 0:
-                        q=Question.objects.filter(id=qaelement.answer_id)[0]
-                        if QElement.objects.filter(Q(question__id=qaelement.answer_id) & \
-                                                   Q(syntax=agr_id)).count() > 0:
-                            agr_elements = QElement.objects.filter(Q(question__id=qaelement.answer_id) & \
-                                                                   Q(syntax=agr_id))
-                            print "*** found agreement elementes 2"
-
-                            
-            # create qelement object that connects element and question
-            # If there are elements created for the specification, create links to them.
-            qe = QElement.objects.create(question=qaelement,\
-                                         identifier = syntax, \
-                                         syntax = syntax, \
-                                         word=w,\
-                                         optional=optional, \
-                                         gametype=gametype)
-
-            if s:
-                for sem in semgame:
-                    q_sem = SemtypeElement.objects.create(qelement=qe, \
-                                                          semtype=s, \
-                                                          game=sem)
-            if agr_elements:
-                for a in agr_elements:
-                    a.agreement_set.add(qe)
-                    #qe.agreement_set.add(a)
-                    a.save()
-                qe.save()
-                
-            if elements:
-                for element in elements:
-                    qe.tag.add(element)
-                qe.save()
+            # Extra check for pronouns
+            # If pronoun id is given, only the tags related to that pronoun are preserved.
+            for t in tagelements:
+                if t.pos == 'Pron':
+                    print "kaikki", t.string
+                    if not words.has_key('Pron'): break
+                    found = False
+                    print "going through"
+                    for w in words['Pron']:
+                        print w.lemma
+                        if Form.objects.filter(Q(tag=t) & Q(word=w)).count()>0:
+                            found = True
+                            break
+                    if not found:
+                        print "removing an element.."
+                        print t.string
+                        tagelements = tagelements.filter(~Q(id=t.id))
+            
+        # Find different pos-values in tagelements
+        posvalues = {}
+        if not tagelements:
+            print "###########FATAL ERROR"
             return
+        for t in tagelements:
+            posvalues[t.pos] = 1
+            
+        ############# CREATE ELEMENTS
 
-        # If there is a dummy element for this use it
-        if QElement.objects.filter(Q(identifier=syntax) & Q(question__isnull=True)).count()>0:
-            qelements = QElement.objects.filter(Q(identifier=syntax) & Q(question__isnull=True))
-            for qel in qelements:
-                semelements = SemtypeElement.objects.filter(Q(qelement=qel))
-                #print "COPYING.. " + str(qel.id)
-                element_count = qel.tag.count()
-                elements = list(qel.tag.all())
-
+        # Add an element for each gametype and each pos:
+        for g in gametypes:
+            for p in posvalues.keys():
                 qe = QElement.objects.create(question=qaelement,\
-                                             word=w,\
-                                             optional=qel.optional,\
-                                             identifier=syntax,\
-                                             gametype=gametype, \
-                                             syntax=qel.syntax)
-                if s:
-                    for sem in semelements:
-                         q_sem = SemtypeElement.objects.create(qelement=qe, \
-                                                              semtype=sem.semtype, \
-                                                              game=sem.game)
+                                             optional=optional,\
+                                             identifier=el_id,\
+                                             syntax=syntax,\
+                                             gametype=g)
+                
+                if tagelements:
+                    for t in tagelements:
+                        if t.pos == p:
+                            qe.tags.add(t)
 
-                for element in elements:
-                    #print "adding element " + syntax
-                    qe.tag.add(element)
-                qe.save()
+                # Create links to words.
+                if not words.has_key(p):
+                    print "looking for words..", el_id, p
+                    word_elements = Word.objects.filter(pos=p)
+                    if word_elements:
+                        for w in word_elements:
+                            if not words.has_key(p): words[w.pos] = []
+                            words[w.pos].append(w)
+
+                for w in words[p]:
+                    we = WordQElement.objects.create(qelement=qe,\
+                                                     word=w)
+
+                # add agreement info.
                 if agr_elements:
                     for a in agr_elements:
                         a.agreement_set.add(qe)
-                        #qe.agreement_set.add(a)
-                        a.save()
-                    qe.save()
-            return
+                    a.save()
+                qe.save()
 
-        # If there is no information, create qelement object that connects element and question
-        qe = QElement.objects.create(question=qaelement,\
-                                     identifier = syntax, \
-                                     syntax = syntax, \
-                                     word=w,\
-                                     gametype=gametype, \
-                                     optional=optional)
+                # Add a second one for optional tags.
+                if optional_tagelements:
+                    qe = QElement.objects.create(question=qaelement,\
+                                                 optional=1,\
+                                                 identifier=el_id,\
+                                                 syntax=syntax,\
+                                                 gametype=g)
+                    for t in optional_tagelements:
+                        qe.tags.add(t)
 
-        if elements:
-            for element in elements:
-                qe.tag.add(element)
-            qe.save()
+                    # Create links to words.
+                    if not words.has_key(p):
+                        word_elements = Word.objects.filter(pos=p)
+                        if word_elements:
+                            for w in word_elements:
+                                if not words.has_key(p): words[w.pos] = []
+                                words[w.pos].append(w)
+
+                    for w in words[p]:
+                        we = WordQElement.objects.create(qelement=qe,\
+                                                         word=w)
+                    
+                        # add agreement info.
+                        if agr_elements:
+                            for a in agr_elements:
+                                a.agreement_set.add(qe)
+                            a.save()
+                        qe.save()
+
 
     # Read elements attached to particular question or answer.
     def read_elements(self,head,qaelement):
@@ -360,7 +425,7 @@ class Questions:
                     element = e
                     break
                 
-            self.read_element(head,qaelement,element,"SUBJ",0)
+            self.read_element(qaelement,element,"SUBJ",0)
 
         element=None
         if "ANSWERSUBJECT" in set(qastrings):
@@ -368,8 +433,12 @@ class Questions:
                 if e.getAttribute("id")=="ANSWERSUBJECT":
                     element = e
                     break
-                
-            self.read_element(head,qaelement,element,"ANSWERSUBJECT",0)
+                if e.getAttribute("id")=="SUB":
+                    element = e
+                    break
+
+
+            self.read_element(qaelement,element,"ANSWERSUBJECT",0)
 
         # Process rest of the elements in the string.
         for s in qastrings:
@@ -381,21 +450,27 @@ class Questions:
             syntax = s.lstrip("(")
             syntax = syntax.rstrip(")")
 
-            element=None            
+            element=None
+            found = False
             for e in els:
                 el_id = e.getAttribute("id")
                 if el_id==s:
-                    self.read_element(head,qaelement,e,syntax,optional)
+                    self.read_element(qaelement,e,syntax,optional)
+                    found = True
+            if not found:
+                self.read_element(qaelement,None,syntax,optional)
 
-
-    def read_questions(self, infile):
+    def read_questions(self, infile, grammarfile):
     
         xmlfile=file(infile)
         tree = _dom.parse(infile)
 
+        self.read_grammar(grammarfile)
+
         print "Created questions:"
         for q in tree.getElementsByTagName("q"):
 
+            gametype = q.getAttribute('gametype')
             # Store question
             qtype=""
             qtype_el = q.getElementsByTagName("qtype")
@@ -404,7 +479,10 @@ class Questions:
             question=q.getElementsByTagName("question")[0]
             text=question.getElementsByTagName("text")[0].firstChild.data
             
-            question_element = Question.objects.create(string=text, qtype=qtype, qatype="question")
+            question_element = Question.objects.create(string=text, \
+                                                       qtype=qtype, \
+                                                       gametype=gametype,\
+                                                       qatype="question")
             question_element.save()
             print text
             self.read_elements(question, question_element)            
@@ -425,58 +503,66 @@ class Questions:
         xmlfile=file(infile)
         tree = _dom.parse(infile)
 
+        self.values = {}
+        
         print "Created elements:"
         tags=tree.getElementsByTagName("tags")[0]
         for el in tags.getElementsByTagName("element"):
 
-            syntax=el.getAttribute("id")
+            identifier=el.getAttribute("id")
+            print "Reading default values for", identifier
+            
+            info2 = {}
+            
             elements = []
-            for gr in el.getElementsByTagName("grammar"):
+            word_id=""
+            word = None
+            
+            syntax =""
+            syntaxes = el.getElementsByTagName("syntax")
+            if syntaxes:
+                syntax = syntaxes[0].firstChild.data
+                info2['syntax'] = syntax
+                
+            word_ids = el.getElementsByTagName("id")
+            if word_ids:
+                word_id = word_ids[0].firstChild.data
+                if word_id:
+                    words = Word.objects.filter(wordid=word_id)
+                    info2['words'] = words
+
+            info2['pos'] = []
+            tagstrings = []
+            optional_tagstrings = []
+
+            grammars = el.getElementsByTagName("grammar")
+            for gr in grammars:
+                optional=0
+                
                 pos=gr.getAttribute("pos")
+                if pos:
+                    info2['pos'].append(pos)
+
                 tag=gr.getAttribute("tag")
-                print syntax + " " + pos + " " + tag
+                optional=gr.getAttribute("optional")
+                print optional
+                
                 tagvalues = []
                 self.get_tagvalues(tag,"",tagvalues)
-                for t in tagvalues:
-                    if Tag.objects.filter(string=t).count() > 0:
-                        element = Tag.objects.get(string=t)
-                        element.save()
-                        elements.append(element)
-                        
-                # create a dummy question element for the tag
-                qe = QElement.objects.create(optional=0, identifier=syntax, syntax=syntax)
-                for element in elements:
-                    qe.tag.add(element)
-                qe.save()
+                if optional == "1":
+                    optional_tagstrings.extend(tagvalues)
+                else:
+                    tagstrings.extend(tagvalues)
 
-        partitions=tree.getElementsByTagName("partitions")[0]        
-        for el in partitions.getElementsByTagName("part"):
-            name=el.getAttribute("name")
-            syntax=el.getAttribute("id")
-            for select in el.getElementsByTagName("select"):
-                element = select.getElementsByTagName("element")[0]
-                el_id = element.getAttribute("id")
-                optional = element.getAttribute("optional")
-                if not optional:
-                    optional=0
-                elements = []
-                for gr in element.getElementsByTagName("grammar"):
-                    pos=gr.getAttribute("pos")
-                    tag=gr.getAttribute("tag")
-                    #print syntax + " " + pos + " " + tag
-                    tagvalues = []
-                    self.get_tagvalues(tag,"",tagvalues)
-                    for t in tagvalues:
-                        if Tag.objects.filter(string=t).count() > 0:
-                            element = Tag.objects.get(string=t)
-                            element.save()
-                            elements.append(element)
-                            
-                # create a dummy question element for ANSWERSUBJECT
-                qe = QElement.objects.create(optional=optional, identifier=name, syntax=el_id)
-                for element in elements:
-                    qe.tag.add(element)
-                qe.save()
+            if len(tagstrings) > 0:
+                tags = Tag.objects.filter(string__in=tagstrings)
+                info2['tags'] = tags
+                
+            if len(optional_tagstrings) > 0:
+                tags = Tag.objects.filter(string__in=optional_tagstrings)
+                info2['optional_tags'] = tags
+
+            self.values[identifier] = info2
 
 
     def get_tagvalues(self,rest,tagstring,tagvalues):
@@ -524,20 +610,29 @@ class Questions:
                    w.semtype.add(s)
                    w.save()
 
-    def read_feedback(self, infile, pos):
+    def read_messages(self,infile):
+
+        xmlfile=file(infile)
+        tree = _dom.parse(infile)
+
+        for el in tree.getElementsByTagName("message"):
+            mid=el.getAttribute("id")
+            message = el.firstChild.data
+            
+            fm, created = Feedbackmsg.objects.get_or_create(msgid=mid, message=message)
+            fm.save()
+
+
+
+    def read_feedback(self, infile, msgfile, pos):
+
+        self.read_messages(msgfile)
 
         xmlfile=file(infile)
         tree = _dom.parse(infile)
 
         stem_messages = {}
         gradation_messages = {}
-
-        for el in tree.getElementsByTagName("message"):
-            mid=el.getAttribute("id")
-            message = el.firstChild.data
-            
-            fm, created = Feedbackmsg.objects.get_or_create(number=mid, message=message)
-            fm.save()
 
         # Find out different values for variables.
         # Others can be listed, but soggi is searched at the moment.
@@ -554,31 +649,48 @@ class Questions:
                 soggis[soggi] = 1
 
         soggis[""] = 1
-        rimes[""] = 1
-            
+        rimes["0"] = 1
+
         # Create different combinations that are associated with feedback.
         for stem in ["bisyllabic","trisyllabic","contracted"]:
             for diphthong in ["0","1"]:
-                for gradation in ["inv","no","yes"]:
-                    for soggi in soggis.keys():
+                for soggi in soggis.keys():
+
+                    # Create message options for Nouns and adjectives
+                    for gradation in ["inv","no","yes"]:
                         for rime in rimes.keys():
                             # Create Essive since it has no number inflection
-                            f, created = Feedback.objects.get_or_create(stem=stem,diphthong=diphthong,\
-                                                                        gradation=gradation,rime=rime,\
-                                                                        soggi=soggi,\
-                                                                        case="Ess")
-                            f.save()
+                            for grade in ["Comp","Superl","Pos",""]:      
+                                f, created = Feedback.objects.get_or_create(stem=stem,diphthong=diphthong,\
+                                                                            gradation=gradation,rime=rime,\
+                                                                            soggi=soggi,grade=grade,\
+                                                                            case="Ess")
+                                f.save()
                         
                             for case in ["Acc", "Gen", "Ill","Loc","Com"]:
                                 for number in ["Sg","Pl"]:
+                                    for grade in ["Comp","Superl","Pos",""]:      
+                                        f2, created = Feedback.objects.get_or_create(stem=stem,\
+                                                                                     diphthong=diphthong,\
+                                                                                     gradation=gradation,\
+                                                                                     rime=rime,\
+                                                                                     case=case,\
+                                                                                     number=number, \
+                                                                                     soggi=soggi)
+                                        f2.save()
 
-                                    f2, created = Feedback.objects.get_or_create(stem=stem,diphthong=diphthong,\
-                                                                                 gradation=gradation,rime=rime,\
-                                                                                 case=case,number=number,
-                                                                                 soggi=soggi)
-                                    f2.save()
+                    # Create message options for Verbs
+                    for tense in ["Prs","Prt"]:
+                        for mood in ["Ind","Cond","Pot","Imprt"]:
+                            for personnumber in ["Sg1","Sg2","Sg3","Du1","Du2","Du3","Pl1","Pl2","Pl3"]:
 
+                                f2, created = Feedback.objects.get_or_create(stem=stem,diphthong=diphthong,\
+                                                                             gradation=gradation,tense=tense,\
+                                                                             mood=mood,soggi=soggi, \
+                                                                             personnumber=personnumber)
 
+                                f2.save()
+                            
         print "Total", Feedback.objects.count()
         wordforms = tree.getElementsByTagName("stems")[0]
         for el in wordforms.getElementsByTagName("stem"):
@@ -589,6 +701,10 @@ class Questions:
             gradation=""
             case = ""
             number = ""
+            personnumber = ""
+            mode = ""
+            tense = ""
+            grade = ""
 
             if el.getAttribute("class"):
                 stem=el.getAttribute("class")                
@@ -658,12 +774,38 @@ class Questions:
                     if feedback:
                         feedback = feedback.filter(number=number)
 
+                if mel.getAttribute("number"):
+                    number=mel.getAttribute("number")
+                    if feedback:
+                        feedback = feedback.filter(number=number)
+
+                if mel.getAttribute("personnumber"):
+                    number=mel.getAttribute("personnumber")
+                    if feedback:
+                        feedback = feedback.filter(personnumber=personnumber)
+
+                if mel.getAttribute("tense"):
+                    number=mel.getAttribute("tense")
+                    if feedback:
+                        feedback = feedback.filter(tense=tense)
+
+                if mel.getAttribute("mood"):
+                    number=mel.getAttribute("mood")
+                    if feedback:
+                        feedback = feedback.filter(mood=mood)
+
+                if mel.getAttribute("grade"):
+                    number=mel.getAttribute("grade")
+                    if feedback:
+                        feedback = feedback.filter(grade=grade)
+
+
                 if not feedback:
                     print "No feedback found!"
 
-                message = Feedbackmsg.objects.get(number=msgnum)
+                message = Feedbackmsg.objects.get(msgid=msgnum)
                 for f in feedback:
-                    if not f.messages.filter(number=msgnum):
+                    if not f.messages.filter(msgid=msgnum):
                         f.messages.add(message)
                         f.save()
 
