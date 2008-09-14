@@ -53,13 +53,11 @@ class Game:
             syntax = matchObj.expand(r'\g<syntaxString>')
             if not words.has_key(syntax):
                 words[syntax] = {}
-            if not words[syntax].has_key(type):
-                words[syntax][type] = []
-            words[syntax][type].append(value)
- 
-            #print syntax, value
+
+            words[syntax][type] = value
 
         return words
+
 
     def check_game(self, data=None):
 
@@ -77,20 +75,40 @@ class Game:
             db_info = {}
             qwords = {}
             awords = {}
-            selected_awords = {}
+            tmpawords = {}
+
             for d, value in data.items():
                 if d.count(str(n) + '-')>0:
                     d = d.lstrip(str(n) + '-')
                     qwords = self.search_info(question_tagObj, d, value, qwords, 'tag')
                     qwords = self.search_info(question_wordObj, d, value, qwords, 'word')
                     qwords = self.search_info(question_fullformObj, d, value, qwords, 'fullform')
-                    awords = self.search_info(answer_tagObj, d, value, selected_awords, 'tag')
-                    awords = self.search_info(answer_wordObj, d, value, selected_awords, 'word')
-                    awords = self.search_info(answer_fullformObj, d, value, selected_awords, 'fullform')
-                    
-                    db_info['qwords'] = qwords
-                    db_info['awords'] = awords
+
+                    tmpawords = self.search_info(answer_tagObj, d, value, tmpawords, 'tag')
+                    tmpawords = self.search_info(answer_wordObj, d, value, tmpawords, 'word')
+                    tmpawords = self.search_info(answer_fullformObj, d, value, tmpawords, 'fullform')
+
                     db_info[d] = value
+
+            for syntax in qwords.keys():
+                if qwords[syntax].has_key('fullform'):
+                    qwords[syntax]['fullform'] = [ qwords[syntax]['fullform']]
+
+            for syntax in tmpawords.keys():
+                awords[syntax] = []
+                info = {}
+                if tmpawords[syntax].has_key('word'):
+                    info['word'] = tmpawords[syntax]['word']
+                    if tmpawords[syntax].has_key('tag'):
+                        info['tag'] = tmpawords[syntax]['tag']
+                    if tmpawords[syntax].has_key('fullform'):
+                        info['fullform'] = [ tmpawords[syntax]['fullform']]
+                        
+                    awords[syntax].append(info)
+                                        
+            db_info['qwords'] = qwords
+            db_info['awords'] = awords
+
 
             new_db_info = {}
             if self.settings.gametype == 'qa' or self.settings.gametype == 'context':
@@ -297,11 +315,8 @@ class QuizzGame(Game):
         books=self.settings.book
         semtypes=self.settings.semtype
 
-        print "BOOKS"
-        print books
-        print semtypes
-
         while True:
+            # smenob
             if self.settings.transtype == "smenob":            
                 if semtypes:
                     if self.settings.book.count('all') > 0:
@@ -316,6 +331,7 @@ class QuizzGame(Game):
                     w_count=Word.objects.filter( Q(source__name__in=books)).count()
                     random_word=Word.objects.filter( Q(source__name__in=books))[randint(0,w_count-1)]
 
+            # nobsme
             else:
                 if semtypes:
                     if self.settings.book.count('all') > 0:
@@ -331,9 +347,9 @@ class QuizzGame(Game):
                     random_word=Wordnob.objects.filter( Q(source__name__in=books))[randint(0,w_count-1)]
                 
             word_id=random_word.id
-        
+            print word_id
             translations=random_word.translations.all()
-
+            
             if translations:
                 db_info['word_id'] = word_id
                 db_info['question_id'] = ""
@@ -345,9 +361,9 @@ class QuizzGame(Game):
         if self.settings.transtype == "smenob":
             word=Word.objects.get(Q(id=word_id))
             translations=word.translations.all()
-
         else:
-            word=Wordnob.objects.filter(Q(word__pk=word_id))[0]
+            print "jee", word_id
+            word=Wordnob.objects.get(id=word_id)
             translations=word.translations.all()
 
         question_list=[]
@@ -355,7 +371,7 @@ class QuizzGame(Game):
         if not translations:
             return HttpResponse("No forms found.")        
             
-        form = (QuizzQuestion(word, translations, question_list, db_info['userans'], db_info['correct'], data, prefix=n))
+        form = (QuizzQuestion(self.settings.transtype, word, translations, question_list, db_info['userans'], db_info['correct'], data, prefix=n))
         self.form_list.append(form)
 
 
