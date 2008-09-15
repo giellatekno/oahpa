@@ -30,6 +30,8 @@ parser.add_option("-g", "--grammarfile", dest="grammarfile",
                   help="XML-file for grammar defaults for questions")
 parser.add_option("-e", "--feedbackfile", dest="feedbackfile",
                   help="XML-file for feedback")
+parser.add_option("-m", "--messagefile", dest="messagefile",
+                  help="XML-file for feedback messages")
 parser.add_option("-s", "--sem", dest="semtypefile",
                   help="XML-file semantic subclasses")
 parser.add_option("-n", "--num", dest="numerals",
@@ -53,21 +55,22 @@ if options.tagfile:
 if options.paradigmfile:
     linginfo.read_paradigms(options.paradigmfile, options.tagfile, options.add_db)
 
+if options.questionfile and options.grammarfile:
+    questions.read_questions(options.questionfile,options.grammarfile)
+    exit()
+
 if options.grammarfile:
     questions.read_grammar(options.grammarfile)
     exit()
     
-if options.questionfile:
-    questions.read_questions(options.questionfile)
-    exit()
-
 if options.semtypefile:
     questions.read_semtypes(options.semtypefile)
     exit()
 
 if options.feedbackfile:
-    questions.read_feedback(options.feedbackfile, options.pos)
-    exit()
+    if options.pos:
+        questions.read_feedback(options.feedbackfile, options.pos, options.messagefile)
+        exit()
 
 if options.numerals:
     linginfo.generate_numerals()
