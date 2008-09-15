@@ -27,7 +27,9 @@
 {% if show_correct %}
   <td> 
     {% if form.answertext1 %}{{ form.answertext1 }}{% endif %}
-    
+    {% if form.pron %}
+    &nbsp;&nbsp;{{ form.pron }}&nbsp;&nbsp;
+    {% endif %}    
     {% ifequal form.error "correct" %}
     <font color="green">{{ form.userans }}</font>
     {% else %}
@@ -50,15 +52,22 @@
   <td>
     {% if form.answertext1 %}{{ form.answertext1 }}{% endif %}
       {% ifnotequal form.userans "" %}
+          {% if form.pron %}
+	  &nbsp;&nbsp;{{ form.pron }}&nbsp;&nbsp;
+	  {% endif %}
+
         {% ifequal form.error "correct" %}
           <font color="green">{{ form.userans }}</font>
         {% else %}
 	  <!-- Answer field -->
-          {{ form.answer }} 
+	  {{ form.answer }} 
 	{% endifequal %}
       {% else %}
       <!-- Answer field -->
-      {{ form.answer}} 
+      {% if form.pron %}
+      &nbsp;&nbsp;{{ form.pron }}&nbsp;&nbsp;
+      {% endif %}
+      {{ form.answer}}
       {% endifnotequal %}
     {% if form.answertext2 %}{{ form.answertext2 }}{% endif %}
 
