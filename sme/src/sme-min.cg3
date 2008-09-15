@@ -2563,4 +2563,7 @@ MAP (@naPcle) TARGET ("na" Pcle) IF (-1 NOT-PCLE) ;
 # Message tells that fal+Adv can only be non-initial:
 MAP (@falAdv) TARGET ("fal" Adv) IF (NEGATE -1 WORD) ;
 
+# Message tells that Interj can only be initial or final:
+MAP (@notInterj) TARGET Interj IF (-1 WORD)(NEGATE *1 EOS BARRIER WORD);
+MAP (@notInterj) TARGET Interj IF (NEGATE *-1 BOS BARRIER WORD)(1 WORD) ;
 
