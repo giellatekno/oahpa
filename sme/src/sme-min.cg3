@@ -318,6 +318,7 @@ LIST EOS = (<<<) (</s>);
 # Tags declared as single-membered LISTs 
 # ======================================
 
+
 # Parts of speech
 # ---------------
 
@@ -2543,9 +2544,15 @@ SET NON-APP = ALLSYNTAG - (@APP);
 
 # SET ASSIGNEDSYN = ALLSYNTAG - @X ;
 
+          SECTION
 
 
 ############################################################################
 ### HERE START THE PED-RULES ##############################################
 ############################################################################
 
+# Spelling-error
+LIST QMRK = ? ;
+
+
+MAP (@spellingerror) TARGET QMRK ;
