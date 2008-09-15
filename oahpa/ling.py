@@ -171,6 +171,9 @@ class Questions:
         else:
             syntax = el_id
 
+        print "Creating syntax", syntax
+        if not el: print "No element given."
+
         # Search for the same element in question side
         if QElement.objects.filter(Q(question__id=qaelement.answer_id) & \
                                    Q(identifier=el_id)).count() > 0:
@@ -314,6 +317,7 @@ class Questions:
                     tagvalues = []
                     self.get_tagvalues(tag,"",tagvalues)
                     tagstrings.extend(tagvalues)
+                print tagstrings
                 if tagelements:
                     tagelements = tagelements | Tag.objects.filter(Q(string__in=tagstrings))
                 else:
@@ -339,8 +343,9 @@ class Questions:
             
         # Find different pos-values in tagelements
         posvalues = {}
+        # Elements that do not inflection information are not created.
         if not tagelements:
-            print "###########FATAL ERROR"
+            print "no inflection for", el_id
             return
         for t in tagelements:
             posvalues[t.pos] = 1
@@ -433,7 +438,7 @@ class Questions:
                 if e.getAttribute("id")=="ANSWERSUBJECT":
                     element = e
                     break
-                if e.getAttribute("id")=="SUB":
+                if e.getAttribute("id")=="SUBJ":
                     element = e
                     break
 
@@ -624,9 +629,12 @@ class Questions:
 
 
 
-    def read_feedback(self, infile, msgfile, pos):
+    def read_feedback(self, infile, pos, msgfile=None):
 
-        self.read_messages(msgfile)
+        if not pos: return None
+
+        if msgfile:
+            self.read_messages(msgfile)
 
         xmlfile=file(infile)
         tree = _dom.parse(infile)
@@ -650,162 +658,206 @@ class Questions:
 
         soggis[""] = 1
         rimes["0"] = 1
-
-        # Create different combinations that are associated with feedback.
-        for stem in ["bisyllabic","trisyllabic","contracted"]:
-            for diphthong in ["0","1"]:
-                for soggi in soggis.keys():
-
-                    # Create message options for Nouns and adjectives
-                    for gradation in ["inv","no","yes"]:
-                        for rime in rimes.keys():
-                            # Create Essive since it has no number inflection
-                            for grade in ["Comp","Superl","Pos",""]:      
-                                f, created = Feedback.objects.get_or_create(stem=stem,diphthong=diphthong,\
-                                                                            gradation=gradation,rime=rime,\
-                                                                            soggi=soggi,grade=grade,\
-                                                                            case="Ess")
-                                f.save()
-                        
-                            for case in ["Acc", "Gen", "Ill","Loc","Com"]:
-                                for number in ["Sg","Pl"]:
-                                    for grade in ["Comp","Superl","Pos",""]:      
-                                        f2, created = Feedback.objects.get_or_create(stem=stem,\
-                                                                                     diphthong=diphthong,\
-                                                                                     gradation=gradation,\
-                                                                                     rime=rime,\
-                                                                                     case=case,\
-                                                                                     number=number, \
-                                                                                     soggi=soggi)
-                                        f2.save()
-
-                    # Create message options for Verbs
-                    for tense in ["Prs","Prt"]:
-                        for mood in ["Ind","Cond","Pot","Imprt"]:
-                            for personnumber in ["Sg1","Sg2","Sg3","Du1","Du2","Du3","Pl1","Pl2","Pl3"]:
-
-                                f2, created = Feedback.objects.get_or_create(stem=stem,diphthong=diphthong,\
-                                                                             gradation=gradation,tense=tense,\
-                                                                             mood=mood,soggi=soggi, \
-                                                                             personnumber=personnumber)
-
-                                f2.save()
+        diphthongs = ["0","1"]
+        stems = ["bisyllabic","trisyllabic","contracted"]
+        gradations = ["inv","no","yes"]
+        grades = ["Comp","Superl","Pos",""]
+        cases = ["Acc", "Gen", "Ill","Loc","Com","Ess"]
+        numbers = ["Sg","Pl",""]
+        tenses = ["Prs","Prt"]
+        moods = ["Ind","Cond","Pot","Imprt"]
+        personnumbers = ["Sg1","Sg2","Sg3","Du1","Du2","Du3","Pl1","Pl2","Pl3"]
+                                
+        messages=[]
                             
         print "Total", Feedback.objects.count()
         wordforms = tree.getElementsByTagName("stems")[0]
         for el in wordforms.getElementsByTagName("stem"):
             feedback = None
             stem =""
-            diphthong_text =""
+            diphthong =""
             rime =""
             gradation=""
-            case = ""
-            number = ""
-            personnumber = ""
-            mode = ""
-            tense = ""
-            grade = ""
+            soggi =""
+
+            ftempl = Entry()
+
+            ftempl.pos = pos
 
             if el.getAttribute("class"):
-                stem=el.getAttribute("class")                
-                if Feedback.objects.filter(Q(stem=stem)):
-                    feedback = Feedback.objects.filter(stem=stem)
-                print "stem:", stem
-
-                print feedback.count()
+                stem=el.getAttribute("class")
+                if stem: ftempl.stem = [ stem ]
+            if not stem:  ftempl.stem = stems
 
             if el.getAttribute("gradation"):
-                gradation = el.getAttribute("gradation")
-                if feedback:
-                    feedback = feedback.filter(gradation=gradation)
-                else:
-                    feedback = Feedback.objects.filter(gradation=gradation)
-                print "gradation:", gradation
-
-                print "2", feedback.count()
+                gradation=el.getAttribute("gradation")
+                if gradation: ftempl.gradation = [ gradation ]
+            if not gradation: ftempl.gradation = gradations
                 
             if el.getAttribute("diphthong"):
-                diphthong = el.getAttribute("diphthong")
-                if diphthong_text == "no": diphthong = 0
-                else: diphthong = 1
-                if feedback:
-                    feedback = feedback.filter(diphthong=diphthong)
-                else:
-                    feedback = Feedback.objects.filter(diphthong=diphthong)
-                print "diphthong:", diphthong
+                diphthong=el.getAttribute("diphthong")
+                if diphthong:
+                    if diphthong == "yes": diphthong = "1"
+                    if diphthong == "no" : diphthong = "0"
+                    ftempl.diphthong = [ diphthong ]
+            if not diphthong: ftempl.diphthong = diphthongs
 
-                print "3", feedback.count()
-                    
             if el.getAttribute("soggi"):
-                soggi = el.getAttribute("soggi")
-                if feedback:
-                    feedback = feedback.filter(soggi=soggi)
-                else:
-                    feedback = Feedback.objects.filter(soggi=soggi)
-                print "soggi:", soggi
+                soggi=el.getAttribute("soggi")
+                if soggi: ftempl.soggi = [ soggi ]
+            if not soggi: ftempl.soggi = soggis
 
-                print "4", feedback.count()
-                    
             if el.getAttribute("rime"):
-                rime = el.getAttribute("rime")
-                print "Rime:", rime
-                if feedback:
-                    feedback = feedback.filter(rime=rime)
-                else:
-                    feedback = Feedback.objects.filter(rime=rime)
-                    print "Filtering Feedback..", 
+                rime=el.getAttribute("rime")
+                if rime: ftempl.rime = [ rime ]
+            if not rime: ftempl.rime = rimes
 
-            print "5", feedback.count()
+            msgs = el.getElementsByTagName("msg")
+            for mel in msgs:
 
-            old_feedback = feedback
-            messages = el.getElementsByTagName("msg")
-            for mel in messages:
-                feedback = old_feedbackfo
-                msgnum = mel.firstChild.data
-                print "Message number", msgnum
+                f = Entry()
+
+                case = ""
+                number = ""
+                personnumber = ""
+                tense = ""
+                mood = ""
+                grade = ""
+
+                f.pos = ftempl.pos
+                f.stem = ftempl.stem
+                f.gradation = ftempl.gradation
+                f.diphthong = ftempl.diphthong
+                f.soggi = ftempl.soggi
+                f.rime = ftempl.rime
+                
+                msgid = mel.firstChild.data
+                print "Message id", msgid
+                f.msgid = msgid
                 
                 if mel.getAttribute("case"):
                     case=mel.getAttribute("case")
-                    if feedback:
-                        feedback = feedback.filter(case=case)
-                        
-                if mel.getAttribute("number"):
-                    number=mel.getAttribute("number")
-                    if feedback:
-                        feedback = feedback.filter(number=number)
+                    if case: f.case = [ case ]
+                if not case: f.case = cases
 
                 if mel.getAttribute("number"):
                     number=mel.getAttribute("number")
-                    if feedback:
-                        feedback = feedback.filter(number=number)
+                    if number: f.number = [ number ]
+                if not number: f.number = numbers
 
                 if mel.getAttribute("personnumber"):
-                    number=mel.getAttribute("personnumber")
-                    if feedback:
-                        feedback = feedback.filter(personnumber=personnumber)
+                    personnumber=mel.getAttribute("personnumber")
+                    if personnumber: f.personnumber = [ personnumber ]
+                if not personnumber: f.personnumber = personnumbers
 
                 if mel.getAttribute("tense"):
-                    number=mel.getAttribute("tense")
-                    if feedback:
-                        feedback = feedback.filter(tense=tense)
+                    tense=mel.getAttribute("tense")
+                    if tense: f.tense = [ tense ]
+                if not tense: f.tense = tenses
 
                 if mel.getAttribute("mood"):
-                    number=mel.getAttribute("mood")
-                    if feedback:
-                        feedback = feedback.filter(mood=mood)
+                    mood=mel.getAttribute("mood")
+                    if mood: f.mood = [ mood ]
+                if not mood: f.mood = moods
 
                 if mel.getAttribute("grade"):
-                    number=mel.getAttribute("grade")
-                    if feedback:
-                        feedback = feedback.filter(grade=grade)
+                    grade=mel.getAttribute("grade")
+                    if grade: f.grade = [ grade ]
+                if not grade: f.grade = grades
+
+                messages.append(f)
+
+        for f in messages:
+            if f.pos == "N" or pos=="A":
+                for stem in f.stem:
+                    for gradation in f.gradation:
+                        for diphthong in f.diphthong:
+                            for rime in f.rime:
+                                for soggi in f.soggi:
+                                    # Essive: no number inflection
+                                    if f.case == "Ess" and f.pos=="N":
+                                        f2, created=Feedback.objects.get_or_create(stem=stem,\
+                                                                                   diphthong=diphthong,\
+                                                                                   gradation=gradation,\
+                                                                                   rime=rime,\
+                                                                                   case=case,\
+                                                                                   pos=pos,\
+                                                                                   soggi=soggi)
+                                        msgs = Feedbackmsg.objects.get(msgid=f.msgid)
+                                        if msgs:
+                                            f2.messages.add(msgs[0])
+                                        f2.save()
+
+                                    else:
+                                        for number in f.number:
+                                            # Attributive forms: no case inflection.
+                                            # Grade is "Attr"
+                                            if f.pos == "A":
+                                                f2, created=Feedback.objects.get_or_create(stem=stem,\
+                                                                                           diphthong=diphthong,\
+                                                                                           gradation=gradation,\
+                                                                                           rime=rime,\
+                                                                                           pos=pos,\
+                                                                                           number=number,\
+                                                                                           grade="Attr",\
+                                                                                           soggi=soggi)
+                                                msgs = Feedbackmsg.objects.get(msgid=f.msgid)
+                                                if msgs:
+                                                    f2.messages.add(msgs[0])
+                                                f2.save()
+                                                
+                                            for case in f.case:
+                                                if f.pos == "N":
+                                                    f2, created=Feedback.objects.get_or_create(stem=stem,\
+                                                                                               diphthong=diphthong,\
+                                                                                               gradation=gradation,\
+                                                                                               rime=rime,\
+                                                                                               case=case,\
+                                                                                               pos=pos,\
+                                                                                               number=number, \
+                                                                                               soggi=soggi)
+                                                    msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
+                                                    if msgs:
+                                                        f2.messages.add(msgs[0])
+                                                    f2.save()
+                                                    
+                                                # Adjectives: also grade
+                                                else:
+                                                    for grade in f.grade:
+                                                        f2, created=Feedback.objects.get_or_create(stem=stem,\
+                                                                                                   diphthong=diphthong,\
+                                                                                                   gradation=gradation,\
+                                                                                                   rime=rime,\
+                                                                                                   pos=pos,\
+                                                                                                   case=case,\
+                                                                                                   number=number, \
+                                                                                                   grade=grade,\
+                                                                                                   soggi=soggi)
+                                                        msgs = Feedbackmsg.objects.get(msgid=f.msgid)
+                                                        if msgs:
+                                                            f2.messages.add(msgs[0])
+                                                        f2.save()
 
 
-                if not feedback:
-                    print "No feedback found!"
-
-                message = Feedbackmsg.objects.get(msgid=msgnum)
-                for f in feedback:
-                    if not f.messages.filter(msgid=msgnum):
-                        f.messages.add(message)
-                        f.save()
+            if f.pos == "V":
+                for stem in f.stem:
+                    for gradation in f.gradation:
+                        for diphthong in f.diphthong:
+                            for soggi in f.soggi:                                                           
+                                for personnumber in f.personnumber:
+                                    for tense in f.tense:
+                                        for mood in f.mood:
+                                            
+                                            f2, created = Feedback.objects.get_or_create(stem=stem,\
+                                                                                         diphthong=diphthong,\
+                                                                                         gradation=gradation,\
+                                                                                         soggi=soggi,\
+                                                                                         tense=tense,\
+                                                                                         pos=pos,\
+                                                                                         mood=mood,\
+                                                                                         personnumber=personnumber)
+                                            
+                                            message = Feedbackmsg.objects.get(msgid=f.msgids)
+                                            f2.messages.add(message)
+                                            f2.save()
 
