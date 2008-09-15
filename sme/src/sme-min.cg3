@@ -2557,13 +2557,35 @@ LIST QMRK = ? ;
 
 MAP (@spellingerror) TARGET QMRK ;
 
-# Message tells that na+Pcle can only be initial:
+# na+Pcle can only be initial:
 MAP (@naPcle) TARGET ("na" Pcle) IF (-1 NOT-PCLE) ;
 
-# Message tells that fal+Adv can only be non-initial:
+# fal+Adv can only be non-initial:
 MAP (@falAdv) TARGET ("fal" Adv) IF (NEGATE -1 WORD) ;
 
-# Message tells that Interj can only be initial or final:
+# Interj can only be initial or final:
 MAP (@notInterj) TARGET Interj IF (-1 WORD)(NEGATE *1 EOS BARRIER WORD);
 MAP (@notInterj) TARGET Interj IF (NEGATE *-1 BOS BARRIER WORD)(1 WORD) ;
+
+# Should be Attr when: + (Attr) + N
+#MAP (@shouldAttr) TARGET A IF (NEGATE 0 Attr)(*1 N BARRIER NOT-ADJ-CC) ;
+# The barrier is not good if the Attr has another reading than A.
+# So we can instead do like this:
+
+MAP (@shouldAttr) TARGET A IF (NEGATE 0 Attr)(1 N) ;
+MAP (@shouldAttr) TARGET A IF (NEGATE 0 Attr)(1 Attr LINK 1 N) ;
+MAP (@shouldAttr) TARGET A IF (NEGATE 0 Attr)(1 Attr LINK 1 Attr LINK 1 N) ;
+MAP (@shouldAttr) TARGET A IF (NEGATE 0 Attr)(1 CC LINK 1 Attr LINK 1 N) ;
+
+# Remember GRADE-ADV!
+# Another way would be
+# LIST BetweenAttrAndN = Attr CC Adv ;
+# MAP (@shouldAttr) TARGET A IF (NEGATE 0 Attr)(1 BetweenAttrAndN LINK 1 Attr LINK 1 N) ;
+
+
+# Should not be an Attr if it is not in front of N
+MAP (@shouldNotAttr) TARGET Attr IF (NEGATE 0 Nom)(NEGATE *1 N BARRIER NOT-ADJ-CC) ;
+# The barrier is not good if the Attr has another reading than A.
+
+
 
