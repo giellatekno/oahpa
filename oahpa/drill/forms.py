@@ -252,10 +252,11 @@ class MorphQuestion(forms.Form):
         self.feedback=""
         messages = []
         if tag.pos=="N" or tag.pos=="A":
-            if tag.number=="Sg":
+            If tag.number=="Sg":
                 self.lemma = word.lemma
             else:
-                self.lemma = Form.objects.filter(Q(word__pk=word.id) & Q(tag__string="N+Pl+Nom"))[0].fullform
+                tagstring = tag.pos + "+Pl+Nom"
+                self.lemma = Form.objects.filter(Q(word__pk=word.id) & Q(tag__string=tagstring))[0].fullform
 
         # Retrieve feedback information
         self.get_feedback(word,tag)
