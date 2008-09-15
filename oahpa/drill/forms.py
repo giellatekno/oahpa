@@ -196,6 +196,48 @@ class MorphQuestion(forms.Form):
     
     answer = forms.CharField()
 
+    def get_feedback(self,word,tag):
+        
+        feedbacks=None
+        
+        if tag.pos=="N":
+            print "filtering feedbacks"
+            print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi,tag.case,tag.pos,tag.number
+            feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
+                                                Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
+                                                Q(soggi=word.soggi) & Q(case=tag.case) & \
+                                                Q(pos=tag.pos) &\
+                                                Q(number = tag.number))
+        if tag.pos=="A":
+            grade =""
+            if tag.grade:
+                grade = tag.grade
+            else:
+                if tag.attributive == "Attr":
+                    grade = "Attr"
+                else:
+                    grade = "Pos"
+            feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
+                                                Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
+                                                Q(soggi=word.soggi) & Q(case=tag.case) & \
+                                                Q(pos=tag.pos) & Q(grade=grade) &\
+                                                Q(number = tag.number))
+
+        if tag.pos == "V":
+            feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
+                                               Q(diphthong=word.diphthong) & Q(soggi=word.soggi) & \
+                                               Q(mood=tag.mood) & Q(tense=tag.tense) & \
+                                               Q(personnumber = tag.personnumber))
+            
+        if feedbacks:
+            for f in feedbacks:
+                msgs = f.messages.all()
+                for m in msgs:
+                    self.feedback = self.feedback + " " + m.message
+            self.feedback = self.feedback.replace("LEMMA", "\"" + word.lemma + "\"") 
+            print self.feedback
+
+
     def __init__(self, word, tag, fullforms, translations, question, userans_val, correct_val, *args, **kwargs):
 
         lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
@@ -215,28 +257,8 @@ class MorphQuestion(forms.Form):
             else:
                 self.lemma = Form.objects.filter(Q(word__pk=word.id) & Q(tag__string="N+Pl+Nom"))[0].fullform
 
-            #print word.lemma, word.stem, word.gradation, word.diphthong, "ok",  word.rime, "jes", word.soggi, tag.case, tag.number
-            feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
-                                               Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
-                                               Q(soggi=word.soggi) & Q(case=tag.case) & \
-                                               Q(number = tag.number))
-            for f in feedbacks:
-                msgs = f.messages.all()
-                for m in msgs:
-                    self.feedback = self.feedback + " " + m.message
-            self.feedback = self.feedback.replace("LEMMA", "\"" + word.lemma + "\"") 
-
-        if tag.pos == "V":
-            feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
-                                               Q(diphthong=word.diphthong) & Q(soggi=word.soggi) & \
-                                               Q(mood=tag.mood) & Q(tense=tag.tense) & \
-                                               Q(personnumber = tag.personnumber))
-            for f in feedbacks:
-                msgs = f.messages.all()
-                for m in msgs:
-                    self.feedback = self.feedback + " " + m.message
-            self.feedback = self.feedback.replace("LEMMA", "\"" + word.lemma + "\"") 
-
+        # Retrieve feedback information
+        self.get_feedback(word,tag)
             
         self.correct_answers =""
         self.case = ""
