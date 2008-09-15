@@ -94,14 +94,14 @@ class QAGame(Game):
 
         return words
 
-    def get_elements(self, question_element, syntax):
+    def get_elements(self, question_element, identifier):
 
         if self.gametype:
             if QElement.objects.filter(Q(question=question_element) & \
-                                       Q(syntax=syntax) &\
+                                       Q(identifier=identifier) &\
                                        Q(gametype=self.gametype)).count()>0:
                 return QElement.objects.filter(Q(question=question_element) & \
-                                               Q(syntax=syntax) &\
+                                               Q(identifier=identifier) &\
                                                Q(gametype=self.gametype))
 
         else:
@@ -280,10 +280,10 @@ class QAGame(Game):
         else:
             subj_elements = self.get_elements(answer,subj)
             if subj_elements:
-                subj_el = subj_elements[randint(0, len(elements)-1)]                
+                subj_el = subj_elements[randint(0, len(subj_elements)-1)]                
                 tag_el_count = subj_el.tags.count()
                 if tag_el_count > 0:
-                    tag_el = element.tags.all()[randint(0, tag_el_count-1)]
+                    tag_el = subj_el.tags.all()[randint(0, tag_el_count-1)]
 
                 if tag_el.pos=="Pron":
                     a_number = tag_el.personnumber 
@@ -291,8 +291,9 @@ class QAGame(Game):
                     a_number = tag_el.number 
 
                 # No word specified.                
-                info = { 'qelement': element.id, 'tag' : tag_el.id, 'number' : a_number }
+                info = { 'qelement': subj_el.id, 'tag' : tag_el.id, 'number' : a_number }
                 word = info
+                words.append(word)
                 
                 for word in words:
                     word['number'] = a_number
@@ -302,7 +303,6 @@ class QAGame(Game):
         if not subj == 'SUBJ':
             awords['SUBJ'] = words[:]
 
-
         return awords
     
     def generate_answers_mainv(self, answer, question, awords, qwords, qtype, eltype):
@@ -311,6 +311,7 @@ class QAGame(Game):
 
         mainv_words = []
         mainv_tag = None
+        mainv_tags = []
         
         # It is assumed that all subjects cause the same inflection
         # for verb, so it does not matter which subject is selected.
@@ -319,6 +320,7 @@ class QAGame(Game):
             asubj = awords['SUBJ'][0]
             a_number=asubj['number']
             va_number=self.SVPN[a_number]
+            print "----------------- va_number", va_number
 
             # Take qwords mainverb tag as basis
             # If there is no subject, then the number of the question
@@ -333,9 +335,11 @@ class QAGame(Game):
                 amainvtag_string = qmainvtag_string.replace(v_number,va_number)
                 
                 mainv_tag = Tag.objects.get(string=amainvtag_string)
+                mainv_tags.append(mainv_tag)
             
         # Mainverb word if needed:
         if qwords.has_key('MAINV'):
+            print "ON VERBI"
             mainv_word = qwords['MAINV']['word']
 
         # If the main verb is under question, then generate full list.
@@ -348,9 +352,11 @@ class QAGame(Game):
                         for t in mainv_tags:
                             info = { 'tag' : t.id }
                             mainv_words.append(info)
+                            print info                            
                     else:
                         info = { 'tag' : mainv_tag.id }
                         mainv_words.append(info)
+                        print info
             else:
                 if mainv_word:
                     mainv_words.extend(self.get_words(None, mainv_tag, None, mainv_word))
@@ -365,7 +371,12 @@ class QAGame(Game):
                 for tag in mainv_tags:
                     info = { 'qelement' : mainv_element.id, 'tag' : mainv_tag.id }
                     mainv_words.append(info)
-            
+
+            else:
+                for tag in mainv_tags:
+                    info = { 'tag' : mainv_tag.id, 'word' : mainv_word }
+                    mainv_words.append(info)
+                    
         if not mainv_words and qwords.has_key(eltype):
             mainv_words.append(qwords[eltype])
 
