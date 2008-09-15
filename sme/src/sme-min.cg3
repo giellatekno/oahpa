@@ -2556,3 +2556,10 @@ LIST QMRK = ? ;
 
 
 MAP (@spellingerror) TARGET QMRK ;
+
+# Message tells that na+Pcle can only be initial:
+MAP (@naPcle) TARGET ("na" Pcle) IF (-1 NOT-PCLE) ;
+
+# Message tells that fal+Adv can only be non-initial:
+MAP (@falAdv) TARGET ("fal" Adv) IF (NEGATE -1 WORD) ;
+
