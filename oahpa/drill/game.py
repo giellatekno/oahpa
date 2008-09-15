@@ -225,10 +225,10 @@ class BareGame(Game):
             mood=""
             tense=""
             
-        tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & Q(conneg="")).count()
+        tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg")).count()
 
-        while True:            
-            tag_id = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & Q(conneg=""))[randint(0,tag_count-1)].id
+        while True:
+            tag_id = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg"))[randint(0,tag_count-1)].id
             
             if self.settings.pos == "Num":
                 if self.settings.case == "Attr":
