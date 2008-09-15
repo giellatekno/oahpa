@@ -252,7 +252,7 @@ class MorphQuestion(forms.Form):
         self.feedback=""
         messages = []
         if tag.pos=="N" or tag.pos=="A":
-            If tag.number=="Sg":
+            if tag.number=="Sg":
                 self.lemma = word.lemma
             else:
                 tagstring = tag.pos + "+Pl+Nom"
