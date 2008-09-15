@@ -45,7 +45,7 @@ epmosat-suffix
 
 <!--Special feedback for LEMMA="buorre" as attribute - semiagreement with noun: -->
 
-    <lemma>buorre"</lemma>
+    <lemma>buorre</lemma>
       <msg comp="Pos" case="Nom" number="Sg">nom_sg</msg>
       <msg comp="Pos" case="Nom" number="Pl">nom_pl</msg>
       <msg comp="Pos" case="Acc" number="Sg">acc_sg</msg>
@@ -61,9 +61,38 @@ epmosat-suffix
       <msg comp="Pos" case="Ess">ess</msg>
       <note>buorre, som attributt</note>
 
-
-
-
+      <stem attribute="0">
+      <msg comp="Attr">attribute_like_pred</msg>
+      <note>Attr = Nom</note>
+    </stem>
+      <stem attribute="a">
+      <msg comp="Attr">a-suffix</msg>
+      <note>galmmas -a</note>
+    </stem>
+      <stem attribute="s">
+      <msg comp="Attr">s-suffix</msg>
+      <note>somá -s</note>
+    </stem>
+      <stem attribute="es">
+      <msg comp="Attr">es-suffix</msg>
+      <note>fiskat -es</note>
+    </stem>
+      <stem attribute="os">
+      <msg comp="Attr">os-suffix</msg>
+      <note>headju -os</note>
+    </stem>
+      <stem attribute="is">
+      <msg comp="Attr">is-suffix</msg>
+      <note>gávvil -is</note>
+    </stem>
+      <stem attribute="i>e">
+      <msg comp="Attr">i_e</msg>
+      <note>viiddis -e-</note>
+    </stem>
+      <stem attribute="u>o">
+      <msg comp="Attr">u_o</msg>
+      <note>gearggus -o-</note>
+    </stem>
 
   <stems>
     <stem class="bisyllabic">
@@ -81,6 +110,8 @@ epmosat-suffix
     <stem gradation="no">
       <msg>no_gradiation</msg>
     </stem>
+
+<!-- predicative form: -->
 
     <stem class="bisyllabic" gradiation="yes">
       <msg comp="Pos" case="Nom" number="Sg">strong_grade</msg>
@@ -146,7 +177,7 @@ epmosat-suffix
       <msg comp="Pos" number="Pl">u_o</msg>
       <msg comp="Comp" number="Pl">u_o</msg>
       <msg comp="Superl" number="Pl">u_o</msg>
-      <note>dovddus, dovdosat dovdoseabbu dovdoseamus u>o</note>
+      <note>dovddus, dovdosat dovdoseabbo dovdoseamos u>o</note>
     </stem>  
 
       <stem rime="t-g">
@@ -202,7 +233,7 @@ epmosat-suffix
       <note>bahča rime</note>
     </stem>
 
-        <stem rime="is">
+    <stem rime="is">
       <msg comp="Pos" case="Acc" number="Sg">is_á</msg>
       <msg comp="Pos" case="Gen" number="Sg">is_á</msg>
       <msg comp="Pos" case="Ill" number="Sg">is_á</msg>
@@ -217,10 +248,10 @@ epmosat-suffix
       <stem rime="š-čč-žž">
       <msg comp="Pos" case="Acc" number="Sg">čč_and_a</msg>
       <msg comp="Pos" case="Gen" number="Sg">čč_and_a</msg>
-      <msg comp="Pos" case="Ill" number="Sg">žž_and_ii</msg>
+      <msg comp="Pos" case="Ill" number="Sg">žž_and_i</msg>
       <msg comp="Pos" case="Loc" number="Sg">čč_and_a</msg>
       <msg comp="Pos" case="Com" number="Sg">čč_and_a</msg>
-      <msg comp="Pos" case="Ess">žž_and_an</msg>
+      <msg comp="Pos" case="Ess">žž_and_a</msg>
       <msg comp="Pos" number="Pl">čč_and_a</msg>
       <msg comp="Comp">čč_and_a</msg>
       <msg comp="Superl">čč_and_a</msg>
@@ -234,38 +265,6 @@ epmosat-suffix
       <note>issoras -a-</note>
     </stem>
 
-      <stem attribute="0">
-      <msg comp="Attr">attribute_like_pred</msg>
-      <note>Attr = Nom</note>
-    </stem>
-      <stem attribute="a">
-      <msg comp="Attr">a-suffix</msg>
-      <note>galmmas -a</note>
-    </stem>
-      <stem attribute="s">
-      <msg comp="Attr">s-suffix</msg>
-      <note>somá -s</note>
-    </stem>
-      <stem attribute="es">
-      <msg comp="Attr">es-suffix</msg>
-      <note>fiskat -es</note>
-    </stem>
-      <stem attribute="os">
-      <msg comp="Attr">os-suffix</msg>
-      <note>headju -os</note>
-    </stem>
-      <stem attribute="is">
-      <msg comp="Attr">is-suffix</msg>
-      <note>gávvil -is</note>
-    </stem>
-      <stem attribute="i>e">
-      <msg comp="Attr">i_e</msg>
-      <note>viiddis -e-</note>
-    </stem>
-      <stem attribute="u>o">
-      <msg comp="Attr">u_o</msg>
-      <note>gearggus -o-</note>
-    </stem>
 
 <!-- Case and number -->
 
@@ -418,7 +417,7 @@ epmosat-suffix
       <note>fiskat rime</note>
     </stem>
 
-    <stem class="bisyllabic" rime="0">
+    <stem class="bisyllabic">
       <msg comp="Pos" case="Nom" number="Pl">t-suffix</msg>
       <msg comp="Pos" case="Acc" number="Sg">no_suffix</msg>
       <msg comp="Pos" case="Gen" number="Sg">no_suffix</msg>
@@ -434,18 +433,6 @@ epmosat-suffix
       <note>nuorra suffixes</note>
     </stem>
 
-    <stem class="bisyllabic" rime="š-čč-žž">
-      <msg comp="Pos" case="Nom" number="Pl">no_suffix</msg>
-      <msg comp="Pos" case="Nom" number="Pl">t-suffix</msg>
-      <msg comp="Pos" case="Acc" number="Pl">id-suffix</msg>
-      <msg comp="Pos" case="Gen" number="Pl">id-suffix</msg>
-      <msg comp="Pos" case="Ill" number="Pl">ide-suffix</msg>
-      <msg comp="Pos" case="Loc" number="Sg">s-suffix</msg>
-      <msg comp="Pos" case="Loc" number="Pl">in-suffix</msg>
-      <msg comp="Pos" case="Com" number="Sg">in-suffix</msg>
-      <msg comp="Pos" case="Com" number="Pl">iguin-suffix</msg>
-      <note>fámolaččat suffixes</note>
-    </stem>
 
 
     <stem class="trisyllabic">
