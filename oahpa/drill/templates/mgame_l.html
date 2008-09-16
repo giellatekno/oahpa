@@ -16,7 +16,7 @@
 <tr>
 <td>
   {% ifequal gametype "bare" %}
-    {{ settingsform.case }}
+    {{ settingsform.adjcase }}
   {% else %}
     {{ settingsform.num_context }}
   {% endifequal %}
@@ -42,7 +42,7 @@
     <div id='lemma_{{ forloop.counter0 }}'>
   {% endif %}
 
-  {{ form.lemma }} {{ form.tag }}
+  {{ form.lemma }}
   </div>
 
   {% if forloop.first %}
