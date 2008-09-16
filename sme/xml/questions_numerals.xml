@@ -12,7 +12,7 @@
 
   <q>
     <qtype>NUM-ATTR</qtype>
-   <question>
+    <question>
       <text>Maid MAINV MAINV2</text>
       <element id="MAINV">
 	<id>áigut</id> 
@@ -25,29 +25,31 @@
     </question>
     <answer> 
       <text>ANSWERSUBJECT MAINV MAINV2 NUM-ATTR NOUN</text>
-    <element id="SUBJ">    
-	<grammar tag="Pron+Pers+mun+Sg1"/>         
-	</element>
+      <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Sg1+Nom"/>         
+	<id>mun</id>
+      </element>
       <element id="NUM-ATTR">    
 	<grammar tag="Num+Sg+Acc"/>         
-	</element>
-    <element id="NOUN">    
+      </element>
+      <element id="NOUN">    
 	<grammar tag="N+Sg+Acc"/>         
 	<sem class="CLOTHING"/>
-	</element>
+      </element>
     </answer>
     <answer> 
       <text>ANSWERSUBJECT MAINV MAINV2 NUM-ATTR NOUN</text>
-    <element id="SUBJ">    
-	<grammar tag="Pron+Pers+mun+Sg1"/>         
-	</element>
+      <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Sg1+Nom"/>         
+	<id>mun</id>
+      </element>
       <element id="NUM-ATTR">    
 	<grammar tag="Num+Pl+Acc"/>         
-	</element>
-    <element id="NOUN">    
+      </element>
+      <element id="NOUN">    
 	<grammar tag="N+Pl+Acc"/>         
 	<sem class="CLOTHING-PL"/>
-	</element>
+      </element>
     </answer>
   </q>
 
@@ -63,7 +65,8 @@
     <answer> 
       <text>ANSWERSUBJECT MAINV NUM-ATTR NOUN</text>
     <element id="SUBJ">    
-	<grammar tag="Pron+Pers+mun+Sg1"/>         
+	<grammar tag="Pron+Pers+Sg1+Nom"/>         
+	<id>mun</id>
 	</element>
       <element id="NUM-ATTR">    
 	<grammar tag="Num+Sg+Acc"/>         
@@ -229,7 +232,8 @@
     <answer> 
       <text>SUBJ lei NUM-ATTR NOUN</text>
     <element id="SUBJ">    
-	<grammar tag="Pron+son+Person-Number+Nom"/>         
+	<grammar pos="Pron"/> 
+	<id>son</id>
 	</element>
       <element id="NUM-ATTR">    
 	<grammar tag="Num+Pl+Gen"/>         
@@ -243,41 +247,42 @@
 
   <q>
     <qtype>NUM-ATTR</qtype>
-   <question>
+    <question>
       <text>Geaiguin SUBJ MAINV</text>
-    <element id="SUBJ">    
-	<grammar tag="Pron+Person-Number+Nom"/>         
-	</element>
-    <element id="MAINV">    
+      <element id="SUBJ">    
+	<grammar pos="Pron"/> 
+	<id>son</id>
+      </element>
+      <element id="MAINV">    
 	<grammar tag="V+Ind+Prs+Person-Number"/>         
-	<sem class="COMV"/>
-	</element>
+	<val class="COMV"/>
+      </element>
     </question>
     <answer> 
       <text>ANSWERSUBJECT MAINV NUM-ATTR NOUN</text>
       <element id="NUM-ATTR">    
 	<grammar tag="Num+Sg+Com"/>         
-	</element>
-    <element id="NOUN">    
+      </element>
+      <element id="NOUN">    
 	<grammar tag="N+Sg+Com"/>         
 	<sem class="HUMAN"/>
-	</element>
+      </element>
     </answer>
   </q>
  
 <!-- For Morfa, but also for QA with any Num: -->  
-    <q>
+  <q>
     <qtype>NUM-ATTR</qtype>
-   <question>
+    <question>
       <text>Gallin joavkun SUBJ MAINV</text>
-    <element id="SUBJ">    
+      <element id="SUBJ">    
 	<grammar tag="N+Number+Nom"/>         
 	<sem class="HUMAN"/>
-	</element>
-    <element id="MAINV">    
+      </element>
+      <element id="MAINV">    
 	<grammar tag="V+Ind+Prs+Person-Number"/>         
 	<id>bargat</id> 
-	</element>
+      </element>
     </question>
     <answer> 
       <text>SUBJ MAINV NUM-ATTR NOUN</text>
@@ -292,7 +297,7 @@
     <answer> 
       <text>SUBJ MAINV NUM-ATTR NOUN</text>
     <element id="SUBJ">    
-	<grammar tag="Pron+Person-Number+Nom"/>         
+	<grammar tag="Pron+Person-Number+Nom"/> 
 	</element>
     <element id="NUM-ATTR">    
 	<grammar tag="Num+Ess"/>         
@@ -341,7 +346,8 @@
     <answer> 
       <text>ANSWERSUBJECT MAINV OBJ</text>
       <element id="SUBJ">    
-	<grammar tag="Pron+Pers+mun+Sg1+Nom"/>         
+	<grammar tag="Pron+Pers+Sg1+Nom"/>         
+	<id>mun</id>
 	</element>
       <element id="OBJ">    
 	<grammar tag="N+Num+Sg+Acc"/>         
@@ -357,7 +363,7 @@
       <text>Geaid SUBJ dát MAINV</text>
       <element id="SUBJ">    
 	<sem class="OBJECT"/>
-	<grammar tag="N"/>         
+	<grammar pos="N"/>         
 	</element>
       <element id="MAINV">    
 	<grammar tag="V+Ind+Prs+Person-Number"/>         

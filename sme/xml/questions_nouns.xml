@@ -22,7 +22,7 @@
       </element>
     </question>
     <answer> 
-      <text> ANSWERSUBJECT MAINV N-ILL</text>
+      <text>ANSWERSUBJECT MAINV N-ILL</text>
       <element game='morfa' id="N-ILL">
 	<sem class="OBJECT"/>
       </element>
@@ -171,7 +171,7 @@
     <answer> 
       <text>SUBJ MAINV N-LOC</text>
       <element game='morfa' id="SUBJ">
-	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+	<grammar pos="Pron"/>
 	<id>son</id>
       </element>
       <element game='morfa' id="N-LOC">
@@ -179,7 +179,7 @@
 	<sem class="PLACE"/>
       </element>
       <element game='qa' id="SUBJ">
-	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+	<grammar pos="Pron"/>
 	<id>son</id>
       </element>
       <element game='qa' id="SUBJ">
@@ -230,7 +230,7 @@
 	<sem class="PLACE"/>
       </element>
       <element game='morfa' id="SUBJ">
-	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+	<grammar pos="Pron"/>
 	<id>son</id>
       </element>
       <element game='qa' id="N-LOC">
@@ -240,7 +240,7 @@
         <sem class="DOPPE"/>
       </element>
       <element game='qa' id="SUBJ">
-	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+	<grammar pos="Pron"/>
 	<id>son</id>
       </element>
     </answer>
@@ -445,7 +445,7 @@
   </q>
 
 <!-- Only Morfa : -->   
-  <q>
+  <q game='morfa'>
     <qtype>N-GEN</qtype>
     <question>
       <text>Goas SUBJ MAINV</text>
@@ -460,7 +460,7 @@
     </question>
     <answer> 
       <text>ANSWERSUBJECT MAINV N-GEN</text>
-      <element game='morfa' id="N-GEN">
+      <element  id="N-GEN">
       <grammar tag="N+Sg+Gen"/>
 	<sem class="TIME-POINT-GEN"/>
       </element>
@@ -468,7 +468,7 @@
   </q>
   
   <!-- Only Morfa : -->   
-  <q>
+  <q game='morfa'>
     <qtype>N-GEN</qtype>
     <question>
       <text>Goas SUBJ MAINV</text>
@@ -483,15 +483,15 @@
     </question>
     <answer> 
       <text>ANSWERSUBJECT MAINV N-GEN</text>
-      <element game='morfa' id="N-GEN">
-      <grammar tag="N+Sg+Gen"/>
+      <element id="N-GEN">
+	<grammar tag="N+Sg+Gen"/>
 	<sem class="TIME-POINT-GEN"/>
       </element>
     </answer>
   </q>
 
 <!-- Only Morfa: -->   
-  <q>
+  <q game='morfa'>
     <qtype>N-GEN</qtype>
     <question>
       <text>Goas SUBJ MAINV</text>
@@ -507,14 +507,14 @@
     <answer> 
       <text>ANSWERSUBJECT MAINV N-GEN</text>
       <element game='morfa' id="N-GEN">
-      <grammar tag="N+Pl+Gen"/>
+	<grammar tag="N+Pl+Gen"/>
 	<sem class="TIME-POINT-GEN-PL"/>
       </element>
     </answer>
   </q>
   
   <!-- Only Morfa: -->   
-  <q>
+  <q game='morfa'>
     <qtype>N-GEN</qtype>
     <question>
       <text>Goas SUBJ MAINV</text>
@@ -550,7 +550,7 @@
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
-	<valency>COMV</valency>
+	<val class="COMV"></val>
       </element>
    </question>
     <answer> 
@@ -765,7 +765,7 @@
   </q>
 
 <!-- Only Morfa: -->   
-  <q>
+  <q game='morfa'>
     <qtype>N-ESS</qtype>
     <question>
       <text>Goas heive MAINV</text>

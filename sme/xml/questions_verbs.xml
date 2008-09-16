@@ -65,7 +65,7 @@
       <text>(odne) SUBJ MAINV (odne)</text>
       <element game='morfa' id="SUBJ">
 	<id>son</id>
-	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+	<grammar pos="Pron"/>
       </element>
       <element game='morfa' id="MAINV">
 	<grammar tag="V+Ind+Prs+Person-Number"/>
@@ -73,7 +73,7 @@
       </element>
       <element game='qa' id="SUBJ">
 	<id>son</id>
-	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+	<grammar pos="Pron"/>
       </element>
       <element game='qa' id="MAINV">
 	<grammar tag="V+Ind+Prs+Person-Number"/>
@@ -181,7 +181,7 @@
       </element>
       <element game='morfa' id="SUBJ">
 	<id>son</id>
-	<grammar tag="Pron+Pers+Person-Number"/>
+	<grammar pos="Pron"/>
       </element>
       <element game='qa' id="MAINV">
 	<grammar tag="V+Ind+Prt+Person-Number"/>
@@ -189,7 +189,7 @@
       </element>
       <element game='qa' id="SUBJ">
 	<id>son</id>
-	<grammar tag="Pron+Pers+Person-Number"/>
+	<grammar pos="Pron"/>
       </element>
    </answer>
   </q>
@@ -288,7 +288,7 @@
       <text>(luomus) SUBJ MAINV (luomus)</text>
       <element game='morfa' id="SUBJ">
 	<id>son</id>
-	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+	<grammar pos="Pron"/>
       </element>
       <element game='morfa' id="MAINV">
 	<grammar tag="V+Cond+Prs+Person-Number"/>
@@ -296,7 +296,7 @@
       </element>
       <element game= 'qa' id="SUBJ">
 	<id>son</id>
-	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+	<grammar pos="Pron"/>
       </element>
       <element game='qa' id="MAINV">
 	<grammar tag="V+Cond+Prs+Person-Number"/>
@@ -335,7 +335,7 @@
       <text>(luomus) (SUBJ) MAINV (luomus)</text>
       <element id="SUBJ">
 	<id>son</id>
-	<grammar tag="Pron+Pers+Du3+Nom"/>
+	<grammar pos="Pron+Pers+Du3+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Cond+Prs+Du3"/>
@@ -429,6 +429,7 @@
       <text>SUBJ MAINV MAINV2</text>
       <element id="SUBJ">
 	<grammar tag="Pron+Pers+Pl1+Nom"/>
+	<id>mun</id>
       </element>
       <element id="MAINV">
 	<id>áigut</id> 
@@ -447,7 +448,6 @@
       </element>
     </answer>
   </q>
-
 
   <q>
     <qtype>V-IMPRT</qtype>
@@ -493,7 +493,6 @@
     </answer>
   </q>
 
-
 <!--- ==========  go-questions =========   -->
 
 <!-- Both Morfa and QA: -->
@@ -516,7 +515,7 @@
       <text>SUBJ MAINV (ikte)</text>
       <element id="SUBJ">
 	<id>son</id>
-	<grammar tag="Pron+Pers+Person-Number"/>
+	<grammar pos="Pron"/>
       </element>
     </answer>
     <answer> 
@@ -564,7 +563,7 @@
       <text>SUBJ MAINV (luomus)</text>
       <element id="SUBJ">
 	<id>son</id>
-	<grammar tag="Pron+Pers+Person-Number"/>
+	<grammar pos="Pron"/>
       </element>
     </answer>
     <answer> 
