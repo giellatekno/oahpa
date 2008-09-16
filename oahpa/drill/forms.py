@@ -25,6 +25,16 @@ CASE_CHOICES = (
     ('N-ESS', _('essive')),
 )
 
+ADJCASE_CHOICES = (
+    ('ATTR', _('attributive')),
+    ('N-ACC', _('accusative')),
+    ('N-ILL', _('illative')),
+    ('N-LOC', _('locative')),
+    ('N-COM', _('comitative')),
+    ('N-GEN', _('genitive')),
+    ('N-ESS', _('essive')),
+)
+
 VTYPE_CHOICES = (
     ('MAINV', _('tense')),
     ('V-COND', _('conditional')),
@@ -174,6 +184,7 @@ class MorphForm(forms.Form):
 
     num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
     case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
+    adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)
     vtype = forms.ChoiceField(initial='MAINV', choices=VTYPE_CHOICES, widget=forms.Select)
     vtype_bare = forms.ChoiceField(initial='PRS', choices=VTYPE_BARE_CHOICES, widget=forms.Select)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
@@ -181,6 +192,9 @@ class MorphForm(forms.Form):
     bisyllabic = forms.BooleanField(required=False, initial='1')
     trisyllabic = forms.BooleanField(required=False,initial='1')
     contracted = forms.BooleanField(required=False,initial='1')
+    Pos = forms.BooleanField(required=False, initial='1')
+    Comp = forms.BooleanField(required=False,initial=0)
+    Superl = forms.BooleanField(required=False,initial=0)
     default_data = {'pos': 'N'}
 
     def __init__(self, *args, **kwargs):
@@ -213,10 +227,7 @@ class MorphQuestion(forms.Form):
             if tag.grade:
                 grade = tag.grade
             else:
-                if tag.attributive == "Attr":
-                    grade = "Attr"
-                else:
-                    grade = "Pos"
+                grade = "Pos"
             feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
                                                 Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
                                                 Q(soggi=word.soggi) & Q(case=tag.case) & \
@@ -251,10 +262,10 @@ class MorphQuestion(forms.Form):
         # Get lemma and feedback
         self.feedback=""
         messages = []
-        if tag.pos=="N" or tag.pos=="A":
+        if tag.pos=="N" or tag.pos=="A" or tag.pos=="Num":
             if tag.number=="Sg":
                 self.lemma = word.lemma
-            else:
+            if tag.number=="Pl":
                 tagstring = tag.pos + "+Pl+Nom"
                 self.lemma = Form.objects.filter(Q(word__pk=word.id) & Q(tag__string=tagstring))[0].fullform
 
@@ -600,36 +611,11 @@ class QAQuestion(forms.Form):
         if (gametype == 'qa'):
             self.qa_is_correct(atext,awords)
 
-            #    for word in atext.split():
-            #    self.qa_correct_anslist[word] = []
-             #   if awords.has_key(word):
-             #       aword_list = awords[word]
-             #       for aw in aword_list:
-             #           form_elements=None
-             #           if aw.has_key('fullform'):
-             #               form_list.append(aw['fullform'])
-             #           else:
-             #               if aw.has_key('qelement'):
-             #                   wq_els = WordQElement.objects.filter(qelement__id=aw['qelement'])
-             #                   for w in wq_els:
-             #                       form_elements = Form.objects.filter(Q(word=w.word) &\
-             #                                                           Q(tag__pk=aw['tag']))
-             #           if form_elements:
-             #               for f in form_elements:
-             #                   form_list.append(f.fullform)
-
-              #      if not form_list:
-              #          self.qa_correct_anslist[word].append(word)
-              #      else:
-              #          self.qa_correct_anslist[word] = [ form_list ]
-
-            #self.qa_is_correct(atext,awords)
-            
         if (gametype == 'context'):
-            self.correct_anslist = selected_awords[qtype]['fullform'][:]
-            self.is_correct()
-                
-            
+            if len(selected_awords[qtype]['fullform'])>0:
+                self.correct_anslist = selected_awords[qtype]['fullform'][:]
+                self.is_correct()
+                            
         self.qattrs= {}
         self.aattrs= {}        
         for syntax in qwords.keys():
@@ -664,6 +650,7 @@ class QAQuestion(forms.Form):
                     qstring = qstring + " " + w
                     
         if gametype == 'context':
+            print qtype
             answer_word= selected_awords[qtype]['word']
             answer_tag =selected_awords[qtype]['tag']
             selected_awords[qtype]['fullform'][0] = 'Q'
