@@ -11,13 +11,13 @@
 <td>{{ settingsform.gametype }}</td>
 </tr>
 <tr>
-<td>{% block selectionname %}{% endblock %}</td>
+{% block selectionname %}{% endblock %}
 <td>{% trans "Stem" %}</td>
 <td>{% trans "Book" %}</td>
 <td>{% trans "Dialect" %} (not used)</td>
 </tr>
 <tr>
-<td>{% block selection %}{% endblock %}</td>
+{% block selection %}{% endblock %}
 <td>
 {{ settingsform.bisyllabic }}{% trans "bisyllabic" %}<br/>
 {{ settingsform.trisyllabic }}{% trans "trisyllabic" %}<br/>
