@@ -312,7 +312,7 @@ class QAGame(Game):
         mainv_words = []
         mainv_tag = None
         mainv_tags = []
-        
+
         # It is assumed that all subjects cause the same inflection
         # for verb, so it does not matter which subject is selected.
         if awords.has_key('SUBJ') and len(awords['SUBJ']) > 0:
@@ -350,13 +350,12 @@ class QAGame(Game):
                     if mainv_el.tags.count()>0:
                         mainv_tags = mainv_el.tags.filter(Q(personnumber=va_number))
                         for t in mainv_tags:
-                            info = { 'tag' : t.id }
+                            info = { 'qelement' : mainv_el.id, 'tag' : t.id }
                             mainv_words.append(info)
-                            print info                            
                     else:
-                        info = { 'tag' : mainv_tag.id }
+                        info = { 'qelement' : mainv_el.id, 'tag' : mainv_tag.id }
                         mainv_words.append(info)
-                        print info
+
             else:
                 if mainv_word:
                     mainv_words.extend(self.get_words(None, mainv_tag, None, mainv_word))
@@ -390,14 +389,13 @@ class QAGame(Game):
         if not awords.has_key(s):
             awords[s] = []
 
-        if s=='MAINV' and qtype == "MAINV" or s=='NEG':
+        if (s=='MAINV' and qtype == "MAINV") or s=='NEG':
             return awords
 
         # In these cases, the question mainverb is normally
         # copied and inflected.
         word_id=None
         if s=="PRFPRC" or s=="CONNEG":
-            print "+++++++++++++++++++++++++++++", s
             # Mainverb word if needed:
             if qwords.has_key('MAINV'):
                 word_id = qwords['MAINV']['word']
@@ -479,6 +477,7 @@ class QAGame(Game):
                     else:                                            
                         qtype=self.settings.num_context
 
+
         print "QTYPE: " + qtype
 
         # If the question id is received from the interface, use that question info
@@ -495,7 +494,7 @@ class QAGame(Game):
                 i = i+1
                 qnum = randint(0, q_count-1)
                 # TESTING
-                #qnum = 9
+                #qnum = 3
                 print "qnum:", qnum
                 question = Question.objects.filter(qtype=qtype)[qnum]
                 if question.gametype and not question.gametype == self.gametype: continue
@@ -543,6 +542,9 @@ class QAGame(Game):
 
             if 'MAINV' in words_strings:
                 awords = self.generate_answers_mainv(answer, question, awords, qwords, qtype, 'MAINV')
+            #else:
+            #    if 'MAINV2' in words_strings:
+            #        awords = self.generate_answers_mainv(answer, question, awords, qwords, qtype, 'MAINV2')
             if 'NEG' in words_strings:
                 awords = self.generate_answers_mainv(answer, question, awords, qwords, qtype, 'NEG')
                 
