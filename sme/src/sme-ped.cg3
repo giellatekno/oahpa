@@ -299,7 +299,7 @@
 
 DELIMITERS = "<.>" "<!>" "<?>" "<...>" "<¶>";
 
-
+ 
 
 # ============= #
 # Tags and sets #
@@ -13335,6 +13335,11 @@ MAPPING-PREFIX = & ;
 LIST QMRK = ? ;
 
 
+# Cleanup rules
+
+# Get rid of imperatives
+
+
 MAP (&spellingerror) TARGET QMRK ;
 
 # Gluing in from the min file, to test:
@@ -13367,10 +13372,20 @@ MAP (&shouldAttr) TARGET A IF (NEGATE 0 Attr)(*1 N BARRIER NOT-Attr-CC-Adv) ;
 # Is it need for defining at it should be GRADE-ADV?
 # Another way would be
 
+MAP (&err-loc) TARGET (0 "QTAG" );#(NOT *1 Loc);
 
 # Should not be an Attr if it is not in front of N
 MAP (&shouldNotAttr) TARGET Attr IF (NEGATE 0 Nom)(NEGATE *1 N BARRIER NOT-ADJ-CC) ;
 # The barrier is not good if the Attr has another reading than A.
 
 
+MAP &err-beverage TARGET §BEVERAGEVERB IF (NOT *1 §BEVERAGE);
+
+LIST LOCTRIGGER = "gos" ;
+
+MAP &grm-missing-Loc TARGET LOCTRIGGER IF (*1 GENERATED_BOUNDARY LINK NOT *1 Loc OR LOCADV);
+
+LIST ILLTRIGGER = "masa" ;
+
+MAP &grm-missing-Ill TARGET LOCTRIGGER IF (*1 GENERATED_BOUNDARY LINK NOT *1 Ill OR Inf);
 
