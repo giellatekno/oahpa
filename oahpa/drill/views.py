@@ -22,8 +22,10 @@ class Gameview:
         self.settings.syll = []
         self.settings.pos="N"
         self.settings.case="N-ILL"
+        self.settings.adjcase="ATTR"
         self.settings.mood="Ind"
         self.settings.tense="Prs"
+        self.settings.grade=[]
         self.settings.book = []
         self.settings.semtype="NATURE"
         self.settings.language="sme"
@@ -32,17 +34,19 @@ class Gameview:
         self.settings.vtype="MAINV"
         self.settings.num_context="NUM-ATTR"
 
-        self.gamenames = { 'N-ILL' :  _('illative'),\
-                           'N-ACC' :  _('accusative'),\
-                           'N-COM' :  _('comitative'),\
-                           'N-ESS' :  _('essive'),\
-                           'N-GEN' :  _('genitive'),\
-                           'N-LOC' :  _('locative'),\
-                           'PRS'   :  _('present'),\
-                           'PRT'   : _('past'),\
-                           'COND'  : _('conditional'), \
-                           'IMPRT' : _('imperative'),\
-                           'POT'   : _('potential') }
+        self.gamenames = {
+            'ATTR' :  _('attributive'),\
+            'N-ILL' :  _('illative'),\
+            'N-ACC' :  _('accusative'),\
+            'N-COM' :  _('comitative'),\
+            'N-ESS' :  _('essive'),\
+            'N-GEN' :  _('genitive'),\
+            'N-LOC' :  _('locative'),\
+            'PRS'   :  _('present'),\
+            'PRT'   : _('past'),\
+            'COND'  : _('conditional'), \
+            'IMPRT' : _('imperative'),\
+            'POT'   : _('potential') }
         
     def syll_settings(self,settings_form):
 
@@ -55,6 +59,14 @@ class Gameview:
         if len(self.settings.syll) == 0:
             self.settings.syll.append('bisyllabic')        
 
+        if 'Pos' in settings_form.data:
+            self.settings.grade.append('')
+        if 'Comp' in settings_form.data:
+            self.settings.grade.append('Comp')
+        if 'Superl' in settings_form.data:
+            self.settings.grade.append('Superl')
+        if len(self.settings.grade) == 0:
+            self.settings.grade.append('')        
 
     def create_mgame(self,request):
 
@@ -68,9 +80,15 @@ class Gameview:
             settings_form = MorphForm(request.POST)
             
             self.syll_settings(settings_form)
-            
+                
             if settings_form.data.has_key('case'):
                 self.settings.case= settings_form.data['case']
+
+            if settings_form.data.has_key('adjcase'):
+                self.settings.case= settings_form.data['adjcase']
+
+            if settings_form.data.has_key('grade'):
+                self.settings.grade= settings_form.data['grade']
 
             if settings_form.data.has_key('vtype'):
                 self.settings.vtype= settings_form.data['vtype']
@@ -115,8 +133,10 @@ class Gameview:
             self.settings.syll.append('bisyllabic')
             self.settings.syll.append('trisyllabic')
             self.settings.syll.append('contracted')
+            self.settings.grade.append('')
             self.settings.allcase=settings_form.allcase
             self.settings.book=settings_form.books['all']
+            self.settings.adjcase="ATTR"
 
             game = BareGame(self.settings)
 
@@ -127,7 +147,7 @@ class Gameview:
         if self.settings.pos == "V":
             self.settings.gamename = self.gamenames[self.settings.vtype_bare]
         if self.settings.pos == "A":
-            self.settings.gamename = ""
+            self.settings.gamename = self.gamenames[self.settings.adjcase]
 
 
         c = Context({
@@ -138,6 +158,7 @@ class Gameview:
             'gametype': self.settings.gametype,
             'score': game.score,
             'case': self.settings.case,
+            'adjcase': self.settings.adjcase,
             'gamename': self.settings.gamename,
             'all_correct': game.all_correct,
             'show_correct': game.show_correct,
@@ -193,6 +214,7 @@ class Vastaview:
         show_data=0
         self.settings=Info()
         self.settings.syll = ['bisyllabic', 'trisyllabic', 'contracted']
+        self.settings.grade = ['']
         self.settings.pos="N"
         self.settings.book = []
         self.settings.semtype='all'
