@@ -192,7 +192,8 @@ class ContextGame(Game):
 
 class BareGame(Game):
 
-    casetable = {'N-ILL':'Ill', 'N-ESS':'Ess', 'N-GEN':'Gen', 'N-LOC':'Loc', 'N-ACC':'Acc', 'N-COM':'Com'}
+    casetable = {'ATTR':'Attr', 'N-ILL':'Ill', 'N-ESS':'Ess', 'N-GEN':'Gen', \
+                 'N-LOC':'Loc', 'N-ACC':'Acc', 'N-COM':'Com'}
 
     def get_db_info(self, db_info):
 
@@ -200,8 +201,13 @@ class BareGame(Game):
         pos = self.settings.pos
         books=self.settings.book
         case=self.settings.case
+        adjcase=self.settings.adjcase
+        grade=self.settings.grade
+
         if self.settings.pos == "N" or self.settings.pos == "Num":
             case = self.casetable[case]
+        if self.settings.pos=="A":
+            case = self.casetable[adjcase]
         else:
             case = ""
         
@@ -224,26 +230,41 @@ class BareGame(Game):
         else:
             mood=""
             tense=""
-            
-        tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg")).count()
 
+        attributive =""
+        if case=="Attr":
+            attributive = "Attr"
+            case =""
+
+        print pos, case, tense, mood, attributive, grade
+
+        if grade[0] or len(grade)>1:
+
+            tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade)).count()
+        else:
+            tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade=grade[0])).count()
+            
         while True:
-            tag_id = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg"))[randint(0,tag_count-1)].id
+            if grade[0] or len(grade)>1:
+                tag_id = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade))[randint(0,tag_count-1)].id
+            else:
+                tag_id=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade=grade[0]))[randint(0,tag_count-1)].id
             
             if self.settings.pos == "Num":
-                if self.settings.case == "Attr":
-                    tag_id = Tag.objects.filter(Q(pos="Num") & Q(attributive="Attr"))[randint(0,tag_count-1)].id
-                    f_count=Form.objects.filter(Q(tag__pk=tag_id)).count()
-                    form=Form.objects.filter(Q(tag__pk=tag_id))[randint(0,f_count-1)]
-                    word_id = form.word.id
-                else:
-                    w_count=Word.objects.filter(Q(pos=pos)).count()
-                    word_id=Word.objects.filter(Q(pos=pos))[randint(0,w_count-1)].id
+                #if self.settings.case == "Attr":
+                #    tag_id = Tag.objects.filter(Q(pos="Num") & Q(attributive="Attr"))[randint(0,tag_count-1)].id
+                #    f_count=Form.objects.filter(Q(tag__pk=tag_id)).count()
+                #    form=Form.objects.filter(Q(tag__pk=tag_id))[randint(0,f_count-1)]
+                #   word_id = form.word.id
+                #else:
+                w_count=Word.objects.filter(Q(pos=pos)).count()
+                word_id=Word.objects.filter(Q(pos=pos))[randint(0,w_count-1)].id
             else:
                 w_count=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books)).count()
                 word_id=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)].id
                 
             form_count = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id)).count()
+
             if word_id and form_count>0:
                 db_info['word_id'] = word_id
                 db_info['tag_id'] = tag_id
