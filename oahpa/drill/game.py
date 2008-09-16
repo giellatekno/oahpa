@@ -238,14 +238,14 @@ class BareGame(Game):
 
         print pos, case, tense, mood, attributive, grade
 
-        if grade[0] or len(grade)>1:
+        if pos=="A" and (grade[0] or len(grade)>1):
 
             tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade)).count()
         else:
             tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade=grade[0])).count()
             
         while True:
-            if grade[0] or len(grade)>1:
+            if pos=="A" and (grade[0] or len(grade)>1):
                 tag_id = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade))[randint(0,tag_count-1)].id
             else:
                 tag_id=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade=grade[0]))[randint(0,tag_count-1)].id
