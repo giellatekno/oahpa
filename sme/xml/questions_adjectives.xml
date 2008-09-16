@@ -8,7 +8,7 @@
 
 <questions>
 
-<!-- Attribute -->
+<!-- Attribute positive -->
 
   <q>
   <agreement>SUBJ/PRED</agreement>
@@ -36,6 +36,70 @@
       <text>Dus MAINV ATTR SUBJ</text>
       <element type="ATTR">   <!-- Same A as PRED -->
 	<grammar tag="A+Attr"/>  <!-- no number -->
+      </element>
+    </answer>
+  </q>
+
+<!-- Attribute comparative -->
+
+  <q>
+  <agreement>SUBJ/PRED</agreement>
+  <agreement>INTERR/SUBJ</agreement>
+   <question>
+      <text>Mu SUBJ MAINV PRED. INTERR SUBJ mus MAINV</text>
+      <element type="SUBJ">   
+	<grammar pos="N"/>
+	<sem class="CLOTHING"/>
+      </element>
+      <element type="MAINV">
+	<id>leat</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>   
+      </element>
+      <element type="PRED">     
+	<grammar pos="A+Comp+Number+Nom"/>   <!-- same number as SUBJ -->
+	<sem class="CLOTHES-adj"/>
+      </element>
+      <element type="INTERR">
+	<lemma>makkár</lemma> 
+	<grammar tag="Number+Nom"/>   
+      </element>
+    </question>
+    <answer> 
+      <text>Dus MAINV ATTR SUBJ</text>
+      <element type="ATTR">   <!-- Same A as PRED -->
+	<grammar tag="A+Comp+Attr"/>  <!-- no number -->
+      </element>
+    </answer>
+  </q>
+
+<!-- Attribute superlative -->
+
+  <q>
+  <agreement>SUBJ/PRED</agreement>
+  <agreement>INTERR/SUBJ</agreement>
+   <question>
+      <text>Mu SUBJ MAINV PRED. INTERR SUBJ mus MAINV</text>
+      <element type="SUBJ">   
+	<grammar pos="N"/>
+	<sem class="CLOTHING"/>
+      </element>
+      <element type="MAINV">
+	<id>leat</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>   
+      </element>
+      <element type="PRED">     
+	<grammar pos="A+Superl+Number+Nom"/>   <!-- same number as SUBJ -->
+	<sem class="CLOTHES-adj"/>
+      </element>
+      <element type="INTERR">
+	<lemma>makkár</lemma> 
+	<grammar tag="Number+Nom"/>   
+      </element>
+    </question>
+    <answer> 
+      <text>Dus MAINV ATTR SUBJ</text>
+      <element type="ATTR">   <!-- Same A as PRED -->
+	<grammar tag="A+Superl+Attr"/>  <!-- no number -->
       </element>
     </answer>
   </q>
