@@ -3,11 +3,13 @@
 
 {% block instructions %}<p>{{ gamename }}</p>{% endblock %}
 
-{% block selectionname %}{% trans "Type" %}{% endblock %}
+{% block selectionname %}<td>{% trans "Type" %}</td>{% endblock %}
 {% block selection %}
+<td>
   {% ifequal gametype "bare" %}
     {{ settingsform.vtype_bare }}
   {% else %}
     {{ settingsform.vtype }}
   {% endifequal %}
+</td>
 {% endblock %}
