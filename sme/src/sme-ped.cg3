@@ -13317,7 +13317,7 @@ SELECT:r3254 Pr IF (*1C Gen BARRIER NPNH);
 	## Skuvlla lágidemiid dulkomat ja čálalaš gulahallan gaskal skuvlla/ruovttu mávssii 213 ruvnno.
 
 ############################################################################
-### HERE START THE PED-RULES ##############################################
+### HERE THE PED-RULES START  ##############################################
 ############################################################################
 
 BEFORE-SECTIONS
@@ -13328,8 +13328,7 @@ MAPPING-PREFIX = & ;
 
 
 ############################################################################
-### HERE START THE PED-RULES ##############################################
-############################################################################
+
 
 # Spelling-error
 LIST QMRK = ? ;
@@ -13340,22 +13339,22 @@ LIST QMRK = ? ;
 # Get rid of imperatives
 
 
-MAP (&spellingerror) TARGET QMRK ;
+MAP (&err-spellingerror) TARGET QMRK ;
 
 # Gluing in from the min file, to test:
 
 # na+Pcle can only be initial:
-MAP (&naPcle) TARGET ("na" Pcle) IF (-1 NOT-PCLE) ;
+MAP (&grm-naPcle) TARGET ("na" Pcle) IF (-1 NOT-PCLE) ;
 
 # fal+Adv can only be non-initial:
-MAP (&falAdv) TARGET ("fal" Adv) IF (NEGATE -1 WORD) ;
+MAP (&grm-falAdv) TARGET ("fal" Adv) IF (NEGATE -1 WORD) ;
 
 # We choose Interj when it is the only reading:
 REMOVE Interj ;
 
 # Interj can only be initial or final:
-MAP:1 (&notInterj) TARGET Interj IF (-1 WORD)(NEGATE *1 EOS BARRIER WORD);
-MAP:2 (&notInterj) TARGET Interj IF (NEGATE *-1 BOS BARRIER WORD)(1 WORD) ;
+MAP:1 (&grm-notInterj) TARGET Interj IF (-1 WORD)(NEGATE *1 EOS BARRIER WORD);
+MAP:2 (&grm-notInterj) TARGET Interj IF (NEGATE *-1 BOS BARRIER WORD)(1 WORD) ;
 
 LIST Attr-CC-Adv = Attr CC Adv ;
 SET NOT-Attr-CC-Adv = WORD - Attr-CC-Adv ;
@@ -13366,26 +13365,29 @@ SELECT:2 Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; # when there is no other possible
 SELECT:3 Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; # no there should be less ambiguity.
 
 # Should be Attr when: + (Attr) + N
-MAP (&shouldAttr) TARGET A IF (NEGATE 0 Attr)(*1 N BARRIER NOT-Attr-CC-Adv) ;
+MAP (&grm-shouldAttr) TARGET A IF (NEGATE 0 Attr)(*1 N BARRIER NOT-Attr-CC-Adv) ;
 
 
 # Is it need for defining at it should be GRADE-ADV?
-# Another way would be
 
-MAP (&err-loc) TARGET (0 "QTAG" );#(NOT *1 Loc);
 
 # Should not be an Attr if it is not in front of N
 MAP (&shouldNotAttr) TARGET Attr IF (NEGATE 0 Nom)(NEGATE *1 N BARRIER NOT-ADJ-CC) ;
 # The barrier is not good if the Attr has another reading than A.
 
+LIST DRINKVERB = "juhkat" ;
 
-MAP &err-beverage TARGET §BEVERAGEVERB IF (NOT *1 §BEVERAGE);
+LIST §DRINK = §DRINK ;
+
+MAP (&err-beverage) TARGET DRINKVERB IF (NOT *1 §DRINK);
 
 LIST LOCTRIGGER = "gos" ;
+LIST GENERATED_BOUNDARY = CLB ;
+LIST LOCADV = "dáppe" ;
 
-MAP &grm-missing-Loc TARGET LOCTRIGGER IF (*1 GENERATED_BOUNDARY LINK NOT *1 Loc OR LOCADV);
+MAP (&grm-missing-Loc) TARGET LOCTRIGGER IF (*1 GENERATED_BOUNDARY LINK NOT *1 Loc OR LOCADV);
 
 LIST ILLTRIGGER = "masa" ;
 
-MAP &grm-missing-Ill TARGET LOCTRIGGER IF (*1 GENERATED_BOUNDARY LINK NOT *1 Ill OR Inf);
+MAP (&grm-missing-Ill) TARGET LOCTRIGGER IF (*1 GENERATED_BOUNDARY LINK NOT *1 Ill OR Inf);
 
