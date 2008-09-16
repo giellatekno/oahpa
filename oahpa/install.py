@@ -101,6 +101,7 @@ for e in tree.getElementsByTagName("entry"):
     gradation=""
     rime=""
     soggi=""
+    valency=""
     if e.getElementsByTagName("stem"):
         stem=e.getElementsByTagName("stem")[0].getAttribute("class")
         diphthong_text=e.getElementsByTagName("stem")[0].getAttribute("diphthong")
@@ -112,6 +113,12 @@ for e in tree.getElementsByTagName("entry"):
 
     if e.getElementsByTagName("dialect"):
         dialect=e.getElementsByTagName("dialect")[0].getAttribute("class")
+
+    if e.getElementsByTagName("valency"):
+        valencies = e.getElementsByTagName("valency")[0]
+        for val in valencies.getElementsByTagName("val"):
+            valency = val.getAttribute("class")
+            if valency: break
 
     # Part of speech information
     # Is it in lexicon file or not..
@@ -145,6 +152,7 @@ for e in tree.getElementsByTagName("entry"):
         w.gradation=gradation
         w.diphthong=diphthong
         w.dialect=dialect
+        w.valency = valency
         w.save()
     else:
         if options.update:
@@ -215,14 +223,6 @@ for e in tree.getElementsByTagName("entry"):
                     w.semtype.add(sem_entry)
                     w.save()        
         
-
-    if e.getElementsByTagName("valency"):
-        elements=e.getElementsByTagName("valency")
-        for el in elements:
-            val=el.getAttribute("class")
-            if val:
-                w.valency = val
-                w.save()
 
     # Add translations
     translations = e.getElementsByTagName("translations")[0]
