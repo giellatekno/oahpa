@@ -102,6 +102,7 @@ for e in tree.getElementsByTagName("entry"):
     rime=""
     soggi=""
     valency=""
+    compare=""
     if e.getElementsByTagName("stem"):
         stem=e.getElementsByTagName("stem")[0].getAttribute("class")
         diphthong_text=e.getElementsByTagName("stem")[0].getAttribute("diphthong")
@@ -110,6 +111,7 @@ for e in tree.getElementsByTagName("entry"):
         gradation=e.getElementsByTagName("stem")[0].getAttribute("gradation")
         rime=e.getElementsByTagName("stem")[0].getAttribute("rime")
         soggi=e.getElementsByTagName("stem")[0].getAttribute("soggi")
+        compare=e.getElementsByTagName("stem")[0].getAttribute("compare")
 
     if e.getElementsByTagName("dialect"):
         dialect=e.getElementsByTagName("dialect")[0].getAttribute("class")
@@ -148,6 +150,7 @@ for e in tree.getElementsByTagName("entry"):
         w.lemma=lemma
         w.stem=stem
         w.rime=rime
+        w.compare = compare
         w.soggi=soggi
         w.gradation=gradation
         w.diphthong=diphthong
@@ -167,9 +170,15 @@ for e in tree.getElementsByTagName("entry"):
     
     # Add forms and tags
     if options.paradigmfile:
-        linginfo.create_paradigm(lemma,pos)		
+        linginfo.create_paradigm(lemma,pos)
+
         for form in linginfo.paradigm:
             g=form.classes
+            if w.pos == "A" and w.compare == "no" and (g.get('Grade')=="Comp" or g.get('Grade')=="Superl"):
+                print g.get('Grade')
+                continue
+            #if w.pos == "N" and w.plural == "no" and (form.count('Pl')>0):
+            #    continue
             t,created=Tag.objects.get_or_create(string=form.tags,pos=g.get('Wordclass', ""),\
                                                 number=g.get('Number',""),case=g.get('Case',""),\
                                                 possessive=g.get('Possessive',""),grade=g.get('Grade',""),\
