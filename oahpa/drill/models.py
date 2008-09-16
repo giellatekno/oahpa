@@ -35,6 +35,7 @@ class Word(models.Model):
     gradation=models.CharField(max_length=5)
     rime = models.CharField(max_length=20)
     soggi = models.CharField(max_length=10)
+    compare = models.CharField(max_length=5)
     translations = models.ManyToManyField('Wordnob')
 
 class Wordnob(models.Model):
