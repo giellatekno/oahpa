@@ -270,6 +270,12 @@ class Questions:
             if semclasses:
                 semclass=semclasses[0].getAttribute("class")
                 word_elements = Word.objects.filter(Q(semtype__semtype=semclass))
+            valclasses= []
+            if el: valclasses=el.getElementsByTagName("val")
+            if valclasses:
+                valclass=valclasses[0].getAttribute("class")
+                word_elements = Word.objects.filter(Q(valency=valclass))
+                print "Valency class", valclass, word_elements.count()
 
         # If still no words, get the default words for this element:
         if not word_elements:
