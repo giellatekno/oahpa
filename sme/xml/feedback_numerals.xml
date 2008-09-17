@@ -20,6 +20,7 @@ i_á
 e_i
 ái_i
 is_á
+š_ž
 
 E:  
 t-suffix
@@ -63,6 +64,11 @@ in-suffix
     </stem>
     <stem class="trisyllabic">
       <msg>trisyllabic_stem</msg>
+    </stem>
+
+    <stem class="trisyllabic" gradation="no"/>
+      <msg>no_gradation</msg>
+      <note>gávccis, diftforenkling</note>
     </stem>
 
     <stem class="bisyllabic" diphthong="yes" soggi="i">
@@ -125,7 +131,7 @@ in-suffix
       <msg case="Com" number="Sg">weak_grade</msg>
       <msg case="Com" number="Pl">weak_grade</msg>
       <msg case="Ess">strong_grade</msg>
-      <note>guokte, gradiation</note>
+      <note>guokte, gradation</note>
     </stem>
 
     <stem class="bisyllabic" gradation="weak">
@@ -141,7 +147,7 @@ in-suffix
       <msg case="Com" number="Sg">weak_grade</msg>
       <msg case="Com" number="Pl">weak_grade</msg>
       <msg case="Ess">strong_grade</msg>
-      <note>čieža, gradiation</note>
+      <note>čieža, gradation</note>
     </stem>
 
     <stem class="bisyllabic" gradation="extrastrong">
@@ -157,7 +163,7 @@ in-suffix
       <msg case="Com" number="Sg">weak_grade</msg>
       <msg case="Com" number="Pl">weak_grade</msg>
       <msg case="Ess">extrastrong_grade</msg>
-      <note>guhtta, gradiation</note>
+      <note>guhtta, gradation</note>
     </stem>
 
     <stem class="trisyllabic" gradation="weak">
@@ -173,7 +179,7 @@ in-suffix
       <msg case="Com" number="Sg">strong_grade</msg>
       <msg case="Com" number="Pl">strong_grade</msg>
       <msg case="Ess">weak_grade</msg>
-      <note>guovttis, gradiation</note>
+      <note>guovttis, gradation</note>
     </stem>
 
     <stem class="trisyllabic" gradation="extraweak">
@@ -189,7 +195,7 @@ in-suffix
       <msg case="Com" number="Sg">extrastrong_grade</msg>
       <msg case="Com" number="Pl">extrastrong_grade</msg>
       <msg case="Ess">weak_grade</msg>
-      <note>viđas, gradiation</note>
+      <note>viđas, gradation</note>
     </stem>
 
 
@@ -225,7 +231,26 @@ in-suffix
       <msg case="Ess">ái_i</msg>
       <note>guoktenuppelohkái rime</note>
     </stem>
-    
+
+    <stem rime="š-ž">
+      <msg case="Acc" number="Sg">š_ž</msg>
+      <msg case="Gen" number="Sg">š_ž</msg>
+      <msg case="Ill" number="Sg">š_ž</msg>
+      <msg case="Loc" number="Sg">š_ž</msg>
+      <msg case="Com" number="Sg">š_ž</msg>
+      <msg case="Ess">š_ž</msg>
+      <note>ovtteš rime</note>
+    </stem>
+ 
+     <stem rime="t-d">
+      <msg case="Acc" number="Sg">t_d</msg>
+      <msg case="Gen" number="Sg">t_d</msg>
+      <msg case="Ill" number="Sg">t_d</msg>
+      <msg case="Loc" number="Sg">t_d</msg>
+      <msg case="Com" number="Sg">t_d</msg>
+      <msg case="Ess">t_d</msg>
+      <note>goalmmát rime</note>
+    </stem>
 
     <stem class="bisyllabic">
       <msg case="Nom" number="Pl">t-suffix</msg>
