@@ -83,6 +83,16 @@ BOOK_CHOICES = (
     ('all', _('All')),
 )
 
+FREQUENCY_CHOICES = (
+    ('rare', _('rare')),
+    ('common', _('common')),
+)
+
+GEOGRAPHY_CHOICES = (
+    ('world', _('world')),
+    ('sápmi', _('sapmi')),
+)
+
 GAME_CHOICES = (
     ('bare', _('bare')),
     ('context', _('context')),
@@ -205,8 +215,8 @@ class MorphForm(forms.Form):
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
     gametype = forms.ChoiceField(initial='bare', choices=GAME_CHOICES, widget=forms.Select)
     bisyllabic = forms.BooleanField(required=False, initial='1')
-    trisyllabic = forms.BooleanField(required=False,initial='1')
-    contracted = forms.BooleanField(required=False,initial='1')
+    trisyllabic = forms.BooleanField(required=False,initial=0)
+    contracted = forms.BooleanField(required=False,initial=0)
     grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
     default_data = {'pos': 'N'}
 
@@ -326,7 +336,14 @@ class QuizzForm(forms.Form):
 
     semtype = forms.ChoiceField(initial='all', choices=SEMTYPE_CHOICES, widget=forms.Select)
     transtype = forms.ChoiceField(initial='smenob', choices=TRANS_CHOICES, widget=forms.Select)
+    # For placename quizz
+    common = forms.BooleanField(required=False, initial='1')
+    rare = forms.BooleanField(required=False,initial=0)
+    sapmi = forms.BooleanField(required=False, initial='1')
+    world = forms.BooleanField(required=False,initial=0)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
+    #geography = forms.ChoiceField(initial='all', choices=GEOGRAPHY_CHOICES, widget=forms.Select)
+    #frequency = forms.ChoiceField(initial='all', choices=FREQUENCY_CHOICES, widget=forms.Select)
 
     def __init__(self, *args, **kwargs):
         self.set_settings()
