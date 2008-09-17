@@ -1,0 +1,38 @@
+{% extends "game.html" %}
+{% load i18n %}
+
+{% block name %}{% trans "Quizz" %}{% endblock %}
+{% block pagename %}/oahpa/leksa/{% endblock %}
+{% block instruction %}{% trans "Instructions.." %}{% endblock %}
+{% block settings %}
+
+<table width="700">
+<tr>
+<td>{% trans "Geography" %}</td>
+<td>{% trans "Frequency" %}</td>
+<td>{% trans "Select the language pair" %}</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>
+{{ settingsform.sapmi }}{% trans "sapmi" %}<br/>
+{{ settingsform.world }}{% trans "world" %}<br/>
+</td>
+<td>
+{{ settingsform.common }}{% trans "common" %}<br/>
+{{ settingsform.rare }}{% trans "rare" %}<br/>
+</td>
+<td>{{ settingsform.transtype }}</td>
+<td>&nbsp;</td>
+</tr>
+</table>
+<input type="hidden" name="semtype" value="PLACE-NAME-LEKSA" />
+<input type="hidden" name="book" value="all" />
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+{% endblock %}
+
+{% block question %}
+<td>{{ form.lemma }} </td>
+{% endblock %}
+
+
