@@ -255,15 +255,17 @@ class BareGame(Game):
             attributive = "Attr"
             case =""
 
+        if grade=="POS": grade = ""
+        
         number = ["Sg","Pl",""]
         if case=="Nom": number = ["Pl"]
         
-        #print pos, case, tense, mood, attributive, grade
+        print pos, case, tense, mood, attributive, grade
 
-        tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade) & Q(number__in=number)).count()
+        tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade=grade) & Q(number__in=number)).count()
             
         while True:
-            tag = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade) & Q(number__in=number))[randint(0,tag_count-1)]
+            tag = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade=grade) & Q(number__in=number))[randint(0,tag_count-1)]
 
             tag_id = tag.id
             if self.settings.pos == "Num":
