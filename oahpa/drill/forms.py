@@ -35,6 +35,11 @@ ADJCASE_CHOICES = (
     ('N-ESS', _('essive')),
 )
 
+ADJ_CONTEXT_CHOICES = (
+    ('ATTR', _('attributive')),
+    ('PRED', _('predicative')),
+)
+
 VTYPE_CHOICES = (
     ('MAINV', _('tense')),
     ('V-COND', _('conditional')),
@@ -249,7 +254,7 @@ class MorphQuestion(forms.Form):
             print self.feedback
 
 
-    def __init__(self, word, tag, fullforms, translations, question, userans_val, correct_val, *args, **kwargs):
+    def __init__(self, word, tag, baseform, fullforms, translations, question, userans_val, correct_val, *args, **kwargs):
 
         lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
         tag_widget = forms.HiddenInput(attrs={'value' : tag.id})
@@ -257,17 +262,11 @@ class MorphQuestion(forms.Form):
         super(MorphQuestion, self).__init__(*args, **kwargs)
         self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
         self.fields['tag_id'] = forms.CharField(widget=tag_widget, required=False)
-        self.lemma=word.lemma
+        self.lemma=baseform.fullform
 
         # Get lemma and feedback
         self.feedback=""
         messages = []
-        if tag.pos=="N" or tag.pos=="A" or tag.pos=="Num":
-            if tag.number=="Sg":
-                self.lemma = word.lemma
-            if tag.number=="Pl":
-                tagstring = tag.pos + "+Pl+Nom"
-                self.lemma = Form.objects.filter(Q(word__pk=word.id) & Q(tag__string=tagstring))[0].fullform
 
         # Retrieve feedback information
         self.get_feedback(word,tag)
@@ -651,8 +650,8 @@ class QAQuestion(forms.Form):
                     
         if gametype == 'context':
             print qtype
-            answer_word= selected_awords[qtype]['word']
-            answer_tag =selected_awords[qtype]['tag']
+            answer_word = selected_awords[qtype]['word']
+            answer_tag = selected_awords[qtype]['tag']
             selected_awords[qtype]['fullform'][0] = 'Q'
                 
             # Get lemma for contextual morfa
