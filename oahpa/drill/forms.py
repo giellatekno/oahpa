@@ -17,6 +17,7 @@ POS_CHOICES = (
 )
 
 CASE_CHOICES = (
+    ('NOMPL', _('plural')),
     ('N-ACC', _('accusative')),
     ('N-ILL', _('illative')),
     ('N-LOC', _('locative')),
@@ -26,6 +27,7 @@ CASE_CHOICES = (
 )
 
 ADJCASE_CHOICES = (
+    ('NOMPL', _('plural')),
     ('ATTR', _('attributive')),
     ('N-ACC', _('accusative')),
     ('N-ILL', _('illative')),
