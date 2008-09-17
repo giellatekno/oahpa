@@ -297,7 +297,7 @@
     <answer> 
       <text>SUBJ MAINV NUM-ATTR NOUN</text>
     <element id="SUBJ">    
-	<grammar tag="Pron+Person-Number+Nom"/> 
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
 	</element>
     <element id="NUM-ATTR">    
 	<grammar tag="Num+Ess"/>         
@@ -309,7 +309,267 @@
     </answer>
   </q>
 
+<!-- For Morfa - numeral without noun -   -->
+
+  <q>
+    <qtype>NUM-LOC</qtype>
+   <question>
+      <text>Gallis SUBJ MAINV ruoktot</text>
+    <element id="MAINV">    
+	<id>boahtit</id> 
+	</element>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
+	<id>boahtit</id> 
+	</element>
+    </question>
+    <answer> 
+      <text>ANSWERSUBJECT MAINV NUM-LOC</text>
+    <element id="NUM-LOC">    
+	<grammar tag="Num+Sg+Loc"/>         
+	</element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>NUM-LOC</qtype>
+   <question>
+      <text>Gallis OBJ álgá</text>
+    <element id="OBJ">    
+	<grammar tag="N+Sg+Nom"/>         
+	<sem class="ARRANGEMENT"/>
+	</element>
+    </question>
+    <answer> 
+      <text>OBJ álgá NUM-LOC</text>
+    <element id="NUM-LOC">    
+	<grammar tag="Num+Sg+Loc"/>         
+	</element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>NUM-LOC</qtype>
+   <question>
+      <text>Gallis OBJ nohká</text>
+    <element id="OBJ">    
+	<grammar tag="N+Sg+Nom"/>         
+	<sem class="ARRANGEMENT"/>
+	</element>
+    </question>
+    <answer> 
+      <text>OBJ nohká NUM-LOC</text>
+    <element id="NUM-LOC">    
+	<grammar tag="Num+Sg+Loc"/>         
+	</element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>NUM-ILL</qtype>
+   <question>
+      <text>Gallii SUBJ MAINV lohkan OBJ</text>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number"/>         
+	</element>
+    <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>leat</id> 
+	</element>
+    <element id="OBJ">    
+	<grammar tag="N+Sg+Acc"/>         
+	<sem class="TEXT"/>
+	</element>
+    </question>
+    <answer> 
+      <text>ANSWERSUBJ MAINV lohkan OBJ NUM-ILL</text>
+    <element id="NUM-ILL">    
+	<grammar tag="Num+Sg+Ill"/>         
+	</element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>NUM-COM</qtype>
+   <question>
+      <text>Galliin SUBJ MAINV</text>
+    <element id="MAINV">    
+	<id>birget</id> 
+	</element>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
+	</element>
+    </question>
+    <answer> 
+      <text>ANSWERSUBJ MAINV gal NUM-COM</text>
+    <element id="NUM-COM">    
+	<grammar tag="Num+Sg+Com"/>         
+	</element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>NUM-COM</qtype>
+   <question>
+      <text>Galliin SUBJ MAINV loahppasupmi</text>
+    <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>juohkit</id> 
+	</element>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
+	</element>
+    </question>
+    <answer> 
+      <text>ANSWERSUBJ MAINV loahppasupmi NUM-COM</text>
+    <element id="NUM-COM">    
+	<grammar tag="Num+Sg+Com"/>         
+	</element>
+    </answer>
+  </q>
+
+
+  <q>
+    <qtype>NUM-ACC</qtype>
+   <question>
+      <text>Galle OBJ MAINV</text>
+    <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>oastit</id> 
+	</element>
+    <element id="OBJ">    
+	<grammar tag="N+Sg+Gen"/>         
+	<sem class="CLOTHING"/>
+	</element>
+    </question>
+    <answer> 
+      <text>ANSWERSUBJ MAINV NUM-ACC</text>
+    <element id="NUM-ACC">    
+	<grammar tag="Num+Sg+Acc"/>         
+	</element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>NUM-ACC</qtype>
+   <question>
+      <text>Galliid OBJ SUBJ MAINV oastit</text>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
+	</element>
+    <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>áigut</id> 
+	</element>
+    <element id="OBJ">    
+	<grammar tag="N+Pl+Acc"/>         
+	<sem class="CLOTHING-PL"/>
+	</element>
+    </question>
+    <answer> 
+      <text>ANSWERSUBJ MAINV oastit NUM-ACC</text>
+    <element id="NUM-ACC">    
+	<grammar tag="Num+Pl+Acc"/>         
+	</element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>NUM-GEN</qtype>
+   <question>
+      <text>Mannan OBJ lei badjel logi gráda juohke beaivve</text>
+    <element id="OBJ">    
+	<grammar tag="N+Sg+Gen"/>         
+	<sem class="TIME-SEASON"/>
+	</element>
+    </question>
+    <answer> 
+      <text>Dán OBJ ii lean badjel NUM-GEN</text>
+    <element id="NUM-GEN">    
+	<grammar tag="Num+Sg+Gen"/>         
+	</element>
+    </answer>
+  </q> 
+
+  <q>
+    <qtype>NUM-NOM</qtype>
+   <question>
+      <text>Gallit OBJ dus leat</text>
+    <element id="OBJ">    
+	<grammar tag="N+Pl+Nom"/>         
+	<sem class="CLOTHING-PL"/>
+	</element>
+    </question>
+    <answer> 
+      <text>Mus leat NUM-NOM</text>
+    <element id="NUM-NOM">    
+	<grammar tag="Num+Pl+Nom"/>         
+	</element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>NUM-LOC</qtype>
+   <question>
+      <text>Lea go buot du OBJ ráigi</text>
+    <element id="OBJ">    
+	<grammar tag="N+Pl+Loc"/>         
+	<sem class="CLOTHING-PL"/>
+	</element>
+    </question>
+    <answer> 
+      <text>NUM-LOC lea ráigi</text>
+    <element id="NUM-LOC">    
+	<grammar tag="Num+Pl+Loc"/>         
+	</element>
+    </answer>
+  </q> 
+
+  <q>
+    <qtype>NUM-ILL</qtype>
+   <question>
+      <text>Man guhká SUBJ MAINV odne?</text>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number"/>         
+	</element>
+    <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>bargat</id> 
+	</element>
+    </question>
+    <answer> 
+      <text>ANSWERSUBJ MAINV ovttas NUM-ILL</text>
+    <element id="NUM-ILL">    
+	<grammar tag="Num+Sg+Ill"/>    <!-- Should not be "okta" -->        
+	</element>
+    </answer>
+  </q>
+
+
+
 <!-- For Morfa, but also for QA with any COLL-NUM: -->  
+
+  <q>
+    <qtype>COLL-NUM</qtype>
+   <question>
+      <text>Gallásiiguin SUBJ MAINV juohkit ruđaid</text>
+    <element id="MAINV">    
+	<id>fertet</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	</element>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
+	</element>
+    </question>
+    <answer> 
+      <text>ANSWERSUBJ MAINV juohkit ruđaid COLL-NUM</text>
+    <element id="COLL-NUM">    
+	<grammar tag="N+Num+Sg+Com"/>         
+	<sem class="COLL-NUM"/>
+	</element>
+    </answer>
+  </q>
+
 
   <q>
     <qtype>COLL-NUM</qtype>
