@@ -255,7 +255,7 @@ class BareGame(Game):
             attributive = "Attr"
             case =""
 
-        print pos, case, tense, mood, attributive, grade
+        #print pos, case, tense, mood, attributive, grade
 
         tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade)).count()
             
@@ -326,15 +326,15 @@ class NumGame(Game):
         language=self.settings.language
         numstring =""
         # Add generator call here
-        fstdir="/Users/saara/gt-cvs/" + language + "/bin"        
-        lookup ="/Users/saara/bin/lookup"
+        #fstdir="/Users/saara/gt-cvs/" + language + "/bin"        
+        #lookup ="/Users/saara/bin/lookup"
         
-        #fstdir="/opt/smi/" + language + "/bin"
-        #lookup = "/usr/local/bin/lookup"
+        fstdir="/opt/smi/" + language + "/bin"
+        lookup = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
         gen_norm_fst = fstdir + "/" + language + "-num.fst"
         
         
-        gen_norm_lookup = "echo " + str(db_info['numeral_id']) + " | lookup -flags mbTT -utf8 -d " + gen_norm_fst
+        gen_norm_lookup = "echo " + str(db_info['numeral_id']) + " | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
 
         num_tmp = os.popen(gen_norm_lookup).readlines()
         num_list=[]
@@ -387,7 +387,7 @@ class QuizzGame(Game):
                     random_word=Wordnob.objects.filter( Q(source__name__in=books))[randint(0,w_count-1)]
                 
             word_id=random_word.id
-            print word_id
+            #print word_id
             translations=random_word.translations.all()
             
             if translations:
@@ -402,7 +402,7 @@ class QuizzGame(Game):
             word=Word.objects.get(Q(id=word_id))
             translations=word.translations.all()
         else:
-            print "jee", word_id
+            #print "jee", word_id
             word=Wordnob.objects.get(id=word_id)
             translations=word.translations.all()
 
