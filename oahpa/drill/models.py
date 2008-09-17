@@ -37,7 +37,9 @@ class Word(models.Model):
     soggi = models.CharField(max_length=10)
     compare = models.CharField(max_length=5)
     translations = models.ManyToManyField('Wordnob')
-
+    frequency = models.CharField(max_length=10)
+    geography = models.CharField(max_length=10)
+    
 class Wordnob(models.Model):
     wordid = models.CharField(max_length=200)
     lemma = models.CharField(max_length=200)
@@ -45,6 +47,8 @@ class Wordnob(models.Model):
     semtype = models.ManyToManyField(Semtype)
     source = models.ManyToManyField(Source)
     translations = models.ManyToManyField(Word)
+    frequency = models.CharField(max_length=10)
+    geography = models.CharField(max_length=10)
 
 class Tagset(models.Model):
     tagset = models.CharField(max_length=25)
