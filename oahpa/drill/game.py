@@ -195,6 +195,24 @@ class BareGame(Game):
     casetable = {'ATTR':'Attr', 'N-ILL':'Ill', 'N-ESS':'Ess', 'N-GEN':'Gen', \
                  'N-LOC':'Loc', 'N-ACC':'Acc', 'N-COM':'Com'}
 
+    def get_baseform(self, word_id, tag):
+
+        basetag=None
+        if tag.pos=="N" or tag.pos=="A" or tag.pos=="Num":
+            if tag.number:
+                tagstring = tag.pos + "+" + tag.number + "+Nom"
+            else:
+                tagstring = tag.pos + "+Sg" + "+Nom"
+            if Form.objects.filter(Q(word__pk=word_id) & Q(tag__string=tagstring)).count()>0:
+                basetag = Tag.objects.filter(string=tagstring)[0]
+
+        if tag.pos=="V":
+            tagstring = "V+Inf"
+            if Form.objects.filter(Q(word__pk=word_id) & Q(tag__string=tagstring)).count()>0:
+                basetag = Tag.objects.filter(string=tagstring)[0]
+
+        return basetag
+
     def get_db_info(self, db_info):
 
         syll = self.settings.syll
@@ -239,11 +257,12 @@ class BareGame(Game):
 
         print pos, case, tense, mood, attributive, grade
 
-        tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade) | Q(grade=grade[0])).count()
+        tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade)).count()
             
         while True:
-            tag_id = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade) | Q(grade=grade[0]))[randint(0,tag_count-1)].id
+            tag = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade))[randint(0,tag_count-1)]
 
+            tag_id = tag.id
             if self.settings.pos == "Num":
                 #if self.settings.case == "Attr":
                 #    tag_id = Tag.objects.filter(Q(pos="Num") & Q(attributive="Attr"))[randint(0,tag_count-1)].id
@@ -258,8 +277,10 @@ class BareGame(Game):
                 word_id=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)].id
                 
             form_count = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id)).count()
+            basefound = self.get_baseform(word_id, tag)
+            print word_id, tag.id, basefound
 
-            if word_id and form_count>0:
+            if word_id and form_count>0 and basefound:
                 db_info['word_id'] = word_id
                 db_info['tag_id'] = tag_id
                 return
@@ -270,14 +291,18 @@ class BareGame(Game):
         word_id = db_info['word_id']
         tag_id = db_info['tag_id']
 
+        tag = Tag.objects.get(Q(id=tag_id))
+        basetag = self.get_baseform(word_id, tag)
+
         form_list=Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id))
         if not form_list:
             return HttpResponse("No forms found.")
         
         word = Word.objects.get(Q(id=word_id))
-        tag = Tag.objects.get(Q(id=tag_id))
+
+        baseform = Form.objects.filter(Q(word__pk=word_id) & Q(tag=basetag))[0]
         translations=word.translations.all()
-        morph = (MorphQuestion(word, tag, form_list, translations, "", db_info['userans'], db_info['correct'], data, prefix=n))
+        morph = (MorphQuestion(word, tag, baseform, form_list, translations, "", db_info['userans'], db_info['correct'], data, prefix=n))
         self.form_list.append(morph)
 
 
