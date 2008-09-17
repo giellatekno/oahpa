@@ -36,6 +36,7 @@ class Gameview:
 
         self.gamenames = {
             'ATTR' :  _('attributive'),\
+            'NOMPL' :  _('plural'),\
             'N-ILL' :  _('illative'),\
             'N-ACC' :  _('accusative'),\
             'N-COM' :  _('comitative'),\
@@ -85,7 +86,7 @@ class Gameview:
                 self.settings.case= settings_form.data['case']
 
             if settings_form.data.has_key('adjcase'):
-                self.settings.case= settings_form.data['adjcase']
+                self.settings.adjcase= settings_form.data['adjcase']
 
             if settings_form.data.has_key('grade'):
                 self.settings.grade= settings_form.data['grade']
