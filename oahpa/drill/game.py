@@ -359,37 +359,61 @@ class QuizzGame(Game):
 
         books=self.settings.book
         semtypes=self.settings.semtype
+        frequency=self.settings.frequency
+        geography=self.settings.geography
 
+
+        if semtypes.count("PLACE-NAME-LEKSA")==0:
+            frequency=['']
+            geography=['']          
+
+        print semtypes
+        print frequency
+        print geography
+        print books
         while True:
             # smenob
             if self.settings.transtype == "smenob":            
-                if semtypes:
-                    if self.settings.book.count('all') > 0:
-                        w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes)).count()
-                        random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes))[randint(0,w_count-1)]
-                    else:
-                        w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) &\
-                                                    Q(source__name__in=books)).count()
-                        random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                        Q(source__name__in=books))[randint(0,w_count-1)]
+                if self.settings.book.count('all') > 0:
+                    w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                Q(frequency__in=frequency) & \
+                                                Q(geography__in=geography)).count()
+                    random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                    Q(frequency__in=frequency) & \
+                                                    Q(geography__in=geography))[randint(0,w_count-1)]
+                                                        
                 else:
-                    w_count=Word.objects.filter( Q(source__name__in=books)).count()
-                    random_word=Word.objects.filter( Q(source__name__in=books))[randint(0,w_count-1)]
+                    semtype = self.settings.allsem
+                    w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) &\
+                                                Q(source__name__in=books) & \
+                                                Q(frequency__in=frequency) & \
+                                                Q(geography__in=geography)).count()
+                    random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                    Q(source__name__in=books) & \
+                                                    Q(frequency__in=frequency) & \
+                                                    Q(geography__in=geography))[randint(0,w_count-1)]
 
             # nobsme
             else:
-                if semtypes:
-                    if self.settings.book.count('all') > 0:
-                        w_count=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes)).count()
-                        random_word=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes))[randint(0,w_count-1)]
-                    else:
-                        w_count=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) &\
-                                                    Q(source__name__in=books)).count()
-                        random_word=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                           Q(source__name__in=books))[randint(0,w_count-1)]
+                if self.settings.book.count('all') > 0:
+                    w_count=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                    Q(frequency__in=frequency) & \
+                                                    Q(geography__in=geography)).count()
+                    
+                    random_word=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                       Q(frequency__in=frequency) & \
+                                                       Q(geography__in=geography))[randint(0,w_count-1)]
+
                 else:
-                    w_count=Wordnob.objects.filter( Q(source__name__in=books)).count()
-                    random_word=Wordnob.objects.filter( Q(source__name__in=books))[randint(0,w_count-1)]
+                    semtype = self.settings.allsem
+                    w_count=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) &\
+                                                   Q(frequency__in=frequency) & \
+                                                   Q(geography__in=geography) & \
+                                                   Q(source__name__in=books)).count()
+                    random_word=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                       Q(frequency__in=frequency) & \
+                                                       Q(geography__in=geography) & \
+                                                       Q(source__name__in=books))[randint(0,w_count-1)]
                 
             word_id=random_word.id
             #print word_id
