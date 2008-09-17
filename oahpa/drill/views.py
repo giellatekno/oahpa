@@ -20,6 +20,8 @@ class Gameview:
         show_data=0
         self.settings=Info()
         self.settings.syll = []
+        self.settings.frequency = []
+        self.settings.geography = []
         self.settings.pos="N"
         self.settings.case="N-ILL"
         self.settings.adjcase="ATTR"
@@ -146,6 +148,8 @@ class Gameview:
         c = Context({
             'settingsform': settings_form,
             'syllabic': self.settings.syll,
+            'frequency': self.settings.frequency,
+            'geography': self.settings.geography,
             'forms': game.form_list,
             'count': game.count,
             'gametype': self.settings.gametype,
@@ -207,13 +211,15 @@ class Vastaview:
 
         show_data=0
         self.settings=Info()
-        self.settings.syll = ['bisyllabic', 'trisyllabic', 'contracted']
+        self.settings.syll = ['bisyllabic']
         self.settings.grade = "POS"
         self.settings.pos="N"
         self.settings.book = []
         self.settings.semtype='all'
         self.settings.language="sme"
         self.settings.vtype_bare="PRS"
+        self.settings.frequency=[]
+        self.settings.geography=[]
         self.settings.vtype="MAINV"
         self.settings.num_context="NUM-ATTR"
         self.gametype="qa"
@@ -312,6 +318,23 @@ def vasta_n(request):
             
 class Quizzview(Gameview):
 
+    def placename_settings(self, settings_form):
+        
+        if 'common' in settings_form.data:
+            self.settings.frequency.append('common')
+        if 'rare' in settings_form.data:
+            self.settings.frequency.append('rare')
+        if 'world' in settings_form.data:
+            self.settings.geography.append('world')
+        if 'sapmi' in settings_form.data:
+            self.settings.geography.append('sapmi')
+
+        if len(self.settings.frequency) == 0:
+            self.settings.frequency.append('common')        
+        if len(self.settings.geography) == 0:
+            self.settings.geography.append('sapmi')        
+
+
     def create_quizzgame(self,request):
 
         if request.method == 'POST':
@@ -319,7 +342,8 @@ class Quizzview(Gameview):
             
             # Settings form is checked and handled.
             settings_form = QuizzForm(request.POST)
-            
+            self.placename_settings(settings_form)
+
             self.settings.semtype = settings_form.data['semtype']
             self.settings.transtype = settings_form.data['transtype']
             self.settings.book = settings_form.books[settings_form.data['book']]
@@ -348,7 +372,10 @@ class Quizzview(Gameview):
             self.settings.allsem=settings_form.allsem
             self.settings.book = settings_form.books['all']
             self.settings.books = settings_form.books
-        
+
+            self.settings.frequency = [ 'common' ]
+            self.settings.geography = [ 'sapmi' ]
+            
             game = QuizzGame(self.settings)
             game.new_game()
 
