@@ -173,6 +173,23 @@
 	<sem class="HUMAN"/>
 	</element>
     </answer>
+    
+  <q>
+    <qtype>NUM-ATTR</qtype>
+   <question>
+      <text>Man guhká oaččut OBJ luoikkasin</text>
+    <element id="OBJ">    
+	<grammar tag="N+Sg+Acc"/>         
+	<sem class="THING"/>
+	</element>
+    </question>
+    <answer> 
+      <text>NUM-ATTR vahkkui</text>
+      <element id="NUM-ATTR" task="yes">    
+	<grammar tag="Num+Sg+Gen"/>         
+	</element>
+    </answer>
+    
 <!--    <answer> 
       <text>NUM-ATTR NOUN lea váralaš SUBJ</text>
       <element id="NUM-ATTR">    
@@ -301,7 +318,7 @@
     </answer>
   </q>
 
-<!-- For Morfa - numeral without noun -   -->
+<!-- For Morfa and Vasta - numeral without noun -   -->
 
   <q>
     <qtype>NUM-LOC</qtype>
@@ -469,21 +486,21 @@
   </q>
 
   <q>
-    <qtype>NUM-GEN</qtype>
+    <qtype>NUM-ACC</qtype>
    <question>
-      <text>Mannan OBJ lei badjel logi gráda juohke beaivve</text>
+      <text>Galliid OBJ sii leat lágidan</text>
     <element id="OBJ">    
-	<grammar tag="N+Sg+Gen"/>         
-	<sem class="TIME-SEASON"/>
+	<grammar tag="N+Pl+Acc"/>         
+	<sem class="ARRANGEMENT-PL"/>
 	</element>
     </question>
     <answer> 
-      <text>Dán OBJ ii lean badjel NUM-GEN</text>
-    <element id="NUM-GEN" task="yes">    
-	<grammar tag="Num+Sg+Gen"/>         
+      <text>Sii leat lágidan NUM-ACC</text>
+    <element id="NUM-ACC" task="yes">    
+	<grammar tag="Num+Pl+Acc"/>         
 	</element>
     </answer>
-  </q> 
+  </q>
 
   <q>
     <qtype>NUM-NOM</qtype>
@@ -501,6 +518,27 @@
 	</element>
     </answer>
   </q>
+
+<! Only for Morfa: -->
+
+  <q>
+    <qtype>NUM-GEN</qtype>
+   <question>
+      <text>Mannan OBJ lei badjel logi gráda juohke beaivve</text>
+    <element id="OBJ">    
+	<grammar tag="N+Sg+Gen"/>         
+	<sem class="TIME-SEASON"/>
+	</element>
+    </question>
+    <answer> 
+      <text>Dán OBJ ii lean badjel NUM-GEN</text>
+    <element id="NUM-GEN" task="yes">    
+	<grammar tag="Num+Sg+Gen"/>         
+	</element>
+    </answer>
+  </q> 
+
+
 
   <q>
     <qtype>NUM-LOC</qtype>
@@ -688,6 +726,90 @@
     </answer>
   </q>
 
+  <q>
+    <qtype>ORD-NUM</qtype>
+   <question>
+      <text>Gallát luohkás don leat dál</text>
+    </question>
+    <answer> 
+      <text>Mun lean ORD-NUM</text>
+      <element id="ORD-NUM" task="yes">    
+	<grammar tag="A+Ord+Sg+Loc"/>         
+	<sem class="ORDINAL"/>
+	</element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>ORD-NUM</qtype>
+   <question>
+      <text>Galládin don bohtet mollii</text>
+    </question>
+    <answer> 
+      <text>Mun bohten ORD-NUM</text>
+      <element id="ORD-NUM" task="yes">    
+	<grammar tag="A+Ord+Ess"/>         
+	<sem class="ORDINAL"/>
+	</element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>ORD-NUM</qtype>
+   <question>
+      <text>Gallát luohkkái don álggát dál</text>
+    </question>
+    <answer> 
+      <text>Mun álggán ORD-NUM</text>
+      <element id="ORD-NUM" task="yes">    
+	<grammar tag="A+Ord+Sg+Ill"/>         
+	<sem class="ORDINAL-SMALL"/>
+	</element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>ORD-NUM</qtype>
+   <question>
+      <text>Goas mis lea čoahkkin</text>
+    </question>
+    <answer> 
+      <text>Mis lea čoahkkin ORD-NUM</text>
+      <element id="ORD-NUM" task="yes">    
+	<grammar tag="A+Ord+Sg+Loc"/>         
+	<sem class="ORDINAL"/>
+	</element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>ORD-NUM</qtype>
+   <question>
+      <text>Man guhká gursa bistá</text>
+    </question>
+    <answer> 
+      <text>Gursa bistá vuosttažis ORD-NUM</text>
+      <element id="ORD-NUM" task="yes">    
+	<grammar tag="A+Ord+Sg+Ill"/>         
+	<sem class="ORDINAL"/>
+	</element>
+    </answer>
+  </q>
+
+<!-- Only for Morfa: -->
+  <q>
+    <qtype>ORD-NUM</qtype>
+   <question>
+      <text>Gallát bargobihtá don čállet?</text>
+    </question>
+    <answer> 
+      <text>Mun čállen ORD-NUM</text>
+      <element id="ORD-NUM" task="yes">    
+	<grammar tag="A+Ord+Sg+Acc"/>         
+	<sem class="ORDINAL"/>
+	</element>
+    </answer>
+  </q>
 
   </questions>
 
