@@ -103,6 +103,9 @@ for e in tree.getElementsByTagName("entry"):
     soggi=""
     valency=""
     compare=""
+    frequency=""
+    geography=""
+    
     if e.getElementsByTagName("stem"):
         stem=e.getElementsByTagName("stem")[0].getAttribute("class")
         diphthong_text=e.getElementsByTagName("stem")[0].getAttribute("diphthong")
@@ -115,6 +118,12 @@ for e in tree.getElementsByTagName("entry"):
 
     if e.getElementsByTagName("dialect"):
         dialect=e.getElementsByTagName("dialect")[0].getAttribute("class")
+
+    if e.getElementsByTagName("frequency"):
+        frequency=e.getElementsByTagName("frequency")[0].getAttribute("class")
+
+    if e.getElementsByTagName("geography"):
+        geography=e.getElementsByTagName("geography")[0].getAttribute("class")
 
     if e.getElementsByTagName("valency"):
         valencies = e.getElementsByTagName("valency")[0]
@@ -140,8 +149,6 @@ for e in tree.getElementsByTagName("entry"):
 
     # Update old one if the word was found
     if word_elements:
-        # If adding placenames, do not update already existing entries.
-        if options.placenamefile: continue            
 
         if not options.update:
             print "Entry exists for ", lemma;
@@ -156,7 +163,13 @@ for e in tree.getElementsByTagName("entry"):
         w.diphthong=diphthong
         w.dialect=dialect
         w.valency = valency
+        w.frequency = frequency
+        w.geography = geography
         w.save()
+
+        # If adding placenames, do not update anymore
+        if options.placenamefile: continue  
+
     else:
         if options.update:
             print "Adding entry for ", lemma , ".";
