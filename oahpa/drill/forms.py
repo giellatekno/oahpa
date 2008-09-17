@@ -154,8 +154,10 @@ def set_correct(self):
     """
     Adds correct wordforms to the question form.
     """
-    for e in self.correct_anslist:
-        self.correct_answers += " "+e
+    
+    if self.correct_anslist:
+        self.correct_answers = self.correct_anslist[0]
+
 
 def set_settings(self):
 
