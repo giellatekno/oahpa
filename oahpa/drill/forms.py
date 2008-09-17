@@ -42,6 +42,12 @@ ADJ_CONTEXT_CHOICES = (
     ('PRED', _('predicative')),
 )
 
+GRADE_CHOICES = (
+    ('POS', _('positive')),
+    ('COMP', _('comparative')),
+    ('SUPERL', _('superlative')),
+)
+
 VTYPE_CHOICES = (
     ('MAINV', _('tense')),
     ('V-COND', _('conditional')),
@@ -201,9 +207,7 @@ class MorphForm(forms.Form):
     bisyllabic = forms.BooleanField(required=False, initial='1')
     trisyllabic = forms.BooleanField(required=False,initial='1')
     contracted = forms.BooleanField(required=False,initial='1')
-    Pos = forms.BooleanField(required=False, initial='1')
-    Comp = forms.BooleanField(required=False,initial=0)
-    Superl = forms.BooleanField(required=False,initial=0)
+    grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
     default_data = {'pos': 'N'}
 
     def __init__(self, *args, **kwargs):
