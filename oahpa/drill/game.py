@@ -192,14 +192,14 @@ class ContextGame(Game):
 
 class BareGame(Game):
 
-    casetable = {'ATTR':'Attr', 'N-ILL':'Ill', 'N-ESS':'Ess', 'N-GEN':'Gen', \
+    casetable = {'NOMPL' : 'Nom', 'ATTR':'Attr', 'N-ILL':'Ill', 'N-ESS':'Ess', 'N-GEN':'Gen', \
                  'N-LOC':'Loc', 'N-ACC':'Acc', 'N-COM':'Com'}
 
     def get_baseform(self, word_id, tag):
 
         basetag=None
         if tag.pos=="N" or tag.pos=="A" or tag.pos=="Num":
-            if tag.number:
+            if tag.number and tag.case != "Nom":
                 tagstring = tag.pos + "+" + tag.number + "+Nom"
             else:
                 tagstring = tag.pos + "+Sg" + "+Nom"
@@ -222,10 +222,10 @@ class BareGame(Game):
         adjcase=self.settings.adjcase
         grade=self.settings.grade
 
-        if pos == "N" or pos == "Num":
+        if pos == "N":
             case = self.casetable[case]
         else:
-            if self.settings.pos=="A":
+            if self.settings.pos=="A" or pos== "Num":
                 case = self.casetable[adjcase]
             else:
                 case = ""
@@ -255,12 +255,15 @@ class BareGame(Game):
             attributive = "Attr"
             case =""
 
+        number = ["Sg","Pl",""]
+        if case=="Nom": number = ["Pl"]
+        
         #print pos, case, tense, mood, attributive, grade
 
-        tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade)).count()
+        tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade) & Q(number__in=number)).count()
             
         while True:
-            tag = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade))[randint(0,tag_count-1)]
+            tag = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade__in=grade) & Q(number__in=number))[randint(0,tag_count-1)]
 
             tag_id = tag.id
             if self.settings.pos == "Num":
