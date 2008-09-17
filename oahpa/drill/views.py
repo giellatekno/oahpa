@@ -25,7 +25,7 @@ class Gameview:
         self.settings.adjcase="ATTR"
         self.settings.mood="Ind"
         self.settings.tense="Prs"
-        self.settings.grade=[]
+        self.settings.grade="POS"
         self.settings.book = []
         self.settings.semtype="NATURE"
         self.settings.language="sme"
@@ -60,14 +60,6 @@ class Gameview:
         if len(self.settings.syll) == 0:
             self.settings.syll.append('bisyllabic')        
 
-        if 'Pos' in settings_form.data:
-            self.settings.grade.append('')
-        if 'Comp' in settings_form.data:
-            self.settings.grade.append('Comp')
-        if 'Superl' in settings_form.data:
-            self.settings.grade.append('Superl')
-        if len(self.settings.grade) == 0:
-            self.settings.grade.append('')        
 
     def create_mgame(self,request):
 
@@ -134,7 +126,7 @@ class Gameview:
             self.settings.syll.append('bisyllabic')
             self.settings.syll.append('trisyllabic')
             self.settings.syll.append('contracted')
-            self.settings.grade.append('')
+            self.settings.grade="POS"
             self.settings.allcase=settings_form.allcase
             self.settings.book=settings_form.books['all']
             self.settings.adjcase="ATTR"
@@ -159,6 +151,7 @@ class Gameview:
             'gametype': self.settings.gametype,
             'score': game.score,
             'case': self.settings.case,
+            'grade': self.settings.grade,
             'adjcase': self.settings.adjcase,
             'gamename': self.settings.gamename,
             'all_correct': game.all_correct,
@@ -215,7 +208,7 @@ class Vastaview:
         show_data=0
         self.settings=Info()
         self.settings.syll = ['bisyllabic', 'trisyllabic', 'contracted']
-        self.settings.grade = ['']
+        self.settings.grade = "POS"
         self.settings.pos="N"
         self.settings.book = []
         self.settings.semtype='all'
