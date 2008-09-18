@@ -13370,24 +13370,46 @@ MAP (&grm-shouldAttr) TARGET A IF (NEGATE 0 Attr)(*1 N BARRIER NOT-Attr-CC-Adv) 
 
 # Is it need for defining at it should be GRADE-ADV?
 
-
+# Q
 # Should not be an Attr if it is not in front of N
 MAP (&shouldNotAttr) TARGET Attr IF (NEGATE 0 Nom)(NEGATE *1 N BARRIER NOT-ADJ-CC) ;
 # The barrier is not good if the Attr has another reading than A.
 
-LIST DRINKVERB = "juhkat" ;
+LIST DRINKVERB = "juhkat" "šlubistit" "čuohkat" ;
 
-LIST §DRINK = §DRINK ;
+LIST DRINK = "bruvsa" ;
 
-MAP (&err-beverage) TARGET DRINKVERB IF (NOT *1 §DRINK);
+
+MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL NOT *1 DRINK)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3));
+
+MAP (&grm-accObj) TARGET TV IF (*1 QDL LINK NOT *1 DRINK + Acc);
+	# 
+MAP (&grm-Vfin) TARGET V IF (*1 DL LINK NOT *1 VFIN);
+	# You should use a finite verb when answering...
 
 LIST LOCTRIGGER = "gos" ;
 LIST GENERATED_BOUNDARY = CLB ;
 LIST LOCADV = "dáppe" ;
 
-MAP (&grm-missing-Loc) TARGET LOCTRIGGER IF (*1 GENERATED_BOUNDARY LINK NOT *1 Loc OR LOCADV);
+MAP (&grm-missing-Loc) TARGET LOCTRIGGER IF (*1 QDL LINK NOT *1 Loc OR LOCADV);
 
 LIST ILLTRIGGER = "masa" ;
 
-MAP (&grm-missing-Ill) TARGET LOCTRIGGER IF (*1 GENERATED_BOUNDARY LINK NOT *1 Ill OR Inf);
+MAP (&grm-missing-Ill) TARGET LOCTRIGGER IF (*1 QDL LINK NOT *1 Ill OR Inf);
 
+
+MAP (&dia-neg) TARGET QDL IF (*-1 Qst)(*1 Neg);
+	## Háliidatgo bruvssa?
+	## In &dia-neg 
+	## hálit
+
+LIST TARGETQUESTION = "gos" "mii" ;
+
+MAP (&dia-target) TARGET Loc IF (*-1 QDL LINK *-1 TARGETQUESTION + Loc) ;
+
+### aösdlkfjölk asdflö jsd
+
+
+
+
+	
