@@ -207,9 +207,10 @@
     </question>
     <answer> 
       <text>Luomus SUBJ V-COND</text>
-      <element game='morfa' id="V-COND" syntax="MAINV" task="yes">
+      <element game='morfa' id="V-COND" task="yes">
 	<sem class="ACTIVITY"/>
 	<grammar tag="V+Cond+Prs+Person-Number"/>
+	<agreement id="MAINV"/>
       </element>
 <!--      <element game='qa' id="V-COND">
 	<grammar pos="V"/>
@@ -238,9 +239,10 @@
 	<id>son</id>
 	<grammar pos="Pron"/>
       </element>
-      <element game='morfa' id="V-COND" syntax="MAINV" task="yes">
+      <element game='morfa' id="V-COND" task="yes">
 	<grammar tag="V+Cond+Prs+Person-Number"/>
 	<sem class="ACTIVITY"/>
+	<agreement id="MAINV"/>
       </element>
 <!--      <element game='qa' id="V-COND">
 	<grammar tag="V+Cond+Prs+Person-Number"/>
@@ -288,12 +290,32 @@
   </question>
   <answer> 
     <text>In dieđe V-POT go</text>
-      <element game='morfa' id="V-POT" syntax="MAINV" content="MAINV" task="yes">
+      <element game='morfa' id="V-POT" content="MAINV" task="yes">
 	<agreement id="SUBJ"/>
+	<agreement id="MAINV"/>
       </element>
     </answer>
   </q>
 
+<q>
+    <qtype>V-POT</qtype>
+  <question>
+    <text>MAINV go SUBJ</text>
+    <element id="MAINV">
+      <grammar tag="V+Ind+Prs+Person-Number"/>
+      <sem class="ACTIVITY"/>
+    </element>
+    <element id="SUBJ">
+      <grammar pos="Pron+Pers+Person-Number+Nom"/>
+    </element>
+  </question>
+  <answer> 
+    <text>In dieđe V-POT go</text>
+      <element game='morfa' id="V-POT" content="MAINV" task="yes">
+	<agreement id="SUBJ"/>
+      </element>
+    </answer>
+  </q>
 
 
 
@@ -397,8 +419,7 @@
 	<sem class="ACTIVITY"/>
       </element>
       <element id="SUBJ">
-	<sem class="HUMAN"/>
-	<grammar pos="N"/>
+	<grammar pos="Pron+Pers+Person-Number+Nom"/>
       </element>
     </question>
     <answer> 
@@ -409,8 +430,9 @@
     </answer>
     <answer> 
       <text>Ikte gal NEG PRFPRC</text>
-      <element game='morfa' id="NEG" syntax="MAINV" task="yes">
+      <element game='morfa' id="NEG" task="yes">
 	<grammar tag="Neg+Ind+Person-Number"/>
+	<agreement id="MAINV"/>
       </element>
       <element game='morfa' id="PRFPRC" content="MAINV">
 	<grammar tag="V+PrfPrc"/>
@@ -427,8 +449,9 @@
     </answer>
     <answer> 
       <text>Ikte gal NEG PRFPRC</text>
-      <element game='morfa' id="NEG" syntax="MAINV">
+      <element game='morfa' id="NEG">
 	<grammar tag="Neg+Ind+Person-Number"/>
+	<agreement id="MAINV"/>
       </element>
       <element game='morfa' id="PRFPRC" content="MAINV" task="yes">
 	<grammar tag="V+PrfPrc"/>
@@ -446,8 +469,7 @@
 	<sem class="ACTIVITY"/>
       </element>
       <element id="SUBJ">
-	<sem class="HUMAN"/>
-	<grammar pos="N"/>
+	<grammar pos="Pron+Pers+Person-Number+Nom"/>
       </element>
     </question>
     <answer> 
@@ -458,8 +480,9 @@
     </answer>
     <answer> 
       <text>Odne gal NEG CONNEG</text>
-      <element game='morfa' id="NEG" syntax="MAINV" task="yes">
+      <element game='morfa' id="NEG" task="yes">
 	<grammar tag="Neg+Ind+Person-Number"/>
+	<agreement id="MAINV"/>
       </element>
       <element game='morfa' id="CONNEG" content="MAINV">
 	<grammar tag="V+ConNeg"/>
@@ -467,8 +490,9 @@
     </answer>
     <answer> 
       <text>Odne gal NEG CONNEG</text>
-      <element game='morfa' id="NEG" syntax="MAINV">
+      <element game='morfa' id="NEG">
 	<grammar tag="Neg+Ind+Person-Number"/>
+	<agreement id="MAINV"/>
       </element>
       <element game='morfa' id="CONNEG" content="MAINV" task="yes">
 	<grammar tag="V+ConNeg"/>
@@ -486,8 +510,7 @@
       <sem class="ACTIVITY"/>
     </element>
     <element id="SUBJ">
-      <sem class="HUMAN"/>
-      <grammar pos="N"/>
+	<grammar pos="Pron+Pers+Person-Number+Nom"/>
     </element>
   </question>
   <answer> 
@@ -495,8 +518,9 @@
   </answer>
     <answer> 
       <text>Luomus gal NEG CONNEG</text>
-      <element game='morfa' id="NEG" syntax="MAINV" task="yes">
+      <element game='morfa' id="NEG" task="yes">
 	<grammar tag="Neg+Ind+Person-Number"/>
+	<agreement id="MAINV"/>
       </element>
       <element game='morfa' id="CONNEG" content="MAINV">
 	<grammar tag="V+Cond+Prs+ConNeg"/>
@@ -510,8 +534,9 @@
     </answer>
     <answer> 
       <text>Luomus gal NEG CONNEG</text>
-      <element game='morfa' id="NEG" syntax="MAINV">
+      <element game='morfa' id="NEG">
 	<grammar tag="Neg+Ind+Person-Number"/>
+	<agreement id="MAINV"/>
       </element>
       <element game='morfa' id="CONNEG" content="MAINV" task="yes">
 	<grammar tag="V+Cond+Prs+ConNeg"/>
