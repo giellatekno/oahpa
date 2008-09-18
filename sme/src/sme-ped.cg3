@@ -13379,8 +13379,9 @@ LIST DRINKVERB = "juhkat" "šlubistit" "čuohkat" ;
 
 LIST DRINK = "bruvsa" ;
 
+LIST QDL = QDL ;
 
-MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL NOT *1 DRINK)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3));
+MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL NOT *1 DRINK)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3)) ;
 
 MAP (&grm-accObj) TARGET TV IF (*1 QDL LINK NOT *1 DRINK + Acc);
 	# 
@@ -13403,9 +13404,21 @@ MAP (&dia-neg) TARGET QDL IF (*-1 Qst)(*1 Neg);
 	## In &dia-neg 
 	## hálit
 
-LIST TARGETQUESTION = "gos" "mii" ;
+LIST TARGETQUESTION-NOM = ("mii" Nom) ("gii" Nom) ;
+LIST TARGETQUESTION-ACC = ("mii" Acc) ("gii" Acc) ;
+LIST TARGETQUESTION-GEN = ("gii" Gen) ;
+LIST TARGETQUESTION-ILL = "gosa" ("mii" Ill) ("gii" Ill) ;
+LIST TARGETQUESTION-LOC = "gos" "gokko" ("mii" Loc) ("gii" Loc) ;
+LIST TARGETQUESTION-COM = ("mii" Com) ("gii" Com) ;
+LIST TARGETQUESTION-ESS = ("mii" Ess) ("gii" Ess) ;
 
-MAP (&dia-target) TARGET Loc IF (*-1 QDL LINK *-1 TARGETQUESTION + Loc) ;
+MAP (&dia-target) TARGET Nom IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM) ; # LINK -1 BOS) ;
+MAP (&dia-target) TARGET Acc IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC) ; # LINK -1 BOS) ;
+MAP (&dia-target) TARGET Gen IF (*-1 QDL LINK *-1 TARGETQUESTION-GEN) ; # LINK -1 BOS) ;
+MAP (&dia-target) TARGET Ill IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL) ; # LINK -1 BOS) ;
+MAP (&dia-target) TARGET Loc IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC) ; # LINK -1 BOS) ;
+MAP (&dia-target) TARGET Com IF (*-1 QDL LINK *-1 TARGETQUESTION-COM) ; # LINK -1 BOS) ;
+MAP (&dia-target) TARGET Ess IF (*-1 QDL LINK *-1 TARGETQUESTION-ESS) ; # LINK -1 BOS) ;
 
 ### aösdlkfjölk asdflö jsd
 
