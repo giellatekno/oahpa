@@ -27,15 +27,17 @@
       <element type="PRED">     
 	<grammar pos="A+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="CLOTHES-adj"/>
+	<agreement id="SUBJ"/>
       </element>
       <element type="INTERR">
 	<lemma>makkár</lemma> 
 	<grammar tag="Number+Nom"/>   
+	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
-      <text>Dus MAINV ATTRPOS SUBJ</text>
-      <element type="ATTRPOS" task="yes">   <!-- Same A as PRED -->
+      <text>Dus MAINV ATTR SUBJ</text>
+      <element type="ATTR" task="yes">   <!-- Same A as PRED -->
 	<grammar tag="A+Attr"/>  <!-- no number -->
       </element>
     </answer>
@@ -60,15 +62,17 @@
       <element type="PRED">     
 	<grammar pos="A+Comp+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="CLOTHES-adj"/>
+	<agreement id="SUBJ"/>
       </element>
       <element type="INTERR">
 	<lemma>makkár</lemma> 
 	<grammar tag="Number+Nom"/>   
+	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
-      <text>Dus MAINV ATTRCOMP SUBJ</text>
-      <element type="ATTRCOMP" task="yes">   <!-- Same A as PRED -->
+      <text>Dus MAINV ATTR SUBJ</text>
+      <element type="ATTR" task="yes">   <!-- Same A as PRED -->
 	<grammar tag="A+Comp+Attr"/>  <!-- no number -->
       </element>
     </answer>
@@ -93,15 +97,17 @@
       <element type="PRED">     
 	<grammar pos="A+Superl+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="CLOTHES-adj"/>
+	<agreement id="SUBJ"/>
       </element>
       <element type="INTERR">
 	<lemma>makkár</lemma> 
 	<grammar tag="Number+Nom"/>   
+	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
-      <text>Dus MAINV ATTRSUP SUBJ</text>
-      <element type="ATTRSUP" task="yes">   <!-- Same A as PRED -->
+      <text>Dus MAINV ATTR SUBJ</text>
+      <element type="ATTR" task="yes">   <!-- Same A as PRED -->
 	<grammar tag="A+Superl+Attr"/>  <!-- no number -->
       </element>
     </answer>
@@ -131,12 +137,14 @@
       <element type="INTERR">
 	<lemma>makkár</lemma> 
 	<grammar tag="Number+Nom"/>   
+	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV PREDPOS</text>
-      <element type="PREDPOS" task="yes">     <!-- Same A as ATTR -->
+      <text>SUBJ MAINV PRED</text>
+      <element type="PRED" task="yes">     <!-- Same A as ATTR -->
 	<grammar pos="A+Number+Nom"/>   <!-- same number as SUBJ -->
+	<agreement id="SUBJ"/>
       </element>
     </answer>
   </q>
@@ -161,16 +169,19 @@
       <element type="INTERR">
 	<lemma>makkár</lemma> 
 	<grammar tag="Number+Nom"/>   
+	<agreement id="SUBJ"/>
       </element>
       <element type="PRED">  <!-- compare="yes"-->  
 	<grammar pos="A+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="HUMAN-adj"/>
+	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
       <text>Mu SUBJ MAINV PREDCOMP</text>
       <element type="PREDCOMP" task="yes">   <!-- Same A as PRED -->
 	<grammar tag="A+Comp+Number+Nom"/>  <!-- same number as SUBJ -->
+	<agreement id="SUBJ"/>
       </element>
     </answer>
   </q>
@@ -181,7 +192,7 @@
 
     <q>
     <qtype>PREDSUP</qtype>
-    <agreement>SUBJ/PREDSUP</agreement>
+    <agreement>SUBJ/PRED</agreement>
    <question>
       <text>Gal dáppe MAINV ATTR SUBJ</text>  <!-- compare="yes"-->
       <element type="SUBJ">   
@@ -202,9 +213,10 @@
       </element>
     </question>
     <answer> 
-      <text>Muhto mu SUBJ MAINV PREDSUP</text>
-      <element type="PREDSUP" task="yes">   <!-- Same A as ATTR -->
+      <text>Muhto mu SUBJ MAINV PRED</text>
+      <element type="PRED" task="yes">   <!-- Same A as ATTR -->
 	<grammar tag="A+Superl+Number+Nom"/>  <!-- same number as SUBJ -->
+	<agreement id="SUBJ"/>
       </element>
     </answer>
   </q>
