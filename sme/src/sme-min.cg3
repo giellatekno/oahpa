@@ -2557,12 +2557,6 @@ SET NON-APP = ALLSYNTAG - (@APP);
 
 BEFORE-SECTIONS
 
-
-
-# Tags marking grammatical errors are marked with initial &
-
-BEFORE-SECTIONS
-
 MAPPING-PREFIX = & ;
 
 
@@ -2590,9 +2584,10 @@ REMOVE Interj ;
 MAP:1 (&grm-notInterj) TARGET Interj IF (-1 WORD)(NEGATE *1 EOS BARRIER WORD);
 MAP:2 (&grm-notInterj) TARGET Interj IF (NEGATE *-1 BOS BARRIER WORD)(1 WORD) ;
 
-
 REMOVE Px (NOT 0 N-PX) ;
 REMOVE Foc/ba (0 (V Du3)) ;
+
+SELECT ConNeg (-1 Neg) ;
 
 LIST VFIN-PRON-TAG = Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 ;  
 LIST DUALIS-NOUN = (".*#guovttis"r) (".*#guovttos"r) ;
@@ -2747,10 +2742,11 @@ MAP (&grm-non-agreement) TARGET (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV LINK 
 # ------------------------
 
 
-MAP (&dia-neg) TARGET QDL IF (*-1 QDL LINK *-1 Qst)(*1 Neg);
+MAP (&dia-neg) TARGET QDL IF (*-1 Qst OR go)(*1 Neg);
 	## Háliidatgo bruvssa? In háliit.
-MAP (&dia-pos) TARGET QDL IF (*-1 QDL LINK *-1 Qst)(NOT *1 Neg);
+MAP (&dia-pos) TARGET QDL IF (*-1 Qst OR go)(NOT *1 Neg);
 	## Háliidatgo bruvssa? De háliidan.
+
 
 
 # ------------------
@@ -2780,4 +2776,6 @@ LIST NOTHING = Foc/ge "mihkkege" "giige" ;
 MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&dia-target)) ;
     ## in oro gostege
     ## in háliit maidege
+
+
 
