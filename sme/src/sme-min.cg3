@@ -908,12 +908,6 @@ SET MO = MO-MANge - ("man" Foc/ge) ;
 LIST PLACE-ADV =  "davá#bealde" "mátta#bealde" "nuortta#bealde" "oarje#bealde" "olggo#beale" ;
 # There will usually be a Gen in front. 
 
-LIST DOPPE = "dakko" "dákko" "dáppe" "diekko" "dieppe" "dokko" "doppe" "duokko" "duoppe" ;
-# Adverbs with a locativic form, but don´t get Loc as a tag. 
-
-LIST DOHKO = "deike" "diehke" "dohko" "duohko" ;
-# Adverbs with a illativic form, but they don´t get Ill as a tag.
- 
 
 # Coordinators
 # ------------
@@ -2562,19 +2556,23 @@ MAPPING-PREFIX = & ;
 
           SECTION
 
+LIST QDL = QDL ;
 
 # Spelling-error
 LIST QMRK = ? ;
 
 
-# Cleanup rules
+# Cleanup rules - here we have to copy a lot from sme-dis.rle
 
-# Get rid of imperatives
+# Preliminary:
+REMOVE V (0 ("viessu")) ;
+REMOVE V* (0 ("viessu")) ;
 
+# Get rid of imperatives, VGen...
 
+# For spellingerrors:
 MAP (&err-spellingerror) TARGET QMRK ;
 
-# Gluing in from the min file, to test:
 
 # na+Pcle can only be initial:
 MAP (&grm-naPcle) TARGET ("na" Pcle) IF (-1 NOT-PCLE) ;
@@ -2589,37 +2587,53 @@ REMOVE Interj ;
 MAP:1 (&grm-notInterj) TARGET Interj IF (-1 WORD)(NEGATE *1 EOS BARRIER WORD);
 MAP:2 (&grm-notInterj) TARGET Interj IF (NEGATE *-1 BOS BARRIER WORD)(1 WORD) ;
 
-LIST Attr-CC-Adv = Attr CC Adv ;
-SET NOT-Attr-CC-Adv = WORD - Attr-CC-Adv ;
 
-# Inside the NP, we choose what suits to it:
+
+# ----------
+# NP - RULES
+# ----------
+
+LIST Attr-CC-Adv = Attr CC Adv ;
+LIST Attr-CC-Adv-Num = Attr CC Adv Num ;
+LIST Attr-CC-Adv-Num-Gen = Attr CC Adv Num Gen ;
+SET NOT-Attr-CC-Adv = WORD - Attr-CC-Adv ;
+SET NOT-Attr-CC-Adv-Num = WORD - Attr-CC-Adv-Num ;
+SET NOT-Attr-CC-Adv-Num-Gen = WORD - Attr-CC-Adv-Num-Gen ;
+
+# Inside the NP, we choose what suits to it, if there is reading for it:
 SELECT:1 Adv (0 GRADE-ADV + A) ;
-SELECT:2 Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; # when there is no other possible readings in the barrier.
+    ## hui boares
+SELECT:2 Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; 
+    ## stuorra ja hui boares viessu
 SELECT:3 Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; # no there should be less ambiguity.
+    # once again
+SELECT:4 Num (*1 N BARRIER NOT-Attr-CC-Adv) ;
+    ## guokte stuorra ja hui boares viesu
+SELECT:5 (N Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num) ;
+    ## eatni guokte stuorra ja hui boares viesu
+SELECT:6 (Refl Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen) ;
+    ## mu iežan eatni guokte stuorra ja hui boares viesu
+SELECT:7 (Pers Gen) (NOT 0 Dem)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen) ;
+    ## mu iežan eatni guokte stuorra ja hui boares viesu
+
+SELECT:8 Dem (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen) ;
+    ## dat mu iežan eatni guokte stuorra ja hui boares viesu
+
+SELECT N (-1 Attr OR Dem OR Gen) ;
 
 # Should be Attr when: + (Attr) + N
 MAP (&grm-shouldAttr) TARGET A IF (NEGATE 0 Attr)(*1 N BARRIER NOT-Attr-CC-Adv) ;
 
-
-# Is it need for defining at it should be GRADE-ADV?
-
-# Q
 # Should not be an Attr if it is not in front of N
-MAP (&shouldNotAttr) TARGET Attr IF (NEGATE 0 Nom)(NEGATE *1 N BARRIER NOT-ADJ-CC) ;
-# The barrier is not good if the Attr has another reading than A.
+MAP (&shouldNotAttr) TARGET Attr IF (NEGATE 0 Nom)(NEGATE *1 N BARRIER VERB) ;
 
-LIST DRINKVERB = "juhkat" "šlubistit" "čuohkat" ;
+LIST DOPPE = "dakko" "dákko" "dáppe" "diekko" "dieppe" "dokko" "doppe" "duokko" "duoppe" "gostege" ;
+# Adverbs with a locativic form, but don´t get Loc as a tag. 
 
-LIST DRINK = "bruvsa" ;
+LIST DOHKO = "deike" "diehke" "dohko" "duohko" ("gosa" Foc/ge) ;
+# Adverbs with a illativic form, but they don´t get Ill as a tag.
+ 
 
-LIST QDL = QDL ;
-
-MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL LINK NOT *1 DRINK)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3)) ;
-
-MAP (&grm-accObj) TARGET TV IF (*1 QDL LINK NOT *1 DRINK + Acc);
-	# 
-MAP (&grm-Vfin) TARGET V IF (*1 QDL LINK NOT *1 VFIN);
-	# You should use a finite verb when answering...
 
 LIST TARGETQUESTION-NOM = ("mii" Nom) ("gii" Nom) ;
 LIST TARGETQUESTION-ACC = ("mii" Acc) ("gii" Acc) ;
@@ -2629,11 +2643,49 @@ LIST TARGETQUESTION-LOC = "gos" "gokko" ("mii" Loc) ("gii" Loc) ;
 LIST TARGETQUESTION-COM = ("mii" Com) ("gii" Com) ;
 LIST TARGETQUESTION-ESS = ("mii" Ess) ("gii" Ess) ;
 
-#LIST LOCADV = "dáppe" ; we have already DOPPE-set
 
 MAP (&grm-missing-Loc) TARGET TARGETQUESTION-LOC IF (*1 QDL LINK NOT *1 Loc OR DOPPE);
+MAP (&grm-missing-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK NOT *1 Ill OR DOHKO);
+MAP (&grm-missing-Com) TARGET TARGETQUESTION-COM IF (*1 QDL LINK NOT *1 Com);
+MAP (&grm-missing-Acc) TARGET TARGETQUESTION-ACC IF (*1 QDL LINK NOT *1 Acc);
+MAP (&grm-missing-Nom) TARGET TARGETQUESTION-NOM IF (*1 QDL LINK NOT *1 Nom);
+MAP (&grm-missing-Ess) TARGET TARGETQUESTION-ESS IF (*1 QDL LINK NOT *1 Ess);
+MAP (&grm-missing-Gen) TARGET TARGETQUESTION-GEN IF (*1 QDL LINK NOT *1 Gen);
 
-MAP (&grm-missing-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK NOT *1 Ill);
+
+# ---------------------------
+# AGREEMENT INSIDE NP - RULES
+# ---------------------------
+
+
+
+# ------------
+# VERB - RULES
+# ------------
+
+SELECT VERB ;
+
+
+MAP (&grm-Vfin) TARGET V IF (*1 QDL LINK NOT *1 VFIN);
+	# You should use a finite verb when answering...
+
+
+
+# -------------------
+# RULES for SEMANTICS
+# -------------------
+
+
+
+LIST DRINKVERB = "juhkat" "šlubistit" "čuohkat" ;
+
+LIST DRINK = "bruvsa" ;
+
+
+MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL LINK NOT *1 DRINK)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3)) ;
+
+#MAP (&grm-accObj) TARGET TV IF (*1 QDL LINK NOT *1 DRINK + Acc);
+	# 
 
 
 MAP (&dia-neg) TARGET QDL IF (*-1 Qst)(*1 Neg);
@@ -2641,12 +2693,31 @@ MAP (&dia-neg) TARGET QDL IF (*-1 Qst)(*1 Neg);
 	## In &dia-neg 
 	## hálit
 
+# ------------------
+# Picking the target
+# ------------------
 
-MAP (&dia-target) TARGET Nom IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM) ; # LINK -1 BOS) ;
-MAP (&dia-target) TARGET Acc IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC) ; # LINK -1 BOS) ;
-MAP (&dia-target) TARGET Gen IF (*-1 QDL LINK *-1 TARGETQUESTION-GEN) ; # LINK -1 BOS) ;
-MAP (&dia-target) TARGET Ill IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL) ; # LINK -1 BOS) ;
-MAP (&dia-target) TARGET Loc IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC LINK -1 BOS) ;
-MAP (&dia-target) TARGET Com IF (*-1 QDL LINK *-1 TARGETQUESTION-COM) ; # LINK -1 BOS) ;
-MAP (&dia-target) TARGET Ess IF (*-1 QDL LINK *-1 TARGETQUESTION-ESS) ; # LINK -1 BOS) ;
+# The target can be e.g. the user´s name, place where she lives, what kind of car she has.... and then we can use the target in the next question, e.g. "Man guhká don leat orron Romssas?"
+
+MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM LINK -1 BOS) ;
+MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC LINK -1 BOS)(NEGATE *1 (N Acc) BARRIER VERB) ;
+MAP (&dia-target) TARGET (N Gen) IF (*-1 QDL LINK *-1 TARGETQUESTION-GEN LINK -1 BOS) ;
+MAP (&dia-target) TARGET (N Ill) IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL LINK -1 BOS) ;
+MAP (&dia-target) TARGET (N Loc) IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC LINK -1 BOS) ;
+MAP (&dia-target) TARGET (N Com) IF (*-1 QDL LINK *-1 TARGETQUESTION-COM LINK -1 BOS) ;
+MAP (&dia-target) TARGET (N Ess) IF (*-1 QDL LINK *-1 TARGETQUESTION-ESS LINK -1 BOS) ;
+
+MAP (&dia-target) TARGET DOPPE IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Loc)) ;
+# picking "dáppe" if no Loc
+MAP (&dia-target) TARGET DOHKO IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Ill)) ;
+# picking "deike" if no Loc
+
+# The Nom rule do not pick Num + N Gen !!
+# You can live in a Num (40:s) !!
+
+LIST NOTHING = Foc/ge "mihkkege" "giige" ;
+
+MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&dia-target)) ;
+    ## in oro gostege
+    ## in háliit maidege
 
