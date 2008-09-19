@@ -908,6 +908,12 @@ SET MO = MO-MANge - ("man" Foc/ge) ;
 LIST PLACE-ADV =  "davá#bealde" "mátta#bealde" "nuortta#bealde" "oarje#bealde" "olggo#beale" ;
 # There will usually be a Gen in front. 
 
+LIST DOPPE = "dakko" "dákko" "dáppe" "diekko" "dieppe" "dokko" "doppe" "duokko" "duoppe" "gostege" ;
+# Adverbs with a locativic form, but don´t get Loc as a tag. 
+
+LIST DOHKO = "deike" "diehke" "dohko" "duohko" ("gosa" Foc/ge) ;
+# Adverbs with a illativic form, but they don´t get Ill as a tag.
+
 
 # Coordinators
 # ------------
@@ -2551,6 +2557,12 @@ SET NON-APP = ALLSYNTAG - (@APP);
 
 BEFORE-SECTIONS
 
+
+
+# Tags marking grammatical errors are marked with initial &
+
+BEFORE-SECTIONS
+
 MAPPING-PREFIX = & ;
 
 
@@ -2560,15 +2572,6 @@ LIST QDL = QDL ;
 
 # Spelling-error
 LIST QMRK = ? ;
-
-
-# Cleanup rules - here we have to copy a lot from sme-dis.rle
-
-# Preliminary:
-REMOVE V (0 ("viessu")) ;
-REMOVE V* (0 ("viessu")) ;
-
-# Get rid of imperatives, VGen...
 
 # For spellingerrors:
 MAP (&err-spellingerror) TARGET QMRK ;
@@ -2588,6 +2591,20 @@ MAP:1 (&grm-notInterj) TARGET Interj IF (-1 WORD)(NEGATE *1 EOS BARRIER WORD);
 MAP:2 (&grm-notInterj) TARGET Interj IF (NEGATE *-1 BOS BARRIER WORD)(1 WORD) ;
 
 
+REMOVE Px (NOT 0 LIST N-PX) ;
+REMOVE Foc/ba (0 (V Du3)) ;
+
+LIST VFIN-PRON-TAG = Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 ;  
+LIST DUALIS-NOUN = (".*#guovttis"r) (".*#guovttos"r) ;
+
+# Removing other readings when there is one correct one:
+SELECT:sticky $$VFIN-PRON-TAG (0 V)(-1 $$VFIN-PRON-TAG LINK 0 (Pers Nom) LINK *-1 QDL) ;
+SELECT:agreement1 (V Sg3) (-1 (N Sg Nom) LINK *-1 QDL) ;
+SELECT:agreement2 (V Pl3) (-1 (N Pl Nom) LINK *-1 QDL) ;
+SELECT:agreement3 (V Du3) (-1 DUALIS-NOUN + Nom LINK *-1 QDL) ;
+
+# Removing other readings even if there is no agreement:
+SELECT VFIN (-1 (N Nom) OR (Pers Nom) LINK *-1 QDL) ;
 
 # ----------
 # NP - RULES
@@ -2601,25 +2618,29 @@ SET NOT-Attr-CC-Adv-Num = WORD - Attr-CC-Adv-Num ;
 SET NOT-Attr-CC-Adv-Num-Gen = WORD - Attr-CC-Adv-Num-Gen ;
 
 # Inside the NP, we choose what suits to it, if there is reading for it:
-SELECT:1 Adv (0 GRADE-ADV + A) ;
+SELECT:1 Adv (0 GRADE-ADV + A LINK *-1 QDL) ;
     ## hui boares
-SELECT:2 Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; 
+SELECT:2 Attr (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ; 
     ## stuorra ja hui boares viessu
 SELECT:3 Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; # no there should be less ambiguity.
     # once again
-SELECT:4 Num (*1 N BARRIER NOT-Attr-CC-Adv) ;
+SELECT:4 Num (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ;
     ## guokte stuorra ja hui boares viesu
-SELECT:5 (N Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num) ;
+SELECT:5 (N Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num LINK *-1 QDL) ;
     ## eatni guokte stuorra ja hui boares viesu
-SELECT:6 (Refl Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen) ;
+SELECT:6 (Refl Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
     ## mu iežan eatni guokte stuorra ja hui boares viesu
-SELECT:7 (Pers Gen) (NOT 0 Dem)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen) ;
+SELECT:7 (Pers Gen) (NOT 0 Dem)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
     ## mu iežan eatni guokte stuorra ja hui boares viesu
 
-SELECT:8 Dem (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen) ;
+SELECT:8 Dem (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
     ## dat mu iežan eatni guokte stuorra ja hui boares viesu
 
-SELECT N (-1 Attr OR Dem OR Gen) ;
+SELECT N (-1 Attr OR Dem OR Gen)(NOT 0 VFIN) ;
+SELECT A (*-1 COPULAS BARRIER NOT-ADV LINK -1 Nom LINK *-1 QDL) ;
+SELECT A (*-1 QDL)(*1 N OR Pers BARRIER NPNH LINK 1 COPULAS) ;
+    ## Son lea hui čeahppi.
+    ## Čeahppi son lea.
 
 # Should be Attr when: + (Attr) + N
 MAP (&grm-shouldAttr) TARGET A IF (NEGATE 0 Attr)(*1 N BARRIER NOT-Attr-CC-Adv) ;
@@ -2627,14 +2648,7 @@ MAP (&grm-shouldAttr) TARGET A IF (NEGATE 0 Attr)(*1 N BARRIER NOT-Attr-CC-Adv) 
 # Should not be an Attr if it is not in front of N
 MAP (&shouldNotAttr) TARGET Attr IF (NEGATE 0 Nom)(NEGATE *1 N BARRIER VERB) ;
 
-LIST DOPPE = "dakko" "dákko" "dáppe" "diekko" "dieppe" "dokko" "doppe" "duokko" "duoppe" "gostege" ;
-# Adverbs with a locativic form, but don´t get Loc as a tag. 
-
-LIST DOHKO = "deike" "diehke" "dohko" "duohko" ("gosa" Foc/ge) ;
-# Adverbs with a illativic form, but they don´t get Ill as a tag.
  
-
-
 LIST TARGETQUESTION-NOM = ("mii" Nom) ("gii" Nom) ;
 LIST TARGETQUESTION-ACC = ("mii" Acc) ("gii" Acc) ;
 LIST TARGETQUESTION-GEN = ("gii" Gen) ;
@@ -2653,45 +2667,91 @@ MAP (&grm-missing-Ess) TARGET TARGETQUESTION-ESS IF (*1 QDL LINK NOT *1 Ess);
 MAP (&grm-missing-Gen) TARGET TARGETQUESTION-GEN IF (*1 QDL LINK NOT *1 Gen);
 
 
-# ---------------------------
-# AGREEMENT INSIDE NP - RULES
-# ---------------------------
+# -------------------
+# AGREEMENT INSIDE NP
+# -------------------
+
+LIST DEM-SG-ACC-GEN = (Dem Sg Acc) (Dem Sg Gen) ;
+LIST DEM-PL-ACC-GEN = (Dem Pl Acc) (Dem Pl Gen) ;
+
+MAP (&grm-non-agreement) TARGET (Dem Nom) IF (*-1 QDL)(*1 N LINK NOT 0 Nom) ;
+MAP (&grm-non-agreement) TARGET DEM-SG-ACC-GEN IF (*-1 QDL)(*1 N LINK NOT 0 (Sg Acc) OR (Sg Gen) OR (Sg Ill) OR (Sg Loc));
+MAP (&grm-non-agreement) TARGET (Dem Sg Com) IF (*-1 QDL)(*1 N LINK NOT 0 (Sg Com));
+MAP (&grm-non-agreement) TARGET DEM-PL-ACC-GEN IF (*-1 QDL)(*1 N LINK NOT 0 (Pl Acc) OR (Pl Gen) OR (Pl Com));
+MAP (&grm-non-agreement) TARGET (Dem Pl Ill) IF (*-1 QDL)(*1 N LINK NOT 0 (Pl Ill));
+MAP (&grm-non-agreement) TARGET (Dem Pl Loc) IF (*-1 QDL)(*1 N LINK NOT 0 (Pl Loc));
+
+# dat viessu
+# dan viesu, vissui, viesus
+# dainna viesuin
+# dat viesut
+# daid viesuid, viesuiguin
+# daidda viesuide
+# dain viesuin
+# daiguin viesuiguin
+
+# Select acc when Obj:
+SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK *-1 QDL);
 
 
-
-# ------------
-# VERB - RULES
-# ------------
+# -----
+# VERBS 
+# -----
 
 SELECT VERB ;
 
 
-MAP (&grm-Vfin) TARGET V IF (*1 QDL LINK NOT *1 VFIN);
+MAP (&grm-should_be_Vfin) TARGET V IF (*1 QDL LINK NOT *1 VFIN);
 	# You should use a finite verb when answering...
 
 
-
 # -------------------
-# RULES for SEMANTICS
+# AGREEMENT SUBJ/VFIN
 # -------------------
 
+# If not agreement:
+MAP (&grm-non-agreement) TARGET VFIN IF (0 $$VFIN-PRON-TAG LINK -1 (Pers Nom) LINK NOT 0 $$VFIN-PRON-TAG LINK -1 QDL) ;
+MAP (&grm-non-agreement) TARGET VFIN IF (NOT 0 Sg3 LINK -1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN LINK *-1 QDL) ;
+MAP (&grm-non-agreement) TARGET VFIN IF (NOT 0 Pl3 LINK -1 (N Pl Nom) LINK *-1 QDL) ;
+MAP (&grm-non-agreement) TARGET VFIN IF (NOT 0 Du3 LINK -1 DUALIS-NOUN + Nom LINK *-1 QDL) ;
+
+# -------------
+# ONLY ONE VFIN
+# -------------
+
+MAP (&grm-should_not_Vfin) TARGET VFIN IF (*-1 VFIN BARRIER CC OR MO OR Rel LINK *-1 QDL) ;
+    ## Mun áiggun láibut.
+
+# ---------------------
+# AGREEMENT SUBJ/SPRED
+# ---------------------
 
 
-LIST DRINKVERB = "juhkat" "šlubistit" "čuohkat" ;
-
-LIST DRINK = "bruvsa" ;
-
-
-MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL LINK NOT *1 DRINK)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3)) ;
-
-#MAP (&grm-accObj) TARGET TV IF (*1 QDL LINK NOT *1 DRINK + Acc);
-	# 
+MAP (&grm-non-agreement) TARGET (A Pl Nom) IF (*-1 COPULAS BARRIER NOT-ADV LINK -1 (Sg Nom) OR SGPRON + Nom LINK *-1 QDL) ;
+MAP (&grm-non-agreement) TARGET (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV LINK -1 (Pl Nom) OR PLPRON + Nom OR DUPRON + Nom LINK *-1 QDL) ;
+    ## Nieiddat leat čeahpit.
+    ## Nieida lea čeahppi.
 
 
-MAP (&dia-neg) TARGET QDL IF (*-1 Qst)(*1 Neg);
-	## Háliidatgo bruvssa?
-	## In &dia-neg 
-	## hálit
+
+# ---------
+# SEMANTICS
+# ---------
+
+# Probably we want need it at this time.
+#LIST DRINKVERB = "juhkat" "šlubistit" "čuohkat" ;
+#MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL LINK NOT *1 LIQUID)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3)) ;
+
+# ------------------------
+# Affirmative or negative?
+# ------------------------
+
+
+MAP (&dia-neg) TARGET QDL IF (*-1 QDL LINK *-1 Qst)(*1 Neg);
+	## Háliidatgo bruvssa? In háliit.
+MAP (&dia-pos) TARGET QDL IF (*-1 QDL LINK *-1 Qst)(NOT *1 Neg);
+	## Háliidatgo bruvssa? De háliidan.
+
 
 # ------------------
 # Picking the target
