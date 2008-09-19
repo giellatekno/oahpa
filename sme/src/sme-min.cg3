@@ -2567,20 +2567,27 @@ MAPPING-PREFIX = & ;
 LIST QMRK = ? ;
 
 
-MAP (&spellingerror) TARGET QMRK ;
+# Cleanup rules
+
+# Get rid of imperatives
+
+
+MAP (&err-spellingerror) TARGET QMRK ;
+
+# Gluing in from the min file, to test:
 
 # na+Pcle can only be initial:
-MAP (&naPcle) TARGET ("na" Pcle) IF (-1 NOT-PCLE) ;
+MAP (&grm-naPcle) TARGET ("na" Pcle) IF (-1 NOT-PCLE) ;
 
 # fal+Adv can only be non-initial:
-MAP (&falAdv) TARGET ("fal" Adv) IF (NEGATE -1 WORD) ;
+MAP (&grm-falAdv) TARGET ("fal" Adv) IF (NEGATE -1 WORD) ;
 
 # We choose Interj when it is the only reading:
 REMOVE Interj ;
 
 # Interj can only be initial or final:
-MAP:1 (&notInterj) TARGET Interj IF (-1 WORD)(NEGATE *1 EOS BARRIER WORD);
-MAP:2 (&notInterj) TARGET Interj IF (NEGATE *-1 BOS BARRIER WORD)(1 WORD) ;
+MAP:1 (&grm-notInterj) TARGET Interj IF (-1 WORD)(NEGATE *1 EOS BARRIER WORD);
+MAP:2 (&grm-notInterj) TARGET Interj IF (NEGATE *-1 BOS BARRIER WORD)(1 WORD) ;
 
 LIST Attr-CC-Adv = Attr CC Adv ;
 SET NOT-Attr-CC-Adv = WORD - Attr-CC-Adv ;
@@ -2591,16 +2598,55 @@ SELECT:2 Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; # when there is no other possible
 SELECT:3 Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; # no there should be less ambiguity.
 
 # Should be Attr when: + (Attr) + N
-MAP (&shouldAttr) TARGET A IF (NEGATE 0 Attr)(*1 N BARRIER NOT-Attr-CC-Adv) ;
+MAP (&grm-shouldAttr) TARGET A IF (NEGATE 0 Attr)(*1 N BARRIER NOT-Attr-CC-Adv) ;
 
 
 # Is it need for defining at it should be GRADE-ADV?
-# Another way would be
 
-
+# Q
 # Should not be an Attr if it is not in front of N
 MAP (&shouldNotAttr) TARGET Attr IF (NEGATE 0 Nom)(NEGATE *1 N BARRIER NOT-ADJ-CC) ;
 # The barrier is not good if the Attr has another reading than A.
 
+LIST DRINKVERB = "juhkat" "šlubistit" "čuohkat" ;
 
+LIST DRINK = "bruvsa" ;
+
+LIST QDL = QDL ;
+
+MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL LINK NOT *1 DRINK)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3)) ;
+
+MAP (&grm-accObj) TARGET TV IF (*1 QDL LINK NOT *1 DRINK + Acc);
+	# 
+MAP (&grm-Vfin) TARGET V IF (*1 QDL LINK NOT *1 VFIN);
+	# You should use a finite verb when answering...
+
+LIST TARGETQUESTION-NOM = ("mii" Nom) ("gii" Nom) ;
+LIST TARGETQUESTION-ACC = ("mii" Acc) ("gii" Acc) ;
+LIST TARGETQUESTION-GEN = ("gii" Gen) ;
+LIST TARGETQUESTION-ILL = "gosa" ("mii" Ill) ("gii" Ill) ;
+LIST TARGETQUESTION-LOC = "gos" "gokko" ("mii" Loc) ("gii" Loc) ;
+LIST TARGETQUESTION-COM = ("mii" Com) ("gii" Com) ;
+LIST TARGETQUESTION-ESS = ("mii" Ess) ("gii" Ess) ;
+
+#LIST LOCADV = "dáppe" ; we have already DOPPE-set
+
+MAP (&grm-missing-Loc) TARGET TARGETQUESTION-LOC IF (*1 QDL LINK NOT *1 Loc OR DOPPE);
+
+MAP (&grm-missing-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK NOT *1 Ill);
+
+
+MAP (&dia-neg) TARGET QDL IF (*-1 Qst)(*1 Neg);
+	## Háliidatgo bruvssa?
+	## In &dia-neg 
+	## hálit
+
+
+MAP (&dia-target) TARGET Nom IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM) ; # LINK -1 BOS) ;
+MAP (&dia-target) TARGET Acc IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC) ; # LINK -1 BOS) ;
+MAP (&dia-target) TARGET Gen IF (*-1 QDL LINK *-1 TARGETQUESTION-GEN) ; # LINK -1 BOS) ;
+MAP (&dia-target) TARGET Ill IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL) ; # LINK -1 BOS) ;
+MAP (&dia-target) TARGET Loc IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC LINK -1 BOS) ;
+MAP (&dia-target) TARGET Com IF (*-1 QDL LINK *-1 TARGETQUESTION-COM) ; # LINK -1 BOS) ;
+MAP (&dia-target) TARGET Ess IF (*-1 QDL LINK *-1 TARGETQUESTION-ESS) ; # LINK -1 BOS) ;
 
