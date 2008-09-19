@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
+-->
+
+<!-- xml-structure for questions in morphdrill -->
+<!-- Questions for verbs. Not yet potential -->
+<questions>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+<!-- MAINV must agree with SUBJ in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
+<!-- comment from saara: The mainv-answersubject agreement is implemented otherwise, -->
+<!-- because it is so special. It does not have to be marked explicitely. -->
+  <q>
+    <qtype>MAINV-PRS</qtype>
+   <question>
+      <text>Maid SUBJ MAINV odne</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<id>bargat</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </question>
+  </q> 
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+  <q id="somenumberorname">
+    <qtype>MAINV-PRS</qtype>
+    <question>
+      <text>Maid SUBJ MAINV odne</text>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<id>bargat</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </question>
+  </q>
+
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+<!-- Taken these -guovttos forms out for a while /sh
+  <q>
+    <qtype>MAINV-PRS</qtype>
+    <question>
+      <text>Maid SUBJ-guovttos bargaba odne</text>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Sg+Gen"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Odne soai MAINV</text>
+      <element id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prs+Du3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+-->
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+<!-- MAINV must agree with SUBJ in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
+    <q>
+    <qtype>MAINV-PRT</qtype>
+   <question>
+      <text>Maid SUBJ MAINV ikte</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<id>bargat</id> 
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Ikte SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element game='morfa' id="MAINV" task="yes">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element>
+<!--      <element game='qa' id="MAINV">
+	<grammar pos="V"/>
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element> -->
+    </answer>
+  </q> 
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+  <q>
+    <qtype>MAINV-PRT</qtype>
+    <question>
+      <text>Maid SUBJ MAINV ikte</text>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar pos="N"/>
+      </element>
+      <element  id="MAINV">
+	<id>bargat</id> 
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Ikte SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element game='morfa' id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>son</id>
+	<sem class="ACTIVITY"/>
+      </element>
+<!--      <element game='qa' id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<grammar pos="V"/>
+      </element> -->
+    </answer>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+<!-- taken out -guovttos /sh
+  <q>
+    <qtype>MAINV-PRT</qtype>
+    <question>
+      <text>Maid SUBJ-guovttos barggaiga ikte</text>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Sg+Gen"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Ikte soai MAINV</text>
+      <element id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prt+Du3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+-->
+<!--- ==========  conditional =========   -->
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+<!-- MAINV must agree with SUBJ in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
+  <q>
+    <qtype>V-COND</qtype>
+    <question>
+      <text>Maid SUBJ MAINV luomus</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<id>bargat</id> 
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Luomus SUBJ V-COND</text>
+      <element game='morfa' id="V-COND" syntax="MAINV" task="yes">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+      </element>
+<!--      <element game='qa' id="V-COND">
+	<grammar pos="V"/>
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+      </element> -->
+    </answer>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+  <q>
+    <qtype>V-COND</qtype>
+    <question>
+      <text>Maid SUBJ MAINV luomus</text>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Number+Nom"/>
+      </element>
+      <element  id="MAINV">
+	<id>bargat</id> 
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Luomus SUBJ V-COND</text>
+      <element game='morfa' id="SUBJ">
+	<id>son</id>
+	<grammar pos="Pron"/>
+      </element>
+      <element game='morfa' id="V-COND" syntax="MAINV" task="yes">
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+	<sem class="ACTIVITY"/>
+      </element>
+<!--      <element game='qa' id="V-COND">
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+	<grammar pos="V"/>
+      </element> -->
+    </answer>
+  </q>
+
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
+<!-- taken out -guovttos /sh
+  <q>
+    <qtype>V-COND</qtype>
+    <question>
+      <text>Maid SUBJ-guovttos barggašeigga luomus</text>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Sg+Gen"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Luomus soai V-COND</text>
+      <element id="V-COND" task="yes">
+	<grammar tag="V+Cond+Prs+Du3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+-->
+
+<!--- ==========  Potential , only for Morfa =========   -->
+
+<q>
+    <qtype>V-POT</qtype>
+  <question>
+    <text>MAINV go SUBJ</text>
+    <element id="MAINV">
+      <grammar tag="V+Ind+Prs+Person-Number"/>
+      <sem class="ACTIVITY"/>
+    </element>
+    <element id="SUBJ">
+      <sem class="HUMAN"/>
+      <grammar pos="N"/>
+    </element>
+  </question>
+  <answer> 
+    <text>In dieđe V-POT go</text>
+      <element game='morfa' id="V-POT" syntax="MAINV" content="MAINV" task="yes">
+	<agreement id="SUBJ"/>
+      </element>
+    </answer>
+  </q>
+
+
+
+
+<!--- ==========  Imperative, all of them only for Morfa =========   -->
+
+  <q>
+    <qtype>V-IMPRT</qtype>
+   <question>
+      <text>Mun áiggošin MAINV</text>
+       <element id="MAINV">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Inf"/>
+      </element>
+   </question>
+    <answer> 
+      <text>V-IMPRT fal</text>
+      <element game='morfa' id="V-IMPRT" content="MAINV" task="yes">
+	<grammar tag="V+Imprt+Prs+Sg2"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>V-IMPRT</qtype>
+   <question>
+      <text>Moai áiggošeimme MAINV</text>
+       <element id="MAINV">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Inf"/>
+      </element>
+   </question>
+    <answer> 
+      <text>V-IMPRT fal</text>
+      <element game='morfa' id="V-IMPRT" content="MAINV" task="yes">
+	<grammar tag="V+Imprt+Prs+Du2"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>V-IMPRT</qtype>
+   <question>
+      <text>Mii áiggošeimmet MAINV</text>
+       <element id="MAINV">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Inf"/>
+      </element>
+   </question>
+    <answer> 
+      <text>V-IMPRT fal</text>
+      <element game='morfa' id="V-IMPRT" content="MAINV" task="yes">
+	<grammar tag="V+Imprt+Prs+Pl2"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>V-IMPRT</qtype>
+   <question>
+      <text>Sihke don ja mun áiggošeimme MAINV</text>
+       <element id="MAINV">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Inf"/>
+      </element>
+   </question>
+    <answer> 
+      <text>V-IMPRT dál</text>
+      <element game='morfa' id="V-IMPRT" content="MAINV" task="yes">
+	<grammar tag="V+Imprt+Prs+Du1"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>V-IMPRT</qtype>
+   <question>
+      <text>Sihke don ja mii áiggošeimmet MAINV</text>
+       <element id="MAINV">
+	<sem class="ACTIVITY"/>
+	<grammar tag="V+Inf"/>
+      </element>
+   </question>
+    <answer> 
+      <text>V-IMPRT dál</text>
+      <element game='morfa' id="V-IMPRT" content="MAINV" task="yes">
+	<grammar tag="V+Imprt+Prs+Pl1"/>
+      </element>
+    </answer>
+  </q>
+
+<!--- ==========  go-questions =========   -->
+
+
+<!-- Both Morfa and QA: -->
+  <q>
+    <qtype>MAINV-PRT</qtype>
+    <question>
+      <text>MAINV go SUBJ ikte</text>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<sem class="ACTIVITY"/>
+      </element>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar pos="N"/>
+      </element>
+    </question>
+    <answer> 
+      <text>De MAINV</text>
+      <element id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Ikte gal NEG PRFPRC</text>
+      <element game='morfa' id="NEG" syntax="MAINV" task="yes">
+	<grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element game='morfa' id="PRFPRC" content="MAINV">
+	<grammar tag="V+PrfPrc"/>
+      </element>
+<!--      <element game='qa' id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element game='qa' id="NEG">
+	<grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element game='qa' id="PRFPRC">
+	<grammar tag="V+PrfPrc"/>
+      </element> -->
+    </answer>
+    <answer> 
+      <text>Ikte gal NEG PRFPRC</text>
+      <element game='morfa' id="NEG" syntax="MAINV">
+	<grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element game='morfa' id="PRFPRC" content="MAINV" task="yes">
+	<grammar tag="V+PrfPrc"/>
+      </element>
+    </answer>
+  </q>
+
+<!-- Both Morfa and QA: -->
+  <q>
+    <qtype>MAINV-PRS</qtype>
+    <question>
+      <text>MAINV go SUBJ odne</text>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<sem class="ACTIVITY"/>
+      </element>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar pos="N"/>
+      </element>
+    </question>
+    <answer> 
+      <text>De MAINV</text>
+      <element id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Odne gal NEG CONNEG</text>
+      <element game='morfa' id="NEG" syntax="MAINV" task="yes">
+	<grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element game='morfa' id="CONNEG" content="MAINV">
+	<grammar tag="V+ConNeg"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Odne gal NEG CONNEG</text>
+      <element game='morfa' id="NEG" syntax="MAINV">
+	<grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element game='morfa' id="CONNEG" content="MAINV" task="yes">
+	<grammar tag="V+ConNeg"/>
+      </element>
+    </answer>
+  </q>
+
+<!-- Both Morfa and QA: -->
+<q>
+  <qtype>V-COND</qtype>
+  <question>
+    <text>MAINV go SUBJ luomus</text>
+    <element id="MAINV">
+      <grammar tag="V+Cond+Prs+Person-Number"/>
+      <sem class="ACTIVITY"/>
+    </element>
+    <element id="SUBJ">
+      <sem class="HUMAN"/>
+      <grammar pos="N"/>
+    </element>
+  </question>
+  <answer> 
+    <text>Luomus gal MAINV</text>
+  </answer>
+    <answer> 
+      <text>Luomus gal NEG CONNEG</text>
+      <element game='morfa' id="NEG" syntax="MAINV" task="yes">
+	<grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element game='morfa' id="CONNEG" content="MAINV">
+	<grammar tag="V+Cond+Prs+ConNeg"/>
+      </element>
+<!--      <element game='qa' id="NEG">
+	<grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element game='qa' id="CONNEG">
+	<grammar tag="V+Cond+Prs+ConNeg"/>
+      </element> -->
+    </answer>
+    <answer> 
+      <text>Luomus gal NEG CONNEG</text>
+      <element game='morfa' id="NEG" syntax="MAINV">
+	<grammar tag="Neg+Ind+Person-Number"/>
+      </element>
+      <element game='morfa' id="CONNEG" content="MAINV" task="yes">
+	<grammar tag="V+Cond+Prs+ConNeg"/>
+      </element>
+    </answer>
+  </q>
+
+</questions>
+
+
+
+
