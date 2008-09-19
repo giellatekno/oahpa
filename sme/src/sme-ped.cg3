@@ -13381,28 +13381,12 @@ LIST DRINK = "bruvsa" ;
 
 LIST QDL = QDL ;
 
-MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL NOT *1 DRINK)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3)) ;
+MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL LINK NOT *1 DRINK)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3)) ;
 
 MAP (&grm-accObj) TARGET TV IF (*1 QDL LINK NOT *1 DRINK + Acc);
 	# 
-MAP (&grm-Vfin) TARGET V IF (*1 DL LINK NOT *1 VFIN);
+MAP (&grm-Vfin) TARGET V IF (*1 QDL LINK NOT *1 VFIN);
 	# You should use a finite verb when answering...
-
-LIST LOCTRIGGER = "gos" ;
-LIST GENERATED_BOUNDARY = CLB ;
-LIST LOCADV = "dáppe" ;
-
-MAP (&grm-missing-Loc) TARGET LOCTRIGGER IF (*1 QDL LINK NOT *1 Loc OR LOCADV);
-
-LIST ILLTRIGGER = "masa" ;
-
-MAP (&grm-missing-Ill) TARGET LOCTRIGGER IF (*1 QDL LINK NOT *1 Ill OR Inf);
-
-
-MAP (&dia-neg) TARGET QDL IF (*-1 Qst)(*1 Neg);
-	## Háliidatgo bruvssa?
-	## In &dia-neg 
-	## hálit
 
 LIST TARGETQUESTION-NOM = ("mii" Nom) ("gii" Nom) ;
 LIST TARGETQUESTION-ACC = ("mii" Acc) ("gii" Acc) ;
@@ -13412,11 +13396,24 @@ LIST TARGETQUESTION-LOC = "gos" "gokko" ("mii" Loc) ("gii" Loc) ;
 LIST TARGETQUESTION-COM = ("mii" Com) ("gii" Com) ;
 LIST TARGETQUESTION-ESS = ("mii" Ess) ("gii" Ess) ;
 
+#LIST LOCADV = "dáppe" ; we have already DOPPE-set
+
+MAP (&grm-missing-Loc) TARGET TARGETQUESTION-LOC IF (*1 QDL LINK NOT *1 Loc OR DOPPE);
+
+MAP (&grm-missing-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK NOT *1 Ill);
+
+
+MAP (&dia-neg) TARGET QDL IF (*-1 Qst)(*1 Neg);
+	## Háliidatgo bruvssa?
+	## In &dia-neg 
+	## hálit
+
+
 MAP (&dia-target) TARGET Nom IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM) ; # LINK -1 BOS) ;
 MAP (&dia-target) TARGET Acc IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC) ; # LINK -1 BOS) ;
 MAP (&dia-target) TARGET Gen IF (*-1 QDL LINK *-1 TARGETQUESTION-GEN) ; # LINK -1 BOS) ;
 MAP (&dia-target) TARGET Ill IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL) ; # LINK -1 BOS) ;
-MAP (&dia-target) TARGET Loc IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC) ; # LINK -1 BOS) ;
+MAP (&dia-target) TARGET Loc IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC LINK -1 BOS) ;
 MAP (&dia-target) TARGET Com IF (*-1 QDL LINK *-1 TARGETQUESTION-COM) ; # LINK -1 BOS) ;
 MAP (&dia-target) TARGET Ess IF (*-1 QDL LINK *-1 TARGETQUESTION-ESS) ; # LINK -1 BOS) ;
 
