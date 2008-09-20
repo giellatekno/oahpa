@@ -1,7 +1,7 @@
 {% extends "mgame.html" %}
 {% load i18n %}
 
-{% block instructions %}<p>{{ gamename }}</p>{% endblock %}
+{% block instructions %}<p>{{ settings.gamename }}</p>{% endblock %}
 
 {% block selectionname %}<td>{% trans "Case" %}</td>{% endblock %}
 {% block selection %}<td>{{ settingsform.case }}</td>{% endblock %}
