@@ -7,7 +7,8 @@ from django.db.models import Q
 from django.utils.translation import ugettext as _
 from random import randint
 from models import *
-
+import time
+import datetime
 
 POS_CHOICES = (
     ('N', _('noun')),
@@ -49,7 +50,8 @@ GRADE_CHOICES = (
 )
 
 VTYPE_CHOICES = (
-    ('MAINV', _('tense')),
+    ('PRS', _('present')),
+    ('PST', _('past')),
     ('V-COND', _('conditional')),
     ('V-IMPRT', _('imperative')),
     ('V-GO', _('go-questions')),
@@ -146,7 +148,7 @@ NUMGAME_CHOICES = (
 
 
 
-def is_correct(self):
+def is_correct(self, game, example=None):
     """
     Determines if the given answer is correct (for a bound form).
     """
@@ -159,12 +161,21 @@ def is_correct(self):
     answer = answer.rstrip('.!?,')
     
     self.error = "error"
+    iscorrect = False
 
     #print "ANSWER", answer
     if answer in set(self.correct_anslist) or \
            answer.lower() in set(self.correct_anslist) or \
            answer.upper() in set(self.correct_anslist):
         self.error = "correct"
+        iscorrect = True
+
+    # Log information about user answers.
+    correctlist = ",".join(self.correct_anslist)
+    today=datetime.date.today()
+    log, c = Log.objects.get_or_create(userinput=answer,correct=correctlist,iscorrect=iscorrect,\
+                                       example=example,game=game,date=today)
+    log.save()
 
 def set_correct(self):
     """
@@ -218,7 +229,13 @@ class MorphForm(forms.Form):
     trisyllabic = forms.BooleanField(required=False,initial=0)
     contracted = forms.BooleanField(required=False,initial=0)
     grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
-    default_data = {'pos': 'N'}
+    default_data = {'gametype' : 'bare', 'language' : 'sme', \
+                    'syll' : ['bisyllabic'], 'book' : 'all', \
+                    'case': 'N-ILL', 'pos' : 'N', \
+                    'vtype' : 'PRS', 'vtype_bare' : 'PRS', \
+                    'num_context' : 'NUM-ATTR', \
+                    'adjcase' : 'ATTR', 'grade' : 'POS'}
+
 
     def __init__(self, *args, **kwargs):
         self.set_settings()
@@ -239,7 +256,7 @@ class MorphQuestion(forms.Form):
         
         if tag.pos=="N":
             print "filtering feedbacks"
-            print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi,tag.case,tag.pos,tag.number
+            #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi,tag.case,tag.pos,tag.number
             feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
                                                 Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
                                                 Q(soggi=word.soggi) & Q(case=tag.case) & \
@@ -309,12 +326,12 @@ class MorphQuestion(forms.Form):
             self.correct_anslist.append(item.fullform)
         
         if tag.pos=="N":
-            self.tag = ""
+            #self.tag = ""
             self.case = tag.case
-        if tag.pos=="V":
-            self.tag = ""
-        else:
-            self.tag = tag.string
+        #if tag.pos=="V":
+        #    self.tag = ""
+        #else:
+        self.tag = tag.string
 
         if tag.pos=="V" and tag.personnumber and not tag.personnumber == "ConNeg" :
             pronbase = self.PronPNBase[tag.personnumber]
@@ -323,7 +340,7 @@ class MorphQuestion(forms.Form):
 
             print self.pron
 
-        self.is_correct()
+        self.is_correct("morfa" + "_" + tag.pos, self.lemma + "+" + self.tag)
 
         # set correct and error values
         if correct_val == "correct":
@@ -334,16 +351,21 @@ class QuizzForm(forms.Form):
 
     set_settings = set_settings
 
-    semtype = forms.ChoiceField(initial='all', choices=SEMTYPE_CHOICES, widget=forms.Select)
+    semtype = forms.ChoiceField(initial='NATUREWORDS', choices=SEMTYPE_CHOICES, widget=forms.Select)
     transtype = forms.ChoiceField(initial='smenob', choices=TRANS_CHOICES, widget=forms.Select)
+
     # For placename quizz
     common = forms.BooleanField(required=False, initial='1')
     rare = forms.BooleanField(required=False,initial=0)
     sapmi = forms.BooleanField(required=False, initial='1')
     world = forms.BooleanField(required=False,initial=0)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
-    #geography = forms.ChoiceField(initial='all', choices=GEOGRAPHY_CHOICES, widget=forms.Select)
-    #frequency = forms.ChoiceField(initial='all', choices=FREQUENCY_CHOICES, widget=forms.Select)
+    default_data = {'gametype' : 'bare', 'language' : 'sme', \
+                    'syll' : [], 'book' : 'all', \
+                    'semtype' : 'NATUREWORDS', \
+                    'frequency' : ['common'], 'geography' : ['sapmi'], \
+                    'transtype' : 'smenob' }
+
 
     def __init__(self, *args, **kwargs):
         self.set_settings()
@@ -378,7 +400,7 @@ class QuizzQuestion(forms.Form):
         for item in translations:
             self.correct_anslist.append(item.lemma)
 
-        self.is_correct()
+        self.is_correct("leksa", self.lemma)
 
         # set correct and error values
         if correct_val == "correct":
@@ -391,7 +413,8 @@ class NumForm(forms.Form):
     maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
     numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
     language = forms.ChoiceField(initial='sme', choices=LANGUAGE_CHOICES, widget=forms.RadioSelect)
-
+    default_data = {'language' : 'sme', 'maxnum' : '10', 'numgame': 'numeral'}
+                    
     def __init__(self, *args, **kwargs):
         self.set_settings
         super(NumForm, self).__init__(*args, **kwargs)
@@ -421,11 +444,13 @@ class NumQuestion(forms.Form):
 
         if gametype == "string":
             self.correct_anslist.append(numeral)
+            example = num_string
         else:
+            example = numeral
             for item in num_list:
                 self.correct_anslist.append(item)
-                
-        self.is_correct()
+
+        self.is_correct("numra", example)
 
         # set correct and error values
         if correct_val == "correct":
@@ -558,7 +583,6 @@ def qa_is_correct(self, atext, awords):
             if not found:
                 problems.append(word)
 
-    print "********************", problems
     self.problems = string.join(problems, ', ' )
     if not problems:
         self.error = "correct"
@@ -574,7 +598,12 @@ class QAForm(forms.Form):
     vtype = forms.ChoiceField(initial='MAINV', choices=VTYPE_CHOICES, widget=forms.Select)
     vtype_bare = forms.ChoiceField(initial='PRS', choices=VTYPE_BARE_CHOICES, widget=forms.Select)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
-    default_data = {'pos': 'N'}
+    default_data = {'gametype' : 'qa', 'language' : 'sme', \
+                    'syll' : ['bisyllabic'], 'book' : 'all', \
+                    'case': 'N-ILL', 'pos' : 'N', \
+                    'vtype' : 'PRS', 'vtype_bare' : 'PRS', \
+                    'num_context' : 'NUM-ATTR', \
+                    'adjcase' : 'ATTR', 'grade' : 'POS'}
 
     def __init__(self, *args, **kwargs):
         self.set_settings()
@@ -590,7 +619,7 @@ class QAQuestion(forms.Form):
     set_correct = set_correct
     is_correct = is_correct
     qa_is_correct = qa_is_correct
-    qtype_verbs = set(['MAINV','V-COND','V-IMPRT','V-GO'])
+    qtype_verbs = set(['PRS', 'PRT', 'V-COND','V-IMPRT','V-GO'])
 
         
     def __init__(self, gametype, question, qanswer, \
@@ -607,7 +636,7 @@ class QAQuestion(forms.Form):
         
         qtype=question.qtype
         if qtype in self.qtype_verbs:
-            qtype = 'MAINV'
+            qtype = 'PRS'
 
         question_widget = forms.HiddenInput(attrs={'value' : question.id})
         answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})
@@ -638,7 +667,7 @@ class QAQuestion(forms.Form):
         if (gametype == 'context'):
             if len(selected_awords[qtype]['fullform'])>0:
                 self.correct_anslist = selected_awords[qtype]['fullform'][:]
-                self.is_correct()
+                self.is_correct("contextual morfa")
                             
         self.qattrs= {}
         self.aattrs= {}        
