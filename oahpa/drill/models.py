@@ -3,17 +3,14 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
-SUBTYPE_CHOICES = (
-    ('bisyllabic', _('bisyllabic')),
-    ('trisyllabic', _('trisyllabic')),
-    ('contracted', _('contracted')),
-)
-
-POS_CHOICES = (
-    ('N', _('noun')),
-    ('V', _('verb')),
-    ('Adj', _('adjective')),
-)
+class Log(models.Model):
+    game = models.CharField(max_length=10)
+    date = models.DateField(blank=True, null=True)
+    userinput = models.CharField(max_length=200)
+    iscorrect = models.BooleanField()
+    correct = models.CharField(max_length=200)
+    example = models.CharField(max_length=200)
+    comment = models.CharField(max_length=200)
 
 class Semtype(models.Model):
     semtype = models.CharField(max_length=50)
@@ -21,6 +18,11 @@ class Semtype(models.Model):
 class Source(models.Model):
     type = models.CharField(max_length=20)
     name = models.CharField(max_length=20)
+
+# First, define the Manager subclass.
+class NPosManager(models.Manager):
+    def get_query_set(self):
+        return super(NPosManager, self).get_query_set().filter(pos='N')
 
 class Word(models.Model):
     wordid = models.CharField(max_length=200)
@@ -39,6 +41,11 @@ class Word(models.Model):
     translations = models.ManyToManyField('Wordnob')
     frequency = models.CharField(max_length=10)
     geography = models.CharField(max_length=10)
+
+    objects = models.Manager() # The default manager.
+    N_objects = NPosManager() # The Noun-specific manager
+
+
     
 class Wordnob(models.Model):
     wordid = models.CharField(max_length=200)
@@ -78,7 +85,7 @@ class Tag(models.Model):
 class Form(models.Model):
     word = models.ForeignKey(Word)
     tag = models.ForeignKey(Tag)
-    fullform = models.CharField(max_length=200, core=True)
+    fullform = models.CharField(max_length=200)
 
 class Question(models.Model):
     string = models.CharField(max_length=200)
