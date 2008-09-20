@@ -4831,15 +4831,15 @@ SELECT:r1120 Po IF (-1 (PUNCT RIGHT))(*-2 (PUNCT LEFT) LINK -1 Gen);
 
 	# Requiring Genitive
 
-REMOVE:r1121 Po IF (NEGATE -2 MANNU LINK 1 Ord)(NEGATE -1 (N Gen) OR (A Gen) OR (Num Gen) OR (Pron Gen) OR (Actio Gen) OR (Num Nom))(NEGATE 0 ("gaskan"));
-REMOVE:r1122 Po IF (-1 N)(NEGATE -1 Gen); 
-	#REMOVE Po IF (0 ("mielde"))(-1 Acc)(-2 TV);
-	
-REMOVE:r1123 Pr IF (NEGATE *1 N OR A OR Num OR Pron BARRIER NPNH);
-	## Jus divššohas lea badjel 16 jagi boaris,... 
-	## Leansmánni lea kommišuvnnas fárus.
-	## Na mun gal hupmen dan birra.
-	## Kapihttala 11 mielde.
+#REMOVE:r1121 Po IF (NEGATE -2 MANNU LINK 1 Ord)(NEGATE -1 (N Gen) OR (A Gen) OR (Num Gen) OR (Pron Gen) OR (Actio Gen) OR (Num Nom))(NEGATE 0 ("gaskan"));
+#REMOVE:r1122 Po IF (-1 N)(NEGATE -1 Gen); 
+#	#REMOVE Po IF (0 ("mielde"))(-1 Acc)(-2 TV);
+#	
+#REMOVE:r1123 Pr IF (NEGATE *1 N OR A OR Num OR Pron BARRIER NPNH);
+#	## Jus divššohas lea badjel 16 jagi boaris,... 
+#	## Leansmánni lea kommišuvnnas fárus.
+#	## Na mun gal hupmen dan birra.
+#	## Kapihttala 11 mielde.
 
 SELECT:r1124 Pr IF (NEGATE -1 Gen OR (Pron Interr Nom))(NEGATE 0 A OR VFIN OR Adv)(*1 (N Gen) BARRIER NPNH LINK 0 HNOUN);
 	## Jus divššohas lea vuollil 16 jagi boaris,...
@@ -4853,7 +4853,7 @@ SELECT:r1126 Pr IF (-1 V-MAIN LINK 0 VFIN OR ConNeg OR PrfPrc)(0 Adv)(1 Gen)(NEG
 SELECT:r1127 Pr IF (NEGATE -1 Gen)(1 (Pron Gen));
 	## ...muhto ovdal dan áiggi ledje "sápmelaččat boahtán dán guvlui". 
 
-REMOVE:r1128 Pr IF (NEGATE 1 (Num Gen))(NEGATE *1 (N Gen) BARRIER NPNHA OR (Num Nom));
+#REMOVE:r1128 Pr IF (NEGATE 1 (Num Gen))(NEGATE *1 (N Gen) BARRIER NPNHA OR (Num Nom));
 	## Olbmuin bisttii luossaguolli miehtá dálvvi. 
 	## Ovdal dan aiggi ledje sápmelaččat boahtán dán guvlui.
 	## Gonagas addá láhkaásahusa lága geavaheami birra Svalbarddas.
@@ -4883,7 +4883,7 @@ SELECT:r1136 Po IF (-1C Gen LINK NOT 0 Num)(NEGATE 0 NOUN-PO OR ("mielde") OR ("
 SELECT:r1137 Pr IF (1 (Num Gen));
 	## Vuollel 12 jahkásaš mánáin ii leat iešheanalis geahččanvuoigatvuohta.
 
-REMOVE:r1138 Pr IF (NEGATE *1 Gen BARRIER NPNH);
+#REMOVE:r1138 Pr IF (NEGATE *1 Gen BARRIER NPNH);
 	## Geavatlaš sivaid geažil čatnasa bajimus submi namuhuvvon máksomearrái. 
 SELECT:r1139 Pr IF (0 TIME-PREP)(1 TIME OR ("soahti"))(NEGATE 2 Po);
   	## DBE dáhttu oažžut dieđu suohkanis ovdal 01.11.99. 
@@ -4906,7 +4906,7 @@ SELECT:r1142 Po IF (-1 Gen LINK NOT 0 Num OR MEASURE) (NEGATE 0 Refl LINK -1 Prf
 	## Daid ovddas gal in máksán maidege.
 
 SELECT:r1143 Po IF (-1 Num)(0 ("rádjai")); # Make general rule!
-REMOVE:r1144 Po IF (NEGATE -1 Gen OR Num)(NEGATE 0 ("gaskan"));
+#REMOVE:r1144 Po IF (NEGATE -1 Gen OR Num)(NEGATE 0 ("gaskan"));
 	## ... paragráfaide 3-18 rájes 3-21 rádjái.
 	## Jus divššohas dasa miehtá,... 
 
@@ -5987,6 +5987,10 @@ MAP:2 (&grm-notInterj) TARGET Interj IF (NEGATE *-1 BOS BARRIER WORD)(1 WORD) ;
 REMOVE Px (NOT 0 N-PX) ;
 REMOVE Foc/ba (0 (V Du3)) ;
 
+# -------
+# VERBS 1 
+# -------
+
 SELECT ConNeg (-1 Neg) ;
 
 LIST VFIN-PRON-TAG = Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 ;  
@@ -6000,6 +6004,16 @@ SELECT:agreement3 (V Du3) (-1 DUALIS-NOUN + Nom LINK *-1 QDL) ;
 
 # Removing other readings even if there is no agreement:
 SELECT VFIN (-1 (N Nom) OR (Pers Nom) LINK *-1 QDL) ;
+
+# -----
+# PP
+# -----
+
+SELECT (N Gen) (*-1 QDL)(1 Po) ;
+SELECT (N Gen) (*-1 Pr BARRIER NPNH LINK *-1 QDL) ;
+
+MAP (&grm-missing-Gen-PP) TARGET N (*-1 QDL)(NOT 0 Gen LINK 1 Po) ;
+    ## Gohppu lea beavddi nalde.
 
 # ----------
 # NP - RULES
@@ -6041,17 +6055,16 @@ SELECT A (*-1 QDL)(*1 N OR Pers BARRIER NPNH LINK 1 COPULAS) ;
 MAP (&grm-shouldAttr) TARGET A IF (NEGATE 0 Attr)(*1 N BARRIER NOT-Attr-CC-Adv) ;
 
 # Should not be an Attr if it is not in front of N
-MAP (&shouldNotAttr) TARGET Attr IF (NEGATE 0 Nom)(NEGATE *1 N BARRIER VERB) ;
+MAP (&grm-shouldNotAttr) TARGET Attr IF (NEGATE 0 Nom)(NEGATE *1 N BARRIER VERB) ;
 
  
 LIST TARGETQUESTION-NOM = ("mii" Nom) ("gii" Nom) ;
 LIST TARGETQUESTION-ACC = ("mii" Acc) ("gii" Acc) ;
 LIST TARGETQUESTION-GEN = ("gii" Gen) ;
-LIST TARGETQUESTION-ILL = "gosa" ("mii" Ill) ("gii" Ill) ;
-LIST TARGETQUESTION-LOC = "gos" "gokko" ("mii" Loc) ("gii" Loc) ;
+LIST TARGETQUESTION-ILL = ("mii" Ill) ("gii" Ill) ;
+LIST TARGETQUESTION-LOC = ("mii" Loc) ("gii" Loc) ;
 LIST TARGETQUESTION-COM = ("mii" Com) ("gii" Com) ;
 LIST TARGETQUESTION-ESS = ("mii" Ess) ("gii" Ess) ;
-
 
 MAP (&grm-missing-Loc) TARGET TARGETQUESTION-LOC IF (*1 QDL LINK NOT *1 Loc OR DOPPE);
 MAP (&grm-missing-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK NOT *1 Ill OR DOHKO);
@@ -6060,6 +6073,17 @@ MAP (&grm-missing-Acc) TARGET TARGETQUESTION-ACC IF (*1 QDL LINK NOT *1 Acc);
 MAP (&grm-missing-Nom) TARGET TARGETQUESTION-NOM IF (*1 QDL LINK NOT *1 Nom);
 MAP (&grm-missing-Ess) TARGET TARGETQUESTION-ESS IF (*1 QDL LINK NOT *1 Ess);
 MAP (&grm-missing-Gen) TARGET TARGETQUESTION-GEN IF (*1 QDL LINK NOT *1 Gen);
+
+MAP (&grm-missing-Loc-PP) TARGET ("gos") OR ("gokko") IF (*1 QDL LINK NOT *1 Loc OR DOPPE OR Po);
+    ## Gohppu lea beavddi nalde.
+MAP (&grm-missing-Ill-PP) TARGET ("gosa") IF (*1 QDL LINK NOT *1 Ill OR DOHKO OR Po);
+    ## Mun váccán vári nala.
+
+LIST ILL-Po = "ala" "nala" "sisa" "vuollái" "duohkai" ;
+LIST LOC-Po = "alde" "nalde" "mielde" "siste" "vuolde" "duohken" ;
+
+MAP (&grm-should-LocPP) TARGET Po IF (NOT 0 LOC-Po LINK *-1 QDL LINK *-1 ("gos"));
+MAP (&grm-should-IllPP) TARGET Po IF (NOT 0 ILL-Po LINK *-1 QDL LINK *-1 ("gosa"));
 
 
 # -------------------
@@ -6089,12 +6113,37 @@ MAP (&grm-non-agreement) TARGET (Dem Pl Loc) IF (*-1 QDL)(*1 N LINK NOT 0 (Pl Lo
 SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK *-1 QDL);
 
 
-# -----
-# VERBS 
-# -----
+# ----------------
+# TIME-EXPRESSIONS
+# ----------------
+
+
+# --------
+# PRONOUNS 
+# --------
+
+#SELECT Pers IF (*-1 QDL)(1 VFIN) ; # Looks like it is already done.
+
+# Answer with the correct pronoun:
+MAP (&grm-incorr-pron) TARGET (Pers Nom Sg1) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Sg2) ;
+MAP (&grm-incorr-pron) TARGET (Pers Nom Sg2) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Sg1) ;
+MAP (&grm-incorr-pron) TARGET (Pers Nom Sg3) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Sg3) ;
+MAP (&grm-incorr-pron) TARGET (Pers Nom Du1) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Du2) ;
+MAP (&grm-incorr-pron) TARGET (Pers Nom Du2) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Du1) ;
+MAP (&grm-incorr-pron) TARGET (Pers Nom Du3) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Du3) ;
+MAP (&grm-incorr-pron) TARGET (Pers Nom Pl1) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Pl2) ;
+MAP (&grm-incorr-pron) TARGET (Pers Nom Pl2) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Pl1) ;
+MAP (&grm-incorr-pron) TARGET (Pers Nom Pl3) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
+
+MAP (&grm-incorr-pron) TARGET (Pers Nom) (*-1 QDL LINK *-1 (N Pl Nom))(NOT 0 Pl3) ;
+MAP (&grm-incorr-pron) TARGET (Pers Nom) (*-1 QDL LINK *-1 (N Sg Nom))(NOT 0 Sg3) ;
+
+
+# -------
+# VERBS 2 
+# -------
 
 SELECT VERB ;
-
 
 MAP (&grm-should_be_Vfin) TARGET V IF (*1 QDL LINK NOT *1 VFIN);
 	# You should use a finite verb when answering...
@@ -6128,14 +6177,6 @@ MAP (&grm-non-agreement) TARGET (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV LINK 
     ## Nieida lea čeahppi.
 
 
-
-# ---------
-# SEMANTICS
-# ---------
-
-# Probably we want need it at this time.
-#LIST DRINKVERB = "juhkat" "šlubistit" "čuohkat" ;
-#MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL LINK NOT *1 LIQUID)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3)) ;
 
 # ------------------------
 # Affirmative or negative?
@@ -6177,3 +6218,46 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
     ## in oro gostege
     ## in háliit maidege
 
+# ---------
+# SEMANTICS - NOT IN USE YET
+# ---------
+
+# Probably we want need it at this time.
+#LIST DRINKVERB = "juhkat" "šlubistit" "čuohkat" ;
+#MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL LINK NOT *1 LIQUID)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3)) ;
+
+
+################
+# LIST OF TAGS #
+################
+# &dia-neg              negative content
+# &dia-nothing          anwers is "nothing"
+# &dia-pos              positive content
+# &dia-target           answer to the question - can be used in next question
+
+# &err-spellingerror    spellingerror word is not in lexicon
+# &grm-falAdv           "fal" can never be initial
+# &grm-naPcle           "na" can only be initial
+# &grm-notInterj        Interj can only be initial or final
+
+# &grm-missing-Acc      there should be an accusative
+# &grm-missing-Com      there should be an comitative
+# &grm-missing-Ess      there should be an essive
+# &grm-missing-Gen      there should be an genetive
+# &grm-missing-Ill      there should be an illative
+# &grm-missing-Loc      there should be an locative
+# &grm-missing-Nom      there should be an nominative
+# &grm-missing-Loc-PP   there should be a Loc or a PP
+# &grm-missing-Ill-PP   there should be an Ill or a PP
+
+# &grm-should-LocPP     you should answer with a LocPo
+# &grm-should-IllPP     you should answer with an IllPo
+# &grm-missing-Gen-PP   there should be a Gen in front of the Po
+
+
+# &grm-non-agreement    here should be agreement
+# &grm-shouldAttr       this adjective should be Attr
+# &grm-shouldNotAttr    this adjective should be predicative form
+# &grm-should_be_Vfin   your answer should always contain a finite verb
+# &grm-should_not_Vfin  this verb should not be finite
+# &grm-incorr-pron      you should answer with another Pers
