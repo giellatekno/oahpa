@@ -3,14 +3,8 @@
 <!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
 -->
 
-<!-- xml-structure for questions in morphdrill -->
-<!-- Questions for verbs. Not yet potential -->
 <questions>
 
-<!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
-<!-- MAINV must agree with SUBJ in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
-<!-- comment from saara: The mainv-answersubject agreement is implemented otherwise, -->
-<!-- because it is so special. It does not have to be marked explicitely. -->
   <q>
     <qtype>MAINV-PRS</qtype>
    <question>
@@ -43,7 +37,6 @@
 
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
-<!-- Taken these -guovttos forms out for a while /sh
   <q>
     <qtype>MAINV-PRS</qtype>
     <question>
@@ -53,13 +46,6 @@
 	<grammar tag="N+Sg+Gen"/>
       </element>
     </question>
-    <answer> 
-      <text>Odne soai MAINV</text>
-      <element id="MAINV" task="yes">
-	<grammar tag="V+Ind+Prs+Du3"/>
-	<sem class="ACTIVITY"/>
-      </element>
-    </answer>
   </q>
 -->
 
@@ -77,20 +63,6 @@
 	<grammar tag="V+Ind+Prt+Person-Number"/>
       </element>
     </question>
-    <answer> 
-      <text>Ikte SUBJ MAINV</text>
-      <element id="SUBJ">
-	<grammar pos="Pron"/>
-      </element>
-      <element game='morfa' id="MAINV" task="yes">
-	<sem class="ACTIVITY"/>
-	<grammar tag="V+Ind+Prt+Person-Number"/>
-      </element>
-<!--      <element game='qa' id="MAINV">
-	<grammar pos="V"/>
-	<grammar tag="V+Ind+Prt+Person-Number"/>
-      </element> -->
-    </answer>
   </q> 
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
@@ -107,25 +79,9 @@
 	<grammar tag="V+Ind+Prt+Person-Number"/>
       </element>
     </question>
-    <answer> 
-      <text>Ikte SUBJ MAINV</text>
-      <element id="SUBJ">
-	<grammar pos="Pron"/>
-      </element>
-      <element game='morfa' id="MAINV" task="yes">
-	<grammar tag="V+Ind+Prt+Person-Number"/>
-	<id>son</id>
-	<sem class="ACTIVITY"/>
-      </element>
-<!--      <element game='qa' id="MAINV">
-	<grammar tag="V+Ind+Prt+Person-Number"/>
-	<grammar pos="V"/>
-      </element> -->
-    </answer>
   </q>
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
-<!-- taken out -guovttos /sh
   <q>
     <qtype>MAINV-PRT</qtype>
     <question>
@@ -135,13 +91,6 @@
 	<grammar tag="N+Sg+Gen"/>
       </element>
     </question>
-    <answer> 
-      <text>Ikte soai MAINV</text>
-      <element id="MAINV" task="yes">
-	<grammar tag="V+Ind+Prt+Du3"/>
-	<sem class="ACTIVITY"/>
-      </element>
-    </answer>
   </q>
 -->
 <!--- ==========  conditional =========   -->
@@ -160,17 +109,6 @@
 	<grammar tag="V+Cond+Prs+Person-Number"/>
       </element>
     </question>
-    <answer> 
-      <text>Luomus SUBJ V-COND</text>
-      <element game='morfa' id="V-COND" syntax="MAINV" task="yes">
-	<sem class="ACTIVITY"/>
-	<grammar tag="V+Cond+Prs+Person-Number"/>
-      </element>
-<!--      <element game='qa' id="V-COND">
-	<grammar pos="V"/>
-	<grammar tag="V+Cond+Prs+Person-Number"/>
-      </element> -->
-    </answer>
   </q>
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
@@ -187,26 +125,10 @@
 	<grammar tag="V+Cond+Prs+Person-Number"/>
       </element>
     </question>
-    <answer> 
-      <text>Luomus SUBJ V-COND</text>
-      <element game='morfa' id="SUBJ">
-	<id>son</id>
-	<grammar pos="Pron"/>
-      </element>
-      <element game='morfa' id="V-COND" syntax="MAINV" task="yes">
-	<grammar tag="V+Cond+Prs+Person-Number"/>
-	<sem class="ACTIVITY"/>
-      </element>
-<!--      <element game='qa' id="V-COND">
-	<grammar tag="V+Cond+Prs+Person-Number"/>
-	<grammar pos="V"/>
-      </element> -->
-    </answer>
   </q>
 
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
-<!-- taken out -guovttos /sh
   <q>
     <qtype>V-COND</qtype>
     <question>
@@ -216,13 +138,6 @@
 	<grammar tag="N+Sg+Gen"/>
       </element>
     </question>
-    <answer> 
-      <text>Luomus soai V-COND</text>
-      <element id="V-COND" task="yes">
-	<grammar tag="V+Cond+Prs+Du3"/>
-	<sem class="ACTIVITY"/>
-      </element>
-    </answer>
   </q>
 -->
 
@@ -241,103 +156,24 @@
       <grammar pos="N"/>
     </element>
   </question>
-  <answer> 
-    <text>In dieđe V-POT go</text>
-      <element game='morfa' id="V-POT" syntax="MAINV" content="MAINV" task="yes">
-	<agreement id="SUBJ"/>
-      </element>
-    </answer>
+  </q>
+
+<q>
+    <qtype>V-POT</qtype>
+  <question>
+    <text>MAINV go SUBJ</text>
+    <element id="MAINV">
+      <grammar tag="V+Ind+Prs+Person-Number"/>
+      <sem class="ACTIVITY"/>
+    </element>
+    <element id="SUBJ">
+      <grammar pos="Pron+Pers+Person-Number+Nom"/>
+    </element>
+  </question>
   </q>
 
 
 
-
-<!--- ==========  Imperative, all of them only for Morfa =========   -->
-
-  <q>
-    <qtype>V-IMPRT</qtype>
-   <question>
-      <text>Mun áiggošin MAINV</text>
-       <element id="MAINV">
-	<sem class="ACTIVITY"/>
-	<grammar tag="V+Inf"/>
-      </element>
-   </question>
-    <answer> 
-      <text>V-IMPRT fal</text>
-      <element game='morfa' id="V-IMPRT" content="MAINV" task="yes">
-	<grammar tag="V+Imprt+Prs+Sg2"/>
-      </element>
-    </answer>
-  </q>
-
-  <q>
-    <qtype>V-IMPRT</qtype>
-   <question>
-      <text>Moai áiggošeimme MAINV</text>
-       <element id="MAINV">
-	<sem class="ACTIVITY"/>
-	<grammar tag="V+Inf"/>
-      </element>
-   </question>
-    <answer> 
-      <text>V-IMPRT fal</text>
-      <element game='morfa' id="V-IMPRT" content="MAINV" task="yes">
-	<grammar tag="V+Imprt+Prs+Du2"/>
-      </element>
-    </answer>
-  </q>
-
-  <q>
-    <qtype>V-IMPRT</qtype>
-   <question>
-      <text>Mii áiggošeimmet MAINV</text>
-       <element id="MAINV">
-	<sem class="ACTIVITY"/>
-	<grammar tag="V+Inf"/>
-      </element>
-   </question>
-    <answer> 
-      <text>V-IMPRT fal</text>
-      <element game='morfa' id="V-IMPRT" content="MAINV" task="yes">
-	<grammar tag="V+Imprt+Prs+Pl2"/>
-      </element>
-    </answer>
-  </q>
-
-  <q>
-    <qtype>V-IMPRT</qtype>
-   <question>
-      <text>Sihke don ja mun áiggošeimme MAINV</text>
-       <element id="MAINV">
-	<sem class="ACTIVITY"/>
-	<grammar tag="V+Inf"/>
-      </element>
-   </question>
-    <answer> 
-      <text>V-IMPRT dál</text>
-      <element game='morfa' id="V-IMPRT" content="MAINV" task="yes">
-	<grammar tag="V+Imprt+Prs+Du1"/>
-      </element>
-    </answer>
-  </q>
-
-  <q>
-    <qtype>V-IMPRT</qtype>
-   <question>
-      <text>Sihke don ja mii áiggošeimmet MAINV</text>
-       <element id="MAINV">
-	<sem class="ACTIVITY"/>
-	<grammar tag="V+Inf"/>
-      </element>
-   </question>
-    <answer> 
-      <text>V-IMPRT dál</text>
-      <element game='morfa' id="V-IMPRT" content="MAINV" task="yes">
-	<grammar tag="V+Imprt+Prs+Pl1"/>
-      </element>
-    </answer>
-  </q>
 
 <!--- ==========  go-questions =========   -->
 
@@ -352,43 +188,25 @@
 	<sem class="ACTIVITY"/>
       </element>
       <element id="SUBJ">
+	<grammar pos="Pron+Pers+Person-Number+Nom"/>
+      </element>
+    </question>
+  </q>
+
+
+  <q>
+    <qtype>MAINV-PRT</qtype>
+    <question>
+      <text>MAINV go SUBJ ikte</text>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<sem class="ACTIVITY"/>
+      </element>
+      <element id="SUBJ">
 	<sem class="HUMAN"/>
 	<grammar pos="N"/>
       </element>
     </question>
-    <answer> 
-      <text>De MAINV</text>
-      <element id="MAINV" task="yes">
-	<grammar tag="V+Ind+Prt+Person-Number"/>
-      </element>
-    </answer>
-    <answer> 
-      <text>Ikte gal NEG PRFPRC</text>
-      <element game='morfa' id="NEG" syntax="MAINV" task="yes">
-	<grammar tag="Neg+Ind+Person-Number"/>
-      </element>
-      <element game='morfa' id="PRFPRC" content="MAINV">
-	<grammar tag="V+PrfPrc"/>
-      </element>
-<!--      <element game='qa' id="SUBJ">
-	<grammar pos="Pron"/>
-      </element>
-      <element game='qa' id="NEG">
-	<grammar tag="Neg+Ind+Person-Number"/>
-      </element>
-      <element game='qa' id="PRFPRC">
-	<grammar tag="V+PrfPrc"/>
-      </element> -->
-    </answer>
-    <answer> 
-      <text>Ikte gal NEG PRFPRC</text>
-      <element game='morfa' id="NEG" syntax="MAINV">
-	<grammar tag="Neg+Ind+Person-Number"/>
-      </element>
-      <element game='morfa' id="PRFPRC" content="MAINV" task="yes">
-	<grammar tag="V+PrfPrc"/>
-      </element>
-    </answer>
   </q>
 
 <!-- Both Morfa and QA: -->
@@ -405,30 +223,6 @@
 	<grammar pos="N"/>
       </element>
     </question>
-    <answer> 
-      <text>De MAINV</text>
-      <element id="MAINV" task="yes">
-	<grammar tag="V+Ind+Prs+Person-Number"/>
-      </element>
-    </answer>
-    <answer> 
-      <text>Odne gal NEG CONNEG</text>
-      <element game='morfa' id="NEG" syntax="MAINV" task="yes">
-	<grammar tag="Neg+Ind+Person-Number"/>
-      </element>
-      <element game='morfa' id="CONNEG" content="MAINV">
-	<grammar tag="V+ConNeg"/>
-      </element>
-    </answer>
-    <answer> 
-      <text>Odne gal NEG CONNEG</text>
-      <element game='morfa' id="NEG" syntax="MAINV">
-	<grammar tag="Neg+Ind+Person-Number"/>
-      </element>
-      <element game='morfa' id="CONNEG" content="MAINV" task="yes">
-	<grammar tag="V+ConNeg"/>
-      </element>
-    </answer>
   </q>
 
 <!-- Both Morfa and QA: -->
@@ -445,34 +239,750 @@
       <grammar pos="N"/>
     </element>
   </question>
-  <answer> 
-    <text>Luomus gal MAINV</text>
-  </answer>
-    <answer> 
-      <text>Luomus gal NEG CONNEG</text>
-      <element game='morfa' id="NEG" syntax="MAINV" task="yes">
-	<grammar tag="Neg+Ind+Person-Number"/>
-      </element>
-      <element game='morfa' id="CONNEG" content="MAINV">
-	<grammar tag="V+Cond+Prs+ConNeg"/>
-      </element>
-<!--      <element game='qa' id="NEG">
-	<grammar tag="Neg+Ind+Person-Number"/>
-      </element>
-      <element game='qa' id="CONNEG">
-	<grammar tag="V+Cond+Prs+ConNeg"/>
-      </element> -->
-    </answer>
-    <answer> 
-      <text>Luomus gal NEG CONNEG</text>
-      <element game='morfa' id="NEG" syntax="MAINV">
-	<grammar tag="Neg+Ind+Person-Number"/>
-      </element>
-      <element game='morfa' id="CONNEG" content="MAINV" task="yes">
-	<grammar tag="V+Cond+Prs+ConNeg"/>
-      </element>
-    </answer>
   </q>
+
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N or Pron Pers or (V Inf): -->
+  <q>
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Tense+Person-Number"/>
+	  <id>liikot</id>
+      </element>
+    </question>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron Pers : -->
+  <q>
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV OBJ</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Ill"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>addit</id>
+      </element>
+      <element id="OBJ">
+	<sem class="OBJECT"/>
+      </element>
+    </question>
+  </q>
+
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N or Adv-set DOHKO: -->
+  <q>
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Gosa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>mannat</id>
+      </element>
+    </question>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N Loc or Pron Pers: -->
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR MAINV váralaš SUBJ</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="ANIMAL"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>leat</id>
+      </element>
+    </question>
+  </q>
+
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N or Adv-set DOPPE: -->
+   <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Gos SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>leat</id>
+      </element>
+    </question>
+  </q>
+
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Adv-set DOPPE: --> 
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Gos SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>boahtit</id>
+      </element>
+    </question>
+  </q>
+
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron Pers : --> 
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Mas SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="N+Number+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>ballat</id>
+      </element>
+   </question>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron : -->   
+  <q>
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>oaidnit</id>
+      </element>
+    </question>
+  </q>
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron : -->   
+  <q>
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="FAMILY"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>niegadit</id>
+      </element>
+    </question>
+  </q>
+
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron : -->     
+  <q>
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>oastit</id>
+      </element>
+    </question>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron : -->   
+  <q>
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>sárgut</id>
+      </element>
+    </question>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  Or Pers : -->   
+
+
+  <q>
+<!-- Interr and N-Acc must agree in number and SUBJ and MAINV must agree in number but all four variables do not have to agree --> 
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Acc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>dovdat</id>
+      </element>
+    </question>
+  </q>
+
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->   
+  <q>
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>INTERR SUBJ dát MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Gen"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="OBJECT"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>leat</id>
+      </element>
+    </question>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->   
+  <q>
+    <qtype>N-COM</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Com"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron+Person-Number+Nom"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<val class="COMV"></val>
+      </element>
+   </question>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
+  <q>
+    <qtype>N-COM</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV ruoktot</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Com"/>
+	<id>mii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron+Person-Number+Nom"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>mannat</id>
+      </element>
+   </question>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
+<q>
+    <qtype>N-COM</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Com"/>
+	<id>mii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron+Person-Number+Nom"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>čierastit</id>
+      </element>
+   </question>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
+  <q>
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV PLACE</text>
+      <element id="SUBJ">
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="FAMILY"/>
+      </element>
+      <element id="PLACE">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE-NAME"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>bargat</id>
+      </element>
+   </question>
+  </q>
+ 
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
+  <q>
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV máidnasis</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>šaddat</id>
+      </element>
+   </question>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
+  <q>
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV karneválas</text>
+      <element id="SUBJ">
+	<grammar pos="Pron+Person-Number+Nom"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>gárvodit</id>
+      </element>
+   </question>
+  </q>
+
+
+<!-- Attribute - only for Morfa -->
+
+  <q>
+    <qtype>NUM-ATTR</qtype>
+    <question>
+      <text>Maid SUBJ MAINV oastit</text>
+      <element id="SUBJ">
+	<grammar tag="N"/>
+	<sem class="HUMAN"/>
+      </element>
+      <element id="MAINV">
+	<id>áigut</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+   </question>
+  </q>
+
+  <q>
+    <qtype>NUM-ATTR</qtype>
+   <question>
+      <text>Maid oainnát</text>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-ATTR</qtype>
+    <question>
+      <text>Geaid SUBJ dát MAINV</text>
+      <element id="SUBJ">    
+	<grammar tag="N+Number+Nom"/>         
+	<sem class="OBJECT"/>
+      </element>
+	<element id="MAINV">
+	  <id>leat</id> 
+	  <grammar tag="V+Ind+Prs+Person-Number"/>
+	</element>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-ATTR</qtype>
+   <question>
+      <text>Geaidda don attát OBJ</text>
+    <element id="OBJ">    
+	<grammar tag="N+Pl+Acc"/>         
+	<sem class="OBJECT"/>
+	</element>
+    </question>
+  </q>
+
+
+  <q>
+    <qtype>NUM-ATTR</qtype>
+   <question>
+      <text>Masa don bijat duogŋasa</text>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-ATTR</qtype>
+   <question>
+      <text>Geain lea váralaš SUBJ</text>
+    <element id="SUBJ">    
+	<grammar tag="N+Sg+Nom"/>         
+	<sem class="ANIMAL"/>
+	</element>
+    </question>
+   </q>
+   
+  <q>
+    <qtype>NUM-ATTR</qtype>
+   <question>
+      <text>Man guhká oaččut OBJ luoikkasin</text>
+    <element id="OBJ">    
+	<grammar tag="N+Sg+Acc"/>         
+	<sem class="THING"/>
+	</element>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-ATTR</qtype>
+   <question>
+      <text>Gos SUBJ leat</text>
+    <element id="SUBJ">    
+	<grammar tag="N+Pl+Nom"/>         
+	<sem class="HUMAN"/>
+	</element>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-ATTR</qtype>
+   <question>
+      <text>Gos SUBJ finai</text>
+    <element id="SUBJ">    
+	<grammar tag="N+Sg+Nom"/>         
+	<sem class="HUMAN"/>
+	</element>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-ATTR</qtype>
+    <question>
+      <text>Geaiguin SUBJ MAINV</text>
+      <element id="SUBJ">    
+	<grammar pos="Pron"/> 
+	<id>son</id>
+      </element>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<val class="COMV"/>
+      </element>
+    </question>
+  </q>
+ 
+<!-- For Morfa, but also for QA with any Num: -->  
+  <q>
+    <qtype>NUM-ATTR</qtype>
+    <question>
+      <text>Gallin joavkun SUBJ MAINV</text>
+      <element id="SUBJ">    
+	<grammar tag="N+Number+Nom"/>         
+	<sem class="HUMAN"/>
+      </element>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>bargat</id> 
+      </element>
+    </question>
+  </q>
+
+<!-- For Morfa and Vasta - numeral without noun -   -->
+
+  <q>
+    <qtype>NUM-LOC</qtype>
+   <question>
+      <text>Gallis SUBJ MAINV ruoktot</text>
+    <element id="MAINV">    
+	<id>boahtit</id> 
+	</element>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
+	</element>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-LOC</qtype>
+   <question>
+      <text>Gallis SUBJ álgá</text>
+    <element id="SUBJ">    
+	<grammar tag="N+Sg+Nom"/>         
+	<sem class="ARRANGEMENT"/>
+	</element>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-LOC</qtype>
+   <question>
+      <text>Gallis SUBJ nohká</text>
+    <element id="SUBJ">    
+	<grammar tag="N+Sg+Nom"/>         
+	<sem class="ARRANGEMENT"/>
+	</element>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-ILL</qtype>
+   <question>
+      <text>Gallii SUBJ MAINV lohkan OBJ</text>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number"/>         
+	</element>
+    <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>leat</id> 
+	</element>
+    <element id="OBJ">    
+	<grammar tag="N+Sg+Acc"/>         
+	<sem class="TEXT"/>
+	</element>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-COM</qtype>
+   <question>
+      <text>Galliin SUBJ MAINV</text>
+    <element id="MAINV">    
+	<id>birget</id> 
+	</element>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
+	</element>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-COM</qtype>
+   <question>
+      <text>Galliin SUBJ MAINV loahppasupmi</text>
+    <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>juohkit</id> 
+	</element>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
+	</element>
+    </question>
+  </q>
+
+
+  <q>
+    <qtype>NUM-ACC</qtype>
+   <question>
+      <text>Galliid OBJ SUBJ MAINV oastit</text>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
+	</element>
+    <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>oastit</id> 
+	</element>
+    <element id="OBJ">    
+	<grammar tag="N+Sg+Gen"/>         
+	<sem class="CLOTHING"/>
+	</element>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-ACC</qtype>
+   <question>
+      <text>Galliid OBJ SUBJ MAINV oastit</text>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
+	</element>
+    <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>áigut</id> 
+	</element>
+    <element id="OBJ">    
+	<grammar tag="N+Pl+Acc"/>         
+	<sem class="CLOTHING-PL"/>
+	</element>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-ACC</qtype>
+   <question>
+      <text>Galliid OBJ sii leat lágidan</text>
+    <element id="OBJ">    
+	<grammar tag="N+Pl+Acc"/>         
+	<sem class="ARRANGEMENT-PL"/>
+	</element>
+    </question>
+  </q>
+
+  <q>
+    <qtype>NUM-NOM</qtype>
+   <question>
+      <text>Gallit SUBJ dus leat</text>
+    <element id="SUBJ">    
+	<grammar tag="N+Pl+Nom"/>         
+	<sem class="CLOTHING-PL"/>
+	</element>
+    </question>
+  </q>
+
+
+  <q>
+    <qtype>NUM-ILL</qtype>
+   <question>
+      <text>Man guhká SUBJ MAINV odne?</text>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number"/>         
+	</element>
+    <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>bargat</id> 
+	</element>
+    </question>
+  </q>
+
+
+
+<!-- For Morfa, but also for QA with any COLL-NUM: -->  
+
+  <q>
+    <qtype>COLL-NUM</qtype>
+   <question>
+      <text>Gallásiin SUBJ MAINV juohkit daid ruđaid</text>
+    <element id="MAINV">    
+	<id>fertet</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	</element>
+    <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
+	</element>
+    </question>
+  </q>
+
+
+  <q>
+    <qtype>COLL-NUM</qtype>
+   <question>
+      <text>Gallis bohtet N-ILL</text>
+    <element id="N-ILL">    
+	<grammar tag="N+Sg+Ill"/>         
+	<sem class="BUILDING"/>
+	</element>
+    </question>
+  </q>
+
+<!-- For Morfa, but also for QA with any COLL-NUM: -->  
+  <q>
+    <qtype>COLL-NUM</qtype>
+   <question>
+      <text>Gallása don oainnát</text>
+    </question>
+  </q>
+
+<!-- Only for Morfa: -->  
+  <q>
+    <qtype>COLL-NUM</qtype>
+   <question>
+      <text>Geaid SUBJ dát MAINV</text>
+      <element id="SUBJ">    
+	<sem class="OBJECT"/>
+	<grammar pos="N"/>         
+	</element>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>leat</id> 
+      </element>
+   </question>
+  </q>
+
+<!-- For Morfa, but also for QA with any COLL-NUM: -->  
+  <q>
+    <qtype>COLL-NUM</qtype>
+    <question>
+      <text>Gallásii SUBJ MAINV ságaid</text>
+      <element id="SUBJ">    
+	<grammar tag="Pron+Pers+Person-Number"/>         
+      </element>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>muitalit</id> 
+      </element>
+    </question>
+  </q>
+
+<!-- For Morfa, but also for QA with any COLL-NUM: -->  
+  <q>
+    <qtype>COLL-NUM</qtype>
+   <question>
+      <text>Gallásis lea dilli VERB</text>
+    <element id="VERB">    
+	<grammar tag="V+Inf"/>         
+	<sem class="ACTIVITY"/>
+	</element>
+    </question>
+  </q>
+
+<!-- For Morfa, but also for QA with any COLL-NUM: -->  
+  <q>
+    <qtype>COLL-NUM</qtype>
+   <question>
+      <text>Gallásiin don vuolggát N-ILL</text>
+    <element id="N-ILL">    
+	<grammar tag="N+Sg+Ill"/>         
+	<sem class="PLACE-NAME"/>
+	</element>
+    </question>
+  </q>
+
+  <q>
+    <qtype>ORD-NUM</qtype>
+   <question>
+      <text>Gallát luohkás don leat dál</text>
+    </question>
+  </q>
+
+  <q>
+    <qtype>ORD-NUM</qtype>
+   <question>
+      <text>Galládin don bohtet mollii</text>
+    </question>
+  </q>
+
+  <q>
+    <qtype>ORD-NUM</qtype>
+   <question>
+      <text>Gallát luohkkái don álggát dál</text>
+    </question>
+  </q>
+
 
 </questions>
 
