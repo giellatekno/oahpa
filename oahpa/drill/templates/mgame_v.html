@@ -6,7 +6,7 @@
 {% block selectionname %}<td>{% trans "Type" %}</td>{% endblock %}
 {% block selection %}
 <td>
-  {% ifequal gametype "bare" %}
+  {% ifequal settings.gametype "bare" %}
     {{ settingsform.vtype_bare }}
   {% else %}
     {{ settingsform.vtype }}
