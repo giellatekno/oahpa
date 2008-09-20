@@ -32,9 +32,9 @@ color: #093970;
   top: 0px;    
   left: 0px;
   width: 100%;
-  height: 100px;
+  height: 90px;
   overflow: hidden;
-background: #231E78;
+  background: #231E78;
 <!-- background: #6E935C; -->
 <!--  background: #699929;-->
 
@@ -50,8 +50,8 @@ background: #231E78;
   width: 100%;
   height: 40px;
   overflow: hidden;
-   background: #231E78; 
-  color: #C7260C;
+  background: #231E78; 
+  color: #C7260C; 
 
 <!-- background: #447D34; -->
 <!--  background: #699929;-->
@@ -66,11 +66,10 @@ background: #231E78;
   left: 0px;
   bottom: 20px;
   overflow: auto;    
-  width: 100px;  
- background: #231E78; 
+  width: 110px;  
+  background: #231E78; 
 
 <!-- background: #447D34; -->
-
 <!--  background: #296999;-->
 }
 
@@ -161,7 +160,7 @@ function showPopup(w,h,elid){
       "<div id=\"statusbar\"><button onclick=\"hidePopup(elid);\">Close window<button></div>";
  
    var sbar = document.getElementById("statusbar");
-   sbar.style.marginTop = (parseInt(h)-60) + "px";
+   sbar.style.marginTop = (parseInt(h)-70) + "px";
    popUp.style.visibility = "visible";
 }
 
@@ -250,14 +249,14 @@ function feedback(msg)
 	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
 	    <li><a href="/oahpa/morfa_s/">{% trans 'Nouns' %}</a></li>
 	    <li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>
-<!--	    <li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li> -->
+	    <li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li>
     <li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>
 	  </ul>
 	  <a href="/oahpa/vasta/">{% trans 'Vasta' %}</a><br/>
 	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
 	    <li><a href="/oahpa/vasta_s/">{% trans 'Nouns' %}</a></li>
-<!--	    <li><a href="/oahpa/vasta_v/">{% trans 'Verbs' %}</a></li>-->
-<!--	    <li><a href="/oahpa/vasta_a/">{% trans 'Adjectives' %}</a></li>-->
+<!--	    <li><a href="/oahpa/vasta_v/">{% trans 'Verbs' %}</a></li> -->
+<!--	    <li><a href="/oahpa/vasta_a/">{% trans 'Adjectives'	  %}</a></li> -->
 	  </ul>
 	  <a href="/oahpa/leksa/">{% trans 'Leksa' %}</a><br/>
 	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
@@ -265,6 +264,8 @@ function feedback(msg)
 	    <li><a href="/oahpa/leksa_n/">{% trans 'Placenames' %}</a></li>
 	  </ul>
 	  <a href="/oahpa/logut/">{% trans 'Logut' %}</a><br/>
+	  <ul style="list-style: none;"><li></ul>
+	  <a href="/oahpa/feedback/">{% trans 'Feedback' %}</a><br/>
 
 </div>
 
