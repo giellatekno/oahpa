@@ -8,10 +8,11 @@
 
 <table>
 <tr><td>
+
 <table>
      {% for form in forms %}
 
-{% ifnotequal gametype 'bare' %} 
+{% ifnotequal settings.gametype 'bare' %} 
     {% ifnotequal forloop.counter 1 %}
     <tr>
     <td>&nbsp;</td>
@@ -38,7 +39,7 @@
        {% else %}
        ___________________
       {% endifequal %}
-       {% ifequal gametype "qa" %}
+       {% ifequal settings.gametype "qa" %}
         (error in {{ form.problems }})
        {% endifequal %}
     {% endifequal %}
