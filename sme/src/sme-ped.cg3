@@ -6086,6 +6086,8 @@ LIST LOC-Po = "alde" "nalde" "mielde" "siste" "vuolde" "duohken" ;
 MAP (&grm-should-LocPP) TARGET Po IF (NOT 0 LOC-Po LINK *-1 QDL LINK *-1 ("gos"));
 MAP (&grm-should-IllPP) TARGET Po IF (NOT 0 ILL-Po LINK *-1 QDL LINK *-1 ("gosa"));
 
+# Select acc when Obj:
+SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK *-1 QDL);
 
 # -------------------
 # AGREEMENT INSIDE NP
@@ -6110,7 +6112,7 @@ MAP (&grm-non-agreement) TARGET (Dem Pl Loc) IF (*-1 QDL)(*1 N LINK NOT 0 (Pl Lo
 # dain viesuin
 # daiguin viesuiguin
 
-MAP (&grm-non-agreement) TARGET Num IF (*-1 QDL)(NOT 0 Gen)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Gen OR Loc OR Ill);
+MAP (&grm-non-agreement) TARGET Num IF (*-1 QDL)(NOT 0 Gen)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Loc OR Ill);
 MAP (&grm-non-agreement) TARGET Num IF (*-1 QDL)(NOT 0 Ess)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Ess);
 MAP (&grm-non-agreement) TARGET Num IF (*-1 QDL)(NOT 0 Com)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Com);
 
@@ -6122,8 +6124,6 @@ MAP (&grm-wrong-case) TARGET N IF (*-1 (Num Nom) OR (Num Acc) BARRIER NOT-ADJ LI
 # guoktin viessun
 
 
-# Select acc when Obj:
-SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK *-1 QDL);
 
 
 # ----------------
@@ -6167,18 +6167,18 @@ MAP (&grm-incorr-time-expr) TARGET ("goas") (*1 QDL LINK NOT *1 TIME-GEN OR TIME
 #SELECT Pers IF (*-1 QDL)(1 VFIN) ; # Looks like it is already done.
 
 # Answer with the correct pronoun:
-MAP (&grm-incorr-pron) TARGET (Pers Nom Sg1) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Sg2) ;
-MAP (&grm-incorr-pron) TARGET (Pers Nom Sg2) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Sg1) ;
-MAP (&grm-incorr-pron) TARGET (Pers Nom Sg3) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Sg3) ;
-MAP (&grm-incorr-pron) TARGET (Pers Nom Du1) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Du2) ;
-MAP (&grm-incorr-pron) TARGET (Pers Nom Du2) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Du1) ;
-MAP (&grm-incorr-pron) TARGET (Pers Nom Du3) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Du3) ;
-MAP (&grm-incorr-pron) TARGET (Pers Nom Pl1) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Pl2) ;
-MAP (&grm-incorr-pron) TARGET (Pers Nom Pl2) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Pl1) ;
-MAP (&grm-incorr-pron) TARGET (Pers Nom Pl3) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg1) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Sg2) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg2) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Sg1) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg3) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du1) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Du2) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du2) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Du1) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du3) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Du3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl1) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Pl2) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Pl1) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
 
-MAP (&grm-incorr-pron) TARGET (Pers Nom) (*-1 QDL LINK *-1 (N Pl Nom))(NOT 0 Pl3) ;
-MAP (&grm-incorr-pron) TARGET (Pers Nom) (*-1 QDL LINK *-1 (N Sg Nom))(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL LINK *-1 (N Pl Nom))(NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL LINK *-1 (N Sg Nom))(NOT 0 Sg3) ;
 
 
 # -------
@@ -6189,6 +6189,21 @@ MAP (&grm-incorr-pron) TARGET (Pers Nom) (*-1 QDL LINK *-1 (N Sg Nom))(NOT 0 Sg3
 
 MAP (&grm-should_be_Vfin) TARGET V IF (*1 QDL LINK NOT *1 VFIN);
 	# You should use a finite verb when answering...
+
+
+# Answer with the correct verbform:
+MAP (&grm-incorr-pers-nr) TARGET (V Sg1) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Sg2) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg2) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Sg1) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Du2) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Du2) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Du1) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Du3) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Du3) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Pl2) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl2) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Pl1) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Pl3) ;
+
+MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL LINK *-1 (N Pl Nom))(NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL LINK *-1 (N Sg Nom))(NOT 0 Sg3) ;
 
 
 # -------------------
@@ -6305,4 +6320,5 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 # &grm-shouldNotAttr    this adjective should be predicative form
 # &grm-should_be_Vfin   your answer should always contain a finite verb
 # &grm-should_not_Vfin  this verb should not be finite
-# &grm-incorr-pron      you should answer with another Pers
+# &grm-incorr-pers-nr      you should answer with another Pers
+
