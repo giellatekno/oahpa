@@ -8,7 +8,7 @@ from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404, render_to_response
 from random import randint
-from django.contrib.admin.views.decorators import _encode_post_data, _decode_post_data
+#from django.contrib.admin.views.decorators import _encode_post_data, _decode_post_data
 import os,codecs,sys,re
 
 class Info:
@@ -454,29 +454,26 @@ class QAGame(Game):
     def get_db_info(self, db_info):
 
         anslist=[]
-        pos=self.settings.pos
+        pos=self.settings['pos']
 
-        print "GAMETYPE", self.gametype, self.settings.num_context
         print self.gametype
         # Select random question type.
         if pos == "N":
             if self.gametype == 'qa':
-                qtype = self.settings.allcase[randint(0, len(self.settings.allcase)-1)]
+                qtype = self.settings['allcase'][randint(0, len(self.settings.allcase)-1)]
             else:
-                qtype = self.settings.case
-        else:
-            if pos == "V":
-                if self.gametype == 'qa':
-                    qtype = self.settings.allcase[randint(0, len(self.settings.allcase)-1)]
-                else:                    
-                    qtype=self.settings.vtype
-            else:
-                if pos == "Num":
-                    if self.gametype == 'qa':
-                        qtype = self.settings.allcase[randint(0, len(self.settings.allcase)-1)]
-                    else:                                            
-                        qtype=self.settings.num_context
-
+                qtype = self.settings['case']
+        if pos == "V":
+            if self.gametype == 'qa':
+                qtype = self.settings['allcase'][randint(0, len(self.settings.allcase)-1)]
+            else:                    
+                qtype=self.settings['vtype']
+        if pos == "Num":
+            if self.gametype == 'qa':
+                qtype = self.settings['allcase'][randint(0, len(self.settings.allcase)-1)]
+            else:                                            
+                qtype=self.settings['num_context']
+#        if pos == "A":
 
         print "QTYPE: " + qtype
 
@@ -516,7 +513,7 @@ class QAGame(Game):
         # Generate the set of possible answers if they are not coming from the interface
         # Or if the gametype is qa.
         awords = {}
-        if db_info.has_key('answer_id') and self.settings.gametype == 'context':
+        if db_info.has_key('answer_id') and self.settings['gametype'] == 'context':
             awords=db_info['awords']
         else:
             # Generate the set of possible answers
@@ -558,7 +555,7 @@ class QAGame(Game):
         # Store everything for the html form 
         db_info['question_id'] = question.id
         db_info['answer_id'] = answer.id
-        db_info['gametype'] = self.settings.gametype
+        db_info['gametype'] = self.settings['gametype']
         
         return db_info
 
