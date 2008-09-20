@@ -1,11 +1,13 @@
 from django.conf.urls.defaults import *
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
     # Example:
     # (r'^oahpa/', include('oahpa.foo.urls')),
     (r'^oahpa/i18n/', include('django.conf.urls.i18n')),
-#    (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/home/saara/ped'}),
-#    (r'^oahpa/admin/', include('django.contrib.admin.urls')),
+    #(r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': '/home/saara/ped'}),
+    #(r'^oahpa/admin/', include('django.contrib.admin.urls')),
     (r'^oahpa/morfa/$', 'oahpa.drill.views.mgame_n'),
     (r'^oahpa/morfa_s/$', 'oahpa.drill.views.mgame_n'),
     (r'^oahpa/morfa_v/$', 'oahpa.drill.views.mgame_v'),
@@ -20,8 +22,11 @@ urlpatterns = patterns('',
     (r'^oahpa/vasta_v/$', 'oahpa.drill.views.vasta_v'),
     (r'^oahpa/vasta_a/$', 'oahpa.drill.views.vasta_a'),
     (r'^oahpa/qa/$', 'oahpa.drill.views.qagame'), 
+    (r'^oahpa/feedback/$', 'oahpa.feedback.views.feedback'), 
         
 
     # Uncomment this for admin:
-#     (r'^admin/', include('django.contrib.admin.urls')),
+    (r'^admin/drill/report/$', 'drill.admin_views.report'),
+    (r'^admin/(.*)', admin.site.root),
+    #(r'^admin/', include('django.contrib.admin.urls')),
 )
