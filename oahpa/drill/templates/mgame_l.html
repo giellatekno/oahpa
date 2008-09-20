@@ -15,7 +15,7 @@
 </tr>
 <tr>
 <td>
-  {% ifequal gametype "bare" %}
+  {% ifequal settings.gametype "bare" %}
     {{ settingsform.adjcase }}
   {% else %}
     {{ settingsform.num_context }}
@@ -30,11 +30,11 @@
 <input type="submit" name="settings" value="{% trans "New set" %}" />
 
 {% endblock %}
-{% block instructions %}<p>{{ gamename }}</p>{% endblock %}
+{% block instructions %}<p>{{ settings.gamename }}</p>{% endblock %}
 
 {% block question %}
 
-{% ifequal gametype "bare" %}
+{% ifequal settings.gametype "bare" %}
   <td>
   {% if forloop.first %}
     <div id='lemma'>
