@@ -2587,6 +2587,8 @@ SET NON-APP = ALLSYNTAG - (@APP);
 # These are the most common rules. They are put first, if possible, 
 # in order to get a more efficient parser.   
 
+REMOVE Px ;
+
     # giella vs. gielas vs. giellat
     # - - - - - - - - - - - - - - -
 SELECT:r683 LANGUAGE IF (0 LANGUAGE LINK NOT 0 A) ;
@@ -2948,7 +2950,7 @@ SELECT:r608 (V Neg Ind Sg1) IF (*-1 BOS OR (":") BARRIER REALWORD);
 
 SELECT:r609 Inf IF (*-1 (Neg Sup) BARRIER S-BOUNDARY);
 
-SELECT:r611 VFIN IF (*-1 BOS OR (":") BARRIER REALWORD)(0 Qst)(*1 ("?") BARRIER VFIN);
+SELECT:r611 VFIN IF (*-1 BOS OR (":") BARRIER REALWORD)(0 Qst)(*1 ("^qst") BARRIER VFIN);
 	## Humatgo sámegiela? 
 
 SELECT VFIN IF (*-1 BOS BARRIER VFIN)(0 N LINK NEGATE 0 Imprt LINK 1 go)(*1 CS BARRIER VFIN LINK *1 VFIN BARRIER S-BOUNDARY);	
@@ -4659,7 +4661,7 @@ REMOVE:r1075 Pcle IF (0 ("son")); # Remove the rest
 REMOVE:r1076 Qst IF (0 ("dego") OR ("dugo"));
 	## Su ámadadju báittii dego beaivváš. 
 
-REMOVE:r1077 Qst IF (NEGATE *-1 VERB BARRIER WORD)(0 Adv)(NEGATE *1 ("?")); 
+REMOVE:r1077 Qst IF (NEGATE *-1 VERB BARRIER WORD)(0 Adv)(NEGATE *1 ("^qst")); 
 	## Nugo dieđát, de lean dál.
 
 
@@ -4997,7 +4999,7 @@ SELECT:r1161 (Neg Sup) IF (0 ("amat"))(1 Inf); # Also Pcle?
 
 	# dasgo
 	# - - -
-SELECT:r1162 CS IF (0 ("dasgo"))(NEGATE *1 ("?"));
+SELECT:r1162 CS IF (0 ("dasgo"))(NEGATE *1 ("^qst"));
 SELECT:r1163 CS IF (0 ("dasgo"))(1 Interr);
 	## Dasgo Herodes lea ohcamin máná goddin dihtii dan.
 	## Dasgo goabbá lea stuorit,...
@@ -5018,7 +5020,7 @@ SELECT:r1165 CS IF (*-1 ("jos") OR ("jus") OR ("juos") OR ("joas") OR ("go") LIN
 	# Yes/no ( = fi. -ko/-kö, no. V1))
 
 SELECT:r1167 Pcle IF (-3 BOS OR CLB)(-2 CC)(-1 V)(0 go);
-SELECT:r1168 Pcle IF (-2 BOS OR REALCLB OR PUNCT OR COMMA)(0 go)(*1 ("?"));
+SELECT:r1168 Pcle IF (-2 BOS OR REALCLB OR PUNCT OR COMMA)(0 go)(*1 ("^qst"));
 	## Muhto boađát go?                         
 	## Eai go báhkinat ge daga aiddo nu?
 	## Judas, beahtát go Olbmobártni cummáin?
@@ -5047,7 +5049,7 @@ SELECT:r1174 Pcle IF (-2 Inf)(-1 VFIN LINK NOT 0 Ill)(NEGATE -1 PrfPrc)(0 go)(1 
 SELECT:r1175 Pcle IF (-3 N OR Pron)(-2 ("ahte"))(-1 VFIN)(0 ("go"));
 	## Politihkas lei 1866 rájes sáhka ahte galggai go stivrregoahtit gii oažžu eatnama láigohit stáhtas.
 
-SELECT:r1176 Pcle IF (-1 N LINK *-1 BOS BARRIER NOT-NP)(NEGATE -1 ("hávvi"))(0 go)(*1 VFIN BARRIER S-BOUNDARY)(*1 ("?"));
+SELECT:r1176 Pcle IF (-1 N LINK *-1 BOS BARRIER NOT-NP)(NEGATE -1 ("hávvi"))(0 go)(*1 VFIN BARRIER S-BOUNDARY)(*1 ("^qst"));
 	## Eatni goarrun gákti go dus lea die?
 
 SELECT:r1177 Pcle IF (-2 (N Gen) LINK *-1 BOS BARRIER NOT-NP)(-1 Po)(0 go)(*1 VFIN BARRIER S-BOUNDARY);
@@ -5091,11 +5093,11 @@ SELECT:r1185 CS IF (0 go)(1 ("ahte"));
 SELECT:r1193 CS IF (0 go);    # All other go's are CS. (differ from Pcle sect 2?)
 
 # mo
-SELECT:r1194 Adv IF (*-1 BOC OR PUNCT BARRIER NOT-PCLE)(0 ("mo") OR ("mot") OR ("mov") OR ("movt") OR ("govt"))(*1 ("?"));
+SELECT:r1194 Adv IF (*-1 BOC OR PUNCT BARRIER NOT-PCLE)(0 ("mo") OR ("mot") OR ("mov") OR ("movt") OR ("govt"))(*1 ("^qst"));
 	## Mo dagai stáhta iežas Finnmárkku eatnamiid eaiggádin?
 
 #Try a more radical approach:
-SELECT:r1195 CS IF (NEGATE *-1 BOC OR PUNCT BARRIER NOT-PCLE)(0 ("mo") OR ("mot") OR ("mov") OR ("movt") OR ("govt"))(NEGATE *1 ("?"));
+SELECT:r1195 CS IF (NEGATE *-1 BOC OR PUNCT BARRIER NOT-PCLE)(0 ("mo") OR ("mot") OR ("mov") OR ("movt") OR ("govt"))(NEGATE *1 ("^qst"));
 	## Farga boahtá ođđa govat mat čájehit mo ieš johtin manai.
 
 
@@ -5578,7 +5580,7 @@ SELECT:r1323 Adv IF (0 ("easkka"))(1 Num OR ("maŋŋel"));
 
 	# goas
 	# - - -
-SELECT:r1324 Adv IF (0 ("goas"))(NEGATE 1 go)(*1 ("?"));     
+SELECT:r1324 Adv IF (0 ("goas"))(NEGATE 1 go)(*1 ("^qst"));     
 SELECT:r1325 Adv IF (0 ("goas"))(1 CC)(2 CP);
 	## Goasbat Máret fuobmái fas dohko vuolgit?
 	## Goas ja mo dearvvašvuođaveahki lea addojuvvon,... 
@@ -5742,7 +5744,7 @@ SELECT:r1372 Adv IF (*-1 VFIN BARRIER S-BOUNDARY OR CC OR CLB LINK NOT 0 Neg)(0 
 	## Jos oktage jearaš dudnos manne doai dahkabeahtti dan,...
 	
 REMOVE:r1373 VGen IF (0 ("manne" Adv));
-SELECT:r1374 Adv IF (0 ("manne"))(NEGATE 1 ("go"))(*1 ("?"));
+SELECT:r1374 Adv IF (0 ("manne"))(NEGATE 1 ("go"))(*1 ("^qst"));
 	## Manne rievddadit luonddudilálašvuođat?
 	
 
@@ -5985,7 +5987,7 @@ MAP:1 (&grm-notInterj) TARGET Interj IF (-1 WORD)(NEGATE *1 EOS BARRIER WORD);
 MAP:2 (&grm-notInterj) TARGET Interj IF (NEGATE *-1 BOS BARRIER WORD)(1 WORD) ;
 
 SELECT ("viessu" N) ; 
-REMOVE Px (NOT 0 N-PX) ;
+#REMOVE Px ; Moved to the beginning.
 REMOVE Foc/ba (0 (V Du3)) ;
 
 # -------
@@ -5993,6 +5995,7 @@ REMOVE Foc/ba (0 (V Du3)) ;
 # -------
 
 SELECT ConNeg (-1 Neg) ;
+SELECT PrfPrc (-1 Neg) ;
 
 LIST VFIN-PRON-TAG = Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 ;  
 LIST DUALIS-NOUN = (".*#guovttis"r) (".*#guovttos"r) ;
@@ -6002,9 +6005,25 @@ SELECT:sticky $$VFIN-PRON-TAG (0 V)(-1 $$VFIN-PRON-TAG LINK 0 (Pers Nom) LINK *-
 SELECT:agreement1 (V Sg3) (-1 (N Sg Nom) LINK *-1 QDL) ;
 SELECT:agreement2 (V Pl3) (-1 (N Pl Nom) LINK *-1 QDL) ;
 SELECT:agreement3 (V Du3) (-1 DUALIS-NOUN + Nom LINK *-1 QDL) ;
+# When there is no Pers in the answer:
+SELECT (V Sg1) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Sg2) ;
+SELECT (V Sg2) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Sg1) ;
+SELECT (V Sg3) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Sg3) ;
+SELECT (V Du1) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Du2) ;
+SELECT (V Du2) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Du1) ;
+SELECT (V Du3) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Du3) ;
+SELECT (V Pl1) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Pl2) ;
+SELECT (V Pl2) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Pl1) ;
+SELECT (V Pl3) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Pl3) ;
+SELECT (V Pl3) (*-1 QDL BARRIER Nom OR VERB LINK *-1 (N Pl Nom)) ;
+SELECT (V Sg3) (*-1 QDL BARRIER Nom OR VERB LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN) ;
+SELECT (V Du3) (*-1 QDL BARRIER Nom OR VERB LINK *-1 DUALIS-NOUN) ;
 
 # Removing other readings even if there is no agreement:
 SELECT VFIN (-1 (N Nom) OR (Pers Nom) LINK *-1 QDL) ;
+
+# Selecting Inf after VFIN and Neg:
+SELECT Inf (*-1 VFIN OR PrfPrc OR ConNeg BARRIER NOT-ADV LINK 0 INFV LINK *-1 QDL) ;
 
 # -----
 # PP
@@ -6028,22 +6047,22 @@ SET NOT-Attr-CC-Adv-Num = WORD - Attr-CC-Adv-Num ;
 SET NOT-Attr-CC-Adv-Num-Gen = WORD - Attr-CC-Adv-Num-Gen ;
 
 # Inside the NP, we choose what suits to it, if there is reading for it:
-SELECT:1 Adv (0 GRADE-ADV + A LINK *-1 QDL) ;
+SELECT Adv (0 GRADE-ADV + A LINK *-1 QDL) ;
     ## hui boares
-SELECT:2 Attr (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ; 
+SELECT Attr (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ; 
     ## stuorra ja hui boares viessu
-SELECT:3 Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; # no there should be less ambiguity.
+SELECT Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; # no there should be less ambiguity.
     # once again
-SELECT:4 Num (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ;
+SELECT Num (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ;
     ## guokte stuorra ja hui boares viesu
-SELECT:5 (N Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num LINK *-1 QDL) ;
+SELECT (N Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num LINK *-1 QDL)(NEGATE 1 CC LINK *1 N BARRIER NPNH LINK NOT *1 N BARRIER NPNH) ;
     ## eatni guokte stuorra ja hui boares viesu
-SELECT:6 (Refl Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
+SELECT (Refl Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
     ## mu iežan eatni guokte stuorra ja hui boares viesu
-SELECT:7 (Pers Gen) (NOT 0 Dem)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
+SELECT (Pers Gen) (NOT 0 Dem)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
     ## mu iežan eatni guokte stuorra ja hui boares viesu
 
-SELECT:8 Dem (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
+SELECT Dem (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
     ## dat mu iežan eatni guokte stuorra ja hui boares viesu
 
 SELECT N (-1 Attr OR Dem OR Gen OR Num)(NOT 0 VFIN) ;
@@ -6053,11 +6072,13 @@ SELECT A (*-1 QDL)(*1 N OR Pers BARRIER NPNH LINK 1 COPULAS) ;
     ## Čeahppi son lea.
 
 # Should be Attr when: + (Attr) + N
-MAP (&grm-shouldAttr) TARGET A IF (NEGATE 0 Attr)(*1 N BARRIER NOT-Attr-CC-Adv) ;
+MAP (&grm-shouldAttr) TARGET A IF (NEGATE 0 Attr OR ("nubbi") OR ("buorre"))(*1 N BARRIER NOT-Attr-CC-Adv) ;
 
 # Should not be an Attr if it is not in front of N
 MAP (&grm-shouldNotAttr) TARGET Attr IF (NEGATE 0 Nom)(NEGATE *1 N BARRIER VERB) ;
 
+LIST WORK-V = "bargat" "dahkat" ;
+# verbs which often not are followed by an Acc
  
 LIST TARGETQUESTION-NOM = ("mii" Nom) ("gii" Nom) ;
 LIST TARGETQUESTION-ACC = ("mii" Acc) ("gii" Acc) ;
@@ -6070,7 +6091,7 @@ LIST TARGETQUESTION-ESS = ("mii" Ess) ("gii" Ess) ;
 MAP (&grm-missing-Loc) TARGET TARGETQUESTION-LOC IF (*1 QDL LINK NOT *1 Loc OR DOPPE);
 MAP (&grm-missing-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK NOT *1 Ill OR DOHKO);
 MAP (&grm-missing-Com) TARGET TARGETQUESTION-COM IF (*1 QDL LINK NOT *1 Com);
-MAP (&grm-missing-Acc) TARGET TARGETQUESTION-ACC IF (*1 QDL LINK NOT *1 Acc);
+MAP (&grm-missing-Acc) TARGET TARGETQUESTION-ACC IF (*1 QDL BARRIER WORK-V LINK NOT *1 Acc);
 MAP (&grm-missing-Nom) TARGET TARGETQUESTION-NOM IF (*1 QDL LINK NOT *1 Nom);
 MAP (&grm-missing-Ess) TARGET TARGETQUESTION-ESS IF (*1 QDL LINK NOT *1 Ess);
 MAP (&grm-missing-Gen) TARGET TARGETQUESTION-GEN IF (*1 QDL LINK NOT *1 Gen);
@@ -6087,7 +6108,14 @@ MAP (&grm-should-LocPP) TARGET Po IF (NOT 0 LOC-Po LINK *-1 QDL LINK *-1 ("gos")
 MAP (&grm-should-IllPP) TARGET Po IF (NOT 0 ILL-Po LINK *-1 QDL LINK *-1 ("gosa"));
 
 # Select acc when Obj:
-SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK *-1 QDL);
+SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK *-1 QDL)(NOT *1 N BARRIER VERB);
+
+# -------
+# ADVERBS
+# -------
+
+SELECT Adv (-1 VFIN) ;
+
 
 # -------------------
 # AGREEMENT INSIDE NP
@@ -6112,9 +6140,24 @@ MAP (&grm-non-agreement) TARGET (Dem Pl Loc) IF (*-1 QDL)(*1 N LINK NOT 0 (Pl Lo
 # dain viesuin
 # daiguin viesuiguin
 
-MAP (&grm-non-agreement) TARGET Num IF (*-1 QDL)(NOT 0 Gen)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Loc OR Ill);
-MAP (&grm-non-agreement) TARGET Num IF (*-1 QDL)(NOT 0 Ess)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Ess);
-MAP (&grm-non-agreement) TARGET Num IF (*-1 QDL)(NOT 0 Com)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Com);
+LIST HALFAGR = Num "nubbi" "buorre" ;
+
+SELECT Nom (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Nom);
+SELECT Gen (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Loc OR (Sg Ill) OR (Pl Com));
+SELECT Acc (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Acc);
+SELECT (Pl Ill) (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Ill));
+SELECT Ess (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Ess);
+SELECT Com (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Com);
+
+
+MAP (&grm-non-agreement) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Nom))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Nom));
+MAP (&grm-non-agreement) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Pl Nom))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Nom));
+MAP (&grm-non-agreement) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Acc))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Acc));
+MAP (&grm-non-agreement) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Pl Acc))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Acc));
+MAP (&grm-non-agreement) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Loc) OR (Sg Ill));
+MAP (&grm-non-agreement) TARGET HALFAGR IF (*-1 QDL)(NOT 0 Ess)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Ess);
+MAP (&grm-non-agreement) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Com))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Com));
+MAP (&grm-non-agreement) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Com));
 
 MAP (&grm-wrong-case) TARGET N IF (*-1 (Num Nom) OR (Num Acc) BARRIER NOT-ADJ LINK *-1 QDL)(NOT 0 Gen OR Acc);
 
@@ -6178,7 +6221,8 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL LINK *-1 (Pers Nom) LIN
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
 
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL LINK *-1 (N Pl Nom))(NOT 0 Pl3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL LINK *-1 (N Sg Nom))(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN)(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
 
 # -------
@@ -6191,7 +6235,7 @@ MAP (&grm-should_be_Vfin) TARGET V IF (*1 QDL LINK NOT *1 VFIN);
 	# You should use a finite verb when answering...
 
 
-# Answer with the correct verbform:
+# Answer with the correct verbform if there is no Pers:
 MAP (&grm-incorr-pers-nr) TARGET (V Sg1) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Sg2) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Sg2) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Sg1) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Sg3) ;
@@ -6202,8 +6246,9 @@ MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Pl2) 
 MAP (&grm-incorr-pers-nr) TARGET (V Pl2) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Pl1) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Pl3) ;
 
-MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL LINK *-1 (N Pl Nom))(NOT 0 Pl3) ;
-MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL LINK *-1 (N Sg Nom))(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom LINK *-1 (N Pl Nom))(NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN)(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
 
 # -------------------
@@ -6254,16 +6299,16 @@ MAP (&dia-pos) TARGET QDL IF (*-1 Qst OR go)(NOT *1 Neg);
 # The target can be e.g. the user´s name, place where she lives, what kind of car she has.... and then we can use the target in the next question, e.g. "Man guhká don leat orron Romssas?"
 
 MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM LINK -1 BOS) ;
-MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC LINK -1 BOS)(NEGATE *1 (N Acc) BARRIER VERB) ;
+MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC LINK -1 BOS)(NEGATE *1 (N Acc) BARRIER VERB OR CC) ;
 MAP (&dia-target) TARGET (N Gen) IF (*-1 QDL LINK *-1 TARGETQUESTION-GEN LINK -1 BOS) ;
-MAP (&dia-target) TARGET (N Ill) IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL LINK -1 BOS) ;
-MAP (&dia-target) TARGET (N Loc) IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC LINK -1 BOS) ;
+MAP (&dia-target) TARGET (N Ill) IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL OR ("gosa") LINK -1 BOS) ;
+MAP (&dia-target) TARGET (N Loc) IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC OR ("gos") OR ("gokko") LINK -1 BOS) ;
 MAP (&dia-target) TARGET (N Com) IF (*-1 QDL LINK *-1 TARGETQUESTION-COM LINK -1 BOS) ;
 MAP (&dia-target) TARGET (N Ess) IF (*-1 QDL LINK *-1 TARGETQUESTION-ESS LINK -1 BOS) ;
 
-MAP (&dia-target) TARGET DOPPE IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Loc)) ;
+MAP (&dia-target) TARGET DOPPE IF (*-1 QDL LINK *-1 ("gos") OR ("gokko") LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Loc)) ;
 # picking "dáppe" if no Loc
-MAP (&dia-target) TARGET DOHKO IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Ill)) ;
+MAP (&dia-target) TARGET DOHKO IF (*-1 QDL LINK *-1 ("gosa") LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Ill)) ;
 # picking "deike" if no Loc
 
 # The Nom rule do not pick Num + N Gen !!
@@ -6298,12 +6343,12 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 # &grm-notInterj        Interj can only be initial or final
 
 # &grm-missing-Acc      there should be an accusative
-# &grm-missing-Com      there should be an comitative
+# &grm-missing-Com      there should be a comitative
 # &grm-missing-Ess      there should be an essive
-# &grm-missing-Gen      there should be an genetive
+# &grm-missing-Gen      there should be a genetive
 # &grm-missing-Ill      there should be an illative
-# &grm-missing-Loc      there should be an locative
-# &grm-missing-Nom      there should be an nominative
+# &grm-missing-Loc      there should be a locative
+# &grm-missing-Nom      there should be a nominative
 # &grm-missing-Loc-PP   there should be a Loc or a PP
 # &grm-missing-Ill-PP   there should be an Ill or a PP
 
@@ -6312,13 +6357,13 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 # &grm-missing-Gen-PP   there should be a Gen in front of the Po
 
 # &grm-wrong-case       wrong case
-# &grm-incorr-time-expr  
+# &grm-incorr-time-expr incorrect time expression 
 
 
 # &grm-non-agreement    here should be agreement
-# &grm-shouldAttr       this adjective should be Attr
+# &grm-shouldAttr       this adjective should have Attr form
 # &grm-shouldNotAttr    this adjective should be predicative form
 # &grm-should_be_Vfin   your answer should always contain a finite verb
 # &grm-should_not_Vfin  this verb should not be finite
-# &grm-incorr-pers-nr      you should answer with another Pers
+# &grm-incorr-pers-nr   you should answer with another Person-Number
 
