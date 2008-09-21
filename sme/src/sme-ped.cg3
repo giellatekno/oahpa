@@ -6300,6 +6300,10 @@ MAP (&dia-pos) TARGET QDL IF (*-1 Qst OR go)(NOT *1 Neg);
 
 MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM LINK -1 BOS) ;
 MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC LINK -1 BOS)(NEGATE *1 (N Acc) BARRIER VERB OR CC) ;
+MAP (&dia-target) TARGET VFIN IF (*-1 QDL LINK *-1 WORK-V LINK *-1 TARGETQUESTION-ACC LINK -1 BOS)(NOT 0 Neg) ;
+
+MAP (&dia-dont-know) TARGET ("diehtit" ConNeg) (*-1 QDL LINK NOT *-1 ("diehtit")) ;
+
 MAP (&dia-target) TARGET (N Gen) IF (*-1 QDL LINK *-1 TARGETQUESTION-GEN LINK -1 BOS) ;
 MAP (&dia-target) TARGET (N Ill) IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL OR ("gosa") LINK -1 BOS) ;
 MAP (&dia-target) TARGET (N Loc) IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC OR ("gos") OR ("gokko") LINK -1 BOS) ;
@@ -6336,8 +6340,10 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 # &dia-nothing          anwers is "nothing"
 # &dia-pos              positive content
 # &dia-target           answer to the question - can be used in next question
+# &dia-dont-know        to easy answer - Make a comment for this. 
 
 # &err-spellingerror    spellingerror word is not in lexicon
+
 # &grm-falAdv           "fal" can never be initial
 # &grm-naPcle           "na" can only be initial
 # &grm-notInterj        Interj can only be initial or final
