@@ -23,16 +23,6 @@
        # Cycle 1a: Special cases 
        # Cycle 1b: Cleaning up after the special cases
        # Cycle 2: Other local disambiguation 
-       # Mapping of COMP-CS<, CC and CS
-       # More disambiguation
-       # Verb mappings 
-       # Disambiguating nouns
-       # Mainly mapping-rules   
-       # Disambiguating nouns
-  	   # Case disambiguation
-       # Cycle 3: Global disambiguation 
-	   # Cycle 4: Syntactic disambiguation 
-	   # Cycle 5: Post-syntactic morphological disambiguation
 
       # =========================================== #
       #     Detailed table of contents              #
@@ -142,155 +132,7 @@
     # Adverbs, not nouns
     # Nouns, not adverbs
     # Rules related to specific adverbs (quite a lot)
-  # Mapping of COMP-CS<, CC and CS
-  	# Complements of particles in comparison 
-  	# CC- and CS-Mapping
-# More disambiguation  	
-  # Disambiguating pronouns
-    # Interrogative and relative pronouns
-    # Reflexive pronouns
-    # Reciprocal pronouns
-  # Numerals
-  	# Numerals or not
-    # General rules
-    # Rules related to specific numerals
-  # More pronouns
-  	# Indefinite pronouns
-      # General rules
-      # Particular indefinite pronouns
-    # Demonstrative pronouns
-      # DP-internal number concord
-      # DP-internal case concord
-    # FAMILY pronouns
-      # Some rules for FAMILY pronouns again (will hit "dat", except the last one)
-      # Dem or Pers
-      # Number
-      # Disambiguating against other POS
-  # Disambiguating adjectives
-    # Rules related to specific adjectives
-    # Comparative
-    # Attribute disambiguation
-      # Only Attr if something to lean on
-      # Rules for Attr between Dem and N
-      # Other attribute rules
-      # Coordinated attributes
-      # Special rules for 'buorre' (the only adjective showing case agreement)
-      # Comparatives
-    # Adjectives as predicates
-      # Coordination
-    # And now some rules for adverbs that modify adjectives
-    # Proper nouns
-    # SubstitutingProp tags 
-    # Proper nouns
-    	# Prop or not
-    	# Particular proper nouns
-    	# Prop as Attr or not
-    	# Choosing between different proper nouns
-  # Disambiguating verbs - part 1
-    # ConNeg forms
-    # Imperative
-    # Infinitive
-    # Verbgenitive
-    # Supinum vs. potential
-    # Perfect Participle
-    # Actio
-    # Present participle
-    # Rules for "orrut"
-    # Rules for "addit" (which is an adjective, but more often a verb)
-    # Actio Loc = Actio Ess
-    # Actio Gen = Actio Ess
-    # Imprt or Ind
-	# Nouns vs. verbs
-  # Verb mappings
-  # Disambiguating nouns
-  # Mainly mapping-rules
-  	   	 # Lexically determined mappings
-	     # Mappings of minor categories
-	     # Determiner mappings
-	     # Attribute mappings
-	     # Numeral mappings
-	     # Quantifier mappings
-	     # Genitive mappings
-	     # Appositions
-	     # Fragment mappings
-	     # Other special nominative mappings
-	     # Arguments and secondary predicates
-	     # Habitative mappings
-	     # Adverbial mappings
-  # Disambiguating proper nouns #
-	# Choosing between different proper nouns
-	# Disambiguating the semantic tags
-  # Disambiguating symbols and punctuation marks
-  # Case disambiguation
-    # Secure rules for choosing Acc
-    # Choosing accusative or genitive semantically
-    # Genitive
-    # Nominative and accusative
-    # Nominative
-    # Accusative
-    # Accusative Px or locative 
-    # Illative
-    # Early comitative rules
-    # Locative
-    # Comitative
-    # Locative and comitative - Disambiguation based on verbs
-    # Comitative
-    # Locative and comitative - Disambiguation based upon coordination
-    # Another round of locative rules
-    # Essive
-    # Late case rules (after other case rules have worked)
-  # Disambiguating verbs - part 2 
-    # Finite or not
-    # Indicative or imperative
-    # Verbs according to person and number
-    # Rules for a special infinitive construction
-    # More finite verbs
-    # Passive
-    # Non-finite verb forms
-      # Infinitive
-      # Present Participle
-      # Actio/Perfect Participle
-      # Imperative II (empty)
-      # Verbgenitive
-      # Derived vs. lexicalized noun
-      # Aktio
-    # Selecting some more finite verbs
-    # Lexical disambiguation of verbs
-  # Residual cases
-    # Case rules
-    # Other rules for nouns and pronouns
-    # Px rules
-    # Determiners
-    # Adverbs and adjectives    
-  # Cycle 3: Global disambiguation 
-    # Nouns
-    # Verbs
-    # Genitive after preposition -- round 2
-  # Cycle 4: Syntactic disambiguation 
-	# NP internal
-	# Verbal functions
-	# Subject
-	# Subject predicate
-	# Subject or not
-	# Late nominative rule
-	# Fragments
-	# Object and object predicate
-	# Adverbials or Object
-	# Other grammatical functions 
-  # Cycle 5: Post-syntactic morphological disambiguation
-	# Demonstratives
-	# Case
-	# Adverbs
-	# Verbs
-	# Tidying up some loose ends
-	# Substituting some syntactic tags
 
-
-
-# ================================================================= #
-# ================================================================= #
-# ================================================================= #
-# XXX Copy to sme-dep.rle starts here.
 
 
 # ========== #
@@ -6101,7 +5943,10 @@ LIST TARGETQUESTION-LOC = ("mii" Loc) ("gii" Loc) ;
 LIST TARGETQUESTION-COM = ("mii" Com) ("gii" Com) ;
 LIST TARGETQUESTION-ESS = ("mii" Ess) ("gii" Ess) ;
 
-MAP (&grm-missing-Num) TARGET ("galle") IF (*1 QDL LINK NOT *1 Num);
+MAP (&grm-missing-NumSg) TARGET ("galle" Sg Nom) IF (*1 QDL LINK NOT *1 (Num Sg));
+MAP (&grm-missing-NumPl) TARGET ("galle" Pl) IF (*1 QDL LINK NOT *1 (Num Pl));
+MAP (&grm-missing-NNum) TARGET ("gallis" N Nom) IF (*1 QDL LINK NOT *1 (N Num));
+MAP (&grm-missing-Ord) TARGET ("gallát") IF (*1 QDL LINK NOT *1 (A Ord));
 
 
 
@@ -6394,6 +6239,10 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 # &grm-wrong-case       wrong case
 # &grm-incorr-time-expr incorrect time expression 
 
+# &grm-missing-NumSg    You should answer with Num Sg
+# &grm-missing-NumPl    You should answer with Num Pl
+# &grm-missing-NNum     You should answer with N Num
+# &grm-missing-Ord      You should answer with A Ord
 
 # &grm-non-agreement    here should be agreement
 # &grm-shouldAttr       this adjective should have Attr form
