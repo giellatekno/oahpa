@@ -5935,19 +5935,23 @@ LIST WORK-V = "bargat" "dahkat" ;
 
 LIST NUM-QUESTION = "galle" "gallis" "gallát" "gallii" ; 
  
-LIST TARGETQUESTION-NOM = ("mii" Nom) ("gii" Nom) ;
-LIST TARGETQUESTION-ACC = ("mii" Acc) ("gii" Acc) ;
+LIST TARGETQUESTION-NOM = ("mii" Nom) ("gii" Nom) ("galle" Nom) ("gallis" N Nom) ;
+LIST TARGETQUESTION-ACC = ("mii" Acc) ("gii" Acc) ("galle" Acc) ("gallis" N Acc) ;
 LIST TARGETQUESTION-GEN = ("gii" Gen) ;
-LIST TARGETQUESTION-ILL = ("mii" Ill) ("gii" Ill) ;
-LIST TARGETQUESTION-LOC = ("mii" Loc) ("gii" Loc) ;
-LIST TARGETQUESTION-COM = ("mii" Com) ("gii" Com) ;
+LIST TARGETQUESTION-ILL = ("mii" Ill) ("gii" Ill) ("gallis" N Ill) ;
+LIST TARGETQUESTION-LOC = ("mii" Loc) ("gii" Loc) ("galle" Loc) ("gallis" N Loc) ;
+LIST TARGETQUESTION-COM = ("mii" Com) ("gii" Com) ("galle" Com) ("gallis" N Com) ;
 LIST TARGETQUESTION-ESS = ("mii" Ess) ("gii" Ess) ;
+
+REMOVE Acc (-1 BOS)(0 ("galle") OR ("gallis") LINK NOT *1 V-TRANS-ACT-NOT-ACT BARRIER QDL)(*1 QDL);
+REMOVE Loc (-1 BOS)(0 ("galle") LINK 1 VFIN)(*1 QDL);
+REMOVE Nom (-1 BOS)(0 ("galle") LINK 1 N)(*1 QDL);
+
 
 MAP (&grm-missing-NumSg) TARGET ("galle" Sg Nom) IF (*1 QDL LINK NOT *1 (Num Sg));
 MAP (&grm-missing-NumPl) TARGET ("galle" Pl) IF (*1 QDL LINK NOT *1 (Num Pl));
 MAP (&grm-missing-NNum) TARGET ("gallis" N Nom) IF (*1 QDL LINK NOT *1 (N Num));
 MAP (&grm-missing-Ord) TARGET ("gallát") IF (*1 QDL LINK NOT *1 (A Ord));
-
 
 
 MAP (&grm-missing-Loc) TARGET TARGETQUESTION-LOC IF (*1 QDL LINK NOT *1 Loc OR DOPPE);
@@ -6123,10 +6127,10 @@ MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom LINK *-1 DUALIS-NOUN)
 # -------------------
 
 # If not agreement:
-MAP (&grm-non-agreement) TARGET VFIN IF (0 $$VFIN-PRON-TAG LINK -1 (Pers Nom) LINK NOT 0 $$VFIN-PRON-TAG LINK -1 QDL) ;
-MAP (&grm-non-agreement) TARGET VFIN IF (NOT 0 Sg3 LINK -1 (N Sg Nom) LINK NOT 0 (N Num Nom) LINK *-1 QDL) ;
-MAP (&grm-non-agreement) TARGET VFIN IF (NOT 0 Pl3 LINK -1 (N Pl Nom) LINK *-1 QDL) ;
-MAP (&grm-non-agreement) TARGET VFIN IF (NOT 0 Du3 LINK -1 DUALIS-NOUN + Nom LINK *-1 QDL) ;
+MAP (&grm-non-agr-subj-v) TARGET VFIN IF (0 $$VFIN-PRON-TAG LINK -1 (Pers Nom) LINK NOT 0 $$VFIN-PRON-TAG LINK -1 QDL) ;
+MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Sg3 LINK -1 (N Sg Nom) LINK NOT 0 (N Num Nom) LINK *-1 QDL) ;
+MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Pl3 LINK -1 (N Pl Nom) LINK *-1 QDL) ;
+MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Du3 LINK -1 DUALIS-NOUN + Nom LINK *-1 QDL) ;
 
 # -------------
 # ONLY ONE VFIN
@@ -6167,7 +6171,7 @@ MAP (&dia-pos) TARGET QDL IF (*-1 Qst OR go)(NOT *1 Neg);
 
 LIST NUM-ADV = "oktii" "guktii" "golbmii" "njelljii" "vihttii" "guhttii" "čihččii" "gávccii" "ovccii" ;
 
-MAP (&dia-target) TARGET (N Num) IF (*-1 QDL LINK *-1 ("gallis") LINK -1 BOS);
+MAP (&dia-target) TARGET (N Num) IF (*-1 QDL LINK *-1 ("gallis" Nom) LINK -1 BOS);
 MAP (&dia-target) TARGET Num IF (*-1 QDL LINK *-1 ("galle") LINK -1 BOS);
 MAP (&dia-target) TARGET Ord IF (*-1 QDL LINK *-1 ("gallát") OR ("galládat") LINK -1 BOS);
 MAP (&dia-target) TARGET NUM-ADV IF (*-1 QDL LINK *-1 ("gallii") LINK -1 BOS);
@@ -6244,7 +6248,8 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 # &grm-missing-NNum     You should answer with N Num
 # &grm-missing-Ord      You should answer with A Ord
 
-# &grm-non-agreement    here should be agreement
+# &grm-non-agreement    should be agreement
+# &grm-non-agr-subj-v	should be agreement subj/verbals
 # &grm-shouldAttr       this adjective should have Attr form
 # &grm-shouldNotAttr    this adjective should be predicative form
 # &grm-should-be-Vfin   your answer should always contain a finite verb
