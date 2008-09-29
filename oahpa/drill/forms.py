@@ -250,32 +250,48 @@ class MorphQuestion(forms.Form):
     
     answer = forms.CharField()
 
-    def get_feedback(self,word,tag):
+    def get_feedback(self,word,tag,wordform):
         
         feedbacks=None
         
         if tag.pos=="N":
-            print "filtering feedbacks"
-            #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi,tag.case,tag.pos,tag.number
+            print ".......filtering feedbacks for nouns"
+            print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi
+            print tag.case,tag.pos,tag.number
             feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
                                                 Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
-                                                Q(soggi=word.soggi) & Q(case=tag.case) & \
+                                                Q(soggi=word.soggi) & Q(case2=tag.case) & \
                                                 Q(pos=tag.pos) &\
                                                 Q(number = tag.number))
         if tag.pos=="A":
+            print "........filtering feedbacks for adjectives"
+
             grade =""
-            if tag.grade:
-                grade = tag.grade
-            else:
-                grade = "Pos"
+            if tag.grade: grade = tag.grade                
+            else: grade = "Pos"
+
+            attrsuffix = ""
+            if tag.attributive:
+                attributive = "Attr"
+                attrsuffix = word.attrsuffix
+            else: attributive = "NoAttr"
+                
+            print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi, "attrsuffix:", word.attrsuffix
+            print tag.case, tag.pos, tag.number, tag.attributive
+
             feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
                                                 Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
-                                                Q(soggi=word.soggi) & Q(case=tag.case) & \
+                                                Q(soggi=word.soggi) & Q(case2=tag.case) & \
                                                 Q(pos=tag.pos) & Q(grade=grade) &\
+                                                Q(attributive=attributive) & Q(attrsuffix=attrsuffix) & \
                                                 Q(number = tag.number))
 
         if tag.pos == "V":
-            feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
+
+            print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi
+            print tag.pos, tag.personnumber, tag.tense, tag.mood
+
+            feedbacks = Feedback.objects.filter(Q(stem=word.stem) & \
                                                Q(diphthong=word.diphthong) & Q(soggi=word.soggi) & \
                                                Q(mood=tag.mood) & Q(tense=tag.tense) & \
                                                Q(personnumber = tag.personnumber))
@@ -285,8 +301,8 @@ class MorphQuestion(forms.Form):
                 msgs = f.messages.all()
                 for m in msgs:
                     self.feedback = self.feedback + " " + m.message
-            self.feedback = self.feedback.replace("LEMMA", "\"" + word.lemma + "\"") 
-            print self.feedback
+            self.feedback = self.feedback.replace("WORDFORM", "\"" + wordform + "\"") 
+            print "FEEDBACK", self.feedback
 
 
     def __init__(self, word, tag, baseform, fullforms, translations, question, userans_val, correct_val, *args, **kwargs):
@@ -304,7 +320,7 @@ class MorphQuestion(forms.Form):
         messages = []
 
         # Retrieve feedback information
-        self.get_feedback(word,tag)
+        self.get_feedback(word,tag,baseform.fullform)
             
         self.correct_answers =""
         self.case = ""
