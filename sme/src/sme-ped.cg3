@@ -5839,7 +5839,8 @@ REMOVE Foc/ba (0 (V Du3)) ;
 
 LIST MIELLA = "árbe#vierru" "bággu" "dárbu" "dilli" "lohpi" "miella" "riekti" "vejolašvuohta" "vuohki" "vuoigatvuohta" "vuorru" ;
 
-
+SELECT VFIN (-1 BOS)(1 go) ; 
+REMOVE Imprt (-1 BOS)(1 go) ; 
 SELECT ConNeg (-1 Neg) ;
 SELECT PrfPrc (-1 Neg) ;
 SELECT Inf (*-1 AUX BARRIER NOT-ADV) ; 
@@ -6098,7 +6099,7 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL LINK *-1 DUALIS-NOUN)(NOT 0
 #SELECT VERB ;
 
 
-MAP (&grm-should-be-Vfin) TARGET V IF (*1 QDL LINK NOT *1 VFIN);
+MAP (&grm-should-be-Vfin) TARGET QDL IF (NOT *1 VFIN);
 	# You should use a finite verb when answering...
 
 
@@ -6149,7 +6150,15 @@ MAP (&grm-non-agreement) TARGET (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV LINK 
     ## Nieiddat leat čeahpit.
     ## Nieida lea čeahppi.
 
+# -----------------------------
+# Answering with the same verb?
+# -----------------------------
 
+
+LIST VERBLEMMA = "juhkat" "borrat" "mannat" ;
+
+MAP (&semAnswerWithSameVerb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
+MAP (&semAnswerWithSameVerb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
 
 # ------------------------
 # Affirmative or negative?
@@ -6257,3 +6266,4 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 # &grm-incorr-pers-nr   you should answer with another Person-Number
 # &grm-should-pers      you shold answer with a pronoun
 
+# &semAnswerWithSameVerb you should answer with the same verb
