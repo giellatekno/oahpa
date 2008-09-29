@@ -6157,7 +6157,7 @@ MAP (&grm-non-agreement) TARGET (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV LINK 
 
 LIST VERBLEMMA = "juhkat" "borrat" "mannat" ;
 
-MAP (&semAnswerWithSameVerb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
+MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
 MAP (&semAnswerWithSameVerb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
 
 # ------------------------
@@ -6266,4 +6266,4 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 # &grm-incorr-pers-nr   you should answer with another Person-Number
 # &grm-should-pers      you shold answer with a pronoun
 
-# &semAnswerWithSameVerb you should answer with the same verb
+# &sem-answer-with-same-verb you should answer with the same verb
