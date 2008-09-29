@@ -95,6 +95,37 @@
       </element> -->
     </answer>
   </q>
+  
+  !-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N or Adv-set DOHKO: -->
+  <q>
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Gosa SUBJ MAINV čoavdagiid</text>
+      <element id="SUBJ">
+	<grammar pos="N+Number+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>bidjat</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV čoavdagiid N-ILL</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Sg+Ill"/>
+	<sem class="CONTAINER"/>
+      </element>
+<!--      <element game='qa' id="N-ILL">
+        <grammar tag="N+Sg+Ill"/>
+        <grammar pos="N"/>
+        <grammar pos="Adv"/>
+        <sem class="DOHKO"/>
+      </element> -->
+    </answer>
+  </q>
 
  
 <!-- Both Morfa and QA, but in QA the answer does not have to be HUMAN, but any N Ill or Pron Pers: --> 
@@ -118,6 +149,9 @@
     </question>
     <answer> 
       <text>SUBJ MAINV N-ILL</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+	<id>son</id>
       <element game='morfa' id="N-ILL" task="yes">
       <agreement id="INTERR"/>
 	<sem class="HUMAN"/>
@@ -151,6 +185,9 @@
     </question>
     <answer> 
       <text>SUBJ MAINV N-ILL</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+	<id>son</id>
       <element game='morfa' id="N-ILL" task="yes">
       <agreement id="INTERR"/>
 	<sem class="HUMAN"/>
@@ -159,6 +196,100 @@
         <grammar pos="N"/>
         <grammar pos="Pron"/>
       </element> -->
+    </answer>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N or Pron Pers or (V Inf): -->
+  <q>
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Tense+Person-Number"/>
+	  <id>illudit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ILL</text>
+      <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Sg+Ill"/>
+	<sem class="TIME-POINT-GEN"/>
+      </element>
+    </answer>
+  </q>
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N or Pron Pers or (V Inf): -->
+  <q>
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Tense+Person-Number"/>
+	  <id>illudit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ILL</text>
+      <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Pl+Ill"/>
+	<sem class="TIME-POINT-GEN-PL"/>
+      </element>
+    </answer>
+  </q>
+  
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be HUMAN, but any N Ill or Pron Pers: --> 
+ 
+  <q>
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Ill"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Tense+Person-Number"/>
+	  <id>jáhkkit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ILL</text>
+      <element game='morfa' id="N-ILL" task="yes">
+      <agreement id="INTERR"/>
+	<sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N or Pron Pers or (V Inf): -->
+  <q>
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Tense+Person-Number"/>
+	  <id>álgit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ILL</text>
+      <element game='morfa' id="N-ILL" task="yes">
+      <grammar tag="N+Sg+Ill"/>
+	<sem class="EDUCATION"/>
+      </element>
     </answer>
   </q>
 
@@ -345,6 +476,184 @@
       </element>   -->
  </answer>
   </q>
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron Pers : --> 
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Mas SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="N+Number+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>váruhit</id>
+      </element>
+   </question>
+    <answer> 
+      <text>SUBJ MAINV N-LOC</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      <element game='morfa' id="N-LOC" task="yes">
+	<sem class="VEHICLE"/>
+      </element>
+<!--      <element game='qa' id="N-LOC">
+      </element>   
+      <element game='qa' id="N-LOC">
+	<grammar pos="Pron"/>
+      </element>   -->
+ </answer>
+  </q>
+
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron Pers : --> 
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>beroštit</id>
+      </element>
+   </question>
+    <answer> 
+      <text>SUBJ MAINV N-LOC</text>
+      <element game='morfa' id="N-LOC" task="yes">
+	<agreement id="INTERR"/>
+	<sem class="HUMAN"/>
+      </element>
+<!--      <element game='qa' id="N-LOC">
+        <grammar tag="N+Number+Loc"/>
+      </element>   
+      <element game='qa' id="N-LOC">
+	<grammar pos="Pron"/>
+      </element>   -->
+ </answer>
+  </q>
+  
+ 
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron Pers : --> 
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Mas SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>geargat</id>
+      </element>
+   </question>
+    <answer> 
+      <text>SUBJ MAINV N-LOC</text>
+    <element game='morfa' id="N-LOC" task="yes">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="EDUCATION"/>
+      </element>
+<!--      <element game='qa' id="N-LOC">
+        <grammar tag="N+Sg+Loc"/>
+      </element>   
+      <element game='qa' id="N-LOC">
+	<grammar pos="Pron"/>
+      </element>   -->
+ </answer>
+  </q>
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N Loc or Pron Pers: -->
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV skeaŋkka</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>oažžut</id>
+      </element>
+    </question>
+   <answer> 
+      <text>SUBJ MAINV skeaŋkka N-LOC</text>
+      <element game='morfa' id="N-LOC" task="yes">
+	<agreement id="INTERR"/>
+	<sem class="HUMAN"/>
+      </element>
+ <!--    <element game='qa' id="N-LOC">
+        <agreement id="INTERR"/>
+        <grammar pos="N"/>
+        <grammar pos="Pron"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>N-LOC MAINV</text>
+      <element game='morfa' id="N-LOC" task="yes">
+	<agreement id="INTERR"/>
+	<sem class="HUMAN"/>
+      </element>
+     <element game='qa' id="N-LOC">
+        <agreement id="INTERR"/>
+        <grammar pos="N"/>
+	<grammar pos="Pron"/>
+      </element> -->
+    </answer>
+  </q>
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N Loc or Pron Pers: -->
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV ságaid</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>gullat</id>
+      </element>
+    </question>
+   <answer> 
+      <text>SUBJ MAINV ságaid N-LOC</text>
+      <element game='morfa' id="N-LOC" task="yes">
+	<agreement id="INTERR"/>
+	<sem class="HUMAN"/>
+      </element>
+ <!--    <element game='qa' id="N-LOC">
+        <agreement id="INTERR"/>
+        <grammar pos="N"/>
+        <grammar pos="Pron"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>N-LOC MAINV</text>
+      <element game='morfa' id="N-LOC" task="yes">
+	<agreement id="INTERR"/>
+	<sem class="HUMAN"/>
+      </element>
+     <element game='qa' id="N-LOC">
+        <agreement id="INTERR"/>
+        <grammar pos="N"/>
+	<grammar pos="Pron"/>
+      </element> -->
+    </answer>
+  </q>
+
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron : -->   
   <q>
@@ -527,6 +836,37 @@
       </element> 
     </answer>
   </q>
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->   
+  <q>
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>Man duohkái SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>čiehkádit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-GEN duohkái</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+	<id>son</id>
+      <element game='morfa' id="N-GEN" task="yes">
+	<grammar tag="N+Sg+Gen"/>
+	<sem class="BUILDING"/>
+      </element>
+<!--      <element game='qa' id="N-GEN">
+	<grammar pos="N"/>
+	<grammar pos="Pron"/>
+      </element> -->
+    </answer>
+  </q>
+
 
 <!-- Only Morfa : -->   
   <q game='morfa'>
@@ -850,7 +1190,7 @@
      <answer> 
       <text>SUBJ MAINV N-ESS</text>
     <element game='morfa' id="SUBJ">
-	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+	<grammar tag="Pron+Person-Number+Nom"/>
       </element>
     <element game='morfa' id="N-ESS" task="yes">
       <grammar tag="N+Ess"/>
@@ -864,6 +1204,32 @@
       <grammar pos="N"/>
     </element> -->
      </answer>
+  </q>
+
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
+  <q>
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV OBJ</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="OBJ">
+	<grammar tag="Pron+Person-Number+Acc"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>gohčodit</id>
+      </element>
+   </question>
+    <answer> 
+      <text>SUBJ MAINV OBJ N-ESS</text>
+      <element game='morfa' id="N-ESS" task="yes">
+	<grammar tag="N+Ess"/>
+	<sem class="FAMILY"/>
+      </element>
+    </answer>
   </q>
 
 <!-- Only Morfa: -->   
