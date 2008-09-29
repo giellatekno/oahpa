@@ -97,9 +97,10 @@ for e in tree.getElementsByTagName("entry"):
         id=lemma
     stem=""
     dialect=""
-    diphthong=0
+    diphthong="no"
     gradation=""
     rime=""
+    attrsuffix=""
     soggi=""
     valency=""
     compare=""
@@ -109,13 +110,14 @@ for e in tree.getElementsByTagName("entry"):
     if e.getElementsByTagName("stem"):
         stem=e.getElementsByTagName("stem")[0].getAttribute("class")
         diphthong_text=e.getElementsByTagName("stem")[0].getAttribute("diphthong")
-        if diphthong_text == "no": diphthong = 0
-        else: diphthong = 1
         gradation=e.getElementsByTagName("stem")[0].getAttribute("gradation")
         rime=e.getElementsByTagName("stem")[0].getAttribute("rime")
+        if rime=="0": rime="norime"
         soggi=e.getElementsByTagName("stem")[0].getAttribute("soggi")
         compare=e.getElementsByTagName("stem")[0].getAttribute("compare")
-
+        attrsuffix=e.getElementsByTagName("stem")[0].getAttribute("attrsuff")
+        if attrsuffix == "0": attrsuffix="noattr"
+        
     if e.getElementsByTagName("dialect"):
         dialect=e.getElementsByTagName("dialect")[0].getAttribute("class")
 
@@ -158,6 +160,8 @@ for e in tree.getElementsByTagName("entry"):
         w.stem=stem
         w.rime=rime
         w.compare = compare
+        w.attrsuffix = attrsuffix
+        print "updating.."
         w.soggi=soggi
         w.gradation=gradation
         w.diphthong=diphthong
@@ -178,7 +182,7 @@ for e in tree.getElementsByTagName("entry"):
             w=Wordnob(wordid=id,lemma=id,pos=pos);
         else:   
             w=Word(wordid=id,lemma=lemma,pos=pos,stem=stem,diphthong=diphthong,\
-                   rime=rime,soggi=soggi,gradation=gradation,dialect=dialect);
+                   rime=rime,soggi=soggi,gradation=gradation,dialect=dialect,attrsuffix=attrsuffix);
     w.save()
     
     # Add forms and tags
