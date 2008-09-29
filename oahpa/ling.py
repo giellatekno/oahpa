@@ -78,6 +78,7 @@ class Paradigm:
         if self.paradigms.has_key(pos):
             for a in self.paradigms[pos]:
                 all = all + lemma + "+" + a
+        print all
         # generator call
         #fstdir="/opt/smi/sme/bin"
         #lookup = /usr/local/bin/lookup
@@ -174,11 +175,17 @@ class Questions:
         print "Creating syntax", syntax
         if not el: print "No element given."
 
+        # Some of the answer elements are identical to the question elements.
+        identity_id=""
+        if el.getElementsByTagName("identity"):
+            identity_id=el.getElementsByTagName("identity")[0].getAttribute("link")
+        if not identity_id: identity_id=el_id
+            
         # Search for the same element in question side
         if QElement.objects.filter(Q(question__id=qaelement.answer_id) & \
-                                   Q(identifier=el_id)).count() > 0:
+                                   Q(identifier=identity_id)).count() > 0:
             question_qelements = QElement.objects.filter(Q(question__id=qaelement.answer_id) & \
-                                                         Q(identifier=el_id))
+                                                         Q(identifier=identity_id))
             if not el:
                 print "LUOMASSA", syntax
                 for q in question_qelements:
@@ -230,7 +237,7 @@ class Questions:
         # Try first inside question or answer
         # Then in answer-question level
         if agreement:
-            agr_id=agreement[0].getAttribute("id")
+            agr_id=agreement[0].getAttribute("link")
             if QElement.objects.filter(Q(question=qaelement) & Q(syntax=agr_id) & \
                                        Q(question__qatype=qaelement.qatype)).count() > 0:
                 agr_elements = QElement.objects.filter(Q(question=qaelement) & \
@@ -633,10 +640,62 @@ class Questions:
             fm, created = Feedbackmsg.objects.get_or_create(msgid=mid, message=message)
             fm.save()
 
+    def set_null(self):
 
+        feedbacks=Feedback.objects.filter(stem='empty')
+        for f in feedbacks:
+            f.stem=""
+            f.save()
+        feedbacks=Feedback.objects.filter(gradation='empty')
+        for f in feedbacks:
+            f.gradation=""
+            f.save()
+        feedbacks=Feedback.objects.filter(diphthong='empty')
+        for f in feedbacks:
+            f.diphthong=""
+            f.save()
+        feedbacks=Feedback.objects.filter(rime='empty')
+        for f in feedbacks:
+            f.rime=""
+            f.save()
+        feedbacks=Feedback.objects.filter(soggi='empty')
+        for f in feedbacks:
+            f.soggi=""
+            f.save()
+        feedbacks=Feedback.objects.filter(case2='empty')
+        for f in feedbacks:
+            f.case2=""
+            f.save()
+        feedbacks=Feedback.objects.filter(number='empty')
+        for f in feedbacks:
+            f.number=""
+            f.save()
+        feedbacks=Feedback.objects.filter(personnumber='empty')
+        for f in feedbacks:
+            f.personnumber=""
+            f.save()
+        feedbacks=Feedback.objects.filter(tense='empty')
+        for f in feedbacks:
+            f.tense=""
+            f.save()
+        feedbacks=Feedback.objects.filter(mood='empty')
+        for f in feedbacks:
+            f.mood=""
+            f.save()
+        feedbacks=Feedback.objects.filter(grade='empty')
+        for f in feedbacks:
+            f.grade=""
+            f.save()
+    
+    def insert_feedback(self,cursor,pos,stem,diphthong,gradation,rime,soggi,case,number,personnumber="empty",tense="empty",mood="empty",attributive="empty",grade="empty",attrsuffix="empty"):
+        #print pos, stem, diphthong, gradation, rime, soggi,case,number,personnumber,tense,mood,grade
+        
+        cursor.execute("INSERT INTO oahpa.drill_feedback (pos,stem,diphthong,gradation,rime,soggi,case2,number,personnumber,tense,mood,attributive,grade,attrsuffix) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE pos=%s", (pos,stem,diphthong,gradation,rime,soggi,case,number,personnumber,tense,mood,attributive,grade,attrsuffix,pos))
 
     def read_feedback(self, infile, pos, msgfile=None):
 
+        from django.db import connection
+        print infile
         if not pos: return None
 
         if msgfile:
@@ -651,32 +710,42 @@ class Questions:
         # Find out different values for variables.
         # Others can be listed, but soggi is searched at the moment.
         rimes={}
-        soggis={}
+        #soggis={}
         wordforms = tree.getElementsByTagName("stems")[0]
         for el in wordforms.getElementsByTagName("stem"):
             if el.getAttribute("rime"):
                 rime = el.getAttribute("rime")
                 rimes[rime] = 1
 
-            if el.getAttribute("soggi"):
-                soggi = el.getAttribute("soggi")
-                soggis[soggi] = 1
+        #    if el.getAttribute("soggi"):
+        #        soggi = el.getAttribute("soggi")
+        #        soggis[soggi] = 1
 
-        soggis[""] = 1
-        rimes["0"] = 1
-        diphthongs = ["0","1"]
+        #soggis[""] = 1
+        #soggis = {}
+        soggis = ['i', 'a', 'u', 'e', 'o','empty']
+        attrsuffixs = ['noattr','a','s','es','os','is','i>e','u>o']
+        rimes["norime"] = 1
+        diphthongs = ["yes","no"]
         stems = ["bisyllabic","trisyllabic","contracted"]
         gradations = ["inv","no","yes"]
-        grades = ["Comp","Superl","Pos",""]
+        grades = ["Comp","Superl","Pos"]
         cases = ["Acc", "Gen", "Ill","Loc","Com","Ess"]
-        numbers = ["Sg","Pl",""]
+        numbers = ["Sg","Pl"]
         tenses = ["Prs","Prt"]
         moods = ["Ind","Cond","Pot","Imprt"]
         personnumbers = ["Sg1","Sg2","Sg3","Du1","Du2","Du3","Pl1","Pl2","Pl3"]
                                 
         messages=[]
-                            
-        print "Total", Feedback.objects.count()
+        print rimes.keys()
+        print soggis
+        print gradations
+        print grades
+        print cases
+        print numbers 
+
+        cursor = connection.cursor()                        
+
         wordforms = tree.getElementsByTagName("stems")[0]
         for el in wordforms.getElementsByTagName("stem"):
             feedback = None
@@ -685,6 +754,7 @@ class Questions:
             rime =""
             gradation=""
             soggi =""
+            attrsuffix =""
 
             ftempl = Entry()
 
@@ -702,10 +772,7 @@ class Questions:
                 
             if el.getAttribute("diphthong"):
                 diphthong=el.getAttribute("diphthong")
-                if diphthong:
-                    if diphthong == "yes": diphthong = "1"
-                    if diphthong == "no" : diphthong = "0"
-                    ftempl.diphthong = [ diphthong ]
+                if diphthong: ftempl.diphthong = [ diphthong ]
             if not diphthong: ftempl.diphthong = diphthongs
 
             if el.getAttribute("soggi"):
@@ -713,10 +780,16 @@ class Questions:
                 if soggi: ftempl.soggi = [ soggi ]
             if not soggi: ftempl.soggi = soggis
 
+            if el.getAttribute("attrsuffix"):
+                attrsuffix=el.getAttribute("attrsuffix")
+                if attrsuffix: ftempl.attrsuffix = [ attrsuffix ]
+            if not attrsuffix: ftempl.attrsuffix = attrsuffixs
+
             if el.getAttribute("rime"):
                 rime=el.getAttribute("rime")
-                if rime: ftempl.rime = [ rime ]
-            if not rime: ftempl.rime = rimes
+                if rime:
+                    ftempl.rime = [ rime ]
+            if not rime: ftempl.rime = rimes.keys()
 
             msgs = el.getElementsByTagName("msg")
             for mel in msgs:
@@ -729,21 +802,30 @@ class Questions:
                 tense = ""
                 mood = ""
                 grade = ""
+                attributive = ""
 
-                f.pos = ftempl.pos
-                f.stem = ftempl.stem
-                f.gradation = ftempl.gradation
-                f.diphthong = ftempl.diphthong
-                f.soggi = ftempl.soggi
-                f.rime = ftempl.rime
+                f.pos = ftempl.pos[:]
+                f.stem = ftempl.stem[:]
+                f.gradation = ftempl.gradation[:]
+                f.diphthong = ftempl.diphthong[:]
+                f.soggi = ftempl.soggi[:]
+                f.rime = ftempl.rime[:]
+                f.attrsuffix = ftempl.attrsuffix[:]
                 
                 msgid = mel.firstChild.data
-                print "Message id", msgid
+                #print "Message id", msgid
                 f.msgid = msgid
+
+                if el.getAttribute("attribute"):
+                    attributive=el.getAttribute("attributive")
+                    if attributive: f.attributive = [ 'Attr' ]
+                else: f.attributive = ['Attr', 'NoAttr']
                 
                 if mel.getAttribute("case"):
                     case=mel.getAttribute("case")
                     if case: f.case = [ case ]
+                    # Since noattr is not marked, case entails noattr.
+                    f.attributive = [ 'NoAttr' ]
                 if not case: f.case = cases
 
                 if mel.getAttribute("number"):
@@ -771,99 +853,145 @@ class Questions:
                     if grade: f.grade = [ grade ]
                 if not grade: f.grade = grades
 
+
                 messages.append(f)
 
+
         for f in messages:
+            print f.msgid
             if f.pos == "N" or pos=="A":
                 for stem in f.stem:
                     for gradation in f.gradation:
                         for diphthong in f.diphthong:
                             for rime in f.rime:
                                 for soggi in f.soggi:
-                                    # Essive: no number inflection
-                                    if f.case == "Ess" and f.pos=="N":
-                                        f2, created=Feedback.objects.get_or_create(stem=stem,\
-                                                                                   diphthong=diphthong,\
-                                                                                   gradation=gradation,\
-                                                                                   rime=rime,\
-                                                                                   case=case,\
-                                                                                   pos=pos,\
-                                                                                   soggi=soggi)
-                                        msgs = Feedbackmsg.objects.get(msgid=f.msgid)
-                                        if msgs:
-                                            f2.messages.add(msgs[0])
-                                        f2.save()
-
-                                    else:
-                                        for number in f.number:
-                                            # Attributive forms: no case inflection.
-                                            # Grade is "Attr"
-                                            if f.pos == "A":
-                                                f2, created=Feedback.objects.get_or_create(stem=stem,\
-                                                                                           diphthong=diphthong,\
-                                                                                           gradation=gradation,\
-                                                                                           rime=rime,\
-                                                                                           pos=pos,\
-                                                                                           number=number,\
-                                                                                           grade="Attr",\
-                                                                                           soggi=soggi)
-                                                msgs = Feedbackmsg.objects.get(msgid=f.msgid)
-                                                if msgs:
-                                                    f2.messages.add(msgs[0])
-                                                f2.save()
-                                                
-                                            for case in f.case:
-                                                if f.pos == "N":
-                                                    f2, created=Feedback.objects.get_or_create(stem=stem,\
-                                                                                               diphthong=diphthong,\
-                                                                                               gradation=gradation,\
-                                                                                               rime=rime,\
-                                                                                               case=case,\
-                                                                                               pos=pos,\
-                                                                                               number=number, \
-                                                                                               soggi=soggi)
-                                                    msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
-                                                    if msgs:
-                                                        f2.messages.add(msgs[0])
-                                                    f2.save()
-                                                    
-                                                # Adjectives: also grade
-                                                else:
-                                                    for grade in f.grade:
+                                    if f.pos == "A":
+                                        for grade in f.grade:
+                                            for attributive in f.attributive:
+                                                if attributive == 'Attr':
+                                                    # Attributive forms: no case inflection.
+                                                    for attrsuffix in f.attrsuffix:
+                                                        case="empty"
+                                                        number="empty"
+                                                        self.insert_feedback(cursor,pos,stem,diphthong,gradation,rime,soggi,case,number,'empty','empty','empty','Attr',grade,attrsuffix)
                                                         f2, created=Feedback.objects.get_or_create(stem=stem,\
                                                                                                    diphthong=diphthong,\
                                                                                                    gradation=gradation,\
                                                                                                    rime=rime,\
+                                                                                                   attributive='Attr',\
+                                                                                                   attrsuffix=attrsuffix,\
                                                                                                    pos=pos,\
-                                                                                                   case=case,\
-                                                                                                   number=number, \
+                                                                                                   number=number,\
                                                                                                    grade=grade,\
                                                                                                    soggi=soggi)
-                                                        msgs = Feedbackmsg.objects.get(msgid=f.msgid)
+                                                        msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
                                                         if msgs:
-                                                            f2.messages.add(msgs[0])
-                                                        f2.save()
+                                                            f2msgs = f2.messages.filter(id=msgs[0].id)
+                                                            if not f2msgs:
+                                                                f2.messages.add(msgs[0])
+                                                                f2.save()
+                                    
+                                                else:
+                                                    for case in f.case:
+                                                        #essive without number inflection
+                                                        if case == "Ess":
+                                                            number="empty"
+                                                            self.insert_feedback(cursor,pos,stem,diphthong,gradation,rime,soggi,case,number,'empty','empty','empty','NoAttr',grade)
+                                                            f2, created=Feedback.objects.get_or_create(stem=stem,\
+                                                                                                       diphthong=diphthong,\
+                                                                                                       gradation=gradation,\
+                                                                                                       rime=rime,\
+                                                                                                       attributive='NoAttr',\
+                                                                                                       pos=pos,\
+                                                                                                       number=number,\
+                                                                                                       case2=case,\
+                                                                                                       grade=grade,\
+                                                                                                       soggi=soggi)
+                                                            msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
+                                                            if msgs:
+                                                                f2msgs = f2.messages.filter(id=msgs[0].id)
+                                                                if not f2msgs:
+                                                                    f2.messages.add(msgs[0])
+                                                                    f2.save()
+                                                            
+                                                        else:
+                                                            for number in f.number:
+                                                                self.insert_feedback(cursor,pos,stem,diphthong,gradation,rime,soggi,case,number,'empty','empty','empty','NoAttr',grade)
+                                                                f2, created=Feedback.objects.get_or_create(stem=stem,\
+                                                                                                           diphthong=diphthong,\
+                                                                                                           gradation=gradation,\
+                                                                                                           rime=rime,\
+                                                                                                           attributive='NoAttr',\
+                                                                                                           pos=pos,\
+                                                                                                           case2=case,\
+                                                                                                           number=number, \
+                                                                                                           grade=grade,\
+                                                                                                           soggi=soggi)
+                                                                msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
+                                                                if msgs:
+                                                                    f2.messages.add(msgs[0])
+                                                                f2.save()
+                                    if f.pos == "N":
+                                        for case in f.case:
+                                            # Essive: no number inflection
+                                            if case == "Ess":
+                                                number="empty"
+                                                self.insert_feedback(cursor,pos,stem,diphthong,gradation,rime,soggi,'Ess',number)
+                                                
+                                                f2=Feedback.objects.get(stem=stem,\
+                                                                        diphthong=diphthong,\
+                                                                        gradation=gradation,\
+                                                                        rime=rime,\
+                                                                        case2='Ess',\
+                                                                        number=number,\
+                                                                        pos=pos,\
+                                                                        soggi=soggi)
+                                                msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
+                                                if msgs:
+                                                    f2.messages.add(msgs[0])
+                                                f2.save()
+                                                continue
+                                            else:
+                                                for number in f.number:
+                                                    self.insert_feedback(cursor,pos,stem,diphthong,gradation,rime,soggi,case,number)
+                                                    
+                                                    f2=Feedback.objects.get(stem=stem,\
+                                                                            diphthong=diphthong,\
+                                                                            gradation=gradation,\
+                                                                            rime=rime,\
+                                                                            pos=pos,\
+                                                                            case2=case,\
+                                                                            number=number, \
+                                                                            soggi=soggi)
+                                                    
+                                                    msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
+                                                    if msgs:
+                                                        f2.messages.add(msgs[0])
+                                                    f2.save()
+
+                                                    
 
 
             if f.pos == "V":
                 for stem in f.stem:
-                    for gradation in f.gradation:
-                        for diphthong in f.diphthong:
-                            for soggi in f.soggi:                                                           
-                                for personnumber in f.personnumber:
-                                    for tense in f.tense:
-                                        for mood in f.mood:
-                                            
-                                            f2, created = Feedback.objects.get_or_create(stem=stem,\
-                                                                                         diphthong=diphthong,\
-                                                                                         gradation=gradation,\
-                                                                                         soggi=soggi,\
-                                                                                         tense=tense,\
-                                                                                         pos=pos,\
-                                                                                         mood=mood,\
-                                                                                         personnumber=personnumber)
-                                            
-                                            message = Feedbackmsg.objects.get(msgid=f.msgids)
-                                            f2.messages.add(message)
-                                            f2.save()
-
+                    for diphthong in f.diphthong:
+                        for soggi in f.soggi:                                                           
+                            for personnumber in f.personnumber:
+                                for tense in f.tense:
+                                    for mood in f.mood:
+                                        
+                                        self.insert_feedback(cursor,pos,stem,diphthong,gradation,'empty',soggi,'empty','empty',personnumber,tense,mood)
+                                        f2, created = Feedback.objects.get_or_create(stem=stem,\
+                                                                                     diphthong=diphthong,\
+                                                                                     gradation=gradation,\
+                                                                                     soggi=soggi,\
+                                                                                     tense=tense,\
+                                                                                     pos=pos,\
+                                                                                     mood=mood,\
+                                                                                     personnumber=personnumber)
+                                        messages = Feedbackmsg.objects.filter(msgid=f.msgid)
+                                        f2.messages.add(messages[0])
+                                        f2.save()
+        cursor.close()
+        connection.close()
+        self.set_null()
