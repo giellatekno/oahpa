@@ -295,6 +295,22 @@
     </question>
   </q>
   
+ !-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N or Adv-set DOHKO: -->
+  <q>
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Gosa SUBJ MAINV čoavdagiid</text>
+      <element id="SUBJ">
+	<grammar pos="N+Number+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>bidjat</id>
+      </element>
+    </question>
+  </q>
+
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be HUMAN, but any N Ill or Pron Pers: --> 
  
@@ -338,6 +354,60 @@
       </element>
     </question>
     </q>
+  
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N or Pron Pers or (V Inf): -->
+  <q>
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Tense+Person-Number"/>
+	  <id>illudit</id>
+      </element>
+    </question>
+  </q>
+  
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be HUMAN, but any N Ill or Pron Pers: --> 
+ 
+  <q>
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Ill"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Tense+Person-Number"/>
+	  <id>jáhkkit</id>
+      </element>
+    </question>
+  </q>
+
+
+<!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N or Pron Pers or (V Inf): -->
+  <q>
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Tense+Person-Number"/>
+	  <id>álgit</id>
+      </element>
+    </question>
+  </q>  
+    
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N Loc or Pron Pers: -->
   <q>
@@ -409,6 +479,98 @@
       </element>
    </question>
   </q>
+ 
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron Pers : --> 
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Mas SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="N+Number+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>váruhit</id>
+      </element>
+   </question>
+  </q>
+  
+ 
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron Pers : --> 
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>beroštit</id>
+      </element>
+   </question>
+  </q>
+  
+ 
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron Pers : --> 
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Mas SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>geargat</id>
+      </element>
+   </question>
+  </q> 
+  
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N Loc or Pron Pers: -->
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV skeaŋkka</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>oažžut</id>
+      </element>
+    </question>
+  </q>
+
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N Loc or Pron Pers: -->
+  <q>
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV ságaid</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>gullat</id>
+      </element>
+    </question>
+     </q>
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N  or Pron : -->   
   <q>
@@ -514,6 +676,23 @@
       </element>
     </question>
   </q>
+  
+   <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->   
+  <q>
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>Man duohkái SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>čiehkádit</id>
+      </element>
+    </question>
+      </q>
+      
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->   
   <q>
@@ -622,6 +801,25 @@
       </element>
    </question>
   </q>
+  
+  
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
+  <q>
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV OBJ</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Person-Number+Nom"/>
+      </element>
+      <element id="OBJ">
+	<grammar tag="Pron+Person-Number+Acc"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>gohčodit</id>
+      </element>
+   </question>
+    </q>
 
 
 <!-- Attribute - only for Morfa -->
