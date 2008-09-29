@@ -97,35 +97,42 @@ t-suffix
       <msg grade="Pos" case="Ess">ess</msg>
       <note>buorre, som attributt</note>
 
-      <stem attribute="0">
+      <stem>
+      <msg grade="Comp" attribute="1">attribute_like_pred</msg>
+      <msg grade="Superl" attribute="1">attribute_like_pred</msg>
+      <note>Attr = Nom</note>
+    </stem>
+
+
+      <stem attrsuff="0">
       <msg grade="Pos" attribute="1">attribute_like_pred</msg>
       <note>Attr = Nom</note>
     </stem>
-      <stem attribute="a">
+      <stem attrsuff="a">
       <msg grade="Pos" attribute="1">a-suffix</msg>
       <note>galmmas -a</note>
     </stem>
-      <stem attribute="s">
+      <stem attrsuff="s">
       <msg grade="Pos" attribute="1">s-suffix</msg>
       <note>somá -s</note>
     </stem>
-      <stem attribute="es">
+      <stem attrsuff="es">
       <msg grade="Pos" attribute="1">es-suffix</msg>
       <note>fiskat -es</note>
     </stem>
-      <stem attribute="os">
+      <stem attrsuff="os">
       <msg grade="Pos" attribute="1">os-suffix</msg>
       <note>headju -os</note>
     </stem>
-      <stem attribute="is">
+      <stem attrsuff="is">
       <msg grade="Pos" attribute="1">is-suffix</msg>
       <note>gávvil -is</note>
     </stem>
-      <stem attribute="i>e">
+      <stem attrsuff="i>e">
       <msg grade="Pos" attribute="1">i_e</msg>
       <note>viiddis -e-</note>
     </stem>
-      <stem attribute="u>o">
+      <stem attrsuff="u>o">
       <msg grade="Pos" attribute="1">u_o</msg>
       <note>gearggus -o-</note>
     </stem>
