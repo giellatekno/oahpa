@@ -5817,7 +5817,7 @@ MAP (&err-spellingerror) TARGET QMRK ;
 
 
 # na+Pcle can only be initial:
-MAP (&grm-naPcle) TARGET ("na" Pcle) IF (-1 NOT-PCLE) ;
+MAP (&grm-naPcle) TARGET ("na" Pcle) IF (-1 NOT-PCLE LINK *-1 QDL) ;
 
 # fal+Adv can only be non-initial:
 MAP (&grm-falAdv) TARGET ("fal" Adv) IF (NEGATE -1 WORD) ;
@@ -5826,8 +5826,8 @@ MAP (&grm-falAdv) TARGET ("fal" Adv) IF (NEGATE -1 WORD) ;
 REMOVE Interj ;
 
 # Interj can only be initial or final:
-MAP:1 (&grm-notInterj) TARGET Interj IF (-1 WORD)(NEGATE *1 EOS BARRIER WORD);
-MAP:2 (&grm-notInterj) TARGET Interj IF (NEGATE *-1 BOS BARRIER WORD)(1 WORD) ;
+MAP:1 (&grm-notInterj) TARGET Interj IF (-1 WORD)(NEGATE *1 EOS OR QDL BARRIER WORD);
+MAP:2 (&grm-notInterj) TARGET Interj IF (NEGATE *-1 QDL BARRIER WORD)(1 WORD) ;
 
 SELECT ("viessu" N) ; 
 #REMOVE Px ; Moved to the beginning.
@@ -5845,7 +5845,7 @@ SELECT PrfPrc (-1 Neg) ;
 SELECT Inf (*-1 AUX BARRIER NOT-ADV) ; 
 SELECT PrfPrc (-1 ("leat")) ; 
 SELECT Inf (-1 MIELLA LINK *-1 ("leat"));
-REMOVE VFIN (*-1 VFIN)(*1 QDL) ;
+REMOVE VFIN (*-1 VFIN LINK *-1 QDL) ;
 
 LIST VFIN-PRON-TAG = Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 ;  
 LIST DUALIS-NOUN = (".*#guovttis"r) (".*#guovttos"r) ;
