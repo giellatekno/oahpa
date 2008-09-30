@@ -686,6 +686,10 @@ class Questions:
         for f in feedbacks:
             f.grade=""
             f.save()
+        feedbacks=Feedback.objects.filter(attrsuffix='empty')
+        for f in feedbacks:
+            f.attrsuffix=""
+            f.save()
     
     def insert_feedback(self,cursor,pos,stem,diphthong,gradation,rime,soggi,case,number,personnumber="empty",tense="empty",mood="empty",attributive="empty",grade="empty",attrsuffix="empty"):
         #print pos, stem, diphthong, gradation, rime, soggi,case,number,personnumber,tense,mood,grade
@@ -715,6 +719,7 @@ class Questions:
         for el in wordforms.getElementsByTagName("stem"):
             if el.getAttribute("rime"):
                 rime = el.getAttribute("rime")
+                if rime=="0": rime = "norime"
                 rimes[rime] = 1
 
         #    if el.getAttribute("soggi"):
@@ -788,6 +793,7 @@ class Questions:
             if el.getAttribute("rime"):
                 rime=el.getAttribute("rime")
                 if rime:
+                    if rime=="0": rime = "norime"
                     ftempl.rime = [ rime ]
             if not rime: ftempl.rime = rimes.keys()
 
@@ -886,10 +892,9 @@ class Questions:
                                                                                                    soggi=soggi)
                                                         msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
                                                         if msgs:
-                                                            f2msgs = f2.messages.filter(id=msgs[0].id)
-                                                            if not f2msgs:
-                                                                f2.messages.add(msgs[0])
-                                                                f2.save()
+                                                            f2.messages.add(msgs[0])
+                                                        else : print "No messages found:", f.msgid
+                                                        f2.save()
                                     
                                                 else:
                                                     for case in f.case:
@@ -909,10 +914,9 @@ class Questions:
                                                                                                        soggi=soggi)
                                                             msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
                                                             if msgs:
-                                                                f2msgs = f2.messages.filter(id=msgs[0].id)
-                                                                if not f2msgs:
-                                                                    f2.messages.add(msgs[0])
-                                                                    f2.save()
+                                                                f2.messages.add(msgs[0])
+                                                            else : print "No messages found:", f.msgid														
+                                                            f2.save()
                                                             
                                                         else:
                                                             for number in f.number:
@@ -930,6 +934,7 @@ class Questions:
                                                                 msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
                                                                 if msgs:
                                                                     f2.messages.add(msgs[0])
+                                                                else : print "No messages found:", f.msgid														
                                                                 f2.save()
                                     if f.pos == "N":
                                         for case in f.case:
@@ -949,6 +954,7 @@ class Questions:
                                                 msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
                                                 if msgs:
                                                     f2.messages.add(msgs[0])
+                                                else : print "No messages found:", f.msgid
                                                 f2.save()
                                                 continue
                                             else:
@@ -967,6 +973,7 @@ class Questions:
                                                     msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
                                                     if msgs:
                                                         f2.messages.add(msgs[0])
+                                                    else : print "No messages found:", f.msgid
                                                     f2.save()
 
                                                     
@@ -990,7 +997,9 @@ class Questions:
                                                                                      mood=mood,\
                                                                                      personnumber=personnumber)
                                         messages = Feedbackmsg.objects.filter(msgid=f.msgid)
-                                        f2.messages.add(messages[0])
+                                        if messages:										
+                                            f2.messages.add(messages[0])
+                                        else : print "No messages found:", f.msgid
                                         f2.save()
         cursor.close()
         connection.close()
