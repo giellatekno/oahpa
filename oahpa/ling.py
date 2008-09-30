@@ -735,7 +735,7 @@ class Questions:
         stems = ["bisyllabic","trisyllabic","contracted"]
         gradations = ["inv","no","yes"]
         grades = ["Comp","Superl","Pos"]
-        cases = ["Acc", "Gen", "Ill","Loc","Com","Ess"]
+        cases = ["Acc", "Gen", "Ill","Loc","Com","Ess","Nom"]
         numbers = ["Sg","Pl"]
         tenses = ["Prs","Prt"]
         moods = ["Ind","Cond","Pot","Imprt"]
@@ -823,7 +823,7 @@ class Questions:
                 f.msgid = msgid
 
                 if el.getAttribute("attribute"):
-                    attributive=el.getAttribute("attributive")
+                    attributive=el.getAttribute("attribute")
                     if attributive: f.attributive = [ 'Attr' ]
                 else: f.attributive = ['Attr', 'NoAttr']
                 
