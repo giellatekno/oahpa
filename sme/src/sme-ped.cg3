@@ -5845,8 +5845,8 @@ SELECT ConNeg (-1 Neg) ;
 SELECT PrfPrc (-1 Neg) ;
 SELECT Inf (*-1 AUX BARRIER NOT-ADV) ; 
 SELECT PrfPrc (-1 ("leat")) ; 
-SELECT Inf (-1 MIELLA LINK *-1 ("leat"));
-REMOVE VFIN (*-1 VFIN LINK *-1 QDL) ;
+SELECT Inf (-1 MIELLA LINK *-1 ("leat") BARRIER S-BOUNDARY);
+REMOVE VFIN (*-1 VFIN LINK *-1 QDL BARRIER S-BOUNDARY) ;
 
 LIST VFIN-PRON-TAG = Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 ;  
 LIST DUALIS-NOUN = (".*#guovttis"r) (".*#guovttos"r) ;
@@ -5857,18 +5857,18 @@ SELECT:agreement1 (V Sg3) (-1 (N Sg Nom) LINK *-1 QDL) ;
 SELECT:agreement2 (V Pl3) (-1 (N Pl Nom) LINK *-1 QDL) ;
 SELECT:agreement3 (V Du3) (-1 DUALIS-NOUN + Nom LINK *-1 QDL) ;
 # When there is no Pers in the answer:
-SELECT (V Sg1) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Sg2) ;
-SELECT (V Sg2) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Sg1) ;
-SELECT (V Sg3) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Sg3) ;
-SELECT (V Du1) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Du2) ;
-SELECT (V Du2) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Du1) ;
-SELECT (V Du3) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Du3) ;
-SELECT (V Pl1) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Pl2) ;
-SELECT (V Pl2) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Pl1) ;
-SELECT (V Pl3) (*-1 QDL BARRIER VERB LINK *-1 VFIN LINK 0 Pl3) ;
-SELECT (V Pl3) (*-1 QDL BARRIER Nom OR VERB LINK *-1 (N Pl Nom)) ;
-SELECT (V Sg3) (*-1 QDL BARRIER Nom OR VERB LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN) ;
-SELECT (V Du3) (*-1 QDL BARRIER Nom OR VERB LINK *-1 DUALIS-NOUN) ;
+SELECT (V Sg1) (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN LINK 0 Sg2) ;
+SELECT (V Sg2) (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN LINK 0 Sg1) ;
+SELECT (V Sg3) (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN LINK 0 Sg3) ;
+SELECT (V Du1) (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN LINK 0 Du2) ;
+SELECT (V Du2) (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN LINK 0 Du1) ;
+SELECT (V Du3) (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN LINK 0 Du3) ;
+SELECT (V Pl1) (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN LINK 0 Pl2) ;
+SELECT (V Pl2) (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN LINK 0 Pl1) ;
+SELECT (V Pl3) (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN LINK 0 Pl3) ;
+SELECT (V Pl3) (*-1 QDL BARRIER Nom OR VERB OR S-BOUNDARY LINK *-1 (N Pl Nom)) ;
+SELECT (V Sg3) (*-1 QDL BARRIER Nom OR VERB OR S-BOUNDARY LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN) ;
+SELECT (V Du3) (*-1 QDL BARRIER Nom OR VERB OR S-BOUNDARY LINK *-1 DUALIS-NOUN) ;
 
 SELECT (V Pl3) (*-1 (N Num) BARRIER NOT-ADV LINK *-1 QDL) ;
 
@@ -5929,7 +5929,7 @@ SELECT A (*-1 QDL)(*1 N OR Pers BARRIER NPNH LINK 1 COPULAS) ;
 MAP (&grm-shouldAttr) TARGET A IF (NEGATE 0 Attr OR ("nubbi") OR ("buorre"))(*1 N BARRIER NOT-Attr-CC-Adv) ;
 
 # Should not be an Attr if it is not in front of N
-MAP (&grm-shouldNotAttr) TARGET Attr IF (NEGATE 0 Nom)(NEGATE *1 N BARRIER VERB) ;
+MAP (&grm-shouldNotAttr) TARGET Attr IF (NEGATE 0 Nom)(NEGATE *1 N BARRIER VERB OR S-BOUNDARY) ;
 
 LIST WORK-V = "bargat" "dahkat" ;
 # verbs which often not are followed by an Acc
@@ -5949,23 +5949,23 @@ REMOVE Loc (-1 BOS)(0 ("galle") LINK 1 VFIN)(*1 QDL);
 REMOVE Nom (-1 BOS)(0 ("galle") LINK 1 N)(*1 QDL);
 
 
-MAP (&grm-missing-NumSg) TARGET ("galle" Sg Nom) IF (*1 QDL LINK NOT *1 (Num Sg));
-MAP (&grm-missing-NumPl) TARGET ("galle" Pl) IF (*1 QDL LINK NOT *1 (Num Pl));
-MAP (&grm-missing-NNum) TARGET ("gallis" N Nom) IF (*1 QDL LINK NOT *1 (N Num));
-MAP (&grm-missing-Ord) TARGET ("gallát") IF (*1 QDL LINK NOT *1 (A Ord));
+MAP (&grm-missing-NumSg) TARGET ("galle" Sg Nom) IF (*1 QDL LINK NOT *1 (Num Sg) BARRIER S-BOUNDARY);
+MAP (&grm-missing-NumPl) TARGET ("galle" Pl) IF (*1 QDL LINK NOT *1 (Num Pl) BARRIER S-BOUNDARY);
+MAP (&grm-missing-NNum) TARGET ("gallis" N Nom) IF (*1 QDL LINK NOT *1 (N Num) BARRIER S-BOUNDARY);
+MAP (&grm-missing-Ord) TARGET ("gallát") IF (*1 QDL LINK NOT *1 (A Ord) BARRIER S-BOUNDARY);
 
 
-MAP (&grm-missing-Loc) TARGET TARGETQUESTION-LOC IF (*1 QDL LINK NOT *1 Loc OR DOPPE);
-MAP (&grm-missing-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK NOT *1 Ill OR DOHKO);
-MAP (&grm-missing-Com) TARGET TARGETQUESTION-COM IF (*1 QDL LINK NOT *1 Com);
-MAP (&grm-missing-Acc) TARGET TARGETQUESTION-ACC IF (*1 QDL BARRIER WORK-V LINK NOT *1 Acc);
-MAP (&grm-missing-Nom) TARGET TARGETQUESTION-NOM IF (*1 QDL LINK NOT *1 Nom);
-MAP (&grm-missing-Ess) TARGET TARGETQUESTION-ESS IF (*1 QDL LINK NOT *1 Ess);
-MAP (&grm-missing-Gen) TARGET TARGETQUESTION-GEN IF (*1 QDL LINK NOT *1 Gen);
+MAP (&grm-missing-Loc) TARGET TARGETQUESTION-LOC IF (*1 QDL LINK NOT *1 Loc OR DOPPE BARRIER S-BOUNDARY);
+MAP (&grm-missing-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK NOT *1 Ill OR DOHKO BARRIER S-BOUNDARY);
+MAP (&grm-missing-Com) TARGET TARGETQUESTION-COM IF (*1 QDL LINK NOT *1 Com BARRIER S-BOUNDARY);
+MAP (&grm-missing-Acc) TARGET TARGETQUESTION-ACC IF (*1 QDL BARRIER WORK-V LINK NOT *1 Acc BARRIER S-BOUNDARY);
+MAP (&grm-missing-Nom) TARGET TARGETQUESTION-NOM IF (*1 QDL LINK NOT *1 Nom BARRIER S-BOUNDARY);
+MAP (&grm-missing-Ess) TARGET TARGETQUESTION-ESS IF (*1 QDL LINK NOT *1 Ess BARRIER S-BOUNDARY);
+MAP (&grm-missing-Gen) TARGET TARGETQUESTION-GEN IF (*1 QDL LINK NOT *1 Gen BARRIER S-BOUNDARY);
 
-MAP (&grm-missing-Loc-PP) TARGET ("gos") OR ("gokko") IF (*1 QDL LINK NOT *1 Loc OR DOPPE OR Po);
+MAP (&grm-missing-Loc-PP) TARGET ("gos") OR ("gokko") IF (*1 QDL LINK NOT *1 Loc OR DOPPE OR Po BARRIER S-BOUNDARY);
     ## Gohppu lea beavddi nalde.
-MAP (&grm-missing-Ill-PP) TARGET ("gosa") IF (*1 QDL LINK NOT *1 Ill OR DOHKO OR Po);
+MAP (&grm-missing-Ill-PP) TARGET ("gosa") IF (*1 QDL LINK NOT *1 Ill OR DOHKO OR Po BARRIER S-BOUNDARY);
     ## Mun váccán vári nala.
 
 LIST ILL-Po = "ala" "nala" "sisa" "vuollái" "duohkai" ;
@@ -5974,8 +5974,8 @@ LIST LOC-Po = "alde" "nalde" "mielde" "siste" "vuolde" "duohken" ;
 MAP (&grm-should-LocPP) TARGET Po IF (NOT 0 LOC-Po LINK *-1 QDL LINK *-1 ("gos"));
 MAP (&grm-should-IllPP) TARGET Po IF (NOT 0 ILL-Po LINK *-1 QDL LINK *-1 ("gosa"));
 
-# Select acc when Obj:
-SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK *-1 QDL)(NOT *1 N BARRIER VERB);
+# Select Acc when Obj:
+SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK *-1 QDL)(NOT *1 N BARRIER VERB OR S-BOUNDARY);
 
 # -------
 # ADVERBS
@@ -5991,12 +5991,12 @@ SELECT Adv (-1 VFIN) ;
 LIST DEM-SG-ACC-GEN = (Dem Sg Acc) (Dem Sg Gen) ;
 LIST DEM-PL-ACC-GEN = (Dem Pl Acc) (Dem Pl Gen) ;
 
-MAP (&grm-non-agreement) TARGET (Dem Nom) IF (*-1 QDL)(*1 N LINK NOT 0 Nom) ;
-MAP (&grm-non-agreement) TARGET DEM-SG-ACC-GEN IF (*-1 QDL)(*1 N LINK NOT 0 (Sg Acc) OR (Sg Gen) OR (Sg Ill) OR (Sg Loc));
-MAP (&grm-non-agreement) TARGET (Dem Sg Com) IF (*-1 QDL)(*1 N LINK NOT 0 (Sg Com));
-MAP (&grm-non-agreement) TARGET DEM-PL-ACC-GEN IF (*-1 QDL)(*1 N LINK NOT 0 (Pl Acc) OR (Pl Gen) OR (Pl Com));
-MAP (&grm-non-agreement) TARGET (Dem Pl Ill) IF (*-1 QDL)(*1 N LINK NOT 0 (Pl Ill));
-MAP (&grm-non-agreement) TARGET (Dem Pl Loc) IF (*-1 QDL)(*1 N LINK NOT 0 (Pl Loc));
+MAP (&grm-non-agreement) TARGET (Dem Nom) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 Nom) ;
+MAP (&grm-non-agreement) TARGET DEM-SG-ACC-GEN IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Acc) OR (Sg Gen) OR (Sg Ill) OR (Sg Loc));
+MAP (&grm-non-agreement) TARGET (Dem Sg Com) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Com));
+MAP (&grm-non-agreement) TARGET DEM-PL-ACC-GEN IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Acc) OR (Pl Gen) OR (Pl Com));
+MAP (&grm-non-agreement) TARGET (Dem Pl Ill) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Ill));
+MAP (&grm-non-agreement) TARGET (Dem Pl Loc) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Loc));
 
 # dat viessu
 # dan viesu, vissui, viesus
@@ -6056,9 +6056,9 @@ LIST TIME-PO = "áigi" "geahčen" ;
 SELECT TIME-MOD (1 TIME-GEN OR TIME-LOC LINK *-1 QDL) ;
 SELECT Nom (0 ("geassi" Nom)) ;
 
-MAP (&grm-wrong-case) TARGET TIME-GEN (NOT 0 Gen LINK *-1 QDL LINK *-1 ("goas") LINK -1 BOS) ;
-MAP (&grm-wrong-case) TARGET TIME-LOC (NOT 0 Loc LINK *-1 QDL LINK *-1 ("goas") LINK -1 BOS)(NOT 1 Po) ;
-MAP (&grm-incorr-time-expr) TARGET ("goas") (*1 QDL LINK NOT *1 TIME-GEN OR TIME-LOC)(*1 QDL LINK NOT *1 TIME-GEN LINK 1 TIME-PO)  ;
+MAP (&grm-wrong-case) TARGET TIME-GEN (NOT 0 Gen LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 ("goas") LINK -1 BOS) ;
+MAP (&grm-wrong-case) TARGET TIME-LOC (NOT 0 Loc LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 ("goas") LINK -1 BOS)(NOT 1 Po) ;
+MAP (&grm-incorr-time-expr) TARGET ("goas") (*1 QDL LINK NOT *1 TIME-GEN OR TIME-LOC BARRIER S-BOUNDARY)(*1 QDL LINK NEGATE *1 TIME-GEN BARRIER S-BOUNDARY LINK 1 TIME-PO)  ;
 
 ## boahtte čavčča, boahtte juovllaid
 ## dán čavčča, dáid juovllaid
@@ -6077,19 +6077,19 @@ MAP (&grm-incorr-time-expr) TARGET ("goas") (*1 QDL LINK NOT *1 TIME-GEN OR TIME
 #SELECT Pers IF (*-1 QDL)(1 VFIN) ; # Looks like it is already done.
 
 # Answer with the correct pronoun:
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg1) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Sg2) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg2) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Sg1) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg3) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Sg3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du1) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Du2) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du2) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Du1) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du3) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Du3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl1) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Pl2) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Pl1) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg1) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Sg2) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg2) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Sg1) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du1) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Du2) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du2) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Du1) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Du3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl1) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Pl2) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Pl1) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
 
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL LINK *-1 (N Pl Nom) LINK NOT 0 NUM-QUESTION)(NOT 0 Pl3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (N Pl Nom) LINK NOT 0 NUM-QUESTION)(NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
 
 # -------
@@ -6104,23 +6104,23 @@ MAP (&grm-should-be-Vfin) TARGET QDL IF (NOT *1 VFIN);
 
 
 # Answer with the correct verbform if there is no Pers:
-MAP (&grm-incorr-pers-nr) TARGET (V Sg1) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Sg2) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Sg2) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Sg1) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Sg3) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Du2) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Du2) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Du1) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Du3) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Du3) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Pl2) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl2) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Pl1) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL LINK *-1 VFIN LINK NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg1) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 Sg2) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg2) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 Sg1) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 Du2) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Du2) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 Du1) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Du3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 Du3) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 Pl2) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl2) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 Pl1) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 Pl3) ;
 
-MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc LINK *-1 (N Pl Nom) OR (Pers Pl3 Nom))(NOT 0 Neg) ;
-MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc LINK *-1 (N Sg Nom) OR (Pers Sg3 Nom) LINK NOT 0 DUALIS-NOUN)(NOT 0 Neg) ;
-MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc LINK *-1 DUALIS-NOUN OR (Pers Du3 Nom))(NOT 0 Neg) ;
+MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 (N Pl Nom) OR (Pers Pl3 Nom))(NOT 0 Neg) ;
+MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 (N Sg Nom) OR (Pers Sg3 Nom) LINK NOT 0 DUALIS-NOUN)(NOT 0 Neg) ;
+MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 DUALIS-NOUN OR (Pers Du3 Nom))(NOT 0 Neg) ;
 
-MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom LINK *-1 (N Pl Nom))(NOT 0 Pl3) ;
-MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR Actio)(NOT 0 Sg3) ;
-MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
+MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-1 (N Pl Nom))(NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR Actio)(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
 
 # -------------------
@@ -6137,7 +6137,7 @@ MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Du3 LINK -1 DUALIS-NOUN + Nom LI
 # ONLY ONE VFIN
 # -------------
 
-MAP (&grm-should-not-Vfin) TARGET VFIN IF (*-1 VFIN BARRIER CC OR MO OR Rel LINK *-1 QDL) ;
+MAP (&grm-should-not-Vfin) TARGET VFIN IF (*-1 VFIN BARRIER CC OR S-BOUNDARY LINK *-1 QDL) ;
     ## Mun áiggun láibut.
 
 # ---------------------
@@ -6157,8 +6157,8 @@ LIST VERBLEMMA = (".*"r) ;
 
 #LIST VERBLEMMA = "juhkat" "borrat" "mannat" ;
 
-MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
-MAP (&semAnswerWithSameVerb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
+MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
+MAP (&semAnswerWithSameVerb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
 
 
 # ------------------------
@@ -6190,7 +6190,7 @@ MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM LINK -1
 MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC LINK -1 BOS)(NEGATE *1 (N Acc) BARRIER VERB OR CC) ;
 MAP (&dia-target) TARGET VFIN IF (*-1 QDL LINK *-1 WORK-V LINK *-1 TARGETQUESTION-ACC LINK -1 BOS)(NOT 0 Neg) ;
 
-MAP (&dia-dont-know) TARGET ("diehtit" ConNeg) (*-1 QDL LINK NOT *-1 ("diehtit")) ;
+MAP (&dia-dont-know) TARGET ("diehtit" ConNeg) (*-1 QDL BARRIER S-BOUNDARY LINK NOT *-1 ("diehtit")) ;
 
 MAP (&dia-target) TARGET (N Gen) IF (*-1 QDL LINK *-1 TARGETQUESTION-GEN LINK -1 BOS) ;
 MAP (&dia-target) TARGET (N Ill) IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL OR ("gosa") LINK -1 BOS) ;
