@@ -6153,12 +6153,13 @@ MAP (&grm-non-agreement) TARGET (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV LINK 
 # -----------------------------
 # Answering with the same verb?
 # -----------------------------
+LIST VERBLEMMA = (".*"r) ;
 
-
-LIST VERBLEMMA = "juhkat" "borrat" "mannat" ;
+#LIST VERBLEMMA = "juhkat" "borrat" "mannat" ;
 
 MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
 MAP (&semAnswerWithSameVerb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
+
 
 # ------------------------
 # Affirmative or negative?
