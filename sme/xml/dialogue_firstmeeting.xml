@@ -11,16 +11,27 @@
 
 <topic name="presentation">
 <question name="Mii_du_namma_lea">
-<!-- What is you name? Accept any kind of name or should it make comments?-->
-<default><utt>Suohtas go don leat chatas odne. Mun lean Leavvajogas eret.</utt></default> 
+<!-- What is you name? -->
+<target><utt>Bures NAME.</utt></target>
+<element id="NAME">
+	  <id>&dia-name</id>
+      </element> </target>
+<default>
+<utt>Suohtas go don leat čátas odne.</utt></default> 
 </question>
-
+ 
+<utt>Mun lean Leavvajogas eret.</utt> 
 <question name="Gos_don_leat_eret">
-<!-- Where are you from? The placename has to bee in Loc followed by 'eret', + correct verbconj.-->
+<!-- Where are you from? The placename has to be in Loc followed by 'eret', + correct verbconj.-->
 <default><utt>Mun orun Kárášjogas dán áigge.</utt></default>
 </question>
 <question name="Gos_don_orut_dál">
 <!-- Where do you live now? The placename has to bee in Loc, + correct verbconj. -->
+<target><utt>Mun lean leamaš PLACE.</utt>
+<element id="PLACE">
+	<grammar pos="Sg+Loc"/>
+	  <id>&dia-target</id>
+      </element> </target>
 </question>
 <closing>Doppe sáhttá leat buorre orrut.</closing>
 </topic>
@@ -31,32 +42,19 @@
 <question name="Man_boaris_don_leat">
 <!-- How old are you? 1-17 young, 18-100 adult  -->
 <young qlink="Váccát_go_skuvlla"/>
-<adult qlink="Leat_go_barggus?"/>
+<adult qlink="Leat_go_barggus"/>
+<child qlink="Leat_go_álgán_skuvlii"/>
 </question>
 
 <question name="Váccát_go_skuvlla"><utt>Mun barggan Sámedikkis.</utt>
-<aff qlink="Makkár_skuvlla_don_váccát"/>
+<aff qlink="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla"/>
 <neg qlink="Leat_go_barggus"/>
 </question>
 
-<question name="Makkár_skuvlla_don_váccát">
-<!-- What school? The answer should contain a word from school set in Acc.-->
-<not qlink="Lea_go_dat_skuvla"/> 
-<default qlink=""/>
-</question>
-
-<question name="Lea_go_dat_skuvla">
-<!-- Is it a school? -->
-<neg qlink="Mii_dat_lea_dalle"/>
-
+<question name="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla">
+<neg qlink="Makkár_skuvlla_don_váccát_dalle"/> 
 <default link to closing>
 </question>
-
-<question name="Mii_dat_lea_dalle">
-<!-- What it is then?-->
-<default link to closing>
-</question>
-
 
 <question name="Leat_go_barggus">
 <!-- Do you work??-->
@@ -69,8 +67,11 @@
 <default link to closing>
 </question>
 
+<question name="Leat_go_álgán_skuvlii">
+<default link to closing>
+</question>
 
-<closing>Ja nu!</closing>
+<closing>Já nu!</closing>
 </topic>
 
 
