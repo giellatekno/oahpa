@@ -5813,7 +5813,7 @@ LIST QDL = QDL ;
 LIST QMRK = ? ;
 
 # For spellingerrors:
-MAP (&err-spellingerror) TARGET QMRK ;
+MAP (&err-spellingerror) TARGET QMRK (NEGATE *-1 QDL LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom))  ;
 
 
 # na+Pcle can only be initial:
@@ -5968,14 +5968,20 @@ MAP (&grm-missing-Loc-PP) TARGET ("gos") OR ("gokko") IF (*1 QDL LINK NOT *1 Loc
 MAP (&grm-missing-Ill-PP) TARGET ("gosa") IF (*1 QDL LINK NOT *1 Ill OR DOHKO OR Po BARRIER S-BOUNDARY);
     ## Mun váccán vári nala.
 
-LIST ILL-Po = "ala" "nala" "sisa" "vuollái" "duohkai" ;
-LIST LOC-Po = "alde" "nalde" "mielde" "siste" "vuolde" "duohken" ;
+MAP (&grm-missing-Acc) TARGET ("makkár") IF (1 Acc LINK NOT 0 Nom LINK *1 QDL LINK NOT *1 Acc BARRIER S-BOUNDARY);
+MAP (&grm-missing-Nom) TARGET ("makkár") IF (1 Nom LINK NOT 0 Acc LINK *1 QDL LINK NOT *1 Nom BARRIER S-BOUNDARY);
+
+MAP (&grm-habitive) TARGET NP-HEAD (NOT 0 Loc)(-1 QDL LINK -1 Nom LINK -1 NP-HEAD + Loc LINK -1 go);
+
+LIST ILL-Po = "ala" "nala" "sisa" "vuollái" "vuollai" "duohkai" "lusa" "báldii" "gurrii" "beallái" "beallai" "rádjái" "rádjai" "ovdii" "gaskii" "maŋŋái" "gasku" "guovdu" "lahka" "buohta" "vuostá" "njeaiga" "birra" "geahčen" ;
+LIST LOC-Po = "alde" "nalde" "mielde" "siste" "vuolde" "duohken" "duohkin" "luhtte" "bálddas" "guoras" "bealde" "rájes" "rájis" "ovddas" "gaskkas" "gaskkal" "bajil" "vuolil" "siskkil" "olggul" "maŋis" "gasku" "guovdu" "lahka" "buohta" "vuostá" "njeaiga" "mielde" "miehtá" "birra" "geahčai" ;
 
 MAP (&grm-should-LocPP) TARGET Po IF (NOT 0 LOC-Po LINK *-1 QDL LINK *-1 ("gos"));
 MAP (&grm-should-IllPP) TARGET Po IF (NOT 0 ILL-Po LINK *-1 QDL LINK *-1 ("gosa"));
 
 # Select Acc when Obj:
 SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK *-1 QDL)(NOT *1 N BARRIER VERB OR S-BOUNDARY);
+REMOVE Gen IF (-1 ("makkár") LINK -1 BOS) ;
 
 # -------
 # ADVERBS
@@ -6033,7 +6039,12 @@ MAP (&grm-wrong-case) TARGET N IF (*-1 (Num Sg Nom) OR (Num Sg Acc) BARRIER NOT-
 # guvttiin viesuin
 # guoktin viessun
 
+# -----------------
+# PLACE-EXPRESSIONS
+# -----------------
 
+
+MAP (&grm-NoEret) TARGET QDL IF (-1 ("eret") LINK *-1 ("gos" Adv))(*1 (N Loc) LINK NOT 1 ("eret")) ;
 
 
 # ----------------
@@ -6179,6 +6190,8 @@ MAP (&dia-pos) TARGET QDL IF (*-1 Qst OR go)(NOT *1 Neg);
 
 # The target can be e.g. the user´s name, place where she lives, what kind of car she has.... and then we can use the target in the next question, e.g. "Man guhká don leat orron Romssas?"
 
+
+# The general ones:
 LIST NUM-ADV = "oktii" "guktii" "golbmii" "njelljii" "vihttii" "guhttii" "čihččii" "gávccii" "ovccii" ;
 
 MAP (&dia-target) TARGET (N Num) IF (*-1 QDL LINK *-1 ("gallis" Nom) LINK -1 BOS);
@@ -6186,7 +6199,7 @@ MAP (&dia-target) TARGET Num IF (*-1 QDL LINK *-1 ("galle") LINK -1 BOS);
 MAP (&dia-target) TARGET Ord IF (*-1 QDL LINK *-1 ("gallát") OR ("galládat") LINK -1 BOS);
 MAP (&dia-target) TARGET NUM-ADV IF (*-1 QDL LINK *-1 ("gallii") LINK -1 BOS);
 
-MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM LINK -1 BOS) ;
+MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM LINK -1 BOS)(NEGATE *-1 QDL LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom))  ;
 MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC LINK -1 BOS)(NEGATE *1 (N Acc) BARRIER VERB OR CC) ;
 MAP (&dia-target) TARGET VFIN IF (*-1 QDL LINK *-1 WORK-V LINK *-1 TARGETQUESTION-ACC LINK -1 BOS)(NOT 0 Neg) ;
 
@@ -6212,6 +6225,19 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
     ## in oro gostege
     ## in háliit maidege
 
+# Specific ones
+
+# Picking name, the first one if there are many
+MAP (&dia-name) TARGET QMRK IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom)) ;
+# Picking name, if it is not in the lexicon
+MAP (&dia-name) TARGET Prop IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom)) ;
+
+# Picking the age - these do not function yet 
+MAP (&dia-adult) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<number>22>))  ;
+MAP (&dia-young) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<5<number<22>))  ;
+MAP (&dia-child) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<number<6>))  ;
+
+
 # ---------
 # SEMANTICS - NOT IN USE YET
 # ---------
@@ -6229,9 +6255,14 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 # &dia-pos              positive content
 # &dia-target           answer to the question - can be used in next question
 # &dia-dont-know        to easy answer - Make a comment for this. 
+# &dia-name
+# &dia-adult
+# &dia-young
+# &dia-child
 
 # &err-spellingerror    spellingerror word is not in lexicon
 
+# &grm-NoEret			there should be "eret" 
 # &grm-falAdv           "fal" can never be initial
 # &grm-naPcle           "na" can only be initial
 # &grm-notInterj        Interj can only be initial or final
@@ -6266,5 +6297,5 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 # &grm-should-not-Vfin  this verb should not be finite
 # &grm-incorr-pers-nr   you should answer with another Person-Number
 # &grm-should-pers      you shold answer with a pronoun
-
+# &grm-habitive			wrong habitiv-construction
 # &sem-answer-with-same-verb you should answer with the same verb
