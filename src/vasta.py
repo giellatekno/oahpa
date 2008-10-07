@@ -1,4 +1,12 @@
 # -*- coding: utf-8 -*-
+#
+# Vasta command-line tool
+#
+# Add this line to your .profile (replace user with your username)
+# export PYTHONPATH="/home/<user>/ped/:/home/<user>/ped/oahpa"
+#
+
+
 from os import environ
 environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
@@ -7,9 +15,8 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404, render_to_response
 from random import randint
 from django.utils.translation import ugettext as _
-#from django.contrib.admin.views.decorators import _encode_post_data, _decode_post_data
-from game import *
-from qagame import *
+from oahpa.drill.game import *
+from oahpa.drill.qagame import *
 from optparse import OptionParser
 
 
@@ -17,26 +24,39 @@ parser = OptionParser()
 
 parser.add_option("-p", "--pos", dest="pos",
                   help="part of speech")
-parser.add_option("-q", "--qtype", dest="case",
+parser.add_option("-g", "--grammar", dest="grammar",
+                  help="Grammarfile")
+parser.add_option("-q", "--qtype", dest="qtype",
                   help="question type")
 
 (options, args) = parser.parse_args()
 
-qasettings = {'pos' : 'N',
-              'case' : 'N-ILL',}
-if options.pos: qasettings['pos'] = pos
+qasettings = {'pos' : 'N', 'qtype' : 'N-ILL', 'case' : ''}
+if options.pos: qasettings['pos'] = options.pos
+if options.qtype: qasettings['qtype'] = options.qtype
 
 
 # Analyzer..
-fstdir="/Users/saara/gt/sme/bin"
-lookup = "/Users/saara/bin/lookup"
-lookup2cg = " | /Users/saara/gt/script/lookup2cg"
-vislcg3 = "/Users/saara/bin/vislcg3"
+#fstdir="/Users/saara/gt/sme/bin"
+#lookup = "/Users/saara/bin/lookup"
+#lookup2cg = " | /Users/saara/gt/script/lookup2cg"
+#vislcg3 = "/Users/saara/bin/vislcg3"
+#preprocess = " | /Users/saara/gt/script/preprocess "
+#dis = "/Users/saara/ped/sme/src/sme-ped.cg3"
+
+fstdir="/opt/smi/sme/bin"
+lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
+lookup2cg = " | lookup2cg"
+cg3 = "vislcg3"
+preprocess = " | /usr/local/bin/preprocess "
+if options.grammar:
+    dis = options.grammar
+else:
+    dis = "/home/saara/ped/sme/src/sme-ped.cg3"
+
 fst = fstdir + "/sme.fst"
-dis = "/Users/saara/ped/sme/src/sme-ped.cg3"
-preprocess = " | /Users/saara/gt/script/preprocess "
-lookup = " | " + lookup + " -flags mbTT -utf8 -d " + fst        
-vislcg3 = " | " + vislcg3 + " --grammar" + dis + " -C UTF-8"
+lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst        
+vislcg3 = " | " + cg3 + " --grammar " + dis + " -C UTF-8"
 disamb = lookup + lookup2cg + vislcg3
 
                 
@@ -46,8 +66,7 @@ qasettings['gametype'] = "context"
 game = QAGame(qasettings)
 game.init_tags()
 new_db_info = {}
-db_info = game.get_db_info(new_db_info)
-
+db_info = game.get_db_info(new_db_info, qasettings['qtype'])
 
 question = Question.objects.get(Q(id=db_info['question_id']))
 qtext = question.string
@@ -81,7 +100,7 @@ for w in qtext.split():
         qstring = qstring + " " + w
         
     if not cohort:
-        cohort = word + "\n"
+        cohort = w + "\n"
         
     analysis = analysis + cohort
 
@@ -94,29 +113,45 @@ qstring = qstring + "?"
 print qstring
 data = sys.stdin.readlines()
 data = ''.join(data)
+data = data.rstrip()
 
 ans_cohort=""
-data_lookup = "echo \"" + data.encode('utf-8') + "\"" + preprocess + lookup + lookup2cg
+data_lookup = "echo \"" + data + "\"" + preprocess + lookup + lookup2cg
+#print data_lookup
 word = os.popen(data_lookup).readlines()
 for c in word:
     c.lstrip(" ")
     ans_cohort = ans_cohort + c
 
 analysis = analysis + ans_cohort
+#print analysis
+analysis = analysis.rstrip()
+analysis = analysis.replace("\"","\\\"")
 
-ped_cg3 = "echo \"" + analysis.encode('utf-8') + vislcg3
+ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
+#print "***************"
+#print ped_cg3
 checked = os.popen(ped_cg3).readlines()
 
-messageObj=re.compile(r'^.*(?P<msgSTring>&[\w-]*)$', re.U)
+messageObj=re.compile(r'^.*(?P<msgString>&[\w-]*)\s*$', re.U)
 
+print
+
+msgstrings = []
 for line in checked:
     line.strip()
-    matchObj=messageObj.search(line) 
+    print line
+    matchObj=messageObj.search(line)
     if matchObj:
         msgstring = matchObj.expand(r'\g<msgString>')
-        print msgstring
+        msgstrings.append(msgstring)
 
+for m in msgstrings:
+    m = m.replace("&","")
+    if Feedbackmsg.objects.filter(msgid=m).count() > 0:
+        message = Feedbackmsg.objects.filter(msgid=m)[0].message
+        print message
+    else:
+        print m
 
-print analysis
-answer=""
 
