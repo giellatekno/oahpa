@@ -114,7 +114,7 @@ class QAGame(Game):
         Only one question is generated.
         """
         qtext=question.string
-        print "QUESTION " + str(question.id) + " " + qtext
+        #print "QUESTION " + str(question.id) + " " + qtext
         qwords = {}
     
         # Find out syntax elements
@@ -227,7 +227,7 @@ class QAGame(Game):
                 info = self.get_qword(element, tag_el)
                 word = info
                 
-                print "WORD ", s, tag_el.string, word
+                #print "WORD ", s, tag_el.string, word
 
             if not word:
                 word['fullform'] = []
@@ -320,7 +320,6 @@ class QAGame(Game):
             asubj = awords['SUBJ'][0]
             a_number=asubj['number']
             va_number=self.SVPN[a_number]
-            print "----------------- va_number", va_number
 
             # Take qwords mainverb tag as basis
             # If there is no subject, then the number of the question
@@ -339,7 +338,7 @@ class QAGame(Game):
             
         # Mainverb word if needed:
         if qwords.has_key('MAINV'):
-            print "ON VERBI"
+            #print "ON VERBI"
             mainv_word = qwords['MAINV']['word']
 
         # If the main verb is under question, then generate full list.
@@ -379,7 +378,7 @@ class QAGame(Game):
         if not mainv_words and qwords.has_key(eltype):
             mainv_words.append(qwords[eltype])
 
-        print "mainverb words.. ", mainv_words
+        #print "mainverb words.. ", mainv_words
         awords[eltype] = mainv_words
             
         return awords
@@ -401,7 +400,7 @@ class QAGame(Game):
                 word_id = qwords['MAINV']['word']
         
         tag_elements = None
-        print "generating syntax", s
+        #print "generating syntax", s
         # Temporary array for words
         swords = []
         elements = self.get_elements(answer,s)
@@ -451,31 +450,34 @@ class QAGame(Game):
         
         return awords
 
-    def get_db_info(self, db_info):
+    def get_db_info(self, db_info,default_qtype=None):
 
         anslist=[]
         pos=self.settings['pos']
 
-        print self.gametype
+        #print self.gametype
         # Select random question type.
-        if pos == "N":
-            if self.gametype == 'qa':
-                qtype = self.settings['allcase'][randint(0, len(self.settings.allcase)-1)]
-            else:
-                qtype = self.settings['case']
-        if pos == "V":
-            if self.gametype == 'qa':
-                qtype = self.settings['allcase'][randint(0, len(self.settings.allcase)-1)]
-            else:                    
-                qtype=self.settings['vtype']
-        if pos == "Num":
-            if self.gametype == 'qa':
-                qtype = self.settings['allcase'][randint(0, len(self.settings.allcase)-1)]
-            else:                                            
-                qtype=self.settings['num_context']
-#        if pos == "A":
+        if not default_qtype:
+            if pos == "N":
+                if self.gametype == 'qa':
+                    qtype = self.settings['allcase'][randint(0, len(self.settings['allcase'])-1)]
+                else:
+                    qtype = self.settings['case']
+            if pos == "V":
+                if self.gametype == 'qa':
+                    qtype = self.settings['allcase'][randint(0, len(self.settings['allcase'])-1)]
+                else:                    
+                    qtype=self.settings['vtype']
+            if pos == "Num":
+                if self.gametype == 'qa':
+                    qtype = self.settings['allcase'][randint(0, len(self.settings['allcase'])-1)]
+                else:                                            
+                    qtype=self.settings['num_context']
+        #if pos == "A":
 
-        print "QTYPE: " + qtype
+        if default_qtype: qtype = default_qtype
+ 
+        #print "QTYPE: " + qtype
 
         # If the question id is received from the interface, use that question info
         # Otherwise select random question
@@ -492,7 +494,7 @@ class QAGame(Game):
                 qnum = randint(0, q_count-1)
                 # TESTING
                 #qnum = 3
-                print "qnum:", qnum
+                #print "qnum:", qnum
                 question = Question.objects.filter(qtype=qtype)[qnum]
                 if question.gametype and not question.gametype == self.gametype: continue
                 qwords = None
@@ -500,7 +502,7 @@ class QAGame(Game):
             db_info['qwords'] = qwords
 
         qtext = question.string
-        print "QWORDS1", qwords
+        #print "QWORDS1", qwords
 
         # Select answer using the id from the interface.
         # Otherwise select answer that is related to the question.
@@ -521,12 +523,12 @@ class QAGame(Game):
             atext=answer.string
             words_strings = set(atext.split())
 
-            print words_strings
+            #print words_strings
             
             #Initialize each element identifier
             for w in atext.split():
                 if w== "": continue
-                print w
+                #print w
                 w = w.replace("(","")
                 w = w.replace(")","")
                 info = {}
@@ -563,10 +565,10 @@ class QAGame(Game):
 
         question = Question.objects.get(Q(id=db_info['question_id']))
         answer = Question.objects.get(Q(id=db_info['answer_id']))
-        print "awords:", db_info['awords']
-        print "awords ...................."
-        print "qwords:", db_info['qwords']
-        print "qwords ...................."
+        #print "awords:", db_info['awords']
+        #print "awords ...................."
+        #print "qwords:", db_info['qwords']
+        #print "qwords ...................."
         form = (QAQuestion(db_info['gametype'], question, answer, \
                            db_info['qwords'], db_info['awords'],\
                            db_info['userans'], db_info['correct'], data, prefix=n))
