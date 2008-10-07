@@ -5942,7 +5942,7 @@ LIST TARGETQUESTION-GEN = ("gii" Gen) ;
 LIST TARGETQUESTION-ILL = ("mii" Ill) ("gii" Ill) ("gallis" N Ill) ;
 LIST TARGETQUESTION-LOC = ("mii" Loc) ("gii" Loc) ("galle" Loc) ("gallis" N Loc) ;
 LIST TARGETQUESTION-COM = ("mii" Com) ("gii" Com) ("galle" Com) ("gallis" N Com) ;
-LIST TARGETQUESTION-ESS = ("mii" Ess) ("gii" Ess) ;
+LIST TARGETQUESTION-ESS = ("mii" Ess) ("manin" Adv) ("gii" Ess) ;
 
 REMOVE Acc (-1 BOS)(0 ("galle") OR ("gallis") LINK NOT *1 V-TRANS-ACT-NOT-ACT BARRIER QDL)(*1 QDL);
 REMOVE Loc (-1 BOS)(0 ("galle") LINK 1 VFIN)(*1 QDL);
