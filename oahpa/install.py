@@ -76,6 +76,10 @@ if options.numerals:
     linginfo.generate_numerals()
     exit()
 
+if options.messagefile:
+    questions.read_messages(options.messagefile)
+    exit()
+
 if not options.infile:
     exit()
 
