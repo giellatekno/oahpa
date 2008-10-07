@@ -1199,7 +1199,11 @@ LIST GRADE-ADJ = "fávru" "headju";
 LIST LEX-ADJ = "bassi" "guovddáš" "nuorra" "oahpis" "váivi" "oainnus";
     # Those are quite strongly lexicalized as nouns.
     
-LIST TIME-A = "boahtte" "čuovvovaš" "maŋemus" "maŋimus" "ovddit" ("mannat" PrfPrc) ("vássit" PrfPrc)   ;
+LIST TIME-A-FUTURE = "boahtte" "čuovvovaš"   ;
+
+LIST TIME-A-PAST = "čuovvovaš" "maŋemus" "maŋimus" "ovddit" ("mannat" PrfPrc) ("vássit" PrfPrc)   ;
+
+SET TIME-A = TIME-A-FUTURE OR TIME-A-PAST ;
 
 LIST DURATION-A = "heila" "eanas" "eanet" "geažo" "geažos" "guhkki" "obba" "oba" "ollis" "oppa" "visot" ;
 
@@ -5909,7 +5913,7 @@ SELECT Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; # no there should be less ambiguity
     # once again
 SELECT Num (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ;
     ## guokte stuorra ja hui boares viesu
-SELECT (N Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num LINK *-1 QDL)(NEGATE 1 CC LINK *1 N BARRIER NPNH LINK NOT *1 N BARRIER NPNH) ;
+SELECT (N Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num LINK *-1 QDL)(NOT 0 PrfPrc)(NEGATE 1 CC LINK *1 N BARRIER NPNH LINK NOT *1 N BARRIER NPNH) ;
     ## eatni guokte stuorra ja hui boares viesu
 SELECT (Refl Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
     ## mu iežan eatni guokte stuorra ja hui boares viesu
@@ -5980,7 +5984,7 @@ MAP (&grm-should-LocPP) TARGET Po IF (NOT 0 LOC-Po LINK *-1 QDL LINK *-1 ("gos")
 MAP (&grm-should-IllPP) TARGET Po IF (NOT 0 ILL-Po LINK *-1 QDL LINK *-1 ("gosa"));
 
 # Select Acc when Obj:
-SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK *-1 QDL)(NOT *1 N BARRIER VERB OR S-BOUNDARY);
+SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK *-1 QDL)(NOT 0 TIME OR ROUTE)(NOT *1 N BARRIER VERB OR S-BOUNDARY);
 REMOVE Gen IF (-1 ("makkár") LINK -1 BOS) ;
 
 # -------
@@ -6047,39 +6051,6 @@ MAP (&grm-wrong-case) TARGET N IF (*-1 (Num Sg Nom) OR (Num Sg Acc) BARRIER NOT-
 MAP (&grm-NoEret) TARGET QDL IF (-1 ("eret") LINK *-1 ("gos" Adv))(*1 (N Loc) LINK NOT 1 ("eret")) ;
 
 
-# ----------------
-# TIME-EXPRESSIONS
-# ----------------
-
-SET TIME-MOD = TIME-A OR ("nubbi" Indef Gen) ;
-LIST TIME-GEN = "jándor" "bodda" "čakča" "čakča#geassi" "giđđa#geassi" "čakča#dálvi" "giđđa#dálvi" "dálvi" "geassi" "giđđa" "skábma#áigi" "skábma#dálvi" "skábma" "eahket#bodda" "idja" "iđit#bodda" "jahki" "jahke#bealle" "kaleanddar#jahki" "loahppa#jahki" "njealjádas#jahki" "skuvla#jahki" "beaivi" "eami#álbmot#jahki" "gaska#idja" "luome#jahki" "mihcamárat" "muorje#jahki" "albmái#mannan#beaivi" "bargo#čoahkkin#beaivi" "beassáš#beaivi" "mánnodat" "vuoss#árga" "disdat" "maŋŋe#bárga" "gaska#vahkku" "duorastat" "bearjadat" "juovla#beaivi" "lávvardat" "lávvordat" "sotna#beaivi" "sábbát" "skille#duorastat" "riegádan#beaivi" "juovllat" "beassážat" "hellodagat" "ovddit#beaivi" ;
-
-LIST TIME-LOC = "čuohte#jahki" "diibmu" "eahket" "jahke#čuohti" "mánnu" "minukta" "tiibma" "vahkko#loahppa" "vahkku" "bivdo#áigi" "ođđa#jage#mánnu" "ođđa#jagi#mánnu" "guovva#mánnu" "njukča#mánnu" "njuvčča#mánnu" "cuoŋo#mánnu" "cuoŋos#mánnu" "gáranas#mánnu" "miesse#mánnu" "geasse#mánnu" "suoidne#mánnu" "borge#mánnu" "šnjilča#mánnu" "šnjilža#mánnu" "čakča#mánnu" "golggot#mánnu" "skábma#mánnu" "ritne#mánnu" "juovla#mánnu" "boares#áigi" "vássán#áigi" ; 
-
-LIST TIME-ADV = "dál" "dalle" "eske" "dovle" "duvle" "ovdal" "gieskat" "odne" "ikte" "ihttin" "beaivet" "ihkku" "iđđes" "eahkes" "diibmá" "dolin" "hárve" "dávjá" "álo" "čakčat" "dálvet" "dálvit" "geassit" "geasset" "giđđat" ; 
-
-LIST TIME-ESS = "nuorra" "mánná" "čakča#seavdnjat" "seavdnjat" "skábma" ; 
-LIST TIME-PO/PR = "maŋŋá" "maŋŋel" "maŋŋil" "ovdal" ;
-LIST TIME-PR = "gasku" ; 
-LIST TIME-PO = "áigi" "geahčen" ; 
-    # geassi Nom = geas´si Gen
-
-SELECT TIME-MOD (1 TIME-GEN OR TIME-LOC LINK *-1 QDL) ;
-SELECT Nom (0 ("geassi" Nom)) ;
-
-MAP (&grm-wrong-case) TARGET TIME-GEN (NOT 0 Gen LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 ("goas") LINK -1 BOS) ;
-MAP (&grm-wrong-case) TARGET TIME-LOC (NOT 0 Loc LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 ("goas") LINK -1 BOS)(NOT 1 Po) ;
-MAP (&grm-incorr-time-expr) TARGET ("goas") (*1 QDL LINK NOT *1 TIME-LOC OR TIME-ADV BARRIER S-BOUNDARY)(*1 QDL LINK NEGATE *1 TIME-GEN BARRIER S-BOUNDARY LINK 1 TIME-PO)  ;
-
-## boahtte čavčča, boahtte juovllaid
-## dán čavčča, dáid juovllaid
-## dán mánus
-## čakčat
-## dál
-## mánu geahčen
-## nuorran
-
-# NB! geassi Gen!
 
 # --------
 # PRONOUNS 
@@ -6133,6 +6104,9 @@ MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-
 MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR Actio)(NOT 0 Sg3) ;
 MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
+MAP (&grm-incorr-tense) TARGET VFIN + Prs (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prt) ;
+MAP (&grm-incorr-tense) TARGET VFIN + Prt (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prs) ;
+
 
 # -------------------
 # AGREEMENT SUBJ/VFIN
@@ -6170,6 +6144,50 @@ LIST VERBLEMMA = (".*"r) ;
 
 MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
 MAP (&semAnswerWithSameVerb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
+
+# ----------------
+# TIME-EXPRESSIONS
+# ----------------
+
+SET TIME-MOD = TIME-A OR ("nubbi" Indef Gen) OR (Dem Gen) ;
+LIST TIME-GEN-WITH-MOD = "jándor" "bodda" "čakča" "čakča#geassi" "giđđa#geassi" "čakča#dálvi" "giđđa#dálvi" "dálvi" "geassi" "giđđa" "skábma#áigi" "skábma#dálvi" "skábma" "eahket#bodda" "idja" "iđit#bodda" "jahki" "jahke#bealle" "kaleanddar#jahki" "loahppa#jahki" "njealjádas#jahki" "skuvla#jahki"  "eami#álbmot#jahki" "gaska#idja" "luome#jahki" "muorje#jahki" ;
+
+LIST TIME-GEN = "beaivi" "mihcamárat" "albmái#mannan#beaivi" "bargo#čoahkkin#beaivi" "beassáš#beaivi" "mánnodat" "vuoss#árga" "disdat" "maŋŋe#bárga" "gaska#vahkku" "duorastat" "bearjadat" "juovla#beaivi" "lávvardat" "lávvordat" "sotna#beaivi" "sábbát" "skille#duorastat" "riegádan#beaivi" "juovllat" "beassážat" "hellodagat" "ovddit#beaivi" ;
+
+
+LIST TIME-LOC = "čuohte#jahki" "diibmu" "eahket" "jahke#čuohti" "mánnu" "minukta" "tiibma" "vahkko#loahppa" "vahkku" "bivdo#áigi" "ođđa#jage#mánnu" "ođđa#jagi#mánnu" "guovva#mánnu" "njukča#mánnu" "njuvčča#mánnu" "cuoŋo#mánnu" "cuoŋos#mánnu" "gáranas#mánnu" "miesse#mánnu" "geasse#mánnu" "suoidne#mánnu" "borge#mánnu" "šnjilča#mánnu" "šnjilža#mánnu" "čakča#mánnu" "golggot#mánnu" "skábma#mánnu" "ritne#mánnu" "juovla#mánnu" "boares#áigi" "vássán#áigi" ; 
+
+LIST TIME-ADV = "dál" "dalle" "eske" "dovle" "duvle" "ovdal" "gieskat" "odne" "ikte" "ihttin" "beaivet" "ihkku" "iđđes" "eahkes" "diibmá" "dolin" "hárve" "dávjá" "álo" "čakčat" "dálvet" "dálvit" "geassit" "geasset" "giđđat" ; 
+
+LIST TIME-ESS = "nuorra" "mánná" "čakča#seavdnjat" "seavdnjat" "skábma" ; 
+LIST TIME-PO/PR = "maŋŋá" "maŋŋel" "maŋŋil" "ovdal" ;
+LIST TIME-PR = "gasku" ; 
+LIST TIME-PO = "áigi" "geahčen" ; 
+    # geassi Nom = geas´si Gen
+
+SELECT TIME-MOD (1 TIME LINK *-1 QDL) ;
+SELECT Nom (0 ("geassi" Nom)) ;
+
+MAP (&grm-wrong-case) TARGET TIME-GEN (NOT 0 Gen LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 ("goas") LINK -1 BOS) ;
+MAP (&grm-wrong-case) TARGET TIME-LOC (NOT 0 Loc LINK *-1 QDL BARRIER S-BOUNDARY OR TIME-MOD LINK *-1 ("goas") LINK -1 BOS)(NOT 1 Po) ;
+MAP (&grm-incorr-time-expr) TARGET ("goas") (*1 QDL LINK NOT *1 TIME-LOC OR TIME-ADV OR TIME-GEN BARRIER S-BOUNDARY)(*1 QDL LINK NEGATE *1 TIME BARRIER S-BOUNDARY LINK 1 TIME-PO OR TIME-PO/PR) (*1 QDL LINK NEGATE *1 TIME-MOD BARRIER S-BOUNDARY LINK 1 TIME) ;
+
+MAP (&grm-incorr-tense-future) TARGET TIME-A-FUTURE (-1 VFIN + Prt LINK *-1 QDL)(1 TIME + Gen);
+MAP (&grm-incorr-tense-future) TARGET PRESENT-MARKER (-1 VFIN + Prt LINK *-1 QDL);
+
+MAP (&grm-incorr-tense-past) TARGET TIME-A-PAST (-1 VFIN + Prs LINK *-1 QDL)(1 TIME + Gen);
+MAP (&grm-incorr-tense-past) TARGET PAST-MARKER (-1 VFIN + Prs LINK *-1 QDL);
+
+
+## boahtte čavčča, boahtte juovllaid
+## dán čavčča, dáid juovllaid
+## dán mánus
+## čakčat
+## dál
+## mánu geahčen
+## nuorran
+
+# NB! geassi Gen!
 
 
 # ------------------------
@@ -6283,6 +6301,8 @@ MAP (&dia-child) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<nu
 
 # &grm-wrong-case       wrong case
 # &grm-incorr-time-expr incorrect time expression 
+# &grm-incorr-tense-future
+# &grm-incorr-tense-past
 
 # &grm-missing-NumSg    You should answer with Num Sg
 # &grm-missing-NumPl    You should answer with Num Pl
