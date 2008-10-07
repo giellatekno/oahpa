@@ -10,11 +10,7 @@
 from os import environ
 environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
-from django.template import Context, loader
-from django.http import HttpResponse, Http404
-from django.shortcuts import get_list_or_404, render_to_response
 from random import randint
-from django.utils.translation import ugettext as _
 from oahpa.drill.game import *
 from oahpa.drill.qagame import *
 from optparse import OptionParser
