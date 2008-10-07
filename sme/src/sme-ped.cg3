@@ -6069,7 +6069,7 @@ SELECT Nom (0 ("geassi" Nom)) ;
 
 MAP (&grm-wrong-case) TARGET TIME-GEN (NOT 0 Gen LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 ("goas") LINK -1 BOS) ;
 MAP (&grm-wrong-case) TARGET TIME-LOC (NOT 0 Loc LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 ("goas") LINK -1 BOS)(NOT 1 Po) ;
-MAP (&grm-incorr-time-expr) TARGET ("goas") (*1 QDL LINK NOT *1 TIME-GEN OR TIME-LOC BARRIER S-BOUNDARY)(*1 QDL LINK NEGATE *1 TIME-GEN BARRIER S-BOUNDARY LINK 1 TIME-PO)  ;
+MAP (&grm-incorr-time-expr) TARGET ("goas") (*1 QDL LINK NOT *1 TIME-LOC OR TIME-ADV BARRIER S-BOUNDARY)(*1 QDL LINK NEGATE *1 TIME-GEN BARRIER S-BOUNDARY LINK 1 TIME-PO)  ;
 
 ## boahtte čavčča, boahtte juovllaid
 ## dán čavčča, dáid juovllaid
