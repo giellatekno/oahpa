@@ -3,9 +3,10 @@
 # Vasta command-line tool
 #
 # Add this line to your .profile (replace user with your username)
-# export PYTHONPATH="/home/<user>/ped/:/home/<user>/ped/oahpa"
+# export PYTHONPATH="/home/<user>/gtsvn/ped/:/home/<user>/gtsvn/ped/oahpa"
 #
-
+# usage: python ped/src/vasta.py -q "N-ESS" -g ped/sme/src/sme-ped.cg3
+#
 
 from os import environ
 environ['DJANGO_SETTINGS_MODULE'] = 'settings'
@@ -27,7 +28,7 @@ parser.add_option("-q", "--qtype", dest="qtype",
 
 (options, args) = parser.parse_args()
 
-qasettings = {'pos' : 'N', 'qtype' : 'N-ILL', 'case' : ''}
+qasettings = {'pos' : 'N', 'qtype' : 'N-ILL', 'case' : '', 'allcase':''}
 if options.pos: qasettings['pos'] = options.pos
 if options.qtype: qasettings['qtype'] = options.qtype
 
@@ -61,6 +62,7 @@ qasettings['gametype'] = "context"
 
 game = QAGame(qasettings)
 game.init_tags()
+game.gametype = 'qa'
 new_db_info = {}
 db_info = game.get_db_info(new_db_info, qasettings['qtype'])
 
