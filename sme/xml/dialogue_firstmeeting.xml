@@ -12,9 +12,9 @@
 <topic name="presentation">
 <question name="Mii_du_namma_lea">
 <!-- What is you name? -->
-<target><utt>Bures NAME.</utt></target>
+<target><utt>Bures NAME.</utt> 
 <element id="NAME">
-	  <id>&dia-name</id>
+	  <id>dia-name</id>
       </element> </target>
 <default>
 <utt>Suohtas go don leat čátas odne.</utt></default> 
@@ -30,7 +30,7 @@
 <target><utt>Mun lean leamaš PLACE.</utt>
 <element id="PLACE">
 	<grammar pos="Sg+Loc"/>
-	  <id>&dia-target</id>
+	  <id>dia-target</id>
       </element> </target>
 </question>
 <closing>Doppe sáhttá leat buorre orrut.</closing>
@@ -53,27 +53,67 @@
 
 <question name="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla">
 <neg qlink="Makkár_skuvlla_don_váccát_dalle"/> 
-<default link to closing>
+<!--default link to closing-->
 </question>
 
 <question name="Leat_go_barggus">
 <!-- Do you work??-->
 <aff qlink="Makkár_bargu_dus_lea"/>
-<default link to closing>
+<!--default link to closing-->
 </question>
 
 <question name="Makkár_bargu_dus_lea">
 <!-- What kind of job do you have?-->
-<default link to closing>
+<!--default link to closing-->
 </question>
 
 <question name="Leat_go_álgán_skuvlii">
-<default link to closing>
+<!--default link to closing-->
 </question>
 
 <closing>Já nu!</closing>
 </topic>
 
+<!-- This part is only for adults. -->
+<topic name="car">
+<opening>Mus lea hui buorre biila - Toyota Jaris.</opening>
+
+<question name="Lea_go_dus_biila">
+<aff qlink="Makkár_biila_dus_lea"/>
+<neg qlink="Leat_go_dus_sihkkelat"/>
+</question>
+
+<question name="Makkár_biila_dus_lea">
+<target><utt>Lea go NOUN buorre biila?</utt>
+<element id="NOUN">
+	  <id>dia-target</id>
+      </element> </target>
+<aff qlink="Lean_gullan_ahte_lea_buorre_biila"/>
+<neg qlink="Háliidat_go_oastit_mu_biilla"/>
+</question>
+
+<question name="Leat_go_dus_sihkkelat">
+<neg qlink="Dalle_fertet_birget_vuojana_haga"/>
+<aff qlink="Dahká_buori_sihkkelastit"/>
+</question>
+
+<question name="Lean_gullan_ahte_lea_buorre_biila"/>
+ 
+<question name="Háliidat_go_oastit_mu_biilla">
+<neg qlink="Dalle_fertet_ohcat_eará_biilla"/>
+<aff qlink="In_háliit_dattetge_vuovdit_dan"/>
+</question>
+ 
+<question name="Dalle_fertet_birget_vuojana_haga"/>
+ 
+<question name="Dahká_buori_sihkkelastit"/>
+ 
+<question name="Dalle_fertet_ohcat_eará_biilla"/>
+ 
+<question name="In_háliit_dattetge_vuovdit_dan"/>
+ 
+<closing>Mun lean hui duhtavaš iežan biillain.</closing>
+</topic>
 
 
 </dialogue>
