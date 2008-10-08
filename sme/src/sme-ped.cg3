@@ -5913,7 +5913,7 @@ SELECT Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; # no there should be less ambiguity
     # once again
 SELECT Num (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ;
     ## guokte stuorra ja hui boares viesu
-SELECT (N Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num LINK *-1 QDL)(NOT 0 PrfPrc)(NEGATE 1 CC LINK *1 N BARRIER NPNH LINK NOT *1 N BARRIER NPNH) ;
+SELECT (N Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num LINK NOT 0 Prop LINK *-1 QDL)(NOT 0 PrfPrc)(NEGATE 1 CC LINK *1 N BARRIER NPNH LINK NOT *1 N BARRIER NPNH) ;
     ## eatni guokte stuorra ja hui boares viesu
 SELECT (Refl Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
     ## mu iežan eatni guokte stuorra ja hui boares viesu
@@ -6237,6 +6237,11 @@ MAP (&dia-target) TARGET DOHKO IF (*-1 QDL LINK *-1 ("gosa") LINK -1 BOS)(*-1 QD
 # The Nom rule do not pick Num + N Gen !!
 # You can live in a Num (40:s) !!
 
+# In the question are alternatives:
+MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Nom))  ;
+MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL BARRIER Acc OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Acc)) ;
+
+
 LIST NOTHING = Foc/ge "mihkkege" "giige" ;
 
 MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&dia-target)) ;
@@ -6250,9 +6255,15 @@ MAP (&dia-name) TARGET QMRK IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("namma" No
 # Picking name, if it is not in the lexicon
 MAP (&dia-name) TARGET Prop IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom)) ;
 
+# Picking cartype, the first one if it is multiword
+MAP (&dia-name) TARGET QMRK IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("biila") LINK -1 ("makkár")) ;
+# Picking name, if it is not in the lexicon
+MAP (&dia-name) TARGET Prop IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("biila") LINK -1 ("makkár")) ;
+
+
 # Picking the age - these do not function yet 
-MAP (&dia-adult) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<number>22>))  ;
-MAP (&dia-young) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<5<number<22>))  ;
+MAP (&dia-adult) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<number>20>))  ;
+MAP (&dia-young) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<5<number<20>))  ;
 MAP (&dia-child) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<number<6>))  ;
 
 

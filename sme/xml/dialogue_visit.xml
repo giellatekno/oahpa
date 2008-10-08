@@ -37,11 +37,12 @@
 
 <topic name="juhkat">    
   <question name="Háliidat_go_gáfe_vai_deaja">  
-	<aff obj="gáffe" obj2="deadja"/> 
-   <!--obj = target -->
+	<aff target1="gáffe" target2="deadja"/> 
+   <!-- -->
     <alt1 qlink="Geavahat_go_mielkki"/>
     <alt2 qlink="Háliidat_go_honnega"/>
 	<neg qlink="Háliidat_go_juoida_eará"/>
+	<default><utt>Mus ii leat.</utt></default>
   </question>
 
   <question name="Háliidat_go_honnega">
@@ -58,8 +59,9 @@
         <!--chosen OBJ to this? Dá_lea_OBJ_dutnje_Leage_buorre -->
 
   </question>
-
-  <question name="Háliidat_go_juoida_eará">
+  
+<!-- Here should be an utterance inside the question: <utt>Dás oainnát makkár juhkamušat musa leat.</utt>     --> 
+  <question name="Maid_don_háliidat_juhkat">
 	<aff><utt list="juhkamušat" link="Mun_buvttán_dutnje_NOUN"/></aff>
 <!--the object should be in the list -->
 	<default><utt>Mus ii leat.</utt></default>
