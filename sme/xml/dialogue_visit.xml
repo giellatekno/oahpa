@@ -36,24 +36,21 @@
 </topic>
 
 <topic name="juhkat">    
-  <question name="Háliidat_go_gáfe_vai_deaja">
-	<aff obj="gáffe" obj2="deadja"/>  
-   <!--only one of objects should be in the answer -->
+  <question name="Háliidat_go_gáfe_vai_deaja">  
+	<aff obj="gáffe" obj2="deadja"/> 
+   <!--obj = target -->
     <alt1 qlink="Geavahat_go_mielkki"/>
     <alt2 qlink="Háliidat_go_honnega"/>
 	<neg qlink="Háliidat_go_juoida_eará"/>
-	<aff><utt list="juhkamušat" link="Mun_buvttán_dutnje_OBJ"/></aff>
-   <!--the object should be in the list -->
-	<default><utt>Mus ii leat.</utt></default>
   </question>
 
   <question name="Háliidat_go_honnega">
-     <neg qlink="Geavahat_go_sohkkara"></neg>  
-       <default qlink="Geavahat_go_mielkki"></default>
+     <neg qlink="Geavahat_go_sohkkara"/>
+       <default qlink="Geavahat_go_mielkki"/>
   </question>
 
   <question name="Geavahat_go_sohkkara">
-       <default qlink="Geavahat_go_mielkki"></default>  <!-- no need for this one? -->
+       <default qlink="Geavahat_go_mielkki"/>  <!-- no need for this one? -->
   </question>
 
   <question name="Geavahat_go_mielkki">
@@ -63,10 +60,18 @@
   </question>
 
   <question name="Háliidat_go_juoida_eará">
-	<aff><utt list="juhkamušat" link="Mun_buvttán_dutnje_OBJ"/></aff>
+	<aff><utt list="juhkamušat" link="Mun_buvttán_dutnje_NOUN"/></aff>
 <!--the object should be in the list -->
 	<default><utt>Mus ii leat.</utt></default>
   </question>
+
+<target>
+  <question name="Mun_buvttán_dutnje_NOUN">
+<element id="NOUN">
+	  <id>dia-target</id>
+	<grammar pos="Sg+Acc"/>
+      </element> 
+  </question> </target>
 
   <closing>Galggašii lea juoga borrat maid...</closing>
 </topic>
