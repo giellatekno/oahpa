@@ -5,28 +5,41 @@
 
 <!ELEMENT opening (#PCDATA)>
 
-<!ELEMENT question (neg, aff, default, alt1, alt2)>
+<!ELEMENT question (neg, aff, pos, default, alt1, alt2)>
 <!ATTLIST question name (#PCDATA)>
 
 <!ELEMENT utt (#PCDATA)>
 <!ATTLIST utt link (#PCDATA)>
 
-<!ELEMENT neg (#PCDATA)>
+<!ELEMENT neg (utt) >
 <!ATTLIST neg qlink (#PCDATA)>
 
 <!ELEMENT aff (#PCDATA)>
 <!ATTLIST aff qlink (#PCDATA)>
 
+<!ELEMENT pos (#PCDATA)>
+<!ATTLIST pos qlink (#PCDATA)>
+
 <!ELEMENT default (#PCDATA)>
 <!ATTLIST default qlink (#PCDATA)>
 
+<!ELEMENT alt (#PCDATA)>
+<!ATTLIST alt qlink (#PCDATA)>
+<!ATTLIST alt target ( dia-name | dia-young | dia-adult | dia-child )> 
+
 <!ELEMENT alt1 (#PCDATA)>
 <!ATTLIST alt1 qlink (#PCDATA)>
+<!ATTLIST alt target ( dia-name | dia-young | dia-adult | dia-child )> 
 
 <!ELEMENT alt2 (#PCDATA)>
 <!ATTLIST alt2 qlink (#PCDATA)>
+<!ATTLIST alt target ( dia-name | dia-young | dia-adult | dia-child )> 
+
+<!ELEMENT utt (#PCDATA)>
 
 <!ELEMENT closing (#PCDATA)>
 
-
+<!ELEMENT element (#PCDATA)>
+<!ATTLIST element id ( NOUN | VERB )>
+<!ATTLIST element target ( dia-name | dia-young | dia-adult | dia-child )> 
 
