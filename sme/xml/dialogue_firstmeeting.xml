@@ -6,113 +6,125 @@
 <dialogue name="firstmeeting">
 
 <topic name="Buorre_beaivi">
-<opening>Buorre beaivi! Mun lean Káre!</opening>
+<utt type="opening">Buorre beaivi! Mun lean Káre!</utt>
 </topic>  
 
 <topic name="presentation">
-<question name="Mii_du_namma_lea">
+<question>
+<utt type="question" name="Mii_du_namma_lea">Mii du namma lea?</utt>
 <!-- What is you name? -->
-<target><utt>Bures NAME.</utt> 
+<utt type="comment">Bures NAME.</utt> 
 <element id="NAME">
 	  <id>dia-name</id>
-      </element> </target>
-<default>
-<utt>Suohtas go don leat čátas odne.</utt></default> 
+      </element> 
+</question>      
+<utt type="comment">Suohtas go don leat čátas odne.</utt>
+<utt type="comment">Mun lean Leavvajogas eret.</utt> 
+<question>
+<utt type="question" name="Gos_don_leat_eret">Gos don leat eret?</utt>
+<!-- Where are you from? -->
+<default><utt type="comment">Mun orun Kárášjogas dán áigge.</utt></default>
 </question>
- 
-<utt>Mun lean Leavvajogas eret.</utt> 
-<question name="Gos_don_leat_eret">
-<!-- Where are you from? The placename has to be in Loc followed by 'eret', + correct verbconj.-->
-<default><utt>Mun orun Kárášjogas dán áigge.</utt></default>
-</question>
-<question name="Gos_don_orut_dál">
-<!-- Where do you live now? The placename has to bee in Loc, + correct verbconj. -->
-<target><utt>Mun lean leamaš PLACE.</utt>
-<element id="PLACE">
+<question>
+<utt type="question" name="Gos_don_orut_dál">Gos don orut dál?</utt>
+<!-- Where do you live now? NOUN will get target in the answer. -->
+<pos><utt type="comment">Mun lean leamaš NOUN.</utt>
+<element id="NOUN">
 	<grammar pos="Sg+Loc"/>
 	  <id>dia-target</id>
-      </element> </target>
+      </element> </pos>
+<default link="closing"/>
 </question>
-<closing>Doppe sáhttá leat buorre orrut.</closing>
+
+<utt type="closing">Doppe sáhttá leat buorre orrut.</utt>
 </topic>
 
 <topic name="Work_or_school">
-<opening>Mun lean 40 jagi boaris.</opening>
+<utt type="comment">Mun lean 40 jagi boaris.</utt>
 
-<question name="Man_boaris_don_leat">
-<!-- How old are you? 1-5 child, 6-20 young, 21-100 adult  -->
-<young qlink="Váccát_go_skuvlla"/>
-<adult qlink="Leat_go_barggus"/>
-<child qlink="Leat_go_álgán_skuvlii"/>
+<question>
+<utt type="question" name="Man_boaris_don_leat">Man boaris don leat?</utt>
+<!-- How old are you? 1-5 child, 6-20 young, 21-100 adult -->
+<pos>
+<alt target="dia-young" link="Váccát_go_skuvlla"/>
+<alt target="dia-child" link="Leat_go_álgán_skuvlii"/>
+<alt target="dia-adult" link="Leat_go_barggus"/>
+</pos>
+<default link="Leat_go_barggus"/>
 </question>
 
-<question name="Váccát_go_skuvlla"><utt>Mun barggan Sámedikkis.</utt>
-<aff qlink="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla"/>
-<neg qlink="Leat_go_barggus"/>
+<question>
+<utt type="question" name="Váccát_go_skuvlla">Mun barggan Sámedikkis. Váccát go skuvlla?</utt>
+<pos link="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla"/>
+<default link="Leat_go_barggus"/>
 </question>
 
-<question name="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla">
-<neg qlink="Makkár_skuvlla_don_váccát_dalle"/> 
-<!--default link to closing-->
+<question>
+<utt type="question" name="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla">Váccát go vuođđoskuvlla vai joatkkaskuvlla?</utt>
+<neg link="Makkár_skuvlla_don_váccát_dalle"/> 
+<default link="closing"/>
 </question>
 
-<question name="Leat_go_barggus">
+<question>
+<utt type="question" name="Leat_go_barggus">Leat go barggus?</utt>
 <!-- Do you work??-->
-<aff qlink="Makkár_bargu_dus_lea"/>
-<!--default link to closing-->
+<pos link="Makkár_bargu_dus_lea"/>
+<default link="closing"/>
 </question>
 
-<question name="Makkár_bargu_dus_lea">
+<question>
+<utt type="question" name="Makkár_bargu_dus_lea">Makkár bargu dus lea?</utt>
 <!-- What kind of job do you have?-->
-<!--default link to closing-->
+<default link="closing"/>
 </question>
 
-<question name="Leat_go_álgán_skuvlii">
-<!--default link to closing-->
+<question>
+<utt type="question" name="Leat_go_álgán_skuvlii">Leat go álgán skuvlii?</utt>
+<default link="closing"/>
 </question>
 
-<closing>Já nu!</closing>
+<utt type="closing" name="">Já nu!</utt>
 </topic>
 
 <!-- This part is only for adults. -->
 <topic name="car">
-<opening>Mus lea hui buorre biila - Toyota Jaris.</opening>
+<utt type="comment">Mus lea hui buorre biila - Toyota Jaris.</utt>
 
-<question name="Lea_go_dus_biila">
-<aff qlink="Makkár_biila_dus_lea"/>
-<neg qlink="Leat_go_dus_sihkkelat"/>
+<question>
+<utt type="question" name="Lea_go_dus_biila">Lea go dus biila?</utt>
+<pos link="Makkár_biila_dus_lea"/>
+<default link="Leat_go_dus_sihkkelat"/>
 </question>
 
-<question name="Makkár_biila_dus_lea">
-<target><utt>Lea go NOUN buorre biila?</utt>
-<element id="NOUN">
-	  <id>dia-target</id>
-      </element> </target>
-<aff qlink="Lean_gullan_ahte_lea_buorre_biila"/>
-<neg qlink="Háliidat_go_oastit_mu_biilla"/>
+<question>
+<utt type="question" name="Makkár_biila_dus_lea">Makkár_biila_dus_lea?</utt>
+<pos link="Lea_go_NOUN_buorre_biila"/>
+<default link="Háliidat_go_oastit_mu_biilla"/>
 </question>
 
-<question name="Leat_go_dus_sihkkelat">
-<neg qlink="Dalle_fertet_birget_vuojana_haga"/>
-<aff qlink="Dahká_buori_sihkkelastit"/>
+<question>
+<utt type="question">Lea go NOUN buorre biila?</utt> <!--The NOUN is target from last question! -->
+<element id="NOUN" target="dia-name">
+      </element> 
+<pos> <utt type="comment">"Lean_gullan_ahte_lea_buorre_biila"</utt> </pos>
+<default link="Háliidat_go_oastit_mu_biilla"/>
 </question>
 
-<question name="Lean_gullan_ahte_lea_buorre_biila"/>
- 
-<question name="Háliidat_go_oastit_mu_biilla">
-<neg qlink="Dalle_fertet_ohcat_eará_biilla"/>
-<aff qlink="In_háliit_dattetge_vuovdit_dan"/>
+<question>
+<utt type="question" name="Leat_go_dus_sihkkelat">Leat go dus sihkkelat?</utt>
+<neg> <utt type="comment">"Dalle_fertet_birget_vuojana_haga"</utt> </neg>
+<default> <utt type="comment">"Dahká_buori_sihkkelastit"</utt></default>
 </question>
+
  
-<question name="Dalle_fertet_birget_vuojana_haga"/>
+<question>
+<utt type="question" name="Háliidat_go_oastit_mu_biilla">Háliidat_go_oastit_mu_biilla?</utt>
+<neg> <utt type="comment">"Dalle_fertet_ohcat_eará_biilla"</utt> </neg>
+<default> <utt type="comment">"In_háliit_dattetge_vuovdit_dan"</utt> </default> 
+</question>
+
  
-<question name="Dahká_buori_sihkkelastit"/>
- 
-<question name="Dalle_fertet_ohcat_eará_biilla"/>
- 
-<question name="In_háliit_dattetge_vuovdit_dan"/>
- 
-<closing>Mun lean hui duhtavaš iežan biillain.</closing>
+<utt type="closing">Mun lean hui duhtavaš iežan biillain.</utt>
 </topic>
 
 
