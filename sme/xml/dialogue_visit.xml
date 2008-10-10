@@ -15,84 +15,91 @@
 <dialogue name="visit">
 
 <topic name="Buorre_beaivi">
-<opening>Buorre beaivi! Bures boahtin mu geahčái!</opening>
+<utt type="opening" name="buorre_beaivi">Buorre beaivi! Bures boahtin mu geahčái!</utt>
 </topic>  
 
 <topic name="čohkkát">
-   <question name="Čohkkájetne_go_dás">
-     <neg qlink="Manne_go_gievkkanii"><utt>Gievkkanis lea vuogas čohkkát</utt></neg>
-     <default><utt link="Na_moai_čohkkájetne_dás"/></default>
+   <question>
+   <utt type="question" name="čohkkájetne_go_dás">Čohkkájetne go dás?</utt>
+     <neg qlink="Manne_go_gievkkanii"/>
+     <default><utt type="comment" name="Na_moai_čohkkájetne_dás">Na moai čohkkájetne dás.</utt></default> 
    </question>
-   
-   <question name="Manne_go_gievkkanii">
-     <aff><utt>Gievkkanis lea buorre.</utt>
-    </aff>
+
+   <question>   
+   <utt type="question" name="manne_go_gievkkanii">Gievkkanis lea vuogas čohkkát. Manne go gievkkanii?</utt>
+     <pos><utt>Gievkkanis lea buorre.</utt>
+    </pos>
 	 <default>
 	 <utt>Na moai čohkkájetne dás.</utt>
     </default>
    </question>
 
-	 <closing>Mun lean okto ruovttus odne.</closing>            
+	<utt type="closing" name="mun_lean_okto_ruovttus_odne">Mun lean okto ruovttus odne.</utt>            
 </topic>
 
 <topic name="juhkat">    
-  <question name="Háliidat_go_gáfe_vai_deaja">  
-	<aff target1="gáffe" target2="deadja"/> 
-   <!-- -->
-    <alt1 qlink="Geavahat_go_mielkki"/>
-    <alt2 qlink="Háliidat_go_honnega"/>
-	<neg qlink="Háliidat_go_juoida_eará"/>
+  <question>
+  <utt type="question" name="Háliidat_go_gáfe_vai_deaja">Háliidat go gáfe vai deaja?</utt>  
+	<pos> 
+    <alt target="gáffe" link="Geavahat_go_mielkki"/>
+    <alt target="deadja" link="Háliidat_go_honnega"/>
+    </pos>
+	<neg link="Háliidat_go_juoida_eará"/>
 	<default><utt>Mus ii leat.</utt></default>
   </question>
 
-  <question name="Háliidat_go_honnega">
-     <neg qlink="Geavahat_go_sohkkara"/>
-       <default qlink="Geavahat_go_mielkki"/>
+  <question>
+	<utt type="question" name="Háliidat_go_juoida_eará">Háliidat go juoida eará?</utt>
+	<pos link="Maid_don_háliidat_juhkat"/>
+	<default link="closing"/>
   </question>
 
-  <question name="Geavahat_go_sohkkara">
-       <default qlink="Geavahat_go_mielkki"/>  <!-- no need for this one? -->
+  <question>
+  <utt type="question" name="Háliidat_go_honnega">Háliidat go honnega?</utt>
+     <neg link="Geavahat_go_sohkkara"/>
+       <default link="Geavahat_go_mielkki"/>
   </question>
 
-  <question name="Geavahat_go_mielkki">
+  <question>
+	<utt type="question" name="Geavahat_go_sohkkara">Geavahat go sohkkara?</utt>
+	<default link="Geavahat_go_mielkki"/>   
+  </question>
+
+  <question>
+  <utt type="question" name="Geavahat_go_mielkki">Geavahat go mielkki?</utt>
     <default><utt>Dá lea dutnje. Leage buorre.</utt></default>
-        <!--chosen OBJ to this? Dá_lea_OBJ_dutnje_Leage_buorre -->
-
-  </question>
-  
-<!-- Here should be an utterance inside the question: <utt>Dás oainnát makkár juhkamušat musa leat.</utt>     --> 
-  <question name="Maid_don_háliidat_juhkat">
-	<aff><utt list="juhkamušat" link="Mun_buvttán_dutnje_NOUN"/></aff>
-<!--the object should be in the list -->
-	<default><utt>Mus ii leat.</utt></default>
   </question>
 
-<target>
-  <question name="Mun_buvttán_dutnje_NOUN">
-<element id="NOUN">
-	  <id>dia-target</id>
-	<grammar pos="Sg+Acc"/>
-      </element> 
-  </question> </target>
+  <question>  
+  <utt class="DRINK" type="question" name="Maid_don_háliidat_juhkat">Dás oainnát makkár juhkamušat musa leat. Maid don háliidat juhkat?</utt>
+<!--  <utt img="drinklist.jpg"/> -->
+	<pos><utt>Mun buvttán dutnje NOUN</utt>
+		    <element id="NOUN">
+		  <id>dia-target</id>
+		  <grammar pos="Sg+Acc"/>
+    	</element> </pos>
+	<default link="closing"/>
+  </question>  
 
-  <closing>Galggašii lea juoga borrat maid...</closing>
+  <utt type="closing" name="Galggašii_lea_juoga_borrat_maid">Galggašii lea juoga borrat maid...</utt>
 </topic>
 
 <topic name="gáhkku">
-  <opening>Mus lea lákcagáhkku báhcán mu riegádanbeaifeasttas.</opening>
-  <question name="Háliidat_go_gáhku">
-	<aff><utt>Mun buvttán gáhku!</utt></aff>
-	<default><utt>In sáhte fállat eará odne.</utt>
-               </default>
+  <utt type="opening" name="Mus_lea_lákcagáhkku">Mus lea lákcagáhkku mii bázii mu riegádanbeaifeasttas.</utt>
+
+  <question>
+  <utt type="question" name="Háliidat_go_gáhku">Háliidat go gáhku?</utt>
+	<pos><utt>Mun buvttán gáhku!</utt></pos>
+	<default><utt>In sáhte fállat eará odne.</utt></default>
   </question>
 
- <closing>Suohtas duinna humadit.</closing>
+ <utt type="closing" name="Suohtas_duinna_humadit">Suohtas duinna humadit.</utt>
 
   
 </topic>
 
 <topic name="Giitu_fitnamis">
-  <closing>Giitu fitnamis!</closing>
+  <utt type="closing">Giitu fitnamis!</utt>
 </topic>
 
 </dialogue>
