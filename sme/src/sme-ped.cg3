@@ -2328,10 +2328,10 @@ LIST SEMICOL = "\;" ;
 
 LIST COL = ":" ;
 
-SET S-BOUNDARY  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR CS ;
+SET S-BOUNDARY  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR CS OR QDL ;
 	# includes CP. Remember that (",") and CC are potential sentence boundaries, too
 
-SET S-BOUNDARY1  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") ;
+SET S-BOUNDARY1  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR QDL ;
 	# includes not CS because of "go" in questions, before it is disambugated.
 	
 SET S-BOUNDARY2 = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR (@CVP) ;
@@ -6262,8 +6262,8 @@ MAP (&dia-name) TARGET Prop IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("biila") L
 
 
 # Picking the age - these do not function yet 
-MAP (&dia-adult) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<number>20>))  ;
-MAP (&dia-young) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<5<number<20>))  ;
+MAP (&dia-adult) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<number>20>))  ;     []    ("([0-9]|1[0-3])"r)
+MAP (&dia-young) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<5<number<20>))  ;          "2[0-5]"r
 MAP (&dia-child) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<number<6>))  ;
 
 
