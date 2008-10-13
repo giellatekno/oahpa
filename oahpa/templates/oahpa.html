@@ -19,9 +19,6 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
-<!--   font-family: Helvetica, Geneva, Arial,
-          SunSans-Regular, sans-serif ;-->
-
 color: #093970;
 }
 
@@ -35,8 +32,8 @@ color: #093970;
   height: 90px;
   overflow: hidden;
   background: #231E78;
-<!-- background: #6E935C; -->
-<!--  background: #699929;-->
+
+  <!-- background-image: url(bakside2.jpg); -->
 
 }
 
@@ -51,10 +48,8 @@ color: #093970;
   height: 40px;
   overflow: hidden;
   background: #231E78; 
+<!--  background-image: url(bakside2.jpg); -->
   color: #C7260C; 
-
-<!-- background: #447D34; -->
-<!--  background: #699929;-->
 
 }
 
@@ -194,7 +189,7 @@ function feedback(msg)
     This is product 1
  </div>
 -->
-<div id="header">
+<div id="header" >
 
 <div class="title">
 <img src="http://giellatekno.uit.no/oahpa/images/oahpa.png" alt="OAHPA!"/>
@@ -250,7 +245,14 @@ function feedback(msg)
 	    <li><a href="/oahpa/morfa_s/">{% trans 'Nouns' %}</a></li>
 	    <li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>
 	    <li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li>
-    <li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>
+	    <li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>
+	  </ul>
+	  <a href="/oahpa/cmorfa/">{% trans 'Contextual Morfa' %}</a><br/>
+	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
+	    <li><a href="/oahpa/cmorfa_s/">{% trans 'Nouns' %}</a></li>
+	    <li><a href="/oahpa/cmorfa_v/">{% trans 'Verbs' %}</a></li>
+	    <li><a href="/oahpa/cmorfa_a/">{% trans 'Adjectives' %}</a></li>
+	    <li><a href="/oahpa/cmorfa_l/">{% trans 'Numerals' %}</a></li>
 	  </ul>
 	  <a href="/oahpa/vasta/">{% trans 'Vasta' %}</a><br/>
 	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
