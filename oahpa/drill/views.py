@@ -12,7 +12,6 @@ from qagame import *
 class Info:
     pass
 
-
 class Gameview:
 
     def init_settings(self):
@@ -33,7 +32,10 @@ class Gameview:
             'PRT'   : _('past'),\
             'COND'  : _('conditional'), \
             'IMPRT' : _('imperative'),\
-            'POT'   : _('potential') }
+            'POT'   : _('potential'), \
+            'V-COND'  : _('conditional'), \
+            'V-IMPRT' : _('imperative'),\
+            'V-POT'   : _('potential') }
         
     def syll_settings(self,settings_form):
 
@@ -53,14 +55,16 @@ class Gameview:
         count=0
         correct=0
 
-        if request.method == 'POST':
+        if request and request.method == 'POST':
             data = request.POST.copy()
-            
+
+            print request.POST
             # Settings form is checked and handled.
             settings_form = MorphForm(request.POST)
             for k in settings_form.data.keys():
                 self.settings[k] = settings_form.data[k]
-
+                print k, settings_form.data[k]
+                
             self.syll_settings(settings_form)
             if settings_form.data.has_key('book'):
                 self.settings['book'] = settings_form.books[settings_form.data['book']]
@@ -91,19 +95,23 @@ class Gameview:
         # If there is no POST data, default settings are applied
         else:
             settings_form = MorphForm()
-
+            
             # Find out the default data for this form.
             for k in settings_form.default_data.keys():
                 if not self.settings.has_key(k):
                     self.settings[k] = settings_form.default_data[k]
-
             self.settings['book'] = settings_form.books[settings_form.default_data['book']]
 
-            self.settings['gametype'] = "bare"
-            print self.settings
-            game = BareGame(self.settings)
-
+            if self.settings['gametype'] == "bare":
+                game = BareGame(self.settings)        
+            else:
+                # Contextual morfa
+                game = QAGame(self.settings)
+                game.init_tags()
+                
             game.new_game()
+
+
             
         if self.settings['pos'] == "N":
             self.settings['gamename'] = self.gamenames[self.settings['case']]
@@ -114,13 +122,14 @@ class Gameview:
                 self.settings['gamename'] = self.gamenames[self.settings['num_context']]                
         if self.settings['pos'] == "V":
             if self.settings['gametype'] == "bare":
-                self.settings['gamename'] = self.gamenames[self.settings['vtype_bare']]
-            else:
                 self.settings['gamename'] = self.gamenames[self.settings['vtype']]
+            else:
+                self.settings['gamename'] = self.gamenames[self.settings['vtype_context']]
         if self.settings['pos'] == "A":
             self.settings['gamename'] = self.gamenames[self.settings['adjcase']]
 
-        print self.settings['gamename']
+        #print self.settings['gamename']
+
 
         c = Context({
             'settingsform': settings_form,
@@ -133,14 +142,12 @@ class Gameview:
             })
         return c
 
-
-
 def mgame_n(request):
 
     mgame = Gameview()
     mgame.init_settings()
     mgame.settings['pos'] = "N"
-
+    mgame.settings['gametype'] = "bare"
 
     c = mgame.create_mgame(request)
     return render_to_response('mgame_n.html', c)
@@ -151,7 +158,8 @@ def mgame_v(request):
     mgame = Gameview()
     mgame.init_settings()
     mgame.settings['pos'] = "V"
-
+    mgame.settings['gametype'] = "bare"
+    
     c = mgame.create_mgame(request)
     return render_to_response('mgame_v.html', c)
 
@@ -160,6 +168,7 @@ def mgame_a(request):
     mgame = Gameview()
     mgame.init_settings()
     mgame.settings['pos'] = "A"
+    mgame.settings['gametype'] = "bare"
     
     c = mgame.create_mgame(request)
     return render_to_response('mgame_a.html', c)
@@ -169,7 +178,52 @@ def mgame_l(request):
     mgame = Gameview()
     mgame.init_settings()
     mgame.settings['pos'] = "Num"
+    mgame.settings['gametype'] = "bare"
+    
+    c = mgame.create_mgame(request)
+    return render_to_response('mgame_l.html', c)
 
+
+### Contextual morfas
+
+def cmgame_n(request):
+
+    mgame = Gameview()
+    mgame.init_settings()
+    mgame.settings['pos'] = "N"
+    mgame.settings['gametype'] = "context"
+    
+    c = mgame.create_mgame(request)
+    return render_to_response('mgame_n.html', c)
+
+
+def cmgame_v(request):
+
+    mgame = Gameview()
+    mgame.init_settings()
+    mgame.settings['pos'] = "V"
+    mgame.settings['gametype'] = "context"
+    
+    c = mgame.create_mgame(request)
+    return render_to_response('mgame_v.html', c)
+
+def cmgame_a(request):
+
+    mgame = Gameview()
+    mgame.init_settings()
+    mgame.settings['pos'] = "A"
+    mgame.settings['gametype'] = "context"
+    
+    c = mgame.create_mgame(request)
+    return render_to_response('mgame_a.html', c)
+
+def cmgame_l(request):
+
+    mgame = Gameview()
+    mgame.init_settings()
+    mgame.settings['pos'] = "Num"
+    mgame.settings['gametype'] = "context"
+    
     c = mgame.create_mgame(request)
     return render_to_response('mgame_l.html', c)
 
