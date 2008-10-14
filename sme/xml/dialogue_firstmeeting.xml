@@ -33,13 +33,13 @@
 	<grammar pos="Sg+Loc"/>
 	  <id>dia-target</id>
       </element> </pos>
-<default link="closing"/>
+<default link="presentation_closing"/>
 </question>
 
-<utt type="closing">Doppe sáhttá leat buorre orrut.</utt>
+<utt type="closing" name="presentation_closing">Doppe sáhttá leat buorre orrut.</utt>
 </topic>
 
-<topic name="Work_or_school">
+<topic name="work_or_school">
 <utt type="comment">Mun lean 40 jagi boaris.</utt>
 
 <question>
@@ -62,32 +62,32 @@
 <question>
 <utt type="question" name="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla">Váccát go vuođđoskuvlla vai joatkkaskuvlla?</utt>
 <neg link="Makkár_skuvlla_don_váccát_dalle"/> 
-<default link="closing"/>
+<default link="work_or_school_closing"/>
 </question>
 
 <question>
 <utt type="question" name="Leat_go_barggus">Leat go barggus?</utt>
 <!-- Do you work??-->
 <pos link="Makkár_bargu_dus_lea"/>
-<default link="closing"/>
+<default link="work_or_school_closing"/>
 </question>
 
 <question>
 <utt type="question" name="Makkár_bargu_dus_lea">Makkár bargu dus lea?</utt>
 <!-- What kind of job do you have?-->
-<default link="closing"/>
+<default link="work_or_school_closing"/>
 </question>
 
 <question>
 <utt type="question" name="Leat_go_álgán_skuvlii">Leat go álgán skuvlii?</utt>
-<default link="closing"/>
+<default link="work_or_school_closing"/>
 </question>
 
-<utt type="closing" name="">Já nu!</utt>
+<utt type="closing" name="work_or_school_closing">Já nu!</utt>
 </topic>
 
 <!-- This part is only for adults. -->
-<topic name="car">
+<topic name="biila">
 <utt type="comment">Mus lea hui buorre biila - Toyota Jaris.</utt>
 
 <question>
@@ -124,7 +124,7 @@
 </question>
 
  
-<utt type="closing">Mun lean hui duhtavaš iežan biillain.</utt>
+<utt type="closing" name="biila_closing">Mun lean hui duhtavaš iežan biillain.</utt>
 </topic>
 
 
