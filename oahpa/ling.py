@@ -714,6 +714,8 @@ class Questions:
         # Find out different values for variables.
         # Others can be listed, but soggi is searched at the moment.
         rimes={}
+        attrsuffixs={}
+        compsuffixs={}
         #soggis={}
         wordforms = tree.getElementsByTagName("stems")[0]
         for el in wordforms.getElementsByTagName("stem"):
@@ -721,6 +723,14 @@ class Questions:
                 rime = el.getAttribute("rime")
                 if rime=="0": rime = "norime"
                 rimes[rime] = 1
+            if el.getAttribute("attrsuffix"):
+                attrsuffix = el.getAttribute("attrsuffix")
+                if attrsuffix=="0": rime = "noattr"
+                attrsuffixs[attrsuffix] = 1
+            if el.getAttribute("compsuffix"):
+                compsuffix = el.getAttribute("compsuffix")
+                if compsuffix=="0": rime = "nocomp"
+                compsuffixs[compsuffix] = 1
 
         #    if el.getAttribute("soggi"):
         #        soggi = el.getAttribute("soggi")
@@ -728,8 +738,11 @@ class Questions:
 
         #soggis[""] = 1
         #soggis = {}
+        #attrsuffixs = ['noattr','a','s','es','os','is','i>e','u>o']
+
         soggis = ['i', 'a', 'u', 'e', 'o','empty']
-        attrsuffixs = ['noattr','a','s','es','os','is','i>e','u>o']
+        attrsuffixs["noattr"] = 1
+        compsuffixs["empty"] = 1
         rimes["norime"] = 1
         diphthongs = ["yes","no"]
         stems = ["bisyllabic","trisyllabic","contracted"]
@@ -788,7 +801,7 @@ class Questions:
             if el.getAttribute("attrsuffix"):
                 attrsuffix=el.getAttribute("attrsuffix")
                 if attrsuffix: ftempl.attrsuffix = [ attrsuffix ]
-            if not attrsuffix: ftempl.attrsuffix = attrsuffixs
+            if not attrsuffix: ftempl.attrsuffix = attrsuffixs.keys()
 
             if el.getAttribute("rime"):
                 rime=el.getAttribute("rime")
