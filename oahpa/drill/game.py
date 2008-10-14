@@ -45,12 +45,14 @@ class Game:
             form, word_id = self.create_form(db_info, i, 0)
 
             # Do not generate same question twice
-            if word_id in set(word_ids): continue
-            else:
-                self.form_list.append(form)
-                word_ids.append(word_id)
+            if word_id:
+                if word_id in set(word_ids): continue
+                else: word_ids.append(word_id)
+
+            self.form_list.append(form)
             i=i+1
-        
+
+            
         if not self.form_list:
             # No questions found, so the quiz_id must have been bad.
             raise Http404('Invalid quiz id.')
@@ -120,6 +122,8 @@ class Game:
 
 
             new_db_info = {}
+
+            print n, "GAMETYPE", self.settings['gametype']
             if self.settings.has_key('gametype') and (self.settings['gametype'] == 'qa' or self.settings['gametype'] == 'context'):
                 new_db_info = self.get_db_info(db_info)
             if not new_db_info:
@@ -206,20 +210,20 @@ class BareGame(Game):
             else:
                 case = ""
         
-        if pos == "V" and self.settings['gametype'] == "bare":
-            if self.settings['vtype_bare'] == "PRS":
+        if pos == "V" and self.settings.has_key('vtype'):
+            if self.settings['vtype'] == "PRS":
                 mood = "Ind"
                 tense = "Prs"
-            if self.settings['vtype_bare'] == "PRT":
+            if self.settings['vtype'] == "PRT":
                 mood = "Ind"
                 tense = "Prt"
-            if self.settings['vtype_bare'] == "COND":
+            if self.settings['vtype'] == "COND":
                 mood = "Cond"
                 tense = "Prs"
-            if self.settings['vtype_bare'] == "IMPRT":
+            if self.settings['vtype'] == "IMPRT":
                 mood = "Imprt"
                 tense = "Prs"
-            if self.settings['vtype_bare'] == "POT":
+            if self.settings['vtype'] == "POT":
                 mood = "Pot"
                 tense = "Prs"
 
@@ -232,7 +236,7 @@ class BareGame(Game):
         number = ["Sg","Pl",""]
         if case=="Nom": number = ["Pl"]
         
-        print syll, books, pos, case, tense, mood, attributive, grade
+        #print syll, books, pos, case, tense, mood, attributive, grade
 
         tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade=grade) & Q(number__in=number)).count()
             
@@ -331,10 +335,10 @@ class QuizzGame(Game):
             frequency=['']
             geography=['']          
 
-        print semtypes
-        print frequency
-        print geography
-        print books
+        #print semtypes
+        #print frequency
+        #print geography
+        #print books
         while True:
             # smenob
             if self.settings['transtype'] == "smenob":            
