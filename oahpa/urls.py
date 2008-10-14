@@ -13,6 +13,10 @@ urlpatterns = patterns('',
     (r'^oahpa/morfa_v/$', 'oahpa.drill.views.mgame_v'),
     (r'^oahpa/morfa_a/$', 'oahpa.drill.views.mgame_a'),
     (r'^oahpa/morfa_l/$', 'oahpa.drill.views.mgame_l'),
+    (r'^oahpa/cmorfa_s/$', 'oahpa.drill.views.cmgame_n'),
+    (r'^oahpa/cmorfa_v/$', 'oahpa.drill.views.cmgame_v'),
+    (r'^oahpa/cmorfa_a/$', 'oahpa.drill.views.cmgame_a'),
+    (r'^oahpa/cmorfa_l/$', 'oahpa.drill.views.cmgame_l'),                       
     (r'^oahpa/leksa/$', 'oahpa.drill.views.quizz'),
     (r'^oahpa/leksa_n/$', 'oahpa.drill.views.quizz_n'),
     (r'^oahpa/logut/$', 'oahpa.drill.views.numgame'),
@@ -26,7 +30,7 @@ urlpatterns = patterns('',
         
 
     # Uncomment this for admin:
-    (r'^admin/drill/report/$', 'drill.admin_views.report'),
+    #(r'^admin/drill/report/$', 'drill.admin_views.report'),
     (r'^admin/(.*)', admin.site.root),
     #(r'^admin/', include('django.contrib.admin.urls')),
 )
