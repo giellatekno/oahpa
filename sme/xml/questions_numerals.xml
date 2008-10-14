@@ -540,26 +540,26 @@
 
   <q>
     <qtype>COLL-NUM</qtype>
-   <question>
+    <question>
       <text>Gallásiin SUBJ MAINV juohkit daid ruđaid</text>
-    <element id="MAINV">    
+      <element id="MAINV">    
 	<id>fertet</id> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>         
-	</element>
-    <element id="SUBJ">    
+      </element>
+      <element id="SUBJ">    
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
-	</element>
+      </element>
     </question>
     <answer> 
       <text>SUBJ MAINV juohkit ruđaid COLL-NUM</text>
-    <element id="COLL-NUM" task="yes">    
+      <element id="COLL-NUM" task="yes">    
 	<grammar tag="N+Num+Sg+Com"/>         
 	<sem class="COLL-NUM"/>
-	</element>
+      </element>
     </answer>
   </q>
 
-
+<!--
   <q>
     <qtype>COLL-NUM</qtype>
    <question>
@@ -584,7 +584,7 @@
 	</element>
     </answer>
   </q>
-
+-->
 <!-- For Morfa, but also for QA with any COLL-NUM: -->  
   <q>
     <qtype>COLL-NUM</qtype>
