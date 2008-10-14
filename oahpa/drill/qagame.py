@@ -21,11 +21,9 @@ class QAGame(Game):
         Initialize the grammatical information.
         This information should be moved to parameters
         """
-        self.num_fields = 3
-        #self.syntax = ('N-ILL','N-LOC','N-ACC','N-GEN','N-COM','N-ESS','OBJ','NOUN','MAINV2','NEG','INTERR')
-        self.syntax =('MAINV','SUBJ','ANSWERSUBJECT','CONNEG','PRFPRC')
-        self.qtype_verbs = set(['MAINV','V-COND','V-IMPRT','V-GO'])
-        self.numerals = ['NUM-ATTR']
+        self.num_fields = 6
+        self.syntax =('MAINV','SUBJ')
+        self.qtype_verbs = set(['V-COND','V-IMPRT','V-POT', 'PRS','PRT'])
 
         # Default tense and mood for testing
         self.tense = "Prs"
@@ -53,11 +51,21 @@ class QAGame(Game):
 
     def get_qword(self, qelement, tag_el):
 
+        #if self.settings.has_key('syll'):
+        #    syll = self.settings['syll']
+        #if self.settings.has_key('book'):
+        #    books=self.settings['book']
+        #print syll, books
+
         max = 50
         i=0
         form_list=None
         while not form_list and i<max:
             i= i+1
+
+            #w_count=Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(stem__in=syll) & Q(source__name__in=books)).count()
+            #word_el=Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)]
+
             word_count = WordQElement.objects.filter(qelement=qelement).count()
             qw_el = WordQElement.objects.filter(qelement=qelement)[randint(0,word_count-1)]
             word_el = qw_el.word
@@ -96,16 +104,12 @@ class QAGame(Game):
 
     def get_elements(self, question_element, identifier):
 
-        if self.gametype:
-            if QElement.objects.filter(Q(question=question_element) & \
-                                       Q(identifier=identifier) &\
-                                       Q(gametype=self.gametype)).count()>0:
-                return QElement.objects.filter(Q(question=question_element) & \
-                                               Q(identifier=identifier) &\
-                                               Q(gametype=self.gametype))
+        if QElement.objects.filter(Q(question=question_element) & \
+                                   Q(identifier=identifier)).count()>0:
+            return QElement.objects.filter(Q(question=question_element) & \
+                                           Q(identifier=identifier))
 
-        else:
-            print "NO GAMETYPE!"
+
         return None
 
     def generate_question(self, question, qtype):
@@ -180,6 +184,8 @@ class QAGame(Game):
                     if qwords.has_key('SUBJ') and qwords['SUBJ'].has_key('number'):
                         subjnumber=qwords['SUBJ']['number']
                         v_number = self.SVPN[subjnumber]
+                        print subjnumber
+                        print v_number
                         if qtype in self.qtype_verbs:
                             mainv_tags = mainv_el.tags.filter(Q(personnumber=v_number))
                         else:
@@ -202,6 +208,7 @@ class QAGame(Game):
                     return None
                     #qwords['MAINV'] = { 'fullform' : ["MAINV"] }
                 else:
+                    mainv_word['number'] = tag_el.personnumber
                     qwords['MAINV'] = mainv_word
 
             if not mainv_word:
@@ -239,48 +246,54 @@ class QAGame(Game):
         return qwords
 
 
-    def generate_answers_subj(self, answer, question, awords, qwords, qtype):
-        
-        subj=""
-        if awords.has_key('ANSWERSUBJECT'): subj='ANSWERSUBJECT'
-        else: subj='SUBJ'
+    def generate_answers_subject(self, answer, question, awords, qwords, qtype):
         
         words=[]
-        word_ids=[]
+        word_id=""
         a_number=""
+        subj_el=None
+        subjword=None
 
-        # If there is subject in the question, there is agreement.
-        if qwords.has_key('SUBJ'):
-            qword = qwords['SUBJ']
-            subjtag_id=qword['tag']
-            subjtag = Tag.objects.get(id=subjtag_id)
+        copy_syntax = ""
+        # If there is subject in the question, there is generally agreement.
+        subj_elements = self.get_elements(answer,"SUBJ")
+        if subj_elements:
+            subj_el = subj_elements[0]            
+        copy_id=subj_el.copy_id;
+        if copy_id:
+            subj_copy = QElement.objects.filter(id=copy_id)[0]
+            copy_syntax = subj_copy.syntax
+        
+            if qwords.has_key(copy_syntax):
+                qword = qwords[copy_syntax]
+                subjtag_id=qword['tag']
+                subjtag = Tag.objects.get(id=subjtag_id)
+                subjword_id=qword['word']
+                
+                if subjtag.pos=="Pron":
+                    subjnumber = subjtag.personnumber
+                else:
+                    subjnumber = subjtag.number
 
-            # Take into account that answer may start with pronoun!!!
-            if subjtag.pos=="Pron":
-                subjnumber = subjtag.personnumber
-            else:
-                subjnumber = subjtag.number
+                a_number=self.QAPN[subjnumber]
+                asubjtag = subjtag.string.replace(subjnumber,a_number)
+                asubjtag_el = Tag.objects.get(string=asubjtag)
 
-            a_number=self.QAPN[subjnumber]
-            asubjtag = subjtag.string.replace(subjnumber,a_number)
-            asubjtag_el = Tag.objects.get(string=asubjtag)
+                # If pronoun, get the correct form
+                if self.PronPNBase.has_key(a_number):
+                    pronbase = self.PronPNBase[a_number]
+                    words = self.get_words(None, asubjtag_el, pronbase)
 
-            # If pronoun, get the correct form
-            if self.PronPNBase.has_key(a_number):
-                pronbase = self.PronPNBase[a_number]
-                words = self.get_words(None, asubjtag_el, pronbase)
-
-                for word in words:
-                    word['number'] = a_number
+                    for word in words:
+                        word['number'] = a_number
                     
-            if not words:
-                words.append(qwords['SUBJ'])
+                if not words and not len(words)>0:
+                    words = self.get_words(None, asubjtag_el, None, subjword_id)
+                    words[0]['number'] = a_number
 
         # Check if there are elements specified for the answer subject.
         else:
-            subj_elements = self.get_elements(answer,subj)
-            if subj_elements:
-                subj_el = subj_elements[randint(0, len(subj_elements)-1)]                
+            if subj_el:
                 tag_el_count = subj_el.tags.count()
                 if tag_el_count > 0:
                     tag_el = subj_el.tags.all()[randint(0, tag_el_count-1)]
@@ -290,18 +303,13 @@ class QAGame(Game):
                 else:
                     a_number = tag_el.number 
 
-                # No word specified.                
-                info = { 'qelement': subj_el.id, 'tag' : tag_el.id, 'number' : a_number }
-                word = info
-                words.append(word)
+                info = { 'qelement': subj_el.id, 'word' : subjword, 'tag' : tag_el.id, 'number' : a_number }
+                words.append(info)
                 
                 for word in words:
                     word['number'] = a_number
 
-        # Copy if subject was answersubj, copy information to SUBJ to ensure agreement.
-        awords[subj] = words[:]
-        if not subj == 'SUBJ':
-            awords['SUBJ'] = words[:]
+        awords['SUBJ'] = words[:]
 
         return awords
     
@@ -309,40 +317,57 @@ class QAGame(Game):
 
         mainv_elements = self.get_elements(answer,eltype)
 
+        mainv_word=None
         mainv_words = []
         mainv_tag = None
         mainv_tags = []
+        va_number = None
 
+        copy_syntax = ""
+        # Find content elements.
+        if mainv_elements:
+            mainv_el = mainv_elements[0]
+            if mainv_el.copy_id:
+                copy_id = mainv_el.copy_id
+                copy_element = QElement.objects.get(id=copy_id)
+                copy_syntax = copy_element.identifier
+        
         # It is assumed that all subjects cause the same inflection
         # for verb, so it does not matter which subject is selected.
-        if awords.has_key('SUBJ') and len(awords['SUBJ']) > 0:
+        if awords.has_key('SUBJ') and len(awords['SUBJ'])>0:
             # mainverb number depends on the number of the subject.
             asubj = awords['SUBJ'][0]
             a_number=asubj['number']
             va_number=self.SVPN[a_number]
+        else:
+            if qwords.has_key(copy_syntax):
+                qmainv = qwords[copy_syntax]
+                q_number = qmainv['number']
+                if q_number:
+                    va_number = self.QAPN[q_number]
 
-            # Take qwords mainverb tag as basis
-            # If there is no subject, then the number of the question
-            # mainverb determines the number.
-            if qwords.has_key('MAINV') and qwords['MAINV']:
-                qmainv = qwords['MAINV']
-                
-                qmainvtag_id = qmainv['tag']
-                qmainvtag = Tag.objects.get(id=qmainvtag_id)
-                qmainvtag_string = qmainvtag.string
-                v_number = qmainvtag.personnumber
+        # If there is no subject, then the number of the question
+        # mainverb determines the number.
+        if qwords.has_key(copy_syntax):
+
+            qmainv = qwords[copy_syntax]
+            mainv_word = qwords[copy_syntax]['word']
+
+            qmainvtag_id = qmainv['tag']
+            qmainvtag = Tag.objects.get(id=qmainvtag_id)
+            qmainvtag_string = qmainvtag.string
+            v_number = qmainvtag.personnumber
+            if va_number:
                 amainvtag_string = qmainvtag_string.replace(v_number,va_number)
+            else:
+                amainvtag_string = qmainvtag_string
                 
-                mainv_tag = Tag.objects.get(string=amainvtag_string)
-                mainv_tags.append(mainv_tag)
+            mainv_tag = Tag.objects.get(string=amainvtag_string)
+            mainv_tags.append(mainv_tag)
             
-        # Mainverb word if needed:
-        if qwords.has_key('MAINV'):
-            #print "ON VERBI"
-            mainv_word = qwords['MAINV']['word']
 
         # If the main verb is under question, then generate full list.
-        if qtype in self.qtype_verbs:
+        if qtype in self.qtype_verbs or (answer.task and answer.task == "MAINV"):
             mainv_words = []
             if mainv_elements:
                 for mainv_el in mainv_elements:
@@ -362,12 +387,12 @@ class QAGame(Game):
         # Otherwise take only one element
         else:
             if mainv_elements:
-                mainv_element = mainv_elements[randint(0, len(elements)-1)]                
+                mainv_element = mainv_elements[0]
                 tag_el_count = mainv_element.tags.count()
                 if tag_el_count > 0:
                     mainv_tags = mainv_el.tags.filter(Q(personnumber=va_number))
                 for tag in mainv_tags:
-                    info = { 'qelement' : mainv_element.id, 'tag' : mainv_tag.id }
+                    info = { 'qelement' : mainv_element.id, 'word' : mainv_word, 'tag' : tag.id }
                     mainv_words.append(info)
 
             else:
@@ -380,84 +405,93 @@ class QAGame(Game):
 
         #print "mainverb words.. ", mainv_words
         awords[eltype] = mainv_words
-            
+
         return awords
 
     def generate_syntax(self, answer, question, awords, qwords, qtype, s):
 
+        print "syntax", s
+        if s=="SUBJ" or s=="MAINV": return awords
+
         if not awords.has_key(s):
             awords[s] = []
 
-        if (s=='MAINV' and qtype == "MAINV") or s=='NEG':
-            return awords
-
-        # In these cases, the question mainverb is normally
-        # copied and inflected.
         word_id=None
-        if s=="PRFPRC" or s=="CONNEG":
-            # Mainverb word if needed:
-            if qwords.has_key('MAINV'):
-                word_id = qwords['MAINV']['word']
         
         tag_elements = None
-        #print "generating syntax", s
-        # Temporary array for words
         swords = []
         elements = self.get_elements(answer,s)
         if elements:
-            for element in elements:
-                if element.agreement:
-                    agr_id = element.agreement_id
-                    agr_el = QElement.objects.get(id=agr_id)
-                    agr_syntax = agr_el.identifier
-                    if qwords.has_key(agr_syntax):
-                        qword = qwords[agr_syntax]
-                        if qword.has_key('tag'):
-                            agr_tag_id = qword['tag']
-                            agr_tag = Tag.objects.get(id=agr_tag_id)
-                            if agr_tag.personnumber:
-                                tag_count = element.tags.filter(personnumber=agr_tag.personnumber).count()
-                                if tag_count>0:
-                                    tag_elements = element.tags.filter(personnumber=agr_tag.personnumber)
-
-                            if agr_tag.number:
-                                tag_count= element.tags.filter(number=agr_tag.number).count()
-                                if tag_count>0:
-                                    tag_elements = element.tags.filter(number=agr_tag.number)
+            element = elements[0]
+            if element.copy_id:
+                copy_id = element.copy_id
+                copy_element = QElement.objects.get(id=copy_id)
+                copy_syntax = copy_element.identifier
+                if qwords.has_key(copy_syntax):
+                    qword = qwords[copy_syntax]
+                    if qword.has_key('word'):
+                        word_id=qword['word']
+            
+            if element.agreement:
+                agr_id = element.agreement_id
+                agr_el = QElement.objects.get(id=agr_id)
+                agr_syntax = agr_el.identifier
+                if qwords.has_key(agr_syntax):
+                    qword = qwords[agr_syntax]
+                    if qword.has_key('tag'):
+                        agr_tag_id = qword['tag']
+                        agr_tag = Tag.objects.get(id=agr_tag_id)
+                        if agr_tag.personnumber:
+                            anumber = agr_tag.personnumber
+                        else:
+                            anumber = agr_tag.personnumber
+                        tag_count = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber)).count()
+                        if tag_count>0:
+                            tag_elements = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber))
                                 
-                # if no agreement, take all tags.
-                else:
-                    tag_count = element.tags.count()
-                    if tag_count > 0:
-                        tag_elements = element.tags.all()
-
-                # Take word forms for all tags
-                if tag_elements:
-                    for tag_el in tag_elements:
-
-                        # Special treatment for numerals.
-                        if (qtype == "NUM-ATTR" and element.identifier=="NUM-ATTR"):
+            # if no agreement, take all tags.
+            else:
+                tag_count = element.tags.count()
+                if tag_count > 0:
+                    tag_elements = element.tags.all()
+                    
+            # Take word forms for all tags
+            if tag_elements:
+                for tag_el in tag_elements:                    
+                    # Special treatment for numerals.
+                    if (qtype == "NUM-ATTR" and element.identifier=="NUM-ATTR"):
+                        max = 50
+                        i=0
+                        info=None
+                        while not info and i<max:
+                            i= i+1
                             w_count=Word.objects.filter(Q(pos="Num")).count()
                             word_id=Word.objects.filter(Q(pos="Num"))[randint(0,w_count-1)].id
-                            info = {'word' : word_id, 'tag' : tag_el.id  }                            
-                            swords.append(info)
+                            if Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id)).count()>0:
+                                fullform = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id))[0].fullform
+                                info = {'word': word_id, 'tag' : tag_el.id, 'fullform' : [ fullform ] }
 
+                        swords.append(info)
+
+                    else:
+                        if not word_id:
+                            info = self.get_qword(element, tag_el)
                         else:
                             info = { 'qelement' : element.id, 'word' : word_id, 'tag' : tag_el.id  }
-                            swords.append(info)
+                        swords.append(info)
 
         awords[s] = swords
-        
+
         return awords
 
-    def get_db_info(self, db_info,default_qtype=None):
+    def get_db_info(self, db_info,default_qtype=None,default_qid=None):
 
         anslist=[]
         pos=self.settings['pos']
 
-        #print self.gametype
         # Select random question type.
-        if not default_qtype:
+        if default_qtype: qtype = default_qtype
+        else:
             if pos == "N":
                 if self.gametype == 'qa':
                     qtype = self.settings['allcase'][randint(0, len(self.settings['allcase'])-1)]
@@ -465,20 +499,22 @@ class QAGame(Game):
                     qtype = self.settings['case']
             if pos == "V":
                 if self.gametype == 'qa':
-                    qtype = self.settings['allcase'][randint(0, len(self.settings['allcase'])-1)]
+                    qtype = self.settings['vtype_context'][randint(0, len(self.settings['vtype_bare'])-1)]
                 else:                    
-                    qtype=self.settings['vtype']
+                    qtype=self.settings['vtype_context']
+                    #qtype="V-POT"
             if pos == "Num":
                 if self.gametype == 'qa':
-                    qtype = self.settings['allcase'][randint(0, len(self.settings['allcase'])-1)]
+                    qtype = self.settings['num_context'][randint(0, len(self.settings['num_context'])-1)]
                 else:                                            
                     qtype=self.settings['num_context']
-        #if pos == "A":
+            if pos == "A":
+                if self.gametype == 'qa':
+                    qtype = self.settings['adj_context'][randint(0, len(self.settings['num_context'])-1)]
+                else:                
+                    qtype=self.settings['adj_context']
 
-        if default_qtype: qtype = default_qtype
- 
-        #print "QTYPE: " + qtype
-
+        print qtype
         # If the question id is received from the interface, use that question info
         # Otherwise select random question
         qwords = {}
@@ -486,20 +522,28 @@ class QAGame(Game):
             question = Question.objects.get(id=db_info['question_id'])
             qwords=db_info['qwords']
         else:
-            q_count=Question.objects.filter(qtype=qtype).count()
-            max = 50
-            i=0
-            while not qwords and i<max:
-                i = i+1
-                qnum = randint(0, q_count-1)
-                # TESTING
-                #qnum = 3
-                #print "qnum:", qnum
-                question = Question.objects.filter(qtype=qtype)[qnum]
-                if question.gametype and not question.gametype == self.gametype: continue
+            if default_qid:
+                question = Question.objects.get(qid=default_qid)                
                 qwords = None
                 qwords= self.generate_question(question, qtype)
-            db_info['qwords'] = qwords
+                db_info['qwords'] = qwords
+            else:
+                q_count=Question.objects.filter(qtype=qtype).count()
+                max = 50
+                i=0
+                while not qwords and i<max:
+                    i = i+1
+                    qnum = randint(0, q_count-1)
+                    # TESTING
+                    #qnum = 0
+                    print "qnum:", qnum
+                    question = Question.objects.filter(qtype=qtype)[qnum]
+                    print question.string
+
+                    if question.gametype and not question.gametype == self.gametype: continue
+                    qwords = None
+                    qwords= self.generate_question(question, qtype)
+                    db_info['qwords'] = qwords
 
         qtext = question.string
         #print "QWORDS1", qwords
@@ -523,7 +567,7 @@ class QAGame(Game):
             atext=answer.string
             words_strings = set(atext.split())
 
-            #print words_strings
+            print words_strings
             
             #Initialize each element identifier
             for w in atext.split():
@@ -536,20 +580,17 @@ class QAGame(Game):
 
             # Subject and main verb are special cases:
             # There is subject-verb agreement and correspondence with question elements.
-            if 'SUBJ' in words_strings or 'ANSWERSUBJECT' in words_strings:
-                awords = self.generate_answers_subj(answer, question, awords, qwords, qtype)
+            if 'SUBJ' in words_strings:
+                print "generating subject.."
+                awords = self.generate_answers_subject(answer, question, awords, qwords, qtype)
 
             if 'MAINV' in words_strings:
+                print "generating mainv.."
                 awords = self.generate_answers_mainv(answer, question, awords, qwords, qtype, 'MAINV')
-            #else:
-            #    if 'MAINV2' in words_strings:
-            #        awords = self.generate_answers_mainv(answer, question, awords, qwords, qtype, 'MAINV2')
-            if 'NEG' in words_strings:
-                awords = self.generate_answers_mainv(answer, question, awords, qwords, qtype, 'NEG')
-                
+
+
             # Rest of the syntax
             for s in words_strings:
-                if s in set(self.syntax): continue
                 awords = self.generate_syntax(answer, question, awords, qwords, qtype, s)
 
         db_info['awords'] = awords
@@ -565,14 +606,14 @@ class QAGame(Game):
 
         question = Question.objects.get(Q(id=db_info['question_id']))
         answer = Question.objects.get(Q(id=db_info['answer_id']))
-        #print "awords:", db_info['awords']
-        #print "awords ...................."
-        #print "qwords:", db_info['qwords']
-        #print "qwords ...................."
+        print "awords:", db_info['awords']
+        print "awords ...................."
+        print "qwords:", db_info['qwords']
+        print "qwords ...................."
         form = (QAQuestion(db_info['gametype'], question, answer, \
                            db_info['qwords'], db_info['awords'],\
                            db_info['userans'], db_info['correct'], data, prefix=n))
 
-        self.form_list.append(form)
-
+        #self.form_list.append(form)
+        return form, None
 
