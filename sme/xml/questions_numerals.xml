@@ -547,13 +547,13 @@
 	<grammar tag="V+Ind+Prs+Person-Number"/>         
       </element>
       <element id="SUBJ">    
-	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
+	<grammar pos="Pron"/>         
       </element>
     </question>
     <answer> 
       <text>SUBJ MAINV juohkit ruđaid COLL-NUM</text>
       <element id="COLL-NUM" task="yes">    
-	<grammar tag="N+Num+Sg+Com"/>         
+	<grammar tag="Num+Sg+Com"/>         
 	<sem class="COLL-NUM"/>
       </element>
     </answer>
@@ -572,14 +572,14 @@
     <answer> 
       <text>COLL-NUM bohtet</text>
       <element id="COLL-NUM" task="yes">    
-	<grammar tag="N+Num+Sg+Nom"/>         
+	<grammar tag="Num+Sg+Nom"/>         
 	<sem class="COLL-NUM-NOT-DU"/>
 	</element>
     </answer>
     <answer> 
       <text>COLL-NUM boahtiba</text>
       <element id="COLL-NUM" task="yes">    
-	<grammar tag="N+Num+Sg+Nom"/>         
+	<grammar tag="Num+Sg+Nom"/>         
 	<sem class="COLL-NUM-DU"/>
 	</element>
     </answer>
@@ -594,7 +594,7 @@
     <answer> 
       <text>Oainnán COLL-NUM</text>
       <element id="COLL-NUM" task="yes">    
-	<grammar tag="N+Num+Sg+Acc"/>         
+	<grammar tag="Num+Sg+Acc"/>         
 	<sem class="COLL-NUM"/>
 	</element>
     </answer>
@@ -617,7 +617,7 @@
    <answer> 
      <text>Dan COLL-NUM</text>
      <element id="COLL-NUM" task="yes">    
-       <grammar tag="N+Num+Sg+Gen"/>         
+       <grammar tag="Num+Sg+Gen"/>         
        <sem class="COLL-NUM"/>
      </element>
    </answer>
@@ -629,7 +629,7 @@
     <question>
       <text>Gallásii SUBJ MAINV ságaid</text>
       <element id="SUBJ">    
-	<grammar tag="Pron+Pers+Person-Number"/>         
+	<grammar pos="Pron"/>         
       </element>
       <element id="MAINV">    
 	<grammar tag="V+Ind+Prs+Person-Number"/>         
@@ -639,7 +639,7 @@
     <answer> 
       <text>SUBJ MAINV daid COLL-NUM</text>
       <element id="COLL-NUM" task="yes">    
-	<grammar tag="N+Num+Sg+Ill"/>         
+	<grammar tag="Num+Sg+Ill"/>         
 	<sem class="COLL-NUM"/>
 	</element>
     </answer>
@@ -658,7 +658,7 @@
     <answer> 
       <text>COLL-NUM lea</text>
       <element id="COLL-NUM" task="yes">    
-	<grammar tag="N+Num+Sg+Loc"/>         
+	<grammar tag="Num+Sg+Loc"/>         
 	<sem class="COLL-NUM"/>
 	</element>
     </answer>
@@ -677,7 +677,7 @@
     <answer> 
       <text>Vuolggán dohko COLL-NUM</text>
       <element id="COLL-NUM" task="yes">    
-	<grammar tag="N+Num+Sg+Com"/>         
+	<grammar tag="Num+Sg+Com"/>         
 	<sem class="COLL-NUM"/>
 	</element>
     </answer>
