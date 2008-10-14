@@ -7,25 +7,20 @@
 <!-- Questions for numerals  -->
 
 <questions>
-
-<!-- Attribute - only for Morfa -->
-
+  
+  <!-- Attribute - only for Morfa -->
   <q>
     <qtype>NUM-ATTR</qtype>
     <question>
       <text>Maid SUBJ MAINV oastit</text>
       <element id="SUBJ">
-	<grammar tag="N"/>
+	<grammar pos="N"/>
 	<sem class="HUMAN"/>
       </element>
       <element id="MAINV">
-	<id>áigut</id> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>áigut</id> 
       </element>
-<!--      <element id="MAINV2">
-	<id>oastit</id> 
-	<grammar tag="V+Inf"/>   
-      </element> -->
     </question>
     <answer> 
       <text>SUBJ MAINV oastit NUM-ATTR NOUN</text>
@@ -33,8 +28,8 @@
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
 	<id>son</id>
       </element>
-      <element id="NUM-ATTR">    
-	<grammar tag="Num+Sg+Acc" task="yes"/>         
+      <element id="NUM-ATTR" task="yes" >    
+	<grammar tag="Num+Sg+Acc" />         
       </element>
       <element id="NOUN">    
 	<grammar tag="N+Sg+Acc"/>         
@@ -47,8 +42,8 @@
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
 	<id>son</id>
       </element>
-      <element id="NUM-ATTR">    
-	<grammar tag="Num+Pl+Acc" task="yes"/>         
+      <element id="NUM-ATTR" task="yes" >    
+	<grammar tag="Num+Pl+Acc"/>         
       </element>
       <element id="NOUN">    
 	<grammar tag="N+Pl+Acc"/>         
@@ -59,18 +54,18 @@
 
   <q>
     <qtype>NUM-ATTR</qtype>
-   <question>
+    <question>
       <text>Maid oainnát</text>
     </question>
     <answer> 
       <text>Oainnán NUM-ATTR NOUN</text>
-    <element id="NUM-ATTR" task="yes">    
+      <element id="NUM-ATTR" task="yes">    
 	<grammar tag="Num+Sg+Acc"/>         
-	</element>
-    <element id="NOUN">    
+      </element>
+      <element id="NOUN">    
 	<grammar tag="N+Sg+Acc"/>         
 	<sem class="ANIMAL"/>
-	</element>
+      </element>
     </answer>
   </q>
 
@@ -108,32 +103,32 @@
 	<sem class="OBJECT"/>
 	</element>
     </question>
-    <answer> 
-      <text>Attán OBJ NUM-ATTR NOUN</text>
-      <element id="NUM-ATTR" task="yes">    
+   <answer> 
+     <text>Attán OBJ NUM-ATTR NOUN</text>
+     <element id="NUM-ATTR" task="yes">    
 	<grammar tag="Num+Sg+Gen"/>         
-	</element>
-    <element id="NOUN">    
-	<grammar tag="N+Sg+Ill"/>         
-	<sem class="HUMAN"/>
-	</element>
-    </answer>
+     </element>
+     <element id="NOUN">    
+       <grammar tag="N+Sg+Ill"/>         
+       <sem class="HUMAN"/>
+     </element>
+   </answer>
   </q>
-
+  
   <q>
     <qtype>NUM-ATTR</qtype>
-   <question>
+    <question>
       <text>Masa don bijat duogŋasa</text>
     </question>
     <answer> 
       <text>Bijan duogŋasa NUM-ATTR NOUN</text>
       <element id="NUM-ATTR" task="yes">    
 	<grammar tag="Num+Sg+Gen"/>         
-	</element>
-    <element id="NOUN">    
+      </element>
+      <element id="NOUN">    
 	<grammar tag="N+Sg+Ill"/>         
 	<sem class="CLOTHING"/>
-	</element>
+      </element>
     </answer>
   </q>
 
@@ -142,38 +137,38 @@
    <question>
       <text>Masa don bijat duogŋasa</text>
     </question>
-    <answer> 
-      <text>Bijan duogŋasa NUM-ATTR NOUN</text>
-      <element id="NUM-ATTR" task="yes">    
-	<grammar tag="Num+Pl+Gen"/>         
-	</element>
-    <element id="NOUN">    
-	<grammar tag="N+Pl+Ill"/>         
-	<sem class="CLOTHING-PL"/>
-	</element>
-    </answer>
+   <answer> 
+     <text>Bijan duogŋasa NUM-ATTR NOUN</text>
+     <element id="NUM-ATTR" task="yes">    
+       <grammar tag="Num+Pl+Gen"/>         
+     </element>
+     <element id="NOUN">    
+       <grammar tag="N+Pl+Ill"/>         
+       <sem class="CLOTHING-PL"/>
+     </element>
+   </answer>
   </q>
 
   <q>
     <qtype>NUM-ATTR</qtype>
-   <question>
+    <question>
       <text>Geain lea váralaš SUBJ</text>
-    <element id="SUBJ">    
+      <element id="SUBJ">    
 	<grammar tag="N+Sg+Nom"/>         
 	<sem class="ANIMAL"/>
-	</element>
+      </element>
     </question>
     <answer> 
       <text>NUM-ATTR NOUN lea</text>
       <element id="NUM-ATTR" task="yes">    
 	<grammar tag="Num+Sg+Gen"/>         
-	</element>
-    <element id="NOUN">    
+      </element>
+      <element id="NOUN">    
 	<grammar tag="N+Sg+Loc"/>         
 	<sem class="HUMAN"/>
-	</element>
-    </answer>
-    
+      </element>
+    </answer>    
+  </q>
   <q>
     <qtype>NUM-ATTR</qtype>
    <question>
@@ -189,17 +184,6 @@
 	<grammar tag="Num+Sg+Gen"/>         
 	</element>
     </answer>
-    
-<!--    <answer> 
-      <text>NUM-ATTR NOUN lea váralaš SUBJ</text>
-      <element id="NUM-ATTR">    
-	<grammar tag="Num+Sg+Gen"/>         
-	</element>
-    <element id="NOUN">    
-	<grammar tag="N+Sg+Loc"/>         
-	<sem class="HUMAN"/>
-	</element>
-    </answer> -->
   </q>
 
   <q>
@@ -242,20 +226,6 @@
 	<sem class="ARRANGEMENT-PL"/>
 	</element>
     </answer>
-<!--    <answer> 
-      <text>SUBJ lei NUM-ATTR NOUN</text>
-    <element id="SUBJ">    
-	<grammar pos="Pron"/> 
-	<id>son</id>
-	</element>
-      <element id="NUM-ATTR">    
-	<grammar tag="Num+Pl+Gen"/>         
-	</element>
-    <element id="NOUN">    
-	<grammar tag="N+Pl+Loc"/>         
-	<sem class="ARRANGEMENT-PL"/>
-	</element>
-    </answer> -->
   </q>
 
   <q>
@@ -264,7 +234,6 @@
       <text>Geaiguin SUBJ MAINV</text>
       <element id="SUBJ">    
 	<grammar pos="Pron"/> 
-	<id>son</id>
       </element>
       <element id="MAINV">    
 	<grammar tag="V+Ind+Prs+Person-Number"/>         
@@ -297,24 +266,14 @@
 	<id>bargat</id> 
       </element>
     </question>
-<!--    <answer> 
-      <text>SUBJ MAINV NUM-ATTR NOUN</text>
-      <element id="NUM-ATTR">    
-	<grammar tag="Num+Ess"/>         
-	</element>
-    <element id="NOUN">    
-	<grammar tag="N+Ess"/>         
-	<id>joavku</id>
-	</element>
-    </answer> -->
     <answer> 
       <text>SUBJ MAINV NUM-ATTR joavkun</text>
-    <element id="SUBJ">    
+      <element id="SUBJ">    
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
-	</element>
-    <element id="NUM-ATTR" task="yes">    
+      </element>
+      <element id="NUM-ATTR" task="yes">    
 	<grammar tag="Num+Ess"/>         
-	</element>
+      </element>
     </answer>
   </q>
 
@@ -324,76 +283,76 @@
     <qtype>NUM-LOC</qtype>
    <question>
       <text>Gallis SUBJ MAINV ruoktot</text>
-    <element id="MAINV">    
+      <element id="MAINV">    
 	<id>boahtit</id> 
-	</element>
-    <element id="SUBJ">    
+      </element>
+      <element id="SUBJ">    
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
-	</element>
+      </element>
     </question>
-    <answer> 
-      <text>SUBJ MAINV NUM-LOC</text>
-    <element id="NUM-LOC" task="yes">    
-	<grammar tag="Num+Sg+Loc"/>         
-	</element>
+   <answer> 
+     <text>SUBJ MAINV NUM-LOC</text>
+     <element id="NUM-LOC" task="yes">    
+       <grammar tag="Num+Sg+Loc"/>         
+     </element>
     </answer>
   </q>
 
   <q>
     <qtype>NUM-LOC</qtype>
-   <question>
+    <question>
       <text>Gallis SUBJ álgá</text>
-    <element id="SUBJ">    
+      <element id="SUBJ">    
 	<grammar tag="N+Sg+Nom"/>         
 	<sem class="ARRANGEMENT"/>
-	</element>
+      </element>
     </question>
     <answer> 
       <text>SUBJ álgá NUM-LOC</text>
-    <element id="NUM-LOC" task="yes">    
+      <element id="NUM-LOC" task="yes">    
 	<grammar tag="Num+Sg+Loc"/>         
-	</element>
+      </element>
     </answer>
   </q>
-
+  
   <q>
     <qtype>NUM-LOC</qtype>
-   <question>
+    <question>
       <text>Gallis SUBJ nohká</text>
-    <element id="SUBJ">    
+      <element id="SUBJ">    
 	<grammar tag="N+Sg+Nom"/>         
 	<sem class="ARRANGEMENT"/>
-	</element>
+      </element>
     </question>
     <answer> 
       <text>SUBJ nohká NUM-LOC</text>
-    <element id="NUM-LOC" task="yes">    
+      <element id="NUM-LOC" task="yes">    
 	<grammar tag="Num+Sg+Loc"/>         
-	</element>
+      </element>
     </answer>
   </q>
 
   <q>
     <qtype>NUM-ILL</qtype>
-   <question>
+    <question>
       <text>Gallii SUBJ MAINV lohkan OBJ</text>
-    <element id="SUBJ">    
-	<grammar tag="Pron+Pers+Person-Number"/>         
-	</element>
-    <element id="MAINV">    
+      <element id="SUBJ">    
+	<grammar pos="Pron"/>         
+      </element>
+      <element id="MAINV">    
 	<grammar tag="V+Ind+Prs+Person-Number"/>         
 	<id>leat</id> 
-	</element>
-    <element id="OBJ">    
+      </element>
+      <element id="OBJ">    
 	<grammar tag="N+Sg+Acc"/>         
 	<sem class="TEXT"/>
-	</element>
+      </element>
     </question>
     <answer> 
       <text>SUBJ MAINV lohkan OBJ NUM-ILL</text>
-    <element id="NUM-ILL" task="yes">    
+      <element id="NUM-ILL" task="yes">    
 	<grammar tag="Num+Sg+Ill"/>         
-	</element>
+      </element>
     </answer>
   </q>
 
@@ -415,24 +374,24 @@
 	</element>
     </answer>
   </q>
-
+  
   <q>
     <qtype>NUM-COM</qtype>
-   <question>
+    <question>
       <text>Galliin SUBJ MAINV loahppasupmi</text>
-    <element id="MAINV">    
+      <element id="MAINV">    
 	<grammar tag="V+Ind+Prs+Person-Number"/>         
 	<id>juohkit</id> 
-	</element>
-    <element id="SUBJ">    
+      </element>
+      <element id="SUBJ">    
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
-	</element>
+      </element>
     </question>
     <answer> 
       <text>SUBJ MAINV loahppasupmi NUM-COM</text>
-    <element id="NUM-COM" task="yes">    
+      <element id="NUM-COM" task="yes">    
 	<grammar tag="Num+Sg+Com"/>         
-	</element>
+      </element>
     </answer>
   </q>
 
@@ -504,41 +463,39 @@
 
   <q>
     <qtype>NUM-NOM</qtype>
-   <question>
+    <question>
       <text>Gallit SUBJ dus leat</text>
-    <element id="SUBJ">    
+      <element id="SUBJ">    
 	<grammar tag="N+Pl+Nom"/>         
 	<sem class="CLOTHING-PL"/>
-	</element>
+      </element>
     </question>
     <answer> 
       <text>Mus leat NUM-NOM</text>
-    <element id="NUM-NOM" task="yes">    
+      <element id="NUM-NOM" task="yes">    
 	<grammar tag="Num+Pl+Nom"/>         
-	</element>
+      </element>
     </answer>
   </q>
 
-<! Only for Morfa: -->
+<!-- Only for Morfa: -->
 
-  <q>
+  <q game="morfa">
     <qtype>NUM-GEN</qtype>
-   <question>
+    <question>
       <text>Mannan OBJ lei badjel logi gráda juohke beaivve</text>
-    <element id="OBJ">    
+      <element id="OBJ">    
 	<grammar tag="N+Sg+Gen"/>         
 	<sem class="TIME-SEASON"/>
-	</element>
+      </element>
     </question>
     <answer> 
       <text>Dán OBJ ii lean badjel NUM-GEN</text>
-    <element id="NUM-GEN" task="yes">    
+      <element id="NUM-GEN" task="yes">    
 	<grammar tag="Num+Sg+Gen"/>         
-	</element>
+      </element>
     </answer>
   </q> 
-
-
 
   <q>
     <qtype>NUM-LOC</qtype>
@@ -560,21 +517,21 @@
   <q>
     <qtype>NUM-ILL</qtype>
    <question>
-      <text>Man guhká SUBJ MAINV odne?</text>
-    <element id="SUBJ">    
-	<grammar tag="Pron+Pers+Person-Number"/>         
+     <text>Man guhká SUBJ MAINV odne</text>
+     <element id="SUBJ">    
+       <grammar pos="Pron"/>         
+     </element>
+     <element id="MAINV">    
+       <grammar tag="V+Ind+Prs+Person-Number"/>         
+       <id>bargat</id> 
 	</element>
-    <element id="MAINV">    
-	<grammar tag="V+Ind+Prs+Person-Number"/>         
-	<id>bargat</id> 
-	</element>
-    </question>
-    <answer> 
-      <text>SUBJ MAINV ovttas NUM-ILL</text>
-    <element id="NUM-ILL" task="yes">    
-	<grammar tag="Num+Sg+Ill"/>    <!-- Should not be "okta" -->        
-	</element>
-    </answer>
+   </question>
+   <answer> 
+     <text>SUBJ MAINV ovttas NUM-ILL</text>
+     <element id="NUM-ILL" task="yes">    
+       <grammar tag="Num+Sg+Ill"/>    <!-- Should not be "okta" -->        
+     </element>
+   </answer>
   </q>
 
 
@@ -736,7 +693,7 @@
       <element id="ORD-NUM" task="yes">    
 	<grammar tag="A+Ord+Sg+Loc"/>         
 	<sem class="ORDINAL"/>
-	</element>
+      </element>
     </answer>
   </q>
 
@@ -750,7 +707,7 @@
       <element id="ORD-NUM" task="yes">    
 	<grammar tag="A+Ord+Ess"/>         
 	<sem class="ORDINAL"/>
-	</element>
+      </element>
     </answer>
   </q>
 
@@ -764,7 +721,7 @@
       <element id="ORD-NUM" task="yes">    
 	<grammar tag="A+Ord+Sg+Ill"/>         
 	<sem class="ORDINAL-SMALL"/>
-	</element>
+      </element>
     </answer>
   </q>
 
@@ -778,13 +735,13 @@
       <element id="ORD-NUM" task="yes">    
 	<grammar tag="A+Ord+Sg+Loc"/>         
 	<sem class="ORDINAL"/>
-	</element>
+      </element>
     </answer>
   </q>
 
   <q>
     <qtype>ORD-NUM</qtype>
-   <question>
+    <question>
       <text>Man guhká gursa bistá</text>
     </question>
     <answer> 
@@ -792,24 +749,24 @@
       <element id="ORD-NUM" task="yes">    
 	<grammar tag="A+Ord+Sg+Ill"/>         
 	<sem class="ORDINAL"/>
-	</element>
+      </element>
     </answer>
   </q>
-
+  
 <!-- Only for Morfa: -->
-  <q>
-    <qtype>ORD-NUM</qtype>
-   <question>
-      <text>Gallát bargobihtá don čállet?</text>
-    </question>
-    <answer> 
-      <text>Mun čállen ORD-NUM</text>
-      <element id="ORD-NUM" task="yes">    
-	<grammar tag="A+Ord+Sg+Acc"/>         
-	<sem class="ORDINAL"/>
-	</element>
-    </answer>
-  </q>
+<q game="morfa">
+  <qtype>ORD-NUM</qtype>
+  <question>
+    <text>Gallát bargobihtá don čállet</text>
+  </question>
+  <answer> 
+    <text>Mun čállen ORD-NUM</text>
+    <element id="ORD-NUM" task="yes">    
+      <grammar tag="A+Ord+Sg+Acc"/>         
+      <sem class="ORDINAL"/>
+    </element>
+  </answer>
+</q>
 
   </questions>
-
+  
