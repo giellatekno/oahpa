@@ -9,7 +9,7 @@ class Log(models.Model):
     userinput = models.CharField(max_length=200)
     iscorrect = models.BooleanField()
     correct = models.CharField(max_length=200)
-    example = models.CharField(max_length=200)
+    example = models.CharField(max_length=200,null=True)
     comment = models.CharField(max_length=200)
 
 class Semtype(models.Model):
@@ -89,17 +89,16 @@ class Form(models.Model):
     fullform = models.CharField(max_length=200)
 
 class Question(models.Model):
+    qid = models.CharField(max_length=200)
+    task = models.CharField(max_length=20)
     string = models.CharField(max_length=200)
     qtype = models.CharField(max_length=20)
     qatype = models.CharField(max_length=20)
-    answer = models.ForeignKey('self', blank=True, null=True, related_name='answer_set')
+    question = models.ForeignKey('self', blank=True, null=True, related_name='answer_set')
     gametype = models.CharField(max_length=5)
     
 class QElement(models.Model):
     question=models.ForeignKey(Question, null=True)
-#    semtype = models.ForeignKey(Semtype, null=True)
-#    word = models.ForeignKey(Word, null=True)
-    optional = models.BooleanField(null=True)
     syntax = models.CharField(max_length=50)
     identifier = models.CharField(max_length=20)
     gametype = models.CharField(max_length=5)
