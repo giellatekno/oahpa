@@ -238,6 +238,7 @@ class MorphForm(forms.Form):
 
     num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
     case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
+    case_context = forms.ChoiceField(initial='N-ILL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
     adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)
     adj_context_choices = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
     vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
@@ -251,6 +252,7 @@ class MorphForm(forms.Form):
     default_data = {'language' : 'sme', \
                     'syll' : ['bisyllabic'], 'book' : 'all', \
                     'case': 'N-ILL', 'pos' : 'N', \
+                    'case_context' : 'N-ILL', \
                     'vtype' : 'PRS', 'vtype_context' : 'PRS', \
                     'num_context' : 'NUM-ATTR', \
                     'adj_context' : 'ATTRPOS', \
