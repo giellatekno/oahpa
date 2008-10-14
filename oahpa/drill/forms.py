@@ -27,6 +27,15 @@ CASE_CHOICES = (
     ('N-ESS', _('essive')),
 )
 
+CASE_CONTEXT_CHOICES = (
+    ('N-ACC', _('accusative')),
+    ('N-ILL', _('illative')),
+    ('N-LOC', _('locative')),
+    ('N-COM', _('comitative')),
+    ('N-GEN', _('genitive')),
+    ('N-ESS', _('essive')),
+)
+
 ADJCASE_CHOICES = (
     ('NOMPL', _('plural')),
     ('ATTR', _('attributive')),
@@ -39,8 +48,12 @@ ADJCASE_CHOICES = (
 )
 
 ADJ_CONTEXT_CHOICES = (
-    ('ATTR', _('attributive')),
-    ('PRED', _('predicative')),
+    ('ATTRPOS', _('attributive positive')),
+    ('ATTRCOMP', _('attributive comparative')),
+    ('ATTRSUP', _('attributive superlative')),
+    ('PREDPOS', _('predicative positive')),
+    ('PREDCOMP', _('predicative comparative')),
+    ('PREDSUP', _('predicative superlative')),
 )
 
 GRADE_CHOICES = (
@@ -49,28 +62,32 @@ GRADE_CHOICES = (
     ('SUPERL', _('superlative')),
 )
 
-VTYPE_CHOICES = (
-    ('PRS', _('present')),
-    ('PST', _('past')),
-    ('V-COND', _('conditional')),
-    ('V-IMPRT', _('imperative')),
-    ('V-GO', _('go-questions')),
-)
-
 NUM_CONTEXT_CHOICES = (
     ('NUM-ATTR', _('attributive')),
+    ('NUM-ACC', _('accusative')),
+    ('NUM-ILL', _('illative')),
+    ('NUM-LOC', _('locative')),
+    ('NUM-COM', _('comitative')),
+    ('NUM-GEN', _('genitive')),
     ('COLL-NUM', _('collective')),
 )
 
 
-VTYPE_BARE_CHOICES = (
+VTYPE_CHOICES = (
     ('PRS', _('present')),
     ('PRT', _('past')),
-   ('COND', _('conditional')),
+    ('COND', _('conditional')),
     ('IMPRT', _('imperative')),
     ('POT', _('potential')),
 )
 
+VTYPE_CONTEXT_CHOICES = (
+    ('PRS', _('present')),
+    ('PRT', _('past')),
+    ('V-COND', _('conditional')),
+    ('V-IMPRT', _('imperative')),
+    ('V-POT', _('potential')),
+)
 
 
 BOOK_CHOICES = (
@@ -152,6 +169,7 @@ def is_correct(self, game, example=None):
     """
     Determines if the given answer is correct (for a bound form).
     """
+    print "GAME", game
     if not self.is_valid():
         return False
 
@@ -221,19 +239,21 @@ class MorphForm(forms.Form):
     num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
     case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
     adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)
-    vtype = forms.ChoiceField(initial='MAINV', choices=VTYPE_CHOICES, widget=forms.Select)
-    vtype_bare = forms.ChoiceField(initial='PRS', choices=VTYPE_BARE_CHOICES, widget=forms.Select)
+    adj_context_choices = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
+    vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
+    vtype_context = forms.ChoiceField(initial='PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
     gametype = forms.ChoiceField(initial='bare', choices=GAME_CHOICES, widget=forms.Select)
     bisyllabic = forms.BooleanField(required=False, initial='1')
     trisyllabic = forms.BooleanField(required=False,initial=0)
     contracted = forms.BooleanField(required=False,initial=0)
     grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
-    default_data = {'gametype' : 'bare', 'language' : 'sme', \
+    default_data = {'language' : 'sme', \
                     'syll' : ['bisyllabic'], 'book' : 'all', \
                     'case': 'N-ILL', 'pos' : 'N', \
-                    'vtype' : 'PRS', 'vtype_bare' : 'PRS', \
+                    'vtype' : 'PRS', 'vtype_context' : 'PRS', \
                     'num_context' : 'NUM-ATTR', \
+                    'adj_context' : 'ATTRPOS', \
                     'adjcase' : 'ATTR', 'grade' : 'POS'}
 
 
@@ -255,8 +275,8 @@ class MorphQuestion(forms.Form):
         feedbacks=None
         
         if tag.pos=="N":
-            print ".......filtering feedbacks for nouns"
-            print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi
+            #print ".......filtering feedbacks for nouns"
+            #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi
             print tag.case,tag.pos,tag.number
             feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
                                                 Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
@@ -276,8 +296,8 @@ class MorphQuestion(forms.Form):
                 attrsuffix = word.attrsuffix
             else: attributive = "NoAttr"
                 
-            print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi, "attrsuffix:", word.attrsuffix
-            print tag.case, tag.pos, tag.number, tag.attributive
+            #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi, "attrsuffix:", word.attrsuffix
+            #print tag.case, tag.pos, tag.number, tag.attributive
 
             feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
                                                 Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
@@ -288,8 +308,8 @@ class MorphQuestion(forms.Form):
 
         if tag.pos == "V":
 
-            print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi
-            print tag.pos, tag.personnumber, tag.tense, tag.mood
+            #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi
+            #print tag.pos, tag.personnumber, tag.tense, tag.mood
 
             feedbacks = Feedback.objects.filter(Q(stem=word.stem) & \
                                                Q(diphthong=word.diphthong) & Q(soggi=word.soggi) & \
@@ -504,17 +524,18 @@ def select_words(self, qwords, awords):
                     while not form_list and i<max:
                         i=i+1
                         word_count = WordQElement.objects.filter(qelement__id=aword['qelement']).count()
-                        wqel = WordQElement.objects.filter(qelement__id=aword['qelement'])[randint(0,word_count-1)]
-                        selected_awords[syntax]['word'] = wqel.word.id
-                        form_list = Form.objects.filter(Q(word__id=selected_awords[syntax]['word']) &\
-                                                        Q(tag__id=selected_awords[syntax]['tag']))
+                        if word_count>0:
+                            wqel = WordQElement.objects.filter(qelement__id=aword['qelement'])[randint(0,word_count-1)]
+                            selected_awords[syntax]['word'] = wqel.word.id
+                            form_list = Form.objects.filter(Q(word__id=selected_awords[syntax]['word']) &\
+                                                            Q(tag__id=selected_awords[syntax]['tag']))
                     if form_list:
                         fullf=[]
                         for f in form_list:
                             fullf.append(f.fullform)
                         selected_awords[syntax]['fullform'] = fullf[:]
 
-                else:
+                if not selected_awords[syntax].has_key('fullform'):
                     if aword.has_key('fullform') and len(aword['fullform'])>0:
                         selected_awords[syntax]['fullform'] = aword['fullform'][:]
         else:
@@ -611,19 +632,20 @@ class QAForm(forms.Form):
     set_settings = set_settings
 
     num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
-    vtype = forms.ChoiceField(initial='MAINV', choices=VTYPE_CHOICES, widget=forms.Select)
-    vtype_bare = forms.ChoiceField(initial='PRS', choices=VTYPE_BARE_CHOICES, widget=forms.Select)
+    vtype_context = forms.ChoiceField(initial='MAINV', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
+    vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
     default_data = {'gametype' : 'qa', 'language' : 'sme', \
                     'syll' : ['bisyllabic'], 'book' : 'all', \
                     'case': 'N-ILL', 'pos' : 'N', \
-                    'vtype' : 'PRS', 'vtype_bare' : 'PRS', \
+                    'vtype' : 'PRS', 'vtype_context' : 'PRS', \
                     'num_context' : 'NUM-ATTR', \
                     'adjcase' : 'ATTR', 'grade' : 'POS'}
 
     def __init__(self, *args, **kwargs):
         self.set_settings()
         super(QAForm, self).__init__(*args, **kwargs)
+
 
 
 class QAQuestion(forms.Form):
@@ -635,7 +657,7 @@ class QAQuestion(forms.Form):
     set_correct = set_correct
     is_correct = is_correct
     qa_is_correct = qa_is_correct
-    qtype_verbs = set(['PRS', 'PRT', 'V-COND','V-IMPRT','V-GO'])
+    qtype_verbs = set(['PRS', 'PRT', 'V-COND','V-IMPRT'])
 
         
     def __init__(self, gametype, question, qanswer, \
@@ -657,6 +679,7 @@ class QAQuestion(forms.Form):
         question_widget = forms.HiddenInput(attrs={'value' : question.id})
         answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})
         atext = qanswer.string
+        task = qanswer.task
 
         super(QAQuestion, self).__init__(*args, **kwargs)
 
@@ -680,9 +703,10 @@ class QAQuestion(forms.Form):
         if (gametype == 'qa'):
             self.qa_is_correct(atext,awords)
 
+        
         if (gametype == 'context'):
-            if len(selected_awords[qtype]['fullform'])>0:
-                self.correct_anslist = selected_awords[qtype]['fullform'][:]
+            if len(selected_awords[task]['fullform'])>0:
+                self.correct_anslist = selected_awords[task]['fullform'][:]
                 self.is_correct("contextual morfa")
                             
         self.qattrs= {}
@@ -710,19 +734,21 @@ class QAQuestion(forms.Form):
 
         # Format question string
         qtext = question.string
-        for w in qtext.split(' '):
+        print qwords
+        for w in qtext.split():
             if not qwords.has_key(w): qstring = qstring + " " + w
             else:
                 if qwords[w].has_key('fullform'):
                     qstring = qstring + " " + qwords[w]['fullform'][0]
                 else:
                     qstring = qstring + " " + w
+        qstring=qstring.replace(" -","-");
                     
         if gametype == 'context':
-            print qtype
-            answer_word = selected_awords[qtype]['word']
-            answer_tag = selected_awords[qtype]['tag']
-            selected_awords[qtype]['fullform'][0] = 'Q'
+            print task
+            answer_word = selected_awords[task]['word']
+            answer_tag = selected_awords[task]['tag']
+            selected_awords[task]['fullform'][0] = 'Q'
                 
             # Get lemma for contextual morfa
             answer_word_el = Word.objects.get(id=answer_word)
@@ -734,9 +760,13 @@ class QAQuestion(forms.Form):
                 if answer_tag_el.number=="Sg":
                     self.lemma = answer_word_el.lemma
                 else:
-                    self.lemma = Form.objects.filter(Q(word__pk=answer_word) & \
-                                                     Q(tag__string="N+Pl+Nom"))[0].fullform
-
+                    print answer_word_el.lemma
+                    if Form.objects.filter(Q(word__pk=answer_word) & \
+                                           Q(tag__string="N+Pl+Nom")).count()>0:                        
+                        self.lemma = Form.objects.filter(Q(word__pk=answer_word) & \
+                                                         Q(tag__string="N+Pl+Nom"))[0].fullform
+                    else:
+                        self.lemma = answer_word_el.lemma + " (plural) fix this"
                 
         # If there are errors in the qa input, give the user the opportunity to try again
         # with the problematic fields
@@ -748,7 +778,6 @@ class QAQuestion(forms.Form):
         #print "SELECTED", selected_awords
         for w in atext.split():
             if w.count("(") > 0: continue
-            if w== 'ANSWERSUBJECT': w='SUBJ'
             
             if not selected_awords.has_key(w) or not selected_awords[w].has_key('fullform'):
                 astring = astring + " " + w
@@ -762,6 +791,9 @@ class QAQuestion(forms.Form):
         qstring = qstring[0].capitalize() + qstring[1:]
 
         qstring = qstring + "?"
+        # Add dot if the last word is not the open question.
+        if astring.count("!")==0 and not astring[-1]=="Q":
+            astring = astring + "."
         self.question=qstring
 
         # Format answer strings for context
