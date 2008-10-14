@@ -127,7 +127,10 @@ class Gameview:
 
             
         if self.settings['pos'] == "N":
-            self.settings['gamename'] = self.gamenames[self.settings['case']]
+            if self.settings['gametype'] == "bare":
+                self.settings['gamename'] = self.gamenames[self.settings['case']]
+            else:
+                self.settings['gamename'] = self.gamenames[self.settings['case_context']]
         if self.settings['pos'] == "Num":
             if self.settings['gametype'] == "bare":
                 self.settings['gamename'] = self.gamenames[self.settings['adjcase']]
