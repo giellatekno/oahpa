@@ -4,7 +4,13 @@
 {% block instructions %}<p>{{ settings.gamename }} {{ settings.grade }}</p>{% endblock %}
 
 {% block selectionname %}<td>{% trans "Type" %}</td><td>{% trans "Grade" %}</td>{% endblock %}
-{% block selection %}<td>{{ settingsform.adjcase }}</td><td> {{ settingsform.grade }}</td>
+{% block selection %}
+  {% ifequal settings.gametype "bare" %}
+<td> {{ settingsform.adjcase }} </td>
+<td> {{ settingsform.grade }} </td>
+  {% else %}
+<td> {{ settingsform.adjcase_context }}</td>
+  {% endifequal %}
 
 {% endblock %}
 
