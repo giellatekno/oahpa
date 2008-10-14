@@ -20,7 +20,13 @@ class Gameview:
         self.settings = {}
 
         self.gamenames = {
-            'ATTR' :  _('attributive'),\
+            'ATTRPOS' :  _('attributive positive'),\
+            'ATTRCOMP' :  _('attributive comparative'),\
+            'ATTRSUP' :  _('attributive superlative'),\
+            'PREDPOS' :  _('predicative positive'),\
+            'PREDCOMP' :  _('predicative comparative'),\
+            'PREDSUP' :  _('predicative superlative'),\
+            'NUM-ATTR' :  _('attributive'),\
             'NOMPL' :  _('plural'),\
             'N-ILL' :  _('illative'),\
             'N-ACC' :  _('accusative'),\
@@ -28,6 +34,13 @@ class Gameview:
             'N-ESS' :  _('essive'),\
             'N-GEN' :  _('genitive'),\
             'N-LOC' :  _('locative'),\
+            'NUM-ILL' :  _('illative'),\
+            'NUM-ACC' :  _('accusative'),\
+            'NUM-COM' :  _('comitative'),\
+            'NUM-ESS' :  _('essive'),\
+            'NUM-GEN' :  _('genitive'),\
+            'NUM-LOC' :  _('locative'),\
+            'COLL-NUM' :  _('collective'),\
             'PRS'   :  _('present'),\
             'PRT'   : _('past'),\
             'COND'  : _('conditional'), \
@@ -184,7 +197,7 @@ def mgame_l(request):
     return render_to_response('mgame_l.html', c)
 
 
-### Contextual morfas
+### Contextual Morfas
 
 def cmgame_n(request):
 
@@ -295,7 +308,6 @@ class Vastaview:
             'forms': game.form_list,
             'count': game.count,
             'score': game.score,
-            #'case': self.settings.case,
             'all_correct': game.all_correct,
             'show_correct': game.show_correct,
             })
