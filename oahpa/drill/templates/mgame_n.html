@@ -6,7 +6,12 @@
 {% block selectionname %}<td>{% trans "Case" %}</td>{% endblock %}
 {% block selection %}
 <td>
-  {{ settingsform.case }}
+  {% ifequal settings.gametype "bare" %}
+    {{ settingsform.case }}
+  {% else %}
+    {{ settingsform.case_context }}
+  {% endifequal %}
+
 </td>
 {% endblock %}
 
