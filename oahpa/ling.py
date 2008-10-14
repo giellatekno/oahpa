@@ -72,13 +72,13 @@ class Paradigm:
 
         self.paradigm = []
 							  
-        genObj=re.compile(r'^(?P<lemmaString>[\wá]+)\+(?P<tagString>[\w\+]+)[\t\s]+(?P<formString>[\wá]*)$', re.U)
+        genObj=re.compile(r'^(?P<lemmaString>[\wáŋčžšđŧ]+)\+(?P<tagString>[\w\+]+)[\t\s]+(?P<formString>[\wáŋčžšđŧ]*)$', re.U)
         all=""
 
         if self.paradigms.has_key(pos):
             for a in self.paradigms[pos]:
                 all = all + lemma + "+" + a
-        print all
+
         # generator call
         #fstdir="/opt/smi/sme/bin"
         #lookup = /usr/local/bin/lookup
@@ -91,6 +91,7 @@ class Paradigm:
         gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
         lines_tmp = os.popen(gen_norm_lookup).readlines()
         for line in lines_tmp:
+            print line.decode('utf-8')
             if not line.strip(): continue
             matchObj=genObj.search(line)
             if matchObj:
@@ -140,7 +141,6 @@ class Paradigm:
             w, created = Word.objects.get_or_create(wordid=num, lemma=numstring, pos="Num")
             w.save()
 
-            print numstring
             self.create_paradigm(numstring, "Num")
             for form in self.paradigm:
                 form.form = form.form.replace("#","")
@@ -162,7 +162,7 @@ class Paradigm:
 
 class Questions:
 
-    def read_element(self,qaelement,el,el_id,optional):
+    def read_element(self,qaelement,el,el_id,qtype):
 
         print "Creating element", el_id
 
@@ -172,54 +172,40 @@ class Questions:
         else:
             syntax = el_id
 
-        print "Creating syntax", syntax
         if not el: print "No element given."
 
-        # Some of the answer elements are identical to the question elements.
-        identity_id=""
-        if el.getElementsByTagName("identity"):
-            identity_id=el.getElementsByTagName("identity")[0].getAttribute("link")
-        if not identity_id: identity_id=el_id
+        # Some of the answer elements share content of question elements.
+        content_id=""
+        if el: content_id = el.getAttribute("content")
+        if not content_id: content_id=el_id
             
         # Search for the same element in question side
-        if QElement.objects.filter(Q(question__id=qaelement.answer_id) & \
-                                   Q(identifier=identity_id)).count() > 0:
-            question_qelements = QElement.objects.filter(Q(question__id=qaelement.answer_id) & \
-                                                         Q(identifier=identity_id))
+        # If there is no element given in the answer, the element
+        # is a copy of the question.
+        question_qelements = None
+        
+        if QElement.objects.filter(Q(question__id=qaelement.question_id) & \
+                                   Q(identifier=content_id)).count() > 0:
+            question_qelements = QElement.objects.filter(Q(question__id=qaelement.question_id) & \
+                                                         Q(identifier=content_id))
+
             if not el:
                 print "LUOMASSA", syntax
                 for q in question_qelements:
-                    qe = QElement.objects.create(question=q.question,\
-                                                 optional=q.optional,\
+                    qe = QElement.objects.create(question=qaelement,\
                                                  identifier=el_id,\
-                                                 syntax=q.syntax,\
-                                                 gametype=q.gametype)
-
-                    for w in WordQElement.objects.filter(qelement=q):
-                        we = WordQElement.objects.create(word=w.word,\
-                                                         qelement=qe)
-                    for t in q.tags.all():
-                        qe.tags.add(t)
-                        
-                    # mark as a copy
-                    qe.copy_set.add(q)
-                    qe.save()
+                                                 syntax=q.syntax)
                     
-                return
+                    # mark as a copy
+                    q.copy_set.add(qe)
+                    qe.save()
+                    q.save()
+                    return
             
-        gametype = ""
-        if el: gametype = el.getAttribute("game")
-        if gametype:
-            gametypes = [gametype]
-        else:
-            gametypes = ['morfa','qa']
-
-        print "gametypes", gametypes
-        
         ############### AGREEMENT
         # Search for elementes that agree
         agr_elements=None
-        if el_id=="MAINV":
+        if syntax=="MAINV":
             agr_id="SUBJ"
             print "TRYING verb agreement " + agr_id + " " + qaelement.qatype
             if QElement.objects.filter(Q(question=qaelement) & Q(syntax=agr_id) &\
@@ -232,12 +218,13 @@ class Questions:
 
         agreement = ""
         if el: agreement = el.getElementsByTagName("agreement")
+        if agreement: print "Agreement:", agreement[0].getAttribute("id")
         
         # Agreement from xml-files
         # Try first inside question or answer
         # Then in answer-question level
         if agreement:
-            agr_id=agreement[0].getAttribute("link")
+            agr_id=agreement[0].getAttribute("id")
             if QElement.objects.filter(Q(question=qaelement) & Q(syntax=agr_id) & \
                                        Q(question__qatype=qaelement.qatype)).count() > 0:
                 agr_elements = QElement.objects.filter(Q(question=qaelement) & \
@@ -246,11 +233,11 @@ class Questions:
                 print "*** found agreement elementes 1"
                 
             else:
-                if Question.objects.filter(id=qaelement.answer_id).count() > 0:
-                    q=Question.objects.filter(id=qaelement.answer_id)[0]
-                    if QElement.objects.filter(Q(question__id=qaelement.answer_id) & \
+                if Question.objects.filter(id=qaelement.question_id).count() > 0:
+                    q=Question.objects.filter(id=qaelement.question_id)[0]
+                    if QElement.objects.filter(Q(question__id=qaelement.question_id) & \
                                                Q(syntax=agr_id)).count() > 0:
-                        agr_elements = QElement.objects.filter(Q(question__id=qaelement.answer_id) & \
+                        agr_elements = QElement.objects.filter(Q(question__id=qaelement.question_id) & \
                                                                Q(syntax=agr_id))
                         print "*** found agreement elementes 2"
 
@@ -284,6 +271,7 @@ class Questions:
                 word_elements = Word.objects.filter(Q(valency=valclass))
                 print "Valency class", valclass, word_elements.count()
 
+
         # If still no words, get the default words for this element:
         if not word_elements:
             if self.values.has_key(el_id) and self.values[el_id].has_key('words'):
@@ -297,7 +285,6 @@ class Questions:
 
         ############# GRAMAMR
         tagelements = None
-        optional_tagelements = None
         grammars = []
         if el: grammars = el.getElementsByTagName("grammar")
         if not el or not grammars:
@@ -306,8 +293,6 @@ class Questions:
             if self.values.has_key(el_id):
                 if self.values[el_id].has_key('tags'):
                     tagelements = self.values[el_id]['tags']
-                if self.values[el_id].has_key('optional_tags'):
-                    optional_tagelements = self.values[el_id]['optional_tags']
 
         # An element for each different grammatical specification.
         else:
@@ -322,8 +307,6 @@ class Questions:
                 if self.values.has_key(el_id):
                     if self.values[el_id].has_key('tags'):
                         tagelements = self.values[el_id]['tags'].filter(pos__in=poses)
-                    if self.values[el_id].has_key('optional_tags'):
-                        optional_tagelements= self.values[el_id]['optional_tags'].filter(pos__in=poses)
 
             if tags:
                 for tag in tags:
@@ -357,114 +340,86 @@ class Questions:
         # Find different pos-values in tagelements
         posvalues = {}
         # Elements that do not inflection information are not created.
-        if not tagelements:
+        if not tagelements and not agr_elements:
             print "no inflection for", el_id
             return
-        for t in tagelements:
-            posvalues[t.pos] = 1
-            
+        if not tagelements: posvalues[""] = 1
+        else:
+            for t in tagelements:
+                posvalues[t.pos] = 1
+
+        if el:
+            task = el.getAttribute("task")
+            print "setting", el_id, "as task"
+            if task:
+                qaelement.task = syntax
+                qaelement.save()
+        else:
+            if el_id == qtype:
+                qaelement.task = syntax
+                qaelement.save()
+                
         ############# CREATE ELEMENTS
 
-        # Add an element for each gametype and each pos:
-        for g in gametypes:
-            for p in posvalues.keys():
-                qe = QElement.objects.create(question=qaelement,\
-                                             optional=optional,\
-                                             identifier=el_id,\
-                                             syntax=syntax,\
-                                             gametype=g)
-                
-                if tagelements:
-                    for t in tagelements:
-                        if t.pos == p:
-                            qe.tags.add(t)
+        # Add an element for each pos:
+        for p in posvalues.keys():
+            qe = QElement.objects.create(question=qaelement,\
+                                         identifier=el_id,\
+                                         syntax=syntax)
+            
+            # Add links to corresponding question elements.
+            if question_qelements:
+                for q in question_qelements:
+                    q.copy_set.add(qe)
+                    qe.save()
+                    q.save()
 
-                # Create links to words.
-                if not words.has_key(p):
-                    print "looking for words..", el_id, p
-                    word_elements = Word.objects.filter(pos=p)
-                    if word_elements:
-                        for w in word_elements:
-                            if not words.has_key(p): words[w.pos] = []
-                            words[w.pos].append(w)
-
-                for w in words[p]:
-                    we = WordQElement.objects.create(qelement=qe,\
-                                                     word=w)
-
-                # add agreement info.
-                if agr_elements:
-                    for a in agr_elements:
-                        a.agreement_set.add(qe)
-                    a.save()
-                qe.save()
-
-                # Add a second one for optional tags.
-                if optional_tagelements:
-                    qe = QElement.objects.create(question=qaelement,\
-                                                 optional=1,\
-                                                 identifier=el_id,\
-                                                 syntax=syntax,\
-                                                 gametype=g)
-                    for t in optional_tagelements:
+            if tagelements:
+                for t in tagelements:
+                    if t.pos == p:
                         qe.tags.add(t)
 
-                    # Create links to words.
-                    if not words.has_key(p):
-                        word_elements = Word.objects.filter(pos=p)
-                        if word_elements:
-                            for w in word_elements:
-                                if not words.has_key(p): words[w.pos] = []
-                                words[w.pos].append(w)
+            # Create links to words.
+            if not words.has_key(p):
+                print "looking for words..", el_id, p
+                word_elements = Word.objects.filter(pos=p)
+                if word_elements:
+                    for w in word_elements:
+                        if not words.has_key(p): words[w.pos] = []
+                        words[w.pos].append(w)
 
-                    for w in words[p]:
-                        we = WordQElement.objects.create(qelement=qe,\
-                                                         word=w)
-                    
-                        # add agreement info.
-                        if agr_elements:
-                            for a in agr_elements:
-                                a.agreement_set.add(qe)
-                            a.save()
-                        qe.save()
+            for w in words[p]:
+                we = WordQElement.objects.create(qelement=qe,\
+                                                 word=w)
 
+            # add agreement info.
+            if agr_elements:
+                for a in agr_elements:
+                    a.agreement_set.add(qe)
+                a.save()
+            qe.save()
 
     # Read elements attached to particular question or answer.
-    def read_elements(self,head,qaelement):
+    def read_elements(self, head, qaelement, qtype):
 
         els = head.getElementsByTagName("element")
         qastrings =  qaelement.string.split()
 
-        #Read first subject and answersubject for agreement
+        # Read first subject for agreement
         element=None
         if "SUBJ" in set(qastrings):
             for e in els:
                 if e.getAttribute("id")=="SUBJ":
                     element = e
                     break
-                
-            self.read_element(qaelement,element,"SUBJ",0)
 
-        element=None
-        if "ANSWERSUBJECT" in set(qastrings):
-            for e in els:
-                if e.getAttribute("id")=="ANSWERSUBJECT":
-                    element = e
-                    break
-                if e.getAttribute("id")=="SUBJ":
-                    element = e
-                    break
+            self.read_element(qaelement, element, "SUBJ", qtype)
 
-
-            self.read_element(qaelement,element,"ANSWERSUBJECT",0)
 
         # Process rest of the elements in the string.
         for s in qastrings:
             if s=="SUBJ": continue
-            if s=="ANSWERSUBJECT": continue
 
-            if s.find('('): optional=0
-            else: optional=1
             syntax = s.lstrip("(")
             syntax = syntax.rstrip(")")
 
@@ -473,10 +428,10 @@ class Questions:
             for e in els:
                 el_id = e.getAttribute("id")
                 if el_id==s:
-                    self.read_element(qaelement,e,syntax,optional)
+                    self.read_element(qaelement,e,syntax,qtype)
                     found = True
             if not found:
-                self.read_element(qaelement,None,syntax,optional)
+                self.read_element(qaelement,None,syntax,qtype)
 
     def read_questions(self, infile, grammarfile):
     
@@ -488,7 +443,7 @@ class Questions:
         print "Created questions:"
         for q in tree.getElementsByTagName("q"):
 
-            gametype = q.getAttribute('gametype')
+            gametype = q.getAttribute('game')
             # Store question
             qtype=""
             qtype_el = q.getElementsByTagName("qtype")
@@ -502,18 +457,18 @@ class Questions:
                                                        gametype=gametype,\
                                                        qatype="question")
             question_element.save()
-            print text
-            self.read_elements(question, question_element)            
+
+            self.read_elements(question, question_element,qtype)    
 
             # There can be more than one answer for each question,
             # Store them separately.
             answers=q.getElementsByTagName("answer")
             for ans in answers:                
                 text=ans.getElementsByTagName("text")[0].firstChild.data
-                answer_element = Question.objects.create(string=text,qatype="answer",answer=question_element)
+                answer_element = Question.objects.create(string=text,qatype="answer",question=question_element)
                 answer_element.save()                
                 print text
-                self.read_elements(ans, answer_element)
+                self.read_elements(ans, answer_element,qtype)
 
 
     def read_grammar(self, infile):
@@ -551,7 +506,6 @@ class Questions:
 
             info2['pos'] = []
             tagstrings = []
-            optional_tagstrings = []
 
             grammars = el.getElementsByTagName("grammar")
             for gr in grammars:
@@ -567,19 +521,12 @@ class Questions:
                 
                 tagvalues = []
                 self.get_tagvalues(tag,"",tagvalues)
-                if optional == "1":
-                    optional_tagstrings.extend(tagvalues)
-                else:
-                    tagstrings.extend(tagvalues)
+                tagstrings.extend(tagvalues)
 
             if len(tagstrings) > 0:
                 tags = Tag.objects.filter(string__in=tagstrings)
                 info2['tags'] = tags
                 
-            if len(optional_tagstrings) > 0:
-                tags = Tag.objects.filter(string__in=optional_tagstrings)
-                info2['optional_tags'] = tags
-
             self.values[identifier] = info2
 
 
