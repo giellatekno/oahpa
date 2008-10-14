@@ -351,6 +351,7 @@ class MorphQuestion(forms.Form):
         self.error="empty"
         self.problems="error"
         self.pron=""
+        self.pron_imp=""
         self.PronPNBase={'Sg1':'mun','Sg2':'don','Sg3':'son',\
                          'Pl1':'mun','Pl2':'don','Pl3':'son',\
                          'Du1':'mun','Du2':'don','Du3':'son'}
@@ -376,7 +377,9 @@ class MorphQuestion(forms.Form):
             self.pron = Form.objects.filter(Q(word__lemma=pronbase) & \
                                             Q(tag__string="Pron+Pers+" +tag.personnumber+ "+Nom"))[0].fullform
 
-            print self.pron
+            if self.pron and tag.mood=="Imprt":
+                self.pron_imp= self.pron
+                self.pron=""
 
         self.is_correct("morfa" + "_" + tag.pos, self.lemma + "+" + self.tag)
 
