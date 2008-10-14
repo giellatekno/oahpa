@@ -7,17 +7,19 @@
 
 <table width="700">
 <tr>
-<td>{% trans "Game type" %}</td>
-<td>{{ settingsform.gametype }}</td>
-</tr>
-<tr>
 {% block selectionname %}{% endblock %}
+
+{% ifequal settings.gametype "bare" %}
 <td>{% trans "Stem" %}</td>
 <td>{% trans "Book" %}</td>
 <td>{% trans "Dialect" %} (not used)</td>
+{% endifequal %}
+
 </tr>
 <tr>
 {% block selection %}{% endblock %}
+
+{% ifequal settings.gametype "bare" %}
 <td>
 {{ settingsform.bisyllabic }}{% trans "bisyllabic" %}<br/>
 {{ settingsform.trisyllabic }}{% trans "trisyllabic" %}<br/>
@@ -28,6 +30,8 @@
 <input type="radio" name="dialect" value="western" checked="checked" />{% trans "Western" %}<br/>
 <input type="radio" name="dialect" value="eastern" />{% trans "Eastern" %}<br/>
 </td>
+{% endifequal %}
+
 </tr>
 </table>
 <input type="submit" name="settings" value="{% trans "New set" %}" />
@@ -36,7 +40,7 @@
 
 {% block question %}
 
-{% ifequal settings.gametype "bare" %}
+{% ifequal settings.gametype "bare" %} 
   <td>
   {% if forloop.first %}
     <div id='lemma'>
@@ -63,8 +67,8 @@
   {% endif %}
   </td>
 
-{% else %}
-<td>{{ form.question }} ({{ form.lemma }})</td>
-{% endifequal %}
+{% else %}                                                                                                       
+<td>{{ form.question }} ({{ form.lemma }})</td>                                                                  
+{% endifequal %}                      
 
 {% endblock %}
