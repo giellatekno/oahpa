@@ -496,7 +496,7 @@ class QAGame(Game):
                 if self.gametype == 'qa':
                     qtype = self.settings['allcase'][randint(0, len(self.settings['allcase'])-1)]
                 else:
-                    qtype = self.settings['case']
+                    qtype = self.settings['case_context']
             if pos == "V":
                 if self.gametype == 'qa':
                     qtype = self.settings['vtype_context'][randint(0, len(self.settings['vtype_bare'])-1)]
