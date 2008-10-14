@@ -7,9 +7,10 @@
 {% block selection %}
 <td>
   {% ifequal settings.gametype "bare" %}
-    {{ settingsform.vtype_bare }}
-  {% else %}
     {{ settingsform.vtype }}
+  {% else %}
+    {{ settingsform.vtype_context }}
   {% endifequal %}
+
 </td>
 {% endblock %}
