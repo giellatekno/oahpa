@@ -43,6 +43,9 @@
         (error in {{ form.problems }})
        {% endifequal %}
     {% endifequal %}
+    {% if form.pron_imp %}
+    &nbsp;&nbsp;{{ form.pron_imp }}&nbsp;&nbsp;
+    {% endif %}    
 
     {% if form.answertext2 %}{{ form.answertext2 }}{% endif %}
   </td>
@@ -63,12 +66,19 @@
 	  <!-- Answer field -->
 	  {{ form.answer }} 
 	{% endifequal %}
+          {% if form.pron_imp %}
+	  &nbsp;&nbsp;{{ form.pron_imp }}&nbsp;&nbsp;
+	  {% endif %}
+
       {% else %}
       <!-- Answer field -->
       {% if form.pron %}
       &nbsp;&nbsp;{{ form.pron }}&nbsp;&nbsp;
       {% endif %}
       {{ form.answer}}
+      {% if form.pron_imp %}
+      &nbsp;&nbsp;{{ form.pron_imp }}&nbsp;&nbsp;
+      {% endif %}
       {% endifnotequal %}
     {% if form.answertext2 %}{{ form.answertext2 }}{% endif %}
 
