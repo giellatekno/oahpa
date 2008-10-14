@@ -4,5 +4,9 @@
 {% block instructions %}<p>{{ settings.gamename }}</p>{% endblock %}
 
 {% block selectionname %}<td>{% trans "Case" %}</td>{% endblock %}
-{% block selection %}<td>{{ settingsform.case }}</td>{% endblock %}
+{% block selection %}
+<td>
+  {{ settingsform.case }}
+</td>
+{% endblock %}
 
