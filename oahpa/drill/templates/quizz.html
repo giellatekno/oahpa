@@ -3,7 +3,8 @@
 
 {% block name %}{% trans "Quizz" %}{% endblock %}
 {% block pagename %}/oahpa/leksa/{% endblock %}
-{% block instruction %}{% trans "Instructions.." %}{% endblock %}
+{% block gamename %}{% endblock %}
+{% block instructions %}{% trans "Give translations for words." %}{% endblock %}
 {% block settings %}
 
 <table width="700">
@@ -20,9 +21,9 @@
 <td>&nbsp;</td>
 </tr>
 </table>
+
 <input type="submit" name="settings" value="{% trans "New set" %}" />
 {% endblock %}
-
 
 {% block question %}
 <td>{{ form.lemma }} </td>
