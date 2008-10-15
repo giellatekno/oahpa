@@ -4,11 +4,13 @@
 {% block content %}
 
 <hr/>
-{% block instructions %}{% endblock %}
+
+<table width="90%">
+<tr>
+<td>{% block gamename %}{% endblock %}</br>
 
 <table>
 <tr><td>
-
 <table>
      {% for form in forms %}
 
@@ -124,7 +126,9 @@
      {% endfor %}
 </table>
 
-</td></tr>
+</td>
+</tr>
+
 <tr><td>
 &nbsp;<br/>
 {% if all_correct %}
@@ -150,7 +154,10 @@
 </td>
 </tr>
 </table>
-
+</td>
+<td width="30%" valign="top"><table border="1" cellpadding="10"><tr><td>{% block instructions %}{% endblock %}</td></tr></table></td>
+</tr>
+</table>
 
 {% endblock %}
 
