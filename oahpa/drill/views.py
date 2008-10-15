@@ -20,7 +20,7 @@ class Gameview:
         self.settings = {}
 
         self.gamenames = {
-            'ATTR' :  _('Practise adjective attributes'),\
+            'ATTR' :  _('Practise attributes'),\
             'ATTRPOS' :  _('Practise attributes in positive'),\
             'ATTRCOMP' :  _('Practise attributes in comparative'),\
             'ATTRSUP' :  _('Practise attributes in superlative'),\
@@ -72,12 +72,12 @@ class Gameview:
         if request and request.method == 'POST':
             data = request.POST.copy()
 
-            print request.POST
+            #print request.POST
             # Settings form is checked and handled.
             settings_form = MorphForm(request.POST)
             for k in settings_form.data.keys():
                 self.settings[k] = settings_form.data[k]
-                print k, settings_form.data[k]
+                #print k, settings_form.data[k]
                 
             self.syll_settings(settings_form)
             if settings_form.data.has_key('book'):
