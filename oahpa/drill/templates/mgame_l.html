@@ -33,7 +33,8 @@
 <input type="submit" name="settings" value="{% trans "New set" %}" />
 
 {% endblock %}
-{% block instructions %}<p>{{ settings.gamename }}</p>{% endblock %}
+{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block instructions %}{% trans "Add numerals in correct forms." %}{% endblock %}
 
 {% block question %}
 
