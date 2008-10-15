@@ -20,36 +20,36 @@ class Gameview:
         self.settings = {}
 
         self.gamenames = {
-            'ATTR' :  _('attributive'),\
-            'ATTRPOS' :  _('attributive positive'),\
-            'ATTRCOMP' :  _('attributive comparative'),\
-            'ATTRSUP' :  _('attributive superlative'),\
-            'PREDPOS' :  _('predicative positive'),\
-            'PREDCOMP' :  _('predicative comparative'),\
-            'PREDSUP' :  _('predicative superlative'),\
-            'NUM-ATTR' :  _('attributive'),\
-            'NOMPL' :  _('plural'),\
-            'N-ILL' :  _('illative'),\
-            'N-ACC' :  _('accusative'),\
-            'N-COM' :  _('comitative'),\
-            'N-ESS' :  _('essive'),\
-            'N-GEN' :  _('genitive'),\
-            'N-LOC' :  _('locative'),\
-            'NUM-ILL' :  _('illative'),\
-            'NUM-ACC' :  _('accusative'),\
-            'NUM-COM' :  _('comitative'),\
-            'NUM-ESS' :  _('essive'),\
-            'NUM-GEN' :  _('genitive'),\
-            'NUM-LOC' :  _('locative'),\
-            'COLL-NUM' :  _('collective'),\
-            'PRS'   :  _('present'),\
-            'PRT'   : _('past'),\
-            'COND'  : _('conditional'), \
-            'IMPRT' : _('imperative'),\
-            'POT'   : _('potential'), \
-            'V-COND'  : _('conditional'), \
-            'V-IMPRT' : _('imperative'),\
-            'V-POT'   : _('potential') }
+            'ATTR' :  _('Practise adjective attributes'),\
+            'ATTRPOS' :  _('Practise attributes in positive'),\
+            'ATTRCOMP' :  _('Practise attributes in comparative'),\
+            'ATTRSUP' :  _('Practise attributes in superlative'),\
+            'PREDPOS' :  _('Practise predicative in positive'),\
+            'PREDCOMP' :  _('Practise predicative in comparative'),\
+            'PREDSUP' :  _('Practise predicative in superlative'),\
+            'NUM-ATTR' :  _('Practise numeral attributes'),\
+            'NOMPL' :  _('Practise plural'),\
+            'N-ILL' :  _('Practise illative'),\
+            'N-ACC' :  _('Practise accusative'),\
+            'N-COM' :  _('Practise comitative'),\
+            'N-ESS' :  _('Practise essive'),\
+            'N-GEN' :  _('Practise genitive'),\
+            'N-LOC' :  _('Practise locative'),\
+            'NUM-ILL' :  _('Practise numerals in illative'),\
+            'NUM-ACC' :  _('Practise numerals in accusative'),\
+            'NUM-COM' :  _('Practise numerals in comitative'),\
+            'NUM-ESS' :  _('Practise numerals in essive'),\
+            'NUM-GEN' :  _('Practise numerals in genitive'),\
+            'NUM-LOC' :  _('Practise numerals in locative'),\
+            'COLL-NUM' :  _('Practise collective numerals'),\
+            'PRS'   :  _('Practise present'),\
+            'PRT'   : _('Practise past'),\
+            'COND'  : _('Practise conditional'), \
+            'IMPRT' : _('Practise imperative'),\
+            'POT'   : _('Practise potential'), \
+            'V-COND'  : _('Practise conditional'), \
+            'V-IMPRT' : _('Practise imperative'),\
+            'V-POT'   : _('Practise potential') }
         
     def syll_settings(self,settings_form):
 
