@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-15 10:12+0300\n"
+"POT-Creation-Date: 2008-10-15 14:43+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,7 @@ msgstr "essiivi"
 
 #: drill/forms.py:41 drill/forms.py:66
 msgid "attributive"
-msgstr ""
+msgstr "attribuutti"
 
 #: drill/forms.py:51
 msgid "attributive positive"
@@ -160,19 +160,19 @@ msgstr ""
 msgid "All"
 msgstr "Kaikki"
 
-#: drill/forms.py:106 drill/templates/quizz_n.html:23
+#: drill/forms.py:106 drill/templates/quizz_n.html:24
 msgid "rare"
 msgstr "harvinaiset"
 
-#: drill/forms.py:107 drill/templates/quizz_n.html:22
+#: drill/forms.py:107 drill/templates/quizz_n.html:23
 msgid "common"
 msgstr "yleiset"
 
-#: drill/forms.py:111 drill/templates/quizz_n.html:19
+#: drill/forms.py:111 drill/templates/quizz_n.html:20
 msgid "world"
 msgstr "maailma"
 
-#: drill/forms.py:112 drill/templates/quizz_n.html:18
+#: drill/forms.py:112 drill/templates/quizz_n.html:19
 msgid "sapmi"
 msgstr ""
 
@@ -305,8 +305,9 @@ msgid "String to numeral"
 msgstr "Sanasta numeroon"
 
 #: drill/views.py:23
-msgid "Practise adjective attributes"
-msgstr "Harjoittele adjektiiviattribuutteja"
+#, fuzzy
+msgid "Practise attributes"
+msgstr "Harjoittele attribuuttimuotoja"
 
 #: drill/views.py:24
 msgid "Practise attributes in positive"
@@ -412,19 +413,19 @@ msgstr "Harjoittele imperatiivia"
 msgid "Practise potential"
 msgstr "Harjoittele potentiaalia"
 
-#: drill/templates/game.html:131
+#: drill/templates/game.html:135
 msgid "Congratulations!"
 msgstr "Onneksi olkoon!"
 
-#: drill/templates/game.html:135
+#: drill/templates/game.html:139
 msgid "Your score:"
 msgstr "Pisteesi"
 
-#: drill/templates/game.html:144
+#: drill/templates/game.html:148
 msgid "Test answers"
 msgstr "Testaa vastauksesi"
 
-#: drill/templates/game.html:147
+#: drill/templates/game.html:151
 msgid "Show correct answers"
 msgstr "Näytä oikeat vastaukset"
 
@@ -436,7 +437,7 @@ msgstr "Morfologia"
 msgid "Stem"
 msgstr "Vartalon tyyppi"
 
-#: drill/templates/mgame.html:14 drill/templates/quizz.html:12
+#: drill/templates/mgame.html:14 drill/templates/quizz.html:13
 #: drill/templates/vasta.html:11
 msgid "Book"
 msgstr "Oppikirja"
@@ -469,60 +470,87 @@ msgid "Eastern"
 msgstr "Itäinen"
 
 #: drill/templates/mgame.html:37 drill/templates/mgame_l.html:33
-#: drill/templates/num.html:21 drill/templates/quizz.html:24
-#: drill/templates/quizz_n.html:31 drill/templates/vasta.html:22
+#: drill/templates/num.html:24 drill/templates/quizz.html:25
+#: drill/templates/quizz_n.html:32 drill/templates/vasta.html:22
 msgid "New set"
 msgstr "Uusi peli"
 
-#: drill/templates/mgame_a.html:6 drill/templates/mgame_v.html:6
+#: drill/templates/mgame_a.html:5
+msgid "Add adjectives in correct forms."
+msgstr "Kirjoita adjektiivi oikeassa muodossa."
+
+#: drill/templates/mgame_a.html:7 drill/templates/mgame_v.html:7
 msgid "Type"
 msgstr "Laji"
 
-#: drill/templates/mgame_a.html:6
+#: drill/templates/mgame_a.html:7
 msgid "Grade"
 msgstr "Vertailuaste"
 
-#: drill/templates/mgame_l.html:10 drill/templates/mgame_n.html:6
+#: drill/templates/mgame_l.html:10 drill/templates/mgame_n.html:7
 msgid "Case"
 msgstr "Sija"
+
+#: drill/templates/mgame_l.html:37
+msgid "Add numerals in correct forms."
+msgstr "Anna lukusanat oikeissa muodoissa."
+
+#: drill/templates/mgame_n.html:5
+msgid "Add nouns in correct forms."
+msgstr "Kirjoita nominit oikeissa muodoissa."
+
+#: drill/templates/mgame_v.html:5
+msgid "Add verbs in correct forms."
+msgstr "Kirjoita verbit oikeissa muodoissa."
 
 #: drill/templates/num.html:4 templates/oahpa.html:239
 #: templates/oahpa.html.py:246
 msgid "Numerals"
 msgstr "Lukusanat"
 
-#: drill/templates/num.html:11
-msgid "Select the range of numerals"
+#: drill/templates/num.html:8
+msgid "Forms for numerals."
+msgstr "Anna numeraali perusmuodossa."
+
+#: drill/templates/num.html:14
+msgid "Select the range of numerals."
 msgstr "Valitse lukujoukko"
 
 #: drill/templates/quizz.html:4 drill/templates/quizz_n.html:4
 msgid "Quizz"
 msgstr "Leksa"
 
-#: drill/templates/quizz.html:6 drill/templates/quizz_n.html:6
-#: drill/templates/vasta.html:6
-msgid "Instructions.."
-msgstr "Ohjeet.."
+#: drill/templates/quizz.html:7
+msgid "Give translations for words."
+msgstr "Kirjoita sanoille käännösvastineet."
 
-#: drill/templates/quizz.html:11
+#: drill/templates/quizz.html:12
 msgid "Set"
 msgstr "Aihepiiri"
 
-#: drill/templates/quizz.html:13 drill/templates/quizz_n.html:13
+#: drill/templates/quizz.html:14 drill/templates/quizz_n.html:14
 msgid "Select the language pair"
 msgstr "Kielipari"
 
-#: drill/templates/quizz_n.html:11
-msgid "Geography"
-msgstr "Maantieteelliset"
+#: drill/templates/quizz_n.html:7
+msgid "Give translations for placenames."
+msgstr "Käännä paikannimet. Voit valita sanat yleisyyden ja maantieteellisen sijainnin mukaan."
 
 #: drill/templates/quizz_n.html:12
+msgid "Geography"
+msgstr "Sijainti"
+
+#: drill/templates/quizz_n.html:13
 msgid "Frequency"
 msgstr "Yleisyys"
 
 #: drill/templates/vasta.html:4 templates/oahpa.html:248
 msgid "Vasta"
 msgstr "Vasta"
+
+#: drill/templates/vasta.html:6
+msgid "Instructions.."
+msgstr "Ohjeita.."
 
 #: feedback/templates/feedback.html:17
 msgid "The following information is optional."
@@ -569,7 +597,7 @@ msgstr "Adjektiivit"
 
 #: templates/oahpa.html:241
 msgid "Contextual Morfa"
-msgstr ""
+msgstr "Konteksti-Morfa"
 
 #: templates/oahpa.html:255
 msgid "Leksa"
@@ -625,6 +653,9 @@ msgstr[1] ""
 #: templates/admin/drill/word/change_list.html:14
 msgid "Search using lemma or semantic class"
 msgstr ""
+
+#~ msgid "Practise adjective attributes"
+#~ msgstr "Harjoittele adjektiiviattribuutteja"
 
 #~ msgid "go-questions"
 #~ msgstr "go-kysymys"
