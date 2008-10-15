@@ -20,6 +20,7 @@ class Gameview:
         self.settings = {}
 
         self.gamenames = {
+            'ATTR' :  _('attributive'),\
             'ATTRPOS' :  _('attributive positive'),\
             'ATTRCOMP' :  _('attributive comparative'),\
             'ATTRSUP' :  _('attributive superlative'),\
