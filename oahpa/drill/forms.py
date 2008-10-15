@@ -356,10 +356,13 @@ class MorphQuestion(forms.Form):
                          'Pl1':'mun','Pl2':'don','Pl3':'son',\
                          'Du1':'mun','Du2':'don','Du3':'son'}
         
-        tmp_translations = []
-        for item in translations:
-            tmp_translations.append(item.lemma.encode('utf-8'))
-        self.translations = string.join(tmp_translations, ', ' )
+        # Take only the first translation for the tooltip
+        #tmp_translations = []
+        #for item in translations:
+        #    tmp_translations.append(item.lemma.encode('utf-8'))
+        #self.translations = string.join(tmp_translations, ', ' )
+        if len(translations)>0:
+            self.translations = translations[0].lemma.encode('utf-8')
         
         for item in fullforms:
             self.correct_anslist.append(item.fullform)
