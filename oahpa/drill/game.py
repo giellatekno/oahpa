@@ -19,10 +19,11 @@ class Game:
         self.form_list = []
         self.count = ""
         self.score = ""
+        self.comment = ""
         self.settings = settings
         self.all_correct = ""
         self.show_correct = 0
-        self.num_fields = 5
+        self.num_fields = 6
 
         if self.settings.has_key('semtype'):
             if self.settings['semtype'] == 'all':
@@ -123,7 +124,6 @@ class Game:
 
             new_db_info = {}
 
-            print n, "GAMETYPE", self.settings['gametype']
             if self.settings.has_key('gametype') and (self.settings['gametype'] == 'qa' or self.settings['gametype'] == 'context'):
                 new_db_info = self.get_db_info(db_info)
             if not new_db_info:
@@ -143,6 +143,7 @@ class Game:
         # Count correct answers:
         self.all_correct=0
         self.score=""
+        self.comment=""
         i=0
         for form in self.form_list:
             if form.error == "correct":
@@ -152,6 +153,11 @@ class Game:
 
         if self.show_correct or self.all_correct:
             self.score = self.score.join([`i`, "/", `len(self.form_list)`])
+
+        if self.show_correct or self.all_correct:
+            if i==1: i=2
+            com_count = Comment.objects.filter(Q(level=i) & Q(lang="nob")).count()
+            self.comment = Comment.objects.filter(Q(level=i) & Q(lang="nob"))[randint(0,com_count-1)].comment
 
 
 class BareGame(Game):
