@@ -40,6 +40,8 @@ parser.add_option("-n", "--num", dest="numerals",
 parser.add_option("-l", "--place", dest="placenamefile",
                   action="store_true", default=False,
                   help="If placenames")
+parser.add_option("-c", "--comments", dest="commentfile",
+                  help="XML-file for comments")
 parser.add_option("-u", "--update", dest="update",
                   action="store_true", default=False,
                   help="If update data")
@@ -80,6 +82,10 @@ if options.messagefile:
     questions.read_messages(options.messagefile)
     exit()
 
+if options.commentfile:
+    linginfo.read_comments(options.commentfile)
+	exit()
+	
 if not options.infile:
     exit()
 
@@ -110,6 +116,8 @@ for e in tree.getElementsByTagName("entry"):
     compare=""
     frequency=""
     geography=""
+    only_sg = 0
+    only_pl = 0
     
     if e.getElementsByTagName("stem"):
         stem=e.getElementsByTagName("stem")[0].getAttribute("class")
@@ -130,6 +138,11 @@ for e in tree.getElementsByTagName("entry"):
 
     if e.getElementsByTagName("geography"):
         geography=e.getElementsByTagName("geography")[0].getAttribute("class")
+
+    if e.getElementsByTagName("only-sg"):
+        only_sg = 1
+    if e.getElementsByTagName("only-pl"):
+        only_pl = 1
 
     if e.getElementsByTagName("valency"):
         valencies = e.getElementsByTagName("valency")[0]
@@ -156,8 +169,8 @@ for e in tree.getElementsByTagName("entry"):
     # Update old one if the word was found
     if word_elements:
 
-        if not options.update:
-            print "Entry exists for ", lemma;
+        #if not options.update:
+        #    print "Entry exists for ", lemma;
         w=word_elements[0]
         w.pos=pos
         w.lemma=lemma
@@ -165,7 +178,6 @@ for e in tree.getElementsByTagName("entry"):
         w.rime=rime
         w.compare = compare
         w.attrsuffix = attrsuffix
-        print "updating.."
         w.soggi=soggi
         w.gradation=gradation
         w.diphthong=diphthong
@@ -196,7 +208,7 @@ for e in tree.getElementsByTagName("entry"):
         for form in linginfo.paradigm:
             g=form.classes
             if w.pos == "A" and w.compare == "no" and (g.get('Grade')=="Comp" or g.get('Grade')=="Superl"):
-                print g.get('Grade')
+                #print g.get('Grade')
                 continue
             #if w.pos == "N" and w.plural == "no" and (form.count('Pl')>0):
             #    continue
@@ -212,7 +224,15 @@ for e in tree.getElementsByTagName("entry"):
             t.save()
             form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
             form.save()
-                
+
+    if only_sg:
+        print "deleting forms for", w.lemma
+        Form.objects.filter(Q(word=w.id) & Q(tag__number="Pl")).delete()
+    if only_pl:
+        print "deleting forms for", w.lemma
+        Form.objects.filter(Q(word=w.id) & Q(tag__number="Sg")).delete
+ 				
+
     if e.getElementsByTagName("sources"):
         sources = e.getElementsByTagName("sources")[0]
         elements=sources.getElementsByTagName("book")
