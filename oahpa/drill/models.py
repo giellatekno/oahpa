@@ -3,6 +3,11 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
+class Comments(models.Model):
+    lang = models.CharField(max_length=5)	
+    comment = models.CharField(max_length=50)	
+    level = models.CharField(max_length=5)
+
 class Log(models.Model):
     game = models.CharField(max_length=10)
     date = models.DateField(blank=True, null=True)
