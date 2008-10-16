@@ -7,7 +7,7 @@
 
 <table width="90%">
 <tr>
-<td>{% block gamename %}{% endblock %}</br>
+<td>
 
 <table>
 <tr><td>
@@ -41,9 +41,6 @@
        {% else %}
        ___________________
       {% endifequal %}
-       {% ifequal settings.gametype "qa" %}
-        (error in {{ form.problems }})
-       {% endifequal %}
     {% endifequal %}
     {% if form.pron_imp %}
     &nbsp;&nbsp;{{ form.pron_imp }}&nbsp;&nbsp;
@@ -95,13 +92,11 @@
       {% ifequal form.error "error" %}
 	   <!-- Feedback -->
           {% if form.feedback %}
-           {{ form.problems }}
+		  <img width="15" height="15" border="0" src="/oahpa/media/error.jpg"/>
 		    <div class='popupcontent' id='popup_{{ forloop.counter }}'>{{ form.feedback }}</div>
-			<a href="#" onclick="showPopup(300,100,'popup_{{ forloop.counter }}');" ><small>help</small></a>
-<!--	    <a href="javascript:feedback('{{ form.feedback }}');"><small>help</small></a>-->
-<!--	    {{ form.feedback }}-->
+			<a href="#" onclick="showPopup(300,150,'popup_{{ forloop.counter }}');" ><font color="#093970"><small>{% trans "help" %}</small></font></a>
           {% else %}
-           {{ form.problems }}
+		  <img src="/oahpa/media/error.jpg"/>	
           {% endif %}
       {% endifequal %}
   {% endif %}
@@ -155,7 +150,11 @@
 </tr>
 </table>
 </td>
-<td width="30%" valign="top"><table border="1" cellpadding="10"><tr><td>{% block instructions %}{% endblock %}</td></tr></table></td>
+<td width="30%" valign="top"><table border="1"
+cellpadding="10"><tr><td>
+<p>{% block gamename %}{% endblock %}</p>
+
+{% block instructions %}{% endblock %}</td></tr></table></td>
 </tr>
 </table>
 
