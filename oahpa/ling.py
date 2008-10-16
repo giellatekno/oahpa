@@ -159,7 +159,6 @@ class Paradigm:
                 form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
                 form.save()
 
-
 class Questions:
 
     def read_element(self,qaelement,el,el_id,qtype):
@@ -586,6 +585,22 @@ class Questions:
             
             fm, created = Feedbackmsg.objects.get_or_create(msgid=mid, message=message)
             fm.save()
+
+
+    def read_comments(self, commentfile):
+        xmlfile=file(commentfile)
+        tree = _dom.parse(commentfile)        
+
+        comments_el = tree.getElementsByTagName("comments")[0]
+        lang = comments_el.getAttribute("xml:lang")
+
+        for el in comments_el.getElementsByTagName("comment"):
+            level = el.getAttribute("level")
+            for com in el.getElementsByTagName("text"):
+                text = com.firstChild.data
+                print text
+                comment, created = Comment.objects.get_or_create(lang=lang, comment=text, level=level)
+                comment.save()
 
     def set_null(self):
 
