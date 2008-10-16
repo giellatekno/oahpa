@@ -50,6 +50,7 @@ class Gameview:
             'V-COND'  : _('Practise conditional'), \
             'V-IMPRT' : _('Practise imperative'),\
             'V-POT'   : _('Practise potential') }
+
         
     def syll_settings(self,settings_form):
 
@@ -154,6 +155,7 @@ class Gameview:
             'forms': game.form_list,
             'count': game.count,
             'score': game.score,
+            'comment': game.comment,
             'all_correct': game.all_correct,
             'show_correct': game.show_correct,
             })
@@ -312,6 +314,7 @@ class Vastaview:
             'forms': game.form_list,
             'count': game.count,
             'score': game.score,
+            'comment': game.comment,
             'all_correct': game.all_correct,
             'show_correct': game.show_correct,
             })
@@ -406,6 +409,7 @@ class Quizzview(Gameview):
             'forms': game.form_list,
             'count': game.count,
             'score': game.score,
+            'comment': game.comment,
             'all_correct': game.all_correct,
             'show_correct': game.show_correct,
             })
@@ -475,6 +479,7 @@ def numgame(request):
         'forms': game.form_list,
         'count': game.count,
         'score': game.score,
+        'comment': game.comment,
         'all_correct': game.all_correct,
         'show_correct': game.show_correct,
     })
