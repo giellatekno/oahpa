@@ -3,9 +3,9 @@ from django.utils.translation import gettext_lazy as _
 
 # Create your models here.
 
-class Comments(models.Model):
+class Comment(models.Model):
     lang = models.CharField(max_length=5)	
-    comment = models.CharField(max_length=50)	
+    comment = models.CharField(max_length=100)	
     level = models.CharField(max_length=5)
 
 class Log(models.Model):
