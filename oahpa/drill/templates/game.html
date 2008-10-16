@@ -126,13 +126,23 @@
 
 <tr><td>
 &nbsp;<br/>
+
+
 {% if all_correct %}
 {% trans "Congratulations!" %}
 {% endif %}
+
 {% if score %}
 <br/>
 {% trans "Your score:" %} {{ score }}
 {% endif %}
+
+{% if comment %}
+<br/>
+{{ comment }}
+{% endif %}
+
+
 </td>
 </tr>
 <tr>
