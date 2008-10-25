@@ -160,6 +160,10 @@ LIST EOS = (<<<) (</s>);
 # Tags declared as single-membered LISTs 
 # ======================================
 
+LIST QDL = QDL ;
+
+# Spelling-error
+LIST QMRK = ? ;
 
 
 # Parts of speech
@@ -5811,10 +5815,6 @@ MAPPING-PREFIX = & ;
 
           SECTION
 
-LIST QDL = QDL ;
-
-# Spelling-error
-LIST QMRK = ? ;
 
 # For spellingerrors:
 MAP (&err-spellingerror) TARGET QMRK (NEGATE *-1 QDL LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom))  ;
@@ -5951,7 +5951,7 @@ LIST TARGETQUESTION-ESS = ("mii" Ess) ("manin" Adv) ("gii" Ess) ;
 REMOVE Acc (-1 BOS)(0 ("galle") OR ("gallis") LINK NOT *1 V-TRANS-ACT-NOT-ACT BARRIER QDL)(*1 QDL);
 REMOVE Loc (-1 BOS)(0 ("galle") LINK 1 VFIN)(*1 QDL);
 REMOVE Nom (-1 BOS)(0 ("galle") LINK 1 N)(*1 QDL);
-
+REMOVE Gen (0 TARGETQUESTION-ACC LINK -1 BOS)(1 VFIN OR Pron);
 
 MAP (&grm-missing-NumSg) TARGET ("galle" Sg Nom) IF (*1 QDL LINK NOT *1 (Num Sg) BARRIER S-BOUNDARY);
 MAP (&grm-missing-NumPl) TARGET ("galle" Pl) IF (*1 QDL LINK NOT *1 (Num Pl) BARRIER S-BOUNDARY);
@@ -6036,7 +6036,8 @@ MAP (&grm-non-agreement) TARGET HALFAGR IF (*-1 QDL)(NOT 0 Ess)(*1 N BARRIER NOT
 MAP (&grm-non-agreement) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Com))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Com));
 MAP (&grm-non-agreement) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Com));
 
-MAP (&grm-wrong-case) TARGET N IF (*-1 (Num Sg Nom) OR (Num Sg Acc) BARRIER NOT-ADJ LINK *-1 QDL)(NOT 0 Gen OR Acc);
+# The intension is good, but one should think that it is bigger chance that the N has correct case that the numeral.
+#MAP (&grm-wrong-case) TARGET N IF (*-1 (Num Sg Nom) OR (Num Sg Acc) BARRIER NOT-ADJ LINK *-1 QDL)(NOT 0 Gen OR Acc);
 
 # guokte viesu
 # guovtti viesu, guovtti viesus, guovtti vissui
@@ -6080,6 +6081,7 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1
 
 #SELECT VERB ;
 
+SELECT V-3 (-1 HAB-ACTOR + Loc LINK *-1 QDL) ;
 
 MAP (&grm-should-be-Vfin) TARGET QDL IF (NOT *1 VFIN);
 	# You should use a finite verb when answering...
@@ -6117,6 +6119,13 @@ MAP (&grm-non-agr-subj-v) TARGET VFIN IF (0 $$VFIN-PRON-TAG LINK -1 (Pers Nom) L
 MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Sg3 LINK -1 (N Sg Nom) LINK NOT 0 (N Num Nom) LINK *-1 QDL) ;
 MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Pl3 LINK -1 (N Pl Nom) LINK *-1 QDL) ;
 MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Du3 LINK -1 DUALIS-NOUN + Nom LINK *-1 QDL) ;
+
+
+# -------------
+# After Neg
+# -------------
+
+MAP (&grm-should-negV) TARGET V IF (-1 Neg)(NOT 0 ConNeg OR PrfPrc) ;
 
 # -------------
 # ONLY ONE VFIN
@@ -6195,7 +6204,7 @@ MAP (&grm-incorr-tense-past) TARGET PAST-MARKER (-1 VFIN + Prs LINK *-1 QDL);
 # ------------------------
 
 
-MAP (&dia-neg) TARGET QDL IF (*-1 Qst OR go)(*1 Neg);
+MAP (&dia-neg) TARGET QDL IF (*1 Neg BARRIER S-BOUNDARY);
 	## Háliidatgo bruvssa? In háliit.
 MAP (&dia-pos) TARGET QDL IF (*-1 Qst OR go)(NOT *1 Neg);
 	## Háliidatgo bruvssa? De háliidan.
@@ -6217,17 +6226,17 @@ MAP (&dia-target) TARGET Num IF (*-1 QDL LINK *-1 ("galle") LINK -1 BOS);
 MAP (&dia-target) TARGET Ord IF (*-1 QDL LINK *-1 ("gallát") OR ("galládat") LINK -1 BOS);
 MAP (&dia-target) TARGET NUM-ADV IF (*-1 QDL LINK *-1 ("gallii") LINK -1 BOS);
 
-MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM LINK -1 BOS)(NEGATE *-1 QDL LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom))  ;
-MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC LINK -1 BOS)(NEGATE *1 (N Acc) BARRIER VERB OR CC) ;
-MAP (&dia-target) TARGET VFIN IF (*-1 QDL LINK *-1 WORK-V LINK *-1 TARGETQUESTION-ACC LINK -1 BOS)(NOT 0 Neg) ;
+MAP (&dia-target) TARGET NP-HEAD + Nom IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM LINK NOT 0 Num  LINK -1 BOS)(NEGATE *-1 QDL LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom))  ;
+MAP (&dia-target) TARGET NP-HEAD + Acc IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC LINK NOT 0 Num LINK -1 BOS)(NEGATE *1 (N Acc) BARRIER VERB OR CC) ;
+MAP (&dia-target) TARGET VFIN IF (*-1 QDL LINK *-1 WORK-V LINK *-1 TARGETQUESTION-ACC LINK NOT 0 Num  LINK -1 BOS)(NOT 0 Neg) ;
 
 MAP (&dia-dont-know) TARGET ("diehtit" ConNeg) (*-1 QDL BARRIER S-BOUNDARY LINK NOT *-1 ("diehtit")) ;
 
-MAP (&dia-target) TARGET (N Gen) IF (*-1 QDL LINK *-1 TARGETQUESTION-GEN LINK -1 BOS) ;
-MAP (&dia-target) TARGET (N Ill) IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL OR ("gosa") LINK -1 BOS) ;
-MAP (&dia-target) TARGET (N Loc) IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC OR ("gos") OR ("gokko") LINK -1 BOS) ;
-MAP (&dia-target) TARGET (N Com) IF (*-1 QDL LINK *-1 TARGETQUESTION-COM LINK -1 BOS) ;
-MAP (&dia-target) TARGET (N Ess) IF (*-1 QDL LINK *-1 TARGETQUESTION-ESS LINK -1 BOS) ;
+MAP (&dia-target) TARGET NP-HEAD + Gen IF (*-1 QDL LINK *-1 TARGETQUESTION-GEN LINK NOT 0 Num  LINK -1 BOS) ;
+MAP (&dia-target) TARGET NP-HEAD + Ill IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL LINK NOT 0 Num  OR ("gosa") LINK -1 BOS) ;
+MAP (&dia-target) TARGET NP-HEAD + Loc IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC  OR ("gos") OR ("gokko") LINK NOT 0 Num  LINK -1 BOS) ;
+MAP (&dia-target) TARGET NP-HEAD + Com IF (*-1 QDL LINK *-1 TARGETQUESTION-COM LINK NOT 0 Num  LINK -1 BOS) ;
+MAP (&dia-target) TARGET NP-HEAD + Ess IF (*-1 QDL LINK *-1 TARGETQUESTION-ESS LINK NOT 0 Num  LINK -1 BOS) ;
 
 MAP (&dia-target) TARGET DOPPE IF (*-1 QDL LINK *-1 ("gos") OR ("gokko") LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Loc)) ;
 # picking "dáppe" if no Loc
@@ -6262,7 +6271,7 @@ MAP (&dia-name) TARGET Prop IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("biila") L
 
 
 # Picking the age - these do not function yet 
-MAP (&dia-adult) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<number>20>))  ;     []    ("([0-9]|1[0-3])"r)
+MAP (&dia-adult) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<number>20>))  ;  #   []    ("([0-9]|1[0-3])"r)
 MAP (&dia-young) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<5<number<20>))  ;          "2[0-5]"r
 MAP (&dia-child) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<number<6>))  ;
 
@@ -6326,6 +6335,7 @@ MAP (&dia-child) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<nu
 # &grm-shouldNotAttr    this adjective should be predicative form
 # &grm-should-be-Vfin   your answer should always contain a finite verb
 # &grm-should-not-Vfin  this verb should not be finite
+# &grm-should-negV		wrong verb-form after Neg
 # &grm-incorr-pers-nr   you should answer with another Person-Number
 # &grm-should-pers      you shold answer with a pronoun
 # &grm-habitive			wrong habitiv-construction
