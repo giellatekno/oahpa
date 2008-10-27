@@ -5800,9 +5800,22 @@ REMOVE:r1432 N IF (-1 Gen)(0 ("vuostái"));
 	# (more general 0?)
 	
 
+
+
+
+
+
+
+
 ############################################################################
-### HERE THE PED-RULES START  ##############################################
 ############################################################################
+###                                       ##################################
+###        HERE THE PED-RULES START       ##################################
+###                                       ##################################
+############################################################################
+############################################################################
+
+
 
 
 
@@ -5908,14 +5921,14 @@ MAP (&grm-missing-Gen-PP) TARGET N (*-1 QDL)(NOT 0 Gen LINK 1 Po) ;
 # ----------
 
 
-LIST Attr-CC-Adv = Attr CC Adv ;
-LIST Attr-CC-Adv-Num = Attr CC Adv Num ;
-LIST Attr-CC-Adv-Num-Gen = Attr CC Adv Num Gen ;
-SET NOT-Attr-CC-Adv = WORD - Attr-CC-Adv ;
-SET NOT-Attr-CC-Adv-Num = WORD - Attr-CC-Adv-Num ;
-SET NOT-Attr-CC-Adv-Num-Gen = WORD - Attr-CC-Adv-Num-Gen ;
+LIST Attr-CC-Adv             = Attr CC Adv ;
+LIST Attr-CC-Adv-Num         = Attr CC Adv Num ;
+LIST Attr-CC-Adv-Num-Gen     = Attr CC Adv Num Gen ;
+SET  NOT-Attr-CC-Adv         = WORD - Attr-CC-Adv ;
+SET  NOT-Attr-CC-Adv-Num     = WORD - Attr-CC-Adv-Num ;
+SET  NOT-Attr-CC-Adv-Num-Gen = WORD - Attr-CC-Adv-Num-Gen ;
 
-# Inside the NP, we choose what suits to it, if there is reading for it:
+# Inside the NP, we choose what suits it, if there is a reading for it:
 SELECT Adv (0 GRADE-ADV + A LINK *-1 QDL) ;
     ## hui boares
 SELECT Attr (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ; 
@@ -6318,7 +6331,7 @@ MAP (&dia-child) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<nu
 # SEMANTICS - NOT IN USE YET
 # ---------
 
-# Probably we want need it at this time.
+# Probably we won't need it at this time.
 #LIST DRINKVERB = "juhkat" "šlubistit" "čuohkat" ;
 #MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL LINK NOT *1 LIQUID)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3)) ;
 
@@ -6326,59 +6339,59 @@ MAP (&dia-child) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<nu
 ################
 # LIST OF TAGS #
 ################
-# &dia-neg              negative content
-# &dia-nothing          anwers is "nothing"
-# &dia-pos              positive content
-# &dia-target           answer to the question - can be used in next question
-# &dia-dont-know        to easy answer - Make a comment for this. 
+# &dia-neg              	negative content
+# &dia-nothing          	anwers is "nothing"
+# &dia-pos              	positive content
+# &dia-target           	answer to the question - can be used in next question
+# &dia-dont-know        	to easy answer - Make a comment for this. 
 # &dia-name
 # &dia-adult
 # &dia-young
 # &dia-child
 
-# &err-spellingerror    spellingerror word is not in lexicon
+# &err-spellingerror    	spellingerror word is not in lexicon
 
 # &grm-NoEret			there should be "eret" 
-# &grm-falAdv           "fal" can never be initial
-# &grm-naPcle           "na" can only be initial
-# &grm-notInterj        Interj can only be initial or final
+# &grm-falAdv           	"fal" can never be initial
+# &grm-naPcle           	"na" can only be initial
+# &grm-notInterj        	Interj can only be initial or final
 
-# &grm-missing-Acc      there should be an accusative
-# &grm-missing-Com      there should be a comitative
-# &grm-missing-Ess      there should be an essive
-# &grm-missing-Gen      there should be a genetive
-# &grm-missing-Ill      there should be an illative
-# &grm-missing-Loc      there should be a locative
-# &grm-missing-Nom      there should be a nominative
-# &grm-missing-Loc-PP   there should be a Loc or a PP
-# &grm-missing-Ill-PP   there should be an Ill or a PP
+# &grm-missing-Acc      	there should be an accusative
+# &grm-missing-Com      	there should be a comitative
+# &grm-missing-Ess      	there should be an essive
+# &grm-missing-Gen      	there should be a genetive
+# &grm-missing-Ill      	there should be an illative
+# &grm-missing-Loc      	there should be a locative
+# &grm-missing-Nom      	there should be a nominative
+# &grm-missing-Loc-PP   	there should be a Loc or a PP
+# &grm-missing-Ill-PP   	there should be an Ill or a PP
 
-# &grm-should-LocPP     you should answer with a LocPo
-# &grm-should-IllPP     you should answer with an IllPo
-# &grm-missing-Gen-PP   there should be a Gen in front of the Po
+# &grm-should-LocPP     	you should answer with a LocPo
+# &grm-should-IllPP     	you should answer with an IllPo
+# &grm-missing-Gen-PP   	there should be a Gen in front of the Po
 
-# &grm-wrong-case       wrong case
-# &grm-incorr-time-expr incorrect time expression 
+# &grm-wrong-case       	wrong case
+# &grm-incorr-time-expr 	incorrect time expression 
 # &grm-incorr-tense
 # &grm-incorr-tense-future
 # &grm-incorr-tense-past
-# &grm-incorr-pers-nr   you should answer with another Person-Number
+# &grm-incorr-pers-nr   	you should answer with another Person-Number
 
-# &grm-missing-NumSg    You should answer with Num Sg
-# &grm-missing-NumPl    You should answer with Num Pl
-# &grm-missing-NNum     You should answer with N Num
-# &grm-missing-Ord      You should answer with A Ord
-
-# &grm-non-agreement    should be agreement
-# &grm-non-agr-subj-v	should be agreement subj/verbals
-# &grm-shouldAttr       this adjective should have Attr form
-# &grm-shouldNotAttr    this adjective should be predicative form
-# &grm-should-be-Vfin   your answer should always contain a finite verb
-# &grm-should-not-Vfin  this verb should not be finite
+# &grm-missing-NumSg    	You should answer with Num Sg
+# &grm-missing-NumPl    	You should answer with Num Pl
+# &grm-missing-NNum     	You should answer with N Num
+# &grm-missing-Ord      	You should answer with A Ord
+	
+# &grm-non-agreement    	should be agreement
+# &grm-non-agr-subj-v		should be agreement subj/verbals
+# &grm-shouldAttr       	this adjective should have Attr form
+# &grm-shouldNotAttr    	this adjective should be predicative form
+# &grm-should-be-Vfin   	your answer should always contain a finite verb
+# &grm-should-not-Vfin  	this verb should not be finite
 # &grm-should-negV		wrong verb-form after Neg
-# &grm-should-pers      you shold answer with a pronoun
+# &grm-should-pers      	you shold answer with a pronoun
 # &grm-habitive			wrong habitiv-construction
-# &semAnswerWithSameVerb you should answer with the same verb
+# &semAnswerWithSameVerb 	you should answer with the same verb
 # &grm-Px-shouldbe-Loc
 # &grm-not-verb-after-workverb
 # &grm-should-not-Nom
