@@ -59,18 +59,12 @@ lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
 vislcg3 = " | " + cg3 + " --grammar " + dis + " -C UTF-8"
 disamb = lookup + lookup2cg + vislcg3
 
-                
 qasettings['gametype'] = "context"                
 #qasettings['book'] = settings_form.books[settings_form.default_data['book']]
 
 game = QAGame(qasettings)
 game.init_tags()
 game.gametype = 'qa'
-new_db_info = {}
-if qasettings.has_key('qid'):
-    db_info = game.get_db_info(new_db_info, None, qasettings['qid'])
-else:
-    db_info = game.get_db_info(new_db_info, qasettings['qtype'])
 
 print "++++++"
 print "Write the answer and press enter."
@@ -78,6 +72,12 @@ print "Quit the game with \"q\" or \"quit\" or \"exit\"."
 print "+++++++"
 contin=True
 while contin:
+    new_db_info = {}
+    if qasettings.has_key('qid'):
+        db_info = game.get_db_info(new_db_info, None, qasettings['qid'])
+    else:
+        db_info = game.get_db_info(new_db_info, qasettings['qtype'])
+
     question = Question.objects.get(Q(id=db_info['question_id']))
     qtext = question.string
     
@@ -142,7 +142,7 @@ while contin:
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
 
-    ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
+    ped_cg3 = "echo \"" + analysis.encode('utf-8') + "\"" + vislcg3
     #print "***************"
     #print ped_cg3
     checked = os.popen(ped_cg3).readlines()
