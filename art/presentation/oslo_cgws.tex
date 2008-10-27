@@ -1,0 +1,145 @@
+
+\documentclass[landscape,norsk,11pt]{seminar} 
+ 
+\def\everyslide{\sf}
+\usepackage{babel}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+
+\usepackage[T1]{fontenc}
+
+\usepackage{hyperref}
+\usepackage{graphics}
+
+\slideframe{none}
+
+\title{Interaktive digitale læremiddel for sørsamisk}
+
+\author{Lene Antonsen, Biret Ánne Bals \\
+Saara Huhmarniemi, Trond Trosterud \\
+  \scalebox{0.25}[0.25]{\includegraphics{img/logoWeb070sh.jpg}} \\
+  \textit{http://giellatekno.uit.no/}}
+
+\begin{document}
+\begin{slide}
+
+\maketitle
+
+\newslide
+\textbf{Presenting our games}
+
+Numra, Leksa, Morfa, \textbf{Vasta, Sahka}
+
+\newslide
+\textbf{Integrating the spellchecker in our ped program}
+
+
+\newslide
+\textbf{Unintended lemmas, lexical level}
+Advice: How to cope with unintended lemmas?
+
+Problem
+
+e.g. $viessut$ (a rare verb)
+
+\begin{itemize}
+\item{Remove from the analyser, and get a question mark}
+\item{Make a lexeme-specific rule for the $viessu-viessut$ pair}
+\item{If lemma is from a set, say NOUN-PROBABLY-VERB, then change reading}
+\end{itemize}
+
+
+\newslide
+\textbf{Marginal morphological analyses}
+
+\begin{itemize}
+\item{Px \& strong grade pro Loc and weak grade}
+\end{itemize}
+
+
+\newslide
+
+QA information retrieval how to process questions
+interactive, aske the user for clarification
+
+QA: 
+
+Question matrixes: generate a set of questions
+
+
+\newslide
+\textbf{The goal is to train morphology Therefore:}
+
+\begin{itemize}
+\item{No elipsis							  }
+\item{Finite verb compulsatory}
+\item{No inclusive 1st person plural}
+\item{Didactics more important than pragmatics}
+\item{The answer "I do not know" is not accepted}
+\end{itemize}
+
+\newslide
+\textbf{Steps}
+
+\begin{enumerate}
+\item{Analyse (m-disambiguate) the questions and answers together}
+\item{The disambiguation is incomplete, since we are careful with the errouneous input}
+\item{Select the relevant reading}
+\item{Make \&err assignment rules}
+\item{Map \&err tag.}
+\end{enumerate}
+
+\newslide
+\textbf{Answer with the same verb}
+
+Solution: Sticky tag with regex (thanks to Tino)
+
+Exceptional handling of pro-verbs 
+
+\newslide
+\textbf{Time expressions}
+
+
+\newslide
+\textbf{Names}
+
+
+\newslide
+\textbf{Age, regex}
+
+\newslide
+
+The errors are ordered:
+
+First, we go for the finite verb
+
+
+The user gets one error message at a time, corrects according to that, and eventually gets a new error message again.
+
+
+
+Common CG up until mapping, but refraining from s-mapping
+Instead, we map the \&err tags.
+
+
+
+\newslide
+\textbf{Sahka}
+
+Default:
+
+Yes, no, and one of them as default
+
+
+
+
+
+
+
+
+\end{slide}
+\end{document}
+
+
+
+
