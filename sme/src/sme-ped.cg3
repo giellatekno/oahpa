@@ -6001,6 +6001,10 @@ MAP (&grm-missing-Ill-PP) TARGET ("gosa") IF (*1 QDL LINK NOT *1 Ill OR DOHKO OR
 MAP (&grm-missing-Acc) TARGET ("makkár") IF (1 Acc LINK NOT 0 Nom LINK *1 QDL LINK NOT *1 Acc BARRIER S-BOUNDARY);
 MAP (&grm-missing-Nom) TARGET ("makkár") IF (1 Nom LINK NOT 0 Acc LINK *1 QDL LINK NOT *1 Nom BARRIER S-BOUNDARY);
 
+MAP (&grm-Vehicle-Com) TARGET VEHICLE IF (NOT 0 Com LINK *-1 VERB LINK 0 ("vuodjit") OR ("vuolgit") OR ("mannat") BARRIER NPNH LINK *-1 QDL) ;
+
+MAP (&grm-Loc-leaving) TARGET PLACE + Loc IF (*-1 VERB LINK 0 ("vuodjit") OR ("vuolgit") OR ("mannat") BARRIER Ill OR VERB OR S-BOUNDARY LINK *-1 QDL) ;
+
 # Acc in S V O
 REMOVE Nom IF (-1 V-TRANS-ACT-NOT-ACT LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(NOT 0 TIME OR ROUTE);
 REMOVE Nom IF (-1 V-TRANS-ACT-NOT-ACT OR DURATION-V LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(0 TIME);
@@ -6395,5 +6399,5 @@ MAP (&dia-child) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<nu
 # &grm-Px-shouldbe-Loc
 # &grm-not-verb-after-workverb
 # &grm-should-not-Nom
-
-
+# &grm-Vehicle-Com
+# &grm-Loc-leaving
