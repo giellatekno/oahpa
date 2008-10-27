@@ -15,21 +15,25 @@
 
 \title{CG3 in dialogue systems - Vasta and Sahka}
 
-\author{Lene Antonsen, Biret Ánne Bals \\
+\author{Lene Antonsen, Biret Ánne Bals Baal\\
 Saara Huhmarniemi, Trond Trosterud \\
-  \scalebox{0.30}[0.30]{\includegraphics{img/logoWeb070sh.jpg}} \\
+ \scalebox{0.30}[0.30]{\includegraphics{img/logoWeb070sh.jpg}} \\
   \textit{http://giellatekno.uit.no/oahpa/}}
-
+%  \scalebox{0.10}[0.10]{\includegraphics{img/vasta.png}} \\
 \begin{document}
 \begin{slide}
 
 \maketitle
 
 \newslide
-\textbf{Pedagogical programs for learning sámi with question-answering}
+\textbf{Pedagogical programs for learning sámi with QA}\\
+\newline
+\textbf{Vasta}: The program generates questions, the student can answer quite freely - with grammatical feedback \\ \newline
+\textbf{Sahka}: A written dialogue between the program and the student - the answer decides the progress of the dialogue.
 
-\textbf{Vasta}: The program generates questions, the student can answer quite freely - with grammatical feedback \\
-\textbf{Sahka}: A written dialogue between the program and the student - the answer
+\newslide
+\textbf{Vasta}
+\scalebox{0.90}[0.90]{\includegraphics{img/vasta.png}} \\
 
 \newslide
 \textbf{Generating questions}
@@ -120,11 +124,13 @@ Possible solutions:
 
 
 \newslide
-\textbf{Marginal morphological analyses}
+\textbf{Marginal morphological analyses} \\
+e.g. possessive suffixes \\
+> Remove them (when there is another reading)
 
-\begin{itemize}
-\item{Px \& strong grade vs. Loc \& weak grade}
-\end{itemize}
+When it is the only reading, \\ e.g. Px \& strong grade vs. Loc \& weak grade: \\
+> Give a comment about it to the student
+
 
 
 %\newslide
@@ -136,11 +142,16 @@ Possible solutions:
 
 %Question matrixes: generate a set of questions
 
-
+\newslide
+\textbf{An example -- from a test student}
+%The output is manipulated  - it would not give two mappings to the same reading.
+\scalebox{.32}[.35]{\includegraphics{img/sentence_example.png}}
 
 \newslide
 \textbf{Sahka}
+\scalebox{0.90}[0.90]{\includegraphics{img/sahka.png}} \\
 
+\newslide
 Negative or affirmative \\
 One of them as default -- in case of difficulties in the analyse.
 
@@ -151,11 +162,19 @@ One of them as default -- in case of difficulties in the analyse.
 
 
 \newslide
-\textbf{Names}
+\textbf{Names}\\
+a string or a Prop  (LIST QMRK = ? ; )
 \scalebox{.30}[.30]{\includegraphics{img/picking_name.png}}
 
 \newslide
-\textbf{Age, regex}
+\textbf{Picking the age with regex}\\
+for progress of the dialogue \\
+
+\&dia-adult \\
+\&dia-young \\
+\&dia-child
+
+
 
 
 
