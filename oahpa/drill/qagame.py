@@ -550,54 +550,55 @@ class QAGame(Game):
 
         # Select answer using the id from the interface.
         # Otherwise select answer that is related to the question.
-        if db_info.has_key('answer_id'):
-            answer=Question.objects.get(id=db_info['answer_id'])
-        else:
-            answer_count=question.answer_set.count()
-            answer=question.answer_set.all()[randint(0,answer_count-1)]
+        if not self.gametype == "qa":
+            if db_info.has_key('answer_id'):
+                answer=Question.objects.get(id=db_info['answer_id'])
+            else:
+                answer_count=question.answer_set.count()
+                answer=question.answer_set.all()[randint(0,answer_count-1)]
 
-        # Generate the set of possible answers if they are not coming from the interface
-        # Or if the gametype is qa.
-        awords = {}
-        if db_info.has_key('answer_id') and self.settings['gametype'] == 'context':
-            awords=db_info['awords']
-        else:
-            # Generate the set of possible answers
-            # Here only the text of the first answer is considered!!
-            atext=answer.string
-            words_strings = set(atext.split())
+            # Generate the set of possible answers if they are not coming from the interface
+            # Or if the gametype is qa.
+            awords = {}
+            if db_info.has_key('answer_id') and self.settings['gametype'] == 'context':
+                awords=db_info['awords']
+            else:
+                # Generate the set of possible answers
+                # Here only the text of the first answer is considered!!
+                atext=answer.string
+                words_strings = set(atext.split())
 
-            print words_strings
+                print words_strings
             
-            #Initialize each element identifier
-            for w in atext.split():
-                if w== "": continue
-                #print w
-                w = w.replace("(","")
-                w = w.replace(")","")
-                info = {}
-                awords[w] = info
+                #Initialize each element identifier
+                for w in atext.split():
+                    if w== "": continue
+                    #print w
+                    w = w.replace("(","")
+                    w = w.replace(")","")
+                    info = {}
+                    awords[w] = info
 
-            # Subject and main verb are special cases:
-            # There is subject-verb agreement and correspondence with question elements.
-            if 'SUBJ' in words_strings:
-                print "generating subject.."
-                awords = self.generate_answers_subject(answer, question, awords, qwords, qtype)
+                # Subject and main verb are special cases:
+                # There is subject-verb agreement and correspondence with question elements.
+                if 'SUBJ' in words_strings:
+                    print "generating subject.."
+                    awords = self.generate_answers_subject(answer, question, awords, qwords, qtype)
 
-            if 'MAINV' in words_strings:
-                print "generating mainv.."
-                awords = self.generate_answers_mainv(answer, question, awords, qwords, qtype, 'MAINV')
+                if 'MAINV' in words_strings:
+                    print "generating mainv.."
+                    awords = self.generate_answers_mainv(answer, question, awords, qwords, qtype, 'MAINV')
 
 
-            # Rest of the syntax
-            for s in words_strings:
-                awords = self.generate_syntax(answer, question, awords, qwords, qtype, s)
+                # Rest of the syntax
+                for s in words_strings:
+                    awords = self.generate_syntax(answer, question, awords, qwords, qtype, s)
 
-        db_info['awords'] = awords
+            db_info['awords'] = awords
+            db_info['answer_id'] = answer.id
 
         # Store everything for the html form 
         db_info['question_id'] = question.id
-        db_info['answer_id'] = answer.id
         db_info['gametype'] = self.settings['gametype']
         
         return db_info
