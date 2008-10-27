@@ -28,6 +28,9 @@ parser.add_option("-q", "--questionfile", dest="questionfile",
                   help="XML-file that contains questions")
 parser.add_option("-g", "--grammarfile", dest="grammarfile",
                   help="XML-file for grammar defaults for questions")
+parser.add_option("-v", "--vasta", dest="vasta",
+                  action="store_true", default=False,
+                  help="Questions are for vasta")
 parser.add_option("-e", "--feedbackfile", dest="feedbackfile",
                   help="XML-file for feedback")
 parser.add_option("-m", "--messagefile", dest="messagefile",
@@ -58,7 +61,7 @@ if options.paradigmfile:
     linginfo.read_paradigms(options.paradigmfile, options.tagfile, options.add_db)
 
 if options.questionfile and options.grammarfile:
-    questions.read_questions(options.questionfile,options.grammarfile)
+    questions.read_questions(options.questionfile,options.grammarfile,options.vasta)
     exit()
 
 if options.grammarfile:
