@@ -22,10 +22,7 @@ urlpatterns = patterns('',
     (r'^oahpa/leksa_n/$', 'oahpa.drill.views.quizz_n'),
     (r'^oahpa/logut/$', 'oahpa.drill.views.numgame'),
     (r'^oahpa/numra/$', 'oahpa.drill.views.numgame'),
-    (r'^oahpa/vasta/$', 'oahpa.drill.views.vasta_n'),
-    (r'^oahpa/vasta_s/$', 'oahpa.drill.views.vasta_n'),
-    #(r'^oahpa/vasta_v/$', 'oahpa.drill.views.vasta_v'),
-    #(r'^oahpa/vasta_a/$', 'oahpa.drill.views.vasta_a'),
+    (r'^oahpa/vasta/$', 'oahpa.drill.views.vasta'),
     (r'^oahpa/feedback/$', 'oahpa.feedback.views.feedback'), 
         
     # Uncomment this for admin:
