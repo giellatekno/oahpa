@@ -25,6 +25,9 @@ parser.add_option("-g", "--grammar", dest="grammar",
                   help="Grammarfile")
 parser.add_option("-i", "--id", dest="qid",
                   help="Question id")
+parser.add_option("-c", "--cgout", dest="cgout",
+                  action="store_true", default=False,
+                  help="Pring cg-output.")
 parser.add_option("-q", "--qtype", dest="qtype",
                   help="question type")
 
@@ -70,20 +73,25 @@ print "++++++"
 print "Write the answer and press enter."
 print "Quit the game with \"q\" or \"quit\" or \"exit\"."
 print "+++++++"
+
+db_info = {}
 contin=True
 while contin:
-    new_db_info = {}
-    if qasettings.has_key('qid'):
-        db_info = game.get_db_info(new_db_info, None, qasettings['qid'])
-    else:
-        db_info = game.get_db_info(new_db_info, qasettings['qtype'])
+    if not db_info:
+        new_db_info = {}
+        if qasettings.has_key('qid'):
+            db_info = game.get_db_info(new_db_info, None, qasettings['qid'])
+        else:
+            db_info = game.get_db_info(new_db_info, qasettings['qtype'])
 
-    question = Question.objects.get(Q(id=db_info['question_id']))
-    qtext = question.string
+        question = Question.objects.get(Q(id=db_info['question_id']))
+        qtext = question.string
     
     qstring =""
     analysis = ""
+		
     qwords = db_info['qwords']
+
     for w in qtext.split():
         cohort=""
         if qwords.has_key(w):
@@ -135,7 +143,7 @@ while contin:
     word = os.popen(data_lookup).readlines()
     for c in word:
         c.lstrip(" ")
-        ans_cohort = ans_cohort + c
+        ans_cohort = ans_cohort + c.decode('utf-8')
 
     analysis = analysis + ans_cohort
     #print analysis
@@ -149,12 +157,11 @@ while contin:
 
     messageObj=re.compile(r'^.*(?P<msgString>&[\w-]*)\s*$', re.U)
 
-    print
-
     msgstrings = []
     for line in checked:
-        line.strip()
-        print line
+        line = line.rstrip()
+        if options.cgout:
+            print line
         matchObj=messageObj.search(line)
         if matchObj:
             msgstring = matchObj.expand(r'\g<msgString>')
@@ -168,4 +175,7 @@ while contin:
         else:
             print m
 
-
+    if not msgstrings or (len(msgstrings) == 1 and m == "dia-target"):
+        print "Buorre."
+        db_info = None
+	print
