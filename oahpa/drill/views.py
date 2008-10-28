@@ -9,8 +9,6 @@ from django.utils.translation import ugettext as _
 from game import *
 from qagame import *
 
-class Info:
-    pass
 
 class Gameview:
 
@@ -253,32 +251,37 @@ class Vastaview:
     def init_settings(self):
 
         show_data=0
-        self.settings=Info()
+        self.settings = {}
         
     def create_vastagame(self,request):
 
         count=0
         correct=0
 
+        self.settings['gametype'] = "qa"
+        
         if request.method == 'POST':
             data = request.POST.copy()
             
             # Settings form is checked and handled.
-            settings_form = QAForm(request.POST)
+            settings_form = VastaForm(request.POST)
 
             for k in settings_form.data.keys():
                 self.settings[k] = settings_form.data[k]
 
+            self.settings['allcase_context']=settings_form.allcase_context
+            self.settings['allvtype_context']=settings_form.allvtype_context
+            self.settings['allnum_context']=settings_form.allnum_context
+            self.settings['alladj_context']=settings_form.alladj_context
             self.settings['allsem']=settings_form.allsem
-            self.settings.allcase=settings_form.allcase
 
-            if settings_form.data['book']:
-                self.settings.book = settings_form.books[settings_form.data['book']]
+            if settings_form.data.has_key('book'):
+                self.settings['book'] = settings_form.books[settings_form.data['book']]
 
-            self.settings.gametype = "qa"
             # Vasta
             game = QAGame(self.settings)
             game.init_tags()
+            game.num_fields = 3
 
             game.gametype="qa"
 
@@ -290,14 +293,20 @@ class Vastaview:
                 game.check_game(data)
                 game.get_score(data)
 
-            if 'test' in data:
-                game.count=1
-            if 'show_correct' in data:
-                show_correct = 1
+            #if 'test' in data:
+            #    game.count=1
+            #if 'show_correct' in data:
+            #    show_correct = 1
 
         # If there is no POST data, default settings are applied
         else:
-            settings_form = QAForm()
+            settings_form = VastaForm()
+
+            self.settings['allsem']=settings_form.allsem
+            self.settings['allcase_context']=settings_form.allcase_context
+            self.settings['allvtype_context']=settings_form.allvtype_context
+            self.settings['allnum_context']=settings_form.allnum_context
+            self.settings['alladj_context']=settings_form.alladj_context
 
             for k in settings_form.default_data.keys():
                 self.settings[k] = settings_form.default_data[k]
@@ -306,6 +315,7 @@ class Vastaview:
             game = QAGame(self.settings)
             game.init_tags()
             game.gametype="qa"
+            game.num_fields = 3
 
             game.new_game()
 
@@ -326,15 +336,6 @@ def vasta(request):
     vastagame = Vastaview()
     vastagame.init_settings()
 
-    c = vastagame.create_vastagame(request)
-    return render_to_response('vasta.html', c)
-
-def vasta_n(request):
-
-    vastagame = Vastaview()
-    vastagame.init_settings()
-    vastagame.settings['pos']="N"
-    
     c = vastagame.create_vastagame(request)
     return render_to_response('vasta.html', c)
 
