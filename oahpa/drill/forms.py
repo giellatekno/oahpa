@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import string
 import sys
+import os
+import re
 from django import newforms as forms
 from django.http import Http404
 from django.db.models import Q
@@ -230,6 +232,22 @@ def set_settings(self):
     self.allcase = []
     for b in CASE_CHOICES:
         self.allcase.append(b[0])                
+
+    self.allcase_context = []
+    for b in CASE_CONTEXT_CHOICES:
+        self.allcase_context.append(b[0])                
+
+    self.allvtype_context = []
+    for b in VTYPE_CONTEXT_CHOICES:
+        self.allvtype_context.append(b[0])                
+
+    self.alladj_context = []
+    for b in ADJ_CONTEXT_CHOICES:
+        self.alladj_context.append(b[0])                
+
+    self.allnum_context = []
+    for b in NUM_CONTEXT_CHOICES:
+        self.allnum_context.append(b[0])                
 
             
 class MorphForm(forms.Form):
@@ -580,60 +598,6 @@ def select_words(self, qwords, awords):
     return selected_awords
 
 
-def qa_is_correct(self, atext, awords):
-    """
-    Determines if the given answer is correct (for a bound form).
-    """
-    if not self.is_valid():
-        return False
-
-    
-    self.userans = self.cleaned_data['answer']
-    answer = self.userans.rstrip()
-    answer = answer.lstrip()
-    answer = answer.rstrip('.!?,')
-
-    self.error = "error"
-
-    problems = []
-    answer_words = answer.split()
-                
-    for word in atext.split():
-        if word.count("(") > 0:
-            continue
-
-        if awords.has_key(word):
-            found = False
-            for a in answer_words:
-                if not a: continue
-                
-                aword_list = awords[word]
-                for aw in aword_list:
-                    form_elements=None
-                    if aw.has_key('fullform') and a in set(aw['fullform']):
-                        found = True
-                        break
-
-                    if aw.has_key('qelement') and aw.has_key('tag'):
-                        qelement = aw['qelement']
-                        tag = aw['tag']
-                        fullforms = Form.objects.filter(fullform=a.lower(), tag__id=tag)
-                        if not fullforms:
-                            fullforms = Form.objects.filter(fullform=a, tag__id=tag)
-                        if fullforms:
-                            for f in fullforms:
-                                if WordQElement.objects.filter(word=f.word, qelement=qelement).count()>0:
-                                    found = True
-                                    break
-            if not found:
-                problems.append(word)
-
-    self.problems = string.join(problems, ', ' )
-    if not problems:
-        self.error = "correct"
-
-    return
-
 
 class QAForm(forms.Form):
 
@@ -664,7 +628,6 @@ class QAQuestion(forms.Form):
     select_words = select_words
     set_correct = set_correct
     is_correct = is_correct
-    qa_is_correct = qa_is_correct
     qtype_verbs = set(['PRS', 'PRT', 'V-COND','V-IMPRT'])
 
         
@@ -692,10 +655,6 @@ class QAQuestion(forms.Form):
         super(QAQuestion, self).__init__(*args, **kwargs)
 
         answer_size = 20
-        if gametype == 'context':
-            answer_size=20
-        if gametype == 'qa':
-            answer_size=50
 
         self.fields['answer'] = forms.CharField(max_length = answer_size, \
                                                 widget=forms.TextInput(attrs={'size': answer_size}))
@@ -708,9 +667,6 @@ class QAQuestion(forms.Form):
         # In qagame, all words are considered as answers.
         #print awords
         form_list=[]
-        if (gametype == 'qa'):
-            self.qa_is_correct(atext,awords)
-
         
         if (gametype == 'context'):
             if len(selected_awords[task]['fullform'])>0:
@@ -752,36 +708,28 @@ class QAQuestion(forms.Form):
                     qstring = qstring + " " + w
         qstring=qstring.replace(" -","-");
                     
-        if gametype == 'context':
-            print task
-            answer_word = selected_awords[task]['word']
-            answer_tag = selected_awords[task]['tag']
-            selected_awords[task]['fullform'][0] = 'Q'
-                
-            # Get lemma for contextual morfa
-            answer_word_el = Word.objects.get(id=answer_word)
-            answer_tag_el = Tag.objects.get(id=answer_tag)
-            self.lemma = answer_word_el.lemma
+        answer_word = selected_awords[task]['word']
+        answer_tag = selected_awords[task]['tag']
+        selected_awords[task]['fullform'][0] = 'Q'
+        
+        # Get lemma for contextual morfa
+        answer_word_el = Word.objects.get(id=answer_word)
+        answer_tag_el = Tag.objects.get(id=answer_tag)
+        self.lemma = answer_word_el.lemma
             
-            # If the asked word is in Pl, generate nominal form
-            if answer_tag_el.pos=="N":
-                if answer_tag_el.number=="Sg":
-                    self.lemma = answer_word_el.lemma
+        # If the asked word is in Pl, generate nominal form
+        if answer_tag_el.pos=="N":
+            if answer_tag_el.number=="Sg":
+                self.lemma = answer_word_el.lemma
+            else:
+                print answer_word_el.lemma
+                if Form.objects.filter(Q(word__pk=answer_word) & \
+                                       Q(tag__string="N+Pl+Nom")).count()>0:                        
+                    self.lemma = Form.objects.filter(Q(word__pk=answer_word) & \
+                                                     Q(tag__string="N+Pl+Nom"))[0].fullform
                 else:
-                    print answer_word_el.lemma
-                    if Form.objects.filter(Q(word__pk=answer_word) & \
-                                           Q(tag__string="N+Pl+Nom")).count()>0:                        
-                        self.lemma = Form.objects.filter(Q(word__pk=answer_word) & \
-                                                         Q(tag__string="N+Pl+Nom"))[0].fullform
-                    else:
-                        self.lemma = answer_word_el.lemma + " (plural) fix this"
+                    self.lemma = answer_word_el.lemma + " (plural) fix this"
                 
-        # If there are errors in the qa input, give the user the opportunity to try again
-        # with the problematic fields
-        #if gametype == 'qa':
-        #    for p in self.problems:
-        #        selected_awords[p]['fullform'][0] = Q
-            
         # Format answer string
         #print "SELECTED", selected_awords
         for w in atext.split():
@@ -818,3 +766,196 @@ class QAQuestion(forms.Form):
             self.error="correct"
 
 
+def qa_is_correct(self,question,qwords):
+    """
+    Analyzes the answer and returns a message.
+    """
+    if not self.is_valid():
+        return False
+
+    # Analyzer..
+    fstdir="/Users/saara/gt/sme/bin"
+    lo = "/Users/saara/bin/lookup"
+    lookup2cg = " | /Users/saara/gt/script/lookup2cg"
+    cg3 = "/usr/local/bin/vislcg3"
+    preprocess = " | /Users/saara/gt/script/preprocess "
+    dis = "/Users/saara/ped/sme/src/sme-ped.cg3"
+
+    #fstdir="/opt/smi/sme/bin"
+    #lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
+    #lookup2cg = " | lookup2cg"
+    #cg3 = "vislcg3"
+    #preprocess = " | /usr/local/bin/preprocess "
+    #dis = "/home/saara/ped/sme/src/sme-ped.cg3"
+
+    fst = fstdir + "/sme.fst"
+    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst        
+    vislcg3 = " | " + cg3 + " --grammar " + dis + " -C UTF-8"
+    disamb = lookup + lookup2cg + vislcg3
+
+    self.userans = self.cleaned_data['answer']
+    answer = self.userans.rstrip()
+    answer = answer.lstrip()
+    answer = answer.rstrip('.!?,')
+
+    self.error = "error"
+                
+    qtext = question.string
+    
+    analysis = ""
+    for w in qtext.split():
+        cohort=""
+        if qwords.has_key(w):
+            qword = qwords[w]
+            if qword.has_key('word'):
+                if qword.has_key('fullform') and qword['fullform']:
+                    cohort = cohort + "\"<" + qword['fullform'][0].encode('utf-8') + ">\"\n"
+
+                    lemma = Word.objects.filter(id=qword['word'])[0].lemma
+                    cohort = cohort + "\t\"" + lemma.encode('utf-8') + "\""
+                if qword.has_key('tag') and qword['tag']:
+                    string = Tag.objects.filter(id=qword['tag'])[0].string
+                    tag = string.replace("+"," ")
+                    cohort = cohort + " " + tag.encode('utf+8') + "\n"
+            else:
+                word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg
+                word = os.popen(word_lookup).readlines()
+                for c in word:
+                    c.lstrip(" ")
+                    cohort = cohort + c
+        
+        if not cohort:
+            cohort = w + "\n"
+        
+        analysis = analysis + cohort.decode('utf-8')
+        
+    analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
+
+    ans_cohort=""
+    data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess + lookup + lookup2cg
+    word = os.popen(data_lookup).readlines()
+    for c in word:
+        c.lstrip(" ")
+        ans_cohort = ans_cohort + c
+
+    analysis = analysis + ans_cohort.decode('utf-8')
+    #print analysis
+    analysis = analysis.rstrip()
+    analysis = analysis.replace("\"","\\\"")
+
+    ped_cg3 = "echo \"" + analysis.encode('utf-8') + "\"" + vislcg3
+    #print "***************"
+    #print ped_cg3
+    checked = os.popen(ped_cg3).readlines()
+
+    messageObj=re.compile(r'^.*(?P<msgString>&[\w-]*)\s*$', re.U)
+
+    msgstrings = []
+    for line in checked:
+        line = line.strip()
+        print line
+        matchObj=messageObj.search(line)
+        if matchObj:
+            msgstring = matchObj.expand(r'\g<msgString>')
+            msgstrings.append(msgstring)
+
+
+    msg=""
+    for m in msgstrings:
+        m = m.replace("&","")        
+        if Feedbackmsg.objects.filter(msgid=m).count() > 0:
+            message = Feedbackmsg.objects.filter(msgid=m)[0].message
+            msg = msg + " " + message
+        else:
+            if not m == "dia-target":
+                msg = msg + " " + m
+
+    if not msg:
+        self.error = "correct"
+
+    return msg
+
+
+class VastaForm(forms.Form):
+
+    set_settings = set_settings
+
+    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
+    default_data = {'gametype' : 'qa', 'language' : 'sme', \
+                    'syll' : ['bisyllabic'], 'book' : 'all', \
+                    'case': 'N-ILL', 'case_context':'N-ILL',\
+                    'pos' : 'V', \
+                    'vtype' : 'PRS', 'vtype_context' : 'PRS', \
+                    'num_context' : 'NUM-ATTR', \
+                    'adjcase' : 'ATTR', 'grade' : 'POS'}
+
+    def __init__(self, *args, **kwargs):
+        self.set_settings()
+        super(VastaForm, self).__init__(*args, **kwargs)
+
+
+class VastaQuestion(forms.Form):
+    """
+    Questions for vasta
+    """
+
+    select_words = select_words
+    set_correct = set_correct
+    qa_is_correct = qa_is_correct
+        
+    def __init__(self, gametype, question, qwords, userans_val, correct_val, *args, **kwargs):                 
+
+        self.userans = userans_val
+        self.correct_anslist = []
+        self.qa_correct_anslist = {}
+        self.error='empty'
+        self.problems="error"
+        
+        question_widget = forms.HiddenInput(attrs={'value' : question.id})
+
+        super(VastaQuestion, self).__init__(*args, **kwargs)
+        answer_size=50
+        self.fields['answer'] = forms.CharField(max_length = answer_size, \
+                                                widget=forms.TextInput(attrs={'size': answer_size}))
+        self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
+
+        # In qagame, all words are considered as answers.
+        form_list=[]
+        self.feedback = self.qa_is_correct(question, qwords)
+        
+        self.qattrs= {}
+        for syntax in qwords.keys():
+            qword = qwords[syntax]
+            if qword.has_key('word'):
+                self.qattrs['question_word_' + syntax] = qword['word']
+            if qword.has_key('tag') and qword['tag']:
+                self.qattrs['question_tag_' + syntax] = qword['tag']
+            if qword.has_key('fullform') and qword['fullform']:
+                self.qattrs['question_fullform_' + syntax] = qword['fullform'][0]
+
+        # Forms question string and answer string out of grammatical elements and other strings.
+        qstring = ""
+
+        # Format question string
+        qtext = question.string
+        for w in qtext.split():
+            if not qwords.has_key(w): qstring = qstring + " " + w
+            else:
+                if qwords[w].has_key('fullform'):
+                    qstring = qstring + " " + qwords[w]['fullform'][0]
+                else:
+                    qstring = qstring + " " + w
+        # this is for -guovttos
+        qstring=qstring.replace(" -","-");
+        qstring=qstring.replace("- ","-");
+                    
+        # Remove leading whitespace and capitalize.
+        qstring = qstring.lstrip()
+        qstring = qstring[0].capitalize() + qstring[1:]
+
+        qstring = qstring + "?"
+        self.question=qstring
+
+        # set correct and error values
+        if correct_val == "correct":
+            self.error="correct"
