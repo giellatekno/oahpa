@@ -1,0 +1,31 @@
+{% extends "game.html" %}
+{% load i18n %}
+
+{% block name %}{% trans "Vasta" %}{% endblock %}
+{% block pagename %}/oahpa/vasta/{% endblock %}
+{% block instructions %}{% trans "Analysis for the answers may take up to couple of minutes." %}{% endblock %}
+{% block settings %}
+
+<table width="700">
+<tr>
+<!--<td>{% trans "Book" %}</td>-->
+<td>{% trans "Dialect" %} (not used)</td>
+</tr>
+<tr>
+<!--<td>{{ settingsform.book }}</td>-->
+<td>
+<input type="radio" name="dialect" value="western" checked="checked" />{% trans "Western" %}<br/>
+<input type="radio" name="dialect" value="eastern" />{% trans "Eastern" %}<br/>
+</td>
+</tr>
+</table>
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+<input type="hidden" name="gametype" value="qa" />
+
+{% endblock %}
+
+{% block question %}
+<td>{{ form.question }}</td>
+{% endblock %}
+
+
