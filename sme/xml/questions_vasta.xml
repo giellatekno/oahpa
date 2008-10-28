@@ -4,7 +4,7 @@
 -->
 
 <questions>
-  <q id="maid_odne">
+  <q id="maid_odne_pron">
     <qtype>PRS</qtype>
    <question>
       <text>Maid SUBJ MAINV odne</text>
@@ -19,13 +19,13 @@
   </q> 
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
-  <q id="somenumberorname">
+  <q id="maid_odne">
     <qtype>PRS</qtype>
     <question>
       <text>Maid SUBJ MAINV odne</text>
       <element id="SUBJ">
 	<sem class="HUMAN"/>
-	<grammar tag="N+Number+Nom"/>
+	<grammar pos="N"/>
       </element>
       <element id="MAINV">
 	<id>bargat</id> 
@@ -398,7 +398,7 @@
     <question>
       <text>Masa SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar tag="Pron"/>
+	<grammar pos="Pron"/>
       </element>
       <element id="MAINV">
 	   <grammar tag="V+Ind+Tense+Person-Number"/>
@@ -811,7 +811,7 @@
 	<grammar pos="Pron"/>
       </element>
       <element id="OBJ">
-	<grammar tag="Pron+Person-Number+Acc"/>
+	<grammar tag="Pron+Pers+Person-Number+Acc"/>
 	<id>son</id>
       </element>
        <element id="MAINV">
@@ -829,7 +829,7 @@
     <question>
       <text>Maid SUBJ MAINV oastit</text>
       <element id="SUBJ">
-	<grammar tag="N"/>
+	<grammar pos="N"/>
 	<sem class="HUMAN"/>
       </element>
       <element id="MAINV">
@@ -959,14 +959,15 @@
 
   <q id="gallis_ruoktot">
     <qtype>NUM-LOC</qtype>
-   <question>
+    <question>
       <text>Gallis SUBJ MAINV ruoktot</text>
-    <element id="MAINV">    
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
 	<id>boahtit</id> 
-	</element>
-    <element id="SUBJ">    
+      </element>
+      <element id="SUBJ">    
 	<grammar pos="Pron"/>         
-	</element>
+      </element>
     </question>
   </q>
 
@@ -1015,6 +1016,7 @@
     <question>
       <text>Galliin SUBJ MAINV</text>
       <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
 	<id>birget</id> 
       </element>
       <element id="SUBJ">    
