@@ -369,93 +369,6 @@ LIST Der/vuolle = Der/vuolle ;
 LIST Der/vuollai = Der/vuollai ;
 LIST Der/vuolde = Der/vuolde ;
 
-# Syntactic tags
-# --------------
-
-LIST @+FAUXV = @+FAUXV ;
-LIST @+FMAINV = @+FMAINV ;
-LIST @-FAUXV = @-FAUXV ;
- 
-LIST @-FMAINV = @-FMAINV ;
-LIST @-FSUBJ> = @-FSUBJ> ;
-LIST @-F<OBJ = @-F<OBJ ;
-LIST @-FOBJ> = @-FOBJ> ;
-LIST @SPRED<OBJ = @SPRED<OBJ ;
-LIST @-FADVL = @-FADVL ;
-
-SET FOBJ = @-F<OBJ OR @-FOBJ> ; 
-SET FMAINV = @-FMAINV OR @+FMAINV ;
-SET FAUXV = @-FAUXV OR @+FAUXV ;
-
-LIST @>ADVL = @>ADVL ;
-
-LIST @ADVL< = @ADVL< ;
-
-LIST @ADVL = @ADVL ;
-LIST @HAB = @HAB ;
- 
-LIST @>N = @>N ;
-
-LIST @N< = @N< ;
- 
-
-LIST @>A = @>A ;
-
-LIST @P< = @P< ;
-
-LIST @>P = @>P ;
-
-LIST @HNOUN = @HNOUN ;
-LIST @INTERJ = @INTERJ ;
- 
-LIST @>Num = @>Num;
-
-LIST @Pron< = @Pron< ;
-LIST @>Pron = @>Pron ;
-
-LIST @Num< = @Num< ;
-
-LIST @OBJ = @OBJ ;
-LIST @<OBJ = @<OBJ ;
-LIST @OBJ> = @OBJ> ;
-LIST @OPRED = @OPRED ;
-LIST @<OPRED = @<OPRED ;
-LIST @OPRED> = @OPRED> ;
-LIST @PCLE = @PCLE ;
-LIST @COMP-CS< = @COMP-CS< ;
- 
-LIST @SPRED = @SPRED ;
-LIST @<SPRED = @<SPRED ;
-LIST @SPRED> = @SPRED> ;
-LIST @SUBJ = @SUBJ ;
-LIST @<SUBJ = @<SUBJ ;
-LIST @SUBJ> = @SUBJ> ;
-SET SUBJ = @<SUBJ OR @SUBJ> OR @SUBJ ;
-SET SPRED = @<SPRED OR @SPRED> OR @SPRED ;
-SET OPRED = @<OPRED OR @OPRED> OR @OPRED ;
-
-LIST @PPRED = @PPRED ;
- 
-LIST @APP = @APP ;
-LIST @APP-N< = @APP-N< ;
-LIST @APP-Pron< = @APP-Pron< ;
-LIST @APP>Pron = @APP>Pron ;
-LIST @APP-Num< = @APP-Num< ;
-LIST @APP-ADVL< = @APP-ADVL< ;
-LIST @VOC = @VOC ;
-
-LIST @CVP = @CVP ;
-LIST @CNP = @CNP ;
-
-LIST OBJ = @<OBJ @OBJ> @OBJ @-F<OBJ @-FOBJ> ;
-LIST <OBJ = @-F<OBJ @<OBJ ;
-LIST OBJ> = @OBJ> @-FOBJ> ;
-
-SET <OBJ-OTHERS = <OBJ OR (Gen) OR (Nom) OR (Ess) OR (Loc) OR (Adv) ;
-SET OBJ>-OTHERS = OBJ> OR (Gen) OR (Nom) OR (Ess) OR (Loc) OR (Adv) ;
-
-
-LIST @X = @X ;
 
 # Semantic tags
 # -------------
@@ -743,10 +656,10 @@ SET NOT-ADV-PCLE-ILL   = WORD - Adv - Pcle - Ill ;
 SET NOT-ADV-PCLE-Refl  = WORD - Adv - Pcle - Refl ;
 SET NOT-ADV-PCLE-INDEF = WORD - Adv - Pcle - Indef ;
 SET NOT-ADV-PCLE-NEG   = WORD - Adv - Pcle - Neg ;
-SET NOT-ADVL-PCLE-NEG  = WORD - @ADVL - @P< - Pcle - Neg ;
+SET NOT-ADVL-PCLE-NEG  = WORD - Pcle - Neg ;
 
 
-LIST MO-MANge = "goas" "gokko" "gos" "gosa" "govt" "makkár" "man" "manne" "mo" "mot" "mov" "movt" ("nugo" @CVP) (V Qst);
+LIST MO-MANge = "goas" "gokko" "gos" "gosa" "govt" "makkár" "man" "manne" "mo" "mot" "mov" "movt" ("nugo") (V Qst);
  
 SET MO = MO-MANge - ("man" Foc/ge) ; 
  
@@ -778,15 +691,8 @@ LIST DADE = "dađe" "dađi" ;
   
 SET CRD = COMMA OR CC OR NEGFOC OR XGO OR ("/") OR ("-") OR DADE ;
  
-	# coordinators
+
 	
-LIST LCRD = @CNP ;
-    # local coordinator
-LIST GCRD = @CVP ;
-    # global coordinator
-    
-SET CRD2 = (@CNP) OR COMMA OR NEGFOC OR XGO OR ("/") OR ("-") OR DADE ;
-    # AFTER LCRD vs. GCRD disambiguation
     
 # Sets for adverbs that have lookalikes
 # -------------------------------------
@@ -1248,9 +1154,9 @@ SET NP-HEAD-GEN    = (Pron Gen) OR (N Gen) OR (A Gen) - Cmpnd - Dem - ("buorre")
 # The PRE-NP-HEAD family of sets
 # - - - - - - - - - - - - - - - -
 
-SET PRE-NP-HEAD = (Prop Attr) OR (Prop @>N) OR (A Attr) OR (ABBR Attr) OR ("buorre") OR (Pron Pers Gen) OR (N Gen) OR 
+SET PRE-NP-HEAD = (Prop Attr) OR (Prop Gen) OR (A Attr) OR (ABBR Attr) OR ("buorre") OR (Pron Pers Gen) OR (N Gen) OR 
          Num OR Cmpnd OR CC OR (Pron Dem) OR (Pron Refl Gen) OR (Pron Indef) OR 
-         (PrfPrc @>N) OR PrsPrc OR (A Ord) ;
+         (PrfPrc) OR PrsPrc OR (A Ord) ;
          # The strict version of items that can only be premodifiers, not parts of the predicate
          
 SET V-PRE-NP = PrfPrc OR PrsPrc OR Actor OR Actio OR (V A) OR (Ind Prs Sg3) OR (Ind Prs Sg1) OR (Imprt Prs Du2) ;
@@ -1295,7 +1201,7 @@ SET NPNHAIIP = WORD - PRE-NP-HEAD - Adv - Indef - Ill - Pcle ;
 SET NPNHC    = WORD - PRE-NP-HEAD - Com ;                      
 # "njaŋggofirpmiiguin bivdin"
 SET NPNHCCC  = WORD - PRE-NP-HEAD - COMMA ;
-SET NPNHCC   = WORD - PRE-NP-HEAD - COMMA - LCRD ;
+SET NPNHCC   = WORD - PRE-NP-HEAD - COMMA ;
 SET NAPP     = WORD - PRE-APP ;
 
 # SET TOLERANT-PRENPP = V ; (everything non-NP-head!)
@@ -2338,7 +2244,7 @@ SET S-BOUNDARY  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR ("
 SET S-BOUNDARY1  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR QDL ;
 	# includes not CS because of "go" in questions, before it is disambugated.
 	
-SET S-BOUNDARY2 = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR (@CVP) ;
+SET S-BOUNDARY2 = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") ;
  
 	# includes CP
 	# this one includes @CVP, the conjunction which actually connects two sentences (each with a finite verb) to each other, 
@@ -2366,7 +2272,7 @@ SET SV-BOUNDARY = S-BOUNDARY OR Inf OR Sup OR V-MAIN - PrsPrc ;
  # VFIN-NOT-AUX ;
  # should be V-MAIN linked to VFIN-aux to the left. (cg-3)
 # This set is ment to use in rules for disambiguating due to verbs or verbsets. It contents @.
-SET SV-BOUNDARY2 = S-BOUNDARY2 OR FMAINV OR Inf OR Sup ;
+SET SV-BOUNDARY2 = S-BOUNDARY2 OR Inf OR Sup ;
 
 SET SVF-BOUNDARY = S-BOUNDARY OR VFIN ;
 
@@ -2384,16 +2290,6 @@ SET INTR = Rel OR PUNCT-LEFT ;
 	# interrupters
 SET INTR-END = COMMA OR PUNCT-RIGHT ;
 
-# Syntactic sets
-# --------------
-
-LIST ALLSYNTAG = (@+FAUXV) (@+FMAINV) (@-FAUXV) (@-FMAINV) (@-FSUBJ>)(@-FOBJ)(@-FADVL)(@>A) (@>ADVL) (@ADVL<) (@ADVL) (@HAB) (@>N) (@APP) (@APP-N<) (@APP-Pron<) (@APP>Pron) (@APP-Num<) (@APP-ADVL<) (@VOC)
-(@CNP) (@CVP) (@P<) (@>P) (@HNOUN) (@INTERJ) (@Pron<) (@OBJ) (@OBJ>) (@<OBJ) (@OPRED) (@<OPRED) (@OPRED>) (@SPRED<OBJ) (@PCLE) (@COMP-CS<) (@N<) (@SPRED) (@<SPRED) (@SPRED>) (@PPRED) (@Num<) (@SUBJ) (@<SUBJ) (@SUBJ>) (@X);
- 
-
-SET NON-APP = ALLSYNTAG - (@APP);
-
-# SET ASSIGNEDSYN = ALLSYNTAG - @X ;
 
 
 
