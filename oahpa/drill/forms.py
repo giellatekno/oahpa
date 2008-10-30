@@ -11,6 +11,7 @@ from random import randint
 from models import *
 import time
 import datetime
+import socket
 
 POS_CHOICES = (
     ('N', _('noun')),
@@ -773,6 +774,9 @@ def qa_is_correct(self,question,qwords):
     if not self.is_valid():
         return False
 
+    lookup_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    lookup_client.connect(("localhost", 5000))
+
     # Analyzer..
     fstdir="/Users/saara/gt/sme/bin"
     lo = "/Users/saara/bin/lookup"
@@ -818,32 +822,45 @@ def qa_is_correct(self,question,qwords):
                     tag = string.replace("+"," ")
                     cohort = cohort + " " + tag.encode('utf+8') + "\n"
             else:
-                word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg
-                word = os.popen(word_lookup).readlines()
-                for c in word:
-                    c.lstrip(" ")
-                    cohort = cohort + c
+                w=w.lstrip().rstrip()
+                print "calling server..", w
+                print "JEE"
+                lookup_client.send(w.encode('utf-8'))
+                cohort = lookup_client.recv(512)
+                print cohort
+                
+                #word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg
+                #word = os.popen(word_lookup).readlines()
+                #for c in word:
+                #    c.lstrip(" ")
+                #    cohort = cohort + c
         
         if not cohort:
             cohort = w + "\n"
         
-        analysis = analysis + cohort.decode('utf-8')
+        #analysis = analysis + cohort.decode('utf-8')
+    analysis = analysis + cohort
         
     analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
     ans_cohort=""
-    data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess + lookup + lookup2cg
+    data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
     word = os.popen(data_lookup).readlines()
+    analyzed=""
     for c in word:
-        c.lstrip(" ")
-        ans_cohort = ans_cohort + c
+        c=c.rstrip().lstrip()
+        print "calling server..", c
+        print "OK"
+        lookup_client.send(c)
+        analyzed = analyzed + lookup_client.recv(512)
+        print analyzed
 
-    analysis = analysis + ans_cohort.decode('utf-8')
+    analysis = analysis + analyzed
     #print analysis
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
 
-    ped_cg3 = "echo \"" + analysis.encode('utf-8') + "\"" + vislcg3
+    ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
     #print "***************"
     #print ped_cg3
     checked = os.popen(ped_cg3).readlines()
@@ -871,8 +888,11 @@ def qa_is_correct(self,question,qwords):
                 msg = msg + " " + m
 
     if not msg:
-        self.error = "correct"
+        self.error = "error"
 
+    lookup_client.send("q")
+    #lookup_client.recv(512)
+    lookup_client.close()
     return msg
 
 
