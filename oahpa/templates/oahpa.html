@@ -175,23 +175,31 @@ function feedback(msg)
 </script>
 
 <script type="text/javascript" language="JavaScript">
-  function send()
-  {
-  document.theform.submittype.value = "test" ;
-  document.theform.submit() ;
-  }
 
- function process(event){
-  key = event.keyCode;
-  if (key==13){
-    return 9;
-    }
+function process(strField, evtKeyPress)  {
+    var aKey = evtKeyPress.keyCode ?  
+    evtKeyPress.keyCode :evtKeyPress.which ?  
+      evtKeyPress.which : evtKeyPress.charCode;  
+    if (aKey == 13)  {
+	     
+      var name = strField.name;
+      var numbers = name.match(/^\w/);
+      var newnum = parseInt(numbers[0]) + 1; 
+      var newname = name.replace(numbers[0],newnum);
+      if(newname in document.theform){     
+        document.theform[newname].focus(); 
+      }
+      else {
+      document.theform["test"].focus()
+      }    
+      return false;
+    }  
   }
 
   function processvasta(event){
-  key = event.keyCode;
-  if (key==13){
-    document.theform.submit();
+    key = event.keyCode;
+    if (key==13){
+      document.theform.submit();
     }
   }
 </script>
