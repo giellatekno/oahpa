@@ -1,5 +1,6 @@
 {% extends "oahpa.html" %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 
 {% block content %}
 
@@ -135,10 +136,12 @@
 {% trans "Your score:" %} {{ score }}
 {% endif %}
 
+{% ifequal LANGUAGE_CODE "no" %}
 {% if comment %}
 <br/>
 {{ comment }}
 {% endif %}
+{% endifequal %}
 
 
 </td>
