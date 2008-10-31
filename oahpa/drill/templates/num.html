@@ -1,11 +1,26 @@
 {% extends "game.html" %}
 {% load i18n %}
 
+{% block navbar %}
+<div id="navbar">
+<p></p>
+</div>
+{% endblock %}
+
 {% block name %}{% trans "Numerals" %}{% endblock %}
 {% block pagename %}/oahpa/logut/{% endblock %}
 
 {% block gamename %}{% endblock %}
 {% block instructions %}{% trans "Forms for numerals." %}{% endblock %}
+
+
+{% block tabmenu %}
+<ul id="tabmenu">
+  <li><a href="/oahpa/morfa/">{% trans 'Morfa' %}</a></li>
+  <li><a href="/oahpa/leksa/">{% trans 'Leksa' %}</a></li>
+  <li><a class="active" href="/oahpa/numra/">{% trans 'Numra' %}</a></li>
+</ul>
+{% endblock %}
 
 {% block settings %}
 
@@ -34,3 +49,19 @@
 <td>{{ form.numeral_id }}</td>
 {% endblock %}
 
+{% block submit %}
+<tr>
+<td>
+</td>
+<td>
+{% if not all_correct %}
+   {% if not show_correct %}
+   <input type="submit" name="test" value="{% trans "Test answers" %}"/>
+   {% endif %}
+   {% ifequal count 1 %}
+   <input type="submit" name="show_correct" value="{% trans "Show correct answers" %}" />
+   {% endifequal %}
+{% endif %}
+</td>
+</tr>
+{% endblock %}
