@@ -25,7 +25,30 @@
 {% endblock %}
 
 {% block question %}
-<td>{{ form.question }}</td>
+
+<td><br/>{{ form.question }}</td>
 {% endblock %}
 
+{% block submit %}
+<tr>
+<td>
+</td>
+<td>
+  {% if not all_correct %}
+  <input type="submit" name="test" value="{% trans "Test answers" %}"/>
+  {% endif %}
+</td>
+</tr>
+
+{% if messages %}
+<tr><td>
+<table border='1' cellpadding='10' bgcolor='#F9F9F9'>
+<tr><td>
+{% for m in messages %}{{ m }}<br/>{% endfor %}
+</td></tr>
+</table>
+</td></tr>
+{% endif %}
+
+{% endblock %}
 
