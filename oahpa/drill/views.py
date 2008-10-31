@@ -281,7 +281,7 @@ class Vastaview:
             # Vasta
             game = QAGame(self.settings)
             game.init_tags()
-            game.num_fields = 3
+            game.num_fields = 2
 
             game.gametype="qa"
 
@@ -315,7 +315,7 @@ class Vastaview:
             game = QAGame(self.settings)
             game.init_tags()
             game.gametype="qa"
-            game.num_fields = 3
+            game.num_fields = 2
 
             game.new_game()
 
