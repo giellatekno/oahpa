@@ -174,6 +174,28 @@ function feedback(msg)
 }
 </script>
 
+<script type="text/javascript" language="JavaScript">
+  function send()
+  {
+  document.theform.submittype.value = "test" ;
+  document.theform.submit() ;
+  }
+
+ function process(event){
+  key = event.keyCode;
+  if (key==13){
+    return 9;
+    }
+  }
+
+  function processvasta(event){
+  key = event.keyCode;
+  if (key==13){
+    document.theform.submittype.value = "test" ;
+    document.theform.submit();
+    }
+  }
+</script>
 
 </head>
 
@@ -261,7 +283,7 @@ function feedback(msg)
 </div>-->
 <div id="content">
 
-<form method="post" action="">
+<form method="post" action="" name="theform" >
 
 <div class="settings">
 {% block settings %}{% endblock %}
