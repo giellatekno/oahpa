@@ -289,7 +289,7 @@ class MorphQuestion(forms.Form):
     is_correct = is_correct
     set_correct = set_correct
     
-    answer = forms.CharField()
+    #answer = forms.CharField()
 
     def get_feedback(self,word,tag,wordform):
         
@@ -352,6 +352,10 @@ class MorphQuestion(forms.Form):
         tag_widget = forms.HiddenInput(attrs={'value' : tag.id})
 
         super(MorphQuestion, self).__init__(*args, **kwargs)
+        answer_size = 20
+        self.fields['answer'] = forms.CharField(max_length = answer_size, \
+                                                widget=forms.TextInput(attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
+
         self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
         self.fields['tag_id'] = forms.CharField(widget=tag_widget, required=False)
         self.lemma=baseform.fullform
@@ -439,7 +443,6 @@ class QuizzQuestion(forms.Form):
     """
     Questions for word quizz
     """
-    answer = forms.CharField()
 
     is_correct = is_correct
     set_correct = set_correct
@@ -448,6 +451,9 @@ class QuizzQuestion(forms.Form):
 
         lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
         super(QuizzQuestion, self).__init__(*args, **kwargs)
+        answer_size=20
+        self.fields['answer'] = forms.CharField(max_length = answer_size, \
+                                                widget=forms.TextInput(attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
         self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
         self.lemma = word.lemma
         self.userans = userans_val
@@ -486,7 +492,6 @@ class NumQuestion(forms.Form):
     """
     Questions for numeral quizz
     """
-    answer = forms.CharField()
 
     is_correct = is_correct
     set_correct = set_correct
@@ -495,6 +500,10 @@ class NumQuestion(forms.Form):
 
         numeral_widget = forms.HiddenInput(attrs={'value' : numeral})
         super(NumQuestion, self).__init__(*args, **kwargs)
+        answer_size=20
+        self.fields['answer'] = forms.CharField(max_length = answer_size, \
+                                                widget=forms.TextInput(attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
+
         self.fields['numeral_id'] = forms.CharField(widget=numeral_widget, required=False)
         if gametype == "string":
             self.numstring = num_string
@@ -658,7 +667,8 @@ class QAQuestion(forms.Form):
         answer_size = 20
 
         self.fields['answer'] = forms.CharField(max_length = answer_size, \
-                                                widget=forms.TextInput(attrs={'size': answer_size}))
+                                                widget=forms.TextInput(attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
+
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
         self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
 
@@ -824,21 +834,14 @@ def qa_is_correct(self,question,qwords):
             else:
                 w=w.lstrip().rstrip()
                 print "calling server..", w
-                print "JEE"
                 lookup_client.send(w.encode('utf-8'))
                 cohort = lookup_client.recv(512)
                 print cohort
                 
-                #word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg
-                #word = os.popen(word_lookup).readlines()
-                #for c in word:
-                #    c.lstrip(" ")
-                #    cohort = cohort + c
-        
         if not cohort:
             cohort = w + "\n"
         
-        #analysis = analysis + cohort.decode('utf-8')
+        analysis = analysis + cohort
     analysis = analysis + cohort
         
     analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
@@ -850,11 +853,9 @@ def qa_is_correct(self,question,qwords):
     for c in word:
         c=c.rstrip().lstrip()
         print "calling server..", c
-        print "OK"
         lookup_client.send(c)
         analyzed = analyzed + lookup_client.recv(512)
-        print analyzed
-
+        
     analysis = analysis + analyzed
     #print analysis
     analysis = analysis.rstrip()
@@ -865,30 +866,41 @@ def qa_is_correct(self,question,qwords):
     #print ped_cg3
     checked = os.popen(ped_cg3).readlines()
 
+    wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
     messageObj=re.compile(r'^.*(?P<msgString>&[\w-]*)\s*$', re.U)
 
-    msgstrings = []
+    spelling = False
+    msgstrings = {}
     for line in checked:
         line = line.strip()
-        print line
+        #print line
+        matchObj=wordformObj.search(line)
+        if matchObj:
+            wordform = matchObj.expand(r'\g<msgString>')
+            msgstrings[wordform] = {}
+            
         matchObj=messageObj.search(line)
         if matchObj:
             msgstring = matchObj.expand(r'\g<msgString>')
-            msgstrings.append(msgstring)
-
-
-    msg=""
-    for m in msgstrings:
-        m = m.replace("&","")        
-        if Feedbackmsg.objects.filter(msgid=m).count() > 0:
-            message = Feedbackmsg.objects.filter(msgid=m)[0].message
-            msg = msg + " " + message
-        else:
-            if not m == "dia-target":
-                msg = msg + " " + m
+            if msgstring.count("spellingerror") > 0:
+                spelling = True
+            msgstrings[wordform][msgstring] = 1
+            
+    msg=[]
+    for w in msgstrings.keys():
+        for m in msgstrings[w].keys():
+            if spelling and m.count("spelling") == 0: continue
+            m = m.replace("&","") 
+            if Feedbackmsg.objects.filter(msgid=m).count() > 0:
+                message = Feedbackmsg.objects.filter(msgid=m)[0].message
+                message = message.replace("WORDFORM","\"" + w + "\"") 
+                msg.append(message)
+            else:
+                if m.count("dia-") == 0:
+                    msg.append(m)
 
     if not msg:
-        self.error = "error"
+        self.error = "correct"
 
     lookup_client.send("q")
     #lookup_client.recv(512)
@@ -936,12 +948,12 @@ class VastaQuestion(forms.Form):
         super(VastaQuestion, self).__init__(*args, **kwargs)
         answer_size=50
         self.fields['answer'] = forms.CharField(max_length = answer_size, \
-                                                widget=forms.TextInput(attrs={'size': answer_size}))
+                                                widget=forms.TextInput(attrs={'size': answer_size,'onkeypress':'processvasta(event)',}))
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
         # In qagame, all words are considered as answers.
         form_list=[]
-        self.feedback = self.qa_is_correct(question, qwords)
+        self.messages = self.qa_is_correct(question, qwords)
         
         self.qattrs= {}
         for syntax in qwords.keys():
