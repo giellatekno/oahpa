@@ -126,7 +126,7 @@ class Feedback(models.Model):
     pos = models.CharField(max_length=5,blank=True,null=True)
     stem = models.CharField(max_length=20,blank=True,null=True)
     diphthong=models.CharField(max_length=5,blank=True,null=True)
-    gradation=models.CharField(max_length=15,Null=True,blank=True)
+    gradation=models.CharField(max_length=15,null=True,blank=True)
     rime = models.CharField(max_length=20,null=True,blank=True)
     soggi = models.CharField(max_length=10,null=True,blank=True)
     case2 = models.CharField(max_length=5,null=True,blank=True)
