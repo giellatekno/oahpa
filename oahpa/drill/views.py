@@ -262,7 +262,7 @@ class Vastaview:
         
         if request.method == 'POST':
             data = request.POST.copy()
-            
+            print data
             # Settings form is checked and handled.
             settings_form = VastaForm(request.POST)
 
@@ -293,11 +293,6 @@ class Vastaview:
                 game.check_game(data)
                 game.get_score(data)
 
-            #if 'test' in data:
-            #    game.count=1
-            #if 'show_correct' in data:
-            #    show_correct = 1
-
         # If there is no POST data, default settings are applied
         else:
             settings_form = VastaForm()
@@ -322,6 +317,7 @@ class Vastaview:
         c = Context({
             'settingsform': settings_form,
             'forms': game.form_list,
+            'messages': game.form_list[0].messages,
             'count': game.count,
             'score': game.score,
             'comment': game.comment,
