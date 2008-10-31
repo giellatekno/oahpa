@@ -116,7 +116,6 @@
 
 </td>
 </tr>
-
      {% endfor %}
 </table>
 
@@ -124,14 +123,14 @@
 </tr>
 
 <tr><td>
+
+
+{% if score %}
 &nbsp;<br/>
-
-
 {% if all_correct %}
 {% trans "Congratulations!" %}
 {% endif %}
 
-{% if score %}
 <br/>
 {% trans "Your score:" %} {{ score }}
 {% endif %}
@@ -143,28 +142,15 @@
 {% endif %}
 {% endifequal %}
 
+</td>
+</tr>
 
-</td>
-</tr>
-<tr>
-<td>&nbsp;</td>
-<td>
-{% if not all_correct %}
-   {% if not show_correct %}
-   <input type="submit" name="test" value="{% trans "Test answers" %}"/>
-   {% endif %}
-   {% ifequal count 1 %}
-   <input type="submit" name="show_correct" value="{% trans "Show correct answers" %}" />
-   {% endifequal %}
-{% endif %}
-</td>
-</tr>
+{% block submit %}{% endblock %}
+
 </table>
 </td>
-<td width="30%" valign="top"><table border="1"
-cellpadding="10"><tr><td>
+<td width="30%" valign="top"><table border="1" cellpadding="10"><tr><td>
 <p>{% block gamename %}{% endblock %}</p>
-
 {% block instructions %}{% endblock %}</td></tr></table></td>
 </tr>
 </table>
