@@ -6029,11 +6029,11 @@ LIST VERBLEMMA = (".*"r) ;
 
 #LIST VERBLEMMA = "juhkat" "borrat" "mannat" ;
 
-MAP (&semAnswerWithSameVerb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
-MAP (&semAnswerWithSameVerb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
+MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
+MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
 
-MAP (&semAnswerWithSameVerb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA LINK NOT 0 WORK-V LINK *-1 MO OR Interr) ;
-MAP (&semAnswerWithSameVerb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA LINK NOT 0 WORK-V LINK *-1 MO OR Interr) ;
+MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA LINK NOT 0 WORK-V LINK *-1 MO OR Interr) ;
+MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA LINK NOT 0 WORK-V LINK *-1 MO OR Interr) ;
 
 
 #SELECT VERB ;
@@ -6291,7 +6291,7 @@ MAP (&dia-child) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<nu
 # &grm-should-negV		wrong verb-form after Neg
 # &grm-should-pers      	you shold answer with a pronoun
 # &grm-habitive			wrong habitiv-construction
-# &semAnswerWithSameVerb 	you should answer with the same verb
+# &sem-answer-with-same-verb 	you should answer with the same verb
 # &grm-Px-shouldbe-Loc
 # &grm-not-verb-after-workverb
 # &grm-should-not-Nom
