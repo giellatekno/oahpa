@@ -5,13 +5,19 @@
 
 <!-- xml-structure for questions in morphdrill -->
 <!-- Questions for numerals  -->
+<!---
+	<sources>
+<book name="bures"/>
+<book name="d2"/>
+<book name="d3"/>
+<book name="d4"/>
+	</sources>    
+-->
 
 <questions>
-  
-  <!-- Attribute - only for Morfa -->
-  <q>
+    <q>
     <qtype>NUM-ATTR</qtype>
-    <question>
+	<question>
       <text>Maid SUBJ MAINV oastit</text>
       <element id="SUBJ">
 	<grammar pos="N"/>
@@ -209,6 +215,15 @@
 
   <q>
     <qtype>NUM-ATTR</qtype>
+	<sources>
+	<book name="bures"/>
+	<book name="sárá"/>
+	<book name="oaidnalit"/>
+	<book name="álgu"/>
+	<book name="d2"/>
+	<book name="d3"/>
+	<book name="d4"/>
+	</sources>    
    <question>
       <text>Gos SUBJ finai</text>
     <element id="SUBJ">    
@@ -252,7 +267,6 @@
     </answer>
   </q>
  
-<!-- For Morfa, but also for QA with any Num: -->  
   <q>
     <qtype>NUM-ATTR</qtype>
     <question>
@@ -446,6 +460,15 @@
 
   <q>
     <qtype>NUM-ACC</qtype>
+	<sources>
+	<book name="bures"/>
+	<book name="sárá"/>
+	<book name="oaidnalit"/>
+	<book name="álgu"/>
+	<book name="d2"/>
+	<book name="d3"/>
+	<book name="d4"/>
+	</sources>    
    <question>
       <text>Galliid OBJ sii leat lágidan</text>
     <element id="OBJ">    
@@ -478,10 +501,18 @@
     </answer>
   </q>
 
-<!-- Only for Morfa: -->
 
   <q game="morfa">
     <qtype>NUM-GEN</qtype>
+	<sources>
+	<book name="bures"/>
+	<book name="sárá"/>
+	<book name="oaidnalit"/>
+	<book name="álgu"/>
+	<book name="d2"/>
+	<book name="d3"/>
+	<book name="d4"/>
+	</sources>    
     <question>
       <text>Mannan OBJ lei badjel logi gráda juohke beaivve</text>
       <element id="OBJ">    
@@ -536,7 +567,6 @@
 
 
 
-<!-- For Morfa, but also for QA with any COLL-NUM: -->  
 
   <q>
     <qtype>COLL-NUM</qtype>
@@ -623,7 +653,6 @@
    </answer>
   </q>
 
-<!-- For Morfa, but also for QA with any COLL-NUM: -->  
   <q>
     <qtype>COLL-NUM</qtype>
     <question>
@@ -645,7 +674,6 @@
     </answer>
   </q>
 
-<!-- For Morfa, but also for QA with any COLL-NUM: -->  
   <q>
     <qtype>COLL-NUM</qtype>
    <question>
@@ -664,7 +692,6 @@
     </answer>
   </q>
 
-<!-- For Morfa, but also for QA with any COLL-NUM: -->  
   <q>
     <qtype>COLL-NUM</qtype>
    <question>
@@ -753,7 +780,6 @@
     </answer>
   </q>
   
-<!-- Only for Morfa: -->
 <q game="morfa">
   <qtype>ORD-NUM</qtype>
   <question>
