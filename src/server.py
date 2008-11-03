@@ -11,27 +11,33 @@ import os
 import re
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(("", 8090))
+server_socket.bind(("", 9000))
 server_socket.listen(5)
 
-fstdir="/Users/saara/gt/sme/bin"
-lo = "/Users/saara/bin/lookup"
-lookup2cg = " | /Users/saara/gt/script/lookup2cg"
-cg3 = "/usr/local/bin/vislcg3"
-preprocess = " | /Users/saara/gt/script/preprocess "
-dis = "/Users/saara/ped/sme/src/sme-ped.cg3"
+fstdir="/opt/smi/sme/bin"
+lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
+lookup2cg = " | lookup2cg"
+cg3 = "vislcg3"
+preprocess = " | /usr/local/bin/preprocess "
+dis = "/home/saara/ped/sme/src/sme-ped.cg3"
+
+#fstdir="/Users/saara/gt/sme/bin"
+#lo = "/Users/saara/bin/lookup"
+#lookup2cg = " | /Users/saara/gt/script/lookup2cg"
+#cg3 = "/usr/local/bin/vislcg3"
+#preprocess = " | /Users/saara/gt/script/preprocess "
+#dis = "/Users/saara/ped/sme/src/sme-ped.cg3"
 
 fst = fstdir + "/sme.fst"
 lookup = lo + " -flags mbTT -utf8 -d " + fst 
 vislcg3 = cg3 + " --grammar " + dis + " -C UTF-8"
 disamb = " | " + cg3 + " --grammar " + dis + " -C UTF-8"
 
-
 look = pexpect.spawn(lookup)
 disambiguate = pexpect.spawn(vislcg3)
 
 
-print "TCPServer Waiting for client on port 8090"
+print "TCPServer Waiting for client on port 9000"
 
 while 1:
     client_socket, address = server_socket.accept()
@@ -47,6 +53,10 @@ while 1:
                 client_socket.close()
             if not data.lstrip().rstrip():
                 client_socket.close()
+            c = [";","<",">","*","|","`","&","$","!","#","(",")","[","]","{","}",":"]
+            for a in c:
+                data = data.replace(a,'')
+                print a				
             look.sendline(data)
             look.expect ('\r?\n\r?\n')
             result = look.before
@@ -68,6 +78,7 @@ while 1:
             for a in anl:
                 analyzed = analyzed + a
 
+            print analyzed
             client_socket.send(analyzed)
             
             #analyzed = analyzed + "jee\n"
