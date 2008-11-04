@@ -100,33 +100,21 @@
 
   <q>
     <qtype>PREDPOS</qtype>
-  <agreement>SUBJ/PRED</agreement>
-  <agreement>INTERR/SUBJ</agreement>
    <question>
-      <text>Mus MAINV ATTR SUBJ. INTERR SUBJ MAINV</text>
+      <text>Mus leat ATTR SUBJ. Makkárat SUBJ leat</text>
       <element type="SUBJ">   
-	<grammar pos="N"/>
+	<grammar pos="N+Pl+Nom"/>
 	<sem class="CLOTHING"/>
-      </element>
-      <element type="MAINV">
-	<id>leat</id> 
-	<grammar tag="V+Ind+Prs+Person-Number"/>   
       </element>
       <element type="ATTR">
 	<grammar tag="A+Attr"/>  <!-- no number -->
 	<sem class="CLOTHES-adj"/>
       </element>
-      <element type="INTERR">
-	<lemma>makkár</lemma> 
-	<grammar tag="Number+Nom"/>   
-	<agreement id="SUBJ"/>
-      </element>
     </question>
     <answer> 
-      <text>SUBJ MAINV PRED</text>
+      <text>SUBJ leat PRED</text>
       <element type="PRED" task="yes">     <!-- Same A as ATTR -->
-	<grammar pos="A+Number+Nom"/>   <!-- same number as SUBJ -->
-	<agreement id="SUBJ"/>
+	<grammar pos="A+Pl+Nom"/>   <!-- same number as SUBJ -->
       </element>
     </answer>
   </q>
