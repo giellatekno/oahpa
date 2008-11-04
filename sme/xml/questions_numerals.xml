@@ -413,16 +413,16 @@
   <q>
     <qtype>NUM-ACC</qtype>
    <question>
-      <text>Galliid OBJ SUBJ MAINV oastit</text>
+      <text>Galle OBJ SUBJ MAINV oastit</text>
     <element id="SUBJ">    
 	<grammar tag="Pron+Pers+Person-Number+Nom"/>         
 	</element>
     <element id="MAINV">    
 	<grammar tag="V+Ind+Prs+Person-Number"/>         
-	<id>oastit</id> 
+	<id>áigut</id> 
 	</element>
     <element id="OBJ">    
-	<grammar tag="N+Sg+Gen"/>         
+	<grammar tag="N+Sg+Acc"/>         
 	<sem class="CLOTHING"/>
 	</element>
     </question>
@@ -501,7 +501,56 @@
     </answer>
   </q>
 
+  <q>
+    <qtype>NUM-NOM</qtype>
+	<sources>
+	<book name="oaidnalit"/>
+	<book name="álgu"/>
+	<book name="d3"/>
+	<book name="d4"/>
+	</sources>    
+    <question>
+      <text>Gallit SUBJ dus leat</text>
+      <element id="SUBJ">    
+	<grammar tag="N+Pl+Nom"/>         
+	<sem class="HANDICRAFTS-PL"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Mus leat NUM-NOM</text>
+      <element id="NUM-NOM" task="yes">    
+	<grammar tag="Num+Pl+Nom"/>         
+      </element>
+    </answer>
+  </q>
 
+
+  <q>
+    <qtype>NUM-NOM</qtype>
+	<sources>
+	<book name="bures"/>
+	<book name="oaidnalit"/>
+	<book name="álgu"/>
+	<book name="d2"/>
+	<book name="d3"/>
+	<book name="d4"/>
+	</sources>    
+    <question>
+      <text>Gallit SUBJ leat dáid beassážiid</text>
+      <element id="SUBJ">    
+	<grammar tag="N+Pl+Nom"/>         
+	<sem class="ARRANGEMENT-PL"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Dál leat NUM-NOM</text>
+      <element id="NUM-NOM" task="yes">    
+	<grammar tag="Num+Pl+Nom"/>         
+      </element>
+    </answer>
+  </q>
+
+<!--  this one is not so good... :-(
   <q game="morfa">
     <qtype>NUM-GEN</qtype>
 	<sources>
@@ -526,7 +575,7 @@
 	<grammar tag="Num+Sg+Gen"/>         
       </element>
     </answer>
-  </q> 
+  </q> -->
 
   <q>
     <qtype>NUM-LOC</qtype>
