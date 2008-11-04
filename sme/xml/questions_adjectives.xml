@@ -13,9 +13,8 @@
   <q>
     <qtype>ATTRPOS</qtype>
   <agreement>SUBJ/PRED</agreement>
-  <agreement>INTERR/SUBJ</agreement>
    <question>
-      <text>Mu SUBJ MAINV PRED. INTERR SUBJ mus MAINV</text>
+      <text>Mu SUBJ MAINV PRED. Makkár SUBJ mus MAINV</text>
       <element type="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="CLOTHING"/>
@@ -27,11 +26,6 @@
       <element type="PRED">     
 	<grammar pos="A+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="CLOTHES-adj"/>
-	<agreement id="SUBJ"/>
-      </element>
-      <element type="INTERR">
-	<lemma>makkár</lemma> 
-	<grammar tag="Number+Nom"/>   
 	<agreement id="SUBJ"/>
       </element>
     </question>
@@ -48,9 +42,8 @@
   <q>
     <qtype>ATTRCOMP</qtype>
   <agreement>SUBJ/PRED</agreement>
-  <agreement>INTERR/SUBJ</agreement>
    <question>
-      <text>Mu SUBJ MAINV PRED. INTERR SUBJ mus MAINV</text>
+      <text>Mu SUBJ MAINV PRED. Makkár SUBJ mus MAINV</text>
       <element type="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="CLOTHING"/>
@@ -62,11 +55,6 @@
       <element type="PRED">     
 	<grammar pos="A+Comp+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="CLOTHES-adj"/>
-	<agreement id="SUBJ"/>
-      </element>
-      <element type="INTERR">
-	<lemma>makkár</lemma> 
-	<grammar tag="Number+Nom"/>   
 	<agreement id="SUBJ"/>
       </element>
     </question>
@@ -83,9 +71,8 @@
   <q>
     <qtype>ATTRSUP</qtype>
   <agreement>SUBJ/PRED</agreement>
-  <agreement>INTERR/SUBJ</agreement>
    <question>
-      <text>Mu SUBJ MAINV PRED. INTERR SUBJ mus MAINV</text>
+      <text>Mu SUBJ MAINV PRED. Makkár SUBJ mus MAINV</text>
       <element type="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="CLOTHING"/>
@@ -97,11 +84,6 @@
       <element type="PRED">     
 	<grammar pos="A+Superl+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="CLOTHES-adj"/>
-	<agreement id="SUBJ"/>
-      </element>
-      <element type="INTERR">
-	<lemma>makkár</lemma> 
-	<grammar tag="Number+Nom"/>   
 	<agreement id="SUBJ"/>
       </element>
     </question>
@@ -206,10 +188,6 @@
       <element type="MAINV">
 	<id>leat</id> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>   
-      </element>
-      <element type="PRED">     
-	<grammar pos="A+Number+Nom"/>   <!-- same number as SUBJ -->
-	<sem class="HUMAN-adj"/>
       </element>
     </question>
     <answer> 
