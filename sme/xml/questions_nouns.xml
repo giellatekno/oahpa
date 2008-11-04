@@ -1074,6 +1074,74 @@
     </answer>
   </q>
 
+  <q>
+    <qtype>N-NOM-PL</qtype>
+    <question>
+      <text>Geat vulget LOC</text>
+      <element id="LOC">
+	<grammar pos="N+Prop+Plc+Sg+Ill"/>
+	<sem class="PLACE-NAME"/>
+      </element>
+    </question>
+    <answer> 
+      <text>N-NOM-PL dat vulget</text>
+      <element game='morfa' id="N-NOM-PL" task="yes">
+	<sem class="HUMAN"/>
+ 	<grammar pos="N+Pl+Nom"/>
+     </element>
+    </answer>
+  </q>
 
+  <q>
+    <qtype>N-NOM-PL</qtype>
+    <question>
+      <text>Makkár eallit ellet doppe</text>
+    </question>
+    <answer> 
+      <text>N-NOM-PL ellet doppe</text>
+      <element game='morfa' id="N-NOM-PL" task="yes">
+	<sem class="ANIMAL"/>
+ 	<grammar pos="N+Pl+Nom"/>
+      </element>
+    </answer>
+  </q>
+
+  <q>
+    <qtype>N-NOM-PL</qtype>
+    <question>
+      <text>Makkár borramušat sis leat</text>
+    </question>
+    <answer> 
+      <text>Sis leat N-NOM-PL</text>
+      <element game='morfa' id="N-NOM-PL" task="yes">
+	<sem class="FOOD"/>
+ 	<grammar pos="N+Pl+Nom"/>
+      </element>
+    </answer>
+  </q>
+
+
+  <q>
+    <qtype>N-NOM-PL</qtype>
+	<sources>
+	<book name="bures"/>
+	<book name="sárá"/>
+	<book name="oaidnalit"/>
+	<book name="álgu"/>
+	<book name="d2"/>
+	<book name="d3"/>
+	<book name="d4"/>
+	</sources>    
+    <question>
+      <text>Makkár stohpogálvvut leat sin viesus</text>
+    </question>
+    <answer> 
+      <text>Doppe leat N-NOM-PL</text>
+      <element game='morfa' id="N-NOM-PL" task="yes">
+	<sem class="FURNITURE"/>
+ 	<grammar pos="N+Pl+Nom"/>
+      </element>
+    </answer>
+  </q>
 
 </questions>
