@@ -6212,7 +6212,7 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 
 # Picking name, the first one if there are many
 MAP (&dia-name) TARGET QMRK IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom)) ;
-# Picking name, if it is not in the lexicon
+# Picking name, if it is not in the lexiconqá
 MAP (&dia-name) TARGET Prop IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom)) ;
 
 # Picking cartype, the first one if it is multiword
