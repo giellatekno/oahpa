@@ -101,6 +101,7 @@ class Question(models.Model):
     qatype = models.CharField(max_length=20)
     question = models.ForeignKey('self', blank=True, null=True, related_name='answer_set')
     gametype = models.CharField(max_length=5)
+    source = models.ManyToManyField(Source)
     
 class QElement(models.Model):
     question=models.ForeignKey(Question, null=True)
