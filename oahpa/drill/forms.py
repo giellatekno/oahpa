@@ -35,7 +35,7 @@ CASE_CONTEXT_CHOICES = (
     ('N-ILL', _('illative')),
     ('N-LOC', _('locative')),
     ('N-COM', _('comitative')),
-    ('N-GEN', _('genitive')),
+    ('N-NOM-PL', _('plural')),
     ('N-ESS', _('essive')),
 )
 
