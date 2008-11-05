@@ -115,12 +115,10 @@ class Game:
                         info['tag'] = tmpawords[syntax]['tag']
                     if tmpawords[syntax].has_key('fullform'):
                         info['fullform'] = [ tmpawords[syntax]['fullform']]
-                        
+                            
                     awords[syntax].append(info)
-                                        
-            db_info['qwords'] = qwords
             db_info['awords'] = awords
-
+            db_info['qwords'] = qwords
 
             new_db_info = {}
 
@@ -154,7 +152,7 @@ class Game:
         if self.show_correct or self.all_correct:
             self.score = self.score.join([`i`, "/", `len(self.form_list)`])
 
-        if self.show_correct or self.all_correct:
+        if (self.show_correct or self.all_correct) and not self.settings['gametype']=='qa' :
             if i==1: i=2
             com_count = Comment.objects.filter(Q(level=i) & Q(lang="nob")).count()
             self.comment = Comment.objects.filter(Q(level=i) & Q(lang="nob"))[randint(0,com_count-1)].comment
