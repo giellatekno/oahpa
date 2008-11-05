@@ -26,10 +26,6 @@
       <element game='morfa' id="N-ILL" task="yes">
 	<sem class="OBJECT"/>
       </element>
-<!--      <element game='qa' id="N-ILL">
-        <grammar pos="N"/>
-        <grammar pos="Pron"/>
-      </element> -->
     </answer>
   </q>
 
@@ -59,11 +55,6 @@
 	<agreement id="INTERR"/>
 	<sem class="HUMAN"/>
       </element>
-<!--      <element game='qa' id="N-ILL">
-        <agreement id="INTERR"/>
-        <grammar pos="Pron"/>
-	<grammar pos="N"/>
-      </element> -->
     </answer>
   </q>
 
@@ -87,12 +78,6 @@
 	<grammar tag="N+Sg+Ill"/>
 	<sem class="PLACE"/>
       </element>
-<!--      <element game='qa' id="N-ILL">
-        <grammar tag="N+Sg+Ill"/>
-        <grammar pos="N"/>
-        <grammar pos="Adv"/>
-        <sem class="DOHKO"/>
-      </element> -->
     </answer>
   </q>
   
@@ -186,10 +171,6 @@
       <agreement id="INTERR"/>
 	<sem class="HUMAN"/>
       </element>
-<!--      <element game='qa' id="N-ILL">
-        <grammar pos="N"/>
-        <grammar pos="Pron"/>
-      </element> -->
     </answer>
   </q>
 
@@ -1079,7 +1060,7 @@
     <question>
       <text>Geat vulget LOC</text>
       <element id="LOC">
-	<grammar pos="N+Prop+Plc+Sg+Ill"/>
+	<grammar tag="N+Sg+Ill"/>
 	<sem class="PLACE-NAME"/>
       </element>
     </question>
@@ -1087,7 +1068,7 @@
       <text>N-NOM-PL dat vulget</text>
       <element game='morfa' id="N-NOM-PL" task="yes">
 	<sem class="HUMAN"/>
- 	<grammar pos="N+Pl+Nom"/>
+ 	<grammar tag="N+Pl+Nom"/>
      </element>
     </answer>
   </q>
@@ -1101,7 +1082,7 @@
       <text>N-NOM-PL ellet doppe</text>
       <element game='morfa' id="N-NOM-PL" task="yes">
 	<sem class="ANIMAL"/>
- 	<grammar pos="N+Pl+Nom"/>
+ 	<grammar tag="N+Pl+Nom"/>
       </element>
     </answer>
   </q>
@@ -1115,7 +1096,7 @@
       <text>Sis leat N-NOM-PL</text>
       <element game='morfa' id="N-NOM-PL" task="yes">
 	<sem class="FOOD"/>
- 	<grammar pos="N+Pl+Nom"/>
+ 	<grammar tag="N+Pl+Nom"/>
       </element>
     </answer>
   </q>
@@ -1139,7 +1120,7 @@
       <text>Doppe leat N-NOM-PL</text>
       <element game='morfa' id="N-NOM-PL" task="yes">
 	<sem class="FURNITURE"/>
- 	<grammar pos="N+Pl+Nom"/>
+ 	<grammar tag="N+Pl+Nom"/>
       </element>
     </answer>
   </q>
