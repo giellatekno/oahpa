@@ -5875,7 +5875,7 @@ REMOVE Gen (0 TARGETQUESTION-ACC LINK -1 BOS)(1 VFIN OR Pron);
 
 MAP (&grm-missing-NumSg) TARGET ("galle" Sg Nom) IF (*1 QDL LINK NOT *1 (Num Sg) BARRIER S-BOUNDARY);
 MAP (&grm-missing-NumPl) TARGET ("galle" Pl) IF (*1 QDL LINK NOT *1 (Num Pl) BARRIER S-BOUNDARY);
-MAP (&grm-missing-NNum) TARGET ("gallis" N Nom) IF (*1 QDL LINK NOT *1 (N Num) BARRIER S-BOUNDARY);
+MAP (&grm-missing-NNum) TARGET ("gallis" N Num) IF (*1 QDL LINK NOT *1 (N Num) BARRIER S-BOUNDARY);
 MAP (&grm-missing-Ord) TARGET ("gallát") IF (*1 QDL LINK NOT *1 (A Ord) BARRIER S-BOUNDARY);
 
 
