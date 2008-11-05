@@ -86,7 +86,7 @@ class Paradigm:
         fstdir="/Users/saara/gt/sme/bin"
         lookup = "/Users/saara/bin/lookup"
 
-        gen_norm_fst = fstdir + "/isme-norm.fst"
+        gen_norm_fst = fstdir + "/isme-restr.fst"
 
         gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
         lines_tmp = os.popen(gen_norm_lookup).readlines()
