@@ -31,11 +31,11 @@ CASE_CHOICES = (
 )
 
 CASE_CONTEXT_CHOICES = (
+    ('N-NOM-PL', _('plural')),
     ('N-ACC', _('accusative')),
     ('N-ILL', _('illative')),
     ('N-LOC', _('locative')),
     ('N-COM', _('comitative')),
-    ('N-NOM-PL', _('plural')),
     ('N-ESS', _('essive')),
 )
 
@@ -67,11 +67,11 @@ GRADE_CHOICES = (
 
 NUM_CONTEXT_CHOICES = (
     ('NUM-ATTR', _('attributive')),
+    ('NUM-NOM-PL', _('plural')),
     ('NUM-ACC', _('accusative')),
     ('NUM-ILL', _('illative')),
     ('NUM-LOC', _('locative')),
     ('NUM-COM', _('comitative')),
-    ('NUM-GEN', _('genitive')),
     ('COLL-NUM', _('collective')),
 )
 
