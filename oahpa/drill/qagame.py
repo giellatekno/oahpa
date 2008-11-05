@@ -57,7 +57,7 @@ class QAGame(Game):
         #    books=self.settings['book']
         #print syll, books
 
-        max = 50
+        max = 100
         i=0
         form_list=None
         while not form_list and i<max:
@@ -65,6 +65,7 @@ class QAGame(Game):
 
             #w_count=Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(stem__in=syll) & Q(source__name__in=books)).count()
             #word_el=Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)]
+
 
             word_count = WordQElement.objects.filter(qelement=qelement).count()
             qw_el = WordQElement.objects.filter(qelement=qelement)[randint(0,word_count-1)]
@@ -84,9 +85,7 @@ class QAGame(Game):
         """
         Select word from possible options in the element.
         """
-
         words = []
-
         # If there are no information available for these elements, try to use other info.
         word = None
         if lemma and tag_el:
@@ -108,7 +107,6 @@ class QAGame(Game):
                                    Q(identifier=identifier)).count()>0:
             return QElement.objects.filter(Q(question=question_element) & \
                                            Q(identifier=identifier))
-
 
         return None
 
@@ -416,6 +414,7 @@ class QAGame(Game):
         tag_elements = None
         swords = []
         elements = self.get_elements(answer,s)
+
         if elements:
             element = elements[0]
             if element.copy_id:
@@ -426,7 +425,7 @@ class QAGame(Game):
                     qword = qwords[copy_syntax]
                     if qword.has_key('word'):
                         word_id=qword['word']
-            
+
             if element.agreement:
                 agr_id = element.agreement_id
                 agr_el = QElement.objects.get(id=agr_id)
@@ -449,7 +448,7 @@ class QAGame(Game):
                 tag_count = element.tags.count()
                 if tag_count > 0:
                     tag_elements = element.tags.all()
-                    
+
             # Take word forms for all tags
             if tag_elements:
                 for tag_el in tag_elements:                    
@@ -462,6 +461,7 @@ class QAGame(Game):
                             i= i+1
                             w_count=Word.objects.filter(Q(pos="Num")).count()
                             word_id=Word.objects.filter(Q(pos="Num"))[randint(0,w_count-1)].id
+                            print word_id
                             if Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id)).count()>0:
                                 fullform = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id))[0].fullform
                                 info = {'word': word_id, 'tag' : tag_el.id, 'fullform' : [ fullform ] }
@@ -512,31 +512,51 @@ class QAGame(Game):
                 db_info['qwords'] = qwords
             else:
                 if not self.gametype == "qa":
-                    q_count=Question.objects.filter(Q(qtype=qtype) & Q(gametype="morfa")).count()
+                    if self.settings.has_key('book'):
+                        books=self.settings['book']
+                        print "********************************", books
+                    if books:    
+                        q_count=Question.objects.filter(Q(qtype=qtype) & \
+                                                        Q(gametype="morfa") & \
+                                                        (Q(source__name__in=books) | Q(source__name="all" ))).count()
+                    else:
+                        q_count=Question.objects.filter(Q(qtype=qtype) & Q(gametype="morfa")).count()
+
                     max = 50
                     i=0
                     while not qwords and i<max:
                         i = i+1
                         qnum = randint(0, q_count-1)
                         # TESTING
-                        #qnum = 0
-                        #print "qnum:", qnum
-                        question = Question.objects.filter(Q(qtype=qtype) & Q(gametype="morfa"))[qnum]
-                        if question.gametype and not question.gametype == self.gametype: continue
+                        #qnum = 1
+                        print "qnum:", qnum
+                        if books:    
+                            question = Question.objects.filter(Q(qtype=qtype) & \
+                                                               Q(gametype="morfa") & \
+                                                               (Q(source__name__in=books) | Q(source__name="all" )))[qnum]
+                        else:
+                            question = Question.objects.filter(Q(qtype=qtype) & Q(gametype="morfa"))[qnum]
+                            
+                        if question.gametype and not question.gametype == self.gametype:
+                            continue
+                        
+                        qwords = None
+                        qwords= self.generate_question(question, qtype)
                 else:
                     q_count = Question.objects.filter(gametype="qa").count()
                     question = Question.objects.filter(gametype="qa")[randint(0,q_count-1)]
                     qtype = question.qtype
                     print qtype
                     print question.qid
+                    qwords = None
+                    qwords= self.generate_question(question, qtype)
 
-                qwords = None
-                qwords= self.generate_question(question, qtype)
                 db_info['qwords'] = qwords
-                
+                print qwords
 
         qtext = question.string
-
+        print qtext
+        
         # Select answer using the id from the interface.
         # Otherwise select answer that is related to the question.
         awords = {}
