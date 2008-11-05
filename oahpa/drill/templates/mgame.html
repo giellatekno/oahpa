@@ -31,9 +31,9 @@
 
 {% ifequal settings.gametype "bare" %}
 <td>{% trans "Stem" %}</td>
+{% endifequal %}
 <td>{% trans "Book" %}</td>
 <td>{% trans "Dialect" %} (not used)</td>
-{% endifequal %}
 
 </tr>
 <tr>
@@ -45,12 +45,12 @@
 {{ settingsform.trisyllabic }}{% trans "trisyllabic" %}<br/>
 {{ settingsform.contracted }}{% trans "contracted" %}<br/>
 </td>
+{% endifequal %}
 <td>{{ settingsform.book }}</td>
 <td>
 <input type="radio" name="dialect" value="western" checked="checked" />{% trans "Western" %}<br/>
 <input type="radio" name="dialect" value="eastern" />{% trans "Eastern" %}<br/>
-{% endifequal %}
-
+</td>
 </tr>
 </table>
 <input type="submit" name="settings" value="{% trans "New set" %}" />
