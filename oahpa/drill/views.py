@@ -32,12 +32,14 @@ class Gameview:
             'N-COM' :  _('Practise comitative'),\
             'N-ESS' :  _('Practise essive'),\
             'N-GEN' :  _('Practise genitive'),\
+            'N-NOM-PL' :  _('Practise plural'),\
             'N-LOC' :  _('Practise locative'),\
             'NUM-ILL' :  _('Practise numerals in illative'),\
             'NUM-ACC' :  _('Practise numerals in accusative'),\
             'NUM-COM' :  _('Practise numerals in comitative'),\
             'NUM-ESS' :  _('Practise numerals in essive'),\
             'NUM-GEN' :  _('Practise numerals in genitive'),\
+            'NUM-NOM-PL' :  _('Practise numerals in plural'),\
             'NUM-LOC' :  _('Practise numerals in locative'),\
             'COLL-NUM' :  _('Practise collective numerals'),\
             'PRS'   :  _('Practise present'),\
