@@ -8,6 +8,7 @@
 <table width="700">
 <tr>
 <td>{% trans "Case" %}</td>
+<td>{% trans "Book" %}</td>
 {% ifequal settings.gametype "bare" %}
 <td>{% trans "Dialect" %} (not used)</td>
 {% endifequal %}
@@ -21,6 +22,7 @@
   {% endifequal %}
 </td>
 
+<td>{{ settingsform.book }}</td>
 {% ifequal settings.gametype "bare" %}
 <td>
 <input type="radio" name="dialect" value="western" checked="checked" />{% trans "Western" %}<br/>
