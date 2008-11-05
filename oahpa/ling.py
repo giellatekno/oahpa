@@ -91,7 +91,6 @@ class Paradigm:
         gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
         lines_tmp = os.popen(gen_norm_lookup).readlines()
         for line in lines_tmp:
-            print line.decode('utf-8')
             if not line.strip(): continue
             matchObj=genObj.search(line)
             if matchObj:
@@ -308,33 +307,43 @@ class Questions:
                         tagelements = self.values[el_id]['tags'].filter(pos__in=poses)
 
             if tags:
+                print "-----------------", tags
                 for tag in tags:
                     tagvalues = []
                     self.get_tagvalues(tag,"",tagvalues)
                     tagstrings.extend(tagvalues)
-                print tagstrings
                 if tagelements:
                     tagelements = tagelements | Tag.objects.filter(Q(string__in=tagstrings))
                 else:
                     tagelements = Tag.objects.filter(Q(string__in=tagstrings))
 
+
             # Extra check for pronouns
             # If pronoun id is given, only the tags related to that pronoun are preserved.
             for t in tagelements:
                 if t.pos == 'Pron':
-                    print "kaikki", t.string
                     if not words.has_key('Pron'): break
                     found = False
-                    print "going through"
                     for w in words['Pron']:
-                        print w.lemma
                         if Form.objects.filter(Q(tag=t) & Q(word=w)).count()>0:
                             found = True
                             break
                     if not found:
-                        print "removing an element.."
-                        print t.string
                         tagelements = tagelements.filter(~Q(id=t.id))
+
+            # Remove those words which do not have any forms with the tags.
+            if words.has_key('N'): 
+                for w in words['N']:
+                    print "*******Examining", w.lemma
+                    found = False
+                    for t in tagelements:
+                        print t.string
+                        if t.pos == 'N':
+                            if Form.objects.filter(Q(tag=t) & Q(word=w)).count()>0:
+                                found = True
+                    if not found:
+                        words['N'].remove(w)
+                        print "***********removing..", w.lemma
             
         # Find different pos-values in tagelements
         posvalues = {}
@@ -448,7 +457,7 @@ class Questions:
             if not gametype:
                 if vasta: gametype="qa"
                 else: gametype="morfa"
-                    
+
             # Store question
             qtype=""
             qtype_el = q.getElementsByTagName("qtype")
@@ -464,6 +473,32 @@ class Questions:
                                                        qatype="question")
             question_element.save()
 
+            # Add source information if present
+            if q.getElementsByTagName("sources"):
+                sources = q.getElementsByTagName("sources")[0]
+                elements=sources.getElementsByTagName("book")
+                for el in elements:
+                    book=el.getAttribute("name")
+                    if book:
+                        # Add book to the database
+                        # Leave this if DTD is used
+                        book_entry, created = Source.objects.get_or_create(name=book)
+                        if created:
+                            print "Created book entry with name ", book
+                    question_element.source.add(book_entry)
+                    question_element.save()                    
+
+            else:
+                print "BOOK ALL"
+                book = "all"
+                # Add book to the database
+                book_entry, created = Source.objects.get_or_create(name=book)
+                if created:
+                    print "Created book entry with name ", book
+                question_element.source.add(book_entry)
+                question_element.save()
+
+            # Read the elements
             self.read_elements(question, question_element,qtype)    
 
             # There can be more than one answer for each question,
