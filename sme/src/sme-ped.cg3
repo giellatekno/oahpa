@@ -152,8 +152,8 @@ SETS
 # I define end of clause and beginning of clause in a way so that the file
 # may be read both by the CG-2 and the vislcg formalisms.
 
-LIST BOS = (>>>) (<s>);
-LIST EOS = (<<<) (</s>);
+LIST BOS = (>>>) (<s>) QDL ;
+LIST EOS = (<<<) (</s>) QDL;
 
 # CG3 doesn´t function without >>> and <<< !
 
