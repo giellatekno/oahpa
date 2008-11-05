@@ -6167,42 +6167,42 @@ MAP (&dia-pos) TARGET QDL IF (*-1 Qst OR go)(NOT *1 Neg);
 
 # The target can be e.g. the user´s name, place where she lives, what kind of car she has.... and then we can use the target in the next question, e.g. "Man guhká don leat orron Romssas?"
 
+LIST NOTHING = Foc/ge "mihkkege" "giige" ;
 
 # The general ones:
 LIST NUM-ADV = "oktii" "guktii" "golbmii" "njelljii" "vihttii" "guhttii" "čihččii" "gávccii" "ovccii" ;
 
-MAP (&dia-target) TARGET (N Num) IF (*-1 QDL LINK *-1 ("gallis" Nom) LINK -1 BOS);
-MAP (&dia-target) TARGET Num IF (*-1 QDL LINK *-1 ("galle") LINK -1 BOS);
-MAP (&dia-target) TARGET Ord IF (*-1 QDL LINK *-1 ("gallát") OR ("galládat") LINK -1 BOS);
-MAP (&dia-target) TARGET NUM-ADV IF (*-1 QDL LINK *-1 ("gallii") LINK -1 BOS);
+MAP (&dia-target) TARGET (N Num) IF (*-1 QDL LINK *-1 ("gallis" Nom) LINK -1 BOS)(NOT 0 NOTHING);
+MAP (&dia-target) TARGET Num IF (*-1 QDL LINK *-1 ("galle") LINK -1 BOS)(NOT 0 NOTHING);
+MAP (&dia-target) TARGET Ord IF (*-1 QDL LINK *-1 ("gallát") OR ("galládat") LINK -1 BOS)(NOT 0 NOTHING);
+MAP (&dia-target) TARGET NUM-ADV IF (*-1 QDL LINK *-1 ("gallii") LINK -1 BOS)(NOT 0 NOTHING);
 
-MAP (&dia-target) TARGET NP-HEAD + Nom IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM LINK NOT 0 Num  LINK -1 BOS)(NEGATE *-1 QDL LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom))  ;
-MAP (&dia-target) TARGET NP-HEAD + Acc IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC LINK NOT 0 Num LINK -1 BOS)(NEGATE *1 (N Acc) BARRIER VERB OR CC) ;
-MAP (&dia-target) TARGET VFIN IF (*-1 QDL LINK *-1 WORK-V LINK *-1 TARGETQUESTION-ACC LINK NOT 0 Num  LINK -1 BOS)(NOT 0 Neg) ;
+MAP (&dia-target) TARGET NP-HEAD + Nom IF (*-1 QDL LINK *-1 TARGETQUESTION-NOM LINK NOT 0 Num  LINK -1 BOS)(NEGATE *-1 QDL LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom))(NOT 0 NOTHING)  ;
+MAP (&dia-target) TARGET NP-HEAD + Acc IF (*-1 QDL LINK *-1 TARGETQUESTION-ACC LINK NOT 0 Num LINK -1 BOS)(NEGATE *1 (N Acc) BARRIER VERB OR CC)(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET VFIN IF (*-1 QDL LINK *-1 WORK-V LINK *-1 TARGETQUESTION-ACC LINK NOT 0 Num  LINK -1 BOS)(NOT 0 Neg)(NOT 0 NOTHING) ;
 
-MAP (&dia-target) TARGET NP-HEAD + Gen IF (*-1 QDL LINK *-1 TARGETQUESTION-GEN LINK NOT 0 Num  LINK -1 BOS) ;
-MAP (&dia-target) TARGET NP-HEAD + Ill IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL LINK NOT 0 Num  OR ("gosa") LINK -1 BOS) ;
-MAP (&dia-target) TARGET NP-HEAD + Loc IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC  OR ("gos") OR ("gokko") LINK NOT 0 Num  LINK -1 BOS) ;
-MAP (&dia-target) TARGET NP-HEAD + Com IF (*-1 QDL LINK *-1 TARGETQUESTION-COM LINK NOT 0 Num  LINK -1 BOS) ;
-MAP (&dia-target) TARGET NP-HEAD + Ess IF (*-1 QDL LINK *-1 TARGETQUESTION-ESS LINK NOT 0 Num  LINK -1 BOS) ;
+MAP (&dia-target) TARGET NP-HEAD + Gen IF (*-1 QDL LINK *-1 TARGETQUESTION-GEN LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Ill IF (*-1 QDL LINK *-1 TARGETQUESTION-ILL LINK NOT 0 Num  OR ("gosa") LINK -1 BOS)(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Loc IF (*-1 QDL LINK *-1 TARGETQUESTION-LOC  OR ("gos") OR ("gokko") LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Com IF (*-1 QDL LINK *-1 TARGETQUESTION-COM LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Ess IF (*-1 QDL LINK *-1 TARGETQUESTION-ESS LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
 
-MAP (&dia-target) TARGET Num (1 (&dia-target)) ;
+MAP (&dia-target) TARGET Num (1 (&dia-target))(NOT 0 NOTHING) ;
 
 
-MAP (&dia-target) TARGET DOPPE IF (*-1 QDL LINK *-1 ("gos") OR ("gokko") LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Loc)) ;
+MAP (&dia-target) TARGET DOPPE IF (*-1 QDL LINK *-1 ("gos") OR ("gokko") LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Loc))(NOT 0 NOTHING) ;
 # picking "dáppe" if no Loc
-MAP (&dia-target) TARGET DOHKO IF (*-1 QDL LINK *-1 ("gosa") LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Ill)) ;
+MAP (&dia-target) TARGET DOHKO IF (*-1 QDL LINK *-1 ("gosa") LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Ill))(NOT 0 NOTHING) ;
 # picking "deike" if no Loc
 
 # The Nom rule do not pick Num + N Gen !!
 # You can live in a Num (40:s) !!
 
 # In the question are alternatives:
-MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Nom))  ;
-MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL BARRIER Acc OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Acc)) ;
+MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Nom))(NOT 0 NOTHING)  ;
+MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL BARRIER Acc OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Acc))(NOT 0 NOTHING) ;
 
 
-LIST NOTHING = Foc/ge "mihkkege" "giige" ;
 
 MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&dia-target)) ;
     ## in oro gostege
