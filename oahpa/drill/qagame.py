@@ -182,7 +182,7 @@ class QAGame(Game):
                     if qwords.has_key('SUBJ') and qwords['SUBJ'].has_key('number'):
                         subjnumber=qwords['SUBJ']['number']
                         v_number = self.SVPN[subjnumber]
-                        if qtype in self.qtype_verbs:
+                        if qtype in self.qtype_verbs or self.gametype=="qa":
                             mainv_tags = mainv_el.tags.filter(Q(personnumber=v_number))
                         else:
                             mainv_tags = mainv_el.tags.filter(Q(personnumber=v_number) & \
@@ -193,7 +193,6 @@ class QAGame(Game):
                     else:
                         mainv_tag_count = mainv_el.tags.count()
                         mainv_tags = mainv_el.tags.all()
-
                     tag_el = mainv_tags[randint(0, mainv_tags.count()-1)]
 
                 # Select random mainverb
@@ -547,6 +546,7 @@ class QAGame(Game):
                     question = Question.objects.filter(gametype="qa")[randint(0,q_count-1)]
                     qtype = question.qtype
                     print qtype
+                    print question.id
                     print question.qid
                     qwords = None
                     qwords= self.generate_question(question, qtype)
