@@ -30,7 +30,7 @@ body {
   top: 0px;    
   left: 0px;
   width: 100%;
-  height: 90px;
+  height: 60px;
   overflow: hidden;
   background-image: url(/oahpa/media/background.jpg);
   background-color: #406080;
@@ -58,11 +58,11 @@ body {
   padding: 5px 5px 5px 5px;
   margin: 0;
   position: static;    
-  top: 130px;
+  top: 80px;
   left: 0px;
   height: 100%;
   overflow: auto;    
-  width: 110px;  
+  width: 120px;  
   background-image: url(/oahpa/media/background.jpg);
   background-color: #406080;
 <!--  background: #231E78; -->
@@ -86,7 +86,7 @@ body {
   padding: 10px 5px 10px 30px;
   margin: 0;
   position: absolute;    
-  top: 120px;
+  top: 70px;
   left: 100px;
   right: 20px;
   bottom: 0px;
@@ -214,8 +214,8 @@ function process(strField, evtKeyPress)  {
 <div id="header" >
 
 <div class="title">
-<img width="350" height="80" src="http://giellatekno.uit.no/oahpa/images/oahpa.png" alt="OAHPA!"/>
-<font size="+2"><b>{% block name %}{% endblock %}</b></font>
+<img width="200" height="50" src="http://giellatekno.uit.no/oahpa/images/oahpa.png" alt="OAHPA!"/>
+{% block menu %}{% endblock %}
 </div>
 
 <div class="language">
@@ -258,40 +258,41 @@ function process(strField, evtKeyPress)  {
 </div>
 
 
+{% block navbar %}{% endblock %}
+<!--
 <div id="navbar">
 
-	  <a href="/oahpa/morfa/">{% trans 'Morfa' %}</a><br/>
+<font size="+2"><b>{% block name %}{% endblock %}</b></font>
+
 	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
 	    <li><a href="/oahpa/morfa_s/">{% trans 'Nouns' %}</a></li>
 	    <li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>
 	    <li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li>
 	    <li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>
 	  </ul>
-	  <a href="/oahpa/cmorfa/">{% trans 'Contextual Morfa' %}</a><br/>
 	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
 	    <li><a href="/oahpa/cmorfa_s/">{% trans 'Nouns' %}</a></li>
 	    <li><a href="/oahpa/cmorfa_v/">{% trans 'Verbs' %}</a></li>
-<!--	    <li><a href="/oahpa/cmorfa_a/">{% trans 'Adjectives' %}</a></li>-->
+	    <li><a href="/oahpa/cmorfa_a/">{% trans 'Adjectives' %}</a></li>
 	    <li><a href="/oahpa/cmorfa_l/">{% trans 'Numerals' %}</a></li>
 	  </ul>
-<!--	  <a href="/oahpa/vasta/">{% trans 'Vasta' %}</a><br/>-->
-	  <a href="/oahpa/leksa/">{% trans 'Leksa' %}</a><br/>
 	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
 	    <li><a href="/oahpa/leksa/">{% trans 'Words' %}</a></li>
 	    <li><a href="/oahpa/leksa_n/">{% trans 'Placenames' %}</a></li>
 	  </ul>
-	  <a href="/oahpa/logut/">{% trans 'Logut' %}</a><br/>
 	  <ul style="list-style: none;"><li></ul>
 	  <a href="/oahpa/feedback/">{% trans 'Feedback' %}</a><br/>
 
 </div>
-
+-->
 <!--<div id="rightbar">
 <p>&nbsp;</p>
 </div>-->
-<div id="content">
 
+<div id="content">
 <form method="post" action="" name="theform" >
+
+
 
 <div class="settings">
 {% block settings %}{% endblock %}
@@ -303,8 +304,8 @@ function process(strField, evtKeyPress)  {
     {% endblock %}
 
 </div>
-
 </form>
+
 </div>
 
 
