@@ -92,6 +92,8 @@ class Form(models.Model):
     word = models.ForeignKey(Word)
     tag = models.ForeignKey(Tag)
     fullform = models.CharField(max_length=200)
+    dialect = models.CharField(max_length=20)
+
 
 class Question(models.Model):
     qid = models.CharField(max_length=200)
