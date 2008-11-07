@@ -1,19 +1,25 @@
 {% extends "game.html" %}
 {% load i18n %}
 
-{% block navbar %}
-<div id="navbar">                                                                                                     
-<ul style="margin-left: 0; padding-left: 15px; list-style: none;">                                           
-<li><a href="/oahpa/morfa_s/">{% trans 'Nouns' %}</a></li>                                                 
-<li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>                                                 
-<li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li>                                            
-<li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>                                              
-</ul>                                                        
-</div>
-{% endblock %}
 
 {% block name %}{% trans "Morphology" %}{% endblock %}
 {% block pagename %}/oahpa/morfa/{% endblock %}
+
+{% block menu %}
+{% ifequal settings.gametype "bare" %}
+<font size="+2" color="#D2B48C" ><b>{% trans 'Morfa' %}</b></font>&nbsp;&nbsp;
+<a href="/oahpa/cmorfa/">{% trans 'Contextual Morfa' %}</a>&nbsp;&nbsp;
+<!--	  <a href="/oahpa/vasta/">{% trans 'Vasta' %}</a><br/>-->
+	  <a href="/oahpa/leksa/">{% trans 'Leksa' %}</a>&nbsp;&nbsp;
+	  <a href="/oahpa/logut/">{% trans 'Logut' %}</a>&nbsp;&nbsp;
+{% else %}
+<a href="/oahpa/cmorfa/">{% trans 'Morfa' %}</a>&nbsp;&nbsp;
+<font size="+2" color="#D2B48C" ><b>{% trans 'Contextual Morfa' %}</b></font>&nbsp;&nbsp;
+<!--	  <a href="/oahpa/vasta/">{% trans 'Vasta' %}</a><br/>-->
+	  <a href="/oahpa/leksa/">{% trans 'Leksa' %}</a>&nbsp;&nbsp;
+	  <a href="/oahpa/logut/">{% trans 'Logut' %}</a>&nbsp;&nbsp;
+{% endifequal %}
+{% endblock %}
 
 
 {% block tabmenu %}
@@ -33,7 +39,6 @@
 <td>{% trans "Stem" %}</td>
 {% endifequal %}
 <td>{% trans "Book" %}</td>
-<td>{% trans "Dialect" %} (not used)</td>
 
 </tr>
 <tr>
@@ -47,10 +52,6 @@
 </td>
 {% endifequal %}
 <td>{{ settingsform.book }}</td>
-<td>
-<input type="radio" name="dialect" value="western" checked="checked" />{% trans "Western" %}<br/>
-<input type="radio" name="dialect" value="eastern" />{% trans "Eastern" %}<br/>
-</td>
 </tr>
 </table>
 <input type="submit" name="settings" value="{% trans "New set" %}" />
