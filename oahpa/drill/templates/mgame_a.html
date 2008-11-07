@@ -1,6 +1,16 @@
 {% extends "mgame.html" %}
 {% load i18n %}
 
+{% block navbar %}
+<div id="navbar">                                                                                                <ul style="margin-left: 0; padding-left: 15px; list-style: none;">                                           
+<li><a href="/oahpa/morfa_s/">{% trans 'Nouns' %}</a></li>                                                 
+<li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>                                              
+<font color="#D2B48C" ><b>{% trans 'Adjectives' %}</b></font>&nbsp;&nbsp;
+<li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>                                            
+
+</ul>                                                        
+</div>
+{% endblock %}
 {% block gamename %}<p>{{ settings.gamename }}</p>{% endblock %}
 {% block instructions %}{% trans "Add adjectives in correct forms." %}{% endblock %}
 
