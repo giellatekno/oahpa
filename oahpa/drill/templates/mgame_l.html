@@ -1,6 +1,33 @@
 {% extends "game.html" %}
 {% load i18n %}
 
+{% block menu %}
+{% ifequal settings.gametype "bare" %}
+<font size="+2" color="#D2B48C" ><b>{% trans 'Morfa' %}</b></font>&nbsp;&nbsp;
+<a href="/oahpa/cmorfa/">{% trans 'Contextual Morfa' %}</a>&nbsp;&nbsp;
+<!--	  <a href="/oahpa/vasta/">{% trans 'Vasta' %}</a><br/>-->
+	  <a href="/oahpa/leksa/">{% trans 'Leksa' %}</a>&nbsp;&nbsp;
+	  <a href="/oahpa/logut/">{% trans 'Logut' %}</a>&nbsp;&nbsp;
+{% else %}
+<a href="/oahpa/cmorfa/">{% trans 'Morfa' %}</a>&nbsp;&nbsp;
+<font size="+2" color="#D2B48C" ><b>{% trans 'Contextual Morfa' %}</b></font>&nbsp;&nbsp;
+<!--	  <a href="/oahpa/vasta/">{% trans 'Vasta' %}</a><br/>-->
+	  <a href="/oahpa/leksa/">{% trans 'Leksa' %}</a>&nbsp;&nbsp;
+	  <a href="/oahpa/logut/">{% trans 'Logut' %}</a>&nbsp;&nbsp;
+{% endifequal %}
+{% endblock %}
+
+
+{% block navbar %}
+<div id="navbar">                                                                                                <ul style="margin-left: 0; padding-left: 15px; list-style: none;">                                           
+<li><a href="/oahpa/morfa_s/">{% trans 'Nouns' %}</a></li>                                                 
+<li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>                                              
+<li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li>                                            
+<font color="#D2B48C" ><b>{% trans 'Numerals' %}</b></font>&nbsp;&nbsp;
+</ul>                                                        
+</div>
+{% endblock %}
+
 {% block name %}{% trans "Morphology" %}{% endblock %}
 {% block pagename %}/oahpa/morfa/{% endblock %}
 {% block settings %}
