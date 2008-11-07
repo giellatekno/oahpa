@@ -158,7 +158,7 @@ for e in tree.getElementsByTagName("entry"):
     if options.pos:
         pos=options.pos
     else:
-        pos=e.getElementsByTagName("pos")[0].getAttribute("class")       
+        pos=e.getElementsByTagName("pos")[0].getAttribute("class") 
         if not pos:
             print "Part of speech information not found for ", lemma, ". give it command line: --pos=N"
             sys.exit()
@@ -207,8 +207,7 @@ for e in tree.getElementsByTagName("entry"):
     # Add forms and tags
     if options.paradigmfile:
         linginfo.create_paradigm(lemma,pos)
-        print "generated"
-        print linginfo.paradigm
+        #print "generated"
         for form in linginfo.paradigm:
             g=form.classes
             if w.pos == "A" and w.compare == "no" and (g.get('Grade')=="Comp" or g.get('Grade')=="Superl"):
@@ -226,9 +225,8 @@ for e in tree.getElementsByTagName("entry"):
                                                 subclass=g.get('Subclass',""),attributive=g.get('Attributive',""))
 
             t.save()
-            print "******** creating"
-            print form.form, t.string, w.lemma
-            form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w)
+            #print form.form, t.string, w.lemma
+            form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w,dialect=form.dialect)
             form.save()
 
     if only_sg:
@@ -252,7 +250,7 @@ for e in tree.getElementsByTagName("entry"):
                     print "Created book entry with name ", book
                 w.source.add(book_entry)
                 w.save()
-
+        
     if e.getElementsByTagName("semantics"):
 
         # Give placenames special semantic tag
