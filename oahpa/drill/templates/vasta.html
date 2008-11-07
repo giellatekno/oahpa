@@ -1,6 +1,15 @@
 {% extends "game.html" %}
 {% load i18n %}
 
+{% block menu %}
+<a href="/oahpa/morfa/">{% trans 'Morfa' %}</a>&nbsp;&nbsp;
+<a href="/oahpa/cmorfa/">{% trans 'Contextual Morfa' %}</a>&nbsp;&nbsp;
+<!--<font size="+2" color="#D2B48C" ><b>{% trans 'Vasta' %}</b></font>&nbsp;&nbsp;-->
+	  <a href="/oahpa/leksa/">{% trans 'Leksa' %}</a>&nbsp;&nbsp;
+	  <a href="/oahpa/logut/">{% trans 'Logut' %}</a>&nbsp;&nbsp;
+
+{% endblock %}
+
 {% block name %}{% trans "Vasta" %}{% endblock %}
 {% block pagename %}/oahpa/vasta/{% endblock %}
 {% block instructions %}{% trans "Answer to the questions with full sentences." %}{% endblock %}
