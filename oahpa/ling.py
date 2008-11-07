@@ -80,25 +80,33 @@ class Paradigm:
                 all = all + lemma + "+" + a
 
         # generator call
-        #fstdir="/opt/smi/sme/bin"
-        #lookup = /usr/local/bin/lookup
+        fstdir="/opt/smi/sme/bin"
+        lookup = /usr/local/bin/lookup
 
-        fstdir="/Users/saara/gt/sme/bin"
-        lookup = "/Users/saara/bin/lookup"
+        #fstdir="/Users/saara/gt/sme/bin"
+        #lookup = "/Users/saara/bin/lookup"
 
-        gen_norm_fst = fstdir + "/isme-restr.fst"
+        gen_norm_fst = fstdir + "/isme-norm.fst"
+        gen_restr_fst = fstdir + "/isme-restr.fst"
 
         gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
+        gen_restr_lookup = "echo \"" + all.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_restr_fst
         lines_tmp = os.popen(gen_norm_lookup).readlines()
+        lines_restr_tmp = os.popen(gen_restr_lookup).readlines()
+
         for line in lines_tmp:
             if not line.strip(): continue
             matchObj=genObj.search(line)
             if matchObj:
                 g = Entry()
+                g.dialect=''
                 g.classes={}
                 lemma = matchObj.expand(r'\g<lemmaString>')
                 g.form = matchObj.expand(r'\g<formString>')
                 if re.compile("\?").match(g.form): continue
+                # If line is included in the restricted readings.
+                if line in set(lines_restr_tmp):
+                    g.dialect='restricted'
                 g.tags = matchObj.expand(r'\g<tagString>')
                 for t in g.tags.split('+'):
                     if self.tagset.has_key(t):
@@ -299,7 +307,7 @@ class Questions:
             for gr in grammars:
                 tags.append(gr.getAttribute("tag"))
                 poses.append(gr.getAttribute("pos"))
-
+                print "************", tags, poses
             tagstrings = []
             if poses:
                 if self.values.has_key(el_id):
@@ -334,10 +342,10 @@ class Questions:
             # Remove those words which do not have any forms with the tags.
             if words.has_key('N'): 
                 for w in words['N']:
-                    print "*******Examining", w.lemma
+                    #print "*******Examining", w.lemma
                     found = False
                     for t in tagelements:
-                        print t.string
+                        #print t.string
                         if t.pos == 'N':
                             if Form.objects.filter(Q(tag=t) & Q(word=w)).count()>0:
                                 found = True
