@@ -73,10 +73,15 @@ class QAGame(Game):
             
             form_list = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_el.id))
 
-        if not form_list:
-            return None
-    
-        fullform = form_list[0].fullform
+            if not form_list:
+                return None
+
+        dial_form_list = form_list.filter(Q(dialect="restricted"))
+        if dial_form_list:
+            fullform = dial_form_list[0].fullform
+        else:
+            fullform = form_list[0].fullform
+
         info = { 'word' : word_el.id, 'tag' : tag_el.id, 'fullform' : [ fullform ], 'qelement' : qelement }
         return info
     
@@ -94,10 +99,18 @@ class QAGame(Game):
             if word_id and tag_el:
                 word = Word.objects.filter(id=word_id)[0]
         if word:
-            if Form.objects.filter(Q(tag=tag_el.id) & Q(word=word.id)).count()>0:
-                fullform = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word.id))[0].fullform
-                info = {'word': word.id, 'tag' : tag_el.id, 'fullform' : [ fullform ] }
-                words.append(info)                    
+            form_list = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word.id))
+            if not form_list:
+                return []
+
+            dial_form_list = form_list.filter(Q(dialect="restricted"))
+            if dial_form_list:
+                fullform = dial_form_list[0].fullform
+            else:
+                fullform = form_list[0].fullform
+
+            info = {'word': word.id, 'tag' : tag_el.id, 'fullform' : [ fullform ] }
+            words.append(info)                    
 
         return words
 
@@ -182,6 +195,7 @@ class QAGame(Game):
                     if qwords.has_key('SUBJ') and qwords['SUBJ'].has_key('number'):
                         subjnumber=qwords['SUBJ']['number']
                         v_number = self.SVPN[subjnumber]
+
                         if qtype in self.qtype_verbs or self.gametype=="qa":
                             mainv_tags = mainv_el.tags.filter(Q(personnumber=v_number))
                         else:
@@ -460,7 +474,7 @@ class QAGame(Game):
                             i= i+1
                             w_count=Word.objects.filter(Q(pos="Num")).count()
                             word_id=Word.objects.filter(Q(pos="Num"))[randint(0,w_count-1)].id
-                            print word_id
+                            #print word_id
                             if Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id)).count()>0:
                                 fullform = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id))[0].fullform
                                 info = {'word': word_id, 'tag' : tag_el.id, 'fullform' : [ fullform ] }
@@ -497,6 +511,7 @@ class QAGame(Game):
                 if pos == "A":
                     qtype=self.settings['adj_context']
 
+
         # If the question id is received from the interface, use that question info
         # Otherwise select random question
         qwords = {}
@@ -513,7 +528,6 @@ class QAGame(Game):
                 if not self.gametype == "qa":
                     if self.settings.has_key('book'):
                         books=self.settings['book']
-                        print "********************************", books
                     if books:    
                         q_count=Question.objects.filter(Q(qtype=qtype) & \
                                                         Q(gametype="morfa") & \
@@ -528,7 +542,7 @@ class QAGame(Game):
                         qnum = randint(0, q_count-1)
                         # TESTING
                         #qnum = 1
-                        print "qnum:", qnum
+                        #print "qnum:", qnum
                         if books:    
                             question = Question.objects.filter(Q(qtype=qtype) & \
                                                                Q(gametype="morfa") & \
@@ -545,17 +559,17 @@ class QAGame(Game):
                     q_count = Question.objects.filter(gametype="qa").count()
                     question = Question.objects.filter(gametype="qa")[randint(0,q_count-1)]
                     qtype = question.qtype
-                    print qtype
-                    print question.id
-                    print question.qid
+                    #print qtype
+                    #print question.id
+                    #print question.qid
                     qwords = None
                     qwords= self.generate_question(question, qtype)
 
                 db_info['qwords'] = qwords
-                print qwords
+                #print qwords
 
         qtext = question.string
-        print qtext
+        #print qtext
         
         # Select answer using the id from the interface.
         # Otherwise select answer that is related to the question.
@@ -593,7 +607,6 @@ class QAGame(Game):
 
                 if 'MAINV' in words_strings:
                     awords = self.generate_answers_mainv(answer, question, awords, qwords, qtype, 'MAINV')
-
 
                 # Rest of the syntax
                 for s in words_strings:
