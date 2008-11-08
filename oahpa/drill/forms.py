@@ -7,6 +7,7 @@ from django import newforms as forms
 from django.http import Http404
 from django.db.models import Q
 from django.utils.translation import ugettext as _
+from django.utils.encoding import force_unicode
 from random import randint
 from models import *
 import time
@@ -35,7 +36,7 @@ CASE_CONTEXT_CHOICES = (
     ('N-ACC', _('accusative')),
     ('N-ILL', _('illative')),
     ('N-LOC', _('locative')),
-    ('N-COM', _('comitative')),
+#    ('N-COM', _('comitative')),
     ('N-ESS', _('essive')),
 )
 
@@ -166,13 +167,11 @@ NUMGAME_CHOICES = (
     ('string', _('String to numeral')),
 )
 
-
-
 def is_correct(self, game, example=None):
     """
     Determines if the given answer is correct (for a bound form).
     """
-    print "GAME", game
+    #print "GAME", game
     if not self.is_valid():
         return False
 
@@ -295,17 +294,17 @@ class MorphQuestion(forms.Form):
         
         feedbacks=None
         
-        if tag.pos=="N":
-            #print ".......filtering feedbacks for nouns"
-            #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi
-            print tag.case,tag.pos,tag.number
+        if tag.pos=="N" or tag.pos=="Num":
+            #print "filtering feedbacks"
+            #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi,tag.case,tag.pos,tag.number
+
             feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
                                                 Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
                                                 Q(soggi=word.soggi) & Q(case2=tag.case) & \
                                                 Q(pos=tag.pos) &\
                                                 Q(number = tag.number))
         if tag.pos=="A":
-            print "........filtering feedbacks for adjectives"
+            #print "........filtering feedbacks for adjectives"
 
             grade =""
             if tag.grade: grade = tag.grade                
@@ -343,7 +342,7 @@ class MorphQuestion(forms.Form):
                 for m in msgs:
                     self.feedback = self.feedback + " " + m.message
             self.feedback = self.feedback.replace("WORDFORM", "\"" + wordform + "\"") 
-            print "FEEDBACK", self.feedback
+            #print "FEEDBACK", self.feedback
 
 
     def __init__(self, word, tag, baseform, fullforms, translations, question, userans_val, correct_val, *args, **kwargs):
@@ -380,15 +379,11 @@ class MorphQuestion(forms.Form):
                          'Du1':'mun','Du2':'don','Du3':'son'}
         
         # Take only the first translation for the tooltip
-        #tmp_translations = []
-        #for item in translations:
-        #    tmp_translations.append(item.lemma.encode('utf-8'))
-        #self.translations = string.join(tmp_translations, ', ' )
         if len(translations)>0:
-            self.translations = translations[0].lemma.encode('utf-8')
-        
+            self.translations = translations[0].lemma
+			
         for item in fullforms:
-            self.correct_anslist.append(item.fullform)
+            self.correct_anslist.append(force_unicode(item.fullform))
         
         if tag.pos=="N":
             #self.tag = ""
@@ -404,7 +399,7 @@ class MorphQuestion(forms.Form):
                                             Q(tag__string="Pron+Pers+" +tag.personnumber+ "+Nom"))[0].fullform
 
             if self.pron and tag.mood=="Imprt":
-                self.pron_imp= self.pron
+                self.pron_imp= "(" + self.pron + ")"
                 self.pron=""
 
         self.is_correct("morfa" + "_" + tag.pos, self.lemma + "+" + self.tag)
@@ -467,7 +462,7 @@ class QuizzQuestion(forms.Form):
             self.lemma = oo.decode('utf-8') + self.lemma
             
         for item in translations:
-            self.correct_anslist.append(item.lemma)
+            self.correct_anslist.append(force_unicode(item.lemma))
 
         self.is_correct("leksa", self.lemma)
 
@@ -515,12 +510,12 @@ class NumQuestion(forms.Form):
         self.problems="error"
 
         if gametype == "string":
-            self.correct_anslist.append(numeral)
+            self.correct_anslist.append(force_unicode(numeral))
             example = num_string
         else:
             example = numeral
             for item in num_list:
-                self.correct_anslist.append(item)
+                self.correct_anslist.append(force_unicode(item))
 
         self.is_correct("numra", example)
 
@@ -537,7 +532,7 @@ def select_words(self, qwords, awords):
     selected_awords = {}
 
     for syntax in awords.keys():
-        print "SYNTAX", syntax
+        #print "SYNTAX", syntax
         word = None        
         tag = None
         selected_awords[syntax] = {}
@@ -681,7 +676,8 @@ class QAQuestion(forms.Form):
         
         if (gametype == 'context'):
             if len(selected_awords[task]['fullform'])>0:
-                self.correct_anslist = selected_awords[task]['fullform'][:]
+                for f in selected_awords[task]['fullform']:				
+                    self.correct_anslist.append(force_unicode(f))
                 self.is_correct("contextual morfa")
                             
         self.qattrs= {}
@@ -709,7 +705,7 @@ class QAQuestion(forms.Form):
 
         # Format question string
         qtext = question.string
-        print qwords
+        #print qwords
         for w in qtext.split():
             if not qwords.has_key(w): qstring = qstring + " " + w
             else:
@@ -733,7 +729,7 @@ class QAQuestion(forms.Form):
             if answer_tag_el.number=="Sg":
                 self.lemma = answer_word_el.lemma
             else:
-                print answer_word_el.lemma
+                #print answer_word_el.lemma
                 if Form.objects.filter(Q(word__pk=answer_word) & \
                                        Q(tag__string="N+Pl+Nom")).count()>0:                        
                     self.lemma = Form.objects.filter(Q(word__pk=answer_word) & \
@@ -785,27 +781,27 @@ def qa_is_correct(self,question,qwords):
         return False
 
     lookup_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    lookup_client.connect(("localhost", 5000))
+    lookup_client.connect(("localhost", 9000))
 
     # Analyzer..
-    fstdir="/Users/saara/gt/sme/bin"
-    lo = "/Users/saara/bin/lookup"
-    lookup2cg = " | /Users/saara/gt/script/lookup2cg"
-    cg3 = "/usr/local/bin/vislcg3"
-    preprocess = " | /Users/saara/gt/script/preprocess "
-    dis = "/Users/saara/ped/sme/src/sme-ped.cg3"
+    #fstdir="/Users/saara/gt/sme/bin"
+    #lo = "/Users/saara/bin/lookup"
+    #lookup2cg = " | /Users/saara/gt/script/lookup2cg"
+    #cg3 = "/usr/local/bin/vislcg3"
+    #preprocess = " | /Users/saara/gt/script/preprocess "
+    #dis = "/Users/saara/ped/sme/src/sme-ped.cg3"
 
-    #fstdir="/opt/smi/sme/bin"
-    #lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
-    #lookup2cg = " | lookup2cg"
-    #cg3 = "vislcg3"
-    #preprocess = " | /usr/local/bin/preprocess "
-    #dis = "/home/saara/ped/sme/src/sme-ped.cg3"
+    fstdir="/opt/smi/sme/bin"
+    lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
+    lookup2cg = " | lookup2cg"
+    cg3 = "/usr/local/bin/vislcg3"
+    preprocess = " | /usr/local/bin/preprocess "
+    dis_bin = "/home/saara/ped/sme/src/sme-ped.cg3"
+    #dis_bin = fstdir + "/sme-ped.cg3.bin"
 
     fst = fstdir + "/sme.fst"
     lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst        
-    vislcg3 = " | " + cg3 + " --grammar " + dis + " -C UTF-8"
-    disamb = lookup + lookup2cg + vislcg3
+    vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
 
     self.userans = self.cleaned_data['answer']
     answer = self.userans.rstrip()
@@ -815,6 +811,7 @@ def qa_is_correct(self,question,qwords):
     self.error = "error"
                 
     qtext = question.string
+    qtext = qtext.rstrip('.!?,')
     
     analysis = ""
     for w in qtext.split():
@@ -824,7 +821,6 @@ def qa_is_correct(self,question,qwords):
             if qword.has_key('word'):
                 if qword.has_key('fullform') and qword['fullform']:
                     cohort = cohort + "\"<" + qword['fullform'][0].encode('utf-8') + ">\"\n"
-
                     lemma = Word.objects.filter(id=qword['word'])[0].lemma
                     cohort = cohort + "\t\"" + lemma.encode('utf-8') + "\""
                 if qword.has_key('tag') and qword['tag']:
@@ -833,11 +829,9 @@ def qa_is_correct(self,question,qwords):
                     cohort = cohort + " " + tag.encode('utf+8') + "\n"
             else:
                 w=w.lstrip().rstrip()
-                print "calling server..", w
                 lookup_client.send(w.encode('utf-8'))
                 cohort = lookup_client.recv(512)
-                print cohort
-                
+
         if not cohort:
             cohort = w + "\n"
         
@@ -852,18 +846,16 @@ def qa_is_correct(self,question,qwords):
     analyzed=""
     for c in word:
         c=c.rstrip().lstrip()
-        print "calling server..", c
+
         lookup_client.send(c)
         analyzed = analyzed + lookup_client.recv(512)
-        
+
     analysis = analysis + analyzed
     #print analysis
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
 
     ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
-    #print "***************"
-    #print ped_cg3
     checked = os.popen(ped_cg3).readlines()
 
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
@@ -871,9 +863,10 @@ def qa_is_correct(self,question,qwords):
 
     spelling = False
     msgstrings = {}
+
     for line in checked:
         line = line.strip()
-        #print line
+
         matchObj=wordformObj.search(line)
         if matchObj:
             wordform = matchObj.expand(r'\g<msgString>')
@@ -887,23 +880,30 @@ def qa_is_correct(self,question,qwords):
             msgstrings[wordform][msgstring] = 1
             
     msg=[]
+    found=False
     for w in msgstrings.keys():
+        if found: break
         for m in msgstrings[w].keys():
             if spelling and m.count("spelling") == 0: continue
             m = m.replace("&","") 
             if Feedbackmsg.objects.filter(msgid=m).count() > 0:
                 message = Feedbackmsg.objects.filter(msgid=m)[0].message
-                message = message.replace("WORDFORM","\"" + w + "\"") 
+                message = message.replace("WORDFORM","\"" + w.decode('utf-8') + "\"") 
                 msg.append(message)
+                if not spelling:
+                    found=True
+                    break				
             else:
                 if m.count("dia-") == 0:
                     msg.append(m)
+                    if not spelling:
+                        found=True
+                        break				
 
     if not msg:
         self.error = "correct"
 
     lookup_client.send("q")
-    #lookup_client.recv(512)
     lookup_client.close()
     return msg
 
