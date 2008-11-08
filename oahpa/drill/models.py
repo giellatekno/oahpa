@@ -39,7 +39,7 @@ class Word(models.Model):
     semtype = models.ManyToManyField(Semtype)
     source = models.ManyToManyField(Source)
     diphthong=models.CharField(max_length=5)
-    gradation=models.CharField(max_length=5)
+    gradation=models.CharField(max_length=20)
     rime = models.CharField(max_length=20)
     attrsuffix = models.CharField(max_length=20)
     soggi = models.CharField(max_length=10)
