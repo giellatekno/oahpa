@@ -3,7 +3,9 @@
 
 {% block menu %}
 {% ifequal settings.gametype "bare" %}
+<img width="30" height="30" src="/oahpa/media/nr2_smaller.png"</img>
 <font size="+2" color="#D2B48C" ><b>{% trans 'Morfa' %}</b></font>&nbsp;&nbsp;
+<img width="30" height="30" src="/oahpa/media/nr1_smaller.png"</img>
 <a href="/oahpa/cmorfa/">{% trans 'Contextual Morfa' %}</a>&nbsp;&nbsp;
 <!--	  <a href="/oahpa/vasta/">{% trans 'Vasta' %}</a><br/>-->
 	  <a href="/oahpa/leksa/">{% trans 'Leksa' %}</a>&nbsp;&nbsp;
@@ -99,4 +101,21 @@
 <td>{{ form.question }} ({{ form.lemma }})</td>
 {% endifequal %}
 
+{% endblock %}
+
+{% block submit %}
+<tr>
+<td>
+</td>
+<td>
+{% if not all_correct %}
+   {% if not show_correct %}
+   <input type="submit" name="test" value="{% trans "Test answers" %}"/>
+   {% endif %}
+   {% ifequal count 1 %}
+   <input type="submit" name="show_correct" value="{% trans "Show correct answers" %}" />
+   {% endifequal %}
+{% endif %}
+</td>
+</tr>
 {% endblock %}
