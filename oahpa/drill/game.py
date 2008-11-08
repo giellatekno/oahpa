@@ -25,6 +25,9 @@ class Game:
         self.show_correct = 0
         self.num_fields = 6
 
+        if not self.settings.has_key('gametype'):
+            self.settings['gametype'] = "bare"
+			
         if self.settings.has_key('semtype'):
             if self.settings['semtype'] == 'all':
                 self.settings['semtype']=self.settings['allsem']
@@ -38,7 +41,8 @@ class Game:
         self.form_list = []
         word_ids = []
         i=1
-        while i < self.num_fields:
+        num=0
+        while i < self.num_fields and num<20:
             db_info = {}
             db_info['userans'] = ""
             db_info['correct'] = ""
@@ -47,6 +51,7 @@ class Game:
 
             # Do not generate same question twice
             if word_id:
+                num=num+1
                 if word_id in set(word_ids): continue
                 else: word_ids.append(word_id)
 
@@ -153,6 +158,7 @@ class Game:
             self.score = self.score.join([`i`, "/", `len(self.form_list)`])
 
         if (self.show_correct or self.all_correct) and not self.settings['gametype']=='qa' :
+            if i==2: i=3
             if i==1: i=2
             com_count = Comment.objects.filter(Q(level=i) & Q(lang="nob")).count()
             self.comment = Comment.objects.filter(Q(level=i) & Q(lang="nob"))[randint(0,com_count-1)].comment
@@ -236,15 +242,19 @@ class BareGame(Game):
             case =""
 
         if grade=="POS": grade = ""
+        if grade=="COMP": grade = "Comp"
+        if grade=="SUPERL": grade = "Superl"
         
         number = ["Sg","Pl",""]
         if case=="Nom": number = ["Pl"]
+        maxnum=20
+        i=0
         
         #print syll, books, pos, case, tense, mood, attributive, grade
 
         tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade=grade) & Q(number__in=number)).count()
-            
-        while True:
+        while i<maxnum:
+            i=i+1
             tag = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade=grade) & Q(number__in=number))[randint(0,tag_count-1)]
 
             tag_id = tag.id
@@ -278,7 +288,13 @@ class BareGame(Game):
         
         word = Word.objects.get(Q(id=word_id))
 
-        baseform = Form.objects.filter(Q(word__pk=word_id) & Q(tag=basetag))[0]
+        baseform_list = Form.objects.filter(Q(word__pk=word_id) & Q(tag=basetag))
+        dial_baseform_list = baseform_list.filter(Q(dialect="restricted"))
+        if dial_baseform_list:
+            baseform = dial_baseform_list[0]
+        else:
+            baseform = baseform_list[0]
+		
         translations=word.translations.all()
         morph = (MorphQuestion(word, tag, baseform, form_list, translations, "", db_info['userans'], db_info['correct'], data, prefix=n))
         return morph, word_id
@@ -291,12 +307,9 @@ class NumGame(Game):
         numeral=""
         num_list = []
 
-        while True:
-            random_num = randint(0, int(self.settings['maxnum']))
-
-            if random_num:
-                db_info['numeral_id'] = random_num
-                return db_info
+        random_num = randint(1, int(self.settings['maxnum']))
+        db_info['numeral_id'] = random_num
+        return db_info
         
         
     def create_form(self, db_info, n, data=None):
@@ -304,11 +317,11 @@ class NumGame(Game):
         language=self.settings['language']
         numstring =""
         # Add generator call here
-        fstdir="/Users/saara/gt-cvs/" + language + "/bin"        
-        lookup ="/Users/saara/bin/lookup"
+        #fstdir="/Users/saara/gt-cvs/" + language + "/bin"        
+        #lookup ="/Users/saara/bin/lookup"
         
-        #fstdir="/opt/smi/" + language + "/bin"
-        #lookup = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
+        fstdir="/opt/smi/" + language + "/bin"
+        lookup = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
         gen_norm_fst = fstdir + "/" + language + "-num.fst"
         
         
@@ -318,6 +331,7 @@ class NumGame(Game):
         num_list=[]
         for num in num_tmp:
             line = num.strip()
+            line = line.replace(' ','')
             if line:
                 nums = line.split('\t')
                 num_list.append(nums[1].decode('utf-8'))
@@ -338,12 +352,10 @@ class QuizzGame(Game):
         if semtypes.count("PLACE-NAME-LEKSA")==0:
             frequency=['']
             geography=['']          
-
-        #print semtypes
-        #print frequency
-        #print geography
-        #print books
-        while True:
+        maxnum=20
+        i=0
+        while i<maxnum:
+            i=i+1
             # smenob
             if self.settings['transtype'] == "smenob":            
                 if self.settings['book'].count('all') > 0:
@@ -355,7 +367,7 @@ class QuizzGame(Game):
                                                     Q(geography__in=geography))[randint(0,w_count-1)]
                                                         
                 else:
-                    semtype = self.settings['allsem']
+                    semtypes = self.settings['allsem']
                     w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) &\
                                                 Q(source__name__in=books) & \
                                                 Q(frequency__in=frequency) & \
@@ -377,7 +389,7 @@ class QuizzGame(Game):
                                                        Q(geography__in=geography))[randint(0,w_count-1)]
 
                 else:
-                    semtype = self.settings['allsem']
+                    semtypes = self.settings['allsem']
                     w_count=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) &\
                                                    Q(frequency__in=frequency) & \
                                                    Q(geography__in=geography) & \
