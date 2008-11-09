@@ -1,0 +1,121 @@
+
+!!!Meeting notes, Pedagogical programs, 081015
+
+
+!!!Participants
+
+Lene, Saara, Trond.
+
+!!!Task list
+
+!!Saara
+
+* Get questions working in Morfa
+* done
+* Look at xml for Sahka
+** done
+
+!!Lene
+* xml
+* Vasta cg - done some
+* Worked a little with the Sahka-dialogues
+
+!!Trond
+* Mostly other things, but cg3 review.
+
+
+!!!Status quo
+
+New colour, visible links.
+Three of the interface languages are visible, Norwegian is not.
+There are minor errors in the locale, Trond and Lene to fix that.
+
+
+!!!Morfa
+
+* Adjective attributes POS. The "POS" string should be deleted
+* Numerals are marked as "adjective atrtributes"
+* The dictionary function is changed: needs click (and an introduction)
+* The help feedback does not show up.
+* The "practice illative" text is too short, and just in English
+* The no-plural tags in the lexicon, where are they?
+* Place-names should not have plural, preferably not essive either.
+* Remove "Čále"? Substantiivvat - Vearbbat - Adjektiivvat - Čále lohkosániid.
+
+practice $illative. You get a translation by clicking the Sámi words, and feedback if you need it.
+
+
+{{{
+  <entry>
+    <lemma>gávdni</lemma>
+    <nosingular/>
+    <id>gávnnit</id>
+}}}
+ <noplural/>
+ 
+The entry needs a tag {{<nosingular/>}}, {{<noplural/>}} to signal just that, 
+after the lemma. The place names will get such names as well.
+
+!!!Contextual Morfa
+Now there are no options for books and stems, because of the combination with seminatic sets make too big restrictions. Semantic set-option is not possible.
+
+We have to have a look at it (Lene)
+
+
+!!!Vasta
+Vasta is not online now.
+
+We will not be able to demo it on Friday. Next task is to code it in the interface.
+We need to test the CG3 rules. We postpone that discussion.
+
+Setup of CG3 as a server: Saara will have a look, but 
+
+The interface:
+Do not drop out each time (add a loop)
+Make a command line option of repeating the question.
+
+
+!!!Sahka
+* Saara will postpone Sahka to after Vasta.
+* Lene will start looking at the dialogues in Sahka. Close each question with 
+  a closing tag. 
+
+
+!!!Design
+The menus do not mark which of them is active. This is for the next interface
+generation anyway.
+
+
+!!!Demos, online requirement
+* The Kåfjord demo is on friday 17th at 10.00.
+* The  Göteborg demo 22th at 1100. Saara should ensure things are up and working.
+* The Oslo demo will be 28th/29th.
+* The Tromsö demo at the 30th.
+* In November it would be nice to have Vasta online
+* The Guovdageaidnu meeting on 11th nov and the Vasta talk on 13tn.
+* Demo for language teachers at 25th nov.
+
+!!!Next meeting
+
+!!!Task list
+
+
+!!Saara
+* Put slots for instructions for each Morfa game in locale.
+* check feedback - and add paradigm
+* Adjectives: fix POS
+* Leksa places not working
+* Vasta commandline: a loop and qid as command-line option.
+
+!!Lene
+* Fix locale translations (sme)
+* Have a look at contextual Morpha: options vs semantic sets
+* Give good names to the semantic sets
+* Write tutorial texts for each game
+* Add more questions to the two first dialogues
+* Add feature: nosingular/noplural to the noun-lexicon
+
+!!Trond
+* Fix locale translations (nno, eng)
+* Write tutorial texts for each game
+
