@@ -1,165 +1,205 @@
 !!!Morfa Context Questions Types, 071108:
 
-!!Noun: 
 
-!nom plural:
-geat vulget PLACE-NAME > human
-makkár eallit ellet doppe > animal
-makkár stohpogálvvut leat sin viesus > furniture
-makkár borramušat sis leat > food-grocery
+!!Introduction to the question type overview
 
-!gen:
-gean/geaid object dát leat > human
-gean/geaid object dát leat > pron
-man duohkái human čiekádit > building
-goas family vuoiŋŋastit > time-point-gen
-goas family vuoiŋŋastit > time-point-gen-pl
-goas family hárjehallat > time-point-gen
-goas family hárjehallat > time-point-gen-pl
 
-!acc:
-maid pron oaidnit > object
-maid family niegadit > object
-maid pron oastit > clothing
-maid pron sárgut > animal
-gean/geaid pron dovdat > human
+The following is an overview of the question types in Morfa, and
+of the semantic restrictions of each question.
 
-!ill:
-masa pron liikot > object
-geasa/geaidda pron addit object > human
-gosa pron mannat > place
-gosa human bidjat čoavdagiid > container
-geasa/geaidda family suhttat > human
-geasa/geaidda family luohttit > human
-masa pron illudit > time-point-gen
-masa pron illudit > time-point-gen-pl
-geasa/geaidda pron jáhkkit > human
-masa pron álgit > education
+The table shall be read as follows: For each question type, we ask
+for a certain case (-number). Some elements can be drawn from a semantic 
+set as well. We also give the intended answer, 
+in the base form. The answer is drawn from a relevant set. To take an example, 
+the first line below reads as follows:
 
-!loc:
-geas/geain lea váralaš animal > human
-gos human leat > place
-gos human boahtit > place
-mas human ballat > animalsg
-mas human váruhit > vehicle
-geas/geain pron beroštit > human
-mas pron geargat > education
-geas/geain pron oažžut skeaŋkka > human
-geas/geain pron gullat ságaid > human
+* ''Geat vulget PLACE-NAME > semclass:human'' 
 
-!com:
-geainna/geaiguin pron comv > human
-mainna/maiguin pron mannat ruoktot > vehicle
-mainna/maiguin pron čierastit > slide-tool
+It implies that one of the questions frames from which we generate our 
+questions is ''Geat vulget PLACE-NAME'', 
+where PLACE-NAME is a variable over all the placenames
+in our lexicon. The given answer is drawn from the semantic
+class indicated to the right of the ''>'' symbol.
 
-!ess:
-manin familty bargat place-name > profession
-manin human šaddat máidnasis > myth
-manin pron gárvodit karneválas > myth-human
-manin pron gohčoda pron > family
-goas heive activity > timepointess
+
+!!Nouns:
+
+
+{{{
+Nominative plural:
+Geat vulget PLACE-NAME > semclass:human 
+Makkár eallit ellet doppe > semclass:animal
+Makkár stohpogálvvut leat sin viesus > semclass:furniture
+Makkár borramušat sis leat > semclass:food-grocery
+
+Genetive:
+Gean/geaid semclass:object dát leat > semclass:human
+Gean/geaid semclass:object dát leat > pron
+Man duohkái semclass:human čiekádit > semclass:building
+Goas semclass:family vuoiŋŋastit > semclass:time-point-gen
+Goas semclass:family vuoiŋŋastit > semclass:time-point-gen-pl
+Goas semclass:family hárjehallat > semclass:time-point-gen
+Goas semclass:family hárjehallat > semclass:time-point-gen-pl
+
+Accusative:
+Maid pron oaidnit > semclass:object
+Maid semclass:family niegadit > semclass:object
+Maid pron oastit > semclass:clothing
+Maid pron sárgut > semclass:animal
+Gean/geaid pron dovdat > semclass:human
+
+
+Illative:
+Masa pron liikot > semclass:object
+Geasa/geaidda pron addit semclass:object > semclass:human
+Gosa pron mannat > semclass:place
+Gosa human bidjat čoavdagiid > semclass:container
+Geasa/geaidda semclass:family suhttat > semclass:human
+Geasa/geaidda semclass:family luohttit > semclass:human
+Masa pron illudit > semclass:time-point-gen
+Masa pron illudit > semclass:time-point-gen-pl
+Geasa/geaidda pron jáhkkit > semclass:human
+Masa pron álgit > semclass:education
+
+Locative:
+Geas/geain lea váralaš semclass:animal > semclass:human
+Gos semclass:human leat > semclass:place
+Gos semclass:human boahtit > semclass:place
+Mas semclass:human ballat > semclass:animal sg
+Mas semclass:human váruhit > semclass:vehicle
+Geas/geain pron beroštit > semclass:human
+Mas pron geargat > semclass:education
+Geas/geain pron oažžut skeaŋkka > semclass:human
+Geas/geain pron gullat ságaid > semclass:human
+
+Comitative:
+Geainna/geaiguin pron semclass:comv > semclass:human
+Mainna/maiguin pron mannat ruoktot > semclass:vehicle
+Mainna/maiguin pron čierastit > semclass:slide-tool
+
+Essive:
+Manin semclass:family bargat semclass:place-name > semclass:profession
+Manin semclass:human šaddat máidnasis > semclass:myth
+Manin pron gárvodit karneválas > semclass:myth-human
+Manin pron gohčoda pron > semclass:family
+Goas heive semclass:activity > semclass:timepointess
+}}}
+
 
 !!Verbs:
 
-!pres:
-Maid pron bargat odne > activity
-Maid human bargat odne > activity
-Maid NOUN -guovttos bargaba odne > activity
-activity go pron odne > de activity
-activity go pron odne > odne gal neg activity
+{{{
+Present tense:
+Maid pron bargat odne > semclass:activity
+Maid semclass:human bargat odne > semclass:activity
+Maid semclass:human -guovttos bargaba odne > semclass:activity
+Semclass:activity go pron odne > de semclass:activity
+Semclass:activity go pron odne > odne gal neg semclass:activity
 
-!pret:
-Maid pron bargat ikte > activity
-Maid human bargat ikte > activity
-Maid NOUN -guovttos bargat ikte > activity
-activity go pron ikte > de activity
-activity go pron ikte > ikte gal neg activity
+Past tense:
+Maid pron bargat ikte > semclass:activity
+Maid semclass:human bargat ikte > semclass:activity
+Maid semclass:human-guovttos bargat ikte > semclass:activity
+Semclass:activity go pron ikte > de semclass:activity
+Semclass:activity go pron ikte > ikte gal neg semclass:activity
 
-!imprt:
-Mun áiggošin activity > imprt fal
-Moai áiggošeimme activity > imprt fal
-Mii áiggošeimmet activity > imprt fal
-Sihke don ja mun áiggošeimme activity > imprt fal
-Sihke don ja mii áiggošeimmet activity > imprt fal
+Imperative:
+Mun áiggošin semclass:activity > imprt fal
+Moai áiggošeimme semclass:activity > imprt fal
+Mii áiggošeimmet semclass:activity > imprt fal
+Sihke don ja mun áiggošeimme semclass:activity > imprt fal
+Sihke don ja mii áiggošeimmet semclass:activity > imprt fal
 
-!cond:
-Maid pron bargat luomus > activity
-Maid human bargat luomus > activity
-Maid NOUN -guovttos bargaba luomus > activity
-activity go pron luomus > luomus gal activity
-activity go pron odne > luomus gal neg activity
+Conditional:
+Maid pron bargat luomus > semclass:activity
+Maid semclass:human bargat luomus > semclass:activity
+Maid NOUN -guovttos bargaba luomus > semclass:activity
+Semclass:activity go pron luomus > luomus gal semclass:activity
+Semclass:activity go pron odne > luomus gal neg semclass:activity
 
-!pot:
-activity-v go human - in dieđe pot go 
-activity-v go pron - in dieđe pot go   
-
+Potential:
+Semclass:activity-v go human - in dieđe pot go 
+Semclass:activity-v go pron - in dieđe pot go
+}}}
 
 !!Numerals:
+{{{
+As attribute:
+Maid semclass:human áigut oastit > num-acc semclass:clothing
+Maid semclass:human áigut oastit > num-acc-pl semclass:clothing-pl
+Maid oainnát > num-acc semclass:animal
+Geaid semclass:object dát leat >  num-gen semclass:human semclass:object
+Geaidda don attát object > num-gen semclass:human ill
+Masa don bijat duogŋasa > num-gen semclass:clothing ill
+Masa don bijat duogŋasa > num-gen-pl semclass:clothing-pl ill
+Geain lea várálaš semclass:animal > num-gen semclass:human loc
+Man guhká oaččut semclass:thing luoikkasin > num-gen vahkkui
+Gos semclass:human leat > numgen semclass:building loc
+Gos semclass:human finai > num-pl-gen semclass:arrangement-pl
+Geaiguin pron semclass:comv > num-com semclass:human com
+Gallin joavkun semclass:human bargat > num-ess
 
-!attr:
-maid human áigut oastit > num-acc clothing
-maid human áigut oastit > num-acc-pl clothing-pl
-maid oainnát > num-acc animal
-geaid object dát leat >  num-gen human object
-geaidda don attát object > num-gen human-ill
-masa don bijat duogŋasa > num-gen clothing-ill
-masa don bijat duogŋasa > num-gen-pl clothing-pl-ill
-geain lea várálaš animal > num-gen human-loc
-man guhká oaččut thing luoikkasin > num-gen vahkkui
-gos human leat > numgen building-loc
-gos huan finai > num-pl-gen arrangement-pl
-geaiguin pron comv > num-com human-com
-gallin joavkun human bargat > num-ess
+Nomitative plural:
+Gallit semclass:clothing-pl dus leat > num-pl-nom
+Gallit semclass:handicrafts-pl dus leat > num-pl-nom
+Gallit semclass:arrangement-pl leat dáid beassážiid > num-pl-nom
 
-!nom:
-gallit clothing-pl dus leat > num-pl-nom
-gallit handicrafts-pl dus leat > num-pl-nom
-gallit arrangement-pl leat dáid beassážiid > num-pl-nom
+Accusative:
+Galle semclass:clothing pron áigut oastit > num-acc
+Galliid semclass:clothing-pl pron áigut oastit > num-pl-acc
+Galliid semclass:arrangement-pl sii leat lágidan > num-pl-acc
 
-!acc:
-galle clothing pron áigut oastit > num-acc
-galliid clothing-pl pron áigut oastit > num-pl-acc
-galliid arrangement-pl sii leat lágidan > num-pl-acc
+Comitative:
+Galliin pron birget > num-com
+Galliin pron juohkit loahppasupmi > num-com
 
-!com:
-galliin pron birget > num-com
-galliin pron juohkit loahppasupmi > num-com
+Locative:
+Gallis pron boahtit ruoktot > num-loc 
+Gallis semclass:arrangement álgá > num-loc 
+Gallis semclass:arrangement nohká > num-loc 
+Lea go buot du semclass:clothing-pl ráigi > num-pl-loc 
 
-!loc:
-gallis pron boahtit ruoktot > num-loc 
-gallis arrangement álgá > num-loc 
-gallis arrangement nohká > num-loc 
-lea go buot du clothing-pl ráigi > num-pl-loc 
+Illative:
+Gallii pron leat lohkan semclass:text > num-ill
+Man guhká pron bargat odne > num-ill
 
-!ill:
-gallii pron leat lohkan text > num-ill
-man guhká pron bargat odne > num-ill
+Collective numbers:
+Gallis bohtet semclass:building ill > coll-num
+Gallása don oainnát > coll-num-acc
+Geaid semclass:object dát leat > coll-num-gen
+Gallásii pron muitalit ságaid > coll-num-ill
+Gallásis lea dilli > coll-num-loc
+Gallásiin don vuolggát semclass:place-name > coll-num-com
+Gallásiin pron fertet juohkit daid ruđaid > coll-num-com
 
-!coll:
-gallis bohtet building-ill > coll-num
-gallása don oainnát > coll-num-acc
-geaid object dát leat > coll-num-gen
-gallásii pron muitalit ságaid > coll-num-ill
-gallásis lea dilli > coll-num-loc
-gallásiin don vuolggát place-name > coll-num-com
-gallásiin pron fertet juohkit daid ruđaid > coll-num-com
-
-!ord:
-galládin don bohtet mollii > ord-num-ess
+Ordinals:
+Galládin don bohtet mollii > ord-num-ess
 Gallát luohkkái don álggát dál > ord-num-ill
 Goas mis lea čoahkkin > ord-num-loc
-man guhká gursa bistá > ord-num-ill
-gallát bargobihtá don čállet > ord-num-acc
+Man guhká gursa bistá > ord-num-ill
+Gallát bargobihtá don čállet > ord-num-acc
+}}}
 
 !!Adjectives:
 
-!attr:
-mu clothing leat clothes-adj-pos. makkár clothing mus leat > attrpos 
-mu clothing leat clothes-adj-comp. makkár clothing mus leat > attrcomp 
-mu clothing leat clothes-adj-superl. makkár clothing mus leat > attrsuperl
+{{{
+Attribute:
+Mu semclass:clothing leat semclass:clothes-adj pos. 
+makkár semclass:clothing mus leat > AttrPos 
 
-!nom:
-mus leat clothesadjpos clothing. Makkár clothing mus leat > nompospl 
-mu family leat human-adj. makkárat du family leat? > mu family leat nomcomp
-gal dáppe leat clothes-adj clothing. > muhto mu clothing leat predsuperl
+Mu semclass:clothing leat semclass:clothes-adj comp. 
+makkár semclass:clothing mus leat > AttrComp 
 
+Mu semclass:clothing leat semclass:clothes-adj superl. 
+makkár semclass:clothing mus leat > AttrSuperl
+
+Nominative:
+Mus leat semclass:clothesadj pos semclass:clothing. 
+Makkár semclass:clothing mus leat > NomPosPl 
+
+Mu semclass:family leat semclass:human-adj. 
+makkárat du semclass:family leat? > mu semclass:family leat NomComp
+
+Mal dáppe leat semclass:clothes-adj semclass:clothing. > 
+muhto mu semclass:clothing leat PredSuperl
+}}}
