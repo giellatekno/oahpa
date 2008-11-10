@@ -708,12 +708,12 @@ class QAQuestion(forms.Form):
         qtext = question.string
         #print qwords
         for w in qtext.split():
-            if not qwords.has_key(w): qstring = qstring + " " + w
+            if not qwords.has_key(w): qstring = qstring + " " + force_unicode(w)
             else:
                 if qwords[w].has_key('fullform'):
-                    qstring = qstring + " " + qwords[w]['fullform'][0]
+                    qstring = qstring + " " + force_unicode(qwords[w]['fullform'][0])
                 else:
-                    qstring = qstring + " " + w
+                    qstring = qstring + " " + force_unicode(w)
         qstring=qstring.replace(" -","-");
                     
         answer_word = selected_awords[task]['word']
@@ -744,9 +744,9 @@ class QAQuestion(forms.Form):
             if w.count("(") > 0: continue
             
             if not selected_awords.has_key(w) or not selected_awords[w].has_key('fullform'):
-                astring = astring + " " + w
+                astring = astring + " " + force_unicode(w)
             else:
-                astring = astring + " " + selected_awords[w]['fullform'][0]
+                astring = astring + " " + force_unicode(selected_awords[w]['fullform'][0])
                     
         # Remove leading whitespace and capitalize.
         astring = astring.lstrip()
