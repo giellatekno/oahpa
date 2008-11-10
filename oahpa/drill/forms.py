@@ -116,9 +116,10 @@ GEOGRAPHY_CHOICES = (
     ('sápmi', _('sapmi')),
 )
 
-GAME_CHOICES = (
-    ('bare', _('bare')),
-    ('context', _('context')),
+VASTA_LEVELS = (
+    ('1', _('First level')),
+    ('2', _('Second level')),
+    ('3', _('Third level')),
 )
 
 TRANS_CHOICES = (
@@ -262,14 +263,13 @@ class MorphForm(forms.Form):
     vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
     vtype_context = forms.ChoiceField(initial='PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
-    gametype = forms.ChoiceField(initial='bare', choices=GAME_CHOICES, widget=forms.Select)
     bisyllabic = forms.BooleanField(required=False, initial='1')
     trisyllabic = forms.BooleanField(required=False,initial=0)
     contracted = forms.BooleanField(required=False,initial=0)
     grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
     default_data = {'language' : 'sme', \
                     'syll' : ['bisyllabic'], 'book' : 'all', \
-                    'case': 'N-ILL', 'pos' : 'N', \
+                    'case': 'N-ILL', 'pos' : 'N', 'gametype' : 'bare', \
                     'case_context' : 'N-ILL', \
                     'vtype' : 'PRS', 'vtype_context' : 'PRS', \
                     'num_context' : 'NUM-ATTR', \
@@ -914,10 +914,11 @@ class VastaForm(forms.Form):
     set_settings = set_settings
 
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
+    level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
     default_data = {'gametype' : 'qa', 'language' : 'sme', \
                     'syll' : ['bisyllabic'], 'book' : 'all', \
                     'case': 'N-ILL', 'case_context':'N-ILL',\
-                    'pos' : 'V', \
+                    'pos' : 'V', 'level' : '1', \
                     'vtype' : 'PRS', 'vtype_context' : 'PRS', \
                     'num_context' : 'NUM-ATTR', \
                     'adjcase' : 'ATTR', 'grade' : 'POS'}
