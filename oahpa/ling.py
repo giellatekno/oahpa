@@ -81,7 +81,7 @@ class Paradigm:
 
         # generator call
         fstdir="/opt/smi/sme/bin"
-        lookup = /usr/local/bin/lookup
+        lookup = "/usr/local/bin/lookup"
 
         #fstdir="/Users/saara/gt/sme/bin"
         #lookup = "/Users/saara/bin/lookup"
@@ -95,6 +95,7 @@ class Paradigm:
         lines_restr_tmp = os.popen(gen_restr_lookup).readlines()
 
         for line in lines_tmp:
+
             if not line.strip(): continue
             matchObj=genObj.search(line)
             if matchObj:
@@ -170,7 +171,7 @@ class Questions:
 
     def read_element(self,qaelement,el,el_id,qtype):
 
-        print "Creating element", el_id
+        #print "Creating element", el_id
 
         # Syntactic function of the element
         if self.values.has_key(el_id) and self.values[el_id].has_key('syntax'):
@@ -558,16 +559,12 @@ class Questions:
 
             grammars = el.getElementsByTagName("grammar")
             for gr in grammars:
-                optional=0
-                
                 pos=gr.getAttribute("pos")
                 if pos:
                     info2['pos'].append(pos)
 
                 tag=gr.getAttribute("tag")
-                optional=gr.getAttribute("optional")
-                print optional
-                
+                print tag;
                 tagvalues = []
                 self.get_tagvalues(tag,"",tagvalues)
                 tagstrings.extend(tagvalues)
@@ -577,7 +574,7 @@ class Questions:
                 info2['tags'] = tags
                 
             self.values[identifier] = info2
-
+            print info2['pos']
 
     def get_tagvalues(self,rest,tagstring,tagvalues):
 
@@ -616,11 +613,11 @@ class Questions:
             for el2 in el.getElementsByTagName('sem'):
                subclass  = el2.getAttribute("class")
                for w in Word.objects.filter(Q(semtype__semtype=subclass) & ~Q(semtype__semtype=semclass)):
-                   print w.lemma + ": adding semtype " + semclass
+                   #print w.lemma + ": adding semtype " + semclass
                    w.semtype.add(s)
                    w.save()
                for w in Wordnob.objects.filter(Q(semtype__semtype=subclass) & ~Q(semtype__semtype=semclass)):
-                   print w.lemma + ": adding semtype " + semclass
+                   #print w.lemma + ": adding semtype " + semclass
                    w.semtype.add(s)
                    w.save()
 
@@ -890,7 +887,7 @@ class Questions:
 
         for f in messages:
             print f.msgid
-            if f.pos == "N" or pos=="A":
+            if f.pos == "N" or pos=="A" or pos=="Num":
                 for stem in f.stem:
                     for gradation in f.gradation:
                         for diphthong in f.diphthong:
@@ -961,7 +958,7 @@ class Questions:
                                                                     f2.messages.add(msgs[0])
                                                                 else : print "No messages found:", f.msgid														
                                                                 f2.save()
-                                    if f.pos == "N":
+                                    if f.pos == "N" or f.pos=="Num":
                                         for case in f.case:
                                             # Essive: no number inflection
                                             if case == "Ess":
