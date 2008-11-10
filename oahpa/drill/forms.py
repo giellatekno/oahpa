@@ -351,7 +351,7 @@ class MorphQuestion(forms.Form):
         tag_widget = forms.HiddenInput(attrs={'value' : tag.id})
 
         super(MorphQuestion, self).__init__(*args, **kwargs)
-        answer_size = 20
+        answer_size = 30
         self.fields['answer'] = forms.CharField(max_length = answer_size, \
                                                 widget=forms.TextInput(attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
 
@@ -446,7 +446,7 @@ class QuizzQuestion(forms.Form):
 
         lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
         super(QuizzQuestion, self).__init__(*args, **kwargs)
-        answer_size=20
+        answer_size=30
         self.fields['answer'] = forms.CharField(max_length = answer_size, \
                                                 widget=forms.TextInput(attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
         self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
@@ -495,7 +495,7 @@ class NumQuestion(forms.Form):
 
         numeral_widget = forms.HiddenInput(attrs={'value' : numeral})
         super(NumQuestion, self).__init__(*args, **kwargs)
-        answer_size=20
+        answer_size=30
         self.fields['answer'] = forms.CharField(max_length = answer_size, \
                                                 widget=forms.TextInput(attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
 
@@ -627,7 +627,7 @@ class QAForm(forms.Form):
 
 class QAQuestion(forms.Form):
     """
-    Questions for vasta
+    Questions for contextual morfa
     """
 
     select_words = select_words
@@ -660,9 +660,10 @@ class QAQuestion(forms.Form):
         super(QAQuestion, self).__init__(*args, **kwargs)
 
         answer_size = 20
+        maxlength = 30
 
-        self.fields['answer'] = forms.CharField(max_length = answer_size, \
-                                                widget=forms.TextInput(attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
+        self.fields['answer'] = forms.CharField(max_length = maxlength, \
+												widget=forms.TextInput(attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
 
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
         self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
@@ -822,14 +823,14 @@ def qa_is_correct(self,question,qwords):
                 if qword.has_key('fullform') and qword['fullform']:
                     cohort = cohort + "\"<" + qword['fullform'][0].encode('utf-8') + ">\"\n"
                     lemma = Word.objects.filter(id=qword['word'])[0].lemma
-                    cohort = cohort + "\t\"" + lemma.encode('utf-8') + "\""
+                    cohort = cohort + "\t\"" + lemma + "\""
                 if qword.has_key('tag') and qword['tag']:
                     string = Tag.objects.filter(id=qword['tag'])[0].string
                     tag = string.replace("+"," ")
-                    cohort = cohort + " " + tag.encode('utf+8') + "\n"
+                    cohort = cohort + " " + tag + "\n"
             else:
                 w=w.lstrip().rstrip()
-                lookup_client.send(w.encode('utf-8'))
+                lookup_client.send(w)
                 cohort = lookup_client.recv(512)
 
         if not cohort:
@@ -888,7 +889,7 @@ def qa_is_correct(self,question,qwords):
             m = m.replace("&","") 
             if Feedbackmsg.objects.filter(msgid=m).count() > 0:
                 message = Feedbackmsg.objects.filter(msgid=m)[0].message
-                message = message.replace("WORDFORM","\"" + w.decode('utf-8') + "\"") 
+                message = message.replace("WORDFORM","\"" + w + "\"") 
                 msg.append(message)
                 if not spelling:
                     found=True
@@ -971,10 +972,10 @@ class VastaQuestion(forms.Form):
         # Format question string
         qtext = question.string
         for w in qtext.split():
-            if not qwords.has_key(w): qstring = qstring + " " + w
+            if not qwords.has_key(w): qstring = qstring + " " + force_unicode(w)
             else:
                 if qwords[w].has_key('fullform'):
-                    qstring = qstring + " " + qwords[w]['fullform'][0]
+                    qstring = qstring + " " + force_unicode(qwords[w]['fullform'][0])
                 else:
                     qstring = qstring + " " + w
         # this is for -guovttos
