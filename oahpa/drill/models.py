@@ -97,6 +97,7 @@ class Form(models.Model):
 
 class Question(models.Model):
     qid = models.CharField(max_length=200)
+    level = models.IntegerField(max_length=3)
     task = models.CharField(max_length=20)
     string = models.CharField(max_length=200)
     qtype = models.CharField(max_length=20)
