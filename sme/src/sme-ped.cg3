@@ -5745,8 +5745,12 @@ MAP:2 (&grm-notInterj) TARGET Interj IF (NEGATE *-1 QDL BARRIER WORD)(1 WORD) ;
 SELECT ("viessu" N) ; 
 #REMOVE Px ; Moved to the beginning.
 REMOVE Foc/ba (0 (V Du3)) ;
+
+# The initial interr:
 SELECT MO (-1 BOS)(*1 QDL) ;
 	# Man guhká...
+SELECT Adv (0 ("gallii") LINK -1 BOS) ; 
+SELECT ("galle" Num)(-1 BOS)(*1 N BARRIER NPNH); 
 
 SELECT Pers (*-1 QDL OR S-BOUNDARY BARRIER NOT-ADV-PCLE)(0 S-BOUNDARY)(*1 VFIN BARRIER NOT-ADV-PCLE);
 
@@ -5761,10 +5765,11 @@ SELECT VFIN (-1 BOS)(1 go) ;
 REMOVE Imprt (-1 BOS)(1 go) ; 
 SELECT ConNeg (-1 Neg) ;
 SELECT PrfPrc (-1 Neg) ;
-SELECT Inf (*-1 AUX BARRIER NOT-ADV) ; 
+SELECT Inf (*-1 AUX BARRIER NOT-ADV OR S-BOUNDARY) ; 
 SELECT PrfPrc (-1 ("leat")) ; 
 SELECT Inf (-1 MIELLA LINK *-1 ("leat") BARRIER S-BOUNDARY);
 REMOVE VFIN (*-1 VFIN LINK *-1 QDL BARRIER S-BOUNDARY) ;
+SELECT VFIN (*-1 BOS BARRIER VFIN OR QDL)(*1 QDL BARRIER VFIN) ; 
 
 LIST VFIN-PRON-TAG = Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 ;  
 LIST DUALIS-NOUN = (".*#guovttis"r) (".*#guovttos"r) ;
@@ -5804,6 +5809,14 @@ SELECT VFIN (-1 (N Nom) OR (Pers Nom) LINK *-1 QDL) ;
 
 # Selecting Inf after VFIN and Neg:
 SELECT Inf (*-1 VFIN OR PrfPrc OR ConNeg BARRIER NOT-ADV LINK 0 INFV LINK *-1 QDL) ;
+
+
+# -------
+# ADVERBS
+# -------
+
+SELECT Adv (-1 VFIN) ;
+
 
 # -----
 # PP
@@ -5927,13 +5940,6 @@ MAP (&grm-should-IllPP) TARGET Po IF (NOT 0 ILL-Po LINK *-1 QDL LINK *-1 ("gosa"
 # Select Acc when Obj:
 SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH LINK *-1 QDL)(NOT 0 TIME OR ROUTE)(NOT *1 N BARRIER VERB OR S-BOUNDARY);
 REMOVE Gen IF (-1 ("makkár") LINK -1 BOS) ;
-
-# -------
-# ADVERBS
-# -------
-
-SELECT Adv (-1 VFIN) ;
-SELECT Adv (0 ("gallii") LINK -1 BOS) ; 
 
 # -------------------
 # AGREEMENT INSIDE NP
