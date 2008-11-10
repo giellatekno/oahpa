@@ -9,7 +9,7 @@ class Comment(models.Model):
     level = models.CharField(max_length=5)
 
 class Log(models.Model):
-    game = models.CharField(max_length=10)
+    game = models.CharField(max_length=30)
     date = models.DateField(blank=True, null=True)
     userinput = models.CharField(max_length=200)
     iscorrect = models.BooleanField()
