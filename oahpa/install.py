@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from os import environ
 environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
@@ -191,7 +192,7 @@ for e in tree.getElementsByTagName("entry"):
         w.save()
 
         # If adding placenames, do not update anymore
-        if options.placenamefile: continue  
+        #if options.placenamefile: continue  
 
     else:
         if options.update:
@@ -207,7 +208,6 @@ for e in tree.getElementsByTagName("entry"):
     # Add forms and tags
     if options.paradigmfile:
         linginfo.create_paradigm(lemma,pos)
-        #print "generated"
         for form in linginfo.paradigm:
             g=form.classes
             if w.pos == "A" and w.compare == "no" and (g.get('Grade')=="Comp" or g.get('Grade')=="Superl"):
@@ -284,18 +284,43 @@ for e in tree.getElementsByTagName("entry"):
     for el in elements:        
         if el.firstChild:
             translation=el.firstChild.data
+            #print translation
             lang=el.getAttribute("xml:lang")
             if lang == "sme":
-                transl, created = Word.objects.get_or_create(wordid=translation)
-                if created:
-                    transl.lemma=translation
-                    transl.save()
+                if Word.objects.filter(wordid=translation,pos=pos).count()>0:
+                    transl = Word.objects.filter(wordid=translation,pos=pos)[0]
+                else:
+                    transl, created = Word.objects.get_or_create(wordid=translation,pos=pos)
+                    if created:
+                        transl.lemma=translation
+                        transl.save()
+                # Add reference to the new word object as translation.
+                w.translations.add(transl)
+                w.save()                   
+
             else:
                 if lang == "nob":
                     transl, created = Wordnob.objects.get_or_create(wordid=translation)
                     if created:
                         transl.lemma=translation
                         transl.save()
+                    w.translations.add(transl)
+                    w.save()
+								
+   				    # special treatment for å-verbs.
+                    if pos=="V":
+                        oo = "å".decode('utf8')
+                        wordform = translation.lstrip(oo + " ")
+                        #print wordform
+                        transl, created = Wordnob.objects.get_or_create(wordid=wordform)
+                        if created:
+                            transl.lemma=wordform
+                            transl.save()
+                        # Add reference to the new word object as translation.
+                        w.translations.add(transl)
+                        w.save()                   
+
+
 
                     # If placenames
                     # Give norwegian words same semantic classes as sami words.
@@ -305,13 +330,14 @@ for e in tree.getElementsByTagName("entry"):
                         if created:
                             print "Created semtype entry with name PLACE-NAME-LEKSA"
                         transl.semtype.add(sem_entry)
+                        transl.frequency=w.frequency
+                        transl.geography=w.geography
+                        transl.save()
+
                         transl.save()
 
                 else: continue
 
-            # Add reference to the new word object as translation.
-            w.translations.add(transl)
-            w.save()                   
 
 
 """
