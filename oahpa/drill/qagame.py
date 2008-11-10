@@ -81,7 +81,7 @@ class QAGame(Game):
             fullform = dial_form_list[0].fullform
         else:
             fullform = form_list[0].fullform
-
+            
         info = { 'word' : word_el.id, 'tag' : tag_el.id, 'fullform' : [ fullform ], 'qelement' : qelement }
         return info
     
@@ -556,8 +556,14 @@ class QAGame(Game):
                         qwords = None
                         qwords= self.generate_question(question, qtype)
                 else:
-                    q_count = Question.objects.filter(gametype="qa").count()
-                    question = Question.objects.filter(gametype="qa")[randint(0,q_count-1)]
+                    if self.settings.has_key('level'):
+                        level=int(self.settings['level'])
+                    else:
+                        level='1'
+                    #print "************", level
+                    q_count = Question.objects.filter(gametype="qa", level__lte=level).count()
+                    question = Question.objects.filter(gametype="qa", level__lte=level)[randint(0,q_count-1)]
+                                                       
                     qtype = question.qtype
                     #print qtype
                     #print question.id
