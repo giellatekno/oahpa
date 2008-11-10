@@ -3,7 +3,7 @@
 
 {% block navbar %}
 <div id="navbar">                
-<img width="100" height="100" src="/oahpa/media/nr1_small2.png" alt="Morfa"/>
+  {% ifequal settings.gametype "bare" %}
 <ul style="margin-left: 0; padding-left: 15px; list-style: none;"> 
 <font size="+0" color="#D2B48C" ><b>{% trans 'Nouns' %}</b></font>&nbsp;&nbsp;
 <li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>                                                 
@@ -11,6 +11,18 @@
 <li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>                                              
 </ul>                                                        
 </div>
+
+{% else %}
+<ul style="margin-left: 0; padding-left: 15px; list-style: none;"> 
+<font size="+0" color="#D2B48C" ><b>{% trans 'Nouns' %}</b></font>&nbsp;&nbsp;
+<li><a href="/oahpa/cmorfa_v/">{% trans 'Verbs' %}</a></li>                                                 
+<li><a href="/oahpa/cmorfa_a/">{% trans 'Adjectives' %}</a></li>                                            
+<li><a href="/oahpa/cmorfa_l/">{% trans 'Numerals' %}</a></li>                                              
+</ul>                                                        
+</div>
+
+{% endifequal %}
+
 {% endblock %}
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
