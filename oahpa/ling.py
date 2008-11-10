@@ -7,6 +7,7 @@ from optparse import OptionParser
 from django.db.models import Q
 import sys
 import re
+import string
 import codecs
 
 
@@ -434,8 +435,11 @@ class Questions:
 
 
         # Process rest of the elements in the string.
+        subj=False
         for s in qastrings:
-            if s=="SUBJ": continue
+            if s=="SUBJ" and not subj:
+                subj=True
+                continue
 
             syntax = s.lstrip("(")
             syntax = syntax.rstrip(")")
@@ -444,7 +448,7 @@ class Questions:
             found = False
             for e in els:
                 el_id = e.getAttribute("id")
-                if el_id==s:
+                if el_id==s and not s=="SUBJ":
                     self.read_element(qaelement,e,syntax,qtype)
                     found = True
             if not found:
@@ -461,6 +465,7 @@ class Questions:
         for q in tree.getElementsByTagName("q"):
 
             qid = q.getAttribute('id')
+            level = q.getAttribute('level')
             
             gametype = q.getAttribute('game')
             if not gametype:
@@ -476,6 +481,7 @@ class Questions:
             text=question.getElementsByTagName("text")[0].firstChild.data
             
             question_element = Question.objects.create(qid=qid, \
+                                                       level=int(level), \
                                                        string=text, \
                                                        qtype=qtype, \
                                                        gametype=gametype,\
