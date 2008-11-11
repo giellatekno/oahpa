@@ -25,73 +25,74 @@ body {
 
 #header {
   padding: 5px 5px 5px 10px;
-  margin: 0;
   position: static;
+  margin: 0;
   top: 0px;    
   left: 0px;
   width: 100%;
   height: 60px;
   overflow: hidden;
-  background-image: url(/oahpa/media/background.jpg);
   background-color: #406080;
+<!--  background-image: url(/oahpa/media/background_light2.jpg);-->
 <!--  background: #231E78;-->
 }
 
-#subheader {
-  padding: 10px 5px 5px 10px;
-  margin: 0;
-  position: static;
-  top: 80px;    
-  left: 0px;
-  right: 20px;
-  width: 100%;
-  height: 40px;
-  overflow: hidden;
-  background-image: url(/oahpa/media/background.jpg);
-  background-color: #406080;
-  color: #00376E;
-<!--  background: #231E78; -->
-
+#content1 {
+		 position: relative;
 }
 
-#navbar {    
+#main {
+	  float: left;
+	  width: 62%;
+}
+
+#sidebar {
+		 float: right;
+		 width: 36%;
+}
+
+#navbar1 {    
   padding: 5px 5px 5px 5px;
   margin: 0;
+  background-color: #406080;
   position: static;    
-  top: 80px;
+  width: 120px;  
+  top: 0px;
   left: 0px;
   height: 100%;
-  overflow: auto;    
-  width: 120px;  
-  background-image: url(/oahpa/media/background.jpg);
-  background-color: #406080;
+  overflow: auto; 
+<!--  width: 20%;  
+  float: left;-->
+
+<!--  background-image: url(/oahpa/media/background_light2.jpg);-->
 <!--  background: #231E78; -->
 }
 
-#rightbar {    
-  padding: 5px 5px 5px 5px;
-  margin: 0;
+#navbar3 {    
   position: static;    
-  top: 150px;
-  right: 0px;
-  bottom: 20px;
-  overflow: auto;    
-  width: 80px;  
-  background: #406080;
+  bottom: 0px;
+  left: 0px;
+  width: 120px;  
+  background-color: #406080;
+<!--  background-image: url(/oahpa/media/background_light2.jpg);-->
 <!--  background: #231E78; -->
-
 }
 
 #content {
   padding: 10px 5px 10px 30px;
   margin: 0;
+
   position: absolute;    
+
   top: 70px;
   left: 100px;
   right: 20px;
   bottom: 0px;
   height 10px;
   clear: both;
+<!--  float: right;
+  width: 80% -->
+
 }
 .title {
   float: left;
@@ -128,6 +129,14 @@ h1 {
    padding:5px;
 }
 
+.clear {
+	   clear: both;
+	   line-height: 1px;
+}
+
+* html #content {
+        height: 1%;
+}
 
   </style>
 
@@ -257,11 +266,18 @@ function process(strField, evtKeyPress)  {
 </div>
 </div>
 
-
+<div id="navbar1">
 {% block navbar %}{% endblock %}
+</div>
+<div id="navbar3">
+<center>
+<!--<img width="50" height="50" src="/oahpa/media/LogoSamisk.jpg"/>-->
+</center>
+</div>
+</div>
 <!--
 <div id="navbar">
-
+<img width="100" height="100" src="/oahpa/media/nr1_small2.png" alt="Morfa"/>
 <font size="+2"><b>{% block name %}{% endblock %}</b></font>
 
 	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
