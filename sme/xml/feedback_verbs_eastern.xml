@@ -1,97 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feedback>
 
-<!-- Messageorder: LEMMA A B C D E
-A: 
-bisyllabic_stem
-trisyllabic_stem
-contracted_stem
-včči_and_bisyllabic_stem
-ž_and_trisyllabic_stem_and_weak_grade
-eažža_and_bisyllabic_stem
-extra_strong_grade
-š_and_trisyllabic_stem_and_weak_grade
-                 
-B:
-weak_grade
-strong_grade
-
-C:
-diphthong_simplification
-
-
-D: 20-28
-i_á
-i_e
-u_o
-a_e
-e_i
-o_u
-a_á
-a_i
-diphthong_simplification_2
-
-E:
-n-suffix
-t-suffix
-no_suffix
-beahtti-suffix
-ba-suffix
-behtet-suffix
-at-suffix
-an-suffix
-a-suffix
-etne-suffix
-eahppi-suffix
-eaba-suffix
-it-suffix
-ehpet-suffix
-jetne-suffix
-jit-suffix
-i-suffix
-ime-suffix
-ide-suffix
-iga-suffix
-imet-suffix
-idet-suffix
-in-suffix
-ii-suffix
-eimme-suffix
-eidde-suffix
-eigga-suffix
-eimmet-suffix
-eiddet-suffix
-edje-suffix
-jin-suffixes
-jit-suffix
-jedje-suffix
-on-suffix
-os-suffix
-u-suffix
-oska-suffix
-ot-suffix
-et-suffix
-oset-suffix
-ehkon-suffix
-ehkos-suffix
-eadnu-suffix
-eahkki-suffix
-ehoska-suffix
-ehkot-suffix
-ehket-suffix
-ehkoset-suffix
-remove_it
-jehkon-suffix
-jehkos-suffix
-jeadnu-suffix
-jeahkki-suffix
-jehoska-suffix
-jehkot-suffix
-jehket-suffix
-jehkoset-suffix
-
- -->
-
   <stems>
 
     <stem class="bisyllabic">
@@ -201,7 +110,7 @@ jehkoset-suffix
       <msg mood="Ind" tense="Prs" personnumber="Du1">etne-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Du2">eahppi-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Du3">eaba-suffix</msg>
-      <msg mood="Ind" tense="Prs" personnumber="Pl1">it-suffix</msg>
+      <msg mood="Ind" tense="Prs" personnumber="Pl1">at-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Pl2">ehpet-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Pl3">it-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">no_suffix</msg>
@@ -414,7 +323,7 @@ jehkoset-suffix
       <msg mood="Cond" tense="Prs" personnumber="Pl1">včči_and_bisyllabic_stem</msg>
       <msg mood="Cond" tense="Prs" personnumber="Pl2">včči_and_bisyllabic_stem</msg>
       <msg mood="Cond" tense="Prs" personnumber="Pl3">včči_and_bisyllabic_stem</msg>
-      <msg mood="Cond" tense="Prs" personnumber="ConNeg">še_and_trisyllabic_stem_and_weak_grade</msg>
+      <msg mood="Cond" tense="Prs" personnumber="ConNeg">včče_and_trisyllabic_stem_and_weak_grade</msg>
       <note>steminfo</note>
     </stem>
 
@@ -566,7 +475,6 @@ jehkoset-suffix
     <stem class="trisyllabic">
       <msg mood="Pot" tense="Prs" personnumber="Sg1">weak_grade</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg2">weak_grade</msg>
-      <msg mood="Pot" tense="Prs" personnumber="Sg3">strong_grade</msg>
       <msg mood="Pot" tense="Prs" personnumber="Du1">strong_grade</msg>
       <msg mood="Pot" tense="Prs" personnumber="Du2">strong_grade</msg>
       <msg mood="Pot" tense="Prs" personnumber="Du3">strong_grade</msg>
@@ -707,6 +615,8 @@ jehkoset-suffix
   <stem extrastrong="yes">
       <msg mood="Imprt" tense="Prs" personnumber="Du1">extra_strong_grade</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du2">extra_strong_grade</msg>
+      <msg mood="Imprt" tense="Prs" personnumber="Pl1">extra_strong_grade</msg>
+      <msg mood="Imprt" tense="Prs" personnumber="Pl2">extra_strong_grade</msg>
       <note>exstrastrong</note>
     </stem>
 
@@ -714,8 +624,6 @@ jehkoset-suffix
       <msg mood="Imprt" tense="Prs" personnumber="Sg1">diphthong_simplification</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg3">diphthong_simplification</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du3">diphthong_simplification</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">diphthong_simplification</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl2">diphthong_simplification</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">diphthong_simplification</msg>
       <note>diftongforenkling</note>
     </stem>
@@ -727,8 +635,8 @@ jehkoset-suffix
       <msg mood="Imprt" tense="Prs" personnumber="Du1">u-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du2">no_suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du3">oska-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">ot-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl2">et-suffix</msg>
+      <msg mood="Imprt" tense="Prs" personnumber="Pl1">ut-suffix</msg>
+      <msg mood="Imprt" tense="Prs" personnumber="Pl2">it-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">oset-suffix</msg>
       <note>boahtit suffixes</note>
     </stem>
@@ -740,8 +648,8 @@ jehkoset-suffix
       <msg mood="Imprt" tense="Prs" personnumber="Du1">no_suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du2">no_suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du3">oska-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">ot-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl2">ot-suffix</msg>
+      <msg mood="Imprt" tense="Prs" personnumber="Pl1">ut-suffix</msg>
+      <msg mood="Imprt" tense="Prs" personnumber="Pl2">ut-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">oset-suffix</msg>
       <note>goarrut suffixes</note>
     </stem>
@@ -753,8 +661,8 @@ jehkoset-suffix
       <msg mood="Imprt" tense="Prs" personnumber="Du1">u-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du2">a_i</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du3">oska-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">ot-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl2">et-suffix</msg>
+      <msg mood="Imprt" tense="Prs" personnumber="Pl1">ut-suffix</msg>
+      <msg mood="Imprt" tense="Prs" personnumber="Pl2">it-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">oset-suffix</msg>
       <note>mannat suffixes</note>
     </stem>
@@ -777,7 +685,7 @@ jehkoset-suffix
       <msg mood="Imprt" tense="Prs" personnumber="Du1">eadnu-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du2">eahkki-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du3">ehoska-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">eatnot-suffix</msg>
+      <msg mood="Imprt" tense="Prs" personnumber="Pl1">ehkot-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl2">ehket-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">ehkoset-suffix</msg>
       <note>muitalit suffixes</note>
@@ -787,10 +695,10 @@ jehkoset-suffix
       <msg mood="Imprt" tense="Prs" personnumber="Sg1">jehkon-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg2">no_suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg3">jehkos-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du1">jeadnu-suffix</msg>
+      <msg mood="Imprt" tense="Prs" personnumber="Du1">jeahkku-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du2">jeahkki-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du3">jehoska-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">jednot-suffix</msg>
+      <msg mood="Imprt" tense="Prs" personnumber="Pl1">jeahkkot-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl2">jehket-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">jehkoset-suffix</msg>
       <note>fárret suffixes</note>
