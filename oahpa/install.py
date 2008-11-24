@@ -122,10 +122,10 @@ for e in tree.getElementsByTagName("entry"):
     geography=""
     only_sg = 0
     only_pl = 0
-    
+
     if e.getElementsByTagName("stem"):
         stem=e.getElementsByTagName("stem")[0].getAttribute("class")
-        diphthong_text=e.getElementsByTagName("stem")[0].getAttribute("diphthong")
+        diphthong=e.getElementsByTagName("stem")[0].getAttribute("diphthong")
         gradation=e.getElementsByTagName("stem")[0].getAttribute("gradation")
         rime=e.getElementsByTagName("stem")[0].getAttribute("rime")
         if rime=="0": rime="norime"
