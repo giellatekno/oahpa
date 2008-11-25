@@ -144,7 +144,10 @@ class Gameview:
             else:
                 self.settings['gamename'] = self.gamenames[self.settings['vtype_context']]
         if self.settings['pos'] == "A":
-            self.settings['gamename'] = self.gamenames[self.settings['adjcase']]
+            if self.settings['gametype'] == "bare":
+                self.settings['gamename'] = self.gamenames[self.settings['adjcase']]
+            else:
+                self.settings['gamename'] = self.gamenames[self.settings['adj_context']]
 
         #print self.settings['gamename']
 
