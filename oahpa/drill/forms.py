@@ -259,7 +259,7 @@ class MorphForm(forms.Form):
     case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
     case_context = forms.ChoiceField(initial='N-ILL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
     adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)
-    adj_context_choices = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
+    adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
     vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
     vtype_context = forms.ChoiceField(initial='PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
@@ -384,7 +384,7 @@ class MorphQuestion(forms.Form):
 			
         for item in fullforms:
             self.correct_anslist.append(force_unicode(item.fullform))
-        
+
         if tag.pos=="N":
             #self.tag = ""
             self.case = tag.case
@@ -542,6 +542,7 @@ def select_words(self, qwords, awords):
         # take the corresponding question element        
         if awords.has_key(syntax) and len(awords[syntax]) > 0:
             aword = awords[syntax][randint(0,len(awords[syntax])-1)]
+            #print "SYNTAX*****", syntax, aword
             if aword.has_key('tag'):
                 selected_awords[syntax]['tag'] = aword['tag']
             if aword.has_key('word') and aword['word']:
@@ -715,6 +716,7 @@ class QAQuestion(forms.Form):
                 else:
                     qstring = qstring + " " + force_unicode(w)
         qstring=qstring.replace(" -","-");
+        qstring=qstring.replace(" .",".");
                     
         answer_word = selected_awords[task]['word']
         answer_tag = selected_awords[task]['tag']
@@ -737,7 +739,9 @@ class QAQuestion(forms.Form):
                                                      Q(tag__string="N+Pl+Nom"))[0].fullform
                 else:
                     self.lemma = answer_word_el.lemma + " (plural) fix this"
-                
+        if answer_tag_el.pos=="A":
+            self.lemma=""
+
         # Format answer string
         #print "SELECTED", selected_awords
         for w in atext.split():
