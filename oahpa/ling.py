@@ -172,7 +172,8 @@ class Questions:
 
     def read_element(self,qaelement,el,el_id,qtype):
 
-        #print "Creating element", el_id
+        print
+        print "Creating element", el_id
 
         # Syntactic function of the element
         if self.values.has_key(el_id) and self.values[el_id].has_key('syntax'):
@@ -180,7 +181,7 @@ class Questions:
         else:
             syntax = el_id
 
-        if not el: print "No element given."
+        if not el: print syntax, "No element given."
 
         # Some of the answer elements share content of question elements.
         content_id=""
@@ -192,23 +193,29 @@ class Questions:
         # is a copy of the question.
         question_qelements = None
         
-        if QElement.objects.filter(Q(question__id=qaelement.question_id) & \
-                                   Q(identifier=content_id)).count() > 0:
+        if (not el or el.getAttribute("content")) and \
+            QElement.objects.filter(Q(question__id=qaelement.question_id) & \
+                                              Q(identifier=content_id)).count() > 0:
             question_qelements = QElement.objects.filter(Q(question__id=qaelement.question_id) & \
                                                          Q(identifier=content_id))
-
-            if not el:
-                print "LUOMASSA", syntax
-                for q in question_qelements:
-                    qe = QElement.objects.create(question=qaelement,\
-                                                 identifier=el_id,\
-                                                 syntax=q.syntax)
-                    
-                    # mark as a copy
-                    q.copy_set.add(qe)
-                    qe.save()
-                    q.save()
-                    return
+        else:
+            if el and el.getAttribute("content"):
+                if QElement.objects.filter(Q(question__id=qaelement.id) & \
+                                           Q(identifier=content_id)).count() > 0:
+                    question_qelements = QElement.objects.filter(Q(question__id=qaelement.id) & \
+                                                                 Q(identifier=content_id))
+            
+        if not el and question_qelements:
+            print "LUOMASSA", syntax
+            for q in question_qelements:
+                qe = QElement.objects.create(question=qaelement,\
+                                             identifier=el_id,\
+                                             syntax=q.syntax)
+                # mark as a copy
+                q.copy_set.add(qe)
+                qe.save()
+                q.save()
+                return
             
         ############### AGREEMENT
         # Search for elementes that agree
@@ -277,7 +284,7 @@ class Questions:
             if valclasses:
                 valclass=valclasses[0].getAttribute("class")
                 word_elements = Word.objects.filter(Q(valency=valclass))
-                print "Valency class", valclass, word_elements.count()
+                #print "Valency class", valclass, word_elements.count()
 
 
         # If still no words, get the default words for this element:
@@ -301,7 +308,6 @@ class Questions:
             if self.values.has_key(el_id):
                 if self.values[el_id].has_key('tags'):
                     tagelements = self.values[el_id]['tags']
-
         # An element for each different grammatical specification.
         else:
             poses = []
@@ -309,7 +315,6 @@ class Questions:
             for gr in grammars:
                 tags.append(gr.getAttribute("tag"))
                 poses.append(gr.getAttribute("pos"))
-                print "************", tags, poses
             tagstrings = []
             if poses:
                 if self.values.has_key(el_id):
@@ -347,7 +352,7 @@ class Questions:
                     #print "*******Examining", w.lemma
                     found = False
                     for t in tagelements:
-                        #print t.string
+                        #print "*****************", t.string
                         if t.pos == 'N':
                             if Form.objects.filter(Q(tag=t) & Q(word=w)).count()>0:
                                 found = True
@@ -368,8 +373,8 @@ class Questions:
 
         if el:
             task = el.getAttribute("task")
-            print "setting", el_id, "as task"
             if task:
+                print "setting", el_id, "as task"
                 qaelement.task = syntax
                 qaelement.save()
         else:
@@ -466,6 +471,7 @@ class Questions:
 
             qid = q.getAttribute('id')
             level = q.getAttribute('level')
+            if not level: level='1'
             
             gametype = q.getAttribute('game')
             if not gametype:
@@ -479,7 +485,7 @@ class Questions:
                 qtype = q.getElementsByTagName("qtype")[0].firstChild.data
             question=q.getElementsByTagName("question")[0]
             text=question.getElementsByTagName("text")[0].firstChild.data
-            
+
             question_element = Question.objects.create(qid=qid, \
                                                        level=int(level), \
                                                        string=text, \
@@ -521,7 +527,7 @@ class Questions:
             answers=q.getElementsByTagName("answer")
             for ans in answers:                
                 text=ans.getElementsByTagName("text")[0].firstChild.data
-                answer_element = Question.objects.create(string=text,qatype="answer",question=question_element)
+                answer_element = Question.objects.create(string=text,qatype="answer",question=question_element,level="1")
                 answer_element.save()                
                 print text
                 self.read_elements(ans, answer_element,qtype)
@@ -534,12 +540,12 @@ class Questions:
 
         self.values = {}
         
-        print "Created elements:"
+        #print "Created elements:"
         tags=tree.getElementsByTagName("tags")[0]
         for el in tags.getElementsByTagName("element"):
 
             identifier=el.getAttribute("id")
-            print "Reading default values for", identifier
+            #print "Reading default values for", identifier
             
             info2 = {}
             
@@ -570,7 +576,7 @@ class Questions:
                     info2['pos'].append(pos)
 
                 tag=gr.getAttribute("tag")
-                print tag;
+                #print tag;
                 tagvalues = []
                 self.get_tagvalues(tag,"",tagvalues)
                 tagstrings.extend(tagvalues)
@@ -580,7 +586,7 @@ class Questions:
                 info2['tags'] = tags
                 
             self.values[identifier] = info2
-            print info2['pos']
+            #print info2['pos']
 
     def get_tagvalues(self,rest,tagstring,tagvalues):
 
