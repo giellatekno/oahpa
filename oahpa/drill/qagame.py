@@ -70,7 +70,9 @@ class QAGame(Game):
             word_count = WordQElement.objects.filter(qelement=qelement).count()
             qw_el = WordQElement.objects.filter(qelement=qelement)[randint(0,word_count-1)]
             word_el = qw_el.word
-            
+            #print qelement.identifier
+            #print word_el.lemma
+
             form_list = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_el.id))
 
             if not form_list:
@@ -83,6 +85,7 @@ class QAGame(Game):
             fullform = form_list[0].fullform
             
         info = { 'word' : word_el.id, 'tag' : tag_el.id, 'fullform' : [ fullform ], 'qelement' : qelement }
+        #print info
         return info
     
     # Select a word matching semtype and return full form.
@@ -234,23 +237,33 @@ class QAGame(Game):
             
             elements = self.get_elements(question,s)
             if elements:
-                element = elements[randint(0, len(elements)-1)]                
-                tag_el_count = element.tags.count()
-                if tag_el_count > 0:
-                    tag_el = element.tags.all()[randint(0, tag_el_count-1)]
+                element = elements[randint(0, len(elements)-1)]
+                copy_id=element.copy_id;
+                if copy_id:
+                    copy = QElement.objects.filter(id=copy_id)[0]
+                    copy_syntax = copy.syntax
+                    
+                    if qwords.has_key(copy_syntax):
+                        word = qwords[copy_syntax]
 
-                # Select random word
-                info = self.get_qword(element, tag_el)
-                word = info
-                
+                else:                
+                    tag_el_count = element.tags.count()
+                    if tag_el_count > 0:
+                        tag_el = element.tags.all()[randint(0, tag_el_count-1)]
 
-            if not word:
+                    # Select random word
+                    info = self.get_qword(element, tag_el)
+                    word = info                    
+            else:
+                word = {}
                 word['fullform'] = []
                 word['fullform'].append(s)
-            
+
+            if not word:
+                return None
             qwords[s] = word
 
-        # Return the ready qwords list.
+        # Return the ready qwords list.            
         return qwords
 
 
@@ -321,9 +334,9 @@ class QAGame(Game):
 
         return awords
     
-    def generate_answers_mainv(self, answer, question, awords, qwords, qtype, eltype):
+    def generate_answers_mainv(self, answer, question, awords, qwords, qtype):
 
-        mainv_elements = self.get_elements(answer,eltype)
+        mainv_elements = self.get_elements(answer,"MAINV")
 
         mainv_word=None
         mainv_words = []
@@ -408,10 +421,10 @@ class QAGame(Game):
                     info = { 'tag' : mainv_tag.id, 'word' : mainv_word }
                     mainv_words.append(info)
                     
-        if not mainv_words and qwords.has_key(eltype):
-            mainv_words.append(qwords[eltype])
+        if not mainv_words and qwords.has_key("MAINV"):
+            mainv_words.append(qwords["MAINV"])
 
-        awords[eltype] = mainv_words
+        awords["MAINV"] = mainv_words
 
         return awords
 
@@ -428,66 +441,77 @@ class QAGame(Game):
         swords = []
         elements = self.get_elements(answer,s)
 
-        if elements:
-            element = elements[0]
-            if element.copy_id:
-                copy_id = element.copy_id
-                copy_element = QElement.objects.get(id=copy_id)
-                copy_syntax = copy_element.identifier
-                if qwords.has_key(copy_syntax):
-                    qword = qwords[copy_syntax]
-                    if qword.has_key('word'):
-                        word_id=qword['word']
+        if not elements:
+            info = { 'fullform' : [ s ] }
+            swords.append(info)
+            awords[s] = swords            
+            return awords
 
-            if element.agreement:
-                agr_id = element.agreement_id
-                agr_el = QElement.objects.get(id=agr_id)
-                agr_syntax = agr_el.identifier
-                if qwords.has_key(agr_syntax):
-                    qword = qwords[agr_syntax]
-                    if qword.has_key('tag'):
-                        agr_tag_id = qword['tag']
-                        agr_tag = Tag.objects.get(id=agr_tag_id)
-                        if agr_tag.personnumber:
-                            anumber = agr_tag.personnumber
-                        else:
-                            anumber = agr_tag.personnumber
-                        tag_count = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber)).count()
-                        if tag_count>0:
-                            tag_elements = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber))
-                                
-            # if no agreement, take all tags.
-            else:
-                tag_count = element.tags.count()
-                if tag_count > 0:
-                    tag_elements = element.tags.all()
-
-            # Take word forms for all tags
-            if tag_elements:
-                for tag_el in tag_elements:                    
-                    # Special treatment for numerals.
-                    if (qtype == "NUM-ATTR" and element.identifier=="NUM-ATTR"):
-                        max = 50
-                        i=0
-                        info=None
-                        while not info and i<max:
-                            i= i+1
-                            w_count=Word.objects.filter(Q(pos="Num")).count()
-                            word_id=Word.objects.filter(Q(pos="Num"))[randint(0,w_count-1)].id
-                            #print word_id
-                            if Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id)).count()>0:
-                                fullform = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id))[0].fullform
-                                info = {'word': word_id, 'tag' : tag_el.id, 'fullform' : [ fullform ] }
-
-                        swords.append(info)
-
+        element = elements[0]
+        if element.copy_id:
+            copy_id = element.copy_id
+            copy_element = QElement.objects.get(id=copy_id)
+            copy_syntax = copy_element.identifier
+            if qwords.has_key(copy_syntax):
+                qword = qwords[copy_syntax]
+                if qword.has_key('word'):
+                    word_id=qword['word']
+                        
+        if element.agreement:
+            agr_id = element.agreement_id
+            agr_el = QElement.objects.get(id=agr_id)
+            agr_syntax = agr_el.identifier
+            if qwords.has_key(agr_syntax):
+                qword = qwords[agr_syntax]
+                if qword.has_key('tag'):
+                    agr_tag_id = qword['tag']
+                    agr_tag = Tag.objects.get(id=agr_tag_id)
+                    if agr_tag.personnumber:
+                        anumber = agr_tag.personnumber
                     else:
-                        if not word_id:
-                            info = self.get_qword(element, tag_el)
-                        else:
-                            info = { 'qelement' : element.id, 'word' : word_id, 'tag' : tag_el.id  }
-                        swords.append(info)
+                        anumber = agr_tag.personnumber
+                    tag_count = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber)).count()
+                    if tag_count>0:
+                        tag_elements = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber))
+                                
+        # if no agreement, take all tags.
+        else:
+            tag_count = element.tags.count()
+            if tag_count > 0:
+                tag_elements = element.tags.all()
+                
+        # Take word forms for all tags
+        if tag_elements:
 
+            for tag_el in tag_elements:                    
+                # Special treatment for numerals.
+                if (qtype == "NUM-ATTR" and element.identifier=="NUM-ATTR"):
+                    max = 50
+                    i=0
+                    info=None
+                    while not info and i<max:
+                        i= i+1
+                        w_count=Word.objects.filter(Q(pos="Num")).count()
+                        word_id=Word.objects.filter(Q(pos="Num"))[randint(0,w_count-1)].id
+                        #print word_id
+                        if Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id)).count()>0:
+                            fullform = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id))[0].fullform
+                            info = {'word': word_id, 'tag' : tag_el.id, 'fullform' : [ fullform ] }
+                    if not info:
+                        return None
+                    swords.append(info)
+
+                else:
+                    if not word_id:
+                        info = self.get_qword(element, tag_el)
+                    else:
+                        info = { 'qelement' : element.id, 'word' : word_id, 'tag' : tag_el.id  }
+                    if not info:
+                        return None
+                    swords.append(info)
+
+        if not swords:
+            return None
         awords[s] = swords
 
         return awords
@@ -560,7 +584,6 @@ class QAGame(Game):
                         level=int(self.settings['level'])
                     else:
                         level='1'
-                    #print "************", level
                     q_count = Question.objects.filter(gametype="qa", level__lte=level).count()
                     question = Question.objects.filter(gametype="qa", level__lte=level)[randint(0,q_count-1)]
                                                        
@@ -571,6 +594,7 @@ class QAGame(Game):
                     qwords = None
                     qwords= self.generate_question(question, qtype)
 
+                #print "************* qwords", qwords
                 db_info['qwords'] = qwords
                 #print qwords
 
@@ -612,15 +636,19 @@ class QAGame(Game):
                     awords = self.generate_answers_subject(answer, question, awords, qwords, qtype)
 
                 if 'MAINV' in words_strings:
-                    awords = self.generate_answers_mainv(answer, question, awords, qwords, qtype, 'MAINV')
+                    awords = self.generate_answers_mainv(answer, question, awords, qwords, qtype)
 
                 # Rest of the syntax
                 for s in words_strings:
                     awords = self.generate_syntax(answer, question, awords, qwords, qtype, s)
-
+                    if not awords:
+                        return "error"
+                    
             db_info['answer_id'] = answer.id
 
+        #print "+++++++++++++++++++++", awords
         db_info['awords'] = awords
+
 
         # Store everything for the html form 
         db_info['question_id'] = question.id
