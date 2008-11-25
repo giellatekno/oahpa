@@ -12,26 +12,31 @@
 
   <q>
     <qtype>ATTRPOS</qtype>
-  <agreement>SUBJ/PRED</agreement>
    <question>
-      <text>Mu SUBJ MAINV PRED. Makkár SUBJ mus MAINV</text>
-      <element type="SUBJ">   
+      <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
+      <element id="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="CLOTHING"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>leat</id> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>   
       </element>
-      <element type="PRED">     
-	<grammar pos="A+Number+Nom"/>   <!-- same number as SUBJ -->
+      <element id="PRED">     
+	<grammar tag="A+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="CLOTHES-adj"/>
 	<agreement id="SUBJ"/>
+      </element>
+      <element id="SUBJ2" content="SUBJ">   
+	<agreement id="SUBJ"/>
+      </element>
+      <element id="MAINV2" content="MAINV">
+	<agreement id="MAINV"/>
       </element>
     </question>
     <answer> 
       <text>Dus MAINV ATTR SUBJ</text>
-      <element type="ATTR" task="yes">   <!-- Same A as PRED -->
+      <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Attr"/>  <!-- no number -->
       </element>
     </answer>
@@ -41,26 +46,31 @@
 
   <q>
     <qtype>ATTRCOMP</qtype>
-  <agreement>SUBJ/PRED</agreement>
    <question>
-      <text>Mu SUBJ MAINV PRED. Makkár SUBJ mus MAINV</text>
-      <element type="SUBJ">   
+      <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
+      <element id="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="CLOTHING"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>leat</id> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>   
       </element>
-      <element type="PRED">     
-	<grammar pos="A+Comp+Number+Nom"/>   <!-- same number as SUBJ -->
+      <element id="PRED">     
+	<grammar tag="A+Comp+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="CLOTHES-adj"/>
 	<agreement id="SUBJ"/>
+      </element>
+      <element id="SUBJ2" content="SUBJ">   
+	<agreement id="SUBJ"/>
+      </element>
+      <element id="MAINV2" content="MAINV">
+	<agreement id="MAINV"/>
       </element>
     </question>
     <answer> 
       <text>Dus MAINV ATTR SUBJ</text>
-      <element type="ATTR" task="yes">   <!-- Same A as PRED -->
+      <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Comp+Attr"/>  <!-- no number -->
       </element>
     </answer>
@@ -70,117 +80,125 @@
 
   <q>
     <qtype>ATTRSUP</qtype>
-  <agreement>SUBJ/PRED</agreement>
    <question>
-      <text>Mu SUBJ MAINV PRED. Makkár SUBJ mus MAINV</text>
-      <element type="SUBJ">   
+      <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
+      <element id="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="CLOTHING"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>leat</id> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>   
       </element>
-      <element type="PRED">     
-	<grammar pos="A+Superl+Number+Nom"/>   <!-- same number as SUBJ -->
+      <element id="PRED">     
+	<grammar tag="A+Superl+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="CLOTHES-adj"/>
 	<agreement id="SUBJ"/>
+      </element>
+      <element id="SUBJ2" content="SUBJ">   
+	<agreement id="SUBJ"/>
+      </element>
+      <element id="MAINV2" content="MAINV">
+	<agreement id="MAINV"/>
       </element>
     </question>
     <answer> 
       <text>Dus MAINV ATTR SUBJ</text>
-      <element type="ATTR" task="yes">   <!-- Same A as PRED -->
+      <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Superl+Attr"/>  <!-- no number -->
       </element>
     </answer>
   </q>
 
-
 <!-- predicative - sg and pl -->
 
   <q>
     <qtype>PREDPOS</qtype>
-   <question>
-      <text>Mus leat ATTR SUBJ. Makkárat SUBJ leat</text>
-      <element type="SUBJ">   
-	<grammar pos="N+Pl+Nom"/>
+    <question>
+      <text>Mus leat ATTR SUBJ . Makkárat SUBJ2 leat</text>
+      <element id="SUBJ">   
+	<grammar tag="N+Pl+Nom"/>
 	<sem class="CLOTHING"/>
       </element>
-      <element type="ATTR">
+      <element id="ATTR">
 	<grammar tag="A+Attr"/>  <!-- no number -->
 	<sem class="CLOTHES-adj"/>
+      </element>
+      <element id="SUBJ2" content="SUBJ">   
+	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
       <text>SUBJ leat PRED</text>
-      <element type="PRED" task="yes">     <!-- Same A as ATTR -->
-	<grammar pos="A+Pl+Nom"/>   <!-- same number as SUBJ -->
+      <element id="PRED" task="yes" content="ATTR">     <!-- Same A as ATTR -->
+	<grammar tag="A+Number+Nom"/>   <!-- same number as SUBJ -->
+	<agreement id="SUBJ"/>
       </element>
     </answer>
   </q>
  
  <!-- comparative predicative - sg and pl-->
  
-    <q>
-    <qtype>PREDCOMP</qtype>
-    <agreement>SUBJ/PRED</agreement>
-    <agreement>SUBJ/PREDCOMP</agreement>
-    <agreement>INTERR/SUBJ</agreement>
+ <q>
+   <qtype>PREDCOMP</qtype>
    <question>
-      <text>Mu SUBJ MAINV PRED. INTERR du SUBJ MAINV</text>
-      <element type="SUBJ">   
+      <text>Mu SUBJ MAINV PRED . INTERR du SUBJ2 MAINV2</text>
+      <element id="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="FAMILY"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>leat</id> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>   
       </element>
-      <element type="INTERR">
+      <element id="INTERR">
 	<lemma>makkár</lemma> 
-	<grammar tag="Number+Nom"/>   
+	<grammar tag="Pron+Number+Nom"/> 
 	<agreement id="SUBJ"/>
       </element>
-      <element type="PRED">  <!-- compare="yes"-->  
-	<grammar pos="A+Number+Nom"/>   <!-- same number as SUBJ -->
+      <element id="PRED">  <!-- compare="yes"-->  
+	<grammar tag="A+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="HUMAN-adj"/>
 	<agreement id="SUBJ"/>
+      </element>
+      <element id="SUBJ2" content="SUBJ">   
+	<agreement id="SUBJ"/>
+      </element>
+      <element id="MAINV2" content="MAINV">   
+	<agreement id="MAINV"/>
       </element>
     </question>
     <answer> 
       <text>Mu SUBJ MAINV PREDCOMP</text>
-      <element type="PREDCOMP" task="yes">   <!-- Same A as PRED -->
+      <element id="PREDCOMP" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Comp+Number+Nom"/>  <!-- same number as SUBJ -->
 	<agreement id="SUBJ"/>
       </element>
     </answer>
   </q>
 
-
-
 <!-- superlative predicative - sg and pl -->
 
-    <q>
+  <q>
     <qtype>PREDSUP</qtype>
-    <agreement>SUBJ/PRED</agreement>
-   <question>
+    <question>
       <text>Gal dáppe MAINV ATTR SUBJ</text>  <!-- compare="yes"-->
-      <element type="SUBJ">   
+      <element id="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="CLOTHING"/>
       </element>
-      <element type="ATTR">
+      <element id="ATTR">
 	<grammar tag="A+Attr"/>  <!-- no number -->
 	<sem class="CLOTHES-adj"/>
       </element>
-      <element type="MAINV">
+      <element id="MAINV">
 	<id>leat</id> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>   
       </element>
     </question>
     <answer> 
       <text>Muhto mu SUBJ MAINV PRED</text>
-      <element type="PRED" task="yes">   <!-- Same A as ATTR -->
+      <element id="PRED" task="yes" content="ATTR">   <!-- Same A as ATTR -->
 	<grammar tag="A+Superl+Number+Nom"/>  <!-- same number as SUBJ -->
 	<agreement id="SUBJ"/>
       </element>
