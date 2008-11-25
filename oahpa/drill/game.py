@@ -46,7 +46,12 @@ class Game:
             db_info = {}
             db_info['userans'] = ""
             db_info['correct'] = ""
-            self.get_db_info(db_info)
+
+            errormsg = self.get_db_info(db_info)
+            if errormsg and errormsg=="error":
+                #print "Not found"
+                i=i+1
+                continue
             form, word_id = self.create_form(db_info, i, 0)
 
             # Do not generate same question twice
@@ -351,7 +356,8 @@ class QuizzGame(Game):
 
         if semtypes.count("PLACE-NAME-LEKSA")==0:
             frequency=['']
-            geography=['']          
+            geography=['']
+
         maxnum=20
         i=0
         while i<maxnum:
