@@ -21,6 +21,7 @@ POS_CHOICES = (
     ('Num', _('numeral')),
 )
 
+
 CASE_CHOICES = (
     ('NOMPL', _('plural')),
     ('N-ACC', _('accusative')),
@@ -204,7 +205,7 @@ def set_correct(self):
     """
     
     if self.correct_anslist:
-        self.correct_answers = self.correct_anslist[0]
+        self.correct_answers = self.correct_ans
 
 
 def set_settings(self):
@@ -268,7 +269,7 @@ class MorphForm(forms.Form):
     contracted = forms.BooleanField(required=False,initial=0)
     grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
     default_data = {'language' : 'sme', \
-                    'syll' : ['bisyllabic'], 'book' : 'all', \
+                    'syll' : ['bisyllabic'], 'book' : 'all',\
                     'case': 'N-ILL', 'pos' : 'N', 'gametype' : 'bare', \
                     'case_context' : 'N-ILL', \
                     'vtype' : 'PRS', 'vtype_context' : 'PRS', \
@@ -345,7 +346,7 @@ class MorphQuestion(forms.Form):
             #print "FEEDBACK", self.feedback
 
 
-    def __init__(self, word, tag, baseform, fullforms, translations, question, userans_val, correct_val, *args, **kwargs):
+    def __init__(self, word, tag, baseform, correct, fullforms, translations, question, userans_val, correct_val, *args, **kwargs):
 
         lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
         tag_widget = forms.HiddenInput(attrs={'value' : tag.id})
@@ -365,7 +366,8 @@ class MorphQuestion(forms.Form):
 
         # Retrieve feedback information
         self.get_feedback(word,tag,baseform.fullform)
-            
+
+        self.correct_ans = correct.fullform
         self.correct_answers =""
         self.case = ""
         self.userans = userans_val
@@ -381,7 +383,8 @@ class MorphQuestion(forms.Form):
         # Take only the first translation for the tooltip
         if len(translations)>0:
             self.translations = translations[0].lemma
-			
+
+        found =0
         for item in fullforms:
             self.correct_anslist.append(force_unicode(item.fullform))
 
@@ -422,7 +425,7 @@ class QuizzForm(forms.Form):
     sapmi = forms.BooleanField(required=False, initial='1')
     world = forms.BooleanField(required=False,initial=0)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
-    default_data = {'gametype' : 'bare', 'language' : 'sme', \
+    default_data = {'gametype' : 'bare', 'language' : 'sme',\
                     'syll' : [], 'book' : 'all', \
                     'semtype' : 'NATUREWORDS', \
                     'frequency' : ['common'], 'geography' : ['sapmi'], \
@@ -442,7 +445,7 @@ class QuizzQuestion(forms.Form):
     is_correct = is_correct
     set_correct = set_correct
     
-    def __init__(self, transtype, word, translations, question, userans_val, correct_val, *args, **kwargs):
+    def __init__(self, transtype, word, correct, translations, question, userans_val, correct_val, *args, **kwargs):
 
         lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
         super(QuizzQuestion, self).__init__(*args, **kwargs)
@@ -460,7 +463,8 @@ class QuizzQuestion(forms.Form):
         
         if word.pos == 'V' and transtype=="nobsme":
             self.lemma = oo.decode('utf-8') + self.lemma
-            
+
+        self.correct_ans = correct.lemma
         for item in translations:
             self.correct_anslist.append(force_unicode(item.lemma))
 
@@ -512,10 +516,12 @@ class NumQuestion(forms.Form):
         if gametype == "string":
             self.correct_anslist.append(force_unicode(numeral))
             example = num_string
+            self.correct_ans = self.correct_anslist[0]
         else:
             example = numeral
             for item in num_list:
                 self.correct_anslist.append(force_unicode(item))
+            self.correct_ans = self.correct_anslist[0]
 
         self.is_correct("numra", example)
 
@@ -542,7 +548,6 @@ def select_words(self, qwords, awords):
         # take the corresponding question element        
         if awords.has_key(syntax) and len(awords[syntax]) > 0:
             aword = awords[syntax][randint(0,len(awords[syntax])-1)]
-            #print "SYNTAX*****", syntax, aword
             if aword.has_key('tag'):
                 selected_awords[syntax]['tag'] = aword['tag']
             if aword.has_key('word') and aword['word']:
@@ -613,7 +618,7 @@ class QAForm(forms.Form):
     vtype_context = forms.ChoiceField(initial='MAINV', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
     vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
-    default_data = {'gametype' : 'qa', 'language' : 'sme', \
+    default_data = {'gametype' : 'qa', 'language' : 'sme',\
                     'syll' : ['bisyllabic'], 'book' : 'all', \
                     'case': 'N-ILL', 'pos' : 'N', \
                     'vtype' : 'PRS', 'vtype_context' : 'PRS', \
@@ -681,7 +686,8 @@ class QAQuestion(forms.Form):
                 for f in selected_awords[task]['fullform']:				
                     self.correct_anslist.append(force_unicode(f))
                 self.is_correct("contextual morfa")
-                            
+                self.correct_ans = self.correct_anslist[0]
+                
         self.qattrs= {}
         self.aattrs= {}        
         for syntax in qwords.keys():
@@ -919,7 +925,7 @@ class VastaForm(forms.Form):
 
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
     level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
-    default_data = {'gametype' : 'qa', 'language' : 'sme', \
+    default_data = {'gametype' : 'qa', 'language' : 'sme',\
                     'syll' : ['bisyllabic'], 'book' : 'all', \
                     'case': 'N-ILL', 'case_context':'N-ILL',\
                     'pos' : 'V', 'level' : '1', \
