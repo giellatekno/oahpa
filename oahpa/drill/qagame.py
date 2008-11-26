@@ -57,6 +57,7 @@ class QAGame(Game):
         #    books=self.settings['book']
         #print syll, books
 
+        dialect = self.settings['dialect']
         max = 100
         i=0
         form_list=None
@@ -78,7 +79,7 @@ class QAGame(Game):
             if not form_list:
                 return None
 
-        dial_form_list = form_list.filter(Q(dialect="restricted"))
+        dial_form_list = form_list.filter(Q(dialects__dialect=dialect))
         if dial_form_list:
             fullform = dial_form_list[0].fullform
         else:
@@ -94,6 +95,8 @@ class QAGame(Game):
         Select word from possible options in the element.
         """
         words = []
+        dialect = self.settings['dialect']
+        
         # If there are no information available for these elements, try to use other info.
         word = None
         if lemma and tag_el:
@@ -106,7 +109,7 @@ class QAGame(Game):
             if not form_list:
                 return []
 
-            dial_form_list = form_list.filter(Q(dialect="restricted"))
+            dial_form_list = form_list.filter(Q(dialects__dialect=dialect))
             if dial_form_list:
                 fullform = dial_form_list[0].fullform
             else:
