@@ -1,0 +1,117 @@
+
+!!!Meeting notes, Pedagogical programs, 081121
+
+(Aino 14 years old today :-)
+
+!!!Participants
+
+Lene, Saara, Trond.
+
+
+
+{{{
+
+- Images
+
+
+VASTA - Trond says that it works so well that we can add a link for it in our doc.pages. I have today made some improvements. When are they put to the Vasta on the internet? (sme-ped.cg3) - /opt/smi/sme/bin/
+
+LEKSA - bug 742 (words with different id-s, when the user chooses ALL)
+
+NUMRA - add ordinals - an automat  
+
+We must discuss this. I do not know whether our solution is the best one: We have ordinals and cardinals in the same automaton. Should we instead have two: sme-num.fst and sme-ord.fst? Now, numbers without period trigger cardinals and number with trigger ordinals, but I do not know whether we can say to oahpa "give me 10 ordinals, from word to arabic" (since the words are not tagged as ord or card).
+
+Also: I added sjd numeral generator. These are of course a bit like curiosita, but I have come to think that teachers interested in showing the similarities between different Sámi languages could explain that to the pupils / students via this machin.
+
+yksi = 1
+ensimmäinen = 1.
+
+MORFA - feedback also in Morfa-cealkagat (now it is only in Morfa-sánit)
+		add paradigm-button to the feedback - NO GOOD IDEA AFTERALL
+		placenames should not be in the plural Morfa
+		eastern dialect - it is ready
+		
+I have done the eastern grammar - and I will today make a feedback-version
+according to it.
+The dialect is to be choosen in Makefile - eastern: NOT-KJ - and  western: NOT-GG:
+-Makefile: 
+$(RESTRFILES): $(SRCS)
+	@echo  
+	@echo "*** Removing non-orthographic entries - restr ***" ;
+	@echo
+	@egrep -v '(SUB|\^NG\^|NOT-KJ)' $(patsubst
+$(TARGET)/int/%.restr,$(TARGET)/src/%.txt,$@) > $@
+
+you remove NOT-KJ lines => 
+
+and in lexiconfiles: 
+- eastern: generate no dialect class and dialect class="n" 
+- western: generate no dialect class and dialect class="o"		
+
+pedlex      		grammar      											lexicon
+class="not-kj"   everything but not NOT-KJ = choose NOT-GG, remove NOT-KJ  
+class="not-gg"   everything but not NOT-GG = choose NOT-KJ, remove NOT-GG  	 
+			
+----------------------------
+class="not-gg" = NOT-GG NOT-KJ = kaaresuoando
+class="not-kj"
+class="not-kj" class="not-gs"
+
+    <dialect class="not-gg"/>
+	<dialect class="not-kj"/>
+
+To make dialect x:
+remove NG and SUB
+remove all not-x (thus, it goes without saying that we choose not-y, not-z, ...)
+	
+gánda dialect class="n"  (boy)
+bárdni dialect class="o"		
+nieida (no dialect class) (girl)
+
+
+
+SAHKA - Kjellaug has started drawing. I will extend the dialogues and make more when the first-meeting and visit are implemented so we see if the format is good.
+I think there could be three fields on the screen - Left: drawings    Middle: dialog    Right: grammarfeedback and so on
+
+
+Feedback:
+---------
+Morfa: make eastern version - it will be finished tomorrow
+Marfa and Vasta: translate feedback to sámi (finnish, english) - the sami version will be done this week
+
+
+
+
+Grammar-explanations
+-------------------------------
+I will make small grammar explanations - like What means agreement between adjective and noun, what is finite verb, when do we use illative and so on.
+What would be the best way of implementing them? Make a special window for them?
+
+grammar doc
+on the oahpa doc pages
+in different languages
+parametrised for that
+correct links to page this-and-that in the game
+
+or
+
+in xml in the database, an integrated part of the game
+
+integrated a (much)
+ as feedback buttons
+ 
+integrated b (little)
+ upper right corner
+
+
+coherent grammar on manpages
+
+deeplinks in the game to relevant paragraph
+
+doc pages work ourselves with them
+
+}}}
+
+
+
