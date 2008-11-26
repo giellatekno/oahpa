@@ -937,7 +937,7 @@ class Questions:
                                                             f2.messages.add(msgs[0])
                                                         else : print "No messages found:", f.msgid
                                                         if dialect_el:
-                                                            f2.dialect.add(dialect_el)
+                                                            f2.dialects.add(dialect_el)
                                                         f2.save()
                                     
                                                 else:
@@ -960,7 +960,7 @@ class Questions:
                                                                 f2.messages.add(msgs[0])
                                                             else : print "No messages found:", f.msgid 
                                                             if dialect_el:
-                                                                f2.dialect.add(dialect_el)
+                                                                f2.dialects.add(dialect_el)
                                                             f2.save()
                                                             
                                                         else:
@@ -980,7 +980,7 @@ class Questions:
                                                                     f2.messages.add(msgs[0])
                                                                 else : print "No messages found:", f.msgid 
                                                                 if dialect_el:
-                                                                    f2.dialect.add(dialect_el)
+                                                                    f2.dialects.add(dialect_el)
                                                                 f2.save()
                                     if f.pos == "N" or f.pos=="Num":
                                         for case in f.case:
@@ -1001,7 +1001,7 @@ class Questions:
                                                     f2.messages.add(msgs[0])
                                                 else : print "No messages found:", f.msgid
                                                 if dialect_el:
-                                                    f2.dialect.add(dialect_el)
+                                                    f2.dialects.add(dialect_el)
                                                 f2.save()
                                                 continue
                                             else:
@@ -1021,7 +1021,7 @@ class Questions:
                                                         f2.messages.add(msgs[0])
                                                     else : print "No messages found:", f.msgid
                                                     if dialect_el:
-                                                        f2.dialect.add(dialect_el)
+                                                        f2.dialects.add(dialect_el)
                                                     f2.save()
 
                                                     
@@ -1050,7 +1050,7 @@ class Questions:
                                             f2.messages.add(messages[0])
                                         else : print "No messages found:", f.msgid
                                         if dialect_el:
-                                            f2.dialect.add(dialect_el)
+                                            f2.dialects.add(dialect_el)
                                         f2.save()
         cursor.close()
         connection.close()
