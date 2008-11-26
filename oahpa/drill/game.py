@@ -295,7 +295,12 @@ class BareGame(Game):
         form_list=Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id))
         if not form_list:
             return HttpResponse("No forms found.")
-        
+        dial_form_list = form_list.filter(Q(dialects__dialect=dialect))
+        if dial_form_list:
+            correct = dial_form_list[0]
+        else:
+            correct = form_list[0]
+                
         word = Word.objects.get(Q(id=word_id))
 
         baseform_list = Form.objects.filter(Q(word__pk=word_id) & Q(tag=basetag))
@@ -306,7 +311,7 @@ class BareGame(Game):
             baseform = baseform_list[0]
 		
         translations=word.translations.all()
-        morph = (MorphQuestion(word, tag, baseform, form_list, translations, "", db_info['userans'], db_info['correct'], data, prefix=n))
+        morph = (MorphQuestion(word, tag, baseform, correct, form_list, translations, "", db_info['userans'], db_info['correct'], data, prefix=n))
         return morph, word_id
 
 
@@ -436,12 +441,19 @@ class QuizzGame(Game):
             word=Wordnob.objects.get(id=word_id)
             translations=word.translations.all()
 
+        correct = ""
+        if self.settings['transtype'] == "nobsme":            
+            dial_trans = translations.filter(dialects__dialect=dialect)
+            if dial_trans:
+                correct = dial_trans[0]
+
+        if not correct: correct = translations[0]
         question_list=[]
 
         if not translations:
             return HttpResponse("No forms found.")        
             
-        form = (QuizzQuestion(self.settings['transtype'], word, translations, question_list, db_info['userans'], db_info['correct'], data, prefix=n))
+        form = (QuizzQuestion(self.settings['transtype'], word, correct, translations, question_list, db_info['userans'], db_info['correct'], data, prefix=n))
         #self.form_list.append(form)
         return form, word.id
 
