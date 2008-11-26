@@ -447,7 +447,7 @@ def numgame(request):
     mgame = Gameview()
     mgame.init_settings()
 
-    self.settings['dialect'] = request.session['dialect']
+    mgame.settings['dialect'] = request.session['dialect']
 
     if request.method == 'POST':
         data = request.POST.copy()
