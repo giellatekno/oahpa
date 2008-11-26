@@ -81,19 +81,22 @@ class Paradigm:
                 all = all + lemma + "+" + a
 
         # generator call
-        fstdir="/opt/smi/sme/bin"
-        lookup = "/usr/local/bin/lookup"
+        #fstdir="/opt/smi/sme/bin"
+        #lookup = "/usr/local/bin/lookup"
 
-        #fstdir="/Users/saara/gt/sme/bin"
-        #lookup = "/Users/saara/bin/lookup"
+        fstdir="/Users/saara/gt/sme/bin"
+        lookup = "/Users/saara/bin/lookup"
 
         gen_norm_fst = fstdir + "/isme-norm.fst"
-        gen_restr_fst = fstdir + "/isme-restr.fst"
+        gen_gg_restr_fst = fstdir + "/isme-KJ.restr.fst"            
+        gen_kj_restr_fst = fstdir + "/isme-GG.restr.fst"            
 
         gen_norm_lookup = "echo \"" + all.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
-        gen_restr_lookup = "echo \"" + all.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_restr_fst
+        gen_gg_restr_lookup = "echo \"" + all.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_gg_restr_fst
+        gen_kj_restr_lookup = "echo \"" + all.encode('utf-8') + "\" | " + lookup + " -flags mbTT -utf8 -d " + gen_kj_restr_fst
         lines_tmp = os.popen(gen_norm_lookup).readlines()
-        lines_restr_tmp = os.popen(gen_restr_lookup).readlines()
+        lines_gg_restr_tmp = os.popen(gen_gg_restr_lookup).readlines()
+        lines_kj_restr_tmp = os.popen(gen_kj_restr_lookup).readlines()
 
         for line in lines_tmp:
 
@@ -101,14 +104,16 @@ class Paradigm:
             matchObj=genObj.search(line)
             if matchObj:
                 g = Entry()
-                g.dialect=''
+                g.dialects=[]
                 g.classes={}
                 lemma = matchObj.expand(r'\g<lemmaString>')
                 g.form = matchObj.expand(r'\g<formString>')
                 if re.compile("\?").match(g.form): continue
-                # If line is included in the restricted readings.
-                if line in set(lines_restr_tmp):
-                    g.dialect='restricted'
+                # If line is included in either dialect
+                if line in set(lines_gg_restr_tmp): 
+                    g.dialects.append("GG")
+                if line in set(lines_kj_restr_tmp): 
+                    g.dialects.append("KJ")
                 g.tags = matchObj.expand(r'\g<tagString>')
                 for t in g.tags.split('+'):
                     if self.tagset.has_key(t):
@@ -717,7 +722,7 @@ class Questions:
         
         cursor.execute("INSERT INTO oahpa.drill_feedback (pos,stem,diphthong,gradation,rime,soggi,case2,number,personnumber,tense,mood,attributive,grade,attrsuffix) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE pos=%s", (pos,stem,diphthong,gradation,rime,soggi,case,number,personnumber,tense,mood,attributive,grade,attrsuffix,pos))
 
-    def read_feedback(self, infile, pos, msgfile=None):
+    def read_feedback(self, infile, pos, dialect, msgfile=None):
 
         from django.db import connection
         print infile
@@ -728,6 +733,8 @@ class Questions:
 
         xmlfile=file(infile)
         tree = _dom.parse(infile)
+
+        dialect_el = Dialect.get(dialect=dialect)
 
         stem_messages = {}
         gradation_messages = {}
@@ -899,6 +906,8 @@ class Questions:
 
         for f in messages:
             print f.msgid
+            msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
+
             if f.pos == "N" or pos=="A" or pos=="Num":
                 for stem in f.stem:
                     for gradation in f.gradation:
@@ -924,10 +933,11 @@ class Questions:
                                                                                                    number=number,\
                                                                                                    grade=grade,\
                                                                                                    soggi=soggi)
-                                                        msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
                                                         if msgs:
                                                             f2.messages.add(msgs[0])
                                                         else : print "No messages found:", f.msgid
+                                                        if dialect_el:
+                                                            f2.dialect.add(dialect_el)
                                                         f2.save()
                                     
                                                 else:
@@ -946,10 +956,11 @@ class Questions:
                                                                                                        case2=case,\
                                                                                                        grade=grade,\
                                                                                                        soggi=soggi)
-                                                            msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
                                                             if msgs:
                                                                 f2.messages.add(msgs[0])
-                                                            else : print "No messages found:", f.msgid														
+                                                            else : print "No messages found:", f.msgid 
+                                                            if dialect_el:
+                                                                f2.dialect.add(dialect_el)
                                                             f2.save()
                                                             
                                                         else:
@@ -965,10 +976,11 @@ class Questions:
                                                                                                            number=number, \
                                                                                                            grade=grade,\
                                                                                                            soggi=soggi)
-                                                                msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
                                                                 if msgs:
                                                                     f2.messages.add(msgs[0])
-                                                                else : print "No messages found:", f.msgid														
+                                                                else : print "No messages found:", f.msgid 
+                                                                if dialect_el:
+                                                                    f2.dialect.add(dialect_el)
                                                                 f2.save()
                                     if f.pos == "N" or f.pos=="Num":
                                         for case in f.case:
@@ -985,10 +997,11 @@ class Questions:
                                                                         number=number,\
                                                                         pos=pos,\
                                                                         soggi=soggi)
-                                                msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
                                                 if msgs:
                                                     f2.messages.add(msgs[0])
                                                 else : print "No messages found:", f.msgid
+                                                if dialect_el:
+                                                    f2.dialect.add(dialect_el)
                                                 f2.save()
                                                 continue
                                             else:
@@ -1004,16 +1017,18 @@ class Questions:
                                                                             number=number, \
                                                                             soggi=soggi)
                                                     
-                                                    msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
                                                     if msgs:
                                                         f2.messages.add(msgs[0])
                                                     else : print "No messages found:", f.msgid
+                                                    if dialect_el:
+                                                        f2.dialect.add(dialect_el)
                                                     f2.save()
 
                                                     
 
 
             if f.pos == "V":
+                messages = Feedbackmsg.objects.filter(msgid=f.msgid)
                 for stem in f.stem:
                     for diphthong in f.diphthong:
                         for soggi in f.soggi:                                                           
@@ -1030,10 +1045,12 @@ class Questions:
                                                                                      pos=pos,\
                                                                                      mood=mood,\
                                                                                      personnumber=personnumber)
-                                        messages = Feedbackmsg.objects.filter(msgid=f.msgid)
-                                        if messages:										
+
+                                        if messages:
                                             f2.messages.add(messages[0])
                                         else : print "No messages found:", f.msgid
+                                        if dialect_el:
+                                            f2.dialect.add(dialect_el)
                                         f2.save()
         cursor.close()
         connection.close()
