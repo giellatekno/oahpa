@@ -1,4 +1,4 @@
-from django.template import Context, loader
+from django.template import Context, RequestContext, loader
 from forms import *
 from django.db.models import Q
 from django.http import HttpResponse, Http404
@@ -70,9 +70,12 @@ class Gameview:
         count=0
         correct=0
 
+        self.settings['dialect'] = request.session['dialect']
+
         if request and request.method == 'POST':
             data = request.POST.copy()
 
+            
             #print request.POST
             # Settings form is checked and handled.
             settings_form = MorphForm(request.POST)
@@ -110,7 +113,7 @@ class Gameview:
         # If there is no POST data, default settings are applied
         else:
             settings_form = MorphForm()
-            
+
             # Find out the default data for this form.
             for k in settings_form.default_data.keys():
                 if not self.settings.has_key(k):
@@ -149,10 +152,8 @@ class Gameview:
             else:
                 self.settings['gamename'] = self.gamenames[self.settings['adj_context']]
 
-        #print self.settings['gamename']
 
-
-        c = Context({
+        c = RequestContext(request, {
             'settingsform': settings_form,
             'settings' : self.settings,
             'forms': game.form_list,
@@ -164,6 +165,7 @@ class Gameview:
             })
         return c
 
+
 def mgame_n(request):
 
     mgame = Gameview()
@@ -172,7 +174,7 @@ def mgame_n(request):
     mgame.settings['gametype'] = "bare"
 
     c = mgame.create_mgame(request)
-    return render_to_response('mgame_n.html', c)
+    return render_to_response('mgame_n.html', c, context_instance=RequestContext(request))
 
 
 def mgame_v(request):
@@ -183,7 +185,7 @@ def mgame_v(request):
     mgame.settings['gametype'] = "bare"
     
     c = mgame.create_mgame(request)
-    return render_to_response('mgame_v.html', c)
+    return render_to_response('mgame_v.html', c, context_instance=RequestContext(request))
 
 def mgame_a(request):
 
@@ -193,7 +195,7 @@ def mgame_a(request):
     mgame.settings['gametype'] = "bare"
     
     c = mgame.create_mgame(request)
-    return render_to_response('mgame_a.html', c)
+    return render_to_response('mgame_a.html', c, context_instance=RequestContext(request))
 
 def mgame_l(request):
 
@@ -203,7 +205,7 @@ def mgame_l(request):
     mgame.settings['gametype'] = "bare"
     
     c = mgame.create_mgame(request)
-    return render_to_response('mgame_l.html', c)
+    return render_to_response('mgame_l.html', c, context_instance=RequestContext(request))
 
 
 ### Contextual Morfas
@@ -216,7 +218,7 @@ def cmgame_n(request):
     mgame.settings['gametype'] = "context"
     
     c = mgame.create_mgame(request)
-    return render_to_response('mgame_n.html', c)
+    return render_to_response('mgame_n.html', c, context_instance=RequestContext(request))
 
 
 def cmgame_v(request):
@@ -227,7 +229,7 @@ def cmgame_v(request):
     mgame.settings['gametype'] = "context"
     
     c = mgame.create_mgame(request)
-    return render_to_response('mgame_v.html', c)
+    return render_to_response('mgame_v.html', c, context_instance=RequestContext(request))
 
 def cmgame_a(request):
 
@@ -237,7 +239,8 @@ def cmgame_a(request):
     mgame.settings['gametype'] = "context"
     
     c = mgame.create_mgame(request)
-    return render_to_response('mgame_a.html', c)
+    return render_to_response('mgame_a.html', c, context_instance=RequestContext(request))
+
 
 def cmgame_l(request):
 
@@ -247,7 +250,7 @@ def cmgame_l(request):
     mgame.settings['gametype'] = "context"
     
     c = mgame.create_mgame(request)
-    return render_to_response('mgame_l.html', c)
+    return render_to_response('mgame_l.html', c, context_instance=RequestContext(request))
 
 
 
@@ -264,10 +267,11 @@ class Vastaview:
         correct=0
 
         self.settings['gametype'] = "qa"
+        self.settings['dialect'] = request.session['dialect']
         
         if request.method == 'POST':
             data = request.POST.copy()
-            print data
+
             # Settings form is checked and handled.
             settings_form = VastaForm(request.POST)
 
@@ -338,7 +342,7 @@ def vasta(request):
     vastagame.init_settings()
 
     c = vastagame.create_vastagame(request)
-    return render_to_response('vasta.html', c)
+    return render_to_response('vasta.html', c, context_instance=RequestContext(request))
 
             
 class Quizzview(Gameview):
@@ -366,9 +370,11 @@ class Quizzview(Gameview):
 
     def create_quizzgame(self,request):
 
+        self.settings['dialect'] = request.session['dialect']
+
         if request.method == 'POST':
             data = request.POST.copy()
-            
+
             # Settings form is checked and handled.
             settings_form = QuizzForm(request.POST)
             for k in settings_form.data.keys():
@@ -426,8 +432,7 @@ def quizz_n(request):
     quizzgame.settings['semtype'] = "PLACE-NAME-LEKSA"
 
     c = quizzgame.create_quizzgame(request)
-
-    return render_to_response('quizz_n.html', c)
+    return render_to_response('quizz_n.html', c, context_instance=RequestContext(request))
 
 def quizz(request):
 
@@ -435,12 +440,14 @@ def quizz(request):
     quizzgame.init_settings()
 
     c = quizzgame.create_quizzgame(request)
-    return render_to_response('quizz.html', c)
+    return render_to_response('quizz.html', c, context_instance=RequestContext(request))
 
 def numgame(request):
 
     mgame = Gameview()
     mgame.init_settings()
+
+    self.settings['dialect'] = request.session['dialect']
 
     if request.method == 'POST':
         data = request.POST.copy()
@@ -486,4 +493,4 @@ def numgame(request):
         'show_correct': game.show_correct,
     })
 
-    return render_to_response('num.html', c)
+    return render_to_response('num.html', c, context_instance=RequestContext(request))
