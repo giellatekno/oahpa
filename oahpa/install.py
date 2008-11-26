@@ -18,7 +18,7 @@ parser.add_option("-f", "--file", dest="infile",
                   help="lexicon file name")
 parser.add_option("-p", "--pos", dest="pos",
                   help="Pos info")
-parser.add_option("-d", "--db", dest="add_db",
+parser.add_option("-b", "--db", dest="add_db",
                   action="store_true", default=False,
                   help="Used for adding tag infoformation to database")
 parser.add_option("-t", "--tagfile", dest="tagfile",
@@ -36,6 +36,8 @@ parser.add_option("-e", "--feedbackfile", dest="feedbackfile",
                   help="XML-file for feedback")
 parser.add_option("-m", "--messagefile", dest="messagefile",
                   help="XML-file for feedback messages")
+parser.add_option("-d", "--dialect", dest="dialect",
+                  help="Dialect used in feedback messages")
 parser.add_option("-s", "--sem", dest="semtypefile",
                   help="XML-file semantic subclasses")
 parser.add_option("-n", "--num", dest="numerals",
@@ -74,8 +76,8 @@ if options.semtypefile:
     exit()
 
 if options.feedbackfile:
-    if options.pos:
-        questions.read_feedback(options.feedbackfile, options.pos, options.messagefile)
+    if options.pos and options.dialect:
+        questions.read_feedback(options.feedbackfile, options.pos, options.dialect, options.messagefile)
         exit()
 
 if options.numerals:
@@ -102,6 +104,7 @@ mainlang = lex.getAttribute("xml:lang")
 if not mainlang:
     mainlang="sme"
 
+
 for e in tree.getElementsByTagName("entry"):
 
     # Store first unique fields
@@ -110,7 +113,7 @@ for e in tree.getElementsByTagName("entry"):
     if not id:
         id=lemma
     stem=""
-    dialect=""
+    dialects=["GG","KJ"]
     diphthong="no"
     gradation=""
     rime=""
@@ -134,9 +137,13 @@ for e in tree.getElementsByTagName("entry"):
         attrsuffix=e.getElementsByTagName("stem")[0].getAttribute("attrsuff")
         if attrsuffix == "0": attrsuffix="noattr"
         
-    if e.getElementsByTagName("dialect"):
-        dialect=e.getElementsByTagName("dialect")[0].getAttribute("class")
-
+    for d in e.getElementsByTagName("dialect"):
+        dialect=d.getAttribute("class")
+        if dialect:
+            invd=dialect.lstrip("NOT-")
+            dialects.remove(invd)
+    print dialects
+    
     if e.getElementsByTagName("frequency"):
         frequency=e.getElementsByTagName("frequency")[0].getAttribute("class")
 
@@ -185,7 +192,11 @@ for e in tree.getElementsByTagName("entry"):
         w.soggi=soggi
         w.gradation=gradation
         w.diphthong=diphthong
-        w.dialect=dialect
+        for d in dialects:
+            dia, created = Dialect.objects.get_or_create(dialect=d)
+            w.dialect.add(dia)
+            w.save()
+
         w.valency = valency
         w.frequency = frequency
         w.geography = geography
@@ -202,20 +213,26 @@ for e in tree.getElementsByTagName("entry"):
             w=Wordnob(wordid=id,lemma=id,pos=pos);
         else:   
             w=Word(wordid=id,lemma=lemma,pos=pos,stem=stem,diphthong=diphthong,\
-                   rime=rime,soggi=soggi,gradation=gradation,dialect=dialect,attrsuffix=attrsuffix);
+                   rime=rime,soggi=soggi,gradation=gradation,attrsuffix=attrsuffix);
+            w.save()
+
+            for d in dialects:
+                dia, created = Dialect.objects.get_or_create(dialect=d)
+                w.dialect.add(dia)
+                w.save()
     w.save()
     
     # Add forms and tags
     if options.paradigmfile:
         linginfo.create_paradigm(lemma,pos)
-        for form in linginfo.paradigm:
-            g=form.classes
+        for f in linginfo.paradigm:
+
+            g=f.classes
             if w.pos == "A" and w.compare == "no" and (g.get('Grade')=="Comp" or g.get('Grade')=="Superl"):
-                #print g.get('Grade')
                 continue
-            #if w.pos == "N" and w.plural == "no" and (form.count('Pl')>0):
+            #if w.pos == "N" and w.plural == "no" and (f.count('Pl')>0):
             #    continue
-            t,created=Tag.objects.get_or_create(string=form.tags,pos=g.get('Wordclass', ""),\
+            t,created=Tag.objects.get_or_create(string=f.tags,pos=g.get('Wordclass', ""),\
                                                 number=g.get('Number',""),case=g.get('Case',""),\
                                                 possessive=g.get('Possessive',""),grade=g.get('Grade',""),\
                                                 infinite=g.get('Infinite',""), \
@@ -225,8 +242,15 @@ for e in tree.getElementsByTagName("entry"):
                                                 subclass=g.get('Subclass',""),attributive=g.get('Attributive',""))
 
             t.save()
-            #print form.form, t.string, w.lemma
-            form, created = Form.objects.get_or_create(fullform=form.form,tag=t,word=w,dialect=form.dialect)
+
+            form, created = Form.objects.get_or_create(fullform=f.form,tag=t,word=w)
+            if len(f.dialects)==1: dialects2 = f.dialects[:]
+            else: dialects2 = dialects[:]
+            #print dialects2
+            for d in dialects2:
+                dia, created = Dialect.objects.get_or_create(dialect=d)
+                form.dialect.add(dia)
+                form.save()
             form.save()
 
     if only_sg:
