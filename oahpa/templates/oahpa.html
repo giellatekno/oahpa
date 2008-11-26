@@ -228,9 +228,13 @@ function process(strField, evtKeyPress)  {
 </div>
 
 <div class="language">
+<table>
+<tr><td>
 {% get_current_language as LANGUAGE_CODE %}
 <form action="/oahpa/i18n/setlang/" method="post">
 
+<table>
+<tr><td>
 <input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
 <select name="language">
 
@@ -257,12 +261,40 @@ function process(strField, evtKeyPress)  {
 {% else %}
 <option value="fi">Suomi</option>
 {% endifequal %}
-
 </select>
-<br/>
+</td></tr>
+<tr><td>
 <input type="submit" value="{% trans 'Change language' %}" />
+</td></tr>
+</table>
 </form>
-
+</td>
+<td>
+<form action="/oahpa/dialect/" method="post">
+<table>
+<tr><td>
+<select name="dialect">
+{% if dialect %}
+  {% ifequal dialect "GG" %}
+  <option value="GG" selected="selected">{% trans 'western' %}</option>
+  <option value="KJ">{% trans 'eastern' %}</option>
+  {% else %}
+  <option value="GG">{% trans 'western' %}</option>
+  <option value="KJ" selected="selected">{% trans 'eastern' %}</option>
+  {% endifequal %}  
+{% else %}
+<option value="GG">{% trans 'western' %}</option>
+<option value="KJ">{% trans 'eastern' %}</option>
+{% endif %}
+</select>
+</td></tr>
+<tr><td>
+<input type="submit" value="{% trans 'Change dialect' %}" />
+</td></tr>
+</table>
+</form>
+</td></tr>
+</table>
 </div>
 </div>
 
