@@ -14,11 +14,13 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = 'oahpa'             # Or path to database file if using sqlite3.
-DATABASE_USER = 'oahpa_user'             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+DATABASE_NAME = 'oahpa'
+#DATABASE_USER = 'oahpa_user'
+#DATABASE_PASSWORD = ''
+DATABASE_USER = 'saara'
+DATABASE_PASSWORD = 'vesiLasi'
+DATABASE_HOST = ''
+DATABASE_PORT = ''
 DATABASE_OPTIONS = {
 	'read_default_file': '/etc/my.cnf',
 	'charset': 'utf8',
@@ -66,9 +68,9 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-	'django.middleware.common.CommonMiddleware',		
+    'django.middleware.common.CommonMiddleware',		
     'django.contrib.sessions.middleware.SessionMiddleware',
-	'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.doc.XViewMiddleware',
 )
@@ -81,7 +83,15 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
 	os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),
 	os.path.join(os.path.dirname(__file__), 'drill/templates').replace('\\','/'),
+	os.path.join(os.path.dirname(__file__), 'feedback/templates').replace('\\','/'),
 )
+
+TEMPLATE_CONTEXT_PROCESSORS =("django.core.context_processors.auth",
+                              "django.core.context_processors.debug",
+                              "django.core.context_processors.i18n",
+                              "django.core.context_processors.media",
+                              "django.core.context_processors.request",
+                              "oahpa.conf.context_processors.dialect",)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -90,7 +100,9 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'oahpa.drill',
+    'oahpa.feedback',
 )
+
 
 LANGUAGES = (
     ('en', 'English'),
@@ -98,6 +110,4 @@ LANGUAGES = (
     ('nob', 'Norwegian'),
     ('sme', 'North Sami'),
     )
-
-
 
