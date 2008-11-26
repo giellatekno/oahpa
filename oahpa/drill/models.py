@@ -29,12 +29,15 @@ class NPosManager(models.Manager):
     def get_query_set(self):
         return super(NPosManager, self).get_query_set().filter(pos='N')
 
+class Dialect(models.Model):
+    dialect = models.CharField(max_length=5)
+    name = models.CharField(max_length=100)
+
 class Word(models.Model):
     wordid = models.CharField(max_length=200)
     lemma = models.CharField(max_length=200)
     pos = models.CharField(max_length=5)
     stem = models.CharField(max_length=20)
-    dialect = models.CharField(max_length=20)
     valency = models.CharField(max_length=10)
     semtype = models.ManyToManyField(Semtype)
     source = models.ManyToManyField(Source)
@@ -47,11 +50,11 @@ class Word(models.Model):
     translations = models.ManyToManyField('Wordnob')
     frequency = models.CharField(max_length=10)
     geography = models.CharField(max_length=10)
-
+    dialect = models.CharField(max_length=20)
+    dialects = models.ManyToManyField(Dialect)
     objects = models.Manager() # The default manager.
     N_objects = NPosManager() # The Noun-specific manager
-
-
+    
     
 class Wordnob(models.Model):
     wordid = models.CharField(max_length=200)
@@ -93,7 +96,7 @@ class Form(models.Model):
     tag = models.ForeignKey(Tag)
     fullform = models.CharField(max_length=200)
     dialect = models.CharField(max_length=20)
-
+    dialects = models.ManyToManyField(Dialect)
 
 class Question(models.Model):
     qid = models.CharField(max_length=200)
@@ -141,6 +144,7 @@ class Feedback(models.Model):
     grade = models.CharField(max_length=10,null=True,blank=True)
     attrsuffix = models.CharField(max_length=10,null=True,blank=True)
     attributive = models.CharField(max_length=10,null=True,blank=True)
-
+    dialects = models.ManyToManyField(Dialect)
+    
     class Meta:
         unique_together = ("pos","stem","diphthong","gradation","rime","soggi","case2","number","personnumber","tense","mood","grade","attrsuffix","attributive")
