@@ -165,8 +165,8 @@ class Game:
         if (self.show_correct or self.all_correct) and not self.settings['gametype']=='qa' :
             if i==2: i=3
             if i==1: i=2
-            com_count = Comment.objects.filter(Q(level=i) & Q(lang="nob")).count()
-            self.comment = Comment.objects.filter(Q(level=i) & Q(lang="nob"))[randint(0,com_count-1)].comment
+            #com_count = Comment.objects.filter(Q(level=i) & Q(lang="nob")).count()
+            #self.comment = Comment.objects.filter(Q(level=i) & Q(lang="nob"))[randint(0,com_count-1)].comment
 
 
 class BareGame(Game):
@@ -194,6 +194,7 @@ class BareGame(Game):
 
     def get_db_info(self, db_info):
 
+        dialect = self.settings['dialect']
         if self.settings.has_key('pos'):
             pos = self.settings['pos']
 
@@ -267,10 +268,13 @@ class BareGame(Game):
                 w_count=Word.objects.filter(Q(pos=pos)).count()
                 word_id=Word.objects.filter(Q(pos=pos))[randint(0,w_count-1)].id
             else:
-                w_count=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books)).count()
-                word_id=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)].id
+                w_count=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books) &\
+                                            Q(dialects__dialect=dialect)).count()
+                word_id=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books) &\
+                                            Q(dialects__dialect=dialect))[randint(0,w_count-1)].id
                 
             form_count = Form.objects.filter(Q(word__pk=word_id) & Q(tag__pk=tag_id)).count()
+
             basefound = self.get_baseform(word_id, tag)
 
             if word_id and form_count>0 and basefound:
@@ -281,6 +285,7 @@ class BareGame(Game):
 
     def create_form(self, db_info, n, data=None):
 
+        dialect = self.settings['dialect']
         word_id = db_info['word_id']
         tag_id = db_info['tag_id']
 
@@ -294,7 +299,7 @@ class BareGame(Game):
         word = Word.objects.get(Q(id=word_id))
 
         baseform_list = Form.objects.filter(Q(word__pk=word_id) & Q(tag=basetag))
-        dial_baseform_list = baseform_list.filter(Q(dialect="restricted"))
+        dial_baseform_list = baseform_list.filter(Q(dialects__dialect=dialect))
         if dial_baseform_list:
             baseform = dial_baseform_list[0]
         else:
@@ -319,6 +324,7 @@ class NumGame(Game):
         
     def create_form(self, db_info, n, data=None):
 
+        dialect = self.settings['dialect']
         language=self.settings['language']
         numstring =""
         # Add generator call here
@@ -349,6 +355,7 @@ class QuizzGame(Game):
 
     def get_db_info(self, db_info):
 
+        dialect=self.settings['dialect']
         books=self.settings['book']
         semtypes=self.settings['semtype']
         frequency=self.settings['frequency']
@@ -367,28 +374,30 @@ class QuizzGame(Game):
                 if self.settings['book'].count('all') > 0:
                     w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
                                                 Q(frequency__in=frequency) & \
-                                                Q(geography__in=geography)).count()
+                                                Q(geography__in=geography) & \
+                                                Q(dialects__dialect=dialect)).count()
                     random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
                                                     Q(frequency__in=frequency) & \
-                                                    Q(geography__in=geography))[randint(0,w_count-1)]
+                                                    Q(geography__in=geography) &\
+                                                    Q(dialects__dialect=dialect))[randint(0,w_count-1)]
                                                         
                 else:
                     semtypes = self.settings['allsem']
                     w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) &\
                                                 Q(source__name__in=books) & \
-                                                Q(frequency__in=frequency) & \
-                                                Q(geography__in=geography)).count()
+                                                Q(geography__in=geography) & \
+                                                Q(dialects__dialect=dialect)).count()
                     random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
                                                     Q(source__name__in=books) & \
-                                                    Q(frequency__in=frequency) & \
-                                                    Q(geography__in=geography))[randint(0,w_count-1)]
-
+                                                    Q(geography__in=geography) &\
+                                                    Q(dialects__dialect=dialect))[randint(0,w_count-1)]
+                                                    
             # nobsme
             else:
                 if self.settings['book'].count('all') > 0:
                     w_count=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                    Q(frequency__in=frequency) & \
-                                                    Q(geography__in=geography)).count()
+                                                   Q(frequency__in=frequency) & \
+                                                   Q(geography__in=geography)).count()
                     
                     random_word=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) & \
                                                        Q(frequency__in=frequency) & \
@@ -416,10 +425,12 @@ class QuizzGame(Game):
 
     def create_form(self, db_info, n, data=None):
 
+        dialect = self.settings['dialect']
+        
         word_id = db_info['word_id']
         if self.settings['transtype'] == "smenob":
-            word=Word.objects.get(Q(id=word_id))
-            translations=word.translations.all()
+           word=Word.objects.get(Q(id=word_id))
+           translations=word.translations.all()
         else:
             #print "jee", word_id
             word=Wordnob.objects.get(id=word_id)
