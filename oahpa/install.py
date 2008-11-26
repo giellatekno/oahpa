@@ -194,7 +194,7 @@ for e in tree.getElementsByTagName("entry"):
         w.diphthong=diphthong
         for d in dialects:
             dia, created = Dialect.objects.get_or_create(dialect=d)
-            w.dialect.add(dia)
+            w.dialects.add(dia)
             w.save()
 
         w.valency = valency
@@ -218,7 +218,7 @@ for e in tree.getElementsByTagName("entry"):
 
             for d in dialects:
                 dia, created = Dialect.objects.get_or_create(dialect=d)
-                w.dialect.add(dia)
+                w.dialects.add(dia)
                 w.save()
     w.save()
     
@@ -249,7 +249,7 @@ for e in tree.getElementsByTagName("entry"):
             #print dialects2
             for d in dialects2:
                 dia, created = Dialect.objects.get_or_create(dialect=d)
-                form.dialect.add(dia)
+                form.dialects.add(dia)
                 form.save()
             form.save()
 
