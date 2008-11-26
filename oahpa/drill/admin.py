@@ -7,11 +7,11 @@ class LogAdmin(admin.ModelAdmin):
         
 class WordAdmin(admin.ModelAdmin):
 
-    list_display = ('lemma','wordid','pos','stem', 'diphthong','gradation','rime','soggi','dialect','valency')
+    list_display = ('lemma','wordid','pos','stem', 'diphthong','gradation','rime','soggi','valency')
     list_filter = ['pos','stem','semtype','source'] 
     search_fields = ['lemma', 'semtype__semtype']
 
-#admin.site.register(Word,WordAdmin)
+admin.site.register(Word,WordAdmin)
 admin.site.register(Log, LogAdmin)
 
 
