@@ -51,42 +51,20 @@ class QAGame(Game):
 
     def get_qword(self, qelement, tag_el):
 
-        #if self.settings.has_key('syll'):
-        #    syll = self.settings['syll']
-        #if self.settings.has_key('book'):
-        #    books=self.settings['book']
-        #print syll, books
-
         dialect = self.settings['dialect']
-        max = 100
-        i=0
-        form_list=None
-        while not form_list and i<max:
-            i= i+1
 
-            #w_count=Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(stem__in=syll) & Q(source__name__in=books)).count()
-            #word_el=Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(stem__in=syll) & Q(source__name__in=books))[randint(0,w_count-1)]
+        word_count = Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(dialects__dialect=dialect) &\
+                                         Q(form__tag=tag_el.id)).count()
+        word = Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(dialects__dialect=dialect) &\
+                                   Q(form__tag=tag_el.id))[randint(0,word_count-1)]
+        form = word.form_set.filter(Q(tag=tag_el.id) & Q(dialects__dialect=dialect))[0]
+                                         
+        if not form: return None
 
-
-            word_count = WordQElement.objects.filter(qelement=qelement).count()
-            qw_el = WordQElement.objects.filter(qelement=qelement)[randint(0,word_count-1)]
-            word_el = qw_el.word
-            #print qelement.identifier
-            #print word_el.lemma
-
-            form_list = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_el.id))
-
-            if not form_list:
-                return None
-
-        dial_form_list = form_list.filter(Q(dialects__dialect=dialect))
-        if dial_form_list:
-            fullform = dial_form_list[0].fullform
-        else:
-            fullform = form_list[0].fullform
+        word_id=word.id
+        fullform=form.fullform
             
-        info = { 'word' : word_el.id, 'tag' : tag_el.id, 'fullform' : [ fullform ], 'qelement' : qelement }
-        #print info
+        info = { 'word' : word_id, 'tag' : tag_el.id, 'fullform' : [ fullform ], 'qelement' : qelement }
         return info
     
     # Select a word matching semtype and return full form.
@@ -105,15 +83,11 @@ class QAGame(Game):
             if word_id and tag_el:
                 word = Word.objects.filter(id=word_id)[0]
         if word:
-            form_list = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word.id))
+            form_list = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word.id) & Q(dialects__dialect=dialect))
             if not form_list:
                 return []
 
-            dial_form_list = form_list.filter(Q(dialects__dialect=dialect))
-            if dial_form_list:
-                fullform = dial_form_list[0].fullform
-            else:
-                fullform = form_list[0].fullform
+            fullform = form_list[0].fullform
 
             info = {'word': word.id, 'tag' : tag_el.id, 'fullform' : [ fullform ] }
             words.append(info)                    
@@ -219,16 +193,13 @@ class QAGame(Game):
                 info = self.get_qword(mainv_el, tag_el)
                 mainv_word = info
 
-                if not mainv_word:
-                    return None
-                    #qwords['MAINV'] = { 'fullform' : ["MAINV"] }
+                if not mainv_word: return None
                 else:
                     mainv_word['number'] = tag_el.personnumber
                     qwords['MAINV'] = mainv_word
 
-            if not mainv_word:
-                return None
-                #qwords['MAINV'] = { 'fullform' : ["MAINV"] }
+            if not mainv_word: return None
+                
 
         # 2. Other grammatical elements
         # At the moment, agreement is not taken into account
@@ -270,7 +241,7 @@ class QAGame(Game):
         return qwords
 
 
-    def generate_answers_subject(self, answer, question, awords, qwords, qtype):
+    def generate_answers_subject(self, answer, question, awords, qwords):
         
         words=[]
         word_id=""
@@ -337,7 +308,7 @@ class QAGame(Game):
 
         return awords
     
-    def generate_answers_mainv(self, answer, question, awords, qwords, qtype):
+    def generate_answers_mainv(self, answer, question, awords, qwords):
 
         mainv_elements = self.get_elements(answer,"MAINV")
 
@@ -391,7 +362,7 @@ class QAGame(Game):
             
 
         # If the main verb is under question, then generate full list.
-        if qtype in self.qtype_verbs or (answer.task and answer.task == "MAINV"):
+        if answer.task == "MAINV":
             mainv_words = []
             if mainv_elements:
                 for mainv_el in mainv_elements:
@@ -431,7 +402,7 @@ class QAGame(Game):
 
         return awords
 
-    def generate_syntax(self, answer, question, awords, qwords, qtype, s):
+    def generate_syntax(self, answer, question, awords, qwords, s):
 
         if s=="SUBJ" or s=="MAINV": return awords
 
@@ -440,7 +411,7 @@ class QAGame(Game):
 
         word_id=None
         
-        tag_elements = None
+        tag_elements = []
         swords = []
         elements = self.get_elements(answer,s)
 
@@ -484,34 +455,14 @@ class QAGame(Game):
                 tag_elements = element.tags.all()
                 
         # Take word forms for all tags
-        if tag_elements:
-
-            for tag_el in tag_elements:                    
-                # Special treatment for numerals.
-                if (qtype == "NUM-ATTR" and element.identifier=="NUM-ATTR"):
-                    max = 50
-                    i=0
-                    info=None
-                    while not info and i<max:
-                        i= i+1
-                        w_count=Word.objects.filter(Q(pos="Num")).count()
-                        word_id=Word.objects.filter(Q(pos="Num"))[randint(0,w_count-1)].id
-                        #print word_id
-                        if Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id)).count()>0:
-                            fullform = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id))[0].fullform
-                            info = {'word': word_id, 'tag' : tag_el.id, 'fullform' : [ fullform ] }
-                    if not info:
-                        return None
-                    swords.append(info)
-
-                else:
-                    if not word_id:
-                        info = self.get_qword(element, tag_el)
-                    else:
-                        info = { 'qelement' : element.id, 'word' : word_id, 'tag' : tag_el.id  }
-                    if not info:
-                        return None
-                    swords.append(info)
+        for tag_el in tag_elements:                    
+            if not word_id:
+                info = self.get_qword(element, tag_el)
+            else:
+                info = { 'qelement' : element.id, 'word' : word_id, 'tag' : tag_el.id  }
+            if not info:
+                return None
+            swords.append(info)
 
         if not swords:
             return None
@@ -519,29 +470,123 @@ class QAGame(Game):
 
         return awords
 
-    def get_db_info(self, db_info,default_qtype=None,default_qid=None):
+    ######### Vasta questions
+    def get_question_qa(self,db_info,qtype):
 
-        anslist=[]
+        qwords = {}
+        if self.settings.has_key('level'): level=int(self.settings['level'])
+        else: level='1'
+        
+        q_count = Question.objects.filter(gametype="qa", level__lte=level).count()
+        question = Question.objects.filter(gametype="qa", level__lte=level)[randint(0,q_count-1)]
+        
+        qtype = question.qtype
+        qwords = None
+        qwords= self.generate_question(question, qtype)
+        db_info['qwords'] = qwords
+
+        db_info['question_id'] = question.id
+        return db_info
+
+    ######## Morfa questions
+    def get_question_morfa(self,db_info,qtype):
+
+        qwords = {}
         if self.settings.has_key('pos'):
             pos=self.settings['pos']
 
-        # Select random question type.
-        if default_qtype: qtype = default_qtype
-        else:
-            if not self.gametype == "qa":
-                if pos == "N":
-                    qtype = self.settings['case_context']
-                if pos == "V":
-                    qtype=self.settings['vtype_context']
-                if pos == "Num":
-                    qtype=self.settings['num_context']
-                if pos == "A":
-                    qtype=self.settings['adj_context']
+        # Get qtype from settings.
+        if not qtype:
+            if pos == "N":
+                qtype = self.settings['case_context']
+            if pos == "V":
+                qtype=self.settings['vtype_context']
+            if pos == "Num":
+                qtype=self.settings['num_context']
+            if pos == "A":
+                qtype=self.settings['adj_context']
 
+        if self.settings.has_key('book'): books=self.settings['book']
+        if books:    
+            q_count=Question.objects.filter(Q(qtype=qtype) & \
+                                            Q(gametype="morfa") & \
+                                            (Q(source__name__in=books) | Q(source__name="all" ))).count()
+        else:
+            q_count=Question.objects.filter(Q(qtype=qtype) & Q(gametype="morfa")).count()
+
+        ### Generate question. If it fails, select another one.
+        max = 20
+        i=0
+        while not qwords and i<max:
+            i = i+1
+            qnum = randint(0, q_count-1)
+            if books:    
+                question = Question.objects.filter(Q(qtype=qtype) & \
+                                                   Q(gametype="morfa") & \
+                                                   (Q(source__name__in=books) | Q(source__name="all" )))[qnum]
+            else:
+                question = Question.objects.filter(Q(qtype=qtype) & Q(gametype="morfa"))[qnum]
+                
+            qwords = None
+            qwords= self.generate_question(question, qtype)
+
+        db_info['qwords'] = qwords
+        db_info['question_id'] = question.id
+        return db_info,question
+
+
+    ########### Morfa answers
+    def get_answer_morfa(self,db_info,question):
+        
+        # Select answer using the id from the interface.
+        # Otherwise select answer that is related to the question.
+        awords = {}
+        if db_info.has_key('answer_id'):
+            answer=Question.objects.get(id=db_info['answer_id'])
+        else:
+            answer_count=question.answer_set.count()
+            answer=question.answer_set.all()[randint(0,answer_count-1)]
+
+        # Generate the set of possible answers if they are not coming from the interface
+        # Or if the gametype is qa.
+        if db_info.has_key('answer_id') and self.settings['gametype'] == 'context':
+            awords=db_info['awords']
+        else:
+            # Generate the set of possible answers
+            # Here only the text of the first answer is considered!!
+            atext=answer.string
+            words_strings = set(atext.split())
+
+            #Initialize each element identifier
+            for w in atext.split():
+                if w== "": continue
+                info = {}
+                awords[w] = info
+
+            # Subject and main verb are special cases:
+            # There is subject-verb agreement and correspondence with question elements.
+            if 'SUBJ' in words_strings:
+                awords = self.generate_answers_subject(answer, question, awords, db_info['qwords'])
+                
+            if 'MAINV' in words_strings:
+                awords = self.generate_answers_mainv(answer, question, awords, db_info['qwords'])
+
+            # Rest of the syntax
+            for s in words_strings:
+                awords = self.generate_syntax(answer, question, awords, db_info['qwords'], s)
+                if not awords:
+                    return "error"
+                    
+        db_info['answer_id'] = answer.id
+        db_info['awords'] = awords
+        return db_info
+
+    def get_db_info(self, db_info,qtype=None,default_qid=None):
+
+        anslist=[]
 
         # If the question id is received from the interface, use that question info
         # Otherwise select random question
-        qwords = {}
         if db_info.has_key('question_id'):
             question = Question.objects.get(id=db_info['question_id'])
             qwords=db_info['qwords']
@@ -551,112 +596,19 @@ class QAGame(Game):
                 qwords = None
                 qwords= self.generate_question(question, qtype)
                 db_info['qwords'] = qwords
+            # If no default information select question
             else:
                 if not self.gametype == "qa":
-                    if self.settings.has_key('book'):
-                        books=self.settings['book']
-                    if books:    
-                        q_count=Question.objects.filter(Q(qtype=qtype) & \
-                                                        Q(gametype="morfa") & \
-                                                        (Q(source__name__in=books) | Q(source__name="all" ))).count()
-                    else:
-                        q_count=Question.objects.filter(Q(qtype=qtype) & Q(gametype="morfa")).count()
-
-                    max = 50
-                    i=0
-                    while not qwords and i<max:
-                        i = i+1
-                        qnum = randint(0, q_count-1)
-                        # TESTING
-                        #qnum = 1
-                        #print "qnum:", qnum
-                        if books:    
-                            question = Question.objects.filter(Q(qtype=qtype) & \
-                                                               Q(gametype="morfa") & \
-                                                               (Q(source__name__in=books) | Q(source__name="all" )))[qnum]
-                        else:
-                            question = Question.objects.filter(Q(qtype=qtype) & Q(gametype="morfa"))[qnum]
-                            
-                        if question.gametype and not question.gametype == self.gametype:
-                            continue
-                        
-                        qwords = None
-                        qwords= self.generate_question(question, qtype)
+                    db_info,question = self.get_question_morfa(db_info,qtype)
                 else:
-                    if self.settings.has_key('level'):
-                        level=int(self.settings['level'])
-                    else:
-                        level='1'
-                    q_count = Question.objects.filter(gametype="qa", level__lte=level).count()
-                    question = Question.objects.filter(gametype="qa", level__lte=level)[randint(0,q_count-1)]
-                                                       
-                    qtype = question.qtype
-                    #print qtype
-                    #print question.id
-                    #print question.qid
-                    qwords = None
-                    qwords= self.generate_question(question, qtype)
+                    db_info = self.get_question_qa(db_info,qtype)
 
-                #print "************* qwords", qwords
-                db_info['qwords'] = qwords
-                #print qwords
+        db_info['gametype'] = self.settings['gametype']        
 
-        qtext = question.string
-        #print qtext
-        
-        # Select answer using the id from the interface.
-        # Otherwise select answer that is related to the question.
-        awords = {}
+        # If Vasta, store and return:
         if not self.gametype == "qa":
-            if db_info.has_key('answer_id'):
-                answer=Question.objects.get(id=db_info['answer_id'])
-            else:
-                answer_count=question.answer_set.count()
-                answer=question.answer_set.all()[randint(0,answer_count-1)]
+            db_info = self.get_answer_morfa(db_info,question)
 
-            # Generate the set of possible answers if they are not coming from the interface
-            # Or if the gametype is qa.
-            if db_info.has_key('answer_id') and self.settings['gametype'] == 'context':
-                awords=db_info['awords']
-            else:
-                # Generate the set of possible answers
-                # Here only the text of the first answer is considered!!
-                atext=answer.string
-                words_strings = set(atext.split())
-
-                #Initialize each element identifier
-                for w in atext.split():
-                    if w== "": continue
-                    #print w
-                    w = w.replace("(","")
-                    w = w.replace(")","")
-                    info = {}
-                    awords[w] = info
-
-                # Subject and main verb are special cases:
-                # There is subject-verb agreement and correspondence with question elements.
-                if 'SUBJ' in words_strings:
-                    awords = self.generate_answers_subject(answer, question, awords, qwords, qtype)
-
-                if 'MAINV' in words_strings:
-                    awords = self.generate_answers_mainv(answer, question, awords, qwords, qtype)
-
-                # Rest of the syntax
-                for s in words_strings:
-                    awords = self.generate_syntax(answer, question, awords, qwords, qtype, s)
-                    if not awords:
-                        return "error"
-                    
-            db_info['answer_id'] = answer.id
-
-        #print "+++++++++++++++++++++", awords
-        db_info['awords'] = awords
-
-
-        # Store everything for the html form 
-        db_info['question_id'] = question.id
-        db_info['gametype'] = self.settings['gametype']
-        
         return db_info
 
     def create_form(self, db_info, n, data=None):
