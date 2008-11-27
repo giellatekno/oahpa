@@ -185,7 +185,6 @@ def is_correct(self, game, example=None):
     self.error = "error"
     iscorrect = False
 
-    #print "ANSWER", answer
     if answer in set(self.correct_anslist) or \
            answer.lower() in set(self.correct_anslist) or \
            answer.upper() in set(self.correct_anslist):
@@ -251,123 +250,87 @@ def set_settings(self):
     for b in NUM_CONTEXT_CHOICES:
         self.allnum_context.append(b[0])                
 
-            
-class MorphForm(forms.Form):
+def get_feedback(self,word,tag,wordform):
+        
+    feedbacks=None
+        
+    if tag.pos=="N" or tag.pos=="Num":
+        #print "filtering feedbacks"
+        #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi,tag.case,tag.pos,tag.number
+        
+        feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
+                                            Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
+                                            Q(soggi=word.soggi) & Q(case2=tag.case) & \
+                                            Q(pos=tag.pos) &\
+                                            Q(number = tag.number))
+    if tag.pos=="A":
+        #print "........filtering feedbacks for adjectives"
+        
+        grade =""
+        if tag.grade: grade = tag.grade                
+        else: grade = "Pos"
+        
+        attrsuffix = ""
+        if tag.attributive:
+            attributive = "Attr"
+            attrsuffix = word.attrsuffix
+        else: attributive = "NoAttr"
+        
+        #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi, "attrsuffix:", word.attrsuffix
+        #print tag.case, tag.pos, tag.number, tag.attributive
 
+        feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
+                                            Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
+                                            Q(soggi=word.soggi) & Q(case2=tag.case) & \
+                                            Q(pos=tag.pos) & Q(grade=grade) &\
+                                            Q(attributive=attributive) & Q(attrsuffix=attrsuffix) & \
+                                            Q(number = tag.number))
+
+    if tag.pos == "V":
+        
+        #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi
+        #print tag.pos, tag.personnumber, tag.tense, tag.mood
+        
+        feedbacks = Feedback.objects.filter(Q(stem=word.stem) & \
+                                            Q(diphthong=word.diphthong) & Q(soggi=word.soggi) & \
+                                            Q(mood=tag.mood) & Q(tense=tag.tense) & \
+                                            Q(personnumber = tag.personnumber))
+        
+    if feedbacks:
+        for f in feedbacks:
+            msgs = f.messages.all()
+            for m in msgs:
+                self.feedback = self.feedback + " " + m.message
+        self.feedback = self.feedback.replace("WORDFORM", "\"" + wordform + "\"") 
+        #print "FEEDBACK", self.feedback
+
+
+class OahpaSettings(forms.Form):
     set_settings = set_settings
 
-    num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
-    case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
-    case_context = forms.ChoiceField(initial='N-ILL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
-    adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)
-    adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
-    vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
-    vtype_context = forms.ChoiceField(initial='PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
-    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
-    bisyllabic = forms.BooleanField(required=False, initial='1')
-    trisyllabic = forms.BooleanField(required=False,initial=0)
-    contracted = forms.BooleanField(required=False,initial=0)
-    grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
-    default_data = {'language' : 'sme', \
-                    'syll' : ['bisyllabic'], 'book' : 'all',\
-                    'case': 'N-ILL', 'pos' : 'N', 'gametype' : 'bare', \
-                    'case_context' : 'N-ILL', \
-                    'vtype' : 'PRS', 'vtype_context' : 'PRS', \
-                    'num_context' : 'NUM-ATTR', \
-                    'adj_context' : 'ATTRPOS', \
-                    'adjcase' : 'ATTR', 'grade' : 'POS'}
+    def set_default_data(self):
+        self.default_data = {'language' : 'sme',\
+                             'syll' : ['bisyllabic'], 'book' : 'all', \
+                             'case': 'N-ILL', 'pos' : 'N', \
+                             'vtype' : 'PRS', \
+                             'adjcase' : 'ATTR', 'grade' : 'POS', \
+                             'case_context' : 'N-ILL', \
+                             'vtype_context' : 'PRS', \
+                             'num_context' : 'NUM-ATTR', \
+                             'adj_context' : 'ATTRPOS'}
 
 
-    def __init__(self, *args, **kwargs):
-        self.set_settings()
-        super(MorphForm, self).__init__(*args, **kwargs)
-        
-class MorphQuestion(forms.Form):
-    """
-    Questions for morphology game 
-    """
+class OahpaQuestion(forms.Form):
+
     is_correct = is_correct
     set_correct = set_correct
-    
-    #answer = forms.CharField()
+    get_feedback = get_feedback
 
-    def get_feedback(self,word,tag,wordform):
-        
-        feedbacks=None
-        
-        if tag.pos=="N" or tag.pos=="Num":
-            #print "filtering feedbacks"
-            #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi,tag.case,tag.pos,tag.number
-
-            feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
-                                                Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
-                                                Q(soggi=word.soggi) & Q(case2=tag.case) & \
-                                                Q(pos=tag.pos) &\
-                                                Q(number = tag.number))
-        if tag.pos=="A":
-            #print "........filtering feedbacks for adjectives"
-
-            grade =""
-            if tag.grade: grade = tag.grade                
-            else: grade = "Pos"
-
-            attrsuffix = ""
-            if tag.attributive:
-                attributive = "Attr"
-                attrsuffix = word.attrsuffix
-            else: attributive = "NoAttr"
-                
-            #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi, "attrsuffix:", word.attrsuffix
-            #print tag.case, tag.pos, tag.number, tag.attributive
-
-            feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(gradation=word.gradation) & \
-                                                Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
-                                                Q(soggi=word.soggi) & Q(case2=tag.case) & \
-                                                Q(pos=tag.pos) & Q(grade=grade) &\
-                                                Q(attributive=attributive) & Q(attrsuffix=attrsuffix) & \
-                                                Q(number = tag.number))
-
-        if tag.pos == "V":
-
-            #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi
-            #print tag.pos, tag.personnumber, tag.tense, tag.mood
-
-            feedbacks = Feedback.objects.filter(Q(stem=word.stem) & \
-                                               Q(diphthong=word.diphthong) & Q(soggi=word.soggi) & \
-                                               Q(mood=tag.mood) & Q(tense=tag.tense) & \
-                                               Q(personnumber = tag.personnumber))
-            
-        if feedbacks:
-            for f in feedbacks:
-                msgs = f.messages.all()
-                for m in msgs:
-                    self.feedback = self.feedback + " " + m.message
-            self.feedback = self.feedback.replace("WORDFORM", "\"" + wordform + "\"") 
-            #print "FEEDBACK", self.feedback
-
-
-    def __init__(self, word, tag, baseform, correct, fullforms, translations, question, userans_val, correct_val, *args, **kwargs):
-
-        lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
-        tag_widget = forms.HiddenInput(attrs={'value' : tag.id})
-
-        super(MorphQuestion, self).__init__(*args, **kwargs)
-        answer_size = 30
-        self.fields['answer'] = forms.CharField(max_length = answer_size, \
-                                                widget=forms.TextInput(attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
-
-        self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
-        self.fields['tag_id'] = forms.CharField(widget=tag_widget, required=False)
-        self.lemma=baseform.fullform
-
+    def init_variables(self, correct, userans_val, fullforms):
         # Get lemma and feedback
         self.feedback=""
-        messages = []
-
-        # Retrieve feedback information
-        self.get_feedback(word,tag,baseform.fullform)
-
-        self.correct_ans = correct.fullform
+        self.messages = []
+        self.correct_ans = correct
         self.correct_answers =""
         self.case = ""
         self.userans = userans_val
@@ -380,20 +343,66 @@ class MorphQuestion(forms.Form):
                          'Pl1':'mun','Pl2':'don','Pl3':'son',\
                          'Du1':'mun','Du2':'don','Du3':'son'}
         
+        for item in fullforms:
+            self.correct_anslist.append(force_unicode(item))
+
+    def generate_fields(self,answer_size, maxlength):
+        self.fields['answer'] = forms.CharField(max_length = maxlength, \
+                                                widget=forms.TextInput(\
+            attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
+
+            
+class MorfaSettings(OahpaSettings):
+
+    case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
+    adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)
+    vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
+    num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
+    case_context = forms.ChoiceField(initial='N-ILL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
+    adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
+    vtype_context = forms.ChoiceField(initial='PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
+
+    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
+    bisyllabic = forms.BooleanField(required=False, initial='1')
+    trisyllabic = forms.BooleanField(required=False,initial=0)
+    contracted = forms.BooleanField(required=False,initial=0)
+    grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
+
+    def __init__(self, *args, **kwargs):
+        self.set_settings()
+        self.set_default_data()
+        super(MorfaSettings, self).__init__(*args, **kwargs)
+
+        
+class MorfaQuestion(OahpaQuestion):
+    """
+    Questions for morphology game 
+    """
+
+    def __init__(self, word, tag, baseform, correct, fullforms, translations, question, userans_val, correct_val, *args, **kwargs):
+
+        lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
+        tag_widget = forms.HiddenInput(attrs={'value' : tag.id})
+
+        super(MorfaQuestion, self).__init__(*args, **kwargs)
+
+        ##### initialize variables
+        self.init_variables(correct.fullform, userans_val, fullforms)
+        self.generate_fields(30,30)
+
+        self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
+        self.fields['tag_id'] = forms.CharField(widget=tag_widget, required=False)
+        self.lemma=baseform.fullform
+
+        # Retrieve feedback information
+        self.get_feedback(word,tag,baseform.fullform)
+
         # Take only the first translation for the tooltip
         if len(translations)>0:
-            self.translations = translations[0].lemma
-
-        found =0
-        for item in fullforms:
-            self.correct_anslist.append(force_unicode(item.fullform))
+            self.translations = translations[0]
 
         if tag.pos=="N":
-            #self.tag = ""
             self.case = tag.case
-        #if tag.pos=="V":
-        #    self.tag = ""
-        #else:
         self.tag = tag.string
 
         if tag.pos=="V" and tag.personnumber and not tag.personnumber == "ConNeg" :
@@ -412,9 +421,7 @@ class MorphQuestion(forms.Form):
             self.error="correct"
 
 
-class QuizzForm(forms.Form):
-
-    set_settings = set_settings
+class QuizzSettings(OahpaSettings):
 
     semtype = forms.ChoiceField(initial='NATUREWORDS', choices=SEMTYPE_CHOICES, widget=forms.Select)
     transtype = forms.ChoiceField(initial='smenob', choices=TRANS_CHOICES, widget=forms.Select)
@@ -434,39 +441,29 @@ class QuizzForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         self.set_settings()
-        super(QuizzForm, self).__init__(*args, **kwargs)
+        super(QuizzSettings, self).__init__(*args, **kwargs)
 
 
-class QuizzQuestion(forms.Form):
+class QuizzQuestion(OahpaQuestion):
     """
     Questions for word quizz
     """
-
-    is_correct = is_correct
-    set_correct = set_correct
     
     def __init__(self, transtype, word, correct, translations, question, userans_val, correct_val, *args, **kwargs):
 
         lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
         super(QuizzQuestion, self).__init__(*args, **kwargs)
-        answer_size=30
-        self.fields['answer'] = forms.CharField(max_length = answer_size, \
-                                                widget=forms.TextInput(attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
+
+        # Initialize variables
+        self.init_variables(correct, userans_val, translations)
+
+        self.generate_fields(30,30)
         self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
         self.lemma = word.lemma
-        self.userans = userans_val
-        self.correct_anslist = []
-        self.correct_answers =""
-        self.error="empty"
-        self.problems="error"
         oo = "å "
         
         if word.pos == 'V' and transtype=="nobsme":
             self.lemma = oo.decode('utf-8') + self.lemma
-
-        self.correct_ans = correct.lemma
-        for item in translations:
-            self.correct_anslist.append(force_unicode(item.lemma))
 
         self.is_correct("leksa", self.lemma)
 
@@ -474,9 +471,7 @@ class QuizzQuestion(forms.Form):
         if correct_val == "correct":
             self.error="correct"
 
-class NumForm(forms.Form):
-
-    set_settings = set_settings
+class NumSettings(OahpaSettings):
 
     maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
     numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
@@ -485,43 +480,32 @@ class NumForm(forms.Form):
                     
     def __init__(self, *args, **kwargs):
         self.set_settings
-        super(NumForm, self).__init__(*args, **kwargs)
+        super(NumSettings, self).__init__(*args, **kwargs)
 
-class NumQuestion(forms.Form):
+class NumQuestion(OahpaQuestion):
     """
     Questions for numeral quizz
     """
-
-    is_correct = is_correct
-    set_correct = set_correct
     
     def __init__(self, numeral, num_string, num_list, gametype, userans_val, correct_val, *args, **kwargs):
 
         numeral_widget = forms.HiddenInput(attrs={'value' : numeral})
         super(NumQuestion, self).__init__(*args, **kwargs)
-        answer_size=30
-        self.fields['answer'] = forms.CharField(max_length = answer_size, \
-                                                widget=forms.TextInput(attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
+
+        # Initialize variables
+        if gametype == "string":
+            self.init_variables(force_unicode(numeral), userans_val, [ numeral ])
+            example = num_string
+        else:
+            self.init_variables(force_unicode(num_list[0]), userans_val, num_list)
+            example = numeral
+
+        self.generate_fields(30,30)
 
         self.fields['numeral_id'] = forms.CharField(widget=numeral_widget, required=False)
         if gametype == "string":
             self.numstring = num_string
         self.numeral = numeral
-        self.userans = userans_val
-        self.correct_anslist = []
-        self.correct_answers =""
-        self.error="empty"
-        self.problems="error"
-
-        if gametype == "string":
-            self.correct_anslist.append(force_unicode(numeral))
-            example = num_string
-            self.correct_ans = self.correct_anslist[0]
-        else:
-            example = numeral
-            for item in num_list:
-                self.correct_anslist.append(force_unicode(item))
-            self.correct_ans = self.correct_anslist[0]
 
         self.is_correct("numra", example)
 
@@ -609,50 +593,20 @@ def select_words(self, qwords, awords):
     return selected_awords
 
 
-
-class QAForm(forms.Form):
-
-    set_settings = set_settings
-
-    num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
-    vtype_context = forms.ChoiceField(initial='MAINV', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
-    vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
-    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
-    default_data = {'gametype' : 'qa', 'language' : 'sme',\
-                    'syll' : ['bisyllabic'], 'book' : 'all', \
-                    'case': 'N-ILL', 'pos' : 'N', \
-                    'vtype' : 'PRS', 'vtype_context' : 'PRS', \
-                    'num_context' : 'NUM-ATTR', \
-                    'adjcase' : 'ATTR', 'grade' : 'POS'}
-
-    def __init__(self, *args, **kwargs):
-        self.set_settings()
-        super(QAForm, self).__init__(*args, **kwargs)
-
-
-
-class QAQuestion(forms.Form):
+class ContextMorfaQuestion(OahpaQuestion):
     """
     Questions for contextual morfa
     """
 
     select_words = select_words
-    set_correct = set_correct
-    is_correct = is_correct
     qtype_verbs = set(['PRS', 'PRT', 'V-COND','V-IMPRT'])
 
         
     def __init__(self, gametype, question, qanswer, \
                  qwords, awords, userans_val, correct_val, *args, **kwargs):
 
-        self.userans = userans_val
-        self.correct_anslist = []
-        self.qa_correct_anslist = {}
-        self.correct_answers =""
-        self.error='empty'
-        self.problems="error"
+        self.init_variables("", userans_val, [])
         self.lemma = ""
-        self.pron = ""
         
         qtype=question.qtype
         if qtype in self.qtype_verbs:
@@ -663,13 +617,12 @@ class QAQuestion(forms.Form):
         atext = qanswer.string
         task = qanswer.task
 
-        super(QAQuestion, self).__init__(*args, **kwargs)
+        super(ContextMorfaQuestion, self).__init__(*args, **kwargs)
 
         answer_size = 20
         maxlength = 30
 
-        self.fields['answer'] = forms.CharField(max_length = maxlength, \
-												widget=forms.TextInput(attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
+        self.generate_fields(20,30)
 
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
         self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
@@ -677,16 +630,13 @@ class QAQuestion(forms.Form):
         # Select words for the the answer
         selected_awords = self.select_words(qwords, awords)
 
-        # In qagame, all words are considered as answers.
-        #print awords
-        form_list=[]
-        
-        if (gametype == 'context'):
-            if len(selected_awords[task]['fullform'])>0:
-                for f in selected_awords[task]['fullform']:				
-                    self.correct_anslist.append(force_unicode(f))
-                self.is_correct("contextual morfa")
-                self.correct_ans = self.correct_anslist[0]
+
+        form_list=[]        
+        if len(selected_awords[task]['fullform'])>0:
+            for f in selected_awords[task]['fullform']:				
+                self.correct_anslist.append(force_unicode(f))
+            self.is_correct("contextual morfa")
+            self.correct_ans = self.correct_anslist[0]
                 
         self.qattrs= {}
         self.aattrs= {}        
@@ -713,7 +663,6 @@ class QAQuestion(forms.Form):
 
         # Format question string
         qtext = question.string
-        #print qwords
         for w in qtext.split():
             if not qwords.has_key(w): qstring = qstring + " " + force_unicode(w)
             else:
@@ -738,7 +687,6 @@ class QAQuestion(forms.Form):
             if answer_tag_el.number=="Sg":
                 self.lemma = answer_word_el.lemma
             else:
-                #print answer_word_el.lemma
                 if Form.objects.filter(Q(word__pk=answer_word) & \
                                        Q(tag__string="N+Pl+Nom")).count()>0:                        
                     self.lemma = Form.objects.filter(Q(word__pk=answer_word) & \
@@ -749,7 +697,6 @@ class QAQuestion(forms.Form):
             self.lemma=""
 
         # Format answer string
-        #print "SELECTED", selected_awords
         for w in atext.split():
             if w.count("(") > 0: continue
             
@@ -784,7 +731,7 @@ class QAQuestion(forms.Form):
             self.error="correct"
 
 
-def qa_is_correct(self,question,qwords):
+def vasta_is_correct(self,question,qwords):
     """
     Analyzes the answer and returns a message.
     """
@@ -919,33 +866,25 @@ def qa_is_correct(self,question,qwords):
     return msg
 
 
-class VastaForm(forms.Form):
-
-    set_settings = set_settings
+class VastaSettings(OahpaSettings):
 
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
     level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
-    default_data = {'gametype' : 'qa', 'language' : 'sme',\
-                    'syll' : ['bisyllabic'], 'book' : 'all', \
-                    'case': 'N-ILL', 'case_context':'N-ILL',\
-                    'pos' : 'V', 'level' : '1', \
-                    'vtype' : 'PRS', 'vtype_context' : 'PRS', \
-                    'num_context' : 'NUM-ATTR', \
-                    'adjcase' : 'ATTR', 'grade' : 'POS'}
 
     def __init__(self, *args, **kwargs):
         self.set_settings()
-        super(VastaForm, self).__init__(*args, **kwargs)
+        self.set_default_data()
+        self.default_data['gametype'] = 'qa',
+        super(VastaSettings, self).__init__(*args, **kwargs)
 
 
-class VastaQuestion(forms.Form):
+class VastaQuestion(OahpaQuestion):
     """
     Questions for vasta
     """
 
     select_words = select_words
-    set_correct = set_correct
-    qa_is_correct = qa_is_correct
+    vasta_is_correct = vasta_is_correct
         
     def __init__(self, gametype, question, qwords, userans_val, correct_val, *args, **kwargs):                 
 
@@ -958,14 +897,13 @@ class VastaQuestion(forms.Form):
         question_widget = forms.HiddenInput(attrs={'value' : question.id})
 
         super(VastaQuestion, self).__init__(*args, **kwargs)
-        answer_size=50
-        self.fields['answer'] = forms.CharField(max_length = answer_size, \
-                                                widget=forms.TextInput(attrs={'size': answer_size,'onkeypress':'processvasta(event)',}))
+        self.generate_fields(50,50)
+
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
         # In qagame, all words are considered as answers.
         form_list=[]
-        self.messages = self.qa_is_correct(question, qwords)
+        self.messages = self.vasta_is_correct(question, qwords)
         
         self.qattrs= {}
         for syntax in qwords.keys():
