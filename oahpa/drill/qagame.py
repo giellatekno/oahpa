@@ -1,18 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from django.template import Context, loader
 from oahpa.drill.models import *
 from oahpa.drill.forms import *
 from oahpa.drill.game import Game
 from django.db.models import Q
-from django.http import HttpResponse, Http404
-from django.shortcuts import get_list_or_404, render_to_response
 from random import randint
-#from django.contrib.admin.views.decorators import _encode_post_data, _decode_post_data
-import os,codecs,sys,re
-
-class Info:
-    pass
 
 class QAGame(Game):
 
@@ -617,9 +609,9 @@ class QAGame(Game):
         answer = None
         if not self.gametype == "qa":
             answer = Question.objects.get(Q(id=db_info['answer_id']))
-            form = (QAQuestion(db_info['gametype'], question, answer, \
-                               db_info['qwords'], db_info['awords'],\
-                               db_info['userans'], db_info['correct'], data, prefix=n))
+            form = (ContextMorfaQuestion(db_info['gametype'], question, answer, \
+                                         db_info['qwords'], db_info['awords'],\
+                                         db_info['userans'], db_info['correct'], data, prefix=n))
         else:
             form = (VastaQuestion(db_info['gametype'], question, \
                                db_info['qwords'], \
