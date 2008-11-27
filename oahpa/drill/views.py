@@ -78,7 +78,7 @@ class Gameview:
             
             #print request.POST
             # Settings form is checked and handled.
-            settings_form = MorphForm(request.POST)
+            settings_form = MorfaSettings(request.POST)
             for k in settings_form.data.keys():
                 self.settings[k] = settings_form.data[k]
                 #print k, settings_form.data[k]
@@ -112,7 +112,7 @@ class Gameview:
 
         # If there is no POST data, default settings are applied
         else:
-            settings_form = MorphForm()
+            settings_form = MorfaSettings()
 
             # Find out the default data for this form.
             for k in settings_form.default_data.keys():
@@ -273,7 +273,7 @@ class Vastaview:
             data = request.POST.copy()
 
             # Settings form is checked and handled.
-            settings_form = VastaForm(request.POST)
+            settings_form = VastaSettings(request.POST)
 
             for k in settings_form.data.keys():
                 self.settings[k] = settings_form.data[k]
@@ -304,7 +304,7 @@ class Vastaview:
 
         # If there is no POST data, default settings are applied
         else:
-            settings_form = VastaForm()
+            settings_form = VastaSettings()
 
             self.settings['allsem']=settings_form.allsem
             self.settings['allcase_context']=settings_form.allcase_context
@@ -376,7 +376,7 @@ class Quizzview(Gameview):
             data = request.POST.copy()
 
             # Settings form is checked and handled.
-            settings_form = QuizzForm(request.POST)
+            settings_form = QuizzSettings(request.POST)
             for k in settings_form.data.keys():
                 if not self.settings.has_key(k):
                     self.settings[k] = settings_form.data[k]
@@ -401,7 +401,7 @@ class Quizzview(Gameview):
         
         # If there is no POST data, default settings are applied
         else:
-            settings_form = QuizzForm()
+            settings_form = QuizzSettings()
             self.placename_settings(settings_form)
             
             for k in settings_form.default_data.keys():
@@ -453,7 +453,7 @@ def numgame(request):
         data = request.POST.copy()
 
         # Settings form is checked and handled.
-        settings_form = NumForm(request.POST)
+        settings_form = NumSettings(request.POST)
                     
         for k in settings_form.data.keys():
             mgame.settings[k] = settings_form.data[k]
@@ -474,7 +474,7 @@ def numgame(request):
         
     # If there is no POST data, default settings are applied
     else:
-        settings_form = NumForm()
+        settings_form = NumSettings()
         
         for k in settings_form.default_data.keys():
             mgame.settings[k] = settings_form.default_data[k]
