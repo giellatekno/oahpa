@@ -26,15 +26,10 @@
 <tr>
 <td>{% trans "Level" %}</td>
 <!--<td>{% trans "Book" %}</td>-->
-<td>{% trans "Dialect" %} (not used)</td>
 </tr>
 <tr>
 <td>{{ settingsform.level }}</td>
 <!--<td>{{ settingsform.book }}</td>-->
-<td>
-<input type="radio" name="dialect" value="western" checked="checked" />{% trans "Western" %}<br/>
-<input type="radio" name="dialect" value="eastern" />{% trans "Eastern" %}<br/>
-</td>
 </tr>
 </table>
 <input type="submit" name="settings" value="{% trans "New set" %}" />
