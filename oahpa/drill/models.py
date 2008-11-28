@@ -50,7 +50,6 @@ class Word(models.Model):
     translations = models.ManyToManyField('Wordnob')
     frequency = models.CharField(max_length=10)
     geography = models.CharField(max_length=10)
-    dialect = models.CharField(max_length=20)
     dialects = models.ManyToManyField(Dialect)
     objects = models.Manager() # The default manager.
     N_objects = NPosManager() # The Noun-specific manager
@@ -95,8 +94,9 @@ class Form(models.Model):
     word = models.ForeignKey(Word)
     tag = models.ForeignKey(Tag)
     fullform = models.CharField(max_length=200)
-    dialect = models.CharField(max_length=20)
     dialects = models.ManyToManyField(Dialect)
+
+########### CONTEXT-MORFA, VASTA
 
 class Question(models.Model):
     qid = models.CharField(max_length=200)
@@ -124,6 +124,8 @@ class WordQElement(models.Model):
     qelement = models.ForeignKey(QElement, null=True)
     semtype = models.ForeignKey(Semtype, null=True)
 
+############# MORFA FEEDBACK
+
 class Feedbackmsg(models.Model):
     msgid = models.CharField(max_length=50)
     message = models.CharField(max_length=200)
@@ -148,3 +150,29 @@ class Feedback(models.Model):
     
     class Meta:
         unique_together = ("pos","stem","diphthong","gradation","rime","soggi","case2","number","personnumber","tense","mood","grade","attrsuffix","attributive")
+
+############ SAHKA
+        
+class Dialogue(models.Model):
+    name = models.CharField(max_length=50,blank=True,null=True)
+
+class Utterance(models.Model):
+    utterance = models.CharField(max_length=500,blank=True,null=True)
+    utttype = models.CharField(max_length=20,blank=True,null=True)
+    links = models.ManyToManyField('LinkUtterance')
+    name = models.CharField(max_length=200,blank=True,null=True)
+    topic = models.ForeignKey('Topic')
+
+class LinkUtterance(models.Model):
+    link = models.ForeignKey(Utterance,null=True,blank=True)
+    linktype = models.CharField(max_length=10,null=True,blank=True)
+    target = models.CharField(max_length=20,null=True,blank=True)
+
+class Topic(models.Model):
+    topicname = models.CharField(max_length=50,blank=True,null=True)
+
+class DialogueTopic(models.Model):
+    topic = models.ForeignKey(Topic)
+    dialogue = models.ForeignKey(Dialogue)
+    number = models.IntegerField(max_length=3)
+
