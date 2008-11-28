@@ -13,93 +13,110 @@
 <!-- $Id$ -->
 
 <dialogue name="visit">
-
-<topic name="Buorre_beaivi">
-<utt type="opening" name="buorre_beaivi">Buorre beaivi! Bures boahtin mu geahčái!</utt>
-</topic>  
-
-<topic name="čohkkát">
-   <question>
-   <utt type="question" name="čohkkájetne_go_dás">Čohkkájetne go dás?</utt>
-     <neg link="Manne_go_gievkkanii"/>
-     <default><utt type="comment" name="Na_moai_čohkkájetne_dás">Na moai čohkkájetne dás.</utt></default> 
-   </question>
-
-   <question>   
-   <utt type="question" name="manne_go_gievkkanii">Gievkkanis lea vuogas čohkkát. Manne go gievkkanii?</utt>
-     <pos><utt>Gievkkanis lea buorre.</utt>
-    </pos>
-	 <default>
-	 <utt>Na moai čohkkájetne dás.</utt>
-    </default>
-   </question>
-
-	<utt type="closing" name="čohkkát_closing">Mun lean okto ruovttus odne.</utt>            
-</topic>
-
-<topic name="juhkat">    
-  <question>
-  <utt type="question" name="Háliidat_go_gáfe_vai_deaja">Háliidat go gáfe vai deaja?</utt>  
-	<pos> 
-    <alt target="gáffe" link="Geavahat_go_mielkki"/>
-    <alt target="deadja" link="Háliidat_go_honnega"/>
-    </pos>
-	<neg link="Háliidat_go_juoida_eará"/>
-	<default><utt>Mus ii leat.</utt></default>
-  </question>
-
-  <question>
-	<utt type="question" name="Háliidat_go_juoida_eará">Háliidat go juoida eará?</utt>
-	<pos link="Maid_don_háliidat_juhkat"/>
-	<default link="juhkat_closing"/>
-  </question>
-
-  <question>
-  <utt type="question" name="Háliidat_go_honnega">Háliidat go honnega?</utt>
-     <neg link="Geavahat_go_sohkkara"/>
-       <default link="Geavahat_go_mielkki"/>
-  </question>
-
-  <question>
-	<utt type="question" name="Geavahat_go_sohkkara">Geavahat go sohkkara?</utt>
-	<default link="Geavahat_go_mielkki"/>   
-  </question>
-
-  <question>
-  <utt type="question" name="Geavahat_go_mielkki">Geavahat go mielkki?</utt>
-    <default><utt>Dá lea dutnje. Leage buorre.</utt></default>
-  </question>
-
-  <question>  
-  <utt class="DRINK" type="question" name="Maid_don_háliidat_juhkat">Dás oainnát makkár juhkamušat musa leat. Maid don háliidat juhkat?</utt>
-<!--  <utt img="drinklist.jpg"/> -->
-	<pos><utt>Mun buvttán dutnje NOUN</utt>
-		    <element id="NOUN">
-		  <id>dia-target</id>
-		  <grammar pos="Sg+Acc"/>
-    	</element> </pos>
-	<default link="juhkat_closing"/>
-  </question>  
-
-  <utt type="closing" name="juhkat_closing">Galggašii lea juoga borrat maid...</utt>
-</topic>
-
-<topic name="gáhkku">
-  <utt type="opening" name="Mus_lea_lákcagáhkku">Mus lea lákcagáhkku mii bázii mu riegádanbeaifeasttas.</utt>
-
-  <question>
-  <utt type="question" name="Háliidat_go_gáhku">Háliidat go gáhku?</utt>
-	<pos><utt>Mun buvttán gáhku!</utt></pos>
-	<default><utt>In sáhte fállat eará odne.</utt></default>
-  </question>
-
- <utt type="closing" name="gáhkku_closing">Suohtas duinna humadit.</utt>
-
   
-</topic>
+  <topic name="Buorre_beaivi">
+    <utt type="opening" name="buorre_beaivi">
+      <text>Buorre beaivi! Bures boahtin mu geahčái!</text>
+    </utt>
+  </topic>  
+  
+  <topic name="cohkkat">
+    <utt type="question" name="cohkkajetne_go_das">
+      <text>Čohkkájetne go dás?</text>
+      <alt type="neg" link="Manne_go_gievkkanii"/>
+      <alt type="default">
+	<text>Na moai čohkkájetne dás.</text>
+      </alt>
+    </utt>
+  
+    <utt type="question" name="manne_go_gievkkanii">
+      <text>Gievkkanis lea vuogas čohkkát. Manne go gievkkanii?</text>
+      <alt type="pos">
+	<text>Gievkkanis lea buorre.</text>
+      </alt>
+      <alt type="default">
+	<text>Na moai čohkkájetne dás.</text>
+      </alt>
+    </utt>
 
-<topic name="Giitu_fitnamis">
-  <utt type="closing" name="Giitu_fitnamis_closing">Giitu fitnamis!</utt>
-</topic>
+    <utt type="closing" name="cohkkat_closing">
+      <text>Mun lean okto ruovttus odne.</text>
+      </utt>            
+  </topic>
+
+  <topic name="juhkat">    
+    <utt type="question" name="Haliidat_go_gafe_vai_deaja">
+      <text>Háliidat go gáfe vai deaja?</text>
+      <alt target="gáffe" link="Geavahat_go_mielkki"/>
+      <alt target="deadja" link="Háliidat_go_honnega"/>
+      <alt type="neg" link="Háliidat_go_juoida_eará"/>
+      <alt type="default"><text>Mus ii leat.</text>
+      </alt>
+    </utt>  
+    
+    <utt type="question" name="Háliidat_go_juoida_eará">
+      <text>Háliidat go juoida eará?</text>
+      <alt type="pos" link="Maid_don_háliidat_juhkat"/>
+      <alt type="default" link="juhkat_closing"/>
+    </utt>
+    
+    <utt type="question" name="Háliidat_go_honnega">
+      <text>Háliidat go honnega?</text>
+      <alt type="neg" link="Geavahat_go_sohkkara"/>
+      <alt type="default" link="Geavahat_go_mielkki"/>
+    </utt>
+    
+    <utt type="question" name="Geavahat_go_sohkkara">
+      <text>Geavahat go sohkkara?</text>
+      <alt type="default" link="Geavahat_go_mielkki"/>   
+    </utt>
+    
+    <utt type="question" name="Geavahat_go_mielkki">
+      <text>Geavahat go mielkki?</text>
+      <alt type="default">
+	<text>Dá lea dutnje. Leage buorre.</text>
+      </alt>
+    </utt>
+    
+    <utt class="DRINK" type="question" name="Maid_don_háliidat_juhkat">
+      <text>Dás oainnát makkár juhkamušat musa leat. Maid don háliidat juhkat?</text>
+      <!--  <utt img="drinklist.jpg"/> -->
+      <alt type="pos">
+	<text>Mun buvttán dutnje NOUN</text>
+	<element id="NOUN">
+	  <id>dia-target</id>
+	  <grammar pos="Sg+Acc"/>
+	</element> 
+      </alt>
+      <default link="juhkat_closing"/>
+    </utt>  
+    
+    <utt type="closing" name="juhkat_closing">
+      <text>Galggašii lea juoga borrat maid...</text>
+    </utt>
+  </topic>
+  
+  <topic name="gáhkku">
+    <utt type="opening" name="Mus_lea_lákcagáhkku">
+      <text>Mus lea lákcagáhkku mii bázii mu riegádanbeaifeasttas.</text>
+    </utt>
+    <utt type="question" name="Háliidat_go_gáhku">
+      <text>Háliidat go gáhku?</text>
+      <alt type="pos"><text>Mun buvttán gáhku!</text></alt>
+      <alt type="default"><text>In sáhte fállat eará odne.</text></alt>
+    </utt>
+    
+    <utt type="closing" name="gáhkku_closing">
+      <text>Suohtas duinna humadit.</text>
+    </utt>
+    
+    
+  </topic>
+  
+  <topic name="Giitu_fitnamis">
+    <utt type="closing" name="Giitu_fitnamis_closing">
+      <text>Giitu fitnamis!</text>
+    </utt>
+  </topic>
 
 </dialogue>
