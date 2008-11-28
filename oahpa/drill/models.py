@@ -174,5 +174,5 @@ class Topic(models.Model):
 class DialogueTopic(models.Model):
     topic = models.ForeignKey(Topic)
     dialogue = models.ForeignKey(Dialogue)
-    number = models.IntegerField(max_length=3)
+    number = models.IntegerField(max_length=3,null=True)
 
