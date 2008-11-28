@@ -15,13 +15,13 @@
 <table>
      {% for form in forms %}
 
-{% ifnotequal settings.gametype 'bare' %} 
+{% ifequal settings.gametype 'context' %} 
     {% ifnotequal forloop.counter 1 %}
     <tr>
     <td>&nbsp;</td>
     </tr>
     {% endifnotequal %}
-{% endifnotequal %}
+{% endifequal %}
 <tr>
 {% block question %}{% endblock %}
 </tr>
@@ -102,7 +102,7 @@
       </td>
 <td>
        {{ form.word_id }}       {{ form.tag_id }}
-{{ form.question_id }} {{ form.answer_id }} 
+{{ form.question_id }} {{ form.answer_id }} {{ form.utterance_id }} 
 {{ form.questiondetails }}
 {{ form.qstring }} {{ form.astring }}
 <input type="hidden" name="{{ forloop.counter }}-userans" value="{{ form.userans }}" />
