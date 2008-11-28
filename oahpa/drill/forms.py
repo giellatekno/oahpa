@@ -518,18 +518,14 @@ def select_words(self, qwords, awords):
     """
     Fetch words and tags from the database.
     """
-
     selected_awords = {}
 
     for syntax in awords.keys():
-        #print "SYNTAX", syntax
         word = None        
         tag = None
         selected_awords[syntax] = {}
 
         # Select answer words and fullforms for interface
-        # Use first the answer elements, but if there are none,
-        # take the corresponding question element        
         if awords.has_key(syntax) and len(awords[syntax]) > 0:
             aword = awords[syntax][randint(0,len(awords[syntax])-1)]
             if aword.has_key('tag'):
@@ -559,24 +555,10 @@ def select_words(self, qwords, awords):
                 if not selected_awords[syntax].has_key('fullform'):
                     if aword.has_key('fullform') and len(aword['fullform'])>0:
                         selected_awords[syntax]['fullform'] = aword['fullform'][:]
-        else:
-            # If there was no word form, take the same word form as in question
-            if qwords.has_key(syntax):
-                qword = qwords[syntax]
-                if qwords[syntax].has_key('word'):
-                    selected_awords[syntax]['word'] = qwords[syntax]['word']
-                if qwords[syntax].has_key('tag'):
-                    selected_awords[syntax]['tag'] = qwords[syntax]['tag']
                 
         if not selected_awords[syntax].has_key('fullform'):
             if selected_awords[syntax].has_key('word') and selected_awords[syntax].has_key('tag'):
-
-                form_list = None
-                max=50
-                i=0
-                while not form_list and i<max:
-                    i=i+1
-                    form_list = Form.objects.filter(Q(word__id=selected_awords[syntax]['word']) &\
+                form_list = Form.objects.filter(Q(word__id=selected_awords[syntax]['word']) &\
                                                     Q(tag__id=selected_awords[syntax]['tag']))
                 if form_list:
                     fullf=[]
@@ -589,7 +571,6 @@ def select_words(self, qwords, awords):
             selected_awords[syntax]['fullform'] = []
             selected_awords[syntax]['fullform'].append(syntax)
 
-    #print "SELECTED2:", selected_awords
     return selected_awords
 
 
@@ -602,7 +583,7 @@ class ContextMorfaQuestion(OahpaQuestion):
     qtype_verbs = set(['PRS', 'PRT', 'V-COND','V-IMPRT'])
 
         
-    def __init__(self, gametype, question, qanswer, \
+    def __init__(self, question, qanswer, \
                  qwords, awords, userans_val, correct_val, *args, **kwargs):
 
         self.init_variables("", userans_val, [])
@@ -886,23 +867,18 @@ class VastaQuestion(OahpaQuestion):
     select_words = select_words
     vasta_is_correct = vasta_is_correct
         
-    def __init__(self, gametype, question, qwords, userans_val, correct_val, *args, **kwargs):                 
+    def __init__(self, question, qwords, userans_val, correct_val, *args, **kwargs):                 
 
-        self.userans = userans_val
-        self.correct_anslist = []
-        self.qa_correct_anslist = {}
-        self.error='empty'
-        self.problems="error"
+        self.init_variables("", userans_val, [])
         
         question_widget = forms.HiddenInput(attrs={'value' : question.id})
 
         super(VastaQuestion, self).__init__(*args, **kwargs)
-        self.generate_fields(50,50)
 
+        self.generate_fields(50,50)
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
         # In qagame, all words are considered as answers.
-        form_list=[]
         self.messages = self.vasta_is_correct(question, qwords)
         
         self.qattrs= {}
@@ -939,5 +915,96 @@ class VastaQuestion(OahpaQuestion):
         self.question=qstring
 
         # set correct and error values
+        if correct_val == "correct":
+            self.error="correct"
+
+
+def sahka_is_correct(self,utterance,targets):
+    """
+    Analyzes the answer and returns a message.
+    """
+    if not self.is_valid():
+        return False
+
+    if not self.cleaned_data.has_key('answer'):
+        return
+    self.userans = self.cleaned_data['answer']
+    answer = self.userans.rstrip()
+    answer = answer.lstrip()
+    answer = answer.rstrip('.!?,')
+
+    self.error = "error"
+
+    msg=""
+    if answer == "Juo" or answer == "juo":
+        self.error = "correct"
+        self.pos = True
+        return msg
+
+    if answer == "In" or answer == "in":
+        self.error = "correct"
+        self.neg = True
+        return msg
+
+    if answer in set(targets):
+        print "FOUND"
+        self.error = "correct"
+        self.target = answer
+        return msg
+
+    return msg        
+    
+class SahkaSettings(OahpaSettings):
+
+    
+    def __init__(self, *args, **kwargs):
+        self.set_settings()
+        self.set_default_data()
+        self.default_data['gametype'] = 'sahka'
+        self.default_data['dialogue_id'] = '1'
+        self.default_data['topicnumber'] = '0'
+        super(SahkaSettings, self).__init__(*args, **kwargs)
+
+    def init_hidden(self, topicnumber, num_fields, dialogue_id):
+        
+        # Store topicnumber as hidden input to keep track of topics.
+        print topicnumber
+        print num_fields
+        topicnumber = topicnumber
+        num_fields = num_fields
+        dialogue_id = dialogue_id
+
+
+class SahkaQuestion(OahpaQuestion):
+    """
+    Sahka: Dialogue game
+    """
+
+    select_words = select_words
+    sahka_is_correct = sahka_is_correct
+
+    def __init__(self, utterance, targets, userans_val, correct_val, *args, **kwargs):                 
+        
+        self.init_variables("", userans_val, [])
+
+        utterance_widget = forms.HiddenInput(attrs={'value' : utterance.id})        
+        
+        super(SahkaQuestion, self).__init__(*args, **kwargs)
+
+        if utterance.utttype == "question":
+            self.generate_fields(50,50)
+        self.fields['utterance_id'] = forms.CharField(widget=utterance_widget, required=False)
+
+        self.utterance =""
+        if utterance:
+            self.utterance_id=utterance.id
+            self.utterance=utterance.utterance
+
+        self.pos = False
+        self.neg = False
+        self.target=""
+        if not correct_val == "correct":
+            self.messages = self.sahka_is_correct(utterance,targets)
+
         if correct_val == "correct":
             self.error="correct"
