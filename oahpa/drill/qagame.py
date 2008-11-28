@@ -595,8 +595,6 @@ class QAGame(Game):
                 else:
                     db_info = self.get_question_qa(db_info,qtype)
 
-        db_info['gametype'] = self.settings['gametype']        
-
         # If Vasta, store and return:
         if not self.gametype == "qa":
             db_info = self.get_answer_morfa(db_info,question)
@@ -609,13 +607,13 @@ class QAGame(Game):
         answer = None
         if not self.gametype == "qa":
             answer = Question.objects.get(Q(id=db_info['answer_id']))
-            form = (ContextMorfaQuestion(db_info['gametype'], question, answer, \
+            form = (ContextMorfaQuestion(question, answer, \
                                          db_info['qwords'], db_info['awords'],\
                                          db_info['userans'], db_info['correct'], data, prefix=n))
         else:
-            form = (VastaQuestion(db_info['gametype'], question, \
-                               db_info['qwords'], \
-                               db_info['userans'], db_info['correct'], data, prefix=n))
+            form = (VastaQuestion(question, \
+                                  db_info['qwords'], \
+                                  db_info['userans'], db_info['correct'], data, prefix=n))
             
         #print "awords:", db_info['awords']
         #print "awords ...................."
