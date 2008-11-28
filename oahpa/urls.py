@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     (r'^oahpa/logut/$', 'oahpa.drill.views.numgame'),
     (r'^oahpa/numra/$', 'oahpa.drill.views.numgame'),
     (r'^oahpa/vasta/$', 'oahpa.drill.views.vasta'),
+    (r'^oahpa/sahka/$', 'oahpa.drill.views.sahka'),
     (r'^oahpa/feedback/$', 'oahpa.feedback.views.feedback'), 
         
     # Uncomment this for admin:
