@@ -49,7 +49,6 @@ class Game:
 
             errormsg = self.get_db_info(db_info)
             if errormsg and errormsg=="error":
-                #print "Not found"
                 i=i+1
                 continue
             form, word_id = self.create_form(db_info, i, 0)
@@ -132,7 +131,8 @@ class Game:
 
             new_db_info = {}
 
-            if self.settings.has_key('gametype') and (self.settings['gametype'] == 'qa' or self.settings['gametype'] == 'context'):
+            # Generate possible answers for contextual Morfa.
+            if self.settings.has_key('gametype') and self.settings['gametype'] == 'context':
                 new_db_info = self.get_db_info(db_info)
             if not new_db_info:
                 new_db_info = db_info
@@ -456,7 +456,7 @@ class QuizzGame(Game):
             return HttpResponse("No forms found.")        
 
         tr_lemmas = translations.values_list('lemma',flat=True)
-        print tr_lemmas
+
         form = (QuizzQuestion(self.settings['transtype'], word, correct, tr_lemmas, question_list, db_info['userans'], db_info['correct'], data, prefix=n))
 
         return form, word.id
