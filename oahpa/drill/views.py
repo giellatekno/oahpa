@@ -6,6 +6,7 @@ from django.shortcuts import get_list_or_404, render_to_response
 from random import randint
 from django.utils.translation import ugettext as _
 #from django.contrib.admin.views.decorators import _encode_post_data, _decode_post_data
+from sahka import *
 from game import *
 from qagame import *
 
@@ -323,6 +324,7 @@ class Vastaview:
 
             game.new_game()
 
+
         c = Context({
             'settingsform': settings_form,
             'forms': game.form_list,
@@ -330,8 +332,6 @@ class Vastaview:
             'count': game.count,
             'score': game.score,
             'comment': game.comment,
-            'all_correct': game.all_correct,
-            'show_correct': game.show_correct,
             })
         return c
 
@@ -494,3 +494,85 @@ def numgame(request):
     })
 
     return render_to_response('num.html', c, context_instance=RequestContext(request))
+
+
+class Sahkaview:
+
+    def init_settings(self):
+
+        show_data=0
+        self.settings = {}
+        
+    def create_sahkagame(self,request):
+
+        count=0
+        correct=0
+
+        self.settings['gametype'] = "sahka"
+        self.settings['dialect'] = request.session['dialect']
+        
+        if request.method == 'POST':
+            data = request.POST.copy()
+
+            # Settings form is checked and handled.
+            settings_form = SahkaSettings(request.POST)
+
+            for k in settings_form.data.keys():
+                self.settings[k] = settings_form.data[k]
+
+            # Vasta
+            game = SahkaGame(self.settings)
+
+            # If settings are changed, a new game is created
+            # Otherwise the game is created using the user input.
+            if "settings" in data:
+                game.update_game()
+            else:
+                game.num_fields = int(settings_form.data['num_fields'])
+                print "num_fields", game.num_fields
+                game.check_game(data)
+                # If the last answer was correct, add new field
+                if game.form_list[game.num_fields-2].error == "correct":
+                    game.update_game(len(game.form_list)+1, game.form_list[game.num_fields-2])
+
+            settings_form.init_hidden(game.settings['topicnumber'],game.num_fields,game.settings['dialogue_id'])
+
+        # If there is no POST data, default settings are applied
+        else:
+            settings_form = SahkaSettings()
+            for k in settings_form.default_data.keys():
+                self.settings[k] = settings_form.default_data[k]
+
+            # Sahka
+            game = SahkaGame(self.settings)
+            #game.init_tags()
+            game.gametype="sahka"
+            game.num_fields = 1
+
+            # Start new game with first form
+            game.form_list = []
+            game.update_game(1)
+
+        c = Context({
+            'settingsform': settings_form,
+            'forms': game.form_list,
+            'messages': game.form_list[0].messages,
+            'count': game.count,
+            'score': game.score,
+            'comment': game.comment,
+            'topicnumber' : game.settings['topicnumber'],
+            'num_fields' : game.num_fields,
+            'dialogue_id' : game.settings['dialogue_id'],
+            })
+        return c
+
+
+def sahka(request):
+
+    sahkagame = Sahkaview()
+    sahkagame.init_settings()
+
+    c = sahkagame.create_sahkagame(request)
+    return render_to_response('sahka.html', c, context_instance=RequestContext(request))
+
+            
