@@ -74,7 +74,7 @@ NUM_CONTEXT_CHOICES = (
     ('NUM-ILL', _('illative')),
     ('NUM-LOC', _('locative')),
     ('NUM-COM', _('comitative')),
-    ('COLL-NUM', _('collective')),
+#    ('COLL-NUM', _('collective')),
 )
 
 
@@ -597,6 +597,8 @@ class ContextMorfaQuestion(OahpaQuestion):
         answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})
         atext = qanswer.string
         task = qanswer.task
+        if not task:
+            raise Http404(atext)			
 
         super(ContextMorfaQuestion, self).__init__(*args, **kwargs)
 
@@ -735,8 +737,8 @@ def vasta_is_correct(self,question,qwords):
     lookup2cg = " | lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /usr/local/bin/preprocess "
-    dis_bin = "/home/saara/ped/sme/src/sme-ped.cg3"
-    #dis_bin = fstdir + "/sme-ped.cg3.bin"
+    #dis_bin = "/home/saara/ped/sme/src/sme-ped.cg3"
+    dis_bin = fstdir + "/sme-ped.cg3"
 
     fst = fstdir + "/sme.fst"
     lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst        
@@ -875,7 +877,12 @@ class VastaQuestion(OahpaQuestion):
 
         super(VastaQuestion, self).__init__(*args, **kwargs)
 
-        self.generate_fields(50,50)
+        maxlength=50
+        answer_size=50
+        self.fields['answer'] = forms.CharField(max_length = maxlength, \
+                                                widget=forms.TextInput(\
+			attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
+
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
         # In qagame, all words are considered as answers.
@@ -992,7 +999,12 @@ class SahkaQuestion(OahpaQuestion):
         super(SahkaQuestion, self).__init__(*args, **kwargs)
 
         if utterance.utttype == "question":
-            self.generate_fields(50,50)
+            maxlength=50
+            answer_size=50
+            self.fields['answer'] = forms.CharField(max_length = maxlength, \
+                                                    widget=forms.TextInput(\
+            attrs={'size': answer_size, 'onkeypress':'return processvasta(this, event);',}))
+
         self.fields['utterance_id'] = forms.CharField(widget=utterance_widget, required=False)
 
         self.utterance =""
