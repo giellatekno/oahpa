@@ -37,20 +37,6 @@ body {
 <!--  background: #231E78;-->
 }
 
-#content1 {
-		 position: relative;
-}
-
-#main {
-	  float: left;
-	  width: 62%;
-}
-
-#sidebar {
-		 float: right;
-		 width: 36%;
-}
-
 #navbar1 {    
   padding: 5px 5px 5px 5px;
   margin: 0;
@@ -186,6 +172,7 @@ function feedback(msg)
 }
 </script>
 
+
 <script type="text/javascript" language="JavaScript">
 
 function process(strField, evtKeyPress)  {
@@ -216,9 +203,26 @@ function process(strField, evtKeyPress)  {
   }
 </script>
 
+
+<script type="text/javascript" language="JavaScript">
+
+	function setFocus(){
+
+	var node_list = document.getElementsByTagName('input');
+	
+	for (var i = 0; i < node_list.length; i++) {	
+		var node = node_list[i];
+ 
+		if (node.getAttribute('type') == 'text') {
+				node.focus();
+				}
+		}
+} 
+
+</script>
 </head>
 
-<body>
+<body onload="setFocus();">
 
 <div id="header" >
 
@@ -226,10 +230,10 @@ function process(strField, evtKeyPress)  {
 <img width="200" height="50" src="http://giellatekno.uit.no/oahpa/images/oahpa.png" alt="OAHPA!"/>
 {% block menu %}{% endblock %}
 </div>
-
 <div class="language">
 <table>
 <tr><td>
+
 {% get_current_language as LANGUAGE_CODE %}
 <form action="/oahpa/i18n/setlang/" method="post">
 
@@ -300,42 +304,17 @@ function process(strField, evtKeyPress)  {
 
 <div id="navbar1">
 {% block navbar %}{% endblock %}
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>{% trans 'OAHPA is under development and may not function all the time.' %}</p>
+
+<p><a href="/oahpa/feedback/">{% trans 'Feedback' %}</a><br/></p>
+
 </div>
 <div id="navbar3">
-<center>
 <!--<img width="50" height="50" src="/oahpa/media/LogoSamisk.jpg"/>-->
-</center>
 </div>
 </div>
-<!--
-<div id="navbar">
-<img width="100" height="100" src="/oahpa/media/nr1_small2.png" alt="Morfa"/>
-<font size="+2"><b>{% block name %}{% endblock %}</b></font>
-
-	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
-	    <li><a href="/oahpa/morfa_s/">{% trans 'Nouns' %}</a></li>
-	    <li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>
-	    <li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li>
-	    <li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>
-	  </ul>
-	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
-	    <li><a href="/oahpa/cmorfa_s/">{% trans 'Nouns' %}</a></li>
-	    <li><a href="/oahpa/cmorfa_v/">{% trans 'Verbs' %}</a></li>
-	    <li><a href="/oahpa/cmorfa_a/">{% trans 'Adjectives' %}</a></li>
-	    <li><a href="/oahpa/cmorfa_l/">{% trans 'Numerals' %}</a></li>
-	  </ul>
-	  <ul style="margin-left: 0; padding-left: 15px; list-style: none;">
-	    <li><a href="/oahpa/leksa/">{% trans 'Words' %}</a></li>
-	    <li><a href="/oahpa/leksa_n/">{% trans 'Placenames' %}</a></li>
-	  </ul>
-	  <ul style="list-style: none;"><li></ul>
-	  <a href="/oahpa/feedback/">{% trans 'Feedback' %}</a><br/>
-
-</div>
--->
-<!--<div id="rightbar">
-<p>&nbsp;</p>
-</div>-->
 
 <div id="content">
 <form method="post" action="" name="theform" >
