@@ -11,6 +11,8 @@ import sys
 import re
 import codecs
 from ling import Paradigm, Questions
+from feedback_install import Feedback
+from sahka_install import Sahka
 
 parser = OptionParser()
 
@@ -48,6 +50,8 @@ parser.add_option("-l", "--place", dest="placenamefile",
                   help="If placenames")
 parser.add_option("-c", "--comments", dest="commentfile",
                   help="XML-file for comments")
+parser.add_option("-k", "--sahka", dest="sahkafile",
+                  help="XML-file for Dialogues")
 parser.add_option("-u", "--update", dest="update",
                   action="store_true", default=False,
                   help="If update data")
@@ -55,6 +59,8 @@ parser.add_option("-u", "--update", dest="update",
 (options, args) = parser.parse_args()
 
 linginfo = Paradigm()
+feedback = Feedback()
+sahka = Sahka()
 questions = Questions()
 
 if options.tagfile:
@@ -77,7 +83,7 @@ if options.semtypefile:
 
 if options.feedbackfile:
     if options.pos and options.dialect:
-        questions.read_feedback(options.feedbackfile, options.pos, options.dialect, options.messagefile)
+        feedback.read_feedback(options.feedbackfile, options.pos, options.dialect, options.messagefile)
         exit()
 
 if options.numerals:
@@ -91,7 +97,11 @@ if options.messagefile:
 if options.commentfile:
     questions.read_comments(options.commentfile)
     exit()
-	
+
+if options.sahkafile:
+    sahka.read_dialogue(options.sahkafile)
+    exit()
+
 if not options.infile:
     exit()
 
@@ -142,7 +152,6 @@ for e in tree.getElementsByTagName("entry"):
         if dialect:
             invd=dialect.lstrip("NOT-")
             dialects.remove(invd)
-    print dialects
     
     if e.getElementsByTagName("frequency"):
         frequency=e.getElementsByTagName("frequency")[0].getAttribute("class")
@@ -192,10 +201,11 @@ for e in tree.getElementsByTagName("entry"):
         w.soggi=soggi
         w.gradation=gradation
         w.diphthong=diphthong
-        for d in dialects:
-            dia, created = Dialect.objects.get_or_create(dialect=d)
-            w.dialects.add(dia)
-            w.save()
+        if not mainlang == "nob":
+            for d in dialects:
+                dia, created = Dialect.objects.get_or_create(dialect=d)
+                w.dialects.add(dia)
+                w.save()
 
         w.valency = valency
         w.frequency = frequency
