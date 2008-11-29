@@ -10,8 +10,8 @@ class SahkaGame(Game):
     
     def update_game(self, counter, prev_form=None):
 
-        print "counter", counter
-        print "topicnumber", self.settings['topicnumber']
+        #print "counter", counter
+        #print "topicnumber", self.settings['topicnumber']
         new_topic=False
         utterance=None
 
@@ -42,12 +42,12 @@ class SahkaGame(Game):
             self.settings['dialogue_id']=dia.id
             if topic.utterance_set.all().filter(utttype="opening"):
                 utterance = topic.utterance_set.all().filter(utttype="opening")[0]
-                print "*************00", utterance.utterance
+                #print "*************00", utterance.utterance
             else:
                 utterance = topic.utterance_set.all().order_by('id')[0]
                 if utterance.utttype=="closing":
                     self.settings['topicnumber'] = int(self.settings['topicnumber'])+1 
-                print "*************0", utterance.utterance
+                #print "*************0", utterance.utterance
         if utterance:
             db_info = {}
             db_info['userans'] = ""
@@ -76,7 +76,7 @@ class SahkaGame(Game):
                     nextlink = prev_utterance.links.filter(target=prev_form.target)[0]
             if not nextlink:
                 if prev_utterance.links.filter(linktype="default"):
-                    print "GOING TO DEFAULT"
+                    #print "GOING TO DEFAULT"
                     nextlink = prev_utterance.links.filter(linktype="default")[0]
                 
             if nextlink:                          
@@ -85,7 +85,7 @@ class SahkaGame(Game):
                 db_info['correct'] = ""
                 if nextlink.link:
                     utterance2 = nextlink.link
-                    print "*************1", utterance2.utterance
+                    #print "*************1", utterance2.utterance
                     db_info['utterance_id'] = utterance2.id                        
                     form, jee  = self.create_form(db_info, counter, 0)
                     self.form_list.append(form)
@@ -99,7 +99,7 @@ class SahkaGame(Game):
                 # If next link was not found, go to topic closing.
                 if topic.utterance_set.all().filter(utttype="closing"):
                     utterance = topic.utterance_set.all().filter(utttype="closing")[0]
-                    print "*************3", utterance.utterance, topic.id
+                    #print "*************3", utterance.utterance, topic.id
                     self.settings['topicnumber'] = int(self.settings['topicnumber'])+1 
                     db_info = {}
                     db_info['userans'] = ""
@@ -117,7 +117,7 @@ class SahkaGame(Game):
                     topic = Topic.objects.get(Q(dialoguetopic__dialogue=self.settings['dialogue_id']) & \
                                               Q(dialoguetopic__number=self.settings['topicnumber']))
                     utterance = topic.utterance_set.all()[0]
-                    print "*************2", utterance.utterance
+                    #print "*************2", utterance.utterance
                     if utterance:
                         db_info = {}
                         db_info['userans'] = ""
@@ -143,7 +143,7 @@ class SahkaGame(Game):
         if utterance.links.filter(~Q(target="")):
             target_els = utterance.links.filter(~Q(target=""))
             for t in target_els:
-                targets.append(t.target)
+                targets.append(force_unicode(t.target))
         form = (SahkaQuestion(utterance, targets, db_info['userans'], db_info['correct'], data, prefix=n))
 
         return form, None
