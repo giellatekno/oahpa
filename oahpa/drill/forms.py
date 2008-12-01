@@ -309,7 +309,7 @@ class OahpaSettings(forms.Form):
     set_settings = set_settings
 
     def set_default_data(self):
-        self.default_data = {'language' : 'sme',\
+		self.default_data = {'language' : 'sme', 'dialogue' : 'GG',\
                              'syll' : ['bisyllabic'], 'book' : 'all', \
                              'case': 'N-ILL', 'pos' : 'N', \
                              'vtype' : 'PRS', \
@@ -432,7 +432,7 @@ class QuizzSettings(OahpaSettings):
     sapmi = forms.BooleanField(required=False, initial='1')
     world = forms.BooleanField(required=False,initial=0)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
-    default_data = {'gametype' : 'bare', 'language' : 'sme',\
+    default_data = {'gametype' : 'bare', 'language' : 'sme', 'dialogue' : 'GG', \
                     'syll' : [], 'book' : 'all', \
                     'semtype' : 'NATUREWORDS', \
                     'frequency' : ['common'], 'geography' : ['sapmi'], \
@@ -476,7 +476,7 @@ class NumSettings(OahpaSettings):
     maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
     numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
     language = forms.ChoiceField(initial='sme', choices=LANGUAGE_CHOICES, widget=forms.RadioSelect)
-    default_data = {'language' : 'sme', 'maxnum' : '10', 'numgame': 'numeral'}
+    default_data = {'language' : 'sme', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
                     
     def __init__(self, *args, **kwargs):
         self.set_settings
