@@ -27,20 +27,22 @@ class Sahka:
             utts = []
             topicname = topic.getAttribute("name")
 
-            t, created = Topic.objects.get_or_create(topicname=topicname)
+            t, created = Topic.objects.get_or_create(topicname=topicname,dialogue=d)
+            t.number=topicnum
             t.save()
-
-            dt, created = DialogueTopic.objects.get_or_create(topic=t,dialogue=d)
-            dt.number=topicnum
-            dt.save()
             topicnum=topicnum+1
-            
+
+            # createn opening and closing if they do not exist in xml-file.
+            opening = False
+            closing = False
             i=0
 
             for utt in topic.getElementsByTagName("utt"):
                 utt_name = utt.getAttribute("name")
                 utttype = utt.getAttribute("type")
-
+                if utttype:
+                    if utttype == "opening": opening = True
+                    if utttype == "closing": closing = True
                 utterance = {}
                 utt_text=""
                 if utt.getElementsByTagName("text"):
@@ -69,12 +71,30 @@ class Sahka:
                                                                topic=t,\
                                                                name=u['name'])
                 utt.save()
+
+            # create an opening or closing if not exist:
+            if not opening: 
+                utt, created = Utterance.objects.get_or_create(utterance="",\
+                                                               utttype="opening",\
+                                                               topic=t,)
+                utt.save()
+            if not closing: 
+                utt, created = Utterance.objects.get_or_create(utterance="",\
+                                                               utttype="closing",\
+                                                               topic=t,)
+                utt.save()
+
                 
             for u in utts:
+                utterance2=None
+                next_utterance=None
+                linkutt=None
+                linkutt2=None
                 utterance = Utterance.objects.get(name=u['name'])
                 for a in u['alts']:
                     if a['link']:
-                        uttlink = Utterance.objects.get(name=a['link'])
+                        print a['link']
+                        next_utterance = Utterance.objects.get(name=a['link'])
 
                     if a['text']:
                         print "creating utterance2"
@@ -83,9 +103,10 @@ class Sahka:
                                                                               topic=t)
                         utterance2.save()
                         if a['link']:
-                            linkutt2, created = LinkUtterance.objects.get_or_create(link=uttlink)
+                            linkutt2, created = LinkUtterance.objects.get_or_create(link=next_utterance,\
+                                                                                    linktype="default")
                             linkutt2.save()
-                            utterance2.links.add(linkutt)
+                            utterance2.links.add(linkutt2)
                             utterance2.save()
 
                         # If the alternative contains text, create a new utterance out of it:
@@ -99,7 +120,7 @@ class Sahka:
 
                     else:
                         if a ['link']:
-                            linkutt, created = LinkUtterance.objects.get_or_create(link=uttlink,\
+                            linkutt, created = LinkUtterance.objects.get_or_create(link=next_utterance,\
                                                                                    linktype=a['type'],\
                                                                                    target=a['target'])
                             linkutt.save()                        
