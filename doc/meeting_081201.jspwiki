@@ -1,0 +1,127 @@
+
+!!!Meeting notes, Pedagogical programs, 081201
+
+
+!!!Participants
+
+Lene, Saara, Trond.
+
+
+
+
+!!!Sahka
+
+Lene sent a document showing the layout.
+
+{{{
+Program links
+------------------------------------------------------------
++----------+  +-------------------------+ +----------------+
+| drawing  |  |                         | | feedback       |
+| rel      |  |  dialogue window        | |                |
+| to       |  |                         | |                |
+| dialogue |  |                         | |                |
+|          |  |                         | |                |
+|          |  |                         | |                |
+|          |  |                         | |                |
++----------+  |                         | +----------------+
+              |                         |                  
+              |                         |                  
+  wordlist    |                         |                  
+              |                         |                  
+              +-------------------------+
+}}}  
+
+Saara to implement cg3 for Sahka, but not more than that this week.
+
+
+!!Drawing
+
+Room to navigate, 
+
+Path to drawings: {{ped/oahpa/media/}}
+
+
+
+!!Wordlist
+
+Discusson on tags for variables in Sahka.
+
+{{{
+<topic name="juhkat" image="ped/oahpa/media/shop.jpg">
+	<wordlist>
+	<word id="gáffe"/><word id="soadji_animal"/><word id="..."/>
+	</wordlist>
+    <utt type="question" name="Haliidat_go_gafe_vai_deaja">
+      <text>Háliidat go gáfe vai deaja?</text>
+      <alt target="gáffe" link="Geavahat_go_mielkki"/>
+      <alt target="deadja" link="Háliidat_go_honnega"/>
+      <alt type="neg" link="Háliidat_go_juoida_eará"/>
+      <alt type="default"><text>Mus ii leat.</text>
+      </alt>
+    </utt>
+}}}
+
+
+We use the same cg3 rule file for Sahka and for Vasta.
+
+{{{
+# &dia-neg         negative content
+# &dia-nothing     anwers is "nothing" - default: handled the same way as neg
+# &dia-pos         positive content
+# &dia-target      answer to the question - can be used in next question
+# &dia-dont-know   to easy answer - Make a comment for this. 
+# &dia-NAME		   (string)
+# &dia-adult	   regex age - 
+# &dia-young
+# &dia-child
+
+    <utt type="question" name="Man_boaris_don_leat">
+      <text>Man boaris don leat?</text>>
+      <!-- How old are you? 1-5 child, 6-20 young, 21-100 adult -->
+      <alt target="young" link="Váccát_go_skuvlla"/>
+      <alt target="child" link="Leat_go_álgán_skuvlii"/>
+      <alt target="adult" link="Leat_go_barggus"/>
+      <alt target="pos" link="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla"/>
+      <alt target="default" link="Leat_go_barggus"/>
+    </utt>
+
+<topic name="presentation">
+    <utt type="question" name="Mii_du_namma_lea">
+      <text>Mii du namma lea?</text>
+      <!-- What is you name? -->
+      <alt type="default" variable="NAME" link="Gos_don_leat_eret">
+        <text>Bures NAME . Suohtas go don leat čátas odne. Mun lean Leavvajogas eret.</text>
+        <element id="NAME">
+          <id>dia-name</id>
+          <grammar tag="N+Sg+Nom"/>
+        </element>
+      </alt>
+    </utt>
+
+What is your name?
+asdf. (asdf get analysis '?')
+... (accept asdf as users name)
+
+Where do you live?
+In asdf. (asdf get analysis '?')
+Where is asdf?
+In Sweden.
+... (go on, with Sweden)
+}}}
+
+
+
+
+!!!Task list
+
+* This week some work on Sahka, otherwise not much.
+* In Tromsø, work on dialogues
+* Saara to make a log password
+
+Next week Saara here.
+
+
+
+
+
