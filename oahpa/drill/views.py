@@ -584,7 +584,7 @@ class Sahkaview:
                 if game.form_list[game.num_fields-2].error == "correct":
                     game.update_game(len(game.form_list)+1, game.form_list[game.num_fields-2])
 
-            settings_form.init_hidden(game.settings['topicnumber'],game.num_fields,game.settings['dialogue_id'])
+            settings_form.init_hidden(game.settings['topicnumber'],game.num_fields,game.settings['dialogue'])
 
         # If there is no POST data, default settings are applied
         else:
@@ -614,7 +614,7 @@ class Sahkaview:
             'comment': game.comment,
             'topicnumber' : game.settings['topicnumber'],
             'num_fields' : game.num_fields,
-            'dialogue_id' : game.settings['dialogue_id'],
+            'dialogue' : game.settings['dialogue'],
             })
         return c
 
