@@ -27,6 +27,8 @@
 </tr>
 
 <tr>
+  {% if form.answer %}
+
   <!-- Show correct answers if "show correct" is pressed -->
 {% if show_correct %}
   <td> 
@@ -83,7 +85,6 @@
     {% if form.answertext2 %}{{ form.answertext2 }}{% endif %}
 
      </td>
-  {% endif %}
     <td>
   {% if show_correct %}
     {% ifnotequal form.error "correct" %}
@@ -100,10 +101,14 @@
       {% endifequal %}
   {% endif %}
       </td>
+{% endif %}
+{% endif %}
+
 <td>
+
        {{ form.word_id }}       {{ form.tag_id }}
-{{ form.question_id }} {{ form.answer_id }} {{ form.utterance_id }} 
-{{ form.questiondetails }}
+{{ form.question_id }} {{ form.answer_id }}       
+{{ form.questiondetails }} {{ form.utterance_id }}
 {{ form.qstring }} {{ form.astring }}
 <input type="hidden" name="{{ forloop.counter }}-userans" value="{{ form.userans }}" />
 <input type="hidden" name="{{ forloop.counter }}-correct" value="{{ form.error }}" />
