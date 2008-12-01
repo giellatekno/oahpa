@@ -170,9 +170,7 @@ class LinkUtterance(models.Model):
 
 class Topic(models.Model):
     topicname = models.CharField(max_length=50,blank=True,null=True)
-
-class DialogueTopic(models.Model):
-    topic = models.ForeignKey(Topic)
     dialogue = models.ForeignKey(Dialogue)
     number = models.IntegerField(max_length=3,null=True)
+
 
