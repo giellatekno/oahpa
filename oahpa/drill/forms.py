@@ -169,6 +169,11 @@ NUMGAME_CHOICES = (
     ('string', _('String to numeral')),
 )
 
+DIALOGUE_CHOICES = (
+    ('visit', _('Visit')),
+    ('firstmeeting', _('First meeting')),
+)
+
 def is_correct(self, game, example=None):
     """
     Determines if the given answer is correct (for a bound form).
@@ -719,29 +724,23 @@ def vasta_is_correct(self,question,qwords):
     Analyzes the answer and returns a message.
     """
     if not self.is_valid():
-        return False
+        return None, None
 
     lookup_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     lookup_client.connect(("localhost", 9000))
 
     # Analyzer..
-    #fstdir="/Users/saara/gt/sme/bin"
-    #lo = "/Users/saara/bin/lookup"
     #lookup2cg = " | /Users/saara/gt/script/lookup2cg"
     #cg3 = "/usr/local/bin/vislcg3"
     #preprocess = " | /Users/saara/gt/script/preprocess "
-    #dis = "/Users/saara/ped/sme/src/sme-ped.cg3"
+    #dis_bin = "/Users/saara/ped/sme/src/sme-ped.cg3"
 
-    fstdir="/opt/smi/sme/bin"
-    lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
     lookup2cg = " | lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /usr/local/bin/preprocess "
-    #dis_bin = "/home/saara/ped/sme/src/sme-ped.cg3"
+    dis_bin = "/home/saara/ped/sme/src/sme-ped.cg3"
     dis_bin = fstdir + "/sme-ped.cg3"
 
-    fst = fstdir + "/sme.fst"
-    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst        
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
 
     self.userans = self.cleaned_data['answer']
@@ -751,7 +750,7 @@ def vasta_is_correct(self,question,qwords):
 
     self.error = "error"
                 
-    qtext = question.string
+    qtext = question
     qtext = qtext.rstrip('.!?,')
     
     analysis = ""
@@ -770,12 +769,13 @@ def vasta_is_correct(self,question,qwords):
                     cohort = cohort + " " + tag + "\n"
             else:
                 w=w.lstrip().rstrip()
+                print w
                 lookup_client.send(w)
                 cohort = lookup_client.recv(512)
-
+                print cohort
         if not cohort:
             cohort = w + "\n"
-        
+
         analysis = analysis + cohort
     analysis = analysis + cohort
         
@@ -821,6 +821,7 @@ def vasta_is_correct(self,question,qwords):
             msgstrings[wordform][msgstring] = 1
             
     msg=[]
+    dia_msg = []
     found=False
     for w in msgstrings.keys():
         if found: break
@@ -839,14 +840,16 @@ def vasta_is_correct(self,question,qwords):
                     msg.append(m)
                     if not spelling:
                         found=True
-                        break				
-
+                        break
+                else:
+                    dia_msg.append(m)
+                    
     if not msg:
         self.error = "correct"
 
     lookup_client.send("q")
     lookup_client.close()
-    return msg
+    return msg, dia_msg
 
 
 class VastaSettings(OahpaSettings):
@@ -886,7 +889,7 @@ class VastaQuestion(OahpaQuestion):
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
         # In qagame, all words are considered as answers.
-        self.messages = self.vasta_is_correct(question, qwords)
+        self.messages, jee = self.vasta_is_correct(question.string, qwords)
         
         self.qattrs= {}
         for syntax in qwords.keys():
@@ -935,51 +938,41 @@ def sahka_is_correct(self,utterance,targets):
 
     if not self.cleaned_data.has_key('answer'):
         return
-    self.userans = self.cleaned_data['answer']
-    answer = self.userans.rstrip()
-    answer = answer.lstrip()
-    answer = answer.rstrip('.!?,')
-
-    self.error = "error"
-
-    msg=""
-    if answer == "Juo" or answer == "juo":
-        self.error = "correct"
-        self.pos = True
-        return msg
-
-    if answer == "In" or answer == "in":
-        self.error = "correct"
-        self.neg = True
-        return msg
-
-    if answer in set(targets):
-        print "FOUND"
-        self.error = "correct"
-        self.target = answer
-        return msg
-
-    return msg        
+    qwords = {}
+    # Split the question to words for analaysis.
+    for w in utterance.utterance.split():
+        qwords[w] = {}
+    self.messages, self.dia_messages = self.vasta_is_correct(utterance.utterance, qwords)
+    
+    for answer in self.dia_messages:
+        if answer in set(targets):
+            print "FOUND"
+            self.error = "correct"
+            self.target = answer
+        
+    return self.messages, self.dia_messages
     
 class SahkaSettings(OahpaSettings):
 
+    dialogue = forms.ChoiceField(initial='visit', choices=DIALOGUE_CHOICES, widget=forms.RadioSelect)
     
     def __init__(self, *args, **kwargs):
         self.set_settings()
         self.set_default_data()
         self.default_data['gametype'] = 'sahka'
         self.default_data['dialogue_id'] = '1'
+        self.default_data['dialogue'] = 'visit'
         self.default_data['topicnumber'] = '0'
         super(SahkaSettings, self).__init__(*args, **kwargs)
 
-    def init_hidden(self, topicnumber, num_fields, dialogue_id):
+    def init_hidden(self, topicnumber, num_fields, dialogue):
         
         # Store topicnumber as hidden input to keep track of topics.
         print topicnumber
         print num_fields
         topicnumber = topicnumber
         num_fields = num_fields
-        dialogue_id = dialogue_id
+        dialogue = dialogue
 
 
 class SahkaQuestion(OahpaQuestion):
@@ -989,6 +982,7 @@ class SahkaQuestion(OahpaQuestion):
 
     select_words = select_words
     sahka_is_correct = sahka_is_correct
+    vasta_is_correct = vasta_is_correct
 
     def __init__(self, utterance, targets, userans_val, correct_val, *args, **kwargs):                 
         
@@ -1012,8 +1006,6 @@ class SahkaQuestion(OahpaQuestion):
             self.utterance_id=utterance.id
             self.utterance=utterance.utterance
 
-        self.pos = False
-        self.neg = False
         self.target=""
         if not correct_val == "correct":
             self.messages = self.sahka_is_correct(utterance,targets)
