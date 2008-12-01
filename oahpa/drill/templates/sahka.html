@@ -24,12 +24,16 @@
 {% block settings %}
 <input type="hidden" name="topicnumber" value="{{ topicnumber }}" />
 <input type="hidden" name="num_fields" value="{{ num_fields }}" />
-<input type="hidden" name="dialogue_id" value="{{ dialogue_id }}" />
+<input type="hidden" name="dialogue" value="{{ dialogue }}" />
 {% endblock %}
 
 {% block question %}
 
+{% if form.utterance %}
+
 <td><br/>{{ form.utterance }}</td>
+{% endif %}
+
 {% endblock %}
 
 {% block submit %}
