@@ -71,18 +71,18 @@ class Gameview:
         count=0
         correct=0
 
-        self.settings['dialect'] = request.session['dialect']
 
         if request and request.method == 'POST':
             data = request.POST.copy()
-
             
             #print request.POST
             # Settings form is checked and handled.
             settings_form = MorfaSettings(request.POST)
             for k in settings_form.data.keys():
                 self.settings[k] = settings_form.data[k]
-                #print k, settings_form.data[k]
+				
+            if request.session.has_key('dialect'):
+                self.settings['dialect'] = request.session['dialect']
                 
             self.syll_settings(settings_form)
             if settings_form.data.has_key('book'):
@@ -120,6 +120,9 @@ class Gameview:
                 if not self.settings.has_key(k):
                     self.settings[k] = settings_form.default_data[k]
             self.settings['book'] = settings_form.books[settings_form.default_data['book']]
+				
+            if request.session.has_key('dialect'):
+                self.settings['dialect'] = request.session['dialect']
 
             if self.settings['gametype'] == "bare":
                 game = BareGame(self.settings)        
@@ -165,6 +168,37 @@ class Gameview:
             'show_correct': game.show_correct,
             })
         return c
+
+def oahpa2(request):
+
+    mgame = Gameview()
+    mgame.init_settings()
+    mgame.settings['pos'] = "N"
+    mgame.settings['gametype'] = "bare"
+
+    c = mgame.create_mgame(request)
+    return render_to_response('oahpa2.html', c)
+
+
+def oahpa3(request):
+
+    mgame = Gameview()
+    mgame.init_settings()
+    mgame.settings['pos'] = "N"
+    mgame.settings['gametype'] = "bare"
+
+    c = mgame.create_mgame(request)
+    return render_to_response('oahpa3.html', c)
+
+def oahpa4(request):
+
+    mgame = Gameview()
+    mgame.init_settings()
+    mgame.settings['pos'] = "N"
+    mgame.settings['gametype'] = "bare"
+
+    c = mgame.create_mgame(request)
+    return render_to_response('oahpa4.html', c)
 
 
 def mgame_n(request):
@@ -268,7 +302,6 @@ class Vastaview:
         correct=0
 
         self.settings['gametype'] = "qa"
-        self.settings['dialect'] = request.session['dialect']
         
         if request.method == 'POST':
             data = request.POST.copy()
@@ -278,6 +311,9 @@ class Vastaview:
 
             for k in settings_form.data.keys():
                 self.settings[k] = settings_form.data[k]
+
+            if request.session.has_key('dialect'):
+                self.settings['dialect'] = request.session['dialect']
 
             self.settings['allcase_context']=settings_form.allcase_context
             self.settings['allvtype_context']=settings_form.allvtype_context
@@ -315,6 +351,9 @@ class Vastaview:
 
             for k in settings_form.default_data.keys():
                 self.settings[k] = settings_form.default_data[k]
+
+            if request.session.has_key('dialect'):
+                self.settings['dialect'] = request.session['dialect']
 
             # Vasta
             game = QAGame(self.settings)
@@ -370,7 +409,7 @@ class Quizzview(Gameview):
 
     def create_quizzgame(self,request):
 
-        self.settings['dialect'] = request.session['dialect']
+
 
         if request.method == 'POST':
             data = request.POST.copy()
@@ -380,6 +419,9 @@ class Quizzview(Gameview):
             for k in settings_form.data.keys():
                 if not self.settings.has_key(k):
                     self.settings[k] = settings_form.data[k]
+
+            if request.session.has_key('dialect'):
+                self.settings['dialect'] = request.session['dialect']
 
             self.placename_settings(settings_form)
             self.settings['allsem']=settings_form.allsem
@@ -407,6 +449,9 @@ class Quizzview(Gameview):
             for k in settings_form.default_data.keys():
                 if not self.settings.has_key(k):
                     self.settings[k] = settings_form.default_data[k]
+
+            if request.session.has_key('dialect'):
+                self.settings['dialect'] = request.session['dialect']
 
             game = QuizzGame(self.settings)
             game.new_game()
@@ -447,7 +492,6 @@ def numgame(request):
     mgame = Gameview()
     mgame.init_settings()
 
-    mgame.settings['dialect'] = request.session['dialect']
 
     if request.method == 'POST':
         data = request.POST.copy()
@@ -457,6 +501,10 @@ def numgame(request):
                     
         for k in settings_form.data.keys():
             mgame.settings[k] = settings_form.data[k]
+
+        if request.session.has_key('dialect'):
+            mgame.settings['dialect'] = request.session['dialect']
+
 
         game = NumGame(mgame.settings)
 
@@ -509,7 +557,8 @@ class Sahkaview:
         correct=0
 
         self.settings['gametype'] = "sahka"
-        self.settings['dialect'] = request.session['dialect']
+        if request.session.has_key('dialect'):
+            self.settings['dialect'] = request.session['dialect']
         
         if request.method == 'POST':
             data = request.POST.copy()
@@ -542,6 +591,9 @@ class Sahkaview:
             settings_form = SahkaSettings()
             for k in settings_form.default_data.keys():
                 self.settings[k] = settings_form.default_data[k]
+
+            if request.session.has_key('dialect'):
+                self.settings['dialect'] = request.session['dialect']
 
             # Sahka
             game = SahkaGame(self.settings)
