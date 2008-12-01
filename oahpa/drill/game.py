@@ -27,7 +27,10 @@ class Game:
 
         if not self.settings.has_key('gametype'):
             self.settings['gametype'] = "bare"
-			
+
+        if not self.settings.has_key('dialect'):
+            self.settings['dialect'] = "GG"
+
         if self.settings.has_key('semtype'):
             if self.settings['semtype'] == 'all':
                 self.settings['semtype']=self.settings['allsem']
@@ -42,7 +45,7 @@ class Game:
         word_ids = []
         i=1
         num=0
-        while i < self.num_fields and num<20:
+        while i < self.num_fields and num<30:
             db_info = {}
             db_info['userans'] = ""
             db_info['correct'] = ""
