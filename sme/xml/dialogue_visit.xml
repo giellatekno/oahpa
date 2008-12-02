@@ -20,6 +20,84 @@
     </utt>
   </topic>  
   
+  <topic name="viessogalvvut">
+	<word class="ROOMS"/>
+	    <utt type="question" name="gillet_go_veahkehit">
+      <text>Mun lean áiddo fárren sisa mu ođđa orrunsadjái. Mus leat lossa viessogálvvut dáppe feaskáris. Gillešit go veahkehit mu?</text>
+      <alt type="neg" link="gal_mun_oaccun_eara_veahki"/>
+      <alt type="default" link="gosa_bidjat_TV">
+      </alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_TV">
+      <text>Gosa moai bidje TV?</text>
+      <alt type="default" link="gos_dus_lea_TV"/>
+      </alt>
+    </utt>
+
+    <utt type="question" name="gos_dus_lea_TV">
+      <text>Gos TV lea du orrunsajis?</text>
+      <alt type="default" link="gosa_bidjat_beavddi"/>
+      </alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_beavddi">
+      <text>Moai gudde dan ovttas dohko. Gosa moai bidje beavddi?</text>
+      <alt type="default" link="gosa_bidjat_gamahildu"/>
+      </alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_gamahildu">
+      <text>Juo, buorre! Gosa moai bidje gámahildu?</text>
+      <alt type="default" link="gosa_bidjat_lahttelamppa"/>
+      </alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_lahttelamppa">
+      <text>Mun doalvvun dan dohko. Gosa moai bidje láhttelámppá?</text>
+      <alt type="default" link="gosa_bidjat_lohkanlamppa"/>
+      </alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_lohkanlamppa">
+      <text>Dat gal heive! Gosa moai bidje lohkanlámppá?</text>
+      <alt type="default" link="gosa_bidjat_soffá"/>
+      </alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_soffa">
+      <text>Buorre! Gosa moai bidje soffá?</text>
+      <alt type="default" link="gos_dus_lea_soffa"/>
+      </alt>
+    </utt>
+
+    <utt type="question" name="gos_dus_lea_soffa">
+      <text>Gos soffá lea du orrunsajis?</text>
+      <alt type="default" link="gosa_bidjat_láhtteránu"/>
+      </alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_lahtteranu">
+      <text>Mu soffá lea oalle lossat! Gosa moai bidje láhtteránu?</text>
+      <alt type="default" link="gosa_bidjat_speadjala"/>
+      </alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_speadjala">
+      <text>Gal mun birgen okto dainna! Gosa moai bidje stuora speadjala?</text>
+      <alt type="default" link="viessogalvvut_closing"/>
+      </alt>
+    </utt>
+
+    <utt type="question" name="gal_mun_oaccun_eara_veahki">
+      <text>Gal mun oaččun eará veahki.</text>
+    </utt>
+
+    <utt type="closing" name="viessogalvvut_closing">
+      <text>Dál heive gáfestallat.</text>
+    </utt>
+
+
   <topic name="cohkkat">
     <utt type="question" name="cohkkajetne_go_das">
       <text>Čohkkájetne go dás?</text>
@@ -78,13 +156,13 @@
       </alt>
     </utt>
     
-    <utt class="DRINK" type="question" name="Maid_don_háliidat_juhkat">
+    <utt type="question" name="Maid_don_háliidat_juhkat">
+	<word class="DRINK"/>
       <text>Dás oainnát makkár juhkamušat musa leat. Maid don háliidat juhkat?</text>
-      <!--  <utt img="drinklist.jpg"/> -->
-      <alt type="pos">
+      <alt type="target" variable="NOUN" >
 	<text>Mun buvttán dutnje NOUN</text>
 	<element id="NOUN">
-	  <id>dia-target</id>
+	  <id>target</id>
 	  <grammar pos="Sg+Acc"/>
 	</element> 
       </alt>
