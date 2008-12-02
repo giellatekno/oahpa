@@ -5725,6 +5725,17 @@ MAPPING-PREFIX = & ;
           SECTION
 
 
+# Picking name, if it is not in the lexicon
+MAP (&dia-name) TARGET QMRK IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom)) ;
+# Picking name, the first one if there are many
+MAP (&dia-name) TARGET Prop IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom)) ;
+
+# Picking name, if it is not in the lexicon
+MAP (&dia-name) TARGET QMRK IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("biila") LINK -1 ("makkár")) ;
+# Picking name, the first one if there are many
+MAP (&dia-name) TARGET Prop IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("biila") LINK -1 ("makkár")) ;
+
+
 # For spellingerrors:
 MAP (&err-spellingerror) TARGET QMRK (NEGATE *-1 QDL LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom))  ;
 
@@ -5915,7 +5926,7 @@ MAP (&grm-missing-Ill-PP) TARGET ("gosa") IF (*1 QDL LINK NOT *1 Ill OR DOHKO OR
     ## Mun váccán vári nala.
 
 MAP (&grm-missing-Acc) TARGET ("makkár") IF (1 Acc LINK NOT 0 Nom LINK *1 QDL LINK NOT *1 Acc BARRIER S-BOUNDARY);
-MAP (&grm-missing-Nom) TARGET ("makkár") IF (1 Nom LINK NOT 0 Acc LINK *1 QDL LINK NOT *1 Nom BARRIER S-BOUNDARY);
+MAP (&grm-missing-Nom) TARGET ("makkár") IF (1 Nom LINK NOT 0 Acc LINK *1 QDL LINK NOT *1 Nom OR QMRK BARRIER S-BOUNDARY);
 
 MAP (&grm-Vehicle-Com) TARGET VEHICLE IF (NOT 0 Com LINK *-1 VERB LINK 0 ("vuodjit") OR ("vuolgit") OR ("mannat") BARRIER NPNH LINK *-1 QDL) ;
 
@@ -6238,7 +6249,7 @@ MAP (&dia-target) TARGET DOHKO IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gosa") 
 MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Nom))(NOT 0 NOTHING)  ;
 MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL BARRIER Acc OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Acc))(NOT 0 NOTHING) ;
 
-LIST ROOMS = "stohpu" "gievkkan" "oađđen#latnja" "basadan#latnja" "hivsset" "olgo#feaskkir";
+LIST ROOMS = "stohpu" "gievkkan" "oađđen#latnja" "guosse#latnja" "basadan#latnja" "hivsset" "olgo#feaskkir";
 
 LIST DRINK = "bruvsa" "sákta" "mielki" "viidni" "vuola" "čáhci";
 
@@ -6256,15 +6267,7 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 
 # Specific ones
 
-# Picking name, the first one if there are many
-MAP (&dia-name) TARGET QMRK IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom)) ;
-# Picking name, if it is not in the lexiconqá
-MAP (&dia-name) TARGET Prop IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom)) ;
 
-# Picking cartype, the first one if it is multiword
-MAP (&dia-name) TARGET QMRK IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("biila") LINK -1 ("makkár")) ;
-# Picking name, if it is not in the lexicon
-MAP (&dia-name) TARGET Prop IF (*-1 QDL BARRIER (&dia-name) LINK *-1 ("biila") LINK -1 ("makkár")) ;
 
 
 # Picking the age - these do not function yet 
