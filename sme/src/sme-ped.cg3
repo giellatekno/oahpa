@@ -5762,6 +5762,8 @@ SELECT Pers (*-1 QDL OR S-BOUNDARY BARRIER NOT-ADV-PCLE)(0 S-BOUNDARY)(*1 VFIN B
 LIST MIELLA = "árbe#vierru" "bággu" "dárbu" "dilli" "lohpi" "miella" "riekti" "vejolašvuohta" "vuohki" "vuoigatvuohta" "vuorru" ;
 
 SELECT VFIN (-1 BOS)(1 go) ; 
+REMOVE VFIN (-1 go LINK -2 BOS) ; 
+
 REMOVE Imprt (-1 BOS)(1 go) ; 
 SELECT ConNeg (-1 Neg) ;
 SELECT PrfPrc (-1 Neg) ;
