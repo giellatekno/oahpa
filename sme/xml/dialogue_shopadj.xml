@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dialogue PUBLIC "-//UIT//DTD Corpus V1.0//EN" "dialogues.dtd">
+
+<!-- topics_cafe.xml: Test dialogue in cafe                        -->
+<!-- Specifies the structure for a dialogue                        -->
+<!-- The exact format of the questions is not given here, neither  -->
+<!-- feedback or anything other that does no immediately belong to -->
+<!-- the main discussion.                                          --> 
+<!-- This file is potentially language-independent (it would require -->
+<!-- moving uttances etc. also to links.)                          -->
+<!-- The topics follow each other in the order given here.         -->
+<!-- Topic changes when there are no further links to questions.   -->
+<!-- $Id: dialogue_shop.xml 22468 2008-12-02 23:31:27Z lene $ -->
+
+<dialogue name="grocery">
+  
+  <topic name="Buorre_beaivi">
+    <utt type="opening" name="buorre_beaivi">
+      <text>Bures boahtin mu gávpái. Dás don beasat hárjehallat sojahit adjektiivvaid. Geahča govaid ja vástit adjektiivvain - omd. guhkimus</text>
+    </utt>
+  </topic>  
+  
+  <topic name="3scarfs" image="ped/oahpa/media/3scarves.jpg">
+	<wordlist>
+	<word id="guhkki"/><word id="oanehaš"/>
+	</wordlist>
+	    <utt type="question" name="guhkimus">
+      <text>Guđe šearfa lea divraseamos?</text>
+      <alt target="default" link="oanehaccamus"/>     
+    </utt>
+    
+	    <utt type="question" name="oanehaccamus">
+      <text>Guđe šearfa lea hálbbimus?</text>
+      <alt target="default" link="3scarfs_closing"/>     
+    </utt>
+    
+        <utt type="closing" name="3scarfs_closing">
+      <text>Ja dál dušše guokte šearffa.</text>
+    </utt>
+  </topic>  
+
+  <topic name="2scarfs" image="ped/oahpa/media/2scarves.jpg">
+	<wordlist>
+	<word id="guhkki"/><word id="oanehaš"/>
+	</wordlist>
+	    <utt type="question" name="guhkit">
+      <text>Goabbá šearfa lea divraseabbo?</text>
+      <alt target="default" link="oanehet"/>     
+    </utt>
+    
+	    <utt type="question" name="oanehet">
+      <text>Goabbá šearfa lea hálbbit?</text>
+      <alt target="default" link="unnimus"/>     
+    </utt>
+  </topic>  
+
+  <topic name="3balls" image="ped/oahpa/media/3balls.jpg">
+	<wordlist>
+	<word id="unni"/><word id="stuoris"/>
+	</wordlist>
+	    <utt type="question" name="unnimus">
+      <text>Guđe spábba lea divraseamos?</text>
+      <alt target="default" link="stuorimus"/>     
+    </utt>
+    
+	    <utt type="question" name="stuorimus">
+      <text>Guđe spábba lea hálbbimus?</text>
+      <alt target="default" link="3scarfs_closing"/>     
+    </utt>
+    
+        <utt type="closing" name="3balls_closing">
+      <text>Ja dál dušše guokte spáppain.</text>
+    </utt>
+  </topic>  
+
+  <topic name="2balls" image="ped/oahpa/media/2balls.jpg">
+	<wordlist>
+	<word id="unni"/><word id="stuoris"/>
+	</wordlist>
+	    <utt type="question" name="stuorit">
+      <text>Goabbá spábba lea divraseabbo?</text>
+      <alt target="default" link="unnit"/>     
+    </utt>
+    
+	    <utt type="question" name="unnit">
+      <text>Goabbá spábba lea hálbbit?</text>
+      <alt target="default" link="haliidat_go_oddasit"/>     
+    </utt>
+    
+        <utt type="question" name="haliidat_go_oddasit">
+      <text>Háliidat go geahččalit ođđasit?</text>
+      <alt target="pos" link="guhkimus"/>     
+      <alt target="default" link="Oaidnaleapmai_closing"/>     
+    </utt>
+  </topic>  
+
+
+  <topic name="Oaidnaleapmai">
+    <utt type="closing" name="Oaidnaleapmai_closing">
+      <text>Giitu dán háves, ja oaidnáleapmái!</text>
+    </utt>
+  </topic>
+
+</dialogue>
