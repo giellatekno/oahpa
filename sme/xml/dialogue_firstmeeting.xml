@@ -12,10 +12,10 @@
   </topic>  
 
   <topic name="presentation">
-    <utt type="question" name="Mii_du_namma_lea">
+    <utt type="question" name="Mii_namma_lea">
       <text>Mii du namma lea?</text>
       <alt type="dia-name" variable="NAME" link="Gos_don_leat_eret">
-	<text>Bures NAME . Suohtas go don leat čátas odne. Mun lean Leavvajogas eret.</text>	
+	<text>Bures NAME . Suohtas go don leat čátas odne. </text>	
 	<element id="NAME">
 	  <id>dia-name</id>
 	</element> 
@@ -23,33 +23,46 @@
     </utt>
 
     <utt type="question" name="Gos_don_leat_eret">
-      <text>Gos don leat eret?</text>
-      <!-- Where are you from? -->
-      <alt type="default" link="Gos_don_orut_dál">
-	<text>Mun orun Kárášjogas dán áigge.</text>
+      <text>Mun lean Leavvajogas eret. Gos don leat eret?</text>
+      <alt type="dia-placename" link="Gos_don_orut_dál">
+	<text></text>
       </alt>
     </utt>
 
     <utt type="question" name="Gos_don_orut_dál">
-      <text>Gos don orut dál?</text>
+      <text>Mun orun Kárášjogas dán áigge. Gos don orut dál?</text>
       <!-- Where do you live now? NOUN will get target in the answer. -->
-      <alt type="target" variable="PLACENAME" link="presentation_closing">
+      <alt type="dia-placename" variable="PLACENAME" link="presentation_closing">
 	<text>Mun lean leamaš PLACENAME .</text>
 	<element id="PLACENAME">
 	  <grammar pos="Sg+Loc"/>
-	  <id>dia-target</id>
+	  <id>dia-placename</id>
       </element> 
       </alt>
-      <alt type="default" link="presentation_closing"/>
+      <alt type="dia-unknownPlace" link="Lea_go_dat_baiki"/>
+      <alt type="default" link="work_or_school_opening"/>
     </utt>
 
+    <utt type="question" name="Lea_go_dat_baiki">
+      <text>Lea go dat báiki? In leat gullan dan birra ovdal.</text>
+      <alt type="pos" link="work_or_school_opening">
+	<text>Mun oahpan juoidá juohke beaivve.</text>
+      </alt>
+      <alt type="default" link="work_or_school_opening"/>
+    </utt>
+
+
     <utt type="closing" name="presentation_closing">
-      <text>Dieppe sáhttá leat buorre orrut.</text>
+      <text>PLACENAME sáhttá leat buorre orrut.</text>
+	<element id="PLACENAME">
+	  <grammar pos="Sg+Loc"/>
+	  <id>dia-placename</id>
+      </element> 
     </utt>
   </topic>
   
   <topic name="work_or_school">
-    <utt type="opening" name="jagi">
+    <utt type="opening" name="work_or_school_opening">
       <text>Mun lean 40 jagi boaris.</text>
     </utt>
 
@@ -108,7 +121,7 @@
     </utt>
     
     <utt type="question" name="leat_go_dus_mánát">
-      <text>Leat go dus mánát?</text>
+      <text>Mus leat guokte máná - guokte nieidda. Leat go dus mánát?</text>
       <alt type="pos" link="galle_máná"/>
       <alt type="default" link="family"/>
     </utt>
@@ -119,7 +132,7 @@
     </utt>
 
     <utt type="closing" name="married_closing">
-      <text>Mus leat guokte máná - guokte nieidda.</text>
+      <text>Náittosdilli ii láve bistit nu guhká dán áigge.</text>
       <alt type="default" link="gos_du_eadni_lea_eret"/>
     </utt>
   </topic>  
@@ -127,13 +140,33 @@
   <topic name="family">
     <utt type="question" name="gos_du_eadni_lea_eret">
       <text>Mu eadni lea Čáhcesullos eret. Gos du eadni lea eret?</text>
+      <alt type="dia-unknownPlace" link="Lea_go_dat_baiki2"/>
 	<alt type="default" link="gos_du_ahcci_lea_eret"/>
     </utt>
+
+    <utt type="question" name="Lea_go_dat_baiki2">
+      <text>Lea go dat báiki? In leat gullan dan birra ovdal.</text>
+      <alt type="pos" link="gos_du_ahcci_lea_eret">
+	<text>Na nu.</text>
+      </alt>
+      <alt type="default" link="gos_du_ahcci_lea_eret"/>
+    </utt>
+
     
     <utt type="question" name="gos_du_ahcci_lea_eret">
       <text>Mu áhčči lea jápmán dál, muhto son lei Kárášjogas eret. Gos du áhčči lea eret?</text>
+      <alt type="dia-unknownPlace" link="Lea_go_dat_baiki3"/>
       <alt type="default" link="galle_viellja_ja_oabbá"/>
     </utt>
+
+    <utt type="question" name="Lea_go_dat_baiki3">
+      <text>Lea go dat báiki? In leat gullan dan birra ovdal.</text>
+      <alt type="pos" link="galle_viellja_ja_oabbá">
+	<text>Dalle mun dieđán dan.</text>
+      </alt>
+      <alt type="default" link="galle_viellja_ja_oabbá"/>
+    </utt>
+
 
     <utt type="question" name="galle_viellja_ja_oabbá">
       <text>Mus lea golbma vielja. Galle vielja ja oappá dus leat?</text>
@@ -159,14 +192,24 @@
     </utt>
     <utt type="question" name="Lea_go_dus_biila">
       <text>Lea go dus biila?</text>
-      <alt type="pos" link="Makkár_biila_dus_lea"/>
+      <alt type="pos" link="Makkar_biila"/>
       <alt type="default" link="Leat_go_dus_sihkkelat"/>
     </utt>
-    <utt type="question" name="Makkár_biila_dus_lea">
+    <utt type="question" name="Makkar_biila">
       <text>Makkár biila dus lea?</text>
       <alt type="dia-name" variable="CAR" link="Lea_go_buorre_biila"/>
+      <alt type="dia-unknownCar" variable="CAR" link="Lea_go_dat_biila"/>
       <alt type="default" link="Háliidat_go_oastit_mu_biilla"/>
     </utt>
+
+    <utt type="question" name="Lea_go_dat_biila">
+      <text>Lea go dat biila? Mun in leat gullan dan birra ovdal.</text>
+      <alt type="pos" link="Lea_go_buorre_biila">
+	<text>Mun oahpan juoidá juohke beaivve.</text>
+      </alt>
+      <alt type="default" link="Makkar_biila"/>
+    </utt>
+
     
     <utt type="question" name="Lea_go_buorre_biila">
       <text>Lea go CAR buorre biila?</text> <!--The CAR is target from last question! -->

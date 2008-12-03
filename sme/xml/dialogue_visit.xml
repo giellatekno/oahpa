@@ -36,12 +36,12 @@
     </utt>
 
     <utt type="question" name="gosa_bidjat_TV">
-      <text>Guđe latnjii moai bidje TV?</text>
+      <text>Guđe latnjii moai bidje mu TV?</text>
       <alt type="default" link="gosa_bidjat_beavddi">
       </alt>
     </utt>
 
-    <utt type="question" name="gosa_bidjat_beavddi">
+    <utt type="question" name="gosa_bidjat_TV">
       <text>Moai gudde dan ovttas dohko. Gosa moai bidje boradanbeavddi?</text>
       <alt type="default" link="gosa_bidjat_gamahildu">
       </alt>
@@ -135,7 +135,7 @@
     
     <utt type="question" name="Háliidat_go_juoida_eará">
       <text>Háliidat go juoida eará?</text>
-      <alt type="pos" link="Maid_don_háliidat_juhkat"/>
+      <alt type="pos" link="Maid_juhkat"/>
       <alt type="default" link="juhkat_closing"/>
     </utt>
     
@@ -157,12 +157,12 @@
       </alt>
     </utt>
     
-    <utt type="question" name="Maid_don_háliidat_juhkat">
+    <utt type="question" name="Maid_juhkat">
 	<word class="DRINK"/>
-      <text>Dás oainnát makkár juhkamušat musa leat. Maid don háliidat juhkat?</text>
-      <alt type="target" variable="NOUN" >
-	<text>Mun buvttán dutnje NOUN</text>
-	<element id="NOUN">
+      <text>Dás oainnát makkár juhkamušat mus leat. Maid don háliidat juhkat?</text>
+      <alt type="target" variable="DRINK" >
+	<text>Mun buvttán dutnje DRINK</text>
+	<element id="DRINK">
 	  <id>target</id>
 	  <grammar pos="Sg+Acc"/>
 	</element> 
