@@ -91,7 +91,7 @@
     <utt type="question" name="gosa_bidjat_soffa">
       <text>Guđe latnjii moai bidje mu soffá?</text>
       <alt target="hivsset" link="ii_dat_gal_caga"/>
-      <alt type="default" link="gosa_bidjat_láhtteránu"/>
+      <alt type="default" link="gosa_bidjat_lahtteranu"/>
     </utt>
 
     <utt type="utterance" name="ii_dat_gal_caga" link="gosa_bidjat_soffa">
@@ -125,18 +125,18 @@
   <topic name="cohkkat">
     <utt type="question" name="cohkkajetne_go_stobus">
       <text>Čohkkájetne go stobus?</text>
-      <alt type="neg" link="Manne_go_gievkkanii"/>
-      <alt type="default">
+      <alt target="neg" link="Manne_go_gievkkanii"/>
+      <alt target="default">
 	<text>Na moai čohkkájetne dás.</text>
       </alt>
     </utt>
   
     <utt type="question" name="manne_go_gievkkanii">
       <text>Gievkkanis lea vuogas čohkkát. Lássaráiggis oaidná meara. Manne go gievkkanii?</text>
-      <alt type="pos">
+      <alt target="pos">
 	<text>Gievkkanis lea buorre.</text>
       </alt>
-      <alt type="default">
+      <alt target="default">
 	<text>Na moai čohkkájetne dás.</text>
       </alt>
     </utt>
@@ -151,8 +151,8 @@
       <text>Háliidat go gáfe vai deaja?</text>
       <alt target="gáffe" link="Geavahat_go_mielkki"/>
       <alt target="deadja" link="Háliidat_go_honnega"/>
-      <alt type="neg" link="Háliidat_go_juoida_eará"/>
-      <alt type="default"><text>Mus ii leat.</text>
+      <alt target="neg" link="Háliidat_go_juoida_eará"/>
+      <alt target="default"><text>Mus ii leat.</text>
       </alt>
     </utt>  
     
@@ -164,18 +164,18 @@
     
     <utt type="question" name="Háliidat_go_honnega">
       <text>Háliidat go honnega?</text>
-      <alt type="neg" link="Geavahat_go_sohkkara"/>
-      <alt type="default" link="Geavahat_go_mielkki"/>
+      <alt target="neg" link="Geavahat_go_sohkkara"/>
+      <alt target="default" link="Geavahat_go_mielkki"/>
     </utt>
     
     <utt type="question" name="Geavahat_go_sohkkara">
       <text>Geavahat go sohkkara?</text>
-      <alt type="default" link="Geavahat_go_mielkki"/>   
+      <alt target="default" link="Geavahat_go_mielkki"/>   
     </utt>
     
     <utt type="question" name="Geavahat_go_mielkki">
       <text>Geavahat go mielkki?</text>
-      <alt type="default">
+      <alt target="default">
 	<text>Dá lea dutnje. Leage buorre.</text>
       </alt>
     </utt>
@@ -204,8 +204,8 @@
     </utt>
     <utt type="question" name="Háliidat_go_gáhku">
       <text>Háliidat go gáhku?</text>
-      <alt type="pos"><text>Mun buvttán gáhku!</text></alt>
-      <alt type="default"><text>In sáhte fállat eará odne.</text></alt>
+      <alt target="pos"><text>Mun buvttán gáhku!</text></alt>
+      <alt target="default"><text>In sáhte fállat eará odne.</text></alt>
     </utt>
     
     <utt type="closing" name="gáhkku_closing">
