@@ -5834,7 +5834,7 @@ SELECT (V Du3) (*-1 QDL BARRIER Nom OR VERB OR S-BOUNDARY LINK *-1 DUALIS-NOUN) 
 SELECT (V Pl3) (*-1 (N Num) BARRIER NOT-ADV LINK *-1 QDL) ;
 
 # Select correct tense:
-SELECT Prs (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN + Prs) ;
+SELECT Prs (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN + Prs)(NOT 0 A) ;
 SELECT Prt (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN + Prt) ;
 
 # Removing other readings even if there is no agreement:
@@ -6302,9 +6302,13 @@ LIST OFFERS = ("ginttal" N Pl) "beavde#liidni" ("deadja-gohppu" N Pl) ;
 
 LIST VIESSOGALVVUT-Q = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_lahttelamppa gosa_bidjat_lohkanlamppa gosa_bidjat_soffa gosa_bidjat_lahtteranu gosa_bidjat_speadjala ;  
 
+#LIST VIESSOGALVVUT-NOT-WC = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_lahttelamppa gosa_bidjat_lohkanlamppa gosa_bidjat_soffa ;  
+
 
 # Question according to wordlists:
 MAP (&dia-not_wordlist) TARGET QDL IF (0 VIESSOGALVVUT-Q)(*1 (&dia-target) BARRIER Neg LINK NOT 0 ROOMS)  ;
+
+#MAP (&dia-not_wc) TARGET QDL IF (0 VIESSOGALVVUT-NOT-WC)(*1 (&dia-target) BARRIER Neg LINK 0 ("hivsset"))  ;
 
 MAP (&dia-not_wordlist) TARGET QDL IF (0 (Maid_juhkat))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
 
@@ -6318,6 +6322,39 @@ MAP (&dia-not_wordlist) TARGET QDL IF (0 (makkar_suvlliid))(*1 (&dia-target) BAR
 MAP (&dia-not_wordlist) TARGET QDL IF (0 (makkar_laibunavdnasiid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 BAKING)  ;
 MAP (&dia-not_wordlist) TARGET QDL IF (0 (makkar_njalgaid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 CANDY)  ;
 MAP (&dia-not_wordlist) TARGET QDL IF (0 (hálbiduvvon_galvvut))(*1 (&dia-target) BARRIER Neg LINK NOT 0 OFFERS)  ;
+
+MAP (&dia-not_correct_adj) TARGET QDL IF (0 (guhkimus))(NOT *1 ("guhkki") BARRIER S-BOUNDARY) ;
+
+MAP (&dia-not_correct_adj) TARGET QDL IF (0 (oanehaccamus))(NOT *1 ("oanehaš") BARRIER S-BOUNDARY) ;
+
+MAP (&dia-not_correct_infl) TARGET QDL IF (0 (guhkimus))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg) OR (Superl Attr)) ;
+
+MAP (&dia-not_correct_infl) TARGET QDL IF (0 (oanehaccamus))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg) OR (Superl Attr)) ;
+
+MAP (&dia-not_correct_adj) TARGET QDL IF (0 (guhkit))(NOT *1 ("guhkki") BARRIER S-BOUNDARY) ;
+
+MAP (&dia-not_correct_adj) TARGET QDL IF (0 (oanehet))(NOT *1 ("oanehaš") BARRIER S-BOUNDARY) ;
+
+MAP (&dia-not_correct_infl) TARGET QDL IF (0 (guhkit))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg) OR (Comp Attr)) ;
+
+MAP (&dia-not_correct_infl) TARGET QDL IF (0 (oanehet))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg) OR (Comp Attr)) ;
+# ---------
+
+MAP (&dia-not_correct_adj) TARGET QDL IF (0 (unnimus))(NOT *1 ("unni") BARRIER S-BOUNDARY) ;
+
+MAP (&dia-not_correct_adj) TARGET QDL IF (0 (stuorimus))(NOT *1 ("stuoris") BARRIER S-BOUNDARY) ;
+
+MAP (&dia-not_correct_infl) TARGET QDL IF (0 (unnimus))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg) OR (Superl Attr)) ;
+
+MAP (&dia-not_correct_infl) TARGET QDL IF (0 (stuorimus))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg) OR (Superl Attr)) ;
+
+MAP (&dia-not_correct_adj) TARGET QDL IF (0 (unnit))(NOT *1 ("unni") BARRIER S-BOUNDARY) ;
+
+MAP (&dia-not_correct_adj) TARGET QDL IF (0 (stuorit))(NOT *1 ("stuoris") BARRIER S-BOUNDARY) ;
+
+MAP (&dia-not_correct_infl) TARGET QDL IF (0 (unnit))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg) OR (Comp Attr)) ;
+
+MAP (&dia-not_correct_infl) TARGET QDL IF (0 (stuorit))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg) OR (Comp Attr)) ;
 
 
 MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&dia-target)) ;
