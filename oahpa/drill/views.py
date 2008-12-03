@@ -604,11 +604,14 @@ class Sahkaview:
             # Start new game with first form
             game.form_list = []
             game.update_game(1)
-
+        errormsg=""
+        for f in game.form_list:
+            errormsg = errormsg + f.errormsg
         c = Context({
             'settingsform': settings_form,
             'forms': game.form_list,
-            'messages': game.form_list[0].messages,
+            'messages': game.form_list[-1].messages,
+            'errormsg': errormsg,
             'count': game.count,
             'score': game.score,
             'comment': game.comment,
