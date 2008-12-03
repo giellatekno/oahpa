@@ -735,6 +735,7 @@ def vasta_is_correct(self,question,qwords):
     #preprocess = " | /Users/saara/gt/script/preprocess "
     #dis_bin = "/Users/saara/ped/sme/src/sme-ped.cg3"
 
+    fstdir = "/opt/smi/sme/bin"
     lookup2cg = " | lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /usr/local/bin/preprocess "
@@ -775,10 +776,9 @@ def vasta_is_correct(self,question,qwords):
                 print cohort
         if not cohort:
             cohort = w + "\n"
-
+	
         analysis = analysis + cohort
     analysis = analysis + cohort
-        
     analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
     ans_cohort=""
@@ -801,6 +801,7 @@ def vasta_is_correct(self,question,qwords):
 
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
     messageObj=re.compile(r'^.*(?P<msgString>&[\w-]*)\s*$', re.U)
+    targetObj=re.compile(r'^.*(?P<targetString>\"[\w-]*\")&dia-target.*$', re.U)
 
     spelling = False
     msgstrings = {}
@@ -819,9 +820,15 @@ def vasta_is_correct(self,question,qwords):
             if msgstring.count("spellingerror") > 0:
                 spelling = True
             msgstrings[wordform][msgstring] = 1
+
+        matchObj=targetObj.search(line)
+        if matchObj:
+            msgstring = matchObj.expand(r'\g<targetString>')
+            msgstrings[wordform]["diatarget"] = msgstring
             
     msg=[]
     dia_msg = []
+    target = ""
     found=False
     for w in msgstrings.keys():
         if found: break
@@ -843,13 +850,15 @@ def vasta_is_correct(self,question,qwords):
                         break
                 else:
                     dia_msg.append(m)
+        if msgstrings[w].has_key('diatarget'):
+            target = w['diatarget']			
                     
     if not msg:
         self.error = "correct"
 
     lookup_client.send("q")
     lookup_client.close()
-    return msg, dia_msg
+    return msg, dia_msg, target
 
 
 class VastaSettings(OahpaSettings):
@@ -889,7 +898,7 @@ class VastaQuestion(OahpaQuestion):
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
         # In qagame, all words are considered as answers.
-        self.messages, jee = self.vasta_is_correct(question.string, qwords)
+        self.messages, jee, joo = self.vasta_is_correct(question.string, qwords)
         
         self.qattrs= {}
         for syntax in qwords.keys():
@@ -942,15 +951,18 @@ def sahka_is_correct(self,utterance,targets):
     # Split the question to words for analaysis.
     for w in utterance.utterance.split():
         qwords[w] = {}
-    self.messages, self.dia_messages = self.vasta_is_correct(utterance.utterance, qwords)
-    
-    for answer in self.dia_messages:
-        if answer in set(targets):
-            print "FOUND"
-            self.error = "correct"
-            self.target = answer
+    self.messages, self.dia_messages, target = self.vasta_is_correct(utterance.utterance, qwords)
+
+    if target and target in set(targets):
+        self.error="correct"
+        self.target = target
+    else:		
+        for answer in self.dia_messages:
+            answer = answer.lstrip("&dia-")
+            if answer in set(targets):
+                self.error = "correct"
+                self.target = answer
         
-    return self.messages, self.dia_messages
     
 class SahkaSettings(OahpaSettings):
 
@@ -1007,8 +1019,9 @@ class SahkaQuestion(OahpaQuestion):
             self.utterance=utterance.utterance
 
         self.target=""
-        if not correct_val == "correct":
-            self.messages = self.sahka_is_correct(utterance,targets)
-
+        self.dia_messages = ""		
+        #if not correct_val == "correct":
+        self.sahka_is_correct(utterance,targets)
+        self.errormsg = ""
         if correct_val == "correct":
             self.error="correct"
