@@ -6249,6 +6249,8 @@ MAP (&dia-target) TARGET NUM-ADV IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("galli
 
 MAP (&dia-target) TARGET NP-HEAD + Nom IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-NOM LINK NOT 0 Num  LINK -1 BOS)(NEGATE *-1 QDL LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom))(NOT 0 NOTHING)  ;
 MAP (&dia-target) TARGET NP-HEAD + Acc IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-ACC LINK NOT 0 Num LINK -1 BOS)(NEGATE *1 (N Acc) BARRIER VERB OR CC)(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Acc IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (N Acc) LINK NOT 0 Num LINK -1 ("makkár"))(NEGATE *1 (N Acc) BARRIER VERB OR CC)(NOT 0 NOTHING) ;
+
 MAP (&dia-target) TARGET VFIN IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 WORK-V LINK *-1 TARGETQUESTION-ACC LINK NOT 0 Num  LINK -1 BOS)(NOT 0 Neg)(NOT 0 NOTHING) ;
 
 MAP (&dia-target) TARGET NP-HEAD + Gen IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-GEN LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
@@ -6306,7 +6308,16 @@ MAP (&dia-not_wordlist) TARGET QDL IF (0 VIESSOGALVVUT-Q)(*1 (&dia-target) BARRI
 
 MAP (&dia-not_wordlist) TARGET QDL IF (0 (Maid_juhkat))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
 
-#MAP (&dia-not_drink) TARGET QDL IF (0 ( (*-1 ("áigut") LINK *-1 ("makkár"))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
+MAP (&dia-not_wordlist) TARGET QDL IF (0 (makkar_laibegalvvuid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 BREAD)  ;
+MAP (&dia-not_wordlist) TARGET QDL IF (0 (makkar_juhkamusaid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
+MAP (&dia-not_wordlist) TARGET QDL IF (0 (makkar_ruotnasiid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 VEGETABLE)  ;
+MAP (&dia-not_wordlist) TARGET QDL IF (0 (makkar_sattuid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 FRUIT)  ;
+MAP (&dia-not_wordlist) TARGET QDL IF (0 (makkar_bierggu))(*1 (&dia-target) BARRIER Neg LINK NOT 0 MEAT)  ;
+MAP (&dia-not_wordlist) TARGET QDL IF (0 (makkar_guoli))(*1 (&dia-target) BARRIER Neg LINK NOT 0 GROCERYFISH)  ;
+MAP (&dia-not_wordlist) TARGET QDL IF (0 (makkar_suvlliid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 SUVLI)  ;
+MAP (&dia-not_wordlist) TARGET QDL IF (0 (makkar_laibunavdnasiid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 BAKING)  ;
+MAP (&dia-not_wordlist) TARGET QDL IF (0 (makkar_njalgaid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 CANDY)  ;
+MAP (&dia-not_wordlist) TARGET QDL IF (0 (hálbiduvvon_galvvut))(*1 (&dia-target) BARRIER Neg LINK NOT 0 OFFERS)  ;
 
 
 MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&dia-target)) ;
