@@ -24,21 +24,21 @@
 	<word class="ROOMS"/>
 	    <utt type="question" name="gillet_go_veahkehit">
       <text>Mun lean áiddo fárren sisa mu ođđa orrunsadjái. Mus leat lossa viessogálvvut dáppe feaskáris. Gillešit go veahkehit mu?</text>
-      <alt type="neg" link="gal_mun_oaccun_eara_veahki"/>
-      <alt type="default" link="gos_dus_lea_TV">
+      <alt target="neg" link="gal_mun_oaccun_eara_veahki"/>
+      <alt target="default" link="gos_dus_lea_TV">
       </alt>
     </utt>
 
     <utt type="question" name="gos_dus_lea_TV">
       <text>Mus lea TV dás. Guđe lanjas TV lea du orrunsajis?</text>
-      <alt type="default" link="gosa_bidjat_TV">
+      <alt target="default" link="gosa_bidjat_TV">
       </alt>
     </utt>
 
     <utt type="question" name="gosa_bidjat_TV">
       <text>Guđe latnjii moai bidje mu TV?</text>
       <alt target="hivsset" link="dat_gal_ii_heive"/>
-      <alt type="default" link="gosa_bidjat_beavddi">
+      <alt target="default" link="gosa_bidjat_beavddi">
       </alt>
     </utt>
 
@@ -50,7 +50,7 @@
     <utt type="question" name="gosa_bidjat_beavddi">
       <text>Moai gudde dan ovttas dohko. Gosa moai bidje boradanbeavddi?</text>
       <alt target="hivsset" link="ii_mu_mielas"/>
-      <alt type="default" link="gosa_bidjat_gamahildu">
+      <alt target="default" link="gosa_bidjat_gamahildu">
       </alt>
     </utt>
 
@@ -60,20 +60,20 @@
 
     <utt type="question" name="gosa_bidjat_gamahildu">
       <text>Juo, buorre! Naba gosa moai bidje gámahildu?</text>
-      <alt type="default" link="gosa_bidjat_lahttelamppa">
+      <alt target="default" link="gosa_bidjat_lahttelamppa">
       </alt>
     </utt>
 
     <utt type="question" name="gosa_bidjat_lahttelamppa">
       <text>Dat lea geahpas. Mun sáhtán ieš doalvut dan dohko. Guđe latnjii moai bidje láhttelámppá?</text>
-      <alt type="default" link="gosa_bidjat_lohkanlamppa">
+      <alt target="default" link="gosa_bidjat_lohkanlamppa">
       </alt>
     </utt>
 
     <utt type="question" name="gosa_bidjat_lohkanlamppa">
       <text>Dat gal heive! Guđe latnjii moai bidje lohkanlámppá?</text>
       <alt target="hivsset" link="ii_leat_nu_buorre"/>
-      <alt type="default" link="gos_dus_lea_soffa"/>
+      <alt target="default" link="gos_dus_lea_soffa"/>
     </utt>
 
     <utt type="utterance" name="ii_leat_nu_buorre" link="gosa_bidjat_lohkanlamppa">
@@ -83,7 +83,7 @@
 
     <utt type="question" name="gos_dus_lea_soffa">
       <text>Buorre evttohus! Guđe lanjas soffá lea du orrunsajis?</text>
-      <alt type="default" link="gosa_bidjat_soffa">
+      <alt target="default" link="gosa_bidjat_soffa">
       </alt>
     </utt>
 
@@ -91,7 +91,7 @@
     <utt type="question" name="gosa_bidjat_soffa">
       <text>Guđe latnjii moai bidje mu soffá?</text>
       <alt target="hivsset" link="ii_dat_gal_caga"/>
-      <alt type="default" link="gosa_bidjat_lahtteranu"/>
+      <alt target="default" link="gosa_bidjat_lahtteranu"/>
     </utt>
 
     <utt type="utterance" name="ii_dat_gal_caga" link="gosa_bidjat_soffa">
@@ -101,13 +101,13 @@
 
     <utt type="question" name="gosa_bidjat_lahtteranu">
       <text>Dát soffá lea oalle lossat! Naba gosa moai bidje láhtteránu?</text>
-      <alt type="default" link="gosa_bidjat_speadjala">
+      <alt target="default" link="gosa_bidjat_speadjala">
       </alt>
     </utt>
 
     <utt type="question" name="gosa_bidjat_speadjala">
       <text>Gal mun birgen okto dainna! Guđe latnjii moai bidje mu stuora speadjala?</text>
-      <alt type="default" link="viessogalvvut_closing">
+      <alt target="default" link="viessogalvvut_closing">
       </alt>
     </utt>
 
@@ -158,8 +158,8 @@
     
     <utt type="question" name="Háliidat_go_juoida_eará">
       <text>Háliidat go juoida eará?</text>
-      <alt type="pos" link="Maid_juhkat"/>
-      <alt type="default" link="juhkat_closing"/>
+      <alt target="pos" link="Maid_juhkat"/>
+      <alt target="default" link="juhkat_closing"/>
     </utt>
     
     <utt type="question" name="Háliidat_go_honnega">
