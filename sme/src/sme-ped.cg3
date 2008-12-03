@@ -6004,7 +6004,7 @@ MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Loc) IF (*-1 QDL)(*1 N BARRIER NOT-A
 # dain viesuin
 # daiguin viesuiguin
 
-LIST HALFAGR = Num "nubbi";
+LIST HALFAGR = ((\D.)r Num) "nubbi";
 LIST BUORRE = ("buorre" A) ;
 
 SELECT Nom (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Nom);
@@ -6319,9 +6319,9 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 
 
 # Picking the age - these do not function yet 
-MAP (&dia-adult) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<number>20>))  ;  #   []    ("([0-9]|1[0-3])"r)
-MAP (&dia-young) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<5<number<20>))  ; #         "2[0-5]"r
-MAP (&dia-child) TARGET Num (*-1 QDL LINK *-1 ("boaris") LINK -1 ("man"))(0 (<number<6>))  ;
+MAP (&dia-adult) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([2-9][0-9])"r))  ;  #   []    ("([0-9]|1[0-3])"r)
+MAP (&dia-young) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([1][0-9])"r))  ; #         "2[0-5]"r
+MAP (&dia-child) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([1-9])"r))  ;
 
 
 # ---------
