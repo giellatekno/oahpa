@@ -37,25 +37,20 @@
 
     <utt type="question" name="gosa_bidjat_TV">
       <text>Guđe latnjii moai bidje mu TV?</text>
-      <alt target="hivsset" link="dat_gal_ii_heive"/>
+      <alt target="hivsset" link="gosa_bidjat_TV">
+      <text>Dat gal ii heive! Geahččal ođđasit.</text>
+            </alt>
       <alt target="default" link="gosa_bidjat_beavddi">
       </alt>
     </utt>
 
-    <utt type="utterance" name="dat_gal_ii_heive" link="gosa_bidjat_TV">
-      <text>Dat gal ii heive! Geahččal ođđasit.</text>
-    </utt>
-
-
     <utt type="question" name="gosa_bidjat_beavddi">
       <text>Moai gudde dan ovttas dohko. Gosa moai bidje boradanbeavddi?</text>
-      <alt target="hivsset" link="ii_mu_mielas"/>
+      <alt target="hivsset" link="gosa_bidjat_beavddi">
+      <text>Ii heive dohko mu mielas! Geahččal ođđasit.</text>
+    </alt>
       <alt target="default" link="gosa_bidjat_gamahildu">
       </alt>
-    </utt>
-
-    <utt type="utterance" name="ii_mu_mielas" link="gosa_bidjat_beavddi">
-      <text>Ii heive dohko mu mielas! Geahččal ođđasit.</text>
     </utt>
 
     <utt type="question" name="gosa_bidjat_gamahildu">
@@ -72,12 +67,10 @@
 
     <utt type="question" name="gosa_bidjat_lohkanlamppa">
       <text>Dat gal heive! Guđe latnjii moai bidje lohkanlámppá?</text>
-      <alt target="hivsset" link="ii_leat_nu_buorre"/>
-      <alt target="default" link="gos_dus_lea_soffa"/>
-    </utt>
-
-    <utt type="utterance" name="ii_leat_nu_buorre" link="gosa_bidjat_lohkanlamppa">
+      <alt target="hivsset" link="gosa_bidjat_lohkanlamppa">
       <text>Ii leat buorre evttohus! Geahččal ođđasit.</text>
+    </alt>
+      <alt target="default" link="gos_dus_lea_soffa"/>
     </utt>
 
 
@@ -90,12 +83,10 @@
 
     <utt type="question" name="gosa_bidjat_soffa">
       <text>Guđe latnjii moai bidje mu soffá?</text>
-      <alt target="hivsset" link="ii_dat_gal_caga"/>
-      <alt target="default" link="gosa_bidjat_lahtteranu"/>
-    </utt>
-
-    <utt type="utterance" name="ii_dat_gal_caga" link="gosa_bidjat_soffa">
+      <alt target="hivsset" link="gosa_bidjat_soffa">
       <text>Ii dat gal čága dohko! Geahččal ođđasit.</text>
+    </alt>
+      <alt target="default" link="gosa_bidjat_lahtteranu"/>
     </utt>
 
 
