@@ -52,12 +52,7 @@
       <text>Ii heive dohko mu mielas! Geahččal ođđasit.</text>
     </alt>
       <alt target="default" link="gosa_bidjat_gamahildu">
-<<<<<<< .mine
-      <text>Juo, buorre!</text>
-      </alt>
-=======
      </alt>
->>>>>>> .r22492
     </utt>
 
     <utt type="question" name="gosa_bidjat_gamahildu">
@@ -183,11 +178,10 @@
     <utt type="question" name="Maid_juhkat">
 	<word class="DRINK"/>
       <text>Dás oainnát makkár juhkamušat mus leat. Maid don háliidat juhkat?</text>
-      <alt type="target" variable="DRINK" >
+      <alt variable="DRINK" >
 	<text>Mun buvttán dutnje DRINK</text>
 	<element id="DRINK">
-	  <id>target</id>
-	  <grammar pos="Sg+Acc"/>
+	  <grammar tag="N+Sg+Acc"/>
 	</element> 
       </alt>
       <default link="juhkat_closing"/>
