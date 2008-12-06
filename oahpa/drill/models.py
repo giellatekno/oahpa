@@ -165,8 +165,8 @@ class Utterance(models.Model):
 
 class LinkUtterance(models.Model):
     link = models.ForeignKey(Utterance,null=True,blank=True)
-    linktype = models.CharField(max_length=10,null=True,blank=True)
     target = models.CharField(max_length=20,null=True,blank=True)
+    variable = models.CharField(max_length=20,null=True,blank=True)
 
 class Topic(models.Model):
     topicname = models.CharField(max_length=50,blank=True,null=True)
