@@ -21,9 +21,20 @@
 {% block name %}{% trans "Sahka" %}{% endblock %}
 {% block pagename %}/oahpa/sahka/{% endblock %}
 {% block settings %}
+<table width="700">
+<tr>
+<td>{% trans "Dialogue" %}</td>
+</tr>
+<tr>
+<td>{{ settingsform.dialogue }}</td>
+</tr>
+</table>
 <input type="hidden" name="topicnumber" value="{{ topicnumber }}" />
 <input type="hidden" name="num_fields" value="{{ num_fields }}" />
-<input type="hidden" name="dialogue" value="{{ dialogue }}" />
+<input type="hidden" name="gametype" value="sahka" />
+<input type="hidden" id="continue" name="continue" value="no_continue" />
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+
 {% endblock %}
 {% block instructions %}
 {% trans "Answer with full sentences" %}
@@ -44,7 +55,7 @@
 </td>
 <td>
   {% if not all_correct %}
-  <input type="submit" name="test" value="{% trans "Answer" %}"/>
+  <input type="submit" id="test" name="test" value="{% trans "Answer" %}"/>
   {% endif %}
 </td>
 </tr>
