@@ -20,13 +20,14 @@
 
 {% block name %}{% trans "Sahka" %}{% endblock %}
 {% block pagename %}/oahpa/sahka/{% endblock %}
-{% block instructions %}{% trans "Only basic logic. Use: 'In.' 'Juo.' 'gáffe' or 'deadja'. Maid don juhkat is not working. " %}{% endblock %}
 {% block settings %}
 <input type="hidden" name="topicnumber" value="{{ topicnumber }}" />
 <input type="hidden" name="num_fields" value="{{ num_fields }}" />
 <input type="hidden" name="dialogue" value="{{ dialogue }}" />
 {% endblock %}
-
+{% block instructions %}
+{% trans "Answer with full sentences" %}
+{% endblock %}
 {% block question %}
 
 {% if form.utterance %}
@@ -39,6 +40,7 @@
 {% block submit %}
 <tr>
 <td>
+<p>{{ errormsg }}
 </td>
 <td>
   {% if not all_correct %}
@@ -46,6 +48,7 @@
   {% endif %}
 </td>
 </tr>
+
 
 {% if messages %}
 <tr><td>
@@ -58,4 +61,5 @@
 {% endif %}
 
 {% endblock %}
+
 
