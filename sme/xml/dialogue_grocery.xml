@@ -21,111 +21,110 @@
   </topic>  
   
   <topic name="groceries">
-	    <utt type="question" name="makkar_juhkamusaid">
-	<word class="DRINK"/>
+    <utt type="question" name="makkar_juhkamusaid">
+      <word class="DRINK"/>
       <text>Makkár juhkamušaid don áiggut?</text>
-      <alt type="neg" link="makkar_laibegalvvuid">
-            <text>Dán ossodagas leat juhkamušat. It dárbbašge juhkamušaid odne.</text>
+      <alt target="neg" link="makkar_laibegalvvuid">
+        <text>Dán ossodagas leat juhkamušat. It dárbbašge juhkamušaid odne.</text>
       </alt>      
-      <alt type="default" link="makkar_laibegalvvuid"/>     
+      <alt target="default" link="makkar_laibegalvvuid"/>     
     </utt>
 
-	    <utt type="question" name="makkar_laibegalvvuid">
-	<word class="BREAD"/>
+    <utt type="question" name="makkar_laibegalvvuid">
+      <word class="BREAD"/>
       <text>Dáin ilduin leat láibegálvvut. Makkár láibegálvvuid don áiggut?</text>
-      <alt type="neg" link="makkar_ruotnasiid">
-            <text>It don gusto dárbbaš láibegálvvuid odne.</text>
+      <alt target="neg" link="makkar_ruotnasiid">
+        <text>It don gusto dárbbaš láibegálvvuid odne.</text>
       </alt>      
-      <alt type="default" link="makkar_ruotnasiid"/>
+      <alt target="default" link="makkar_ruotnasiid"/>
     </utt>
 
-	    <utt type="question" name="makkar_ruotnasiid">
-	<word class="VEGETABLE"/>
+    <utt type="question" name="makkar_ruotnasiid">
+      <word class="VEGETABLE"/>
       <text>Ruotnásat leat dáppe. makkár ruotnásiid don áiggut?</text>
-      <alt type="neg" link="makkar_sattuid">
-            <text>Odne it áiggo.</text>
+      <alt target="neg" link="makkar_sattuid">
+        <text>Odne it áiggo.</text>
       </alt>      
-      <alt type="default" link="makkar_sattuid"/>
+      <alt target="default" link="makkar_sattuid"/>
     </utt>
 
-	    <utt type="question" name="makkar_sattuid">
-	<word class="FRUIT"/>
+    <utt type="question" name="makkar_sattuid">
+      <word class="FRUIT"/>
       <text>Mis leat šattut fálaldagas. Makkár šattuid don áiggut?</text>
-      <alt type="neg" link="makkar_bierggu">
-            <text>Odne it áiggo.</text>
+      <alt target="neg" link="makkar_bierggu">
+        <text>Odne it áiggo.</text>
       </alt>      
-      <alt type="default" link="makkar_bierggu"/>
+      <alt target="default" link="makkar_bierggu"/>
     </utt>
 
-	    <utt type="question" name="makkar_bierggu">
-	<word class="MEAT"/>
+    <utt type="question" name="makkar_bierggu">
+      <word class="MEAT"/>
       <text>Ja de mis lea biergu. Makkár bierggu dahje biergobuktaga don áiggut?</text>
-      <alt type="neg" link="makkar_guoli">
-            <text>Odne it áiggo.</text>
+      <alt target="neg" link="makkar_guoli">
+        <text>Odne it áiggo.</text>
       </alt>      
-      <alt type="default" link="makkar_guoli"/>
+      <alt target="default" link="makkar_guoli"/>
     </utt>
 
-	    <utt type="question" name="makkar_guoli">
-	<word class="FISH"/>
+    <utt type="question" name="makkar_guoli">
+      <word class="FISH"/>
       <text>Ja dás leat guolli. Makkár guoli dahje guollebuktaga don áiggut?</text>
-      <alt type="neg" link="makkar_suvlliid">
+      <alt target="neg" link="makkar_suvlliid">
             <text>Odne it áiggo.</text>
       </alt>      
-      <alt type="default" link="makkar_suvlliid"/>
+      <alt target="default" link="makkar_suvlliid"/>
     </utt>
     
-	    <utt type="question" name="makkar_suvlliid">
-	<word class="SUVLI"/>
-      <text>Mis leat máŋgga lágan suvllit. Makkár suvlliid don áiggut?</text>
-      <alt type="neg" link="makkar_laibunavdnasiid">
-            <text>Odne it áiggo suvlliid.</text>
-      </alt>      
-      <alt type="default" link="makkar_laibunavdnasiid"/>
+    <utt type="question" name="makkar_suvlliid">
+      <word class="SUVLI"/>
+	<text>Mis leat máŋgga lágan suvllit. Makkár suvlliid don áiggut?</text>
+	<alt target="neg" link="makkar_laibunavdnasiid">
+          <text>Odne it áiggo suvlliid.</text>
+	</alt>      
+	<alt target="default" link="makkar_laibunavdnasiid"/>
     </utt>
 
-	    <utt type="question" name="makkar_laibunavdnasiid">
-	<word class="BAKING"/>
+    <utt type="question" name="makkar_laibunavdnasiid">
+      <word class="BAKING"/>
       <text>Ja dán ildus leat láibunávdnasat. Makkár láibunávdnasiid don áiggut?</text>
-      <alt type="neg" link="makkar_njalgaid">
+      <alt target="neg" link="makkar_njalgaid">
             <text>Odne it áiggo.</text>
       </alt>      
-      <alt type="default" link="makkar_njalgaid"/>
+      <alt target="default" link="makkar_njalgaid"/>
     </utt>
 
-	    <utt type="question" name="makkar_njalgaid">
-	<word class="CANDY"/>
+    <utt type="question" name="makkar_njalgaid">
+      <word class="CANDY"/>
       <text>Ja de mis leat njálgát. Makkár njálgáid don áiggut?</text>
-      <alt type="neg" link="closing_groceries">
-            <text>Odne it áiggo njálgáid.</text>
+      <alt target="neg" link="closing_groceries">
+        <text>Odne it áiggo njálgáid.</text>
       </alt>      
-      <alt type="default" link="closing_groceries"/>
+      <alt target="default" link="closing_groceries"/>
     </utt>
 
-
+	    
     <utt type="closing" name="closing_groceries">
       <text>Ja de ledjege deháleamos gálvvut.</text>
     </utt>
   </topic>  
 
   <topic name="good_offer">
-	    <utt type="question" name="hálbiduvvon_galvvut">
-	<word class="OFFERS"/>
+    <utt target="question" name="hálbiduvvon_galvvut">
+      <word class="OFFERS"/>
       <text>Mis leat muhtun hálbiduvvon gálvvut. Mii heivešii dutnje?
-</text>
-      <alt type="neg" link="Oaidnaleapmai_closing">
-            <text>Dalle don leat geargan.</text>
+      </text>
+      <alt target="neg" link="Oaidnaleapmai_closing">
+        <text>Dalle don leat geargan.</text>
       </alt>      
-      <alt type="default" link="Oaidnaleapmai_closing">     
-            <text>Buorre!</text>
+      <alt target="default" link="Oaidnaleapmai_closing">     
+        <text>Buorre!</text>
       </alt>      
     </utt>
   </topic>  
 
   <topic name="Oaidnaleapmai">
     <utt type="closing" name="Oaidnaleapmai_closing">
-      <text>Sáhtát máksit kássas. Gal mun veahkehan du nuppi háve maid.
-Oaidnáleapmái!</text>
+      <text>Sáhtát máksit kássas. Gal mun veahkehan du nuppi háve maid. Oaidnáleapmái!</text>
     </utt>
   </topic>
 
