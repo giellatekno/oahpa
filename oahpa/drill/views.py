@@ -562,7 +562,8 @@ class Sahkaview:
         
         if request.method == 'POST':
             data = request.POST.copy()
-
+            #print data['continue']
+            #print data['topicnumber']
             # Settings form is checked and handled.
             settings_form = SahkaSettings(request.POST)
 
@@ -575,10 +576,12 @@ class Sahkaview:
             # If settings are changed, a new game is created
             # Otherwise the game is created using the user input.
             if "settings" in data:
-                game.update_game()
+                game.settings['topicnumber']=0
+                game.num_fields=1
+                game.update_game(1)
             else:
                 game.num_fields = int(settings_form.data['num_fields'])
-                print "num_fields", game.num_fields
+                #print "num_fields", game.num_fields
                 game.check_game(data)
                 # If the last answer was correct, add new field
                 if game.form_list[game.num_fields-2].error == "correct":
@@ -604,9 +607,11 @@ class Sahkaview:
             # Start new game with first form
             game.form_list = []
             game.update_game(1)
+            
         errormsg=""
         for f in game.form_list:
             errormsg = errormsg + f.errormsg
+
         c = Context({
             'settingsform': settings_form,
             'forms': game.form_list,
