@@ -5,6 +5,7 @@ from drill.models import *
 from xml.dom import minidom as _dom
 from optparse import OptionParser
 from django.db.models import Q
+from django.utils.encoding import force_unicode
 import sys
 import re
 import string
@@ -63,6 +64,7 @@ class Sahka:
                         alttext = alt.getElementsByTagName("text")[0].firstChild.data
                     alter['text'] = alttext
                     utterance['alts'].append(alter)
+
                 utts.append(utterance)
                 
             for u in utts:
@@ -104,7 +106,8 @@ class Sahka:
                         utterance2.save()
                         if a['link']:
                             linkutt2, created = LinkUtterance.objects.get_or_create(link=next_utterance,\
-                                                                                    linktype="default")
+                                                                                    linktype="default", \
+                                                                                    target="default")
                             linkutt2.save()
                             utterance2.links.add(linkutt2)
                             utterance2.save()
