@@ -172,6 +172,7 @@ NUMGAME_CHOICES = (
 DIALOGUE_CHOICES = (
     ('visit', _('Visit')),
     ('firstmeeting', _('First meeting')),
+    ('grocery', _('Grocery')),
 )
 
 def is_correct(self, game, example=None):
