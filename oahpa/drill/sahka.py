@@ -69,8 +69,8 @@ class SahkaGame(Game):
                 if prev_utterance.links.filter(target=prev_form.target):
                     nextlink = prev_utterance.links.filter(target=prev_form.target)[0]
             if not nextlink:
-                if prev_utterance.links.filter(linktype="default"):
-                    nextlink = prev_utterance.links.filter(linktype="default")[0]
+                if prev_utterance.links.filter(target="default"):
+                    nextlink = prev_utterance.links.filter(target="default")[0]
                     
             if nextlink:
                 utterance = nextlink.link
