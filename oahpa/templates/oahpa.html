@@ -206,18 +206,39 @@ function process(strField, evtKeyPress)  {
 
 <script type="text/javascript" language="JavaScript">
 
-	function setFocus(){
+function sahkaSetFocus(){
 
-	var node_list = document.getElementsByTagName('input');
+  document.getElementByName('test').focus();
+  var node_list = document.getElementsByTagName('input');
 	
-	for (var i = 0; i < node_list.length; i++) {	
-		var node = node_list[i];
- 
-		if (node.getAttribute('type') == 'text') {
-				node.focus();
-				}
-		}
+  for (var i = 0; i < node_list.length; i++) {
+    var node = node_list[i];
+    if (node.getAttribute('type') == 'text') {
+      node.focus();
+      }
+   }
+
 } 
+
+function setFocus(){
+
+  if (document.theform["gametype"] == "sahka") {
+    sahkaSetFocus();
+    return;
+  }
+  var node_list = document.getElementsByTagName('input');
+  var i=0;	
+  var found=0;
+  while (i < node_list.length & found==0) {
+    i++;
+    var node = node_list[i];
+    if (node.getAttribute('type') == 'text') {
+      node.focus();
+      found=1;
+    }
+  }
+} 
+
 
 </script>
 </head>
