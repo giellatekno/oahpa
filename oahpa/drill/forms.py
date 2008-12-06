@@ -913,6 +913,7 @@ class VastaQuestion(OahpaQuestion):
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
         # In qagame, all words are considered as answers.
+
         self.gametype="vasta"
         self.messages, jee, joo = self.vasta_is_correct(question.string, qwords, None)
         
@@ -965,22 +966,25 @@ def sahka_is_correct(self,utterance,targets):
         return
     qwords = {}
     # Split the question to words for analaysis.
-    self.messages, self.dia_messages, target = self.vasta_is_correct(utterance.utterance, None, utterance.name)
 
+    self.messages, self.dia_messages, target = self.vasta_is_correct(utterance.utterance, None, utterance.name)
+    #target = "pos"
     if target:
         if not self.messages:
             self.error = "correct"
         self.target = target
-    else:		
+    else:
         for answer in self.dia_messages:
             answer = answer.lstrip("&dia-")
             if not self.messages:
                 self.error = "correct"
             self.target = answer
+
+#    self.error = "correct"
     
 class SahkaSettings(OahpaSettings):
 
-    dialogue = forms.ChoiceField(initial='visit', choices=DIALOGUE_CHOICES, widget=forms.RadioSelect)
+    dialogue = forms.ChoiceField(initial='visit', choices=DIALOGUE_CHOICES, widget=forms.Select)
     
     def __init__(self, *args, **kwargs):
         self.set_settings()
@@ -994,8 +998,8 @@ class SahkaSettings(OahpaSettings):
     def init_hidden(self, topicnumber, num_fields, dialogue):
         
         # Store topicnumber as hidden input to keep track of topics.
-        print topicnumber
-        print num_fields
+        #print "topicnumber", topicnumber
+        #print "num_fields", num_fields
         topicnumber = topicnumber
         num_fields = num_fields
         dialogue = dialogue
@@ -1023,7 +1027,7 @@ class SahkaQuestion(OahpaQuestion):
             answer_size=50
             self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                     widget=forms.TextInput(\
-            attrs={'size': answer_size, 'onkeypress':'return processvasta(this, event);',}))
+            attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
 
         self.fields['utterance_id'] = forms.CharField(widget=utterance_widget, required=False)
 
