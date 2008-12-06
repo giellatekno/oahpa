@@ -719,12 +719,12 @@ class ContextMorfaQuestion(OahpaQuestion):
             self.error="correct"
 
 
-def vasta_is_correct(self,question,qwords):
+def vasta_is_correct(self,question,qwords,utterance_name=None):
     """
     Analyzes the answer and returns a message.
     """
     if not self.is_valid():
-        return None, None
+        return None, None, None
 
     lookup_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     lookup_client.connect(("localhost", 9000))
@@ -755,9 +755,11 @@ def vasta_is_correct(self,question,qwords):
     qtext = qtext.rstrip('.!?,')
     
     analysis = ""
-    for w in qtext.split():
+    data_lookup = "echo \"" + qtext + "\"" + preprocess
+    words = os.popen(data_lookup).readlines()
+    for w in words:
         cohort=""
-        if qwords.has_key(w):
+        if qwords and qwords.has_key(w):
             qword = qwords[w]
             if qword.has_key('word'):
                 if qword.has_key('fullform') and qword['fullform']:
@@ -770,16 +772,22 @@ def vasta_is_correct(self,question,qwords):
                     cohort = cohort + " " + tag + "\n"
             else:
                 w=w.lstrip().rstrip()
-                print w
                 lookup_client.send(w)
                 cohort = lookup_client.recv(512)
-                print cohort
+        else:
+            w=w.lstrip().rstrip()
+            lookup_client.send(w)
+            cohort = lookup_client.recv(512)
+
         if not cohort:
             cohort = w + "\n"
 	
         analysis = analysis + cohort
-    analysis = analysis + cohort
-    analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
+
+    if self.gametype=="sahka":
+        analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
+    else:
+        analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
     ans_cohort=""
     data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
@@ -792,7 +800,7 @@ def vasta_is_correct(self,question,qwords):
         analyzed = analyzed + lookup_client.recv(512)
 
     analysis = analysis + analyzed
-    #print analysis
+    analysis2=analysis
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
 
@@ -800,12 +808,13 @@ def vasta_is_correct(self,question,qwords):
     checked = os.popen(ped_cg3).readlines()
 
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
-    messageObj=re.compile(r'^.*(?P<msgString>&[\w-]*)\s*$', re.U)
-    targetObj=re.compile(r'^.*(?P<targetString>\"[\w-]*\")&dia-target.*$', re.U)
+    messageObj=re.compile(r'^.*(?P<msgString>&(grm|err)[\w-]*)\s*$', re.U)
+    targetObj=re.compile(r'^.*\"(?P<targetString>[\w]*)\".*dia-target\s*$', re.U)
+    diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
 
     spelling = False
     msgstrings = {}
-
+    diastring = "jee"
     for line in checked:
         line = line.strip()
 
@@ -824,7 +833,13 @@ def vasta_is_correct(self,question,qwords):
         matchObj=targetObj.search(line)
         if matchObj:
             msgstring = matchObj.expand(r'\g<targetString>')
-            msgstrings[wordform]["diatarget"] = msgstring
+            msgstrings[wordform]['dia-target'] = msgstring
+
+        matchObj=diaObj.search(line)
+        if matchObj:
+            msgstring = matchObj.expand(r'\g<targetString>')
+            msgstrings[wordform][msgstring] = 1
+            diastring=msgstring			
             
     msg=[]
     dia_msg = []
@@ -848,10 +863,10 @@ def vasta_is_correct(self,question,qwords):
                     if not spelling:
                         found=True
                         break
-                else:
-                    dia_msg.append(m)
-        if msgstrings[w].has_key('diatarget'):
-            target = w['diatarget']			
+            if m.count("dia-") > 0:
+                dia_msg.append(m)
+        if msgstrings[w].has_key('dia-target'):
+            target = msgstrings[w]['dia-target']			
                     
     if not msg:
         self.error = "correct"
@@ -898,7 +913,8 @@ class VastaQuestion(OahpaQuestion):
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
         # In qagame, all words are considered as answers.
-        self.messages, jee, joo = self.vasta_is_correct(question.string, qwords)
+        self.gametype="vasta"
+        self.messages, jee, joo = self.vasta_is_correct(question.string, qwords, None)
         
         self.qattrs= {}
         for syntax in qwords.keys():
@@ -949,20 +965,18 @@ def sahka_is_correct(self,utterance,targets):
         return
     qwords = {}
     # Split the question to words for analaysis.
-    for w in utterance.utterance.split():
-        qwords[w] = {}
-    self.messages, self.dia_messages, target = self.vasta_is_correct(utterance.utterance, qwords)
+    self.messages, self.dia_messages, target = self.vasta_is_correct(utterance.utterance, None, utterance.name)
 
-    if target and target in set(targets):
-        self.error="correct"
+    if target:
+        if not self.messages:
+            self.error = "correct"
         self.target = target
     else:		
         for answer in self.dia_messages:
             answer = answer.lstrip("&dia-")
-            if answer in set(targets):
+            if not self.messages:
                 self.error = "correct"
-                self.target = answer
-        
+            self.target = answer
     
 class SahkaSettings(OahpaSettings):
 
@@ -1021,7 +1035,10 @@ class SahkaQuestion(OahpaQuestion):
         self.target=""
         self.dia_messages = ""		
         #if not correct_val == "correct":
+        self.gametype="sahka"
         self.sahka_is_correct(utterance,targets)
         self.errormsg = ""
+        #for m in self.messages:	
+        #    self.errormsg = self.errormsg + m
         if correct_val == "correct":
             self.error="correct"
