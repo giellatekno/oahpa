@@ -133,6 +133,7 @@ LANGUAGE_CHOICES = (
     ('smj', _('Lule Sami')),
     ('sma', _('South Sami')),
     ('smn', _('Inari Sami')),
+    ('sjd', _('Kildin Sami')),
 )
 
 SEMTYPE_CHOICES = (
