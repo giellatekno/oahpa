@@ -5799,7 +5799,11 @@ REMOVE Imprt (-1 BOS)(1 go) ;
 SELECT ConNeg (-1 Neg) ;
 SELECT PrfPrc (-1 Neg) ;
 SELECT Inf (*-1 AUX BARRIER NOT-ADV OR S-BOUNDARY) ; 
-SELECT PrfPrc (-1 ("leat")) ; 
+SELECT PrfPrc (*-1 ("leat") BARRIER NOT-ADV) ; 
+
+# Selecting PrfPrc after VFIN and Neg:
+SELECT PrfPrc (*-1 ("leat") OR Neg BARRIER VERB)(*1 QDL) ;
+
 SELECT Inf (-1 MIELLA LINK *-1 ("leat") BARRIER S-BOUNDARY);
 REMOVE VFIN (*-1 VFIN BARRIER S-BOUNDARY LINK *-1 QDL) ;
 SELECT VFIN (*-1 BOS BARRIER VFIN OR QDL)(*1 QDL BARRIER VFIN) ; 
@@ -5842,6 +5846,7 @@ SELECT VFIN (-1 (N Nom) OR (Pers Nom) LINK *-1 QDL) ;
 
 # Selecting Inf after VFIN and Neg:
 SELECT Inf (*-1 VFIN OR PrfPrc OR ConNeg BARRIER NOT-ADV LINK 0 INFV LINK *-1 QDL) ;
+
 
 
 # -------
@@ -6075,7 +6080,7 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL BARRIER S-BOUNDARY LINK
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
 
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (N Pl Nom) LINK NOT 0 NUM-QUESTION)(NOT 0 Pl3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 (Makkár_bargu_dus_lea) LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
 
@@ -6098,7 +6103,7 @@ LIST VERBLEMMA = (".*"r) ;
 MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
 MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
 
-MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr) ;
+MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY  LINK NOT 0 (Makkár_bargu_dus_lea) LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr) ;
 MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA LINK NOT 0 WORK-V LINK *-1 MO OR Interr) ;
 
 
