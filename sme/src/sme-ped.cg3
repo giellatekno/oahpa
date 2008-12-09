@@ -2697,7 +2697,7 @@ SELECT:r608 (V Neg Ind Sg1) IF (*-1 BOS OR (":") BARRIER REALWORD);
 
 SELECT:r609 Inf IF (*-1 (Neg Sup) BARRIER S-BOUNDARY);
 
-SELECT:r611 VFIN IF (*-1 BOS OR (":") BARRIER REALWORD)(0 Qst)(*1 ("^qst") BARRIER VFIN);
+SELECT:r611 VFIN IF (*-1 BOS OR (":") BARRIER REALWORD)(0 Qst)(*1 ("^qst") OR ("^sahka") BARRIER VFIN);
 	## Humatgo sámegiela? 
 
 SELECT VFIN IF (*-1 BOS BARRIER VFIN)(0 N LINK NEGATE 0 Imprt LINK 1 go)(*1 CS BARRIER VFIN LINK *1 VFIN BARRIER S-BOUNDARY);	
@@ -4408,7 +4408,7 @@ REMOVE:r1075 Pcle IF (0 ("son")); # Remove the rest
 REMOVE:r1076 Qst IF (0 ("dego") OR ("dugo"));
 	## Su ámadadju báittii dego beaivváš. 
 
-REMOVE:r1077 Qst IF (NEGATE *-1 VERB BARRIER WORD)(0 Adv)(NEGATE *1 ("^qst")); 
+REMOVE:r1077 Qst IF (NEGATE *-1 VERB BARRIER WORD)(0 Adv)(NEGATE *1 ("^qst") OR ("^sahka")); 
 	## Nugo dieđát, de lean dál.
 
 
@@ -4746,7 +4746,7 @@ SELECT:r1161 (Neg Sup) IF (0 ("amat"))(1 Inf); # Also Pcle?
 
 	# dasgo
 	# - - -
-SELECT:r1162 CS IF (0 ("dasgo"))(NEGATE *1 ("^qst"));
+SELECT:r1162 CS IF (0 ("dasgo"))(NEGATE *1 ("^qst") OR ("^sahka"));
 SELECT:r1163 CS IF (0 ("dasgo"))(1 Interr);
 	## Dasgo Herodes lea ohcamin máná goddin dihtii dan.
 	## Dasgo goabbá lea stuorit,...
@@ -4767,7 +4767,7 @@ SELECT:r1165 CS IF (*-1 ("jos") OR ("jus") OR ("juos") OR ("joas") OR ("go") LIN
 	# Yes/no ( = fi. -ko/-kö, no. V1))
 
 SELECT:r1167 Pcle IF (-3 BOS OR CLB)(-2 CC)(-1 V)(0 go);
-SELECT:r1168 Pcle IF (-2 BOS OR REALCLB OR PUNCT OR COMMA)(0 go)(*1 ("^qst"));
+SELECT:r1168 Pcle IF (-2 BOS OR REALCLB OR PUNCT OR COMMA)(0 go)(*1 ("^qst") OR ("^sahka"));
 	## Muhto boađát go?                         
 	## Eai go báhkinat ge daga aiddo nu?
 	## Judas, beahtát go Olbmobártni cummáin?
@@ -4796,7 +4796,7 @@ SELECT:r1174 Pcle IF (-2 Inf)(-1 VFIN LINK NOT 0 Ill)(NEGATE -1 PrfPrc)(0 go)(1 
 SELECT:r1175 Pcle IF (-3 N OR Pron)(-2 ("ahte"))(-1 VFIN)(0 ("go"));
 	## Politihkas lei 1866 rájes sáhka ahte galggai go stivrregoahtit gii oažžu eatnama láigohit stáhtas.
 
-SELECT:r1176 Pcle IF (-1 N LINK *-1 BOS BARRIER NOT-NP)(NEGATE -1 ("hávvi"))(0 go)(*1 VFIN BARRIER S-BOUNDARY)(*1 ("^qst"));
+SELECT:r1176 Pcle IF (-1 N LINK *-1 BOS BARRIER NOT-NP)(NEGATE -1 ("hávvi"))(0 go)(*1 VFIN BARRIER S-BOUNDARY)(*1 ("^qst") OR ("^sahka"));
 	## Eatni goarrun gákti go dus lea die?
 
 SELECT:r1177 Pcle IF (-2 (N Gen) LINK *-1 BOS BARRIER NOT-NP)(-1 Po)(0 go)(*1 VFIN BARRIER S-BOUNDARY);
@@ -4840,11 +4840,11 @@ SELECT:r1185 CS IF (0 go)(1 ("ahte"));
 SELECT:r1193 CS IF (0 go);    # All other go's are CS. (differ from Pcle sect 2?)
 
 # mo
-SELECT:r1194 Adv IF (*-1 BOC OR PUNCT BARRIER NOT-PCLE)(0 ("mo") OR ("mot") OR ("mov") OR ("movt") OR ("govt"))(*1 ("^qst"));
+SELECT:r1194 Adv IF (*-1 BOC OR PUNCT BARRIER NOT-PCLE)(0 ("mo") OR ("mot") OR ("mov") OR ("movt") OR ("govt"))(*1 ("^qst") OR ("^sahka"));
 	## Mo dagai stáhta iežas Finnmárkku eatnamiid eaiggádin?
 
 #Try a more radical approach:
-SELECT:r1195 CS IF (NEGATE *-1 BOC OR PUNCT BARRIER NOT-PCLE)(0 ("mo") OR ("mot") OR ("mov") OR ("movt") OR ("govt"))(NEGATE *1 ("^qst"));
+SELECT:r1195 CS IF (NEGATE *-1 BOC OR PUNCT BARRIER NOT-PCLE)(0 ("mo") OR ("mot") OR ("mov") OR ("movt") OR ("govt"))(NEGATE *1 ("^qst") OR ("^sahka"));
 	## Farga boahtá ođđa govat mat čájehit mo ieš johtin manai.
 
 
@@ -5327,7 +5327,7 @@ SELECT:r1323 Adv IF (0 ("easkka"))(1 Num OR ("maŋŋel"));
 
 	# goas
 	# - - -
-SELECT:r1324 Adv IF (0 ("goas"))(NEGATE 1 go)(*1 ("^qst"));     
+SELECT:r1324 Adv IF (0 ("goas"))(NEGATE 1 go)(*1 ("^qst") OR ("^sahka"));     
 SELECT:r1325 Adv IF (0 ("goas"))(1 CC)(2 CP);
 	## Goasbat Máret fuobmái fas dohko vuolgit?
 	## Goas ja mo dearvvašvuođaveahki lea addojuvvon,... 
@@ -5491,7 +5491,7 @@ SELECT:r1372 Adv IF (*-1 VFIN BARRIER S-BOUNDARY OR CC OR CLB LINK NOT 0 Neg)(0 
 	## Jos oktage jearaš dudnos manne doai dahkabeahtti dan,...
 	
 REMOVE:r1373 VGen IF (0 ("manne" Adv));
-SELECT:r1374 Adv IF (0 ("manne"))(NEGATE 1 ("go"))(*1 ("^qst"));
+SELECT:r1374 Adv IF (0 ("manne"))(NEGATE 1 ("go"))(*1 ("^qst") OR ("^sahka"));
 	## Manne rievddadit luonddudilálašvuođat?
 	
 
@@ -5774,12 +5774,27 @@ SELECT ("viessu" N) ;
 REMOVE Foc/ba (0 (V Du3)) ;
 
 # The initial interr:
+SELECT Interr (-1 BOS OR ("excl") OR ("."))(*1 QDL BARRIER EOS) ;
 SELECT MO (-1 BOS)(*1 QDL) ;
+REMOVE Indef (0 ("galle"))(1 (N Gen))(*1 QDL) ;
 	# Man guhká...
 SELECT Adv (0 ("gallii") LINK -1 BOS) ; 
 SELECT ("galle" Num)(-1 BOS)(*1 N BARRIER NPNH); 
 
 SELECT Pers (*-1 QDL OR S-BOUNDARY BARRIER NOT-ADV-PCLE)(0 S-BOUNDARY)(*1 VFIN BARRIER NOT-ADV-PCLE);
+
+SELECT Gen (0 Dem) (1C Gen)(*1 QDL) ; 
+#SELECT (Dem Acc) (1C Acc)(*1 QDL) ; 
+#SELECT Gen (1C Po)(*1 QDL) ; 
+#REMOVE Po (-1C Po)(*1 QDL) ; 
+#REMOVE Pr (-1C Po)(*1 QDL) ; 
+SELECT Acc (*-1 ("vázzit"))(0 EDUCATION)(*1 QDL) ;
+SELECT (V Sg2) (-1 BOS)(1 go LINK 1 (Sg2 Nom)) (*1 QDL) ;
+SELECT (V Sg2) (-1 BOS)(1 go LINK NOT 1 Pers) (*1 QDL) ;
+SELECT V-3 (-1 BOS)(1 go LINK 1 Loc) (*1 QDL) ;
+SELECT (Pers Gen)(1 N) (*1 QDL) ;
+SELECT (Sg2 Nom) (-1 go LINK -1 (V Sg2))(0 ("dot")) ; 
+#SELECT Attr (0 ("makkár"))(1 N) (*1 QDL) ;
 
 # Getting rid of leksem homonymi
 
@@ -5790,7 +5805,7 @@ REMOVE ("giellat") (0 ("gillet")) ;
 # VERBS 1 
 # -------
 
-LIST MIELLA = "árbe#vierru" "bággu" "dárbu" "dilli" "lohpi" "miella" "riekti" "vejolašvuohta" "vuohki" "vuoigatvuohta" "vuorru" ;
+LIST MIELLA = "árbe#vierru" "bággu" "buorre" "dárbu" "dilli" "lohpi" "miella" "riekti" "vejolašvuohta" "vuohki" "vuoigatvuohta" "vuorru" ;
 
 SELECT VFIN (-1 BOS)(1 go) ; 
 REMOVE VFIN (-1 go LINK -2 BOS) ; 
@@ -5881,7 +5896,7 @@ SET  NOT-Attr-CC-Adv-Num-Gen = WORD - Attr-CC-Adv-Num-Gen ;
 # Inside the NP, we choose what suits it, if there is a reading for it:
 SELECT Adv (0 GRADE-ADV + A LINK *-1 QDL) ;
     ## hui boares
-SELECT Attr (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ; 
+SELECT Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; 
     ## stuorra ja hui boares viessu
 SELECT Attr (*1 N BARRIER NOT-Attr-CC-Adv) ; # no there should be less ambiguity.
     # once again
@@ -5986,6 +6001,7 @@ MAP (&grm-should-IllPP) TARGET Po IF (NOT 0 ILL-Po LINK *-1 QDL LINK *-1 ("gosa"
 SELECT Acc IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNHA LINK *-1 QDL)(NOT 0 TIME OR ROUTE)(NOT *1 N BARRIER VERB OR S-BOUNDARY);
 REMOVE Gen IF (-1 ("makkár") LINK -1 BOS) ;
 
+
 # -------------------
 # AGREEMENT INSIDE NP
 # -------------------
@@ -6039,8 +6055,8 @@ MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Com))(*1 N 
 MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Com));
 
 
-# The intension is good, but one should think that it is bigger chance that the N has correct case that the numeral.
-#MAP (&grm-wrong-case) TARGET N IF (*-1 (Num Sg Nom) OR (Num Sg Acc) BARRIER NOT-ADJ LINK *-1 QDL)(NOT 0 Gen OR Acc);
+MAP (&grm-wrong-case) TARGET (N Nom) IF (*-1 Num BARRIER NOT-ADJ LINK NOT 0 N LINK *-1 QDL);
+
 
 # guokte viesu
 # guovtti viesu, guovtti viesus, guovtti vissui
@@ -6100,8 +6116,8 @@ LIST VERBLEMMA = (".*"r) ;
 
 #LIST VERBLEMMA = "juhkat" "borrat" "mannat" ;
 
-MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
-MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
+MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0 (Leat_go_barggus) LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
+MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY  LINK NOT 0 (Leat_go_barggus) LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
 
 MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY  LINK NOT 0 (Makkár_bargu_dus_lea) LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr) ;
 MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA LINK NOT 0 WORK-V LINK *-1 MO OR Interr) ;
@@ -6227,6 +6243,10 @@ MAP (&grm-incorr-tense-past) TARGET PAST-MARKER (-1 VFIN + Prs LINK NOT 0 Prt LI
 # ------------------------
 # Affirmative or negative?
 # ------------------------
+
+# leat_go_dus_mánát - for this one we do not want dia-pos:
+
+MAP (&dia-num) TARGET QDL (0 (leat_go_dus_mánát) LINK *1 Num);
 
 
 MAP (&dia-neg) TARGET QDL IF (*1 Neg BARRIER S-BOUNDARY);
@@ -6368,12 +6388,12 @@ MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&di
 
 # Specific ones
 
+#  Leat_go_barggus
 
 
-
-# Picking the age - these do not function yet 
-MAP (&dia-adult) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([2-9][0-9])"r))  ;  #   []    ("([0-9]|1[0-3])"r)
-MAP (&dia-young) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([1][0-9])"r))  ; #         "2[0-5]"r
+# Picking the age 
+MAP (&dia-adult) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([2-9][0-9])"r))  ;  #   
+MAP (&dia-young) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([1][0-9])"r))  ; #         
 MAP (&dia-child) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([1-9])"r))  ;
 
 
