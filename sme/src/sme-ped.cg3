@@ -6055,7 +6055,7 @@ MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Com))(*1 N 
 MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Com));
 
 
-MAP (&grm-wrong-case) TARGET (N Nom) IF (*-1 Num BARRIER NOT-ADJ LINK NOT 0 N LINK *-1 QDL);
+MAP (&grm-wrong-case) TARGET (N Nom) IF (NOT 0 Gen OR Acc)(*-1 Num BARRIER NOT-ADJ LINK NOT 0 N LINK *-1 QDL);
 
 
 # guokte viesu
