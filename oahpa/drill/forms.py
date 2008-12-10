@@ -811,7 +811,7 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
 
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
     messageObj=re.compile(r'^.*(?P<msgString>&(grm|err)[\w-]*)\s*$', re.U)
-    targetObj=re.compile(r'^.*\"(?P<targetString>[\w]*)\".*dia-target\s*$', re.U)
+    targetObj=re.compile(r'^.*\"(?P<targetString>[\w]*)\".*dia-.*$', re.U)
     diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
 
     spelling = False
@@ -868,14 +868,14 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
             if m.count("dia-") > 0:
                 dia_msg.append(m)
         if msgstrings[w].has_key('dia-target'):
-            target = msgstrings[w]['dia-target']			
+            variable = msgstrings[w]['dia-target']			
                     
     if not msg:
         self.error = "correct"
 
     lookup_client.send("q")
     lookup_client.close()
-    return msg, dia_msg, target
+    return msg, dia_msg, variable
 
 
 class VastaSettings(OahpaSettings):
@@ -969,11 +969,10 @@ def sahka_is_correct(self,utterance,targets):
     qwords = {}
     # Split the question to words for analaysis.
 
-    self.messages, self.dia_messages, target = self.vasta_is_correct(utterance.utterance, None, utterance.name)
-    if target:
+    self.messages, self.dia_messages,  self.variable = self.vasta_is_correct(utterance.utterance, None, utterance.name)
+    if self.target:
         if not self.messages:
             self.error = "correct"
-        self.target = target
     else:
         for answer in self.dia_messages:
             answer = answer.lstrip("&dia-")
@@ -985,14 +984,14 @@ def sahka_is_correct(self,utterance,targets):
     
 class SahkaSettings(OahpaSettings):
 
-    dialogue = forms.ChoiceField(initial='visit', choices=DIALOGUE_CHOICES, widget=forms.Select)
+    dialogue = forms.ChoiceField(initial='firstmeeting', choices=DIALOGUE_CHOICES, widget=forms.Select)
     
     def __init__(self, *args, **kwargs):
         self.set_settings()
         self.set_default_data()
         self.default_data['gametype'] = 'sahka'
         self.default_data['dialogue_id'] = '1'
-        self.default_data['dialogue'] = 'visit'
+        self.default_data['dialogue'] = 'firstmeeting'
         self.default_data['topicnumber'] = '0'
         super(SahkaSettings, self).__init__(*args, **kwargs)
 
@@ -1043,13 +1042,19 @@ class SahkaQuestion(OahpaQuestion):
             
             # Format question string
             qtext = utterance.utterance
+            self.qattrs={}
             for w in qtext.split():
-                if not qwords.has_key(w): qstring = qstring + " " + force_unicode(w)
+                if not qwords.has_key(w):
+                    qstring = qstring + " " + force_unicode(w)
+                    self.qattrs['question_fullform_' + w] = force_unicode(w)
                 else:
                     if qwords[w].has_key('fullform'):
                         qstring = qstring + " " + force_unicode(qwords[w]['fullform'][0])
+                        self.qattrs['question_fullform_' + w] = qwords[w]['fullform'][0]
                     else:
                         qstring = qstring + " " + w
+                        self.qattrs['question_fullform_' + w] = w
+
             # this is for -guovttos
             qstring=qstring.replace(" -","-");
             qstring=qstring.replace("- ","-");
@@ -1072,13 +1077,13 @@ class SahkaQuestion(OahpaQuestion):
         self.qattrs = {}
         if self.target:
             variable=""
-            if utterance.links.filter(target="target").count()>0:
-                variable = utterance.links.filter(target="target")[0].variable
-                self.qattrs['target_' + variable] = self.target
-                self.global_targets[variable] = { 'target' : self.target }
+            if utterance.links.filter(target=self.target).count()>0:
+                variable = utterance.links.filter(target=self.target)[0].variable
+                if variable:
+                    self.qattrs['target_' + variable] = self.variable
+                    self.global_targets[variable] = { 'target' : self.variable }
         #self.error="correct"
         self.errormsg = ""
-        #for m in self.messages:	
-        #    self.errormsg = self.errormsg + m
+
         if correct_val == "correct":
             self.error="correct"
