@@ -24,6 +24,7 @@ class Game:
         self.all_correct = ""
         self.show_correct = 0
         self.num_fields = 6
+        self.global_targets = {}
 
         if not self.settings.has_key('gametype'):
             self.settings['gametype'] = "bare"
@@ -93,7 +94,11 @@ class Game:
         answer_tagObj=re.compile(r'^answer_tag_(?P<syntaxString>[\w\-]*)$', re.U)
         answer_wordObj=re.compile(r'^answer_word_(?P<syntaxString>[\w\-]*)$', re.U)
         answer_fullformObj=re.compile(r'^answer_fullform_(?P<syntaxString>[\w\-]*)$', re.U)
+        targetObj=re.compile(r'^target_(?P<syntaxString>[\w\-]*)$', re.U)
 
+        # Collect all the game targets as global variables
+        self.global_targets = {}
+           
         # If POST data was data check, regenerate the form using ids.
         for n in range (1, self.num_fields):
             db_info = {}
@@ -112,7 +117,10 @@ class Game:
                     tmpawords = self.search_info(answer_wordObj, d, value, tmpawords, 'word')
                     tmpawords = self.search_info(answer_fullformObj, d, value, tmpawords, 'fullform')
 
+                    self.global_targets = self.search_info(targetObj, d, value, self.global_targets, 'target')
+
                     db_info[d] = value
+
 
             for syntax in qwords.keys():
                 if qwords[syntax].has_key('fullform'):
@@ -131,6 +139,7 @@ class Game:
                     awords[syntax].append(info)
             db_info['awords'] = awords
             db_info['qwords'] = qwords
+            db_info['global_targets'] = self.global_targets
 
             new_db_info = {}
 
@@ -141,6 +150,7 @@ class Game:
                 new_db_info = db_info
             form, word_id = self.create_form(new_db_info, n, data)
             self.form_list.append(form)
+
                 
     def get_score(self, data):
 
