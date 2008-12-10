@@ -982,7 +982,7 @@ def sahka_is_correct(self,utterance,targets):
                 self.error = "correct"
             self.target = answer
 
-#    self.error = "correct"
+    #self.error = "correct"
     
 class SahkaSettings(OahpaSettings):
 
@@ -1016,7 +1016,7 @@ class SahkaQuestion(OahpaQuestion):
     sahka_is_correct = sahka_is_correct
     vasta_is_correct = vasta_is_correct
 
-    def __init__(self, utterance, targets, userans_val, correct_val, *args, **kwargs):                 
+    def __init__(self, utterance, qwords, targets, global_targets, userans_val, correct_val, *args, **kwargs):                 
         
         self.init_variables("", userans_val, [])
 
@@ -1033,16 +1033,52 @@ class SahkaQuestion(OahpaQuestion):
 
         self.fields['utterance_id'] = forms.CharField(widget=utterance_widget, required=False)
 
+        self.global_targets = global_targets
         self.utterance =""
         if utterance:
             self.utterance_id=utterance.id
-            self.utterance=utterance.utterance
+            #self.utterance=utterance.utterance
+
+            # Forms question string and answer string out of grammatical elements and other strings.
+            qstring = ""
+            
+            # Format question string
+            qtext = utterance.utterance
+            for w in qtext.split():
+                if not qwords.has_key(w): qstring = qstring + " " + force_unicode(w)
+                else:
+                    if qwords[w].has_key('fullform'):
+                        qstring = qstring + " " + force_unicode(qwords[w]['fullform'][0])
+                    else:
+                        qstring = qstring + " " + w
+            # this is for -guovttos
+            qstring=qstring.replace(" -","-");
+            qstring=qstring.replace("- ","-");
+                    
+            # Remove leading whitespace and capitalize.
+            qstring=qstring.replace(" .",".");
+            qstring=qstring.replace(" ?","?");
+            qstring=qstring.replace(" !","!");
+
+            qstring = qstring.lstrip()
+            if len(qstring)>0:
+                qstring = qstring[0].capitalize() + qstring[1:]
+
+            self.utterance=qstring
 
         self.target=""
         self.dia_messages = ""		
-        #if not correct_val == "correct":
         self.gametype="sahka"
         self.sahka_is_correct(utterance,targets)
+        self.qattrs = {}
+        if self.target:
+            variable=""
+            print self.target, utterance.id
+            if utterance.links.filter(target=self.target).count()>0:
+                variable = utterance.links.filter(target=self.target)[0].variable
+                self.qattrs['target_' + variable] = self.target
+                self.global_targets[variable] = { 'target' : self.target }
+                
         self.errormsg = ""
         #for m in self.messages:	
         #    self.errormsg = self.errormsg + m
