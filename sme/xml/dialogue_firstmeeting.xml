@@ -14,7 +14,7 @@
   <topic name="presentation">
     <utt type="question" name="Mii_namma_lea">
       <text>Mii du namma lea?</text>
-      <alt target="name" variable="NAME" link="Gos_don_leat_eret">
+      <alt target="target" variable="NAME" link="Gos_don_leat_eret">
 	<text>Bures NAME . Suohtas go don leat čállime muinna odne. </text>	
 	<element id="NAME">
 	</element> 
@@ -24,20 +24,20 @@
 
     <utt type="question" name="Gos_don_leat_eret">
       <text>Mun lean Leavvajogas eret. Gos don leat eret?</text>
-      <alt target="placename" link="Gos_don_orut_dál">
+      <alt target="target" link="Gos_don_orut_dál">
       </alt>
     </utt>
 
     <utt type="question" name="Gos_don_orut_dál">
       <text>Mun orun Kárášjogas dán áigge. Gos don orut dál?</text>
       <!-- Where do you live now? NOUN will get target in the answer. -->
-      <alt target="placename" variable="PLACENAME" link="presentation_closing">
+      <alt target="target" variable="PLACENAME" link="presentation_closing">
 	<text>Mun lean leamaš PLACENAME .</text>
 	<element id="PLACENAME">
 	  <grammar tag="N+Sg+Loc"/>
 	</element> 
       </alt>
-      <alt target="unknownPlace" link="Lea_go_dat_baiki"/>
+      <alt target="unknown" link="Lea_go_dat_baiki"/>
       <alt target="default" link="work_or_school_opening"/>
     </utt>
 
@@ -120,7 +120,7 @@
     <utt type="question" name="leat_go_dus_mánát">
       <text>Mus leat guokte máná - guokte nieidda. Leat go dus mánát?</text>
       <alt target="pos" link="galle_máná"/>
-      <alt target="num" link="gos_du_eadni_lea_eret"/>
+      <alt target="neg" link="gos_du_eadni_lea_eret"/>
       <alt target="default" link="gos_du_eadni_lea_eret"/>
     </utt>
 
@@ -130,14 +130,14 @@
     </utt>
 
     <utt type="closing" name="married_closing">
-      <text>Náittosdilli ii láve bistit nu guhká dán áigge.</text>
+      <text>Sávan ahte du mielas lea ortnegis ahte jearan veaháš. Mun liikon oahpásmuvvat.</text>
     </utt>
   </topic>  
 
   <topic name="family">
     <utt type="question" name="gos_du_eadni_lea_eret">
       <text>Mu eadni lea Čáhcesullos eret. Gos du eadni lea eret?</text>
-      <alt target="unknownPlace" link="Lea_go_dat_baiki2"/>
+      <alt target="unknown" link="Lea_go_dat_baiki2"/>
 	<alt target="default" link="gos_du_ahcci_lea_eret"/>
     </utt>
 
@@ -152,7 +152,7 @@
     
     <utt type="question" name="gos_du_ahcci_lea_eret">
       <text>Mu áhčči lea jápmán dál, muhto son lei Kárášjogas eret. Gos du áhčči lea eret?</text>
-      <alt target="unknownPlace" link="Lea_go_dat_baiki3"/>
+      <alt target="unknown" link="Lea_go_dat_baiki3"/>
       <alt target="default" link="galle_viellja_ja_oabbá"/>
     </utt>
 
@@ -191,7 +191,7 @@
     <utt type="question" name="Makkar_biila">
       <text>Makkár biila dus lea?</text>
       <alt target="name" variable="CAR" link="Lea_go_buorre_biila"/>
-      <alt target="unknownCar" variable="CAR" link="Lea_go_dat_biila"/>
+      <alt target="unknown" variable="CAR" link="Lea_go_dat_biila"/>
       <alt target="default" link="Háliidat_go_oastit_mu_biilla"/>
     </utt>
 

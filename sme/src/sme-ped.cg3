@@ -6055,7 +6055,7 @@ MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Com))(*1 N 
 MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Com));
 
 
-MAP (&grm-wrong-case) TARGET (N Nom) IF (NOT 0 Gen OR Acc)(*-1 Num BARRIER NOT-ADJ LINK NOT 0 N LINK *-1 QDL);
+MAP (&grm-numeral-wrong-case) TARGET (N Nom) IF (NOT 0 Gen OR Acc)(*-1 Num BARRIER NOT-ADJ LINK NOT 0 N OR OKTA LINK *-1 QDL);
 
 
 # guokte viesu
@@ -6153,10 +6153,12 @@ MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK
 #MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN LINK *-1 Sg3)(NOT 0 Sg3) ;
 MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
+LIST BOTH-PRS-PRT = gos_du_eadni_lea_eret gos_du_ahcci_lea_eret ;
+
 MAP (&grm-incorr-tense) TARGET VFIN + Prs (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prt LINK NOT 0 Prs) ;
 MAP (&grm-incorr-tense) TARGET ConNeg (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prt  LINK NOT 0 Prs) ;
 MAP (&grm-incorr-tense) TARGET PrfPrc (*-1 Neg BARRIER VERB LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prs  LINK NOT 0 Prt) ;
-MAP (&grm-incorr-tense) TARGET VFIN + Prt (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prs LINK NOT 0 Prt) ;
+MAP (&grm-incorr-tense) TARGET VFIN + Prt (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BOTH-PRS-PRT LINK *-1 VFIN + Prs LINK NOT 0 Prt) ;
 
 
 # -------------------
@@ -6470,3 +6472,4 @@ MAP (&dia-child) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([1-9])"r
 # &grm-should-not-Nom
 # &grm-Vehicle-Com
 # &grm-Loc-leaving
+# &grm-numeral-wrong-case
