@@ -5728,28 +5728,28 @@ LIST SAHKA = "^sahka" ;
 
 
 # Picking person name, if it is not in the lexicon - for SAHKA
-MAP (&dia-name) TARGET QMRK IF (*-1 QDL BARRIER (&dia-name) LINK 0 (Mii_namma_lea)) ;
+MAP (&dia-target) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
 # Picking name, the first one if there are many
-MAP (&dia-name) TARGET Prop IF (*-1 QDL BARRIER (&dia-name) LINK 0 (Mii_namma_lea)) ;
+MAP (&dia-target) TARGET Prop IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
 
 # Picking name if it its in the lexicon, the first one if there are many
-MAP (&dia-car) TARGET Prop IF (*-1 QDL BARRIER (&dia-car) LINK 0 (Makkar_biila)) ;
+MAP (&dia-target) TARGET Prop IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila)) ;
 
 # Picking car name, if it is not in the lexicon - for SAHKA
-MAP (&dia-unknownCar) TARGET QMRK IF (*-1 QDL BARRIER (&dia-car) LINK 0 (Makkar_biila)) ;
-MAP (&dia-unknownCar) TARGET N IF (NOT 0 Obj)(*-1 QDL BARRIER (&dia-car) LINK 0 (Makkar_biila)) ;
+MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila)) ;
+MAP (&dia-unknown) TARGET N IF (NOT 0 Obj)(*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila)) ;
 
 # Picking place name, if it is  in the lexicon - for SAHKA
-MAP (&dia-placename) TARGET (N Plc Loc) IF (*-1 QDL BARRIER (&dia-placename) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv)) ;
-MAP (&dia-placename) TARGET (N Plc Loc) IF (*-1 QDL BARRIER (&dia-placename) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv)) ;
+MAP (&dia-target) TARGET (N Plc Loc) IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv)) ;
+MAP (&dia-target) TARGET (N Plc Loc) IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv)) ;
 
 
 # Picking place name, if it is not in the lexicon - for SAHKA
-MAP (&dia-unknownPlace) TARGET QMRK IF (*-1 QDL BARRIER (&dia-placename) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv)) ;
-MAP (&dia-unknownPlace) TARGET QMRK IF (*-1 QDL BARRIER (&dia-placename) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv)) ;
+MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv)) ;
+MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv)) ;
 
-MAP (&dia-unknownPlace) TARGET N IF (NOT 0 Prop)(*-1 QDL BARRIER (&dia-placename) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv)) ;
-MAP (&dia-unknownPlace) TARGET N IF (NOT 0 Prop)(*-1 QDL BARRIER (&dia-placename) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv)) ;
+MAP (&dia-unknown) TARGET N IF (NOT 0 Prop)(*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv)) ;
+MAP (&dia-unknown) TARGET N IF (NOT 0 Prop)(*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv)) ;
 
 
 # For spellingerrors:
@@ -6246,7 +6246,7 @@ MAP (&grm-incorr-tense-past) TARGET PAST-MARKER (-1 VFIN + Prs LINK NOT 0 Prt LI
 
 # leat_go_dus_mánát - for this one we do not want dia-pos:
 
-MAP (&dia-num) TARGET QDL (0 (leat_go_dus_mánát) LINK *1 Num);
+MAP (&dia-neg) TARGET QDL (0 (leat_go_dus_mánát) LINK *1 Num);
 
 
 MAP (&dia-neg) TARGET QDL IF (*1 Neg BARRIER S-BOUNDARY);
