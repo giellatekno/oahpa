@@ -970,7 +970,6 @@ def sahka_is_correct(self,utterance,targets):
     # Split the question to words for analaysis.
 
     self.messages, self.dia_messages, target = self.vasta_is_correct(utterance.utterance, None, utterance.name)
-    #target = "pos"
     if target:
         if not self.messages:
             self.error = "correct"
@@ -1073,12 +1072,11 @@ class SahkaQuestion(OahpaQuestion):
         self.qattrs = {}
         if self.target:
             variable=""
-            print self.target, utterance.id
-            if utterance.links.filter(target=self.target).count()>0:
-                variable = utterance.links.filter(target=self.target)[0].variable
+            if utterance.links.filter(target="target").count()>0:
+                variable = utterance.links.filter(target="target")[0].variable
                 self.qattrs['target_' + variable] = self.target
                 self.global_targets[variable] = { 'target' : self.target }
-                
+        #self.error="correct"
         self.errormsg = ""
         #for m in self.messages:	
         #    self.errormsg = self.errormsg + m
