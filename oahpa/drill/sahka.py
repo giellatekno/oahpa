@@ -7,15 +7,35 @@ from oahpa.drill.game import Game
 from random import randint
 
 class SahkaGame(Game):
+
+    def form_utterance(self, utterance):
+
+        u = utterance.utterance
+        qwords={}
+        for w in u.split():
+            if w== "": continue
+            word = {'fullform' : [] }
+            if self.global_targets.has_key(w):
+                fullform=""
+                wstring = self.global_targets[w]['target']
+                if UElement.objects.filter(utterance=utterance, syntax=w).count()>0:
+                    tag = UElement.objects.filter(utterance=utterance, syntax=w)[0].tag
+                    if Form.objects.filter(word__lemma=wstring, tag=tag).count()>0:
+                        fullform = Form.objects.filter(word__lemma=wstring, tag=tag)[0]
+                        word['fullform'].append(fullform.fullform)
+                if not fullform:
+                    word['fullform'].append(wstring)
+            else:
+                word['fullform'].append(w)
+                
+            qwords[w] = word
+        return qwords
     
     def update_game(self, counter, prev_form=None):
 
-        #print "counter", counter
-        print "topicnumber", self.settings['topicnumber']
         new_topic=False
         utterance=None
 
-        print self.settings
         if Topic.objects.filter(Q(dialogue__name=self.settings['dialogue']) & \
                                 Q(number=self.settings['topicnumber'])).count()>0:
 
@@ -28,14 +48,14 @@ class SahkaGame(Game):
             prev_utterance_id = prev_form.utterance_id
             prev_utterance = Utterance.objects.get(id=prev_utterance_id)
             prev_utttype =  prev_utterance.utttype
-
-        ####### 1. part: Start or end a new conversation
+            self.global_targets = prev_form.global_targets
+            
+        ####### 1. part: Start or end a new topic
             
         # If previous utterance was opening, then go to next utterance
         if prev_form and prev_utttype == "opening" and topic.utterance_set.filter(utttype="question").count()>0:
             utterance = topic.utterance_set.filter(utttype="question").order_by('id')[0]
 
-        print "NAME", topic.topicname
         # If previous utterance was closing, then create a new topic.
         if prev_form and prev_utttype == "closing":
             new_topic=True
@@ -45,15 +65,21 @@ class SahkaGame(Game):
             dia = Dialogue.objects.get(name=self.settings['dialogue'])
             self.settings['dialogue']=dia.name
             utterance = topic.utterance_set.all().filter(utttype="opening")[0]
-
+            
         # If the utterance was found create it and return
         if utterance:
             db_info = {}
             db_info['userans'] = ""
             db_info['correct'] = ""
             db_info['utterance_id'] = utterance.id
+            qwords = self.form_utterance(utterance)
+            db_info['qwords'] = qwords
+
+            db_info['global_targets'] = self.global_targets
+                
             form, jee  = self.create_form(db_info, counter, 0)
             self.form_list.append(form)
+
             self.num_fields = self.num_fields+1
             if not utterance.utttype == "question":
                 self.update_game(counter+1, form)               
@@ -65,6 +91,7 @@ class SahkaGame(Game):
         # According to the type of the answer
         if prev_form:
             nextlink=None
+            variable=""
             if prev_form.target:
                 if prev_utterance.links.filter(target=prev_form.target):
                     nextlink = prev_utterance.links.filter(target=prev_form.target)[0]
@@ -78,6 +105,11 @@ class SahkaGame(Game):
                 db_info['userans'] = ""
                 db_info['correct'] = ""
                 db_info['utterance_id'] = utterance.id
+                qwords = self.form_utterance(utterance)
+                db_info['qwords'] = qwords
+
+                db_info['global_targets'] = self.global_targets
+                
                 form, jee  = self.create_form(db_info, counter, 0)
                 self.form_list.append(form)
                 self.num_fields = self.num_fields+1
@@ -94,6 +126,11 @@ class SahkaGame(Game):
                 db_info['userans'] = ""
                 db_info['correct'] = ""
                 db_info['utterance_id'] = utterance.id
+                qwords = self.form_utterance(utterance)
+                db_info['qwords'] = qwords
+
+                db_info['global_targets'] = self.global_targets
+
                 form, jee  = self.create_form(db_info, counter, 0)
                 self.form_list.append(form)
                 self.num_fields = self.num_fields+1
@@ -108,13 +145,16 @@ class SahkaGame(Game):
 
 
     def create_form(self, db_info, n, data=None):
-        
+
         utterance = Utterance.objects.get(Q(id=db_info['utterance_id']))
         targets = []
         if utterance.links.filter(~Q(target="")):
             target_els = utterance.links.filter(~Q(target=""))
             for t in target_els:
                 targets.append(force_unicode(t.target))
-        form = (SahkaQuestion(utterance, targets, db_info['userans'], db_info['correct'], data, prefix=n))
+        qwords = db_info['qwords']
+        global_targets = db_info['global_targets']
+
+        form = (SahkaQuestion(utterance, qwords, targets, global_targets, db_info['userans'], db_info['correct'], data, prefix=n))
 
         return form, None
