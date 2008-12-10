@@ -163,10 +163,16 @@ class Utterance(models.Model):
     name = models.CharField(max_length=200,blank=True,null=True)
     topic = models.ForeignKey('Topic')
 
+class UElement(models.Model):
+    utterance=models.ForeignKey(Utterance, null=True)
+    syntax = models.CharField(max_length=50)
+    tag = models.ForeignKey(Tag,null=True,blank=True)
+
 class LinkUtterance(models.Model):
     link = models.ForeignKey(Utterance,null=True,blank=True)
     target = models.CharField(max_length=20,null=True,blank=True)
     variable = models.CharField(max_length=20,null=True,blank=True)
+
 
 class Topic(models.Model):
     topicname = models.CharField(max_length=50,blank=True,null=True)
