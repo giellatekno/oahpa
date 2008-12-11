@@ -239,11 +239,24 @@ function setFocus(){
   }
 } 
 
+function scrollDown() { 
+		 if (document.body.scrollHeight) {
+		 		   window.scrollto(0, document.body.scrollHeight); 
+		  } 
+		  else if (screen.height) {
+		 // IE5 window.scrollto(0, screen.height); 
+	   } 
+} 
 
 </script>
 </head>
 
+
+{% ifequal settings.gametype "sahka" %}
+<body onload="scrollDown(); setFocus();">
+{% else %}
 <body onload="setFocus();">
+{% endifequal %}
 
 <div id="header" >
 
