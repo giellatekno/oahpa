@@ -15,7 +15,7 @@
     <utt type="question" name="Mii_namma_lea">
       <text>Mii du namma lea?</text>
       <alt target="target" variable="NAME" link="Gos_don_leat_eret">
-	<text>Bures NAME . Suohtas go don leat čállime muinna odne. </text>	
+	<text>Bures NAME . Suohtas go don leat čállimin muinna odne. </text>	
 	<element id="NAME">
 	</element> 
       </alt>
@@ -29,7 +29,7 @@
     </utt>
 
     <utt type="question" name="Gos_don_orut_dál">
-      <text>Mun orun Kárášjogas dán áigge. Gos don orut dál?</text>
+      <text>Leavvajohka lea beallemuttus Kárášjoga ja Deanu. Muhto mun orun Kárášjogas dán áigge. Gos don orut dál?</text>
       <!-- Where do you live now? NOUN will get target in the answer. -->
       <alt target="target" variable="PLACENAME" link="presentation_closing">
 	<text>Mun lean leamaš PLACENAME .</text>
@@ -51,7 +51,7 @@
 
 
     <utt type="closing" name="presentation_closing">
-      <text>PLACENAME sáhttá leat buorre orrut.</text>
+      <text>PLACENAME sáhttá leat buorre orrut. Ieš loavttán bures dáppe Kárášjogas.</text>
 	<element id="PLACENAME">
 	  <grammar tag="N+Sg+Loc"/>
       </element> 
@@ -113,7 +113,7 @@
     </utt>
 
     <utt type="closing" name="married_closing_adult">
-      <text>Sávan ahte du mielas lea ortnegis ahte jearan veaháš, go lea mu vuohki oahpásmuvvat dutnje.</text>
+      <text>Doaivvun ahte du mielas lea ortnegis ahte jearan veaháš, go lea mu vuohki oahpásmuvvat dutnje.</text>
     </utt>
   </topic>  
 
@@ -127,7 +127,7 @@
     <utt type="question" name="Lea_go_dat_baiki2_adult">
       <text>Lea go dat báiki? In leat gullan dan birra ovdal.</text>
       <alt target="pos" link="gos_du_ahcci_lea_eret_adult">
-	<text>Na nu.</text>
+	<text>Já nu.</text>
       </alt>
       <alt target="default" link="gos_du_ahcci_lea_eret_adult"/>
     </utt>
@@ -196,10 +196,10 @@
     <utt type="question" name="Leat_go_dus_sihkkelat_adult">
       <text>Leat go dus sihkkelat?</text>
       <alt target="neg" link="Háliidat_go_oastit_mu_biilla_adult">
-	  <text>Dalle fertet birget vuojána haga.</text>
+	  <text>Dalle fertet birget sihkkeliid haga.</text>
       </alt>
       <alt target="default" link="Háliidat_go_oastit_mu_biilla_adult">
-	<text>Dahká buori sihkkelastit</text>
+	<text>Dahká buori sihkkelastit.</text>
       </alt>
     </utt>
         
