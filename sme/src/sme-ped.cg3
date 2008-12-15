@@ -5733,11 +5733,11 @@ MAP (&dia-target) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namm
 MAP (&dia-target) TARGET Prop IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
 
 # Picking name if it its in the lexicon, the first one if there are many
-MAP (&dia-target) TARGET Prop IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila)) ;
+MAP (&dia-target) TARGET Prop IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila_adult)) ;
 
 # Picking car name, if it is not in the lexicon - for SAHKA
-MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila)) ;
-MAP (&dia-unknown) TARGET N IF (NOT 0 Obj)(*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila)) ;
+MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila_adult)) ;
+MAP (&dia-unknown) TARGET N IF (NOT 0 Obj)(*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila_adult)) ;
 
 # Picking place name, if it is  in the lexicon - for SAHKA
 MAP (&dia-target) TARGET (N Plc Loc) IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv)) ;
@@ -6083,6 +6083,7 @@ MAP (&grm-NoEret) TARGET QDL IF (-1 ("eret") LINK *-1 ("gos" Adv))(*1 (N Loc) LI
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (NOT 0 Du1)(*-1 QDL BARRIER S-BOUNDARY LINK 0 SAHKA LINK *-1 (Pers Nom) LINK 0 Du1) ;
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom)  (NOT 0 Pl1)(*-1 QDL BARRIER S-BOUNDARY LINK 0 SAHKA LINK *-1 (Pers Nom) LINK 0 Pl1) ;
 
+LIST MAKKAR-BARGU = Makkár_bargu_dus_lea_young Makkár_bargu_dus_lea_adult   ; 
 
 # Answer with the correct pronoun:
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg1) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Sg2);
@@ -6096,7 +6097,7 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL BARRIER S-BOUNDARY LINK
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
 
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (N Pl Nom) LINK NOT 0 NUM-QUESTION)(NOT 0 Pl3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 (Makkár_bargu_dus_lea) LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
 
@@ -6116,10 +6117,12 @@ LIST VERBLEMMA = (".*"r) ;
 
 #LIST VERBLEMMA = "juhkat" "borrat" "mannat" ;
 
-MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0 (Leat_go_barggus) LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
-MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY  LINK NOT 0 (Leat_go_barggus) LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
+LIST BARGGUS = Leat_go_barggus_adult Leat_go_barggus_adult ;
 
-MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY  LINK NOT 0 (Makkár_bargu_dus_lea) LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr) ;
+MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
+MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY  LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA) ;
+
+MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY  LINK NOT 0  MAKKAR-BARGU LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr) ;
 MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA LINK NOT 0 WORK-V LINK *-1 MO OR Interr) ;
 
 
@@ -6153,7 +6156,7 @@ MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK
 #MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN LINK *-1 Sg3)(NOT 0 Sg3) ;
 MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
-LIST BOTH-PRS-PRT = gos_du_eadni_lea_eret gos_du_ahcci_lea_eret ;
+LIST BOTH-PRS-PRT = gos_du_eadni_lea_eret_adult gos_du_eadni_lea_eret_young gos_du_eadni_lea_eret_child gos_du_ahcci_lea_eret_adult gos_du_ahcci_lea_eret_young gos_du_ahcci_lea_eret_child ;
 
 MAP (&grm-incorr-tense) TARGET VFIN + Prs (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prt LINK NOT 0 Prs) ;
 MAP (&grm-incorr-tense) TARGET ConNeg (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prt  LINK NOT 0 Prs) ;
@@ -6248,7 +6251,7 @@ MAP (&grm-incorr-tense-past) TARGET PAST-MARKER (-1 VFIN + Prs LINK NOT 0 Prt LI
 
 # leat_go_dus_mánát - for this one we do not want dia-pos:
 
-MAP (&dia-neg) TARGET QDL (0 (leat_go_dus_mánát) LINK *1 Num);
+MAP (&dia-neg) TARGET QDL (0 (leat_go_dus_mánát_adult) LINK *1 Num);
 
 
 MAP (&dia-neg) TARGET QDL IF (*1 Neg BARRIER S-BOUNDARY);
