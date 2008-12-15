@@ -5945,10 +5945,10 @@ REMOVE Loc (-1 BOS)(0 ("galle") LINK 1 VFIN)(*1 QDL);
 #REMOVE Nom (-1 BOS)(0 ("galle") LINK 1 N)(*1 QDL);
 REMOVE Gen (0 TARGETQUESTION-ACC LINK -1 BOS)(1 VFIN OR Pron);
 
-MAP (&grm-missing-NumSg) TARGET ("galle" Sg Nom) IF (*1 QDL LINK NOT *1 (Num Sg) BARRIER S-BOUNDARY);
-MAP (&grm-missing-NumPl) TARGET ("galle" Pl) IF (*1 QDL LINK NOT *1 (Num Pl) BARRIER S-BOUNDARY);
-MAP (&grm-missing-NNum) TARGET ("gallis" N Num) IF (*1 QDL LINK NOT *1 (N Num) BARRIER S-BOUNDARY);
-MAP (&grm-missing-Ord) TARGET ("gallát") IF (*1 QDL LINK NOT *1 (A Ord) BARRIER S-BOUNDARY);
+MAP (&grm-missing-NumSg) TARGET ("galle" Sg Nom) IF (*1 QDL LINK NOT *1 (Num Sg) OR Neg BARRIER S-BOUNDARY);
+MAP (&grm-missing-NumPl) TARGET ("galle" Pl) IF (*1 QDL LINK NOT *1 (Num Pl) OR Neg BARRIER S-BOUNDARY);
+MAP (&grm-missing-NNum) TARGET ("gallis" N Num) IF (*1 QDL LINK NOT *1 (N Num) OR Neg BARRIER S-BOUNDARY);
+MAP (&grm-missing-Ord) TARGET ("gallát") IF (*1 QDL LINK NOT *1 (A Ord) OR Neg BARRIER S-BOUNDARY);
 
 
 MAP (&grm-missing-Loc) TARGET TARGETQUESTION-LOC IF (*1 QDL LINK NOT *1 Loc OR DOPPE OR Neg BARRIER S-BOUNDARY);
@@ -6054,8 +6054,11 @@ MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 Ess)(*1 N BARRI
 MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Com))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Com));
 MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Com));
 
+LIST GALLE-VIELJA = galle_viellja_ja_oabbá_child galle_viellja_ja_oabbá_young galle_viellja_ja_oabbá_adult ;
 
 MAP (&grm-numeral-wrong-case) TARGET (N Nom) IF (NOT 0 Gen OR Acc)(*-1 Num BARRIER NOT-ADJ LINK NOT 0 N OR OKTA LINK *-1 QDL);
+MAP (&grm-numeral-wrong-case) TARGET (N Gen) IF (NOT 0 Nom)(*-1 OKTA BARRIER NOT-ADJ LINK -1 COPULAS LINK *-1 QDL);
+MAP (&grm-numeral-wrong-case) TARGET (N Gen) IF (NOT 0 Nom)(*-1 OKTA BARRIER NOT-ADJ LINK *-1 GALLE-VIELJA);
 
 
 # guokte viesu
