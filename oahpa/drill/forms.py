@@ -812,13 +812,21 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
     messageObj=re.compile(r'^.*(?P<msgString>&(grm|err)[\w-]*)\s*$', re.U)
     targetObj=re.compile(r'^.*\"(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\".*dia-.*$', re.U)
+    # Extract the lemma	
+    constantObj=re.compile(r'^.*\"\<(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\>\".*$', re.U)
     diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
+
 
     spelling = False
     msgstrings = {}
     diastring = "jee"
+    lemma=""
     for line in checked:
         line = line.strip()
+
+        matchObj=constantObj.search(line)
+        if matchObj:
+            lemma = matchObj.expand(r'\g<targetString>')
 
         matchObj=wordformObj.search(line)
         if matchObj:
@@ -836,6 +844,7 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
         if matchObj:
             msgstring = matchObj.expand(r'\g<targetString>')
             msgstrings[wordform]['dia-target'] = msgstring
+            msgstrings[wordform]['dia-lemma'] = lemma
 
         matchObj=diaObj.search(line)
         if matchObj:
@@ -847,6 +856,7 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
     dia_msg = []
     target = ""
     variable=""
+    constant=""
     found=False
     for w in msgstrings.keys():
         if found: break
@@ -869,14 +879,15 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
             if m.count("dia-") > 0:
                 dia_msg.append(m)
         if msgstrings[w].has_key('dia-target'):
-            variable = msgstrings[w]['dia-target']			
+            constant = msgstrings[w]['dia-lemma']
+            variable = msgstrings[w]['dia-target']
                     
     if not msg:
         self.error = "correct"
 
     lookup_client.send("q")
     lookup_client.close()
-    return msg, dia_msg, variable
+    return msg, dia_msg, variable, constant
 
 
 class VastaSettings(OahpaSettings):
@@ -918,7 +929,7 @@ class VastaQuestion(OahpaQuestion):
         # In qagame, all words are considered as answers.
 
         self.gametype="vasta"
-        self.messages, jee, joo = self.vasta_is_correct(question.string, qwords, None)
+        self.messages, jee, joo, juu = self.vasta_is_correct(question.string, qwords, None)
         
         self.qattrs= {}
         for syntax in qwords.keys():
@@ -970,7 +981,7 @@ def sahka_is_correct(self,utterance,targets):
     qwords = {}
     # Split the question to words for analaysis.
 
-    self.messages, self.dia_messages,  self.variable = self.vasta_is_correct(utterance.utterance, None, utterance.name)
+    self.messages, self.dia_messages, self.variable, self.constant = self.vasta_is_correct(utterance.utterance, None, utterance.name)
     if self.target:
         if not self.messages:
             self.error = "correct"
@@ -1078,11 +1089,16 @@ class SahkaQuestion(OahpaQuestion):
         self.sahka_is_correct(utterance,targets)
         if self.target:
             variable=""
+            constant=""
             if utterance.links.filter(target=self.target).count()>0:
                 variable = utterance.links.filter(target=self.target)[0].variable
                 if variable:
                     self.qattrs['target_' + variable] = self.variable
                     self.global_targets[variable] = { 'target' : self.variable }
+                constant = utterance.links.filter(target=self.target)[0].constant
+                if constant:
+                    self.qattrs['target_' + constant] = self.constant
+                    self.global_targets[constant] = { 'target' : self.constant }
         for t in self.global_targets.keys():
             if not self.qattrs.has_key(t):
                 self.qattrs['target_' + t] = self.global_targets[t]['target']
