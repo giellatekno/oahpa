@@ -561,6 +561,7 @@ class Sahkaview:
             # Otherwise the game is created using the user input.
             if "settings" in data:
                 game.settings['topicnumber']=0
+                game.settings['image']="sahka.png"
                 game.num_fields=1
                 game.update_game(1)
             else:
@@ -571,7 +572,8 @@ class Sahkaview:
                 if game.form_list[game.num_fields-2].error == "correct":
                     game.update_game(len(game.form_list)+1, game.form_list[game.num_fields-2])
 
-            settings_form.init_hidden(game.settings['topicnumber'],game.num_fields,game.settings['dialogue'])
+            settings_form.init_hidden(game.settings['topicnumber'],game.num_fields,\
+									  game.settings['dialogue'],game.settings['image'])
 
         # If there is no POST data, default settings are applied
         else:
@@ -606,6 +608,8 @@ class Sahkaview:
             'comment': game.comment,
             'topicnumber' : game.settings['topicnumber'],
             'num_fields' : game.num_fields,
+            'gametype' : "sahka",
+            'image' : game.settings['image'],
             'dialogue' : game.settings['dialogue'],
             })
         return c
