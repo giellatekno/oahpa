@@ -7,7 +7,6 @@
 
 
 {% block navbar %}
-<div id="navbar">                
   {% ifequal settings.gametype "bare" %}
 <img width="120" height="120" border="0" src="/oahpa/media/morfa.png"/>
 <p class="bigheader">{% trans 'MORFA-S' %}</p>
@@ -33,7 +32,6 @@
 <li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>                                              
 {% endifequal %}
 </ul>                                                        
-</div>
 {% else %}
 <img width="120" height="120" border="0" src="/oahpa/media/morfac.png"/>
 <p class="bigheader">{% trans 'MORFA-C' %}</p>
@@ -59,7 +57,6 @@
 <li><a href="/oahpa/morfac_l/">{% trans 'Numerals' %}</a></li>                                              
 {% endifequal %}
 </ul>                                                        
-</div>
 
 {% endifequal %}
 {% endblock %}
