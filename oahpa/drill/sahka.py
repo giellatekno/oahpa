@@ -44,6 +44,8 @@ class SahkaGame(Game):
         else:
             return
 
+        if topic.image:
+            self.settings['image'] = topic.image			
         if prev_form:
             prev_utterance_id = prev_form.utterance_id
             prev_utterance = Utterance.objects.get(id=prev_utterance_id)
@@ -91,7 +93,6 @@ class SahkaGame(Game):
         # According to the type of the answer
         if prev_form:
             nextlink=None
-            variable=""
             if prev_form.target:
                 if prev_utterance.links.filter(target=prev_form.target):
                     nextlink = prev_utterance.links.filter(target=prev_form.target)[0]
