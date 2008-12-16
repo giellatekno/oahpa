@@ -53,13 +53,23 @@ class Sahka:
                 if utt.getElementsByTagName("text"):
                     if utt.getElementsByTagName("text")[0].firstChild.data:
                         utt_text = utt.getElementsByTagName("text")[0].firstChild.data
+
+                if utt.getElementsByTagName("element"):
+                    uttelement = utt.getElementsByTagName("element")[0]
+                    el_id = uttelement.getAttribute("id")
+                    tag = ""
+                    if  uttelement.getElementsByTagName("grammar"):
+                        grammar = uttelement.getElementsByTagName("grammar")[0] 
+                        tag = grammar.getAttribute("tag")
+                    utterance['elements'] = { 'id' : el_id, 'tag' : tag }
+
                 utterance['text'] = utt_text
                 utterance['name'] = utt_name
                 utterance['type'] = utttype
                 utterance['number'] = i
                 i=i+1
                 utterance['alts'] = []
-                print utt_text
+                
                 for alt in utt.getElementsByTagName("alt"):
                     alter = {}
                     alter['target'] = alt.getAttribute("target")
@@ -70,17 +80,31 @@ class Sahka:
                     if alt.getElementsByTagName("text"):
                         alttext = alt.getElementsByTagName("text")[0].firstChild.data
                     alter['text'] = alttext
+
                     utterance['alts'].append(alter)
 
                 utts.append(utterance)
                 
             for u in utts:
-                print u['text']
                 utt, created = Utterance.objects.get_or_create(utterance=u['text'],\
                                                                utttype=u['type'],\
                                                                topic=t,\
                                                                name=u['name'])
                 utt.save()
+
+                # Create syntactic specifictation for variables
+                if u.has_key('elements'):
+                    tag=None
+                    if u['elements']['tag']:
+                        if Tag.objects.filter(string=u['elements']['tag']).count()>0:
+                            tag = Tag.objects.filter(string=u['elements']['tag'])[0]
+                        else:
+                            print "*******ERRROR: tag not found", u['elements']['tag'] 
+                    uelement, created = UElement.objects.get_or_create(syntax=u['elements']['id'],\
+                                                                       tag=tag,\
+                                                                       utterance=utt)
+
+                    uelement.save()
 
             # create an opening or closing if not exist:
             if not opening: 
@@ -104,20 +128,18 @@ class Sahka:
                 linkutt=None
                 linkutt2=None
                 utterance = Utterance.objects.get(name=u['name'],topic=t)
-                print utterance.utterance
+
                 for a in u['alts']:
                     if a['link']:
-                        print "link0:", a['link']
                         next_utterance = Utterance.objects.get(name=a['link'])
 
                     if a['text']:
-                        print a['text']
                         utterance2, created = Utterance.objects.get_or_create(utterance=a['text'],\
                                                                               utttype='text',\
                                                                               topic=t)
                         utterance2.save()
+                            
                         if a['link']:
-                            print "link1:", a['link']
                             linkutt2, created = LinkUtterance.objects.get_or_create(link=next_utterance,\
                                                                                     target="default")
                             linkutt2.save()
@@ -136,7 +158,6 @@ class Sahka:
 
                     else:
                         if a ['link']:
-                            print "link:", a['link']
                             linkutt, created = LinkUtterance.objects.get_or_create(link=next_utterance,\
                                                                                    target=a['target'], \
                                                                                    variable=a['variable'], \
