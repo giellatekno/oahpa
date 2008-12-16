@@ -1,17 +1,16 @@
 
-var my_tooltip = new Tooltip('id_of_trigger_element', 'id_of_tooltip_to_show_element')
 
-var baseText = null;
- 
 function showPopup(w,h,elid){
    var popUp = document.getElementById(elid);
 
+   var baseText = null;
+ 
    popUp.style.top = "200px";
    popUp.style.left = "400px";
    popUp.style.width = w + "px";
    popUp.style.height = h + "px";
  
-   if (baseText == null) baseText = popUp.innerHTML;
+   if (baseText === null) baseText = popUp.innerHTML;
    popUp.innerHTML = baseText + 
       "<div id=\"statusbar\"><button onclick=\"hidePopup(elid);\">Close window<button></div>";
  
@@ -37,7 +36,7 @@ function feedback(msg)
   generator.document.close();
 }
 
-function process(strField, evtKeyPress)  {
+function process(strField, evtKeyPress,form)  {
     var aKey = evtKeyPress.keyCode ?  
     evtKeyPress.keyCode :evtKeyPress.which ?  
       evtKeyPress.which : evtKeyPress.charCode;  
@@ -47,20 +46,20 @@ function process(strField, evtKeyPress)  {
       var numbers = name.match(/^\w/);
       var newnum = parseInt(numbers[0]) + 1; 
       var newname = name.replace(numbers[0],newnum);
-      if(newname in document.theform){     
-           document.theform[newname].focus();
+      if(newname in form){     
+           form[newname].focus();
+      }
       else {
-        document.theform["test"].focus()
+        form.test.focus();
       }
      return false;
     }  
-  }
 }
 
-  function processvasta(event){
+function processvasta(event,form){
     key = event.keyCode;
     if (key==13){
-      document.theform.submit();
+      form.submit();
     }
   }
 
@@ -78,9 +77,9 @@ function sahkaSetFocus(){
 
 } 
 
-function setFocus(){
+function setFocus(form){
 
-  if (document.theform["gametype"] == "sahka") {
+  if (form.gametype == "sahka") {
     sahkaSetFocus();
     return;
   }
