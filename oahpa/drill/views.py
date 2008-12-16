@@ -169,36 +169,20 @@ class Gameview:
             })
         return c
 
-def oahpa2(request):
 
-    mgame = Gameview()
-    mgame.init_settings()
-    mgame.settings['pos'] = "N"
-    mgame.settings['gametype'] = "bare"
+def oahpa(request):
 
-    c = mgame.create_mgame(request)
-    return render_to_response('oahpa2.html', c)
+    c = RequestContext(request, {
+        'jee': "joku arvo",
+        })
+    return render_to_response('oahpa_main.html', c, context_instance=RequestContext(request))
 
+def sahka_main(request):
 
-def oahpa3(request):
-
-    mgame = Gameview()
-    mgame.init_settings()
-    mgame.settings['pos'] = "N"
-    mgame.settings['gametype'] = "bare"
-
-    c = mgame.create_mgame(request)
-    return render_to_response('oahpa3.html', c)
-
-def oahpa4(request):
-
-    mgame = Gameview()
-    mgame.init_settings()
-    mgame.settings['pos'] = "N"
-    mgame.settings['gametype'] = "bare"
-
-    c = mgame.create_mgame(request)
-    return render_to_response('oahpa4.html', c)
+    c = RequestContext(request, {
+        'jee': "joku arvo",
+        })
+    return render_to_response('sahka_main.html', c, context_instance=RequestContext(request))
 
 
 def mgame_n(request):
