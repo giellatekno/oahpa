@@ -929,7 +929,7 @@ class VastaQuestion(OahpaQuestion):
         # In qagame, all words are considered as answers.
 
         self.gametype="vasta"
-        self.messages, jee, joo, juu = self.vasta_is_correct(question.string, qwords, None)
+        self.messages, jee, joo, juu  = self.vasta_is_correct(question.string, qwords, None)
         
         self.qattrs= {}
         for syntax in qwords.keys():
@@ -1005,9 +1005,10 @@ class SahkaSettings(OahpaSettings):
         self.default_data['dialogue_id'] = '1'
         self.default_data['dialogue'] = 'firstmeeting'
         self.default_data['topicnumber'] = '0'
+        self.default_data['image'] = 'sahka.png'
         super(SahkaSettings, self).__init__(*args, **kwargs)
 
-    def init_hidden(self, topicnumber, num_fields, dialogue):
+    def init_hidden(self, topicnumber, num_fields, dialogue, image):
         
         # Store topicnumber as hidden input to keep track of topics.
         #print "topicnumber", topicnumber
@@ -1015,6 +1016,7 @@ class SahkaSettings(OahpaSettings):
         topicnumber = topicnumber
         num_fields = num_fields
         dialogue = dialogue
+        image = image
 
 
 class SahkaQuestion(OahpaQuestion):
