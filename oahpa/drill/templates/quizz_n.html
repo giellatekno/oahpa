@@ -3,19 +3,13 @@
 
 {% block navbar %}
 <div id="navbar">
-<ul style="margin-left: 0; padding-left: 15px; list-style: none;">                    
+<img width="120" height="120" border="0" src="/oahpa/media/leksa.png"/>
+<p class="bigheader">{% trans 'LEKSA' %}</p>
+<ul class="sidelist">                    
 <li> <a href="/oahpa/leksa/">{% trans 'Words' %}</a><br/>
-<li><font color="#D2B48C" ><b>{% trans 'Placenames' %}</b></font>&nbsp;&nbsp;
+<li class="selected">{% trans 'Placenames' %}</li>
 </ul>
 </div>
-{% endblock %}
-
-{% block menu %}
-<a href="/oahpa/morfa/">{% trans 'Morfa' %}</a>&nbsp;&nbsp;
-<a href="/oahpa/cmorfa/">{% trans 'Contextual Morfa' %}</a>&nbsp;&nbsp;
-<!--	  <a href="/oahpa/vasta/">{% trans 'Vasta' %}</a><br/>-->
-<font size="+2" color="#D2B48C" ><b>{% trans 'Leksa' %}</b></font>&nbsp;&nbsp;
-	  <a href="/oahpa/logut/">{% trans 'Logut' %}</a>&nbsp;&nbsp;
 {% endblock %}
 
 {% block name %}{% trans "Quizz" %}{% endblock %}
