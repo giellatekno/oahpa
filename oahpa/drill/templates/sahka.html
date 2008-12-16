@@ -5,8 +5,9 @@
 {% block navbar %}
 
 <p class="bigheader">{% trans 'SAHKA' %}</p>
-{% if picture %}
-<img width="130" height="130" border="0" src="/oahpa/media/picture"/><br/>
+{% if image %}
+<p>{{ image }}</p>
+<img width="130" height="130" border="0" src="/oahpa/media/{{ image }}"/><br/>
 {% else %}
 <img width="130" height="130" border="0" src="/oahpa/media/sahka.png"/><br/>
 {% endif %}
@@ -26,6 +27,7 @@
 </table>
 <input type="hidden" name="topicnumber" value="{{ topicnumber }}" />
 <input type="hidden" name="num_fields" value="{{ num_fields }}" />
+<input type="hidden" name="image" value="{{ image }}" />
 <input type="hidden" name="gametype" value="sahka" />
 <input type="hidden" id="continue" name="continue" value="no_continue" />
 <input type="submit" name="settings" value="{% trans "New set" %}" />
