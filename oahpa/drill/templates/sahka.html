@@ -3,11 +3,14 @@
 
 
 {% block navbar %}
-<div id="navbar">
-<img width="130" height="130" border="0" src="/oahpa/media/sahka.png"/><br/>
+
 <p class="bigheader">{% trans 'SAHKA' %}</p>
+{% if picture %}
+<img width="130" height="130" border="0" src="/oahpa/media/picture"/><br/>
+{% else %}
+<img width="130" height="130" border="0" src="/oahpa/media/sahka.png"/><br/>
+{% endif %}
 <font size="+2"><b><p>{% trans "This game is under development!" %}</p></b></font>
-</div>
 {% endblock %}
 
 {% block name %}{% trans "Sahka" %}{% endblock %}
@@ -28,9 +31,7 @@
 <input type="submit" name="settings" value="{% trans "New set" %}" />
 
 {% endblock %}
-{% block instructions %}
-{% trans "Answer with full sentences" %}
-{% endblock %}
+
 {% block question %}
 
 {% if form.utterance %}
@@ -39,26 +40,21 @@
 
 {% endblock %}
 
+
 {% block submit %}
+
 <tr>
 <td align="right">
-<p>{{ errormsg }}
   {% if not all_correct %}
   <input type="submit" id="test" name="test" value="{% trans "Answer" %}"/>
   {% endif %}
 </td>
+<td>
+&nbsp;
+</td>
 </tr>
 
 
-{% if messages %}
-<tr><td>
-<table border='1' cellpadding='10' bgcolor='#F9F9F9'>
-<tr><td>
-{% for m in messages %}{{ m }}<br/>{% endfor %}
-</td></tr>
-</table>
-</td></tr>
-{% endif %}
 
 {% endblock %}
 
