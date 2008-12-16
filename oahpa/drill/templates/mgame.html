@@ -5,22 +5,64 @@
 {% block name %}{% trans "Morphology" %}{% endblock %}
 {% block pagename %}/oahpa/morfa/{% endblock %}
 
-{% block menu %}
-{% ifequal settings.gametype "bare" %}
-<font size="+2" color="#D2B48C" ><b>{% trans 'Morfa' %}</b></font>&nbsp;&nbsp;
-<a href="/oahpa/cmorfa/">{% trans 'Contextual Morfa' %}</a>&nbsp;&nbsp;
-	  <a href="/oahpa/vasta/">{% trans 'Vasta' %}</a>&nbsp;&nbsp;
-	  <a href="/oahpa/leksa/">{% trans 'Leksa' %}</a>&nbsp;&nbsp;
-	  <a href="/oahpa/logut/">{% trans 'Logut' %}</a>&nbsp;&nbsp;
+
+{% block navbar %}
+<div id="navbar">                
+  {% ifequal settings.gametype "bare" %}
+<img width="120" height="120" border="0" src="/oahpa/media/morfa.png"/>
+<p class="bigheader">{% trans 'MORFA-S' %}</p>
+<ul class="sidelist"> 
+{% ifequal settings.pos "N" %}
+  <li class="selected">{% trans 'Nouns' %}</li>
 {% else %}
-<a href="/oahpa/morfa/">{% trans 'Morfa' %}</a>&nbsp;&nbsp;
-<font size="+2" color="#D2B48C" ><b>{% trans 'Contextual Morfa' %}</b></font>&nbsp;&nbsp;
-	  <a href="/oahpa/vasta/">{% trans 'Vasta' %}</a>&nbsp;&nbsp;
-	  <a href="/oahpa/leksa/">{% trans 'Leksa' %}</a>&nbsp;&nbsp;
-	  <a href="/oahpa/logut/">{% trans 'Logut' %}</a>&nbsp;&nbsp;
+  <li><a href="/oahpa/morfa/">{% trans 'Nouns' %}</a></li>                                                 
+{% endifequal %}
+{% ifequal settings.pos "V" %}
+  <li class="selected">{% trans 'Verbs' %}</li>
+{% else %}
+   <li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>                                                 
+{% endifequal %}
+{% ifequal settings.pos "A" %}
+  <li class="selected">{% trans 'Adjectives' %}</li>
+{% else %}
+  <li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li>                                            
+{% endifequal %}
+{% ifequal settings.pos "Num" %}
+  <li class="selected">{% trans 'Numerals' %}</li>
+{% else %}
+<li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>                                              
+{% endifequal %}
+</ul>                                                        
+</div>
+{% else %}
+<img width="120" height="120" border="0" src="/oahpa/media/morfac.png"/>
+<p class="bigheader">{% trans 'MORFA-C' %}</p>
+<ul class="sidelist"> 
+{% ifequal settings.pos "N" %}
+  <li class="selected">{% trans 'Nouns' %}</li>
+{% else %}
+  <li><a href="/oahpa/morfac/">{% trans 'Nouns' %}</a></li>                                                 
+{% endifequal %}
+{% ifequal settings.pos "V" %}
+  <li class="selected">{% trans 'Verbs' %}</li>
+{% else %}
+  <li><a href="/oahpa/morfac_v/">{% trans 'Verbs' %}</a></li>                                                 
+{% endifequal %}
+{% ifequal settings.pos "A" %}
+  <li class="selected">{% trans 'Adjectives' %}</li>
+{% else %}
+  <li><a href="/oahpa/morfac_a/">{% trans 'Adjectives' %}</a></li>                                            
+{% endifequal %}
+{% ifequal settings.pos "Num" %}
+  <li class="selected">{% trans 'Numerals' %}</li>
+{% else %}
+<li><a href="/oahpa/morfac_l/">{% trans 'Numerals' %}</a></li>                                              
+{% endifequal %}
+</ul>                                                        
+</div>
+
 {% endifequal %}
 {% endblock %}
-
 
 {% block tabmenu %}
 <ul id="tabmenu">
@@ -88,16 +130,14 @@
   </td>
 
 {% else %}                                                                                                       
-<td>{{ form.question }} {% if form.lemma %} ({{ form.lemma }}) {% endif %}</td>                                                                  
+<td>{{ form.question }} {% if form.lemma %} ({{ form.lemma }}) {% endif %}</td>
 {% endifequal %}                      
 
 {% endblock %}
 
 {% block submit %}
 <tr>
-<td>
-</td>
-<td>
+<td align="right">
 {% if not all_correct %}
    {% if not show_correct %}
    <input type="submit" name="test" value="{% trans "Test answers" %}"/>
@@ -107,5 +147,6 @@
    {% endifequal %}
 {% endif %}
 </td>
+<td></td>
 </tr>
 {% endblock %}
