@@ -1,10 +1,10 @@
+
 html {
 	 overflow: scroll;
 	 height: 100%;
 }
 
 body {
-  overflow: hidden;
   padding: 0;
   margin: 0;
   width: 100%;
@@ -74,6 +74,12 @@ body {
   background-image: url(/oahpa/media/bakgrunn12.jpg);
 }
 
+.container {
+  width: 1000px;  
+  margin: auto;
+  text-align: left;
+}
+  
 #navbar3 {    
   position: static;    
   bottom: 0px;
@@ -93,10 +99,55 @@ body {
   bottom: 0px;
   height 10px;
   clear: both;
+  border-style: solid solid hidden;
+  border-width: 1px;
+  border-color: #150517;
+}
+#navbarsahka {    
+  padding: 30px 5px 5px 5px;
+  font: Arial;
+  margin: 0;
+  background-color: #406080;
+  position: static;    
+  width: 180px;  
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  overflow: auto; 
+  background-image: url(/oahpa/media/bakgrunn12.jpg);
+}
+
+
+#contentsahka {
+  overflow: scroll;
+  padding: 10px 0px 10px 10px;
+  font-family: Times;
+  color: #150517;
+  position: absolute;    
+  top: 90px;
+  bottom: 0px;
+  left: 190px;
+  width: 750px;
+  height 100%;
+  clear: both;
+  border-style: solid solid hidden;
+  border-width: 1px;
+  border-color: #150517;
+}
+
+#rightsahka {
+  position: absolute;
+  right: 0px;
+  width: 90px;
+  top: 0px;
+  padding: 10px 10px 10px 10px;
+  background-image: url(/oahpa/media/bakgrunn12.jpg);
+}
+#rightbarsahka {
+  padding: 10px 10px 10px 10px;
   border-width: 1px;
   border-style: solid;
   border-color: #150517;
-
 }
 
 .mainbody {
