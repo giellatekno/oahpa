@@ -62,6 +62,7 @@ class Sahka:
                     alter['target'] = alt.getAttribute("target")
                     alter['link'] = alt.getAttribute("link")
                     alter['variable'] = alt.getAttribute("variable")
+                    alter['constant'] = alt.getAttribute("constant")
                     alttext =""
                     if alt.getElementsByTagName("text"):
                         alttext = alt.getElementsByTagName("text")[0].firstChild.data
@@ -123,7 +124,8 @@ class Sahka:
                         # If the alternative contains text, create a new utterance out of it:
                         linkutt, created = LinkUtterance.objects.get_or_create(link=utterance2,\
                                                                                target=a['target'], \
-                                                                               variable=a['variable'])
+                                                                               variable=a['variable'],\
+                                                                               constant=a['constant'])
                         linkutt.save()                                                
                     
                         utterance.links.add(linkutt)
@@ -134,7 +136,8 @@ class Sahka:
                             print "link:", a['link']
                             linkutt, created = LinkUtterance.objects.get_or_create(link=next_utterance,\
                                                                                    target=a['target'], \
-                                                                                   variable=a['variable'])
+                                                                                   variable=a['variable'], \
+                                                                                   constant=a['constant'])
                             linkutt.save()                        
                             
                             utterance.links.add(linkutt)
