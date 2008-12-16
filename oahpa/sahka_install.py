@@ -25,12 +25,15 @@ class Sahka:
 
         topicutts={}
         topicnum=0
+        image="sahka.png"
         for topic in tree.getElementsByTagName("topic"):
             utts = []
             topicname = topic.getAttribute("name")
+            image = topic.getAttribute("image")
 
             t, created = Topic.objects.get_or_create(topicname=topicname,dialogue=d)
             t.number=topicnum
+            t.image=image
             t.save()
             topicnum=topicnum+1
 
