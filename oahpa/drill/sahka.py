@@ -114,7 +114,7 @@ class SahkaGame(Game):
                 self.form_list.append(form)
                 self.num_fields = self.num_fields+1
                 if utterance.utttype == "closing":
-                    self.settings['topicnumber'] = int(self.settings['topicnumber'])+1
+                    self.settings['topicnumber'] = int(utterance.topic.number) + 1
                 if not utterance.utttype == "question":
                     self.update_game(counter+1, form)               
                 return
@@ -134,7 +134,7 @@ class SahkaGame(Game):
                 form, jee  = self.create_form(db_info, counter, 0)
                 self.form_list.append(form)
                 self.num_fields = self.num_fields+1
-                self.settings['topicnumber'] = int(self.settings['topicnumber'])+1 
+                self.settings['topicnumber'] = int(utterance.topic.number) + 1
                 self.update_game(counter+1, form)
                 return
             
