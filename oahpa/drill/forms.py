@@ -356,7 +356,7 @@ class OahpaQuestion(forms.Form):
     def generate_fields(self,answer_size, maxlength):
         self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                 widget=forms.TextInput(\
-            attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
+            attrs={'size': answer_size, 'onkeypress':'return process(this, event,document.theform);',}))
 
             
 class MorfaSettings(OahpaSettings):
@@ -811,7 +811,7 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
 
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
     messageObj=re.compile(r'^.*(?P<msgString>&(grm|err)[\w-]*)\s*$', re.U)
-    targetObj=re.compile(r'^.*\"(?P<targetString>[\w]*)\".*dia-.*$', re.U)
+    targetObj=re.compile(r'^.*\"(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\".*dia-.*$', re.U)
     diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
 
     spelling = False
@@ -846,6 +846,7 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
     msg=[]
     dia_msg = []
     target = ""
+    variable=""
     found=False
     for w in msgstrings.keys():
         if found: break
@@ -910,7 +911,7 @@ class VastaQuestion(OahpaQuestion):
         answer_size=50
         self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                 widget=forms.TextInput(\
-			attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
+			attrs={'size': answer_size, 'onkeypress':'return process(this, event, document.theform);',}))
 
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
@@ -1027,12 +1028,14 @@ class SahkaQuestion(OahpaQuestion):
             answer_size=50
             self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                     widget=forms.TextInput(\
-            attrs={'size': answer_size, 'onkeypress':'return process(this, event);',}))
+            attrs={'size': answer_size, 'onkeypress':'return process(this, event, document.theform);',}))
 
         self.fields['utterance_id'] = forms.CharField(widget=utterance_widget, required=False)
 
         self.global_targets = global_targets
         self.utterance =""
+        self.qattrs={}
+
         if utterance:
             self.utterance_id=utterance.id
             #self.utterance=utterance.utterance
@@ -1042,7 +1045,6 @@ class SahkaQuestion(OahpaQuestion):
             
             # Format question string
             qtext = utterance.utterance
-            self.qattrs={}
             for w in qtext.split():
                 if not qwords.has_key(w):
                     qstring = qstring + " " + force_unicode(w)
@@ -1074,7 +1076,6 @@ class SahkaQuestion(OahpaQuestion):
         self.dia_messages = ""		
         self.gametype="sahka"
         self.sahka_is_correct(utterance,targets)
-        self.qattrs = {}
         if self.target:
             variable=""
             if utterance.links.filter(target=self.target).count()>0:
@@ -1082,6 +1083,10 @@ class SahkaQuestion(OahpaQuestion):
                 if variable:
                     self.qattrs['target_' + variable] = self.variable
                     self.global_targets[variable] = { 'target' : self.variable }
+        for t in self.global_targets.keys():
+            if not self.qattrs.has_key(t):
+                self.qattrs['target_' + t] = self.global_targets[t]['target']
+							
         #self.error="correct"
         self.errormsg = ""
 
