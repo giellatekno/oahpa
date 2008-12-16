@@ -1,0 +1,278 @@
+{% load i18n %}
+{{ lang_switch }}
+{% get_available_languages as LANGUAGES %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+  <style type="text/css">
+
+html {
+	 overflow: scroll;
+	 height: 100%;
+}
+
+body {
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  color: #150517;
+  font-size: 120%;
+  background-image: url(/oahpa/media/bakgrunn12.jpg);
+}
+
+#title {
+  padding: 10px 0px 10px 10px;
+  height 120px;
+  margin: 10px;
+  top: 0px;
+  left: 0px;
+  width: 80%;
+  font-family: Arial Pro;
+  color: black;
+  position: absolute;
+  clear: both;
+}
+
+#content {
+  padding: 10px 10px 10px 10px;
+  margin: 10px;
+  top: 120px;
+  width: 80%;
+  font-family: Arial Pro;
+  color: black;
+  position: absolute;
+  clear: both;
+  left: 0px;
+}
+
+#rightbar {
+  position: absolute;
+  right: 0px;
+  top: 140px;
+  width: 120px;
+  padding: 10px 10px 10px 10px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #150517;
+}
+
+.header {
+  font-family: Lithos Pro;
+  font-style: bold;
+  color: #150517;
+}
+
+.headerlink {
+  font-family: Lithos Pro;
+  color: #150517;
+}
+
+.plain {
+  font-family: Arial Pro;
+  color: #150517;
+}
+
+.copyright {
+  position: absolute;    
+  bottom: 0px;
+  left: 0px;
+  padding: 10px 10px 10px 10px;
+  font-family: Arial Pro;
+  color: #150517;
+  font-size: 80%
+}
+
+a {font-size: 100%; 
+    text-decoration: none; }
+  a:link {
+    color: #150517; }
+  a:visited {
+    color: #150517; }
+
+
+</style>
+
+</head>
+<body>
+
+
+<div id="header">
+<center>
+<img width="400" height="120" src="/oahpa/media/Oahpa_logo0001.png" alt="OAHPA!"/><br/>
+</center>
+</div>
+<div id="content">
+<center>
+{% trans "Oahpa is a collection of games that are developed for North Sámi learners. From the right, select the instruction language (Norwegian and North Sami are fully supported) and if you prefer Eastern or Western dialect. Then select the game." %}
+
+<table cellspacing="2px" cellpadding="2px">
+<tr>
+<td class="header" width="200">
+<center>
+<a href="/oahpa/morfa/"><img  width="80" height="80" border="0" src="/oahpa/media/morfa.png"/><br/>
+{% trans 'MORFA-S' %}</a>&nbsp;&nbsp;
+</center>
+<p class="plain">{% trans "Practise morphology" %}</p>
+</td>
+<td class="header" width="200">
+<center>
+<a href="/oahpa/vasta/"><img width="80" height="80" border="0" src="/oahpa/media/vasta.png"/><br/>
+{% trans 'VASTA' %}</a>
+</center>
+<p class="plain">{% trans "Answer to questions" %}</p>
+</td>
+<td class="header" width="200">
+<center>
+<a href="/oahpa/leksa/"><img width="80" height="80" border="0" src="/oahpa/media/leksa.png"/><br/>
+{% trans 'LEKSA' %}</a>&nbsp;&nbsp;
+</center>
+<p class="plain">{% trans "Pracitse words and translations" %}</p>
+</td>
+
+</tr>
+<tr>
+<td class="header" width="200">
+<center>
+<a href="/oahpa/morfac/"><img width="80" height="80" border="0" src="/oahpa/media/morfac.png"/><br/>
+{% trans 'MORFA-C' %}</a>&nbsp;&nbsp;
+</center>
+<p class="plain">{% trans "Practise morphology in sentential context" %}</p>
+</td>
+
+
+<td class="header" width="200">
+<center>
+<a href="/oahpa/sahka/"><img width="80" height="80" border="0" src="/oahpa/media/sahka.png"/><br/>
+{% trans 'SAHKA' %}</a>&nbsp;&nbsp;
+</center>
+<p class="plain">{% trans "Dialogue game" %}</p>
+</td>
+
+<td class="header" width="200">
+<center>
+<a href="/oahpa/numra/"><img width="80" height="80" border="0" src="/oahpa/media/numra.png"/><br/>
+{% trans 'NUMRA' %}</a>&nbsp;&nbsp;
+</center>
+<p class="plain">{% trans "Practise numerals" %}</p>
+</td>
+</tr>
+<td>
+</td>
+<td>
+</td>
+</tr>
+</tr>
+</table>
+
+</div>
+</center>
+
+<div id="rightbar">
+{% get_current_language as LANGUAGE_CODE %}
+<form action="/oahpa/i18n/setlang/" method="post">
+<table>
+<tr><td>
+<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
+<select name="language">
+
+{% ifequal LANGUAGE_CODE "sme" %}
+<option value="sme" selected="selected">Davvisámegiella</option>
+{% else %}
+<option value="sme">Davvisámegiella</option>
+{% endifequal %}
+
+{% ifequal LANGUAGE_CODE "no" %}
+<option value="no" selected="selected">Norsk</option>
+{% else %}
+<option value="no">Norsk</option>
+{% endifequal %}
+
+{% ifequal LANGUAGE_CODE "en" %}
+<option value="en" selected="selected">English</option>
+{% else %}
+<option value="en">English</option>
+{% endifequal %}
+
+{% ifequal LANGUAGE_CODE "fi" %}
+<option value="fi" selected="selected">Suomi</option>
+{% else %}
+<option value="fi">Suomi</option>
+{% endifequal %}
+</select>
+</td></tr>
+<tr><td>
+<input type="submit" value="{% trans 'Select language' %}" />
+</td></tr>
+</table>
+</form>
+</td>
+</tr>
+<tr>
+<td>
+<form action="/oahpa/dialect/" method="post">
+<table>
+<tr><td>
+<select name="dialect">
+{% if dialect %}
+  {% ifequal dialect "GG" %}
+  <option value="GG" selected="selected">{% trans 'western' %}</option>
+  <option value="KJ">{% trans 'eastern' %}</option>
+  {% else %}
+  <option value="GG">{% trans 'western' %}</option>
+  <option value="KJ" selected="selected">{% trans 'eastern' %}</option>
+  {% endifequal %}  
+{% else %}
+<option value="GG">{% trans 'western' %}</option>
+<option value="KJ">{% trans 'eastern' %}</option>
+{% endif %}
+</select>
+</td></tr>
+<tr><td>
+<input type="submit" value="{% trans 'Select dialect' %}" />
+</td></tr>
+</table>
+</form>
+</td></tr>
+<tr>
+<td>
+&nbsp;<br/>&nbsp;<br/>
+&nbsp;<br/>&nbsp;<br/>
+<table>
+<tr>
+<td>Link to teacher's page</td>
+</tr>
+<tr>
+<td>Link to Oahpa-documentation</td>
+</tr>
+<tr>
+<td><a href="/oahpa/feedback/">{% trans 'Feedback' %}</td>
+</tr>
+<tr>
+<td>
+&nbsp;<br/>&nbsp;<br/>
+&nbsp;<br/>&nbsp;<br/>
+
+<center>
+<img width="50" height="50" src="/oahpa/media/LogoSamisk.jpg"/>
+</center>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+</div>
+
+<div class="copyright">
+<p>
+{% trans "Copyright 2008 The University of Tromsø." %}
+{% trans "Contact" %}</p>
+</div>
+</body>
+</html>
