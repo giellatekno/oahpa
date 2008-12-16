@@ -5751,6 +5751,10 @@ MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LI
 MAP (&dia-unknown) TARGET N IF (NOT 0 Prop)(*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv)) ;
 MAP (&dia-unknown) TARGET N IF (NOT 0 Prop)(*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv)) ;
 
+LIST PLACENAME-QUESTION = Gos_don_leat_eret Gos_don_orut_dál gos_du_eadni_lea_eret_adult gos_du_ahcci_lea_eret_adult gos_du_eadni_lea_eret_young gos_du_ahcci_lea_eret_young gos_du_eadni_lea_eret_child gos_du_ahcci_lea_eret_child ;
+
+# Placename should be in locative:
+MAP (&grm-missing-Loc) TARGET Prop (*-1 ("leat") OR ("orrut") BARRIER Loc OR S-BOUNDARY LINK *-1 PLACENAME-QUESTION BARRIER S-BOUNDARY)(NOT 0 Loc) ;
 
 # For spellingerrors:
 MAP (&err-spellingerror) TARGET QMRK (NEGATE *-1 QDL LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom))  ;
@@ -5963,9 +5967,9 @@ MAP (&grm-missing-Nom) TARGET TARGETQUESTION-NOM IF (*1 QDL LINK NOT *1 Nom OR N
 MAP (&grm-missing-Ess) TARGET TARGETQUESTION-ESS IF (*1 QDL LINK NOT *1 Ess OR Neg BARRIER S-BOUNDARY);
 MAP (&grm-missing-Gen) TARGET TARGETQUESTION-GEN IF (*1 QDL LINK NOT *1 Gen OR Neg BARRIER S-BOUNDARY);
 
-MAP (&grm-missing-Loc-PP) TARGET ("gos") OR ("gokko") IF (*1 QDL LINK NOT *1 Loc OR DOPPE OR Po OR PxSg3 OR Neg BARRIER S-BOUNDARY);
+MAP (&grm-missing-Loc-PP) TARGET ("gos") OR ("gokko") IF (*1 QDL LINK NOT 0 PLACENAME-QUESTION LINK NOT *1 Loc OR DOPPE OR Po OR PxSg3 OR Neg BARRIER S-BOUNDARY);
     ## Gohppu lea beavddi nalde.
-MAP (&grm-Px-shouldbe-Loc) TARGET ("gos") OR ("gokko") IF (*1 QDL LINK NOT *1 Loc OR DOPPE OR Po OR Neg)(*1 QDL LINK *1 PxSg3 BARRIER S-BOUNDARY);
+MAP (&grm-Px-shouldbe-Loc) TARGET ("gos") OR ("gokko") IF (*1 QDL LINK NOT 0 PLACENAME-QUESTION LINK NOT *1 Loc OR DOPPE OR Po OR Neg)(*1 QDL LINK *1 PxSg3 BARRIER S-BOUNDARY);
     
 MAP (&grm-missing-Ill-PP) TARGET ("gosa") IF (*1 QDL LINK NOT *1 Ill OR DOHKO OR Po OR Neg BARRIER S-BOUNDARY);
     ## Mun váccán vári nala.
@@ -6100,7 +6104,7 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL BARRIER S-BOUNDARY LINK
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
 
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (N Pl Nom) LINK NOT 0 NUM-QUESTION)(NOT 0 Pl3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU OR (Mii_namma_lea) LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
 
@@ -6123,8 +6127,6 @@ MAP (&grm-should-negV) TARGET ConNeg (-1 Neg LINK *-1 QDL)(0 UNINTENDED-VERB) ;
 MAP (&dia-dont-know) TARGET ("diehtit" ConNeg) (*-1 QDL BARRIER S-BOUNDARY LINK NOT *-1 ("diehtit")) ;
 
 LIST VERBLEMMA = (".*"r) ;
-
-#LIST VERBLEMMA = "juhkat" "borrat" "mannat" ;
 
 LIST BARGGUS = Leat_go_barggus_adult Leat_go_barggus_adult ;
 
