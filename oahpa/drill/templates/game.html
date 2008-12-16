@@ -87,7 +87,7 @@
      </td>
 {% endif %}
 
-    <td>
+    <td align="left">
     {% if show_correct %}
       {% ifnotequal form.error "correct" %}
         {{ form.correct_answers }}
@@ -100,6 +100,18 @@
 	   <div class='popupcontent' id='popup_{{ forloop.counter }}'>{{ form.feedback }}</div>
 	   <a href="#" onclick="showPopup(300,150,'popup_{{ forloop.counter }}');" ><font color="#093970"><small>{% trans "help" %}</small></font></a>
 	  {% endif %}
+	  {% if forloop.last %}
+	  {% ifequal gametype "sahka" %}
+	  {% if messages %}
+      <td>
+	  <div id="rightbarsahka">
+	  {% for m in messages %}{{ m }}<br/>{% endfor %}
+      </td>
+	  </div>
+	  {% endif %}
+	  {% endifequal %}
+	  {% endif %}
+
       {% endifequal %}
   {% endif %}
       </td>
@@ -123,6 +135,9 @@
 </td>
 </tr>
      {% endfor %}
+
+{% block submit %}{% endblock %}
+
 </table>
 
 </td>
@@ -151,13 +166,14 @@
 </td>
 </tr>
 
-{% block submit %}{% endblock %}
 
 </table>
 </td>
+{% ifnotequal gametype "sahka" %}
 <td   width="30%" valign="top"> <table class="instructions" cellpadding="8px"><tr><td>
 <p >{% block gamename %}{% endblock %}</p>
 {% block instructions %}{% endblock %}</td></tr></table></td>
+{% endifnotequal %}
 </tr>
 </table>
 
