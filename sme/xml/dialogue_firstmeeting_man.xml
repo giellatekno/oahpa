@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dialogue PUBLIC "-//UIT//DTD Corpus V1.0//EN" "dialogues.dtd">
+
+<!-- $Id: dialogue_firstmeeting.xml 22694 2008-12-15 20:58:42Z lene $ -->
+
+<dialogue name="firstmeeting">
+
+  <topic name="Buorre_beaivi">
+    <utt type="opening" name="buorre_beaivi">
+      <text>Buorre beaivi! Mun lean Hánsa!</text>
+    </utt>
+  </topic>  
+
+  <topic name="presentation">
+    <utt type="question" name="Mii_namma_lea">
+      <text>Mii du namma lea?</text>
+      <alt target="target" variable="NAME" link="Gos_don_leat_eret">
+	<text>Bures NAME . Suohtas oahpásmuvvat ođđa olbmui odne. </text>	
+	<element id="NAME">
+	</element> 
+      </alt>
+      <alt target="default" link="Gos_don_leat_eret"/>
+    </utt>
+
+    <utt type="question" name="Gos_don_leat_eret">
+      <text>Mun lean Ávžžis eret. Gos don leat eret?</text>
+      <alt target="target" link="Gos_don_orut_dál">
+      </alt>
+    </utt>
+
+    <utt type="question" name="Gos_don_orut_dál">
+      <text>Ávži lea lahka Guovdageainnu, ja doppe mun orun dán áigge. Gos don orut dál?</text>
+      <!-- Where do you live now? NOUN will get target in the answer. -->
+      <alt target="target" variable="PLACENAME" link="presentation_closing">
+	<text>Mun lean leamaš PLACENAME .</text>
+	<element id="PLACENAME">
+	  <grammar tag="N+Sg+Loc"/>
+	</element> 
+      </alt>
+      <alt target="unknown" link="Lea_go_dat_baiki"/>
+      <alt target="default" link="age_opening"/>
+    </utt>
+
+    <utt type="question" name="Lea_go_dat_baiki">
+      <text>In leat gullan dan birra ovdal. Lea go dat báiki?</text>
+      <alt target="pos" link="age_opening">
+	<text>Mun oahpan juoidá juohke beaivve.</text>
+      </alt>
+      <alt target="default" link="age_opening"/>
+    </utt>
+
+
+    <utt type="closing" name="presentation_closing">
+      <text>PLACENAME sáhttá leat buorre orrut. Mun lean eallinagi orron Ávžžis ja Guovdageainnus.</text>
+	<element id="PLACENAME">
+	  <grammar tag="N+Sg+Loc"/>
+      </element> 
+    </utt>
+  </topic>
+  
+  <topic name="age">
+    <utt type="opening" name="age_opening">
+      <text>Mun lean 35 jagi boaris.</text>
+    </utt>
+
+    <utt type="question" name="Man_boaris_don_leat">
+      <text>Man boaris don leat?</text>
+      <!-- How old are you? 1-5 child, 6-20 young, 21-100 adult -->
+      <alt target="young" link="Váccát_go_skuvlla_young"/>
+      <alt target="child" link="Leat_go_álgán_skuvlii_child"/>
+      <alt target="adult" link="Leat_go_barggus_adult"/>
+      <alt target="default" link="Leat_go_barggus_adult"/>
+    </utt>
+  </topic>
+
+  <!-- This part is for adults, and default. -->
+ 
+  <topic name="work_adult">    
+      <utt type="question" name="Leat_go_barggus_adult">
+	<text>Leat go barggus?</text>
+	<!-- Do you work??-->
+	<alt target="pos" link="Makkár_bargu_dus_lea_adult"/>
+	<alt target="default" link="work_or_school_closing_adult"/>
+      </utt>
+    
+      <utt type="question" name="Makkár_bargu_dus_lea_adult">
+	<text>Makkár bargu dus lea?</text>
+	<!-- What kind of job do you have?-->
+	<alt target="default" link="work_or_school_closing_adult"/>
+      </utt>
+    
+      <utt type="closing" name="work_or_school_closing_adult">
+	<text>Já nu!</text>
+      </utt>
+
+  </topic>
+
+  <topic name="married_adult">
+    <utt type="question" name="leat_go_naitalan_adult">
+      <text>Mun in leat náitalan. Leat go don náitalan?</text>
+	<alt target="default" link="leat_go_dus_mánát_adult"/>
+    </utt>
+    
+    <utt type="question" name="leat_go_dus_mánát_adult">
+      <text>Mus lea moarsi ja munnos lea mánná, unna nieiddaš. Leat go dus mánát?</text>
+      <alt target="pos" link="galle_máná_adult"/>
+      <alt target="default" link="gos_du_eadni_lea_eret_adult"/>
+    </utt>
+
+    <utt type="question" name="galle_máná_adult">
+      <text>Galle máná dus leat?</text>
+      <alt target="default" link="married_closing_adult"/>
+    </utt>
+
+    <utt type="closing" name="married_closing_adult">
+      <text>Sávan ahte du mielas lea ortnegis ahte jearan veaháš, go lea mu vuohki oahpásmuvvat dutnje.</text>
+    </utt>
+  </topic>  
+
+  <topic name="family_adult">
+    <utt type="question" name="gos_du_eadni_lea_eret_adult">
+      <text>Mu eadni lea Álttás eret. Gos du eadni lea eret?</text>
+      <alt target="unknown" link="Lea_go_dat_baiki2_adult"/>
+	<alt target="default" link="gos_du_ahcci_lea_eret_adult"/>
+    </utt>
+
+    <utt type="question" name="Lea_go_dat_baiki2_adult">
+      <text>Lea go dat báiki? In leat gullan dan birra ovdal.</text>
+      <alt target="pos" link="gos_du_ahcci_lea_eret_adult">
+	<text>Já nu.</text>
+      </alt>
+      <alt target="default" link="gos_du_ahcci_lea_eret_adult"/>
+    </utt>
+
+    
+    <utt type="question" name="gos_du_ahcci_lea_eret_adult">
+      <text>Mu áhčči lea Heahtás eret, Suoma bealde. Gos du áhčči lea eret?</text>
+      <alt target="unknown" link="Lea_go_dat_baiki3_adult"/>
+      <alt target="default" link="galle_viellja_ja_oabbá_adult"/>
+    </utt>
+
+    <utt type="question" name="Lea_go_dat_baiki3_adult">
+      <text>Lea go dat báiki? In leat gullan dan birra ovdal.</text>
+      <alt target="pos" link="galle_viellja_ja_oabbá_adult">
+	<text>Dalle mun dieđán dan.</text>
+      </alt>
+      <alt target="default" link="galle_viellja_ja_oabbá_adult"/>
+    </utt>
+
+
+    <utt type="question" name="galle_viellja_ja_oabbá_adult">
+      <text>Mus leat okta viellja ja guokte oappá. Galle vielja ja oappá dus leat?</text>
+      <alt target="default" link="family_closing_adult"/>
+    </utt>
+
+    <utt type="closing" name="family_closing_adult">
+      <text>Suohtas gullat.</text>
+    </utt>
+  </topic>  
+  
+  <topic name="biila_adult">
+    <utt type="opening" name="biila_adult_opening">
+      <text>Mus lea hui buorre biila - Volvo.</text>
+    </utt>
+    <utt type="question" name="Lea_go_dus_biila_adult">
+      <text>Lea go dus biila?</text>
+      <alt target="pos" link="Makkar_biila_adult"/>
+      <alt target="default" link="Leat_go_dus_sihkkelat_adult"/>
+    </utt>
+    <utt type="question" name="Makkar_biila_adult">
+      <text>Makkár biila dus lea?</text>
+      <alt target="name" variable="CAR" link="Lea_go_buorre_biila_adult"/>
+      <alt target="unknown" variable="CAR" link="Lea_go_dat_biila_adult"/>
+      <alt target="default" link="Háliidat_go_oastit_mu_biilla_adult"/>
+    </utt>
+
+    <utt type="question" name="Lea_go_dat_biila_adult">
+      <text>Mun in leat gullan dakkár biilla birra ovdal. Lea go dat biila?</text>
+      <alt target="pos" link="Lea_go_buorre_biila_adult">
+	<text>Mun oahpan juoidá juohke beaivve.</text>
+      </alt>
+      <alt target="default" link="Makkar_biila_adult"/>
+    </utt>
+
+    
+    <utt type="question" name="Lea_go_buorre_biila_adult">
+      <text>Lea go CAR buorre biila?</text> <!--The CAR is target from last question! -->
+      <element id="CAR">
+      </element> 
+      <alt target="pos" link="biila_closing_adult">
+	<text>Lean gullan ahte lea buorre biila.</text>
+      </alt>
+      <alt target="default" link="Háliidat_go_oastit_mu_biilla_adult"/>
+    </utt>
+    
+    <utt type="question" name="Leat_go_dus_sihkkelat_adult">
+      <text>Leat go dus skohter?</text>
+      <alt target="neg" link="Háliidat_go_oastit_mu_biilla_adult">
+	  <text>Dalle fertet birget skohtera haga.</text>
+      </alt>
+      <alt target="default" link="Háliidat_go_oastit_mu_biilla_adult">
+	<text>Gal lea fiinnis vuojašit skohteriin duoddaris giđđadálvet.</text>
+      </alt>
+    </utt>
+        
+    <utt type="question" name="Háliidat_go_oastit_mu_biilla_adult">
+      <text>Háliidat go oastit mu biilla?</text>
+      <alt target="neg" link="biila_closing_adult">
+	<text>Dalle fertet ohcat eará biilla.</text>
+      </alt>
+      <alt target="default" link="biila_closing_adult">
+	<text>In háliit dattetge vuovdit dan.</text>
+      </alt> 
+    </utt>
+
+    <utt type="closing" name="biila_closing_adult" link="suohtas_oahpásmuvvat_closing">
+      <text>Mun lean hui duhtavaš iežan biillain.</text>
+    </utt>
+  </topic>
+
+  <!-- This part is for young. -->
+  <topic name="skuvla_young">
+      <utt type="question" name="Váccát_go_skuvlla_young">
+	<text>Mun barggan bohccuiguin, mun lean reaŋga. Váccát go skuvlla?</text>
+	<alt target="pos" link="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla_young"/>
+	<alt target="default" link="Leat_go_barggus_young"/>
+      </utt>
+    
+      <utt type="question" name="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla_young">
+	<text>Váccát go vuođđoskuvlla vai joatkkaskuvlla?</text>
+	<!--<alt target="neg" link="Makkár_skuvlla_don_váccát_dalle"/> -->
+	<alt target="default" link="skuvla_closing_young"/>
+      </utt>
+
+      <utt type="question" name="Leat_go_barggus_young">
+	<text>Leat go barggus?</text>
+	<!-- Do you work??-->
+	<alt target="pos" link="Makkár_bargu_dus_lea_young"/>
+	<alt target="default" link="skuvla_closing_young"/>
+      </utt>
+    
+      <utt type="question" name="Makkár_bargu_dus_lea_young">
+	<text>Makkár bargu dus lea?</text>
+	<!-- What kind of job do you have?-->
+	<alt target="default" link="skuvla_closing_young"/>
+      </utt>
+    
+      <utt type="closing" name="skuvla_closing_young">
+	<text>Já nu!</text>
+      </utt>
+  </topic>
+
+  <topic name="family_young">
+    <utt type="question" name="gos_du_eadni_lea_eret_young">
+      <text>Mu eadni lea Álttás eret. Gos du eadni lea eret?</text>
+      <alt target="unknown" link="Lea_go_dat_baiki2_young"/>
+	<alt target="default" link="gos_du_ahcci_lea_eret_young"/>
+    </utt>
+
+    <utt type="question" name="Lea_go_dat_baiki2_young">
+      <text>Lea go dat báiki? In leat gullan dan birra ovdal.</text>
+      <alt target="pos" link="gos_du_ahcci_lea_eret_young">
+	<text>Na nu.</text>
+      </alt>
+      <alt target="default" link="gos_du_ahcci_lea_eret_young"/>
+    </utt>
+
+    
+    <utt type="question" name="gos_du_ahcci_lea_eret_young">
+      <text>Mu áhčči lea Heahtás eret, Suoma bealde. Gos du áhčči lea eret?</text>
+      <alt target="unknown" link="Lea_go_dat_baiki3_young"/>
+      <alt target="default" link="galle_viellja_ja_oabbá_young"/>
+    </utt>
+
+    <utt type="question" name="Lea_go_dat_baiki3_young">
+      <text>Lea go dat báiki? In leat gullan dan birra ovdal.</text>
+      <alt target="pos" link="galle_viellja_ja_oabbá_young">
+	<text>Dalle mun dieđán dan.</text>
+      </alt>
+      <alt target="default" link="galle_viellja_ja_oabbá_young"/>
+    </utt>
+
+
+    <utt type="question" name="galle_viellja_ja_oabbá_young">
+      <text>Mus leat okta viellja ja guokte oappá. Galle vielja ja oappá dus leat?</text>
+      <alt target="default" link="family_closing_young"/>
+    </utt>
+
+    <utt type="closing" name="family_young_closing" link="suohtas_oahpásmuvvat_closing">
+      <text>Miellagiddevaš gullat.</text>
+    </utt>
+  </topic>  
+
+
+  <!-- This part is for child. -->
+
+  <topic name="skuvla_child">
+
+      <utt type="question" name="Leat_go_álgán_skuvlii_child">
+	<text>Leat go álgán skuvlii?</text>
+	<alt target="default" link="skuvla__closing_child"/>
+    </utt>
+    
+      <utt type="closing" name="skuvla__closing_child">
+	<text>Já nu!</text>
+      </utt>
+
+  </topic>
+
+
+  <topic name="family_child">
+    <utt type="question" name="gos_du_eadni_lea_eret_child">
+      <text>Mu eadni lea Álttás eret. Gos du eadni lea eret?</text>
+      <alt target="unknown" link="Lea_go_dat_baiki2_child"/>
+	<alt target="default" link="gos_du_ahcci_lea_eret_child"/>
+    </utt>
+
+    <utt type="question" name="Lea_go_dat_baiki2_child">
+      <text>Lea go dat báiki? In leat gullan dan birra ovdal.</text>
+      <alt target="pos" link="gos_du_ahcci_lea_eret_child">
+	<text>Na nu.</text>
+      </alt>
+      <alt target="default" link="gos_du_ahcci_lea_eret_child"/>
+    </utt>
+
+    
+    <utt type="question" name="gos_du_ahcci_lea_eret_child">
+      <text>Mu áhčči lea Heahtás eret, Suoma bealde. Gos du áhčči lea eret?</text>
+      <alt target="unknown" link="Lea_go_dat_baiki3_child"/>
+      <alt target="default" link="galle_viellja_ja_oabbá_child"/>
+    </utt>
+
+    <utt type="question" name="Lea_go_dat_baiki3_child">
+      <text>Lea go dat báiki? In leat gullan dan birra ovdal.</text>
+      <alt target="pos" link="galle_viellja_ja_oabbá_child">
+	<text>Dalle mun dieđán dan.</text>
+      </alt>
+      <alt target="default" link="galle_viellja_ja_oabbá_child"/>
+    </utt>
+
+
+    <utt type="question" name="galle_viellja_ja_oabbá_child">
+      <text>Mus leat okta viellja ja guokte oappá. Galle vielja ja oappá dus leat?</text>
+      <alt target="default" link="family_child_closing"/>
+    </utt>
+
+    <utt type="closing" name="family_child_closing" link="suohtas_oahpásmuvvat_closing">
+      <text>Miellagiddevaš gullat.</text>
+    </utt>
+  </topic>  
+
+
+
+  <!-- Same closing for all. -->
+
+  <topic name="farewell">
+    <utt type="closing" name="suohtas_oahpásmuvvat_closing">
+      <text>Lei suohtas oahpásmuvvat dutnje, NAME .</text>
+    </utt>
+  </topic>  
+
+
+</dialogue>
