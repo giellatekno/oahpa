@@ -54,6 +54,7 @@ class Sahka:
                         list = matchObj.expand(r'\g<listString>')
                         for w in list.split():
                             w = w.strip("\"")
+                            w = w.replace('#','')
                             print w
                             if Word.objects.filter(wordid=w).count()>0:
                                 word = Word.objects.filter(wordid=w)[0]
