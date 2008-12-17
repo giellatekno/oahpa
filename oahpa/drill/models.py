@@ -174,11 +174,11 @@ class LinkUtterance(models.Model):
     variable = models.CharField(max_length=20,null=True,blank=True)
     constant = models.CharField(max_length=20,null=True,blank=True)
 
-
 class Topic(models.Model):
     topicname = models.CharField(max_length=50,blank=True,null=True)
     dialogue = models.ForeignKey(Dialogue)
     number = models.IntegerField(max_length=3,null=True)
     image = models.CharField(max_length=50,null=True,blank=True)
+    wordlist = models.ManyToManyField(Word)
 
 
