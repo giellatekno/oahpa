@@ -179,6 +179,6 @@ class Topic(models.Model):
     dialogue = models.ForeignKey(Dialogue)
     number = models.IntegerField(max_length=3,null=True)
     image = models.CharField(max_length=50,null=True,blank=True)
-    wordlist = models.ManyToManyField(Word)
+    formlist = models.ManyToManyField(Form)
 
 
