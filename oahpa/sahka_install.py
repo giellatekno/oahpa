@@ -15,7 +15,10 @@ import codecs
 class Sahka:
 
     def read_dialogue(self,infile):
-        
+
+        print infile
+        cgfile="/Users/saara/ped/sme/src/sme-ped.cg3"
+
         xmlfile=file(infile)
         tree = _dom.parse(infile)
 
@@ -35,6 +38,28 @@ class Sahka:
             t.number=topicnum
             t.image=image
             t.save()
+
+            if topic.getElementsByTagName("word"):
+                word = topic.getElementsByTagName("word")[0]
+                wordclass = word.getAttribute("class")
+                print wordclass
+                listObj=re.compile(r'^LIST\s*' + wordclass + '\s*=\s*(?P<listString>.*);$', re.U)
+                cgfileObj = codecs.open(cgfile, "r", "utf-8" )
+                while True:
+                    line = cgfileObj.readline()
+                    if not line: break
+                    if not line.strip(): continue
+                    matchObj=listObj.search(line) 
+                    if matchObj:
+                        list = matchObj.expand(r'\g<listString>')
+                        for w in list.split():
+                            w = w.strip("\"")
+                            print w
+                            if Word.objects.filter(wordid=w).count()>0:
+                                word = Word.objects.filter(wordid=w)[0]
+                                t.wordlist.add(word)
+                                t.save()
+                cgfileObj.close()                            
             topicnum=topicnum+1
 
             # createn opening and closing if they do not exist in xml-file.
@@ -80,6 +105,15 @@ class Sahka:
                     if alt.getElementsByTagName("text"):
                         alttext = alt.getElementsByTagName("text")[0].firstChild.data
                     alter['text'] = alttext
+
+                    if alt.getElementsByTagName("element"):
+                        altelement = alt.getElementsByTagName("element")[0]
+                        el_id = altelement.getAttribute("id")
+                        tag = ""
+                        if  altelement.getElementsByTagName("grammar"):
+                            grammar = altelement.getElementsByTagName("grammar")[0] 
+                            tag = grammar.getAttribute("tag")
+                        alter['elements'] = { 'id' : el_id, 'tag' : tag }
 
                     utterance['alts'].append(alter)
 
@@ -128,9 +162,11 @@ class Sahka:
                 linkutt=None
                 linkutt2=None
                 utterance = Utterance.objects.get(name=u['name'],topic=t)
-
+                #print utterance.utterance
                 for a in u['alts']:
+
                     if a['link']:
+                        #print a['link']
                         next_utterance = Utterance.objects.get(name=a['link'])
 
                     if a['text']:
@@ -138,6 +174,20 @@ class Sahka:
                                                                               utttype='text',\
                                                                               topic=t)
                         utterance2.save()
+
+                        # Create syntactic specifictation for variables
+                        if a.has_key('elements'):
+                            tag=None
+                            if a['elements']['tag']:
+                                if Tag.objects.filter(string=a['elements']['tag']).count()>0:
+                                    tag = Tag.objects.filter(string=a['elements']['tag'])[0]
+                                else:
+                                    print "*******ERRROR: tag not found", a['elements']['tag'] 
+                            uelement, created = UElement.objects.get_or_create(syntax=a['elements']['id'],\
+                                                                               tag=tag,\
+                                                                               utterance=utterance2)
+                            uelement.save()
+
                             
                         if a['link']:
                             linkutt2, created = LinkUtterance.objects.get_or_create(link=next_utterance,\
