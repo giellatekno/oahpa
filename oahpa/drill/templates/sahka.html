@@ -3,13 +3,16 @@
 
 
 {% block navbar %}
-
+<img width="60" height="60" border="0" src="/oahpa/media/sahka.png"/><br/>
 <p class="bigheader">{% trans 'SAHKA' %}</p>
+
 {% if image %}
 <p>{{ image }}</p>
-<img width="130" height="130" border="0" src="/oahpa/media/{{ image }}"/><br/>
-{% else %}
-<img width="130" height="130" border="0" src="/oahpa/media/sahka.png"/><br/>
+<img width="150" height="150" border="0" src="/oahpa/media/{{ image }}"/><br/>
+{% endif %}
+
+{% if wordlist %}
+<font size="+1"><p>{{ wordlist }}</p></font>
 {% endif %}
 <font size="+2"><b><p>{% trans "This game is under development!" %}</p></b></font>
 {% endblock %}
@@ -28,10 +31,10 @@
 <input type="hidden" name="topicnumber" value="{{ topicnumber }}" />
 <input type="hidden" name="num_fields" value="{{ num_fields }}" />
 <input type="hidden" name="image" value="{{ image }}" />
+<input type="hidden" name="wordlist" value="{{ wordlist }}" />
 <input type="hidden" name="gametype" value="sahka" />
 <input type="hidden" id="continue" name="continue" value="no_continue" />
 <input type="submit" name="settings" value="{% trans "New set" %}" />
-
 {% endblock %}
 
 {% block question %}
