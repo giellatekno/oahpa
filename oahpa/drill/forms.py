@@ -171,16 +171,19 @@ NUMGAME_CHOICES = (
 )
 
 DIALOGUE_CHOICES = (
+    ('firstmeeting', _('Firstmeeting')),
+    ('firstmeeting_boy', _('Firstmeeting boy')),
+    ('firstmeeting_girl', _('Firstmeeting girl')),
+    ('firstmeeting_man', _('Firstmeeting man')),
     ('visit', _('Visit')),
-    ('firstmeeting', _('First meeting')),
     ('grocery', _('Grocery')),
+    ('shopadj', _('Shopadj')),
 )
 
 def is_correct(self, game, example=None):
     """
     Determines if the given answer is correct (for a bound form).
     """
-    #print "GAME", game
     if not self.is_valid():
         return False
 
@@ -810,7 +813,7 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
     checked = os.popen(ped_cg3).readlines()
 
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
-    messageObj=re.compile(r'^.*(?P<msgString>&(grm|err)[\w-]*)\s*$', re.U)
+    messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
     targetObj=re.compile(r'^.*\"(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\".*dia-.*$', re.U)
     # Extract the lemma	
     constantObj=re.compile(r'^.*\"\<(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\>\".*$', re.U)
