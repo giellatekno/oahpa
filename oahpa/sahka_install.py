@@ -17,7 +17,7 @@ class Sahka:
     def read_dialogue(self,infile):
 
         print infile
-        cgfile="/Users/saara/ped/sme/src/sme-ped.cg3"
+        cgfile="/home/saara/ped/sme/src/sme-ped.cg3"
 
         xmlfile=file(infile)
         tree = _dom.parse(infile)
@@ -42,8 +42,8 @@ class Sahka:
             if topic.getElementsByTagName("word"):
                 word = topic.getElementsByTagName("word")[0]
                 wordclass = word.getAttribute("class")
-                print wordclass
-                listObj=re.compile(r'^LIST\s*' + wordclass + '\s*=\s*(?P<listString>.*);$', re.U)
+                #print wordclass
+                listObj=re.compile(r'^\#LIST\s*' + wordclass + '\s*=\s*(?P<listString>.*);$', re.U)
                 cgfileObj = codecs.open(cgfile, "r", "utf-8" )
                 while True:
                     line = cgfileObj.readline()
@@ -56,9 +56,9 @@ class Sahka:
                             w = w.strip("\"")
                             w = w.replace('#','')
                             print w
-                            if Word.objects.filter(wordid=w).count()>0:
-                                word = Word.objects.filter(wordid=w)[0]
-                                t.wordlist.add(word)
+                            if Form.objects.filter(fullform=w).count()>0:
+                                word = Form.objects.filter(fullform=w)[0]
+                                t.formlist.add(word)
                                 t.save()
                 cgfileObj.close()                            
             topicnum=topicnum+1
@@ -167,8 +167,12 @@ class Sahka:
                 for a in u['alts']:
 
                     if a['link']:
-                        #print a['link']
-                        next_utterance = Utterance.objects.get(name=a['link'])
+                        print a['link']
+                        #print t.dialogue.name
+                        #print t.dialogue.id
+                        #print utterance.id
+                        next_utterance = Utterance.objects.get(Q(name=a['link']) & Q(topic__dialogue=t.dialogue))
+                        #print next_utterance.topic.dialogue.id
 
                     if a['text']:
                         utterance2, created = Utterance.objects.get_or_create(utterance=a['text'],\
