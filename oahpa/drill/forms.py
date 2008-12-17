@@ -1006,9 +1006,10 @@ class SahkaSettings(OahpaSettings):
         self.default_data['dialogue'] = 'firstmeeting'
         self.default_data['topicnumber'] = '0'
         self.default_data['image'] = 'sahka.png'
+        self.default_data['wordlist'] = ''
         super(SahkaSettings, self).__init__(*args, **kwargs)
 
-    def init_hidden(self, topicnumber, num_fields, dialogue, image):
+    def init_hidden(self, topicnumber, num_fields, dialogue, image, wordlist):
         
         # Store topicnumber as hidden input to keep track of topics.
         #print "topicnumber", topicnumber
@@ -1017,6 +1018,7 @@ class SahkaSettings(OahpaSettings):
         num_fields = num_fields
         dialogue = dialogue
         image = image
+        wordlist = wordlist
 
 
 class SahkaQuestion(OahpaQuestion):
