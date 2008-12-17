@@ -162,6 +162,7 @@ class Utterance(models.Model):
     links = models.ManyToManyField('LinkUtterance')
     name = models.CharField(max_length=200,blank=True,null=True)
     topic = models.ForeignKey('Topic')
+    formlist = models.ManyToManyField(Form)
 
 class UElement(models.Model):
     utterance=models.ForeignKey(Utterance, null=True)
