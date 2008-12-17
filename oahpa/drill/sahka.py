@@ -8,20 +8,28 @@ from random import randint
 
 class SahkaGame(Game):
 
-    def update_topic(self, topic):
-        if topic.image:
-            self.settings['image'] = topic.image			
-        if topic.formlist.all().count()>0:
+    def update_formlist(self,t):
+        #print "updating formlist"
+        #print t.id
+        if t.formlist.all().count()>0:
             self.settings['wordlist'] = ""
             wlist=[]
-            for w in topic.formlist.all():
+            for w in t.formlist.all():
                 word = w.fullform
                 wlist.append(word)
             self.settings['wordlist'] = ", ".join(wlist)
+            #print wlist
+            
+    def update_topic(self, topic):
+        if topic.image:
+            self.settings['image'] = topic.image			
+        self.update_formlist(topic)
 
 
     def form_utterance(self, utterance):
         u = utterance.utterance
+        self.update_formlist(utterance)
+        #print u
         qwords={}
         for w in u.split():
             if w== "": continue
