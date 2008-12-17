@@ -8,8 +8,19 @@ from random import randint
 
 class SahkaGame(Game):
 
-    def form_utterance(self, utterance):
+    def update_topic(self, topic):
+        if topic.image:
+            self.settings['image'] = topic.image			
+        if topic.formlist.all().count()>0:
+            self.settings['wordlist'] = ""
+            wlist=[]
+            for w in topic.formlist.all():
+                word = w.fullform
+                wlist.append(word)
+            self.settings['wordlist'] = ", ".join(wlist)
 
+
+    def form_utterance(self, utterance):
         u = utterance.utterance
         qwords={}
         for w in u.split():
@@ -45,15 +56,7 @@ class SahkaGame(Game):
         else:
             return
 
-        if topic.image:
-            self.settings['image'] = topic.image			
-        if topic.formlist.all().count()>0:
-            self.settings['wordlist'] = ""
-            wlist=[]
-            for w in topic.formlist.all():
-                word = w.fullform
-                wlist.append(word)
-            self.settings['wordlist'] = ", ".join(wlist)
+        self.update_topic(topic)
 
         if prev_form:
             prev_utterance_id = prev_form.utterance_id
@@ -113,6 +116,9 @@ class SahkaGame(Game):
             if nextlink:
 
                 utterance = nextlink.link
+                topic=utterance.topic
+                self.update_topic(topic)
+				
                 db_info = {}
                 db_info['userans'] = ""
                 db_info['correct'] = ""
@@ -134,6 +140,9 @@ class SahkaGame(Game):
             else:
                 # If next link was not found, go to topic closing.
                 utterance = topic.utterance_set.all().filter(utttype="closing")[0]
+                topic=utterance.topic
+                self.update_topic(topic)
+
                 db_info = {}
                 db_info['userans'] = ""
                 db_info['correct'] = ""
