@@ -5758,8 +5758,10 @@ LIST PLACENAME-QUESTION = Gos_don_leat_eret Gos_don_orut_dál gos_du_eadni_lea_e
 # Placename should be in locative:
 MAP (&grm-missing-Loc) TARGET Prop (*-1 ("leat") OR ("orrut") BARRIER Loc OR S-BOUNDARY LINK *-1 PLACENAME-QUESTION BARRIER S-BOUNDARY)(NOT 0 Loc) ;
 
+LIST ACCEPT-EVERYTHING = Makkar_snowboard_child Makkar_snowboard_adult Makkar_snowboard_young Mii_namma_lea ;
+
 # For spellingerrors:
-MAP (&err-spellingerror) TARGET QMRK (NEGATE *-1 QDL LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom))  ;
+MAP (&err-spellingerror) TARGET QMRK (NEGATE *-1 ACCEPT-EVERYTHING BARRIER S-BOUNDARY)  ;
 
 
 # na+Pcle can only be initial:
