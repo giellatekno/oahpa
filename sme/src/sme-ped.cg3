@@ -6321,38 +6321,38 @@ MAP (&dia-target) TARGET DOHKO IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gosa") 
 MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Nom))(NOT 0 NOTHING)  ;
 MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL BARRIER Acc OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Acc))(NOT 0 NOTHING) ;
 
-#LIST ROOMS = stohpu gievkkan oađđenlatnja guosselatnja basadanlatnja hivsset olgofeaskkir;
-LIST ROOMS = "stohpu" "gievkkan" "oađđen#latnja" "guosse#latnja" "basadan#latnja" "hivsset" "olgo#feaskkir";
+#LIST ROOMS = stohpu gievkkan oađđenlatnja basadanlatnja hivsset feaskkir;
+LIST ROOMS = "stohpu" "gievkkan" "oađđen#latnja" "basadan#latnja" "hivsset" "feaskkir";
 
 #LIST DRINK = bruvsa sákta mielki viidni vuola ;
 LIST DRINK = "bruvsa" "sákta" "mielki" "viidni" "vuola" ;
 
-#LIST CANDY =  šukkoláda lákcajiekŋa ;
-LIST CANDY =  "šukkoláda" "lákca#jiekŋa" ;
+#LIST CANDY =  šukkoláda lákcajiekŋa keavssat ;
+LIST CANDY =  "šukkoláda" "lákca#gáhkku" "keaksa" ;
 
-#LIST BREAD = láibi garraláibi bihpporgáhkut ; 
-LIST BREAD = "láibi" "garra#láibi" "bihppor#gáhkku" ;
+#LIST BREAD = láibi garraláibi roavvaláibi beaivvášláibbáš nisoláibi ; 
+LIST BREAD = "láibi" "garra#láibi" "roavva#láibi" "beaivváš#láibbáš" "niso#láibi";
 
-#LIST VEGETABLE = rušppit buđehat ;
-LIST VEGETABLE = "rušpi" "buđet" ;
+#LIST VEGETABLE = rušppit buđehat saláhta ;
+LIST VEGETABLE = "rušpi" "buđet" "saláhta" ;
 
 #LIST FRUIT = eahppelat appelsiinnat ;
 LIST FRUIT = "eahppel" "appelsiidna" ;
 
-#LIST MEAT = márffit sáltemárfi spiidnebiergu bohccobiergu  ;
-LIST MEAT = "márfi" "sálte#márfi"  "spiidne#biergu" "bohcco#biergu"  ;
+#LIST MEAT = márffit sáltemárfi buoidi bohccobiergu  ;
+LIST MEAT = "márfi" "sálte#márfi"  "buoidi" "bohcco#biergu"  ;
 
-#LIST GROCERYFISH = guolli sálteguolli guollegáhkut ;
-LIST GROCERYFISH = "guolli" "sálte#guolli" "guolle#gáhkku" ;
+#LIST GROCERYFISH = guolli sálteluossa goikeguolli guollegáhkut ;
+LIST GROCERYFISH = "guolli" "goike#guolli" "sálte#luossa" "guolle#gáhkku" ;
 
 #LIST BAKING =  sálttit sohkkarat  monit jáffut jeasta sirát ;
 LIST BAKING =  "sálti" "sohkar" "monni" "jáffu" "jeasta" "sirát" ;
 
-#LIST SUVLI = vuodja vuostá muorjemeastu ruškesvuostá vuoivvasmeastu ;
-LIST SUVLI = "vuodja" "vuostá" "muorje#meastu"  "ruškes#vuostá" "vuoivvas#meastu" ;
+#LIST SUVLI = vuodja vuostá muorjemeastu vuoivvasmeastu luomemeastu majonesa ;
+LIST SUVLI = "vuodja" "vuostá" "muorje#meastu" "vuoivvas#meastu" "luome#meastu" "majonesa" ;
 
-#LIST OFFERS = gintalat beavdeliinnit deadjagohput ;
-LIST OFFERS = "ginttal"  "beavde#liidni" "deadja-gohppu"  ;
+#LIST OFFERS = gintalat  gohput rátnu speajal ruskalihtti govva ;
+LIST OFFERS = "ginttal" "gohppu" "rátnu" "speajal" "ruska#lihtti" "govva" ;
 
 LIST VIESSOGALVVUT-Q = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_lahttelamppa gosa_bidjat_lohkanlamppa gosa_bidjat_soffa gosa_bidjat_lahtteranu gosa_bidjat_speadjala ;  
 
