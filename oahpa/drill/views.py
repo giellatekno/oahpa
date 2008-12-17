@@ -180,7 +180,7 @@ def oahpa(request):
 def sahka_main(request):
 
     c = RequestContext(request, {
-        'jee': "joku arvo",
+        'gametype': "sahka",
         })
     return render_to_response('sahka_main.html', c, context_instance=RequestContext(request))
 
@@ -562,6 +562,7 @@ class Sahkaview:
             if "settings" in data:
                 game.settings['topicnumber']=0
                 game.settings['image']="sahka.png"
+                game.settings['wordlist']=""
                 game.num_fields=1
                 game.update_game(1)
             else:
@@ -573,7 +574,7 @@ class Sahkaview:
                     game.update_game(len(game.form_list)+1, game.form_list[game.num_fields-2])
 
             settings_form.init_hidden(game.settings['topicnumber'],game.num_fields,\
-									  game.settings['dialogue'],game.settings['image'])
+									  game.settings['dialogue'],game.settings['image'],game.settings['wordlist'])
 
         # If there is no POST data, default settings are applied
         else:
@@ -610,6 +611,7 @@ class Sahkaview:
             'num_fields' : game.num_fields,
             'gametype' : "sahka",
             'image' : game.settings['image'],
+            'wordlist' : game.settings['wordlist'],
             'dialogue' : game.settings['dialogue'],
             })
         return c
