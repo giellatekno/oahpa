@@ -14,10 +14,33 @@ import codecs
 
 class Sahka:
 
+    def add_wordlist(self,word,t):
+        cgfile="/Users/saara/ped/sme/src/sme-ped.cg3"
+
+        wordclass = word.getAttribute("class")
+        print wordclass
+        listObj=re.compile(r'^\#LIST\s*' + wordclass + '\s*=\s?(?P<listString>.*).*;.*$', re.U)
+        cgfileObj = codecs.open(cgfile, "r", "utf-8" )
+        while True:
+            line = cgfileObj.readline()
+            if not line: break
+            if not line.strip(): continue
+            matchObj=listObj.search(line) 
+            if matchObj:
+                list = matchObj.expand(r'\g<listString>')
+                for w in list.split():
+                    w = w.strip("\"")
+                    w = w.replace('#','')
+                    print w
+                    if Form.objects.filter(fullform=w).count()>0:
+                        word = Form.objects.filter(fullform=w)[0]
+                        t.formlist.add(word)
+                        t.save()
+        cgfileObj.close()                        
+
     def read_dialogue(self,infile):
 
         print infile
-        cgfile="/home/saara/ped/sme/src/sme-ped.cg3"
 
         xmlfile=file(infile)
         tree = _dom.parse(infile)
@@ -41,26 +64,7 @@ class Sahka:
 
             if topic.getElementsByTagName("word"):
                 word = topic.getElementsByTagName("word")[0]
-                wordclass = word.getAttribute("class")
-                #print wordclass
-                listObj=re.compile(r'^\#LIST\s*' + wordclass + '\s*=\s*(?P<listString>.*);$', re.U)
-                cgfileObj = codecs.open(cgfile, "r", "utf-8" )
-                while True:
-                    line = cgfileObj.readline()
-                    if not line: break
-                    if not line.strip(): continue
-                    matchObj=listObj.search(line) 
-                    if matchObj:
-                        list = matchObj.expand(r'\g<listString>')
-                        for w in list.split():
-                            w = w.strip("\"")
-                            w = w.replace('#','')
-                            print w
-                            if Form.objects.filter(fullform=w).count()>0:
-                                word = Form.objects.filter(fullform=w)[0]
-                                t.formlist.add(word)
-                                t.save()
-                cgfileObj.close()                            
+                self.add_wordlist(word,t)
             topicnum=topicnum+1
 
             # createn opening and closing if they do not exist in xml-file.
@@ -76,10 +80,14 @@ class Sahka:
                     if utttype == "closing": closing = True
                 utterance = {}
                 utt_text=""
+                utt_word=None
                 if utt.getElementsByTagName("text"):
                     if utt.getElementsByTagName("text")[0].firstChild.data:
                         utt_text = utt.getElementsByTagName("text")[0].firstChild.data
 
+                if utt.getElementsByTagName("word"):
+                    utt_word = utt.getElementsByTagName("word")[0]
+                
                 if utt.getElementsByTagName("element"):
                     uttelement = utt.getElementsByTagName("element")[0]
                     el_id = uttelement.getAttribute("id")
@@ -92,6 +100,7 @@ class Sahka:
                 utterance['text'] = utt_text
                 utterance['name'] = utt_name
                 utterance['type'] = utttype
+                utterance['word'] = utt_word
                 utterance['number'] = i
                 i=i+1
                 utterance['alts'] = []
@@ -125,6 +134,8 @@ class Sahka:
                                                                utttype=u['type'],\
                                                                topic=t,\
                                                                name=u['name'])
+                if u['word']:
+                    self.add_wordlist(u['word'],utt)
                 utt.save()
 
                 # Create syntactic specifictation for variables
