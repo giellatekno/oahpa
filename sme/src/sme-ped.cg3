@@ -6317,29 +6317,38 @@ MAP (&dia-target) TARGET DOHKO IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gosa") 
 MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Nom))(NOT 0 NOTHING)  ;
 MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL BARRIER Acc OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Acc))(NOT 0 NOTHING) ;
 
+#LIST ROOMS = stohpu gievkkan oađđenlatnja guosselatnja basadanlatnja hivsset olgofeaskkir;
 LIST ROOMS = "stohpu" "gievkkan" "oađđen#latnja" "guosse#latnja" "basadan#latnja" "hivsset" "olgo#feaskkir";
 
+#LIST DRINK = bruvsa sákta mielki viidni vuola ;
 LIST DRINK = "bruvsa" "sákta" "mielki" "viidni" "vuola" ;
 
+#LIST CANDY =  šukkoláda lákcajiekŋa ;
 LIST CANDY =  "šukkoláda" "lákca#jiekŋa" ;
- 
-LIST BREAD = "láibi" ("garra#láibi" N Pl) ("bihppor#gáhkku" N Pl) ;
 
-LIST VEGETABLE = ("rušpi" N Pl) ("buđet" N Pl) ;
+#LIST BREAD = láibi garraláibi bihpporgáhkut ; 
+LIST BREAD = "láibi" "garra#láibi" "bihppor#gáhkku" ;
 
-LIST FRUIT = ("eahppel" N Pl) ("appelsiidna" N Pl) ;
+#LIST VEGETABLE = rušppit buđehat ;
+LIST VEGETABLE = "rušpi" "buđet" ;
 
+#LIST FRUIT = eahppelat appelsiinnat ;
+LIST FRUIT = "eahppel" "appelsiidna" ;
 
-LIST MEAT = ("márfi" N Pl) "sálte#márfi"  "spiidne#biergu" "bohcco#biergu"  ;
+#LIST MEAT = márffit sáltemárfi spiidnebiergu bohccobiergu  ;
+LIST MEAT = "márfi" "sálte#márfi"  "spiidne#biergu" "bohcco#biergu"  ;
 
-LIST GROCERYFISH = "guolli" "sálte#guolli" ("guolle#gáhkku" N Pl) ;
+#LIST GROCERYFISH = guolli sálteguolli guollegáhkut ;
+LIST GROCERYFISH = "guolli" "sálte#guolli" "guolle#gáhkku" ;
 
-LIST BAKING =  ("sálti" N Pl) ("sohkar" N Pl)  ("monni" N Pl) ("jáffu" N Pl) "jeasta" "sirát" ;
+#LIST BAKING =  sálttit sohkkarat  monit jáffut jeasta sirát ;
+LIST BAKING =  "sálti" "sohkar" "monni" "jáffu" "jeasta" "sirát" ;
 
-
+#LIST SUVLI = vuodja vuostá muorjemeastu ruškesvuostá vuoivvasmeastu ;
 LIST SUVLI = "vuodja" "vuostá" "muorje#meastu"  "ruškes#vuostá" "vuoivvas#meastu" ;
 
-LIST OFFERS = ("ginttal" N Pl) "beavde#liidni" ("deadja-gohppu" N Pl) ;
+#LIST OFFERS = gintalat beavdeliinnit deadjagohput ;
+LIST OFFERS = "ginttal"  "beavde#liidni" "deadja-gohppu"  ;
 
 LIST VIESSOGALVVUT-Q = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_lahttelamppa gosa_bidjat_lohkanlamppa gosa_bidjat_soffa gosa_bidjat_lahtteranu gosa_bidjat_speadjala ;  
 
