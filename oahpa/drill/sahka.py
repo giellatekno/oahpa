@@ -49,9 +49,12 @@ class SahkaGame(Game):
             self.settings['image'] = topic.image			
         if topic.wordlist.all().count()>0:
             self.settings['wordlist'] = ""
+            wlist=[]
             for w in topic.wordlist.all():
                 word = w.lemma
-                self.settings['wordlist'] = self.settings['wordlist'] + ", " + word
+                wlist.append(word)
+            self.settings['wordlist'] = ", ".join(wlist)
+
         if prev_form:
             prev_utterance_id = prev_form.utterance_id
             prev_utterance = Utterance.objects.get(id=prev_utterance_id)
