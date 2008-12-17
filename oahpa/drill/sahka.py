@@ -23,6 +23,7 @@ class SahkaGame(Game):
                     if Form.objects.filter(word__lemma=wstring, tag=tag).count()>0:
                         fullform = Form.objects.filter(word__lemma=wstring, tag=tag)[0]
                         word['fullform'].append(fullform.fullform)
+                        #print fullform.fullform
                 if not fullform:
                     word['fullform'].append(wstring)
             else:
@@ -46,6 +47,11 @@ class SahkaGame(Game):
 
         if topic.image:
             self.settings['image'] = topic.image			
+        if topic.wordlist.all().count()>0:
+            self.settings['wordlist'] = ""
+            for w in topic.wordlist.all():
+                word = w.lemma
+                self.settings['wordlist'] = self.settings['wordlist'] + ", " + word
         if prev_form:
             prev_utterance_id = prev_form.utterance_id
             prev_utterance = Utterance.objects.get(id=prev_utterance_id)
@@ -93,14 +99,16 @@ class SahkaGame(Game):
         # According to the type of the answer
         if prev_form:
             nextlink=None
+            #print prev_form.target
+            #print prev_utterance.id
             if prev_form.target:
                 if prev_utterance.links.filter(target=prev_form.target):
                     nextlink = prev_utterance.links.filter(target=prev_form.target)[0]
             if not nextlink:
                 if prev_utterance.links.filter(target="default"):
                     nextlink = prev_utterance.links.filter(target="default")[0]
-                    
             if nextlink:
+
                 utterance = nextlink.link
                 db_info = {}
                 db_info['userans'] = ""
