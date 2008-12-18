@@ -10,6 +10,7 @@ from django.utils.translation import ugettext as _
 from django.utils.encoding import force_unicode
 from random import randint
 from models import *
+from grammarlinks import *
 import time
 import datetime
 import socket
@@ -213,8 +214,8 @@ def set_correct(self):
     Adds correct wordforms to the question form.
     """
     
-    if self.correct_anslist:
-        self.correct_answers = self.correct_ans
+    if self.correct_ans:
+        self.correct_answers = self.correct_ans[:]
 
 
 def set_settings(self):
@@ -319,7 +320,7 @@ class OahpaSettings(forms.Form):
     set_settings = set_settings
 
     def set_default_data(self):
-		self.default_data = {'language' : 'sme', 'dialogue' : 'GG',\
+        self.default_data = {'language' : 'sme', 'dialogue' : 'GG',\
                              'syll' : ['bisyllabic'], 'book' : 'all', \
                              'case': 'N-ILL', 'pos' : 'N', \
                              'vtype' : 'PRS', \
@@ -328,6 +329,10 @@ class OahpaSettings(forms.Form):
                              'vtype_context' : 'PRS', \
                              'num_context' : 'NUM-ATTR', \
                              'adj_context' : 'ATTRPOS'}
+
+        # Link to grammatical explanation for each page
+        self.grammarlinkssme = Links.objects.filter(language="sme")
+        self.grammarlinksno = Links.objects.filter(language="no")
 
 
 class OahpaQuestion(forms.Form):
@@ -359,7 +364,7 @@ class OahpaQuestion(forms.Form):
     def generate_fields(self,answer_size, maxlength):
         self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                 widget=forms.TextInput(\
-            attrs={'size': answer_size, 'onkeypress':'return process(this, event,document.theform);',}))
+            attrs={'size': answer_size, 'onkeypress':'javascript:return process(this, event,document.gameform);',}))
 
             
 class MorfaSettings(OahpaSettings):
@@ -426,6 +431,7 @@ class MorfaQuestion(OahpaQuestion):
 
         self.is_correct("morfa" + "_" + tag.pos, self.lemma + "+" + self.tag)
 
+
         # set correct and error values
         if correct_val == "correct":
             self.error="correct"
@@ -447,6 +453,9 @@ class QuizzSettings(OahpaSettings):
                     'semtype' : 'NATUREWORDS', \
                     'frequency' : ['common'], 'geography' : ['sapmi'], \
                     'transtype' : 'smenob' }
+    # Link to grammatical explanation for each page
+    grammarlinkssme = Links.objects.filter(language="sme")
+    grammarlinksno = Links.objects.filter(language="no")
 
 
     def __init__(self, *args, **kwargs):
@@ -487,6 +496,9 @@ class NumSettings(OahpaSettings):
     numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
     language = forms.ChoiceField(initial='sme', choices=LANGUAGE_CHOICES, widget=forms.RadioSelect)
     default_data = {'language' : 'sme', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
+    # Link to grammatical explanation for each page
+    grammarlinkssme = Links.objects.filter(language="sme")
+    grammarlinksno = Links.objects.filter(language="no")
                     
     def __init__(self, *args, **kwargs):
         self.set_settings
@@ -843,12 +855,14 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
                 spelling = True
             msgstrings[wordform][msgstring] = 1
 
+        #Search for baseform
         matchObj=targetObj.search(line)
         if matchObj:
             msgstring = matchObj.expand(r'\g<targetString>')
             msgstrings[wordform]['dia-target'] = msgstring
             msgstrings[wordform]['dia-lemma'] = lemma
 
+        # dia-whatever
         matchObj=diaObj.search(line)
         if matchObj:
             msgstring = matchObj.expand(r'\g<targetString>')
@@ -925,7 +939,7 @@ class VastaQuestion(OahpaQuestion):
         answer_size=50
         self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                 widget=forms.TextInput(\
-			attrs={'size': answer_size, 'onkeypress':'return process(this, event, document.theform);',}))
+			attrs={'size': answer_size, 'onkeypress':'javascript:return process(this, event, document.gameform);',}))
 
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
@@ -985,6 +999,9 @@ def sahka_is_correct(self,utterance,targets):
     # Split the question to words for analaysis.
 
     self.messages, self.dia_messages, self.variable, self.constant = self.vasta_is_correct(utterance.utterance, None, utterance.name)
+    #self.variable = "Kárášjohka"
+    #self.target="target"
+
     if self.target:
         if not self.messages:
             self.error = "correct"
@@ -1011,6 +1028,10 @@ class SahkaSettings(OahpaSettings):
         self.default_data['image'] = 'sahka.png'
         self.default_data['wordlist'] = ''
         super(SahkaSettings, self).__init__(*args, **kwargs)
+
+        # Link to grammatical explanation for each page
+        self.grammarlinkssme = Links.objects.filter(language="sme")
+        self.grammarlinksno = Links.objects.filter(language="no")
 
     def init_hidden(self, topicnumber, num_fields, dialogue, image, wordlist):
         
@@ -1046,11 +1067,12 @@ class SahkaQuestion(OahpaQuestion):
             answer_size=50
             self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                     widget=forms.TextInput(\
-            attrs={'size': answer_size, 'onkeypress':'return process(this, event, document.theform);',}))
+            attrs={'size': answer_size, 'onkeypress':'javascript:return process(this, event, document.gameform);',}))
 
         self.fields['utterance_id'] = forms.CharField(widget=utterance_widget, required=False)
 
         self.global_targets = global_targets
+        #print self.global_targets
         self.utterance =""
         self.qattrs={}
 
@@ -1091,6 +1113,7 @@ class SahkaQuestion(OahpaQuestion):
             self.utterance=qstring
 
         self.target=""
+        self.constant=""
         self.dia_messages = ""		
         self.gametype="sahka"
         self.sahka_is_correct(utterance,targets)
@@ -1109,7 +1132,7 @@ class SahkaQuestion(OahpaQuestion):
         for t in self.global_targets.keys():
             if not self.qattrs.has_key(t):
                 self.qattrs['target_' + t] = self.global_targets[t]['target']
-							
+
         #self.error="correct"
         self.errormsg = ""
 
