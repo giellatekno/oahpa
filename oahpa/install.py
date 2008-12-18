@@ -13,6 +13,7 @@ import codecs
 from ling import Paradigm, Questions
 from feedback_install import Feedback
 from sahka_install import Sahka
+from extra_install import Extra
 
 parser = OptionParser()
 
@@ -52,6 +53,8 @@ parser.add_option("-c", "--comments", dest="commentfile",
                   help="XML-file for comments")
 parser.add_option("-k", "--sahka", dest="sahkafile",
                   help="XML-file for Dialogues")
+parser.add_option("-i", "--links", dest="linkfile",
+                  help="Text file for grammarlinks")
 parser.add_option("-u", "--update", dest="update",
                   action="store_true", default=False,
                   help="If update data")
@@ -62,6 +65,7 @@ linginfo = Paradigm()
 feedback = Feedback()
 sahka = Sahka()
 questions = Questions()
+extra = Extra()
 
 if options.tagfile:
     linginfo.handle_tags(options.tagfile, options.add_db)
@@ -100,6 +104,10 @@ if options.commentfile:
 
 if options.sahkafile:
     sahka.read_dialogue(options.sahkafile)
+    exit()
+
+if options.linkfile:
+    extra.read_address(options.linkfile)
     exit()
 
 if not options.infile:
