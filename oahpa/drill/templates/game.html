@@ -4,7 +4,9 @@
 
 {% block content %}
 
+{% ifnotequal gametype "sahka" %}
 <hr/>
+{% endifnotequal %}
 
 <table width="90%">
 <tr>
@@ -123,6 +125,7 @@
 {{ form.question_id }} {{ form.answer_id }}       
 {{ form.utterance_id }}
 {{ form.qstring }} {{ form.astring }}
+{% block hidden %}{% endblock %}
 <input type="hidden" name="{{ forloop.counter }}-userans" value="{{ form.userans }}" />
 <input type="hidden" name="{{ forloop.counter }}-correct" value="{{ form.error }}" />
   {% for detail, value in form.qattrs.items %}
@@ -166,13 +169,15 @@
 </td>
 </tr>
 
-
 </table>
 </td>
 {% ifnotequal gametype "sahka" %}
-<td   width="30%" valign="top"> <table class="instructions" cellpadding="8px"><tr><td>
-<p >{% block gamename %}{% endblock %}</p>
-{% block instructions %}{% endblock %}</td></tr></table></td>
+<td width="30%" valign="top">
+<table class="instructions" cellpadding="8px">
+<tr><td>
+{% block gamename %}{% endblock %}<br/>
+{% block instructions %}{% endblock %}</td>
+</tr></table></td>
 {% endifnotequal %}
 </tr>
 </table>
