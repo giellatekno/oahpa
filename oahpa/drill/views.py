@@ -372,7 +372,6 @@ class Quizzview(Gameview):
 
     def placename_settings(self, settings_form):
 
-
         self.settings['frequency'] = []
         self.settings['geography']= []
 
@@ -392,8 +391,6 @@ class Quizzview(Gameview):
 
 
     def create_quizzgame(self,request):
-
-
 
         if request.method == 'POST':
             data = request.POST.copy()
@@ -471,61 +468,79 @@ def quizz(request):
     c = quizzgame.create_quizzgame(request)
     return render_to_response('quizz.html', c, context_instance=RequestContext(request))
 
-def numgame(request):
 
-    mgame = Gameview()
-    mgame.init_settings()
+class Numview(Gameview):
+    
+    def create_numgame(self,request):
+        
+        if request.method == 'POST':
+            data = request.POST.copy()
+            
+            # Settings form is checked and handled.
+            settings_form = NumSettings(request.POST)
+            
+            for k in settings_form.data.keys():
+                if not self.settings.has_key(k):
+                    self.settings[k] = settings_form.data[k]
+                
+            if request.session.has_key('dialect'):
+                self.settings['dialect'] = request.session['dialect']
 
 
-    if request.method == 'POST':
-        data = request.POST.copy()
+            game = NumGame(self.settings)
+                
+            if "settings" in data:
+                game.new_game()
+            else:
+                game.check_game(data)
+                game.get_score(data)
 
-        # Settings form is checked and handled.
-        settings_form = NumSettings(request.POST)
-                    
-        for k in settings_form.data.keys():
-            mgame.settings[k] = settings_form.data[k]
+            if 'test' in data:
+                game.count=1
+            if "show_correct" in data:
+                game.show_correct = 1
 
-        if request.session.has_key('dialect'):
-            mgame.settings['dialect'] = request.session['dialect']
-
-
-        game = NumGame(mgame.settings)
-
-        if "settings" in data:
-            game.new_game()
+        
+        # If there is no POST data, default settings are applied
         else:
-            game.check_game(data)
-            game.get_score(data)
-
-        if 'test' in data:
-            game.count=1
-        if "show_correct" in data:
-            game.show_correct = 1
-
+            settings_form = NumSettings()
         
-    # If there is no POST data, default settings are applied
-    else:
-        settings_form = NumSettings()
-        
-        for k in settings_form.default_data.keys():
-            mgame.settings[k] = settings_form.default_data[k]
+            for k in settings_form.default_data.keys():
+                if not self.settings.has_key(k):
+                    self.settings[k] = settings_form.default_data[k]
 
-        game = NumGame(mgame.settings)
-        game.new_game()
+            game = NumGame(self.settings)
+            game.new_game()
 
 
-    c = Context({
-        'settingsform': settings_form,
-        'forms': game.form_list,
-        'count': game.count,
-        'score': game.score,
-        'comment': game.comment,
-        'all_correct': game.all_correct,
-        'show_correct': game.show_correct,
-    })
+        c = Context({
+            'settingsform': settings_form,
+            'forms': game.form_list,
+            'count': game.count,
+            'score': game.score,
+            'comment': game.comment,
+            'all_correct': game.all_correct,
+            'show_correct': game.show_correct,
+            })
+        return c
 
+def num(request):
+
+    numgame = Numview()
+    numgame.init_settings()
+    numgame.settings['gametype'] = "ord"
+    
+    c = numgame.create_numgame(request)
     return render_to_response('num.html', c, context_instance=RequestContext(request))
+
+def num_ord(request):
+
+    numgame = Numview()
+    numgame.init_settings()
+    numgame.settings['gametype'] = "card"
+    
+    c = numgame.create_numgame(request)
+    return render_to_response('num_ord.html', c, context_instance=RequestContext(request))
 
 
 class Sahkaview:
@@ -543,11 +558,10 @@ class Sahkaview:
         self.settings['gametype'] = "sahka"
         if request.session.has_key('dialect'):
             self.settings['dialect'] = request.session['dialect']
-        
+
+        # With post data, continue the dialogue
         if request.method == 'POST':
             data = request.POST.copy()
-            #print data['continue']
-            #print data['topicnumber']
             # Settings form is checked and handled.
             settings_form = SahkaSettings(request.POST)
 
@@ -576,7 +590,28 @@ class Sahkaview:
             settings_form.init_hidden(game.settings['topicnumber'],game.num_fields,\
 									  game.settings['dialogue'],game.settings['image'],game.settings['wordlist'])
 
-        # If there is no POST data, default settings are applied
+            errormsg=""
+            for f in game.form_list:
+                errormsg = errormsg + f.errormsg
+                
+            c = Context({
+                'settingsform': settings_form,
+                'forms': game.form_list,
+                'messages': game.form_list[-1].messages,
+                'errormsg': errormsg,
+                'count': game.count,
+                'score': game.score,
+                'comment': game.comment,
+                'topicnumber' : game.settings['topicnumber'],
+                'num_fields' : game.num_fields,
+                'gametype' : "sahka",
+                'image' : game.settings['image'],
+                'wordlist' : game.settings['wordlist'],
+                'dialogue' : game.settings['dialogue'],
+                })
+            return c
+
+        # If there is no POST data, present the dialogue selection page
         else:
             settings_form = SahkaSettings()
             for k in settings_form.default_data.keys():
@@ -585,36 +620,11 @@ class Sahkaview:
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
 
-            # Sahka
-            game = SahkaGame(self.settings)
-            #game.init_tags()
-            game.gametype="sahka"
-            game.num_fields = 1
-
-            # Start new game with first form
-            game.form_list = []
-            game.update_game(1)
-            
-        errormsg=""
-        for f in game.form_list:
-            errormsg = errormsg + f.errormsg
-
-        c = Context({
-            'settingsform': settings_form,
-            'forms': game.form_list,
-            'messages': game.form_list[-1].messages,
-            'errormsg': errormsg,
-            'count': game.count,
-            'score': game.score,
-            'comment': game.comment,
-            'topicnumber' : game.settings['topicnumber'],
-            'num_fields' : game.num_fields,
-            'gametype' : "sahka",
-            'image' : game.settings['image'],
-            'wordlist' : game.settings['wordlist'],
-            'dialogue' : game.settings['dialogue'],
-            })
-        return c
+            c = Context({
+                'settingsform': settings_form,
+                'gametype' : "sahka",
+                })
+            return c
 
 
 def sahka(request):
