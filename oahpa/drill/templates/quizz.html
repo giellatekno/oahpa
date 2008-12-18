@@ -7,7 +7,7 @@
 <p class="bigheader">{% trans 'LEKSA' %}</p>
 
 <ul class="sidelist">
-<li>{% trans 'Words' %}</li>
+<li class="selected">{% trans 'Words' %}</li>
 <li><a href="/oahpa/leksa_n/">{% trans 'Placenames' %}</a>
 </ul>
 </div>
@@ -17,15 +17,6 @@
 {% block pagename %}/oahpa/leksa/{% endblock %}
 {% block gamename %}{% endblock %}
 {% block instructions %}{% trans "Give translations for words." %}{% endblock %}
-
-
-{% block tabmenu %}
-<ul id="tabmenu">
-  <li><a href="/oahpa/morfa/">{% trans 'Morfa' %}</a></li>
-  <li><a class="active" href="/oahpa/leksa/">{% trans 'Leksa' %}</a></li>
-  <li><a  href="/oahpa/numra/">{% trans 'Numra' %}</a></li>
-</ul>
-{% endblock %}
 
 {% block settings %}
 <table width="700">
