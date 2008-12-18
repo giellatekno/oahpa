@@ -19,7 +19,10 @@
 
 {% block name %}{% trans "Sahka" %}{% endblock %}
 {% block pagename %}/oahpa/sahka/{% endblock %}
+
+
 {% block settings %}
+{% if not forms %}
 <table width="700">
 <tr>
 <td>{% trans "Dialogue" %}</td>
@@ -27,27 +30,33 @@
 <tr>
 <td>{{ settingsform.dialogue }}</td>
 </tr>
+<tr>
+<td><input type="submit" name="settings" value="{% trans "New set" %}" />
+</td>
+</tr>
 </table>
+{% endif %}
+{% endblock %}
+
+{% block hidden %}
 <input type="hidden" name="topicnumber" value="{{ topicnumber }}" />
 <input type="hidden" name="num_fields" value="{{ num_fields }}" />
 <input type="hidden" name="image" value="{{ image }}" />
 <input type="hidden" name="wordlist" value="{{ wordlist }}" />
 <input type="hidden" name="gametype" value="sahka" />
-<input type="hidden" id="continue" name="continue" value="no_continue" />
-<input type="submit" name="settings" value="{% trans "New set" %}" />
+<input type="hidden" name="dialogue" value="{{ dialogue }}" />
 {% endblock %}
 
 {% block question %}
-
+{% if forms %}
 {% if form.utterance %}
 <td>{{ form.utterance }}</td>
 {% endif %}
-
+{% endif %}
 {% endblock %}
 
-
 {% block submit %}
-
+{% if forms %}
 <tr>
 <td align="right">
   {% if not all_correct %}
@@ -58,9 +67,6 @@
 &nbsp;
 </td>
 </tr>
-
-
-
+{% endif %}
 {% endblock %}
-
 
