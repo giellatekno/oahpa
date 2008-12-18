@@ -93,11 +93,12 @@
 
 <div id="rightbar">
 {% get_current_language as LANGUAGE_CODE %}
-<form action="/oahpa/i18n/setlang/" method="post">
+<form action="/oahpa/i18n/setlang/" method="post" name="newlang">
 <table>
 <tr><td>
+{% trans "Interface language" %}
 <input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
-<select name="language">
+<select name="language" onChange="javascript:this.form.submit();">
 
 {% ifequal LANGUAGE_CODE "sme" %}
 <option value="sme" selected="selected">Davvisámegiella</option>
@@ -125,7 +126,7 @@
 </select>
 </td></tr>
 <tr><td>
-<input type="submit" value="{% trans 'Select language' %}" />
+<!--<input type="submit" value="{% trans 'Select language' %}" />-->
 </td></tr>
 </table>
 </form>
@@ -136,7 +137,8 @@
 <form action="/oahpa/dialect/" method="post">
 <table>
 <tr><td>
-<select name="dialect">
+{% trans "North Sami dialect" %}
+<select name="dialect" onChange="javascript:this.form.submit();">
 {% if dialect %}
   {% ifequal dialect "GG" %}
   <option value="GG" selected="selected">{% trans 'western' %}</option>
@@ -152,7 +154,7 @@
 </select>
 </td></tr>
 <tr><td>
-<input type="submit" value="{% trans 'Select dialect' %}" />
+<!--<input type="submit" value="{% trans 'Select dialect' %}" />-->
 </td></tr>
 </table>
 </form>
