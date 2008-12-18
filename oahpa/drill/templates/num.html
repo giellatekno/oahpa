@@ -5,24 +5,20 @@
 <div id="navbar">
 <img width="120" height="120" border="0" src="/oahpa/media/numra.png"/>
 <p class="bigheader">{% trans 'NUMRA' %}</p>
+
+<ul class="sidelist">
+<li class="selected">{% trans 'Cardinals' %}</li>
+<li><a href="/oahpa/numra_ord/">{% trans 'Ordinals' %}</a>
+</ul>
 </div>
 {% endblock %}
 
-{% block name %}
-{% trans "Numerals" %}{% endblock %}
+
+{% block name %}{% trans "Numerals" %}{% endblock %}
 {% block pagename %}/oahpa/numra/{% endblock %}
 
 {% block gamename %}{% endblock %}
 {% block instructions %}{% trans "Forms for numerals." %}{% endblock %}
-
-{% block tabmenu %}
-<ul id="tabmenu">
-  <li><a href="/oahpa/morfa/">{% trans 'Morfa' %}</a></li>
-  <li><a href="/oahpa/leksa/">{% trans 'Leksa' %}</a></li>
-  <li><a class="active" href="/oahpa/numra/">{% trans 'Numra' %}</a></li>
-</ul>
-{% endblock %}
-
 
 {% block settings %}
 
@@ -40,6 +36,7 @@
 </table>
 <input type="submit" name="settings" value="{% trans "New set" %}" />
 {% endblock %}
+
 
 
 {% block question %}
