@@ -183,3 +183,8 @@ class Topic(models.Model):
     formlist = models.ManyToManyField(Form)
 
 
+######### EXTRA
+class Links(models.Model):
+    name = models.CharField(max_length=200,blank=True,null=True)
+    address = models.CharField(max_length=800,blank=True,null=True)
+    language = models.CharField(max_length=5,blank=True,null=True)
