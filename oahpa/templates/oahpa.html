@@ -57,6 +57,32 @@
 <a href="/oahpa/numra/"><img width="60" height="60" border="0" src="/oahpa/media/numra.png"/><br/>
 {% trans 'NUMRA' %}</a>&nbsp;&nbsp;
 </td>
+<td>
+{% get_current_language as LANGUAGE_CODE %}
+{% ifequal LANGUAGE_CODE "sme" %}
+{% trans "Grammar" %}<br/>
+<form name="jump">
+<select name="menu" onChange="javascript:if (this.selectedIndex > 0) window.open(this.value)">
+{% for link in settingsform.grammarlinkssme %}
+<option value="{{ link.address }}">{{ link.name }}</option>
+{% endfor %}
+</select>
+</form>
+{% endifequal %}
+
+{% ifequal LANGUAGE_CODE "no" %}
+{% trans "Grammar" %}<br/>
+<form name="jump">
+<select name="menu" onChange="javascript:if (this.selectedIndex > 0) window.open(this.value)">
+{% for link in settingsform.grammarlinksno %}
+<option value="{{ link.address }}">{{ link.name }}</option>
+{% endfor %}
+</select>
+</form>
+
+{% endifequal %}
+</td>
+
 </tr>
 </table>
 </td>
@@ -82,7 +108,7 @@
 </div>
 
 <div id="content">
-<form method="post" action="" name="theform" >
+<form method="post" action="" name="gameform" >
 
 <div class="settings">
 {% block settings %}{% endblock %}
