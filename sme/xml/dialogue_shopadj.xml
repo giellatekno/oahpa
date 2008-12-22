@@ -14,24 +14,22 @@
 
 <dialogue name="shopadj">
   
-  <topic name="Buorre_beaivi">
+  <topic name="Buorre_beaivi" image="2scarves.jpg">
     <utt type="opening" name="buorre_beaivi">
       <text>Bures boahtin mu gávpái. Dás don beasat hárjehallat sojahit adjektiivvaid. Geahča govaid ja vástit adjektiivvain - omd. guhkimus.</text>
     </utt>
   </topic>  
   
-  <topic name="3scarfs" image="ped/oahpa/media/3scarves.jpg">
+  <topic name="3scarfs" image="ped/oahpa/media/3scarves_prices.jpg">
 	<wordlist>
 	<word id="guhkki"/><word id="oanehaš"/>
 	</wordlist>
-	    <utt type="question" name="guhkimus">
-      <text>Guđe šearfa lea divraseamos?</text>
-      <alt target="default" link="oanehaccamus"/>     
+	    <utt type="question" name="guhkimus" link="oanehaccamus">
+      <text> Guhte šearfa lea divraseamos?</text>
     </utt>
     
-	    <utt type="question" name="oanehaccamus">
-      <text>Guđe šearfa lea hálbbimus?</text>
-      <alt target="default" link="3scarfs_closing"/>     
+	    <utt type="question" name="oanehaccamus" link="3scarfs_closing">
+      <text> Guhte šearfa lea hálbbimus?</text>
     </utt>
     
         <utt type="closing" name="3scarfs_closing">
@@ -39,63 +37,232 @@
     </utt>
   </topic>  
 
-  <topic name="2scarfs" image="ped/oahpa/media/2scarves.jpg">
+  <topic name="2scarfs" image="ped/oahpa/media/2scarves_price.jpg">
 	<wordlist>
 	<word id="guhkki"/><word id="oanehaš"/>
 	</wordlist>
-	    <utt type="question" name="guhkit">
+	    <utt type="question" name="guhkit" link="oanehaccat">
       <text>Goabbá šearfa lea divraseabbo?</text>
-      <alt target="default" link="oanehet"/>     
     </utt>
     
-	    <utt type="question" name="oanehet">
+	    <utt type="question" name="oanehaccat" link="2scarfs_closing">
       <text>Goabbá šearfa lea hálbbit?</text>
-      <alt target="default" link="unnimus"/>     
     </utt>
+
+        <utt type="closing" name="2scarfs_closing">
+      <text>Dat moai gearggaime šearffaiguin.</text>
+    </utt>
+
+
   </topic>  
 
-  <topic name="3balls" image="ped/oahpa/media/3balls.jpg">
+  <topic name="3balls" image="ped/oahpa/media/3balls_prices.jpg">
 	<wordlist>
 	<word id="unni"/><word id="stuoris"/>
 	</wordlist>
-	    <utt type="question" name="unnimus">
-      <text>Guđe spábba lea divraseamos?</text>
-      <alt target="default" link="stuorimus"/>     
+	    <utt type="question" name="unnimus" link="stuorimus">
+      <text> Guhte spábba lea divraseamos?</text>
     </utt>
     
-	    <utt type="question" name="stuorimus">
-      <text>Guđe spábba lea hálbbimus?</text>
-      <alt target="default" link="3scarfs_closing"/>     
+	    <utt type="question" name="stuorimus" link="3balls_closing">
+      <text> Guhte spábba lea hálbbimus?</text>
     </utt>
     
         <utt type="closing" name="3balls_closing">
-      <text>Ja dál dušše guokte spáppain.</text>
+      <text>Ja dál munnos leat dušše guokte spáppa.</text>
     </utt>
   </topic>  
 
-  <topic name="2balls" image="ped/oahpa/media/2balls.jpg">
+  <topic name="2balls" image="ped/oahpa/media/2balls_prices.jpg">
 	<wordlist>
 	<word id="unni"/><word id="stuoris"/>
 	</wordlist>
-	    <utt type="question" name="stuorit">
+	    <utt type="question" name="stuorit" link="unnit">
       <text>Goabbá spábba lea divraseabbo?</text>
-      <alt target="default" link="unnit"/>     
     </utt>
     
-	    <utt type="question" name="unnit">
+	    <utt type="question" name="unnit" link="2balls_closing">
       <text>Goabbá spábba lea hálbbit?</text>
-      <alt target="default" link="haliidat_go_oddasit"/>     
+    </utt>
+
+        <utt type="closing" name="2balls_closing">
+      <text>Dat ledje spáppat.</text>
+    </utt>
+   </topic>  
+   
+
+  <topic name="3pencils" image="ped/oahpa/media/3pencils_price.jpg">
+	<wordlist>
+	<word id="seaggi"/><word id="gassat"/>
+	</wordlist>
+	    <utt type="question" name="gasimus" link="seakkimus">
+      <text> Guhte bliánta lea divraseamos?</text>
     </utt>
     
-        <utt type="question" name="haliidat_go_oddasit">
+	    <utt type="question" name="seakkimus" link="3pencils_closing">
+      <text> Guhte bliánta lea hálbbimus?</text>
+    </utt>
+    
+        <utt type="closing" name="3pencils_closing">
+      <text>Ja dál dušše guokte bliántta.</text>
+    </utt>
+  </topic>  
+
+  <topic name="2pencils" image="ped/oahpa/media/2pencils_price.jpg">
+	<wordlist>
+	<word id="seaggi"/><word id="gassat"/>
+	</wordlist>
+	    <utt type="question" name="gasit" link="seakkit">
+      <text>Goabbá bliánta lea divraseabbo?</text>
+    </utt>
+    
+	    <utt type="question" name="seakkit" link="2pencils_closing">
+      <text>Goabbá bliánta lea hálbbit?</text>
+    </utt>
+
+        <utt type="closing" name="2pencils_closing">
+      <text>Dat ledje bliánttat.</text>
+    </utt>
+  </topic>  
+
+
+  <topic name="3books" image="ped/oahpa/media/3books_prices.jpg">
+	<wordlist>
+	<word id="asehaš"/><word id="assái"/>
+	</wordlist>
+	    <utt type="question" name="assamus" link="asehaccamus">
+      <text> Guhte girji lea divraseamos?</text>
+    </utt>
+    
+	    <utt type="question" name="asehaccamus" link="3books_closing">
+      <text> Guhte girji lea hálbbimus?</text>
+    </utt>
+    
+        <utt type="closing" name="3books_closing">
+      <text>Ja dál munnos leat dušše guokte girjji.</text>
+    </utt>
+  </topic>  
+
+  <topic name="2books" image="ped/oahpa/media/2books_prices.jpg">
+	<wordlist>
+	<word id="asehaš"/><word id="assái"/>
+	</wordlist>
+	    <utt type="question" name="assat" link="asehaččat">
+      <text>Goabbá girji lea divraseabbo?</text>
+    </utt>
+    
+	    <utt type="question" name="asehaccat" link="2books_closing">
+      <text>Goabbá bliánta lea hálbbit?</text>
+    </utt>
+
+        <utt type="closing" name="2books_closing">
+      <text>Dál gearggaime girjjiiguin.</text>
+    </utt>
+  </topic>  
+
+  <topic name="3cameras" image="ped/oahpa/media/3cameras_prices.jpg">
+	<wordlist>
+	<word id="buorre"/><word id="heittot"/>
+	</wordlist>
+	    <utt type="question" name="buoremus" link="heittogeamos">
+      <text> Guhte kamera lea divraseamos?</text>
+    </utt>
+    
+	    <utt type="question" name="heittogeamos" link="3cameras_closing">
+      <text> Guhte kamera lea hálbbimus?</text>
+    </utt>
+    
+        <utt type="closing" name="3cameras_closing">
+      <text>Ja dál munnos leat dušše guokte kamera.</text>
+    </utt>
+  </topic>  
+
+  <topic name="2cameras" image="ped/oahpa/media/2cameras_prices.jpg">
+	<wordlist>
+	<word id="buorre"/><word id="heittot"/>
+	</wordlist>
+	    <utt type="question" name="buoret" link="heittogit">
+      <text>Goabbá kamera lea divraseabbo?</text>
+    </utt>
+    
+	    <utt type="question" name="heittogit" link="2cameras_closing">
+      <text>Goabbá kamera lea hálbbit?</text>
+    </utt>
+
+        <utt type="closing" name="2cameras_closing">
+      <text>De moai jotke eará biergasiiguin.</text>
+    </utt>
+  </topic>  
+
+  <topic name="3tables" image="ped/oahpa/media/3tables_price.jpg">
+	<wordlist>
+	<word id="jorbbas"/>
+	</wordlist>
+	    <utt type="question" name="jorbaseamos" link="3tables_closing">
+      <text> Guhte beavdi lea hálbbimus?</text>
+    </utt>
+        
+        <utt type="closing" name="3tables_closing">
+      <text>Ja dál leat dušše guokte beavddi.</text>
+    </utt>
+  </topic>  
+
+  <topic name="2tables" image="ped/oahpa/media/2tables_price.jpg">
+	<wordlist>
+	<word id="jorbbas"/>
+	</wordlist>
+	    <utt type="question" name="jorbasat" link="2tables_closing">
+      <text>Goabbá beavdi lea hálbbit?</text>
+    </utt>
+    
+        <utt type="closing" name="2tables_closing">
+      <text>De moai jotke eará biergasiiguin.</text>
+    </utt>
+  </topic>  
+
+  <topic name="3trousers" image="ped/oahpa/media/3trousers_price.jpg">
+	<wordlist>
+	<word id="gallji"/><word id="baski"/>
+	</wordlist>
+	    <utt type="question" name="baskkimusat" link="galjimusat">
+      <text>Dát leat veháš váddásat, go buvssat leat máŋggaidlogus. Guđet buvssat leat divrasepmosat?</text>
+    </utt>
+    
+	    <utt type="question" name="galjimusat" link="3trousers_closing">
+      <text>Guđet buvssat leat hálbbimusat?</text>
+    </utt>
+    
+        <utt type="closing" name="3trousers_closing">
+      <text>Ja dál munnos leat dušše guovttit buvssat.</text>
+    </utt>
+  </topic>  
+
+  <topic name="2trousers" image="ped/oahpa/media/2trousers_price.jpg">
+	<wordlist>
+	<word id="gallji"/><word id="baski"/>
+	</wordlist>
+	    <utt type="question" name="baskkibut" link="galjibut">
+      <text>Goappát buvssat leat divraseappot?</text>
+    </utt>
+    
+	    <utt type="question" name="galjibut" link="2trousers_closing">
+      <text>Goappát buvssat leat hálbbibut?</text>
+    </utt>
+
+        <utt type="closing" name="2trousers_closing">
+      <text>Dát ledje váddáseamos jearaldagat.</text>
+    </utt>
+  </topic>  
+
+
+  <topic name="ođđasit">
+
+	    <utt type="question" name="haliidat_go_oddasit">
       <text>Háliidat go geahččalit ođđasit?</text>
       <alt target="pos" link="guhkimus"/>     
       <alt target="default" link="dialogue_closing"/>     
     </utt>
-  </topic>  
 
-
-  <topic name="Oaidnaleapmai">
     <utt type="closing" name="dialogue_closing">
       <text>Giitu dán háve ovddas, ja oaidnaleapmái!</text>
     </utt>
