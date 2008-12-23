@@ -38,19 +38,12 @@
         @hooksXpath defines where all hooks will be injected (as prefix).
         -->
     <forrest:contract name="branding-css-links">
-      <!-- More information around this contract
-        http://marc.theaimsgroup.com/?l=forrest-dev&m=113473237805195&w=2
-        -->
-      <!--Note: The forrest:properties element does not exit anymore (in comparison to a previous versions) -->
       <forrest:property name="branding-css-links-input">
         <css url="common.css" media="screen" rel="alternate stylesheet" 
           theme="common"/>
         <css url="leather-dev.css" media="screen" rel="alternate stylesheet" 
           theme="common"/>
         <css url="oahpa.screen.css" media="screen" theme="Oahpa"/>
-        <!-- You can request url specific css as defined above, 
-          but beware that you need to use the *.dispatcher.css extension!!!-->
-<!--         <css prefix="" url="#{$getRequest}.dispatcher.css" media="screen" theme="Oahpa"/> -->
         <css url="oahpa.print.css" media="print"/>
         <css>/* Extra css */ 
 p.quote {
@@ -75,14 +68,6 @@ p.quote {
       </forrest:property>
     </forrest:contract>
     <forrest:hook name="container">
-      <!--<forrest:contract name="branding-breadcrumbs">
-        <forrest:property name="branding-breadcrumbs">
-          <trail>
-            <link1 name="Giellatekno" href="http://giellatekno.uit.no/"/>
-            <link2 name="Oahpa" href="http://giellatekno.uit.no/ped/"/>
-          </trail>
-        </forrest:property>
-      </forrest:contract>-->
       <forrest:hook name="header">
         <forrest:hook class="logo">
           <forrest:contract name="branding-logo">
@@ -97,8 +82,6 @@ p.quote {
         </forrest:hook>
         <forrest:hook class="logo">
           <forrest:contract name="branding-logo">
-            <!--<forrest:property name="branding-logo-name">
-              Oahpa</forrest:property>-->
             <forrest:property name="branding-logo-description">Oahpa-portála</forrest:property>
             <forrest:property name="branding-logo-url">
               http://giellatekno.uit.no/ped/</forrest:property>
@@ -106,35 +89,12 @@ p.quote {
               images/oahpa.png</forrest:property>
           </forrest:contract>
         </forrest:hook>
-        <!-- -->
-        <!--<forrest:contract name="search-input">
-          <forrest:property name="input-size">25</forrest:property>
-          <forrest:property name="search-input">
-            <search name="Oahpa" domain="giellatekno.uit.no/ped" provider="google"/>
-          </forrest:property>
-        </forrest:contract>-->
         <forrest:hook name="nav-main-hook">
           <forrest:contract name="nav-main" 
             dataURI="cocoon://#{$getRequest}.navigation.xml"/>
-          <!--<forrest:hook name="publishedStrip" nbsp="true">
-            <forrest:contract name="nav-main-sub" 
-              dataURI="cocoon://#{$getRequest}.navigation.xml"/>
-            <forrest:contract name="siteinfo-last-published"/>
-          </forrest:hook>-->
         </forrest:hook>
       </forrest:hook>
       <forrest:hook name="page">
-<!--         <forrest:hook class="breadtrail" nbsp="true" /> -->
-        <!--<forrest:contract name="branding-breadcrumbs">
-          <forrest:property name="branding-breadcrumbs">
-            <trail>
-              <link1 name="myGroup" href="http://www.apache.org/"/>
-              <link2 name="myProject" href="http://forrest.apache.org/"/>
-              <link3 name="" href=""/>
-            </trail>
-          </forrest:property>
-        </forrest:contract>-->
-	
         <forrest:hook name="leftbar">
           <forrest:contract name="nav-section" 
             dataURI="cocoon://#{$getRequest}.navigation.xml">
@@ -143,50 +103,13 @@ p.quote {
                 uri="cocoon://#{$cocoon/parameters/getRequest}.toc.xml"/>
             </forrest:property>
             <forrest:property name="expanding">true</forrest:property>
-            <!--<forrest:property name="toc" max-depth="2"/>-->
           </forrest:contract>
-          <!-- <forrest:contract name="genericMarkup">
-            <forrest:property name="genericMarkup">
-              <hr/>
-            </forrest:property>
-    </forrest:contract>-->
-          <!-- <forrest:contract name="search-input">
-            <forrest:property name="input-size">18</forrest:property>
-            <forrest:property name="search-input">
-              <search name="MyProject" domain="mydomain" provider="google"/>
-            </forrest:property>
-    </forrest:contract>-->
           <forrest:contract name="siteinfo-credits">
             <forrest:property name="box-location">credit</forrest:property>
             <forrest:property name="top-separator">true</forrest:property>
-            <!--<forrest:property name="siteinfo-credits">
-              <credits>
-                <credit>
-                  <name>Built with Apache Forrest</name>
-                  <url>http://forrest.apache.org/</url>
-                  <image>images/built-with-forrest-button.png</image>
-                  <width>88</width>
-                  <height>31</height>
-                </credit>
-              </credits>
-      </forrest:property>-->
           </forrest:contract>
-          <!-- <forrest:contract name="genericMarkup">
-            <forrest:property name="genericMarkup">
-              <hr/>
-            </forrest:property>
-    </forrest:contract>-->
-          
-<!--           <forrest:contract name="nav-section-round-bottom"/> -->
         </forrest:hook>
-        <!--<forrest:hook name="export-link">
-          <forrest:contract name="content-pdf-link"/>
-        </forrest:hook>-->
         <forrest:hook name="content">
-          <!-- FIXME - Problem with ndeSetTextSize() script from fontsize.js not compliant between Pelt and Leather-dev... -->
-          <!-- <forrest:hook class="trail">
-            <forrest:contract name="branding-fontsize"/>
-    </forrest:hook>-->
           <forrest:contract name="content-title" 
             dataURI="cocoon://#{$getRequest}.title.xml"/>
           <forrest:contract name="content-abstract" 
@@ -202,13 +125,6 @@ p.quote {
               <headings type="clean"/>
             </forrest:property>
           </forrest:contract>
-          <!--
-          <forrest:contract name="content-authors">
-              <forrest:property name="content-authors" nugget="get.authors">
-                <jx:import uri="cocoon://#{$cocoon/parameters/getRequest}.authors.xml"/>
-              </forrest:property>
-          </forrest:contract>
-          -->
         </forrest:hook>
       </forrest:hook>
       <forrest:hook name="footer">
