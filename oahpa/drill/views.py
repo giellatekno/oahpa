@@ -528,7 +528,7 @@ def num(request):
 
     numgame = Numview()
     numgame.init_settings()
-    numgame.settings['gametype'] = "ord"
+    numgame.settings['gametype'] = "card"
     
     c = numgame.create_numgame(request)
     return render_to_response('num.html', c, context_instance=RequestContext(request))
@@ -537,7 +537,7 @@ def num_ord(request):
 
     numgame = Numview()
     numgame.init_settings()
-    numgame.settings['gametype'] = "card"
+    numgame.settings['gametype'] = "ord"
     
     c = numgame.create_numgame(request)
     return render_to_response('num_ord.html', c, context_instance=RequestContext(request))
