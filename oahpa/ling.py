@@ -81,11 +81,11 @@ class Paradigm:
                 all = all + lemma + "+" + a
 
         # generator call
-        #fstdir="/opt/smi/sme/bin"
-        #lookup = "/usr/local/bin/lookup"
+        fstdir="/opt/smi/sme/bin"
+        lookup = "/usr/local/bin/lookup"
 
-        fstdir="/Users/saara/gt/sme/bin"
-        lookup = "/Users/saara/bin/lookup"
+        #fstdir="/Users/saara/gt/sme/bin"
+        #lookup = "/Users/saara/bin/lookup"
 
         gen_norm_fst = fstdir + "/isme-norm.fst"
         gen_gg_restr_fst = fstdir + "/isme-KJ.restr.fst"            
@@ -476,8 +476,8 @@ class Questions:
 
             qid = q.getAttribute('id')
             level = q.getAttribute('level')
-            if not level: level='1'
-            
+            if not level: level="1"
+
             gametype = q.getAttribute('game')
             if not gametype:
                 if vasta: gametype="qa"
@@ -532,7 +532,8 @@ class Questions:
             answers=q.getElementsByTagName("answer")
             for ans in answers:                
                 text=ans.getElementsByTagName("text")[0].firstChild.data
-                answer_element = Question.objects.create(string=text,qatype="answer",question=question_element,level="1")
+                answer_element = Question.objects.create(string=text,qatype="answer",question=question_element,level=1)
+
                 answer_element.save()                
                 print text
                 self.read_elements(ans, answer_element,qtype)
