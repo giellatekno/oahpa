@@ -10,7 +10,6 @@ from django.utils.translation import ugettext as _
 from django.utils.encoding import force_unicode
 from random import randint
 from models import *
-from grammarlinks import *
 import time
 import datetime
 import socket
@@ -364,7 +363,7 @@ class OahpaQuestion(forms.Form):
     def generate_fields(self,answer_size, maxlength):
         self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                 widget=forms.TextInput(\
-            attrs={'size': answer_size, 'onkeypress':'javascript:return process(this, event,document.gameform);',}))
+            attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event,document.gameform);',}))
 
             
 class MorfaSettings(OahpaSettings):
@@ -812,13 +811,14 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
     analyzed=""
     for c in word:
         c=c.rstrip().lstrip()
-
         lookup_client.send(c)
         analyzed = analyzed + lookup_client.recv(512)
+        analysis2=analyzed
 
     analysis = analysis + analyzed
-    analysis2=analysis
+
     analysis = analysis.rstrip()
+
     analysis = analysis.replace("\"","\\\"")
 
     ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
@@ -902,9 +902,12 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
     if not msg:
         self.error = "correct"
 
+    variables = []
+    variables.append(variable)
+    variables.append(constant)
     lookup_client.send("q")
     lookup_client.close()
-    return msg, dia_msg, variable, constant
+    return msg, dia_msg, variables
 
 
 class VastaSettings(OahpaSettings):
@@ -939,14 +942,14 @@ class VastaQuestion(OahpaQuestion):
         answer_size=50
         self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                 widget=forms.TextInput(\
-			attrs={'size': answer_size, 'onkeypress':'javascript:return process(this, event, document.gameform);',}))
+			attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
 
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
         # In qagame, all words are considered as answers.
 
         self.gametype="vasta"
-        self.messages, jee, joo, juu  = self.vasta_is_correct(question.string, qwords, None)
+        self.messages, jee, joo  = self.vasta_is_correct(question.string, qwords, None)
         
         self.qattrs= {}
         for syntax in qwords.keys():
@@ -998,7 +1001,7 @@ def sahka_is_correct(self,utterance,targets):
     qwords = {}
     # Split the question to words for analaysis.
 
-    self.messages, self.dia_messages, self.variable, self.constant = self.vasta_is_correct(utterance.utterance, None, utterance.name)
+    self.messages, self.dia_messages, self.variables = self.vasta_is_correct(utterance.utterance, None, utterance.name)
     #self.variable = "Kárášjohka"
     #self.target="target"
 
@@ -1067,7 +1070,7 @@ class SahkaQuestion(OahpaQuestion):
             answer_size=50
             self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                     widget=forms.TextInput(\
-            attrs={'size': answer_size, 'onkeypress':'javascript:return process(this, event, document.gameform);',}))
+            attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
 
         self.fields['utterance_id'] = forms.CharField(widget=utterance_widget, required=False)
 
@@ -1116,6 +1119,9 @@ class SahkaQuestion(OahpaQuestion):
         self.constant=""
         self.dia_messages = ""		
         self.gametype="sahka"
+        self.variables = []
+        self.variables.append("")
+        self.variables.append("")
         self.sahka_is_correct(utterance,targets)
         if self.target:
             variable=""
@@ -1123,12 +1129,12 @@ class SahkaQuestion(OahpaQuestion):
             if utterance.links.filter(target=self.target).count()>0:
                 variable = utterance.links.filter(target=self.target)[0].variable
                 if variable:
-                    self.qattrs['target_' + variable] = self.variable
-                    self.global_targets[variable] = { 'target' : self.variable }
+                    self.qattrs['target_' + variable] = self.variables[0]
+                    self.global_targets[variable] = { 'target' : self.variables[0] }
                 constant = utterance.links.filter(target=self.target)[0].constant
                 if constant:
-                    self.qattrs['target_' + constant] = self.constant
-                    self.global_targets[constant] = { 'target' : self.constant }
+                    self.qattrs['target_' + constant] = self.variables[1]
+                    self.global_targets[constant] = { 'target' : self.variables[1] }
         for t in self.global_targets.keys():
             if not self.qattrs.has_key(t):
                 self.qattrs['target_' + t] = self.global_targets[t]['target']
