@@ -9,7 +9,7 @@
 {% block navbar %}
   {% ifequal settings.gametype "bare" %}
 <img width="120" height="120" border="0" src="/oahpa/media/morfa_big.png"/>
-<p class="bigheader">{% trans 'MORFA-S' %}</p>
+<p class="bigheader">MORFA-S</p>
 <ul class="sidelist"> 
 {% ifequal settings.pos "N" %}
   <li class="selected">{% trans 'Nouns' %}</li>
@@ -34,7 +34,7 @@
 </ul>                                                        
 {% else %}
 <img width="120" height="120" border="0" src="/oahpa/media/morfac_big.png"/>
-<p class="bigheader">{% trans 'MORFA-C' %}</p>
+<p class="bigheader">MORFA-C</p>
 <ul class="sidelist"> 
 {% ifequal settings.pos "N" %}
   <li class="selected">{% trans 'Nouns' %}</li>
