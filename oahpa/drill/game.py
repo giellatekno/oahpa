@@ -150,7 +150,6 @@ class Game:
                 new_db_info = db_info
             form, word_id = self.create_form(new_db_info, n, data)
             self.form_list.append(form)
-
                 
     def get_score(self, data):
 
@@ -338,7 +337,12 @@ class NumGame(Game):
         num_list = []
 
         random_num = randint(1, int(self.settings['maxnum']))
-        db_info['numeral_id'] = random_num
+
+        print self.settings['gametype']
+        if self.settings['gametype'] == "ord":
+            db_info['numeral_id'] = str(random_num) + "."
+        else:
+            db_info['numeral_id'] = str(random_num)
         return db_info
         
         
@@ -354,9 +358,8 @@ class NumGame(Game):
         fstdir="/opt/smi/" + language + "/bin"
         lookup = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
         gen_norm_fst = fstdir + "/" + language + "-num.fst"
-        
-        
-        gen_norm_lookup = "echo " + str(db_info['numeral_id']) + " | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
+
+        gen_norm_lookup = "echo " + db_info['numeral_id'] + " | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
 
         num_tmp = os.popen(gen_norm_lookup).readlines()
         num_list=[]
