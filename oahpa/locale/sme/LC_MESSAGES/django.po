@@ -34,7 +34,7 @@ msgstr "Lohkosánit"
 
 #: drill/forms.py:26 drill/forms.py:36 drill/forms.py:45 drill/forms.py:72
 msgid "plural"
-msgstr "máŋggaidlohku"
+msgstr "nominatiivva máŋggaidlohku"
 
 #: drill/forms.py:27 drill/forms.py:37 drill/forms.py:47 drill/forms.py:73
 msgid "accusative"
@@ -206,12 +206,12 @@ msgstr "Lullisámegiella"
 
 #: drill/forms.py:135
 msgid "Inari Sami"
-msgstr "Ánársámegiella"
+msgstr "Anársámegiella"
 
 #: drill/forms.py:136
 #, fuzzy
 msgid "Kildin Sami"
-msgstr "Julevsámegiella"
+msgstr "Gielddasámegiella"
 
 #: drill/forms.py:140
 msgid "family"
@@ -312,32 +312,32 @@ msgstr "Čále loguid"
 #: drill/forms.py:174
 #, fuzzy
 msgid "Firstmeeting"
-msgstr "Dássi 1"
+msgstr "Oahpásmuva nissonii"
 
 #: drill/forms.py:175
 msgid "Firstmeeting boy"
-msgstr ""
+msgstr "Oahpásmuva bárdnái"
 
 #: drill/forms.py:176
 msgid "Firstmeeting girl"
-msgstr ""
+msgstr "Oahpásmuva niidii"
 
 #: drill/forms.py:177
 msgid "Firstmeeting man"
-msgstr ""
+msgstr "Oahpásmuva divdui"
 
 #: drill/forms.py:178
 #, fuzzy
 msgid "Visit"
-msgstr "Vasta"
+msgstr "Guossis"
 
 #: drill/forms.py:179
 msgid "Grocery"
-msgstr ""
+msgstr "Borramušgávppis"
 
 #: drill/forms.py:180
 msgid "Shopadj"
-msgstr ""
+msgstr "Veardideapmi rámbuvrris"
 
 #: drill/views.py:22
 msgid "Practise attributes"
@@ -373,7 +373,7 @@ msgstr "Hárjehala lohkosániid attribuhttan"
 
 #: drill/views.py:30 drill/views.py:36
 msgid "Practise plural"
-msgstr "Hárjehala máŋggaidlogu"
+msgstr "Hárjehala nominatiivva máŋggaidlogu"
 
 #: drill/views.py:31
 msgid "Practise illative"
@@ -454,7 +454,7 @@ msgstr "Hárjehala potentiála"
 
 #: drill/templates/game.html:103
 msgid "help"
-msgstr "veahkki"
+msgstr "Veahkki"
 
 #: drill/templates/game.html:155
 msgid "Congratulations!"
@@ -576,11 +576,11 @@ msgstr "Čále vearbbaid rivttes hámis"
 
 #: drill/templates/num.html:10 drill/templates/num_ord.html:10
 msgid "Cardinals"
-msgstr ""
+msgstr "Vuođđologut"
 
 #: drill/templates/num.html:11 drill/templates/num_ord.html:11
 msgid "Ordinals"
-msgstr ""
+msgstr "Ordnetlogut"
 
 #: drill/templates/num.html:21
 msgid "Forms for numerals."
@@ -588,7 +588,7 @@ msgstr "Makkár logut"
 
 #: drill/templates/num.html:27 drill/templates/num_ord.html:27
 msgid "Select the range of numerals."
-msgstr "Vállje makkár loguid don háliidat hárjehallat"
+msgstr "Vállje man stuora loguid don háliidat hárjehallat"
 
 #: drill/templates/num_ord.html:21
 #, fuzzy
@@ -597,38 +597,43 @@ msgstr "Makkár logut"
 
 #: drill/templates/oahpa_main.html:31
 msgid ""
-"Oahpa is a collection of games that are developed for North SÃ¡mi learners. "
+"Oahpa is a collection of games that are developed for North Sámi learners. "
 "From the right, select the instruction language (Norwegian and North Sami "
 "are fully supported) and if you prefer Eastern or Western dialect. Then "
 "select the game."
 msgstr ""
+"OAHPA leat prográmmat ráhkaduvvon nuoraide ja rávesolbmuide geat háliidit " 
+"hárjehallat davvisámegiela. Olgeš ravddas sáhtát válljet veahkkegiela "
+"(leksikon ja grammatihkka lea dál vuos dušše dárogillii ja davvisámegillii), "
+"ja háliidat go nuorta- vai oarjesuopmana. Vuolábealde don válljet prográmma."
 
 #: drill/templates/oahpa_main.html:44
+
 #, fuzzy
 msgid "Practise morphology"
-msgstr "Hárjehala potentiála"
+msgstr "Hárjehala sojahit sániid"
 
 #: drill/templates/oahpa_main.html:53
 #, fuzzy
 msgid "Answer to questions"
-msgstr "go-jearaldagat"
+msgstr "Vástit jearaldagaide"
 
 #: drill/templates/oahpa_main.html:62
 msgid "Words and translations"
-msgstr ""
+msgstr "Sánit ja jorgalusat"
 
 #: drill/templates/oahpa_main.html:74
 msgid "Morphology in sentential context"
-msgstr ""
+msgstr "Sánit cealkagis"
 
 #: drill/templates/oahpa_main.html:85
 msgid "Dialogue game (Under development)"
-msgstr ""
+msgstr "Ságastallamat (barggu vuolde)"
 
 #: drill/templates/oahpa_main.html:95
 #, fuzzy
 msgid "Practise numerals"
-msgstr "Hárjehala máŋggaidlogu"
+msgstr "Hárjehala loguid"
 
 #: drill/templates/oahpa_main.html:117
 #, fuzzy
@@ -638,7 +643,7 @@ msgstr "Veahkkegiella"
 #: drill/templates/oahpa_main.html:147
 #, fuzzy
 msgid "Select language"
-msgstr "Vállje giellabára"
+msgstr "Vállje giela"
 
 #: drill/templates/oahpa_main.html:158
 #, fuzzy
@@ -659,20 +664,20 @@ msgstr "Nuortasuopman"
 
 #: drill/templates/oahpa_main.html:175
 msgid "Select dialect"
-msgstr ""
+msgstr "Vállje suopmana"
 
 #: drill/templates/oahpa_main.html:193 templates/oahpa.html:109
 msgid "Feedback"
-msgstr "Kommentárat"
+msgstr "Attes kommentárat"
 
 #: drill/templates/oahpa_main.html:214
-msgid "Copyright 2008 The University of TromsÃ¸."
+msgid "Copyright 2008 The University of Tromsø."
 msgstr ""
 
 #: drill/templates/oahpa_main.html:215
 #, fuzzy
 msgid "Contact"
-msgstr "kontrakšuvdnamátta"
+msgstr "Váldde oktavuođa"
 
 #: drill/templates/quizz.html:10 drill/templates/quizz_n.html:9
 msgid "Words"
@@ -712,7 +717,7 @@ msgstr "Frekveansa"
 
 #: drill/templates/sahka.html:17
 msgid "This game is under development!"
-msgstr ""
+msgstr "Programma lea barggu vuolde!"
 
 #: drill/templates/sahka.html:20
 msgid "Sahka"
@@ -721,11 +726,11 @@ msgstr ""
 #: drill/templates/sahka.html:28
 #, fuzzy
 msgid "Dialogue"
-msgstr "Suopman"
+msgstr "Ságastallan"
 
 #: drill/templates/sahka.html:63
 msgid "Answer"
-msgstr ""
+msgstr "Vástadus"
 
 #: drill/templates/vasta.html:14
 msgid "Vasta"
@@ -767,11 +772,11 @@ msgstr "Prográmma lea barggu vuolde."
 
 #: templates/oahpa.html:68 templates/oahpa.html.py:79
 msgid "Grammar"
-msgstr ""
+msgstr "Grammatihkka"
 
 #: templates/oahpa.html:108
 msgid "OAHPA is under development and may not function all the time."
-msgstr ""
+msgstr "OAHPA lea barggu vuolde ja ii álo doaimma."
 
 #: templates/oahpa.html:110
 msgid "Main page"
@@ -794,7 +799,7 @@ msgstr "Váldosiidu"
 
 #, fuzzy
 #~ msgid "Numra"
-#~ msgstr "Lohkosánit"
+#~ msgstr ""
 
 #~ msgid "Home"
 #~ msgstr "Ruoktu"

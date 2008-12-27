@@ -35,7 +35,7 @@ msgstr "tallord"
 #: drill/forms.py:26 drill/forms.py:36 drill/forms.py:45 drill/forms.py:72
 #, fuzzy
 msgid "plural"
-msgstr "flertall"
+msgstr "nominativ flertall"
 
 #: drill/forms.py:27 drill/forms.py:37 drill/forms.py:47 drill/forms.py:73
 msgid "accusative"
@@ -139,11 +139,11 @@ msgstr ""
 
 #: drill/forms.py:103
 msgid "algu"
-msgstr ""
+msgstr "Álgu"
 
 #: drill/forms.py:104
 msgid "sara"
-msgstr ""
+msgstr "Sára ja su ustibat"
 
 #: drill/forms.py:105
 msgid "Bures bures fas"
@@ -213,7 +213,7 @@ msgstr "Enaresamisk"
 #: drill/forms.py:136
 #, fuzzy
 msgid "Kildin Sami"
-msgstr "Lulesamisk"
+msgstr "Kildinsamisk"
 
 #: drill/forms.py:140
 msgid "family"
@@ -314,31 +314,31 @@ msgstr "Skriv tall"
 #: drill/forms.py:174
 #, fuzzy
 msgid "Firstmeeting"
-msgstr "Nivå 1"
+msgstr "Oahpásmuva nissonii"
 
 #: drill/forms.py:175
 msgid "Firstmeeting boy"
-msgstr ""
+msgstr "Oahpásmuva bárdnái"
 
 #: drill/forms.py:176
 msgid "Firstmeeting girl"
-msgstr ""
+msgstr "Oahpásmuva niidii"
 
 #: drill/forms.py:177
 msgid "Firstmeeting man"
-msgstr ""
+msgstr "Oahpásmuva divdui"
 
 #: drill/forms.py:178
 msgid "Visit"
-msgstr ""
+msgstr "Guossis"
 
 #: drill/forms.py:179
 msgid "Grocery"
-msgstr ""
+msgstr "Borramušgávppis"
 
 #: drill/forms.py:180
 msgid "Shopadj"
-msgstr ""
+msgstr "Veardideapmi rámbuvrris"
 
 #: drill/views.py:22
 msgid "Practise attributes"
@@ -374,7 +374,7 @@ msgstr "Øv på attributtformer for tallord"
 
 #: drill/views.py:30 drill/views.py:36
 msgid "Practise plural"
-msgstr "Øv på flertall"
+msgstr "Øv på nominativ flertall"
 
 #: drill/views.py:31
 msgid "Practise illative"
@@ -577,11 +577,11 @@ msgstr "Skriv inn den riktige forma av verbet"
 
 #: drill/templates/num.html:10 drill/templates/num_ord.html:10
 msgid "Cardinals"
-msgstr ""
+msgstr "Grunntall"
 
 #: drill/templates/num.html:11 drill/templates/num_ord.html:11
 msgid "Ordinals"
-msgstr ""
+msgstr "Ordenstall"
 
 #: drill/templates/num.html:21
 msgid "Forms for numerals."
@@ -589,7 +589,7 @@ msgstr "Hva slags tallord"
 
 #: drill/templates/num.html:27 drill/templates/num_ord.html:27
 msgid "Select the range of numerals."
-msgstr "Velg tallområde"
+msgstr "Velg hvor store tall"
 
 #: drill/templates/num_ord.html:21
 #, fuzzy
@@ -603,33 +603,36 @@ msgid ""
 "are fully supported) and if you prefer Eastern or Western dialect. Then "
 "select the game."
 msgstr ""
+"OAHPA er program for ungdom og voksne som vil trene seg på nordsamisk."
+"I høyre marg kan du velge hjelpespråk (leksikon og grammatikk er foreløpig bare på norsk og nordsamisk), og om du vil ha østlig eller vestlig dialekt. Nedenfor velger du program."
 
 #: drill/templates/oahpa_main.html:44
+ 
 #, fuzzy
 msgid "Practise morphology"
-msgstr "Øv på potensialis"
+msgstr "Øv på å bøye ord"
 
 #: drill/templates/oahpa_main.html:53
 #, fuzzy
 msgid "Answer to questions"
-msgstr "go-spørsmål"
+msgstr "Svar på spørsmåla"
 
 #: drill/templates/oahpa_main.html:62
 msgid "Words and translations"
-msgstr ""
+msgstr "Ord og oversettinger"
 
 #: drill/templates/oahpa_main.html:74
 msgid "Morphology in sentential context"
-msgstr ""
+msgstr "Ord i setninger"
 
 #: drill/templates/oahpa_main.html:85
 msgid "Dialogue game (Under development)"
-msgstr ""
+msgstr "Dialoger (under utvikling)"
 
 #: drill/templates/oahpa_main.html:95
 #, fuzzy
 msgid "Practise numerals"
-msgstr "Øv på flertall"
+msgstr "Øv på tallord"
 
 #: drill/templates/oahpa_main.html:117
 #, fuzzy
@@ -639,7 +642,7 @@ msgstr "Hjelpespråk"
 #: drill/templates/oahpa_main.html:147
 #, fuzzy
 msgid "Select language"
-msgstr "Velg språkpar"
+msgstr "Velg språk"
 
 #: drill/templates/oahpa_main.html:158
 #, fuzzy
@@ -660,20 +663,20 @@ msgstr "Østlig"
 
 #: drill/templates/oahpa_main.html:175
 msgid "Select dialect"
-msgstr ""
+msgstr "Velg dialekt"
 
 #: drill/templates/oahpa_main.html:193 templates/oahpa.html:109
 msgid "Feedback"
 msgstr "Tilbakemelding"
 
 #: drill/templates/oahpa_main.html:214
-msgid "Copyright 2008 The University of TromsÃ¸."
+msgid "Copyright 2008 The University of Tromsø."
 msgstr ""
 
 #: drill/templates/oahpa_main.html:215
 #, fuzzy
 msgid "Contact"
-msgstr "kontrakte"
+msgstr "Ta kontakt"
 
 #: drill/templates/quizz.html:10 drill/templates/quizz_n.html:9
 msgid "Words"
@@ -713,7 +716,7 @@ msgstr "Frekvens"
 
 #: drill/templates/sahka.html:17
 msgid "This game is under development!"
-msgstr ""
+msgstr "Programmet er under utvikling!"
 
 #: drill/templates/sahka.html:20
 msgid "Sahka"
@@ -722,11 +725,11 @@ msgstr ""
 #: drill/templates/sahka.html:28
 #, fuzzy
 msgid "Dialogue"
-msgstr "Dialekt"
+msgstr "Dialog"
 
 #: drill/templates/sahka.html:63
 msgid "Answer"
-msgstr ""
+msgstr "Svar"
 
 #: drill/templates/vasta.html:14
 msgid "Vasta"
@@ -770,11 +773,11 @@ msgstr "Dette programmet er under utvikling."
 
 #: templates/oahpa.html:68 templates/oahpa.html.py:79
 msgid "Grammar"
-msgstr ""
+msgstr "Grammatikk"
 
 #: templates/oahpa.html:108
 msgid "OAHPA is under development and may not function all the time."
-msgstr ""
+msgstr "OAHPA er under utvikling og kan være ute av funksjon av og til."
 
 #: templates/oahpa.html:110
 msgid "Main page"
@@ -813,7 +816,7 @@ msgstr "Hovedside"
 #~ msgstr "Søk med hjelp av lemma eller semantisk klasse"
 
 #~ msgid "bare"
-#~ msgstr "Ord"
+#~ msgstr "Enkelord"
 
 #~ msgid "context"
 #~ msgstr "Setninger"
@@ -825,10 +828,10 @@ msgstr "Hovedside"
 #~ msgstr "Hvilket program"
 
 #~ msgid "tense"
-#~ msgstr "tempus"
+#~ msgstr "tid"
 
 #~ msgid "in-room"
-#~ msgstr "inne"
+#~ msgstr "innendørs"
 
 #~ msgid "travelwords"
 #~ msgstr "reise"
