@@ -7,14 +7,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>{% block title %}{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="/oahpa/media/oahpa.css" />
+<link rel="stylesheet" type="text/css" href="/oahpa/media/oahpa.css"
+/>
+<!--[if lt IE 7.]>
+<script defer type="text/javascript" src="/oahpa/media/js/pngfix.js"></script>
+<![endif]-->
 </head>
 <body class="mainbody">
 
 
 <div id="mainheader">
 <center>
+<div class="plainbackground">
 <img width="400" height="120" src="/oahpa/media/Oahpa_logo0001.png" alt="OAHPA!"/><br/>
+</div>
 </center>
 </div>
 <div id="maincontent">
@@ -29,23 +35,29 @@
 <table cellspacing="2px" cellpadding="2px" align="center">
 <tr>
 <td class="header" width="200">
+
 <center>
+<div class="plainbackground">
 <a href="/oahpa/morfa/"><img  width="80" height="80" border="0" src="/oahpa/media/morfa.png"/><br/>
-{% trans 'MORFA-S' %}</a>&nbsp;&nbsp;
+</div>MORFA-S</a>&nbsp;&nbsp;
 </center>
 <p class="plain">{% trans "Practise morphology" %}</p>
 </td>
 <td class="header" width="200">
 <center>
+<div class="plainbackground">
 <a href="/oahpa/vasta/"><img width="80" height="80" border="0" src="/oahpa/media/vasta.png"/><br/>
-{% trans 'VASTA' %}</a>
+</div>
+VASTA</a>
 </center>
 <p class="plain">{% trans "Answer to questions" %}</p>
 </td>
 <td class="header" width="200">
 <center>
+<div class="plainbackground">
 <a href="/oahpa/leksa/"><img width="80" height="80" border="0" src="/oahpa/media/leksa.png"/><br/>
-{% trans 'LEKSA' %}</a>&nbsp;&nbsp;
+</div>
+LEKSA</a>&nbsp;&nbsp;
 </center>
 <p class="plain">{% trans "Words and translations" %}</p>
 </td>
@@ -54,8 +66,10 @@
 <tr>
 <td class="header" width="200">
 <center>
+<div class="plainbackground">
 <a href="/oahpa/morfac/"><img width="80" height="80" border="0" src="/oahpa/media/morfac.png"/><br/>
-{% trans 'MORFA-C' %}</a>&nbsp;&nbsp;
+</div>
+MORFA-C</a>&nbsp;&nbsp;
 </center>
 <p class="plain">{% trans "Morphology in sentential context" %}</p>
 </td>
@@ -63,16 +77,20 @@
 
 <td class="header" width="200">
 <center>
+<div class="plainbackground">
 <a href="/oahpa/sahka/"><img width="80" height="80" border="0" src="/oahpa/media/sahka.png"/><br/>
-{% trans 'SAHKA' %}</a>&nbsp;&nbsp;
+</div>
+SAHKA</a>&nbsp;&nbsp;
 </center>
 <p class="plain">{% trans "Dialogue game (Under development)" %}</p>
 </td>
 
 <td class="header" width="200">
 <center>
+<div class="plainbackground">
 <a href="/oahpa/numra/"><img width="80" height="80" border="0" src="/oahpa/media/numra.png"/><br/>
-{% trans 'NUMRA' %}</a>&nbsp;&nbsp;
+</div>
+NUMRA</a>&nbsp;&nbsp;
 </center>
 <p class="plain">{% trans "Practise numerals" %}</p>
 </td>
