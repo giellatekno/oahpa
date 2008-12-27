@@ -5,10 +5,17 @@
 {% block gamename %}<p>{{ settings.gamename }}</p>{% endblock %}
 {% block instructions %}{% trans "Add adjectives in correct forms." %}{% endblock %}
 
-{% block selectionname %}<td>{% trans "Type" %}</td>{% endblock %}
+{% block selectionname %}
+<td>{% trans "Type" %}</td>
+  {% ifequal settings.gametype "bare" %}
+<td>{% trans "Grade" %}</td>
+{% endifequal %}
+{% endblock %}
+
 {% block selection %}
   {% ifequal settings.gametype "bare" %}
 <td> {{ settingsform.adjcase }} </td>
+<td> {{ settingsform.grade }} </td>
   {% else %}
 <td> {{ settingsform.adj_context }}</td>
   {% endifequal %}
