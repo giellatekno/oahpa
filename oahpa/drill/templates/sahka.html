@@ -25,13 +25,33 @@
 {% if not forms %}
 <table width="700">
 <tr>
-<td>{% trans "Dialogue" %}</td>
+<td>{% trans "Select a dialogue" %}</td>
 </tr>
 <tr>
-<td>{{ settingsform.dialogue }}</td>
+<table>
+<tr><td>
+<input type="hidden" name="dialogue" id="id_dialogue" />
+<input type="hidden" name="settings" id="settings" />
+<a href="javascript:selectsahka('firstmeeting');"><img width="80" height="200" src="/oahpa/media/woman001.jpg"/></a>
+</td><td>
+<a href="javascript:selectsahka('firstmeeting_man');"><img width="80" height="200" src="/oahpa/media/man.jpg"/></a>
+</td><td>
+<a href="javascript:selectsahka('firstmeeting_girl');"><img width="80" height="200" src="/oahpa/media/girl001.jpg"/></a>
+</td><td>
+<a href="javascript:selectsahka('firstmeeting_boy');"><img width="80" height="200" src="/oahpa/media/boy.jpg"/></a>
+</td>
 </tr>
+</table>
+<table>
 <tr>
-<td><input type="submit" name="settings" value="{% trans "New set" %}" />
+<td>
+<a href="javascript:selectsahka('visit');"><img width="150" height="200" src="/oahpa/media/visit001.jpg"/></a>
+</td>
+<td>
+<a href="javascript:selectsahka('firstmeeting');"><img width="200" height="150" src="/oahpa/media/coffee.jpg"/></a>
+</td>
+</tr>
+</table>
 </td>
 </tr>
 </table>
