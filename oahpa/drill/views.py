@@ -574,6 +574,7 @@ class Sahkaview:
             # If settings are changed, a new game is created
             # Otherwise the game is created using the user input.
             if "settings" in data:
+                game.settings['dialogue'] = data['dialogue']
                 game.settings['topicnumber']=0
                 game.settings['image']="sahka.png"
                 game.settings['wordlist']=""
