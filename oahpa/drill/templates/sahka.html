@@ -3,7 +3,11 @@
 
 
 {% block navbar %}
-<a href="/oahpa/sahka/"><img width="60" height="60" border="0" src="/oahpa/media/sahka_small.png"/></a><br/>
+{% if not forms %}
+<a href="/oahpa/sahka/"><img width="120" height="120" border="0" src="/oahpa/media/sahka_big.png"/></a><br/>
+{% else %}
+<a href="/oahpa/sahka/"><img width="120" height="120" border="0" src="/oahpa/media/sahka.png"/></a><br/>
+{% endif %}
 <p class="bigheader">SAHKA</p>
 
 {% if image %}
@@ -32,23 +36,23 @@
 <tr><td>
 <input type="hidden" name="dialogue" id="id_dialogue" />
 <input type="hidden" name="settings" id="settings" />
-<a href="javascript:selectsahka('firstmeeting');"><img width="100" height="240" src="/oahpa/media/woman001.jpg"/></a>
+<a href="javascript:document.gameform.dialogue.value='firstmeeting';document.gameform.submit();"><img width="100" height="240" src="/oahpa/media/woman001.jpg"/></a>
 </td><td>
-<a href="javascript:selectsahka('firstmeeting_man');"><img width="100" height="240" src="/oahpa/media/man.jpg"/></a>
+<a href="javascript:document.gameform.dialogue.value='firstmeeting_man';document.gameform.submit();"><img width="100" height="240" src="/oahpa/media/man.jpg"/></a>
 </td><td>
-<a href="javascript:selectsahka('firstmeeting_girl');"><img width="100" height="240" src="/oahpa/media/girl001.jpg"/></a>
+<a href="javascript:document.gameform.dialogue.value='firstmeeting_girl';document.gameform.submit();"><img width="100" height="240" src="/oahpa/media/girl001.jpg"/></a>
 </td><td>
-<a href="javascript:selectsahka('firstmeeting_boy');"><img width="100" height="240" src="/oahpa/media/boy.jpg"/></a>
+<a href="javascript:document.gameform.dialogue.value='firstmeeting_boy';document.gameform.submit();"><img width="100" height="240" src="/oahpa/media/boy.jpg"/></a>
 </td>
 </tr>
 </table>
 <table>
 <tr>
 <td>
-<a href="javascript:selectsahka('visit');"><img width="150" height="200" src="/oahpa/media/visit001.jpg"/></a>
+<a href="javascript:document.gameform.dialogue.value='visit';document.gameform.submit();"><img width="150" height="200" src="/oahpa/media/visit001.jpg"/></a>
 </td>
 <td>
-<a href="javascript:selectsahka('firstmeeting');"><img width="200" height="150" src="/oahpa/media/coffee.jpg"/></a>
+<a href="javascript:document.gameform.dialogue.value='';document.gameform.submit();"><img width="200" height="150" src="/oahpa/media/coffee.jpg"/></a>
 </td>
 </tr>
 </table>
