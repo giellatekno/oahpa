@@ -349,7 +349,10 @@ class NumGame(Game):
     def create_form(self, db_info, n, data=None):
 
         dialect = self.settings['dialect']
-        language=self.settings['language']
+        if self.settings['gametype'] == "ord":
+            language="sme"
+        else:
+            language=self.settings['language']
         numstring =""
         # Add generator call here
         #fstdir="/Users/saara/gt-cvs/" + language + "/bin"        
