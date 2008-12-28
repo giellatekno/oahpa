@@ -1,4 +1,9 @@
 
+function selectsahka ( selectedtype )
+{
+    document.gameform.dialogue.value = selectedtype ;
+    document.gameform.submit() ;
+}
 
 function showPopup(w,h,elid){
    var popUp = document.getElementById(elid);
