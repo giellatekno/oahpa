@@ -190,7 +190,8 @@ def is_correct(self, game, example=None):
     self.userans = self.cleaned_data['answer']
     answer = self.userans.rstrip()
     answer = answer.lstrip()
-    answer = answer.rstrip('.!?,')
+    if not game == "numra":
+        answer = answer.rstrip('.!?,')
     
     self.error = "error"
     iscorrect = False
@@ -1019,7 +1020,7 @@ def sahka_is_correct(self,utterance,targets):
     
 class SahkaSettings(OahpaSettings):
 
-    dialogue = forms.ChoiceField(initial='firstmeeting', choices=DIALOGUE_CHOICES, widget=forms.Select)
+    #dialogue = forms.ChoiceField(initial='firstmeeting', choices=DIALOGUE_CHOICES, widget=forms.Select)
     
     def __init__(self, *args, **kwargs):
         self.set_settings()
