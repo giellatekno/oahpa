@@ -5,26 +5,28 @@
 {% block navbar %}
 {% if not forms %}
 <a href="/oahpa/sahka/"><img width="120" height="120" border="0" src="/oahpa/media/sahka_big.png"/></a><br/>
-{% else %}
-<a href="/oahpa/sahka/"><img width="120" height="120" border="0" src="/oahpa/media/sahka.png"/></a><br/>
-{% endif %}
 <p class="bigheader">SAHKA</p>
+{% else %}
+<a href="/oahpa/sahka/"><img width="60" height="60" border="0" src="/oahpa/media/sahka_small.png"/></a><div class="header">SAHKA</div><br/>
+{% endif %}
 
 {% if image %}
-<p>{{ image }}</p>
-<img width="150" height="150" border="0" src="/oahpa/media/{{ image }}"/><br/>
+<center>
+<img border="1" width="180" border="0" src="/oahpa/media/{{ image }}"/><br/>
+</center>
 {% endif %}
 
 {% if wordlist %}
-<font size="+1"><p>{{ wordlist }}</p></font>
+<center>
+<br/>
+<table cellpadding="8px" bgcolor="white" border="1" class="wordlist"><tr><td>{{ wordlist }}</td></tr></table>
+</center>
 {% endif %}
-<font size="+2"><b><p>{% trans "This game is under development!" %}</p></b></font>
+<font size="+1"><b><p>{% trans "This game is under development!" %}</p></b></font>
 {% endblock %}
 
 {% block name %}Sahka{% endblock %}
 {% block pagename %}/oahpa/sahka/{% endblock %}
-
-
 {% block settings %}
 {% if not forms %}
 <table width="700">
@@ -52,7 +54,10 @@
 <a href="javascript:document.gameform.dialogue.value='visit';document.gameform.submit();"><img width="150" height="200" src="/oahpa/media/visit001.jpg"/></a>
 </td>
 <td>
-<a href="javascript:document.gameform.dialogue.value='';document.gameform.submit();"><img width="200" height="150" src="/oahpa/media/coffee.jpg"/></a>
+<a href="javascript:document.gameform.dialogue.value='grocery';document.gameform.submit();"><img width="200" height="150" src="/oahpa/media/grocery.jpg"/></a>
+</td>
+<td>
+<a href="javascript:document.gameform.dialogue.value='shopadj';document.gameform.submit();"><img width="100" height="200" src="/oahpa/media/2scarves.jpg"/></a>
 </td>
 </tr>
 </table>
