@@ -7,14 +7,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>{% block title %}{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="/oahpa/media/oahpa.css"
+<link rel="stylesheet" type="text/css" href="/oahpa/media/css/oahpa.css"
+<link rel="stylesheet" type="text/css" href="/oahpa/media/css/oahpa_main.css"
 />
 <!--[if lt IE 7.]>
 <script defer type="text/javascript" src="/oahpa/media/js/pngfix.js"></script>
 <![endif]-->
 </head>
 <body class="mainbody">
-
 
 <div id="mainheader">
 <center>
@@ -23,6 +23,7 @@
 </div>
 </center>
 </div>
+
 <div id="maincontent">
 <center>
 <table cellspacing="2px" cellpadding="2px">
@@ -109,6 +110,7 @@ NUMRA</a>&nbsp;&nbsp;
 </div>
 </center>
 
+
 <div id="rightbar">
 {% get_current_language as LANGUAGE_CODE %}
 <form action="/oahpa/i18n/setlang/" method="post" name="newlang">
@@ -144,7 +146,6 @@ NUMRA</a>&nbsp;&nbsp;
 </select>
 </td></tr>
 <tr><td>
-<!--<input type="submit" value="{% trans 'Select language' %}" />-->
 </td></tr>
 </table>
 </form>
@@ -172,14 +173,12 @@ NUMRA</a>&nbsp;&nbsp;
 </select>
 </td></tr>
 <tr><td>
-<!--<input type="submit" value="{% trans 'Select dialect' %}" />-->
 </td></tr>
 </table>
 </form>
 </td></tr>
 <tr>
 <td>
-&nbsp;<br/>&nbsp;<br/>
 &nbsp;<br/>&nbsp;<br/>
 <table>
 <tr>
@@ -195,7 +194,6 @@ NUMRA</a>&nbsp;&nbsp;
 <tr>
 <td>
 &nbsp;<br/>&nbsp;<br/>
-&nbsp;<br/>&nbsp;<br/>
 
 <center>
 <img width="50" height="50" src="/oahpa/media/LogoSamisk.jpg"/>
@@ -209,7 +207,7 @@ NUMRA</a>&nbsp;&nbsp;
 </center>
 </div>
 
-<div class="copyright">
+<div id="copyright">
 <p>
 {% trans "Copyright 2008 The University of Tromso." %}
 {% trans "Contact" %}</p>
