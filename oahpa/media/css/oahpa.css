@@ -1,58 +1,113 @@
 
+html {
+    overflow: scroll;
+    height: 100%;
+    margin-bottom: 1px;
+}
+
+body {
+  min-width: 550px;
+  font-family: Arial Pro;
+  color: #150517;
+  background-image: url(/oahpa/media/bakgrunn12.jpg);
+}
+#oahpaheader {
+  background-image: url(/oahpa/media/bakgrunn12.jpg);
+  font-family: Arial Pro;
+  color: #150517;
+}
 #container {
-			float: left;
+  overflow: hidden;
+  padding-left: 140px;   /* LC width */
+  padding-right: 20px;  /* RC width + CC padding */
+}
+#container .column {
+  position: relative;
+  float: left;
+  padding-bottom: 20010px;  /* X + padding-bottom */
+  margin-bottom: -20000px;  /* X */
+}
+#center {
+  width: 100%;
+  padding: 10px 10px;
+  background-color: white;
+  border: 1px solid #150517;
+  font-family: Times;
+}
+#left {
+  width: 130px;          /* LC width */
+  padding: 0px 10px 0px 0px;
+  right: 160px;          /* LC width + CC padding */
+  margin-left: -100%;
+  background-image: url(/oahpa/media/bakgrunn12.jpg);
+  font-family: Arial Pro;
+  color: #150517;
+  border-right: 1px solid #150517;
+}
+#right {
+  width: 150px;          /* RC width */
+  margin-right: -150px;  /* RC width */
+}
+#footer {
+  clear: both;
+}
+/*** IE6 Fix ***/
+* html #left {
+  left: 0px;           /* RC width */
 }
 
-
-
-#upper {
-			float: top;
-			height: 7em;
-			background: #779999;
-			padding: 3px 10px 3px 10px;
-			color: white;
+.headerlink {
+  font-family: Helvetica Neue;
+  color: #150517;
+}
+.plain {
+  font-family: Arial Pro;
+  color: #150517;
+}
+.selected {
+  font-weight: bold;
+  color: #150517;
+}
+.sidelist {
+  font-size: 120%;
+  margin-left: 0;
+  padding-left: 15px;
+  list-style: none;
+}
+.instructions {  
+  border-width: 1px;
+  border-style: solid;
+  border-color: #150517;
 }
 
-#language {
-			position: absolute;
-			right: 0;
-			padding: 3px 5px 3px 5px;
-			width: 10em;
-			height: 7em;
+a {font-size: 100%; 
+    text-decoration: none; }
+  a:link {
+    color: #150517; }
+  a:visited {
+    color: #150517; }
+
+.popupcontent{
+   position: absolute;
+   visibility: hidden;
+   overflow: hidden;
+   border:1px solid #CCC;
+   background-color:#F9F9F9;
+   border:1px solid #333;
+   padding:5px;
 }
 
-#navigation {
-			position: absolute;
-			top: 8em;
-			left: 2;
-			padding: 3px 5px 3px 15px;
-			width: 10em;
+.header {
+  font-family: Helvetica Neue;
+  font-style: bold;
+  color: #150517;
 }
-
-#content {
-		 margin-left: 11em;
-		 margin-right: 11em;
-		 padding: 10px 10px 3px 10px;
+.headerlink {
+  font-family: Helvetica Neue;
+  color: #150517;
 }
-
-table {
-       cellpadding=18;
-}
-
-h1 { font-size: xx-large 
-}
-h2 { font-size: large 
-}
-
-body {color: gray}
-
-a {
-	color: #333366;
-	}
-p {font-family: "sans serif"}
-hr {color: sienna}
-
-.warning {
-   color: Red;
-   font-weight: bold;
+.bigheader {
+  font-family: Helvetica Neue;
+  font-size: 150%;
+  color: #150517;
 }
