@@ -5761,7 +5761,7 @@ MAP (&grm-missing-Loc) TARGET Prop (*-1 ("leat") OR ("orrut") BARRIER Loc OR S-B
 LIST ACCEPT-EVERYTHING = Makkar_snowboard_child Makkar_snowboard_adult Makkar_snowboard_young Mii_namma_lea ;
 
 # For spellingerrors:
-MAP (&err-spellingerror) TARGET QMRK (NEGATE *-1 ACCEPT-EVERYTHING BARRIER S-BOUNDARY)  ;
+MAP (&err-spellingerror) TARGET QMRK (*-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING BARRIER S-BOUNDARY)  ;
 
 
 # na+Pcle can only be initial:
@@ -5808,6 +5808,7 @@ SELECT (Sg2 Nom) (-1 go LINK -1 (V Sg2))(0 ("dot")) ;
 
 #LIST PROBLEM-NEG = "hálihit" "logahit" ; 
 REMOVE ("giellat") (0 ("gillet")) ;
+REMOVE ("Dan") (0 Pron) ;
 
 # -------
 # VERBS 1 
