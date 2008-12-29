@@ -1,18 +1,26 @@
 {% extends "game.html" %}
 {% load i18n %}
 
-
+{% block addcss %}
+{% if not forms %}
+<link rel="stylesheet" type="text/css" href="/oahpa/media/css/sahka_main.css"/>
+{% else %}
+<link rel="stylesheet" type="text/css" href="/oahpa/media/css/sahka.css"/>
+{% endif %}
+{% endblock %}
 {% block navbar %}
 {% if not forms %}
+&nbsp;</br>
+&nbsp;</br>
+
 <a href="/oahpa/sahka/"><img width="120" height="120" border="0" src="/oahpa/media/sahka_big.png"/></a><br/>
-<p class="bigheader">SAHKA</p>
 {% else %}
 <table><tr><td><a href="/oahpa/sahka/"><img width="60" height="60" border="0" src="/oahpa/media/sahka_small.png"/></a></td><td><div class="header">SAHKA</div></td></tr></table>
 {% endif %}
 
 {% if image %}
 <center>
-<img border="1" width="180" border="0" src="/oahpa/media/{{ image }}"/><br/>
+<!--<img border="1" width="160" border="0" src="/oahpa/media/{{ image }}"/><br/>-->
 </center>
 {% endif %}
 
@@ -29,9 +37,10 @@
 {% block pagename %}/oahpa/sahka/{% endblock %}
 {% block settings %}
 {% if not forms %}
+
 <table width="700">
 <tr>
-<td>{% trans "Select a dialogue" %}</td>
+<td><font class="bigheader">SAHKA</font> &nbsp;&nbsp;{% trans "Select a dialogue" %}</td>
 </tr>
 <tr>
 <table>
@@ -64,6 +73,7 @@
 </td>
 </tr>
 </table>
+
 {% endif %}
 {% endblock %}
 
