@@ -8,7 +8,64 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
 
-<link rel="stylesheet" type="text/css" href="/oahpa/media/css/oahpa.css" />
+<style type="text/css">
+
+html {
+    overflow: scroll;
+    height: 100%;
+    margin-bottom: 1px;
+}
+body {
+margin:10px 10px 0px 10px;
+padding:0px;
+font-family: Arial Pro;
+color: #150517;
+
+background-image: url(/oahpa/media/bakgrunn12.jpg);
+}
+
+#leftcontent {
+position: fixed;
+left: 10px;
+top: 95px;
+width: 160px;
+font-family: Arial Pro;
+
+}
+#centercontent {
+background:#fff;
+margin-left: 159px;
+margin-right:9px;
+padding: 20px;
+border: 1px solid #150517;
+font-family: Times;
+margin-left: 161px;
+margin-right:11px;
+margin-bottom: 1px;
+}
+body #centercontent {
+margin-left: 161px;
+margin-right:11px;
+}
+#rightcontent {
+position: fixed;
+right:10px;
+top:95px;
+width:120px;
+}
+
+#banner {
+height:80px;
+height:80px;
+}
+html>body #banner {
+height:80px;
+}
+
+</style>
+
+
+<link rel="stylesheet" type="text/css" href="/oahpa/media/css/oahpa.css"/>
 <script src="/oahpa/media/js/prototype.js" type="text/javascript"></script>
 <script src="/oahpa/media/js/tooltip2.js" type="text/javascript"></script>
 <script src="/oahpa/media/js/oahpa.js" type="text/javascript"></script>
@@ -25,8 +82,7 @@
 <body onload="javascript:setFocus(document.gameform);">
 {% endifequal %}
 
-<div id="oahpaheader" >
-
+<div id="banner">
 <div class="title">
 <table>
 <tr>
@@ -93,11 +149,16 @@ NUMRA</a>&nbsp;&nbsp;
 </table>
 </div>
 
+<div id="leftcontent">
+{% block navbar %}{% endblock %}
+<p>&nbsp;</p>
+<p>{% trans 'OAHPA is under development and may not function all the time.' %}</p>
+<p><a href="/oahpa/feedback/">{% trans 'Feedback' %}</a><br/></p>
+<p><a href="/oahpa/">{% trans 'Main page' %}</a><br/></p>
 
-<div id="container">
+</div>
 
-<div id="center" class="column">
-
+  <div id="centercontent">
 <form method="post" action="" name="gameform" >
 
 <div class="settings">
@@ -108,22 +169,10 @@ NUMRA</a>&nbsp;&nbsp;
     {% block content %}{% endblock %}
 </div>
 </form>
-
 </div>
 
-<div id="left" class="column">
-{% block navbar %}{% endblock %}
-<p>&nbsp;</p>
-<p>{% trans 'OAHPA is under development and may not function all the time.' %}</p>
-<p><a href="/oahpa/feedback/">{% trans 'Feedback' %}</a><br/></p>
-<p><a href="/oahpa/">{% trans 'Main page' %}</a><br/></p>
-</div>
-
-
-
-<!--container ends-->
-</div>
 <div id="footer">
+<p>&nbsp;</p>
 </div>
 
 </body>
