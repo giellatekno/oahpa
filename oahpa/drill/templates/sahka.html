@@ -2,25 +2,91 @@
 {% load i18n %}
 
 {% block addcss %}
+<style type="text/css">
+
+html {
+    overflow: scroll;
+    height: 100%;
+    margin-bottom: 1px;
+}
+
+body {
+margin:10px 10px 0px 10px;
+padding:0px;
+background-image: url(/oahpa/media/bakgrunn12.jpg);
+}
+
+#leftcontent {
+position: fixed;
+left: 10px;
+top: 95px;
+width: 180px;
+}
+#centercontent {
+background:white;
+margin-left: 179px;
+margin-right:9px;
+padding: 20px;
+border: 1px solid #150517;
+
+font-family: Times;
+margin-left: 181px;
+margin-right:11px;
+margin-bottom: 1px;
+}
+body #centercontent {
+margin-left: 181px;
+margin-right:11px;
+}
+#rightcontent {
+position: fixed;
+right:10px;
+top:95px;
+width:120px;
+}
+
+#banner {
+height:80px;
+height:80px;
+}
+html>body #banner {
+height:80px;
+}
+
+
 {% if not forms %}
-<link rel="stylesheet" type="text/css" href="/oahpa/media/css/sahka_main.css"/>
-{% else %}
-<link rel="stylesheet" type="text/css" href="/oahpa/media/css/sahka.css"/>
+
+#centercontent {
+background-image: url(/oahpa/media/bakgrunn12.jpg);
+margin-left: 179px;
+margin-right:9px;
+padding: 20px;
+border: 0px solid #150517;
+font-family: Times;
+margin-left: 181px;
+margin-right:11px;
+margin-bottom: 1px;
+}
+body #centercontent {
+margin-left: 181px;
+margin-right:11px;
+}
 {% endif %}
+</style>
+
 {% endblock %}
+
 {% block navbar %}
 {% if not forms %}
 &nbsp;</br>
 &nbsp;</br>
 
 <a href="/oahpa/sahka/"><img width="120" height="120" border="0" src="/oahpa/media/sahka_big.png"/></a><br/>
-{% else %}
-<table><tr><td><a href="/oahpa/sahka/"><img width="60" height="60" border="0" src="/oahpa/media/sahka_small.png"/></a></td><td><div class="header">SAHKA</div></td></tr></table>
 {% endif %}
 
 {% if image %}
 <center>
-<!--<img border="1" width="160" border="0" src="/oahpa/media/{{ image }}"/><br/>-->
+<img border="1" width="160" border="0" src="/oahpa/media/{{ image }}"/><br/>
 </center>
 {% endif %}
 
