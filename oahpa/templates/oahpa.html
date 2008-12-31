@@ -72,12 +72,50 @@ height:80px;
 <!--[if lt IE 7]>
 <script defer type="text/javascript" src="/oahpa/media/js/pngfix.js"></script>
 <![endif]-->
+
+<script type="text/javascript">
+
+function getSize() {
+  var myWidth = 0, myHeight = 0;
+  if( typeof( window.innerWidth ) == 'number' ) {
+    //Non-IE
+    myWidth = window.innerWidth;
+    myHeight = window.innerHeight;
+  } else if( document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+    //IE 6+ in 'standards compliant mode'
+    myWidth = document.documentElement.clientWidth;
+    myHeight = document.documentElement.clientHeight;
+  } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+    //IE 4 compatible
+    myWidth = document.body.clientWidth;
+    myHeight = document.body.clientHeight;
+  }
+  return myHeight;
+}
+
+function scrollSahka(form) {
+    var scrollLoc = getSize();
+    if (self.pageYOffset) // all except Explorer
+    {
+    window.scroll(0, scrollLoc);
+    }
+    else if (document.documentElement && document.documentElement.scrollTop)
+    // Explorer 6 Strict
+    {
+    window.scrollTo(0, scrollLoc);
+    }
+   else if (document.body) // all other Explorers
+   {
+   window.scrollTo(0, scrollLoc);
+   }				   
+}
+</script>
 {% block addcss %}{% endblock %}
 </head>
 
 
-{% ifequal settings.gametype "sahka" %}
-<body onload="javascript:scrollDown(); setFocus(document.gameform);">
+{% ifequal gametype "sahka" %}
+<body onload="javascript:scrollSahka(document.gameform);">
 {% else %}
 <body onload="javascript:setFocus(document.gameform);">
 {% endifequal %}
@@ -122,6 +160,7 @@ NUMRA</a>&nbsp;&nbsp;
 {% trans "Grammar" %}<br/>
 <form name="jump">
 <select name="menu" onChange="javascript:if (this.selectedIndex > 0) window.open(this.value)">
+<option value="">grammatihkkailgehusat</option>
 {% for link in settingsform.grammarlinkssme %}
 <option value="{{ link.address }}">{{ link.name }}</option>
 {% endfor %}
@@ -133,6 +172,7 @@ NUMRA</a>&nbsp;&nbsp;
 {% trans "Grammar" %}<br/>
 <form name="jump">
 <select name="menu" onChange="javascript:if (this.selectedIndex > 0) window.open(this.value)">
+<option value="">grammatikkforklaringer</option>
 {% for link in settingsform.grammarlinksno %}
 <option value="{{ link.address }}">{{ link.name }}</option>
 {% endfor %}
@@ -172,6 +212,8 @@ NUMRA</a>&nbsp;&nbsp;
 </div>
 
 <div id="footer">
+  <a name="#bottom">&nbsp;</a> 
+
 <p>&nbsp;</p>
 </div>
 
