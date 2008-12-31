@@ -1,11 +1,12 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage{natbib}
-\usepackage{graphicx}
+\usepackage{graphics}
 %\usepackage{linguex}
 \usepackage[utf8x]{inputenc}
 \usepackage{ucs} %sami letters\renewcommand
 %{\refdash}{}
 \usepackage[T1]{fontenc}
+\usepackage{multirow}
 \usepackage{tabularx} %specified width
 \begin{document}
 
@@ -80,31 +81,34 @@ The main lexicon is used for analysing the student’s input, but we want a peda
 
 \subsection{Pedagogical lexicon}
 
-The main lexicon consists of the Sámi words, information about the consonant gradation and continuation class, e.g. \\
+The main lexicon consists of the Sámi words, information about the consonant gradation and continuation class, as we see in Figure \ref{nounsmelex}.\\
 
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/noun-sme-lex.png}}\\
-%\caption{Figure}
-%\end{center}
-\textit{Figure X: Example of entry in the main lexicon, noun-sme-lex.txt. AIGI is the continuation class.}\\
+\caption{Example of entry in the main lexicon, noun-sme-lex.txt. AIGI is the continuation class.}
+\label{nounsmelex}
+\end{center}
+\end{figure}
+
+We wanted some more information in the lexicon. Therefore we made a special pedagogical lexicon in xml-format. I collected the lemmas, which were used in the schoolbooks and added Norwegian translation, information about semantic set, dialect and information about inflection. I also added information about source - which schoolbooks the lemma is used in. Read more about semantic sets in \ref{set}. The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives. There is also a small lexicon for pronouns and numbers. In Figure \ref{nounlex} is an example of an entry in the nounlexicon. \\
 
 
-We wanted some more information in the lexicon. Therefore we made a special pedagogical lexicon in xml-format. I collected the lemmas, which were used in the schoolbooks and added Norwegian translation, information about semantic set, dialect and information about inflection. I also added information about source - which schoolbooks the lemma is used in. I will write more about the semantic set, see XX. The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives. There is also a small lexicon for pronouns and numbers. \\
-
-
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.6}[.6]{\includegraphics{img/nounlexicon.png}}\\
-%\caption{Figure}
-%\end{center}
-\textit{Figure X: Example of entry in the pedagogical lexicon, nouns.xml.}\\
+\caption{Example of entry in the pedagogical lexicon, nouns.xml}
+\label{nounlex}
+\end{center}
+\end{figure}
 
 Soma lemmas are homonomies in the base form. Because of different meanings they belong to different semantic sets. When the student wants the translation of the lemma, it should be the translations which belongs to the particular semantic set, e.g. \textit{girdi} can be both "plane" (VEHICLE) and "pilot" (PROFESSION). Other homonomies have different inflection, and it is critical to choose the correct lemma when we are generating word forms from it, e.g. \textit{bassi} Sg -- \textit{basit} Pl (= holy day) and \textit{bassi} Sg -- \textit{bassit} Pl (= washer). We have solved the problem by giving id to the critical entries, e.g. \texttt{id="girdi\_vehicle"} vs. 
 \texttt{id="girdi\_profession"} and \texttt{id="bassi\_time"} vs. \textit{id="bassi\_actor"}.
 
 %It works well as long as working with semantic classes, but if the user chooses "all" or a book, then he will not understand why the program doesn't accept his suggestions, e.g. girdi.
 
-\subsection{System for dialectical variation}
+\subsection{System for dialectical variation}\label{dialect}
 Saara - generation
 
 We needed a strict generator. That means that the generator will generate only one word form for every grammatical word. The analysor is tolerant, but we have the opportunity of compiling two different analysators. We use \texttt{sme-norm.fst} for analysing the input and \texttt{isme-strict.fst} for the generator. isme-strict.fst generates only one word form for every grammatical word.
@@ -116,59 +120,71 @@ Because of dialectical variation, we made two versions of \texttt{isme-strict.fs
 \item NOT-GG (not generate for GG-dialect)  
 \end {itemize}
 
-%\begin{center}
-\scalebox{.7}[.7]{\includegraphics{img/smelex.png}}\\
-%\caption{Figure}
-%\end{center}\\
-\textit{Figure X: In the makefile there are options to generate dialectical variants of word forms. From \texttt{sme-lex.txt}.}\\ 
+We see an example in Figure \ref{smelex}. We also marked entries in the pedagogical lexicon-files with NOT-KJ and NOT-GG. This system can easily be expanded with more dialects.
 
-We also marked entries in the pedagogical lexicon-files with NOT-KJ and NOT-GG. This system can easily be expanded with more dialects.
+
+\begin{figure}[htbp]
+\begin{center}
+\scalebox{.7}[.7]{\includegraphics{img/smelex.png}}\\
+\caption{In the makefile there are options to generate dialectical variants of word forms. From \texttt{sme-lex.txt}.}
+\label{smelex}
+\end{center}
+\end{figure}
+
 
 \subsection{System for feedback about morphology}
 
 The information in the lexicon about inflection is there only to give a good feedback to the student. If s/he doesn't inflect the lemma correctly, s/he can choose to get hints about the inflection, and try once more, instead of getting the correct answer straight away. 
 
-We make it in two steps. The first step is to define what kind of message should be given, based upon the combination of morphological features in the lexicon, and the inflection. The example here is for illative Sg:
+We make it in two steps. The first step is to define what kind of message should be given, based upon the combination of morphological features in the lexicon, and the inflection. In Figure \ref{feedbacknouns} is vowel changing in illative Sg defined for bisyllabic nouns which ends with the vowel "i":
 
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/feedback_nouns.png}}\\
-%\caption{Figure}
-%\end{center}\\
-\textit{Figure X: The features in the lexicon are used to give message tags. Here the message tag is "i\_á". From feedback\_nouns.xml}\\ 
+\caption{The features in the lexicon are used to give message tags. Here the message tag is "i\_á". From feedback\_nouns.xml}
+\label{feedbacknouns}
+\end{center}
+\end{figure}
 
 This information is of course in the main lexicon also, but it is divided in two different automatons, lexc with the continuation lexicons and twolc for the consonant gradation, diphthong simplification and so on. If we are going to expand the pedagogical lexicon a lot, then it would be an advantage to generate the information directly from the main lexicon. 
 
-The message tag is used to generate the feedback to the user. The message can be easily be translated into any language - here in Norwegian:
+The message tag is used to generate the feedback to the user. The message can be easily be translated into any language -- in Figure \ref{mess} it is in Norwegian.
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/messages.png}}\\
-%\caption{Feedback to the user:}
-%\end{center}
-\textit{Figure X: Feedback to the user is generated from the message tags. Here for the message tag "i\_á". From messages.xml.}\\
+\caption{Feedback to the user is generated from the message tags. Here for the message tag "i\_á". From messages.xml.}
+\label{mess}
+\end{center}
+\end{figure}
 
-There are dialectical varieties in the orthography for some inflected forms, as explained under XXX. And because of that, we have made two sets of feedback files, one for each dialect. But all the messages are in the same file, \texttt{messages.xml}.
+There are dialectical varieties in the orthography for some inflected forms, as explained under \ref{dialect}. And because of that, we have made two sets of feedback files, one for each dialect. But all the messages are in the same file, \texttt{messages.xml}.
 
-In the example in the images above, the correct illative Sg word form of \textit{mielki} is \textit{mielkái}. As we see in figure X, this lemma has the feature \texttt{only-sg}, which means that we generate the lemma only in singular, even if it according to the main lexicon, also can be used in plural. This information is for pedagogical reasons; it is not so natural to do use the plural form for a student on a lower level.
+In the example in the images above, the correct illative Sg word form of \textit{mielki} is \textit{mielkái}. As we see in Figure \ref{nounlex}, this lemma has the feature \texttt{only-sg}, which means that we generate the lemma only in singular, even if it according to the main lexicon, also can be used in plural. This information is for pedagogical reasons; it is not so natural to do use the plural form for a student on a lower level.
 
 If our main lexicon had been in xml-format, then we could have put all this information there. It would be a better solution to maintain only one lexicon, instead of two.
 
-\subsection{Sentence generator}
-To easily offer variation to the user, we use a sentence generator, instead of tailoring every question. The generator consists of question and anwer matrices with variables representing sets of lemmas in the lexicon.
+\subsection{Sentence generator}\label{set}
+To easily offer variation to the user, we use a sentence generator, instead of tailoring every question. The generator consists of question and answer matrices with variables representing sets of lemmas in the lexicon, as shown in Figure \ref{questionv}.
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/question_vasta.png}}\\
-%\caption{Feedback to the user:}
-%\end{center}
-\textit{Figure X: Questions are generated. From questions\_vasta.xml.}\\
+\caption{Questions are generated. From questions\_vasta.xml.}
+\label{questionv}
+\end{center}
+\end{figure}
 
-The semantic sets are used both for the word quiz (Leksa) and the questions in Morfa-C and Vasta. The sets are on different levels so one can choose which one suits best for the question, e.g. the big superset HUMAN with all lemmas for human beings, or a smaller subset, like PROFESSION. 
+The semantic sets are used both for the word quiz (Leksa) and the questions in Morfa-C and Vasta. There are ordinary sets and supersets, and one can choose which one suits best for the question, e.g. the big superset HUMAN with all lemmas for human beings, or a smaller subset, like PROFESSION. In Figure \ref{semset} is a definition of a superset. 
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/semantic_set.png}}\\
-%\caption{Feedback to the user:}
-%\end{center}
-\textit{Figure X: Some of the semantic sets are supersets, consisting of subsets. From semantic\_sets.xml.}\\
+\caption{Some of the semantic sets are supersets, consisting of subsets. From semantic\_sets.xml.}
+\label{semset}
+\end{center}
+\end{figure}
 
 We decide grammar for the variable. In this question the MAINV is in past tense because of the dividing into levels. In level 1 the student only get present tense. The tag, \texttt{Person-Number}, take care of the agreement with the SUBJ, and also for the required person and number in the answer. (Saara).
 
@@ -183,7 +199,7 @@ We chose not to accept inclusive pronouns, because we wanted the student to exer
 &Sg3 &Sg3 &Du3 &Du3 &Pl3 &Pl3 \\
 \end{tabular}
 
-\subsection{Analysator for student's input}
+\subsection{Analysator for student's input}\label{sentencefeedback}
 We have chosen not to use multiple choice, but let the student formulate his own answers. That means that we have to analyze the answer. To a certain question one can give many kinds of acceptable answers. In Sámi you can change word order, and also add many kinds of particles.\\
 
 \textit{Maid don lohket ikte?} (What did you read yesterday?)
@@ -210,34 +226,37 @@ Figure: fafdfsa\\
 
 Q-A is the question and the student's answer. The script \texttt{lookup2cg} transforms the output of the lookup to correct format for vislcg3. How to generate messages is explained below.
 
-The question mark in the Q-A is changed with a special symbol ("qst" QDL), because we do not want the question mark to be a delimiter in the analyse, but still we want the opportunity to make rules according to what is in the question (on the left side of the QDL.)
+The question mark in the Q-A is changed with a special symbol ("qst" QDL), because we do not want the question mark to be a delimiter in the analyse, but still we want the opportunity to make rules according to what is in the question (on the left side of the QDL).
 
 
 \subsubsection{Tutorial feedback}
-Tutorial feedback is feedback about grammar errors (prefix is \&grm), or that the student does not use the verb or noun, which s/he is supposed to do (prefix is \&sem). 
+Tutorial feedback is feedback about grammar errors (prefix is \&grm), or that the student does not use the verb or noun, which s/he is supposed to do (prefix is \&sem). In Figure \ref{cg3} we see a rule for giving a message if the student has not used accusative, when the question requires one. 
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.6}[.6]{\includegraphics{img/pedcg3.png}}
-%\caption{Figure}
-%\end{center}
-\\
-\textit{Figure X: Due to the question, we expect an accusative in the answer, if the question is not asking about infinitive, e.g. "What do you do?" (WORK-V). From sme-ped.cg3}\\
+\caption{Due to the question, we expect an accusative in the answer, if the question is not asking about infinitive, e.g. "What do you do?" (WORK-V). From sme-ped.cg3}
+\label{cg3}
+\end{center}
+\end{figure}
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.6}[.6]{\includegraphics{img/maid_lohket_ikte.png}}
-%\caption{Figure}
-%\end{center}
-\\
-\textit{Figure X: The tag is added to the interrogate. (What did you read yesterday qst Yesterday I read an old book (Nom instead of Acc))}\\
+\caption{The tag is added to the interrogate. (What did you read yesterday qst Yesterday I read an old book (Nom instead of Acc))}
+\label{maidlohket}
+\end{center}
+\end{figure}
 
 
 
-%\begin 
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.65}[.65]{\includegraphics{img/messages_vasta.png}}
-%\caption{Figure}
-%\end{center}
-\\
-\textit{Figure X: The tutorial message is generated from messages\_vasta.xml, and can be given in any language.}\\
+\caption{The tutorial message is generated from messages\_vasta.xml, and can be given in any language.}
+\label{messv}
+\end{center}
+\end{figure}
 
 %spelling errors (unknown input strings)
 %grammatical errors (known and erroneous input strings)
@@ -262,25 +281,27 @@ When the verb in the question is in Sg2, a common error is that the student use 
 \subsubsection{Navigating in the dialogue}
 We use the same system to navigate inside the dialogue. The input is tagged with information about if it is affirmative, negative, and with target-tag, so we can pick up e.g. name, and use it in the next question or utterance. 
 
-Some dialogues are branched according to how the student answer e.g. about having a car, or like in the example below, the age of the student.
+Some dialogues are branched according to how the student answer e.g. about having a car, or like in the answer from the student about the age, gives a tag (Figure \ref{age}), which is used to navigate to different branches of the dialogue, see Figure \ref{branch}.
 
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/picking_age.png}}\\
-%\caption{Feedback to the user:}
-%\end{center}
-\\
-\textit{Figure X: Rules for giving age-tag to the input. Special rule for the question named Man\_boaris\_don\_leat. From sme-ped.cg3.}\\
+\caption{Rules for giving age-tag to the input. Special rule for the question named Man\_boaris\_don\_leat. From sme-ped.cg3.}
+\label{age}
+\end{center}
+\end{figure}
 
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/Man_boaris.png}}\\
-%\caption{Feedback to the user:}
-%\end{center}
-\\
-\textit{Figure X: Example of how to navigate to the next question or branch, with help of the tag.  The question is "How old are you?" and the branches are adapted to the age of the student.}\\
+\caption{Example of how to navigate to the next question or branch, with help of the tag.  The question is "How old are you?" and the branches are adapted to the age of the student.}
+\label{branch}
+\end{center}
+\end{figure}
 
-As we see in the figure X and X, the questions in the dialogues are not generated, but tailored. Every question has it's own uniq name, so we can link to it, and it is also possible to make a rule for a special question, like here.  
+As we see in the Figures \ref{maidlohket} and \ref{manboaris}, the questions in the dialogues are not generated, but tailored. Every question has it's own unique name, so we can link to it, and it is also possible to make a rule for a special question, like here.  
 
 \section{The design of the pedagogical programs}
 To all programs we have tried to make a not so technical look, so we have added drawings to the programs. The user can choose between two main dialects, and between four metalanguages (Norwegian, North Sámi, Finnish and English), but now in the beginning is only Norwegian and North Sámi fully supported. The biggest task is to translate the lexicon and grammar into the other languages.  
@@ -295,11 +316,13 @@ The student can choose to work from arabic to word, and from word to arabic. S/h
 The automat is easy to make, so we have made it in many sámi languages, also so the students can compare the languages. We have Numra for North, Lule, South, Inari and Kildin Sámi.\\ 
 
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/numra.png}}\\
-%\caption{Feedback to the user:}
-%\end{center}
-\textit{Figure X: http://victorio.uit.no/oahpa/numra/.} 
+\caption{http://victorio.uit.no/oahpa/numra/.}
+\label{numra}
+\end{center}
+\end{figure}
 
 \subsection{Leksa -- word quiz}
 It can be difference between the word's translations in a dictionary, and the word a student writes in a quiz. It is important not to give "error" to the student if s/he has written an acceptable translation of the word in the quiz, even if it is not the dictionary translation. It can be the same word in a different orthography, a synonym, or another meanings of the Sámi word. Therefore we have added more synonyms and possible translations to the dictionary.
@@ -309,11 +332,13 @@ It can be difference between the word's translations in a dictionary, and the wo
 We have divided all the entries in the pedagogical lexicon into semantic sets, and they are put together in 17 supersets, e.g. nature, food/drink, clothing. The supersets consist of nouns, verbs and adjectives. The student can choose either to work with words from a schoolbook, or with a superset. 
 \vspace{0.5cm}
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.6}[.6]{\includegraphics{img/leksa.png}}\\
-%\caption{Feedback to the user:}
-%\end{center}
-\textit{Figure X: http://victorio.uit.no/oahpa/leksa/.} 
+\caption{http://victorio.uit.no/oahpa/leksa/}
+\label{leksa}
+\end{center}
+\end{figure}
 
 \vspace{0.5cm}
 In addition to the language direction, the student can choose to work with place names. For that we have made a special proper noun lexicon. It consists of 228 names, marked with world vs. sápmi, and rare vs. common. 
@@ -341,11 +366,13 @@ The options are for all dialect, stem and book, and in addition one can choose t
 \vspace{0.5cm}
 
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/morfaS.png}}\\
-%\caption{Feedback to the user:}
-%\end{center}
-\textit{Figure X: http://victorio.uit.no/oahpa/morfa\_s/.} 
+\caption{http://victorio.uit.no/oahpa/morfa\_s/}
+\label{morfas}
+\end{center}
+\end{figure}
 
 
 \subsubsection{Morfa-C}
@@ -363,25 +390,29 @@ The options are for all dialect and book, and in addition one can choose these f
 \vspace{0.5cm}
 
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/morfaC.png}}\\
-%\caption{Feedback to the user:}
-%\end{center}
-\textit{Figure X: http://victorio.uit.no/oahpa/morfa\_c/.} 
+\caption{http://victorio.uit.no/oahpa/morfa\_c/}
+\label{morfac}
+\end{center}
+\end{figure}
 
 \vspace{0.5cm}
 
 The sentence generator generates question-answer pairs, and the student writes only one word form into the answer. To get variation, there can be several variables in a pair. The example above generates pairs with numeral used as attribute, and the task in Sámi will be to choose correct case and number for the numeral.\\  
 
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/morfa_question.png}}\\
-%\caption{Feedback to the user:}
-%\end{center}
-\textit{Figure X: In Morfa-C the system generates question-answer-pairs. From questions\_numerals.xml.}\\
+\caption{In Morfa-C the system generates question-answer-pairs. From questions\_numerals.xml.}
+\label{questionm}
+\end{center}
+\end{figure}
 
 
-We have chosen to use supersets - both HUMAN and OBJECT are quite big supersets. The numeral range is 1-12. This gives many times semantically quite funny sentences. The question-answer pair in the example above can be like: \textit{Geaid beavdi dát lea? Dat lea logi vielbeali beavdi.} (Who´s table this is? It is ten cousins’ table.) 
+We have chosen to use supersets - both HUMAN and OBJECT are quite big supersets. The numeral range is 1-12. This gives many times semantically quite funny sentences. The question-answer pair in Figure \ref{questionm}, can give a text like: \textit{Geaid beavdi dát lea? Dat lea logi vielbeali beavdi.} (Who´s table this is? It is ten cousins’ table.) 
 
 I have discussed it with people, and it seems like that students who are clever in Sámi, like the humour in the sentences. But students on a lower level can get unsure - and they would prefer that the semantic content is realistic all the time.   
 
@@ -396,7 +427,7 @@ In between the "natural" dialogues, mimicking real life dialogues, and the pure 
 
 There are two motives for making this game type. First, our tailored dialogues in Sahka run the risk of getting quickly consumed. With a QA drill e we may make an indefinite number of questions. Second, the students need to automate the question-answer routine -- inflecting the finite verb correctly and choose the correct case.
 
-The questions are generated, the question and answer are analysed together, and the student gets feedback like describe in XX. The question matrices are marked with level, so there is a level option. Only one question is presented at a time. The student can answer how s/he likes, but with fill sentence (with finite verb), and with the same verb as in the question. The pronouns are not inclusive.
+The questions are generated, the question and answer are analysed together, and the student gets feedback, like described in \ref{sentencefeedback}. The question matrices are marked with level, so there is a level option. Only one question is presented at a time. The student can answer how s/he likes, but with fill sentence (with finite verb), and with the same verb as in the question. The pronouns are not inclusive.
 
 There are 111 matrice questions divided into levels:
 \begin{itemize}
@@ -407,11 +438,13 @@ There are 111 matrice questions divided into levels:
 \vspace{0.5cm}
 
 
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/vasta.png}}\\
-%\caption{Feedback to the user:}
-%\end{center}
-\textit{Figure X: http://victorio.uit.no/oahpa/vasta/.}\\ 
+\caption{http://victorio.uit.no/oahpa/vasta/}
+\label{vasta}
+\end{center}
+\end{figure}
 
 	
 
@@ -442,23 +475,26 @@ The dialogue first utterance is a dialogue\_opening and the last utterance is a 
 
 The dialogue consists of topics, and every topic starts with an opening utterance; a comment or a question. In the end of the topic, there is always a closing.  
 
+Every utterance has a name, and one link or alternative links. The alternative links are due to a what kind of tag the question-answer pair gets, e.g. dia-neg or dia-pos, or dia-target to a certain word, e.g. target="hivsset", like in Figure \ref{TV}. There will always be a default, in case there will not be any tag.\\
 
-Every utterance has a name, and one link or alternative links. The alternative links are due to a what kind of tag the question-answer pair gets, e.g. dia-neg or dia-pos, or dia-target to a certain word, e.g. target="hivsset". There will always be a default, in case there will not be any tag.\\
-
-
-%\begin{center}
-\scalebox{.6}[.6]{\includegraphics{img/targetIll.png}}
-%\caption{Figure}
-%\end{center}
-\\
-\textit{Figure X: In the ped-sme.cg3 is a rule for giving target-tag to an noun or pronoun in illative after a question with the interrogate "guhte" + a noun in illative ( = "to which"). This a general rule, not connected to any particular question.}\\ 
-
-%\begin{center}
+\begin{figure}[htbp]
+\begin{center}
 \scalebox{.6}[.6]{\includegraphics{img/gosabidjatTV.png}}
-%\caption{Figure}
-%\end{center}
-\\
-\textit{Figure X: The question is "To which room we put the TV?" One of the alternatives for the navigation is due to that the target tag is put to the lemma "hivsset" ( = WC). The comment to the student is "It is not a good idea. Make a new try." From dialogue\_visit.xml.}\\
+\caption{The question is "To which room we put the TV?" One of the alternatives for the navigation is due to that the target tag is put to the lemma "hivsset" ( = WC). The comment to the student is "It is not a good idea. Make a new try." From dialogue\_visit.xml.}
+\label{TV}
+\end{center}
+\end{figure}
+
+In Figure \ref{targetIll} we see how the \&dia-target-tag is mapped to the noun in illative.
+
+\begin{figure}[htbp]
+\begin{center}
+\scalebox{.6}[.6]{\includegraphics{img/targetIll.png}}
+\caption{In the ped-sme.cg3 is a rule for giving target-tag to an noun or pronoun in illative after a question with the interrogate "guhte" + a noun in illative ( = "to which"). This a general rule, not connected to any particular question.}
+\label{targetIll}
+\end{center}
+\end{figure}
+
 
 A topic is like a module in the dialogue, and it is easy to put an new module after it. The linking makes is possible to make branches. Every utterance have a unique name.  
 
@@ -506,5 +542,4 @@ But to do this work, we need to work together with teachers to get the content o
 	
 \end{document}
 
-Heift and Schulze
 	
