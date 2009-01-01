@@ -49,7 +49,10 @@ The existing language resources, which we have used in the pedagogical programs:
 \item number word generator, made with finite state transducers.
 \end{itemize}
 
-The Xerox tools are documented in \citep{BeesleyKarttunen}. vislcg3 is a new generation version of the open source vislcg, and documented .....
+The Xerox tools are documented in \citep{BeesleyKarttunen}. 
+
+Vislcg3 is a new generation version of the open source vislcg. It is a constraint grammar (CG) parser; a program that selects the correct analysis in case of homonymy. CG was launched by Fred Karlsson in the early 90'ies (Karlsson et.al.1995). I have explained how it works in \ref{sentencefeedback}
+.
 
 Text analysator, word generator, paradigm generator and number word generator is accessible on the Inernet: \textit{http://giellatekno.uit.no}
 
@@ -63,6 +66,7 @@ We difined that important for the pedigogical programs was that:
 \begin{itemize}
 \item they should be very flexible: Teacher or student can choose exactly what they want to train, and adapt them to each student's linguistic level 
 \item one should be able to restrict the vocabulary to particular schoolbooks so it is easy to integrate the tools to the instruction
+\item the student can choose between the main dialects for the task
 \item the student should get immediately feedback about errors
 \item the student should easily get translation and grammar help
 \item the student and the teacher should be able to work with topics 
@@ -71,11 +75,13 @@ We difined that important for the pedigogical programs was that:
 
 Sámi is a language with complex morphology, and it demands a lot of practising before the student reaches necessary skills. But Sámi is a minority language and it is a common situation that the person learning Sámi, does not get chance to practise the language enough in a natural way. Because of that can programs accessable at Internet be a useful supplement to the instruction at school and university. We wanted also to make a dialogue program about everyday topics. The goal is to exercise verb inflection, choosing the correct case and learn more words. 
 
-In North Sámi there are to main dialects, and it is an advantage to be able to choose dialect. Especially when training morphology, it is an advantage if the presented forms, are the same as one has learnt in the instruction, or have heard in the language society. But at the same time, the program should accept any correct orthographic word form from the student.
+In North Sámi there are to main dialects, and it is an advantage to be able to choose dialect. Especially when training morphology, it is an advantage if the presented forms, are the same as one has learnt in the instruction, or have heard in the language society. But at the same time, the program should accept 
+any correct orthographic word form from the student.
+
+Because North Sámi is used in three countries, we want that the student can choose the metalanguage. Even if we now are working only with North Sámi, we want the possibility for making the programs in other sámi languages as well.
 
 We got financial support to the work from the University of Tromsø, and the Sámi Parliament in Norway.
 
-The main lexicon is used for analysing the student’s input, but we want a pedagogical lexicon for more information about the lemmas, and as a base for the quiz and grammar tasks. The lexicon should be relevant according to the education in Sámi in schools and the university. We want that the student can choose main dialect for the output-language of the programs. We need sentence generator for the tasks and a system for feedback based on the student’s input. We need also a system for the dialogue. Because North Sámi is used in three countries, we want that the student can choose the metalanguage. Even if we now are working only with North Sámi, we want the possibility for making the programs in other sámi languages as well.
 
 \section{Modules}
 
@@ -92,7 +98,9 @@ The main lexicon consists of the Sámi words, information about the consonant gr
 \end{center}
 \end{figure}
 
-We wanted some more information in the lexicon. Therefore we made a special pedagogical lexicon in xml-format. I collected the lemmas, which were used in the schoolbooks and added Norwegian translation, information about semantic set, dialect and information about inflection. I also added information about source - which schoolbooks the lemma is used in. Read more about semantic sets in \ref{set}. The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives. There is also a small lexicon for pronouns and numbers. In Figure \ref{nounlex} is an example of an entry in the nounlexicon. \\
+The main lexicon is used for analysing the student’s input, but we want a pedagogical lexicon for more information about the lemmas, and as a base for the quiz and grammar tasks. The lexicon should be relevant according to the education in Sámi in schools and the university. Therefore we made a special pedagogical lexicon in xml-format. 
+
+I collected the lemmas, which were used in the schoolbooks and added Norwegian translation, information about semantic set, dialect and information about inflection. I also added information about source - which schoolbooks the lemma is used in. Read more about semantic sets in \ref{set}. The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives. There is also a small lexicon for pronouns and numbers. In Figure \ref{nounlex} is an example of an entry in the nounlexicon. \\
 
 
 \begin{figure}[htbp]
@@ -108,10 +116,45 @@ Soma lemmas are homonomies in the base form. Because of different meanings they 
 
 %It works well as long as working with semantic classes, but if the user chooses "all" or a book, then he will not understand why the program doesn't accept his suggestions, e.g. girdi.
 
+\subsection{Sentence generator}\label{set}
+We made a sentence generator for the tasks. With this we can easily offer variation to the user, instead of tailoring every task. The generator consists of question and answer matrices with variables representing sets of lemmas in the lexicon, as shown in Figure \ref{questionv}.
+
+\begin{figure}[htbp]
+\begin{center}
+\scalebox{.7}[.7]{\includegraphics{img/question_vasta.png}}\\
+\caption{Questions are generated. From questions\_vasta.xml.}
+\label{questionv}
+\end{center}
+\end{figure}
+
+The semantic sets are used both for the word quiz (Leksa) and the questions in Morfa-C and Vasta. There are ordinary sets and supersets, and one can choose which one suits best for the question, e.g. the big superset HUMAN with all lemmas for human beings, or a smaller subset, like PROFESSION. In Figure \ref{semset} is a definition of a superset. 
+
+\begin{figure}[htbp]
+\begin{center}
+\scalebox{.7}[.7]{\includegraphics{img/semantic_set.png}}\\
+\caption{Some of the semantic sets are supersets, consisting of subsets. From semantic\_sets.xml.}
+\label{semset}
+\end{center}
+\end{figure}
+
+We decide grammar for the variable. In this question the MAINV is in past tense because of the dividing into levels. In level 1 the student only get present tense. The tag, \texttt{Person-Number}, take care of the agreement with the SUBJ, and also for the required person and number in the answer. (Saara).
+
+We chose not to accept inclusive pronouns, because we wanted the student to exercise all persons and numbers. Using inclusive pronouns, s/he could answer with the same verbform as in the question. The question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on:\\
+
+
+\begin{tabular}[t]{rlrlrlrlrlr}
+&QPN &APN &QPN &APN &QPN &APN \\
+\hline
+&Sg1 &Sg2 &Du1 &Du2 &Pl1 &Pl2 \\
+&Sg2 &Sg1 &Du2 &Du1 &Pl2 &Pl1 \\
+&Sg3 &Sg3 &Du3 &Du3 &Pl3 &Pl3 \\
+\end{tabular}
+
+
 \subsection{System for dialectical variation}\label{dialect}
 Saara - generation
 
-We needed a strict generator. That means that the generator will generate only one word form for every grammatical word. The analysor is tolerant, but we have the opportunity of compiling two different analysators. We use \texttt{sme-norm.fst} for analysing the input and \texttt{isme-strict.fst} for the generator. isme-strict.fst generates only one word form for every grammatical word.
+For the sentence generator the morphological generator has to be strict. That means that the generator will generate only one word form for every grammatical word. The analysator should be tolerant, but we have the opportunity of compiling two different analysators/generators. We use \texttt{sme-norm.fst} for analysing the input and \texttt{isme-strict.fst} for the generator. isme-strict.fst generates only one word form for every grammatical word.
 
 Because of dialectical variation, we made two versions of \texttt{isme-strict.fst}. We marked relevant lines in our source code like this:
 \begin {itemize}
@@ -165,42 +208,9 @@ In the example in the images above, the correct illative Sg word form of \textit
 
 If our main lexicon had been in xml-format, then we could have put all this information there. It would be a better solution to maintain only one lexicon, instead of two.
 
-\subsection{Sentence generator}\label{set}
-To easily offer variation to the user, we use a sentence generator, instead of tailoring every question. The generator consists of question and answer matrices with variables representing sets of lemmas in the lexicon, as shown in Figure \ref{questionv}.
-
-\begin{figure}[htbp]
-\begin{center}
-\scalebox{.7}[.7]{\includegraphics{img/question_vasta.png}}\\
-\caption{Questions are generated. From questions\_vasta.xml.}
-\label{questionv}
-\end{center}
-\end{figure}
-
-The semantic sets are used both for the word quiz (Leksa) and the questions in Morfa-C and Vasta. There are ordinary sets and supersets, and one can choose which one suits best for the question, e.g. the big superset HUMAN with all lemmas for human beings, or a smaller subset, like PROFESSION. In Figure \ref{semset} is a definition of a superset. 
-
-\begin{figure}[htbp]
-\begin{center}
-\scalebox{.7}[.7]{\includegraphics{img/semantic_set.png}}\\
-\caption{Some of the semantic sets are supersets, consisting of subsets. From semantic\_sets.xml.}
-\label{semset}
-\end{center}
-\end{figure}
-
-We decide grammar for the variable. In this question the MAINV is in past tense because of the dividing into levels. In level 1 the student only get present tense. The tag, \texttt{Person-Number}, take care of the agreement with the SUBJ, and also for the required person and number in the answer. (Saara).
-
-We chose not to accept inclusive pronouns, because we wanted the student to exercise all persons and numbers. Using inclusive pronouns, s/he could answer with the same verbform as in the question. The question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on:\\
-
-
-\begin{tabular}[t]{rlrlrlrlrlr}
-&QPN &APN &QPN &APN &QPN &APN \\
-\hline
-&Sg1 &Sg2 &Du1 &Du2 &Pl1 &Pl2 \\
-&Sg2 &Sg1 &Du2 &Du1 &Pl2 &Pl1 \\
-&Sg3 &Sg3 &Du3 &Du3 &Pl3 &Pl3 \\
-\end{tabular}
 
 \subsection{Analysator for student's input}\label{sentencefeedback}
-We have chosen not to use multiple choice, but let the student formulate his own answers. That means that we have to analyze the answer. To a certain question one can give many kinds of acceptable answers. In Sámi you can change word order, and also add many kinds of particles.\\
+We have chosen not to use multiple choice, but let the student formulate his/her own answer. That means that we have to analyze the answer. To a certain question one can give many kinds of acceptable answers. In Sámi you can change word order, and also add many kinds of particles.\\
 
 \textit{Maid don lohket ikte?} (What did you read yesterday?)
 \begin{itemize}
@@ -218,24 +228,36 @@ But the answer can contain grammar errors:
 \item \textit{Don lohket ollu áviissaid.} \\ $\rightarrow$ Are you sure that you answer with the correct person?  
 \end{itemize}
 
-We use Vislcg3 for analysing the student's input. But first both the question and the answer are analysed with lookup to \texttt{sme.fst} and then the result is adjusted to cg3-format with a script. We use a file \texttt{ped-sme.cg3} which consists of only the first part of the morphological disambiguating in the \textit{sme-dis.rle} file, because there will probably be grammar and orthographic errors in the input. Instead of mapping syntactic tags to the words, we map tags for giving feedback to the student, or for navigating to the correct next question of in the dialogue, due to the student's answer.
+We use Vislcg3 for analysing the student's input. The program is based on constraint grammar, linguist-written, context dependent rules, mainly used for selecting the correct analysis in case of homonymy (disambiguating). Each rule either adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentence context. Context conditions can be linked to any tag or tag set of any word anywhere in the sentence, either locally (defined distances) or globally (undefined disances). 
+
+Context conditions in the same rule may be linked, i.e. conditioned upon each other, negated or blocked by interfering words or tags. Vislcg3 is documented at http://beta.visl.sdu.dk/constraint\_grammar.html.
+
+First both the question and the answer are analysed with lookup to \texttt{sme.fst} and then the result is adjusted to cg3-format with a script. We use a file \texttt{ped-sme.cg3} which disambiguate the student's input only to a certain extent, because there will probably be grammar and orthographic errors in the input. The last part of the file consists of rules for giving feedback to the student's grammatical errors, and for navigating to the correct next question of in the dialogue, due to the student's answer.
 
 Here I want a figure - with help of TTs program:\\
 Q-A --- lookup to sme-norm.fst --- script lookup2cg --- vislcg3: ped-sme.cg3 --- generate message or navigation
 Figure: fafdfsa\\
 
-Q-A is the question and the student's answer. The script \texttt{lookup2cg} transforms the output of the lookup to correct format for vislcg3. How to generate messages is explained below.
+Q-A is the question and the student's answer. The script \texttt{lookup2cg} transforms the output of the lookup to correct format for vislcg3. How to generate feedback or navigate, is explained below.
 
-The question mark in the Q-A is changed with a special symbol ("qst" QDL), because we do not want the question mark to be a delimiter in the analyse, but still we want the opportunity to make rules according to what is in the question (on the left side of the QDL).
+The question mark in the Q-A is changed with a special symbol ("qst" QDL), because we do not want the question mark to be a delimiter in the analyse, but at the same time we want refer to the question and the answer separately in the rules (left or right side of the QDL). An example of analysis is shown in Figure \ref{iktelohken}.
 
+\begin{figure}[htbp]
+\begin{center}
+\scalebox{.6}[.6]{\includegraphics{img/iktelohken.png}}
+\caption{Question and answer after morphological analyse and the script lookup2cg.}
+\label{iktelohken}
+\end{center}
+\end{figure}
 
+\newpage
 \subsubsection{Tutorial feedback}
-Tutorial feedback is feedback about grammar errors (prefix is \&grm), or that the student does not use the verb or noun, which s/he is supposed to do (prefix is \&sem). In Figure \ref{cg3} we see a rule for giving a message if the student has not used accusative, when the question requires one. 
+Tutorial feedback is feedback about grammar errors (prefix is \&grm), or that the student does not use the verb or noun, which s/he is supposed to do (prefix is \&sem). In Figure \ref{cg3} we see a rule for assigning a tag if the student has not used accusative, when the question requires one. And in Figure \ref{maidlohket} we see how the vislcg3 file has disambiguated ja added the tag to the input which is the analysis from Figure \ref{iktelohken}. The tag generates feedback to the student, as we see in Figure \ref{messv}.
 
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.6}[.6]{\includegraphics{img/pedcg3.png}}
-\caption{Due to the question, we expect an accusative in the answer, if the question is not asking about infinitive, e.g. "What do you do?" (WORK-V). From sme-ped.cg3}
+\caption{If the interrogative pronoun is in accusative, we expect an accusative in the answer, if the question is not asking for a verb, e.g. "What do you do?" (WORK-V). The rule assign (map) missing-Acc-tag to the interrogative pronoun if there is no accusative or negation verb in the answer. From sme-ped.cg3}
 \label{cg3}
 \end{center}
 \end{figure}
@@ -243,7 +265,7 @@ Tutorial feedback is feedback about grammar errors (prefix is \&grm), or that th
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.6}[.6]{\includegraphics{img/maid_lohket_ikte.png}}
-\caption{The tag is added to the interrogate. (What did you read yesterday qst Yesterday I read an old book (Nom instead of Acc))}
+\caption{The grammarerrortag is added to the interrogative pronoun. (What did you read yesterday qst Yesterday I read an old book (Nom instead of Acc). Output of vislcg3.}
 \label{maidlohket}
 \end{center}
 \end{figure}
@@ -253,15 +275,15 @@ Tutorial feedback is feedback about grammar errors (prefix is \&grm), or that th
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.65}[.65]{\includegraphics{img/messages_vasta.png}}
-\caption{The tutorial message is generated from messages\_vasta.xml, and can be given in any language.}
+\caption{The grammarerrortag generates tutorial feedback in messages\_vasta.xml. The feedback can be generated in different languages, her it is in Norwegian (nob).}
 \label{messv}
 \end{center}
 \end{figure}
 
 %spelling errors (unknown input strings)
 %grammatical errors (known and erroneous input strings)
-
-The biggest problem is the student's spelling errors. It is not a problem if the spelling error makes a not-existing word form. Then the message to the student is  "The word form is not in our lexicon, can it be a spelling error?". The spelling error can make another word form of the same lemma. For that we make rules based on context. The real problem is when the spelling error makes an unintended lemma. Here are some examples and how we try to handle them:\\
+\newpage
+The biggest problem is the student's spelling errors. It is not a problem if the spelling error makes a not-existing word form. Then the message to the student is  "The word form is not in our lexicon, can it be a spelling error?", as in Figure \ref{messv}. But the spelling error can make another word form of the same lemma. For that we make rules based on context. The real problem is when the spelling error makes an unintended lemma. Here are some examples and how we try to handle them:\\
 
 \begin{itemize}
 
@@ -279,15 +301,15 @@ When the verb in the question is in Sg2, a common error is that the student use 
 
 
 \subsubsection{Navigating in the dialogue}
-We use the same system to navigate inside the dialogue. The input is tagged with information about if it is affirmative, negative, and with target-tag, so we can pick up e.g. name, and use it in the next question or utterance. 
+We use the same system to navigate inside the dialogue. The input is tagged with information about if it is affirmative, negative, and with a target-tag, so we can pick up e.g. name or the essens of the answer, and use it in the next question or utterance. 
 
-Some dialogues are branched according to how the student answer e.g. about having a car, or like in the answer from the student about the age, gives a tag (Figure \ref{age}), which is used to navigate to different branches of the dialogue, see Figure \ref{branch}.
+Some dialogues are branched according to how the student answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. The same way will the answer from the student about his/her age, give a tag (Figure \ref{age}), which is used to navigate to different branches of the dialogue based on the age of the student, see Figure \ref{branch}.
 
 
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/picking_age.png}}\\
-\caption{Rules for giving age-tag to the input. Special rule for the question named Man\_boaris\_don\_leat. From sme-ped.cg3.}
+\caption{Rules for giving age-tag to the input. Special rules for the question named Man\_boaris\_don\_leat (How\_old\_are\_you). From sme-ped.cg3.}
 \label{age}
 \end{center}
 \end{figure}
@@ -301,7 +323,7 @@ Some dialogues are branched according to how the student answer e.g. about havin
 \end{center}
 \end{figure}
 
-As we see in the Figures \ref{maidlohket} and \ref{manboaris}, the questions in the dialogues are not generated, but tailored. Every question has it's own unique name, so we can link to it, and it is also possible to make a rule for a special question, like here.  
+As we see in the Figures \ref{maidlohket} and \ref{branch}, the questions in the dialogues are not generated, but written. Every question has it's own unique name, so we can link to it, and it is also possible to make a rule for a special question, like in Figure \ref{age}.  
 
 \section{The design of the pedagogical programs}
 To all programs we have tried to make a not so technical look, so we have added drawings to the programs. The user can choose between two main dialects, and between four metalanguages (Norwegian, North Sámi, Finnish and English), but now in the beginning is only Norwegian and North Sámi fully supported. The biggest task is to translate the lexicon and grammar into the other languages.  
