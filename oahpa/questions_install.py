@@ -294,12 +294,16 @@ class Questions:
             if not found:
                 self.read_element(qaelement,None,syntax,qtype)
 
-    def read_questions(self, infile, grammarfile,vasta=None):
+    def read_questions(self, infile, grammarfile):
 
         xmlfile=file(infile)
         tree = _dom.parse(infile)
 
         self.read_grammar(grammarfile)
+
+        gametype="morfa"
+        qs = tree.getElementsByTagName("questions")[0]
+        gametype = qs.getAttribute("game")
 
         print "Created questions:"
         for q in tree.getElementsByTagName("q"):
@@ -307,11 +311,6 @@ class Questions:
             qid = q.getAttribute('id')
             level = q.getAttribute('level')
             if not level: level="1"
-
-            gametype = q.getAttribute('game')
-            if not gametype:
-                if vasta: gametype="qa"
-                else: gametype="morfa"
 
             # Store question
             qtype=""
@@ -455,8 +454,10 @@ class Questions:
         if qid:
             questions = Question.objects.filter(qid=qid)
             if questions:
-                questions[0].delete()
+                for q in questions:
+                    q.delete()
 
             questions = Question.objects.filter(string=qid)
             if questions:
-                questions[0].delete()
+                for q in questions:
+                    q.delete()
