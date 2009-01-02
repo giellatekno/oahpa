@@ -295,7 +295,7 @@ class Questions:
                 self.read_element(qaelement,None,syntax,qtype)
 
     def read_questions(self, infile, grammarfile,vasta=None):
-    
+
         xmlfile=file(infile)
         tree = _dom.parse(infile)
 
@@ -321,18 +321,19 @@ class Questions:
             question=q.getElementsByTagName("question")[0]
             text=question.getElementsByTagName("text")[0].firstChild.data
 
+            #If there exists already a question with that name, delete all the references to it.
+            if qid:
+                questions = Question.objects.filter(qid=qid)
+                if questions:
+                    questions[0].delete()
+
             question_element,created = Question.objects.get_or_create(qid=qid, \
                                                                       level=int(level), \
                                                                       string=text, \
                                                                       qtype=qtype, \
                                                                       gametype=gametype,\
                                                                       qatype="question")
-            #If there exists already a dialogue with that name, delete all the references to it.
-            if not created:
-                question_element.delete()
-
-            question_element.save()
-
+            
             # Add source information if present
             if q.getElementsByTagName("sources"):
                 sources = q.getElementsByTagName("sources")[0]
@@ -448,3 +449,14 @@ class Questions:
                         tagstring2 = t.tagname
                     self.get_tagvalues(rest,tagstring2,tagvalues)
     
+
+    def delete_question(self, qid=None):
+        
+        if qid:
+            questions = Question.objects.filter(qid=qid)
+            if questions:
+                questions[0].delete()
+
+            questions = Question.objects.filter(string=qid)
+            if questions:
+                questions[0].delete()
