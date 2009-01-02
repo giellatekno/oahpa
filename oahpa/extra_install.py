@@ -2,6 +2,7 @@
 from settings import *
 from drill.models import *
 from django.db.models import Q
+from xml.dom import minidom as _dom
 import sys
 import re
 import string
@@ -39,6 +40,25 @@ class Extra:
             if l.name not in set(links):
                 print l.name
                 l.delete()
+
+    #The comments presented to the user after completing the game.
+    def read_comments(self, commentfile):
+        xmlfile=file(commentfile)
+        tree = _dom.parse(commentfile)        
+
+        comments_el = tree.getElementsByTagName("comments")[0]
+        lang = comments_el.getAttribute("xml:lang")
+
+        comments = Comment.objects.filter(lang=lang)
+        for c in comments:
+            c.delete()
+        for el in comments_el.getElementsByTagName("comment"):
+            level = el.getAttribute("level")
+            for com in el.getElementsByTagName("text"):
+                text = com.firstChild.data
+                print text
+                comment, created = Comment.objects.get_or_create(lang=lang, comment=text, level=level)
+                comment.save()
 
     # Installs the semantic superclasses
     # defined in sme/xml/semantic_sets.xml
