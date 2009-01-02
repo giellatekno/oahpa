@@ -331,8 +331,9 @@ class OahpaSettings(forms.Form):
                              'adj_context' : 'ATTRPOS'}
 
         # Link to grammatical explanation for each page
-        self.grammarlinkssme = Links.objects.filter(language="sme")
-        self.grammarlinksno = Links.objects.filter(language="no")
+        self.grammarlinkssme = Grammarlinks.objects.filter(language="sme")
+        self.grammarlinksno = Grammarlinks.objects.filter(language="no")
+
 
 
 class OahpaQuestion(forms.Form):
@@ -454,8 +455,8 @@ class QuizzSettings(OahpaSettings):
                     'frequency' : ['common'], 'geography' : ['sapmi'], \
                     'transtype' : 'smenob' }
     # Link to grammatical explanation for each page
-    grammarlinkssme = Links.objects.filter(language="sme")
-    grammarlinksno = Links.objects.filter(language="no")
+    grammarlinkssme = Grammarlinks.objects.filter(language="sme")
+    grammarlinksno = Grammarlinks.objects.filter(language="no")
 
 
     def __init__(self, *args, **kwargs):
@@ -497,8 +498,8 @@ class NumSettings(OahpaSettings):
     language = forms.ChoiceField(initial='sme', choices=LANGUAGE_CHOICES, widget=forms.RadioSelect)
     default_data = {'language' : 'sme', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
     # Link to grammatical explanation for each page
-    grammarlinkssme = Links.objects.filter(language="sme")
-    grammarlinksno = Links.objects.filter(language="no")
+    grammarlinkssme = Grammarlinks.objects.filter(language="sme")
+    grammarlinksno = Grammarlinks.objects.filter(language="no")
                     
     def __init__(self, *args, **kwargs):
         self.set_settings
@@ -947,11 +948,6 @@ class VastaQuestion(OahpaQuestion):
 
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
-        # In qagame, all words are considered as answers.
-
-        self.gametype="vasta"
-        self.messages, jee, joo  = self.vasta_is_correct(question.string, qwords, None)
-        
         self.qattrs= {}
         for syntax in qwords.keys():
             qword = qwords[syntax]
@@ -985,6 +981,10 @@ class VastaQuestion(OahpaQuestion):
         qstring = qstring + "?"
         self.question=qstring
 
+        # In qagame, all words are considered as answers.
+        self.gametype="vasta"
+        self.messages, jee, joo  = self.vasta_is_correct(qstring.encode('utf-8'), qwords, None)
+        
         # set correct and error values
         if correct_val == "correct":
             self.error="correct"
@@ -1034,8 +1034,8 @@ class SahkaSettings(OahpaSettings):
         super(SahkaSettings, self).__init__(*args, **kwargs)
 
         # Link to grammatical explanation for each page
-        self.grammarlinkssme = Links.objects.filter(language="sme")
-        self.grammarlinksno = Links.objects.filter(language="no")
+        self.grammarlinkssme = Grammarlinks.objects.filter(language="sme")
+        self.grammarlinksno = Grammarlinks.objects.filter(language="no")
 
     def init_hidden(self, topicnumber, num_fields, dialogue, image, wordlist):
         
