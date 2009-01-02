@@ -31,20 +31,6 @@ class Feedback:
             fm.save()
 
 
-    def read_comments(self, commentfile):
-        xmlfile=file(commentfile)
-        tree = _dom.parse(commentfile)        
-
-        comments_el = tree.getElementsByTagName("comments")[0]
-        lang = comments_el.getAttribute("xml:lang")
-
-        for el in comments_el.getElementsByTagName("comment"):
-            level = el.getAttribute("level")
-            for com in el.getElementsByTagName("text"):
-                text = com.firstChild.data
-                print text
-                comment, created = Comment.objects.get_or_create(lang=lang, comment=text, level=level)
-                comment.save()
 
     def set_null(self):
 
