@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 
 from settings import *
-from drill.models import *
+from drill.models import Feedback,Feedbackmsg,Dialect,Comment
 from xml.dom import minidom as _dom
-from optparse import OptionParser
 from django.db.models import Q
 import sys
 import re
 import string
 import codecs
 
+class Entry:
+    pass
 
-
-class Feedback:
+class Feedback_install:
 
     def __init__(self):
         self.tagset = {}
@@ -114,7 +114,7 @@ class Feedback:
         xmlfile=file(infile)
         tree = _dom.parse(infile)
 
-        dialect_el = Dialect.get(dialect=dialect)
+        dialect_el = Dialect.objects.get(dialect=dialect)
 
         stem_messages = {}
         gradation_messages = {}
@@ -417,14 +417,14 @@ class Feedback:
                                     for mood in f.mood:
                                         
                                         self.insert_feedback(cursor,pos,stem,diphthong,gradation,'empty',soggi,'empty','empty',personnumber,tense,mood)
-                                        f2, created = Feedback.objects.get_or_create(stem=stem,\
-                                                                                     diphthong=diphthong,\
-                                                                                     gradation=gradation,\
-                                                                                     soggi=soggi,\
-                                                                                     tense=tense,\
-                                                                                     pos=pos,\
-                                                                                     mood=mood,\
-                                                                                     personnumber=personnumber)
+                                        f2 = Feedback.objects.get(stem=stem,\
+                                                                  diphthong=diphthong,\
+                                                                  gradation=gradation,\
+                                                                  soggi=soggi,\
+                                                                  tense=tense,\
+                                                                  pos=pos,\
+                                                                  mood=mood,\
+                                                                  personnumber=personnumber)
 
                                         if messages:
                                             f2.messages.add(messages[0])
