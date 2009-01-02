@@ -177,13 +177,6 @@ def oahpa(request):
         })
     return render_to_response('oahpa_main.html', c, context_instance=RequestContext(request))
 
-def sahka_main(request):
-
-    c = RequestContext(request, {
-        'gametype': "sahka",
-        })
-    return render_to_response('sahka_main.html', c, context_instance=RequestContext(request))
-
 
 def mgame_n(request):
 
@@ -558,7 +551,7 @@ class Sahkaview:
         self.settings['gametype'] = "sahka"
         if request.session.has_key('dialect'):
             self.settings['dialect'] = request.session['dialect']
-
+			
         # With post data, continue the dialogue
         if request.method == 'POST':
             data = request.POST.copy()
@@ -603,9 +596,9 @@ class Sahkaview:
                 'count': game.count,
                 'score': game.score,
                 'comment': game.comment,
+				'gametype': "sahka",
                 'topicnumber' : game.settings['topicnumber'],
                 'num_fields' : game.num_fields,
-                'gametype' : "sahka",
                 'image' : game.settings['image'],
                 'wordlist' : game.settings['wordlist'],
                 'dialogue' : game.settings['dialogue'],
@@ -623,7 +616,7 @@ class Sahkaview:
 
             c = Context({
                 'settingsform': settings_form,
-                'gametype' : "sahka",
+                'gametype' : "sahka_main",
                 })
             return c
 
