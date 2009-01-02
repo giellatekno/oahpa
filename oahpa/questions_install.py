@@ -368,7 +368,7 @@ class Questions:
                 answer_element = Question.objects.create(string=text,qatype="answer",question=question_element,level=1)
 
                 answer_element.save()                
-                 self.read_elements(ans, answer_element,qtype)
+                self.read_elements(ans, answer_element,qtype)
 
 
     def read_grammar(self, infile):
