@@ -10,11 +10,11 @@ from django.db.models import Q
 import sys
 import re
 import codecs
-from ling import Paradigm, Questions
-from feedback_install import Feedback_install
+from ling import Paradigm
+from feedback_install import Feedback
 from sahka_install import Sahka
 from extra_install import Extra
-from question_install import Questions
+from questions_install import Questions
 from words_install import Words
 
 parser = OptionParser()
@@ -61,7 +61,7 @@ parser.add_option("-i", "--links", dest="linkfile",
 (options, args) = parser.parse_args()
 
 linginfo = Paradigm()
-feedback = Feedback_install()
+feedback = Feedback()
 sahka = Sahka()
 questions = Questions()
 extra = Extra()
@@ -75,42 +75,42 @@ if options.paradigmfile:
 
 if options.questionfile and options.grammarfile:
     questions.read_questions(options.questionfile,options.grammarfile,options.vasta)
-    exit()
+    sys.exit()
 
 if options.grammarfile:
     questions.read_grammar(options.grammarfile)
-    exit()
+    sys.exit()
     
 if options.semtypefile:
     extra.read_semtypes(options.semtypefile)
-    exit()
+    sys.exit()
 
 if options.feedbackfile:
     if options.pos and options.dialect:
         feedback.read_feedback(options.feedbackfile, options.pos, options.dialect, options.messagefile)
-        exit()
+        sys.exit()
 
 if options.numerals:
     linginfo.generate_numerals()
-    exit()
+    sys.exit()
 
 if options.messagefile:
     questions.read_messages(options.messagefile)
-    exit()
+    sys.exit()
 
 if options.commentfile:
     questions.read_comments(options.commentfile)
-    exit()
+    sys.exit()
 
 if options.sahkafile:
     sahka.read_dialogue(options.sahkafile)
-    exit()
+    sys.exit()
 
 if options.linkfile:
     extra.read_address(options.linkfile)
-    exit()
+    sys.exit()
 
 if options.infile:
-    words.install_lexicon(options.infile,options.paradigmfile,options.placenamefile):
-    exit()
+    words.install_lexicon(options.infile,options.paradigmfile,options.placenamefile)
+    sys.exit()
 
