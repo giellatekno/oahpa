@@ -16,9 +16,7 @@ function showPopup(w,h,elid){
    popUp.style.height = h + "px";
  
    if (baseText === null) baseText = popUp.innerHTML;
-   popUp.innerHTML = baseText + 
-      "<div id=\"statusbar\"><button onclick=\"hidePopup(elid);\">Close window<button></div>";
- 
+   popUp.innerHTML = baseText + "<div id=\"statusbar\"><button onclick=\"hidePopup(elid);\">Close window<button></div>"; 
    var sbar = document.getElementById("statusbar");
    sbar.style.marginTop = (parseInt(h)-70) + "px";
    popUp.style.visibility = "visible";
@@ -121,13 +119,3 @@ function setFocus(form){
     }
   }
 } 
-
-function scrollDown() { 
-		 if (document.body.scrollHeight) {
-		 		   window.scrollto(0, document.body.scrollHeight); 
-		  } 
-		  else if (screen.height) {
-		 // IE5 window.scrollto(0, screen.height); 
-	   } 
-} 
-
