@@ -2,6 +2,7 @@
 from settings import *
 from drill.models import *
 from django.db.models import Q
+from xml.dom import minidom as _dom
 import sys
 import re
 import string
@@ -19,9 +20,9 @@ class Words:
         
         lex = tree.getElementsByTagName("lexicon")[0]
         mainlang = lex.getAttribute("xml:lang")
-        if not mainlang:
+        if not mainlang and not placenamefile:
             print "Attribute mainlang not defined in", infile, "stop."
-            exit()
+            sys.exit()
 
         for e in tree.getElementsByTagName("entry"):
             
@@ -59,7 +60,7 @@ class Words:
                 dialect=d.getAttribute("class")
                 if dialect:
                     invd=dialect.lstrip("NOT-")
-                dialects.remove(invd)
+                    dialects.remove(invd)
     
             if e.getElementsByTagName("frequency"):
                 frequency=e.getElementsByTagName("frequency")[0].getAttribute("class")
