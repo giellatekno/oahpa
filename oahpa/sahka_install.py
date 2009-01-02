@@ -3,7 +3,6 @@
 from settings import *
 from drill.models import *
 from xml.dom import minidom as _dom
-from optparse import OptionParser
 from django.db.models import Q
 from django.utils.encoding import force_unicode
 import sys
@@ -47,11 +46,14 @@ class Sahka:
 
         dialogue_name = tree.getElementsByTagName("dialogue")[0].getAttribute("name")
         d, created = Dialogue.objects.get_or_create(name=dialogue_name)
-        d.save()
-
+        
+        #If there exists already a dialogue with that name, delete all the references to it.
+        if not created:
+            d.delete()
+        d.save()        
         topicutts={}
         topicnum=0
-        image="sahka.png"
+        image=""
         for topic in tree.getElementsByTagName("topic"):
             utts = []
             topicname = topic.getAttribute("name")
