@@ -14,7 +14,7 @@
     <question>
       <text>Masa SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	    <grammar pos="Pron"/>
       </element>
       <element id="MAINV">
 	   <grammar tag="V+Ind+Tense+Person-Number"/>
@@ -24,6 +24,7 @@
     <answer> 
       <text>SUBJ MAINV N-ILL</text>
       <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Sg+Ill"/>
 	<sem class="OBJECT"/>
       </element>
     </answer>
@@ -52,6 +53,7 @@
     <answer> 
       <text>SUBJ MAINV OBJ N-ILL</text>
       <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Number+Ill"/>
 	<agreement id="INTERR"/>
 	<sem class="HUMAN"/>
       </element>
@@ -97,10 +99,6 @@
     </question>
     <answer> 
       <text>SUBJ MAINV čoavdagiid N-ILL</text>
-      <element id="SUBJ">
-	<grammar pos="Pron"/>
-	<id>son</id>
-      </element>
       <element game='morfa' id="N-ILL" task="yes">
 	<grammar tag="N+Sg+Ill"/>
 	<sem class="CONTAINER"/>
@@ -132,9 +130,9 @@
       <text>SUBJ MAINV N-ILL</text>
       <element id="SUBJ">
 	<grammar pos="Pron"/>
-	<id>son</id>
       </element>
       <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Number+Ill"/>
 	<agreement id="INTERR"/>
 	<sem class="HUMAN"/>
       </element>
@@ -168,6 +166,7 @@
 	<id>son</id>
       </element>
       <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Number+Ill"/>
       <agreement id="INTERR"/>
 	<sem class="HUMAN"/>
       </element>
@@ -249,6 +248,7 @@
     <answer> 
       <text>SUBJ MAINV N-ILL</text>
       <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Number+Ill"/>
       <agreement id="INTERR"/>
 	<sem class="HUMAN"/>
       </element>
@@ -271,6 +271,7 @@
     <answer> 
       <text>SUBJ MAINV N-ILL</text>
       <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Number+Ill"/>
       <grammar tag="N+Sg+Ill"/>
 	<sem class="EDUCATION"/>
       </element>
@@ -1040,7 +1041,7 @@
       </element>
     </question>
     <answer> 
-      <text>N-ESS heive MAINV</text>
+      <text>N-ESS heive MAINV</text>
       <element game='morfa' id="N-ESS" task="yes">
 	<grammar tag="N+Ess"/>
 	<sem class="TIME-POINT-ESS"/>
