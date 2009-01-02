@@ -11,7 +11,7 @@
 <!-- MAINV must agree with SUBJ in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
 <!-- comment from saara: The mainv-answersubject agreement is implemented otherwise, -->
 <!-- because it is so special. It does not have to be marked explicitely. -->
-  <q>
+  <q id="prs0">
     <qtype>PRS</qtype>
    <question>
       <text>Maid SUBJ MAINV odne</text>
@@ -33,7 +33,7 @@
   </q> 
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
-  <q>
+  <q id="prs1">
     <qtype>PRS</qtype>
     <question>
       <text>Maid SUBJ MAINV odne</text>
@@ -49,8 +49,8 @@
     <answer> 
       <text>Odne SUBJ MAINV</text>
       <element id="SUBJ">
-	<id>son</id>
 	<grammar pos="Pron"/>
+	<id>son</id>
       </element>
       <element game='morfa' id="MAINV" task="yes">
 	<grammar tag="V+Ind+Prs+Person-Number"/>
@@ -62,7 +62,7 @@
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
 
-  <q>
+  <q id="prs2">
     <qtype>PRS</qtype>
     <question>
       <text>Maid NOUN -guovttos bargaba odne</text>
@@ -87,7 +87,7 @@
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
 <!-- MAINV must agree with SUBJ in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
-    <q>
+    <q id="prt0">
     <qtype>PRT</qtype>
    <question>
       <text>Maid SUBJ MAINV ikte</text>
@@ -112,7 +112,7 @@
   </q> 
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
-  <q>
+  <q id="prt1">
     <qtype>PRT</qtype>
     <question>
       <text>Maid SUBJ MAINV ikte</text>
@@ -139,7 +139,7 @@
   </q>
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
-  <q>
+  <q id="prt2">
     <qtype>PRT</qtype>
     <question>
       <text>Maid NOUN -guovttos barggaiga ikte</text>
@@ -165,7 +165,7 @@
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
 <!-- MAINV must agree with SUBJ in the answer. When the question is given in first person form, the answer comes with a second person pronoun, and vice versa. : -->
-  <q>
+  <q id="vcond0">
     <qtype>V-COND</qtype>
     <question>
       <text>Maid SUBJ MAINV luomus</text>
@@ -188,7 +188,7 @@
   </q>
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
-  <q>
+  <q id="vcond1">
     <qtype>V-COND</qtype>
     <question>
       <text>Maid SUBJ MAINV luomus</text>
@@ -217,7 +217,7 @@
 
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
-  <q>
+  <q id="vcond2">
     <qtype>V-COND</qtype>
     <question>
       <text>Maid NOUN -guovttos barggašeigga luomus</text>
@@ -241,7 +241,7 @@
 
 <!--- ==========  Potential , only for Morfa =========   -->
 
-<q game="morfa">
+<q  id="vpot0">
     <qtype>V-POT</qtype>
   <question>
     <text>MAINV go SUBJ</text>
@@ -263,7 +263,7 @@
     </answer>
   </q>
 
-<q game="morfa">
+<q  id="vpot1">
     <qtype>V-POT</qtype>
   <question>
     <text>MAINV go SUBJ</text>
@@ -288,7 +288,7 @@
 
 <!--- ==========  Imperative, all of them only for Morfa =========   -->
 
-  <q game="morfa">
+  <q id="vimprt0">
     <qtype>V-IMPRT</qtype>
    <question>
       <text>Mun áiggošin MAINV</text>
@@ -305,7 +305,7 @@
     </answer>
   </q>
 
-  <q game="morfa">
+  <q  id="vimprt1">
     <qtype>V-IMPRT</qtype>
    <question>
       <text>Moai áiggošeimme MAINV</text>
@@ -322,7 +322,7 @@
     </answer>
   </q>
 
-  <q game="morfa">
+  <q id="vimprt2">
     <qtype>V-IMPRT</qtype>
    <question>
       <text>Mii áiggošeimmet MAINV</text>
@@ -339,7 +339,7 @@
     </answer>
   </q>
 
-  <q game="morfa">
+  <q  id="vimprt3">
     <qtype>V-IMPRT</qtype>
    <question>
       <text>Sihke don ja mun áiggošeimme MAINV</text>
@@ -356,7 +356,7 @@
     </answer>
   </q>
 
-  <q game="morfa">
+  <q  id="vimprt4">
     <qtype>V-IMPRT</qtype>
    <question>
       <text>Sihke don ja mii áiggošeimmet MAINV</text>
@@ -377,7 +377,7 @@
 
 
 <!-- Both Morfa and QA: -->
-  <q>
+  <q id="goprt0">
     <qtype>PRT</qtype>
     <question>
       <text>MAINV go SUBJ ikte</text>
@@ -420,7 +420,7 @@
   </q>
 
 <!-- Both Morfa and QA: -->
-  <q>
+  <q  id="goprt1">
     <qtype>PRS</qtype>
     <question>
       <text>MAINV go SUBJ odne</text>
@@ -463,7 +463,7 @@
   </q>
 
 <!-- Both Morfa and QA: -->
-<q>
+<q id="gocond0">
   <qtype>V-COND</qtype>
   <question>
     <text>MAINV go SUBJ luomus</text>
