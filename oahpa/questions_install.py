@@ -301,9 +301,9 @@ class Questions:
 
         self.read_grammar(grammarfile)
 
-        gametype="morfa"
         qs = tree.getElementsByTagName("questions")[0]
         gametype = qs.getAttribute("game")
+        if not gametype: gametype="morfa"
 
         print "Created questions:"
         for q in tree.getElementsByTagName("q"):
