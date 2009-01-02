@@ -12,7 +12,7 @@ import codecs
 class Entry:
     pass
 
-class Feedback_install:
+class Feedback:
 
     def __init__(self):
         self.tagset = {}
