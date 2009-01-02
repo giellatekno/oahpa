@@ -1,45 +1,294 @@
 !!!Maintenance
 
-Much to say here, but for now only notes on first-aid.
+This document contains the basic instructions for updating the content
+of the games. Technical maintenance is described in separate
+document.
 
-!!Updating the localisation
+All the data is stored in xml-files which are installed to mysql
+database. Oahpa-programs are developed using Python Web framework [Django|http://www.djangoproject.com/]
+Oahpa web pages are basic html, which is enriched with templates and information
+retrieved from the database.
 
-In order to create new strings:
+Everyday maintentance includes installing new information, removing
+and updating old information and editing the html-code.
 
-Go to victorio:
+!!Mysql 
 
+In general, the database does not have to be directly accessed, but
+sometimes it is necessary. The database tables created by Django may
+be updated, removed and so on using mysql directly. The name of the
+database is oahpa, username and password are available from .. 
+
+Sometimes, there may be a problem with the mysqld (a clear indication
+of a problem is that the games are not working at all). It may be that
+mysqld has stopped working. Start it again:
+{{{
+sudo /etc/init.d/mysqld start
+}}}
+
+
+!!Settings
+
+First of all, add the django/bin directory to your PATH and the
+location of python files to PYTHONPATH in .bashrc or .profile.
+{{{
+check this out
+}}}
+
+!!Updating the html
+
+!Overall look
+
+*CSS-settings reside in ped/oahpa/media/css/oahpa.css
+*Mainpage __oahpa.no__ is defined in ped/oahpa/drill/templates/oahpa_main.html
+*Basic look for all the games (divs, menubars) are given in file ped/oahpa/templates/oahpa.html
+*The file game.html contains the basic functionality for all the games.
+*Morhpology games are controlled by the file mgame.html.
+
+In addition, it is possible to alter the pages of individual games by
+editing the files
+
+ped/oahpa/drill/templates/mgame_n.html (Morfa for nouns)
+ped/oahpa/drill/templates/mgame_l.html (Morfa numerals)
+ped/oahpa/drill/templates/mgame_a.html (Morfa for adjectives)
+ped/oahpa/drill/templates/mgame_v.html (Morfa for verbs)
+ped/oahpa/drill/templates/quizz.html (Leksa common nouns)
+ped/oahpa/drill/templates/quizz_n.html (Leksa placenames)
+ped/oahpa/drill/templates/num.html (Numra cardinal)
+ped/oahpa/drill/templates/num_ord.html (Numra ordinals)
+ped/oahpa/drill/templates/vasta.html
+ped/oahpa/drill/templates/sahka.html
+
+Game pages involve definitions from several html-pages. For example, S-MORFA: mgame_x.html, mgame.html, game.html and oahpa.html. 
+
+The files contain template tags such as:
+{{{
+{% block navbar %}
+..
+{% endblock %}
+}}}
+
+They enable several pages to be generated from one source file. In
+addition, some variables are inside double braces. However, the rest
+of the page is plain html and it may be edited as any html-file. If there is an error
+you may always return to the previous svn-version. Remember to test.
+
+For example, if you want to update a text in English, write inside the trans-tags:
+{{{
+{% trans ".." %}
+}}}
+
+!Javascripts
+Despite couple of exceptions, the Javascripts used are given in file:
+{{{
+ped/oahpa/media/js/oahpa.js
+}}}
+In addition, there are couple of other scripts, one for fixing the
+png-images in earlier IE versions using pngfix.js. Another two
+tooltip2.js and prototype.js are used for the translation tooltip.
+
+!!FSTs
+Oahpa is dependent on linguistic resources which are located in
+/opt/smi/sme/bin/. Compile the new versions of the fsts when needed.
+{{{
+sme.fst
+sme-num.fst
+isme-norm.fst
+isme-GG.restr.fst
+isme-KJ.restr.fst
+}}}
+
+
+!!Updating the database
+
+The script install.py is used for updating the database. First, cd to
+the ped/oahpa directory and then test the script.
+{{{
+cd ped/oahpa/
+python install.py -h
+}}}
+
+Changes in the database are visible in the interface straight
+away. Running a same installation script several times is not
+harmful. The same command that is used for installing the information
+can be used for updating.
+
+
+!Lexicons
+
+Information of individual words such as lemmas, stem information,
+semantic classes and source information is added or updated using command:
+{{{
+python install.py -f ../sme/xml/nouns.xml
+}}}
+Forms and tags are updated when the tagfile and paradigmfile are given
+as well:
+{{{
+python install.py -f ../sme/xml/nouns.xml -p ../sme/src/paradigms.txt -t ../sme/src/tags.txt
+}}}
+This command generates paradigm for all the words in nouns.xml and
+updates forms for both dialects: KJ and GG. Running the script may
+take a while. If you have a list of words you want to add to the
+database, it is possible create a temporary file for them so that you
+do not need to generate paradigms for all the words. Remember to add
+the words to the lexicon file for future updates.
+
+To add the new words to the semantic supersets, update the semantic
+classes [Semantic classes|maintenance.html#Semantic+classes].
+
+Both Sami and Norwegian lexicons are installed using the same command. The
+language information is extracted from the xml-file.
+
+!Numerals
+Numerals are generated and installed using fst. Command:
+{{{
+install.py -n
+}}}
+
+!Placenames
+Placenames stored in sme/xml/propernouns.xml are installed differently
+than the other lexicons, since the Norwegian translations are
+implied. Use option "-l" for them.
+{{{
+install.py -l -f ../sme/xml/propernouns.xml
+}}}
+
+!Semantic classes
+
+The grouping of semantic classes is defined in
+ped/sme/xml/semantic_sets.xml. Database is updated by the command:
+{{{
+python install.py -s ../sme/xml/semantic_sets.xml
+}}}
+The semantic set information is used among others in Leksa. To update
+the menu that appears in Leksa main page, edit the variable
+{{SEMTYPE_CHOICES}} in ped/oahpa/forms.py:
+{{{
+SEMTYPE_CHOICES = (
+    ('FAMILY', _('family')),
+    ('PROFESSION', _('profession')),
+    ...
+)
+}}}
+The string in small letters is the string that appears in the menu in
+English version. To translate for the other languages, follow the
+steps in [Localisation|mainenance.html#Localisation]. In addition, the changes in {{forms.py}}
+require that the server is restarted (sudo httpd restart). 
+
+!!Updating Sahka
+
+Sahka contains pictures which have to be synchronized with the
+contents of the database, so the whole process is explained here in
+separate section.
+
+!Updating the database
+Create the dialogue file and store it e.g. to
+ped/sme/xml/dialoguefile.xml. Give the dialogue a unique name in the xml-structure, such as:
+{{{
+<dialogue name="firstmeeting_man">
+}}}
+Install it to database using command:
 {{{
 cd ped/oahpa
-/home/saara/django-trunk/django/bin/make-messages.py -a
-   ... then 
-cvs up 
-   ... to locate the M files. Thereafter check them in:
-cvs ci -m "new generated files" locale/fi/LC_MESSAGES/django.po
+python install.py -k ../sme/xml/dialoguefile.xml
+}}}
+The script will give errors on links that do not point to an utterance
+and some information of wordsets and such.
+
+When you want to update an existing dialogue, use the same command:
+{{{
+cd ped/oahpa
+python install.py -k ../sme/xml/dialoguefile.xml
+}}}
+It will first remove the old dialogue and then install it as it was new. Do not
+change the dialogue name if you are updating an existing one.
+
+!Images
+Preferably in jpg-format. Collect the images and scale them to size,
+where width of the image is 150-180px (perhaps we should decide which
+size). Height of the picture can be anything. Internet Exporer
+requires this size, the other browsers will work regardless of the
+size of the image.
+
+Store the images to directory ped/oahpa/media/img/, with the same name
+as they are specified in the dialoguefile.xml. In dialoguefile.xml,
+use only the name of the image, not the full path.
+
+If you are installing a new game, update the file
+ped/oahpa/drill/templates/sahka.html. The file contains a table where
+all the images are stored as links to new dialogues:
+{{{
+<td>
+<a href="javascript:submitSahka('firstmeeting_main');">
+<img width="100" src="/oahpa/media/man.jpg"/>
+<p>{% trans "Meeting with Hansa" %}</p></a>
+</td>
+}}}
+Copy one such td, to a suitable place inside the table, specify a
+width to the image that fits to the page. Remember to change the name
+of the file, and finally, add the name of the dialogue to the javascript
+section. In the example above the dialogue name is "firstmeeting_man."
+
+!CG-script
+
+Copy the file sme-ped.cg3 to /opt/smi/sme/bin.
+
+
+!!Localisation
+
+Translations for the texts in the interface are provided in files:
+
+{{{
+ped/oahpa/locale/fi/LC_MESSAGES/django.po
+ped/oahpa/locale/sme/LC_MESSAGES/django.po
+ped/oahpa/locale/no/LC_MESSAGES/django.po
+ped/oahpa/locale/en/LC_MESSAGES/django.po
+}}}
+
+The English file is needed for the names and strings that contain
+Unicode. The English texts in the html-pages should be ascii.
+
+Whenever the texts in the page are updated, the translations need to be checked and updated as well. 
+{{{
+cd ped/oahpa
+django-admin.py makemessages -a
+svn ci -m "new generated files" locale/fi/LC_MESSAGES/django.po
    ... etc. for the other files. 
 }}}
 
-After that, we work on the respective django.po files, and check them in again.
+After that, work on the respective django.po files, and check them
+in again. Search for word "#fuzzy" from django.po. It means that the
+English content has changed and the system tries to guess the correct
+translation. Check the translation and remove all the lines that
+contain "#fuzzy", otherwise the translation does not work.
+
+After fixing the files update the official directory and compile the messages.
+{{{
+cd ped/oahpa/
+svn up
+django-admin.py compilemessages
+}}}
 
 
 
-!!mysqld down?
+!!Restarting the httpd server
 
-The reason might be a memory leak. Check that on victorio by writing:
+Updates to the code require restart of the httpd-server. Sometimes
+updates to the localisation require that too. The restart is otherwise
+harmless, but may distrub someone who is playing the came (although
+that is not very probable).
 
-{{{ps aux | grep http}}}
-
-If the result indicates memory use too close to 100, this is a clear problem indication. The answer is to restart the apache web server, and thereafter, if need, to restart mysql. 
-
-
-The magic commands are (you must have root rights):
-
+Restarting the server (requires sudo rights)
 {{{
 sudo /etc/init.d/httpd restart
 }}}
 
-And then, if needed, 
 
-{{{
-sudo /etc/init.d/mysqld start
-}}}
+Earlier, there was a memory leak problem, which should not be among us
+anymore. However if victorio is very slow, check the memory by writing:
+{{{ps aux | grep http}}}
+
+If the result indicates memory use too close to 100, this is a clear
+problem indication. The answer is to restart the apache web server,
+and thereafter, if need, to [restart mysqld|maintenance.html#Mysql].
 
