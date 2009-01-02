@@ -184,7 +184,7 @@ class Topic(models.Model):
 
 
 ######### EXTRA
-class Links(models.Model):
+class Grammarlinks(models.Model):
     name = models.CharField(max_length=200,blank=True,null=True)
     address = models.CharField(max_length=800,blank=True,null=True)
     language = models.CharField(max_length=5,blank=True,null=True)
