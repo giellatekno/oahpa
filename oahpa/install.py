@@ -56,9 +56,6 @@ parser.add_option("-t", "--tagfile", dest="tagfile",
                   help="List of tags and tagsets")
 parser.add_option("-u", "--delete", dest="questionid",
                   help="delete question using id or text")
-parser.add_option("-v", "--vasta", dest="vasta",
-                  action="store_true", default=False,
-                  help="Questions are for vasta")
 
 
 (options, args) = parser.parse_args()
@@ -81,7 +78,7 @@ if options.questionid:
     sys.exit()
     
 if options.questionfile and options.grammarfile:
-    questions.read_questions(options.questionfile,options.grammarfile,options.vasta)
+    questions.read_questions(options.questionfile,options.grammarfile)
     sys.exit()
 
 if options.grammarfile:
@@ -106,7 +103,7 @@ if options.messagefile:
     sys.exit()
 
 if options.commentfile:
-    questions.read_comments(options.commentfile)
+    extra.read_comments(options.commentfile)
     sys.exit()
 
 if options.sahkafile:
