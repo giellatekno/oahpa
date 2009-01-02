@@ -19,44 +19,47 @@ from words_install import Words
 
 parser = OptionParser()
 
-parser.add_option("-f", "--file", dest="infile",
-                  help="lexicon file name")
-parser.add_option("-p", "--pos", dest="pos",
-                  help="Pos info")
 parser.add_option("-b", "--db", dest="add_db",
                   action="store_true", default=False,
                   help="Used for adding tag infoformation to database")
-parser.add_option("-t", "--tagfile", dest="tagfile",
-                  help="List of tags and tagsets")
-parser.add_option("-r", "--paradigmfile", dest="paradigmfile",
-                  help="Generate paradigms")
-parser.add_option("-q", "--questionfile", dest="questionfile",
-                  help="XML-file that contains questions")
-parser.add_option("-g", "--grammarfile", dest="grammarfile",
-                  help="XML-file for grammar defaults for questions")
-parser.add_option("-v", "--vasta", dest="vasta",
-                  action="store_true", default=False,
-                  help="Questions are for vasta")
-parser.add_option("-e", "--feedbackfile", dest="feedbackfile",
-                  help="XML-file for feedback")
-parser.add_option("-m", "--messagefile", dest="messagefile",
-                  help="XML-file for feedback messages")
+parser.add_option("-c", "--comments", dest="commentfile",
+                  help="XML-file for comments")
 parser.add_option("-d", "--dialect", dest="dialect",
                   help="Dialect used in feedback messages")
-parser.add_option("-s", "--sem", dest="semtypefile",
-                  help="XML-file semantic subclasses")
-parser.add_option("-n", "--num", dest="numerals",
-                  action="store_true", default=False,
-                  help="Generate numerals")
+parser.add_option("-e", "--feedbackfile", dest="feedbackfile",
+                  help="XML-file for feedback")
+parser.add_option("-f", "--file", dest="infile",
+                  help="lexicon file name")
+parser.add_option("-g", "--grammarfile", dest="grammarfile",
+                  help="XML-file for grammar defaults for questions")
+parser.add_option("-i", "--links", dest="linkfile",
+                  help="Text file for grammarlinks")
+parser.add_option("-k", "--sahka", dest="sahkafile",
+                  help="XML-file for Dialogues")
 parser.add_option("-l", "--place", dest="placenamefile",
                   action="store_true", default=False,
                   help="If placenames")
-parser.add_option("-c", "--comments", dest="commentfile",
-                  help="XML-file for comments")
-parser.add_option("-k", "--sahka", dest="sahkafile",
-                  help="XML-file for Dialogues")
-parser.add_option("-i", "--links", dest="linkfile",
-                  help="Text file for grammarlinks")
+parser.add_option("-m", "--messagefile", dest="messagefile",
+                  help="XML-file for feedback messages")
+parser.add_option("-n", "--num", dest="numerals",
+                  action="store_true", default=False,
+                  help="Generate numerals")
+parser.add_option("-p", "--pos", dest="pos",
+                  help="Pos info")
+parser.add_option("-q", "--questionfile", dest="questionfile",
+                  help="XML-file that contains questions")
+parser.add_option("-r", "--paradigmfile", dest="paradigmfile",
+                  help="Generate paradigms")
+parser.add_option("-s", "--sem", dest="semtypefile",
+                  help="XML-file semantic subclasses")
+parser.add_option("-t", "--tagfile", dest="tagfile",
+                  help="List of tags and tagsets")
+parser.add_option("-u", "--delete", dest="questionid",
+                  help="delete question using id or text")
+parser.add_option("-v", "--vasta", dest="vasta",
+                  action="store_true", default=False,
+                  help="Questions are for vasta")
+
 
 (options, args) = parser.parse_args()
 
@@ -73,6 +76,10 @@ if options.tagfile:
 if options.paradigmfile:
     linginfo.read_paradigms(options.paradigmfile, options.tagfile, options.add_db)
 
+if options.questionid:
+    questions.delete_question(options.questionid)
+    sys.exit()
+    
 if options.questionfile and options.grammarfile:
     questions.read_questions(options.questionfile,options.grammarfile,options.vasta)
     sys.exit()
