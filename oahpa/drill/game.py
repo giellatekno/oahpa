@@ -355,7 +355,7 @@ class NumGame(Game):
             language=self.settings['language']
         numstring =""
         # Add generator call here
-        #fstdir="/Users/saara/gt-cvs/" + language + "/bin"        
+        #fstdir="/Users/saara/gt/" + language + "/bin"        
         #lookup ="/Users/saara/bin/lookup"
         
         fstdir="/opt/smi/" + language + "/bin"
@@ -440,8 +440,8 @@ class QuizzGame(Game):
                                                        Q(geography__in=geography) & \
                                                        Q(source__name__in=books))[randint(0,w_count-1)]
                 
+
             word_id=random_word.id
-            #print word_id
             translations=random_word.translations.all()
             
             if translations:
@@ -452,30 +452,37 @@ class QuizzGame(Game):
     def create_form(self, db_info, n, data=None):
 
         dialect = self.settings['dialect']
-        
+        tr_lemmas = []
+
         word_id = db_info['word_id']
         if self.settings['transtype'] == "smenob":
            word=Word.objects.get(Q(id=word_id))
-           translations=word.translations.all()
+           synwords = Word.objects.filter(lemma=word.lemma)
+            # find synonymous words and pick them to the translations
+           for s in synwords:
+               translations=s.translations.all()
+               trs = translations.values_list('lemma',flat=True)
+               for t in trs:
+                   tr_lemmas.append(t)
         else:
-            #print "jee", word_id
             word=Wordnob.objects.get(id=word_id)
-            translations=word.translations.all()
+            # find synonymous words and pick them to the translations
+            synwords = Wordnob.objects.filter(lemma=word.lemma)
+            for s in synwords:
+                translations=s.translations.all()
+                trs = translations.values_list('lemma',flat=True)
+                for t in trs:
+                    tr_lemmas.append(t)
 
         correct = ""
         if self.settings['transtype'] == "nobsme":            
-            dial_trans = translations.filter(dialects__dialect=dialect)
+            dial_trans = word.translations.filter(dialects__dialect=dialect)
             if dial_trans:
                 correct = dial_trans[0].lemma
 
-        if not correct: correct = translations[0].lemma
+        if not correct: correct = word.translations.all()[0].lemma
         question_list=[]
-
-        if not translations:
-            return HttpResponse("No forms found.")        
-
-        tr_lemmas = translations.values_list('lemma',flat=True)
-
+        
         form = (QuizzQuestion(self.settings['transtype'], word, correct, tr_lemmas, question_list, db_info['userans'], db_info['correct'], data, prefix=n))
 
         return form, word.id
