@@ -2,6 +2,13 @@
 {% load i18n %}
 
 {% block addcss %}
+<script type="text/javascript">
+function submitSahka(dia) {
+   document.gameform.dialogue.value=dia;
+   document.gameform.submit();
+   return True;
+}
+</script>
 <style type="text/css">
 
 html {
@@ -82,6 +89,9 @@ margin-right:11px;
 &nbsp;</br>
 
 <a href="/oahpa/sahka/"><img width="120" height="120" border="0" src="/oahpa/media/sahka_big.png"/></a><br/>
+<p class="bigheader">SAHKA</p>
+<p class="header">{% trans "Select a dialogue" %}</b>
+
 {% endif %}
 
 {% if image %}
@@ -105,33 +115,44 @@ margin-right:11px;
 
 <table width="700">
 <tr>
-<td><font class="bigheader">SAHKA</font> &nbsp;&nbsp;{% trans "Select a dialogue" %}</td>
-</tr>
-<tr>
-<table>
+<table cellpadding="10px">
 <tr><td>
 <input type="hidden" name="dialogue" id="id_dialogue" />
 <input type="hidden" name="settings" id="settings" />
-<a href="javascript:document.gameform.dialogue.value='firstmeeting';document.gameform.submit();"><img width="100" height="240" src="/oahpa/media/woman001.jpg"/></a>
+<a href="javascript:submitSahka('firstmeeting');">
+<img border="1px" width="100" height="240" src="/oahpa/media/woman001.jpg"/>
+<p>{% trans "Meeting with Kare" %}</p></a>
 </td><td>
-<a href="javascript:document.gameform.dialogue.value='firstmeeting_man';document.gameform.submit();"><img width="100" height="240" src="/oahpa/media/man.jpg"/></a>
+<a href="javascript:submitSahka('firstmeeting_man');">
+<img border="1px" width="100" height="240" src="/oahpa/media/man.jpg"/>
+<p>{% trans "Meeting with Hansa" %}</p></a>
 </td><td>
-<a href="javascript:document.gameform.dialogue.value='firstmeeting_girl';document.gameform.submit();"><img width="100" height="240" src="/oahpa/media/girl001.jpg"/></a>
+<a href="javascript:submitSahka('firstmeeting_girl');">
+<img border="1px" width="100" height="240" src="/oahpa/media/girl001.jpg"/>
+<p>{% trans "Meeting with Lisa" %}</p></a>
 </td><td>
-<a href="javascript:document.gameform.dialogue.value='firstmeeting_boy';document.gameform.submit();"><img width="100" height="240" src="/oahpa/media/boy.jpg"/></a>
+<a href="javascript:submitSahka('firstmeeting_boy');">
+<img border="1px" width="100" height="240" src="/oahpa/media/boy.jpg"/>
+<p>{% trans "Meeting with Piera" %}</p></a>
 </td>
 </tr>
 </table>
-<table>
+<table cellpadding="10px">
 <tr>
 <td>
-<a href="javascript:document.gameform.dialogue.value='visit';document.gameform.submit();"><img width="150" height="200" src="/oahpa/media/visit001.jpg"/></a>
+<a href="javascript:submitSahka('visit');">
+<img border="1px" width="150" height="200" src="/oahpa/media/visit001.jpg"/>
+<p>{% trans "Visit" %}</p></a>
 </td>
 <td>
-<a href="javascript:document.gameform.dialogue.value='grocery';document.gameform.submit();"><img width="200" height="150" src="/oahpa/media/grocery.jpg"/></a>
+<a href="javascript:submitSahka('grocery');">
+<img border="1px" width="200" height="150" src="/oahpa/media/grocery.jpg"/>
+<p>{% trans "Grocery" %}</p></a>
 </td>
 <td>
-<a href="javascript:document.gameform.dialogue.value='shopadj';document.gameform.submit();"><img width="100" height="200" src="/oahpa/media/2scarves.jpg"/></a>
+<a href="javascript:submitSahka('shopadj');">
+<img border="1px" width="100" height="200" src="/oahpa/media/2scarves.jpg"/>
+<p>{% trans "Shop" %}</p></a>
 </td>
 </tr>
 </table>
@@ -170,5 +191,6 @@ margin-right:11px;
 
 </tr>
 {% endif %}
+
 {% endblock %}
 
