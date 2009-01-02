@@ -177,14 +177,20 @@
 </table>
 </td>
 {% ifnotequal gametype "sahka" %}
+{% ifnotequal gametype "sahka_main" %}
 <td width="30%" valign="top">
 <table class="instructions" cellpadding="8px">
 <tr><td>
 {% endifnotequal %}
+{% endifnotequal %}
+
 {% block gamename %}{% endblock %}<br/>
 {% block instructions %}{% endblock %}
+
 {% ifnotequal gametype "sahka" %}
+{% ifnotequal gametype "sahka_main" %}
 </td></tr></table></td>
+{% endifnotequal %}
 {% endifnotequal %}
 </tr>
 </table>
