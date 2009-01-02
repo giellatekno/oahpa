@@ -175,6 +175,31 @@ English version. To translate for the other languages, follow the
 steps in [Localisation|mainenance.html#Localisation]. In addition, the changes in {{forms.py}}
 require that the server is restarted (sudo httpd restart). 
 
+!!Updating questions
+C-Morfa and Vasta share the same mechanism for installing the
+questions. Questions are defined e.g. in
+sme/xml/questions_vasta.xml. In addition some defaults for certain
+elements (such as subject) are defined in
+sme/xml/grammar_defaults.xml. Command for updating the questions:
+{{{
+python install.py -g ../sme/xml/grammar_defaults.xml -q ../sme/xml/questions_nouns.xml
+}}}
+
+Everything inside the question xml-file may be changed and the database
+will be updated during the next. With one exception: if a question is
+removed and there is no new question with the same id, it has to be
+specifically deleted using command: 
+{{{
+python install.py -u <question_id>
+.. or by using the question text
+python install.py -u "Maid SUBJ MAINV"
+}}}
+Of course the latter command will delete all the questions with that
+string. However, the deletion with the string may be useful if the qid
+was forgotten. Rerun of the installation script for the question file
+will restore the accidentally deleted questions.
+
+
 !!Updating Sahka
 
 Sahka contains pictures which have to be synchronized with the
