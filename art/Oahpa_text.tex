@@ -1,11 +1,12 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage{natbib}
 \usepackage{graphics}
+
 %\usepackage{linguex}
 \usepackage[utf8x]{inputenc}
 \usepackage{ucs} %sami letters\renewcommand
 %{\refdash}{}
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 \usepackage{multirow}
 \usepackage{tabularx} %specified width
 \begin{document}
@@ -28,6 +29,7 @@ This paper presents how a set of linguistic resources (finite state transducers,
 %We wanted to use our linguistic resources for Sámi to make drills for students learning the language. 
 We have developed five programs for North Sámi, which is the language with the best resources. In the next section I describe the linguistic resources we already had and the pedagogical idea behind the programs. In the third section I explain the different modules made for the pedagogical programs. The fourth section deals with the design of each program. In the final section I sketch our future plans.
 
+%sh: is this relevant?
 We use the abbreviations for the Sámi languages in accordance with the ISO 639-2 standard for language codes. The code is \textit{sme} for North Sámi. 
 
 The work has been conducted as a teamwork. Saara Huhmarniemi is the programmer, and together with her Trond Trosterud and I have planned the modules and designed the programs. Biret Ánne Bals Baal and I have worked with the lexicon and made question matrices. I have especially worked with the feedback and the dialogues, and written documentation and grammar. Kjellaug Isaksen has made the drawings. The work is in the final stage now, and the programs will be made public in the beginning of February 2009. 
@@ -44,18 +46,18 @@ Using a morphological transducer one may analyse and generate every theoreticall
 
 The existing language resources, which we have used in the pedagogical programs, are the following:
 \begin{itemize}
-\item a program for tokenization and processing (perl).
+\item a program for tokenization and processing (perl). 
+%sh: a preprocessor implemented in Perl. Preprocessing includes sentence boundary detection and tokenization. The preprocessor recognizes abbreviations as well as inflected multi-word expressions.
 \item a morphological analyser/generator with finite state transducers, compiled with the Xerox compiler xfst. The system consists of a lexical transducer for morphology, lexc, and a phonological transducer, twolc. The lexicon contains 43.000 proper nouns, 31.000 common nouns, 14.000 verbs, 5.500 adjectives and 4.000 words of other word classes. One can compile two different variants of the analyser/generator -- \texttt{sme.fst/isme.fst} which is very tolerant, with morphological patterns based upon actual usage, and \texttt{sme-norm.fst/isme-norm.fst} which is normative and a base for the North Sámi speller.  
 \item an interface to the morphological analyser/generator, lookup. 
-\item a morphological disambiguator based on constant grammar with manually written rule sets (vislcg3). 
+\item a morphological disambiguator based on constraint grammar with manually written rule sets (vislcg3). 
 \item syntactic analyser which adds grammatical function and dependency (vislcg3). The dependency file is not finished yet.
 \item number word generator, made with finite state transducers.
 \end{itemize}
 
 The Xerox tools are documented in \citep{BeesleyKarttunen}. 
 
-Vislcg3 is a new generation version of the open source vislcg. It is a constraint grammar (CG) parser; a program that selects the correct analysis in case of homonymy. CG was launched by Fred Karlsson in the early 90'ies (Karlsson et.al.1995). I have explained how it works in \ref{sentencefeedback}
-.
+Vislcg3 is a new generation version of the open source vislcg. It is a constraint grammar (CG) parser; a program that selects the correct analysis in case of homonymy. CG was launched by Fred Karlsson in the early 90'ies (Karlsson et.al.1995). I have explained how it works in \ref{sentencefeedback}.
 
 Text analyser, word generator, paradigm generator and number word generator is accessible on the Inernet: \textit{http://giellatekno.uit.no}
 
@@ -67,13 +69,13 @@ With the analyser we had the possibility of making an intelligent language tutor
 We decided that most important for the pedagogical programs was that:
 
 \begin{itemize}
-\item they should be very flexible: Teacher or student may choose exactly what they want to train, and adapt it to each student's linguistic level 
+\item they should be very flexible: Teacher or student may choose exactly what they want to train, and adapt it to each student's linguistic skills 
 \item one should be able to restrict the vocabulary to particular textbooks, so that it is easy to integrate the tools to the instruction
 \item the student may choose between the main dialects for the task
 \item the student should get immediately feedback about errors
 \item the student should get translation and grammar help easily
 \item the student and the teacher should be able to work with different topics 
-\item the programs should be accessible free for everybody via the Internet, without installing new programs in the computer
+\item the programs should be accessible freely via Internet, without installing new programs in the computer
 \end{itemize}
 
 Sámi is a language with complex morphology, and it demands a lot of practising before the student reaches necessary skills. But Sámi is a minority language and it is a common situation that the person learning Sámi does not get enough opportunities to practise the language in a natural way. Because of that programs accessable on the Internet may be a useful supplement to the instruction given at school or in the university. We also wanted to make a dialogue program about everyday topics. The goal is to exercise verb inflection, choosing the correct case and learn more words. 
@@ -85,6 +87,17 @@ Because North Sámi is used in three countries, we want the student to be able t
 
 
 \section{Modules}
+
+%sh: I just added the sections here, put them anywhere you like.
+\subsection{Web interface}
+The Web interface is implemented using Python based Web framework Django (http://www.djangoproject.com/). Almost any other commonly used Web framework would have been suitable for the project. However, Python-based framework was chosen since Oahpa is not restricted to just generating html-pages from static resources. On the contrary, the pages are fairly dynamic and require access to the language technology resources as well as additional programming e.g. in sentence generator. 
+
+Django provides also some useful facilities that are included in the framework. For example, administrators are provided direct access to the database where they can review the information in different formats. In Oahpa, we use this facility for storing feedback and examining the input from the users who are playing the game. Each user input is stored to the log together with the correct answer and the reaction that was provided by the game. These logs are for the time being used only for improving the game. In the future, there are plans to provide users information on how their answers have improved, what kind of errors are most typical and so on. In addition, the log information will be useful for researchers. 
+
+The Web framework is built on the top of a Mysql database. The information for the games is specified in XML-documents, from where it is extracted and stored to the Mysql database. The database allows effective processing of database queries which is crucial for real-time applications. Database contains also information outside the XML-files, such as all the inflectional forms for words in the pedagogical lexicons. The basic games, Morfa, Morfa-C and Leksa exploit words from quite restricted domains. Therefore it makes sense to generate the wordforms beforehand instead of using quite heavy machinery of wordform generator together with full lexicon. In addition, generating the wordforms and storing them to the database provides better control over the inflected word forms and e.g. different dialectal forms and thus, more stable application.
+
+It should be noted taht Vasta and the dialogue game Sahka use the grammatical analyser on the fly, exploiting full lexicons. This allows the user's answer to contain words that are not restricted to the pedagogical lexicon.
+
 
 \subsection{Pedagogical lexicon}
 
@@ -99,7 +112,7 @@ The main lexicon consists of the full Sámi vocabulary, the inflectional and der
 \end{center}
 \end{figure}
 
-The main lexicon is used for analysing the student’s input, but we wanted a pedagogical lexicon for more information about the lemmas, and as a base for the quiz and grammar tasks. The lexicon should be relevant according to the education in Sámi in schools and the university. Therefore we made a special pedagogical lexicon in xml-format. 
+The main lexicon is used for analysing the student's input, but we wanted a pedagogical lexicon for more information about the lemmas, and as a base for the quiz and grammar tasks. The lexicon should be relevant according to the education in Sámi in schools and the university. Therefore we made a special pedagogical lexicon in xml-format. 
 
 I collected the lemmas, which were used in the textbooks and added Norwegian translation, information about semantic set, dialect and inflection. I also added information about source - which textbooks the lemma is used in. Cf. section \ref{set} for a discussion on our semantic sets. The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives. There is also a small lexicon for pronouns and numbers. In Figure \ref{nounlex} is an example of an entry in the nounlexicon. \\
 
@@ -118,8 +131,8 @@ Some lemmas are homonomies in the base form. Since they have different meanings,
 %It works well as long as working with semantic classes, but if the user chooses "all" or a book, then he will not understand why the program doesn't accept his suggestions, e.g. girdi.
 
 \subsection{Sentence generator}\label{set}
-In order to be able to make a large number of potential tasks, we made a sentence generator. With this we can easily offer variation to the user, instead of tailoring every task with ready-made questions. The generator consists of question and answer matrices with variables representing sets of lemmas in the lexicon, as shown in Figure \ref{questionv}.
-
+In order to be able to create a large number of potential tasks, we implemented a sentence generator. With the generator we can easily offer variation to the user, instead of tailoring every task with ready-made questions. The sentence generator is used both for generating questions for Morfa-C and Vasta and answer templates for Morfa-C.
+The generator on sentence matrices as shown in Figure \ref{questionv}.
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/question_vasta.png}}\\
@@ -128,10 +141,14 @@ In order to be able to make a large number of potential tasks, we made a sentenc
 \end{center}
 \end{figure}
 
-The semantic sets are used both for the word quiz (the game called \textit{Leksa}) and the questions in the games \textit{Morfa-C} (morphology-in-context) and \textit{Vasta} (QA drill). There are ordinary sets and supersets, and one 
+The question matrix contains two types of elements: constants and grammatical units. The constants such as ("go" and "ikte") in the Figure \ref{questionv} are present  in each generated sentence as such, whereas grammatical units allow more variation. Both the inflection and the content of the grammatical units may vary from question to question, and from game to game. For example, in the question in Figure \ref{questionv} the MAINV is fixed to past tense but the person and number inflection may vary freely. In addition, certain elements such as the sentence subject (SUBJ) have default inflection in nominative, but the default inflection may be overridden. 
+
+%sh: This is not a good place to introduce the names of the games. I suggest that you briefly introduce the names of the games in Introduction e.g. copy the texts from here and then you just say here that "Semantic sets are used both in Leksa and in Morfa-C.
+The selection of words for the sentence is constrained by semantic sets. Semantic sets are used both for the word quiz (the game called \textit{Leksa}) and the questions in the games \textit{Morfa-C} (morphology-in-context) and \textit{Vasta} (QA drill). There are ordinary sets and supersets, and one 
 % ??? "one" = geavaheaddji dahje generator? fertet čállit ođđasit ja čilget.
 can choose which one suits best for the question, e.g. the big superset HUMAN with all lemmas for human beings, or a smaller subset, like PROFESSION. In Figure \ref{semset} is a definition of a superset. 
 
+%sh: this figure seems to have a lot of space on the top..
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.7}[.7]{\includegraphics{img/semantic_set.png}}\\
@@ -140,12 +157,15 @@ can choose which one suits best for the question, e.g. the big superset HUMAN wi
 \end{center}
 \end{figure}
 
+
+The sentence generator handles agreement e.g. between subject and the main verb. The agreement may be explicitly marked between any two elements, which indicates that the two elements share the same number and person inflection.
+
 % We decide grammar for the variable. 
-The grammatical value of the variable words may vary from question to question, and from game to game.
-In the question in Figure \ref{questionv} the MAINV is allowed to be in the past tense because it is a level 2 question. We divide this game in different levels of dificulty. In level 1, the student only gets exposed to present tense. The tag, \texttt{Person-Number}, take care of the agreement with the SUBJ, and also of the required person and number in the answer. (Saara).
 
-We chose not to accept inclusive pronouns, because we wanted the student to exercise all persons and numbers. Using inclusive pronouns, s/he could answer with the same verbform as in the question. The question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on:\\
+%sh: move this to the section that describes Morfa-C or Vasta:
+The questions are divided to different levels of difficulty. For example in the first level, the student only gets exposed to present tense. 
 
+In addition to generating questions, the sentence generator is used for generating question-answer pairs for Morfa-C. In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept inclusive pronouns, because we wanted the student to exercise all persons and numbers. Using inclusive pronouns, s/he could answer with the same verbform as in the question. The question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on:\\
 
 \begin{tabular}[t]{rlrlrlrlrlr}
 &QPN &APN &QPN &APN &QPN &APN \\
@@ -157,7 +177,8 @@ We chose not to accept inclusive pronouns, because we wanted the student to exer
 
 
 \subsection{System for dialectical variation}\label{dialect}
-Saara - generation XXX
+%sh: I added this elsewhere
+%Saara - generation XXX
 
 For sentence generation the morphological generator has to be strict. This means that the generator will generate one and only one word form for every grammatical word. The analyser, on the other hand, should be tolerant (accept correct variants of the same grammatical word), but we have the opportunity of compiling two different analysers/generators. We use the normative but variation-tolerant transducer \texttt{sme-norm.fst} for analysing the input and the generator \texttt{isme-strict.fst} for sentence generation. isme-strict.fst generates only one word form for every grammatical word.
 
@@ -184,7 +205,7 @@ We see an example in Figure \ref{smelex}. We also marked entries in the pedagogi
 
 The information in the lexicon about inflection is there only to give a good feedback to the student. If s/he doesn't inflect the lemma correctly, s/he can ask for hints about the inflection, and try once more, instead of getting the correct answer straight away. 
 
-We make the feedback system in two steps. The first step is to define what kind of message the system  should provide, based upon the combination of morphological features in the lexicon and the inflection itself. In Figure \ref{feedbacknouns} vowel changing in illative Sg is defined for bisyllabic nouns which ends with the vowel $i$:
+We constructed the feedback system in two steps. The first step is to define what kind of message the system  should provide, based upon the combination of morphological features in the lexicon and the inflection itself. In Figure \ref{feedbacknouns} vowel changing in illative Sg is defined for bisyllabic nouns which ends with the vowel $i$:
 
 
 \begin{figure}[htbp]
@@ -457,7 +478,7 @@ In the numeral task we have made variants of the matrices, and marked them with 
 
 In between the "natural" dialogues, mimicking real life dialogues, and the pure grammar training session, inquiring paradigm forms, we have made Vasta - a question-answer drill. The drill has two question types: Yes/no questions and wh-questions. 
 
-There are two motives for making this game type. First, our tailored dialogues in Sahka run the risk of getting quickly consumed. With a QA drill we may make an indefinite number of questions. Second, the students need to automatise the question-answer routine -- inflecting the finite verb correctly and choose the correct case form.
+There are two motives for making this game type. First, our tailored dialogues in Sahka run the risk of getting quickly consumed. With a QA drill we may generate an indefinite number of questions. Second, the students need to automatise the question-answer routine -- inflecting the finite verb correctly and choose the correct case form.
 
 The questions are generated, the question and answer are analysed together, and the student gets feedback, as described in \ref{sentencefeedback}. The question matrices are marked with level, so there is a level option. Only one question is presented at a time. The student can answer what s/he wants, but s/he has to use a full sentence (containing a finite verb), and use the same verb as in the question. The pronouns are not allowed to be interpreted inclusive \textit{we — you}, not \textit{we — we}.
 
