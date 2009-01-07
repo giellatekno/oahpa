@@ -5823,7 +5823,7 @@ REMOVE Imprt (-1 BOS)(1 go) ;
 SELECT ConNeg (-1 Neg) ;
 SELECT PrfPrc (-1 Neg) ;
 SELECT Inf (*-1 AUX BARRIER NOT-ADV OR S-BOUNDARY) ; 
-SELECT PrfPrc (*-1 ("leat") BARRIER NOT-ADV) ; 
+SELECT PrfPrc (*-1 ("leat") BARRIER NOT-ADV OR QDL) ; 
 
 # Selecting PrfPrc after VFIN and Neg:
 SELECT PrfPrc (*-1 ("leat") OR Neg BARRIER VERB)(*1 QDL) ;
