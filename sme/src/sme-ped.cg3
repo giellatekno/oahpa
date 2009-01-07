@@ -5788,6 +5788,7 @@ REMOVE Indef (0 ("galle"))(1 (N Gen))(*1 QDL) ;
 	# Man guhká...
 SELECT Adv (0 ("gallii") LINK -1 BOS) ; 
 SELECT ("galle" Num)(-1 BOS)(*1 N BARRIER NPNH); 
+SELECT ("galle" Nom)(*1 (N Gen) BARRIER NOT-ADJ LINK 1 Loc LINK 1 ("leat") LINK *1 QDL) ;
 
 SELECT Pers (*-1 QDL OR S-BOUNDARY BARRIER NOT-ADV-PCLE)(0 S-BOUNDARY)(*1 VFIN BARRIER NOT-ADV-PCLE);
 
@@ -6146,7 +6147,7 @@ MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 Q
 
 SELECT V-3 (-1 HAB-ACTOR + Loc LINK *-1 QDL) ;
 
-MAP (&grm-should-be-Vfin) TARGET QDL IF (NOT *1 VFIN);
+MAP (&grm-should-be-Vfin) TARGET QDL IF (NOT 0 (Mii_namma_lea))(NOT *1 VFIN);
 	# You should use a finite verb when answering...
 
 # SAHKA: Answer with the correct verbform if there is no Pers:
@@ -6156,7 +6157,7 @@ MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK
 # VASTA: Answer with the correct verbform if there is no Pers:
 MAP (&grm-incorr-pers-nr) TARGET (V Sg1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Sg2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Sg2) (*-1 QDL BARRIER S-BOUNDARY  OR Nom LINK *-1 VFIN LINK NOT 0 Sg1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL BARRIER S-BOUNDARY  OR Nom LINK *-1 VFIN LINK NOT 0 Sg3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Sg3 LINK NOT *-1 ("galle"))(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA LINK *-1 VFIN LINK NOT 0 Du2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Du2) (*-1 QDL BARRIER S-BOUNDARY  OR Nom LINK *-1 VFIN LINK NOT 0 Du1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Du3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Du3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
