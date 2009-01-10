@@ -90,7 +90,7 @@ The main lexicon consists of the full Sámi vocabulary, the inflectional and der
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{img/noun-sme-lex.png}}\\
+\scalebox{.5}[.5]{\includegraphics{presentation/img/noun-sme-lex.png}}\\
 \caption{Example of entry in the main lexicon, \texttt{noun-sme-lex.txt}. AIGI is the continuation class.}
 \label{nounsmelex}
 \end{center}
@@ -103,7 +103,7 @@ I collected the lemmas, which were used in the textbooks and added Norwegian tra
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.6}[.6]{\includegraphics{img/nounlexicon.png}}\\
+\scalebox{.6}[.6]{\includegraphics{presentation/img/nounlexicon.png}}\\
 \caption{Example of entry in the pedagogical lexicon, \texttt{nouns.xml}.}
 \label{nounlex}
 \end{center}
@@ -118,7 +118,7 @@ It works well as long as working with semantic classes, but if the user chooses 
 In order to be able to create a large number of potential tasks, we implemented a sentence generator. With the generator we can easily offer variation to the user, instead of tailoring every task with ready-made questions. The sentence generator is used both for generating questions for Morfa-C and Vasta, and answer templates for Morfa-C. There is an example from the generator on sentence matrices in Figure \ref{questionv}.
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.6}[.6]{\includegraphics{img/question_vasta.png}}\\
+\scalebox{.6}[.6]{\includegraphics{presentation/img/question_vasta.png}}\\
 \caption{Questions are generated. From \texttt{questions\_vasta.xml}.}
 \label{questionv}
 \end{center}
@@ -131,7 +131,7 @@ The selection of words for the sentence is constrained by semantic sets. Semanti
 %sh: this figure seems to have a lot of space on the top..
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.6}[.6]{\includegraphics{img/semantic_set.png}}\\
+\scalebox{.6}[.6]{\includegraphics{presentation/img/semantic_set.png}}\\
 \caption{Some of the semantic sets are supersets, consisting of subsets. From \texttt{semantic\_sets.xml}.}
 \label{semset}
 \end{center}
@@ -167,7 +167,7 @@ We see an example in Figure \ref{smelex}. We also marked entries in the pedagogi
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.6}[.6]{\includegraphics{img/smelex.png}}\\
+\scalebox{.6}[.6]{\includegraphics{presentation/img/smelex.png}}\\
 \caption{In the makefile there are options to generate dialectical variants of word forms. From \texttt{sme-lex.txt}.}
 \label{smelex}
 \end{center}
@@ -183,7 +183,7 @@ We constructed the feedback system in two steps. The first step is to define wha
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.6}[.6]{\includegraphics{img/feedback_nouns.png}}\\
+\scalebox{.6}[.6]{\includegraphics{presentation/img/feedback_nouns.png}}\\
 \caption{The features in the lexicon are used to give message tags. Here the message tag is "i\_á". From \texttt{feedback\_nouns.xml}.}
 \label{feedbacknouns}
 \end{center}
@@ -195,7 +195,7 @@ The message tag is used to generate the feedback to the user. The message can ea
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.6}[.6]{\includegraphics{img/messages.png}}\\
+\scalebox{.6}[.6]{\includegraphics{presentation/img/messages.png}}\\
 \caption{Feedback to the user is generated from the message tags. Here for the message tag "i\_á". From \texttt{messages.xml}.}
 \label{mess}
 \end{center}
@@ -237,7 +237,7 @@ The question and the answer are merged, and given to the analyser as one text st
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.4}[.4]{\includegraphics{img/qa.pdf}}
+\scalebox{.4}[.4]{\includegraphics{presentation/img/qa.pdf}}
 \caption{A schematical overview of analysis process.}
 \label{qasystem}
 \end{center}
@@ -247,7 +247,7 @@ The question mark in the question is exchanged for a special symbol ("qst" QDL),
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{img/iktelohken2.png}}
+\scalebox{.5}[.5]{\includegraphics{presentation/img/iktelohken2.png}}
 \caption{Question and answer after morphological analyse and the script lookup2cg, but before disambiguation.}
 \label{iktelohken}
 \end{center}
@@ -258,7 +258,7 @@ Tutorial feedback is feedback about grammar errors (CG prefix is \&grm), or abou
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{img/pedcg3.png}}
+\scalebox{.5}[.5]{\includegraphics{presentation/img/pedcg3.png}}
 \caption{If the interrogative pronoun is in accusative, we expect an accusative in the answer, if the question is not asking for a verb, e.g. "What do you do?" (WORK-V). The rule assigns (maps) a missing-Acc-tag to the interrogative pronoun if there is no accusative or negation verb in the answer. From \texttt{sme-ped.cg3}.}
 \label{cg3}
 \end{center}
@@ -266,7 +266,7 @@ Tutorial feedback is feedback about grammar errors (CG prefix is \&grm), or abou
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.55}[.55]{\includegraphics{img/maid_lohket_ikte2.png}}
+\scalebox{.55}[.55]{\includegraphics{presentation/img/maid_lohket_ikte2.png}}
 \caption{The grammarerrortag is added to the interrogative pronoun. (What did you read yesterday qst Yesterday I read an old book (Nom instead of Acc)). Output of vislcg3 grammar file \texttt{sme-ped.cg3}.}
 \label{maidlohket}
 \end{center}
@@ -276,7 +276,7 @@ Tutorial feedback is feedback about grammar errors (CG prefix is \&grm), or abou
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.65}[.65]{\includegraphics{img/messages_vasta.png}}
+\scalebox{.65}[.65]{\includegraphics{presentation/img/messages_vasta.png}}
 \caption{The grammarerrortag generates tutorial feedback in \texttt{messages\_vasta.xml}. The feedback can be generated in different languages, her it is in Norwegian.}
 \label{messv}
 \end{center}
@@ -307,7 +307,7 @@ Some dialogues are branched according to how the student answers, e.g. if the qu
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.55}[.55]{\includegraphics{img/picking_age.png}}\\
+\scalebox{.55}[.55]{\includegraphics{presentation/img/picking_age.png}}\\
 \caption{Rules for giving age-tag to the input. Special rules for the question named Man\_boaris\_don\_leat (How\_old\_are\_you). From \texttt{sme-ped.cg3}.}
 \label{age}
 \end{center}
@@ -316,7 +316,7 @@ Some dialogues are branched according to how the student answers, e.g. if the qu
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.55}[.55]{\includegraphics{img/Man_boaris.png}}\\
+\scalebox{.55}[.55]{\includegraphics{presentation/img/Man_boaris.png}}\\
 \caption{Example of how to navigate to the next question or branch, with help of the tag. The question is "How old are you?" and the branches are adapted to the age of the student. From \texttt{dialogue\_firstmeeting.xml}.}
 \label{branch}
 \end{center}
@@ -340,7 +340,7 @@ The automaton is easy to make, and we have made it for many Sámi languages, als
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.6}[.6]{\includegraphics{img/numra.png}}\\
+\scalebox{.6}[.6]{\includegraphics{presentation/img/numra.png}}\\
 \caption{Numra, at \textit{http://victorio.uit.no/oahpa/numra/}}
 \label{numra}
 \end{center}
@@ -356,7 +356,7 @@ We have divided all the entries in the pedagogical lexicon into semantic sets, a
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{img/leksa.png}}\\
+\scalebox{.5}[.5]{\includegraphics{presentation/img/leksa.png}}\\
 \caption{Leksa, at \textit{http://victorio.uit.no/oahpa/leksa/}}
 \label{leksa}
 \end{center}
@@ -390,7 +390,7 @@ The student may choose dialect, and restrict the vocabulary according to stem ty
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{img/morfaS.png}}\\
+\scalebox{.5}[.5]{\includegraphics{presentation/img/morfaS.png}}\\
 \caption{Morfa-S, at \textit{http://victorio.uit.no/oahpa/morfa\_s/}}
 \label{morfas}
 \end{center}
@@ -414,7 +414,7 @@ Again, the student may choose dialect, and restrict the vocabulary according to 
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{img/morfaC.png}}\\
+\scalebox{.5}[.5]{\includegraphics{presentation/img/morfaC.png}}\\
 \caption{Morfa-C, at \textit{http://victorio.uit.no/oahpa/morfa\_c/}}
 \label{morfac}
 \end{center}
@@ -427,7 +427,7 @@ The sentence generator generates question-answer pairs, and the student writes o
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{img/morfa_question.png}}\\
+\scalebox{.5}[.5]{\includegraphics{presentation/img/morfa_question.png}}\\
 \caption{In Morfa-C the system generates question-answer-pairs. From \texttt{questions\_numerals.xml}.}
 \label{questionm}
 \end{center}
@@ -462,7 +462,7 @@ There are 111 matrix questions divided into levels:
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{img/vasta.png}}\\
+\scalebox{.5}[.5]{\includegraphics{presentation/img/vasta.png}}\\
 \caption{Vasta, at \textit{http://victorio.uit.no/oahpa/vasta/}}
 \label{vasta}
 \end{center}
@@ -477,7 +477,7 @@ Each dialogue is made to a scenario, and each scenario has are underlying pedago
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{img/sahka2.png}}\\
+\scalebox{.5}[.5]{\includegraphics{presentation/img/sahka2.png}}\\
 \caption{Sahka, at \textit{http://victorio.uit.no/oahpa/sahka/}}
 \label{sahka}
 \end{center}
@@ -509,7 +509,7 @@ Every utterance has a name, and one link or alternative links. The choice of alt
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{img/gosabidjatTV.png}}
+\scalebox{.5}[.5]{\includegraphics{presentation/img/gosabidjatTV.png}}
 \caption{The question is "To which room we put the TV?" One of the alternatives for the navigation is due to that the target tag is put to the lemma "hivsset" ( = WC). The comment to the student is "It is not a good idea. Make a new try." From \texttt{dialogue\_visit.xml}.}
 \label{TV}
 \end{center}
@@ -518,7 +518,7 @@ Every utterance has a name, and one link or alternative links. The choice of alt
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{img/targetIll.png}}
+\scalebox{.5}[.5]{\includegraphics{presentation/img/targetIll.png}}
 \caption{A rule in \texttt{ped-sme.cg3} for giving target-tag to an noun or pronoun in illative after a question with the interrogate \textit{guhte} + a noun in illative ( = "to which"). This a general rule, not connected to any particular question.}
 \label{targetIll}
 \end{center}
