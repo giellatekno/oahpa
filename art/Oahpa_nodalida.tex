@@ -121,18 +121,17 @@ In order to be able to create a large number of potential tasks, we implemented 
 \end{center}
 \end{figure}
 
-The question matrix contains two types of elements: constants and grammatical units. The constants such as \textit{go} and \textit{ikte} in the Figure \ref{questionv} are present in each generated sentence as such, whereas grammatical units allow more variation. Both the inflection and the content of the grammatical units may vary from question to question, and from program to program. For example, in the question in Figure \ref{questionv} the MAINV is fixed to past tense but the person and number inflection may vary freely. In addition, certain elements such as the sentence subject (SUBJ) have default inflection in nominative, but the default inflection may be overridden. 
-
-The selection of words for the sentence is constrained by semantic sets. Semantic sets are used both for word quiz and the questions/tasks. There are ordinary sets and supersets, and we choose which one suits best for the particular question/task, e.g. the big superset HUMAN with all lemmas for human beings, or a smaller subset, like PROFESSION. In Figure \ref{semset} is a definition of a superset. 
-
-%sh: this figure seems to have a lot of space on the top..
-\begin{figure}[htbp]
-\begin{center}
-\scalebox{.6}[.6]{\includegraphics{presentation/img/semantic_set.png}}\\
-\caption{Some of the semantic sets are supersets, consisting of subsets. From \texttt{semantic\_sets.xml}.}
-\label{semset}
-\end{center}
-\end{figure}
+The question matrix contains two types of elements: constants and grammatical units. The constants such as \textit{go} and \textit{ikte} in the Figure \ref{questionv} are present in each generated sentence as such, whereas grammatical units allow more variation. Both the inflection and the content of the grammatical units may vary from question to question, and from program to program. For example, in the question in Figure \ref{questionv} the MAINV is fixed to past tense but the person and number inflection may vary freely. In addition, certain elements such as the sentence subject (SUBJ) have default inflection in nominative, but the default inflection may be overridden. The selection of words for the sentence is constrained by semantic sets. Semantic sets are used both for word quiz and the questions/tasks. 
+%There are ordinary sets and supersets, and we choose which one suits best for the particular question/task, e.g. the big superset HUMAN with all lemmas for human beings, or a smaller subset, like PROFESSION. In Figure \ref{semset} is a definition of a superset. 
+%
+%%sh: this figure seems to have a lot of space on the top..
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.6}[.6]{\includegraphics{presentation/img/semantic_set.png}}\\
+%\caption{Some of the semantic sets are supersets, consisting of subsets. From \texttt{semantic\_sets.xml}.}
+%\label{semset}
+%\end{center}
+%\end{figure}
 
 
 The sentence generator handles agreement e.g. between subject and the main verb. The agreement may be explicitly marked between any two elements, which indicates that the two elements share the same number and person inflection.
