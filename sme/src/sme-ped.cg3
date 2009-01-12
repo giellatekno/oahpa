@@ -5823,7 +5823,7 @@ REMOVE VFIN (-1 go LINK -2 BOS) ;
 REMOVE Imprt (-1 BOS)(1 go) ; 
 SELECT ConNeg (-1 Neg) ;
 SELECT PrfPrc (-1 Neg) ;
-SELECT Inf (*-1 AUX BARRIER NOT-ADV OR S-BOUNDARY) ; 
+SELECT Inf (*0 AUX BARRIER NOT-ADV OR S-BOUNDARY OR VERB) ; 
 SELECT PrfPrc (*-1 ("leat") BARRIER NOT-ADV OR QDL) ; 
 
 # Selecting PrfPrc after VFIN and Neg:
@@ -6081,7 +6081,7 @@ MAP (&grm-numeral-wrong-case) TARGET (N Gen) IF (NOT 0 Nom)(*-1 OKTA BARRIER NOT
 # -----------------
 
 
-MAP (&grm-NoEret) TARGET QDL IF (-1 ("eret") LINK *-1 ("gos" Adv))(*1 (N Loc) LINK NOT 1 ("eret")) ;
+MAP (&grm-NoEret) TARGET QDL IF (-1 ("eret") LINK *-1 ("gos" Adv))(*1 (N Loc) LINK NOT *1 ("eret") BARRIER S-BOUNDARY OR Loc) ;
 
 
 
