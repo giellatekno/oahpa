@@ -5906,13 +5906,13 @@ SET  NOT-Attr-CC-Adv-Num-Gen = WORD - Attr-CC-Adv-Num-Gen ;
 # Inside the NP, we choose what suits it, if there is a reading for it:
 SELECT Adv (0 GRADE-ADV + A LINK *-1 QDL) ;
     ## hui boares
-SELECT Attr (*1 N BARRIER NOT-Attr-CC-Adv OR QDL) ; 
+SELECT Attr (NEGATE 0C Prop LINK NOT 1 Prop)(*1 N BARRIER NOT-Attr-CC-Adv OR QDL) ; 
     ## stuorra ja hui boares viessu
-SELECT Attr (*1 N BARRIER NOT-Attr-CC-Adv OR QDL) ; # no there should be less ambiguity.
+SELECT Attr (NEGATE 0C Prop LINK NOT 1 Prop)(*1 N BARRIER NOT-Attr-CC-Adv OR QDL) ; # no there should be less ambiguity.
     # once again
 SELECT Num (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ;
     ## guokte stuorra ja hui boares viesu
-SELECT (N Gen) (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num OR QDL LINK NOT 0 Prop)(NOT 0 PrfPrc)(NEGATE 1 CC LINK *1 N BARRIER NPNHA LINK NOT *1 N BARRIER NPNHA) ;
+SELECT (N Gen) (*-1 QDL)(NEGATE 0C Prop LINK NOT 1 Prop)(*1 N BARRIER NOT-Attr-CC-Adv-Num OR QDL LINK NOT 0 Prop)(NOT 0 PrfPrc)(NEGATE 1 CC LINK *1 N BARRIER NPNHA LINK NOT *1 N BARRIER NPNHA) ;
     ## eatni guokte stuorra ja hui boares viesu
 SELECT (Refl Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
     ## mu iežan eatni guokte stuorra ja hui boares viesu
