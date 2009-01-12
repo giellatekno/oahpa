@@ -1,4 +1,3 @@
-
 \documentclass[11pt]{article}
 \usepackage{eacl2009}
 \usepackage{times}
@@ -18,7 +17,7 @@
 
 \begin{document}
 
-\title{Interactive pedagogical programs based on constraint grammar}
+\title{The paper presents a set of interactive pedagogical programs based on constraint grammar. }
 
 \author{N.N.}
 \date{}
@@ -27,11 +26,14 @@
 \pagenumbering{arabic}
  
 \maketitle
-\tableofcontents
+%\tableofcontents
 
+\begin{abstract}
+CALL programs 
+\end{abstract}
 
 \section{Introduction}
-This paper presents how finite state transducers and constraint grammars are reused in a new setting, as building blocks in pedagogical programs for learners of North Sámi \footnote{Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding. The work behind the basic analysers was financed by the Research Council of Norway}. 
+This paper presents how finite state transducers and constraint grammars are reused in a new setting, as building blocks in pedagogical programs for learners of North Sámi \footnote{Thanks to our funding agencies.}%the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding. The work behind the basic analysers was financed by the Research Council of Norway}. 
 
 Section 2 describes the initial linguistic resources and the pedagogical idea behind the programs. In the third section we explain the different modules made for the pedagogical programs. The fourth section deals with the design of the two programs with constraint grammar. The final section present an evaluation.
 
@@ -233,7 +235,7 @@ The question and the answer are merged, and given to the analyser as one text st
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.3}[.3]{\includegraphics{presentation/img/qa.pdf}}
+\scalebox{.35}[.40]{\includegraphics{presentation/img/qa2.pdf}}
 \caption{A schematical overview of analysis process.}
 \label{qasystem}
 \end{center}
@@ -243,8 +245,8 @@ The question mark in the question is exchanged for a special symbol ("qst" QDL),
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{presentation/img/iktelohken3.png}}
-\caption{Question and answer after morphological analyse and the script lookup2cg, but before disambiguation.}
+\scalebox{.55}[.5]{\includegraphics{presentation/img/iktelohken3.png}}
+\caption{Question and answer after morphological analysis and the script lookup2cg, but before disambiguation.}
 \label{iktelohken}
 \end{center}
 \end{figure}
