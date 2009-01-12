@@ -1,5 +1,8 @@
 Sahka - Some issues
 
+Pertaining to all dialogues:
+Users are expected to use the same verb as in the question. This expectation is currently rather strict, so that an answer with only one /i/ in the verb "háliidit" is not accepted, when the verb is written with two /i/s in the question. However, both spellings are acceptable. 
+
 Visit
 
 Overall:
@@ -53,3 +56,37 @@ Corrected answer to: Guhkit lea divraseabbo. This is accepted
 Guhte spábba lea divraseamos?
 Stuorámus spábba lea divraseamos
 Du har ikke brukt riktig adjektiv. Prøv igjen.
+
+First meeting
+
+Overall:
+========
+Some questions can potentially be answered with affirmation or negation, typically of the type: Do you have...? If affirmative, there is a follow up question of the type What kind of X/how many X do you have? In many cases, it is natural to give the type or amount already in the first question, but the computer does not recognize this. We can have many strange conversations because of this:
+
+Lea go dus biila?
+-Mus lea Mazda
+-Makkár biila dus lea
+
+Leat go barggus?
+-Mun lean duojár.
+Makkár bargu dus lea?
+
+Leat go dus mánát?
+-Mus leat guokte bártni.
+-Galle máná dus leat?
+
+Is it possible to distinguish between just affirmative answers, and affirmative answers with type and amount information, so that if the user gives this information already in the first question, she will not be asked the same again.
+
+Strange feedback:
+=================
+"Mus lea okta mánná" is not accepted as answer to the question "Leat go dus mánát":
+Leat go dus mánát?
+- Mus lea okta mánná. -Er du sikker på at du svarer i riktig person.
+- Mus leat mánát.
+Galle máná dus leat?
+Mus lea okta mánná. (accepted as answer)
+
+Pro-drop is not accepted everywhere:
+Makkár bargu dus lea?
+- Lean duojár. - Er du sikker på at du svarer i riktig person
+- Mun lean duojár. (accepted as answer)
