@@ -36,7 +36,7 @@ CALL programs
 \end{abstract}
 
 \section{Introduction}
-This paper presents how finite state transducers and constraint grammars are reused in a new setting, as building blocks in pedagogical programs for learners of North Sámi \footnote{Thanks to our funding agencies.}%the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding. The work behind the basic analysers was financed by the Research Council of Norway}. 
+This paper presents how finite state transducers and constraint grammars are reused in a new setting, as building blocks in pedagogical programs for learners of North Sámi \footnote{Thanks to our funding agencies.}. %the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding. The work behind the basic analysers was financed by the Research Council of Norway}. 
 
 Section 2 describes the initial linguistic resources and the pedagogical idea behind the programs. In the third section we explain the different modules made for the pedagogical programs. The fourth section deals with the design of three of the programs. The final section present an evaluation.
 
@@ -46,7 +46,8 @@ Section 2 describes the initial linguistic resources and the pedagogical idea be
 
 \subsection{Basic grammatical analysis}
 
-The basic grammatical analysis of North Sámi was done with finite state transducers and a constraint grammar parser, available as open source download from the University of Tromsø.
+The basic grammatical analysis of North Sámi was done with finite state transducers and a constraint grammar parser, available as open source download from the University of Tromsø. Since Sámi languages have large morphological paradigms for each lexeme, finite state transducers were chosen. Each lexeme may have several tens of inflected forms; verbs and adjectives have more than 100 inflected forms. Some of the paradigm members have a very low text frequency, and there is not that much text electronically available. \cite{Trosterud:07}.  
+
 
 The existing language resources, which we have used in the pedagogical programs, are the following:
 
@@ -56,8 +57,7 @@ The existing language resources, which we have used in the pedagogical programs,
 \item number word generator, made with finite state transducers.
 \end{itemize}
 
-Vislcg3 is a new generation version of the open source vislcg. It is a constraint grammar (CG) parser; a program that selects the correct analysis in case of homonymy. CG was launched by Fred Karlsson in the early 90'ies \cite{FK95} 
-I have explained how it works in \ref{sentencefeedback}.
+Vislcg3 is a new generation version of the open source vislcg. It is a constraint grammar (CG) parser; a program that selects the correct analysis in case of homonymy. CG was launched by Fred Karlsson in the early 90'ies \cite{Karlsson:95}. We have explained how it works in \ref{sentencefeedback}. The Xerox tools are documented in \cite{BeesleyKarttunen:03}.
 
 
 \subsection{The pedagogical idea} \label{pedidea}
@@ -89,7 +89,6 @@ Because North Sámi is used in three countries, we wanted the student to be able
 
 The main lexicon of the basic transducer consists of the full Sámi vocabulary, the inflectional and derivational morphology, and the non-segmental morphological processes (consonant gradation, diphthong simplification, etc.). Figure \ref{nounsmelex} shows a lexical entry.
 
-
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.6}[.6]{\includegraphics{presentation/img/noun-sme-lex.png}}\\
@@ -117,7 +116,7 @@ Some lemmas have homonymous base forms. Since they have different meanings, they
 %It works well as long as working with semantic classes, but if the user chooses "all" or a book, then he will not understand why the program doesn't accept his suggestions, e.g. "pilot" for \textit{girdi}. The solution is that the system then looks for the lemma, instead of the id.
 
 \subsection{Sentence generator}\label{set}
-In order to be able to create a large number of potential tasks, we implemented a sentence generator. With the generator we can easily offer variation to the user, instead of tailoring every task with ready-made questions. The sentence generator is used both for generating questions and answer templates for our contextual morphology game, and for our question-answer program. There is an example from the generator on sentence matrices in Figure \ref{questionv}.
+In order to be able to create a large number of potential tasks, we implemented a sentence generator. With the generator we can easily offer variation to the user, instead of tailoring every task with ready-made questions. The sentence generator is used both for generating questions and answer templates for our contextual morphology program, and for our question-answer (QA) program. There is an example from the generator on sentence matrices in Figure \ref{questionv}.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -142,7 +141,7 @@ The question matrix contains two types of elements: constants and grammatical un
 
 The sentence generator handles agreement e.g. between subject and the main verb. The agreement may be explicitly marked between any two elements, which indicates that the two elements share the same number and person inflection.
 
-In addition to generating questions, the sentence generator is used for generating question-answer pairs. In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept inclusive pronouns, because we wanted the student to exercise all persons and numbers. Using inclusive pronouns, s/he could answer with the same verb form as in the question. The question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on:\\
+In addition to generating questions, the sentence generator is used for generating QA pairs. In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept inclusive pronouns, because we wanted the student to exercise all persons and numbers. Using inclusive pronouns, s/he could answer with the same verb form as in the question. The question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on:\\
 
 \begin{tabular}[t]{ll|ll|ll}
 QPN &APN &QPN &APN &QPN &APN \\
@@ -232,7 +231,7 @@ We have chosen not to use multiple-choice, but we let the student formulate his/
 
 We use vislcg3 for analysing the student's input. The program is based on constraint grammar, manually written, context dependent rules, mainly used for selecting the correct analysis in case of homonymy. Each rule either adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentential context. Context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). 
 
-Context conditions in the same rule may be linked, i.e. conditioned upon each other, negated or blocked by interfering words or tags. Vislcg3 is documented at \textit{http://beta.visl.sdu.dk/constraint\_grammar.html}.
+Context conditions in the same rule may be linked, i.e. conditioned upon each other, negated or blocked by interfering words or tags. Vislcg3 is documented at {Visl:08}.
 
 The question and the answer are merged, and given to the analyser as one text string. We use a ruleset (\texttt{ped-sme.cg3}) which disambiguates the student's input only to a certain extent, because there will probably be grammar and orthographic errors in the input. The last part of the file consists of rules for giving feedback to the student's grammatical errors, and rules for navigating to the correct next question of in the dialogue, due to the student's answer. How to generate feedback or navigation instructions is explained below.
 
@@ -351,7 +350,7 @@ We have made two versions of the drill: Morfa-S is a bare morph-drill with singl
 
 In between the "natural" dialogues, mimicking real life dialogues, and the pure grammar training session, inquiring paradigm forms, we have made Vasta -- a question-answer drill. The drill has two question types: Yes/no questions and wh-questions. 
 
-There are two motives for making this game type. First, our tailored dialogues in Sahka run the risk of getting quickly consumed. With a QA drill we may generate an indefinite number of questions. Second, the students need to automate the question-answer routine -- inflecting the finite verb correctly and choose the correct case form.
+There are two motives for making this program type. First, our tailored dialogues in Sahka run the risk of getting quickly consumed. With a QA drill we may generate an indefinite number of questions. Second, the students need to automate the question-answer routine -- inflecting the finite verb correctly and choose the correct case form.
 
 The questions are generated, the question and answer are analysed together, and the student gets feedback, as described in \ref{sentencefeedback}. The question matrices are marked with level, so there is a level option. Only one question is presented at a time. The student can answer what s/he wants, but s/he has to use a full sentence (containing a finite verb), and use the same verb as in the question. The pronouns are not allowed to be interpreted inclusive \textit{we — you}, not \textit{we — we}. There are 111 matrix questions divided into levels.
 %\begin{itemize}
@@ -434,9 +433,9 @@ Sahka is a simple dialogue system, in which only the program can make initiative
 
 \subsection{Web interface}
 
-The Web framework is built on the top of a Mysql database. The information for the games is specified in XML-documents, from where it is extracted and stored to the Mysql database. The database allows effective processing of database queries, which is crucial for real-time applications. Database contains also information outside the XML-files, such as all the inflectional forms for words in the pedagogical lexicons. The basic morphological and lexicon games exploit words from quite restricted domains. Therefore it makes sense to generate the wordforms beforehand instead of using quite heavy machinery of word form generator together with full lexicon. In addition, generating the word forms and storing them to the database provides better control over the inflected word forms and e.g. different dialectal forms and thus, more stable application.
+The Web framework is built on the top of a Mysql database. The information for the programs is specified in XML-documents, from where it is extracted and stored to the Mysql database. The database allows effective processing of database queries, which is crucial for real-time applications. Database contains also information outside the XML-files, such as all the inflectional forms for words in the pedagogical lexicons. The basic morphological and lexicon programs exploit words from quite restricted domains. Therefore it makes sense to generate the wordforms beforehand instead of using quite heavy machinery of word form generator together with full lexicon. In addition, generating the word forms and storing them to the database provides better control over the inflected word forms and e.g. different dialectal forms and thus, more stable application.
 
-It should be noted that Vasta and the dialogue game Sahka use the grammatical analyser on the fly, exploiting full lexicons. This allows the user's answer to contain words that are not restricted to the pedagogical lexicon.
+It should be noted that Vasta and the dialogue program Sahka use the grammatical analyser on the fly, exploiting full lexicons. This allows the user's answer to contain words that are not restricted to the pedagogical lexicon.
 
 
 
@@ -444,17 +443,50 @@ It should be noted that Vasta and the dialogue game Sahka use the grammatical an
 
 By using a sloppy version of the syntactical analyser for North Sámi, combined with a set of error-detection rules, we have been able to build a flexible CALL resource. The programs are made of modules, and it is easy to improve each module, and also to add more materials -- words, tasks, dialogues, levels, words from textbooks. 
 
-The program is something quite new among pedagogical programs for Sámi. They are not linked to a certain chapter in a textbook, or to a certain level in the student's progression. Instead, all programs have many options, so the student can choose what to exercise, and on what level. The QA and dialogue games are tolerant towards variation in student answer (not only string matching), and the random generation of tasks more or less in all of the programs, the student can use them over and over again. 
+The program is something quite new among pedagogical programs for Sámi. They are not linked to a certain chapter in a textbook, or to a certain level in the student's progression. Instead, all programs have many options, so the student can choose what to exercise, and on what level. The QA and dialogue program are tolerant towards variation in student answer (not only string matching), and the random generation of tasks more or less in all of the programs, the student can use them over and over again. 
 
 
-\newpage
+
+\begin{thebibliography}{}
+
+\bibitem[\protect\citename{{Beesley and Karttunen}}2003]{BeesleyKarttunen:03}
+{Kenneth R. Beesley and Lauri Karttunen}.
+\newblock 2003.
+\newblock {\em Finite State Morphology}.
+\newblock CSLI publications in Computational Linguistics
+\newblock USA
+
+
+\bibitem[\protect\citename{Karlsson}1995]{Karlsson:95}
+{Fred Karlsson}.
+\newblock 1995.
+\newblock {\em Constraint grammar: a language-independent system for parsing unrestricted text}.
+\newblock Mouton de Gruyter
+
+\bibitem[\protect\citename{{Trosterud}}2007]{Trosterud:07}
+{Trond Trosterud}.
+\newblock 2007.
+\newblock {\em Language technology for endangered languages: Sámi as a case study}.
+\newblock http://giellatekno.uit.no/background/rvik.pdf
+\newblock University of Tromsø, Norway
+
+\bibitem[\protect\citename{{visl}}2008]{Visl:08}
+{visl-group}.
+\newblock 2008.
+\newblock {\em Constraint Grammar}.
+\newblock http://beta.visl.sdu.dk/constraint\_grammar.html
+\newblock Syd-Dansk Universitet, Odense, Denmark
+
+
+\end{thebibliography}
+
 
 %\begin{spacing}{1}
-\par
+%\par
 %\bibliographystyle{jmr} %jmr gives the second author with first name first
 %\bibliographystyle{jmr}
-\thebibliography{refacl}
-\bibliographystyle{acl}
+%\thebibliography{refacl}
+%\bibliographystyle{acl}
 
 
 %\bibdata{refacl}
