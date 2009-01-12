@@ -35,7 +35,7 @@ CALL programs
 \section{Introduction}
 This paper presents how finite state transducers and constraint grammars are reused in a new setting, as building blocks in pedagogical programs for learners of North Sámi \footnote{Thanks to our funding agencies.}%the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding. The work behind the basic analysers was financed by the Research Council of Norway}. 
 
-Section 2 describes the initial linguistic resources and the pedagogical idea behind the programs. In the third section we explain the different modules made for the pedagogical programs. The fourth section deals with the design of the two programs with constraint grammar. The final section present an evaluation.
+Section 2 describes the initial linguistic resources and the pedagogical idea behind the programs. In the third section we explain the different modules made for the pedagogical programs. The fourth section deals with the design of three of the programs. The final section present an evaluation.
 
 
 \section{Background}
@@ -53,7 +53,8 @@ The existing language resources, which we have used in the pedagogical programs,
 \item number word generator, made with finite state transducers.
 \end{itemize}
 
-Vislcg3 is a new generation version of the open source vislcg. It is a constraint grammar (CG) parser; a program that selects the correct analysis in case of homonymy. CG was launched by Fred Karlsson in the early 90'ies %\citep{Karlssonetal1995}. I have explained how it works in \ref{sentencefeedback}.
+Vislcg3 is a new generation version of the open source vislcg. It is a constraint grammar (CG) parser; a program that selects the correct analysis in case of homonymy. CG was launched by Fred Karlsson in the early 90'ies \cite{FK95} 
+I have explained how it works in \ref{sentencefeedback}.
 
 
 \subsection{The pedagogical idea} \label{pedidea}
@@ -206,7 +207,7 @@ We constructed the feedback system in two steps. The first step is to define wha
 In the example in Figures \ref{feedbacknouns}, the correct illative Sg word form of \textit{mielki} is \textit{mielkái}. %As we see in Figure \ref{nounlex}, this lemma has the feature \texttt{only-sg}, which means that we generate the lemma only in singular, even if it according to the main lexicon, also may be used in plural. This information is for pedagogical purposes; it is not that natural to use the plural form of a mass noun for a student on a lower level.
 
 
-\subsection{Analyser for student's input}\label{sentencefeedback}
+\subsection{Analyser for student's input} \label{sentencefeedback}
 We have chosen not to use multiple-choice, but we let the student formulate his/her own answer. That means that we have to analyze the answer. To a certain question one may give many kinds of acceptable answers. In Sámi you may change word order, and also add many kinds of particles. \\
 
 %\textit{Maid don lohket ikte?} (What did you read yesterday?)
@@ -235,7 +236,7 @@ The question and the answer are merged, and given to the analyser as one text st
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.35}[.40]{\includegraphics{presentation/img/qa2.pdf}}
+\scalebox{.45}[.45]{\includegraphics{presentation/img/qa2.pdf}}
 \caption{A schematical overview of analysis process.}
 \label{qasystem}
 \end{center}
@@ -251,6 +252,7 @@ The question mark in the question is exchanged for a special symbol ("qst" QDL),
 \end{center}
 \end{figure}
 
+\newpage
 \subsubsection{Tutorial feedback}
 Tutorial feedback is feedback about grammar errors (CG prefix is \&grm), and in Figure \ref{cg3} we see a rule for assigning a tag if the student has not used accusative, when the question requires one. And in Figure \ref{maidlohket} we see how the vislcg3 file has disambiguated and added the tag to the input which is the analysis from Figure \ref{iktelohken}. The tag generates feedback to the student.
 
@@ -332,7 +334,7 @@ As we see in the Figures \ref{maidlohket} and \ref{branch}, the questions in the
 
 
 \section{The design}
-There are alltogehter five programs. We will here describe three of them. The other two is Numra, a numeral exercise based on the number word generator, and Leksa, a word quiz based on the pedagogical lexicon. 
+There are alltogehter five programs. We will here describe three of them. The other two are Numra, a numeral exercise based on the number word generator, and Leksa, a word quiz based on the pedagogical lexicon. 
 
 \subsection{Morfa -- word inflection}
 This is a drill made to train morphological patterns. It draws lemmas from the pedagogical lexicon at random, and the student has to answer with the word form. 
@@ -375,7 +377,7 @@ Each dialogue is made to a scenario, and each scenario has are underlying pedago
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.4}[.4]{\includegraphics{presentation/img/sahka2.png}}\\
-\caption{Sahka, at \textit{http://victorio.uit.no/oahpa/sahka/}}
+\caption{Sahka, at \textit{http://victorio.uit.no/oahpa/ sahka/}}
 \label{sahka}
 \end{center}
 \end{figure}
@@ -447,9 +449,13 @@ The program is something quite new among pedagogical programs for Sámi. They ar
 %\begin{spacing}{1}
 \par
 %\bibliographystyle{jmr} %jmr gives the second author with first name first
-\bibliographystyle{jmr}
-\bibliography{WAart}
-\addcontentsline{toc}{section}{References}
+%\bibliographystyle{jmr}
+\bibliography{refacl}
+\bibliographystyle{acl}
+
+
+%\bibdata{refacl}
+%\addcontentsline{toc}{section}{References}
 %\end{spacing}
 
 	
