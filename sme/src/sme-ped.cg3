@@ -665,13 +665,13 @@ SET MO = MO-MANge - ("man" Foc/ge) ;
  
  # Introduce finite clauses.
  
-LIST PLACE-ADV =  "davá#bealde" "mátta#bealde" "nuortta#bealde" "oarje#bealde" "olggo#beale" ;
+LIST PLACE-ADV =  "davá#bealde" "mátta#bealde" "nuortta#bealde" "oarjja#bealde" "olggo#beale" ;
 # There will usually be a Gen in front. 
 
-LIST DOPPE = "dakko" "dákko" "dáppe" "diekko" "dieppe" "dokko" "doppe" "duokko" "duoppe" "gostege" ;
+LIST DOPPE = "dakko" "dákko" "dáppe" "diekko" "dieppe" "dokko" "doppe" "duokko" "duoppe" "gostege" "davvin" "lullin" "lulde" "máddin" "oarjin" "nuortan" "olgun" "badjin" "vuollin" "olggo#bealde" "guhkkin" ;
 # Adverbs with a locativic form, but don´t get Loc as a tag. 
 
-LIST DOHKO = "deike" "diehke" "dohko" "duohko" ("gosa" Foc/ge) "ruoktot" ;
+LIST DOHKO = "deike" "diehke" "dohko" "duohko" ("gosa" Foc/ge) "ruoktot" "diehko" "olggos" "guhkás" "máttás" "lulás" "luksa" "davás" "nuorttas" "oarjjás" "bajás" "vulos" "olggo#beallái" ;
 # Adverbs with a illativic form, but they don´t get Ill as a tag.
  
 
@@ -6001,8 +6001,8 @@ MAP (&grm-should-not-Nom) TARGET Nom IF (-1 V-TRANS-ACT-NOT-ACT OR DURATION-V LI
 
 MAP (&grm-habitive) TARGET NP-HEAD (NOT 0 Loc)(-1 QDL LINK -1 Nom LINK -1 NP-HEAD + Loc LINK -1 go);
 
-LIST ILL-Po = "ala" "nala" "sisa" "vuollái" "vuollai" "duohkai" "lusa" "báldii" "gurrii" "beallái" "beallai" "rádjái" "rádjai" "ovdii" "gaskii" "maŋŋái" "gasku" "guovdu" "lahka" "buohta" "vuostá" "njeaiga" "birra" "geahčen" ;
-LIST LOC-Po = "alde" "nalde" "mielde" "siste" "vuolde" "duohken" "duohkin" "luhtte" "bálddas" "guoras" "bealde" "rájes" "rájis" "ovddas" "gaskkas" "gaskkal" "bajil" "vuolil" "siskkil" "olggul" "maŋis" "gasku" "guovdu" "lahka" "buohta" "vuostá" "njeaiga" "mielde" "miehtá" "birra" "geahčai" ;
+LIST ILL-Po = "ala" "nala" "sisa" "vuollái" "vuollai" "duohkai" "lusa" "báldii" "gurrii" "beallái" "beallai" "rádjái" "rádjai" "ovdii" "gaskii" "maŋŋái" "gasku" "guovdu" "lahka" "buohta" "vuostá" "njeaiga" "birra" "geahčai" ;
+LIST LOC-Po = "alde" "nalde" "mielde" "siste" "vuolde" "duohken" "duohkin" "luhtte" "bálddas" "guoras" "bealde" "rájes" "rájis" "ovddas" "gaskkas" "gaskkal" "bajil" "vuolil" "siskkil" "olggul" "maŋis" "gasku" "guovdu" "lahka" "buohta" "vuostá" "njeaiga" "mielde" "miehtá" "birra" "geahčen" ;
 
 MAP (&grm-should-LocPP) TARGET Po IF (NOT 0 LOC-Po LINK *-1 QDL LINK *-1 ("gos"));
 MAP (&grm-should-IllPP) TARGET Po IF (NOT 0 ILL-Po LINK *-1 QDL LINK *-1 ("gosa"));
