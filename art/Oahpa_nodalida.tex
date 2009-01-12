@@ -31,9 +31,9 @@
 
 
 \section{Introduction}
-This paper presents how finite state transducers and constraint grammars are reused in a new setting, as building blocks in pedagogical programs for learners of North Sámi \footnote{Thanks to funding bodies here.}%{The developmental work presented here was made possible by grants from the faculty of Humanities at the University of Tromsø, and from the Sámi Parliament in Norway. The work behind the basic analysers was financed by the Research Council of Norway}. 
+This paper presents how finite state transducers and constraint grammars are reused in a new setting, as building blocks in pedagogical programs for learners of North Sámi \footnote{Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding. The work behind the basic analysers was financed by the Research Council of Norway}. 
 
-Section 2 describes the initial linguistic resources and the pedagogical idea behind the programs. In the third section we explain the different modules made for the pedagogical programs. The fourth section deals with the design of each program. The final section present an evaluation.
+Section 2 describes the initial linguistic resources and the pedagogical idea behind the programs. In the third section we explain the different modules made for the pedagogical programs. The fourth section deals with the design of the two programs with constraint grammar. The final section present an evaluation.
 
 
 \section{Background}
@@ -46,7 +46,7 @@ The basic grammatical analysis of North Sámi was done with finite state transdu
 The existing language resources, which we have used in the pedagogical programs, are the following:
 
 \begin{itemize}
-\item a morphological analyser/generator with finite state transducers, compiled with the Xerox compiler xfst.  The lexicon contains 43.000 proper nouns, 31.000 common nouns, 14.000 verbs, 5.500 adjectives and 4.000 words of other word classes. One may compile two different variants of the analyser/generator -- \texttt{sme.fst/isme.fst} which is very tolerant, with morphological patterns based upon actual usage, and \texttt{sme-norm.fst/isme-norm.fst} which is normative, and adheres to the written standard \footnote{We use the abbreviations for the Sámi languages in accordance with the ISO 639-2 standard for language codes. The code is \textit{sme} for North Sámi and \textit{nob} for Norwegian.}.  
+\item a morphological analyser/generator with finite state transducers, compiled with the Xerox compiler xfst.  The lexicon contains 97.500 lemmas - almost half of them are proper nouns. One may compile two different variants of the analyser/generator -- \texttt{sme.fst/isme.fst} which is very tolerant, with morphological patterns based upon actual usage, and \texttt{sme-norm.fst/isme-norm.fst} which is normative, and adheres to the written standard \footnote{We use the abbreviations for the Sámi languages in accordance with the ISO 639-2 standard for language codes. The code is \textit{sme} for North Sámi and \textit{nob} for Norwegian.}.  
 \item a morphological disambiguator based on constraint grammar with manually written rule sets and a syntactic analyser which adds grammatical function and dependency (vislcg3). 
 \item number word generator, made with finite state transducers.
 \end{itemize}
@@ -63,9 +63,8 @@ The central goals for the development of the pedagogical programs were that:
 \begin{itemize}
 \item they should be very flexible: Teacher or student may choose exactly what they want to train, and adapt it to each student's linguistic skills 
 \item one should be able to restrict the vocabulary to particular textbooks, so that it is easy to integrate the tools to the instruction
-\item the student may choose between the main dialects for the task
-\item the student should get immediately feedback about errors
-\item the student should get translation and grammar help easily
+\item the student may choose between the main dialects 
+\item the student should get immediately feedback about errors and translation and grammar help easily
 \item the student and the teacher should be able to work with different topics instead of textbooks
 \item the programs should be accessible freely via Internet, without installing new programs in the computer
 \end{itemize}
@@ -87,7 +86,7 @@ The main lexicon of the basic transducer consists of the full Sámi vocabulary, 
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{presentation/img/noun-sme-lex.png}}\\
+\scalebox{.6}[.6]{\includegraphics{presentation/img/noun-sme-lex.png}}\\
 \caption{Example of entry in the main lexicon, \texttt{noun-sme-lex.txt}. AIGI is the continuation class.}
 \label{nounsmelex}
 \end{center}
@@ -100,7 +99,7 @@ We collected the lemmas, which were used in key textbooks for North Sámi, and a
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.6}[.6]{\includegraphics{presentation/img/nounlexicon.png}}\\
+\scalebox{.5}[.5]{\includegraphics{presentation/img/nounlexicon.png}}\\
 \caption{Example of entry in the pedagogical lexicon, \texttt{nouns.xml}.}
 \label{nounlex}
 \end{center}
@@ -109,10 +108,10 @@ We collected the lemmas, which were used in key textbooks for North Sámi, and a
 Some lemmas have homonymous base forms. Since they have different meanings, they belong to different semantic sets. When the student wants the translation of the lemma, it should be the translations which belongs to the particular semantic set, e.g. \textit{girdi} can be both "plane" (VEHICLE) and "pilot" (PROFESSION). Other homonomies have different inflection, and it is critical to choose the correct lemma when we are generating word forms from it, e.g. \textit{bassi} Sg -- \textit{basit} Pl (= holy day) and \textit{bassi} Sg -- \textit{bassit} Pl (= washer). We have solved the problem by giving different ids to the critical entries, e.g. \texttt{id="girdi\_vehicle"} vs. 
 \texttt{id="girdi\_profession"} and \texttt{id="bassi\_time"} vs. \textit{id="bassi\_actor"}.
 
-It works well as long as working with semantic classes, but if the user chooses "all" or a book, then he will not understand why the program doesn't accept his suggestions, e.g. "pilot" for \textit{girdi}. The solution is that the system then looks for the lemma, instead of the id.
+%It works well as long as working with semantic classes, but if the user chooses "all" or a book, then he will not understand why the program doesn't accept his suggestions, e.g. "pilot" for \textit{girdi}. The solution is that the system then looks for the lemma, instead of the id.
 
 \subsection{Sentence generator}\label{set}
-In order to be able to create a large number of potential tasks, we implemented a sentence generator. With the generator we can easily offer variation to the user, instead of tailoring every task with ready-made questions. The sentence generator is used both for generating questions and answer templates for our contextual morphology game, and for our QA game. There is an example from the generator on sentence matrices in Figure \ref{questionv}.
+In order to be able to create a large number of potential tasks, we implemented a sentence generator. With the generator we can easily offer variation to the user, instead of tailoring every task with ready-made questions. The sentence generator is used both for generating questions and answer templates for our contextual morphology game, and for our question-answer program. There is an example from the generator on sentence matrices in Figure \ref{questionv}.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -165,61 +164,66 @@ We see an example in Figure \ref{smelex}. We also marked entries in the pedagogi
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{presentation/img/smelex.png}}\\
+\scalebox{.49}[.49]{\includegraphics{presentation/img/smelex2.png}}\\
 \caption{Handling of dialect variation. From \texttt{sme-lex.txt}.}
 \label{smelex}
 \end{center}
 \end{figure}
 
-\newpage
 \subsection{System for feedback on morphology}
 
 The information in the lexicon about inflection is there only to give a good feedback to the student. If s/he doesn't inflect the lemma correctly, s/he can ask for hints about the inflection, and try once more, instead of getting the correct answer straight away. 
 
-We constructed the feedback system in two steps. The first step is to define what kind of message the system should provide, based upon the combination of morphological features in the lexicon and the inflection itself. In Figure \ref{feedbacknouns} vowel changing in illative Sg is defined for bisyllabic nouns which ends with the vowel \textit{i}:
-
+We constructed the feedback system in two steps. The first step is to define what kind of message the system should provide, based upon the combination of morphological features in the lexicon and the inflection itself. In Figure \ref{feedbacknouns} vowel changing in illative Sg is defined for bisyllabic nouns which ends with the vowel \textit{i}. The message tag is used to generate the feedback to the user. 
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.6}[.6]{\includegraphics{presentation/img/feedback_nouns.png}}\\
-\caption{The features in the lexicon are used to give message tags. Here the message tag is "i\_á". From \texttt{feedback\_nouns.xml}.}
+\scalebox{.5}[.5]{\includegraphics{presentation/img/morphfeedback.png}}\\
+\caption{The features in the lexicon are used to give message tags. Here the message tag is "i\_á". From \texttt{feedback\_nouns.xml} and \texttt{messages.xml}.}
 \label{feedbacknouns}
 \end{center}
 \end{figure}
 
-The message tag is used to generate the feedback to the user. The message can easily be translated into any language -- in Figure \ref{mess} it is in Norwegian.
 
-\begin{figure}[htbp]
-\begin{center}
-\scalebox{.5}[.5]{\includegraphics{presentation/img/messages.png}}\\
-\caption{Feedback to the user is generated from the message tags. Here for the message tag "i\_á". From \texttt{messages.xml}.}
-\label{mess}
-\end{center}
-\end{figure}
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.55}[.55]{\includegraphics{presentation/img/feedback_nouns.png}}\\
+%\caption{The features in the lexicon are used to give message tags. Here the message tag is "i\_á". From \texttt{feedback\_nouns.xml}.}
+%\label{feedbacknouns}
+%\end{center}
+%\end{figure}
+%
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.53}[.53]{\includegraphics{presentation/img/messages.png}}\\
+%\caption{Feedback to the user is generated from the message tags. Here for the message tag "i\_á". From \texttt{messages.xml}.}
+%\label{mess}
+%\end{center}
+%\end{figure}
 
 
-In the example in Figures \ref{feedbacknouns} and \ref{mess}, the correct illative Sg word form of \textit{mielki} is \textit{mielkái}. As we see in Figure \ref{nounlex}, this lemma has the feature \texttt{only-sg}, which means that we generate the lemma only in singular, even if it according to the main lexicon, also may be used in plural. This information is for pedagogical purposes; it is not that natural to use the plural form of a mass noun for a student on a lower level.
+In the example in Figures \ref{feedbacknouns}, the correct illative Sg word form of \textit{mielki} is \textit{mielkái}. %As we see in Figure \ref{nounlex}, this lemma has the feature \texttt{only-sg}, which means that we generate the lemma only in singular, even if it according to the main lexicon, also may be used in plural. This information is for pedagogical purposes; it is not that natural to use the plural form of a mass noun for a student on a lower level.
 
 
 \subsection{Analyser for student's input}\label{sentencefeedback}
 We have chosen not to use multiple-choice, but we let the student formulate his/her own answer. That means that we have to analyze the answer. To a certain question one may give many kinds of acceptable answers. In Sámi you may change word order, and also add many kinds of particles. \\
 
-\textit{Maid don lohket ikte?} (What did you read yesterday?)
-\begin{itemize}
-\item \textit{Mun han lohken ollu áviissaid.} (I PART read many newspapers.)
-\item \textit{Ikte mun gal lohken buori girjji.} (Yesterday I PART read a good book.)
-\item \textit{In lohkan maidege.} (I did not read anything.)
-\item \textit{Ikte in lohkan.} (Yesterday I did not read.)
-\end{itemize}
-
-
-But the answer may contain grammar errors:
-
-\begin{itemize}
-\item \textit{Mun lohket ollu áviissaid.} \\ $\rightarrow$ Remember agreement between subject and verbal.  
-\item \textit{Mun lohken ollu áviissat.} \\ $\rightarrow$ There should be an accusative in your answer. 
-\item \textit{Don lohket ollu áviissaid.} \\ $\rightarrow$ Are you sure that you answer with the correct person?  
-\end{itemize}
+%\textit{Maid don lohket ikte?} (What did you read yesterday?)
+%\begin{itemize}
+%\item \textit{Mun han lohken ollu áviissaid.} (I PART read many newspapers.)
+%\item \textit{Ikte mun gal lohken buori girjji.} (Yesterday I PART read a good book.)
+%\item \textit{In lohkan maidege.} (I did not read anything.)
+%\item \textit{Ikte in lohkan.} (Yesterday I did not read.)
+%\end{itemize}
+%
+%
+%But the answer may contain grammar errors:
+%
+%\begin{itemize}
+%\item \textit{Mun lohket ollu áviissaid.} \\ $\rightarrow$ Remember agreement between subject and verbal.  
+%\item \textit{Mun lohken ollu áviissat.} \\ $\rightarrow$ There should be an accusative in your answer. 
+%\item \textit{Don lohket ollu áviissaid.} \\ $\rightarrow$ Are you sure that you answer with the correct person?  
+%\end{itemize}
 
 We use vislcg3 for analysing the student's input. The program is based on constraint grammar, manually written, context dependent rules, mainly used for selecting the correct analysis in case of homonymy. Each rule either adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentential context. Context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). 
 
@@ -240,18 +244,18 @@ The question mark in the question is exchanged for a special symbol ("qst" QDL),
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{presentation/img/iktelohken2.png}}
+\scalebox{.5}[.5]{\includegraphics{presentation/img/iktelohken3.png}}
 \caption{Question and answer after morphological analyse and the script lookup2cg, but before disambiguation.}
 \label{iktelohken}
 \end{center}
 \end{figure}
 
 \subsubsection{Tutorial feedback}
-Tutorial feedback is feedback about grammar errors (CG prefix is \&grm), or about lexical choice, e.g. that the student does not use the verb or noun, which s/he is supposed to do (CG prefix is \&sem). In Figure \ref{cg3} we see a rule for assigning a tag if the student has not used accusative, when the question requires one. And in Figure \ref{maidlohket} we see how the vislcg3 file has disambiguated and added the tag to the input which is the analysis from Figure \ref{iktelohken}. The tag generates feedback to the student, as we see in Figure \ref{messv}.
+Tutorial feedback is feedback about grammar errors (CG prefix is \&grm), and in Figure \ref{cg3} we see a rule for assigning a tag if the student has not used accusative, when the question requires one. And in Figure \ref{maidlohket} we see how the vislcg3 file has disambiguated and added the tag to the input which is the analysis from Figure \ref{iktelohken}. The tag generates feedback to the student.
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.4}[.4]{\includegraphics{presentation/img/pedcg3.png}}
+\scalebox{.41}[.41]{\includegraphics{presentation/img/pedcg3ny.png}}
 \caption{If the interrogative pronoun is in accusative, we expect an accusative in the answer, if the question is not asking for a verb, e.g. "What do you do?" (WORK-V). The rule assigns (maps) a missing-Acc-tag to the interrogative pronoun if there is no accusative or negation verb in the answer. From \texttt{sme-ped.cg3}.}
 \label{cg3}
 \end{center}
@@ -259,37 +263,45 @@ Tutorial feedback is feedback about grammar errors (CG prefix is \&grm), or abou
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.45}[.45]{\includegraphics{presentation/img/maid_lohket_ikte2.png}}
-\caption{The grammarerrortag is added to the interrogative pronoun. (What did you read yesterday qst Yesterday I read an old book (Nom instead of Acc)). Output of vislcg3 grammar file \texttt{sme-ped.cg3}.}
+\scalebox{.47}[.47]{\includegraphics{presentation/img/vasta_feedback.png}}
+\caption{The grammarerrortag is added to the interrogative pronoun. (What did you read yesterday qst Yesterday I read an old book (Nom instead of Acc)), with help of vislcg3 grammar file \texttt{sme-ped.cg3}. The grammarerrortag generates tutorial feedback.}
 \label{maidlohket}
 \end{center}
 \end{figure}
 
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.45}[.45]{\includegraphics{presentation/img/maid_lohket_ikte3.png}}
+%\caption{The grammarerrortag is added to the interrogative pronoun. (What did you read yesterday qst Yesterday I read an old book (Nom instead of Acc)). Output of vislcg3 grammar file \texttt{sme-ped.cg3}.}
+%\label{maidlohket}
+%\end{center}
+%\end{figure}
+%
+%
+%
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.48}[.48]{\includegraphics{presentation/img/messages_vasta2.png}}
+%\caption{The grammarerrortag generates tutorial feedback. The feedback may be generated in different languages, here in Norwegian.}
+%\label{messv}
+%\end{center}
+%\end{figure}
 
+The biggest problem is the student's misspellings. If the spelling error makes a not-existing word form, then the message to the student is "The word form is not in our lexicon, can it be a spelling error?". But the misspelling can make another word form of the same lemma. For that we make rules based on context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give the a feedback according what the student think s/he has written. Feedback has to be tailored from what we know about the student’s interlanguage – and we make rules for sets of typical unintended lemmas.
 
-\begin{figure}[htbp]
-\begin{center}
-\scalebox{.55}[.55]{\includegraphics{presentation/img/messages_vasta.png}}
-\caption{The grammarerrortag generates tutorial feedback. The feedback may be generated in different languages, here in Norwegian.}
-\label{messv}
-\end{center}
-\end{figure}
-
-The biggest problem is the student's spelling errors. It is not a problem if the spelling error makes a not-existing word form. Then the message to the student is  "The word form is not in our lexicon, can it be a spelling error?" as in Figure \ref{messv}. But the spelling error can make another word form of the same lemma. For that we make rules based on context. The real problem emerges when the spelling error gives rise to an unintended lemma. Here are some examples and how we try to handle them:\\
-
-\begin{itemize}
-
-\item \textbf{Locative singular without consonant gradation} \\
-The locative singular form has the suffix -s and usually consonant gradation, compared to the base form. In our pedagogical lexicon there are 1512 nouns. By adding the suffix \textit{-s} directly to the stem without consonant gradation, the result is in 57 \% of the cases a correct but unintended word form (possessive suffix in Sg3 -- e.g. \textit{viessus} instead of \textit{viesus}). Only 0,5 \% of the resulting word forms are unintended new lemmas, e.g. adverbs \textit{eanas  (eatnamis)} or verbs, e.g \textit{čogus (čohkumis)}.
-
-The possessive suffices are quite seldom used by students at lower levels, so if it does not fit to the context, one can safely assume that s/he has meant locative, and give feedback according to that. 
-
-\item \textbf{Illative singular without diphthong simplification and vocal change}\\
-The illative singular form has the suffix \textit{-i} or \textit{-ii} and often  diphthong simplification and vocal change. Some words have consonant gradation. By adding the suffix directly to the stem, we get 2,3 \% unintended lemmas, mostly verbs in past tense Sg3, e.g. \textit{báddii}  (pro \textit{báddái}). Generally, one man consider identifying problematic word pairs and make feedback for each of them, asking the student if s/he meant the other member of the pair, especially when we are not expecting one more finite verb.
-\newpage
-\item \textbf{Incorrect negative verb form}\\
-When the verb in the question is in Sg2, a common error is that the student use the Sg2 form of the verb after the negative verb, instead of the correct ConNeg form, e.g. \textit{Logat go áviissa? In logat (loga) áviissa.} The correct form is in the parentheses. The problem is that the errouneous form is a ConNeg form of another verb, \textit{logadit}, and the normal feedback will be: "You should answer with the same verb as in the question." The student will not understand this, because s/he thinks that the word form in the answer is an instance of the same verb. The solution was to generate all these forms of the verbs in the questions, make a set of them, and make a rule for in the right context, give the feedback: "The negative form is not correct." 
-\end{itemize}
+%\begin{itemize}
+%
+%\item \textbf{Locative singular without consonant gradation} \\
+%The locative singular form has the suffix -s and usually consonant gradation, compared to the base form. In our pedagogical lexicon there are 1512 nouns. By adding the suffix \textit{-s} directly to the stem without consonant gradation, the result is in 57 \% of the cases a correct but unintended word form (possessive suffix in Sg3 -- e.g. \textit{viessus} instead of \textit{viesus}). Only 0,5 \% of the resulting word forms are unintended new lemmas, e.g. adverbs \textit{eanas  (eatnamis)} or verbs, e.g \textit{čogus (čohkumis)}.
+%
+%The possessive suffices are quite seldom used by students at lower levels, so if it does not fit to the context, one can safely assume that s/he has meant locative, and give feedback according to that. 
+%
+%\item \textbf{Illative singular without diphthong simplification and vocal change}\\
+%The illative singular form has the suffix \textit{-i} or \textit{-ii} and often  diphthong simplification and vocal change. Some words have consonant gradation. By adding the suffix directly to the stem, we get 2,3 \% unintended lemmas, mostly verbs in past tense Sg3, e.g. \textit{báddii}  (pro \textit{báddái}). Generally, one man consider identifying problematic word pairs and make feedback for each of them, asking the student if s/he meant the other member of the pair, especially when we are not expecting one more finite verb.
+%\newpage
+%\item \textbf{Incorrect negative verb form}\\
+%When the verb in the question is in Sg2, a common error is that the student use the Sg2 form of the verb after the negative verb, instead of the correct ConNeg form, e.g. \textit{Logat go áviissa? In logat (loga) áviissa.} The correct form is in the parentheses. The problem is that the errouneous form is a ConNeg form of another verb, \textit{logadit}, and the normal feedback will be: "You should answer with the same verb as in the question." The student will not understand this, because s/he thinks that the word form in the answer is an instance of the same verb. The solution was to generate all these forms of the verbs in the questions, make a set of them, and make a rule for in the right context, give the feedback: "The negative form is not correct." 
+%\end{itemize}
 
 
 \subsubsection{Navigating in the dialogue}
@@ -300,7 +312,7 @@ Some dialogues are branched according to how the student answers, e.g. if the qu
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.55}[.55]{\includegraphics{presentation/img/picking_age.png}}\\
+\scalebox{.4}[.4]{\includegraphics{presentation/img/picking_age2.png}}\\
 \caption{Rules for giving age-tag to the input. Special rules for the question named Man\_boaris\_don\_leat (How\_old\_are\_you). From \texttt{sme-ped.cg3}.}
 \label{age}
 \end{center}
@@ -309,7 +321,7 @@ Some dialogues are branched according to how the student answers, e.g. if the qu
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.55}[.55]{\includegraphics{presentation/img/Man_boaris.png}}\\
+\scalebox{.40}[.40]{\includegraphics{presentation/img/Man_boaris.png}}\\
 \caption{Example of how to navigate to the next question or branch, with help of the tag. The question is "How old are you?" and the branches are adapted to the age of the student. From \texttt{dialogue\_firstmeeting.xml}.}
 \label{branch}
 \end{center}
@@ -318,31 +330,39 @@ Some dialogues are branched according to how the student answers, e.g. if the qu
 As we see in the Figures \ref{maidlohket} and \ref{branch}, the questions in the dialogues are not generated, but written. Every question has its own unique name, so we can link to it, and it is also possible to make a rule for a special question, like in Figure \ref{age}.  
 
 
-\section{Games}
+\section{The design}
+There are alltogehter five programs. We will here describe three of them. The other two is Numra, a numeral exercise based on the number word generator, and Leksa, a word quiz based on the pedagogical lexicon. 
+
+\subsection{Morfa -- word inflection}
+This is a drill made to train morphological patterns. It draws lemmas from the pedagogical lexicon at random, and the student has to answer with the word form. 
+
+The student can restrict the sets to certain morphosyntactic features, like Part of Speech (verbs, nouns, adjectives and numerals), and for the three first of them, it can be restricted to bisyllabic, trisyllabic and contracted stems. She can also restrict the vocabulary to certain textbooks.
+
+We have made two versions of the drill: Morfa-S is a bare morph-drill with singleton words. Morfa-C is a contextual morph drill, which gives matrix questions, in order to strengthen the linguistic context. After submitting the final version of the answers, the student gets a score, and a comment connected to the score.
+
+
 \subsection{Vasta -- open questions}	
 
 In between the "natural" dialogues, mimicking real life dialogues, and the pure grammar training session, inquiring paradigm forms, we have made Vasta -- a question-answer drill. The drill has two question types: Yes/no questions and wh-questions. 
 
 There are two motives for making this game type. First, our tailored dialogues in Sahka run the risk of getting quickly consumed. With a QA drill we may generate an indefinite number of questions. Second, the students need to automate the question-answer routine -- inflecting the finite verb correctly and choose the correct case form.
 
-The questions are generated, the question and answer are analysed together, and the student gets feedback, as described in \ref{sentencefeedback}. The question matrices are marked with level, so there is a level option. Only one question is presented at a time. The student can answer what s/he wants, but s/he has to use a full sentence (containing a finite verb), and use the same verb as in the question. The pronouns are not allowed to be interpreted inclusive \textit{we — you}, not \textit{we — we}.
-
-There are 111 matrix questions divided into levels:
-\begin{itemize}
-\item Level 1: verb only in present tense, logical cases
-\item  Level 2: verb in past tense, and some verbs with oblique cases, use of postpositions, questions in which the student has to answer with case in plural,  numerals and collective numerals in nominative
-\item  Level 3: grade: numerals inflected in cases, conditional, time expressions, collective numerals
-\end{itemize}
-\vspace{0.5cm}
+The questions are generated, the question and answer are analysed together, and the student gets feedback, as described in \ref{sentencefeedback}. The question matrices are marked with level, so there is a level option. Only one question is presented at a time. The student can answer what s/he wants, but s/he has to use a full sentence (containing a finite verb), and use the same verb as in the question. The pronouns are not allowed to be interpreted inclusive \textit{we — you}, not \textit{we — we}. There are 111 matrix questions divided into levels.
+%\begin{itemize}
+%\item Level 1: verb only in present tense, logical cases
+%\item  Level 2: verb in past tense, and some verbs with oblique cases, use of postpositions, questions in which the student has to answer with case in plural,  numerals and collective numerals in nominative
+%\item  Level 3: grade: numerals inflected in cases, conditional, time expressions, collective numerals
+%\end{itemize}
+%\vspace{0.5cm}
 
 
-\begin{figure}[htbp]
-\begin{center}
-\scalebox{.4}[.4]{\includegraphics{presentation/img/vasta.png}}\\
-\caption{Vasta, at \textit{http://victorio.uit.no/oahpa/vasta/}}
-\label{vasta}
-\end{center}
-\end{figure}
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.4}[.4]{\includegraphics{presentation/img/vasta.png}}\\
+%\caption{Vasta, at \textit{http://victorio.uit.no/oahpa/vasta/}}
+%\label{vasta}
+%\end{center}
+%\end{figure}
 
 	
 
@@ -361,18 +381,18 @@ Each dialogue is made to a scenario, and each scenario has are underlying pedago
 
 In the Get-acquainted-to-dialogues the student can choose an identity for the conversation (s/he chooses a picture). These identities will act as parameters for choice of comments from the computer, and for dialogue topics and dialect forms.
 
-\vspace{0.5cm}
-	
-Scenarios:
-\begin{itemize}
-\item Get acquainted to Hánsa -- an adult man living in Kautokeino
-\item Get acquainted to Káre -- an adult woman living in Karasjok
-\item Get acquainted to Lisa -- a girl living in Tana
-\item Get acquainted to Lemet -- a boy living in Tromsø
-\item Visit -- help to move furniture from one room to another, and have a coffee break
-\item Grocery -- buying food
-\item Comparing in the shop -- tell what is cheapest or most expensive, using adjectives in comparative or superlative
-\end{itemize}
+%\vspace{0.5cm}
+%	
+%Scenarios:
+%\begin{itemize}
+%\item Get acquainted to Hánsa -- an adult man living in Kautokeino
+%\item Get acquainted to Káre -- an adult woman living in Karasjok
+%\item Get acquainted to Lisa -- a girl living in Tana
+%\item Get acquainted to Lemet -- a boy living in Tromsø
+%\item Visit -- help to move furniture from one room to another, and have a coffee break
+%\item Grocery -- buying food
+%\item Comparing in the shop -- tell what is cheapest or most expensive, using adjectives in comparative or superlative
+%\end{itemize}
 
 
 Each dialogue consists of many branches, and different links according to the student's input. To organize them, we have made different levels:
@@ -394,13 +414,12 @@ Every utterance has a name, and one link or alternative links. The choice of alt
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{presentation/img/targetIll.png}}
+\scalebox{.4}[.4]{\includegraphics{presentation/img/targetIll.png}}
 \caption{A rule in \texttt{ped-sme.cg3} for giving target-tag to an noun or pronoun in illative after a question with the interrogate \textit{guhte} + a noun in illative ( = "to which"). This a general rule, not connected to any particular question.}
 \label{targetIll}
 \end{center}
 \end{figure}
 
-\newpage
 A topic is like a module in the dialogue, and it is easy to put an new module subsequent to any topic. The linking makes is possible to make branches. Every utterance have a unique name.  
 
 Sahka is a simple dialogue system, in which only the program can make initiatives, and all the utterances from the program, are written. The program can store simple information as the student's name, place where s/he lives and his/her car type, for using in as a variable in a tailored utterance. If we want to develop the program with generating of utterances, and a more freely dialogue, and also let the student take initiatives, we should use an analyser, which maps semantic roles to the student's input, despite possible syntactic errors. Giving semantic tags to the verbs and the nouns in the lexicon, could be a good help. 
@@ -417,12 +436,9 @@ It should be noted that Vasta and the dialogue game Sahka use the grammatical an
 
 \section{Conclusion}
 
-By using a sloppy version of the syntactical analyser for North Sámi, combined with a set of error-detection rules, we have been able to build a flexible CALL resource.
-
-The programs are made of modules, and it is easy to improve each module, and also to add more materials -- words, tasks, dialogues, levels, words from textbooks. 
+By using a sloppy version of the syntactical analyser for North Sámi, combined with a set of error-detection rules, we have been able to build a flexible CALL resource. The programs are made of modules, and it is easy to improve each module, and also to add more materials -- words, tasks, dialogues, levels, words from textbooks. 
 
 The program is something quite new among pedagogical programs for Sámi. They are not linked to a certain chapter in a textbook, or to a certain level in the student's progression. Instead, all programs have many options, so the student can choose what to exercise, and on what level. The QA and dialogue games are tolerant towards variation in student answer (not only string matching), and the random generation of tasks more or less in all of the programs, the student can use them over and over again. 
-
 
 
 \newpage
