@@ -6362,6 +6362,12 @@ LIST VIESSOGALVVUT-Q = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_lahttela
 
 #LIST VIESSOGALVVUT-NOT-WC = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_lahttelamppa gosa_bidjat_lohkanlamppa gosa_bidjat_soffa ;  
 
+#LIST SCARFS = guhkki oanehaš ;
+#LIST BALLS =  stuoris unni;
+#LIST PENCILS = gassat seaggi ;
+#LIST BOOKS = assái asehaš ;
+#LIST CAMERAS = buorre heittot ;
+#LIST TROUSERS = gallji baski ;
 
 # Question according to wordlists:
 MAP (&sem-not_wordlist) TARGET QDL IF (0 VIESSOGALVVUT-Q)(*1 (&dia-target) BARRIER Neg LINK NOT 0 ROOMS)  ;
