@@ -6288,6 +6288,12 @@ MAP (&dia-pos) TARGET QDL IF (*-1 Qst OR go)(NOT *1 Neg);
 
 LIST NOTHING = Foc/ge "mihkkege" "giige" ;
 
+LIST CAR = Lea_go_dus_biila_adult ;
+
+MAP (&dia-target) TARGET PROFESSION IF (*-1 QDL LINK 0 BARGGUS);
+MAP (&dia-target) TARGET (Prop Obj) IF (*-1 QDL LINK 0 CAR);
+
+
 # The general ones:
 LIST NUM-ADV = "oktii" "guktii" "golbmii" "njelljii" "vihttii" "guhttii" "čihččii" "gávccii" "ovccii" ;
 
