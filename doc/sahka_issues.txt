@@ -1,7 +1,12 @@
 Sahka - Some issues
 
+Comments from LENE
+
+
 Pertaining to all dialogues:
 Users are expected to use the same verb as in the question. This expectation is currently rather strict, so that an answer with only one /i/ in the verb "háliidit" is not accepted, when the verb is written with two /i/s in the question. However, both spellings are acceptable. 
+
+LENE: I know the problem. But "hálidit" is not accepted by Divvun, so with sem-norm.fst the student will get feedback about misspelling.
 
 Visit
 
@@ -9,24 +14,33 @@ Overall:
 ========
 We should probably vary the verbs a little. There are 8 questions with the verb "bidjat", and since the computer does not accept answers with a different verb, the user is stuck with this verb. Other verbs such as "heivet", "guoddit", "doalvut" also need to be answered with the illative when combined with "gosa" or "guđe latnjii". In the dialogue "Grocery", several different verbs yielding the same types of answers have been used.
 
+LENE: I agree. You are welcome to change in the dialogue.
+
+
 Strange feedback:
 =================
 Gievkkanis lea vuogas čohkkát. Lássaráiggis oaidná meara. Manne go gievkkanii?
 Mannu fal.
 - Lássaráiggisoaidná" finnes ikke i vårt leksikon. Kan det være en skrivefeil?
 Correcting the answer to Moai manne gievkkanii did not help, and the same feedback was given. The dialogue stops there.
+LENE: Saara is working with the problem (sátnegaska jávká).
+
 
 An answer like : Dan bidje stohpui gives the feedback:
 -Husk kongruens mellom subjekt og verbal
 The answer was corrected to: Dan bidjá stohpui.
 This was accepted, although the question was Guđe latnjii moai bidje láhttelámppá?
+LENE: It is fixed
 
 Grocery
 
 Overall:
 ========
 We should have more grocery options. I will come up with more words with imparisyllabic stems (preferably with gradation) and contracted stems (if there are any). I also think we need more consonant centre types among the options, if the idea is to practise the accusative.
+LENE: we can add more nouns in sme-ped.cg3. I will show you. But all nouns has to be adde to nouns.xml also.
+
 4 different verbs have been used, "áigut", "háliidit", "oastit" and "váldit". The latter two are used once each over the 9 questions. I think there is too much "áigut" and "háliidit" still.
+LENE: you are wellcome to change the verbs. in the dialogue.
 
 Strange feedback:
 =================
@@ -39,12 +53,14 @@ Makkár njálgáid don háliidat?
 In hálit njálgáid.
 - Svaret burde inneholde en akkusativ.
 
+LENE: These function well in my testbench. It they don´t function on web, then we have to ask Saara.
+
 Shop
 
 Overall:
 ========
 Often I get the feedback "Du har ikke brukt riktig adjektiv. Prøv igjen.". Perhaps we should have adjective options in this game. It is difficult to know whether the biggest ball is not also the most rounded ball, when you get the feedback about wrong adjective. Or is it the closest, therefore seemingly the biggest. If for example the adjective in question is stuoris, should we have it listet along with unni? 
-
+LENE: there should be a list visible - I have sent bz to Saara.
 
 Strange feedback:
 =================
@@ -52,10 +68,12 @@ Goabbá šearfa lea divraseabbo?
 Guhkit šearfa lea divraseabbo
 - Du bør her svare med samme verbet som det spørres med.
 Corrected answer to: Guhkit lea divraseabbo. This is accepted 
+LENE: These function well in my testbench. It they don´t function on web, then we have to ask Saara.
 
 Guhte spábba lea divraseamos?
 Stuorámus spábba lea divraseamos
 Du har ikke brukt riktig adjektiv. Prøv igjen.
+LENE: These function well in my testbench. It they don´t function on web, then we have to ask Saara.
 
 First meeting
 
@@ -77,6 +95,8 @@ Leat go dus mánát?
 
 Is it possible to distinguish between just affirmative answers, and affirmative answers with type and amount information, so that if the user gives this information already in the first question, she will not be asked the same again.
 
+
+
 Strange feedback:
 =================
 "Mus lea okta mánná" is not accepted as answer to the question "Leat go dus mánát":
@@ -85,8 +105,11 @@ Leat go dus mánát?
 - Mus leat mánát.
 Galle máná dus leat?
 Mus lea okta mánná. (accepted as answer)
+LENE: This I have fixed in sme-ped.cg3
 
 Pro-drop is not accepted everywhere:
 Makkár bargu dus lea?
 - Lean duojár. - Er du sikker på at du svarer i riktig person
 - Mun lean duojár. (accepted as answer)
+
+LENE: This I have fixed in sme-ped.cg3
