@@ -5798,11 +5798,11 @@ SELECT Gen (0 Dem) (1C Gen)(*1 QDL) ;
 #REMOVE Po (-1C Po)(*1 QDL) ; 
 #REMOVE Pr (-1C Po)(*1 QDL) ; 
 SELECT Acc (*-1 ("vázzit"))(0 EDUCATION)(*1 QDL) ;
-SELECT (V Sg2) (-1 BOS)(1 go LINK 1 (Sg2 Nom)) (*1 QDL) ;
-SELECT (V Sg2) (-1 BOS)(1 go LINK NOT 1 Pers) (*1 QDL) ;
+SELECT (V Ind Sg2) (-1 BOS)(1 go LINK 1 (Sg2 Nom)) (*1 QDL) ;
+SELECT (V Ind Sg2) (-1 BOS)(1 go LINK NOT 1 Pers) (*1 QDL) ;
 SELECT V-3 (-1 BOS)(1 go LINK 1 Loc) (*1 QDL) ;
 SELECT (Pers Gen)(1 N) (*1 QDL) ;
-SELECT (Sg2 Nom) (-1 go LINK -1 (V Sg2))(0 ("dot")) ; 
+SELECT (Sg2 Nom) (-1 go LINK -1 (V Ind Sg2))(0 ("dot")) ; 
 #SELECT Attr (0 ("makkár"))(1 N) (*1 QDL) ;
 
 # Getting rid of leksem homonymi
@@ -5837,7 +5837,7 @@ LIST VFIN-PRON-TAG = Sg1 Sg2 Sg3 Du1 Du2 Du3 Pl1 Pl2 Pl3 ;
 LIST DUALIS-NOUN = (".*#guovttis"r) (".*#guovttos"r) ;
 
 # Removing other readings when there is one correct one:
-SELECT:sticky $$VFIN-PRON-TAG (0 V)(-1 $$VFIN-PRON-TAG LINK 0 (Pers Nom)) ;
+SELECT:sticky $$VFIN-PRON-TAG (0 V LINK 0 Ind OR Cond OR Pot)(-1 $$VFIN-PRON-TAG LINK 0 (Pers Nom)) ;
 SELECT (V Sg3) (-1 (N Sg Nom)) ;
 SELECT (V Pl3) (-1 (N Pl Nom)) ;
 SELECT (V Du3) (-1 DUALIS-NOUN + Nom) ;
@@ -5954,6 +5954,7 @@ REMOVE Acc (-1 BOS)(0 ("galle") OR ("gallis") LINK NOT *1 V-TRANS-ACT-NOT-ACT BA
 REMOVE Loc (-1 BOS)(0 ("galle") LINK 1 VFIN)(*1 QDL);
 #REMOVE Nom (-1 BOS)(0 ("galle") LINK 1 N)(*1 QDL);
 REMOVE Gen (0 TARGETQUESTION-ACC LINK -1 BOS)(1 VFIN OR Pron);
+SELECT Gen (0 TARGETQUESTION-ACC LINK -1 BOS)(*1 N BARRIER NPNH);
 
 MAP (&grm-missing-NumSg) TARGET ("galle" Sg Nom) IF (*1 QDL LINK NOT *1 (Num Sg) OR Neg BARRIER S-BOUNDARY);
 MAP (&grm-missing-NumPl) TARGET ("galle" Pl) IF (*1 QDL LINK NOT *1 (Num Pl) OR Neg BARRIER S-BOUNDARY);
@@ -6066,9 +6067,10 @@ MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl
 
 LIST GALLE-VIELJA = galle_viellja_ja_oabbá_child galle_viellja_ja_oabbá_young galle_viellja_ja_oabbá_adult ;
 
-MAP (&grm-numeral-wrong-case) TARGET (N Nom) IF (NOT 0 Gen OR Acc)(*-1 Num BARRIER NOT-ADJ LINK NOT 0 N OR OKTA LINK *-1 QDL);
-MAP (&grm-numeral-wrong-case) TARGET (N Gen) IF (NOT 0 Nom)(*-1 OKTA BARRIER NOT-ADJ LINK -1 COPULAS LINK *-1 QDL);
-MAP (&grm-numeral-wrong-case) TARGET (N Gen) IF (NOT 0 Nom)(*-1 OKTA BARRIER NOT-ADJ LINK *-1 GALLE-VIELJA);
+MAP (&grm-numeral-wrong-case) TARGET (N Sg Nom) IF (NOT 0 Gen OR Acc)(*-1 (Num Sg) BARRIER NOT-ADJ LINK NOT 0 N OR OKTA LINK *-1 QDL);
+MAP (&grm-numeral-wrong-case) TARGET (N Sg Gen) IF (NOT 0 Nom)(*-1 OKTA BARRIER NOT-ADJ LINK -1 COPULAS LINK *-1 QDL);
+MAP (&grm-numeral-wrong-case) TARGET (N Sg Gen) IF (NOT 0 Nom)(*-1 OKTA BARRIER NOT-ADJ LINK *-1 GALLE-VIELJA);
+MAP (&grm-numeral-wrong-case) TARGET (N Pl Gen) IF (NOT 0 Nom)(*-1 Num BARRIER NOT-ADJ LINK NOT 0 (Pl Gen) LINK *-1 QDL);
 
 
 # guokte viesu
