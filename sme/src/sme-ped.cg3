@@ -6163,7 +6163,7 @@ MAP (&sem-dont-know) TARGET ("diehtit" ConNeg) (*-1 QDL BARRIER S-BOUNDARY LINK 
 
 LIST VERBLEMMA = (".*"r) ;
 
-LIST BARGGUS = Leat_go_barggus_adult Leat_go_barggus_adult ;
+LIST BARGGUS = Leat_go_barggus_adult Leat_go_barggus_young ;
 
 MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
@@ -6297,7 +6297,7 @@ MAP (&grm-incorr-tense-past) TARGET PAST-MARKER (-1 VFIN + Prs LINK NOT 0 Prt LI
 
 # leat_go_dus_mánát - for this one we do not want dia-pos:
 
-MAP (&dia-neg) TARGET QDL (0 (leat_go_dus_mánát_adult) LINK *1 Num);
+MAP (&dia-pass) TARGET QDL (0 (leat_go_dus_mánát_adult) LINK *1 Num);
 
 
 MAP (&dia-neg) TARGET QDL IF (*1 Neg BARRIER S-BOUNDARY);
@@ -6317,8 +6317,8 @@ LIST NOTHING = Foc/ge "mihkkege" "giige" ;
 
 LIST CAR = Lea_go_dus_biila_adult ;
 
-MAP (&dia-target) TARGET PROFESSION IF (*-1 QDL LINK 0 BARGGUS);
-MAP (&dia-target) TARGET (Prop Obj) IF (*-1 QDL LINK 0 CAR);
+MAP (&dia-pass) TARGET PROFESSION IF (*-1 QDL LINK 0 BARGGUS);
+MAP (&dia-pass) TARGET (Prop Obj) IF (*-1 QDL LINK 0 CAR);
 
 
 # The general ones:
