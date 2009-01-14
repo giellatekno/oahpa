@@ -636,8 +636,9 @@ class ContextMorfaQuestion(OahpaQuestion):
         # Select words for the the answer
         selected_awords = self.select_words(qwords, awords)
 
-
-        form_list=[]        
+        form_list=[]
+        if not selected_awords.has_key(task):
+            raise Http404(task + " " + atext + " " + str(qanswer.id))			
         if len(selected_awords[task]['fullform'])>0:
             for f in selected_awords[task]['fullform']:				
                 self.correct_anslist.append(force_unicode(f))
@@ -812,10 +813,10 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
     word = os.popen(data_lookup).readlines()
     analyzed=""
     for c in word:
-        c=c.rstrip().lstrip()
+        c=c.strip()
         lookup_client.send(c)
         analyzed = analyzed + lookup_client.recv(512)
-        analysis2=analyzed
+        analysis3=c + analyzed + c
 
     analysis = analysis + analyzed
 
@@ -833,7 +834,7 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
     constantObj=re.compile(r'^.*\"\<(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\>\".*$', re.U)
     diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
 
-
+    # Each wordform may have a set of tags.
     spelling = False
     msgstrings = {}
     diastring = "jee"
@@ -841,15 +842,18 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
     for line in checked:
         line = line.strip()
 
+        #Find the lemma first
         matchObj=constantObj.search(line)
         if matchObj:
             lemma = matchObj.expand(r'\g<targetString>')
 
+        #The wordform
         matchObj=wordformObj.search(line)
         if matchObj:
             wordform = matchObj.expand(r'\g<msgString>')
             msgstrings[wordform] = {}
             
+        #grammatical/semantic/other error
         matchObj=messageObj.search(line)
         if matchObj:
             msgstring = matchObj.expand(r'\g<msgString>')
@@ -857,14 +861,14 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
                 spelling = True
             msgstrings[wordform][msgstring] = 1
 
-        #Search for baseform
+        #Store the baseform if tehre is dia-whatever
         matchObj=targetObj.search(line)
         if matchObj:
             msgstring = matchObj.expand(r'\g<targetString>')
             msgstrings[wordform]['dia-target'] = msgstring
             msgstrings[wordform]['dia-lemma'] = lemma
 
-        # dia-whatever
+        # What is the dia-tag?
         matchObj=diaObj.search(line)
         if matchObj:
             msgstring = matchObj.expand(r'\g<targetString>')
@@ -900,6 +904,9 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
         if msgstrings[w].has_key('dia-target'):
             constant = msgstrings[w]['dia-lemma']
             variable = msgstrings[w]['dia-target']
+        if msgstrings[w].has_key('dia-unknown'):
+            constant = msgstrings[w]['dia-lemma']
+            variable = msgstrings[w]['dia-unknown']
                     
     if not msg:
         self.error = "correct"
@@ -922,7 +929,6 @@ class VastaSettings(OahpaSettings):
         self.set_default_data()
         self.default_data['gametype'] = 'qa',
         super(VastaSettings, self).__init__(*args, **kwargs)
-
 
 class VastaQuestion(OahpaQuestion):
     """
