@@ -3,7 +3,7 @@ import string
 import sys
 import os
 import re
-from django import newforms as forms
+from django import forms
 from django.http import Http404
 from django.db.models import Q
 from django.utils.translation import ugettext as _
