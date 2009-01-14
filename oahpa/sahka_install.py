@@ -14,7 +14,7 @@ import codecs
 class Sahka:
 
     def add_wordlist(self,word,t):
-        cgfile="/Users/saara/ped/sme/src/sme-ped.cg3"
+        cgfile="/opt/smi/sme/bin/sme-ped.cg3"
 
         wordclass = word.getAttribute("class")
         print wordclass
@@ -35,6 +35,10 @@ class Sahka:
                         word = Form.objects.filter(fullform=w)[0]
                         t.formlist.add(word)
                         t.save()
+        else:
+            print "***ERROR: no class", wordclass, "found." 
+        if t.formlist.all().count()==0:
+            print "***ERROR: no words found for", wordclass
         cgfileObj.close()                        
 
     def read_dialogue(self,infile):
@@ -64,7 +68,7 @@ class Sahka:
             t.image=image
             t.save()
 
-            if topic.getElementsByTagName("word"):
+            if topic.childNodes[0].localName == "word":
                 word = topic.getElementsByTagName("word")[0]
                 self.add_wordlist(word,t)
             topicnum=topicnum+1
@@ -77,6 +81,7 @@ class Sahka:
             for utt in topic.getElementsByTagName("utt"):
                 utt_name = utt.getAttribute("name")
                 utttype = utt.getAttribute("type")
+                uttlink = utt.getAttribute("link")
                 if utttype:
                     if utttype == "opening": opening = True
                     if utttype == "closing": closing = True
@@ -103,6 +108,7 @@ class Sahka:
                 utterance['name'] = utt_name
                 utterance['type'] = utttype
                 utterance['word'] = utt_word
+                utterance['link'] = uttlink
                 utterance['number'] = i
                 i=i+1
                 utterance['alts'] = []
@@ -137,6 +143,7 @@ class Sahka:
                                                                topic=t,\
                                                                name=u['name'])
                 if u['word']:
+                    print "Adding wordlist", u['text']
                     self.add_wordlist(u['word'],utt)
                 utt.save()
 
@@ -173,14 +180,22 @@ class Sahka:
             for u in topicutts[tname]:
                 utterance2=None
                 next_utterance=None
+                linkutt0=None
                 linkutt=None
                 linkutt2=None
                 utterance = Utterance.objects.get(name=u['name'],topic=t)
-                #print utterance.utterance
+                print utterance.utterance
+                if u['link']:
+                    next_utterance = Utterance.objects.get(Q(name=u['link']) & Q(topic__dialogue=t.dialogue))
+                    print "..linking to", next_utterance.utterance
+                    linkutt0, created = LinkUtterance.objects.get_or_create(link=next_utterance,target="default")
+                    linkutt0.save()
+                    utterance.links.add(linkutt0)
+                    utterance.save()
                 for a in u['alts']:
 
                     if a['link']:
-                        print a['link']
+                        #print a['link']
                         #print t.dialogue.name
                         #print t.dialogue.id
                         #print utterance.id
