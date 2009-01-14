@@ -80,7 +80,7 @@ class QAGame(Game):
         if word:
             form_list = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word.id) & Q(dialects__dialect=dialect))
             if not form_list:
-                if test: raise Http404(qelement.id + " " + tag_el.id + " " + word.id)
+                if self.test: raise Http404(qelement.id + " " + tag_el.id + " " + word.id)
                 return []
 
             fullform = form_list[0].fullform
@@ -116,7 +116,7 @@ class QAGame(Game):
 
         # Handle all grammatical elements one at the time
         # 1. SUBJ-MAINV argreement
-        #if test: raise Http404(qwords_list)
+        #if self.test: raise Http404(qwords_list)
 
         if 'SUBJ' in set(qwords_list):
             
@@ -131,7 +131,7 @@ class QAGame(Game):
             # If there was no tag elements, there is nothing to do.
             # Subject tag is needed for everything else. 
             if tag_el_count == 0:
-                if test: raise Http404("0 tag count" + " " + qwords_list)
+                if self.test: raise Http404("0 tag count" + " " + qwords_list)
                 return None
             
             tag_el = subj_el.tags.all()[randint(0, tag_el_count-1)]
@@ -148,7 +148,7 @@ class QAGame(Game):
                 info = self.get_qword(subj_el, tag_el)
 
             if not info:
-                if test: raise Http404("not info " + qwords_list)
+                if self.test: raise Http404("not info " + qwords_list)
                 return None
             
             subjword = info
@@ -194,14 +194,14 @@ class QAGame(Game):
                 mainv_word = info
 
                 if not mainv_word:
-                    if test: raise Http404("not mainv_word " + qwords_list)
+                    if self.test: raise Http404("not mainv_word " + qwords_list)
                     return None
                 else:
                     mainv_word['number'] = tag_el.personnumber
                     qwords['MAINV'] = mainv_word
 
             if not mainv_word:
-                if test: raise Http404("not mainv" + " " + qwords_list)
+                if self.test: raise Http404("not mainv" + " " + qwords_list)
                 return None
                 
 
@@ -212,7 +212,7 @@ class QAGame(Game):
 
             tag_el=None
             word = {}
-            
+            anumber = ""            
             elements = self.get_elements(question,s)
             if elements:
                 element = elements[randint(0, len(elements)-1)]
@@ -224,11 +224,28 @@ class QAGame(Game):
                     if qwords.has_key(copy_syntax):
                         word = qwords[copy_syntax]
 
-                else:                
+                if element.agreement:
+                    agr_id = element.agreement_id
+                    agr_el = QElement.objects.get(id=agr_id)
+                    agr_syntax = agr_el.identifier
+                    if qwords.has_key(agr_syntax):
+                        qword = qwords[agr_syntax]
+                        if qword.has_key('tag'):
+                            agr_tag_id = qword['tag']
+                            agr_tag = Tag.objects.get(id=agr_tag_id)
+                            if agr_tag.personnumber:
+                                anumber = agr_tag.personnumber
+                            else:
+                                anumber = agr_tag.number
+                            tag_count = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber)).count()
+                            if tag_count>0:
+                                tag_el = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber))[randint(0, tag_count-1)]
+                if not tag_el: 
                     tag_el_count = element.tags.count()
                     if tag_el_count > 0:
                         tag_el = element.tags.all()[randint(0, tag_el_count-1)]
 
+                if tag_el:
                     # Select random word
                     info = self.get_qword(element, tag_el)
                     word = info                    
@@ -238,7 +255,7 @@ class QAGame(Game):
                 word = info
 
             if not word:
-                if test: raise Http404("not word " + qwords_list)
+                if self.test: raise Http404("not word " + "".join(qwords_list))
                 return None
             qwords[s] = word
 
@@ -451,7 +468,7 @@ class QAGame(Game):
                     if agr_tag.personnumber:
                         anumber = agr_tag.personnumber
                     else:
-                        anumber = agr_tag.personnumber
+                        anumber = agr_tag.number
                     tag_count = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber)).count()
                     if tag_count>0:
                         tag_elements = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber))
@@ -469,12 +486,12 @@ class QAGame(Game):
             else:
                 info = { 'qelement' : element.id, 'word' : word_id, 'tag' : tag_el.id  }
             if not info:
-                if test: raise Http404("not info " + question.id)
+                if self.test: raise Http404("not info " + question.id)
                 return None
             swords.append(info)
 
         if not swords:
-            if test: raise Http404("not swords " + str(question.id) + " " + s + str(element.id))
+            if self.test: raise Http404("not swords " + str(question.id) + " " + s + str(element.id))
             return None
         awords[s] = swords
 
@@ -583,14 +600,14 @@ class QAGame(Game):
                 awords = self.generate_answers_mainv(answer, question, awords, db_info['qwords'])
 
             # Rest of the syntax
-            #if test: raise Http404(words_strings)
+            #if self.test: raise Http404(words_strings)
             for s in words_strings:
                 awords = self.generate_syntax(answer, question, awords, db_info['qwords'], s)
                 if not awords:
-                    if test: raise Http404("problem" + s)
+                    if self.test: raise Http404("problem" + s)
                     return "error"
                 if not awords.has_key(s):
-                    if test: raise Http404("problem2" + s)
+                    if self.test: raise Http404("problem2" + s)
                     return "error"
                     
         db_info['answer_id'] = answer.id
