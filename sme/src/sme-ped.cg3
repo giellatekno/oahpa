@@ -794,18 +794,18 @@ SET STV = STVLIST - Der/Pass ;
 	
 SET STV-NOT-ACT = STV - (Actio Nom) - (Actio Gen) - (Actio Acc) - (Actio Loc) - (Actio Ill) - (Actio  Com) - Actor ;
 	
-
 LIST LOCV = "ávkkástallat" "ballat" "beassat" "beroštit" "biehttalit" "bihtit" "ceavzit" "dinet" "dolkat" "eastadallat" "eastadit" "fuolahit" "fuollat" "geargat" "heaitit" "ilbmat" "jearrat" "luohpat" "máinnašit" "nohkkot" "oassálastit" "spiehkastit" "váruhit" "vástidit" ;
+
 
 		#Note that "fuolahit" obviously has two homonymous variants: 
 		#fuolahit1+Acc, fuolahit2+Loc
-
 LIST COMV = "árvalit" "árvvohuššat" "ávkašuvvat" "bálddalastit" "bártašuvvat" "birgehallat" "birget" "buohtastahttit" "deaivvadit" "gulahallat" "gulaskuddat" "hilbošit" "joatkit" "leaikkastallat" "lohpádaddat" "lohpádallat" "lonuhit" "meannudit" "malssidit" "molssodit" "ovttas#bargat" "ovttastahttit" "riidalit" "servvoštallat" "servvoštaddat" "soabadit" "soahpat" "šiehtadallat" "šiehtadit" ;
  
 		#Note that "leaikkástallat" has two homonymous variants:
 		#leaikkástallat1 (IV), leaikkástallat2+Com
 
 LIST ILLV = "áibbašit" "álgit" "ásaiduvvat" "báitit" "beassat" "čohkkedit" "čujuhit" "čuohcit" "deaivat" "doaškut" "dorvvastit" "došket" "duhtat" "geahččat" "gullat" "guoskat" "gustot" "hárjánit" "heivet" "irggástallat" "jáhkkit" "liikot" "luohttit" "mannat" "máhccat" "mieđihit" "oahpásmuvvat" "oahpásnuvvat" "ollet" "oskut" "riepmat" "ráhkkanit" "soahpat" "searvat" "suhttat" "vástidit" "vuolgit";
+
  		
 
 LIST TRANSLV = "jápmit" "duššat" "hávkat" "náitalit" "gaskkalduvvat" "nohkat" "goarránit" "heahpanit" "boakčánit" "šlundut" "ráigánit" "vuollánit" "gopmánit" "fuotnánit" "roahppánit" "reakčanit" "bieđganit" "luoddanit" "guvggodit" "liegganit" "suorganit" "báhkkanit" "cuovkanit" "hedjonit" "lohppet" "goikat" "galbmot" "goallut" "ruostut" "buoidut" "guvggodit" "suvrut" "suddat" ;
@@ -3339,10 +3339,10 @@ REMOVE:r841 (Der/PassS) IF (0 ("oažžut") OR ("guovlat") LINK 0 Sg3);
 		
 REMOVE:r842 Ger IF (0 ("geavat" N) OR ("vásedin") OR ("hálihit"));
 
-LIST GER-NOTV = "barggadit" "bijadit" "čohkkedit" "dagadit" "deaivvadit" "dutkkadit" "geahčadit" "jugadit" "lihkkat" "logadit" "manadit" "njuovadit" "ozadit" "šlivggodit" ;
+#LIST GER-NOTV = "barggadit" "bijadit" "čohkkedit" "dagadit" "deaivvadit" "dutkkadit" "geahčadit" "jugadit" "lihkkat" "logadit" "manadit" "njuovadit" "ozadit" "šlivggodit" ;
 	# "bargat" Ger is more likely than "barggadit" Ger, and so on. 
 
-REMOVE:r844 GER-NOTV IF (0 Ger); 
+#REMOVE:r844 GER-NOTV IF (0 Ger); 
 SELECT:r845 V IF (0 ("haksu" Ill));
 	# haksui
 	
@@ -5879,6 +5879,33 @@ SELECT Inf (*-1 VFIN OR PrfPrc OR ConNeg BARRIER NOT-ADV LINK 0 INFV LINK *-1 QD
 # -------
 
 SELECT Adv (-1 VFIN) ;
+
+# --------
+# VALENCY
+# ---------
+
+LIST STRICTCOMV = "árvalit" "árvvohuššat" "ávkašuvvat" "bálddalastit" "bártašuvvat" "birgehallat" "birget" "buohtastahttit" "dárostit" "digáštallat" "digaštit" "deaivvadit" "gulahallat" "gulaskuddat" "háleštit" "hállat" "hilbošit"  "hoallat" "humadit" "hupmat" "joatkit" "leaikkastallat" "lohpádaddat" "lohpádallat" "lonuhit" "meannudit" "malssidit" "molssodit" "ovttas#bargat" "ovttastahttit" "riidalit" "ságastaddat" "ságastallat" "ságastit" "sámástit" "sámistit" "sárdnut" "servvoštallat" "servvoštaddat" "soabadit" "soahpat" "suomastit" "šiehtadallat" "šiehtadit" ;
+
+LIST STRICTILLV = "ásaiduvvat" "báitit" "čohkkedit" "čujuhit" "čuohcit" "dorvvastit" "došket" "duhtat" "guoskat" "gustot" "hárjánit" "heivet" "irggástallat" "liikot" "luohttit" "máhccat" "mieđihit" "oahpásmuvvat" "oahpásnuvvat" "ollet" "oskut" "ráhkkanit" "searvat" "suhttat" ;
+
+LIST STRICTLOCV = "ávkkástallat" "ballat" "beroštit" "biehttalit" "bihtit" "ceavzit" "dolkat" "eastadallat" "eastadit" "fuollat" "geargat" "heaitit" "ilbmat" "luohpat" "nohkkot" "spiehkastit" ;
+
+LIST ESSV = "atnit" "bargat" "dadjat" "dahkat" "dulkot" "gárvodit" "geavahit" "geahččat" "gohčodit" "gohččut" "joatkit" "meroštallat" "navdit" "váldit" "válljet";
+
+
+LIST VALENCY-OBJ = N Pron Actio Inf ;
+
+MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE OR Pron LINK NOT 0 Com) ;
+MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 ("birget") OR ("birgehallat") OR ("leaikkastallat") BARRIER NPNH LINK *-1 QDL)(NOT 0 Com) ;
+MAP (&grm-should-not-PP) TARGET Po (-1 ANIMATE + Com LINK *-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL) ;
+
+MAP (&grm-should-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc) ;
+
+MAP (&grm-should-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH) ;
+
+MAP (&grm-should-not-Ess) TARGET (N Ess) (NOT *-1 ESSV BARRIER S-BOUNDARY) ; 
+# LINK *-1 QDL) ;
+
 
 
 # -----
