@@ -1009,18 +1009,18 @@ def sahka_is_correct(self,utterance,targets):
     # Split the question to words for analaysis.
 
     self.messages, self.dia_messages, self.variables = self.vasta_is_correct(utterance.utterance, None, utterance.name)
-    #self.variable = "Kárášjohka"
-    #self.target="target"
+    #self.variables = [ "Kárášjohka" ]
+    #self.dia_messages = [ "dia-unknown" ]
 
     if not self.messages:
         self.error = "correct"
 
     for answer in self.dia_messages:
-        answer = answer.lstrip("&dia-")
+        answer = answer.lstrip("dia-")
         if answer == "target":
             self.target = answer
 
-    #self.error = "correct"
+    self.error = "correct"
     
 class SahkaSettings(OahpaSettings):
 
