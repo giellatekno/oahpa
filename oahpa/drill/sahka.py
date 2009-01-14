@@ -80,6 +80,11 @@ class SahkaGame(Game):
 
         # If previous utterance was closing, then create a new topic.
         if prev_form and prev_utttype == "closing":
+            if prev_utterance.links.filter(target="default"):
+                nextlink = prev_utterance.links.filter(target="default")[0]
+                utterance = nextlink.link
+                topic=utterance.topic
+                self.settings['topicnumber'] = int(topic.number)
             new_topic=True
 
         # If start of the game or new topic, pick the opening:
