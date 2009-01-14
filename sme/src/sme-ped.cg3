@@ -6239,8 +6239,8 @@ MAP (&grm-not-verb-after-workverb) TARGET VERB IF (*-1 VFIN BARRIER CC OR S-BOUN
 # ---------------------
 
 
-MAP (&grm-non-agreement-Adj) TARGET (A Pl Nom) IF (*-1 COPULAS BARRIER NOT-ADV LINK -1 (Sg Nom) OR SGPRON + Nom LINK *-1 QDL) ;
-MAP (&grm-non-agreement-Adj) TARGET (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV LINK -1 (Pl Nom) OR PLPRON + Nom OR DUPRON + Nom LINK *-1 QDL) ;
+MAP (&grm-non-agreement-Adj) TARGET (A Pl Nom) IF (*-1 COPULAS BARRIER NOT-ADV LINK -1 (Sg Nom) OR SGPRON + Nom LINK *-1 QDL)(NOT 0 (Sg Nom)) ;
+MAP (&grm-non-agreement-Adj) TARGET (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV LINK -1 (Pl Nom) OR PLPRON + Nom OR DUPRON + Nom LINK *-1 QDL)(NOT 0 (Pl Nom)) ;
     ## Nieiddat leat čeahpit.
     ## Nieida lea čeahppi.
 
