@@ -120,9 +120,10 @@ class SahkaGame(Game):
             nextlink=None
             #print prev_form.target
             #print prev_utterance.id
-            if prev_form.target:
-                if prev_utterance.links.filter(target=prev_form.target):
-                    nextlink = prev_utterance.links.filter(target=prev_form.target)[0]
+            for msg in prev_form.dia_messages:
+                if prev_utterance.links.filter(target=msg):
+                    nextlink = prev_utterance.links.filter(target=msg)[0]
+                    break
             if not nextlink:
                 if prev_utterance.links.filter(target="default"):
                     nextlink = prev_utterance.links.filter(target="default")[0]
@@ -130,6 +131,7 @@ class SahkaGame(Game):
 
                 utterance = nextlink.link
                 topic=utterance.topic
+                self.settings['topicnumber'] = topic.number
                 self.update_topic(topic)
 				
                 db_info = {}
