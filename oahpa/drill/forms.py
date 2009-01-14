@@ -1012,14 +1012,12 @@ def sahka_is_correct(self,utterance,targets):
     #self.variable = "Kárášjohka"
     #self.target="target"
 
-    if self.target:
-        if not self.messages:
-            self.error = "correct"
-    else:
-        for answer in self.dia_messages:
-            answer = answer.lstrip("&dia-")
-            if not self.messages:
-                self.error = "correct"
+    if not self.messages:
+        self.error = "correct"
+
+    for answer in self.dia_messages:
+        answer = answer.lstrip("&dia-")
+        if answer == "target":
             self.target = answer
 
     #self.error = "correct"
