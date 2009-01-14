@@ -120,9 +120,12 @@ class SahkaGame(Game):
             nextlink=None
             #print prev_form.target
             #print prev_utterance.id
+            #print prev_form.dia_messages
             for msg in prev_form.dia_messages:
+                msg = msg.lstrip("dia-")
                 if prev_utterance.links.filter(target=msg):
                     nextlink = prev_utterance.links.filter(target=msg)[0]
+                    #print "OK"
                     break
             if not nextlink:
                 if prev_utterance.links.filter(target="default"):
