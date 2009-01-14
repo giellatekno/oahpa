@@ -32,10 +32,7 @@
       <text>Sállir lea suolu Romssa olggobealde. Ja mun orun Sálliris dán áigge maid. Gos don orut dál?</text>
       <!-- Where do you live now? NOUN will get target in the answer. -->
       <alt target="target" variable="PLACENAME" link="presentation_closing">
-	<text>Mun lean leamaš PLACENAME .</text>
-	<element id="PLACENAME">
-	  <grammar tag="N+Sg+Loc"/>
-	</element> 
+	<text>Gal PLACENAME lea buorre báiki.</text>
       </alt>
       <alt target="unknown" link="Lea_go_dat_baiki"/>
       <alt target="default" link="age_opening"/>
@@ -51,10 +48,7 @@
 
 
     <utt type="closing" name="presentation_closing">
-      <text>PLACENAME sáhttá leat buorre orrut. Mun liikon bures orrut dáppe Sállirsullos.</text>
-	<element id="PLACENAME">
-	  <grammar tag="N+Sg+Loc"/>
-      </element> 
+      <text>Mun liikon bures orrut dáppe Sállirsullos.</text>
     </utt>
   </topic>
   
