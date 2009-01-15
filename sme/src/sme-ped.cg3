@@ -5890,20 +5890,29 @@ LIST STRICTILLV = "ásaiduvvat" "báitit" "čohkkedit" "čujuhit" "čuohcit" "do
 
 LIST STRICTLOCV = "ávkkástallat" "ballat" "beroštit" "biehttalit" "bihtit" "ceavzit" "dolkat" "eastadallat" "eastadit" "fuollat" "geargat" "heaitit" "ilbmat" "luohpat" "nohkkot" "spiehkastit" ;
 
-LIST ESSV = "atnit" "bargat" "dadjat" "dahkat" "dulkot" "gárvodit" "geavahit" "geahččat" "gohčodit" "gohččut" "joatkit" "meroštallat" "navdit" "váldit" "válljet";
+LIST ESSV = "bargat" "gárvodit" "joatkit" ;
 
+LIST ACCESSV = "atnit" "dadjat" "dahkat" "dulkot" "geavahit" "geahčastit" "gohčodit" "meroštallat" "navdit" "váldit" "válljet" ;
 
 LIST VALENCY-OBJ = N Pron Actio Inf ;
 
-MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE OR Pron LINK NOT 0 Com) ;
+# If a STRICTCOMV is followed by a ANIMATE, then the ANIMATE has to be Com: 
+MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE LINK NOT 0 Com) ;
+
+# If a STRICTCOMV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Com: 
 MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 ("birget") OR ("birgehallat") OR ("leaikkastallat") BARRIER NPNH LINK *-1 QDL)(NOT 0 Com) ;
+
+# If a STRICTCOMV is followd by a ANIMATE in Com, then there should be no Po: 
 MAP (&grm-should-not-PP) TARGET Po (-1 ANIMATE + Com LINK *-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL) ;
 
+# If a STRICTLOCV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Loc (no Inf is accepted): 
 MAP (&grm-should-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc) ;
 
+# If a STRICTILLV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Ill, (no Inf is accepted). Exception is "liikot" + Inf: 
 MAP (&grm-should-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH) ;
 
-MAP (&grm-should-not-Ess) TARGET (N Ess) (NOT *-1 ESSV BARRIER S-BOUNDARY) ; 
+# Noun Ess only after an ESSV (other words can be between): 
+MAP (&grm-should-not-Ess) TARGET (N Ess) (NOT *-1 ESSV OR ACCESSV BARRIER S-BOUNDARY) ; 
 # LINK *-1 QDL) ;
 
 
