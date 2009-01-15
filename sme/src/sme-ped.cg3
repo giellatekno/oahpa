@@ -5912,7 +5912,7 @@ MAP (&grm-should-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 Q
 MAP (&grm-should-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH) ;
 
 # Noun Ess only after an ESSV (other words can be between): 
-MAP (&grm-should-not-Ess) TARGET (N Ess) (NOT *-1 ESSV OR ACCESSV BARRIER S-BOUNDARY) ; 
+#MAP (&grm-should-not-Ess) TARGET (N Ess) (NOT *-1 ESSV OR ACCESSV BARRIER S-BOUNDARY) ; 
 # LINK *-1 QDL) ;
 
 
