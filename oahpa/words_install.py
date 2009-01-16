@@ -13,7 +13,7 @@ import codecs
 
 class Words:
 
-    def install_lexicon(self,infile,paradigmfile=None,placenamefile=None):
+    def install_lexicon(self,infile,delete=None,paradigmfile=None,placenamefile=None):
 
         xmlfile=file(infile)
         tree = _dom.parse(infile)
@@ -30,7 +30,7 @@ class Words:
             pos=e.getElementsByTagName("pos")[0].getAttribute("class") 
             self.store_word(e,mainlang,paradigmfile,placenamefile)
 
-        if pos:
+        if delete and pos:
             allids = Word.objects.filter(pos=pos).values_list('wordid',flat=True)
             for a in allids:
                 if a not in set(self.all_wordids):
