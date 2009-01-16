@@ -31,11 +31,11 @@ class Extra:
                     lang="sme"
                     if address.count(".nno.") > 0:
                         lang = "no"
-                    t, created = Links.objects.get_or_create(name=link,language=lang)
+                    t, created = Grammarlinks.objects.get_or_create(name=link,language=lang)
                     t.address=address
                     t.save()
                     links.append(link)
-        linkobjects = Links.objects.all()
+        linkobjects = Grammarlinks.objects.all()
         for l in linkobjects:
             if l.name not in set(links):
                 print l.name
