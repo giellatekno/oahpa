@@ -36,7 +36,7 @@ parser.add_option("-i", "--links", dest="linkfile",
                   help="Text file for grammarlinks")
 parser.add_option("-k", "--sahka", dest="sahkafile",
                   help="XML-file for Dialogues")
-parser.add_option("-l", "--place", dest="placenamefile",
+parser.add_option("-l", "--places", dest="placenamefile",
                   action="store_true", default=False,
                   help="If placenames")
 parser.add_option("-m", "--messagefile", dest="messagefile",
@@ -54,8 +54,11 @@ parser.add_option("-s", "--sem", dest="semtypefile",
                   help="XML-file semantic subclasses")
 parser.add_option("-t", "--tagfile", dest="tagfile",
                   help="List of tags and tagsets")
-parser.add_option("-u", "--delete", dest="questionid",
+parser.add_option("-u", "--qid", dest="questionid",
                   help="delete question using id or text")
+parser.add_option("-v", "--delete", dest="delete",
+                  action="store_true", default=False,
+                  help="delete words that do not appear in the lexicon file of certain pos")
 
 
 (options, args) = parser.parse_args()
@@ -115,6 +118,6 @@ if options.linkfile:
     sys.exit()
 
 if options.infile:
-    words.install_lexicon(options.infile,options.paradigmfile,options.placenamefile)
+    words.install_lexicon(options.infile,options.delete,options.paradigmfile,options.placenamefile)
     sys.exit()
 
