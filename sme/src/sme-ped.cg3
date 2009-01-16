@@ -5884,32 +5884,32 @@ SELECT Adv (-1 VFIN) ;
 # VALENCY
 # ---------
 
-LIST STRICTCOMV = "árvalit" "árvvohuššat" "ávkašuvvat" "bálddalastit" "bártašuvvat" "bártahuvvat" "bieđđat" "birgehallat" "birget" "buohtastahttit" "dárostit" "dárustit" "digáštallat" "digaštit" "deaivvadit" "gulahallat" "gulaskuddat" "háleštit" "hállat" "hilbošit" "hilbbohallat" "hoallat" "humadit" "hupmat" "joatkit" "leaikkastallat" "lohpádaddat" "lohpádallat" "lonuhit" "meannudit" "malssidit" "nárrohallat" "ovttas#bargat" "ovttastahttit" "riidalit" "ságastaddat" "ságastallat" "ságastit" "sámástit" "sámistit" "sárdnut" "servvoštallat" "servvoštaddat" "soabadit" "soahpat" "suhtadit" "suomastit" "šiehtadallat" "šiehtadit" ;
+LIST STRICTCOMV = "árvalit" "árvvohuššat" "ávkašuvvat" "bálddalastit" "bártašuvvat" "bártahuvvat" "bieđđat" "birgehallat" "birget" "buohtastahttit" "čeargut" "dárostit" "dárustit" "digáštallat" "digaštit" "deaivvadit" "doarrát"  "doarrut"  "gilvalit" "gulahallat" "gulaskuddat" "háleštit" "hállat" "hilbošit" "hilbbohallat" "hoallat" "humadit" "hupmat" "joatkit" "leaikkastallat" "lohpádaddat" "lohpádallat" "lonuhit" "meannudit" "malssidit" "náitalit" "nárrohallat" "ovttas#bargat" "ovttastahttit" "riidalit" "ságastaddat" "ságastallat" "ságastit" "sámástit" "sámistit" "sárdnut" "servvoštallat" "servvoštaddat" "soabadit" "soahpat" "suhtadit" "suomastit" "šiehtadallat" "šiehtadit" ;
 
-LIST STRICTILLV = "ásaiduvvat" "báitit" "čohkkedit" "čujuhit" "čuohcit" "dorvvastit" "došket" "duhtat" "guoskat" "gustot" "hárjánit" "heivet" "irggástallat" "irgalit" "liikot" "liikostit" "luohttit" "máhccat" "mieđihit" "oahpásmuvvat" "oahpásnuvvat" "ollet" "oskut" "ráhkkanit" "riepmat" "searvat" "suhttat" ;
+LIST STRICTILLV = "ásaiduvvat" "báitit" "čalmmástuvvat" "čiehkádit" "čohkkedit" "čuohcit" "darvánit" "dorvvastit" "došket" "duhtat" "guoskat" "gustot" "hárjánit" "heivet" "irggástallat" "irgalit" "liikot" "liikostit" "luohttit" "máhccat" "miehtat" "náđđut" "oahpásmuvvat" "oahpásnuvvat" "ollet" "oskut" "ráhkásmuvvat" "ráhkásnuvvat" "ráhkkanit" "searvat" "suhttat" "velledit" ;
 
-LIST STRICTLOCV = "ávkkástallat" "ballat" "beroštit" "biehttalit" "bihtit" "ceavzit" "dolkat" "eastadallat" "eastadit" "fuollat" "geargat" "heaitit" "ilbmat" "luohpat" "nohkkot" "spiehkastit" ;
+LIST STRICTLOCV = "ávkkástallat" "ballat" "beasadit" "beroštit" "biehttalit" "bihtit" "ceavzit" "dolkat" "eastadallat" "eastadit" "fuollat" "geargat" "heaitit" "ilbmat" "luohpat" "nohkkot" "spiehkastit" ;
 
 LIST ESSV = "bargat" "gárvodit" "joatkit" ;
 
-LIST ACCESSV = "atnit" "dadjat" "dahkat" "dulkot" "geavahit" "geahčastit" "gohčodit" "meroštallat" "navdit" "váldit" "válljet" ;
+LIST ACCESSV = "atnit" "cielahit" "dadjat" "dahkat" "dulkot" "geavahit" "geahčastit" "geaidit" "geaidut" "gohčodit" "meroštallat" "navdit" "váldit" "válljet" ;
 
 LIST VALENCY-OBJ = N Pron Actio Inf ;
 
-# If a STRICTCOMV is followed by a ANIMATE, then the ANIMATE has to be Com: 
-MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE LINK NOT 0 Com) ;
+# If a STRICTCOMV is followed by a ANIMATE, then the ANIMATE has to be Com. Exception for Gen + N - e.g. bártni moarsi beatnagiin): 
+MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE LINK NOT 0 Com)(NEGATE 0 Gen LINK *1 N BARRIER NPNH) ;
 
 # If a STRICTCOMV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Com: 
-MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 ("birget") OR ("birgehallat") OR ("leaikkastallat") BARRIER NPNH LINK *-1 QDL)(NOT 0 Com) ;
+MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 ("birget") OR ("birgehallat") OR ("leaikkastallat") BARRIER NPNH LINK *-1 QDL)(NOT 0 Com OR Loc OR Ess) ;
 
 # If a STRICTCOMV is followd by a ANIMATE in Com, then there should be no Po: 
 MAP (&grm-should-not-PP) TARGET Po (-1 ANIMATE + Com LINK *-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL) ;
 
-# If a STRICTLOCV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Loc (no Inf is accepted): 
-MAP (&grm-should-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc) ;
+# If a STRICTLOCV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Loc (no Inf is accepted)Exception for Gen + N - e.g. bártni moarsi beatnagis): 
+MAP (&grm-should-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc)(NEGATE 0 Gen LINK Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Gen LINK 1 Actio) ;
 
-# If a STRICTILLV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Ill, (no Inf is accepted). Exception is "liikot" + Inf: 
-MAP (&grm-should-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH) ;
+# If a STRICTILLV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Ill, (no Inf is accepted). Exception is "liikot" + Inf, for PP amd for Gen + N - e.g. bártni moarsi beatnagii: 
+MAP (&grm-should-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH) ;
 
 # Noun Ess only after an ESSV (other words can be between): 
 #MAP (&grm-should-not-Ess) TARGET (N Ess) (NOT *-1 ESSV OR ACCESSV BARRIER S-BOUNDARY) ; 
