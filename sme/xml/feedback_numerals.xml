@@ -54,8 +54,8 @@ iguin-suffix
 in-suffix
 -->
 
-<feedback>
-<!-- This one is for numerals as attribute for the noun! -->
+<feedback pos="Num">
+<!-- This one is for numerals as attribute for the noun!
       <msg case="Nom" number="Sg">nom_sg</msg>
       <msg case="Nom" number="Pl">nom_pl</msg>
       <msg case="Acc" number="Sg">acc_sg</msg>
@@ -70,7 +70,7 @@ in-suffix
       <msg case="Com" number="Pl">com_pl</msg>
       <msg case="Ess">ess</msg>      
       <note></note>
-
+ -->
   <stems>
     <stem class="bisyllabic">
       <msg>bisyllabic_stem</msg>
@@ -79,7 +79,7 @@ in-suffix
       <msg>trisyllabic_stem</msg>
     </stem>
 
-    <stem class="trisyllabic" gradation="no"/>
+    <stem class="trisyllabic" gradation="no">
       <msg>no_gradation</msg>
       <note>gávccis, diftforenkling</note>
     </stem>
