@@ -1211,7 +1211,7 @@
       <text>Manin SUBJ MAINV máidnasis</text>
       <element id="SUBJ">
 	<grammar tag="N+Number+Nom"/>
-	<sem class="HUMAN"/>
+	<sem class="PAIR"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Prs+Person-Number"/>
@@ -1226,7 +1226,7 @@
       <text>Manin SUBJ MAINV máidnasis</text>
       <element id="SUBJ">
 	<grammar tag="N+Number+Nom"/>
-	<sem class="HUMAN"/>
+	<sem class="PAIR"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Prt+Person-Number"/>
@@ -1308,7 +1308,7 @@
       <text>Maid SUBJ MAINV oastit</text>
       <element id="SUBJ">
 	<grammar pos="N"/>
-	<sem class="HUMAN"/>
+	<sem class="PROFESSION"/>
       </element>
       <element id="MAINV">
 	<id>áigut</id> 
@@ -1330,7 +1330,7 @@
       <text>Geaid SUBJ dát MAINV</text>
       <element id="SUBJ">    
 	<grammar tag="N+Number+Nom"/>         
-	<sem class="OBJECT"/>
+	<sem class="INSTRUMENT"/>
       </element>
       <element id="MAINV">
 	<id>leat</id> 
@@ -1345,7 +1345,7 @@
       <text>Geaidda don attát OBJ</text>
     <element id="OBJ">    
 	<grammar tag="N+Pl+Acc"/>         
-	<sem class="OBJECT"/>
+	<sem class="THING"/>
 	</element>
     </question>
   </q>
@@ -1364,7 +1364,7 @@
       <text>Geain lea váralaš SUBJ</text>
       <element id="SUBJ">    
 	<grammar tag="N+Sg+Nom"/>         
-	<sem class="ANIMAL"/>
+	<sem class="ANIMAL-PET"/>
       </element>
     </question>
    </q>
@@ -1652,7 +1652,7 @@
     <question>
       <text>Geaid SUBJ dát MAINV</text>
       <element id="SUBJ">    
-	<sem class="OBJECT"/>
+	<sem class="THING"/>
 	<grammar pos="N"/>         
       </element>
       <element id="MAINV">    
