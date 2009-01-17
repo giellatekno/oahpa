@@ -74,6 +74,20 @@ height:80px;
 
 <script type="text/javascript">
 
+function SetIndex(list,value) {
+    if (value == "all") {
+	   return;
+    }
+	if(list && list.options.length){ 
+		for(var i=0; i<list.options.length; i++){ 
+		if(list.options[i].value == "all"){ 
+			list.selectedIndex = i; 
+			return; 
+			} 
+		} 
+	} 
+}
+
 function getSize() {
   var myWidth = 0, myHeight = 0;
   if( typeof( window.innerWidth ) == 'number' ) {
@@ -154,6 +168,7 @@ LEKSA</a>&nbsp;&nbsp;
 NUMRA</a>&nbsp;&nbsp;
 </td>
 <td>
+{% comment %}
 {% get_current_language as LANGUAGE_CODE %}
 {% ifequal LANGUAGE_CODE "sme" %}
 {% trans "Grammar" %}<br/>
@@ -179,6 +194,7 @@ NUMRA</a>&nbsp;&nbsp;
 </form>
 
 {% endifequal %}
+{% endcomment %}
 </td>
 
 </tr>
