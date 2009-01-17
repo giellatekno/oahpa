@@ -85,6 +85,7 @@ class SahkaGame(Game):
                 utterance = nextlink.link
                 topic=utterance.topic
                 self.settings['topicnumber'] = int(topic.number)
+                self.update_topic(topic)
             new_topic=True
 
         # If start of the game or new topic, pick the opening:
