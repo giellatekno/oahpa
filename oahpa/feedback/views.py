@@ -17,7 +17,7 @@ def feedback(request):
             email = feedback_form.cleaned_data['email']
             place = feedback_form.cleaned_data['place']
             confirmation = feedback_form.cleaned_data['confirmation']
-            print message, name, email, place
+            #print message, name, email, place
 
             feedback = Feedback.objects.create(message=message, name=name, email=email, place=place, \
                                                confirmation = confirmation)
