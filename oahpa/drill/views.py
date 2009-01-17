@@ -74,7 +74,6 @@ class Gameview:
 
         if request and request.method == 'POST':
             data = request.POST.copy()
-            
             #print request.POST
             # Settings form is checked and handled.
             settings_form = MorfaSettings(request.POST)
@@ -83,7 +82,9 @@ class Gameview:
 				
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
-                
+            if request.session.has_key('django_language'):
+				self.settings['language'] = request.session['django_language']
+				                
             self.syll_settings(settings_form)
             if settings_form.data.has_key('book'):
                 self.settings['book'] = settings_form.books[settings_form.data['book']]
@@ -123,7 +124,9 @@ class Gameview:
 				
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
-
+            if request.session.has_key('django_language'):
+				self.settings['language'] = request.session['django_language']
+				
             if self.settings['gametype'] == "bare":
                 game = BareGame(self.settings)        
             else:
