@@ -261,7 +261,7 @@ def set_settings(self):
     for b in NUM_CONTEXT_CHOICES:
         self.allnum_context.append(b[0])                
 
-def get_feedback(self,word,tag,wordform):
+def get_feedback(self,word,tag,wordform,dialect):
         
     feedbacks=None
         
@@ -273,7 +273,7 @@ def get_feedback(self,word,tag,wordform):
                                             Q(diphthong=word.diphthong) & Q(rime=word.rime) & \
                                             Q(soggi=word.soggi) & Q(case2=tag.case) & \
                                             Q(pos=tag.pos) &\
-                                            Q(number = tag.number))
+                                            Q(number = tag.number) & Q(dialects__dialect=dialect))
     if tag.pos=="A":
         #print "........filtering feedbacks for adjectives"
         
@@ -295,7 +295,7 @@ def get_feedback(self,word,tag,wordform):
                                             Q(soggi=word.soggi) & Q(case2=tag.case) & \
                                             Q(pos=tag.pos) & Q(grade=grade) &\
                                             Q(attributive=attributive) & Q(attrsuffix=attrsuffix) & \
-                                            Q(number = tag.number))
+                                            Q(number = tag.number) & Q(dialects__dialect=dialect))
 
     if tag.pos == "V":
         
@@ -305,13 +305,14 @@ def get_feedback(self,word,tag,wordform):
         feedbacks = Feedback.objects.filter(Q(stem=word.stem) & \
                                             Q(diphthong=word.diphthong) & Q(soggi=word.soggi) & \
                                             Q(mood=tag.mood) & Q(tense=tag.tense) & \
-                                            Q(personnumber = tag.personnumber))
-        
+                                            Q(personnumber = tag.personnumber) & Q(dialects__dialect=dialect))
+      
     if feedbacks:
         for f in feedbacks:
             msgs = f.messages.all()
             for m in msgs:
-                self.feedback = self.feedback + " " + m.message
+                text = Feedbacktext.objects.filter(feedbackmsg=m,language="sme")[0]
+                self.feedback = self.feedback + " " + text.message
         self.feedback = self.feedback.replace("WORDFORM", "\"" + wordform + "\"") 
         #print "FEEDBACK", self.feedback
 
@@ -395,7 +396,7 @@ class MorfaQuestion(OahpaQuestion):
     Questions for morphology game 
     """
 
-    def __init__(self, word, tag, baseform, correct, fullforms, translations, question, userans_val, correct_val, *args, **kwargs):
+    def __init__(self, word, tag, baseform, correct, fullforms, translations, question, dialect, userans_val, correct_val, *args, **kwargs):
 
         lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
         tag_widget = forms.HiddenInput(attrs={'value' : tag.id})
@@ -411,7 +412,7 @@ class MorfaQuestion(OahpaQuestion):
         self.lemma=baseform.fullform
 
         # Retrieve feedback information
-        self.get_feedback(word,tag,baseform.fullform)
+        self.get_feedback(word,tag,baseform.fullform,dialect)
 
         # Take only the first translation for the tooltip
         if len(translations)>0:
@@ -608,7 +609,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 
         
     def __init__(self, question, qanswer, \
-                 qwords, awords, userans_val, correct_val, *args, **kwargs):
+                 qwords, awords, dialect, userans_val, correct_val, *args, **kwargs):
 
         self.init_variables("", userans_val, [])
         self.lemma = ""
@@ -703,6 +704,9 @@ class ContextMorfaQuestion(OahpaQuestion):
                     self.lemma = answer_word_el.lemma + " (plural) fix this"
         if answer_tag_el.pos=="A":
             self.lemma=""
+
+        # Retrieve feedback information
+        self.get_feedback(answer_word_el,answer_tag_el,self.lemma,dialect)
 
         # Format answer string
         for w in atext.split():
@@ -876,6 +880,7 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
             msgstrings[wordform][msgstring] = 1
             diastring=msgstring			
             
+
     msg=[]
     dia_msg = []
     target = ""
@@ -888,7 +893,7 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
             if spelling and m.count("spelling") == 0: continue
             m = m.replace("&","") 
             if Feedbackmsg.objects.filter(msgid=m).count() > 0:
-                message = Feedbackmsg.objects.filter(msgid=m)[0].message
+                message = Feedbacktext.objects.filter(feedbackmsg=m,language="sme")[0].message
                 message = message.replace("WORDFORM","\"" + w + "\"") 
                 msg.append(message)
                 if not spelling:
