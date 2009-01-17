@@ -80,7 +80,7 @@ class Tag(models.Model):
     possessive = models.CharField(max_length=5)
     grade = models.CharField(max_length=10)
     infinite = models.CharField(max_length=10)
-    personnumber = models.CharField(max_length=6)
+    personnumber = models.CharField(max_length=8)
     conneg = models.CharField(max_length=5)
     polarity = models.CharField(max_length=5)
     tense = models.CharField(max_length=5)
@@ -126,9 +126,15 @@ class WordQElement(models.Model):
 
 ############# MORFA FEEDBACK
 
+
 class Feedbackmsg(models.Model):
-    msgid = models.CharField(max_length=50)
+    msgid = models.CharField(max_length=100)
+
+class Feedbacktext(models.Model):
     message = models.CharField(max_length=200)
+    language = models.CharField(max_length=6)
+    feedbackmsg = models.ForeignKey(Feedbackmsg)
+
 
 class Feedback(models.Model):
     messages = models.ManyToManyField(Feedbackmsg)
