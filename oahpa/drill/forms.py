@@ -440,7 +440,7 @@ class MorfaQuestion(OahpaQuestion):
 
 class QuizzSettings(OahpaSettings):
 
-    semtype = forms.ChoiceField(initial='NATUREWORDS', choices=SEMTYPE_CHOICES, widget=forms.Select)
+    semtype = forms.ChoiceField(initial='NATUREWORDS', choices=SEMTYPE_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.book,this.value);',}))
     transtype = forms.ChoiceField(initial='smenob', choices=TRANS_CHOICES, widget=forms.Select)
 
     # For placename quizz
@@ -448,7 +448,8 @@ class QuizzSettings(OahpaSettings):
     rare = forms.BooleanField(required=False,initial=0)
     sapmi = forms.BooleanField(required=False, initial='1')
     world = forms.BooleanField(required=False,initial=0)
-    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
+    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
+
     default_data = {'gametype' : 'bare', 'language' : 'sme', 'dialogue' : 'GG', \
                     'syll' : [], 'book' : 'all', \
                     'semtype' : 'NATUREWORDS', \
@@ -910,7 +911,7 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
                     
     if not msg:
         self.error = "correct"
-
+		
     variables = []
     variables.append(variable)
     variables.append(constant)
@@ -1020,7 +1021,6 @@ def sahka_is_correct(self,utterance,targets):
         if answer == "target":
             self.target = answer
 
-    self.error = "correct"
     
 class SahkaSettings(OahpaSettings):
 
