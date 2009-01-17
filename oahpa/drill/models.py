@@ -50,7 +50,7 @@ class Word(models.Model):
     translations = models.ManyToManyField('Wordnob')
     frequency = models.CharField(max_length=10)
     geography = models.CharField(max_length=10)
-    dialects = models.ManyToManyField(Dialect)
+    dialects = models.ManyToManyField(Dialect,null=True)
     objects = models.Manager() # The default manager.
     N_objects = NPosManager() # The Noun-specific manager
     
