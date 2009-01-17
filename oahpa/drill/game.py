@@ -325,7 +325,7 @@ class BareGame(Game):
         translations=word.translations.all().values_list('lemma',flat=True)
 
         fullforms = form_list.values_list('fullform',flat=True)
-        morph = (MorfaQuestion(word, tag, baseform, correct, fullforms, translations, "", db_info['userans'], db_info['correct'], data, prefix=n))
+        morph = (MorfaQuestion(word, tag, baseform, correct, fullforms, translations, "", dialect, db_info['userans'], db_info['correct'], data, prefix=n))
         return morph, word_id
 
 
