@@ -13,7 +13,7 @@ import codecs
 
 class Words:
 
-    def install_lexicon(self,infile,delete=None,paradigmfile=None,placenamefile=None):
+    def install_lexicon(self,infile,linginfo,delete=None,paradigmfile=None,placenamefile=None):
 
         xmlfile=file(infile)
         tree = _dom.parse(infile)
@@ -28,7 +28,7 @@ class Words:
 
         for e in tree.getElementsByTagName("entry"):
             pos=e.getElementsByTagName("pos")[0].getAttribute("class") 
-            self.store_word(e,mainlang,paradigmfile,placenamefile)
+            self.store_word(e,linginfo,mainlang,paradigmfile,placenamefile)
 
         if delete and pos:
             allids = Word.objects.filter(pos=pos).values_list('wordid',flat=True)
@@ -126,7 +126,7 @@ class Words:
                 w.source.add(book_entry)
                 w.save()
 
-    def store_word(self, e,mainlang,paradigmfile,placenamefile):
+    def store_word(self,e,linginfo,mainlang,paradigmfile,placenamefile):
 
         # Store first unique fields
         id=e.getAttribute("id")
@@ -135,6 +135,7 @@ class Words:
             id=lemma
         self.all_wordids.append(id)
         stem=""
+        forms=""
         dialects=["GG","KJ"]
         diphthong="no"
         gradation=""
@@ -147,6 +148,9 @@ class Words:
         geography=""
         only_sg = 0
         only_pl = 0
+        print lemma
+        if e.getElementsByTagName("forms"):
+            forms=e.getElementsByTagName("forms")[0]
 
         if e.getElementsByTagName("stem"):
             stem=e.getElementsByTagName("stem")[0].getAttribute("class")
@@ -223,7 +227,7 @@ class Words:
             
         # Add forms and tags
         if paradigmfile:
-            linginfo.create_paradigm(lemma,pos)
+            linginfo.create_paradigm(lemma,pos,forms)
             for f in linginfo.paradigm:
 
                 g=f.classes
