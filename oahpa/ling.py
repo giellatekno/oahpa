@@ -66,7 +66,7 @@ class Paradigm:
             self.paradigms[pos].append(line)
 
 
-    def create_paradigm(self, lemma, pos):
+    def create_paradigm(self, lemma, pos, forms):
 
         if not self.tagset:
             self.handle_tags()
@@ -98,6 +98,15 @@ class Paradigm:
         lines_gg_restr_tmp = os.popen(gen_gg_restr_lookup).readlines()
         lines_kj_restr_tmp = os.popen(gen_kj_restr_lookup).readlines()
 
+        extraforms={}
+        if forms:
+            if forms.getElementsByTagName("form"):
+                form_els = forms.getElementsByTagName("form")
+                for f in form_els:
+                    tagstring = f.getAttribute("tag")
+                    wordform = f.firstChild.data			
+                    extraforms[tagstring] = wordform
+
         for line in lines_tmp:
 
             if not line.strip(): continue
@@ -120,7 +129,9 @@ class Paradigm:
                         tagclass=self.tagset[t]
                         g.classes[tagclass]=t
                 self.paradigm.append(g)
-
+                #extraforms override generated ones
+                if extraforms.has_key(g.tags):
+                    g.form=extraforms[g.tags]
 
     def generate_numerals(self):
         """
