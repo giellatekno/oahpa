@@ -97,15 +97,24 @@ t-suffix
       <msg grade="Pos" case="Ess">ess</msg>
       <note>buorre, som attributt</note>
 
+      <stem>
+      <msg dialect="NOT-G" grade="Comp" attribute="1">attribute_like_pred</msg>
+      <msg dialect="NOT-GG" grade="Superl" attribute="1">attribute_like_pred</msg>
+      <note>Attr = Nom</note>
+    </stem>
+
+
       <stem class="bisyllabic">
-      <msg grade="Comp" attribute="1">attribute_like_pred</msg>
-      <msg grade="Superl" attribute="1">attribute_like_pred</msg>
+      <msg dialect="NOT-KJ" grade="Comp" attribute="1">attribute_like_pred</msg>
+      <msg dialect="NOT-KJ" grade="Superl" attribute="1">attribute_like_pred</msg>
       <note>Attr: dábálet, dábáleamos</note>
     </stem>
 
+
+
       <stem class="trisyllabic">
-      <msg grade="Comp" attribute="1">et-suffix</msg>
-      <msg grade="Superl" attribute="1">attribute_like_pred</msg>
+      <msg dialect="NOT-KJ" grade="Comp" attribute="1">et-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" attribute="1">attribute_like_pred</msg>
       <note>Attr = Nom</note>
     </stem>
 
@@ -517,34 +526,65 @@ t-suffix
 
 
      <stem class="trisyllabic">
-      <msg grade="Comp" case="Nom" number="Sg">eabbo-suffix</msg>
-      <msg grade="Comp" case="Nom" number="Pl">eappot-suffix</msg>
-      <msg grade="Comp" case="Acc" number="Sg">eappo-suffix</msg>
-      <msg grade="Comp" case="Acc" number="Pl">eappuid-suffix</msg>
-      <msg grade="Comp" case="Gen" number="Sg">eappo-suffix</msg>
-      <msg grade="Comp" case="Gen" number="Pl">eappuid-suffix</msg>
-      <msg grade="Comp" case="Ill" number="Sg">ebbui-suffix</msg>
-      <msg grade="Comp" case="Ill" number="Pl">eappuide-suffix</msg>
-      <msg grade="Comp" case="Loc" number="Sg">eappus-suffix</msg>
-      <msg grade="Comp" case="Loc" number="Pl">eappuin-suffix</msg>
-      <msg grade="Comp" case="Com" number="Sg">eappuin-suffix</msg>
-      <msg grade="Comp" case="Com" number="Pl">eappuiguin-suffix</msg>
-      <msg grade="Comp" case="Ess">eabbon-suffix</msg>
-      <msg grade="Superl" case="Nom" number="Sg">eamos-suffix</msg>
-      <msg grade="Superl" case="Nom" number="Pl">epmosat-suffix</msg>
-      <msg grade="Superl" case="Acc" number="Sg">epmosa-suffix</msg>
-      <msg grade="Superl" case="Acc" number="Pl">epmosiid-suffix</msg>
-      <msg grade="Superl" case="Gen" number="Sg">epmosa-suffix</msg>
-      <msg grade="Superl" case="Gen" number="Pl">epmosiid-suffix</msg>
-      <msg grade="Superl" case="Ill" number="Sg">epmosii-suffix</msg>
-      <msg grade="Superl" case="Ill" number="Pl">epmosiidda-suffix</msg>
-      <msg grade="Superl" case="Loc" number="Sg">epmosis-suffix</msg>
-      <msg grade="Superl" case="Loc" number="Pl">epmosiin-suffix</msg>
-      <msg grade="Superl" case="Com" number="Sg">epmosiin-suffix</msg>
-      <msg grade="Superl" case="Com" number="Pl">epmosiiguin-suffix</msg>
-      <msg grade="Superl" case="Ess">eamosin-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Nom" number="Sg">eabbo-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Nom" number="Pl">eappot-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Acc" number="Sg">eappo-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Acc" number="Pl">eappuid-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Gen" number="Sg">eappo-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Gen" number="Pl">eappuid-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Ill" number="Sg">ebbui-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Ill" number="Pl">eappuide-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Loc" number="Sg">eappus-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Loc" number="Pl">eappuin-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Com" number="Sg">eappuin-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Com" number="Pl">eappuiguin-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Ess">eabbon-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Nom" number="Sg">eamos-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Nom" number="Pl">epmosat-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Acc" number="Sg">epmosa-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Acc" number="Pl">epmosiid-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Gen" number="Sg">epmosa-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Gen" number="Pl">epmosiid-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Ill" number="Sg">epmosii-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Ill" number="Pl">epmosiidda-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Loc" number="Sg">epmosis-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Loc" number="Pl">epmosiin-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Com" number="Sg">epmosiin-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Com" number="Pl">epmosiiguin-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Ess">eamosin-suffix</msg>
       <note>čoaskásat - čoaskáseamos - suffixes</note>
     </stem>
+
+     <stem class="trisyllabic">
+      <msg dialect="NOT-GG" grade="Comp" case="Nom" number="Sg">at-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Nom" number="Pl">abbot-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Acc" number="Sg">abbo-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Acc" number="Pl">abbuid-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Gen" number="Sg">abbo-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Gen" number="Pl">abbuid-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Ill" number="Sg">abbui-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Ill" number="Pl">abbuide-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Loc" number="Sg">abbos-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Loc" number="Pl">abbuin-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Com" number="Sg">abbuin-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Com" number="Pl">abbuiguin-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Ess">abbon-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Nom" number="Sg">amos-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Nom" number="Pl">amosat-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Acc" number="Sg">amosa-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Acc" number="Pl">amosiid-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Gen" number="Sg">amosa-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Gen" number="Pl">amosiid-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Ill" number="Sg">amosii-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Ill" number="Pl">amosiidda-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Loc" number="Sg">amosis-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Loc" number="Pl">amosiin-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Com" number="Sg">amosiin-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Com" number="Pl">amosiiguin-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Ess">amosin-suffix</msg>
+      <note>čoaskásat - čoaskásamos - suffixes</note>
+    </stem>
+
 
      <stem stem="bisyllabic">
       <msg grade="Comp" case="Nom" number="Sg">t-suffix</msg>
