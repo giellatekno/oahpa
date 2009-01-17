@@ -646,10 +646,11 @@ class QAGame(Game):
 
         question = Question.objects.get(Q(id=db_info['question_id']))
         answer = None
+        dialect = self.settings['dialect']
         if not self.gametype == "qa":
             answer = Question.objects.get(Q(id=db_info['answer_id']))
             form = (ContextMorfaQuestion(question, answer, \
-                                         db_info['qwords'], db_info['awords'],\
+                                         db_info['qwords'], db_info['awords'], dialect,\
                                          db_info['userans'], db_info['correct'], data, prefix=n))
         else:
             form = (VastaQuestion(question, \
