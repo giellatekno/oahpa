@@ -35,8 +35,8 @@ class Sahka:
                         word = Form.objects.filter(fullform=w)[0]
                         t.formlist.add(word)
                         t.save()
-        else:
-            print "***ERROR: no class", wordclass, "found." 
+                    else:
+                        print "***ERROR: no class", wordclass, "found." 
         if t.formlist.all().count()==0:
             print "***ERROR: no words found for", wordclass
         cgfileObj.close()                        
