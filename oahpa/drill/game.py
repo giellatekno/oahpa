@@ -298,6 +298,7 @@ class BareGame(Game):
     def create_form(self, db_info, n, data=None):
 
         dialect = self.settings['dialect']
+        language = self.settings['language']
         word_id = db_info['word_id']
         tag_id = db_info['tag_id']
 
@@ -325,7 +326,7 @@ class BareGame(Game):
         translations=word.translations.all().values_list('lemma',flat=True)
 
         fullforms = form_list.values_list('fullform',flat=True)
-        morph = (MorfaQuestion(word, tag, baseform, correct, fullforms, translations, "", dialect, db_info['userans'], db_info['correct'], data, prefix=n))
+        morph = (MorfaQuestion(word, tag, baseform, correct, fullforms, translations, "", dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))
         return morph, word_id
 
 
