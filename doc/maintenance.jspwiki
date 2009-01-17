@@ -9,33 +9,11 @@ database. Oahpa-programs are developed using Python Web framework [Django|http:/
 Oahpa web pages are basic html, which is enriched with templates and information
 retrieved from the database.
 
-Everyday maintentance includes installing new information, removing
-and updating old information and editing the html-code.
-
-!!Mysql 
-
-In general, the database does not have to be directly accessed, but
-sometimes it is necessary. The database tables created by Django may
-be updated, removed and so on using mysql directly. The name of the
-database is oahpa, username and password are available from .. 
-
-Sometimes, there may be a problem with the mysqld (a clear indication
-of a problem is that the games are not working at all). It may be that
-mysqld has stopped working. Start it again:
-{{{
-sudo /etc/init.d/mysqld start
-}}}
+Everyday maintentance consists of updating the information in the
+database and editing the html-code.
 
 
-!!Settings
-
-First of all, add the django/bin directory to your PATH and the
-location of python files to PYTHONPATH in .bashrc or .profile.
-{{{
-check this out
-}}}
-
-!!Updating the html
+!!HTML
 
 !Overall look
 
@@ -145,7 +123,19 @@ To add the new words to the semantic supersets, update the semantic
 classes [Semantic classes|maintenance.html#Semantic+classes].
 
 Both Sami and Norwegian lexicons are installed using the same command. The
-language information is extracted from the xml-file.
+language information is extracted from the xml-file. Do not specify paradigm or tag information for nob-files:
+{{{
+python install.py -f ../nob/xml/nouns.xml
+}}}
+
+Finally, the installation commands here only update old and add new
+information. If you want to remove all the words that do not appear in
+the xml-file:
+{{{
+python install.py --delete -f ../sme/xml/nouns.xml
+}}}
+This command both updates and removes all the extra entries of pos
+N. The pos N is derived from the pos information of the first entry.
 
 !Numerals
 Numerals are generated and installed using fst. Command:
@@ -156,9 +146,9 @@ install.py -n
 !Placenames
 Placenames stored in sme/xml/propernouns.xml are installed differently
 than the other lexicons, since the Norwegian translations are
-implied. Use option "-l" for them.
+implied. Use option "--places" for them.
 {{{
-install.py -l -f ../sme/xml/propernouns.xml
+install.py --places -f ../sme/xml/propernouns.xml
 }}}
 
 Use option -d to remove entries from the database the same way as from
@@ -186,15 +176,7 @@ English version. To translate for the other languages, follow the
 steps in [Localisation|mainenance.html#Localisation]. In addition, the changes in {{forms.py}}
 require that the server is restarted (sudo httpd restart). 
 
-!Comments
-In the drills, a comment is displayed after the user presses "Show
-correct answers" These comments are installed by:
-{{{
-python install.py -c ../sme/xml/comments.nob.xml
-}}}
-Running the script deletes all the old comments and creates everything anew.
-
-!!Updating questions
+!!Vasta and C-Morfa
 C-Morfa and Vasta share the same mechanism for installing the
 questions. Questions are defined e.g. in
 sme/xml/questions_vasta.xml. In addition some defaults for certain
@@ -209,9 +191,9 @@ will be updated during the next. With one exception: if a question is
 removed and there is no new question with the same id, it has to be
 specifically deleted using command: 
 {{{
-python install.py -u <question_id>
+python install.py --qid <question_id>
 .. or by using the question text
-python install.py -u "Maid SUBJ MAINV"
+python install.py --qid "Maid SUBJ MAINV"
 }}}
 Of course the latter command will delete all the questions with that
 string. However, the deletion with the string may be useful if the qid
@@ -219,7 +201,7 @@ was forgotten. Rerun of the installation script for the question file
 will restore the accidentally deleted questions.
 
 
-!!Updating Sahka
+!!Sahka
 
 Sahka contains pictures which have to be synchronized with the
 contents of the database, so the whole process is explained here in
@@ -263,7 +245,7 @@ ped/oahpa/drill/templates/sahka.html. The file contains a table where
 all the images are stored as links to new dialogues:
 {{{
 <td>
-<a href="javascript:submitSahka('firstmeeting_main');">
+<a href="javascript:submitSahka('firstmeeting_man');">
 <img width="100" src="/oahpa/media/man.jpg"/>
 <p>{% trans "Meeting with Hansa" %}</p></a>
 </td>
@@ -276,6 +258,24 @@ section. In the example above the dialogue name is "firstmeeting_man."
 !CG-script
 
 Copy the file sme-ped.cg3 to /opt/smi/sme/bin.
+There is a Makefile as well.
+
+!!Other
+
+!Comments
+In the drills, a comment is displayed after the user presses "Show
+correct answers" These comments are installed by:
+{{{
+python install.py -c ../sme/xml/comments.nob.xml
+}}}
+Running the script deletes all the old comments and creates everything anew.
+
+!Grammarlinks
+To update the links that appear on the top left corner, edit the file
+ped/sme/src/grammarlinks.txt. Then install using command:
+{{{
+python install.py -i ../sme/src/grammarlinks.txt
+}}}
 
 
 !!Localisation
@@ -336,3 +336,19 @@ If the result indicates memory use too close to 100, this is a clear
 problem indication. The answer is to restart the apache web server,
 and thereafter, if need, to [restart mysqld|maintenance.html#Mysql].
 
+
+!!Mysql 
+
+In general, the database does not have to be directly accessed, but
+sometimes it is necessary. The database tables created by Django may
+be updated, removed and so on using mysql directly. The name of the
+database is oahpa, username and password are available from .. 
+
+Sometimes, there may be a problem with the mysqld (a clear indication
+of a problem is that the games are not working at all). It may be that
+mysqld has stopped working. Start it again:
+{{{
+sudo /etc/init.d/mysqld start
+}}}
+
+!!Admin-interface
