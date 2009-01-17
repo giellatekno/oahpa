@@ -69,9 +69,11 @@ class Extra:
 
         for el in tree.getElementsByTagName("subclasses"):
             semclass=el.getAttribute("class")
+            print semclass
             s, created = Semtype.objects.get_or_create(semtype=semclass)
             for el2 in el.getElementsByTagName('sem'):
                subclass  = el2.getAttribute("class")
+               print "\t" + subclass
                for w in Word.objects.filter(Q(semtype__semtype=subclass) & ~Q(semtype__semtype=semclass)):
                    w.semtype.add(s)
                    w.save()
