@@ -261,7 +261,7 @@ def set_settings(self):
     for b in NUM_CONTEXT_CHOICES:
         self.allnum_context.append(b[0])                
 
-def get_feedback(self,word,tag,wordform,dialect):
+def get_feedback(self,word,tag,wordform,dialect,language):
         
     feedbacks=None
         
@@ -307,11 +307,14 @@ def get_feedback(self,word,tag,wordform,dialect):
                                             Q(mood=tag.mood) & Q(tense=tag.tense) & \
                                             Q(personnumber = tag.personnumber) & Q(dialects__dialect=dialect))
       
+    if not language: language = "nob"
+    if language == "no" : language = "nob"
+    if not language=="nob" and not language=="sme": language="nob"
     if feedbacks:
         for f in feedbacks:
             msgs = f.messages.all()
             for m in msgs:
-                text = Feedbacktext.objects.filter(feedbackmsg=m,language="sme")[0]
+                text = Feedbacktext.objects.filter(feedbackmsg=m,language=language)[0]
                 self.feedback = self.feedback + " " + text.message
         self.feedback = self.feedback.replace("WORDFORM", "\"" + wordform + "\"") 
         #print "FEEDBACK", self.feedback
@@ -396,7 +399,7 @@ class MorfaQuestion(OahpaQuestion):
     Questions for morphology game 
     """
 
-    def __init__(self, word, tag, baseform, correct, fullforms, translations, question, dialect, userans_val, correct_val, *args, **kwargs):
+    def __init__(self, word, tag, baseform, correct, fullforms, translations, question, dialect, language, userans_val, correct_val, *args, **kwargs):
 
         lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
         tag_widget = forms.HiddenInput(attrs={'value' : tag.id})
@@ -412,7 +415,7 @@ class MorfaQuestion(OahpaQuestion):
         self.lemma=baseform.fullform
 
         # Retrieve feedback information
-        self.get_feedback(word,tag,baseform.fullform,dialect)
+        self.get_feedback(word,tag,baseform.fullform,dialect,language)
 
         # Take only the first translation for the tooltip
         if len(translations)>0:
@@ -609,7 +612,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 
         
     def __init__(self, question, qanswer, \
-                 qwords, awords, dialect, userans_val, correct_val, *args, **kwargs):
+                 qwords, awords, dialect, language, userans_val, correct_val, *args, **kwargs):
 
         self.init_variables("", userans_val, [])
         self.lemma = ""
@@ -706,7 +709,7 @@ class ContextMorfaQuestion(OahpaQuestion):
             self.lemma=""
 
         # Retrieve feedback information
-        self.get_feedback(answer_word_el,answer_tag_el,self.lemma,dialect)
+        self.get_feedback(answer_word_el,answer_tag_el,self.lemma,dialect,language)
 
         # Format answer string
         for w in atext.split():
