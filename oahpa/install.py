@@ -24,8 +24,6 @@ parser.add_option("-b", "--db", dest="add_db",
                   help="Used for adding tag infoformation to database")
 parser.add_option("-c", "--comments", dest="commentfile",
                   help="XML-file for comments")
-parser.add_option("-d", "--dialect", dest="dialect",
-                  help="Dialect used in feedback messages")
 parser.add_option("-e", "--feedbackfile", dest="feedbackfile",
                   help="XML-file for feedback")
 parser.add_option("-f", "--file", dest="infile",
@@ -44,8 +42,6 @@ parser.add_option("-m", "--messagefile", dest="messagefile",
 parser.add_option("-n", "--num", dest="numerals",
                   action="store_true", default=False,
                   help="Generate numerals")
-parser.add_option("-p", "--pos", dest="pos",
-                  help="Pos info")
 parser.add_option("-q", "--questionfile", dest="questionfile",
                   help="XML-file that contains questions")
 parser.add_option("-r", "--paradigmfile", dest="paradigmfile",
@@ -93,9 +89,8 @@ if options.semtypefile:
     sys.exit()
 
 if options.feedbackfile:
-    if options.pos and options.dialect:
-        feedback.read_feedback(options.feedbackfile, options.pos, options.dialect, options.messagefile)
-        sys.exit()
+    feedback.read_feedback(options.feedbackfile, options.messagefile)
+    sys.exit()
 
 if options.numerals:
     linginfo.generate_numerals()
@@ -118,6 +113,6 @@ if options.linkfile:
     sys.exit()
 
 if options.infile:
-    words.install_lexicon(options.infile,options.delete,options.paradigmfile,options.placenamefile)
+    words.install_lexicon(options.infile,linginfo,options.delete,options.paradigmfile,options.placenamefile)
     sys.exit()
 
