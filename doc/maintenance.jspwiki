@@ -133,6 +133,14 @@ database, it is possible create a temporary file for them so that you
 do not need to generate paradigms for all the words. Remember to add
 the words to the lexicon file for future updates.
 
+If you have deleted entries in the lexicon file, specify an extra
+option -d to delete unexisting entries. This option can be used only when
+the whole lexicon file is installed, since it compares the xml-file to
+the database content of certain pos.
+{{{
+python install.py -d -f ../sme/xml/nouns.xml
+}}}
+
 To add the new words to the semantic supersets, update the semantic
 classes [Semantic classes|maintenance.html#Semantic+classes].
 
@@ -152,6 +160,9 @@ implied. Use option "-l" for them.
 {{{
 install.py -l -f ../sme/xml/propernouns.xml
 }}}
+
+Use option -d to remove entries from the database the same way as from
+[lexicons|maintenance.html#Lexicons].
 
 !Semantic classes
 
