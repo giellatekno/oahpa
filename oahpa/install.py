@@ -24,6 +24,9 @@ parser.add_option("-b", "--db", dest="add_db",
                   help="Used for adding tag infoformation to database")
 parser.add_option("-c", "--comments", dest="commentfile",
                   help="XML-file for comments")
+parser.add_option("-d", "--delete", dest="delete",
+                  action="store_true", default=False,
+                  help="delete words that do not appear in the lexicon file of certain pos")
 parser.add_option("-e", "--feedbackfile", dest="feedbackfile",
                   help="XML-file for feedback")
 parser.add_option("-f", "--file", dest="infile",
@@ -52,9 +55,6 @@ parser.add_option("-t", "--tagfile", dest="tagfile",
                   help="List of tags and tagsets")
 parser.add_option("-u", "--qid", dest="questionid",
                   help="delete question using id or text")
-parser.add_option("-v", "--delete", dest="delete",
-                  action="store_true", default=False,
-                  help="delete words that do not appear in the lexicon file of certain pos")
 
 
 (options, args) = parser.parse_args()
