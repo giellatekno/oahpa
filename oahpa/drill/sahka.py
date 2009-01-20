@@ -188,6 +188,10 @@ class SahkaGame(Game):
 
         utterance = Utterance.objects.get(Q(id=db_info['utterance_id']))
         targets = []
+        language="nob"
+        if self.settings.has_key('language'):
+            language = self.settings['language']
+
         if utterance.links.filter(~Q(target="")):
             target_els = utterance.links.filter(~Q(target=""))
             for t in target_els:
@@ -195,6 +199,6 @@ class SahkaGame(Game):
         qwords = db_info['qwords']
         global_targets = db_info['global_targets']
 
-        form = (SahkaQuestion(utterance, qwords, targets, global_targets, db_info['userans'], db_info['correct'], data, prefix=n))
+        form = (SahkaQuestion(utterance, qwords, targets, global_targets, language, db_info['userans'], db_info['correct'], data, prefix=n))
 
         return form, None
