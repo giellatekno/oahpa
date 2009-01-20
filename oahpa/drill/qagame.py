@@ -50,12 +50,14 @@ class QAGame(Game):
 
         word_count = Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(dialects__dialect=dialect) &\
                                          Q(form__tag=tag_el.id)).count()
-        word = Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(dialects__dialect=dialect) &\
-                                   Q(form__tag=tag_el.id))[randint(0,word_count-1)]
-        form = word.form_set.filter(Q(tag=tag_el.id) & Q(dialects__dialect=dialect))[0]
-                                         
-        if not form: return None
+        if word_count > 0:
+            word = Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(dialects__dialect=dialect) &\
+                                       Q(form__tag=tag_el.id))[randint(0,word_count-1)]
+            form = word.form_set.filter(Q(tag=tag_el.id) & Q(dialects__dialect=dialect))[0]                                         
+            if not form: return None
 
+        else: return None
+		
         word_id=word.id
         fullform=form.fullform
             
@@ -647,14 +649,17 @@ class QAGame(Game):
         question = Question.objects.get(Q(id=db_info['question_id']))
         answer = None
         dialect = self.settings['dialect']
+        language="nob"
+        if self.settings.has_key('language'):
+            language = self.settings['language']
         if not self.gametype == "qa":
             answer = Question.objects.get(Q(id=db_info['answer_id']))
             form = (ContextMorfaQuestion(question, answer, \
-                                         db_info['qwords'], db_info['awords'], dialect,\
+                                         db_info['qwords'], db_info['awords'], dialect, language,\
                                          db_info['userans'], db_info['correct'], data, prefix=n))
         else:
             form = (VastaQuestion(question, \
-                                  db_info['qwords'], \
+                                  db_info['qwords'], language, \
                                   db_info['userans'], db_info['correct'], data, prefix=n))
             
         #print "awords:", db_info['awords']
