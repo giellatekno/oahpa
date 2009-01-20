@@ -19,7 +19,7 @@ lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
 lookup2cg = " | lookup2cg"
 cg3 = "vislcg3"
 preprocess = " | /usr/local/bin/preprocess "
-dis = "/home/saara/ped/sme/src/sme-ped.cg3"
+dis = "/opt/smi/sme/bin/sme-ped.cg3.bin"
 
 #fstdir="/Users/saara/gt/sme/bin"
 #lo = "/Users/saara/bin/lookup"
@@ -51,12 +51,13 @@ while 1:
             print "RECIEVED:" , data
             if not data:
                 client_socket.close()
+                break				
             if not data.lstrip().rstrip():
                 client_socket.close()
+                break
             c = [";","<",">","*","|","`","&","$","!","#","(",")","[","]","{","}",":"]
             for a in c:
                 data = data.replace(a,'')
-                print a				
             look.sendline(data)
             look.expect ('\r?\n\r?\n')
             result = look.before
@@ -78,7 +79,6 @@ while 1:
             for a in anl:
                 analyzed = analyzed + a
 
-            print analyzed
             client_socket.send(analyzed)
             
             #analyzed = analyzed + "jee\n"
