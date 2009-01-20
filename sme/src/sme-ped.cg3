@@ -2121,7 +2121,7 @@ LIST DILLI = "areála#dilli" "bargo#dilli" "biras#dilli" "boazo#dilli" "boazodoa
 
   # Likely to be locative in most contexts
   
-LIST WEATHER-SITUATION = "beaivvádat" "bievla" "buolaš" "dálki" "dálke#dilálašvuohta" "fiertu" "goalki" "siivu" "jođádat" "liekkas" "linádat" "oppas" "riđđu" "muohtti" "ilbmi" "balva" "čuoika" "čoaskin" "biegga" "nuorttadat" "davádat" "oarjjádat" "luládat" "orjješ#biegga" "nuorta#biegga" "obba#dálki" "balva#dálki" "balva#ilbmi" "arvi" "savda" "savdaarvi" "liehmu" "láfu#biegga" "baján" "johtti" "gállu" "jiella" "hieibma" "šlahtti" "seaŋáš" "borga" "guoldu" "dobadat" "dulvi" "moarri" "geardni" "cuoŋu" "jealahas" "jalahas" "geasádat" "dálvvádat" "jáldu" "lievhnu" "galmma" "guostta" "čođđolat" "čođđálat" "sealádat" "šearádat" "bálgu" "bálggádat" ;
+LIST WEATHER-SITUATION = "beaivvádat" "bievla" "buolaš" "dálki" "dálke#dilálašvuohta" "fiertu" "goalki" "siivu" "jođádat" "liekkas" "linádat" "oppas" "riđđu" "muohtti" "ilbmi" "balva" "čuoika" "čoaskin" "biegga" "nuorttadat" "davádat" "oarjjádat" "luládat" "orjješ#biegga" "nuorta#biegga" "obba#dálki" "balva#dálki" "balva#ilbmi" "arvi" "savda" "savdaarvi" "liehmu" "láfu#biegga" "baján" "johtti" "gállu" "jiella" "hieibma" "šlahtti" "seaŋáš" "borga" "guoldu" "dobadat" "dobádat" "dulvi" "moarri" "geardni" "cuoŋu" "jealahas" "jalahas" "geasádat" "dálvvádat" "jáldu" "lievhnu" "galmma" "guostta" "čođđolat" "čođđálat" "sealádat" "šearádat" "bálgu" "bálggádat" "geamádat" "goikkádat" ;
 
  # 
 
@@ -3072,7 +3072,7 @@ SELECT:r749 ("logi") IF (0 ("loahki" Com) LINK *1 (N Com) BARRIER NOT-ADJ);
  
     # lohku vs. loahku
     # - - - - - - - - -
-LIST LOHKU = "bivdo#fanas#lohku" "bohcco#lohku" "eanet#lohku" "jienastan#lohku" "sáme#jienastus#lohku" "stággo#lohku" "unnit#lohku" ;
+LIST LOHKU = "bivdo#fanas#lohku" "boazo#lohku" "eanet#lohku" "jienastan#lohku" "sáme#jienastus#lohku" "stággo#lohku" "unnit#lohku" ;
 
 SELECT:r750 LOHKU IF (0 LOHKU);
 
@@ -3106,7 +3106,7 @@ SELECT:r764 N IF (0 ("measta" Adv Foc/gis));
 
     # moalla vs. molla
     # - - - - - - - - 
-LIST MOALLA-V = "báhčit" "boahtit" "bijdat" "bidjalit" "coggalit" "čiekčat" "čievččastit" "deaddilit"  "dearpalit" "fieraldahttit" "galkat" "gárrut" "joavdat" "loktestit" "nahkehit" "nivkalit" "roaiskalit" "viehkat" ;  
+LIST MOALLA-V = "báhčit" "boahtit" "bidjat" "bidjalit" "coggalit" "čiekčat" "čievččastit" "deaddilit"  "dearpalit" "fieraldahttit" "galkat" "gárrut" "joavdat" "loktestit" "nahkehit" "nivkalit" "roaiskalit" "viehkat" ;  
 # when "moalla" Ill
 
 SELECT ("moalla") IF (-1 ("rabas"));  
@@ -3192,7 +3192,7 @@ SELECT:r795 ("gávppe#verdde") IF (0 ("gávppe#veardi"));
 
 	# viergi vs. virgi
 	# - - - - - - - -
-LIST VIRGI = (".*assisteanta#virgi"r) "áššemeannudan#virgi" "bagadus#virgi" "bealle#virgi" "besten#virgi" "dieđa#virgi" "DRO-#virgi" (".*dutkan#virgi"r) (".*fága#virgi"r) "giella#virgi" (".*konsuleanta#virgi"r) (".*#bargi#virgi"r) "guođohan#virgi" "guođoheaddje#virgi" (".*ráđđeaddi#virgi"r) "hálddahus#virgi" (".*hoavda#virgi"r) "hovden#virgi" "II-#virgi" (".*jođiheaddji#virgi"r) (".*journalista#virgi"r) "lassi#virgi" (".*bargo#virgi"r) "njunuš#virgi" (".*oahpaheaddji#virgi"r) "oahpaheai#virgi" "oaivadeaddji#virgi" "oalge#virgi" "oasse#virgi" "oččodan#virgi" "rekrutteren#virgi" "prošeakta#virgi" "speasialista#virgi" (".*áhtta#virgi"r) "stipeandiahta#virgi" (".*fálde#virgi"r) ;
+LIST VIRGI = (".*assisteanta#virgi"r) "áššemeannudan#virgi" "bagadus#virgi" "bealle#virgi" "besten#virgi" "dieđa#virgi" "DRO-#virgi" (".*dutkan#virgi"r) (".*fága#virgi"r) "giella#virgi" (".*konsuleanta#virgi"r) (".*#bargi#virgi"r) "guođohan#virgi" "guođoheaddje#virgi" (".*ráđđeaddi#virgi"r) "hálddahus#virgi" (".*hoavda#virgi"r) "hovden#virgi" "II-#virgi" (".*jođiheaddji#virgi"r) (".*journalista#virgi"r) "lassi#virgi" (".*bargo#virgi"r) "njunuš#virgi" (".*oahpaheaddji#virgi"r) "oahpaheai#virgi" "oaivadeaddji#virgi" "oalge#virgi" "oasse#virgi" "oččodan#virgi" "rekrutteren#virgi" "prošeakta#virgi" "speasialista#virgi" (".*áhtta#virgi"r) "stipeandiáhtta#virgi" (".*fálde#virgi"r) ;
 
 LIST VIRGI-V = "almmuhit" "árvalit" "ásahit" "beallje#merket" "dagahit" "deavdit" "geahpedit" "gilvalit" "gustot" "gusket" "hálddašit" "heaittihit" "lasihit" "nannet" "ohcat" "ruhtadit" ;
 
@@ -5890,7 +5890,7 @@ LIST STRICTILLV = "ásaiduvvat" "báitit" "čalmmástuvvat" "čiehkádit" "čohk
 
 LIST STRICTLOCV = "ávkkástallat" "ballat" "beasadit" "beroštit" "biehttalit" "bihtit" "ceavzit" "dolkat" "eastadallat" "eastadit" "fuollat" "geargat" "heaitit" "ilbmat" "luohpat" "nohkkot" "spiehkastit" ;
 
-LIST ESSV = "bargat" "gárvodit" "joatkit" ;
+LIST ESSV = "bargat" "gárvodit" "joatkit" "neaktit" "rievdat" "šaddat" ;
 
 LIST ACCESSV = "atnit" "cielahit" "dadjat" "dahkat" "dulkot" "geavahit" "geahčastit" "geaidit" "geaidut" "gohčodit" "meroštallat" "navdit" "váldit" "válljet" ;
 
@@ -6374,13 +6374,13 @@ LIST ROOMS = "stohpu" "gievkkan" "oađđen#latnja" "basadan#latnja" "hivsset" "f
 LIST DRINK = "bruvsa" "sákta" "mielki" "viidni" "vuola" ;
 
 #LIST CANDY =  šukkoláda lákcajiekŋa keavssat ;
-LIST CANDY =  "šukkoláda" "lákca#gáhkku" "keaksa" ;
+LIST CANDY =  "šukkoláda" "lákca#jiekŋa" "keaksa" ;
 
 #LIST BREAD = láibi garraláibi roavvaláibi beaivvášláibbáš nisoláibi ; 
 LIST BREAD = "láibi" "garra#láibi" "roavva#láibi" "beaivváš#láibbáš" "niso#láibi";
 
-#LIST VEGETABLE = rušppit buđehat saláhta ;
-LIST VEGETABLE = "rušpi" "buđet" "saláhta" ;
+#LIST VEGETABLE = rušppit buđehat saláhta návrraš ;
+LIST VEGETABLE = "rušpi" "buđet" "saláhta" "návrraš" ;
 
 #LIST FRUIT = eahppelat appelsiinnat ;
 LIST FRUIT = "eahppel" "appelsiidna" ;
@@ -6388,8 +6388,8 @@ LIST FRUIT = "eahppel" "appelsiidna" ;
 #LIST MEAT = márffit sáltemárfi buoidi bohccobiergu  ;
 LIST MEAT = "márfi" "sálte#márfi"  "buoidi" "bohcco#biergu"  ;
 
-#LIST GROCERYFISH = guolli sálteluossa goikeguolli guollegáhkut ;
-LIST GROCERYFISH = "guolli" "goike#guolli" "sálte#luossa" "guolle#gáhkku" ;
+#LIST GROCERYFISH = guolli sálteluossa goikeguolli guollegáhkut bálddis dápmot ;
+LIST GROCERYFISH = "guolli" "goike#guolli" "sálte#luossa" "guolle#gáhkku" "bálddis" "dápmot" ;
 
 #LIST BAKING =  sálttit sohkkarat  monit jáffut jeasta sirát ;
 LIST BAKING =  "sálti" "sohkar" "monni" "jáffu" "jeasta" "sirát" ;
