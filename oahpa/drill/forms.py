@@ -746,7 +746,7 @@ class ContextMorfaQuestion(OahpaQuestion):
             self.error="correct"
 
 
-def vasta_is_correct(self,question,qwords,utterance_name=None):
+def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     """
     Analyzes the answer and returns a message.
     """
@@ -890,13 +890,18 @@ def vasta_is_correct(self,question,qwords,utterance_name=None):
     variable=""
     constant=""
     found=False
+    #Interface language	
+    if not language: language = "nob"
+    if language == "no" : language = "nob"
+    if not language=="nob" and not language=="sme": language="nob"
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
             if spelling and m.count("spelling") == 0: continue
             m = m.replace("&","") 
             if Feedbackmsg.objects.filter(msgid=m).count() > 0:
-                message = Feedbacktext.objects.filter(feedbackmsg=m,language="sme")[0].message
+                msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
+                message = Feedbacktext.objects.filter(feedbackmsg=msg_el,language=language)[0].message
                 message = message.replace("WORDFORM","\"" + w + "\"") 
                 msg.append(message)
                 if not spelling:
@@ -947,7 +952,7 @@ class VastaQuestion(OahpaQuestion):
     select_words = select_words
     vasta_is_correct = vasta_is_correct
         
-    def __init__(self, question, qwords, userans_val, correct_val, *args, **kwargs):                 
+    def __init__(self, question, qwords, language, userans_val, correct_val, *args, **kwargs):                 
 
         self.init_variables("", userans_val, [])
         
@@ -998,14 +1003,14 @@ class VastaQuestion(OahpaQuestion):
 
         # In qagame, all words are considered as answers.
         self.gametype="vasta"
-        self.messages, jee, joo  = self.vasta_is_correct(qstring.encode('utf-8'), qwords, None)
+        self.messages, jee, joo  = self.vasta_is_correct(qstring.encode('utf-8'), qwords, language)
         
         # set correct and error values
         if correct_val == "correct":
             self.error="correct"
 
 
-def sahka_is_correct(self,utterance,targets):
+def sahka_is_correct(self,utterance,targets,language):
     """
     Analyzes the answer and returns a message.
     """
@@ -1017,7 +1022,7 @@ def sahka_is_correct(self,utterance,targets):
     qwords = {}
     # Split the question to words for analaysis.
 
-    self.messages, self.dia_messages, self.variables = self.vasta_is_correct(utterance.utterance, None, utterance.name)
+    self.messages, self.dia_messages, self.variables = self.vasta_is_correct(utterance.utterance, None, language, utterance.name)
     #self.variables = [ "Kárášjohka" ]
     #self.dia_messages = [ "dia-unknown" ]
 
@@ -1070,7 +1075,7 @@ class SahkaQuestion(OahpaQuestion):
     sahka_is_correct = sahka_is_correct
     vasta_is_correct = vasta_is_correct
 
-    def __init__(self, utterance, qwords, targets, global_targets, userans_val, correct_val, *args, **kwargs):                 
+    def __init__(self, utterance, qwords, targets, global_targets, language, userans_val, correct_val, *args, **kwargs):                 
         
         self.init_variables("", userans_val, [])
 
@@ -1135,7 +1140,7 @@ class SahkaQuestion(OahpaQuestion):
         self.variables = []
         self.variables.append("")
         self.variables.append("")
-        self.sahka_is_correct(utterance,targets)
+        self.sahka_is_correct(utterance,targets,language)
         if self.target:
             variable=""
             constant=""
