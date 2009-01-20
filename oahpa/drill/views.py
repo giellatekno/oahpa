@@ -83,7 +83,7 @@ class Gameview:
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
             if request.session.has_key('django_language'):
-				self.settings['language'] = request.session['django_language']
+                self.settings['language'] = request.session['django_language']
 				                
             self.syll_settings(settings_form)
             if settings_form.data.has_key('book'):
@@ -125,7 +125,7 @@ class Gameview:
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
             if request.session.has_key('django_language'):
-				self.settings['language'] = request.session['django_language']
+                self.settings['language'] = request.session['django_language']
 				
             if self.settings['gametype'] == "bare":
                 game = BareGame(self.settings)        
@@ -295,6 +295,9 @@ class Vastaview:
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
 
+            if request.session.has_key('django_language'):
+                self.settings['language'] = request.session['django_language']
+
             self.settings['allcase_context']=settings_form.allcase_context
             self.settings['allvtype_context']=settings_form.allvtype_context
             self.settings['allnum_context']=settings_form.allnum_context
@@ -334,6 +337,9 @@ class Vastaview:
 
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
+
+            if request.session.has_key('django_language'):
+                self.settings['language'] = request.session['django_language']
 
             # Vasta
             game = QAGame(self.settings)
@@ -400,6 +406,9 @@ class Quizzview(Gameview):
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
 
+            if request.session.has_key('django_language'):
+                self.settings['language'] = request.session['django_language']
+
             self.placename_settings(settings_form)
             self.settings['allsem']=settings_form.allsem
             self.settings['book'] = settings_form.books[settings_form.data['book']]
@@ -429,6 +438,9 @@ class Quizzview(Gameview):
 
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
+
+            if request.session.has_key('django_language'):
+                self.settings['language'] = request.session['django_language']
 
             game = QuizzGame(self.settings)
             game.new_game()
@@ -482,6 +494,8 @@ class Numview(Gameview):
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
 
+            if request.session.has_key('django_language'):
+                self.settings['language'] = request.session['django_language']
 
             game = NumGame(self.settings)
                 
@@ -554,6 +568,9 @@ class Sahkaview:
         self.settings['gametype'] = "sahka"
         if request.session.has_key('dialect'):
             self.settings['dialect'] = request.session['dialect']
+        if request.session.has_key('django_language'):
+            self.settings['language'] = request.session['django_language']
+
 			
         # With post data, continue the dialogue
         if request.method == 'POST':
@@ -616,6 +633,8 @@ class Sahkaview:
 
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
+            if request.session.has_key('django_language'):
+                self.settings['language'] = request.session['django_language']
 
             c = Context({
                 'settingsform': settings_form,
