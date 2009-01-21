@@ -50,7 +50,7 @@
 
     <utt type="question" name="makkar_sattuid">
       <word class="FRUIT"/>
-      <text>Mis leat šattut fálaldagas. Makkár šattuid don áiggut?</text>
+      <text>Mis leat šattut fálaldagas. Makkár šattuid don siđat?</text>
       <alt target="neg" link="makkar_bierggu">
         <text>Odne it áiggo.</text>
       </alt>      
@@ -59,18 +59,18 @@
 
     <utt type="question" name="makkar_bierggu">
       <word class="MEAT"/>
-      <text>Ja de mis lea biergu. Makkár bierggu dahje biergobuktaga don háliidat?</text>
+      <text>Ja de mis lea biergu. Makkár bierggu dahje biergobuktaga don válddát?</text>
       <alt target="neg" link="makkar_guoli">
-        <text>Odne it áiggo.</text>
+        <text>It leat biergováibmil, gusto.</text>
       </alt>      
       <alt target="default" link="makkar_guoli"/>
     </utt>
 
     <utt type="question" name="makkar_guoli">
       <word class="GROCERYFISH"/>
-      <text>Ja dás lea guolli. Makkár guoli dahje guollebuktaga don áiggut?</text>
+      <text>Ja dás lea guolli. Makkár guoli dahje guollebuktaga don oasttát?</text>
       <alt target="neg" link="makkar_suvlliid">
-            <text>Odne it áiggo.</text>
+            <text>Oja, odne ii geasut guolli.</text>
       </alt>      
       <alt target="default" link="makkar_suvlliid"/>
     </utt>
@@ -79,16 +79,16 @@
       <word class="SUVLI"/>
 	<text>Mis leat máŋgga lágan suvllit. Makkár suvlliid don válddát odne?</text>
 	<alt target="neg" link="makkar_laibunavdnasiid">
-          <text>Odne it áiggo suvlliid.</text>
+          <text>Gal goikeláibi maid máisto.</text>
 	</alt>      
 	<alt target="default" link="makkar_laibunavdnasiid"/>
     </utt>
 
     <utt type="question" name="makkar_laibunavdnasiid">
       <word class="BAKING"/>
-      <text>Ja dán ildus leat láibunávdnasat. Makkár láibunávdnasiid don áiggut?</text>
+      <text>Ja dán ildus leat láibunávdnasat. Makkár láibunávdnasiid don dárbbašat?</text>
       <alt target="neg" link="makkar_njalgaid">
-            <text>Odne it áiggo.</text>
+            <text>Oja, it áiggo láibut odne.</text>
       </alt>      
       <alt target="default" link="makkar_njalgaid"/>
     </utt>
@@ -97,7 +97,7 @@
       <word class="CANDY"/>
       <text>Ja de mis leat njálgát. Makkár njálgáid don háliidat?</text>
       <alt target="neg" link="closing_groceries">
-        <text>Odne it áiggo njálgáid.</text>
+        <text>Gal njálgáid haga birge.</text>
       </alt>      
       <alt target="default" link="closing_groceries"/>
     </utt>
