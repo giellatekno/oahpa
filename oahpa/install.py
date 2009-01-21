@@ -11,7 +11,7 @@ import sys
 import re
 import codecs
 from ling import Paradigm
-from feedback_install import Feedback
+from feedback_install import Feedback_install
 from sahka_install import Sahka
 from extra_install import Extra
 from questions_install import Questions
@@ -60,7 +60,7 @@ parser.add_option("-u", "--qid", dest="questionid",
 (options, args) = parser.parse_args()
 
 linginfo = Paradigm()
-feedback = Feedback()
+feedback = Feedback_install()
 sahka = Sahka()
 questions = Questions()
 extra = Extra()
@@ -89,7 +89,7 @@ if options.semtypefile:
     sys.exit()
 
 if options.feedbackfile:
-    feedback.read_feedback(options.feedbackfile, options.messagefile)
+    feedback.read_feedback(options.feedbackfile)
     sys.exit()
 
 if options.numerals:
@@ -97,7 +97,7 @@ if options.numerals:
     sys.exit()
 
 if options.messagefile:
-    questions.read_messages(options.messagefile)
+    feedback.read_messages(options.messagefile)
     sys.exit()
 
 if options.commentfile:
