@@ -96,7 +96,9 @@ class Questions:
                         agr_elements = QElement.objects.filter(Q(question__id=qaelement.question_id) & \
                                                                Q(syntax=agr_id))
 
-
+            if not agr_elements:
+                print "ERROR: no agreement elements found"
+				
         ############ WORDS
         # Search for existing word in the database.
         ids = []
