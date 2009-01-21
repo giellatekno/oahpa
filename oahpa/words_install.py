@@ -3,6 +3,7 @@ from settings import *
 from drill.models import *
 from django.db.models import Q
 from xml.dom import minidom as _dom
+from django.utils.encoding import force_unicode
 import sys
 import re
 import string
@@ -28,12 +29,20 @@ class Words:
 
         for e in tree.getElementsByTagName("entry"):
             pos=e.getElementsByTagName("pos")[0].getAttribute("class") 
-            self.store_word(e,linginfo,mainlang,paradigmfile,placenamefile)
+            self.store_word(e,linginfo,mainlang,paradigmfile,placenamefile,delete)
 
-        if delete and pos:
-            allids = Word.objects.filter(pos=pos).values_list('wordid',flat=True)
+        if delete and pos and not placenamefile:
+            allids = Word.objects.filter(Q(pos=pos) & ~Q(semtype__semtype="PLACE-NAME-LEKSA")).values_list('wordid',flat=True)
             for a in allids:
-                if a not in set(self.all_wordids):
+                if force_unicode(a) not in set(self.all_wordids):
+                    print "Word id not found from xml. Deleting:", a
+                    word = Word.objects.get(pos=pos,wordid=a)
+                    word.delete()
+
+        if delete and placenamefile:
+            allids = Word.objects.filter(Q(pos="N") & Q(semtype__semtype="PLACE-NAME-LEKSA")).values_list('wordid',flat=True)
+            for a in allids:
+                if force_unicode(a) not in set(self.all_wordids):
                     print "Word id not found from xml. Deleting:", a
                     word = Word.objects.get(pos=pos,wordid=a)
                     word.delete()
@@ -126,7 +135,7 @@ class Words:
                 w.source.add(book_entry)
                 w.save()
 
-    def store_word(self,e,linginfo,mainlang,paradigmfile,placenamefile):
+    def store_word(self,e,linginfo,mainlang,paradigmfile,placenamefile,delete):
 
         # Store first unique fields
         id=e.getAttribute("id")
@@ -228,6 +237,10 @@ class Words:
         # Add forms and tags
         if paradigmfile:
             linginfo.create_paradigm(lemma,pos,forms)
+            # Remove old forms.
+            forms = Form.objects.filter(word=w)
+            for f in forms:
+                f.delete()
             for f in linginfo.paradigm:
 
                 g=f.classes
@@ -248,7 +261,8 @@ class Words:
 
                 t.save()
                 
-                form, created = Form.objects.get_or_create(fullform=f.form,tag=t,word=w)
+                form = Form(fullform=f.form,tag=t,word=w)				
+                form.save()
                 if len(f.dialects)==1: dialects2 = f.dialects[:]
                 else: dialects2 = dialects[:]
                 for d in dialects2:
@@ -258,10 +272,10 @@ class Words:
                 form.save()
 
         if only_sg:
-            print "deleting forms for", w.lemma
+            print "deleting plural forms for", w.lemma
             Form.objects.filter(Q(word=w.id) & Q(tag__number="Pl")).delete()
         if only_pl:
-            print "deleting forms for", w.lemma
+            print "deleting singular forms for", w.lemma
             Form.objects.filter(Q(word=w.id) & Q(tag__number="Sg")).delete
  				
 
