@@ -106,6 +106,7 @@ class Paradigm:
                     tagstring = f.getAttribute("tag")
                     wordform = f.firstChild.data			
                     extraforms[tagstring] = wordform
+                    print "adding extra wordform..", wordform
 
         for line in lines_tmp:
 
