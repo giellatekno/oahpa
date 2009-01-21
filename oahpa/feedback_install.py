@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from settings import *
-from drill.models import Feedback,Feedbackmsg,Dialect,Comment
+from drill.models import Feedback,Feedbackmsg,Feedbacktext,Dialect,Comment
 from xml.dom import minidom as _dom
 from django.db.models import Q
 import sys
@@ -12,25 +12,29 @@ import codecs
 class Entry:
     pass
 
-class Feedback:
+class Feedback_install:
 
     def __init__(self):
         self.tagset = {}
         self.paradigms = {}
+        self.dialects = ["KJ","GG"]
 
     def read_messages(self,infile):
 
         xmlfile=file(infile)
         tree = _dom.parse(infile)
+        lex = tree.getElementsByTagName("messages")[0]
+        lang = lex.getAttribute("xml:lang")        
 
         for el in tree.getElementsByTagName("message"):
             mid=el.getAttribute("id")
             message = el.firstChild.data
-            
-            fm, created = Feedbackmsg.objects.get_or_create(msgid=mid, message=message)
+            print message            
+            fm, created = Feedbackmsg.objects.get_or_create(msgid=mid)
             fm.save()
 
-
+            fmtext, created=Feedbacktext.objects.get_or_create(message=message,language=lang,feedbackmsg=fm)
+            fmtext.save()
 
     def set_null(self):
 
@@ -88,19 +92,16 @@ class Feedback:
         
         cursor.execute("INSERT INTO oahpa.drill_feedback (pos,stem,diphthong,gradation,rime,soggi,case2,number,personnumber,tense,mood,attributive,grade,attrsuffix) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE pos=%s", (pos,stem,diphthong,gradation,rime,soggi,case,number,personnumber,tense,mood,attributive,grade,attrsuffix,pos))
 
-    def read_feedback(self, infile, pos, dialect, msgfile=None):
+    def read_feedback(self, infile):
 
         from django.db import connection
         print infile
-        if not pos: return None
-
-        if msgfile:
-            self.read_messages(msgfile)
 
         xmlfile=file(infile)
         tree = _dom.parse(infile)
 
-        dialect_el = Dialect.objects.get(dialect=dialect)
+        fb = tree.getElementsByTagName("feedback")[0]
+        pos = fb.getAttribute("pos")
 
         stem_messages = {}
         gradation_messages = {}
@@ -108,6 +109,7 @@ class Feedback:
         # Find out different values for variables.
         # Others can be listed, but soggi is searched at the moment.
         rimes={}
+        gradations={}
         attrsuffixs={}
         compsuffixs={}
         #soggis={}
@@ -117,6 +119,9 @@ class Feedback:
                 rime = el.getAttribute("rime")
                 if rime=="0": rime = "norime"
                 rimes[rime] = 1
+            if el.getAttribute("gradation"):
+                gradation = el.getAttribute("gradation")
+                gradations[gradation] = 1
             if el.getAttribute("attrsuffix"):
                 attrsuffix = el.getAttribute("attrsuffix")
                 if attrsuffix=="0": rime = "noattr"
@@ -140,7 +145,7 @@ class Feedback:
         rimes["norime"] = 1
         diphthongs = ["yes","no"]
         stems = ["bisyllabic","trisyllabic","contracted"]
-        gradations = ["inv","no","yes"]
+        #gradations = ["inv","no","yes","extrastrong"]
         grades = ["Comp","Superl","Pos"]
         cases = ["Acc", "Gen", "Ill","Loc","Com","Ess","Nom"]
         numbers = ["Sg","Pl"]
@@ -151,7 +156,7 @@ class Feedback:
         messages=[]
         print rimes.keys()
         print soggis
-        print gradations
+        print gradations.keys()
         print grades
         print cases
         print numbers 
@@ -180,7 +185,7 @@ class Feedback:
             if el.getAttribute("gradation"):
                 gradation=el.getAttribute("gradation")
                 if gradation: ftempl.gradation = [ gradation ]
-            if not gradation: ftempl.gradation = gradations
+            if not gradation: ftempl.gradation = gradations.keys()
                 
             if el.getAttribute("diphthong"):
                 diphthong=el.getAttribute("diphthong")
@@ -224,7 +229,8 @@ class Feedback:
                 f.soggi = ftempl.soggi[:]
                 f.rime = ftempl.rime[:]
                 f.attrsuffix = ftempl.attrsuffix[:]
-                
+                f.dialects = self.dialects[:]
+				
                 msgid = mel.firstChild.data
                 #print "Message id", msgid
                 f.msgid = msgid
@@ -266,6 +272,11 @@ class Feedback:
                     if grade: f.grade = [ grade ]
                 if not grade: f.grade = grades
 
+                if mel.getAttribute("dialect"):
+                    dialect=mel.getAttribute("dialect")
+                    if dialect:
+                        invd=dialect.lstrip("NOT-")
+                        f.dialects.remove(invd)
 
                 messages.append(f)
 
@@ -273,6 +284,7 @@ class Feedback:
         for f in messages:
             print f.msgid
             msgs = Feedbackmsg.objects.filter(msgid=f.msgid)
+            dialects = Dialect.objects.filter(dialect__in=f.dialects)
 
             if f.pos == "N" or pos=="A" or pos=="Num":
                 for stem in f.stem:
@@ -302,8 +314,8 @@ class Feedback:
                                                         if msgs:
                                                             f2.messages.add(msgs[0])
                                                         else : print "No messages found:", f.msgid
-                                                        if dialect_el:
-                                                            f2.dialects.add(dialect_el)
+                                                        for d in dialects:
+                                                            f2.dialects.add(d)
                                                         f2.save()
                                     
                                                 else:
@@ -325,8 +337,9 @@ class Feedback:
                                                             if msgs:
                                                                 f2.messages.add(msgs[0])
                                                             else : print "No messages found:", f.msgid 
-                                                            if dialect_el:
-                                                                f2.dialects.add(dialect_el)
+                                                            for d in dialects:
+                                                                f2.dialects.add(d)
+
                                                             f2.save()
                                                             
                                                         else:
@@ -345,8 +358,9 @@ class Feedback:
                                                                 if msgs:
                                                                     f2.messages.add(msgs[0])
                                                                 else : print "No messages found:", f.msgid 
-                                                                if dialect_el:
-                                                                    f2.dialects.add(dialect_el)
+                                                                for d in dialects:
+                                                                    f2.dialects.add(d)
+
                                                                 f2.save()
                                     if f.pos == "N" or f.pos=="Num":
                                         for case in f.case:
@@ -366,8 +380,8 @@ class Feedback:
                                                 if msgs:
                                                     f2.messages.add(msgs[0])
                                                 else : print "No messages found:", f.msgid
-                                                if dialect_el:
-                                                    f2.dialects.add(dialect_el)
+                                                for d in dialects:
+                                                    f2.dialects.add(d)
                                                 f2.save()
                                                 continue
                                             else:
@@ -386,8 +400,9 @@ class Feedback:
                                                     if msgs:
                                                         f2.messages.add(msgs[0])
                                                     else : print "No messages found:", f.msgid
-                                                    if dialect_el:
-                                                        f2.dialects.add(dialect_el)
+                                                    for d in dialects:
+                                                        f2.dialects.add(d)
+
                                                     f2.save()
 
                                                     
@@ -398,26 +413,29 @@ class Feedback:
                 for stem in f.stem:
                     for diphthong in f.diphthong:
                         for soggi in f.soggi:                                                           
-                            for personnumber in f.personnumber:
-                                for tense in f.tense:
-                                    for mood in f.mood:
+                            for rime in f.rime:                                                           
+                                for personnumber in f.personnumber:
+                                    for tense in f.tense:
+                                        for mood in f.mood:
                                         
-                                        self.insert_feedback(cursor,pos,stem,diphthong,gradation,'empty',soggi,'empty','empty',personnumber,tense,mood)
-                                        f2 = Feedback.objects.get(stem=stem,\
-                                                                  diphthong=diphthong,\
-                                                                  gradation=gradation,\
-                                                                  soggi=soggi,\
-                                                                  tense=tense,\
-                                                                  pos=pos,\
-                                                                  mood=mood,\
-                                                                  personnumber=personnumber)
+                                            self.insert_feedback(cursor,pos,stem,diphthong,gradation,rime,soggi,'empty','empty',personnumber,tense,mood)
+                                            f2 = Feedback.objects.get(stem=stem,\
+                                                                      diphthong=diphthong,\
+                                                                      gradation=gradation,\
+                                                                      soggi=soggi,\
+                                                                      tense=tense,\
+                                                                      pos=pos,\
+                                                                      rime=rime,\
+                                                                      mood=mood,\
+                                                                      personnumber=personnumber)
 
-                                        if messages:
-                                            f2.messages.add(messages[0])
-                                        else : print "No messages found:", f.msgid
-                                        if dialect_el:
-                                            f2.dialects.add(dialect_el)
-                                        f2.save()
+                                            if messages:
+                                                f2.messages.add(messages[0])
+                                            else : print "No messages found:", f.msgid
+                                            for d in dialects:
+                                                f2.dialects.add(d)
+
+                                            f2.save()
         cursor.close()
         connection.close()
         self.set_null()
