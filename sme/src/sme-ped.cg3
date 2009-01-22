@@ -569,15 +569,15 @@ LIST LEAT = ("leat" V Ind Prs Pl1) ("leat" V Ind Prs Pl3)
 
 LIST LEAT-FIN-NOT-IMP = ("leat" V Ind) ("leat" V Cond) ("leat" V Pot);
  
-LIST VPRFPRC = (V PrfPrc) ;
-LIST LEATPRFPRC = ("leat" PrfPrc) ;
-SET PRC-NOT-LEAT = VPRFPRC - LEATPRFPRC ;
-    # In order to distinguish between real leat-constructions and participles of other verbs
-LIST HABEO-SG3 = ("leat" Sg3) (V Neg Sg3) ("šaddat" Sg3) ;
-
-LIST HABEO-PL3 = ("leat" Pl3) (V Neg Pl3) ("šaddat" Pl3) ;
-
-SET HABEO-3 = HABEO-SG3 OR HABEO-PL3 ;
+###LIST VPRFPRC = (V PrfPrc) ;
+###LIST LEATPRFPRC = ("leat" PrfPrc) ;
+###SET PRC-NOT-LEAT = VPRFPRC - LEATPRFPRC ;
+###    # In order to distinguish between real leat-constructions and participles of other verbs
+###LIST HABEO-SG3 = ("leat" Sg3) (V Neg Sg3) ("šaddat" Sg3) ;
+###
+###LIST HABEO-PL3 = ("leat" Pl3) (V Neg Pl3) ("šaddat" Pl3) ;
+###
+###SET HABEO-3 = HABEO-SG3 OR HABEO-PL3 ;
 
 # Pronoun sets
 # ------------
@@ -615,7 +615,7 @@ SET NOT-DEM = WORD - Dem ;
 LIST SGPRON = (Pron Sg1) (Pron Sg2) (Pron Sg3) (Pron Sg) (Pron PxSg1) (Pron PxSg2) (Pron PxSg3);
 LIST DUPRON = (Pron Du1) (Pron Du2) (Pron Du3)  (Pron PxDu1) (Pron PxDu2) (Pron PxDu3);
 LIST PLPRON = (Pron Pl1) (Pron Pl2) (Pron Pl3) (Pron Pl) (Pron PxPl1) (Pron PxPl2) (Pron PxPl3);
-LIST DUPRON-NOTPX = (Pron Du1) (Pron Du2) (Pron Du3) ;
+#LIST DUPRON-NOTPX = (Pron Du1) (Pron Du2) (Pron Du3) ;
 
 SET PRON-NOT-SG = DUPRON OR PLPRON ;
 
@@ -815,9 +815,9 @@ LIST TRANSLV = "jápmit" "duššat" "hávkat" "náitalit" "gaskkalduvvat" "nohka
 LIST REKSV = "áibbašit" "deaivat" "dorvvastit" "duhtat" "gustot" "hárjánit" "jáhkkit" "liikot" "mieđihit" "ollet" "ráhkkanit" "soahpat" "searvat" "vuolgit" "beroštit" "biehttalit" "bihtit" "ceavzit" "dinet" "dolkat" "eastadallat" "eastadit" "fuolahit" "fuollat" "geargat" "heaitit" "luohpat" "oassálastit" "váruhit" ;
 # This set is for giving infitives @ADVL after the verb.  
 
-LIST ACC-LOCV = "biehttalit" "earuhit" "gieldit" "jearrat" ;
+###LIST ACC-LOCV = "biehttalit" "earuhit" "gieldit" "jearrat" ;
 
-LIST ACC-ILLV = "addit" "bidjat" "mearkkašit";
+###LIST ACC-ILLV = "addit" "bidjat" "mearkkašit";
     # Two-place predicates that take a direct object and an illative adverbial.
 
 LIST MIELDE-V = "addit" "bidjat" "dáidit" "leat" "oastit" "oažžut" "váldit" ;
@@ -825,7 +825,7 @@ LIST MIELDE-V = "addit" "bidjat" "dáidit" "leat" "oastit" "oažžut" "váldit" 
 
 # Son attii girjji mielde.
 
-LIST TIMEADVERBIAL-V = "ádjánit" "ássat" "bargat" "bistit" "bivdit" "eallit" "fievrridit" "guohtut" "joatkit" "láddet" "oahpahit" "ođasmahttit" ;
+###LIST TIMEADVERBIAL-V = "ádjánit" "ássat" "bargat" "bistit" "bivdit" "eallit" "fievrridit" "guohtut" "joatkit" "láddet" "oahpahit" "ođasmahttit" ;
  
     # Do not take members of the time set as an object
     
@@ -835,14 +835,14 @@ LIST TIMEOBJECT-V = "addit" "atnit" "árvalit" "bálvalit"  "čuovvut" "deavdit"
     
 LIST DURATION-V = "ádjánit" "ássat" "bistit" "orrut" ;
 
-LIST POINT-IN-TIME-V = "árrit" "bissehit" "caggat" "cakkadit" "cakkastallat" "doalahit" "doallat" "duostut" "dustet" "eastadit" "gieldit" "goahcat" "heađuštit" "hehttet" ;
+###LIST POINT-IN-TIME-V = "árrit" "bissehit" "caggat" "cakkadit" "cakkastallat" "doalahit" "doallat" "duostut" "dustet" "eastadit" "gieldit" "goahcat" "heađuštit" "hehttet" ;
 
-LIST ROUTEADVERBIAL-V = "boahtit" "čuoigat" ;
+###LIST ROUTEADVERBIAL-V = "boahtit" "čuoigat" ;
  
     # bevegelse langsmed noe, innafor et bestemt område   
-LIST ROUTEOBJECT-V = "ásahit" "bidjat" "botnjat" "basuhit" "buoridit" "čielggadit" "čuovvulit" "čilget" "čuorvut" "čurvet" "dieđihit" "duođaštit" "duorggastit" "geavahit" "geahpedit" "geahpidit" "gudnejahttit" "guorahallat" "gieđahallat" "guođđit" "gilljut" "heahtit" "huikit" "huikkádit" "juoigat" "lávlut" "lohkat" "loahpahit" "mearridit" "máidnut" "nannet" "njulget" "oahpahit" "ráhkadit" "sivdnidit" "suokkardit" "unnidit" "válmmaštit" "vurket" ;
+###LIST ROUTEOBJECT-V = "ásahit" "bidjat" "botnjat" "basuhit" "buoridit" "čielggadit" "čuovvulit" "čilget" "čuorvut" "čurvet" "dieđihit" "duođaštit" "duorggastit" "geavahit" "geahpedit" "geahpidit" "gudnejahttit" "guorahallat" "gieđahallat" "guođđit" "gilljut" "heahtit" "huikit" "huikkádit" "juoigat" "lávlut" "lohkat" "loahpahit" "mearridit" "máidnut" "nannet" "njulget" "oahpahit" "ráhkadit" "sivdnidit" "suokkardit" "unnidit" "válmmaštit" "vurket" ;
 
-LIST HAB-VERB = "boahtit" "leat" "goallut" "heaŋgát" "jápmit" ;
+###LIST HAB-VERB = "boahtit" "leat" "goallut" "heaŋgát" "jápmit" ;
 	# To be used in habitative-sentences.
 
 # Valency sets
@@ -851,7 +851,7 @@ LIST HAB-VERB = "boahtit" "leat" "goallut" "heaŋgát" "jápmit" ;
 LIST INFV = "astat" "ádjánit" "áigut" "álgit" "ásahit" "bágget" "bávččagit" "beassat" "berret" "bivdit" "bivvat" "bistit" "boahtit" "bovdet" "čohkkát" "čohkkedit" "čohkkánit" "čuoččahit" "čuoččastit" "čuorvut" "čurggodit" ("dadjat" Der/PassL) ("dadjat" Der/PassS) "dagahit" "dáhttut" "dáidit" "dárbbašit" "defineret" "diktit" "doaivut" "doapmat" "duostat" "fertet" "fuobmát" "fuolahit" "galgat" "gáibidit" "gárrut" "gártat" "geahččalit" "geargat" "geatnegahttit" "gierdat" "gillet" "gohččut" "háhppehit" "hálidit" "háliidit" "hárjánit" "heivet" "lávet" "mannat" "máhttit" "máššat" "movttiidahttit" "muitit" "nagodit" "navdit" "oahpahit" "oahppat" "oažžut" "ollet" "ribahit" "riepmat" "sáhttit" "seahtit" "sihtat" "soaitit" "suovvat" "šaddat" "stađđat" "veadjit" "viggat" "viššat" "vuogáiduvvat" "vuolgit" "vuollánit" "vuordit";
  
 
-LIST ACC-INFV = "bivdit" "čuorvut" "dagahit" "diktit" "gohččut" "movttiidahttit" "sihtat" "suovvat" ;
+###LIST ACC-INFV = "bivdit" "čuorvut" "dagahit" "diktit" "gohččut" "movttiidahttit" "sihtat" "suovvat" ;
 
  # These are verbs taking accusative objects and infinitives at the same time;
  
@@ -867,10 +867,10 @@ LIST OKTII-V = ("boallu" Der/huvva) "goallostuvvot" "beaškkehat" "bidjat" "čat
  # Danger: This list could be too long, in certain respects. 
  # TODO: Think of counter examples, i.e. sentences where we have these verbs, but where oktii is not an adverbial.
  
-LIST VGENV = "bassit" "bivdit" "boahtit" "čierrut" "čuoigat" "čuoiggadit" "čuovvut" "fárret" "fitnat" "garrudit" "gálašit" "gállit" "gilljut" "girdit" "johtit" "jorgut" "luoibmat" "mannat" "mátkkoštit" "njahkalit" "njoammut" "riidet" "ruohttat" "sihkkelastit" "soabbut" "šloahtat" "váccašit" "vádjolit" "vájaldit" "vájuldit" "vánddardit" "vázzit" "viehkat" "viežžat" "vuodjat" "vuodjit" "vuojadit" "vuojašit" "vuolgit" "čilget" "čuorvut" "čurvet" "dadjat" "dárostit" "sámástit" "suomastit" "digáštallat" "hállat" "hoallat" "huikit" "hupmat" "juoigat" "lávlut" "logaldallat" "máidnut" "máinnašit" "muitalit" "savkalit" "skierbmut" "vástidit" "njurgut" "veahkehit" "vuoitit" "vuoššat" ;
+###LIST VGENV = "bassit" "bivdit" "boahtit" "čierrut" "čuoigat" "čuoiggadit" "čuovvut" "fárret" "fitnat" "garrudit" "gálašit" "gállit" "gilljut" "girdit" "johtit" "jorgut" "luoibmat" "mannat" "mátkkoštit" "njahkalit" "njoammut" "riidet" "ruohttat" "sihkkelastit" "soabbut" "šloahtat" "váccašit" "vádjolit" "vájaldit" "vájuldit" "vánddardit" "vázzit" "viehkat" "viežžat" "vuodjat" "vuodjit" "vuojadit" "vuojašit" "vuolgit" "čilget" "čuorvut" "čurvet" "dadjat" "dárostit" "sámástit" "suomastit" "digáštallat" "hállat" "hoallat" "huikit" "hupmat" "juoigat" "lávlut" "logaldallat" "máidnut" "máinnašit" "muitalit" "savkalit" "skierbmut" "vástidit" "njurgut" "veahkehit" "vuoitit" "vuoššat" ;
 
  
-LIST SOURCE-V = "gáibidit" ;
+###LIST SOURCE-V = "gáibidit" ;
 
 # verbs that need a human locative argument as source. XXX Oahppit sáhttet skuvllas gáibidit eanet veahki. Perhaps ACTOR would be better?
  
@@ -986,44 +986,44 @@ LIST ABSTR-ENTITY-COM-V = "investeret" "lihkosmuvvat" "lihkosnuvvat" "lihkostuvv
 
     # According to the rules choosing Loc or Com, these verbs do not select TOOL, ABSTR-TOOL, CONCEPT, ABSTR-ENTITY and ACTOR in (Pl Loc).
 
-LIST ONLY-PLACE-LOC-V = "áimmahuššat" "álggahit" "bártidit" "bargat" "dahkat" "veahkehit" ;
+###LIST ONLY-PLACE-LOC-V = "áimmahuššat" "álggahit" "bártidit" "bargat" "dahkat" "veahkehit" ;
 
     # According to the rules choosing Loc or Com, these verbs only select (Pl Loc) if PLACE or ORGANIZATION.
 
-LIST HUMAN-LOC-V = "atnit" "báhcit" "geavahit" "gohčodit" "namuhit" ;
+###LIST HUMAN-LOC-V = "atnit" "báhcit" "geavahit" "gohčodit" "namuhit" ;
 
     # According to the rules choosing Loc or Com, these verbs choose only (Sg Com) if CONCEPT or HUMAN or "sátni".
     # Abstract
 
-LIST PLACE-V = "buolvvastallat" "buolvvastit" "čippostallat" "čohkkát" "čohkahit" "čuožžut" "čuččodit" "morihit" "gohččát" "gullát" "morránit" "orrut" "orodit" "stuorrut" "veallát" "veallahit" ;
+###LIST PLACE-V = "buolvvastallat" "buolvvastit" "čippostallat" "čohkkát" "čohkahit" "čuožžut" "čuččodit" "morihit" "gohččát" "gullát" "morránit" "orrut" "orodit" "stuorrut" "veallát" "veallahit" ;
 
   # Those get only not locative if the target is a member TOOL, ABSTR-TOOL or ANIMATE or CONCEPT. Selects more locatives than ONLY-PLACE-LOC-V 
   
 LIST ABSTR-PLACE-V = "váilut" "heivet" "hevvet" "hiehpat" "sistisdoallat" "soahpat" "šiehtat";
     # Verbs without agent
 
-LIST EVENT-V = "dáhpáhuvvat" ;
+###LIST EVENT-V = "dáhpáhuvvat" ;
 
   # TIME/AIGODAT are locative
   
-LIST STATE-V = "eallit" ;
+###LIST STATE-V = "eallit" ;
 
   
 LIST REM-WITH-PARTS = "gaikkihit" ;
 
     # Belongs to the DYNAMIC-V. They also take PARTS in comitative case. 
     
-LIST CONTRAST-V = "rátkit" ;
+###LIST CONTRAST-V = "rátkit" ;
 
     # two arguments, the second of which is locative
 
   
-LIST EMOTION-V = "heahpanaddat" "heahpanit" "ráhkistit" ;
+###LIST EMOTION-V = "heahpanaddat" "heahpanit" "ráhkistit" ;
 
 #LIST PERCEPTION-V = 
-LIST SENSATION-V = "gullat" "oaidnit" ;
+###LIST SENSATION-V = "gullat" "oaidnit" ;
 
-LIST ILLNESS-V = "buohcat" "dearvvašmahttit" "dearvvašmuvvat" "dearvvašnuvvat" "dearvvaštuvvat" ;
+###LIST ILLNESS-V = "buohcat" "dearvvašmahttit" "dearvvašmuvvat" "dearvvašnuvvat" "dearvvaštuvvat" ;
 
   
 # HIERARCHY:
@@ -1035,7 +1035,7 @@ SET DYNAMIC-V = ACTIVITY-V OR MOVEMENT-V OR VERBAL-ACTIVITY-V OR HUMAN-AGENT-V O
     # According to the rules choosing Loc or Com, dynamic-verbs do not select TOOL, ABSTR-TOOL or CONCEPT in (Pl Loc).
     # Human becomes either Loc or Com depending on its subset membership.
     
-SET N-TIMEOBJECT-V = MOVEMENT-V OR ACTIVITY-V OR VERBAL-ACTIVITY-V OR INTELLECTUAL-ACTIVITY-V OR PLACE-V ;
+###SET N-TIMEOBJECT-V = MOVEMENT-V OR ACTIVITY-V OR VERBAL-ACTIVITY-V OR INTELLECTUAL-ACTIVITY-V OR PLACE-V ;
 
     # Those verb sets in addition to TIMEADVERBIAL-V do not take TIME expressions as objects
 
@@ -1057,7 +1057,7 @@ LIST COM-ADV = "fárrolaga" "oktan" "oktanaga" "ovtta#mielas" "ovttas" "ovttas#r
 
 LIST GRADE-ADV =  "áibbas" "beare" ("eanet" Adv) "erenoamán" "erenoamáš" "earenoamáš" "hirbmat" "hui" "ila" "issoras" ("man" Adv) "menddo" "nu" "oalle" "oba" ("oppa" Adv) "seamma" "seammá" ("veaháš" Adv) "vehá" "veháš" "veahá" "veaháš" ;
 
-LIST PLURALIZER = "buot" "buotlágan" "buotlágán" "buotlágáš" "earálágan" "iežálágan" "iežálágán" "gait" "gaitlágan" "gaitlágán" "goappeš" "goappašat"  "máŋggalágan" "máŋggalágán" "moattelágan" "moattelágán" "moattilágan" "moattilágán" ;
+###LIST PLURALIZER = "buot" "buotlágan" "buotlágán" "buotlágáš" "earálágan" "iežálágan" "iežálágán" "gait" "gaitlágan" "gaitlágán" "goappeš" "goappašat"  "máŋggalágan" "máŋggalágán" "moattelágan" "moattelágán" "moattilágan" "moattilágán" ;
     # Singular nouns can have a plural form combined with those
   
 
@@ -1069,13 +1069,13 @@ LIST PLURALIZER = "buot" "buotlágan" "buotlágán" "buotlágáš" "earálágan"
     # here we have adjectives according to their semantic properties
     # in periphrastic constructions (together with "leat") they subcategorize for comitative, locative etc. depending on the noun's semantic properties
     
-LIST COM-ADJ = "olles" "oppa" ;
+###LIST COM-ADJ = "olles" "oppa" ;
 
-LIST ACTIVITY-ADJ = "hilbat" "oskkáldas" ;
+###LIST ACTIVITY-ADJ = "hilbat" "oskkáldas" ;
 
     # denote som kind of activity, might take HUMAN comitative?
     
-LIST EMOTION-ADJ = "suohtas" ;
+###LIST EMOTION-ADJ = "suohtas" ;
 	# When Attr = pred.form
 	## Lea suohtas kurssas. - not Attr 
 	## Lea čuovvovaš kurssas. - Attr
@@ -1091,9 +1091,9 @@ LIST EMOTION-ADJ = "suohtas" ;
     # In order to disambiguate between N and A
     # Those are nouns/adjectives with zero derivation
     
-LIST DER-ADJ-N = "addi" "lávlu" "lohkki" "ovddasteaddji" "ráđđejeaddji" "sadjásaš" "vázzi" "vuoddji" "vuoiti" "vuovdi";
+###LIST DER-ADJ-N = "addi" "lávlu" "lohkki" "ovddasteaddji" "ráđđejeaddji" "sadjásaš" "vázzi" "vuoddji" "vuoiti" "vuovdi";
 
-LIST ADJ-N = "buoidi" "čeahppi" "headju" "heittot" "jalla" "neavri" "nuorra" "oahpis" "oarbbis" "ráhkis" "rikkis" "váivváš" "vuoras";
+###LIST ADJ-N = "buoidi" "čeahppi" "headju" "heittot" "jalla" "neavri" "nuorra" "oahpis" "oarbbis" "ráhkis" "rikkis" "váivváš" "vuoras";
     
     # nouns that have very specific semantics and are derived from adjectives
     # those nouns are animate
@@ -1115,23 +1115,23 @@ LIST TIME-A-PAST = "čuovvovaš" "maŋemus" "maŋimus" "ovddit" ("mannat" PrfPrc
 
 SET TIME-A = TIME-A-FUTURE OR TIME-A-PAST ;
 
-LIST DURATION-A = "heila" "eanas" "eanet" "geažo" "geažos" "guhkki" "obba" "oba" "ollis" "oppa" "visot" ;
+###LIST DURATION-A = "heila" "eanas" "eanet" "geažo" "geažos" "guhkki" "obba" "oba" "ollis" "oppa" "visot" ;
 
-LIST DURATION-ADV = "meastui" "measta" "masá" "varga" "vargui" "vargahui" "goasii" "goase" ;
+###LIST DURATION-ADV = "meastui" "measta" "masá" "varga" "vargui" "vargahui" "goasii" "goase" ;
     
-LIST POINT-IN-TIME-SPEC = "dološ" "eará" "nubbi" ;
+###LIST POINT-IN-TIME-SPEC = "dološ" "eará" "nubbi" ;
 
     
 
 # NP sets defined according to their morphosyntactic features
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
-LIST N-SG-NOM = (N Sg Nom);
-LIST N-PL-NOM = (N Pl Nom);
+###LIST N-SG-NOM = (N Sg Nom);
+###LIST N-PL-NOM = (N Pl Nom);
 
 SET LEX-N = N - N-DER;
 
-LIST PROP = (N Prop);
+###LIST PROP = (N Prop);
 
 SET CNOUN = N - Prop;
 
@@ -1224,7 +1224,7 @@ SET NOT-NAPrfCC = WORD - N - A - CC - PrfPrc ;
 
 SET NOT-NP = VFIN-NOT-NEG OR ConNeg OR Inf OR Pcle OR Interj OR CS ;
  # The set NP-BOUNDARY is bigger. 
-SET NPROP = N - PROP ;
+###SET NPROP = N - PROP ;
 
 SET NOT-COMMA = CLB - COMMA OR PUNCT-LEFT OR PUNCT-RIGHT ;
 
@@ -1312,7 +1312,7 @@ LIST SPATIALNOUN = "guovlu" "osku" "sadji" "vuođđu" ;
 LIST ESS-ADVL-N = "arvi" "árga" "baika" ("bassi" N) ("báhkka" N) "beaivvádat" "biegga" "bievla" ("buolaš" N) "čuoika" "čuovga"  (".*dálki"r) "dulvi" "mánoheahpi" "muohta" "njáhcu" ("seavdnjat" N) "varra" "veaigi";
 
 # These nouns/adjectives in essiv can get @ADVL:
-LIST ESS-PROB-ADVL-N = ("bassi" N) "boaris" ("nuorra" N) ;
+###LIST ESS-PROB-ADVL-N = ("bassi" N) "boaris" ("nuorra" N) ;
  
 
 # Time sets
@@ -1400,9 +1400,9 @@ SET CURRENCY-GEN = CURRENCY + Gen ;
 SET NOT-CURRENCY-GEN = N - CURRENCY-GEN ;
  	
 
-LIST NUMUNIT = "čuohti" "duhát" "miljon" "millijovdna" "milliovdna" "mill" "milj" "miljo" "miljarda" "mrd";
+###LIST NUMUNIT = "čuohti" "duhát" "miljon" "millijovdna" "milliovdna" "mill" "milj" "miljo" "miljarda" "mrd";
 
-LIST KIND = (".*šládja"r)  ;
+###LIST KIND = (".*šládja"r)  ;
 
 LIST COUNTABLE = "oassi" "kapihttal" "paragráfa" ;
 
@@ -1429,7 +1429,7 @@ LIST SG-WORD = ("addit" Der/upmi) "almmolašvuohta" "anistupmi" "arvi" "álgu" "
 # Case, possessive, etc.
 # - - - - - - - - - - - 
 
-LIST LOC-NOUN = (".*dilálašvuohta"r) "dáhpáhus" "ipmárdus"  ;
+###LIST LOC-NOUN = (".*dilálašvuohta"r) "dáhpáhus" "ipmárdus"  ;
 
   # Those nouns appear in locative unless a head asks for comitative.
   
@@ -1446,15 +1446,15 @@ LIST N-PX = "áhčči" "bárdni" "biigá" "boadnji" "eadni" "eammi" "gáibmi" "g
 
  # Nominals that well may have a Px. 
 
-LIST ALU = ("allu" Gen)("assu" Gen)("čiekŋu" Gen)("gassu" Gen)("govdu" Gen)
-	  ("guhkku" Gen)("lossu" Gen)("stuorru" Gen)("viidu" Gen);
+###LIST ALU = ("allu" Gen)("assu" Gen)("čiekŋu" Gen)("gassu" Gen)("govdu" Gen)
+###	  ("guhkku" Gen)("lossu" Gen)("stuorru" Gen)("viidu" Gen);
 
 	  # Those are words that only appear in one form, which Nickel calls A/G.
     # They are only in a predicative position.
 
-LIST REAL-TITLE = ("gásttašit" Der/eaddji) "justitiarius" "majestehta" "prof" "cand.mag" "cand.oecon" "cand.philol" "cand.real" "cand.scient" "cand.theol" "cand"  "dr.art" "eksp.hoavd" "eksp.sj" "fenr" "fig" "fil.tri" "gen.lt" "genr" "genr.lt" "h.r.adv" "hr" "kapt" "korp" "lekt" "lic" "ltn" "mag.art" "mag" "majestehta" "merc" "miss" "Miss" "Mr" "Mrs" "odont" "oecon" "ordf" "ossod.dir" "stud.phil." "res.kap" "stud.philol" "vit.ass" "dr" "dr.med" "dr.philos" "dr.theol" ;
+###LIST REAL-TITLE = ("gásttašit" Der/eaddji) "justitiarius" "majestehta" "prof" "cand.mag" "cand.oecon" "cand.philol" "cand.real" "cand.scient" "cand.theol" "cand"  "dr.art" "eksp.hoavd" "eksp.sj" "fenr" "fig" "fil.tri" "gen.lt" "genr" "genr.lt" "h.r.adv" "hr" "kapt" "korp" "lekt" "lic" "ltn" "mag.art" "mag" "majestehta" "merc" "miss" "Miss" "Mr" "Mrs" "odont" "oecon" "ordf" "ossod.dir" "stud.phil." "res.kap" "stud.philol" "vit.ass" "dr" "dr.med" "dr.philos" "dr.theol" ;
  
-LIST TITLE-LIKE = "ránnjá" ;
+###LIST TITLE-LIKE = "ránnjá" ;
 # Ránnjá Ole Vuolab imašta manne ....
 
 # Nouns as pred
@@ -1616,7 +1616,7 @@ LIST PROFESSION = (".*advokahta"r) (".*duopmár"r) "arkeologa" (".*artista"r) ("
 
 LIST OFFICE = "áirras" "ámta#mánni" "bajit#báhppa" "bearaš#minister"  "biebmo#ministtar"  "birasgáhtten#ministtar" "boazodoallo#hoavda" "dearvvašvuođa#ministtar" "dekana" "eanadoallo#minister" "farao" "fylkka#ráđđi" "gieldda#minister" "guolástus#minister" "justis#ministtar" "kultur#minister" "leans#mánni" "ministtar" "nisson#áirras" "politihkar" "politihkkár" "sága#doalli" "Sáme#demokráhtta" "sámedikke#áirras" "Sámedigge#presideanta" "sámedigge#presideanta" "sátne#jođiheaddji" "sosiála#ministtar" "stáhta#ministtar" "stivra#lahttu" "suodjalus#minister" "ovda#olmmoš" "presideanta" "stáhta#ráđđi" "várre#presideanta" ;
 
-SET TITLE = REAL-TITLE OR TITLE-LIKE OR PROFESSION OR OFFICE ; 
+###SET TITLE = REAL-TITLE OR TITLE-LIKE OR PROFESSION OR OFFICE ; 
 
 LIST HUM-FUNCTION =  "Bergen#-soalddát" "kandidáhtta" "kandidáhta" "nomáda" "oahppan#olmmoš" "oktavuođa#olmmoš" "olbmo#bárdni" "pasienta" "ráđđe#almmái" "riika#vuloš" "sáme#demokráhtta" "skohter#vuoddji" "soahte#olmmái" "stáhta#boargár" ("suddu" Der/laš) "turista" "virge#guoibmi" "virge#olmmoš" "vuoras#olmmoš";
  #XXX bad name
@@ -1700,7 +1700,7 @@ LIST TOOL = "áibmi" "ákšu" "bargo#bierggas" "baste" "baste#vuogga" "báddi" "
 
 #LIST MUSIC-INSTRUMENT = "hárpa" "lyra" ;
 
-LIST WRITING-TOOL = "bliánta" "bleahkka" "dihtor" "krihtta" "liánta" "peanna";
+###LIST WRITING-TOOL = "bliánta" "bleahkka" "dihtor" "krihtta" "liánta" "peanna";
 
 #LIST HANDICRAFT-TOOL = "áibmi" "datne#árpu" "nálu" "suorbma#goahti" "vikšamuorra" ;
 
@@ -1741,35 +1741,35 @@ SET ABSTR-TOOL = SOUND OR ABSTR-T ;
 # qualities
 # - - - - -
 
-LIST COLOUR = "alit" "čáhppat" "fiskat" "fioleahtta" "ránes" "ruoná" "ruoksat" "runta" "ruškat" "sáhppat" "vielgat" "violeahtta";
+###LIST COLOUR = "alit" "čáhppat" "fiskat" "fioleahtta" "ránes" "ruoná" "ruoksat" "runta" "ruškat" "sáhppat" "vielgat" "violeahtta";
 
 # objects, not necessarily tools
 # - - - - - - - - - - - - - - - -
 
-LIST MATERIAL = "ávnnas" "materiála" "muorra" "náhkki" "ullu" "silba" "stálli" ;
+###LIST MATERIAL = "ávnnas" "materiála" "muorra" "náhkki" "ullu" "silba" "stálli" ;
   
-LIST PLANT-PART = "lasta" "ruohtas" ;
+###LIST PLANT-PART = "lasta" "ruohtas" ;
  
     # of plants etc. 
   
-LIST SHOE = "čázet" "gállot" "gálssot" "gáma" "goikket" "gumme#stevvel" "njuorjjot" "nuhtat" "nuvttat" "nuvttot" "sabet" "sáppat" "sisttet" "skárri" "skuovva" "stevvel" "suohkku" "ullo#suohkku" ;
+###LIST SHOE = "čázet" "gállot" "gálssot" "gáma" "goikket" "gumme#stevvel" "njuorjjot" "nuhtat" "nuvttat" "nuvttot" "sabet" "sáppat" "sisttet" "skárri" "skuovva" "stevvel" "suohkku" "ullo#suohkku" ;
 
     # anything that will go on feet. IV-verbs like "vázzit" can take these as objekt.
     
-LIST BEDCLOTHES = "beaska" "gávdni" "oađádat" "rátnu" "roavgu" "seaŋga";
+###LIST BEDCLOTHES = "beaska" "gávdni" "oađádat" "rátnu" "roavgu" "seaŋga";
 
     # anything that can be used as bedclothing. IV-verbs like "oađđit" can take these as objekt. 
     
 LIST CLOTHES = "báidi" "beaska" "bivttas" "boagán" "buksa" "čikŋa#bivttas" "čuvla" "dálve#bivttas" "dorka" "gákti" "gárvu" "geasse#bivttas" "kamel#guolga#bivttas" "láđđe#bivttas" "láđđe#gákti" "liidne#gákti" "náhkke#boagán" "olgguldas#bivttas" "sáme#bivttas" "sis#báidi" "siste#gákti" "sáme#gákti" "T-báidi" ;
    
 
-LIST FOOD = "beatnat#muorji" "biergu" "bohcco#biergu" "bohccobiergo#borramuš" "borramuš" "čáhppes#muorji" "eana#muorji" "fuođar" "goike#guolli" "gordni" "guosse#mális" "jáfu" "jokŋa" "láibi" "mális" "málli" "meahcce#muorji" "ruksessarva#biergu" "sarrit" "vuodja#gáhkku" ;
+###LIST FOOD = "beatnat#muorji" "biergu" "bohcco#biergu" "bohccobiergo#borramuš" "borramuš" "čáhppes#muorji" "eana#muorji" "fuođar" "goike#guolli" "gordni" "guosse#mális" "jáfu" "jokŋa" "láibi" "mális" "málli" "meahcce#muorji" "ruksessarva#biergu" "sarrit" "vuodja#gáhkku" ;
 
     # potential tool for political activity etc., potential place for other food, insects etc.
 
-LIST POISONOUS-FOOD = "dierpmá#muorji" ;
+###LIST POISONOUS-FOOD = "dierpmá#muorji" ;
     
-LIST FOOD-TIME = "gaskabeai#biebmu" "iđit#biebmu" ;
+###LIST FOOD-TIME = "gaskabeai#biebmu" "iđit#biebmu" ;
 
 LIST LIQUID = "bohcco#mielki"  "buolle#viidni" "buollin#viidna" "čáhci" "čáhppesmuorje#sákta" "čielga#mielki" "deadja" "duolva#čáhci" "gáffe" "gáicca#mielki" "gearra" "goden" "gusa#mielki" "jugus" "juhkamuš" "mielki" "rukses#viidni" "sarrit#sákta" "sáiva#čáhci" "sákta" "sávzza#mielki" "suvrra#mielki" "viidna" "viidni" "vilges#viidni" "vuola" "vuolla"  ;
 
@@ -1779,7 +1779,7 @@ LIST PLANT = "aláš#bađve#rássi" "alit#diehppe#rássi" "ávža" "báhpa#čehp
     # Plants could be actors in fairytales (Alice)
     
 
-LIST FURNITURE = "áltár" "beavdi" "hildu" "ildu" "seaŋga" "skáhppe" "soffá" "stuollu" ;
+###LIST FURNITURE = "áltár" "beavdi" "hildu" "ildu" "seaŋga" "skáhppe" "soffá" "stuollu" ;
 
 LIST CONTAINER = "bohtal" "čáhce#lihtti" "dáige#lihtti"  "eappir" "fárppal" "gohppu" "gordne#lihtti" "gore"  "guolle#lihtti" "jienastan#lihtti" "liegga#čáhce#lihtti" "lihtti" "mielke#lihtti" "muorra#lihtti" "oljo#lihtti" "ruska#lihtti" "sálte#lihtti"  "sohkar#lihtti" "sovsa#lihtti" "tempel#bumbá" "veadde#lihtti" "vuoššan#lihtti" ;
 
@@ -1837,10 +1837,10 @@ LIST ABSTR-TEXT = "alimus#riekte#mearrádus" "almennet#mearrádus" "almmuhus#tea
 
 LIST BODY = "ámadadju" "bahta" "bahta#ráigi" "bállo#suotna" "bátni" "beađbe#lađas" "bealgi" "beallji" "bierggas" "bieža#dákti" "billu" "buđđá" "čalbme#deahkki" "čalbmi" "čatnan#gođđu" "čeabet" "čelččen" "čeŋkkeš" "čibbe#skálžu" "čibbi" "čižže#bátni" "čielge#ađa" "čielge#dákti" "čielgi" "čoalli" "čoamohas" "čoarbbeal#deahkki" "čoarbbeal#lađas" "čoarb#bealli" "čoavji" "čorbma" "čorbma#oassi" "čorbma#váimmus" "čorbma#vuođđu" "čotta" "čuožžamas#deahkki" "čurti" "čuvdi" "dábba" "dáđvi" "dákte#gođus" "dákti" "dávdi" "deahkke#gođus" "deahkki" "erttet" "erttet#deahkki" "gahpárus" "gahperus" "gardnjil" "gaska#suorbma" "gassa#čoalli" "gassa#váhkká" "gáddu" "gáibi" "gállu" "gánis" "gátnis" "geađđi" "geahpis" "giegir" "giehta" "giehta#deahkki" "giehta#gávva" "giehta#láhpi" "giehta#ramas" "giehta#ruohtta" "giehta#sealgi" "giehta#váibmu" "giehta#váimmus" "gilga" "goapmir#váimmus" "goaŧŧo#čotta" "goaŧŧu" "goike#dákti" "gullu" "guoggomas" "guoggomas#ráksá" "gurot#giehta" "hárdu" "heagga#roasmmoheapmi" "jarri" "juolge#bealgi" "juolge#čelččen" "juolge#gávva" "juolge#lađas" "juolge#láhpi" "juolge#mátta" "juolge#suorbma" "juolge#vuođđu" "juolgi" "lađas" "láhpe#lađas" "manin" "manne#jođas" "manne#ráksá" "maŋŋe#buoidi" "mánágoahte#čotta" "máná#goahti" "mielga#njunni" "monimuš" "monin" "monne#jođas" "monne#ráksá" "morče#suotna" "morči" "muohtu" "náhpi" "niehkki" "nierra" "niske#gohpi" "niski" "njálbmi" "njiehcehas" "njunni" "njuovčča" "oaive#assi" "oaive#čohkka" "oaivi" "oalge#deahkki" "oalgenoras#deahkki" "oalgenoras#váhkká" "oalgi" "oalul" "obba#lággá" "orbbeš" "raddi" "rápma" "rumaš" "rumaš#golggus" "rumaš#lahttu" "rumaš#njalbi" "sáhppe#suvri" "rumaš#golggus" "rumaš#lahttu" "rumaš#njalbi" "sáhppe#suvri" "siidu" "siskkit#beallji" "sotken#oalli" "spiral" "suolbmudan#oalli" "suorbma" "suorbma#geahči" "šušmi" "váhkká#deahkki" "váibmu" "vuohčče#cuozza" "vuoivvas" "vuokta" "vuolit" "oassi" "gieđas" "vuorggu";
 
-LIST WEATHER-ENTITY = "balva" "arvi" "muohta" ;
+###LIST WEATHER-ENTITY = "balva" "arvi" "muohta" ;
 
     
-SET OBJECT = PLANT-PART OR SHOE OR FOOD OR TEXT ;
+###SET OBJECT = PLANT-PART OR SHOE OR FOOD OR TEXT ;
 
     # entities which not necessarily are tools
 
@@ -2030,8 +2030,7 @@ LIST RIEKTEDILLI = "bajit#hearrávuohta" "bálvalus#fálaldat" "čearddalašvuoh
 
 # FYLKA in front of the set is usually in Gen.
 
-LIST STAHTA-GEN = 
-"IT-#doaibma#plána" "almennet" "bargiid#giehta#girji" "boazo#doallo#hálddahus" "bálvalus" "dearvvašvuođa#geahčču" "dearvvašvuođa#iskkadeapmi" "dearvvašvuođa#gozáhus" "doaibma" "doaibma#plána" "doarjja" "doarjja#vuogádat" "dássi" "eaiggáduššan#vuoigatvuohta" "eaiggát#gáibádus" "eana" "eanan" "eatnan" "eise#váldi" "gaska#dille#ortnet#doarjja" "geahččo#ortnet" "geatnegasvuohta" "geavat" "gáibádus" "háldu" "joatkka#skuvla" "kultur#ráđđi" "mearra#bodni" "oahppo#doaibma" "oaidnu" "oaivil" "orgána" "ovddasteaddji" "peršonal#giehta#girji" "ruhta" "sosiála#politihkka" "spesialista#dearvva?vuo?a#bálvalus" "tariffa#šiehtadus" "vuoste#bealli" "áddejupmi" "ámmát#olmmoš" "ásahus" ("jávri" Pl) ("oassálastit" Actio) ("vuovdi" Pl) ("áŋgiruššat" Actio) ;
+###LIST STAHTA-GEN = "IT-#doaibma#plána" "almennet" "bargiid#giehta#girji" "boazo#doallo#hálddahus" "bálvalus" "dearvvašvuođa#geahčču" "dearvvašvuođa#iskkadeapmi" "dearvvašvuođa#gozáhus" "doaibma" "doaibma#plána" "doarjja" "doarjja#vuogádat" "dássi" "eaiggáduššan#vuoigatvuohta" "eaiggát#gáibádus" "eana" "eanan" "eatnan" "eise#váldi" "gaska#dille#ortnet#doarjja" "geahččo#ortnet" "geatnegasvuohta" "geavat" "gáibádus" "háldu" "joatkka#skuvla" "kultur#ráđđi" "mearra#bodni" "oahppo#doaibma" "oaidnu" "oaivil" "orgána" "ovddasteaddji" "peršonal#giehta#girji" "ruhta" "sosiála#politihkka" "spesialista#dearvva?vuo?a#bálvalus" "tariffa#šiehtadus" "vuoste#bealli" "áddejupmi" "ámmát#olmmoš" "ásahus" ("jávri" Pl) ("oassálastit" Actio) ("vuovdi" Pl) ("áŋgiruššat" Actio) ;
 
  # "stáhta" in front of the set, is usually Gen.
 
@@ -2049,7 +2048,7 @@ SET HAB-ACTOR-NOT-HUMAN =  INSTITUTION OR ORGANIZATION OR INDUSTRY OR EDUCATION 
 LIST STATE = "bahávuohta" ("dearvvas" Der/vuohta) "gaskavuohta" "miella#dearvvašvuohta" "ráfi" "váivi" "veahkki";
 
   
-LIST OTHER-ABSTR-ENTITY = "ášši" "diehtojuohkin#prošeakta" "doaibma#plána" "hehttehus" "oahppo#plána" "ovttas#bargo#prošeakta" "plána" "prošeakta" "sosiála#plána" "váttisvuohta" ;
+###LIST OTHER-ABSTR-ENTITY = "ášši" "diehtojuohkin#prošeakta" "doaibma#plána" "hehttehus" "oahppo#plána" "ovttas#bargo#prošeakta" "plána" "prošeakta" "sosiála#plána" "váttisvuohta" ;
 
   # can represent a concrete entity
 
@@ -2060,7 +2059,7 @@ LIST MONEY = "ánsu" "árvu" "bálká" "beaive#ruhta" "buorrin" "bušeahtta" "č
 
     # Ambiguous with respect to concreteness, either the symbolic amount or the concrete coins and bills
 
-SET ABSTR-ENTITY = MONEY OR STATE OR OTHER-ABSTR-ENTITY ;
+###SET ABSTR-ENTITY = MONEY OR STATE OR OTHER-ABSTR-ENTITY ;
 
  
 LIST GEN-CONCEPT = "anistupmi" "álgu" "áŋgirvuohta" "áigumuš" "árbe#vierru" "ávžžuhus" 
@@ -2079,7 +2078,7 @@ LIST MOD-CONCEPT = "eanandoalloálggahan#ulbmil" ;
 
     #for quite specified concepts, that has probably an effect on its potential to be modified.
     
-LIST EMOTION = "gierisvuohta" "moraš" "ráhkisvuohta" "vašši" ;
+###LIST EMOTION = "gierisvuohta" "moraš" "ráhkisvuohta" "vašši" ;
 
    
 LIST STRUCTURE = "álgu" "loahppa" "struktuvra" "maŋŋe#geahči" "lasáhus" "loahpa#geahči" "álgo#geahči" "álgo#oassi" "sis#doallu" "veršuvdna" ;
@@ -2114,7 +2113,7 @@ LIST TOPIC = "areála#ášši" "áide#ášši" "bearrái#beahččo#ášši" "boa
 "plána#ášši" "riekte#ášši"  
 "sáme#ášši" "sámi#ášši" "suopman#ášši" "váidda#ášši" "váidin#ášši" "váldo#ášši" "vearro#duottar#ášši" "vuoigatvuođa#ášši" "WTO-ášši" "1867#-ášši";
 
-SET ABSTRACT = ABSTR-ENTITY OR CONCEPT OR ACTIVITY ;
+###SET ABSTRACT = ABSTR-ENTITY OR CONCEPT OR ACTIVITY ;
  
   
 LIST DILLI = "areála#dilli" "bargo#dilli" "biras#dilli" "boazo#dilli" "boazodoallo#dilli "čearddalašvuohta#dilli" "dilli" doaibma#dilli" "duopmoválde#dilli" "eaiggát#dilli" "eallin#dilli" "eallin-#dilli" "eanadoallo#dilli" "eanaeaiggát#dilli" "fápmo#dilli" "gaska#dilli" "geavahan#dilli" "giella#dilli" "háldo#dilli" "heahte#dilli" "lonohallan#dilli" "luonddu#dilli" "miella#dilli" "monopol#dilli" "náittos#dilli" "niestedábuhanheahte#dilli" "náittos#dilli" "oahpponeavvo#dilli" "oamasteaddji#dilli" "resurssa#dilli" "riekte#dilli" "riido#dilli" "ruhta#dilli" "seaktedábuhan#dilli" "sierra#dilli" "skuvla#dilli" "valljivuohta#dilli" "vuoigatvuođa#dilli" "šaddadan#dilli" ;
@@ -2125,7 +2124,7 @@ LIST WEATHER-SITUATION = "beaivvádat" "bievla" "buolaš" "dálki" "dálke#dilá
 
  # 
 
-LIST OTHER-SITUATION = "áŧestus" ;
+###LIST OTHER-SITUATION = "áŧestus" ;
 
 SET SITUATION = DILLI OR WEATHER-SITUATION ;
 
@@ -2185,9 +2184,9 @@ SET PXNOTPL1 = Px - PxPl1 ;
 SET PXNOTPL2 = Px - PxPl2 ;
 SET PXNOTPL3 = Px - PxPl3 ;
 
-LIST POST-A = "rájes" ;
+###LIST POST-A = "rájes" ;
   
-LIST POST-B = "rádjái" ;
+###LIST POST-B = "rádjái" ;
 
 LIST GASKAL = "gaskal" "gaskkal" "gaskii" "gaskka" "gaskkas" ;
  
@@ -2217,10 +2216,10 @@ LIST COMPAR = "dávjjit" "eanet" "earalágan" "eará" "earret" "seammás"
  # These combine with "go" Pcle, but COMPAR stands for 'comparison' rather than
  # 'comparative'.
 
-LIST CONTRA = "muhto" ;
+###LIST CONTRA = "muhto" ;
  # In lean muitalan, muhto dál muitalan.
 
-LIST PROSEANTA = "proseanta" "%" ;
+###LIST PROSEANTA = "proseanta" "%" ;
 
 SET REALCLB = CLB - COMMA ;
 
@@ -2234,9 +2233,9 @@ SET NOT-CAP-INITIAL-CC = WORD - CAP-INITIAL - CC ;
 SET CP = (Pron Interr) OR (Pron Rel) OR MO ;
 
  
-LIST SEMICOL = "\;" ;
+###LIST SEMICOL = "\;" ;
 
-LIST COL = ":" ;
+###LIST COL = ":" ;
 
 SET S-BOUNDARY  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR CS OR QDL ;
 	# includes CP. Remember that (",") and CC are potential sentence boundaries, too
@@ -5890,9 +5889,9 @@ LIST STRICTILLV = "ásaiduvvat" "báitit" "čalmmástuvvat" "čiehkádit" "čohk
 
 LIST STRICTLOCV = "ávkkástallat" "ballat" "beasadit" "beroštit" "biehttalit" "bihtit" "ceavzit" "dolkat" "eastadallat" "eastadit" "fuollat" "geargat" "heaitit" "ilbmat" "luohpat" "nohkkot" "spiehkastit" ;
 
-LIST ESSV = "bargat" "gárvodit" "joatkit" "neaktit" "rievdat" "šaddat" ;
+###LIST ESSV = "bargat" "gárvodit" "joatkit" "neaktit" "rievdat" "šaddat" ;
 
-LIST ACCESSV = "atnit" "cielahit" "dadjat" "dahkat" "dulkot" "geavahit" "geahčastit" "geaidit" "geaidut" "gohčodit" "meroštallat" "navdit" "váldit" "válljet" ;
+###LIST ACCESSV = "atnit" "cielahit" "dadjat" "dahkat" "dulkot" "geavahit" "geahčastit" "geaidit" "geaidut" "gohčodit" "meroštallat" "navdit" "váldit" "válljet" ;
 
 LIST VALENCY-OBJ = N Pron Actio Inf ;
 
@@ -5905,11 +5904,11 @@ MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 ("birget") OR ("birgehallat") OR (
 # If a STRICTCOMV is followd by a ANIMATE in Com, then there should be no Po: 
 MAP (&grm-should-not-PP) TARGET Po (-1 ANIMATE + Com LINK *-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL) ;
 
-# If a STRICTLOCV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Loc (no Inf is accepted)Exception for Gen + N - e.g. bártni moarsi beatnagis): 
-MAP (&grm-should-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc)(NEGATE 0 Gen LINK Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Gen LINK 1 Actio) ;
+# If a STRICTLOCV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Loc (no Inf is accepted) Exception for Gen + N - e.g. bártni moarsi beatnagis: 
+MAP (&grm-should-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Gen LINK 1 Actio) ;
 
 # If a STRICTILLV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Ill, (no Inf is accepted). Exception is "liikot" + Inf, for PP amd for Gen + N - e.g. bártni moarsi beatnagii: 
-MAP (&grm-should-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH) ;
+MAP (&grm-should-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH) ;
 
 # Noun Ess only after an ESSV (other words can be between): 
 #MAP (&grm-should-not-Ess) TARGET (N Ess) (NOT *-1 ESSV OR ACCESSV BARRIER S-BOUNDARY) ; 
@@ -5955,7 +5954,7 @@ SELECT (Refl Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
 SELECT (Pers Gen) (NOT 0 Dem)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
     ## mu iežan eatni guokte stuorra ja hui boares viesu
 
-SELECT Dem (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ; 
+#SELECT Dem (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ; 
     ## dat mu iežan eatni guokte stuorra ja hui boares viesu
 
 SELECT N (-1 Attr OR Dem OR Gen OR Num)(NOT 0 VFIN) ;
@@ -6053,15 +6052,15 @@ REMOVE Gen IF (-1 ("makkár") LINK -1 BOS) ;
 # AGREEMENT INSIDE NP
 # -------------------
 
-LIST DEM-SG-ACC-GEN = (Dem Sg Acc) (Dem Sg Gen) ;
-LIST DEM-PL-ACC-GEN = (Dem Pl Acc) (Dem Pl Gen) ;
+###LIST DEM-SG-ACC-GEN = (Dem Sg Acc) (Dem Sg Gen) ;
+###LIST DEM-PL-ACC-GEN = (Dem Pl Acc) (Dem Pl Gen) ;
 
-MAP (&grm-non-agreement-Dem) TARGET (Dem Nom) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 Nom) ;
-MAP (&grm-non-agreement-Dem) TARGET DEM-SG-ACC-GEN IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Acc) OR (Sg Gen) OR (Sg Ill) OR (Sg Loc));
-MAP (&grm-non-agreement-Dem) TARGET (Dem Sg Com) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Com));
-MAP (&grm-non-agreement-Dem) TARGET DEM-PL-ACC-GEN IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Acc) OR (Pl Gen) OR (Pl Com));
-MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Ill) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Ill));
-MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Loc) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Loc));
+#MAP (&grm-non-agreement-Dem) TARGET (Dem Nom) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 Nom) ;
+#MAP (&grm-non-agreement-Dem) TARGET DEM-SG-ACC-GEN IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Acc) OR (Sg Gen) OR (Sg Ill) OR (Sg Loc));
+#MAP (&grm-non-agreement-Dem) TARGET (Dem Sg Com) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Com));
+#MAP (&grm-non-agreement-Dem) TARGET DEM-PL-ACC-GEN IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Acc) OR (Pl Gen) OR (Pl Com));
+#MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Ill) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Ill));
+#MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Loc) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Loc));
 
 # dat viessu
 # dan viesu, vissui, viesus
@@ -6102,6 +6101,7 @@ MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Com))(*1 N 
 MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Com));
 
 LIST GALLE-VIELJA = galle_viellja_ja_oabbá_child galle_viellja_ja_oabbá_young galle_viellja_ja_oabbá_adult ;
+# For making exception for case if the answer is okta + Nom
 
 MAP (&grm-numeral-wrong-case) TARGET (N Sg Nom) IF (NOT 0 Gen OR Acc)(*-1 (Num Sg) BARRIER NOT-ADJ LINK NOT 0 N OR OKTA LINK *-1 QDL);
 MAP (&grm-numeral-wrong-case) TARGET (N Sg Gen) IF (NOT 0 Nom)(*-1 OKTA BARRIER NOT-ADJ LINK -1 COPULAS LINK *-1 QDL);
@@ -6320,6 +6320,15 @@ MAP (&dia-pos) TARGET QDL IF (*-1 Qst OR go)(NOT *1 Neg);
 # Picking the target
 # ------------------
 
+# Rules for dialogue_firstmeeting
+#-------------------------------------
+
+# Picking the age 
+MAP (&dia-adult) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([2-9][0-9])"r))  ;  #   
+MAP (&dia-young) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([1][0-9])"r))  ; #         
+MAP (&dia-child) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([1-9])"r))  ;
+
+
 # The target can be e.g. the user´s name, place where she lives, what kind of car she has.... and then we can use the target in the next question, e.g. "Man guhká don leat orron Romssas?"
 
 LIST NOTHING = Foc/ge "mihkkege" "giige" ;
@@ -6330,7 +6339,8 @@ MAP (&dia-pass) TARGET PROFESSION IF (*-1 QDL LINK 0 BARGGUS);
 MAP (&dia-pass) TARGET (Prop Obj) IF (*-1 QDL LINK 0 CAR);
 
 
-# The general ones:
+# General dialogue rules
+#_________________________
 LIST NUM-ADV = "oktii" "guktii" "golbmii" "njelljii" "vihttii" "guhttii" "čihččii" "gávccii" "ovccii" ;
 
 MAP (&dia-target) TARGET (N Num) IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gallis" Nom) LINK -1 BOS)(NOT 0 NOTHING);
@@ -6354,6 +6364,10 @@ MAP (&dia-target) TARGET NP-HEAD + Ess IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 T
 
 MAP (&dia-target) TARGET Num (1 (&dia-target))(NOT 0 NOTHING) ;
 
+MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&dia-target)) ;
+    ## in oro gostege
+    ## in háliit maidege
+
 
 MAP (&dia-target) TARGET DOPPE IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gos") OR ("gokko") LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Loc))(NOT 0 NOTHING) ;
 # picking "dáppe" if no Loc
@@ -6367,6 +6381,9 @@ MAP (&dia-target) TARGET DOHKO IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gosa") 
 MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Nom))(NOT 0 NOTHING)  ;
 MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL BARRIER Acc OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Acc))(NOT 0 NOTHING) ;
 
+
+# Rules for dialogue_visit
+#-----------------------------
 #LIST ROOMS = stohpu gievkkan oađđenlatnja basadanlatnja hivsset feaskkir ;
 LIST ROOMS = "stohpu" "gievkkan" "oađđen#latnja" "basadan#latnja" "hivsset" "feaskkir";
 
@@ -6404,13 +6421,6 @@ LIST VIESSOGALVVUT-Q = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_lahttela
 
 #LIST VIESSOGALVVUT-NOT-WC = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_lahttelamppa gosa_bidjat_lohkanlamppa gosa_bidjat_soffa ;  
 
-#LIST SCARFS = guhkki oanehaš ;
-#LIST BALLS =  stuoris unni;
-#LIST PENCILS = gassat seaggi ;
-#LIST BOOKS = assái asehaš ;
-#LIST CAMERAS = buorre heittot ;
-#LIST TROUSERS = gallji baski ;
-
 # Question according to wordlists:
 MAP (&sem-not_wordlist) TARGET QDL IF (0 VIESSOGALVVUT-Q)(*1 (&dia-target) BARRIER Neg LINK NOT 0 ROOMS)  ;
 
@@ -6418,6 +6428,8 @@ MAP (&sem-not_wordlist) TARGET QDL IF (0 VIESSOGALVVUT-Q)(*1 (&dia-target) BARRI
 
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (Maid_juhkat))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
 
+# Rules for dialogue_grocery
+#-----------------------------
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_laibegalvvuid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 BREAD)  ;
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_juhkamusaid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_ruotnasiid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 VEGETABLE)  ;
@@ -6429,136 +6441,76 @@ MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_laibunavdnasiid))(*1 (&dia-targ
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_njalgaid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 CANDY)  ;
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (hálbiduvvon_galvvut))(*1 (&dia-target) BARRIER Neg LINK NOT 0 OFFERS)  ;
 
-# Rule for dialogue_shopadj
+# Rules for dialogue_shopadj - quite many...
+#--------------------------------------------------
+
+#LIST SCARFS = guhkki oanehaš ;
+#LIST BALLS =  stuoris unni;
+#LIST PENCILS = gassat seaggi ;
+#LIST BOOKS = assái asehaš ;
+#LIST CAMERAS = buorre heittot ;
+#LIST TROUSERS = gallji baski ;
 
 #LIST SHOPADJ = guhkimus oanehaccamus guhkit oanehaccat unnimus stuorimus unnit stuorit gasimus seakkimus gasit seakkit assamus asehaccamus assat asehaccat buoremus heittogeamos buoret  heittogit jorbaseamos jorbasat baskkimusat galjimusat baskkibut galjibut ;
 
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (guhkimus))(NOT *1 ("guhkki") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (oanehaccamus))(NOT *1 ("oanehaš") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (guhkimus))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (oanehaccamus))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (guhkit))(NOT *1 ("guhkki") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (oanehaccat))(NOT *1 ("oanehaš") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (guhkit))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (oanehaccat))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
 
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (unnimus))(NOT *1 ("unni") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (stuorimus))(NOT *1 ("stuoris") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (unnimus))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (stuorimus))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (unnit))(NOT *1 ("unni") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (stuorit))(NOT *1 ("stuoris") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (unnit))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (stuorit))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
 
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (gasimus))(NOT *1 ("gassat") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (seakkimus))(NOT *1 ("seaggi") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (gasimus))(*1 ("gassat") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("gassat") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (seakkimus))(*1 ("seaggi") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("seaggi") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (gasit))(NOT *1 ("gassat") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (seakkit))(NOT *1 ("seaggi") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (gasit))(*1 ("gassat") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("gassat") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (seakkit))(*1 ("seaggi") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("seaggi") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
 
-#-------
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (assamus))(NOT *1 ("assái") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (asehaccamus))(NOT *1 ("asehaš") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (assamus))(*1 ("assái") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("assái") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (asehaccamus))(*1 ("asehaš") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("asehaš") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (assat))(NOT *1 ("assái") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (asehaccat))(NOT *1 ("asehaš") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (assat))(*1 ("assái") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("assái") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (asehaccat))(*1 ("asehaš") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("asehaš") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
 
-#----
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (buoremus))(NOT *1 ("buorre") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (heittogeamos))(NOT *1 ("heittot") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (buoremus))(*1 ("buorre") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("buorre") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (heittogeamos))(*1 ("heittot") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("heittot") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (buoret))(NOT *1 ("buorre") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (heittogit))(NOT *1 ("heittot") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (buoret))(*1 ("buorre") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("buorre") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (heittogit))(*1 ("heittot") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("heittot") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
 
-#----
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (jorbaseamos))(NOT *1 ("jorbbas") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (jorbaseamos))(*1 ("jorbbas") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("jorbbas") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (jorbasat))(NOT *1 ("jorbbas") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (jorbasat))(*1 ("jorbbas") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("jorbbas") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
 
-#----
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (baskkimusat))(NOT *1 ("baski") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (galjimusat))(NOT *1 ("gallji") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (baskkimusat))(*1 ("baski") BARRIER S-BOUNDARY LINK NOT 0 (Superl Pl Nom))(*1 ("baski") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (galjimusat))(*1 ("gallji") BARRIER S-BOUNDARY LINK NOT 0 (Superl Pl Nom))(*1 ("gallji") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (baskkibut))(NOT *1 ("baski") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_adj) TARGET QDL IF (0 (galjibut))(NOT *1 ("gallji") BARRIER S-BOUNDARY) ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (baskkibut))(*1 ("baski") BARRIER S-BOUNDARY LINK NOT 0 (Comp Pl Nom))(*1 ("baski") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N)  ;
-
 MAP (&sem-not_correct_infl) TARGET QDL IF (0 (galjibut))(*1 ("gallji") BARRIER S-BOUNDARY LINK NOT 0 (Comp Pl Nom))(*1 ("gallji") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
-
-
-MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&dia-target)) ;
-    ## in oro gostege
-    ## in háliit maidege
-
-# Specific ones
-
-#  Leat_go_barggus
-
-
-# Picking the age 
-MAP (&dia-adult) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([2-9][0-9])"r))  ;  #   
-MAP (&dia-young) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([1][0-9])"r))  ; #         
-MAP (&dia-child) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([1-9])"r))  ;
 
 
 # ---------
