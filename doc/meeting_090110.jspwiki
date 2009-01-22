@@ -1,0 +1,319 @@
+!!!Meeting notes, Pedagogical programs, 090110
+
+
+!!!Participants
+
+Lene, Saara, Trond.
+
+
+!!!Grammar
+
+!!Pedagogical grammar explanations
+
+Remove the link to it for now, since it is not good enough.
+
+!!sme-norm.fst - why does it not function? Makefile?
+
+make fst-norm TARGET=sme
+
+Lene does not get the sme-norm.fst compiled. The command is: 
+
+Cf. [bugreport http://giellatekno.uit.no/bugzilla/show_bug.cgi?id=765]
+
+!!Coll nums included
+
+{{{
+LEXICON OVCCIS ! Collective numerals                                              
+ +N+Coll+Sg+Nom:%>X4 K ;
+ +N+Coll+Ess:%>X4in K ;
+ +N+Coll:%>X2 MALLAS- ;
+}}}
+
+!!space disappears in the analysis of user feedback
+TT fixed the files 
+
+{{{
+xml$grep " " *
+grammarexplanation.csv:intransitivt verb	Verb som ikke kan ta objekt i akkusativ: ’mannat’
+questions_nouns.xml:      <text>SUBJ MAINV čoavdagiid N-ILL</text>
+questions_nouns.xml:      <text>INTERR SUBJ MAINV ságaid</text>
+}}}
+
+This has been a bug for a while
+
+donháliidat is not a word
+
+!!!Choosing of metalanguage 
+
+!!Messages are translated into sme
+
+!!!Write more instructions
+- pronouns
+- finite verb
+- option boos vs semset
+- semset: POS
+
+!!!Leksa
+sets vs. books - only one of them should function at a time
+
+!!!Vasta
+
+!!Gradation errors
+lemma instead of id (form tag forgotten?)
+  <entry id="bassi_actor">
+    <lemma>bassi</lemma>
+	<pos class="N"/>
+    <translations>
+      <tr xml:lang="nob">vasker</tr>
+      <tr xml:lang="nob">reingjører</tr>
+      <tr xml:lang="nob">rengjøringsassistent</tr>
+      <tr xml:lang="fin">siivoja</tr>
+    </translations>
+    <semantics>
+      <sem class="PROFESSION"/>
+    </semantics>
+    <stem class="bisyllabic" diphthong="no" gradation="no" soggi="i" rime="0"/>
+    <dialect class=""/>
+    <sources>
+    </sources>
+    <forms>
+    <form tag="N+Sg+Gen">bassi</form>
+    </forms>
+  </entry>
+
+
+
+valency vs. sem class - Lene makes them all "sem class"
+    <valency>
+      <val class=""/>
+      <val class="COMV"/>
+    <val class="TV"/></valency>
+    <semantics>
+       <sem class="VERBAL-V"/>
+    </semantics>    
+
+
+!!!Sahka
+target="target"
+
+ex.
+
+{{{
+  <topic name="work_adult">    
+      <utt type="question" name="Leat_go_barggus_adult">
+	<text>Leat go barggus?</text>
+	<!-- Do you work??-->
+	<alt target="pass" link="work_or_school_closing_adult"/>
+	<alt target="pos" link="Makkár_bargu_dus_lea_adult"/>
+	<alt target="default" link="work_or_school_closing_adult"/>
+      </utt>
+}}}
+
+Question with non-expected answer:
+
+How to identify &dia-target from  below into the <utt> block above.
+
+{{{
+"<Leat>"
+	"leat" V IV Ind Prs Sg2 
+"<go>"
+	"go" Pcle 
+"<barggus>"
+	"bargu" N Sg Loc 
+"<^qst>"
+	"^sahka" QDL Leat_go_barggus_adult &dia-pos 
+"<Juo>"
+	"juo" Interj 
+"<,>"
+	"," CLB 
+"<mun>"
+	"mun" Pron Pers Sg1 Nom 
+"<lean>"
+	"leat" V IV Ind Prs Sg1 
+"<doavttir>"
+	"doavttir" N Sg Nom &dia-pass 
+"<.>"
+	"." CLB 
+}}}
+
+wordlists vs. word class
+
+variable and grammar tag - change the text so it doesn´t need any grammar tag
+
+* I come from Kenya-Loc
+* I think Kenya-Nom is a nice place
+
+(the answer just picks the Nom from the analysis of the answer)
+
+!!!Graphical interface
+
+!!youngsters with smaller pictures on Sahka frontpage
+
+sahka file updated, let us have a look at the result.
+
+!!!Maintenance
+
+[Helpdocument http://giellatekno.uit.no/ped/maintenance.html]
+
+{{{
+ped/oahpa/drill/templates/mgame_n.html (Morfa for nouns) 
+ped/oahpa/drill/templates/mgame_l.html (Morfa numerals) 
+ped/oahpa/drill/templates/mgame_a.html (Morfa for adjectives) 
+ped/oahpa/drill/templates/mgame_v.html (Morfa for verbs) 
+ped/oahpa/drill/templates/quizz.html (Leksa common nouns) 
+ped/oahpa/drill/templates/quizz_n.html (Leksa placenames) 
+ped/oahpa/drill/templates/num.html (Numra cardinal) 
+ped/oahpa/drill/templates/num_ord.html (Numra ordinals) 
+ped/oahpa/drill/templates/vasta.html 
+ped/oahpa/drill/templates/sahka.html
+}}}
+
+Example: In order to write instructions for numra:
+
+Open the document {{ped/oahpa/drill/templates/num.html}}
+
+Edit instructions like
+
+{{{
+{% block gamename %}{% endblock %}
+{% block instructions %}{% trans "add instructions here in English" %}{% endblock %}
+}}}
+
+In your own home directory, create the translations:
+
+* cd ped/oahpa
+* django-admin.py makemessages -a
+* svn ci -m "new generated files" locale/fi/LC_MESSAGES/django.po
+
+... for the other files
+
+Update the translations to the official page.
+
+* cd /home/oahpa/
+* svn up ped
+* cd ped/oahpa/
+* django-admin.py compilemessages
+
+Insructions block is included:
+ped/oahpa/drill/templates/game.html
+
+The django template language is documented here:
+
+http://docs.djangoproject.com/en/dev/topics/templates/
+
+
+in oahpa/drill/templates/num.html
+
+{{{
+{% block instructions %}{% trans "Forms for numerals." %}{% endblock %}
+   XXXXXXXXXXXXXXXXXX             YYYYYYYYYYYYYYYYYY
+}}}
+
+And correspondingly, in oahpa/locale/fi/LC_MESSAGES/django.po
+
+{{{
+#: drill/templates/num.html:21
+msgid "Forms for numerals."
+msgstr "Anna numeraali perusmuodossa."
+}}}
+
+So, update the Ys and not the Xs in the string above.
+
+ped/oahpa/media/images/
+
+
+
+!!!Release week
+
+!!Saara's and Antti's Tromsø trip
+
+In Tromsø Wednesday until Sunday.
+
+!tuesday:
+
+* trond with European min lg charter group 11.00-12.00
+* trond 30 min intro Giellatekno 13.00 at the library
+
+{{{
+tirsdag 3. februar 2009
+Program:(innlagte "kaffepauser" mellom foredragene)
+12.00 Velkommen
+12.15 - 12.45 Minikurs i samisk ved Samisk språksenter i Ullsfjord
+13.00 - 13.30 Foredrag ved Trond Trosterud om det samiske språkteknologiprosjektet Giellatekno
+13.45 - 14.15 Foredrag ved Lene Hansen om boka "Storm på kysten"
+14.30 - 15.00 Foredrag ved Åse Mette Johansen om mastergradsoppgaven/boka "Velkommen te våres Norge - En kvalitativ studie av
+språkbytte og språkbevaring i Manndalen i Gáivuotna/Kåfjord."
+}}}
+
+
+!wednesday:
+* Lene at course: Monday, Wed and Thur 10-12 and 13-15:
+
+!thursday:
+
+* Lene seminar
+* Trond 15 min lecture
+
+Kunne du tenke deg å bidra på samisk miniforskningsmaraton (kan hende vi endrer navnet) den 5. februar? Da tenker jeg på en presentasjon på 10-15 min som er populærvitenskapelig og med en tittel som er spenstig. Opplegget blir på aud 2, og innlegget må være på norsk
+
+
+Do the release
+
+Release party thursday.
+
+!!PR
+
+* Send a press release on the release on beforehand.
+* The Labyrinth journalist
+
+!!URL
+
+this works:
+
+* http://oahpa.uit.no/ => http://victorio.uit.no/
+
+this is what we want:
+
+* http://oahpa.uit.no/ => http://victorio.uit.no/oahpa/
+* http://oahpa.no/ => http://victorio.uit.no/oahpa/
+
+
+
+!!!Milestones, priorities during the last weeks
+
+Think of things for an internal deadline monday the week before, or something.
+
+!!!Task list
+
+!!All
+* Actively use Bugzilla
+
+!!Lene
+* valency vs. sem class - Lene makes them all "sem class" - done
+* make rules for "dia-pass" tags - done
+* variable and grammar tag - change the text so it doesn´t need any grammar tag - done
+* visl update
+* contact with Mona Solbakk
+* write better/more instructions
+
+!!Saara
+* Temporarily remove the grammar explanation link
+* dia-pass
+* sets vs. books - only one of them should function at a time
+* generation of tasks - form tag forgotten?
+* reinstall feedback
+* test with the interface language
+* plan the trip to Tromsø
+* forms in lexicon
+
+!!Trond
+* Test the empty cache option for change of metalanguage, report.
+* Look at the template language
+* fix sme-norm.fst (so it will accept "Mun")
+* visl update
+* contact with Else Grete
+
+
+!!!Next meeting
+
+Wednesday 

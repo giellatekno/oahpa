@@ -1,0 +1,219 @@
+!!!Meeting notes, Pedagogical programs, 090122
+
+
+!!!Participants
+
+Biret Ánne, Lene, Saara, Trond.
+
+S +358-503394349
+L 46519
+B 46742
+
+45 min max.
+
+!!!Task list from last time
+
+!!All
+* Actively use Bugzilla
+* Journalist from UiT-web/forskning.no has been here. Lene has sent screenshots to her
+
+!!Lene
+* valency vs. sem class - Lene makes them all "sem class" 
+** done
+* make rules for "dia-pass" tags
+** done
+* variable and grammar tag - change the text so it doesn´t need any grammar tag - 
+** done
+* visl update - not done
+* contact with Mona Solbakk - not done
+* write better/more instructions - not done
+
+!!Saara
+* Temporarily remove the grammar explanation link
+** done
+* dia-pass
+** done is it working?
+* sets vs. books - only one of them should function at a time
+** done, test in IE
+* generation of tasks - form tag forgotten?
+** done
+* reinstall feedback
+** done, needs linguistic testing
+* test with the interface language
+** some ideas
+* plan the trip to Tromsø
+** done
+* install coll-num (morfac)
+** not critical, maybe done in Tromsø
+* sahka -a decent way of ending the game
+** not done, same reason
+* testing with multiple users
+** I'll do this still before the release
+* proper dtd's for xml-files
+** anyone?
+* nicer feedback and translation window
+** feedback i will fix, otherwise not critical. 
+
+!!Trond
+hmm, had forgotten this task list.
+* Test the empty cache option for change of metalanguage, report.
+* Look at the template language
+** Played the game, so indirectly yes.
+* fix sme-norm.fst (so it will accept "Mun" as pron with capital M)
+** No
+* visl update
+** No
+* contact with Else Grete
+** Yes, done. We have a program for the thursday release.
+
+
+!!!Status quo
+
+Saara and Lene have done a lot of smallchanges to the format. 
+The feedback tags are changed.
+
+We have an unpleasant report on user overload (see below)
+
+
+!!!User overload
+
+Two sessions with students. The second was with Morfa and 10 users.
+All came to the Morfa page. Some were able to work, but for others it
+crashed.
+
+Everyone wanted to change to verbs in Morfa, and only some got it.
+Ciprian might have paid attention to the error msg.
+
+Numra worked. 
+
+Django and MySql are taylored for heavy load, so this is unexpected.
+
+
+The class is every tuesday.
+
+__TODO__
+* Redo the student session next tuesday (__Lene__)
+* Rewrite the Morfa MySql queries so that they are more simple (__Saara__)
+* Simulate a heavy user load (__Saara, evt. Ciprian__)
+* Eventually (after optimisation), pick a time and have as many as 
+  possible test Morfa at the same time. (__all + friends__)
+
+
+!!!Reference grammar
+
+Manyt paradigms are made for n, v, a. The closed classes are missing:
+Numerals, pronouns, adverbs.
+
+The chapter on cojunctions need examples, for examples.
+
+It might be that there are good texts in Laila's compendium.
+
+__TODO__
+* write grammar (__Biret Ánne, Lene, Trond__)
+
+
+!!!CG rule component
+
+Lene has a list of things to improve, e.g. the Dem vs. Pron Pers, also, 
+if embedded clauses are added.
+
+__TODO__
+* improve cg3-rules (__Biret Ánne, Lene, Trond__)
+* optimize the speed of cg3 (cleaning, order of rules, bin) (__Lene, Trond__)
+* Have the bin version working (__Trond__)
+* 
+
+!!Graphical interface
+
+images are in:
+ped/oahpa/media/images
+
+save them in the correct size (px in html-code)
+
+__TODO__
+* more drawings++ (__Kjellaug__) 
+* The youngsters (__Trond__)
+
+
+!!!Sahka
+* new dialogues: we wait
+
+!!!Dictionary
+
+!!The smenob / nobsme dictionary
+
+An internal deadline, Monday?, for the tech.
+
+* graphical interface on the mac (small letters)
+* StarDict
+* Miniparadigms
+** ~/gtsvn/gt/sme/res
+
+
+
+!!A placename  (link from Leksa/Sahka/Vasta)
+
+Making a link to t
+
+* place name list (with 7000 entries) - web interface
+
+~/gtsvn/words/dicts/smenob/inc
+
+{{{
+"ENH_SSROBJ_ID","ENH_SSR_ID","ENH_SNAVN","ENH_SSROBJ_ID_1","ENH_SSR_ID_1","ENH_SNAVN_1"
+278839,280430,"Reinnesfjellet",278839,349495,"Boazonjárga"
+278848,280439,"Sør-Skjomen",278848,349485,"Orjješ-Skievvá"
+}}}
+
+We suspect it is like this:
+
+278848,280439,"Sør-Skjomen",278848,349485,"Orjješ-Skievvá",1940
+
+where 1940 is the municpality number.
+
+Make an fst matching the 3rd and 6th field.
+
+input: Manndalen
+output: Olmmáivággi Kåfjord kommune
+
+input Olmmáivággi
+output Manndalen Kåfjord kommune
+
+geo-smenob.fst
+geo-nobsme.fst
+
+
+__TODO__
+
+* make a geo fst (__Trond__)
+* put it in several nice place (__Saara__)
+
+!!!PR
+
+
+
+!!!New task list
+
+!!Biret Ánne
+* Write ped grammar
+
+!!Lene
+* Write ped grammar
+* Redo the student session next tuesday
+
+!!Saara
+* Rewrite the Morfa MySql queries so that they are more simple
+
+!!Trond
+* Test the empty cache option for change of metalanguage, report.
+* Look at the template language
+* fix sme-norm.fst (so it will accept "Mun" as pron with capital M)
+* visl update
+* Write ped grammar
+* The youngsters 
+* The geographical fst
+
+!!!Next meeting
+
+
+
