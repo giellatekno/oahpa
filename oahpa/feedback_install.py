@@ -102,7 +102,11 @@ class Feedback_install:
 
         fb = tree.getElementsByTagName("feedback")[0]
         pos = fb.getAttribute("pos")
-
+        if pos:
+            print "Deleting old feedbacks for pos", pos
+            oldfs = Feedback.objects.filter(pos=pos)			
+            for f in oldfs:
+                f.delete()				
         stem_messages = {}
         gradation_messages = {}
 
@@ -152,7 +156,9 @@ class Feedback_install:
         tenses = ["Prs","Prt"]
         moods = ["Ind","Cond","Pot","Imprt"]
         personnumbers = ["Sg1","Sg2","Sg3","Du1","Du2","Du3","Pl1","Pl2","Pl3"]
-                                
+        if not gradations.has_key("no"):
+            gradations["no"] = 1
+	
         messages=[]
         print rimes.keys()
         print soggis
