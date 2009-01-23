@@ -766,8 +766,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     lookup2cg = " | lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /usr/local/bin/preprocess "
-    dis_bin = "/home/saara/ped/sme/src/sme-ped.cg3"
-    dis_bin = fstdir + "/sme-ped.cg3"
+    #dis_bin = "/opt/smi/sme-ped.cg3"
+    dis_bin = "/opt/smi/sme/bin/sme-ped.bin"
 
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
 
