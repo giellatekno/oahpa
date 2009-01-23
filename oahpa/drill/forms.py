@@ -302,7 +302,8 @@ def get_feedback(self,word,tag,wordform,dialect,language):
         #print "stem:", word.stem, "gradation:", word.gradation, "diphthong:", word.diphthong, "rime:", word.rime, "soggi:", word.soggi
         #print tag.pos, tag.personnumber, tag.tense, tag.mood
         
-        feedbacks = Feedback.objects.filter(Q(stem=word.stem) & \
+        feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(rime=word.rime) & \
+											Q(gradation=word.gradation) &\
                                             Q(diphthong=word.diphthong) & Q(soggi=word.soggi) & \
                                             Q(mood=tag.mood) & Q(tense=tag.tense) & \
                                             Q(personnumber = tag.personnumber) & Q(dialects__dialect=dialect))
