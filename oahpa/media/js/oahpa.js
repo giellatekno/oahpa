@@ -1,31 +1,11 @@
 
+
 function selectsahka ( selectedtype )
 {
     document.gameform.dialogue.value = selectedtype ;
     document.gameform.submit() ;
 }
 
-function showPopup(w,h,elid){
-   var popUp = document.getElementById(elid);
-
-   var baseText = null;
- 
-   popUp.style.top = "200px";
-   popUp.style.left = "400px";
-   popUp.style.width = w + "px";
-   popUp.style.height = h + "px";
- 
-   if (baseText === null) baseText = popUp.innerHTML;
-   popUp.innerHTML = baseText + "<div id=\"statusbar\"><button onclick=\"hidePopup(elid);\">Close window<button></div>"; 
-   var sbar = document.getElementById("statusbar");
-   sbar.style.marginTop = (parseInt(h)-70) + "px";
-   popUp.style.visibility = "visible";
-}
-
-function hidePopup(elid){
-   var popUp = document.getElementById(elid);
-   popUp.style.visibility = "hidden";
-}
 
 function feedback(msg)
 {
