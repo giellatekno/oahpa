@@ -124,6 +124,7 @@ class Gameview:
 				
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
+
             if request.session.has_key('django_language'):
                 self.settings['language'] = request.session['django_language']
 				
@@ -179,6 +180,13 @@ def oahpa(request):
         'jee': "joku arvo",
         })
     return render_to_response('oahpa_main.html', c, context_instance=RequestContext(request))
+
+def visl(request):
+
+    c = RequestContext(request, {
+        'jee': "joku arvo",
+        })
+    return render_to_response('visl_main.html', c, context_instance=RequestContext(request))
 
 
 def mgame_n(request):
