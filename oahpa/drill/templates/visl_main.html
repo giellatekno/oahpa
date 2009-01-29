@@ -15,15 +15,15 @@
 </head>
 <body class="mainbody">
 
-<div id="mainheader">
+<div id="mainheader" height="180">
 <center>
 <div class="plainbackground">
-<img width="400" height="120" src="/oahpa/media/images/visl_map.png" alt="VISL"/><br/>
+<img height="180" src="/oahpa/media/images/visl_map.png" alt="VISL"/><br/>
 </div>
 </center>
 </div>
 
-<div id="maincontent">
+<div id="maincontent" style="top:190px">
 <center>
 <table cellspacing="2px" cellpadding="2px">
 <tr>
@@ -122,7 +122,6 @@ ANIMAL QUIZ</a>&nbsp;&nbsp;
 </td>
 </tr>
 </table>
-
 </div>
 </center>
 
@@ -132,7 +131,7 @@ ANIMAL QUIZ</a>&nbsp;&nbsp;
 <form action="/oahpa/i18n/setlang/" method="post" name="newlang">
 <table>
 <tr><td>
-{% trans "Interface language" %}
+{% trans "Page language" %}
 <input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
 <select name="language" onChange="javascript:this.form.submit();">
 
@@ -167,29 +166,6 @@ ANIMAL QUIZ</a>&nbsp;&nbsp;
 </form>
 </td>
 </tr>
-<tr>
-<td>
-<form action="/oahpa/dialect/" method="post">
-<table>
-<tr><td>
-{% trans "North Sami dialect" %}
-<select name="dialect" onChange="javascript:this.form.submit();">
-{% if dialect %}
-  {% ifequal dialect "GG" %}
-  <option value="GG" selected="selected">{% trans 'western' %}</option>
-  <option value="KJ">{% trans 'eastern' %}</option>
-  {% else %}
-  <option value="GG">{% trans 'western' %}</option>
-  <option value="KJ" selected="selected">{% trans 'eastern' %}</option>
-  {% endifequal %}  
-{% else %}
-<option value="GG">{% trans 'western' %}</option>
-<option value="KJ">{% trans 'eastern' %}</option>
-{% endif %}
-</select>
-</td></tr>
-<tr><td>
-</td></tr>
 </table>
 </form>
 </td></tr>
