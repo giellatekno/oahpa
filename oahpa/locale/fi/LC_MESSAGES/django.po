@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-27 15:23+0100\n"
+"POT-Creation-Date: 2009-01-29 16:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -324,11 +324,11 @@ msgstr "Oahpásmuva Lisai"
 msgid "Firstmeeting man"
 msgstr "Oahpásmuva Hánsii"
 
-#: drill/forms.py:178
+#: drill/forms.py:178 drill/templates/sahka.html:147
 msgid "Visit"
 msgstr "Guossis"
 
-#: drill/forms.py:179
+#: drill/forms.py:179 drill/templates/sahka.html:152
 msgid "Grocery"
 msgstr "Borramušgávppis"
 
@@ -452,11 +452,11 @@ msgstr "Harjoittele potentiaalia"
 msgid "help"
 msgstr "apu"
 
-#: drill/templates/game.html:155
+#: drill/templates/game.html:160
 msgid "Congratulations!"
 msgstr "Onneksi olkoon!"
 
-#: drill/templates/game.html:159
+#: drill/templates/game.html:164
 msgid "Your score:"
 msgstr "Pisteesi"
 
@@ -511,21 +511,21 @@ msgid "contracted"
 msgstr "supistumavartalo"
 
 #: drill/templates/mgame.html:88 drill/templates/mgame_l.html:60
-#: drill/templates/num.html:37 drill/templates/num_ord.html:37
+#: drill/templates/num.html:37 drill/templates/num_ord.html:36
 #: drill/templates/quizz.html:37 drill/templates/quizz_n.html:43
-#: drill/templates/sahka.html:34 drill/templates/vasta.html:29
+#: drill/templates/vasta.html:29
 msgid "New set"
 msgstr "Uusi peli"
 
 #: drill/templates/mgame.html:132 drill/templates/mgame_l.html:109
-#: drill/templates/num.html:58 drill/templates/num_ord.html:58
+#: drill/templates/num.html:58 drill/templates/num_ord.html:57
 #: drill/templates/quizz.html:51 drill/templates/quizz_n.html:57
 #: drill/templates/vasta.html:45
 msgid "Test answers"
 msgstr "Testaa vastauksesi"
 
 #: drill/templates/mgame.html:135 drill/templates/mgame_l.html:112
-#: drill/templates/num.html:61 drill/templates/num_ord.html:61
+#: drill/templates/num.html:61 drill/templates/num_ord.html:60
 #: drill/templates/quizz.html:54 drill/templates/quizz_n.html:60
 msgid "Show correct answers"
 msgstr "Näytä oikeat vastaukset"
@@ -541,6 +541,14 @@ msgstr "Laji"
 #: drill/templates/mgame_a.html:11
 msgid "Grade"
 msgstr "Vertailuaste"
+
+#: drill/templates/mgame_l.html:8
+msgid "MORFA-S"
+msgstr ""
+
+#: drill/templates/mgame_l.html:17
+msgid "MORFA-C"
+msgstr ""
 
 #: drill/templates/mgame_l.html:35 drill/templates/mgame_n.html:8
 msgid "Case"
@@ -598,31 +606,31 @@ msgid ""
 "select the game."
 msgstr ""
 "Oahpa on kokoelma pelejä jotka on kehitetty Pohjoissaamen opiskelijoille. "
-"Valitse käyttöliittymän kieli ja haluamasi murre vasemmalla olevasta valikosta. "
-"Norja ja pohjoissaame on parhaiten tuetut kielet, "
+"Valitse käyttöliittymän kieli ja haluamasi murre vasemmalla olevasta "
+"valikosta. Norja ja pohjoissaame on parhaiten tuetut kielet, "
 "käyttöliittymässä on osia, joita ei ole käännetty suomen kielelle."
 
-#: drill/templates/oahpa_main.html:44
+#: drill/templates/oahpa_main.html:43
 msgid "Practise morphology"
 msgstr "Harjoittele morfologiaa"
 
-#: drill/templates/oahpa_main.html:53
+#: drill/templates/oahpa_main.html:52
 msgid "Answer to questions"
 msgstr "Vastaa kysymyksiin"
 
-#: drill/templates/oahpa_main.html:62
+#: drill/templates/oahpa_main.html:61
 msgid "Words and translations"
 msgstr "Sanat ja käännökset"
 
-#: drill/templates/oahpa_main.html:74
+#: drill/templates/oahpa_main.html:72
 msgid "Morphology in sentential context"
 msgstr "Morfologiaa lausekontekstissa"
 
-#: drill/templates/oahpa_main.html:85
+#: drill/templates/oahpa_main.html:83
 msgid "Dialogue game (Under development)"
 msgstr "Dialogi"
 
-#: drill/templates/oahpa_main.html:95
+#: drill/templates/oahpa_main.html:93
 msgid "Practise numerals"
 msgstr "Harjoittele lukusanoja"
 
@@ -630,37 +638,30 @@ msgstr "Harjoittele lukusanoja"
 msgid "Interface language"
 msgstr "Käyttöliittymän kieli"
 
-#: drill/templates/oahpa_main.html:147
-msgid "Select language"
-msgstr "Valitse kieli"
-
-#: drill/templates/oahpa_main.html:158
+#: drill/templates/oahpa_main.html:157
 msgid "North Sami dialect"
 msgstr "Pohjoissaamen murre"
 
-#: drill/templates/oahpa_main.html:162 drill/templates/oahpa_main.html:165
-#: drill/templates/oahpa_main.html:169
+#: drill/templates/oahpa_main.html:161 drill/templates/oahpa_main.html:164
+#: drill/templates/oahpa_main.html:168
 msgid "western"
 msgstr "Läntinen"
 
-#: drill/templates/oahpa_main.html:163 drill/templates/oahpa_main.html:166
-#: drill/templates/oahpa_main.html:170
+#: drill/templates/oahpa_main.html:162 drill/templates/oahpa_main.html:165
+#: drill/templates/oahpa_main.html:169
 msgid "eastern"
 msgstr "Itäinen"
 
-#: drill/templates/oahpa_main.html:175
-msgid "Select dialect"
-msgstr "Valitse murre"
-
-#: drill/templates/oahpa_main.html:193 templates/oahpa.html:109
+#: drill/templates/oahpa_main.html:197 templates/oahpa.html:241
 msgid "Feedback"
 msgstr "Palaute"
 
-#: drill/templates/oahpa_main.html:214
-msgid "Copyright 2008 The University of Tromsø"
+#: drill/templates/oahpa_main.html:217
+#, fuzzy
+msgid "Copyright 2008 The University of Tromso."
 msgstr "Copyright 2008, Tromssan yliopisto"
 
-#: drill/templates/oahpa_main.html:215
+#: drill/templates/oahpa_main.html:218
 msgid "Contact"
 msgstr "Ota yhteyttä"
 
@@ -702,19 +703,33 @@ msgstr "Sijainti"
 msgid "Frequency"
 msgstr "Yleisyys"
 
-#: drill/templates/sahka.html:17
-msgid "This game is under development!"
-msgstr "Tätä peliä kehitetään yhä."
+#: drill/templates/sahka.html:93
+#, fuzzy
+msgid "Select a dialogue"
+msgstr "Valitse murre"
 
-#: drill/templates/sahka.html:20
-msgid "Sahka"
+#: drill/templates/sahka.html:126
+msgid "Meeting with Káre"
 msgstr ""
 
-#: drill/templates/sahka.html:28
-msgid "Dialogue"
-msgstr "Dialogi"
+#: drill/templates/sahka.html:130
+msgid "Meeting with Hánsa"
+msgstr ""
 
-#: drill/templates/sahka.html:63
+#: drill/templates/sahka.html:134
+msgid "Meeting with Lisa"
+msgstr ""
+
+#: drill/templates/sahka.html:138
+msgid "Meeting with Piera"
+msgstr ""
+
+#: drill/templates/sahka.html:157
+#, fuzzy
+msgid "Shop"
+msgstr "Veardideapmi rámbuvrris"
+
+#: drill/templates/sahka.html:190
 msgid "Answer"
 msgstr "Vastaus"
 
@@ -758,17 +773,26 @@ msgstr "Tekninen virhe. Ole hyvä, yritä uudestaan."
 msgid "We are developing the program."
 msgstr "Ohjelman kehitystyö on vielä kesken, pahoittelemme virheitä."
 
-#: templates/oahpa.html:68 templates/oahpa.html.py:79
+#: templates/oahpa.html:204 templates/oahpa.html.py:216
 msgid "Grammar"
 msgstr "Kielioppi"
 
-#: templates/oahpa.html:108
+#: templates/oahpa.html:240
 msgid "OAHPA is under development and may not function all the time."
 msgstr "OAHPA-sivustoa kehitetään, käyttökatkot ja virheet ovat mahdollisia."
 
-#: templates/oahpa.html:110
+#: templates/oahpa.html:242
 msgid "Main page"
 msgstr "Etusivu"
+
+#~ msgid "Select language"
+#~ msgstr "Valitse kieli"
+
+#~ msgid "This game is under development!"
+#~ msgstr "Tätä peliä kehitetään yhä."
+
+#~ msgid "Dialogue"
+#~ msgstr "Dialogi"
 
 #~ msgid "collective"
 #~ msgstr "kollektiiviluvut"
