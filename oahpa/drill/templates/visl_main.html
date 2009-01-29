@@ -1,0 +1,239 @@
+{% load i18n %}
+{{ lang_switch }}
+{% get_available_languages as LANGUAGES %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="/oahpa/media/css/oahpa.css"/>
+<link rel="stylesheet" type="text/css" href="/oahpa/media/css/oahpa_main.css"/>
+<!--[if lt IE 7.]>
+<script defer type="text/javascript" src="/oahpa/media/js/pngfix.js"></script>
+<![endif]-->
+</head>
+<body class="mainbody">
+
+<div id="mainheader">
+<center>
+<div class="plainbackground">
+<img width="400" height="120" src="/oahpa/media/images/visl_map.png" alt="VISL"/><br/>
+</div>
+</center>
+</div>
+
+<div id="maincontent">
+<center>
+<table cellspacing="2px" cellpadding="2px">
+<tr>
+<td class="plain" width="700" align="center">
+{% trans "VISL is a collection of grammar games developed for language learners. The games are made at Syddansk Universitet in Odense, and the most central games are adjusted to North Sami. Select game by clicking on the icon or on 'game', for each game there is also documentation (press the 'documentation' link)." %}
+</td>
+<tr>
+<td>
+<table cellspacing="2px" cellpadding="2px" align="center">
+<tr>
+<td class="header" width="200">
+
+<center>
+<div class="plainbackground">
+<a href="http://beta.visl.sdu.dk/visl/sme/edutainment/games/paintbox.php?S=/global/edutainment/games/paintbox-start-both/"><img  width="80" height="80" border="0" src="/oahpa/media/images/paintbox.png"/><br/>
+</div>PAINTBOX</a>
+<p class="plain">{% trans "Mále substantiivvaid, vearbbaid ja eará sániid" %}</p>
+</center>
+</td>
+<td class="header" width="200">
+<center>
+<div class="plainbackground">
+<a href="http://beta.visl.sdu.dk/visl/sme/edutainment/games/wordfall.php"><img width="80" height="80" border="0" src="/oahpa/media/images/wordfall.png"/><br/>
+</div>
+WORDFALL</a>
+<p class="plain">{% trans "Substantiivvat, vearbbat ja eará sánit galget gahččat rivttes sadjái." %}</p>
+</center>
+</td>
+<td class="header" width="200">
+<center>
+<div class="plainbackground">
+<a href="http://beta.visl.sdu.dk/visl/sme/edutainment/games/shoot.php"><img width="80" height="80" border="0" src="/oahpa/media/images/shooting.png"/><br/>
+</div>
+SHOOTING GALLERY</a>&nbsp;&nbsp;
+<p class="plain">{% trans "báže substantiivvaid, vearbbaid ja eará sániid mat girdet almmi rastá." %}</p>
+</center>
+</td>
+<td class="header" width="200">
+<center>
+<div class="plainbackground">
+<a href="http://beta.visl.sdu.dk/visl/sme/edutainment/games/labyrinth.php"><img width="80" height="80" border="0" src="/oahpa/media/images/labyrinth.png"/><br/>
+</div>
+LABYRINTH</a>&nbsp;&nbsp;
+<p class="plain">{% trans "báže substantiivvaid, vearbbaid ja eará sániid mat girdet almmi rastá." %}</p>
+</center>
+</td>
+
+</tr>
+<tr>
+<td class="header" width="200">
+<center>
+<div class="plainbackground">
+<a href="http://beta.visl.sdu.dk/visl/sme/edutainment/games/syntris.php"><img width="80" height="80" border="0" src="/oahpa/media/images/syntris.png"/><br/>
+</div>SYNTRIS</a>&nbsp;&nbsp;
+<p class="plain">{% trans "Subject, predicate and other sentence members shakk fall into right place - a Tetris game." %}</p>
+</center>
+</td>
+
+
+<td class="header" width="200">
+<center>
+<div class="plainbackground">
+<a href="http://beta.visl.sdu.dk/visl/sme/edutainment/games/spacerescue.php"><img width="80" height="80" border="0" src="/oahpa/media/images/spacerescue.png"/><br/>
+</div>
+SPACE RESCUE</a>&nbsp;&nbsp;
+<p class="plain">{% trans "Don galggat gadjut cealkkalahtuid." %}</p>
+</center>
+</td>
+
+<td class="header" width="200">
+<center>
+<div class="plainbackground">
+<a href="/oahpa/numra/"><img width="80" height="80" border="0" src="/oahpa/media/images/numra.png"/><br/>
+</div>
+KILLER FILLER</a>&nbsp;&nbsp;
+<p class="plain">{% trans "Don galggat gadjut cealkkalahtuid." %}</p>
+</center>
+</td>
+<td class="header" width="200">
+<center>
+<div class="plainbackground">
+<a href="/oahpa/numra/"><img width="80" height="80" border="0" src="/oahpa/media/images/numra.png"/><br/>
+</div>
+ANIMAL QUIZ</a>&nbsp;&nbsp;
+<p class="plain">{% trans "Guess the right animal." %}</p>
+</center>
+</td>
+</tr>
+<td>
+</td>
+<td>
+</td>
+</tr>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</div>
+</center>
+
+
+<div id="rightbar">
+{% get_current_language as LANGUAGE_CODE %}
+<form action="/oahpa/i18n/setlang/" method="post" name="newlang">
+<table>
+<tr><td>
+{% trans "Interface language" %}
+<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
+<select name="language" onChange="javascript:this.form.submit();">
+
+{% ifequal LANGUAGE_CODE "en" %}
+<option value="en" selected="selected">English</option>
+{% else %}
+<option value="en">English</option>
+{% endifequal %}
+
+{% ifequal LANGUAGE_CODE "sme" %}
+<option value="sme" selected="selected">Davvisámegiella</option>
+{% else %}
+<option value="sme">Davvisámegiella</option>
+{% endifequal %}
+
+{% ifequal LANGUAGE_CODE "no" %}
+<option value="no" selected="selected">Norsk</option>
+{% else %}
+<option value="no">Norsk</option>
+{% endifequal %}
+
+{% ifequal LANGUAGE_CODE "fi" %}
+<option value="fi" selected="selected">Suomi</option>
+{% else %}
+<option value="fi">Suomi</option>
+{% endifequal %}
+</select>
+</td></tr>
+<tr><td>
+</td></tr>
+</table>
+</form>
+</td>
+</tr>
+<tr>
+<td>
+<form action="/oahpa/dialect/" method="post">
+<table>
+<tr><td>
+{% trans "North Sami dialect" %}
+<select name="dialect" onChange="javascript:this.form.submit();">
+{% if dialect %}
+  {% ifequal dialect "GG" %}
+  <option value="GG" selected="selected">{% trans 'western' %}</option>
+  <option value="KJ">{% trans 'eastern' %}</option>
+  {% else %}
+  <option value="GG">{% trans 'western' %}</option>
+  <option value="KJ" selected="selected">{% trans 'eastern' %}</option>
+  {% endifequal %}  
+{% else %}
+<option value="GG">{% trans 'western' %}</option>
+<option value="KJ">{% trans 'eastern' %}</option>
+{% endif %}
+</select>
+</td></tr>
+<tr><td>
+</td></tr>
+</table>
+</form>
+</td></tr>
+<tr>
+<td>
+&nbsp;<br/>
+<table>
+<tr>
+<td>
+<div class="plainbackground" >
+<a href="http://giellatekno.uit.no/oahpa/OAHPAveiledning.html">
+<img width="80" height="80" border="0" src="/oahpa/media/images/littleman.png"/><br/>
+<font size="0">Oahpaheaddji ja studeantta bagadus</font></a>
+</div>
+&nbsp;<br/>
+
+</td>
+</tr>
+<tr>
+<td><a href="http://giellatekno.uit.no/oahpa/index.html">OAHPA! birra</a></td>
+</tr>
+<tr>
+<td><a href="/oahpa/feedback/">{% trans 'Feedback' %}</td>
+</tr>
+<tr>
+<td>
+&nbsp;<br/>&nbsp;<br/>
+
+<center>
+<img width="50" height="50" src="/oahpa/media/images/LogoSamisk.jpg"/>
+</center>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+</div>
+
+<div id="copyright">
+<p>
+{% trans "Copyright 2008 The University of Tromso." %}
+{% trans "Contact" %}</p>
+</div>
+</body>
+</html>
