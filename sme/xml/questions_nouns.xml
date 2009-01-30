@@ -1056,6 +1056,31 @@
     </answer>
   </q>
 
+  <q id="ness4">
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Goas heive MAINV</text>
+      <element id="MAINV">
+	<grammar tag="V+Inf"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </question>
+    <answer> 
+      <text>N-ESS heive MAINV</text>
+      <element game='morfa' id="N-ESS" task="yes">
+	<grammar tag="N+Ess"/>
+	<sem class="DILLI-ESS"/>
+      </element>
+    </answer>
+    <answer>
+      <text>MAINV heive N-ESS</text>
+      <element game='morfa' id="N-ESS" task="yes">
+	<grammar tag="N+Ess"/>
+	<sem class="DILLI-ESS"/>
+      </element>
+    </answer>
+  </q>
+
   <q id="nnompl0">
     <qtype>N-NOM-PL</qtype>
     <question>
