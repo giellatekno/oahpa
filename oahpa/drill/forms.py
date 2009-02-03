@@ -128,7 +128,7 @@ TRANS_CHOICES = (
     ('nobsme', _('Norwegian to North Sami')),
 )
 
-LANGUAGE_CHOICES = (
+NUMLANGUAGE_CHOICES = (
     ('sme', _('North Sami')),
     ('smj', _('Lule Sami')),
     ('sma', _('South Sami')),
@@ -501,8 +501,8 @@ class NumSettings(OahpaSettings):
 
     maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
     numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
-    language = forms.ChoiceField(initial='sme', choices=LANGUAGE_CHOICES, widget=forms.RadioSelect)
-    default_data = {'language' : 'sme', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
+    numlanguage = forms.ChoiceField(initial='sme', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
+    default_data = {'language' : 'sme', 'numlanguage' : 'sme', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
     # Link to grammatical explanation for each page
     grammarlinkssme = Grammarlinks.objects.filter(language="sme")
     grammarlinksno = Grammarlinks.objects.filter(language="no")
