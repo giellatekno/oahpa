@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-02 21:10+0100\n"
+"POT-Creation-Date: 2009-02-03 14:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -652,16 +652,16 @@ msgstr "Vestlig"
 msgid "eastern"
 msgstr "Østlig"
 
-#: drill/templates/oahpa_main.html:197 drill/templates/visl_main.html:191
-#: templates/oahpa.html:241
+#: drill/templates/oahpa_main.html:199 drill/templates/visl_main.html:422
+#: templates/oahpa.html:244
 msgid "Feedback"
 msgstr "Tilbakemelding"
 
-#: drill/templates/oahpa_main.html:217 drill/templates/visl_main.html:211
+#: drill/templates/oahpa_main.html:217 drill/templates/visl_main.html:441
 msgid "Copyright 2008 The University of Tromso."
 msgstr "Copyright 2009 Universitetet i Tromsø"
 
-#: drill/templates/oahpa_main.html:218 drill/templates/visl_main.html:212
+#: drill/templates/oahpa_main.html:218 drill/templates/visl_main.html:442
 msgid "Contact"
 msgstr "Ta kontakt"
 
@@ -741,62 +741,75 @@ msgstr "Svar på spørsmålene med full setning."
 msgid "Level"
 msgstr "Nivå"
 
-#: drill/templates/visl_main.html:31
+#: drill/templates/visl_main.html:37
+#, fuzzy
 msgid ""
-"VISL is a collection of grammar games developed for language learners, made "
-"at Syddansk Universitet in Odense. Here are the most central games for North "
-"Sami. Select game by clicking on the icon or on 'game', for each game there "
-"is also documentation (press the link)."
+"is a collection of grammar games developed for language learners, made at "
+"Syddansk Universitet in Odense. Here are the games for North Sami."
 msgstr ""
-"VISL er ei samling av grammatikkspill utvikla for språkstudenter og elever, laga"
-"ved Syddansk Universitet i Odense. Her er de viktigste spillene for nordsamisk."
-"Velg spill ved å klikke på ikonet. For hvert spill er det også dokumentasjon"
-"(press lenka)."
+"VISL er ei samling av grammatikkspill utvikla for språkstudenter og elever, "
+"lagaved Syddansk Universitet i Odense. Her er de viktigste spillene for "
+"nordsamisk.Velg spill ved å klikke på ikonet. For hvert spill er det også "
+"dokumentasjon(press lenka)."
 
-#: drill/templates/visl_main.html:43
+#: drill/templates/visl_main.html:85
 msgid "Paint nouns, verbs and other words."
 msgstr "Mal substantiv, verb og andre ord."
 
-#: drill/templates/visl_main.html:52
+#: drill/templates/visl_main.html:102 drill/templates/visl_main.html.py:125
+#: drill/templates/visl_main.html:147 drill/templates/visl_main.html.py:206
+#: drill/templates/visl_main.html:229 drill/templates/visl_main.html.py:252
+#: drill/templates/visl_main.html:308 drill/templates/visl_main.html.py:317
+#: drill/templates/visl_main.html:340
+#, fuzzy
+msgid "(instructions)"
+msgstr "Instruksjoner.."
+
+#: drill/templates/visl_main.html:108
 msgid "Nouns, verbs and other words shall be put into the right place."
 msgstr "Substantiv, verb og andre ord skal puttes inn på rett sted"
 
-#: drill/templates/visl_main.html:61
+#: drill/templates/visl_main.html:130
 msgid "Shoot nouns, verbs and other words flying through the air."
 msgstr "Skyt substantiv, verb og andre ord som flyr gjennom lufta."
 
-#: drill/templates/visl_main.html:70
-msgid ""
-"Hurry through the labyrinth to the right part of speech. Do not let the "
-"ghost eat you!"
+#: drill/templates/visl_main.html:189
+#, fuzzy
+msgid "Hurry through the labyrinth to the right part of speech."
 msgstr ""
-"Fort deg gjennom labyrinten til rett ordklasse. Ikke la "
-"spøkelset ete deg!"
+"Fort deg gjennom labyrinten til rett ordklasse. Ikke la spøkelset ete deg!"
 
-#: drill/templates/visl_main.html:81
-msgid ""
-"Subject, predicate and other sentence members shall fall into right place - "
-"a Tetris game."
+#: drill/templates/visl_main.html:212
+#, fuzzy
+msgid "Sentence members shall fall into right place - a Tetris game."
 msgstr ""
-"Subjekt, predikat og andre setningsledd skal falle ned på rett sted - "
-"et Tetris-spill."
+"Subjekt, predikat og andre setningsledd skal falle ned på rett sted - et "
+"Tetris-spill."
 
-#: drill/templates/visl_main.html:92
+#: drill/templates/visl_main.html:235
 msgid "You shall save the parts of speech."
 msgstr "Du skal lagre ordklassene."
 
-#: drill/templates/visl_main.html:102
+#: drill/templates/visl_main.html:291
 msgid "Find the right worform for the lemma."
 msgstr "Finn den rette ordforma for lemmaet."
 
-#: drill/templates/visl_main.html:111
+#: drill/templates/visl_main.html:314
 msgid "Guess the right animal."
 msgstr "Gjett det riktige dyret."
 
-#: drill/templates/visl_main.html:134
+#: drill/templates/visl_main.html:323
+msgid "Have look at or build centence trees."
+msgstr ""
+
+#: drill/templates/visl_main.html:358
 #, fuzzy
 msgid "Page language"
 msgstr "Velg språk"
+
+#: drill/templates/visl_main.html:415 templates/oahpa.html:243
+msgid "Main page"
+msgstr "Hovedside"
 
 #: feedback/templates/feedback.html:17
 msgid "The following information is optional."
@@ -818,6 +831,10 @@ msgstr "Send melding"
 msgid "Thank you for you feedback!"
 msgstr "Takk for tilbakemeldinga di!"
 
+#: templates/404.html:7
+msgid "Page was not found."
+msgstr ""
+
 #: templates/500.html:7
 msgid "Technical error, please try again."
 msgstr "Teknisk feil, prøv igjen."
@@ -826,17 +843,13 @@ msgstr "Teknisk feil, prøv igjen."
 msgid "We are developing the program."
 msgstr "Dette programmet er under utvikling."
 
-#: templates/oahpa.html:204 templates/oahpa.html.py:216
+#: templates/oahpa.html:206 templates/oahpa.html.py:218
 msgid "Grammar"
 msgstr "Grammatikk"
 
-#: templates/oahpa.html:240
+#: templates/oahpa.html:242
 msgid "OAHPA is under development and may not function all the time."
 msgstr "OAHPA er under utvikling og kan være ute av funksjon av og til."
-
-#: templates/oahpa.html:242
-msgid "Main page"
-msgstr "Hovedside"
 
 #~ msgid "This game is under development!"
 #~ msgstr "Programmet er under utvikling!"
@@ -881,9 +894,6 @@ msgstr "Hovedside"
 
 #~ msgid "context"
 #~ msgstr "Setninger"
-
-#~ msgid "Instructions.."
-#~ msgstr "Instruksjoner.."
 
 #~ msgid "Game type"
 #~ msgstr "Hvilket program"
