@@ -353,7 +353,7 @@ class NumGame(Game):
         if self.settings['gametype'] == "ord":
             language="sme"
         else:
-            language=self.settings['language']
+            language=self.settings['numlanguage']
         numstring =""
         # Add generator call here
         #fstdir="/Users/saara/gt/" + language + "/bin"        
