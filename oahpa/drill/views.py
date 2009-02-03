@@ -84,6 +84,8 @@ class Gameview:
                 self.settings['dialect'] = request.session['dialect']
             if request.session.has_key('django_language'):
                 self.settings['language'] = request.session['django_language']
+            else:
+                self.settings['language'] = request.COOKIES.get("django_language", None)
 				                
             self.syll_settings(settings_form)
             if settings_form.data.has_key('book'):
@@ -127,6 +129,8 @@ class Gameview:
 
             if request.session.has_key('django_language'):
                 self.settings['language'] = request.session['django_language']
+            else:
+                self.settings['language'] = request.COOKIES.get("django_language", None)
 				
             if self.settings['gametype'] == "bare":
                 game = BareGame(self.settings)        
@@ -305,6 +309,8 @@ class Vastaview:
 
             if request.session.has_key('django_language'):
                 self.settings['language'] = request.session['django_language']
+            else:
+                self.settings['language'] = request.COOKIES.get("django_language", None)
 
             self.settings['allcase_context']=settings_form.allcase_context
             self.settings['allvtype_context']=settings_form.allvtype_context
@@ -348,6 +354,8 @@ class Vastaview:
 
             if request.session.has_key('django_language'):
                 self.settings['language'] = request.session['django_language']
+            else:
+                self.settings['language'] = request.COOKIES.get("django_language", None)
 
             # Vasta
             game = QAGame(self.settings)
@@ -416,6 +424,8 @@ class Quizzview(Gameview):
 
             if request.session.has_key('django_language'):
                 self.settings['language'] = request.session['django_language']
+            else:
+                self.settings['language'] = request.COOKIES.get("django_language", None)
 
             self.placename_settings(settings_form)
             self.settings['allsem']=settings_form.allsem
@@ -449,6 +459,8 @@ class Quizzview(Gameview):
 
             if request.session.has_key('django_language'):
                 self.settings['language'] = request.session['django_language']
+            else:
+                self.settings['language'] = request.COOKIES.get("django_language", None)
 
             game = QuizzGame(self.settings)
             game.new_game()
@@ -504,6 +516,8 @@ class Numview(Gameview):
 
             if request.session.has_key('django_language'):
                 self.settings['language'] = request.session['django_language']
+            else:
+                self.settings['language'] = request.COOKIES.get("django_language", None)
 
             game = NumGame(self.settings)
                 
@@ -578,6 +592,8 @@ class Sahkaview:
             self.settings['dialect'] = request.session['dialect']
         if request.session.has_key('django_language'):
             self.settings['language'] = request.session['django_language']
+        else:
+            self.settings['language'] = request.COOKIES.get("django_language", None)
 
 			
         # With post data, continue the dialogue
@@ -643,6 +659,8 @@ class Sahkaview:
                 self.settings['dialect'] = request.session['dialect']
             if request.session.has_key('django_language'):
                 self.settings['language'] = request.session['django_language']
+            else:
+                self.settings['language'] = request.COOKIES.get("django_language", None)
 
             c = Context({
                 'settingsform': settings_form,
