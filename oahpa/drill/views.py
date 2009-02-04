@@ -365,14 +365,17 @@ class Vastaview:
 
             game.new_game()
 
+        all_correct = 0
+        if game.form_list[0].error == "correct":
+            all_correct = 1
 
         c = Context({
             'settingsform': settings_form,
             'forms': game.form_list,
             'messages': game.form_list[0].messages,
             'count': game.count,
-            'score': game.score,
             'comment': game.comment,
+            'all_correct': all_correct,
             })
         return c
 
