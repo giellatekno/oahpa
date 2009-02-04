@@ -3,6 +3,7 @@ from settings import *
 from drill.models import *
 from django.db.models import Q
 from xml.dom import minidom as _dom
+from django.utils.encoding import force_unicode
 import sys
 import re
 import string
@@ -37,10 +38,10 @@ class Extra:
                     links.append(link)
         linkobjects = Grammarlinks.objects.all()
         for l in linkobjects:
-            if l.name not in set(links):
+            if force_unicode(l.name) not in set(links):
                 print l.name
                 l.delete()
-
+				
     #The comments presented to the user after completing the game.
     def read_comments(self, commentfile):
         xmlfile=file(commentfile)
