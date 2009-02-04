@@ -177,8 +177,15 @@ class Game:
         if (self.show_correct or self.all_correct) and not self.settings['gametype']=='qa' :
             if i==2: i=3
             if i==1: i=2
-            #com_count = Comment.objects.filter(Q(level=i) & Q(lang="nob")).count()
-            #self.comment = Comment.objects.filter(Q(level=i) & Q(lang="nob"))[randint(0,com_count-1)].comment
+            if self.settings.has_key('language'):
+                language = self.settings['language']
+                if language == "no" : language = "nob"
+                if language == "fi" : language = "fin"
+                if language == "en" : language = "eng"
+				
+                com_count = Comment.objects.filter(Q(level=i) & Q(lang=language)).count()
+                if com_count > 0:
+                    self.comment = Comment.objects.filter(Q(level=i) & Q(lang=language))[randint(0,com_count-1)].comment
 
 
 class BareGame(Game):
