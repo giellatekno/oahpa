@@ -89,7 +89,7 @@ if options.semtypefile:
     sys.exit()
 
 if options.feedbackfile:
-    feedback.read_feedback(options.feedbackfile)
+    feedback.read_feedback(options.feedbackfile,options.infile)
     sys.exit()
 
 if options.numerals:
