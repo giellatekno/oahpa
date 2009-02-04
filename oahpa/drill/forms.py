@@ -310,7 +310,9 @@ def get_feedback(self,word,tag,wordform,dialect,language):
       
     if not language: language = "nob"
     if language == "no" : language = "nob"
-    if not language=="nob" and not language=="sme": language="nob"
+    if language == "en" : language = "eng"
+    if language == "fi" : language = "fin"
+    if not language=="nob" and not language=="sme" and not language=="eng" and not language=="fin": language="nob"
     if feedbacks:
         for f in feedbacks:
             msgs = f.messages.all()
@@ -697,7 +699,7 @@ class ContextMorfaQuestion(OahpaQuestion):
             
         # If the asked word is in Pl, generate nominal form
         if answer_tag_el.pos=="N":
-            if answer_tag_el.number=="Sg":
+            if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess":
                 self.lemma = answer_word_el.lemma
             else:
                 if Form.objects.filter(Q(word__pk=answer_word) & \
@@ -894,7 +896,9 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     #Interface language	
     if not language: language = "nob"
     if language == "no" : language = "nob"
-    if not language=="nob" and not language=="sme": language="nob"
+    if language == "fi" : language = "fin"
+    if language == "en" : language = "eng"
+    if not language=="nob" and not language=="sme" and not language=="fin" and not language=="eng": language="nob"
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
