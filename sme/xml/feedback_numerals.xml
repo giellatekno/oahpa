@@ -72,230 +72,36 @@ in-suffix
       <note></note>
  -->
   <stems>
-    <stem class="bisyllabic">
-      <msg>bisyllabic_stem</msg>
-    </stem>
-    <stem class="trisyllabic">
-      <msg>trisyllabic_stem</msg>
-    </stem>
-
-    <stem class="trisyllabic" gradation="no">
-      <msg>no_gradation</msg>
-      <note>gávccis, diftforenkling</note>
-    </stem>
-
-    <stem class="bisyllabic" diphthong="yes" soggi="i">
-      <msg case="Acc" number="Pl">diphthong_simplification</msg>
-      <msg case="Gen" number="Pl">diphthong_simplification</msg>
-      <msg case="Ill" number="Pl">diphthong_simplification</msg>
-      <msg case="Loc" number="Pl">diphthong_simplification</msg>
-      <msg case="Com" number="Sg">diphthong_simplification</msg>
-      <msg case="Com" number="Pl">diphthong_simplification</msg>
-      <note>guovttis, diftforenkling</note>
-    </stem>
-
-    <stem class="bisyllabic" diphthong="yes" soggi="e">
-      <msg case="Acc" number="Pl">diphthong_simplification</msg>
-      <msg case="Gen" number="Pl">diphthong_simplification</msg>
-      <msg case="Ill" number="Pl">diphthong_simplification</msg>
-      <msg case="Loc" number="Pl">diphthong_simplification</msg>
-      <msg case="Com" number="Sg">diphthong_simplification</msg>
-      <msg case="Com" number="Pl">diphthong_simplification</msg>
-      <note>njeallje, diftforenkling</note>
-    </stem>
-        
-
-    <stem diphthong="no" soggi="a">
-      <msg case="Ill" number="Sg">a_i</msg>
-      <note>golbma, a>i </note>
-    </stem>
-
-    <stem diphthong="yes" soggi="a">
-      <msg case="Ill" number="Sg">diphthong_simplification_and_a_i</msg>
-      <note>čieža, soggi + dift.for</note>
-    </stem>
-
-    <stem class="bisyllabic" soggi="i">
-      <msg case="Ill" number="Sg">i_á</msg>
-      <note>gávcci, i>á </note>
-    </stem>
-
-    <stem class="trisyllabic" soggi="i">
-      <msg case="Nom" number="Pl">i_á</msg>
-      <msg case="Acc" number="Sg">i_á</msg>
-      <msg case="Gen" number="Sg">i_á</msg>
-      <msg case="Ill" number="Sg">i_á</msg>
-      <msg case="Loc" number="Sg">i_á</msg>
-      <msg case="Com" number="Sg">i_á</msg>
-      <note>guovttis, i>á</note>
-    </stem>
-
-
-    <stem class="bisyllabic" gradation="strong">
-      <msg case="Nom" number="Pl">weak_grade</msg>
-      <msg case="Acc" number="Sg">weak_grade</msg>
-      <msg case="Gen" number="Sg">weak_grade</msg>
-      <msg case="Acc" number="Pl">weak_grade</msg>
-      <msg case="Gen" number="Pl">weak_grade</msg>
-      <msg case="Ill" number="Sg">strong_grade</msg>
-      <msg case="Ill" number="Pl">weak_grade</msg>
-      <msg case="Loc" number="Sg">weak_grade</msg>
-      <msg case="Loc" number="Pl">weak_grade</msg>
-      <msg case="Com" number="Sg">weak_grade</msg>
-      <msg case="Com" number="Pl">weak_grade</msg>
-      <msg case="Ess">strong_grade</msg>
-      <note>guokte, gradation</note>
-    </stem>
-
-    <stem class="bisyllabic" gradation="weak">
-      <msg case="Nom" number="Pl">weak_grade</msg>
-      <msg case="Acc" number="Sg">weak_grade</msg>
-      <msg case="Gen" number="Sg">weak_grade</msg>
-      <msg case="Acc" number="Pl">weak_grade</msg>
-      <msg case="Gen" number="Pl">weak_grade</msg>
-      <msg case="Ill" number="Sg">strong_grade</msg>
-      <msg case="Ill" number="Pl">weak_grade</msg>
-      <msg case="Loc" number="Sg">weak_grade</msg>
-      <msg case="Loc" number="Pl">weak_grade</msg>
-      <msg case="Com" number="Sg">weak_grade</msg>
-      <msg case="Com" number="Pl">weak_grade</msg>
-      <msg case="Ess">strong_grade</msg>
-      <note>čieža, gradation</note>
-    </stem>
-
-    <stem class="bisyllabic" gradation="extrastrong">
-      <msg case="Nom" number="Pl">weak_grade</msg>
-      <msg case="Acc" number="Sg">weak_grade</msg>
-      <msg case="Gen" number="Sg">weak_grade</msg>
-      <msg case="Acc" number="Pl">weak_grade</msg>
-      <msg case="Gen" number="Pl">weak_grade</msg>
-      <msg case="Ill" number="Sg">extra_strong_grade</msg>
-      <msg case="Ill" number="Pl">weak_grade</msg>
-      <msg case="Loc" number="Sg">weak_grade</msg>
-      <msg case="Loc" number="Pl">weak_grade</msg>
-      <msg case="Com" number="Sg">weak_grade</msg>
-      <msg case="Com" number="Pl">weak_grade</msg>
-      <msg case="Ess">extra_strong_grade</msg>
-      <note>guhtta, gradation</note>
-    </stem>
-
-    <stem class="trisyllabic" gradation="weak">
-      <msg case="Nom" number="Pl">strong_grade</msg>
-      <msg case="Acc" number="Sg">strong_grade</msg>
-      <msg case="Gen" number="Sg">strong_grade</msg>
-      <msg case="Acc" number="Pl">strong_grade</msg>
-      <msg case="Gen" number="Pl">strong_grade</msg>
-      <msg case="Ill" number="Sg">strong_grade</msg>
-      <msg case="Ill" number="Pl">strong_grade</msg>
-      <msg case="Loc" number="Sg">strong_grade</msg>
-      <msg case="Loc" number="Pl">strong_grade</msg>
-      <msg case="Com" number="Sg">strong_grade</msg>
-      <msg case="Com" number="Pl">strong_grade</msg>
-      <msg case="Ess">weak_grade</msg>
-      <note>guovttis, gradation</note>
-    </stem>
-
-    <stem class="trisyllabic" gradation="extraweak">
-      <msg case="Nom" number="Pl">extra_strong_grade</msg>
-      <msg case="Acc" number="Sg">extra_strong_grade</msg>
-      <msg case="Gen" number="Sg">extra_strong_grade</msg>
-      <msg case="Acc" number="Pl">extra_strong_grade</msg>
-      <msg case="Gen" number="Pl">extra_strong_grade</msg>
-      <msg case="Ill" number="Sg">extra_strong_grade</msg>
-      <msg case="Ill" number="Pl">extra_strong_grade</msg>
-      <msg case="Loc" number="Sg">extra_strong_grade</msg>
-      <msg case="Loc" number="Pl">extra_strong_grade</msg>
-      <msg case="Com" number="Sg">extra_strong_grade</msg>
-      <msg case="Com" number="Pl">extra_strong_grade</msg>
-      <msg case="Ess">weak_grade</msg>
-      <note>viđas, gradation</note>
-    </stem>
-
-
-    <stem soggi="e">
-      <msg case="Nom" number="Pl">e_i</msg>
-      <msg case="Acc" number="Pl">e_i</msg>
-      <msg case="Gen" number="Pl">e_i</msg>
-      <msg case="Ill" number="Sg">e_i</msg>
-      <msg case="Ill" number="Pl">e_i</msg>
-      <msg case="Loc" number="Pl">e_i</msg>
-      <msg case="Com" number="Sg">e_i</msg>
-      <msg case="Com" number="Pl">e_i</msg>
-      <note>njeallje, e>i</note>
-    </stem>
-
-    
-    <stem rime="is">
-      <msg case="Nom" number="Pl">ái_i</msg>
-      <msg case="Acc" number="Sg">is_á</msg>
-      <msg case="Gen" number="Sg">is_á</msg>
-      <msg case="Ill" number="Sg">is_á</msg>
-      <msg case="Loc" number="Sg">is_á</msg>
-      <msg case="Com" number="Sg">is_á</msg>
-      <note>guovttis rime</note>
-    </stem>
-    
-    
-    <stem rime="ái">
-      <msg case="Nom" number="Pl">ái_i</msg>
-      <msg case="Gen" number="Sg">ái_i</msg>
-      <msg case="Loc" number="Sg">ái_i</msg>
-      <msg case="Com" number="Sg">ái_i</msg>
-      <msg case="Ess">ái_i</msg>
-      <note>guoktenuppelohkái rime</note>
-    </stem>
-
-    <stem rime="š-ž">
-      <msg case="Acc" number="Sg">š_ž</msg>
-      <msg case="Gen" number="Sg">š_ž</msg>
-      <msg case="Ill" number="Sg">š_ž</msg>
-      <msg case="Loc" number="Sg">š_ž</msg>
-      <msg case="Com" number="Sg">š_ž</msg>
-      <msg case="Ess">š_ž</msg>
-      <note>ovtteš rime</note>
-    </stem>
- 
-     <stem rime="t-d">
-      <msg case="Acc" number="Sg">t_d</msg>
-      <msg case="Gen" number="Sg">t_d</msg>
-      <msg case="Ill" number="Sg">t_d</msg>
-      <msg case="Loc" number="Sg">t_d</msg>
-      <msg case="Com" number="Sg">t_d</msg>
-      <msg case="Ess">t_d</msg>
-      <note>goalmmát rime</note>
-    </stem>
 
     <stem class="bisyllabic">
-      <msg case="Nom" number="Pl">t-suffix</msg>
-      <msg case="Acc" number="Sg">no_suffix</msg>
-      <msg case="Gen" number="Sg">no_suffix</msg>
-      <msg case="Acc" number="Pl">id-suffix</msg>
-      <msg case="Gen" number="Pl">id-suffix</msg>
-      <msg case="Ill" number="Sg">i-suffix</msg>
-      <msg case="Ill" number="Pl">ide-suffix</msg>
-      <msg case="Loc" number="Sg">s-suffix</msg>
-      <msg case="Loc" number="Pl">in-suffix</msg>
-      <msg case="Com" number="Sg">in-suffix</msg>
-      <msg case="Com" number="Pl">iguin-suffix</msg>
-      <msg case="Ess">n-suffix</msg>
-      <note>guokte suffixes</note>
+      <msg case="Nom" number="Pl">Bis_NomPl</msg>
+      <msg case="Acc" number="Pl">Bis_AccPl</msg>
+      <msg case="Gen" number="Sg">Bis_GenSg</msg>
+      <msg case="Gen" number="Pl">Bis_GenPl</msg>
+      <msg case="Ill" number="Sg">Bis_IllSg</msg>
+      <msg case="Ill" number="Pl">Bis_IllPl</msg>
+      <msg case="Loc" number="Sg">Bis_LocSg</msg>
+      <msg case="Loc" number="Pl">Bis_LocPl</msg>
+      <msg case="Com" number="Sg">Bis_ComSg</msg>
+      <msg case="Com" number="Pl">Bis_ComPl</msg>
+      <msg case="Ess">Bis_Ess</msg>
     </stem>
 
-    <stem class="trisyllabic">
-      <msg case="Nom" number="Pl">at-suffix</msg>
-      <msg case="Acc" number="Sg">a-suffix</msg>
-      <msg case="Gen" number="Sg">a-suffix</msg>
-      <msg case="Acc" number="Pl">iid-suffix</msg>
-      <msg case="Gen" number="Pl">iid-suffix</msg>
-      <msg case="Ill" number="Sg">ii-suffix</msg>
-      <msg case="Ill" number="Pl">iidda-suffix</msg>
-      <msg case="Loc" number="Sg">is-suffix</msg>
-      <msg case="Loc" number="Pl">iin-suffix</msg>
-      <msg case="Com" number="Sg">iin-suffix</msg>
-      <msg case="Com" number="Pl">iguin-suffix</msg>
-      <msg case="Ess">in-suffix</msg>
-      <note>guovttis suffixes</note>
-    </stem>
+<!--    <stem class="trisyllabic">
+      <msg case="Nom" number="Pl">Tris_NomPl</msg>
+      <msg case="Acc" number="Sg">Tris_AccSg</msg>
+      <msg case="Acc" number="Pl">Tris_AccPl</msg>
+      <msg case="Gen" number="Sg">Tris_GenSg</msg>
+      <msg case="Gen" number="Pl">Tris_GenPl</msg>
+      <msg case="Ill" number="Sg">Tris_IllSg</msg>
+      <msg case="Ill" number="Pl">Tris_IllPl</msg>
+      <msg case="Loc" number="Sg">Tris_LocSg</msg>
+      <msg case="Loc" number="Pl">Tris_LocPl</msg>
+      <msg case="Com" number="Sg">Tris_ComSg</msg>
+      <msg case="Com" number="Pl">Tris_ComPl</msg>
+      <msg case="Ess">Tris_Ess</msg>
+    </stem> -->
+
 
   </stems>
 
