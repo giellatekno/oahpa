@@ -33,7 +33,8 @@ class Feedback_install:
             fm, created = Feedbackmsg.objects.get_or_create(msgid=mid)
             fm.save()
 
-            fmtext, created=Feedbacktext.objects.get_or_create(message=message,language=lang,feedbackmsg=fm)
+            fmtext, created=Feedbacktext.objects.get_or_create(language=lang,feedbackmsg=fm)
+            fmtext.message=message
             fmtext.save()
 
     def set_null(self):
@@ -86,17 +87,78 @@ class Feedback_install:
         for f in feedbacks:
             f.attrsuffix=""
             f.save()
+        feedbacks=Feedback.objects.filter(attributive='empty')
+        for f in feedbacks:
+            f.attributive=""
+            f.save()
     
     def insert_feedback(self,cursor,pos,stem,diphthong,gradation,rime,soggi,case,number,personnumber="empty",tense="empty",mood="empty",attributive="empty",grade="empty",attrsuffix="empty"):
         #print pos, stem, diphthong, gradation, rime, soggi,case,number,personnumber,tense,mood,grade
         
         cursor.execute("INSERT INTO oahpa.drill_feedback (pos,stem,diphthong,gradation,rime,soggi,case2,number,personnumber,tense,mood,attributive,grade,attrsuffix) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON DUPLICATE KEY UPDATE pos=%s", (pos,stem,diphthong,gradation,rime,soggi,case,number,personnumber,tense,mood,attributive,grade,attrsuffix,pos))
 
-    def read_feedback(self, infile):
+    def read_feedback(self, infile, wordfile):
 
         from django.db import connection
         print infile
+        print wordfile
 
+        wordfile=file(wordfile)
+        wordtree = _dom.parse(wordfile)
+
+        # Find out different values for variables.
+        # Others can be listed, but soggi is searched at the moment.
+        rimes={}
+        gradations={}
+        attrsuffixs={}
+        compsuffixs={}
+        soggis={}
+        for el in wordtree.getElementsByTagName("stem"):
+            if el.getAttribute("rime"):
+                rime = el.getAttribute("rime")
+                if rime=="0": rime = "norime"
+                rimes[rime] = 1
+            if el.getAttribute("gradation"):
+                gradation = el.getAttribute("gradation")
+                gradations[gradation] = 1
+            if el.getAttribute("attrsuffix"):
+                attrsuffix = el.getAttribute("attrsuffix")
+                if attrsuffix=="0": attrsuffix = "noattr"
+                attrsuffixs[attrsuffix] = 1
+            if el.getAttribute("compsuffix"):
+                compsuffix = el.getAttribute("compsuffix")
+                if compsuffix=="0": compsuffix = "nocomp"
+                compsuffixs[compsuffix] = 1
+            if el.getAttribute("soggi"):
+                soggi = el.getAttribute("soggi")
+                soggis[soggi] = 1
+		
+        soggis['empty'] = 1
+        attrsuffixs["noattr"] = 1
+        compsuffixs["empty"] = 1
+        rimes["norime"] = 1
+
+        diphthongs = ["yes","no"]
+        stems = ["bisyllabic","trisyllabic","contracted"]
+        grades = ["Comp","Superl","Pos"]
+        cases = ["Acc", "Gen", "Ill","Loc","Com","Ess","Nom"]
+        numbers = ["Sg","Pl"]
+        tenses = ["Prs","Prt"]
+        moods = ["Ind","Cond","Pot","Imprt"]
+        personnumbers = ["Sg1","Sg2","Sg3","Du1","Du2","Du3","Pl1","Pl2","Pl3"]
+
+        messages=[]
+        print rimes.keys()
+        print soggis.keys()
+        print gradations.keys()
+        print compsuffixs.keys()
+        print attrsuffixs.keys()
+        print grades
+        print cases
+        print numbers 
+        print diphthongs
+
+		
         xmlfile=file(infile)
         tree = _dom.parse(infile)
 
@@ -110,62 +172,12 @@ class Feedback_install:
         stem_messages = {}
         gradation_messages = {}
 
-        # Find out different values for variables.
-        # Others can be listed, but soggi is searched at the moment.
-        rimes={}
-        gradations={}
-        attrsuffixs={}
-        compsuffixs={}
-        #soggis={}
-        wordforms = tree.getElementsByTagName("stems")[0]
-        for el in wordforms.getElementsByTagName("stem"):
-            if el.getAttribute("rime"):
-                rime = el.getAttribute("rime")
-                if rime=="0": rime = "norime"
-                rimes[rime] = 1
-            if el.getAttribute("gradation"):
-                gradation = el.getAttribute("gradation")
-                gradations[gradation] = 1
-            if el.getAttribute("attrsuffix"):
-                attrsuffix = el.getAttribute("attrsuffix")
-                if attrsuffix=="0": rime = "noattr"
-                attrsuffixs[attrsuffix] = 1
-            if el.getAttribute("compsuffix"):
-                compsuffix = el.getAttribute("compsuffix")
-                if compsuffix=="0": rime = "nocomp"
-                compsuffixs[compsuffix] = 1
-
-        #    if el.getAttribute("soggi"):
-        #        soggi = el.getAttribute("soggi")
-        #        soggis[soggi] = 1
-
-        #soggis[""] = 1
-        #soggis = {}
-        #attrsuffixs = ['noattr','a','s','es','os','is','i>e','u>o']
-
-        soggis = ['i', 'a', 'u', 'e', 'o','empty']
-        attrsuffixs["noattr"] = 1
-        compsuffixs["empty"] = 1
-        rimes["norime"] = 1
-        diphthongs = ["yes","no"]
-        stems = ["bisyllabic","trisyllabic","contracted"]
-        #gradations = ["inv","no","yes","extrastrong"]
-        grades = ["Comp","Superl","Pos"]
-        cases = ["Acc", "Gen", "Ill","Loc","Com","Ess","Nom"]
-        numbers = ["Sg","Pl"]
-        tenses = ["Prs","Prt"]
-        moods = ["Ind","Cond","Pot","Imprt"]
-        personnumbers = ["Sg1","Sg2","Sg3","Du1","Du2","Du3","Pl1","Pl2","Pl3"]
-        if not gradations.has_key("no"):
-            gradations["no"] = 1
-	
-        messages=[]
-        print rimes.keys()
-        print soggis
-        print gradations.keys()
-        print grades
-        print cases
-        print numbers 
+        if pos=="V":
+            rimes["empty"] = 1	
+            diphthongs.append("empty")
+        if pos=="Num":
+            rimes["empty"] = 1	
+            diphthongs.append("empty")
 
         cursor = connection.cursor()                        
 
@@ -201,7 +213,7 @@ class Feedback_install:
             if el.getAttribute("soggi"):
                 soggi=el.getAttribute("soggi")
                 if soggi: ftempl.soggi = [ soggi ]
-            if not soggi: ftempl.soggi = soggis
+            if not soggi: ftempl.soggi = soggis.keys()
 
             if el.getAttribute("attrsuffix"):
                 attrsuffix=el.getAttribute("attrsuffix")
@@ -420,28 +432,29 @@ class Feedback_install:
                     for diphthong in f.diphthong:
                         for soggi in f.soggi:                                                           
                             for rime in f.rime:                                                           
-                                for personnumber in f.personnumber:
-                                    for tense in f.tense:
-                                        for mood in f.mood:
+                                for gradation in f.gradation:                                                           
+                                    for personnumber in f.personnumber:
+                                        for tense in f.tense:
+                                            for mood in f.mood:
                                         
-                                            self.insert_feedback(cursor,pos,stem,diphthong,gradation,rime,soggi,'empty','empty',personnumber,tense,mood)
-                                            f2 = Feedback.objects.get(stem=stem,\
-                                                                      diphthong=diphthong,\
-                                                                      gradation=gradation,\
-                                                                      soggi=soggi,\
-                                                                      tense=tense,\
-                                                                      pos=pos,\
-                                                                      rime=rime,\
-                                                                      mood=mood,\
-                                                                      personnumber=personnumber)
+                                                self.insert_feedback(cursor,pos,stem,diphthong,gradation,rime,soggi,'empty','empty',personnumber,tense,mood)
+                                                f2 = Feedback.objects.get(stem=stem,\
+																		  diphthong=diphthong,\
+																		  gradation=gradation,\
+																		  soggi=soggi,\
+																		  tense=tense,\
+																		  pos=pos,\
+																		  rime=rime,\
+																		  mood=mood,\
+																		  personnumber=personnumber)
 
-                                            if messages:
-                                                f2.messages.add(messages[0])
-                                            else : print "No messages found:", f.msgid
-                                            for d in dialects:
-                                                f2.dialects.add(d)
+                                                if messages:
+                                                    f2.messages.add(messages[0])
+                                                else : print "No messages found:", f.msgid
+                                                for d in dialects:
+                                                    f2.dialects.add(d)
 
-                                            f2.save()
+                                                f2.save()
         cursor.close()
         connection.close()
         self.set_null()
