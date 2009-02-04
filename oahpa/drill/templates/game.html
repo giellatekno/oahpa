@@ -96,11 +96,14 @@
       {% endifnotequal %}
     {% else %}
       {% ifequal form.error "error" %}
-      <img width="15" height="15" border="0" src="/oahpa/media/images/error.png"/>
       <!-- Feedback -->
           {% if form.feedback %}
 	   <div class='popupcontent' id='popup_{{ forloop.counter }}'>{{ form.feedback }}</div>
-	   <a href="#" onclick="showPopup(300,150,'popup_{{ forloop.counter }}');" ><font color="#093970"><small>{% trans "help" %}</small></font></a>
+	   <a href="#" onclick="showPopup(300,150,'popup_{{ forloop.counter }}');" >
+      <img width="15" height="15" border="0" src="/oahpa/media/images/error.png"/>
+<font color="#093970"><small>{% trans "help" %}</small></font></a>
+	  {% else %}
+      <img width="15" height="15" border="0" src="/oahpa/media/images/error.png"/>
 	  {% endif %}
 
       {% endifequal %}
@@ -164,12 +167,11 @@
 {% trans "Your score:" %} {{ score }}
 {% endif %}
 
-{% ifequal LANGUAGE_CODE "no" %}
+
 {% if comment %}
 <br/>
 {{ comment }}
 {% endif %}
-{% endifequal %}
 
 </td>
 </tr>
