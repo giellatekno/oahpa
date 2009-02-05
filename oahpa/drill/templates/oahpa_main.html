@@ -66,8 +66,8 @@ LEKSA</a>&nbsp;&nbsp;
 <p class="plain">{% trans "Words and translations" %}</p>
 </center>
 </td>
-
 </tr>
+
 <tr>
 <td class="header" width="200">
 <center>
@@ -79,8 +79,6 @@ MORFA-C</a>&nbsp;&nbsp;
 <p class="plain">{% trans "Morphology in sentential context" %}</p>
 </center>
 </td>
-
-
 <td class="header" width="200">
 <center>
 <div class="plainbackground">
@@ -91,7 +89,6 @@ SAHKA</a>&nbsp;&nbsp;
 <p class="plain">{% trans "Dialogue game" %}</p>
 </center>
 </td>
-
 <td class="header" width="200">
 <center>
 <div class="plainbackground">
@@ -103,26 +100,19 @@ NUMRA</a>&nbsp;&nbsp;
 </center>
 </td>
 </tr>
-<td>
-</td>
-<td>
-</td>
-</tr>
-</tr>
 </table>
 </td>
 </tr>
 </table>
-
-</div>
 </center>
-
+</div>
 
 <div id="rightbar">
-{% get_current_language as LANGUAGE_CODE %}
-<form action="/oahpa/i18n/setlang/" method="post" name="newlang">
 <table>
 <tr><td>
+
+{% get_current_language as LANGUAGE_CODE %}
+<form action="/oahpa/i18n/setlang/" method="post" name="newlang">
 {% trans "Interface language" %}
 <input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
 <select name="language" onChange="javascript:this.form.submit();">
@@ -151,10 +141,7 @@ NUMRA</a>&nbsp;&nbsp;
 <option value="fi">Suomi</option>
 {% endifequal %}
 </select>
-</td></tr>
-<tr><td>
-</td></tr>
-</table>
+
 </form>
 </td>
 </tr>
@@ -189,8 +176,9 @@ NUMRA</a>&nbsp;&nbsp;
 <td>
 <div class="plainbackground" >
 <a href="http://giellatekno.uit.no/oahpa/OAHPAveiledning.html">
-<img width="80" height="80" border="0" src="/oahpa/media/images/littleman.png"/><br/>
-<font size="0">Oahpaheaddji ja studeantta bagadus</font></a>
+<img width="80" height="80" border="0" src="/oahpa/media/images/littleman.png" alt="Documentation"/><br/>
+<font size="0">Oahpaheaddji ja studeantta bagadus</font>
+</a>
 </div>
 &nbsp;<br/>
 
@@ -205,12 +193,12 @@ NUMRA</a>&nbsp;&nbsp;
 <td><a href="http://giellatekno.uit.no/oahpa/index.html">OAHPA! birra</a><br/>&nbsp;</td>
 </tr>
 <tr>
-<td><a href="/oahpa/feedback/">{% trans 'Feedback' %}</td><br/>&nbsp;
+<td><a href="/oahpa/feedback/">{% trans 'Feedback' %}</a><br/>&nbsp;</td>
 </tr>
 <tr>
 <td>
 <center>
-<img width="50" height="50" src="/oahpa/media/images/LogoSamisk.jpg"/>
+<img width="50" height="50" src="/oahpa/media/images/LogoSamisk.jpg" alt="Universitetet i Tromsø"/>
 </center>
 </td>
 </tr>
@@ -218,7 +206,6 @@ NUMRA</a>&nbsp;&nbsp;
 </td>
 </tr>
 </table>
-</center>
 </div>
 
 <div id="copyright">
