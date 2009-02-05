@@ -1,10 +1,18 @@
 {% extends "game.html" %}
 {% load i18n %}
 
+{% block helpaddress %}
+{% ifequal LANGUAGE_CODE "no" %}
+<a href="http://giellatekno.uit.no/oahpa/numra.nno.html"
+{% else %}
+<a href="http://giellatekno.uit.no/oahpa/numra.html"
+{% endifequal %}
+{% endblock %}
+
 {% block navbar %}
 <div id="navbar">
 <img width="120" height="120" border="0" src="/oahpa/media/images/numra_big.png"/>
-<p class="bigheader">NUMRA</p>
+<div class="bigheader">NUMRA</div>
 
 <ul class="sidelist">
 <li class="selected">{% trans 'Cardinals' %}</li>
@@ -18,7 +26,9 @@
 {% block pagename %}/oahpa/numra/{% endblock %}
 
 {% block gamename %}{% endblock %}
-{% block instructions %}{% trans "Forms for numerals." %}{% endblock %}
+{% block instructions %}
+{% endblock %}
+
 
 {% block settings %}
 
