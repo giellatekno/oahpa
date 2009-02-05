@@ -1,10 +1,18 @@
 {% extends "game.html" %}
 {% load i18n %}
 
+{% block helpaddress %}
+{% ifequal LANGUAGE_CODE "no" %}
+<a href="http://giellatekno.uit.no/oahpa/leksa.nno.html"
+{% else %}
+<a href="http://giellatekno.uit.no/oahpa/leksa.html"
+{% endifequal %}
+{% endblock %}
+
 {% block navbar %}
 <div id="navbar">
 <img width="120" height="120" border="0" src="/oahpa/media/images/leksa_big.png"/>
-<p class="bigheader">LEKSA</p>
+<div class="bigheader">LEKSA</div>
 
 <ul class="sidelist">
 <li class="selected">{% trans 'Words' %}</li>
