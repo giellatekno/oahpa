@@ -55,12 +55,13 @@ while 1:
             if not data.lstrip().rstrip():
                 client_socket.close()
                 break
+            data2=data
             c = [";","<",">","*","|","`","&","$","!","#","(",")","[","]","{","}",":"]
             for a in c:
                 data = data.replace(a,'')
             if not data:
-                client_socket.close()
-                break								
+                client_socket.send(data2)
+                continue
             look.sendline(data)
             look.expect ('\r?\n\r?\n')
             result = look.before
