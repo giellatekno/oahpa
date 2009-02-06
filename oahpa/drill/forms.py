@@ -317,8 +317,9 @@ def get_feedback(self,word,tag,wordform,dialect,language):
         for f in feedbacks:
             msgs = f.messages.all()
             for m in msgs:
-                text = Feedbacktext.objects.filter(feedbackmsg=m,language=language)[0]
-                self.feedback = self.feedback + " " + text.message
+                if Feedbacktext.objects.filter(feedbackmsg=m,language=language).count()>0:
+                    text = Feedbacktext.objects.filter(feedbackmsg=m,language=language)[0]
+                    self.feedback = self.feedback + " " + text.message
         self.feedback = self.feedback.replace("WORDFORM", "\"" + wordform + "\"") 
         #print "FEEDBACK", self.feedback
 
@@ -809,7 +810,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
             lookup_client.send(w)
             cohort = lookup_client.recv(512)
 
-        if not cohort:
+        if not cohort or cohort == w:
             cohort = w + "\n"
 	
         analysis = analysis + cohort
