@@ -6,7 +6,7 @@
 <table>
 <tr>
 <td>
-Message:<br/>
+{% trans "Message:" %}<br/>
 {{ form.message }}
 </td>
 </tr>
@@ -20,24 +20,24 @@ Message:<br/>
 </tr>
 <tr>
 <td>
-Your name:<br/>
+{% trans "Your name:" %}<br/>
 {{ form.name }}
 </td>
 </tr>
 <tr>
 <td>
-Institution/language course:<br/>
+{% trans "Institution/language course:" %}<br/>
 {{ form.place }}
 </td></tr>
 <tr>
 <td>
-email:<br/>
+{% trans "email:" %}<br/>
 {{ form.email }}
 </td>
 </tr>
 <tr>
 <td>
-<p> I would like to be contacted about my question: {{ form.confirmation }}</p>
+<p>{% trans "I would like to be contacted about my question:" %} {{ form.confirmation }}</p>
    <input type="submit" name="test" value="{% trans "Send message" %}"/>
 
 </td>
