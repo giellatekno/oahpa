@@ -1,10 +1,11 @@
 {% load i18n %}
 {{ lang_switch }}
 {% get_available_languages as LANGUAGES %}
+{% get_current_language as LANGUAGE_CODE %}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
 <head>
     <title>{% block title %}{% endblock %}</title>
 
@@ -32,17 +33,18 @@ font-family: Arial Pro;
 
 }
 #centercontent {
+position:absolute;
 background:#fff;
-margin-left: 139px;
-margin-right:9px;
-padding: 20px;
+margin-left: 141px;
+margin-right:1px;
+top: 95px;
+padding: 10px;
 border: 1px solid #150517;
 font-family: Times;
-margin-left: 141px;
-margin-right:11px;
 margin-bottom: 1px;
 }
 body #centercontent {
+top: 95px;
 margin-left: 141px;
 margin-right:11px;
 }
@@ -55,13 +57,11 @@ width:120px;
 
 #banner {
 height:80px;
-height:80px;
 }
 html>body #banner {
 height:80px;
 }
 
-img { -ms-interpolation-mode:bicubic; }
 
 </style>
 
@@ -154,6 +154,7 @@ function scrollSahka(form) {
    window.scrollTo(0, scrollLoc);
    }				   
 }
+
 </script>
 {% block addcss %}{% endblock %}
 </head>
@@ -171,7 +172,7 @@ function scrollSahka(form) {
 <tr>
 <td>
 <a href="/oahpa/">
-<img border="0" width="200" height="60" src="/oahpa/media/images/Oahpa_logo0001.png" alt="OAHPA!"/></a>
+<img border="0" width="200" height="70" src="/oahpa/media/images/Oahpa_logo0001.png" alt="OAHPA!"/></a>
 </td>
 <td>
 <table cellspacing="0px" cellpadding="0px">
@@ -207,7 +208,8 @@ LEKSA</a>&nbsp;&nbsp;
 NUMRA</a>&nbsp;&nbsp;
 </td>
 <td>
-{% get_current_language as LANGUAGE_CODE %}
+
+{% comment %}
 {% ifequal LANGUAGE_CODE "sme" %}
 {% trans "Grammar" %}<br/>
 <form name="jump">
@@ -219,6 +221,7 @@ NUMRA</a>&nbsp;&nbsp;
 </select>
 </form>
 {% endifequal %}
+{% endcomment %}
 
 {% ifequal LANGUAGE_CODE "no" %}
 {% trans "Grammar" %}<br/>
@@ -241,15 +244,27 @@ NUMRA</a>&nbsp;&nbsp;
 </tr>
 </table>
 </div>
+</div>
 
 <div id="leftcontent">
 {% block navbar %}{% endblock %}
-<p>&nbsp;</p>
 {% comment %}
 <p>{% trans 'OAHPA is under development and may not function all the time.' %}</p>
 {% endcomment %}
-<p><a href="/oahpa/"><img border="0" width="60" src="/oahpa/media/images/Oahpa_logo0001.png" alt="OAHPA!"/><br/>{% trans 'Main page' %}</a><br/></p>
-<p><a href="/oahpa/feedback/">{% trans 'Feedback' %}</a><br/></p>
+<p><a href="/oahpa/">
+<img border="0" width="60" src="/oahpa/media/images/Oahpa_logo0001.png" alt="OAHPA!"/><br/>
+{% trans 'Main page' %}</a><br/>
+</p>
+<p>
+<div class="plainbackground" >
+{% block helpaddress %}{% endblock %}
+
+<img width="80" height="80" border="0" src="/oahpa/media/images/littleman.png" alt="Documentation"/><br/>
+<font size="0">{% trans "Oahpaheaddji ja studeantta bagadus" %}</font>
+</a>
+</div>
+&nbsp;<br/>
+<a href="/oahpa/feedback/">{% trans 'Feedback' %}</a><br/>
 
 </div>
 
@@ -267,7 +282,7 @@ NUMRA</a>&nbsp;&nbsp;
 </div>
 
 <div id="footer">
-  <a name="#bottom">&nbsp;</a> 
+  <a name="bottom">&nbsp;</a> 
 
 <p>&nbsp;</p>
 </div>
