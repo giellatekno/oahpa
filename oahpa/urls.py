@@ -2,13 +2,14 @@ from django.conf.urls.defaults import *
 from django.contrib import admin
 admin.autodiscover()
 
+
 urlpatterns = patterns('',
     (r'^oahpa/i18n/', include('django.conf.urls.i18n')),
     (r'^oahpa/media/(?P<path>.*)$', 'django.views.static.serve',
                         {'document_root': '/Users/saara/ped/oahpa/media'}),
     (r'^oahpa/dialect/$', 'oahpa.conf.views.dialect'),
     (r'^oahpa/$', 'oahpa.drill.views.oahpa'),
-    (r'^visl/$', 'oahpa.drill.views.visl'),
+    (r'^oahpa/visl/$', 'oahpa.drill.views.visl'),
     (r'^oahpa/morfa/$', 'oahpa.drill.views.mgame_n'),
     (r'^oahpa/morfa_s/$', 'oahpa.drill.views.mgame_n'),
     (r'^oahpa/morfa_v/$', 'oahpa.drill.views.mgame_v'),
