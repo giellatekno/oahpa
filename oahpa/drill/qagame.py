@@ -53,8 +53,9 @@ class QAGame(Game):
         if word_count > 0:
             word = Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(dialects__dialect=dialect) &\
                                        Q(form__tag=tag_el.id))[randint(0,word_count-1)]
-            form = word.form_set.filter(Q(tag=tag_el.id) & Q(dialects__dialect=dialect))[0]                                         
-            if not form: return None
+            if word.form_set.filter(Q(tag=tag_el.id) & Q(dialects__dialect=dialect)).count()>0:
+                form = word.form_set.filter(Q(tag=tag_el.id) & Q(dialects__dialect=dialect))[0] 
+            else: return None
 
         else: return None
 		
@@ -89,6 +90,8 @@ class QAGame(Game):
 
             info = {'word': word.id, 'tag' : tag_el.id, 'fullform' : [ fullform ] }
             words.append(info)                    
+        else:
+            if self.test: raise Http404("not word " + str(qelement.id))			
 
         return words
 
@@ -118,7 +121,7 @@ class QAGame(Game):
 
         # Handle all grammatical elements one at the time
         # 1. SUBJ-MAINV argreement
-        #if self.test: raise Http404(qwords_list)
+        #if self.test: raise Http404(question.id,qwords_list)
 
         if 'SUBJ' in set(qwords_list):
             
@@ -127,6 +130,8 @@ class QAGame(Game):
             # Select randomly an element, if there are more than one available.
             # This way there is only one subject and tag for each question.
             subj_elements=self.get_elements(question, 'SUBJ')
+            if not subj_elements:
+                return None
             subj_el = subj_elements[randint(0, len(subj_elements)-1)]
             tag_el_count = subj_el.tags.count()
 
@@ -150,7 +155,7 @@ class QAGame(Game):
                 info = self.get_qword(subj_el, tag_el)
 
             if not info:
-                if self.test: raise Http404("not info " + qwords_list)
+                if self.test: raise Http404("not info " + " ".join(qwords_list))
                 return None
             
             subjword = info
@@ -196,14 +201,14 @@ class QAGame(Game):
                 mainv_word = info
 
                 if not mainv_word:
-                    if self.test: raise Http404("not mainv_word " + qwords_list)
+                    if self.test: raise Http404("not mainv_word " + " ".join(qwords_list) + " " + question.qid)
                     return None
                 else:
                     mainv_word['number'] = tag_el.personnumber
                     qwords['MAINV'] = mainv_word
 
             if not mainv_word:
-                if self.test: raise Http404("not mainv" + " " + qwords_list)
+                if self.test: raise Http404("not mainv" + " " + " ".join(qwords_list))
                 return None
                 
 
@@ -536,6 +541,7 @@ class QAGame(Game):
             if pos == "A":
                 qtype=self.settings['adj_context']
 
+        books=None
         if self.settings.has_key('book'): books=self.settings['book']
         if books:    
             q_count=Question.objects.filter(Q(qtype=qtype) & \
