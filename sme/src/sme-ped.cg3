@@ -6031,14 +6031,14 @@ LIST SUVLI = "vuodja" "vuostá" "muorje#meastu" "vuoivvas#meastu" "luome#meastu"
 #LIST OFFERS = gintalat  gohput rátnu speajal ruskalihtti govva ;
 LIST OFFERS = "ginttal" "gohppu" "rátnu" "speajal" "ruska#lihtti" "govva" ;
 
-LIST VIESSOGALVVUT-Q = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_lahttelamppa gosa_bidjat_lohkanlamppa gosa_bidjat_soffa gosa_bidjat_lahtteranu gosa_bidjat_speadjala ;  
+LIST VIESSOGALVVUT-Q = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_lahttelamppa gosa_bidjat_lohkanlamppa gosa_bidjat_soffa gosa_bidjat_lahtteranu gosa_bidjat_speadjala ; 
 
-#LIST VIESSOGALVVUT-NOT-WC = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_lahttelamppa gosa_bidjat_lohkanlamppa gosa_bidjat_soffa ;  
-
+LIST NOT-ACC-ROOM = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_speadjala gosa_bidjat_lahttelamppa gosa_bidjat_lohkanlamppa gosa_bidjat_soffa ;  
+ 
 # Question according to wordlists:
 MAP (&sem-not_wordlist) TARGET QDL IF (0 VIESSOGALVVUT-Q)(*1 (&dia-target) BARRIER Neg LINK NOT 0 ROOMS)  ;
 
-#MAP (&dia-not_wc) TARGET QDL IF (0 VIESSOGALVVUT-NOT-WC)(*1 (&dia-target) BARRIER Neg LINK 0 ("hivsset"))  ;
+MAP (&dia-hivsset) TARGET QDL IF (0 NOT-ACC-ROOM)(*1 (&dia-target) BARRIER Neg LINK 0 ("hivsset") OR ("basadan#latnja"))  ;
 
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (Maid_juhkat))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
 
