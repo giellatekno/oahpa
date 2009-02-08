@@ -6,7 +6,7 @@ import re
 from django import forms
 from django.http import Http404
 from django.db.models import Q
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext_lazy as _
 from django.utils.encoding import force_unicode
 from random import randint
 from models import *
