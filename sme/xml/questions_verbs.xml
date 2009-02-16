@@ -33,7 +33,7 @@
   </q> 
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
-  <q id="prs1">
+<!--  <q id="prs1">
     <qtype>PRS</qtype>
     <question>
       <text>Maid SUBJ MAINV odne</text>
@@ -57,6 +57,42 @@
 	<sem class="ACTIVITY"/>
       </element>
     </answer> 
+  </q> -->
+
+  <q id="prs1sg">
+    <qtype>PRS</qtype>
+    <question>
+      <text>Maid SUBJ bargá odne</text>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Sg+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Odne son MAINV</text>
+      <element game='morfa' id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prs+Sg3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer> 
+  </q>
+
+  <q id="prs1pl">
+    <qtype>PRS</qtype>
+    <question>
+      <text>Maid SUBJ barget odne</text>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Pl+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Odne sii MAINV</text>
+      <element game='morfa' id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prs+Pl3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer> 
   </q>
 
 
@@ -67,16 +103,12 @@
     <question>
       <text>Maid NOUN -guovttos bargaba odne</text>
       <element id="NOUN">
-	<sem class="HUMAN"/>
+	<sem class="PAIR"/>
 	<grammar tag="N+Sg+Gen"/>
       </element>
     </question>
     <answer> 
-      <text>Odne SUBJ MAINV</text>
-      <element id="SUBJ">
-	<grammar tag="Pron+Pers+Du3+Nom"/>
-	<id>son</id>
-      </element>
+      <text>Odne soai MAINV</text>
       <element id="MAINV" task="yes">
 	<grammar tag="V+Ind+Prs+Du3"/>
 	<sem class="ACTIVITY"/>
@@ -112,7 +144,7 @@
   </q> 
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
-  <q id="prt1">
+<!--  <q id="prt1">
     <qtype>PRT</qtype>
     <question>
       <text>Maid SUBJ MAINV ikte</text>
@@ -136,7 +168,47 @@
 	<sem class="ACTIVITY"/>
       </element>
     </answer>
+  </q> -->
+  
+   <q id="prt1sg">
+    <qtype>PRT</qtype>
+    <question>
+      <text>Maid SUBJ barggai ikte</text>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Sg+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Ikte son MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element game='morfa' id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prt+Sg3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
   </q>
+
+  <q id="prt1pl">
+    <qtype>PRT</qtype>
+    <question>
+      <text>Maid SUBJ barge ikte</text>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Pl+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Ikte sii MAINV</text>
+      <element game='morfa' id="MAINV" task="yes">
+	<grammar tag="V+Ind+Prt+Pl3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+ 
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
   <q id="prt2">
@@ -144,16 +216,12 @@
     <question>
       <text>Maid NOUN -guovttos barggaiga ikte</text>
       <element id="NOUN">
-	<sem class="HUMAN"/>
+	<sem class="PAIR"/>
 	<grammar tag="N+Sg+Gen"/>
       </element>
     </question>
     <answer> 
-      <text>Ikte SUBJ MAINV</text>
-      <element id="SUBJ">
-	<grammar tag="Pron+Pers+Du3+Nom"/>
-	<id>son</id>
-      </element>
+      <text>Ikte soai MAINV</text>
       <element id="MAINV" task="yes">
 	<grammar tag="V+Ind+Prt+Du3"/>
 	<sem class="ACTIVITY"/>
@@ -188,7 +256,7 @@
   </q>
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be ACTIVITY, but any verb: -->
-  <q id="vcond1">
+<!--  <q id="vcond1">
     <qtype>V-COND</qtype>
     <question>
       <text>Maid SUBJ MAINV luomus</text>
@@ -213,6 +281,41 @@
 	<agreement id="MAINV"/>
       </element>
     </answer>
+  </q> -->
+  
+  <q id="vcond1sg">
+    <qtype>V-COND</qtype>
+    <question>
+      <text>Maid SUBJ barggašii luomus</text>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Sg+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Luomus son V-COND</text>
+      <element game='morfa' id="V-COND" task="yes">
+	<grammar tag="V+Cond+Prs+Sg3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
+  </q>
+  <q id="vcond1pl">
+    <qtype>V-COND</qtype>
+    <question>
+      <text>Maid SUBJ barggašedje luomus</text>
+      <element id="SUBJ">
+	<sem class="HUMAN"/>
+	<grammar tag="N+Pl+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Luomus sii V-COND</text>
+      <element game='morfa' id="V-COND" task="yes">
+	<grammar tag="V+Cond+Prs+Pl3"/>
+	<sem class="ACTIVITY"/>
+      </element>
+    </answer>
   </q>
 
 
@@ -222,16 +325,12 @@
     <question>
       <text>Maid NOUN -guovttos barggašeigga luomus</text>
       <element id="NOUN">
-	<sem class="HUMAN"/>
+	<sem class="PAIR"/>
 	<grammar tag="N+Sg+Gen"/>
       </element>
     </question>
     <answer> 
-      <text>Luomus SUBJ V-COND</text>
-      <element id="SUBJ">
-	<grammar tag="Pron+Pers+Du3+Nom"/>
-	<id>son</id>
-      </element>
+      <text>Luomus soai V-COND</text>
       <element id="V-COND" task="yes" content="MAINV">
 	<grammar tag="V+Cond+Prs+Du3"/>
 	<sem class="ACTIVITY"/>
@@ -241,7 +340,7 @@
 
 <!--- ==========  Potential , only for Morfa =========   -->
 
-<q  id="vpot0">
+<!-- <q  id="vpot0">
     <qtype>V-POT</qtype>
   <question>
     <text>MAINV go SUBJ</text>
@@ -261,7 +360,48 @@
 	<agreement id="MAINV"/>
       </element>
     </answer>
-  </q>
+  </q> -->
+
+<q  id="vpot0sg">
+    <qtype>V-POT</qtype>
+  <question>
+    <text>MAINV go SUBJ</text>
+    <element id="MAINV">
+      <grammar tag="V+Ind+Prs+Sg3"/>
+      <sem class="ACTIVITY"/>
+    </element>
+    <element id="SUBJ">
+      <sem class="HUMAN"/>
+      <grammar tag="N+Sg+Nom"/>
+    </element>
+  </question>
+  <answer> 
+    <text>In dieđe V-POT go</text>
+      <element game='morfa' id="V-POT" content="MAINV" task="yes">
+	<grammar tag="V+Pot+Prs+Sg3"/>
+      </element>
+    </answer>
+  </q>  
+<q  id="vpot0pl">
+    <qtype>V-POT</qtype>
+  <question>
+    <text>MAINV go SUBJ</text>
+    <element id="MAINV">
+      <grammar tag="V+Ind+Prs+Pl3"/>
+      <sem class="ACTIVITY"/>
+    </element>
+    <element id="SUBJ">
+      <sem class="HUMAN"/>
+      <grammar tag="N+Pl+Nom"/>
+    </element>
+  </question>
+  <answer> 
+    <text>In dieđe V-POT go</text>
+      <element game='morfa' id="V-POT" content="MAINV" task="yes">
+	<grammar tag="V+Pot+Prs+Pl3"/>
+      </element>
+    </answer>
+  </q>  
 
 <q  id="vpot1">
     <qtype>V-POT</qtype>
