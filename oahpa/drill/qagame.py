@@ -92,6 +92,7 @@ class QAGame(Game):
             words.append(info)                    
         else:
             if self.test: raise Http404("not word " + str(qelement.id))			
+            return []
 
         return words
 
@@ -194,6 +195,9 @@ class QAGame(Game):
                     else:
                         mainv_tag_count = mainv_el.tags.count()
                         mainv_tags = mainv_el.tags.all()
+                    if not mainv_tags:
+                        if self.test: raise Http404("not mainv_tags " + " ".join(qwords_list) + " " + question.qid)
+                        return None						
                     tag_el = mainv_tags[randint(0, mainv_tags.count()-1)]
 
                 # Select random mainverb
@@ -487,11 +491,14 @@ class QAGame(Game):
                 tag_elements = element.tags.all()
                 
         # Take word forms for all tags
+        info=None
         for tag_el in tag_elements:                    
             if not word_id:
                 info = self.get_qword(element, tag_el)
             else:
-                info = { 'qelement' : element.id, 'word' : word_id, 'tag' : tag_el.id  }
+                form_list = Form.objects.filter(Q(tag=tag_el.id) & Q(word=word_id))
+                if form_list:
+                    info = { 'qelement' : element.id, 'word' : word_id, 'tag' : tag_el.id  }
             if not info:
                 if self.test: raise Http404("not info " + question.id)
                 return None
@@ -617,7 +624,7 @@ class QAGame(Game):
                 if not awords.has_key(s):
                     if self.test: raise Http404("problem2" + s)
                     return "error"
-                    
+
         db_info['answer_id'] = answer.id
         db_info['awords'] = awords
         return db_info
@@ -637,6 +644,7 @@ class QAGame(Game):
                 qwords = None
                 qwords= self.generate_question(question, qtype)
                 db_info['qwords'] = qwords
+
             # If no default information select question
             else:
                 if not self.gametype == "qa":
