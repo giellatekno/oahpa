@@ -121,7 +121,7 @@ class Game:
 
                     db_info[d] = value
 
-
+            
             for syntax in qwords.keys():
                 if qwords[syntax].has_key('fullform'):
                     qwords[syntax]['fullform'] = [ qwords[syntax]['fullform']]
@@ -149,7 +149,8 @@ class Game:
             if not new_db_info:
                 new_db_info = db_info
             form, word_id = self.create_form(new_db_info, n, data)
-            self.form_list.append(form)
+            if form:
+                self.form_list.append(form)
                 
     def get_score(self, data):
 
@@ -306,6 +307,8 @@ class BareGame(Game):
 
         dialect = self.settings['dialect']
         language = self.settings['language']
+        if not db_info.has_key('word_id'):
+            return None, None			
         word_id = db_info['word_id']
         tag_id = db_info['tag_id']
 
@@ -452,7 +455,7 @@ class QuizzGame(Game):
             word_id=random_word.id
             translations=random_word.translations.all()
             
-            if translations:
+            if translations.count()>0:
                 db_info['word_id'] = word_id
                 db_info['question_id'] = ""
                 return db_info
@@ -489,6 +492,7 @@ class QuizzGame(Game):
                 correct = dial_trans[0].lemma
 
         if not correct: correct = word.translations.all()[0].lemma
+
         question_list=[]
         
         form = (QuizzQuestion(self.settings['transtype'], word, correct, tr_lemmas, question_list, db_info['userans'], db_info['correct'], data, prefix=n))
