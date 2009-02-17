@@ -113,13 +113,14 @@ class Words:
             for el in elements:
                 sem=el.getAttribute("class")
                 if sem:
+                    print sem					
                     # Add semantics entry if not found.
                     # Leave this if DTD is used.
                     sem_entry, created = Semtype.objects.get_or_create(semtype=sem)
                     if created:
                         print "Created semtype entry with name ", sem
-                        w.semtype.add(sem_entry)
-                        w.save()        
+                    w.semtype.add(sem_entry)
+                    w.save()        
 
     def add_sources(self,e,w):
         sources = e.getElementsByTagName("sources")[0]
@@ -157,6 +158,7 @@ class Words:
         geography=""
         only_sg = 0
         only_pl = 0
+        noleksa = 0
         print lemma
         if e.getElementsByTagName("forms"):
             forms=e.getElementsByTagName("forms")[0]
@@ -188,6 +190,8 @@ class Words:
             only_sg = 1
         if e.getElementsByTagName("only-pl"):
             only_pl = 1
+        if e.getElementsByTagName("noleksa"):
+            noleksa = 1
 
         if e.getElementsByTagName("valency"):
             valencies = e.getElementsByTagName("valency")[0]
@@ -277,7 +281,11 @@ class Words:
         if only_pl:
             print "deleting singular forms for", w.lemma
             Form.objects.filter(Q(word=w.id) & Q(tag__number="Sg")).delete
- 				
+        if noleksa:
+            print "word not in leksa", w.lemma
+            w.leksa=0
+        else:
+            w.leksa=1
 
         if e.getElementsByTagName("sources"):
             self.add_sources(e,w)
