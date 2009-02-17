@@ -6,7 +6,7 @@ import re
 from django import forms
 from django.http import Http404
 from django.db.models import Q
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
 from random import randint
 from models import *
@@ -37,7 +37,7 @@ CASE_CONTEXT_CHOICES = (
     ('N-ACC', _('accusative')),
     ('N-ILL', _('illative')),
     ('N-LOC', _('locative')),
-#    ('N-COM', _('comitative')),
+    ('N-COM', _('comitative')),
     ('N-ESS', _('essive')),
 )
 
@@ -492,7 +492,7 @@ class QuizzQuestion(OahpaQuestion):
         oo = "å "
         
         if word.pos == 'V' and transtype=="nobsme":
-            self.lemma = oo.decode('utf-8') + self.lemma
+            self.lemma = oo.decode('utf-8') + force_unicode(self.lemma)
 
         self.is_correct("leksa", self.lemma)
 
@@ -700,7 +700,7 @@ class ContextMorfaQuestion(OahpaQuestion):
             
         # If the asked word is in Pl, generate nominal form
         if answer_tag_el.pos=="N":
-            if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess":
+            if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess" or qtype=="N-NOM-PL":
                 self.lemma = answer_word_el.lemma
             else:
                 if Form.objects.filter(Q(word__pk=answer_word) & \
@@ -765,13 +765,13 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     #cg3 = "/usr/local/bin/vislcg3"
     #preprocess = " | /Users/saara/gt/script/preprocess "
     #dis_bin = "/Users/saara/ped/sme/src/sme-ped.cg3"
-
+	
     fstdir = "/opt/smi/sme/bin"
     lookup2cg = " | lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /usr/local/bin/preprocess "
-    #dis_bin = "/opt/smi/sme-ped.cg3"
-    dis_bin = "/opt/smi/sme/bin/sme-ped.bin"
+    dis_bin = "/opt/smi/sme/bin/sme-ped.cg3"
+    #dis_bin = "/opt/smi/sme/bin/sme-ped.bin"
 
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
 
@@ -831,9 +831,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
         analysis3=c + analyzed + c
 
     analysis = analysis + analyzed
-
     analysis = analysis.rstrip()
-
     analysis = analysis.replace("\"","\\\"")
 
     ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
