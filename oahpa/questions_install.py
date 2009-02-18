@@ -108,10 +108,11 @@ class Questions:
         for i in ids:
             word_id = i.firstChild.data
             if word_id:
+                print "found word", word_id
                 # Add pos information here!
                 word_elements = Word.objects.filter(Q(wordid=word_id))
                 if not word_elements:
-                    print "Word not found! " + word_id            
+                    print "Word not found! " + word_id
                     
         # Search for existing semtype
         # Semtype overrides the word id selection
@@ -311,6 +312,10 @@ class Questions:
         for q in tree.getElementsByTagName("q"):
 
             qid = q.getAttribute('id')
+            if not qid:
+                print "ERROR Missing question id, stopping."
+                exit()
+            print qid.encode('utf-8')
             level = q.getAttribute('level')
             if not level: level="1"
 
