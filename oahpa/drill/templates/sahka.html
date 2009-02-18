@@ -121,6 +121,15 @@ margin-right:11px;
 {% block name %}Sahka{% endblock %}
 {% block pagename %}/oahpa/sahka/{% endblock %}
 {% block settings %}
+
+{% if forms %}
+<tr><td>
+<p>{% trans "Answer to the questions with full sentences. Remember big initial letter in placenames." %}</p>
+<hr/>
+</td></tr>
+{% endif %}
+
+
 {% if not forms %}
 
 <table width="700">
@@ -184,6 +193,7 @@ margin-right:11px;
 {% endblock %}
 
 {% block question %}
+
 {% if forms %}
 {% if form.utterance %}
 <td>{{ form.utterance }}</td>
