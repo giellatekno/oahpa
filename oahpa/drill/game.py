@@ -192,7 +192,7 @@ class Game:
 class BareGame(Game):
 
     casetable = {'NOMPL' : 'Nom', 'ATTR':'Attr', 'N-ILL':'Ill', 'N-ESS':'Ess', 'N-GEN':'Gen', \
-                 'N-LOC':'Loc', 'N-ACC':'Acc', 'N-COM':'Com'}
+				 'N-LOC':'Loc', 'N-ACC':'Acc', 'N-COM':'Com'}
 
     def get_baseform(self, word_id, tag):
 
@@ -235,16 +235,19 @@ class BareGame(Game):
             books=self.settings['book']
         if self.settings.has_key('adjcase'):
             adjcase=self.settings['adjcase']
+        if self.settings.has_key('num_bare'):
+            num_bare=self.settings['num_bare']
         if self.settings.has_key('grade'):
             grade=self.settings['grade']
 
         if pos == "N":
             case = self.casetable[case]
         else:
-            if pos=="A" or pos== "Num":
+            if pos=="A":
                 case = self.casetable[adjcase]
             else:
-                case = ""
+                if pos=="Num":
+                    case = self.casetable[num_bare]
         
         if pos == "V" and self.settings.has_key('vtype'):
             if self.settings['vtype'] == "PRS":
