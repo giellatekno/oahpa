@@ -77,6 +77,14 @@ NUM_CONTEXT_CHOICES = (
 #    ('COLL-NUM', _('collective')),
 )
 
+NUM_BARE_CHOICES = (
+    ('NOMPL', _('plural')),
+    ('N-ACC', _('accusative')),
+    ('N-ILL', _('illative')),
+    ('N-LOC', _('locative')),
+    ('N-COM', _('comitative')),
+)
+
 
 VTYPE_CHOICES = (
     ('PRS', _('present')),
@@ -261,6 +269,10 @@ def set_settings(self):
     for b in NUM_CONTEXT_CHOICES:
         self.allnum_context.append(b[0])                
 
+    self.allnum_bare = []
+    for b in NUM_BARE_CHOICES:
+        self.allnum_bare.append(b[0])                
+
 def get_feedback(self,word,tag,wordform,dialect,language):
         
     feedbacks=None
@@ -332,10 +344,12 @@ class OahpaSettings(forms.Form):
                              'syll' : ['bisyllabic'], 'book' : 'all', \
                              'case': 'N-ILL', 'pos' : 'N', \
                              'vtype' : 'PRS', \
-                             'adjcase' : 'ATTR', 'grade' : 'POS', \
+                             'adjcase' : 'ATTR',
+                             'grade' : 'POS', \
                              'case_context' : 'N-ILL', \
                              'vtype_context' : 'PRS', \
                              'num_context' : 'NUM-ATTR', \
+                             'num_bare' : 'N-ILL', \
                              'adj_context' : 'ATTRPOS'}
 
         # Link to grammatical explanation for each page
@@ -381,6 +395,7 @@ class MorfaSettings(OahpaSettings):
     case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
     adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)
     vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
+    num_bare = forms.ChoiceField(initial='N-ILL', choices=NUM_BARE_CHOICES, widget=forms.Select)
     num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
     case_context = forms.ChoiceField(initial='N-ILL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
     adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
