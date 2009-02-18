@@ -71,7 +71,6 @@ class Gameview:
         count=0
         correct=0
 
-
         if request and request.method == 'POST':
             data = request.POST.copy()
             #print request.POST
@@ -86,7 +85,7 @@ class Gameview:
                 self.settings['language'] = request.session['django_language']
             else:
                 self.settings['language'] = request.COOKIES.get("django_language", None)
-				                
+				
             self.syll_settings(settings_form)
             if settings_form.data.has_key('book'):
                 self.settings['book'] = settings_form.books[settings_form.data['book']]
@@ -150,7 +149,7 @@ class Gameview:
                 self.settings['gamename'] = self.gamenames[self.settings['case_context']]
         if self.settings['pos'] == "Num":
             if self.settings['gametype'] == "bare":
-                self.settings['gamename'] = self.gamenames[self.settings['adjcase']]
+                self.settings['gamename'] = self.gamenames[self.settings['num_bare']]
             else:
                 self.settings['gamename'] = self.gamenames[self.settings['num_context']]                
         if self.settings['pos'] == "V":
@@ -164,7 +163,6 @@ class Gameview:
             else:
                 self.settings['gamename'] = self.gamenames[self.settings['adj_context']]
 
-
         c = RequestContext(request, {
             'settingsform': settings_form,
             'settings' : self.settings,
@@ -174,6 +172,7 @@ class Gameview:
             'comment': game.comment,
             'all_correct': game.all_correct,
             'show_correct': game.show_correct,
+			'language' : self.settings['language'],
             })
         return c
 
@@ -184,6 +183,13 @@ def oahpa(request):
         'jee': "joku arvo",
         })
     return render_to_response('oahpa_main.html', c, context_instance=RequestContext(request))
+
+def updating(request):
+
+    c = RequestContext(request, {
+        'jee': "joku arvo",
+        })
+    return render_to_response('updating.html', c, context_instance=RequestContext(request))
 
 def visl(request):
 
@@ -547,7 +553,10 @@ class Numview(Gameview):
             game = NumGame(self.settings)
             game.new_game()
 
-
+        #numstring=0
+        #if game.form_list[0].has_key('numstring'):
+        #    numstring=1
+			
         c = Context({
             'settingsform': settings_form,
             'forms': game.form_list,
@@ -556,6 +565,7 @@ class Numview(Gameview):
             'comment': game.comment,
             'all_correct': game.all_correct,
             'show_correct': game.show_correct,
+         #   'numstring': numstring,
             })
         return c
 
