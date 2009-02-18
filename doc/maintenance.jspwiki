@@ -1,7 +1,7 @@
 !!!Maintenance
 
 This document contains the basic instructions for updating the content
-of the games. Technical maintenance is described in separate
+of the games on victorio. Technical maintenance is described in separate
 document.
 
 All the data is stored in xml-files which are installed to mysql
@@ -12,6 +12,7 @@ retrieved from the database.
 Everyday maintentance consists of updating the information in the
 database and editing the html-code.
 
+All the commands described in this document have to be run in victorio.
 
 !!HTML
 
@@ -102,7 +103,7 @@ python install.py -f ../sme/xml/nouns.xml
 Forms and tags are updated when the tagfile and paradigmfile are given
 as well:
 {{{
-python install.py -f ../sme/xml/nouns.xml -p ../sme/src/paradigms.txt -t ../sme/src/tags.txt
+python install.py -f ../sme/xml/nouns.xml -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt
 }}}
 This command generates paradigm for all the words in nouns.xml and
 updates forms for both dialects: KJ and GG. Running the script may
@@ -200,6 +201,25 @@ string. However, the deletion with the string may be useful if the qid
 was forgotten. Rerun of the installation script for the question file
 will restore the accidentally deleted questions.
 
+!!Feedback
+
+Install first the feedback messages, preferably for all languages:
+{{{
+python install.py -m ../sme/xml/messages.xml
+python install.py -m ../sme/xml/messages.sme.xml
+}}}
+After that, install the feedback files for each pos. This may take
+some time, even hours, especially for nouns and adjectives.
+{{{
+python install.py -e ../sme/xml/feedback_verbs.xml
+..
+}}}
+
+You may update the content of the feedback messages, or add new
+languages without installing the feedback again. However, new feedback
+messages as well as new ids require reinstallation of the releveant
+feedback files. Vice versa, changes in the feedback file do not
+require reinstallation of the messages.
 
 !!Sahka
 
@@ -261,6 +281,7 @@ Copy the file sme-ped.cg3 to /opt/smi/sme/bin.
 There is a Makefile as well.
 
 !!Other
+
 
 !Comments
 In the drills, a comment is displayed after the user presses "Show
