@@ -85,6 +85,10 @@ NUM_BARE_CHOICES = (
     ('N-COM', _('comitative')),
 )
 
+NUM_LEVEL_CHOICES = (
+    ('1', _('First level')),
+    ('2', _('Second level')),
+)
 
 VTYPE_CHOICES = (
     ('PRS', _('present')),
@@ -349,6 +353,7 @@ class OahpaSettings(forms.Form):
                              'case_context' : 'N-ILL', \
                              'vtype_context' : 'PRS', \
                              'num_context' : 'NUM-ATTR', \
+                             'num_level' : '1', \
                              'num_bare' : 'N-ILL', \
                              'adj_context' : 'ATTRPOS'}
 
@@ -396,6 +401,7 @@ class MorfaSettings(OahpaSettings):
     adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)
     vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
     num_bare = forms.ChoiceField(initial='N-ILL', choices=NUM_BARE_CHOICES, widget=forms.Select)
+    num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
     num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
     case_context = forms.ChoiceField(initial='N-ILL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
     adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
