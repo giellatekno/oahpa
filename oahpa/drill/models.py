@@ -36,6 +36,7 @@ class Dialect(models.Model):
 class Word(models.Model):
     wordid = models.CharField(max_length=200)
     lemma = models.CharField(max_length=200)
+    presentationform = models.CharField(max_length=5)
     pos = models.CharField(max_length=5)
     stem = models.CharField(max_length=20)
     valency = models.CharField(max_length=10)
