@@ -237,6 +237,8 @@ class BareGame(Game):
             adjcase=self.settings['adjcase']
         if self.settings.has_key('num_bare'):
             num_bare=self.settings['num_bare']
+        if self.settings.has_key('num_level'):
+            num_level=self.settings['num_level']
         if self.settings.has_key('grade'):
             grade=self.settings['grade']
 
