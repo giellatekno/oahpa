@@ -156,12 +156,16 @@ class Words:
         compare=""
         frequency=""
         geography=""
+        presentationform = ""
         only_sg = 0
         only_pl = 0
         noleksa = 0
         print lemma
         if e.getElementsByTagName("forms"):
             forms=e.getElementsByTagName("forms")[0]
+			
+        if e.getElementsByTagName("presentationform"):
+            presentationform=e.getElementsByTagName("presentationform")[0].firstChild.data
 
         if e.getElementsByTagName("stem"):
             stem=e.getElementsByTagName("stem")[0].getAttribute("class")
@@ -185,6 +189,7 @@ class Words:
 
         if e.getElementsByTagName("geography"):
             geography=e.getElementsByTagName("geography")[0].getAttribute("class")
+
 
         if e.getElementsByTagName("only-sg"):
             only_sg = 1
@@ -214,6 +219,8 @@ class Words:
 
         w.pos=pos
         w.lemma=lemma
+        w.presentationform=presentationform
+        print presentationform
         w.stem=stem
         w.rime=rime
         w.compare = compare
