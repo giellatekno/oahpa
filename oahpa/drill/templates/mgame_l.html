@@ -33,16 +33,15 @@
 <table width="700">
 <tr>
 <td>{% trans "Case" %}</td>
+<td>{% trans "Level" %}</td>
 </tr>
 <tr>
-<td>
   {% ifequal settings.gametype "bare" %}
-    {{ settingsform.num_bare }}
+<td>{{ settingsform.num_bare }}</td>
+<td>{{ settingsform.num_level }}</td>
   {% else %}
-    {{ settingsform.num_context }}
+<td>    {{ settingsform.num_context }} </td>
   {% endifequal %}
-</td>
-
 
 </tr>
 </table>
