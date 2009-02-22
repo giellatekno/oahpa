@@ -631,7 +631,10 @@ class Sahkaview:
                 game.num_fields=1
                 game.update_game(1)
             else:
-                game.num_fields = int(settings_form.data['num_fields'])
+                if settings_form.data.has_key('num_fields'):
+                    game.num_fields = int(settings_form.data['num_fields'])
+                else:
+                    game.num_fields = 1					
                 #print "num_fields", game.num_fields
                 game.check_game(data)
                 # If the last answer was correct, add new field
