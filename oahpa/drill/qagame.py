@@ -48,15 +48,23 @@ class QAGame(Game):
 
         dialect = self.settings['dialect']
 
-        word_count = Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(dialects__dialect=dialect) &\
-                                         Q(form__tag=tag_el.id)).count()
-        if word_count > 0:
-            word = Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(dialects__dialect=dialect) &\
-                                       Q(form__tag=tag_el.id))[randint(0,word_count-1)]
-            if word.form_set.filter(Q(tag=tag_el.id) & Q(dialects__dialect=dialect)).count()>0:
-                form = word.form_set.filter(Q(tag=tag_el.id) & Q(dialects__dialect=dialect))[0] 
-            else: return None
-
+        word=None
+        if tag_el.pos=="Num" and self.settings.has_key('num_level') and str(self.settings['num_level'])=="1":
+                smallnum = ["1","2","3","4","5","6","7","8","9","10"]
+                word_count=Word.objects.filter(Q(presentationform__in=smallnum) & \
+											   Q(wordqelement__qelement=qelement) & \
+											   Q(form__tag=tag_el.id)).count()
+                word=Word.objects.filter(Q(presentationform__in=smallnum) & \
+										 Q(wordqelement__qelement=qelement) & \
+										 Q(form__tag=tag_el.id))[randint(0,word_count-1)]
+        else:
+            word_count = Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(dialects__dialect=dialect) &\
+                                             Q(form__tag=tag_el.id)).count()
+            if word_count > 0:
+                word = Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(dialects__dialect=dialect) &\
+                                           Q(form__tag=tag_el.id))[randint(0,word_count-1)]
+        if word and word.form_set.filter(Q(tag=tag_el.id) & Q(dialects__dialect=dialect)).count()>0:
+            form = word.form_set.filter(Q(tag=tag_el.id) & Q(dialects__dialect=dialect))[0] 
         else: return None
 		
         word_id=word.id
@@ -72,7 +80,7 @@ class QAGame(Game):
         """
         words = []
         dialect = self.settings['dialect']
-        
+
         # If there are no information available for these elements, try to use other info.
         word = None
         if lemma and tag_el:
