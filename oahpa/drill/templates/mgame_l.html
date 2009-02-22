@@ -33,7 +33,9 @@
 <table width="700">
 <tr>
 <td>{% trans "Case" %}</td>
+  {% ifequal settings.gametype "bare" %}
 <td>{% trans "Level" %}</td>
+  {% endifequal %}
 </tr>
 <tr>
   {% ifequal settings.gametype "bare" %}
@@ -42,7 +44,6 @@
   {% else %}
 <td>    {{ settingsform.num_context }} </td>
   {% endifequal %}
-
 </tr>
 </table>
 <input type="submit" name="settings" value="{% trans "New set" %}" />
