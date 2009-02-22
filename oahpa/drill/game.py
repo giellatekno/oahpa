@@ -290,8 +290,13 @@ class BareGame(Game):
 
             tag_id = tag.id
             if self.settings['pos'] == "Num":
-                w_count=Word.objects.filter(Q(pos=pos)).count()
-                word_id=Word.objects.filter(Q(pos=pos))[randint(0,w_count-1)].id
+                if self.settings.has_key('num_level') and str(self.settings['num_level'])=="1":
+                    smallnum = ["1","2","3","4","5","6","7","8","9","10"]
+                    w_count=Word.objects.filter(Q(pos=pos) & Q(presentationform__in=smallnum)).count()
+                    word_id=Word.objects.filter(Q(pos=pos)& Q(presentationform__in=smallnum))[randint(0,w_count-1)].id
+                else:
+                    w_count=Word.objects.filter(Q(pos=pos)).count()
+                    word_id=Word.objects.filter(Q(pos=pos))[randint(0,w_count-1)].id
             else:
                 w_count=Word.objects.filter(Q(pos=pos) & Q(stem__in=syll) & Q(source__name__in=books) &\
                                             Q(dialects__dialect=dialect)).count()
