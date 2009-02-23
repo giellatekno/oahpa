@@ -43,6 +43,7 @@ class Gameview:
             'NUM-NOM-PL' :  _('Practise numerals in plural'),\
             'NUM-LOC' :  _('Practise numerals in locative'),\
             'COLL-NUM' :  _('Practise collective numerals'),\
+            'ORD-NUM' :  _('Practise ordinal numbers'),\
             'PRS'   :  _('Practise present'),\
             'PRT'   : _('Practise past'),\
             'COND'  : _('Practise conditional'), \
