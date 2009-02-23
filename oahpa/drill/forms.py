@@ -75,6 +75,7 @@ NUM_CONTEXT_CHOICES = (
     ('NUM-LOC', _('locative')),
     ('NUM-COM', _('comitative')),
 #    ('COLL-NUM', _('collective')),
+    ('ORD-NUM', _('ordinals')),
 )
 
 NUM_BARE_CHOICES = (
@@ -651,7 +652,7 @@ class ContextMorfaQuestion(OahpaQuestion):
         atext = qanswer.string
         task = qanswer.task
         if not task:
-            raise Http404(atext)			
+            raise Http404("not task: " + atext)			
 
         super(ContextMorfaQuestion, self).__init__(*args, **kwargs)
 
@@ -718,21 +719,28 @@ class ContextMorfaQuestion(OahpaQuestion):
         answer_word_el = Word.objects.get(id=answer_word)
         answer_tag_el = Tag.objects.get(id=answer_tag)
         self.lemma = answer_word_el.lemma
+        #print self.lemma
             
         # If the asked word is in Pl, generate nominal form
         if answer_tag_el.pos=="N":
-            if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess" or qtype=="N-NOM-PL":
-                self.lemma = answer_word_el.lemma
+            # For collective numerals, take the presentationform
+            if qtype=="COLL-NUM":
+                self.lemma = answer_word_el.presentationform
             else:
-                if Form.objects.filter(Q(word__pk=answer_word) & \
-                                       Q(tag__string="N+Pl+Nom")).count()>0:                        
-                    self.lemma = Form.objects.filter(Q(word__pk=answer_word) & \
-                                                     Q(tag__string="N+Pl+Nom"))[0].fullform
+                if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess" or qtype=="N-NOM-PL":
+                    self.lemma = answer_word_el.lemma
                 else:
-                    self.lemma = answer_word_el.lemma + " (plural) fix this"
+                    if Form.objects.filter(Q(word__pk=answer_word) & \
+                                           Q(tag__string="N+Pl+Nom")).count()>0:                        
+                        self.lemma = Form.objects.filter(Q(word__pk=answer_word) & \
+                                                         Q(tag__string="N+Pl+Nom"))[0].fullform
+                    else:
+                        self.lemma = answer_word_el.lemma + " (plural) fix this"
         if answer_tag_el.pos=="A":
             self.lemma=""
 
+        if qtype=="ORD-NUM":
+            self.lemma=answer_word_el.presentationform
         # Retrieve feedback information
         self.get_feedback(answer_word_el,answer_tag_el,self.lemma,dialect,language)
 
