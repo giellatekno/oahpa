@@ -250,6 +250,9 @@ class BareGame(Game):
             else:
                 if pos=="Num":
                     case = self.casetable[num_bare]
+                else:
+                    if pos=="V":
+                        case = ""					
         
         if pos == "V" and self.settings.has_key('vtype'):
             if self.settings['vtype'] == "PRS":
@@ -284,6 +287,7 @@ class BareGame(Game):
         #print syll, books, pos, case, tense, mood, attributive, grade
 
         tag_count=Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade=grade) & Q(number__in=number)).count()
+        if tag_count < 1: raise Http404(pos, case, tense, mood, attributive, grade, number)
         while i<maxnum:
             i=i+1
             tag = Tag.objects.filter(Q(pos=pos) & Q(possessive="") & Q(case=case) & Q(tense=tense) & Q(mood=mood) & ~Q(personnumber="ConNeg") & Q(attributive=attributive) & Q(grade=grade) & Q(number__in=number))[randint(0,tag_count-1)]
