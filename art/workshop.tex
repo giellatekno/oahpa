@@ -1,0 +1,141 @@
+\documentclass[11pt]{article}
+
+\usepackage{times}
+\usepackage{url}
+%\usepackage{latexsym}
+
+\usepackage{graphics}
+\usepackage[utf8x]{inputenc}
+%\usepackage{ucs} %sami letters\renewcommand
+
+%\usepackage{linguex}
+%{\refdash}{}
+%\usepackage[T1]{fontenc}
+%\usepackage{multirow}
+%\usepackage{tabularx} %specified width
+
+\title{Constraint grammar in dialogue systems}
+
+\author{Lene Antonsen  \and
+              Saara Huhmarniemi \and Trond Trosterud \\ University of Tromsø}
+\begin{document}
+
+%\date{}
+
+\maketitle
+\pagenumbering{arabic}
+ 
+\maketitle
+
+
+
+\section{Introduction} 
+
+The paper is about using vislcg3 in two different dialoguesystems for learning sámi: \textit{Vasta} -- a QA-drill with open questions, and \textit{Sahka} -- a  dialogue between program and user within a scenario. The underlying pedagogical goal for both is exercising verb inflection, choosing the correct case and learning more words. 
+
+
+%The dialogue systems are \textit{Vasta} -- which is an open question-answering game with randomly chosen questions, and Sahka -- in which the user participate in a logical dialogue made to a scenario which underlying pedagogical goals.
+
+Vislcg3 is used both for adding feedback about grammatical errors, but also for navigating in the \textit{Sahka}-dialogue based on the user's answers. 
+
+Our leading idea was to utilize the existing analyser to develop pedagogical programs for Sámi instruction. With vislcg3 we had the possibility of making an intelligent language tutoring system with sophisticated error analysis where student tasks can go beyond multiple-choice questions or string matching algorithms. 
+
+Sámi is a language with complex morphology, and it demands a lot of practising before the student reaches necessary skills. But Sámi is a minority language and it is a common situation that the person learning Sámi does not get enough opportunities to practise the language in a natural way. There is also a lack of teaching materials. Because of that, programs accessible on the Internet may be a useful supplement to the instruction given at school or in the university. 
+
+\section{Basic grammatical analysis}
+The basic grammatical analysis of North Sámi is done with finite state transducers and a constraint grammar parser, available as open source download from the University of Tromsø. The existing language resources, which we have used in the pedagogical programs, are the following:
+
+\begin{itemize}
+\item a morphological analyser/generator with finite state transducers, compiled with the Xerox compiler xfst.  
+\item a morphological disambiguator based on constraint grammar with 3300 manually written rules and a syntactic analyser which adds grammatical function and dependency (vislcg3). 
+\end{itemize}
+
+
+\section{Sentence generator}
+The question-answer drill \textit{Vasta} has randomly chosen questions. The drill has two question types: Yes/no questions and wh-questions. In order to be able to create a large number of potential tasks, we implemented a sentence generator. With the generator we can easily offer variation to the user, instead of tailoring every task with ready-made questions. There are 111 matrix questions divided into levels.
+
+The question matrix contains two types of elements: constants and grammatical units. The selection of words from the pedagogical lexicon is constrained by semantic sets. The sentence generator handles agreement e.g. between subject and the main verb.
+ 
+\section{Analysing the syntax of the user's answer} 
+We use vislcg3 for analysing the user's input. First there is a ruleset which disambiguates the user's input only to a certain extent, because there will probably be grammatical and orthographic errors in the input. The last part of the file consists of rules for giving feedback to grammatical errors, and rules for navigating to the correct next question of in the dialogue, due to the user's answer.  
+
+The question and the answer are merged, and given to the analyser as one text string. The question mark in the question is exchanged for a special symbol ("qst" QDL). We use QDL rather than the questionark itself, because we do not want to introduce a sentence delimiter in the analysis, but at the same time we want to refer to the question and the answer separately in the rules (left or right side of the QDL). Many of the constraints are based on the grammar and semantics in the question -- e.g. the tense and person inflection of the verb, the case of NP in the answer and so on.
+
+\subsection{Tutorial feedback}
+Tutorial feedback is feedback about grammar errors, and is used both in \textit{Vasta} and in \textit{Sahka}. The system uses CG-rules for assigning a tag if the user's input if there are grammatical errors. The tag generates feedback to the user. It should be noted that the system uses the grammatical analyser on the fly, exploiting full lexicons. This allows the user's answer to contain any Sámi word, also words that are not restricted to the pedagogical lexicon.
+
+The users should inflect the finite verb correctly and choose the correct case form. A a main rule, the user has to use a full sentence (containing a finite verb), and use the same verb as in the question. The CG-rule which assign tag about wrong verb, consists a sticky tag with regex. There is exceptional handling of pro-verbs. There are made exceptions for some \textit{Sahka}-questions which question-id-es are put in a set. E.g. the question "What is your name?" is very natural to answer without a verb. 
+
+In \textit{Vasta} the pronouns are not allowed to be interpreted inclusively -- \textit{we — you}, not \textit{we — we}, but in \textit{Sahka} they follow the logic of the scenario.
+
+For some questions in the \textit{Sahka}-dialogues which are made for special grammatical training, there are a whole section of rules in the vislcg3 file, for adding a specific feedback to the possible errors.
+
+The user will get only one feedback at a time, so the errortags are ordered according to what is natural for the users errors. First of all s/he will get feedbadk about spelling errors. If there is not agreement between subject and verb, than the user should get feedback on the verbform, instead of the pronoun.
+
+The biggest problem is the user's misspellings. If the spelling error gives rise to a non-existing word form, then the message to the user is "The word form is not in our lexicon, can it be a spelling error?". But the misspelling can make another word form of the same lemma. For that we make rules based on context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give the a feedback according what the user think s/he has written. Feedback has to be tailored from what we know about the user’s interlanguage – and we make rules for sets of typical unintended lemmas.
+
+We are also trying to add rules in the twol-file for typical spellingerrors in e.g. placenames, so the system can give a specific feedback. Even if there are almost 50.000 proper nouns in the lexicon, most of them placenames, there is always a possibility that the user writes a correct placename which is not in the lexicon. Therefore it would be an improvement if the system can recognize misspellings of the names which are in the lexicon.
+
+
+\subsection{Navigating in the dialogues}
+The idea behind the dialogues is that the user may exercise Sámi in a quite natural way in scenarios, and at the same time get comments about errors. There are two kinds of feedback -- both made in the same vislcg3-file: tags for navigation in the dialogue itself, and tags that generate tutorial feedback. The questions in the dialogues are not generated, but written. Every question has its own unique name, so we can link to it from another questions, and it is also possible to make a CG-rule for a special question.   
+
+The input is tagged during analysis with information on whether it is interpreted as affirmative or negative, or with a target-tag, so that we can pick up e.g. name or the essence of the answer, and use it in the next question or utterance. The choice of alternative links is dependent upon what kind of tag the question-answer pair gets. There will always be a default, in case there will not be any tag. 
+
+Some dialogues are branched according to how the user answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In the same way an answer from the user about his/her age will induce a tag, which is used to navigate to different branches of the dialogue based on the age of the user. The tag for age is assigned with a regex inside a CG-rule.
+ 
+\section{Conclusion}
+
+
+
+
+%\begin{thebibliography}{}
+%
+%\bibitem[\protect\citename{{Beesley and Karttunen}}2003]{BeesleyKarttunen:03}
+%{Kenneth R. Beesley and Lauri Karttunen}.
+%\newblock 2003.
+%\newblock {\em Finite State Morphology}.
+%\newblock CSLI publications in Computational Linguistics
+%\newblock USA
+%
+%
+%\bibitem[\protect\citename{Karlsson et. al}1995]{Karlsson:95}
+%{Fred Karlsson and Atro Voutilainen and Juha Heikkilä and Arto Anttila}.
+%\newblock 1995.
+%\newblock {\em Constraint grammar: a language-independent system for parsing unrestricted text}.
+%\newblock Mouton de Gruyter
+%
+%\bibitem[\protect\citename{{Trosterud}}2007]{Trosterud:07}
+%{Trond Trosterud}.
+%\newblock 2007.
+%\newblock {\em Language technology for endangered languages: Sámi as a case study}.
+%\newblock http://giellatekno.uit.no/background/rvik.pdf
+%\newblock University of Tromsø, Norway
+%
+%\bibitem[\protect\citename{{visl}}2008]{Visl:08}
+%{VISL-group}.
+%\newblock 2008.
+%\newblock {\em Constraint Grammar}.
+%\newblock http://beta.visl.sdu.dk/constraint\_grammar.html
+%\newblock Institute of Language and Communication (ISK), University of Southern Denmark
+
+
+%\end{thebibliography}
+
+
+%\begin{spacing}{1}
+%\par
+%\bibliographystyle{jmr} %jmr gives the second author with first name first
+%\bibliographystyle{jmr}
+%\thebibliography{refacl}
+%\bibliographystyle{acl}
+
+
+%\bibdata{refacl}
+%\addcontentsline{toc}{section}{References}
+%\end{spacing}
+
+	
+\end{document}
+
+	
