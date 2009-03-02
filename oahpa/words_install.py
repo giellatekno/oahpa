@@ -28,7 +28,7 @@ class Words:
         self.all_wordids=[]
 
         for e in tree.getElementsByTagName("entry"):
-            pos=e.getElementsByTagName("pos")[0].getAttribute("class") 
+            pos=e.getElementsByTagName("pos")[0].getAttribute("class")
             self.store_word(e,linginfo,mainlang,paradigmfile,placenamefile,delete)
 
         if delete and pos and not placenamefile:
@@ -305,3 +305,12 @@ class Words:
         elements=translations.getElementsByTagName("tr")
         for el in elements:
             self.add_translation(el,w,pos,placenamefile)
+
+
+    def delete_word(self, wid=None):
+        
+        if wid:
+            print wid
+            words = Word.objects.filter(wordid=wid)
+            for w in words:
+                w.delete()
