@@ -310,7 +310,7 @@ class Words:
     def delete_word(self, wid=None):
         
         if wid:
-            print wid
             words = Word.objects.filter(wordid=wid)
             for w in words:
+                print "Removing", w.id
                 w.delete()
