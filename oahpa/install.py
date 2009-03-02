@@ -55,6 +55,8 @@ parser.add_option("-t", "--tagfile", dest="tagfile",
                   help="List of tags and tagsets")
 parser.add_option("-u", "--qid", dest="questionid",
                   help="delete question using id or text")
+parser.add_option("-w", "--wid", dest="wordid",
+                  help="delete word using id or lemma")
 
 
 (options, args) = parser.parse_args()
@@ -75,7 +77,11 @@ if options.paradigmfile:
 if options.questionid:
     questions.delete_question(options.questionid)
     sys.exit()
-    
+
+if options.wordid:
+    words.delete_word(options.wordid)
+    sys.exit()
+
 if options.questionfile and options.grammarfile:
     questions.read_questions(options.questionfile,options.grammarfile)
     sys.exit()
