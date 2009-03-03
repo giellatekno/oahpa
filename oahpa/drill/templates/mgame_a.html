@@ -3,7 +3,13 @@
 
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
-{% block instructions %}{% trans "Add adjectives in correct forms." %}{% endblock %}
+{% block instructions %}
+  {% ifequal settings.gametype "bare" %}
+    {% trans "Add adjectives in correct forms." %}
+  {% else %}
+    {% trans "Add adjectives in correct forms." %}
+  {% endifequal %}
+{% endblock %}
 
 {% block selectionname %}
 <td>{% trans "Type" %}</td>
