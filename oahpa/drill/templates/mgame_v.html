@@ -3,7 +3,14 @@
 
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
-{% block instructions %}{% trans "Add verbs in correct forms." %}{% endblock %}
+{% block instructions %}
+  {% ifequal settings.gametype "bare" %}
+    {% trans "Add verbs in correct forms." %}
+  {% else %}
+    {% trans "Add verbs in correct forms." %}
+  {% endifequal %}
+{% endblock %}
+
 
 {% block selectionname %}<td>{% trans "Type" %}</td>{% endblock %}
 {% block selection %}
