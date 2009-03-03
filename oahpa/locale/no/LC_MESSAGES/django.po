@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-03 13:05+0100\n"
+"POT-Creation-Date: 2009-03-03 15:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -533,28 +533,34 @@ msgstr "kontrakte"
 msgid "New set"
 msgstr "Nytt sett"
 
-#: drill/templates/mgame.html:140 drill/templates/mgame_l.html:98
+#: drill/templates/mgame.html:140 drill/templates/mgame_l.html:104
 #: drill/templates/num.html:68 drill/templates/num_ord.html:65
 #: drill/templates/quizz.html:59 drill/templates/quizz_n.html:65
 #: drill/templates/vasta.html:52
 msgid "Test answers"
 msgstr "Test svarene"
 
-#: drill/templates/mgame.html:143 drill/templates/mgame_l.html:101
+#: drill/templates/mgame.html:143 drill/templates/mgame_l.html:107
 #: drill/templates/num.html:71 drill/templates/num_ord.html:68
 #: drill/templates/quizz.html:62 drill/templates/quizz_n.html:68
 msgid "Show correct answers"
 msgstr "Vis rett svar"
 
-#: drill/templates/mgame_a.html:6
+#: drill/templates/mgame_a.html:8
+msgid ""
+"Add adjectives in correct forms. You get translation into Norwegian if you "
+"click the word."
+msgstr ""
+
+#: drill/templates/mgame_a.html:10
 msgid "Add adjectives in correct forms."
 msgstr "Skriv inn den riktige forma av adjektivet"
 
-#: drill/templates/mgame_a.html:9 drill/templates/mgame_v.html:8
+#: drill/templates/mgame_a.html:15 drill/templates/mgame_v.html:15
 msgid "Type"
 msgstr ""
 
-#: drill/templates/mgame_a.html:11
+#: drill/templates/mgame_a.html:17
 msgid "Grade"
 msgstr "Grad"
 
@@ -566,7 +572,7 @@ msgstr ""
 msgid "MORFA-C"
 msgstr ""
 
-#: drill/templates/mgame_l.html:35 drill/templates/mgame_n.html:8
+#: drill/templates/mgame_l.html:35 drill/templates/mgame_n.html:15
 #: drill/templates/mgame_n2.html:8
 msgid "Case"
 msgstr "Kasus"
@@ -575,15 +581,23 @@ msgstr "Kasus"
 msgid "Level"
 msgstr "Nivå"
 
-#: drill/templates/mgame_l.html:53
+#: drill/templates/mgame_l.html:55 drill/templates/mgame_l.html.py:57
 msgid "Add numerals in correct forms."
 msgstr "Skriv inn den riktige forma av tallordet"
 
-#: drill/templates/mgame_n.html:6 drill/templates/mgame_n2.html:6
+#: drill/templates/mgame_n.html:8
+msgid "Add nouns in correct forms. You get translation if you click the word."
+msgstr ""
+
+#: drill/templates/mgame_n.html:10 drill/templates/mgame_n2.html:6
 msgid "Add nouns in correct forms."
 msgstr "Skriv inn den riktige forma av substantivet"
 
-#: drill/templates/mgame_v.html:6
+#: drill/templates/mgame_v.html:8
+msgid "Add verbs in correct forms. You get translation if you click the word."
+msgstr ""
+
+#: drill/templates/mgame_v.html:10
 msgid "Add verbs in correct forms."
 msgstr "Skriv inn den riktige forma av verbet"
 
@@ -658,6 +672,7 @@ msgid "eastern"
 msgstr "Østlig"
 
 #: drill/templates/oahpa_main.html:180 drill/templates/visl_main.html:405
+#: templates/oahpa.html:264
 msgid "Teachers and students guide"
 msgstr "Veiledning for lærere og studenter"
 
@@ -666,7 +681,7 @@ msgid "About OAHPA!"
 msgstr "Om OAHPA!"
 
 #: drill/templates/oahpa_main.html:196 drill/templates/visl_main.html:422
-#: templates/oahpa.html:267
+#: templates/oahpa.html:268
 msgid "Feedback"
 msgstr "Tilbakemelding"
 
@@ -828,7 +843,7 @@ msgstr "Se på eller bygg setningsanalysetrær."
 msgid "Page language"
 msgstr "Helpespråk"
 
-#: drill/templates/visl_main.html:415 templates/oahpa.html:256
+#: drill/templates/visl_main.html:415 templates/oahpa.html:257
 msgid "Main page"
 msgstr "Hovedside"
 
@@ -884,17 +899,13 @@ msgstr "Teknisk feil, prøv igjen."
 msgid "We are developing the program."
 msgstr "Dette programmet er under utvikling."
 
-#: templates/oahpa.html:214 templates/oahpa.html.py:227
+#: templates/oahpa.html:215 templates/oahpa.html.py:227
 msgid "Grammar"
 msgstr "Grammatikk"
 
-#: templates/oahpa.html:252
+#: templates/oahpa.html:253
 msgid "OAHPA is under development and may not function all the time."
 msgstr "OAHPA er under utvikling og kan være ute av funksjon av og til."
-
-#: templates/oahpa.html:263
-msgid "Oahpaheaddji ja studeantta bagadus"
-msgstr ""
 
 #~ msgid "Give translations for words."
 #~ msgstr "Oversett ordet"

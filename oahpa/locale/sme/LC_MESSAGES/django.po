@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-03 13:05+0100\n"
+"POT-Creation-Date: 2009-03-03 15:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -533,28 +533,34 @@ msgstr "kontrakšuvdnamátta"
 msgid "New set"
 msgstr "Ođđa sánit"
 
-#: drill/templates/mgame.html:140 drill/templates/mgame_l.html:98
+#: drill/templates/mgame.html:140 drill/templates/mgame_l.html:104
 #: drill/templates/num.html:68 drill/templates/num_ord.html:65
 #: drill/templates/quizz.html:59 drill/templates/quizz_n.html:65
 #: drill/templates/vasta.html:52
 msgid "Test answers"
 msgstr "Iskka iežat vástádusaid"
 
-#: drill/templates/mgame.html:143 drill/templates/mgame_l.html:101
+#: drill/templates/mgame.html:143 drill/templates/mgame_l.html:107
 #: drill/templates/num.html:71 drill/templates/num_ord.html:68
 #: drill/templates/quizz.html:62 drill/templates/quizz_n.html:68
 msgid "Show correct answers"
 msgstr "Čájet rivttes vástádusaid"
 
-#: drill/templates/mgame_a.html:6
+#: drill/templates/mgame_a.html:8
+msgid ""
+"Add adjectives in correct forms. You get translation into Norwegian if you "
+"click the word."
+msgstr ""
+
+#: drill/templates/mgame_a.html:10
 msgid "Add adjectives in correct forms."
 msgstr "Čále adjektiivvaid rivttes hámis"
 
-#: drill/templates/mgame_a.html:9 drill/templates/mgame_v.html:8
+#: drill/templates/mgame_a.html:15 drill/templates/mgame_v.html:15
 msgid "Type"
 msgstr "Šládja"
 
-#: drill/templates/mgame_a.html:11
+#: drill/templates/mgame_a.html:17
 msgid "Grade"
 msgstr "Veardidanhápmi"
 
@@ -566,7 +572,7 @@ msgstr ""
 msgid "MORFA-C"
 msgstr ""
 
-#: drill/templates/mgame_l.html:35 drill/templates/mgame_n.html:8
+#: drill/templates/mgame_l.html:35 drill/templates/mgame_n.html:15
 #: drill/templates/mgame_n2.html:8
 msgid "Case"
 msgstr "Kásus"
@@ -575,15 +581,23 @@ msgstr "Kásus"
 msgid "Level"
 msgstr "Dássi"
 
-#: drill/templates/mgame_l.html:53
+#: drill/templates/mgame_l.html:55 drill/templates/mgame_l.html.py:57
 msgid "Add numerals in correct forms."
 msgstr "Čále loguid rivttes hámis"
 
-#: drill/templates/mgame_n.html:6 drill/templates/mgame_n2.html:6
+#: drill/templates/mgame_n.html:8
+msgid "Add nouns in correct forms. You get translation if you click the word."
+msgstr ""
+
+#: drill/templates/mgame_n.html:10 drill/templates/mgame_n2.html:6
 msgid "Add nouns in correct forms."
 msgstr "Čále substantiivvaid rivttes hámis"
 
-#: drill/templates/mgame_v.html:6
+#: drill/templates/mgame_v.html:8
+msgid "Add verbs in correct forms. You get translation if you click the word."
+msgstr ""
+
+#: drill/templates/mgame_v.html:10
 msgid "Add verbs in correct forms."
 msgstr "Čále vearbbaid rivttes hámis"
 
@@ -658,6 +672,7 @@ msgid "eastern"
 msgstr "Nuortasuopman"
 
 #: drill/templates/oahpa_main.html:180 drill/templates/visl_main.html:405
+#: templates/oahpa.html:264
 msgid "Teachers and students guide"
 msgstr "Oahpaheaddji ja studeantta bagadus"
 
@@ -666,7 +681,7 @@ msgid "About OAHPA!"
 msgstr "OAHPA! birra"
 
 #: drill/templates/oahpa_main.html:196 drill/templates/visl_main.html:422
-#: templates/oahpa.html:267
+#: templates/oahpa.html:268
 msgid "Feedback"
 msgstr "Attes kommentáraid"
 
@@ -829,7 +844,7 @@ msgstr "Geahča dahje hukse cealkkamuoraid."
 msgid "Page language"
 msgstr "Veahkkegiella"
 
-#: drill/templates/visl_main.html:415 templates/oahpa.html:256
+#: drill/templates/visl_main.html:415 templates/oahpa.html:257
 msgid "Main page"
 msgstr "Váldosiidu"
 
@@ -883,17 +898,13 @@ msgstr "Teknihkalaš feaila, geahččal ođđasit"
 msgid "We are developing the program."
 msgstr "Mii leat ain bargame prográmmain."
 
-#: templates/oahpa.html:214 templates/oahpa.html.py:227
+#: templates/oahpa.html:215 templates/oahpa.html.py:227
 msgid "Grammar"
 msgstr "Grammatihkka"
 
-#: templates/oahpa.html:252
+#: templates/oahpa.html:253
 msgid "OAHPA is under development and may not function all the time."
 msgstr "OAHPA lea ain gaskan, iige álo doaimma."
-
-#: templates/oahpa.html:263
-msgid "Oahpaheaddji ja studeantta bagadus"
-msgstr ""
 
 #~ msgid "Give translations for words."
 #~ msgstr "Jorgal sániid"
