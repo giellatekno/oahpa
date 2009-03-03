@@ -3,7 +3,14 @@
 
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
-{% block instructions %}{% trans "Add nouns in correct forms." %}{% endblock %}
+{% block instructions %}
+  {% ifequal settings.gametype "bare" %}
+    {% trans "Add nouns in correct forms." %}
+  {% else %}
+    {% trans "Add nouns in correct forms." %}
+  {% endifequal %}
+{% endblock %}
+
 
 {% block selectionname %}<td>{% trans "Case" %}</td>{% endblock %}
 {% block selection %}
