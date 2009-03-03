@@ -50,7 +50,13 @@
 
 {% endblock %}
 {% block gamename %}{{ settings.gamename }}{% endblock %}
-{% block instructions %}{% trans "Add numerals in correct forms." %}{% endblock %}
+{% block instructions %}
+  {% ifequal settings.gametype "bare" %}
+    {% trans "Add numerals in correct forms." %}
+  {% else %}
+    {% trans "Add numerals in correct forms." %}
+  {% endifequal %}
+{% endblock %}
 
 {% block question %}
 
