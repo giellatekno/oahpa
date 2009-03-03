@@ -209,8 +209,9 @@ NUMRA</a>&nbsp;&nbsp;
 </td>
 <td>
 
-{% comment %}
+
 {% ifequal LANGUAGE_CODE "sme" %}
+
 {% trans "Grammar" %}<br/>
 <form name="jump">
 <select name="menu" onChange="javascript:if (this.selectedIndex > 0) window.open(this.value)">
@@ -220,10 +221,9 @@ NUMRA</a>&nbsp;&nbsp;
 {% endfor %}
 </select>
 </form>
-{% endifequal %}
-{% endcomment %}
 
-{% ifequal LANGUAGE_CODE "no" %}
+{% else %}
+
 {% trans "Grammar" %}<br/>
 <form name="jump">
 <select name="menu" onChange="javascript:if (this.selectedIndex > 0) window.open(this.value)">
@@ -233,8 +233,9 @@ NUMRA</a>&nbsp;&nbsp;
 {% endfor %}
 </select>
 </form>
-
 {% endifequal %}
+
+
 
 </td>
 
