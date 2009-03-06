@@ -307,10 +307,14 @@ class Words:
             self.add_translation(el,w,pos,placenamefile)
 
 
-    def delete_word(self, wid=None):
-        
-        if wid:
-            words = Word.objects.filter(wordid=wid)
+    def delete_word(self, wid=None,pos=None):
+
+        if not pos:
+            print "specify the part of speech with option -p"
+        if wid and pos:
+            words = Word.objects.filter(wordid=wid,pos=pos)
             for w in words:
-                print "Removing", w.id
+                print "Removing", w.wordid
                 w.delete()
+        if not words:
+            print wid, "not found"
