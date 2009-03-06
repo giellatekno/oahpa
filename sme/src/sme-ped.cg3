@@ -5491,7 +5491,7 @@ SELECT Inf (*-1 VFIN OR PrfPrc OR ConNeg BARRIER NOT-ADV LINK 0 INFV LINK *-1 QD
 # ADVERBS
 # -------
 
-SELECT Adv (-1 VFIN) ;
+SELECT Adv (-1 VFIN)(NEGATE 0 A LINK *1 N BARRIER NPNH) ;
 
 # --------
 # VALENCY
@@ -6065,66 +6065,66 @@ MAP (&sem-not_wordlist) TARGET QDL IF (0 (hálbiduvvon_galvvut))(*1 (&dia-target
 #LIST CAMERAS = buorre heittot ;
 #LIST TROUSERS = gallji baski ;
 
-#LIST SHOPADJ = guhkimus oanehaccamus guhkit oanehaccat unnimus stuorimus unnit stuorit gasimus seakkimus gasit seakkit assamus asehaccamus assat asehaccat buoremus heittogeamos buoret  heittogit jorbaseamos jorbasat baskkimusat galjimusat baskkibut galjibut ;
+#LIST SHOPADJ = adj_guhkimus adj_oanehaccamus adj_guhkit adj_oanehaccat adj_unnimus adj_stuorimus adj_unnit adj_stuorit adj_gasimus adj_seakkimus adj_gasit adj_seakkit adj_assamus adj_asehaccamus adj_assat adj_asehaccat adj_buoremus adj_heittogeamos adj_buoret adj_ adj_heittogit adj_jorbaseamos adj_jorbasat adj_baskkimusat adj_galjimusat adj_baskkibut adj_galjibut ;
 
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (guhkimus))(NOT *1 ("guhkki") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (oanehaccamus))(NOT *1 ("oanehaš") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (guhkimus))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (oanehaccamus))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (guhkit))(NOT *1 ("guhkki") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (oanehaccat))(NOT *1 ("oanehaš") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (guhkit))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (oanehaccat))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_guhkimus))(NOT *1 ("guhkki") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_oanehaccamus))(NOT *1 ("oanehaš") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_guhkimus))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_oanehaccamus))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_guhkit))(NOT *1 ("guhkki") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_oanehaccat))(NOT *1 ("oanehaš") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_guhkit))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("guhkki") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_oanehaccat))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("oanehaš") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
 
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (unnimus))(NOT *1 ("unni") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (stuorimus))(NOT *1 ("stuoris") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (unnimus))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (stuorimus))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (unnit))(NOT *1 ("unni") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (stuorit))(NOT *1 ("stuoris") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (unnit))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (stuorit))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_unnimus))(NOT *1 ("unni") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_stuorimus))(NOT *1 ("stuoris") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_unnimus))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_stuorimus))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_unnit))(NOT *1 ("unni") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_stuorit))(NOT *1 ("stuoris") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_unnit))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("unni") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_stuorit))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("stuoris") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
 
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (gasimus))(NOT *1 ("gassat") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (seakkimus))(NOT *1 ("seaggi") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (gasimus))(*1 ("gassat") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("gassat") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (seakkimus))(*1 ("seaggi") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("seaggi") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (gasit))(NOT *1 ("gassat") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (seakkit))(NOT *1 ("seaggi") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (gasit))(*1 ("gassat") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("gassat") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (seakkit))(*1 ("seaggi") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("seaggi") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_gasimus))(NOT *1 ("gassat") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_seakkimus))(NOT *1 ("seaggi") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_gasimus))(*1 ("gassat") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("gassat") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_seakkimus))(*1 ("seaggi") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("seaggi") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_gasit))(NOT *1 ("gassat") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_seakkit))(NOT *1 ("seaggi") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_gasit))(*1 ("gassat") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("gassat") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_seakkit))(*1 ("seaggi") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("seaggi") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
 
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (assamus))(NOT *1 ("assái") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (asehaccamus))(NOT *1 ("asehaš") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (assamus))(*1 ("assái") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("assái") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (asehaccamus))(*1 ("asehaš") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("asehaš") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (assat))(NOT *1 ("assái") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (asehaccat))(NOT *1 ("asehaš") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (assat))(*1 ("assái") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("assái") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (asehaccat))(*1 ("asehaš") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("asehaš") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_assamus))(NOT *1 ("assái") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_asehaccamus))(NOT *1 ("asehaš") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_assamus))(*1 ("assái") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("assái") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_asehaccamus))(*1 ("asehaš") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("asehaš") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_assat))(NOT *1 ("assái") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_asehaccat))(NOT *1 ("asehaš") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_assat))(*1 ("assái") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("assái") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_asehaccat))(*1 ("asehaš") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("asehaš") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
 
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (buoremus))(NOT *1 ("buorre") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (heittogeamos))(NOT *1 ("heittot") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (buoremus))(*1 ("buorre") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("buorre") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (heittogeamos))(*1 ("heittot") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("heittot") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (buoret))(NOT *1 ("buorre") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (heittogit))(NOT *1 ("heittot") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (buoret))(*1 ("buorre") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("buorre") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (heittogit))(*1 ("heittot") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("heittot") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_buoremus))(NOT *1 ("buorre") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_heittogeamos))(NOT *1 ("heittot") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_buoremus))(*1 ("buorre") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("buorre") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_heittogeamos))(*1 ("heittot") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("heittot") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_buoret))(NOT *1 ("buorre") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_heittogit))(NOT *1 ("heittot") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_buoret))(*1 ("buorre") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("buorre") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_heittogit))(*1 ("heittot") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("heittot") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
 
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (jorbaseamos))(NOT *1 ("jorbbas") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (jorbaseamos))(*1 ("jorbbas") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("jorbbas") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (jorbasat))(NOT *1 ("jorbbas") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (jorbasat))(*1 ("jorbbas") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("jorbbas") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_jorbaseamos))(NOT *1 ("jorbbas") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_jorbaseamos))(*1 ("jorbbas") BARRIER S-BOUNDARY LINK NOT 0 (Superl Sg Nom))(*1 ("jorbbas") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_jorbasat))(NOT *1 ("jorbbas") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_jorbasat))(*1 ("jorbbas") BARRIER S-BOUNDARY LINK NOT 0 (Comp Sg Nom))(*1 ("jorbbas") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
 
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (baskkimusat))(NOT *1 ("baski") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (galjimusat))(NOT *1 ("gallji") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (baskkimusat))(*1 ("baski") BARRIER S-BOUNDARY LINK NOT 0 (Superl Pl Nom))(*1 ("baski") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (galjimusat))(*1 ("gallji") BARRIER S-BOUNDARY LINK NOT 0 (Superl Pl Nom))(*1 ("gallji") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (baskkibut))(NOT *1 ("baski") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_adj) TARGET QDL IF (0 (galjibut))(NOT *1 ("gallji") BARRIER S-BOUNDARY) ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (baskkibut))(*1 ("baski") BARRIER S-BOUNDARY LINK NOT 0 (Comp Pl Nom))(*1 ("baski") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N)  ;
-MAP (&sem-not_correct_infl) TARGET QDL IF (0 (galjibut))(*1 ("gallji") BARRIER S-BOUNDARY LINK NOT 0 (Comp Pl Nom))(*1 ("gallji") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_baskkimusat))(NOT *1 ("baski") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_galjimusat))(NOT *1 ("gallji") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_baskkimusat))(*1 ("baski") BARRIER S-BOUNDARY LINK NOT 0 (Superl Pl Nom))(*1 ("baski") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjimusat))(*1 ("gallji") BARRIER S-BOUNDARY LINK NOT 0 (Superl Pl Nom))(*1 ("gallji") BARRIER S-BOUNDARY LINK NOT 0 (Superl Attr) LINK 1 N) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_baskkibut))(NOT *1 ("baski") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_adj) TARGET QDL IF (0 (adj_galjibut))(NOT *1 ("gallji") BARRIER S-BOUNDARY) ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_baskkibut))(*1 ("baski") BARRIER S-BOUNDARY LINK NOT 0 (Comp Pl Nom))(*1 ("baski") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N)  ;
+MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRIER S-BOUNDARY LINK NOT 0 (Comp Pl Nom))(*1 ("gallji") BARRIER S-BOUNDARY LINK NOT 0 (Comp Attr) LINK 1 N) ;
 
 
 # ---------
