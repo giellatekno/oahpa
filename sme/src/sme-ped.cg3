@@ -4905,7 +4905,7 @@ SELECT:r1315 Adv IF (-1 ("uhcit") OR ("unnit"))(0 ("eanet"));
 	## ...muhto dál lea eanet uhcit jávkan. 
 	## Go vierroopmodaga geavaha ja eaiggát unnit eanet čielgasit dasa leat miehtán,...
 
-SELECT:r1316 Adv IF (0 ("eanet") OR ("unnit") OR ("uhcit"))(NEGATE 0 Pron)(NEGATE 1 Dem OR N OR A);
+#SELECT:r1316 Adv IF (0 ("eanet") OR ("unnit") OR ("uhcit"))(NEGATE 0 Pron)(NEGATE 1 Dem OR N OR A);
 	## Guovlu atnigoahtá olu eanet.
 	## Dat lea eanet go 10.
 	## Lea 43 olbmo unnit go diibmá dán muddui.
@@ -5705,14 +5705,14 @@ MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 Ess)(*1 N BARRIER
 MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Com))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Com));
 MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Com));
 
-MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Nom))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Nom));
-MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Nom))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Nom));
-MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Acc))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Acc));
-MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Acc))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Acc));
-MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Loc) OR (Sg Ill) OR (Sg Gen));
-MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 Ess)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Ess);
-MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Com))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Com));
-MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Com));
+MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Nom) OR Comp OR Superl)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Nom));
+MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Nom) OR Comp OR Superl)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Nom));
+MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Acc) OR Comp OR Superl)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Acc));
+MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Acc) OR Comp OR Superl)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Acc));
+MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Gen) OR Comp OR Superl)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Loc) OR (Sg Ill) OR (Sg Gen));
+MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 Ess OR Comp OR Superl)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Ess);
+MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Com) OR Comp OR Superl)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Com));
+MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl Gen) OR Comp OR Superl)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Com));
 
 LIST GALLE-VIELJA = galle_viellja_ja_oabbá_child galle_viellja_ja_oabbá_young galle_viellja_ja_oabbá_adult ;
 # For making exception for case if the answer is okta + Nom
