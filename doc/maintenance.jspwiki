@@ -14,6 +14,38 @@ database and editing the html-code.
 
 All the commands described in this document have to be run in victorio.
 
+!!Install Django locally
+
+To test applications and interfaces, install Django to your own
+computer (as with the documentation system forrest). Follow the
+instructions in [Django Quick install guide|http://docs.djangoproject.com/en/dev/intro/install/]: Install
+Python (you probably have it already) and Install Django. Select the
+option "Install an official release", to assure compatibility with victorio.
+
+Edit the file ped/oahpa/settings.py in your own computer. Set database
+user, password and set victorio as host. This way the web interface
+uses the remote database for retrieving information:
+
+{{
+DATABASE_USER = ''
+DATABASE_PASSWORD = ''
+DATABASE_HOST = 'victorio.uit.no'
+}}
+
+Then start the web development server:
+{{
+cd ped/oahpa/
+python manage.py runserver
+}}
+
+The pages should be available in
+[http://127.0.0.1:8000/oahpa/|http://127.0.0.1:8000/oahpa/]. Consult
+the Django manual if there are problems.
+
+In the sandbox, it is possible to test the changes to the code and
+to html pages. After the pages are working, check them in to svn and
+update the official version in victorio.
+
 !!HTML
 
 !Overall look
@@ -111,6 +143,11 @@ take a while. If you have a list of words you want to add to the
 database, it is possible create a temporary file for them so that you
 do not need to generate paradigms for all the words. Remember to add
 the words to the lexicon file for future updates.
+
+Remove words from the database one by one by giving the word id (or lemma) and the part of speech as option:
+{{{
+python install.py -w beana -p N
+}}}
 
 If you have deleted entries in the lexicon file, specify an extra
 option -d to delete unexisting entries. This option can be used only when
