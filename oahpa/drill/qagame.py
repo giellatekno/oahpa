@@ -52,11 +52,11 @@ class QAGame(Game):
         if tag_el.pos=="Num" and self.settings.has_key('num_level') and str(self.settings['num_level'])=="1":
                 smallnum = ["1","2","3","4","5","6","7","8","9","10"]
                 word_count=Word.objects.filter(Q(presentationform__in=smallnum) & \
-											   Q(wordqelement__qelement=qelement) & \
-											   Q(form__tag=tag_el.id)).count()
+                                               Q(wordqelement__qelement=qelement) & \
+                                               Q(form__tag=tag_el.id)).count()
                 word=Word.objects.filter(Q(presentationform__in=smallnum) & \
-										 Q(wordqelement__qelement=qelement) & \
-										 Q(form__tag=tag_el.id))[randint(0,word_count-1)]
+                                         Q(wordqelement__qelement=qelement) & \
+                                         Q(form__tag=tag_el.id))[randint(0,word_count-1)]
         else:
             word_count = Word.objects.filter(Q(wordqelement__qelement=qelement) & Q(dialects__dialect=dialect) &\
                                              Q(form__tag=tag_el.id)).count()
@@ -381,7 +381,7 @@ class QAGame(Game):
                 q_number = qmainv['number']
                 if q_number:
                     va_number = self.QAPN[q_number]
-
+                    
         # If there is no subject, then the number of the question
         # mainverb determines the number.
         if qwords.has_key(copy_syntax):
@@ -400,7 +400,6 @@ class QAGame(Game):
                 
             mainv_tag = Tag.objects.get(string=amainvtag_string)
             mainv_tags.append(mainv_tag)
-            
 
         # If the main verb is under question, then generate full list.
         if answer.task == "MAINV":
@@ -408,7 +407,10 @@ class QAGame(Game):
             if mainv_elements:
                 for mainv_el in mainv_elements:
                     if mainv_el.tags.count()>0:
-                        mainv_tags = mainv_el.tags.filter(Q(personnumber=va_number))
+                        if va_number:
+                            mainv_tags = mainv_el.tags.filter(Q(personnumber=va_number))
+                        else:
+                            mainv_tags = mainv_el.tags.all()
                         for t in mainv_tags:
                             info = { 'qelement' : mainv_el.id, 'tag' : t.id }
                             mainv_words.append(info)
@@ -446,7 +448,7 @@ class QAGame(Game):
     def generate_syntax(self, answer, question, awords, qwords, s):
 
         if s=="SUBJ" or s=="MAINV": return awords
-
+        
         if not awords.has_key(s):
             awords[s] = []
 
@@ -491,7 +493,7 @@ class QAGame(Game):
                     tag_count = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber)).count()
                     if tag_count>0:
                         tag_elements = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber))
-                                
+
         # if no agreement, take all tags.
         else:
             tag_count = element.tags.count()
@@ -527,7 +529,7 @@ class QAGame(Game):
         else: level='1'
         
         q_count = Question.objects.filter(gametype="qa", level__lte=level).count()
-        question = Question.objects.filter(gametype="qa", level__lte=level)[randint(0,q_count-1)]
+        question = Question.objects.filter(gametype="qa", level__lte=level)[randint(0,q_count-1)] 
         #question = Question.objects.get(id="107")
 	   
         qtype = question.qtype
