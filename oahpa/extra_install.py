@@ -19,7 +19,10 @@ class Extra:
 
         addressObj=re.compile(r'^(?P<linkString>[^\s]+)\s*(?P<addressString>[^\s]+)\s*$', re.U)
         linkfileObj = codecs.open(linkfile, "r", "utf-8" )
-        links = []
+        links = {}
+        langs = ['no','sme']
+        for l in langs:
+            links[l] = []
         while True:
             line = linkfileObj.readline()
             if not line: break
@@ -35,12 +38,14 @@ class Extra:
                     t, created = Grammarlinks.objects.get_or_create(name=link,language=lang)
                     t.address=address
                     t.save()
-                    links.append(link)
-        linkobjects = Grammarlinks.objects.all()
-        for l in linkobjects:
-            if force_unicode(l.name) not in set(links):
-                print l.name
-                l.delete()
+                    links[lang].append(link)
+                    print lang, link, address
+        for lang in langs:
+            linkobjects = Grammarlinks.objects.filter(language=lang)
+            for l in linkobjects:
+                if force_unicode(l.name) not in set(links[lang]):
+                    print "deleting links..", lang, l.name
+                    l.delete()
 				
     #The comments presented to the user after completing the game.
     def read_comments(self, commentfile):
