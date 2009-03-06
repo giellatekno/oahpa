@@ -359,8 +359,8 @@ class OahpaSettings(forms.Form):
                              'adj_context' : 'ATTRPOS'}
 
         # Link to grammatical explanation for each page
-        self.grammarlinkssme = Grammarlinks.objects.filter(language="sme").order_by('name')
-        self.grammarlinksno = Grammarlinks.objects.filter(language="no").order_by('name')
+        self.grammarlinkssme = Grammarlinks.objects.filter(language="sme")
+        self.grammarlinksno = Grammarlinks.objects.filter(language="no")
 
 
 
