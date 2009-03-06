@@ -22,10 +22,11 @@ class Extra:
         links = {}
         langs = ['no','sme']
         for lang in langs:
+            print lang
             links[lang] = []
-            linkobjects = Grammarlinks.objects.filter(language=lang)            
+            linkobjects = Grammarlinks.objects.filter(language=lang)
             for l in linkobjects:
-                l.delete()            
+                l.delete()
         while True:
             line = linkfileObj.readline()
             if not line: break
