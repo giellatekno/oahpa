@@ -22,17 +22,22 @@ instructions in [Django Quick install guide|http://docs.djangoproject.com/en/dev
 Python (you probably have it already) and Install Django. Select the
 option "Install an official release", to assure compatibility with victorio.
 
-Edit the file ped/oahpa/settings.py in your own computer. Set database
-user, password and set victorio as host. This way the web interface
-uses the remote database for retrieving information:
+Go to victorio and start mysql with the administrator username and password. 
+Grant access to you: 
+{{{
+mysq> GRANT all ON oahpa.* TO 'your-username'@'your-own-ip-address';
+}}}
+
+Edit the file ped/oahpa/settings.py in your own computer with the information
 
 {{
-DATABASE_USER = ''
+DATABASE_USER = 'your-username'
 DATABASE_PASSWORD = ''
 DATABASE_HOST = 'victorio.uit.no'
+DATABASE_PORT = '' (port number)
 }}
 
-Then start the web development server:
+Then start the web development server in your own computer:
 {{
 cd ped/oahpa/
 python manage.py runserver
@@ -40,7 +45,7 @@ python manage.py runserver
 
 The pages should be available in
 [http://127.0.0.1:8000/oahpa/|http://127.0.0.1:8000/oahpa/]. Consult
-the Django manual if there are problems.
+the Django manual if there are problems with this part. With the remote logging to the database, you need to ask saara.
 
 In the sandbox, it is possible to test the changes to the code and
 to html pages. After the pages are working, check them in to svn and
@@ -214,8 +219,8 @@ English version. To translate for the other languages, follow the
 steps in [Localisation|mainenance.html#Localisation]. In addition, the changes in {{forms.py}}
 require that the server is restarted (sudo httpd restart). 
 
-!!Vasta and C-Morfa
-C-Morfa and Vasta share the same mechanism for installing the
+!!Vasta and Morfa-C
+Morfa-C and Vasta share the same mechanism for installing the
 questions. Questions are defined e.g. in
 sme/xml/questions_vasta.xml. In addition some defaults for certain
 elements (such as subject) are defined in
