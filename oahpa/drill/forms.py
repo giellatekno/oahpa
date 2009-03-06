@@ -74,7 +74,7 @@ NUM_CONTEXT_CHOICES = (
     ('NUM-ILL', _('illative')),
     ('NUM-LOC', _('locative')),
     ('NUM-COM', _('comitative')),
-#    ('COLL-NUM', _('collective')),
+    ('COLL-NUM', _('collective')),
     ('ORD-NUM', _('ordinals')),
 )
 
@@ -710,7 +710,7 @@ class ContextMorfaQuestion(OahpaQuestion):
                     qstring = qstring + " " + force_unicode(w)
         qstring=qstring.replace(" -","-");
         qstring=qstring.replace(" .",".");
-                    
+
         answer_word = selected_awords[task]['word']
         answer_tag = selected_awords[task]['tag']
         selected_awords[task]['fullform'][0] = 'Q'
