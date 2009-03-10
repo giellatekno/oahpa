@@ -11,9 +11,9 @@
 
 
 
-      # =========================================== #
-      #      Short table of contents of the sme-dis.rle     #
-      # =========================================== #
+      # ============================================ #
+      #  Short table of contents of the sme-ped.cg3  #
+      # ============================================ #
 
       # Delimiters
       # Tags and sets
@@ -185,6 +185,7 @@ LIST Pr = Pr ;
 LIST Pcle = Pcle ;
 LIST Num = Num ;
 LIST Prop = Prop ;
+LIST LowercaseErr = LowercaseErr ;
 
 LIST LEFT = LEFT ;
 LIST RIGHT = RIGHT ;
@@ -5341,6 +5342,7 @@ LIST SAHKA = "^sahka" ;
 # The user wants to stop the dialogue
 MAP (&dia-stop) TARGET ("heaitit")(*-1 SAHKA) ; 
 
+MAP (&orth-prop) TARGET LowercaseErr ;
 
 # Picking person name, if it is not in the lexicon - for SAHKA
 MAP (&dia-target) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
@@ -6208,3 +6210,5 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &grm-Vehicle-Com
 # &grm-Loc-leaving
 # &grm-numeral-wrong-case
+
+# &orth-prop                    Proper nouns should begin with capital letter
