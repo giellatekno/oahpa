@@ -28,7 +28,8 @@ dis = "/opt/smi/sme/bin/sme-ped.cg3.bin"
 #preprocess = " | /Users/saara/gt/script/preprocess "
 #dis = "/Users/saara/ped/sme/src/sme-ped.cg3"
 
-fst = fstdir + "/sme.fst"
+#fst = fstdir + "/sme.fst"
+fst = fstdir + "/ped-sme.fst"
 lookup = lo + " -flags mbTT -utf8 -d " + fst 
 vislcg3 = cg3 + " --grammar " + dis + " -C UTF-8"
 disamb = " | " + cg3 + " --grammar " + dis + " -C UTF-8"
