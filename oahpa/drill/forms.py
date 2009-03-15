@@ -803,7 +803,6 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     #dis_bin = "/opt/smi/sme/bin/sme-ped.bin"
 
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
-
     self.userans = self.cleaned_data['answer']
     answer = self.userans.rstrip()
     answer = answer.lstrip()
@@ -860,9 +859,10 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
         analysis3=c + analyzed + c
 
     analysis = analysis + analyzed
+    analysis = analysis + "\"<.>\"\n\t\".\" CLB\n"
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
-
+		
     ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
     checked = os.popen(ped_cg3).readlines()
 
