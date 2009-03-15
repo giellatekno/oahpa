@@ -719,8 +719,7 @@ class ContextMorfaQuestion(OahpaQuestion):
         answer_word_el = Word.objects.get(id=answer_word)
         answer_tag_el = Tag.objects.get(id=answer_tag)
         self.lemma = answer_word_el.lemma
-        #print self.lemma
-            
+
         # If the asked word is in Pl, generate nominal form
         if answer_tag_el.pos=="N":
             # For collective numerals, take the presentationform
@@ -786,6 +785,14 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     if not self.is_valid():
         return None, None, None
 
+    host = 'localhost'
+    port = 9000
+    size = 1024
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((host,port))
+    sys.stdout.write('%')
+
     lookup_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     lookup_client.connect(("localhost", 9000))
 
@@ -803,6 +810,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     #dis_bin = "/opt/smi/sme/bin/sme-ped.bin"
 
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
+
     self.userans = self.cleaned_data['answer']
     answer = self.userans.rstrip()
     answer = answer.lstrip()
@@ -831,12 +839,12 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
                     cohort = cohort + " " + tag + "\n"
             else:
                 w=w.lstrip().rstrip()
-                lookup_client.send(w)
-                cohort = lookup_client.recv(512)
+                s.send(w)
+                cohort = s.recv(size)
         else:
             w=w.lstrip().rstrip()
-            lookup_client.send(w)
-            cohort = lookup_client.recv(512)
+            s.send(w)
+            cohort = s.recv(size)
 
         if not cohort or cohort == w:
             cohort = w + "\n"
@@ -854,15 +862,14 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     analyzed=""
     for c in word:
         c=c.strip()
-        lookup_client.send(c)
-        analyzed = analyzed + lookup_client.recv(512)
+        s.send(c)
+        analyzed = analyzed + s.recv(size)
         analysis3=c + analyzed + c
 
     analysis = analysis + analyzed
-    analysis = analysis + "\"<.>\"\n\t\".\" CLB\n"
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
-		
+
     ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
     checked = os.popen(ped_cg3).readlines()
 
@@ -961,8 +968,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     variables = []
     variables.append(variable)
     variables.append(constant)
-    lookup_client.send("q")
-    lookup_client.close()
+    s.send("q")
+    s.close()
     return msg, dia_msg, variables
 
 
