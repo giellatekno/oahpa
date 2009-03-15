@@ -1,25 +1,27 @@
-# -*- coding: utf-8 -*-
-#
-# TCP-client for testing the lookup server.
-#
-# usage: client.py
-#
+#!/usr/bin/env python
+
+"""
+An echo client that allows the user to send multiple lines to the server.
+Entering a blank line will exit the client.
+"""
 
 import socket
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.connect(("localhost", 8090))
-while 1:
-    data = raw_input ( "SEND( TYPE q or Q to Quit):" )
-    if (data <> 'Q' and data <> 'q'):
-        client_socket.send(data)
-    else:
-        client_socket.send(data)
-        client_socket.close()
-        break
+import sys
 
-    data = client_socket.recv(512)
-    if ( data == 'q' or data == 'Q'):
-        client_socket.close()
+host = 'localhost'
+port = 9000
+size = 1024
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.connect((host,port))
+sys.stdout.write('%')
+
+while 1:
+    # read from keyboard
+    line = sys.stdin.readline()
+    if line == '\n':
         break
-    else:
-        print data
+    s.send(line)
+    data = s.recv(size)
+    sys.stdout.write(data)
+    sys.stdout.write('%')
+s.close()
