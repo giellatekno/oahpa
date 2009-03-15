@@ -13,6 +13,7 @@ import sys
 import re
 import os
 import threading
+import time
 
 class Server:
     def __init__(self):
@@ -49,20 +50,13 @@ class Server:
         while running:
             inputready,outputready,exceptready = select.select(input,[],[])
             
-            for s in inputready:
-                
+            for s in inputready:                
                 if s == self.server:
                     # handle the server socket
                     c = Client(self.server.accept(),self.look)
                     c.start()
                     self.threads.append(c)
-                    
-                elif s == sys.stdin:
-                    # handle standard input
-                    junk = sys.stdin.readline()
-                    running = 0
-                    
-                    # close all threads
+            time.sleep(1)
                         
         self.server.close()
         for c in self.threads:
@@ -75,7 +69,7 @@ class Client(threading.Thread):
         self.address = address
         self.size = 1024
         self.look=look
-        self.lookup2cg = " | lookup2cg"
+        self.lookup2cg = " | /usr/local/bin/lookup2cg"
 
     def run(self):
         running = 1
@@ -96,7 +90,7 @@ class Client(threading.Thread):
                 self.client.send(data2)
                 continue
 			# quit with q
-            print data
+            #print data
             if ( data.strip() == 'q' or data == 'Q'):
                 self.client.close()
                 running = 0				
@@ -104,7 +98,7 @@ class Client(threading.Thread):
             self.look.sendline(data)
             self.look.expect('\r?\n\r?\n')
             result = self.look.before
-            print result
+            #print result
             # hack for removing the stderr from lookup 0%>>>>>>100% ...
             result = result.replace('100%','')
             result = result.replace('0%','')
