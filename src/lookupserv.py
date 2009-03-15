@@ -1,7 +1,9 @@
-#!/usr/bin/env python
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
 
 """
 A lookup server that uses threads to handle multiple clients at a time.
+Called from the ped-interface (forms.py)
 """
 
 import select
@@ -9,6 +11,7 @@ import pexpect
 import socket
 import sys
 import re
+import os
 import threading
 
 class Server:
@@ -20,6 +23,14 @@ class Server:
         self.server = None
         self.threads = []
 
+        fstdir="/opt/smi/sme/bin"
+        lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
+        preprocess = " | /usr/local/bin/preprocess "
+
+        fst = fstdir + "/ped-sme.fst"
+        lookup = lo + " -flags mbTT -utf8 -d " + fst
+        self.look = pexpect.spawn(lookup)
+        
     def open_socket(self):
         try:
             self.server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -42,7 +53,7 @@ class Server:
                 
                 if s == self.server:
                     # handle the server socket
-                    c = Client(self.server.accept())
+                    c = Client(self.server.accept(),self.look)
                     c.start()
                     self.threads.append(c)
                     
@@ -58,21 +69,14 @@ class Server:
             c.join()
                             
 class Client(threading.Thread):
-    def __init__(self,(client,address)):
+    def __init__(self,(client,address),look):
         threading.Thread.__init__(self)
         self.client = client
         self.address = address
         self.size = 1024
+        self.look=look
+        self.lookup2cg = " | lookup2cg"
 
-        fstdir="/opt/smi/sme/bin"
-        lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
-        lookup2cg = " | lookup2cg"
-        preprocess = " | /usr/local/bin/preprocess "
-
-        fst = fstdir + "/sme.fst"
-        lookup = lo + " -flags mbTT -utf8 -d " + fst
-        self.look = pexpect.spawn(lookup)
-        
     def run(self):
         running = 1
         while running:
@@ -80,15 +84,25 @@ class Client(threading.Thread):
             if not data or not data.strip():
                 self.client.close()
                 running = 0
+                continue
+			
             data2=data
+			# clean the data for command line
             c = [";","<",">","*","|","`","&","$","!","#","(",")","[","]","{","}",":"]
             for a in c:
                 data = data.replace(a,'')
+			# if the data contained only special characters, return the original data.
             if not data:
                 self.client.send(data2)
                 continue
+			# quit with q
+            print data
+            if ( data.strip() == 'q' or data == 'Q'):
+                self.client.close()
+                running = 0				
+                continue			
             self.look.sendline(data)
-            self.look.expect ('\r?\n\r?\n')
+            self.look.expect('\r?\n\r?\n')
             result = self.look.before
             print result
             # hack for removing the stderr from lookup 0%>>>>>>100% ...
@@ -101,7 +115,7 @@ class Client(threading.Thread):
                 if res.rstrip().lstrip():
                     string = string + res + "\n" 
 
-            cg_call = "echo \"" + string + "\"" + lookup2cg
+            cg_call = "echo \"" + string + "\"" + self.lookup2cg
             anl = os.popen(cg_call).readlines()
 
             analyzed = ""
