@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-An echo client that allows the user to send multiple lines to the server.
+A lookupserv client for command line testing.
 Entering a blank line will exit the client.
 """
 
@@ -13,7 +13,7 @@ port = 9000
 size = 1024
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((host,port))
-sys.stdout.write('%')
+#sys.stdout.write('%')
 
 while 1:
     # read from keyboard
@@ -23,5 +23,5 @@ while 1:
     s.send(line)
     data = s.recv(size)
     sys.stdout.write(data)
-    sys.stdout.write('%')
+#    sys.stdout.write('%')
 s.close()
