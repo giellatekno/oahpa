@@ -107,11 +107,38 @@ tooltip2.js and prototype.js are used for the translation tooltip.
 Oahpa is dependent on linguistic resources which are located in
 /opt/smi/sme/bin/. Compile the new versions of the fsts when needed.
 {{{
-sme.fst
+ped-sme.fst
 sme-num.fst
 isme-norm.fst
 isme-GG.restr.fst
 isme-KJ.restr.fst
+}}}
+
+! Lookup server
+
+The lookup-process for the analyzer ped-sme.fst, which is used in Vasta
+and Sahka is running all the time. The lookup is implemented as
+server, which can be called by different processes. There exists a
+command line tool that can be used for testing the server. The script
+client.py takes one word at the time and can be terminated by giving
+an empty line.
+{{{
+python ped/src/client.py
+}}}
+
+The server is called from the file forms.py for getting analysis for the
+answers in Vasta and Sahka. The error message "Connection refused"
+indicates that for some reason, the lookup server is down and need to
+be restarted. 
+
+When the lookup server is started it reads the file
+/opt/smi/sme/bin/ped-sme.fst and provides analyses based on the
+fst. Note that the fst is read only once, so if you
+update the ped-sme.fst, it is not automatically read by the server,
+but you need to restart it. The restarting is done in the same way as
+with other servers:
+{{{
+sudo service lookupserv restart
 }}}
 
 
