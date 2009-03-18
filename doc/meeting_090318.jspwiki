@@ -1,0 +1,103 @@
+!!!Meeting notes, Pedagogical programs, 090318
+
+
+!!!Participants
+
+Lene, Saara T
+
+
+!!!error-svn-mails
+
+There was more error messages to root this morning.
+Saara extended the user roof from 100 to 500, hope for better performance.
+
+!!!django
+
+We install django on our machines, and report experiences to Saara. 
+
+The command for this is found in the chapter ''Install Django locally'' in the maintenance document.
+
+
+!!The database:
+
+We must go to victorio and give permission to some ip number, and then we might access it va that ip number.
+
+Saara looks at the mysql-on-your-own-machine issue.
+
+Also the mysql command is found in the chapter ''Install Django locally'' in the maintenance document.
+
+With the heavy traffic we have on the oahpa site now, we really need local development sites.
+
+
+!!!Questions
+
+* Q: Can we use the debugging mode in Sahka/Vasta?
+* A: No, in your own computer, when you have Django.
+
+* Q: Adjctive morf.feedback is not there now. Can I just install it?
+* A: I'll install it.
+
+* Q: There are no HURRA-comments now. Can I just install them?
+* A: Yes
+
+* Q: Have you tried out alternative grammartags in answers in Morfa C?
+* A: Does not work
+
+Use sme-ped.cg3.bin ?
+
+{{{
+/usr/local/bin/vislcg3 -->
+/opt/smi/common/bin/vislcg3
+
+/opt/smi/sme/bin/sme-ped.cg3.bin
+}}}
+
+Links for navigating from Sahka to Sahka?
+
+
+{{sudo chmod a+x /opt/smi/sme/bin/*}}
+
+
+Go to the admin:
+http://oahpa.uit.no/oahpa/admin/
+
+!!!ped-sme.fst
+
+Lowercased propernouns now in place.
+
+{{{
+Mun orun romssas.
+Stedsnavnet skal ha stor forbokstav?
+}}}
+
+Also á and possibly missing consonant gradation, this is a future fix.
+
+
+!!!Maintenance-documentation
+
+Went thorugh the doc.
+
+!!!The log
+
+Wishes:
+
+# Sahka and Vasta included in the log
+# IP numbers in log (to monitor users according to country, etc. ...)
+
+
+!!!Future file structure of make-remake
+
+{{{
+scripts
+app/tts
+   /ped <--- ped lg-independent and technical stuff here
+lang/ara
+    /fao
+    /sme/fst
+        /dict
+        /ped  <------- ped sme catalogue here
+}}}
+        
+
+
+
