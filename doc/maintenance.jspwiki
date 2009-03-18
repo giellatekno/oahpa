@@ -1,13 +1,14 @@
 !!!Maintenance
 
 This document contains the basic instructions for updating the content
-of the games on victorio. Technical maintenance is described in separate
-document.
+of the games on victorio. Technical maintenance is described in
+separate document. 
 
 All the data is stored in xml-files which are installed to mysql
-database. Oahpa-programs are developed using Python Web framework [Django|http://www.djangoproject.com/]
-Oahpa web pages are basic html, which is enriched with templates and information
-retrieved from the database.
+database. Oahpa-programs are developed using Python Web framework
+[Django|http://www.djangoproject.com/]. Oahpa web pages are basic
+html, which is enriched with templates and information retrieved from
+the database. 
 
 Everyday maintentance consists of updating the information in the
 database and editing the html-code.
@@ -20,7 +21,8 @@ To test applications and interfaces, install Django to your own
 computer (as with the documentation system forrest). Follow the
 instructions in [Django Quick install guide|http://docs.djangoproject.com/en/dev/intro/install/]: Install
 Python (you probably have it already) and Install Django. Select the
-option "Install an official release", to assure compatibility with victorio.
+option "Install an official release", to assure compatibility with
+victorio. 
 
 Go to victorio and start mysql with the administrator username and password. 
 Grant access to you: 
@@ -30,26 +32,27 @@ mysq> GRANT all ON oahpa.* TO 'your-username'@'your-own-ip-address';
 
 Edit the file ped/oahpa/settings.py in your own computer with the information
 
-{{
+{{{
 DATABASE_USER = 'your-username'
 DATABASE_PASSWORD = ''
 DATABASE_HOST = 'victorio.uit.no'
 DATABASE_PORT = '' (port number)
-}}
+}}}
 
 Then start the web development server in your own computer:
-{{
+{{{
 cd ped/oahpa/
 python manage.py runserver
-}}
+}}}
 
 The pages should be available in
 [http://127.0.0.1:8000/oahpa/|http://127.0.0.1:8000/oahpa/]. Consult
-the Django manual if there are problems with this part. With the remote logging to the database, you need to ask saara.
+the Django manual if there are problems with this part. With the
+remote logging to the database, you need to ask saara. 
 
-In the sandbox, it is possible to test the changes to the code and
-to html pages. After the pages are working, check them in to svn and
-update the official version in victorio.
+In the sandbox, it is possible to test the changes to the code and to
+html pages. After the pages are working, check them in to svn and
+update the official version in victorio. 
 
 !!HTML
 
@@ -99,13 +102,12 @@ Despite couple of exceptions, the Javascripts used are given in file:
 {{{
 ped/oahpa/media/js/oahpa.js
 }}}
-In addition, there are couple of other scripts, one for fixing the
-png-images in earlier IE versions using pngfix.js. Another two
-tooltip2.js and prototype.js are used for the translation tooltip.
+
+In addition, there are couple of other scripts, one for fixing the png-images in earlier IE versions using pngfix.js.
+Another two tooltip2.js and prototype.js are used for the translation tooltip. 
 
 !!FSTs
-Oahpa is dependent on linguistic resources which are located in
-/opt/smi/sme/bin/. Compile the new versions of the fsts when needed.
+Oahpa is dependent on linguistic resources which are located in /opt/smi/sme/bin/. Compile the new versions of the fsts when needed.
 {{{
 ped-sme.fst
 sme-num.fst
@@ -269,6 +271,14 @@ Of course the latter command will delete all the questions with that
 string. However, the deletion with the string may be useful if the qid
 was forgotten. Rerun of the installation script for the question file
 will restore the accidentally deleted questions.
+
+Available tags and paradigms are stored to the database beforehand and
+searched during the installation of the questions. If you have changed
+tag names in the lexicon (this occurs very rarely), then run the
+command: 
+{{{
+python install.py -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt -b
+}}}
 
 !!Feedback
 
