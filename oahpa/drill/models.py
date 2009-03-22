@@ -15,6 +15,7 @@ class Log(models.Model):
     iscorrect = models.BooleanField()
     correct = models.CharField(max_length=200)
     example = models.CharField(max_length=200,null=True)
+    feedback = models.CharField(max_length=200,null=True)
     comment = models.CharField(max_length=200)
 
 class Semtype(models.Model):
