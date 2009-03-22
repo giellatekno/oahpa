@@ -961,9 +961,17 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
         if msgstrings[w].has_key('dia-unknown'):
             constant = msgstrings[w]['dia-lemma']
             variable = msgstrings[w]['dia-unknown']
-                    
+
+    iscorrect=False                    
     if not msg:
         self.error = "correct"
+        iscorrect=True
+
+    feedbackmsg=' '.join(msg)
+    today=datetime.date.today()
+    log, c = Log.objects.get_or_create(userinput=self.userans,feedback=feedbackmsg,iscorrect=iscorrect,\
+									   example=question,game=self.gametype,date=today)
+    log.save()		   
 		
     variables = []
     variables.append(variable)
