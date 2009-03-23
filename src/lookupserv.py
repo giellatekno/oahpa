@@ -24,13 +24,17 @@ class Server:
         self.server = None
         self.threads = []
 
+        #fstdir="/Users/saara/gt/sme/bin"
+        #lo="/Users/saara/bin/lookup"
         fstdir="/opt/smi/sme/bin"
         lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
-        preprocess = " | /usr/local/bin/preprocess "
-
+        
         fst = fstdir + "/ped-sme.fst"
-        lookup = lo + " -flags mbTT -utf8 -d " + fst
-        self.look = pexpect.spawn(lookup)
+        self.lookup = lo + " -flags mbTT " + fst
+        #print self.lookup
+        self.look = pexpect.spawn(self.lookup)
+        #self.look.logfile = sys.stdout
+
         
     def open_socket(self):
         try:
@@ -69,6 +73,7 @@ class Client(threading.Thread):
         self.address = address
         self.size = 1024
         self.look=look
+        #self.lookup2cg = " | /Users/saara/gt/script/lookup2cg"
         self.lookup2cg = " | /usr/local/bin/lookup2cg"
 
     def run(self):
@@ -79,7 +84,7 @@ class Client(threading.Thread):
                 self.client.close()
                 running = 0
                 continue
-			
+
             data2=data
 			# clean the data for command line
             c = [";","<",">","*","|","`","&","$","!","#","(",")","[","]","{","}",":"]
@@ -89,35 +94,57 @@ class Client(threading.Thread):
             if not data:
                 self.client.send(data2)
                 continue
-			# quit with q
-            #print data
+
+            # quit with q
             if ( data.strip() == 'q' or data == 'Q'):
                 self.client.close()
                 running = 0				
-                continue			
+                continue
+            
+            data = data.strip()+ "\n"
+            #print data
             self.look.sendline(data)
-            self.look.expect('\r?\n\r?\n')
-            result = self.look.before
-            #print result
-            # hack for removing the stderr from lookup 0%>>>>>>100% ...
-            result = result.replace('100%','')
-            result = result.replace('0%','')
+            index = self.look.expect(['\r?\n\r?\n','ERROR',pexpect.EOF, pexpect.TIMEOUT])
+            
+            #If there is an error, then restart the lookup process
+            if index ==1 or index==2 or index==3:
+                self.look.read_nonblocking(timeout=1)
+                self.client.send("error")
+                continue
+                
+            if index ==0:
+                result = self.look.before
+                
+                #f.write(result)
+                #f.write("\n")
 
-            string =""
-            for r in result.splitlines():
-                res = r.rstrip('>').lstrip('>')
-                if res.rstrip().lstrip():
-                    string = string + res + "\n" 
+                # hack for removing the stderr from lookup 0%>>>>>>100% ...
+                result = result.replace('100%','')
+                result = result.replace('0%','')
+                
+                lstring =""
+                for r in result.splitlines():
+                    res = r.rstrip('>').lstrip('>')
+                    if res.rstrip().lstrip():
+                        lstring = lstring + res + "\n" 
 
-            cg_call = "echo \"" + string + "\"" + self.lookup2cg
-            anl = os.popen(cg_call).readlines()
+                if not lstring.strip() or not lstring.count("<") > 0:
+                    self.client.send("error")
+                    continue                            
 
-            analyzed = ""
-            for a in anl:
-                analyzed = analyzed + a
+                cg_call = "echo \"" + lstring + "\"" + self.lookup2cg
+                #print "jee", cg_call
 
-            self.client.send(analyzed)
-
+                try:
+                    anl = os.popen(cg_call).readlines()
+                    
+                    analyzed = ""
+                    for a in anl:
+                        analyzed = analyzed + a
+                    
+                    self.client.send(analyzed)
+                except:
+                    self.client.send("error")    
                     
 if __name__ == "__main__":
     s = Server()
