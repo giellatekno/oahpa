@@ -4,7 +4,7 @@ import sys
 import os
 import re
 from django import forms
-from django.http import Http404
+from django.http import Http404, Http500
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
@@ -785,32 +785,23 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     if not self.is_valid():
         return None, None, None
 
-    host = 'localhost'
-    port = 9000
-    size = 1024
+    noanalysis=False
 
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((host,port))
-    sys.stdout.write('%')
-
-    lookup_client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    lookup_client.connect(("localhost", 9000))
-
-    # Analyzer..
-    #lookup2cg = " | /Users/saara/gt/script/lookup2cg"
-    #cg3 = "/usr/local/bin/vislcg3"
-    #preprocess = " | /Users/saara/gt/script/preprocess "
-    #dis_bin = "/Users/saara/ped/sme/src/sme-ped.cg3"
-	
     fstdir = "/opt/smi/sme/bin"
     lookup2cg = " | lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /usr/local/bin/preprocess "
     dis_bin = "/opt/smi/sme/bin/sme-ped.cg3"
-    #dis_bin = "/opt/smi/sme/bin/sme-ped.bin"
-
+    
+    #fstdir = "/Users/saara/gt/sme/bin"
+    #lookup2cg = " | /Users/saara/gt/script/lookup2cg"
+    #cg3 = "/Users/saara/bin/vislcg3"
+    #preprocess = " | /Users/saara/gt/script/preprocess "
+    #dis_bin = "/Users/saara/ped/sme/src/sme-ped.cg3"
+    
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
 
+    
     self.userans = self.cleaned_data['answer']
     answer = self.userans.rstrip()
     answer = answer.lstrip()
@@ -821,50 +812,67 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     qtext = question
     qtext = qtext.rstrip('.!?,')
     
-    analysis = ""
-    data_lookup = "echo \"" + qtext + "\"" + preprocess
-    words = os.popen(data_lookup).readlines()
-    for w in words:
-        cohort=""
-        if qwords and qwords.has_key(w):
-            qword = qwords[w]
-            if qword.has_key('word'):
-                if qword.has_key('fullform') and qword['fullform']:
-                    cohort = cohort + "\"<" + qword['fullform'][0].encode('utf-8') + ">\"\n"
-                    lemma = Word.objects.filter(id=qword['word'])[0].lemma
-                    cohort = cohort + "\t\"" + lemma + "\""
-                if qword.has_key('tag') and qword['tag']:
-                    string = Tag.objects.filter(id=qword['tag'])[0].string
-                    tag = string.replace("+"," ")
-                    cohort = cohort + " " + tag + "\n"
+    host = 'localhost'
+    port = 9000
+    size = 1024
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        s.connect((host,port))
+        sys.stdout.write('%')
+
+        analysis = ""
+        data_lookup = "echo \"" + qtext + "\"" + preprocess
+        words = os.popen(data_lookup).readlines()
+        for w in words:
+            cohort=""
+            if qwords and qwords.has_key(w):
+                qword = qwords[w]
+                if qword.has_key('word'):
+                    if qword.has_key('fullform') and qword['fullform']:
+                        cohort = cohort + "\"<" + qword['fullform'][0].encode('utf-8') + ">\"\n"
+                        lemma = Word.objects.filter(id=qword['word'])[0].lemma
+                        cohort = cohort + "\t\"" + lemma + "\""
+                    if qword.has_key('tag') and qword['tag']:
+                        string = Tag.objects.filter(id=qword['tag'])[0].string
+                        tag = string.replace("+"," ")
+                        cohort = cohort + " " + tag + "\n"
+                else:
+                    w=w.lstrip().rstrip()
+                    s.send(w)
+                    cohort = s.recv(size)
             else:
                 w=w.lstrip().rstrip()
                 s.send(w)
                 cohort = s.recv(size)
+
+            if not cohort or cohort == w:
+                cohort = w + "\n"
+            if cohort=="error":
+                raise Http500
+                
+            analysis = analysis + cohort
+
+        if self.gametype=="sahka":
+            analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
         else:
-            w=w.lstrip().rstrip()
-            s.send(w)
-            cohort = s.recv(size)
+            analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
-        if not cohort or cohort == w:
-            cohort = w + "\n"
-	
-        analysis = analysis + cohort
+        ans_cohort=""
+        data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
+        word = os.popen(data_lookup).readlines()
+        analyzed=""
+        for c in word:
+            c=c.strip()
+            s.send(c)
+            analyzed = analyzed + s.recv(size)
+            analysis3=c + analyzed + c
 
-    if self.gametype=="sahka":
-        analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
-    else:
-        analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
+    except socket.timeout:
+        raise Http404("Technical error, please try again later.")	        
 
-    ans_cohort=""
-    data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
-    word = os.popen(data_lookup).readlines()
-    analyzed=""
-    for c in word:
-        c=c.strip()
-        s.send(c)
-        analyzed = analyzed + s.recv(size)
-        analysis3=c + analyzed + c
+    s.send("q")
+    s.close()
 
     analysis = analysis + analyzed
     analysis = analysis.rstrip()
@@ -962,7 +970,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
             constant = msgstrings[w]['dia-lemma']
             variable = msgstrings[w]['dia-unknown']
 
-    iscorrect=False                    
+    #iscorrect is used only in logging
+    iscorrect=False
     if not msg:
         self.error = "correct"
         iscorrect=True
@@ -970,14 +979,12 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     feedbackmsg=' '.join(msg)
     today=datetime.date.today()
     log, c = Log.objects.get_or_create(userinput=self.userans,feedback=feedbackmsg,iscorrect=iscorrect,\
-									   example=question,game=self.gametype,date=today)
+                                       example=question,game=self.gametype,date=today)
     log.save()		   
 		
     variables = []
     variables.append(variable)
     variables.append(constant)
-    s.send("q")
-    s.close()
     return msg, dia_msg, variables
 
 
