@@ -14,30 +14,38 @@ RETVAL=0
 function start()
 {
     # don't start again if it's already started
-    [ ! -f /var/lock/subsys/lookupserv ] || exit 0
+    #[ ! -f /var/lock/subsys/lookupserv ] || exit 0
     echo -n $"Starting lookup server: "
 	daemon $server >/var/log/lserv.log 2>&1 &
     RETVAL=$?
 	echo
-    if [ $RETVAL -eq 0 ] ; then
-       touch /var/lock/subsys/lookupserv
-    fi
+    #if [ $RETVAL -eq 0 ] ; then
+    #   touch /var/lock/subsys/lookupserv
+    #fi
 }
 
 function stop()
 {
-    if [ -f /var/lock/subsys/lookupserv ] ; then
+#    if [ -f /var/lock/subsys/lookupserv ] ; then
        echo  -n $"Stopping lookup server: "
 	   LPID=$(ps ax | grep 'python.*/opt/smi/common/bin/lookupserv.py' | grep -v grep | cut -c 1-6)
 	   echo $LPID
-	   kill -0 $LPID
+	   kill -1 $LPID
        RETVAL=$?
-       if [ $RETVAL -eq 0 ] ; then
-          rm -f /var/lock/subsys/lookupserv
-       fi
+       if [ $RETVAL -ne 0 ]; then
+		   kill -HUP $LPID
+		   RETVAL=$?
+	   fi
+       #if [ $RETVAL -ne 0 ]; then
+	#	   failure
+	#   else
+	#	   success
+       #if [ $RETVAL -eq 0 ] ; then
+       #   rm -f /var/lock/subsys/lookupserv
+       #fi
 	   killproc lookupserv
 	   echo
-    fi
+#    fi
 }
 
 function restart()
