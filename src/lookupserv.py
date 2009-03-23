@@ -87,9 +87,12 @@ class Client(threading.Thread):
 
             data2=data
 			# clean the data for command line
-            c = [";","<",">","*","|","`","&","$","!","#","(",")","[","]","{","}",":"]
-            for a in c:
-                data = data.replace(a,'')
+            #c = [";","<",">","*","|","`","&","$","!","#","(",")","[","]","{","}",":","@"]
+            #for a in c:
+            #    data = data.replace(a,'')
+			# Take out all other characters, to avoid lookup errors
+            data = re.sub(r'[^\wáŋčžšđŧÁŊĐÁŠŦŽČ_- åäöÅÄÖæøÆØ]+', '',data, re.U)
+
 			# if the data contained only special characters, return the original data.
             if not data:
                 self.client.send(data2)
@@ -108,8 +111,12 @@ class Client(threading.Thread):
             
             #If there is an error, then restart the lookup process
             if index ==1 or index==2 or index==3:
-                self.look.read_nonblocking(timeout=1)
+                try:
+                    self.look.read_nonblocking(timeout=1)
+                except:
+                    self.client.send("error")
                 self.client.send("error")
+                print index
                 continue
                 
             if index ==0:
@@ -127,10 +134,6 @@ class Client(threading.Thread):
                     res = r.rstrip('>').lstrip('>')
                     if res.rstrip().lstrip():
                         lstring = lstring + res + "\n" 
-
-                if not lstring.strip() or not lstring.count("<") > 0:
-                    self.client.send("error")
-                    continue                            
 
                 cg_call = "echo \"" + lstring + "\"" + self.lookup2cg
                 #print "jee", cg_call
