@@ -85,6 +85,8 @@ class Client(threading.Thread):
                 running = 0
                 continue
 
+            f = open('/var/log/lserv.log', 'a')
+			
             data2=data
 			# clean the data for command line
             #c = [";","<",">","*","|","`","&","$","!","#","(",")","[","]","{","}",":","@"]
@@ -103,6 +105,9 @@ class Client(threading.Thread):
                 self.client.close()
                 running = 0				
                 continue
+			
+            f.write(data)
+            f.write("\n")
             
             data = data.strip()+ "\n"
             #print data
@@ -122,8 +127,8 @@ class Client(threading.Thread):
             if index ==0:
                 result = self.look.before
                 
-                #f.write(result)
-                #f.write("\n")
+                f.write(result)
+                f.write("\n")
 
                 # hack for removing the stderr from lookup 0%>>>>>>100% ...
                 result = result.replace('100%','')
