@@ -30,7 +30,7 @@ class Server:
         lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
         
         fst = fstdir + "/ped-sme.fst"
-        self.lookup = lo + " -flags mbTT " + fst
+        self.lookup = lo + " -flags mbTT -utf8 " + fst
         #print self.lookup
         self.look = pexpect.spawn(self.lookup)
         #self.look.logfile = sys.stdout
@@ -89,12 +89,19 @@ class Client(threading.Thread):
 			
             data2=data
 			# clean the data for command line
-            #c = [";","<",">","*","|","`","&","$","!","#","(",")","[","]","{","}",":","@"]
-            #for a in c:
-            #    data = data.replace(a,'')
-			# Take out all other characters, to avoid lookup errors
-            data = re.sub(r'[^\wáŋčžšđŧÁŊĐÁŠŦŽČ_- åäöÅÄÖæøÆØ]+', '',data, re.U)
+            c = [";","<",">","*","|","`","&","$","!","#","(",")","[","]","{","}",":","@","\""]
+            for a in c:
+                data = data.replace(a,'')
 
+			# Take out all other characters, to avoid lookup errors
+            #data = re.sub(r'[^\wáŋčžšđŧÁŊĐÁŠŦŽČ_- åäöÅÄÖæøÆØ´]+', '',data, re.U)
+            try:
+                data2 = data.decode('utf-8')
+            except:
+                #data = data.encode('utf-8')
+                f.write("Not utf-8: " + data)
+                data = re.sub(r'[^\wáŋčžšđŧÁŊĐÁŠŦŽČ_- åäöÅÄÖæøÆØ´]+', '',data, re.U)
+				
 			# if the data contained only special characters, return the original data.
             if not data:
                 self.client.send(data2)
