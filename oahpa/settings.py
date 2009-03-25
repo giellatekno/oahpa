@@ -1,24 +1,25 @@
 # Django settings for oahpa project.
+# Do not add this file to public svn, for security reasons!
 import os.path
 import sys
 
 os.environ['PYTHON_EGG_CACHE'] = '/tmp'
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
      ('Saara Huhmarniemi', 'saara'),
+     ('Trond Trosterud', 'trond'),
+     ('Lene Antonsen', 'lene'),
 )
 
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'oahpa'
-#DATABASE_USER = 'oahpa_user'
-#DATABASE_PASSWORD = ''
-DATABASE_USER = 'saara'
-DATABASE_PASSWORD = 'vesiLasi'
+DATABASE_USER = 'oahpauser'
+DATABASE_PASSWORD = 'sahka'
 DATABASE_HOST = ''
 DATABASE_PORT = ''
 DATABASE_OPTIONS = {
@@ -35,7 +36,7 @@ TIME_ZONE = 'Europe/Oslo'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'no'
 
 SITE_ID = 1
 
@@ -45,7 +46,7 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/home/saara/ped/media'
+MEDIA_ROOT = '/home/oahpa/ped/oahpa/media'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -55,7 +56,7 @@ MEDIA_URL = 'http://victorio.uit.no/oahpa/media/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/admin_media/'
+#ADMIN_MEDIA_PREFIX = '/admin_media/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '70!9mdey6-i-g5+-z5ty+44l^=n)m2+c0pi2z$)654q_h1jv18'
@@ -107,7 +108,7 @@ INSTALLED_APPS = (
 LANGUAGES = (
     ('en', 'English'),
     ('fi', 'Finnish'),
-    ('nob', 'Norwegian'),
+    ('no', 'Norwegian'),
     ('sme', 'North Sami'),
     )
 
