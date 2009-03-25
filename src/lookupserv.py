@@ -34,7 +34,8 @@ class Server:
         #print self.lookup
         self.look = pexpect.spawn(self.lookup)
         #self.look.logfile = sys.stdout
-
+        # Lock for the lookup process
+        self.lock = threading.Lock()
         
     def open_socket(self):
         try:
@@ -57,7 +58,7 @@ class Server:
             for s in inputready:                
                 if s == self.server:
                     # handle the server socket
-                    c = Client(self.server.accept(),self.look)
+                    c = Client(self.server.accept(),self.look,self.lock)
                     c.start()
                     self.threads.append(c)
             time.sleep(1)
@@ -67,12 +68,13 @@ class Server:
             c.join()
                             
 class Client(threading.Thread):
-    def __init__(self,(client,address),look):
+    def __init__(self,(client,address),look,lock):
         threading.Thread.__init__(self)
         self.client = client
         self.address = address
         self.size = 1024
         self.look=look
+        self.lock=lock
         #self.lookup2cg = " | /Users/saara/gt/script/lookup2cg"
         self.lookup2cg = " | /usr/local/bin/lookup2cg"
 
@@ -89,22 +91,24 @@ class Client(threading.Thread):
 			
             data2=data
 			# clean the data for command line
-            c = [";","<",">","*","|","`","&","$","!","#","(",")","[","]","{","}",":","@","\""]
+            c = [";","<",">","*","|","`","&","$","!","#","(",")","[","]","{","}",":","@","\"","\r"]
             for a in c:
                 data = data.replace(a,'')
 
 			# Take out all other characters, to avoid lookup errors
-            #data = re.sub(r'[^\wáŋčžšđŧÁŊĐÁŠŦŽČ_- åäöÅÄÖæøÆØ´]+', '',data, re.U)
             try:
                 data2 = data.decode('utf-8')
             except:
                 #data = data.encode('utf-8')
                 f.write("Not utf-8: " + data)
-                data = re.sub(r'[^\wáŋčžšđŧÁŊĐÁŠŦŽČ_- åäöÅÄÖæøÆØ´]+', '',data, re.U)
+                self.client.send("error")
+                continue
+
+                #data = re.sub(r'[^\wáŋčžšđŧÁŊĐÁŠŦŽČ_- åäöÅÄÖæøÆØ]+', '',data, re.U)
 				
 			# if the data contained only special characters, return the original data.
             if not data:
-                self.client.send(data2)
+                self.client.send("error")
                 continue
 
             # quit with q
@@ -113,14 +117,15 @@ class Client(threading.Thread):
                 running = 0				
                 continue
 			
-            f.write(data)
-            f.write("\n")
-            
             data = data.strip()+ "\n"
-            #print data
-            self.look.sendline(data)
+            f.write("input: "+ data)
+            f.write("\n")
+			
+            self.lock.acquire()
+            self.look.sendline(data)			
             index = self.look.expect(['\r?\n\r?\n','ERROR',pexpect.EOF, pexpect.TIMEOUT])
-            
+            self.lock.release()
+			
             #If there is an error, then restart the lookup process
             if index ==1 or index==2 or index==3:
                 try:
@@ -128,13 +133,13 @@ class Client(threading.Thread):
                 except:
                     self.client.send("error")
                 self.client.send("error")
-                print index
+                f.write("Error in lookup")
                 continue
                 
             if index ==0:
                 result = self.look.before
                 
-                f.write(result)
+                f.write("analysis for:" + data + " " + result)
                 f.write("\n")
 
                 # hack for removing the stderr from lookup 0%>>>>>>100% ...
