@@ -34,14 +34,18 @@
 %\tableofcontents
 
 \begin{abstract}
-The article presents an interactive CALL program for North Sámi, based upon a robust fst analyser and a constraint grammar-based analyser. The analyser makes it possible to handle in principle any input given by the user (rather than relying upon string matching), and by relaxing the analysis of the input string, we are able to find and correct errors made by the user. 
+The article presents a set of interactive CALL (Computer Assisted Language Learning) programs for North Sámi (a Uralic language spoken in Northern Fennoscandia), based upon a robust fst analyser and a constraint grammar-based analyser. The analyser makes it possible to handle in principle any input given by the user (rather than relying upon string matching), and by relaxing the analysis of the input string, we are able to find and correct errors made by the user. 
 \end{abstract}
 
 \section{Introduction}
 This paper presents how finite state transducers and constraint grammars are reused in a new setting, as building blocks in pedagogical programs for learners of North Sámi \footnote{Thanks to our funding agencies.}. %the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding. The work behind the basic analysers was financed by the Research Council of Norway}. 
 
-Section 2 describes the initial linguistic resources and the pedagogical idea behind the programs. In the third section we explain the different modules made for the pedagogical programs. The fourth section deals with the design of three of the programs. The final section present an evaluation.
+Section 2 describes the initial linguistic resources and the pedagogical idea behind the programs. In the third section we explain the different modules made for the pedagogical programs. The fourth section deals with the design of three of the programs. The final section presents an evaluation.
+% See nodalida_comments.txt. Eventually: 
+% The final section presents a summary.
 
+
+% Other CALL literature, probably in here., perhaps with subsections.
 
 \section{Background}
 
@@ -214,7 +218,7 @@ In the example in Figures \ref{feedbacknouns}, the correct illative Sg word form
 
 %\subsection{Analyser for student's input} \label{sentencefeedback}
 %\subsection{Analysing the student's input syntactically} \label{sentencefeedback}
-\subsection{Analysing the syntax of the student's answer} \label{sentencefeedback}
+\subsection{Syntactic analyses of the student's answer} \label{sentencefeedback}
 We have chosen not to use multiple-choice, but rather letting the student formulate his/her own answer. That means that we have to analyze the answer. To a certain question one may give many kinds of acceptable answers. In Sámi you may change word order, and also add many kinds of particles. \\
 
 %\textit{Maid don lohket ikte?} (What did you read yesterday?)
@@ -234,7 +238,7 @@ We have chosen not to use multiple-choice, but rather letting the student formul
 %\item \textit{Don lohket ollu áviissaid.} \\ $\rightarrow$ Are you sure that you answer with the correct person?  
 %\end{itemize}
 
-We use vislcg3 for analysing the student's input. The program is based on constraint grammar, manually written, context dependent rules, mainly used for selecting the correct analysis in case of homonymy. Each rule either adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentential context. Context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). 
+We use vislcg3 for analysing the student's input. The reason for choosing constraint grammar as parser platform was that only CG is robust enough for handling unconstrained input (), and at the same time accurate enough to identify errors. The program is based on constraint grammar, manually written, context dependent rules, mainly used for selecting the correct analysis in case of homonymy. Each rule either adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentential context. Context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). 
 
 Context conditions in the same rule may be linked, i.e. conditioned upon each other, negated or blocked by interfering words or tags. Vislcg3 is documented at \cite{Visl:08}.
 
@@ -388,10 +392,10 @@ The questions are generated, the question and answer are analysed together, and 
 	
 
 %\subsection{Sahka -- dialogues}
-\subsection{The dialogue gama}
+\subsection{The dialogue game}
 The idea behind the dialogues is that the student may exercise Sámi in a quite natural way, and at the same time get comments about errors. There will be two kinds of feedback: tags for navigation in the dialogue itself, and tags that generate tutorial feedback.
 
-Each dialogue is made to a scenario, and each scenario has are underlying pedagogical goals. E.g. in the Grocery-dialogue, the scenario is a shop, and the student is telling what kind of food s/he wants. The underlying pedagogical goal is to exercise inflecting objects in accusative.
+Each dialogue is made to a scenario, and each scenario has a set of underlying pedagogical goals. E.g. in the Grocery-dialogue, the scenario is a shop, and the student is telling what kind of food s/he wants. The underlying pedagogical goal is to exercise inflecting objects in accusative.
 
 % \begin{figure}[htbp]
 % \begin{center}
@@ -464,6 +468,9 @@ the dialogue and QA games
 
 \section{Conclusion}
 
+% Missing: The evaluation.
+% Evaluating the 
+
 By using a sloppy version of the syntactical analyser for North Sámi, combined with a set of error-detection rules, we have been able to build a flexible CALL resource. The programs are made in a  modular way, and it is easy to improve each module, and also to add more materials -- words, tasks, dialogues, levels, words from textbooks. 
 
 The program is something quite new among pedagogical programs for Sámi, and indeed quite rare within the CALL field. The programs are not linked to a certain chapter in a textbook, or to a certain level in the student's progression. Instead, all programs have many options, so the student can choose what to exercise, and on what level. The QA and dialogue program are tolerant towards variation in student answer (not only string matching), and the random generation of tasks more or less in all of the programs, the student can use them over and over again. 
@@ -485,6 +492,24 @@ The program is something quite new among pedagogical programs for Sámi, and ind
 \newblock 1995.
 \newblock {\em Constraint grammar: a language-independent system for parsing unrestricted text}.
 \newblock Mouton de Gruyter
+
+
+\bibitem[\protect\citename{Samuelsson and Voutilainen}1997]{SamuelssonVoutilainen:97}
+{Christer Samuelsson and Atro Voutilainen}.
+\newblock 1997.
+\newblock {\em Comparing a Linguistic and a Stochastic Tagger}.
+\newblock Reference still not fixed
+
+
+% @inproceedings{Samuelsson97,
+% author = "Christer Samuelsson and Atro Voutilainen", 
+% title = "Comparing a Linguistic and a Stochastic Tagger",
+% booktitle = @ACL-97,
+% pages = "",
+% publisher = "",
+% year = "1997",
+% }
+
 
 \bibitem[\protect\citename{{Trosterud}}2007]{Trosterud:07}
 {Trond Trosterud}.

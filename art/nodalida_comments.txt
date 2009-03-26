@@ -77,20 +77,43 @@
 > expected from a paper of this kind to give some motivation from 
 > the CALL literature including other CALL programs developed with 
 > the VISL tools. 
+___TODO___
+Needed to address this is the following:
+- Call literature
+- evaluation of log (the game works)
+- Otherwise I am not so convinced by the reviewer: What does s/he miss?
+
 > In particular I am not sure that the idea of designing the pedagogical 
 > programs as additions within the visl analyzers is a good idea. While 
 > the ambition to handle relatively free input from learners is 
 > noteworthy, thus making a powerful analyser a necessity, the requirements 
 > of a program for language teaching and learning are not specified, 
 > so it is hard to know whether they can be met by the proposed 
-> approach. But modularity is usually a good strategy. And, since no 
+> approach. 
+tt:
+This is a valid point. The requirements are:
+- able to reliably analyse input
+- able to detect errors
+- vislcg3 fulfils these goals.
+
+> But modularity is usually a good strategy. And, since no 
 > evaluation 
 > is presented, the success of the approach cannot be estimated either. 
+
+What is needed here is a Sahka log. To bad it was not installed from the 
+beginning. Our experience is that 
+- the visl analyser is a good idea
+- no other analyser would have been a good idea. 
+This we'd better state.
+
+
 > The paper would gain much from relating itself to current research 
 > in the CALL field, in particular CALL with NLP-modules. 
 > There are a number of typos, e.g. The dialogue gama (4.2 header), 
+fixed. tt.
 > 'each scenario has are underlying' (4.2 second paragraph). 
-> 
+fixed.tt.
+
 > 
 > -------------------- review 2 -------------------- 
 > 
@@ -118,11 +141,13 @@
 > disambiguation /syntactic analysis. A user can easily access the system 
 > and get flexible feedback about errors. A question answering game is 
 > included. 
+
 > Some remarks: 
 > The introduction of the article should be expanded, the background and 
 > comparison with other CALL tools would be useful. 
 > The title is '... programs ...' but you talk about a 'program' in the 
-> Abstract. 
+Fixed. tt.
+
 > Spelling should be checked. 
 > 
 > 
@@ -164,32 +189,42 @@
 > p. 1, Abstract: 
 > 
 > what does 'CALL program' stand for? 
-> 
+Explained, albeit the result is far from elegant. tt.
+
 > what is 'North Sámi'? After going into the paper, the reader knows that it 
 > is a language, but this should be clarified right from the start. 
-> 
+Sigh. Again, explained. tt.
+
 > p.1, Introduction, at the end: 
-> 
 > The paper says that he final section presents an evaluation. Where is this 
 > section concerned with the evaluation? The last section presents the 
 > conclusions, and nothing seems to be said there about evaluation. 
-> 
+___TODO___
+This we must look into.
+What do we mean by "evaluation"?
+Subjectively?
+Analysing the logs? -- this we may do:
+- which games are more popular
+- where are the errors
+objectively?
+- we are not in a position to tell whether pupils learn from our programs
+  (no independent control group). Thus, this should be stated when referring to an
+  evaluation.. tt.
+
+
+
 > p. 4, top: 
-> 
 > Section 3 describes the modules of the pedagogical programs. Hence, the 
 > title of Section 3.5 should be changed, e.g., to "3.5 Syntactic analyser 
 > of the student's answer" 
-> 
+Done. tt.
+
 > Typo 
-> 
 > p. 1, Introduction: 
-> 
 > "The final section present an evaluation" ->  "The final section presents 
 > an evaluation" 
-> 
+Fixed tt.
+
 > p. 7 
-> 
 > "4.2 The dialogue gama" -> "4.2 The dialogue game" 
-> 
-> 
->  
+Fixed tt.
