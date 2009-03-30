@@ -8,7 +8,7 @@
 # Variable definitions          #
 # =============================== #
 
-VISLCG3 = vislcg3
+VISLCG3 = /opt/smi/common/bin/vislcg3
 TARGET = sme
 RULES = ped.cg3
 OPTDIR = /opt/smi/$(TARGET)/bin/
