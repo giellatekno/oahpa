@@ -41,8 +41,21 @@ DATABASE_HOST = 'victorio.uit.no'
 DATABASE_PORT = '' (port number)
 }}}
 
-Then start the web development server in your own computer:
+And, finally, you need to create a sami language directory. Find the
+python library directory:
+{{{
+python
+import disutils.sysconfig
+distutils.sysconfig.get_python_lib()
+}}}
+Look at that directory for django/conf/locale -directory. Create sme
+language directory and copy the locale settings there from no:
+{{{
+mkdir your_pythonlib/django/conf/locale/sme
+cp your_pythonlib/django/conf/locale/no/django.* $(djangopath)/django/conf/locale/sme/
+}}}
 
+Then start the web development server in your own computer:
 {{{
 cd ped/oahpa/
 python manage.py runserver
@@ -56,6 +69,66 @@ remote logging to the database, you need to ask saara.
 In the sandbox, it is possible to test the changes to the code and to
 html pages. After the pages are working, check them in to svn and
 update the official version in victorio. 
+
+!!Your own database
+
+Sometimes it would be good idea to have a replicate also from the
+oahpa-database, e.g. when you are testing new games. First install
+mysql: [http://dev.mysql.com/downloads/mysql/5.1.html]. See also database installation instructions in
+[http://docs.djangoproject.com/en/dev/topics/install/#database-installation]. 
+
+Look at the file /etc/my.cnf. It should have these utf8-values:
+{{{
+[client]
+default-character-set=utf8
+
+[mysqld]
+default-character-set=utf8
+collation_server=utf8_bin
+character_set_server=utf8
+character_set_client=utf8
+}}}
+
+Start the server with command:
+{{{
+sudo mysqld_safe &
+}}}
+
+Set root password and create a new user account:
+{{{
+mysqladmin -u root password "mypassword"
+}}}
+
+Look for manuals to create own user etc, but you may use the root as
+well. Next, create the database:
+{{{
+mysql -u root -p
+mysql> create database oahpa;
+mysql> exit;
+}}}
+
+Change the local settings in ped/oahpa/settings.py:
+{{{
+DATABASE_USER = 'root'
+DATABASE_PASSWORD = 'myspassword'
+DATABASE_HOST = ''
+}}}
+
+Start installing the database information:
+{{{
+cd ped/oahpa
+python manage.py syncdb
+python install.py -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt -b
+python install.py -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt -f ../sme/xml/nouns.xml
+}}}
+Install everything you need starting from the lexicons.
+
+Start Django locally:
+{{{
+python manage.py runserver
+}}}
+
+
 
 !!HTML
 
