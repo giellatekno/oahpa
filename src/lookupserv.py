@@ -23,17 +23,20 @@ class Server:
         self.size = 1024
         self.server = None
         self.threads = []
+        
 
         #fstdir="/Users/saara/gt/sme/bin"
         #lo="/Users/saara/bin/lookup"
         fstdir="/opt/smi/sme/bin"
         lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
-        
+        logfile= "/var/log/lserv.log"
+        f = open(logfile, 'a')        
+
         fst = fstdir + "/ped-sme.fst"
         self.lookup = lo + " -flags mbTT -utf8 " + fst
         #print self.lookup
         self.look = pexpect.spawn(self.lookup)
-        #self.look.logfile = sys.stdout
+        self.look.logfile = f
         # Lock for the lookup process
         self.lock = threading.Lock()
         
@@ -82,13 +85,12 @@ class Client(threading.Thread):
         running = 1
         while running:
             data = self.client.recv(self.size)
-            if not data or not data.strip():
+            data = data.strip()
+            if not data:
                 self.client.close()
                 running = 0
                 continue
 
-            f = open('/var/log/lserv.log', 'a')
-			
             data2=data
 			# clean the data for command line
             c = [";","<",">","*","|","`","&","$","!","#","(",")","[","]","{","}",":","@","\"","\r"]
@@ -100,7 +102,7 @@ class Client(threading.Thread):
                 data2 = data.decode('utf-8')
             except:
                 #data = data.encode('utf-8')
-                f.write("Not utf-8: " + data)
+                #f.write("Not utf-8: " + data)
                 self.client.send("error")
                 continue
 
@@ -118,10 +120,12 @@ class Client(threading.Thread):
                 continue
 			
             data = data.strip()+ "\n"
-            f.write("input: "+ data)
-            f.write("\n")
-			
+
+            #f = open('/var/log/lserv.log', 'a')			
+
             self.lock.acquire()
+            #f.write("input: "+ data)
+            #f.write("\n")
             self.look.sendline(data)			
             index = self.look.expect(['\r?\n\r?\n','ERROR',pexpect.EOF, pexpect.TIMEOUT])
             self.lock.release()
@@ -133,15 +137,19 @@ class Client(threading.Thread):
                 except:
                     self.client.send("error")
                 self.client.send("error")
-                f.write("Error in lookup")
+                #f.write("Error in lookup")
+                #self.lock.release()
+                #f.close()
                 continue
                 
             if index ==0:
                 result = self.look.before
                 
-                f.write("analysis for:" + data + " " + result)
-                f.write("\n")
+                #f.write("analysis for:" + data + " " + result)
+                #f.write("\n")
 
+                #f.close()
+				
                 # hack for removing the stderr from lookup 0%>>>>>>100% ...
                 result = result.replace('100%','')
                 result = result.replace('0%','')
