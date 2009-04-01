@@ -7,6 +7,7 @@
 \usepackage{graphics}
 \usepackage[utf8x]{inputenc}
 \usepackage{ucs} %sami letters\renewcommand
+\usepackage{covington} % ling examples
 
 %\usepackage{linguex}
 %{\refdash}{}
@@ -14,7 +15,7 @@
 %\usepackage{multirow}
 %\usepackage{tabularx} %specified width
 
-\title{Interactive pedagogical programs based on constraint grammar.}
+\title{Interactive pedagogical programs based on constraint grammar}
 %\author{NN}
 
 \author{Lene Antonsen  \and
@@ -30,16 +31,13 @@
 %\tableofcontents
 
 \begin{abstract}
-The article presents a set of interactive CALL (Computer Assisted Language Learning) programs for North Sámi (a Uralic language spoken in Northern Fennoscandia), based upon a robust fst analyser and a constraint grammar-based analyser. The analyser makes it possible to handle in principle any input given by the user (rather than relying upon string matching), and by relaxing the analysis of the input string, we are able to find and correct errors made by the user. 
+The article presents a set of interactive CALL (Computer Assisted Language Learning) programs for North Sámi (a Uralic language), based upon a robust fst analyser and a constraint grammar-based analyser. The analyser makes it possible to handle any input given by the user (rather than relying upon string matching), and by relaxing the analysis of the input string, we are able to find and correct errors made by the user. 
 \end{abstract}
 
 \section{Introduction}
 This paper presents how finite state transducers and constraint grammars are reused in a new setting, as building blocks in pedagogical programs for learners of North Sámi \footnote{Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding the project. The work behind the basic analysers was financed by the Research Council of Norway}. 
 
-Section 2 describes the initial linguistic resources and the pedagogical idea behind the programs. In the third section we explain the different modules made for the pedagogical programs. The fourth section deals with the design of three of the programs. The final section presents an evaluation.
-% See nodalida_comments.txt. Eventually: 
-% The final section presents a summary.
-
+Section 2 describes the initial linguistic resources and the pedagogical idea behind the programs. In the third section we explain the different modules for the pedagogical programs. The fourth section deals with the design of three of the programs. The final section gives an evaluation.
 
 % Other CALL literature, probably in here., perhaps with subsections.
 
@@ -53,9 +51,9 @@ The basic grammatical analysis of North Sámi was done with finite state transdu
 The existing language resources, which we have used in the pedagogical programs, are the following:
 
 \begin{itemize}
-\item a morphological analyser/generator with finite state transducers, compiled with the Xerox compiler xfst.  The lexicon contains 97.500 lemmas -- almost half of them are proper nouns. One may compile two different variants of the analyser/generator, one which is very tolerant, with morphological patterns based upon actual usage, and one which is normative, and adheres to the written standard 
+\item a morphological analyser/generator with finite state transducers, compiled with the Xerox compiler xfst.  The lexicon contains 97.500 lemmas -- almost half of them proper nouns. One may compile two different variants of the analyser/generator, one which is tolerant, with morphological patterns based upon actual usage, and one which is normative, and adheres to the written standard 
 %\footnote{We use the abbreviations for the Sámi languages in accordance with the ISO 639-2 standard for language codes. The code is \textit{sme} for North Sámi and \textit{nob} for Norwegian.}.  
-\item a morphological disambiguator based on constraint grammar with manually written rule sets and a syntactic analyser which adds grammatical function and dependency (vislcg3). 
+\item a morphological disambiguator based on constraint grammar with manually written rule sets and a syntactic analyser adding grammatical function and dependency (vislcg3). 
 \item number word generator, made with finite state transducers.
 \end{itemize}
 
@@ -69,9 +67,9 @@ Our leading idea was to utilize the existing analyser to develop pedagogical pro
 The central goals for the development of the pedagogical programs were that:
 
 \begin{itemize}
-\item they should be very flexible: Teacher or student may choose exactly what they want to train, and adapt it to each student's linguistic skills 
+\item they should be flexible: Teacher or student may choose exactly what they want to train, and adapt it to each student's linguistic skills 
 \item one should be able to restrict the vocabulary to particular textbooks, so that it is easy to integrate the tools to the instruction
-\item the student may choose between the main dialects 
+\item the student may choose between dialects 
 \item the student should get immediate feedback about errors and translation and grammar help easily
 %\item the student and the teacher should be able to work with different topics instead of textbooks
 \item the programs should be accessible freely via Internet, without installing new programs in the computer
@@ -89,22 +87,27 @@ Because North Sámi is used in three countries, we wanted the student to be able
 
 \subsection{Pedagogical lexicon}
 
-The main lexicon of the basic transducer consists of the full Sámi vocabulary, the inflectional and derivational morphology, and the non-segmental morphological processes (consonant gradation, diphthong simplification, etc.). Figure \ref{nounsmelex} shows a lexical entry.
+The main lexicon of the basic transducer consists of the full Sámi vocabulary, the inflectional and derivational morphology, and the non-segmental morphological processes (consonant gradation, diphthong simplification, etc.).  \ref{nounsmelex} shows a lexical entry (AIGI is the continuation class).
 
-\begin{figure}[htbp]
-\begin{center}
-\scalebox{.6}[.6]{\includegraphics{presentation/img/noun-sme-lex.png}}\\
-\caption{Example of entry in the main lexicon. AIGI is the continuation class.}
-\label{nounsmelex}
-\end{center}
-\end{figure}
+\begin{example}\label{nounsmelex}
+\begin{itemize}
+\texttt{miel0ki:miel'ki AIGI ;}
+\end{itemize}
+\end{example}
+
+% \begin{figure}[htbp]
+% \begin{center}
+% \scalebox{.6}[.6]{\includegraphics{presentation/img/noun-sme-lex.png}}\\
+% \caption{Example of entry in the main lexicon. AIGI is the continuation class.}
+% \label{nounsmelex}
+% \end{center}
+% \end{figure}
 
 The main lexicon is used for analysing the student's input, but we wanted a pedagogical lexicon for more information about the lemmas, and as a base for the quiz and grammar tasks. The lexicon should be relevant for the education in Sámi in schools and the university. Therefore we made a special pedagogical lexicon.
 
 We collected the lemmas, which were used in key textbooks for North Sámi, and added Norwegian translation, information about semantic set, dialect and inflection. We also added information about source -- which textbooks the lemma is used in. Cf. section \ref{set} for more information about our semantic sets. The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives. There is also a small lexicon for pronouns and numbers. Figure \ref{nounlex} shows an example of an entry in the noun lexicon. \\
 
-
-\begin{figure}[htbp]
+\begin{figure}[tbp]
 \begin{center}
 \scalebox{.5}[.5]{\includegraphics{presentation/img/nounlexicon.png}}\\
 \caption{Example of entry in the pedagogical lexicon.}
@@ -159,11 +162,14 @@ Sg3 &Sg3 &Du3 &Du3 &Pl3 &Pl3 \\
 For sentence generation the morphological generator has to be strict. This means that the generator will generate one and only one word form for every grammatical word. The analyser, on the other hand, should be tolerant (accept correct variants of the same grammatical word), but we have the opportunity of compiling two different analysers/generators. We use the normative but variation-tolerant transducer for analysing the input, and for sentence generation we use the strict one, which generates only one word form for every grammatical word.
 
 Because of dialectical variation, we made two versions of the strict fst. We marked relevant lines in our source code in one of the following ways:
-\begin {itemize}
-\item NG (not generate for any of the dialects)
-\item NOT-KJ (not generate for KJ-dialect) 
-\item NOT-GG (not generate for GG-dialect)  
-\end {itemize}
+
+\begin{example}\label{ped}
+\begin{itemize}
+\item[(a)] NOT-KJ (not generate for KJ-dialect) 
+\item[(b)] NOT-GG (not generate for GG-dialect)  
+\item[(c)] NG (not generate for any dialect)
+\end{itemize}
+\end{example}
 
 We show an example in Figure \ref{smelex}. We also marked entries in the pedagogical lexicon-files with NOT-KJ and NOT-GG. In the makefile there are then options to generate the required dialectical variant forms of each grammatical word. This system can easily be expanded with more dialects.
 
@@ -176,7 +182,7 @@ We show an example in Figure \ref{smelex}. We also marked entries in the pedagog
 \end{center}
 \end{figure}
 
-\subsection{System for feedback on morphology}
+\subsection{System for feedback on morphology}\label{mfeedback}
 
 The information in the lexicon about inflection is there only to give a good feedback to the student. If s/he doesn't inflect the lemma correctly, s/he can ask for hints about the inflection, and try once more, instead of getting the correct answer straight away. 
 
@@ -214,7 +220,7 @@ In the example in Figures \ref{feedbacknouns}, the correct illative Sg word form
 %\subsection{Analyser for student's input} \label{sentencefeedback}
 %\subsection{Analysing the student's input syntactically} \label{sentencefeedback}
 \subsection{Syntactic analyses of the student's answer} \label{sentencefeedback}
-We have chosen not to use multiple-choice, but rather letting the student formulate his/her own answer. That means that we have to analyze the answer. To a certain question one may give many kinds of acceptable answers. In Sámi you may change word order, and also add many kinds of particles. \\
+We have chosen not to use multiple-choice, but rather letting the student formulate his/her own answer. That means that we have to analyze the answer. To a certain question one may give many kinds of acceptable answers. In Sámi you may change word order, and also add many kinds of particles. 
 
 %\textit{Maid don lohket ikte?} (What did you read yesterday?)
 %\begin{itemize}
@@ -233,47 +239,50 @@ We have chosen not to use multiple-choice, but rather letting the student formul
 %\item \textit{Don lohket ollu áviissaid.} \\ $\rightarrow$ Are you sure that you answer with the correct person?  
 %\end{itemize}
 
-We use vislcg3 for analysing the student's input. The reason for choosing constraint grammar as parser platform was that only CG is robust enough for handling unconstrained input (), and at the same time accurate enough to identify errors. The program is based on constraint grammar, manually written, context dependent rules, mainly used for selecting the correct analysis in case of homonymy. Each rule either adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentential context. Context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). 
+We use vislcg3 for analysing the student's input. The reason for choosing constraint grammar as parser platform was that only CG is robust enough for handling unconstrained input, and at the same time accurate enough to identify errors. The program  contains manually written, context dependent rules, mainly used for selecting the correct analysis in case of homonymy. Each rule either adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentential context. Context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). 
 
 Context conditions in the same rule may be linked, i.e. conditioned upon each other, negated or blocked by interfering words or tags. Vislcg3 is documented at \cite{Visl:08}.
 
 The question and the answer are merged, and given to the analyser as one text string. We use a ruleset which disambiguates the student's input only to a certain extent, because there will probably be grammatical and orthographic errors in the input. The last part of the file consists of rules for giving feedback to the student's grammatical errors, and rules for navigating to the correct next question of in the dialogue, due to the student's answer. How to generate feedback or navigation instructions is explained in section \ref{tutorial} and \ref{navigation}.
 
 
-\begin{figure}[htbp]
+\begin{figure}[tbp]
 \begin{center}
-\scalebox{.45}[.45]{\includegraphics{presentation/img/qa2.pdf}}
-\caption{A schematical overview of analysis process.}
+\scalebox{.45}[.40]{\includegraphics{presentation/img/qa2.pdf}}
+\caption{An overview of the analysis process.}
 \label{qasystem}
 \end{center}
 \end{figure}
 
-The question mark in the question is exchanged for a special symbol ("qst" QDL). We use QDL rather than the questionark itself, because we do not want to introduce a sentence delimiter in the analysis, but at the same time we want to refer to the question and the answer separately in the rules (left or right side of the QDL). An example analysis is shown in Figure \ref{iktelohken}.
+The question mark is exchanged for a special symbol ("qst" QDL). We do not want to introduce a sentence delimiter, but at the same time we want to refer to the question and the answer separately in the rules (cf. figure \ref{iktelohken}).
 
-\begin{figure}[htbp]
+\begin{figure}[tbp]
 \begin{center}
-\scalebox{.55}[.5]{\includegraphics{presentation/img/iktelohken3.png}}
-\caption{Question and answer after morphological analysis and the script lookup2cg, but before disambiguation.}
+\scalebox{.53}[.4]{\includegraphics{presentation/img/iktelohken3.png}}
+\caption{Between analysis and disambiguation.}
 \label{iktelohken}
 \end{center}
 \end{figure}
 
-\newpage
 \subsubsection{Tutorial feedback} \label{tutorial}
-Tutorial feedback is feedback about grammar errors (CG prefix is \texttt{&grm}), and in Figure \ref{cg3} we see a rule for assigning a tag if the student has not used accusative, when the question requires one. And in Figure \ref{maidlohket} we see how the vislcg3 file has disambiguated and added the tag to the input which is the analysis from Figure \ref{iktelohken}. The tag generates feedback to the student.
+Tutorial feedback is feedback about grammar errors (CG prefix \texttt{\&grm}), and in Figure \ref{cg3} we see a rule for assigning a tag if the student has not used accusative, when the question requires one. If the interrogative pronoun is in accusative, we expect an accusative in the answer.
+%, if the question is not asking for a verb, e.g. "What do you do?" (WORK-V)
+The rule assigns (maps) a missing-Acc-tag to the interrogative pronoun if there is no accusative or negation verb in the answer.
 
-\begin{figure}[htbp]
+\begin{figure}[tbp]
 \begin{center}
 \scalebox{.41}[.41]{\includegraphics{presentation/img/pedcg3ny.png}}
-\caption{If the interrogative pronoun is in accusative, we expect an accusative in the answer, if the question is not asking for a verb, e.g. "What do you do?" (WORK-V). The rule assigns (maps) a missing-Acc-tag to the interrogative pronoun if there is no accusative or negation verb in the answer.}
+\caption{Rule assigning missing Acc -tag}
 \label{cg3}
 \end{center}
 \end{figure}
 
-\begin{figure}[htbp]
+Figure \ref{maidlohket} shows how the vislcg3 file has disambiguated and added the tag to the input which is the analysis from Figure \ref{iktelohken}. The tag generates feedback to the student. The sentence in Figure \ref{maidlohket} translates \textit{What did you read yesterday? Yesterday I read an old book}. The object is in Nom instead of Acc, and the grammar adds the error tag.
+
+\begin{figure}[tbp]
 \begin{center}
 \scalebox{.47}[.47]{\includegraphics{presentation/img/vasta_feedback.png}}
-\caption{The grammarerrortag is added to the interrogative pronoun. (What did you read yesterday qst Yesterday I read an old book (Nom instead of Acc)), with help of vislcg3 grammar file. The grammarerrortag generates tutorial feedback.}
+\caption{Sentence with missing Acc tag added}
 \label{maidlohket}
 \end{center}
 \end{figure}
@@ -285,8 +294,6 @@ Tutorial feedback is feedback about grammar errors (CG prefix is \texttt{&grm}),
 %\label{maidlohket}
 %\end{center}
 %\end{figure}
-%
-%
 %
 %\begin{figure}[htbp]
 %\begin{center}
@@ -382,9 +389,7 @@ The questions are generated, the question and answer are analysed together, and 
 %\caption{Vasta, at \textit{http://victorio.uit.no/oahpa/vasta/}}
 %\label{vasta}
 %\end{center}
-%\end{figure}
-
-	
+%\end{figure}	
 
 %\subsection{Sahka -- dialogues}
 \subsection{The dialogue game}
@@ -461,14 +466,15 @@ the dialogue and QA games
 
 \section{Evaluation}
 
-At the time of writing, the programs have been in public use for approximately two months. All user input has been logged from the very beginning, except for Vasta and Sahka, these games have, due to technical difficulties, been logged for 8 days only. The log contains 32339 answers, of these a little approximately 600, or under 2\%, were nonsense answers (of the type \textit{asdf, aaaaa}, etc.).
+At the time of writing, the programs have been in public use for approximately two months. All user input has been logged from the very beginning, except for Vasta and Sahka, these games have, due to technical difficulties, been logged for 8 days only. The log contains 32339 queries (560 queries/day for the 4 other games in this period), of these a little approximately 600, or under 2\%, were nonsense answers (of the type \textit{asdf, aaaaa}, etc.).
 
 \begin{table}[htdp]
 \caption{Answers to the games (Vasta and Sahka were logged at the end of the period only)}
 \begin{center}
 \begin{tabular}{|l|r|r|r|r|}
-Game     & Correct &   Wrong &    Total &  Corr-% \\
-\hline									&  
+\hline
+Game     & Correct &   Wrong &    Total &  \% \\
+\hline									 
 morfa-s  &  6920   & 6323    & 13243    & 52.3 \\
 morfa-c  &  1349   & 1613    & 2962	    & 45.5  \\
 numra    &  3086   & 2512    & 5598	    & 55.1  \\
@@ -482,13 +488,29 @@ Tot/av   & 11696  & 10872  & 22568  & 51.8 \\
 \label{log}
 \end{table}%
 
-As can be seen from table \ref{log},  
+As can be seen from table \ref{log}, slightly more than half of the queries resulted in correct answers. When confronted with an error feedback, the user is offered grammatical help, and thereafter has the possibility to give a new answer to the same query. An investigation of 1500 queries to morfa-c showed that 444, or 30\%, were such repeated answers. Even though we have no log info of the use of the morphological feedback (section \ref{mfeedback}), our impression from classroom experience is that the users are actively using the feedback system. This indicates that what we are witnessing is a truly interactive process, where users err in half of the queries, and follow up with a new try for every second errounous form, possibly after having read the morphological advice from the program.
 
+The error log for the dialogue game Sahka shows that one fourth of the errors are due to orthographical errors. Most of the "no finite verb" errors are elliptical answers (of the type \textit{yes, no, 14}, etc.), these are not accepted, for pedagogical reasons. The remaining cases are errors where the misspelled verb is an existing word. Also for the other grammatical errors verb errors are dominating. The main goal of the program was to train verb forms in dialogue games, and the error log shows that the game is able to capture such errors.
+
+\begin{table}[htdp]
+\caption{Error types for Sahka, ordered after type}
+\begin{center}
+\begin{tabular}{|l|r|l|r|}
+\hline
+Error type & \# & Error type & \# \\
+\hline												    
+no finite verb    & 85 & wr. case for V-arg & 22  \\
+orth. error       & 83 & wr. case after Num & 10 \\
+wrong S-V agr     & 46 & wrong tense          & 9 \\
+no infinite V  & 30 & no postposition      & 6 \\
+wrong V choice & 24 & wrong word           & 7  \\
+\hline
+\end{tabular}
+\end{center}
+\label{log}
+\end{table}%
 
 \section{Conclusion}
-
-% Missing: The evaluation.
-% Evaluating the 
 
 By using a sloppy version of the syntactical analyser for North Sámi, combined with a set of error-detection rules, we have been able to build a flexible CALL resource. The programs are made in a  modular way, and it is easy to improve each module, and also to add more materials -- words, tasks, dialogues, levels, words from textbooks. 
 
