@@ -41,14 +41,7 @@ DATABASE_HOST = 'victorio.uit.no'
 DATABASE_PORT = '' (port number)
 }}}
 
-And, finally, you need to create a sami language directory. Find the
-python library directory:
-{{{
-python
-import disutils.sysconfig
-distutils.sysconfig.get_python_lib()
-}}}
-Look at that directory for django/conf/locale -directory. Create sme
+And, finally, you need to create a sami language directory. Django should be installed in /Library/Python/2.5/site-packages/ -directory. Look at that directory for django/conf/locale -directory. Create sme
 language directory and copy the locale settings there from no:
 {{{
 mkdir your_pythonlib/django/conf/locale/sme
