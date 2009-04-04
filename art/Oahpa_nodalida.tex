@@ -39,7 +39,6 @@ This paper presents how finite state transducers and constraint grammars are reu
 
 Section 2 describes the initial linguistic resources and the pedagogical idea behind the programs. In the third section we explain the different modules for the pedagogical programs. The fourth section deals with the design of three of the programs. The final section gives an evaluation.
 
-% Other CALL literature, probably in here., perhaps with subsections.
 
 \section{Background}
 
@@ -56,7 +55,19 @@ The existing language resources, which we have used in the pedagogical programs,
 \item number word generator, made with finite state transducers.
 \end{itemize}
 
-Vislcg3 is a new generation of the open source compiler vislcg. It is a compiler for  constraint grammar (CG) parsers; a program that selects the correct analysis in case of homonymy, and adds information on grammatical functions and dependency relations. CG was launched in the early 90'ies \cite{Karlsson:95}. We have explained how it works in \ref{sentencefeedback}. The Xerox tools are documented in \cite{BeesleyKarttunen:03}. %Our main reason for using CG was that there already existed a CG-based parser for Sami, capable of giving robust grammatical analyses of open-doman text. We also found the CG parser capable of handling learner language input and diagnosing errors in dialogue systems.%, and have so far not found references to accessible parser-based iCALL dialogue systems using other parsing techniques. % too offensive? But true! (and perhaps doing no good other than revealing our lack of familiarity with the literature...)
+Vislcg3 is a new generation of the open source compiler vislcg. It is a compiler for  constraint grammar (CG) parsers; a program that selects the correct analysis in case of homonymy, and adds information on grammatical functions and dependency relations. CG was launched in the early 90'ies \cite{Karlsson:95}. We have explained how it works in \ref{sentencefeedback}. The Xerox tools are documented in \cite{BeesleyKarttunen:03}. 
+
+%Our main reason for using CG was that there already existed a CG-based parser for Sami, capable of giving robust grammatical analyses of open-doman text. We also found the CG parser capable of handling learner language input and diagnosing errors in dialogue systems.%, 
+
+% Other CALL literature, probably in here., perhaps with subsections.
+
+
+
+% Reference, quoting letter from Trude Heift:
+%You are right that the literature on ICALL systems is very scattered - I assume you had a look at the overview of parser-based projects described in our book (Heift & Schulze, 2007 - Routledge). There are VERY few working systems, i.e., only 3 I know of. One is a system for Japanese by Nagata (a meanwhile commercial system); a system for Portuguese - Tagarella by Meurers & Amaral which I believe covers content for an introductory course of L2 Portuguese; and the e-tutor which basically covers the entire L2 grammar of German taught in the first three university courses. I am certain that if you email the researchers, you'll get access to the systems. In addition, I know that Wolfgang Menzel at the Univeristy of Hamburg was working on a game-like system ("The Market Place") but I don't know where the project is at and whether it's in actual use by students.
+%For information on the parsing aspects of the etutor, please see the following article:
+%Heift, T. & Nicholson, D. (2001). Web Delivery of Adaptive and Interactive Language Tutoring. International Journal of Artificial Intelligence in Education, 12(4), 310-325.
+
 
 
 \subsection{The pedagogical idea} \label{pedidea}
@@ -528,6 +539,13 @@ The program is something quite new among pedagogical programs for Sámi, and ind
 \newblock CSLI publications in Computational Linguistics
 \newblock USA
 
+\bibitem[\protect\citename{Heift and Nicholson}2001]{Heift:01}
+{Trude Heift and Devlan Nicholson}.
+\newblock 2001.
+\newblock {\em Web Delivery of Adaptive and Interactive Language Tutoring}.
+\newblock {310--325},
+\newblock {12(4)}
+\newblock International Journal of Artificial Intelligence in Education
 
 \bibitem[\protect\citename{Karlsson et. al}1995]{Karlsson:95}
 {Fred Karlsson and Atro Voutilainen and Juha Heikkilä and Arto Anttila}.
