@@ -11,7 +11,7 @@ import os
 import re
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind(("", 9000))
+server_socket.bind(("localhost", 9000))
 server_socket.listen(5)
 
 fstdir="/opt/smi/sme/bin"
