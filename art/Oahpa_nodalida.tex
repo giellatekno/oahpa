@@ -50,16 +50,16 @@ The existing language resources, which we have used in the pedagogical programs,
 \item a morphological analyser/generator with fst, compiled with the Xerox compiler xfst.  The lexicon contains 97.500 lemmas -- almost half of them proper nouns. One may compile two different variants of the analyser/generator -- one is tolerant, with morphological patterns based upon actual usage, and the other is normative, and adheres to the written standard. 
 %\footnote{We use the abbreviations for the Sámi languages in accordance with the ISO 639-2 standard for language codes. The code is \textit{sme} for North Sámi and \textit{nob} for Norwegian.}.  
 \item a morphological disambiguator based on CG with manually written rule sets and a syntactic analyser adding grammatical function and dependency (vislcg3). 
-\item number word generator, made with fst.
+\item number word generator, made with xfst.
 \end{itemize}
 
-Vislcg3 is a new generation of the open source compiler vislcg. It is a compiler for CG parsers; a program that selects the correct analysis in case of homonymy, and adds information on grammatical functions and dependency relations. CG was launched in the early 90'ies \cite{Karlsson:95}. We have explained how it works in \ref{sentencefeedback}. The Xerox tools are documented in \cite{BeesleyKarttunen:03}. 
+Vislcg3 is a new generation of the open source compiler vislcg. It is a compiler for CG parsers; a program that selects the correct analysis in case of homonymy, and adds information on grammatical functions and dependency relations. CG was launched in the early 90'ies \cite{Karlsson:95}. We explain how it works in \ref{sentencefeedback}. The Xerox tools are documented in \cite{BeesleyKarttunen:03}. 
 
 \subsection{Interactive parser-based CALL}
 
 Vislcg3 is used in the VISL-suite of games for teaching grammatical analysis on the Internet. Most of the games are based on pre-analysed sentences, but in one program the user can type in any text in one of 7 languages, and get it analysed, or changed into a grammar exercise. \cite{Bick:05}.
 
-Even if many interactive parser-based programs for CALL are described in the literature, see \cite{Gamper:02,Heift:07}, we cannot find any information on the Internet about that they are working. Most systems are only made as prototypes. One of very few exceptions is a program with German grammar for foreigners, which gives good feedback to student's errors, but the student's possible input is very restricted, and there is no dialogue. The grammar formalism used is derived from Head-driven Phrase Structure Grammar. \cite{Heift:01,Heift:02}.
+Even if many interactive parser-based programs for CALL are described in the literature, see \cite{Gamper:02,Heift:07}, very few of them are available for actual use online. Most systems are only made as prototypes. One of very few exceptions is a program teaching German to foreigners, which gives very good feedback to student's errors, but the student's possible input is restricted to a small, fixed vocabulary, and there is no dialogue. The grammar formalism used is Head-driven Phrase Structure Grammar. \cite{Heift:01,Heift:02}.
 
 %Our main reason for using CG was that there already existed a CG-based parser for Sami, capable of giving robust grammatical analyses of open-doman text. We also found the CG parser capable of handling learner language input and diagnosing errors in dialogue systems.%, 
 
@@ -97,18 +97,18 @@ Our leading idea was to utilize the existing CG analyser to develop pedagogical 
 
 The central goals for the development of the pedagogical programs were that they should be flexible so the student may choose exactly what she will train, also the level. One should be able to restrict the vocabulary to particular textbooks, so that it is easy to integrate the tools to the instruction. Immediate feedback about errors, and translation and grammar help was important. And the programs should be accessible freely via Internet, without installing new programs in the computer.
 
-Because of the complex morphology in Sámi languages, it demands a lot of practising before the student reaches necessary skills. But Sámi is a minority language and it is a common situation that the person learning Sámi does not get enough opportunities to practise the language in a natural way. Because of that, programs accessible on the Internet may be a useful supplement to the instruction given at school or in university. We also wanted to make a dialogue program about everyday topics, with underlying pedagogical goal to exercise verb inflection, choosing the correct case and learn more words. 
+Because of the complex morphology in Sámi languages, it demands a lot of practising before the student reaches necessary skills. But Sámi is a minority language and it is a common situation that the person learning Sámi does not get enough opportunities to practise the language in a natural setting. Because of that, programs accessible on the Internet may be a useful supplement to the instruction given at school or in university. We also wanted to make a dialogue program about everyday topics, with underlying pedagogical goal to exercise verb inflection, choosing the correct case and learn more words. 
 
 In North Sámi there are two main dialects, and it is thus an advantage to be able to choose dialect. Especially when training morphology, it is good if the forms presented are the same as the ones one has learnt in the instruction, or have heard in the language society. But at the same time, the program should accept any correct orthographic word form provided by the student.
 
-Because North Sámi is used in three countries, we wanted optional metalanguage. And we want to have the possibility of making the programs in other Sámi languages as well.
+Because North Sámi is used in three countries, the game has several metalanguages (Norwegian, Finnish, Sámi, English). We are also considering making the programs for other Sámi languages.
 
 
 \section{Modules}
 
 \subsection{Pedagogical lexicon}
 
-The main lexicon of the basic transducer consists of the full North Sámi vocabulary, the inflectional and derivational morphology, and the non-segmental morphological processes (consonant gradation, diphthong simplification, etc.). Example \ref{nounsmelex} shows a lexical entry (AIGI is the continuation class):
+The main lexicon of the basic transducer consists of the full North Sámi vocabulary, the inflectional and derivational morphology, and the non-segmental morphological processes (consonant gradation, diphthong simplification, etc.). Example (\ref{nounsmelex}) shows a lexical entry (AIGI is the continuation class):
 
 \begin{example}\label{nounsmelex}
 \begin{itemize}
@@ -124,14 +124,14 @@ The main lexicon of the basic transducer consists of the full North Sámi vocabu
 % \end{center}
 % \end{figure}
 
-The main lexicon is used for analysing the student's input, but we wanted a pedagogical lexicon for more information about the lemmas, and as a base for the quiz and grammar tasks. The lexicon should be relevant for the education in North Sámi in schools and university. 
+The main lexicon is used for analysing the student's input. We also made a smaller, pedagogical lexicon with information about the lemmas, used as a base for the quiz and grammar tasks. The lexicon should be relevant for the education in North Sámi in schools and university. 
 
 We collected the lemmas, which were used in key textbooks for North Sámi, and added Norwegian translation, information about semantic set, dialect and inflection. We also added information about source -- which textbooks the lemma is used in. %Cf. section \ref{set} for more information about our semantic sets. 
 The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives, in addition to a small lexicon for grammatical word classes and numbers. Figure \ref{nounlex} shows an example of an entry in the noun lexicon. \\
 
 \begin{figure}[tbp]
 \begin{center}
-\scalebox{.45}[.45]{\includegraphics{presentation/img/nounlexicon2.png}}\\
+\scalebox{.48}[.48]{\includegraphics{presentation/img/nounlexicon3.png}}\\
 \caption{An entry in the pedagogical lexicon.}
 \label{nounlex}
 \end{center}
@@ -248,7 +248,7 @@ We constructed the feedback system in two steps. The first step is to define wha
 %\subsection{Analyser for student's input} \label{sentencefeedback}
 %\subsection{Analysing the student's input syntactically} \label{sentencefeedback}
 \subsection{Syntactic analyses of the student's answer} \label{sentencefeedback}
-We have chosen not to use multiple-choice, but rather letting the student formulate his/her own answer. To a certain question one may give many kinds of acceptable answers. In Sámi you may change word order, and also add many kinds of particles. 
+We have chosen not to use multiple-choice, but rather let the student formulate his/her own answer. To a certain question one may give many kinds of acceptable answers. In Sámi one may change word order, and also add many kinds of particles. 
 
 %\textit{Maid don lohket ikte?} (What did you read yesterday?)
 %\begin{itemize}
@@ -291,9 +291,9 @@ The question mark is exchanged for a special symbol ("qst" QDL), cf. figure \ref
 \end{figure}
 
 \subsubsection{Tutorial feedback} \label{tutorial}
-Tutorial feedback is feedback about grammar errors (CG prefix \&grm), and in Figure \ref{cg3} we see a rule for assigning a tag if the student has not used accusative, when the question requires it. If the interrogative pronoun is in accusative, we expect an accusative in the answer.
+Tutorial feedback is feedback about grammar errors (CG prefix \textit{\&grm}), and in Figure \ref{cg3} we see a rule for assigning a tag if the student has not used accusative, when the question requires it. If the interrogative pronoun is in accusative, we expect an accusative in the answer.
 %, if the question is not asking for a verb, e.g. "What do you do?" (WORK-V)
-The rule assigns (maps) a missing-Acc-tag to the interrogative pronoun if there is no accusative or negation verb in the answer.
+The rule assigns a \textit{\&grm-missing-Acc} tag to the interrogative pronoun if there is no accusative or negation verb in the answer.
 
 \begin{figure}[tbp]
 \begin{center}
@@ -331,7 +331,7 @@ Figure \ref{maidlohket} shows how the vislcg3 file has disambiguated and added t
 
 The biggest problem is the student's misspellings. If the spelling error gives rise to a non-existing word form, then the message to the student is "The word form is not in our lexicon, can it be a spelling error?". In order to give a better feedback to certain misspellings, we have added e.g. place names with small initial letter to the fst, but with an error tag so the student gets a precise feedback. We will implement more of that kind.
 
-The misspelling can make another word form of the same lemma. For that we make rules based on context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according what the student think s/he has written. Feedback has to be tailored from what we know about the student’s interlanguage – and we make rules for sets of typical unintended lemmas.
+The misspelling can make another word form of the same lemma. For that we make rules based on context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according to what the student think she has written. Feedback has to be tailored from what we know about the student’s interlanguage – and we make rules for sets of typical unintended lemmas.
 
 %\begin{itemize}
 %
@@ -349,7 +349,7 @@ The misspelling can make another word form of the same lemma. For that we make r
 
 
 \subsubsection{Navigating in the dialogue}\label{navigation}
-We use the same system to navigate inside the dialogue. The input is tagged during analysis with information on whether it is interpreted as affirmative or negative, or with a target-tag, so that we can pick up e.g. name or the essence of the answer, and use it in the next question or utterance. 
+We use the same system to navigate inside the dialogue. The input is tagged during analysis with information on whether it is interpreted as affirmative or negative, or with a target-tag, so that we can pick up e.g. a name or the essence of the answer, and use it in the next question or utterance. 
 
 Some dialogues are branched according to how the student answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In the same way an answer from the student about his/her age will induce a tag (Figure \ref{age}), which is used to navigate to different branches of the dialogue based on the age of the student, see Figure \ref{branch}.
 
@@ -496,23 +496,24 @@ the dialogue and QA program
 
 \section{Evaluation}
 
-At the time of writing, the programs have been in public use for approximately two months at \textit{http://oahpa.uit.no}. All user input has been logged from the very beginning, except for Vasta and Sahka, which have been logged for 8 days only. The other programs are: Leksa -- a word quiz, Numra -- for exercising numerals, Morfa-S -- bare morphological tasks, and Morfa-C -- morphological tasks in sentential context. The log contains 32339 queries (560 queries/day for the 4 other programs in this period), of these, approximately 600, or under 2\%, were nonsense answers.
+At the time of writing, the programs have been in public use for approximately two months at \textit{http://oahpa.uit.no}. All user input has been logged from the very beginning, except for Vasta and Sahka, which have been logged for 8 days only. The other programs are: Leksa -- a word quiz, Numra -- for exercising numerals, Morfa-S -- bare morphological tasks, and Morfa-C -- morphological tasks in sentential context. The log contains 32475 queries (679 queries/day for the 4 programs logged the whole period), of these, approximately 600, or under 2\%, were nonsense answers. % 4.2. - 1.4. = 8 x 7 = 42, 28507/42=679
 % (of the type \textit{asdf, aaaaa}, etc.).
 
 \begin{table}[htdp]
-\caption{Answers to the programs (Vasta and Sahka were logged at the end of the period only). The word quiz, Leksa, is not included in this table.}
+\caption{Answers to the programs (Vasta and Sahka were logged at the end of the period only)}
 \begin{center}
 \begin{tabular}{|l|r|r|r|r|}
 \hline
 Program     & Correct &   Wrong &    Total &  \% \\
 \hline									 
 Morfa-S  &  6920   & 6323    & 13243    & 52.3 \\
-Morfa-C  &  1349   & 1613    & 2962	    & 45.5  \\
+Leksa    &  5659   & 4248    & 9907	    & 57.1  \\
 Numra    &  3086   & 2512    & 5598	    & 55.1  \\
-Vasta    &   19    &   102   &  121	    & 15.7 \\
+Morfa-C  &  1349   & 1613    & 2962	    & 45.5  \\
 Sahka    &   322   &   322   &  644	    & 50.0  \\
+Vasta    &   19    &   102   &  121	    & 15.7 \\
 \hline
-Tot/av   & 11696  & 10872  & 22568  & 51.8 \\
+Tot/av   & 17355  &  15120  &  32475  &  53,44\\
 \hline
 \end{tabular}
 \end{center}
@@ -521,7 +522,7 @@ Tot/av   & 11696  & 10872  & 22568  & 51.8 \\
 
 %\vspace*{-2cm}
 
-As can be seen from table \ref{log1}, slightly more than half of the queries resulted in correct answers. When confronted with an error feedback, the user is offered grammatical help, and thereafter s/he has the possibility to give a new answer to the same query. An investigation of 1500 queries to Morfa-C showed that 444, or 30\%, were such repeated answers. Even though we have no log info of the use of the morphological feedback (section \ref{mfeedback}), our impression from classroom experience is that the users are actively using the feedback system. This indicates that what we are witnessing is a truly interactive process, where users error in half of the queries, is followed up with a new try, possibly after having read the morphological advice from the program.
+As can be seen from table \ref{log1}, slightly more than half of the queries resulted in correct answers. When confronted with an error feedback, the user is offered grammatical help, and thereafter s/he has the possibility to give a new answer to the same query. An investigation of 1500 queries to Morfa-C showed that 444, or 30\%, were such repeated answers. Even though we have no log info of the use of the morphological feedback (section \ref{mfeedback}), our impression from classroom experience is that the users are actively using the feedback system. This indicates that what we are witnessing is a truly interactive process, where users err in half of the queries, and then follow up with a new try, possibly after having read the morphological advice from the program.
 
 The error log for Sahka shows that one fourth of the errors are due to orthographical errors. Most of the "no finite verb" errors are elliptical answers, and these are not accepted, for pedagogical reasons. The remaining cases are errors where the misspelled verb is an existing word. Also for the other grammatical errors verb errors are dominating. The main goal of the program was to train verb forms in a dialogue, and the error log shows that the program is able to capture such errors.
 
