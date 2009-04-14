@@ -86,12 +86,11 @@ The student is able to choose between two North Sámi main dialects. Especially 
 North Sámi is used in three countries, and therefore the game has several metalanguages (Norwegian, Finnish, Sámi, English). We are also considering making the programs for other Sámi languages.
 
 
-\section{Modules}
+\section{Implementation of Oahpa!}
 
 \subsection{Pedagogical lexicon}
 
-The main lexicon of the basic transducer consists of the full North Sámi vocabulary, the inflectional and derivational morphology, and the non-segmental morphological processes (consonant gradation, diphthong simplification, etc.). Example (\ref{nounsmelex}) shows a lexical entry (AIGI is the continuation class):
-
+User input is analysed with a transducer that contains of the full North Sámi vocabulary, the inflectional and derivational morphology, and the non-segmental morphological processes (consonant gradation, diphthong simplification, etc.). Example (\ref{nounsmelex}) shows a lexical entry (AIGI is the continuation class):
 
 \begin{figure}[htbp]
 \begin{center}
@@ -116,9 +115,8 @@ The main lexicon of the basic transducer consists of the full North Sámi vocabu
 % \end{center}
 % \end{figure}
 
-The main lexicon is used for analysing the student's input. We also made a smaller, pedagogical lexicon with information about the lemmas, used as a base for the quiz and grammar tasks. The lexicon should be relevant for the education in North Sámi in schools and university. 
-
-We collected the lemmas, which were used in key textbooks for North Sámi, and added Norwegian translation, information about semantic set, dialect and inflection. We also added information about source -- which textbooks the lemma is used in. %Cf. section \ref{set} for more information about our semantic sets. 
+In addition, there is a smaller pedagogical lexicon which contains additional information about the lemmas, such as Norwegian translation, semantic class, dialect and information about the inflection. The pedagogical lexicon is used as a base for quizzes and grammar tasks. The words in the pedagogical lexicon were collected from the key textbooks for North Sámi, in order to be relevant for the education in schools and universities. The source information was included in the lexicon entry. %Cf. section \ref{set} for more information about our semantic sets. 
+In addition, homonymy in both base form and inflection is dealt with using ids for lexicon entries instead of lemmas. 
 The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives, in addition to a small lexicon for grammatical word classes and numbers. Figure \ref{nounlex} shows an example of an entry in the noun lexicon. \\
 
 \begin{figure}[tbp]
@@ -129,13 +127,18 @@ The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives, in addition to
 \end{center}
 \end{figure}
 
-Some lemmas have homonymous base forms. Since they have different meanings, they belong to different semantic sets. When the student wants the translation of the lemma, it should be the translation which belongs to the particular semantic set, e.g. \textit{girdi} can be both "plane" (VEHICLE) and "pilot" (PROFESSION). Other homonomies have different inflection, and it is critical to choose the correct lemma when we are generating word forms from it, e.g. \textit{bassi} Sg Nom -- \textit{basit} Pl Nom (= holy day) and \textit{bassi} Sg Nom -- \textit{bassit} Pl Nom (= washer). We have solved the problem by giving different ids to the critical entries, e.g. id="girdi\_vehicle" vs. 
-id="girdi\_profession" and id="bassi\_time" vs. id="bassi\_actor".
+
+% Saara: this is all trivial for anyone working in langtech.
+%Some lemmas have homonymous base forms. Since they have different meanings, they belong to different semantic sets. When the student wants the translation of the lemma, it should be the translation which belongs to the particular semantic set, e.g. \textit{girdi} can be both "plane" (VEHICLE) and "pilot" (PROFESSION). Other homonymies have different inflection, and it is critical to choose the correct lemma when we are generating word forms from it, e.g. \textit{bassi} Sg Nom -- \textit{basit} Pl Nom (= holy day) and \textit{bassi} Sg Nom -- \textit{bassit} Pl Nom (= washer). We solved the problem by giving different ids to the critical entries. 
+
+%e.g. id="girdi\_vehicle" vs. 
+%id="girdi\_profession" and id="bassi\_time" vs. id="bassi\_actor".
 
 %It works well as long as working with semantic classes, but if the user chooses "all" or a book, then he will not understand why the program doesn't accept his suggestions, e.g. "pilot" for \textit{girdi}. The solution is that the system then looks for the lemma, instead of the id.
 
 \subsection{Sentence generator}\label{set}
-In order to be able to create a large number of potential tasks, we implemented a sentence generator. With the generator we can easily offer variation to the user, instead of tailoring every task with ready-made questions. The sentence generator is used both for generating questions and answer templates for our contextual morphology program, Morfa-C, and for generating questions to our question-answer (QA) program, Vasta. There is an example from the generator on sentence matrices in Figure \ref{questionv}.
+
+One of the main goals of games in Oahpa! is to practice language in natural settings with variation in the tasks. In order to provide variation in games that involve sentential context we implemented a sentence generator. The sentence generator is used in the morphology in sentential context game (Morfa-C), and for generating questions to the question-answer (Vasta). Figure \ref{questionv} contains an example of sentence matrix that is used in the sentence generator.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -161,7 +164,7 @@ In order to be able to create a large number of potential tasks, we implemented 
 %\end{center}
 %\end{figure}
 
-The question matrix contains two types of elements: constants and grammatical units. The constants such as \textit{go} and \textit{ikte} in the Figure \ref{questionv} are present in each generated sentence as such, whereas grammatical units allow more variation. Both the inflection and the content of the grammatical units may vary from question to question, and from program to program. For example, in the question in Figure \ref{questionv} the MAINV is fixed to past tense, but the person and number inflection may vary freely. In addition, certain elements such as the sentence subject (SUBJ) have default inflection in nominative, but the default inflection may be overridden. The selection of words for the sentence is constrained by semantic sets. Semantic sets are also used as an option in the word quiz. 
+The question matrix contains two types of elements: constants and grammatical units. The constants such as \textit{go} and \textit{ikte} in the Figure \ref{questionv} are present in each generated sentence as such, whereas grammatical units allow more variation. Both the inflection and the content of the grammatical units may vary from question to question, and from program to program. For example, in the question in Figure \ref{questionv} the MAINV is fixed to past tense, but the person and number inflection may vary freely. In addition, certain elements such as the sentence subject (SUBJ) have default inflection in nominative, but the default inflection may be overridden. The selection of words for the sentence is constrained by semantic sets. Semantic sets are also used as an option in the word quiz (Leksa).
 %There are ordinary sets and supersets, and we choose which one suits best for the particular question/task, e.g. the big superset HUMAN with all lemmas for human beings, or a smaller subset, like PROFESSION. In Figure \ref{semset} is a definition of a superset. 
 %
 %%sh: this figure seems to have a lot of space on the top..
@@ -175,7 +178,8 @@ The question matrix contains two types of elements: constants and grammatical un
 
 The sentence generator handles agreement e.g. between subject and the main verb. The agreement may be explicitly marked between any two elements, which indicates that the two elements share the same number and person inflection.
 
-In addition to generating questions, the sentence generator is used for generating answer templates. In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept an inclusive interpretation of the pronouns in Pl1 and Du1, because we wanted the student to exercise also 2. person verb inflection. Using an inclusive interpretation, she could answer with the same verb form as in the question. Table \ref{QA} shows how the question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on. Pl1 as an answer to Pl1 is thus not accepted by the system.\\
+In addition to generating questions, the sentence generator is used for generating answer templates. In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept an inclusive interpretation of the pronouns in Pl1 and Du1, because we wanted the student to exercise also 2. person verb inflection. Table \ref{QA} shows how the question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on. Pl1 as an answer to Pl1 is thus not accepted by the system.\\
+
 
 
 \begin{table}[htdp]
