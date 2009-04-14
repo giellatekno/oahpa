@@ -45,10 +45,10 @@ This article presents a set of interactive pedagogical programs for North Sámi.
 \end{abstract}
 
 \section{Introduction}
-This paper describes the implementation of pedagogical programs for learners of North Sámi (a Uralic language), based on a finite state transducer (fst) and constraint grammar (CG) technology. %\footnote{Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding the project. The work behind the basic analysers was financed by the Research Council of Norway.}. 
-The pedagogical programs are available on a web-based learning platform OAHPA!, accessible at \url{http:\\oahpa.uit.no}. There are altogether six programs: A word quiz (Leksa), a numeral quiz (Numra), basic morphological exercises (Morfa-S), morphological exercises in a sentential frame (Morfa-C), a question-answer (QA) drill (Vasta), and a dialogue program (Sahka).
+This paper describes the implementation a set of pedagogical programs for learners of North Sámi (a Uralic language), based on a finite state transducer (fst) and constraint grammar (CG) technology. %\footnote{Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding the project. The work behind the basic analysers was financed by the Research Council of Norway.}. 
+The pedagogical programs are available on a web-based learning platform OAHPA!, accessible at \url{http:\\oahpa.uit.no}. There are six programs altogether: A word quiz (Leksa), a numeral quiz (Numra), basic morphological exercises (Morfa-S), morphological exercises in a sentential frame (Morfa-C), a question-answer (QA) drill (Vasta), and a dialogue program (Sahka).
 
-The OAHPA! platform is implemented in Django, Python-based web development framework together with Mysql database.
+The OAHPA! platform is implemented in Django, a Python-based web development framework together with a Mysql database.
 
 In section 2 we describe the initial linguistic resources and the pedagogical motivation behind the programs. Section 3 presents the basic design of different parts of the programs. The fourth section shows how the CG-parser was utilised in the programs accepting free sentence input. Section 5 contains an evaluation of the programs.
 
@@ -90,7 +90,7 @@ The student may choose between two North Sámi main dialects. Especially when tr
 
 North Sámi is used in three countries, and therefore the programs have several metalanguages (Norwegian, Finnish, North Sámi, English). We are also considering extending the programs to other Sámi languages.
 
-\section{Pedagogical lexicon}\label{pedlex}
+\section{Pedagogical lexicon}
 
 \subsection{The structure of the lexicon}
 
@@ -183,7 +183,7 @@ The feedback messages are determined by the combination of morphological feature
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.5}[.5]{\includegraphics{presentation/img/morphfeedbackEng.png}}\\
-\caption{The features in the lexicon are used to determine the correct feedback message, in this case the message is "Vowel change i $>$ á".}
+\caption{The features in the lexicon are used to determine the correct feedback message, in this case the message is "Vowel change i $>$ á"}
 \label{feedbacknouns}
 \end{center}
 \end{figure}
@@ -220,11 +220,30 @@ The feedback may consist several parts so that the user also receive information
 
 \subsection{Overview}
 
-In the live analysis games Vasta and Sahka, the user is allowed to formulate the full answer sentence freely. The challenge for the program is to accept different kind of correct answers and for example allow word order changes and usage different kinds of conversational particles which are typical for Sámi.
 
-The technology used for grammatical analysis and error detection is vislcg3. The reason for choosing CG as the parser platform was that it is robust enough for handling unconstrained input, and at the same time accurate enough to identify errors. The program contains manually written, context dependent rules, mainly used for selecting the correct analysis in case of homonymy. Each rule adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentential context. Context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). Context conditions in the same rule may be linked, i.e. conditioned upon each other, negated or blocked by interfering words or tags. Vislcg3 is documented at \cite{Visl:08}. Grammars for Danish and Norwegian based on CG achieve very good F-scores \cite{Bick:03}.
 
-The answer provided by the student is first passed to a morphological analyser (described in section \ref{pedlex}) and then analysed with vislcg3. (sh: add overall description here)
+
+\subsection{Syntactic analyses of the student's answer} \label{sentencefeedback}
+We have chosen not to use multiple-choice, but rather let the student formulate her own answer. To a certain question one may give many kinds of acceptable answers. In Sámi one may change word order, and also add many kinds of particles. 
+
+%\textit{Maid don lohket ikte?} (What did you read yesterday?)
+%\begin{itemize}
+%\item \textit{Mun han lohken ollu áviissaid.} (I PART read many newspapers.)
+%\item \textit{Ikte mun gal lohken buori girjji.} (Yesterday I PART read a good book.)
+%\item \textit{In lohkan maidege.} (I did not read anything.)
+%\item \textit{Ikte in lohkan.} (Yesterday I did not read.)
+%\end{itemize}
+%But the answer may contain grammar errors:
+%\begin{itemize}
+%\item \textit{Mun lohket ollu áviissaid.} \\ $\rightarrow$ Remember agreement between subject and verbal.  
+%\item \textit{Mun lohken ollu áviissat.} \\ $\rightarrow$ There should be an accusative in your answer. 
+%\item \textit{Don lohket ollu áviissaid.} \\ $\rightarrow$ Are you sure that you answer with the correct person?  
+%\end{itemize}
+
+We use vislcg3 for analysing the student's answer. The reason for choosing CG as parser platform was that only CG is robust enough for handling unconstrained input, and at the same time accurate enough to identify errors. The program contains manually written, context dependent rules, mainly used for selecting the correct analysis in case of homonymy. Each rule adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentential context. Context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). Context conditions in the same rule may be linked, i.e. conditioned upon each other, negated or blocked by interfering words or tags. Vislcg3 is documented at \cite{Visl:08}. Grammars for Danish and Norwegian based on CG achieve very good F-scores \cite{Bick:03}.
+
+The question and the answer are merged, and given to the analyser as one text string. We use a ruleset file which disambiguates the student's input only to a certain extent, because there will probably be grammatical and orthographic errors. The last part of the file consists of rules for giving feedback to the student's grammatical errors, and rules for navigating to the correct next question of in the dialogue, due to the student's answer. How to generate feedback or navigation instructions is explained in section \ref{tutorial} and \ref{navigation}.
+
 
 \begin{figure}[htbp]
 \begin{center}
@@ -234,7 +253,80 @@ The answer provided by the student is first passed to a morphological analyser (
 \end{center}
 \end{figure}
 
+The question mark is exchanged for a special symbol ("qst" QDL), cf. figure \ref{iktelohken}. Instead of a sentence delimiter, we want to be able to refer to the question and the answer separately in the rules.
 
+\begin{figure}[htb]
+\begin{center}
+\scalebox{.53}[.45]{\includegraphics{presentation/img/iktelohken3.png}}
+\caption{Between analysis and disambiguation.}
+\label{iktelohken}
+\end{center}
+\end{figure}
+
+\subsubsection{Tutorial feedback} \label{tutorial}
+Tutorial feedback is feedback about grammar errors (CG prefix \textit{\&grm}), and in Figure \ref{cg3} we see a rule for assigning a tag if the student has not used accusative, when the question requires it. If the interrogative pronoun is in accusative, we expect an accusative in the answer.
+%, if the question is not asking for a verb, e.g. "What do you do?" (WORK-V)
+The rule assigns a \textit{\&grm-missing-Acc} tag to the interrogative pronoun if there is no accusative or negation verb in the answer.
+
+\begin{figure}[tbp]
+\begin{center}
+\scalebox{.41}[.41]{\includegraphics{presentation/img/pedcg3ny.png}}
+\caption{Rule assigning missing Acc -tag.}
+\label{cg3}
+\end{center}
+\end{figure}
+
+Figure \ref{maidlohket} shows how the vislcg3 file has disambiguated and added the tag to the input which is the analysis from Figure \ref{iktelohken}. The tag generates feedback to the student. The object is in Nom instead of Acc, and the grammar adds the error tag.
+
+\begin{figure}[tbp]
+\begin{center}
+\scalebox{.47}[.47]{\includegraphics{presentation/img/vasta_feedback2.png}}
+\caption{QA with missing Acc -tag added because the object \textit{girji} is in Nom (What did you read yesterday? Yesterday I read an old book-SgNom).}
+\label{maidlohket}
+\end{center}
+\end{figure}
+
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.45}[.45]{\includegraphics{presentation/img/maid_lohket_ikte3.png}}
+%\caption{The grammarerrortag is added to the interrogative pronoun. (What did you read yesterday qst Yesterday I read an old book (Nom instead of Acc)). Output of vislcg3 grammar file \texttt{sme-ped.cg3}.}
+%\label{maidlohket}
+%\end{center}
+%\end{figure}
+%
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.48}[.48]{\includegraphics{presentation/img/messages_vasta2.png}}
+%\caption{The grammarerrortag generates tutorial feedback. The feedback may be generated in different languages, here in Norwegian.}
+%\label{messv}
+%\end{center}
+%\end{figure}
+
+The biggest problem is the student's misspellings. If the spelling error gives rise to a non-existing word form, then the message to the student is \textit{The word form is not in our lexicon, can it be a spelling error?} In order to give a better feedback to certain misspellings, we have added e.g. place names with small initial letter to the fst, but with an error tag so the student gets a precise feedback. We will implement more of that kind.
+
+The misspelling can make another word form of the same lemma. For that we make rules based on context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according to what the student think s/he has written. Feedback has to be tailored from what we know about the student’s interlanguage – and we make rules for sets of typical unintended lemmas.
+
+%\begin{itemize}
+%
+%\item \textbf{Locative singular without consonant gradation} \\
+%The locative singular form has the suffix -s and usually consonant gradation, compared to the base form. In our pedagogical lexicon there are 1512 nouns. By adding the suffix \textit{-s} directly to the stem without consonant gradation, the result is in 57 \% of the cases a correct but unintended word form (possessive suffix in Sg3 -- e.g. \textit{viessus} instead of \textit{viesus}). Only 0,5 \% of the resulting word forms are unintended new lemmas, e.g. adverbs \textit{eanas  (eatnamis)} or verbs, e.g \textit{čogus (čohkumis)}.
+%
+%The possessive suffices are quite seldom used by students at lower levels, so if it does not fit to the context, one can safely assume that she has meant locative, and give feedback according to that. 
+%
+%\item \textbf{Illative singular without diphthong simplification and vocal change}\\
+%The illative singular form has the suffix \textit{-i} or \textit{-ii} and often  diphthong simplification and vocal change. Some words have consonant gradation. By adding the suffix directly to the stem, we get 2,3 \% unintended lemmas, mostly verbs in past tense Sg3, e.g. \textit{báddii}  (pro \textit{báddái}). Generally, one man consider identifying problematic word pairs and make feedback for each of them, asking the student if she meant the other member of the pair, especially when we are not expecting one more finite verb.
+%\newpage
+%\item \textbf{Incorrect negative verb form}\\
+%When the verb in the question is in Sg2, a common error is that the student use the Sg2 form of the verb after the negative verb, instead of the correct ConNeg form, e.g. \textit{Logat go áviissa? In logat (loga) áviissa.} The correct form is in the parentheses. The problem is that the errouneous form is a ConNeg form of another verb, \textit{logadit}, and the normal feedback will be: "You should answer with the same verb as in the question." The student will not understand this, because she thinks that the word form in the answer is an instance of the same verb. The solution was to generate all these forms of the verbs in the questions, make a set of them, and make a rule for in the right context, give the feedback: "The negative form is not correct." 
+%\end{itemize}
+
+\subsection{The open QA drill -- Vasta}	
+
+In between the "natural" dialogues, mimicking real life dialogues, and the pure grammar training session, inquiring paradigm forms, we have made  a question-answer drill. The drill has two question types: Yes/no questions and wh-questions. 
+
+There are two motives for making this program type. First, our tailored dialogues run the risk of getting quickly consumed. With a QA drill we may generate an indefinite number of questions. Second, the students need to automate the question-answer routine -- answer with the correct verb, inflect the finite verb correctly and choose the correct case form.
+
+The questions are generated, and then the question and answer are analysed together, and the student gets feedback, as described in \ref{sentencefeedback}. The question matrices are marked with level, so there is a level option. Only one question is presented at a time. The student can answer what she wants, but she has to use a full sentence (containing a finite verb), and use the same verb as in the question. There are 111 matrix questions.
 %\begin{itemize}
 %\item Level 1: verb only in present tense, logical cases
 %\item  Level 2: verb in past tense, and some verbs with oblique cases, use of postpositions, questions in which the student has to answer with case in plural,  numerals and collective numerals in nominative
@@ -251,14 +343,9 @@ The answer provided by the student is first passed to a morphological analyser (
 %\end{center}
 %\end{figure}	
 
-\subsection{The open QA drill -- Vasta}
-In between the "natural" dialogues, mimicking real life dialogues, and the pure grammar training session, inquiring paradigm forms, we have made  a question-answer drill. The drill has two question types: Yes/no questions and wh-questions. 
+\subsection{Sentence generator}\label{set}
 
-There are two motives for making this program type. First, our tailored dialogues run the risk of getting quickly consumed. With a QA drill we may generate an indefinite number of questions. Second, the students need to automate the question-answer routine -- answer with the correct verb, inflect the finite verb correctly and choose the correct case form.
-
-The questions are generated and presented for the user one at the time. The question and answer are analysed together, and the student gets feedback, as described in \ref{sentencefeedback}. The question matrices are marked with a difficulty level.  The student may formulate the answer freely, but she has to use a full sentence (containing a finite verb), and use the same verb as in the question. There are 111 matrix questions.
-
-Figure \ref{questionv} contains an example of sentence matrix that is used in the sentence generator.
+One of the main goals of the programs in OAHPA! is to practice language in natural settings with variation in the tasks. In order to provide variation in programs that involve sentential context we implemented a sentence generator. The sentence generator is used in the morphology in sentential context program (Morfa-C), and for generating questions to the QA drill (Vasta). Figure \ref{questionv} contains an example of sentence matrix that is used in the sentence generator.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -298,7 +385,7 @@ The question matrix contains two types of elements: constants and grammatical un
 
 The sentence generator handles agreement e.g. between subject and the main verb. The agreement may be explicitly marked between any two elements, which indicates that the two elements share the same number and person inflection.
 
-In addition to generating questions, the sentence generator is used for generating answer templates in the contextual morphology game (Morfa-C). In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept an inclusive interpretation of the pronouns in Pl1 and Du1, because we wanted the student to exercise also 2. person verb inflection. Table \ref{QA} shows how the question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on. Pl1 as an answer to Pl1 is thus not accepted by the system.\\
+In addition to generating questions, the sentence generator is used for generating answer templates. In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept an inclusive interpretation of the pronouns in Pl1 and Du1, because we wanted the student to exercise also 2. person verb inflection. Table \ref{QA} shows how the question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on. Pl1 as an answer to Pl1 is thus not accepted by the system.\\
 
 
 \begin{table}[htdp]
@@ -316,112 +403,14 @@ Sg3 &Sg3 &Du3 &Du3 &Pl3 &Pl3 \\
 \label{QA}
 \end{table}
 
-The analysis of the student's answers as well as the tutorial feedback are common to both Vasta and Sahka. They are explained in the following sections \ref{sentencefeedback} and \ref{tutorial}. 
-
-
-\subsection{Syntactic analysis of the student's answer} \label{sentencefeedback}
-
-
-%\textit{Maid don lohket ikte?} (What did you read yesterday?)
-%\begin{itemize}
-%\item \textit{Mun han lohken ollu áviissaid.} (I PART read many newspapers.)
-%\item \textit{Ikte mun gal lohken buori girjji.} (Yesterday I PART read a good book.)
-%\item \textit{In lohkan maidege.} (I did not read anything.)
-%\item \textit{Ikte in lohkan.} (Yesterday I did not read.)
-%\end{itemize}
-%But the answer may contain grammar errors:
-%\begin{itemize}
-%\item \textit{Mun lohket ollu áviissaid.} \\ $\rightarrow$ Remember agreement between subject and verbal.  
-%\item \textit{Mun lohken ollu áviissat.} \\ $\rightarrow$ There should be an accusative in your answer. 
-%\item \textit{Don lohket ollu áviissaid.} \\ $\rightarrow$ Are you sure that you answer with the correct person?  
-%\end{itemize}
-
-The answer provided by the student is first passed to a morphological analyser (described in section \ref{pedlex}) and then analysed with vislcg3. The question mark is exchanged for a special symbol ("qst" QDL), cf. figure \ref{iktelohken}. Instead of a sentence delimiter, we want to be able to refer to the question and the answer separately in the rules.
-
-\begin{figure}[htb]
-\begin{center}
-\scalebox{.53}[.45]{\includegraphics{presentation/img/iktelohken3.png}}
-\caption{Between analysis and disambiguation.}
-\label{iktelohken}
-\end{center}
-\end{figure}
-
-The question and the answer are merged, and given to the analyser as one text string. We use a ruleset file which disambiguates the student's input only to a certain extent, because there will probably be grammatical and orthographic errors. The last part of the file consists of rules for giving feedback to the student's grammatical errors, and rules for reacting to the student's answer and navigating to subsequent question in the dialogue. How the feedback and navigation instructions are generated is explained in sections \ref{tutorial} and \ref{navigation}.
-
-
-\subsection{Tutorial feedback} \label{tutorial}
-
-% sh: is this correct now? I think an example sentence -answer pair would be good here.
-
-Tutorial feedback provides the student feedback about the grammatical errors. For example, Figure \ref{cg3} presents a CG rule for assigning a grammatical error tag (CG tag \textit{\&grm-missing-Acc}) when there is no accusative found in the user input although the question requires the usage of an accusative form. In this case, requirement is based on the case of the interrogative pronoun that is used in the question. However, if the user answer is negative, the grammatical error tag is not assigned.
-%, if the question is not asking for a verb, e.g. "What do you do?" (WORK-V)
-
-\begin{figure}[htbp]
-\begin{center}
-\scalebox{.41}[.41]{\includegraphics{presentation/img/pedcg3ny.png}}
-\caption{Rule assigning missing Acc -tag.}
-\label{cg3}
-\end{center}
-\end{figure}
-
-Figure \ref{maidlohket} shows how the vislcg3 file has disambiguated and added the error tag about a missing accusative to the analysis from Figure \ref{iktelohken}. The error tag is used for generating feedback for the student. 
-
-\begin{figure}[htbp]
-\begin{center}
-\scalebox{.47}[.47]{\includegraphics{presentation/img/vasta_feedback2.png}}
-\caption{QA with missing Acc -tag added because the object \textit{girji} is in nominative (What did you read yesterday? Yesterday I read an old book-SgNom).}
-\label{maidlohket}
-\end{center}
-\end{figure}
-
-%\begin{figure}[htbp]
-%\begin{center}
-%\scalebox{.45}[.45]{\includegraphics{presentation/img/maid_lohket_ikte3.png}}
-%\caption{The grammarerrortag is added to the interrogative pronoun. (What did you read yesterday qst Yesterday I read an old book (Nom instead of Acc)). Output of vislcg3 grammar file \texttt{sme-ped.cg3}.}
-%\label{maidlohket}
-%\end{center}
-%\end{figure}
-%
-%\begin{figure}[htbp]
-%\begin{center}
-%\scalebox{.48}[.48]{\includegraphics{presentation/img/messages_vasta2.png}}
-%\caption{The grammarerrortag generates tutorial feedback. The feedback may be generated in different languages, here in Norwegian.}
-%\label{messv}
-%\end{center}h
-%\end{figure}
-
-The most difficult problem for the grammatical analysis are the student's misspellings. A misspelling may be left unrecognized in the analysis or it can produce another word form for the same lemma, or from some other lemma. 
-
-When the word form is not recognized during the analysis, the feedback message to the student points to the unrecognized word form asking the student to check the spelling. To the extent that misspellings are the most common type of errors, the current feedback does not provide enough instructions for the student to improve the spelling. However, in order to give better feedback to certain misspellings, we have added e.g. place names with small initial letter to the fst, together with an error tag, so that the student gets a precise feedback. We will implement more that kind of rules and consider usage of a spell checker to help the student to find the correct word form.
-
-%\textit{The word form is not in our lexicon, can it be a spelling error?}. 
-% sh: let's give examples of something that we can do well.
-
-For misspellings that produce another word form of the same lemma, we have written rules that are based on the grammatical context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according to what the student thinks she has written. In this case, feedback has to be tailored using the knowledge about the student’s interlanguage. We have created sets for typical unintended lemmas. Combined with contextual rules we can then give the user a good feedback due to the misspelling instead of the unintended lemma.
-
-E.g. if the student uses the Sg2 form of the main verb after the negative verb, instead of the correct ConNeg form, then the errouneous form can be a ConNeg form of a derivated verb, and the normal feedback will be: "You should answer with the same verb as in the question." The student will not understand this, because she thinks that the word form in the answer is an instance of the same verb. The solution was to generate all these forms of the verbs in the questions, make a set of them, and make a rule for in the right context, give the feedback: "The negative form is not correct." 
-
-
-%\begin{itemize}
-%
-%\item \textbf{Locative singular without consonant gradation} \\
-%The locative singular form has the suffix -s and usually consonant gradation, compared to the base form. In our pedagogical lexicon there are 1512 nouns. By adding the suffix \textit{-s} directly to the stem without consonant gradation, the result is in 57 \% of the cases a correct but unintended word form (possessive suffix in Sg3 -- e.g. \textit{viessus} instead of \textit{viesus}). Only 0,5 \% of the resulting word forms are unintended new lemmas, e.g. adverbs \textit{eanas  (eatnamis)} or verbs, e.g \textit{čogus (čohkumis)}.
-%
-%The possessive suffices are quite seldom used by students at lower levels, so if it does not fit to the context, one can safely assume that she has meant locative, and give feedback according to that. 
-%
-%\item \textbf{Illative singular without diphthong simplification and vocal change}\\
-%The illative singular form has the suffix \textit{-i} or \textit{-ii} and often  diphthong simplification and vocal change. Some words have consonant gradation. By adding the suffix directly to the stem, we get 2,3 \% unintended lemmas, mostly verbs in past tense Sg3, e.g. \textit{báddii}  (pro \textit{báddái}). Generally, one man consider identifying problematic word pairs and make feedback for each of them, asking the student if she meant the other member of the pair, especially when we are not expecting one more finite verb.
-%\newpage
-%\item \textbf{Incorrect negative verb form}\\
-%When the verb in the question is in Sg2, a common error is that the student use the Sg2 form of the verb after the negative verb, instead of the correct ConNeg form, e.g. \textit{Logat go áviissa? In logat (loga) áviissa.} The correct form is in the parentheses. The problem is that the errouneous form is a ConNeg form of another verb, \textit{logadit}, and the normal feedback will be: "You should answer with the same verb as in the question." The student will not understand this, because she thinks that the word form in the answer is an instance of the same verb. The solution was to generate all these forms of the verbs in the questions, make a set of them, and make a rule for in the right context, give the feedback: "The negative form is not correct." 
-%\end{itemize}
-
 
 
 
 %\subsection{Sahka -- dialogues}
-\section{The dialogue program -- Sahka}
-The idea behind the dialogues is that the student may exercise North Sámi in a natural setting, and at the same time receive comments about errors. Each dialogue is made to a scenario, and each scenario has a set of underlying pedagogical goals. E.g. in the Grocery-dialogue, the scenario is a shop, and the student is telling what kind of food she wants to buy. The underlying pedagogical goal is to exercise inflecting objects in accusative.
+\subsection{The dialogue program -- Sahka}
+The idea behind the dialogues is that the student may exercise North Sámi in a quite natural way, and at the same time get comments about errors. There will be two kinds of feedback: tags for navigation in the dialogue itself, and tags that generate tutorial feedback.
+
+Each dialogue is made to a scenario, and each scenario has a set of underlying pedagogical goals. E.g. in the Grocery-dialogue, the scenario is a shop, and the student is telling what kind of food she wants to buy. The underlying pedagogical goal is to exercise inflecting objects in accusative.
 
 % \begin{figure}[htbp]
 % \begin{center}
@@ -476,7 +465,7 @@ A topic is like a module in the dialogue, and it is easy to put a new module sub
 
 The dialogue system itself is quite simple. Only the program can make initiatives, and all the utterances from the program, are written. The program can store simple information as the student's name, place where she lives and her car type, for using in as a variable in a tailored utterance. If we were to develop the program with generating of utterances, and a more free dialogue, and also let the student take initiatives, we would have to use an analyser which maps semantic roles to the student's input, despite possible syntactic errors. In order to implement this we would need a semantically enriched lexicon.
 
-\subsection{Navigating in the dialogue}\label{navigation}
+\subsubsection{Navigating in the dialogue}\label{navigation}
 We use the same system to navigate inside the dialogue. The input is tagged during analysis with information on whether it is interpreted as affirmative or negative, or with a target-tag, so that we can pick up e.g. a name or the essence of the answer, and use it in the next question or utterance. 
 
 Some dialogues are branched according to how the student answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In the same way an answer from the student about her age will induce a tag (Figure \ref{age}), which is used to navigate to different branches of the dialogue based on the age of the student, see Figure \ref{branch}.
