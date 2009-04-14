@@ -28,8 +28,7 @@
 %\tableofcontents
 
 \begin{abstract}
-The article presents a set of interactive parser-based CALL (Computer Assisted Language Learning) programs for North Sámi (a Uralic language), based upon a robust finite state transducers (fst) analyser and a constraint grammar (CG) based analyser. The analyser makes it possible to handle any input given by the user %(rather than relying upon string matching), 
-and by relaxing the analysis of the input string, we are able to find and give feedback to errors made by the user. 
+The article presents a set of interactive parser-based CALL (Computer Assisted Language Learning) programs for North Sámi (a Uralic language), based upon a robust finite state transducer (fst) analyser and a constraint grammar (CG) based analyser. The analyser makes it possible to handle any input given by the user, and by relaxing the analysis of the input string, we are able to find and give feedback to errors made by the user. 
 \end{abstract}
 
 \section{Introduction}
@@ -47,7 +46,7 @@ The basic grammatical analysis of North Sámi was done with fst and a CG parser,
 The existing language resources, which we have used in the pedagogical programs, are the following:
 
 \begin{itemize}
-\item a morphological analyser/generator with fst, compiled with the Xerox compiler xfst.  The lexicon contains 97.500 lemmas -- almost half of them proper nouns. One may compile two different variants of the analyser/generator -- one is tolerant, with morphological patterns based upon actual usage, and the other is normative, and adheres to the written standard. 
+\item a morphological analyser/generator with fst, compiled with the Xerox compilers twolc and lexc.  The lexicon contains 97.500 lemmas -- almost half of them proper nouns. One may compile two different variants of the analyser/generator -- one is tolerant, with morphological patterns based upon actual usage, and the other is normative, and adheres to the written standard. 
 %\footnote{We use the abbreviations for the Sámi languages in accordance with the ISO 639-2 standard for language codes. The code is \textit{sme} for North Sámi and \textit{nob} for Norwegian.}.  
 \item a morphological disambiguator based on CG with manually written rule sets and a syntactic analyser adding grammatical function and dependency (vislcg3). 
 \item number word generator, made with xfst.
@@ -61,43 +60,18 @@ Vislcg3 is used in the VISL-suite of games for teaching grammatical analysis on 
 
 Even if many interactive parser-based programs for CALL are described in the literature, see \cite{Gamper:02,Heift:07}, very few of them are available for actual use online. Most systems are only made as prototypes. One of very few exceptions is a program teaching German to foreigners, which gives very good feedback to student's errors, but the student's possible input is restricted to a small, fixed vocabulary, and there is no dialogue. The grammar formalism used is Head-driven Phrase Structure Grammar. \cite{Heift:01,Heift:02}.
 
-%Our main reason for using CG was that there already existed a CG-based parser for Sami, capable of giving robust grammatical analyses of open-doman text. We also found the CG parser capable of handling learner language input and diagnosing errors in dialogue systems.%, 
-
-% Other CALL literature, probably in here., perhaps with subsections.
-
-
-
-% Reference, quoting letter from Trude Heift:
+% Quoting letter from Trude Heift:
 %You are right that the literature on ICALL systems is very scattered - I assume you had a look at the overview of parser-based projects described in our book (Heift & Schulze, 2007 - Routledge). There are VERY few working systems, i.e., only 3 I know of. One is a system for Japanese by Nagata (a meanwhile commercial system); a system for Portuguese - Tagarella by Meurers & Amaral which I believe covers content for an introductory course of L2 Portuguese; and the e-tutor which basically covers the entire L2 grammar of German taught in the first three university courses. I am certain that if you email the researchers, you'll get access to the systems. In addition, I know that Wolfgang Menzel at the Univeristy of Hamburg was working on a game-like system ("The Market Place") but I don't know where the project is at and whether it's in actual use by students.
 %For information on the parsing aspects of the etutor, please see the following article:
 %Heift, T. & Nicholson, D. (2001). Web Delivery of Adaptive and Interactive Language Tutoring. International Journal of Artificial Intelligence in Education, 12(4), 310-325.
-
-
 
 \subsection{The pedagogical idea} \label{pedidea}
 
 Our leading idea was to utilize the existing CG analyser to develop pedagogical programs for Sámi instruction.  With the analyser we had the possibility of making a language tutoring system with sophisticated error analysis where student tasks can go beyond multiple-choice questions or string matching algorithms. 
 
-%The central goals for the development of the pedagogical programs were that the programs
-
-%\begin{itemize}
-%\item they should be flexible: One may choose exactly what the students should train, and adapt it to each student's linguistic skills 
-%\item one should be able to restrict the vocabulary to particular textbooks, so that it is easy to integrate the tools to the instruction
-%\item the student may choose between dialects 
-%\item the student should get immediate feedback about errors, and also translation and grammar help easily
-%%\item the student and the teacher should be able to work with different topics instead of textbooks
-%\item the programs should be accessible freely via Internet, without installing new programs in the computer
-%\end{itemize}
-
-%Because of the complex morphology in Sámi languages, it demands a lot of practising before the student reaches necessary skills. But Sámi is a minority language and it is a common situation that the person learning Sámi does not get enough opportunities to practise the language in a natural way. Because of that, programs accessible on the Internet may be a useful supplement to the instruction given at school or in university. We also wanted to make a dialogue program about everyday topics, with underlying pedagogical goal to exercise verb inflection, choosing the correct case and learn more words. 
-%
-%In North Sámi there are two main dialects, and it is thus an advantage to be able to choose dialect. Especially when training morphology, it is good if the forms presented are the same as the ones one has learnt in the instruction, or have heard in the language society. But at the same time, the program should accept any correct orthographic word form provided by the student.
-%
-%Because North Sámi is used in three countries, we wanted the student to be able to choose metalanguage. And even if we are now working only with North Sámi, we want to have the possibility of making the programs in other Sámi languages as well.
-
 The central goals for the development of the pedagogical programs were that they should be flexible so the student may choose exactly what she will train, also the level. One should be able to restrict the vocabulary to particular textbooks, so that it is easy to integrate the tools to the instruction. Immediate feedback about errors, and translation and grammar help was important. And the programs should be accessible freely via Internet, without installing new programs in the computer.
 
-Because of the complex morphology in Sámi languages, it demands a lot of practising before the student reaches necessary skills. But Sámi is a minority language and it is a common situation that the person learning Sámi does not get enough opportunities to practise the language in a natural setting. Because of that, programs accessible on the Internet may be a useful supplement to the instruction given at school or in university. We also wanted to make a dialogue program about everyday topics, with underlying pedagogical goal to exercise verb inflection, choosing the correct case and learn more words. 
+Because of its complex morphology, Sámi demands a lot of practising before the student reaches necessary skills. But Sámi is a minority language and it is a common situation that the person learning Sámi does not get enough opportunities to practise the language in a natural setting. Because of that, programs accessible on the Internet may be a useful supplement to the instruction given at school or university. We also wanted to make a dialogue program about everyday topics, with underlying pedagogical goal to exercise verb inflection, choosing the correct case and learn more words. 
 
 In North Sámi there are two main dialects, and it is thus an advantage to be able to choose dialect. Especially when training morphology, it is good if the forms presented are the same as the ones one has learnt in the instruction, or have heard in the language society. But at the same time, the program should accept any correct orthographic word form provided by the student.
 
@@ -165,7 +139,6 @@ The question matrix contains two types of elements: constants and grammatical un
 %\end{center}
 %\end{figure}
 
-
 The sentence generator handles agreement e.g. between subject and the main verb. The agreement may be explicitly marked between any two elements, which indicates that the two elements share the same number and person inflection.
 
 In addition to generating questions, the sentence generator is used for generating answer templates. In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept an inclusive interpretation of the pronouns in Pl1 and Du1, because we wanted the student to exercise also 2. person verb inflection. Using an inclusive interpretation, s/he could answer with the same verb form as in the question. Table \ref{QA} shows how the question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on. Pl1 as an answer to Pl1 is thus not accepted by the system.\\
@@ -187,7 +160,7 @@ Sg3 &Sg3 &Du3 &Du3 &Pl3 &Pl3 \\
 \end{table}
 
 \subsection{System for dialectical variation}\label{dialect}
-For sentence generation the morphological generator has to be strict. This means that the generator will generate one and only one word form for every grammatical word. The analyser, on the other hand, should be tolerant (accept correct variants of the same grammatical word), but we have the opportunity of compiling two different analysers/generators. We use the normative but variation-tolerant transducer for analysing the input, and for sentence generation we use the strict one, which generates only one word form for every grammatical word.
+For sentence generation the morphological generator has to be strict. This means that the generator will generate one and only one word form for every grammatical word. The analyser, on the other hand, should be tolerant (accept correct variants of the same grammatical word). Therefore we compiled two different analysers/generators, one normative but variation-tolerant transducer for analysing the input, and for sentence generation a strict one, which generates only one word form for every grammatical word.
 
 Because of dialectical variation, we made two versions of the strict fst. We marked relevant lines in our source code in one of the following ways:
 
@@ -214,7 +187,7 @@ We show an example in Figure \ref{smelex}. We also marked entries in the pedagog
 
 The information in the pedagogical lexicon about inflection is there only to give a good feedback to the student. If s/he doesn't inflect the lemma correctly, s/he can ask for hints about the inflection, and try once more, instead of getting the correct answer straight away. 
 
-We constructed the feedback system in two steps. The first step is to define what kind of message the system should provide, based upon the combination of morphological features in the lexicon and the inflection itself. In Figure \ref{feedbacknouns} vowel change in illative Sg is defined for bisyllabic nouns which ends with the vowel \textit{i}. The message tag is used to generate the feedback to the user. 
+We constructed the feedback system in two steps. The first step is to define what kind of message the system should provide, based upon the combination of morphological features in the lexicon and the inflection itself. In Figure \ref{feedbacknouns} vowel change in illative Sg is defined for bisyllabic nouns which ends in the vowel \textit{i}. The message tag is used to generate the feedback to the user. 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -223,7 +196,6 @@ We constructed the feedback system in two steps. The first step is to define wha
 \label{feedbacknouns}
 \end{center}
 \end{figure}
-
 
 %\begin{figure}[htbp]
 %\begin{center}
@@ -240,13 +212,8 @@ We constructed the feedback system in two steps. The first step is to define wha
 %\label{mess}
 %\end{center}
 %\end{figure}
-
-
 %In the example in Figures \ref{feedbacknouns}, the correct illative Sg word form of \textit{mielki} is \textit{mielkái}. %As we see in Figure \ref{nounlex}, this lemma has the feature \texttt{only-sg}, which means that we generate the lemma only in singular, even if it according to the main lexicon, also may be used in plural. This information is for pedagogical purposes; it is not that natural to use the plural form of a mass noun for a student on a lower level.
 
-
-%\subsection{Analyser for student's input} \label{sentencefeedback}
-%\subsection{Analysing the student's input syntactically} \label{sentencefeedback}
 \subsection{Syntactic analyses of the student's answer} \label{sentencefeedback}
 We have chosen not to use multiple-choice, but rather let the student formulate his/her own answer. To a certain question one may give many kinds of acceptable answers. In Sámi one may change word order, and also add many kinds of particles. 
 
@@ -257,10 +224,7 @@ We have chosen not to use multiple-choice, but rather let the student formulate 
 %\item \textit{In lohkan maidege.} (I did not read anything.)
 %\item \textit{Ikte in lohkan.} (Yesterday I did not read.)
 %\end{itemize}
-%
-%
 %But the answer may contain grammar errors:
-%
 %\begin{itemize}
 %\item \textit{Mun lohket ollu áviissaid.} \\ $\rightarrow$ Remember agreement between subject and verbal.  
 %\item \textit{Mun lohken ollu áviissat.} \\ $\rightarrow$ There should be an accusative in your answer. 
@@ -329,7 +293,7 @@ Figure \ref{maidlohket} shows how the vislcg3 file has disambiguated and added t
 %\end{center}
 %\end{figure}
 
-The biggest problem is the student's misspellings. If the spelling error gives rise to a non-existing word form, then the message to the student is "The word form is not in our lexicon, can it be a spelling error?". In order to give a better feedback to certain misspellings, we have added e.g. place names with small initial letter to the fst, but with an error tag so the student gets a precise feedback. We will implement more of that kind.
+The biggest problem is the student's misspellings. If the spelling error gives rise to a non-existing word form, then the message to the student is \textit{The word form is not in our lexicon, can it be a spelling error?} In order to give a better feedback to certain misspellings, we have added e.g. place names with small initial letter to the fst, but with an error tag so the student gets a precise feedback. We will implement more of that kind.
 
 The misspelling can make another word form of the same lemma. For that we make rules based on context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according to what the student think she has written. Feedback has to be tailored from what we know about the student’s interlanguage – and we make rules for sets of typical unintended lemmas.
 
@@ -346,7 +310,6 @@ The misspelling can make another word form of the same lemma. For that we make r
 %\item \textbf{Incorrect negative verb form}\\
 %When the verb in the question is in Sg2, a common error is that the student use the Sg2 form of the verb after the negative verb, instead of the correct ConNeg form, e.g. \textit{Logat go áviissa? In logat (loga) áviissa.} The correct form is in the parentheses. The problem is that the errouneous form is a ConNeg form of another verb, \textit{logadit}, and the normal feedback will be: "You should answer with the same verb as in the question." The student will not understand this, because s/he thinks that the word form in the answer is an instance of the same verb. The solution was to generate all these forms of the verbs in the questions, make a set of them, and make a rule for in the right context, give the feedback: "The negative form is not correct." 
 %\end{itemize}
-
 
 \subsubsection{Navigating in the dialogue}\label{navigation}
 We use the same system to navigate inside the dialogue. The input is tagged during analysis with information on whether it is interpreted as affirmative or negative, or with a target-tag, so that we can pick up e.g. a name or the essence of the answer, and use it in the next question or utterance. 
@@ -373,7 +336,6 @@ Some dialogues are branched according to how the student answers, e.g. if the qu
 \end{figure}
 
 As we see in the Figures \ref{maidlohket} and \ref{branch}, the questions in the dialogues are not generated, but written. Every question has its own unique name, so we can link to it, and it is also possible to make a rule for a special question, like in Figure \ref{age}.  
-
 
 \section{The design of the programs}
 The pedagogical program suite consists of six programs, cf. section 5. We will here discuss Vasta and Sahka, which utilize the syntactic analyser. 
@@ -449,14 +411,13 @@ In the Get-acquainted-to-dialogues the student can choose an identity for the co
 %\item Comparing in the shop -- tell what is cheapest or most expensive, using adjectives in comparative or superlative
 %\end{itemize}
 
-
 Each dialogue consists of many branches, and different links according to the student's input. To organize them, we have made different levels:
 
 The first utterance is a dialogue\_opening and the last utterance is a dialogue\_closing. The student can write that s/he wants to quit at any point during the dialogue, and by using some form of the verb \textit{heaitit} ("quit") s/he will navigate directly to the dialogue\_closing.
 
 The dialogue consists of topics, and every topic starts with an opening utterance; a comment or a question. In the end of the topic, there is always a closing.  
 
-Every utterance has a name, and one link or alternative links. The choice of alternative links is dependent upon what kind of tag the question-answer pair gets, e.g. \&dia-neg or \&dia-pos, or \&dia-target to a certain word, e.g. target="hivsset", like in Figure \ref{TV}.  In Figure \ref{targetIll} we see how the \&dia-target-tag is mapped to the noun in illative. There will always be a default; in case there will not be any tag. \\
+Every utterance has a name, and one or more links. The choice of link is dependent upon what kind of tag the question-answer pair gets, e.g. \&dia-neg or \&dia-pos, or \&dia-target to a certain word, e.g. target="hivsset", like in Figure \ref{TV}.  In Figure \ref{targetIll} we see how the \&dia-target-tag is mapped to the noun in illative. There will always be a default; in case there will not be any tag. \\
 
 \begin{figure}[htbp]
 \begin{center}
@@ -478,25 +439,17 @@ Every utterance has a name, and one link or alternative links. The choice of alt
 
 A topic is like a module in the dialogue, and it is easy to put a new module subsequent to any topic. The linking makes it possible to make branches. Every utterance has a unique name.  
 
-%Sahka is a simple dialogue system, in which only
-The dialogue system itself is quite simple. Only
-the program can make initiatives, and all the utterances from the program, are written. The program can store simple information as the student's name, place where s/he lives and his/her car type, for using in as a variable in a tailored utterance. If we were to develop the program with generating of utterances, and a more freely dialogue, and also let the student take initiatives, we would have to use an analyser which maps semantic roles to the student's input, despite possible syntactic errors. In order to implement this we would need a semantically enriched lexicon.
-%Giving semantic tags to the verbs and the nouns in the lexicon, could be a good help. 
-
-
+The dialogue system itself is quite simple. Only the program can make initiatives, and all the utterances from the program, are written. The program can store simple information as the student's name, place where s/he lives and his/her car type, for using in as a variable in a tailored utterance. If we were to develop the program with generating of utterances, and a more free dialogue, and also let the student take initiatives, we would have to use an analyser which maps semantic roles to the student's input, despite possible syntactic errors. In order to implement this we would need a semantically enriched lexicon.
 
 \subsection{Web interface}
 
 The Web framework is built on the top of a Mysql database. The information for the programs is specified in XML-documents, from where it is extracted and stored to the Mysql database. The database allows effective processing of database queries, which is crucial for real-time applications. The database also contains information outside the XML-files, such as all the inflectional forms for words in the pedagogical lexica. The basic morphological and lexicon programs exploit words from quite restricted domains. Therefore it makes sense to generate the word forms in beforehand instead of using quite heavy machinery of word form generator together with full lexica. In addition, generating the word forms and storing them to the database provides better control over the inflected word forms and e.g. different dialectal forms and thus a more stable application.
 
-It should be noted that 
-the dialogue and QA program
-%Vasta and the dialogue program Sahka
- use the grammatical analyser on the fly, exploiting full lexicons. This allows the user's answer to contain any North Sámi word, also words that are not restricted to the pedagogical lexicon.
+It should be noted that the dialogue and QA program use the grammatical analyser on the fly, exploiting full lexicons. This allows the user's answer to contain any North Sámi word, also words that are not restricted to the pedagogical lexicon.
 
 \section{Evaluation}
 
-At the time of writing, the programs have been in public use for approximately two months at \textit{http://oahpa.uit.no}. All user input has been logged from the very beginning, except for Vasta and Sahka, which have been logged for 8 days only. The other programs are: Leksa -- a word quiz, Numra -- for exercising numerals, Morfa-S -- bare morphological tasks, and Morfa-C -- morphological tasks in sentential context. The log contains 32475 queries (679 queries/day for the 4 programs logged the whole period), of these, approximately 600, or under 2\%, were nonsense answers. % 4.2. - 1.4. = 8 x 7 = 42, 28507/42=679
+At the time of writing, the programs have been in public use for approximately two months at \textit{http://oahpa.uit.no}. All user input has been logged from the very beginning, except for Vasta and Sahka, which have been logged for a couple of days only. The other programs are: Leksa -- a word quiz, Numra -- for exercising numerals, Morfa-S -- bare morphological tasks, and Morfa-C -- morphological tasks in sentential context. The log contains 32475 queries (679 queries/day for the 4 programs logged the whole period), of these, approximately 600, or under 2\%, were nonsense answers. % 4.2. - 1.4. = 8 x 7 = 42, 28507/42=679
 % (of the type \textit{asdf, aaaaa}, etc.).
 
 \begin{table}[htdp]
