@@ -58,7 +58,7 @@ Vislcg3 is a new generation of the open source compiler vislcg. It is a compiler
 
 Vislcg3 is used in the VISL-suite of games for teaching grammatical analysis on the Internet. Most of the games are based on pre-analysed sentences, but in one program the user can type in any text in one of 7 languages, and get it analysed, or changed into a grammar exercise. \cite{Bick:05}.
 
-Even if many interactive parser-based programs for CALL are described in the literature, see \cite{Gamper:02,Heift:07}, very few of them are available for actual use online. Most systems are only made as prototypes. One of very few exceptions is a program teaching German to foreigners, which gives very good feedback to student's errors, but the student's possible input is restricted to a small, fixed vocabulary, and there is no dialogue. The grammar formalism used is Head-driven Phrase Structure Grammar. \cite{Heift:01,Heift:02}.
+Even if many interactive parser-based programs for CALL are described in the literature, see \cite{Gamper:02,Heift:07}, very few of them are available for actual use online. Most systems are only made as prototypes. One of very few exceptions is eTutor, a program teaching German to foreigners, which gives very good feedback to student errors, but the possible input is restricted to a small, fixed vocabulary, and there is no dialogue. The grammar formalism used is Head-driven Phrase Structure Grammar. \cite{Heift:01,Heift:02}.
 
 % Quoting letter from Trude Heift:
 %You are right that the literature on ICALL systems is very scattered - I assume you had a look at the overview of parser-based projects described in our book (Heift & Schulze, 2007 - Routledge). There are VERY few working systems, i.e., only 3 I know of. One is a system for Japanese by Nagata (a meanwhile commercial system); a system for Portuguese - Tagarella by Meurers & Amaral which I believe covers content for an introductory course of L2 Portuguese; and the e-tutor which basically covers the entire L2 grammar of German taught in the first three university courses. I am certain that if you email the researchers, you'll get access to the systems. In addition, I know that Wolfgang Menzel at the Univeristy of Hamburg was working on a game-like system ("The Market Place") but I don't know where the project is at and whether it's in actual use by students.
@@ -69,7 +69,7 @@ Even if many interactive parser-based programs for CALL are described in the lit
 
 Our leading idea was to utilize the existing CG analyser to develop pedagogical programs for Sámi instruction.  With the analyser we had the possibility of making a language tutoring system with sophisticated error analysis where student tasks can go beyond multiple-choice questions or string matching algorithms. 
 
-The central goals for the development of the pedagogical programs were that they should be flexible so the student may choose exactly what she will train, also the level. One should be able to restrict the vocabulary to particular textbooks, so that it is easy to integrate the tools to the instruction. Immediate feedback about errors, and translation and grammar help was important. And the programs should be accessible freely via Internet, without installing new programs in the computer.
+The central goals for the development of the pedagogical programs were that they should be flexible so the student may choose exactly what s/he will train, also the level. One should be able to restrict the vocabulary to particular textbooks, so that it is easy to integrate the tools to the instruction. Immediate feedback about errors, and translation and grammar help was important. And the programs should be accessible freely via Internet, without installing new programs in the computer.
 
 Because of its complex morphology, Sámi demands a lot of practising before the student reaches necessary skills. But Sámi is a minority language and it is a common situation that the person learning Sámi does not get enough opportunities to practise the language in a natural setting. Because of that, programs accessible on the Internet may be a useful supplement to the instruction given at school or university. We also wanted to make a dialogue program about everyday topics, with underlying pedagogical goal to exercise verb inflection, choosing the correct case and learn more words. 
 
@@ -105,7 +105,7 @@ The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives, in addition to
 
 \begin{figure}[tbp]
 \begin{center}
-\scalebox{.55}[.55]{\includegraphics{presentation/img/nounlexicon3.png}}\\
+\scalebox{.6}[.6]{\includegraphics{presentation/img/nounlexicon3.png}}\\
 \caption{An entry in the pedagogical lexicon.}
 \label{nounlex}
 \end{center}
@@ -231,7 +231,7 @@ We have chosen not to use multiple-choice, but rather let the student formulate 
 %\item \textit{Don lohket ollu áviissaid.} \\ $\rightarrow$ Are you sure that you answer with the correct person?  
 %\end{itemize}
 
-We use vislcg3 for analysing the student's answer. The reason for choosing CG as parser platform was that only CG is robust enough for handling unconstrained input, and at the same time accurate enough to identify errors. The program contains manually written, context dependent rules, mainly used for selecting the correct analysis in case of homonymy. Each rule either adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentential context. Context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). Context conditions in the same rule may be linked, i.e. conditioned upon each other, negated or blocked by interfering words or tags. Vislcg3 is documented at \cite{Visl:08}. Grammars for Danish and Norwegian based on CG achieves very good F-scores \cite{Bick:04}.
+We use vislcg3 for analysing the student's answer. The reason for choosing CG as parser platform was that only CG is robust enough for handling unconstrained input, and at the same time accurate enough to identify errors. The program contains manually written, context dependent rules, mainly used for selecting the correct analysis in case of homonymy. Each rule adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentential context. Context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). Context conditions in the same rule may be linked, i.e. conditioned upon each other, negated or blocked by interfering words or tags. Vislcg3 is documented at \cite{Visl:08}. Grammars for Danish and Norwegian based on CG achieve very good F-scores \cite{Bick:04}.
 
 The question and the answer are merged, and given to the analyser as one text string. We use a ruleset file which disambiguates the student's input only to a certain extent, because there will probably be grammatical and orthographic errors. The last part of the file consists of rules for giving feedback to the student's grammatical errors, and rules for navigating to the correct next question of in the dialogue, due to the student's answer. How to generate feedback or navigation instructions is explained in section \ref{tutorial} and \ref{navigation}.
 
@@ -295,7 +295,7 @@ Figure \ref{maidlohket} shows how the vislcg3 file has disambiguated and added t
 
 The biggest problem is the student's misspellings. If the spelling error gives rise to a non-existing word form, then the message to the student is \textit{The word form is not in our lexicon, can it be a spelling error?} In order to give a better feedback to certain misspellings, we have added e.g. place names with small initial letter to the fst, but with an error tag so the student gets a precise feedback. We will implement more of that kind.
 
-The misspelling can make another word form of the same lemma. For that we make rules based on context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according to what the student think she has written. Feedback has to be tailored from what we know about the student’s interlanguage – and we make rules for sets of typical unintended lemmas.
+The misspelling can make another word form of the same lemma. For that we make rules based on context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according to what the student think s/he has written. Feedback has to be tailored from what we know about the student’s interlanguage – and we make rules for sets of typical unintended lemmas.
 
 %\begin{itemize}
 %
@@ -413,7 +413,7 @@ In the Get-acquainted-to-dialogues the student can choose an identity for the co
 
 Each dialogue consists of many branches, and different links according to the student's input. To organize them, we have made different levels:
 
-The first utterance is a dialogue\_opening and the last utterance is a dialogue\_closing. The student can write that she wants to quit at any point during the dialogue, and by using some form of the verb \textit{heaitit} ("quit") she will navigate directly to the dialogue\_closing.
+%The first utterance is a dialogue\_opening and the last utterance is a dialogue\_closing. The student can write that she wants to quit at any point during the dialogue, and by using some form of the verb \textit{heaitit} ("quit") she will navigate directly to the dialogue\_closing.
 
 The dialogue consists of topics, and every topic starts with an opening utterance; a comment or a question. In the end of the topic, there is always a closing.  
 
@@ -449,7 +449,8 @@ It should be noted that the dialogue and QA program use the grammatical analyser
 
 \section{Evaluation}
 
-At the time of writing, the programs have been in public use for approximately two months at \textit{http://oahpa.uit.no}. All user input has been logged from the very beginning, except for Vasta and Sahka, which have been logged for a couple of days only. The other programs are: Leksa -- a word quiz, Numra -- for exercising numerals, Morfa-S -- bare morphological tasks, and Morfa-C -- morphological tasks in sentential context. The log contains 32475 queries (679 queries/day for the 4 programs logged the whole period), of these, approximately 600, or under 2\%, were nonsense answers. % 4.2. - 1.4. = 8 x 7 = 42, 28507/42=679
+At the time of writing, the programs have been in public use for approximately two months. % at \textit{http://oahpa.uit.no}
+All user input has been logged from the very beginning, except for Vasta and Sahka, which have been logged for a couple of days only. The other programs are: Leksa -- a word quiz, Numra -- for exercising numerals, Morfa-S -- bare morphological tasks, and Morfa-C -- morphological tasks in sentential context. The log contains 32475 queries (679 queries/day for the 4 programs logged the whole period), of these, approximately 600, or under 2\%, were nonsense answers. % 4.2. - 1.4. = 8 x 7 = 42, 28507/42=679
 % (of the type \textit{asdf, aaaaa}, etc.).
 
 \begin{table}[htdp]
@@ -466,7 +467,7 @@ Morfa-C  &  1349   & 1613    & 2962	    & 45.5  \\
 Sahka    &   322   &   322   &  644	    & 50.0  \\
 Vasta    &   19    &   102   &  121	    & 15.7 \\
 \hline
-Tot/av   & 17355  &  15120  &  32475  &  53,44\\
+Total   & 17355  &  15120  &  32475  &  53,44\\
 \hline
 \end{tabular}
 \end{center}
@@ -524,7 +525,7 @@ The QA and the dialogue program are tolerant towards variation in student answer
 \newblock {PaNoLa: Integrating Constraint Grammar and CALL}.
 \newblock {183--190},
 \newblock Henrik Holmboe (ed.): {\em Nordic Language Technology, Årbog for Nordisk Sprogteknologisk Forskningsprogram 2000-2004}.
-\newblock Copenhaguen: Museum Tusculanum.
+\newblock Copenhagen: Museum Tusculanum.
 
 \bibitem[\protect\citename{Bick}2005]{Bick:05}
 {Eckhard Bick}.
@@ -532,7 +533,7 @@ The QA and the dialogue program are tolerant towards variation in student answer
 \newblock {Grammar for Fun: IT-based Grammar Learning with VISL}.
 \newblock {49--64},
 \newblock Henriksen, Peter Juel (ed.): {\em CALL for the Nordic Languages.}
-\newblock Copenhagen Studies in Language.
+\newblock Copenhagen Studies in Language 30.
 
 \bibitem[\protect\citename{Gamper and Knapp}2002]{Gamper:02}
 {Johann Gampfer and Judith Knapp}.
@@ -541,7 +542,7 @@ The QA and the dialogue program are tolerant towards variation in student answer
 \newblock {\em Computer Assisted Language Learning.} 
 \newblock {329--342},
 \newblock {15(4)}
-\newblock Routledge.
+%\newblock Routledge.
 
 
 \bibitem[\protect\citename{Heift}2001]{Heift:01}
@@ -597,7 +598,7 @@ The QA and the dialogue program are tolerant towards variation in student answer
 \newblock 2008.
 \newblock {\em Constraint Grammar}.
 \newblock http://beta.visl.sdu.dk/constraint\_grammar.html
-\newblock Institute of Language and Communication (ISK), University of Southern Denmark.
+%\newblock Institute of Language and Communication (ISK), University of Southern Denmark.
 
 
 \end{thebibliography}
