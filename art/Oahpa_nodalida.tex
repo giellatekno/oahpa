@@ -7,7 +7,7 @@
 \usepackage{graphics}
 \usepackage[utf8x]{inputenc}
 \usepackage{ucs} %sami letters\renewcommand
-\usepackage{covington} % ling examples
+%\usepackage{covington} % ling examples
 
 %\usepackage{linguex}
 %{\refdash}{}
@@ -28,54 +28,48 @@
 %\tableofcontents
 
 \begin{abstract}
-The article presents a set of interactive parser-based CALL (Computer Assisted Language Learning) programs for North Sámi (a Uralic language), based upon a robust finite state transducer (fst) analyser and a constraint grammar (CG) based analyser. The analyser makes it possible to handle any input given by the user, and by relaxing the analysis of the input string, we are able to find and give feedback to errors made by the user. 
+This article presents a set of interactive pedagogical programs for North Sámi. The programs are based on finite state morphological analyser and a constraint grammar (CG) parser which is used for syntactic analysis and grammar checking. The analysers provide effective and reliable handling of wide variety of user input. In addition, relaxation of the grammatical analysis of the user input enables locating grammatical errors and reacting to the errors with appropriate feedback messages. 
 \end{abstract}
 
 \section{Introduction}
-This paper presents how fst and CG are reused in a new setting, as building blocks in pedagogical programs for learners of North Sámi \footnote{Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding the project. The work behind the basic analysers was financed by the Research Council of Norway.}. 
+This paper describes the implementation of pedagogical programs for learners of North Sámi (a Uralic language), based on a finite state transducer (fst) and constraint grammar (CG) technology \footnote{Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding the project. The work behind the basic analysers was financed by the Research Council of Norway.}. The pedagogical programs are available in a learning platform Oahpa!, and include morphological and lexical training as well as more sophisticated contextual.. (sh: add short overview of the programs here) 
 
-Section 2 describes the initial linguistic resources and the pedagogical idea behind the programs. In the third section we explain the different modules for the pedagogical programs. The fourth section deals with the design of three of the programs. The final section gives an evaluation.
+In section 2 we describe the initial linguistic resources and the pedagogical motivation behind the programs. Section 3 presents the basic design of different parts of the programs. Fourth section concentrates on how the CG-parser was utilised in the programs that allow free formation of sentences (sh: better wording here). The section 5 contains an evaluation of the programs.
 
 
 \section{Background}
 
 \subsection{Basic grammatical analysis}
 
-The basic grammatical analysis of North Sámi was done with fst and a CG parser, made at the University of Tromsø. Sámi languages have large morphological paradigms for each lexeme -- verbs and adjectives have more than 100 inflected forms. Some of the paradigm members have a very low text frequency, and there is not that much text electronically available. Therefore fst were chosen. \cite{Trosterud:07}.  
+The pedagogical programs in Oahpa! are based on three pre-existing language technology resources resources developed at the University of Tromsø: morphological analyser/generator (fst), a CG parser for North Sámi and a number word generator based of xfst.
 
-The existing language resources, which we have used in the pedagogical programs, are the following:
+Morphological analyser/generator is implemented with fst and compiled with the Xerox compilers twolc and lexc~\cite{BeesleyKarttunen:03}. Sámi languages have large morphological paradigms for each lexeme -- verbs and adjectives have more than 100 inflected forms. In addition, some of the paradigm members have a very low text frequency. Due to the limited amount of electronically available text resources, an fst technology was used (sh: instead of.. something here) \cite{Trosterud:07}. The lexicon contains 97.500 lemmas -- almost half of them proper nouns. There exist two different variants of the analyser/generator: one is tolerant, with morphological patterns based upon actual usage, and the other is normative, and adheres to the written standard.  
 
-\begin{itemize}
-\item a morphological analyser/generator with fst, compiled with the Xerox compilers twolc and lexc.  The lexicon contains 97.500 lemmas -- almost half of them proper nouns. One may compile two different variants of the analyser/generator -- one is tolerant, with morphological patterns based upon actual usage, and the other is normative, and adheres to the written standard. 
-%\footnote{We use the abbreviations for the Sámi languages in accordance with the ISO 639-2 standard for language codes. The code is \textit{sme} for North Sámi and \textit{nob} for Norwegian.}.  
-\item a morphological disambiguator based on CG with manually written rule sets and a syntactic analyser adding grammatical function and dependency (vislcg3). 
-\item number word generator, made with xfst.
-\end{itemize}
+Morphological disambiguator is implemented in constraint grammar framework (CG)~\cite{Karlsson:95}. CG-framework is based on manually written rule sets and a syntactic analyser which selects the correct analysis in case of homonymy and adds grammatical function and dependency relations to the analysis. We used vislcg3 for the compilation of CG rules. Vislcg3 is a new, improved version of the open source compiler vislcg~\cite{Visl:08}. The CG-framework is presented in section \ref{sentencefeedback}. 
 
-Vislcg3 is a new generation of the open source compiler vislcg. It is a compiler for CG parsers; a program that selects the correct analysis in case of homonymy, and adds information on grammatical functions and dependency relations. CG was launched in the early 90'ies \cite{Karlsson:95}. We explain how it works in \ref{sentencefeedback}. The Xerox tools are documented in \cite{BeesleyKarttunen:03}. 
+\subsection{Previous accounts on parser-based pedagogical programs}
 
-\subsection{Interactive parser-based CALL}
+Even if many interactive parser-based programs are described in the literature, see \cite{Gamper:02,Heift:07}, very few of them are available for actual use online and most systems are in a prototype level. One exception is e-tutor, a program for teaching German to foreigners (sh: citation, link). E-tutor gives very good feedback to student's errors, but the student's possible input is restricted to a small, fixed vocabulary, and there is no dialogue. The grammar formalism used is Head-driven Phrase Structure Grammar (HPSG). \cite{Heift:01,Heift:02}.
 
-Vislcg3 is used in the VISL-suite of games for teaching grammatical analysis on the Internet. Most of the games are based on pre-analysed sentences, but in one program the user can type in any text in one of 7 languages, and get it analysed, or changed into grammar exercises. \cite{Bick:05}.
+Vislcg3 is used in the VISL-suite of games for teaching grammatical analysis on the Internet (http://visl.sdu.dk/). Most of the games in VISL are based on pre-analysed sentences, but one of the programs accepts free user input in some of the 7 supported languages. The input is analysed or changed into a grammar exercise~\cite{Bick:05}.
 
-Even if many interactive parser-based programs for CALL are described in the literature, see \cite{Gamper:02,Heift:07}, very few of them are available for actual use online. Most systems are only made as prototypes. One of very few exceptions is e-tutor, a program teaching German to foreigners, which gives very good feedback to student errors, but the possible input is restricted to a small, fixed vocabulary, and there is no dialogue. The grammar formalism used is Head-driven Phrase Structure Grammar. \cite{Heift:01,Heift:02}.
 
 % Quoting letter from Trude Heift:
 %You are right that the literature on ICALL systems is very scattered - I assume you had a look at the overview of parser-based projects described in our book (Heift & Schulze, 2007 - Routledge). There are VERY few working systems, i.e., only 3 I know of. One is a system for Japanese by Nagata (a meanwhile commercial system); a system for Portuguese - Tagarella by Meurers & Amaral which I believe covers content for an introductory course of L2 Portuguese; and the e-tutor which basically covers the entire L2 grammar of German taught in the first three university courses. I am certain that if you email the researchers, you'll get access to the systems. In addition, I know that Wolfgang Menzel at the Univeristy of Hamburg was working on a game-like system ("The Market Place") but I don't know where the project is at and whether it's in actual use by students.
 %For information on the parsing aspects of the etutor, please see the following article:
 %Heift, T. & Nicholson, D. (2001). Web Delivery of Adaptive and Interactive Language Tutoring. International Journal of Artificial Intelligence in Education, 12(4), 310-325.
 
-\subsection{The pedagogical idea} \label{pedidea}
+\subsection{The pedagogical motivation} \label{pedidea}
 
-Our leading idea was to utilize the existing CG analyser to develop pedagogical programs for Sámi instruction.  With the analyser we had the possibility of making a language tutoring system with sophisticated error analysis where student tasks can go beyond multiple-choice questions or string matching algorithms. 
+The main goal of the development of Oahpa! was to develop a language tutoring system with sophisticated error analysis. In addition, we wanted that the tasks go beyond multiple-choice questions or string matching algorithms. The immediate feedback about errors, advice on morphology and grammar, as well as translations were seen as important requirements for the program.
 
-The central goals for the development of the pedagogical programs were that they should be flexible so the student may choose exactly what s/he will train, also the level. One should be able to restrict the vocabulary to particular textbooks, so that it is easy to integrate the tools to the instruction. Immediate feedback about errors, and translation and grammar help was important. And the programs should be accessible freely via Internet, without installing new programs in the computer.
+In addition, the games were designed to be flexible so that the student could choose exactly which aspect of the language she would like to train and the level of difficulty. To better integrate the tools to the instruction, the vocabulary was designed so that it may be restricted to particular textbooks. Finally, programs were made accessible freely via Internet.
 
-Because of its complex morphology, Sámi demands a lot of practising before the student reaches necessary skills. But Sámi is a minority language and it is a common situation that the person learning Sámi does not get enough opportunities to practise the language in a natural setting. Because of that, programs accessible on the Internet may be a useful supplement to the instruction given at school or university. We also wanted to make a dialogue program about everyday topics, with underlying pedagogical goal to exercise verb inflection, choosing the correct case and learn more words. 
+Due to its complex morphology, Sámi demands a lot of practising before the student reaches necessary (sh: change necessary!) skills. Since Sámi is a minority language, it is a common that Sámi learners do not have enough opportunities to practise the language in a natural setting. The freely available games are a practical supplement to the instruction given at school or university. In addition, the dialogue program consists of everyday topics, with underlying pedagogical goals to exercise e.g. verb inflection, choosing the correct case or learning the vocabulary. 
 
-In North Sámi there are two main dialects, and it is thus an advantage to be able to choose dialect. Especially when training morphology, it is good if the forms presented are the same as the ones one has learnt in the instruction, or have heard in the language society. But at the same time, the program should accept any correct orthographic word form provided by the student.
+The student is able to choose between two North Sámi main dialects. Especially when training morphology, it is important that the forms that are presented for the user are the same that are used in the language society or learnt in the instruction. But at the same time, the program should accept any correct orthographic word form provided by the student.
 
-Because North Sámi is used in three countries, the game has several metalanguages (Norwegian, Finnish, Sámi, English). We are also considering making the programs for other Sámi languages.
+North Sámi is used in three countries, and therefore the game has several metalanguages (Norwegian, Finnish, Sámi, English). We are also considering making the programs for other Sámi languages.
 
 
 \section{Modules}
@@ -84,11 +78,21 @@ Because North Sámi is used in three countries, the game has several metalanguag
 
 The main lexicon of the basic transducer consists of the full North Sámi vocabulary, the inflectional and derivational morphology, and the non-segmental morphological processes (consonant gradation, diphthong simplification, etc.). Example (\ref{nounsmelex}) shows a lexical entry (AIGI is the continuation class):
 
-\begin{example}\label{nounsmelex}
-\begin{itemize}
-\texttt{miel0ki:miel'ki AIGI ;}
-\end{itemize}
-\end{example}
+
+\begin{figure}[htbp]
+\begin{center}
+\begin{verbatim}
+    miel0ki:miel'ki AIGI ;
+\end{verbatim}
+\label{nounsmelex}
+\end{center}
+\end{figure}
+
+%\begin{example}\label{nounsmelex}
+%\begin{itemize}
+%\texttt{miel0ki:miel'ki AIGI ;}
+%\end{itemize}
+%\end{example}
 
 % \begin{figure}[htbp]
 % \begin{center}
