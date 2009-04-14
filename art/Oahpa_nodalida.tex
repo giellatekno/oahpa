@@ -46,9 +46,9 @@ This article presents a set of interactive pedagogical programs for North Sámi.
 
 \section{Introduction}
 This paper describes the implementation of pedagogical programs for learners of North Sámi (a Uralic language), based on a finite state transducer (fst) and constraint grammar (CG) technology. %\footnote{Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding the project. The work behind the basic analysers was financed by the Research Council of Norway.}. 
-The pedagogical programs are available on the learning platform OAHPA! (accessible at \url{http:\\oahpa.uit.no}). There are altogether six programs: A word quiz (Leksa), a numeral quiz (Numra), basic morphological exercises (Morfa-S), morphological exercises in a sentential frame (Morfa-C), a question-answer (QA) drill (Vasta), and a dialogue program (Sahka).
+The pedagogical programs are available on a web-based learning platform OAHPA! (accessible at \url{http:\\oahpa.uit.no}). There are altogether six programs: A word quiz (Leksa), a numeral quiz (Numra), basic morphological exercises (Morfa-S), morphological exercises in a sentential frame (Morfa-C), a question-answer (QA) drill (Vasta), and a dialogue program (Sahka).
 
-%morphological and lexical training as well as more sophisticated contextual. 
+The OAHPA! platform is implemented in Django, Python-based web development framework together with Mysql database.
 
 In section 2 we describe the initial linguistic resources and the pedagogical motivation behind the programs. Section 3 presents the basic design of different parts of the programs. The fourth section shows how the CG-parser was utilised in the programs accepting free sentence input. Section 5 contains an evaluation of the programs.
 
@@ -91,20 +91,13 @@ The student may choose between two North Sámi main dialects. Especially when tr
 
 North Sámi is used in three countries, and therefore the programs have several metalanguages (Norwegian, Finnish, North Sámi, English). We are also considering extending the programs to other Sámi languages.
 
-\section{Implementation of OAHPA!}
+\section{Pedagogical lexicon}
 
-\subsection{Pedagogical lexicon}
+\subsection{The structure of the lexicon}
 
-User input is analysed with a transducer that contains of the full North Sámi vocabulary, the inflectional and derivational morphology, and the non-segmental morphological processes (consonant gradation, diphthong simplification, etc.). Example (\ref{nounsmelex}) shows a lexical entry (GOAHTI is the continuation class):
 
-\begin{figure}[htbp]
-\begin{center}
-\begin{verbatim}
-    monni GOAHTI ;
-\end{verbatim}
-\label{nounsmelex}
-\end{center}
-\end{figure}
+All the OAHPA! -games share a set of common resources: a pedagogical lexicon and a morphological generator that is used for generating the different word forms that appear in the games. The dialectal variation is taken into account in lexical as well as morphological level. In addition, the morphological properties of words are used in constructing a detailed feedback on morphological errors.
+
 
 %\begin{example}\label{nounsmelex}
 %\begin{itemize}
@@ -120,7 +113,8 @@ User input is analysed with a transducer that contains of the full North Sámi v
 % \end{center}
 % \end{figure}
 
-In addition, there is a smaller pedagogical lexicon which contains additional information about the lemmas, such as Norwegian translation, semantic class, dialect and information about the inflection. The pedagogical lexicon is used as a base for quizzes and grammar tasks. The words in the pedagogical lexicon were collected from the key textbooks for North Sámi, in order to be relevant for the education in schools and universities. The source information was included in the lexicon entry. %Cf. section \ref{set} for more information about our semantic sets. 
+
+The pedagogical lexicon forms a collection of words that are considered relevant for the learners of North Sámi in schools and universities. The words occur in different forms in different tasks. The pedagogical lexicon which contains additional information about the lemmas, such as Norwegian translation, semantic class, dialect and information about the inflection. The words in the pedagogical lexicon were collected from the key textbooks for North Sámi and the source information is included in the lexicon entry. %Cf. section \ref{set} for more information about our semantic sets. 
 In addition, homonymy in both base form and inflection is dealt with using ids for lexicon entries instead of lemmas. 
 The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives, in addition to a small lexicon for %grammatical word classes
 functional words and numbers. Figure \ref{nounlex} shows an example of an entry in the noun lexicon. \\
@@ -134,7 +128,22 @@ functional words and numbers. Figure \ref{nounlex} shows an example of an entry 
 \end{figure}
 
 
-% Saara: this is all trivial for anyone working in langtech.
+The word forms that are used in the game are pre-generated with a transducer that contains of the full North Sámi vocabulary, the inflectional and derivational morphology, and the non-segmental morphological processes (consonant gradation, diphthong simplification, etc.). Similar transducer is used in live analysis of user input in games Vasta and Sahka, which are described in section \ref{vastasahka}. Example (\ref{nounsmelex}) shows a lexical entry (AIGI is the continuation class):
+
+\begin{figure}[htbp]
+\begin{center}
+\begin{verbatim}
+    monni GOAHTI ;
+\end{verbatim}
+\label{nounsmelex}
+\end{center}
+\end{figure}
+
+
+The contents of the pedagogical lexicon as well as full paradigms for each lexicon entry are stored to the Mysql database. The database allows effective processing of queries and multiple simultaneous users. In addition, generating the word forms and storing them to the database provides better control over the inflected word forms and e.g. different dialectal forms. The handling of dialectal variation is described in the next section.
+
+
+% Saara: this is all clear for anyone working in langtech.
 %Some lemmas have homonymous base forms. Since they have different meanings, they belong to different semantic sets. When the student wants the translation of the lemma, it should be the translation which belongs to the particular semantic set, e.g. \textit{girdi} can be both "plane" (VEHICLE) and "pilot" (PROFESSION). Other homonymies have different inflection, and it is critical to choose the correct lemma when we are generating word forms from it, e.g. \textit{bassi} Sg Nom -- \textit{basit} Pl Nom (= holy day) and \textit{bassi} Sg Nom -- \textit{bassit} Pl Nom (= washer). We solved the problem by giving different ids to the critical entries. 
 
 %e.g. id="girdi\_vehicle" vs. 
@@ -142,70 +151,13 @@ functional words and numbers. Figure \ref{nounlex} shows an example of an entry 
 
 %It works well as long as working with semantic classes, but if the user chooses "all" or a book, then he will not understand why the program doesn't accept his suggestions, e.g. "pilot" for \textit{girdi}. The solution is that the system then looks for the lemma, instead of the id.
 
-\subsection{Sentence generator}\label{set}
+\subsection{Handling the dialectical variation}\label{dialect}
 
-One of the main goals of the programs in OAHPA! is to practice language in natural settings with variation in the tasks. In order to provide variation in programs that involve sentential context we implemented a sentence generator. The sentence generator is used in the morphology in sentential context program (Morfa-C), and for generating questions to the QA drill (Vasta). Figure \ref{questionv} contains an example of sentence matrix that is used in the sentence generator.
+%sh: the wordings are not very good here. what source file? how are the lines selected? Explain KJ and GG!
 
-\begin{figure}[htbp]
-\begin{center}
-\scalebox{.5}[.5]{\includegraphics{presentation/img/question_vasta2.png}}\\
-\caption{Example of generating if questions (MAINV question-particle SUBJ yesterday).}
-\label{questionv}
-\end{center}
-\end{figure}
+When generating sentences or providing the correct answers for the user, we wanted to control the selection of word forms to allow only normative forms in the correct dialect. On the other hand, the live analyser used for the analysis of the user input should be tolerant  and accept all correct variants of the same grammatical word. Therefore we compiled two different analysers/generators, one normative but variation-tolerant transducer for analysing the input, and two strict ones for different dialects for sentence generation.
 
-%\begin{figure}[htbp]
-%\begin{center}
-%\scalebox{.5}[.5]{\includegraphics{presentation/img/question_vasta2.pdf}}\\
-%\caption{Example of generating if questions (MAINV question-particle SUBJ yesterday).}
-%\label{questionv}
-%\end{center}
-%\end{figure}
-%
-%\begin{figure}[htbp]
-%\begin{center}
-%\scalebox{.5}[.5]{\includegraphics{presentation/img/question_vasta2.jpg}}\\
-%\caption{Example of generating if questions (MAINV question-particle SUBJ yesterday).}
-%\label{questionv}
-%\end{center}
-%\end{figure}
-
-The question matrix contains two types of elements: constants and grammatical units. The constants such as \textit{go} and \textit{ikte} in the Figure \ref{questionv} are present in each generated sentence as such, whereas grammatical units allow more variation. Both the inflection and the content of the grammatical units may vary from question to question, and from program to program. For example, in the question in Figure \ref{questionv} the MAINV is fixed to past tense, but the person and number inflection may vary freely. In addition, certain elements such as the sentence subject (SUBJ) have default inflection in nominative, but the default inflection may be overridden. The selection of words for the sentence is constrained by semantic sets. Semantic sets are also used as an option in the word quiz (Leksa).
-%There are ordinary sets and supersets, and we choose which one suits best for the particular question/task, e.g. the big superset HUMAN with all lemmas for human beings, or a smaller subset, like PROFESSION. In Figure \ref{semset} is a definition of a superset. 
-%
-%%sh: this figure seems to have a lot of space on the top..
-%\begin{figure}[htbp]
-%\begin{center}
-%\scalebox{.6}[.6]{\includegraphics{presentation/img/semantic_set.png}}\\
-%\caption{Some of the semantic sets are supersets, consisting of subsets. From \texttt{semantic\_sets.xml}.}
-%\label{semset}
-%\end{center}
-%\end{figure}
-
-The sentence generator handles agreement e.g. between subject and the main verb. The agreement may be explicitly marked between any two elements, which indicates that the two elements share the same number and person inflection.
-
-In addition to generating questions, the sentence generator is used for generating answer templates. In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept an inclusive interpretation of the pronouns in Pl1 and Du1, because we wanted the student to exercise also 2. person verb inflection. Table \ref{QA} shows how the question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on. Pl1 as an answer to Pl1 is thus not accepted by the system.\\
-
-
-\begin{table}[htdp]
-\caption{Provided question-answer agreement.}
-\begin{center}
-\begin{tabular}[t]{ll|ll|ll}
-QPN &APN &QPN &APN &QPN &APN \\
-\hline
-Sg1 &Sg2 &Du1 &Du2 &Pl1 &Pl2 \\
-Sg2 &Sg1 &Du2 &Du1 &Pl2 &Pl1 \\
-Sg3 &Sg3 &Du3 &Du3 &Pl3 &Pl3 \\
-\hline
-\end{tabular}
-\end{center}
-\label{QA}
-\end{table}
-
-\subsection{System for dialectical variation}\label{dialect}
-For sentence generation the morphological generator has to be strict. This means that the generator will generate one and only one word form for every grammatical word. The analyser, on the other hand, should be tolerant (accept correct variants of the same grammatical word). Therefore we compiled two different analysers/generators, one normative but variation-tolerant transducer for analysing the input, and for sentence generation a strict one, which generates only one word form for every grammatical word.
-
-Because of dialectical variation, we made two versions of the strict fst. We marked relevant lines in our source code in one of the following ways:
+The dialectal variation was in the source code (lexc) in one of the following ways:
 
 \begin{itemize}
 \item[(a)] NOT-KJ (not generate for KJ-dialect) 
@@ -213,30 +165,31 @@ Because of dialectical variation, we made two versions of the strict fst. We mar
 %\item[(c)] NG (not generate for any dialect)
 \end{itemize}
 
-We show an example in Figure \ref{smelex}. We also marked entries in the pedagogical lexicon-files with NOT-KJ and NOT-GG. In the makefile there are then options to generate the required dialectical variant forms of each grammatical word. This system can easily be expanded with more dialects.
-
+Figure \ref{smelex} contains an example of how the dialectal information is handled in the lexicon file. We also marked entries in the pedagogical lexicon-files with NOT-KJ and NOT-GG. This system can easily be expanded with more dialects.
 
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.49}[.49]{\includegraphics{presentation/img/smelex3.png}}\\
-\caption{Handling of dialect variation.}
+\caption{Handling of dialectal variation in the lexicon.}
 \label{smelex}
 \end{center}
 \end{figure}
 
-\subsection{System for feedback on morphology}\label{mfeedback}
+\subsection{Feedback on morphological errors}\label{mfeedback}
 
-The information in the pedagogical lexicon about inflection is there only to give a good feedback to the student. If she doesn't inflect the lemma correctly, she can ask for hints about the inflection, and try once more, instead of getting the correct answer straight away. 
+The inflectional information of words contained in pedagogical lexicon is used for generating feedback to the student. If the user does not inflect the lemma correctly, she can ask for hints about the inflection, and try once more, instead of getting the correct answer straight away. 
 
-We constructed the feedback system in two steps. The first step is to define what kind of message the system should provide, based upon the combination of morphological features in the lexicon and the inflection itself. In Figure \ref{feedbacknouns} vowel change in illative Sg is defined for bisyllabic nouns which ends in the vowel \textit{i}. The message tag is used to generate the feedback to the user. 
+The feedback messages are determined by the combination of morphological features in the lexicon and the inflection task at hand. Consider a part of the feedback specification in the Figure \ref{feedbacknouns}. It specifies the morphological rule that there is a vowel change in illative singular for bisyllabic nouns that end with the vowel \textit{i}. The corresponding feedback message instructs the user to remember the vowel change.
 
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.5}[.5]{\includegraphics{presentation/img/morphfeedbackEng.png}}\\
-\caption{The features in the lexicon are used to give message tags. Here the message tag is "i\_á".}
+\caption{The features in the lexicon are used to determine the correct feedback message, in this case the message "Vowel change i $>$ á"}
 \label{feedbacknouns}
 \end{center}
 \end{figure}
+
+The feedback may consist several parts so that the user also receive information about e.g. stem class. All the feedback messages that match the feature definition in the given task are collected and given to the user in a specified order. 
 
 %\begin{figure}[htbp]
 %\begin{center}
@@ -254,6 +207,22 @@ We constructed the feedback system in two steps. The first step is to define wha
 %\end{center}
 %\end{figure}
 %In the example in Figures \ref{feedbacknouns}, the correct illative Sg word form of \textit{mielki} is \textit{mielkái}. %As we see in Figure \ref{nounlex}, this lemma has the feature \texttt{only-sg}, which means that we generate the lemma only in singular, even if it according to the main lexicon, also may be used in plural. This information is for pedagogical purposes; it is not that natural to use the plural form of a mass noun for a student on a lower level.
+
+
+
+\section{CG-parser in live analysis programs Vasta and Sahka}\label{vastasahka}
+
+%\subsection{Morfa -- word inflection}
+%This is a drill made to train morphological patterns. It draws lemmas from the pedagogical lexicon at random, and the student has to answer with the word form. 
+
+%The student can restrict the sets to certain morphosyntactic features, like Part of Speech (verbs, nouns, adjectives and numerals), and for the three first of them, it can be restricted to bisyllabic, trisyllabic and contracted stems. She can also restrict the vocabulary to certain textbooks.
+
+%We have made two versions of the drill: Morfa-S is a bare morph-drill with singleton words. Morfa-C is a contextual morph drill, which gives matrix questions, in order to strengthen the linguistic context. After submitting the final version of the answers, the student gets a score, and a comment connected to the score.
+
+\subsection{Overview}
+
+
+
 
 \subsection{Syntactic analyses of the student's answer} \label{sentencefeedback}
 We have chosen not to use multiple-choice, but rather let the student formulate her own answer. To a certain question one may give many kinds of acceptable answers. In Sámi one may change word order, and also add many kinds of particles. 
@@ -277,7 +246,7 @@ We use vislcg3 for analysing the student's answer. The reason for choosing CG as
 The question and the answer are merged, and given to the analyser as one text string. We use a ruleset file which disambiguates the student's input only to a certain extent, because there will probably be grammatical and orthographic errors. The last part of the file consists of rules for giving feedback to the student's grammatical errors, and rules for navigating to the correct next question of in the dialogue, due to the student's answer. How to generate feedback or navigation instructions is explained in section \ref{tutorial} and \ref{navigation}.
 
 
-\begin{figure}[tbp]
+\begin{figure}[htbp]
 \begin{center}
 \scalebox{.48}[.43]{\includegraphics{presentation/img/qa2.pdf}}
 \caption{An overview of the analysis process.}
@@ -352,59 +321,11 @@ The misspelling can make another word form of the same lemma. For that we make r
 %When the verb in the question is in Sg2, a common error is that the student use the Sg2 form of the verb after the negative verb, instead of the correct ConNeg form, e.g. \textit{Logat go áviissa? In logat (loga) áviissa.} The correct form is in the parentheses. The problem is that the errouneous form is a ConNeg form of another verb, \textit{logadit}, and the normal feedback will be: "You should answer with the same verb as in the question." The student will not understand this, because she thinks that the word form in the answer is an instance of the same verb. The solution was to generate all these forms of the verbs in the questions, make a set of them, and make a rule for in the right context, give the feedback: "The negative form is not correct." 
 %\end{itemize}
 
-\subsubsection{Navigating in the dialogue}\label{navigation}
-We use the same system to navigate inside the dialogue. The input is tagged during analysis with information on whether it is interpreted as affirmative or negative, or with a target-tag, so that we can pick up e.g. a name or the essence of the answer, and use it in the next question or utterance. 
-
-Some dialogues are branched according to how the student answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In the same way an answer from the student about her age will induce a tag (Figure \ref{age}), which is used to navigate to different branches of the dialogue based on the age of the student, see Figure \ref{branch}.
-
-
-\begin{figure}[htbp]
-\begin{center}
-\scalebox{.4}[.4]{\includegraphics{presentation/img/picking_age2.png}}\\
-\caption{Rules for giving age-tag to the input. Special rules for the question named Man\_boaris\_don\_leat (How\_old\_are\_you).}
-\label{age}
-\end{center}
-\end{figure}
-
-
-\begin{figure}[htbp]
-\begin{center}
-\scalebox{.42}[.42]{\includegraphics{presentation/img/Man_boarisEng.png}}\\
-\caption{Example of how to navigate to the next question or branch, with help of the tag. The question is "How old are you?".}
-% and the branches are adapted to the age of the student.}
-\label{branch}
-\end{center}
-\end{figure}
-
-As we see in the Figures \ref{maidlohket} and \ref{branch}, the questions in the dialogues are not generated, but written. Every question has its own unique name, so we can link to it, and it is also possible to make a rule for a special question, like in Figure \ref{age}.  
-
-\section{The design of the programs}
-We will here discuss Vasta and Sahka, which are the programs which utilize the CG parser.
-
-%There are alltogehter five programs. We will here describe three of them. The other two are 
-% Numra, 
-%a numeral exercise based on the number word generator, and 
-% Leksa, 
-%a word quiz based on the pedagogical lexicon. 
-
-%\subsection{Morfa -- word inflection}
-%This is a drill made to train morphological patterns. It draws lemmas from the pedagogical lexicon at random, and the student has to answer with the word form. 
-
-%The student can restrict the sets to certain morphosyntactic features, like Part of Speech (verbs, nouns, adjectives and numerals), and for the three first of them, it can be restricted to bisyllabic, trisyllabic and contracted stems. She can also restrict the vocabulary to certain textbooks.
-
-%We have made two versions of the drill: Morfa-S is a bare morph-drill with singleton words. Morfa-C is a contextual morph drill, which gives matrix questions, in order to strengthen the linguistic context. After submitting the final version of the answers, the student gets a score, and a comment connected to the score.
-
-
-%\subsection{Vasta -- open questions}	
 \subsection{The open QA drill -- Vasta}	
 
-In between the "natural" dialogues, mimicking real life dialogues, and the pure grammar training session, inquiring paradigm forms, we have made 
-%Vasta -- 
-a question-answer drill. The drill has two question types: Yes/no questions and wh-questions. 
+In between the "natural" dialogues, mimicking real life dialogues, and the pure grammar training session, inquiring paradigm forms, we have made  a question-answer drill. The drill has two question types: Yes/no questions and wh-questions. 
 
-There are two motives for making this program type. First, our tailored dialogues 
-%in Sahka 
-run the risk of getting quickly consumed. With a QA drill we may generate an indefinite number of questions. Second, the students need to automate the question-answer routine -- answer with the correct verb, inflect the finite verb correctly and choose the correct case form.
+There are two motives for making this program type. First, our tailored dialogues run the risk of getting quickly consumed. With a QA drill we may generate an indefinite number of questions. Second, the students need to automate the question-answer routine -- answer with the correct verb, inflect the finite verb correctly and choose the correct case form.
 
 The questions are generated, and then the question and answer are analysed together, and the student gets feedback, as described in \ref{sentencefeedback}. The question matrices are marked with level, so there is a level option. Only one question is presented at a time. The student can answer what she wants, but she has to use a full sentence (containing a finite verb), and use the same verb as in the question. There are 111 matrix questions.
 %\begin{itemize}
@@ -422,6 +343,69 @@ The questions are generated, and then the question and answer are analysed toget
 %\label{vasta}
 %\end{center}
 %\end{figure}	
+
+\subsection{Sentence generator}\label{set}
+
+One of the main goals of the programs in OAHPA! is to practice language in natural settings with variation in the tasks. In order to provide variation in programs that involve sentential context we implemented a sentence generator. The sentence generator is used in the morphology in sentential context program (Morfa-C), and for generating questions to the QA drill (Vasta). Figure \ref{questionv} contains an example of sentence matrix that is used in the sentence generator.
+
+\begin{figure}[htbp]
+\begin{center}
+\scalebox{.5}[.5]{\includegraphics{presentation/img/question_vasta2.png}}\\
+\caption{Example of generating if questions (MAINV question-particle SUBJ yesterday).}
+\label{questionv}
+\end{center}
+\end{figure}
+
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.5}[.5]{\includegraphics{presentation/img/question_vasta2.pdf}}\\
+%\caption{Example of generating if questions (MAINV question-particle SUBJ yesterday).}
+%\label{questionv}
+%\end{center}
+%\end{figure}
+%
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.5}[.5]{\includegraphics{presentation/img/question_vasta2.jpg}}\\
+%\caption{Example of generating if questions (MAINV question-particle SUBJ yesterday).}
+%\label{questionv}
+%\end{center}
+%\end{figure}
+
+The question matrix contains two types of elements: constants and grammatical units. The constants such as \textit{go} and \textit{ikte} in the Figure \ref{questionv} are present in each generated sentence as such, whereas grammatical units allow more variation. Both the inflection and the content of the grammatical units may vary from question to question, and from program to program. For example, in the question in Figure \ref{questionv} the MAINV is fixed to past tense, but the person and number inflection may vary freely. In addition, certain elements such as the sentence subject (SUBJ) have default inflection in nominative, but the default inflection may be overridden. The selection of words for the sentence is constrained by semantic sets. Semantic sets are also used as an option in the word quiz (Leksa).
+%There are ordinary sets and supersets, and we choose which one suits best for the particular question/task, e.g. the big superset HUMAN with all lemmas for human beings, or a smaller subset, like PROFESSION. In Figure \ref{semset} is a definition of a superset. 
+%
+%%sh: this figure seems to have a lot of space on the top..
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.6}[.6]{\includegraphics{presentation/img/semantic_set.png}}\\
+%\caption{Some of the semantic sets are supersets, consisting of subsets. From \texttt{semantic\_sets.xml}.}
+%\label{semset}
+%\end{center}
+%\end{figure}
+
+The sentence generator handles agreement e.g. between subject and the main verb. The agreement may be explicitly marked between any two elements, which indicates that the two elements share the same number and person inflection.
+
+In addition to generating questions, the sentence generator is used for generating answer templates. In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept an inclusive interpretation of the pronouns in Pl1 and Du1, because we wanted the student to exercise also 2. person verb inflection. Table \ref{QA} shows how the question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on. Pl1 as an answer to Pl1 is thus not accepted by the system.\\
+
+
+\begin{table}[htdp]
+\caption{Provided question-answer agreement.}
+\begin{center}
+\begin{tabular}[t]{ll|ll|ll}
+QPN &APN &QPN &APN &QPN &APN \\
+\hline
+Sg1 &Sg2 &Du1 &Du2 &Pl1 &Pl2 \\
+Sg2 &Sg1 &Du2 &Du1 &Pl2 &Pl1 \\
+Sg3 &Sg3 &Du3 &Du3 &Pl3 &Pl3 \\
+\hline
+\end{tabular}
+\end{center}
+\label{QA}
+\end{table}
+
+
+
 
 %\subsection{Sahka -- dialogues}
 \subsection{The dialogue program -- Sahka}
@@ -482,11 +466,33 @@ A topic is like a module in the dialogue, and it is easy to put a new module sub
 
 The dialogue system itself is quite simple. Only the program can make initiatives, and all the utterances from the program, are written. The program can store simple information as the student's name, place where she lives and her car type, for using in as a variable in a tailored utterance. If we were to develop the program with generating of utterances, and a more free dialogue, and also let the student take initiatives, we would have to use an analyser which maps semantic roles to the student's input, despite possible syntactic errors. In order to implement this we would need a semantically enriched lexicon.
 
-\subsection{Web interface}
+\subsubsection{Navigating in the dialogue}\label{navigation}
+We use the same system to navigate inside the dialogue. The input is tagged during analysis with information on whether it is interpreted as affirmative or negative, or with a target-tag, so that we can pick up e.g. a name or the essence of the answer, and use it in the next question or utterance. 
 
-The Web framework is built on the top of a Mysql database. The information for the programs is specified in XML-documents, from where it is extracted and stored to the Mysql database. The database allows effective processing of database queries, which is crucial for real-time applications. The database also contains information outside the XML-files, such as all the inflectional forms for words in the pedagogical lexica. The basic morphological and lexicon programs exploit words from quite restricted domains. Therefore it makes sense to generate the word forms in beforehand instead of using quite heavy machinery of word form generator together with full lexica. In addition, generating the word forms and storing them to the database provides better control over the inflected word forms and e.g. different dialectal forms and thus a more stable application.
+Some dialogues are branched according to how the student answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In the same way an answer from the student about her age will induce a tag (Figure \ref{age}), which is used to navigate to different branches of the dialogue based on the age of the student, see Figure \ref{branch}.
 
-It should be noted that the dialogue and QA program use the grammatical analyser on the fly, exploiting full lexicons. This allows the user's answer to contain any North Sámi word, also words that are not restricted to the pedagogical lexicon.
+
+\begin{figure}[htbp]
+\begin{center}
+\scalebox{.4}[.4]{\includegraphics{presentation/img/picking_age2.png}}\\
+\caption{Rules for giving age-tag to the input. Special rules for the question named Man\_boaris\_don\_leat (How\_old\_are\_you).}
+\label{age}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\begin{center}
+\scalebox{.42}[.42]{\includegraphics{presentation/img/Man_boarisEng.png}}\\
+\caption{Example of how to navigate to the next question or branch, with help of the tag. The question is "How old are you?".}
+% and the branches are adapted to the age of the student.}
+\label{branch}
+\end{center}
+\end{figure}
+
+As we see in the Figures \ref{maidlohket} and \ref{branch}, the questions in the dialogues are not generated, but written. Every question has its own unique name, so we can link to it, and it is also possible to make a rule for a special question, like in Figure \ref{age}.  
+
+
 
 \section{Evaluation}
 
