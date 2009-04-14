@@ -48,7 +48,11 @@ This article presents a set of interactive pedagogical programs for North Sámi.
 This paper describes the implementation a set of pedagogical programs for learners of North Sámi (a Uralic language), based on a finite state transducer (fst) and constraint grammar (CG) technology. %\footnote{Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding the project. The work behind the basic analysers was financed by the Research Council of Norway.}. 
 The pedagogical programs are available on a web-based learning platform OAHPA!, accessible at \url{http:\\oahpa.uit.no}. There are six programs altogether: A word quiz (Leksa), a numeral quiz (Numra), basic morphological exercises (Morfa-S), morphological exercises in a sentential frame (Morfa-C), a question-answer (QA) drill (Vasta), and a dialogue program (Sahka).
 
+<<<<<<< .mine
+The web-interface for the OAHPA! platform is implemented in Django, Python-based web development framework combined with a Mysql database.
+=======
 The OAHPA! platform is implemented in Django, a Python-based web development framework together with a Mysql database.
+>>>>>>> .r25338
 
 In section 2 we describe the initial linguistic resources and the pedagogical motivation behind the programs. Section 3 presents the basic design of different parts of the programs. The fourth section shows how the CG-parser was utilised in the programs accepting free sentence input. Section 5 contains an evaluation of the programs.
 
@@ -407,9 +411,17 @@ Sg3 &Sg3 &Du3 &Du3 &Pl3 &Pl3 \\
 
 
 %\subsection{Sahka -- dialogues}
+<<<<<<< .mine
+\section{The dialogue program -- Sahka}
+The idea behind the dialogues is that the student may exercise North Sámi in a natural setting, and at the same time receive feedback about errors. Each dialogue is based on a scenario, such as meeting a person for the first time or going to a grocery store. In addition, each scenario has a set of underlying pedagogical goals. E.g. in Grocery-dialogue the student is telling what kind of food she wants to buy and the underlying pedagogical goal is to exercise inflecting objects in accusative. 
+=======
 \subsection{The dialogue program -- Sahka}
 The idea behind the dialogues is that the student may exercise North Sámi in a quite natural way, and at the same time get comments about errors. There will be two kinds of feedback: tags for navigation in the dialogue itself, and tags that generate tutorial feedback.
+>>>>>>> .r25338
 
+<<<<<<< .mine
+Each dialogue consists of branches to different topics. The program asks questions, comments on the student's answers and starts a new topic according to the answer. The dialogue forms a continuum and contains only accepted answers. The feedback concerning grammatical errors is given on a separate window and the user is allowed to correct the answer until it is accepted by the program.
+=======
 Each dialogue is made to a scenario, and each scenario has a set of underlying pedagogical goals. E.g. in the Grocery-dialogue, the scenario is a shop, and the student is telling what kind of food she wants to buy. The underlying pedagogical goal is to exercise inflecting objects in accusative.
 
 % \begin{figure}[htbp]
@@ -419,29 +431,13 @@ Each dialogue is made to a scenario, and each scenario has a set of underlying p
 % \label{sahka}
 % \end{center}
 % \end{figure}
+>>>>>>> .r25338
 
-In the Get-acquainted-to-dialogues the student can choose an identity for the conversation (she chooses a picture). These identities will act as parameters for choice of comments from the computer, and for dialogue topics and dialect forms.
+A topic starts with an opening utterance which is either a question or a comment followed by a question. Thus, the user is expected all the time to provide answers to the questions. The dialogue proceeds from to an appropriate utterance inside the current topic. In the end of the topic, there is always a closing comment after which the dialogue proceeds to next topic which is selected according to the answers provided by the user. For example, if the question is about having a car, a positive answer will navigate to a branch with follow-up questions.
 
-%\vspace{0.5cm}
-%	
-%Scenarios:
-%\begin{itemize}
-%\item Get acquainted to Hánsa -- an adult man living in Kautokeino
-%\item Get acquainted to Káre -- an adult woman living in Karasjok
-%\item Get acquainted to Lisa -- a girl living in Tana
-%\item Get acquainted to Lemet -- a boy living in Tromsø
-%\item Visit -- help to move furniture from one room to another, and have a coffee break
-%\item Grocery -- buying food
-%\item Comparing in the shop -- tell what is cheapest or most expensive, using adjectives in comparative or superlative
-%\end{itemize}
+The CG-rules are used for navigating inside the dialogue. The input is tagged during analysis with information on whether the answer is interpreted as affirmative or negative. In addition a special tag indicates whether the sentence contains some information that we want to store for the following questions or utterances. The program is thus able to store only simple information such as the student's name, place where she lives and for example the type of her car and use this information in tailored utterances. 
 
-Each dialogue consists of many branches, and different links according to the student's input. To organize them, we have made different levels (la: should be another word):
-
-%The first utterance is a dialogue\_opening and the last utterance is a dialogue\_closing. The student can write that she wants to quit at any point during the dialogue, and by using some form of the verb \textit{heaitit} ("quit") she will navigate directly to the dialogue\_closing.
-
-The dialogue consists of topics, and every topic starts with an opening utterance; a comment or a question. In the end of the topic, there is always a closing comment.  
-
-Every utterance has a name, and one or more links. The choice of link is dependent upon what kind of tag the question-answer pair gets, e.g. \textit{\&dia-neg} or \textit{\&dia-pos}, or \textit{\&dia-target} to a certain word, e.g. target="hivsset", like in Figure \ref{TV}.  In Figure \ref{targetIll} we see how the \textit{\&dia-target} tag is mapped to the noun in illative. There will always be a default; in case there will not be any tag. \\
+Every utterance contains one or more links to other utterances. The link is selected according to the tag the question-answer pair gets, e.g. \textit{\&dia-neg} or \textit{\&dia-pos}, or \textit{\&dia-target} to a certain word, e.g. target="hivsset", like in Figure \ref{TV}.  In Figure \ref{targetIll} we see how the \textit{\&dia-target} tag is mapped to the noun in illative. \\
 
 \begin{figure}[htbp]
 \begin{center}
@@ -450,7 +446,6 @@ Every utterance has a name, and one or more links. The choice of link is depende
 \label{TV}
 \end{center}
 \end{figure}
-
 
 \begin{figure}[htbp]
 \begin{center}
@@ -461,16 +456,18 @@ Every utterance has a name, and one or more links. The choice of link is depende
 \end{center}
 \end{figure}
 
-A topic is like a module in the dialogue, and it is easy to put a new module subsequent to any topic. The linking makes it possible to make branches. Every utterance has a unique name.  
 
-The dialogue system itself is quite simple. Only the program can make initiatives, and all the utterances from the program, are written. The program can store simple information as the student's name, place where she lives and her car type, for using in as a variable in a tailored utterance. If we were to develop the program with generating of utterances, and a more free dialogue, and also let the student take initiatives, we would have to use an analyser which maps semantic roles to the student's input, despite possible syntactic errors. In order to implement this we would need a semantically enriched lexicon.
+For example, an answer from the student about her age will induce a tag (Figure \ref{age}), which is used to navigate to different branches of the dialogue, see Figure \ref{branch}.
 
+<<<<<<< .mine
+=======
 \subsubsection{Navigating in the dialogue}\label{navigation}
 We use the same system to navigate inside the dialogue. The input is tagged during analysis with information on whether it is interpreted as affirmative or negative, or with a target-tag, so that we can pick up e.g. a name or the essence of the answer, and use it in the next question or utterance. 
 
 Some dialogues are branched according to how the student answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In the same way an answer from the student about her age will induce a tag (Figure \ref{age}), which is used to navigate to different branches of the dialogue based on the age of the student, see Figure \ref{branch}.
 
 
+>>>>>>> .r25338
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.4}[.4]{\includegraphics{presentation/img/picking_age2.png}}\\
@@ -489,7 +486,37 @@ Some dialogues are branched according to how the student answers, e.g. if the qu
 \end{center}
 \end{figure}
 
-As we see in the Figures \ref{maidlohket} and \ref{branch}, the questions in the dialogues are not generated, but written. Every question has its own unique name, so we can link to it, and it is also possible to make a rule for a special question, like in Figure \ref{age}.  
+As we see in the Figures \ref{maidlohket} and \ref{branch}, the questions in the dialogues are ready-made. Every question has its own unique name, which may be linked to other questions and it is also possible to make a rule for a special question, like in Figure \ref{age}.  
+
+
+
+% \begin{figure}[htbp]
+% \begin{center}
+% \scalebox{.4}[.4]{\includegraphics{presentation/img/sahka2.png}}\\
+% \caption{Sahka -- the dialogue program.}
+% \label{sahka}
+% \end{center}
+% \end{figure}
+
+% sh: I commented this, since I could not get it nicely to the text. 
+%In Get-acquainted-to-dialogues the student can choose from a picture the person she would like to meet . The %identities of the persons are used as parameters for selecting the proper comment and dialogue topics as well as %dialectal forms.
+
+%\vspace{0.5cm}
+%	
+%Scenarios:
+%\begin{itemize}
+%\item Get acquainted to Hánsa -- an adult man living in Kautokeino
+%\item Get acquainted to Káre -- an adult woman living in Karasjok
+%\item Get acquainted to Lisa -- a girl living in Tana
+%\item Get acquainted to Lemet -- a boy living in Tromsø
+%\item Visit -- help to move furniture from one room to another, and have a coffee break
+%\item Grocery -- buying food
+%\item Comparing in the shop -- tell what is cheapest or most expensive, using adjectives in comparative or superlative
+%\end{itemize}
+
+%The first utterance is a dialogue\_opening and the last utterance is a dialogue\_closing. The student can write that she wants to quit at any point during the dialogue, and by using some form of the verb \textit{heaitit} ("quit") she will navigate directly to the dialogue\_closing.
+
+The dialogue system itself is quite simple. Only the program can make initiatives, and all the utterances from the program are ready-made, addressing topics that the program is able to handle. In other words, the sentence generation mechanism used in Vasta is not utilised in the dialogue program. Developing the program to the direction of free dialogue, where also the student is able to take initiatives, requires among other things an analyser which maps semantic roles to the student's input and a semantically enriched lexicon. 
 
 
 
