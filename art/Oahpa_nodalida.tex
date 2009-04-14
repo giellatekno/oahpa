@@ -56,7 +56,7 @@ Vislcg3 is a new generation of the open source compiler vislcg. It is a compiler
 
 \subsection{Interactive parser-based CALL}
 
-Vislcg3 is used in the VISL-suite of games for teaching grammatical analysis on the Internet. Most of the games are based on pre-analysed sentences, but in one program the user can type in any text in one of 7 languages, and get it analysed, or changed into a grammar exercise. \cite{Bick:05}.
+Vislcg3 is used in the VISL-suite of games for teaching grammatical analysis on the Internet. Most of the games are based on pre-analysed sentences, but in one program the user can type in any text in one of 7 languages, and get it analysed, or changed into grammar exercises. \cite{Bick:05}.
 
 Even if many interactive parser-based programs for CALL are described in the literature, see \cite{Gamper:02,Heift:07}, very few of them are available for actual use online. Most systems are only made as prototypes. One of very few exceptions is e-tutor, a program teaching German to foreigners, which gives very good feedback to student errors, but the possible input is restricted to a small, fixed vocabulary, and there is no dialogue. The grammar formalism used is Head-driven Phrase Structure Grammar. \cite{Heift:01,Heift:02}.
 
@@ -247,7 +247,7 @@ We have chosen not to use multiple-choice, but rather let the student formulate 
 %\item \textit{Don lohket ollu áviissaid.} \\ $\rightarrow$ Are you sure that you answer with the correct person?  
 %\end{itemize}
 
-We use vislcg3 for analysing the student's answer. The reason for choosing CG as parser platform was that only CG is robust enough for handling unconstrained input, and at the same time accurate enough to identify errors. The program contains manually written, context dependent rules, mainly used for selecting the correct analysis in case of homonymy. Each rule adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentential context. Context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). Context conditions in the same rule may be linked, i.e. conditioned upon each other, negated or blocked by interfering words or tags. Vislcg3 is documented at \cite{Visl:08}. Grammars for Danish and Norwegian based on CG achieve very good F-scores \cite{Bick:04}.
+We use vislcg3 for analysing the student's answer. The reason for choosing CG as parser platform was that only CG is robust enough for handling unconstrained input, and at the same time accurate enough to identify errors. The program contains manually written, context dependent rules, mainly used for selecting the correct analysis in case of homonymy. Each rule adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentential context. Context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). Context conditions in the same rule may be linked, i.e. conditioned upon each other, negated or blocked by interfering words or tags. Vislcg3 is documented at \cite{Visl:08}. Grammars for Danish and Norwegian based on CG achieve very good F-scores \cite{Bick:03}.
 
 The question and the answer are merged, and given to the analyser as one text string. We use a ruleset file which disambiguates the student's input only to a certain extent, because there will probably be grammatical and orthographic errors. The last part of the file consists of rules for giving feedback to the student's grammatical errors, and rules for navigating to the correct next question of in the dialogue, due to the student's answer. How to generate feedback or navigation instructions is explained in section \ref{tutorial} and \ref{navigation}.
 
@@ -523,6 +523,9 @@ By using a sloppy version of the syntactical analyser for North Sámi, combined 
 The program is something quite new among pedagogical programs for Sámi, and indeed quite rare within the CALL field. %The programs are not linked to a certain chapter in a textbook, or to a certain level in the student's progression. Instead, all programs have many options, so the student can choose what to exercise, and on what level. 
 The QA and the dialogue program are tolerant towards variation in student answer (not only string matching), and the random generation of tasks more or less in all of the programs, the student can use them over and over again. 
 
+\section*{Acknowledgments}
+Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding the project. The work behind the basic analysers was financed by the Research Council of Norway. 
+
 
 
 \begin{thebibliography}{}
@@ -535,29 +538,37 @@ The QA and the dialogue program are tolerant towards variation in student answer
 \newblock USA.
 %Bick, Eckhard (2003-8). "A Constraint Grammar Based Question-Answering System for Portuguese". In: Fernando Moura Pires & Salvador (eds.) Progress in Artificial Intelligence (Proceedings of EPIA'2003, Beja, Dec. 2003), pp. 414-418. Springer
 
-\bibitem[\protect\citename{Bick}2004]{Bick:04}
+\bibitem[\protect\citename{Bick}2003]{Bick:03}
 {Eckhard Bick}.
-\newblock 2004.
-\newblock {PaNoLa: Integrating Constraint Grammar and CALL}.
-\newblock Henrik Holmboe (ed.): {\em Nordic Language Technology, Årbog for Nordisk Sprogteknologisk Forskningsprogram 2000-2004}.
+\newblock 2003.
+\newblock {PaNoLa: Integrating Constraint Grammar and CALL applications for Nordic languages}.
+\newblock Holmboe, Henrik (ed.): {\em Nordic Language Technology, Årbog for Nordisk Sprogteknologisk Forskningsprogram 2000-2004}.
 \newblock {183--190},
-\newblock Copenhagen: Museum Tusculanum.
+\newblock København: Museum Tusculanums Forlag.
 
 \bibitem[\protect\citename{Bick}2005]{Bick:05}
 {Eckhard Bick}.
 \newblock 2005.
-\newblock {Grammar for Fun: IT-based Grammar Learning with VISL}.
-%\newblock {49--64},
-\newblock Henriksen, Peter Juel (ed.): {\em CALL for the Nordic Languages.}
-\newblock Copenhagen Studies in Language 30: 49--64.
+\newblock {Live use of Corpus data and Corpus annotation tools in CALL: Some new developments in VISL}.
+\newblock Holmboe, Henrik (ed.): {\em Nordic Language Technology, Årbog for Nordisk Sprogteknologisk Forskningsprogram 2000-2004},
+\newblock {171--185}.
+\newblock København: Museum Tusculanums Forlag.
+
+%\bibitem[\protect\citename{Bick}2005b]{Bick:05b}
+%{Eckhard Bick}.
+%\newblock 2005b.
+%\newblock {Grammar for Fun: IT-based Grammar Learning with VISL}.
+%%\newblock {49--64},
+%\newblock Henriksen, Peter Juel (ed.): {\em CALL for the Nordic Languages.}
+%\newblock Copenhagen Studies in Language 30:49--64.
 
 \bibitem[\protect\citename{Gamper and Knapp}2002]{Gamper:02}
 {Johann Gampfer and Judith Knapp}.
 \newblock 2001.
 \newblock {A review of intelligent CALL systems}.
-\newblock {\em Computer Assisted Language Learning.} 
+\newblock {\em Computer Assisted Language Learning} 
 %\newblock {329--342},
-\newblock {15(4): 329--342.}
+\newblock {15(4):329--342.}
 %\newblock Routledge.
 
 
@@ -575,8 +586,8 @@ The QA and the dialogue program are tolerant towards variation in student answer
 \newblock 2001.
 \newblock {Web Delivery of Adaptive and Interactive Language Tutoring}.
 %\newblock {310--325},
-\newblock {\em International Journal of Artificial Intelligence in Education.}
-\newblock {12(4): 310--325.}
+\newblock {\em International Journal of Artificial Intelligence in Education}
+\newblock {12(4):310--325.}
 
 \bibitem[\protect\citename{Heift and Schulze}2007]{Heift:07}
 {Trude Heift and Mathias Schulze}.
