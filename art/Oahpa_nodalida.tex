@@ -46,7 +46,7 @@ This article presents a set of interactive pedagogical programs for North Sámi.
 
 \section{Introduction}
 This paper describes the implementation of pedagogical programs for learners of North Sámi (a Uralic language), based on a finite state transducer (fst) and constraint grammar (CG) technology. %\footnote{Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding the project. The work behind the basic analysers was financed by the Research Council of Norway.}. 
-The pedagogical programs are available on a web-based learning platform OAHPA! (accessible at \url{http:\\oahpa.uit.no}). There are altogether six programs: A word quiz (Leksa), a numeral quiz (Numra), basic morphological exercises (Morfa-S), morphological exercises in a sentential frame (Morfa-C), a question-answer (QA) drill (Vasta), and a dialogue program (Sahka).
+The pedagogical programs are available on a web-based learning platform OAHPA!, accessible at \url{http:\\oahpa.uit.no}. There are altogether six programs: A word quiz (Leksa), a numeral quiz (Numra), basic morphological exercises (Morfa-S), morphological exercises in a sentential frame (Morfa-C), a question-answer (QA) drill (Vasta), and a dialogue program (Sahka).
 
 The OAHPA! platform is implemented in Django, Python-based web development framework together with Mysql database.
 
@@ -56,8 +56,7 @@ In section 2 we describe the initial linguistic resources and the pedagogical mo
 \section{Background}
 
 \subsection{Basic grammatical analysis}
-
-The pedagogical programs in OAHPA! are based upon three pre-existing language technology resources developed at the University of Tromsø: morphological analyser/generator (fst), a CG parser for North Sámi and a number word generator based of xfst.
+The pedagogical programs in OAHPA! are based upon three pre-existing language technology resources developed at the University of Tromsø: morphological analyser/generator, a CG parser for North Sámi and a number word generator based of xfst.
 
 Morphological analyser/generator is implemented with fst and compiled with the Xerox compilers twolc and lexc~\cite{BeesleyKarttunen:03}. Sámi languages have large morphological paradigms for each lexeme -- verbs and adjectives have more than 100 inflected forms. In addition, some of the paradigm members have a very low text frequency. Due to the limited amount of electronically available text resources, an fst analyser was used, rather than e.g. an HMM tagger \cite{Trosterud:07}. The lexicon contains 97.500 lemmas -- almost half of them proper nouns. There exist two different variants of the analyser/generator: one is tolerant, with morphological patterns based upon actual usage, and the other is normative, and adheres to the written standard.  
 
@@ -96,7 +95,7 @@ North Sámi is used in three countries, and therefore the programs have several 
 \subsection{The structure of the lexicon}
 
 
-All the OAHPA! -games share a set of common resources: a pedagogical lexicon and a morphological generator that is used for generating the different word forms that appear in the games. The dialectal variation is taken into account in lexical as well as morphological level. In addition, the morphological properties of words are used in constructing a detailed feedback on morphological errors.
+All the OAHPA! -programs share a set of common resources: a pedagogical lexicon and a morphological generator that is used for generating the different word forms that appear in the programs. The dialectal variation is taken into account in lexical as well as morphological level. In addition, the morphological properties of words are used in constructing a detailed feedback on morphological errors.
 
 
 %\begin{example}\label{nounsmelex}
@@ -114,7 +113,7 @@ All the OAHPA! -games share a set of common resources: a pedagogical lexicon and
 % \end{figure}
 
 
-The pedagogical lexicon forms a collection of words that are considered relevant for the learners of North Sámi in schools and universities. The words occur in different forms in different tasks. The pedagogical lexicon which contains additional information about the lemmas, such as Norwegian translation, semantic class, dialect and information about the inflection. The words in the pedagogical lexicon were collected from the key textbooks for North Sámi and the source information is included in the lexicon entry. %Cf. section \ref{set} for more information about our semantic sets. 
+The pedagogical lexicon forms a collection of words that are considered relevant for the learners of North Sámi in schools and universities. The words occur in different forms in different tasks. The pedagogical lexicon contains additional information about the lemmas, such as Norwegian translation, semantic class, dialect and information about the inflection. The words in the pedagogical lexicon were collected from the key textbooks for North Sámi and the source information is included in the lexicon entry. %Cf. section \ref{set} for more information about our semantic sets. 
 In addition, homonymy in both base form and inflection is dealt with using ids for lexicon entries instead of lemmas. 
 The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives, in addition to a small lexicon for %grammatical word classes
 functional words and numbers. Figure \ref{nounlex} shows an example of an entry in the noun lexicon. \\
@@ -128,7 +127,7 @@ functional words and numbers. Figure \ref{nounlex} shows an example of an entry 
 \end{figure}
 
 
-The word forms that are used in the game are pre-generated with a transducer that contains of the full North Sámi vocabulary, the inflectional and derivational morphology, and the non-segmental morphological processes (consonant gradation, diphthong simplification, etc.). Similar transducer is used in live analysis of user input in games Vasta and Sahka, which are described in section \ref{vastasahka}. Example (\ref{nounsmelex}) shows a lexical entry (AIGI is the continuation class):
+The word forms that are used in the program are pre-generated with a transducer that contains of the full North Sámi vocabulary, the inflectional and derivational morphology, and the non-segmental morphological processes (consonant gradation, diphthong simplification, etc.). Similar transducer is used in live analysis of user input in the programs Vasta and Sahka, which are described in section \ref{vastasahka}. Here is an example of a lexical entry (GOAHTI is the continuation class):
 
 \begin{figure}[htbp]
 \begin{center}
@@ -165,7 +164,7 @@ The dialectal variation was in the source code (lexc) in one of the following wa
 %\item[(c)] NG (not generate for any dialect)
 \end{itemize}
 
-Figure \ref{smelex} contains an example of how the dialectal information is handled in the lexicon file. We also marked entries in the pedagogical lexicon-files with NOT-KJ and NOT-GG. This system can easily be expanded with more dialects.
+Figure \ref{smelex} contains an example of how the dialectal information is handled in the lexicon file. We also marked entries in the pedagogical lexicon-files with NOT-KJ and NOT-GG, as in Figure \ref{nounlex}. This system can easily be expanded with more dialects.
 
 \begin{figure}[htbp]
 \begin{center}
@@ -184,12 +183,12 @@ The feedback messages are determined by the combination of morphological feature
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.5}[.5]{\includegraphics{presentation/img/morphfeedbackEng.png}}\\
-\caption{The features in the lexicon are used to determine the correct feedback message, in this case the message "Vowel change i $>$ á"}
+\caption{The features in the lexicon are used to determine the correct feedback message, in this case the message is "Vowel change i $>$ á"}
 \label{feedbacknouns}
 \end{center}
 \end{figure}
 
-The feedback may consist several parts so that the user also receive information about e.g. stem class. All the feedback messages that match the feature definition in the given task are collected and given to the user in a specified order. 
+The feedback may consist several parts so that the user also receive information about e.g. stem class. All the feedback messages that match the feature definition in the given task, are collected and given to the user in a specified order. 
 
 %\begin{figure}[htbp]
 %\begin{center}
