@@ -58,7 +58,7 @@ Vislcg3 is a new generation of the open source compiler vislcg. It is a compiler
 
 Vislcg3 is used in the VISL-suite of games for teaching grammatical analysis on the Internet. Most of the games are based on pre-analysed sentences, but in one program the user can type in any text in one of 7 languages, and get it analysed, or changed into a grammar exercise. \cite{Bick:05}.
 
-Even if many interactive parser-based programs for CALL are described in the literature, see \cite{Gamper:02,Heift:07}, very few of them are available for actual use online. Most systems are only made as prototypes. One of very few exceptions is eTutor, a program teaching German to foreigners, which gives very good feedback to student errors, but the possible input is restricted to a small, fixed vocabulary, and there is no dialogue. The grammar formalism used is Head-driven Phrase Structure Grammar. \cite{Heift:01,Heift:02}.
+Even if many interactive parser-based programs for CALL are described in the literature, see \cite{Gamper:02,Heift:07}, very few of them are available for actual use online. Most systems are only made as prototypes. One of very few exceptions is e-tutor, a program teaching German to foreigners, which gives very good feedback to student errors, but the possible input is restricted to a small, fixed vocabulary, and there is no dialogue. The grammar formalism used is Head-driven Phrase Structure Grammar. \cite{Heift:01,Heift:02}.
 
 % Quoting letter from Trude Heift:
 %You are right that the literature on ICALL systems is very scattered - I assume you had a look at the overview of parser-based projects described in our book (Heift & Schulze, 2007 - Routledge). There are VERY few working systems, i.e., only 3 I know of. One is a system for Japanese by Nagata (a meanwhile commercial system); a system for Portuguese - Tagarella by Meurers & Amaral which I believe covers content for an introductory course of L2 Portuguese; and the e-tutor which basically covers the entire L2 grammar of German taught in the first three university courses. I am certain that if you email the researchers, you'll get access to the systems. In addition, I know that Wolfgang Menzel at the Univeristy of Hamburg was working on a game-like system ("The Market Place") but I don't know where the project is at and whether it's in actual use by students.
@@ -126,6 +126,22 @@ In order to be able to create a large number of potential tasks, we implemented 
 \label{questionv}
 \end{center}
 \end{figure}
+
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.5}[.5]{\includegraphics{presentation/img/question_vasta2.pdf}}\\
+%\caption{Example of generating if questions (MAINV question-particle SUBJ yesterday).}
+%\label{questionv}
+%\end{center}
+%\end{figure}
+%
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.5}[.5]{\includegraphics{presentation/img/question_vasta2.jpg}}\\
+%\caption{Example of generating if questions (MAINV question-particle SUBJ yesterday).}
+%\label{questionv}
+%\end{center}
+%\end{figure}
 
 The question matrix contains two types of elements: constants and grammatical units. The constants such as \textit{go} and \textit{ikte} in the Figure \ref{questionv} are present in each generated sentence as such, whereas grammatical units allow more variation. Both the inflection and the content of the grammatical units may vary from question to question, and from program to program. For example, in the question in Figure \ref{questionv} the MAINV is fixed to past tense, but the person and number inflection may vary freely. In addition, certain elements such as the sentence subject (SUBJ) have default inflection in nominative, but the default inflection may be overridden. The selection of words for the sentence is constrained by semantic sets. Semantic sets are also used as an option in the word quiz. 
 %There are ordinary sets and supersets, and we choose which one suits best for the particular question/task, e.g. the big superset HUMAN with all lemmas for human beings, or a smaller subset, like PROFESSION. In Figure \ref{semset} is a definition of a superset. 
@@ -531,17 +547,17 @@ The QA and the dialogue program are tolerant towards variation in student answer
 {Eckhard Bick}.
 \newblock 2005.
 \newblock {Grammar for Fun: IT-based Grammar Learning with VISL}.
-\newblock {49--64},
+%\newblock {49--64},
 \newblock Henriksen, Peter Juel (ed.): {\em CALL for the Nordic Languages.}
-\newblock Copenhagen Studies in Language 30.
+\newblock Copenhagen Studies in Language 30: 49--64.
 
 \bibitem[\protect\citename{Gamper and Knapp}2002]{Gamper:02}
 {Johann Gampfer and Judith Knapp}.
 \newblock 2001.
 \newblock {A review of intelligent CALL systems}.
 \newblock {\em Computer Assisted Language Learning.} 
-\newblock {329--342},
-\newblock {15(4)}
+%\newblock {329--342},
+\newblock {15(4): 329--342.}
 %\newblock Routledge.
 
 
@@ -549,8 +565,8 @@ The QA and the dialogue program are tolerant towards variation in student answer
 {Trude Heift}.
 \newblock 2001.
 \newblock {Intelligent Language Tutoring Systems for Grammar Practice}.
-\newblock {6(2)}
-\newblock {\em Zeitschrift fur Interkulturellen Fremdsprachenunterricht [Online].}
+\newblock {\em Zeitschrift fur Interkulturellen Fremdsprachenunterricht [Online] }
+\newblock {6(2).}
 
 
 
@@ -558,9 +574,9 @@ The QA and the dialogue program are tolerant towards variation in student answer
 {Trude Heift and Devlan Nicholson}.
 \newblock 2001.
 \newblock {Web Delivery of Adaptive and Interactive Language Tutoring}.
-\newblock {310--325},
-\newblock {12(4)}
+%\newblock {310--325},
 \newblock {\em International Journal of Artificial Intelligence in Education.}
+\newblock {12(4): 310--325.}
 
 \bibitem[\protect\citename{Heift and Schulze}2007]{Heift:07}
 {Trude Heift and Mathias Schulze}.
