@@ -141,7 +141,7 @@ The question matrix contains two types of elements: constants and grammatical un
 
 The sentence generator handles agreement e.g. between subject and the main verb. The agreement may be explicitly marked between any two elements, which indicates that the two elements share the same number and person inflection.
 
-In addition to generating questions, the sentence generator is used for generating answer templates. In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept an inclusive interpretation of the pronouns in Pl1 and Du1, because we wanted the student to exercise also 2. person verb inflection. Using an inclusive interpretation, s/he could answer with the same verb form as in the question. Table \ref{QA} shows how the question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on. Pl1 as an answer to Pl1 is thus not accepted by the system.\\
+In addition to generating questions, the sentence generator is used for generating answer templates. In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept an inclusive interpretation of the pronouns in Pl1 and Du1, because we wanted the student to exercise also 2. person verb inflection. Using an inclusive interpretation, she could answer with the same verb form as in the question. Table \ref{QA} shows how the question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on. Pl1 as an answer to Pl1 is thus not accepted by the system.\\
 
 
 \begin{table}[htdp]
@@ -185,7 +185,7 @@ We show an example in Figure \ref{smelex}. We also marked entries in the pedagog
 
 \subsection{System for feedback on morphology}\label{mfeedback}
 
-The information in the pedagogical lexicon about inflection is there only to give a good feedback to the student. If s/he doesn't inflect the lemma correctly, s/he can ask for hints about the inflection, and try once more, instead of getting the correct answer straight away. 
+The information in the pedagogical lexicon about inflection is there only to give a good feedback to the student. If she doesn't inflect the lemma correctly, she can ask for hints about the inflection, and try once more, instead of getting the correct answer straight away. 
 
 We constructed the feedback system in two steps. The first step is to define what kind of message the system should provide, based upon the combination of morphological features in the lexicon and the inflection itself. In Figure \ref{feedbacknouns} vowel change in illative Sg is defined for bisyllabic nouns which ends in the vowel \textit{i}. The message tag is used to generate the feedback to the user. 
 
@@ -215,7 +215,7 @@ We constructed the feedback system in two steps. The first step is to define wha
 %In the example in Figures \ref{feedbacknouns}, the correct illative Sg word form of \textit{mielki} is \textit{mielkái}. %As we see in Figure \ref{nounlex}, this lemma has the feature \texttt{only-sg}, which means that we generate the lemma only in singular, even if it according to the main lexicon, also may be used in plural. This information is for pedagogical purposes; it is not that natural to use the plural form of a mass noun for a student on a lower level.
 
 \subsection{Syntactic analyses of the student's answer} \label{sentencefeedback}
-We have chosen not to use multiple-choice, but rather let the student formulate his/her own answer. To a certain question one may give many kinds of acceptable answers. In Sámi one may change word order, and also add many kinds of particles. 
+We have chosen not to use multiple-choice, but rather let the student formulate her own answer. To a certain question one may give many kinds of acceptable answers. In Sámi one may change word order, and also add many kinds of particles. 
 
 %\textit{Maid don lohket ikte?} (What did you read yesterday?)
 %\begin{itemize}
@@ -302,19 +302,19 @@ The misspelling can make another word form of the same lemma. For that we make r
 %\item \textbf{Locative singular without consonant gradation} \\
 %The locative singular form has the suffix -s and usually consonant gradation, compared to the base form. In our pedagogical lexicon there are 1512 nouns. By adding the suffix \textit{-s} directly to the stem without consonant gradation, the result is in 57 \% of the cases a correct but unintended word form (possessive suffix in Sg3 -- e.g. \textit{viessus} instead of \textit{viesus}). Only 0,5 \% of the resulting word forms are unintended new lemmas, e.g. adverbs \textit{eanas  (eatnamis)} or verbs, e.g \textit{čogus (čohkumis)}.
 %
-%The possessive suffices are quite seldom used by students at lower levels, so if it does not fit to the context, one can safely assume that s/he has meant locative, and give feedback according to that. 
+%The possessive suffices are quite seldom used by students at lower levels, so if it does not fit to the context, one can safely assume that she has meant locative, and give feedback according to that. 
 %
 %\item \textbf{Illative singular without diphthong simplification and vocal change}\\
-%The illative singular form has the suffix \textit{-i} or \textit{-ii} and often  diphthong simplification and vocal change. Some words have consonant gradation. By adding the suffix directly to the stem, we get 2,3 \% unintended lemmas, mostly verbs in past tense Sg3, e.g. \textit{báddii}  (pro \textit{báddái}). Generally, one man consider identifying problematic word pairs and make feedback for each of them, asking the student if s/he meant the other member of the pair, especially when we are not expecting one more finite verb.
+%The illative singular form has the suffix \textit{-i} or \textit{-ii} and often  diphthong simplification and vocal change. Some words have consonant gradation. By adding the suffix directly to the stem, we get 2,3 \% unintended lemmas, mostly verbs in past tense Sg3, e.g. \textit{báddii}  (pro \textit{báddái}). Generally, one man consider identifying problematic word pairs and make feedback for each of them, asking the student if she meant the other member of the pair, especially when we are not expecting one more finite verb.
 %\newpage
 %\item \textbf{Incorrect negative verb form}\\
-%When the verb in the question is in Sg2, a common error is that the student use the Sg2 form of the verb after the negative verb, instead of the correct ConNeg form, e.g. \textit{Logat go áviissa? In logat (loga) áviissa.} The correct form is in the parentheses. The problem is that the errouneous form is a ConNeg form of another verb, \textit{logadit}, and the normal feedback will be: "You should answer with the same verb as in the question." The student will not understand this, because s/he thinks that the word form in the answer is an instance of the same verb. The solution was to generate all these forms of the verbs in the questions, make a set of them, and make a rule for in the right context, give the feedback: "The negative form is not correct." 
+%When the verb in the question is in Sg2, a common error is that the student use the Sg2 form of the verb after the negative verb, instead of the correct ConNeg form, e.g. \textit{Logat go áviissa? In logat (loga) áviissa.} The correct form is in the parentheses. The problem is that the errouneous form is a ConNeg form of another verb, \textit{logadit}, and the normal feedback will be: "You should answer with the same verb as in the question." The student will not understand this, because she thinks that the word form in the answer is an instance of the same verb. The solution was to generate all these forms of the verbs in the questions, make a set of them, and make a rule for in the right context, give the feedback: "The negative form is not correct." 
 %\end{itemize}
 
 \subsubsection{Navigating in the dialogue}\label{navigation}
 We use the same system to navigate inside the dialogue. The input is tagged during analysis with information on whether it is interpreted as affirmative or negative, or with a target-tag, so that we can pick up e.g. a name or the essence of the answer, and use it in the next question or utterance. 
 
-Some dialogues are branched according to how the student answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In the same way an answer from the student about his/her age will induce a tag (Figure \ref{age}), which is used to navigate to different branches of the dialogue based on the age of the student, see Figure \ref{branch}.
+Some dialogues are branched according to how the student answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In the same way an answer from the student about her age will induce a tag (Figure \ref{age}), which is used to navigate to different branches of the dialogue based on the age of the student, see Figure \ref{branch}.
 
 
 \begin{figure}[htbp]
@@ -365,7 +365,7 @@ There are two motives for making this program type. First, our tailored dialogue
 %in Sahka 
 run the risk of getting quickly consumed. With a QA drill we may generate an indefinite number of questions. Second, the students need to automate the question-answer routine -- inflecting the finite verb correctly and choose the correct case form.
 
-The questions are generated, the question and answer are analysed together, and the student gets feedback, as described in \ref{sentencefeedback}. The question matrices are marked with level, so there is a level option. Only one question is presented at a time. The student can answer what s/he wants, but s/he has to use a full sentence (containing a finite verb), and use the same verb as in the question. There are 111 matrix questions divided into levels.
+The questions are generated, the question and answer are analysed together, and the student gets feedback, as described in \ref{sentencefeedback}. The question matrices are marked with level, so there is a level option. Only one question is presented at a time. The student can answer what she wants, but she has to use a full sentence (containing a finite verb), and use the same verb as in the question. There are 111 matrix questions divided into levels.
 %\begin{itemize}
 %\item Level 1: verb only in present tense, logical cases
 %\item  Level 2: verb in past tense, and some verbs with oblique cases, use of postpositions, questions in which the student has to answer with case in plural,  numerals and collective numerals in nominative
@@ -386,7 +386,7 @@ The questions are generated, the question and answer are analysed together, and 
 \subsection{The dialogue program -- Sahka}
 The idea behind the dialogues is that the student may exercise North Sámi in a quite natural way, and at the same time get comments about errors. There will be two kinds of feedback: tags for navigation in the dialogue itself, and tags that generate tutorial feedback.
 
-Each dialogue is made to a scenario, and each scenario has a set of underlying pedagogical goals. E.g. in the Grocery-dialogue, the scenario is a shop, and the student is telling what kind of food s/he wants. The underlying pedagogical goal is to exercise inflecting objects in accusative.
+Each dialogue is made to a scenario, and each scenario has a set of underlying pedagogical goals. E.g. in the Grocery-dialogue, the scenario is a shop, and the student is telling what kind of food she wants. The underlying pedagogical goal is to exercise inflecting objects in accusative.
 
 % \begin{figure}[htbp]
 % \begin{center}
@@ -396,7 +396,7 @@ Each dialogue is made to a scenario, and each scenario has a set of underlying p
 % \end{center}
 % \end{figure}
 
-In the Get-acquainted-to-dialogues the student can choose an identity for the conversation (s/he chooses a picture). These identities will act as parameters for choice of comments from the computer, and for dialogue topics and dialect forms.
+In the Get-acquainted-to-dialogues the student can choose an identity for the conversation (she chooses a picture). These identities will act as parameters for choice of comments from the computer, and for dialogue topics and dialect forms.
 
 %\vspace{0.5cm}
 %	
@@ -413,11 +413,11 @@ In the Get-acquainted-to-dialogues the student can choose an identity for the co
 
 Each dialogue consists of many branches, and different links according to the student's input. To organize them, we have made different levels:
 
-The first utterance is a dialogue\_opening and the last utterance is a dialogue\_closing. The student can write that s/he wants to quit at any point during the dialogue, and by using some form of the verb \textit{heaitit} ("quit") s/he will navigate directly to the dialogue\_closing.
+The first utterance is a dialogue\_opening and the last utterance is a dialogue\_closing. The student can write that she wants to quit at any point during the dialogue, and by using some form of the verb \textit{heaitit} ("quit") she will navigate directly to the dialogue\_closing.
 
 The dialogue consists of topics, and every topic starts with an opening utterance; a comment or a question. In the end of the topic, there is always a closing.  
 
-Every utterance has a name, and one or more links. The choice of link is dependent upon what kind of tag the question-answer pair gets, e.g. \&dia-neg or \&dia-pos, or \&dia-target to a certain word, e.g. target="hivsset", like in Figure \ref{TV}.  In Figure \ref{targetIll} we see how the \&dia-target-tag is mapped to the noun in illative. There will always be a default; in case there will not be any tag. \\
+Every utterance has a name, and one or more links. The choice of link is dependent upon what kind of tag the question-answer pair gets, e.g. \textit{\&dia-neg} or \textit{\&dia-pos}, or \textit{\&dia-target} to a certain word, e.g. target="hivsset", like in Figure \ref{TV}.  In Figure \ref{targetIll} we see how the \textit{\&dia-target} tag is mapped to the noun in illative. There will always be a default; in case there will not be any tag. \\
 
 \begin{figure}[htbp]
 \begin{center}
@@ -439,7 +439,7 @@ Every utterance has a name, and one or more links. The choice of link is depende
 
 A topic is like a module in the dialogue, and it is easy to put a new module subsequent to any topic. The linking makes it possible to make branches. Every utterance has a unique name.  
 
-The dialogue system itself is quite simple. Only the program can make initiatives, and all the utterances from the program, are written. The program can store simple information as the student's name, place where s/he lives and his/her car type, for using in as a variable in a tailored utterance. If we were to develop the program with generating of utterances, and a more free dialogue, and also let the student take initiatives, we would have to use an analyser which maps semantic roles to the student's input, despite possible syntactic errors. In order to implement this we would need a semantically enriched lexicon.
+The dialogue system itself is quite simple. Only the program can make initiatives, and all the utterances from the program, are written. The program can store simple information as the student's name, place where she lives and her car type, for using in as a variable in a tailored utterance. If we were to develop the program with generating of utterances, and a more free dialogue, and also let the student take initiatives, we would have to use an analyser which maps semantic roles to the student's input, despite possible syntactic errors. In order to implement this we would need a semantically enriched lexicon.
 
 \subsection{Web interface}
 
@@ -475,7 +475,7 @@ Tot/av   & 17355  &  15120  &  32475  &  53,44\\
 
 %\vspace*{-2cm}
 
-As can be seen from table \ref{log1}, slightly more than half of the queries resulted in correct answers. When confronted with an error feedback, the user is offered grammatical help, and thereafter s/he has the possibility to give a new answer to the same query. An investigation of 1500 queries to Morfa-C showed that 444, or 30\%, were such repeated answers. Even though we have no log info of the use of the morphological feedback (section \ref{mfeedback}), our impression from classroom experience is that the users are actively using the feedback system. This indicates that what we are witnessing is a truly interactive process, where users err in half of the queries, and then follow up with a new try, possibly after having read the morphological advice from the program.
+As can be seen from table \ref{log1}, slightly more than half of the queries resulted in correct answers. When confronted with an error feedback, the user is offered grammatical help, and thereafter she has the possibility to give a new answer to the same query. An investigation of 1500 queries to Morfa-C showed that 444, or 30\%, were such repeated answers. Even though we have no log info of the use of the morphological feedback (section \ref{mfeedback}), our impression from classroom experience is that the users are actively using the feedback system. This indicates that what we are witnessing is a truly interactive process, where users err in half of the queries, and then follow up with a new try, possibly after having read the morphological advice from the program.
 
 The error log for Sahka shows that one fourth of the errors are due to orthographical errors. Most of the "no finite verb" errors are elliptical answers, and these are not accepted, for pedagogical reasons. The remaining cases are errors where the misspelled verb is an existing word. Also for the other grammatical errors verb errors are dominating. The main goal of the program was to train verb forms in a dialogue, and the error log shows that the program is able to capture such errors.
 
