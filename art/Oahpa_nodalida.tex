@@ -183,7 +183,7 @@ The feedback messages are determined by the combination of morphological feature
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.5}[.5]{\includegraphics{presentation/img/morphfeedbackEng.png}}\\
-\caption{The features in the lexicon are used to determine the correct feedback message, in this case the message is "Vowel change i $>$ á"}
+\caption{The features in the lexicon are used to determine the correct feedback message, in this case the message is "Vowel change i $>$ á".}
 \label{feedbacknouns}
 \end{center}
 \end{figure}
@@ -353,7 +353,7 @@ The question and the answer are merged, and given to the analyser as one text st
 
 % sh: is this correct now? I think an example sentence -answer pair would be good here.
 
-Tutorial feedback provides the student feedback about the grammatical errors. For example, Figure \ref{cg3} presents a CG rule for assigning a grammatical error tag (CG tag \textit{\&grm-missing-Acc} ) when there is no accusative found in the user input although the question requires the usage of an accusative form. In this case, requirement is based on the case of the interrogative pronoun that is used in the question. However, if the user answer is negative, the grammatical error tag is not assigned.
+Tutorial feedback provides the student feedback about the grammatical errors. For example, Figure \ref{cg3} presents a CG rule for assigning a grammatical error tag (CG tag \textit{\&grm-missing-Acc}) when there is no accusative found in the user input although the question requires the usage of an accusative form. In this case, requirement is based on the case of the interrogative pronoun that is used in the question. However, if the user answer is negative, the grammatical error tag is not assigned.
 %, if the question is not asking for a verb, e.g. "What do you do?" (WORK-V)
 
 \begin{figure}[htbp]
@@ -364,7 +364,7 @@ Tutorial feedback provides the student feedback about the grammatical errors. Fo
 \end{center}
 \end{figure}
 
-Figure \ref{maidlohket} shows how the vislcg3 file has disambiguated and added the tag about a missing accusative to the analysis from Figure \ref{iktelohken}. The grammatical error tag is used for generating feedback for the student. 
+Figure \ref{maidlohket} shows how the vislcg3 file has disambiguated and added the error tag about a missing accusative to the analysis from Figure \ref{iktelohken}. The error tag is used for generating feedback for the student. 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -397,7 +397,7 @@ When the word form was not recognized during the analysis, the feedback message 
 %\textit{The word form is not in our lexicon, can it be a spelling error?}. 
 % sh: let's give examples of something that we can do well.
 
-The misspelling that produce another word form of the same lemma we have written rules that are based on the grammatical context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according to what the student think she has written. In this case, feedback has to be tailored using the knowledge about the student’s interlanguage. We have plans to create rules that take into account typical unintended lemmas.
+For misspellings that produce another word form of the same lemma, we have written rules that are based on the grammatical context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according to what the student thinks she has written. In this case, feedback has to be tailored using the knowledge about the student’s interlanguage. We have created sets for typical unintended lemmas. Combined with contextual rules we can then give the user a good feedback due to the misspelling instead of the unintended lemma.
 
 %\begin{itemize}
 %
