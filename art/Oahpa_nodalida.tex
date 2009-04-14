@@ -41,21 +41,21 @@
 %\tableofcontents
 
 \begin{abstract}
-This article presents a set of interactive pedagogical programs for North Sámi. The programs are based on finite state morphological analyser and a constraint grammar (CG) parser which is used for syntactic analysis and grammar checking. The analysers provide effective and reliable handling of wide variety of user input. In addition, relaxation of the grammatical analysis of the user input enables locating grammatical errors and reacting to the errors with appropriate feedback messages. 
+This article presents a set of interactive pedagogical programs for North Sámi. The programs are based on a finite state morphological analyser and  a constraint grammar (CG) parser which is used for syntactic analysis and grammar checking. The analysers provide effective and reliable handling of a wide variety of user input. In addition, relaxation of the grammatical analysis of the user input enables locating grammatical errors and reacting to the errors with appropriate feedback messages. 
 \end{abstract}
 
 \section{Introduction}
 This paper describes the implementation of pedagogical programs for learners of North Sámi (a Uralic language), based on a finite state transducer (fst) and constraint grammar (CG) technology. %\footnote{Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding the project. The work behind the basic analysers was financed by the Research Council of Norway.}. 
 The pedagogical programs are available in a learning platform Oahpa!, and include morphological and lexical training as well as more sophisticated contextual.. (sh: add short overview of the programs here) 
 
-In section 2 we describe the initial linguistic resources and the pedagogical motivation behind the programs. Section 3 presents the basic design of different parts of the programs. Fourth section concentrates on how the CG-parser was utilised in the programs that allow free formation of sentences (sh: better wording here). The section 5 contains an evaluation of the programs.
+In section 2 we describe the initial linguistic resources and the pedagogical motivation behind the programs. Section 3 presents the basic design of different parts of the programs. The fourth section concentrates on how the CG-parser was utilised in the programs that allow free formation of sentences (sh: better wording here). Section 5 contains an evaluation of the programs.
 
 
 \section{Background}
 
 \subsection{Basic grammatical analysis}
 
-The pedagogical programs in Oahpa! are based on three pre-existing language technology resources resources developed at the University of Tromsø: morphological analyser/generator (fst), a CG parser for North Sámi and a number word generator based of xfst.
+The pedagogical programs in Oahpa! are based upon three pre-existing language technology resources developed at the University of Tromsø: morphological analyser/generator (fst), a CG parser for North Sámi and a number word generator based of xfst.
 
 Morphological analyser/generator is implemented with fst and compiled with the Xerox compilers twolc and lexc~\cite{BeesleyKarttunen:03}. Sámi languages have large morphological paradigms for each lexeme -- verbs and adjectives have more than 100 inflected forms. In addition, some of the paradigm members have a very low text frequency. Due to the limited amount of electronically available text resources, an fst technology was used (sh: instead of.. something here) \cite{Trosterud:07}. The lexicon contains 97.500 lemmas -- almost half of them proper nouns. There exist two different variants of the analyser/generator: one is tolerant, with morphological patterns based upon actual usage, and the other is normative, and adheres to the written standard.  
 
