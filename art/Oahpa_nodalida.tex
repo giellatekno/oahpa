@@ -4,6 +4,8 @@
 \usepackage{url}
 \usepackage{latexsym}
 
+\setlength{\intextsep}{1ex}
+
 \usepackage{graphics}
 \usepackage[utf8x]{inputenc}
 \usepackage{ucs} %sami letters\renewcommand
@@ -59,7 +61,7 @@ In section 2 we describe the initial linguistic resources and the pedagogical mo
 \subsection{Basic grammatical analysis}
 The pedagogical programs in OAHPA! are based upon three pre-existing language technology resources developed at the University of Tromsø: a morphological analyser/generator, a CG parser for North Sámi and a number word generator compiled with the Xerox compiler xfst.
 
-The morphological analyser/generator is implemented with fst and compiled with the Xerox compilers twolc and lexc~\cite{BeesleyKarttunen:03}. Sámi languages have large morphological paradigms for each lexeme -- verbs and adjectives have more than 100 inflected forms. In addition, some of the paradigm members have a very low text frequency. Due to the limited amount of electronically available text resources, an fst analyser was used, rather than e.g. an HMM tagger \cite{Trosterud:07}. The lexicon contains 97.500 lemmas -- almost half of them proper nouns. We made two different variants of the analyser/generator: one tolerant, with morphological patterns based upon actual usage, and the other one normative, adhering to the written standard.  
+The morphological analyser/generator is implemented with fst and compiled with the Xerox compilers twolc and lexc~\cite{BeesleyKarttunen:03}. Sámi languages have large morphological paradigms for each lexeme -- verbs and adjectives have more than 100 inflected forms. In addition, some of the paradigm members have a very low text frequency. Due to the limited amount of electronically available text resources, an fst analyser was used, rather than e.g. an HMM tagger \cite{Trosterud:07}. The lexicon contains 97.500 lemmata -- almost half of them proper nouns. We made two different variants of the analyser/generator: one tolerant, with morphological patterns based upon actual usage, and the other one normative, adhering to the written standard.  
 
 The morphological disambiguator is implemented in the CG-framework \cite{Karlsson:95}. The CG-framework is based upon manually written rule sets and a syntactic analyser which selects the correct analysis in case of homonymy and adds grammatical function and dependency relations to the analysis. We used vislcg3 for the compilation of CG rules. Vislcg3 is a new, improved version of the open source compiler vislcg~\cite{Visl:08}. The CG-framework is presented in section \ref{sentencefeedback}. 
 
@@ -107,8 +109,8 @@ All the OAHPA! programs share a set of common resources: a pedagogical lexicon a
 % \end{center}
 % \end{figure}
 
-The pedagogical lexicon forms a collection of words that are considered relevant for the learners of North Sámi in schools and universities. The words occur in different forms in the tasks. The pedagogical lexicon contains additional information about the lemmas, such as Norwegian and Finnish translation, semantic class, dialect and information about the inflection. The words in the pedagogical lexicon were collected from the key textbooks for North Sámi and the source information is included in the lexicon entry. 
-In addition, homonymy in both base form and inflection is dealt with using ids for lexicon entries instead of lemmas.  The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives, in addition to a small lexicon for closed parts of speech. Figure \ref{nounlex} shows an example of an entry in the noun lexicon.
+The pedagogical lexicon forms a collection of words that are considered relevant for the learners of North Sámi in schools and universities. The words occur in different forms in the tasks. The pedagogical lexicon contains additional information about the lemmata, such as Norwegian and Finnish translation, semantic class, dialect and information about the inflection. The words in the pedagogical lexicon were collected from the key textbooks for North Sámi and the source information is included in the lexicon entry. 
+In addition, homonymy in both base form and inflection is dealt with using ids for lexicon entries instead of lemmata.  The lexicon consists of 1538 nouns, 500 verbs and 194 adjectives, in addition to a small lexicon for closed parts of speech. Figure \ref{nounlex} shows an example of an entry in the noun lexicon.
 
 \begin{figure}[tbp]
 \begin{center}
@@ -135,7 +137,7 @@ The word forms that are used in the program are pre-generated with a transducer 
 The contents of the pedagogical lexicon as well as full paradigms for each lexicon entry are stored in the Mysql database. The database allows effective processing of queries and multiple simultaneous users. In addition, generating the word forms and storing them to the database provides better control over the inflected word forms and e.g. different dialectal forms. The handling of dialectal variation is described in the next section.
 
 % Saara: this is all clear for anyone working in langtech.
-%Some lemmas have homonymous base forms. Since they have different meanings, they belong to different semantic sets. When the student wants the translation of the lemma, it should be the translation which belongs to the particular semantic set, e.g. \textit{girdi} can be both "plane" (VEHICLE) and "pilot" (PROFESSION). Other homonymies have different inflection, and it is critical to choose the correct lemma when we are generating word forms from it, e.g. \textit{bassi} Sg Nom -- \textit{basit} Pl Nom (= holy day) and \textit{bassi} Sg Nom -- \textit{bassit} Pl Nom (= washer). We solved the problem by giving different ids to the critical entries. 
+%Some lemmata have homonymous base forms. Since they have different meanings, they belong to different semantic sets. When the student wants the translation of the lemma, it should be the translation which belongs to the particular semantic set, e.g. \textit{girdi} can be both "plane" (VEHICLE) and "pilot" (PROFESSION). Other homonymies have different inflection, and it is critical to choose the correct lemma when we are generating word forms from it, e.g. \textit{bassi} Sg Nom -- \textit{basit} Pl Nom (= holy day) and \textit{bassi} Sg Nom -- \textit{bassit} Pl Nom (= washer). We solved the problem by giving different ids to the critical entries. 
 %e.g. id="girdi\_vehicle" vs. 
 %id="girdi\_profession" and id="bassi\_time" vs. id="bassi\_actor".
 %It works well as long as working with semantic classes, but if the user chooses "all" or a book, then he will not understand why the program doesn't accept his suggestions, e.g. "pilot" for \textit{girdi}. The solution is that the system then looks for the lemma, instead of the id.
@@ -201,7 +203,7 @@ The feedback may consist of several parts so that the user also receives informa
 \section{CG-parser in live analysis programs Vasta and Sahka}\label{vastasahka}
 
 %\subsection{Morfa -- word inflection}
-%This is a drill made to train morphological patterns. It draws lemmas from the pedagogical lexicon at random, and the student has to answer with the word form. 
+%This is a drill made to train morphological patterns. It draws lemmata from the pedagogical lexicon at random, and the student has to answer with the word form. 
 
 %The student can restrict the sets to certain morphosyntactic features, like Part of Speech (verbs, nouns, adjectives and numerals), and for the three first of them, it can be restricted to bisyllabic, trisyllabic and contracted stems. She can also restrict the vocabulary to certain textbooks.
 
@@ -250,7 +252,7 @@ The question mark is exchanged for a special symbol ("qst" QDL), cf. figure \ref
 \end{center}
 \end{figure}
 
-\subsubsection{Tutorial feedback} \label{tutorial}
+\subsection{Tutorial feedback} \label{tutorial}
 Tutorial feedback is feedback about grammar errors (CG prefix \textit{\&grm}), and in Figure \ref{cg3} we see a rule for assigning a tag if the student has not used accusative, when the question requires it. If the interrogative pronoun is in accusative, we expect an accusative in the answer.
 %, if the question is not asking for a verb, e.g. "What do you do?" (WORK-V)
 The rule assigns a \textit{\&grm-missing-Acc} tag to the interrogative pronoun if there is no accusative or negation verb in the answer.
@@ -296,19 +298,19 @@ When the word form is not recognized during the analysis, the feedback message t
 %\textit{The word form is not in our lexicon, can it be a spelling error?}. 
 % sh: let's give examples of something that we can do well.
 
-For misspellings that produce another word form of the same lemma, we have written rules that are based on the grammatical context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according to what the student thinks she has written. In this case, feedback has to be tailored using the knowledge about the student’s interlanguage. We have created sets for typical unintended lemmas. Combined with contextual rules we can then give the user a good feedback due to the misspelling instead of the unintended lemma.
+For misspellings that produce another word form of the same lemma, we have written rules that are based on the grammatical context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according to what the student thinks she has written. In this case, feedback has to be tailored using the knowledge about the student’s interlanguage. We have created sets for typical unintended lemmata. Combined with contextual rules we can then give the user a good feedback due to the misspelling instead of the unintended lemma.
 
 E.g. if the student uses the Sg2 form of the main verb after the negative verb, instead of the correct ConNeg form, then the erroneous form can be a ConNeg form of a derivated verb, and the normal feedback will be: "You should answer with the same verb as in the question." The student will not understand this, because she thinks that the word form in the answer is an instance of the same verb. The solution was to generate all these forms of the verbs in the questions, make a set of them, and make a rule for in the right context, give the feedback: "The negative form is not correct." 
 
 %\begin{itemize}
 %
 %\item \textbf{Locative singular without consonant gradation} \\
-%The locative singular form has the suffix -s and usually consonant gradation, compared to the base form. In our pedagogical lexicon there are 1512 nouns. By adding the suffix \textit{-s} directly to the stem without consonant gradation, the result is in 57 \% of the cases a correct but unintended word form (possessive suffix in Sg3 -- e.g. \textit{viessus} instead of \textit{viesus}). Only 0,5 \% of the resulting word forms are unintended new lemmas, e.g. adverbs \textit{eanas  (eatnamis)} or verbs, e.g \textit{čogus (čohkumis)}.
+%The locative singular form has the suffix -s and usually consonant gradation, compared to the base form. In our pedagogical lexicon there are 1512 nouns. By adding the suffix \textit{-s} directly to the stem without consonant gradation, the result is in 57 \% of the cases a correct but unintended word form (possessive suffix in Sg3 -- e.g. \textit{viessus} instead of \textit{viesus}). Only 0,5 \% of the resulting word forms are unintended new lemmata, e.g. adverbs \textit{eanas  (eatnamis)} or verbs, e.g \textit{čogus (čohkumis)}.
 %
 %The possessive suffices are quite seldom used by students at lower levels, so if it does not fit to the context, one can safely assume that she has meant locative, and give feedback according to that. 
 %
 %\item \textbf{Illative singular without diphthong simplification and vocal change}\\
-%The illative singular form has the suffix \textit{-i} or \textit{-ii} and often  diphthong simplification and vocal change. Some words have consonant gradation. By adding the suffix directly to the stem, we get 2,3 \% unintended lemmas, mostly verbs in past tense Sg3, e.g. \textit{báddii}  (pro \textit{báddái}). Generally, one man consider identifying problematic word pairs and make feedback for each of them, asking the student if she meant the other member of the pair, especially when we are not expecting one more finite verb.
+%The illative singular form has the suffix \textit{-i} or \textit{-ii} and often  diphthong simplification and vocal change. Some words have consonant gradation. By adding the suffix directly to the stem, we get 2,3 \% unintended lemmata, mostly verbs in past tense Sg3, e.g. \textit{báddii}  (pro \textit{báddái}). Generally, one man consider identifying problematic word pairs and make feedback for each of them, asking the student if she meant the other member of the pair, especially when we are not expecting one more finite verb.
 %\newpage
 %\item \textbf{Incorrect negative verb form}\\
 %When the verb in the question is in Sg2, a common error is that the student use the Sg2 form of the verb after the negative verb, instead of the correct ConNeg form, e.g. \textit{Logat go áviissa? In logat (loga) áviissa.} The correct form is in the parentheses. The problem is that the errouneous form is a ConNeg form of another verb, \textit{logadit}, and the normal feedback will be: "You should answer with the same verb as in the question." The student will not understand this, because she thinks that the word form in the answer is an instance of the same verb. The solution was to generate all these forms of the verbs in the questions, make a set of them, and make a rule for in the right context, give the feedback: "The negative form is not correct." 
@@ -350,7 +352,7 @@ One of the main goals of the programs in OAHPA! is to practice language in natur
 \end{figure}
 
 The question matrix contains two types of elements: constants and grammatical units. The constants such as \textit{go} and \textit{ikte} in the Figure \ref{questionv} are present in each generated sentence as such, whereas grammatical units allow more variation. Both the inflection and the content of the grammatical units may vary from question to question, and from program to program. E.g. in the question in Figure \ref{questionv} the MAINV is fixed to past tense, but the person and number inflection may vary freely. In addition, certain elements such as the sentence subject (SUBJ) have default inflection in nominative, but the default inflection may be overridden. The selection of words for the sentence is constrained by semantic sets. Semantic sets are also used as an option in the word quiz (Leksa).
-%There are ordinary sets and supersets, and we choose which one suits best for the particular question/task, e.g. the big superset HUMAN with all lemmas for human beings, or a smaller subset, like PROFESSION. In Figure \ref{semset} is a definition of a superset. 
+%There are ordinary sets and supersets, and we choose which one suits best for the particular question/task, e.g. the big superset HUMAN with all lemmata for human beings, or a smaller subset, like PROFESSION. In Figure \ref{semset} is a definition of a superset. 
 %
 %%sh: this figure seems to have a lot of space on the top..
 %\begin{figure}[htbp]
@@ -430,17 +432,17 @@ Figure \ref{targetIll} shows a general rule, not connected to any particular que
 \end{center}
 \end{figure}
 
-After asking the student about her age, the CG assigns a tag (\textit{child/young/adult}) to the answer. This tag is then used to decide which dialogue path to follow next, to a question set about school, one about job experience, etc., as shown in Figure \ref{branch}. 
-%An answer from the student about her age will induce a tag (Figure \ref{age}), which is used to navigate to different branches of the dialogue, see Figure \ref{branch}, which gives an example of how to navigate to the next question or branch, with help of the tag. The question introducing the choice is "How old are you?"
+%After asking the student about her age, the CG assigns a tag (\textit{child/young/adult}) to the answer. This tag is then used to decide which dialogue path to follow next, to a question set about school, one about job experience, etc., as shown in Figure \ref{branch}. 
+Every question has its own unique id, which is used in navigating between questions. In addition, the CG-rules may be tailored for specific questions. An answer from the student about her age will induce a tag (Figure \ref{age}), which functions as a link when moving to the next dialogue branch. Figure \ref{branch} gives an example of how to navigate to the next question or branch, with help of the tag. The question introducing the choice is "How old are you?"
 
-% \begin{figure}[htbp]
-% \begin{center}
-% \scalebox{.4}[.4]{\includegraphics{presentation/img/picking_age2.png}}\\
-% \caption{Rules for giving age-tag to the input.}
-% % Special rules for the question named Man\_boaris\_don\_leat (How\_old\_are\_you).}
-% \label{age}
-% \end{center}
-% \end{figure}
+\begin{figure}[htbp]
+\begin{center}
+\scalebox{.4}[.4]{\includegraphics{presentation/img/picking_age2.png}}\\
+\caption{Rules for giving age-tag to the input.}
+% Special rules for the question named Man\_boaris\_don\_leat (How\_old\_are\_you).}
+\label{age}
+\end{center}
+\end{figure}
 
 \begin{figure}[htbp]
 \begin{center}
@@ -452,7 +454,7 @@ After asking the student about her age, the CG assigns a tag (\textit{child/youn
 \end{center}
 \end{figure}
 
-As we see in the Figures \ref{maidlohket} and \ref{branch}, the questions in the dialogues are ready-made. Every question has its own unique name, which may be linked to other questions and it is also possible to make a rule for a special question, like in Figure \ref{TV}.  
+%or TV if age is removed.
 
 
 % \begin{figure}[htbp]
