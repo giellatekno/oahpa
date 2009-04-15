@@ -1,31 +1,67 @@
 \documentclass[11pt]{article}
-
+\usepackage{eacl2009}
 \usepackage{times}
 \usepackage{url}
-%\usepackage{latexsym}
+\usepackage{latexsym}
+
+\setlength{\intextsep}{1ex}
 
 \usepackage{graphics}
 \usepackage[utf8x]{inputenc}
-%\usepackage{ucs} %sami letters\renewcommand
+\usepackage{ucs} %sami letters\renewcommand
+%\usepackage{covington} % ling examples
 
 %\usepackage{linguex}
 %{\refdash}{}
 %\usepackage[T1]{fontenc}
 %\usepackage{multirow}
 %\usepackage{tabularx} %specified width
-
-\title{Constraint grammar in dialogue systems}
-
-\author{Lene Antonsen  \and
-              Saara Huhmarniemi \and Trond Trosterud \\ University of Tromsø}
 \begin{document}
+
+\title{Constraint Grammar in Dialogue Systems}
+
+\author{Lene Antonsen\\
+  University of Tromsø\\
+  Norway\\
+  {\tt lene.antonsen}\\{\tt @uit.no}  \And
+  Saara Huhmarniemi\\
+  University of Tromsø\\
+  Norway\\
+  {\tt saara.huhmarniemi}\\{\tt @helsinki.fi}  \And
+  Trond Trosterud\\
+  University of Tromsø\\
+  Norway\\
+  {\tt trond.trosterud}\\{\tt @uit.no}}
+
 
 %\date{}
 
 \maketitle
 \pagenumbering{arabic}
+
+% tt:
+% Adding notes for further consideration:
+% This paper will differ from the Oahpa_nodalida paper in being more CG focused.
+% Issues:
+% Probably skip the Sentence generator section.
+% Discuss the CG rules more thoroughly
+% Do more out of the evaluation:
+% - Go through all accepted Sahka sentences, and study the recall:
+%   Is the program able to catch:
+%   - all targeted errors?
+%   - some non-targeted errors?
+%   ... and precision:
+%   - how do we fare with the non-accepted sentences, are they really errors?
+
  
 \maketitle
+
+\begin{abstract}
+This article discusses the use of Constraint Grammar as the parser engine in parser-based CALL programs for North Sámi. Special focus is given to the 
+relaxation of the ordinary disambiguator, 
+the error-detecting rule set, 
+and recall and precision of the error detection.
+\end{abstract}
 
 \section{Introduction} 
 
@@ -82,6 +118,10 @@ The input is tagged during analysis with information on whether it is interprete
 Some dialogues are branched according to how the user answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In the same way an answer from the user about his/her age will induce a tag, which is used to navigate to different branches of the dialogue based on the age of the user. The tag for age is assigned with a regex inside a CG-rule.
 
 The vislcg3 also assigns target-tags, so that the system can pick up e.g. the name of the user, a place name, his/her car make and so on, and use it in the program's questions or utterances.
+
+\section{Precision and recall}
+ 
+tbw.
  
 \section{Conclusion}
 The paper shows how we have used vislcg3 for pedagogical dialogue systems for Sámi language. Vislcg3 is used in many ways: By relaxing the analysis of the input string, we are able to find errors made by the user, and assign feedback tags to analyse. Secondly, by analysing the semantics in the user's input, and assign semantic tags to the input, we are able to navigate through the dialogue according to user feedback. And finally, we can assign tag to information in the user's input and use it in the program's questions or utterances.  
@@ -94,38 +134,109 @@ We have seen that a major problem is spelling errors. Whether CG is able to offe
 
 
 
-%\begin{thebibliography}{}
-%
-%\bibitem[\protect\citename{{Beesley and Karttunen}}2003]{BeesleyKarttunen:03}
-%{Kenneth R. Beesley and Lauri Karttunen}.
-%\newblock 2003.
-%\newblock {\em Finite State Morphology}.
-%\newblock CSLI publications in Computational Linguistics
-%\newblock USA
-%
-%
-%\bibitem[\protect\citename{Karlsson et. al}1995]{Karlsson:95}
-%{Fred Karlsson and Atro Voutilainen and Juha Heikkilä and Arto Anttila}.
-%\newblock 1995.
-%\newblock {\em Constraint grammar: a language-independent system for parsing unrestricted text}.
-%\newblock Mouton de Gruyter
-%
-%\bibitem[\protect\citename{{Trosterud}}2007]{Trosterud:07}
-%{Trond Trosterud}.
-%\newblock 2007.
-%\newblock {\em Language technology for endangered languages: Sámi as a case study}.
-%\newblock http://giellatekno.uit.no/background/rvik.pdf
-%\newblock University of Tromsø, Norway
-%
-%\bibitem[\protect\citename{{visl}}2008]{Visl:08}
-%{VISL-group}.
-%\newblock 2008.
-%\newblock {\em Constraint Grammar}.
-%\newblock http://beta.visl.sdu.dk/constraint\_grammar.html
-%\newblock Institute of Language and Communication (ISK), University of Southern Denmark
+
+\begin{thebibliography}{}
+
+\bibitem[\protect\citename{{Beesley and Karttunen}}2003]{BeesleyKarttunen:03}
+{Kenneth R. Beesley and Lauri Karttunen}.
+\newblock 2003.
+\newblock {\em Finite State Morphology}.
+\newblock CSLI publications in Computational Linguistics.
+\newblock USA.
+%Bick, Eckhard (2003-8). "A Constraint Grammar Based Question-Answering System for Portuguese". In: Fernando Moura Pires & Salvador (eds.) Progress in Artificial Intelligence (Proceedings of EPIA'2003, Beja, Dec. 2003), pp. 414-418. Springer
+
+\bibitem[\protect\citename{Bick}2003]{Bick:03}
+{Eckhard Bick}.
+\newblock 2003.
+\newblock {PaNoLa: Integrating Constraint Grammar and CALL applications for Nordic languages}.
+\newblock Holmboe, Henrik (ed.): {\em Nordic Language Technology, Årbog for Nordisk Sprogteknologisk Forskningsprogram 2000-2004}.
+\newblock {183--190},
+\newblock København: Museum Tusculanums Forlag.
+
+\bibitem[\protect\citename{Bick}2005]{Bick:05}
+{Eckhard Bick}.
+\newblock 2005.
+\newblock {Live use of Corpus data and Corpus annotation tools in CALL: Some new developments in VISL}.
+\newblock Holmboe, Henrik (ed.): {\em Nordic Language Technology, Årbog for Nordisk Sprogteknologisk Forskningsprogram 2000-2004},
+\newblock {171--185}.
+\newblock København: Museum Tusculanums Forlag.
+
+%\bibitem[\protect\citename{Bick}2005b]{Bick:05b}
+%{Eckhard Bick}.
+%\newblock 2005b.
+%\newblock {Grammar for Fun: IT-based Grammar Learning with VISL}.
+%%\newblock {49--64},
+%\newblock Henriksen, Peter Juel (ed.): {\em CALL for the Nordic Languages.}
+%\newblock Copenhagen Studies in Language 30:49--64.
+
+\bibitem[\protect\citename{Gamper and Knapp}2002]{Gamper:02}
+{Johann Gampfer and Judith Knapp}.
+\newblock 2001.
+\newblock {A review of intelligent CALL systems}.
+\newblock {\em Computer Assisted Language Learning} 
+%\newblock {329--342},
+\newblock {15(4):329--342.}
+%\newblock Routledge.
 
 
-%\end{thebibliography}
+\bibitem[\protect\citename{Heift}2001]{Heift:01}
+{Trude Heift}.
+\newblock 2001.
+\newblock {Intelligent Language Tutoring Systems for Grammar Practice}.
+\newblock {\em Zeitschrift fur Interkulturellen Fremdsprachenunterricht [Online] }
+\newblock {6(2).}
+
+
+
+\bibitem[\protect\citename{Heift and Nicholson}2001]{Heift:02}
+{Trude Heift and Devlan Nicholson}.
+\newblock 2001.
+\newblock {Web Delivery of Adaptive and Interactive Language Tutoring}.
+%\newblock {310--325},
+\newblock {\em International Journal of Artificial Intelligence in Education}
+\newblock {12(4):310--325.}
+
+\bibitem[\protect\citename{Heift and Schulze}2007]{Heift:07}
+{Trude Heift and Mathias Schulze}.
+\newblock 2007.
+\newblock {\em Errors and intelligence in computer-assisted language learning: parsers and pedagogues}.
+\newblock Routledge studies in computer-assisted language learning 2. 
+\newblock New York : Routledge.
+
+\bibitem[\protect\citename{Karlsson et. al}1995]{Karlsson:95}
+{Fred Karlsson and Atro Voutilainen and Juha Heikkilä and Arto Anttila}.
+\newblock 1995.
+\newblock {\em Constraint grammar: a language-independent system for parsing unrestricted text}.
+\newblock Mouton de Gruyter.
+
+
+%\bibitem[\protect\citename{Samuelsson and Voutilainen}1997]{SamuelssonVoutilainen:97}
+%{Christer Samuelsson and Atro Voutilainen}.
+%\newblock 1997.
+%\newblock Comparing a Linguistic and a Stochastic Tagger
+%\newblock {\em Proceedings of the 35th Annual Meeting of the Association for Computational Linguistics}.
+%\newblock {Association for Computational Linguistics},
+%\newblock {246--253},
+%\newblock {http://www.aclweb.org/anthology/P97-1032}
+
+
+\bibitem[\protect\citename{{Trosterud}}2007]{Trosterud:07}
+{Trond Trosterud}.
+\newblock 2007.
+\newblock {\em Language technology for endangered languages: Sámi as a case study}.
+\newblock http://giellatekno.uit.no/background/rvik.pdf
+\newblock University of Tromsø, Norway.
+
+\bibitem[\protect\citename{{visl}}2008]{Visl:08}
+{VISL-group}.
+\newblock 2008.
+\newblock {\em Constraint Grammar}.
+\newblock http://beta.visl.sdu.dk/constraint\_grammar.html
+%\newblock Institute of Language and Communication (ISK), 
+\newblock University of Southern Denmark.
+
+
+\end{thebibliography}
 
 
 %\begin{spacing}{1}
