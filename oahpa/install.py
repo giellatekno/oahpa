@@ -94,7 +94,7 @@ if options.semtypefile:
     extra.read_semtypes(options.semtypefile)
     sys.exit()
 
-if options.feedbackfile:
+if options.feedbackfile and options.infile:
     feedback.read_feedback(options.feedbackfile,options.infile)
     sys.exit()
 
