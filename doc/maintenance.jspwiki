@@ -377,7 +377,7 @@ python install.py -m ../sme/xml/messages.sme.xml
 After that, install the feedback files for each pos. This may take
 some time, even hours, especially for nouns and adjectives.
 {{{
-python install.py -e ../sme/xml/feedback_verbs.xml
+python install.py -e ../sme/xml/feedback_verbs.xml -f ../sme/xml/verbs.xml
 ..
 }}}
 
