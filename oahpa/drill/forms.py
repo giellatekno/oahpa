@@ -4,7 +4,7 @@ import sys
 import os
 import re
 from django import forms
-from django.http import Http404, Http500
+from django.http import Http404
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
