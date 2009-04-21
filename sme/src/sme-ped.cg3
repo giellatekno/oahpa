@@ -3430,7 +3430,7 @@ SELECT:r968 (V Du3) IF (-1 (N Nom))(*-2 CC BARRIER NPNH LINK -1 (N Nom));
 SELECT:r969 (V Du3) IF (*1 (Sg Nom) BARRIER NPNHA LINK 1 CC LINK *1 (Sg Nom) BARRIER NPNH);
 	## Dá leaba Brita ja Ole Kåven.
 
-REMOVE:r970 (V Sg3) IF (*-1 (N Num Nom) BARRIER SV-BOUNDARY)(0 (V Du3));
+REMOVE:r970 (V Sg3) IF (*-1 (Coll Nom) BARRIER SV-BOUNDARY)(0 (V Du3));
 	## Biera-guovttos Márehiin leaba daid mánáid váhnemat.
 
 	# Pl1 - early cycle, safe rules
@@ -5495,7 +5495,7 @@ SELECT (V Pl3) (*-1 QDL BARRIER Nom OR VERB OR S-BOUNDARY LINK *-1 (N Pl Nom)) ;
 SELECT (V Sg3) (*-1 QDL BARRIER Nom OR VERB OR S-BOUNDARY LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN) ;
 SELECT (V Du3) (*-1 QDL BARRIER Nom OR VERB OR S-BOUNDARY LINK *-1 DUALIS-NOUN) ;
 
-SELECT (V Pl3) (*-1 (N Num) BARRIER NOT-ADV LINK *-1 QDL) ;
+SELECT (V Pl3) (*-1 Coll BARRIER NOT-ADV LINK *-1 QDL) ;
 
 # Select correct tense:
 SELECT Prs (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN + Prs)(NOT 0 A) ;
@@ -5629,7 +5629,7 @@ SELECT Gen (0 TARGETQUESTION-ACC LINK -1 BOS)(*1 N BARRIER NPNH);
 
 MAP (&grm-missing-NumSg) TARGET ("galle" Sg Nom) IF (*1 QDL LINK NOT *1 (Num Sg) OR Neg BARRIER S-BOUNDARY);
 MAP (&grm-missing-NumPl) TARGET ("galle" Pl) IF (*1 QDL LINK NOT *1 (Num Pl) OR Neg BARRIER S-BOUNDARY);
-MAP (&grm-missing-NNum) TARGET ("gallis" N Num) IF (*1 QDL LINK NOT *1 (N Num) OR Neg BARRIER S-BOUNDARY);
+MAP (&grm-missing-NNum) TARGET ("gallis" Coll) IF (*1 QDL LINK NOT *1 Coll OR Neg BARRIER S-BOUNDARY);
 MAP (&grm-missing-Ord) TARGET ("gallát") IF (*1 QDL LINK NOT *1 (A Ord) OR Neg BARRIER S-BOUNDARY);
 
 
@@ -5861,7 +5861,7 @@ MAP (&grm-incorr-tense) TARGET VFIN + Prt (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0
 
 # If not agreement:
 MAP (&grm-non-agr-subj-v) TARGET VFIN IF (0 $$VFIN-PRON-TAG LINK -1 (Pers Nom) LINK NOT 0 $$VFIN-PRON-TAG LINK *-1 QDL) ;
-MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Sg3 LINK -1 (N Sg Nom) LINK NOT 0 (N Num Nom) OR DUALIS-NOUN LINK *-1 QDL) ;
+MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Sg3 LINK -1 (N Sg Nom) LINK NOT 0 (Coll Nom) OR DUALIS-NOUN LINK *-1 QDL) ;
 MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Pl3 LINK -1 (N Pl Nom) LINK *-1 QDL) ;
 MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Du3 LINK -1 DUALIS-NOUN + Nom LINK *-1 QDL) ;
 
@@ -5979,7 +5979,7 @@ MAP (&dia-pass) TARGET (Prop Obj) IF (*-1 QDL LINK 0 CAR);
 #_________________________
 LIST NUM-ADV = "oktii" "guktii" "golbmii" "njelljii" "vihttii" "guhttii" "čihččii" "gávccii" "ovccii" ;
 
-MAP (&dia-target) TARGET (N Num) IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gallis" Nom) LINK -1 BOS)(NOT 0 NOTHING);
+MAP (&dia-target) TARGET Coll IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gallis" Nom) LINK -1 BOS)(NOT 0 NOTHING);
 MAP (&dia-target) TARGET Num IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("galle") LINK -1 BOS)(NOT 0 NOTHING);
 MAP (&dia-target) TARGET Ord IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gallát") OR ("galládat") LINK -1 BOS)(NOT 0 NOTHING);
 MAP (&dia-target) TARGET NUM-ADV IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gallii") LINK -1 BOS)(NOT 0 NOTHING);
@@ -5998,7 +5998,8 @@ MAP (&dia-target) TARGET NP-HEAD + Loc IF (*-1 QDL BARRIER S-BOUNDARY LINK **-1 
 MAP (&dia-target) TARGET NP-HEAD + Com IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-COM LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
 MAP (&dia-target) TARGET NP-HEAD + Ess IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-ESS LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
 
-MAP (&dia-target) TARGET Num (1 (&dia-target))(NOT 0 NOTHING) ;
+# This one is commented out because it messes up the rules according to wordlists.
+#MAP (&dia-target) TARGET Num (1 (&dia-target))(NOT 0 NOTHING) ;
 
 MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&dia-target)) ;
     ## in oro gostege
@@ -6062,11 +6063,14 @@ MAP (&sem-not_wordlist) TARGET QDL IF (0 VIESSOGALVVUT-Q)(*1 (&dia-target) BARRI
 
 MAP (&dia-hivsset) TARGET QDL IF (0 NOT-ACC-ROOM)(*1 (&dia-target) BARRIER Neg LINK 0 ("hivsset"))  ;
 
+MAP (&dia-basadanlatnja) TARGET QDL IF (0 NOT-ACC-ROOM)(*1 (&dia-target) BARRIER Neg LINK 0 ("basadan#latnja"))  ;
+
+
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (Maid_juhkat))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
 
 # Rules for dialogue_grocery
 #-----------------------------
-MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_laibegalvvuid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 BREAD)  ;
+MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_laibegalvvuid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 BREAD OR Num)  ;
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_juhkamusaid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_ruotnasiid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 VEGETABLE)  ;
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_sattuid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 FRUIT)  ;
@@ -6194,7 +6198,7 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 
 # &grm-missing-NumSg    	You should answer with Num Sg
 # &grm-missing-NumPl    	You should answer with Num Pl
-# &grm-missing-NNum     	You should answer with N Num
+# &grm-missing-NNum     	You should answer with Coll
 # &grm-missing-Ord      	You should answer with A Ord
 	
 # &grm-non-agreement-Dem    should be agreement
