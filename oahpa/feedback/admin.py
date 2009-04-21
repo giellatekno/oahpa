@@ -3,7 +3,7 @@ from django.contrib import admin
 
 class FeedbackAdmin(admin.ModelAdmin):
 
-    list_display = ('confirmation', 'confirmed_by', 'name', 'email', 'place','message')
+    list_display = ('confirmation', 'confirmed_by', 'name', 'email', 'place','date','message')
 
     fieldsets = (
         (None, {
