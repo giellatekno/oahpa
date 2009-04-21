@@ -5,7 +5,8 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404, render_to_response
 from random import randint
 from django.utils.translation import ugettext as _
-
+import time
+import datetime
 
 def feedback(request):
 
@@ -17,10 +18,11 @@ def feedback(request):
             email = feedback_form.cleaned_data['email']
             place = feedback_form.cleaned_data['place']
             confirmation = feedback_form.cleaned_data['confirmation']
+            today=datetime.date.today()
             #print message, name, email, place
 
             feedback = Feedback.objects.create(message=message, name=name, email=email, place=place, \
-                                               confirmation = confirmation)
+                                               confirmation = confirmation, date=today)
             feedback.save()
 
         c = Context({
