@@ -195,8 +195,14 @@ isme-KJ.restr.fst
 
 The lookup-process for the analyzer ped-sme.fst, which is used in Vasta
 and Sahka is running all the time. The lookup is implemented as
-server, which can be called by different processes. There exists a
-command line tool that can be used for testing the server. The script
+server, which can be called by different processes. You may examine
+the lookup output from Sahka and Vasta in victorio, file
+{{
+/var/log/lserv.log
+}}}
+
+There exists a
+command line tool that can be used for testing the server on victorio. The script
 client.py takes one word at the time and can be terminated by giving
 an empty line.
 
