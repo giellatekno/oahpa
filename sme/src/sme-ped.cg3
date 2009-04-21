@@ -305,6 +305,8 @@ LIST VGen = VGen ;
 
 LIST PrsPrc = PrsPrc ;
  
+LIST Coll = Coll ;
+
 
 LIST Ger = Ger ;
 LIST Sup = Sup ;
@@ -6070,7 +6072,7 @@ MAP (&sem-not_wordlist) TARGET QDL IF (0 (Maid_juhkat))(*1 (&dia-target) BARRIER
 
 # Rules for dialogue_grocery
 #-----------------------------
-MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_laibegalvvuid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 BREAD OR Num)  ;
+MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_laibegalvvuid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 BREAD)  ;
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_juhkamusaid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_ruotnasiid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 VEGETABLE)  ;
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_sattuid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 FRUIT)  ;
