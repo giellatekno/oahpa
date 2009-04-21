@@ -1950,6 +1950,8 @@ SET INTR-END = COMMA OR PUNCT-RIGHT ;
 REMOVE Px ;
 REMOVE ("Lea" N) ;
 REMOVE ("Le^a" N) ;
+REMOVE LowercaseErr (*1 QDL) ;
+REMOVE LowercaseErr (NOT 0 Plc) ;
 
     # giella vs. gielas vs. giellat
     # - - - - - - - - - - - - - - -
@@ -5345,9 +5347,8 @@ MAP (&dia-stop) TARGET ("heaitit")(*-1 SAHKA) ;
 
 LIST PLACENAME-QUESTION = Gos_don_leat_eret Gos_don_orut_dál gos_du_eadni_lea_eret_adult gos_du_ahcci_lea_eret_adult gos_du_eadni_lea_eret_young gos_du_ahcci_lea_eret_young gos_du_eadni_lea_eret_child gos_du_ahcci_lea_eret_child ;
 
-
-#MAP (&orth-prop) TARGET LowercaseErr ;
 MAP (&err-orthProp) TARGET LowercaseErr (*-1 QDL LINK 0 PLACENAME-QUESTION BARRIER Prop)(0 Plc) ;
+REMOVE LowercaseErr ;
 
 
 # Picking person name, if it is not in the lexicon - for SAHKA
@@ -6059,7 +6060,7 @@ LIST NOT-ACC-ROOM = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_speadjala g
 # Question according to wordlists:
 MAP (&sem-not_wordlist) TARGET QDL IF (0 VIESSOGALVVUT-Q)(*1 (&dia-target) BARRIER Neg LINK NOT 0 ROOMS)  ;
 
-MAP (&dia-hivsset) TARGET QDL IF (0 NOT-ACC-ROOM)(*1 (&dia-target) BARRIER Neg LINK 0 ("hivsset") OR ("basadan#latnja"))  ;
+MAP (&dia-hivsset) TARGET QDL IF (0 NOT-ACC-ROOM)(*1 (&dia-target) BARRIER Neg LINK 0 ("hivsset"))  ;
 
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (Maid_juhkat))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
 
