@@ -57,6 +57,8 @@ parser.add_option("-u", "--qid", dest="questionid",
                   help="delete question using id or text")
 parser.add_option("-w", "--wid", dest="wordid",
                   help="delete word using id or lemma")
+parser.add_option("-p", "--pos", dest="pos",
+                  help="pos of the deleted word")
 
 
 (options, args) = parser.parse_args()
@@ -79,7 +81,7 @@ if options.questionid:
     sys.exit()
 
 if options.wordid:
-    words.delete_word(options.wordid)
+    words.delete_word(options.wordid,options.pos)
     sys.exit()
 
 if options.questionfile and options.grammarfile:
