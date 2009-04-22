@@ -273,6 +273,7 @@ class Words:
                 t.save()
                 
                 form = Form(fullform=f.form,tag=t,word=w)				
+                print f.form
                 form.save()
                 if len(f.dialects)==1: dialects2 = f.dialects[:]
                 else: dialects2 = dialects[:]
