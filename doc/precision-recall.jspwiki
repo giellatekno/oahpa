@@ -1,0 +1,49 @@
+!!!Precision and recall
+
+
+
+!!!Definitions of precision and recall:
+
+__Precision__ measures exactness, and __recall__ measures completeness.
+
+We measure the sets of errors we try to target.
+
+* ''true positive'' (tp) = an error we have spotted
+* ''false positiv'' (fp) = we claim there is an error, but there is none
+
+Usually, Precision and Recall scores are not discussed in isolation. Instead, either values for one measure are compared for a fixed level at the other measure (e.g. precision at a recall level of 0.75) or both are combined into a single measure, such as the F-measure, which is the weighted harmonic mean of precision and recall. Accuracy is the measure of the overall functioning of the system (also the true negatives are taken into account).
+
+These concepts are defined as follows (where ''F-measure'' is a combination of the two:
+
+* precision = true positives / true positives + false positives
+* recall = true positives / true positives + false negatives
+* F-measure = 2pr/p+r
+* accuracy = tp + tn / tp + fp + fn + tn
+
+
+!!!Precision and recall for Sahka
+
+To find the precision, we measure only the positives (for Sahka, this is only the sentences marked as 0, i.e., as incorrect).
+
+To find the recall, we measure all sentences, positives and negative alike, and count the number of false negatives as well (sentences with targeted errors, where we have not been able to find them).
+
+!!!Test results
+
+We first do some preliminary testing.
+
+!!The 090420 log
+
+This is the log used in the NoDaLiDa paper
+
+Entries overall: 1290
+Positives (|0|, an error is detected): 607
+Negatives (|1|, no error detected): 683
+
+testing first 50 positivies
+
+* tp = 38
+* fp = 12
+
+Precision = 38 / 38 + 12 = 0.76
+
+
