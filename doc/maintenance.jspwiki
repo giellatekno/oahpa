@@ -283,14 +283,17 @@ To add the new words to the semantic supersets, update the semantic
 classes [Semantic classes|maintenance.html#Semantic+classes].
 
 Both Sami and Norwegian lexicons are installed using the same command. The
-language information is extracted from the xml-file. Do not specify paradigm or tag information for nob-files:
+language information is extracted from the xml-file. Do not specify paradigm 
+or tag information for nob-files:
+
 {{{
 python install.py -f ../nob/xml/nouns.xml
 }}}
 
 Finally, the installation commands here only update old and add new
 information. If you want to remove all the words that do not appear in
-the xml-file. Use carefully, this will delete all the nouns that appear in other files.
+the xml-file. Use carefully, this will delete all the nouns that appear 
+in other files.
 
 {{{
 python install.py --delete -f ../sme/xml/nouns.xml
@@ -338,8 +341,9 @@ SEMTYPE_CHOICES = (
 
 The string in small letters is the string that appears in the menu in
 English version. To translate for the other languages, follow the
-steps in [Localisation|maintenance.html#Localisation]. In addition, the changes in {{forms.py}}
-require that the server is restarted (sudo httpd restart). 
+steps in [Localisation|maintenance.html#Localisation]. In addition, 
+the changes in {{forms.py}} require that the server is restarted 
+(sudo httpd restart). 
 
 !!Vasta and Morfa-C
 Morfa-C and Vasta share the same mechanism for installing the
@@ -401,23 +405,30 @@ separate section.
 
 !Updating the database
 Create the dialogue file and store it e.g. to
-ped/sme/xml/dialoguefile.xml. Give the dialogue a unique name in the xml-structure, such as:
+ped/sme/xml/dialoguefile.xml. Give the dialogue a unique name in the 
+xml-structure, such as:
+
 {{{
 <dialogue name="firstmeeting_man">
 }}}
-Install it to database using command:
+
+Install it to database using the command:
+
 {{{
 cd ped/oahpa
 python install.py -k ../sme/xml/dialoguefile.xml
 }}}
+
 The script will give errors on links that do not point to an utterance
 and some information of wordsets and such.
 
 When you want to update an existing dialogue, use the same command:
+
 {{{
 cd ped/oahpa
 python install.py -k ../sme/xml/dialoguefile.xml
 }}}
+
 It will first remove the old dialogue and then install it as it was new. Do not
 change the dialogue name if you are updating an existing one.
 
@@ -435,6 +446,7 @@ use only the name of the image, not the full path.
 If you are installing a new game, update the file
 ped/oahpa/drill/templates/sahka.html. The file contains a table where
 all the images are stored as links to new dialogues:
+
 {{{
 <td>
 <a href="javascript:submitSahka('firstmeeting_man');">
@@ -442,6 +454,7 @@ all the images are stored as links to new dialogues:
 <p>{% trans "Meeting with Hansa" %}</p></a>
 </td>
 }}}
+
 Copy one such td, to a suitable place inside the table, specify a
 width to the image that fits to the page. Remember to change the name
 of the file, and finally, add the name of the dialogue to the javascript
@@ -545,3 +558,5 @@ sudo /etc/init.d/mysqld start
 }}}
 
 !!Admin-interface
+
+Still undocumented.
