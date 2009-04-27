@@ -15,7 +15,7 @@ database and editing the html-code.
 
 All the commands described in this document have to be run in victorio.
 
-!!Install Django locally
+!!!Install Django locally
 
 To test applications and interfaces, install Django to your own
 computer (as with the documentation system forrest). Follow the
@@ -43,19 +43,21 @@ DATABASE_PORT = '' (port number)
 
 And, finally, you need to create a sami language directory. Django should be installed in /Library/Python/2.5/site-packages/ -directory. Look at that directory for django/conf/locale -directory. Create sme
 language directory and copy the locale settings there from no:
+
 {{{
 mkdir your_pythonlib/django/conf/locale/sme
 cp your_pythonlib/django/conf/locale/no/django.* $(djangopath)/django/conf/locale/sme/
 }}}
 
 Then start the web development server in your own computer:
+
 {{{
 cd ped/oahpa/
 python manage.py runserver
 }}}
 
 The pages should be available in
-[http://127.0.0.1:8000/oahpa/|http://127.0.0.1:8000/oahpa/]. Consult
+[http://127.0.0.1:8000/oahpa/]. Consult
 the Django manual if there are problems with this part. With the
 remote logging to the database, you need to ask saara. 
 
@@ -63,14 +65,15 @@ In the sandbox, it is possible to test the changes to the code and to
 html pages. After the pages are working, check them in to svn and
 update the official version in victorio. 
 
-!!Your own database
+!!!Your own database
 
 Sometimes it would be good idea to have a replicate also from the
 oahpa-database, e.g. when you are testing new games. First install
 mysql: [http://dev.mysql.com/downloads/mysql/5.1.html]. See also database installation instructions in
 [http://docs.djangoproject.com/en/dev/topics/install/#database-installation]. 
 
-Look at the file /etc/my.cnf. It should have these utf8-values:
+Look at the file {{/etc/my.cnf}}. It should have these utf8-values:
+
 {{{
 [client]
 default-character-set=utf8
@@ -83,17 +86,20 @@ character_set_client=utf8
 }}}
 
 Start the server with command:
+
 {{{
 sudo mysqld_safe &
 }}}
 
 Set root password and create a new user account:
+
 {{{
 mysqladmin -u root password "mypassword"
 }}}
 
 Look for manuals to create own user etc, but you may use the root as
 well. Next, create the database:
+
 {{{
 mysql -u root -p
 mysql> create database oahpa;
@@ -101,6 +107,7 @@ mysql> exit;
 }}}
 
 Change the local settings in ped/oahpa/settings.py:
+
 {{{
 DATABASE_USER = 'root'
 DATABASE_PASSWORD = 'myspassword'
@@ -108,30 +115,34 @@ DATABASE_HOST = ''
 }}}
 
 Start installing the database information:
+
 {{{
 cd ped/oahpa
 python manage.py syncdb
 python install.py -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt -b
 python install.py -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt -f ../sme/xml/nouns.xml
 }}}
+
 Install everything you need starting from the lexicons.
 
 Start Django locally:
+
 {{{
 python manage.py runserver
 }}}
 
 
+!!!HTML
 
-!!HTML
+!!Overall look
 
-!Overall look
-
-* CSS-settings reside in ped/oahpa/media/css/oahpa.css
-* Mainpage __oahpa.no__ is defined in ped/oahpa/drill/templates/oahpa_main.html
-* Basic look for all the games (divs, menubars) are given in file ped/oahpa/templates/oahpa.html
+* CSS-settings reside in {{ped/oahpa/media/css/oahpa.css}}
+* Mainpage __oahpa.no__ is defined in
+  {{ped/oahpa/drill/templates/oahpa_main.html}}
+* Basic look for all the games (divs, menubars) are given in file
+  {{ped/oahpa/templates/oahpa.html}}
 * The file game.html contains the basic functionality for all the games.
-* Morhpology games are controlled by the file mgame.html.
+* Morhpology games are controlled by the file {{mgame.html}}
 
 In addition, it is possible to alter the pages of individual games by
 editing the files
@@ -170,7 +181,7 @@ For example, if you want to update a text in English, write inside the trans-tag
 {% trans ".." %}
 }}}
 
-!Javascripts
+!!Javascripts
 Disregarding a couple of exceptions, the Javascripts used are given in file:
 
 {{{
@@ -180,7 +191,7 @@ ped/oahpa/media/js/oahpa.js
 In addition, there are couple of other scripts, one for fixing the png-images in earlier IE versions using pngfix.js.
 Another two tooltip2.js and prototype.js are used for the translation tooltip. 
 
-!!FSTs
+!!!FSTs
 Oahpa is dependent on linguistic resources which are located in /opt/smi/sme/bin/. Compile the new versions of the fsts when needed.
 
 {{{
@@ -191,20 +202,20 @@ isme-GG.restr.fst
 isme-KJ.restr.fst
 }}}
 
-! Lookup server
+!!Lookup server
 
 The lookup-process for the analyzer ped-sme.fst, which is used in Vasta
 and Sahka is running all the time. The lookup is implemented as
 server, which can be called by different processes. You may examine
 the lookup output from Sahka and Vasta in victorio, file
-{{
+
+{{{
 /var/log/lserv.log
 }}}
 
-There exists a
-command line tool that can be used for testing the server on victorio. The script
-client.py takes one word at the time and can be terminated by giving
-an empty line.
+There exists a command line tool that can be used for testing the server on
+victorio. The script client.py takes one word at the time and can be terminated
+by giving an empty line.
 
 {{{
 python ped/src/client.py
@@ -212,7 +223,7 @@ python ped/src/client.py
 
 The server is called from the file forms.py for getting analysis for the
 answers in Vasta and Sahka. The error message "Connection refused"
-indicates that for some reason, the lookup server is down and need to
+indicates that for some reason, the lookup server is down and needs to
 be restarted. 
 
 When the lookup server is started it reads the file
@@ -226,7 +237,7 @@ sudo service lookupserv restart
 }}}
 
 
-!!Updating the database
+!!!Updating the database
 
 The script install.py is used for updating the database. First, cd to
 the ped/oahpa directory and then test the script.
@@ -241,7 +252,7 @@ harmful. The same command that is used for installing the information
 can be used for updating.
 
 
-!Lexicons
+!!Lexicons
 
 Information of individual words such as lemmas, stem information,
 semantic classes and source information is added or updated using command:
@@ -302,14 +313,14 @@ python install.py --delete -f ../sme/xml/nouns.xml
 This command both updates and removes all the extra entries of pos
 N. The pos N is derived from the pos information of the first entry.
 
-!Numerals
+!!Numerals
 Numerals are generated and installed using __fst__. Command:
 
 {{{
 install.py -n
 }}}
 
-!Placenames
+!!Placenames
 Placenames stored in sme/xml/propernouns.xml are installed differently
 than the other lexicons, since the Norwegian translations are
 implied. Use the option "--places" for them.
@@ -321,7 +332,7 @@ install.py --places -f ../sme/xml/propernouns.xml
 Use option -d to remove entries from the database the same way as from
 [lexicons|maintenance.html#Lexicons].
 
-!Semantic classes
+!!Semantic classes
 
 The grouping of semantic classes is defined in
 ped/sme/xml/semantic_sets.xml. Database is updated by the command:
@@ -345,7 +356,7 @@ steps in [Localisation|maintenance.html#Localisation]. In addition,
 the changes in {{forms.py}} require that the server is restarted 
 (sudo httpd restart). 
 
-!!Vasta and Morfa-C
+!!!Vasta and Morfa-C
 Morfa-C and Vasta share the same mechanism for installing the
 questions. Questions are defined e.g. in
 sme/xml/questions_vasta.xml. In addition some defaults for certain
@@ -377,7 +388,7 @@ command:
 python install.py -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt -b
 }}}
 
-!!Feedback
+!!!Feedback
 
 Install first the feedback messages, preferably for all languages:
 {{{
@@ -397,13 +408,13 @@ messages as well as new ids require reinstallation of the releveant
 feedback files. Vice versa, changes in the feedback file do not
 require reinstallation of the messages.
 
-!!Sahka
+!!!Sahka
 
 Sahka contains pictures which have to be synchronized with the
 contents of the database, so the whole process is explained here in
 separate section.
 
-!Updating the database
+!!Updating the database
 Create the dialogue file and store it e.g. to
 ped/sme/xml/dialoguefile.xml. Give the dialogue a unique name in the 
 xml-structure, such as:
@@ -432,7 +443,7 @@ python install.py -k ../sme/xml/dialoguefile.xml
 It will first remove the old dialogue and then install it as it was new. Do not
 change the dialogue name if you are updating an existing one.
 
-!Images
+!!Images
 Preferably in jpg-format. Collect the images and scale them to size,
 where width of the image is 150-180px (perhaps we should decide which
 size). Height of the picture can be anything. Internet Exporer
@@ -460,14 +471,14 @@ width to the image that fits to the page. Remember to change the name
 of the file, and finally, add the name of the dialogue to the javascript
 section. In the example above the dialogue name is "firstmeeting_man."
 
-!CG-script
+!!CG-script
 
 Copy the file sme-ped.cg3 to /opt/smi/sme/bin.
 There is a Makefile as well.
 
-!!Other
+!!!Other
 
-!Comments
+!!Comments
 In the drills, a comment is displayed after the user presses "Show
 correct answers" These comments are installed by:
 {{{
@@ -475,7 +486,7 @@ python install.py -c ../sme/xml/comments.nob.xml
 }}}
 Running the script deletes all the old comments and creates everything anew.
 
-!Grammarlinks
+!!Grammarlinks
 To update the links that appear on the top left corner, edit the file
 ped/sme/src/grammatikklinker.txt. Then install using command:
 {{{
@@ -483,7 +494,7 @@ python install.py -i ../sme/src/grammatikklinker.txt
 }}}
 
 
-!!Localisation
+!!!Localisation
 
 Translations for the texts in the interface are provided in files:
 
@@ -521,14 +532,14 @@ django-admin.py compilemessages
 
 
 
-!!Restarting the httpd server
+!!!Restarting the httpd server
 
 Updates to the code require restart of the httpd-server. Sometimes
 updates to the localisation require that too. The restart is otherwise
 harmless, but may distrub someone who is playing the came (although
 that is not very probable).
 
-Restarting the server (requires sudo rights)
+Restarting the server (requires sudo rights):
 {{{
 sudo /etc/init.d/httpd restart
 }}}
@@ -543,7 +554,7 @@ problem indication. The answer is to restart the apache web server,
 and thereafter, if need, to [restart mysqld|maintenance.html#Mysql].
 
 
-!!Mysql 
+!!!Mysql 
 
 In general, the database does not have to be directly accessed, but
 sometimes it is necessary. The database tables created by Django may
@@ -557,6 +568,6 @@ mysqld has stopped working. Start it again:
 sudo /etc/init.d/mysqld start
 }}}
 
-!!Admin-interface
+!!!Admin-interface
 
 Still undocumented.
