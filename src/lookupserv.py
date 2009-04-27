@@ -128,7 +128,6 @@ class Client(threading.Thread):
             #f.write("\n")
             self.look.sendline(data)			
             index = self.look.expect(['\r?\n\r?\n','ERROR',pexpect.EOF, pexpect.TIMEOUT])
-            self.lock.release()
 			
             #If there is an error, then restart the lookup process
             if index ==1 or index==2 or index==3:
@@ -137,12 +136,11 @@ class Client(threading.Thread):
                 except:
                     self.client.send("error")
                 self.client.send("error")
-                #f.write("Error in lookup")
-                #self.lock.release()
-                #f.close()
+                self.lock.release()
                 continue
                 
             if index ==0:
+                self.lock.release()
                 result = self.look.before
                 
                 #f.write("analysis for:" + data + " " + result)
