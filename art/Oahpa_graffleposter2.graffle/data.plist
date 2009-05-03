@@ -90,7 +90,7 @@
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf949\cocoasubrtf430
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\froman\fcharset0 Times-Roman;}
 {\colortbl;\red255\green255\blue255;}
-\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\ql\qnatural\pardirnatural
 
 \f0\fs24 \cf0 Paper version of this poster:\
 
@@ -244,12 +244,14 @@
 				<integer>0</integer>
 				<key>Text</key>
 				<string>{\rtf1\ansi\ansicpg1252\cocoartf949\cocoasubrtf430
-{\fonttbl\f0\fswiss\fcharset0 ArialNarrow;}
+{\fonttbl\f0\fswiss\fcharset0 ArialNarrow;\f1\fswiss\fcharset0 ArialNarrow-Italic;}
 {\colortbl;\red255\green255\blue255;}
 \deftab709
 \pard\pardeftab709\ri0\sl200\ql\qnatural
 
-\f0\fs12 \cf0 The morphological analyser gives the words in Makk\'e1r l\'e1ibeg\'e1lvvuid don h\'e1liidat? "What kind of bread do you want?" all possible grammatical analyses.\
+\f0\fs12 \cf0 The morphological analyser gives the words in
+\f1\i  Makk\'e1r l\'e1ibeg\'e1lvvuid don h\'e1liidat?
+\f0\i0  \'93What kind of bread do you want?\'94 all possible grammatical analyses.\
 \
 \
 \
@@ -479,7 +481,7 @@ The CG grammar then picks the correct analysis, and adds grammatical function an
 
 \f1\fs14 \cf0 The OAHPA! programs share a set of common resources: a pedagogical lexicon and a morphological generator that is used for generating the different word forms that appear in the programs. The dialectal variation is taken into account in the lexicon as well as in the morphology.  The lexical entry for 
 \i monni 
-\i0 "egg" is given to the right:\
+\i0 \'93egg\'94 is given to the right:\
 }</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
@@ -693,9 +695,8 @@ The CG grammar then picks the correct analysis, and adds grammatical function an
 \i0  (correctly identified errors/all errors), and 
 \i accuracy
 \i0  (correct judgements/cases).\
-\pard\pardeftab709\ri0\sl200\ql\qnatural
 
-\b \cf0 Precision = 0.8; Recall = 0.68; Accuracy = 0.82 (N=584)}</string>
+\b Precision = 0.8; Recall = 0.68; Accuracy = 0.82 (N=584)}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -804,7 +805,10 @@ The CG grammar then picks the correct analysis, and adds grammatical function an
 \deftab709
 \pard\pardeftab709\ri0\sl200\ql\qnatural
 
-\f0\fs14 \cf0 There are alternative links in the dialogue, one of them is due to the &amp;dia-hivsset tag:}</string>
+\f0\fs14 \cf0 There are alternative links in the dialogue, one of them is due to the 
+\i &amp;dia-hivsset
+\i0\b  
+\b0 tag:}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -855,7 +859,7 @@ The CG grammar then picks the correct analysis, and adds grammatical function an
 
 \f0\fs14 \cf0 Every question has its own unique id, which is used in navigating between questions. In addition, the CG-rules may be tailored for specific questions, like in the rule above. \
 \
-Age-tags are assigned with help of regex-rules to the answer to the question "How old are you?". The tags function as links for moving to the next dialogue branch tailored to the student's age.  \
+Age-tags are assigned with help of regex-rules to the answer to the question \'93How old are you?\'94. The tags function as links for moving to the next dialogue branch tailored to the student's age.  \
 }</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
@@ -905,14 +909,18 @@ Age-tags are assigned with help of regex-rules to the answer to the question "Ho
 \deftab709
 \pard\pardeftab709\ri0\sl200\ql\qnatural
 
-\f0\fs14 \cf0 The CG-rules disambiguate and add grammar-error-tag (&amp;grm-missing-Ill) and navigation-tag (&amp;dia-hivsset):}</string>
+\f0\fs14 \cf0 The CG-rules disambiguate and add grammar-error-tag (
+\i &amp;grm-missing-Ill
+\i0 ) and navigation-tag (
+\i &amp;dia-hivsset
+\i0 ):}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{802.394, 624}, {126.5, 155.094}}</string>
+			<string>{{802.394, 625}, {126.5, 155.094}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -1511,7 +1519,7 @@ A correct answer gets green colour as feedback.}</string>
 \f0\fs24 \cf0 Grammar feedback\
 \pard\pardeftab709\ri0\sl200\ql\qnatural
 
-\f1\fs14 \cf0 The system may give feedback to grammatical errors. In the third question in the dialogue below (on furnituring a flat), the systems asks "Where do we put the TV set?"\
+\f1\fs14 \cf0 The system may give feedback to grammatical errors. In the third question in the dialogue below (on furnituring a flat), the systems asks \'93Where do we put the TV set?\'94\
 The student answers 
 \i Moai bidje dan hivssega
 \i0 , with accusative 
@@ -1581,14 +1589,14 @@ The student answers
 
 \f1\fs14 \cf0 Navigating inside the dialogue is implemented in  CG-rules. The user input is tagged during analysis with information on whether the answer is interpreted as af\uc0\u64257 rmative or negative. In addition, a special tag indicates whether the sentence contains some information that should be stored for the following questions or utterances. The program is thus able to store simple information such as the  student\'92s name, place where she lives and for example the type of her car and use this information in tailored utterances.\
 \
-In the example to the left the question is "In which room do we put the TV?" One of the alternatives for the navigation is due to the target tag being assigned because of the lemma hivsset (''WC"). The answer will be "That is not a good idea. Make a new try." The CG-rule:}</string>
+In the example to the left the question is \'93In which room do we put the TV?\'94 One of the alternatives for the navigation is due to the target tag being assigned because of the lemma hivsset (\'93WC\'94). The answer will be \'93That is not a good idea. Make a new try.\'94 The CG-rule:}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{18.7911, 177.257}, {219.895, 166.808}}</string>
+			<string>{{18.7911, 178.757}, {219.895, 166.808}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -1875,7 +1883,9 @@ In the example to the left the question is "In which room do we put the TV?" One
 \
 We use constraint grammar to disambiguate the student's input only to a certain extent, because there will probably be grammatical and orthographic errors. The  manually written, context dependent rules are mainly used for selecting the correct analysis in case of homonymy. Each rule adds, removes, selects or replaces a tag or a set of grammatical tags in a given sentential context. The last part of our grammar consists of rules for giving feedback to the student's grammatical errors, and rules for navigating to the correct next question of in the dialogue, due to the student's answer.\
 \
-The system question and student answer are analysed together, delimited by the boundary marker ^qst. They first get a morphological analysis (left) , and are then disambiguated, and, if possible, assigned an error tag or a navigation tag.}</string>
+The system question and student answer are analysed together, delimited by the boundary marker 
+\i ^qst
+\i0 . They first get a morphological analysis (left) , and are then disambiguated, and, if possible, assigned an error tag or a navigation tag.}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -2477,7 +2487,7 @@ University of Troms\'f8, Norway, \{lene.antonsen; trond.trosterud\}@uit.no; saar
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2009-05-03 18:15:51 +0200</string>
+	<string>2009-05-03 19:14:58 +0200</string>
 	<key>Modifier</key>
 	<string>Trond Trosterud</string>
 	<key>NotesVisible</key>
@@ -2510,7 +2520,7 @@ University of Troms\'f8, Norway, \{lene.antonsen; trond.trosterud\}@uit.no; saar
 		<key>NSPaperName</key>
 		<array>
 			<string>string</string>
-			<string>084B61B6-3D2D-4443-B996-2B4EBCF5C5E9</string>
+			<string>4104C50B-C15D-48E0-BDBD-2BD22E489C79</string>
 		</array>
 		<key>NSPaperSize</key>
 		<array>
@@ -2567,7 +2577,7 @@ University of Troms\'f8, Norway, \{lene.antonsen; trond.trosterud\}@uit.no; saar
 		<key>SidebarWidth</key>
 		<integer>138</integer>
 		<key>VisibleRegion</key>
-		<string>{{480, 28}, {711, 386}}</string>
+		<string>{{480, 77.5}, {711, 386}}</string>
 		<key>Zoom</key>
 		<real>2</real>
 		<key>ZoomValues</key>
