@@ -1952,8 +1952,10 @@ SET INTR-END = COMMA OR PUNCT-RIGHT ;
 REMOVE Px ;
 REMOVE ("Lea" N) ;
 REMOVE ("Le^a" N) ;
+
 REMOVE LowercaseErr (*1 QDL) ;
 REMOVE LowercaseErr (NOT 0 Plc) ;
+SELECT (Pers Du1) (0 ("Moa"))  ;
 
     # giella vs. gielas vs. giellat
     # - - - - - - - - - - - - - - -
@@ -5426,7 +5428,7 @@ REMOVE Indef (0 ("galle"))(1 (N Gen))(*1 QDL) ;
 SELECT Adv (0 ("gallii") LINK -1 BOS) ; 
 SELECT ("galle" Num)(-1 BOS)(*1 N BARRIER NPNH); 
 SELECT ("galle" Nom)(*1 (N Gen) BARRIER NOT-ADJ LINK 1 Loc LINK 1 ("leat") LINK *1 QDL) ;
-
+SELECT Gen (0 ("guhte") LINK -1 BOS)(1 N LINK 0 Loc OR Ill LINK *1 QDL) ;
 SELECT Pers (*-1 QDL OR S-BOUNDARY BARRIER NOT-ADV-PCLE)(0 S-BOUNDARY)(*1 VFIN BARRIER NOT-ADV-PCLE);
 
 SELECT Gen (0 Dem) (1C Gen)(*1 QDL) ; 
@@ -6063,7 +6065,7 @@ LIST NOT-ACC-ROOM = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_speadjala g
 # Question according to wordlists:
 MAP (&sem-not_wordlist) TARGET QDL IF (0 VIESSOGALVVUT-Q)(*1 (&dia-target) BARRIER Neg LINK NOT 0 ROOMS)  ;
 
-MAP (&dia-hivsset) TARGET QDL IF (0 NOT-ACC-ROOM)(*1 (&dia-target) BARRIER Neg LINK 0 ("hivsset"))  ;
+MAP (&dia-hivsset) TARGET QDL IF (0 (gosa_bidjat_TV))(*1 ("hivsset") BARRIER Neg OR ROOMS)  ;
 
 MAP (&dia-basadanlatnja) TARGET QDL IF (0 NOT-ACC-ROOM)(*1 (&dia-target) BARRIER Neg LINK 0 ("basadan#latnja"))  ;
 
