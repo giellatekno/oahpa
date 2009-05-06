@@ -5710,9 +5710,9 @@ REMOVE Gen IF (-1 ("makkár") LINK -1 BOS) ;
 # dain viesuin
 # daiguin viesuiguin
 
-#LIST ARABIC = ("([1-9])*"r) ;
-#SET HALFAGR =  ("nubbi") OR Num - ARABIC ;
-LIST HALFAGR =  ("nubbi") ("\\D.*"r) + (Num) ;
+LIST ARABIC = ("([1-9])*"r) ;
+SET HALFAGR =  ("nubbi") OR Num - ARABIC ;
+#LIST HALFAGR =  ("nubbi") ("\\D.*"r) + (Num) ;
 
 LIST BUORRE = ("buorre" A) ;
 
