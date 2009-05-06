@@ -1953,10 +1953,9 @@ REMOVE Px ;
 REMOVE ("Lea" N) ;
 REMOVE ("Le^a" N) ;
 
-REMOVE LowercaseErr (*1 QDL) ;
-REMOVE LowercaseErr (NOT 0 Plc) ;
+REMOVE LowercaseErr ;
 SELECT (Pers Du1) (0 ("Moa"))  ;
-
+REMOVE V (0 ("bárdni")) ;
     # giella vs. gielas vs. giellat
     # - - - - - - - - - - - - - - -
 SELECT:r683 LANGUAGE IF (0 LANGUAGE LINK NOT 0 A) ;
@@ -5502,8 +5501,8 @@ SELECT (V Du3) (*-1 QDL BARRIER Nom OR VERB OR S-BOUNDARY LINK *-1 DUALIS-NOUN) 
 SELECT (V Pl3) (*-1 Coll BARRIER NOT-ADV LINK *-1 QDL) ;
 
 # Select correct tense:
-SELECT Prs (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN + Prs)(NOT 0 A) ;
-SELECT Prt (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN + Prt) ;
+SELECT Prs (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN + Prs)(NOT 0 A)(NEGATE 0 N LINK 1 VFIN) ;
+SELECT Prt (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN + Prt)(NEGATE 0 N LINK 1 VFIN) ;
 
 # Removing other readings even if there is no agreement:
 SELECT VFIN (-1 (N Nom) OR (Pers Nom) LINK *-1 QDL) ;
@@ -5517,7 +5516,7 @@ SELECT Inf (*-1 VFIN OR PrfPrc OR ConNeg BARRIER NOT-ADV LINK 0 INFV LINK *-1 QD
 # ADVERBS
 # -------
 
-SELECT Adv (-1 VFIN)(NEGATE 0 A LINK *1 N BARRIER NPNH) ;
+SELECT Adv (-1 VFIN)(NEGATE 0 A LINK *1 N BARRIER NPNH)(NOT 0 OKTA) ;
 
 # --------
 # VALENCY
@@ -5711,7 +5710,10 @@ REMOVE Gen IF (-1 ("makkár") LINK -1 BOS) ;
 # dain viesuin
 # daiguin viesuiguin
 
-LIST HALFAGR = ((\D.)r Num) "nubbi";
+#LIST ARABIC = ("([1-9])*"r) ;
+#SET HALFAGR =  ("nubbi") OR Num - ARABIC ;
+LIST HALFAGR =  ("nubbi") ("\\D.*"r) + (Num) ;
+
 LIST BUORRE = ("buorre" A) ;
 
 SELECT Nom (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Nom);
