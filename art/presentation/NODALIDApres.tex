@@ -38,7 +38,7 @@ The morphological disambiguator is implemented in the CG-framework (Karlsson et 
 
 
 \frame{\frametitle{Previous accounts on parser-based CALL}
-Very few parser-based CALL programs are available for actual use online. \pause We have looked at 
+Very few parser-based CALL (Computer Assisted Language Learning) programs are available for actual use online. \pause We have looked at 
 \begin{itemize}
 \item \textbf{e-tutor}, a program for teaching German to foreigners at \textit{http://e-tutor.org/} with Head-driven Phrase Structure Grammar (HPSG). e-tutor gives very good feedback to student's errors, but the possible input is very restricted. (Heift 2001, Heift and Nicholson 2001). \pause
 \item \textbf{VISL}-suite of games for teaching grammatical analysis at \textit{http://visl.sdu.dk/} with vislcg3. One of the programs accepts free user input. The input is analysed or changed into grammar exercises. (Bick 2005).
@@ -115,7 +115,7 @@ used in \textbf{Vasta} -- the question-answer drill and in \textbf{Morfa-C} -- m
 }
 
 \section{3. CG-parser in live analysis}
-\frame{\frametitle{Constraint Grammar parser}
+\frame{\frametitle{Constraint Grammar parser -- vislcg3}
 %CG is robust enough for handling unconstrained input, and at the same time accurate enough to identify errors. \\
 %\vspace{0.4cm}
 \begin{itemize}
@@ -143,8 +143,8 @@ Grammars for Danish and Norwegian based on CG achieve very good F-scores. \\
 \frame{\frametitle{Sahka -- the dialogue program} 
 \scalebox{0.39}[0.41]{\includegraphics{img/TVhivssegis.png}} \\ \pause
 \vspace{0.5cm}
-Question: "In which room do we put the TV?" \\
-Answer: "We put it into the WC."
+Question: "In which room should we place the TV?" \\
+Answer: "We should place it in the toilet."
 }
 
 
@@ -186,7 +186,7 @@ Answer: "We put it into the WC."
 \frame{\frametitle{Navigating in the dialogue -- alternative links} 
 \scalebox{0.35}[0.35]{\includegraphics{img/hivsset_tag.png}} \\
 \scalebox{0.55}[0.55]{\includegraphics{img/gosabidjatTV.png}} \\
-Question: "In which room do we put the TV?" \\
+Question: "In which room should we place the TV?" \\
 Alt. WC: "That is not a good idea. Make a new try." \\ 
 Default: "We carry it there together." 
 }
@@ -239,6 +239,7 @@ wrong V choice & 24 & wrong word           & 7  \\
 \end{tabular}
 \end{center}
 \end{table}
+Sahka and Vasta: Precision = 0.85; Recall = 0.93; \\ Accuracy = 0.89 (N=277).
 }
 
 
