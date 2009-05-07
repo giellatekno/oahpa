@@ -5817,14 +5817,16 @@ MAP (&grm-should-negV) TARGET ConNeg (-1 Neg LINK *-1 QDL BARRIER S-BOUNDARY LIN
 MAP (&sem-dont-know) TARGET ("diehtit" ConNeg) (*-1 QDL BARRIER S-BOUNDARY LINK NOT *-1 ("diehtit")) ;
 
 LIST VERBLEMMA = (".*"r) ;
-
+LIST SOAITIT = "soaitit" "dáidit" "veadjit" ;
 LIST BARGGUS = Leat_go_barggus_adult Leat_go_barggus_young ;
+
+MAP (&grm-soaitit) TARGET ("soaitit")(*-1 QDL)(0 V LINK *1 VFIN BARRIER S-BOUNDARY2 LINK NOT 0 Inf)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 
 MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE 0 ("hálihit") LINK *-1 ("háliidit")) ;
 
-MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0  MAKKAR-BARGU LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA LINK NOT 0 WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE 0 ("hálihit") LINK *-1 ("háliidit")) ;
+MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg OR SOAITIT)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0  MAKKAR-BARGU LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA LINK NOT 0 WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE 0 ("hálihit") LINK *-1 ("háliidit"))(NOT 0 SOAITIT) ;
 
 
 #SELECT VERB ;
@@ -6230,5 +6232,5 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &grm-Vehicle-Com
 # &grm-Loc-leaving
 # &grm-numeral-wrong-case
-
+# &grm-soaitit
 # &orth-prop                    Proper nouns should begin with capital letter
