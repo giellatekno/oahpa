@@ -1,0 +1,270 @@
+
+\documentclass{beamer}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage{tipa}
+
+\begin{document}
+\title{Constraint Grammar in Dialogue Systems}   
+\author{Lene Antonsen, Saara Huhmarniemi, Trond Trosterud \\
+Centre for Sámi Language Technology \begin{figure}  \scalebox{0.10}[0.10]{\includegraphics{img/LogoEngelsk}} \end{figure} 
+}
+\date
+
+
+\frame{\titlepage} 
+
+\frame{\frametitle{Contents}\tableofcontents} 
+
+
+\section{1. Introduction} 
+
+\frame{\frametitle{Parser-based CALL programs}
+Parser-based CALL programs for learners of North Sámi based on pre-existing LT resources developed at the University of Tromsø:
+\begin{itemize}
+\item finite state morphological analyser/generator (fst)
+\item constraint grammar (CG) parser
+\item number word generator (xfst)
+\end{itemize} 
+(Trosterud 2007) \\
+\vspace{0.5cm}
+The morphological analyser/generator is implemented with fst and compiled with the Xerox compilers twolc and lexc (Beesley and Karttunen 2003). \\
+The morphological disambiguator is implemented in the CG-framework (Karlsson et al 1995).
+}
+
+
+\frame{\frametitle{http://oahpa.uit.no/} 
+\scalebox{0.30}[0.30]{\includegraphics{img/Oahpanew.png}} \\
+}
+
+
+\section{2. Basic grammatical analysis} 
+
+\frame{\frametitle{Pedagogical lexicon} 
+\scalebox{0.40}[0.40]{\includegraphics{img/nounlexiconMonni.png}} \\
+}
+
+
+
+\frame{\frametitle{Sentence generator} 
+used in \textbf{Vasta} -- the question-answer drill and in \textbf{Morfa-C} -- morphological exercises in a sentential frame \\
+\vspace{0.5cm}
+\scalebox{0.50}[0.50]{\includegraphics{img/sentencegenerator.png}} \\
+\vspace{0.5cm}
+(MAINV question-particle SUBJ yesterday)
+}
+
+\frame{\frametitle{Sentence generator in Vasta} 
+\scalebox{0.50}[0.50]{\includegraphics{img/Vasta_sentencegen_example.png}} \\
+\vspace{0.5cm}
+("Did the boy go to church yesterday?" \\
+"No, he does not.")
+}
+
+\section{3. Analysing the syntax of the user's answer}
+\frame{\frametitle{Constraint Grammar parser -- vislcg3}
+CG is robust enough for handling unconstrained input, and at the same time accurate enough to identify errors. \\
+}
+
+
+%\frame{\frametitle{multi} 
+%\scalebox{0.90}[0.90]{\includegraphics{multi.png}} \\
+%}
+%
+%\frame{\frametitle{dis} 
+%\scalebox{0.90}[0.90]{\includegraphics{dis.png}} \\
+%}
+
+\frame{\frametitle{Sahka -- the dialogue program} 
+\scalebox{0.39}[0.41]{\includegraphics{img/TVhivssegis.png}} \\ \pause
+\vspace{0.5cm}
+Question: "In which room should we place the TV?" \\
+Answer: "We should place it in the toilet."
+}
+
+
+\frame{\frametitle{Schematical view of the process} 
+\scalebox{0.55}[0.55]{\includegraphics{img/qa2.pdf}} \\
+}
+
+
+%\frame{\frametitle{Morphological analysis} 
+%\scalebox{0.35}[0.35]{\includegraphics{img/GudelatnjiiQ.png}{img/GudelatnjiiB.png}}\scalebox{0.35}[0.35]{\includegraphics{img/GudelatnjiiA.png}{img/GudelatnjiiB.png}} \\
+%}
+
+\frame{\frametitle{Assigning of navigation tag} 
+\scalebox{0.3}[0.3]{\includegraphics{img/hivssegisCGanal.png}} \\
+\vspace{0.5cm}
+\scalebox{0.3}[0.3]{\includegraphics{img/hivsset_tag.png}} \\
+}
+\frame{\frametitle{Navigating in the dialogue -- alternative links} 
+\scalebox{0.35}[0.35]{\includegraphics{img/hivsset_tag.png}} \\
+\scalebox{0.55}[0.55]{\includegraphics{img/gosabidjatTV.png}} \\
+Question: "In which room should we place the TV?" \\
+Alt. WC: "That is not a good idea. Make a new try." \\ 
+Default: "We carry it there together." 
+}
+
+\frame{\frametitle{Navigating in the dialogue -- alternative branches} 
+\scalebox{0.45}[0.45]{\includegraphics{img/pickingage_colours.png}} \\
+\vspace{0.5cm} \pause
+\scalebox{0.45}[0.45]{\includegraphics{img/age_branching.png}} \\
+("How old are you?")
+}
+
+
+
+\frame{\frametitle{Disambiguation and assigning of grammar tag} 
+\scalebox{0.3}[0.3]{\includegraphics{img/hivssegisCGanal.png}} \\
+\scalebox{0.35}[0.35]{\includegraphics{img/missingIll.png}} \\
+}
+
+\section{4. Challenges}
+
+%\frame{\frametitle{multi} 
+%\scalebox{0.38}[0.38]{\includegraphics{img/missingIll.png}} \\
+%}
+\frame{\frametitle{Misspelling: non-existing word} 
+\begin{itemize}
+\item feedback: X is not in our lexicon. Could it be a typo?
+\item What is your name?\\ we accept anything and pick the input $\rightarrow$ "Good morning, X."
+\item Where do you live? \\
+-- placename is misspelled \\
+-- placename has not big initial letter \\ fst with placenames with small initial letter and Lowercase-error-tag which is removed so it remains if it is the only reading of the word form $\rightarrow$ Remember that placenames are written with capital letter.\\
+-- placename is not in our lexicon $\rightarrow$ navigation to question: "I haven't heard about X. Is it a place?" -- default $\rightarrow$ next question. 
+\end{itemize}
+}
+
+\frame{\frametitle{Misspellings -- unintended word form} 
+\begin{itemize}
+\item Loc vs. px (\&grm-Px-shouldbe-Loc) $\rightarrow$ Do you mean locative? Remember consonant gradation. 
+\item gfds
+\item gfds
+\item gfds
+\item gfds
+\end{itemize}
+}
+
+\frame{\frametitle{Misspellings -- unintended lemma} 
+\begin{itemize}
+\item ConNeg -- bora vs. borat
+\item gfds
+\item gfds
+\item gfds
+\item gfds
+\end{itemize}
+}
+
+%For misspellings that produce another word form of the same lemma, we have written rules that are based on the grammatical context. The real problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according to what the student thinks she has written. In this case, feedback has to be tailored using the knowledge about the student’s interlanguage. We have created sets for typical unintended lemmata. Combined with contextual rules we can then give the user a good feedback due to the misspelling instead of the unintended lemma.
+%
+%E.g. if the student uses the Sg2 form of the main verb after the negative verb, instead of the correct ConNeg form, then the erroneous form can be a ConNeg form of a derivated verb, and the normal feedback will be: "You should answer with the same verb as in the question." The student will not understand this, because she thinks that the word form in the answer is an instance of the same verb. The solution was to generate all these forms of the verbs in the questions, make a set of them, and make a rule for in the right context, give the feedback: "The negative form is not correct." 
+
+
+\frame{\frametitle{Answer with the same verb} 
+\begin{itemize}
+\item work verb
+\item auxilary verbs
+\item regular expression
+\item  
+\item  
+\end{itemize}
+}
+
+
+
+\frame{\frametitle{Orthographic variation of words} 
+\begin{itemize}
+\item vuola:vuollaga vs. vuolla:vuola
+\item sfa
+\item gfds
+\item gfds
+\item gfds
+\end{itemize}
+}
+
+\frame{\frametitle{Answer in the correct person} 
+Vasta and Sahka different \\
+QPN - question's person-number \\
+APN - answer's person-number\\
+\vspace{0.5cm}
+\begin{tabular}[t]{ll|ll|ll}
+QPN &APN &QPN &APN &QPN &APN \\
+\hline
+Sg1 &Sg2 &Du1 &Du2 &Pl1 &Pl2 \\
+Sg2 &Sg1 &Du2 &Du1 &Pl2 &Pl1 \\
+Sg3 &Sg3 &Du3 &Du3 &Pl3 &Pl3 \\
+\hline
+\end{tabular}
+}
+
+\frame{\frametitle{Meta comments} 
+\begin{itemize}
+\item Answering I-don't-know is too simple. Try again.
+\item Your answer must always contain a finite verb. Could there be a typo in the verbform?
+\item You must use one of the words in the wordlist in the left margin.
+\item You have not used the appropriate adjective. Try again.
+\end{itemize}
+}
+
+
+\frame{\frametitle{What grammar errors we have rules for} 
+\begin{itemize}
+\item verbs: finite, infinite, correct tense, negative form
+\item case of argument based of the interrogative in the question
+\item case of argument on based of valency
+\item locative vs. illative based on movement
+\item subject/verbal agreement
+\item case and number in numeral expressions 
+\item case after postposition 
+\item postposition based of the interrogative in the question  
+\item eret  
+\item agreement inside NP 
+\item timeexpressions 
+\item particles and word order 
+\item comparision of adjectives
+\end{itemize}
+}
+
+
+
+\section{5. Evaluation}
+\frame{\frametitle{Evaluation 1}
+}
+
+\frame{\frametitle{Evaluation 2}
+}
+
+
+\section{6. Conclusion}
+\frame{\frametitle{Conclusion}
+(from the poster)
+\begin{itemize}
+\item A sloppy version of the syntactical analyser for North Sámi, combined with a set of error-detection rules, we have been able to build a flexible CALL resource. \\ \pause
+\vspace{0.5cm}
+\item The present project has shown that CG is well fit for making pedagogical dialogue systems.\\ \pause
+\vspace{0.5cm}
+\item The program suite is something quite new among pedagogical programs for Sámi, and indeed its dialogue and open QA-programs are quite rare within the field of parser-based CALL.
+\end{itemize}
+}
+
+\frame{\frametitle{Acknowledgments} 
+Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding the project.
+} 
+
+%\frame{\frametitle{References} 
+%\scalebox{0.32}[0.32]{\includegraphics{img/ref1.png}}
+%\scalebox{0.32}[0.32]{\includegraphics{img/ref2.png}}
+
+
+
+
+\frame{\frametitle{Questions?} 
+} 
+
+
+
+\end{document}
+
