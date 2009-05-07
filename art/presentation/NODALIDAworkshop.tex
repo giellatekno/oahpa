@@ -64,7 +64,7 @@ used in \textbf{Vasta} -- the question-answer drill and in \textbf{Morfa-C} -- m
 "No, he does not.")
 }
 
-\section{3. Analysing the syntax of the user's answer}
+\section{3. Analysing the user's input}
 \frame{\frametitle{Constraint Grammar parser -- vislcg3}
 CG is robust enough for handling unconstrained input, and at the same time accurate enough to identify errors. \\
 }
@@ -95,11 +95,22 @@ Answer: "We should place it in the toilet."
 %\scalebox{0.35}[0.35]{\includegraphics{img/GudelatnjiiQ.png}{img/GudelatnjiiB.png}}\scalebox{0.35}[0.35]{\includegraphics{img/GudelatnjiiA.png}{img/GudelatnjiiB.png}} \\
 %}
 
+\section{3a. Navigation and picking information}
+
+
 \frame{\frametitle{Assigning of navigation tag} 
 \scalebox{0.3}[0.3]{\includegraphics{img/hivssegisCGanal.png}} \\
 \vspace{0.5cm}
 \scalebox{0.3}[0.3]{\includegraphics{img/hivsset_tag.png}} \\
 }
+
+\frame{\frametitle{Tags for postive and negative answer} 
+}
+
+\frame{\frametitle{Picking information} 
+}
+
+
 \frame{\frametitle{Navigating in the dialogue -- alternative links} 
 \scalebox{0.35}[0.35]{\includegraphics{img/hivsset_tag.png}} \\
 \scalebox{0.55}[0.55]{\includegraphics{img/gosabidjatTV.png}} \\
@@ -108,6 +119,7 @@ Alt. WC: "That is not a good idea. Make a new try." \\
 Default: "We carry it there together." 
 }
 
+
 \frame{\frametitle{Navigating in the dialogue -- alternative branches} 
 \scalebox{0.45}[0.45]{\includegraphics{img/pickingage_colours.png}} \\
 \vspace{0.5cm} \pause
@@ -115,6 +127,7 @@ Default: "We carry it there together."
 ("How old are you?")
 }
 
+\section{3b. Grammar feedback}
 
 
 \frame{\frametitle{Disambiguation and assigning of grammar tag} 
@@ -138,7 +151,7 @@ Default: "We carry it there together."
 \end{itemize}
 }
 
-\frame{\frametitle{Misspellings -- unintended word form} 
+\frame{\frametitle{Misspellings: unintended word form} 
 \begin{itemize}
 \item Loc vs. px (\&grm-Px-shouldbe-Loc) $\rightarrow$ Do you mean locative? Remember consonant gradation. 
 \item gfds
@@ -148,7 +161,7 @@ Default: "We carry it there together."
 \end{itemize}
 }
 
-\frame{\frametitle{Misspellings -- unintended lemma} 
+\frame{\frametitle{Misspellings: unintended lemma} 
 \begin{itemize}
 \item ConNeg -- bora vs. borat
 \item gfds
