@@ -13,6 +13,7 @@ import sys
 import re
 import os
 import threading
+from threading import Lock
 import time
 
 class Server:
@@ -29,6 +30,7 @@ class Server:
         #lo="/Users/saara/bin/lookup"
         fstdir="/opt/smi/sme/bin"
         lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
+        #logfile= "/home/saara/foo.log"
         logfile= "/var/log/lserv.log"
         f = open(logfile, 'a')        
 
@@ -71,6 +73,7 @@ class Server:
             c.join()
                             
 class Client(threading.Thread):
+	
     def __init__(self,(client,address),look,lock):
         threading.Thread.__init__(self)
         self.client = client
@@ -97,9 +100,11 @@ class Client(threading.Thread):
             for a in c:
                 data = data.replace(a,'')
 
-			# Take out all other characters, to avoid lookup errors
+			# Take out non-breaking space. Try to avoid errors.
             try:
-                data2 = data.decode('utf-8')
+				data2 = data.decode('utf-8')
+				data2 = data2.replace(unichr(160),"")
+				data = data2.encode('utf8')
             except:
                 #data = data.encode('utf-8')
                 #f.write("Not utf-8: " + data)
