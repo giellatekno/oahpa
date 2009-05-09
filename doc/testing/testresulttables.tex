@@ -1,0 +1,77 @@
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Brief Article}
+\author{The Author}
+%\date{}                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+%\section{}
+%\subsection{}
+
+
+\begin{table}[htdp]
+%\caption{default}
+\begin{center}
+\begin{tabular}{|l|r|r|r|l|r|r|r|}
+\hline
+Rule type  & corr. & wr. & corr\%    & Rule type & corr. & wr. & corr\%     \\
+\hline
+wrong tense  & 7 & 0 & 100,0	   & no finite verb  & 19 & 4 & 82,6	  \\
+wrong V after neg  & 3 & 0 & 100,0 & wrong S-V agr  & 17 & 8 & 68,0	  \\
+no infinite V  & 1 & 0 & 100,0	   & wrong V choice  & 7 & 4 & 63,6	  \\
+orth. error  & 44 & 2 & 95,7	   & wrong word  & 4 & 4 & 50,0		  \\
+wr. case for V-arg & 26 & 4 & 86,7 & wr. case after Num & 1 & 1 & 50,0 \\
+\hline
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+
+
+\begin{table}[htdp]
+%\caption{default}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+Morfa-S & Leksa & Sahka & Numra & Morfa-C & Vasta \\
+41\% & 27\% & 13\% & 12\% & 5\% & 2\% \\
+\hline
+\end{tabular}
+\end{center}
+\label{default}
+\end{table}%
+
+  \begin{tabular}{|l|p{4cm}|p{5cm}|} %cr centre line column
+    \hline
+      \textbf{Type of deviation} & \textbf{Example} &\textbf{Explanation}\\
+    \hline
+      One-to-many relations & \textit{dálla} vs. \textit{dál} & (synonyms for`now')\\
+    \hline
+      Tag inconsistencies       & \textit{iesjráddijiddje} (`self-governed') & is analysed both as a deverbal form and a lexicalised adjective \\
+    \hline
+      POS assymetries            & \textit{gullujiddje} (`belonging') & is analysed as a derived verb form \\
+    \hline
+      CG disambiguation \break error & \textit{liehket} (`to be') & (infinitive) should be \textit{li} (3rd person plural) \\
+    \hline
+      Lexical matters       & \textit{tjiehpe} (`clever') vs. \textit{smidá} &   can be used synonymously in certain contexts \\ %\textit{moattegielak} vs. \textit{ålogielak} %\textit{sáhttá} vs. \textit{máhttá}\\
+    \hline
+      Case                  & \textit{bargojn} (`work' Ine+Pl/Com+Sg) vs. \textit{bargoj} (Com+Pl/Gen+Sg) & a wrong case form is used \\
+    \hline
+      Word order            & \textit{manna l ulmmel} vs.  \textit{man ulmmen la} (`which is the purpose') & SVO vs. SOV \\
+    \hline
+  \end{tabular}
+
+
+\end{document}  
+
+
