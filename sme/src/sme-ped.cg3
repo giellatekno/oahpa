@@ -5387,11 +5387,11 @@ MAP (&dia-target) TARGET (N Plc Loc) IF (*-1 QDL BARRIER (&dia-target) LINK 0 SA
 
 
 # Collecting place name, if it is not in the lexicon - for SAHKA
-MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv)) ;
-MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv)) ;
+MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
+MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
 
-MAP (&dia-unknown) TARGET N IF (NOT 0 Prop)(*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv)) ;
-MAP (&dia-unknown) TARGET N IF (NOT 0 Prop)(*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv)) ;
+MAP (&dia-unknown) TARGET N IF (NOT 0 Prop OR HUMAN)(*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
+MAP (&dia-unknown) TARGET N IF (NOT 0 Prop OR HUMAN)(*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
 
 
 # Placename should be in locative:
