@@ -665,7 +665,7 @@ LIST PLACE-ADV =  "davá#bealde" "mátta#bealde" "nuortta#bealde" "oarjja#bealde
 LIST DOPPE = "dakko" "dákko" "dáppe" "diekko" "dieppe" "dokko" "doppe" "duokko" "duoppe" "gostege" "davvin" "lullin" "lulde" "máddin" "oarjin" "nuortan" "olgun" "badjin" "vuollin" "olggo#bealde" "guhkkin" ;
 # Adverbs with a locativic form, but don´t get Loc as a tag. 
 
-LIST DOHKO = "deike" "diehke" "dohko" "duohko" ("gosa" Foc/ge) "ruoktot" "diehko" "olggos" "guhkás" "máttás" "lulás" "luksa" "davás" "nuorttas" "oarjjás" "bajás" "vulos" "olggo#beallái" ;
+LIST DOHKO = "deike" "diehke" "dohko" "duohko" ("gosa" Foc/ge) "ruoktot" "ruoktut" "diehko" "olggos" "guhkás" "máttás" "lulás" "luksa" "davás" "nuorttas" "oarjjás" "bajás" "vulos" "olggo#beallái" ;
 # Adverbs with a illativic form, but they don´t get Ill as a tag.
  
 
@@ -1955,7 +1955,19 @@ REMOVE ("Le^a" N) ;
 
 REMOVE LowercaseErr ;
 SELECT (Pers Du1) (0 ("Moa"))  ;
-REMOVE V (0 ("bárdni")) ;
+
+LIST NOT-LIKELY-VERB = "ikte" "bárdni" "vávvá" ;
+
+REMOVE V (0 NOT-LIKELY-VERB) ;
+
+REMOVE Attr (0 ("eahkedis"));
+
+LIST PLACENAME-QUESTION = Gos_don_leat_eret Gos_don_orut_dál gos_du_eadni_lea_eret_adult gos_du_ahcci_lea_eret_adult gos_du_eadni_lea_eret_young gos_du_ahcci_lea_eret_young gos_du_eadni_lea_eret_child gos_du_ahcci_lea_eret_child ;
+
+SELECT (Plc Loc) (*-1 PLACENAME-QUESTION BARRIER Plc)(NEGATE *1 Plc) ;
+
+SELECT (V Sg1) (*-1 QDL BARRIER VERB OR S-BOUNDARY LINK *-1 VFIN LINK 0 Sg2) ;
+
     # giella vs. gielas vs. giellat
     # - - - - - - - - - - - - - - -
 SELECT:r683 LANGUAGE IF (0 LANGUAGE LINK NOT 0 A) ;
@@ -5350,10 +5362,11 @@ LIST SAHKA = "^sahka" ;
 # The user wants to stop the dialogue
 MAP (&dia-stop) TARGET ("heaitit")(*-1 SAHKA) ; 
 
-LIST PLACENAME-QUESTION = Gos_don_leat_eret Gos_don_orut_dál gos_du_eadni_lea_eret_adult gos_du_ahcci_lea_eret_adult gos_du_eadni_lea_eret_young gos_du_ahcci_lea_eret_young gos_du_eadni_lea_eret_child gos_du_ahcci_lea_eret_child ;
+#LIST PLACENAME-QUESTION = Gos_don_leat_eret Gos_don_orut_dál gos_du_eadni_lea_eret_adult gos_du_ahcci_lea_eret_adult gos_du_eadni_lea_eret_young gos_du_ahcci_lea_eret_young gos_du_eadni_lea_eret_child gos_du_ahcci_lea_eret_child ;
 
 MAP (&err-orthProp) TARGET LowercaseErr (*-1 QDL LINK 0 PLACENAME-QUESTION BARRIER Prop)(0 Plc) ;
 REMOVE LowercaseErr ;
+
 
 
 # Picking person name, if it is not in the lexicon - for SAHKA
@@ -5439,7 +5452,7 @@ SELECT Gen (0 Dem) (1C Gen)(*1 QDL) ;
 #REMOVE Pr (-1C Po)(*1 QDL) ; 
 SELECT Acc (*-1 ("vázzit"))(0 EDUCATION)(*1 QDL) ;
 SELECT (V Ind Sg2) (-1 BOS)(1 go LINK 1 (Sg2 Nom)) (*1 QDL) ;
-SELECT (V Ind Sg2) (-1 BOS)(1 go LINK NOT 1 Pers) (*1 QDL) ;
+SELECT (V Ind Sg2) (-1 BOS)(1 go LINK NOT 1 Pers OR (N Nom)) (*1 QDL) ;
 SELECT V-3 (-1 BOS)(1 go LINK 1 Loc) (*1 QDL) ;
 SELECT (Pers Gen)(1 N) (*1 QDL) ;
 SELECT (Sg2 Nom) (-1 go LINK -1 (V Ind Sg2))(0 ("dot")) ; 
@@ -6034,10 +6047,10 @@ MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL BARRIER Acc OR S-BOUNDARY LINK *-1 
 # Rules for dialogue_visit
 #-----------------------------
 #LIST ROOMS = stohpu gievkkan oađđenlatnja basadanlatnja hivsset feaskkir ;
-LIST ROOMS = "stohpu" "gievkkan" "oađđen#latnja" "basadan#latnja" "hivsset" "feaskkir";
+LIST ROOMS = "stohpu" "gievkkan"  "kievkkan" "oađđen#latnja" "oađđin#latnja" "basadan#latnja" "hivsset" "feaskkir";
 
 #LIST DRINK = bruvsa sákta mielki viidni vuola ;
-LIST DRINK = "bruvsa" "sákta" "mielki" "viidni" "vuola" ;
+LIST DRINK = "bruvsa" "sákta" "mielki" "viidni" "viidná" "vuola" "vuolla" ;
 
 #LIST CANDY =  šukkoláda lákcajiekŋa keavssat ;
 LIST CANDY =  "šukkoláda" "lákca#jiekŋa" "keaksa" ;
@@ -6046,25 +6059,25 @@ LIST CANDY =  "šukkoláda" "lákca#jiekŋa" "keaksa" ;
 LIST BREAD = "láibi" "garra#láibi" "roavva#láibi" "beaivváš#láibbáš" "niso#láibi";
 
 #LIST VEGETABLE = rušppit buđehat saláhta návrraš ;
-LIST VEGETABLE = "rušpi" "buđet" "saláhta" "návrraš" ;
+LIST VEGETABLE = "rušpi" "buđet" "buđeita" "saláhta" "návrraš" ;
 
 #LIST FRUIT = eahppelat appelsiinnat ;
 LIST FRUIT = "eahppel" "appelsiidna" ;
 
 #LIST MEAT = márffit sáltemárfi buoidi bohccobiergu  ;
-LIST MEAT = "márfi" "sálte#márfi"  "buoidi" "bohcco#biergu"  ;
+LIST MEAT = "márfi" "sálte#márfi" "buoidi" "bohcco#biergu"  ;
 
 #LIST GROCERYFISH = guolli sálteluossa goikeguolli guollegáhkut bálddis dápmot ;
 LIST GROCERYFISH = "guolli" "goike#guolli" "sálte#luossa" "guolle#gáhkku" "bálddis" "dápmot" ;
 
 #LIST BAKING =  sálttit sohkkarat  monit jáffut jeasta sirát ;
-LIST BAKING =  "sálti" "sohkar" "monni" "jáffu" "jeasta" "sirát" ;
+LIST BAKING =  "sálti" "sohkar" "monni" "jáffu" "jeasta" "sirát" "sierát" ;
 
 #LIST SUVLI = vuodja vuostá muorjemeastu vuoivvasmeastu luomemeastu majonesa ;
 LIST SUVLI = "vuodja" "vuostá" "muorje#meastu" "vuoivvas#meastu" "luome#meastu" "majonesa" ;
 
 #LIST OFFERS = gintalat  gohput rátnu speajal ruskalihtti govva ;
-LIST OFFERS = "ginttal" "gohppu" "rátnu" "speajal" "ruska#lihtti" "govva" ;
+LIST OFFERS = "ginttal" "gohppu" "kohppu" "rátnu" "speajal" "ruska#lihtti" "govva" ;
 
 LIST VIESSOGALVVUT-Q = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_lahttelamppa gosa_bidjat_lohkanlamppa gosa_bidjat_soffa gosa_bidjat_lahtteranu gosa_bidjat_speadjala ; 
 
