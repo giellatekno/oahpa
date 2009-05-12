@@ -5367,7 +5367,10 @@ MAP (&dia-stop) TARGET ("heaitit")(*-1 SAHKA) ;
 MAP (&err-orthProp) TARGET LowercaseErr (*-1 QDL LINK 0 PLACENAME-QUESTION BARRIER Prop)(0 Plc) ;
 REMOVE LowercaseErr ;
 
+LIST ACCEPT-EVERYTHING = Makkar_snowboard_child Makkar_snowboard_adult Makkar_snowboard_young Mii_namma_lea ;
 
+
+SELECT Prop (*-1 ACCEPT-EVERYTHING BARRIER NOT-ADV-PCLE)(NOT *1 Prop) ; 
 
 # Collecting person name, if it is not in the lexicon - for SAHKA
 MAP (&dia-target) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
@@ -5379,7 +5382,7 @@ MAP (&dia-target) TARGET Prop IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_b
 
 # Collecting car name, if it is not in the lexicon - for SAHKA
 MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila_adult)) ;
-MAP (&dia-unknown) TARGET N IF (NOT 0 Obj)(*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila_adult)) ;
+MAP (&dia-unknown) TARGET N IF (NOT 0 Obj)(*-1 QDL BARRIER (&dia-target) OR (&dia-unknown) LINK 0 (Makkar_biila_adult))(NOT *1 (&dia-target) OR (&dia-unknown)) ;
 
 # Collecting place name, if it is  in the lexicon - for SAHKA
 MAP (&dia-target) TARGET (N Plc Loc) IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv)) ;
@@ -5390,14 +5393,13 @@ MAP (&dia-target) TARGET (N Plc Loc) IF (*-1 QDL BARRIER (&dia-target) LINK 0 SA
 MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
 MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
 
-MAP (&dia-unknown) TARGET N IF (NOT 0 Prop OR HUMAN)(*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
-MAP (&dia-unknown) TARGET N IF (NOT 0 Prop OR HUMAN)(*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
+MAP (&dia-unknown) TARGET N IF (NOT 0 Prop OR HUMAN)(*-1 QDL BARRIER (&dia-target) OR (&dia-unknown) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
+MAP (&dia-unknown) TARGET N IF (NOT 0 Prop OR HUMAN)(*-1 QDL BARRIER (&dia-target) OR (&dia-unknown) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
 
 
 # Placename should be in locative:
 MAP (&grm-missing-Loc) TARGET Prop (*-1 ("leat") OR ("orrut") BARRIER Loc OR S-BOUNDARY LINK *-1 PLACENAME-QUESTION BARRIER S-BOUNDARY)(NOT 0 Loc) ;
 
-LIST ACCEPT-EVERYTHING = Makkar_snowboard_child Makkar_snowboard_adult Makkar_snowboard_young Mii_namma_lea ;
 
 # For spellingerrors:
 MAP (&err-spellingerror) TARGET QMRK (*-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING BARRIER S-BOUNDARY)  ;
@@ -5442,6 +5444,7 @@ REMOVE Indef (0 ("galle"))(1 (N Gen))(*1 QDL) ;
 SELECT Adv (0 ("gallii") LINK -1 BOS) ; 
 SELECT ("galle" Num)(-1 BOS)(*1 N BARRIER NPNH); 
 SELECT ("galle" Nom)(*1 (N Gen) BARRIER NOT-ADJ LINK 1 Loc LINK 1 ("leat") LINK *1 QDL) ;
+REMOVE Coll (0 (Num Loc) LINK NOT 1 VFIN LINK *1 QDL) ;
 SELECT Gen (0 ("guhte") LINK -1 BOS)(1 N LINK 0 Loc OR Ill LINK *1 QDL) ;
 SELECT Pers (*-1 QDL OR S-BOUNDARY BARRIER NOT-ADV-PCLE)(0 S-BOUNDARY)(*1 VFIN BARRIER NOT-ADV-PCLE);
 
@@ -5650,6 +5653,7 @@ REMOVE Gen (0 TARGETQUESTION-ACC LINK -1 BOS)(1 VFIN OR Pron);
 MAP (&grm-missing-NumSg) TARGET ("galle" Sg Nom) IF (*1 QDL LINK NOT *1 (Num Sg) OR Neg BARRIER S-BOUNDARY);
 MAP (&grm-missing-NumPl) TARGET ("galle" Pl) IF (*1 QDL LINK NOT *1 (Num Pl) OR Neg BARRIER S-BOUNDARY);
 MAP (&grm-missing-NNum) TARGET ("gallis" Coll) IF (*1 QDL LINK NOT *1 Coll OR Neg BARRIER S-BOUNDARY);
+MAP (&grm-missing-NumLoc) TARGET ("galle" Loc) IF (*1 QDL LINK NOT *1 (Num Loc) OR Neg BARRIER S-BOUNDARY);
 MAP (&grm-missing-Ord) TARGET ("gallát") IF (*1 QDL LINK NOT *1 (A Ord) OR Neg BARRIER S-BOUNDARY);
 
 MAP (&grm-Px-shouldbe-Loc) TARGET ("gos") OR ("gokko") IF (*1 QDL LINK NOT 0 PLACENAME-QUESTION LINK NOT *1 Loc OR DOPPE OR Po OR Neg)(*1 QDL LINK *1 PxSg3 BARRIER S-BOUNDARY);
