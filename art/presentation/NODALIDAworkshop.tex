@@ -323,29 +323,35 @@ Which rules are not in use? Why? \\
 \begin{table}%[htdp]
 %\caption{default}
 %\begin{center}
-\begin{tabular}{|l|r|r|r|r|r|r|r|r|r|}
+\begin{tabular}{|l|r|r|r|r||r|r|r|r|r|}
 \hline
-Error type		& tp		& fp		& tn		& fn	&	& prec	 & rec.	& acc.	& F-ms. \\
+Error type	& tp		& fp		& tn		& fn	& prec	 & rec.	& acc.	& F-ms. \\
 \hline
-Gramm.err.	& 680	& 214	& 813	& 5	&	& 0,76	& 0,99	& 0,87	& 0,86  \\
-Sem. err.		& 810	& 84		& 809	& 9	&	& 0,91	& 0,99	& 0,95	& 0,95  \\
-Orth. err.		& 894	& 0		& 818	& 0	&	& 1	 	& 1		& 1		& 1	    \\
-Other err.		& 702	& 192	& 754	& 64	&	& 0,79	& 0,92	& 0,85	& 0,85  \\
+Gramm. err. & 743 & 276 & 783 & 7 & 0,73 & 0,99 & 0,84 & 0,84   \\
+Sem. err.   & 942 & 77 & 777 & 13 & 0,92 & 0,99 & 0,95 & 0,95   \\
+Orth. err   & 1019 & 0 & 790 & 0 & 1 & 1 & 1 & 1			    \\
+Other err.  & 839 & 180 & 765 & 25 & 0,82 & 0,97 & 0,89 & 0,89  \\
 \hline
-Average	 	& 771	& 122	& 798	& 19	&	& 0,86	& 0,97	& 0,92	& 0,91  \\
+Average & 3543   & 533 & 3115  & 45  & 0,87 & 0,99 & 0,92 & 0,92    \\
 \hline
 \end{tabular}
 %\end{center}
 %\label{default}
 \end{table}%
+
+The high recall compared to the somewhat lower precision indicates that the system is a bit too critical towards the students:
+\begin{itemize}
+\item{It almost never lets through a (targeted) mistake, with the price of flagging some correct answers as errors.}
+\end{itemize}
 }
+
 
 \section{7. Future perspectives}
 \frame{\frametitle{Future perspectives}
 How to improve the system? \\
 \begin{itemize}
 \item speller for misspellings 
-\item grammartasks ala e-tutor?
+\item grammartasks a la \textit{e-tutor}?
 \item Vasta: options based on pragmatics, not grammar
 \item Vasta: option for training complex NP, time expressions and so on
 \end{itemize}
@@ -357,9 +363,9 @@ How to improve the system? \\
 
 \section{8. Conclusion}
 \frame{\frametitle{Conclusion}
-(from the poster)
+
 \begin{itemize}
-\item A sloppy version of the syntactical analyser for North Sámi, combined with a set of error-detection rules, we have been able to build a flexible CALL resource. \\ \pause
+\item By using a sloppy version of the syntactical analyser for North Sámi, combined with a set of error-detection rules, we have been able to build a flexible CALL resource. \\ \pause
 \vspace{0.5cm}
 \item The present project has shown that CG is well fit for making pedagogical dialogue systems.\\ \pause
 \vspace{0.5cm}
