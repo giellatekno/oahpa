@@ -1,0 +1,58 @@
+All this in
+gtsvn/ped/doc/testing/
+
+Candidate list:
+egrep ' \?' corpus_vasta_pos_divvun_multi | cut -d"\"" -f2
+(the words which are not recognised by the analyser)
+this gives a list of MISSPELLEDWORDs
+
+
+For each MISSPELLEDWORD, find the divvun suggestions in
+divvun-misspellings_090505.txt 
+
+The best, dynamic solution, is:
+For each MISSPELLEDWORD, generate the suggestions via Tomi's command:
+
+cat MISSPELLEDWORD | ./private/trunk/polderland/bin/spellSamiNort -u8 -0 -m /Users/tomi/langtech/gt/sme/polderland/SamiNortLexWithCatalanRez   > MISSPELLEDWORD.out
+
+cat MISSPELLEDWORD.out lookup -flags mb ~/gtsvn/gt/sme/bin/ped-sme.fst | lookup2cg | spelleroutput2cginput.pl > misspelledword.cohort
+
+and then place it back in corpus_vasta_pos_divvun_multi (or wherever it came from)
+
+"<MISSPELLEDWORD>"
+	"MISSPELLEDWORD" '\?'	
+
+CHANGES TO:
+
+"<MISSPELLEDWORD>"
+	misspelledword.cohort
+
+----------
+eventually cheating (i.e. not via Xserve):
+use the file divvun-misspelling...
+
+content for dunje:
+
+scan throu file divvun-misspelling to
+' MISSPELLEDWORD...
+drop mext line
+
+Prompt: Check returns 0[0:0]/1, @0:5 for 'dunje'
+Getting suggestions for dunje... <=== wordform
+Suggestions:
+247	Tonje  
+247	Tonje-
+245	dune
+(...)
+240	dolje
+240	dolje-
+240	donbe
+Prompt: Check returns 0[0:0]/1, @0:5 for 'duina'
+
+
+grep with initial munber and etc
+
+take output and | lookup -flags mb ~/gtsvn/gt/sme/bin/ped-sme.fst | lookup2cg | spelleroutput2cginput.pl | see
+
+... put it in  corpus_vasta_pos_divvun_multi 
+where it belongs (under MISSPELLEDWORD
