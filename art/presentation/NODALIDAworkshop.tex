@@ -82,7 +82,7 @@ Answer: "We should place it in the toilet."
 
 
 \frame{\frametitle{Schematical view of the process} 
-\scalebox{0.55}[0.55]{\includegraphics{img/qa2.pdf}} \\
+\scalebox{0.65}[0.65]{\includegraphics{img/qa2.pdf}} \\
 }
 
 
@@ -92,6 +92,20 @@ Answer: "We should place it in the toilet."
 
 \section{3. Navigation and collecting information}
 
+\frame{\frametitle{Assignment of navigation tag} 
+\scalebox{0.37}[0.37]{\includegraphics{img/hivssegisCGanal.png}} \\
+\scalebox{0.35}[0.35]{\includegraphics{img/hivsset_tag.png}} \\
+}
+
+\frame{\frametitle{Navigating in the dialogue -- alternative links} 
+\scalebox{0.35}[0.35]{\includegraphics{img/hivsset_tag.png}} \\
+\scalebox{0.55}[0.55]{\includegraphics{img/gosabidjatTV.png}} \\
+Question: "In which room should we place the TV?" \\
+Alt. WC: "That is not a good idea. Make a new try." \\ 
+Default: "We carry it there together." 
+}
+
+
 
 \frame{\frametitle{Target tag} 
 What do you want to drink?\\
@@ -99,11 +113,6 @@ What do you want to drink?\\
 \scalebox{0.4}[0.4]{\includegraphics{img/target_acc.png}} \\
 }
 
-
-\frame{\frametitle{Assignment of navigation tag} 
-\scalebox{0.37}[0.37]{\includegraphics{img/hivssegisCGanal.png}} \\
-\scalebox{0.35}[0.35]{\includegraphics{img/hivsset_tag.png}} \\
-}
 
 \frame{\frametitle{Tags for postive and negative answer} 
 Do you have children? \\ What do you want to drink?\\
@@ -126,14 +135,6 @@ What is your name?\\ What car do you have? \\ Where do you live? \\
 \scalebox{0.45}[0.45]{\includegraphics{img/picking_name_new.png}} \\
 }
 
-
-\frame{\frametitle{Navigating in the dialogue -- alternative links} 
-\scalebox{0.35}[0.35]{\includegraphics{img/hivsset_tag.png}} \\
-\scalebox{0.55}[0.55]{\includegraphics{img/gosabidjatTV.png}} \\
-Question: "In which room should we place the TV?" \\
-Alt. WC: "That is not a good idea. Make a new try." \\ 
-Default: "We carry it there together." 
-}
 
 
 \frame{\frametitle{Navigating in the dialogue -- alternative branches} 
@@ -158,16 +159,15 @@ Default: "We carry it there together."
 %}
 \frame{\frametitle{Misspelling: non-existing word} 
 \begin{itemize}
-\item feedback: X is not in our lexicon. Could it be a typo?
-\item What is your name?\\ we accept anything and pick the input $\rightarrow$ "Good morning, X."
+\item feedback: "X is not in our lexicon. Could it be a typo?"  \pause
+\item What is your name? $\rightarrow$ we accept anything and use the input string: "Good morning, X."  \pause
 \item Where do you live? \\
--- placename is misspelled \\
--- placename has not big initial letter \\ fst with placenames with small initial letter and Lowercase-error-tag which is removed so it remains if it is the only reading of the word form $\rightarrow$ Remember that placenames are written with capital letter.\\
--- placename is not in our lexicon $\rightarrow$ navigation to question: "I haven't heard about X. Is it a place?" -- default $\rightarrow$ next question. 
+-- placename has not big initial letter \pause $\rightarrow$ fst with placenames with small initial letter and Lowercase-error-tag: "Remember that placenames are written with capital letter."\\  \pause
+-- placename is misspelled or it is not in our lexicon  \pause $\rightarrow$ navigation to question: "I haven't heard about X. Is it a place?" -- default: next question. 
 \end{itemize}
 }
 
-\frame{\frametitle{Misspellings: non-existing word} 
+\frame{\frametitle{Misspelling: non-existing word} 
 \begin{itemize}
 \item One answer to this challenge is to utilize the North Sámi speller
 \item Problem: it gives too many suggestions
@@ -178,21 +178,19 @@ Default: "We carry it there together."
 
 \frame{\frametitle{Misspellings: unintended word form} 
 \begin{itemize}
-\item Loc vs. px (\&grm-Px-shouldbe-Loc) $\rightarrow$ Do you mean locative? Remember consonant gradation. 
-\item gfds
-\item gfds
+\item Loc vs. px (\&grm-Px-shouldbe-Loc) $\rightarrow$ "Do you mean locative? Remember consonant gradation." 
 \item gfds
 \item gfds
 \end{itemize}
 }
 
 \frame{\frametitle{Misspellings: unintended lemma} 
+The challenge is to give a feedback according to what the user thinks she has written. \\
+Some are systematic, some are not: \pause
 \begin{itemize}
-\item ConNeg -- bora vs. borat
-\item gfds
-\item gfds
-\item gfds
-\item gfds
+\item ConNeg -- in bora (borrat = å spise) vs. in borat (boradit = å holde måltid) \\ $\rightarrow$ "You should answer with the same verb as in the question." \\ $\rightarrow$ "The negative form is not correct."  \pause
+\item Illative with weak gradation gives V Prt Sg3 -- skuvlii (skuvla N = skole) vs. skuvllii (skuvllet V = å arbeide som lærer)  \pause
+\item viesut N Pl Nom (viessu = hus) vs. viessut Imprt Pl1 (viessat = å bli trøtt)
 \end{itemize}
 }
 
@@ -202,29 +200,30 @@ Default: "We carry it there together."
 
 
 \frame{\frametitle{Answer with the same verb} 
+We want the user to answer with the same verb, but we have to make exeptions for: 
 \begin{itemize}
-\item work verb
-\item auxilary verbs
-\item regular expression
-\item  
-\item  
-\end{itemize}
+\item pro-verbs -- "What did you do yesterday?" 
+\item some auxiliary verbs
+\end{itemize} 
+\vspace{0.5cm} \pause
+We use regular expression: \\
+\scalebox{0.38}[0.40]{\includegraphics{img/verblemma.png}} \\
+
 }
 
 
 
 \frame{\frametitle{Orthographic variation of words} 
 \begin{itemize}
-\item vuola:vuollaga vs. vuolla:vuola
-\item dárbbašit vs. dárbbahit
-\item gfds
-\item gfds
+\item vuola:vuollaga vs. vuolla:vuola (øl), in word lists
+\item dárbbašit vs. dárbbahit, rf. the same verb rule
 \item gfds
 \end{itemize}
 }
 
 \frame{\frametitle{Answer in the correct person} 
-Vasta and Sahka different \\
+Vasta and Sahka are different. This is for Vasta: \\
+\vspace{0.5cm}
 QPN - question's person-number \\
 APN - answer's person-number\\
 \vspace{0.5cm}
@@ -241,11 +240,14 @@ Sg3 &Sg3 &Du3 &Du3 &Pl3 &Pl3 \\
 
 \frame{\frametitle{Meta comments} 
 \begin{itemize}
-\item Answering \textit{I-don't-know} is too simple. Try again.
-\item Your answer must always contain a finite verb. Could there be a typo in the verbform?
-\item You must use one of the words in the wordlist in the left margin.
-\item You have not used the appropriate adjective. Try again.
+\item "Answering \textit{I-don't-know} is too simple. Try again."
+\item "Your answer must always contain a finite verb. Could there be a typo in the verbform?"
+\item "You must use one of the words in the wordlist in the left margin."
+\item "You have not used the appropriate adjective. Try again." \pause
+\item The user can quit the dialogue in a proper way (to be implemented)
 \end{itemize}
+\hspace{0.5cm} \scalebox{0.45}[0.45]{\includegraphics{img/diastop.png}} \\
+
 }
 
 
@@ -391,10 +393,6 @@ Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi 
 %\scalebox{0.32}[0.32]{\includegraphics{img/ref2.png}}
 
 
-
-
-\frame{\frametitle{Questions?} 
-} 
 
 
 
