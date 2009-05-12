@@ -29,10 +29,10 @@ Parser-based CALL programs for learners of North Sámi based on pre-existing LT 
 \item constraint grammar (CG) parser
 \item number word generator (xfst)
 \end{itemize} 
-(Trosterud 2007) \\
+
 \vspace{0.5cm}
-The morphological analyser/generator is implemented with fst and compiled with the Xerox compilers twolc and lexc (Beesley and Karttunen 2003). \\
-The morphological disambiguator is implemented in the CG-framework (Karlsson et al 1995).
+The morphological analyser/generator is implemented with fst and compiled with the Xerox compilers twolc and lexc. \\
+The morphological disambiguator is implemented in the CG-framework.
 }
 
 \frame{\frametitle{North Sámi VISL} 
@@ -73,14 +73,6 @@ CG is robust enough for handling unconstrained input, and at the same time accur
 }
 
 
-%\frame{\frametitle{multi} 
-%\scalebox{0.90}[0.90]{\includegraphics{multi.png}} \\
-%}
-%
-%\frame{\frametitle{dis} 
-%\scalebox{0.90}[0.90]{\includegraphics{dis.png}} \\
-%}
-
 \frame{\frametitle{Sahka -- the dialogue program} 
 \scalebox{0.39}[0.41]{\includegraphics{img/TVhivssegis.png}} \\ \pause
 \vspace{0.5cm}
@@ -101,16 +93,37 @@ Answer: "We should place it in the toilet."
 \section{3. Navigation and collecting information}
 
 
-\frame{\frametitle{Assignment of navigation tag} 
-\scalebox{0.3}[0.3]{\includegraphics{img/hivssegisCGanal.png}} \\
+\frame{\frametitle{Target tag} 
+What do you want to drink?\\
 \vspace{0.5cm}
-\scalebox{0.3}[0.3]{\includegraphics{img/hivsset_tag.png}} \\
+\scalebox{0.4}[0.4]{\includegraphics{img/target_acc.png}} \\
+}
+
+
+\frame{\frametitle{Assignment of navigation tag} 
+\scalebox{0.37}[0.37]{\includegraphics{img/hivssegisCGanal.png}} \\
+\scalebox{0.35}[0.35]{\includegraphics{img/hivsset_tag.png}} \\
 }
 
 \frame{\frametitle{Tags for postive and negative answer} 
+Do you have children? \\ What do you want to drink?\\
+\vspace{0.5cm}
+\scalebox{0.5}[0.5]{\includegraphics{img/aff_or_neg_colours.png}} \\
 }
 
+\frame{\frametitle{Tag for jumping over the next question} 
+Do you have children? How many children do you have?\\
+Do you work? What kind of work do you have?\\
+Do you have a car? What kind of car do you have?\\
+\vspace{0.5cm}
+\scalebox{0.55}[0.55]{\includegraphics{img/pass_rules.png}} \\
+}
+
+
 \frame{\frametitle{Collecting information from the input} 
+What is your name?\\ What car do you have? \\ Where do you live? \\
+\vspace{0.5cm}
+\scalebox{0.45}[0.45]{\includegraphics{img/picking_name_new.png}} \\
 }
 
 
@@ -194,7 +207,7 @@ Default: "We carry it there together."
 \frame{\frametitle{Orthographic variation of words} 
 \begin{itemize}
 \item vuola:vuollaga vs. vuolla:vuola
-\item sfa
+\item dárbbašit vs. dárbbahit
 \item gfds
 \item gfds
 \item gfds
