@@ -5580,7 +5580,7 @@ MAP (&grm-should-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 Q
 # -----
 
 SELECT (N Gen) (*-1 QDL)(1 Po) ;
-SELECT (N Gen) (*-1 Pr BARRIER NPNH LINK *-1 QDL) ;
+SELECT (N Gen) (*-1 Pr BARRIER NPNH LINK *-1 QDL)(NEGATE -1 Num LINK -1 ("badjel")) ;
 
 MAP (&grm-missing-Gen-PP) TARGET N (*-1 QDL)(NOT 0 Gen LINK 1 Po) ;
     ## Gohppu lea beavddi nalde.
@@ -5812,7 +5812,7 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl1) (*-1 QDL BARRIER S-BOUNDARY LINK
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Pl1) ;
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
 
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (N Pl Nom) LINK NOT 0 NUM-QUESTION)(NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (N Pl Nom) LINK NOT 0 NUM-QUESTION OR Inf)(NOT 0 Pl3) ;
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU OR (Mii_namma_lea) LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
@@ -5904,7 +5904,7 @@ MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Du3 LINK -1 DUALIS-NOUN + Nom LI
 # ONLY ONE VFIN
 # -------------
 
-MAP (&grm-should-not-Vfin) TARGET VFIN IF (*-1 VFIN BARRIER CC OR COMMA OR S-BOUNDARY LINK 0 AUX OR INFV LINK *-1 QDL) ;
+MAP (&grm-should-not-Vfin) TARGET VFIN IF (*-1 VFIN BARRIER CC OR COMMA OR S-BOUNDARY LINK 0 AUX OR INFV LINK *-1 QDL)(NOT 0 Neg) ;
     ## Mun áiggun láibut.
 
 MAP (&grm-not-verb-after-workverb) TARGET VERB IF (*-1 VFIN BARRIER CC OR S-BOUNDARY LINK 0 WORK-V LINK *-1 QDL) ;
