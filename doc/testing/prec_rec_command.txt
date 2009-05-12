@@ -1,4 +1,4 @@
-cat corpus_sahka_pos_dis2 | sed 's/^$/£/g;' | tr '\n' ' ' | tr '£' '\n' | egrep -v '&orth' | wc -l
-cat corpus_sahka_pos_dis2 | sed 's/^$/£/g;' | tr '\n' ' ' | tr '£' '\n' | egrep    '&orth' | wc -l
-cat corpus_sahka_neg_dis2 | sed 's/^$/£/g;' | tr '\n' ' ' | tr '£' '\n' | egrep -v '&orth' | wc -l
-cat corpus_sahka_neg_dis2 | sed 's/^$/£/g;' | tr '\n' ' ' | tr '£' '\n' | egrep    '&orth' | wc -l
+cat corpus_sahka_pos_dis | sed 's/^$/£/g;' | tr '\n' ' ' | tr '£' '\n' | egrep -v '&err' | wc -l
+cat corpus_sahka_pos_dis | sed 's/^$/£/g;' | tr '\n' ' ' | tr '£' '\n' | egrep    '&err' | wc -l
+cat corpus_sahka_neg_dis | sed 's/^$/£/g;' | tr '\n' ' ' | tr '£' '\n' | egrep -v '&err' | wc -l
+cat corpus_sahka_neg_dis | sed 's/^$/£/g;' | tr '\n' ' ' | tr '£' '\n' | egrep    '&err' | wc -l
