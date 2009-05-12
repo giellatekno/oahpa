@@ -319,6 +319,26 @@ Which rules are not in use? Why? \\
 \scalebox{0.45}[0.45]{\includegraphics{img/e-tutor.png}} \\
 }
 
+\frame{\frametitle{Evaluation 4: Precision and recall}
+\begin{table}%[htdp]
+%\caption{default}
+%\begin{center}
+\begin{tabular}{|l|r|r|r|r|r|r|r|r|r|}
+\hline
+Error type		& tp		& fp		& tn		& fn	&	& prec	 & rec.	& acc.	& F-ms. \\
+\hline
+Gramm.err.	& 680	& 214	& 813	& 5	&	& 0,76	& 0,99	& 0,87	& 0,86  \\
+Sem. err.		& 810	& 84		& 809	& 9	&	& 0,91	& 0,99	& 0,95	& 0,95  \\
+Orth. err.		& 894	& 0		& 818	& 0	&	& 1	 	& 1		& 1		& 1	    \\
+Other err.		& 702	& 192	& 754	& 64	&	& 0,79	& 0,92	& 0,85	& 0,85  \\
+\hline
+Average	 	& 771	& 122	& 798	& 19	&	& 0,86	& 0,97	& 0,92	& 0,91  \\
+\hline
+\end{tabular}
+%\end{center}
+%\label{default}
+\end{table}%
+}
 
 \section{7. Future perspectives}
 \frame{\frametitle{Future perspectives}
