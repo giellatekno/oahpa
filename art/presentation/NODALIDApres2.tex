@@ -107,34 +107,35 @@ Very few parser-based CALL (Computer Assisted Language Learning) programs are av
 %(MAINV question-particle SUBJ yesterday)
 %}
 
-\frame{\frametitle{Vasta -- QA drill with generated questions} 
+\frame{\frametitle{Vasta -- QA drill, questions generated from templates} 
 \scalebox{0.50}[0.50]{\includegraphics{img/Vasta_sentencegen_example.png}} \\
 \vspace{0.5cm}
 ("Did the boy go to church yesterday?" \\
 "No, he does not.")
 }
 
-\frame{\frametitle{Sahka -- dialogue program with tailored questions} 
+\frame{\frametitle{Sahka -- dialogue program with precomposed questions} 
 \scalebox{0.39}[0.41]{\includegraphics{img/TVhivssegis.png}} \\ 
 \vspace{0.5cm}
 (Question: "In which room should we place the TV?" \\
-Answer: "We should place it in the toilet.")
+Answer: "We should place it in the toilet (Loc).")
 }
 
 
 
 %\section{2. CG-parser in live analysis}
-\frame{\frametitle{Constraint Grammar parser -- vislcg3}
+\frame{\frametitle{The Constraint Grammar parser \textit{vislcg3}}
 %CG is robust enough for handling unconstrained input, and at the same time accurate enough to identify errors. \\
 %\vspace{0.4cm}
 \begin{itemize}
 \item consists of manually written, context dependent rules which
-add, remove, select or replace tags or sets of grammatical tags in a given sentential context. \pause
-\item context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). \pause
-\item context conditions in the same rule may be linked, i.e. conditioned upon each other, negated or blocked by interfering words or tags.  \\
+\textit{add, remove, select} or \textit{replace} readings containing tags or sets of grammatical tags in a given sentential context. \pause
+\item Context conditions may be linked to any tag or tag set of any word anywhere in the sentence, either locally (in a fixed subdomain of the context) or globally (in the whole context). \pause
+\item Context conditions in the same rule may be linked, i.e. conditioned upon each other, negated or blocked by interfering baseforms, wordforms or tags.  \\
 \end{itemize}
 \vspace{0.4cm}
-Grammars for Danish and Norwegian based on CG achieve very good F-scores. \\
+\pause
+In 2007, we had a F-measure for Sámi at 95.9, and more developed CG grammars all achieve F-measure for precision and recall in the upper nineties. \\
 %\vspace{0.4cm}
 %(Bick 2003, VISL-group 2008) \\
 
@@ -150,13 +151,14 @@ Grammars for Danish and Norwegian based on CG achieve very good F-scores. \\
 %}
 
 
-\frame{\frametitle{Schematical view of the process} 
-\scalebox{0.55}[0.55]{\includegraphics{img/qa2.pdf}} \\
+\frame{\frametitle{Schematical view of the whole process} 
+\scalebox{0.57}[0.57]{\includegraphics{img/qa2.pdf}} \\
 }
 
 
 \frame{\frametitle{Morphological analysis} 
-\scalebox{0.35}[0.35]{\includegraphics{img/GudelatnjiiQ.png}{img/GudelatnjiiB.png}}\scalebox{0.35}[0.35]{\includegraphics{img/GudelatnjiiA.png}{img/GudelatnjiiB.png}} \\
+\scalebox{0.35}[0.35]{\includegraphics{img/GudelatnjiiQ.png}}\scalebox{0.35}[0.35]{\includegraphics{img/GudelatnjiiA.png}} \\
+%\scalebox{0.35}[0.35]{\includegraphics{img/GudelatnjiiQ.png}{img/GudelatnjiiB.png}}\scalebox{0.35}[0.35]{\includegraphics{img/GudelatnjiiA.png}{img/GudelatnjiiB.png}} \\
 }
 
 
@@ -176,13 +178,14 @@ Grammars for Danish and Norwegian based on CG achieve very good F-scores. \\
 %
 %E.g. if the student uses the Sg2 form of the main verb after the negative verb, instead of the correct ConNeg form, then the erroneous form can be a ConNeg form of a derivated verb, and the normal feedback will be: "You should answer with the same verb as in the question." The student will not understand this, because she thinks that the word form in the answer is an instance of the same verb. The solution was to generate all these forms of the verbs in the questions, make a set of them, and make a rule for in the right context, give the feedback: "The negative form is not correct." 
 
-\frame{\frametitle{Assigning of navigation tag} 
+\frame{\frametitle{Assignment of navigation tag} 
 \scalebox{0.3}[0.3]{\includegraphics{img/hivssegisCGanal.png}} \\
 \vspace{0.5cm}
 \scalebox{0.3}[0.3]{\includegraphics{img/hivsset_tag.png}} \\
 }
 \frame{\frametitle{Navigating in the dialogue -- alternative links} 
 \scalebox{0.35}[0.35]{\includegraphics{img/hivsset_tag.png}} \\
+\pause
 \scalebox{0.55}[0.55]{\includegraphics{img/gosabidjatTV.png}} \\
 Question: "In which room should we place the TV?" \\
 Alt. toilet: "That is not a good idea. Make a new try." \\ 
@@ -196,7 +199,7 @@ Default: "We carry it there together."
 ("How old are you?")
 }
 
-\frame{\frametitle{Disambiguation and assigning of grammar tag} 
+\frame{\frametitle{Disambiguation and assignment of grammar tag} 
 \scalebox{0.3}[0.3]{\includegraphics{img/hivssegisCGanal.png}} \\
 \scalebox{0.35}[0.35]{\includegraphics{img/missingIll.png}} \\
 }
@@ -242,8 +245,13 @@ Other
 
 
 %\section{3. Evaluation}
-\frame{\frametitle{Evaluation: The actual use}
-The programs are free available at internet. Appr. 500 queries/day. \\
+\frame{\frametitle{Evaluation: The actual use of the system}
+\begin{itemize}
+\item{The programs are freely available at internet since Feb., 2009}
+\item{They  get appr. 500 queries/day (not bad for a population of 20000 speakers)}
+\end{itemize}\pause
+
+The usage of the programs is not evenly distributed:
 \begin{table}
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
@@ -255,11 +263,11 @@ Morfa-S & Leksa & Sahka & Numra & Morfa-C & Vasta \\
 }
 
 \frame{\frametitle{Evaluation: How the rules have been working}
-The system has identified an error in the user's input:
+If the system has identified an error in the user's input, its response is evaluated as follows:
 \begin{table}
 \begin{tabular}{|l|c|c|c|}
 \hline 
-\textbf{Rule type}  & \textbf{correct} & \textbf{wrong}   & \textbf{corr. \% }  \\
+\textbf{Rule type}  & \textbf{correct (tp)} & \textbf{wrong (fp)}   & \textbf{corr. \% }  \\
 \hline 
 wrong tense         & 7     & 0     & 100,0     \\ 
 wrong V after neg   & 3     & 0     & 100,0     \\ 
@@ -276,20 +284,26 @@ wrong word            & 4     & 4     & 50,0 \\
 wrong case after Num  & 1     & 1     & 50,0 \\
 \hline
 \end{tabular}
-\end{table}
-Misspellings a problem for the user
+\end{table}\pause
+The main problem for the users is \textit{misspellings}
 }
 
-%\frame{\frametitle{Evaluation 3}
-%Which rules are not in use? Why? \\
-%\begin{itemize}
-%\item agreement inside NP (except for numeral expressions)
-%\item PP: case of noun, pp based of the interrogative  
-%\item time expressions 
-%\item particles according to word order 
-%\end{itemize}
-%
-%}
+\frame{\frametitle{Evaluation: Some rules are (almost) not in use:}
+\begin{itemize}
+\item agreement inside NP (except for numeral expressions)
+\item time expressions 
+\item particles according to word order 
+\item PP: case of noun, pp based of the interrogative  
+\end{itemize}
+\pause
+Possible reasons why they are not in use:
+\begin{itemize}
+\item The users do not give that elaborate answers  
+\item Some of these errors (e.g. PP errors) are not that frequent
+\end{itemize}
+\pause
+
+}
 %
 %
 %\frame{\frametitle{An alternative to free input: the German e-tutor} 
@@ -297,6 +311,8 @@ Misspellings a problem for the user
 %}
 
 \frame{\frametitle{Evaluation: Precision and recall -- today}
+
+Running the full log on the present system,  we get the following results:
 \begin{table}%[htdp]
 %\caption{default}
 %\begin{center}
@@ -315,27 +331,13 @@ Other err.    &   695   &   180   &   751    &   25   &   0,79   &   0,97   &   
 %\end{center}
 %\label{default}
 \end{table}%
-
+\pause
 The high recall compared to the somewhat lower precision indicates that the system is a bit too critical towards the students:
 \begin{itemize}
 \item{It almost never lets through a (targeted) mistake, with the price of flagging some correct answers as errors.}
 \end{itemize}
 }
 
-
-%%\section{7. Future perspectives}
-%\frame{\frametitle{Future perspectives}
-%How to improve the system? \\
-%\begin{itemize}
-%\item speller for misspellings 
-%\item grammartasks a la \textit{e-tutor}?
-%\item Vasta: decide what words the user should use, ala e-tutor as a supplement
-%\item Vasta: the user can choice topic instead of grammar tasks
-%\item Make the programs for more sámi languages
-%\item Classroom studies
-%\end{itemize}
-%
-%}
 
 
 
@@ -409,22 +411,55 @@ The high recall compared to the somewhat lower precision indicates that the syst
 %\section{4. Conclusion}
 \frame{\frametitle{Conclusion}
 \begin{itemize}
-\item A sloppy version of the syntactical analyser for North Sámi, combined with a set of error-detection rules, we have been able to build a flexible CALL resource. \\ \pause
+\item By using a sloppy version of the syntactical CG analyser for North Sámi, combined with a set of error-detection rules, we have been able to build a flexible CALL resource. \\ \pause
 \vspace{0.5cm}
 \item The present project has shown that CG is well fit for making pedagogical dialogue systems.\\ \pause
 \vspace{0.5cm}
-\item The program suite is something quite new among pedagogical programs for Sámi, and indeed its dialogue and open QA-programs are quite rare within the field of parser-based CALL.
+\item The program suite is a novelty among pedagogical programs for Sámi, and indeed dialogue and open QA-programs are rare within the field of parser-based CALL.
 \end{itemize}
 }
+
+%\section{7. Future perspectives}
+%\frame{\frametitle{Future perspectives}
+
+%How to improve the system? \pause
+
+%\begin{itemize}
+%\item{For the misspellings:}
+%\begin{itemize}
+%\item Integrate our speller to handle misspellings 
+%\item Be more tolerant towards the users'  interlanguage
+%\end{itemize} \pause
+%%\item grammartasks a la \textit{e-tutor}?
+%%\item Vasta: decide what words the user should use, ala e-tutor as a supplement
+%\item For the unused Vasta program:
+%\begin{itemize}
+%\item{ let the user choose topic instead of grammar tasks
+%\end{itemize} \pause
+%\item Overall: Write more detailed feedback
+%\item Classroom studies
+% \pause
+%\item Extend the programs to other (Sámi) languages
+%\end{itemize}
+%}
+
 
 \frame{\frametitle{Acknowledgments} 
 Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding the project.} 
 
-\frame{\frametitle{Centre for Sámi Language Technology} 
-http://giellatekno.uit.no/ \\
-http://oahpa.uit.no/
+\frame{\frametitle{Centre for Sámi Language Technology\\ giellatekno.uit.no/ ~ oahpa.uit.no/} 
+\begin{center}
 
-} 
+\pause
+Visit our poster:
+
+\vspace{0.5cm}
+
+
+\scalebox{0.17}[0.17]{\includegraphics{img/Oahpa_graffleposter4d.pdf}} \\
+
+\end{center}
+}
 
 
 %\frame{\frametitle{References} 
