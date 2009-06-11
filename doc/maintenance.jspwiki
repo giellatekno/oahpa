@@ -1,4 +1,4 @@
-!!!Maintenance
+!!!XXX Maintenance XXX
 
 This document contains the basic instructions for updating the content
 of the games on victorio. Technical maintenance is described in
@@ -64,6 +64,29 @@ remote logging to the database, you need to ask saara.
 In the sandbox, it is possible to test the changes to the code and to
 html pages. After the pages are working, check them in to svn and
 update the official version in victorio. 
+
+!!Some caveats with the local installation on MacOS:
+
+* if you have two different python versions, both in {{{/usr/bin/python}}} and in {{{/opt/local/bin/python}}}
+you have to configure the Django installation as required (see, for instance, [this site|http://stackoverflow.com/questions/118813/how-do-i-uninstall-python-from-osx-leopard-so-that-i-can-use-the-macports-versi])
+* if you have problems starting the sandbox web server and get the following error:
+{{{
+~/Django/someAppl>python manage.py  runserver 
+Validating models...
+Unhandled exception in thread started by <function inner_run at 0x6c1f70>
+Traceback (most recent call last):
+...............
+    from django.db import models, connection
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/site-packages/django/db/__init__.py", line 22, in <module>
+    backend = __import__('%s.base' % settings.DATABASE_ENGINE, {}, {}, [''])
+ImportError: No module named dummy.base
+}}}
+
+you might lack the py25-hashlib package
+
+{{{
+sudo port install py25-hashlib
+}}}
 
 !!!Your own database
 
