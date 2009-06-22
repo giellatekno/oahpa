@@ -57,10 +57,9 @@
 \maketitle
 
 \begin{abstract}
-This article discusses the use of Constraint Grammar as the parser engine in parser-based CALL programs for North Sámi. Special focus is given to the 
-relaxation of the ordinary disambiguator, 
-the error-detecting rule set, 
-and recall and precision of the error detection.
+This article discusses the use of Constraint Grammar as the parser engine in parser-based CALL programs for North Sámi. The parser locates grammatical errors in a question-answer program and a dialogue program, and in the latter one the parser is also used for navigating inside the dialogue.
+
+%Special focus is given to the relaxation of the ordinary disambiguator, the error-detecting rule set, and recall and precision of the error detection.
 \end{abstract}
 
 \section{Introduction} 
@@ -71,10 +70,10 @@ Vislcg3 is used both for adding feedback about grammatical errors, for navigatin
 
 Our leading idea was to utilize the existing analyser for Sámi when developing pedagogical programs for language instruction. With vislcg3 we had the possibility of making an intelligent tutoring system with sophisticated error analysis where student tasks could go beyond multiple-choice or string matching algorithms. 
 
-Sámi is a language with complex morphology, and it demands much practising before the student reaches necessary skills. But as a minority language Sámi does not provide enough opportunities to practise the language in a natural way. There is also a lack of teaching materials. Because of that, programs accessible on the Internet may be a supplement to the instruction given at school or in the university. 
+Sámi is a language with complex morphology, and it demands much practising before the student reaches necessary skills. But as a minority language Sámi does not provide enough opportunities everywhere to practise the language in a natural way. There is also a lack of teaching materials. Because of that, programs accessible on the Internet may be a supplement to the instruction given at school or in university. 
 
 \section{Basic grammatical analysis}
-The basic grammatical analysis of North Sámi is done with fsts and a constraint grammar parser made at UiT. The relevant resources are the following:
+The basic grammatical analysis of North Sámi is done with fst and a constraint grammar parser made at UiT. The relevant resources are the following:
 
 \begin{itemize}
 \item a morphological analyser/generator with finite state transducers, compiled with the Xerox compiler xfst.  
@@ -84,17 +83,163 @@ The basic grammatical analysis of North Sámi is done with fsts and a constraint
 \section{Sentence generator}
 The question-answer drill \textit{Vasta} has randomly chosen questions, yes/no-questions and wh-questions. In order to be able to create a large number of potential tasks, we implemented a sentence generator. With the generator we can easily offer variation to the user, instead of tailoring every task with ready-made questions.
 
-The matrix contains two types of elements: constants and grammatical units. The selection of words from the pedagogical lexicon is constrained by semantic sets. The sentence generator handles agreement e.g. between subject and the main verb.
+The matrix contains two types of elements: constants and grammatical units. The selection of words from the pedagogical lexicon is constrained by semantic sets. Something about PEDLEXICON \\ The sentence generator handles agreement e.g. between subject and the main verb.
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.42}[.42]{\includegraphics{presentation/img/sentencegenerator.png}}\\
+\caption{(MAINV question-particle SUBJ yesterday)}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.35}[.35]{\includegraphics{presentation/img/Vasta_sentencegen_example.png}}\\
+\caption{("Did the boy go to church yesterday?" 
+"No, he does not.")}
+%\label{nounlex}
+\end{center}
+\end{figure}
  
 \section{Analysing the syntax of the user's answer} 
 We use vislcg3 for analysing the user's input. First there is a rule set, which disambiguates the user's input only to a certain extent. The rule set is relaxed compared to the ordinary disambiguator, in order to be able to detect the relevant readings despite of a certain degree of grammatical and orthographic errors in the input. The last part of the file consists of rules for giving feedback to grammatical errors, and rules for navigating to the correct next question or utterance of in the dialogue, due to the user's answer.  
 
 The system question and user answer pairs are merged, and given to the analyser as one text string. The question mark in the question is exchanged for a special symbol ("qst" QDL). We use this symbol, rather than the question mark itself, in order not to introduce a sentence delimiter in the analysis, since we want to refer to the question and the answer separately in the rules (left or right side of the QDL), but also treat the question-answer part as one unit. Many of the constraints are based on the grammar and semantics in the question -- e.g. the tense and person inflection of the verb, the case of NP in the answer and so on. The question itself restricts the possible interpreting of the input.
 
+Should we mention that vislcg3 is also used for free input in one VISL program?
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.40}[.40]{\includegraphics{presentation/img/qa2.pdf}}\\
+\caption{Schematical view of the process}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.40}[.40]{\includegraphics{presentation/img/hivssegisCGanal.png}}\\
+\caption{Assignment of tags}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
+\subsection{Navigating in the dialogues}
+In the dialogues the user may exercise Sámi in a quite natural way and therefore the user's input also needs tags for navigation in the dialogue itself. The questions in the dialogues are not generated, but written. Every question has its own unique name, so we can link to it from another questions, and it is also possible to make a CG-rule for specific questions.   
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.35}[.35]{\includegraphics{presentation/img/hivsset_tag.png}}\\
+\caption{Rule for assigment of navigation tag.}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.5}[.5]{\includegraphics{presentation/img/gosabidjatTV.png}}\\
+\caption{Question: "In which room should we place the TV?"
+Alt. WC: "That is not a good idea. Make a new try." 
+Default: "We carry it there together." 
+}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
+The input is tagged during analysis with information on whether it is interpreted as affirmative or negative, or if there is semantic information, which should be given special response in the dialogue. The choice of alternative links is dependent upon what kind of tag the question-answer pair gets. There will always be a default link in case there will not be any tag. 
+ 
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.3}[.3]{\includegraphics{presentation/img/target_acc.png}}\\
+\caption{Assignment of target tag for answer in accusative. 
+}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.3}[.3]{\includegraphics{presentation/img/aff_or_neg_colours.png}}\\
+\caption{Tags for affirmative and negative answer. 
+}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.4}[.4]{\includegraphics{presentation/img/pass_rules.png}}\\
+\caption{Tag for omitting the next question. 
+}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
+ 
+ 
+Some dialogues are branched according to how the user answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In the same way an answer from the user about his/her age will induce a tag, which is used to navigate to different branches of the dialogue based on the age of the user. The tag for age is assigned with a regex inside a CG-rule.
+
+The vislcg3 also assigns target-tags, so that the system can pick up e.g. the name of the user, a place name, his/her car make and so on, and use it in the program's questions or utterances.
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.3}[.3]{\includegraphics{presentation/img/picking_name_new.png}}\\
+\caption{Collecting information from the input. 
+}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.35}[.35]{\includegraphics{presentation/img/what_car.png}}\\
+\caption{Using the information.}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.3}[.3]{\includegraphics{presentation/img/pickingage_colours.png}}\\
+\caption{Rules for age.}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.4}[.4]{\includegraphics{presentation/img/age_branching.png}}\\
+\caption{Alternative branches}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
+
 \subsection{Tutorial feedback}
 Tutorial feedback is feedback about grammar errors, and is used both in \textit{Vasta} and in \textit{Sahka}. The system uses CG-rules for assigning a tag to grammatical errors in the input. The tag generates feedback to the user. It should be noted that the system uses the grammatical analyser on the fly, exploiting full lexicons. This allows the user's answer to contain any Sámi word, also words that are not restricted to the pedagogical lexicon.
 
-The users should inflect the finite verb correctly and choose the correct case form. A a main rule, the user has to use a full sentence (containing a finite verb), and use the same verb as in the question. The CG-rule, which controls the choice of verb for the answer, uses a regular expression-based tag (a so-called sticky tag). Pro-verbs get a special treatment, so that a question containing a pro-verb will accept any verb in the answer. For some of the questions in the \textit{Sahka} dialogue these requirements are somewhat relaxed. E.g. the question "What is your name?" will more naturally be answered without a verb. 
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.4}[.4]{\includegraphics{presentation/img/missingIll.png}}\\
+\caption{Assignment of grammar tag}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
+
+The users should inflect the finite verb correctly and choose the correct case form. A a main rule, the user has to use a full sentence (containing a finite verb), and use the same verb as in the question. The CG-rule, which controls the choice of verb for the answer, uses a regular expression-based tag (a so-called sticky tag). Pro-verbs get a special treatment, so that a question containing a pro-verb will accept any verb in the answer. ORTH-VARIATION
+
+For some of the questions in the \textit{Sahka} dialogue these requirements are somewhat relaxed. E.g. the question "What is your name?" will more naturally be answered without a verb. 
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.3}[.3]{\includegraphics{presentation/img/verblemma.png}}\\
+\caption{Answer with the same verb.}
+%\label{nounlex}
+\end{center}
+\end{figure}
+
 
 In \textit{Vasta} the pronouns are not allowed to be interpreted inclusively -- \textit{we — you}, not \textit{we — we}, but in \textit{Sahka} they follow the logic of the scenario.
 
@@ -104,35 +249,125 @@ The user will get only one feedback at a time, so the error tags are ordered par
 
 The biggest problem is the user's misspellings. If the spelling error gives rise to a non-existing word form, then the message to the user is "The word form is not in our lexicon, can it be a spelling error?" 
 %Here, our program is clearly inferior to a human reader, who would be able to read in a robust way, and detect what the user intended to write. Simulating this ability is not an easy task.)) 
-Running the feedback through an ordinary speller engine is not a good solution, since the speller will come up with a large number of suggestions, without being able to choose between them. A possible solution would be to run a morphological analysis on the speller suggestions, and let a CG component pick the most likely candidate.
+Running the feedback through an ordinary speller engine is not a good solution, since the speller will come up with a large number of suggestions, without being able to choose between them. A possible solution would be to run a morphological analysis on the speller suggestions, and let a CG component pick the most likely candidates. PROBLEM: DIVVUN MADE FOR NATIVE SPEAKERS
 
-The misspelling can also give rise to another word form of the same lemma. For such cases we make rules based on context. A more difficult problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according to what the user think s/he has written. Feedback has to be tailored from what we know about the user’s interlanguage – and we make rules for sets of typical unintended lemmas.
+The misspelling can also give rise to another word form of the same lemma. For such cases we make rules based on context. A more difficult problem emerges when the spelling error gives rise to an unintended lemma. Then the challenge is to give a feedback according to what the user think s/he has written. Feedback has to be tailored from what we know about the user’s interlanguage – and we make rules for sets of typical unintended lemmas. EXAMPLES
 
 We are also trying to add rules in the twol-file for typical spelling errors in e.g. place names, in order for the system to give a specific feedback. The user may write a place name not found in the lexicon. Therefore it would be an improvement if the system could recognize misspellings of the names, which are in the lexicon.
 
-\subsection{Navigating in the dialogues}
-In the dialogues the user may exercise Sámi in a quite natural way and therefore the user's input also needs tags for navigation in the dialogue itself. The questions in the dialogues are not generated, but written. Every question has its own unique name, so we can link to it from another questions, and it is also possible to make a CG-rule for specific questions.   
+NAMES as string , not analysed
 
-The input is tagged during analysis with information on whether it is interpreted as affirmative or negative, or if there is semantic information, which should be given special response in the dialogue. The choice of alternative links is dependent upon what kind of tag the question-answer pair gets. There will always be a default link in case there will not be any tag. 
- 
-Some dialogues are branched according to how the user answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In the same way an answer from the user about his/her age will induce a tag, which is used to navigate to different branches of the dialogue based on the age of the user. The tag for age is assigned with a regex inside a CG-rule.
+Metacomments:\\
+"Answering \textit{I-don't-know} is too simple. Try again."\\
+"Your answer must always contain a finite verb. Could there be a typo in the verbform?"\\
+"You must use one of the words in the wordlist in the left margin."\\
+"You have not used the correct adjective. Try again." \\
+The user can quit the dialogue in a proper way by using the verb "heaitit" (= to quit) -- then the system navigates to the closing utterance of the dialogue (to be implemented)\\
 
-The vislcg3 also assigns target-tags, so that the system can pick up e.g. the name of the user, a place name, his/her car make and so on, and use it in the program's questions or utterances.
+Grammar errors we have rules for:\\
+verbs: finite, infinite, negative form, correct person/tense according to the question\\
+case of argument based upon the interrogative \\
+case of argument based upon valency\\
+locative vs. illative based upon movement\\
+subject/verbal agreement\\
+agreement inside NP \\
+numeral expressions: case and number  \\
+PP: case of noun, pp based upon the interrogative \\ 
+time expressions \\
+special adverbs  \\
+particles according to word order \\
+comparision of adjectives\\
 
-\section{Precision and recall}
+\section{Evaluation}
  
-tbw.
+The system has identified an error in the user's input:
+\begin{table}
+\begin{tabular}{|l|c|c|c|}
+\hline 
+\textbf{Rule type}  & \textbf{corr.} & \textbf{wrong}   & \textbf{corr. \% }  \\
+\hline 
+wrong tense         & 7     & 0     & 100,0     \\ 
+wr. V after neg   & 3     & 0     & 100,0     \\ 
+no infinite V       & 1     & 0     & 100,0     \\ 
+\hline 
+orth. error         & 44    & 2     & 95,7      \\
+wr. case V-arg  & 26    & 4     & 86,7      \\
+no finite verb        & 19    & 4     &  82,6 \\
+\hline 
+wr. S-V agreem.   & 17    & 8     & 68,0 \\
+wrong V choice        & 7     & 4     & 63,6 \\
+\hline 
+wrong word            & 4     & 4     & 50,0 \\
+wr. case after Num  & 1     & 1     & 50,0 \\
+\hline
+\end{tabular}
+\end{table}
+
+
+Which rules are not in use? Why? \\
+agreement inside NP (except for numeral expressions) \\
+PP: case of noun, pp based of the interrogative  \\
+time expressions \\
+particles according to word order \\
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.35}[.35]{\includegraphics{presentation/img/e-tutor.png}}\\
+\caption{An alternative to free input: http://e-tutor.org/}
+%\label{nounlex}
+\end{center}
+\end{figure}
  
+Precision and recall
+\begin{table}%[htdp]
+%\caption{default}
+%\begin{center}
+\begin{tabular}{|l|r|r|r|r||r|r|r|r|r|}
+\hline
+Type	& tp		& fp		& tn		& fn	& prec	 & rec.	& acc.	& F-ms. \\
+\hline
+Gramm.    &   641   &   234   &   769    &   7    &   0,73   &   0,99   &   0,85   &   0,84	  \\
+Sem.       &   805   &   69    &   764    &   12   &   0,92   &   0,99   &   0,95   &   0,95		  \\
+Orth.      &   875   &   0     &   776    &   0    &   1      &   1      &   1      &   1					  \\
+Other      &   695   &   180   &   751    &   25   &   0,79   &   0,97   &   0,88   &   0,87	  \\
+\hline
+  &   3016  &   483   &   3060   &   44   &   0,86   &   0,98   &   0,92   &   0,92			  \\
+\hline
+\end{tabular}
+%\end{center}
+%\label{default}
+\end{table}%
+
+The high recall compared to the somewhat lower precision indicates that the system is a bit too critical towards the students:
+It almost never lets through a (targeted) mistake, with the price of flagging some correct answers as errors.
+ 
+ 
+
+\section{Future perspectives}
+How to improve the system? \\
+speller for misspellings  \\
+grammartasks a la \textit{e-tutor}? \\
+Vasta: decide what words the user should use, ala e-tutor as a supplement \\
+Vasta: the user can choice topic instead of grammar tasks \\
+Make the programs for more sámi languages \\
+Classroom studies \\
+
 \section{Conclusion}
+
+By using a sloppy version of the syntactical analyser for North Sámi, combined with a set of error-detection rules, we have been able to build a flexible CALL resource. \\ 
+The precision is not good enough  \\
+We need some kind of speller or a sloppy fst with errortags \\
+"Totally" free input not always the best \\
+
+
+
+
 The paper shows how we have used vislcg3 for pedagogical dialogue systems for Sámi language. Vislcg3 is used in many ways: By relaxing the analysis of the input string, we are able to find errors made by the user, and assign feedback tags to analyse. Secondly, by analysing the semantics in the user's input, and assign semantic tags to the input, we are able to navigate through the dialogue according to user feedback. And finally, we can assign tag to information in the user's input and use it in the program's questions or utterances.  
 
 The CG formalism has a great potential for use in pedagogical settings.
 It is robust enough to handle erroneous data, and at the same time flexible enough to give both general corrections, and corrections targeted at specific words in specific settings.
 
 We have seen that a major problem is spelling errors. Whether CG is able to offer a solution for this problem as well, remains a topic for future research.
-
-
-
 
 
 \begin{thebibliography}{}
