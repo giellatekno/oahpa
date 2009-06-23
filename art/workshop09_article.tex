@@ -57,7 +57,7 @@
 \maketitle
 
 \begin{abstract}
-This article discusses the use of Constraint Grammar as the parser engine in parser-based CALL programs for North Sámi. The parser locates grammatical errors in a question-answer program and a dialogue program, and in the latter one the parser is also used for navigating inside the dialogue.
+This article discusses the use of Constraint Grammar as the parser engine in parser-based CALL programs for North Sámi. The parser locates grammatical errors in a question-answer program and a dialogue program, and the parser is also used for navigating inside the dialogue.
 
 %Special focus is given to the relaxation of the ordinary disambiguator, the error-detecting rule set, and recall and precision of the error detection.
 \end{abstract}
@@ -70,7 +70,7 @@ Vislcg3 is used both for adding feedback about grammatical errors, for navigatin
 
 Our leading idea was to utilize the existing analyser for Sámi when developing pedagogical programs for language instruction. With vislcg3 we had the possibility of making an intelligent tutoring system with sophisticated error analysis where student tasks could go beyond multiple-choice or string matching algorithms. 
 
-Sámi is a language with complex morphology, and it demands much practising before the student reaches necessary skills. But as a minority language Sámi does not provide enough opportunities everywhere to practise the language in a natural way. There is also a lack of teaching materials. Because of that, programs accessible on the Internet may be a supplement to the instruction given at school or in university. 
+Sámi is a language with complex morphology, and it demands much practising before the student reaches necessary skills. But as a minority language Sámi does not everywhere provide enough opportunities to practise the language in a natural way. There is also a lack of teaching materials. Because of that, programs accessible on the Internet may be a supplement to the instruction given at school or in university. 
 
 \section{Basic grammatical analysis}
 The basic grammatical analysis of North Sámi is done with fst and a constraint grammar parser made at UiT. The relevant resources are the following:
@@ -83,22 +83,24 @@ The basic grammatical analysis of North Sámi is done with fst and a constraint 
 \section{Sentence generator}
 The question-answer drill \textit{Vasta} has randomly chosen questions, yes/no-questions and wh-questions. In order to be able to create a large number of potential tasks, we implemented a sentence generator. With the generator we can easily offer variation to the user, instead of tailoring every task with ready-made questions.
 
-The matrix contains two types of elements: constants and grammatical units. The selection of words from the pedagogical lexicon is constrained by semantic sets. Something about PEDLEXICON \\ The sentence generator handles agreement e.g. between subject and the main verb.
+The matrix contains two types of elements: constants and grammatical units. The selection of words from the pedagogical lexicon is constrained by semantic sets. The pedagogical lexicon forms a collection of words that are considered relevant for the learners of North Sámi in schools and universities. The dialectal variation is taken into account in the lexicon as well as in the morphological generator, so the user can choose eastern or western dialect for the tasks. The sentence generator handles agreement e.g. between subject and the main verb. 
 
 \begin{figure}%[tbp]
 \begin{center}
 \scalebox{.42}[.42]{\includegraphics{presentation/img/sentencegenerator.png}}\\
-\caption{(MAINV question-particle SUBJ yesterday)}
-%\label{nounlex}
+\caption{A sentence generator template consisting of constants and grammatical units (MAINV question-particle SUBJ yesterday).}
+\label{sentgen}
 \end{center}
 \end{figure}
+
+In Figure \ref{sentgen} is an example of a question template in which the main verb (MAINV) is fixed to past tense, but the person and number inflection may vary freely. In Figure \ref{vastasent} is the template realised as a task in \textit{Vasta}. The question matrices are marked with level, so there is a level option. There are 111 matrix questions.
 
 \begin{figure}%[tbp]
 \begin{center}
 \scalebox{.35}[.35]{\includegraphics{presentation/img/Vasta_sentencegen_example.png}}\\
-\caption{("Did the boy go to church yesterday?" 
+\caption{A generated question and a student's answer in \textit{Vasta}. ("Did the boy go to church yesterday?" 
 "No, he does not.")}
-%\label{nounlex}
+\label{vastasent}
 \end{center}
 \end{figure}
  
@@ -117,24 +119,42 @@ Should we mention that vislcg3 is also used for free input in one VISL program?
 \end{center}
 \end{figure}
 
+
+\subsection{Navigating in the dialogues}
+In the \textit{Sahka} dialogues the user may exercise Sámi in a quite natural way and therefore the user's input also needs tags for navigation in the dialogue itself so the user gets correct respons to her answer.
+
+The questions in the dialogues are not generated, but written. Every question has its own unique name, so we can link to it from another questions, and it is also possible to make a CG-rule for specific questions.  
+
+To show how it works, we can jump into a dialogue in \textit{Sahka}. In Figure \ref{sahka} the setting is a visit at a friend who has moved into a new flat, and she needs a helping hand with moving the furniture into the rooms. We have come to the third question – and the user gets grammatical feedback as well as that the navigation in the dialogue is due to the answer. In Figure \ref{hivssetanalysis} the analysis assigns both grammatical error tag and navigation tag to the question-answer pair. The rule for the navigation tag is in Figure \ref{hivssettag}.
+ 
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.25}[.25]{\includegraphics{presentation/img/TVhivssegis.png}}\\
+\caption{From \textit{Sahka}. Question: "In which room should we place the TV?" Student: "We should place it in the toilet."
+}
+\label{sahka}
+\end{center}
+\end{figure}
+
+
 \begin{figure}%[tbp]
 \begin{center}
 \scalebox{.40}[.40]{\includegraphics{presentation/img/hivssegisCGanal.png}}\\
 \caption{Assignment of tags}
-%\label{nounlex}
+\label{hivssetanalysis}
 \end{center}
 \end{figure}
-
-\subsection{Navigating in the dialogues}
-In the dialogues the user may exercise Sámi in a quite natural way and therefore the user's input also needs tags for navigation in the dialogue itself. The questions in the dialogues are not generated, but written. Every question has its own unique name, so we can link to it from another questions, and it is also possible to make a CG-rule for specific questions.   
 
 \begin{figure}%[tbp]
 \begin{center}
 \scalebox{.35}[.35]{\includegraphics{presentation/img/hivsset_tag.png}}\\
-\caption{Rule for assigment of navigation tag.}
-%\label{nounlex}
+\caption{Rule for assignment of navigation tag. This is a rule for the question with id 'gosa\_bidjat\_TV' if the answer is 'toilet'.}
+\label{hivssettag}
 \end{center}
 \end{figure}
+
+
 
 \begin{figure}%[tbp]
 \begin{center}
@@ -143,53 +163,67 @@ In the dialogues the user may exercise Sámi in a quite natural way and therefor
 Alt. WC: "That is not a good idea. Make a new try." 
 Default: "We carry it there together." 
 }
-%\label{nounlex}
+\label{altlinks}
 \end{center}
 \end{figure}
 
-The input is tagged during analysis with information on whether it is interpreted as affirmative or negative, or if there is semantic information, which should be given special response in the dialogue. The choice of alternative links is dependent upon what kind of tag the question-answer pair gets. There will always be a default link in case there will not be any tag. 
+In Figure \ref{altlinks} there are two alternative links for the answers to the question. One of them is connected to the \&dia-hivsset tag and will give the answer “That is not a good idea. Make a new try.” The other link is default. 
+
+Every question has its own unique id, which is used in navigating between questions. In addition, the CG-rules may be tailored for specific questions.  
+
+Many of the rules are general rules, e.g. the input is tagged during analysis with information on whether it is interpreted as affirmative or negative, as in Figure \ref{afforneg}.
+
+There are also rules if there is semantic information, which is assigned with a target tag. In Figure \ref{targettag} is a general target rule for question which require an answer in accusative. The choice of alternative links is dependent upon what kind of tag the question-answer pair gets. There will always be a default link in case there will not be any tag. 
  
-\begin{figure}%[tbp]
-\begin{center}
-\scalebox{.3}[.3]{\includegraphics{presentation/img/target_acc.png}}\\
-\caption{Assignment of target tag for answer in accusative. 
-}
-%\label{nounlex}
-\end{center}
-\end{figure}
 
 \begin{figure}%[tbp]
 \begin{center}
 \scalebox{.3}[.3]{\includegraphics{presentation/img/aff_or_neg_colours.png}}\\
 \caption{Tags for affirmative and negative answer. 
 }
-%\label{nounlex}
+\label{afforneg}
 \end{center}
 \end{figure}
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.3}[.3]{\includegraphics{presentation/img/target_acc.png}}\\
+\caption{Assignment of target tag for answer in accusative. 
+}
+\label{targettag}
+\end{center}
+\end{figure}
+
+In addition, a special tag indicates whether the sentence contains some information that should be stored. The program is thus able to store simple information such as the student’s name, place where she lives and for example the type of her car, like in Figure \ref{nametag}, and use this information in tailored questions or utterances.
+
+\begin{figure}%[tbp]
+\begin{center}
+\scalebox{.3}[.3]{\includegraphics{presentation/img/picking_name_new.png}}\\
+\caption{Collecting information from the input for storing. 
+}
+\label{nametag}
+\end{center}
+\end{figure}
+
+To many yes/no questions it can be natural to answer more than only yes/no. E.g. Do you have children? the student can answer 'Yes, I have two children.' It gives then a bad impression if the next question is 'How many children do you have?'. To prevent that we have a pass-tag for omitting the next question, as in Figure \ref{omit}.
 
 \begin{figure}%[tbp]
 \begin{center}
 \scalebox{.4}[.4]{\includegraphics{presentation/img/pass_rules.png}}\\
 \caption{Tag for omitting the next question. 
 }
-%\label{nounlex}
+\label{omit}
 \end{center}
 \end{figure}
 
  
  
-Some dialogues are branched according to how the user answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In the same way an answer from the user about his/her age will induce a tag, which is used to navigate to different branches of the dialogue based on the age of the user. The tag for age is assigned with a regex inside a CG-rule.
+Some dialogues are branched according to how the user answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In the same way an answer from the user about his/her age will induce a tag, which is used to navigate to different branches of the dialogue based on the age of the user, as in Figure \ref{agebranches}. The tag for age is assigned with a regex inside a CG-rule, as in Figure \ref{agerule}.
 
-The vislcg3 also assigns target-tags, so that the system can pick up e.g. the name of the user, a place name, his/her car make and so on, and use it in the program's questions or utterances.
 
-\begin{figure}%[tbp]
-\begin{center}
-\scalebox{.3}[.3]{\includegraphics{presentation/img/picking_name_new.png}}\\
-\caption{Collecting information from the input. 
-}
-%\label{nounlex}
-\end{center}
-\end{figure}
+
+The vislcg3 also assigns target-tags as in Figure \ref{targettag}, so that the system can pick up e.g. the name of the user, a place name, his/her car make and so on, and use it in the program's questions or utterances.
+
 
 \begin{figure}%[tbp]
 \begin{center}
@@ -201,20 +235,21 @@ The vislcg3 also assigns target-tags, so that the system can pick up e.g. the na
 
 \begin{figure}%[tbp]
 \begin{center}
-\scalebox{.3}[.3]{\includegraphics{presentation/img/pickingage_colours.png}}\\
-\caption{Rules for age.}
-%\label{nounlex}
+\scalebox{.4}[.4]{\includegraphics{presentation/img/age_branching.png}}\\
+\caption{Alternative branches}
+\label{agebranches}
 \end{center}
 \end{figure}
 
 \begin{figure}%[tbp]
 \begin{center}
-\scalebox{.4}[.4]{\includegraphics{presentation/img/age_branching.png}}\\
-\caption{Alternative branches}
-%\label{nounlex}
+\scalebox{.3}[.3]{\includegraphics{presentation/img/pickingage_colours.png}}\\
+\caption{Rules for age.}
+\label{agerule}
 \end{center}
 \end{figure}
 
+\newpage
 
 \subsection{Tutorial feedback}
 Tutorial feedback is feedback about grammar errors, and is used both in \textit{Vasta} and in \textit{Sahka}. The system uses CG-rules for assigning a tag to grammatical errors in the input. The tag generates feedback to the user. It should be noted that the system uses the grammatical analyser on the fly, exploiting full lexicons. This allows the user's answer to contain any Sámi word, also words that are not restricted to the pedagogical lexicon.
