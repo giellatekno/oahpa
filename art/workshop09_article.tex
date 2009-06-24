@@ -309,7 +309,7 @@ Grammar errors we have rules for, are
 \subsection{Misspellings}
 The biggest problem is the user's misspellings. If the spelling error gives rise to a non-existing word form, then the message to the user is "The word form is not in our lexicon, can it be a spelling error?", which often is not enough help for the user. Here, our program is clearly inferior to a human reader, who would be able to read in a robust way, and detect what the user intended to write. Simulating this ability is not an easy task.
  
-Running the feedback through an ordinary speller engine is not a good solution, since the speller will come up with a large number of suggestions, without being able to choose between them. A possible solution would be to run a morphological analysis on the speller suggestions, and let a CG component pick the most likely candidates. The problem is that the north sámi speller is made for native speakers so it will not give relevant suggestions for some typical learner's errors which involves e.g. incorrect suffixes, if the pronouciation is very different. 
+Running the feedback through an ordinary speller engine is not a good solution, since the speller will come up with a large number of suggestions, without being able to choose between them. A possible solution would be to run a morphological analysis on the speller suggestions, and let a CG component pick the most likely candidates. The problem is that the current north sámi speller is made for native speakers and correct mainly typing errors. Needed here is correction of errors due to wrong choice of affices.
 
 We are trying to add rules in the twol-file for typical spelling errors in e.g. place names, in order for the system to give a specific feedback in case of typical misspellings of place names which are in our lexicon. If the place name still is not recognized by the analysator, the feedback is "I haven’t heard about X. Is it a 
 place?", and the default link is the next question.
@@ -376,14 +376,14 @@ Which rules are not in use? Why? \\
 Precision and recall
 \begin{table*}[htbp]
 %\caption{default}
-%\begin{center}
+\begin{center}
 \begin{tabular}{|l|r|r|r|r||r|r|r|r|r|}
 \hline
 Error type	& tp		& fp		& tn		& fn	& prec	 & rec.	& acc.	& F-ms. \\
 \hline
-Gramm.errors    &   641   &   234   &   769    &   7    &   0,73   &   0,99   &   0,85   &   0,84	  \\
-Sem.errors       &   805   &   69    &   764    &   12   &   0,92   &   0,99   &   0,95   &   0,95		  \\
-Orth.errors      &   875   &   0     &   776    &   0    &   1      &   1      &   1      &   1					  \\
+Grammatical errors    &   641   &   234   &   769    &   7    &   0,73   &   0,99   &   0,85   &   0,84	  \\
+Semantical errors       &   805   &   69    &   764    &   12   &   0,92   &   0,99   &   0,95   &   0,95		  \\
+Orthographic errors      &   875   &   0     &   776    &   0    &   1      &   1      &   1      &   1					  \\
 Other errors     &   695   &   180   &   751    &   25   &   0,79   &   0,97   &   0,88   &   0,87	  \\
 \hline
   &   3016  &   483   &   3060   &   44   &   0,86   &   0,98   &   0,92   &   0,92			  \\
@@ -391,7 +391,7 @@ Other errors     &   695   &   180   &   751    &   25   &   0,79   &   0,97   &
 \end{tabular}
 \caption{Error types.}
 \label{errortypes}
-%\end{center}
+\end{center}
 %\label{default}
 \end{table*}%
 
@@ -407,7 +407,7 @@ How to improve the system?
 \item The user can quit the dialogue in a proper way by using the verb "heaitit" (= to quit) -- then the system navigates to the closing utterance of the dialogue. The plan is to make a separate something, so this will function allover, and one does not have to add this alternative link separately to every question (to be implemented). SAARA SHOULD FORMULATE SOMETHING ABOUT IT. 
 \item  speller for misspellings
 \item  grammartasks a la \textit{e-tutor}?
-\item  Vasta: decide what words the user should use, ala e-tutor as a supplement
+\item  Vasta: decide what words the user should use, ala e-tutor \cite{Heift:01,Heift:02} as a supplement
 \item  Vasta: the user can choice topic instead of grammar tasks
 \item  Make the programs for more sámi languages
 \item  Classroom studies 
