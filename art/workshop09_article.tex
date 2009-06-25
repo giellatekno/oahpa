@@ -3,6 +3,7 @@
 \usepackage{times}
 \usepackage{url}
 \usepackage{latexsym}
+\usepackage{linguex}
 
 \setlength{\intextsep}{1ex}
 
@@ -72,6 +73,8 @@ Our leading idea was to utilize the existing analyser for Sámi when developing 
 
 Sámi is a language with complex morphology, and it demands much practising before the student reaches necessary skills. But as a minority language Sámi does not everywhere provide enough opportunities to practise the language in a natural way. There is also a lack of teaching materials. Because of that, programs accessible on the Internet may be a supplement to the instruction given at school or in university. 
 
+In the following section we describe how the system works -- generating of questions for \textit{Vasta} and analysis of user's input in \textit{Vasta} and \textit{Sahka}. Section 3 shows how CG is used for navigation in the dialogues in \textit{Sahka}, and section 4 is about how the tutorial feedback is given with help of CG rules. In section 5 we present some evaluation of how the system works in real life. The last sections are aobut future perspectives and a conclusion.
+
 \section{The system}
 \subsection{Basic grammatical analysis}
 The basic grammatical analysis of North Sámi is done with fst and a constraint grammar parser made at UiT. The relevant resources are the following:
@@ -86,7 +89,7 @@ The CG parser framework shows extraordinary results for free-text parsing, and V
 \subsection{Sentence generator}
 The question-answer drill \textit{Vasta} has randomly chosen questions, yes/no-questions and wh-questions. In order to be able to create a large number of potential tasks, we implemented a sentence generator. With the generator we can easily offer variation to the user, instead of tailoring every task with ready-made questions.
 
-The matrix contains two types of elements: constants and grammatical units for words selected from the pedagogical lexicon, constrained by semantic sets. The pedagogical lexicon forms a collection of about 2400 words that are considered relevant for the learners of North Sámi in schools and universities. The dialectal variation is taken into account in the lexicon as well as in the morphological generator, so the user can choose eastern or western dialect for the tasks. The sentence generator handles agreement e.g. between subject and the main verb. 
+The matrix contains two types of elements: constants and grammatical units for words selected from the pedagogical lexicon, constrained by semantic sets. The pedagogical lexicon forms a collection of about 2400 words that are considered relevant for the learners of North Sámi in schools and universities. The dialectal variation is taken into account in the lexicon as well as in the morphological generator, so the user can choose eastern or western dialect for the tasks. The sentence generator handles agreement e.g. between subject and the main verb. \\ 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -115,7 +118,7 @@ The system question and user answer pairs are merged, and given to the analyser 
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.40}[.40]{\includegraphics{presentation/img/qa2.pdf}}\\
+\scalebox{.45}[.45]{\includegraphics{presentation/img/qa2.pdf}}\\
 \caption{Schematical view of the process.}
 %\label{nounlex}
 \end{center}
@@ -127,22 +130,25 @@ In the \textit{Sahka} dialogues the user may exercise Sámi in a quite natural w
 
 The questions in the dialogues are not generated, but written. Every question has its own unique name, so we can link to it from another questions, and it is also possible to make a CG-rule for specific questions.  
 
-To show how it works, we can jump into a dialogue in \textit{Sahka}. In Figure \ref{sahka} the setting is visiting a friend who has moved into a new flat, and she needs a helping hand with moving the furniture into the rooms. We have come to the third question – and the user gets tutorial feedback as well as that the navigation in the dialogue is due to the answer. In Figure \ref{hivssetanalysis} the analysis assigns both grammatical error tag  and navigation tag to the question-answer pair. The rule for the navigation tag is shown in Figure \ref{hivssettag}. This is a rule for the question with id 'gosa\_bidjat\_TV' if the answer is 'toilet'. The barrier is negation verb and words from a semantic set of rooms.
+To show how it works, we can jump into a dialogue in \textit{Sahka}. In Figure \ref{sahka} the setting is visiting a friend who has moved into a new flat, and she needs a helping hand with moving the furniture into the rooms. We have come to the third question and the navigation in the dialogue is due to the answer. In Figure \ref{hivssetanalysis} the analysis assigns two navigation tags to the question-answer pair. The rule for the navigation tag \textit{\&dia-hivsset} is shown in Figure \ref{hivssettag}. The rule for the navigation tag \textit{\&dia-hivsset} is: \\
+MAP (\&dia-hivsset) TARGET QDL IF \\(0 (where\_place\_TV))\\(*1 ("hivsset") BARRIER Neg OR ROOMS) ; 
+
+This special rule for the question with id \textit{where\_place\_TV} adds the tag if the answer contains \textit{hivsset} (toilet). The barrier is negation verb and words from the semantic set of rooms. \\
  
 
-\begin{figure*}[htbp]
+\begin{figure}[htbp]
 \begin{center}
-\scalebox{.55}[.55]{\includegraphics{presentation/img/TVhivssegis.png}}\\
-\caption{From \textit{Sahka}. ("In which room should we place the TV?" "We should place it in the toilet.")
+\scalebox{.35}[.35]{\includegraphics{presentation/img/TVhivssegii.png}}\\
+\caption{From \textit{Sahka}. ("In which room should we place the TV?" "We should place it in the toilet." "That is not a good idea. Make a new try.")
 }
 \label{sahka}
 \end{center}
-\end{figure*}
+\end{figure}
 
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.40}[.40]{\includegraphics{presentation/img/hivssegisCGanal.png}}\\
+\scalebox{.40}[.40]{\includegraphics{presentation/img/hivssegiiCGanal.png}}\\
 \caption{Assignment of tags is done together with the disambiguation.}
 \label{hivssetanalysis}
 \end{center}
@@ -150,7 +156,7 @@ To show how it works, we can jump into a dialogue in \textit{Sahka}. In Figure \
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.35}[.35]{\includegraphics{presentation/img/hivsset_tag.png}}\\
+\scalebox{.45}[.45]{\includegraphics{presentation/img/hivssetrule.png}}\\
 \caption{Rule for assignment of navigation tag.}
 \label{hivssettag}
 \end{center}
@@ -160,14 +166,14 @@ To show how it works, we can jump into a dialogue in \textit{Sahka}. In Figure \
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.5}[.5]{\includegraphics{presentation/img/gosabidjatTV.png}}\\
+\scalebox{.4}[.4]{\includegraphics{presentation/img/whereTV.png}}\\
 \caption{From the a dialogue file. ("In which room should we place the TV?" Alt. 'toilet': "That is not a good idea. Make a new try." Default: "We carry it there together.") 
 }
 \label{altlinks}
 \end{center}
 \end{figure}
 
-The choice of alternative links is dependent upon what kind of tag the question-answer pair gets. There will always be a default link in case there will not be any navigation tag. In Figure \ref{altlinks} there are two alternative links for the answers to the question. One of them is connected to the \&dia-hivsset tag and will give the answer “That is not a good idea. Make a new try.” The other link is default and leads to the next question in the dialogue. 
+The choice of alternative links is dependent upon what kind of tag the question-answer pair gets. There will always be a default link in case there will not be any navigation tag. In Figure \ref{altlinks} there are two alternative links for the answers to the question in Figure \ref{hivssetanalysis}. One of them is connected to the \textit{\&dia-hivsset} tag and will give the answer “That is not a good idea. Make a new try.” The other link is default and leads to the next question in the dialogue. 
 
 Many of the rules are general rules. Figure \ref{targettag} is a general target rule for question which require an answer in accusative. There are also general rules for tagging during analysis with information on whether the answer is interpreted as affirmative or negative, as in Figure \ref{afforneg}.
  
@@ -200,27 +206,24 @@ There are also special tags for information in the user's answer that should be 
 \end{center}
 \end{figure}
 
-To many yes/no-questions the user naturally gives more information. E.g. to the question 'Do you have children?', the student can answer 'Yes, I have two children.' It gives then a bad impression if the next question is 'How many children do you have?'. To prevent that we have a pass-tag for omitting the next question, as in Figure \ref{omit}.
+To many yes/no-questions the user naturally gives more information. E.g. to the question 'Do you have children?', the student can answer 'Yes, I have two children.' It gives then a bad impression if the next question is 'How many children do you have?'. To prevent that we have a pass-tag for omitting the next question it the answer contains a numeral, for the question with id \textit{do\_you\_have\_children}, as shown in Figure \ref{omit}.  
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.4}[.4]{\includegraphics{presentation/img/pass_rules.png}}\\
-\caption{Tag for omitting the next question it the answer contains a numeral, for the question 'Do you have children?'. 
-}
+\scalebox{.4}[.4]{\includegraphics{presentation/img/passchildren.png}}\\
+\caption{Rule for assigning tag for omitting the next question.}
 \label{omit}
 \end{center}
 \end{figure}
 
  
  
-Some dialogues are branched according to how the user answers, e.g. if the question is about having a car, a positive answer will navigate to a branch with follow-up questions. In Figure \ref{car} there are different follow-up questions for a car brand which is in the lexicon, and if it is not in the lexicon (is can e.g. be a spelling error or a joke from the user). There is also an alternative link for a negative answer, and the default leads to a comment which closes this topic.
-
-
+Some dialogues are branched according to how the user answers, e.g. in Figure \ref{car} there are different follow-up questions for the answer of "What kind of car do you have?" If the car brand is in the lexicon, the system picks up the car type and uses it the next question, e.g. 'Is Ford a good car?', and if it is not in the lexicon (is can e.g. be a spelling error or a joke from the user), the next question will be "Is it a car?". There is also an alternative link for a negative answer (Do you want to buy my car?), and the default leads to a comment which closes this topic. \\
 
 \begin{figure}[htbp]
 \begin{center}
 \scalebox{.35}[.35]{\includegraphics{presentation/img/what_car.png}}\\
-\caption{Alternative links due to the answer of 'What car do you have?' The system picks up the car type and uses it the next question, e.g. 'Is Ford a good car?'.}
+\caption{Alternative links due to the answer of 'What car do you have?'.}
 \label{car}
 \end{center}
 \end{figure}
@@ -232,8 +235,8 @@ In the same way an answer from the user about her age will induce a tag, which i
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.3}[.3]{\includegraphics{presentation/img/pickingage_colours.png}}\\
-\caption{The question is 'How old are you?'. With help of regular expression inside CG-rules, the age tag is assigned to the question-answer pair.}
+\scalebox{.36}[.36]{\includegraphics{presentation/img/agerules.png}}\\
+\caption{Rules with regular expressions.}
 \label{agerule}
 \end{center}
 \end{figure}
@@ -246,19 +249,33 @@ In the same way an answer from the user about her age will induce a tag, which i
 \end{center}
 \end{figure}
 
-Summary:
-\begin{itemize}
-\setlength{\itemsep}{-0.2cm}
-\item 
-\item 
-\end{itemize}
+Summary: With help of CG rules one can easily assign tags to the question-answer pair for navigating to the next question or to a special branch of the dialogue according to the containt of the answer. One can also assign a target tag to certain information so the system can collect name, car brand and so on, to use in a variabel in the follow up question.
+ 
+%There are navigation tags for
+%\begin{itemize}
+%\setlength{\itemsep}{-0.2cm}
+%\item affirmative and negative answer 
+%\item generell target-tag for the content of the answer
+%\item target tags for specific answers to spesific questions
+%\item omitting the next question
+%\item navigating to a special branch of the dialogue
+%\item colllecting information from the input 
+%\end{itemize}
 
 
 \section{Tutorial feedback} \label{tutorial}
-The system gives tutorial feedback about grammar errors, both in \textit{Vasta} and in \textit{Sahka}, generated from grammar error tags assigned in the disambiguation analysis, like in Figure \ref{hivssetanalysis}. It should be noted that the system uses the grammatical analyser on the fly, exploiting full lexicons. This allows the user's answer to contain any Sámi word, also words that are not restricted to the pedagogical lexicon.
+The system gives tutorial feedback about grammar errors, both in \textit{Vasta} and in \textit{Sahka}, generated from grammar error tags assigned in the disambiguation analysis. It should be noted that the system uses the grammatical analyser on the fly, exploiting full lexicons. This allows the user's answer to contain any Sámi word, also words that are not restricted to the pedagogical lexicon.
 
-\subsection{Grammar errors}
-In the question in Figure \ref{hivssetanalysis}, the systems asks “In which room should we place the TV?” The student answers 'Moai bidje TV hivssegis' ("We should place the TV in the toilet"), with locative 'hivssegis' rather than the correct illative 'hivssegii'. The CG parser disambiguates the input, and the general CG rule below adds a grammar-error-tag (\&grm-missing-Ill) to the sentence analysis triggered by the interrogative pronoun followed by a noun in illative, which demands an illative in the answer, when there is not illative or adverb with illative interpretation or negative verb in the first sentence of the answer, cfr. Figure \ref{missingill}.  
+\subsection{Grammar errors} \label{grammarerrors}
+In the question in Figure \ref{hivssetloc}, the systems asks “In which room should we place the TV?” The user answers 'Moai bidje TV gievkkanis' ("We should place the TV in the kitchen"), with locative 'gievkkanis' rather than the correct illative 'gievkkanii'. The CG parser disambiguates the input, and the general CG rule below adds a grammar-error-tag \textit{\&grm-missing-Ill} to the sentence analysis triggered by the interrogative pronoun followed by a noun in illative, which demands an illative in the answer, when there is not illative or adverb with illative interpretation or negative verb in the answer, cfr. Figure \ref{missingill}.  
+
+\begin{figure}[htbp]
+\begin{center}
+\scalebox{.4}[.4]{\includegraphics{presentation/img/gievkkanisAnal.png}}\\
+\caption{A grammar error tag is assigned. }
+\label{hivssetloc}
+\end{center}
+\end{figure}
 
 
 \begin{figure}[htbp]
@@ -271,11 +288,11 @@ In the question in Figure \ref{hivssetanalysis}, the systems asks “In which ro
 
 One of the pedagogical goals behind the programs is that the user should exercise inflecting the finite verb correctly, so the main rule is that the user has to use a full sentence containing a finite verb. To prevent the user from avoiding the difficult verbs, she has to use the same verb as in the question. The CG-rule in Figure \ref{sameverb} controls the choice of verb for the answer, uses a regular expression-based tag (a so-called sticky tag). Pro-verbs get a special treatment, so that a question containing a pro-verb will accept any verb in the answer. There is also made exceptions for some questions and for auxiliary verbs.
 
-For some of the questions in the \textit{Sahka} dialogue the verb requirement is somewhat relaxed. E.g. the question "What is your name?" will more naturally be answered without a verb.  
+For some of the questions in the \textit{Sahka} dialogue the verb requirement is somewhat relaxed. E.g. the question "What is your name?" will more naturally be answered without a verb.  \\
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.3}[.3]{\includegraphics{presentation/img/verblemma.png}}\\
+\scalebox{.35}[.35]{\includegraphics{presentation/img/verblemma.png}}\\
 \caption{Rule for giving error tag it there is another finite verb in the answer than in the question.}
 \label{sameverb}
 \end{center}
@@ -320,7 +337,7 @@ A more difficult problem emerges when the spelling error gives rise to an uninte
 
 
 \subsection{Metacomments}
-The system gives also some metacomments to the user, like:
+In a way \textit{Sahka} program create an illusion of a natural dialogue. But there are some restrictions in the possible input from the user, so the system can analyse the input, and for pedagogical purposes. To solve that, the system can give some metacomments to the user, like:
 \begin{itemize}
 \setlength{\itemsep}{-0.2cm}
 \item "Answering \textit{I-don't-know} is too simple. Try again."
@@ -332,8 +349,8 @@ The system gives also some metacomments to the user, like:
 
 
 \section{Evaluation}
- 
-The system has identified an error in the user's input:
+The evaluation of \textit{Sahka} and \textit{Vasta} was done when the programs had been available on internet for three months. The user's input and the feedback from the system were logged for the last two weeks of the periode.  
+
 \begin{table}[htbp]
 \begin{tabular}{|l|c|c|c|}
 \hline 
@@ -358,33 +375,38 @@ wr. case after Num  & 1     & 1     & 50,0 \\
 \label{ruletypes}
 \end{table}
 
+As shown in Table \ref{ruletypes} not all of the rule types mentioned in \label{grammarerrors} have been in use in this period. These rule types have not been used: \\
 
-Which rules are not in use? Why? \\
--- agreement inside NP (except for numeral expressions) \\
--- PP: case of noun, pp based of the interrogative  \\
--- time expressions \\
--- particles according to word order \\
+\begin{itemize}
+\setlength{\itemsep}{-0.7cm}
+\item agreement inside NP (except for numeral expressions) \\
+\item PP: case of noun, pp based of the interrogative  \\
+\item time expressions \\
+\item particles according to word order \\
+\end{itemize}
+
+The reason is probably that the user does not write e.g. complex NP's or complex time expressions if she is not forced to do it. That is the price of a free input strategy. There
+is a program avaiable on internet \textit{e-tutor}, which is a program for teaching German to foreigners \cite{Heift:01,Heift:02}, at \url{http://e-tutor.org}. e-tutor gives very good feedback to student's errors, but the possible input is restricted so the user gets a number of lemmas from which she is to make a sentence. In this way the user is forced to also write more complex phraces. Figure \ref{etutor} shows an example from the program. \\
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.35}[.35]{\includegraphics{presentation/img/e-tutor.png}}\\
-\caption{An alternative to free input: http://e-tutor.org/}
-%\label{nounlex}
+\scalebox{.30}[.30]{\includegraphics{presentation/img/e-tutor.png}}\\
+\caption{An alternative to free input at http://e-tutor.org/}
+\label{etutor}
 \end{center}
 \end{figure}
- 
-Precision and recall
+
 \begin{table*}[htbp]
 %\caption{default}
 \begin{center}
 \begin{tabular}{|l|r|r|r|r||r|r|r|r|r|}
 \hline
-Error type	& tp		& fp		& tn		& fn	& prec	 & rec.	& acc.	& F-ms. \\
+Error type	& true pos.		& false pos.		& true neg.		& false neg.	& precision	 & recall	& accuracy	& F-ms. \\
 \hline
-Grammatical errors    &   641   &   234   &   769    &   7    &   0,73   &   0,99   &   0,85   &   0,84	  \\
-Semantical errors       &   805   &   69    &   764    &   12   &   0,92   &   0,99   &   0,95   &   0,95		  \\
-Orthographic errors      &   875   &   0     &   776    &   0    &   1      &   1      &   1      &   1					  \\
-Other errors     &   695   &   180   &   751    &   25   &   0,79   &   0,97   &   0,88   &   0,87	  \\
+Gramm. error    &   641   &   234   &   769    &   7    &   0,73   &   0,99   &   0,85   &   0,84	  \\
+Semant. error       &   805   &   69    &   764    &   12   &   0,92   &   0,99   &   0,95   &   0,95		  \\
+Orthogr. error      &   875   &   0     &   776    &   0    &   1      &   1      &   1      &   1					  \\
+Other error     &   695   &   180   &   751    &   25   &   0,79   &   0,97   &   0,88   &   0,87	  \\
 \hline
   &   3016  &   483   &   3060   &   44   &   0,86   &   0,98   &   0,92   &   0,92			  \\
 \hline
@@ -395,9 +417,17 @@ Other errors     &   695   &   180   &   751    &   25   &   0,79   &   0,97   &
 %\label{default}
 \end{table*}%
 
+Table \ref{errortypes} shows different kinds of error types the system has identified in the user's sentences, \textit{positives}. If it really is an error, then it is a \textit{true positive}, if not, then it is a \textit{negative positive}. It the system has found no error in a sentence, then it is a negative. It there nevertheless is an error, then it is a \textit{false negative}.
+
+We measured \textit{precision} (correctly identified errors/all diagnostised errors), \textit{recall} (correctly identified errors/all errors), and \textit{accuracy} (correct judgements/cases). For the error types we target, precision = 0.85, recall = 0.93, and accuracy = 0.89 (N=277). Better recall than precision indicates that very few errors slip through, at the price of erroneously identifying some correct forms as errors. In this pedagogical setting, a goal for future work is improving precision (avoiding erroneous error flagging).
+
+
+
+
+Breaking down the precision numbers on type of feedback, we get the picture below. Of 27 errouneous judgements, 16 were due to technical malfunction, 9 to wrong syntactical and 2 to wrong lexical analysis.
+
 The high recall compared to the somewhat lower precision indicates that the system is a bit too critical towards the students:
 It almost never lets through a (targeted) mistake, with the price of flagging some correct answers as errors.
- 
  
 
 \section{Future perspectives}
