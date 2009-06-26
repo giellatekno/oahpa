@@ -58,32 +58,32 @@
 \maketitle
 
 \begin{abstract}
-This article discusses and gives exmples of use of Constraint Grammar as the parser engine in parser-based CALL programs for North Sámi. The parser locates grammatical errors in a question-answer program and a dialogue program, and the parser is also used for navigating inside the dialogue.
+This article discusses and gives exmples of use of Constraint Grammar as the parser engine in parser-based CALL programs for North Sámi. The parser locates grammatical errors in a question-answer program and a dialogue program, and is also used for navigating inside the dialogue.
 
 %Special focus is given to the relaxation of the ordinary disambiguator, the error-detecting rule set, and recall and precision of the error detection.
 \end{abstract}
 
 \section{Introduction} 
 
-The present paper discusses the use of Constraint Grammar (vislcg3) in two different dialogue systems for learning North Sámi: \textit{Vasta} -- a QA-drill with open questions, and \textit{Sahka} -- a  dialogue between program and user within a scenario. The underlying pedagogical goal for both is exercising verb inflection, choosing the correct case and extending the vocabulary. 
+The present paper discusses the use of Constraint Grammar (vislcg3) in two different dialogue systems for learning North Sámi: \textit{Vasta} -- a QA-drill with open questions, and \textit{Sahka} -- a  dialogue between program and user within a scenario. The underlying pedagogical goal for both programs is exercising verb inflection, choosing the correct case and extending the vocabulary of the student. 
 
-Vislcg3 is used both for adding tutorial feedback about grammatical errors, for navigating in the \textit{Sahka}-dialogue based on the user's answers and for identifying parts of the user answer to use in variables in further questions. 
+Vislcg3 is used both for adding tutorial feedback about grammatical errors, for navigating in the \textit{Sahka}-dialogue based on the user's answers, and for identifying parts of the user answer to use in variables in further questions. 
 
-Our leading idea was to utilize the existing analyser for Sámi when developing pedagogical programs for language instruction. With vislcg3 we had the possibility of making an intelligent tutoring system with sophisticated error analysis where student tasks could go beyond multiple-choice or string matching algorithms. 
+Our leading idea was to utilize our existing analyser for Sámi when developing pedagogical programs for language instruction. With vislcg3 we had the possibility of making an intelligent tutoring system with sophisticated error analysis where student tasks could go beyond multiple-choice or string matching algorithms. 
 
 Sámi is a language with complex morphology, and it demands much practising before the student reaches necessary skills. But as a minority language Sámi does not everywhere provide enough opportunities to practise the language in a natural way. There is also a lack of teaching materials. Because of that, programs accessible on the Internet may be a supplement to the instruction given at school or in university. 
 
-In the following section we describe how the system works -- generating questions for \textit{Vasta} and analysing user's input in \textit{Vasta} and \textit{Sahka}. Section 3 shows how CG is used for navigation in the dialogues in \textit{Sahka}, and section 4 is about how tutorial feedback is given with help of CG rules. In section 5 we present some evaluation of how the system works in real life. In the last sections there are future perspectives and a conclusion.
+In the following section we describe how the system works when generating questions for \textit{Vasta} and analysing user's input in \textit{Vasta} and \textit{Sahka}. Section 3 shows how CG is used for navigation in the dialogues in \textit{Sahka}, and section 4 shows how tutorial feedback is given with the help of CG rules. In section 5 we present an evaluation of how the system works in real life. The final sections present future perspectives and a conclusion.
 
 \section{The system}
 \subsection{Basic grammatical analysis}
-The basic grammatical analysis of North Sámi is done with fst and a constraint grammar parser made at UiT. The relevant resources are the following:
+The basic grammatical analysis of North Sámi is done with finite state transducers (fst) and a constraint grammar parser made at UiT. The relevant resources are the following:
 \begin{itemize}
-\item a morphological analyser/generator with finite state transducers, compiled with the Xerox compiler xfst.  
+\item a morphological  fst analyser/generator, compiled with the Xerox compiler \textit{xfst} \cite{BeesleyKarttunen:03}.  
 \item a morphological disambiguator based on constraint grammar with 3300 manually written rules and a syntactic analyser which adds grammatical function (vislcg3). 
 \end{itemize} 
 
-The CG parser framework shows extraordinary results for free-text parsing, and Vislcg3 is used in the VISL-suite of games for teaching grammatical analysis on the Internet \url{http://visl.sdu.dk}. One of the programs accepts free user input in some of the 7 supported languages. The input is analysed or changed into grammar exercises~\cite{Bick:05}.
+The CG parser framework shows extraordinary results for free-text parsing, and Vislcg3 is also used in the VISL-suite of games developed at Syd-dansk Universitet for teaching grammatical analysis on the Internet \url{http://visl.sdu.dk}. One of their  programs accepts free user input in some of the 7 supported languages. The input is analysed or changed into grammar exercises~\cite{Bick:05}.
 
 \subsection{Sentence generator}
 The question-answer drill \textit{Vasta} has randomly chosen questions -- yes/no-questions and wh-questions. In order to be able to create a large number of potential tasks, we implemented a sentence generator. With the generator we can easily offer variation to the user, instead of tailoring every task with ready-made questions.
@@ -98,14 +98,14 @@ The matrix contains two types of elements: constants and grammatical units for w
 \end{center}
 \end{figure}
 
-In Figure \ref{sentgen} is an example of a question template in which the main verb (MAINV) is fixed to indicative past tense, but the person and number inflection may vary freely. In Figure \ref{vastasent} is the same template is realised as a task in \textit{Vasta}. The user's answer triggers a feedback message about tense of the main verb. 
+In Figure \ref{sentgen} is an example of a question template in which the main verb (MAINV) is fixed to indicative past tense, but the person and number inflection may vary freely. In Figure \ref{vastasent} the same template is realised as a task in \textit{Vasta}. The user's answer triggers a feedback message about the tense of the main verb. 
 
-The question matrices are marked with level, because of a level option offered to the user, e.g. level 1 has only indicative and no past tense. Because of that we have to some extent to fix the inflections in every template, and there are so many as 111 matrix questions. \\
+The question matrices are marked with level, because of a level option offered to the user, e.g. level 1 has only indicative and no past tense. Because of that we have to fix the inflections in every template to some extent, and there are so many as 111 matrix questions. \\
 
 \begin{figure*}[htbp]
 \begin{center}
 \scalebox{.55}[.55]{\includegraphics{presentation/img/newvasta.png}}\\
-\caption{A generated question and a student's answer in \textit{Vasta}. ("Did the boys use the lasso yesterday?" "No, they do not yesterday.")}
+\caption{A generated question and a user's answer in \textit{Vasta}. ("Did the boy ride yesterday?" "No, he does not yesterday.")}
 \label{vastasent}
 \end{center}
 \end{figure*}
@@ -149,7 +149,7 @@ This special rule for the question with id \textit{where\_place\_TV} adds the ta
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.40}[.40]{\includegraphics{presentation/img/hivssegiiCGanal.png}}\\
+\scalebox{.37}[.37]{\includegraphics{presentation/img/hivssegiiCGanalEng.png}}\\
 \caption{Assignment of navigation tags is done together with the disambiguation.}
 \label{hivssetanalysis}
 \end{center}
@@ -269,7 +269,7 @@ In the question in Figure \ref{hivssetloc}, the systems asks “In which room sh
 
 \begin{figure}[htbp]
 \begin{center}
-\scalebox{.4}[.4]{\includegraphics{presentation/img/gievkkanisAnal.png}}\\
+\scalebox{.37}[.37]{\includegraphics{presentation/img/gievkkanisAnalEng.png}}\\
 \caption{A grammar error tag is assigned. }
 \label{hivssetloc}
 \end{center}
@@ -373,7 +373,7 @@ wr. case after Num  & 1     & 1     & 50,0 \\
 \label{ruletypes}
 \end{table}
 
-As shown in Table \ref{ruletypes} not all of the rule types mentioned in \ref{grammarerrors} have been in use in this period. These rule types have not been used: \\
+As shown in Table \ref{ruletypes} not all of the rule types mentioned in \ref{grammarerrors} have been in use in this period. These rule types have not been used:
 
 \begin{itemize}
 \setlength{\itemsep}{-0.7cm}
