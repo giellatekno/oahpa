@@ -71,9 +71,9 @@ Constraint Grammar (CG) rules are used for adding tutorial feedback about gramma
 
 Our leading idea was to utilize our existing analyser for Sámi when developing pedagogical programs for language instruction. With vislcg3 we had the possibility of making an intelligent tutoring system with sophisticated error analysis where student tasks could go beyond multiple-choice or string matching algorithms. 
 
-Sámi is a language with complex morphology, and it demands much practising before the student reaches necessary skills. However, since Sámi is a minority language, it is common that Sámi students do not receive enough opportunities to practise the language in a natural way. There is also a lack of teaching materials. Therefore, programs accessible on the Internet may be a supplement to the instruction given at school or in universities. 
+Sámi is a language with complex morphology, and it demands much practising before the student reaches necessary skills. However, since Sámi is a minority language, it is common that Sámi students do not receive enough opportunities to practise the language in a natural way. There is also a lack of teaching materials. Therefore, programs accessible on the Internet may be a supplement to the instruction given at school or in universities.
 
-In the following section we describe the basic algorithm for generating questions for \textit{Vasta} and analysing user's input in \textit{Vasta} and \textit{Sahka}. Section 3 shows how CG is used for navigation in the dialogues in \textit{Sahka}, and section 4 shows how tutorial feedback is given with the help of CG rules. In section 5 we present an evaluation of how the system works in real life. The final sections present future perspectives and a conclusion.
+In the following section we describe the basic algorithm for generating questions for \textit{Vasta} and analysing user's input in \textit{Vasta} and \textit{Sahka}. Section 3 shows how CG is used for navigation in the dialogues in \textit{Sahka}, and section 4 shows how tutorial feedback is given with the help of CG rules. In section 5 we present an evaluation of how the system works in real life. The final sections present future perspectives and a conclusion. The programs are available on a web-based eraning platform with six programs \cite{Antonsen:09}.
 
 \section{The system}
 \subsection{Basic grammatical analysis}
@@ -133,13 +133,13 @@ The vislcg3-rule set consists of two parts: A rule set, which disambiguates the 
 
 \section{Navigating in the dialogues}
 
-In the \textit{Sahka} dialogues the main goal has been to create a feeling of a natural dialogue. One of the ways to achieve that goal is reacting to the user's input. When the input is morphologically analyzed, The CG rules are used for tags to the question-answer pairs, which are used for selecting appropriate questions and navigating in the dialogue. The dialogue is divided to different topics. For example first meeting dialogue is divided to topics such as age, family, working place/school, car and so on. Navigation between the topics is achieved by recognizing and tagging the content of the user's answer in CG-rules and providing the analysis to the \textit{Sahka}-engine.  In addition, it is possible to assign a target tag to certain information types; the system may e.g. collect name, car brand and so on, and use it as a variable in the follow-up questions. 
+In the \textit{Sahka} dialogues the main goal has been to create a feeling of a natural dialogue. One of the ways to achieve that goal is reacting to the user's input. When the input is morphologically analyzed, the CG rules are used for tags to the question-answer pairs, which are used for selecting appropriate questions and navigating in the dialogue. The dialogue is divided to different topics. For example first meeting dialogue is divided to topics such as age, family, working place/school, car and so on. Navigation between the topics is achieved by recognizing and tagging the content of the user's answer in CG rules and providing the analysis to the \textit{Sahka}-engine.  In addition, it is possible to assign a target tag to certain information types; the system may e.g. collect name, car brand and so on, and use it as a variable in the follow-up questions. 
 
-The CG-rules used in the dialogue processing may be divided to two types: general rules that may target any questions-answer pair and question-specific rules that are tailored for a specific question. Whereas the general rules often detect grammatical errors and e.g. determine if user's answer was affirmative or negative, the question specific rules may be used for more sophisticated error detection and navigation in the dialogue.
+The CG rules used in the dialogue processing may be divided to two types: general rules that may target any questions-answer pair and question-specific rules that are tailored for a specific question. %Whereas the general rules often detect grammatical errors and e.g. determine if user's answer was affirmative or negative, the question specific rules may be used for more sophisticated error detection and navigation in the dialogue.
 
 
 \subsection{Rule for specific questions}
-Since the functionality of \textit{Sahka} is more dependent upon correct analysis of the content of user's answer, the questions in the dialogues do not vary freely as in \textit{Vasta}. Every question is a text string and has its own unique name marked to the QDL.  This enables writing question specific CG-rules and accessing the question from other questions. \\ 
+Since the functionality of \textit{Sahka} is more dependent upon correct analysis of the content of user's answer, the questions in the dialogues do not vary freely as in \textit{Vasta}. Every question is a text string and has its own unique name marked to the QDL.  This enables writing question specific CG rules and accessing the question from other questions. \\ 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -197,7 +197,7 @@ Another example of a question specific dialogue navigation rule comes from yes/n
 
 %Many of the rules are general rules. Figure \ref{targettag} is a general target rule for questions, which requires an answer in accusative. There are also general rules for tags marking whether the answer is interpreted as affirmative or negative, as in Figure \ref{afforneg}. \\
 
-\subsection{Branching the dialogue} 
+%\subsection{Branching the dialogue} 
 
 Let us consider couple of examples how the dialogue may be branched to different questions and topics. In Figure \ref{car} there are different follow-up questions for the answer to "What kind of car do you have?" If the car brand is in the lexicon, the system picks up the car type and uses it in a variable in the next question, e.g. "Is Ford a good car?", and if it is not in the lexicon (it can e.g. be a spelling error or a joke from the user), the next question will be 'Is it a car?'. There is also an alternative link for a negative answer ("Do you want to buy my car?"), and the default leads to a comment, which closes this topic. \\
 
@@ -217,7 +217,7 @@ Let us consider couple of examples how the dialogue may be branched to different
 \end{center}
 \end{figure}
 
-Whenever the topic is closed, the dialogue proceeds to a next topic. For example, an answer from the user about her age will induce a tag, which is used to navigate to different branches of the dialogue based on the age of the user, as in Figure \ref{agebranches}. The tag for age is assigned with a regular expression inside a CG-rule, as in the examples \ref{agerule1}, \ref{agerule2} and \ref{agerule3}: 
+Whenever the topic is closed, the dialogue proceeds to a next topic. For example, an answer from the user about her age will induce a tag, which is used to navigate to different branches of the dialogue based on the age of the user, as in Figure \ref{agebranches}. The tag for age is assigned with a regular expression inside a CG rule, as in the examples \ref{agerule1}, \ref{agerule2} and \ref{agerule3}: 
 
 \ex.\flushleft\label{agerule1}  \small{MAP (\&dia-adult) TARGET Num \\(*-1 QDL LINK 0 (How\_old\_are\_you)) \\ (0 ("([2-9][0-9])"r)) ;} \\
 
@@ -347,7 +347,7 @@ The rule adds a grammar-error-tag \textit{\&grm-missing-Ill} to the sentence ana
 %\end{center}
 %\end{figure}
 
-One of the pedagogical goals behind the programs is that the user should exercise inflecting the finite verb correctly. A central requirement is thus that the user answers with full sentences containing a finite verb. To encourage the user to practice also difficult verbs, she has to use the same verb as in the question. The CG-rule in example \ref{sameverb} controls the choice of verb for the answer, and it uses a regular expression-based tag (a so-called \textit{sticky tag}). The verb is identified via a regular expression $.*$ (cf. \ref{sameverblist}), and the rule in \ref{sameverb} is triggered if it does not find the same verb lemma from both the question and the answer.
+One of the pedagogical goals behind the programs is that the user should exercise inflecting the finite verb correctly. A central requirement is thus that the user answers with full sentences containing a finite verb. To encourage the user to practice also difficult verbs, she has to use the same verb as in the question. The CG rule in example \ref{sameverb} controls the choice of verb for the answer, and it uses a regular expression-based tag (a so-called \textit{sticky tag}). The verb is identified via a regular expression $.*$ (cf. \ref{sameverblist}), and the rule in \ref{sameverb} is triggered if it does not find the same verb lemma from both the question and the answer.
 
 \ex.\flushleft\label{sameverblist} \small{LIST VERBLEMMA = (".*"r) ;}
 
@@ -488,7 +488,7 @@ The high recall compared to the somewhat lower precision indicates that the syst
 We have started the work with improving the system.
 \begin{description}
 %\setlength{\itemsep}{-0.2cm}
-\item [Something.] We will implement a separate SOMETHING (SAARA: I don't think we need this. This is very small thing compared to e.g. speller.), which will function all over in all dialogues. This makes it possible for the user to quit the dialogue in a proper way by using the verb "heaitit" (= to quit) and then the system navigates to the closing utterance of the dialogue, without having to add this alternative link separately to every question. 
+%\item [Something.] We will implement a separate SOMETHING (SAARA: I don't think we need this. This is very small thing compared to e.g. speller.), which will function all over in all dialogues. This makes it possible for the user to quit the dialogue in a proper way by using the verb "heaitit" (= to quit) and then the system navigates to the closing utterance of the dialogue, without having to add this alternative link separately to every question. 
 \item [Speller.] Because the misspellings are the biggest problem for the users, we will implement a speller. We will give relevant suggestions to the user by analysing the list of suggestions according to the context with CG, and also implement weighted lexical transducers, see \cite{Linden:09}. For the weighting we will use the pedagogical lexicon and the North Sámi corpus as a training corpus.
 \item [Topic option.] Today \textit{Vasta} generates questions randomly within each level based on grammar difficulty. The log shows that this program is not as popular as the \textit{Sahka}. We are planning to make it more interesting for the users by restricting the semantic sets for the variables in the question templates according to topics, and give the user's a topic option as well.
 \item [Sentence construction from given lemmas.] We are also considering how to force the user to construct more complex phrases and also use more particles, by deciding what lemmas the user should use, as a supplement to the other options. Available on internet is \textit{e-tutor} -- a program for teaching German to foreigners \cite{Heift:01}, at \url{http://e-tutor.org}. e-tutor gives very good feedback to student's errors, but the possible input is restricted so the user gets a number of lemmas from which she is to construct a sentence. In this way the user is forced to also write more complex phrases. Figure \ref{etutor} shows an example from the program.
@@ -530,6 +530,13 @@ We have seen that a major problem is spelling errors. Whether CG is able to offe
 Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi Parliament in Norway, for funding the project. 
 
 \begin{thebibliography}{}
+
+\bibitem[\protect\citename{Antonsen, Huhumarniemi and Trosterud}2009]{Antonsen:09}
+{Lene Antonsen, Saara Huhumarniemi and Trond Trosterud}.
+\newblock 2009.
+\newblock {Interactive pedagogical programs based on constraint grammar}.
+\newblock {\em Proceedings of the 17th Nordic Conference of Computational Linguistics}.
+\newblock Nealt Proceedings Series 4.
 
 \bibitem[\protect\citename{{Beesley and Karttunen}}2003]{BeesleyKarttunen:03}
 {Kenneth R. Beesley and Lauri Karttunen}.
