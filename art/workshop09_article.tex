@@ -73,7 +73,7 @@ Our leading idea was to utilize our existing analyser for Sámi when developing 
 
 Sámi is a language with complex morphology, and it demands much practising before the student reaches necessary skills. However, since Sámi is a minority language, it is common that Sámi students do not receive enough opportunities to practise the language in a natural way. There is also a lack of teaching materials. Therefore, programs accessible on the Internet may be a supplement to the instruction given at school or in universities.
 
-In the following section we describe the basic algorithm for generating questions for \textit{Vasta} and analysing user's input in \textit{Vasta} and \textit{Sahka}. Section 3 shows how CG is used for navigation in the dialogues in \textit{Sahka}, and section 4 shows how tutorial feedback is given with the help of CG rules. In section 5 we present an evaluation of how the system works in real life. The final sections present future perspectives and a conclusion. The programs are available on a web-based learning platform at internet \url{http://oahpa.uit.no} with contains six programs \cite{Antonsen:09}.
+In the following section we describe the basic algorithm for generating questions for \textit{Vasta} and analysing user's input in \textit{Vasta} and \textit{Sahka}. Section 3 shows how CG is used for navigation in the dialogues in \textit{Sahka}, and section 4 shows how tutorial feedback is given with the help of CG rules. In section 5 we present an evaluation of how the system works in real life. The final sections present future perspectives and a conclusion. The programs are available on a web-based learning platform at internet \url{http://oahpa.uit.no/} with contains six programs \cite{Antonsen:09}.
 
 \section{The system}
 \subsection{Basic grammatical analysis}
@@ -83,7 +83,7 @@ The basic grammatical analysis of North Sámi is done with finite state transduc
 \item a morphological disambiguator based on constraint grammar with 3300 manually written rules and a syntactic analyser which adds grammatical function (vislcg3). 
 \end{itemize} 
 
-The CG parser framework shows extraordinary results for free-text parsing, and Vislcg3 is also used in the VISL-suite of games developed at Syd-Dansk Universitet for teaching grammatical analysis on the Internet \url{http://visl.sdu.dk}. One of their  programs accepts free user input in some of the 7 supported languages. The input is analysed or changed into grammar exercises~\cite{Bick:05}.
+The CG parser framework shows extraordinary results for free-text parsing, and Vislcg3 is also used in the VISL-suite of games developed at Syd-Dansk Universitet for teaching grammatical analysis on the Internet \url{http://visl.sdu.dk/}. One of their  programs accepts free user input in some of the 7 supported languages. The input is analysed or changed into grammar exercises~\cite{Bick:05}.
 
 
 \begin{figure*}[htbp]
@@ -108,7 +108,8 @@ A template question matrix contains two types of elements: constants and grammat
 \end{center}
 \end{figure}
 
-Figure \ref{sentgen} shows an example of a question template in which the main verb (MAINV) is fixed to indicative past tense, but the person and number inflection may vary freely. In Figure \ref{vastasent} on page \pageref{vastasent} the same template is realised as a task in \textit{Vasta}. The user's answer triggers a feedback message about the tense of the main verb. 
+Figure \ref{sentgen} shows an example of a question template in which the main verb (MAINV) is fixed to indicative past tense, but the person and number inflection may vary freely. In Figure \ref{vastasent} on page \pageref{vastasent} the same template is realised as a task in \textit{Vasta}. The user's answer triggers a feedback message about the tense of the main verb. Since the content of the MAINV and SUBJ are drawn from the lexicon, the example template generates around 15 000 different questions.
+ 
 
 The question matrices are marked for level, corresponding to the level option chosen by the user, e.g. the basic level 1 has only indicative and no past tense. Because of this we have to fix the inflections in every template to some extent, and there are as many as 111 matrix questions. \\
 % sh: Since the content of the MAINV and SUBJ are drawn from the lexicon, the example template \ref{sentgen} generates around 15 000 different questions.
@@ -138,7 +139,7 @@ In the \textit{Sahka} dialogues the main goal has been to create a feeling of a 
 The CG rules used in the dialogue processing may be divided to two types: general rules that may target any questions-answer pair and question-specific rules that are tailored for a specific question. %Whereas the general rules often detect grammatical errors and e.g. determine if user's answer was affirmative or negative, the question specific rules may be used for more sophisticated error detection and navigation in the dialogue.
 
 
-\subsection{Rule for specific questions}
+\subsection{Rules for specific questions}
 Since the functionality of \textit{Sahka} is more dependent upon correct analysis of the content of user's answer, the questions in the dialogues do not vary freely as in \textit{Vasta}. Every question is a text string and has its own unique name marked to the QDL.  This enables writing question specific CG rules and accessing the question from other questions. \\ 
 
 \begin{figure}[htbp]
@@ -151,14 +152,12 @@ Since the functionality of \textit{Sahka} is more dependent upon correct analysi
 \end{figure}
 
 
-Consider an example dialogue from \textit{Sahka}. In Figure \ref{sahka} the setting is visiting a friend who has moved into a new flat, and needs a helping hand with moving the furniture. We have come to the third question and the next question in the dialogue is selected depending on the answer. In Figure \ref{hivssetanalysis} the analysis assigns two navigation tags to the question-answer pair. 
-%The rule for assigning \textit{\&dia-hivsset} is shown in Figure \ref{hivssettag}. ALTERNATIVELY: 
-The rule for assigning the tag \textit{\&dia-hivsset} is shown in Ex. \ref{hivss}:
+Consider an example dialogue from \textit{Sahka}. In Figure \ref{sahka} the setting is visiting a friend who has moved into a new flat, and needs a helping hand with moving the furniture. We have come to the third question and the next question in the dialogue is selected depending on the answer. In Figure \ref{hivssetanalysis} the analysis assigns two navigation tags to the question-answer pair. The rule for assigning the tag \textit{\&dia-hivsset} is shown in Ex. \ref{hivss}, the other one is explained in Kap. \ref{general}.
 
 \ex.\flushleft \label{hivss} \small MAP (\&dia-hivsset) TARGET QDL IF \\
      (0 (where\_place\_TV))\\(*1 ("hivsset") BARRIER Neg OR ROOMS) ;
 
-This special rule for the question with id \textit{where\_place\_TV} adds the tag \textit{\&dia-hivsset} to the QDL in the question-answer pair if the answer contains the word \textit{hivsset} (toilet). The barrier prevents the rule from working if negation verb or a word from the set denoting rooms intervenes between the QDL and the word \textit{hivsset}. \\
+This special rule for the question with id \textit{where\_place\_TV} adds the tag \textit{\&dia-hivsset} to the QDL in the question-answer pair if the answer contains the word \textit{hivsset} (toilet). The barrier prevents the rule from working if negation verb or a word from the set denoting rooms intervenes between the QDL and the word \textit{hivsset}. The barrier will prevent giving the tag to answers which negate the possibility of putting the TV to the toilet, or giving the toilet as only one of more possibilities. \\
 % sh: why the barrier is needed?
 
 
@@ -227,7 +226,7 @@ Whenever the topic is closed, the dialogue proceeds to a next topic. For example
 
 Users in the age-group below 20 proceed to a topic about going to school, while the older users are asked about their work. The question contains a  default link as well, since some users have fun telling they are 1000 years old.
 
-\subsection{General rules} 
+\subsection{General rules} \label{general} 
 Most of the cg3-rules are general rules that apply to all question-answer pairs. Consider example \ref{targ},  that generalizes over the question marker set in \ref{targlist}:
 
 \ex.\flushleft\label{targlist} \small{LIST TARGETQUESTION-ACC = ("mii" Acc) ("gii" Acc)("galle" Acc) ("gallis" Acc) ;}
@@ -236,7 +235,7 @@ Most of the cg3-rules are general rules that apply to all question-answer pairs.
 (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-ACC LINK NOT 0 Num)\\
 (NEGATE *1 (N Acc) BARRIER VERB OR CC)(NOT 0 NOTHING) ;}
 
-This is a general target rule for questions, which require an answer in accusative. S-BOUNDARY is a set of words and tokens which marks the end of the (sub)sentence. NOTHING is a set of indefinite pronouns like "nothing" and "nobody". 
+This is a general target rule for questions, which require an answer in accusative. S-BOUNDARY is a set of words and tokens which marks the end of the (sub)sentence. NOTHING is a set of indefinite pronouns like "nothing" and "nobody". There are similar rules for other cases. 
 
 There are also general rules for tags marking whether the answer is interpreted as affirmative or negative, as in Ex. \ref{afforneg}:
 
@@ -417,7 +416,10 @@ The \textit{Sahka} program is intended to mimic a natural dialogue. But there ar
 
 
 \section{Evaluation}
-The evaluation of \textit{Sahka} and \textit{Vasta} was done when the programs had been available on internet for three months. The user's input and the feedback from the system were logged for the last two weeks of the period. The system gave 156 tutorial feedbacks. Breaking down the precision numbers on type of feedback, we got the picture shown in the Table \ref{ruletypes}. Of 27 erroneous judgements, 16 were due to technical malfunction, 9 to wrong syntactical and 2 to wrong lexical analysis. \\
+The evaluation of \textit{Sahka} and \textit{Vasta} was done when the programs had been available on internet for three months. The user's input and the feedback from the system were logged for the last two weeks of the period. The log shows that \textit{Sahka} has six times as many queries as \textit{Vasta}, so users clearly prefer the former one.
+
+
+The system gave 156 tutorial feedbacks for both of the programs during the two weeks. Breaking down the precision numbers on type of feedback, we got the picture shown in the Table \ref{ruletypes}. Of 27 erroneous judgements, 16 were due to technical malfunction, 9 to wrong syntactical and 2 to wrong lexical analysis. \\
 
 \begin{table}[htbp]
 \begin{tabular}{|l|c|c|c|}
@@ -453,9 +455,7 @@ As shown in Table \ref{ruletypes} not all of the rule types mentioned in \ref{gr
 \item particles according to word order \\
 \end{itemize}
 
-The reason is probably that the users do not write e.g. complex NP's or complex time expressions or use particles if they are not forced to do so. This is the price we pay for the free input strategy.  \\
-% explain more here...
-
+The reason is probably that the users do not write more complex language than they have too. E.g. they don't answer with a complex NP if they can answer with just a pronoun or a noun, they don't write a time-expression with PP if the can answer with an adverb instead, and they don't use optional particles if they are unsure of where to put them. The price we pay for the free input strategy is that the users are not forced to exercise more complex language. \\
 
 Table \ref{errortypes} shows different kinds of error types the system has identified in the user's sentences, \textit{positives}. If it really is an error, then it is a \textit{true positive}, if not, then it is a \textit{negative positive}. A sentence not flagged as an error by the system is counted as a \textit{negative}, and we distinguish between \textit{true negatives} (correct answers) and \textit{false negative} (erroneous answers which the system did not detect). \\
 
@@ -485,14 +485,14 @@ We measured \textit{precision} (correctly identified errors/all diagnosed errors
 The high recall compared to the somewhat lower precision indicates that the system is a bit too critical towards the students: It almost never lets through a (targeted) mistake, with the price of flagging some correct answers as errors.
  
 \section{Future perspectives}
-We have started the work with improving the system.
+We have started the work with improving the system. Among our future plans are
 \begin{description}
 %\setlength{\itemsep}{-0.2cm}
 %\item [Something.] We will implement a separate SOMETHING (SAARA: I don't think we need this. This is very small thing compared to e.g. speller.), which will function all over in all dialogues. This makes it possible for the user to quit the dialogue in a proper way by using the verb "heaitit" (= to quit) and then the system navigates to the closing utterance of the dialogue, without having to add this alternative link separately to every question. 
-\item [Speller.] Because the misspellings are the biggest problem for the users, we will implement a speller. We will give relevant suggestions to the user by analysing the list of suggestions according to the context with CG, and also implement weighted lexical transducers, see \cite{Linden:09}. For the weighting we will use the pedagogical lexicon and the North Sámi corpus as a training corpus.
-\item [Topic option.] Today \textit{Vasta} generates questions randomly within each level based on grammar difficulty. The log shows that this program is not as popular as the \textit{Sahka}. We are planning to make it more interesting for the users by restricting the semantic sets for the variables in the question templates according to topics, and give the user's a topic option as well.
-\item [Sentence construction from given lemmas.] We are also considering how to force the user to construct more complex phrases and also use more particles, by deciding what lemmas the user should use, as a supplement to the other options. Available on internet is \textit{e-tutor} -- a program for teaching German to foreigners \cite{Heift:01}, at \url{http://e-tutor.org}. e-tutor gives very good feedback to student's errors, but the possible input is restricted so the user gets a number of lemmas from which she is to construct a sentence. In this way the user is forced to also write more complex phrases. Figure \ref{etutor} shows an example from the program.
-\item [Classroom studies.] This will be important in the work with improving the system.
+\item [Implementing a speller.] Because the misspellings are the biggest problem for the users, we will implement a speller. We will give relevant suggestions to the user by analysing the list of suggestions according to the context with CG, and also implement weighted lexical transducers, see \cite{Linden:09}. For the weighting we will use the pedagogical lexicon and the North Sámi corpus as a training corpus.
+\item [Implementing a topic option in \textit{Vasta}.] Today the program generates questions randomly within each level based on grammar difficulty. The log shows that this program is not as popular as the \textit{Sahka}. We are planning to make it more interesting for the users by restricting the semantic sets for the variables in the question templates according to topics, and give the user's a topic option as well.
+\item [Making a program with sentence construction from given lemmas.] We are also considering how to force the user to construct more complex phrases and also use more particles, by deciding what lemmas the user should use, as a supplement to the other options. Available on internet is \textit{e-tutor} -- a program for teaching German to foreigners \cite{Heift:01}, at \url{http://e-tutor.org/}. e-tutor gives very good feedback to student's errors, but the possible input is restricted so the user gets a number of lemmas from which she is to construct a sentence. In this way the user is forced to also write more complex phrases. Figure \ref{etutor} shows an example from the program.
+\item [Doing classroom studies.] This will be important in the work with improving the system.
 \item [Porting the programs to more Sámi languages.] For Lule Sámi a morphological analyser is available, and we have started making a CG disambiaguator. For South Sámi a morphological analyser will be finished in 2010. 
   \end{description} 
   \vspace{0.7cm}
