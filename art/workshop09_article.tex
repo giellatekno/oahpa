@@ -113,7 +113,7 @@ Figure \ref{sentgen} shows a question template in which the main verb (MAINV) is
 The question matrices are marked for level, corresponding to the level option chosen by the user, e.g. the basic level 1 has only indicative and no past tense. Because of this we have to fix the inflections in every template to some extent, and there are as many as 111 matrix questions. \\
  
 \subsection{The analysing process} 
-Both the question and the answer are analysed with the morphological analyser and then the result is postprocessed to cg3-format and passed to the CG3 rule component (cf. Figure \ref{nounlex}). The question and user's answer pairs are merged, and analysed as one text string. The question mark in the question is exchanged for a special symbol ("\^{}qst" or "\^{}sahka" QDL). We use these symbols, rather than the question mark itself, in order not to introduce a sentence delimiter in the analysis, since we want to refer to the question and the answer separately in the rules (left or right side of the QDL), but also treat the question-answer part as one unit. Many of the constraints are based upon the grammar and semantics of the question -- e.g. the tense and person inflection of the verb, the case of NP in the answer and so on. The question itself restricts the possible interpretation of the input. \\
+Both the question and the answer are analysed with the morphological analyser and then the result is postprocessed to cg3-format and passed to the CG3 rule component (cf. Figure \ref{nounlex}). The question and user's answer pairs are merged, and analysed as one text string. The question mark in the question is exchanged for a special symbol ("\^{}qst" or "\^{}sahka" QDL), as shown in the disambiguated question-answer pair in Figure \ref{hivssetanalysis} on page \pageref{hivssetanalysis}. We use these symbols, rather than the question mark itself, in order not to introduce a sentence delimiter in the analysis, since we want to refer to the question and the answer separately in the rules (left or right side of the QDL), but also treat the question-answer part as one unit. Many of the constraints are based upon the grammar and semantics of the question -- e.g. the tense and person inflection of the verb, the case of NP in the answer and so on. The question itself restricts the possible interpretation of the input. \\
 %sh: This would require a picture of the input. Could the figure 5 be here without the tags?
 
 \begin{figure}[htbp]
@@ -126,7 +126,7 @@ Both the question and the answer are analysed with the morphological analyser an
 
 
 
-The vislcg3-rule set consists of two parts. The first part is a rule set which disambiguates the user's input only to a certain extent. The rule set is relaxed compared to the ordinary disambiguator, in order to be able to detect relevant readings despite of a certain degree of grammatical and orthographic errors in the input. The second part of the rule set contains rules for giving feedback to grammatical errors, and rules for navigating to the next question or utterance in the dialogue, based on the user's answer.  In this paper, we concentrate on the rules for giving feedback for the user and navigating in the dialogue.
+The vislcg3-rule set consists of two parts. The first part is a rule set, which disambiguates the user's input only to a certain extent. The rule set is relaxed compared to the ordinary disambiguator, in order to be able to detect relevant readings despite of a certain degree of grammatical and orthographic errors in the input. The second part of the rule set contains rules for giving feedback to grammatical errors, and rules for navigating to the next question or utterance in the dialogue, based on the user's answer.  In this paper, we concentrate on the rules for giving feedback for the user and navigating in the dialogue.
 
 
 
@@ -156,7 +156,7 @@ Consider an example dialogue from \textit{Sahka}. In Figure \ref{sahka} the sett
      (0 (where\_place\_TV))\\(*1 ("hivsset") BARRIER Neg OR ROOMS) ;
 
 
-This special rule for the question with the identifyer \textit{where\_place\_TV} adds the tag \textit{\&dia-hivsset} to the QDL in the question-answer pair if the answer contains the word \textit{hivsset} (toilet). The barrier prevents the rule from working if the negation verb or a word from the set denoting rooms intervenes between the QDL and the word \textit{hivsset}. The barrier will prevent assigning the tag to answers which negate the possibility of putting the TV to the toilet, or giving the toilet as only one of more possibilities. \\
+This special rule for the question with the identifier \textit{where\_place\_TV} adds the tag \textit{\&dia-hivsset} to the QDL in the question-answer pair if the answer contains the word \textit{hivsset} (toilet). The barrier prevents the rule from working if the negation verb or a word from the set denoting rooms intervenes between the QDL and the word \textit{hivsset}. The barrier will prevent assigning the tag to answers, which negate the possibility of putting the TV to the toilet, or giving the toilet as only one of more possibilities. \\
 % sh: why the barrier is needed?
 
 
@@ -189,7 +189,7 @@ This special rule for the question with the identifyer \textit{where\_place\_TV}
 
 When the \textit{Sahka}-engine reads the CG-output, it recognizes the dia-tag and searches for a next instruction based on the tag.  Every question contains links to alternative questions that are selected based on the recognized tag. In addition, there is a default link in case a navigation tag was not present in the CG-input. In Figure \ref{altlinks} there are two alternative links for the answers to the question in Figure \ref{hivssetanalysis}. One of them is connected to the \textit{\&dia-hivsset} tag and will give the answer "That is not a good idea. Try again." The other link is default and leads to the next question in the dialogue. 
 
-Another example of a question specific dialogue navigation rule comes from yes/no-questions where the user often provides more information than what was asked for. E.g. to the question 'Do you have children?', the user can answer 'Yes, I have two children.' In the dialogue, the next question would normally be 'How many children do you have?'. To avoid this question when the information was already provided, we have a pass-tag for omitting the next question. In this case, the pass-tag is added to the question with identifyer \textit{do\_you\_have\_children} if the answer contains a numeral, as shown in example \ref{omit}:
+Another example of a question specific dialogue navigation rule comes from yes/no-questions where the user often provides more information than what was asked for. E.g. to the question 'Do you have children?', the user can answer 'Yes, I have two children.' In the dialogue, the next question would normally be 'How many children do you have?'. To avoid this question when the information was already provided, we have a pass-tag for omitting the next question. In this case, the pass-tag is added to the question with identifier \textit{do\_you\_have\_children} if the answer contains a numeral, as shown in example \ref{omit}:
 \ex.\label{omit} \small MAP (\&dia-pass) TARGET QDL \\ (0 (do\_you\_have\_children) LINK *1 Num) ;
 
 
@@ -333,7 +333,7 @@ In the question in Figure \ref{hivssetloc}, the systems asks "In which room shou
 
 \ex.\flushleft\label{missingill} \small{MAP (\&grm-missing-Ill) TARGET ("guhte") IF \\(1 (N Ill) LINK *1 QDL LINK NOT *1 Ill OR ADV-ILL OR Neg BARRIER S-BOUNDARY) ;}
 
-The rule adds a grammar-error-tag \textit{\&grm-missing-Ill} to the sentence analysis triggered by the interrogative pronoun followed by a noun in illative. This combinations requires an illative form in the answer, when there is no illative form nor adverb with illative interpretation nor negation verb in the answer. The \textit{Sahka}-engine generates a tutorial message based on the error-tag, given in example \ref{mess}:  
+The rule adds a grammar-error-tag \textit{\&grm-missing-Ill} to the sentence analysis triggered by the interrogative pronoun followed by a noun in illative. This combination requires an illative form in the answer, when there is no illative form nor adverb with illative interpretation nor negation verb in the answer. The \textit{Sahka}-engine generates a tutorial message based on the error-tag, given in example \ref{mess}:  
 
 \ex.\label{mess} \small{$<$message id="grm-missing-Ill"$>$The \\answer should contain an illative. $<$/message$>$}
 
@@ -403,7 +403,7 @@ A more difficult problem emerges when the spelling error gives rise to an uninte
 
 
 \subsection{Metacomments}
-The \textit{Sahka} program is intended to mimic a natural dialogue. But there are some restrictions in the possible input from the user;  the system has to be able to analyse the input, and the answers should be pedagogically meaningful for the user. To remind the user of that, the system sometimes give metacomments to the user, like the following:
+The \textit{Sahka} program is intended to mimic a natural dialogue. But there are some restrictions in the possible input from the user; the system has to be able to analyse the input, and the answers should be pedagogically meaningful for the user. To remind the user of that, the system sometimes give metacomments to the user, like the following:
 \begin{itemize}
 \setlength{\itemsep}{-0.2cm}
 \item "Answering \textit{I-don't-know} is too simple. Try again."
@@ -608,7 +608,7 @@ Thanks to the faculty of Humanities at the University of Tromsø, and the Sámi 
 %\newblock New York : Routledge.
 
 \bibitem[\protect\citename{Karlsson et. al}1995]{Karlsson:95}
-{Fred Karlsson and Atro Voutilainen and Juha Heikkilä and Arto Anttila}.
+{Fred Karlsson, Atro Voutilainen, Juha Heikkilä and Arto Anttila}.
 \newblock 1995.
 \newblock {\em Constraint grammar: a language-independent system for parsing unrestricted text}.
 \newblock Mouton de Gruyter.
