@@ -1040,7 +1040,7 @@ SET NPNHAIIP = WORD - PRE-NP-HEAD - Adv - Indef - Ill - Pcle ;
 SET NPNHC    = WORD - PRE-NP-HEAD - Com ;                      
 # "njaŋggofirpmiiguin bivdin"
 SET NPNHCCC  = WORD - PRE-NP-HEAD - COMMA ;
-SET NPNHCC   = WORD - PRE-NP-HEAD - COMMA ;
+#SET NPNHCC   = WORD - PRE-NP-HEAD - COMMA - LCRD ;
 SET NAPP     = WORD - PRE-APP ;
 
 
@@ -1907,6 +1907,10 @@ SET INTR = Rel OR PUNCT-LEFT ;
 SET INTR-END = COMMA OR PUNCT-RIGHT ;
 
 
+	# Moved here due to error msg.
+
+LIST SAHKA = "^sahka" ;
+
 
 
 
@@ -2329,7 +2333,7 @@ SELECT:r608 (V Neg Ind Sg1) IF (*-1 BOS OR (":") BARRIER REALWORD);
 
 SELECT:r609 Inf IF (*-1 (Neg Sup) BARRIER S-BOUNDARY);
 
-SELECT:r611 VFIN IF (*-1 BOS OR (":") BARRIER REALWORD)(0 Qst)(*1 ("^qst") OR ("^sahka") BARRIER VFIN);
+SELECT:r611 VFIN IF (*-1 BOS OR (":") BARRIER REALWORD)(0 Qst)(*1 ("^qst") OR SAHKA BARRIER VFIN);
 	## Humatgo sámegiela? 
 
 SELECT VFIN IF (*-1 BOS BARRIER VFIN)(0 N LINK NEGATE 0 Imprt LINK 1 go)(*1 CS BARRIER VFIN LINK *1 VFIN BARRIER S-BOUNDARY);	
@@ -5355,7 +5359,7 @@ BEFORE-SECTIONS
 
 MAPPING-PREFIX = & ;
 
-LIST SAHKA = "^sahka" ;
+
 
           SECTION
 
