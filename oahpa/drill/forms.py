@@ -128,6 +128,7 @@ FREQUENCY_CHOICES = (
 GEOGRAPHY_CHOICES = (
     ('world', _('world')),
     ('sápmi', _('sapmi')),
+    ('suopma', _('suopma')),
 )
 
 VASTA_LEVELS = (
