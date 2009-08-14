@@ -411,6 +411,8 @@ class Quizzview(Gameview):
             self.settings['geography'].append('world')
         if 'sapmi' in settings_form.data:
             self.settings['geography'].append('sapmi')
+        if 'suopma' in settings_form.data:
+            self.settings['geography'].append('suopma')
 
         if len(self.settings['frequency']) == 0:
             self.settings['frequency'].append('common')        
