@@ -479,6 +479,7 @@ class QuizzSettings(OahpaSettings):
     rare = forms.BooleanField(required=False,initial=0)
     sapmi = forms.BooleanField(required=False, initial='1')
     world = forms.BooleanField(required=False,initial=0)
+    suopma = forms.BooleanField(required=False,initial=0)
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 
     default_data = {'gametype' : 'bare', 'language' : 'sme', 'dialogue' : 'GG', \
