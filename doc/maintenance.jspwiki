@@ -137,6 +137,12 @@ DATABASE_PASSWORD = 'myspassword'
 DATABASE_HOST = ''
 }}}
 
+
+In your .bashrc file, add the PYTHONPATH of the OAHPA! project:
+{{{
+export PYTHONPATH=$(YOUR-PATH-TO)/gtsvn/ped:$(YOUR-PATH-TO)/gtsvn/ped/oahpa:$(YOUR-PATH-TO)/gtsvn/ped/oahpa/drill
+}}}
+
 Start installing the database information:
 
 {{{
@@ -152,6 +158,22 @@ Start Django locally:
 
 {{{
 python manage.py runserver
+}}}
+
+!! Possible problems:
+* if you get a DB connection error
+{{{
+Can't connect to local MySQL server through socket '/var/mysql/mysql.sock'
+}}}
+
+first, you have to find the mysql socket, for instance
+{{{
+~>mysqladmin variables | grep socket
+| socket                                  | /tmp/mysql.sock 
+}}}
+and then, you have to change the value of the DATABASE_HOST accordingly:
+{{{
+DATABASE_HOST = '/tmp/mysql.sock'
 }}}
 
 
