@@ -138,9 +138,14 @@ DATABASE_HOST = ''
 }}}
 
 
-In your .bashrc file, add the PYTHONPATH of the OAHPA! project:
+Add the PYTHONPATH of the OAHPA! project in your .bashrc file:
 {{{
 export PYTHONPATH=$(YOUR-PATH-TO)/gtsvn/ped:$(YOUR-PATH-TO)/gtsvn/ped/oahpa:$(YOUR-PATH-TO)/gtsvn/ped/oahpa/drill
+}}}
+Adjust paths your ped/oahpa/ling.py:
+{{{
+fstdir="$(YOUR-PATH-TO)/gtsvn/gt/sme/bin"
+lookup = "$(YOUR-PATH-TO)/bin/lookup"
 }}}
 
 Start installing the database information:
@@ -160,18 +165,18 @@ Start Django locally:
 python manage.py runserver
 }}}
 
-!! Possible problems:
-* if you get a DB connection error
+!! Possible problem:
+* if you get a DB connection error, for instance
 {{{
 Can't connect to local MySQL server through socket '/var/mysql/mysql.sock'
 }}}
 
-first, you have to find the mysql socket, for instance
+first, find the mysql socket
 {{{
 ~>mysqladmin variables | grep socket
 | socket                                  | /tmp/mysql.sock 
 }}}
-and then, you have to change the value of the DATABASE_HOST accordingly:
+and then, change the value of the DATABASE_HOST in ped/oahpa/settings.py accordingly:
 {{{
 DATABASE_HOST = '/tmp/mysql.sock'
 }}}
