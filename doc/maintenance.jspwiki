@@ -142,10 +142,16 @@ Add the PYTHONPATH of the OAHPA! project in your .bashrc file:
 {{{
 export PYTHONPATH=$(YOUR-PATH-TO)/gtsvn/ped:$(YOUR-PATH-TO)/gtsvn/ped/oahpa:$(YOUR-PATH-TO)/gtsvn/ped/oahpa/drill
 }}}
-Adjust paths your ped/oahpa/ling.py:
+Adjust paths in ped/oahpa/ling.py:
 {{{
 fstdir="$(YOUR-PATH-TO)/gtsvn/gt/sme/bin"
 lookup = "$(YOUR-PATH-TO)/bin/lookup"
+}}}
+
+Adjust paths in ped/oahpa/drill/game.py:
+{{{
+fstdir="$(YOUR-PATH-TO)/Users/cipriangerstenberger/gtsvn/gt/" + language + "/bin"
+lookup ="$(YOUR-PATH-TO)/Users/cipriangerstenberger/bin/lookup"
 }}}
 
 Start installing the database information:
