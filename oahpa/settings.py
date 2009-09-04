@@ -12,6 +12,7 @@ ADMINS = (
      ('Saara Huhmarniemi', 'saara'),
      ('Trond Trosterud', 'trond'),
      ('Lene Antonsen', 'lene'),
+     ('Ciprian Gerstenberger', 'ciprian'),
 )
 
 MANAGERS = ADMINS
