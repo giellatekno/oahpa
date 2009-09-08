@@ -91,10 +91,16 @@ class Words:
                         sem_entry, created = Semtype.objects.get_or_create(semtype="PLACE-NAME-LEKSA")
                         if created:
                             print "Created semtype entry with name PLACE-NAME-LEKSA"
-                            transl.semtype.add(sem_entry)
-                            transl.frequency=w.frequency
-                            transl.geography=w.geography
-                            transl.save()
+                            #transl.semtype.add(sem_entry)
+                            #transl.frequency=w.frequency
+                            #transl.geography=w.geography
+                            #transl.save()
+
+                        transl.semtype.add(sem_entry)
+                        transl.frequency=w.frequency
+                        transl.geography=w.geography
+                        transl.save()
+
 
     def add_semantics(self,e,w,placenamefile):
         # Give placenames special semantic tag
@@ -137,7 +143,7 @@ class Words:
                 w.save()
 
     def store_word(self,e,linginfo,mainlang,paradigmfile,placenamefile,delete):
-
+        
         # Store first unique fields
         id=e.getAttribute("id")
         lemma=e.getElementsByTagName("lemma")[0].firstChild.data
@@ -312,6 +318,11 @@ class Words:
 
         if not pos:
             print "specify the part of speech with option -p"
+# to debug and fix: delete word routine
+#            wordnobs = Wordnob.objects.filter(wordid=wid)
+#            for w in wordnobs:
+#                print "Removing", w.wordid
+#                w.delete()
         if wid and pos:
             words = Word.objects.filter(wordid=wid,pos=pos)
             for w in words:
