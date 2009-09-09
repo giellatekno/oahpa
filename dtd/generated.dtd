@@ -1,0 +1,49 @@
+<!ELEMENT book EMPTY >
+<!ATTLIST book name ( algu | bures | d1 | d2 | d3 | d4 | oaidnalit | sara ) #REQUIRED >
+
+<!ELEMENT dialect EMPTY >
+<!ATTLIST dialect class ( NOT-GG | NOT-KJ ) #IMPLIED >
+
+<!ELEMENT entry ( #PCDATA | dialect | forms | id | lemma | noleksa | only-pl | only-sg | pos | semantics | sources | stem | translations )* >
+<!ATTLIST entry id ID #IMPLIED >
+
+<!ELEMENT form ( #PCDATA ) >
+<!ATTLIST form tag CDATA #FIXED "N+Sg+Gen" >
+
+<!ELEMENT forms ( form ) >
+
+<!ELEMENT id ( #PCDATA ) >
+
+<!ELEMENT lemma ( #PCDATA ) >
+
+<!ELEMENT lexicon ( entry+ ) >
+<!ATTLIST lexicon xml:lang NMTOKEN #REQUIRED >
+
+<!ELEMENT noleksa EMPTY >
+
+<!ELEMENT only-pl EMPTY >
+
+<!ELEMENT only-sg EMPTY >
+
+<!ELEMENT pos EMPTY >
+<!ATTLIST pos class NMTOKEN #FIXED "N" >
+
+<!ELEMENT sem EMPTY >
+<!ATTLIST sem class NMTOKEN #IMPLIED >
+
+<!ELEMENT semantics ( sem* ) >
+
+<!ELEMENT sources ( book* ) >
+
+<!ELEMENT stem EMPTY >
+<!ATTLIST stem class ( bisyllabic | contracted | trisyllabic ) #REQUIRED >
+<!ATTLIST stem diphthong ( no | yes ) #REQUIRED >
+<!ATTLIST stem gradation ( inv | no | yes ) #REQUIRED >
+<!ATTLIST stem rime CDATA #REQUIRED >
+<!ATTLIST stem soggi ( a | e | i | o | u ) #IMPLIED >
+
+<!ELEMENT tr ( #PCDATA ) >
+<!ATTLIST tr xml:lang ( eng | fin | nob | swe ) #REQUIRED >
+
+<!ELEMENT translations ( sem | tr )* >
+
