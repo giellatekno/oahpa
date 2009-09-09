@@ -2,15 +2,22 @@
 <!-- DTD for lexicons used in OAHPA -->
 
 <!ELEMENT lexicon (entry+)>
+<!ATTLIST lexicon xml:lang ( nob | fin | smj | sma | swe | eng | sme) "sme" >
 
-<!ELEMENT entry (lemma, translations, valency?, semantics?, stem, sources?) >
+<!ELEMENT entry (lemma, only-sg?, pos, translations, valency?, semantics?, stem, dialect?, sources?, forms?) >
 
 <!ELEMENT lemma (#PCDATA)>
 
-<!ELEMENT sources (book+) >
+<!ELEMENT only-sg EMPTY >
+
+<!ELEMENT sources (book?) >
 <!ELEMENT book EMPTY >
 <!ATTLIST book name CDATA #IMPLIED >
 <!-- The attribute may not be empty, now there are empty entries -->
+
+<!ELEMENT forms ( form ) >
+<!ELEMENT form (#PCDATA) >
+<!ATTLIST form tag (#PCDATA) >
 
 <!-- 
 <!ATTLIST book 
@@ -35,15 +42,21 @@ D1 < ... < D4 davvin 1-4
 
 <!ELEMENT stem EMPTY>
 <!ATTLIST stem class ( bisyllabic | trisyllabic | contracted ) "bisyllabic" >
+<!ATTLIST stem diphthong ( no | yes ) "no" >
+<!ATTLIST stem gradation ( no | yes ) "no" >
+<!ATTLIST stem soggi ( a | e | i | o | u ) "no" >
+<!ATTLIST stem rime ( _g | _m | _n | 0 | is | n-m | oš | s-ss | t-b | t-d | t-g | t-g-hk | t-h | ái | š-ž | š-šš | š-čč-žž ) "0" >
+
+<!ELEMENT dialect EMPTY >
+<!ATTLIST dialect class ( NOT-GG | NOT-KJ ) #IMPLIED >
 
 <!ELEMENT semantics (sem*)>
 <!ELEMENT sem EMPTY>
 <!ATTLIST sem class  CDATA #IMPLIED >
 
 <!ELEMENT pos EMPTY>
-<!ELEMENT pos (#PCDATA) >
-<!ATTLIST pos class ( A | V | N ) #IMPLIED
->
+<!--<!ELEMENT pos (#PCDATA) >-->
+<!ATTLIST pos class ( A | V | N ) #IMPLIED >
 
 <!-- <!ATTLIST sem class ( ACTIVITY | MOVEMENT | VERBAL | WEATHER-verb | AUX ) #IMPLIED > -->
 <!-- This list does not correspond reality at the moment. Semantic classes in the lexicons: -->
