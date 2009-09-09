@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <site label="OAHPA!" href="" xmlns="http://apache.org/forrest/linkmap/1.0" tab="">
-  <about label=" ">
+  <about label="Sámegillii">
     <index label=" " href="index.html" description="Bures boahtin OAHPA!-portálii"/>
 
-  <L2 label="OAHPA! prográmmat">
+  <L2 label="OAHPA!">
     <numra label="Numra" href="numra.html"/>
     <leksa label="Leksa" href="leksa.html"/>
     <sojahanharjehusat  label="Morfa" href="morfa.html"/>
@@ -14,7 +14,7 @@
     <bagadus label="Oahpaheaddji bagadus" href="OAHPAveiledning.html"/>
 
   </L2>
-  <L1 label="VISL prográmmat">
+  <L1 label="VISL">
     <paintbox label="Paintbox" href="Paintbox_sme.html"/>
     <wordfall label="Wordfall" href="WordFall_sme.html"/>
     <labyrinth label="Labyrinth" href="Labyrinth_sme.html"/>
@@ -25,7 +25,7 @@
     <killerfiller label="Killerfiller" href="Killerfiller_sme.html"/>
     <animalquiz label="Animal Quiz" href="animalquiz.html"/>
   </L1>
-  <res label="Oahppan-resurssat:">
+  <res label="Resurssat">
     <satneluohkat  label="Sátneluohkát" href="satneluohkat.html"/>
     <cealkkalahtut  label="Cealkkačoavdin" href="cealkkalahtut.html"/>
     <paradigmat  label="Grammatihkka ja paradigmat" href="grammatihkka.html"/>
@@ -33,11 +33,12 @@
     <analyseren  label="Sátne- ja teakstanalyseren" href="analyseren.html"/>
   </res>
   </about>  
-<norwegian label="På norsk:" tab="norsk">
-  <about label="Velkomen">
+<norwegian label="På norsk" tab="norsk">
+    <index label="Velkommen" href="norsk.html" description="Velkomen til læringsportalen"/>
+    <!--  <about label="Velkomen">
     <index label="Intro" href="norsk.html" description="Velkomen til læringsportalen"/>
-  </about>
-  <L2 label="OAHPA!-program:">
+  </about>-->
+  <L2 label="OAHPA!">
     <numra label="Numra" href="numra.nno.html"/>
     <leksa label="Leksa" href="leksa.nno.html"/>
     <sojahanharjehusat  label="Morfa" href="morfa.nno.html"/>
@@ -46,7 +47,7 @@
     <satnevuorka  label="Ordtilfang" href="satnevuorka.nno.html"/>
     <bagadus label="Lærerveiledning" href="OAHPAveiledning.nno.html"/>
   </L2>
-  <L1 label="VISL-program:">    
+  <L1 label="VISL">    
     <paintbox label="Paintbox" href="Paintbox_nno.html"/>
     <wordfall label="Wordfall" href="WordFall_nno.html"/>
     <labyrinth label="Labyrinth" href="Labyrinth_nno.html"/>
@@ -57,7 +58,7 @@
     <killerfiller label="Killerfiller" href="Killerfiller_nno.html"/>
     <animalquiz label="Animal Quiz" href="animalquiz.html"/>
   </L1>
-  <res label="Læringsressursar:">
+  <res label="Ressursar">
     <satneluohkat  label="Ordklassar" href="satneluohkat.nno.html"/>
     <cealkkalahtut  label="Setningsanalyse" href="cealkkalahtut.nno.html"/>
     <paradigmat  label="Grammatikk og paradigme" href="grammatihkka.nno.html"/>
@@ -66,11 +67,9 @@
   </res>
   </norwegian>
 <!--  Sub menus    -->
-  <english label="In English:" tab="english">
-  <about label="Welcome">
-    <index label="Intro" href="english.html" description="Welcome to the Sámi learning portal"/>
-  </about>
-  <L2 label="OAHPA! program:">
+  <english label="In English" tab="english">
+    <index label="Welcome" href="english.html" description="Welcome to the Sámi learning portal"/>
+  <L2 label="OAHPA!">
      <numra label="Numra" href="numra.eng.html"/>
     <leksa label="Leksa" href="leksa.eng.html"/>
     <sojahanharjehusat  label="Morfa" href="morfa.eng.html"/>
@@ -78,7 +77,7 @@
     <sahka  label="Sahka" href="sahka.eng.html"/>
     <satnevuorka  label="Vocabulary" href="satnevuorka.eng.html"/>
   </L2>
-  <L1 label="VISL program">
+  <L1 label="VISL">
     <paintbox label="Paintbox" href="Paintbox_eng.html"/>
     <wordfall label="Wordfall" href="WordFall_eng.html"/>
     <labyrinth label="Labyrinth" href="Labyrinth_eng.html"/>
@@ -89,7 +88,7 @@
     <killerfiller label="Killerfiller" href="Killerfiller_eng.html"/>
     <animalquiz label="Animal Quiz" href="animalquiz.html"/>
   </L1>
-  <res label="Learning resources">
+  <res label="Resources">
     <satneluohkkaspealut label="Part of speech game" href="satneluohkkaspealut.eng.html"/>
     <cealkkacoavdinspealut label="Sentence analysis" href="cealkkacoavdinspealut.eng.html"/>
     <cealkkacoavdinmuorra label="Sentence tree" href="cealkkacoavdinmuorra.eng.html"/>
@@ -104,10 +103,10 @@
   </english>
 
 
-  <extending label="Adding new languages" href="addlang/" tab="New languages">
-  <about label="About adding new languages">
+  <extending label="For developers" href="addlang/" tab="New languages">
+
     <index label="Intro" href="index.html" description="Overview"/>
-  </about>
+
   </extending>
 
   
