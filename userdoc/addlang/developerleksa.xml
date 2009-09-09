@@ -7,18 +7,79 @@
 	</header>
 	<body>
 		<p>
-Here starts the documentation for making Leksa work for new languages. The goal is to make a demo with 50-100 lemmata. The lexicon will be used also for Morfa-C.</p>
-		<section>
-			<title>Leksa</title>
-			<p>
-Word quizes are fun, and useful in order to train the vocabulary. The Leksa game is meant for pupils who are learning a new language, perhaps also for pupils in need of writing practice. The program should accept synonyms. Leksa works in both language directions.</p>
-<p><a href="http://oahpa.uit.no/"><strong>Here</strong></a>
- you can see how the North Sámi Leksa works. Choose instruction language in the right margin before you choose Leksa.
+Here starts the documentation for making Leksa work for new languages. The goal is to make a demo with 50-100 lemmata. The lexicon will be used also for Morfa-C. <a href="http://oahpa.uit.no/"><strong>Here</strong></a> you can see how the North Sámi Leksa works. Choose instruction language in the right margin before you choose Leksa.
 </p>
-		</section>
 
+		<section>
+			<title>Lemmata</title>
+<p>You need some lemmata for the lexicon. Some of them will have more than one semantic class because we will use the same lemma both for Leksa and for Morfa-C:</p>
+
+			<ul>
+			<li>- the verb for "to live (in a place)", semantic class "HUMAN"</li> 
+			<li>- the verb "to eat", semantic class "FOOD/DRINK"  </li> 
+			<li>- the verb "to drink", semantic class "FOOD/DRINK" </li> 
+			<li>- at least 7 verbs for moving from one place to another, (e.g. walk, run, drive), semantic classes "MOVEMENT" and "TRAVEL" </li> 
+			<li>- at least 7 verbs for making food (e.g. steak, cook, bake), semantic classes "FOOD/DRINK" </li>
+			<li>- at least 7 nouns for beverages (e.g. water, milk, beer), semantic class "FOOD/DRINK" and "DRINK" </li>
+			<li>- 7 nouns for food (e.g. meat, bread, fish), semantic classes "FOOD/DRINK" and "FOOD"</li>
+			<li>-  at least 7 nouns for places (e.g. school, city, town), semantic classes "PLACE" and "TRAVEL"</li>
+			<li>- at least 7 nouns for human beings (e.g. boy, woman, teacher), semantic class "HUMAN" </li>
+			<li>- at least 10 adjectives about human beings, (e.g. strong, old, young, clever), semantic class "HUMAN"</li>
+</ul>
+<p>Give in addition the semantic class "ACTIVITY" to all verbs which can be an answer to the question: "What did the girl do yesterday?" (e.g. bake)</p>		</section>
+
+				
+		<section>
+			<title>XML-format</title>
+<p>You put the lemmata into xml-format. There should be one file for each of the parts of speech. Add names to the files with the language code first, like  smeverbs.xml, smenouns.xml and smeadjectives.xml. Pos class for noun is N, for verb it is V and for adjective it is A. If there are more than one translation (synonyms), put the most common one as the first one.</p>
+		<source>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;lexicon>
+   &lt;entry>
+     &lt;lemma>mielki&lt;/lemma>
+	 &lt;pos class="N"/>
+     &lt;translations>
+      &lt;tr xml:lang="nob">melk&lt;/tr>
+      &lt;tr xml:lang="nob">mjølk&lt;/tr>     
+      &lt;/translations>
+     &lt;semantics>
+      &lt;sem class="FOOD/DRINK"/>
+      &lt;sem class="DRINK"/>
+     &lt;/semantics>
+   &lt;/entry>
+&lt;/lexicon>		</source>
+		</section>
+		
+		<section>
+			<title>Lexicon files the other direction</title>
+<p>Now you make files with the same lemmata, with the most common translation as lemma. Add names to the files with the language code first, like nobverbs.xml and so on. Also here may be synonyms in the translation field.</p>
+		<source>
+&lt;?xml version="1.0" encoding="utf-8"?>
+&lt;lexicon>   
+&lt;entry>
+     &lt;lemma>melk&lt;/lemma>
+	 &lt;pos class="N"/>
+     &lt;translations>
+      &lt;tr xml:lang="sme">mielki&lt;/tr>
+      &lt;/translations>
+     &lt;semantics>
+      &lt;sem class="FOOD/DRINK"/>
+      &lt;sem class="DRINK"/>
+     &lt;/semantics>
+   &lt;/entry>
+   &lt;/lexicon>
+		</source>
+		</section>
+		<section>
+			<title>Your Leksa demo</title>
+<p>You have now made the xml-files for a Leksa demo with at least 55 words. The demo has these options:</p>
+			<ul>
+			<li>- language direction (e.g. from Sami to Norwegian or from Norwegian to Sami)</li> 
+						<li>- three semantic classes: human, travel, food/drink. The other semantic classes are for Morfa-C. If you are going to make a big Leksa, then you could use semantic sets and supersets instead of many semantic sets in each entry.</li>
+		</ul>			</section>
+		
 		<p class="last_modified">Last changed: $Id: developerleksa.xml,v 1.6 2009/09/09
 	lene Exp $
-				</p>
+				</p>				
 	</body>
 </document>
