@@ -11,7 +11,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
 </p>
 		<section>
 			<title>Question-answer-pair matrix for Morfa-C</title>
-<p>Now starts the fun part of the work. With help of the semantic classes in the lexicon you can make tasks for the pupils. They get a lemma in basic form and their task is to inflect it. What kind of tasks depends on the language. Your tools are the semantic sets of HUMAN nouns, HUMAN adjectives, PLACE nouns, MOVEMENT verbs, ATIVITY verbs, FOOD nouns and DRINK nouns.</p>
+<p>Now starts the fun part of the work. Using the semantic classes in the lexicon you can make tasks for the pupils. They get a lemma in basic form and their task is to inflect it. What kind of tasks depends on the language. Your tools are the semantic sets of HUMAN nouns, HUMAN adjectives, PLACE nouns, MOVEMENT verbs, ACTIVITY verbs, FOOD nouns and DRINK nouns.</p>
 
 
 <p>The matrix contains both variables and constants. This is an example of a question-answer-pair matrix in North Sami. The first text is "What did SUBJ yesterday?", the next one is "Yesterday SUBJ MAINV". The line with game="morfa" implies that the task for the pupil is to write the correct word form of the MAINV.</p>
@@ -96,7 +96,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
 
 		</section>
 		<section>
-			<title>More examples with the semantic classes</title>
+			<title>More examples using the semantic classes</title>
 <p>The semantic classes in the lexicon makes it possible to make e.g. these matrices:</p>
 <ul>
 <li>- Where does the ADJ HUMAN live? HUMAN lives in ______ (PLACE).</li>
@@ -108,7 +108,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
 		</section>	
 		<section>
 			<title>Word forms</title>
-<p>In the lexicon are only lemmas. The Morfa-C tasks need word forms. There are two ways of doing it - the best one is to generate the needed word forms automatically. If you can't do it for your language, then you have to write the word forms manually. The work depends on the matrices, there you see which word forms you need for each lemma, also the basis forms. The word forms have to be in this format (tab-separated): </p>
+<p>The lexicon contains only lemmas. The Morfa-C tasks need word forms. There are two ways of doing it - the best one is to generate the needed word forms automatically. If you can't do it for your language, then you have to write the word forms manually. The work depends on the matrices, there you see which word forms you need for each lemma, also the basis forms. The word forms have to be in this format (tab-separated): </p>
   <source> 
   wordformTABlemma+POS+.......
   
@@ -126,7 +126,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
 
 		<section>
 			<title>Morfa-S</title>
-<p>Morfa-S is made of the file of word forms. You have to decide what options there should be, take a look at the North Sami Morfa-S. This will be a big work if you cannot generate the word forms automatically.</p>
+<p>Morfa-S is made of the file of word forms. You have to decide what options there should be, take a look at the North Sami Morfa-S. This will be a big task if you cannot generate the word forms automatically.</p>
 
 		</section>
 		<p class="last_modified">Last changed: $Id: developermorfa.xml,v 1.6 2009/09/09
