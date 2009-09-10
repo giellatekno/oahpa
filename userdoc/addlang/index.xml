@@ -7,7 +7,7 @@
 	</header>
 	<body>
 		<p>
-This is the documentation for how to make OAHPA! work for new languages (we assume you know <a href="http://oahpa.uit.no/">OAHPA!</a> already). We start with two of the programs, Leksa and Morfa-C, and the goal is to make a demo of each of them, with 50-100 lemmata.</p>
+This is the documentation for how to make OAHPA! work for new languages (we assume you know <a href="http://oahpa.uit.no/"><strong>OAHPA!</strong></a> already). We start with two of the programs, Leksa and Morfa-C, and the goal is to make a demo of each of them, with at least 50 lemmas.</p>
 		<section>
 			<title>Why port Oahpa! to other languages?</title>
 			<p>
@@ -17,23 +17,26 @@ We hope the virtue of Oahpa! speaks for itself: «Such a thing would be nice to 
 		<section>
 			<title>For which languages?</title>
 			<p>
-In principle, Oahpa! can be used for any language. Compared to many other interactive learning approaches, Oahpa! is particularly will suited for languages possessing a rich morphology, and for tasks where the system accepts free-form input from the student (like in the programs <em>Vasta</em> and <em>Sahka</em>). Note that Sahka presupposes a robust syntactic parser for the language in question.
+In principle, Oahpa! can be used for any language. Compared to many other interactive learning approaches, Oahpa! is particularly will suited for languages possessing a rich morphology, and for tasks where the system accepts free-form input from the student, like in the programs Vasta and Sahka. Note that these programs presupposes a robust syntactic parser for the language in question.
 			</p>
 		</section>
 		<section>
 			<title>Who can participate in this work?</title>
+<p>Anybody, but</p>
 <ul>
-<li>You will need an internet connection</li>
-<li>Your language should have a written standard. Dictionaries and a good grammar also do not hurt.</li>
-<li>Familiarity with computers and/or a formal linguistic backgronud will come in handy</li>
-<li>Teaching experience will be useful, especially if you already have vocabulary lists grouped according to student level, topic, etc.</li>
-<li>Note that we work under an open source regime, and whatever gets published via our servers will be available for use, free of charge, and the source code will be available for further development. That means that if you plan making a closed, commercial teaching environment, you are welcome to use our code for that (according to normal GPL practice), but whatever is put on our servers will be open and free.</li>
+<li>- you will need an internet connection.</li>
+<li>- your language should have a written standard. Dictionaries and a good grammar also do not hurt.</li>
+<li>- Familiarity with computers and/or a formal linguistic backgronud will come in handy.</li>
+<li>- Teaching experience will be useful, especially if you already have vocabulary lists grouped according to student level, topic, etc.</li>
 </ul>
+
+<p> Note that we work under an open source regime, and whatever gets published via our servers will be available for use, free of charge, and the source code will be available for further development. That means that if you plan making a closed, commercial teaching environment, you are welcome to use our code for that (according to normal GPL practice), but whatever is put on our servers will be open and free.</p>
+
 		</section>
 		<section>
 		<title>What Oahpa! programs?</title>
 					<p>
-Whenever you want to start developing Oahpa! for your own language, or just want to test it out, we think the two learning programs <em>Leksa</em> and <em>Morfa-C</em> are a good start. They do not need too much grammatical resources, they are relevant for two central learning topics (vocabulary and word inflection), and they give a good impression of some of Oahpa!s basic functionality. In order to utilize it in full, you will need access to robust morphological and syntactic parsers for your language, but that will not be needed for Leksa and Morfa-C.
+Whenever you want to start developing Oahpa! for your own language, or just want to test it out, we think the two learning programs Leksa and Morfa-C are a good start. They do not need too much grammatical resources, they are relevant for two central learning topics (vocabulary and word inflection), and they give a good impression of some of Oahpa!s basic functionality. In order to utilize it in full, you will need access to robust morphological and syntactic parsers for your language, but that will not be needed for Leksa and Morfa-C.
 			</p>
             <section>
 			<title>Leksa</title>
@@ -46,7 +49,7 @@ Word quizes are fun, and useful in order to train the vocabulary. The Leksa game
 		<section>
 			<title>Morfa-C</title>
 			<p>
-The pupil may practice word inflection in a systematic way - either with singleton words (Morfa-S) or words in sentences, in order to learn the context in which to use the wordforms (Morfa-C). The student may choose part-of-speech.  We have chosen to help you to make Morfa-C because you then get Morfa-S for free if you add more lemmata (and word forms).</p>
+The pupil may practice word inflection in a systematic way - either with singleton words (Morfa-S) or words in sentences, in order to learn the context in which to use the wordforms (Morfa-C). The student may choose part-of-speech.  We have chosen to help you to make Morfa-C because you then get Morfa-S for free if you add more lemmas (and word forms).</p>
 <p><a href="http://oahpa.uit.no/"><strong>Here</strong></a> you can see how the North Sámi Morfa-S and Morfa-C work. Choose instruction language in the right margin before you choose the program. 
                 
 </p>
@@ -54,7 +57,7 @@ The pupil may practice word inflection in a systematic way - either with singlet
 		<section>
 		<title>Contact information</title>
 					<p>
-If this sounds interesting, feel free to contact us, at <em>giellatekno at uit dot no</em>. We will also offer courses in Oahpa! development in 2010, info will be posted on this page.</p>
+If this sounds interesting, feel free to contact us, at <code>giellatekno at uit dot no</code>. We will also offer courses in Oahpa! development in 2010, info will be posted on this page.</p>
 		</section>
 		</section>
 		<p class="last_modified">Last changed: $Id: newdevelopers.xml,v 1.6 2009/09/09
