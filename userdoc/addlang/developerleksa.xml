@@ -7,12 +7,12 @@
 	</header>
 	<body>
 		<p>
-Here starts the documentation for making Leksa work for new languages. The goal is to make a demo with 50-100 lemmata. The lexicon will be used also for Morfa-C. <a href="http://oahpa.uit.no/"><strong>Here</strong></a> you can see how the North Sámi Leksa works. Choose instruction language in the right margin before you choose Leksa.
+Here starts the documentation for making Leksa work for new languages. The goal is to make a demo with at least 55 words. The lexicon will be used also for Morfa-C. <a href="http://oahpa.uit.no/"><strong>Here</strong></a> you can see how the North Sámi Leksa works. Choose instruction language in the right margin before you choose Leksa.
 </p>
 
 		<section>
-			<title>Lemmata</title>
-<p>You need some lemmata for the lexicon. Some of them will have more than one semantic class because we will use the same lemma both for Leksa and for Morfa-C:</p>
+			<title>Lemmas</title>
+<p>You need some lemmas for the lexicon, and they will have these semantic classes: human, travel, food/drink. Some of the lemmas will in addtion have other semantic classes because we will use the same lemmas both for Leksa and for Morfa-C:</p>
 
 			<ul>
 			<li>- the verb for "to live (in a place)", semantic class "HUMAN"</li> 
@@ -31,7 +31,7 @@ Here starts the documentation for making Leksa work for new languages. The goal 
 				
 		<section>
 			<title>XML-format</title>
-<p>You put the lemmata into xml-format. There should be one file for each of the parts of speech. Add names to the files with the language code first, like  smeverbs.xml, smenouns.xml and smeadjectives.xml. Pos class for noun is N, for verb it is V and for adjective it is A. If there are more than one translation (synonyms), put the most common one as the first one.</p>
+<p>You put the lemmas into xml-format. There should be one file for each of the parts of speech. Add names to the files with the language code first, like smeverbs.xml, smenouns.xml and smeadjectives.xml. pos class for noun is N, for verb it is V and for adjective it is A. If there are more than one translation (synonyms), put the most common one as the first one.</p>
 		<source>
 &lt;?xml version="1.0" encoding="utf-8"?>
 &lt;lexicon>
@@ -52,7 +52,7 @@ Here starts the documentation for making Leksa work for new languages. The goal 
 		
 		<section>
 			<title>Lexicon files the other direction</title>
-<p>Now you make files with the same lemmata, with the most common translation as lemma. Add names to the files with the language code first, like nobverbs.xml and so on. Also here may be synonyms in the translation field. You only need the Leksa semantic classes (human, travel, food/drink), but it does no harm if you add all the same semantic classes as in the original files.</p>
+<p>Now you make files with the same lemmas, with the most common translation as lemma. Add names to the files with the language code first, like nobverbs.xml and so on. Also here may be synonyms in the translation field. You only need the Leksa semantic classes (human, travel, food/drink), but it does no harm if you add all the semantic classes from the original files.</p>
 		<source>
 &lt;?xml version="1.0" encoding="utf-8"?>
 &lt;lexicon>   
@@ -75,8 +75,25 @@ Here starts the documentation for making Leksa work for new languages. The goal 
 <p>You have now made the xml-files for a Leksa demo with at least 55 words. The demo has these options:</p>
 			<ul>
 			<li>- language direction (e.g. from Sami to Norwegian or from Norwegian to Sami)</li> 
-						<li>- three semantic classes: human, travel, food/drink. The other semantic classes are for Morfa-C. If you are going to make a big Leksa, then you could use semantic sets and supersets instead of many semantic sets in each entry.</li>
+            <li>- three semantic classes containing nouns, verbs and adjectives: human, travel, food/drink. The other semantic classes are for Morfa-C. If you are going to make a big Leksa, then you could use semantic sets and supersets instead of many semantic sets in each entry.</li>
 		</ul>			</section>
+		<section>
+			<title>Extensions</title>
+<p>You can add more lemmas to each semantic class, e.g. also FOOD/DRINK and TRAVEL adjectives. You can make more semantic classes, e.g. NATURE. It is also possible to add more information to the lexicon to give the pupil more options. In the North Sami Leksa we have options for two main dialects and for text books (source). Another possibility would be level. This information is added to the lexicon like this: </p>
+		<source>
+    &lt;sources>
+      &lt;book name="d4"/>
+      &lt;book name="bures"/>
+    &lt;/sources>
+        &lt;dialect class="NOT-GG"/>
+        &lt;level class="2"/>
+   </source>
+   
+<p>Sometimes the translation will be a multi word expression, and it can be difficult to use the word in the Leksa from one of the languages to the another one. Then you add information about in the xml-file. The word will still be used in Morfa-C.</p>
+		<source>
+		&lt;noleksa/>
+		   </source>
+	</section>
 		
 		<p class="last_modified">Last changed: $Id: developerleksa.xml,v 1.6 2009/09/09
 	lene Exp $
