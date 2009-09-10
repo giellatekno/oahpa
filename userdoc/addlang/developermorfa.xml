@@ -11,19 +11,19 @@ Here starts the documentation for making Morfa work for new languages. The goal 
 </p>
 		<section>
 			<title>Tasks for Morfa-C</title>
-<p>Now starts the fun part of the work. Using the semantic classes in the lexicon you can make tasks for the pupils. They get a lemma in basic form and their task is to inflect it. What kind of tasks depends on the language. Your tools are the semantic sets of HUMAN nouns, HUMAN adjectives, PLACE nouns, MOVEMENT verbs, ACTIVITY verbs, FOOD nouns and DRINK nouns.</p>
+<p>Now starts the fun part of the work. Using the semantic classes in the lexicon you can make tasks for the pupils. They get a lemma in base form, and their task is to inflect it. What kind of tasks depends on the language. Your tools are the semantic sets of HUMAN nouns, HUMAN adjectives, PLACE nouns, MOVEMENT verbs, ACTIVITY verbs, FOOD nouns and DRINK nouns.</p>
 <p>The semantic classes in the lexicon make it possible to make e.g. these matrices:</p>
 <ul>
 <li>- Where does the ADJ HUMAN live? HUMAN lives in ______ (PLACE).</li>
 <li>- What does HUMAN drink? HUMAN drinks ______ (DRINK).</li>
 <li>- What does HUMAN eat? HUMAN eats ______ (FOOD).</li>
 <li>- Who are in PLACE? ______ (HUMAN) are.</li>
-<li>- What HUMAN do today? Today HUMAN _______ (ACTIVITY).</li>
-<li>- What ADJ HUMAN did yesterday? Yesterday HUMAN _______ (ACTIVITY).</li>
+<li>- What HUMAN do today? Today HUMAN _______ (ACTIVITY-verb).</li>
+<li>- What ADJ HUMAN did yesterday? Yesterday HUMAN _______ (ACTIVITY-verb).</li>
 <li>- How are HUMAN? They are ______ (HUMAN-adj).</li>
 <li>- Where to HUMAN MOVEMENT-verb? HUMAN MOVEMENT-verb _______ (to PLACE).</li>
 </ul>
-<p>You probably want to add more lemmas and semantic classes? But you should look at the next section first.</p>
+<p>You probably want to add more lemmas and semantic classes? But you should first look at the section about word forms.</p>
 		</section>			
 		
 		<section>
@@ -90,7 +90,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
 	&lt;sem class="HUMAN"/>
       &lt;/element>
       &lt;element id="MAINV">
-	&lt;grammar tag="V+Ind+Tense+Sg3"/>
+	&lt;grammar tag="V+Ind+Prs+Sg3"/>
 	&lt;sem class="MOVEMENT"/>
       &lt;/element>
     &lt;/question>
@@ -112,7 +112,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
 
 		<section>
 			<title>Word forms</title>
-<p>The lexicon contains only lemmas. The Morfa-C tasks need word forms. There are two ways of doing it - the best one is to generate the needed word forms automatically. If you can't do it for your language, then you have to write the word forms manually. The work depends on the matrices, there you see which word forms you need for each lemma, also the basis forms. The word forms have to be in this format (tab-separated): </p>
+<p>The lexicon contains lemmas. The Morfa-C tasks need word forms. There are two ways of doing it - the best one is to generate the needed word forms automatically. If you can't do it for your language, then you have to write the word forms manually. The work depends on the matrices, there you see which word forms you need for each lemma, also the basis forms. The word forms have to be in this format (tab-separated): </p>
   <source> 
   wordformTABlemma+POS+.......
   
@@ -130,7 +130,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
 
 		<section>
 			<title>Morfa-S</title>
-<p>Morfa-S is based on the file with word forms. You have to decide what options there should be, take a look at the North Sami Morfa-S. This will be a big work if you cannot generate the word forms automatically. Morfa-S offers help if the pupil wants to know how to make the word form. The help-information is generated based on the combination of the morphological tags and the task it self. This will be explained on the page "More".</p>
+<p>Morfa-S is based on the file with word forms. You have to decide what options there should be, take a look at the North Sami Morfa-S. This will be a big work if you have many lemmas, and cannot generate the word forms automatically.</p> <p> Morfa-S offers help if the pupil wants to know how to make the word form. The help-information is generated based on the combination of the morphological tags and the task it self. This will be explained on the page "More".</p>
 
 		</section>
 		<p class="last_modified">Last changed: $Id: developermorfa.xml,v 1.6 2009/09/09
