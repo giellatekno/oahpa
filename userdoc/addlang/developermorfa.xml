@@ -10,11 +10,25 @@
 Here starts the documentation for making Morfa work for new languages. The goal is to make a demo of Morfa-C with 2-3 sentence matrices and the lemmas from Leksa. <a href="http://oahpa.uit.no/"><strong>Here</strong></a> you can see how the North Sámi Morfa-S and Morfa-C work. Choose instruction language in the right margin before you choose the program. 
 </p>
 		<section>
-			<title>Question-answer-pair matrix for Morfa-C</title>
+			<title>Tasks for Morfa-C</title>
 <p>Now starts the fun part of the work. Using the semantic classes in the lexicon you can make tasks for the pupils. They get a lemma in basic form and their task is to inflect it. What kind of tasks depends on the language. Your tools are the semantic sets of HUMAN nouns, HUMAN adjectives, PLACE nouns, MOVEMENT verbs, ACTIVITY verbs, FOOD nouns and DRINK nouns.</p>
-
-
-<p>The matrix contains both variables and constants. This is an example of a question-answer-pair matrix in North Sami. The first text is "What did SUBJ yesterday?", the next one is "Yesterday SUBJ MAINV". The line with game="morfa" implies that the task for the pupil is to write the correct word form of the MAINV.</p>
+<p>The semantic classes in the lexicon make it possible to make e.g. these matrices:</p>
+<ul>
+<li>- Where does the ADJ HUMAN live? HUMAN lives in ______ (PLACE).</li>
+<li>- What does HUMAN drink? HUMAN drinks ______ (DRINK).</li>
+<li>- What does HUMAN eat? HUMAN eats ______ (FOOD).</li>
+<li>- Who are in PLACE? ______ (HUMAN) are.</li>
+<li>- What HUMAN do today? Today HUMAN _______ (ACTIVITY).</li>
+<li>- What ADJ HUMAN did yesterday? Yesterday HUMAN _______ (ACTIVITY).</li>
+<li>- How are HUMAN? They are ______ (HUMAN-adj).</li>
+<li>- Where to HUMAN MOVEMENT-verb? HUMAN MOVEMENT-verb _______ (to PLACE).</li>
+</ul>
+<p>You probably want to add more lemmas and semantic classes? But you should look at the next section first.</p>
+		</section>			
+		
+		<section>
+			<title>Question-answer-pair matrix in xml-format</title>
+<p>The matrix contains both variables and constants. This is an example of a question-answer-pair matrix in North Sami. The first text is "What SUBJ did yesterday?", the next one is "Yesterday SUBJ MAINV". The line with game="morfa" implies that the task for the pupil is to write the correct word form of the MAINV.</p>
 		<source>
    &lt;q id="prtSg">
     &lt;qtype>PRT&lt;/qtype>
@@ -40,7 +54,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
   
  </source>
 
-<p>This first matrix generate tasks like "What did the old teacher yesterday?" "bake" "Yesterday the teacher ____ " . As you see, the variable ADJ is just for giving variation. The qtype is PRT: to inflect verbs in past tense. It will be useful when you have made so many matrices that you will sort them as options for the pupil. But we will not use it in the demo. Every matix has an id to make it easier to remove them.</p><p> One example with inflecting nouns:</p>
+<p>This first matrix generate tasks like "What the old teacher did yesterday?" "bake" "Yesterday the teacher ____ " . As you see, the variable ADJ is just for giving variation. The qtype is PRT: to inflect verbs in past tense. It will be useful when you have made so many matrices that you will sort them as options for the pupil. But we will not use it in the demo. Every matix has an id to make it easier to remove them.</p><p> One example with inflecting nouns:</p>
 
 		<source>
    &lt;q id="AdjPred">
@@ -65,7 +79,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
     &lt;/answer> 
   &lt;/q>		
   </source>
-<p>The first text is "How are the SUBJ?", the next one is "They are ADJ". The line with game="morfa" implies that the task for the pupil is to write the correct word form of the ADJ. This matrix will generate tasks like "What kind are the girls?" "clever" "They are ______ (plural form in North Sami) ". </p><p> One more example:</p>
+<p>The first text is "How are the SUBJ?", the next one is "They are ADJ". The line with game="morfa" implies that the task for the pupil is to write the correct word form of the ADJ. This matrix will generate tasks like "How are the girls?" "clever" "They are ______ (plural form in North Sami) ". </p><p> One more example:</p>
 		<source>
   &lt;q id="nill">
     &lt;qtype>N-ILL&lt;/qtype>
@@ -90,22 +104,12 @@ Here starts the documentation for making Morfa work for new languages. The goal 
   &lt;/q>
 	
   </source>
-<p>The first text is "Where does SUBJ MAINV?", the next one is ""SUBJ MAINV N-ILL". The line with game="morfa" implies that the task for the pupil is to write the correct word form of the N-ILL. This matrix will generate tasks like "Where does the girl run?" "school" "The girl runs ______ (illative case in Sami) " . </p>
+<p>The first text is "Where to SUBJ MAINV?", the next one is "SUBJ MAINV N-ILL". The line with game="morfa" implies that the task for the pupil is to write the correct word form of the N-ILL. This matrix will generate tasks like "Where to the girl runs?" "school" "The girl runs ______ (illative case in Sami) " . </p>
 
 <p>For the demo we do it simply. E.g. we don't use pronouns in the answer, which in principle is easy, but then we have to take in account that in some languages there are genders. We have also an agreement fuction e.g. between SUBJ and MAINV which one could use.</p>
 
 		</section>
-		<section>
-			<title>More examples using the semantic classes</title>
-<p>The semantic classes in the lexicon makes it possible to make e.g. these matrices:</p>
-<ul>
-<li>- Where does the ADJ HUMAN live? HUMAN lives in ______ (PLACE).</li>
-<li>- What does HUMAN drink? HUMAN drinks ______ (DRINK).</li>
-<li>- What does HUMAN eat? HUMAN eats ______ (FOOD).</li>
-<li>- Who are in PLACE? ______ (HUMAN) are.</li>
-</ul>
-<p>You probably want to make more semantic classes? But you should look at the next section first.</p>
-		</section>	
+
 		<section>
 			<title>Word forms</title>
 <p>The lexicon contains only lemmas. The Morfa-C tasks need word forms. There are two ways of doing it - the best one is to generate the needed word forms automatically. If you can't do it for your language, then you have to write the word forms manually. The work depends on the matrices, there you see which word forms you need for each lemma, also the basis forms. The word forms have to be in this format (tab-separated): </p>
@@ -126,7 +130,7 @@ Here starts the documentation for making Morfa work for new languages. The goal 
 
 		<section>
 			<title>Morfa-S</title>
-<p>Morfa-S is made of the file of word forms. You have to decide what options there should be, take a look at the North Sami Morfa-S. This will be a big task if you cannot generate the word forms automatically.</p>
+<p>Morfa-S is based on the file with word forms. You have to decide what options there should be, take a look at the North Sami Morfa-S. This will be a big work if you cannot generate the word forms automatically. Morfa-S offers help if the pupil wants to know how to make the word form. The help-information is generated based on the combination of the morphological tags and the task it self. This will be explained on the page "More".</p>
 
 		</section>
 		<p class="last_modified">Last changed: $Id: developermorfa.xml,v 1.6 2009/09/09
