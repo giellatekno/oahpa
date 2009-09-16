@@ -7,7 +7,7 @@
 	</header>
 	<body>
 		<p>
-Here are some more documentation if you want to know more.</p>
+Here are some more documentation if you want to know more than just make the demos.</p>
 		<section>
 			<title>Constraint Grammar</title>
 			<p>Constraint grammar is used in Sahka and Vasta. This is an article based on a presentation held at NODALIDA 2009 CG workshop in Odense.		</p>			<p>
@@ -32,14 +32,14 @@ Here are some more documentation if you want to know more.</p>
 <li><code>sme/xml/verbs.dtd</code></li>
 <li><code>sme/xml/verbs.xml</code> </li>
 <li><code>sme/xml/fillings.xml</code> (words of other POS) </li>
-<li><code>sme/xml/semantic_sets.xml</code> (the small Morfa-sets make bigger Leksa supersets)</li>
+<li><code>sme/xml/semantic_sets.xml</code> (some of the smaller Morfa-sets make bigger Leksa supersets)</li>
 <li><code>sme/src/paradigms.txt</code></li>
 <li><code>sme/src/tags.txt</code> </li>
 <li><code>isme-GG.restr.fst</code> (generates word forms according to western dialect) </li>
 <li><code>isme-KJ.restr.fst</code> (generates word forms according to eastern dialect)</li>
 </ul>
 <p></p>
-<p>Files with words from text books: <code>sme/src/adv.txt	sme/src/conj.txt	sme/src/pp.txt</code>  The words are not generated. The files are not in use today. </p>
+<p>Files with more words from text books: <code>sme/src/adv.txt	sme/src/conj.txt	sme/src/pp.txt</code>  The words are not generated. The files are not in use today. </p>
 
 <p></p>
 
@@ -53,7 +53,7 @@ Here are some more documentation if you want to know more.</p>
 
 <p></p>
 
-<p><strong>Automata for for Numra:</strong></p>
+<p><strong>Automata for Numra:</strong></p>
 
 <ul>
 <li><code>sme-num.fst</code></li>
@@ -68,12 +68,12 @@ Here are some more documentation if you want to know more.</p>
 <li><code>sme/xml/questions_nouns.xml</code> (for Morfa-C)</li>
 <li><code>sme/xml/questions_numerals.xml</code> (for Morfa-C)</li>
 <li><code>sme/xml/questions_verbs.xml</code> (for Morfa-C)</li>
-<li><code>sme/xml/questions_vasta.xml</code> </li>
+<li><code>sme/xml/questions_vasta.xml</code> (for Vasta)</li>
 </ul>
 <p></p>
 
 
-<p><strong>Files for Sahka:</strong></p> 
+<p><strong>Dialogue files for Sahka:</strong></p> 
 <ul>
 <li><code>sme/xml/dialogue_firstmeeting.xml</code></li>
 <li><code>sme/xml/dialogue_firstmeeting_boy.xml</code></li>
@@ -87,14 +87,14 @@ Here are some more documentation if you want to know more.</p>
 
 <p></p>
 
-<p><strong>Files for giving feedback about morphology in Morfa-S:</strong></p><p> The "feedback" files add feedbacktags based on a combination of the morphological features specified in the lexicon, and the task itself. With help of the tags the system generates feedbackmessages for the user. Many small messages are linked together to a longer message.</p>
+<p><strong>Files for giving feedback about morphology in Morfa-S:</strong></p><p> The feedback-files add feedbacktags based on a combination of the morphological features specified in the lexicon, and the task itself. With help of the tags the system generates feedback messages for the user. Many small messages are linked together to a longer message.</p>
 <ul>
-<li><code>sme/xml/feedback_adjectives.xml</code> (For western dialect)</li>
-<li><code>sme/xml/feedback_adjectives_eastern.xml</code></li>
+<li><code>sme/xml/feedback_adjectives.xml</code> (for western dialect)</li>
+<li><code>sme/xml/feedback_adjectives_eastern.xml</code> (for eastern dialect)</li>
 <li><code>sme/xml/feedback_nouns.xml</code></li>
 <li><code>sme/xml/feedback_numerals.xml</code></li>
-<li><code>sme/xml/feedback_verbs.xml</code> (For western dialect)</li>
-<li><code>sme/xml/feedback_verbs_eastern.xml</code></li>
+<li><code>sme/xml/feedback_verbs.xml</code> (for western dialect)</li>
+<li><code>sme/xml/feedback_verbs_eastern.xml</code> (for eastern dialect)</li>
 <li><code>sme/xml/messages.eng.xml</code> (in English)</li>
 <li><code>sme/xml/messages.fin.xml</code> (in Finnish)</li>
 <li><code>sme/xml/messages.sme.xml</code> (in North Sami)</li>
@@ -102,14 +102,14 @@ Here are some more documentation if you want to know more.</p>
 </ul>
 <p></p>
 <p><strong>Other files offering help to the user:</strong></p>
-<p><code>sme/xml/comments.nob.xml</code> (Feedback about how the user is succeeding with the tasks.)</p>
+<p><code>sme/xml/comments.nob.xml</code> (comments to the user aobut how she is succeeding with the tasks.)</p>
 <p><code>sme/src/comments.sme</code> </p>
-<p><code>sme/src/grammatikklinker.txt</code> (Links to the grammar documentation.) </p>
+<p><code>sme/src/grammatikklinker.txt</code> (links to the grammar documentation. The grammar files are in userdoc/) </p>
 <p></p>
 
 <p><strong>Files for analysing the free input in Sahka and Vasta:</strong></p>
 
-<p><code>ped-sme.fst</code> gives morphological analysis to the user's input. It is normative, but it allows Proper nouns written with small initial letter, but marks it with an error tag.</p>
+<p><code>ped-sme.fst</code> gives morphological analysis to the user's input. It is normative, but it allows proper nouns written with small initial letter, but marks it with an error tag.</p>
 <p><code>sme/src/sme-ped.cg3</code> disambuguates and adds error and navigation tags to the user's input.</p>
 <p></p>
 
@@ -139,7 +139,7 @@ Here are some more documentation if you want to know more.</p>
 
 <p>Files with translations for the texts in the interface are stored in oahpa/locale/: <code>fi/LC_MESSAGES/django.po, sme/LC_MESSAGES/django.po no/LC_MESSAGES/django.po en/LC_MESSAGES/django.po </code></p>
 <p></p>
-<p>In <code>userdoc/ </code>are files for userdocumentation and the north sami grammar.</p>
+<p>In <code>userdoc/ </code>are files for userdocumentation and the North Sami grammar.</p>
 
 
 </section>
