@@ -35,9 +35,12 @@ Here are some more documentation if you want to know more.</p>
 <li><code>sme/xml/semantic_sets.xml</code> (the small Morfa-sets make bigger Leksa supersets)</li>
 <li><code>sme/src/paradigms.txt</code></li>
 <li><code>sme/src/tags.txt</code> </li>
-<li><p></p>
-Files with words from text books. The words are not generated. The files are not in use today. <code>../src/adv.txt	../src/conj.txt	../src/pp.txt</code> </li>
+<li><code>isme-GG.restr.fst</code> (generates word forms according to western dialect) </li>
+<li><code>isme-KJ.restr.fst</code> (generates word forms according to eastern dialect)</li>
 </ul>
+<p></p>
+<p>Files with words from text books: <code>sme/src/adv.txt	sme/src/conj.txt	sme/src/pp.txt</code>  The words are not generated. The files are not in use today. </p>
+
 <p></p>
 
 <p><strong>Files especially for Leksa, from Norwegian to North Sami:</strong></p>
@@ -49,85 +52,94 @@ Files with words from text books. The words are not generated. The files are not
 </ul>
 
 <p></p>
+
+<p><strong>Automata for for Numra:</strong></p>
+
+<ul>
+<li><code>sme-num.fst</code></li>
+</ul>
+
+
+<p></p>
 <p><strong>Files for generating tasks in Morfa-C and Vasta:</strong></p>
 <ul>
-<li><code>grammar_defaults.xml</code> </li>
-<li><code>questions_adjectives.xml</code> (for Morfa-C)</li>
-<li><code>questions_nouns.xml</code> (for Morfa-C)</li>
-<li><code>questions_numerals.xml</code> (for Morfa-C)</li>
-<li><code>questions_verbs.xml</code> (for Morfa-C)</li>
-<li><code>questions_vasta.xml</code> </li>
+<li><code>sme/xml/grammar_defaults.xml</code> </li>
+<li><code>sme/xml/questions_adjectives.xml</code> (for Morfa-C)</li>
+<li><code>sme/xml/questions_nouns.xml</code> (for Morfa-C)</li>
+<li><code>sme/xml/questions_numerals.xml</code> (for Morfa-C)</li>
+<li><code>sme/xml/questions_verbs.xml</code> (for Morfa-C)</li>
+<li><code>sme/xml/questions_vasta.xml</code> </li>
 </ul>
 <p></p>
 
 
 <p><strong>Files for Sahka:</strong></p> 
 <ul>
-<li><code>dialogue_firstmeeting.xml</code></li>
-<li><code>dialogue_firstmeeting_boy.xml</code></li>
-<li><code>dialogue_firstmeeting_girl.xml</code></li>
-<li><code>dialogue_firstmeeting_man.xml</code></li>
-<li><code>dialogue_grocery.xml</code></li>
-<li><code>dialogue_shopadj.xml</code></li>
-<li><code>dialogue_visit.xml</code></li>
-<li><code>dialogues.dtd</code></li>
+<li><code>sme/xml/dialogue_firstmeeting.xml</code></li>
+<li><code>sme/xml/dialogue_firstmeeting_boy.xml</code></li>
+<li><code>sme/xml/dialogue_firstmeeting_girl.xml</code></li>
+<li><code>sme/xml/dialogue_firstmeeting_man.xml</code></li>
+<li><code>sme/xml/dialogue_grocery.xml</code></li>
+<li><code>sme/xml/dialogue_shopadj.xml</code></li>
+<li><code>sme/xml/dialogue_visit.xml</code></li>
+<li><code>sme/xml/dialogues.dtd</code></li>
 </ul>
 
 <p></p>
 
 <p><strong>Files for giving feedback about morphology in Morfa-S:</strong></p><p> The "feedback" files add feedbacktags based on a combination of the morphological features specified in the lexicon, and the task itself. With help of the tags the system generates feedbackmessages for the user. Many small messages are linked together to a longer message.</p>
 <ul>
-<li><code>feedback_adjectives.xml</code> (For western dialect)</li>
-<li><code>feedback_adjectives_eastern.xml</code></li>
-<li><code>feedback_nouns.xml</code></li>
-<li><code>feedback_numerals.xml</code></li>
-<li><code>feedback_verbs.xml</code> (For western dialect)</li>
-<li><code>feedback_verbs_eastern.xml</code></li>
-<li><code>messages.eng.xml</code> (in English)</li>
-<li><code>messages.fin.xml</code> (in Finnish)</li>
-<li><code>messages.sme.xml</code> (in North Sami)</li>
-<li><code>messages.xml</code> (in Norwegian)</li>
+<li><code>sme/xml/feedback_adjectives.xml</code> (For western dialect)</li>
+<li><code>sme/xml/feedback_adjectives_eastern.xml</code></li>
+<li><code>sme/xml/feedback_nouns.xml</code></li>
+<li><code>sme/xml/feedback_numerals.xml</code></li>
+<li><code>sme/xml/feedback_verbs.xml</code> (For western dialect)</li>
+<li><code>sme/xml/feedback_verbs_eastern.xml</code></li>
+<li><code>sme/xml/messages.eng.xml</code> (in English)</li>
+<li><code>sme/xml/messages.fin.xml</code> (in Finnish)</li>
+<li><code>sme/xml/messages.sme.xml</code> (in North Sami)</li>
+<li><code>sme/xml/messages.xml</code> (in Norwegian)</li>
 </ul>
 <p></p>
 <p><strong>Other files offering help to the user:</strong></p>
-<p><code>comments.nob.xml</code> (Feedback about how the user is succeeding with the tasks.)</p>
-<p><code>../src/comments.sme</code> </p>
-<p><code>../src/grammatikklinker.txt</code> (Links to the grammar documentation.) </p>
+<p><code>sme/xml/comments.nob.xml</code> (Feedback about how the user is succeeding with the tasks.)</p>
+<p><code>sme/src/comments.sme</code> </p>
+<p><code>sme/src/grammatikklinker.txt</code> (Links to the grammar documentation.) </p>
 <p></p>
 
 <p><strong>Files for analysing the free input in Sahka and Vasta:</strong></p>
-<ul>
-<li><code>ped-sme.fst</code></li>
-<li>This gives morphological analysis to the user's input. It is normative, but it allows Proper nouns written with small initial letter, but marks it with an error tag.</li>
-<li><p></p><code>../src/sme-ped.cg3</code></li><li>This file disambuguates and adds error and navigation tags to the user's input.</li>
-</ul>
+
+<p><code>ped-sme.fst</code> gives morphological analysis to the user's input. It is normative, but it allows Proper nouns written with small initial letter, but marks it with an error tag.</p>
+<p><code>sme/src/sme-ped.cg3</code> disambuguates and adds error and navigation tags to the user's input.</p>
 <p></p>
 
 <p><strong>Files for giving feedback in Vasta and Sahka:</strong></p><p>The feedback messages are generated with help of the grammartags in the analysis.</p>
 <ul>
-<li><code>messages_vasta.eng.xml</code></li>
-<li><code>messages_vasta.fin.xml</code></li>
-<li><code>messages_vasta.sme.xml</code></li>
-<li><code>messages_vasta.xml</code></li>
-<li><code>src/sme-ped.cg3</code></li>
+<li><code>sme/xml/messages_vasta.eng.xml</code></li>
+<li><code>sme/xml/messages_vasta.fin.xml</code></li>
+<li><code>sme/xml/messages_vasta.sme.xml</code></li>
+<li><code>sme/xml/messages_vasta.xml</code></li>
+<li><code>sme/src/sme-ped.cg3</code></li>
 </ul>
 
 </section>
 		<section>
 			<title>Other files</title>
 
-<p><strong>In ped/oahpa/ are:</strong></p>
+<p>In<code> oahpa/</code> are:</p>
 
 <ul>
-<li>scripts</li>
+<li>installation scripts</li>
 <li><code>media/</code> : images</li>
-<li><code>templates/</code> : html-files</li>
+<li><code>templates/</code> : html-files for basic look for all the programs</li>
 <li><code>drill/</code> : scripts for each program</li>
 <li><code>drill/templates/</code>  : html-files for each program</li>
 </ul>
-
 <p></p>
-<p><strong>In ped/userdoc/ are</strong> files for userdocumentation and the north sami grammar.</p>
+
+<p>Files with translations for the texts in the interface are stored in oahpa/locale/: <code>fi/LC_MESSAGES/django.po, sme/LC_MESSAGES/django.po no/LC_MESSAGES/django.po en/LC_MESSAGES/django.po </code></p>
+<p></p>
+<p>In <code>userdoc/ </code>are files for userdocumentation and the north sami grammar.</p>
 
 
 </section>
