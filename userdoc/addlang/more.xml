@@ -110,16 +110,15 @@ Here are some more documentation if you want to know more than just make the dem
 <p><strong>Files for analysing the free input in Sahka and Vasta:</strong></p>
 
 <p><code>ped-sme.fst</code> gives morphological analysis to the user's input. It is normative, but it allows proper nouns written with small initial letter, but marks it with an error tag.</p>
-<p><code>sme/src/sme-ped.cg3</code> disambuguates and adds error and navigation tags to the user's input.</p>
+<p><code>sme/src/sme-ped.cg3</code> disambuguates and adds grammar error and navigation tags to the user's input.</p>
 <p></p>
 
-<p><strong>Files for giving feedback in Vasta and Sahka:</strong></p><p>The feedback messages are generated with help of the grammartags in the analysis.</p>
+<p><strong>Files for giving feedback in Vasta and Sahka:</strong></p><p>The feedback messages are generated with help of the grammartags in the analysis done with the vislcg3-file:</p>
 <ul>
 <li><code>sme/xml/messages_vasta.eng.xml</code></li>
 <li><code>sme/xml/messages_vasta.fin.xml</code></li>
 <li><code>sme/xml/messages_vasta.sme.xml</code></li>
 <li><code>sme/xml/messages_vasta.xml</code></li>
-<li><code>sme/src/sme-ped.cg3</code></li>
 </ul>
 
 </section>
@@ -137,7 +136,7 @@ Here are some more documentation if you want to know more than just make the dem
 </ul>
 <p></p>
 
-<p>Files with translations for the texts in the interface are stored in oahpa/locale/: <code>fi/LC_MESSAGES/django.po, sme/LC_MESSAGES/django.po no/LC_MESSAGES/django.po en/LC_MESSAGES/django.po </code></p>
+<p>Files with translations for the texts in the interface are stored in <code>oahpa/locale/</code>:</p> <ul><li> <code>fi/LC_MESSAGES/django.po</code></li><li><code>sme/LC_MESSAGES/django.po </code></li><li><code>no/LC_MESSAGES/django.po </code></li><li><code>en/LC_MESSAGES/django.po </code></li></ul>
 <p></p>
 <p>In <code>userdoc/ </code>are files for userdocumentation and the North Sami grammar.</p>
 
