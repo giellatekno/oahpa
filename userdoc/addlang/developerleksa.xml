@@ -31,7 +31,7 @@ Here starts the documentation for making Leksa work for new languages. The goal 
 				
 		<section>
 			<title>XML-format</title>
-<p>You put the lemmas into xml-format. There should be one file for each of the parts of speech. Add names to the files with the language code first, like smeverbs.xml, smenouns.xml and smeadjectives.xml. pos class for noun is N, for verb it is V and for adjective it is A. If there are more than one translation (synonyms), put the most common one as the first one.</p>
+<p>You put the lemmas into xml-format. There should be one file for each of the parts of speech. Add names to the files with the language code first, like <code>verbs.sme.xml, nouns.sme.xml, adjectives.sme.xml</code>. pos class for noun is N, for verb it is V and for adjective it is A. If there are more than one translation (synonyms), put the most common one as the first one.</p>
 		<source>
 &lt;?xml version="1.0" encoding="utf-8"?>
 &lt;lexicon>
