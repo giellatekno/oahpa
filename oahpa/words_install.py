@@ -315,18 +315,21 @@ class Words:
 
 
     def delete_word(self, wid=None,pos=None):
+# no check for pos at the moment because
+# there is a mess in the nob entries (some have pos, some not)
+# however pos check is a todo issue.
+ 
+        words = Word.objects.filter(wordid=wid)
+        wordnobs = Wordnob.objects.filter(wordid=wid)
 
-        if not pos:
-            print "specify the part of speech with option -p"
-# to debug and fix: delete word routine
-#            wordnobs = Wordnob.objects.filter(wordid=wid)
-#            for w in wordnobs:
-#                print "Removing", w.wordid
-#                w.delete()
-        if wid and pos:
-            words = Word.objects.filter(wordid=wid,pos=pos)
-            for w in words:
+        for w in words:
+            print "Removing", w.wordid
+            w.delete()
+	if not words:
+            print wid, "not found in sma-db ... searching nob-db"
+	    for w in wordnobs:
                 print "Removing", w.wordid
-                w.delete()
-        if not words:
-            print wid, "not found"
+		w.delete()
+            if not wordnobs:
+	        print wid, "not found in nob-db either. Beklager!"
+
