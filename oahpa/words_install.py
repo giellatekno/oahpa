@@ -234,6 +234,8 @@ class Words:
         w.soggi=soggi
         w.gradation=gradation
         w.diphthong=diphthong
+
+#         why two times the same operation (cf. line 250): not mainlang(nob) <=> mainlang(sme)
         if not mainlang == "nob":
             for d in dialects:
                 dia, created = Dialect.objects.get_or_create(dialect=d)
@@ -245,6 +247,7 @@ class Words:
         w.geography = geography
         w.save()
 
+#         why two times the same operation (cf. line 238): not mainlang(nob) <=> mainlang(sme)
         if mainlang=="sme":
             for d in dialects:
                 dia, created = Dialect.objects.get_or_create(dialect=d)
