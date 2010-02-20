@@ -877,6 +877,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     s.close()
 
     analysis = analysis + analyzed
+    analysis = analysis + "\"<.>\"\n\t\".\" CLB"
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
 
