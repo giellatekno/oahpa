@@ -150,8 +150,8 @@ lookup = "$(YOUR-PATH-TO)/bin/lookup"
 
 Adjust paths in ped/oahpa/drill/game.py:
 {{{
-fstdir="$(YOUR-PATH-TO)/Users/cipriangerstenberger/gtsvn/gt/" + language + "/bin"
-lookup ="$(YOUR-PATH-TO)/Users/cipriangerstenberger/bin/lookup"
+fstdir="$(YOUR-PATH-TO)/gtsvn/gt/" + language + "/bin"
+lookup ="$(YOUR-PATH-TO)/bin/lookup"
 }}}
 
 Start installing the database information:
@@ -281,38 +281,21 @@ isme-KJ.restr.fst
 
 !!Lookup server
 
-The lookup-process for the analyzer ped-sme.fst, which is used in Vasta
-and Sahka is running all the time. The lookup is implemented as
-server, which can be called by different processes. You may examine
-the lookup output from Sahka and Vasta in victorio, file
+The lookup-process for the analyzer {{ped-sme.fst}}, used in Vasta
+and Sahka, is running all the time. The lookup is implemented as
+server, callable by different processes. When started, it reads the file
+{{/opt/smi/sme/bin/ped-sme.fst}} and provides analyses based on exactly this fst. 
 
-{{{
-/var/log/lserv.log
-}}}
+__NB:__ Any update of the FST requires a restart of the lookup server!
 
-There exists a command line tool that can be used for testing the server on
-victorio. The script client.py takes one word at the time and can be terminated
-by giving an empty line.
-
-{{{
-python ped/src/client.py
-}}}
-
-The server is called from the file forms.py for getting analysis for the
-answers in Vasta and Sahka. The error message "Connection refused"
-indicates that for some reason, the lookup server is down and needs to
-be restarted. 
-
-When the lookup server is started it reads the file
-/opt/smi/sme/bin/ped-sme.fst and provides analyses based on the
-fst. Note that the fst is read only once, so if you
-update the ped-sme.fst, it is not automatically read by the server,
-but you need to restart it. The restarting is done in the same way as
-with other servers:
-{{{
-sudo service lookupserv restart
-}}}
-
+* __(re-)starting__ the server:
+** go to {{/home/oahpa/ped/src}}
+** type the command {{sudo ./lookupserv restart}}
+* __testing__ the server using the commad-line tool, that takes one word at a time:
+** go to {{/home/oahpa/ped/src}}
+** type the command {{sudo python client.py}}
+* __checking__ the log file for the lookup output from Sahka and Vasta on victorio:
+** inspect the file {{/var/log/lserv.log}} with you editor of choice
 
 !!!Updating the database
 
