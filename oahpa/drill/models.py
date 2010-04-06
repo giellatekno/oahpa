@@ -49,7 +49,13 @@ class Word(models.Model):
     attrsuffix = models.CharField(max_length=20)
     soggi = models.CharField(max_length=10)
     compare = models.CharField(max_length=5)
+# 'translations' should be removed later
     translations = models.ManyToManyField('Wordnob')
+    translations2nob = models.ManyToManyField('Wordnob')
+    translations2fin = models.ManyToManyField('Wordfin')
+    translations2swe = models.ManyToManyField('Wordswe')
+    translations2eng = models.ManyToManyField('Wordeng')
+    translations2deu = models.ManyToManyField('Worddeu')
     frequency = models.CharField(max_length=10)
     geography = models.CharField(max_length=10)
     dialects = models.ManyToManyField(Dialect,null=True)
@@ -58,6 +64,46 @@ class Word(models.Model):
     
     
 class Wordnob(models.Model):
+    wordid = models.CharField(max_length=200)
+    lemma = models.CharField(max_length=200)
+    pos = models.CharField(max_length=5)
+    semtype = models.ManyToManyField(Semtype)
+    source = models.ManyToManyField(Source)
+    translations = models.ManyToManyField(Word)
+    frequency = models.CharField(max_length=10)
+    geography = models.CharField(max_length=10)
+
+class Wordfin(models.Model):
+    wordid = models.CharField(max_length=200)
+    lemma = models.CharField(max_length=200)
+    pos = models.CharField(max_length=5)
+    semtype = models.ManyToManyField(Semtype)
+    source = models.ManyToManyField(Source)
+    translations = models.ManyToManyField(Word)
+    frequency = models.CharField(max_length=10)
+    geography = models.CharField(max_length=10)
+
+class Wordswe(models.Model):
+    wordid = models.CharField(max_length=200)
+    lemma = models.CharField(max_length=200)
+    pos = models.CharField(max_length=5)
+    semtype = models.ManyToManyField(Semtype)
+    source = models.ManyToManyField(Source)
+    translations = models.ManyToManyField(Word)
+    frequency = models.CharField(max_length=10)
+    geography = models.CharField(max_length=10)
+
+class Wordeng(models.Model):
+    wordid = models.CharField(max_length=200)
+    lemma = models.CharField(max_length=200)
+    pos = models.CharField(max_length=5)
+    semtype = models.ManyToManyField(Semtype)
+    source = models.ManyToManyField(Source)
+    translations = models.ManyToManyField(Word)
+    frequency = models.CharField(max_length=10)
+    geography = models.CharField(max_length=10)
+
+class Worddeu(models.Model):
     wordid = models.CharField(max_length=200)
     lemma = models.CharField(max_length=200)
     pos = models.CharField(max_length=5)
