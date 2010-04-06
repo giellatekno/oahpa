@@ -421,7 +421,7 @@ class QuizzGame(Game):
         while i<maxnum:
             i=i+1
             # smenob
-            if self.settings['transtype'] == "smenob":            
+            if self.settings['transtype'].startswith("sme"):            
                 if self.settings['book'].count('all') > 0:
                     w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
                                                 Q(frequency__in=frequency) & \
@@ -444,7 +444,7 @@ class QuizzGame(Game):
                                                     Q(dialects__dialect=dialect))[randint(0,w_count-1)]
                                                     
             # nobsme
-            else:
+            elif self.settings['transtype'] == "nobsme": 
                 if self.settings['book'].count('all') > 0:
                     w_count=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) & \
                                                    Q(frequency__in=frequency) & \
@@ -464,10 +464,114 @@ class QuizzGame(Game):
                                                        Q(frequency__in=frequency) & \
                                                        Q(geography__in=geography) & \
                                                        Q(source__name__in=books))[randint(0,w_count-1)]
+
+            # finsme
+            elif self.settings['transtype'] == "finsme": 
+                if self.settings['book'].count('all') > 0:
+                    w_count=Wordfin.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                   Q(frequency__in=frequency) & \
+                                                   Q(geography__in=geography)).count()
+                    
+                    random_word=Wordfin.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                       Q(frequency__in=frequency) & \
+                                                       Q(geography__in=geography))[randint(0,w_count-1)]
+
+                else:
+                    semtypes = self.settings['allsem']
+                    w_count=Wordfin.objects.filter(Q(semtype__semtype__in=semtypes) &\
+                                                   Q(frequency__in=frequency) & \
+                                                   Q(geography__in=geography) & \
+                                                   Q(source__name__in=books)).count()
+                    random_word=Wordfin.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                       Q(frequency__in=frequency) & \
+                                                       Q(geography__in=geography) & \
+                                                       Q(source__name__in=books))[randint(0,w_count-1)]
+
+            # swesme
+            elif self.settings['transtype'] == "swesme": 
+                if self.settings['book'].count('all') > 0:
+                    w_count=Wordswe.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                   Q(frequency__in=frequency) & \
+                                                   Q(geography__in=geography)).count()
+                    
+                    random_word=Wordswe.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                       Q(frequency__in=frequency) & \
+                                                       Q(geography__in=geography))[randint(0,w_count-1)]
+
+                else:
+                    semtypes = self.settings['allsem']
+                    w_count=Wordswe.objects.filter(Q(semtype__semtype__in=semtypes) &\
+                                                   Q(frequency__in=frequency) & \
+                                                   Q(geography__in=geography) & \
+                                                   Q(source__name__in=books)).count()
+                    random_word=Wordswe.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                       Q(frequency__in=frequency) & \
+                                                       Q(geography__in=geography) & \
+                                                       Q(source__name__in=books))[randint(0,w_count-1)]
+
+            # engsme
+            elif self.settings['transtype'] == "engsme": 
+                if self.settings['book'].count('all') > 0:
+                    w_count=Wordeng.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                   Q(frequency__in=frequency) & \
+                                                   Q(geography__in=geography)).count()
+                    
+                    random_word=Wordeng.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                       Q(frequency__in=frequency) & \
+                                                       Q(geography__in=geography))[randint(0,w_count-1)]
+
+                else:
+                    semtypes = self.settings['allsem']
+                    w_count=Wordeng.objects.filter(Q(semtype__semtype__in=semtypes) &\
+                                                   Q(frequency__in=frequency) & \
+                                                   Q(geography__in=geography) & \
+                                                   Q(source__name__in=books)).count()
+                    random_word=Wordeng.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                       Q(frequency__in=frequency) & \
+                                                       Q(geography__in=geography) & \
+                                                       Q(source__name__in=books))[randint(0,w_count-1)]
+
+            # deusme
+            elif self.settings['transtype'] == "deusme": 
+                if self.settings['book'].count('all') > 0:
+                    w_count=Worddeu.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                   Q(frequency__in=frequency) & \
+                                                   Q(geography__in=geography)).count()
+                    
+                    random_word=Worddeu.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                       Q(frequency__in=frequency) & \
+                                                       Q(geography__in=geography))[randint(0,w_count-1)]
+
+                else:
+                    semtypes = self.settings['allsem']
+                    w_count=Worddeu.objects.filter(Q(semtype__semtype__in=semtypes) &\
+                                                   Q(frequency__in=frequency) & \
+                                                   Q(geography__in=geography) & \
+                                                   Q(source__name__in=books)).count()
+                    random_word=Worddeu.objects.filter(Q(semtype__semtype__in=semtypes) & \
+                                                       Q(frequency__in=frequency) & \
+                                                       Q(geography__in=geography) & \
+                                                       Q(source__name__in=books))[randint(0,w_count-1)]
+
+            else:
+                print "Empty else branch!"
+
                 
 
             word_id=random_word.id
-            translations=random_word.translations.all()
+            if self.settings['transtype'] == "smenob":  
+                translations=random_word.translations2nob.all()
+            if self.settings['transtype'] == "smefin":  
+                translations=random_word.translations2fin.all()
+            if self.settings['transtype'] == "smeswe":  
+                translations=random_word.translations2swe.all()
+            if self.settings['transtype'] == "smeeng":  
+                translations=random_word.translations2eng.all()
+            if self.settings['transtype'] == "smedeu":  
+                translations=random_word.translations2deu.all()
+            if self.settings['transtype'].endswith("sme"):  
+                translations=random_word.translations.all()
+
             
             if translations.count()>0:
                 db_info['word_id'] = word_id
@@ -480,16 +584,58 @@ class QuizzGame(Game):
         tr_lemmas = []
 
         word_id = db_info['word_id']
+
         if self.settings['transtype'] == "smenob":
-           word=Word.objects.get(Q(id=word_id))
-           synwords = Word.objects.filter(lemma=word.lemma)
+            word=Word.objects.get(Q(id=word_id))
+            synwords = Word.objects.filter(lemma=word.lemma)
             # find synonymous words and pick them to the translations
-           for s in synwords:
-               translations=s.translations.all()
-               trs = translations.values_list('lemma',flat=True)
-               for t in trs:
-                   tr_lemmas.append(t)
-        else:
+            for s in synwords:
+                translations=s.translations2nob.all()
+                trs = translations.values_list('lemma',flat=True)
+                for t in trs:
+                    tr_lemmas.append(t)
+                    
+        elif self.settings['transtype'] == "smefin":
+            word=Word.objects.get(Q(id=word_id))
+            synwords = Word.objects.filter(lemma=word.lemma)
+            # find synonymous words and pick them to the translations
+            for s in synwords:
+                translations=s.translations2fin.all()
+                trs = translations.values_list('lemma',flat=True)
+                for t in trs:
+                    tr_lemmas.append(t)
+                    
+        elif self.settings['transtype'] == "smeswe":
+            word=Word.objects.get(Q(id=word_id))
+            synwords = Word.objects.filter(lemma=word.lemma)
+            # find synonymous words and pick them to the translations
+            for s in synwords:
+                translations=s.translations2swe.all()
+                trs = translations.values_list('lemma',flat=True)
+                for t in trs:
+                    tr_lemmas.append(t)
+                    
+        elif self.settings['transtype'] == "smeeng":
+            word=Word.objects.get(Q(id=word_id))
+            synwords = Word.objects.filter(lemma=word.lemma)
+            # find synonymous words and pick them to the translations
+            for s in synwords:
+                translations=s.translations2eng.all()
+                trs = translations.values_list('lemma',flat=True)
+                for t in trs:
+                    tr_lemmas.append(t)
+                    
+        elif self.settings['transtype'] == "smedeu":
+            word=Word.objects.get(Q(id=word_id))
+            synwords = Word.objects.filter(lemma=word.lemma)
+            # find synonymous words and pick them to the translations
+            for s in synwords:
+                translations=s.translations2deu.all()
+                trs = translations.values_list('lemma',flat=True)
+                for t in trs:
+                    tr_lemmas.append(t)
+                    
+        elif self.settings['transtype'] == "nobsme":
             word=Wordnob.objects.get(id=word_id)
             # find synonymous words and pick them to the translations
             synwords = Wordnob.objects.filter(lemma=word.lemma)
@@ -498,14 +644,76 @@ class QuizzGame(Game):
                 trs = translations.values_list('lemma',flat=True)
                 for t in trs:
                     tr_lemmas.append(t)
+                    
+        elif self.settings['transtype'] == "finsme":
+            word=Wordfin.objects.get(id=word_id)
+            # find synonymous words and pick them to the translations
+            synwords = Wordfin.objects.filter(lemma=word.lemma)
+            for s in synwords:
+                translations=s.translations.all()
+                trs = translations.values_list('lemma',flat=True)
+                for t in trs:
+                    tr_lemmas.append(t)
+                    
+        elif self.settings['transtype'] == "swesme":
+            word=Wordswe.objects.get(id=word_id)
+            # find synonymous words and pick them to the translations
+            synwords = Wordswe.objects.filter(lemma=word.lemma)
+            for s in synwords:
+                translations=s.translations.all()
+                trs = translations.values_list('lemma',flat=True)
+                for t in trs:
+                    tr_lemmas.append(t)
+                    
+        elif self.settings['transtype'] == "engsme":
+            word=Wordeng.objects.get(id=word_id)
+            # find synonymous words and pick them to the translations
+            synwords = Wordeng.objects.filter(lemma=word.lemma)
+            for s in synwords:
+                translations=s.translations.all()
+                trs = translations.values_list('lemma',flat=True)
+                for t in trs:
+                    tr_lemmas.append(t)
+                    
+        elif self.settings['transtype'] == "deusme":
+            word=Worddeu.objects.get(id=word_id)
+            # find synonymous words and pick them to the translations
+            synwords = Worddeu.objects.filter(lemma=word.lemma)
+            for s in synwords:
+                translations=s.translations.all()
+                trs = translations.values_list('lemma',flat=True)
+                for t in trs:
+                    tr_lemmas.append(t)
+        else:
+            print "crap"
+
 
         correct = ""
-        if self.settings['transtype'] == "nobsme":            
+        if self.settings['transtype'].endswith("sme"):
             dial_trans = word.translations.filter(dialects__dialect=dialect)
             if dial_trans:
                 correct = dial_trans[0].lemma
+            if not correct: correct = word.translations.all()[0].lemma
 
-        if not correct: correct = word.translations.all()[0].lemma
+        if self.settings['transtype'] == "smenob":
+            trans =  word.translations2nob.all()[0].lemma
+            if not correct: correct = word.translations2nob.all()[0].lemma
+            
+        if self.settings['transtype'] == "smefin":
+            trans =  word.translations2fin.all()[0].lemma
+            if not correct: correct = word.translations2fin.all()[0].lemma
+            
+        if self.settings['transtype'] == "smeswe":
+            trans =  word.translations2swe.all()[0].lemma
+            if not correct: correct = word.translations2swe.all()[0].lemma
+            
+        if self.settings['transtype'] == "smeeng":
+            trans =  word.translations2eng.all()[0].lemma
+            if not correct: correct = word.translations2eng.all()[0].lemma
+            
+        if self.settings['transtype'] == "smedeu":
+            trans =  word.translations2deu.all()[0].lemma
+            if not correct: correct = word.translations2deu.all()[0].lemma
 
         question_list=[]
         
