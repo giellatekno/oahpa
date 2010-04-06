@@ -140,6 +140,14 @@ VASTA_LEVELS = (
 TRANS_CHOICES = (
     ('smenob', _('North Sami to Norwegian')),
     ('nobsme', _('Norwegian to North Sami')),
+    ('smefin', _('North Sami to Finnish')),
+    ('finsme', _('Finnish to North Sami')),
+#    ('smeswe', _('North Sami to Swedish')),
+#    ('swesme', _('Swedish to North Sami')),
+#    ('smeeng', _('North Sami to English')),
+#    ('engsme', _('English to North Sami')),
+#    ('smedeu', _('North Sami to German')),
+#    ('deusme', _('German to North Sami')),
 )
 
 NUMLANGUAGE_CHOICES = (
