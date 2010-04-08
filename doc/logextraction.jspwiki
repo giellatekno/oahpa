@@ -1,0 +1,15 @@
+!!!How to extract log information from Oahpa for research
+
+As usual, commands on victorio.
+
+{{{
+mysql -u admin -p
+salasana: 
+
+mysql> use oahpa;
+mysql> select * from drill_log order by game into outfile '/usr/tmp/oahpalog.txt' fields terminated by '|';
+mysql> exit
+}}}
+
+The resulting file can then be gathered. Note that the command will overwrite earlier files in the tmp catalogue. As can be seen, more refined commands are possible (refining the log result).
+
