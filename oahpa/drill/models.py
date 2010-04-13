@@ -50,7 +50,7 @@ class Word(models.Model):
     soggi = models.CharField(max_length=10)
     compare = models.CharField(max_length=5)
 # 'translations' should be removed later
-    translations = models.ManyToManyField('Wordnob')
+#    translations = models.ManyToManyField('Wordnob')
     translations2nob = models.ManyToManyField('Wordnob')
     translations2fin = models.ManyToManyField('Wordfin')
     translations2swe = models.ManyToManyField('Wordswe')
