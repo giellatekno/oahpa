@@ -64,6 +64,38 @@ class Words:
                 w.save()                   
 
             else:
+                if lang == "fin":
+                    transl, created = Wordfin.objects.get_or_create(wordid=translation)
+                    if created:
+                        transl.lemma=translation
+                        transl.save()
+                    w.translations2fin.add(transl)
+                    w.save()
+
+                if lang == "swe":
+                    transl, created = Wordswe.objects.get_or_create(wordid=translation)
+                    if created:
+                        transl.lemma=translation
+                        transl.save()
+                    w.translations2swe.add(transl)
+                    w.save()
+
+                if lang == "eng":
+                    transl, created = Wordeng.objects.get_or_create(wordid=translation)
+                    if created:
+                        transl.lemma=translation
+                        transl.save()
+                    w.translations2eng.add(transl)
+                    w.save()
+
+                if lang == "deu":
+                    transl, created = Worddeu.objects.get_or_create(wordid=translation)
+                    if created:
+                        transl.lemma=translation
+                        transl.save()
+                    w.translations2deu.add(transl)
+                    w.save()
+
                 if lang == "nob":
                     transl, created = Wordnob.objects.get_or_create(wordid=translation)
                     if created:
