@@ -101,7 +101,7 @@ class Words:
                     if created:
                         transl.lemma=translation
                         transl.save()
-                    w.translations.add(transl)
+                    w.translations2nob.add(transl)
                     w.save()
 								
                     # special treatment for å-verbs.
@@ -113,8 +113,10 @@ class Words:
                             transl.lemma=wordform
                             transl.save()
                         # Add reference to the new word object as translation.
-                        w.translations.add(transl)
-                        w.save()                   
+                        w.translations2nob.add(transl)
+                        w.save()          
+         
+####### Possible bug here: proper nouns!!!
 
                     # If placenames
                     # Give norwegian words same semantic classes as sami words.
