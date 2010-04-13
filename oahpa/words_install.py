@@ -278,11 +278,11 @@ class Words:
         w.diphthong=diphthong
 
 #         why two times the same operation (cf. line 250): not mainlang(nob) <=> mainlang(sme)
-        if not mainlang == "nob":
-            for d in dialects:
-                dia, created = Dialect.objects.get_or_create(dialect=d)
-                w.dialects.add(dia)
-                w.save()
+#        if not mainlang == "nob":
+#            for d in dialects:
+#                dia, created = Dialect.objects.get_or_create(dialect=d)
+#                w.dialects.add(dia)
+#                w.save()
 
         w.valency = valency
         w.frequency = frequency
