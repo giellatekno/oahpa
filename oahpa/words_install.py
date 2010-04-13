@@ -254,6 +254,14 @@ class Words:
         w=None
         if mainlang == "nob":
             w,created = Wordnob.objects.get_or_create(wordid=id)
+        elif mainlang == "fin":
+            w,created = Wordfin.objects.get_or_create(wordid=id)
+        elif mainlang == "swe":
+            w,created = Wordswe.objects.get_or_create(wordid=id)
+        elif mainlang == "eng":
+            w,created = Wordeng.objects.get_or_create(wordid=id)
+        elif mainlang == "deu":
+            w,created = Worddeu.objects.get_or_create(wordid=id)
         else:
             w,created = Word.objects.get_or_create(wordid=id,pos=pos)
 
