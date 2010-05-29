@@ -346,8 +346,11 @@ class BareGame(Game):
             baseform = dial_baseform_list[0]
         else:
             baseform = baseform_list[0]
-		
-        translations=word.translations.all().values_list('lemma',flat=True)
+
+        #print ">>> language: ", language
+        #self.settings['transtype'] == "nobsme":
+        #the parameter 'translations' seems to suprefuous here
+        translations=word.translations2nob.all().values_list('lemma',flat=True)
 
         fullforms = form_list.values_list('fullform',flat=True)
         morph = (MorfaQuestion(word, tag, baseform, correct, fullforms, translations, "", dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))
