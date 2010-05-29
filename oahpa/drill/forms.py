@@ -479,7 +479,7 @@ class MorfaQuestion(OahpaQuestion):
 
 class QuizzSettings(OahpaSettings):
 
-    semtype = forms.ChoiceField(initial='NATUREWORDS', choices=SEMTYPE_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.book,this.value);',}))
+    semtype = forms.ChoiceField(initial='all', choices=SEMTYPE_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.book,this.value);',}))
     transtype = forms.ChoiceField(initial='smenob', choices=TRANS_CHOICES, widget=forms.Select)
 
     # For placename quizz
@@ -492,7 +492,7 @@ class QuizzSettings(OahpaSettings):
 
     default_data = {'gametype' : 'bare', 'language' : 'sme', 'dialogue' : 'GG', \
                     'syll' : [], 'book' : 'all', \
-                    'semtype' : 'NATUREWORDS', \
+                    'semtype' : 'all', \
                     'frequency' : ['common'], 'geography' : ['sapmi'], \
                     'transtype' : 'smenob' }
     # Link to grammatical explanation for each page
