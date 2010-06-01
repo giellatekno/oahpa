@@ -156,6 +156,8 @@ NUMLANGUAGE_CHOICES = (
     ('sma', _('South Sami')),
     ('smn', _('Inari Sami')),
     ('sjd', _('Kildin Sami')),
+#    ('sms', _('Skolt Sami')),
+    ('fin', _('Finnish')),
 )
 
 SEMTYPE_CHOICES = (
