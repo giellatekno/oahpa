@@ -171,13 +171,13 @@ The inflectional information of words contained in pedagogical lexicon is used f
 
 The feedback messages are determined by the combination of morphological features in the lexicon and the inflection task at hand. Consider a part of the feedback specification in the Figure \ref{feedbacknouns}. It specifies the morphological rule that there is a vowel change in illative singular for bisyllabic nouns that end with the vowel \textit{i}. The corresponding feedback message instructs the user to remember the vowel change.
 
-\begin{figure}[htbp]
-\begin{center}
-\scalebox{.5}[.5]{\includegraphics{presentation/img/morphfeedbackEng.png}}\\
-\caption{The features in the lexicon are used to determine the correct feedback message, in this case the message is "Vowel change i $>$ á".}
-\label{feedbacknouns}
-\end{center}
-\end{figure}
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.5}[.5]{\includegraphics{presentation/img/morphfeedbackEng.png}}\\
+%\caption{The features in the lexicon are used to determine the correct feedback message, in this case the message is "Vowel change i $>$ á".}
+%\label{feedbacknouns}
+%\end{center}
+%\end{figure}
 
 The feedback may consist of several parts so that the user also receives information about e.g. stem class. All the feedback messages that match the feature definition in the given task, are collected and given to the user in a specified order. 
 
@@ -365,7 +365,7 @@ The question matrix contains two types of elements: constants and grammatical un
 
 The sentence generator handles agreement e.g. between subject and the main verb. The agreement may be explicitly marked between any two elements, which indicates that the two elements share the same number and person inflection.
 
-In addition to generating questions, the sentence generator is used for generating answer templates. In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept an inclusive interpretation of the pronouns in Pl1 and Du1, because we wanted the student to exercise also 2. person verb inflection. Table \ref{QA} shows how the question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on. Pl1 as an answer to Pl1 is thus not accepted by the system.\\
+In addition to generating questions, the sentence generator is used for generating answer templates. In this case, the sentence generator takes into account the agreement inside a sentence, but also the content and agreement between the question and the answer. For example, the person and number inflection in the answer is restricted by the question. We chose not to accept anusive interpretation of the pronouns in Pl1 and Du1, because we wanted the student to exercise also 2. person verb inflection. Table \ref{QA} shows how the question Person-Number (QPN) Sg1 requires answer Person-Number (APN) Sg2, and so on. Pl1 as an answer to Pl1 is thus not accepted by the system.\\
 
 
 \begin{table}[htdp]
@@ -483,63 +483,170 @@ Every question has its own unique id, which is used in navigating between questi
 
 %The first utterance is a dialogue\_opening and the last utterance is a dialogue\_closing. The student can write that she wants to quit at any point during the dialogue, and by using some form of the verb \textit{heaitit} ("quit") she will navigate directly to the dialogue\_closing.
 
-
-
 \section{Evaluation}
+The evaluation of \textit{Sahka} and \textit{Vasta} was done when the programs had been available on internet for three months. The user's input and the feedback from the system were logged for the last two weeks of the period. The log shows that \textit{Sahka} has six times as many queries as \textit{Vasta}, so users clearly prefer the former one.
 
-At the time of writing, the programs have been in public use for approximately two months. % at \textit{http://oahpa.uit.no}
-All user input the word quiz Leksa, the numeral quiz Numra, the bare morphological task Morfa-S and the contextual morphology task Morfa-C has been logged from the very beginning. Unfortunately the programs Vasta and Sahka, have been logged for a couple of days only. The log contains 32475 queries (679 queries/day for the 4 programs logged the whole period), of these, approximately 600, or under 2\%, were nonsense answers. 
-% (of the type \textit{asdf, aaaaa}, etc.).
-% 4.2. - 1.4. = 8 x 7 = 42, 28507/42=679
+The system gave 156 tutorial feedbacks for the two programs during the two weeks. Breaking down the precision numbers on type of feedback, we got the picture shown in Table \ref{ruletypes}. Of 27 erroneous judgements, 16 were due to technical malfunction, 9 to wrong syntactical and 2 to wrong lexical analysis. \\
 
-\begin{table}[htdp]
-\caption{Answers to the programs (Vasta and Sahka were logged at the end of the period only).}
-\begin{center}
-\begin{tabular}{|l|r|r|r|r|}
-\hline
-Program     & Correct &   Wrong &    Total &  \% \\
-\hline									 
-Morfa-S  &  6920   & 6323    & 13243    & 52.3 \\
-Leksa    &  5659   & 4248    & 9907	    & 57.1  \\
-Numra    &  3086   & 2512    & 5598	    & 55.1  \\
-Morfa-C  &  1349   & 1613    & 2962	    & 45.5  \\
-Sahka    &   322   &   322   &  644	    & 50.0  \\
-Vasta    &   19    &   102   &  121	    & 15.7 \\
-\hline
-Total   & 17355  &  15120  &  32475  &  53,44\\
+\begin{table}[htbp]
+\begin{tabular}{|l|c|c|c|}
+\hline 
+\textbf{Rule type}  & \textbf{corr.} & \textbf{wrong}   & \textbf{corr. \% }  \\
+\hline 
+wrong tense         & 7     & 0     & 100,0     \\ 
+wr. V after neg   & 3     & 0     & 100,0     \\ 
+no infinite V       & 1     & 0     & 100,0     \\ 
+\hline 
+orth. error         & 44    & 2     & 95,7      \\
+wr. case V-arg  & 26    & 4     & 86,7      \\
+no finite verb        & 19    & 4     &  82,6 \\
+\hline 
+wr. S-V agreem.   & 17    & 8     & 68,0 \\
+wrong V choice        & 7     & 4     & 63,6 \\
+\hline 
+wrong word            & 4     & 4     & 50,0 \\
+wr. case after Num  & 1     & 1     & 50,0 \\
 \hline
 \end{tabular}
-\end{center}
-\label{log1}
+\caption{Feedback precision for different rule types.}
+\label{ruletypes}
 \end{table}
 
-%\vspace*{-2cm}
+As shown in Table \ref{ruletypes} not all of the rule types mentioned in \ref{grammarerrors} have been in use during this period. These rule types have not been used:
 
-As can be seen from Table \ref{log1}, slightly more than half of the queries resulted in correct answers. When confronted with an error feedback, the user is offered grammatical help, and thereafter she has the possibility to give a new answer to the same query. An investigation of 1500 queries to Morfa-C showed that 444, or 30\%, were such repeated answers. Even though we have no log info of the use of the morphological feedback (section \ref{mfeedback}), our impression from classroom experience is that the users are actively using the feedback system. This indicates that what we are witnessing is a truly interactive process, where users err in half of the queries, and then follow up with a new try, possibly after having read the morphological advice from the program.
+\begin{itemize}
+\setlength{\itemsep}{-0.1cm}
+\item agreement inside NP (except for numeral expressions) \\
+\item nominal case inside PP  \\
+\item time expressions \\
+\item word order errors for particles\\
+\end{itemize}
 
-The error log for Sahka shows that one fourth of the errors are due to orthographical errors (Table \ref{log2}). Most of the "no finite verb" errors are elliptical answers, and these are not accepted, for pedagogical reasons. The remaining cases are errors where the misspelled verb is an existing word. Also for the other grammatical errors verb errors are dominating. The main goal of the program was to train verb forms in a dialogue, and the error log shows that the program is able to capture such errors.
+The reason is probably that the users do not write more complex language than they have too. E.g. they don't answer with a complex NP if they can answer with just a pronoun or a noun, they don't write a time-expression with PP if the can answer with an adverb instead, and they don't use optional particles if they are unsure of where to put them. The price we pay for the free input strategy is that the users are not forced to exercise more complex language.
 
-The logs may not only be used for evaluating the programs, but also for monitoring the learning process as such. To take just one example, the Morfa logs give the error rate for each and every morphosyntactic property and stem type, thereby giving valuable information as to which parts of the verbal paradigm are the most problematic ones.
+Table \ref{errortypes} on page \pageref{errortypes} shows different kinds of error types the system has identified in the user's sentences, these we call \textit{positives}. If it really is an error, then we call it it a \textit{true positive}, if not, then it is a \textit{false positive}. A sentence not flagged as an error by the system is counted as a \textit{negative}, and we distinguish between \textit{true negatives} (correct answers) and \textit{false negatives} (erroneous answers which the system did not detect).
 
-\begin{table}[htdp]
-\caption{Error types for Sahka, ordered after type.}
+\begin{table*}[hbtp]
+%\caption{default}
 \begin{center}
-\begin{tabular}{|l|r|l|r|}
+\begin{tabular}{|l|r|r|r|r||r|r|r|r|r|}
 \hline
-Error type & \# & Error type & \# \\
-\hline												    
-no finite verb    & 85 & wr. case for V-arg & 22  \\
-orth. error       & 83 & wr. case after Num & 10 \\
-wrong S-V agr     & 46 & wrong tense          & 9 \\
-no infinite V  & 30 & no postposition      & 6 \\
-wrong V choice & 24 & wrong word           & 7  \\
+Error type	& true pos.		& false pos.		& true neg.		& false neg.	& precision	 & recall	& accuracy	& F-ms. \\
+\hline
+Gramm. error    &   641   &   234   &   769    &   7    &   0,73   &   0,99   &   0,85   &   0,84	  \\
+Semant. error       &   805   &   69    &   764    &   12   &   0,92   &   0,99   &   0,95   &   0,95		  \\
+Orthogr. error      &   875   &   0     &   776    &   0    &   1      &   1      &   1      &   1					  \\
+Other error     &   695   &   180   &   751    &   25   &   0,79   &   0,97   &   0,88   &   0,87	  \\
+\hline
+  &   3016  &   483   &   3060   &   44   &   0,86   &   0,98   &   0,92   &   0,92			  \\
 \hline
 \end{tabular}
+\caption{Precision, recall and accuracy for different error types.}
+\label{errortypes}
 \end{center}
-\label{log2}
-\end{table}%
+%\label{default}
+\end{table*}%
 
-\section{Conclusion}
+We measured \textit{precision} (correctly identified errors/all diagnosed errors), \textit{recall} (correctly identified errors/all errors), and \textit{accuracy} (correct judgements/cases). For the error types we target, precision = 0.85, recall = 0.93, and accuracy = 0.89 (N=277). Better recall than precision indicates that very few errors slip through, at the price of erroneously identifying some correct forms as errors. The system is thus a bit too critical towards the students: It almost never lets through a (targeted) mistake. In this pedagogical setting, a goal for future work is improving precision (avoiding erroneous error flagging), perhaps even with the risk of a lower recall.
+ 
+\section{Future perspectives}
+We have started the work with improving the system. Among our future plans are:
+\begin{description}
+\setlength{\itemsep}{-0.1cm}
+%\item [Something.] We will implement a separate SOMETHING (SAARA: I don't think we need this. This is very small thing compared to e.g. speller.), which will function all over in all dialogues. This makes it possible for the user to quit the dialogue in a proper way by using the verb "heaitit" (= to quit) and then the system navigates to the closing utterance of the dialogue, without having to add this alternative link separately to every question. 
+\item [Implementing a speller.] Because the misspellings are the biggest problem for the users, we will implement a speller. We will give relevant suggestions to the user by analysing the list of suggestions according to the context with CG, and also implement weighted lexical transducers, see \cite{Linden:09}. For the weighting we will use the pedagogical lexicon and the North Sámi corpus as a training corpus.
+\item [Implementing a topic option in \textit{Vasta}.] Today \textit{Vasta} generates questions randomly within each level based on grammar difficulty. The log shows that this program is not as popular as the \textit{Sahka}. We are planning to make it more interesting for the users by restricting the semantic sets for the variables in the question templates according to topics, and give the user's a topic option as well.
+\item [Sentence building from a fixed set of lemmas.] We are also considering forcing the user to construct more complex phrases and also use more particles, by deciding what lemmas the user should use, as a supplement to the other programs. Available on internet is \textit{e-tutor} -- a program for teaching German to foreigners \cite{Heift:01}, at \url{http://e-tutor.org/}. e-tutor gives very good feedback to student's errors, but the possible input is restricted to a set of lemmas by means of which she has to construct a sentence. In this way the user is forced to write more complex phrases. Figure \ref{etutor} shows an example from the program.
+\item [Conduct studies on Oahpa in actual use.] Investigating how Oahpa works in actual use in the classroom will be important in the work with improving the system.
+\item [Porting the programs to more Sámi languages.] For Lule Sámi a morphological analyser is available, and we have started making a CG disambiaguator. For South Sámi a morphological analyser will be finished in 2010. 
+  \end{description} 
+  \vspace{0.7cm}
+
+%\begin{figure}[htbp]
+%\begin{center}
+%\scalebox{.18}[.18]{\includegraphics{presentation/img/e-tutor.png}}\\
+%\caption{An alternative to free input is e-tutor.}
+%\label{etutor}
+%\end{center}
+%\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\scalebox{.22}[.22]{\includegraphics{presentation/img/e-tutor-small.png}}\\
+\caption{An alternative to free input is e-tutor.}
+\label{etutor}
+\end{center}
+\end{figure}
+
+\section{Conclusion - alt 1}
+%By using a sloppy version of the CG parser for North Sámi, combined with a set of error-detection rules, we have been able to build a flexible parser-based CALL resource. \\ 
+%The precision is not good enough  \\
+%We need some kind of speller or a sloppy fst with error tags \\
+%"Totally" free input not always the best \\
+
+The paper has shown how we use vislcg3 for pedagogical dialogue systems for North Sámi. Vislcg3 is used in many ways: By relaxing the analysis of the input string, we are able to find errors made by the user, and assign feedback tags to the analysis. Secondly, by analysing the semantics of the user's input, and assigning semantic tags to the input, we are able to navigate through the dialogue according to user feedback. And finally, we can assign tag to information in the user's input and use it in the program's questions or utterances.  
+
+The CG formalism has a great potential for use in pedagogical settings.
+It is robust enough to handle erroneous data, and at the same time flexible enough to give both general corrections, and corrections targeted at specific words in specific settings.
+
+We have seen that a major problem is spelling errors. Whether CG is able to offer a solution for this problem as well, remains a topic for future research.
+
+
+%\section{Evaluation}
+%
+%At the time of writing, the programs have been in public use for approximately two months. % at \textit{http://oahpa.uit.no}
+%All user input the word quiz Leksa, the numeral quiz Numra, the bare morphological task Morfa-S and the contextual morphology task Morfa-C has been logged from the very beginning. Unfortunately the programs Vasta and Sahka, have been logged for a couple of days only. The log contains 32475 queries (679 queries/day for the 4 programs logged the whole period), of these, approximately 600, or under 2\%, were nonsense answers. 
+%% (of the type \textit{asdf, aaaaa}, etc.).
+%% 4.2. - 1.4. = 8 x 7 = 42, 28507/42=679
+%
+%\begin{table}[htdp]
+%\caption{Answers to the programs (Vasta and Sahka were logged at the end of the period only).}
+%\begin{center}
+%\begin{tabular}{|l|r|r|r|r|}
+%\hline
+%Program     & Correct &   Wrong &    Total &  \% \\
+%\hline									 
+%Morfa-S  &  6920   & 6323    & 13243    & 52.3 \\
+%Leksa    &  5659   & 4248    & 9907	    & 57.1  \\
+%Numra    &  3086   & 2512    & 5598	    & 55.1  \\
+%Morfa-C  &  1349   & 1613    & 2962	    & 45.5  \\
+%Sahka    &   322   &   322   &  644	    & 50.0  \\
+%Vasta    &   19    &   102   &  121	    & 15.7 \\
+%\hline
+%Total   & 17355  &  15120  &  32475  &  53,44\\
+%\hline
+%\end{tabular}
+%\end{center}
+%\label{log1}
+%\end{table}
+%
+%%\vspace*{-2cm}
+%
+%As can be seen from Table \ref{log1}, slightly more than half of the queries resulted in correct answers. When confronted with an error feedback, the user is offered grammatical help, and thereafter she has the possibility to give a new answer to the same query. An investigation of 1500 queries to Morfa-C showed that 444, or 30\%, were such repeated answers. Even though we have no log info of the use of the morphological feedback (section \ref{mfeedback}), our impression from classroom experience is that the users are actively using the feedback system. This indicates that what we are witnessing is a truly interactive process, where users err in half of the queries, and then follow up with a new try, possibly after having read the morphological advice from the program.
+%
+%The error log for Sahka shows that one fourth of the errors are due to orthographical errors (Table \ref{log2}). Most of the "no finite verb" errors are elliptical answers, and these are not accepted, for pedagogical reasons. The remaining cases are errors where the misspelled verb is an existing word. Also for the other grammatical errors verb errors are dominating. The main goal of the program was to train verb forms in a dialogue, and the error log shows that the program is able to capture such errors.
+%
+%The logs may not only be used for evaluating the programs, but also for monitoring the learning process as such. To take just one example, the Morfa logs give the error rate for each and every morphosyntactic property and stem type, thereby giving valuable information as to which parts of the verbal paradigm are the most problematic ones.
+%
+%\begin{table}[htdp]
+%\caption{Error types for Sahka, ordered after type.}
+%\begin{center}
+%\begin{tabular}{|l|r|l|r|}
+%\hline
+%Error type & \# & Error type & \# \\
+%\hline												    
+%no finite verb    & 85 & wr. case for V-arg & 22  \\
+%orth. error       & 83 & wr. case after Num & 10 \\
+%wrong S-V agr     & 46 & wrong tense          & 9 \\
+%no infinite V  & 30 & no postposition      & 6 \\
+%wrong V choice & 24 & wrong word           & 7  \\
+%\hline
+%\end{tabular}
+%\end{center}
+%\label{log2}
+%\end{table}%
+
+\section{Conclusion - alt 2}
 
 By using a sloppy version of the syntactical analyser for North Sámi, combined with a set of error-detection rules, we have been able to build a flexible CALL resource. The programs are modular, and the modules may be improved by adding more materials -- words, tasks, dialogues, levels, words from textbooks. The CG parser framework was originally chosen as parser framework for Sámi due to its extraordinary results for free-text parsing. The present project has shown that CG is well fit for making pedagogical dialogue systems as well.
 
