@@ -66,7 +66,7 @@
 		  
 		</q>
 		<a>
-		  <xsl:value-of select="'xxx'"/>
+		  <xsl:value-of select="'xxx.'"/>
 		</a>
 	      </test>
 	    </xsl:for-each>

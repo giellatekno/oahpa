@@ -1,4 +1,4 @@
-#!/bin/perl -w
+#!/opt/local/bin/perl -w
 # Perl script to test question-answers pairs for sahka and vasta
 
 use File::Spec;

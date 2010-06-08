@@ -1,4 +1,4 @@
-#!/bin/perl -w
+#!/opt/local/bin/perl -w
 # Perl script to test question-answers pairs for sahka and vasta
 
 use File::Spec;
@@ -28,7 +28,7 @@ foreach my $qt ($root->children('q_tests')){
       print "question: $q\n";
       print "answer: $a\n";
       
-      my $command1 = "echo '$q $s $a' | preprocess | $lon | lookup2cg |" ;
+      my $command1 = "echo '$q $s $a' | preprocess --abbr=~/gtsvn/gt/sme/bin/abbr.txt | $lon | lookup2cg |" ;
       open (TMPFILE, ">>$tmp_file");
       open (CMD1, $command1);
       while (<CMD1>){
@@ -45,7 +45,7 @@ foreach my $qt ($root->children('q_tests')){
   }
 }
 
-my $command2 = "cat $tmp_file | vislcg3 -g ped/src/sme-ped.cg3 |" ;
+my $command2 = "cat $tmp_file | vislcg3 -g ~/gtsvn/ped/sme/src/sme-ped.cg3 |" ;
 
 #    print "$command2\n";
 
