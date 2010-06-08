@@ -12,6 +12,8 @@ my $s = '^sahka';
 my $lon = 'lookup -flags mbTT -utf8 ~/gtsvn/gt/sme/bin/ped-sme.fst';
 my $tmp_file = "tmp_data.txt";
 my $out_file = "final_data.txt";
+my $command0 = "rm $tmp_file $out_file" ;
+system ($command0) ;
 
 $twig->parsefile($infile);
 my $root = $twig->root;
