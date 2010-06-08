@@ -9,7 +9,7 @@ my $infile = $ARGV[0];
 my $twig = XML::Twig->new();
 # to extend for vasta, too
 my $s = '^sahka';
-my $lon = 'lookup -flags mbTT -utf8 ~/gtsvn/gt/sme/bin/sme-norm.fst';
+my $lon = 'lookup -flags mbTT -utf8 ~/gtsvn/gt/sme/bin/ped-sme.fst';
 my $tmp_file = "ftmp_data.txt";
 my $out_file = "final_data.txt";
 
