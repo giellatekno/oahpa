@@ -1,23 +1,29 @@
 <!-- lexicon.dtd -->
 <!-- DTD for lexicons used in OAHPA -->
 
-<!ELEMENT lexicon (entry+)>
-<!ATTLIST lexicon xml:lang ( nob | fin | smj | sma | swe | eng | sme) "sme" >
+<!ELEMENT lexicon ( entry+ ) >
+<!ATTLIST lexicon
+xml:lang CDATA #REQUIRED
+>
 
+<!--
+<!ATTLIST lexicon xml:lang ( nob | fin | smj | sma | swe | eng | sme) "sme" #IMPLIED >
+-->
 <!ELEMENT entry (lemma, only-sg?, pos, translations, valency?, semantics?, stem, dialect?, sources?, forms?) >
 
 <!ELEMENT lemma (#PCDATA)>
 
 <!ELEMENT only-sg EMPTY >
 
-<!ELEMENT sources (book?) >
 <!ELEMENT book EMPTY >
 <!ATTLIST book name CDATA #IMPLIED >
 <!-- The attribute may not be empty, now there are empty entries -->
 
 <!ELEMENT forms ( form ) >
 <!ELEMENT form (#PCDATA) >
-<!ATTLIST form tag (#PCDATA) >
+<!--<!ATTLIST form tag (#PCDATA) >-->
+
+<!ELEMENT sources (book?) >
 
 <!-- 
 <!ATTLIST book 
@@ -30,9 +36,15 @@ Sárá < Bures < Oaidnalit = Berit Johnskareng
 D1 < ... < D4 davvin 1-4 
 -->
 
-<!ELEMENT translations (tr+) >
+<!ELEMENT translations ( tr+) >
 <!ELEMENT tr (#PCDATA) >
+<!ATTLIST tr
+xml:lang CDATA #REQUIRED
+>
+
+<!--
 <!ATTLIST tr xml:lang ( nob | fin | smj | sma | swe | eng ) "nob" >
+-->
 
 <!ELEMENT valency (val*)>
 
