@@ -17,44 +17,30 @@
 -->
 <forrest:template xmlns:forrest="http://apache.org/forrest/templates/1.0"
 xmlns:jx="http://apache.org/cocoon/templates/jx/1.0">
-  <forrest:contract name="branding-breadcrumbs">
-    <forrest:property name="branding-breadcrumbs">
-      <trail>
-        <link1 name="MyGroup" href="http://www.apache.org/" />
-        <link2 name="MyProject" href="http://forrest.apache.org/" />
-      </trail>
-    </forrest:property>
-  </forrest:contract>
-  <forrest:hook name="header">
-    <forrest:contract name="branding-tagline">
-      <forrest:property name="branding-tagline-name">new
-      seed</forrest:property>
-      <forrest:property name="branding-tagline-tagline">powered by the
-      dispatcher</forrest:property>
-    </forrest:contract>
-    <forrest:hook class="logo">
-      <forrest:contract name="branding-logo">
-        <forrest:property name="branding-logo-name">MyGroup</forrest:property>
-        <forrest:property name="branding-logo-description">MyGroup
-        Description</forrest:property>
-        <forrest:property name="branding-logo-url">
-        http://example.org/</forrest:property>
-        <forrest:property name="branding-logo-logo">
-        images/group.png</forrest:property>
-      </forrest:contract>
-    </forrest:hook>
-    <forrest:hook class="logo">
-      <forrest:contract name="branding-logo">
+    <forrest:hook name="header">
+    <!-- <forrest:hook class="logo">
+        <forrest:contract name="branding-logo">
         <forrest:property name="branding-logo-name">
-        MyProject</forrest:property>
-        <forrest:property name="branding-logo-description">MyProject
-        Description</forrest:property>
+            Giellatekno</forrest:property>
+        <forrest:property name="branding-logo-description">Romssa universitehta giellateknologiijaguovddáš</forrest:property>
         <forrest:property name="branding-logo-url">
-        http://example.org/myproj/</forrest:property>
+            http://giellatekno.uit.no/</forrest:property>
         <forrest:property name="branding-logo-logo">
-        project-logo.png</forrest:property>
-      </forrest:contract>
+            images/uit.png</forrest:property>
+        </forrest:contract>
+    </forrest:hook> -->
+    <forrest:hook class="logo">
+        <forrest:contract name="branding-logo">
+        <forrest:property name="branding-logo-description">Oahpa-portála</forrest:property>
+        <forrest:property name="branding-logo-url">
+            http://giellatekno.uit.no/ped/</forrest:property>
+        <forrest:property name="branding-logo-logo">
+            images/uit_ja_oahpa.png</forrest:property>
+        </forrest:contract>
     </forrest:hook>
-    <jx:import uri="cocoon://prepare.panels.pelt-html.nav-main" />
-  </forrest:hook>
+    <forrest:hook name="nav-main-hook">
+        <forrest:contract name="nav-main"
+        dataURI="cocoon://#{$getRequest}.navigation.xml"/>
+    </forrest:hook>
+    </forrest:hook>
 </forrest:template>
