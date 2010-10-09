@@ -17,8 +17,6 @@
   <xsl:output method="xml"
               encoding="UTF-8"
               omit-xml-declaration="no"
-              doctype-system="r"
-              doctype-public="-//DivvunGiellatekno//DTD Dictionaries//Multilingual ../../scripts/gt_dictionary.dtd"
               indent="yes"/>
 
 <xsl:function name="local:distinct-deep" as="node()*">
@@ -42,69 +40,96 @@
 </xsl:function>
 
   <xsl:variable name="e" select="'xml'"/>
-  <xsl:variable name="outputDir" select="'xml-out'"/>
+  <xsl:variable name="outputDir" select="'out-xml'"/>
 
-  <xsl:param name="file" select="'default.csv'"/>
-  
+  <xsl:param name="file" select="'inc/fellesliste.txt'"/>
+  <xsl:variable name="lf" select="'&#xa;'"/>
+  <xsl:variable name="cr" select="'&#xd;'"/>
+  <xsl:variable name="tb" select="'&#x9;'"/>
+  <xsl:variable name="sp" select="'&#x20;'"/>
+  <xsl:variable name="nbs1" select="'&#xa0;'"/>
+  <xsl:variable name="nbs2" select="'&#160;'"/>
+
+  <xsl:variable name="regex">^([^	]+)	+([^	]+)	+([^	]+)	+(.*$)</xsl:variable>
+
+<!--   <xsl:variable name="regex">^([^$tb]+)+$tb+([^$tb]+)(.*$)</xsl:variable> -->
+
   <xsl:template match="/" name="main">
     
     <xsl:choose>
       <xsl:when test="unparsed-text-available($file)">
 
-	<xsl:variable name="file_name" select="substring-before($file, '.csv')"/>
+	<xsl:variable name="file_name" select="substring-before($file, '.txt')"/>
 
 	<xsl:variable name="source" select="unparsed-text($file)"/>
-	<xsl:variable name="lines" select="tokenize($source, '&#xa;')" as="xs:string+"/>
+	<xsl:variable name="lines" select="tokenize($source, $lf)" as="xs:string+"/>
 	<xsl:variable name="output">
 	  <r>
 	    <!-- capture the patterns and their meanings -->
 	    <xsl:for-each select="$lines">
-	      <xsl:analyze-string select="." regex='^"([^"]+)","([^"]+)"$' flags="s">
+	      <xsl:analyze-string select="." regex="{$regex}" flags="s">
 		<xsl:matching-substring>
 		  <e>
-		    <xsl:attribute name="src">
-		      <xsl:value-of select="$file_name"/>
-		    </xsl:attribute>
+		    <!-- 		    <xsl:attribute name="src"> -->
+		    <!-- 		      <xsl:value-of select="$file_name"/> -->
+		    <!-- 		    </xsl:attribute> -->
 		    <xsl:variable name="lemma" select="regex-group(1)"/>
 		    <xsl:variable name="pos" select="regex-group(2)"/>
-		    <lemma>
-		      <xsl:attribute name="POS">
-			<xsl:value-of select="$pos"/>
-		      </xsl:attribute>
-		      <xsl:copy-of select="normalize-space($lemma)"/>
-		    </lemma>
-		    <mgr>
-		      <trgr>
-			<trans decl="xxx">xxx</trans>
-		      </trgr>
-		    </mgr>
+		    <xsl:variable name="trans" select="regex-group(3)"/>
+		    <xsl:variable name="book" select="regex-group(4)"/>
+		    <lg>
+		      <l>
+			<!-- here, I assume that only verbs have extra information separated by space -->
+			<xsl:variable name="current_pos" select="tokenize($pos, $sp)"/>
+			<xsl:if test="count($current_pos) = 1">
+			  <xsl:attribute name="pos">
+			    <xsl:value-of select="lower-case($pos)"/>
+			  </xsl:attribute>
+			</xsl:if>
+			<xsl:if test="count($current_pos) = 2">
+			  <xsl:attribute name="pos">
+			    <xsl:value-of select="lower-case($current_pos[1])"/>
+			  </xsl:attribute>
+			  <xsl:attribute name="class">
+			    <xsl:value-of select="$current_pos[2]"/>
+			  </xsl:attribute>
+			</xsl:if>
+			<xsl:value-of select="normalize-space($lemma)"/>
+		      </l>
+		    </lg>
+		    <apps>
+		      <app name="oahpa">
+			<sources>
+			  <xsl:for-each select="tokenize($book, ',')">
+			    <book name="{normalize-space(.)}"/>
+			  </xsl:for-each>
+			</sources>
+		      </app>
+		    </apps>
+		    <xsl:for-each select="tokenize($trans, ';')">
+		      <mg>
+			<tg>
+			  <xsl:for-each select="tokenize(., ',')">
+			    <tr pos="xxx" xml:lang="nob">
+			      <xsl:value-of select="normalize-space(.)"/>
+			    </tr>
+			  </xsl:for-each>
+			</tg>
+		      </mg>
+		    </xsl:for-each>
 		  </e>
 		</xsl:matching-substring>
-		<!-- 		  <xsl:non-matching-substring> -->
-		<!-- 		    <xxx><xsl:value-of select="." /></xxx> -->
-		<!-- 		  </xsl:non-matching-substring> -->
+		<xsl:non-matching-substring>
+		  <xxx><xsl:value-of select="."/></xxx>
+		</xsl:non-matching-substring>
 	      </xsl:analyze-string>
 	    </xsl:for-each>
 	  </r>
 	</xsl:variable>
 
 	<!-- output -->
-	<xsl:for-each-group select="$output/r/e" group-by="./lemma/@POS">
-	  <xsl:result-document href="{$outputDir}/{current-grouping-key()}_fitswe.{$e}">
-	    <xsl:processing-instruction name="xml-stylesheet" 
-					title="Dictionary view"
-					media="screen,tv,projection"
-					href="../../scripts/gt_dictionary_alt.css"
-					type="text/css"/>
-	    
-	    <xsl:processing-instruction name="xml-stylesheet"
-					alternate="yes"
-					title="Hierarchical view"
-					media="screen,tv,projection"
-					href="../../scripts/gt_dictionary_alt.css"
-					type="text/css"/>	    
-	    
-	    <xsl:value-of select="'&#xA;'"/>
+	<xsl:for-each-group select="$output/r/e" group-by="./lg/l/@pos">
+	  <xsl:result-document href="{$outputDir}/{current-grouping-key()}_sma-oahpa.{$e}">
 	    <r>
 	      <xsl:copy-of select="current-group()"/>
 	    </r>
