@@ -17,8 +17,10 @@
   <xsl:output method="xml"
               encoding="UTF-8"
               omit-xml-declaration="no"
-              indent="yes"/>
-
+              doctype-system="../../../words/dicts/scripts/gt_dictionary.dtd"
+	      doctype-public="-//DivvunGiellatekno//DTD Dictionaries//Multilingual"
+	      indent="yes"/>
+  
 <xsl:function name="local:distinct-deep" as="node()*">
   <xsl:param name="nodes" as="node()*"/> 
  
@@ -106,17 +108,29 @@
 			</sources>
 		      </app>
 		    </apps>
-		    <xsl:for-each select="tokenize($trans, ';')">
-		      <mg>
-			<tg>
-			  <xsl:for-each select="tokenize(., ',')">
-			    <tr pos="xxx" xml:lang="nob">
-			      <xsl:value-of select="normalize-space(.)"/>
-			    </tr>
-			  </xsl:for-each>
-			</tg>
-		      </mg>
-		    </xsl:for-each>
+		    <mg>
+		      <tg>
+			<xsl:for-each select="tokenize($trans, ';')">
+			  <t pos="xxx" xml:lang="nob">
+			    <xsl:value-of select="normalize-space(.)"/>
+			  </t>
+			</xsl:for-each>
+		      </tg>
+		    </mg>
+
+		    <!-- the correct method -->
+		    <!-- 		    <xsl:for-each select="tokenize($trans, ';')"> -->
+		    <!-- 		      <mg> -->
+		    <!-- 			<tg> -->
+		    <!-- 			  <xsl:for-each select="tokenize(., ',')"> -->
+		    <!-- 			    <t pos="xxx" xml:lang="nob"> -->
+		    <!-- 			      <xsl:value-of select="normalize-space(.)"/> -->
+		    <!-- 			    </t> -->
+		    <!-- 			  </xsl:for-each> -->
+		    <!-- 			</tg> -->
+		    <!-- 		      </mg> -->
+		    <!-- 		    </xsl:for-each> -->
+
 		  </e>
 		</xsl:matching-substring>
 		<xsl:non-matching-substring>
@@ -130,6 +144,10 @@
 	<!-- output -->
 	<xsl:for-each-group select="$output/r/e" group-by="./lg/l/@pos">
 	  <xsl:result-document href="{$outputDir}/{current-grouping-key()}_sma-oahpa.{$e}">
+	    <xsl:processing-instruction name="xml-stylesheet"> title="Dictionary view" media="screen,tv,projection" href="../../../words/dicts/scripts/gt_dictionary.css" type="text/css"</xsl:processing-instruction>
+	    <xsl:value-of select="'&#xa;'"/>	    
+	    <xsl:processing-instruction name="xml-stylesheet">alternate="yes" title="Hierarchical view" media="screen,tv,projection" href="../../../words/dicts/scripts/gt_dictionary_alt.css" type="text/css"</xsl:processing-instruction>
+	    <xsl:value-of select="'&#xa;'"/>
 	    <r>
 	      <xsl:copy-of select="current-group()"/>
 	    </r>
