@@ -14,7 +14,7 @@ supersett HUMAN (Leksa)
 
 supersett FOOD/DRINK (Leksa)
 	FOOD_GROCERY - matvarer man kan kjøpe i butikken
-	FOOD_DISH - mat man kan spise til middag
+	FOOD_DISH - mat man kan spise til middag, dessert, frokost, lunsj, kveldsmat osv
 	FOOD_OTHER - ord som ikke passer inn i de to foregående, f.eks. fett, mat, 		deig, kveldsmat...
 	DRINK
 	FOOD_DRINK_V - koke, steike, bake, dekke på, handle..
@@ -77,6 +77,7 @@ supersett NATUREWORDS
 	WEATHER_V - blåse, regne...
 	NATURE_V - handlinger man typisk gjør i ute i naturen: gå på ski, jakte, 	fiske, ro, ha bål..
 	WEATHER_adj - varm, kald, mild...
+	SNOW - snøord
 	NATURE_adj - våt, tørr, trang, høy, bred...
 
 supersett LEISURETIME/AT_HOME
@@ -108,6 +109,13 @@ supersett ABSTRACTS
 	SOUND
 	AMOUNT
 
+supersett WORK/ECONOMY/TOOLS
+	JOB
+	ORGANIZATION
+	FINANCE
+	TOOL
+	WORK_ECONOMY-V
+
 Supersett 
 	TIME - ukedager, måneder, år
 	TIME_V - f.eks. begynne, ha tid, slutte
@@ -118,9 +126,8 @@ TEXT
 
 SCHOOL/EDUCATION
 SCHOOL
-EDUCATION
-SCHOOL_V
-
+EDUCATION - skoler, kurs
+SCHOOL-V - lære, undervise, skrive, regne, synge...
 
 superset TRADITIONAL
 	inneholder:
