@@ -1,24 +1,34 @@
 Disse settene er i bruk i sørsamisk Oahpa:
 
 supersett HUMAN (Leksa)
-	består av:
 	FAMILY - slektskapsord, men også ord som venn, navnesøster
 	PROFESSION - yrker
 	PEOPLE - slike som ikke passer inn i de to andre, f.eks. kvinne, mann, tyv
 	ACTOR - innbygger, leser, vinner... 
 	OTHERS
-	HUMAN-V - verb som typisk utføres av en person, og som ikke passer inn i de andre settene her
-	HUMAN-adj2 - adjektiv som kan karakterisere et menneske: flink, oppfinnsom....
-	VERBAL-V - snakke, si, spørre, fortelle...
-	EXPERIENCE-V - bli trøtt, vite, fryse...
-	AUX-V - hjelpeverb
+	HUMAN_V - verb som typisk utføres av en person, og som ikke passer inn i de 	andre settene her
+	HUMAN_adj2 - adjektiv som kan karakterisere et menneske: flink, 		oppfinnsom....
+	VERBAL_V - snakke, si, spørre, fortelle...
+	EXPERIENCE_V - bli trøtt, vite, fryse...
+	AUX_V - hjelpeverb
 
 supersett FOOD/DRINK (Leksa)
-	innholder:
-	FOOD-GROCERY - matvarer man kan kjøpe i butikken
+	FOOD_GROCERY - matvarer man kan kjøpe i butikken
 	FOOD_DISH - mat man kan spise til middag
-	FOOD-OTHER - ord som ikke passer inn i de to foregående, f.eks. fett, mat, 		deig, kveldsmat...
+	FOOD_OTHER - ord som ikke passer inn i de to foregående, f.eks. fett, mat, 		deig, kveldsmat...
 	DRINK
+	FOOD_DRINK_V - koke, steike, bake, dekke på, handle..
+	SOUP_adj - adjektiv som karaktiserer mat: varm, kald, bitter, god, fersk...
+
+supersett ANIMAL (Leksa)
+	ANIMAL_DOM - husdyr
+	ANIMAL_WILD - ville dyr
+	ANIMAL_PET - kjæledyr
+	ANIMAL_OTHER - andre ord om dyr
+	BIRD
+	FISH
+	ANIMAL_V - fly, kvitre, vrinske, mjaue, melke....
+	ANIMAL_adj - rask, feit, styg, slem, dum, treg, snill, liten, stor...
 
 supersett OBJECT (Leksa)
 	TOOL - redskap
@@ -31,28 +41,28 @@ supersett CONCRETES
 	KITCHEN - ting som hører til på kjøkkenet
 	CONTAINER - hvor er ringen? (veske, bag, kiste, kasse, kopp)
 	INSTRUMENT - piano, fiolin..
-	EXPOSURE-V - knuses, gå hull i, bli tom, ødelegges
-	OBJECT-adj - rund, lav, liten, stor, 
+	EXPOSURE_V - knuses, gå hull i, bli tom, ødelegges
+	OBJECT_adj - rund, lav, liten, stor, 
 
 supersett BODY
 	BODYPART - kroppsdel
-	BODYPART-PL - flertallssubstantiv, f.eks. hår
+	BODYPART_PL - flertallssubstantiv, f.eks. hår
 	ILLNESS - sykdommer
-	BODY-V - sette seg, ligge, hinke, gjøre vondt...
-	BODY-adj - døv, blind, høy, liten, tynn, tykk...
+	BODY_V - sette seg, ligge, hinke, gjøre vondt...
+	BODY_adj - døv, blind, høy, liten, tynn, tykk...
 
 supersett CLOTHES
 	CLOTHING - klær
-	CLOTHING-PL - flertallssubstantiv
+	CLOTHING_PL - flertallssubstantiv
 	CLOTHING_OTHER - erme, knapp...
-	CLOTHES-V - sy, lappe, dekorere...
-	CLOTHES-adj - rød, grønn, vid, trang, høvelig, moderne...
+	CLOTHES_V - sy, lappe, dekorere...
+	CLOTHES_adj - rød, grønn, vid, trang, høvelig, moderne...
 
 supersett BUILDINGS/ROOMS
 	BUILDING
 	ROOM
-	ROOM-PART - golv, vegg, vindu, dør... 
-	ROOM-OTHER - møbel, rot, pute..
+	ROOM_PART - golv, vegg, vindu, dør... 
+	ROOM_OTHER - møbel, rot, pute..
 	SHOP - butikker
 	CONSTRUCTION - gjerde, svømmebasseng, flaggstang...
 	FURNITURE
@@ -60,49 +70,47 @@ supersett BUILDINGS/ROOMS
 
 supersett NATUREWORDS
 	NATURE - måne, sol, himmelretning, luft..
-	NATURE-WATER - elv, innsjø...
+	NATURE_WATER - elv, innsjø...
 	NATUREPLACE - jenta er i/på ... (åker, berg, fjell, marka..)
 	PLANT
 	WEATHER - vind, storm, regn, snøvær...
+	WEATHER_V - blåse, regne...
+	NATURE_V - handlinger man typisk gjør i ute i naturen: gå på ski, jakte, 	fiske, ro, ha bål..
+	WEATHER_adj - varm, kald, mild...
+	NATURE_adj - våt, tørr, trang, høy, bred...
 
 supersett LEISURETIME/AT_HOME
 	ARRANGEMENT - fest, middag, dåp...
 	SPORT - akebakke, handball, fotball, 
-	HOME-ACTIVITY - aktiviteter i hjemmet
+	HOME_ACTIVITY - aktiviteter i hjemmet
+	CHRISTMAS - julefest, juletre, julegave, stearinlys, pepperkake ...
+	SLIDE_TOOL - akebrett, kjelke, ski...
+	TOY - sandslott, spill, dukke...
+	LEISURETIME_HOME_V - verb som passer inn i dette supersettet: leke gjømt, 		spille, leke, gå i kirka, joike..
+	SHOW - duodjeutstilling, reinkappkjøring... (Jenta ser på ...)
 
 Supersett PLACES 
-	PLACE-NAME - stedsnavn
-	PLACE-STAYING - hvor man kan bo: by, bygd, tettsted, leilighet...
-	PLACE-OTHER - sted, møtested...
-	PLACE-LOCAL - gårdsplass, vedhugstplass, bålbredd...
+	PLACE_NAME - stedsnavn
+	PLACE_STAYING - hvor man kan bo: by, bygd, tettsted, leilighet...
+	PLACE_OTHER - sted, møtested...
+	PLACE_LOCAL - gårdsplass, vedhugstplass, bålbredd...
 	TRAVELLING - bensin, påsketur, billett...
 	VEHICLE - buss, bil, tog..
 	ROAD - veg, vegkant, gatekryss...
-	TRAVEL-V - stoppe, overnatte, kjøre..
+	TRAVEL_V - stoppe, overnatte, kjøre..
 
 
 supersett ABSTRACTS
 	FEELING
+	THOUGHT
+	ACTION
 	ABSTRACT
 	SOUND
 	AMOUNT
 
-
 Supersett 
-	inneholder
-	TIME
-
-
-
-supersett ANIMAL (Leksa)
-	innholder:
-ANIMAL-DOM - husdyr
-ANIMAL-WILD - ville dyr
-ANIMAL-PET - kjæledyr
-ANIMAL-OTHER - andre ord om dyr
-BIRD
-FISH
-
+	TIME - ukedager, måneder, år
+	TIME_V - f.eks. begynne, ha tid, slutte
 
 supersett LITERATURE
 TEXT
@@ -111,7 +119,7 @@ TEXT
 SCHOOL/EDUCATION
 SCHOOL
 EDUCATION
-SCHOOL-V
+SCHOOL_V
 
 
 superset TRADITIONAL
@@ -121,7 +129,7 @@ superset TRADITIONAL
 	GAMME - 
 	VÆTNOE
 	FISHING
-	TRAD-OBJECT
+	TRAD_OBJECT
 	TRAD_OTHER
 	TRAD_FOOD
 	TRAD_CLOTHING - ord med tradisjonelle klær
