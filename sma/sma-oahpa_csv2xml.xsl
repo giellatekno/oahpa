@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <!--+
-
     | Transforms a csv file with two fields - "lemma","part-of-speech", etc. - into a sma oahpa gtdict xml format
     | NB: An XSLT-2.0-processor is needed!
     | Usage: java -Xmx2024m net.sf.saxon.Transform -it main THIS_SCRIPT file="INPUT-FILE"
