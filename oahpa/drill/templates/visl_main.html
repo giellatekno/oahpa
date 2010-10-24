@@ -381,6 +381,11 @@ TREEBANK</a>
 <option value="fi" selected="selected">Suomi</option>
 {% else %}
 <option value="fi">Suomi</option>
+
+{% ifequal LANGUAGE_CODE "sv" %}
+<option value="sv" selected="selected">Svensk</option>
+{% else %}
+<option value="sv">Svensk</option>
 {% endifequal %}
 </select>
 </td></tr>

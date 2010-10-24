@@ -140,6 +140,12 @@ NUMRA</a>&nbsp;&nbsp;
 {% else %}
 <option value="fi">Suomi</option>
 {% endifequal %}
+
+{% ifequal LANGUAGE_CODE "sv" %}
+<option value="sv" selected="selected">Svensk</option>
+{% else %}
+<option value="sv">Svensk</option>
+{% endifequal %}
 </select>
 
 </form>
