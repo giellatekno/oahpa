@@ -1,0 +1,70 @@
+
+
+!!!HTML
+
+!!Overall look
+
+* CSS-settings reside in {{ped/oahpa/media/css/oahpa.css}}
+* Mainpage __oahpa.no__ is defined in
+  {{ped/oahpa/drill/templates/oahpa_main.html}}
+* Basic look for all the games (divs, menubars) are given in file
+  {{ped/oahpa/templates/oahpa.html}}
+* The file game.html contains the basic functionality for all the games.
+* Morhpology games are controlled by the file {{mgame.html}}
+
+In addition, it is possible to alter the pages of individual games by
+editing the files
+
+{{{
+ped/oahpa/drill/templates/mgame_n.html (Morfa for nouns)
+ped/oahpa/drill/templates/mgame_l.html (Morfa numerals)
+ped/oahpa/drill/templates/mgame_a.html (Morfa for adjectives)
+ped/oahpa/drill/templates/mgame_v.html (Morfa for verbs)
+ped/oahpa/drill/templates/quizz.html (Leksa common nouns)
+ped/oahpa/drill/templates/quizz_n.html (Leksa placenames)
+ped/oahpa/drill/templates/num.html (Numra cardinal)
+ped/oahpa/drill/templates/num_ord.html (Numra ordinals)
+ped/oahpa/drill/templates/vasta.html
+ped/oahpa/drill/templates/sahka.html
+}}}
+
+Game pages involve definitions from several html-pages. For example, S-MORFA: mgame_x.html, mgame.html, game.html and oahpa.html. 
+
+The files contain template tags such as:
+
+{{{
+{% block navbar %}
+..
+{% endblock %}
+}}}
+
+They enable several pages to be generated from one source file. In
+addition, some variables are inside double braces. However, the rest
+of the page is plain html and it may be edited as any html-file. If there is an error you may always return to the previous svn-version. Remember to test.
+
+!!Examples
+
+If you want to update a text in English, write inside the trans-tags in the html-file for the main page or the game :
+
+{{{
+{% trans ".." %}
+}}}
+
+To make a new box for option xxx in Leksa Placenames under geography choices, you have to add this to the files:
+
+{{{
+1. oahpa/drill/forms.py: 
+GEOGRAPHY_CHOICES =  ('xxx', _('xxx')), 
+and     # For placename quizz
+    xxx = forms.BooleanField(required=False,initial=0)
+
+
+2. oahpa/drill/views.py:         
+if 'xxx' in settings_form.data:
+            self.settings['geography'].append('xxx')
+
+3. oahpa/drill/templates/quizz_n.html: 
+{{ settingsform.xxx }}{% trans "xxx" %}<br/>
+
+}}}
+

@@ -1,0 +1,37 @@
+
+!!!Localisation
+
+Translations for the texts in the interface are provided in files:
+
+{{{
+ped/oahpa/locale/fi/LC_MESSAGES/django.po
+ped/oahpa/locale/sme/LC_MESSAGES/django.po
+ped/oahpa/locale/no/LC_MESSAGES/django.po
+ped/oahpa/locale/en/LC_MESSAGES/django.po
+}}}
+
+The English file is needed for the names and strings that contain
+Unicode. The English texts in the html-pages should be ascii.
+
+Whenever the texts in the page are updated, the translations need to be checked and updated as well. 
+{{{
+cd ped/oahpa
+django-admin.py makemessages -a
+svn ci -m "new generated files" locale/fi/LC_MESSAGES/django.po
+   ... etc. for the other files. 
+}}}
+
+After that, work on the respective django.po files, and check them
+in again. Search for word "#fuzzy" from django.po. It means that the
+English content has changed and the system tries to guess the correct
+translation. Check the translation and remove all the lines that
+contain "#fuzzy", otherwise the translation does not work.
+
+After fixing the files update the official directory and compile the messages.
+
+{{{
+cd ped/oahpa/
+svn up
+django-admin.py compilemessages
+}}}
+

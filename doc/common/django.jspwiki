@@ -1,0 +1,213 @@
+!!!Installing django
+
+
+
+
+!!!Install Django locally
+
+To test applications and interfaces, install Django to your own
+computer (as with the documentation system forrest). Follow the
+instructions in [Django Quick install guide|http://docs.djangoproject.com/en/dev/intro/install/]: Install
+Python (you probably have it already) and Install Django. Select the
+option "Install an official release", to assure compatibility with
+victorio. 
+
+Go to victorio and start mysql with the administrator username and password. 
+Grant access to you: 
+
+{{{
+$ mysql -u root -p
+mysql> GRANT all ON oahpa.* TO 'your-username'@'your-own-ip-address';
+}}}
+
+Edit the file ped/oahpa/settings.py in your own computer with the information
+
+{{{
+DATABASE_USER = 'your-username'
+DATABASE_PASSWORD = ''
+DATABASE_HOST = 'victorio.uit.no'
+DATABASE_PORT = '' (port number)
+}}}
+
+And, finally, you need to create a sami language directory. Django should be installed in /Library/Python/2.5/site-packages/ -directory. Look at that directory for django/conf/locale -directory. Create sme
+language directory and copy the locale settings there from no:
+
+{{{
+mkdir your_pythonlib/django/conf/locale/sme
+cp your_pythonlib/django/conf/locale/no/django.* $(djangopath)/django/conf/locale/sme/
+}}}
+
+Then start the web development server in your own computer:
+
+{{{
+cd ped/oahpa/
+python manage.py runserver
+}}}
+
+The pages should be available in
+[http://127.0.0.1:8000/oahpa/]. Consult
+the Django manual if there are problems with this part. With the
+remote logging to the database, you need to ask saara. 
+
+In the sandbox, it is possible to test the changes to the code and to
+html pages. After the pages are working, check them in to svn and
+update the official version in victorio. 
+
+
+!!Tronds notes on howto
+
+This is how to do it on my machine
+
+Check in the control panel that MySQL is running: Click on it and see the green __running__ word.
+
+MySQL browser
+
+check that in $GTHOME/ped/oahpa/, the parameters are:
+
+{{{
+
+}}}
+
+Then start the web development server in your own computer:
+
+{{{
+cd $GTHOME/ped/oahpa/
+python manage.py runserver
+}}}
+
+The pages should be available in
+[http://127.0.0.1:8000/oahpa/]. Consult
+the Django manual if there are problems with this part. With the
+remote logging to the database, you need to ask saara. 
+
+In the sandbox, it is possible to test the changes to the code and to
+html pages. After the pages are working, check them in to svn and
+update the official version in victorio. 
+
+
+
+
+!!Some caveats with the local installation on MacOS:
+
+* if you have two different python versions, both in {{{/usr/bin/python}}} and in {{{/opt/local/bin/python}}}
+you have to configure the Django installation as required (see, for instance, [this site|http://stackoverflow.com/questions/118813/how-do-i-uninstall-python-from-osx-leopard-so-that-i-can-use-the-macports-versi])
+* if you have problems starting the sandbox web server and get the following error:
+{{{
+~/Django/someAppl>python manage.py  runserver 
+Validating models...
+Unhandled exception in thread started by <function inner_run at 0x6c1f70>
+Traceback (most recent call last):
+...............
+    from django.db import models, connection
+  File "/opt/local/Library/Frameworks/Python.framework/Versions/2.5/lib/python2.5/site-packages/django/db/__init__.py", line 22, in <module>
+    backend = __import__('%s.base' % settings.DATABASE_ENGINE, {}, {}, [''])
+ImportError: No module named dummy.base
+}}}
+
+you might lack the py25-hashlib package
+
+{{{
+sudo port install py25-hashlib
+}}}
+
+!!!Your own database
+
+Sometimes it would be good idea to have a replicate also from the
+oahpa-database, e.g. when you are testing new games. First install
+mysql: [http://dev.mysql.com/downloads/mysql/5.1.html]. See also database installation instructions in
+[http://docs.djangoproject.com/en/dev/topics/install/#database-installation]. 
+
+Look at the file {{/etc/my.cnf}}. It should have these utf8-values:
+
+{{{
+[client]
+default-character-set=utf8
+
+[mysqld]
+default-character-set=utf8
+collation_server=utf8_bin
+character_set_server=utf8
+character_set_client=utf8
+}}}
+
+Start the server with command:
+
+{{{
+sudo mysqld_safe &
+}}}
+
+Set root password and create a new user account:
+
+{{{
+mysqladmin -u root password "mypassword"
+}}}
+
+Look for manuals to create own user etc, but you may use the root as
+well. Next, create the database:
+
+{{{
+mysql -u root -p
+mysql> create database oahpa character set utf8 collate utf8_bin;
+mysql> exit;
+}}}
+
+Change the local settings in ped/oahpa/settings.py:
+
+{{{
+DATABASE_USER = 'root'
+DATABASE_PASSWORD = 'myspassword'
+DATABASE_HOST = ''
+}}}
+
+
+Add the PYTHONPATH of the OAHPA! project in your .bashrc file:
+{{{
+export PYTHONPATH=$(YOUR-PATH-TO)/gtsvn/ped:$(YOUR-PATH-TO)/gtsvn/ped/oahpa:$(YOUR-PATH-TO)/gtsvn/ped/oahpa/drill
+}}}
+Adjust paths in ped/oahpa/ling.py:
+{{{
+fstdir="$(YOUR-PATH-TO)/gtsvn/gt/sme/bin"
+lookup = "$(YOUR-PATH-TO)/bin/lookup"
+}}}
+
+Adjust paths in ped/oahpa/drill/game.py:
+{{{
+fstdir="$(YOUR-PATH-TO)/gtsvn/gt/" + language + "/bin"
+lookup ="$(YOUR-PATH-TO)/bin/lookup"
+}}}
+
+Start installing the database information:
+
+{{{
+cd ped/oahpa
+python manage.py syncdb
+python install.py -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt -b
+python install.py -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt -f ../sme/xml/nouns.xml
+}}}
+
+Install everything you need starting from the lexicons.
+
+Start Django locally:
+
+{{{
+python manage.py runserver
+}}}
+
+!! Possible problem:
+
+* if you get a DB connection error, for instance
+{{{
+Can't connect to local MySQL server through socket '/var/mysql/mysql.sock'
+}}}
+
+first, find the mysql socket
+{{{
+~>mysqladmin variables | grep socket
+| socket                                  | /tmp/mysql.sock 
+}}}
+and then, change the value of the DATABASE_HOST in ped/oahpa/settings.py accordingly:
+{{{
+DATABASE_HOST = '/tmp/mysql.sock'
+}}}
+
+

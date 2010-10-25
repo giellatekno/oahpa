@@ -1,0 +1,120 @@
+
+
+!!!Updating the database
+
+The script install.py is used for updating the database. First, cd to
+the ped/oahpa directory and then test the script.
+{{{
+cd ped/oahpa/
+python install.py -h
+}}}
+
+Changes in the database are visible in the interface straight
+away. Running a same installation script several times is not
+harmful. The same command that is used for installing the information
+can be used for updating.
+
+
+!!Lexicons
+
+Information of individual words such as lemmas, stem information,
+semantic classes and source information is added or updated using command:
+
+{{{
+python install.py -f ../sme/xml/nouns.xml
+}}}
+
+Forms and tags are updated when the tagfile and paradigmfile are given
+as well:
+
+{{{
+python install.py -f ../sme/xml/nouns.xml -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt
+}}}
+
+This command generates paradigm for all the words in nouns.xml and
+updates forms for both dialects: KJ and GG. Running the script may
+take a while. If you have a list of words you want to add to the
+database, it is possible create a temporary file for them so that you
+do not need to generate paradigms for all the words. Remember to add
+the words to the lexicon file for future updates.
+
+Remove words from the database one by one by giving the word id (or lemma) and the part of speech as option:
+
+{{{
+python install.py -w beana -p N
+}}}
+
+If you have deleted entries in the lexicon file, specify an extra
+option -d to delete unexisting entries. This option can be used only when
+the whole lexicon file is installed, since it compares the xml-file to
+the database content of certain pos.
+
+{{{
+python install.py -d -f ../sme/xml/nouns.xml
+}}}
+
+To add the new words to the semantic supersets, update the semantic
+classes [Semantic classes|maintenance.html#Semantic+classes].
+
+Both Sami and Norwegian lexicons are installed using the same command. The
+language information is extracted from the xml-file. Do not specify paradigm 
+or tag information for nob-files:
+
+{{{
+python install.py -f ../nob/xml/nouns.xml
+}}}
+
+Finally, the installation commands here only update old and add new
+information. If you want to remove all the words that do not appear in
+the xml-file. Use carefully, this will delete all the nouns that appear 
+in other files.
+
+{{{
+python install.py --delete -f ../sme/xml/nouns.xml
+}}}
+
+This command both updates and removes all the extra entries of pos
+N. The pos N is derived from the pos information of the first entry.
+
+!!Numerals
+Numerals are generated and installed using __fst__. Command:
+
+{{{
+python install.py -n
+}}}
+
+!!Placenames
+Placenames stored in sme/xml/propernouns.xml are installed differently
+than the other lexicons, since the Norwegian translations are
+implied. Use the option "--places" for them.
+
+{{{
+python install.py --places -f ../sme/xml/propernouns.xml
+}}}
+
+Use option -d to remove entries from the database the same way as from
+[lexicons|maintenance.html#Lexicons].
+
+!!Semantic classes
+
+The grouping of semantic classes is defined in
+ped/sme/xml/semantic_sets.xml. Database is updated by the command:
+{{{
+python install.py -s ../sme/xml/semantic_sets.xml
+}}}
+The semantic set information is used among others in Leksa. To update
+the menu that appears in Leksa main page, edit the variable
+{{SEMTYPE_CHOICES}} in ped/oahpa/forms.py:
+{{{
+SEMTYPE_CHOICES = (
+    ('FAMILY', _('family')),
+    ('PROFESSION', _('profession')),
+    ...
+)
+}}}
+
+The string in small letters is the string that appears in the menu in
+English version. To translate for the other languages, follow the
+steps in [Localisation|maintenance.html#Localisation]. In addition, 
+the changes in {{forms.py}} require that the server is restarted 
+(sudo httpd restart). 

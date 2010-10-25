@@ -1,0 +1,29 @@
+
+
+!!!Images
+Preferably in jpg-format. Collect the images and scale them to size,
+where width of the image is 150-180px (perhaps we should decide which
+size). Height of the picture can be anything. Internet Exporer
+requires this size, the other browsers will work regardless of the
+size of the image.
+
+Store the images to directory ped/oahpa/media/img/, with the same name
+as they are specified in the dialoguefile.xml. In dialoguefile.xml,
+use only the name of the image, not the full path.
+
+If you are installing a new game, update the file
+ped/oahpa/drill/templates/sahka.html. The file contains a table where
+all the images are stored as links to new dialogues:
+
+{{{
+<td>
+<a href="javascript:submitSahka('firstmeeting_man');">
+<img width="100" src="/oahpa/media/man.jpg"/>
+<p>{% trans "Meeting with Hansa" %}</p></a>
+</td>
+}}}
+
+Copy one such td, to a suitable place inside the table, specify a
+width to the image that fits to the page. Remember to change the name
+of the file, and finally, add the name of the dialogue to the javascript
+section. In the example above the dialogue name is "firstmeeting_man."

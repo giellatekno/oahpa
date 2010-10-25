@@ -1,0 +1,20 @@
+
+!!!Feedback
+
+Install first the feedback messages, preferably for all languages:
+{{{
+python install.py -m ../sme/xml/messages.xml
+python install.py -m ../sme/xml/messages.sme.xml
+}}}
+After that, install the feedback files for each pos. This may take
+some time, even hours, especially for nouns and adjectives.
+{{{
+python install.py -e ../sme/xml/feedback_verbs.xml -f ../sme/xml/verbs.xml
+..
+}}}
+
+You may update the content of the feedback messages, or add new
+languages without installing the feedback again. However, new feedback
+messages as well as new ids require reinstallation of the releveant
+feedback files. Vice versa, changes in the feedback file do not
+require reinstallation of the messages.
