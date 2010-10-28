@@ -80,10 +80,10 @@
 		    <xsl:variable name="pos" select="regex-group(2)"/>
 		    <xsl:variable name="trans" select="regex-group(3)"/>
 		    <xsl:variable name="book" select="regex-group(4)"/>
+		    <xsl:variable name="current_pos" select="tokenize($pos, $sp)"/>
 		    <lg>
 		      <l>
 			<!-- here, I assume that only verbs have extra information separated by space -->
-			<xsl:variable name="current_pos" select="tokenize($pos, $sp)"/>
 			<xsl:if test="count($current_pos) = 1">
 			  <xsl:attribute name="pos">
 			    <xsl:value-of select="lower-case($pos)"/>
@@ -111,8 +111,12 @@
 		    </apps>
 		    <mg>
 		      <tg>
+			<semantics> 
+			  <sem class="LANGUAGEPART"/> 
+			  <sem class="NUMNOUN"/> 
+			</semantics>
 			<xsl:for-each select="tokenize($trans, ';')">
-			  <t pos="xxx" xml:lang="nob">
+			  <t pos="{lower-case($current_pos[1])}" xml:lang="nob">
 			    <xsl:value-of select="normalize-space(.)"/>
 			  </t>
 			</xsl:for-each>
