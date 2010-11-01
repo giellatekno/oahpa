@@ -1,0 +1,73 @@
+!!!Overview
+
+This document tries to give an overview of what is where and why,
+in the {{ped}} catalogue, i.e. the file catalogue of Oahpa.
+
+
+!! The content of the {{ped}} catalogue
+* __adm__
+** Contains reports etc. This folder is not in use, but could be.
+* __art__
+** Our articles. This folder shall be moved to plan/art
+* __build__
+** This folder is used by the system. Keep off.
+* __doc__
+** This is for the documentation written for us working on Oahpa
+* __dtd__
+** Here are some dtds. But note that the sma dtd is in the dict
+   folder, and some of the sme dtds are in the xml folder.
+* __fin, nob, sma, sme, swe, smj__
+** Both target and Leksa translation folders
+* __forrest.properties__ and __forrest.properties.xml__
+** Well, forrest files.
+* __images__
+** Images for Sahka are found here
+* __oahpa__
+** This is where all the files for the program is
+* __qa-test__
+** This catalogue is obsolete
+* __src__
+** Well, I do not know the difference between this one and __oahpa__ above
+* __userdoc__
+** This is for documentation for end users (teachers, pupils)
+
+
+!! The content of the language catalogues
+
+The target language catalogues (sme, sma) have the following content:
+
+* __corp__
+** At the moment, this contains files for VISL
+* __dev__
+** Your private playground. This catalogue is not under version control.
+* __src__
+** This contains the CG rules for Sahka, and other files relevant
+   to grammatical processing
+* __xml__
+** Files for dialogues and questions. 
+** For sme, the lexicon can be found here (adjectives.xml, verbs.xml, 
+   nouns.xml, numerals.xml, propernouns.xml)
+** For sma, the corresponding files are obsolote (we use the dictionary
+   directly)
+   
+!! The content of the oahpa catalogue
+
+The catalogue contains several python files governing installing and 
+setting up the program.
+
+
+* __conf__
+
+* __djlocale__
+** Here we add the interface localisation. See separate documentation
+* __drill__
+** python scripts for sahka and …
+** templates folder
+* __feedback__
+* __locale__
+* __media__
+* __templates__
+   
+
+
+
