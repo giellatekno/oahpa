@@ -1,114 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Specify subsets for sematic supersets here -->
 <lexicon>
-    <subclasses class="CLOTHINGS">
-               <sem class="CLOTHING" />
-               <sem class="CLOTHING_OTHER" />
-               <sem class="CLOTHING_PL" />
-               <sem class="TRAD_CLOTHING" />
-               <sem class="CLOTHES_A" />
-               <sem class="CLOTHES_V" />
-    </subclasses>
-    <subclasses class="TRAD">
-               <sem class="TRAD_CLOTHING" />
-               <sem class="TRAD_FOOD" />
-               <sem class="TRAD_OBJECT" />
-               <sem class="TRAD_OTHER" />
-               <sem class="VÆTNOE" />
-               <sem class="GAMME" />
-               <sem class="MYTH_HUMAN" />
-               <sem class="FISHING" />
-    </subclasses>
     <subclasses class="HUMAN">
-               <sem class="FAMILY" />
                <sem class="PROFESSION" />
                <sem class="PEOPLE" />
-               <sem class="FEELING" />
-               <sem class="HUMAN_A" />
+               <sem class="ACTOR" />
+               <sem class="MYTH_HUMAN" />
                <sem class="HUMAN_V" />
+               <sem class="HUMAN_A" />
                <sem class="EXPERIENCE_A" />
+               <sem class="VERBAL_V" />
                <sem class="EXPERIENCE_V" />
+               <sem class="AUX_V" />
+               <sem class="MOVEMENT_V" />
+               <sem class="MOVEMENT_A" />
+    </subclasses>
+    <subclasses class="OBJECT">               
+               <sem class="TOOL" />
+               <sem class="THING" />
+               <sem class="KITCHEN" />
+               <sem class="BATHROOM" />
+               <sem class="SLEEPINGROOM" />
+               <sem class="CONTAINER" />
+    </subclasses>
+    <subclasses class="CONCRETES">               
+               <sem class="CONTAINER" />
+               <sem class="INSTRUMENT" />
+               <sem class="EXPOSURE_V" />
+               <sem class="OBJECT_A" />
+    </subclasses>
+    <subclasses class="TRADITIONAL">
+               <sem class="HERDING" />
+               <sem class="REINDEER" />
+               <sem class="GAMME" />
+               <sem class="VÆTNOE" />
+               <sem class="FISHING" />
+               <sem class="TRAD_OBJECT" />
+               <sem class="TRAD_OTHER" />
+               <sem class="TRAD_FOOD" />
+               <sem class="TRAD_CLOTHING" />
+               <sem class="HANDICRAFTS" />
+               <sem class="VUEKIE" />
+    </subclasses>
+    <subclasses class="CLOTHES">
+               <sem class="CLOTHING" />
+               <sem class="CLOTHING_PL" />
+               <sem class="CLOTHING_OTHER" />
+               <sem class="CLOTHES_V" />
+               <sem class="CLOTHES_A" />
     </subclasses>
     <subclasses class="BODY">
                <sem class="BODYPART" />
-               <sem class="BODY_A" />
-               <sem class="BODY_V" />
+               <sem class="BODYPART_PL" />
                <sem class="ILLNESS" />
+               <sem class="BODY_V" />
+               <sem class="BODY_A" />
     </subclasses>
     <subclasses class="FOOD/DRINK">
-               <sem class="DRINK" />
-               <sem class="FOOD_DISH" />
                <sem class="FOOD_GROCERY" />
+               <sem class="FOOD_DISH" />
                <sem class="FOOD_OTHER" />
-               <sem class="FOOD" />
+               <sem class="DRINK" />
                <sem class="FOOD_DRINK_V" />
-               <sem class="TRAD_FOOD" />
                <sem class="SOUP_A" />
     </subclasses>
     <subclasses class="ANIMAL"> 
-               <sem class="ANIMAL_PET" />
+               <sem class="ANIMAL_DOM" />
                <sem class="ANIMAL_WILD" />
+               <sem class="ANIMAL_PET" />
+               <sem class="ANIMAL_OTHER" />
                <sem class="BIRD" />
                <sem class="FISH" />
-               <sem class="ANIMAL_OTHER" />
-               <sem class="ANIMAL_DOM" />
-               <sem class="ANIMAL_A" />
                <sem class="ANIMAL_V" />
+               <sem class="ANIMAL_A" />
     </subclasses>
-    <subclasses class="REINDEER/HERDING">
-               <sem class="HERDING" />
-               <sem class="REINDEER" />
+    <subclasses class="LEISURETIME/AT_HOME">
+               <sem class="ARRANGEMENT" />
+               <sem class="SPORT" />
+               <sem class="HOME_ACTIVITY" />
+               <sem class="CHRISTMAS" />
+               <sem class="SLIDE_TOOL" />
+               <sem class="TOY" />
+               <sem class="LEISURETIME_HOME_V" />
+               <sem class="SHOW" />
     </subclasses>
     <subclasses class="NATUREWORDS">
-               <sem class="NATURE_PLACE" />
+               <sem class="NATURE" />
                <sem class="NATURE_WATER" />
-               <sem class="NATURE_A" />
-               <sem class="NATURE_V" />
+               <sem class="NATURE_PLACE" />
+               <sem class="PLANT" />
                <sem class="WEATHER" />
                <sem class="WEATHER_V" />
+               <sem class="NATURE_V" />
                <sem class="WEATHER_A" />
-               <sem class="PLANT" />
                <sem class="SNOW" />
-    </subclasses>
-    <subclasses class="HOME">
-               <sem class="HOME_ACTIVITY" />
-               <sem class="KITCHEN" />
-               <sem class="ROOM" />
-               <sem class="ROOM_OTHER" />
-               <sem class="LEISURETIME_HOME_V" />
-               <sem class="SLEEPINGROOM" />
-               <sem class="BATHROOM" />
+               <sem class="NATURE_A" />
     </subclasses>
     <subclasses class="BUILDINGS/ROOMS">
-      		   <sem class="BUILDING"/> 
+               <sem class="BUILDING" />
                <sem class="ROOM" />
-               <sem class="ROOM_OTHER" />
                <sem class="ROOM_PART" />
                <sem class="ROOM_OTHER" />
-               <sem class="SLEEPINGROOM" />
-               <sem class="BATHROOM" />
                <sem class="SHOP" />
+               <sem class="CONSTRUCTION" />
+               <sem class="FURNITURE" />
     </subclasses>
     <subclasses class="SCHOOL/EDUCATION">
                <sem class="SCHOOL" />
-               <sem class="SCHOOL_A" />
-               <sem class="SCHOOL_V" />
                <sem class="EDUCATION" />
+               <sem class="SCHOOL_V" />
+               <sem class="SCHOOL_A" />
     </subclasses>
-    <subclasses class="TIMESET">
+    <subclasses class="TIMEEXPRESSIONS">
                <sem class="TIME" />
-               <sem class="TIME_A" />
                <sem class="TIME_V" />
+               <sem class="TIME_A" />
    </subclasses>
-    <subclasses class="PLACESET"> 
-      <sem class="PLACE_STAYING"/>  
-      <sem class="PLACE_OTHER"/>  
-      <sem class="PLACE_LOCAL"/>  
-      <sem class="TRAVEL_V"/>  
-      <sem class="MOVEMENT_V"/>  
-      <sem class="ROAD"/>  
-      <sem class="TRAVELLING"/>  
-      <sem class="VEHICLE"/>  
+    <subclasses class="PLACES"> 
+               <sem class="PLACE_NAME" />
+               <sem class="PLACE_STAYING" />
+               <sem class="PLACE_OTHER" />
+               <sem class="PLACE_LOCAL" />
+               <sem class="TRAVELLING" />
+               <sem class="VEHICLE" />
+               <sem class="ROAD" />
+               <sem class="TRAVEL_V" />
+    </subclasses>
+    <subclasses class="ABSTRACTS"> 
+               <sem class="FEELING" />
+               <sem class="THOUGHT" />
+               <sem class="ACTION" />
+               <sem class="ACTION_V" />
+               <sem class="ABSTRACT" /> 
+               <sem class="SOUND" />
+               <sem class="AMOUNT" />
+    </subclasses>
+    <subclasses class="WORK/ECONOMY/TOOLS"> 
+               <sem class="ORGANIZATION" />
+               <sem class="FINANCE" />
+               <sem class="TOOL" />
+               <sem class="WORK_ECONOMY_V" />
+    </subclasses>
+    <subclasses class="LITERATURE/TEXT"> 
+               <sem class="TEXT" /> 
+               <sem class="LANGUAGE" />
+               <sem class="LANGUAGEPART" />
+               <sem class="ISSUE-adj" />
     </subclasses>
 </lexicon>
 
