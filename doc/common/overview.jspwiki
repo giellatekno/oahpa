@@ -5,6 +5,7 @@ in the {{ped}} catalogue, i.e. the file catalogue of Oahpa.
 
 
 !! The content of the {{ped}} catalogue
+
 * __adm__
 ** Contains reports etc. This folder is not in use, but could be.
 * __art__
@@ -32,6 +33,7 @@ in the {{ped}} catalogue, i.e. the file catalogue of Oahpa.
 ** This is for documentation for end users (teachers, pupils)
 
 
+
 !! The content of the language catalogues
 
 The target language catalogues (sme, sma) have the following content:
@@ -57,12 +59,22 @@ setting up the program.
 
 
 * __conf__
-
 * __djlocale__
 ** Here we add the interface localisation. See separate documentation
+* sadf
 * __drill__
-** python scripts for sahka and …
-** templates folder
+** python scripts for the drills (i.e., programs, aka games)
+** __admin.py__ (Admin interface for Log messages and database.)
+** __forms.py__ (Models for accessing the database and generating the drills.)
+  This is where the grammatical ranges for Morfa is set, as well as
+  info on books, Leksa language and whatnot.
+** __game.py__ (Models for accessing the database and generating the drills.)
+** __grammarlinks.py__ (Grammarlinks)
+** __models.py__ (settings files for drills)
+** __qagame.py__ (Code for morphdrill, to be used in qagame.)
+** __sahka.py__ (functionality for Sahka.)
+** __views.py__ (Module for handling the html-pages and user data.)
+** __templates folder__
 * __feedback__
 * __locale__
 * __media__
