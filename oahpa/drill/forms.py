@@ -565,8 +565,8 @@ class NumQuestion(OahpaQuestion):
         else:
             self.init_variables(force_unicode(num_list[0]), userans_val, num_list)
             example = numeral
-
-        self.generate_fields(30,30)
+        # field length in numra set to 45
+        self.generate_fields(45,30)
 
         self.fields['numeral_id'] = forms.CharField(widget=numeral_widget, required=False)
         if gametype == "string":
