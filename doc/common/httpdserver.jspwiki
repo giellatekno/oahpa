@@ -19,5 +19,15 @@ anymore. However if victorio is very slow, check the memory by writing:
 
 If the result indicates memory use too close to 100, this is a clear
 problem indication. The answer is to restart the apache web server,
-and thereafter, if need, to [restart mysqld|maintenance.html#Mysql].
+and thereafter, if need, to [restart mysqld|Mysql.html].
+
+If the webserver takes too much memory, ou may also want to stop 
+apache first, and then myql, and then starting them again:
+
+{{{
+sudo /etc/init.d/httpd stop
+sudo /etc/init.d/mysqld stop
+sudo /etc/init.d/httpd start
+sudo /etc/init.d/mysqld start
+}}}
 
