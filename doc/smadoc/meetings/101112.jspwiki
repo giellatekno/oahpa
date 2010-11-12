@@ -1,0 +1,118 @@
+
+!!!Meeting on online Oahpa
+
+
+
+!!! smaoahpa is up and running -- splendid!
+
+!!!Bug list
+
+(Known issues under bug list may just be moved to task list...)
+
+!!Common
+* No scores are generated 3/5…
+* Filling in 5 slots and hitting enter gives __New set__
+  instead of __Test answers__ or __Next slot__.
+** What we want:
+** For the first 4: Enter gives __Next slot__.
+** For the 5th (last) slot: 
+*** If empty slots: Enter gives __Highest empty slot__.
+*** If no empty slots: Enter gives __Test answers__.
+
+!!Leksa
+
+* which entries?
+** All entries with __book__ ''or'' __semantics__
+* We will not have an option ''level''.
+* which features?
+* For the __Show answers__: Show only the first translation
+* nobsma: nob - first t*
+
+ 
+!!Morfa
+
+!Morfa-S nouns
+* Cases as in sme, 
+** __but__ not locative (+Loc), instead inessive (+Ine), elative (+Ela)
+* Number:
+** Nominative plural has nominative singular as input
+* Stem classes:
+** Bisyllabic and trisyllabic
+** __Not__ contracted (as in sme)
+* Bug: Plural nouns are presented in singular 
+** questions and answers must have same number (sg: sg, pl: pl)
+* Otherwise as sme
+
+!Morfa-S verbs
+* For the time being, only present, preterite
+** Personlege pronomen for Sg1 … Pl3
+** ped/sma/doc/smadoc/pronouns_for_morfa_v.csv
+* Later also imperative
+** Pronouns for imperative after the verbs and in parentheses
+** The imperative will have fewer forms than for sme
+* In later versions: also negation verb
+* When clicking the verb, we get the dictionary translation
+** New feature: We want the __verb class__
+** click and get: ''Klasse IV. (Norsk: å vite)''
+*** bisyllabic - <l class="IV" pos="v" ...>lemma</l>
+*** trisyllabic - <l pos="v">lemma</l> 
+
+!Personal pronouns
+
+* Forthcoming
+
+!!Numra
+
+* Numbers cannot be more than 30 characters long, 50 (45) is a better number
+* I have already corrected that in sme oahpa, but not online
+* Ordinals are missing
+
+
+!!Common
+
+Set and level options do not necessarily work.
+Things missing in the database cause error
+
+* Option: Slot size 1, 3, 5 (as a setting option)
+
+!!Leksa
+
+# Turn Leksa to nobsma
+## tg daughters: t, te and tf should be turned
+### For now, take first t* field, later plan differences
+#### t, tf - translation (tf - whitespace, t - single word)
+#### te - explanation
+#### nob -> sma
+#### nob = t, tf, te ?  if te exists, show? otherwise user prompted with t, tf?
+#### sma = lemma / l
+
+# What about smaswe/swesma?
+# Fill in the supersets
+# New features compared to sme-oahpa
+## tcomm: as explained
+
+
+!!Morfa
+
+* Bare Morfa-S / Morfa-V
+
+!!Numra
+
+
+!! General
+
+* forsida
+* lokalisering
+** just no.; take out de and en, so it's easier to identify localisation issues
+
+
+!!!Time schedule
+
+
+
+
+!!! Ciprian and Ryan discussion points/notes
+
+* Union/Exclusion
+* Database loading script / subsets
+* re: tcomm - create a small test xml file to test behavior properly in devel
