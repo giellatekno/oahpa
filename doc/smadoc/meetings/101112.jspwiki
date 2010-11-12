@@ -1,9 +1,12 @@
 
 !!!Meeting on online Oahpa
 
+Present: Ciprian, Lene, Ryan, Trond.
 
 
 !!! smaoahpa is up and running -- splendid!
+
+Now for debugging and planning.
 
 !!!Bug list
 
@@ -26,7 +29,18 @@
 * We will not have an option ''level''.
 * which features?
 * For the __Show answers__: Show only the first translation
-* nobsma: nob - first t*
+* nobsma: nob - first t
+
+Procedure for making nobsma
+
+# if the only t-initial constituent is <te>, take this <te>
+# for each tg, take the first t or tf
+# thereafter, if the next constituent is <te>:
+## add the string ''space emdash space''
+## add the <te> constituent
+# thereafter, if the tg has a <re>
+## add this re, in parentheses
+
 
  
 !!Morfa
