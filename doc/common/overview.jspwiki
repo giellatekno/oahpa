@@ -58,28 +58,49 @@ The catalogue contains several python files governing installing and
 setting up the program.
 
 
-* __conf__
-* __djlocale__
+* ''conf''
+* ''djlocale''
 ** Here we add the interface localisation. See separate documentation
 * sadf
-* __drill__
+* ''drill''
 ** python scripts for the drills (i.e., programs, aka games)
-** __admin.py__ (Admin interface for Log messages and database.)
-** __forms.py__ (Models for accessing the database and generating the drills.)
+** ''admin.py'' (Admin interface for Log messages and database.)
+** ''forms.py'' (Models for accessing the database and generating the drills.)
   This is where the grammatical ranges for Morfa is set, as well as
   info on books, Leksa language and whatnot.
-** __game.py__ (Models for accessing the database and generating the drills.)
-** __grammarlinks.py__ (Grammarlinks)
-** __models.py__ (settings files for drills)
-** __qagame.py__ (Code for morphdrill, to be used in qagame.)
-** __sahka.py__ (functionality for Sahka.)
-** __views.py__ (Module for handling the html-pages and user data.)
-** __templates folder__
-* __feedback__
-* __locale__
-* __media__
-* __templates__
+** ''game.py'' (Models for accessing the database and generating the drills.)
+** ''grammarlinks.py'' (Grammarlinks)
+** ''models.py'' (settings files for drills)
+** ''qagame.py'' (Code for morphdrill, to be used in qagame.)
+** ''sahka.py'' (functionality for Sahka.)
+** ''views.py'' (Module for handling the html-pages and user data.)
+** ''templates folder''
+* ''feedback''
+* ''locale''
+* ''media''
+* ''templates'' (this folder contains the html pages for the games)
    
+!! The content of the templates catalogue
+
+The catalogue contains several html files with the pages presenting 
+each program.
+
+* ''game.html'' — for answer field, colouring
+* ''mgame.html''  — morfa
+* ''mgame_a.html'' — morfa, adjectives
+* ''mgame_l.html'' — morfa, numerals, it seems
+* ''mgame_n.html'' — morfa, nouns
+* ''mgame_v.html'' — morfa, verbs
+* ''num.html'' — cardinal numerals
+* ''num_ord.html'' — ordinal numerals
+* ''oahpa_main.html'' — the main page
+* ''quizz.html'' — leksa
+* ''quizz_n.html'' — leksa, placenames
+* ''sahka.html'' 
+* ''vasta.html''
+* ''visl_main.html'' — the main page for visl
+
+
 
 
 
