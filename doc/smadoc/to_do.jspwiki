@@ -1,4 +1,73 @@
+
+
+
+!!!Liste over ting som skal rettes opp i sma-oahpa
+
+Dette avsnittet er før Røros. 
+
+* noen entryer skal bare presenteres i nobsma
+**  <e exclude="smanob">  - betyr at entryen ikke skal presenteres i smanob
+   
+* re og te kommer istedenfor for oversettelse
+
+* oversettelse i Leksa-smanob: Skal være stat="pref", det fungerer ikke nå - hmm, tror det fungerer men at vi må se på valg (scope?)
+** Godta alle omsetjingar i same entry, uavhengig av mg og tg
+** (rapportert tidlegare men framleis ikkje i boks)
+
+* Bug: stat="pref" står initialt i kvar tg. 
+** Løysing på dette problemet: Ha stat="pref" på __den første t/tf-noden i kvar mg__
+
+
+* hindre at noen substantiv presenteres som flertall i MorfaS
+** legge til <only-sg /> som datter til entry ?? (slik er det gjort i smeOahpa)
+* hindre at noen substantiv presenteres som entall i MorfaS
+** __og__ rette grunnforma til Pl. - det er smør på flesk - med lemma i plural, blir det bare plural
+** spørsmålet er om det er like velorganisert som i nordsamisk… 
+** hvis ikke, så legger vi til lemmaet som plural i fst. Og da genereres bare flertallsformer, det er ikke mulig å generere en sg-form av et pl-lemma
+** Maja sit poeng var at illativ av jåvle skulle vere jåvlide
+**  - men da er lemmaet feil, det burde være et flertallslemma 
+* YYY skal ut av Leksa - dette er gjort
+* TRADITIONAL skal bli splitta i to - det er gjort, mangler bare i locale_filene /gjørt i forms.py fila, local skal genereres på nytt!
+** Trond fiksar locale/no
+* tostavelses trestavelses stammer ==> likestavelses ulikestavelses stammer (Trond)
+
+* mystiske buger:
+** <l pos="a">båeries</l>  får "ıgammel" som oversetting sjøl om det står "gammel" i xml-fila (???)
+** Cip har sjekkat det akkurat nå og fikk rett svar! Kvem fikk det? Lene og Berit Anne
+
+* Lage eit regex-filter for å godta skrivemåten äøi for korrekt æöï
+** Dei to sakene er ulike: 
+*** I leksikon står bare æö. äø skal vere ok.
+*** I leksikon har nokre ord i, andre har ï. i skal vere ok skrivemåte av ï
+** Feedback til brukaren skal alltid vere korrekt æöï 
+
+
+
+
 !!!Framover
+
+Dette avsnittet er framtidsmusikk.
+
+* tcomm
+** må implementeres, og legges til i xml-filene. 
+** skal fungere slik at hvis brukeren skriver oversettelse merket tcomm="yes", så skal oversettelsen godtas, men som kommentar gis oversettelsen merka med stat="pref"
+
+
+* Folk skriver "å" foran verb
+** løsning: godta "å kjøre" som "kjøre"
+ 
+* Folk ser ikke forskjell på substantivet og verbet ''vise''
+* presentere "å" for ''å vise'' at det er verb
+
+* Problem: Det er for mange vanskelege ord innafor kvart sett -- Løysing: Dele setta i to etter nivå: lett og vanskeleg.
+** Mulige løsninger:
+** Ha ein uavhengig variabel level="2" (attributten level="2" legges til en del entryer)
+** Dele setta i to sem="FAMILY1"  sem="FAMILY2" og dermed får man supersett på to nivåer = dobbelt så mange sett
+
+
+* verb: imperativ i MorfaS - bare sg2, du2 og pl2
+* verb: få fram verbklasse ved å klikke på verbet i MorfaS
+
 
 * Velge språkparvalg i forhold til lokaliseringspråk
 
@@ -7,7 +76,7 @@ Arbeid først og fremst for lingvister - noe med konsekvenser for programmerere
 * dtd-utvikling
 ** stemcomment på hvilken måte - på samme måte som i sme - det kommer etterhvert flere attributter for feedback om morfologi - men vi begynner med stem - Lene gjort for subst og verb
 
-* Leksa: pronomen - lage fil - Trond
+* Leksa: pronomen -- implementering og vurdering av norske former
 
 * Implementere nektingsverbet i MorfaS
 ** pedagogisk: hvordan skal det framstilles - i første omgang lik de andre verbene, så får vi se
@@ -19,15 +88,30 @@ Arbeid først og fremst for lingvister - noe med konsekvenser for programmerere
 ** Bestem realitetene (Røros, Maja, ...)
 ** Gå gjennom koden og skriv +Use/NG (Maja/Trond/Thomas)
 
-* verb: få fram verbklasse ved å klikke på verbet i MorfaS
-* subst: likestavelses vs ulikest i MorfaS  legge til stem-attributt i xml - ok Lene
-* subst: elativ, inessiv i MorfaS - ok i nouncodes :-)
-* verb: likest vs ulikest i MorfaS  legge til stem-attributt i xml, nå har vi bare verbklasse I-VI, muligens ikke helt komplett engang, ok Lene (må enda sjekke at alle verbklassene er med)
-* verb: presens, preteritum, imperativ i MorfaS
+* verb: imperativ i MorfaS
 
-* pron i MorfaS - Trond
 * samsvarsbøying påpekende pronomen + subst i MorfaC
 * adjektiv i MorfaS: 
 ** attributt (grunnform ==> predikativ)
 ** komparering - anna? snakke med Maja
-* nettordbok i Oahpa - i første omgang smanob - Cip/Ryan
+* nettordbok i Oahpa - i første omgang smanob - Cip/Ryan (@cip: very funny!)
+
+!!Bøker
+Avkrysning og ikkje rullegardin
+
+!!!Gjort
+
+!!Leksa
+* Leksa: pronomen - lage fil - Trond -- gjort (men krev diskusjonar ved implementering)
+
+
+!!Morfa
+* pron i MorfaS - ok
+
+* verb: få fram verbklasse ved å klikke på verbet i MorfaS
+* subst: likestavelses vs ulikest i MorfaS  legge til stem-attributt i xml - ok Lene
+* subst: elativ, inessiv i MorfaS - ok i nouncodes :-)
+* verb: likest vs ulikest i MorfaS  legge til stem-attributt i xml, nå har vi bare verbklasse I-VI, muligens ikke helt komplett engang, ok Lene (må enda sjekke at alle verbklassene er med)
+
+* verb: presens, preteritum i MorfaS
+
