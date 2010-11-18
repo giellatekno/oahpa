@@ -1,0 +1,213 @@
+!!!iChat-møte
+
+Til stades: Lene, Sissel, Toini, Trond.
+
+
+!!!Status quo
+
+!!Numra
+Grunntal ok.
+
+!!Leksa
+* smanob og nobsma ok
+
+!!Morfa
+* substantiv ok
+* verb ok
+
+
+!!!Ting å rette på
+
+!!Leksa
+
+!re og te kommer istedenfor for oversettelse
+
+{{{
+skïeredh
+___________________ om rein
+}}}
+
+Mål: Godta alle omsetjingar i same entry, uavhengig av mg og tg
+
+{{{
+   <e>
+      <lg>
+         <l pos="n">laavkome</l>
+…
+            </semantics>
+            <t decl="x" dict="yes" gen="m" oa="yes" pos="n" stat="pref" tcomm="no" xml:lang="nob">dåp</t>
+         </tg>
+         <tg>
+            <semantics>
+               <sem class="HOME_ACTIVITY" />
+            </semantics>
+            <t decl="x" dict="yes" gen="n" oa="yes" pos="n" stat="pref" tcomm="no" xml:lang="nob">bad</t>
+         </tg>
+      </mg>
+   </e>
+}}}
+
+{{{
+   <e>
+      <lg>
+         <l class="I" p3p="gårra" pos="v">gurredh</l>
+…
+         <tg>
+            <tf dict="yes" oa="no" pos="phrase_v" stat="pref" tcomm="no" xml:lang="nob">lage intriger</tf>  <=================
+            <tf dict="yes" oa="yes" pos="phrase_v" tcomm="no" xml:lang="nob">ha skumle planer</tf>
+            <tf dict="yes" oa="yes" pos="phrase_v" tcomm="no" xml:lang="nob">oppvigle folk</tf>
+            <te dict="yes" oa="yes" xml:lang="nob">mot hverandre</te>
+            <tf dict="yes" oa="yes" pos="phrase_v" tcomm="no" xml:lang="nob">ha baktanker</tf>
+         </tg>
+      </mg>
+      <mg>
+         <tg>
+            <semantics>
+               <sem class="WORK_ECONOMY_V" />
+               <sem class="VÆTNOE" />
+            </semantics>
+            <t dict="yes" oa="yes" pos="v" stat="pref" tcomm="no" xml:lang="nob">strikke</t>  <=================
+         </tg>
+…
+   </e>
+}}}
+
+Her er problemet at fuelhkie har husstand som fasit sjølv om familie står først. Men __begge__ er stat=pref
+{{{   
+      <e>
+      <lg>
+         <l pos="n">fuelhkie</l>
+…
+            </semantics>
+            <t decl="x" dict="yes" gen="m" oa="yes" pos="n" stat="pref" tcomm="no" xml:lang="nob">familie</t>  <===== denne skal
+         </tg>
+         <tg>
+            <t decl="1" dict="yes" gen="m" oa="no" pos="n" stat="pref" tcomm="no" xml:lang="nob">husstand</t>
+         </tg>
+      </mg>
+   </e>
+}}}
+
+            <t decl="1" dict="yes" gen="m" oa="no" pos="n" tcomm="no" xml:lang="nob">husstand</t>
+
+
+Løysing på dette problemet
+
+# Fjerne alle stat="pref"
+# Sette inn nye stat="pref" på __den første t/tf-noden i kvar mg__
+
+
+
+
+
+!Infinitivsmerket
+
+verb: 
+* godta ''å'' i smanob
+* presentere "å" for ''å vise'' at det er verb
+
+!Skrivemåte av äæ, öø, ïi
+
+Spørsmål:
+# Godta både äæ og öø?
+# Godta i for ï?
+
+Svar:
+# Ja til äæ og öø
+# Ja, godta i for ï
+# … men forstå det
+
+!nodene i tg
+
+<te> kjem inn i ordboka
+
+nobsma leksa:
+
+# te når det er einaste
+# t/tf og den te som evt. kjem etterpå
+# re i parantes etter t/tf
+
+Resultatet blir slikt (te-delen er fiktiv):
+
+{{{
+re = om husdyr
+t = ekskrement
+te = som brukes som gjødsel
+}}}
+
+==> ekskrement som brukes som gjødsel (om husdyr)
+
+
+!tcomm
+
+{{{
+   <e>
+      <lg>
+         <l pos="v">vuertiestidh</l>
+…
+           </semantics>
+            <t dict="yes" oa="yes" pos="v" stat="pref" tcomm="no" xml:lang="nob">vente litt</t>
+            <t dict="yes" oa="yes" pos="v" tcomm="yes" xml:lang="nob">vente</t>
+         </tg>
+      </mg>
+   </e>
+}}}
+
+!!!Semantikk
+
+!!YYY
+
+YYY er i dag Diverse. Betre: Fjern YYY frå lista over sett i Leksa.
+
+smanob-ord merka som exclude:
+
+* Desse orda kjem likevel med i Leksa-smanob.
+* Retting: Fjern dei frå Leksa-smanob
+
+{{{
+   <e exclude="smanob">
+      <lg>
+         <l pos="n">gaalve</l>
+ …
+ }}}
+
+!!HERDING og REIN
+
+{{{
+	<subclasses class="REINDEER/HERDING">
+      <sem class="HERDING"/> <!-- ord som har med reindriften å gjøre" -->
+      <sem class="REINDEER"/> <!-- ord som har med rein å gjøre" -->
+    </subclasses>
+}}}
+
+
+
+!!!Generelt
+
+!!Lokalisering
+tostavelses trestavelses stammer ==> likestavelses ulikestavelses stammer
+
+!!Bøker
+Avkrysning og ikkje rullegardin
+
+!!Nivå
+
+* Problem: Det er for mange vanskelege ord innafor kvart sett.
+* Løysing: Dele setta i to etter nivå: lett og vanskeleg.
+* Arbeidsmetode:
+** Ha ein uavhengig variabel level="2"
+** Dele setta i to sem="FAMILY1"  sem="FAMILY2"
+
+
+
+!!!Testresultat
+
+{{{
+jåvle bør stå i flertall
+jåvlide
+gaahtjedh= er ikke å skynde seg, men å kappes og konkurere
+bïesedh = ikke synonymt med luejhtedh "slippe løs" men er heller "å slippe til, slippe noensteds hen"
+få anledning til å gjøre bla,bla..
+}}}
+
+
