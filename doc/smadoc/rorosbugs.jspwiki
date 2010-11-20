@@ -1,0 +1,183 @@
+!!!Resultat av testinga på Røros 20.11.10
+
+Dette er notatar etter testsesjonen.
+
+
+!!!Bedre forklaringer i lista over semantiske sett:
+
+Les namna på dei semantiske setta kritisk. T.d. er mange av orda
+under ''Tidsuttrykk'' ikkje tidsuttrykk (tidsadverbial, osb) i 
+grammatisk forstand.
+
+Tidsuttrykk ==> ord om tid
+
+!!!Feilmelding om sme-oahpa (irrelevant for sma!!)
+
+Verba manglar i listene på sme-oahpa
+
+!!!Leksikalske bugs for Leksa (irrelevant for programmerarar)
+
+reaktoe -- også riktig
+
+
+
+!!!Snuing av smanob til nobsma 
+
+* Sjå også [algorithm for dictionary turning|algorithm_for_dict_turning.html].
+
+kaldt vær guelteme
+	
+{{{	
+smanob:
+-------	
+guelhtie
+kaldt vær - pref
+	
+jueskie
+kulde - pref		
+kaldt vær
+
+tjåetskeme
+kulde - pref		
+kaldt vær
+
+nobsma:
+------
+kald vær
+guelhtie
+
+kulde
+------
+jueskie
+tjåetskeme
+
+VI VIL HA:
+
+nobsma:
+------
+kald vær
+guelhtie
+tjåetskeme
+jueskie
+
+
+kulde
+------
+jueskie
+tjåetskeme
+}}}
+
+{{{
+   <e>
+      <lg>
+         <l pos="n">guelhtie</l>
+      </lg>
+      <stem class="bisyllabic"></stem>
+      <apps>
+         <app name="oahpa">
+            <sources>
+               <book name="s3" />
+            </sources>
+         </app>
+      </apps>
+      <mg>
+         <tg>
+            <semantics>
+               <sem class="YYY" />
+            </semantics>
+            <tf dict="yes" oa="yes" pos="phrase_n" stat="pref" tcomm="no" xml:lang="nob">kaldt vær</tf>   <==== pref
+            <te dict="yes" oa="yes" xml:lang="nob">om sommeren</te>
+         </tg>
+      </mg>
+   </e>
+
+   <e>
+      <lg>
+         <l pos="n">jueskie</l>
+      </lg>
+      <stem class="bisyllabic"></stem>
+      <apps>
+         <app name="oahpa">
+            <sources>
+               <book name="s3" />
+               <book name="s4" />
+            </sources>
+         </app>
+      </apps>
+      <mg>
+         <tg>
+            <semantics>
+               <sem class="YYY" />
+            </semantics>
+            <t decl="1" dict="yes" gen="f" oa="yes" pos="n" stat="pref" tcomm="no" xml:lang="nob">kulde</t>  <==== pref
+            <tf dict="yes" gen="n" oa="yes" pos="phrase_n" tcomm="no" xml:lang="nob">kaldt vær</tf>
+         </tg>
+      </mg>
+   </e>
+
+   <e>
+      <lg>
+         <l pos="n">tjåetskeme</l>
+      </lg>
+      <stem class="trisyllabic"></stem>
+      <apps>
+         <app name="oahpa">
+            <sources>
+               <book name="s1" />
+               <book name="s2" />
+               <book name="s3" />
+               <book name="dej" />
+               <book name="åa2" />
+            </sources>
+         </app>
+      </apps>
+      <mg>
+         <tg>
+            <semantics>
+               <sem class="WEATHER" />
+            </semantics>
+            <t decl="1" dict="yes" gen="f" oa="yes" pos="n" stat="pref" tcomm="no" xml:lang="nob">kulde</t>  <==== pref
+            <tf dict="yes" oa="yes" pos="phrase_n" tcomm="no" xml:lang="nob">kaldt vær</tf>
+         </tg>
+      </mg>
+   </e>
+
+
+   <e>
+      <lg>
+         <l class="VI" p3p="illie" pos="v">illedh</l>
+      </lg>
+      <stem class="bisyllabic"></stem>
+      <apps>
+         <app name="oahpa">
+            <sources>
+               <book name="s2" />
+               <book name="s4" />
+            </sources>
+         </app>
+      </apps>
+      <mg>
+         <tg>
+            <t dict="yes" oa="no" pos="v" stat="pref" tcomm="no" xml:lang="nob">fylle år</t>
+            <xg>
+               <x>vïjhte jaepieh illeme</x>
+               <xt>har fylt fem år</xt>
+            </xg>
+         </tg>
+      </mg>
+      <mg>
+         <tg>
+            <semantics>
+               <sem class="ACTION_V" />
+            </semantics>
+            <tf dict="yes" oa="yes" pos="phrase_v" stat="pref" tcomm="no" xml:lang="nob">gjøre ferdig</tf>
+            <t dict="yes" oa="yes" pos="v" tcomm="no" xml:lang="nob">avslutte</t>
+            <t dict="yes" oa="yes" pos="v" tcomm="no" xml:lang="nob">klargjøre</t>
+            <xg>
+               <x>voedtegidie illedh</x>
+               <xt>gjøre ferdig skobånd</xt>
+            </xg>
+         </tg>
+      </mg>
+   </e>
+}}}

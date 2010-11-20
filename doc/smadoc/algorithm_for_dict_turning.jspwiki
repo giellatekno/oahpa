@@ -1,0 +1,38 @@
+
+
+!!!Algorithm for turning Oahpa entries
+
+# revert all <l> - <t(f)> pairs. 
+# unify for identical instances of former <t(f)>, now <l>
+# remove all <l> (and <e>) for <l> with no stat="pref" tag
+# keep the rest of the Norwegian lemmas
+# remove multiple stat="pref" tags manually
+
+
+!!!Principle for dictionary conversion.
+
+# Turn smanob to nobsma
+# Thereafter, manually remove superfluous <t> synonyms in smanob tg-s
+# in the new nobsma, unify according to lemma
+# for lemma pairs with conservative/radical Bokmål, pict the (e.g.)
+  conservative as the lemma, and make a pointer from the radical one
+
+
+Cf. the following example:
+
+{{{  
+vatn -> vann  
+
+vann
+	1. (væske) tjaetsie
+	2. (innsjø) jaevrie
+	
+jaevrie
+	innsjø
+	
+tjaetsie
+	(væske) vann	
+}}}
+
+
+
