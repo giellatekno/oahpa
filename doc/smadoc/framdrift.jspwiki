@@ -48,26 +48,83 @@ iChat/Skypemøte torsdag kl 13 - første gang 28.okt.
 * testes av elever på kurssamling 19-21. nov
 
   
+!!!Røros 22.11.10
+
+Sjå [møtereferat|meetings/101122.html]
+
+!!Konklusjonar
+
+!leksikonfilene:
+
+# bare en stat="pref" for hver mg
+# semantiske sett i hver mg må ha en felles stat="pref"
+# bruke tcomm="yes" og exclude="smanob" og dict="no"
+# være kritisk til bruk av re og te (f.eks. dyrehår, kroppshår)
+# velge uttrykk fra flerordsfil (først skal Ciprian lage xml-fil av den) - stryk dem som ikke skal med
+# legge til semantiske sett i adverbfila, til de ordene vi vil ha med (først skal Ciprian legge til bokinfo)
+# legge til synonymer - sjekke logg
+## til Phrase når det er flere ord i oversettelsen
+
+!settene
+
+# Lene lager oversikt over antall ord i hvert supersett
+# lister med ord i semantiske sett i [http://giellatekno.uit.no/ped/smadoc/semantiske_sett.html|ped/doc/smadoc/]  (Lene oppdaterer)
+# merke "vanskelige" ord med nivå 2: f.eks. FAMILY_2
+  
+!pronomen
+
+# GT finpusser på pronomenfilene og sender lister til Aajege for å vurdere oversettinger - legges til i Leksa og i MorfaS (etterhvert MorfaC)
+
+!stedsnavn
+
+# Ciprian lager xmlfil av 1500 stedsnavn i geo. Aajege merker hvilke stedsnavn som skal være med i Leksa med 
+
+{{{
+      <sources>
+         <frequency class="common"/>  evt. "rare"
+         <geography class="sapmi"/> navn på område evt kommune
+      </sources>
+}}}
 
 
-!!!Hva vi bør diskutere ved neste korsvei
+!Leksa
 
-# flerordsuttrykk
-# adverb
-# dialektinndeling
-# MorfaS - verbbøyning f.eks. - nivåer
-# MorfaC 
-# Numra - klokka
-# Vasta - akkusativøvelse (hva vil du kjøpe?)
-# layout
-# navn
+# GT får tcomm til å dukke opp til brukeren 
 
+!dialektinndeling
+
+## GT fikser dialektinndelinga iflg dagens diskusjon
+
+!Morfa
+
+# Lene skriver hjelpefiler og Aajege ser på dem
+# Aajege sender en liste over personnavn som bør inn i Morfa
+
+!MorfaC 
+
+# lage oppgaver til MorfaC - verbbøyning og substantivbøyning
+
+!Numra
+
+# GT legger til klokkeslett og ordenstall
+# Framover: grafisk klokke og pedagogiske oppgaver om klokka
+
+!Utprøving
+
+# Utprøving internt på Røros
+# Utprøving her og der
+
+!Grammatikk
+# Lene og Trond begynner å skrive grammatikk,
+# Aajege sjekker og legger til eksempler
 
 
 !!!Neste møter:
 
-* Røros: 22 -(23?). nov
-* Røros: 17-18. jan.
+* Røros: 22. nov
+* Røros: 17-18. jan. 
+** 17.1. Videreutvikling av oahpa
+** 18.1. Tilpassing av sma-oahpa til svensk
 
 
 
