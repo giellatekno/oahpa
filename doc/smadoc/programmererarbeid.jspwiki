@@ -3,6 +3,7 @@
 * konvertere til xml - ok
 
 !!Implementere demoer - i prioritert rekkefølge:
+
 #  implementere Leksa
 ## med bare et par semantiske (super)sett - fil fås onsdag kl. 14.00
 ## pronomen som eget (super)sett - fil fås på torsdag kl 9.00
@@ -11,6 +12,69 @@
 #  log for sma-Oahpa - Ryan
 # unifisere med dict (ordboka) - ikke nødvendigvis denne uka, men ganske snart, hvis det skal være nyttig for Aajege
 # subst, verb, adjektiv i første omgang
+
+
+!!!Vedtak
+
+# Plassering av swe og sme i leksikon 
+## swe, nob, … på t-nivå innafor samme tg
+## sme som egen mg-nivå
+
+!!!Arbeidsplan
+
+!!Røros, deadline 7. januar
+
+!Allmenne ting
+# innlogging - egentlig pga av smeoahpa (sma som prøvekanin)
+# dokumentasjon for "slå av autoutfyll", og lenke i grensesnittet
+  <form autocomplete="off" /> (prøv i forskjellige nettlesere)
+# språkparvalg følger lokaliseringsvalg (smeoahpa)
+# rutine for å berge log før nyinstallering av databasen
+
+!Leksa
+# pronomen inn i Leksa 
+## alle "Pron" merka med <app name="oahpa"> 
+## Pronomen skal inn som semsett ''pronPers-smanob.xml''
+## Pronomen skal bli merka som BOOK
+# adverb og MWE (multi-word expression) vil komme med 
+  - merka som semsett og med <app name="oahpa">
+# exclude smanob i Leksa skal ikke være med fra sma til nob,
+  men bare nob til sma: <e exclude="smanob">
+# tcomm implementeres i Leksa: tcomm="yes" : stat="pref" 
+  vises som kommentar sjøl om fargen blir grønn
+# to nivåer i semsett som HUMAN1 vs. HUMAN2 i semsett-lista
+  - ikke-programmererne fikser denne
+
+!Morfa
+# Morfa morfologisk feedback: X - Help -> popup-vindu
+## filene ligger i data_sma/meta/: messages.xml 
+   feedback_nouns.xml feedback_verbs.xml
+# Morfa-C - med et par matriser: data_sma/meta/morfa_questions.xml
+# pronomen inn i Morfa
+
+!Numra
+# ordenstal i Numra
+# klokka x 3 i Numra-modus 
+ 
+ 
+!! Etter Røros
+
+!Leksa
+# stedsnavn som valg i Leksa
+# to nivåer i semsett som todimensjonal meny? 
+
+!Morfa
+# Dialektinndeling
+
+!Numra
+# grafisk klokke
+
+!Allmenne ting
+# grafikken i admin-log ok
+# lokalisering til svensk
+## sv/LOCALE/django.po blir ferdig
+
+
 
 
 
