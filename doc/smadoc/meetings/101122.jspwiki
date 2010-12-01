@@ -1,0 +1,104 @@
+!!!Møte på Røros 22.11.2010
+
+Til stades: Lene, Marit, Sissel, Toini, Trond
+
+!!!Tilbakemelding i Morfa-S
+
+Lene gjekk gjennom dei relevante filene, og startar arbeidet.
+
+Eintal og fleirtal separat - nei
+
+Leggje til personnamn i bøyingssetta i Morfa-S.
+
+
+
+!!!Leksa
+
+!!Slektskapstermer
+
+Sjå meir på dei
+
+!!re, te
+re = avgrensing
+te = tilleggsforklaring, eller full forklaring
+
+!!Adverb
+
+Ta med tidsadverb. Gå inn i adv-smanob.xml og merk vanlege tidsadverb med ''apps:oahpa'' og bok.
+
+
+!!Pronomen
+
+Personlege pronomen: Vurder å fjerne inessiv.
+
+!!!Morfa-C
+
+Fil: ''pedversions/smaoahpa/data_sma/meta/morfa_questions.xml''
+
+
+!!!Dialektformer
+
+# kortformer + oe
+# langformer + oe
+# langformer + a
+
+1 er default.
+
+!!!Fleirordsuttrykk
+
+
+!!!Klokka
+
+Integrere klokka i Numra
+
+To retningar: tal til klokkeuttrykk og omvendt
+
+Minimal integrasjon:
+
+09:15 -> njealjehts bijjelen uktsie
+njealjehts bijjelen uktsie -> 09:15
+
+Litt meir:
+
+Generere ei urskive i staden for å skrive 09:15
+
+Avansert integrasjon:
+
+Bruke iclock-sma.fst som ressurs i Vasta osb.
+
+
+!!!Stedsnavn
+
+Vi vil ha dei med i Leksa
+
+!!Geografiske parameter:
+
+* Makro: Rørosområdet, Snåsaområdet, Hattfjelldalområdet, Sameland, Verden
+* Makro: Nordlige, Midtre, Sørlige
+* Mikro: Kommunenivå: Eit sett for kvar kommune
+
+
+!!Frekvens
+
+* Vanlige (common)
+* Sjeldne (rare)
+
+!!xml-format
+
+{{{
+      <sources>
+         <frequency class="common"/>
+         <geography class="sapmi"/>
+      </sources>
+}}}
+
+
+!!!Arbeid framover
+
+
+
+
+
+
+
+
