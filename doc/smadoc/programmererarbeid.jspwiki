@@ -1,26 +1,8 @@
 !!!Arbeidsoppgaver for programmere:
 
-* konvertere til xml - ok
+Dette er arbeidsplan for programmeringsarbeid for sma-oahpa.
 
-!!Implementere demoer - i prioritert rekkefølge:
-
-#  implementere Leksa
-## med bare et par semantiske (super)sett - fil fås onsdag kl. 14.00
-## pronomen som eget (super)sett - fil fås på torsdag kl 9.00
-#  implementere MorfaS - filer finnes allerede (kikke på codes-filene)
-#  implementere demo MorfaC - fil fås kl. torsdag kl 12.00 
-#  log for sma-Oahpa - Ryan
-# unifisere med dict (ordboka) - ikke nødvendigvis denne uka, men ganske snart, hvis det skal være nyttig for Aajege
-# subst, verb, adjektiv i første omgang
-
-
-!!!Vedtak
-
-# Plassering av swe og sme i leksikon 
-## swe, nob, … på t-nivå innafor samme tg
-## sme som egen mg-nivå
-
-!!!Arbeidsplan
+!!! Ny arbeidsplan (møte 1. des 2010)
 
 !!Røros, deadline 7. januar
 
@@ -34,17 +16,21 @@
 
 !Leksa
 # pronomen inn i Leksa 
-## alle "Pron" merka med <app name="oahpa"> 
-## Pronomen skal inn som semsett ''pronPers-smanob.xml''
-## Pronomen skal bli merka som BOOK
-# adverb og MWE (multi-word expression) vil komme med 
-  - merka som semsett og med <app name="oahpa">
-# exclude smanob i Leksa skal ikke være med fra sma til nob,
+## alle "Pron" merka med <sem class="PRON" />
+## Pronomen skal bli merka med BOOK
+# adv_smanob.xml og multiword_smanob.xml skal med bare i Leksa
+## bare de med "sem class" skal med i Leksa!!
+# semantiske supersett er definert i pedversions/smaoahpa/data_sma/meta/semantical_sets.xml  
+# "exclude smanob" i Leksa: skal ikke være med fra sma til nob,
   men bare nob til sma: <e exclude="smanob">
 # tcomm implementeres i Leksa: tcomm="yes" : stat="pref" 
   vises som kommentar sjøl om fargen blir grønn
 # to nivåer i semsett som HUMAN1 vs. HUMAN2 i semsett-lista
-  - ikke-programmererne fikser denne
+## ikke-programmererne fikser denne
+# swe og sme skal kunne gå inn i Leksa
+## Plassering av swe og sme i leksikon  (dtd-oppdatering)
+### swe, nob, … på t-nivå innafor samme tg
+### sme som egen mg-nivå - <mg> får attributt xml:lang"sme"
 
 !Morfa
 # Morfa morfologisk feedback: X - Help -> popup-vindu
@@ -54,6 +40,13 @@
    feedback_nouns.xml feedback_verbs.xml
 # Morfa-C - med et par matriser: data_sma/meta/morfa_questions.xml
 # pronomen inn i Morfa
+## Grunnord er manne, månnoeh, …, dvs. alle nominativformene.
+## Pronomen i Leksa skal dermed implementeres som om de var substantiv: 
+   Systemet gir nominativ, og brukeren gir kasusbøyd form. Merk at pronomen
+   skiller seg fra substantiv med ikke å ha numerusbøying, det ville ha blitt
+   et for lite sett å variere over. Første alternativ i MorfaS sin meny 
+   (''nominativ flertall'') går dermed bort.
+
 
 !Numra
 # ordenstal i Numra
@@ -63,7 +56,7 @@
 !! Etter Røros
 
 !Leksa
-# stedsnavn som valg i Leksa
+# stedsnavn som valg i Leksa - de som skal med fra filene: prop_smanob.xml og propPl_smanob.xml skal merkes med "geography" og "frequency"
 # to nivåer i semsett som todimensjonal meny? 
 
 !Morfa
@@ -73,9 +66,9 @@
 # grafisk klokke
 
 !Allmenne ting
-# grafikken i admin-log ok
-# lokalisering til svensk
-## sv/LOCALE/django.po blir ferdig
+# grafikken i admin-log -- er ikke ferdig
+# lokalisering til svensk --
+## sv/LOCALE/django.po er ferdig
 
 
 
