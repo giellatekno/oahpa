@@ -60,24 +60,24 @@ Sjå [møtereferat|meetings/101122.html]
 # semantiske sett i hver mg må ha en felles stat="pref"
 # bruke tcomm="yes" og exclude="smanob" og dict="no"
 # være kritisk til bruk av re og te (f.eks. dyrehår, kroppshår)
-# velge uttrykk fra flerordsfil (først skal Ciprian lage xml-fil av den) - stryk dem som ikke skal med
-# legge til semantiske sett i adverbfila, til de ordene vi vil ha med (først skal Ciprian legge til bokinfo)
+# velge uttrykk fra flerordsfil: multiword_smanob.xml - stryk dem som ikke skal med
+# legge til semantiske sett i adverbfila, til de ordene vi vil ha med: adv_smanob.xml
 # legge til synonymer - sjekke logg
 ## til Phrase når det er flere ord i oversettelsen
 
 !settene
 
-# Lene lager oversikt over antall ord i hvert supersett
+# Lene lager oversikt over antall ord i hvert supersett - http://giellatekno.uit.no/ped/smadoc/Sem_set_stat.html
 # lister med ord i semantiske sett i [http://giellatekno.uit.no/ped/smadoc/semantiske_sett.html|ped/doc/smadoc/]  (Lene oppdaterer)
 # merke "vanskelige" ord med nivå 2: f.eks. FAMILY_2
   
 !pronomen
 
-# GT finpusser på pronomenfilene og sender lister til Aajege for å vurdere oversettinger - legges til i Leksa og i MorfaS (etterhvert MorfaC)
+# GT finpusser på pronomenfilene og sender lister til Aajege for å vurdere oversettinger: pronPers_smanob.xml - legges til i Leksa og i MorfaS (etterhvert MorfaC)
 
 !stedsnavn
 
-# Ciprian lager xmlfil av 1500 stedsnavn i geo. Aajege merker hvilke stedsnavn som skal være med i Leksa med 
+# Stedsnavn. Aajege merker hvilke stedsnavn som skal være med i Leksa i filene propPl_smanob.xml og prop_smanob.xml 
 
 {{{
       <sources>
@@ -97,8 +97,8 @@ Sjå [møtereferat|meetings/101122.html]
 
 !Morfa
 
-# Lene skriver hjelpefiler og Aajege ser på dem
-# Aajege sender en liste over personnavn som bør inn i Morfa
+# Lene skriver hjelpefiler og Aajege ser på dem - gjort
+# Aajege sender en liste over personnavn som bør inn i Morfa - gjort
 
 !MorfaC 
 
@@ -122,7 +122,7 @@ Sjå [møtereferat|meetings/101122.html]
 !!!Neste møter:
 
 * Røros: 22. nov
-* Røros: 17-18. jan. 
+* Røros: 14-17. jan. 
 ** 17.1. Videreutvikling av oahpa
 ** 18.1. Tilpassing av sma-oahpa til svensk
 
