@@ -9,12 +9,35 @@ So, Ryan, please write ad lib.
 !!innlogging - egentlig pga av smeoahpa (sma som prøvekanin)
 # __Initial testing Dec. 20__
 
+Implementation notes: 
+	* created new app within project, courses
+	* courses includes grade logging, user groups (courses)
+	  allows instructors to access their students grades
+	* includes a view which provides instructors and students access
+	* Added course login link to front page
+	
+Installation
+	* Add application to settings
+	* Lines need to be added to smadrill.views to log grades
+		-> Ideally I can find a way to remove this requirement even
+	* Syncdb
+	* create courses, create student/instructors' accounts
+	
+
+Notes:
+	* Grades are global for now. If students have several classes, these 
+	 separate classes would show the same grades
+
 
 __Status__:
 * Work done
 
 __TODO__:
-* Implement
+* Implement: links for individual exercises, e.g., morfa - book, case,
+  etc.
+* Implement: means for getting user authentication info (email) passed
+  from fronter
+* Work on the front end design so it looks better (some CSS rules)
 * Test
 
 !!dokumentasjon for "slå av autoutfyll", og lenke i grensesnittet
