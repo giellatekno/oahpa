@@ -1,0 +1,208 @@
+!!!Commented version to the document [Arbeidsoppgaver for programmere|programmererarbeid.html]
+
+So, Ryan, please write ad lib.
+
+
+!!!Røros, deadline 7. januar
+
+!!!Allmenne ting
+!!innlogging - egentlig pga av smeoahpa (sma som prøvekanin)
+# __Initial testing Dec. 20__
+
+
+__Status__:
+* Work done
+
+__TODO__:
+* Implement
+* Test
+
+!!dokumentasjon for "slå av autoutfyll", og lenke i grensesnittet
+  <form autocomplete="off" /> (prøv i forskjellige nettlesere)
+  
+
+__Status__:
+* open
+
+__TODO__:
+
+!!språkparvalg følger lokaliseringsvalg (smeoahpa)
+
+__Status__:
+* open
+
+__TODO__:
+
+!!rutine for å berge log før nyinstallering av databasen
+
+
+__Status__:
+* open
+
+__TODO__:
+
+!!!Leksa
+!!pronomen inn i Leksa 
+# alle "Pron" merka med <sem class="PRON" />
+# Pronomen skal bli merka med BOOK
+
+__Status__:
+* The content of the dicts/smanob/src/pronPers-smanob.xml is ready
+* the sem class="PRON" marking is done
+
+__TODO__:
+* Mark pronouns with BOOK (__Aejege__)
+* While waiting for that: just add dummy or ignore 
+
+!!adv_smanob.xml og multiword_smanob.xml skal med bare i Leksa
+* bare de med "sem class" skal med i Leksa!!
+
+__Status__:
+* open
+
+__TODO__:
+
+!!semantiske supersett
+De er definert i pedversions/smaoahpa/data_sma/meta/semantical_sets.xml.
+
+__Status__:
+* Awaiting spec.
+
+__TODO__:
+* Nothing to do here?
+
+!!"exclude smanob" i Leksa: 
+Disse skal ikke være med fra sma til nob,  men bare nob til sma: <e exclude="smanob">
+
+__Status__:
+* open
+
+__TODO__:
+
+!!tcomm implementeres i Leksa: tcomm="yes" : stat="pref" 
+  vises som kommentar sjøl om fargen blir grønn
+
+__Status__:
+* open
+
+__TODO__:
+
+!!to nivåer i semsett som HUMAN1 vs. HUMAN2 i semsett-lista
+# ikke-programmererne fikser denne
+
+__Status__:
+* open
+
+__TODO__:
+
+!!swe og sme skal kunne gå inn i Leksa
+# Plassering av swe og sme i leksikon  (dtd-oppdatering)
+## swe, nob, … på t-nivå innafor samme tg
+## sme som egen mg-nivå - <mg> får attributt xml:lang"sme"
+
+__Status__:
+* open
+
+__TODO__:
+
+!!!Morfa
+!!Morfa morfologisk feedback: X - Help -> popup-vindu
+# __Initial testing Dec. 20__
+# filene ligger i data_sma/meta/: messages.xml 
+   feedback_nouns.xml feedback_verbs.xml
+
+__Status__:
+* Lene has worked on feedback files
+
+__TODO__:
+
+!!Morfa-C - med et par matriser: data_sma/meta/morfa_questions.xml
+
+__Status__:
+* open
+
+__TODO__:
+
+!!Pronomen inn i Morfa
+# Grunnord er manne, månnoeh, …, dvs. alle nominativformene.
+# Pronomen i Leksa skal dermed implementeres som om de var substantiv: 
+   Systemet gir nominativ, og brukeren gir kasusbøyd form. Merk at pronomen
+   skiller seg fra substantiv med ikke å ha numerusbøying, det ville ha blitt
+   et for lite sett å variere over. Første alternativ i MorfaS sin meny 
+   (''nominativ flertall'') går dermed bort.
+
+__Status__:
+* open
+
+__TODO__:
+
+
+!!!Numra
+!!Ordenstal i Numra
+This is just a copy-and-paste from sme-oahpa.
+
+__Status__:
+* open
+
+__TODO__:
+
+!!Klokka x 3 i Numra-modus 
+
+__Status__:
+* Trond has the 3 versions of the fsts underway. They compile, but not in the
+  Makefile.
+
+__TODO__:
+* Fix Makefile issue (__Trond__)
+* Implement
+ 
+!!!Etter Røros
+
+!!!Leksa
+!!Stedsnavn som valg i Leksa
+De som skal med fra filene: prop_smanob.xml og propPl_smanob.xml skal merkes med "geography" og "frequency"
+
+__Status__:
+
+__TODO__:
+
+!!to nivåer i semsett som todimensjonal meny? 
+
+__Status__:
+
+__TODO__:
+
+!!!Morfa
+!!Dialektinndeling
+
+__Status__:
+
+__TODO__:
+
+!!!Numra
+!!grafisk klokke
+
+__Status__:
+
+__TODO__:
+
+!!!Allmenne ting
+!!grafikken i admin-log -- er ikke ferdig
+
+__Status__:
+
+__TODO__:
+
+!!lokalisering til svensk --
+
+__Status__:
+
+__TODO__:
+* sv/LOCALE/django.po is finished
+
+__TODO__
+* implement
+
+
+
+
