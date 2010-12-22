@@ -126,7 +126,7 @@ __TODO__:
 ## sme som egen mg-nivå - <mg> får attributt xml:lang"sme"
 
 __Status__:
-* open
+* test
 
 __TODO__:
 
@@ -135,17 +135,6 @@ __TODO__:
 # __Initial testing Dec. 20__
 # filene ligger i data_sma/meta/: messages.xml 
    feedback_nouns.xml feedback_verbs.xml
-
-TODO: feedback messages are now being shown in the grensesnitt, but
-	  duplicates are being shown. problem probably is within the messaeg
-	  import script, but I need to troubleshoot.
-
-	  Now I have a better understanding of what data we're working with, 
-	  wrt. fields in the database and fields in XML. Smaoahpa has much
-	  less data associated with wordforms and feedback messages than
-	  smeoahpa, which has consonant gradation and diphthong and soggi;
-	  smaoahpa does not have these things... So likely the script is 
-	  duplicating things because it is unable to filter properly.
 	
 __Status__:
 * Lene has worked on feedback files
@@ -157,6 +146,14 @@ __Status__:
   + administrative interface displays feedback messages
   + all feedback-related models are being populated with data
   + feedback showing in user interface
+  + fixed multiple feedbacks, verbs not loading now
+
+* Ryan: feedback working with nouns as best i can see. I've tested and I manage to get more points
+        with illative thanks to the feedback hints, however I can't test it thoroughly
+		so someone with a better knowledge of morphology will need to go through.
+
+
+* Notes: load messages file first, then feedback files
 
 __TODO__:
 
