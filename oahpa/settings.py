@@ -19,9 +19,9 @@ MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'oahpa'
-DATABASE_USER = 'oahpauser'
-DATABASE_PASSWORD = 'sahka'
-DATABASE_HOST = ''
+DATABASE_USER = 'root'
+DATABASE_PASSWORD = 'mypassword'
+DATABASE_HOST = '/tmp/mysql.sock'
 DATABASE_PORT = ''
 DATABASE_OPTIONS = {
 	'read_default_file': '/etc/my.cnf',
@@ -111,5 +111,6 @@ LANGUAGES = (
     ('fi', 'Finnish'),
     ('no', 'Norwegian'),
     ('sme', 'North Sami'),
+    ('sv', 'Swedish'),
     )
 
