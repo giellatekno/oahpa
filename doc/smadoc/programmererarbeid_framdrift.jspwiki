@@ -7,6 +7,12 @@ So, Ryan, please write ad lib.
 
 !!!Allmenne ting
 !!innlogging - egentlig pga av smeoahpa (sma som prøvekanin)
+
+! Issues
+
+Some words seem to not be evaluated correctly. Unsure if it's specific words or something that happens sometimes with all words. Keep watch.
+
+
 # __Initial testing Dec. 20__
 
 Implementation notes: 
@@ -96,11 +102,18 @@ __TODO__:
 
 !!adv_smanob.xml og multiword_smanob.xml skal med bare i Leksa
 * bare de med "sem class" skal med i Leksa!!
+* (ryan): vi kan fortsatt lade opp alle ord, men dei som ikkje har sem class skal ikkje visast i oahpa. Eller nei, om noen bruker 'alle' semantiske setter i oahpa, så kunne dei kanskje sjå dei som ikkje har class også.
+
+* (ryan): spørsmål: skal motsatte filane brukast også? adv_nobsma.xml? 
 
 __Status__:
-* open
-
+* in progress
+* (ryan): eg har testa multiworder på egne maskin, skal teste deim på victorio.  
+* i can't seem to log in to mysql to drop tables so i can test; adv and multiword are
+  not loading for some reason on victorio, but I have some things to test 
 __TODO__:
+
+* 
 
 !!semantiske supersett
 De er definert i pedversions/smaoahpa/data_sma/meta/semantical_sets.xml.
