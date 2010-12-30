@@ -70,6 +70,14 @@ __TODO__:
 
 
 __Status__:
+*
+
+__TODO__:
+
+!!!Leksa
+!!pronomen inn i Leksa 
+# alle "Pron" merka med <sem class="PRON" />
+# Pronomen skal bli merka med BOOK
 * TEST
 
 	database is populated with pronouns with the following:
@@ -79,22 +87,8 @@ __Status__:
 	to keep pronoun code separate, rather than messing with the already existing code that
 	loads words in the database in quite a different way (no pregenerated forms).
 
-__TODO__:
-
-!!!Leksa
-!!pronomen inn i Leksa 
-# alle "Pron" merka med <sem class="PRON" />
-# Pronomen skal bli merka med BOOK
-
 __Status__:
-* The content of the dicts/smanob/src/pronPers-smanob.xml is ready
-* the sem class="PRON" marking is done
-* Beginning to alter install scripts to handle pre-generated paradigms
-* Pregenerated paradigms now import, however they are creating all new Words
-  not new words for the baseform and Forms for inflections.
-* Modifications do not interrupt import of v_ or n_ data.
-* Moving pronoun import scripts to separate place to not interrupt other PoSes
-* Data imports on Ryan's machine fine, and leksa works in smanob and nobsma
+* Test
 
 __TODO__:
 * Mark pronouns with BOOK (__Aejege__)
@@ -116,10 +110,9 @@ __TODO__:
 De er definert i pedversions/smaoahpa/data_sma/meta/semantical_sets.xml.
 
 __Status__:
-* Awaiting spec.
+* New sets updated
 
 __TODO__:
-* Nothing to do here?
 
 !!"exclude smanob" i Leksa: 
 Disse skal ikke være med fra sma til nob,  men bare nob til sma: <e exclude="smanob">
@@ -163,21 +156,13 @@ __TODO__:
 # __Initial testing Dec. 20__
 # filene ligger i data_sma/meta/: messages.xml 
    feedback_nouns.xml feedback_verbs.xml
-	
-__Status__:
-* Lene has worked on feedback files
-* Ryan has some feedback data being loaded into smaoahpa
-  + added feedback script
-  + altered install script to use feedback
-  + adjusted some of xml data
-  + feedback messages (messages.xml) and feedback_noun.xml loading
-  + administrative interface displays feedback messages
-  + all feedback-related models are being populated with data
-  + feedback showing in user interface
-  + fixed multiple feedbacks, verbs not loading now
-  + verbs working, had problem with multiple feedbacks in verbs, fixed
 
-* Notes: load messages file first, then feedback files
+* In order to make this work, messages.xml must be loaded first, then
+  individual language feedback files.
+
+__Status__:
+* Test
+
 
 __TODO__:
 
