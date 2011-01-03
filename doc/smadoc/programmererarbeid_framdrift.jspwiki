@@ -25,9 +25,8 @@ Implementation notes:
 Installation
 * Add application to settings
 * Lines need to be added to smadrill.views to log grades
-**	-> Ideally I can find a way to remove this requirement even
 * Syncdb
-* create courses, create student/instructors' accounts
+* create courses, create user group for Instructors; create student/instructors' accounts
 	
 
 Notes:
@@ -78,7 +77,6 @@ __TODO__:
 !!pronomen inn i Leksa 
 # alle "Pron" merka med <sem class="PRON" />
 # Pronomen skal bli merka med BOOK
-* TEST
 
 	database is populated with pronouns with the following:
  		$ install.py --pronouns $PRONOUNS --tagfile $TAG_FILE --paradigmfile $PARADIGM_FILE
@@ -118,7 +116,9 @@ __TODO__:
 Disse skal ikke være med fra sma til nob,  men bare nob til sma: <e exclude="smanob">
 
 __Status__:
-* open
+* Done. 
+
+   NOTE: This is specific to words with smanob, if we have exclude="smaswe", they will not be excluded.
 
 __TODO__:
 
