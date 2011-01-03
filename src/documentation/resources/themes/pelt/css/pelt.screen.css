@@ -109,6 +109,7 @@ h5     { font-size : 0.9em; margin: 14px 0px 0px 0px; padding: 0px; font-weight 
 	width: 100%;
 }
 
+
 * html #content table { margin-left: -3px; }
 
 #content th, #content td {
@@ -127,7 +128,7 @@ h5     { font-size : 0.9em; margin: 14px 0px 0px 0px; padding: 0px; font-weight 
 table .title { background-color: #000000; }
 .ForrestTable {
     color: #ffffff;
-    background-color: #7099C5;
+    background-color: black;
     width: 100%;
     font-size : 100%;
     empty-cells: show;
@@ -141,9 +142,18 @@ table caption {
 }
 .ForrestTable td {
     color: black;
-    background-color: #F0F0FF;
+    background-color: #FFFFFF;
 }
 .ForrestTable th { text-align: center; }
+
+	td.lightshadow  {
+	background-color:#E2E2E2;	
+	}
+
+	td.small  {
+    font-style: italic;
+    font-size: 80%;
+	}
 
 /**
  * Page Header
@@ -677,3 +687,4 @@ img { border: 0; }
 	text-align: right;
 	margin-top: 5em;
 }
+
