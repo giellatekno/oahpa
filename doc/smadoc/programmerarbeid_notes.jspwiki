@@ -1,44 +1,4 @@
-!!!Commented version to the document [Arbeidsoppgaver for programmere|programmererarbeid.html]
-
-So, Ryan, please write ad lib.
-
-I'm copying some of the implementation notes out so that it's easier to see what's not done yet. 
-
-!!! Oversikt
-
-
-pronomen i morfa:			TODO, NEXT
-
-tcomm:						TODO
-språkparvalg:				TODO
-nyinstallering log:			TODO, parafedaba?
-morfa-C:					TODO
-swe og sme:					TODO, waiting for data
-ordenstal i Numra:			TODO, waiting for data
-klokka i Numra:				TODO, waiting for data
-
-Innlogging in sma:			in progress, functional
-
-Autoutfyl:					complete, programmers test
-pronomen inn i Leksa:		complete, others must test
-morfa feedback:				complete, test
-
-adverb og multiword:		complete
-semantiske supersett:		complete
-exclude smanob:				complete
-
-
-
-* Test
-
-
-
-
-
-
-!!!Røros, deadline 7. januar
-
-!!!Allmenne ting
+﻿
 !!innlogging - egentlig pga av smeoahpa (sma som prøvekanin)
 
 ! Issues
@@ -48,52 +8,42 @@ Some words seem to not be evaluated correctly. Unsure if it's specific words or 
 
 # __Initial testing Dec. 20__
 
+Implementation notes: 
+	* created new app within project, courses
+	* courses includes grade logging, user groups (courses)
+	  allows instructors to access their students grades
+	* includes a view which provides instructors and students access
+	* Added course login link to front page
+	
+Installation
+* Add application to settings
+* Lines need to be added to smadrill.views to log grades
+* Syncdb
+* create courses, create user group for Instructors; create student/instructors' accounts
+	
+
+Notes:
+	* Grades are global for now. If students have several classes, these 
+	 separate classes would show the same grades
+
+
 __Status__:
 * Introductory work done
-* See programmerarbeid_notes.jspwiki
+* Need to test, and knock off some todos 
 
-__TODO__:
-* Implement: links for individual exercises, e.g., morfa - book, case,
-  etc.
-* Implement: means for getting user authentication info (email) passed
-  from fronter
-* Work on the front end design so it looks better (some CSS rules)
-* Create fixtures for django user model groups so that they are created on syncdb
-* Test
-
-!!dokumentasjon for "slå av autoutfyll", og lenke i grensesnittet
-  <form autocomplete="off" /> (prøv i forskjellige nettlesere)
-
-__Status__:
-* test
-
-__TODO__:
-
-!!språkparvalg følger lokaliseringsvalg (smeoahpa)
-
-__Status__:
-* open
-
-__TODO__:
-
-!!rutine for å berge log før nyinstallering av databasen
-
-
-__Status__:
-*
-
-__TODO__:
-
-!!!Leksa
 !!pronomen inn i Leksa 
 # alle "Pron" merka med <sem class="PRON" />
 # Pronomen skal bli merka med BOOK
 
+	database is populated with pronouns with the following:
+ 		$ install.py --pronouns $PRONOUNS --tagfile $TAG_FILE --paradigmfile $PARADIGM_FILE
+	
+	Just be sure to specify the file paths. This is a different option because it was easier
+	to keep pronoun code separate, rather than messing with the already existing code that
+	loads words in the database in quite a different way (no pregenerated forms).
+
 __Status__:
-* others must test
-  - Ryan: i tested and it seems to be working well, however my knowledge of sma morphology
-		  isn't perfect to be 100% sure of what I'm seeing... However, the feedback is 
-		  helping me improve my Morfa scores ;) 
+* Test
 
 __TODO__:
 * Mark pronouns with BOOK (__Aejege__)
@@ -151,6 +101,10 @@ __TODO__:
 ## sme som egen mg-nivå - <mg> får attributt xml:lang"sme"
 
 __Status__:
+* others must test
+  - Ryan: i tested and it seems to be working well, however my knowledge of sma morphology
+		  isn't perfect to be 100% sure of what I'm seeing... However, the feedback is 
+		  helping me improve my Morfa scores ;) 
 
 __TODO__:
 
@@ -208,54 +162,3 @@ __Status__:
 __TODO__:
 * Fix Makefile issue (__Trond__)
 * Implement
- 
-!!!Etter Røros
-
-!!!Leksa
-!!Stedsnavn som valg i Leksa
-De som skal med fra filene: prop_smanob.xml og propPl_smanob.xml skal merkes med "geography" og "frequency"
-
-__Status__:
-
-__TODO__:
-
-!!to nivåer i semsett som todimensjonal meny? 
-
-__Status__:
-
-__TODO__:
-
-!!!Morfa
-!!Dialektinndeling
-
-__Status__:
-
-__TODO__:
-
-!!!Numra
-!!grafisk klokke
-
-__Status__:
-
-__TODO__:
-
-!!!Allmenne ting
-!!grafikken i admin-log -- er ikke ferdig
-
-__Status__:
-
-__TODO__:
-
-!!lokalisering til svensk --
-
-__Status__:
-
-__TODO__:
-* sv/LOCALE/django.po is finished
-
-__TODO__
-* implement
-
-
-
-
