@@ -4,32 +4,29 @@ So, Ryan, please write ad lib.
 
 I'm copying some of the implementation notes out so that it's easier to see what's not done yet. 
 
-!!! Oversikt
+!!! Oversikt 5.1.
 
-
+{{{
 pronomen i morfa:			TODO, NEXT
 
-tcomm:						TODO
-språkparvalg:				TODO
+tcomm:						TODO, NB
+språkparvalg:				TODO, for sme-oahpa, after Røros
 nyinstallering log:			TODO, parafedaba?
-morfa-C:					TODO
-swe og sme:					TODO, waiting for data
-ordenstal i Numra:			TODO, waiting for data
-klokka i Numra:				TODO, waiting for data
+morfa-C:					TODO, NB
+swe og sme i smaoahpaleksa	TODO, but only at a much later stage
+ordenstal i Numra:			TODO, NB, before Røros
+klokka i Numra:				TODO, NB, before Røros
 
-Innlogging in sma:			in progress, functional
+Innlogging in sma:			in progress, functional. NB: for sme
 
-Autoutfyl:					complete, programmers test
-pronomen inn i Leksa:		complete, others must test
-morfa feedback:				complete, test
+Autoutfyl:					complete, tested, ok, closed.
+pronomen inn i Leksa:		complete, but with errors (see feedback)
+morfa feedback:				complete, but with errors (see feedback)
 
 adverb og multiword:		complete
 semantiske supersett:		complete
 exclude smanob:				complete
-
-
-
-* Test
+}}}
 
 
 
@@ -65,9 +62,11 @@ __Status__:
 * Tested by Trond jan 4th in __Safari, Chrome and Firefox__: I turned ''Autoutfyll'' on (or it
   was already on), I gave repeated input to the same entries, and it still did not fill in anything. Thus,
    turning off autoutfyll works on Mac.
-* TODO: Test on Windows
+* Test on Windows:Testen for IE and Chrome on Windows wista, with Automatic Completion turned on.
+  Disabled completion works: Nothing was ever suggested by the browser. (__Trond__)
 
 __TODO__:
+* Closed.
 
 !!språkparvalg følger lokaliseringsvalg (smeoahpa)
 
@@ -78,6 +77,7 @@ __TODO__:
 
 !!rutine for å berge log før nyinstallering av databasen
 
+Eventuelt etter Røros
 
 __Status__:
 *
