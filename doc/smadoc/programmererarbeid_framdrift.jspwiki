@@ -8,10 +8,7 @@ I'm copying some of the implementation notes out so that it's easier to see what
  * Prioritering er i lista. 
 
 {{{
-pronomen inn i Leksa:		debugging, (see feedback)
 morfa feedback:				debugging, (see feedback)
-
-pronomen i morfa:			TODO, NEXT
 
 ordenstal i Numra:			TODO, NB, before Røros
 klokka i Numra:				TODO, NB, before Røros
@@ -22,10 +19,13 @@ nyinstallering log:			TODO, parafedaba?
 språkparvalg:				TODO, for sme-oahpa, after Røros
 swe og sme i smaoahpaleksa	TODO, but only at a much later stage
 
+pronomen i morfa:			in progress, functional. some small things to do
+
 Innlogging in sma:			in progress, functional. NB: for sme
 
 Autoutfyl:					complete
 
+pronomen inn i Leksa:		complete
 adverb og multiword:		complete
 semantiske supersett:		complete
 exclude smanob:				complete
@@ -187,11 +187,15 @@ __TODO__:
    et for lite sett å variere over. Første alternativ i MorfaS sin meny 
    (''nominativ flertall'') går dermed bort.
 
+# Pronomen importeres med same kommand som for leksa.
+
 __Status__:
-* open
+* in progress, mostly done; it works for now, but there are some minor to-dos.
 
 __TODO__:
-
+ * Check into double questions, e.g., same pronoun used twice.
+ * remove bisyllabic, book from pronoun form
+ * add link to pronouns on menu 
 
 !!!Numra
 !!Ordenstal i Numra
