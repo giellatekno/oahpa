@@ -1,0 +1,202 @@
+!!!Møte sma-oahpa Røros 17.1.2011
+
+Til stades: Lene, Marit, Sissel, Toini, Trond.
+
+!!!Saker
+
+# Trondheimsseminaret
+# Grammatikken
+# sma-oahpa
+# sma-oahpas framdrift
+# Planar etter sma-oahpa
+
+
+!!!Trondheimsseminaret
+
+9.-10. februar
+
+!!Infoark
+
+Tidlegare presentasjonar for sme:
+
+* gtsvn/ped/art/presentations/handout_pedgames_norsk.doc
+* [http://giellatekno.uit.no/background/Oahpa_forskningstorget.pdf sme-oahpa-plakat]
+* [http://giellatekno.uit.no/background/VD.pdf Ordboksplakat]
+* Divvun-ark
+
+Vi lagar sma-versjonar av miniplakatane for VD (no for ÅD) evt. for andre program.
+
+Ting å ordne før
+* Send kommentarar til aejege si kontaktadresse :-)
+* Lag presentasjon av sma-oahpa på aejege si heimeside
+
+!!Sjølve presentasjonen
+
+Aejege presenterer sma-oahpa: ''morfa, leksa, numra, kanskje morfa-c''
+
+!!!Grammatikken
+
+Vi (Lene, for det meste) har skrive grammatikk:
+	
+Følgende varianter finnes:
+
+{{{
+'ie' - 'e': saemiestidh (infinitiv) -> saemestem (pres. 1. p. sg.)
+'oe' - 'o': daaroestidh (infinitiv) -> daarostem (pres. 1. p. sg
+'a' - 'e': aatskadidh - aatskedem
+'a' - 'i': jåhtajidh - jåhtijem
+}}}
+
+* No står det:
+** For verb er det omlyd ved vokalvekslingen i verbgruppe I i entall i presens og i alle tall i preteritum.
+* Det skal rettast til
+** For verb er det omlyd ved vokalvekslingen i verbgruppe I i entall i presens og i alle tall i __kortformene i__ preteritum.
+* Retting: legg til:
+** verbgruppe IV: Det er omlyd 3. person entall, 1. person totall og 3. person flertall i presens __hvis det er mulig__
+
+
+
+
+!!!Status quo for sma-oahpa
+
+!! Leksa, Morfa, leksikon ...
+
+!Slektskapstermer:
+Toini har jobba, og gjort mykje.
+Det er no mange alternativ i dei norske omsetjingane.
+
+__TODO__: Bruk, evaluer, få tilbakemelding
+
+
+!Norske synonym
+Dei har vi no mange av. Framover: Ikkje så mykje tid på å legge til dei, men hente dei frå loggen.
+
+!Fleirordsuttrykk
+__TODO__: Ikkje ha dei merka med bok. Vi fjernar bokmerking frå den fila.
+
+!Pronomen
+
+Andre pronomentypar, ikkje berre personlege.
+
+__TODO__: Nominativ fleirtal er framleis inne, men skal ikkje vere med for pronomen
+
+Vedtak: 
+* Ta med fleire pronomengrupper (Tromsø)
+* Teste
+* attributtformene av pronomena kjem i Morfa-C
+
+! Morfa-C
+Vi ventar på Ryan
+
+!Klokka
+
+Vi skal bruke clock-sma.fst, og ikkje minimal- og medium-versjonane. I staden skal vi
+generere undersett av klokkesletta inni django. Opplegget er klårt men må debuggast
+før det går på lufta.
+
+!! svenskspråkleg leksa
+
+Møte med svensk side på seminaret i Trondheim?
+
+Arbeidsmetode: Arbeide med separate filer eller direkte i svn?
+
+!!!sma-oahpas framdrift
+!!Stadnamn
+
+Kriteria for oppdeling
+
+Geografisk inndeling:
+
+* Nord: Nordland, Västerbotten 
+* Midt: Nord-Trøndelag, Jämtland
+* Sør: Sør-Trøndelag, Hedemark, Härjedalen, Dalarna
+* Resten av verda (Stockholm, Oslo, fylke, landsnamn)
+
+geography = ( north | mid | south | other )
+
+__TODO__: 
+* Oppdater XMLmind  (__Trond__)
+* Merke stadnamna for område (__Røros__)
+
+!!Milepælar framover
+
+# Gjere ferdig ting som er undervegs  (__Ryan__. Frist: veke 3)
+## Klokka
+## Hjelpfunksjon
+## Morfa-C
+## tcomm
+# Gjere ferdig ordlistegjennomgangen (__Røros__. Frist: 4.2.)
+## Substantiv har kome til S
+## Adjektiv og verb er gjennomgått, men ikkje ferdige
+# Leksa på svensk (frist 11.4.)
+## Infrastruktur: Generere ein ferdig swe-t-node for kvar nob-t-node 4.2.
+## Oppstart med omsetjing 4.2.
+## Ferdig 11.4.
+## Testing
+# Morfa-C
+## Alfaversjon ferdig veke 3
+## Oppstart på oppgåvearbeid etter Trondheim (veke 7)
+## Implementering og testing
+# Stadnamn 
+## Merke i leksikon
+### Oppstart: Rett etter Trondheim
+### Ferdig gjennomgang (1.4)
+## Implementere: (11.4.)
+# Logevaluering (seint mars)
+# Dialektmerking
+## system (ferdig, men sjekke før fst-oppstart)
+## fst-merking (februar-mars)
+## implementering (mars)
+## testing (perioden fram mot 11.4.)
+# Propaganda:
+## Kompilere til 10.2.-betaversjonen 4.2.
+## Ha ferdig 
+## Skrive heimeside, Aejege 1.2.
+## Lansere heimeside og betaversjon 7.2.
+## Pedagogiske stader: Elgå, Brekken/Røros, Snåsa/Grong, Hattfjeldal (juni)
+
+Avhengigheit:
+* Dialektmerking: system > fst-merking > implementering > testing
+* Leksa på svensk: infrastruktur i filene > omsetjing av alle orda > implementering > testing
+* Stadnamn: merke > implementere > teste
+* Klokka: implementer > teste
+* Pronomen: Bestemme omfang > legge til > implementere > teste
+* Leksa: Kontrollere smanob > snu til nobsma og kutte > implementere > teste > revidere nobsma
+* Grammatikk: 
+* Svenske omsetjingar: Infrastruktur > omsetje > implementere > teste > revidere
+* Brukarevaluering: betarealisering > bruk > logevaluering > arbeid
+
+Overordna utviklarfristar:
+
+__Beta 10.2. til Trondheim__
+
+
+!Organisering av arbeidet
+
+* iChatmøte annakvar torsdag, startar 3.2.
+* Nytt fysisk arbeidsmøte 11-13.4.
+
+
+
+!!!planar etter sma-oahpa
+
+* Kva vil Aa?
+* Kva vil Gt?
+* Kva kan vi få pengar på?
+
+Aajege:
+* voksenopplæring - integrering av Oahpa
+* videreutvikling av Oahpa:
+** Vasta, Sahka, Cealkka
+** Leksa samisk-samisk
+
+Giellatekno:
+
+* Forvaltningordbok
+* syntaktisk analysator
+* nob-sma-ordbok
+** Allmenn nob-sma-produksjonsordbok
+
+
+
+
