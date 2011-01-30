@@ -15,12 +15,12 @@
 	      omit-xml-declaration="no"
 	      indent="yes"/>
   
-  <xsl:param name="inFile" select="'fil_med_entry-list'"/>
-  <xsl:param name="inDir" select="'ind'"/>
-  <xsl:variable name="outDir" select="'outdxx'"/>
+  <xsl:param name="inFile" select="'lemma_1V'"/>
+  <xsl:param name="inDir" select="'indir'"/>
+  <xsl:variable name="outDir" select="'outdir'"/>
   <xsl:variable name="of" select="'xml'"/>
   <xsl:variable name="e" select="$of"/>
-  <xsl:variable name="debug" select="'true_gogo'"/>
+  <xsl:variable name="debug" select="true()"/>
   <xsl:variable name="nl" select="'&#xa;'"/>
   <xsl:variable name="slang" select="'sma'"/>
   <xsl:variable name="tlang" select="'nob'"/>
@@ -43,7 +43,7 @@
       <xsl:variable name="current_dir" select="substring-before(document-uri(.), $current_file)"/>
       <xsl:variable name="current_location" select="concat($inDir, substring-after($current_dir, $inDir))"/>
       
-      <xsl:if test="$debug = 'true_gogo'">
+      <xsl:if test="$debug">
 	<xsl:message terminate="no">
 	  <xsl:value-of select="concat('-----------------------------------------', $nl)"/>
 	  <xsl:value-of select="concat('processing file ', $current_file, $nl)"/>
