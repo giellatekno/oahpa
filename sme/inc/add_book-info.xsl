@@ -52,7 +52,7 @@
       </xsl:if>
       
       <xsl:variable name="cufi">
-	<r xml:lang="{$slang}">
+	<lexicon xml:lang="{$slang}">
 	  <xsl:for-each select="./lexicon/entry">
 	    <xsl:variable name="lemma" select="./lemma"/>
 
@@ -77,7 +77,7 @@
 	      </entry>
 	    </xsl:if>
 	  </xsl:for-each>
-	</r>
+	</lexicon>
       </xsl:variable>
       
       <xsl:result-document href="{$outDir}/{$current_file}" format="{$of}">
