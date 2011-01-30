@@ -73,7 +73,6 @@
 		      <xsl:copy-of select="./sources/*"/>
 		      <book name="{$theBook}"/>
 		    </sources>
-		  <xsl:copy-of select="./sources/*"/>
 	      </entry>
 	    </xsl:if>
 	  </xsl:for-each>
