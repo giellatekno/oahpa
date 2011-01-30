@@ -69,6 +69,7 @@
 		<xsl:copy-of select="./valency"/>
 		<xsl:copy-of select="./semantics"/>
 		<xsl:copy-of select="./stem"/>
+		<xsl:copy-of select="./dialect"/>
 		    <sources>
 		      <xsl:copy-of select="./sources/*"/>
 		      <book name="{$theBook}"/>
