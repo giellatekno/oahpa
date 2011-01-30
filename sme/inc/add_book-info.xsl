@@ -22,10 +22,10 @@
   <xsl:variable name="e" select="$of"/>
   <xsl:variable name="debug" select="true()"/>
   <xsl:variable name="nl" select="'&#xa;'"/>
-  <xsl:variable name="slang" select="'sma'"/>
+  <xsl:variable name="slang" select="'sme'"/>
   <xsl:variable name="tlang" select="'nob'"/>
   <!--   <xsl:variable name="theBook" select="'åa4'"/> -->
-  <xsl:variable name="theBook" select="'åa6'"/>
+  <xsl:variable name="theBook" select="'sam1031_1'"/>
   
   <xsl:template match="/" name="main">
     <xsl:if test="not(unparsed-text-available($inFile))">
@@ -53,29 +53,28 @@
       
       <xsl:variable name="cufi">
 	<r xml:lang="{$slang}">
-	  <xsl:for-each select="./r/e">
-	    <xsl:variable name="lemma" select="./lg/l"/>
+	  <xsl:for-each select="./lexicon/entry">
+	    <xsl:variable name="lemma" select="./lemma"/>
 
 	    <xsl:if test="not(exists(tokenize($source, $nl)[. = $lemma]))">
 	      <xsl:copy-of select="."/>
 	    </xsl:if>
 	    
 	    <xsl:if test="exists(tokenize($source, $nl)[. = $lemma])">
-	      <e>
+	      <entry>
 		<xsl:copy-of select="./@*"/>
-		<xsl:copy-of select="./lg"/>
+		<xsl:copy-of select="./lemma"/>
+		<xsl:copy-of select="./pos"/>
+		<xsl:copy-of select="./translations"/>
+		<xsl:copy-of select="./valency"/>
+		<xsl:copy-of select="./semantics"/>
 		<xsl:copy-of select="./stem"/>
-		<apps>
-		  <app name="oahpa">
 		    <sources>
-		      <xsl:copy-of select="./apps/app[./@name = 'oahpa']/sources/*"/>
+		      <xsl:copy-of select="./sources/*"/>
 		      <book name="{$theBook}"/>
 		    </sources>
-		  </app>
-		  <xsl:copy-of select="./apps/app[not(./@name = 'oahpa')]"/>
-		</apps>
-		<xsl:copy-of select="./mg"/>
-	      </e>
+		  <xsl:copy-of select="./sources/*"/>
+	      </entry>
 	    </xsl:if>
 	  </xsl:for-each>
 	</r>
