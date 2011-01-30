@@ -15,8 +15,8 @@
 	      omit-xml-declaration="no"
 	      indent="yes"/>
   
-  <xsl:param name="inFile" select="'lemma_1V'"/>
-  <xsl:param name="inDir" select="'indir'"/>
+  <xsl:param name="inFile" select="'lemmat_1V'"/>
+  <xsl:param name="inDir" select="'indir_test'"/>
   <xsl:variable name="outDir" select="'outdir'"/>
   <xsl:variable name="of" select="'xml'"/>
   <xsl:variable name="e" select="$of"/>
