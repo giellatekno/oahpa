@@ -15,7 +15,8 @@
 	      omit-xml-declaration="no"
 	      indent="yes"/>
   
-  <xsl:param name="inFile" select="'lemmat_1V'"/>
+<!--  <xsl:param name="inFile" select="'lemmat_only2A'"/> -->
+  <xsl:param name="inFile" select="'lemmat_only2V'"/>
   <xsl:param name="inDir" select="'indir_test'"/>
   <xsl:variable name="outDir" select="'outdir'"/>
   <xsl:variable name="of" select="'xml'"/>
@@ -24,8 +25,8 @@
   <xsl:variable name="nl" select="'&#xa;'"/>
   <xsl:variable name="slang" select="'sme'"/>
   <xsl:variable name="tlang" select="'nob'"/>
-  <!--   <xsl:variable name="theBook" select="'åa4'"/> -->
-  <xsl:variable name="theBook" select="'sam1031_1'"/>
+<!--  <xsl:variable name="theBook" select="'sam1031_1'"/> -->
+  <xsl:variable name="theBook" select="'sam1031_2'"/>
   
   <xsl:template match="/" name="main">
     <xsl:if test="not(unparsed-text-available($inFile))">
@@ -64,6 +65,9 @@
 	      <entry>
 		<xsl:copy-of select="./@*"/>
 		<xsl:copy-of select="./lemma"/>
+		<xsl:copy-of select="./id"/>
+		<xsl:copy-of select="./only-sg"/>
+		<xsl:copy-of select="./noleksa"/>
 		<xsl:copy-of select="./pos"/>
 		<xsl:copy-of select="./translations"/>
 		<xsl:copy-of select="./valency"/>
@@ -74,6 +78,7 @@
 		      <xsl:copy-of select="./sources/*"/>
 		      <book name="{$theBook}"/>
 		    </sources>
+		<xsl:copy-of select="./forms"/>
 	      </entry>
 	    </xsl:if>
 	  </xsl:for-each>
