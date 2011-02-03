@@ -1,10 +1,44 @@
+!!!Referat, møte i nuoahpa 3. februar 2011
+
+Til stades: Biret Ánne, Ciprian, Lene, Ryan, Trond.
+
+!!!Bakgrunn
+
+Brev frå Cip og B-Á:
+
+!!Ciprian:
+
+this update is useful but for our next goal -- implementing the login mechanism into the usual oahpa -- we have to agree now on
+the following concrete action points: what to do and who is in charge of it!
+
+#. correcting the current implementation (debugging and testing): Ryan  --- wating for status report
+#. checking and evaluating the usefulness of the history infos for the students: Biret Anne, Ryan, Ciprian, etc. --- Biret Anne did it and reported on it (see her last email)
+#. testing after correction: Ciprian, Lene, Biret Anne, etc. --- todo
+#. making a backup of the current smenob db and smenob implementation: Ciprian --- done: both a tag og the whole ped directory as it is now in the repository and a dump of the current oahpa database from victorio
+#. transfering the implementation from sb_oahpa to regular oahpa: Ryan
+
+!!Biret-Ánne:
+
+I think it is good that I can check both students and tasks to see the activity and score level. 
+
+More than 30 students have registered for this course. If they all use Oahpa! as they are supposed to, I will have a long list of user grades to go through. I think it would be best if there is some sorting of the information, so that the students with the lowest average score come on top of the list. 
+If I click on users instead of tasks, it would be best if the tasks with the lowest average score come first. This will give me a quick overview of which subjects each student struggles with.
+
+I also like the fact that the summaries come before the user grade info. When the students start logging in to oahpa!, I will probably only have time to go through the summaries anyway.
+
+
+!!!Bugs
+
+
+
 smeoahpa - 
 
-bug: missing log in error messages - underspecified information
-bug: book error message - D2, not enough words in sb_oahpa?
+* bug: missing log in error messages - underspecified information
+* bug: book error message - D2, not enough words in sb_oahpa?
 
 todo: transfer student data from sb_oahpa -> oahpa
 
+{{{
 feature: how often are students logged in
 feature: books:
     <book name="sam1031_1"/>
@@ -12,11 +46,68 @@ feature: books:
 
 feature: ordering of summaries, worst at top
 feature: disable submit buttons on new game submit
+}}}
 
-sandbox ferdig:				fri. kl 0800
-programming deadline:  		fri. kl 2000
-testing deadline: 			by noon sat.
-fixing possible bugs: 		sat and sun
 
+
+den apachemodulen vi har no, som bruker python, er ikkje støtta
+
+vi treng ein ny apachemodul
+
+=> vi treng ein ny servar
+
+Skal implementerast for å hindre sein oahpa ved mange studentar 
+* Melding til studentane: ikkje trykk ein gong til, men vent
+* Implementer: Hindre dobbelttrykking
+
+(Dette først etter oppstart av kurset)
+
+!!!Køyrereglar:
+
+* Meld frå før du testar
+
+!!!Framover
+
+!!Rekkjefølgje:
+
+# databaseoppdatering
+## bok
+### Lene: norsk og finsk (ped/sme/xml)
+### Cip: sjekke
+# innlogging
+## kor mange gonger har folk logga inn
+
+Seinare:
+
+Pronomen
+Adverb
+Ny Vasta
+
+Men her tar vi sma først. For sme skal innlogging fungere, og deretter tar vi 
+ting for sma først.
+
+!!Deadlines
+
+
+
+# Bokmerking
+## Ettermiddag i dag: Lene ferdig + svn
+## Etterpå: Cip oppdaterer i oahpa. Ferdig før fredag 0800.
+# I dag:
+## Cip: tilgang for Ryan
+## Ryan: rette eksisterande feil
+# Testing-utvikling fram mot måndag:
+## __sandbox ferdig:__				fri. kl 0800
+## __programming deadline:__  		fri. kl 2000
+## __testing deadline:__ 			by noon sat.
+## __fixing possible bugs:__ 		sat and sun until noon
+# Flytting til normal oahpa: Sunday after noon
+# Måndag: Studentane kjem
+
+
+
+!!!Møte smaoahpa
+
+Tysdag 7.2. klokka 1300.
 
 
