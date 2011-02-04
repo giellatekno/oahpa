@@ -171,10 +171,12 @@ class Words:
                 # Add book to the database
                 # Leave this if DTD is used
                 book_entry, created = Source.objects.get_or_create(name=book)
-            if created:
-                print "Created book entry with name ", book
+                # Mind the gap/indentation
+                if created:
+                    print "Created book entry with name ", book
                 w.source.add(book_entry)
                 w.save()
+                print w.lemma, " added to book ", book
 
     def store_word(self,e,linginfo,mainlang,paradigmfile,placenamefile,delete):
         
