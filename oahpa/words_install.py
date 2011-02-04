@@ -365,9 +365,10 @@ class Words:
 # no check for pos at the moment because
 # there is a mess in the nob entries (some have pos, some not)
 # however pos check is a todo issue.
- 
+
         words = Word.objects.filter(wordid=wid)
         wordnobs = Wordnob.objects.filter(wordid=wid)
+        wordfins = Wordfin.objects.filter(wordid=wid)
 
         for w in words:
             print "Removing", w.wordid
@@ -378,5 +379,11 @@ class Words:
                 print "Removing", w.wordid
 		w.delete()
             if not wordnobs:
-	        print wid, "not found in nob-db either. Beklager!"
+                print wid, "not found in nob-db either ... searching fin-db"
+                for w in wordfins:
+                    print "Removing", w.wordid
+                    w.delete()
+                    if not wordfins:
+                        print wid, "not found in fin-db either. Beklager!"
+
 
