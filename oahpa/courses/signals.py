@@ -25,7 +25,7 @@ def disable_for_loaddata(signal_handler):
 	@wraps(signal_handler)
 	def wrapper(*args, **kwargs):
 		for fr in inspect.stack():
-			if inspect.getmodulename(fr[1]) == 'loaddata':
+			if inspect.getmodulename(fr[1]) in ['loaddata', 'manage']:
 				return
 		signal_handler(*args, **kwargs)
 	return wrapper
@@ -83,13 +83,15 @@ def grant_admin(sender, **kwargs):
 
 @disable_for_loaddata
 def user_presave(sender, instance, **kwargs):
-	""" Increments uesr login count.
+	""" Increments user login count.
 	"""
 	user = instance
+	
 	try:
 		userprofile = instance.get_profile()
 	except UserProfile.DoesNotExist:
-		userprofile = UserProfile.objects.create(user=user)
+		return False
+	
 	try:
 		if instance.last_login:
 			old = instance.__class__.objects.get(pk=instance.pk)

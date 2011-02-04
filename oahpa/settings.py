@@ -119,7 +119,7 @@ LANGUAGES = (
 # #
 
 AUTH_PROFILE_MODULE = 'courses.UserProfile'
-LOGIN_REDIRECT_URL = '/sb_oahpa/courses/'
-LOGIN_URL = '/sb_oahpa/courses/login/'
+LOGIN_REDIRECT_URL = '/oahpa/courses/'
+LOGIN_URL = '/oahpa/courses/login/'
 SESSION_COOKIE_AGE = 45 * 60   # in seconds, timeout 45 minutes.
 
