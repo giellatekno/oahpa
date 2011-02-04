@@ -81,14 +81,14 @@ class Gameview:
             settings_form = MorfaSettings(request.POST)
             for k in settings_form.data.keys():
                 self.settings[k] = settings_form.data[k]
-				
+                
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
             if request.session.has_key('django_language'):
                 self.settings['language'] = request.session['django_language']
             else:
                 self.settings['language'] = request.COOKIES.get("django_language", None)
-				
+                
             self.syll_settings(settings_form)
             if settings_form.data.has_key('book'):
                 self.settings['book'] = settings_form.books[settings_form.data['book']]
@@ -125,7 +125,7 @@ class Gameview:
                 if not self.settings.has_key(k):
                     self.settings[k] = settings_form.default_data[k]
             self.settings['book'] = settings_form.books[settings_form.default_data['book']]
-				
+                
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
 
@@ -133,7 +133,7 @@ class Gameview:
                 self.settings['language'] = request.session['django_language']
             else:
                 self.settings['language'] = request.COOKIES.get("django_language", None)
-				
+                
             if self.settings['gametype'] == "bare":
                 game = BareGame(self.settings)        
             else:
@@ -175,7 +175,7 @@ class Gameview:
             'comment': game.comment,
             'all_correct': game.all_correct,
             'show_correct': game.show_correct,
-			'language' : self.settings['language'],
+            'language' : self.settings['language'],
             })
         return c
 
@@ -423,35 +423,35 @@ class Quizzview(Gameview):
 
 
     def create_quizzgame(self,request):
-		settings_form = QuizzSettings(request.GET)
-		
-		if request.method == 'GET' and len(settings_form.data.keys()) > 0:
-			post_like_data = request.GET.copy()
-			if not 'book' in post_like_data:
-				post_like_data['book'] = 'all'
-			if not 'transtype' in post_like_data:
-				post_like_data['transtype'] = 'smenob'
-			if not 'semtype' in post_like_data:
-				post_like_data['semtype'] = 'all'
-		else:
-			post_like_data = False
-		# So can I get GET data to make changes to form, but I can't get
-		# it to load the game with this data.
-		# reason is logic is forked into POST/GET, not POST & has game
-		# data 
+        settings_form = QuizzSettings(request.GET)
+        
+        if request.method == 'GET' and len(settings_form.data.keys()) > 0:
+            post_like_data = request.GET.copy()
+            if not 'book' in post_like_data:
+                post_like_data['book'] = 'all'
+            if not 'transtype' in post_like_data:
+                post_like_data['transtype'] = 'smenob'
+            if not 'semtype' in post_like_data:
+                post_like_data['semtype'] = 'all'
+        else:
+            post_like_data = False
+        # So can I get GET data to make changes to form, but I can't get
+        # it to load the game with this data.
+        # reason is logic is forked into POST/GET, not POST & has game
+        # data 
 
-		if request.method == 'POST' or post_like_data:
-			if post_like_data:
-				data = post_like_data
-			else:
-				data = request.POST.copy()
+        if request.method == 'POST' or post_like_data:
+            if post_like_data:
+                data = post_like_data
+            else:
+                data = request.POST.copy()
 
-			# Settings form is checked and handled.
-			settings_form = QuizzSettings(data)
+            # Settings form is checked and handled.
+            settings_form = QuizzSettings(data)
 
-                for k in settings_form.data.keys():
-                    if not self.settings.has_key(k):
-                        self.settings[k] = settings_form.data[k]
+            for k in settings_form.data.keys():
+                if not self.settings.has_key(k):
+                    self.settings[k] = settings_form.data[k]
 
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
@@ -467,7 +467,7 @@ class Quizzview(Gameview):
             
             game = QuizzGame(self.settings)
                 
-			if "settings" in data or post_like_data:
+            if "settings" in data or post_like_data:
                 game.new_game()
             else:
                 game.check_game(data)
@@ -520,7 +520,7 @@ def quizz_n(request):
     quizzgame.settings['semtype'] = "PLACE-NAME-LEKSA"
 
     c = quizzgame.create_quizzgame(request)
-	trackGrade('Leksa-N', request, c)
+    trackGrade('Leksa-N', request, c)
     return render_to_response('quizz_n.html', c, context_instance=RequestContext(request))
 
 def quizz(request):
@@ -529,7 +529,7 @@ def quizz(request):
     quizzgame.init_settings()
 
     c = quizzgame.create_quizzgame(request)
-	trackGrade('Leksa-N', request, c)
+    trackGrade('Leksa-N', request, c)
     return render_to_response('quizz.html', c, context_instance=RequestContext(request))
 
 
@@ -583,7 +583,7 @@ class Numview(Gameview):
         #numstring=0
         #if game.form_list[0].has_key('numstring'):
         #    numstring=1
-			
+            
         c = Context({
             'settingsform': settings_form,
             'forms': game.form_list,
@@ -635,7 +635,7 @@ class Sahkaview:
         else:
             self.settings['language'] = request.COOKIES.get("django_language", None)
 
-			
+            
         # With post data, continue the dialogue
         if request.method == 'POST':
             data = request.POST.copy()
@@ -661,7 +661,7 @@ class Sahkaview:
                 if settings_form.data.has_key('num_fields'):
                     game.num_fields = int(settings_form.data['num_fields'])
                 else:
-                    game.num_fields = 1					
+                    game.num_fields = 1                    
                 #print "num_fields", game.num_fields
                 game.check_game(data)
                 # If the last answer was correct, add new field
@@ -669,7 +669,7 @@ class Sahkaview:
                     game.update_game(len(game.form_list)+1, game.form_list[game.num_fields-2])
 
             settings_form.init_hidden(game.settings['topicnumber'],game.num_fields,\
-									  game.settings['dialogue'],game.settings['image'],game.settings['wordlist'])
+                                      game.settings['dialogue'],game.settings['image'],game.settings['wordlist'])
 
             errormsg=""
             for f in game.form_list:
@@ -683,7 +683,7 @@ class Sahkaview:
                 'count': game.count,
                 'score': game.score,
                 'comment': game.comment,
-				'gametype': "sahka",
+                'gametype': "sahka",
                 'topicnumber' : game.settings['topicnumber'],
                 'num_fields' : game.num_fields,
                 'image' : game.settings['image'],
