@@ -26,7 +26,7 @@ def trackGrade(gamename, request, c):
 	"""
 	SETTINGS = c['settingsform'].data
 	
-	if c['show_correct'] == 1:
+	if c['show_correct'] == 1 or c['all_correct'] == 1:
 		
 		if request.user.is_authenticated() and not request.user.is_anonymous():
 			game_type = ''
