@@ -448,9 +448,10 @@ class Quizzview(Gameview):
 
 			# Settings form is checked and handled.
 			settings_form = QuizzSettings(data)
-            for k in settings_form.data.keys():
-                if not self.settings.has_key(k):
-                    self.settings[k] = settings_form.data[k]
+
+                for k in settings_form.data.keys():
+                    if not self.settings.has_key(k):
+                        self.settings[k] = settings_form.data[k]
 
             if request.session.has_key('dialect'):
                 self.settings['dialect'] = request.session['dialect']
