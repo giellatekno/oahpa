@@ -17,16 +17,12 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'oahpa'
-DATABASE_USER = 'root'
-DATABASE_PASSWORD = 'mypassword'
-DATABASE_HOST = '/tmp/mysql.sock'
+DATABASE_USER = ''
+DATABASE_PASSWORD = ''
+DATABASE_HOST = ''
 DATABASE_PORT = ''
-DATABASE_OPTIONS = {
-	'read_default_file': '/etc/my.cnf',
-	'charset': 'utf8',
-	}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name

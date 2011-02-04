@@ -1,6 +1,15 @@
 # -*- coding: utf-8 -*-
+import os, sys
 from os import environ
-environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
+# Some computers seem to miss the proper path. This adds the parent directory
+# to the pythonpath, but should not otherwise disturb functionality on 
+# those which already have it.
+print " * Correcting paths"	
+cur_path = os.getcwd()
+parent_path = '/' + '/'.join([a for a in cur_path.split('/') if a][0:-1]) + '/'
+sys.path.insert(0, parent_path)
+environ['DJANGO_SETTINGS_MODULE'] = 'oahpa.settings'
 
 from settings import *
 from drill.models import *
