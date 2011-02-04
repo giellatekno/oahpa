@@ -31,4 +31,5 @@ urlpatterns = patterns('',
         
     # Uncomment this for admin:
     (r'^oahpa/admin/(.*)', admin.site.root),
+    (r'^sb_oahpa/courses/', include('sb_oahpa.courses.urls')),
 )

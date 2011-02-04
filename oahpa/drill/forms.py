@@ -113,6 +113,8 @@ BOOK_CHOICES = (
     ('d2', _('Davvin 1-2')),
     ('d3', _('Davvin 1-3')),
     ('d4', _('Davvin 1-4')),
+    ('sam1031_1', _('SAM-1031-1')),
+    ('sam1031_2', _('SAM-1031-2')),
     ('algu', _('algu')),
     ('sara', _('sara')),
     ('bures', _('Bures bures fas')),

@@ -57,7 +57,7 @@ MEDIA_URL = 'http://victorio.uit.no/oahpa/media/'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-#ADMIN_MEDIA_PREFIX = '/admin_media/'
+ADMIN_MEDIA_PREFIX = '/oahpa/media/admin/'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = '70!9mdey6-i-g5+-z5ty+44l^=n)m2+c0pi2z$)654q_h1jv18'
@@ -93,7 +93,8 @@ TEMPLATE_CONTEXT_PROCESSORS =("django.core.context_processors.auth",
                               "django.core.context_processors.i18n",
                               "django.core.context_processors.media",
                               "django.core.context_processors.request",
-                              "oahpa.conf.context_processors.dialect",)
+                              "oahpa.conf.context_processors.dialect",
+                              "oahpa.courses.context_processors.request_user",)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -103,6 +104,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'oahpa.drill',
     'oahpa.feedback',
+    'oahpa.courses',
 )
 
 
@@ -113,4 +115,15 @@ LANGUAGES = (
     ('sme', 'North Sami'),
     ('sv', 'Swedish'),
     )
+
+# #
+#
+# USER PROFILES
+#
+# #
+
+AUTH_PROFILE_MODULE = 'courses.UserProfile'
+LOGIN_REDIRECT_URL = '/sb_oahpa/courses/'
+LOGIN_URL = '/sb_oahpa/courses/login/'
+SESSION_COOKIE_AGE = 45 * 60   # in seconds, timeout 45 minutes.
 

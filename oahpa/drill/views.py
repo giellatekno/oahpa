@@ -10,6 +10,8 @@ from sahka import *
 from game import *
 from qagame import *
 
+from oahpa.courses.views import trackGrade
+
 
 class Gameview:
 
@@ -421,12 +423,31 @@ class Quizzview(Gameview):
 
 
     def create_quizzgame(self,request):
+		settings_form = QuizzSettings(request.GET)
+		
+		if request.method == 'GET' and len(settings_form.data.keys()) > 0:
+			post_like_data = request.GET.copy()
+			if not 'book' in post_like_data:
+				post_like_data['book'] = 'all'
+			if not 'transtype' in post_like_data:
+				post_like_data['transtype'] = 'smenob'
+			if not 'semtype' in post_like_data:
+				post_like_data['semtype'] = 'all'
+		else:
+			post_like_data = False
+		# So can I get GET data to make changes to form, but I can't get
+		# it to load the game with this data.
+		# reason is logic is forked into POST/GET, not POST & has game
+		# data 
 
-        if request.method == 'POST':
-            data = request.POST.copy()
+		if request.method == 'POST' or post_like_data:
+			if post_like_data:
+				data = post_like_data
+			else:
+				data = request.POST.copy()
 
-            # Settings form is checked and handled.
-            settings_form = QuizzSettings(request.POST)
+			# Settings form is checked and handled.
+			settings_form = QuizzSettings(data)
             for k in settings_form.data.keys():
                 if not self.settings.has_key(k):
                     self.settings[k] = settings_form.data[k]
@@ -445,7 +466,7 @@ class Quizzview(Gameview):
             
             game = QuizzGame(self.settings)
                 
-            if "settings" in data:
+			if "settings" in data or post_like_data:
                 game.new_game()
             else:
                 game.check_game(data)
@@ -498,6 +519,7 @@ def quizz_n(request):
     quizzgame.settings['semtype'] = "PLACE-NAME-LEKSA"
 
     c = quizzgame.create_quizzgame(request)
+	trackGrade('Leksa-N', request, c)
     return render_to_response('quizz_n.html', c, context_instance=RequestContext(request))
 
 def quizz(request):
@@ -506,6 +528,7 @@ def quizz(request):
     quizzgame.init_settings()
 
     c = quizzgame.create_quizzgame(request)
+	trackGrade('Leksa-N', request, c)
     return render_to_response('quizz.html', c, context_instance=RequestContext(request))
 
 
