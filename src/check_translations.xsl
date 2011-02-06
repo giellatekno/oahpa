@@ -30,7 +30,7 @@
   <xsl:param name="inFile" select="'default.xml'"/>
 
   <!-- Output dir, files -->
-  <xsl:variable name="outputDir" select="'test_outDir'"/>
+  <xsl:variable name="outputDir" select="'outDir_test'"/>
   <!-- use only the first translation -->
 <xsl:variable name="modus" select="'only_one'"/>
   <xsl:param name="srcl" select="'sme'"/>
@@ -82,6 +82,9 @@
 		
 		<xsl:for-each select="./translations/tr[./@xml:lang = 'fin']">
 		  <xsl:value-of select="normalize-space(.)"/>
+		  <xsl:if test="not(position() = last())">
+		    <xsl:value-of select="' # '"/>
+		  </xsl:if>
 		</xsl:for-each>
 	      </xsl:if>
 	      
