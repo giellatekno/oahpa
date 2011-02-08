@@ -73,12 +73,26 @@ class Gameview:
 
         count=0
         correct=0
+        settings_form = MorfaSettings(request.GET)
+        
+        if request.method == 'GET' and len(settings_form.data.keys()) > 0:
+            post_like_data = request.GET.copy()
+            if not 'book' in post_like_data:
+                post_like_data['book'] = 'all'
+        else:
+            post_like_data = False
+        # So can I get GET data to make changes to form, but I can't get
+        # it to load the game with this data.
+        # reason is logic is forked into POST/GET, not POST & has game
+        # data 
 
-        if request and request.method == 'POST':
-            data = request.POST.copy()
-            #print request.POST
-            # Settings form is checked and handled.
-            settings_form = MorfaSettings(request.POST)
+        if request.method == 'POST' or post_like_data:
+            if post_like_data:
+                data = post_like_data
+            else:
+                data = request.POST.copy()
+        
+            settings_form = MorfaSettings(data)
             for k in settings_form.data.keys():
                 self.settings[k] = settings_form.data[k]
                 
@@ -105,7 +119,7 @@ class Gameview:
             
             # If settings are changed, a new game is created
             # Otherwise the game is created using the user input.
-            if "settings" in data:
+            if "settings" in data or post_like_data:
                 game.new_game()
             else:
                 game.check_game(data)
@@ -210,6 +224,7 @@ def mgame_n(request):
     mgame.settings['gametype'] = "bare"
 
     c = mgame.create_mgame(request)
+    trackGrade('Morfa-S', request, c)
     return render_to_response('mgame_n.html', c, context_instance=RequestContext(request))
 
 
@@ -221,6 +236,7 @@ def mgame_v(request):
     mgame.settings['gametype'] = "bare"
     
     c = mgame.create_mgame(request)
+    trackGrade('Morfa-V', request, c)
     return render_to_response('mgame_v.html', c, context_instance=RequestContext(request))
 
 def mgame_a(request):
@@ -231,6 +247,7 @@ def mgame_a(request):
     mgame.settings['gametype'] = "bare"
     
     c = mgame.create_mgame(request)
+    trackGrade('Morfa-A', request, c)
     return render_to_response('mgame_a.html', c, context_instance=RequestContext(request))
 
 def mgame_l(request):
@@ -241,6 +258,7 @@ def mgame_l(request):
     mgame.settings['gametype'] = "bare"
     
     c = mgame.create_mgame(request)
+    trackGrade('Morfa-Num', request, c)
     return render_to_response('mgame_l.html', c, context_instance=RequestContext(request))
 
 
@@ -254,6 +272,7 @@ def cmgame_n(request):
     mgame.settings['gametype'] = "context"
     
     c = mgame.create_mgame(request)
+    trackGrade('C-Morfa-N', request, c)
     return render_to_response('mgame_n.html', c, context_instance=RequestContext(request))
 
 
