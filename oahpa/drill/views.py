@@ -284,6 +284,7 @@ def cmgame_v(request):
     mgame.settings['gametype'] = "context"
     
     c = mgame.create_mgame(request)
+    trackGrade('C-Morfa-V', request, c)
     return render_to_response('mgame_v.html', c, context_instance=RequestContext(request))
 
 def cmgame_a(request):
@@ -294,6 +295,7 @@ def cmgame_a(request):
     mgame.settings['gametype'] = "context"
     
     c = mgame.create_mgame(request)
+    trackGrade('C-Morfa-A', request, c)
     return render_to_response('mgame_a.html', c, context_instance=RequestContext(request))
 
 
@@ -305,6 +307,7 @@ def cmgame_l(request):
     mgame.settings['gametype'] = "context"
     
     c = mgame.create_mgame(request)
+    trackGrade('C-Morfa-Num', request, c)
     return render_to_response('mgame_l.html', c, context_instance=RequestContext(request))
 
 
