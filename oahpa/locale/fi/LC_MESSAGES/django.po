@@ -7,13 +7,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-10-25 10:27+0200\n"
+"POT-Creation-Date: 2011-02-16 18:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: courses/models.py:102
+msgid "Student"
+msgstr ""
+
+#: courses/models.py:103
+msgid "Instructor"
+msgstr "(Ohjeita)"
 
 #: drill/forms.py:18
 msgid "noun"
@@ -112,11 +121,11 @@ msgstr "kollektiiviluvut"
 msgid "ordinals"
 msgstr "Järjestysluvut"
 
-#: drill/forms.py:90 drill/forms.py:135
+#: drill/forms.py:90 drill/forms.py:137
 msgid "First level"
 msgstr "Taso 1"
 
-#: drill/forms.py:91 drill/forms.py:136
+#: drill/forms.py:91 drill/forms.py:138
 msgid "Second level"
 msgstr "Taso 2"
 
@@ -157,330 +166,338 @@ msgid "Davvin 1-4"
 msgstr ""
 
 #: drill/forms.py:116
+msgid "SAM-1031-1"
+msgstr ""
+
+#: drill/forms.py:117
+msgid "SAM-1031-2"
+msgstr ""
+
+#: drill/forms.py:118
 msgid "algu"
 msgstr "Álgu"
 
-#: drill/forms.py:117
+#: drill/forms.py:119
 msgid "sara"
 msgstr "Sárá ja su ustibat"
 
-#: drill/forms.py:118
+#: drill/forms.py:120
 msgid "Bures bures fas"
 msgstr ""
 
-#: drill/forms.py:119
+#: drill/forms.py:121
 msgid "Oaidnalit"
 msgstr ""
 
-#: drill/forms.py:120
+#: drill/forms.py:122
 msgid "All"
 msgstr "Kaikki"
 
-#: drill/forms.py:124 drill/templates/quizz_n.html:44
+#: drill/forms.py:126 drill/templates/quizz_n.html:44
 msgid "rare"
 msgstr "harvinaiset"
 
-#: drill/forms.py:125 drill/templates/quizz_n.html:43
+#: drill/forms.py:127 drill/templates/quizz_n.html:43
 msgid "common"
 msgstr "yleiset"
 
-#: drill/forms.py:129 drill/templates/quizz_n.html:39
+#: drill/forms.py:131 drill/templates/quizz_n.html:39
 msgid "world"
 msgstr "maailma"
 
-#: drill/forms.py:130 drill/templates/quizz_n.html:38
+#: drill/forms.py:132 drill/templates/quizz_n.html:38
 msgid "sapmi"
 msgstr "Saamenmaa"
 
-#: drill/forms.py:131 drill/templates/quizz_n.html:40
+#: drill/forms.py:133 drill/templates/quizz_n.html:40
 msgid "suopma"
 msgstr "Suomessa"
 
-#: drill/forms.py:137
+#: drill/forms.py:139
 msgid "Third level"
 msgstr "Taso 3"
 
-#: drill/forms.py:141
+#: drill/forms.py:143
 msgid "North Sami to Norwegian"
 msgstr "Pohjoissaamesta norjaan"
 
-#: drill/forms.py:142
+#: drill/forms.py:144
 msgid "Norwegian to North Sami"
 msgstr "Norjasta pohjoissaameen"
 
-#: drill/forms.py:143
+#: drill/forms.py:145
 msgid "North Sami to Finnish"
 msgstr "Pohjoissaamesta suomenkielelle"
 
-#: drill/forms.py:144
+#: drill/forms.py:146
 msgid "Finnish to North Sami"
 msgstr "Suomenkielestä pohjoissaameen"
 
-#: drill/forms.py:154
+#: drill/forms.py:156
 msgid "North Sami"
 msgstr "Pohjoissaame"
 
-#: drill/forms.py:155
+#: drill/forms.py:157
 msgid "Lule Sami"
 msgstr "Luulajansaame"
 
-#: drill/forms.py:156
+#: drill/forms.py:158
 msgid "South Sami"
 msgstr "Eteläsaame"
 
-#: drill/forms.py:157
+#: drill/forms.py:159
 msgid "Inari Sami"
 msgstr "Inarinsaame"
 
-#: drill/forms.py:158
+#: drill/forms.py:160
 msgid "Kildin Sami"
 msgstr "Kildininsaame"
 
-#: drill/forms.py:159
+#: drill/forms.py:161
 msgid "Skolt Sami"
 msgstr "Koltansaame"
 
-#: drill/forms.py:160
+#: drill/forms.py:162
 msgid "Finnish"
 msgstr "Suomeksi"
 
-#: drill/forms.py:164
+#: drill/forms.py:166
 msgid "family"
 msgstr "perhe"
 
-#: drill/forms.py:165
+#: drill/forms.py:167
 msgid "profession"
 msgstr "ammatit"
 
-#: drill/forms.py:166
+#: drill/forms.py:168
 msgid "human-like"
 msgstr "inhimillinen"
 
-#: drill/forms.py:167
+#: drill/forms.py:169
 msgid "animal"
 msgstr "eläimet"
 
-#: drill/forms.py:168
+#: drill/forms.py:170
 msgid "food/drink"
 msgstr "ruoka/juoma"
 
-#: drill/forms.py:169
+#: drill/forms.py:171
 msgid "time"
 msgstr "aika"
 
-#: drill/forms.py:170
+#: drill/forms.py:172
 msgid "concretes"
 msgstr "konkreettiset esineet"
 
-#: drill/forms.py:171
+#: drill/forms.py:173
 msgid "body"
 msgstr "keho"
 
-#: drill/forms.py:172
+#: drill/forms.py:174
 msgid "clothes"
 msgstr "vaatteet"
 
-#: drill/forms.py:173
+#: drill/forms.py:175
 msgid "buildings/rooms"
 msgstr "rakennukset/huoneet"
 
-#: drill/forms.py:174
+#: drill/forms.py:176
 msgid "naturewords"
 msgstr "luonto"
 
-#: drill/forms.py:175
+#: drill/forms.py:177
 msgid "leisuretime/at_home"
 msgstr "vapaaaika/kotona"
 
-#: drill/forms.py:176
+#: drill/forms.py:178
 msgid "places"
 msgstr "paikat"
 
-#: drill/forms.py:177
+#: drill/forms.py:179
 msgid "literature"
 msgstr "kirjallisuus"
 
-#: drill/forms.py:178
+#: drill/forms.py:180
 msgid "school/education"
 msgstr "koulu/opetus"
 
-#: drill/forms.py:179
+#: drill/forms.py:181
 msgid "abstracts"
 msgstr "abstraktit"
 
-#: drill/forms.py:180
+#: drill/forms.py:182
 msgid "work/economy/tools"
 msgstr "talous/työkalut"
 
-#: drill/forms.py:181
+#: drill/forms.py:183
 msgid "all"
 msgstr "kaikki"
 
-#: drill/forms.py:185
+#: drill/forms.py:187
 msgid "0-10"
 msgstr ""
 
-#: drill/forms.py:186
+#: drill/forms.py:188
 msgid "0-20"
 msgstr ""
 
-#: drill/forms.py:187
+#: drill/forms.py:189
 msgid "0-100"
 msgstr ""
 
-#: drill/forms.py:188
+#: drill/forms.py:190
 msgid "0-1000"
 msgstr ""
 
-#: drill/forms.py:193
+#: drill/forms.py:195
 msgid "Numeral to string"
 msgstr "Numerosta sanaan"
 
-#: drill/forms.py:194
+#: drill/forms.py:196
 msgid "String to numeral"
 msgstr "Sanasta numeroon"
 
-#: drill/forms.py:198
+#: drill/forms.py:200
 msgid "Firstmeeting"
 msgstr "Oahpásmuva Kárii"
 
-#: drill/forms.py:199
+#: drill/forms.py:201
 msgid "Firstmeeting boy"
 msgstr "Oahpásmuva Lemehii"
 
-#: drill/forms.py:200
+#: drill/forms.py:202
 msgid "Firstmeeting girl"
 msgstr "Oahpásmuva Lisái"
 
-#: drill/forms.py:201
+#: drill/forms.py:203
 msgid "Firstmeeting man"
 msgstr "Oahpásmuva Hánsii"
 
-#: drill/forms.py:202 drill/templates/sahka.html:172
+#: drill/forms.py:204 drill/templates/sahka.html:172
 msgid "Visit"
 msgstr "Guossis"
 
-#: drill/forms.py:203 drill/templates/sahka.html:177
+#: drill/forms.py:205 drill/templates/sahka.html:177
 msgid "Grocery"
 msgstr "Borramušgávppis"
 
-#: drill/forms.py:204
+#: drill/forms.py:206
 msgid "Shopadj"
 msgstr ""
 
-#: drill/views.py:22
+#: drill/views.py:24
 msgid "Practise attributes"
 msgstr "Harjoittele attribuuttimuotoja"
 
-#: drill/views.py:23
+#: drill/views.py:25
 msgid "Practise attributes in positive"
 msgstr "Harjoittele attribuutteja"
 
-#: drill/views.py:24
+#: drill/views.py:26
 msgid "Practise attributes in comparative"
 msgstr "Harjoittele attribuuttien komparatiivimuotoja"
 
-#: drill/views.py:25
+#: drill/views.py:27
 msgid "Practise attributes in superlative"
 msgstr "Harjoittele attribuuttien superlatiivimuotoja"
 
-#: drill/views.py:26
+#: drill/views.py:28
 msgid "Practise predicative in positive"
 msgstr "Harjoittele predikatiivia"
 
-#: drill/views.py:27
+#: drill/views.py:29
 msgid "Practise predicative in comparative"
 msgstr "Harjoittele predikatiivin komparatiivimuotoja"
 
-#: drill/views.py:28
+#: drill/views.py:30
 msgid "Practise predicative in superlative"
 msgstr "Harjoittele predikatiivin superlatiivimuotoja"
 
-#: drill/views.py:29
+#: drill/views.py:31
 msgid "Practise numeral attributes"
 msgstr "Harjoittele numeraalien attribuuttimuotoja"
 
-#: drill/views.py:30 drill/views.py:36
+#: drill/views.py:32 drill/views.py:38
 msgid "Practise plural"
 msgstr "Harjoittele monikkoa"
 
-#: drill/views.py:31
+#: drill/views.py:33
 msgid "Practise illative"
 msgstr "Harjoittele illatiivia"
 
-#: drill/views.py:32
+#: drill/views.py:34
 msgid "Practise accusative"
 msgstr "Harjoittele akkusatiivia"
 
-#: drill/views.py:33
+#: drill/views.py:35
 msgid "Practise comitative"
 msgstr "Harjoittele komitatiivia"
 
-#: drill/views.py:34
+#: drill/views.py:36
 msgid "Practise essive"
 msgstr "Harjoittele essiiviä"
 
-#: drill/views.py:35
+#: drill/views.py:37
 msgid "Practise genitive"
 msgstr "Harjoittele genetiiviä"
 
-#: drill/views.py:37
+#: drill/views.py:39
 msgid "Practise locative"
 msgstr "Harjoittele lokatiivia"
 
-#: drill/views.py:38
+#: drill/views.py:40
 msgid "Practise numerals in illative"
 msgstr "Harjoittele numeraaleja illatiivissa"
 
-#: drill/views.py:39
+#: drill/views.py:41
 msgid "Practise numerals in accusative"
 msgstr "Harjoittele numeraaleja akkusatiivissa"
 
-#: drill/views.py:40
+#: drill/views.py:42
 msgid "Practise numerals in comitative"
 msgstr "Harjoittele numeraaleja komitatiivissa"
 
-#: drill/views.py:41
+#: drill/views.py:43
 msgid "Practise numerals in essive"
 msgstr "Harjoittele numeraaleja essiivissä"
 
-#: drill/views.py:42
+#: drill/views.py:44
 msgid "Practise numerals in genitive"
 msgstr "Harjoittele numeraaleja genetiivissä"
 
-#: drill/views.py:43
+#: drill/views.py:45
 msgid "Practise numerals in plural"
 msgstr "Harjoittele numeraaleja monikossa"
 
-#: drill/views.py:44
+#: drill/views.py:46
 msgid "Practise numerals in locative"
 msgstr "Harjoittele numeraaleja lokatiivissa"
 
-#: drill/views.py:45
+#: drill/views.py:47
 msgid "Practise collective numerals"
 msgstr "Harjoittele kollektiivilukuja"
 
-#: drill/views.py:46
+#: drill/views.py:48
 msgid "Practise ordinal numbers"
 msgstr "Harjoittele järjestyslukuja"
 
-#: drill/views.py:47
+#: drill/views.py:49
 msgid "Practise present"
 msgstr "Harjoittele preesensiä"
 
-#: drill/views.py:48
+#: drill/views.py:50
 msgid "Practise past"
 msgstr "Harjoittele preteritiä"
 
-#: drill/views.py:49 drill/views.py:52
+#: drill/views.py:51 drill/views.py:54
 msgid "Practise conditional"
 msgstr "Harjoittele konditionaalia"
 
-#: drill/views.py:50 drill/views.py:53
+#: drill/views.py:52 drill/views.py:55
 msgid "Practise imperative"
 msgstr "Harjoittele imperatiivia"
 
-#: drill/views.py:51 drill/views.py:54
+#: drill/views.py:53 drill/views.py:56
 msgid "Practise potential"
 msgstr "Harjoittele potentiaalia"
 
@@ -695,8 +712,8 @@ msgstr "Läntinen"
 msgid "eastern"
 msgstr "Itäinen"
 
-#: drill/templates/oahpa_main.html:187 drill/templates/visl_main.html:405
-#: templates/oahpa.html:265
+#: drill/templates/oahpa_main.html:187 drill/templates/visl_main.html:435
+#: templates/oahpa.html:266
 msgid "Teachers and students guide"
 msgstr "Opettajien ja oppilaiden opas"
 
@@ -708,20 +725,20 @@ msgstr "VISL pohjoissaamen kielelle"
 msgid "Dictionary"
 msgstr ""
 
-#: drill/templates/oahpa_main.html:206 drill/templates/visl_main.html:419
+#: drill/templates/oahpa_main.html:206 drill/templates/visl_main.html:449
 msgid "About OAHPA!"
 msgstr "OAHPAsta"
 
-#: drill/templates/oahpa_main.html:209 drill/templates/visl_main.html:422
-#: templates/oahpa.html:274
+#: drill/templates/oahpa_main.html:209 drill/templates/visl_main.html:452
+#: templates/oahpa.html:275
 msgid "Feedback"
 msgstr "Palaute"
 
-#: drill/templates/oahpa_main.html:226 drill/templates/visl_main.html:441
+#: drill/templates/oahpa_main.html:229 drill/templates/visl_main.html:471
 msgid "Copyright 2009 The University of Tromso."
 msgstr "Copyright 2009, Tromssan yliopisto"
 
-#: drill/templates/oahpa_main.html:227 drill/templates/visl_main.html:442
+#: drill/templates/oahpa_main.html:230 drill/templates/visl_main.html:472
 msgid "Contact"
 msgstr "Ota yhteyttä"
 
@@ -846,56 +863,54 @@ msgstr ""
 "tarvitse viimeistä Java-versiota, eikä sen takia toimi Mac-tietokoneissa."
 
 #: drill/templates/visl_main.html:85
-msgid "Paint nouns, verbs and other words. (NOT for Mac!)"
-msgstr "Maalaa nomineja, verbejä ja muita sanoja. (EI Macissa!)"
+msgid "Paint nouns, verbs and other words."
+msgstr "Maalaa nomineja, verbejä ja muita sanoja."
 
-#: drill/templates/visl_main.html:102 drill/templates/visl_main.html.py:125
-#: drill/templates/visl_main.html:147 drill/templates/visl_main.html.py:206
-#: drill/templates/visl_main.html:229 drill/templates/visl_main.html.py:252
-#: drill/templates/visl_main.html:308 drill/templates/visl_main.html.py:317
-#: drill/templates/visl_main.html:340
+#: drill/templates/visl_main.html:105 drill/templates/visl_main.html.py:131
+#: drill/templates/visl_main.html:156 drill/templates/visl_main.html.py:218
+#: drill/templates/visl_main.html:244 drill/templates/visl_main.html.py:270
+#: drill/templates/visl_main.html:329 drill/templates/visl_main.html.py:338
+#: drill/templates/visl_main.html:364
 msgid "(instructions)"
 msgstr "(ohjeita)"
 
-#: drill/templates/visl_main.html:108
+#: drill/templates/visl_main.html:111
 msgid "Nouns, verbs and other words shall be put into the right place."
 msgstr "Sijoita paikalleen nominit, verbit ja muut sanat."
 
-#: drill/templates/visl_main.html:130
-msgid ""
-"Shoot nouns, verbs and other words flying through the air. (NOT for Mac!)"
-msgstr "Ammuskele nomineja, verbejä ja muita sanoja. (EI Macissa!)"
+#: drill/templates/visl_main.html:136
+msgid "Shoot nouns, verbs and other words flying through the air."
+msgstr "Ammuskele nomineja, verbejä ja muita sanoja."
 
-#: drill/templates/visl_main.html:189
-msgid "Hurry through the labyrinth to the right part of speech. (NOT for Mac!)"
-msgstr "Kiirehdi labyrintin läpi oikean sanaluokan luokse. (EI Macissa!)"
+#: drill/templates/visl_main.html:198
+msgid "Hurry through the labyrinth to the right part of speech."
+msgstr "Kiirehdi labyrintin läpi oikean sanaluokan luokse."
 
-#: drill/templates/visl_main.html:212
-msgid ""
+#: drill/templates/visl_main.html:224
 "Sentence members shall fall into right place - a Tetris game. (NOT for Mac!)"
 msgstr "Tetris lauseenjäsenillä. (EI Macissa!)"
 
-#: drill/templates/visl_main.html:235
+#: drill/templates/visl_main.html:250
 msgid "You shall save the parts of speech. (NOT for Mac!)"
 msgstr "Pelasta sanaluokat. (EI Macissa!)"
 
-#: drill/templates/visl_main.html:291
+#: drill/templates/visl_main.html:309
 msgid "Write the correct wordform for the lemma."
 msgstr "Etsi oikea sanamuoto."
 
-#: drill/templates/visl_main.html:314
+#: drill/templates/visl_main.html:335
 msgid "Guess the right animal."
 msgstr "Arvaa mikä eläin on kyseessä."
 
-#: drill/templates/visl_main.html:323
+#: drill/templates/visl_main.html:344
 msgid "Examine and build sentence trees."
 msgstr "Rakenna ja tarkastele lausepuita."
 
-#: drill/templates/visl_main.html:358
+#: drill/templates/visl_main.html:382
 msgid "Page language"
 msgstr "Valitse kieli"
 
-#: drill/templates/visl_main.html:415 templates/oahpa.html:257
+#: drill/templates/visl_main.html:445 templates/oahpa.html:257
 msgid "Main page"
 msgstr "Etusivu"
 
@@ -959,9 +974,49 @@ msgstr "Kielioppi"
 msgid "OAHPA is under development and may not function all the time."
 msgstr "OAHPA-sivustoa kehitetään, käyttökatkot ja virheet ovat mahdollisia."
 
-#: templates/oahpa.html:270
+#: templates/oahpa.html:271
 msgid "Geo placenames"
 msgstr "Paikat"
+
+#: templates/user_auth_block.html:16
+msgid "Course login"
+msgstr ""
+
+#: templates/auth/login.html:11
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: templates/auth/login.html:15
+msgid "Log out?"
+msgstr "Kirjoittaudut ulos?"
+
+#: templates/auth/login.html:17
+msgid "Please log in to continue..."
+msgstr ""
+
+#: templates/auth/login.html:33
+msgid "log in"
+msgstr "loggaa sisään"
+
+#: templates/courses/courses_main.html:40
+msgid "Welcome, "
+msgstr "Tervetuloa, "
+
+#: templates/courses/courses_main.html:56
+msgid "Average"
+msgstr "Keskiarvo"
+
+#: templates/courses/courses_main.html:57
+msgid "Highest score"
+msgstr "Korkeimmat pisteesi"
+
+#: templates/courses/courses_main.html:58
+msgid "Lowest score"
+msgstr "Matalimmat pisteesi"
+
+#: templates/courses/courses_main.html:59
+msgid "Number of tries"
+msgstr "Yritysten määrä"
 
 #~ msgid "Game is temporarily unavailable for technical reasons."
 #~ msgstr ""
