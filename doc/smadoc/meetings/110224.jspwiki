@@ -5,13 +5,117 @@ Til stades: Lene, Sissel, Toini, Trond.
 !!!Saker
 
 # Søknad
-# Eksempel i grammatikken
-# Adjektiv i Morfa-S
-
+# I morgon med Sylvia
+# Vidare arbeid
+## Eksempler til [grammatikken|http://giellatekno.uit.no/ped/sma-oahpa.html]
+## Adjektiv i Morfa-S
+## Morfa-C
 
 !!!Søknad
+Undervegs
 
-!!!Eksempel i grammatikken
+!!!Sylvia
+XMLMind
 
-!!!Adjektiv i Morfa-S
+Oppdatering av css: Merke a, b (tg-ane) i xmlmind med __nob, swe, sme__.
+
+Attributt: Det er mogleg å ignorere dei, men det å fylle dei ut er fint viss
+vi skal ha ei interaktiv sørsamisk-svensk ordbok.
+
+Attributtverdiar:
+
+* app - ignorer
+* decl - dette er til ordboksbruk: svensk grammatikk
+* dict - viss ordet __ikkje__ skal i ordbok: endre til "no"
+* gen - genus
+* lang - ignorer denne
+* nr - endre viss det trengst
+* oa - ignorer
+* pos - ferdigutfylt, men endre viss det er feil!
+* stat - merk "fasitsvaret" (ein per entry)
+* tcomm - ja/nei
+* xml:lang
+
+nodetype
+* mogleg å endre t til tf (men då mistar du POS, og må fylle ut!)
+
+!!!Vidare arbeid
+
+!!Eksempel i grammatikken
+
+* [grammatikken|http://giellatekno.uit.no/ped/sma-oahpa.html]
+
+
+
+!!Stadnamn
+
+Common - rare, skal vi ha ein slik distinksjon?
+
+Lagt til namn frå reisespel, land, nærområde, fylke, 
+
+Namna fordeler seg geografisk på denne måten
+(kommando: {{cat prop_smanob.xml |grep '<sem '|sort |uniq -c|sort -nr}}):
+
+* 41 -  <sem class="OTHER" />
+* 39 -  <sem class="MID" />
+* 25 -  <sem class="SOUTH" />
+* 22 -  <sem class="NORTH" />
+
+Liste over dei fire kategoriane (kjem):
+
+
+!!Adjektiv i Morfa-S
+
+Status quo:
+
+* 264 Oahpa-adjektiv
+** 10 adjektiv utan Attr
+** 22 adjektiv utan Pred
+** 50 adjektiv utan Comp
+** 51 adjektiv utan Superl
+
+
+Generere lister (tabell) med predikativ + attributt
+Leggje dei på sidene våre og sjå på det
+
+Mål: Adjektiv i Morfa-S med predikativform som utgangspunkt:
+# til attributt
+# til komparativ og superlativ
+# Skal vi også ha kasusbøying?
+
+
+!!Morfa-C
+
+Lene hentar filene.
+{{{
+  <q id="nill1sg">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Geasa SUBJ MAINV OBJ</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>addit</id>
+      </element>
+      <element id="OBJ">
+	<sem class="OBJECT"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV OBJ N-ILL</text>
+      <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Sg+Ill"/>
+	<sem class="HUMAN"/>
+      </element>
+    </answer>
+  </q>
+}}}
+
+Illativ-aktiv oppgave
+
+* Giese PRON TOY vedtedh ?
+* PRON TOY 'FAMILY' vedtedh?
+
 
