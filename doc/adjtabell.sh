@@ -9,6 +9,6 @@ cat t1|sed 's/$/+A+Comp+Sg+Nom/;'| lookup $GTHOME/gt/sma/bin/isma.fst |tr '\n' '
 
 cat t1|sed 's/$/+A+Superl+Sg+Nom/;'| lookup $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tsuperl
 
-paste -d"|" tattr tpred tcomp tsuperl > ttabell
+paste -d"|" t1 tattr tpred tcomp tsuperl | sed 's/|/ | /g;' | sed 's/^/|/'| sed 's/,/, /g;'> ttabell
 
 rm tattr tpred tcomp tsuperl
