@@ -1,0 +1,45 @@
+!!!Om Morfa-C
+
+Man lager grammatikkoppgaver, hvor elevene får et spørsmål/svar eller setnig/kommentar med et åpent felt. De får oppgitt et lemma (ord i grunnform) og de skal skrive riktig form at dette. Lemmaet kommer fra et semantiske sett, og slik vil datamaskinen generere mange ulike oppgaver ut av en mal. Ved å bruke variabler for noen av de andre ordene i setningene, vil antall forskjellige oppgaver bli mye større. +kongr betyr at ordet skal kongruere da f.eks. FAMILY kan være både entall og flertall.
+
+!!Eksempler:
+
+* Gusnie HUMAN-adj PROFESSION årroeminie? PROFESSION årroeminie ______ (PLACE inessiv).
+* Gåabph PROFESSION MOVEMENT-verb+kongr? PROFESSION  _______ (PLACE illativ) MOVEMENT-verb+kongr.
+* Maam FAMILY jovkedh+kongr? FAMILY ______ (DRINK akkusativ) jovkedh+kongr .
+* Maam PEOPLE daen biejjien darjodh+kongr? Daen biejjien PEOPLE _______ (ACTIVITY-verb prs).
+* Maam PEOPLE jåktan darjodh+pret+kongr? Jåktan PEOPLE _______ (ACTIVITY-verb prt).
+* Giese PRON TOY-akk vedtedh+kongr? PRON TOY-akk _______ (FAMILY illativ)  vedtedh+kongr .
+
+
+!! Man kan variere mer ved å ha flere variabler:
+! Maam HUMAN-adj FAMILY jåvka? FAMILY ______ (DRINK akkusativ) jåvka .
+
+Lene overfører oppgavene til xml-format, f.eks.
+
+{{{
+  <q id="nill1sg">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Giese SUBJ OBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>vedtedh</id>
+      </element>
+      <element id="OBJ">
+	<sem class="TOY"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ OBJ MAINV N-ILL</text>
+      <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Sg+Ill"/>
+	<sem class="FAMILY"/>
+      </element>
+    </answer>
+  </q>
+}}}
+
