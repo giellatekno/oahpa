@@ -5,6 +5,13 @@ Morfa-c OPPGAVER
 
 !!NOMINATIV FLERTALLØVINGER:
 
+* Man gellieh PEOPLE åestedh+kongr?
+PEOPLE ..... (FOOD_GROCERY+nominativ pl) åestedh+kongr.
+
+* Man gellieh FAMILY byøpmedidh+kongr?
+FAMILY ..... (FOOD_DISH+nominativ pl) byøpmedidh+kongr.
+
+
 !!AKKUSATIVØVINGER:
 
 * Maam FAMILY jovkedh+kongr? 
@@ -14,21 +21,38 @@ FAMILY ..... (DRINK akkusativ) jovkedh+kongr.
 FAMILY ..... (FOOD_DISH akkusativ) byøpmedidh+kongr.
 
 * Maam FAMILY bovresne åestedh+kongr?
-FAMILY ..... (FOOD_GROCERY) åestedh+kongr.
+FAMILY ..... (FOOD_GROCERY akkusativ) åestedh+kongr.
 
-* Maam FAMILY sïjhtedh+kongr?
+* Maam PEOPLE sïjhtedh+kongr?
 FAMILY sïjhtedh+kongr ..... (FOOD_DISH).
+
+* Maam NAME govledh+kongr?
+NAME ..... VEHICLE akkusativ govledh+kongr.
 
 
 !!GENITIVØVINGER:
+
+* Gien ANIMAL_PET dohte?
+Dohte ..... (NAME genitiv) ANIMAL_PET+kongr.
+
+* Gien VEHICLE daate?
+Daate ..... NAME genitiv VEHICLE+kongr.
+
 
 !! ILLATIVØVINGER:
 
 * Gåabph PROFESSION MOVEMENT-verb+kongr? 
 PROFESSION ..... (PLACE illativ) MOVEMENT-verb+kongr.
 
+* Gåabph daate VEHICLE juhtedh+kongr?
+Daate VEHICLE ..... (PLACE_NAME+illativ) juhtedh+kongr.
+
+
 * Giese PRON TOY-akk vedtedh+kongr? 
-PRON TOY-akk ..... (FAMILY illativ) vedtedh+kongr .
+PRON TOY-akk ..... (FAMILY illativ) vedtedh+kongr.
+
+* Giese daate FOOD_DISH?
+Daate FOOD_DISH ..... (FAMILY+illativ).
 
 
 !!INESSIVØVINGER:
@@ -36,18 +60,52 @@ PRON TOY-akk ..... (FAMILY illativ) vedtedh+kongr .
 * Gusnie HUMAN-adj PROFESSION årroeminie? 
 PROFESSION  ..... (PLACE_NAME inessiv) årroeminie.
 
-* Gusnie PEOPLE?
-PEOPLE ..... (PLACE_STAYING inessiv).
+* Gusnie PEOPLE daelie?
+PEOPLE ..... (PLACE_STAYING inessiv) daelie.
 
+Gusnie FAMILY?
+FAMILY lea+kongr ..... (BUILDING inessiv).
 
+* Gusnie dov THING?
+Mov THING lea ..... (ROOM+inessiv).
+
+* Gusnie dov ANIMAL_PET?
+Mov ANIMAL_PET lea ..... (BUILDING+inessiv).
+
+* Gusnie NAME+genitiv THING?
+NAME+genitiv lea (CONTAINER+inessiv).
 
 !!ELATIVØVINGER:
 
-Gubpede PEOPLE båetedh+kongr?
+* Gubpede PEOPLE båetedh+kongr?
 PEOPLE ..... (PLACE_NAME elativ) båetedh+kongr.
+
+* Gubpede NAME+genitiv preivie båata?
+NAME+genitiv prievie ..... (PLACE_NAME+elativ) båetedh+kongr.
+
+* Gubpede daate VEHICLE juhtedh+kongr?
+Daate VEHICLE ..... (PLACE_NAME+elativ) juhtedh+kongr.
 
 
 !!KOMITATIVØVINGER:
+
+* Mejnie PRONOMEN PLACE_COUNTRY+illativ fealadidh+kongr?
+PRONOMEN ..... (VEHICLE+komitativ) fealadidh+kongr.
+
+* Giejnie PRONOMEN daen iehkeden soptsestidh+kongr?
+PRONOMEN ..... (NAME+komitativ) soptsestidh+kongr.
+
+* Mejnie FAMILY daen biejjien båetedh+kongr?
+FAMILY ..... (VEHICLE+komitativ) båetedh+kongr.
+
+* Guktie PEOPLE dahkoe vuelkedh+kongr?
+PEOPLE ..... (VEHICLE+komitativ) vuelkedh+kongr.
+
+* Mejnie NAME barkeminie?
+NAME ..... (PROFESSION+komitativ) barkeminie.
+
+
+
 
 !!ESSIVØVINGER:
 
@@ -67,4 +125,23 @@ Jåktan PEOPLE ..... (ACTIVITY-verb prt).
 !! IMPERATIVØVINGER
 
 !! NEKTINGØVINGER
+
+
+
+!!! PRONOMEN
+
+
+!! Genitiv
+
+* Gien lea VEHICLE?
+..... (PRONOMEN+genitiv) lea+kongr VEHICLE.
+
+* Gien lea ANIMAL_PET?
+..... (PRONOMEN+genitiv) lea+kongr ANIMAL_PET.
+
+* Gien lea THING?
+..... (PRONOMEN+genitiv) lea+kongr THING.
+
+* Gien lea BUILDING?
+..... (PRONOMEN+genitiv) lea+kongr BUILDING.
 
