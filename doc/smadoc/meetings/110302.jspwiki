@@ -1,0 +1,142 @@
+
+!!!Møte sma-oahpa Tromsø 2. mars 2011
+
+Til stades: Ciprian, Lene, Ryan, Trond
+
+
+!!!Feedback
+
+* A stem alltid
+* B umlaut etc varierer
+* C suffix alltid
+
+
+* likestava utan ie: får C.
+* likestava ie: får B, C.
+
+
+Problem: Files have been in different locations.
+
+Dei filene som gjeld er:
+
+* smaoahpa production files: pedversions
+* smaoahpa documentation: GTHOME/ped/doc/
+* smaoahpa lexicon: GTHOME/words/dicts/smanob
+* smeoahpa everything: GTHOME/ped/
+
+__Tiltak, arbeid framover:__
+
+# Lene oppdaterer feedback-filene, fletter saman, og slettar.
+# Ryan implementerer på nytt
+# Alle testar
+
+!!!tcomm
+
+I dag:
+
+# nytt sett: seasa
+# input:	tante
+# input: Test svarene
+# output: grønt=tante
+# input: __Vis korrekt svar:__
+# output: --> fars eldre søster		
+
+__Vi vil ha:__
+
+# nytt sett: seasa
+# input: tante
+# input: Test svarene
+# output: lysegrønt=tante  kommentar: ''Dette er nesten riktig'' ELLER kommtar: ''Hmm...''
+# input: Vis korrekt svar:
+# output: --> fars eldre søster		
+
+Differensiert output:
+
+* Det viktigaste er at det fungerer
+* Viss det går bra, vil vi ha det med naturleg språk:
+** Tampen brenner…, + poetisk-pedagogiske tillegg
+** Det här är nästen rätt
+** This is almost correct
+* Viss det ikkje går bra, vil vi ha ein språkuavhengig kommentar ''Hmm..''
+
+
+!!!Svensk-norske bokstavar ö/ø æ/ä
+
+Bug: 
+* jøømmetje blir korrigert til (jöömmetje).
+* __Men__ jöömmetje får også identisk (jöömmetje) som fasit.
+
+Elles lar vi (öæï) -systemet stå
+
+
+!!!Algoritme for oahpa smanob -> nobsma
+http://giellatekno.uit.no/ped/smadoc/algorithm_for_dict_turning.html
+
+
+!!!Morfa-C
+
+Status quo:
+Vi har to rammer: Ei med bare variablar og ei med få variabler og resten konstanter.
+
+
+Ryan: Morfa-C er vanskeleg på andre språk enn sme.
+
+Dokumentasjon: smadoc/morfac_programming.html
+
+Det fungerer ikkje å kopiere sme-systemet over til sma.
+
+Relevante lenkjer:
+
+* [http://giellatekno.uit.no/ped/common/overview.html]
+* [http://giellatekno.uit.no/ped/morfaC.html]
+* [http://giellatekno.uit.no/ped/common/vastamorfac.html]
+
+Steg framover: 
+# Trond sjekkar inn dokumenta frå i dag
+# Ryan skriv dokumentasjon
+# Vi andre les og kommenterer.
+
+!!!Morfa-S
+
+Opent spørsmål: Omsetjing av verba, infoen i boksen nederst når brukaren trykker på ENTER. 
+
+I dag: nööredh "nå"
+
+Røros vil ha: nööredh "Klasse VI (nå)"
+
+
+!!!Tidsplan, prioriteringar
+
+!!tcomm
+* Implementere ny timing
+* Ny versjon ferdig denne veka
+* Helg, måndag: Testing
+
+!!feedback på Morfa-S
+* Nye filer 1-2 dagar
+* Testing (bisyllabic, trisyllabic, N, V, illative, … )
+* Ny versjon ferdig denne veka
+* Helg, måndag: Testing
+
+!!Morfa-S
+* Inkludere verbklasse
+* Tidsfrist: til neste møte
+
+!!Morfa-C
+* Etter tcomm og feedback
+* Dokumentasjon (ikkje overdriv) av 
+** status quo 
+** problemet (kva er det som ikkje fungerer)
+** smeoapha-morfa-C for referanse
+* Tidsfrist: Tysdag
+
+!!!Neste møte
+
+Tysdag på kvinnedagen, klokka 13.00
+
+
+
+
+
+
+
