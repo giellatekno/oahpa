@@ -1,4 +1,48 @@
-!!!Ad lib
+# convert ot jspwiki: 
 
-Morfa-C
+# Morfa-C
 
+Vi har eit par problemer i sme-oahpa, so eg byrja med å sjekka kva som skjer med sme-oahpa og prøvd å mata databasen med kilde-filane til sme-oahpa og Morfa-C. Lest gjennom dokumentasjon og så fann at eg treng å gjera mottsatt operasjon som det står der. Vi treng endra dokumentasjon slik at det er klarare.
+
+(1)
+
+	python install.py -r ../sme/src/paradigms.txt -t ../sme/src/tags.txt -b
+
+(2)
+
+	python2.6 install.py -g ../sme/xml/grammar_defaults.xml -q ../sme/xml/questions_nouns.xml
+	python2.6 install.py -g ../sme/xml/grammar_defaults.xml -q ../sme/xml/questions_verbs.xml
+	python2.6 install.py -g ../sme/xml/grammar_defaults.xml -q ../sme/xml/questions_numerals.xml
+	python2.6 install.py -g ../sme/xml/grammar_defaults.xml -q ../sme/xml/questions_adjectives.xml
+
+(3) Korleis kan man installere fillings.xml? Treng dokumentasjon til den. Prøver... 
+
+	python2.6 install.py --paradigmfile ../sme/src/paradigms.txt --tagfile ../sme/src/tags.txt -f ../sme/xml/fillings.xml
+
+Kan vera at man treng ikkje generere:
+
+	python2.6 install.py -f ../sme/xml/fillings.xml
+
+Fikk feil beskjed med adjectiver då eg mata databasen.
+
+Ogso glemt å gjera (1) først og soleis fekk en feil beskjed. No eg har gjort den først, og kan sjå Morfa-C, mens det er en annen feil beskjed om eg prøver å svare spørsmålene.
+
+Feilbeskjed til adjectiv-filen (2) er:
+
+	  File "/Volumes/Skewl/gtsvn/ped/oahpa/questions_install.py", line 251, in read_element
+	    for w in words[p]:
+	KeyError: ''
+
+
+## Databasen lada? 
+
+Ganske ofto eg får 'invalid quiz ID' beskjed, men eg antar at databasen er lada rett, om eg gjort rett dei tre ting som eg må gjera.
+
+Når eg prøver eit svar, så får eg: 
+
+KeyError at /oahpa/morfac/
+userans
+
+... uavhengig av kva eg skrev. Eg har prøvd med å svare til alle spørsmålene, og til kun eit av deim.
+
+Hmm.

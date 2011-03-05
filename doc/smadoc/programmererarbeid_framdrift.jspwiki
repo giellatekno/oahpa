@@ -8,10 +8,9 @@ I'm copying some of the implementation notes out so that it's easier to see what
  * Prioritering er i lista. 
 
 {{{
-morfa feedback:        debugging, (see feedback)
 
 morfa-C:               in progress
-klokka i Numra:        TODO, NB, ?before Røros? (unclear)
+klokka i Numra:        in progress, crashy; will test on VM.
 
 pronomen i morfa:      in progress, functional. some small things to do
 
@@ -21,6 +20,8 @@ språkparvalg:          TODO, for sme-oahpa, after Røros
 swe og sme i smaoahpaleksa   TODO, but only at a much later stage
 
 Innlogging in sma:     in progress, functional. NB: for sme
+
+morfa feedback:        complete?, test
 
 Autoutfyl:             complete
 
@@ -251,10 +252,17 @@ __TODO__:
 !!!Numra
 
 !!Grafisk klokke
+ * ikkje grafisk enno, men vi treng først klokke
 
 __Status__:
+ * eg kunne ikkje få iclock-sma.fst til å generere på 
+   min egen maskin med alle minutter, berre halv-timar, men
+   det ble generert sånn på victorio. 
+
 
 __TODO__:
+ * valgskjema til iclock har dei same valg som cardinals og ordinals,
+   dette må byttast
 
 !!!Allmenne ting
 
