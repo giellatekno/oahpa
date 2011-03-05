@@ -46,3 +46,32 @@ userans
 ... uavhengig av kva eg skrev. Eg har prøvd med å svare til alle spørsmålene, og til kun eit av deim.
 
 Hmm.
+
+
+## Prøver på Smaoahpa
+
+(1)
+
+	python2.install.py -r data_sma/meta/paradigms.txt -t data_sma/meta/tags.txt
+
+... sjekka databasen, dei er lada
+
+(2)
+
+	python2.6 install.py -g data_sma/meta/grammar_defaults.xml -q data_sma/meta/morfa_questions.xml
+
+
+(3)
+
+	python2.6 install.py -f data_sma/sma/fillings_smanob.xml --paradigmfile data_sma/meta/paradigms.txt --tagfile data_sma/meta/tags.txt 
+
+
+Sjekka databasen, alt ser riktig ut.
+
+Tester i web-grensesnitt:
+
+	ValueError at /smaoahpa/morfac_s/
+	empty range for randrange() (0,0, 0)
+
+
+Hmm.
