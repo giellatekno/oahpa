@@ -73,3 +73,47 @@ Tester i web-grensesnitt:
 
 
 Hmm.
+
+
+!!! Forandringar til kode
+
+Første feilen med 'ValueError' feil kom frå det at det var ingen spursmål i databasen som hadde N-ILL, berre N-ACC. Fordi det var ikkje nok å bytte default valuen N-ILL til N-ACC, eg inserta noko inn i qaforms.py l. 571
+
+	qtype = 'N-ACC'
+
+So fekk eg andre feilbeskjeder: ein var om feedbacks, og så eg fiksa noko som kan vera eit problem i vanleg Morfa
+
+
+	Index: smadrill/forms.py
+	===================================================================
+	--- smadrill/forms.py	(revision 40061)
+	+++ smadrill/forms.py	(working copy)
+	@@ -536,9 +536,11 @@
+	 		for f in feedbacks:
+	 			msgs = f.messages.all()
+	 			for m in msgs:
+	-				text = m.feedbacktext_set.filter(language=language)[0].message
+	-				text = text.replace('WORDFORM', '"%s"' % wordform)
+	-				message_list.append(text)
+	+				messages = m.feedbacktext_set.filter(language=language)
+	+				if messages.count() > 0:
+	+					text = messages[0].message
+	+					text = text.replace('WORDFORM', '"%s"' % wordform)
+	+					message_list.append(text)
+
+Då måtte forandra eit par andre ting som var spesifisk til Morfa og (trur eg) greidde seg med andre forandringar som eg måtte gjera for å lage dei nye featurane til tcomm=yes/stat=pref og spell relaxing 
+
+Og då fann at ein funskjon var borte:
+ 
+@@ -972,6 +975,12 @@
+ 
+ 	select_words = select_words
+ 	qtype_verbs = set(['PRS', 'PRT', 'V-COND','V-IMPRT'])
++
++	def generate_fields(self,answer_size, maxlength):
++		self.fields['answer'] = forms.CharField(max_length = maxlength, \
++												widget=forms.TextInput(\
++			attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event,document.gameform);',}))		
++
+
+No ser det ut som det går.
