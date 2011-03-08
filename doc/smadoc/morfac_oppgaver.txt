@@ -11,6 +11,9 @@ PEOPLE ..... (FOOD_GROCERY+nominativ pl) åestedh+kongr.
 * Man gellieh FAMILY byøpmedidh+kongr?
 FAMILY ..... (FOOD_DISH+nominativ pl) byøpmedidh+kongr.
 
+* Gieh diekie iehkedasse båetedh+kongr prs?
+Iehkedasse ..... (PEOPLE+nominativ pl) båetedh+kongr prs.
+
 
 !!AKKUSATIVØVINGER:
 
@@ -23,11 +26,14 @@ FAMILY ..... (FOOD_DISH akkusativ) byøpmedidh+kongr.
 * Maam FAMILY bovresne åestedh+kongr?
 FAMILY ..... (FOOD_GROCERY akkusativ) åestedh+kongr.
 
+* Maam PEOPLE vuejedh+kongr?
+PEOPLE ..... (VEHICLE+akkusativ) vuejedh+kongr.
+
 * Maam PEOPLE sïjhtedh+kongr?
 FAMILY sïjhtedh+kongr ..... (FOOD_DISH).
 
 * Maam NAME govledh+kongr?
-NAME ..... VEHICLE akkusativ govledh+kongr.
+NAME ..... (VEHICLE+akkusativ) govledh+kongr.
 
 
 !!GENITIVØVINGER:
@@ -87,6 +93,7 @@ NAME+genitiv prievie ..... (PLACE_NAME+elativ) båetedh+kongr.
 Daate VEHICLE ..... (PLACE_NAME+elativ) juhtedh+kongr.
 
 
+
 !!KOMITATIVØVINGER:
 
 * Mejnie PRONOMEN PLACE_COUNTRY+illativ fealadidh+kongr?
@@ -104,6 +111,9 @@ PEOPLE ..... (VEHICLE+komitativ) vuelkedh+kongr.
 * Mejnie NAME barkeminie?
 NAME ..... (PROFESSION+komitativ) barkeminie.
 
+* Giejnie PRONOMEN fealadidh+kongr?
+PRONOMEN ..... (PEOPLE+komitativ) fealadidh+kongr.
+
 
 
 
@@ -117,21 +127,37 @@ NAME ..... (PROFESSION+komitativ) barkeminie.
 * Maam PEOPLE daen biejjien darjodh+kongr?
 Daen biejjien PEOPLE ..... (ACTIVITY-verb prs).
 
+* Maam PRONOMEN 
+
 !! PRETERITUMSØVINGER
 
 * Maam PEOPLE jåktan darjodh+pret+kongr?
 Jåktan PEOPLE ..... (ACTIVITY-verb prt).
 
+!! PERFEKTUM
+
+* Maam daen biejjien darjodh+kongr?
+Daen biejjien NAME ..... (ACTIVITY-verb 
+
 !! IMPERATIVØVINGER
+
 
 !! NEKTINGØVINGER
 
+* PRONOMEN VEHICLE+akkusativ govledh+kongr prs?
+..... (NEKTING+kongr prs) govledh+kongr.
+
+* PRONOMEN VEHICLE+akkusativ govledh+kongr prt?
+..... (NEKTING+kongr prt) govledh+kongr.
+
+* PRONOMEN provhkedh+kongr+prs VEHICLE+akkusativ vuejedh?
+..... (NEKTING+kongr+prs) vuejedh+kongr.
 
 
-!!! PRONOMEN
+!!!PRONOMEN 
 
 
-!! Genitiv
+!! GENITIVØVINGER
 
 * Gien lea VEHICLE?
 ..... (PRONOMEN+genitiv) lea+kongr VEHICLE.
@@ -144,4 +170,31 @@ Jåktan PEOPLE ..... (ACTIVITY-verb prt).
 
 * Gien lea BUILDING?
 ..... (PRONOMEN+genitiv) lea+kongr BUILDING.
+
+!! ILLATIV
+
+* Giese TEXT+akkusativ tjaeledh+perf?
+..... (PRONOMEN+illativ) tjaeledh+perf.
+
+* Giese CLOTHING+akkusativ åestedh+perf?
+..... (PRONOMEN+illativ) åestedh+perf.
+
+!! ELATIV
+
+* Giestie VEHICLE+akkisativ åestedh+perf?
+..... (PRONOMEN+elativ) åestedh+perf.
+
+* Giestie CLOTHING+akkusativ åadtjodh+perf?
+..... (PRONOMEN+elativ) åadtjodh+perf. 
+
+!! KOMITATIVØVINGER
+
+* Guktie PRONOMEN+komitativ daen biejjien?
+..... (PRONOMEN+komitativ) hijven.
+
+* Guktie PRONOMEN+komitativ daen biejjien?
+..... (PRONOMEN+komitativ) nåekie.
+
+* Giejnie PEOPLE fealadidh+kongr?
+PEOPLE ..... (PRONOMEN+komitativ) fealadidh+kongr.
 
