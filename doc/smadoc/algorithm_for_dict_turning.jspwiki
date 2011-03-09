@@ -9,6 +9,39 @@
 # remove multiple stat="pref" tags manually (Comment: This can't be the case!)
 
 
+!!!Issues
+# what about attribute oa?
+# what about lacking this attribute?
+{{{
+   <e>
+      <lg>
+         <l pos="a">aales</l>
+      </lg>
+      <apps>
+         <app name="oahpa">
+            <sources>
+               <book name="åa5" />
+            </sources>
+         </app>
+      </apps>
+      <mg>
+         <tg>
+            <semantics>
+               <sem class="NATURE_A" />
+               <sem class="HERDING" />
+            </semantics>
+            <t dict="yes" oa="yes" pos="a" stat="pref" tcomm="no" xml:lang="nob">rovdyrfritt</t>
+            <tf dict="no" oa="yes" pos="phrase_a" tcomm="no" xml:lang="nob">fredelig for rovdyr</tf>
+            <tf dict="no" oa="yes" pos="phrase_a" tcomm="no" xml:lang="nob">fred for rovdyr</tf>
+            <tf dict="no">fritt for rovdyr</tf>
+         </tg>
+         <tg xml:lang="swe">
+            <t dict="yes" oa="yes" pos="a" tcomm="no" xml:lang="swe"></t>
+         </tg>
+      </mg>
+   </e>
+}}}
+
 !!!Principle for dictionary conversion.
 
 # Turn smanob to nobsma
