@@ -2,11 +2,11 @@
 
 !!!Algorithm for turning Oahpa entries
 
-# revert all <l> - <t(f)> pairs. 
+# revert all <l> - <t(f)> pairs, for which the tg HAS a sematics element. 
 # unify for identical instances of former <t(f)>, now <l>
-# remove all <l> (and <e>) for <l> with no stat="pref" tag
+# remove all <l> (i.e., <e>) for <l> with no stat="pref" tag
 # keep the rest of the Norwegian lemmas
-# remove multiple stat="pref" tags manually
+# remove multiple stat="pref" tags manually (Comment: This can't be the case!)
 
 
 !!!Principle for dictionary conversion.
