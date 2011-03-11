@@ -45,7 +45,7 @@ Dohte ..... (NAME genitiv) ANIMAL_PET+kongr.
 Daate ..... NAME genitiv VEHICLE+kongr.
 
 
-!! ILLATIVØVINGER:
+!!ILLATIVØVINGER:
 
 * Gåabph PROFESSION MOVEMENT-verb+kongr? 
 PROFESSION ..... (PLACE illativ) MOVEMENT-verb+kongr.
@@ -106,10 +106,7 @@ PRONOMEN ..... (NAME+komitativ) soptsestidh+kongr.
 FAMILY ..... (VEHICLE+komitativ) båetedh+kongr.
 
 * Guktie PEOPLE dahkoe vuelkedh+kongr?
-PEOPLE ..... (VEHICLE+komitativ) vuelkedh+kongr.
-
-* Mejnie NAME barkeminie?
-NAME ..... (PROFESSION+komitativ) barkeminie.
+Dïhte ..... (VEHICLE+komitativ) vuelkedh+kongr.
 
 * Gïejnie PRONOMEN fealadidh+kongr?
 PRONOMEN ..... (PEOPLE+komitativ) fealadidh+kongr.
@@ -118,24 +115,31 @@ PRONOMEN ..... (PEOPLE+komitativ) fealadidh+kongr.
 PRONOMEN ..... (VEHICLE+komitativ) båetedh+kongr prs.
 
 
-
-
 !!ESSIVØVINGER:
 
+* Mejnie NAME barkeminie?
+Dïhte ..... (PROFESSION+essiv) barkeminie.
 
-!!! VERB
 
-!! PRESENSØVINGER
+!!!VERB
+
+!!PRESENSØVINGER
 
 * Maam PEOPLE daan biejjien darjodh+kongr?
-Daen biejjien PEOPLE ..... (ACTIVITY-verb prs).
+Daen biejjien dïhte ..... (ACTIVITY-verb prs).
 
 * Maam PRONOMEN daan biejjien skuvlesne darjodh+kongr?
 Daan biejjien PRONOMEN .... (SCHOOL_V prs).
 
+* Gåabph PRONOMEN MOVEMENT_V+kongr prs?
+PRONOMEN BUILDING+illativ ..... (MOVEMENT_V+kongr prs).
+
+* Gubpede PRONOMEN MOVEMENT_V+kongr prs?
+PRONOMEN PLACE_NAME+elativ ..... (MOVEMENT_V+kongr prs)
 
 
-!! PRETERITUMSØVINGER
+
+!!PRETERITUMSØVINGER
 
 * Maam PEOPLE jååktan darjodh+pret+kongr?
 Jååktan PEOPLE ..... (ACTIVITY-verb prt).
@@ -147,21 +151,21 @@ Jååktan PRONOMEN .... (ACTIVITY-verb prt).
 övtebe våhkoen PRONOMEN ..... (ACTIVITY-verb.)
 
 * Mejnie NAME gïehtelidh+pret+kongr?
-NAME .... (ACTIVITY-verb prt).
+Dïhte .... (ACTIVITY-verb prt).
 
 * Mejnie PRONOMEN gïehtelidh+pret+kongr?
 PRONOMEN .... (ACTIVITY-verb prt).
 
 
-!! PERFEKTUM
+!!PERFEKTUM
 
-* Maam daan biejjien darjodh+kongr?
-Daan biejjien NAME ..... (ACTIVITY-verb.)
+* Maam daan biejjien darjodh+kongr perf?
+Daan biejjien NAME ..... (ACTIVITY-verb perf).
 
-!! IMPERATIVØVINGER
+!!IMPERATIVØVINGER
 
 
-!! NEKTINGØVINGER
+!!NEKTINGØVINGER
 
 * PRONOMEN VEHICLE+akkusativ govledh+kongr prs?
 ..... (NEKTING+kongr prs) govledh+kongr.
@@ -176,7 +180,7 @@ Daan biejjien NAME ..... (ACTIVITY-verb.)
 !!!PRONOMEN 
 
 
-!! GENITIVØVINGER
+!!GENITIVØVINGER
 
 * Gïen lea VEHICLE?
 ..... (PRONOMEN+genitiv) lea+kongr VEHICLE.
@@ -190,7 +194,10 @@ Daan biejjien NAME ..... (ACTIVITY-verb.)
 * Gïen lea BUILDING?
 ..... (PRONOMEN+genitiv) lea+kongr BUILDING.
 
-!! ILLATIV
+* Gïen daate?
+Doete ..... (PRONOMEN+genitiv).
+
+!!ILLATIV
 
 * Gïese TEXT+akkusativ tjaeledh+perf?
 ..... (PRONOMEN+illativ) tjaeledh+perf.
@@ -202,7 +209,7 @@ Daan biejjien NAME ..... (ACTIVITY-verb.)
 PRONOMEN THING+akkusativ .... (NAME+illativ) vedtedh+kongr?
 
 
-!! ELATIV
+!!ELATIV
 
 * Giestie VEHICLE+akkusativ åestedh+perf?
 ..... (PRONOMEN+elativ) åestedh+perf.
@@ -210,7 +217,7 @@ PRONOMEN THING+akkusativ .... (NAME+illativ) vedtedh+kongr?
 * Giestie CLOTHING+akkusativ åadtjodh+perf?
 ..... (PRONOMEN+elativ) åadtjodh+perf. 
 
-!! KOMITATIVØVINGER
+!!KOMITATIVØVINGER
 
 * Guktie PRONOMEN+komitativ daan biejjien?
 ..... (PRONOMEN+komitativ) hijven.
@@ -225,8 +232,15 @@ PEOPLE ..... (PRONOMEN+komitativ) fealadidh+kongr.
 
 !!HJELPEVERBØVELSER
 * Maam PRONOMEN maehtedh+kongr?
-PRONOMEN maehtedh+kongr .....(activity-verb prs)
+PRONOMEN maehtedh+kongr .....(ACTIVITY-verb inf)
 
 * Maam PRONOMEN lyjhkedh+kongr darjodh?
-PRONOMEN lyjhkedh+kongr ..... (activity-verb prs).
+PRONOMEN lyjhkedh+kongr ..... (ACTIVITY-verb inf).
+
+* Maam NAME maehtedh+kongr?
+Dïhte maehtedh+kongr .....(ACTIVITY-verb inf).
+
+* Maam PRONOMEN AUX_V+kongr prs?
+PRONOMEN ..... (AUX_V+kongr prs) ACTIVITY-verb inf?
+
 
