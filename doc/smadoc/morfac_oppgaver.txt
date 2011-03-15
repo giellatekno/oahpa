@@ -8,11 +8,14 @@ Morfa-c OPPGAVER
 ENDRE* Man gellie PEOPLE åestedh+kongr?
 PEOPLE NUMBER ..... (FOOD_GROCERY+nominativ pl) åestedh+kongr.
 
-ENDRE * Man gellie FAMILY byöpmedidh+kongr?
+* Man gellie FAMILY byöpmedidh+kongr?
 FAMILY NUMBER ..... (FOOD_DISH+nominativ pl) byöpmedidh+kongr.
 
 * Gïeh diekie iehkedasse båetedh+kongr prs?
 Iehkedasse ..... (PEOPLE+nominativ pl) båetedh+kongr prs.
+
+* Gïeh edtjieh daelie laavlodh?
+Daelie .... (PEOPLE) edtjieh laavlodh.
 
 
 !!AKKUSATIVØVINGER:
@@ -28,6 +31,9 @@ FAMILY ..... (FOOD_GROCERY akkusativ) åestedh+kongr.
 
 * Maam PEOPLE vuejedh+kongr?
 PEOPLE ..... (VEHICLE+akkusativ) vuejedh+kongr.
+
+* Maam PRONOMEN vuejnedh+kongr?
+PRONOMEN .... (NAME+akkusativ) vuejnedh+kongr.
 
 * Maam PEOPLE sïjhtedh+kongr?
 FAMILY sïjhtedh+kongr ..... (FOOD_DISH).
@@ -118,6 +124,9 @@ PRONOMEN ..... (NAME+komitativ) soptsestidh+kongr.
 * Mejnie FAMILY daan biejjien båetedh+kongr?
 FAMILY ..... (VEHICLE+komitativ) båetedh+kongr.
 
+* Mejnie NAME stååkedidh+kongr?
+NAME .... (TOY+komitativ) stååkedidh+kongr.
+
 * Guktie PEOPLE dahkoe vuelkedh+kongr?
 Dïhte ..... (VEHICLE+komitativ) vuelkedh+kongr.
 
@@ -132,6 +141,9 @@ PRONOMEN ..... (VEHICLE+komitativ) båetedh+kongr prs.
 
 * Mejnie NAME barkeminie?
 Dïhte ..... (PROFESSION+essiv) barkeminie.
+
+* Mejnie FAMILY PLACE+inessiv barkeminie?
+FAMILY .... (PROFFESSION+essiv) barkeminie.
 
 
 !!!VERB
@@ -193,7 +205,17 @@ PRONOMEN lea+kongr .... (SCHOOL_V perf).
 ..... (NEKTING+kongr+prs) vuejedh+kongr.
 
 
+
 !!!PRONOMEN 
+
+!!AKKUSATIVØVINGER
+
+* Gïem NAME vuejnedh+kongr prs?
+NAME .... (PRONOMEN) vuejnedh+kongr prs.
+
+* Gïem NAME govledh+kongr prs?
+NAME .... (PRONOMEN) govledh+kongr prs.
+
 
 
 !!GENITIVØVINGER
@@ -212,6 +234,8 @@ PRONOMEN lea+kongr .... (SCHOOL_V perf).
 
 * Gïen daate?
 Doete ..... (PRONOMEN+genitiv).
+
+
 
 !!ILLATIV
 
@@ -261,3 +285,11 @@ Dïhte maehtedh+kongr .....(ACTIVITY-verb inf).
 PRONOMEN ..... (AUX_V+kongr prs) ACTIVITY-verb inf?
 
 
+
+Usikker på om vi skal ta med:
+!!GENITIV
+* Gosse NAME KITCHEN+akkusativ bïejedh+kongr prs?
+NAME KITCHEN+akkusativ .... CONTAINER+genitiv sïjse bïejedh+kongr prs.
+
+* Man bïjre PEOPLE soptsestidh+kongr prs?
+PEOPLE .... (PRONOMEN+genitiv) bïjre soptsestidh+kongr prs.
