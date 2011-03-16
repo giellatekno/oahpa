@@ -14,11 +14,11 @@ doc$
 
 echo "!!!Tabell over adjektiv" > smadoc/adjdicttabell.jspwiki
 echo "" >> smadoc/adjdicttabell.jspwiki
-echo " ||  lemma  ||  Attr  ||  Pred  ||  Comp  ||  Superl " >> smadoc/adjdicttabell.jspwiki
+echo " ||  lemma  ||  Attr  ||  Pred  ||  Sg Nom  ||  Comp  ||  Comp  ||  Superl ||  Superl " >> smadoc/adjdicttabell.jspwiki
 
 echo "!!!Reversert tabell over adjektiv" > smadoc/adjdicttabellrev.jspwiki
 echo "" >> smadoc/adjdicttabellrev.jspwiki
-echo " ||  lemma  ||  Attr  ||  Pred  ||  Comp  ||  Superl " >> smadoc/adjdicttabellrev.jspwiki
+echo " ||  lemma  ||  Attr  ||  Pred  ||  Sg Nom  ||  Comp  ||  Comp  ||  Superl ||  Superl " >> smadoc/adjdicttabellrev.jspwiki
 
 # Making the 4 columns
 cat t1|sed 's/$/+A+Attr/;'| lookup $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tattr
