@@ -12,11 +12,11 @@ cat ../../words/dicts/smanob/src/a_smanob.xml|grep '<l '|tr '<' '>'|cut -d">" -f
 
 # Printing headers:
 
-echo "!!!Tabell over adjektiv" > smadoc/adjdicttabell.jspwiki
+echo "!!!Tabell over adjektiv - OBS! arbeidsliste for debugging" > smadoc/adjdicttabell.jspwiki
 echo "" >> smadoc/adjdicttabell.jspwiki
 echo " ||  lemma  ||  Attr  ||  Pred  || Sg Nom || Comp Pred || Comp Sg Nom || Superl Pred || Superl Sg Nom " >> smadoc/adjdicttabell.jspwiki
 
-echo "!!!Reversert tabell over adjektiv" > smadoc/adjdicttabellrev.jspwiki
+echo "!!!Reversert tabell over adjektiv - OBS! arbeidsliste for debugging" > smadoc/adjdicttabellrev.jspwiki
 echo "" >> smadoc/adjdicttabellrev.jspwiki
 echo " ||  lemma  ||  Attr  ||  Pred  || Sg Nom || Comp Pred || Comp Sg Nom || Superl Pred || Superl Sg Nom " >> smadoc/adjdicttabellrev.jspwiki
 
