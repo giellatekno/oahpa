@@ -47,7 +47,7 @@ Manne ..... (BUILDING-pl+akkusativ) vuejnedh+kongr.
 
 !!GENITIVØVINGER:
 
-* Gïen ANIMAL_PET dohte?
+* Gïen ANIMAL_A ANIMAL_PET dohte?
 Dohte ..... (NAME genitiv) ANIMAL_PET+kongr.
 
 * Giej ANIMAL_PET-pl daate?
@@ -59,7 +59,7 @@ Daate ..... (NAME genitiv) VEHICLE+kongr.
 * Gïej VEHICLE-pl dohte?
 Dohte .....(PEOPLE-pl+genitiv) VEHICLE+kongr.
 
-* Gïen CLOTHING daate?
+* Gïen CLOTHES_A CLOTHING daate?
 Doete .... (NAME+genitiv) CLOTHING.
 
 * Giej CLOTHING-pl doete?
@@ -114,6 +114,9 @@ Mov ANIMAL_PET lea ..... (BUILDING+inessiv).
 * Gusnie NAME+genitiv THING?
 NAME+genitiv lea (CONTAINER+inessiv).
 
+* Gusnie dah 
+
+
 !!ELATIVØVINGER:
 
 * Gubpede PEOPLE båetedh+kongr?
@@ -135,6 +138,9 @@ PRONOMEN ..... (VEHICLE+komitativ) fealadidh+kongr.
 
 * Gïejnie PRONOMEN daan iehkeden soptsestidh+kongr?
 PRONOMEN ..... (NAME+komitativ) soptsestidh+kongr.
+
+* Gïejnie PRONOMEN saemiestidh+kongr?
+PRONOMEN ..... (FAMILY+komitativ) saemiestidh+kongr.
 
 * Mejnie FAMILY daan biejjien båetedh+kongr?
 FAMILY ..... (VEHICLE+komitativ) båetedh+kongr.
@@ -166,19 +172,39 @@ FAMILY .... (PROFFESSION+essiv) barkeminie.
 !!PRESENSØVINGER
 
 * Maam PEOPLE daan biejjien darjodh+kongr?
-Daen biejjien dïhte ..... (ACTIVITY-verb prs).
+Daen biejjien dïhte ..... (ACTIVITY-verb+kongr prs).
 
 * Maam PRONOMEN daan biejjien darjodh+kongr?
-Daen biejjien PRONOMEN ..... (ACTIVITY-verb prs).
+Daen biejjien PRONOMEN ..... (ACTIVITY-verb+kongr prs).
 
 * Maam PRONOMEN daan biejjien skuvlesne darjodh+kongr?
-Daan biejjien PRONOMEN .... (SCHOOL_V prs).
+Daan biejjien PRONOMEN .... (SCHOOL_V+kongr prs).
+
+* Maam PRONOMEN eejehtimmesne darjodh+kongr)?
+PRONOMEN eejehtimmesne ..... (LEISURETIME_HOME_V+kongr prs).
 
 * Gåabph PRONOMEN MOVEMENT_V+kongr prs?
 PRONOMEN BUILDING+illativ ..... (MOVEMENT_V+kongr prs).
 
+* Gåabph PRONOMEN MOVEMENT_V+kongr prs?
+PRONOMEN ROOM+illativ ..... (MOVEMENT_V+kongr prs).
+
 * Gubpede PEOPLE MOVEMENT_V+kongr prs?
-PEOPLE PLACE_NAME+elativ ..... (MOVEMENT_V+kongr prs)
+PEOPLE PLACE_NAME+elativ ..... (MOVEMENT_V+kongr prs).
+
+* Gubpede PRONOMEN MOVEMENT_V+kongr prs?
+PRONOMEN ROOM+elativ ..... (MOVEMENT_V+kongr prs).
+
+* Maam PRONOMEN åestedh+kong?
+PRONOMEN FOOD_GROCERY+akkusativ ..... (åestedh+kongr).
+
+* Maam PRONOMEN jovkedh+kongr?
+PRONOMEN DRINK+akkusativ ..... (jovkedh+kongr).
+
+* Maam PRONOMEN bigkedh+kongr?
+PRONOMEN BUILDING_ROOM_A BUILDING+akkusativ ..... (bigkedh+kong).
+
+
 
 
 
@@ -305,6 +331,17 @@ Dïhte maehtedh+kongr .....(ACTIVITY-verb inf).
 * Maam PRONOMEN AUX_V+kongr prs?
 PRONOMEN ..... (AUX_V+kongr prs) ACTIVITY-verb inf?
 
+* Maam PRONOMEN AUX_V+kongr prs byøpmedidh?
+PRONOMEN ..... (AUX_V+kongr prs) FOOD_DISH+akkusativ byøpmedidh.
+
+* Maam PRONOMEN AUX_V+kongr prs jovkedh?
+PRONOMEN ..... (AUX_V+kongr prs) DRINK+akkusativ jovkedh.
+
+* Maam PRONOMEN AUX_V+kongr pret byøpmedidh?
+PRONOMEN ..... (AUX_V+kongr pret) FOOD_DISH+akkusativ byøpmedidh.
+
+* Maam PRONOMEN AUX_V+kongr pret jovkedh?
+PRONOMEN ..... (AUX_V+kongr pret) DRINK+akkusativ jovkedh.
 
 
 Usikker på om vi skal ta med:
