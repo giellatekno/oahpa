@@ -5,8 +5,8 @@ Morfa-c OPPGAVER
 
 !!NOMINATIV FLERTALLØVINGER:
 
-ENDRE* Man gellie PEOPLE åestedh+kongr?
-PEOPLE NUMBER ..... (FOOD_GROCERY+nominativ pl) åestedh+kongr.
+Man gellie PRONOMEN åestedh+kongr prs?
+PRONOMEN NUMBER ..... (FOOD_GROCERY+nominativ pl) åestedh+kongr prs.
 
 * Man gellie FAMILY byöpmedidh+kongr?
 FAMILY NUMBER ..... (FOOD_DISH+nominativ pl) byöpmedidh+kongr.
@@ -15,7 +15,10 @@ FAMILY NUMBER ..... (FOOD_DISH+nominativ pl) byöpmedidh+kongr.
 Iehkedasse ..... (PEOPLE+nominativ pl) båetedh+kongr prs.
 
 * Gïeh edtjieh daelie laavlodh?
-Daelie .... (PEOPLE) edtjieh laavlodh.
+Daelie .... (PEOPLE+nominativ pl) edtjieh laavlodh.
+
+* Gieh sïjhtieh jirreden ACTIVITY_V+inf?
+..... (PEOPLE+nominativ pl) sïjhtieh ACTIVITY_V+inf.
 
 
 !!AKKUSATIVØVINGER:
@@ -41,8 +44,20 @@ FAMILY sïjhtedh+kongr ..... (FOOD_DISH).
 * Maam NAME govledh+kongr?
 NAME ..... (VEHICLE+akkusativ) govledh+kongr.
 
-* Datne BUILDING-pl+akkusativ vuejnedh+kongr?
-Manne ..... (BUILDING-pl+akkusativ) vuejnedh+kongr.
+* Datne dam BUILDING_ROOM_A BUILDING-pl+akkusativ vuejnedh+kongr?
+Manne dam BUILDING_ROOM_A ..... (BUILDING-pl+akkusativ) vuejnedh+kongr.
+
+* PRONOMEN dah PEOPLE+nominativ pl daejredh+kongr prs?
+PRONOMEN dejtie ..... (PEOPLE+akkusativ pl) daejredh+kongr prs.
+
+* PRONOMEN dah ACTOR+nominativ pl aerebi gaavnedamme?
+PRONOMEN dejtie ..... (ACTOR+akkusativ pl) gaavnedamme.
+
+* PRONOMEN dah PEOPLE+nominativ pl råakeme?
+PRONOMEN ..... (PEOPLE+akkusativ pl) råakeme.
+
+* PRONOMEN dah ANIMAL_WILD+nominativ pl vuajneme?
+PRONOMEN dejtie ..... (ANIMAL_WILD+akkusativ pl) vuajneme.
 
 
 !!GENITIVØVINGER:
@@ -50,26 +65,29 @@ Manne ..... (BUILDING-pl+akkusativ) vuejnedh+kongr.
 * Gïen ANIMAL_A ANIMAL_PET dohte?
 Dohte ..... (NAME genitiv) ANIMAL_PET+kongr.
 
-* Giej ANIMAL_PET-pl daate?
-Daate ..... (PEOPLE-pl+genitiv) ANIMAL_PET-pl+kongr.
-
 * Gïen VEHICLE daate?
 Daate ..... (NAME genitiv) VEHICLE+kongr.
 
-* Gïej VEHICLE-pl dohte?
-Dohte .....(PEOPLE-pl+genitiv) VEHICLE+kongr.
-
 * Gïen CLOTHES_A CLOTHING daate?
 Doete .... (NAME+genitiv) CLOTHING.
-
-* Giej CLOTHING-pl doete?
-Doete ..... (ACTOR-pl+genitiv) CLOTHING-pl.
 
 * Gïen bïjre PRONOMEN soptsestidh+kong?
 PRONOMEN .... (NAME+genitiv) bïjre soptsestidh+kongr.
 
 * Man bïjre NAME soptsestidh+kong?
 NAME .... (ABSTRACT+gentitiv) bïjre soptsestidh+kongr.
+
+* Giej CLOTHING pl doete?
+Doete ..... (ACTOR+genitiv pl) CLOTHING pl.
+
+* Giej ANIMAL_PET pl daate?
+Daate ..... (PEOPLE+genitiv pl) ANIMAL_PET pl.
+
+* Gïej VEHICLE pl dohte?
+Dohte .....(PEOPLE+genitiv pl) VEHICLE pl.
+
+* Giej THING pl dohte?
+Dohte ..... (FAMILY+genitiv pl) THING pl.
 
 
 
@@ -84,13 +102,11 @@ PRONOMEN .... (BUILDING+illativ) MOVEMENT_V+kongr prs.
 * Gåabph daate VEHICLE juhtedh+kongr?
 Daate VEHICLE ..... (PLACE_NAME+illativ) juhtedh+kongr.
 
-
 * Gïese PRON TOY-akk vedtedh+kongr? 
 PRON TOY-akk ..... (FAMILY illativ) vedtedh+kongr.
 
 * Gïese daate FOOD_DISH?
 Daate FOOD_DISH ..... (FAMILY+illativ).
-
 
 
 
@@ -128,7 +144,8 @@ NAME+genitiv prievie ..... (PLACE_NAME+elativ) båetedh+kongr.
 * Gubpede daate VEHICLE juhtedh+kongr?
 Daate VEHICLE ..... (PLACE_NAME+elativ) juhtedh+kongr.
 
-
+* Gubpede FAMILY MOVEMENT_V+kongr pret?
+FAMILY ..... (PLACE+elativ) MOVEMENT_V+kongr pret.
 
 
 !!KOMITATIVØVINGER:
@@ -184,7 +201,7 @@ Daan biejjien PRONOMEN .... (SCHOOL_V+kongr prs).
 PRONOMEN eejehtimmesne ..... (LEISURETIME_HOME_V+kongr prs).
 
 * Gåabph PRONOMEN MOVEMENT_V+kongr prs?
-PRONOMEN BUILDING+illativ ..... (MOVEMENT_V+kongr prs).
+PRONOMEN BUILDING_ROOM_ABUILDING+illativ ..... (MOVEMENT_V+kongr prs).
 
 * Gåabph PRONOMEN MOVEMENT_V+kongr prs?
 PRONOMEN ROOM+illativ ..... (MOVEMENT_V+kongr prs).
@@ -203,10 +220,6 @@ PRONOMEN DRINK+akkusativ ..... (jovkedh+kongr).
 
 * Maam PRONOMEN bigkedh+kongr?
 PRONOMEN BUILDING_ROOM_A BUILDING+akkusativ ..... (bigkedh+kong).
-
-
-
-
 
 
 !!PRETERITUMSØVINGER
@@ -235,6 +248,7 @@ Daan biejjien NAME ..... (ACTIVITY-verb perf).
 * Maam PRONOMEN skuvlesne dorjeme?
 PRONOMEN lea+kongr .... (SCHOOL_V perf).
 
+
 !!IMPERATIVØVINGER
 
 
@@ -243,14 +257,46 @@ PRONOMEN lea+kongr .... (SCHOOL_V perf).
 * PRONOMEN VEHICLE+akkusativ govledh+kongr prs?
 ..... (NEKTING+kongr prs) govledh+kongr.
 
-* PRONOMEN VEHICLE+akkusativ govledh+kongr prs?
-..... (NEKTING+kongr prt) govledh+kongr.
-
 * PRONOMEN provhkedh+kongr+prs VEHICLE+akkusativ vuejedh?
 ..... (NEKTING+kongr+prs) vuejedh+kongr.
 
 * PRONOMEN AUX_V+kongr prs ACTIVITY-verb?
 .... (NEKTING+kongr+prs) ACTIVITY-verb.
+
+
+* PRONOMEN VEHICLE+akkusativ govledh+kongr pret?
+..... (NEKTING+kongr prt) govledh+kongr.
+
+
+!!HJELPEVERBØVELSER
+
+* Maam PRONOMEN maehtedh+kongr?
+PRONOMEN maehtedh+kongr .....(ACTIVITY-verb inf)
+
+* Maam PRONOMEN lyjhkedh+kongr darjodh?
+PRONOMEN lyjhkedh+kongr ..... (ACTIVITY-verb inf).
+
+* Maam NAME maehtedh+kongr?
+Dïhte maehtedh+kongr .....(ACTIVITY-verb inf).
+
+* Maam PRONOMEN AUX_V+kongr prs?
+PRONOMEN ..... (AUX_V+kongr prs) ACTIVITY-verb inf?
+
+* Maam PRONOMEN AUX_V+kongr prs byøpmedidh?
+PRONOMEN ..... (AUX_V+kongr prs) FOOD_DISH+akkusativ byøpmedidh.
+
+* Maam PRONOMEN AUX_V+kongr prs jovkedh?
+PRONOMEN ..... (AUX_V+kongr prs) DRINK+akkusativ jovkedh.
+
+* Maam PRONOMEN AUX_V+kongr pret byøpmedidh?
+PRONOMEN ..... (AUX_V+kongr pret) FOOD_DISH+akkusativ byøpmedidh.
+
+* Maam PRONOMEN AUX_V+kongr pret jovkedh?
+PRONOMEN ..... (AUX_V+kongr pret) DRINK+akkusativ jovkedh.
+
+* Maam PRONOMEN AUX_V+kongr pret?
+PRONOMEN ..... (AUX_V+kongr pret) ACTIVITY-verb inf?
+
 
 
 !!!PRONOMEN 
@@ -318,30 +364,6 @@ PEOPLE ..... (PRONOMEN+komitativ) fealadidh+kongr.
 
 
 
-!!HJELPEVERBØVELSER
-* Maam PRONOMEN maehtedh+kongr?
-PRONOMEN maehtedh+kongr .....(ACTIVITY-verb inf)
-
-* Maam PRONOMEN lyjhkedh+kongr darjodh?
-PRONOMEN lyjhkedh+kongr ..... (ACTIVITY-verb inf).
-
-* Maam NAME maehtedh+kongr?
-Dïhte maehtedh+kongr .....(ACTIVITY-verb inf).
-
-* Maam PRONOMEN AUX_V+kongr prs?
-PRONOMEN ..... (AUX_V+kongr prs) ACTIVITY-verb inf?
-
-* Maam PRONOMEN AUX_V+kongr prs byøpmedidh?
-PRONOMEN ..... (AUX_V+kongr prs) FOOD_DISH+akkusativ byøpmedidh.
-
-* Maam PRONOMEN AUX_V+kongr prs jovkedh?
-PRONOMEN ..... (AUX_V+kongr prs) DRINK+akkusativ jovkedh.
-
-* Maam PRONOMEN AUX_V+kongr pret byøpmedidh?
-PRONOMEN ..... (AUX_V+kongr pret) FOOD_DISH+akkusativ byøpmedidh.
-
-* Maam PRONOMEN AUX_V+kongr pret jovkedh?
-PRONOMEN ..... (AUX_V+kongr pret) DRINK+akkusativ jovkedh.
 
 
 Usikker på om vi skal ta med:
