@@ -38,6 +38,9 @@ PEOPLE ..... (VEHICLE+akkusativ) vuejedh+kongr.
 * Maam PRONOMEN vuejnedh+kongr?
 PRONOMEN .... (NAME+akkusativ) vuejnedh+kongr.
 
+* Maam ACTOR vuejnedh+kongs prs?
+ACTOR ..... (ANIMAL_DOM+akkusativ) vuejnedh+kongr prs.
+
 * Maam PEOPLE sïjhtedh+kongr?
 FAMILY sïjhtedh+kongr ..... (FOOD_DISH).
 
@@ -108,6 +111,8 @@ PRON TOY-akk ..... (FAMILY illativ) vedtedh+kongr.
 * Gïese daate FOOD_DISH?
 Daate FOOD_DISH ..... (FAMILY+illativ).
 
+* Gïese PRONOMEN THING+akkuasativ vïedtjedh+kongr prs?
+PRONOMEN THING+akkusativ .... (NAME+illativ) vïedtjedh+kongr prs?
 
 
 !!INESSIVØVINGER:
@@ -230,6 +235,9 @@ PRONOMEN CLOTHES_A CLOTHING+akkusativ ..... (FINANSE_V+kongr prs).
 * Maam PRONOMEN FINANSE_V+kongr prs?
 PRONOMEN FOOD_GROCERY+akkusativ ..... (FINANSE_V+kongr prs).
 
+* Maam PRONOMEN govledh+kongr prs?
+PRONOMEN ..... (govledh+kongr prs) dïhte dyjre ..... (ANIMAL_SOUND_V+kongr prs).
+
 
 
 !!PRETERITUMSØVINGER
@@ -248,9 +256,6 @@ PRONOMEN CLOTHES_A CLOTHING+akkusativ ..... (gåårvedidh+kongr+pret).
 
 * Maam PRONOMEN daen biejjien FINANSE_V+kongr pret?
 Daen biejjien PRONOMEN ROOM_OTHER+akkusativ ..... (FINANSE_V+kongr pret).
-
-* Maam PRONOMEN govledh+kongr prs?
-PRONOMEN govledh+kongr prs dïhte dyjre ..... (ANIMAL_SOUND_V+kongr prs).
 
 * Mejnie NAME gïehtelidh+pret+kongr?
 Dïhte .... (ACTIVITY-verb prt).
@@ -276,6 +281,24 @@ PRONOMEN lea+kongr .... (SCHOOL_V perf).
 
 !!IMPERATIVØVINGER
 
+* ..... (FINANSE_V+imperativ+kongr) CLOTHING+akkusativ!
+Jaa, PRONOMEN CLOTHING+akkusativ FINANSE_V+kongr prs.
+
+* ..... (COMMAND_V+imperativ+kongr) munnjien FOOD_GROCERY+akkusativ.
+PRONOMEN dutjien FOOD_GROCERY+akkusativ COMMAND_V+kongr prs.
+
+* ..... (COMMAND_V+imperativ+kongr) THING_akkusativ!
+PRONOMEN THING_akkusativ COMMAND_V+kongr prs.
+
+* Kanne AUX_V+kongr prs ACTIVITY_V+inf.
+..... (ACTIVITY_V+imperativ+kongr) dellie!
+
+* AUX_V+kongr prs FAMILY+komitativ PLACE_COUNTRY+ illativ TRAVELLING_V+inf.
+..... (TRAVELLING_V+imperativ+kongr) dellie!
+
+
+
+
 
 !!NEKTINGØVINGER
 
@@ -283,14 +306,25 @@ PRONOMEN lea+kongr .... (SCHOOL_V perf).
 ..... (NEKTING+kongr prs) govledh+kongr.
 
 * PRONOMEN provhkedh+kongr+prs VEHICLE+akkusativ vuejedh?
-..... (NEKTING+kongr+prs) vuejedh+kongr.
+..... (NEKTING+kongr prs) vuejedh+kongr.
 
-* PRONOMEN AUX_V+kongr prs ACTIVITY-verb?
-.... (NEKTING+kongr+prs) ACTIVITY-verb.
+* PRONOMEN lyjhkedh+kongr prs DRINK+akkusativ jovkedh?
+..... (NEKTING+kongr prs) lyjhedh+kongr DRINK+akkusativ jovkedh.
 
+* PRONOMEN AUX_V+kongr prs ACTIVITY_V+inf?
+.... (NEKTING+kongr+prs) ACTIVITY_V+kongr.
 
 * PRONOMEN VEHICLE+akkusativ govledh+kongr pret?
-..... (NEKTING+kongr prt) govledh+kongr.
+..... (NEKTING+kongr pret) govledh+kongr.
+
+* PRONOMEN jååktan ACTIVITY_V+kongr pret?
+..... (NEKTING+kongr pret) ACTIVITY_V+kongr.
+
+* PRONOMEN minngemes våhkoen PLACE_NAME+illativ TRAVELLING_V+kongr pret?
+..... (NEKTING+kongr pret) PLACE_NAME+illativ TRAVELLING_V+kongr.
+
+* PRONOMEN daen biejjien diekie TRAVELLING_V+kongr pret?
+..... (NEKTING+kongr pret) daen biejjien TRAVELLING_V+kongr. PRONOMEN TIME_DAY+genitiv TRAVELLING_V+kongr pret.
 
 
 !!HJELPEVERBØVELSER
@@ -334,6 +368,8 @@ NAME .... (PRONOMEN) vuejnedh+kongr prs.
 * Gïem NAME govledh+kongr prs?
 NAME .... (PRONOMEN) govledh+kongr prs.
 
+* Giem PEOPLE gaavnedidh+kongr prs?
+PEOPLE ..... (PRONOMEN) gaavnedidh+kong+prs.
 
 
 !!GENITIVØVINGER
@@ -357,14 +393,15 @@ Doete ..... (PRONOMEN+genitiv).
 
 !!ILLATIV
 
-* Gïese TEXT+akkusativ tjaeledh+perf?
-..... (PRONOMEN+illativ) tjaeledh+perf.
+* Gïese PEOPLE TEXT+akkusativ tjaeledh+perf?
+PEOPLE ..... (PRONOMEN+illativ) tjaeledh+perf.
 
-* Gïese CLOTHING+akkusativ åestedh+perf?
-..... (PRONOMEN+illativ) åestedh+perf.
+* Gïese NAME TEXT+akkusativ lohkedh+kongr prs?
+NAME ..... (PRONOMEN+illativ) lohkedh+kongr prs.
 
-* Gïese PRONOMEN THING+akkuasativ vedtedh+kongr?
-PRONOMEN THING+akkusativ .... (NAME+illativ) vedtedh+kongr?
+* Gïese FAMILY CLOTHING+akkusativ åestedh+perf?
+FAMILY ..... (PRONOMEN+illativ) CLOTHING+akkusativ åestedh+perf.
+
 
 
 
@@ -375,6 +412,7 @@ PRONOMEN THING+akkusativ .... (NAME+illativ) vedtedh+kongr?
 
 * Giestie CLOTHING+akkusativ åadtjodh+perf?
 ..... (PRONOMEN+elativ) åadtjodh+perf. 
+
 
 !!KOMITATIVØVINGER
 
