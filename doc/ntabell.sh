@@ -28,7 +28,7 @@ echo "" >> smadoc/gen/noundicttabellrev.jspwiki
 echo " ||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/noundicttabellrev.jspwiki
 
 echo "!!!Tabell over oahpa-substantiv - OBS! arbeidsliste for debugging" > smadoc/gen/nounoahpatabell.jspwiki
-echo "" >> smadoc/gen/oahpa-nounoahpatabell.jspwiki
+echo "" >> smadoc/gen/nounoahpatabell.jspwiki
 echo " ||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/nounoahpatabell.jspwiki
 echo "!!!Reversert tabell over oahpa-substantiv - OBS! arbeidsliste for debugging" > smadoc/gen/nounoahpatabellrev.jspwiki
 echo "" >> smadoc/gen/nounoahpatabellrev.jspwiki

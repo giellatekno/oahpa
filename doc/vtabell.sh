@@ -28,7 +28,7 @@ echo "" >> smadoc/gen/verbdicttabellrev.jspwiki
 echo " ||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verbdicttabellrev.jspwiki
 
 echo "!!!Tabell over oahpa-verb - OBS! arbeidsliste for debugging" > smadoc/gen/verboahpatabell.jspwiki
-echo "" >> smadoc/gen/oahpa-verboahpatabell.jspwiki
+echo "" >> smadoc/gen/verboahpatabell.jspwiki
 echo " ||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verboahpatabell.jspwiki
 echo "!!!Reversert tabell over oahpa-verb - OBS! arbeidsliste for debugging" > smadoc/gen/verboahpatabellrev.jspwiki
 echo "" >> smadoc/gen/verboahpatabellrev.jspwiki

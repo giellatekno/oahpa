@@ -28,7 +28,7 @@ echo "" >> smadoc/gen/adjdicttabellrev.jspwiki
 echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjdicttabellrev.jspwiki
 
 echo "!!!Tabell over oahpa-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjoahpatabell.jspwiki
-echo "" >> smadoc/gen/oahpa-adjoahpatabell.jspwiki
+echo "" >> smadoc/gen/adjoahpatabell.jspwiki
 echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjoahpatabell.jspwiki
 echo "!!!Reversert tabell over oahpa-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjoahpatabellrev.jspwiki
 echo "" >> smadoc/gen/adjoahpatabellrev.jspwiki
