@@ -11,7 +11,7 @@ PRONOMEN NUMBER ..... (FOOD_GROCERY+nominativ pl) åestedh+kongr prs.
 * Man gellie FAMILY byöpmedidh+kongr?
 FAMILY NUMBER ..... (FOOD_DISH+nominativ pl) byöpmedidh+kongr.
 
-* Gïeh diekie iehkiedasse båetedh+kongr prs?
+* Gïeh iehkiedasse diekie båetedh+kongr prs?
 Iehkedasse ..... (PEOPLE+nominativ pl) båetedh+kongr prs.
 
 * Gïeh edtjieh daelie laavlodh?
@@ -22,6 +22,9 @@ Daelie .... (PEOPLE+nominativ pl) edtjieh laavlodh.
 
 
 !!AKKUSATIVØVINGER:
+
+* Maam FAMILY/NAME/PRONOMEN jovkedh+kongr prs? 
+FAMILY/NAME/PRONOMEN ..... (DRINK akkusativ) jovkedh+kongr prs.
 
 * Maam HUMAN-adj FAMILY jovkedh+kongr prs? 
 FAMILY ..... (DRINK akkusativ) jovkedh+kongr prs.
@@ -41,7 +44,7 @@ PRONOMEN .... (NAME+akkusativ) vuejnedh+kongr prs.
 * Maam ACTOR vuejnedh+kongs prs?
 ACTOR ..... (ANIMAL_DOM+akkusativ) vuejnedh+kongr prs.
 
-* Maam PEOPLE sïjhtedh+kongr prs byøpmedidh?
+* Maam PEOPLE sïjhtedh+kongr prs byöpmedidh?
 FAMILY sïjhtedh+kongr ..... (FOOD_DISH).
 
 * Maam NAME govledh+kongr prs?
@@ -131,8 +134,21 @@ PRONOMEN dejtie ..... (ACTOR+akkusativ pl) gaavnedamme.
 * PRONOMEN dah PEOPLE+nominativ pl råakeme?
 PRONOMEN ..... (PEOPLE+akkusativ pl) råakeme.
 
+* Maam FAMILY/NAME/PRONOMEN vuejnedh+kongr?
+FAMILY/NAME/PRONOMEN ..... (ANIMAL_WILD+akkusativ) vuejnedh+kongr.
+
 * PRONOMEN dah ANIMAL_WILD+nominativ pl vuajneme?
 PRONOMEN dejtie ..... (ANIMAL_WILD+akkusativ pl) vuajneme.
+
+* Maam FAMILY/NAME/PRONOMEN vuejnedh+kongr?
+FAMILY/NAME/PRONOMEN ..... (PLANT+akkusativ) vuejnedh+kongr.
+
+* Maam FAMILY/NAME/PRONOMEN govledh+kongr?
+FAMILY/NAME/PRONOMEN ..... (ANIMAL_WILD+akkusativ) vuejnedh+kongr.
+
+* Maam FAMILY/NAME/PRONOMEN darjodh+kongr?
+FAMILY/NAME/PRONOMEN ..... (NATURE_V) darjodh+kongr.
+
 
 
 !!GENITIVØVINGER:
@@ -237,11 +253,29 @@ PROFESSION ..... (PLACE illativ) MOVEMENT-verb+kongr.
 * Gåabph PRONOMEN MOVEMENT_V+kongr prs?
 PRONOMEN .... (BUILDING+illativ) MOVEMENT_V+kongr prs.
 
+* Gåabph FAMILY/PRONOMEN/NAME vuelkedh+kongr?
+FAMILY/PRONOMEN/NAME ..... (PLACE_NAME+illativ) vuelkedh+kongr.
+
+* Gåabph FAMILY/PRONOMEN/NAME vaedtsedh+kongr?
+FAMILY/PRONOMEN/NAME ..... (NATURE_PLACE+illativ) vaedtsedh+kongr.
+
 * Gåabph daate VEHICLE juhtedh+kongr?
 Daate VEHICLE ..... (PLACE_NAME+illativ) juhtedh+kongr.
 
 * Gïese PRON TOY-akk vedtedh+kongr? 
 PRON TOY-akk ..... (FAMILY illativ) vedtedh+kongr.
+
+* Gïese FAMILY/NAME CLOTHING+akkusativ vedtedh+kongr? 
+FAMILY/NAME CLOTHING+akkusativ ..... (FAMILY/NAME+illativ) vedtedh+kongr.
+
+* Gosse FAMILY/NAME CLOTHING+akkusativ bïejedh+kongr? 
+FAMILY/NAME CLOTHING+akkusativ ..... (ROOM+illativ) bïejedh+kongr.
+
+* Gosse FAMILY/NAME CLOTHING+akkusativ bïejedh+kongr? 
+FAMILY/NAME CLOTHING+akkusativ ..... (FURNITURE+illativ) bïejedh+kongr.
+
+* Gosse PRONOMEN CLOTHING+akkusativ bïejedh+kongr? 
+PRONOMEN CLOTHING+akkusativ ..... (CONTAINER+illativ) bïejedh+kongr.
 
 * Gïese daate FOOD_DISH?
 Daate FOOD_DISH ..... (FAMILY+illativ).
@@ -267,17 +301,39 @@ Dïhte ..... (FAMILY+illativ+sg) ringkedh+kongr prs/prt.
 * Gïese FAMILY+nominativ+sg ringkedh+kongr prs/prt?
 Dïhte ..... (NAME+illativ) ringkedh+kongr prs/prt.
 
+Gïese PRONOMEN/NAME daelie ringkedh+kongr prs?
+Daelie ..... (PRONOMEN/NAME+illativ) ringkedh+kongr prs.
+
+
 
 !!INESSIVØVINGER:
+
+* Gusnie FAMILY/NAME/PRONOMEN årroeminie?
+FAMILY/NAME/PRONOMEN ..... (PLACE_NAME inessiv) årroeminie.
+
+* Gusnie FAMILY/NAME/PRONOMEN årrodh+kongr?
+FAMILY/NAME/PRONOMEN ..... (PLACE_NAME inessiv) årrodh+kongr.
 
 * Gusnie HUMAN-adj PROFESSION årroeminie? 
 PROFESSION  ..... (PLACE_NAME inessiv) årroeminie.
 
 * Gusnie PEOPLE daelie?
-PEOPLE ..... (PLACE_STAYING inessiv) daelie.
+Daelie PEOPLE ..... (PLACE_STAYING inessiv).
 
 Gusnie FAMILY?
 FAMILY lea+kongr ..... (BUILDING inessiv).
+
+Gusnie THING+nominativ?
+THING+nominativ lea+kongr ..... (CONTAINER+inessiv).
+
+Gusnie CLOTHING+nominativ?
+CLOTHING+nominativ lea+kongr ..... (CONTAINER+inessiv).
+
+Gusnie CLOTHING+nominativ?
+CLOTHING+nominativ lea+kongr ..... (ROOM+inessiv).
+
+Gusnie CLOTHES_A CLOTHING+nominativ?
+CLOTHES_A CLOTHING+nominativ lea+kongr ..... (FURNITURE+inessiv).
 
 * Gusnie dov THING?
 Mov THING lea ..... (ROOM+inessiv).
@@ -288,13 +344,30 @@ Mov ANIMAL_PET lea ..... (BUILDING+inessiv).
 * Gusnie NAME+genitiv THING?
 NAME+genitiv lea (CONTAINER+inessiv).
 
-* Gusnie dah 
+* Gubpene FAMILY/NAME/PRONOMEN?
+FAMILY/NAME/PRONOMEN ..... (NATURE_PLACE+inessiv).
+
+* Gusnie MYTH_HUMAN?
+MYTH_HUMAN lea+kongr ..... (NATURE_PLACE+inessiv).
+
 
 
 !!ELATIVØVINGER:
 
 * Gubpede PEOPLE båetedh+kongr?
 PEOPLE ..... (PLACE_NAME elativ) båetedh+kongr.
+
+* Gubpede FAMILY/NAME/PRONOMEN båetedh+kongr?
+FAMILY/NAME/PRONOMEN ..... (NATURE_PLACE+elativ) båetedh+kongr.
+
+* Gubpede FAMILY/NAME/PRONOMEN båateme?
+FAMILY/NAME/PRONOMEN ..... (NATURE_PLACE+elativ) båateme.
+
+* Gustie ANIMAL_PET+sg båetedh+kongr?
+Dïhte ..... (ROOM+elativ) båetedh+kongr.
+
+* Gustie NAME båetedh+kongr?
+Dïhte ..... (ROOM+elativ) båetedh+kongr.
 
 * Gubpede NAME+genitiv prievie båata?
 NAME+genitiv prievie ..... (PLACE_NAME+elativ) båetedh+kongr.
@@ -307,6 +380,12 @@ FAMILY ..... (PLACE+elativ) MOVEMENT_V+kongr pret.
 
 
 !!KOMITATIVØVINGER:
+
+* Mejnie FAMILY/NAME/PRONOMEN vuelkedh+kongr?
+FAMILY/NAME/PRONOMEN ..... (VEHICLE+komitativ) vuelkedh+kongr.
+
+* Giejnie FAMILY/NAME/PRONOMEN vuelkedh+kongr?
+FAMILY/NAME/PRONOMEN ..... (NAME+komitativ) vuelkedh+kongr.
 
 * Mejnie PRONOMEN PLACE_COUNTRY+illativ fealadidh+kongr?
 PRONOMEN ..... (VEHICLE+komitativ) fealadidh+kongr.
@@ -368,7 +447,7 @@ Daan biejjien PRONOMEN .... (SCHOOL_V+kongr prs).
 PRONOMEN eejehtimmesne ..... (LEISURETIME_HOME_V+kongr prs).
 
 * Gåabph PRONOMEN MOVEMENT_V+kongr prs?
-PRONOMEN BUILDING_ROOM_ABUILDING+illativ ..... (MOVEMENT_V+kongr prs).
+PRONOMEN BUILDING_ROOM_A BUILDING+illativ ..... (MOVEMENT_V+kongr prs).
 
 * Gåabph PRONOMEN MOVEMENT_V+kongr prs?
 PRONOMEN ROOM+illativ ..... (MOVEMENT_V+kongr prs).
@@ -382,20 +461,20 @@ PEOPLE PLACE_NAME+elativ ..... (MOVEMENT_V+kongr prs).
 * Gubpede PRONOMEN MOVEMENT_V+kongr prs?
 PRONOMEN ROOM+elativ ..... (MOVEMENT_V+kongr prs).
 
-* Maam PRONOMEN åestedh+kong?
+* Maam PRONOMEN åestedh+kongr?
 PRONOMEN FOOD_GROCERY+akkusativ ..... (åestedh+kongr).
 
 * Maam PRONOMEN jovkedh+kongr?
 PRONOMEN DRINK+akkusativ ..... (jovkedh+kongr).
 
 * Maam PRONOMEN bigkedh+kongr?
-PRONOMEN BUILDING_ROOM_A BUILDING+akkusativ ..... (bigkedh+kong).
+PRONOMEN BUILDING_ROOM_A BUILDING+akkusativ ..... (bigkedh+kongr).
 
-* Maam PRONOMEN FINANSE_V+kongr prs?
-PRONOMEN CLOTHES_A CLOTHING+akkusativ ..... (FINANSE_V+kongr prs).
+* Maam PRONOMEN FINANCE_V+kongr prs?
+PRONOMEN CLOTHES_A CLOTHING+akkusativ ..... (FINANCE_V+kongr prs).
 
-* Maam PRONOMEN FINANSE_V+kongr prs?
-PRONOMEN FOOD_GROCERY+akkusativ ..... (FINANSE_V+kongr prs).
+* Maam PRONOMEN FINANCE_V+kongr prs?
+PRONOMEN FOOD_GROCERY+akkusativ ..... (FINANCE_V+kongr prs).
 
 * Maam PRONOMEN govledh+kongr prs?
 PRONOMEN ..... (govledh+kongr prs) dïhte dyjre ..... (ANIMAL_SOUND_V+kongr prs).
@@ -442,8 +521,8 @@ Jååktan PRONOMEN .... (ACTIVITY-verb prt).
 * Maam PRONOMEN daan aereden gåårvedidh+kongr pret?
 PRONOMEN CLOTHES_A CLOTHING+akkusativ ..... (gåårvedidh+kongr+pret).
 
-* Maam PRONOMEN daen biejjien FINANSE_V+kongr pret?
-Daan biejjien PRONOMEN ROOM_OTHER+akkusativ ..... (FINANSE_V+kongr pret).
+* Maam PRONOMEN daan biejjien FINANCE_V+kongr pret?
+Daan biejjien PRONOMEN ROOM_OTHER+akkusativ ..... (FINANCE_V+kongr pret).
 
 * Mejnie NAME gïehtelidh+pret+kongr?
 Dïhte .... (ACTIVITY-verb prt).
