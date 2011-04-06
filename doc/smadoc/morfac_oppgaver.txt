@@ -5,7 +5,7 @@ Morfa-c OPPGAVER
 
 !!NOMINATIV FLERTALLØVINGER:
 
-Man gellie PRONOMEN åestedh+kongr prs?
+* Man gellie PRONOMEN åestedh+kongr prs?
 PRONOMEN NUMBER ..... (FOOD_GROCERY+nominativ pl) åestedh+kongr prs.
 
 * Man gellie FAMILY byöpmedidh+kongr?
@@ -256,6 +256,9 @@ PRONOMEN .... (BUILDING+illativ) MOVEMENT_V+kongr prs.
 * Gåabph FAMILY/PRONOMEN/NAME vuelkedh+kongr?
 FAMILY/PRONOMEN/NAME ..... (PLACE_NAME+illativ) vuelkedh+kongr.
 
+* Gåabph PEOPLE TRAVELLING_V+kongr prs?
+PEOPLE ..... (PLACE_COUNTRY+illativ) TRAVELLING_V+kongr prs. 6/4-11
+
 * Gåabph FAMILY/PRONOMEN/NAME vaedtsedh+kongr?
 FAMILY/PRONOMEN/NAME ..... (NATURE_PLACE+illativ) vaedtsedh+kongr.
 
@@ -304,6 +307,11 @@ Dïhte ..... (NAME+illativ) ringkedh+kongr prs/prt.
 Gïese PRONOMEN/NAME daelie ringkedh+kongr prs?
 Daelie ..... (PRONOMEN/NAME+illativ) ringkedh+kongr prs.
 
+* Gïese PRONOMEN TOY+akkusativ COMMAND_V+kongr pret? 
+PRONOMEN ..... (PROFESSION+illativ) COMMAND_V+kongr pret. 6/4-11
+
+* Gïese PEOPLE CLOTHES_A CLOTHING+akkusativ COMMAND_V+kongr pret? 
+PEOPLE ..... (FAMILY+illativ) COMMAND_V+kongr pret. 6/4-11
 
 
 !!INESSIVØVINGER:
@@ -320,19 +328,19 @@ PROFESSION  ..... (PLACE_NAME inessiv) årroeminie.
 * Gusnie PEOPLE daelie?
 Daelie PEOPLE ..... (PLACE_STAYING inessiv).
 
-Gusnie FAMILY?
+* Gusnie FAMILY?
 FAMILY lea+kongr ..... (BUILDING inessiv).
 
-Gusnie THING+nominativ?
+* Gusnie THING+nominativ?
 THING+nominativ lea+kongr ..... (CONTAINER+inessiv).
 
-Gusnie CLOTHING+nominativ?
+* Gusnie CLOTHING+nominativ?
 CLOTHING+nominativ lea+kongr ..... (CONTAINER+inessiv).
 
-Gusnie CLOTHING+nominativ?
+* Gusnie CLOTHING+nominativ?
 CLOTHING+nominativ lea+kongr ..... (ROOM+inessiv).
 
-Gusnie CLOTHES_A CLOTHING+nominativ?
+* Gusnie CLOTHES_A CLOTHING+nominativ?
 CLOTHES_A CLOTHING+nominativ lea+kongr ..... (FURNITURE+inessiv).
 
 * Gusnie dov THING?
@@ -349,7 +357,6 @@ FAMILY/NAME/PRONOMEN ..... (NATURE_PLACE+inessiv).
 
 * Gusnie MYTH_HUMAN?
 MYTH_HUMAN lea+kongr ..... (NATURE_PLACE+inessiv).
-
 
 
 !!ELATIVØVINGER:
@@ -378,6 +385,9 @@ Daate VEHICLE ..... (PLACE_NAME+elativ) juhtedh+kongr.
 * Gubpede FAMILY MOVEMENT_V+kongr pret?
 FAMILY ..... (PLACE+elativ) MOVEMENT_V+kongr pret.
 
+* Gubpede PEOPLE TRAVELLING_V+kongr prs?
+PEOPLE ..... (PLACE_COUNTRY+elativ) TRAVELLING_V+kongr prs. 6/4-11
+
 
 !!KOMITATIVØVINGER:
 
@@ -395,6 +405,12 @@ PRONOMEN ..... (NAME+komitativ) soptsestidh+kongr.
 
 * Giejnie PRONOMEN saemiestidh+kongr?
 PRONOMEN ..... (FAMILY+komitativ) saemiestidh+kongr.
+
+* Giejnie PRONOMEN daaroestidh+kongr?
+PRONOMEN ..... (FAMILY+komitativ) daaroestidh+kongr. 6/4-11
+
+* Giejgujmie NAME digkiedidh+kongr prs?
+NAME ..... (PEOPLE+komitativ pl) digkiedidh+kongr prs. 6/4-11
 
 * Mejnie FAMILY daan biejjien båetedh+kongr?
 FAMILY ..... (VEHICLE+komitativ) båetedh+kongr.
@@ -419,6 +435,9 @@ Dïhte ..... (PROFESSION+essiv) barkeminie.
 
 * Mejnie FAMILY PLACE+inessiv barkeminie?
 FAMILY .... (PROFFESSION+essiv) barkeminie.
+
+* Mejnie PEOPLE PLACE+inessiv barkeminie? 6/4-11
+PEOPLE .... (PROFFESSION+essiv) barkeminie.
 
 
 !!!VERB
@@ -515,6 +534,9 @@ Jååktan PEOPLE ..... (ACTIVITY-verb prt).
 * Maam PRONOMEN jååktan darjodh+pret+kongr?
 Jååktan PRONOMEN .... (ACTIVITY-verb prt).
 
+* Maam ACTOR minngemesvåhkoen darjodh+pret+kongr?
+Minngemes våhkoen ACTOR .... (ACTIVITY-verb prt). 6/4-11
+
 * Maam PRONOMEN övtebe våhkoen darjodh+pret+kongr?
 övtebe våhkoen PRONOMEN ..... (ACTIVITY-verb.)
 
@@ -551,11 +573,23 @@ PRONOMEN maehtedh+kongr pret .....(ACTIVITY-verb inf)
 
 !!PERFEKTUM
 
-* Maam NAME daan biejjien dorjeme?
+* Maam NAME daan biejjien darjodh perf?
 Daan biejjien NAME ..... (ACTIVITY-verb perf).
 
-* Maam PRONOMEN skuvlesne dorjeme?
+* Maam PRONOMEN skuvlesne darjodh perf?
 PRONOMEN lea+kongr .... (SCHOOL_V perf).
+
+* Maam aeredsbeapmose byöpmedidh perf? 6/4-11
+Daen aereden PRONOMEN FOOD_GROCERY+akkusativ ..... (byöpmedidh perf).
+
+* Giejnie PRONOMEN soptsestidh daen biejjien? 6/4-11
+Daen biejjien PRONOMEN PEOPLE+komitativ ..... (soptsestidh perf).
+
+* Giejnie PEOPLE saemiestidh? 6/4-11
+PEOPLE FAMILY+komitativ ..... (saemiestidh ferf).
+
+* Giejgujmie PRONOMEN digkiedidh perf? 6/4-11
+PRONOMEN ACTOR pl+komitativ digkiedidh perf.
 
 
 !!IMPERATIVØVINGER
@@ -572,11 +606,11 @@ PRONOMEN THING_akkusativ COMMAND_V+kongr prs.
 * Kanne AUX_V+kongr prs ACTIVITY_V+inf.
 ..... (ACTIVITY_V+imperativ+kongr) dellie!
 
-* Dagke
+* Dagke AUX_V+kongr prs BUILDING+illativ MOVEMENT_V+inf?
+..... (MOVEMENT_V+imperativ+kongr) dellie! 6/4-11
 
 * AUX_V+kongr prs FAMILY+komitativ PLACE_COUNTRY+ illativ TRAVELLING_V+inf.
 ..... (TRAVELLING_V+imperativ+kongr) dellie!
-
 
 
 
@@ -613,6 +647,23 @@ Ijje, ..... (NEKTING+kongr prs) leah PRONOMEN+genitiv+sg/pl naan VEHICLE+nominat
 * PRONOMEN daan biejjien diekie TRAVELLING_V+kongr pret?
 ..... (NEKTING+kongr pret) daan biejjien TRAVELLING_V+kongr. PRONOMEN TIME_DAY+genitiv TRAVELLING_V+kongr pret.
 
+
+!! GERUNDIUMØVINGER.
+
+* Gusnie PRONOMEN årrodh ger? 6/4-11
+PRONOMEN PLACE_NAME årroedh ger.
+
+* Maam PEOPLE darjodh ger? 6/4-11
+Daelie PEOPLE ..... (ACTIVITY_V ger).
+
+* Maam FAMILY daelie darjodh ger? 6/4-11
+Dïhte ..... (ACTIVITY_V ger).
+
+* Mejnie NAME barkedh ger? 6/4-11
+NAME PROFESSION+essiv barkedh ger.
+
+* Gïem datne vuertedh ger? 6/4-11
+Manne  NAME+akkusativ vuertedh ger.
 
 
 !!!PRONOMEN 
@@ -706,6 +757,9 @@ FAMILY ..... (PRONOMEN+illativ) CLOTHING+akkusativ åestedh+perf.
 * Giejtie FAMILY CLOTHING+akkusativ åestedh+perf?
 FAMILY ..... (PRONOMEN+illativ pl) CLOTHING+akkusativ åestedh+perf.
 
+* Gïese FAMILY CLOTHES_A CLOTHING+akkusativ COMMAND_V+kongr pret? 
+FAMILY ..... (PRONOMEN+illativ) COMMAND_V+kongr pret. 6/4-11
+
 * Gïese PROFESSION TOY+akkusativ COMMAND_V+kongr pret?
 PROFESSION ..... (PRONOMEN+illativ) COMMAND_V+kongr pret.
 
@@ -730,17 +784,17 @@ FAMILY ..... (PRONOMEN+elativ) åadtjodh+perf.
 * Giejstie NAME CLOTHING+akkusativ åadtjodh+perf?
 NAME ..... (PRONOMEN+elativ pl) åadtjodh+perf.
 
-* Giestie NAME THING+akkusativ vaeltedh+kongr pret?
-NAME .....(PRONOMEN+elativ) vaeltedh+kongr pret.
+* Giestie NAME THING+akkusativ vaeltedh+kongr prt?
+NAME .....(PRONOMEN+elativ) vaeltedh+kongr prt.
 
-* Giejstie NAME THING+akkusativ vaeltedh+kongr pret?
-NAME .....(PRONOMEN+elativ pl) vaeltedh+kongr pret.
+* Giejstie NAME THING+akkusativ vaeltedh+kongr prt?
+NAME .....(PRONOMEN+elativ pl) vaeltedh+kongr prt.
 
-* Giestie PROFESSION  dam govlijidh+kongr pret?
-PROFESSION ..... (PRONOMEN+elativ) govlijidh+kongr pret.
+* Giestie PROFESSION  dam govlijidh+kongr prt?
+PROFESSION ..... (PRONOMEN+elativ) govlijidh+kongr prt.
 
-* Giestie PEOPLE TOY+akkusativ fihkedh+kongr pret?
-PEOPLE ..... (PRONOMEN+elativ) fihkedh+kongr pret.
+* Giestie PEOPLE TOY+akkusativ fihkedh+kongr prt?
+PEOPLE ..... (PRONOMEN+elativ) fihkedh+kongr prt.
 
 * Giestie NAME dam STORY+akkusativ govledh+perf?
 NAME dam ..... (PRONOMEN+elativ) govledh+perf.
@@ -751,7 +805,8 @@ NAME dam ..... (PRONOMEN+elativ pl) govledh+perf.
 * Giestie FAMILY FOOD_GROCERY+akkusativ dængkodh+kongr prs?
 FAMILY ..... (PRONOMEN+elativ) dængkodh+kongr prs.
 
-
+* Giestie PEOPLE TOOL+akkusativ löönedh+kongr prt?
+PEOPLE ..... (PRONOMEN+elativ) löönedh+kongr prt. 6/4-11
 
 
 !!KOMITATIVØVINGER
@@ -762,20 +817,20 @@ FAMILY ..... (PRONOMEN+elativ) dængkodh+kongr prs.
 * Guktie PRONOMEN+komitativ daan biejjien?
 ..... (PRONOMEN+komitativ) nåake.
 
-* Giejnie PEOPLE fealadidh+kongr?
-PEOPLE ..... (PRONOMEN+komitativ) fealadidh+kongr.
+* Giejnie PEOPLE fealadidh+kongr prs?
+PEOPLE ..... (PRONOMEN+komitativ) fealadidh+kongr prs.
 
-* Giejnie FAMILY MOVEMENT_V+kongr?
-FAMILY ..... (PRONOMEN+komitativ) MOVEMENT_V+kongr.
+* Giejnie FAMILY MOVEMENT_V+kongr prs?
+FAMILY ..... (PRONOMEN+komitativ) MOVEMENT_V+kongr prs.
 
-* Giejgujmie FAMILY MOVEMENT_V+kongr?
-FAMILY ..... (PRONOMEN+komitativ pl) MOVEMENT_V+kongr.
+* Giejgujmie FAMILY MOVEMENT_V+kongr prs?
+FAMILY ..... (PRONOMEN+komitativ pl) MOVEMENT_V+kongr prs.
 
-* Giejnie NAME TRAVELLING_V+kongr?
-NAME ..... (PRONOMEN+komitativ) TRAVELLING_V+kongr.
+* Giejnie NAME TRAVELLING_V+kongr prs?
+NAME ..... (PRONOMEN+komitativ) TRAVELLING_V+kongr prs.
 
-* Giejgujmie NAME TRAVELLING_V+kongr?
-NAME .... (PRONOMEN+komitativ pl) TRAVELLING_V+kongr.
+* Giejgujmie NAME TRAVELLING_V+kongr prs?
+NAME .... (PRONOMEN+komitativ pl) TRAVELLING_V+kongr prs.
 
 * Giejnie PROFESSION soptsestidh+kongr prs?
 PROFESSION ..... (PRONOMEN+komitativ) soptsestidh+kongr prs.
@@ -786,6 +841,8 @@ FAMILY ..... (PRONOMEN+komitativ) daaroestidh+kongr prs.
 * Giejgujmie NAME digkiedidh+kongr prs?
 NAME ..... (PRONOMEN+komitativ pl) digkiedidh+kongr prs.
 
+* Giejnie FAMILY saemiestidh+kongr prs?
+FAMILY ..... (PRONOMEN+komitativ) saemiestidh+kongr prs.
 
 
 
