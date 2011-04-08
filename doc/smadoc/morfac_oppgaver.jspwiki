@@ -27,6 +27,63 @@ Morfa-c OPPGAVER
 
 
 !!Akkusativøvinger:
+{{{
+	<q id="acc1">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ jåvhka</text>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ACC jåvhka</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<grammar tag="N+Sg+Acc"/>
+				<sem class="DRINK"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc2">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ byöpmede</text>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ACC byöpmede</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="FOOD_DISH"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc4">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron"/>
+				<sem class="MORFAC"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>byöpmedidh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="FOOD_DISH"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+}}}
 
 * N-ACC id="acc3"
 ** Maam Pron jovkedh+kongr prs? 
