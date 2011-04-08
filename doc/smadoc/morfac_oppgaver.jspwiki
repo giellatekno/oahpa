@@ -453,36 +453,82 @@ PEOPLE ..... (FAMILY+illativ) COMMAND_V+kongr pret. 6/4-11
 
 
 !!Elativøvinger:
+{{{
+	<q id="ela1">
+		<qtype>N-ELA</qtype>
+		<question>
+			<text>Giestie OBJ åasteme</text>
+			<element id="OBJ">
+				<sem class="VEHICLE"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</question>
+		<answer>
+			<text>N-ELA åasteme</text>
+			<element game="morfa" id="N-ELA" task="yes">
+				<sem class="MORFAC"/>
+				<grammar pos="Pron" tag="Pron+Pers+Person-Number+Ela"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ela2">
+		<qtype>N-ELA</qtype>
+		<question>
+			<text>Giestie OBJ åådtjeme</text>
+			<element id="OBJ">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</question>
+		<answer>
+			<text>N-ELA åådtjeme</text>
+			<element game="morfa" id="N-ELA" task="yes">
+				<sem class="MORFAC"/>
+				<grammar pos="Pron" tag="Pron+Pers+Person-Number+Ela"/>
+			</element>
+		</answer>
+	</q>
+}}}
 
-* Gubpede PEOPLE båetedh+kongr?
-PEOPLE ..... (PLACE_NAME elativ) båetedh+kongr.
+* N-ELA id="ela3"
+** Gubpede PEOPLE båetedh+kongr?
+** PEOPLE ..... (PLACE_NAME elativ) båetedh+kongr.
 
-* Gubpede FAMILY/PERSNAME/Pron båetedh+kongr?
-FAMILY/PERSNAME/Pron ..... (NATURE_PLACE+elativ) båetedh+kongr.
+* N-ELA id="ela4" id="ela5" id="ela6"
+** Gubpede FAMILY/PERSNAME/Pron båetedh+kongr?
+** FAMILY/PERSNAME/Pron ..... (NATURE_PLACE+elativ) båetedh+kongr. Lene: Dïhte
 
-* Gubpede FAMILY/PERSNAME/Pron båateme?
-FAMILY/PERSNAME/Pron ..... (NATURE_PLACE+elativ) båateme.
+* N-ELA id="ela7" id="ela8" id="ela9"
+** Gubpede FAMILY/PERSNAME/Pron båateme?
+** FAMILY/PERSNAME/Pron ..... (NATURE_PLACE+elativ) båateme.  Lene: Dïhte
 
-* Gustie ANIMAL_PET+sg båetedh+kongr?
-Dïhte ..... (ROOM+elativ) båetedh+kongr.
+* N-ELA id="ela10"
+** Gustie ANIMAL_PET+sg båetedh+kongr?
+** Dïhte ..... (ROOM+elativ) båetedh+kongr.
 
-* Gustie PERSNAME båetedh+kongr?
-Dïhte ..... (ROOM+elativ) båetedh+kongr.
+* N-ELA id="ela11"
+** Gustie PERSNAME båetedh+kongr?
+** Dïhte ..... (ROOM+elativ) båetedh+kongr.
 
-* Gubpede PERSNAME+genitiv prievie båata?
-PERSNAME+genitiv prievie ..... (PLACE_NAME+elativ) båetedh+kongr.
+* N-ELA id="ela12"
+** Gubpede PERSNAME+genitiv prievie båata?
+** PERSNAME+genitiv prievie ..... (PLACE_NAME+elativ) båetedh+kongr.  Lene: Dïhte
 
-* Gubpede daate VEHICLE juhtedh+kongr?
-Daate VEHICLE ..... (PLACE_NAME+elativ) juhtedh+kongr.
+* N-ELA id="ela13"
+** Gubpede daate VEHICLE juhtedh+kongr?
+** Daate VEHICLE ..... (PLACE_NAME+elativ) juhtedh+kongr.   Lene: Dïhte
 
-* Gubpede FAMILY MOVEMENT_V+kongr pret?
-FAMILY ..... (PLACE+elativ) MOVEMENT_V+kongr pret. <---- Hva slags PLACE?
+* N-ELA id="ela14"
+** Gubpede FAMILY MOVEMENT_V+kongr pret?
+** FAMILY ..... (PLACE+elativ) MOVEMENT_V+kongr pret. <---- Hva slags PLACE?  Lene: Dïhte
 
-* Gubpede PEOPLE TRAVELLING_V+kongr prs?
-PEOPLE ..... (PLACE_COUNTRY+elativ) TRAVELLING_V+kongr prs. 6/4-11
+* N-ELA id="ela15"
+** Gubpede PEOPLE TRAVELLING_V+kongr prs?
+** PEOPLE ..... (PLACE_COUNTRY+elativ) TRAVELLING_V+kongr prs.  
 
-* Gustie NAME BELONGINGS+akkusativ veedtjedh+kongr prt? 8/4-11
-Dïhte BELONGINGS+akkusativ .... (ROOM+elativ) veedtjedh+kongr prt.
+* N-ELA id="ela16"
+** Gustie PERSNAME BELONGINGS+akkusativ veedtjedh+kongr prt?  
+** Dïhte BELONGINGS+akkusativ .... (ROOM+elativ) veedtjedh+kongr prt.
 
 
 !!Komitativøvinger:
