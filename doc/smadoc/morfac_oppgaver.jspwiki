@@ -487,33 +487,85 @@ Dïhte BELONGINGS+akkusativ .... (ROOM+elativ) veedtjedh+kongr prt.
 
 !!Komitativøvinger:
 
-* Mejnie FAMILY/PERSNAME/Pron vuelkedh+kongr?
-FAMILY/PERSNAME/Pron ..... (VEHICLE+komitativ) vuelkedh+kongr.
+{{{
+	<q id="com1">
+		<qtype>N-COM</qtype>
+		<question>
+			<text>Guktie datnine daan biejjien</text>
+		</question>
+		<answer>
+			<text>N-COM hijven</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<id>manne</id>
+				<grammar tag="Pron+Pers+Sg1+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com2">
+		<qtype>N-COM</qtype>
+		<question>
+			<text>Guktie dotnine daan biejjien</text>
+		</question>
+		<answer>
+			<text>N-COM hijven</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<id>månnoeh</id>
+				<grammar tag="Pron+Pers+Du1+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com3">
+		<qtype>N-COM</qtype>
+		<question>
+			<text>Guktie dijjine daan biejjien</text>
+		</question>
+		<answer>
+			<text>N-COM hijven</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<id>mijjieh</id>
+				<grammar tag="Pron+Pers+Pl1+Com"/>
+			</element>
+		</answer>
+	</q> 
+}}}
 
-* Giejnie FAMILY/PERSNAME/Pron vuelkedh+kongr?
-FAMILY/PERSNAME/Pron ..... (PERSNAME+komitativ) vuelkedh+kongr.
+* N-COM id="com4" 
+** Mejnie FAMILY/PERSNAME/Pron vuelkedh+kongr?
+** FAMILY/PERSNAME/Pron ..... (VEHICLE+komitativ) vuelkedh+kongr.
 
-* Mejnie Pron PLACE_COUNTRY+illativ fealadidh+kongr?
-Pron ..... (VEHICLE+komitativ) fealadidh+kongr.
+* N-COM id="com5" id="com6" id="com7"
+** Giejnie FAMILY/PERSNAME/Pron vuelkedh+kongr?
+** FAMILY/PERSNAME/Pron ..... (PERSNAME+komitativ) vuelkedh+kongr.
 
-* Giejnie Pron daan iehkeden soptsestidh+kongr?
-Pron ..... (PERSNAME+komitativ) soptsestidh+kongr.
+* N-COM id="com8" 
+** Mejnie Pron PLACE_COUNTRY+illativ fealadidh+kongr?
+** Pron ..... (VEHICLE+komitativ) fealadidh+kongr.
 
-* Giejnie Pron saemiestidh+kongr?
-Pron ..... (FAMILY+komitativ) saemiestidh+kongr.
+* N-COM id="com9" 
+** Giejnie Pron daan iehkeden soptsestidh+kongr?
+** Pron ..... (PERSNAME+komitativ) soptsestidh+kongr.
 
-* Giejnie Pron daaroestidh+kongr?
-Pron ..... (FAMILY+komitativ) daaroestidh+kongr. 6/4-11
+* N-COM id="com10" 
+** Giejnie Pron saemiestidh+kongr?
+** Pron ..... (FAMILY+komitativ) saemiestidh+kongr.
 
-* Giejgujmie PERSNAME digkiedidh+kongr prs?
-PERSNAME ..... (PEOPLE+komitativ pl) digkiedidh+kongr prs. 6/4-11
+* N-COM id="com11" 
+** Giejnie Pron daaroestidh+kongr?
+** Pron ..... (FAMILY+komitativ) daaroestidh+kongr. 
 
-* Mejnie FAMILY daan biejjien båetedh+kongr?
-FAMILY ..... (VEHICLE+komitativ) båetedh+kongr.
+* N-COM id="com12" 
+** Giejgujmie PERSNAME digkiedidh+kongr prs?
+** PERSNAME ..... (PEOPLE+komitativ pl) digkiedidh+kongr prs. Lene: Dïhte
 
-* Mejnie PERSNAME stååkedidh+kongr?
-PERSNAME .... (TOY+komitativ) stååkedidh+kongr.
+* N-COM id="com13" 
+** Mejnie FAMILY daan biejjien båetedh+kongr?
+** FAMILY ..... (VEHICLE+komitativ) båetedh+kongr.
 
+* N-COM id="com14" 
+** Mejnie PERSNAME stååkedidh+kongr?
+** PERSNAME .... (TOY+komitativ) stååkedidh+kongr. Lene: Dïhte
+
+* N-COM id="com15" 
 * Guktie PEOPLE dahkoe vuelkedh+kongr?
 Dïhte ..... (VEHICLE+komitativ) vuelkedh+kongr.
 
@@ -521,20 +573,25 @@ Dïhte ..... (VEHICLE+komitativ) vuelkedh+kongr.
 ** Giejnie Pron fealadidh+kongr?
 ** Pron ..... (PEOPLE+komitativ) fealadidh+kongr.
 
-* Guktie Pron NAME_PLACE+illativ båetedh+kongr prs?
-Pron ..... (VEHICLE+komitativ) båetedh+kongr prs.
+* N-COM id="com16" 
+** Guktie Pron PLACE_NAME+illativ båetedh+kongr prs?
+** Pron ..... (VEHICLE+komitativ) båetedh+kongr prs.
 
 
 !!Essivøvinger:
 
-* Mejnie PERSNAME barkeminie?
-Dïhte ..... (PROFESSION+essiv) barkeminie.
+* N-ESS id="ess1"
+** Mejnie PERSNAME barkeminie?
+** Dïhte ..... (PROFESSION+essiv) barkeminie.
 
-* Mejnie FAMILY PLACE+inessiv barkeminie?
-FAMILY .... (PROFFESSION+essiv) barkeminie.
+* N-ESS id="ess2"
+** Mejnie FAMILY+Sg PLACE_NAME+inessiv barkeminie?
+** Dïhte .... (PROFFESSION+essiv) barkeminie.
 
-* Mejnie PEOPLE PLACE+inessiv barkeminie? 6/4-11
-PEOPLE .... (PROFFESSION+essiv) barkeminie.
+
+* N-ESS id="ess3"
+** Mejnie PEOPLE+Sg PLACE_NAME+inessiv barkeminie? 6/4-11
+** PEOPLE .... (PROFFESSION+essiv) barkeminie.
 
 
 !!!VERB
