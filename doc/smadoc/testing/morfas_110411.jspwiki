@@ -1,0 +1,57 @@
+!!!Testing 11.4.2011
+
+
+!!!MorfaS, Pronomen
+
+Vi har problem med pronomen i fleirtal. Her er fasit frå MorfaS:
+
+{{{
+geah
+___________________	 mejtie, giejtie	
+}}}
+
+Dette er det vi får frå analysatoren:
+
+{{{
+geah
+geah	gie+Pron+Interr+Pl+Nom
+
+mejtie
+mejtie	mij+Pron+Interr+Pl+Ill
+
+giejtie
+giejtie	gie+Pron+Interr+Pl+Ill
+}}}
+
+Det ser ut til at analysatoren byggjer fasit utan å ta omsyn til
+grunnforma. I og med at både ''mejtie'' og ''giejtie'' har tagstreng
+''+Pron+Interr+Pl+Ill'' blir begge inkludert i fasiten. Men det
+er ikkje rett, pronomena må (som andre ord) ta grunnforma med.
+
+Same feil har vi her:
+
+{{{
+sijjieh
+___________________	 sijjese, dejtie
+}}}
+
+Analysator: 
+
+{{{
+sijjese
+sijjese	sijjieh+Pron+Pers+Pl3+Ill
+
+dejtie
+dejtie	dah+Pron+Pers+Pl3+Ill
+}}}
+
+Same feil har vi her også:
+
+{{{	
+dah guaktah
+___________________	 sotnese, dejtie guaktide	
+}}}
+
+Her burde vi ha hatt ein annan tag (+Pron+Log) på
+''sotnese''.
+
