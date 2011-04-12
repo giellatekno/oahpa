@@ -33,18 +33,18 @@
 * ANIMAL_DOM - husdyr
 * ANIMAL_WILD - ville dyr
 * ANIMAL_PET - kjæledyr
+* ANIMAL_PREDITOR - gaupe,ulv,bjørn..
+* ANIMAL_HUNT - dyr man jakter på
 * ANIMAL_OTHER - andre ord om dyr
 * ANIMAL_V - springe, ligge, hoppe....
 * ANIMAL_SOUND_V - lyder av dyr som pistre, mjaue, bjeffe..
-* ANIMAL_A - rask, feit, styg, slem, dum, treg, snill, liten, stor...
-* ANIMAL_PREDITOR - gaupe,ulv,bjørn..
+* ANIMAL_A - rask, feit, stygg, slem, dum, treg, snill, liten, stor...
 
 !!Supersett BIRD_FISH (Fugl/fisk)
 * BIRD
 * FISH
 * ANIMAL_FISH -  fisk man fisker i ferskvann
 * ANIMAL_SALTFISH - fisk man fisker i saltvann
-* ANIMAL_HUNT  - dyr man jakter på
 * ANIMAL_BIRDHUNT - fugler man jakter på
 * BIRD_FISH_V - fly, kvitre
 
@@ -77,7 +77,8 @@
 * CLOTHING_PL - flertallssubstantiv
 * CLOTHING_OTHER - erme, knapp...
 * CLOTHES_V - sy, lappe, dekorere...
-* CLOTHES_A - rød, grønn, vid, trang, høvelig, moderne...
+* CLOTHES_A - vid, trang, høvelig, moderne...
+* COLOUR - farger som rød, grønn, blå...
 
 !!Supersett BUILDINGS/ROOMS (Bygninger/rom)
 * BUILDING
@@ -118,9 +119,6 @@
 * SHOW - duodjeutstilling, reinkappkjøring... (Jenta ser på ...)
 
 !!Supersett TRAVEL (Reise)
-* PLACE_NAME - stedsnavn
-* PLACE_COUNTRY - land og fylker
-* PLACE_NATURE - elv, sjø, fjell, distrikt, 
 * PLACE_STAYING - hvor man kan bo: by, bygd, tettsted, leilighet...
 * PLACE_OTHER - sted, møtested...
 * PLACE_LOCAL - gårdsplass, vedhugstplass, bålbredd...
@@ -140,6 +138,7 @@
 * ABSTRACT 
 * SOUND
 * AMOUNT
+* ABSTRACT_A  ENDRET 12/4-11
 
 !!Supersett WORK/ECONOMY/TOOLS (Arbeid/økonomi/verktøy)
 * JOB
@@ -198,7 +197,18 @@
 * TIME_U - tidsuttrykk, f.eks daan biejjien , daan iehkeden
 
 !! Supersett MORFA-C (skal ikke være med i leksa)
-* ACTIVITY_V
-* NAME - Laara, Saara....
-* NUMBER - bruk tallene 2 til 10
-* COMMAND_V - rekke, sende gi, hente , lete, finne..
+* mACTIVITY_V
+* mPERSNAME - Laara, Saara....
+* mNUMBER - bruk tallene 2 til 10
+* mCOMMAND_V - rekke, sende gi, hente , lete, finne..
+* mCLOTHES_WORK - verb som passer med CLOTHING som objekt
+* mVISSJH_V - vïssjedh, sïjhtedh, astedh,buektehtidh, maehtedh..)
+
+Stedsnavn:
+* mPLACE_NAME - stedsnavn
+* mPLACE_COUNTRY - land og fylker
+* mPLACE_NATURE - distrikt, 
+* mPLACE_RIVER - navn på elver
+* mPLACE_MOUNTAIN - navn på fjell
+* mPLACE_LAKE - navn på sjøer
+
