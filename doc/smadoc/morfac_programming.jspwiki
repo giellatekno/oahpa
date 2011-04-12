@@ -79,7 +79,9 @@ Hmm.
 
 Første feilen med 'ValueError' feil kom frå det at det var ingen spursmål i databasen som hadde N-ILL, berre N-ACC. Fordi det var ikkje nok å bytte default valuen N-ILL til N-ACC, eg inserta noko inn i qaforms.py l. 571
 
-	qtype = 'N-ACC'
+{{{	
+qtype = 'N-ACC'
+}}}
 
 So fekk eg andre feilbeskjeder: ein var om feedbacks, og så eg fiksa noko som kan vera eit problem i vanleg Morfa
 
