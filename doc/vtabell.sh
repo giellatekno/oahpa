@@ -71,9 +71,9 @@ cat t1|sed 's/$/+V+PrsPrc/;'| lookup $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|
 cat t2|sed 's/$/+V+PrsPrc/;'| lookup $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+V.*/-/'|tr '\t' ',' > t2prsprc
 cat t3|sed 's/$/+V+PrsPrc/;'| lookup $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+V.*/-/'|tr '\t' ',' > t3prsprc
 
-paste -d"|" t1 t1inf t1prssg1 t1prssg3 t1prsdu1 t1prsdu3 t1prspl3 t1prtsg1 t1ger t1prsprc | sed 's/|/ | /g;' | sed 's/^/|/'| sed 's/,/, /g;' | grep '[A-Za-z]' > tverbforms1
-paste -d"|" t2 t2inf t2prssg1 t2prssg3 t1prsdu1 t1prsdu3 t2prspl3 t2prtsg1 t2ger t2prsprc | sed 's/|/ | /g;' | sed 's/^/|/'| sed 's/,/, /g;' | grep '[A-Za-z]' > tverbforms2
-paste -d"|" t3 t3inf t3prssg1 t3prssg3 t1prsdu1 t1prsdu3 t3prspl3 t3prtsg1 t3ger t3prsprc | sed 's/|/ | /g;' | sed 's/^/|/'| sed 's/,/, /g;' | grep '[A-Za-z]' > tverbforms3
+paste -d"|" t1 t1inf t1prssg1 t1prssg3 t1prsdu1 t1prsdu3 t1prspl3 t1prtsg1 t1ger t1prsprc | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tverbforms1
+paste -d"|" t2 t2inf t2prssg1 t2prssg3 t1prsdu1 t1prsdu3 t2prspl3 t2prtsg1 t2ger t2prsprc | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tverbforms2
+paste -d"|" t3 t3inf t3prssg1 t3prssg3 t1prsdu1 t1prsdu3 t3prspl3 t3prtsg1 t3ger t3prsprc | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tverbforms3
 
 cat tverbforms1 >> smadoc/gen/verballetabell.jspwiki
 cat tverbforms2 >> smadoc/gen/verbdicttabell.jspwiki

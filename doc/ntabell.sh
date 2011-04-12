@@ -69,9 +69,9 @@ cat t3|sed 's/$/+N+Pl+Ill/;'| lookup $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|
 
 
 
-paste -d"|" t1 t1sggen t1sgill t1sgine t1ess t1plnom t1placc t1plill | sed 's/|/ | /g;' | sed 's/^/|/'| sed 's/,/, /g;' | grep '[A-Za-z]' > t1nounforms
-paste -d"|" t2 t2sggen t2sgill t2sgine t2ess t2plnom t2placc t2plill | sed 's/|/ | /g;' | sed 's/^/|/'| sed 's/,/, /g;' | grep '[A-Za-z]' > t2nounforms
-paste -d"|" t3 t3sggen t3sgill t3sgine t3ess t3plnom t3placc t3plill | sed 's/|/ | /g;' | sed 's/^/|/'| sed 's/,/, /g;' | grep '[A-Za-z]' > t3nounforms
+paste -d"|" t1 t1sggen t1sgill t1sgine t1ess t1plnom t1placc t1plill | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > t1nounforms
+paste -d"|" t2 t2sggen t2sgill t2sgine t2ess t2plnom t2placc t2plill | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > t2nounforms
+paste -d"|" t3 t3sggen t3sgill t3sgine t3ess t3plnom t3placc t3plill | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > t3nounforms
 
 cat t1nounforms >> smadoc/gen/nounalletabell.jspwiki
 cat t2nounforms >> smadoc/gen/noundicttabell.jspwiki

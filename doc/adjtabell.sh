@@ -51,9 +51,9 @@ cat t1|sed 's/$/+A+Superl+Sg+Nom/;'| lookup $GTHOME/gt/sma/bin/isma.fst |tr '\n'
 cat t2|sed 's/$/+A+Superl+Sg+Nom/;'| lookup $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tsuperl2
 cat t3|sed 's/$/+A+Superl+Sg+Nom/;'| lookup $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tsuperl3
 
-paste -d"|" t1 tattr1 tsgnom1 tcomp1 tsuperl1 | sed 's/|/ | /g;' | sed 's/^/|/'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms1
-paste -d"|" t2 tattr2 tsgnom2 tcomp2 tsuperl2 | sed 's/|/ | /g;' | sed 's/^/|/'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms2
-paste -d"|" t3 tattr3 tsgnom3 tcomp3 tsuperl3 | sed 's/|/ | /g;' | sed 's/^/|/'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms3
+paste -d"|" t1 tattr1 tsgnom1 tcomp1 tsuperl1 | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms1
+paste -d"|" t2 tattr2 tsgnom2 tcomp2 tsuperl2 | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms2
+paste -d"|" t3 tattr3 tsgnom3 tcomp3 tsuperl3 | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms3
 
 cat tadjforms1 >> smadoc/gen/adjalletabell.jspwiki
 cat tadjforms2 >> smadoc/gen/adjdicttabell.jspwiki
