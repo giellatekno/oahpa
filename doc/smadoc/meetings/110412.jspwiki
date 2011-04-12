@@ -1,0 +1,138 @@
+
+Møte på Røros, 12.4. 2011
+
+Til stades: Lene, Sissel, Toini, Marit, Trond, Sylvia
+
+!!!Saksliste:
+
+* Vurdering av det vi har - forbedringer?
+* Oahpa fra svensk synspunkt
+* Bug-meldinger
+* MorfaC - laging av oppgaver
+* Grammatikken
+* Dialektdeling - vurdering av det som er implementert
+* Layout
+* Brukerinfo i Oahpa
+* Hjelpespråk - vi har norsk, og vi skal ha svensk,. Sørsamisk?
+* url-adresse
+* Plan for arbeidet framover
+
+!!!Vurdering av det vi har - forbedringer?
+
+Gjennomgang
+
+!!Server
+
+Vi må ha Oahpa på egen server - må prioriteres!
+
+
+!!Numra
+Framleis problem med normativitet.
+
+__NB!__ det ser ut til å fungere med sma på sme-Numra! Sjå på 
+dette.
+
+Vi har ikkje gjeve opp klokka enno
+
+!!Leksa
+
+Leksa for svensk er på lufta, men med dummy ''norsk_swe''.
+
+!Stedsnavn
+
+Stedsnavn er implementert
+
+MEN grunnarbeidet i leksikonfila er ikke ferdig. Det mangeler fortsatt 
+stedsnavn fra nordlig region.
+
+Husk å også merke av flertallsstedsnavn (er i egen fil.) Bør brukes i morfa-c
+Analysatoren må oppdateres - alle stedsnavn skal være med.
+
+
+I dag har namna i prop-fila desse taggane:
+
+{{{
+  38                <sem class="PLACE_COUNTRY"/>
+ 164                <sem class="PLACE_NAME"/>
+ 138                <sem class="PLACE_NATURE"/>
+   6                <sem class="PLACE_OTHER"/>
+}}}
+
+
+Men: PLACE_NAME skal ikkje vere supersett, men direkte sett som
+blir brukt i Leksa. Dermed skal vi ha fleire sett under noden
+<semantics>, for bruk i Morfa.
+
+Vi har NATURE_PLACE som eige sett. Dermed er PLACE_NATURE som 
+settnamn ein invitasjon til rot og misforståing.
+
+Stadnamn skal ikkje inn i Leksa-setta.
+
+Morfasetta treng ikkje vere i Leksa-setta i det heile.
+Viss vi legg morfasetta inn som tillegg treng vi ikkje 
+
+Vi bruker liten m som prefiks for MORFA-C-setta.
+
+__TILTAK:__
+
+Rydd opp i setta og fordel mellom Leksa og Morfa.
+
+
+!Snuing
+
+… legge til samiske synonymer i nobsma-filene - må være klart 
+etter påske. Gå fra to nivåer til ett nivå (bare mg). 
+
+!tcomm
+
+tcomm fungerer - må følges opp med å legge inn flere tcomm i leksikon.
+
+!dict="no"
+… må stå, for å unngå ordbok.
+
+!Adjektiv i ulike sett
+
+Problem: Det er vanskeleg å plassere adjektiva i høvelege
+sett for Leksa.
+
+Løysing: Lage COLOUR som sett, og ta dei ut av CLOTHES_A. Ha COLOUR som
+del av supersettet CLOTHES, og bruk COLOUR i MorfaC.
+
+Tilsvarande for andre adjektiv (sjå på det).
+
+!Pronomen i Leksa
+Skal vekk fra Leksa
+
+! Flerordsuttrykk 
+- vurdere hvordan de fungerer
+
+
+!!!Oahpa fra svensk synspunkt
+
+!!!MorfaC - laging av oppgaver
+
+!!!Bug-meldinger
+Vi bruker Bugzilla
+
+!!!Grammatikken
+
+!!!Dialektdeling - vurdering av det som er implementert
+
+!!!Layout
+
+!!!Brukerinfo i Oahpa
+
+!!!Hjelpespråk - vi har norsk, og vi skal ha svensk,. Sørsamisk?
+
+!!!url-adresse
+
+!!!Plan for arbeidet framover
+
+Plan for arbeidet fram til 1. september, (se hva vi har planlagt 
+tidligere) og lansering på 
+
+Hvordan lansere i Sverige.
+Patricia
+
+
+
