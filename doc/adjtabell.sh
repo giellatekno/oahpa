@@ -15,24 +15,24 @@ cat $GTHOME/gt/sma/src/adj-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|tr 
 
 echo "!!!Tabell over alle adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjalletabell.jspwiki
 echo "" >> smadoc/gen/adjalletabell.jspwiki
-echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjalletabell.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjalletabell.jspwiki
 echo "!!!Reversert tabell over alle adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjalletabellrev.jspwiki
 echo "" >> smadoc/gen/adjalletabellrev.jspwiki
-echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjalletabellrev.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjalletabellrev.jspwiki
 
 echo "!!!Tabell over dict-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjdicttabell.jspwiki
 echo "" >> smadoc/gen/adjdicttabell.jspwiki
-echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjdicttabell.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjdicttabell.jspwiki
 echo "!!!Reversert tabell over dict-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjdicttabellrev.jspwiki
 echo "" >> smadoc/gen/adjdicttabellrev.jspwiki
-echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjdicttabellrev.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjdicttabellrev.jspwiki
 
 echo "!!!Tabell over oahpa-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjoahpatabell.jspwiki
 echo "" >> smadoc/gen/adjoahpatabell.jspwiki
-echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjoahpatabell.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjoahpatabell.jspwiki
 echo "!!!Reversert tabell over oahpa-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjoahpatabellrev.jspwiki
 echo "" >> smadoc/gen/adjoahpatabellrev.jspwiki
-echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjoahpatabellrev.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjoahpatabellrev.jspwiki
 
 # Making the 4 columns
 cat t1|sed 's/$/+A+Attr/;'| lookup $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tattr1

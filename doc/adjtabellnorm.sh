@@ -15,24 +15,24 @@ cat $GTHOME/gt/sma/src/adj-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|tr 
 
 echo "!!!Tabell over alle adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjalletabellnorm.jspwiki
 echo "" >> smadoc/gen/adjalletabellnorm.jspwiki
-echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjalletabellnorm.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjalletabellnorm.jspwiki
 echo "!!!Reversert tabell over alle adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjalletabellrevnorm.jspwiki
 echo "" >> smadoc/gen/adjalletabellrevnorm.jspwiki
-echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjalletabellrevnorm.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjalletabellrevnorm.jspwiki
 
 echo "!!!Tabell over dict-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjdicttabellnorm.jspwiki
 echo "" >> smadoc/gen/adjdicttabellnorm.jspwiki
-echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjdicttabellnorm.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjdicttabellnorm.jspwiki
 echo "!!!Reversert tabell over dict-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjdicttabellrevnorm.jspwiki
 echo "" >> smadoc/gen/adjdicttabellrevnorm.jspwiki
-echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjdicttabellrevnorm.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjdicttabellrevnorm.jspwiki
 
 echo "!!!Tabell over oahpa-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjoahpatabellnorm.jspwiki
 echo "" >> smadoc/gen/adjoahpatabellnorm.jspwiki
-echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjoahpatabellnorm.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjoahpatabellnorm.jspwiki
 echo "!!!Reversert tabell over oahpa-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjoahpatabellrevnorm.jspwiki
 echo "" >> smadoc/gen/adjoahpatabellrevnorm.jspwiki
-echo " ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjoahpatabellrevnorm.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom " >> smadoc/gen/adjoahpatabellrevnorm.jspwiki
 
 # Making the 4 columns
 cat t1|sed 's/$/+A+Attr/;'| lookup $GTHOME/gt/sma/bin/isma-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tattr1

@@ -16,24 +16,24 @@ cat $GTHOME/gt/sma/src/verb-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|tr
 
 echo "!!!Tabell over alle verb - OBS! arbeidsliste for debugging" > smadoc/gen/verballetabellnorm.jspwiki
 echo "" >> smadoc/gen/verballetabellnorm.jspwiki
-echo " ||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verballetabellnorm.jspwiki
+echo "||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verballetabellnorm.jspwiki
 echo "!!!Reversert tabell over alle verb - OBS! arbeidsliste for debugging" > smadoc/gen/verballetabellrevnorm.jspwiki
 echo "" >> smadoc/gen/verballetabellrevnorm.jspwiki
-echo " ||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verballetabellrevnorm.jspwiki
+echo "||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verballetabellrevnorm.jspwiki
 
 echo "!!!Tabell over dict-verb - OBS! arbeidsliste for debugging" > smadoc/gen/verbdicttabellnorm.jspwiki
 echo "" >> smadoc/gen/verbdicttabellnorm.jspwiki
-echo " ||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verbdicttabellnorm.jspwiki
+echo "||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verbdicttabellnorm.jspwiki
 echo "!!!Reversert tabell over dict-verb - OBS! arbeidsliste for debugging" > smadoc/gen/verbdicttabellrevnorm.jspwiki
 echo "" >> smadoc/gen/verbdicttabellrevnorm.jspwiki
-echo " ||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verbdicttabellrevnorm.jspwiki
+echo "||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verbdicttabellrevnorm.jspwiki
 
 echo "!!!Tabell over oahpa-verb - OBS! arbeidsliste for debugging" > smadoc/gen/verboahpatabellnorm.jspwiki
 echo "" >> smadoc/gen/verboahpatabellnorm.jspwiki
-echo " ||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verboahpatabellnorm.jspwiki
+echo "||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verboahpatabellnorm.jspwiki
 echo "!!!Reversert tabell over oahpa-verb - OBS! arbeidsliste for debugging" > smadoc/gen/verboahpatabellrevnorm.jspwiki
 echo "" >> smadoc/gen/verboahpatabellrevnorm.jspwiki
-echo " ||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verboahpatabellrevnorm.jspwiki
+echo "||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verboahpatabellrevnorm.jspwiki
 
 # Making the 7 columns
 cat t1|sed 's/$/+V+Inf/;'| lookup $GTHOME/gt/sma/bin/isma-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+V.*/-/'|tr '\t' ',' > t1inf

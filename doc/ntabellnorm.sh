@@ -15,24 +15,24 @@ cat $GTHOME/gt/sma/src/noun-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|tr
 
 echo "!!!Tabell over alle substantiv - OBS! arbeidsliste for debugging" > smadoc/gen/nounalletabellnorm.jspwiki
 echo "" >> smadoc/gen/nounalletabellnorm.jspwiki
-echo " ||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/nounalletabellnorm.jspwiki
+echo "||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/nounalletabellnorm.jspwiki
 echo "!!!Reversert tabell over alle substantiv - OBS! arbeidsliste for debugging" > smadoc/gen/nounalletabellrevnorm.jspwiki
 echo "" >> smadoc/gen/nounalletabellrevnorm.jspwiki
-echo " ||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/nounalletabellrevnorm.jspwiki
+echo "||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/nounalletabellrevnorm.jspwiki
 
 echo "!!!Tabell over dict-substantiv - OBS! arbeidsliste for debugging" > smadoc/gen/noundicttabellnorm.jspwiki
 echo "" >> smadoc/gen/noundicttabellnorm.jspwiki
-echo " ||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/noundicttabellnorm.jspwiki
+echo "||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/noundicttabellnorm.jspwiki
 echo "!!!Reversert tabell over dict-substantiv - OBS! arbeidsliste for debugging" > smadoc/gen/noundicttabellrevnorm.jspwiki
 echo "" >> smadoc/gen/noundicttabellrevnorm.jspwiki
-echo " ||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/noundicttabellrevnorm.jspwiki
+echo "||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/noundicttabellrevnorm.jspwiki
 
 echo "!!!Tabell over oahpa-substantiv - OBS! arbeidsliste for debugging" > smadoc/gen/nounoahpatabellnorm.jspwiki
 echo "" >> smadoc/gen/nounoahpatabellnorm.jspwiki
-echo " ||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/nounoahpatabellnorm.jspwiki
+echo "||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/nounoahpatabellnorm.jspwiki
 echo "!!!Reversert tabell over oahpa-substantiv - OBS! arbeidsliste for debugging" > smadoc/gen/nounoahpatabellrevnorm.jspwiki
 echo "" >> smadoc/gen/nounoahpatabellrevnorm.jspwiki
-echo " ||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/nounoahpatabellrevnorm.jspwiki
+echo "||  lemma  ||  Nom Sg  ||  Gen Sg || Ill Sg || Ine Sg || Ess || Nom Pl || Acc Pl || Ill Pl " >> smadoc/gen/nounoahpatabellrevnorm.jspwiki
 
 # Making the 7 columns
 cat t1|sed 's/$/+N+Sg+Nom/;'| lookup $GTHOME/gt/sma/bin/isma-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+N.*/-/'|tr '\t' ',' > t1sgnom
