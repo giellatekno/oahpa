@@ -16,7 +16,7 @@ Morfa-c OPPGAVER -- de som er laget, er merket med id
 
 * N-NOM-PL id="nompl6"
 ** Gïeh iehkiedasse diekie båetedh+kongr prs?
-** Iehkedasse ..... (PEOPLE+nominativ pl) båetedh+kongr prs.
+** Iehkiedasse ..... (PEOPLE+nominativ pl) båetedh+kongr prs.
 
 * N-NOM-PL id="nompl7"
 ** Gïeh edtjieh daelie laavlodh?
@@ -236,7 +236,7 @@ Morfa-c OPPGAVER -- de som er laget, er merket med id
 ** Pron dejtie ..... (PEOPLE+akkusativ pl) daejredh+kongr prs.
 
 * N-ACC id="acc25"
-** Pron dah PEOPLE+nominativ pl aerebi gaavnedamme?
+** Pron dah PEOPLE+nominativ pl aarebi gaavnedamme?
 ** Pron dejtie ..... (PEOPLE+akkusativ pl) gaavnedamme.
 
 * N-ACC id="acc26"
@@ -897,7 +897,7 @@ PEOPLE ..... (FAMILY+illativ) COMMAND_V+kongr pret. 6/4-11
 ** Daan aereden Pron FOOD_GROCERY+akkusativ ..... (byöpmedidh perf).
 
 * V-PRF id="vprf4"
-** Giejnie Pron soptsestidh daen biejjien?  Lene: soptsestamme
+** Giejnie Pron soptsestidh daan biejjien?  Lene: soptsestamme
 ** Daen biejjien Pron PEOPLE+komitativ ..... (soptsestidh perf).
 
 * V-PRF id="vprf5"
@@ -1052,25 +1052,30 @@ Ijje, ..... (NEKTING+kongr prs) leah Pron+genitiv+sg/pl naan VEHICLE+nominativ.
 
 !! Nominativøvinger
 
-* Gie diekie TRAVELLING_V+kongr prs?
-..... (Pron+nominativ) TRAVELLING_V+kongr prs.
+* P-NOM id="pnom1"
+** Gie diekie TRAVELLING_V+kongr prs?
+** ..... (Pron+nominativ) TRAVELLING_V+kongr prs.
 
-* Gie ACTIVITY_V+kongr prs?
-..... (Pron+nominativ) ACTIVITY_V+kongr prs.
+* P-NOM id="pnom2"
+** Gie ACTIVITY_V+kongr prs?
+** ..... (Pron+nominativ) ACTIVITY_V+kongr prs.
 
-* Gïeh daelie LEISURETIME_HOME_V+kongr prs?
-..... (Pron+nominativ pl) LEISURETIME_HOME_V+kongr prs.
+* P-NOM id="pnom3"
+** Gïeh daelie LEISURETIME_HOME_V+kongr prs?
+** ..... (Pron+nominativ pl) LEISURETIME_HOME_V+kongr prs.  
 
-* Gie AUX_V+kongr prs ACTVITY_V+kongr?
-..... (Pron+nominativ) AUX_V+kongr prs ACTVITY_V+kongr.
+* P-NOM id="pnom4"
+** Gie AUX_V+kongr prs ACTVITY_V+kongr? Lene: ACTVITY_V+inf
+** ..... (Pron+nominativ) AUX_V+kongr prs ACTVITY_V+kongr. Lene: bare AUX_V+kongr
 
 
 
 
 !!Akkusativøvinger
 
-* Gïem PERSNAME vuejnedh+kongr prs?
-PERSNAME .... (Pron+akkusativ) vuejnedh+kongr prs.
+* P-ACC id=" "
+** Gïem PERSNAME vuajna?
+** PERSNAME .... (Pron+akkusativ) vuajna. 
 
 * Gïem PERSNAME govledh+kongr prs?
 PERSNAME .... (Pron+akkusativ) govledh+kongr prs.
@@ -1100,10 +1105,92 @@ Dïhte ..... (Pron+akkusativ) vuertedh ger.
 NAME .... (Pron+akkusativ) viehkiehtidh+kongr prt.
 
 
-
+{{{	
+	<q id="pacc1">
+		<qtype>P-ACC</qtype>
+		<question>
+			<text>Gie OBJ vuajna</text>
+			<element id="OBJ">
+				<sem class="TOY"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ OBJ2 vuajna</text>
+			<element game="morfa" id="OBJ2" task="yes">
+				<grammar tag="Pron+Pers+Sg3+Acc"/>
+				<sem class="MORFAC"/>
+			</element>
+			<element id="SUBJ">
+				<sem class="PERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pacc2">
+		<qtype>P-ACC</qtype>
+		<question>
+			<text>Gie OBJ vuajna</text>
+			<element id="OBJ">
+				<sem class="TOY"/>
+				<grammar tag="N+Pl+Acc"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ OBJ2 vuajna</text>
+			<element game="morfa" id="OBJ2" task="yes">
+				<grammar tag="Pron+Pers+Pl3+Acc"/>
+				<sem class="MORFAC"/>
+			</element>
+			<element id="SUBJ">
+				<sem class="PERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pacc4">
+		<qtype>P-ACC</qtype>
+		<question>
+			<text>Gïeh OBJ råakeme</text>
+			<element id="OBJ">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Pl+Acc"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ OBJ2 råakeme</text>
+			<element game="morfa" id="OBJ2" task="yes">
+				<grammar tag="Pron+Pers+Pl3+Acc"/>
+				<sem class="MORFAC"/>
+			</element>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pacc6">
+		<qtype>P-ACC</qtype>
+		<question>
+			<text>Giejtie SUBJ buarastahteme</text>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ OBJ buarastahteme</text>
+			<element game="morfa" id="OBJ" task="yes">
+				<grammar tag="Pron+Pers+Person-Number+Acc"/>
+				<sem class="FIRST_SECOND"/>
+			</element>
+		</answer>
+	</q>
+}}}
 
 !!Genitivøvinger
 
+* P-GEN id=" "
 * Gïen VEHICLE?
 Daate ..... (Pron+genitiv) VEHICLE.
 
@@ -1140,20 +1227,24 @@ PEOPLE .... (Pron+genitiv) bïjre soptsestidh+kongr prs.
 
 !!Illativøvinger
 
-* Gïese PEOPLE TEXT+akkusativ tjaeledh+perf?
-PEOPLE ..... (Pron+illativ) tjaeledh+perf.
+* P-ILL id="pill1"
+** Gïese PEOPLE TEXT+akkusativ tjaaleme?
+** PEOPLE ..... (Pron+illativ) tjaaleme.
 
-* Giejtie PEOPLE TEXT+akkusativ tjaeledh+perf?
-PEOPLE ..... (Pron+illativ pl) tjaeledh+perf.
+* P-ILL id="pill2"
+** Giejtie PEOPLE TEXT+akkusativ tjaaleme?
+** PEOPLE ..... (Pron+illativ pl) tjaaleme.
 
 * Gïese PERSNAME TEXT+akkusativ lohkedh+kongr prs?
 PERSNAME ..... (Pron+illativ) lohkedh+kongr prs.
 
-* Gïese FAMILY CLOTHING+akkusativ åestedh+perf?
-FAMILY ..... (Pron+illativ) CLOTHING+akkusativ åestedh+perf.
+* P-ILL id="pill3"
+** Gïese FAMILY CLOTHING+akkusativ åasteme?
+** FAMILY ..... (Pron+illativ) CLOTHING+akkusativ åasteme.
 
-* Giejtie FAMILY CLOTHING+akkusativ åestedh+perf?
-FAMILY ..... (Pron+illativ pl) CLOTHING+akkusativ åestedh+perf.
+* P-ILL id="pill4"
+** Giejtie FAMILY CLOTHING+akkusativ åestedh+perf?
+** FAMILY ..... (Pron+illativ pl) CLOTHING+akkusativ åestedh+perf.
 
 * Gïese FAMILY CLOTHES_A CLOTHING+akkusativ COMMAND_V+kongr pret? 
 FAMILY ..... (Pron+illativ) COMMAND_V+kongr pret. 6/4-11
@@ -1191,14 +1282,17 @@ PERSNAME ..... (Pron+illativ) feeredh+kongr prs.
 
 !!Elativøvinger
 
-* Giestie PEOPLE VEHICLE+akkusativ åestedh+perf?
-PEOPLE ..... (Pron+elativ) åestedh+perf.
+* P-ELA id="pela1"
+** Giestie PEOPLE VEHICLE+akkusativ åasteme?
+** PEOPLE ..... (Pron+elativ) åasteme.
 
-* Giestie FAMILY CLOTHING+akkusativ åadtjodh+perf?
-FAMILY ..... (Pron+elativ) åadtjodh+perf.
+* P-ELA id="pela3"
+** Giestie FAMILY CLOTHING+akkusativ åådtjeme?
+** FAMILY ..... (Pron+elativ) åådtjeme.
 
-* Giejstie PERSNAME CLOTHING+akkusativ åadtjodh+perf?
-PERSNAME ..... (Pron+elativ pl) åadtjodh+perf.
+* P-ELA id="pela4"
+** Giejstie PERSNAME CLOTHING+akkusativ åadtjodh+perf?
+** PERSNAME ..... (Pron+elativ pl) åadtjodh+perf.
 
 * Giestie PERSNAME THING+akkusativ vaeltedh+kongr prt?
 PERSNAME .....(Pron+elativ) vaeltedh+kongr prt.
@@ -1251,18 +1345,48 @@ Dïhte ..... (Pron+elativ) sualadidh+kongr prt. 7/4-11
 * Giestie PERSNAME bïlledh+kongr prs? 7/4-11
 Dïhte ..... (Pron+elativ) bïlledh+kongr prs.
 
+{{{	
+<q id="pela2">
+		<qtype>P-ELA</qtype>
+		<question>
+			<text>SUBJ OBJ ELA åasteme</text>
+			<element id="OBJ">
+				<sem class="VEHICLE"/>
+				<grammar pos="N+Sg+Acc"/>
+			</element>
+			<element id="ELA">
+				<sem class="PERSNAME"/>
+				<grammar pos="N+Prop+Sg+Ela"/>
+			</element>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>Jaavoe, SUBJ P-ELA åasteme</text>
+			<element game="morfa" id="P-ELA" task="yes">
+				<grammar pos="Pron+Pers+Sg3+Ela"/>
+				<sem class="MORFAC"/>
+			</element>
+		</answer>
+	</q>
+}}}
 
 
 !!Komitativøvinger
 
-* Guktie Pron+komitativ daan biejjien?
-..... (Pron+komitativ) hijven.
+* P-COM id="pcom1" id="pcom2" id="pcom3"
+** Guktie Pron+komitativ daan biejjien?
+** ..... (Pron+komitativ) hijven.
 
-* Guktie Pron+komitativ daan biejjien?
-..... (Pron+komitativ) nåake.
+* P-COM id="pcom1" id="pcom2" id="pcom3"
+** Guktie Pron+komitativ daan biejjien?
+** ..... (Pron+komitativ) nåake.
 
-* Giejnie PEOPLE fealadidh+kongr prs?
-PEOPLE ..... (Pron+komitativ) fealadidh+kongr prs.
+* P-COM id=" "  
+** Giejnie PEOPLE fealadidh+kongr prs?
+** PEOPLE ..... (Pron+komitativ) fealadidh+kongr prs.
 
 * Giejnie FAMILY MOVEMENT_V+kongr prs?
 FAMILY ..... (Pron+komitativ) MOVEMENT_V+kongr prs.
@@ -1282,8 +1406,9 @@ PROFESSION ..... (Pron+komitativ) soptsestidh+kongr prs.
 * Giejnie FAMILY daaroestidh+kongr prs?
 FAMILY ..... (Pron+komitativ) daaroestidh+kongr prs.
 
-* Giejgujmie PERSNAME digkiedidh+kongr prs?
-PERSNAME ..... (Pron+komitativ pl) digkiedidh+kongr prs.
+* P-COM id="pcom4"  
+** Giejgujmie PERSNAME digkede?
+** Dïhte ..... (Pron+komitativ pl) digkede.
 
 * Giejnie FAMILY saemiestidh+kongr prs?
 FAMILY ..... (Pron+komitativ) saemiestidh+kongr prs.
