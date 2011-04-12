@@ -8,14 +8,16 @@ Vi har eit par problemer i sme-oahpa, so eg byrja med å sjekka kva som skjer me
 
 (2)
 
+{{{
 	python2.6 install.py -g ../sme/xml/grammar_defaults.xml -q ../sme/xml/questions_nouns.xml
 	python2.6 install.py -g ../sme/xml/grammar_defaults.xml -q ../sme/xml/questions_verbs.xml
 	python2.6 install.py -g ../sme/xml/grammar_defaults.xml -q ../sme/xml/questions_numerals.xml
 	python2.6 install.py -g ../sme/xml/grammar_defaults.xml -q ../sme/xml/questions_adjectives.xml
+}}}
 
 (3) Korleis kan man installere fillings.xml? Treng dokumentasjon til den. Prøver... 
 
-	python2.6 install.py --paradigmfile ../sme/src/paradigms.txt --tagfile ../sme/src/tags.txt -f ../sme/xml/fillings.xml
+{{python2.6 install.py --paradigmfile ../sme/src/paradigms.txt --tagfile ../sme/src/tags.txt -f ../sme/xml/fillings.xml}}
 
 Kan vera at man treng ikkje generere:
 
@@ -27,26 +29,28 @@ Ogso glemt å gjera (1) først og soleis fekk en feil beskjed. No eg har gjort d
 
 Feilbeskjed til adjectiv-filen (2) er:
 
+{{{
 	  File "/Volumes/Skewl/gtsvn/ped/oahpa/questions_install.py", line 251, in read_element
 	    for w in words[p]:
 	KeyError: ''
+}}}
 
-
-!!!! Databasen lada? 
+!!! Databasen lada? 
 
 Ganske ofto eg får 'invalid quiz ID' beskjed, men eg antar at databasen er lada rett, om eg gjort rett dei tre ting som eg må gjera.
 
 Når eg prøver eit svar, så får eg: 
 
+{{{
 KeyError at /oahpa/morfac/
 userans
+}}}
 
 ... uavhengig av kva eg skrev. Eg har prøvd med å svare til alle spørsmålene, og til kun eit av deim.
 
 Hmm.
 
-
-!!!! Prøver på Smaoahpa
+!!! Prøver på Smaoahpa
 
 (1)
 
@@ -58,22 +62,18 @@ Hmm.
 
 	python2.6 install.py -g data_sma/meta/grammar_defaults.xml -q data_sma/meta/morfa_questions.xml
 
-
 (3)
 
 	python2.6 install.py -f data_sma/sma/fillings_smanob.xml --paradigmfile data_sma/meta/paradigms.txt --tagfile data_sma/meta/tags.txt 
-
 
 Sjekka databasen, alt ser riktig ut.
 
 Tester i web-grensesnitt:
 
-	ValueError at /smaoahpa/morfac_s/
-	empty range for randrange() (0,0, 0)
-
+* ValueError at /smaoahpa/morfac_s/
+* empty range for randrange() (0,0, 0)
 
 Hmm.
-
 
 !!! Forandringar til kode
 
@@ -83,7 +83,7 @@ Første feilen med 'ValueError' feil kom frå det at det var ingen spursmål i d
 
 So fekk eg andre feilbeskjeder: ein var om feedbacks, og så eg fiksa noko som kan vera eit problem i vanleg Morfa
 
-
+{{{
 	Index: smadrill/forms.py
 	===================================================================
 	--- smadrill/forms.py	(revision 40061)
@@ -100,11 +100,13 @@ So fekk eg andre feilbeskjeder: ein var om feedbacks, og så eg fiksa noko som k
 	+					text = messages[0].message
 	+					text = text.replace('WORDFORM', '"%s"' % wordform)
 	+					message_list.append(text)
+}}}
 
 Då måtte forandra eit par andre ting som var spesifisk til Morfa og (trur eg) greidde seg med andre forandringar som eg måtte gjera for å lage dei nye featurane til tcomm=yes/stat=pref og spell relaxing 
 
 Og då fann at ein funskjon var borte:
  
+{{{ 
 @@ -972,6 +975,12 @@
  
  	select_words = select_words
@@ -115,5 +117,6 @@ Og då fann at ein funskjon var borte:
 +												widget=forms.TextInput(\
 +			attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event,document.gameform);',}))		
 +
+}}}
 
 No ser det ut som det går.
