@@ -1,5 +1,5 @@
 
-Møte på Røros, 12.4. 2011
+!!!Møte på Røros, 12.-13.4. 2011
 
 Til stades: Lene, Sissel, Toini, Marit, Trond, Sylvia
 
@@ -87,8 +87,7 @@ etter påske. Gå fra to nivåer til ett nivå (bare mg).
 
 tcomm fungerer - må følges opp med å legge inn flere tcomm i leksikon.
 
-!dict="no"
-… må stå, for å unngå ordbok.
+__NB!__ {{dict="no"}} … må stå, for å unngå ordbok.
 
 !Adjektiv i ulike sett
 
@@ -101,38 +100,172 @@ del av supersettet CLOTHES, og bruk COLOUR i MorfaC.
 Tilsvarande for andre adjektiv (sjå på det).
 
 !Pronomen i Leksa
+
 Skal vekk fra Leksa
 
-! Flerordsuttrykk 
-- vurdere hvordan de fungerer
+!Flerordsuttrykk
+
+* vurdere hvordan de fungerer
 
 
 !!!Oahpa fra svensk synspunkt
 
+Tja.
+
 !!!MorfaC - laging av oppgaver
 
+Masse diskusjonar.
+
+Adjektivoppgaver:
+* Gå fra predikat til attributt.
+
+
+
 !!!Bug-meldinger
-Vi bruker Bugzilla
+
+Vi bruker [Bugzilla|http://giellatekno.uit.no/bugzilla/].
 
 !!!Grammatikken
 
-!!!Dialektdeling - vurdering av det som er implementert
+Lene legger til filer for ''adverb'' og ''adjektiv'', etterhvert ''tidsuttrykk''. Legg til eksempler på konjunksjoner/subjunksjoner, partikler, tallord osv. Deadline 1. sepember.
+
+Skal grammatikken oversettes til svensk?
+
+!!!Dialektdeling -  er ikke implementert
+
+!!Plan fra møtet 22.11.10
+# kortformer + oe = midtre - denne er default
+# langformer + oe = nordre
+# langformer + a = søndre
+
+!!Ny plan:
+# substantiv og adjektiv: oe eller a
+# verb: kort eller lang
+Default: substantiv oe og verb kort
+
+
+- merke verb i verbgruppe 1 som ikke kan ha kortform i preteritum: åeredh - gi beskjed om det er flere verb
 
 !!!Layout
+Ta kontakt med designer med sørsamisk tilknytning for å se på layout:
+- farge, bakgrunn, bokstavstørrelse/font, ikon for hjelper
+
+* Morfa-S -> Morfa-B (Morfa-Baakoeh) 
+* Morfa-C -> Morfa-R (Morfa-Raajesh)
+
 
 !!!Brukerinfo i Oahpa
 
+!!Lærarrettleiinga
+
+Vi bør ha ei felles rettleiing for alle oahpa-versjonar, med spesifikk
+info for nord- og sørsamisk. Ikke mye klikking.
+
+!!Temaordlister. 
+Ordlistene blir generert automatisk fra de semantiske settene/supersettene.
+Oversikta på nettet ter oppdatert, bortsett frå prefikset '''m'''. Viktig at temaordlistene samsvarer med ordomfang i LEKSA.
+Evt ny inndeling, f.eks. JAKT/FISKE
+
 !!!Hjelpespråk - vi har norsk, og vi skal ha svensk,. Sørsamisk?
+
+# Grensesnittspråk - dvs. instruksjonene (lite arbeid) - til 1. sept.
+# Grammatikk og lærerveiledning (mye arbeid) - framtida? prosjekt for Aajege?
 
 !!!url-adresse
 
+I dag: ''http://oahpa.uit.no/smaoahpa''.
+
+
+http://oahpa.no. Tromsø gjer det.
+
+http://oahpa.no/saemien
+http://oahpa.no/sámi
+http://oahpa.no/sáme
+
+
 !!!Plan for arbeidet framover
 
+
+Fra møtet 17.1.2011:
+# Propaganda:
+## Kompilere til 10.2.-betaversjonen 4.2.
+## Ha ferdig 
+## Skrive heimeside, Aejege 1.2.
+## Lansere heimeside og betaversjon 7.2.
+## Pedagogiske stader: Elgå, Brekken/Røros, Snåsa/Grong, Hattfjelldal (juni)
+
+
 Plan for arbeidet fram til 1. september, (se hva vi har planlagt 
-tidligere) og lansering på 
+tidligere) og lansering.
+
+
+!!Testing før lansering
+
+Testing med elever - informere flere lærere (bør være stabil etter påske!)
+
+* Norsk side: Aajege tester med egne elever, Brekken, Snåsa, Nora
+* Svensk sida for testing: tillfrågas Marianne Persson, Ajlin Jonasen Kråik och Reinie Fjällström
+
+
+!!Lansering
+
+Noreg og Sverige.
+
+!Lansering i Norge
+
+* Várdobáiki-seminar: Aajege presenteres Oahpa og ordboka
+* Tromsø: Sametingets språkseminar - 11-12. mai
+** Toini: sørsamisk på nye arenaer
+** Berit A og Berit M: digitale hjelpemidler for samisk språk
+
+* __Dato for Lansering__: 19. oktober - oppstart av språknettverk - Norge/Sverige
+* Hvordan informere: Snakke med lærere før skoleåret er slutt?
+
+Legge inn spesifikke meldinger til brukere om ustabile perioder
+
+!Lansering i Sverige
 
 Hvordan lansere i Sverige.
-Patricia
+
+Svensk versjon av [propagandaplakaten vår|../../smaOahpaUserNy.pdf]
+
+* Bokmålsteksten til plakaten ligg på [gtsvn/ped/doc/smaOahpaUserNy_nob.txt|../../smaOahpaUserNy_nob.txt].
+* Den teksten som skal bli svensk ligg på [gtsvn/ped/doc/smaOahpaUserNy_swe.txt|../../smaOahpaUserNy_swe.txt].
+
+Bug:
+{{{
+Gusnie viskes binte? (buertie)
+Viskes binte _jåaskoedahta_ 
+}}}
+
+
+
+!!! Arbeid med Morfa C:
+
+# adjektivoppgaver
+# Oppgaver med blanda kasus
+# Verbgenitiv-oppgaver
+# jakt/reindrift/fiske-oppgaver
+# verb + subst-liste - til oppgaver
+# variere oppgavene som allerede finnes
+
+|| ord      || Alt.1                  ||   Alt.2 
+|  vaajmoe  | vaajmoe+North+N+Sg+Nom   |  vaajmoe+N+Sg+Nom
+|  vaajma   | vaajmoe+South+N+Sg+Nom   |  vaajma+N+Sg+Nom
+
+__Vi prøver oss med alternativ 1.__
+
+Gjennomføring av ''-a-som-oe-løysinga'' (alt. 1):
+
+# sma-lex.txt
+# leksikon
+# dict
+# oahpa
+
+!!! Begrensing av generering av ordformer
+
+http://giellatekno.uit.no/ped/smadoc/begrense_generering.html
+
 
 
 
