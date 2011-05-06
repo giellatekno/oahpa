@@ -1,5 +1,6 @@
 !!!Reversert tabell over alle adjektiv - OBS! arbeidsliste for debugging
 
+Testdato: fre  6 mai 2011 12:28:06 CEST
 ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom 
 | earadæjja | earadæjja | - | - | -
 | haeniedæjja | haeniedæjja | - | - | -
@@ -40,9 +41,10 @@
 | mïrhkekruana | mïrhkekruana | mïrhkekruana | - | -
 | lastekruana | lastekruana | lastekruana | - | -
 | earna | - | earna | - | -
-| gåajpa | - | - | - | -
+| gåajpa | - | gåajpa | - | -
 | tjåalpa | tjåalpa | tjåalpan | tjåalpakabpa, tjåalpakåbpoe | tjåalpakommes
 | gåvva | gåvva | gåvva | - | -
+| dubpebe | - | - | dubpebe | dubpemes
 | evtebe | - | - | evtebe | evtemes
 | uvtebe | - | - | uvtebe | uvtemes
 | övtebe | - | - | övtebe | övtemes
@@ -57,7 +59,6 @@
 | feerlege | feerlege | feerlege | - | -
 | jiermege | jiermege | jiermege | jiermiegabpa, jiermiegåbpoe | jiermiegommes
 | åårmege | åårmege | åårmege | - | -
-| aajnege | - | - | - | -
 | rovnege | rovnege | rovnege | rovnegabpa, rovnegåbpoe | rovnegommes
 | garhpege | garhpege | garhpege | - | -
 | naabrege | naabrege | naabrege | - | -
@@ -65,7 +66,6 @@
 | vijrege | vijrege | vijrege | vijriegabpa, vijriegåbpoe | vijriegommes
 | luvrege | luvrege | luvrege | luvregabpa, luvregåbpoe | luvregommes
 | ovluvrege | ovluvrege | ovluvrege | - | -
-| gabtege | - | - | - | -
 | nieljenraadtege | nieljenraadtege | nieljenraadtege | - | -
 | madtege | madtege | madtege | - | -
 | mådtege | mådtege | mådtege | - | -
@@ -77,7 +77,6 @@
 | ovnuvhtege | ovnuvhtege | ovnuvhtege | - | -
 | gujtege | gujtege | gujtege | gujtegabpa, gujtegåbpoe | gujtegommes
 | måktege | måktege | måktege | - | -
-| gamtege | - | - | - | -
 | gabtehaartege | gabtehaartege | gabtehaartege | - | -
 | jaknge | jaknge | jaknges | jakngebe, jakngesabpa, jakngesåbpoe | jakngemes, jakngesommes
 | jarnge | jarnge | jarnges | jarngebe, jarngesabpa, jarngesåbpoe | jarngemes, jarngesommes
@@ -120,38 +119,37 @@
 | madtegeraerie | madtegeraerie | madtegeraerie | - | -
 | mådtegeraerie | mådtegeraerie | mådtegeraerie | - | -
 | buerie | buerie | buerie | buerebe | bööremes
-| såajaburrie | såajaburrie | såajaburrie | - | -
-| maanaburrie | maanaburrie | maanaburrie | - | -
-| jiermieburrie | jiermieburrie | jiermieburrie | - | -
-| baenieburrie | baenieburrie | baenieburrie | - | -
-| raerieburrie | raerieburrie | raerieburrie | - | -
-| sirrieburrie | sirrieburrie | sirrieburrie | - | -
-| ïedtjeburrie | ïedtjeburrie | ïedtjeburrie | - | -
-| spidtjeburrie | spidtjeburrie | spidtjeburrie | - | -
-| tjeaktjeburrie | tjeaktjeburrie | tjeaktjeburrie | - | -
-| tjïektjeburrie | tjïektjeburrie | tjïektjeburrie | - | -
-| byjreskeburrie | byjreskeburrie | byjreskeburrie | - | -
-| heajmeneburrie | heajmeneburrie | heajmeneburrie | - | -
-| gaerhteneburrie | gaerhteneburrie | gaerhteneburrie | - | -
-| såajoeburrie | såajoeburrie | såajoeburrie | - | -
-| beapmoeburrie | beapmoeburrie | beapmoeburrie | - | -
-| båatsoeburrie | båatsoeburrie | båatsoeburrie | - | -
-| gåptoeburrie | gåptoeburrie | gåptoeburrie | - | -
-| aavreburrie | aavreburrie | aavreburrie | - | -
-| tseaktseburrie | tseaktseburrie | tseaktseburrie | - | -
-| bovtseburrie | bovtseburrie | bovtseburrie | - | -
-| maateburrie | maateburrie | maateburrie | - | -
-| aavteburrie | aavteburrie | aavteburrie | - | -
-| jeeluveburrie | jeeluveburrie | jeeluveburrie | - | -
-| jealehburrie | jealehburrie | jealehburrie | - | -
-| jielehburrie | jielehburrie | jielehburrie | - | -
-| bovtsenburrie | bovtsenburrie | bovtsenburrie | - | -
+| såajaburrie | såajabuerie, såajaburrie | såajabuerie, såajaburrie | - | -
+| maanaburrie | maanabuerie, maanaburrie | maanabuerie, maanaburrie | - | -
+| jiermieburrie | jiermiebuerie, jiermieburrie | jiermiebuerie, jiermieburrie | - | -
+| baenieburrie | baeniebuerie, baenieburrie | baeniebuerie, baenieburrie | - | -
+| raerieburrie | raeriebuerie, raerieburrie | raeriebuerie, raerieburrie | - | -
+| sirrieburrie | sirriebuerie, sirrieburrie | sirriebuerie, sirrieburrie | - | -
+| ïedtjeburrie | ïedtjebuerie, ïedtjeburrie | ïedtjebuerie, ïedtjeburrie | - | -
+| spidtjeburrie | spidtjebuerie, spidtjeburrie | spidtjebuerie, spidtjeburrie | - | -
+| tjeaktjeburrie | tjeaktjebuerie, tjeaktjeburrie | tjeaktjebuerie, tjeaktjeburrie | - | -
+| tjïektjeburrie | tjïektjebuerie, tjïektjeburrie | tjïektjebuerie, tjïektjeburrie | - | -
+| byjreskeburrie | byjreskebuerie, byjreskeburrie | byjreskebuerie, byjreskeburrie | - | -
+| heajmeneburrie | heajmenebuerie, heajmeneburrie | heajmenebuerie, heajmeneburrie | - | -
+| gaerhteneburrie | gaerhtenebuerie, gaerhteneburrie | gaerhtenebuerie, gaerhteneburrie | - | -
+| såajoeburrie | såajoebuerie, såajoeburrie | såajoebuerie, såajoeburrie | - | -
+| beapmoeburrie | beapmoebuerie, beapmoeburrie | beapmoebuerie, beapmoeburrie | - | -
+| båatsoeburrie | båatsoebuerie, båatsoeburrie | båatsoebuerie, båatsoeburrie | - | -
+| gåptoeburrie | gåptoebuerie, gåptoeburrie | gåptoebuerie, gåptoeburrie | - | -
+| aavreburrie | aavrebuerie, aavreburrie | aavrebuerie, aavreburrie | - | -
+| tseaktseburrie | tseaktsebuerie, tseaktseburrie | tseaktsebuerie, tseaktseburrie | - | -
+| bovtseburrie | bovtsebuerie, bovtseburrie | bovtsebuerie, bovtseburrie | - | -
+| maateburrie | maatebuerie, maateburrie | maatebuerie, maateburrie | - | -
+| aavteburrie | aavtebuerie, aavteburrie | aavtebuerie, aavteburrie | - | -
+| jeeluveburrie | jeeluvebuerie, jeeluveburrie | jeeluvebuerie, jeeluveburrie | - | -
+| jealehburrie | jealehbuerie, jealehburrie | jealehbuerie, jealehburrie | - | -
+| jielehburrie | jielehbuerie, jielehburrie | jielehbuerie, jielehburrie | - | -
+| bovtsenburrie | bovtsenbuerie, bovtsenburrie | bovtsenbuerie, bovtsenburrie | - | -
 | ovmessie | ovmessie | ovmessie | - | -
 | guessie | guessie | - | - | -
 | bissie | bissie | bissie | bissebe | bissemes
 | ovmissie | ovmissie | ovmissie | - | -
 | uhtsie | uhtsie | uhtsie | uhtsebe | uhtsemes
-| ektie | - | - | - | -
 | gaarvasiktie | gaarvasiktie | gaarvasiktie | - | -
 | bæjjhkuktie | bæjjhkuktie | bæjjhkuktie | - | -
 | smealuktie | smealuktie | smealuktie | - | -
@@ -200,14 +198,14 @@
 | dejpeladtje | dejpeladtje | dejpeladtje | - | -
 | tyjpeladtje | tyjpeladtje | tyjpeladtje | - | -
 | gyjhteladtje | gyjhteladtje | gyjhteladtje | - | -
-| jealamadtje | - | jealamadtjee | - | -
+| jealamadtje | - | jealamadtje | - | -
 | stuaralaakasadtje | - | stuaralaakasadtje | - | -
-| aebliehtadtje | - | aebliehtadtjee | - | -
-| skaemiehtadtje | - | skaemiehtadtjee | - | -
-| tjelmiehtadtje | - | tjelmiehtadtjee | - | -
+| aebliehtadtje | - | aebliehtadtje | - | -
+| skaemiehtadtje | - | skaemiehtadtje | - | -
+| tjelmiehtadtje | - | tjelmiehtadtje | - | -
 | jissiehtadtje | jissiehtadtje | - | - | -
-| gïelehtadtje | - | gïelehtadtjee | - | -
-| vaaradodtje | - | vaaradodtjee | - | -
+| gïelehtadtje | - | gïelehtadtje | - | -
+| vaaradodtje | - | vaaradodtje | - | -
 | gallasodtje | gallasodtje | gallasodtje | - | -
 | beajjetje | beajjetje | - | - | -
 | daanbeajjetje | daanbeajjetje | - | - | -
@@ -502,54 +500,13 @@
 | murhteske | murhteske | murhteske | - | -
 | baakteske | baakteske | baakteske | - | -
 | pluaveske | pluaveske | pluaveske | - | -
-| baltiske | - | - | - | -
-| spedalske | - | - | - | -
-| martsialske | - | - | - | -
-| martialske | - | - | - | -
-| leksikalske | - | - | - | -
-| fysikalske | - | - | - | -
-| matriarkalske | - | - | - | -
-| patriarkalske | - | - | - | -
-| infernalske | - | - | - | -
-| nepalske | - | - | - | -
-| orientalske | - | - | - | -
-| flaamske | - | - | - | -
-| flamske | - | - | - | -
-| republikaanske | - | - | - | -
-| kubanske | - | - | - | -
-| costaricanske | - | - | - | -
-| danske | danskee | danskees | - | -
-| kolombianske | - | - | - | -
-| fijianske | - | - | - | -
-| sicilianske | - | - | - | -
-| nigerianske | - | - | - | -
-| presbyterianske | - | - | - | -
-| ecuadorianske | - | - | - | -
-| dominikanske | - | - | - | -
-| panamanske | - | - | - | -
-| romanske | - | - | - | -
-| germanske | - | - | - | -
-| burmanske | - | - | - | -
-| spanske | spanskee | spanskees | - | -
-| franske | franskee | franskees | - | -
-| salvadoranske | - | - | - | -
-| spartanske | - | - | - | -
-| pakistanske | - | - | - | -
-| paraguayanske | - | - | - | -
-| paraguyanske | - | - | - | -
-| ceylåanske | - | - | - | -
-| chileenske | - | - | - | -
-| rumeenske | - | - | - | -
-| svïenske | svïenskee | svïenskees | - | -
-| filippïnske | - | - | - | -
-| palestïnske | - | - | - | -
-| sangvïnske | - | - | - | -
+| danske | danske | danskes | - | -
+| spanske | spanske | spanskes | - | -
+| franske | franske | franskes | - | -
+| svïenske | svïenske | svïenskes | - | -
 | aavroske | aavroske | aavroske | aavroskabpa, aavroskåbpoe | aavroskommes
-| bulgarske | - | - | - | -
-| qutarske | - | - | - | -
-| romerske | - | - | - | -
 | fïerske | fïerske | fïerskes | fïerskesabpa, fïerskesåbpoe, fïerskebe | fïerskesommes, fïerskemes
-| sibïrske | sibïrskee | sibïrskees | - | -
+| sibïrske | sibïrske | sibïrskes | - | -
 | skåatske | skåatske | skåatskes | skåatskebe | skåatskemes
 | tsåatske | tsåatske | tsåatskes | tsåatskebe, tsåatskesabpa, tsåatskesåbpoe | tsåatskemes, tsåatskesommes
 | ovgodtske | ovgodtske | ovgodtskes | ovgodtskebe | ovgodtskemes
@@ -557,9 +514,6 @@
 | njoetske | njoetske | njoetskes | njoetskesabpa, njoetskesåbpoe, njoetskebe | njoetskesommes, njoetskemes
 | mïetske | mïetske | mïetskes | mïetskebe, mïetskesabpa, mïetskesåbpoe | mïetskemes, mïetskesommes
 | njeeruvske | njeeruvske | njeeruvske | njeeruvskabpa, njeeruvskåbpoe | njeeruvskommes
-| libyske | - | - | - | -
-| tabellarïske | - | - | - | -
-| baltïske | - | - | - | -
 | globaale | globaale, globaales | globaale, globaales | globaalebe | globaalemes
 | verbaale | verbaale, verbaales | verbaale, verbaales | verbaalebe | verbaalemes
 | feudaale | feudaale, feudaales | feudaale, feudaales | feudaalebe | feudaalemes
@@ -604,7 +558,6 @@
 | bestijaale | bestijaale, bestijaales | bestijaale, bestijaales | bestijaalebe | bestijaalemes
 | jovijaale | jovijaale, jovijaales | jovijaale, jovijaales | jovijaalebe | jovijaalemes
 | leksikaale | leksikaale, leksikaales | leksikaale, leksikaales | leksikaalebe | leksikaalemes
-| unormaale | - | - | - | -
 | ovnormaale | ovnormaale, ovnormaales | ovnormaale, ovnormaales | ovnormaalebe | ovnormaalemes
 | banaale | banaale, banaales | banaale, banaales | banaalebe | banaalemes
 | fenomenaale | fenomenaale, fenomenaales | fenomenaale, fenomenaales | fenomenaalebe | fenomenaalemes
@@ -630,11 +583,6 @@
 | tonaale | tonaale, tonaales | tonaale, tonaales | tonaalebe | tonaalemes
 | atonaale | atonaale, atonaales | atonaale, atonaales | atonaalebe | atonaalemes
 | kommunaale | kommunaale, kommunaales | kommunaale, kommunaales | kommunaalebe | kommunaalemes
-| internasjovnaale | - | - | - | -
-| rasjovnaale | - | - | - | -
-| irrasjovnaale | - | - | - | -
-| endimensjovnaale | - | - | - | -
-| proporsjovnaale | - | - | - | -
 | episkopaale | episkopaale, episkopaales | episkopaale, episkopaales | episkopaalebe | episkopaalemes
 | cerebraale | cerebraale, cerebraales | cerebraale, cerebraales | cerebraalebe | cerebraalemes
 | liberaale | liberaale, liberaales | liberaale, liberaales | liberaalebe | liberaalemes
@@ -665,7 +613,6 @@
 | fundamentaale | fundamentaale, fundamentaales | fundamentaale, fundamentaales | fundamentaalebe | fundamentaalemes
 | departementaale | departementaale, departementaales | departementaale, departementaales | departementaalebe | departementaalemes
 | sentimentaale | sentimentaale, sentimentaales | sentimentaale, sentimentaales | sentimentaalebe | sentimentaalemes
-| usentimentaale | - | - | - | -
 | ovsentimentaale | ovsentimentaale, ovsentimentaales | ovsentimentaale, ovsentimentaales | ovsentimentaalebe | ovsentimentaalemes
 | monumentaale | monumentaale, monumentaales | monumentaale, monumentaales | monumentaalebe | monumentaalemes
 | kontinentaale | kontinentaale, kontinentaales | kontinentaale, kontinentaales | kontinentaalebe | kontinentaalemes
@@ -686,7 +633,6 @@
 | variaabele | variaabele | variaabeles | variaabelabpa, variaabelåbpoe | variaabelommes
 | varijaabele | varijaabele | varijaabeles | varijaabelabpa, varijaabelåbpoe | varijaabelommes
 | fasjonaabele | fasjonaabele | fasjonaabeles | fasjonaabelabpa, fasjonaabelåbpoe | fasjonaabelommes
-| fasjovnaabele | - | - | - | -
 | kapaabele | kapaabele | kapaabeles | kapaabelabpa, kapaabelåbpoe | kapaabelommes
 | desideraabele | desideraabele | desideraabeles | desideraabelabpa, desideraabelåbpoe | desideraabelommes
 | miseraabele | miseraabele | miseraabeles | miseraabelabpa, miseraabelåbpoe | miseraabelommes
@@ -717,7 +663,6 @@
 | vïdtjele | vïdtjeles, vïdtjele | vïdtjele, vïdtjeles | vïdtjielabpa, vïdtjielåbpoe | vïdtjielommes
 | vïetjele | vïetjeles, vïetjele | vïetjele, vïetjeles | vïetjielabpa, vïetjielåbpoe | vïetjielommes
 | soejhkele | soejhkeles, soejhkele | soejhkeles, soejhkele | soejhkelabpa, soejhkelåbpoe | soejhkelommes
-| gojkele | - | - | - | -
 | vååvnele | vååvnele | vååvnele | vååvnelabpa, vååvnelåbpoe | vååvnelommes
 | svååjpele | svååjpeles, svååjpele | svååjpeles, svååjpele | svååjpelabpa, svååjpelåbpoe | svååjpelommes
 | ovdæjpele | ovdæjpeles, ovdæjpele | ovdæjpele, ovdæjpeles | ovdæjpalabpa, ovdæjpalåbpoe | ovdæjpalommes
@@ -727,7 +672,6 @@
 | bossele | bosseles, bossele | bosseles, bossele | bosselabpa, bosselåbpoe | bosselommes
 | soetele | soeteles, soetele | soeteles, soetele | soetelabpa, soetelåbpoe | soetelommes
 | skaajvele | skaajvele | skaajvele | skaajvelabpa, skaajvelåbpoe | skaajvelommes
-| gæævele | - | - | - | -
 | gelliengïele | gelliengïele | gelliengïeles | - | -
 | guelmiengïele | guelmiengïele | guelmiengïeles | - | -
 | guektiengïele | guektiengïele | guektiengïeles | - | -
@@ -753,136 +697,107 @@
 | sivijle | sivijle, sivïjle | sivijles, sivïjles | sivijlebe, sivïjlebe | sivijlemes, sivïjlemes
 | servijle | servijle, servïjle | servijles, servïjles | servijlebe, servïjlebe | servijlemes, servïjlemes
 | jalle | jalle | jalle | jallebe | jallemes
-| reelle | reellee | reellees | - | -
-| irreelle | irreellee | irreellees | - | -
-| radielle | radiellee | radiellees | - | -
-| prinsipielle | prinsipiellee | prinsipiellees | - | -
-| materielle | materiellee | materiellees | - | -
-| ministerielle | ministeriellee | ministeriellees | - | -
-| industrielle | industriellee | industriellees | - | -
-| spesielle | spesiellee | spesiellees | - | -
-| offisielle | offisiellee | offisiellees | - | -
-| artifisielle | artifisiellee | artifisiellees | - | -
-| aksielle | aksiellee | aksiellees | - | -
-| finansielle | finansiellee | finansiellees | - | -
-| substansielle | substansiellee | substansiellees | - | -
-| konfidensielle | konfidensiellee | konfidensiellees | - | -
-| tangensielle | tangensiellee | tangensiellees | - | -
-| essensielle | essensiellee | essensiellees | - | -
-| potensielle | potensiellee | potensiellees | - | -
-| eksistensielle | eksistensiellee | eksistensiellees | - | -
-| provinsielle | provinsiellee | provinsiellees | - | -
-| kommersielle | kommersiellee | kommersiellees | - | -
-| kontroversielle | kontroversiellee | kontroversiellees | - | -
-| partielle | partiellee | partiellees | - | -
-| trivielle | triviellee | triviellees | - | -
-| rejelle | rejellee | rejellees | - | -
-| radijelle | radijellee | radijellees | - | -
-| prinsipijelle | prinsipijellee | prinsipijellees | - | -
-| ministerijelle | ministerijellee | ministerijellees | - | -
-| industrijelle | industrijellee | industrijellees | - | -
-| spesijelle | spesijellee | spesijellees | - | -
-| offisijelle | offisijellee | offisijellees | - | -
-| artifisijelle | artifisijellee | artifisijellees | - | -
-| aksijelle | aksijellee | aksijellees | - | -
-| finansijelle | finansijellee | finansijellees | - | -
-| substansijelle | substansijellee | substansijellees | - | -
-| konfidensijelle | konfidensijellee | konfidensijellees | - | -
-| tangensijelle | tangensijellee | tangensijellees | - | -
-| essensijelle | essensijellee | essensijellees | - | -
-| potensijelle | potensijellee | potensijellees | - | -
-| eksistensijelle | eksistensijellee | eksistensijellees | - | -
-| provinsijelle | provinsijellee | provinsijellees | - | -
-| kommersijelle | kommersijellee | kommersijellees | - | -
-| kontroversijelle | kontroversijellee | kontroversijellees | - | -
-| partijelle | partijellee | partijellees | - | -
-| trivijelle | trivijellee | trivijellees | - | -
-| parallelle | parallellee | parallellees | - | -
-| formelle | formellee | formellees | - | -
-| maskinelle | maskinellee | maskinellees | - | -
-| datamaskinelle | datamaskinellee | datamaskinellees | - | -
-| kriminelle | kriminellee | kriminellees | - | -
-| nominelle | nominellee | nominellees | - | -
-| pronominelle | pronominellee | pronominellees | - | -
-| rasjonelle | rasjonellee | rasjonellees | - | -
-| sensasjonelle | - | - | - | -
-| profesjonelle | profesjonellee | profesjonellees | - | -
-| tradisjonelle | tradisjonellee | tradisjonellees | - | -
-| opposisjonelle | opposisjonellee | opposisjonellees | - | -
-| redaksjonelle | redaksjonellee | redaksjonellees | - | -
-| funksjonelle | - | - | - | -
-| konvensjonelle | konvensjonellee | konvensjonellees | - | -
-| ukonvensjonelle | - | - | - | -
-| emosjonelle | - | - | - | -
-| konstitusjonelle | konstitusjonellee | konstitusjonellees | - | -
-| personelle | personellee | personellees | - | -
-| rasjovnelle | - | - | - | -
-| irrasjovnelle | - | - | - | -
-| sensasjovnelle | - | - | - | -
-| profesjovnelle | - | - | - | -
-| tradisjovnelle | - | - | - | -
-| opposisjovnelle | - | - | - | -
-| redaksjovnelle | - | - | - | -
-| funksjovnelle | - | - | - | -
-| konvensjovnelle | - | - | - | -
-| ukonvensjovnelle | - | - | - | -
-| emosjovnelle | - | - | - | -
-| eksepsjovnelle | eksepsjovnellee | eksepsjovnellees | - | -
-| konstitusjovnelle | - | - | - | -
-| strukturelle | strukturellee | strukturellees | - | -
-| kulturelle | kulturellee | kulturellees | - | -
-| sosiokulturelle | sosiokulturellee | sosiokulturellees | - | -
-| sosiokultuvrelle | - | - | - | -
-| universelle | universellee | universellees | - | -
-| eksperimentelle | eksperimentellee | eksperimentellees | - | -
-| individuelle | individuellee | individuellees | - | -
-| manuelle | manuellee | manuellees | - | -
-| visuelle | visuellee | visuellees | - | -
-| audiovisuelle | audiovisuellee | audiovisuellees | - | -
-| seksuelle | seksuellee | seksuellees | - | -
-| biseksuelle | biseksuellee | biseksuellees | - | -
-| homoseksuelle | homoseksuellee | homoseksuellees | - | -
-| sensuelle | sensuellee | sensuellees | - | -
-| prosessuelle | prosessuellee | prosessuellees | - | -
-| rituelle | rituellee | rituellees | - | -
-| spirituelle | spirituellee | spirituellees | - | -
-| aktuelle | aktuellee | aktuellees | - | -
-| intellektuelle | intellektuellee | intellektuellees | - | -
-| eventuelle | eventuellee | eventuellees | - | -
-| virtuelle | virtuellee | virtuellees | - | -
-| individuvelle | individuvellee | individuvellees | - | -
-| visuvelle | visuvellee | visuvellees | - | -
-| audiovisuvelle | audiovisuvellee | audiovisuvellees | - | -
-| biseksuvelle | biseksuvellee | biseksuvellees | - | -
-| homoseksuvelle | homoseksuvellee | homoseksuvellees | - | -
-| sensuvelle | sensuvellee | sensuvellees | - | -
-| prosessuvelle | prosessuvellee | prosessuvellees | - | -
-| rituvelle | rituvellee | rituvellees | - | -
-| spirituvelle | spirituvellee | spirituvellees | - | -
-| aktuvelle | aktuvellee | aktuvellees | - | -
-| intellektuvelle | intellektuvellee | intellektuvellees | - | -
-| eventuvelle | eventuvellee | eventuvellees | - | -
-| virtuvelle | virtuvellee | virtuvellees | - | -
+| reelle | reelle | reelles | - | -
+| irreelle | irreelle | irreelles | - | -
+| radielle | radielle | radielles | - | -
+| prinsipielle | prinsipielle | prinsipielles | - | -
+| materielle | materielle | materielles | - | -
+| ministerielle | ministerielle | ministerielles | - | -
+| industrielle | industrielle | industrielles | - | -
+| spesielle | spesielle | spesielles | - | -
+| offisielle | offisielle | offisielles | - | -
+| artifisielle | artifisielle | artifisielles | - | -
+| aksielle | aksielle | aksielles | - | -
+| finansielle | finansielle | finansielles | - | -
+| substansielle | substansielle | substansielles | - | -
+| konfidensielle | konfidensielle | konfidensielles | - | -
+| tangensielle | tangensielle | tangensielles | - | -
+| essensielle | essensielle | essensielles | - | -
+| potensielle | potensielle | potensielles | - | -
+| eksistensielle | eksistensielle | eksistensielles | - | -
+| provinsielle | provinsielle | provinsielles | - | -
+| kommersielle | kommersielle | kommersielles | - | -
+| kontroversielle | kontroversielle | kontroversielles | - | -
+| partielle | partielle | partielles | - | -
+| trivielle | trivielle | trivielles | - | -
+| rejelle | rejelle | rejelles | - | -
+| radijelle | radijelle | radijelles | - | -
+| prinsipijelle | prinsipijelle | prinsipijelles | - | -
+| ministerijelle | ministerijelle | ministerijelles | - | -
+| industrijelle | industrijelle | industrijelles | - | -
+| spesijelle | spesijelle | spesijelles | - | -
+| offisijelle | offisijelle | offisijelles | - | -
+| artifisijelle | artifisijelle | artifisijelles | - | -
+| aksijelle | aksijelle | aksijelles | - | -
+| finansijelle | finansijelle | finansijelles | - | -
+| substansijelle | substansijelle | substansijelles | - | -
+| konfidensijelle | konfidensijelle | konfidensijelles | - | -
+| tangensijelle | tangensijelle | tangensijelles | - | -
+| essensijelle | essensijelle | essensijelles | - | -
+| potensijelle | potensijelle | potensijelles | - | -
+| eksistensijelle | eksistensijelle | eksistensijelles | - | -
+| provinsijelle | provinsijelle | provinsijelles | - | -
+| kommersijelle | kommersijelle | kommersijelles | - | -
+| kontroversijelle | kontroversijelle | kontroversijelles | - | -
+| partijelle | partijelle | partijelles | - | -
+| trivijelle | trivijelle | trivijelles | - | -
+| parallelle | parallelle | parallelles | - | -
+| formelle | formelle | formelles | - | -
+| maskinelle | maskinelle | maskinelles | - | -
+| datamaskinelle | datamaskinelle | datamaskinelles | - | -
+| kriminelle | kriminelle | kriminelles | - | -
+| nominelle | nominelle | nominelles | - | -
+| pronominelle | pronominelle | pronominelles | - | -
+| rasjonelle | rasjonelle | rasjonelles | - | -
+| profesjonelle | profesjonelle | profesjonelles | - | -
+| tradisjonelle | tradisjonelle | tradisjonelles | - | -
+| opposisjonelle | opposisjonelle | opposisjonelles | - | -
+| redaksjonelle | redaksjonelle | redaksjonelles | - | -
+| konvensjonelle | konvensjonelle | konvensjonelles | - | -
+| konstitusjonelle | konstitusjonelle | konstitusjonelles | - | -
+| personelle | personelle | personelles | - | -
+| eksepsjovnelle | eksepsjovnelle | eksepsjovnelles | - | -
+| strukturelle | strukturelle | strukturelles | - | -
+| kulturelle | kulturelle | kulturelles | - | -
+| sosiokulturelle | sosiokulturelle | sosiokulturelles | - | -
+| universelle | universelle | universelles | - | -
+| eksperimentelle | eksperimentelle | eksperimentelles | - | -
+| individuelle | individuelle | individuelles | - | -
+| manuelle | manuelle | manuelles | - | -
+| visuelle | visuelle | visuelles | - | -
+| audiovisuelle | audiovisuelle | audiovisuelles | - | -
+| seksuelle | seksuelle | seksuelles | - | -
+| biseksuelle | biseksuelle | biseksuelles | - | -
+| homoseksuelle | homoseksuelle | homoseksuelles | - | -
+| sensuelle | sensuelle | sensuelles | - | -
+| prosessuelle | prosessuelle | prosessuelles | - | -
+| rituelle | rituelle | rituelles | - | -
+| spirituelle | spirituelle | spirituelles | - | -
+| aktuelle | aktuelle | aktuelles | - | -
+| intellektuelle | intellektuelle | intellektuelles | - | -
+| eventuelle | eventuelle | eventuelles | - | -
+| virtuelle | virtuelle | virtuelles | - | -
+| individuvelle | individuvelle | individuvelles | - | -
+| visuvelle | visuvelle | visuvelles | - | -
+| audiovisuvelle | audiovisuvelle | audiovisuvelles | - | -
+| biseksuvelle | biseksuvelle | biseksuvelles | - | -
+| homoseksuvelle | homoseksuvelle | homoseksuvelles | - | -
+| sensuvelle | sensuvelle | sensuvelles | - | -
+| prosessuvelle | prosessuvelle | prosessuvelles | - | -
+| rituvelle | rituvelle | rituvelles | - | -
+| spirituvelle | spirituvelle | spirituvelles | - | -
+| aktuvelle | aktuvelle | aktuvelles | - | -
+| intellektuvelle | intellektuvelle | intellektuvelles | - | -
+| eventuvelle | eventuvelle | eventuvelles | - | -
+| virtuvelle | virtuvelle | virtuvelles | - | -
 | jolle | jolle | jolle | jollebe | jollemes
 | jïlle | jïlle | jïlle | jillebe | jillemes
 | tjöölle | tjöölle | tjöölle | tjööllebe | tjööllemes
-| stabïle | - | - | - | -
-| senïle | - | - | - | -
-| presenïle | - | - | - | -
-| febrïle | - | - | - | -
-| sterïle | sterïlee | sterïlees | - | -
-| puerïle | - | - | - | -
-| virïle | - | - | - | -
-| subtïle | - | - | - | -
-| sivïle | - | - | - | -
-| servïle | - | - | - | -
-| infaame | infaamee | infaamees | - | -
-| monogaame | monogaamee | monogaamees | - | -
-| polygaame | polygaamee | polygaamees | - | -
+| sterïle | sterïle | sterïles | - | -
+| infaame | infaame | infaames | - | -
+| monogaame | monogaame | monogaames | - | -
+| polygaame | polygaame | polygaames | - | -
 | jaame | jaame | jaames | - | -
-| infame | - | - | - | -
-| monogame | - | - | - | -
-| polygame | - | - | - | -
 | saasneme | - | saasneme | - | -
 | jahtseme | jahtseme | jahtseme | jahtsemabpa, jahtsemåbpoe | jahtsemommes
 | dakteme | - | dakteme | - | -
@@ -894,7 +809,6 @@
 | jaabne | jaabne | jaabnes | jaabnebe | jaabnemes
 | jïebne | jïebne | jïebnes | jïebnebe | jïebnemes
 | jeene | jeene | jeene | jeenebe | jeenemes
-| feejjene | - | - | - | -
 | geerjene | - | geerjene | - | -
 | håakene | - | håakene | - | -
 | hååkene | - | hååkene | - | -
@@ -911,7 +825,6 @@
 | saasne | saasne | - | - | -
 | provne | provne | provnes | provnebe | provnemes
 | hearhkoe | hearhkoe | - | - | -
-| dubpe | - | - | dubpebe | dubpemes
 | saajhpe | saajhpe | saajhpes | saajhpebe, saajhpesabpa, saajhpesåbpoe | saajhpemes, saajhpesommes
 | gïemhpe | gïemhpe | gïemhpes | gïemhpebe, gïemhpesabpa, gïemhpesåbpoe | gïemhpemes, gïemhpesommes
 | saajpe | saajpe | saajpes | saajpebe, saajpesabpa, saajpesåbpoe | saajpemes, saajpesommes
@@ -952,18 +865,15 @@
 | tertiæære | tertiæære | tertiææres | tertiæærebe | tertiææremes
 | linejæære | linejæære | linejææres | linejæærebe | linejææremes
 | subsidijæære | subsidijæære | subsidijææres | subsidijæærebe | subsidijææremes
-| pekunijæære | - | - | - | -
 | tertijæære | tertijæære | tertijææres | tertijæærebe | tertijææremes
 | prekæære | prekæære | prekææres | prekæærebe | prekææremes
 | ummese | ummese | - | - | -
 | ovmese | ovmese | - | - | -
 | saajse | saajse | saajses | saajsebe, saajsesabpa, saajsesåbpoe | saajsemes, saajsesommes
 | saakse | saakse | saakses | saaksebe, saaksesabpa, saaksesåbpoe | saaksemes, saaksesommes
-| perpleekse | - | - | - | -
-| konveekse | - | - | - | -
-| perplekse | perpleksee | perpleksees | - | -
-| konvekse | konveksee | konveksees | - | -
-| ortodokse | ortodoksee | ortodoksees | - | -
+| perplekse | perplekse | perplekses | - | -
+| konvekse | konvekse | konvekses | - | -
+| ortodokse | ortodokse | ortodokses | - | -
 | kruanasisse | kruanasisse | kruanasisse | - | -
 | bueriesisse | bueriesisse | bueriesisse | - | -
 | båeriesisse | båeriesisse | båeriesisse | - | -
@@ -975,18 +885,18 @@
 | gïsse | gïsse | gïsse, gïssege | gissebe | gissemes
 | njoetse | njoetse | njoetse | njoetsebe | njoetsemes
 | njoektse | njoektse | njoektses | njoektsebe, njoektsesabpa, njoektsesåbpoe | njoektsemes, njoektsesommes
-| melodijööse | melodijöösee | melodijöösees | - | -
+| melodijööse | melodijööse | melodijööses | - | -
 | tjööse | tjööse | tjööse | - | -
 | drabloetjööse | drabloetjööse | drabloetjööse | - | -
-| sjikanööse | sjikanöösee | sjikanöösees | - | -
-| ominööse | ominöösee | ominöösees | - | -
-| voluminööse | voluminöösee | voluminöösees | - | -
-| pompööse | pompöösee | pompöösees | - | -
-| fibrööse | fibröösee | fibröösees | - | -
-| sjenerööse | sjeneröösee | sjeneröösees | - | -
-| rigorööse | rigoröösee | rigoröösees | - | -
-| porööse | poröösee | poröösees | - | -
-| nervööse | nervöösee | nervöösees | - | -
+| sjikanööse | sjikanööse | sjikanööses | - | -
+| ominööse | ominööse | ominööses | - | -
+| voluminööse | voluminööse | voluminööses | - | -
+| pompööse | pompööse | pompööses | - | -
+| fibrööse | fibrööse | fibrööses | - | -
+| sjenerööse | sjenerööse | sjenerööses | - | -
+| rigorööse | rigorööse | rigorööses | - | -
+| porööse | porööse | porööses | - | -
+| nervööse | nervööse | nervööses | - | -
 | gabte | gabte | gabte | gebtebe | gebtemes
 | spaajhte | spaajhte | spaajhte | spaajhtebe | spaajhtemes
 | uvhte | uvhte | uvhte | uvhtebe | uvhtemes
@@ -1011,7 +921,6 @@
 | dïeve | dïeve | dïeves | dïevebe, dïevesabpa, dïevesåbpoe | dïevemes, dïevesommes
 | tjïeve | tjïeve | tjïeves | tjïevebe | tjïevemes
 | tjalhve | tjalhve | tjalhve | tjalhvebe | tjalhvemes
-| positive | - | - | - | -
 | negatïjve | negatijve, negatïjve | negatijve, negatïjve | negatijvebe, negatïjvebe | negatijvemes, negatïjvemes
 | transitïjve | transitijve, transitïjve | transitijve, transitïjve | transitijvebe, transitïjvebe | transitijvemes, transitïjvemes
 | positïjve | positijve, positïjve | positijve, positïjve | positijvebe, positïjvebe | positijvemes, positïjvemes
@@ -1081,7 +990,6 @@
 | raagkah | raagkah | raagkan | raagkahkabpa, raagkahkåbpoe | raagkahkommes
 | bagkah | bagkah | bagkan | bagkahkabpa, bagkahkåbpoe | bagkahkommes
 | tseagkah | tseagkah | tseagkan | tseagkahkabpa, tseagkahkåbpoe | tseagkahkommes
-| preangkah | - | - | - | -
 | pleahkah | pleahkah | pleahkan | pleahkahkabpa, pleahkahkåbpoe | pleahkahkommes
 | neahkah | neahkah | neahkah | neahkahkabpa, neahkahkåbpoe | neahkahkommes
 | smuahkah | smuahkah | smuahkan | smuahkahkabpa, smuahkahkåbpoe | smuahkahkommes
@@ -1558,8 +1466,7 @@
 | rwandan | rwandan | - | - | -
 | koreean | koreean | - | - | -
 | kampuchean | kampuchean | - | - | -
-| guinean | - | - | - | -
-| tjakngan | - | - | tjaknganabpa, tjaknganåbpoe | tjaknganommes
+| tjakngan | tjakngan | tjakngan | tjaknganabpa, tjaknganåbpoe | tjaknganommes
 | marngan | marngan | marngan | - | -
 | nuajjan | nuajjan | nuajjan | nåajjakabpa, nåajjakåbpoe | nåajjakommes
 | suajjan | suajjan | suajjan | - | -
@@ -1663,9 +1570,7 @@
 | symbovlen | symbovlen | - | - | -
 | islaamen | islaamen | - | - | -
 | elyjsiumen | elyjsiumen | - | - | -
-| elysiumen | - | - | - | -
 | elyjsijumen | elyjsijumen | - | - | -
-| elysijumen | - | - | - | -
 | omaanen | omaanen | - | - | -
 | iraanen | iraanen | - | - | -
 | pakistaanen | pakistaanen | - | - | -
@@ -1690,7 +1595,6 @@
 | kashmijren | kashmijren | - | - | -
 | salvadovren | salvadovren | - | - | -
 | hellasen | hellasen | - | - | -
-| pythagorasen | - | - | - | -
 | pythagovrasen | pythagovrasen | - | - | -
 | honduvrasen | honduvrasen | - | - | -
 | singaleesen | singaleesen | - | - | -
@@ -1713,7 +1617,6 @@
 | kruanamasten | kruanamasth, kruanamasts, kruanamasten, kruanamastes | kruanamasten | - | -
 | plaavemasten | plaavemasth, plaavemasts, plaavemasten, plaavemastes | plaavemasten | - | -
 | gaajhkedenmasten | gaajhkedenmasth, gaajhkedenmasts, gaajhkedenmasten, gaajhkedenmastes | gaajhkedenmasten | - | -
-| gaasedenmasten | - | - | - | -
 | fiejliesmasten | fiejliesmasth, fiejliesmasts, fiejliesmasten, fiejliesmastes | fiejliesmasten | - | -
 | kruepiesmasten | kruepiesmasth, kruepiesmasts, kruepiesmasten, kruepiesmastes | kruepiesmasten | - | -
 | reepsesmasten | reepsesmasth, reepsesmasts, reepsesmasten, reepsesmastes | reepsesmasten | - | -
@@ -1727,7 +1630,6 @@
 | monacon | monacon | - | - | -
 | mexicon | mexicon | - | - | -
 | elyjsion | elyjsion | - | - | -
-| elysion | - | - | - | -
 | meksikon | meksikon | - | - | -
 | marokkon | marokkon | - | - | -
 | naurun | naurun | - | - | -
@@ -1820,8 +1722,6 @@
 | joeleds | joeleds | joelede, joeleds | joeledabpa, joeledåbpoe | joeledommes
 | sueleds | sueleds | - | - | -
 | iemeds | iemeds | iemede, iemeds | iemiedabpa, iemiedåbpoe | iemiedommes
-| bueriesjigneds | - | - | - | -
-| bueriesjugneds | - | - | - | -
 | låabpeds | låabpeds | låabpede, låabpeds | låabpedabpa, låabpedåbpoe | låabpedommes
 | voepeds | voepeds | voepede, voepeds | voepedabpa, voepedåbpoe | voepedommes
 | geahpeds | geahpeds | - | - | -
@@ -2156,7 +2056,6 @@
 | siengeles | siengeles | siengeles, siengele | siengielabpa, siengielåbpoe | siengielommes
 | gïengeles | gïengeles | gïengeles, gïengele | gïengielabpa, gïengielåbpoe | gïengielommes
 | diftongeles | diftongeles | diftongeles | - | -
-| dialogeles | - | - | - | -
 | dialåågeles | dialåågeles | dialåågeles | - | -
 | tjelmiebieles | tjelmiebieles | tjelmiebieles | - | -
 | nåljoehbieles | nåljoehbieles | nåljoehbieles | - | -
@@ -2580,7 +2479,6 @@
 | leavhkoes | leavhkoes | leavhkoes | leavhkoesabpa, leavhkoesåbpoe | leavhkoesommes
 | læhkoes | læhkoes | læhkoes | læhkoesabpa, læhkoesåbpoe | læhkoesommes
 | måajkoes | måajkoes | måajkan | - | -
-| råatjkoes | - | - | - | -
 | måjkoes | måjkoes | måjkoes | måjkoesabpa, måjkoesåbpoe | måjkoesommes
 | ræjkoes | ræjkoes | ræjkoes | ræjkasabpa, ræjkasåbpoe | ræjkasommes
 | nealkoes | nealkoes | nealkoes | nealkoesabpa, nealkoesåbpoe | nealkoesommes
@@ -2659,7 +2557,6 @@
 | aares | aares | aares | aarebe | aaremes
 | laares | laares | - | - | -
 | sijngeres | sijngeres | sijngeres, sijngere | sijngerabpa, sijngeråbpoe | sijngerommes
-| seamma-plieres | - | - | - | -
 | seammaplieres | seammaplieres | - | - | -
 | gaavnjeres | gaavnjeres | gaavnjeres | - | -
 | laahtjeres | laahtjeres | laahtjeres, laahtjere | laahtjarabpa, laahtjaråbpoe | laahtjarommes
@@ -2751,7 +2648,6 @@
 | oktegs | oktegs | oktegs | - | -
 | måktegs | måktegs | måktege, måktegs | måktegabpa, måktegåbpoe | måktegommes
 | gieltegs | gieltegs | gieltege | gieltiegabpa, gieltiegåbpoe | gieltiegommes
-| gabtehaartegs | - | - | - | -
 | våårtegs | våårtegs | våårtege, våårtegs | våårtegabpa, våårtegåbpoe | våårtegommes
 | vyörtegs | vyörtegs | vyörtege, vyörtegs | vyörtegabpa, vyörtegåbpoe | vyörtegommes
 | nuhteligs | nuhteligs | nuhteligs | nuhteligebe | nuhteligemes
@@ -2765,7 +2661,6 @@
 | stavnijs | stavnijs | - | - | -
 | stuarijs | stuarijs | - | - | -
 | sleatsijs | sleatsijs | - | - | -
-| isveligks | - | - | - | -
 | byjjehks | byjjehks | - | - | -
 | vyljehks | vyljehke, vyljehks | vyljehke, vyljehks | vyljehkabpa, vyljehkåbpoe | vyljehkommes
 | dorjehks | dorjehke, dorjehks | dorjehke, dorjehks | dorjehkabpa, dorjehkåbpoe | dorjehkommes
@@ -2897,7 +2792,6 @@
 | jiermehts | jiermehts | jiermehte, jiermehts | jiermiehtsabpa, jiermiehtsåbpoe | jiermiehtsommes
 | maanehts | maanehts | maanehte, maanehts | maanahtsabpa, maanahtsåbpoe | maanahtsommes
 | baenehts | baenehts | baenehte, baenehts | baeniehtabpa, baeniehtåbpoe | baeniehtommes
-| bueriesjugnehts | - | - | - | -
 | luhpehts | luhpehts | luhpehte, luhpehts | luhpiehtsabpa, luhpiehtsåbpoe | luhpiehtsommes
 | ovluhpehts | ovluhpehts | ovluhpehte, ovluhpehts | - | -
 | moerehts | moerehts | moerehte, moerehts | moerehtsabpa, moerehtsåbpoe | moerehtsommes
@@ -2909,7 +2803,6 @@
 | lissehts | lissehts | - | - | -
 | saelhtehts | saelhtehts | saelhtehte, saelhtehts | saelhtiehtsabpa, saelhtiehtsåbpoe | saelhtiehtsommes
 | sjaevehts | sjaevehts | sjaevehte, sjaevehts | sjaeviehtsabpa, sjaeviehtsåbpoe | sjaeviehtsommes
-| bueriengielhts | - | - | - | -
 | måeriengielhts | måeriengielhts | måeriengielhts | - | -
 | daamhts | daamhts | - | - | -
 | ealjohts | ealjohts | ealjohte, ealjohts | ealjoehtsabpa, ealjoehtsåbpoe | ealjoehtsommes
