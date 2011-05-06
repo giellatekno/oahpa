@@ -16,6 +16,7 @@ DATO=`date`
 echo "!!!Tabell over alle verb - OBS! arbeidsliste for debugging" > smadoc/gen/verballetabell.jspwiki
 echo "" >> smadoc/gen/verballetabell.jspwiki
 echo "Testdato: $DATO" >> smadoc/gen/verballetabell.jspwiki
+
 echo "||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verballetabell.jspwiki
 
 echo "!!!Reversert tabell over alle verb - OBS! arbeidsliste for debugging" > smadoc/gen/verballetabellrev.jspwiki

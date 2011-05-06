@@ -2,12 +2,12 @@
 
 # a. all adjectives
 # cat $GTHOME/gt/sma/src/adj-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|tr '[+:]' ' '| cut -d" " -f1|tr -d '[#^]'|sort|uniq > t1
-cat $GTHOME/gt/sma/src/adj-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|tr '[+:]' ' '| cut -d" " -f1|tr -d '[#^]'|sort|uniq | lookup -q $GTHOME/gt/sma/bin/sma-norm.fst |grep '+A+Attr'|cut -f1|sort|uniq> t1
+cat $GTHOME/gt/sma/src/adj-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|grep -v 'Use/Sub'|tr '[+:]' ' '| cut -d" " -f1|tr -d '[#^]'|sort|uniq > t1
+# ikkje generering, for å få med feil. Vi fjernar sub med grep -v
 
 # b. dict adjs
 #cat $GTHOME/words/dicts/smanob/src/a_smanob.xml | grep '<l ' | tr '<' '>' | cut -d">" -f3 > t2
-cat $GTHOME/words/dicts/smanob/src/a_smanob.xml | grep '<l ' | tr '<' '>' | cut -d">" -f3 | lookup -q $GTHOME/gt/sma/bin/sma-norm.fst | grep '+A+Attr' | cut -f1 | uniq > t2
-
+cat $GTHOME/words/dicts/smanob/src/a_smanob.xml | grep '<l ' | tr '<' '>' | cut -d">" -f3 | lookup -q $GTHOME/gt/sma/bin/sma-norm.fst | grep '+A+' | cut -f1 | uniq > t2
 
 # c. only oahpa adjectives
 cat $GTHOME/words/dicts/smanob/src/a_smanob.xml | tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|grep '"oahpa"'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3

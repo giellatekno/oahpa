@@ -2,7 +2,7 @@
 
 
 # a. all verbs
-cat $GTHOME/gt/sma/src/verb-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|tr '[+:]' ' '| cut -d" " -f1|tr -d '[#^]'|sort|uniq > t1
+cat $GTHOME/gt/sma/src/verb-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|grep -v 'Use/Sub'|tr '[+:]' ' '| cut -d" " -f1|tr -d '[#^]'|sort|uniq > t1
 
 # b. dict verbs
 cat $GTHOME/words/dicts/smanob/src/v_smanob.xml|grep '<l '|tr '<' '>'|cut -d">" -f3 > t2
@@ -15,7 +15,7 @@ DATO=`date`
 
 # Printing headers:
 
-echo "!!!Tabell over alle verb - OBS! arbeidsliste for debugging" > smadoc/gen/verballetabellnorm.jspwiki
+echo "!!!Tabell over alle verb - OBS! arbeidsliste for debugging " > smadoc/gen/verballetabellnorm.jspwiki
 echo "" >> smadoc/gen/verballetabellnorm.jspwiki
 echo "Testdato: $DATO" >> smadoc/gen/verballetabellnorm.jspwiki
 echo "||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc " >> smadoc/gen/verballetabellnorm.jspwiki
