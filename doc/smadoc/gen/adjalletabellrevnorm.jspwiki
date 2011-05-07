@@ -1,6 +1,6 @@
 !!!Reversert tabell over alle adjektiv - OBS! arbeidsliste for debugging
 
-Testdato: lør  7 mai 2011 07:31:37 CEST
+Testdato: lør  7 mai 2011 20:34:06 CEST
 ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom 
 | earadæjja | earadæjja | - | - | -
 | haeniedæjja | haeniedæjja | - | - | -
@@ -469,7 +469,7 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | stïerhke | stïerhke | stïerhkes | stïerhkebe | stïerhkemes
 | mïrhke | mïrhke | mïrhke | mïrhkebe | mïrhkemes
 | sïrhke | sïrhke | sïrhke | sïrhkebe | sïrhkemes
-| mïevhke | mïevhke, mïevhkes | mïevhkes | mïevhkebe, mïevhkesåbpoe | mïevhkemes, mïevhkesommes
+| mïevhke | mïevhke | mïevhkes | mïevhkebe, mïevhkesåbpoe | mïevhkemes, mïevhkesommes
 | mjovhke | mjovhke | mjovhkes | mjovhkebe, mjovhkesåbpoe | mjovhkemes, mjovhkesommes
 | myvhke | myvhke | myvhkes | myvhkebe, myvhkesåbpoe | myvhkemes, myvhkesommes
 | myövhke | myövhke | myövhkes | myövhkebe, myövhkesåbpoe | myövhkemes, myövhkesommes
@@ -525,41 +525,24 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | legaale | legaale, legaales | legaale, legaales | legaalebe | legaalemes
 | illegaale | illegaale, illegaales | illegaale, illegaales | illegaalebe | illegaalemes
 | sentrifugaale | sentrifugaale, sentrifugaales | sentrifugaale, sentrifugaales | sentrifugaalebe | sentrifugaalemes
-| adverbiaale | adverbiaale, adverbiaales | adverbiaale, adverbiaales | adverbiaalebe | adverbiaalemes
-| radiaale | radiaale, radiaales | radiaale, radiaales | radiaalebe | radiaalemes
-| kollegiaale | kollegiaale, kollegiaales | kollegiaale, kollegiaales | kollegiaalebe | kollegiaalemes
-| koloniaale | koloniaale, koloniaales | koloniaale, koloniaales | koloniaalebe | koloniaalemes
-| ekvatoriaale | ekvatoriaale, ekvatoriaales | ekvatoriaale, ekvatoriaales | ekvatoriaalebe | ekvatoriaalemes
-| territoriaale | territoriaale, territoriaales | territoriaale, territoriaales | territoriaalebe | territoriaalemes
-| faktoriaale | faktoriaale, faktoriaales | faktoriaale, faktoriaales | faktoriaalebe | faktoriaalemes
-| gymnasiaale | gymnasiaale, gymnasiaales | gymnasiaale, gymnasiaales | gymnasiaalebe | gymnasiaalemes
-| postgymnasiaale | postgymnasiaale, postgymnasiaales | postgymnasiaale, postgymnasiaales | postgymnasiaalebe | postgymnasiaalemes
-| aksiaale | aksiaale, aksiaales | aksiaale, aksiaales | aksiaalebe | aksiaalemes
-| koaksiaale | koaksiaale, koaksiaales | koaksiaale, koaksiaales | koaksiaalebe | koaksiaalemes
-| potensiaale | potensiaale, potensiaales | potensiaale, potensiaales | potensiaalebe | potensiaalemes
-| sosiaale | sosiaale, sosiaales | sosiaale, sosiaales | sosiaalebe | sosiaalemes
-| asosiaale | asosiaale, asosiaales | asosiaale, asosiaales | asosiaalebe | asosiaalemes
-| initiaale | initiaale, initiaales | initiaale, initiaales | initiaalebe | initiaalemes
-| tertiaale | tertiaale, tertiaales | tertiaale, tertiaales | tertiaalebe | tertiaalemes
-| bestiaale | bestiaale, bestiaales | bestiaale, bestiaales | bestiaalebe | bestiaalemes
-| joviaale | joviaale, joviaales | joviaale, joviaales | joviaalebe | joviaalemes
-| adverbijaale | adverbijaale, adverbijaales | adverbijaale, adverbijaales | adverbijaalebe | adverbijaalemes
-| radijaale | radijaale, radijaales | radijaale, radijaales | radijaalebe | radijaalemes
-| kollegijaale | kollegijaale, kollegijaales | kollegijaale, kollegijaales | kollegijaalebe | kollegijaalemes
-| kolonijaale | kolonijaale, kolonijaales | kolonijaale, kolonijaales | kolonijaalebe | kolonijaalemes
-| ekvatorijaale | ekvatorijaale, ekvatorijaales | ekvatorijaale, ekvatorijaales | ekvatorijaalebe | ekvatorijaalemes
-| territorijaale | territorijaale, territorijaales | territorijaale, territorijaales | territorijaalebe | territorijaalemes
-| gymnasijaale | gymnasijaale, gymnasijaales | gymnasijaale, gymnasijaales | gymnasijaalebe | gymnasijaalemes
-| postgymnasijaale | postgymnasijaale, postgymnasijaales | postgymnasijaale, postgymnasijaales | postgymnasijaalebe | postgymnasijaalemes
-| aksijaale | aksijaale, aksijaales | aksijaale, aksijaales | aksijaalebe | aksijaalemes
-| koaksijaale | koaksijaale, koaksijaales | koaksijaale, koaksijaales | koaksijaalebe | koaksijaalemes
-| potensijaale | potensijaale, potensijaales | potensijaale, potensijaales | potensijaalebe | potensijaalemes
-| sosijaale | sosijaale, sosijaales | sosijaale, sosijaales | sosijaalebe | sosijaalemes
-| asosijaale | asosijaale, asosijaales | asosijaale, asosijaales | asosijaalebe | asosijaalemes
-| initijaale | initijaale, initijaales | initijaale, initijaales | initijaalebe | initijaalemes
-| tertijaale | tertijaale, tertijaales | tertijaale, tertijaales | tertijaalebe | tertijaalemes
-| bestijaale | bestijaale, bestijaales | bestijaale, bestijaales | bestijaalebe | bestijaalemes
-| jovijaale | jovijaale, jovijaales | jovijaale, jovijaales | jovijaalebe | jovijaalemes
+| adverbijaale | adverbiaale, adverbiaales, adverbijaale, adverbijaales | adverbiaale, adverbiaales, adverbijaale, adverbijaales | adverbiaalebe, adverbijaalebe | adverbiaalemes, adverbijaalemes
+| radijaale | radiaale, radiaales, radijaale, radijaales | radiaale, radiaales, radijaale, radijaales | radiaalebe, radijaalebe | radiaalemes, radijaalemes
+| kollegijaale | kollegiaale, kollegiaales, kollegijaale, kollegijaales | kollegiaale, kollegiaales, kollegijaale, kollegijaales | kollegiaalebe, kollegijaalebe | kollegiaalemes, kollegijaalemes
+| kolonijaale | koloniaale, koloniaales, kolonijaale, kolonijaales | koloniaale, koloniaales, kolonijaale, kolonijaales | koloniaalebe, kolonijaalebe | koloniaalemes, kolonijaalemes
+| ekvatorijaale | ekvatoriaale, ekvatoriaales, ekvatorijaale, ekvatorijaales | ekvatoriaale, ekvatoriaales, ekvatorijaale, ekvatorijaales | ekvatoriaalebe, ekvatorijaalebe | ekvatoriaalemes, ekvatorijaalemes
+| territorijaale | territoriaale, territoriaales, territorijaale, territorijaales | territoriaale, territoriaales, territorijaale, territorijaales | territoriaalebe, territorijaalebe | territoriaalemes, territorijaalemes
+| faktorijaale | faktoriaale, faktoriaales, faktorijaale, faktorijaales | faktoriaale, faktoriaales, faktorijaale, faktorijaales | faktoriaalebe, faktorijaalebe | faktoriaalemes, faktorijaalemes
+| gymnasijaale | gymnasiaale, gymnasiaales, gymnasijaale, gymnasijaales | gymnasiaale, gymnasiaales, gymnasijaale, gymnasijaales | gymnasiaalebe, gymnasijaalebe | gymnasiaalemes, gymnasijaalemes
+| postgymnasijaale | postgymnasiaale, postgymnasiaales, postgymnasijaale, postgymnasijaales | postgymnasiaale, postgymnasiaales, postgymnasijaale, postgymnasijaales | postgymnasiaalebe, postgymnasijaalebe | postgymnasiaalemes, postgymnasijaalemes
+| aksijaale | aksiaale, aksiaales, aksijaale, aksijaales | aksiaale, aksiaales, aksijaale, aksijaales | aksiaalebe, aksijaalebe | aksiaalemes, aksijaalemes
+| koaksijaale | koaksiaale, koaksiaales, koaksijaale, koaksijaales | koaksiaale, koaksiaales, koaksijaale, koaksijaales | koaksiaalebe, koaksijaalebe | koaksiaalemes, koaksijaalemes
+| potensijaale | potensiaale, potensiaales, potensijaale, potensijaales | potensiaale, potensiaales, potensijaale, potensijaales | potensiaalebe, potensijaalebe | potensiaalemes, potensijaalemes
+| sosijaale | sosiaale, sosiaales, sosijaale, sosijaales | sosiaale, sosiaales, sosijaale, sosijaales | sosiaalebe, sosijaalebe | sosiaalemes, sosijaalemes
+| asosijaale | asosiaale, asosiaales, asosijaale, asosijaales | asosiaale, asosiaales, asosijaale, asosijaales | asosiaalebe, asosijaalebe | asosiaalemes, asosijaalemes
+| initijaale | initiaale, initiaales, initijaale, initijaales | initiaale, initiaales, initijaale, initijaales | initiaalebe, initijaalebe | initiaalemes, initijaalemes
+| tertijaale | tertiaale, tertiaales, tertijaale, tertijaales | tertiaale, tertiaales, tertijaale, tertijaales | tertiaalebe, tertijaalebe | tertiaalemes, tertijaalemes
+| bestijaale | bestiaale, bestiaales, bestijaale, bestijaales | bestiaale, bestiaales, bestijaale, bestijaales | bestiaalebe, bestijaalebe | bestiaalemes, bestijaalemes
+| jovijaale | joviaale, joviaales, jovijaale, jovijaales | joviaale, joviaales, jovijaale, jovijaales | joviaalebe, jovijaalebe | joviaalemes, jovijaalemes
 | leksikaale | leksikaale, leksikaales | leksikaale, leksikaales | leksikaalebe | leksikaalemes
 | ovnormaale | ovnormaale, ovnormaales | ovnormaale, ovnormaales | ovnormaalebe | ovnormaalemes
 | banaale | banaale, banaales | banaale, banaales | banaalebe | banaalemes
@@ -701,48 +684,28 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | jalle | jalle | jalle | jallebe | jallemes
 | reelle | reelle | reelles | - | -
 | irreelle | irreelle | irreelles | - | -
-| radielle | radielle | radielles | - | -
-| prinsipielle | prinsipielle | prinsipielles | - | -
-| materielle | materielle | materielles | - | -
-| ministerielle | ministerielle | ministerielles | - | -
-| industrielle | industrielle | industrielles | - | -
-| spesielle | spesielle | spesielles | - | -
-| offisielle | offisielle | offisielles | - | -
-| artifisielle | artifisielle | artifisielles | - | -
-| aksielle | aksielle | aksielles | - | -
-| finansielle | finansielle | finansielles | - | -
-| substansielle | substansielle | substansielles | - | -
-| konfidensielle | konfidensielle | konfidensielles | - | -
-| tangensielle | tangensielle | tangensielles | - | -
-| essensielle | essensielle | essensielles | - | -
-| potensielle | potensielle | potensielles | - | -
-| eksistensielle | eksistensielle | eksistensielles | - | -
-| provinsielle | provinsielle | provinsielles | - | -
-| kommersielle | kommersielle | kommersielles | - | -
-| kontroversielle | kontroversielle | kontroversielles | - | -
-| partielle | partielle | partielles | - | -
-| trivielle | trivielle | trivielles | - | -
 | rejelle | rejelle | rejelles | - | -
-| radijelle | radijelle | radijelles | - | -
-| prinsipijelle | prinsipijelle | prinsipijelles | - | -
-| ministerijelle | ministerijelle | ministerijelles | - | -
-| industrijelle | industrijelle | industrijelles | - | -
-| spesijelle | spesijelle | spesijelles | - | -
-| offisijelle | offisijelle | offisijelles | - | -
-| artifisijelle | artifisijelle | artifisijelles | - | -
-| aksijelle | aksijelle | aksijelles | - | -
-| finansijelle | finansijelle | finansijelles | - | -
-| substansijelle | substansijelle | substansijelles | - | -
-| konfidensijelle | konfidensijelle | konfidensijelles | - | -
-| tangensijelle | tangensijelle | tangensijelles | - | -
-| essensijelle | essensijelle | essensijelles | - | -
-| potensijelle | potensijelle | potensijelles | - | -
-| eksistensijelle | eksistensijelle | eksistensijelles | - | -
-| provinsijelle | provinsijelle | provinsijelles | - | -
-| kommersijelle | kommersijelle | kommersijelles | - | -
-| kontroversijelle | kontroversijelle | kontroversijelles | - | -
-| partijelle | partijelle | partijelles | - | -
-| trivijelle | trivijelle | trivijelles | - | -
+| radijelle | radielle, radijelle | radielles, radijelles | - | -
+| prinsipijelle | prinsipielle, prinsipijelle | prinsipielles, prinsipijelles | - | -
+| materijelle | materielle, materijelle | materielles, materijelles | - | -
+| ministerijelle | ministerielle, ministerijelle | ministerielles, ministerijelles | - | -
+| industrijelle | industrielle, industrijelle | industrielles, industrijelles | - | -
+| spesijelle | spesielle, spesijelle | spesielles, spesijelles | - | -
+| offisijelle | offisielle, offisijelle | offisielles, offisijelles | - | -
+| artifisijelle | artifisielle, artifisijelle | artifisielles, artifisijelles | - | -
+| aksijelle | aksielle, aksijelle | aksielles, aksijelles | - | -
+| finansijelle | finansielle, finansijelle | finansielles, finansijelles | - | -
+| substansijelle | substansielle, substansijelle | substansielles, substansijelles | - | -
+| konfidensijelle | konfidensielle, konfidensijelle | konfidensielles, konfidensijelles | - | -
+| tangensijelle | tangensielle, tangensijelle | tangensielles, tangensijelles | - | -
+| essensijelle | essensielle, essensijelle | essensielles, essensijelles | - | -
+| potensijelle | potensielle, potensijelle | potensielles, potensijelles | - | -
+| eksistensijelle | eksistensielle, eksistensijelle | eksistensielles, eksistensijelles | - | -
+| provinsijelle | provinsielle, provinsijelle | provinsielles, provinsijelles | - | -
+| kommersijelle | kommersielle, kommersijelle | kommersielles, kommersijelles | - | -
+| kontroversijelle | kontroversielle, kontroversijelle | kontroversielles, kontroversijelles | - | -
+| partijelle | partielle, partijelle | partielles, partijelles | - | -
+| trivijelle | trivielle, trivijelle | trivielles, trivijelles | - | -
 | parallelle | parallelle | parallelles | - | -
 | formelle | formelle | formelles | - | -
 | maskinelle | maskinelle | maskinelles | - | -
@@ -779,19 +742,6 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | intellektuelle | intellektuelle | intellektuelles | - | -
 | eventuelle | eventuelle | eventuelles | - | -
 | virtuelle | virtuelle | virtuelles | - | -
-| individuvelle | individuvelle | individuvelles | - | -
-| visuvelle | visuvelle | visuvelles | - | -
-| audiovisuvelle | audiovisuvelle | audiovisuvelles | - | -
-| biseksuvelle | biseksuvelle | biseksuvelles | - | -
-| homoseksuvelle | homoseksuvelle | homoseksuvelles | - | -
-| sensuvelle | sensuvelle | sensuvelles | - | -
-| prosessuvelle | prosessuvelle | prosessuvelles | - | -
-| rituvelle | rituvelle | rituvelles | - | -
-| spirituvelle | spirituvelle | spirituvelles | - | -
-| aktuvelle | aktuvelle | aktuvelles | - | -
-| intellektuvelle | intellektuvelle | intellektuvelles | - | -
-| eventuvelle | eventuvelle | eventuvelles | - | -
-| virtuvelle | virtuvelle | virtuvelles | - | -
 | jolle | jolle | jolle | jollebe | jollemes
 | jïlle | jïlle | jïlle | jillebe | jillemes
 | tjöölle | tjöölle | tjöölle | tjööllebe | tjööllemes
@@ -801,7 +751,6 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | polygaame | polygaame | polygaames | - | -
 | jaame | jaame | jaames | - | -
 | saasneme | - | saasneme | - | -
-| jahtseme | jahtseme | jahtseme | jahtsemåbpoe | jahtsemommes
 | dakteme | - | dakteme | - | -
 | sïejhme | sïejhme | sïejhme | sïejhmebe | sïejhmemes
 | galme | galme | galmes | galmebe, galmesåbpoe | galmemes, galmesommes
@@ -1185,7 +1134,7 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | gærjoeh | gærjoeh | gærjan | - | -
 | pleaksjoeh | pleaksjoeh | pleaksjan | - | -
 | klåbtjoeh | klåbtjoeh | klåbtjoeh | klåbtjoehkåbpoe | klåbtjoehkommes
-| sleadtjoeh | sleadtjoeh, sleadtjah | sleadtjan, sleadtjan | sleadtjahkåbpoe | sleadtjahkommes
+| sleadtjoeh | sleadtjoeh | sleadtjan | - | -
 | steadtjoeh | steadtjoeh | steadtjan | - | -
 | snjadtjoeh | snjadtsoeh | snjadtsan | - | -
 | tjåadtjoeh | tjåadtjoeh | tjåadtjan | - | -
@@ -1259,9 +1208,9 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | leavhkoeh | leavhkoeh | leavhkoeh | leavhkoehkåbpoe | leavhkoehkommes
 | navhkoeh | navhkoeh | navhkan | - | -
 | kråavhkoeh | kråavhkoeh | kråavhkan | - | -
-| skajkoeh | skajkoeh, skajkoeh | skajkan, skajkoeh | skajkoehkåbpoe | skajkoehkommes
+| skajkoeh | skajkoeh | skajkoeh | skajkoehkåbpoe | skajkoehkommes
 | skaanjkoeh | skaanjkoeh | skaanjkoeh | skaanjkoehkåbpoe | skaanjkoehkommes
-| snjatjkoeh | snjatjkoeh, snjatjkoeh | snjatjkoeh, snjatjkan, snjatjkoeh | snjatjkoehkåbpoe, snjatjkoehkåbpoe, snjatjkahkåbpoe | snjatjkoehkommes, snjatjkoehkommes, snjatjkahkommes
+| snjatjkoeh | snjatjkoeh | snjatjkoeh | snjatjkoehkåbpoe | snjatjkoehkommes
 | råatjkoeh | råatjkoeh | råatjkoeh | råatjkoehkåbpoe | råatjkoehkommes
 | råtjkoeh | råtjkoeh | råtjkoeh | råtjkoehkåbpoe | råtjkoehkommes
 | snjætjkoeh | snjætjkoeh | snjætjkan, snjætjkoeh | snjætjkoehkåbpoe, snjætjkahkåbpoe | snjætjkoehkommes, snjætjkahkommes
@@ -1338,7 +1287,7 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | skråmhpoeh | skråmhpoeh | skråmhpoeh | skråmhpoehkåbpoe | skråmhpoehkommes
 | tråmhpoeh | tråmhpoeh | tråmhpoeh | tråmhpoehkåbpoe | tråmhpoehkommes
 | skearhpoeh | skearhpoeh | skearhpoen | skearhpoehkåbpoe | skearhpoehkommes
-| jarhpoeh | jarhpoeh, jarhpoeh | jarhpan, jarhpoeh | jarhpoehkåbpoe | jarhpoehkommes
+| jarhpoeh | jarhpoeh | jarhpan | - | -
 | snårhpoeh | snårhpoeh | snårhpan | - | -
 | sårhpoeh | sårhpoeh | sårhpoeh | sårhpoehkåbpoe | sårhpoehkommes
 | færhpoeh | færhpoeh | færhpoeh | færhpoehkåbpoe | færhpoehkommes
@@ -1352,9 +1301,9 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | iehkedsskabroeh | iehkedsskabroeh | iehkedsskabran, iehkedsskabroeh | iehkedsskabroehkåbpoe, iehkedsskabrahkåbpoe | iehkedsskabroehkommes, iehkedsskabrahkommes
 | slabroeh | slabroeh | slabran, slabroeh | slabroehkåbpoe, slabrahkåbpoe | slabroehkommes, slabrahkommes
 | gåabroeh | gåabroeh | gåabran | - | -
-| sleagroeh | sleagroeh, sleagrah | sleagran, sleagran | sleagrahkåbpoe | sleagrahkommes
+| sleagroeh | sleagroeh | sleagran | - | -
 | meagroeh | meagroeh | meagran, meagroeh | meagroehkåbpoe, meagrahkåbpoe | meagroehkommes, meagrahkommes
-| skågroeh | skågroeh, skågroeh | skågran, skågroeh | skågroehkåbpoe | skågroehkommes
+| skågroeh | skågroeh | skågroeh | skågroehkåbpoe | skågroehkommes
 | fæjhroeh | fæjhroeh | fæjhran, fæjhroeh | fæjhroehkåbpoe, fæjhrahkåbpoe | fæjhroehkommes, fæjhrahkommes
 | båavhroeh | båavhroeh | båavhran | - | -
 | skeajroeh | skeajroeh | skeajroeh | skeajroehkåbpoe | skeajroehkommes
@@ -1364,9 +1313,8 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | gaarroeh | gaarroeh | gaarran, gaarroeh | gaarroehkåbpoe, gaarrahkåbpoe | gaarroehkommes, gaarrahkommes
 | haarroeh | haarroeh | haarroeh | haarroehkåbpoe | haarroehkommes
 | gårroeh | gårroeh | - | - | -
-| mårroeh | mårroeh | mårroeh | mårrebe | mårremes
+| mårroeh | mårroeh | mårroeh | mårrobe | mårromes
 | snærroeh | snærroeh | snærroeh | snærroehkåbpoe | snærroehkommes
-| faavroeh | faavroeh | faavroeh | faavroehkåbpoe | faavroehkommes
 | skåavroeh | skåavroeh | skåavroeh | skåavroehkåbpoe | skåavroehkommes
 | flævroeh | flævroeh | flævroeh | flævroehkåbpoe | flævroehkommes
 | feasoeh | feasoeh | feasan | - | -
@@ -1384,11 +1332,11 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | tåassoeh | tåassoeh | tåassoeh | tåassoehkåbpoe | tåassoehkommes
 | raatsoeh | raatsoeh | raatsoeh | raatsoehkåbpoe | raatsoehkommes
 | radtsoeh | radtsoeh | radtsoeh | radtsoehkåbpoe | radtsoehkommes
-| båadtsoeh | båadtsoeh, båadtsoeh | båadtsoeh, båadtsan | båadtsoehkåbpoe | båadtsoehkommes
+| båadtsoeh | båadtsoeh | båadtsan | - | -
 | råadtsoeh | råadtsoeh | råadtsan | - | -
 | mådtsoeh | mådtsoeh | mådtsan | - | -
 | rædtsoeh | rædtsoeh | rædtsoeh | rædtsoehkåbpoe | rædtsoehkommes
-| vædtsoeh | vædtsoeh, vædtsoeh | vædtsan, vædtsoeh | vædtsoehkåbpoe | vædtsoehkommes
+| vædtsoeh | vædtsoeh | vædtsoeh | vædtsoehkåbpoe | vædtsoehkommes
 | jånhtsoeh | jånhtsoeh | jånhtsan | - | -
 | harhtsoeh | harhtsoeh | harhtsoeh | harhtsoehkåbpoe | harhtsoehkommes
 | råavhtsoeh | råavhtsoeh | råavhtsan | - | -
@@ -1397,7 +1345,7 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | gavsoeh | gavsoeh | gavsoeh | gavsoehkåbpoe | gavsoehkommes
 | båvsoeh | båvsoeh | båvsan | - | -
 | gåvsoeh | gåvsoeh | gåvsan | - | -
-| såvsoeh | såvsoeh, såvsoeh | såvsan, såvsoeh | såvsoehkåbpoe | såvsoehkommes
+| såvsoeh | såvsoeh | såvsan | - | -
 | klåabtoeh | klåabtoeh | klåabtan | - | -
 | klåadtoeh | klåadtoeh | klåadtan | - | -
 | båajhtoeh | båajhtoeh | båajhtoeh | - | -
@@ -1406,8 +1354,8 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | gavhtoeh | gavhtoeh | gavhtan | - | -
 | gåvhtoeh | gåvhtoeh | gåvhtan | - | -
 | sveartoeh | sveartoeh | sveartoeh | sveartoehkåbpoe | sveartoehkommes
-| gaastoeh | gaastoeh, gaastoeh | gaastan, gaastoeh | gaastoehkåbpoe | gaastoehkommes
-| såastoeh | såastoeh | såastoeh, såasta, såaste | såastoehkåbpoe | såastoehkommes
+| gaastoeh | gaastoeh | gaastan | - | -
+| såastoeh | såastoeh | såastoeh | såastoehkåbpoe | såastoehkommes
 | åavtoeh | åavtoeh | åavtoeh | åavtoehkåbpoe | åavtoehkommes
 | gåavoeh | gåavoeh | gåavan | - | -
 | laahvoeh | laahvoeh | laahvoeh | laahvoehkåbpoe | laahvoehkommes
@@ -2394,7 +2342,7 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | bihtseles | bihtseles | bihtseles, bihtsele | bihtsielåbpoe | bihtsielommes
 | jihtseles | jihtseles | jihtseles, jihtsele | jihtsielåbpoe | jihtsielommes
 | guhtseles | guhtseles | guhtseles, guhtsele | guhtsielåbpoe | guhtsielommes
-| tsåeptseles | tsåeptsels, tsåeptseles | tsåeptsels, tsåeptsele, tsåeptseles, tsåeptsele | tsåeptsielåbpoe | tsåeptsielommes
+| tsåeptseles | tsåeptseles | tsåeptseles, tsåeptsele | tsåeptsielåbpoe | tsåeptsielommes
 | beadteles | beadteles | beadteles, beadtele | beadtelåbpoe | beadtelommes
 | gadteles | gadteles | gadteles, gadtele | gadtelåbpoe | gadtelommes
 | sjadteles | sjadteles | sjadteles, sjadtele | sjadtelåbpoe | sjadtelommes
@@ -2470,7 +2418,7 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | værsjoes | værsjoes | værsjoes, værsjoe | værsjoesåbpoe | værsjoesommes
 | njæssjoes | njæssjoes | njæssjoes | njæssjoesåbpoe | njæssjoesommes
 | eadtjoes | eadtjoes | eadtjoes | eadtjoesåbpoe | eadtjoesommes
-| radtjoes | radtjoes, radtjoes | radtjoes, radtjoes | radtjahkåbpoe, radtjoesåbpoe | radtjahkommes, radtjoesommes
+| radtjoes | radtjoes | radtjoes | radtjoesåbpoe | radtjoesommes
 | stædtjoes | stædtjoes | stædtjoes | - | -
 | målhtjoes | målhtjoes | målhtjoes | målhtjoesåbpoe | målhtjoesommes
 | gæhtjoes | gæhtjoes | gæhtjoes, gyhtje | gyhtjekåbpoe | gyhtjekommes
@@ -2502,13 +2450,13 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | fraskoes | fraskoes | fraskoe | fraskebe, fraskobe | fraskemes, fraskomes
 | samskoes | samskoes | samskan | - | -
 | såmskoes | såmskoes | såmskan | - | -
-| hearskoes | hearskoes | hearskoe, hearskoes | hearskobe, hearskebe | hearskomes, hearskemes
+| hearskoes | hearskoes | hearskoes | hearskoesåbpoe | hearskoesommes
 | måskoes | måskoes | måskoes | - | -
 | gaaloes | gaaloes | gaaloes | gaaloesåbpoe | gaaloesommes
 | svaaloes | svaaloes | svaaloes | svaaloesåbpoe | svaaloesommes
 | sæjloes | sæjloes | sæjloes | sæjloesåbpoe | sæjloesommes
 | aalloes | aalloes | - | - | -
-| nålloes | nålloes | nålloe, nålloes | nållobe, nållebe | nållomes, nållemes
+| nålloes | nålloes | nålloes | nålloesåbpoe | nålloesommes
 | hearloes | hearloes | hearloes | hearloesåbpoe | hearloesommes
 | beavloes | beavloes | beavloes | - | -
 | gåvloes | gåvloes | - | - | -
@@ -2522,9 +2470,9 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | reajnoes | reajnoes | reajnoes | reajnoesåbpoe | reajnoesommes
 | håjnoes | håjnoes | håjnan | - | -
 | læjnoes | læjnoes | læjnoes | læjnoesåbpoe | læjnoesommes
-| mannoes | mannoes | mannoe, mannoes | mannobe, mannebe | mannomes, mannemes
+| mannoes | mannoes | mannoes | mannoesåbpoe | mannoesommes
 | nannoes | nannoes | nannoes | nannoesåbpoe | nannoesommes
-| nænnoes | nænnoes, nænnoes | nænnoe, nænnoes, nænnoes | nænnobe, nænnebe, nænnoesåbpoe | nænnomes, nænnemes, nænnoesommes
+| nænnoes | nænnoes | nænnoes | nænnoesåbpoe | nænnoesommes
 | jatnoes | jatnoes, jatnoes | jatnan, jatnoes | jatnoehkåbpoe | jatnoehkommes
 | gaavnoes | gaavnoes | - | - | -
 | skåabpoes | skåabpoes | skåabpoes | skåabpoesåbpoe | skåabpoesommes
@@ -2535,7 +2483,7 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | daajroes | daajroes | daajroes | - | -
 | sæjroes | sæjroes | sæjroes | sæjrasåbpoe | sæjrasommes
 | haarroes | haarroes | haarroes | haarroesåbpoe | haarroesommes
-| faavroes | faavroes | faavroe, faavroes | faavrobe, faavrebe | faavromes, faavremes
+| faavroes | faavroes | faavroes | faavroesåbpoe | faavroesommes
 | åavroes | åavroes | åavroes | åavrasåbpoe | åavrasommes
 | måasoes | måasoes | måasoe | - | -
 | jaksoes | jaksoes | jaksoes | jaksoesåbpoe | jaksoesommes
@@ -2550,7 +2498,7 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | dabtoes | dabtoes | dabtoes | dabtasåbpoe | dabtasommes
 | seadtoes | seadtoes | seadtoes | seadtoesåbpoe | seadtoesommes
 | båarhtoes | båarhtoes | båarhtoes | båarhtasåbpoe | båarhtasommes
-| åhtoes | åhtoes, åhtoes | åhtoe, åhtoes, åhtoes | åhtobe, åhtebe, åhtoesåbpoe | åhtomes, åhtemes, åhtoesommes
+| åhtoes | åhtoes | åhtoes | åhtoesåbpoe | åhtoesommes
 | våaltoes | våaltoes | - | - | -
 | damtoes | damtoes | damtoes | damtasåbpoe | damtasommes
 | båantoes | båantoes | båantoes | båantahkåbpoe | båantahkommes
@@ -2559,13 +2507,13 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | laahvoes | laahvoes | laahvoes | laahvoesåbpoe | laahvoesommes
 | åajvoes | åajvoes | åajvoes | åajvoesåbpoe | åajvoesommes
 | geehpes | geehpes | geehpes | geehpesåbpoe, geahpebe | geehpesommes, geehpemes
-| tjeehpes | tjeehpes, tjeehpes | tjeehpes, tjeehpes | tjeehpebe, tjeehpesåbpoe | tjeehpemes, tjeehpesommes
-| provnetjeehpes | provnetjeehpees, provnetjeehpes | provnetjeehpees, provnetjeehpes | - | -
+| tjeehpes | tjeehpes | tjeehpes | tjeehpebe, tjeehpesåbpoe | tjeehpemes, tjeehpesommes
+| provnetjeehpes | provnetjeehpes | provnetjeehpes | - | -
 | sneehpes | sneehpes | sneehpes | sneehpebe, sneehpesåbpoe, snaebpebe | sneehpemes, sneehpesommes
 | skrovhpes | skrovhpes | skrovhpes | skrovhpesåbpoe | skrovhpesommes
 | rïhpes | rïhpes | rïhpes | rïhpesåbpoe | rïhpesommes
 | skïelpes | skïelpes | - | - | -
-| njeerpes | njeerpes, njeerpes | njeerpes, njeerpes | njeerpesåbpoe, njeerpebe | njeerpesommes, njeerpemes
+| njeerpes | njeerpes | njeerpes | njeerpebe, njeerpesåbpoe | njeerpemes, njeerpesommes
 | aares | aares | aares | aarebe | aaremes
 | laares | laares | - | - | -
 | sijngeres | sijngeres | sijngeres, sijngere | sijngeråbpoe | sijngerommes
@@ -2675,21 +2623,21 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | stuarijs | stuarijs | - | - | -
 | sleatsijs | sleatsijs | - | - | -
 | byjjehks | byjjehks | - | - | -
-| vyljehks | vyljehks | vyljehkse | vyljehksåbpoe | vyljehksommes
+| vyljehks | vyljehks | vyljehke | vyljehkåbpoe | vyljehkommes
 | dorjehks | dorjehke, dorjehks | dorjehke, dorjehks | dorjehkåbpoe | dorjehkommes
-| tjaajhtjehks | tjaajhtjehks | tjaajhtjehkse | tjaajhtjehksåbpoe | tjaajhtjehksommes
+| tjaajhtjehks | tjaajhtjehks | tjaajhtjehke | tjaajhtjehkåbpoe | tjaajhtjehkommes
 | guelehks | guelehks | guelehks | guelehkåbpoe | guelehkommes
-| vuelehks | vueliehks | vuelehkse | vueliehksåbpoe | vueliehksommes
+| vuelehks | vueliehks | vuelehke | vueliehkåbpoe | vueliehkommes
 | fropmehks | fropmehke, fropmehks | fropmehke, fropmehks | fropmehkåbpoe | fropmehkommes
-| åenehks | åeniehks | åenehkse | åenebe, åeniehksåbpoe | åenemes, åeniehksommes
+| åenehks | åeniehks | åenehke | åenebe, åeniehkåbpoe | åenemes, åeniehkommes
 | skåernehks | skåernehks | skåernehke | skåerniehkåbpoe | skåerniehkommes
-| måarehks | måarahks | måarahkse | måarahksåbpoe | måarahksommes
+| måarehks | måarahks | måarehke | måarahkåbpoe | måarahkommes
 | boerehks | boerehks | boerehke, boerehks | boerehkåbpoe | boerehkommes
 | barrehks | barrehks | barrehke, barrehks | barrehkåbpoe | barrehkommes
 | skearrehks | skearrehke, skearrehks | skearrehke, skearrehks | skearrehkåbpoe | skearrehkommes
-| skærrehks | skærrehks | skærrehkse | skærrehksåbpoe | skærrehksommes
+| skærrehks | skærrehks | skærrehke | skærrehkåbpoe | skærrehkommes
 | vuasehks | vuasehks, vuasehke | vuasehks, vuasehke | vuasahkåbpoe | vuasahkommes
-| veaksehks | veaksahks | veaksahkse | veaksahksåbpoe | veaksahksommes
+| veaksehks | veaksahks | veaksehke | veaksahkåbpoe | veaksahkommes
 | gåassehks | gåassehks | gåassehks | gåassehkåbpoe | gåassehkommes
 | gaahtsehks | gaahtsehke, gaahtsehks | gaahtsehke, gaahtsehks | gaahtsehkåbpoe | gaahtsehkommes
 | tsaajhtsehks | tsaajhtsehke, tsaajhtsehks | tsaajhtsehke, tsaajhtsehks | tsaajhtsehkåbpoe | tsaajhtsehkommes
@@ -2697,7 +2645,7 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | vihtehks | vihtehks | vihtehke, vihtehks | - | -
 | såålhtehks | såålhtehks | såålhtehke | såålhtehkåbpoe | såålhtehkommes
 | buajtehks | buajtehks | buajtehke, buajtehks | båajtahkåbpoe | båajtahkommes
-| vyrtehks | vyrtehks | vyrtehkse | vyrtehksåbpoe | vyrtehksommes
+| vyrtehks | vyrtehks | vyrtehke | vyrtehkåbpoe | vyrtehkommes
 | skeavehks | skeavehke, skeavehks | skeavehke, skeavehks | skeavehkåbpoe | skeavehkommes
 | veahkadihks | veahkadihks | veahkadihks | - | -
 | bealhkadihks | bealhkadihks | bealhkadihks | - | -
@@ -2822,13 +2770,11 @@ Testdato: lør  7 mai 2011 07:31:37 CEST
 | tjåagkohts | tjåagkohts | tjåagkohte, tjåagkohts | tjåagkoehtsåbpoe | tjåagkoehtsommes
 | faamohts | faamohts | faamohte, faamohts | faamoehtsåbpoe | faamoehtsommes
 | beapmohts | beapmohts | beapmohte, beapmohts | beapmoehtsåbpoe | beapmoehtsommes
-| måedtiesåarhts | måedtiesåarhts | - | - | -
-| gaajhkesåarhts | gaajhkesåarhts | - | - | -
 | tjijts | tjijts | tjijts | tjijtsåbpoe | tjijtsommes
 | beetnegapts | beentegapts | beentegapth | - | -
 | eejhtegapts | eejhtegapts | eejhtegapth | - | -
 | sapts | sapts | sapts | saptsesåbpoe | saptsesommes
-| guektiengierts | guektiengierts | guektiengierts | - | -
 | gelliengïerts | gelliengïerts | gelliengïerts | - | -
-| måedtiesåårts | måedtiesåårts | - | - | -
-| gaajhkesåårts | gaajhkesåårts | - | - | -
+| guektiengïerts | guektiengïerts | guektiengïerts | - | -
+| måedtiesåårts | måedtiesåårts, måedtiesåarhts | - | - | -
+| gaajhkesåårts | gaajhkesåarhts, gaajhkesåårts | - | - | -
