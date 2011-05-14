@@ -1,6 +1,6 @@
 !!!Reversert tabell over dict-adjektiv - OBS! arbeidsliste for debugging
 
-Testdato: man  9 mai 2011 18:36:17 CEST
+Testdato: man  9 mai 2011 22:26:25 CEST
 ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom  || Sg Acc
 | kruana | kruana | kruana | kråanebe, kruenebe | kråanemes, kroenemes | kruanam
 | mïrhkekruana | mïrhkekruana | mïrhkekruana | - | - | mïrhkekruanam
@@ -36,6 +36,7 @@ Testdato: man  9 mai 2011 18:36:17 CEST
 | gallasodtje | - | gallasodtje | - | - | gallasodtjem
 | beajjetje | beajjetje | - | - | - | -
 | daanbeajjetje | daanbeajjetje | - | - | - | -
+| fïerhtenbeajjetje | fïerhtenbeajjetje | - | - | - | -
 | daaletje | daaletje | - | - | - | -
 | dovletje | dovletje | dovletje | - | - | dovletjem
 | sablehtje | sablehtje | sablehtje | - | - | sablehtjem
@@ -61,6 +62,7 @@ Testdato: man  9 mai 2011 18:36:17 CEST
 | vyskehke | vyskehke | vyskehke | vyskehkåbpoe | vyskehkommes | vyskehkem
 | lyövlehke | lyövlehke | lyövlehke | lyövlehkåbpoe | lyövlehkommes | lyövlehkem
 | åårmehke | åårmehke | åårmehke | åårmehkåbpoe | åårmehkommes | åårmehkem
+| aajnehke | aajnehke | aajnehke | aajnehkåbpoe | aajnehkommes | aajnehkem
 | vååvnehke | vååvnehke | vååvnehke | vååvnehkåbpoe | vååvnehkommes | vååvnehkem
 | tjååbpehke | tjååbpehke | tjååbpehke | tjååbpehkåbpoe | tjååbpehkommes | tjååbpehkem
 | snååhpehke | snååhpehke | snååhpehke | snååhpehkåbpoe | snååhpehkommes | snååhpehkem
@@ -72,9 +74,9 @@ Testdato: man  9 mai 2011 18:36:17 CEST
 | saavrehke | saavrehke | saavrehke | saavrehkåbpoe | saavrehkommes | saavrehkem
 | dovrehke | dovrehke | dovrehke | dovrehkåbpoe | dovrehkommes | dovrehkem
 | væjsehke | væjsehke | væjsehke | væjsahkåbpoe | væjsahkommes | væjsehkem
-| veaksehke | - | - | - | - | -
-| gaahtsehke | - | - | - | - | -
+| dovhtehke | dovhtehke | dovhtehke | dovhtehkåbpoe | dovhtehkommes | dovhtehkem
 | stååvehke | stååvehke | stååvehke | stååvehkåbpoe | stååvehkommes | stååvehkem
+| eadtjohke | eadtjohkes, eadtjohke | eadtjohke, eadtjohkes | eadtjoehkåbpoe | eadtjoehkommes | eadtjoehkassem
 | våalohke | våalohke | våalohke | våaloehkåbpoe | våaloehkommes | våalohkem
 | prarrohke | prarrohke | prarrohke | prarroehkåbpoe | prarroehkommes | prarrohkem
 | mïevhke | mïevhke | mïevhkes | mïevhkebe, mïevhkesåbpoe | mïevhkemes, mïevhkesommes | mïevhkem, mïevhkesem
@@ -84,7 +86,7 @@ Testdato: man  9 mai 2011 18:36:17 CEST
 | tjamke | tjamke | tjamke | tjamkebe | tjamkemes | tjamkem
 | gearkeske | gearkeske | gearkeske | gearkaskåbpoe | gearkaskommes | gearkeskem
 | fïerske | fïerske | fïerskes | fïerskesåbpoe, fïerskebe | fïerskesommes, fïerskemes | fïerskesem
-| tsåeptsele | - | - | - | - | -
+| tsåatske | tsåatske, tsåatskes | tsåatskes | tsåatskebe, tsåatskesåbpoe | tsåatskemes, tsåatskesommes | tsåatskem, tsåatskesem
 | heejle | heejle | - | - | - | -
 | jolle | jolle | jolle | jollebe | jollemes | jollem
 | jïlle | jïlle | jïlle | jillebe | jillemes | jïllem
@@ -231,7 +233,7 @@ Testdato: man  9 mai 2011 18:36:17 CEST
 | sieties | sieties | sietie, sieties | sietebe | sietemes | sietiem
 | liehties | liehties | liehtie, liehties | liehtebe | liehtemes | liehtiem
 | vihties | vihties | vihties | - | - | vihtesem
-| saelhties | saelhties | saelhtie, saelhties | - | - | saelhtiem
+| saelhties | saelhties | saelhtie, saelhties | saelhtebe | saelhtemes | saelhtiem
 | guelhties | guelhties | guelhtie, guelhties | guelhtebe | guelhtemes | guelhtiem
 | plievhties | plievhties | plievhtie, plievhties | plievhtebe | plievhtemes | plievhtiem
 | duvhties | duvhties | duvhtie, duvhties | duvhtebe | duvhtemes | duvhtiem
@@ -248,11 +250,10 @@ Testdato: man  9 mai 2011 18:36:17 CEST
 | dåajmijes | dåajmijes, dåajmijs | dåajmijes | dåajmijåbpoe | dåajmijommes | dåajmijem
 | jearmijes | jearmijes, jearmijs | jearmijes | jearmijåbpoe | jearmijommes | jearmijem
 | jïermijes | jïermijes, jïermijs | jïermijes | jïermijåbpoe | jïermijommes | jïermijem
-| jassijes | jassajes, jassajs | jassijes | jassajåbpoe | jassajommes | jassijem
+| jassijes | jassijes, jassijs | jassijes | jassajåbpoe | jassajommes | jassijem
 | byjjes | byjjes | byjjes | - | - | byjjesem
 | tryjjes | tryjjes | tryjjes | - | - | tryjjesem
 | fahkes | fahkes | fahkes | - | - | fahkesem
-| eadtjohkes | - | - | - | - | -
 | möövhkes | möövhkes | möövhkes | möövhkebe | möövhkemes | möövhkesem
 | lïhkes | lïhkes | lïhkes | lïhkebe | lïhkemes | lïhkesem
 | latjkes | latjkes | - | - | - | -
@@ -264,7 +265,6 @@ Testdato: man  9 mai 2011 18:36:17 CEST
 | tjïrkes | tjïrkes | tjïrkes | tjïrkesåbpoe | tjïrkesommes | tjïrkesem
 | måaskes | måaskes | måaskes | måaskebe | måaskemes | måaskesem
 | viskes | viskes | viskes | viskebe | viskemes | viskesem
-| tsåatskes | - | - | - | - | -
 | söökes | söökes | söökes | suekebe | söökemes | söökesem
 | aales | aales | aales | - | - | aalesem
 | maedeles | maedeles | maedeles, maedele | maedielåbpoe | maedielommes | maedelem
@@ -286,6 +286,7 @@ Testdato: man  9 mai 2011 18:36:17 CEST
 | iehtseles | iehtseles | iehtseles, iehtsele | iehtsielåbpoe | iehtsielommes | iehtselem
 | bihtseles | bihtseles | bihtseles, bihtsele | bihtsielåbpoe | bihtsielommes | bihtselem
 | jihtseles | jihtseles | jihtseles, jihtsele | jihtsielåbpoe | jihtsielommes | jihtselem
+| tsåeptseles | tsåeptseles | tsåeptseles, tsåeptsele | tsåeptsielåbpoe | tsåeptsielommes | tsåeptselem
 | maehteles | maehteles | maehtele | maehtielåbpoe | maehtielommes | maehtelem
 | sjiehteles | sjiehteles | sjiehteles, sjiehtele | sjiehtielåbpoe | sjiehtielommes | sjiehtelem
 | gæjhteles | gæjhteles | gæjhteles, gæjhtele | gæjhtalåbpoe | gæjhtalommes | gæjhtelem
@@ -319,7 +320,7 @@ Testdato: man  9 mai 2011 18:36:17 CEST
 | dåsmoes | dåsmoes | dåsmoes | dåsmoesåbpoe | dåsmoesommes | dåsmosem
 | håjnoes | håjnoes | håjnan | håjnoekåbpoe | håjnoekommes | -
 | nænnoes | nænnoes | nænnoes | nennebe | nennemes | nænnosem
-| gaavnoes | gaavnoes | - | - | - | -
+| gaavnoes | gaavnoes | gaavnoes | - | - | -
 | gåaroes | gåaroes | gåaroes | - | - | gåarosem
 | våaroes | våaroes | våaroes | - | - | våarosem
 | daajroes | daajroes | daajroes | - | - | daajrosem
@@ -363,6 +364,7 @@ Testdato: man  9 mai 2011 18:36:17 CEST
 | barrehks | barrehks | barrehke | barrehkåbpoe | barrehkommes | barrehkem
 | veaksehks | veaksehks | veaksehke | veaksahkåbpoe | veaksahkommes | veaksehkem
 | gåassehks | gåassehks | gåassehks | gåassehkåbpoe | gåassehkommes | gåassehkem
+| gaahtsehks | gaahtsehke, gaahtsehks | gaahtsehke, gaahtsehks | gaahtsehkåbpoe | gaahtsehkommes | gaahtsehkem
 | vihtehks | vihtehks | vihtehke, vihtehks | - | - | vihtehkem
 | såålhtehks | såålhtehks | såålhtehke | såålhtehkåbpoe | såålhtehkommes | såålhtehkem
 | buajtehks | buajtehks | buajtehke, buajtehks | båajtahkåbpoe | båajtahkommes | buajtehkem
@@ -385,7 +387,6 @@ Testdato: man  9 mai 2011 18:36:17 CEST
 | kåvrehts | kåvrehts | kåvrehts | - | - | kåvrehtem
 | jissehts | jissehts | jissehte, jissehts | jissiehtåbpoe | jissiehtommes | jissehtem
 | ealjohts | ealjohts | ealjohte, ealjohts | ealjoehtsåbpoe | ealjoehtsommes | ealjohtem
-| gaajhkesåarhts | - | - | - | - | -
 | gelliengïerts | gelliengïerts | gelliengïerts | - | - | -
 | måedtiesåårts | måedtiesåårts, måedtiesåarhts | - | - | - | -
 | gaajhkesåårts | gaajhkesåarhts, gaajhkesåårts | - | - | - | -
