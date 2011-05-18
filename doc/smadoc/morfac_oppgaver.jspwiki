@@ -1654,27 +1654,31 @@ Blanda sett:
 
 !!!Substantiv
 
+Akkusativ
 * N-ACC id="acc5"
-** Maam FAMILY jovkedh+kongr prs? 
-** FAMILY ..... (DRINK akkusativ) jovkedh+kongr prs.
+** Maam mPERSNAME jovkedh+kongr prs? 
+** mPERSNAME ..... (DRINK akkusativ) jovkedh+kongr prs.
 
-* N-ACC id="acc8"
-** Maam PEOPLE vuejedh+kongr prs?
-** PEOPLE ..... (VEHICLE+akkusativ) vuejedh+kongr prs.
+* N-ACC id="acc9"
+** Maam Pron vuejnedh+kongr prs?
+** Pron .... (mPERSNAME+akkusativ) vuejnedh+kongr prs.
+
+* N-ACC dekkes av CLOTHES_WORK-settet
+** Maam mPERSNAME mCLOTHES_WORK+kongr prs/prt?
+** mPERSNAME ..... (CLOTHING+akkusativ) mCLOTHES_WORK+kongr prs/prt.
+
+Genitiv
 
 * N-GEN id="gen9"
 ** Gïen ANIMAL_PET+nominativ daate?
-** Daate ..... (PERSNAME+genitiv) ANIMAL_PET+nominativ.
+** Daate ..... (mPERSNAME+genitiv) ANIMAL_PET+nominativ.
 
 * Gïen VEHICLE+nominativ daate?
-Daate ..... (Pron+genitiv+sg) VEHICLE+nominativ.
+Doete gujht..... (FAMILY+genitiv) VEHICLE+nominativ.
 
 * Gïen CLOTHING+nominativ daate?
-Daate .... (FAMILY+genitiv) CLOTHING+nominativ.
+Doete .... (PEOPLE+genitiv) CLOTHING+nominativ.
 
-* N-GEN id="gen7"
-** Gïen bïjre Pron soptsestidh+kongr?
-** Pron .... (PERSNAME+genitiv) bïjre soptsestidh+kongr.
 
 * N-GEN id="gen8"
 ** Man bïjre PERSNAME soptsestidh+kongr?
@@ -1683,15 +1687,16 @@ Daate .... (FAMILY+genitiv) CLOTHING+nominativ.
 * Guktie PROFESSION+genitiv+sg nomme?
 ..... (PROFESSION+genitiv+sg) nomme PERSNAME. 
 
+* Gïen REINDEER_ANIMAL dohte?
+* Dohte .... (FAMILY+genitiv) REINDEER_ANIMAL
+
+Illativ
 * N-ILL id="ill2" 
 ** Gåabph PROFESSION MOVEMENT_V+kongr? 
 ** PROFESSION ..... (PLACE_NAME illativ) MOVEMENT_V+kongr.
 
-* Gåabph Pron MOVEMENT_V+kongr prs?
-Pron .... (BUILDING+illativ) MOVEMENT_V+kongr prs.
-
 * Gåabph PEOPLE TRAVELLING_V+kongr prs?
-PEOPLE ..... (PLACE_COUNTRY+illativ) TRAVELLING_V+kongr prs. 6/4-11
+PEOPLE ..... (PLACE_COUNTRY+illativ) TRAVELLING_V+kongr prs. 
 
 * N-ILL id="ill4"
 ** Gïese PRON TOY-akk vedtedh+kongr? 
@@ -1701,10 +1706,12 @@ PEOPLE ..... (PLACE_COUNTRY+illativ) TRAVELLING_V+kongr prs. 6/4-11
 Pron CLOTHING+akkusativ ..... (CONTAINER+illativ) bïejedh+kongr.
 
 * Gïese PERSNAME ringkedh+kongr prs/prt?
-Dïhte ..... (PERSNAME+illativ) ringkedh+kongr prs/prt.
+Dïhte ..... (mPERSNAME+illativ) ringkedh+kongr prs/prt.
 
-** Gusnie FAMILY/PERSNAME/Pron årroeminie?
-** FAMILY/PERSNAME/Pron ..... (PLACE_NAME inessiv) årroeminie.
+Innesiv
+
+* Gusnie FAMILY/PERSNAME årroeminie?
+* FAMILY/PERSNAME ..... (PLACE_NAME inessiv) årroeminie.
 
 * N-INE id="ine5"
 ** Gusnie HUMAN_A PROFESSION årroeminie? 
@@ -1714,6 +1721,10 @@ Dïhte ..... (PERSNAME+illativ) ringkedh+kongr prs/prt.
 ** Gusnie NAME+genitiv BELONGINGS+nominativ?   
 ** NAME+genitiv BELONGINGS+nominativ lea .... (ROOM+inessiv)
 
+* Gusnie dov REINDEER_ANIMAL?
+* Mov REINDEER_ANIMAL  .... (NATURE_PLACE_REINDEER+inessiv) 
+
+Elativ
 * N-ELA id="ela3"
 ** Gubpede PEOPLE båetedh+kongr?
 ** PEOPLE ..... (PLACE_NAME elativ) båetedh+kongr.
@@ -1725,6 +1736,11 @@ Dïhte ..... (PERSNAME+illativ) ringkedh+kongr prs/prt.
 * Mestie Pron bïlledh+kongr prs? 
 Pron ....(ANIMAL_WILD+elativ) bïlledh+kongr prs.
 
+* Gubpede bovtsem vuejiehtamme?
+Dam libie .... (NATURE_PLACE_REINDEER+elativ) vuejiehtamme.
+
+
+Komitativ
 * N-COM id="com5" id="com6" id="com7"
 ** Giejnie FAMILY/PERSNAME/Pron vuelkedh+kongr?
 ** FAMILY/PERSNAME/Pron ..... (PERSNAME+komitativ) vuelkedh+kongr.
@@ -1741,6 +1757,11 @@ Pron ....(ANIMAL_WILD+elativ) bïlledh+kongr prs.
 ** Giejnie Pron saemiestidh+kongr?
 ** Pron ..... (FAMILY+komitativ) saemiestidh+kongr.
 
+* Giejnie FAMILY daanhtsoeminie?
+Dïhte ..... (mPERSNAME+komitativ) daanhtsoeminie.
+
+Essiv
+
 * N-ESS id="ess1"
 ** Mejnie PERSNAME barkeminie?
 ** Dïhte ..... (PROFESSION+essiv) barkeminie.
@@ -1753,6 +1774,8 @@ Pron ....(ANIMAL_WILD+elativ) bïlledh+kongr prs.
 
 
 !!!Pronomen
+Akkusativ
+
 * P-ACC id=" "
 ** Gïem PERSNAME vuajna?
 ** PERSNAME .... (Pron+akkusativ) vuajna. 
@@ -1763,15 +1786,24 @@ PERSNAME .... (Pron+akkusativ) govledh+kongr prs.
 * Gïem NAME viehkiehtidh+kongr prt? 
 NAME .... (Pron+akkusativ) viehkiehtidh+kongr prt.
 
-* P-GEN id=" "
-* Gïen VEHICLE?
+Genitiv
+
+
+* Gïen VEHICLE doete?
 Daate ..... (Pron+genitiv) VEHICLE.
 
-* Gïen THING?
-..... (Pron+genitiv) lea+kongr THING.
+* Gïen lea THING ?
+..... (Pron+genitiv) lea THING.
+
+* Gïen CLOTHING+nominativ daate?
+Doete .... (pron+genitiv) CLOTHING+nominativ.
 
 * Man bïjre PEOPLE soptsestidh+kongr prs? 
 PEOPLE .... (Pron+genitiv) bïjre soptsestidh+kongr prs.
+
+
+
+Illativ
 
 * P-ILL id="pill1"
 ** Gïese PEOPLE TEXT+akkusativ tjaaleme?
@@ -1785,21 +1817,25 @@ PEOPLE .... (Pron+genitiv) bïjre soptsestidh+kongr prs.
 ** Gïese FAMILY CLOTHING+akkusativ åasteme?
 ** FAMILY ..... (Pron+illativ) CLOTHING+akkusativ åasteme.
 
-* Gïese PROFESSION vaedtsedh+kongr prs? 
-Dïhte ..... (Pron+illativ) vaedtsedh+kongr prs.
+* Gïese PROFESSION BELONGINGS+akkusativ vedti?
+Dïhte dam ..... (Pron+illativ) vedti.
+
+Elativ
 
 * P-ELA id="pela3"
 ** Giestie FAMILY CLOTHING+akkusativ åådtjeme?
 ** FAMILY ..... (Pron+elativ) åådtjeme.
 
-* Giestie PERSNAME dam STORY+akkusativ govledh+perf?
-PERSNAME dam ..... (Pron+elativ) govledh+perf.
+* Giestie mPERSNAME dam STORY+akkusativ govleme?
+PERSNAME dam ..... (Pron+elativ) govleme.
 
-* Giestie PERSNAME bïlledh+kongr prs? 
-Dïhte ..... (Pron+elativ) bïlledh+kongr prs.
+* Giestie mPERSNAME bælla? 
+Dïhte ..... (Pron+elativ) bælla.
 
-* Giestie PERSNAME THING+akkusativ vaeltedh+kongr prt?
-PERSNAME .....(Pron+elativ) vaeltedh+kongr prt.
+* Giestie FAMILY THING+akkusativ veelti?
+Dïhte dam .....(Pron+elativ) veelti.
+
+Komitativ
 
 * P-COM id="pcom1" id="pcom2" id="pcom3"
 ** Guktie Pron+komitativ daan biejjien?
@@ -1812,34 +1848,32 @@ PERSNAME .....(Pron+elativ) vaeltedh+kongr prt.
 * Giejnie PROFESSION soptsestidh+kongr prs?
 PROFESSION ..... (Pron+komitativ) soptsestidh+kongr prs.
 
-* Giejnie FAMILY saemiestidh+kongr prs?
-FAMILY ..... (Pron+komitativ) saemiestidh+kongr prs.
 
-* Giejnie PERSNAME daanhtsodh+kongr prs? 7/4-11
-Dïhte ..... (Pron+komitativ) daanhtsodh+kongr prs.
 
 
 !!Verb
-
+Presens
 * V-PRS id="vprs4"
 ** Maam FAMILY darjodh+kongr?
 ** FAMILY ..... (ACTIVITY_V+kongr prs).
+
+* V-PRS id="vprs7"
+** Maam PEOPLE daan biejjien dorje?
+** Daan biejjien dïhte ..... (ACTIVITY_V+kongr prs).
+
+* V-PRS id="vprs9"
+** Maam Pron daan biejjien skuvlesne darjodh+kongr?
+** Daan biejjien Pron .... (SCHOOL_V+kongr prs).
 
 * V-PRS id="vprs14"
 ** Gubpede PEOPLE MOVEMENT_V+kongr prs?
 ** PEOPLE PLACE_NAME+elativ ..... (MOVEMENT_V+kongr prs).
 
-* V-PRS id="vprs16"
-** Maam Pron åestedh+kongr?
-** Pron FOOD_GROCERY+akkusativ ..... (åestedh+kongr).
-
-* V-PRS id="vprs17"
-** Maam Pron jovkedh+kongr?
-** Pron DRINK+akkusativ ..... (jovkedh+kongr).
-
 * V-PRS id="vprs13"
 ** Gåabph Pron TRAVELLING_V+kongr prs?
 ** Pron PLACE_NAME+illativ ..... (TRAVELLING_V+kongr prs).
+
+Preteritum
 
 * V-PRT id="vprt6"
 ** Maam PEOPLE jååktan darjodh+kongr prt?
@@ -1861,6 +1895,8 @@ Dïhte ..... (Pron+komitativ) daanhtsodh+kongr prs.
 ** Mejnie PERSNAME gïehteli?  
 ** Dïhte .... (ACTIVITY_V prt).
 
+Perfektum
+
 * V-PRF id="vprf1"
 ** Maam PERSNAME daan biejjien dorjeme?
 ** Daan biejjien PERSNAME ..... (ACTIVITY_V perf).
@@ -1878,6 +1914,8 @@ Jaavoe, daelie dïhte VÆTNOE_GÅARODH+akkusativ .... (gåarodh perf).
 * Pron möörjeme? 
 Jaavoe, Pron FOOD_BERRY+nominativ pl ....(tjöönghkedh+perf).
 
+
+Gerundium
 * V-GER id="vger2"
 ** Maam PEOPLE darjoeminie?  
 ** Daelie PEOPLE ..... (ACTIVITY_V ger).
