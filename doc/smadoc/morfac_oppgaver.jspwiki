@@ -1559,7 +1559,7 @@ Attr:
 * Nov amma dïhte .... (ANIMAL_A+attr)  bïenjem åtna.  				5/5
 
 * mPERSNAME+genitiv bïjle lea mTHING_A?								13/5
-* Jaavoe, dïhte hov lea .... (mTHING_A+attr) bïjlem åasteme.
+* Jaavoe, daelie hov lea .... (mTHING_A+attr) bïjlem åasteme.
 
 
 
@@ -1607,6 +1607,7 @@ Manne leam .... (HUMAN_A+komperativ) NAME+elativ					3/5
 
 * mPERSNAME+genitiv BELONGINGS mTHING_A. 							13/5
 * FAMILY+genitiv BELONGINGS .... (mTHING_A+komperativ)
+
 
 Superlativ:
 * Daesnie jïjnjh laejpieh. Maam daejstie sïjhth?
@@ -1667,13 +1668,13 @@ Akkusativ
 * Dïhte ..... (HERDING_THING+akkusativ) tsagki.
 
 * Maam pron edtjedh+kongr+prs meatan vaeltedh ?
-* Pron
+* Pron edtjedh+kongr+prs .... (BELONGINGS+akkusativ) meatan vaeltedh.
 
 
 Genitiv
 
 * N-GEN id="gen9"
-** Gïen ANIMAL_PET+nominativ daate?
+** Gïen ANIMAL_PET+nominativ doete?
 ** Daate ..... (mPERSNAME+genitiv) ANIMAL_PET+nominativ.
 
 * Gïen VEHICLE+nominativ daate?
@@ -1708,8 +1709,8 @@ PEOPLE ..... (PLACE_COUNTRY+illativ) TRAVELLING_V+kongr prs.
 * Gosse Pron CLOTHING+akkusativ bïejedh+kongr? 
 Pron CLOTHING+akkusativ ..... (CONTAINER+illativ) bïejedh+kongr.
 
-* Gïese PERSNAME ringkedh+kongr prs/prt?
-Dïhte ..... (mPERSNAME+illativ) ringkedh+kongr prs/prt.
+* Gïese PERSNAME jååktan ringkedh+kongr  prt?
+Dïhte ..... (mPERSNAME+illativ) ringkedh+kongr prt.
 
 Inessiv
 
@@ -1724,8 +1725,8 @@ Inessiv
 ** Gusnie NAME+genitiv BELONGINGS+nominativ?   
 ** NAME+genitiv BELONGINGS+nominativ lea .... (ROOM+inessiv)
 
-* Gusnie dov REINDEER_ANIMAL?
-* Mov REINDEER_ANIMAL  .... (NATURE_PLACE_REINDEER+inessiv) 
+* Gusnie pron mov REINDEER_ANIMAL+akkusativ vuejnedh+kongr+prt?
+* Pron dam  .... (NATURE_PLACE_REINDEER+inessiv) vuejnedh+kongr+prt.
 
 Elativ
 * N-ELA id="ela3"
@@ -1735,6 +1736,9 @@ Elativ
 * N-ELA id="ela10"
 ** Gustie ANIMAL_PET+sg båata?
 ** Dïhte ..... (ROOM+elativ) båata.
+
+*Giestie pron HERDING_THING+akkusativ åadtjodh+kongr+prt?
+* Dam pron .... (FAMILY+elativ) åadtjodh+kongr+prt.
 
 * Mestie Pron bïlledh+kongr prs? 
 Pron ....(ANIMAL_WILD+elativ) bïlledh+kongr prs.
@@ -1784,25 +1788,28 @@ Akkusativ
 ** PERSNAME .... (Pron+akkusativ) vuajna. 
 
 * Gïem PERSNAME govledh+kongr prs?
-PERSNAME .... (Pron+akkusativ) govledh+kongr prs.
+* PERSNAME .... (Pron+akkusativ) govledh+kongr prs.
 
 * Gïem NAME viehkiehtidh+kongr prt? 
-NAME .... (Pron+akkusativ) viehkiehtidh+kongr prt.
+* NAME .... (Pron+akkusativ) viehkiehtidh+kongr prt.
 
 Genitiv
 
 
 * Gïen VEHICLE doete?
-Daate ..... (Pron+genitiv) VEHICLE.
+* Daate ..... (Pron+genitiv) VEHICLE.
 
 * Gïen lea THING ?
-..... (Pron+genitiv) lea THING.
+* ..... (Pron+genitiv) lea THING.
 
 * Gïen CLOTHING+nominativ daate?
-Doete .... (pron+genitiv) CLOTHING+nominativ.
+* Doete .... (pron+genitiv) CLOTHING+nominativ.
+
+* Giej BELONGINGS+plural doh?
+* Doh leah .... (pron+flertall+genitiv).
 
 * Man bïjre PEOPLE soptsestidh+kongr prs? 
-PEOPLE .... (Pron+genitiv) bïjre soptsestidh+kongr prs.
+* PEOPLE .... (Pron+genitiv) bïjre soptsestidh+kongr prs.
 
 
 
@@ -1821,7 +1828,7 @@ Illativ
 ** FAMILY ..... (Pron+illativ) CLOTHING+akkusativ åasteme.
 
 * Gïese PROFESSION BELONGINGS+akkusativ vedti?
-Dïhte dam ..... (Pron+illativ) vedti.
+* Dïhte dam ..... (Pron+illativ) vedti.
 
 Elativ
 
@@ -1832,7 +1839,7 @@ Elativ
 * Giestie mPERSNAME dam STORY+akkusativ govleme?
 PERSNAME dam ..... (Pron+elativ) govleme.
 
-* Giestie mPERSNAME bælla? 
+* Giestie mPERSNAME bælla?
 Dïhte ..... (Pron+elativ) bælla.
 
 * Giestie FAMILY THING+akkusativ veelti?
@@ -1850,6 +1857,7 @@ Komitativ
 
 * Giejnie PROFESSION soptsestidh+kongr prs?
 PROFESSION ..... (Pron+komitativ) soptsestidh+kongr prs.
+
 
 
 
@@ -1920,6 +1928,9 @@ Jaavoe, daelie dïhte VÆTNOE_GÅARODH+akkusativ .... (gåarodh perf).
 * Pron möörjeme? 
 Jaavoe, Pron FOOD_BERRY+nominativ pl ....(tjöönghkedh+perf).
 
+* mPERSNAME sov CLOTHING+akkusativ mCLOTHES_WORK+perfektum?
+* Nov hævvi dïhte dam .... (darjodh+perfektum).
+
 
 Gerundium
 * V-GER id="vger2"
@@ -1929,6 +1940,7 @@ Gerundium
 * V-GER id="vger6"
 ** Mejnie PERSNAME gïehteleminie?  
 ** Dïhte .... (ACTIVITY_V ger).
+
 
 
 
