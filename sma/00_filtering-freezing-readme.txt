@@ -24,7 +24,7 @@ multiword_smanob.xml
 n_smanob.xml         
 names.xml   ==> no reverting needed; synchronized with the file in pedversions/.../meta/names.xml         
 num_smanob.xml ==> filtered; no reverting needed; synchronized with the file in pedversions/.../meta/num_smanob.xml       
-pronPers_smanob.xml  
+pronPers_smanob.xml  ==> no filtering now; no revertin; Lene is in charge of synchronizing it with that in pedversions/.../meta
 propPl_smanob.xml
 prop_smanob.xml
 v_smanob.xml
