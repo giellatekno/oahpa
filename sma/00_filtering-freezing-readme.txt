@@ -22,28 +22,30 @@ a_smanob.xml
 adv_smanob.xml       
 multiword_smanob.xml 
 n_smanob.xml         
-names.xml   ==> no reverting needed; synchronized with the file in pedversions/.../meta/names.xml         
-num_smanob.xml ==> filtered; no reverting needed; synchronized with the file in pedversions/.../meta/num_smanob.xml       
-pronPers_smanob.xml  ==> no filtering now; no revertin; Lene is in charge of synchronizing it with that in pedversions/.../meta
 propPl_smanob.xml
 prop_smanob.xml
 v_smanob.xml
+ ==> all the files above have been filtered and synchronized between
+ pedversions/.../sma and ped/sma/src directories
+
+names.xml   ==> no reverting needed; synchronized with the file in pedversions/.../meta/names.xml         
+num_smanob.xml ==> filtered; no reverting needed; synchronized with the file in pedversions/.../meta/num_smanob.xml       
+pronPers_smanob.xml  ==> no filtering now; no revertin; Lene is in charge of synchronizing it with that in pedversions/.../meta
 
 These files are the input files for the filtering operation. Anybody can work with them.
 They will be replaced by the filtered ones when testing is done (working on it now).
 
 1.b. in pedversions/smaoahpa/data_sma/sma:
-These are the filtered files that are now being tested (not yet checked in, comparing with previous versions)
-
+These are the filtered files that are now tested, checked in, and
+synchronized with the ped/sma/src dir
+    ==> done 
 2. Xsma 
 2.a. in gtsvn/ped/sma/src:
 At the moment, there is no such file in there, because these have to be reverted from the filtered ones.
-
-
+ ==> todo
 
 2.b. in pedversions/smaoahpa/data_sma/X:
-Still woring on them, first testing of filtered data.
-
+ reverting from smaX to Xsma ==> todo
 
 File synchronization until we will have only ONE place to work with them (i.e., also for Ryan!):
 1. file to be reverted for Xsma:
