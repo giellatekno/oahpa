@@ -23,7 +23,7 @@ adv_smanob.xml
 multiword_smanob.xml 
 n_smanob.xml         
 names.xml   ==> no reverting needed; synchronized with the file in pedversions/.../meta/names.xml         
-num_smanob.xml       
+num_smanob.xml ==> filtered; no reverting needed; synchronized with the file in pedversions/.../meta/num_smanob.xml       
 pronPers_smanob.xml  
 propPl_smanob.xml
 prop_smanob.xml
