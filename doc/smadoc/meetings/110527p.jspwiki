@@ -1,0 +1,130 @@
+
+!!!Møte sma-oahpa Tromsø 27. mai 2011
+
+Til stades: Lene, Ryan, Trond
+
+!!!Saker
+* Bugliste
+* TODO-liste frå siste møte
+* Administrativia
+* Neste møte
+
+
+!!! Bugs: 
+
+!!1035
+
+[Tooltip, #1035|http://giellatekno.uit.no/bugzilla/show_bug.cgi?id=1035]
+
+henter oversettelse fra feil verb (fra MAINV i spørsmplet i steden for 
+ spørsmålsverbet)
+
+!!980
+
+[Fleirtal -eh vs. -h, #980|http://giellatekno.uit.no/bugzilla/show_bug.cgi?id=980]
+
+Vi må ha eit møte om Makefile.
+ 
+!!Numra: Normativ vs. deskriptiv analysator
+
+Vi har +Use/NG i sma-num.txt, men ikkje to transducarar.
+
+{{{
+njieljie:4 COMMA ;
+njielje+Use/NG:4 COMMA ;
+nieljie+Use/NG:4 COMMA ;  
+nielje+Use/NG:4 COMMA ; 
+}}}  
+
+
+
+!!!TODO frå siste møte:
+
+Morfa-C
+
+* forandre imperativoppgavene 30.4 __Lene__
+** Desse har Ryan kommentert ut, og Sissel omarbeider no.
+   Etter omarbeidinga skal det funke.
+* lage flere oppgaver, bl.a. adjektiver 30.4 __Lene__
+** Ikkje gjort, Lene skal sjå på det no etterpå.
+* oversettelses-tooltip bør implementeres også på Morfa-C __Ryan__
+** Ja, fiksa, men det er fortsatt ein bug med den.
+* ulikestavelsesverb skal har "Ulikest. (overs.)" __Ryan__
+** Fiksa.
+* Morfa-C tense __Ryan__ 
+** Fiksa.
+* vprs16 blander Prs og Prt __Ryan__
+** Fiksa.
+* verbprs finner ikke ADJ vprs20 __Ryan__
+** Lene har fiksa den.
+
+Andre oppgaver
+
+* lade databasen 30.4. Sjekke statpref etc 29.4: __Lene__ Filtrere: __Ciprian__
+** Fiksa.
+* Fjern pron frå leksa __Ryan__
+** Fiksa.
+* Adjektiver - legge til syll-info 29.4 __Lene__
+** Fiksa.
+* <stem class=...> fjernes 29.4 __Lene__
+** Er det greit å gjere det? Ja. Lene skal fjerne det.
+* snu fra smanob til nobsma for siste gang og fryse 17. mai __Ciprian__
+** Undervsgs i dag.
+* teste og gi meldinger på bugzilla __Trond, Lene__
+** Undervegs, som diskutert.
+* sjekke filene før splitting 16.5 __Lene__
+** Gjort.
+* 17. mai splitte dict og oahpa-filene __Ciprian__
+** Fiksa. Dei er no splitta
+* smaOahpa og smeOahpa må være stabile (pga konferanser) 3-4. mai og 11-12. mai og 14-15. mai
+** Konferansane gjekk fint.
+* smeLeksa - fjerne 'å å'  __Ryan__
+** Fiksa.
+
+
+!!!TODO framover
+
+!!Smaoahpa
+
+* Dialekt
+* Lokalisering
+** Svensk
+** Engelsk
+* Klokka
+
+
+!!TODO nordsamisk
+
+* innlogging -- ok
+* ny mating av database -- ok
+* fikse bug i MorfaC -- 
+* legge til ord fra kurset SAM-1031 -- ok
+* adverb i Leksa -- ikkje gjort
+* pronomen i Leksa -- skal ikkje med
+* multiword i Leksa -- ok i sma
+* tcomm i Leksa? -- ok i sma
+* pronomen i Morfa -- 
+* Cealkka i Vasta -- 
+* nye dialoger i Sahka -- 
+* temaer i Vasta -- 
+* forbedring av grammatikk -- B-Á
+* lage læringsstier -- 
+* flytte læringsstier fra fronter til oahpa -- 
+
+!!Arbeidsliste, videre
+* nettordbok i grensesnittet
+* DeepDict
+* Teksta
+* ......
+
+
+
+!!!Administrativia
+
+Ryan ser på kor mykje tid han har til hausten.
+
+
+!!!Neste møte
+
+
+
