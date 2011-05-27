@@ -7,7 +7,7 @@ cat $GTHOME/gt/sma/src/adj-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|gre
 
 # b. dict adjs
 #cat $GTHOME/words/dicts/smanob/src/a_smanob.xml | grep '<l ' | tr '<' '>' | cut -d">" -f3 > t2
-cat $GTHOME/words/dicts/smanob/src/a_smanob.xml | grep '<l ' | tr '<' '>' | cut -d">" -f3 | lookup -q $GTHOME/gt/sma/bin/sma-norm.fst | grep '+A+' | cut -f1 | uniq > t2
+cat $GTHOME/words/dicts/smanob/src/a_smanob.xml | grep '<l ' | tr '<' '>' | cut -d">" -f3 | lookup -q $GTHOME/gt/sma/bin/sma-norm.fst | grep '+A+' | grep -v '+Ord' | cut -f1 | uniq > t2
 
 # c. only oahpa adjectives
 cat $GTHOME/words/dicts/smanob/src/a_smanob.xml | tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|grep '"oahpa"'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3
