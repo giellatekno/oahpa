@@ -58,6 +58,7 @@ File synchronization until we will have only ONE place to work with them (i.e., 
 
 ==========================================
 Some notes for a common ground in our work:
+==========================================
 
 Default values are "xxx" (using both "XXX" and "yyy" and "YYY"
 leads to unnecessary problems, both when using grep, and find and when
@@ -88,8 +89,35 @@ Transformation failed: Run-time errors were reported
    3          <l pos="i"
 
 
+==========================================
+Additional comments to Lene's idea of assigning sma pos multiword to the nob
+entries after reverting:
+==========================================
+
+<quote>
+Hei!
+
+Jeg husker ikke om vi har snakka om det tidligere, men: multiword skal
+fremdeles være multiword etter snuinga. Dvs at pos-informasjonen ikke
+skal ha noen funskjon i snuingsprosessen. Selv om nob-oversettelsen
+består av ett ord, skal det tilhører multiword-fila. Multiword viser
+til at sma er multiword.
+
+- Lene
+</quote>
 
 
+1. this information is anyhow in the data, namely with the sma entrie
+(which becomes now a translation of the nob entry)
+
+2. after reverting you have also dupicates stemming from different
+smanob files in the nob data; these have to be merged in order not to
+get some messy stuff with the database
+
+3. technically, it is possible to have the former multiword entries in
+the same file DESPITE the fact that the nob entries don't carry with
+them the pos "multiword": the entries can be traced basen on the pos
+of the sma "translations" (see 1. item above)
 
 
 
