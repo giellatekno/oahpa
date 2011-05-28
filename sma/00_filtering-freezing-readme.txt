@@ -56,6 +56,40 @@ File synchronization until we will have only ONE place to work with them (i.e., 
 
  person in charge of that: Lene
 
+==========================================
+Some notes for a common ground in our work:
+
+Default values are "xxx" (using both "XXX" and "yyy" and "YYY"
+leads to unnecessary problems, both when using grep, and find and when
+writing patterns during programming)
+
+"???" are definitely NOT allowed: with xslt this leads to time waiste
+(including the time for writing this comments!!!) for debugging and fixing
+such kinds of errors:
+
+data_sma>_sax pos-split_reverted-data.xsl 
+-----------------------------------------
+processing pos phrase_a
+-----------------------------------------
+-----------------------------------------
+processing pos a
+-----------------------------------------
+-----------------------------------------
+processing pos ???
+-----------------------------------------
+Error at xsl:result-document on line 41 of pos-split_reverted-data.xsl:
+  Exception thrown by OutputURIResolver: Invalid URI syntax: URI has a query component
+Transformation failed: Run-time errors were reported
+
+  14          <l pos="phrase_pron"
+  11          <l pos="phrase_prop"
+   9          <l pos="???"
+   3          <l pos="pron"
+   3          <l pos="i"
+
+
+
+
 
 
 
