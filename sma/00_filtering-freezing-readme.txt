@@ -121,3 +121,11 @@ of the sma "translations" (see 1. item above)
 
 
 
+==========================================
+Some observations:
+==========================================
+
+I my humble opinion this is not a pron but rather an adj. Check and
+   correct if needed.
+
+   <l pos="pron">forskjellig</l>
