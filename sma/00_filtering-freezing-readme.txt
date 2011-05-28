@@ -42,14 +42,14 @@ synchronized with the ped/sma/src dir
 2. Xsma 
 2.a. in gtsvn/ped/sma/src:
 At the moment, there is no such file in there, because these have to be reverted from the filtered ones.
- ==> todo
+ ==> done
 
 2.b. in pedversions/smaoahpa/data_sma/X:
- reverting from smaX to Xsma ==> todo
+ reverting from smaX to Xsma ==> done
 
 File synchronization until we will have only ONE place to work with them (i.e., also for Ryan!):
 1. file to be reverted for Xsma:
-
+ ==> done
  person in charge of that: Ciprian
 
 2. non-revertable file:
