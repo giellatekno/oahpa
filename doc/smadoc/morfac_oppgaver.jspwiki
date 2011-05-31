@@ -1608,8 +1608,31 @@ Komitativ:
 !!! ADJEKTIV
 
 Attr:
-* Tjïdtjien gåptoe lea rööpses. Dov lea gåptoe? 
-* Mov aaj ....... gåptoe.
+
+* ATTRPOS id="attrpos1"
+** Tjidtjien gåptoe lea rööpses. Dov lea gåptoe?  LA: COLOUR og CLOTHING 
+** Mov aaj ....... gåptoe.
+
+{{{	<q id="attrpos1">
+		<qtype>ATTRPOS</qtype>
+		<question>
+			<text>Tjidtjien THING lea ADJ. Dov lea THING</text>
+			<element id="THING">
+				<grammar tag="N+Sg+Nom"/>
+				<sem class="CLOTHING"/>
+			</element>
+			<element id="ADJ">
+				<grammar tag="A+Sg+Nom"/>
+				<sem class="COLOUR"/>
+			</element>
+		</question>
+		<answer>
+			<text>Mov aaj ADJ THING</text>
+			<element game="morfa" id="ADJ" content="ADJ" task="yes">
+				<grammar tag="A+Attr"/>
+			</element>
+		</answer>
+	</q> }}}
 
 
 * mPERSNAME+genitiv gåetie lea BUILDING_ROOM_A+pred. Guktie pron gåetie?  28/4
