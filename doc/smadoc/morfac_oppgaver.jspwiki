@@ -1613,67 +1613,56 @@ Attr:
 ** Tjidtjien gåptoe lea rööpses. Dov lea gåptoe?  LA: COLOUR og CLOTHING 
 ** Mov aaj ....... gåptoe.
 
-{{{	<q id="attrpos1">
-		<qtype>ATTRPOS</qtype>
-		<question>
-			<text>Tjidtjien THING lea ADJ. Dov lea THING</text>
-			<element id="THING">
-				<grammar tag="N+Sg+Nom"/>
-				<sem class="CLOTHING"/>
-			</element>
-			<element id="ADJ">
-				<grammar tag="A+Sg+Nom"/>
-				<sem class="COLOUR"/>
-			</element>
-		</question>
-		<answer>
-			<text>Mov aaj ADJ THING</text>
-			<element game="morfa" id="ADJ" content="ADJ" task="yes">
-				<grammar tag="A+Attr"/>
-			</element>
-		</answer>
-	</q> }}}
+* ATTRPOS id="attrpos2"
+** mPERSNAME+genitiv gåetie lea BUILDING_ROOM_A+pred. Guktie dov gåetie?  
+** Mov aaj .... (BUILDING_ROOM_A+attributt) gåetie.
 
+* ATTRPOS id="attrpos3"
+** Datne tuhtjh mov ANIMAL_DOM lea ANIMAL_A+pred?					 
+** Jaavoe, dov lea .... (ANIMAL_A+attr) ANIMAL_DOM.
 
-* mPERSNAME+genitiv gåetie lea BUILDING_ROOM_A+pred. Guktie pron gåetie?  28/4
-* Pron+genitiv aaj .... (BUILDING_ROOM_A+attributt) gåetie.
+* ATTRPOS id="attrpos4"
+** Daate filme lea gaaje EXPERIENCE_A+pred. Sïjhth dam veartasjidh?  Lene: endra til vuartasjidh som er i oahpa
+** Ijje, im sïjhth .... (EXPERIENCE_A+attr) filmh veartasjidh.
 
-* Datne tuhtjh mov ANIMAL_DOM lea ANIMAL_A+pred?					28/4
-* Jaavoe, dov lea .... (ANIMAL_A+attr) ANIMAL_DOM.
+* ATTRPOS id="attrpos5"
+** Daate CLOTHING lea CLOTHES_A+pred. Guktie doete?     
+** Daate aaj .... (CLOTHES_A+attr) CLOTHING.
 
-* Daate filme lea gaaje EXPERIENCE_A+pred. Sïjhth dam veartasjidh?  28/4
-* Ijje, im sïjhth .... (EXPERIENCE_A+attr) filmh veartasjidh.
+* ATTRPOS id="attrpos6"
+** FAMILY+genitiv ANIMAL_PET lea ANIMAL_A+pred?
+** Nov amma dïhte .... (ANIMAL_A+attr)  bïenjem åtna.  Lene: bïenjem ->	ANIMAL_PET		 
+* ATTRPOS id="attrpos7"
+** mPERSNAME+genitiv bïjle lea mTHING_A+pred?	
+** Jaavoe, daelie hov lea .... (mTHING_A+attr) bïjlem åasteme.
 
-* Daate CLOTHING lea CLOTHES_A+pred. Guktie doete?      			28/4 
-* Daate aaj .... (CLOTHES_A+attr) CLOTHING.
-
-* FAMILY+genitiv ANIMAL_PET lea ANIMAL_A+pred?
-* Nov amma dïhte .... (ANIMAL_A+attr)  bïenjem åtna.  				5/5
-
-* mPERSNAME+genitiv bïjle lea mTHING_A+pred?							13/5
-* Jaavoe, daelie hov lea .... (mTHING_A+attr) bïjlem åasteme.
-
-* Pron+genitiv beapmoeh SOUP_A+pred?
-* Ijje, ij leah daate ..... (SOUP_A+attr) beapmoeh.					27/5
+* ATTRPOS id="attrpos8"
+** Pron+genitiv beapmoeh SOUP_A+pred? Lene: Dov
+** Ijje, ij leah daate ..... (SOUP_A+attr) beapmoeh.					27/5
 
 
 
 Komparativ:
-* Mov stoere gåetie. Guktie dov gåetie?
-* Mov gåetie ..... (fasit: stuerebe) goh dov.
+* PREDCOMP id="predcomp1"
+** Mov stoere gåetie. Guktie dov gåetie?
+** Mov gåetie ..... (fasit: stuerebe) goh dov.
 
-* Sagkan aajja båeries. Man båries dov aajja?
-* Im daejrieh, men mov aajja ...... (fasit: båarasåabpoe) sov aajjeste.
+
+* PREDCOMP id="predcomp2"
+** Sagkan aajja båeries. Man båries dov aajja? Lene: GEN
+** Im daejrieh, men mov aajja ...... (fasit: båarasåabpoe) sov aajjeste.
 
 * Sagkan aajja båeries.
 * Mov aajja ........ (fasit: båarasåabpoe) goh sov.
 
-* Jååktan garre bïegke daesnie.
-* Men daan biejien ..... (fasit: garrebe) bïegke.
+* PREDCOMP id="predcomp3"
+** Jååktan garre bïegke daesnie.
+** Men daan biejien ..... (fasit: garrebe) bïegke.
 
-* Aanta lea noere.
-* alt. 1 Dan voelph ....... (fasit: nuerebh). /
-* a.t. 2 Saara lea ...... (fasit: nuerebe).  morfac-sett: ung, gammel, sint, hyggelig, lykkelig, morsom .... ?
+* PREDCOMP id="predcomp4"
+** Aanta lea noere. Lene: mPERSNAME HUMAN_A
+** alt. 1 Dan voelph ....... (fasit: nuerebh). / 
+** a.t. 2 Saara lea ...... (fasit: nuerebe).  morfac-sett: ung, gammel, sint, hyggelig, lykkelig, morsom .... ? Lene: manne
 
 
 * Mov aehtjie veaksehke. 											28/4
