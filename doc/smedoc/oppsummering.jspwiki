@@ -1,0 +1,131 @@
+
+!!!Bugzilla – Bug 714 Missing features of Vasta
+
+* Reported:	2008-08-20 08:59 CEST by Saara Huhmarniemi
+* Last Modified:	2011-05-04 16:30 CEST (History)
+* CC List:	3 users including you (edit)
+
+!!!Description Saara Huhmarniemi 2008-08-20 08:59:05 CEST
+
+I write down here the missing features or bugs in Vasta to remember them.
+
+A list of bugs that I need to fix:
+
+* ANSWERSUBJECT is not implemented
+* There is only one answer for each question, so not all the answers in
+*ml-files are taken into account.
+* different game types (qa/morfa) for answers/questions are not taken into
+*ccount.
+* semantic sets for qa are the same as in morfa.
+* Adjectives and numerals do not have context / qa -games
+* Technical: words and tags are not always parallel
+* Book information is not used as a search criteria
+
+Things to work out:
+
+* There are no correct answers provided (need a speller)
+* Free word order, what to do abou it.
+* All extra words are ignored and only obligatory words are checked
+* Game is a bit slow, will be improved
+
+!!!Comment 1 Saara Huhmarniemi 2008-09-07 18:49:39 CEST
+
+I have done changes to Vasta, so I comment on some of the problems and mark
+them fixed. In the end of the comment, there are the missing features. The new
+versions are not yet installed to victorio (will be during next week). In
+addition, I will still work with the missing features.
+
+(In reply to comment #0)
+
+* There is only one answer for each question, so not all the answers in
+  xml-files are taken into account.
+
+This is fixed. In morfa, the answer is selected randomly, if there are several
+possibilities. In qa, both answer possibilities are taken into account
+(however, there will be several different answers when the word order is
+implemented).
+
+* different game types (qa/morfa) for answers/questions are not taken into account.
+
+These are now implemented both in question level and in element level.
+
+* semantic sets for qa are the same as in morfa.
+
+This information seems to be added to the xml-files. So I implemented this
+according to the files.
+
+* Adjectives and numerals do not have context / qa -games
+
+Done for numerals, still testing with adjectives.
+
+* Technical: words and tags are not always parallel
+* Game is a bit slow, will be improved
+ 
+This is fixed and there is no problem with the speed anymore.
+
+Things to work out:
+
+* There are no correct answers provided (need a speller)
+* Free word order, what to do about it.
+* All extra words are ignored and only obligatory words are checked
+ 
+* ANSWERSUBJECT is not implemented
+
+I will implement answersubject together with the word order.
+
+* Book information is not used as a search criteria
+* Dialects are not implemented (general issue)
+
+!!!Comment 2 Sjur Nørstebø Moshagen 2011-05-04 15:43:20 CEST
+
+I would like to remove Saara from this bug, so that she won't get bugged(!) by
+e-mails from us. But since she is the reporter, she can't be removed. Sorry
+Saara!
+
+The activity isn't too high for this bug report though, so hopefully you won't
+be too disturbed. Or to put it another way:
+
+Ciprian, how much of this is now implemented or fixed? Can the bug be closed?
+
+After today's round of Bugzilla cleaning, this is the only open bug Saara will
+get e-mails from.
+
+!!!Comment 3 Lene Antonsen 2011-05-04 16:26:18 CEST
+
+Dette er ting som Ciprian ikke har arbeidet med, så det er kanskje like greit
+at jeg kommenterer dette. 
+
+# MorfaC: ANSWERSUBJECT ligger i sme/xml/grammar_defaults.xml, men det er ikke
+implementert. Poenget er å gjøre matrisene enklere.
+# MorfaC: Alternative svar på spørsmålene ligger i morfaC-filene, men jeg har
+aldri sjekka om det fungererer. Poenget er at man til den samme matrisen kan ha
+både positivt og negativt svar. Dette har ikke så stor betydning, fordi man kan
+enkelt kopiere spørsmålet og lagt to versjoner av det, med forskjellige svar.
+# Vasta: Different game types (qa/morfa) for answers/questions are not taken
+into account. - dette er ikke implementert. Vi har forskjellige filer for
+MorfaC og Vasta. Tanken var at vi kunne ha felles filer, hvor Vasta bare bruker
+spørmålet, og MorfaC bruker både spørsmål og svar.
+# Vasta: semantic sets for qa are the same as in morfa. Dette fungerer - de
+semantiske settene er de samme i Vasta og Morfa.
+# MorfaC: Adjectives and numerals do not have context / qa -games - Dette er
+implementert.
+# Technical: words and tags are not always parallel - Jeg vet ikke helt hva
+Saara mener med denne.
+# Book information is not used as a search criteria - Nei, ikke i Vasta, og det
+er heller ikke ønskelig. Istedenfor har vi valg av nivå.
+# Vasta og Sahka: There are no correct answers provided (need a speller). Ja,
+dette er inne på det som jeg arbeidet med i høst, og skal fortsette med. Hfst
+og Voikko er sentrale i dette, tror jeg.
+# Vasta og Sahka: Free word order, what to do abou it. - Dette har vi fiksa.
+Vi bruker CG-regler. Dette spørsmålet er fra et tidligere stadium. før vi
+bestemte oss for å bruke CG.
+#  Vasta og Sahka: All extra words are ignored and only obligatory words are
+checked. Også dette er fiksa med CG.
+# Game is a bit slow, will be improved - hmmmm , tja....
+
+!!!Comment 4 Lene Antonsen 2011-05-04 16:30:05 CEST
+
+Saara skrev denne bugmeldinga lenge før Oahpa var ferdig. Jeg foreslår at
+Ciprian lukker denne bugmeldinga og heller konsentrerer oss om ting som er
+relevante for oss i dag.
+
