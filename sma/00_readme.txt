@@ -21,7 +21,7 @@ In the following is the summary of the CLT meeting:
 
 2. Topic: level simplification in the dictionary from 3 to 2 levels in the meaning groups
 
-	1.1 structurally there are still three levels:
+	2.1 structurally there are still three levels:
   	    - mg: meaning groups
 	    - tg: target language group
       		  THIS is the difference, this group denotes NOT a slight difference
@@ -70,7 +70,22 @@ vs. not grouped based on target language
 The CLT-group voted unanimously FOR the Cip's dream solution!
 
 Here a small note wrt. this solution: all sme mgs in the smaX files will be now
-part of the mgs containing nob and swe, which is in the very spirit of Cip's dream.
+part of the mgs containing nob and swe, which is in the very spirit of
+Cip's dream.
+
+	2.2 tasks:
+  	    2.2.1 unify meaning groups that have been separated ONLY
+	       because of sme-language: this can be done ONLY if there
+	       is a parallelity of sme- vs. non-sme-mgs 
+
+	    2.2.2 split (old) tg into different groups if the
+      		  semantics are different: this is possible ONLY if
+      		  there are semantic groups with ANY tg in the mg
+
+	    2.2.3 group (old) tg to the same meaning group if the
+      		  semantics are he: this is possible ONLY if
+      		  there are semantic groups with ANY tg in the mg
+		  (see the pre-tests below)
 
 ================
 Starting testing for level simplification (it is not that simple):
