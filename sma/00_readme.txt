@@ -72,3 +72,30 @@ The CLT-group voted unanimously FOR the Cip's dream solution!
 Here a small note wrt. this solution: all sme mgs in the smaX files will be now
 part of the mgs containing nob and swe, which is in the very spirit of Cip's dream.
 
+================
+Starting testing for level simplification (it is not that simple):
+ - excluding file: names.xml propPl_smanob.xml
+
+sma>grep -h '<mg_test' _mg_check/*.xml | sort | uniq -c | sort -nr  
+
+(I) Assuming that each tg-nob has a pendant tg-swe or tg-sme, these are
+    non-problematic cases:
+
+3470          <mg_test stamp="tg-nob_tg-swe"/>
+  200          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe"/>
+    32          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe_tg-nob_tg-swe"/>
+      6          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe_tg-nob_tg-swe_tg-nob_tg-swe"/>
+      4          <mg_test stamp="tg-sme_tg-nob"/>
+
+
+(II) Under the same assumption, these file are problematic for an
+     automatic meaning group unification:
+
+ 178          <mg_test stamp="tg-sme"/>
+     7          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe_tg-swe"/>
+     3          <mg_test stamp="tg-swe"/>
+     3          <mg_test stamp="tg-nob"/>
+     1          <mg_test stamp="tg-sme_tg-nob_tg-nob"/>
+     1          <mg_test stamp="tg-nob_tg-nob_tg-swe"/>
+
+
