@@ -11,13 +11,17 @@ In the following is the summary of the CLT meeting:
 
 1. Topic: nobsme handling of MWEs and stat="pref"
 	1.1 extract all sma-MWEs into a separate file;
+	    - done
 	1.2 add ID as in smenob for possible entries that would be doubled in the sense of lemma string and pos string;
 		Ex.: entry for "ungen"
+	    - todo
 	1.3 delete possible entries that got stat="pref" only based on MWEs entires;
+	    - done
 	1.4 delete semantic sets from translations that are not relevant for the nobsma-Leksa, i.e.,
    	    put the translations that are not marked with stat="pref" in the same sematic group with
    	    the marked one even if they don't share the same semantics classification;
 		Ex.: entry for "spor"
+	    - todo
 
 Observations when feature merging:
 
