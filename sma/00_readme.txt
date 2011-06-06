@@ -19,6 +19,16 @@ In the following is the summary of the CLT meeting:
    	    the marked one even if they don't share the same semantics classification;
 		Ex.: entry for "spor"
 
+Observations when feature merging:
+
+   O-1: books that come from different types of entries (pref
+   	    vs. non-pref) have to be marked as such
+
+   O-2: sma translations that stem from different types of entries (pref
+   	    vs. non-pref) have to be marked as such wrt. semantics
+   	    because these features will be merged
+
+
 2. Topic: level simplification in the dictionary from 3 to 2 levels in the meaning groups
 
 	2.1 structurally there are still three levels:
