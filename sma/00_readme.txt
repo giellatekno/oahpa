@@ -91,6 +91,38 @@ Another question is about the interplay between the scope of semantic
 classes and that of the books after reverting the smanob to nobsma.
 
 
+
+New statistics after cleaning up the only morfa-relevant entries
+marked in the semantic class with an initial "m": 
+
+data_sma>grep -h '<e' to_filter_nob/*.xml | sort | uniq -c | sort -nr 
+2198    <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+ 292    <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+ 186    <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+  77    <e counter="3" p_cntr="1" dp_cntr="2" stat="pref">
+  53    <e counter="3" p_cntr="2" dp_cntr="1" stat="pref">
+  19    <e counter="4" p_cntr="2" dp_cntr="2" stat="pref">
+  19    <e counter="4" p_cntr="1" dp_cntr="3" stat="pref">
+  19    <e counter="3" p_cntr="3" dp_cntr="0" stat="pref">
+  10    <e counter="4" p_cntr="3" dp_cntr="1" stat="pref">
+   6    <e counter="5" p_cntr="3" dp_cntr="2" stat="pref">
+   5    <e counter="5" p_cntr="2" dp_cntr="3" stat="pref">
+   5    <e counter="5" p_cntr="1" dp_cntr="4" stat="pref">
+   4    <e counter="4" p_cntr="4" dp_cntr="0" stat="pref">
+   2    <e counter="7" p_cntr="1" dp_cntr="6" stat="pref">
+   2    <e counter="6" p_cntr="3" dp_cntr="3" stat="pref">
+   2    <e counter="6" p_cntr="2" dp_cntr="4" stat="pref">
+   2    <e counter="5" p_cntr="4" dp_cntr="1" stat="pref">
+   1    <e counter="8" p_cntr="6" dp_cntr="2" stat="pref">
+   1    <e counter="8" p_cntr="4" dp_cntr="4" stat="pref">
+   1    <e counter="7" p_cntr="4" dp_cntr="3" stat="pref">
+   1    <e counter="7" p_cntr="2" dp_cntr="5" stat="pref">
+   1    <e counter="6" p_cntr="4" dp_cntr="2" stat="pref">
+   1    <e counter="5" p_cntr="5" dp_cntr="0" stat="pref">
+   1    <e counter="10" p_cntr="1" dp_cntr="9" stat="pref">
+
+
+
 2. Topic: level simplification in the dictionary from 3 to 2 levels in the meaning groups
 
 	2.1 structurally there are still three levels:
