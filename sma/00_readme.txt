@@ -87,6 +87,9 @@ b.  Difficult automatic processing (the rest):
    1    <e counter="7" p_cntr="2" dp_cntr="5" stat="pref">
    1    <e counter="6" p_cntr="4" dp_cntr="2" stat="pref">
 
+Another question is about the interplay between the scope of semantic
+classes and that of the books after reverting the smanob to nobsma.
+
 
 2. Topic: level simplification in the dictionary from 3 to 2 levels in the meaning groups
 
