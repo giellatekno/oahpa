@@ -50,15 +50,35 @@ meaning group stemming from a nob-translation with stat="pref"):
 
 
 b.  Difficult automatic processing (the rest):
+
+ b.1: 
+
+ - When to unifiy two or more mgs stemming from a nob-translation with
+    stat="pref"?
+
+ - When total overlapping of sem-classes or even for partial
+    overlapping?
+
+ - What about if their sem-classes are totally different? Shall they
+   get separate entries with different IDs as with the sme-oahpa data
+   or not?
+
 186    <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+ 19    <e counter="3" p_cntr="3" dp_cntr="0" stat="pref">
+  4    <e counter="4" p_cntr="4" dp_cntr="0" stat="pref">
+  1    <e counter="5" p_cntr="5" dp_cntr="0" stat="pref">
+
+
+ b.2: same questions as in b.2 but in addition is also the question of
+        which mg from the prefered ones shall get which translation
+        from the disprefered ones?
+
  54    <e counter="3" p_cntr="2" dp_cntr="1" stat="pref">
   21    <e counter="4" p_cntr="2" dp_cntr="2" stat="pref">
- 19    <e counter="3" p_cntr="3" dp_cntr="0" stat="pref">
-  10    <e counter="4" p_cntr="3" dp_cntr="1" stat="pref">
+ 10    <e counter="4" p_cntr="3" dp_cntr="1" stat="pref">
    6    <e counter="5" p_cntr="3" dp_cntr="2" stat="pref">
    6    <e counter="5" p_cntr="2" dp_cntr="3" stat="pref">
-  4    <e counter="4" p_cntr="4" dp_cntr="0" stat="pref">
-  2    <e counter="6" p_cntr="3" dp_cntr="3" stat="pref">
+   2    <e counter="6" p_cntr="3" dp_cntr="3" stat="pref">
    2    <e counter="6" p_cntr="2" dp_cntr="4" stat="pref">
    2    <e counter="5" p_cntr="4" dp_cntr="1" stat="pref">
    1    <e counter="8" p_cntr="6" dp_cntr="2" stat="pref">
@@ -66,9 +86,6 @@ b.  Difficult automatic processing (the rest):
    1    <e counter="7" p_cntr="4" dp_cntr="3" stat="pref">
    1    <e counter="7" p_cntr="2" dp_cntr="5" stat="pref">
    1    <e counter="6" p_cntr="4" dp_cntr="2" stat="pref">
-   1    <e counter="5" p_cntr="5" dp_cntr="0" stat="pref">
-
- - partial overlapping?
 
 
 2. Topic: level simplification in the dictionary from 3 to 2 levels in the meaning groups
