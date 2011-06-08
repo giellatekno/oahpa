@@ -14,14 +14,18 @@ In the following is the summary of the CLT meeting:
 	    - done
 	1.2 add ID as in smenob for possible entries that would be doubled in the sense of lemma string and pos string;
 		Ex.: entry for "ungen"
-	    - todo
+	    - done
 	1.3 delete possible entries that got stat="pref" only based on MWEs entires;
 	    - done
-	1.4 delete semantic sets from translations that are not relevant for the nobsma-Leksa, i.e.,
-   	    put the translations that are not marked with stat="pref" in the same sematic group with
-   	    the marked one even if they don't share the same semantics classification;
-		Ex.: entry for "spor"
-	    - todo
+	1.4 according to the latest specifications by Lene, don't merge nob entries with stat="pref":
+	    1.4.1 add the disprefered sma-translation to each created
+	    	     entry with stat="pref" 
+		     -done
+	    1.4.2 for entries with the same nob lemma, add prefered sma-translations to each other as
+   	             acceptable answers
+		     -todo
+
+
 
 Observations when feature merging:
 
