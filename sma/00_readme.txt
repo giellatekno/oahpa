@@ -55,10 +55,14 @@ Ex. 2 (several entries with the samme lemma string): Et godt eksempel for det er
      than one entry with the same lemma string in the file
  2. in addition to the t-element from the reverted entry, there are
      t-values of the parallel entries with the same nob lemma string
-     as acceptable answers for the LEKSA play,  each of 
+     as acceptable answers for the LEKSA play,  each of them carries
+     the infos on semantic class, book, and a flag nob-stat meaning "I
+     am a default t in a parallel nob entry"
      <t pos="a" sem-cl="BODY_A" src="dej-åa6-åa4-åa6" nob-stat="yes">mådtan</t>	
-
-
+     as well as all t-element values that don't have a stat="pref"
+     flag in the smanob files, i.e., only sem-cl and book infos.
+            <t pos="a" sem-cl="EXPERIENCE_A-CLOTHES_A-WEATHER_A-BODY_A" src="s2-a1-dej"
+               nob-stat="yes">nåekies</t>
 
    <e id="1_dårlig_a" stat="pref">
       <lg>
@@ -128,8 +132,15 @@ Ex. 2 (several entries with the samme lemma string): Et godt eksempel for det er
    </e>
 
 
+============
+VERY IMPORTANT:
+============
 
-
+Due to the changed format, following places have to be adapted
+accordingly:
+ 1. for the work with XMLmind: dtd and css file
+ 2. for the db feeding: Ryan's Pythons scripts 
+=============================================
 
 
 Observations when feature merging:
