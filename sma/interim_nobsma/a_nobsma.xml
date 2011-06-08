@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <r xml:lang="nob">
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="rovdyrfritt_a" stat="pref">
       <lg>
          <l pos="a">rovdyrfritt</l>
       </lg>
@@ -13,11 +13,11 @@
             <sem class="HERDING"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">aales</t>
+            <t pos="a" stat="pref">aales</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="årvåken_a" stat="pref">
       <lg>
          <l pos="a">årvåken</l>
       </lg>
@@ -29,11 +29,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">aarehke</t>
+            <t pos="a" stat="pref">aarehke</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_heldig_a" stat="pref">
       <lg>
          <l pos="a">heldig</l>
       </lg>
@@ -41,27 +41,32 @@
          <book name="s3"/>
          <book name="s4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">aavrehke</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">maedeles</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">aavrehke</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="2_heldig_a" stat="pref">
+      <lg>
+         <l pos="a">heldig</l>
+      </lg>
+      <sources>
+         <book name="s3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">maedeles</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="enkel_a" stat="pref">
       <lg>
          <l pos="a">enkel</l>
       </lg>
@@ -73,11 +78,11 @@
             <sem class="SCHOOL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">aelhkies</t>
+            <t pos="a" stat="pref">aelhkies</t>
          </tg>
       </mg>
    </e>
-   <e counter="4" p_cntr="2" dp_cntr="2" stat="pref">
+   <e id="1_lett_a" stat="pref">
       <lg>
          <l pos="a">lett</l>
       </lg>
@@ -85,109 +90,105 @@
          <book name="dej"/>
          <book name="åa1"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">geehpes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="YYY"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gyöhpehke</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SCHOOL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">aelhkies</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="ABSTRACT"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gåvva</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="SCHOOL_A" src="xxx">aelhkies</t>
-         <t sem-cl="ABSTRACT" src="åa5">gåvva</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="OBJECT_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">geehpes</t>
+            <t pos="a" sem-cl="SCHOOL_A" src="xxx">aelhkies</t>
+            <t pos="a" sem-cl="ABSTRACT" src="åa5">gåvva</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="2_lett_a" stat="pref">
+      <lg>
+         <l pos="a">lett</l>
+      </lg>
+      <sources>
+         <book name="dej"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">gyöhpehke</t>
+            <t pos="a" sem-cl="SCHOOL_A" src="xxx">aelhkies</t>
+            <t pos="a" sem-cl="ABSTRACT" src="åa5">gåvva</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_billig_a" stat="pref">
       <lg>
          <l pos="a">billig</l>
       </lg>
       <sources>
          <book name="åa6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="CLOTHES_A"/>
+            <sem class="SHOP"/>
+            <sem/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">aelpies</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_billig_a" stat="pref">
+      <lg>
+         <l pos="a">billig</l>
+      </lg>
+      <sources>
          <book name="s2"/>
          <book name="s4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="CLOTHES_A"/>
-                  <sem class="SHOP"/>
-                  <sem/>
-               </semantics>
-               <t xml:lang="sma" pos="a">aelpies</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-                  <sem class="FINANCE"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">liehties</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="OBJECT_A"/>
+            <sem class="FINANCE"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">liehties</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_nervøs_a" stat="pref">
       <lg>
          <l pos="a">nervøs</l>
       </lg>
       <sources>
          <book name="s3"/>
          <book name="s4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">aerkies</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_nervøs_a" stat="pref">
+      <lg>
+         <l pos="a">nervøs</l>
+      </lg>
+      <sources>
          <book name="xxx"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">aerkies</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="ANIMAL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">dearkoes</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="ANIMAL_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">dearkoes</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="redd_a" stat="pref">
       <lg>
          <l pos="a">redd</l>
       </lg>
@@ -200,11 +201,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">aerkies</t>
+            <t pos="a" stat="pref">aerkies</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="fremmed_a" stat="pref">
       <lg>
          <l pos="a">fremmed</l>
       </lg>
@@ -213,31 +214,17 @@
          <book name="s3"/>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">ammes</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">ovnohkens</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="åa6-åa3">ovnohkens</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">ammes</t>
+            <t pos="a" sem-cl="HUMAN_A" src="åa6-åa3">ovnohkens</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="ukjent_a" stat="pref">
       <lg>
          <l pos="a">ukjent</l>
       </lg>
@@ -245,117 +232,93 @@
          <book name="åa6"/>
          <book name="åa3"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">ovnohkens</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">ammes</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="s2-s3-åa6">ammes</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">ovnohkens</t>
+            <t pos="a" sem-cl="HUMAN_A" src="s2-s3-åa6">ammes</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="4" p_cntr="2" dp_cntr="2" stat="pref">
+   <e id="1_varm_a" stat="pref">
       <lg>
          <l pos="a">varm</l>
       </lg>
       <sources>
          <book name="s3"/>
          <book name="åa3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SOUP_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">baahke</t>
+            <t pos="a" sem-cl="WEATHER_A" src="s4">lïemkeds</t>
+            <t pos="n" sem-cl="WEATHER" src="xxx">bïjvele</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_varm_a" stat="pref">
+      <lg>
+         <l pos="a">varm</l>
+      </lg>
+      <sources>
          <book name="s1"/>
          <book name="s2"/>
+         <book name="s3"/>
          <book name="s4"/>
          <book name="dej"/>
          <book name="åa2"/>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">baahke</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER_A"/>
-                  <sem class="CLOTHES_A"/>
-               </semantics>
-               <re xml:lang="nob">om klær og vær</re>
-               <t xml:lang="sma" pos="a">bïjveles</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER_A"/>
-               </semantics>
-               <re xml:lang="nob">om vær</re>
-               <t xml:lang="sma" pos="a">lïemkeds</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER"/>
-               </semantics>
-               <t xml:lang="sma" pos="n">bïjvele</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="WEATHER_A" src="s4">lïemkeds</t>
-         <t sem-cl="WEATHER" src="xxx">bïjvele</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="WEATHER_A"/>
+            <sem class="CLOTHES_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">bïjveles</t>
+            <t pos="a" sem-cl="WEATHER_A" src="s4">lïemkeds</t>
+            <t pos="n" sem-cl="WEATHER" src="xxx">bïjvele</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_bitter_a" stat="pref">
       <lg>
          <l pos="a">bitter</l>
       </lg>
       <sources>
          <book name="åa6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SOUP_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">baetjkies</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_bitter_a" stat="pref">
+      <lg>
+         <l pos="a">bitter</l>
+      </lg>
+      <sources>
          <book name="xxx"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">baetjkies</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">bihtseds</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="SOUP_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">bihtseds</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="vindfull_a" stat="pref">
       <lg>
          <l pos="a">vindfull</l>
       </lg>
@@ -367,42 +330,28 @@
             <sem class="WEATHER_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">beagkoes</t>
+            <t pos="a" stat="pref">beagkoes</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="bar_a" stat="pref">
       <lg>
          <l pos="a">bar</l>
       </lg>
       <sources>
          <book name="åa5"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="NATURE_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">beavloes</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="BODY_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">båadtsoeh</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="BODY_A" src="xxx">båadtsoeh</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="NATURE_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">beavloes</t>
+            <t pos="a" sem-cl="BODY_A" src="xxx">båadtsoeh</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="kvass_a" stat="pref">
       <lg>
          <l pos="a">kvass</l>
       </lg>
@@ -414,11 +363,11 @@
             <sem class="OBJECT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">besteles</t>
+            <t pos="a" stat="pref">besteles</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="døv_a" stat="pref">
       <lg>
          <l pos="a">døv</l>
       </lg>
@@ -430,11 +379,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">bieljehts</t>
+            <t pos="a" stat="pref">bieljehts</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="gavmild_a" stat="pref">
       <lg>
          <l pos="a">gavmild</l>
       </lg>
@@ -446,42 +395,28 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">boerehks</t>
+            <t pos="a" stat="pref">boerehks</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="vennlig_a" stat="pref">
       <lg>
          <l pos="a">vennlig</l>
       </lg>
       <sources>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">vïenes</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">boerehks</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="s3">boerehks</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">vïenes</t>
+            <t pos="a" sem-cl="HUMAN_A" src="s3">boerehks</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="snill_a" stat="pref">
       <lg>
          <l pos="a">snill</l>
       </lg>
@@ -490,32 +425,18 @@
          <book name="åa2"/>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-                  <sem class="ANIMAL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gïemhpe</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">boerehks</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="s3">boerehks</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+            <sem class="ANIMAL_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">gïemhpe</t>
+            <t pos="a" sem-cl="HUMAN_A" src="s3">boerehks</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="feit_a" stat="pref">
       <lg>
          <l pos="a">feit</l>
       </lg>
@@ -527,11 +448,11 @@
             <sem class="ANIMAL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">buajtehks</t>
+            <t pos="a" stat="pref">buajtehks</t>
          </tg>
       </mg>
    </e>
-   <e counter="4" p_cntr="2" dp_cntr="2" stat="pref">
+   <e id="1_bra_a" stat="pref">
       <lg>
          <l pos="a">bra</l>
       </lg>
@@ -543,52 +464,44 @@
          <book name="dej"/>
          <book name="a1"/>
          <book name="åa4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="EXPERIENCE_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">buerie</t>
+            <t pos="a" sem-cl="ABSTRACT" src="åa5">gåvva</t>
+            <t pos="a" sem-cl="EXPERIENCE_A" src="åa3-åa5-åa6">åajvoeh</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_bra_a" stat="pref">
+      <lg>
+         <l pos="a">bra</l>
+      </lg>
+      <sources>
+         <book name="s1"/>
+         <book name="s2"/>
+         <book name="s3"/>
+         <book name="dej"/>
+         <book name="a1"/>
          <book name="åa1"/>
          <book name="åa2"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="EXPERIENCE_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">buerie</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="FEELING"/>
-                  <sem class="EXPERIENCE_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">hijven</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="ABSTRACT"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gåvva</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="EXPERIENCE_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">åajvoeh</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="ABSTRACT" src="åa5">gåvva</t>
-         <t sem-cl="EXPERIENCE_A" src="åa3-åa5-åa6">åajvoeh</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="FEELING"/>
+            <sem class="EXPERIENCE_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">hijven</t>
+            <t pos="a" sem-cl="ABSTRACT" src="åa5">gåvva</t>
+            <t pos="a" sem-cl="EXPERIENCE_A" src="åa3-åa5-åa6">åajvoeh</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="4" p_cntr="1" dp_cntr="3" stat="pref">
+   <e id="god_a" stat="pref">
       <lg>
          <l pos="a">god</l>
       </lg>
@@ -602,49 +515,19 @@
          <book name="a1"/>
          <book name="åa4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">njaelkies</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="EXPERIENCE_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">buerie</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">hearskoes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="EXPERIENCE_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">åajvoeh</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="EXPERIENCE_A" src="s1-s2-s3-s4-dej-a1-åa4">buerie</t>
-         <t sem-cl="SOUP_A" src="s3">hearskoes</t>
-         <t sem-cl="EXPERIENCE_A" src="åa3-åa5-åa6">åajvoeh</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="SOUP_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">njaelkies</t>
+            <t pos="a" sem-cl="EXPERIENCE_A" src="s1-s2-s3-s4-dej-a1-åa4">buerie</t>
+            <t pos="a" sem-cl="SOUP_A" src="s3">hearskoes</t>
+            <t pos="a" sem-cl="EXPERIENCE_A" src="åa3-åa5-åa6">åajvoeh</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="naken_a" stat="pref">
       <lg>
          <l pos="a">naken</l>
       </lg>
@@ -656,11 +539,11 @@
             <sem class="BODY_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">båadtsoeh</t>
+            <t pos="a" stat="pref">båadtsoeh</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="gal_a" stat="pref">
       <lg>
          <l pos="a">gal</l>
       </lg>
@@ -672,11 +555,11 @@
             <sem class="SCHOOL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">båajhtoeh</t>
+            <t pos="a" stat="pref">båajhtoeh</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="gammel_a" stat="pref">
       <lg>
          <l pos="a">gammel</l>
       </lg>
@@ -695,40 +578,43 @@
             <sem class="ANIMAL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">båeries</t>
+            <t pos="a" stat="pref">båeries</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_spredt_a" stat="pref">
       <lg>
          <l pos="a">spredt</l>
       </lg>
       <sources>
          <book name="åa5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HERDING"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">bårras</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_spredt_a" stat="pref">
+      <lg>
+         <l pos="a">spredt</l>
+      </lg>
+      <sources>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HERDING"/>
-               </semantics>
-               <re xml:lang="nob">om rein og folk</re>
-               <t xml:lang="sma" pos="a">bårras</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HERDING"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">låabpoeh</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="HERDING"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">låabpoeh</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="vondt_a" stat="pref">
       <lg>
          <l pos="a">vondt</l>
       </lg>
@@ -741,11 +627,11 @@
             <sem class="BODY_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">bååktjehke</t>
+            <t pos="a" stat="pref">bååktjehke</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="tykkhåret_a" stat="pref">
       <lg>
          <l pos="a">tykkhåret</l>
       </lg>
@@ -757,45 +643,28 @@
             <sem class="ANIMAL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">bååvteres</t>
+            <t pos="a" stat="pref">bååvteres</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="mild_a" stat="pref">
       <lg>
          <l pos="a">mild</l>
       </lg>
       <sources>
          <book name="s4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER_A"/>
-               </semantics>
-               <re xml:lang="nob">om vær</re>
-               <t xml:lang="sma" pos="a">lïemkeds</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER_A"/>
-                  <sem class="CLOTHES_A"/>
-               </semantics>
-               <re xml:lang="nob">om klær og vær</re>
-               <t xml:lang="sma" pos="a">bïjveles</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="WEATHER_A-CLOTHES_A" src="s1-s2-s3-s4-dej-åa2-åa6">bïjveles</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="WEATHER_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">lïemkeds</t>
+            <t pos="a" sem-cl="WEATHER_A-CLOTHES_A" src="s1-s2-s3-s4-dej-åa2-åa6">bïjveles</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="som kjent_a" stat="pref">
       <lg>
          <l pos="a">som kjent</l>
       </lg>
@@ -808,57 +677,52 @@
             <sem class="SCHOOL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">daajroes</t>
+            <t pos="a" stat="pref">daajroes</t>
          </tg>
       </mg>
    </e>
-   <e counter="3" p_cntr="2" dp_cntr="1" stat="pref">
+   <e id="1_kjent_a" stat="pref">
       <lg>
          <l pos="a">kjent</l>
       </lg>
       <sources>
          <book name="s3"/>
          <book name="åa5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="NATURE_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">vihties</t>
+            <t pos="a" sem-cl="ABSTRACT_A-SCHOOL_A" src="s4">daajroes</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_kjent_a" stat="pref">
+      <lg>
+         <l pos="a">kjent</l>
+      </lg>
+      <sources>
          <book name="s2"/>
+         <book name="s3"/>
          <book name="s4"/>
          <book name="dej"/>
          <book name="åa1"/>
+         <book name="åa5"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="NATURE_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">vihties</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-                  <sem class="NATURE_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">åehpies</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="ABSTRACT_A"/>
-                  <sem class="SCHOOL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">daajroes</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="ABSTRACT_A-SCHOOL_A" src="s4">daajroes</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+            <sem class="NATURE_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">åehpies</t>
+            <t pos="a" sem-cl="ABSTRACT_A-SCHOOL_A" src="s4">daajroes</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="nåtidens_a" stat="pref">
       <lg>
          <l pos="a">nåtidens</l>
       </lg>
@@ -870,11 +734,11 @@
             <sem class="TIME_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">daaletje</t>
+            <t pos="a" stat="pref">daaletje</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="moderne_a" stat="pref">
       <lg>
          <l pos="a">moderne</l>
       </lg>
@@ -886,50 +750,62 @@
             <sem class="CLOTHES_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">daaletje</t>
+            <t pos="a" stat="pref">daaletje</t>
          </tg>
       </mg>
    </e>
-   <e counter="3" p_cntr="3" dp_cntr="0" stat="pref">
+   <e id="1_tam_a" stat="pref">
       <lg>
          <l pos="a">tam</l>
       </lg>
       <sources>
          <book name="s2"/>
          <book name="åa6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ANIMAL_A"/>
+            <sem class="HERDING"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">daemies</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_tam_a" stat="pref">
+      <lg>
+         <l pos="a">tam</l>
+      </lg>
+      <sources>
          <book name="dej"/>
          <book name="åa1"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="ANIMAL_A"/>
-                  <sem class="HERDING"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">daemies</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="REINDEER"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">geeles</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HERDING"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">låemties</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="REINDEER"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">geeles</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="3_tam_a" stat="pref">
+      <lg>
+         <l pos="a">tam</l>
+      </lg>
+      <sources>
+         <book name="åa1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HERDING"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">låemties</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="nødvendig_a" stat="pref">
       <lg>
          <l pos="a">nødvendig</l>
       </lg>
@@ -946,11 +822,11 @@
             <sem class="SCHOOL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">daerpies</t>
+            <t pos="a" stat="pref">daerpies</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="gammeldags_a" stat="pref">
       <lg>
          <l pos="a">gammeldags</l>
       </lg>
@@ -963,11 +839,11 @@
             <sem class="CLOTHES_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">dejpeladtje</t>
+            <t pos="a" stat="pref">dejpeladtje</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="dyr_a" stat="pref">
       <lg>
          <l pos="a">dyr</l>
       </lg>
@@ -983,11 +859,11 @@
             <sem class="SHOP"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">dovres</t>
+            <t pos="a" stat="pref">dovres</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="som er i flom_a" stat="pref">
       <lg>
          <l pos="a">som er i flom</l>
       </lg>
@@ -999,11 +875,11 @@
             <sem class="NATURE_WATER"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">dulvies</t>
+            <t pos="a" stat="pref">dulvies</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="tett_a" stat="pref">
       <lg>
          <l pos="a">tett</l>
       </lg>
@@ -1016,41 +892,45 @@
             <sem class="YYY"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">duvhties</t>
+            <t pos="a" stat="pref">duvhties</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_høflig_a" stat="pref">
       <lg>
          <l pos="a">høflig</l>
       </lg>
       <sources>
          <book name="xxx"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">dåajmijes</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_høflig_a" stat="pref">
+      <lg>
+         <l pos="a">høflig</l>
+      </lg>
+      <sources>
          <book name="s3"/>
          <book name="dej"/>
          <book name="åa5"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">dåajmijes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">sjiehteles</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">sjiehteles</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="full_a" stat="pref">
       <lg>
          <l pos="a">full</l>
       </lg>
@@ -1064,11 +944,11 @@
             <sem class="CONTAINER"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">dïeve</t>
+            <t pos="a" stat="pref">dïeve</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="ivrig_a" stat="pref">
       <lg>
          <l pos="a">ivrig</l>
       </lg>
@@ -1082,11 +962,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">eadtjohke</t>
+            <t pos="a" stat="pref">eadtjohke</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="giddesløs_a" stat="pref">
       <lg>
          <l pos="a">giddesløs</l>
       </lg>
@@ -1098,11 +978,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">ealjoeh</t>
+            <t pos="a" stat="pref">ealjoeh</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="skikkelig_a" stat="pref">
       <lg>
          <l pos="a">skikkelig</l>
       </lg>
@@ -1111,71 +991,35 @@
          <book name="s3"/>
          <book name="dej"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SCHOOL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">eensi</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">geesjelihks</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="s2">geesjelihks</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="SCHOOL_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">eensi</t>
+            <t pos="a" sem-cl="HUMAN_A" src="s2">geesjelihks</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="3" p_cntr="1" dp_cntr="2" stat="pref">
+   <e id="ordentlig_a" stat="pref">
       <lg>
          <l pos="a">ordentlig</l>
       </lg>
       <sources>
          <book name="s2"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">geesjelihks</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SCHOOL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">eensi</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SCHOOL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">staeries</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="SCHOOL_A" src="s2-s3-dej">eensi</t>
-         <t sem-cl="SCHOOL_A" src="a1-dej">staeries</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">geesjelihks</t>
+            <t pos="a" sem-cl="SCHOOL_A" src="s2-s3-dej">eensi</t>
+            <t pos="a" sem-cl="SCHOOL_A" src="a1-dej">staeries</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="i veien_a" stat="pref">
       <lg>
          <l pos="a">i veien</l>
       </lg>
@@ -1189,16 +1033,31 @@
             <sem class="YYY"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">faatoes</t>
+            <t pos="a" stat="pref">faatoes</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_vakker_a" stat="pref">
       <lg>
          <l pos="a">vakker</l>
       </lg>
       <sources>
          <book name="s4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">faavroes</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_vakker_a" stat="pref">
+      <lg>
+         <l pos="a">vakker</l>
+      </lg>
+      <sources>
          <book name="s1"/>
          <book name="s2"/>
          <book name="s3"/>
@@ -1207,28 +1066,16 @@
          <book name="åa2"/>
          <book name="åa3"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <re xml:lang="nob">om kvinner</re>
-               <t xml:lang="sma" pos="a">faavroes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">tjaebpies</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">tjaebpies</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="våken_a" stat="pref">
       <lg>
          <l pos="a">våken</l>
       </lg>
@@ -1240,42 +1087,28 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">fahkoes</t>
+            <t pos="a" stat="pref">fahkoes</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="munter_a" stat="pref">
       <lg>
          <l pos="a">munter</l>
       </lg>
       <sources>
          <book name="xxx"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">feejjen</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">jarhpoeh</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="s2">jarhpoeh</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">feejjen</t>
+            <t pos="a" sem-cl="HUMAN_A" src="s2">jarhpoeh</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="3" p_cntr="1" dp_cntr="2" stat="pref">
+   <e id="glad_a" stat="pref">
       <lg>
          <l pos="a">glad</l>
       </lg>
@@ -1286,72 +1119,36 @@
          <book name="åa5"/>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="FEELING"/>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">geerjene</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">feejjen</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="FEELING"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">hååkene</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="xxx">feejjen</t>
-         <t sem-cl="FEELING" src="åa4">hååkene</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="FEELING"/>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">geerjene</t>
+            <t pos="a" sem-cl="HUMAN_A" src="xxx">feejjen</t>
+            <t pos="a" sem-cl="FEELING" src="åa4">hååkene</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="fornøyd_a" stat="pref">
       <lg>
          <l pos="a">fornøyd</l>
       </lg>
       <sources>
          <book name="s4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">madtjeles</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">feejjen</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="xxx">feejjen</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">madtjeles</t>
+            <t pos="a" sem-cl="HUMAN_A" src="xxx">feejjen</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_fersk_a" stat="pref">
       <lg>
          <l pos="a">fersk</l>
       </lg>
@@ -1359,28 +1156,32 @@
          <book name="s3"/>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">fïerske</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <re xml:lang="nob">om kjøtt</re>
-               <t xml:lang="sma" pos="a">varres</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="SOUP_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">fïerske</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="2_fersk_a" stat="pref">
+      <lg>
+         <l pos="a">fersk</l>
+      </lg>
+      <sources>
+         <book name="s3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SOUP_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">varres</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="slimbelagt_a" stat="pref">
       <lg>
          <l pos="a">slimbelagt</l>
       </lg>
@@ -1392,11 +1193,11 @@
             <sem class="YYY"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gaajhkenjevlien</t>
+            <t pos="a" stat="pref">gaajhkenjevlien</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="klossete_a" stat="pref">
       <lg>
          <l pos="a">klossete</l>
       </lg>
@@ -1408,11 +1209,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gaajpeles</t>
+            <t pos="a" stat="pref">gaajpeles</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="oval_a" stat="pref">
       <lg>
          <l pos="a">oval</l>
       </lg>
@@ -1424,11 +1225,11 @@
             <sem class="OBJECT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gaavnjeres</t>
+            <t pos="a" stat="pref">gaavnjeres</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="eksisterende_a" stat="pref">
       <lg>
          <l pos="a">eksisterende</l>
       </lg>
@@ -1440,11 +1241,11 @@
             <sem class="ABSTRACT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gaavnoes</t>
+            <t pos="a" stat="pref">gaavnoes</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="trang_a" stat="pref">
       <lg>
          <l pos="a">trang</l>
       </lg>
@@ -1457,43 +1258,28 @@
             <sem class="BUILDING_ROOM_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gaertjies</t>
+            <t pos="a" stat="pref">gaertjies</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="smal_a" stat="pref">
       <lg>
          <l pos="a">smal</l>
       </lg>
       <sources>
          <book name="s4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="CLOTHES_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">giedtsies</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="CLOTHES_A"/>
-                  <sem class="BUILDING_ROOM_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gaertjies</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="CLOTHES_A-BUILDING_ROOM_A" src="åa6">gaertjies</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="CLOTHES_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">giedtsies</t>
+            <t pos="a" sem-cl="CLOTHES_A-BUILDING_ROOM_A" src="åa6">gaertjies</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="3" p_cntr="3" dp_cntr="0" stat="pref">
+   <e id="1_ferdig_a" stat="pref">
       <lg>
          <l pos="a">ferdig</l>
       </lg>
@@ -1501,39 +1287,52 @@
          <book name="dej"/>
          <book name="åa5"/>
          <book name="åa6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SOUP_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">gaervies</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_ferdig_a" stat="pref">
+      <lg>
+         <l pos="a">ferdig</l>
+      </lg>
+      <sources>
          <book name="s2"/>
          <book name="s3"/>
          <book name="åa3"/>
+         <book name="åa5"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gaervies</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SCHOOL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">riejries</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="ABSTRACT"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">stïeres</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="SCHOOL_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">riejries</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="3_ferdig_a" stat="pref">
+      <lg>
+         <l pos="a">ferdig</l>
+      </lg>
+      <sources>
+         <book name="s3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ABSTRACT"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">stïeres</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="mett_a" stat="pref">
       <lg>
          <l pos="a">mett</l>
       </lg>
@@ -1546,103 +1345,65 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gallasodtje</t>
+            <t pos="a" stat="pref">gallasodtje</t>
          </tg>
       </mg>
    </e>
-   <e counter="4" p_cntr="2" dp_cntr="2" stat="pref">
+   <e id="1_kald_a" stat="pref">
       <lg>
          <l pos="a">kald</l>
       </lg>
       <sources>
          <book name="dej"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SOUP_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">galme</t>
+            <t pos="a" sem-cl="WEATHER_A" src="xxx">guelhties</t>
+            <t pos="a" sem-cl="WEATHER_A" src="xxx">jueskies</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_kald_a" stat="pref">
+      <lg>
+         <l pos="a">kald</l>
+      </lg>
+      <sources>
          <book name="xxx"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">galme</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">tjåetskemes</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER_A"/>
-               </semantics>
-               <re xml:lang="nob">om fjell eller vind eller år</re>
-               <t xml:lang="sma" pos="a">guelhties</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER_A"/>
-               </semantics>
-               <re xml:lang="nob">om vær og vind</re>
-               <t xml:lang="sma" pos="a">jueskies</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="WEATHER_A" src="xxx">guelhties</t>
-         <t sem-cl="WEATHER_A" src="xxx">jueskies</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="WEATHER_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">tjåetskemes</t>
+            <t pos="a" sem-cl="WEATHER_A" src="xxx">guelhties</t>
+            <t pos="a" sem-cl="WEATHER_A" src="xxx">jueskies</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="3" p_cntr="1" dp_cntr="2" stat="pref">
+   <e id="kjølig_a" stat="pref">
       <lg>
          <l pos="a">kjølig</l>
       </lg>
       <sources>
          <book name="xxx"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER_A"/>
-               </semantics>
-               <re xml:lang="nob">om vær og vind</re>
-               <t xml:lang="sma" pos="a">jueskies</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">galme</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">tjåetskemes</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="SOUP_A" src="dej">galme</t>
-         <t sem-cl="WEATHER_A" src="xxx">tjåetskemes</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="WEATHER_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">jueskies</t>
+            <t pos="a" sem-cl="SOUP_A" src="dej">galme</t>
+            <t pos="a" sem-cl="WEATHER_A" src="xxx">tjåetskemes</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="bred_a" stat="pref">
       <lg>
          <l pos="a">bred</l>
       </lg>
@@ -1655,11 +1416,11 @@
             <sem class="BUILDING_ROOM_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gamte</t>
+            <t pos="a" stat="pref">gamte</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="tildekket_a" stat="pref">
       <lg>
          <l pos="a">tildekket</l>
       </lg>
@@ -1671,43 +1432,28 @@
             <sem class="OBJECT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gaptjeldihkie</t>
+            <t pos="a" stat="pref">gaptjeldihkie</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="lukket_a" stat="pref">
       <lg>
          <l pos="a">lukket</l>
       </lg>
       <sources>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <re xml:lang="nob">om pulk</re>
-               <t xml:lang="sma" pos="a">måskoes</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gaptjeldihkie</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="OBJECT_A" src="s3">gaptjeldihkie</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="OBJECT_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">måskoes</t>
+            <t pos="a" sem-cl="OBJECT_A" src="s3">gaptjeldihkie</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="stolt_a" stat="pref">
       <lg>
          <l pos="a">stolt</l>
       </lg>
@@ -1720,11 +1466,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">garmeres</t>
+            <t pos="a" stat="pref">garmeres</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="hard_a" stat="pref">
       <lg>
          <l pos="a">hard</l>
       </lg>
@@ -1737,11 +1483,11 @@
             <sem class="OBJECT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">garre</t>
+            <t pos="a" stat="pref">garre</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="steinete_a" stat="pref">
       <lg>
          <l pos="a">steinete</l>
       </lg>
@@ -1753,11 +1499,11 @@
             <sem class="NATURE_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gearkeske</t>
+            <t pos="a" stat="pref">gearkeske</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="voksen_a" stat="pref">
       <lg>
          <l pos="a">voksen</l>
       </lg>
@@ -1771,11 +1517,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">geerve</t>
+            <t pos="a" stat="pref">geerve</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="vanskelig_a" stat="pref">
       <lg>
          <l pos="a">vanskelig</l>
       </lg>
@@ -1789,11 +1535,11 @@
             <sem class="SCHOOL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">geerve</t>
+            <t pos="a" stat="pref">geerve</t>
          </tg>
       </mg>
    </e>
-   <e counter="4" p_cntr="3" dp_cntr="1" stat="pref">
+   <e id="1_dårlig_a" stat="pref">
       <lg>
          <l pos="a">dårlig</l>
       </lg>
@@ -1801,54 +1547,57 @@
          <book name="s2"/>
          <book name="åa6"/>
          <book name="åa4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WEATHER_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">geerve</t>
+            <t pos="a" sem-cl="BODY_A" src="dej-åa6-åa4-åa6">mådtan</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_dårlig_a" stat="pref">
+      <lg>
+         <l pos="a">dårlig</l>
+      </lg>
+      <sources>
+         <book name="s2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">madtan</t>
+            <t pos="a" sem-cl="BODY_A" src="dej-åa6-åa4-åa6">mådtan</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="3_dårlig_a" stat="pref">
+      <lg>
+         <l pos="a">dårlig</l>
+      </lg>
+      <sources>
+         <book name="s2"/>
          <book name="a1"/>
          <book name="dej"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER_A"/>
-               </semantics>
-               <re xml:lang="nob">om vær</re>
-               <t xml:lang="sma" pos="a">geerve</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="BODY_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">madtan</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="EXPERIENCE_A"/>
-                  <sem class="CLOTHES_A"/>
-                  <sem class="WEATHER_A"/>
-                  <sem class="BODY_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">nåekies</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="BODY_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">mådtan</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="BODY_A" src="dej-åa6-åa4-åa6">mådtan</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="EXPERIENCE_A"/>
+            <sem class="CLOTHES_A"/>
+            <sem class="WEATHER_A"/>
+            <sem class="BODY_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">nåekies</t>
+            <t pos="a" sem-cl="BODY_A" src="dej-åa6-åa4-åa6">mådtan</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="tørr_a" stat="pref">
       <lg>
          <l pos="a">tørr</l>
       </lg>
@@ -1865,11 +1614,11 @@
             <sem class="SOUP_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gejhkie</t>
+            <t pos="a" stat="pref">gejhkie</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="vid_a" stat="pref">
       <lg>
          <l pos="a">vid</l>
       </lg>
@@ -1881,11 +1630,11 @@
             <sem class="CLOTHES_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">geljies</t>
+            <t pos="a" stat="pref">geljies</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="fattig_a" stat="pref">
       <lg>
          <l pos="a">fattig</l>
       </lg>
@@ -1897,11 +1646,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">giefies</t>
+            <t pos="a" stat="pref">giefies</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="spennende_a" stat="pref">
       <lg>
          <l pos="a">spennende</l>
       </lg>
@@ -1909,33 +1658,17 @@
          <book name="s2"/>
          <book name="s4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="EXPERIENCE_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gieltegs</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="EXPERIENCE_A"/>
-                  <sem class="FEELING"/>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">lustes</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="EXPERIENCE_A-FEELING-HUMAN_A" src="s2-dej-åa5-åa6">lustes</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="EXPERIENCE_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">gieltegs</t>
+            <t pos="a" sem-cl="EXPERIENCE_A-FEELING-HUMAN_A" src="s2-dej-åa5-åa6">lustes</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="kjær_a" stat="pref">
       <lg>
          <l pos="a">kjær</l>
       </lg>
@@ -1948,11 +1681,11 @@
             <sem class="FEELING"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gieries</t>
+            <t pos="a" stat="pref">gieries</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="villig_a" stat="pref">
       <lg>
          <l pos="a">villig</l>
       </lg>
@@ -1964,72 +1697,70 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">girvene</t>
+            <t pos="a" stat="pref">girvene</t>
          </tg>
       </mg>
    </e>
-   <e counter="5" p_cntr="3" dp_cntr="2" stat="pref">
+   <e id="1_snar_a" stat="pref">
+      <lg>
+         <l pos="a">snar</l>
+      </lg>
+      <sources>
+         <book name="dej"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ANIMAL_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">govjehke</t>
+            <t pos="a" sem-cl="HUMAN_A" src="s2">radtjoes</t>
+            <t pos="a" sem-cl="MOVEMENT_A" src="s4-dej-åa5-åa4">spaajhte</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_snar_a" stat="pref">
       <lg>
          <l pos="a">snar</l>
       </lg>
       <sources>
          <book name="dej"/>
          <book name="åa4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+            <sem class="ANIMAL_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">gyvjehke</t>
+            <t pos="a" sem-cl="HUMAN_A" src="s2">radtjoes</t>
+            <t pos="a" sem-cl="MOVEMENT_A" src="s4-dej-åa5-åa4">spaajhte</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="3_snar_a" stat="pref">
+      <lg>
+         <l pos="a">snar</l>
+      </lg>
+      <sources>
          <book name="s4"/>
          <book name="åa5"/>
+         <book name="åa4"/>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="ANIMAL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">govjehke</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-                  <sem class="ANIMAL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gyvjehke</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="MOVEMENT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">sneehpes</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">radtjoes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="MOVEMENT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">spaajhte</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="s2">radtjoes</t>
-         <t sem-cl="MOVEMENT_A" src="s4-dej-åa5-åa4">spaajhte</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="MOVEMENT_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">sneehpes</t>
+            <t pos="a" sem-cl="HUMAN_A" src="s2">radtjoes</t>
+            <t pos="a" sem-cl="MOVEMENT_A" src="s4-dej-åa5-åa4">spaajhte</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="4" p_cntr="1" dp_cntr="3" stat="pref">
+   <e id="hurtig_a" stat="pref">
       <lg>
          <l pos="a">hurtig</l>
       </lg>
@@ -2039,82 +1770,54 @@
          <book name="åa5"/>
          <book name="åa4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="MOVEMENT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">spaajhte</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="ANIMAL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">govjehke</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-                  <sem class="ANIMAL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gyvjehke</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="MOVEMENT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">sneehpes</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="ANIMAL_A" src="dej">govjehke</t>
-         <t sem-cl="HUMAN_A-ANIMAL_A" src="dej-åa4">gyvjehke</t>
-         <t sem-cl="MOVEMENT_A" src="s4-åa5-åa4-åa6">sneehpes</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="MOVEMENT_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">spaajhte</t>
+            <t pos="a" sem-cl="ANIMAL_A" src="dej">govjehke</t>
+            <t pos="a" sem-cl="HUMAN_A-ANIMAL_A" src="dej-åa4">gyvjehke</t>
+            <t pos="a" sem-cl="MOVEMENT_A" src="s4-åa5-åa4-åa6">sneehpes</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_fiskerik_a" stat="pref">
       <lg>
          <l pos="a">fiskerik</l>
       </lg>
       <sources>
          <book name="dej"/>
          <book name="s3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="NATURE_WATER"/>
+            <sem class="FISHING"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">gualijes</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_fiskerik_a" stat="pref">
+      <lg>
+         <l pos="a">fiskerik</l>
+      </lg>
+      <sources>
          <book name="åa2"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="NATURE_WATER"/>
-                  <sem class="FISHING"/>
-               </semantics>
-               <re xml:lang="nob">om sjø</re>
-               <t xml:lang="sma" pos="a">gualijes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="NATURE_WATER"/>
-                  <sem class="FISHING"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gööles</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="NATURE_WATER"/>
+            <sem class="FISHING"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">gööles</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="fiskeløs_a" stat="pref">
       <lg>
          <l pos="a">fiskeløs</l>
       </lg>
@@ -2127,11 +1830,11 @@
             <sem class="FISHING"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">guelehts</t>
+            <t pos="a" stat="pref">guelehts</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="lang_a" stat="pref">
       <lg>
          <l pos="a">lang</l>
       </lg>
@@ -2148,11 +1851,11 @@
             <sem class="BUILDING_ROOM_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">guhkies</t>
+            <t pos="a" stat="pref">guhkies</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="dugelig_a" stat="pref">
       <lg>
          <l pos="a">dugelig</l>
       </lg>
@@ -2164,42 +1867,28 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gyönegs</t>
+            <t pos="a" stat="pref">gyönegs</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="brukelig_a" stat="pref">
       <lg>
          <l pos="a">brukelig</l>
       </lg>
       <sources>
          <book name="åa4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="CLOTHES_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">dæjpeles</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gyönegs</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="s4">gyönegs</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="CLOTHES_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">dæjpeles</t>
+            <t pos="a" sem-cl="HUMAN_A" src="s4">gyönegs</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="kroket_a" stat="pref">
       <lg>
          <l pos="a">kroket</l>
       </lg>
@@ -2211,68 +1900,76 @@
             <sem class="YYY"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gåangkoeh</t>
+            <t pos="a" stat="pref">gåangkoeh</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_tom_a" stat="pref">
       <lg>
          <l pos="a">tom</l>
       </lg>
       <sources>
          <book name="s4"/>
          <book name="dej"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="OBJECT_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">gåaroes</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_tom_a" stat="pref">
+      <lg>
+         <l pos="a">tom</l>
+      </lg>
+      <sources>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gåaroes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="YYY"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">tovme</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">tovme</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_dum_a" stat="pref">
       <lg>
          <l pos="a">dum</l>
       </lg>
       <sources>
          <book name="xxx"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">gåffoeh</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_dum_a" stat="pref">
+      <lg>
+         <l pos="a">dum</l>
+      </lg>
+      <sources>
          <book name="s2"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gåffoeh</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">jåasoeh</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">jåasoeh</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="venstre_a" stat="pref">
       <lg>
          <l pos="a">venstre</l>
       </lg>
@@ -2284,11 +1981,11 @@
             <sem class="OBJECT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gårroeh</t>
+            <t pos="a" stat="pref">gårroeh</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="greit_a" stat="pref">
       <lg>
          <l pos="a">greit</l>
       </lg>
@@ -2300,11 +1997,11 @@
             <sem class="ABSTRACT"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gåvva</t>
+            <t pos="a" stat="pref">gåvva</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="påkledd_a" stat="pref">
       <lg>
          <l pos="a">påkledd</l>
       </lg>
@@ -2316,82 +2013,82 @@
             <sem class="CLOTHES_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gåårveldihkie</t>
+            <t pos="a" stat="pref">gåårveldihkie</t>
          </tg>
       </mg>
    </e>
-   <e counter="3" p_cntr="3" dp_cntr="0" stat="pref">
+   <e id="1_syk_a" stat="pref">
       <lg>
          <l pos="a">syk</l>
       </lg>
       <sources>
          <book name="s2"/>
          <book name="åa6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">gæbjoeh</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_syk_a" stat="pref">
+      <lg>
+         <l pos="a">syk</l>
+      </lg>
+      <sources>
          <book name="dej"/>
+         <book name="åa6"/>
          <book name="åa4"/>
+         <book name="åa6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">mådtan</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="3_syk_a" stat="pref">
+      <lg>
+         <l pos="a">syk</l>
+      </lg>
+      <sources>
+         <book name="s2"/>
          <book name="åa3"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gæbjoeh</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="BODY_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">mådtan</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-                  <sem class="ANIMAL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">skïemtje</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+            <sem class="ANIMAL_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">skïemtje</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="liggende_a" stat="pref">
       <lg>
          <l pos="a">liggende</l>
       </lg>
       <sources>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="YYY"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gælloeh</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">vealah</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="åa6">vealah</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">gælloeh</t>
+            <t pos="a" sem-cl="HUMAN_A" src="åa6">vealah</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="målløs_a" stat="pref">
       <lg>
          <l pos="a">målløs</l>
       </lg>
@@ -2403,64 +2100,66 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gïelehtadtje</t>
+            <t pos="a" stat="pref">gïelehtadtje</t>
          </tg>
       </mg>
    </e>
-   <e counter="4" p_cntr="3" dp_cntr="1" stat="pref">
+   <e id="1_flink_a" stat="pref">
       <lg>
          <l pos="a">flink</l>
       </lg>
       <sources>
          <book name="s4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">maehtehtje</t>
+            <t pos="a" sem-cl="HUMAN_A-ANIMAL_A" src="s4-åa2-åa6">gïemhpe</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_flink_a" stat="pref">
+      <lg>
+         <l pos="a">flink</l>
+      </lg>
+      <sources>
          <book name="dej"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">tjiehpies</t>
+            <t pos="a" sem-cl="HUMAN_A-ANIMAL_A" src="s4-åa2-åa6">gïemhpe</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="3_flink_a" stat="pref">
+      <lg>
+         <l pos="a">flink</l>
+      </lg>
+      <sources>
          <book name="s3"/>
+         <book name="dej"/>
          <book name="åa2"/>
          <book name="åa3"/>
          <book name="åa5"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">maehtehtje</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">tjiehpies</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">væjkeles</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-                  <sem class="ANIMAL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">gïemhpe</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A-ANIMAL_A" src="s4-åa2-åa6">gïemhpe</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">væjkeles</t>
+            <t pos="a" sem-cl="HUMAN_A-ANIMAL_A" src="s4-åa2-åa6">gïemhpe</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="dyp_a" stat="pref">
       <lg>
          <l pos="a">dyp</l>
       </lg>
@@ -2473,42 +2172,44 @@
             <sem class="NATURE_WATER"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gïengeles</t>
+            <t pos="a" stat="pref">gïengeles</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_tykk_a" stat="pref">
       <lg>
          <l pos="a">tykk</l>
       </lg>
       <sources>
          <book name="åa3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">gïsse</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_tykk_a" stat="pref">
+      <lg>
+         <l pos="a">tykk</l>
+      </lg>
+      <sources>
          <book name="s3"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <re xml:lang="nob">om mennesker og runde ting</re>
-               <t xml:lang="sma" pos="a">gïsse</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-                  <sem class="VÆTNOE"/>
-               </semantics>
-               <re xml:lang="nob">om flate ting</re>
-               <t xml:lang="sma" pos="a">jassijes</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="OBJECT_A"/>
+            <sem class="VÆTNOE"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">jassijes</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="prektig_a" stat="pref">
       <lg>
          <l pos="a">prektig</l>
       </lg>
@@ -2520,11 +2221,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">göögkeles</t>
+            <t pos="a" stat="pref">göögkeles</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="slurvete_a" stat="pref">
       <lg>
          <l pos="a">slurvete</l>
       </lg>
@@ -2536,82 +2237,46 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">harhtsoeh</t>
+            <t pos="a" stat="pref">harhtsoeh</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="hardhendt_a" stat="pref">
       <lg>
          <l pos="a">hardhendt</l>
       </lg>
       <sources>
          <book name="åa5"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">tjuerpies</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">harhtsoeh</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="åa5">harhtsoeh</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">tjuerpies</t>
+            <t pos="a" sem-cl="HUMAN_A" src="åa5">harhtsoeh</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="3" p_cntr="1" dp_cntr="2" stat="pref">
+   <e id="velsmakende_a" stat="pref">
       <lg>
          <l pos="a">velsmakende</l>
       </lg>
       <sources>
          <book name="s3"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">hearskoes</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">njaelkies</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">åålije</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="SOUP_A" src="dej-s3-åa1-åa2-åa3-åa5-a1-åa4">njaelkies</t>
-         <t sem-cl="SOUP_A" src="s4">åålije</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="SOUP_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">hearskoes</t>
+            <t pos="a" sem-cl="SOUP_A" src="dej-s3-åa1-åa2-åa3-åa5-a1-åa4">njaelkies</t>
+            <t pos="a" sem-cl="SOUP_A" src="s4">åålije</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="hel_a" stat="pref">
       <lg>
          <l pos="a">hel</l>
       </lg>
@@ -2623,11 +2288,11 @@
             <sem class="OBJECT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">heejle</t>
+            <t pos="a" stat="pref">heejle</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="bedrøvet_a" stat="pref">
       <lg>
          <l pos="a">bedrøvet</l>
       </lg>
@@ -2640,11 +2305,11 @@
             <sem class="FEELING"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">hujnies</t>
+            <t pos="a" stat="pref">hujnies</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="nifs_a" stat="pref">
       <lg>
          <l pos="a">nifs</l>
       </lg>
@@ -2656,11 +2321,11 @@
             <sem class="EXPERIENCE_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">isveligks</t>
+            <t pos="a" stat="pref">isveligks</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="død_a" stat="pref">
       <lg>
          <l pos="a">død</l>
       </lg>
@@ -2672,43 +2337,29 @@
             <sem class="ANIMAL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">jaame</t>
+            <t pos="a" stat="pref">jaame</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="jevn_a" stat="pref">
       <lg>
          <l pos="a">jevn</l>
       </lg>
       <sources>
          <book name="s4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="NATURE_A"/>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">jalke</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">sjyjjehke</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="OBJECT_A" src="dej">sjyjjehke</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="NATURE_A"/>
+            <sem class="OBJECT_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">jalke</t>
+            <t pos="a" sem-cl="OBJECT_A" src="dej">sjyjjehke</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="flat_a" stat="pref">
       <lg>
          <l pos="a">flat</l>
       </lg>
@@ -2716,32 +2367,17 @@
          <book name="s3"/>
          <book name="s4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">plïehtje</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="NATURE_A"/>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">jalke</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="NATURE_A-OBJECT_A" src="s4">jalke</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="OBJECT_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">plïehtje</t>
+            <t pos="a" sem-cl="NATURE_A-OBJECT_A" src="s4">jalke</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="vilter_a" stat="pref">
       <lg>
          <l pos="a">vilter</l>
       </lg>
@@ -2753,56 +2389,76 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">jarhpoeh</t>
+            <t pos="a" stat="pref">jarhpoeh</t>
          </tg>
       </mg>
    </e>
-   <e counter="4" p_cntr="4" dp_cntr="0" stat="pref">
+   <e id="1_klok_a" stat="pref">
       <lg>
          <l pos="a">klok</l>
       </lg>
       <sources>
          <book name="xxx"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">jearmijes</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_klok_a" stat="pref">
+      <lg>
+         <l pos="a">klok</l>
+      </lg>
+      <sources>
+         <book name="xxx"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">jïermijes</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="3_klok_a" stat="pref">
+      <lg>
+         <l pos="a">klok</l>
+      </lg>
+      <sources>
+         <book name="xxx"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">væjsehke</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="4_klok_a" stat="pref">
+      <lg>
+         <l pos="a">klok</l>
+      </lg>
+      <sources>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">jearmijes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">jïermijes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">væjsehke</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-                  <sem class="ANIMAL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">vihtehks</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+            <sem class="ANIMAL_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">vihtehks</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="trygg_a" stat="pref">
       <lg>
          <l pos="a">trygg</l>
       </lg>
@@ -2814,11 +2470,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">jearsoes</t>
+            <t pos="a" stat="pref">jearsoes</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="intens_a" stat="pref">
       <lg>
          <l pos="a">intens</l>
       </lg>
@@ -2830,97 +2486,99 @@
             <sem class="WEATHER_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">jihtseles</t>
+            <t pos="a" stat="pref">jihtseles</t>
          </tg>
       </mg>
    </e>
-   <e counter="3" p_cntr="2" dp_cntr="1" stat="pref">
+   <e id="1_tynn_a" stat="pref">
       <lg>
          <l pos="a">tynn</l>
       </lg>
       <sources>
          <book name="s4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="OBJECT_A"/>
+            <sem class="VÆTNOE"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">jissehts</t>
+            <t pos="a" sem-cl="PLANT" src="s4">njoetjeles</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_tynn_a" stat="pref">
+      <lg>
+         <l pos="a">tynn</l>
+      </lg>
+      <sources>
          <book name="xxx"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-                  <sem class="VÆTNOE"/>
-               </semantics>
-               <re xml:lang="nob">om flate ting</re>
-               <t xml:lang="sma" pos="a">jissehts</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <re xml:lang="nob">om runde ting og mennesker</re>
-               <t xml:lang="sma" pos="a">siegkies</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="PLANT"/>
-               </semantics>
-               <re xml:lang="nob">om bjørkekvister</re>
-               <t xml:lang="sma" pos="a">njoetjeles</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="PLANT" src="s4">njoetjeles</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">siegkies</t>
+            <t pos="a" sem-cl="PLANT" src="s4">njoetjeles</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="3" p_cntr="3" dp_cntr="0" stat="pref">
+   <e id="1_forskjellig_a" stat="pref">
       <lg>
          <l pos="a">forskjellig</l>
       </lg>
       <sources>
          <book name="xxx"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">joekehts</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_forskjellig_a" stat="pref">
+      <lg>
+         <l pos="a">forskjellig</l>
+      </lg>
+      <sources>
          <book name="s3"/>
          <book name="åa2"/>
          <book name="åa5"/>
          <book name="åa6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ABSTRACT"/>
+            <sem class="SCHOOL_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">ovmese</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="3_forskjellig_a" stat="pref">
+      <lg>
+         <l pos="a">forskjellig</l>
+      </lg>
+      <sources>
          <book name="a1"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">joekehts</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="ABSTRACT"/>
-                  <sem class="SCHOOL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">ovmese</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="ABSTRACT"/>
-                  <sem class="SCHOOL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">ovmessie</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="ABSTRACT"/>
+            <sem class="SCHOOL_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">ovmessie</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="rund_a" stat="pref">
       <lg>
          <l pos="a">rund</l>
       </lg>
@@ -2933,107 +2591,80 @@
             <sem class="OBJECT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">jorpe</t>
+            <t pos="a" stat="pref">jorpe</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_lysegrå_a" stat="pref">
       <lg>
          <l pos="a">lysegrå</l>
       </lg>
       <sources>
          <book name="xxx"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="CLOTHES_A"/>
+            <sem class="REINDEER"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">jovje</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_lysegrå_a" stat="pref">
+      <lg>
+         <l pos="a">lysegrå</l>
+      </lg>
+      <sources>
          <book name="åa5"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="CLOTHES_A"/>
-                  <sem class="REINDEER"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">jovje</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="REINDEER"/>
-               </semantics>
-               <re xml:lang="nob">om rein</re>
-               <t xml:lang="sma" pos="a">båavjoeh</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="REINDEER"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">båavjoeh</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="lys_a" stat="pref">
       <lg>
          <l pos="a">lys</l>
       </lg>
       <sources>
          <book name="xxx"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">tjuavkeds</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="CLOTHES_A"/>
-                  <sem class="REINDEER"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">jovje</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="CLOTHES_A-REINDEER" src="xxx">jovje</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="WEATHER_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">tjuavkeds</t>
+            <t pos="a" sem-cl="CLOTHES_A-REINDEER" src="xxx">jovje</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="grå_a" stat="pref">
       <lg>
          <l pos="a">grå</l>
       </lg>
       <sources>
          <book name="åa4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="COLOUR"/>
-                  <sem class="REINDEER"/>
-                  <sem class="BUILDING_ROOM_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">kraevies</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="CLOTHES_A"/>
-                  <sem class="REINDEER"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">jovje</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="CLOTHES_A-REINDEER" src="xxx">jovje</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="COLOUR"/>
+            <sem class="REINDEER"/>
+            <sem class="BUILDING_ROOM_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">kraevies</t>
+            <t pos="a" sem-cl="CLOTHES_A-REINDEER" src="xxx">jovje</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="4" p_cntr="4" dp_cntr="0" stat="pref">
+   <e id="1_glatt_a" stat="pref">
       <lg>
          <l pos="a">glatt</l>
       </lg>
@@ -3041,48 +2672,65 @@
          <book name="åa3"/>
          <book name="s4"/>
          <book name="åa6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SNOW"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">juhteles</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_glatt_a" stat="pref">
+      <lg>
+         <l pos="a">glatt</l>
+      </lg>
+      <sources>
          <book name="åa5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">njalhkedihks</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="3_glatt_a" stat="pref">
+      <lg>
+         <l pos="a">glatt</l>
+      </lg>
+      <sources>
+         <book name="s4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="PLANT"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">njoetjeles</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="4_glatt_a" stat="pref">
+      <lg>
+         <l pos="a">glatt</l>
+      </lg>
+      <sources>
          <book name="dej"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SNOW"/>
-               </semantics>
-               <re xml:lang="nob">om pulk og ski</re>
-               <t xml:lang="sma" pos="a">juhteles</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="YYY"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">njalhkedihks</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="PLANT"/>
-               </semantics>
-               <re xml:lang="nob">om bjørkekvister</re>
-               <t xml:lang="sma" pos="a">njoetjeles</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">sjyjjehke</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="OBJECT_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">sjyjjehke</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="lettdrevet_a" stat="pref">
       <lg>
          <l pos="a">lettdrevet</l>
       </lg>
@@ -3096,11 +2744,11 @@
             <sem class="HERDING"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">juhteles</t>
+            <t pos="a" stat="pref">juhteles</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="mye_a" stat="pref">
       <lg>
          <l pos="a">mye</l>
       </lg>
@@ -3112,11 +2760,11 @@
             <sem class="ABSTRACT"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">jïjnje</t>
+            <t pos="a" stat="pref">jïjnje</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="høy_a" stat="pref">
       <lg>
          <l pos="a">høy</l>
       </lg>
@@ -3130,11 +2778,11 @@
             <sem class="BUILDING"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">jïlle</t>
+            <t pos="a" stat="pref">jïlle</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="klar_a" stat="pref">
       <lg>
          <l pos="a">klar</l>
       </lg>
@@ -3142,32 +2790,17 @@
          <book name="a1"/>
          <book name="dej"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER_A"/>
-               </semantics>
-               <re xml:lang="nob">om vær</re>
-               <t xml:lang="sma" pos="a">klaeries</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SCHOOL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">riejries</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="SCHOOL_A" src="s2-s3-åa3-åa5">riejries</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="WEATHER_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">klaeries</t>
+            <t pos="a" sem-cl="SCHOOL_A" src="s2-s3-åa3-åa5">riejries</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="kupert_a" stat="pref">
       <lg>
          <l pos="a">kupert</l>
       </lg>
@@ -3179,42 +2812,45 @@
             <sem class="NATURE_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">kraejhpies</t>
+            <t pos="a" stat="pref">kraejhpies</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_grønn_a" stat="pref">
       <lg>
          <l pos="a">grønn</l>
       </lg>
       <sources>
          <book name="åa5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="PLANT"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">kroenes</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_grønn_a" stat="pref">
+      <lg>
+         <l pos="a">grønn</l>
+      </lg>
+      <sources>
          <book name="s2"/>
          <book name="a1"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="PLANT"/>
-               </semantics>
-               <re xml:lang="nob">om vekster</re>
-               <t xml:lang="sma" pos="a">kroenes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="COLOUR"/>
-                  <sem class="BUILDING_ROOM_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">kruana</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="COLOUR"/>
+            <sem class="BUILDING_ROOM_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">kruana</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="grov_a" stat="pref">
       <lg>
          <l pos="a">grov</l>
       </lg>
@@ -3226,42 +2862,28 @@
             <sem class="YYY"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">kruepies</t>
+            <t pos="a" stat="pref">kruepies</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="søvnig_a" stat="pref">
       <lg>
          <l pos="a">søvnig</l>
       </lg>
       <sources>
          <book name="åa5"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">kåvrehts</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">nahkeren</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="s3-a1-åa3-åa5">nahkeren</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">kåvrehts</t>
+            <t pos="a" sem-cl="HUMAN_A" src="s3-a1-åa3-åa5">nahkeren</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="3" p_cntr="1" dp_cntr="2" stat="pref">
+   <e id="trøtt_a" stat="pref">
       <lg>
          <l pos="a">trøtt</l>
       </lg>
@@ -3271,40 +2893,18 @@
          <book name="åa3"/>
          <book name="åa5"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">nahkeren</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">kåvrehts</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">sæjloes</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="åa5">kåvrehts</t>
-         <t sem-cl="HUMAN_A" src="s2-åa6">sæjloes</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">nahkeren</t>
+            <t pos="a" sem-cl="HUMAN_A" src="åa5">kåvrehts</t>
+            <t pos="a" sem-cl="HUMAN_A" src="s2-åa6">sæjloes</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="løs_a" stat="pref">
       <lg>
          <l pos="a">løs</l>
       </lg>
@@ -3317,11 +2917,11 @@
             <sem class="ANIMAL_PET"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">loeves</t>
+            <t pos="a" stat="pref">loeves</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="våt_a" stat="pref">
       <lg>
          <l pos="a">våt</l>
       </lg>
@@ -3336,11 +2936,11 @@
             <sem class="CLOTHES_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">lovve</t>
+            <t pos="a" stat="pref">lovve</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="morsom_a" stat="pref">
       <lg>
          <l pos="a">morsom</l>
       </lg>
@@ -3357,11 +2957,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">lustes</t>
+            <t pos="a" stat="pref">lustes</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="lydig_a" stat="pref">
       <lg>
          <l pos="a">lydig</l>
       </lg>
@@ -3374,41 +2974,45 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">luvregs</t>
+            <t pos="a" stat="pref">luvregs</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_tung_a" stat="pref">
       <lg>
          <l pos="a">tung</l>
       </lg>
       <sources>
          <book name="dej"/>
          <book name="åa5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">lyövlehke</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_tung_a" stat="pref">
+      <lg>
+         <l pos="a">tung</l>
+      </lg>
+      <sources>
          <book name="s3"/>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="YYY"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">lyövlehke</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">löövles</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="OBJECT_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">löövles</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="vindstille_a" stat="pref">
       <lg>
          <l pos="a">vindstille</l>
       </lg>
@@ -3420,11 +3024,11 @@
             <sem class="WEATHER_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">låedtjies</t>
+            <t pos="a" stat="pref">låedtjies</t>
          </tg>
       </mg>
    </e>
-   <e counter="3" p_cntr="2" dp_cntr="1" stat="pref">
+   <e id="1_stille_a" stat="pref">
       <lg>
          <l pos="a">stille</l>
       </lg>
@@ -3435,41 +3039,36 @@
          <book name="åa5"/>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="FEELING"/>
-                  <sem class="SCHOOL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">sjeavohth</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SCHOOL_A"/>
-                  <sem class="NATURE_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">sjeavodh</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="WEATHER_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">låedtjies</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="WEATHER_A" src="åa5">låedtjies</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="FEELING"/>
+            <sem class="SCHOOL_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">sjeavohth</t>
+            <t pos="a" sem-cl="WEATHER_A" src="åa5">låedtjies</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="2_stille_a" stat="pref">
+      <lg>
+         <l pos="a">stille</l>
+      </lg>
+      <sources>
+         <book name="åa6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SCHOOL_A"/>
+            <sem class="NATURE_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">sjeavodh</t>
+            <t pos="a" sem-cl="WEATHER_A" src="åa5">låedtjies</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="lunken_a" stat="pref">
       <lg>
          <l pos="a">lunken</l>
       </lg>
@@ -3482,50 +3081,61 @@
             <sem class="SOUP_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">lïene</t>
+            <t pos="a" stat="pref">lïene</t>
          </tg>
       </mg>
    </e>
-   <e counter="3" p_cntr="3" dp_cntr="0" stat="pref">
+   <e id="1_trivelig_a" stat="pref">
       <lg>
          <l pos="a">trivelig</l>
       </lg>
       <sources>
          <book name="xxx"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="EXPERIENCE_A"/>
+            <sem class="FEELING"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">murreds</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_trivelig_a" stat="pref">
+      <lg>
+         <l pos="a">trivelig</l>
+      </lg>
+      <sources>
          <book name="s3"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="EXPERIENCE_A"/>
+            <sem class="FEELING"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">tryjjes</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="3_trivelig_a" stat="pref">
+      <lg>
+         <l pos="a">trivelig</l>
+      </lg>
+      <sources>
          <book name="s4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="EXPERIENCE_A"/>
-                  <sem class="FEELING"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">murreds</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="EXPERIENCE_A"/>
-                  <sem class="FEELING"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">tryjjes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">vietseles</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">vietseles</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="3" p_cntr="3" dp_cntr="0" stat="pref">
+   <e id="1_mjuk_a" stat="pref">
       <lg>
          <l pos="a">mjuk</l>
       </lg>
@@ -3533,39 +3143,51 @@
          <book name="dej"/>
          <book name="s4"/>
          <book name="a1"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="CLOTHES_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">myövhke</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_mjuk_a" stat="pref">
+      <lg>
+         <l pos="a">mjuk</l>
+      </lg>
+      <sources>
          <book name="åa6"/>
          <book name="åa4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="CLOTHES_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">myövhke</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="CLOTHES_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">möövhkes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="ANIMAL_A"/>
-                  <sem class="CLOTHES_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">mïevhke</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="CLOTHES_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">möövhkes</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="3_mjuk_a" stat="pref">
+      <lg>
+         <l pos="a">mjuk</l>
+      </lg>
+      <sources>
+         <book name="åa6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ANIMAL_A"/>
+            <sem class="CLOTHES_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">mïevhke</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="sint_a" stat="pref">
       <lg>
          <l pos="a">sint</l>
       </lg>
@@ -3578,11 +3200,11 @@
             <sem class="ANIMAL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">måarehks</t>
+            <t pos="a" stat="pref">måarehks</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="mørkegrønn_a" stat="pref">
       <lg>
          <l pos="a">mørkegrønn</l>
       </lg>
@@ -3595,11 +3217,11 @@
             <sem class="BUILDING_ROOM_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">mïrhkekruana</t>
+            <t pos="a" stat="pref">mïrhkekruana</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="pågående_a" stat="pref">
       <lg>
          <l pos="a">pågående</l>
       </lg>
@@ -3613,11 +3235,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">naarpehke</t>
+            <t pos="a" stat="pref">naarpehke</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="muntlig_a" stat="pref">
       <lg>
          <l pos="a">muntlig</l>
       </lg>
@@ -3630,11 +3252,11 @@
             <sem class="ISSUE_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">njaalmeldh</t>
+            <t pos="a" stat="pref">njaalmeldh</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="moden_a" stat="pref">
       <lg>
          <l pos="a">moden</l>
       </lg>
@@ -3646,11 +3268,11 @@
             <sem class="PLANT"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">njoetseldh</t>
+            <t pos="a" stat="pref">njoetseldh</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="ung_a" stat="pref">
       <lg>
          <l pos="a">ung</l>
       </lg>
@@ -3666,11 +3288,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">noere</t>
+            <t pos="a" stat="pref">noere</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="støvet_a" stat="pref">
       <lg>
          <l pos="a">støvet</l>
       </lg>
@@ -3682,11 +3304,11 @@
             <sem class="OBJECT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">nuarvan</t>
+            <t pos="a" stat="pref">nuarvan</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="gravid_a" stat="pref">
       <lg>
          <l pos="a">gravid</l>
       </lg>
@@ -3698,11 +3320,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">nåajsan</t>
+            <t pos="a" stat="pref">nåajsan</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="solid_a" stat="pref">
       <lg>
          <l pos="a">solid</l>
       </lg>
@@ -3717,11 +3339,11 @@
             <sem class="CLOTHES_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">nænnoes</t>
+            <t pos="a" stat="pref">nænnoes</t>
          </tg>
       </mg>
    </e>
-   <e counter="4" p_cntr="1" dp_cntr="3" stat="pref">
+   <e id="sterk_a" stat="pref">
       <lg>
          <l pos="a">sterk</l>
       </lg>
@@ -3729,145 +3351,75 @@
          <book name="åa6"/>
          <book name="s4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-                  <sem class="REINDEER"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">veaksehks</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-                  <sem class="CLOTHES_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">nænnoes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="VÆTNOE"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">raavtehtje</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="VÆTNOE"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">raavteres</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="OBJECT_A-CLOTHES_A" src="s2-dej-åa5">nænnoes</t>
-         <t sem-cl="VÆTNOE" src="dej">raavtehtje</t>
-         <t sem-cl="VÆTNOE" src="dej">raavteres</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+            <sem class="REINDEER"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">veaksehks</t>
+            <t pos="a" sem-cl="OBJECT_A-CLOTHES_A" src="s2-dej-åa5">nænnoes</t>
+            <t pos="a" sem-cl="VÆTNOE" src="dej">raavtehtje</t>
+            <t pos="a" sem-cl="VÆTNOE" src="dej">raavteres</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="4" p_cntr="2" dp_cntr="2" stat="pref">
+   <e id="1_kraftig_a" stat="pref">
       <lg>
          <l pos="a">kraftig</l>
       </lg>
       <sources>
          <book name="dej"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="VÆTNOE"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">raavtehtje</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="VÆTNOE"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">raavteres</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-                  <sem class="CLOTHES_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">nænnoes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-                  <sem class="REINDEER"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">veaksehks</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="OBJECT_A-CLOTHES_A" src="s2-dej-åa5">nænnoes</t>
-         <t sem-cl="HUMAN_A-REINDEER" src="åa6-s4">veaksehks</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="VÆTNOE"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">raavtehtje</t>
+            <t pos="a" sem-cl="OBJECT_A-CLOTHES_A" src="s2-dej-åa5">nænnoes</t>
+            <t pos="a" sem-cl="HUMAN_A-REINDEER" src="åa6-s4">veaksehks</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="3" p_cntr="1" dp_cntr="2" stat="pref">
+   <e id="2_kraftig_a" stat="pref">
+      <lg>
+         <l pos="a">kraftig</l>
+      </lg>
+      <sources>
+         <book name="dej"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="VÆTNOE"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">raavteres</t>
+            <t pos="a" sem-cl="OBJECT_A-CLOTHES_A" src="s2-dej-åa5">nænnoes</t>
+            <t pos="a" sem-cl="HUMAN_A-REINDEER" src="åa6-s4">veaksehks</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="lite_a" stat="pref">
       <lg>
          <l pos="a">lite</l>
       </lg>
       <sources>
          <book name="åa2"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">ohtje</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-                  <sem class="ANIMAL_A"/>
-                  <sem class="BODY_A"/>
-                  <sem class="BUILDING_ROOM_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">onne</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem/>
-                  <sem class="THING"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">vaenie</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="OBJECT_A-ANIMAL_A-BODY_A-BUILDING_ROOM_A" src="s2-dej-åa1-åa2-åa5-åa4">onne</t>
-         <t sem-cl="-THING" src="s2-s4-s3">vaenie</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="OBJECT_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">ohtje</t>
+            <t pos="a" sem-cl="OBJECT_A-ANIMAL_A-BODY_A-BUILDING_ROOM_A"
+               src="s2-dej-åa1-åa2-åa5-åa4">onne</t>
+            <t pos="a" sem-cl="-THING" src="s2-s4-s3">vaenie</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="3" p_cntr="2" dp_cntr="1" stat="pref">
+   <e id="1_liten_a" stat="pref">
       <lg>
          <l pos="a">liten</l>
       </lg>
@@ -3879,43 +3431,38 @@
          <book name="åa5"/>
          <book name="åa4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-                  <sem class="ANIMAL_A"/>
-                  <sem class="BODY_A"/>
-                  <sem class="BUILDING_ROOM_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">onne</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="ANIMAL_A"/>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">smaave</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">ohtje</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="OBJECT_A" src="åa2">ohtje</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="OBJECT_A"/>
+            <sem class="ANIMAL_A"/>
+            <sem class="BODY_A"/>
+            <sem class="BUILDING_ROOM_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">onne</t>
+            <t pos="a" sem-cl="OBJECT_A" src="åa2">ohtje</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="2_liten_a" stat="pref">
+      <lg>
+         <l pos="a">liten</l>
+      </lg>
+      <sources>
+         <book name="åa4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ANIMAL_A"/>
+            <sem class="OBJECT_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">smaave</t>
+            <t pos="a" sem-cl="OBJECT_A" src="åa2">ohtje</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="ny_a" stat="pref">
       <lg>
          <l pos="a">ny</l>
       </lg>
@@ -3933,11 +3480,11 @@
             <sem class="BUILDING_ROOM_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">orre</t>
+            <t pos="a" stat="pref">orre</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="blå_a" stat="pref">
       <lg>
          <l pos="a">blå</l>
       </lg>
@@ -3954,11 +3501,11 @@
             <sem class="BUILDING_ROOM_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">plaave</t>
+            <t pos="a" stat="pref">plaave</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="svaksynt_a" stat="pref">
       <lg>
          <l pos="a">svaksynt</l>
       </lg>
@@ -3970,11 +3517,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">pleasoeh</t>
+            <t pos="a" stat="pref">pleasoeh</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="blek_a" stat="pref">
       <lg>
          <l pos="a">blek</l>
       </lg>
@@ -3986,11 +3533,11 @@
             <sem class="CLOTHES_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">pliejhkies</t>
+            <t pos="a" stat="pref">pliejhkies</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="bratt_a" stat="pref">
       <lg>
          <l pos="a">bratt</l>
       </lg>
@@ -4003,41 +3550,45 @@
             <sem class="NATURE_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">praare</t>
+            <t pos="a" stat="pref">praare</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_brun_a" stat="pref">
       <lg>
          <l pos="a">brun</l>
       </lg>
       <sources>
          <book name="a1"/>
          <book name="åa4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="COLOUR"/>
+            <sem class="BUILDING_ROOM_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">provne</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_brun_a" stat="pref">
+      <lg>
+         <l pos="a">brun</l>
+      </lg>
+      <sources>
          <book name="xxx"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="COLOUR"/>
-                  <sem class="BUILDING_ROOM_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">provne</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="COLOUR"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">rutjkes</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="COLOUR"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">rutjkes</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="gift_a" stat="pref">
       <lg>
          <l pos="a">gift</l>
       </lg>
@@ -4049,11 +3600,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">pruvres</t>
+            <t pos="a" stat="pref">pruvres</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="effektiv_a" stat="pref">
       <lg>
          <l pos="a">effektiv</l>
       </lg>
@@ -4065,11 +3616,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">radtjoes</t>
+            <t pos="a" stat="pref">radtjoes</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="underlig_a" stat="pref">
       <lg>
          <l pos="a">underlig</l>
       </lg>
@@ -4081,11 +3632,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">rovnegs</t>
+            <t pos="a" stat="pref">rovnegs</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="rødbrun_a" stat="pref">
       <lg>
          <l pos="a">rødbrun</l>
       </lg>
@@ -4097,11 +3648,11 @@
             <sem class="COLOUR"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">rutjkes</t>
+            <t pos="a" stat="pref">rutjkes</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="rik_a" stat="pref">
       <lg>
          <l pos="a">rik</l>
       </lg>
@@ -4113,11 +3664,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">ræjhkoes</t>
+            <t pos="a" stat="pref">ræjhkoes</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="rett_a" stat="pref">
       <lg>
          <l pos="a">rett</l>
       </lg>
@@ -4126,31 +3677,17 @@
          <book name="åa6"/>
          <book name="åa4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="VÆTNOE"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">rïekte</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SCHOOL_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">staeries</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="SCHOOL_A" src="a1-dej">staeries</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="VÆTNOE"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">rïekte</t>
+            <t pos="a" sem-cl="SCHOOL_A" src="a1-dej">staeries</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="rød_a" stat="pref">
       <lg>
          <l pos="a">rød</l>
       </lg>
@@ -4167,11 +3704,11 @@
             <sem class="BUILDING_ROOM_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">rööpses</t>
+            <t pos="a" stat="pref">rööpses</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="sant_a" stat="pref">
       <lg>
          <l pos="a">sant</l>
       </lg>
@@ -4184,42 +3721,28 @@
             <sem class="ABSTRACT"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">saetnies</t>
+            <t pos="a" stat="pref">saetnies</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="utholdende_a" stat="pref">
       <lg>
          <l pos="a">utholdende</l>
       </lg>
       <sources>
          <book name="xxx"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">saavrehke</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">vïssjeles</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="s4">vïssjeles</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">saavrehke</t>
+            <t pos="a" sem-cl="HUMAN_A" src="s4">vïssjeles</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="saltet_a" stat="pref">
       <lg>
          <l pos="a">saltet</l>
       </lg>
@@ -4231,11 +3754,11 @@
             <sem class="SOUP_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">saelhties</t>
+            <t pos="a" stat="pref">saelhties</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="fredelig_a" stat="pref">
       <lg>
          <l pos="a">fredelig</l>
       </lg>
@@ -4247,11 +3770,11 @@
             <sem class="FEELING"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">seadtoes</t>
+            <t pos="a" stat="pref">seadtoes</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="søt_a" stat="pref">
       <lg>
          <l pos="a">søt</l>
       </lg>
@@ -4263,11 +3786,11 @@
             <sem class="SOUP_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">sieties</t>
+            <t pos="a" stat="pref">sieties</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="passelig_a" stat="pref">
       <lg>
          <l pos="a">passelig</l>
       </lg>
@@ -4281,11 +3804,11 @@
             <sem class="CLOTHES_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">sjiehteles</t>
+            <t pos="a" stat="pref">sjiehteles</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="mørk_a" stat="pref">
       <lg>
          <l pos="a">mørk</l>
       </lg>
@@ -4298,11 +3821,11 @@
             <sem class="WEATHER_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">sjuevnjeds</t>
+            <t pos="a" stat="pref">sjuevnjeds</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="spesiell_a" stat="pref">
       <lg>
          <l pos="a">spesiell</l>
       </lg>
@@ -4316,11 +3839,11 @@
             <sem class="ANIMAL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">sjïere</t>
+            <t pos="a" stat="pref">sjïere</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="kantet_a" stat="pref">
       <lg>
          <l pos="a">kantet</l>
       </lg>
@@ -4332,11 +3855,11 @@
             <sem class="OBJECT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">skaavhtege</t>
+            <t pos="a" stat="pref">skaavhtege</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="ødelagt_a" stat="pref">
       <lg>
          <l pos="a">ødelagt</l>
       </lg>
@@ -4350,11 +3873,11 @@
             <sem class="CLOTHES_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">slahtjan</t>
+            <t pos="a" stat="pref">slahtjan</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="skitten_a" stat="pref">
       <lg>
          <l pos="a">skitten</l>
       </lg>
@@ -4366,11 +3889,11 @@
             <sem class="CLOTHES_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">sleagran</t>
+            <t pos="a" stat="pref">sleagran</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="farkete_a" stat="pref">
       <lg>
          <l pos="a">farkete</l>
       </lg>
@@ -4382,11 +3905,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">slovves</t>
+            <t pos="a" stat="pref">slovves</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="snauslitt_a" stat="pref">
       <lg>
          <l pos="a">snauslitt</l>
       </lg>
@@ -4401,11 +3924,11 @@
             <sem class="VÆTNOE"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">snjaltje</t>
+            <t pos="a" stat="pref">snjaltje</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="riktig_a" stat="pref">
       <lg>
          <l pos="a">riktig</l>
       </lg>
@@ -4418,11 +3941,11 @@
             <sem class="SCHOOL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">staeries</t>
+            <t pos="a" stat="pref">staeries</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="stor_a" stat="pref">
       <lg>
          <l pos="a">stor</l>
       </lg>
@@ -4439,11 +3962,11 @@
             <sem class="BUILDING_ROOM_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">stoerre</t>
+            <t pos="a" stat="pref">stoerre</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="sliten_a" stat="pref">
       <lg>
          <l pos="a">sliten</l>
       </lg>
@@ -4456,11 +3979,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">sæjloes</t>
+            <t pos="a" stat="pref">sæjloes</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="vanlig_a" stat="pref">
       <lg>
          <l pos="a">vanlig</l>
       </lg>
@@ -4472,11 +3995,11 @@
             <sem class="OBJECT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">sïejhme</t>
+            <t pos="a" stat="pref">sïejhme</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="sein_a" stat="pref">
       <lg>
          <l pos="a">sein</l>
       </lg>
@@ -4488,11 +4011,11 @@
             <sem class="MOVEMENT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">sööjmes</t>
+            <t pos="a" stat="pref">sööjmes</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="hemmelig_a" stat="pref">
       <lg>
          <l pos="a">hemmelig</l>
       </lg>
@@ -4504,11 +4027,11 @@
             <sem class="ABSTRACT"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">tjeakoes</t>
+            <t pos="a" stat="pref">tjeakoes</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="svart_a" stat="pref">
       <lg>
          <l pos="a">svart</l>
       </lg>
@@ -4525,11 +4048,11 @@
             <sem class="BUILDING_ROOM_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">tjeehpes</t>
+            <t pos="a" stat="pref">tjeehpes</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="blind_a" stat="pref">
       <lg>
          <l pos="a">blind</l>
       </lg>
@@ -4542,11 +4065,11 @@
             <sem class="BODY_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">tjelmehts</t>
+            <t pos="a" stat="pref">tjelmehts</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="nysgjerrig_a" stat="pref">
       <lg>
          <l pos="a">nysgjerrig</l>
       </lg>
@@ -4559,11 +4082,11 @@
             <sem class="ANIMAL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">tjetskehke</t>
+            <t pos="a" stat="pref">tjetskehke</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="fast_a" stat="pref">
       <lg>
          <l pos="a">fast</l>
       </lg>
@@ -4575,11 +4098,11 @@
             <sem class="SOUP_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">tjevties</t>
+            <t pos="a" stat="pref">tjevties</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="lyseblå_a" stat="pref">
       <lg>
          <l pos="a">lyseblå</l>
       </lg>
@@ -4591,11 +4114,11 @@
             <sem class="COLOUR"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">tjöölle</t>
+            <t pos="a" stat="pref">tjöölle</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="blågrå_a" stat="pref">
       <lg>
          <l pos="a">blågrå</l>
       </lg>
@@ -4607,11 +4130,11 @@
             <sem class="COLOUR"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">tjöölle</t>
+            <t pos="a" stat="pref">tjöölle</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="få_a" stat="pref">
       <lg>
          <l pos="a">få</l>
       </lg>
@@ -4626,11 +4149,11 @@
             <sem class="THING"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">vaenie</t>
+            <t pos="a" stat="pref">vaenie</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="hvit_a" stat="pref">
       <lg>
          <l pos="a">hvit</l>
       </lg>
@@ -4648,11 +4171,11 @@
             <sem class="BUILDING_ROOM_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">veelkes</t>
+            <t pos="a" stat="pref">veelkes</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="frisk_a" stat="pref">
       <lg>
          <l pos="a">frisk</l>
       </lg>
@@ -4665,44 +4188,30 @@
             <sem class="YYY"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">vervies</t>
+            <t pos="a" stat="pref">vervies</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="stygg_a" stat="pref">
       <lg>
          <l pos="a">stygg</l>
       </lg>
       <sources>
          <book name="xxx"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-                  <sem class="ANIMAL_A"/>
-                  <sem class="WEATHER_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">vesties</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="HUMAN_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">vesties</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="HUMAN_A" src="xxx">vesties</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="HUMAN_A"/>
+            <sem class="ANIMAL_A"/>
+            <sem class="WEATHER_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">vesties</t>
+            <t pos="a" sem-cl="HUMAN_A" src="xxx">vesties</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="ond_a" stat="pref">
       <lg>
          <l pos="a">ond</l>
       </lg>
@@ -4714,11 +4223,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">vesties</t>
+            <t pos="a" stat="pref">vesties</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="uanstendig_a" stat="pref">
       <lg>
          <l pos="a">uanstendig</l>
       </lg>
@@ -4730,11 +4239,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">vesties</t>
+            <t pos="a" stat="pref">vesties</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="viktig_a" stat="pref">
       <lg>
          <l pos="a">viktig</l>
       </lg>
@@ -4748,11 +4257,11 @@
             <sem class="FINANCE"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">vihkeles</t>
+            <t pos="a" stat="pref">vihkeles</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="sikker_a" stat="pref">
       <lg>
          <l pos="a">sikker</l>
       </lg>
@@ -4765,42 +4274,46 @@
             <sem class="NATURE_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">vihties</t>
+            <t pos="a" stat="pref">vihties</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_gul_a" stat="pref">
       <lg>
          <l pos="a">gul</l>
       </lg>
       <sources>
          <book name="a1"/>
          <book name="åa2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="COLOUR"/>
+            <sem class="BUILDING_ROOM_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">viskes</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_gul_a" stat="pref">
+      <lg>
+         <l pos="a">gul</l>
+      </lg>
+      <sources>
          <book name="åa5"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="COLOUR"/>
-                  <sem class="BUILDING_ROOM_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">viskes</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="COLOUR"/>
-                  <sem class="BUILDING_ROOM_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">vyskehke</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="COLOUR"/>
+            <sem class="BUILDING_ROOM_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">vyskehke</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="tålmodig_a" stat="pref">
       <lg>
          <l pos="a">tålmodig</l>
       </lg>
@@ -4812,11 +4325,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">vïssjeles</t>
+            <t pos="a" stat="pref">vïssjeles</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="var_a" stat="pref">
       <lg>
          <l pos="a">var</l>
       </lg>
@@ -4828,11 +4341,11 @@
             <sem class="ANIMAL_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">våaroes</t>
+            <t pos="a" stat="pref">våaroes</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="utmerket_a" stat="pref">
       <lg>
          <l pos="a">utmerket</l>
       </lg>
@@ -4846,11 +4359,11 @@
             <sem class="EXPERIENCE_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">åajvoeh</t>
+            <t pos="a" stat="pref">åajvoeh</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="høyre_a" stat="pref">
       <lg>
          <l pos="a">høyre</l>
       </lg>
@@ -4863,11 +4376,11 @@
             <sem class="OBJECT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">åelkies</t>
+            <t pos="a" stat="pref">åelkies</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="avdød_a" stat="pref">
       <lg>
          <l pos="a">avdød</l>
       </lg>
@@ -4880,11 +4393,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">åemie</t>
+            <t pos="a" stat="pref">åemie</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="kort_a" stat="pref">
       <lg>
          <l pos="a">kort</l>
       </lg>
@@ -4899,11 +4412,11 @@
             <sem class="BUILDING_ROOM_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">åenehks</t>
+            <t pos="a" stat="pref">åenehks</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="tidligere_a" stat="pref">
       <lg>
          <l pos="a">tidligere</l>
       </lg>
@@ -4918,11 +4431,11 @@
             <sem class="TIME_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">övtebe</t>
+            <t pos="a" stat="pref">övtebe</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="glemsom_a" stat="pref">
       <lg>
          <l pos="a">glemsom</l>
       </lg>
@@ -4934,11 +4447,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">ööjeldihks</t>
+            <t pos="a" stat="pref">ööjeldihks</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="hugen_a" stat="pref">
       <lg>
          <l pos="a">hugen</l>
       </lg>
@@ -4950,44 +4463,28 @@
             <sem class="FEELING"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">hååkene</t>
+            <t pos="a" stat="pref">hååkene</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="1" dp_cntr="1" stat="pref">
+   <e id="innestengt_a" stat="pref">
       <lg>
          <l pos="a">innestengt</l>
       </lg>
       <sources>
          <book name="åa6"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="ROOM"/>
-               </semantics>
-               <re xml:lang="nob">om rom uten lufting</re>
-               <t xml:lang="sma" pos="a">måskoes</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="OBJECT_A"/>
-               </semantics>
-               <re xml:lang="nob">om pulk</re>
-               <t xml:lang="sma" pos="a">måskoes</t>
-            </tg>
-         </mg>
-      </dispref>
-      <wdp>
-         <t sem-cl="OBJECT_A" src="åa6">måskoes</t>
-      </wdp>
+      <mg>
+         <semantics>
+            <sem class="ROOM"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">måskoes</t>
+            <t pos="a" sem-cl="OBJECT_A" src="åa6">måskoes</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="sammensydd_a" stat="pref">
       <lg>
          <l pos="a">sammensydd</l>
       </lg>
@@ -4999,39 +4496,43 @@
             <sem class="TRAD_CLOTHING"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">måskoes</t>
+            <t pos="a" stat="pref">måskoes</t>
          </tg>
       </mg>
    </e>
-   <e counter="2" p_cntr="2" dp_cntr="0" stat="pref">
+   <e id="1_saftig_a" stat="pref">
       <lg>
          <l pos="a">saftig</l>
       </lg>
       <sources>
          <book name="åa6"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="SOUP_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">njoere</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_saftig_a" stat="pref">
+      <lg>
+         <l pos="a">saftig</l>
+      </lg>
+      <sources>
          <book name="s4"/>
       </sources>
-      <pref>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">njoere</t>
-            </tg>
-         </mg>
-         <mg>
-            <tg xml:lang="sma">
-               <semantics>
-                  <sem class="SOUP_A"/>
-               </semantics>
-               <t xml:lang="sma" pos="a">åålije</t>
-            </tg>
-         </mg>
-      </pref>
-      <dispref/>
+      <mg>
+         <semantics>
+            <sem class="SOUP_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">åålije</t>
+         </tg>
+      </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="ferdigskrevet_a" stat="pref">
       <lg>
          <l pos="a">ferdigskrevet</l>
       </lg>
@@ -5044,11 +4545,11 @@
             <sem class="FINANCE"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">tjaalaldihkie</t>
+            <t pos="a" stat="pref">tjaalaldihkie</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="butt_a" stat="pref">
       <lg>
          <l pos="a">butt</l>
       </lg>
@@ -5060,11 +4561,11 @@
             <sem class="OBJECT_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">tråmhpoeh</t>
+            <t pos="a" stat="pref">tråmhpoeh</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="salt_a" stat="pref">
       <lg>
          <l pos="a">salt</l>
       </lg>
@@ -5076,11 +4577,11 @@
             <sem class="SOUP_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">såålhtehks</t>
+            <t pos="a" stat="pref">såålhtehks</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="halv_a" stat="pref">
       <lg>
          <l pos="a">halv</l>
       </lg>
@@ -5095,11 +4596,11 @@
             <sem class="TIME"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="n">bielie</t>
+            <t pos="n" stat="pref">bielie</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="smeltet_a" stat="pref">
       <lg>
          <l pos="a">smeltet</l>
       </lg>
@@ -5111,11 +4612,11 @@
             <sem class="ABSTRACT"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="n">sjilkehtimmie</t>
+            <t pos="n" stat="pref">sjilkehtimmie</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="skjermet for vind_phrase_a" stat="pref">
       <lg>
          <l pos="phrase_a">skjermet for vind</l>
       </lg>
@@ -5127,11 +4628,11 @@
             <sem class="YYY"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">suejies</t>
+            <t pos="a" stat="pref">suejies</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="god kjøttsmak_phrase_a" stat="pref">
       <lg>
          <l pos="phrase_a">god kjøttsmak</l>
       </lg>
@@ -5143,11 +4644,11 @@
             <sem class="SOUP_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">aelmies</t>
+            <t pos="a" stat="pref">aelmies</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="svært kald_phrase_a" stat="pref">
       <lg>
          <l pos="phrase_a">svært kald</l>
       </lg>
@@ -5159,11 +4660,11 @@
             <sem class="WEATHER_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">guelhties</t>
+            <t pos="a" stat="pref">guelhties</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="som har god kondisjon_phrase_a" stat="pref">
       <lg>
          <l pos="phrase_a">som har god kondisjon</l>
       </lg>
@@ -5176,11 +4677,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">gyvjehke</t>
+            <t pos="a" stat="pref">gyvjehke</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="lik hverandre_phrase_a" stat="pref">
       <lg>
          <l pos="phrase_a">lik hverandre</l>
       </lg>
@@ -5192,11 +4693,11 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">seammaplïeres</t>
+            <t pos="a" stat="pref">seammaplïeres</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="spunnet av ryggsener_phrase_a" stat="pref">
       <lg>
          <l pos="phrase_a">spunnet av ryggsener</l>
       </lg>
@@ -5208,11 +4709,11 @@
             <sem class="VÆTNOE"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">sleehpeldihkie</t>
+            <t pos="a" stat="pref">sleehpeldihkie</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="som holder seg på plass_phrase_a" stat="pref">
       <lg>
          <l pos="phrase_a">som holder seg på plass</l>
       </lg>
@@ -5224,11 +4725,11 @@
             <sem class="HERDING"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">tsåeptseles</t>
+            <t pos="a" stat="pref">tsåeptseles</t>
          </tg>
       </mg>
    </e>
-   <e counter="1" p_cntr="1" dp_cntr="0" stat="pref">
+   <e id="liggende på siden_phrase_a" stat="pref">
       <lg>
          <l pos="phrase_a">liggende på siden</l>
       </lg>
@@ -5240,7 +4741,7 @@
             <sem class="HUMAN_A"/>
          </semantics>
          <tg xml:lang="sma">
-            <t pos="a">vealah</t>
+            <t pos="a" stat="pref">vealah</t>
          </tg>
       </mg>
    </e>
