@@ -320,58 +320,38 @@ Test 1: checking the content of each e-element:
      (because of lang feature sme) or let as they are (because thery
      represent genuinely different meanings)?
 
-sma>grep -h '<e_test' _mg_check/* | sort | uniq -c | sort -nr 
+sma>grep -h '<e_test' _mg_check/* | sort | uniq -c | sort -nr  
 
-(I) Assuming that these mg-elements denote different meanings, the
+Assuming that these mg-elements denote different meanings, the
 following entries are not challenging:
-2083       <e_test stamp="lg_stem_apps_mg"/>
-  889       <e_test stamp="lg_apps_mg"/>
-  170       <e_test stamp="lg_stem_apps_mg_mg"/>
-    31       <e_test stamp="lg_apps_mg_mg"/>
-    30       <e_test stamp="lg_stem_apps_mg_mg_mg"/>
-    28       <e_test stamp="lg_mg"/>
-      5       <e_test stamp="lg_apps_mg_mg_mg"/>
-      4       <e_test stamp="lg_stem_mg"/>
-      3       <e_test stamp="lg_stem_apps_mg_mg_mg_mg"/>
-      1       <e_test stamp="lg_mg_mg"/>
-      1       <e_test stamp="lg_apps_mg_mg_mg_mg_mg"/>
 
-(II) Assuming that there is a parallelity between non-sme and sme mgs
- AND that the non-sme mg has only ONE tg (modulo lang nob/swe) there
- is no problem with the following entries:
- 166       <e_test stamp="lg_stem_apps_mg_mg-sme"/>
+2250       <e_test stamp="lg_stem_apps_mg"/>
+ 793       <e_test stamp="lg_apps_mg"/>
+ 182       <e_test stamp="lg_stem_apps_mg_mg"/>
+  30       <e_test stamp="lg_stem_apps_mg_mg_mg"/>
+  18       <e_test stamp="lg_apps_mg_mg"/>
+   7       <e_test stamp="lg_mg"/>
+   5       <e_test stamp="lg_apps_mg_mg_mg"/>
+   4       <e_test stamp="lg_stem_mg"/>
+   2       <e_test stamp="lg_stem_apps_mg_mg_mg_mg"/>
+   1       <e_test stamp="lg_mg_mg"/>
+   1       <e_test stamp="lg_apps_mg_mg_mg_mg_mg"/>
 
 
-(III) The following entries have to be corrected manually because they
-  are not symetric wrt. sme vs. non-sme mg:
-   9       <e_test stamp="lg_stem_apps_mg_mg_mg-sme"/>
-   3       <e_test stamp="lg_stem_apps_mg_mg_mg-sme_mg-sme"/>
-   2       <e_test stamp="lg_apps_mg_mg-sme"/>
-
-
+As agreed upon with Lene, we ignore the sme-mg for this task.
 
 Test 2: checking the content of each mg: 
 
 sma>grep -h '<mg_test' _mg_check/*.xml | sort | uniq -c | sort -nr  
 
-(I) Assuming that each tg-nob has a pendant tg-swe or tg-sme, these are
-    non-problematic cases:
+Assuming that each tg-nob has a pendant tg-swe, these are
+non-problematic cases:
 
-3470          <mg_test stamp="tg-nob_tg-swe"/>
-  200          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe"/>
+3243          <mg_test stamp="tg-nob_tg-swe"/>
+  202          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe"/>
+    90          <mg_test stamp="tg"/>
     32          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe_tg-nob_tg-swe"/>
       6          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe_tg-nob_tg-swe_tg-nob_tg-swe"/>
-      4          <mg_test stamp="tg-sme_tg-nob"/>
+      1          <mg_test stamp="tg_tg"/>
 
-
-(II) Under the same assumption, these file are problematic for an
-     automatic meaning group unification:
-
- 178          <mg_test stamp="tg-sme"/>
-     7          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe_tg-swe"/>
-     3          <mg_test stamp="tg-swe"/>
-     3          <mg_test stamp="tg-nob"/>
-     1          <mg_test stamp="tg-sme_tg-nob_tg-nob"/>
-     1          <mg_test stamp="tg-nob_tg-nob_tg-swe"/>
-
-
+The data seems to be ready for a automatic restructuring.
