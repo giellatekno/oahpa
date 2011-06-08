@@ -323,7 +323,7 @@ Test 1: checking the content of each e-element:
 sma>grep -h '<e_test' _mg_check/* | sort | uniq -c | sort -nr 
 
 (I) Assuming that these mg-elements denote different meanings, the
-following entries are not challanging:
+following entries are not challenging:
 2083       <e_test stamp="lg_stem_apps_mg"/>
   889       <e_test stamp="lg_apps_mg"/>
   170       <e_test stamp="lg_stem_apps_mg_mg"/>
