@@ -56,7 +56,7 @@
 		<xsl:copy-of select="./lg"/>
 		<xsl:copy-of select="./stem"/>
 		<xsl:copy-of select="./apps"/>
-		<xsl:for-each select="./mg">
+		<xsl:for-each select="./mg[not(./@xml:lang = 'sme')]">
 		  <mg>
 		    <xsl:copy-of select="./@*"/>
 		    <xsl:if test="$debug">
@@ -86,7 +86,7 @@
     <xsl:param name="theNode"/>
     
     <xsl:variable name="pattern">
-      <xsl:for-each select="$theNode/*">
+      <xsl:for-each select="$theNode/*[not(./@xml:lang = 'sme')]">
 	<xsl:value-of select="lower-case(local-name(.))"/>
 
 	<xsl:if test="./@xml:lang and not(./@xml:lang = '')">
