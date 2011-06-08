@@ -23,7 +23,112 @@ In the following is the summary of the CLT meeting:
 		     -done
 	    1.4.2 for entries with the same nob lemma, add prefered sma-translations to each other as
    	             acceptable answers
-		     -todo
+		     -done
+
+@cip: From my point of view is now the merging process of the reverted
+         nobsma data finished.
+
+Ex. 1 (only one entry with this lemma in the whole file)
+
+   <e id="rovdyrfritt_a" stat="pref"> 	     <== 1. every entry has an ID	2. stat=pref flag from the smanob-data in the nob-entry 
+      <lg>
+         <l pos="a">rovdyrfritt</l>
+      </lg>
+      <sources>		<== structure simplification: no apps/apps, just sources 
+         <book name="åa5"/>
+      </sources>
+      <mg>
+         <semantics>					<== sematics element on the mg-level, NOT on the tg-level anymore
+            <sem class="NATURE_A"/>
+            <sem class="HERDING"/>
+         </semantics>
+         <tg xml:lang="sma">				<== 'tg' means 'target language group' and is flagged with the language flag
+            <t pos="a" stat="pref">aales</t> 	<== because of the new meaning of 'tg' there is no need for lang-flag on the t-level;  default flag for stat="pref" that can be changed manually as needed
+         </tg>
+      </mg>
+   </e>
+
+
+Ex. 2 (several entries with the samme lemma string): Et godt eksempel for det er "dårlig"!
+
+ 1. a number in initial position of the ID means that there are more
+     than one entry with the same lemma string in the file
+ 2. in addition to the t-element from the reverted entry, there are
+     t-values of the parallel entries with the same nob lemma string
+     as acceptable answers for the LEKSA play,  each of 
+     <t pos="a" sem-cl="BODY_A" src="dej-åa6-åa4-åa6" nob-stat="yes">mådtan</t>	
+
+
+
+   <e id="1_dårlig_a" stat="pref">
+      <lg>
+         <l pos="a">dårlig</l>
+      </lg>
+      <sources>
+         <book name="s2"/>
+         <book name="åa6"/>
+         <book name="åa4"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="WEATHER_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">geerve</t>
+            <t pos="a" sem-cl="BODY_A" src="s2" nob-stat="yes">madtan</t>
+            <t pos="a" sem-cl="BODY_A" src="dej-åa6-åa4-åa6" nob-stat="yes">mådtan</t>
+            <t pos="a" sem-cl="EXPERIENCE_A-CLOTHES_A-WEATHER_A-BODY_A" src="s2-a1-dej"
+               nob-stat="yes">nåekies</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_dårlig_a" stat="pref">
+      <lg>
+         <l pos="a">dårlig</l>
+      </lg>
+      <sources>
+         <book name="s2"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="BODY_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">madtan</t>
+            <t pos="a" sem-cl="WEATHER_A" src="s2-åa6-åa4" nob-stat="yes">geerve</t>
+            <t pos="a" sem-cl="BODY_A" src="dej-åa6-åa4-åa6" nob-stat="yes">mådtan</t>
+            <t pos="a" sem-cl="EXPERIENCE_A-CLOTHES_A-WEATHER_A-BODY_A" src="s2-a1-dej"
+               nob-stat="yes">nåekies</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="3_dårlig_a" stat="pref">
+      <lg>
+         <l pos="a">dårlig</l>
+      </lg>
+      <sources>
+         <book name="s2"/>
+         <book name="a1"/>
+         <book name="dej"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="EXPERIENCE_A"/>
+            <sem class="CLOTHES_A"/>
+            <sem class="WEATHER_A"/>
+            <sem class="BODY_A"/>
+         </semantics>
+         <tg xml:lang="sma">
+            <t pos="a" stat="pref">nåekies</t>
+            <t pos="a" sem-cl="WEATHER_A" src="s2-åa6-åa4" nob-stat="yes">geerve</t>
+            <t pos="a" sem-cl="BODY_A" src="s2" nob-stat="yes">madtan</t>
+            <t pos="a" sem-cl="BODY_A" src="dej-åa6-åa4-åa6" nob-stat="yes">mådtan</t>
+         </tg>
+      </mg>
+   </e>
+
+
+
 
 
 
