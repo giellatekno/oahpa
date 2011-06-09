@@ -1,0 +1,178 @@
+!!!Møte om sørsamisk oahpa 9.6.2011
+
+Til stades: Lene, Sissel, Toini, Marit, Trond,
+
+!!!Saksliste
+
+* Leksa:
+** nobsma
+** stedsnavn
+* MorfaS:
+** flere valg på verb
+** adjektiv og stammer
+* Morfac
+** blanda oppgaver
+** opne spørsmål
+* dialekt
+** oe vs. a
+* Grammatikk
+* Layout
+* url-adresse
+* Lokalisering
+* Klokka
+* Admin
+
+
+!!!Leksa
+
+!!nobsma
+
+
+Vi har no flytta til nobsma. Dette inneber at endringar må blir gjort to stader, både i ped/sma/src, og i ped/nobsma/ (og __seinare__ i ped/swesma/)
+
+Cip forenklar smanob etter at vi har skilt ut ordboka. Trond og Lene skriv ei oppsummering etterpå. Dette har laga mykje ekstraarbeid for oss. Ordboka har fått mykje ut av dette, men det har kosta også. Vi slår ikkje saman dei norske entryane. Dei får eigen id, bok- og settinfo. 
+
+Vi vil godkjenne både attr og pred som svar på adjektiva. Vi må, for kvart adjektiv i nobsma, generere predikativformene og leggje dei til som synonym i nobsma eller i MySQL-basen.
+
+!!stedsnavn
+
+Status quo: Ingenting skjedd sidan siste møte, bortsett frå at alt er flytta til ped.
+
+Vi må leggje til nye ord. Dei legg vi til i dict (merke apps="oahpa" evt. leggje inn nye namn), og deretter konverterer vi til ped/src/prop_smanob.xml og ped/src/propPl_smanob.ml og ped/nobsma/prop_nobsma.xml maskinelt.
+
+
+Ope spørsmål: ikkjenormativ bruk av æö. Vi vil få rett svar me
+
+tjöösenjuenie tjøøsenjueniem(tjöösenjueniem)
+
+* MorfaS substantiver illativ uten kommentar
+* tjöökeh tjøøkide
+
+* MorfaS substantiv akkusativ utan kommentar
+* prïhtjhgåetieh prihtjhgåetide
+
+Kva vil vi ha: Godkjenne, men med kommentar. Same politikk for æ, ö, ï.
+
+
+!!!MorfaS
+
+!!flere valg på verb
+
+Dette er implementert
+
+!!adjektiv og stammer
+
+Eit framlegg:
+
+# Likestava overalt
+# Ulikestava overalt
+# Blanda bøying (td: likestava pos, ulikestava komp // likestava pos, begge delar i komp)
+
+
+!!!MorfaC
+
+!!blanda oppgaver
+
+[Jf. planen nederst i dette dokumentet|http://giellatekno.uit.no/ped/smadoc/morfac_oppgaver.html]
+
+Oversikt:
+
+* Substantiv: Blande kasus.
+* Pronomener: blande kasus
+* Verb: presens, preteritum, gerund, perf
+* Adj: komparativ, superlativ
+
+!!opne spørsmål
+
+* nompl1, der står det framleis PEOPLE - dette fikses når Ryan installerer spørsmålene på nytt
+
+!!!dialekt
+!!-oe vs. -a
+
+* bearkoe, *bearka
+** bearkoe = kjøtt vs 
+** bearka = 1. kjøtt 2. a. skulderblad b. isteg på ski
+
+giellatekno lager lister med -a for   -oe-ord
+
+# alle brukbare -a ord skal inn i nobsma - med to statpref?
+# alle brukbare -a ord skal inn i smanob -> brukes i Leksa og Morfa - med dialektmarkering?
+
+
+# Ha to statpref (?)
+# Legge til i Leksa - smanob
+## enten til alle brukarane
+## eller avhengig av dialekt (nord/sør)
+
+!Leksa
+
+* -oe - norsk
+* -a - norsk
+
+Her vil vi godkjenne begge svara (rettare: viss det til norsk X er ført opp både Y-a og Y-oe for sørsamisk, vil vi sjølvsagt godta begge.
+Leksa smanob: Her kan vi presentere a-former til a-brukarar
+
+norsk -     -oe /-a
+
+!Morfa
+
+  -oe vs.  -a  
+
+Her må a-ord bøyast som a-ord og oe-ord som oe-ord. Her kan vi ikkje godkjenne begge sv
+Viss du er "sør" får du presentert a-ord, og ikkje oe-ord
+
+Leggje inn ord med både -oe og -a i leksikon, slik at OE-dialekt-folk ser berre oe-ord, og a-dialekt-folk ser berre a-ord.
+
+{{{
+       kort           lang
+oe   *oe-sh        oe-l nord
+a     a-sh sør     *a-l
+}}}
+
+Det er fremleis problem med -eh / -h:
+
+* kåarje  ... kåarje
+
+
+!!!grammatikk
+
+Kapittel å sjå på i Tromsø:
+* Partiklar
+* Adjektiv
+
+Dette står ikkje øverst på lista.
+
+!!!Layout
+
+Ingenting er gjort.
+
+!!!url-adresse
+
+* http://oahpa.no til 100-300 / år.
+
+Toini lever godt utan årsavgift. Trond og Toini diskuterer det toeine.
+
+!!!Lokalisering
+
+Oversetting av oahpa fra norsk til sørsamisk
+
+* få nordsamisk oahpa til å fungere på nordsamisk som hjelp for oversettinga til sørsamisk
+* fil har endra navn: ped/doc/smalokalisering.txt 
+* Trond overfører til lokaliseringsfilene - det arbeides videre der
+
+!!!Klokka
+
+Ein klokkeautomat, ikkje tre. Ryan ser på det.
+
+!!!Admin
+
+Divvun: 8 månadsverk august - august
+ 
+!!Ferieavvikling
+
+* Sissel: 24.6. - 15.8.
+* Toini: 1.7. - 8.8.
+* Marit: 24.6. - 15.8.
+* Lene: 4.7. - 8.8.
+* Trond 4.7. - 8.8.
+
