@@ -1,0 +1,198 @@
+!!!Møte sma-oahpa Tromsø 9. juni 2011
+
+Til stades: Ciprian, Lene, Ryan, Trond
+
+
+!!!Saksliste
+
+* Cip sitt nye leksikonformat
+* ø vs. ö, ä vs. æ, ï vs. i
+* variasjon i pronomener
+* dialekter
+* MorfaC
+** MorfaC: i menyen: blanda oppgavesett
+* Klokka
+* Dokumentasjon
+* Bugliste
+* Arbeid framover
+** NU - smeOahpa
+** Heli
+* Neste møte
+
+!!!Cip sitt nye leksikonformat
+
+Ingen nye språkattributt på t-nivå, berre på tg-nivå
+Vi treng ikkje gjenta sem-gruppe på kvart nivå. Semantikk er på mg. Endringa har vore i nobsma, skal også vere i smanob.
+
+
+!!!ø vs. ö, ä vs. æ, ï vs. i
+
+* Fungerer i MorfaS med kommentar: tjöösenjuenie tjøøsenjueniem (tjöösenjueniem) (funkar også for i/ï)
+* Fungerer ikkje i MorfaC. ø blir markert som feil.
+* Leksa er nede.
+
+Målet er at det skal fungere som i MorfaS
+
+__TODO__; 
+* Fiks MorfaC
+* Undersøk Leksa, og evt. fiks.
+
+!!!variasjon i pronomener
+
+Pronomen kjem frå pronpers-leksikon-fila. Er det mogleg å gjere med pronomen som med andre ordklasser? Det vi vil ha er:
+
+Oppgåve frå pronpers, og fasit frå isma-norm.fst
+
+__TODO__
+
+* Lag MySQL-database for pronomen med to kjelder: statisk fil (presentasjon) og isma-norm.fst (fasit).
+
+!!!Dialekter
+
+I dag: L og SH. Saka med -oe og -a er framleis open.
+
+
+!!!MorfaS
+
+I dag er presens og preteritum inne. Vi vil ha perfektum, gerundium, og imperativ.
+
+__TODO__
+* Skrive tagsett inn i bug #1042 (__Lene__)
+* Implementere i MorfaS (__Ryan__)
+
+
+!!!MorfaC
+
+!!MorfaC: i menyen: blanda oppgavesett
+
+Jf. planen nederst i [dette dokumentet|http://giellatekno.uit.no/ped/smadoc/morfac_oppgaver.html].
+
+__TODO__:
+
+* Bestemme xml-format for mixed (__Ryan__)
+* Merke blandaoppgåver med relevant merking (__Lene__)
+
+
+!!!Klokka
+
+Klokka fungerer på Ryan si maskin, men ikkje på victorio.
+
+Ryan skal arbeide __på dagtid__ med klokka (må kunne klokka, rimelegvis).
+
+* Mål: Ei klokke, ikkje tre. (__Ryan__)
+* Evt. Cipfaktor: ad lib (__Ryan__)
+
+!!!Dokumentasjon
+
+# Lyrikk.
+# Dependens.
+# Rekkefølge
+
+!!!Bugliste
+
+!!1049	Thu 16:32	cri	Settnamn går gjennom i MorfaC: Illativ
+
+Fiksa.
+
+!!1019	Tue 08:57	enh	LEKSA - hastighet og multiword
+
+Problemet er installeringsskript
+
+__TODO__:
+* Ryan ser på den.
+
+!!993	Wed 23:10	nor	Det kommer anna verb enn "lea"
+
+Ingen "ij" eller "lea" akkurat no. Vi held bugen open.
+
+!!1037	Tue 10:40	cri	Morfa c: pronomen(akkusativ,pacc4)) "AAGKELH"
+
+Bugen er framleis solid plassert i solar plexus.
+
+__TODO__: 
+* Ryan ser på aagkelh i mysql-databasen og MorfaC
+
+{{{
+Gïeh julevsaemide råakeme? (dah)
+Aagkelh  ... råakeme.
+
+nompl4: 
+Gïeh edtjieh daelie laavlodh? (aagkele)
+Daelie ... edtjieh laavlodh. 
+}}}
+
+!!1042	Tue 08:58	enh	MorfaS verb: også imperativ, perfektum og gerundium
+
+(Sjå punktet MorfaS lenger oppe)
+
+!!1050	Thu 16:51	enh	Valg av nordsamisk som lokaliseringsspråk fungerer ikke
+
+__TODO__
+* Sjekk localefila django.po for se (__Trond__)
+* Legge til sma/LOCALE/django.po for smaoahpa (__Ryan__)
+* Legge inn det som er gjort av sma-lokalisering (__Trond__)
+
+!!1051	11:43:11	enh	Pronomen: Flere illativformer skal godtas
+
+Sjå ovafor.
+
+!!1020	2011-05-23	enh	Morfa c - PRONOMEN, totalll
+
+Bugen har rett, det er mykje total. Det er berre to oppgåver (tre?) som er i bruk, pill4 (og pill1, pill3). I pill4 er +Du2 sett som val. 
+
+__TODO__: Lene ser på den. 
+
+!!1021	2011-05-14	enh	Django looks for mgame in komoahpa, but only leksa exists
+
+Cip. P3.
+
+!!1047	11:29:45	enh	Settnamn blir presentert i MorfaC
+
+Lada på nytt og dukkar (no) ikkje opp. Lukka.
+
+!!1052	13:49:36	enh	Morfa-S Verb bug message
+
+Ryan ser på den.
+
+!!1053 Manglande -h i Nom Pl av substantiv i MorfaS
+
+
+{{{
+guelpie
+...	 guelpieh	
+goenehthtjohpe
+...	 goenehthtjohpe	
+tsiehkie
+...	 tsiehkie	
+skuvle
+...	 skuvle	
+bïrhke
+...	 bïrhke
+}}}
+
+!!!Begrense generering av ordformer
+
+[Jf. Bakgrunnsdokument|http://giellatekno.uit.no/ped/smadoc/begrense_generering.html]
+
+Det er visse former vi ikkje vil ha med i MorfaS og MorfaC. Dei er merka med attributt i leksikonfila. 
+
+!!!Arbeid framover
+
+!! Ferie 
+
+* Ryan drar 15. juli. - 31. august.
+* Trond, Lene og Ciprian - 4. juli - 8. august
+
+!!Sma-oahpa
+
+Mål: I boks til 4.7.
+
+!!sme
+
+Orientering: NU - smeOahpa og Heli Uibo
+
+!!!Neste møte
+
+21.6. kl. 1.
+
+
