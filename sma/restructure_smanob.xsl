@@ -44,7 +44,6 @@
 	<xsl:for-each select="./r">
 	  <r>
 	    <xsl:copy-of select="./@*"/>
-	    <!-- <xsl:copy-of select="./lics"/> -->
 	    <xsl:for-each select="./e">
 	      <e>
 		<xsl:copy-of select="./@*"/>
@@ -58,13 +57,18 @@
 		<xsl:copy-of select="./apps"/>
 		<xsl:for-each select="./mg">
 		  <xsl:if test="not(./@xml:lang = 'sme')">
+		    <!-- if there is only one tg in the mg just restructure it -->
 		    <xsl:if test="count(./tg) = 1">
 		      <gogo_1-tg>
 			<mg>
-			  <xsl:copy-of select="./tg/@*"/>
+			  <xsl:copy-of select="./@*"/>
+			  <!-- semantics on the mg level -->
 			  <xsl:if test="./tg/semantics">
 			    <xsl:copy-of select="./tg/semantics"/>
 			  </xsl:if>
+			  <!-- if there is some t or re elements in
+			       the tg just copy them without lang
+			       flag; this goes to the tg element -->
 			  <xsl:if test="./tg/*[starts-with(local-name(), 't') or starts-with(local-name(), 'r')]">
 			    <tg xml:lang="{./tg/t[1]/@xml:lang}">
 			      <xsl:copy-of select="./tg/@*"/>
@@ -77,11 +81,18 @@
 				</xsl:element>
 			      </xsl:for-each>
 			    </tg>
+			    <!-- otherwise don't copy empty
+			         tg-elements as in the name.xml file:
+			         optimization (unless otherwise
+			         explicitly required by the sma-oahpa
+			         group) -->
 			  </xsl:if>
 			</mg>
 		      </gogo_1-tg>
 		    </xsl:if>
-		    
+
+		    <!-- if there are more tg-elements in a mg: check
+		         the pair nob-swe -->
 		    <xsl:if test="count(./tg) &gt; 1">
 		      <gogo_more-tg>
 			<xsl:copy-of select="."/>
