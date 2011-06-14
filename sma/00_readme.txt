@@ -325,9 +325,9 @@ sma>grep -h '<e_test' _mg_check/* | sort | uniq -c | sort -nr
 Assuming that these mg-elements denote different meanings, the
 following entries are not challenging:
 
-2250       <e_test stamp="lg_stem_apps_mg"/>
+2251       <e_test stamp="lg_stem_apps_mg"/>
  793       <e_test stamp="lg_apps_mg"/>
- 182       <e_test stamp="lg_stem_apps_mg_mg"/>
+ 181       <e_test stamp="lg_stem_apps_mg_mg"/>
   30       <e_test stamp="lg_stem_apps_mg_mg_mg"/>
   18       <e_test stamp="lg_apps_mg_mg"/>
    7       <e_test stamp="lg_mg"/>
@@ -336,7 +336,6 @@ following entries are not challenging:
    2       <e_test stamp="lg_stem_apps_mg_mg_mg_mg"/>
    1       <e_test stamp="lg_mg_mg"/>
    1       <e_test stamp="lg_apps_mg_mg_mg_mg_mg"/>
-
 
 As agreed upon with Lene, we ignore the sme-mg for this task.
 
@@ -347,11 +346,11 @@ sma>grep -h '<mg_test' _mg_check/*.xml | sort | uniq -c | sort -nr
 Assuming that each tg-nob has a pendant tg-swe, these are
 non-problematic cases:
 
-3243          <mg_test stamp="tg-nob_tg-swe"/>
-  202          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe"/>
-    90          <mg_test stamp="tg"/>
-    32          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe_tg-nob_tg-swe"/>
-      6          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe_tg-nob_tg-swe_tg-nob_tg-swe"/>
-      1          <mg_test stamp="tg_tg"/>
+3242          <mg_test stamp="tg-nob_tg-swe"/>
+ 202          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe"/>
+  90          <mg_test stamp="tg"/>
+  32          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe_tg-nob_tg-swe"/>
+   6          <mg_test stamp="tg-nob_tg-swe_tg-nob_tg-swe_tg-nob_tg-swe_tg-nob_tg-swe"/>
+   1          <mg_test stamp="tg_tg"/>
 
 The data seems to be ready for a automatic restructuring.
