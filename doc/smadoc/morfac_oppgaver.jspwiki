@@ -1684,8 +1684,18 @@ Elativ:
 ** Giestie FAMILY BELONGINGS+akk+sg åådtjeme?
 ** mPERSNAME jeehti FAMILY dam ...... (satneste) åådtjeme.
 
-* mPERSNAME dam daajra?
-Maahke soptsesti mPERSNAME ..... (satne+elativ+sg) dam govleme.
+* P-ELA id="pela8"
+** Giestie mPERSNAME BELONGINGS+akk+sg åådtjeme?
+** Lohkehtæjjah jeehtin mPERSNAME dam ...... (sijjeste) åådtjeme.
+
+* P-ELA id="pela9"
+** mPERSNAME dam daajra?
+** Marit soptsesti mPERSNAME ..... (satne+elativ+sg) dam govleme.
+
+* P-ELA id="pela10"
+** mPERSNAME dam daajra?
+** Aahka gon aajja soptsestigan mPERSNAME ..... (satne+elativ+du) dam govleme.
+
 
 *Giestie mPERSNAME BELONGINGS+akkusativ veelti?
 FAMILY veanhta mPERSNAME dam .....(satne+elativ+sg) veelti.
@@ -1699,22 +1709,55 @@ Aajja jeahta dïhte ..... (satne+elativ+sg) dam lööneme.
 
 
 Komitativ:
-* Pron åadtjodh+kongr mPERSNAME+kom ektesne stååkedidh?
-* mPERSNAME hov jeehti pron åadjodh+kongr ..... (satne+kommitativ+sg) ektesne stååkedidh.
+* P-COM id="pcom8"
+** Pron åadtjodh+kongr mPERSNAME+kom ektesne stååkedidh?
+** mPERSNAME hov jeehti pron åadjodh+kongr ..... (satne+kommitativ+sg) ektesne stååkedidh.
+
+* P-COM id="pcom9"
+** Nïejte åådtje maanajgujmie ektesne stååkedidh?
+** Maanah hov jeehtin dïhte åådtje ..... (satne+komitativ+pl) ektesne stååkedidh.
+
 
 * Giejnie edtja mPERSNAME meatan årrodh?
 Dah learohkh jeehtin dïhte edtja ..... (satne+kommitativ+pl) meatan årrodh.
 
-* Giejnie mPERSNAME?
-Maahke soptsesti dïhte ..... (satne+komitativ+sg).
+* P-COM id="pcom10"
+** Giejnie mPERSNAME?
+** Sissel soptsesti dïhte ..... (satne+komitativ+sg).
 
-* Giej gujmie PROFESSION bööti?
+* P-COM id="pcom11"
+** Giejgujmie mPERSNAME?
+** PROFESSION+pl soptsestin dïhte ..... (satne+komitativ+pl).
+
+
+* Giejgujmie PROFESSION bööti?
 Meerje jeehti dïhte ..... (satne+komitativ+pl) bööti.
 
 * Giejnie mPERSNAME staaresne orre?
 Læjsa soptsesti dïhte ..... (satne+komitativ+sg) orre.
 
-
+{{{
+	<q id="pcom12">
+		<qtype>P-COM</qtype>
+		<question>
+			<text>Giejgujmie PERSON</text>
+			<element id="PERSON">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Aahka gon aajja VERB dïhte P-COM</text>
+			<element game="morfa" id="P-COM" task="yes">
+				<grammar tag="Pron+Logo+Du3+Com"/>
+			</element>
+			<element id="VERB">
+				<id>soptsestidh</id>
+				<grammar tag="V+Ind+Prt+Du3"/>
+			</element>
+		</answer>
+	</q>
+}}}
 
 
 !!! ADJEKTIV
