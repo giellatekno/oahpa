@@ -132,22 +132,36 @@
 			      <xsl:with-param name="the_t" select="./*[starts-with(local-name(), 't')][1]"/>
 			    </xsl:call-template>
 			  </xsl:if>
+			  <!-- all the tg from the sme-mg to ALL tgs:
+			       if not appropriate, they have to be
+			       deleted manually -->
+			  <xsl:if test="../../mg/@xml:lang = 'sme'">
+			    <xsl:for-each select="../../mg[./@xml:lang = 'sme']/tg">
+			      <!-- restructure sme tg -->
+			      <xsl:if test="./*[starts-with(local-name(), 't') or starts-with(local-name(), 'r')]">
+				<xsl:call-template name="restructure_tg">
+				  <xsl:with-param name="the_tg" select="."/>
+				</xsl:call-template>
+			      </xsl:if>
+			    </xsl:for-each>
+			  </xsl:if>
 			</mg>
 		      </xsl:for-each>
 		    </xsl:if>
 		  </xsl:if>
-		  <xsl:if test="./@xml:lang = 'sme'">
-		    <xsl:for-each select="tg">
-		      <mg xml:lang="sme">
-			<!-- restructure sme tg -->
-			<xsl:if test="./*[starts-with(local-name(), 't') or starts-with(local-name(), 'r')]">
-			  <xsl:call-template name="restructure_tg">
-			    <xsl:with-param name="the_tg" select="."/>
-			  </xsl:call-template>
-			</xsl:if>
-		      </mg>
-		    </xsl:for-each>
-		  </xsl:if>
+
+		  <!-- 		  <xsl:if test="./@xml:lang = 'sme'"> -->
+		  <!-- 		    <xsl:for-each select="tg"> -->
+		  <!-- 		      <mg xml:lang="sme"> -->
+		  <!-- 			<xsl:if test="./*[starts-with(local-name(), 't') or starts-with(local-name(), 'r')]"> -->
+		  <!-- 			  <xsl:call-template name="restructure_tg"> -->
+		  <!-- 			    <xsl:with-param name="the_tg" select="."/> -->
+		  <!-- 			  </xsl:call-template> -->
+		  <!-- 			</xsl:if> -->
+		  <!-- 		      </mg> -->
+		  <!-- 		    </xsl:for-each> -->
+		  <!-- 		  </xsl:if> -->
+		  
 		</xsl:for-each>
 	      </e>
 	    </xsl:for-each>
