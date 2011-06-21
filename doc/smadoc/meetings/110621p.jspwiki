@@ -1,0 +1,243 @@
+!!!Møte sma-oahpa Tromsø 21. juni 2011
+
+Til stades: Ciprian, Lene, Ryan, Trond
+
+
+!!!Saksliste
+
+* Cip sitt nye leksikonformat
+* Variasjon i pronomener
+* MorfaC
+** MorfaC: i menyen: blanda oppgavesett
+* Klokka
+* Bugliste
+* Lokalisering
+* Arbeid framover
+
+
+!!!Cip sitt nye leksikonformat
+
+{{{
+/pedversions/smaoahpa/data_sma/sma/      -> gtsvn/ped/sma/src/
+pedversions/smaoahpa/data_sma/nob/       -> gtsvn/ped/sma/nobsma/
+ 
+sma$ ls nobsma/
+a_nobsma.xml         multiword_nobsma.xml prop_nobsma.xml
+adv_nobsma.xml       n_nobsma.xml         v_nobsma.xml
+
+sma$ ls src/
+a_smanob.xml                 num_smanob.xml
+adv_smanob.xml               pronPers_smanob.xml
+multiword_smanob.xml         propPl_smanob.xml
+n_smanob.xml                 prop_smanob.xml
+names.xml                    v_smanob.xml
+noleksa_adv_smanob.xml       v_smanob.xml.edited
+noleksa_multiword_smanob.xml
+}}}
+
+
+NB! Nye attributter for det nye leksikonformatet:
+
+* __gen_only="Sg3"__
+** -  for verb som bare har 3. person entall, uten subjekt, f.eks. abrodh, tidl. context="upers"
+* __gen_only="3"__ 
+** - for verb som bare 3. person entall og flertall, med subjekt, f.eks. deahpadidh, tidl. context="3.pers"
+* __gen_only="Sg"__ 
+** - for subst som vi ikke vil presentere i flertall - tidligere illpl="no"
+* __gen_only="Sg+Nom"__ 
+** - for subst som bare har denne grunnformen (f.eks. buaredh)
+* __gen_only="Pl"__ 
+** for substantiv som har grunnform i flertall
+* __gen_only="Du,Pl"__
+** for verb som skal presentere bare i totall og flertall
+
+
+<semantics> er flyttet fra <tg> til <mg>
+
+nobsma har fått id i <e>:
+<e id="vegg_n" stat="pref">
+
+!!!MorfaC
+
+!! MorfaC: i menyen: blanda oppgavesett  <qtype>MIX-N</qtype>  MIX-V  MIX-P  MIX-A
+
+* Eller, eit spørsmål kan ha fleire <qtype />-element til staden av ein (som det er no), database-formatt må endrast slik at qtype i databasen er ikkje ein string, men many-to-many.
+
+!! hid 
+
+* hid in morfa-c  - framleis jobber med den, det var eit problem med acc34, acc35 som eg må løyse 
+
+!!!Klokka
+
+Flott, Ryan
+
+Mindre finpuss: Vi manglar tekst i ruta!
+
+* Write like this: 13:15 or 01:15. The program does not accept am or pm.
+* Skriv slik: 13:15 eller 01:15.
+
+
+!!!Bugliste
+
+Opne bugar:
+
+!!1019	P2	LEKSA - hastighet og multiword
+
+* Ryan ser på hastighet, ikke hast
+
+!!1021	P3	Django looks for mgame in komoahpa, but only leksa exists
+
+* Ciprian ser på den over ein kopp kaffe.
+
+!!1050	P3	Valg av nordsamisk som lokaliseringsspråk fungerer ikke på smeOahpa
+* Ryan ser på denne, muligens pga oppgradering til ny Django-versjon
+* Ryan note to self: /usr/lib/python2.6/site-packages/django/conf/locale/
+
+
+
+!!1060	P3	Dobbel å i Leksa norsk-samisk
+
+Denne bugen er framleis open. Men alle verba blir ikkje handsama likt:
+
+{{{
+å lage mat
+brunost
+egg
+å å kløyve margebein
+}}}
+
+Her ligg det meir under.
+
+Vi har lagt inn ''å'' i nob/xml/verbs.xml, og dermed blir det dobbelt.
+Det er også slik at for finsk til nordsamisk fungerer ikkje verba i det 
+heile tatt no (sett med verb kjem ikkje opp i det heile).
+
+'å' finnes i /oahpa/words_install.py:109 og /oahpa/drill/forms.py:528
+
+Det vi vil ha i leksa:
+* Til samisk: Systemet presenterer verb med ''å/att/zu/to''
+* Frå samisk: Systemet godtar svar både med og utan infinitivsmerke, men har fasit med.
+
+Nordsamisk har dette med ''å/att/zu/to'' i verbs.xml.
+
+Problemet no er at finsk-nordsamisk leksa nesten ikkje fungerer i det heile 
+(berre dei setta som ikkje inneheld verb), og i norsk-nordsamisk leksa
+opptrer (dei fleste) verba med dobbel ''å å''.
+
+{{{
+settings.py: 
+
+INFINITIVE_REGEX = {
+	'sma': None,
+	'nob': r'^(?P<inf>å )[\w\s]+',
+	'eng': r'^(?P<inf>to )[\w\s]+',
+	'deu': r'^(?P<inf>zu )[\w\s]+',
+	'swe': r'^(?P<inf>att )[\w\s]+',
+}
+
+game.py - jobber med settings.py 
+}}}
+
+__TODO:__
+* Ryan ser på dette. P2 og Blocker.
+
+
+!!1051	P3	Pronomen: Flere illativformer skal godtas
+
+{{{
+sijjieh
+___________________	 sijjide, sijjese
+}}}
+
+No blir begge godtatt, fint. Men ein detalj står att:
+
+''sijjide'' skal ikke vises i fasit, merkes med dial="NG"
+
+Dette skil seg frå dialektformene ved at pronomena er pregenerert i xml-filene.
+
+Taggen for å hindre subformene i å kome i fasiten er __dial="NG"__ (modellert etter fst-ens +Use/NG)
+
+* <l pos="pron" type="pers" dial="NG">dijjide</l> <!-- django gjev main-dialekt, men ikkje dei andre -->
+* <l pos="pron" type="pers">dijjese</l> <!-- django gjev andre dialekt, også main -->
+
+Dermed har vi heile utfallsrommet: Formene er presentasjonsform for: 
+ingen dialekt = NG, sørlig dialekt = SH, nordlig dialekt = L, begge dialektar = ikkje dialekttag.
+
+!!1059	P3	MorfaC adjektiv - grunnformen må gis i parantes
+__TODO:__
+Lene omarbeider spørsmålene slik at grunnformen gis der.
+
+!!1065	P5	Generasjon feil
+Det er ordnet opp i dette - adv skal ikke generes. Attributter er nå lagt til leksikonet slik at systemet vet hvilke former som skal genereres. 
+
+
+__TODO:__
+Ryan lagar ein ny errorlog, og vi ser på den.
+
+
+!!1072	P3	Klokka aksepterer berre ettermiddagstider
+
+Sjå på numra-koden i python. Mål: Godta __og__ presentere som fasit: ''02:45, 14:45''
+
+
+!!!Lokalisering
+
+!!sma som nytt språk.
+
+Sørsamisk er lagt inn i locale/sma/.., men må inn i systemet:
+
+* Installera admin-grensesnitt lokaler i /usr/lib/python2.6/site-packages/django/conf/locale/ so får me løyve til å nytta sma-lokale i smaoahpa, og sme-lokale i smeoahpa. 
+  - kopier nn/ -> sma/, sme/
+  - treng ikkje å omsetja admin-grensesnitte fordi ingen skal sjå den
+  - nokon med sudo må gjera dette.
+
+
+* settings.py
+* templates/smaoahpa_main.html (sma er kommentert ut)
+
+!!Nye tekststrengar
+
+* manage.py makemessages -a - finne nye string frå HTML/.py filer 
+
+Dei låg der inne, men utan # fuzzy. 
+
+__TODO:__
+* Lokaliser (Trond og andre)
+
+
+!!!Arbeid framover
+
+
+!! Ferie 
+
+* Ryan drar 15. juli. - 31. august.
+* Trond, Lene og Ciprian - 4. juli - 8. august
+
+!!Sma-oahpa
+
+Mål: I boks til 4.7.
+
+!!Sme-oahpa
+
+# Ciprian lagar sme-sandbox
+# Lene (og andre) ser på sme-oahpa neste veke.
+
+!!!Dokumentasjon
+
+Dagens forvirrande status quo:
+
+* /gtsvn/ped/doc/common = for programmerarar og programmerarnære lingvistar
+* /gtsvn/ped/userdoc/addlang = for eksterne lingvistar (Bodø-Nuuk-aksen)
+* /gtsvn/ped/doc/smadoc = for deltakarane i gjennomføringa av konkrete prosjekt
+* /gtlang/ped/userdoc/ = for sluttbrukarar
+
+
+(maintenance.jspwiki er menyen for ped/doc/common)
+
+
+!!!Neste møte
+
+
+
+
+
