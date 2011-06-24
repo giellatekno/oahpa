@@ -1,0 +1,94 @@
+!!!Møte om sørsamisk oahpa 16.6.2011
+
+Til stades: Lene, Sissel, Toini, Marit, Trond,
+
+!!!Saksliste
+
+* Oppsummering frå sist
+** Lokalisering
+** Klokka
+** Leksikonkonvertering
+* Leksa - nobsma
+* MorfaC
+* Bugliste
+* Arbeidsplan
+* Neste møte
+
+
+!!!Oppsummering frå sist
+
+!!Lokalisering
+
+Hald fram med lokaliseringsarbeidet (Sissel, ... + Trond).
+
+!!Leksa til svensk
+
+Sylvia arbeider med det, Trond hjelper til. Det er opp til det svenske Sametinget kor mykje arbeid som skal inn her.
+
+!!Klokka
+
+Feilrapport for klokkesletta:
+
+Har sett igjennom  klokkeoversikten og funnet at det har sneket seg inn nordsamisk “govhtenuppelohkai” for kl. 00:16, 01:16, 2:16 ….. og hele veien til 23:16.
+
+Alle skrivemåtene for njieljie bør være med. Det bør også godkjennes “avtelen” i tillegg til åvtelen.
+
+
+Feil oppstått i NUMRA: Grunntallene er blitt borte. Når man velger Grunntall er det ordenstalloppgaver som kommer fram.
+
+__TODO:__
+
+* Lene legg inn i bz
+* Trond ser på automaten
+* Ryan ser på django
+
+!!Leksikonkonvertering
+
+Ryan og Cip arbeider med implementeringa. Ting er ssv. i boks til måndag.
+
+!!Leksa - nobsma
+
+Aajege legger til synonymer - streng med samiske oversettingen, rettes til normerte former
+
+!!!MorfaC
+
+Fungerer ikkje akkurat no.
+Lene har laga fleire oppgåver, nokre av kvar type, og kjem til å lage fleire. 
+
+Mix-oppgåvene er laga, så når MorfaC er oppe att vil dei fungere.
+
+Adjektivoppgåvene er utan grunnord i matrisespørsmålet (utan parantes). Problemet er når vi går frå predikativ til attributiv, då vil fasiten stå i oppgåva. Dette kjem også på lufta etter at Ryan har oppdatert.
+
+!!!Bugliste
+
+!!1019 LEKSA - hastighet og multiword 
+
+!!1051 Pronomen: Flere illativformer skal godtas
+
+!!1072 Klokka aksepterer berre ettermiddagstider
+
+Det blir meir med klokka
+
+!!Gjenåpna bug: -h kjem ikkje i det heile tatt på visse former i fleirtal
+f.eks. slavtjeguelie vierhtiedimmie
+også elmie som har gen_only=Sg
+
+!!!Arbeidsplan
+
+Viktige ting:
+
+# nobsma
+# Stadnamn (Toini om 14 dagar med informant)
+# testing + rapportere buggar (Lene lager oppskrift - sender på mail)
+# lokalisering av grensesnitt
+# omsetjing til svensk
+# sende sms når man sender mail til Toini
+
+
+!!!Neste møte
+
+22.8 kl 10.00 
+
+
+
+
