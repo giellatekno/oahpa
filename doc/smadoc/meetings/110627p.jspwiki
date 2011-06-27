@@ -1,0 +1,133 @@
+!!!Møte sma-oahpa Tromsø 21. juni 2011
+
+Til stades: Ciprian, Lene, Ryan, Trond
+
+
+!!!Saksliste
+
+* Cip sitt nye leksikonformat
+* MorfaC
+** MorfaC: i menyen: blanda oppgavesett
+* Klokka
+* Bugliste
+* Lokalisering
+* Arbeid framover
+
+
+
+!!!sme-oahpa
+
+!!Lokalisering
+ok
+
+!!Dobbelt infinitivsmerke
+Enno ikkje gjort noko.
+
+Verba har ikkje same oppførsel. No veit vi grunnen til det:
+Dei verba som har pos="v" får ''å'', dei som har pos="phrase_v" får
+ikkje ''å''. 
+
+__TODO:__
+* Ryan oppdaterer django-handsaminga av indoeuropeiske verb for å få 
+  eitt infinitivsmerke overalt
+
+
+!!! Cip sitt nye leksikonformat
+Er alt ok no? Ja, det ser sånn ut.
+
+!!!Sma-oahpa
+!!MorfaS, MorfaC pronomen
+fungerer ikkje
+
+!!Mix i MorfaC
+Fungerer, men ikkje for verb og adjektiver
+
+Kall det for ''Blanda, Blandad, Mixed, …''
+
+
+__TODO__: Mix til alle 
+
+!!!Numra
+
+Filene for Numra ligg i {{smaoahpa/gtsvn/gt/sma/bin/}}.
+
+* njielje er ikkje godkjent 
+* må skriva merknad om kor alle FST:ne i dokumentasjon ligg.
+
+Vi vil ha det slik:
+
+automaten viser njieljie, åvtelen som fasit, men godtar også dei tre
+andre formene for 4, og avtelen, som korrekte (utan korreksjonsforslag).
+
+Status quo:
+* Grunntall: sub-forma ''njielje'' gir __feilmelding__. Det må fiksast.
+* Klokka: 4 er ok, men ''avtelen''
+for ''Grunntall'' (4), men __korrekt__ for ''Klokka'' (04:00),
+
+__korrekt__ betyr då alle moglegheiter er godkjent.
+
+
+!!Klokka
+
+* Write like this: 13:15 or 01:15. The program does not accept am or pm.
+* Skriv slik: 13:15 eller 01:15.
+
+
+
+!!!Design
+
+Røros skal gå inn og sjå korleis dei vil ha det. Grensene for kva dei kan endre på:
+
+Toini: Halde på den store ruta, men endre det som er rundt? Ja.
+
+Funksjonaliteten skal bli, men utforminga kan endrast. Men vi vil gjerne halde på logoane.
+
+
+
+!!! Bugliste
+
+!!1053	sma-oahp	MorfaS Nom Pl: Fasit manglar -h i ca. 25% av tilfella
+
+Trond har ikkje sett på automaten enno.
+
+!!1060	sme-oahp	Dobbel å i Leksa norsk-samisk
+
+Med sma problemet ligg i PoS: om PoS er ikkje 'V', so får man ikkje 'å ...' på norsk. Nokre ord hev 'Phrv' eller 'phrase_v' (valg mellom disse to er ein ukonsekvens frå python-installering skripten). Problemet med sme er truleg same.
+
+>>> Word.objects.filter(lemma='bli redd')[1].translations2('sma').values_list('pos', flat=True)
+['phrase_v', 'phrase_v', 'phrase_v', 'phrase_v', 'phrase_v', 'phrase_v', 'phrase_v']
+
+!!1051	sma-oahp	Pronomen: Flere illativformer skal godtas
+
+Arbeid undervegs.
+
+!!1065	django	Generasjon feil
+
+Ryan må oppdatere genereringsfila. Elles er det i orden.
+Oppdater og test.
+
+!!! Lokalisering
+
+nob: Substantiv, men Adjektiver (-er på begge)
+
+Give translations for placenames.
+Oversett stedsnavn.
+
+__TODO:__
+* Ryan ser på HTML for å sjekke om stringer er tagga med lokalisering-ting
+* Trond ser på django.po.
+
+!!! Arbeid framover
+
+Ryan drar 15.7.
+
+!!Sme-oahpa
+
+Oppdatering pga 
+
+!!!Neste møte
+
+* Torsdag ettermiddag: Skarven
+* Fredag klokka 12: Siste før ferien
+
+
