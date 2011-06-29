@@ -1,6 +1,6 @@
 !!!Begrense generering av ordformer
 
-Her er lister over hvilke attributter vi bruker for å begrense genereringa i smaOAHPA
+Her er lister over hvilke attributter vi bruker for å begrense genereringa i smaOAHPA. Attributtverdien viser deler av taggene som skal genereres, evt flere deler med komma mellom. Det er mulig også med andre kombinasjoner enn det som er på denne lista.
 
 {{{
 gen_only="Sg3"
@@ -17,6 +17,20 @@ gen_only="Sg+Nom"
 {{{
 gen_only="Pl"
 }}} for substantiv som har grunnform i flertall
-
+{{{
+gen_only="Du,Pl"
+}}} for verb som vi ikke ønsker i entall
+{{{
+gen_only="A+Sg,A+Attr"
+}}} for adjektiver som ikke skal kompareres
+{{{
+gen_only="A+Attr"
+}}} for adjektiver som bare har attributtform
+{{{
+gen_only="A+Sg"
+}}} for adjektiver som bare har predikatform, og ikke skal kompareres
+{{{
+gen_only="none"
+}}} for lemmaer som ikke kan genereres, kun for Leksa, f.eks. stedsnavn som består av to ord
 
 
