@@ -7,7 +7,7 @@ cat $GTHOME/gt/sma/src/verb-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|tr
 cat $GTHOME/words/dicts/smanob/src/v_smanob.xml|grep '<l '|tr '<' '>'|cut -d">" -f3 > t2
 
 # c. only oahpa verbs
-cat $GTHOME/ped/sma/src/v_smanob.xml |tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|grep '"oahpa"'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3
+cat $GTHOME/ped/sma/src/v_smanob.xml |tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3
 
 DATO=`date`
 

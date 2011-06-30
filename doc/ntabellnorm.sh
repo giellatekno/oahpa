@@ -8,7 +8,7 @@ cat $GTHOME/gt/sma/src/noun-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|gr
 
 
 # c. only oahpa nouns
- cat $GTHOME/ped/sma/src/n_smanob.xml |tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|grep '"oahpa"'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3
+ cat $GTHOME/ped/sma/src/n_smanob.xml |tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3
 
 
 # Printing headers:

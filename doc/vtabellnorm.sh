@@ -9,7 +9,7 @@ cat $GTHOME/words/dicts/smanob/src/v_smanob.xml|grep '<l '|tr '<' '>'|cut -d">" 
 
 
 # c. only oahpa verbs
-cat $GTHOME/ped/sma/src/v_smanob.xml |tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|grep '"oahpa"'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3
+cat $GTHOME/ped/sma/src/v_smanob.xml |tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3
 
 DATO=`date`
 
