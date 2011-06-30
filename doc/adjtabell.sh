@@ -4,11 +4,11 @@
 cat $GTHOME/gt/sma/src/adj-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|tr '[+:]' ' '| cut -d" " -f1|tr -d '[#^]'|sort|uniq > t1
 
 # b. dict adjs
- cat ../../words/dicts/smanob/src/a_smanob.xml|grep '<l '|tr '<' '>'|cut -d">" -f3 > t2
+ cat $GTHOME/words/dicts/smanob/src/a_smanob.xml|grep '<l '|tr '<' '>'|cut -d">" -f3 > t2
 
 
 # c. only oahpa adjectives
- cat ../../words/dicts/smanob/src/a_smanob.xml |tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|grep '"oahpa"'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3
+ cat $GTHOME/ped/sma/src/a_smanob.xml |tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|grep '"oahpa"'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3
 
 
 # Printing headers:
