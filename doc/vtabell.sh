@@ -7,7 +7,7 @@ cat $GTHOME/gt/sma/src/verb-sma-lex.txt |tr "\!" "£"|cut -d"£" -f1|grep ";"|tr
 cat $GTHOME/words/dicts/smanob/src/v_smanob.xml|grep '<l '|tr '<' '>'|cut -d">" -f3 > t2
 
 # c. only oahpa verbs
-cat $GTHOME/words/dicts/smanob/src/v_smanob.xml |tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|grep '"oahpa"'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3
+cat $GTHOME/ped/sma/src/v_smanob.xml |tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|grep '"oahpa"'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3
 
 DATO=`date`
 
@@ -81,9 +81,9 @@ cat t1|sed 's/$/+V+PrsPrc/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '�
 cat t2|sed 's/$/+V+PrsPrc/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+V.*/-/'|tr '\t' ',' > t2prsprc
 cat t3|sed 's/$/+V+PrsPrc/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+V.*/-/'|tr '\t' ',' > t3prsprc
 
-cat t1|sed 's/$/+V+Der1+Der/NomAct+N+Sg/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+V.*/-/'|tr '\t' ',' > t1deract
-cat t2|sed 's/$/+V+Der1+Der/NomAct+N+Sg/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+V.*/-/'|tr '\t' ',' > t2deract
-cat t3|sed 's/$/+V+Der1+Der/NomAct+N+Sg/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+V.*/-/'|tr '\t' ',' > t3deract
+cat t1|sed 's/$/+V+Der1+Der\/NomAct+N+Sg/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+V.*/-/'|tr '\t' ',' > t1deract
+cat t2|sed 's/$/+V+Der1+Der\/NomAct+N+Sg/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+V.*/-/'|tr '\t' ',' > t2deract
+cat t3|sed 's/$/+V+Der1+Der\/NomAct+N+Sg/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+V.*/-/'|tr '\t' ',' > t3deract
 
 paste -d"|" t1 t1inf t1prssg1 t1prssg3 t1prsdu1 t1prsdu3 t1prspl3 t1prtsg1 t1ger t1prsprc t1deract | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tverbforms1
 paste -d"|" t2 t2inf t2prssg1 t2prssg3 t2prsdu1 t2prsdu3 t2prspl3 t2prtsg1 t2ger t2prsprc t1deract | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tverbforms2
