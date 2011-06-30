@@ -24,7 +24,11 @@ ok
 Enno ikkje gjort noko.
 
 Verba har ikkje same oppførsel. No veit vi grunnen til det:
-Dei verba som har pos="v" får ''å'', dei som har pos="phrase_v" får
+Dei verba som har pos="v" får ''å'', dei som har 
+{{{
+pos="phrase_v"
+}}} 
+får
 ikkje ''å''. 
 
 __TODO:__
@@ -93,10 +97,10 @@ Trond har ikkje sett på automaten enno.
 !!1060	sme-oahp	Dobbel å i Leksa norsk-samisk
 
 Med sma problemet ligg i PoS: om PoS er ikkje 'V', so får man ikkje 'å ...' på norsk. Nokre ord hev 'Phrv' eller 'phrase_v' (valg mellom disse to er ein ukonsekvens frå python-installering skripten). Problemet med sme er truleg same.
-
+{{{
 >>> Word.objects.filter(lemma='bli redd')[1].translations2('sma').values_list('pos', flat=True)
 ['phrase_v', 'phrase_v', 'phrase_v', 'phrase_v', 'phrase_v', 'phrase_v', 'phrase_v']
-
+}}}
 !!1051	sma-oahp	Pronomen: Flere illativformer skal godtas
 
 Arbeid undervegs.
