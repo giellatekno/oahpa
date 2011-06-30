@@ -5,13 +5,12 @@
 !Leksikonfiler
 * lemmaform i leksikonfilene skal være lemmaform i fst - ok
 * tagger, se output av fst - ok
-* oppdatere attributter til sma-system, gen_only?
 * legge til tcomm ?
 * legge til nye ord, unifisere, se more-filer - ok
 
 
 !Morfa_c-filer
-* sjekke lemmafomer - ok
+* sjekke lemmaformer - ok
 * sjekke tagger - ok
 * fikse buger
 * lage pronomenoppgaver
@@ -27,9 +26,16 @@
 * lage multiword.xml for leksa
 * sjekke klokkeautomat - Trond?
 
-!!sme vs. sma
-* stat_pref - sme: første t er default stat_pref
-
+!!sma vs. sme
+* sma: stat_pref - sme: første t er default stat_pref
+* Begrense generering: sma: gen_only, sme: <only-sg/> <only-pl/>
+* sma: exclude="nobsma" sme: <noleksa/> 
+* sma: l-element sme: lemma-element
+* morfologisk info - sma: l-element. sme: stem-element 
+{{{
+<l margo="e" pos="n" soggi="e" stem="3syll">
+<stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="i" rime="0"/>
+}}}
 
 
 
