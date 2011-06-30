@@ -5,8 +5,8 @@
 !Leksikonfiler
 * lemmaform i leksikonfilene skal være lemmaform i fst - ok
 * tagger, se output av fst - ok
-* legge til tcomm ?
 * legge til nye ord, unifisere, se more-filer - ok
+* legge til tcomm ?
 
 
 !Morfa_c-filer
@@ -21,10 +21,10 @@
 * teste
 
 !!Nye filer
-* lage pronPers for morfa. Har laga en rein genereringsfil istedenfor leksikonfil. Har sjekka genereringa, den ser ok ut. Men vi trenger not semantiske sett pga av MorfaC, og leksikonfil er svaret på det?
-* lage adv.xml for leksa - underveis
+* lage pronPers for morfa. Har laga en rein genereringsfil istedenfor leksikonfil. Har sjekka genereringa, den ser ok ut. Men vi trenger nok semantiske sett pga av MorfaC, og leksikonfil er svaret på det?
+* lage adverbs.xml for leksa - ok
 * lage multiword.xml for leksa
-* sjekke klokkeautomat - Trond?
+* sjekke klokkeautomat - Trond
 
 !!sma vs. sme
 * sma: stat_pref - sme: første t er default stat_pref
@@ -33,8 +33,8 @@
 * sma: l-element sme: lemma-element
 * morfologisk info - sma: l-element. sme: stem-element 
 {{{
-<l margo="e" pos="n" soggi="e" stem="3syll">
-<stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="i" rime="0"/>
+sma: <l margo="e" pos="n" soggi="e" stem="3syll">
+sme: <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="i" rime="0"/>
 }}}
 
 
