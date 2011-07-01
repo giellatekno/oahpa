@@ -1,0 +1,96 @@
+!!!Møte sma-oahpa Tromsø 21. juni 2011
+
+Til stades: Lene, Ryan, Trond
+
+
+!!!Saksliste
+
+* MorfaS
+* MorfaC
+* Klokka
+* Bugliste
+* Lokalisering
+* Arbeid framover
+
+
+!!!MorfaS
+!!Dialekt
+Dialekt er borte med pronomen, med andre PoS man får alle moglege former. Bør visa kun ei form.  __Ryan__ ser på dette, __Lene__ fikser pronomenfila
+
+
+!!Adjektiver
+!Presentasjonsform
+*Presentasjonsform er nå A+Sg+Nom - burde være A+Attr for komparativ og superlativoppgavene. __Ryan__ implementerer.
+*Legge til Use/NG - __Lene__
+!Stammeinndeling
+I dag har vi:
+* likestavelses stammer og ulikestavelses stammer
+* Vi vil ha:
+* likestavelsesbøying - i leksikonet merket stem="2syll"
+* ulikestavelsesbøying - i leksikonet merket stem="3syll" 
+* blandet bøying - i leksikonet merket stem="xsyll"
+
+!!Pronomen
+!Fjerne entrier i pronPers_smanob.xml - all informasjon skal inn i miniparadigmet, se bug 1051 __Lene__
+
+!!Substantiver
+* bug 1053 - mikser sg og pl i nominativ plural-oppgavene __Ryan__
+
+!!!MorfaC
+
+!!Legge til tag=1p-2p tag=1p istedenfor FIRST og FIRSTSECOND i oppgaver
+ __Lene__
+
+!!Neg verb mangler i databasen. Legges til i leksikon og paradigmer 
+__Lene__
+
+!!!Lokalisering
+
+Lokalisering er no oppdatert på victorio, __men fungerer ikkje__. Dvs:
+
+I MorfaS, verb, gerundium, står det framleis ''Øv på genitiv'' i boksen til høgre.
+
+Problemet er at oppdateringa ikkje fungerer.
+
+__TODO__ Sjå på dette. (Ryan, Trond)
+
+!!!Bugliste
+
+!!1060	Mon 13:00	blo	Dobbel å i Leksa norsk-samisk
+Ikkje jobba med.
+
+!!1065	Tue 23:16	nor	Generasjon feil
+Rutine å kjøre denne testen
+
+!!1077	Mon 15:10	nor	Tekst i rute samsvarer ikke med den verbøvelsen man velge...
+Open
+
+!!1079	Tue 19:50	nor	Bøying av -odh-verb i 3.person entall preteritum
+I prinsippet fiksa, men ikkje sjekka inn :-(
+Open til vi ser at det fungerer.
+
+!!1083	13:08:20	enh	Locale-oppdatering fungerer ikkje
+Open. Sjå __Lokalisering__ ovafor.
+
+!!!Arbeid framover
+
+!!Klokka i sme-oahpa
+* __Ryan__ fiksar implementeringa. Forklaringstekst som frå sma.
+* Kor skal fst-en vere? Ryan skriv mail til Trond om det
+* __Trond__ oppdaterer automaten etter Biret-Ánne sine merknader.
+
+!!Skrive dokumentasjon
+
+Dette er viktig.
+
+!!smeOahpa
+
+[Dokument for oppdatering av smeOahpa|../../nudoc/oppdatering.html]
+
+!!Ryan i sommar
+
+* Drar 15. juli, men flyttar rundt dei siste dagane
+* Borte frå nett ca. 13.7-18.7.
+* Heli er i Tromsø 8.-13.8, då er det fint at Ryan er på nett.
+* Attende i Tromsø ca. 31.8.
+
