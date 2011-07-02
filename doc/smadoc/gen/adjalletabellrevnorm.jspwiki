@@ -1,6 +1,6 @@
 !!!Reversert tabell over alle adjektiv - OBS! arbeidsliste for debugging
 
-Testdato: lør  2 jul 2011 00:58:54 CEST
+Testdato: lør  2 jul 2011 10:51:40 CEST
 ||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom  || Sg Acc
 | earadæjja | earadæjja | - | - | - | -
 | haeniedæjja | haeniedæjja | - | - | - | -
@@ -90,7 +90,7 @@ Testdato: lør  2 jul 2011 00:58:54 CEST
 | tjatnerge | tjatnerge | tjatnerge | tjatnergåbpoe | tjatnergommes | tjatnergem
 | åakserge | åakserge | åakserge | åaksargåbpoe | åaksargommes | åaksergem
 | viekserge | viekserge | viekserge | vieksiergåbpoe | vieksiergommes | vieksergem
-| saegkie | saegkie | saegkehke, saagkehke | saegkebe, saegkehkåbpoe, saagkehkåbpoe | saegkemes, saegkehkommes, saagkehkommes | saegkehkem, saagkehkem
+| saegkie | saegkie | saagkehke | saegkebe, saagkehkåbpoe | saegkemes, saagkehkommes | saagkehkem
 | tjaalaldihkie | tjaalaldihkie | tjaalaldihkie | - | - | tjaalaldihkiem
 | gaptjeldihkie | gaptjeldihkie | gaptjeldihkie | - | - | gaptjeldihkiem
 | sleehpeldihkie | sleehpeldihkie | sleehpeldihkie | - | - | sleehpeldihkiem
@@ -494,24 +494,23 @@ Testdato: lør  2 jul 2011 00:58:54 CEST
 | legaale | legaale, legaales | legaale, legaales | legaalebe | legaalemes | legaalem
 | illegaale | illegaale, illegaales | illegaale, illegaales | illegaalebe | illegaalemes | illegaalem
 | sentrifugaale | sentrifugaale, sentrifugaales | sentrifugaale, sentrifugaales | sentrifugaalebe | sentrifugaalemes | sentrifugaalem
-| adverbijaale | - | - | - | - | -
-| radijaale | - | - | - | - | -
-| kollegijaale | - | - | - | - | -
-| kolonijaale | - | - | - | - | -
-| ekvatorijaale | - | - | - | - | -
-| territorijaale | - | - | - | - | -
-| faktorijaale | - | - | - | - | -
-| gymnasijaale | - | - | - | - | -
-| postgymnasijaale | - | - | - | - | -
-| aksijaale | - | - | - | - | -
-| koaksijaale | - | - | - | - | -
-| potensijaale | - | - | - | - | -
-| sosijaale | - | - | - | - | -
-| asosijaale | - | - | - | - | -
-| initijaale | - | - | - | - | -
-| tertijaale | - | - | - | - | -
-| bestijaale | - | - | - | - | -
-| jovijaale | - | - | - | - | -
+| radijaale | radijaale, radijaales | radijaale, radijaales | radijaalebe | radijaalemes | radijaalem
+| kollegijaale | kollegijaale, kollegijaales | kollegijaale, kollegijaales | kollegijaalebe | kollegijaalemes | kollegijaalem
+| kolonijaale | kolonijaale, kolonijaales | kolonijaale, kolonijaales | kolonijaalebe | kolonijaalemes | kolonijaalem
+| ekvatorijaale | ekvatorijaale, ekvatorijaales | ekvatorijaale, ekvatorijaales | ekvatorijaalebe | ekvatorijaalemes | ekvatorijaalem
+| territorijaale | territorijaale, territorijaales | territorijaale, territorijaales | territorijaalebe | territorijaalemes | territorijaalem
+| faktorijaale | faktorijaale, faktorijaales | faktorijaale, faktorijaales | faktorijaalebe | faktorijaalemes | faktorijaalem
+| gymnasijaale | gymnasijaale, gymnasijaales | gymnasijaale, gymnasijaales | gymnasijaalebe | gymnasijaalemes | gymnasijaalem
+| postgymnasijaale | postgymnasijaale, postgymnasijaales | postgymnasijaale, postgymnasijaales | postgymnasijaalebe | postgymnasijaalemes | postgymnasijaalem
+| aksijaale | aksijaale, aksijaales | aksijaale, aksijaales | aksijaalebe | aksijaalemes | aksijaalem
+| koaksijaale | koaksijaale, koaksijaales | koaksijaale, koaksijaales | koaksijaalebe | koaksijaalemes | koaksijaalem
+| potensijaale | potensijaale, potensijaales | potensijaale, potensijaales | potensijaalebe | potensijaalemes | potensijaalem
+| sosijaale | sosijaale, sosijaales | sosijaale, sosijaales | sosijaalebe | sosijaalemes | sosijaalem
+| asosijaale | asosijaale, asosijaales | asosijaale, asosijaales | asosijaalebe | asosijaalemes | asosijaalem
+| initijaale | initijaale, initijaales | initijaale, initijaales | initijaalebe | initijaalemes | initijaalem
+| tertijaale | tertijaale, tertijaales | tertijaale, tertijaales | tertijaalebe | tertijaalemes | tertijaalem
+| bestijaale | bestijaale, bestijaales | bestijaale, bestijaales | bestijaalebe | bestijaalemes | bestijaalem
+| jovijaale | jovijaale, jovijaales | jovijaale, jovijaales | jovijaalebe | jovijaalemes | jovijaalem
 | lojaale | lojaale, lojaales | lojaale, lojaales | lojaalebe | lojaalemes | lojaalem
 | leksikaale | leksikaale, leksikaales | leksikaale, leksikaales | leksikaalebe | leksikaalemes | leksikaalem
 | ovnormaale | ovnormaale, ovnormaales | ovnormaale, ovnormaales | ovnormaalebe | ovnormaalemes | ovnormaalem
@@ -1848,7 +1847,7 @@ Testdato: lør  2 jul 2011 00:58:54 CEST
 | tjåajjijes | tjåajjijes, tjåajjijs | tjåajjije | - | - | tjåajjijem
 | bealjijes | bealjijes, bealjijs | bealjije | - | - | bealjijem
 | slaatjijes | slaatjijes, slaatjijs | slaatjije | - | - | slaatjijem
-| jeagkijes | - | - | - | - | -
+| jeagkijes | jeagkijes, jeagkijs | - | - | - | -
 | mealhkijes | mealhkijes, mealhkijs | mealhkije | - | - | mealhkijem
 | lohkijes | lohkijes, lohkijs | lohkije | - | - | lohkijem
 | marhkijes | marhkijes, marhkijs | marhkije | - | - | marhkijem
@@ -1871,8 +1870,8 @@ Testdato: lør  2 jul 2011 00:58:54 CEST
 | åålijes | åålijes, åålijs | åålije | åålijåbpoe | åålijommes | åålijem
 | göölijes | göölijes, göölijs | göölije | - | - | göölijem
 | dåajmijes | dåajmijes, dåajmijs | dåajmije | dåajmijåbpoe | dåajmijommes | dåajmijem
-| sïjmijes | - | - | - | - | -
-| aalmijes | - | - | - | - | -
+| sïjmijes | sïjmijes, sïjmijs | - | - | - | -
+| aalmijes | aalmijes, aalmijs | - | - | - | -
 | healmijes | healmijes, healmijs | healmije | - | - | healmijem
 | tjalmijes | tjalmijes, tjalmijs | tjalmije | tjalmijåbpoe | tjalmijommes | tjalmijem
 | gualmijes | gualmajes, gualmajs | gualmije | gualmajåbpoe | gualmajommes | gualmijem
@@ -1894,22 +1893,22 @@ Testdato: lør  2 jul 2011 00:58:54 CEST
 | gïrrijes | gïrrijes, gïrrijs | gïrrije | gïrrijåbpoe | gïrrijommes | gïrrijem
 | kraasijes | kraasijes, kraasijs | kraasije | kraasijåbpoe | kraasijommes | kraasijem
 | haalsijes | haalsajes, haalsajs | haalsije | haalsajåbpoe | haalsajommes | haalsijem
-| vaapsijes | - | - | - | - | -
-| hapsijes | - | - | - | - | -
+| vaapsijes | vaapsijes, vaapsijs | - | - | - | -
+| hapsijes | hapsijes, hapsijs | - | - | - | -
 | voepsijes | voepsijes, voepsijs | voepsije | voepsijåbpoe | voepsijommes | voepsijem
 | bårsijes | bårsijes, bårsijs | bårsije | - | - | bårsijem
 | jassijes | jassijes, jassijs | jassije | jassajåbpoe | jassajommes | jassijem
 | tjaatsijes | tjaatsijes, tjaatsijs | tjaatsije | tjaatsijåbpoe | tjaatsijommes | tjaatsijem
 | måhtsijes | måhtsijes, måhtsijs | måhtsije | måhtsijåbpoe | måhtsijommes | måhtsijem
 | guedtijes | guedtijes, guedtijs | guedtije | - | - | guedtijem
-| gaarhtijes | - | - | - | - | -
-| aajtijes | - | - | - | - | -
+| gaarhtijes | gaarhtijes, gaarhtijs | - | - | - | -
+| aajtijes | aajtijes, aajtijs | - | - | - | -
 | gaartijes | gaartijes, gaartijs | gaartije | gaartijåbpoe | gaartijommes | gaartijem
 | gåartijes | gåartijes, gåartijs | gåartije | gåartijåbpoe | gåartijommes | gåartijem
 | væstijes | væstijes, væstijs | væstije | væstijåbpoe | væstijommes | væstijem
 | darhvijes | darhvijes, darhvijs | darhvije | darhvijåbpoe | darhvijommes | darhvijem
 | bårhvijes | bårhvijes, bårhvijs | bårhvije | bårhvijåbpoe | bårhvijommes | bårhvijem
-| åajvijes | - | - | - | - | -
+| åajvijes | åajvijes, åajvijs | - | - | - | -
 | byjjes | byjjes | byjjes | - | - | byjjesem
 | ovbyjjes | ovbyjjes | ovbyjjes | - | - | ovbyjjesem
 | tryjjes | tryjjes | tryjjes | - | - | tryjjesem
