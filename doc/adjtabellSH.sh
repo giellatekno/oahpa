@@ -1,7 +1,7 @@
 # list of command making jspwiki document
 
 # c. only oahpa adjectives
-cat $GTHOME/ped/sma/src/a_smanob.xml | tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3
+cat $GTHOME/ped/sma/src/a_smanob.xml | grep '<l ' | tr "<" ">" | cut -d ">" -f3 | sort -u > t3
 
 DATO=`date`
 

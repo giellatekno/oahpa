@@ -1,58 +1,635 @@
 !!!Reversert tabell over oahpa-verb - OBS! arbeidsliste for debugging
 
-Testdato: tir  5 jul 2011 23:48:57 CEST
+Testdato: ons  6 jul 2011 00:48:40 CEST
 ||  lemma  ||  Inf  ||  Prs Sg1 || Prs Sg3 || Prs Du1 || Prs Du3 || Prs Pl3 || Prt Sg1 || Ger || PrsPrc 
 | lea | - | leam | lea | lean | lægan | leah | lim | - | -
+| skååffedh | skååffedh | skååffem | skååffoe | skååffoen | skååffijægan | skååffoeh | skååffim | skååffeminie | skååffije
+| tjaangedh | tjaangedh | tjaangem | tjaanga | tjaengien | tjaangijægan | tjaengieh | tjaangim | tjaangeminie | tjaangije
+| doengedh | doengedh | doengem | duanga | duengien | doengijægan | duengieh | doengim | doengeminie | doengije
+| marngedh | marngedh | marngem | marnga | merngien | marngijægan | merngieh | marngim | marngeminie | marngije
+| baajedh | baajedh | baajem | baaja | baejien | baajijægan | baejieh | baajim | baajeminie | baajije
+| naajedh | naajedh | naajem | naaja | naejien | naajijægan | naejieh | naajim | naajeminie | naajije
+| raajedh | raajedh | raajem | raaja | raejien | raajijægan | raejieh | raajim | raajeminie | raajije
+| veajedh | veajedh | veajam | veajoe | veajan | veajajægan | veajah, veajoeh | veajajim | veajaminie | veajije
+| kraejedh | kraejedh | kraajam | kraaja | kraejien | kraejiejægan | kraejieh | kraejiejim, kreejim | kraejieminie | kraejije
+| deejedh | deejedh | deejem | deejie | deejien | deejijægan | deejieh | deejim | deejeminie | deejije
+| sleejedh | sleejedh | sleejem | sleejie | sleejien | sleejijægan | sleejieh | sleejim | sleejeminie | sleejije
+| voejedh | voejedh | voejem | vuaja | vuejien | voejijægan | vuejieh | voejim | voejeminie | voejije
+| vuejedh | vuejedh | vuajam | vuaja | vuejien | vuejiejægan | vuejieh | vuejiejim, vööjim | vuejieminie | vuejije
+| bïejedh | bïejedh | bïejem | beaja | biejien | bïejijægan | biejieh | bïejim | bïejeminie | bïejije
+| leejjedh | leejjedh | leejjem | leejjie | leejjien | leejjijægan | leejjieh | leejjim | leejjeminie | leejjije
+| hojjedh | hojjedh | hojjem | håjja | hujjien | hojjijægan | hujjieh | hojjim | hojjeminie | hojjije
+| sojjedh | sojjedh | sojjem | såjja | sujjien | sojjijægan | sujjieh | sojjim | sojjeminie | sojjije
+| vïjjedh | vïjjedh | vïjjem | væjja | vijjien | vïjjijægan | vijjieh | vïjjim | vïjjeminie | vïjjije
+| veeljedh | veeljedh | veeljem | veeljie | veeljien | veeljijægan | veeljieh | veeljim | veeljeminie | veeljije
+| skaanjedh | skaanjedh | skaanjem | skaanja | skaenjien | skaanjijægan | skaenjieh | skaanjim | skaanjeminie | skaanjije
+| råanjedh | råanjedh | - | råanja | - | - | - | - | råanjeminie | -
+| lutnjedh | lutnjedh | lutnjem | lutnjie | lutnjien | lutnjijægan | lutnjieh | lutnjim | lutnjeminie | lutnjije
+| röönjedh | röönjedh | röönjem | röönjie | röönjien | röönjijægan | röönjieh | röönjim | röönjeminie | röönjije
+| deerjedh | deerjedh | deerjem | deerjie | deerjien | deerjijægan | deerjieh | deerjim | deerjeminie | deerjije
+| geerjedh | geerjedh | geerjem | geerjie | geerjien | geerjijægan | geerjieh | geerjim | geerjeminie | geerjije
+| möörjedh | möörjedh | möörjem | möörjie | möörjien | möörjijægan | möörjieh | möörjim | möörjeminie | möörjije
+| voessjedh | voessjedh | voessjem | vuassja | vuessjien | voessjijægan | vuessjieh | voessjim | voessjeminie | voessjije
+| vissjedh | vissjedh | vissjem | vissjie | vissjien | vissjijægan | vissjieh | vissjim | vissjeminie | vissjije
+| vïssjedh | vïssjedh | vïssjem | væssja | vissjien | vïssjijægan | vissjieh | vïssjim | vïssjeminie | vïssjije
+| gadtjedh | gadtjedh | gadtjem | gadtja | gedtjien | gadtjijægan | gedtjieh | gadtjim | gadtjeminie | gadtjije
+| pradtjedh | pradtjedh | pradtjem | pradtja | predtjien | pradtjijægan | predtjieh | pradtjim | pradtjeminie | pradtjije
+| edtjedh | edtjedh | edtjem | edtja | edtjien | edtjijægan | edtjieh | edtjim | - | -
+| speedtjedh | speedtjedh | speedtjem | speedtjie | speedtjien | speedtjijægan | speedtjieh | speedtjim | speedtjeminie | speedtjije
+| veedtjedh | veedtjedh | veedtjem | veedtjie | veedtjien | veedtjijægan | veedtjieh | veedtjim | veedtjeminie | veedtjije
+| vïedtjedh | vïedtjedh | vïedtjem | veadtja | viedtjien | vïedtjijægan | viedtjieh | vïedtjim | vïedtjeminie | vïedtjije
+| vuetjedh | vuetjedh | vuatjam | vuatja | vuetjien | vuetjiejægan | vuetjieh | vuetjiejim, vöötjim | vuetjieminie | vuetjije
+| gaahtjedh | gaahtjedh | gaahtjem | gaahtja | gaehtjien | gaahtjijægan | gaehtjieh | gaahtjim | gaahtjeminie | gaahtjije
+| gahtjedh | gahtjedh | gahtjem | gahtja | gehtjien | gahtjijægan | gehtjieh | gahtjim | gahtjeminie | gahtjije
+| rihkijahtjedh | rihkijahtjedh | rihkijahtjem | rihkijahtja | rihkijehtjien | rihkijahtjijægan | rihkijehtjieh | rihkijahtjim | rihkijahtjeminie | -
+| sovkijahtjedh | sovkijahtjedh | sovkijahtjem | sovkijahtja | sovkijehtjien | sovkijahtjijægan | sovkijehtjieh | sovkijahtjim | sovkijahtjeminie | -
+| doeltijahtjedh | doeltijahtjedh | doeltijahtjem | doeltijahtja | doeltijehtjien | doeltijahtjijægan | doeltijehtjieh | doeltijahtjim | doeltijahtjeminie | -
+| rahtjedh | rahtjedh | rahtjem | rahtja | rehtjien | rahtjijægan | rehtjieh | rahtjim | rahtjeminie | rahtjije
+| gihtjedh | gihtjedh | gihtjem | gihtjie | gihtjien | gihtjijægan | gihtjieh | gihtjim | gihtjeminie | gihtjije
+| njulhtjedh | njulhtjedh | njulhtjem | njulhtjie | njulhtjien | njulhtjijægan | njulhtjieh | njulhtjim | njulhtjeminie | njulhtjije
+| tjohtjedh | tjohtjedh | tjohtjem | tjohtjoe | tjohtjoen | tjohtjijægan | tjohtjoeh | tjohtjim | tjohtjeminie | tjohtjije
+| buhtjedh | buhtjedh | båhtjam | båhtja | buhtjien | buhtjiejægan | buhtjieh | buhtjim, buhtjiejim | buhtjieminie | buhtjije
+| nuhtjedh | nuhtjedh | nuhtjem | nuhtjie | nuhtjien | nuhtjijægan | nuhtjieh | nuhtjim | nuhtjeminie | nuhtjije
+| tuhtjedh | tuhtjedh | tuhtjem | tuhtjie | tuhtjien | tuhtjijægan | tuhtjieh | tuhtjim | tuhtjeminie | tuhtjije
+| skovhtjedh | skovhtjedh | skovhtjem | skåvhtja | skuvhtjien | skovhtjijægan | skuvhtjieh | skovhtjim | skovhtjeminie | skovhtjije
+| svïhtjedh | svïhtjedh | svïhtjem | svæhtja | svihtjien | svïhtjijægan | svihtjieh | svïhtjim | svïhtjeminie | svïhtjije
+| tjïektjedh | tjïektjedh | tjïektjem | tjeaktja | tjiektjien | tjïektjijægan | tjiektjieh | tjïektjim | tjïektjeminie | tjïektjije
+| gaptjedh | gaptjedh | gaptjem | gaptja | geptjien | gaptjijægan | geptjieh | gaptjim | gaptjeminie | gaptjije
+| seeptjedh | seeptjedh | seeptjem | seeptjie | seeptjien | seeptjijægan | seeptjieh | seeptjim | seeptjeminie | seeptjije
+| njaakedh | njaakedh | njaakem | njaaka | njaekien | njaakijægan | njaekieh | njaakim | njaakeminie | njaakije
+| fuakedh | fuakedh | fuakam | fuakoe | fuakan | fuakajægan | fuakah, fuakoeh | fuakajim | fuakaminie | fuakije
+| råakedh | råakedh | råakem | råaka | råekien | råakijægan | råekieh | råakim | råakeminie | råakije
+| tsaekedh | tsaekedh | tsaakam | tsaaka | tsaekien | tsaekiejægan | tsaekieh | tsaekiejim, tseekim | tsaekieminie | tsaekije
+| leekedh | leekedh | leekem | leekie | leekien | leekijægan | leekieh | leekim | leekeminie | leekije
+| kneekedh | kneekedh | kneekem | kneekie | kneekien | kneekijægan | kneekieh | kneekim | kneekeminie | kneekije
+| biekedh | biekedh | beakam | beaka | biekien | biekiejægan | biekieh | biekiejim, beekim | biekieminie | biekije
+| doekedh | doekedh | doekem | duaka | duekien | doekijægan | duekieh | doekim | doekeminie | doekije
+| goekedh | goekedh | goekem | guaka | guekien | goekijægan | guekieh | goekim | goekeminie | goekije
+| tjoekedh | tjoekedh | tjoekem | tjuaka | tjuekien | tjoekijægan | tjuekieh | tjoekim | tjoekeminie | tjoekije
+| juekedh | juekedh | juakam | juaka | juekien | juekiejægan | juekieh | juekiejim, jöökim | juekieminie | juekije
+| jïekedh | jïekedh | jïekem | jeaka | jiekien | jïekijægan | jiekieh | jïekim | jïekeminie | jïekije
+| tsagkedh | tsagkedh | tsagkem | tsagka | tsegkien | tsagkijægan | tsegkieh | tsagkim | tsagkeminie | tsagkije
+| sleegkedh | sleegkedh | sleegkem | sleegkie | sleegkien | sleegkijægan | sleegkieh | sleegkim | sleegkeminie | sleegkije
+| tseegkedh | tseegkedh | tseegkem | tseegkie | tseegkien | tseegkijægan | tseegkieh | tseegkim | tseegkeminie | tseegkije
+| steegkedh | steegkedh | steegkem | steegkie | steegkien | steegkijægan | steegkieh | steegkim | steegkeminie | steegkije
+| tjåegkedh | tjåegkedh | tjåagkam | tjåagka | tjåegkien | tjåegkiejægan | tjåegkieh | tjåegkiejim, tjöögkim | tjåegkieminie | tjåegkije
+| bigkedh | bigkedh | bigkem | bigkie | bigkien | bigkijægan | bigkieh | bigkim | bigkeminie | bigkije
+| sigkedh | sigkedh | sigkem | sigkie | sigkien | sigkijægan | sigkieh | sigkim | sigkeminie | sigkije
+| sleengkedh | sleengkedh | sleengkem | sleengkie | sleengkien | sleengkijægan | sleengkieh | sleengkim | sleengkeminie | sleengkije
+| ringkedh | ringkedh | ringkem | ringkie | ringkien | ringkijægan | ringkieh | ringkim | ringkeminie | ringkije
+| knugkedh | knugkedh | knugkem | knugkie | knugkien | knugkijægan | knugkieh | knugkim | knugkeminie | knugkije
+| lïgkedh | lïgkedh | lïgkem | lægka | ligkien | lïgkijægan | ligkieh | lïgkim | lïgkeminie | lïgkije
+| fahkedh | fahkedh | fahkam | fahkoe | fahkan | fahkajægan | fahkah, fahkoeh | fahkajim | fahkaminie | fahkije
+| jaehkedh | jaehkedh | jaahkam | jaahka | jaehkien | jaehkiejægan | jaehkieh | jaehkiejim, jeehkim | jaehkieminie | jaehkije
+| peehkedh | peehkedh | peehkem | peehkie | peehkien | peehkijægan | peehkieh | peehkim | peehkeminie | peehkije
+| reehkedh | reehkedh | reehkem | reehkie | reehkien | reehkijægan | reehkieh | reehkim | reehkeminie | reehkije
+| kroehkedh | kroehkedh | kroehkem | kruahka | kruehkien | kroehkijægan | kruehkieh | kroehkim | kroehkeminie | kroehkije
+| luehkedh | luehkedh | luahkam | luahka | luehkien | luehkiejægan | luehkieh | luehkiejim, lööhkim | luehkieminie | luehkije
+| beenghkedh | beenghkedh | beenghkem | beenghkie | beenghkien | beenghkijægan | beenghkieh | beenghkim | beenghkeminie | beenghkije
+| tjöönghkedh | tjöönghkedh | tjöönghkem | tjöönghkie | tjöönghkien | tjöönghkijægan | tjöönghkieh | tjöönghkim | tjöönghkeminie | tjöönghkije
+| bihkedh | bihkedh | bæhkam | bæhka | bihkien | bihkiejægan | bihkieh | bihkim, bihkiejim | bihkieminie | bihkije
+| gajhkedh | gajhkedh | gajhkem | gajhka | gejhkien | gajhkijægan | gejhkieh | gajhkim | gajhkeminie | gajhkije
+| bejhkedh | bejhkedh | bajhkam | bajhka | bejhkien | bejhkiejægan | bejhkieh | bejhkim, bejhkiejim | bejhkieminie | bejhkije
+| lyjhkedh | lyjhkedh | lyjhkem | lyjhkoe | lyjhkoen | lyjhkijægan | lyjhkoeh | lyjhkim | lyjhkeminie | lyjhkije
+| nyöjhkedh | nyöjhkedh | nyöjhkem | nyöjhkoe | nyöjhkoen | nyöjhkijægan | nyöjhkoeh | nyöjhkim | nyöjhkeminie | nyöjhkije
+| galhkedh | galhkedh | galhkam | galhkoe | galhkan | galhkajægan | galhkah, galhkoeh | galhkajim | galhkaminie | galhkije
+| damhkedh | damhkedh | damhkam | damhkoe | damhkan | damhkajægan | damhkah, damhkoeh | damhkajim | damhkaminie | damhkije
+| lohkedh | lohkedh | lohkem | låhka | luhkien | lohkijægan | luhkieh | lohkim | lohkeminie | lohkije
+| gaarhkedh | gaarhkedh | gaarhkem | gaarhka | gaerhkien | gaarhkijægan | gaerhkieh | gaarhkim | gaarhkeminie | gaarhkije
+| vaarhkedh | vaarhkedh | vaarhkem | vaarhka | vaerhkien | vaarhkijægan | vaerhkieh | vaarhkim | vaarhkeminie | vaarhkije
+| raerhkedh | raerhkedh | raarhkam | raarhka | raerhkien | raerhkiejægan | raerhkieh | raerhkiejim, reerhkim | raerhkieminie | raerhkije
+| jåerhkedh | jåerhkedh | jåarhkam | jåarhka | jåerhkien | jåerhkiejægan | jåerhkieh | jåerhkiejim, jöörhkim | jåerhkieminie | jåerhkije
+| gurhkedh | gurhkedh | gurhkem | gurhkie | gurhkien | gurhkijægan | gurhkieh | gurhkim | gurhkeminie | gurhkije
+| murhkedh | murhkedh | murhkem | murhkie | murhkien | murhkijægan | murhkieh | murhkim | murhkeminie | murhkije
+| mårhkedh | mårhkedh | mårhkam | mårhkoe | mårhkan | mårhkajægan | mårhkah, mårhkoeh | mårhkajim | mårhkaminie | mårhkije
+| vöörhkedh | vöörhkedh | vöörhkem | vöörhkie | vöörhkien | vöörhkijægan | vöörhkieh | vöörhkim | vöörhkeminie | vöörhkije
+| sleevhkedh | sleevhkedh | sleevhkem | sleevhkie | sleevhkien | sleevhkijægan | sleevhkieh | sleevhkim | sleevhkeminie | sleevhkije
+| provhkedh | provhkedh | provhkem | provhkoe, pråvhka | provhkoen, pruvhkien | provhkijægan, provhkijægan | provhkoeh, pruvhkieh | provhkim | provhkeminie | provhkije
+| nåhkedh | nåhkedh | nåhkem | nåhka | nåhkien | nåhkijægan | nåhkieh | nåhkim | nåhkeminie | nåhkije
+| smååhkedh | smååhkedh | smååhkem | smååhkoe | smååhkoen | smååhkijægan | smååhkoeh | smååhkim | smååhkeminie | smååhkije
+| ryöhkedh | ryöhkedh | ryöhkem | ryöhkoe | ryöhkoen | ryöhkijægan | ryöhkoeh | ryöhkim | ryöhkeminie | ryöhkije
+| njeajkedh | njeajkedh | njeajkam | njeajkoe | njeajkan | njeajkajægan | njeajkah, njeajkoeh | njeajkajim | njeajkaminie | njeajkije
+| hajkedh | hajkedh | hajkem | hajka | hejkien | hajkijægan | hejkieh | hajkim | hajkeminie | hajkije
+| slajkedh | slajkedh | slajkam | slajkoe | slajkan | slajkajægan | slajkah, slajkoeh | slajkajim | slajkaminie | slajkije
+| joejkedh | joejkedh | joejkem | juajka | juejkien | joejkijægan | juejkieh | joejkim | joejkeminie | joejkije
+| tjoejkedh | tjoejkedh | tjoejkem | tjuajka | tjuejkien | tjoejkijægan | tjuejkieh | tjoejkim | tjoejkeminie | tjoejkije
+| latjkedh | latjkedh | latjkam | latjkoe | latjkan | latjkajægan | latjkah, latjkoeh | latjkajim | latjkaminie | latjkije
+| gaalkedh | gaalkedh | gaalkem | gaalka | gaelkien | gaalkijægan | gaelkieh | gaalkim | gaalkeminie | gaalkije
+| sealkedh | sealkedh | sealkam | sealkoe | sealkan | sealkajægan | sealkah, sealkoeh | sealkajim | sealkaminie | sealkije
+| galkedh | galkedh | galkem | galka | gelkien | galkijægan | gelkieh | galkim | galkeminie | galkije
+| njalkedh | njalkedh | njalkam | njalkoe | njalkan | njalkajægan | njalkah, njalkoeh | njalkajim | njalkaminie | njalkije
+| sjalkedh | sjalkedh | sjalkam | sjalkoe | sjalkan | sjalkajægan | sjalkah, sjalkoeh | sjalkajim | sjalkaminie | sjalkije
+| salkedh | salkedh | salkem | salka | selkien | salkijægan | selkieh | salkim | salkeminie | salkije
+| valkedh | valkedh | valkam | valkoe | valkan | valkajægan | valkah, valkoeh | valkajim | valkaminie | valkije
+| aelkedh | aelkedh | aalkam | aalka | aelkien | aelkiejægan | aelkieh | aelkiejim, eelkim | aelkieminie | aelkije
+| geelkedh | geelkedh | geelkem | geelkie | geelkien | geelkijægan | geelkieh | geelkim | geelkeminie | geelkije
+| vuelkedh | vuelkedh | vualkam | vualka | vuelkien | vuelkiejægan | vuelkieh | vuelkiejim, vöölkim | vuelkieminie | vuelkije
+| sïelkedh | sïelkedh | sïelkem | sealka | sielkien | sïelkijægan | sielkieh | sïelkim | sïelkeminie | sïelkije
+| sjilkedh | sjilkedh | sjilkem | sjilkie | sjilkien | sjilkijægan | sjilkieh | sjilkim | sjilkeminie | sjilkije
+| skilkedh | skilkedh | skilkem | skilkie | skilkien | skilkijægan | skilkieh | skilkim | skilkeminie | skilkije
+| leamkedh | leamkedh | leamkam | leamkoe | leamkan | leamkajægan | leamkah, leamkoeh | leamkajim | leamkaminie | leamkije
+| tjimkedh | tjimkedh | tjimkem | tjimkie | tjimkien | tjimkijægan | tjimkieh | tjimkim | tjimkeminie | tjimkije
+| tjonkedh | tjonkedh | tjonkem | tjonkoe | tjonkoen | tjonkijægan | tjonkoeh | tjonkim | tjonkeminie | tjonkije
+| napkedh | napkedh | napkam | napkoe | napkan | napkajægan | napkah, napkoeh | napkajim | napkaminie | napkije
+| luepkedh | luepkedh | luapkam | luapka | luepkien | luepkiejægan | luepkieh | luepkiejim, lööpkim | luepkieminie | luepkije
+| snjipkedh | snjipkedh | snjipkem | snjipkie | snjipkien | snjipkijægan | snjipkieh | snjipkim | snjipkeminie | snjipkije
+| lööpkedh | lööpkedh | lööpkem | lööpkie | lööpkien | lööpkijægan | lööpkieh | lööpkim | lööpkeminie | lööpkije
+| tsööpkedh | tsööpkedh | tsööpkem | tsööpkie | tsööpkien | tsööpkijægan | tsööpkieh | tsööpkim | tsööpkeminie | tsööpkije
+| barkedh | barkedh | barkem | barka | berkien | barkijægan | berkieh | barkim | barkeminie | barkije
+| garkedh | garkedh | garkam | garkoe | garkan | garkajægan | garkah, garkoeh | garkajim | garkaminie | garkije
+| jarkedh | jarkedh | jarkam | jarkoe | jarkan | jarkajægan | jarkah, jarkoeh | jarkajim | jarkaminie | jarkije
+| guarkedh | guarkedh | guarkam | guarkoe | guarkan | guarkajægan | guarkah, guarkoeh | guarkajim | guarkaminie | guarkije
+| varkedh | varkedh | varkam | varkoe | varkan | varkajægan | varkah, varkoeh | varkajim | varkaminie | varkije
+| berkedh | berkedh | barkam | barka | berkien | berkiejægan | berkieh | berkim, berkiejim | berkieminie | berkije
+| eerkedh | eerkedh | eerkem | eerkie | eerkien | eerkijægan | eerkieh | eerkim | eerkeminie | eerkije
+| skeerkedh | skeerkedh | skeerkem | skeerkie | skeerkien | skeerkijægan | skeerkieh | skeerkim | skeerkeminie | skeerkije
+| tjirkedh | tjirkedh | tjirkem | tjirkie | tjirkien | tjirkijægan | tjirkieh | tjirkim | tjirkeminie | tjirkije
+| maaskedh | maaskedh | maaskam | maaskoe | maaskan | maaskajægan | maaskah, maaskoeh | maaskajim | maaskaminie | maaskije
+| gaskedh | gaskedh | gaskem | gaska | geskien | gaskijægan | geskieh | gaskim | gaskeminie | gaskije
+| måaskedh | måaskedh | måaskam | måaskoe | måaskan | måaskajægan | måaskah, måaskoeh | måaskajim | måaskaminie | måaskije
+| nieskedh | nieskedh | neaskam | neaska | nieskien | nieskiejægan | nieskieh | nieskiejim, neeskim | nieskieminie | nieskije
+| soeskedh | soeskedh | soeskem | suaska | sueskien | soeskijægan | sueskieh | soeskim | soeskeminie | soeskije
+| tjïeskedh | tjïeskedh | tjïeskem | tjeaska | tjieskien | tjïeskijægan | tjieskieh | tjïeskim | tjïeskeminie | tjïeskije
+| naatskedh | naatskedh | naatskem | naatska | naetskien | naatskijægan | naetskieh | naatskim | naatskeminie | naatskije
+| gaetskedh | gaetskedh | gaatskam | gaatska | gaetskien | gaetskiejægan | gaetskieh | gaetskiejim, geetskim | gaetskieminie | gaetskije
+| mïetskedh | mïetskedh | mïetskem | meatska | mietskien | mïetskijægan | mietskieh | mïetskim | mïetskeminie | mïetskije
+| mutskedh | mutskedh | mutskem | mutskie | mutskien | mutskijægan | mutskieh | mutskim | mutskeminie | mutskije
+| råavkedh | råavkedh | råavkem | råavka | råevkien | råavkijægan | råevkieh | råavkim | råavkeminie | råavkije
+| tjoevkedh | tjoevkedh | tjoevkem | tjuavka | tjuevkien | tjoevkijægan | tjuevkieh | tjoevkim | tjoevkeminie | tjoevkije
+| jovkedh | jovkedh | jovkem | jåvka | juvkien | jovkijægan | juvkieh | jovkim | jovkeminie | jovkije
+| sovkedh | sovkedh | sovkem | såvka | suvkien | sovkijægan | suvkieh | sovkim | sovkeminie | sovkije
+| nöökedh | nöökedh | nöökem | nöökie | nöökien | nöökijægan | nöökieh | nöökim | nöökeminie | nöökije
+| faaledh | faaledh | faalem | faala | faelien | faalijægan | faelieh | faalim | faaleminie | faalije
+| baeledh | baeledh | baalam | baala | baelien | baeliejægan | baelieh | baeliejim, beelim | baelieminie | baelije
+| gaeledh | gaeledh | gaalam | gaala | gaelien | gaeliejægan | gaelieh | gaeliejim, geelim | gaelieminie | gaelije
+| tjaeledh | tjaeledh | tjaalam | tjaala | tjaelien | tjaeliejægan | tjaelieh | tjaeliejim, tjeelim | tjaelieminie | tjaelije
+| feeledh | feeledh | feelem | feelie | feelien | feelijægan | feelieh | feelim | feeleminie | feelije
+| skeeledh | skeeledh | skeelem | skeelie | skeelien | skeelijægan | skeelieh | skeelim | skeeleminie | skeelije
+| neeledh | neeledh | neelem | neelie | neelien | neelijægan | neelieh | neelim | neeleminie | neelije
+| jieledh | jieledh | jealam | jeala | jielien | jieliejægan | jielieh | jieliejim, jeelim | jielieminie | jielije
+| noeledh | noeledh | noelem | nuala | nuelien | noelijægan | nuelieh | noelim | noeleminie | noelije
+| voeledh | voeledh | voelem | vuala | vuelien | voelijægan | vuelieh | voelim | voeleminie | voelije
+| bueledh | bueledh | bualam | buala | buelien | bueliejægan | buelieh | bueliejim, böölim | buelieminie | buelije
+| sigledh | sigledh | siglem | siglie | siglien | siglijægan | siglieh | siglim | sigleminie | siglije
+| jïjledh | jïjledh | jïjlem | jæjla | jijlien | jïjlijægan | jijlieh | jïjlim | jïjleminie | jïjlije
+| gïetedalledh | gïetedalledh | gïetedallem | gïetedalla | gïetedellien | gïetedallijægan | gïetedellieh | gïetedallim | gïetedalleminie | gïetedallije
+| ostedalledh | ostedalledh | ostedallem | ostedalla | ostedellien | ostedallijægan | ostedellieh | ostedallim | ostedalleminie | ostedallije
+| aajahtalledh | aajahtalledh | aajahtallem | aajahtalla | aajahtellien | aajahtallijægan | aajahtellieh | aajahtallim | aajahtalleminie | aajahtallije
+| gåvnahtalledh | gåvnahtalledh | gåvnahtallem | gåvnahtalla | gåvnahtellien | gåvnahtallijægan | gåvnahtellieh | gåvnahtallim | gåvnahtalleminie | gåvnahtallije
+| raarahtalledh | raarahtalledh | raarahtallem | raarahtalla | raarahtellien | raarahtallijægan | raarahtellieh | raarahtallim | raarahtalleminie | raarahtallije
+| eejehtalledh | eejehtalledh | eejehtallem | eejehtalla | eejehtellien | eejehtallijægan | eejehtellieh | eejehtallim | eejehtalleminie | eejehtallije
+| bonhkehtalledh | bonhkehtalledh | bonhkehtallem | bonhkehtalla | bonhkehtellien | bonhkehtallijægan | bonhkehtellieh | bonhkehtallim | bonhkehtalleminie | bonhkehtallije
+| goerehtalledh | goerehtalledh | goerehtallem | goerehtalla | goerehtellien | goerehtallijægan | goerehtellieh | goerehtallim | goerehtalleminie | goerehtallije
+| ååjsehtalledh | ååjsehtalledh | ååjsehtallem | ååjsehtalla | ååjsehtellien | ååjsehtallijægan | ååjsehtellieh | ååjsehtallim | ååjsehtalleminie | -
+| jïermestalledh | jïermestalledh | jïermestallem | jïermestalla | jïermestellien | jïermestallijægan | jïermestellieh | jïermestallim | jïermestalleminie | jïermestallije
+| gïerestalledh | gïerestalledh | gïerestallem | gïerestalla | gïerestellien | gïerestallijægan | gïerestellieh | gïerestallim | gïerestalleminie | gïerestallije
+| lustestalledh | lustestalledh | lustestallem | lustestalla | lustestellien | lustestallijægan | lustestellieh | lustestallim | lustestalleminie | lustestallije
+| njelledh | njelledh | njallam | njalla | njellien | njelliejægan | njellieh | njellim, njelliejim | njellieminie | njellije
+| illedh | illedh | illem | illie | illien | illijægan | illieh | illim | illeminie | illije
+| gilledh | gilledh | gillem | gillie | gillien | gillijægan | gillieh | gillim | gilleminie | gillije
+| njilledh | njilledh | njællam | njælla | njillien | njilliejægan | njillieh | njillim, njilliejim | njillieminie | njillije
+| skilledh | skilledh | skillem | skillie | skillien | skillijægan | skillieh | skillim | skilleminie | skillije
+| stilledh | stilledh | stillem | stillie | stillien | stillijægan | stillieh | stillim | stilleminie | stillije
+| njolledh | njolledh | njollem | njolloe | njolloen | njollijægan | njolloeh | njollim | njolleminie | -
+| molledh | molledh | mollem | målla | mullien | mollijægan | mullieh | mollim | molleminie | mollije
+| skylledh | skylledh | skyllem | skylloe | skylloen | skyllijægan | skylloeh | skyllim | skylleminie | skyllije
+| bïlledh | bïlledh | bïllem | bælla | billien | bïllijægan | billieh | bïllim | bïlleminie | bïllije
+| töölledh | töölledh | tööllem | tööllie | tööllien | tööllijægan | tööllieh | tööllim | töölleminie | tööllije
+| geevledh | geevledh | geevlem | geevlie | geevlien | geevlijægan | geevlieh | geevlim | geevleminie | geevlije
+| goevledh | goevledh | goevlem | guavla | guevlien | goevlijægan | guevlieh | goevlim | goevleminie | goevlije
+| bïevledh | bïevledh | - | beavla | - | - | - | - | bïevleminie | -
+| ovledh | ovledh | ovlem | åvla | uvlien | ovlijægan | uvlieh | ovlim | ovleminie | ovlije
+| govledh | govledh, govledh | govlem | govloe, gåvla | govloen, guvlien | govlijægan, govlijægan | govloeh, guvlieh | govlim | govleminie, govleminie | govlije
+| skuvledh | skuvledh | skuvlem | skuvlie | skuvlien | skuvlijægan | skuvlieh | skuvlim | skuvleminie | skuvlije
+| gööledh | gööledh | göölem | göölie | göölien | göölijægan | göölieh | göölim | gööleminie | göölije
+| mööledh | mööledh | möölem | möölie | möölien | möölijægan | möölieh | möölim | mööleminie | möölije
+| snööledh | snööledh | snöölem | snöölie | snöölien | snöölijægan | snöölieh | snöölim | snööleminie | snöölije
+| njaamedh | njaamedh | njaamem | njaama | njaemien | njaamijægan | njaemieh | njaamim | njaameminie | njaamije
+| jaemedh | jaemedh | jaamam | jaama | jaemien | jaemiejægan | jaemieh | jaemiejim, jeemim | jaemieminie | jaemije
+| deemedh | deemedh | deemem | deemie | deemien | deemijægan | deemieh | deemim | deememinie | deemije
+| loejhmedh | loejhmedh | loejhmem | luajhma | luejhmien | loejhmijægan | luejhmieh | loejhmim | loejhmeminie | loejhmije
+| skirhmedh | skirhmedh | skirhmem | skirhmie | skirhmien | skirhmijægan | skirhmieh | skirhmim | skirhmeminie | skirhmije
+| dïjmedh | dïjmedh | dïjmem | dæjma | dijmien | dïjmijægan | dijmieh | dïjmim | dïjmeminie | dïjmije
+| gelmedh | gelmedh | galmam | galma | gelmien | gelmiejægan | gelmieh | gelmim, gelmiejim | gelmieminie | gelmije
+| njammedh | njammedh | njammem | njamma | njemmien | njammijægan | njemmieh | njammim | njammeminie | njammije
+| sommedh | sommedh | sommem | såmma | summien | sommijægan | summieh | sommim | sommeminie | sommije
+| sïmmedh | sïmmedh | sïmmem | sæmma | simmien | sïmmijægan | simmieh | sïmmim | sïmmeminie | sïmmije
+| tsaepmedh | tsaepmedh | tsaapmam | tsaapma | tsaepmien | tsaepmiejægan | tsaepmieh | tsaepmiejim, tseepmim | tsaepmieminie | tsaepmije
+| tjoermedh | tjoermedh | tjoermem | tjuarma | tjuermien | tjoermijægan | tjuermieh | tjoermim | tjoermeminie | tjoermije
+| girmedh | girmedh | girmem | girmie | girmien | girmijægan | girmieh | girmim | girmeminie | girmije
+| sovmedh | sovmedh | sovmem | såvma | suvmien | sovmijægan | suvmieh | sovmim | sovmeminie | sovmije
+| döömedh | döömedh | döömem | döömie | döömien | döömijægan | döömieh | döömim | döömeminie | döömije
+| råanedh | råanedh | råanem | råana | råenien | råanijægan | råenieh | råanim | råaneminie | råanije
+| neebnedh | neebnedh | neebnem | neebnie | neebnien | neebnijægan | neebnieh | neebnim | neebneminie | neebnije
+| liebnedh | liebnedh | leabnam | leabna | liebnien | liebniejægan | liebnieh | liebniejim, leebnim | liebnieminie | liebnije
+| skeenedh | skeenedh | skeenem | skeenie | skeenien | skeenijægan | skeenieh | skeenim | skeeneminie | skeenije
+| speenedh | speenedh | speenem | speenie | speenien | speenijægan | speenieh | speenim | speeneminie | speenije
+| stoenedh | stoenedh | stoenem | stuana | stuenien | stoenijægan | stuenieh | stoenim | stoeneminie | stoenije
+| baajnedh | baajnedh | baajnem | baajna | baejnien | baajnijægan | baejnieh | baajnim | baajneminie | baajnije
+| reejnedh | reejnedh | reejnem | reejnie | reejnien | reejnijægan | reejnieh | reejnim | reejneminie | reejnije
+| vuejnedh | vuejnedh | vuajnam | vuajna | vuejnien | vuejniejægan | vuejnieh | vuejniejim, vööjnim | vuejnieminie | vuejnije
+| risjnedh | risjnedh | risjnem | risjnie | risjnien | risjnijægan | risjnieh | risjnim | risjneminie | risjnije
+| vååjnedh | vååjnedh | vååjnem | vååjnoe | vååjnoen | vååjnijægan | vååjnoeh | vååjnim | vååjneminie | -
+| fïjnedh | fïjnedh | fïjnem | fæjna | fijnien | fïjnijægan | fijnieh | fïjnim | fïjneminie | fïjnije
+| ryöknedh | ryöknedh | ryöknem | ryöknoe | ryöknoen | ryöknijægan | ryöknoeh | ryöknim | ryökneminie | ryöknije
+| hïnnedh | hïnnedh | hïnnem | hænna | hinnien | hïnnijægan | hinnieh | hïnnim | hïnneminie | hïnnije
+| mïnnedh | mïnnedh | mïnnem | mænna | minnien | mïnnijægan | minnieh | mïnnim | mïnneminie | mïnnije
+| såårnedh | såårnedh | såårnem | såårnoe | såårnoen | såårnijægan | såårnoeh | såårnim | såårneminie | -
+| öörnedh | öörnedh | öörnem | öörnie | öörnien | öörnijægan | öörnieh | öörnim | öörneminie | öörnije
+| vitnedh | vitnedh | vitnem | vitnie | vitnien | vitnijægan | vitnieh | vitnim | vitneminie | vitnije
+| utnedh | utnedh | åtnam | åtna | utnien | utniejægan | utnieh | utnim, utniejim | utnieminie | utnije
+| butnedh | butnedh | båtnam | båtna | butnien | butniejægan | butnieh | butnim, butniejim | butnieminie | butnije
+| krïtnedh | krïtnedh | krïtnem | krætna | kritnien | krïtnijægan | kritnieh | krïtnim | krïtneminie | krïtnije
+| vïtnedh | vïtnedh | vïtnem | vætna | vitnien | vïtnijægan | vitnieh | vïtnim | vïtneminie | vïtnije
+| gaavnedh | gaavnedh | gaavnem | gaavna | gaevnien | gaavnijægan | gaevnieh | gaavnim | gaavneminie | gaavnije
+| provnedh | provnedh | provnem | pråvna | pruvnien | provnijægan | pruvnieh | provnim | provneminie | provnije
+| låvnedh | låvnedh | låvnem | låvna | låvnien | låvnijægan | låvnieh | låvnim | låvneminie | låvnije
+| löönedh | löönedh | löönem | löönie | löönien | löönijægan | löönieh | löönim | lööneminie | löönije
+| söönedh | söönedh | söönem | söönie | söönien | söönijægan | söönieh | söönim | sööneminie | söönije
+| tsaapedh | tsaapedh | tsaapem | tsaapa | tsaepien | tsaapijægan | tsaepieh | tsaapim | tsaapeminie | tsaapije
+| åabpedh | åabpedh | åabpem | åabpa | åebpien | åabpijægan | åebpieh | åabpim | åabpeminie | åabpije
+| sleebpedh | sleebpedh | sleebpem | sleebpie | sleebpien | sleebpijægan | sleebpieh | sleebpim | sleebpeminie | sleebpije
+| skubpedh | skubpedh | skubpem | skubpie | skubpien | skubpijægan | skubpieh | skubpim | skubpeminie | skubpije
+| slyöbpedh | slyöbpedh | slyöbpem | slyöbpoe | slyöbpoen | slyöbpijægan | slyöbpoeh | slyöbpim | slyöbpeminie | -
+| lööbpedh | lööbpedh | lööbpem | lööbpie | lööbpien | lööbpijægan | lööbpieh | lööbpim | lööbpeminie | lööbpije
+| skreepedh | skreepedh | skreepem | skreepie | skreepien | skreepijægan | skreepieh | skreepim | skreepeminie | skreepije
+| dahpedh | dahpedh | dahpem | dahpa | dehpien | dahpijægan | dehpieh | dahpim | dahpeminie | dahpije
+| gahpedh | gahpedh | gahpem | gahpa | gehpien | gahpijægan | gehpieh | gahpim | gahpeminie | gahpije
+| laehpedh | laehpedh | laahpam | laahpa | laehpien | laehpiejægan | laehpieh | laehpiejim, leehpim | laehpieminie | laehpije
+| sleehpedh | sleehpedh | sleehpem | sleehpie | sleehpien | sleehpijægan | sleehpieh | sleehpim | sleehpeminie | sleehpije
+| tjoehpedh | tjoehpedh | tjoehpem | tjuahpa | tjuehpien | tjoehpijægan | tjuehpieh | tjoehpim | tjoehpeminie | tjoehpije
+| sohpedh | sohpedh | sohpem | såhpa | suhpien | sohpijægan | suhpieh | sohpim | sohpeminie | sohpije
+| arhpedh | arhpedh | arhpem | arhpa | erhpien | arhpijægan | erhpieh | arhpim | arhpeminie | arhpije
+| slyöhpedh | slyöhpedh | slyöhpem | slyöhpoe | slyöhpoen | slyöhpijægan | slyöhpoeh | slyöhpim | slyöhpeminie | slyöhpije
+| dïjpedh | dïjpedh, dijpedh | dïjpem, dijpem | dijpa, dæjpa | dijpien | dïjpijægan, dijpijægan | dijpieh | dïjpim, dijpim | dïjpeminie, dijpeminie | dïjpije, dijpije
+| hïerpedh | hïerpedh | hïerpem | hearpa | hierpien | hïerpijægan | hierpieh | hïerpim | hïerpeminie | hïerpije
+| sööpedh | sööpedh | sööpem | sööpie | sööpien | sööpijægan | sööpieh | sööpim | sööpeminie | sööpije
+| gaaredh | gaaredh | gaarem | gaara | gaerien | gaarijægan | gaerieh | gaarim | gaareminie | gaarije
+| gïebredh | gïebredh | gïebrem | geabra | giebrien | gïebrijægan | giebrieh | gïebrim | gïebreminie | gïebrije
+| aeredh | aeredh | aaram | aara | aerien | aeriejægan | aerieh | aeriejim, eerim | aerieminie | aerije
+| feeredh | feeredh | feerem | feerie | feerien | feerijægan | feerieh | feerim | feereminie | feerije
+| skeeredh | skeeredh | skeerem | skeerie | skeerien | skeerijægan | skeerieh | skeerim | skeereminie | skeerije
+| leeredh | leeredh | leerem | leerie | leerien | leerijægan | leerieh | leerim | leereminie | leerije
+| reeredh | reeredh | reerem | reerie | reerien | reerijægan | reerieh | reerim | reereminie | reerije
+| steeredh | steeredh | steerem | steerie | steerien | steerijægan | steerieh | steerim | steereminie | steerije
+| doeredh | doeredh | doerem | duara | duerien | doerijægan | duerieh | doerim | doereminie | doerije
+| goeredh | goeredh | goerem | guara | guerien | goerijægan | guerieh | goerim | goereminie | goerije
+| tjoeredh | tjoeredh | tjoerem | tjuara | tjuerien | tjoerijægan | tjuerieh | tjoerim | tjoereminie | tjoerije
+| åeredh | åeredh | åaram | åara | åerien | åeriejægan | åerieh | åeriejim | åerieminie | åerije
+| skïeredh | skïeredh | skïerem | skeara | skierien | skïerijægan | skierieh | skïerim | skïereminie | skïerije
+| lïeredh | lïeredh | lïerem | leara | lierien | lïerijægan | lierieh | lïerim | lïereminie | lïerije
+| vïeredh | vïeredh | vïerem | veara | vierien | vïerijægan | vierieh | vïerim | vïereminie | vïerije
+| daejredh | daejredh | daajram | daajra | daejrien | daejriejægan | daejrieh | daejriejim, deejrim | daejrieminie | daejrije
+| reejredh | reejredh | reejrem | reejrie | reejrien | reejrijægan | reejrieh | reejrim | reejreminie | reejrije
+| bijredh | bijredh | bæjram | bæjra | bijrien | bijriejægan | bijrieh | bijrim, bijriejim | bijrieminie | bijrije
+| slijredh | slijredh | slijrem | slijrie | slijrien | slijrijægan | slijrieh | slijrim | slijreminie | slijrije
+| rijredh | rijredh | rijrem, ræjram | rijrie, ræjra | rijrien, rijrien | rijriejægan, rijrijægan | rijrieh, rijrieh | rijrim, rijriejim | rijrieminie, rijreminie | rijrije
+| gujredh | gujredh | gujrem | gujrie | gujrien | gujrijægan | gujrieh | gujrim | gujreminie | gujrije
+| vïjredh | vïjredh | vïjrem | væjra | vijrien | vïjrijægan | vijrieh | vïjrim | vïjreminie | vïjrije
+| vaarredh | vaarredh | vaarrem | vaarra | vaerrien | vaarrijægan | vaerrieh | vaarrim | vaarreminie | vaarrije
+| skarredh | skarredh | skarrem | skarra | skerrien | skarrijægan | skerrieh | skarrim | skarreminie | skarrije
+| snarredh | snarredh | snarrem | snarra | snerrien | snarrijægan | snerrieh | snarrim | snarreminie | snarrije
+| speerredh | speerredh | speerrem | speerrie | speerrien | speerrijægan | speerrieh | speerrim | speerreminie | speerrije
+| brorredh | brorredh | brorrem | brårra | brurrien | brorrijægan | brurrieh | brorrim | brorreminie | brorrije
+| burredh | burredh | burrem | burrie | burrien | burrijægan | burrieh | burrim | burreminie | burrije
+| gurredh | gurredh | gårram | gårra | gurrien | gurriejægan | gurrieh | gurrim, gurriejim | gurrieminie | gurrije
+| bårredh | bårredh | bårrem | bårra | bårrien | bårrijægan | bårrieh | bårrim | bårreminie | bårrije
+| jårredh | jårredh | jårrem | jårra | jårrien | jårrijægan | jårrieh | jårrim | jårreminie | jårrije
+| fïrredh | fïrredh | fïrrem | færra | firrien | fïrrijægan | firrieh | fïrrim | fïrreminie | fïrrije
+| tjïrredh | tjïrredh | tjïrrem | tjærra | tjirrien | tjïrrijægan | tjirrieh | tjïrrim | tjïrreminie | tjïrrije
+| saavredh | saavredh | saavrem | saavra | saevrien | saavrijægan | saevrieh | saavrim | saavreminie | saavrije
+| pruvredh | pruvredh | pruvrem | pruvrie | pruvrien | pruvrijægan | pruvrieh | pruvrim | pruvreminie | pruvrije
+| stuvredh | stuvredh | stuvrem | stuvrie | stuvrien | stuvrijægan | stuvrieh | stuvrim | stuvreminie | stuvrije
+| spååredh | spååredh | spåårem | spååroe | spååroen | spåårijægan | spååroeh | spåårim | spååreminie | spåårije
+| svååredh | svååredh | svåårem | svååroe | svååroen | svåårijægan | svååroeh | svåårim | svååreminie | svåårije
+| byöredh | byöredh | byörem | byöroe | byöroen | byörijægan | byöroeh | byörim | byöreminie | byörije
+| bööredh | bööredh | böörem | böörie | böörien | böörijægan | böörieh | böörim | bööreminie | böörije
+| nööredh | nööredh | nöörem | nöörie | nöörien | nöörijægan | nöörieh | nöörim | nööreminie | nöörije
+| stööredh | stööredh | stöörem | stöörie | stöörien | stöörijægan | stöörieh | stöörim | stööreminie | stöörije
+| vaasedh | vaasedh | vaasem | vaasa | vaesien | vaasijægan | vaesieh | vaasim | vaaseminie | vaasije
+| vaesedh | vaesedh | vaasam | vaasa | vaesien | vaesiejægan | vaesieh | vaesiejim, veesim | vaesieminie | vaesije
+| heesedh | heesedh | heesem | heesie | heesien | heesijægan | heesieh | heesim | heeseminie | heesije
+| leesedh | leesedh | leesem | leesie | leesien | leesijægan | leesieh | leesim | leeseminie | leesije
+| giesedh | giesedh | geasam | geasa | giesien | giesiejægan | giesieh | giesiejim, geesim | giesieminie | giesije
+| bïesedh | bïesedh | bïesem | beasa | biesien | bïesijægan | biesieh | bïesim | bïeseminie | bïesije
+| gïesedh | gïesedh | gïesem | geasa | giesien | gïesijægan | giesieh | gïesim | gïeseminie | gïesije
+| rïesedh | rïesedh | rïesem | reasa | riesien | rïesijægan | riesieh | rïesim | rïeseminie | rïesije
+| raajsedh | raajsedh | raajsem | raajsa | raejsien | raajsijægan | raejsieh | raajsim | raajseminie | raajsije
+| eejsedh | eejsedh | eejsem | eejsie | eejsien | eejsijægan | eejsieh | eejsim | eejseminie | eejsije
+| jaksedh | jaksedh | jaksem | jaksa | jeksien | jaksijægan | jeksieh | jaksim | jakseminie | jaksije
+| maeksedh | maeksedh | maaksam | maaksa | maeksien | maeksiejægan | maeksieh | maeksiejim, meeksim | maeksieminie | maeksije
+| bïksedh | bïksedh | bïksem | bæksa | biksien | bïksijægan | biksieh | bïksim | bïkseminie | bïksije
+| heelsedh | heelsedh | heelsem | heelsie | heelsien | heelsijægan | heelsieh | heelsim | heelseminie | heelsije
+| kreemsedh | kreemsedh | kreemsem | kreemsie | kreemsien | kreemsijægan | kreemsieh | kreemsim | kreemseminie | kreemsije
+| hepsedh | hepsedh | hapsam | hapsa | hepsien | hepsiejægan | hepsieh | hepsim, hepsiejim | hepsieminie | hepsije
+| gipsedh | gipsedh | gipsem | gipsie | gipsien | gipsijægan | gipsieh | gipsim | gipseminie | gipsije
+| hopsedh | hopsedh | hopsem | hopsoe | hopsoen | hopsijægan | hopsoeh | hopsim | hopseminie | -
+| dassedh | dassedh | dassem | dassa | dessien | dassijægan | dessieh | dassim | dasseminie | dassije
+| leessedh | leessedh | leessem | leessie | leessien | leessijægan | leessieh | leessim | leesseminie | leessije
+| bissedh | bissedh | bæssam | bæssa | bissien | bissiejægan | bissieh | bissim, bissiejim | bissieminie | bissije
+| nossedh | nossedh | nossem | nåssa | nussien | nossijægan | nussieh | nossim | nosseminie | nossije
+| bïssedh | bïssedh | bïssem | bæssa | bissien | bïssijægan | bissieh | bïssim | bïsseminie | bïssije
+| gadtsedh | gadtsedh | gadtsem | gadtsa | gedtsien | gadtsijægan | gedtsieh | gadtsim | gadtseminie | gadtsije
+| vaedtsedh | vaedtsedh | vaadtsam | vaadtsa | vaedtsien | vaedtsiejægan | vaedtsieh | vaedtsiejim, veedtsim | vaedtsieminie | vaedtsije
+| röödtsedh | röödtsedh | röödtsem | röödtsie | röödtsien | röödtsijægan | röödtsieh | röödtsim | röödtseminie | röödtsije
+| baetsedh | baetsedh | baatsam | baatsa | baetsien | baetsiejægan | baetsieh | baetsiejim, beetsim | baetsieminie | baetsije
+| tsietsedh | tsietsedh | tseatsam | tseatsa | tsietsien | tsietsiejægan | tsietsieh | tsietsiejim, tseetsim | tsietsieminie | tsietsije
+| goetsedh | goetsedh | goetsem | guatsa | guetsien | goetsijægan | guetsieh | goetsim | goetseminie | goetsije
+| njoetsedh | njoetsedh | njoetsem | njuatsa | njuetsien | njoetsijægan | njuetsieh | njoetsim | njoetseminie | njoetsije
+| tjuetsedh | tjuetsedh | - | tjuatsa | - | - | - | - | tjuetsieminie | -
+| mïetsedh | mïetsedh | mïetsem | meatsa | mietsien | mïetsijægan | mietsieh | mïetsim | mïetseminie | mïetsije
+| baahtsedh | baahtsedh | baahtsem | baahtsa | baehtsien | baahtsijægan | baehtsieh | baahtsim | baahtseminie | baahtsije
+| iehtsedh | iehtsedh | eahtsam | eahtsa | iehtsien | iehtsiejægan | iehtsieh | iehtsiejim, eehtsim | iehtsieminie | iehtsije
+| aajhtsedh | aajhtsedh | aajhtsem | aajhtsa | aejhtsien | aajhtsijægan | aejhtsieh | aajhtsim | aajhtseminie | aajhtsije
+| ohtsedh | ohtsedh | ohtsem | åhtsa | uhtsien | ohtsijægan | uhtsieh | ohtsim | ohtseminie | ohtsije
+| guhtsedh | guhtsedh | gåhtsam | gåhtsa | guhtsien | guhtsiejægan | guhtsieh | guhtsim, guhtsiejim | guhtsieminie | guhtsije
+| vuhtsedh | vuhtsedh | vuhtsem | vuhtsie | vuhtsien | vuhtsijægan | vuhtsieh | vuhtsim | vuhtseminie | vuhtsije
+| tsiptsedh | tsiptsedh | tsæptsam | tsæptsa | tsiptsien | tsiptsiejægan | tsiptsieh | tsiptsim, tsiptsiejim | tsiptsieminie | tsiptsije
+| gyösedh | gyösedh | gyösem | gyösoe | gyösoen | gyösijægan | gyösoeh | gyösim | gyöseminie | -
+| aatedh | aatedh | aatem | aata | aetien | aatijægan | aetieh | aatim | aateminie | aatije
+| råatedh | råatedh | råatem | råata | råetien | råatijægan | råetieh | råatim | råateminie | råatije
+| mojhteladtedh | mojhteladtedh | mojhteladtem | mojhteladta | mojhteledtien | mojhteladtijægan | mojhteledtieh | mojhteladtim | mojhteladteminie | mojhteladtije
+| golteladtedh | golteladtedh | golteladtem | golteladta | golteledtien | golteladtijægan | golteledtieh | golteladtim | golteladteminie | golteladtije
+| åahpanadtedh | åahpanadtedh | åahpanadtem | åahpanadta | åahpanedtien | åahpanadtijægan | åahpanedtieh | åahpanadtim | åahpanadteminie | åahpanadtije
+| dabranadtedh | dabranadtedh | dabranadtem | dabranadta | dabranedtien | dabranadtijægan | dabranedtieh | dabranadtim | dabranadteminie | dabranadtije
+| gaarvanadtedh | gaarvanadtedh | gaarvanadtem | gaarvanadta | gaarvanedtien | gaarvanadtijægan | gaarvanedtieh | gaarvanadtim | gaarvanadteminie | gaarvanadtije
+| åahpenadtedh | åahpenadtedh | åahpenadtem | åahpenadta | åahpenedtien | åahpenadtijægan | åahpenedtieh | åahpenadtim | åahpenadteminie | åahpenadtije
+| vïehkesadtedh | vïehkesadtedh | vïehkesadtem | vïehkesadta | vïehkesedtien | vïehkesadtijægan | vïehkesedtieh | vïehkesadtim | vïehkesadteminie | vïehkesadtije
+| seedtedh | seedtedh | seedtem | seedtie | seedtien | seedtijægan | seedtieh | seedtim | seedteminie | seedtije
+| diedtedh | diedtedh | deadtam | deadta | diedtien | diedtiejægan | diedtieh | diedtiejim, deedtim | diedtieminie | diedtije
+| miedtedh | miedtedh | meadtam | meadta | miedtien | miedtiejægan | miedtieh | miedtiejim, meedtim | miedtieminie | miedtije
+| viedtedh | viedtedh | veadtam | veadta | viedtien | viedtiejægan | viedtieh | viedtiejim, veedtim | viedtieminie | viedtije
+| guedtedh | guedtedh | guadtam | guadta | guedtien | guedtiejægan | guedtieh | guedtiejim, göödtim | guedtieminie | guedtije
+| vedtedh | vedtedh | vadtam | vadta | vedtien | vedtiejægan | vedtieh | vedtim, vedtiejim | vedtieminie | vedtije
+| lidtedh | lidtedh | lidtem | lidtie | lidtien | lidtijægan | lidtieh | lidtim | lidteminie | lidtije
+| skodtedh | skodtedh | skodtem | skådta | skudtien | skodtijægan | skudtieh | skodtim | skodteminie | skodtije
+| sjïdtedh | sjïdtedh | sjïdtem | sjædta | sjidtien | sjïdtijægan | sjidtieh | sjïdtim | sjïdteminie | sjïdtije
+| sietedh | sietedh | seatam | seata | sietien | sietiejægan | sietieh | sietiejim, seetim | sietieminie | sietije
+| båetedh | båetedh | båatam | båata | båetien | båetiejægan | båetieh | båetiejim, böötim | båetieminie | båetije
+| tjoejkegåetedh | tjoejkegåetedh | tjoejkegåatam | tjoejkegåata | tjoejkegåetien | tjoejkegåetiejægan | tjoejkegåetieh | tjoejkegöötim | tjoejkegåetieminie | -
+| tjahtedh | tjahtedh | tjahtem | tjahta | tjehtien | tjahtijægan | tjehtieh | tjahtim | tjahteminie | tjahtije
+| maehtedh | maehtedh | maahtam | maahta | maehtien | maehtiejægan | maehtieh | maehtiejim, meehtim | maehtieminie | maehtije
+| saehtedh | saehtedh | saahtam | saahta | saehtien | saehtiejægan | saehtieh | saehtiejim, seehtim | saehtieminie | saehtije
+| sjyjjedehtedh | sjyjjedehtedh | sjyjjedahtam | sjyjjedahta | sjyjjedehtien | sjyjjedehtiejægan | sjyjjedehtieh | sjyjjedehtim | sjyjjedehtieminie | sjyjjedehtije
+| jåaskoedehtedh | jåaskoedehtedh | jåaskoedahtam | jåaskoedahta | jåaskoedehtien | jåaskoedehtiejægan | jåaskoedehtieh | jåaskoedehtim | jåaskoedehtieminie | jåaskoedehtije
+| åajaldehtedh | åajaldehtedh | åajaldahtam | åajaldahta | åajaldehtien | åajaldehtiejægan | åajaldehtieh | åajaldehtim | åajaldehtieminie | åajaldehtije
+| madtjeldehtedh | madtjeldehtedh | madtjeldahtam | madtjeldahta | madtjeldehtien | madtjeldehtiejægan | madtjeldehtieh | madtjeldehtim | madtjeldehtieminie | madtjeldehtije
+| geehtedh | geehtedh | geehtem | geehtie | geehtien | geehtijægan | geehtieh | geehtim | geehteminie | geehtije
+| biehtedh | biehtedh | beahtam | beahta | biehtien | biehtiejægan | biehtieh | biehtiejim, beehtim | biehtieminie | biehtije
+| jiehtedh | jiehtedh | jeahtam | jeahta | jiehtien | jiehtiejægan | jiehtieh | jiehtiejim, jeehtim | jiehtieminie | jiehtije
+| doeltijehtedh | doeltijehtedh | doeltijahtam | doeltijahta | doeltijehtien | doeltijehtiejægan | doeltijehtieh | doeltijehtim | doeltijehtieminie | doeltijehtije
+| roehtedh | roehtedh | roehtem | ruahta | ruehtien | roehtijægan | ruehtieh | roehtim | roehteminie | roehtije
+| nastehtehtedh | nastehtehtedh | nastehtahtam | nastehtahta | nastehtehtien | nastehtehtiejægan | nastehtehtieh | nastehtehtim | nastehtehtieminie | nastehtehtije
+| buarastehtedh | buarastehtedh | buarastahtam | buarastahta | buarastehtien | buarastehtiejægan | buarastehtieh | buarastehtim | buarastehtieminie | buarastehtije
+| gajhkestehtedh | gajhkestehtedh | gajhkestahtam | gajhkestahta | gajhkestehtien | gajhkestehtiejægan | gajhkestehtieh | gajhkestehtim | gajhkestehtieminie | gajhkestehtije
+| nommestehtedh | nommestehtedh | nommestahtam | nommestahta | nommestehtien | nommestehtiejægan | nommestehtieh | nommestehtim | nommestehtieminie | nommestehtije
+| mojhtestehtedh | mojhtestehtedh | mojhtestahtam | mojhtestahta | mojhtestehtien | mojhtestehtiejægan | mojhtestehtieh | mojhtestehtim | mojhtestehtieminie | mojhtestehtije
+| soevestehtedh | soevestehtedh | soevestahtam | soevestahta | soevestehtien | soevestehtiejægan | soevestehtieh | soevestehtim | soevestehtieminie | soevestehtije
+| vuehtedh | vuehtedh | vuahtam | vuahta | vuehtien | vuehtiejægan | vuehtieh | vuehtiejim, vööhtim | vuehtieminie | vuehtije
+| sjïehtedh | sjïehtedh | sjïehtem | sjeahta | sjiehtien | sjïehtijægan | sjiehtieh | sjïehtim | sjïehteminie | sjïehtije
+| nihtedh | nihtedh | næhtam | næhta | nihtien | nihtiejægan | nihtieh | nihtim, nihtiejim | nihtieminie | nihtije
+| baejhtedh | baejhtedh | baajhtam | baajhta | baejhtien | baejhtiejægan | baejhtieh | baejhtiejim, beejhtim | baejhtieminie | baejhtije
+| laejhtedh | laejhtedh | laajhtam | laajhta | laejhtien | laejhtiejægan | laejhtieh | laejhtiejim, leejhtim | laejhtieminie | laejhtije
+| luejhtedh | luejhtedh | luajhtam | luajhta | luejhtien | luejhtiejægan | luejhtieh | luejhtiejim, lööjhtim | luejhtieminie | luejhtije
+| gijhtedh | gijhtedh | gæjhtam | gæjhta | gijhtien | gijhtiejægan | gijhtieh | gijhtim, gijhtiejim | gijhtieminie | gijhtije
+| jijhtedh | jijhtedh | jæjhtam | jæjhta | jijhtien | jijhtiejægan | jijhtieh | jijhtim, jijhtiejim | jijhtieminie | jijhtije
+| mujhtedh | mujhtedh | måjhtam | måjhta | mujhtien | mujhtiejægan | mujhtieh | mujhtim, mujhtiejim | mujhtieminie | mujhtije
+| sååjhtedh | sååjhtedh | sååjhtem | sååjhtoe | sååjhtoen | sååjhtijægan | sååjhtoeh | sååjhtim | sååjhteminie | sååjhtije
+| sïjhtedh | sïjhtedh | sïjhtem | sæjhta | sijhtien | sïjhtijægan | sijhtieh | sïjhtim | sïjhteminie | sïjhtije
+| tjulhtedh | tjulhtedh | tjulhtem | tjulhtie | tjulhtien | tjulhtijægan | tjulhtieh | tjulhtim | tjulhteminie | tjulhtije
+| såålhtedh | såålhtedh | såålhtem | såålhtoe | såålhtoen | såålhtijægan | såålhtoeh | såålhtim | såålhteminie | såålhtije
+| vïenhtedh | vïenhtedh | vïenhtem | veanhta | vienhtien | vïenhtijægan | vienhtieh | vïenhtim | vïenhteminie | vïenhtije
+| binhtedh | binhtedh | binhtem | binhtie | binhtien | binhtijægan | binhtieh | binhtim | binhteminie | binhtije
+| rohtedh | rohtedh | rohtem | rohtoe | rohtoen | rohtijægan | rohtoeh | rohtim | rohteminie | -
+| bårrestohtedh | bårrestohtedh | bårrestohtem | bårrestohtoe | bårrestohtoen | bårrestohtijægan | bårrestohtoeh | bårrestohtim | bårrestohteminie | bårrestohtije
+| bïevestohtedh | bïevestohtedh | bïevestohtem | bïevestohtoe | bïevestohtoen | bïevestohtijægan | bïevestohtoeh | bïevestohtim | bïevestohteminie | bïevestohtije
+| huhtedh | huhtedh | håhtam | håhta | huhtien | huhtiejægan | huhtieh | huhtim, huhtiejim | huhtieminie | huhtije
+| juhtedh | juhtedh | jåhtam | jåhta | juhtien | juhtiejægan | juhtieh | juhtim, juhtiejim | juhtieminie | juhtije
+| dievhtedh | dievhtedh | deavhtam | deavhta | dievhtien | dievhtiejægan | dievhtieh | dievhtiejim, deevhtim | dievhtieminie | dievhtije
+| luvhtedh | luvhtedh | luvhtem | luvhtie | luvhtien | luvhtijægan | luvhtieh | luvhtim | luvhteminie | luvhtije
+| rïjtedh | rïjtedh | rïjtem | ræjta | rijtien | rïjtijægan | rijtieh | rïjtim | rïjteminie | rïjtije
+| daaktedh | daaktedh | daaktem | daakta | daektien | daaktijægan | daektieh | daaktim | daakteminie | daaktije
+| reektedh | reektedh | reektem | reektie | reektien | reektijægan | reektieh | reektim | reekteminie | reektije
+| buektedh | buektedh | buaktam | buakta | buektien | buektiejægan | buektieh | buektiejim, bööktim | buektieminie | buektije
+| vaeltedh | vaeltedh | vaaltam | vaalta | vaeltien | vaeltiejægan | vaeltieh | vaeltiejim, veeltim | vaeltieminie | vaeltije
+| beltedh | beltedh | baltam | balta | beltien | beltiejægan | beltieh | beltim, beltiejim | beltieminie | beltije
+| njeltedh | njeltedh | njaltam | njalta | njeltien | njeltiejægan | njeltieh | njeltim, njeltiejim | njeltieminie | njeltije
+| doeltedh | doeltedh | doeltem | dualta | dueltien | doeltijægan | dueltieh | doeltim | doelteminie | doeltije
+| båeltedh | båeltedh | båaltam | båalta | båeltien | båeltiejægan | båeltieh | båeltiejim, bööltim | båeltieminie | båeltije
+| giltedh | giltedh | gæltam | gælta | giltien | giltiejægan | giltieh | giltim, giltiejim | giltieminie | giltije
+| damtedh | damtedh | damtem | damta | demtien | damtijægan | demtieh | damtim | damteminie | damtije
+| domtedh | domtedh | domtem | domtoe | domtoen | domtijægan | domtoeh | domtim | domteminie | -
+| hööptedh | hööptedh | hööptem | hööptie | hööptien | hööptijægan | hööptieh | hööptim | hööpteminie | hööptije
+| bertedh | bertedh | bartam | barta | bertien | bertiejægan | bertieh | bertim, bertiejim | bertieminie | bertije
+| viertedh | viertedh | veartam | vearta | viertien | viertiejægan | viertieh | viertiejim, veertim | viertieminie | viertije
+| vuertedh | vuertedh | vuartam | vuarta | vuertien | vuertiejægan | vuertieh | vuertiejim, vöörtim | vuertieminie | vuertije
+| girtedh | girtedh | gærtam | gærta | girtien | girtiejægan | girtieh | girtim, girtiejim | girtieminie | girtije
+| jöörtedh | jöörtedh | jöörtem | jöörtie | jöörtien | jöörtijægan | jöörtieh | jöörtim | jöörteminie | jöörtije
+| astedh | astedh | astem | asta | estien | astijægan | estieh | astim | asteminie | astije
+| mastedh | mastedh | mastem | masta | mestien | mastijægan | mestieh | mastim | masteminie | mastije
+| nastedh | nastedh | nastem | nasta | nestien | nastijægan | nestieh | nastim | nasteminie | nastije
+| biestedh | biestedh | beastam | beasta | biestien | biestiejægan | biestieh | biestiejim, beestim | biestieminie | biestije
+| doestedh | doestedh | doestem | duasta | duestien | doestijægan | duestieh | doestim | doesteminie | doestije
+| gajhkehtestedh | gajhkehtestedh | gajhkehtastam | gajhkehtasta | gajhkehtestien | gajhkehtestiejægan | gajhkehtestieh | gajhkehtestim | gajhkehtestieminie | gajhkehtestije
+| åestedh | åestedh | åastam | åasta | åestien | åestiejægan | åestieh | åestiejim, ööstim | åestieminie | åestije
+| kristedh | kristedh | kristem | kristie | kristien | kristijægan | kristieh | kristim | kristeminie | kristije
+| maejstedh | maejstedh | maajstam | maajsta | maejstien | maejstiejægan | maejstieh | maejstiejim, meejstim | maejstieminie | maejstije
+| raavtedh | raavtedh | raavtem | raavta | raevtien | raavtijægan | raevtieh | raavtim | raavteminie | raavtije
+| tjaevtedh | tjaevtedh | tjaavtam | tjaavta | tjaevtien | tjaevtiejægan | tjaevtieh | tjaevtiejim, tjeevtim | tjaevtieminie | tjaevtije
+| roevtedh | roevtedh | roevtem | ruavta | ruevtien | roevtijægan | ruevtieh | roevtim | roevteminie | roevtije
+| låevtedh | låevtedh | låavtam | låavta | låevtien | låevtiejægan | låevtieh | låevtiejim, löövtim | låevtieminie | låevtije
+| duvtedh | duvtedh | dåvtam | dåvta | duvtien | duvtiejægan | duvtieh | duvtim, duvtiejim | duvtieminie | duvtije
+| böötedh | böötedh | böötem | böötie | böötien | böötijægan | böötieh | böötim | bööteminie | böötije
+| straavedh | straavedh | straavem | straava | straevien | straavijægan | straevieh | straavim | straaveminie | straavije
+| råavedh | råavedh | råavem | råava | råevien | råavijægan | råevieh | råavim | råaveminie | råavije
+| dïevedh | dïevedh | dïevem | deava | dievien | dïevijægan | dievieh | dïevim | dïeveminie | dïevije
+| gajvedh | gajvedh | gajvem | gajva | gejvien | gajvijægan | gejvieh | gajvim | gajveminie | gajvije
+| smeejvedh | smeejvedh | smeejvem | smeejvie | smeejvien | smeejvijægan | smeejvieh | smeejvim | smeejveminie | smeejvije
+| bïjvedh | bïjvedh | bïjvem | bæjva | bijvien | bïjvijægan | bijvieh | bïjvim | bïjveminie | bïjvije
+| dalvedh | dalvedh | dalvem | dalva | delvien | dalvijægan | delvieh | dalvim | dalveminie | dalvije
+| darvedh | darvedh | darvem | darva | dervien | darvijægan | dervieh | darvim | darveminie | darvije
+| straavvedh | straavvedh | straavvem | straavva | straevvien | straavvijægan | straevvieh | straavvim | straavveminie | straavvije
+| meajvadovvedh | meajvadovvedh | meajvadovvem | meajvadåvva | meajvaduvvien | meajvadovvijægan | meajvaduvvieh | meajvadovvim | meajvadovveminie | -
+| geervedovvedh | geervedovvedh | geervedovvem | geervedåvva | geerveduvvien | geervedovvijægan | geerveduvvieh | geervedovvim | geervedovveminie | -
+| eadtjaldovvedh | eadtjaldovvedh | eadtjaldovvem | eadtjaldåvva | eadtjalduvvien | eadtjaldovvijægan | eadtjalduvvieh | eadtjaldovvim | eadtjaldovveminie | -
+| gïknjeldovvedh | gïknjeldovvedh | gïknjeldovvem | gïknjeldåvva | gïknjelduvvien | gïknjeldovvijægan | gïknjelduvvieh | gïknjeldovvim | gïknjeldovveminie | -
+| stöörelgovvedh | stöörelgovvedh | stöörelgovvem | stöörelgåvva | stöörelguvvien | stöörelgovvijægan | stöörelguvvieh | stöörelgovvim | stöörelgovveminie | -
+| lovvedh | lovvedh | lovvem | låvva | luvvien | lovvijægan | luvvieh | lovvim | lovveminie | lovvije
+| gojhkelovvedh | gojhkelovvedh | gojhkelovvem | gojhkelåvva | gojhkeluvvien | gojhkelovvijægan | gojhkeluvvieh | gojhkelovvim | gojhkelovveminie | -
+| gïebrelovvedh | gïebrelovvedh | gïebrelovvem | gïebrelåvva | gïebreluvvien | gïebrelovvijægan | gïebreluvvieh | gïebrelovvim | gïebrelovveminie | -
+| reakasovvedh | reakasovvedh | reakasovvem | reakasåvva | reakasuvvien | reakasovvijægan | reakasuvvieh | reakasovvim | reakasovveminie | -
+| juakasovvedh | juakasovvedh | juakasovvem | juakasåvva | juakasuvvien | juakasovvijægan | juakasuvvieh | juakasovvim | juakasovveminie | -
+| gihtjesovvedh | gihtjesovvedh | gihtjesovvem | gihtjesåvva | gihtjesuvvien | gihtjesovvijægan | gihtjesuvvieh | gihtjesovvim | gihtjesovveminie | -
+| tjöönghkesovvedh | tjöönghkesovvedh | tjöönghkesovvem | tjöönghkesåvva | tjöönghkesuvvien | tjöönghkesovvijægan | tjöönghkesuvvieh | tjöönghkesovvim | tjöönghkesovveminie | -
+| govlesovvedh | govlesovvedh | govlesovvem | govlesåvva | govlesuvvien | govlesovvijægan | govlesuvvieh | govlesovvim | govlesovveminie | -
+| bööresovvedh | bööresovvedh | bööresovvem | bööresåvva | bööresuvvien | bööresovvijægan | bööresuvvieh | bööresovvim | bööresovveminie | -
+| molsesovvedh | molsesovvedh | molsesovvem | molsesåvva | molsesuvvien | molsesovvijægan | molsesuvvieh | molsesovvim | molsesovveminie | -
+| kristesovvedh | kristesovvedh | kristesovvem | kristesåvva | kristesuvvien | kristesovvijægan | kristesuvvieh | kristesovvim | kristesovveminie | -
+| måarahtovvedh | måarahtovvedh, måaratovvedh | måarahtovvem, måaratovvem | måarahtåvva, måaratåvva | måarahtuvvien, måaratuvvien | måarahtovvijægan, måaratovvijægan | måarahtuvvieh, måaratuvvieh | måarahtovvim, måaratovvim | måarahtovveminie, måaratovveminie | -
+| jïjjehtovvedh | jïjjehtovvedh | jïjjehtovvem | jïjjehtåvva | jïjjehtuvvien | jïjjehtovvijægan | jïjjehtuvvieh | jïjjehtovvim | jïjjehtovveminie | -
+| vïssjehtovvedh | vïssjehtovvedh | vïssjehtovvem | vïssjehtåvva | vïssjehtuvvien | vïssjehtovvijægan | vïssjehtuvvieh | vïssjehtovvim | vïssjehtovveminie | -
+| arhpehtovvedh | arhpehtovvedh | arhpehtovvem | arhpehtåvva | arhpehtuvvien | arhpehtovvijægan | arhpehtuvvieh | arhpehtovvim | arhpehtovveminie | -
+| bårrestovvedh | bårrestovvedh | bårrestovvem | bårreståvva | bårrestuvvien | bårrestovvijægan | bårrestuvvieh | bårrestovvim | bårrestovveminie | -
+| buvvedh | buvvedh | båvvam | båvva | buvvien | buvviejægan | buvvieh | buvvim, buvviejim | buvvieminie | buvvije
+| tsuvvedh | tsuvvedh | tsåvvam | tsåvva | tsuvvien | tsuvviejægan | tsuvvieh | tsuvvim, tsuvviejim | tsuvvieminie | tsuvvije
+| pryövedh | pryövedh | pryövem | pryövoe | pryövoen | pryövijægan | pryövoeh | pryövim | pryöveminie | pryövije
+| löövedh | löövedh | löövem | löövie | löövien | löövijægan | löövieh | löövim | lööveminie | löövije
 | rajjadidh | rajjadidh | rajjedem | rajjede | rajjadien | rajjadægan | rajjadieh | rajjadim | rajjedeminie | rajjadæjja
 | tråjjadidh | tråjjadidh | tråjjedem | tråjjede | tråjjadien | tråjjadægan | tråjjadieh | tråjjadim | tråjjedeminie | tråjjadæjja
 | tryöjjadidh | tryöjjadidh | tryöjjedem | tryöjjede | tryöjjadien | tryöjjadægan | tryöjjadieh | tryöjjadim | tryöjjedeminie | tryöjjadæjja
 | badtjadidh | badtjadidh | badtjedem | badtjede | badtjadien | badtjadægan | badtjadieh | badtjadim | badtjedeminie | badtjadæjja
+| bådtjadidh | bådtjadidh | bådtjedem | bådtjede | bådtjadien | bådtjadægan | bådtjadieh | bådtjadim | bådtjedeminie | bådtjadæjja
+| skuarhtjadidh | skuarhtjadidh | skuarhtjedem | skuarhtjede | skuarhtjadien | skuarhtjadægan | skuarhtjadieh | skuarhtjadim | skuarhtjedeminie | skuarhtjadæjja
+| reakadidh | reakadidh | reakedem | reakede | reakadien | reakadægan | reakadieh | reakadim | reakedeminie | reakadæjja
+| bearkadidh | bearkadidh | bearkedem | bearkede | bearkadien | bearkadægan | bearkadieh | bearkadim | bearkedeminie | bearkadæjja
+| aatskadidh | aatskadidh | aatskedem | aatskede | aatskadien | aatskadægan | aatskadieh | aatskadim | aatskedeminie | aatskadæjja
+| fealadidh | fealadidh | fealedem | fealede | fealadien | fealadægan | fealadieh | fealadim | fealedeminie | fealadæjja
+| spealadidh | spealadidh | spealedem | spealede | spealadien | spealadægan | spealadieh | spealadim | spealedeminie | spealadæjja
+| sealadidh | sealadidh | sealedem | sealede | sealadien | sealadægan | sealadieh | sealadim | sealedeminie | sealadæjja
+| sualadidh | sualadidh | sualedem | sualede | sualadien | sualadægan | sualadieh | sualadim | sualedeminie | sualadæjja
 | måaladidh | måaladidh | måaledem | måalede | måaladien | måaladægan | måaladieh | måaladim | måaledeminie | måaladæjja
 | svæjmadidh | svæjmadidh | svæjmedem | svæjmede | svæjmadien | svæjmadægan | svæjmadieh | svæjmadim | svæjmedeminie | svæjmadæjja
+| deahpadidh | deahpadidh | deahpedem | deahpede | deahpadien | deahpadægan | deahpadieh | deahpadim | deahpedeminie | deahpadæjja
 | bearadidh | bearadidh | bearedem | bearede | bearadien | bearadægan | bearadieh | bearadim | bearedeminie | bearadæjja
+| vearadidh | vearadidh | vearedem | vearede | vearadien | vearadægan | vearadieh | vearadim | vearedeminie | vearadæjja
+| gåaradidh | gåaradidh | gåaredem | gåarede | gåaradien | gåaradægan | gåaradieh | gåaradim | gåaredeminie | gåaradæjja
+| ståaradidh | ståaradidh | ståaredem | ståarede | ståaradien | ståaradægan | ståaradieh | ståaradim | ståaredeminie | ståaradæjja
+| easadidh | easadidh | easedem | easede | easadien | easadægan | easadieh | easadim | easedeminie | easadæjja
 | luajhtadidh | luajhtadidh | luajhtedem | luajhtede | luajhtadien | luajhtadægan | luajhtadieh | luajhtadim | luajhtedeminie | luajhtadæjja
 | nåhtadidh | nåhtadidh | nåhtedem | nåhtede | nåhtadien | nåhtadægan | nåhtadieh | nåhtadim | nåhtedeminie | nåhtadæjja
+| såångedidh | såångedidh | såångedem | såångede | såångedien | såångedægan | såångedieh | såångedim | såångedeminie | såångedæjja
+| libnjiedidh | libnjiedidh | libnjedem | libnjede | libnjiedien | libnjiedægan | libnjiedieh | libnjiedim | libnjedeminie | libnjiedæjja
+| klienjiedidh | klienjiedidh | klienjedem | klienjede | klienjiedien | klienjiedægan | klienjiedieh | klienjiedim | klienjedeminie | klienjiedæjja
+| buhtjiedidh | buhtjiedidh | buhtjedem | buhtjede | buhtjiedien | buhtjiedægan | buhtjiedieh | buhtjiedim | buhtjedeminie | buhtjiedæjja
+| baektjiedidh | baektjiedidh | baektjedem | baektjede | baektjiedien | baektjiedægan | baektjiedieh | baektjiedim | baektjedeminie | baektjiedæjja
+| tjuvtjiedidh | tjuvtjiedidh | tjuvtjedem | tjuvtjede | tjuvtjiedien | tjuvtjiedægan | tjuvtjiedieh | tjuvtjiedim | tjuvtjedeminie | tjuvtjiedæjja
+| digkiedidh | digkiedidh | digkedem | digkede | digkiedien | digkiedægan | digkiedieh | digkiedim | digkedeminie | digkiedæjja
+| sjelhkiedidh | sjelhkiedidh | sjelhkedem | sjelhkede | sjelhkiedien | sjelhkiedægan | sjelhkiedieh | sjelhkiedim | sjelhkedeminie | sjelhkiedæjja
+| vierhkiedidh | vierhkiedidh | vierhkedem | vierhkede | vierhkiedien | vierhkiedægan | vierhkiedieh | vierhkiedim | vierhkedeminie | vierhkiedæjja
+| raejkiedidh | raejkiedidh | raejkedem | raejkede | raejkiedien | raejkiedægan | raejkiedieh | raejkiedim | raejkedeminie | raejkiedæjja
+| bietskiedidh | bietskiedidh | bietskedem | bietskede | bietskiedien | bietskiedægan | bietskiedieh | bietskiedim | bietskedeminie | bietskiedæjja
+| gietskiedidh | gietskiedidh | gietskedem | gietskede | gietskiedien | gietskiedægan | gietskiedieh | gietskiedim | gietskedeminie | gietskiedæjja
+| mulliedidh | mulliedidh | - | mullede | - | - | - | - | mulledeminie | -
+| dåemiedidh | dåemiedidh | dåemedem | dåemede | dåemiedien | dåemiedægan | dåemiedieh | dåemiedim | dåemedeminie | dåemiedæjja
+| haeniedidh | haeniedidh | haenedem | haenede | haeniedien | haeniedægan | haeniedieh | haeniedim | haenedeminie | haeniedæjja
+| åeniedidh | åeniedidh | åenedem | åenede | åeniedien | åeniedægan | åeniedieh | åeniedim | åenedeminie | åeniedæjja
+| gaegniedidh | gaegniedidh | gaegnedem | gaegnede | gaegniedien | gaegniedægan | gaegniedieh | gaegniedim | gaegnedeminie | gaegniedæjja
+| unniedidh | unniedidh | unnedem | unnede | unniedien | unniedægan | unniedieh | unniedim | unnedeminie | unniedæjja
+| sperniedidh | sperniedidh | spernedem | spernede | sperniedien | sperniedægan | sperniedieh | sperniedim | spernedeminie | sperniedæjja
+| fuehpiedidh | fuehpiedidh | fuehpedem | fuehpede | fuehpiedien | fuehpiedægan | fuehpiedieh | fuehpiedim | fuehpedeminie | fuehpiedæjja
+| vaerhpiedidh | vaerhpiedidh | vaerhpedem | vaerhpede | vaerhpiedien | vaerhpiedægan | vaerhpiedieh | vaerhpiedim | vaerhpedeminie | vaerhpiedæjja
+| luhpiedidh | luhpiedidh | luhpedem | luhpede | luhpiedien | luhpiedægan | luhpiedieh | luhpiedim | luhpedeminie | luhpiedæjja
+| klaeriedidh | klaeriedidh | klaeredem | klaerede | klaeriedien | klaeriedægan | klaeriedieh | klaeriedim | klaeredeminie | klaeriedæjja
+| staeriedidh | staeriedidh | staeredem | staerede | staeriedien | staeriedægan | staeriedieh | staeriedim | staeredeminie | staeriedæjja
+| dåeriedidh | dåeriedidh | dåeredem | dåerede | dåeriedien | dåeriedægan | dåeriedieh | dåeriedim | dåeredeminie | dåeriedæjja
+| saejriedidh | saejriedidh | saejredem | saejrede | saejriedien | saejriedægan | saejriedieh | saejriedim | saejredeminie | saejriedæjja
+| murriedidh | murriedidh | murredem | murrede | murriedien | murriedægan | murriedieh | murriedim | murredeminie | murriedæjja
+| vierhtiedidh | vierhtiedidh | vierhtedem | vierhtede | vierhtiedien | vierhtiedægan | vierhtiedieh | vierhtiedim | vierhtedeminie | vierhtiedæjja
+| vaestiedidh | vaestiedidh | vaestedem | vaestede | vaestiedien | vaestiedægan | vaestiedieh | vaestiedim | vaestedeminie | vaestiedæjja
+| restiedidh | restiedidh | restedem | restede | restiedien | restiedægan | restiedieh | restiedim | restedeminie | restiedæjja
+| dieviedidh | dieviedidh | dievedem | dievede | dieviedien | dieviedægan | dieviedieh | dieviedim | dievedeminie | dieviedæjja
+| aerviedidh | aerviedidh | aervedem | aervede | aerviedien | aerviedægan | aerviedieh | aerviedim | aervedeminie | aerviedæjja
 | guvviedidh | guvviedidh | guvvedem | guvvede | guvviedien | guvviedægan | guvviedieh | guvviedim | guvvedeminie | guvviedæjja
+| daajedidh | daajedidh | daajedem | daajede | daajedien | daajedægan | daajedieh | daajedim | daajedeminie | daajedæjja
 | voejedidh | voejedidh | voejedem | voejede | voejedien | voejedægan | voejedieh | voejedim | voejedeminie | voejedæjja
 | nojjedidh | nojjedidh | nojjedem | nojjede | nojjedien | nojjedægan | nojjedieh | nojjedim | nojjedeminie | nojjedæjja
 | jïjjedidh | jïjjedidh | jïjjedem | jïjjede | jïjjedien | jïjjedægan | jïjjedieh | jïjjedim | jïjjedeminie | jïjjedæjja
+| ussjedidh | ussjedidh | ussjedem | ussjede | ussjedien | ussjedægan | ussjedieh | ussjedim | ussjedeminie | ussjedæjja
+| gïehtjedidh | gïehtjedidh | gïehtjedem | gïehtjede | gïehtjedien | gïehtjedægan | gïehtjedieh | gïehtjedim | gïehtjedeminie | gïehtjedæjja
 | gihtjedidh | gihtjedidh | gihtjedem | gihtjede | gihtjedien | gihtjedægan | gihtjedieh | gihtjedim | gihtjedeminie | gihtjedæjja
 | vïevtjedidh | vïevtjedidh | vïevtjedem | vïevtjede | vïevtjedien | vïevtjedægan | vïevtjedieh | vïevtjedim | vïevtjedeminie | vïevtjedæjja
+| leekedidh | leekedidh | leekedem | leekede | leekedien | leekedægan | leekedieh | leekedim | leekedeminie | leekedæjja
+| joekedidh | joekedidh | joekedem | joekede | joekedien | joekedægan | joekedieh | joekedim | joekedeminie | joekedæjja
+| tjïekedidh | tjïekedidh | tjïekedem | tjïekede | tjïekedien | tjïekedægan | tjïekedieh | tjïekedim | tjïekedeminie | tjïekedæjja
+| lïegkedidh | lïegkedidh | lïegkedem | lïegkede | lïegkedien | lïegkedægan | lïegkedieh | lïegkedim | lïegkedeminie | lïegkedæjja
 | håågkedidh | håågkedidh | håågkedem | håågkede | håågkedien | håågkedægan | håågkedieh | håågkedim | håågkedeminie | håågkedæjja
+| baahkedidh | baahkedidh | baahkedem | baahkede | baahkedien | baahkedægan | baahkedieh | baahkedim | baahkedeminie | baahkedæjja
 | sjoehkedidh | sjoehkedidh | sjoehkedem | sjoehkede | sjoehkedien | sjoehkedægan | sjoehkedieh | sjoehkedim | sjoehkedeminie | sjoehkedæjja
+| tjihkedidh | tjihkedidh | tjihkedem | tjihkede | tjihkedien | tjihkedægan | tjihkedieh | tjihkedim | tjihkedeminie | tjihkedæjja
 | gajhkedidh | gajhkedidh | gajhkedem | gajhkede | gajhkedien | gajhkedægan | gajhkedieh | gajhkedim | gajhkedeminie | gajhkedæjja
+| föörhkedidh | föörhkedidh | föörhkedem | föörhkede | föörhkedien | föörhkedægan | föörhkedieh | föörhkedim | föörhkedeminie | föörhkedæjja
+| njovhkedidh | njovhkedidh | njovhkedem | njovhkede | njovhkedien | njovhkedægan | njovhkedieh | njovhkedim | njovhkedeminie | njovhkedæjja
 | bïhkedidh | bïhkedidh | bïhkedem | bïhkede | bïhkedien | bïhkedægan | bïhkedieh | bïhkedim | bïhkedeminie | bïhkedæjja
+| hajkedidh | hajkedidh | hajkedem | hajkede | hajkedien | hajkedægan | hajkedieh | hajkedim | hajkedeminie | hajkedæjja
+| tjoejkedidh | tjoejkedidh | tjoejkedem | tjoejkede | tjoejkedien | tjoejkedægan | tjoejkedieh | tjoejkedim | tjoejkedeminie | tjoejkedæjja
 | vyölkedidh | vyölkedidh | vyölkedem | vyölkede | vyölkedien | vyölkedægan | vyölkedieh | vyölkedim | vyölkedeminie | vyölkedæjja
+| njorkedidh | njorkedidh | njorkedem | njorkede | njorkedien | njorkedægan | njorkedieh | njorkedim | njorkedeminie | njorkedæjja
+| stååkedidh | stååkedidh | stååkedem | stååkede | stååkedien | stååkedægan | stååkedieh | stååkedim | stååkedeminie | stååkedæjja
+| vïlledidh | vïlledidh | vïlledem | vïllede | vïlledien | vïlledægan | vïlledieh | vïlledim | vïlledeminie | vïlledæjja
 | ååjmedidh | ååjmedidh | ååjmedem | ååjmede | ååjmedien | ååjmedægan | ååjmedieh | ååjmedim | ååjmedeminie | ååjmedæjja
+| byöpmedidh | byöpmedidh | byöpmedem | byöpmede | byöpmedien | byöpmedægan | byöpmedieh | byöpmedim | byöpmedeminie | byöpmedæjja
 | gaanedidh | gaanedidh | gaanedem | gaanede | gaanedien | gaanedægan | gaanedieh | gaanedim | gaanedeminie | gaanedæjja
+| moenedidh | moenedidh | moenedem | moenede | moenedien | moenedægan | moenedieh | moenedim | moenedeminie | moenedæjja
 | lïenedidh | lïenedidh | lïenedem | lïenede | lïenedien | lïenedægan | lïenedieh | lïenedim | lïenedeminie | lïenedæjja
 | mïnnedidh | mïnnedidh | mïnnedem | mïnnede | mïnnedien | mïnnedægan | mïnnedieh | mïnnedim | mïnnedeminie | mïnnedæjja
+| gaavnedidh | gaavnedidh | gaavnedem | gaavnede | gaavnedien | gaavnedægan | gaavnedieh | gaavnedim | gaavnedeminie | gaavnedæjja
 | kråånedidh | kråånedidh | kråånedem | kråånede | kråånedien | kråånedægan | kråånedieh | kråånedim | kråånedeminie | kråånedæjja
+| sæjloedidh | sæjloedidh | sæjlodem | sæjlode | sæjloedien | sæjloedægan | sæjloedieh | sæjloedim | sæjlodeminie | sæjloedæjja
 | svæjmoedidh | svæjmoedidh | svæjmodem | svæjmode | svæjmoedien | svæjmoedægan | svæjmoedieh | svæjmoedim | svæjmodeminie | svæjmoedæjja
+| aavoedidh | aavoedidh | aavodem | aavode | aavoedien | aavoedægan | aavoedieh | aavoedim | aavodeminie | aavoedæjja
+| tjååhpedidh | tjååhpedidh | tjååhpedem | tjååhpede | tjååhpedien | tjååhpedægan | tjååhpedieh | tjååhpedim | tjååhpedeminie | tjååhpedæjja
+| gïjredidh | gïjredidh | - | gïjrede | - | - | - | - | gïjredeminie | -
+| ryöjredidh | ryöjredidh | ryöjredem | ryöjrede | ryöjredien | ryöjredægan | ryöjredieh | ryöjredim | ryöjredeminie | ryöjredæjja
+| gorredidh | gorredidh | gorredem | gorrede | gorredien | gorredægan | gorredieh | gorredim | gorredeminie | gorredæjja
+| gårredidh | gårredidh | gårredem | gårrede | gårredien | gårredægan | gårredieh | gårredim | gårredeminie | gårredæjja
 | bööredidh | bööredidh | bööredem | böörede | bööredien | bööredægan | bööredieh | bööredim | bööredeminie | bööredæjja
 | njööredidh | njööredidh | njööredem | njöörede | njööredien | njööredægan | njööredieh | njööredim | njööredeminie | njööredæjja
 | voeksedidh | voeksedidh | voeksedem | voeksede | voeksedien | voeksedægan | voeksedieh | voeksedim | voeksedeminie | voeksedæjja
 | rååpsedidh | rååpsedidh | rååpsedem | rååpsede | rååpsedien | rååpsedægan | rååpsedieh | rååpsedim | rååpsedeminie | rååpsedæjja
 | bïssedidh | bïssedidh | bïssedem | bïssede | bïssedien | bïssedægan | bïssedieh | bïssedim | bïssedeminie | bïssedæjja
 | goetsedidh | goetsedidh | goetsedem | goetsede | goetsedien | goetsedægan | goetsedieh | goetsedim | goetsedeminie | goetsedæjja
+| ohtsedidh | ohtsedidh | ohtsedem | ohtsede | ohtsedien | ohtsedægan | ohtsedieh | ohtsedim | ohtsedeminie | ohtsedæjja
 | snovsedidh | snovsedidh | snovsedem | snovsede | snovsedien | snovsedægan | snovsedieh | snovsedim | snovsedeminie | snovsedæjja
 | tjihtedidh | tjihtedidh | tjihtedem | tjihtede | tjihtedien | tjihtedægan | tjihtedieh | tjihtedim | tjihtedeminie | tjihtedæjja
 | mohtedidh | mohtedidh | mohtedem | mohtede | mohtedien | mohtedægan | mohtedieh | mohtedim | mohtedeminie | mohtedæjja
 | daltedidh | daltedidh | daltedem | daltede | daltedien | daltedægan | daltedieh | daltedim | daltedeminie | daltedæjja
 | boelvedidh | boelvedidh | boelvedem | boelvede | boelvedien | boelvedægan | boelvedieh | boelvedim | boelvedeminie | boelvedæjja
+| gåårvedidh | gåårvedidh | gåårvedem | gåårvede | gåårvedien | gåårvedægan | gåårvedieh | gåårvedim | gåårvedeminie | gåårvedæjja
+| asvedidh | asvedidh | asvedem | asvede | asvedien | asvedægan | asvedieh | asvedim | asvedeminie | asvedæjja
+| lovvedidh | lovvedidh | lovvedem | lovvede | lovvedien | lovvedægan | lovvedieh | lovvedim | lovvedeminie | lovvedæjja
+| baersieldidh | baersieldidh | baerseldem | baerselde | baersieldien | baersieldægan | baersieldieh | baersieldim | baerseldeminie | baersieldæjja
 | sygkeldidh | sygkeldidh | sygkeldem | sygkelde | sygkeldien | sygkeldægan | sygkeldieh | sygkeldim | sygkeldeminie | sygkeldæjja
+| raahkeldidh | raahkeldidh | raahkeldem | raahkelde | raahkeldien | raahkeldægan | raahkeldieh | raahkeldim | raahkeldeminie | raahkeldæjja
+| gabpeldidh | gabpeldidh | gabpeldem | gabpelde | gabpeldien | gabpeldægan | gabpeldieh | gabpeldim | gabpeldeminie | gabpeldæjja
+| haampeldidh | haampeldidh | haampeldem | haampelde | haampeldien | haampeldægan | haampeldieh | haampeldim | haampeldeminie | haampeldæjja
 | stompeldidh | stompeldidh | stompeldem | stompelde | stompeldien | stompeldægan | stompeldieh | stompeldim | stompeldeminie | stompeldæjja
 | saajkardidh | saajkardidh | saajkerdem | saajkerde | saajkardien | saajkardægan | saajkardieh | saajkardim | saajkerdeminie | saajkardæjja
+| siekierdidh | siekierdidh | siekerdem | siekerde | siekierdien | siekierdægan | siekierdieh | siekierdim | siekerdeminie | siekierdæjja
+| spijhkierdidh | spijhkierdidh | spijhkerdem | spijhkerde | spijhkierdien | spijhkierdægan | spijhkierdieh | spijhkierdim | spijhkerdeminie | spijhkierdæjja
+| ujkierdidh | ujkierdidh | ujkerdem | ujkerde | ujkierdien | ujkierdægan | ujkierdieh | ujkierdim | ujkerdeminie | ujkierdæjja
+| vijhtsierdidh | vijhtsierdidh | vijhtserdem | vijhtserde | vijhtsierdien | vijhtsierdægan | vijhtsierdieh | vijhtsierdim | vijhtserdeminie | vijhtsierdæjja
+| tjïekerdidh | tjïekerdidh | tjïekerdem | tjïekerde | tjïekerdien | tjïekerdægan | tjïekerdieh | tjïekerdim | tjïekerdeminie | tjïekerdæjja
+| goegkerdidh | goegkerdidh | goegkerdem | goegkerde | goegkerdien | goegkerdægan | goegkerdieh | goegkerdim | goegkerdeminie | goegkerdæjja
+| garmerdidh | garmerdidh | garmerdem | garmerde | garmerdien | garmerdægan | garmerdieh | garmerdim | garmerdeminie | garmerdæjja
 | funhterdidh | funhterdidh | funhterdem | funhterde | funhterdien | funhterdægan | funhterdieh | funhterdim | funhterdeminie | funhterdæjja
 | onterdidh | onterdidh | onterdem | onterde | onterdien | onterdægan | onterdieh | onterdim | onterdeminie | onterdæjja
+| slahtjegidh | slahtjegidh | slahtjegem | slahtjege | slahtjegien | slahtjegægan | slahtjegieh | slahtjegim | slahtjegeminie | slahtjegæjja
 | gåabregidh | gåabregidh | gåabregem | gåabrege | gåabregien | gåabregægan | gåabregieh | gåabregim | gåabregeminie | gåabregæjja
+| sarhvegidh | sarhvegidh | sarhvegem | sarhvege | sarhvegien | sarhvegægan | sarhvegieh | sarhvegim | sarhvegeminie | sarhvegæjja
 | kråavvegidh | kråavvegidh | kråavvegem | kråavvege | kråavvegien | kråavvegægan | kråavvegieh | kråavvegim | kråavvegeminie | kråavvegæjja
 | såakelgidh | såakelgidh | såakelgem | såakelge | såakelgien | såakelgægan | såakelgieh | såakelgim | såakelgeminie | -
 | vuajajidh | vuajajidh | vuajijem | vuajije | vuajajien | vuajajægan | vuajajieh | vuajajim | vuajijeminie | vuajajæjja
+| vuajnajidh | vuajnajidh | vuajnijem | vuajnije | vuajnajien | vuajnajægan | vuajnajieh | vuajnajim | vuajnijeminie | vuajnajæjja
+| åarajidh | åarajidh | åarijem | åarije | åarajien | åarajægan | åarajieh | åarajim | åarijeminie | åarajæjja
+| tjuatsajidh | tjuatsajidh | - | tjuatsije | - | - | - | - | tjuatsijeminie | -
+| vaadtsajidh | vaadtsajidh | vaadtsijem | vaadtsije | vaadtsajien | vaadtsajægan | vaadtsajieh | vaadtsajim | vaadtsijeminie | vaadtsajæjja
+| måjhtajidh | måjhtajidh | måjhtijem | måjhtije | måjhtajien | måjhtajægan | måjhtajieh | måjhtajim | måjhtijeminie | måjhtajæjja
+| jåhtajidh | jåhtajidh | jåhtijem | jåhtije | jåhtajien | jåhtajægan | jåhtajieh | jåhtajim | jåhtijeminie | jåhtajæjja
+| rïhkijidh | rïhkijidh | rïhkejem | rïhkeje | rïhkijien | rïhkijægan | rïhkijieh | rïhkijim | rïhkejeminie | rïhkijæjja
+| bïllijidh | bïllijidh | bïllejem | bïlleje | bïllijien | bïllijægan | bïllijieh | bïllijim | bïllejeminie | bïllijæjja
+| govlijidh | govlijidh | govlejem | govleje | govlijien | govlijægan | govlijieh | govlijim | govlejeminie | govlijæjja
+| obrijidh | obrijidh | - | obreje | - | - | - | - | obrejeminie | -
+| orrijidh | orrijidh | orrejem | orreje | orrijien | orrijægan | orrijieh | orrijim | orrejeminie | orrijæjja
+| gævnjasjidh | gævnjasjidh | gævnjesjem | gævnjesje | gævnjasjien | gævnjasjægan | gævnjasjieh | gævnjasjim | gævnjesjeminie | gævnjasjæjja
+| guarjasjidh | guarjasjidh | guarjesjem | guarjesje | guarjasjien | guarjasjægan | guarjasjieh | guarjasjim | guarjesjeminie | guarjasjæjja
 | gaahkasjidh | gaahkasjidh | gaahkesjem | gaahkesje | gaahkasjien | gaahkasjægan | gaahkasjieh | gaahkasjim | gaahkesjeminie | gaahkasjæjja
+| tjahkasjidh | tjahkasjidh | tjahkesjem | tjahkesje | tjahkasjien | tjahkasjægan | tjahkasjieh | tjahkasjim | tjahkesjeminie | tjahkasjæjja
+| nahkasjidh | nahkasjidh | nahkesjem | nahkesje | nahkasjien | nahkasjægan | nahkasjieh | nahkasjim | nahkesjeminie | nahkasjæjja
 | gåhkasjidh | gåhkasjidh | gåhkesjem | gåhkesje | gåhkasjien | gåhkasjægan | gåhkasjieh | gåhkasjim | gåhkesjeminie | gåhkasjæjja
 | vealasjidh | vealasjidh | vealesjem | vealesje | vealasjien | vealasjægan | vealasjieh | vealasjim | vealesjeminie | vealasjæjja
+| gællasjidh | gællasjidh | gællesjem | gællesje | gællasjien | gællasjægan | gællasjieh | gællasjim | gællesjeminie | gællasjæjja
 | gaahpasjidh | gaahpasjidh | gaahpesjem | gaahpesje | gaahpasjien | gaahpasjægan | gaahpasjieh | gaahpasjim | gaahpesjeminie | gaahpasjæjja
+| vuartasjidh | vuartasjidh | vuartesjem | vuartesje | vuartasjien | vuartasjægan | vuartasjieh | vuartasjim | vuartesjeminie | vuartasjæjja
 | goejesjidh | goejesjidh | goejesjem | goejesje | goejesjien | goejesjægan | goejesjieh | goejesjim | goejesjeminie | goejesjæjja
 | sjyjjesjidh | sjyjjesjidh | sjyjjesjem | sjyjjesje | sjyjjesjien | sjyjjesjægan | sjyjjesjieh | sjyjjesjim | sjyjjesjeminie | sjyjjesjæjja
 | vïekesjidh | vïekesjidh | vïekesjem | vïekesje | vïekesjien | vïekesjægan | vïekesjieh | vïekesjim | vïekesjeminie | vïekesjæjja
@@ -60,50 +637,120 @@ Testdato: tir  5 jul 2011 23:48:57 CEST
 | rïgkesjidh | rïgkesjidh | rïgkesjem | rïgkesje | rïgkesjien | rïgkesjægan | rïgkesjieh | rïgkesjim | rïgkesjeminie | rïgkesjæjja
 | gajhkesjidh | gajhkesjidh | gajhkesjem | gajhkesje | gajhkesjien | gajhkesjægan | gajhkesjieh | gajhkesjim | gajhkesjeminie | gajhkesjæjja
 | hojhkesjidh | hojhkesjidh | hojhkesjem | hojhkesje | hojhkesjien | hojhkesjægan | hojhkesjieh | hojhkesjim | hojhkesjeminie | hojhkesjæjja
+| mïerhkesjidh | mïerhkesjidh | mïerhkesjem | mïerhkesje | mïerhkesjien | mïerhkesjægan | mïerhkesjieh | mïerhkesjim | mïerhkesjeminie | mïerhkesjæjja
 | gyrhkesjidh | gyrhkesjidh | gyrhkesjem | gyrhkesje | gyrhkesjien | gyrhkesjægan | gyrhkesjieh | gyrhkesjim | gyrhkesjeminie | gyrhkesjæjja
 | båårhkesjidh | båårhkesjidh | båårhkesjem | båårhkesje | båårhkesjien | båårhkesjægan | båårhkesjieh | båårhkesjim | båårhkesjeminie | båårhkesjæjja
 | bååhkesjidh | bååhkesjidh | bååhkesjem | bååhkesje | bååhkesjien | bååhkesjægan | bååhkesjieh | bååhkesjim | bååhkesjeminie | bååhkesjæjja
 | soejkesjidh | soejkesjidh | soejkesjem | soejkesje | soejkesjien | soejkesjægan | soejkesjieh | soejkesjim | soejkesjeminie | soejkesjæjja
 | sååkesjidh | sååkesjidh | sååkesjem | sååkesje | sååkesjien | sååkesjægan | sååkesjieh | sååkesjim | sååkesjeminie | sååkesjæjja
 | håålesjidh | håålesjidh | håålesjem | håålesje | håålesjien | håålesjægan | håålesjieh | håålesjim | håålesjeminie | håålesjæjja
+| ryöjnesjidh | ryöjnesjidh | ryöjnesjem | ryöjnesje | ryöjnesjien | ryöjnesjægan | ryöjnesjieh | ryöjnesjim | ryöjnesjeminie | ryöjnesjæjja
+| vytnesjidh | vytnesjidh | vytnesjem | vytnesje | vytnesjien | vytnesjægan | vytnesjieh | vytnesjim | vytnesjeminie | vytnesjæjja
 | nïhpesjidh | nïhpesjidh | nïhpesjem | nïhpesje | nïhpesjien | nïhpesjægan | nïhpesjieh | nïhpesjim | nïhpesjeminie | nïhpesjæjja
+| daarpesjidh | daarpesjidh | daarpesjem | daarpesje | daarpesjien | daarpesjægan | daarpesjieh | daarpesjim | daarpesjeminie | daarpesjæjja
 | daaresjidh | daaresjidh | daaresjem | daaresje | daaresjien | daaresjægan | daaresjieh | daaresjim | daaresjeminie | daaresjæjja
 | foeresjidh | foeresjidh | foeresjem | foeresje | foeresjien | foeresjægan | foeresjieh | foeresjim | foeresjeminie | foeresjæjja
+| rïeresjidh | rïeresjidh | rïeresjem | rïeresje | rïeresjien | rïeresjægan | rïeresjieh | rïeresjim | rïeresjeminie | rïeresjæjja
+| rïrresjidh | rïrresjidh | rïrresjem | rïrresje | rïrresjien | rïrresjægan | rïrresjieh | rïrresjim | rïrresjeminie | rïrresjæjja
+| sjïehtesjidh | sjïehtesjidh | sjïehtesjem | sjïehtesje | sjïehtesjien | sjïehtesjægan | sjïehtesjieh | sjïehtesjim | sjïehtesjeminie | sjïehtesjæjja
 | voessjehtjidh | voessjehtjidh | voessjehtjem | voessjehtje | voessjehtjien | voessjehtjægan | voessjehtjieh | voessjehtjim | voessjehtjeminie | voessjehtjæjja
+| gaalehtjidh | gaalehtjidh | gaalehtjem | gaalehtje | gaalehtjien | gaalehtjægan | gaalehtjieh | gaalehtjim | gaalehtjeminie | gaalehtjæjja
+| vaadtsehtjidh | vaadtsehtjidh | vaadtsehtjem | vaadtsehtje | vaadtsehtjien | vaadtsehtjægan | vaadtsehtjieh | vaadtsehtjim | vaadtsehtjeminie | vaadtsehtjæjja
+| goedtehtjidh | goedtehtjidh | goedtehtjem | goedtehtje | goedtehtjien | goedtehtjægan | goedtehtjieh | goedtehtjim | goedtehtjeminie | goedtehtjæjja
+| johtehtjidh | johtehtjidh | johtehtjem | johtehtje | johtehtjien | johtehtjægan | johtehtjieh | johtehtjim | johtehtjeminie | johtehtjæjja
 | bovvehtjidh | bovvehtjidh | bovvehtjem | bovvehtje | bovvehtjien | bovvehtjægan | bovvehtjieh | bovvehtjim | bovvehtjeminie | bovvehtjæjja
 | såataskidh | såataskidh | såateskem | såateske | såataskien | såataskægan | såataskieh | såataskim | såateskeminie | såataskæjja
 | veajalidh | veajalidh | veajelem | veajele | veajalien | veajalægan | veajalieh | veajalim | veajeleminie | veajalæjja
 | sjæjsjalidh | sjæjsjalidh | sjæjsjelem | sjæjsjele | sjæjsjalien | sjæjsjalægan | sjæjsjalieh | sjæjsjalim | sjæjsjeleminie | sjæjsjalæjja
+| tjuedtjielidh | tjuedtjielidh | tjuedtjelem | tjuedtjele | tjuedtjielien | tjuedtjielægan | tjuedtjielieh | tjuedtjielim | tjuedtjeleminie | tjuedtjielæjja
+| gejhkielidh | gejhkielidh | gejhkelem | gejhkele | gejhkielien | gejhkielægan | gejhkielieh | gejhkielim | gejhkeleminie | gejhkielæjja
+| jaemielidh | jaemielidh | jaemelem | jaemele | jaemielien | jaemielægan | jaemielieh | jaemielim | jaemeleminie | jaemielæjja
+| båeltielidh | båeltielidh | båeltelem | båeltele | båeltielien | båeltielægan | båeltielieh | båeltielim | båelteleminie | båeltielæjja
+| biestielidh | biestielidh | biestelem | biestele | biestielien | biestielægan | biestielieh | biestielim | biesteleminie | biestielæjja
 | voejelidh | voejelidh | voejelem | voejele | voejelien | voejelægan | voejelieh | voejelim | voejeleminie | voejelæjja
+| bïeljelidh | bïeljelidh | bïeljelem | bïeljele | bïeljelien | bïeljelægan | bïeljelieh | bïeljelim | bïeljeleminie | bïeljelæjja
+| gabnjelidh | gabnjelidh | gabnjelem | gabnjele | gabnjelien | gabnjelægan | gabnjelieh | gabnjelim | gabnjeleminie | gabnjelæjja
+| vaarjelidh | vaarjelidh | vaarjelem | vaarjele | vaarjelien | vaarjelægan | vaarjelieh | vaarjelim | vaarjeleminie | vaarjelæjja
+| voejhkelidh | voejhkelidh | voejhkelem | voejhkele | voejhkelien | voejhkelægan | voejhkelieh | voejhkelim | voejhkeleminie | voejhkelæjja
 | jimhkelidh | jimhkelidh | jimhkelem | jimhkele | jimhkelien | jimhkelægan | jimhkelieh | jimhkelim | jimhkeleminie | jimhkelæjja
+| lïerhkelidh | lïerhkelidh | lïerhkelem | lïerhkele | lïerhkelien | lïerhkelægan | lïerhkelieh | lïerhkelim | lïerhkeleminie | lïerhkelæjja
+| vöörhkelidh | vöörhkelidh | vöörhkelem | vöörhkele | vöörhkelien | vöörhkelægan | vöörhkelieh | vöörhkelim | vöörhkeleminie | vöörhkelæjja
+| hajkelidh | hajkelidh | hajkelem | hajkele | hajkelien | hajkelægan | hajkelieh | hajkelim | hajkeleminie | hajkelæjja
 | bïejkelidh | bïejkelidh | bïejkelem | bïejkele | bïejkelien | bïejkelægan | bïejkelieh | bïejkelim | bïejkeleminie | bïejkelæjja
 | jarkelidh | jarkelidh | jarkelem | jarkele | jarkelien | jarkelægan | jarkelieh | jarkelim | jarkeleminie | jarkelæjja
+| vïjlelidh | vïjlelidh | vïjlelem | vïjlele | vïjlelien | vïjlelægan | vïjlelieh | vïjlelim | vïjleleminie | vïjlelæjja
+| gaatoelidh | gaatoelidh | gaatolem | gaatole | gaatoelien | gaatoelægan | gaatoelieh | gaatoelim | gaatoleminie | gaatoelæjja
 | firrelidh | firrelidh | firrelem | firrele | firrelien | firrelægan | firrelieh | firrelim | firreleminie | firrelæjja
 | dasselidh | dasselidh | dasselem | dassele | dasselien | dasselægan | dasselieh | dasselim | dasseleminie | dasselæjja
 | goetselidh | goetselidh | goetselem | goetsele | goetselien | goetselægan | goetselieh | goetselim | goetseleminie | goetselæjja
+| gïehtelidh | gïehtelidh | gïehtelem | gïehtele | gïehtelien | gïehtelægan | gïehtelieh | gïehtelim | gïehteleminie | gïehtelæjja
+| mojhtelidh | mojhtelidh | mojhtelem | mojhtele | mojhtelien | mojhtelægan | mojhtelieh | mojhtelim | mojhteleminie | mojhtelæjja
 | vaajtelidh | vaajtelidh | vaajtelem | vaajtele | vaajtelien | vaajtelægan | vaajtelieh | vaajtelim | vaajteleminie | vaajtelæjja
+| goltelidh | goltelidh | goltelem | goltele | goltelien | goltelægan | goltelieh | goltelim | golteleminie | goltelæjja
 | sjöövelidh | sjöövelidh | sjöövelem | sjöövele | sjöövelien | sjöövelægan | sjöövelieh | sjöövelim | sjööveleminie | sjöövelæjja
+| tjaakanidh | tjaakanidh | tjaakenem | tjaakene | tjaakanien | tjaakanægan | tjaakanieh | tjaakanim | tjaakeneminie | -
 | skaahkanidh | skaahkanidh | skaahkenem | skaahkene | skaahkanien | skaahkanægan | skaahkanieh | skaahkanim | skaahkeneminie | -
+| gallanidh | gallanidh | gallenem | gallene | gallanien | gallanægan | gallanieh | gallanim | galleneminie | -
 | såajmanidh | såajmanidh | såajmenem | såajmene | såajmanien | såajmanægan | såajmanieh | såajmanim | såajmeneminie | -
 | jeananidh | jeananidh | jeanenem | jeanene | jeananien | jeananægan | jeananieh | jeananim | jeaneneminie | -
 | batnanidh | batnanidh | batnenem | batnene | batnanien | batnanægan | batnanieh | batnanim | batneneminie | -
 | haajpanidh | haajpanidh | haajpenem | haajpene | haajpanien | haajpanægan | haajpanieh | haajpanim | haajpeneminie | -
 | buaranidh | buaranidh | buarenem | buarene | buaranien | buaranægan | buaranieh | buaranim | buareneminie | -
+| dabranidh | dabranidh | dabrenem | dabrene | dabranien | dabranægan | dabranieh | dabranim | dabreneminie | -
+| paajsanidh | paajsanidh | paajsenem | paajsene | paajsanien | paajsanægan | paajsanieh | paajsanim | paajseneminie | -
 | gaarvanidh | gaarvanidh | gaarvenem | gaarvene | gaarvanien | gaarvanægan | gaarvanieh | gaarvanim | gaarveneminie | -
 | baahkenidh | baahkenidh | baahkenem | baahkene | baahkenien | baahkenægan | baahkenieh | baahkenim | baahkeneminie | -
+| tjåanghkenidh | tjåanghkenidh | tjåanghkenem | tjåanghkene | tjåanghkenien | tjåanghkenægan | tjåanghkenieh | tjåanghkenim | tjåanghkeneminie | -
+| tsoepkenidh | tsoepkenidh | tsoepkenem | tsoepkene | tsoepkenien | tsoepkenægan | tsoepkenieh | tsoepkenim | tsoepkeneminie | -
 | bïerkenidh | bïerkenidh | bïerkenem | bïerkene | bïerkenien | bïerkenægan | bïerkenieh | bïerkenim | bïerkeneminie | -
+| maaskenidh | maaskenidh | maaskenem | maaskene | maaskenien | maaskenægan | maaskenieh | maaskenim | maaskeneminie | -
+| skïemmenidh | skïemmenidh | skïemmenem | skïemmene | skïemmenien | skïemmenægan | skïemmenieh | skïemmenim | skïemmeneminie | -
+| åahpenidh | åahpenidh | åahpenem | åahpene | åahpenien | åahpenægan | åahpenieh | åahpenim | åahpeneminie | -
 | joevenidh | joevenidh | joevenem | joevene | joevenien | joevenægan | joevenieh | joevenim | joeveneminie | -
+| loevenidh | loevenidh | loevenem | loevene | loevenien | loevenægan | loevenieh | loevenim | loeveneminie | -
+| smalhtjaridh | smalhtjaridh | smalhtjerem | smalhtjere | smalhtjarien | smalhtjarægan | smalhtjarieh | smalhtjarim | smalhtjereminie | smalhtjaræjja
+| gaamhparidh | gaamhparidh | gaamhperem | gaamhpere | gaamhparien | gaamhparægan | gaamhparieh | gaamhparim | gaamhpereminie | gaamhparæjja
 | baataridh | baataridh | baaterem | baatere | baatarien | baatarægan | baatarieh | baatarim | baatereminie | baataræjja
+| tjoeveridh | tjoeveridh | tjoeverem | tjoevere | tjoeverien | tjoeverægan | tjoeverieh | tjoeverim | tjoevereminie | tjoeveræjja
+| dååsveridh | dååsveridh | dååsverem | dååsvere | dååsverien | dååsverægan | dååsverieh | dååsverim | dååsvereminie | dååsveræjja
+| bæhkasidh | bæhkasidh | bæhkesem | bæhkese | bæhkasien | bæhkasægan | bæhkasieh | bæhkasim | bæhkeseminie | -
 | gaarkasidh | gaarkasidh | gaarkesem | gaarkese | gaarkasien | gaarkasægan | gaarkasieh | gaarkasim | gaarkeseminie | -
 | gårkasidh | gårkasidh | gårkesem | gårkese | gårkasien | gårkasægan | gårkasieh | gårkasim | gårkeseminie | -
+| færkasidh | færkasidh | færkesem | færkese | færkasien | færkasægan | færkasieh | færkasim | færkeseminie | -
 | sygkesidh | sygkesidh | sygkesem | sygkese | sygkesien | sygkesægan | sygkesieh | sygkesim | sygkeseminie | -
 | tsyögkesidh | tsyögkesidh | tsyögkesem | tsyögkese | tsyögkesien | tsyögkesægan | tsyögkesieh | tsyögkesim | tsyögkeseminie | -
+| vyöhkesidh | vyöhkesidh | vyöhkesem | vyöhkese | vyöhkesien | vyöhkesægan | vyöhkesieh | vyöhkesim | vyöhkeseminie | -
 | klajkesidh | klajkesidh | klajkesem | klajkese | klajkesien | klajkesægan | klajkesieh | klajkesim | klajkeseminie | -
+| valkesidh | valkesidh | valkesem | valkese | valkesien | valkesægan | valkesieh | valkesim | valkeseminie | -
 | jorkesidh | jorkesidh | jorkesem | jorkese | jorkesien | jorkesægan | jorkesieh | jorkesim | jorkeseminie | jorkesæjja
 | nåålesidh | nåålesidh | nåålesem | nåålese | nåålesien | nåålesægan | nåålesieh | nåålesim | nååleseminie | nåålesæjja
 | gååvnesidh | gååvnesidh | gååvnesem | gååvnese | gååvnesien | gååvnesægan | gååvnesieh | gååvnesim | gååvneseminie | -
 | rïhpesidh | rïhpesidh | rïhpesem | rïhpese | rïhpesien | rïhpesægan | rïhpesieh | rïhpesim | rïhpeseminie | -
+| fååtesidh | fååtesidh | fååtesem | fååtese | fååtesien | fååtesægan | fååtesieh | fååtesim | fååteseminie | fååtesæjja
+| jurjiehtidh | jurjiehtidh | jurjehtem | jurjehte | jurjiehtien | jurjiehtægan | jurjiehtieh | jurjiehtim | jurjehteminie | jurjiehtæjja
+| tsaekiehtidh | tsaekiehtidh | tsaekehtem | tsaekehte | tsaekiehtien | tsaekiehtægan | tsaekiehtieh | tsaekiehtim | tsaekehteminie | tsaekiehtæjja
+| viehkiehtidh | viehkiehtidh | viehkehtem | viehkehte | viehkiehtien | viehkiehtægan | viehkiehtieh | viehkiehtim | viehkehteminie | viehkiehtæjja
+| nehkiehtidh | nehkiehtidh | nehkehtem | nehkehte | nehkiehtien | nehkiehtægan | nehkiehtieh | nehkiehtim | nehkehteminie | nehkiehtæjja
+| slienghkiehtidh | slienghkiehtidh | slienghkehtem | slienghkehte | slienghkiehtien | slienghkiehtægan | slienghkiehtieh | slienghkiehtim | slienghkehteminie | slienghkiehtæjja
+| delhkiehtidh | delhkiehtidh | delhkehtem | delhkehte | delhkiehtien | delhkiehtægan | delhkiehtieh | delhkiehtim | delhkehteminie | delhkiehtæjja
+| guvhkiehtidh | guvhkiehtidh | guvhkehtem | guvhkehte | guvhkiehtien | guvhkiehtægan | guvhkiehtieh | guvhkiehtim | guvhkehteminie | guvhkiehtæjja
+| velkiehtidh | velkiehtidh | velkehtem | velkehte | velkiehtien | velkiehtægan | velkiehtieh | velkiehtim | velkehteminie | velkiehtæjja
+| klåenkiehtidh | klåenkiehtidh | klåenkehtem | klåenkehte | klåenkiehtien | klåenkiehtægan | klåenkiehtieh | klåenkiehtim | klåenkehteminie | klåenkiehtæjja
+| jerkiehtidh | jerkiehtidh | jerkehtem | jerkehte | jerkiehtien | jerkiehtægan | jerkiehtieh | jerkiehtim | jerkehteminie | jerkiehtæjja
+| guerkiehtidh | guerkiehtidh | guerkehtem | guerkehte | guerkiehtien | guerkiehtægan | guerkiehtieh | guerkiehtim | guerkehteminie | guerkiehtæjja
+| mutskiehtidh | mutskiehtidh | mutskehtem | mutskehte | mutskiehtien | mutskiehtægan | mutskiehtieh | mutskiehtim | mutskehteminie | mutskiehtæjja
+| haeliehtidh | haeliehtidh | haelehtem | haelehte | haeliehtien | haeliehtægan | haeliehtieh | haeliehtim | haelehteminie | haeliehtæjja
+| båelmiehtidh | båelmiehtidh | båelmehtem | båelmehte | båelmiehtien | båelmiehtægan | båelmiehtieh | båelmiehtim | båelmehteminie | båelmiehtæjja
+| låepiehtidh | låepiehtidh | låepehtem | låepehte | låepiehtien | låepiehtægan | låepiehtieh | låepiehtim | låepehteminie | låepiehtæjja
+| suehpiehtidh | suehpiehtidh | suehpehtem | suehpehte | suehpiehtien | suehpiehtægan | suehpiehtieh | suehpiehtim | suehpehteminie | suehpiehtæjja
+| debriehtidh | debriehtidh | debrehtem | debrehte | debriehtien | debriehtægan | debriehtieh | debriehtim | debrehteminie | debriehtæjja
+| vuesiehtidh | vuesiehtidh | vuesehtem | vuesehte | vuesiehtien | vuesiehtægan | vuesiehtieh | vuesiehtim | vuesehteminie | vuesiehtæjja
+| hepsiehtidh | hepsiehtidh | hepsehtem | hepsehte | hepsiehtien | hepsiehtægan | hepsiehtieh | hepsiehtim | hepsehteminie | hepsiehtæjja
+| lissiehtidh | lissiehtidh | lissehtem | lissehte | lissiehtien | lissiehtægan | lissiehtieh | lissiehtim | lissehteminie | lissiehtæjja
+| buektiehtidh | buektiehtidh | buektehtem | buektehte | buektiehtien | buektiehtægan | buektiehtieh | buektiehtim | buektehteminie | buektiehtæjja
+| jestiehtidh | jestiehtidh | jestehtem | jestehte | jestiehtien | jestiehtægan | jestiehtieh | jestiehtim | jestehteminie | jestiehtæjja
 | saeviehtidh | saeviehtidh | saevehtem | saevehte | saeviehtien | saeviehtægan | saeviehtieh | saeviehtim | saevehteminie | saeviehtæjja
+| gaerviehtidh | gaerviehtidh | gaervehtem | gaervehte | gaerviehtien | gaerviehtægan | gaerviehtieh | gaerviehtim | gaervehteminie | gaerviehtæjja
 | laabjehtidh | laabjehtidh | laabjehtem | laabjehte | laabjehtien | laabjehtægan | laabjehtieh | laabjehtim | laabjehteminie | laabjehtæjja
 | eejehtidh | eejehtidh | eejehtem | eejehte | eejehtien | eejehtægan | eejehtieh | eejehtim | eejehteminie | eejehtæjja
 | deejehtidh | deejehtidh | deejehtem | deejehte | deejehtien | deejehtægan | deejehtieh | deejehtim | deejehteminie | deejehtæjja
@@ -111,38 +758,185 @@ Testdato: tir  5 jul 2011 23:48:57 CEST
 | sojjehtidh | sojjehtidh | sojjehtem | sojjehte | sojjehtien | sojjehtægan | sojjehtieh | sojjehtim | sojjehteminie | sojjehtæjja
 | daanjehtidh | daanjehtidh | daanjehtem | daanjehte | daanjehtien | daanjehtægan | daanjehtieh | daanjehtim | daanjehteminie | daanjehtæjja
 | tjöödtjehtidh | tjöödtjehtidh | tjöödtjehtem | tjöödtjehte | tjöödtjehtien | tjöödtjehtægan | tjöödtjehtieh | tjöödtjehtim | tjöödtjehteminie | tjöödtjehtæjja
+| gahtjehtidh | gahtjehtidh | gahtjehtem | gahtjehte | gahtjehtien | gahtjehtægan | gahtjehtieh | gahtjehtim | gahtjehteminie | gahtjehtæjja
 | tjeekehtidh | tjeekehtidh | tjeekehtem | tjeekehte | tjeekehtien | tjeekehtægan | tjeekehtieh | tjeekehtim | tjeekehteminie | tjeekehtæjja
 | deehkehtidh | deehkehtidh | deehkehtem | deehkehte | deehkehtien | deehkehtægan | deehkehtieh | deehkehtim | deehkehteminie | deehkehtæjja
+| lohkehtidh | lohkehtidh | lohkehtem | lohkehte | lohkehtien | lohkehtægan | lohkehtieh | lohkehtim | lohkehteminie | lohkehtæjja
 | birhkehtidh | birhkehtidh | birhkehtem | birhkehte | birhkehtien | birhkehtægan | birhkehtieh | birhkehtim | birhkehteminie | birhkehtæjja
 | soelkehtidh | soelkehtidh | soelkehtem | soelkehte | soelkehtien | soelkehtægan | soelkehtieh | soelkehtim | soelkehteminie | soelkehtæjja
+| voelkehtidh | voelkehtidh | voelkehtem | voelkehte | voelkehtien | voelkehtægan | voelkehtieh | voelkehtim | voelkehteminie | voelkehtæjja
 | njilkehtidh | njilkehtidh | njilkehtem | njilkehte | njilkehtien | njilkehtægan | njilkehtieh | njilkehtim | njilkehteminie | njilkehtæjja
 | sjilkehtidh | sjilkehtidh | sjilkehtem | sjilkehte | sjilkehtien | sjilkehtægan | sjilkehtieh | sjilkehtim | sjilkehteminie | sjilkehtæjja
 | gillehtidh | gillehtidh | gillehtem | gillehte | gillehtien | gillehtægan | gillehtieh | gillehtim | gillehteminie | gillehtæjja
+| govlehtidh | govlehtidh | govlehtem | govlehte | govlehtien | govlehtægan | govlehtieh | govlehtim | govlehteminie | govlehtæjja
+| tjoemehtidh | tjoemehtidh | tjoemehtem | tjoemehte | tjoemehtien | tjoemehtægan | tjoemehtieh | tjoemehtim | tjoemehteminie | tjoemehtæjja
 | gilmehtidh | gilmehtidh | gilmehtem | gilmehte | gilmehtien | gilmehtægan | gilmehtieh | gilmehtim | gilmehteminie | gilmehtæjja
+| lahkoehtidh | lahkoehtidh | lahkohtem | lahkohte | lahkoehtien | lahkoehtægan | lahkoehtieh | lahkoehtim | lahkohteminie | lahkoehtæjja
+| klajkoehtidh | klajkoehtidh | klajkohtem | klajkohte | klajkoehtien | klajkoehtægan | klajkoehtieh | klajkoehtim | klajkohteminie | klajkoehtæjja
+| gaarkoehtidh | gaarkoehtidh | gaarkohtem | gaarkohte | gaarkoehtien | gaarkoehtægan | gaarkoehtieh | gaarkoehtim | gaarkohteminie | gaarkoehtæjja
+| låapoehtidh | låapoehtidh | låapohtem | låapohte | låapoehtien | låapoehtægan | låapoehtieh | låapoehtim | låapohteminie | låapoehtæjja
+| gåassoehtidh | gåassoehtidh | gåassohtem | gåassohte | gåassoehtien | gåassoehtægan | gåassoehtieh | gåassoehtim | gåassohteminie | gåassoehtæjja
+| daanhtsoehtidh | daanhtsoehtidh | daanhtsohtem | daanhtsohte | daanhtsoehtien | daanhtsoehtægan | daanhtsoehtieh | daanhtsoehtim | daanhtsohteminie | daanhtsoehtæjja
+| klæhtoehtidh | klæhtoehtidh | klæhtohtem | klæhtohte | klæhtoehtien | klæhtoehtægan | klæhtoehtieh | klæhtoehtim | klæhtohteminie | klæhtoehtæjja
+| dåastoehtidh | dåastoehtidh | dåastohtem | dåastohte | dåastoehtien | dåastoehtægan | dåastoehtieh | dåastoehtim | dåastohteminie | dåastoehtæjja
+| sjåavoehtidh | sjåavoehtidh | sjåavohtem | sjåavohte | sjåavoehtien | sjåavoehtægan | sjåavoehtieh | sjåavoehtim | sjåavohteminie | sjåavoehtæjja
+| dåajvoehtidh | dåajvoehtidh | dåajvohtem | dåajvohte | dåajvoehtien | dåajvoehtægan | dåajvoehtieh | dåajvoehtim | dåajvohteminie | dåajvoehtæjja
 | geehpehtidh | geehpehtidh | geehpehtem | geehpehte | geehpehtien | geehpehtægan | geehpehtieh | geehpehtim | geehpehteminie | geehpehtæjja
+| dibrehtidh | dibrehtidh | dibrehtem | dibrehte | dibrehtien | dibrehtægan | dibrehtieh | dibrehtim | dibrehteminie | dibrehtæjja
 | leerehtidh | leerehtidh | leerehtem | leerehte | leerehtien | leerehtægan | leerehtieh | leerehtim | leerehteminie | leerehtæjja
+| goerehtidh | goerehtidh | goerehtem | goerehte | goerehtien | goerehtægan | goerehtieh | goerehtim | goerehteminie | goerehtæjja
 | lïerehtidh | lïerehtidh | lïerehtem | lïerehte | lïerehtien | lïerehtægan | lïerehtieh | lïerehtim | lïerehteminie | lïerehtæjja
+| lijrehtidh | lijrehtidh | lijrehtem | lijrehte | lijrehtien | lijrehtægan | lijrehtieh | lijrehtim | lijrehteminie | lijrehtæjja
 | ryöjrehtidh | ryöjrehtidh | ryöjrehtem | ryöjrehte | ryöjrehtien | ryöjrehtægan | ryöjrehtieh | ryöjrehtim | ryöjrehteminie | ryöjrehtæjja
+| goetsehtidh | goetsehtidh | goetsehtem | goetsehte | goetsehtien | goetsehtægan | goetsehtieh | goetsehtim | goetsehteminie | goetsehtæjja
 | jadtehtidh | jadtehtidh | jadtehtem | jadtehte | jadtehtien | jadtehtægan | jadtehtieh | jadtehtim | jadtehteminie | jadtehtæjja
+| doeltehtidh | doeltehtidh | doeltehtem | doeltehte | doeltehtien | doeltehtægan | doeltehtieh | doeltehtim | doeltehteminie | doeltehtæjja
+| damtehtidh | damtehtidh | damtehtem | damtehte | damtehtien | damtehtægan | damtehtieh | damtehtim | damtehteminie | damtehtæjja
 | gïevehtidh | gïevehtidh | gïevehtem | gïevehte | gïevehtien | gïevehtægan | gïevehtieh | gïevehtim | gïevehteminie | gïevehtæjja
 | lovvehtidh | lovvehtidh | lovvehtem | lovvehte | lovvehtien | lovvehtægan | lovvehtieh | lovvehtim | lovvehteminie | lovvehtæjja
 | kröövvehtidh | kröövvehtidh | kröövvehtem | kröövvehte | kröövvehtien | kröövvehtægan | kröövvehtieh | kröövvehtim | kröövvehteminie | kröövvehtæjja
 | maskastidh | maskastidh | maskestem | maskeste | maskastien | maskastægan | maskastieh | maskastim | maskesteminie | maskastæjja
 | marngestidh | marngestidh | marngestem | marngeste | marngestien | marngestægan | marngestieh | marngestim | marngesteminie | marngestæjja
+| laemtjiestidh | laemtjiestidh | laemtjestem | laemtjeste | laemtjiestien | laemtjiestægan | laemtjiestieh | laemtjiestim | laemtjesteminie | laemtjiestæjja
+| berkiestidh | berkiestidh | berkestem | berkeste | berkiestien | berkiestægan | berkiestieh | berkiestim | berkesteminie | berkiestæjja
+| strerkiestidh | strerkiestidh | strerkestem | strerkeste | strerkiestien | strerkiestægan | strerkiestieh | strerkiestim | strerkesteminie | strerkiestæjja
+| muerkiestidh | muerkiestidh | muerkestem | muerkeste | muerkiestien | muerkiestægan | muerkiestieh | muerkiestim | muerkesteminie | muerkiestæjja
+| skitjskiestidh | skitjskiestidh | skitjskestem | skitjskeste | skitjskiestien | skitjskiestægan | skitjskiestieh | skitjskiestim | skitjskesteminie | skitjskiestæjja
+| njelliestidh | njelliestidh | njellestem | njelleste | njelliestien | njelliestægan | njelliestieh | njelliestim | njellesteminie | njelliestæjja
+| tjuvliestidh | tjuvliestidh | tjuvlestem | tjuvleste | tjuvliestien | tjuvliestægan | tjuvliestieh | tjuvliestim | tjuvlesteminie | tjuvliestæjja
+| saemiestidh | saemiestidh | saemestem | saemeste | saemiestien | saemiestægan | saemiestieh | saemiestim | saemesteminie | saemiestæjja
+| faerhmiestidh | faerhmiestidh | faerhmestem | faerhmeste | faerhmiestien | faerhmiestægan | faerhmiestieh | faerhmiestim | faerhmesteminie | faerhmiestæjja
+| åesiestidh | åesiestidh | åesestem | åeseste | åesiestien | åesiestægan | åesiestieh | åesiestim | åesesteminie | åesiestæjja
+| gudtsiestidh | gudtsiestidh | gudtsestem | gudtseste | gudtsiestien | gudtsiestægan | gudtsiestieh | gudtsiestim | gudtsesteminie | gudtsiestæjja
+| vedtiestidh | vedtiestidh | vedtestem | vedteste | vedtiestien | vedtiestægan | vedtiestieh | vedtiestim | vedtesteminie | vedtiestæjja
+| vueptiestidh | vueptiestidh | vueptestem | vuepteste | vueptiestien | vueptiestægan | vueptiestieh | vueptiestim | vueptesteminie | vueptiestæjja
+| vuertiestidh | vuertiestidh | vuertestem | vuerteste | vuertiestien | vuertiestægan | vuertiestieh | vuertiestim | vuertesteminie | vuertiestæjja
+| laeviestidh | laeviestidh | laevestem | laeveste | laeviestien | laeviestægan | laeviestieh | laeviestim | laevesteminie | laeviestæjja
+| skråevviestidh | skråevviestidh | skråevvestem | skråevveste | skråevviestien | skråevviestægan | skråevviestieh | skråevviestim | skråevvesteminie | skråevviestæjja
+| tjuvviestidh | tjuvviestidh | tjuvvestem | tjuvveste | tjuvviestien | tjuvviestægan | tjuvviestieh | tjuvviestim | tjuvvesteminie | tjuvviestæjja
+| åadtjestidh | åadtjestidh | åadtjestem | åadtjeste | åadtjestien | åadtjestægan | åadtjestieh | åadtjestim | åadtjesteminie | åadtjestæjja
+| tjöödtjestidh | tjöödtjestidh | tjöödtjestem | tjöödtjeste | tjöödtjestien | tjöödtjestægan | tjöödtjestieh | tjöödtjestim | tjöödtjesteminie | tjöödtjestæjja
 | njulhtjestidh | njulhtjestidh | njulhtjestem | njulhtjeste | njulhtjestien | njulhtjestægan | njulhtjestieh | njulhtjestim | njulhtjesteminie | njulhtjestæjja
+| lïegkestidh | lïegkestidh | lïegkestem | lïegkeste | lïegkestien | lïegkestægan | lïegkestieh | lïegkestim | lïegkesteminie | lïegkestæjja
 | sigkestidh | sigkestidh | sigkestem | sigkeste | sigkestien | sigkestægan | sigkestieh | sigkestim | sigkesteminie | sigkestæjja
 | trïengkestidh | trïengkestidh | trïengkestem | trïengkeste | trïengkestien | trïengkestægan | trïengkestieh | trïengkestim | trïengkesteminie | trïengkestæjja
+| nahkestidh | nahkestidh | nahkestem | nahkeste | nahkestien | nahkestægan | nahkestieh | nahkestim | nahkesteminie | nahkestæjja
+| sveehkestidh | sveehkestidh | sveehkestem | sveehkeste | sveehkestien | sveehkestægan | sveehkestieh | sveehkestim | sveehkesteminie | sveehkestæjja
 | trimhkestidh | trimhkestidh | trimhkestem | trimhkeste | trimhkestien | trimhkestægan | trimhkestieh | trimhkestim | trimhkesteminie | trimhkestæjja
+| gurhkestidh | gurhkestidh | gurhkestem | gurhkeste | gurhkestien | gurhkestægan | gurhkestieh | gurhkestim | gurhkesteminie | gurhkestæjja
+| smååhkestidh | smååhkestidh | smååhkestem | smååhkeste | smååhkestien | smååhkestægan | smååhkestieh | smååhkestim | smååhkesteminie | smååhkestæjja
+| joejkestidh | joejkestidh | joejkestem | joejkeste | joejkestien | joejkestægan | joejkestieh | joejkestim | joejkesteminie | joejkestæjja
 | tjïelkestidh | tjïelkestidh | tjïelkestem | tjïelkeste | tjïelkestien | tjïelkestægan | tjïelkestieh | tjïelkestim | tjïelkesteminie | tjïelkestæjja
+| doerkestidh | doerkestidh | doerkestem | doerkeste | doerkestien | doerkestægan | doerkestieh | doerkestim | doerkesteminie | doerkestæjja
 | struvkestidh | struvkestidh | struvkestem | struvkeste | struvkestien | struvkestægan | struvkestieh | struvkestim | struvkesteminie | struvkestæjja
 | tjaalestidh | tjaalestidh | tjaalestem | tjaaleste | tjaalestien | tjaalestægan | tjaalestieh | tjaalestim | tjaalesteminie | tjaalestæjja
+| noelestidh | noelestidh | noelestem | noeleste | noelestien | noelestægan | noelestieh | noelestim | noelesteminie | noelestæjja
 | göölestidh | göölestidh | göölestem | gööleste | göölestien | göölestægan | göölestieh | göölestim | göölesteminie | göölestæjja
+| slognestidh | slognestidh | slognestem | slogneste | slognestien | slognestægan | slognestieh | slognestim | slognesteminie | slognestæjja
 | sjovnestidh | sjovnestidh | sjovnestem | sjovneste | sjovnestien | sjovnestægan | sjovnestieh | sjovnestim | sjovnesteminie | sjovnestæjja
+| gævnjoestidh | gævnjoestidh | gævnjostem | gævnjoste | gævnjoestien | gævnjoestægan | gævnjoestieh | gævnjoestim | gævnjosteminie | gævnjoestæjja
+| tjåadtjoestidh | tjåadtjoestidh | tjåadtjostem | tjåadtjoste | tjåadtjoestien | tjåadtjoestægan | tjåadtjoestieh | tjåadtjoestim | tjåadtjosteminie | tjåadtjoestæjja
+| raahkoestidh | raahkoestidh | raahkostem | raahkoste | raahkoestien | raahkoestægan | raahkoestieh | raahkoestim | raahkosteminie | raahkoestæjja
+| jarkoestidh | jarkoestidh | jarkostem | jarkoste | jarkoestien | jarkoestægan | jarkoestieh | jarkoestim | jarkosteminie | jarkoestæjja
+| leamoestidh | leamoestidh | leamostem | leamoste | leamoestien | leamoestægan | leamoestieh | leamoestim | leamosteminie | leamoestæjja
+| nænnoestidh | nænnoestidh | nænnostem | nænnoste | nænnoestien | nænnoestægan | nænnoestieh | nænnoestim | nænnosteminie | nænnoestæjja
+| daaroestidh | daaroestidh | daarostem | daaroste | daaroestien | daaroestægan | daaroestieh | daaroestim | daarosteminie | daaroestæjja
+| mådtsoestidh | mådtsoestidh | mådtsostem | mådtsoste | mådtsoestien | mådtsoestægan | mådtsoestieh | mådtsoestim | mådtsosteminie | mådtsoestæjja
+| gåajvoestidh | gåajvoestidh | gåajvostem | gåajvoste | gåajvoestien | gåajvoestægan | gåajvoestieh | gåajvoestim | gåajvosteminie | gåajvoestæjja
+| laapestidh | laapestidh | laapestem | laapeste | laapestien | laapestægan | laapestieh | laapestim | laapesteminie | laapestæjja
+| njabpestidh | njabpestidh | njabpestem | njabpeste | njabpestien | njabpestægan | njabpestieh | njabpestim | njabpesteminie | njabpestæjja
 | skreepestidh | skreepestidh | skreepestem | skreepeste | skreepestien | skreepestægan | skreepestieh | skreepestim | skreepesteminie | skreepestæjja
 | tjoehpestidh | tjoehpestidh | tjoehpestem | tjoehpeste | tjoehpestien | tjoehpestægan | tjoehpestieh | tjoehpestim | tjoehpesteminie | tjoehpestæjja
+| rïhpestidh | rïhpestidh | rïhpestem | rïhpeste | rïhpestien | rïhpestægan | rïhpestieh | rïhpestim | rïhpesteminie | rïhpestæjja
 | gaampestidh | gaampestidh | gaampestem | gaampeste | gaampestien | gaampestægan | gaampestieh | gaampestim | gaampesteminie | gaampestæjja
+| snaabrestidh | snaabrestidh | snaabrestem | snaabreste | snaabrestien | snaabrestægan | snaabrestieh | snaabrestim | snaabresteminie | snaabrestæjja
+| skeerestidh | skeerestidh | skeerestem | skeereste | skeerestien | skeerestægan | skeerestieh | skeerestim | skeeresteminie | skeerestæjja
+| steerestidh | steerestidh | steerestem | steereste | steerestien | steerestægan | steerestieh | steerestim | steeresteminie | steerestæjja
+| gïerestidh | gïerestidh | gïerestem | gïereste | gïerestien | gïerestægan | gïerestieh | gïerestim | gïeresteminie | gïerestæjja
+| vaarrestidh | vaarrestidh | vaarrestem | vaarreste | vaarrestien | vaarrestægan | vaarrestieh | vaarrestim | vaarresteminie | vaarrestæjja
 | lïhtsestidh | lïhtsestidh | lïhtsestem | lïhtseste | lïhtsestien | lïhtsestægan | lïhtsestieh | lïhtsestim | lïhtsesteminie | lïhtsestæjja
+| soptsestidh | soptsestidh | soptsestem | soptseste | soptsestien | soptsestægan | soptsestieh | soptsestim | soptsesteminie | soptsestæjja
 | aavhtestidh | aavhtestidh | aavhtestem | aavhteste | aavhtestien | aavhtestægan | aavhtestieh | aavhtestim | aavhtesteminie | aavhtestæjja
 | gaavestidh | gaavestidh | gaavestem | gaaveste | gaavestien | gaavestægan | gaavestieh | gaavestim | gaavesteminie | gaavestæjja
 | soevestidh | soevestidh | soevestem | soeveste | soevestien | soevestægan | soevestieh | soevestim | soevesteminie | soevestæjja
+| slaarvestidh | slaarvestidh | slaarvestem | slaarveste | slaarvestien | slaarvestægan | slaarvestieh | slaarvestim | slaarvesteminie | slaarvestæjja
+| dåajodh | dåajodh | dåajoem | dååje | dåajoen | dåajoejægan | dåajoeh | dåajoejim | dåajoeminie | dåajoje
+| våajodh | våajodh | våajoem | vååje | våajoen | våajoejægan | våajoeh | våajoejim | våajoeminie | våajoje
+| gæljodh | gæljodh | gæljoem | gylje | gæljoen | gæljoejægan | gæljoeh | gæljoejim | gæljoeminie | gæljoje
+| såvnjodh | såvnjodh | såvnjoem | sovnje | såvnjoen | såvnjoejægan | såvnjoeh | såvnjoejim | såvnjoeminie | såvnjoje
+| gævnjodh | gævnjodh | gævnjoem | gyvnje | gævnjoen | gævnjoejægan | gævnjoeh | gævnjoejim | gævnjoeminie | gævnjoje
+| darjodh | darjodh | darjoem | dorje | darjoen | darjoejægan | darjoeh | darjoejim | darjoeminie | darjoje
+| vaaksjodh | vaaksjodh | vaaksjoem | vååksje | vaaksjoen | vaaksjoejægan | vaaksjoeh | vaaksjoejim | vaaksjoeminie | vaaksjoje
+| laatjodh | laatjodh | laatjoem | lååtje | laatjoen | laatjoejægan | laatjoeh | laatjoejim | laatjoeminie | laatjoje
+| våatjodh | våatjodh | våatjoem | vååtje | våatjoen | våatjoejægan | våatjoeh | våatjoejim | våatjoeminie | våatjoje
+| åadtjodh | åadtjodh | åadtjoem | åådtje | åadtjoen | åadtjoejægan | åadtjoeh | åadtjoejim | åadtjoeminie | åadtjoje
+| tjåadtjodh | tjåadtjodh | tjåadtjoem | tjåådtje | tjåadtjoen | tjåadtjoejægan | tjåadtjoeh | tjåadtjoejim | tjåadtjoeminie | tjåadtjoje
+| njålhtjodh | njålhtjodh | njålhtjoem | njolhtje | njålhtjoen | njålhtjoejægan | njålhtjoeh | njålhtjoejim | njålhtjoeminie | njålhtjoje
+| gåhtjodh | gåhtjodh | gåhtjoem | gohtje | gåhtjoen | gåhtjoejægan | gåhtjoeh | gåhtjoejim | gåhtjoeminie | gåhtjoje
+| naavjodh | naavjodh | naavjoem | nååvje | naavjoen | naavjoejægan | naavjoeh | naavjoejim | naavjoeminie | naavjoje
+| sjeakodh | sjeakodh | sjeakoem | sjyöke | sjeakoen | sjeakoejægan | sjeakoeh | sjeakoejim | sjeakoeminie | sjeakoje
+| råakodh | råakodh | råakoem | rååke | råakoen | råakoejægan | råakoeh | råakoejim | råakoeminie | råakoje
+| tsåakodh | tsåakodh | tsåakoem | tsååke | tsåakoen | tsåakoejægan | tsåakoeh | tsåakoejim | tsåakoeminie | tsåakoje
+| håagkodh | håagkodh | håagkoem | håågke | håagkoen | håagkoejægan | håagkoeh | håagkoejim | håagkoeminie | håagkoje
+| tjåagkodh | tjåagkodh | tjåagkoem | tjåågke | tjåagkoen | tjåagkoejægan | tjåagkoeh | tjåagkoejim | tjåagkoeminie | tjåagkoje
+| dangkodh | dangkodh | dangkoem | dongke | dangkoen | dangkoejægan | dangkoeh | dangkoejim | dangkoeminie | dangkoje
+| dængkodh | dængkodh | dængkoem | dyngke | dængkoen | dængkoejægan | dængkoeh | dængkoejim | dængkoeminie | dængkoje
+| sægkodh | sægkodh | sægkoem | sygke | sægkoen | sægkoejægan | sægkoeh | sægkoejim | sægkoeminie | sægkoje
+| smaahkodh | smaahkodh | smaahkoem | smååhke | smaahkoen | smaahkoejægan | smaahkoeh | smaahkoejim | smaahkoeminie | smaahkoje
+| plåahkodh | plåahkodh | plåahkoem | plååhke | plåahkoen | plåahkoejægan | plåahkoeh | plåahkoejim | plåahkoeminie | plåahkoje
+| njæjhkodh | njæjhkodh | njæjhkoem | njyjhke | njæjhkoen | njæjhkoejægan | njæjhkoeh | njæjhkoejim | njæjhkoeminie | njæjhkoje
+| tsåalhkodh | tsåalhkodh | tsåalhkoem | tsåålhke | tsåalhkoen | tsåalhkoejægan | tsåalhkoeh | tsåalhkoejim | tsåalhkoeminie | tsåalhkoje
+| mearhkodh | mearhkodh | mearhkoem | myörhke | mearhkoen | mearhkoejægan | mearhkoeh | mearhkoejim | mearhkoeminie | mearhkoje
+| njaavhkodh | njaavhkodh | njaavhkoem | njååvhke | njaavhkoen | njaavhkoejægan | njaavhkoeh | njaavhkoejim | njaavhkoeminie | njaavhkoje
+| tjåhkodh | tjåhkodh | tjåhkoem | tjohke | tjåhkoen | tjåhkoejægan | tjåhkoeh | tjåhkoejim | tjåhkoeminie | tjåhkoje
+| hajkodh | hajkodh | hajkoem | hojke | hajkoen | hajkoejægan | hajkoeh | hajkoejim | hajkoeminie | hajkoje
+| klajkodh | klajkodh | klajkoem | klojke | klajkoen | klajkoejægan | klajkoeh | klajkoejim | klajkoeminie | klajkoje
+| stænkodh | stænkodh | stænkoem | stynke | stænkoen | stænkoejægan | stænkoeh | stænkoejim | stænkoeminie | stænkoje
+| tsåapkodh | tsåapkodh | tsåapkoem | tsååpke | tsåapkoen | tsåapkoejægan | tsåapkoeh | tsåapkoejim | tsåapkoeminie | tsåapkoje
+| gåaskodh | gåaskodh | gåaskoem | gååske | gåaskoen | gåaskoejægan | gåaskoeh | gåaskoejim | gåaskoeminie | gåaskoje
+| måaskodh | måaskodh | måaskoem | mååske | måaskoen | måaskoejægan | måaskoeh | måaskoejim | måaskoeminie | måaskoje
+| leatskodh | leatskodh | leatskoem | lyötske | leatskoen | leatskoejægan | leatskoeh | leatskoejim | leatskoeminie | leatskoje
+| laavkodh | laavkodh | laavkoem | lååvke | laavkoen | laavkoejægan | laavkoeh | laavkoejim | laavkoeminie | laavkoje
+| dealodh | dealodh | dealoem | dyöle | dealoen | dealoejægan | dealoeh | dealoejim | dealoeminie | dealoje
+| gåalodh | gåalodh | gåaloem | gååle | gåaloen | gåaloejægan | gåaloeh | gåaloejim | gåaloeminie | gåaloje
+| håalodh | håalodh | håaloem | hååle | håaloen | håaloejægan | håaloeh | håaloejim | håaloeminie | håaloje
+| njåalodh | njåalodh | njåaloem | njååle | njåaloen | njåaloejægan | njåaloeh | njåaloejim | njåaloeminie | njåaloje
+| tjåalodh | tjåalodh | tjåaloem | tjååle | tjåaloen | tjåaloejægan | tjåaloeh | tjåaloejim | tjåaloeminie | tjåaloje
+| nåalodh | nåalodh | nåaloem | nååle | nåaloen | nåaloejægan | nåaloeh | nåaloejim | nåaloeminie | nåaloje
+| daablodh | daablodh | daabloem | dååble | daabloen | daabloejægan | daabloeh | daabloejim | daabloeminie | daabloje
+| sæjlodh | sæjlodh | sæjloem | syjle | sæjloen | sæjloejægan | sæjloeh | sæjloejim | sæjloeminie | sæjloje
+| laavlodh | laavlodh | laavloem | lååvle | laavloen | laavloejægan | laavloeh | laavloejim | laavloeminie | laavloje
+| tjæjnodh | tjæjnodh | tjæjnoem | tjyjne | tjæjnoen | tjæjnoejægan | tjæjnoeh | tjæjnoejim | tjæjnoeminie | tjæjnoje
+| saarnodh | saarnodh | saarnoem | såårne | saarnoen | saarnoejægan | saarnoeh | saarnoejim | saarnoeminie | saarnoje
+| såahpodh | såahpodh | såahpoem | sååhpe | såahpoen | såahpoejægan | såahpoeh | såahpoejim | såahpoeminie | såahpoje
+| gæmhpodh | gæmhpodh | gæmhpoem | gymhpe | gæmhpoen | gæmhpoejægan | gæmhpoeh | gæmhpoejim | gæmhpoeminie | gæmhpoje
+| gearodh | gearodh | gearoem | györe | gearoen | gearoejægan | gearoeh | gearoejim | gearoeminie | gearoje
+| tjearodh | tjearodh | tjearoem | tjyöre | tjearoen | tjearoejægan | tjearoeh | tjearoejim | tjearoeminie | tjearoje
+| slearodh | slearodh | slearoem | slyöre | slearoen | slearoejægan | slearoeh | slearoejim | slearoeminie | slearoje
+| gåarodh | gåarodh | gåaroem | gååre | gåaroen | gåaroejægan | gåaroeh | gåaroejim | gåaroeminie | gåaroje
+| abrodh | abrodh | - | obre | - | - | - | - | abroeminie | -
+| åbrodh | åbrodh | - | obre | - | - | - | - | åbroeminie | -
+| årrodh | årrodh | årroem | orre | årroen | årroejægan | årroeh | årroejim | årroeminie | årroje
+| gærrodh | gærrodh | gærroem | gyrre | gærroen | gærroejægan | gærroeh | gærroejim | gærroeminie | gærroje
+| såvrodh | såvrodh | såvroem | sovre | såvroen | såvroejægan | såvroeh | såvroejim | såvroeminie | såvroje
+| veasodh | veasodh | veasoem | vyöse | veasoen | veasoejægan | veasoeh | veasoejim | veasoeminie | veasoje
+| åajsodh | åajsodh | åajsoem | ååjse | åajsoen | åajsoejægan | åajsoeh | åajsoejim | åajsoeminie | åajsoje
+| håajsodh | håajsodh | håajsoem | hååjse | håajsoen | håajsoejægan | håajsoeh | håajsoejim | håajsoeminie | håajsoje
+| jæjsodh | jæjsodh | jæjsoem | jyjse | jæjsoen | jæjsoejægan | jæjsoeh | jæjsoejim | jæjsoeminie | jæjsoje
+| målsodh | målsodh | målsoem | molse | målsoen | målsoejægan | målsoeh | målsoejim | målsoeminie | målsoje
+| gåassodh | gåassodh | gåassoem | gååsse | gåassoen | gåassoejægan | gåassoeh | gåassoejim | gåassoeminie | gåassoje
+| båssodh | båssodh | båssoem | bosse | båssoen | båssoejægan | båssoeh | båssoejim | båssoeminie | båssoje
+| daanhtsodh | daanhtsodh | daanhtsoem | dåånhtse | daanhtsoen | daanhtsoejægan | daanhtsoeh | daanhtsoejim | daanhtsoeminie | daanhtsoje
+| gaatodh | gaatodh | gaatoem | gååte | gaatoen | gaatoejægan | gaatoeh | gaatoejim | gaatoeminie | gaatoje
+| gåatodh | gåatodh | gåatoem | gååte | gåatoen | gåatoejægan | gåatoeh | gåatoejim | gåatoeminie | gåatoje
+| låadtodh | låadtodh | låadtoem | låådte | låadtoen | låadtoejægan | låadtoeh | låadtoejim | låadtoeminie | låadtoje
+| nåajtodh | nåajtodh | nåajtoem | nååjte | nåajtoen | nåajtoejægan | nåajtoeh | nåajtoejim | nåajtoeminie | nåajtoje
+| nårtodh | nårtodh | nårtoem | norte | nårtoen | nårtoejægan | nårtoeh | nårtoejim | nårtoeminie | nårtoje
+| dåastodh | dåastodh | dåastoem | dååste | dåastoen | dåastoejægan | dåastoeh | dåastoejim | dåastoeminie | dåastoje
+| sjaavodh | sjaavodh | sjaavoem | sjååve | sjaavoen | sjaavoejægan | sjaavoeh | sjaavoejim | sjaavoeminie | sjaavoje
+| gåajvodh | gåajvodh | gåajvoem | gååjve | gåajvoen | gåajvoejægan | gåajvoeh | gåajvoejim | gåajvoeminie | gåajvoje
+| dåalvodh | dåalvodh | dåalvoem | dåålve | dåalvoen | dåalvoejægan | dåalvoeh | dåalvoejim | dåalvoeminie | dåalvoje
+| darvodh | darvodh | darvoem | dorve | darvoen | darvoejægan | darvoeh | darvoejim | darvoeminie | darvoje
+| tjåarvodh | tjåarvodh | tjåarvoem | tjåårve | tjåarvoen | tjåarvoejægan | tjåarvoeh | tjåarvoejim | tjåarvoeminie | tjåarvoje
+| dåvvodh | dåvvodh | dåvvoem | dovve | dåvvoen | dåvvoejægan | dåvvoeh | dåvvoejim | dåvvoeminie | dåvvoje
 | ij | - | - | - | - | - | - | - | - | -

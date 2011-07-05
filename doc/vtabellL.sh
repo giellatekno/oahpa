@@ -2,7 +2,7 @@
 
 
 # c. only oahpa verbs
-cat $GTHOME/ped/sma/src/v_smanob.xml |tr '\n' '™' | sed 's/<l /£/g;'| tr '£' '\n'|tr '™' '\n' |grep '^pos'|tr '<' '>' | cut -d">" -f2|sort|uniq > t3
+cat $GTHOME/ped/sma/src/v_smanob.xml | grep '<l ' | tr "<" ">" | cut -d ">" -f3 | sort -u > t3
 
 DATO=`date`
 
