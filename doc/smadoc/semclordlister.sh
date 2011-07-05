@@ -126,7 +126,7 @@ cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"ANI
 cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"BUILDING_ROOM_A"' | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_BUILDING_ROOM_A.jspwiki
 cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"COMMAND_V"' | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_COMMAND_V.jspwiki
 cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"FAMILY_OTHER"' | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_FAMILY_OTHER.jspwiki
-cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"FINANSE_V"' | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_FINANSE_V.jspwiki
+cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"FINANCE_V"' | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_FINANCE_V.jspwiki
 cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"STORY"' | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_STORY.jspwiki
 cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"TEXT_OTHER"' | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_TEXT_OTHER.jspwiki
 cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"TIME_DAY"' | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_TIME_DAY.jspwiki
