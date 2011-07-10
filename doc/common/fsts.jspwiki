@@ -1,6 +1,10 @@
 
 !!!FSTs
-Oahpa is dependent on linguistic resources which are located in /opt/smi/sme/bin/. Compile the new versions of the fsts when needed.
+Oahpa is dependent on linguistic resources. Some of them are transducers.
+
+!!The sme transducers
+
+The North Saami transducers are located on victorio, in /opt/smi/sme/bin/. Compile new versions of the fsts when needed.
 
 {{{
 ped-sme.fst
@@ -8,4 +12,16 @@ sme-num.fst
 isme-norm.fst
 isme-GG.restr.fst
 isme-KJ.restr.fst
+}}}
+
+
+!!The sma transducers
+
+The South Saami transducers are located on victorio, in /home/smaoahpa/smaoahpa/gtsvn/gt/sma/bin/.
+
+{{{
+isma-L.restr.fst
+isma-SH.restr.fst
+ped-sma.fst
+sma-num.fst
 }}}
