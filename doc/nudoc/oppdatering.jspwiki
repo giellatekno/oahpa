@@ -22,6 +22,7 @@
 
 !!Nye filer
 * lage pronPers for morfa. Har laga en rein genereringsfil istedenfor leksikonfil. Har sjekka genereringa, den ser ok ut. Men vi trenger nok semantiske sett pga av MorfaC, og leksikonfil er svaret på det?
+  - Ryan: me treng ikkje semantiske sett lengre, fordi det er lettare å nytta tag-setter i sma/data_sma/meta/tags.txt, slik at man kan velja 3 person eller 1 og 2 person pronomener. Det er heller ikkje noko pronomen-oppgåver i Leksa, då treng me ikkje semantiske setter for å skilja mellom deim.  
 * lage adverbs.xml for leksa - ok
 * lage multiword.xml for leksa
 * sjekke klokkeautomat - Trond
@@ -36,6 +37,7 @@
 sma: <l margo="e" pos="n" soggi="e" stem="3syll">
 sme: <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="i" rime="0"/>
 }}}
-
+* sma: spell relax ï/i, ö/ø, osv.
+* sma: installeringsprosessen genererar alle formane som vert innført i databasen ein gong på byrjinga, sme: genererar paradigmer til kvar ord ein gong per ord
 
 
