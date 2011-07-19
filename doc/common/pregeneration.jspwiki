@@ -1,0 +1,50 @@
+!!!! Pregenerated forms
+
+Any lexicon entry can contain a paradigm of forms, however for sme- and sma-oahpa, this is used most for
+pronouns.
+
+Following is a sample entry with a <mini_paradigm />
+
+{{{
+	<e>
+      <lg>
+         <l pos="pron" type="pers">manne</l>
+         <analysis>Pron_Pers_Sg1_Nom</analysis>
+         <mini_paradigm>
+            <analysis ms="Pron_Pers_Sg1_Nom">
+               <wordform>manne</wordform>
+            </analysis>
+            <analysis ms="Pron_Pers_Sg1_Acc">
+               <wordform>mannem</wordform>
+            </analysis>
+            <analysis ms="Pron_Pers_Sg1_Gen">
+               <wordform>mov</wordform>
+            </analysis>
+            <analysis ms="Pron_Pers_Sg1_Ill">
+               <wordform>munnjien</wordform>
+            </analysis>
+            <analysis ms="Pron_Pers_Sg1_Ill" dial="NG">
+               <wordform>munnjan</wordform>
+            </analysis>
+            <analysis ms="Pron_Pers_Sg1_Ine">
+               <wordform>mannesne</wordform>
+            </analysis>
+            <analysis ms="Pron_Pers_Sg1_Ela">
+               <wordform>manneste</wordform>
+            </analysis>
+            <analysis ms="Pron_Pers_Sg1_Com">
+               <wordform>mannine</wordform>
+            </analysis>
+         </mini_paradigm>
+      </lg>
+   </e>
+}}}
+
+Here, we see that each item in the <mini_paradigm/>, an <analysis /> node
+contains a tag as an **ms** attribute, with underscores (_) instead of plus 
+symbols (+), and the <analysis /> node contains child nodes for each word form.
+Multiple word forms are acceptable for each analysis, and analyses can be
+separated depending on dialect (dial) attributes.
+
+Each <lg /> may also contain its own <analysis /> node, which contains a tag. 
+Typically these forms are in nominative. 

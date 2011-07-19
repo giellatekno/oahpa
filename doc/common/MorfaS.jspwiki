@@ -1,3 +1,24 @@
 !!!Documenting MorfaS
 
-tbw.
+Morfa-S relies on three types of files to be installed properly.
+
+!! File dependencies
+
+* Word lexicon file (n_smanob.xml)
+* Paradigm file (paradigms.txt)
+* tags file (tags.txt)
+
+!! Installation command 
+
+{{{
+	python install.py --file n_smanob.xml --paradigmfile paradigms.txt --tagfile tags.txt
+}}}
+
+!! FST locations
+
+See [FST documentation|fsts.html] for more information.
+
+!! Adding question types
+
+
+

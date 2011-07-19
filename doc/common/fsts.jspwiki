@@ -39,3 +39,28 @@ generate words, so if something odd seems to be happening, check the paths that 
 
 Numra and Klokka will also give errors when the FSTs cannot be found, but these errors are intentionally
 vague for security purposes.
+
+!!smaoahpa dialects
+
+Smaoahpa requires additional settings in settings.py for dialects and fst paths.
+
+{{{
+	DIALECTS = {
+		'main': ('isma-norm.fst', 'Unrestricted'),
+		'SH': ('isma-SH.restr.fst', 'Short forms'),
+		'L': ('isma-L.restr.fst', 'Long forms'),
+		'NG': (None, 'Non-Presented forms'),
+	}
+}}}
+
+Data is stored in a Python dictionary, each key is a short name for the dialect, 
+and the value is a tuple containing the FST file name (without the path),
+and a long descriptive name for the admin interface. The short name must correspond
+to the dialect name as used in lexicon files. 
+
+In order to generate, an FST file must be defined here. Forms are added to corresponding
+dialects depending on the success of the generation process.
+
+!!Pregeneration
+[Pregenerated forms|pregeneration.html] have a specific XML structure for supplying forms
+in the paradigm. See that document for more information.
