@@ -35,3 +35,57 @@ svn up
 django-admin.py compilemessages
 }}}
 
+!!New localisations
+
+Django has two locations for localisations, one is the "global" level, which contains
+translation strings for the Django administrative interface, and a local project level, 
+the management of which is described above. Django does not allow creation of new localisations
+if the global level does not contain a directory containing translation strings. To save time, 
+the global level does not need to contain translation strings for, for example, Northern Sámi,
+because end users will never see the internal global strings.
+
+!Creating a new localisation
+
+* Locate the site-packages directory for the version of python in use. The easiest way is from
+  the oahpa project directory by using the Python command-line interpreter.
+
+{{{
+	./manage.py shell
+	>>> import django
+	>>> django
+	<module 'django' from '/usr/lib/python2.6/site-packages/django/__init__.pyc'>
+}}} 
+
+* In the directory that is returned, navigate to the locale directory
+
+{{{
+    cd /usr/lib/python2.6/site-packages/django/conf/locale/
+}}}
+
+* Then copy one of the existing folders to a new folder with the language code for the localisation.
+
+{{{
+	cp -R nn sma
+}}}
+
+!settings.py 
+ 
+The project's settings.py file must be modified to include the localisation language, so that administrative
+commands will work. 
+
+{{{
+	LANGUAGES = (
+		('sma', 'South Sami'),
+		('no', 'Norwegian'),
+		('sv', 'Swedish'),
+		('en', 'English'),
+	)
+}}}
+
+After completing these steps, it will be possible to work with and see local project-level localisation strings in
+the application.
+
+
+!!!Official documentation
+
+https://docs.djangoproject.com/en/dev/topics/i18n/localization/
