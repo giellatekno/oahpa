@@ -25,3 +25,17 @@ isma-SH.restr.fst
 ped-sma.fst
 sma-num.fst
 }}}
+
+Smaoahpa has a setting which is used by all of the games and install scripts to locate transducers, as well
+as the lookup command.
+
+{{{
+	LOOKUP_TOOL = '/usr/local/bin/lookup'
+	FST_DIRECTORY = '/home/smaoahpa/smaoahpa/gtsvn/gt/sma/bin'
+}}}
+
+When in doubt, the smaoahpa install command will show which FSTs are in use each time they are called to
+generate words, so if something odd seems to be happening, check the paths that this command returns.
+
+Numra and Klokka will also give errors when the FSTs cannot be found, but these errors are intentionally
+vague for security purposes.
