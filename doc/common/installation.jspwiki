@@ -1,0 +1,55 @@
+!!!! Smaoahpa installation
+
+This documents all of the configuration details of our smaoahpa instance in specific (with some details obfuscated).
+
+!!! Prerequisites
+
+!! Required Python modules
+
+ * py-yaml (http://pyyaml.org/)
+ * django (http://djangoproject.com/ version 1.3)
+ * python-mysql (MySQLdb)
+
+!! FSTs and data generation
+
+For most convenience, store data files and copies of the generator and analyzer within the project directory so that it will be easier to find and troubleshoot if forms seem not to be generating.
+
+FSTs are currently stored within ~/smaoahpa/gtsvn/gt/sma/
+Source data is stored at: ~/smaoahpa/data_sma/
+
+It is recommended to check out the FST data beginning at the /gt/ directory, in order to get makefiles and other necessary build scripts.
+
+!! Misc
+
+ * Our smaoahpa instance currently uses mod_python, however other configurations are possible and recommended as mod_python support has been discontinued.
+
+!!! Database
+
+Our server uses MySQL for its database backend, and it may be used for development on private machines. However, Sqlite3 is another option, and it is a file-contained database system which allows for easy deletion and portability of all database information. If you choose to use Sqlite3 for development, very little configuration is needed, and because Django abstracts away from the need to make database-specific code, no code changes outside from settings.py are necessary to switch databases.
+
+In order to configure the database, the best option is to follow Django documentation: 
+
+* Django settings.py file: https://docs.djangoproject.com/en/1.3/ref/settings/
+
+!!! Installation steps
+
+After having installed all of the necessary python modules, it is time to generate data. First, generate all of the FSTs with the following commands:
+
+{{{ 
+make TARGET=sma
+make ifst-restr GTLANG=sma DIALECT=L
+make ifst-restr GTLANG=sma DIALECT=SH
+
+make num.fst GTLANG=sma
+make inum.fst GTLANG=sma
+}}}
+
+Then, take a peek at the install_configuration.yaml settings file to ensure that all of the paths match up. Any errors in the process will be reported at the end, but will not be reported in the middle of the process if it is forced to stop. After checking the paths, run the following command: 
+
+{{{
+python manage.py install --config install_configuration.yaml
+}}}
+
+The process may take several hours due to the large amount of forms that need to be generated, and the time it takes to install questions for Morfa-C.
+
+
