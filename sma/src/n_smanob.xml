@@ -84,7 +84,7 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="yes">mormor</t>
             <t pos="n" stat="notpref" tcomm="yes">farmor</t>
             <t pos="n" stat="notpref" tcomm="yes">farförälder</t>
-            <t pos="n" stat="notpref" tcomm="yes">moförälder</t>
+            <t pos="n" stat="notpref" tcomm="yes">morförälder</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">bestemor_ENG</t>
@@ -144,7 +144,8 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="yes">barnebarn</t>
          </tg>
          <tg xml:lang="swe">
-            <tf pos="phrase_n" stat="pref" tcomm="no">mormors barnbarn</tf>
+            <t pos="n" stat="pref" tcomm="no">barnbarn</t>
+            <tf pos="phrase_n" tcomm="no">mormors barnbarn</tf>
             <tf pos="phrase_n" tcomm="no">farmors barnbarn</tf>
          </tg>
          <tg xml:lang="eng">
@@ -205,7 +206,7 @@ For the full license text, see the link above.</lic>
             <tf pos="phrase_n" tcomm="no">äldre man</tf>
             <tf pos="phrase_n" tcomm="no">gammal man</tf>
             <tf pos="phrase_n" tcomm="no">gammal karl</tf>
-            <tf pos="phrase_n" tcomm="no"> karl</tf>
+            <tf pos="phrase_n" tcomm="no">karl</tf>
          </tg>
          <tg xml:lang="eng">
             <t pos="phrase_n" tcomm="no">eldre mann_ENG</t>
@@ -247,8 +248,10 @@ For the full license text, see the link above.</lic>
             <tf pos="phrase_n" tcomm="no">barnebarn til farfar</tf>
             <t pos="n" stat="notpref" tcomm="yes">barnebarn</t>
          </tg>
-         <tg xml:lang="swe">
-            <tf pos="phrase_n" stat="pref" tcomm="no">bestefars barnebarn_SWE</tf>
+         <tg xml:lang="nob">
+            <tf pos="phrase_n" stat="pref" tcomm="no">barnbarn</tf>
+            <tf tcomm="no">morfars barnbarn</tf>
+            <tf pos="phrase_n" tcomm="no">farfars barnbarn</tf>
          </tg>
          <tg xml:lang="eng">
             <t pos="phrase_n" stat="pref" tcomm="no">bestefars barnebarn_ENG</t>
@@ -409,7 +412,8 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">spor</t>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
-            <tf pos="phrase_n" stat="pref" tcomm="no">spår efter renflock</tf>
+            <tf pos="phrase_n" stat="pref" tcomm="no">spår efter renhjord</tf>
+            <tf pos="phrase_n" stat="pref" tcomm="no" xml:lang="swe">spår efter renflock</tf>
             <t pos="n" stat="notpref" tcomm="no">renspår</t>
             <t pos="n" stat="notpref" tcomm="no">spår</t>
          </tg>
@@ -629,6 +633,7 @@ For the full license text, see the link above.</lic>
          </tg>
          <tg xml:lang="swe">
             <t pos="n" stat="pref" tcomm="no">urfolk</t>
+            <t pos="n" stat="notpref" tcomm="no" xml:lang="swe">urbefolkning</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">urfolk_ENG</t>
@@ -993,7 +998,7 @@ For the full license text, see the link above.</lic>
          <tg check="'semantics_and_re'" xml:lang="swe">
             <tf pos="phrase_n" stat="pref" tcomm="no">tidigtfödande renvaja</tf>
             <tf pos="phrase_n" tcomm="no">tidigtfödande renko</tf>
-            <tf pos="phrase_n" tcomm="no">renvaja som föder tidigt på våren</tf>
+            <tf pos="phrase_n" tcomm="no">renvaja som föder tidigt om våren</tf>
          </tg>
          <tg xml:lang="eng">
             <t pos="phrase_n" stat="pref" tcomm="no">tidligfødende simle_ENG</t>
@@ -1195,6 +1200,7 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">enkemann</t>
          </tg>
          <tg xml:lang="swe">
+            <t pos="n" stat="notpref" tcomm="no">änkeman</t>
             <t pos="n" stat="notpref" tcomm="no">änkling</t>
          </tg>
          <tg xml:lang="eng">
@@ -1368,9 +1374,7 @@ For the full license text, see the link above.</lic>
          <tg check="'semantics_and_re'" xml:lang="swe">
             <re>om kvasst redskap_SWE</re>
             <t pos="n" stat="pref" tcomm="no">egg</t>
-            <t pos="n" stat="notpref" tcomm="no">knivsegg</t>
             <t pos="n" stat="notpref" tcomm="no">knivegg</t>
-            <t pos="n" stat="notpref" tcomm="no">yxsegg</t>
             <t pos="n" stat="notpref" tcomm="no">yxegg</t>
          </tg>
          <tg xml:lang="eng">
@@ -1589,6 +1593,9 @@ For the full license text, see the link above.</lic>
          </tg>
          <tg xml:lang="swe">
             <t pos="n" stat="pref" tcomm="no">farmor</t>
+            <tf tcomm="no">pappas mor</tf>
+            <tf tcomm="no">fars mor</tf>
+            <t pos="n" stat="notpref" tcomm="yes" xml:lang="swe">farförälder</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">farmor_ENG</t>
@@ -1628,6 +1635,9 @@ For the full license text, see the link above.</lic>
          </tg>
          <tg xml:lang="swe">
             <t pos="n" stat="pref" tcomm="no">farfar</t>
+            <tf tcomm="no" xml:lang="swe">pappas far</tf>
+            <tf tcomm="no" xml:lang="swe">fars far</tf>
+            <t pos="n" stat="notpref" tcomm="yes" xml:lang="swe">farförälder</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">farfar_ENG</t>
@@ -1663,7 +1673,8 @@ For the full license text, see the link above.</lic>
          </tg>
          <tg xml:lang="swe">
             <t pos="n" stat="pref" tcomm="no">far</t>
-            <t pos="n" stat="notpref" tcomm="no">farsa</t>
+            <t pos="n" stat="notpref" tcomm="no">fader</t>
+            <t pos="n" stat="notpref" tcomm="no">pappa</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">far_ENG</t>
@@ -1863,7 +1874,7 @@ For the full license text, see the link above.</lic>
          <tg check="'semantics_and_re'" xml:lang="swe">
             <t pos="n" stat="pref" tcomm="no">frukost</t>
             <t pos="n" stat="notpref" tcomm="no">morgonsmat</t>
-            <t pos="n" stat="notpref" tcomm="no">morgonmat</t>
+            <t pos="n" stat="notpref" tcomm="no">frukostmat</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">frokost_ENG</t>
@@ -1956,8 +1967,9 @@ For the full license text, see the link above.</lic>
             <tf pos="phrase_n" stat="pref" tcomm="no">hårside av barket skinn</tf>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
-            <tf pos="phrase_n" stat="pref" tcomm="no">hårsida av garvat jskinn</tf>
+            <tf pos="phrase_n" stat="pref" tcomm="no">hårsida av garvat skinn</tf>
             <tf pos="phrase_n" tcomm="no">hårsida av berett skinn</tf>
+            <tf pos="phrase_n" tcomm="no">hårsida av garvat läder</tf>
          </tg>
          <tg xml:lang="eng">
             <t pos="phrase_n" stat="pref" tcomm="no">hårside av barket skinn_ENG</t>
@@ -2101,8 +2113,10 @@ For the full license text, see the link above.</lic>
             <te>for å henge gryta</te>
             <t pos="n" stat="notpref" tcomm="no">gryteås</t>
          </tg>
-         <tg xml:lang="swe">
-            <tf pos="phrase_n" stat="pref" tcomm="no">tverrstokk over ildstedet_SWE</tf>
+         <tg xml:lang="nob">
+            <tf pos="phrase_n" stat="pref" tcomm="no">trästock tvärs över eldstaden</tf>
+            <te>för att hänga grytan</te>
+            <t pos="n" stat="notpref" tcomm="no">gryteås</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="phrase_n" stat="pref" tcomm="no">tverrstokk over ildstedet_ENG</t>
@@ -2295,10 +2309,10 @@ For the full license text, see the link above.</lic>
             <tf pos="phrase_n" tcomm="no">trykkende vær</tf>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
-            <tf pos="phrase_n" stat="pref" tcomm="no">tungt väder</tf>
+            <tf pos="phrase_n" stat="pref" tcomm="no">överskyat och mörkt väder</tf>
             <tf pos="phrase_n" tcomm="no">tryckande väder</tf>
+            <tf pos="phrase_n" tcomm="no">tungt väder</tf>
             <tf pos="phrase_n" tcomm="no">överskyat väder</tf>
-            <tf pos="phrase_n" tcomm="no">väder</tf>
          </tg>
          <tg xml:lang="eng">
             <t pos="phrase_n" stat="pref" tcomm="no">tungt vær_ENG</t>
@@ -2325,8 +2339,7 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="pref" tcomm="no">fremmedspråk</t>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">främmandespråk</t>
-            <tf pos="phrase_n" tcomm="no">främmande språk</tf>
+            <t pos="phrase" stat="pref" tcomm="no">främmande språk</t>
             <tf pos="phrase_n" tcomm="no">okänt språk</tf>
          </tg>
          <tg xml:lang="eng">
@@ -2609,7 +2622,8 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">varmvatn</t>
          </tg>
          <tg xml:lang="swe">
-            <tf pos="phrase_n" stat="pref" tcomm="no">varmt vann_SWE</tf>
+            <tf pos="phrase_n" stat="pref" tcomm="no">varmt vatten</tf>
+            <tf pos="phrase_n" tcomm="no">hett vatten</tf>
          </tg>
          <tg xml:lang="eng">
             <t pos="phrase_n" stat="pref" tcomm="no">varmt vann_ENG</t>
@@ -2642,6 +2656,7 @@ For the full license text, see the link above.</lic>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
             <t pos="n" stat="pref" tcomm="no">fjällsida</t>
+            <tf pos="phrase_n" tcomm="no">brant sluttning nedanför fjällkanten</tf>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">fjellside_ENG</t>
@@ -2660,7 +2675,7 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">side</t>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
-            <re>om stående ting_SWE</re>
+            <re>om stående ting</re>
             <t pos="n" stat="notpref" tcomm="no">sida</t>
          </tg>
          <tg xml:lang="eng">
@@ -2758,8 +2773,9 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">pung</t>
             <te>på grarein</te>
          </tg>
-         <tg check="'semantics_and_re'" xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">pung</t>
+         <tg xml:lang="swe">
+            <t pos="n" stat="notpref" tcomm="no">pung</t>
+            <te>på rentjur</te>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="notpref" tcomm="no">pung_ENG</t>
@@ -2805,7 +2821,8 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="yes">kulde</t>
          </tg>
          <tg xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">sprengkulde_SWE</t>
+            <tf pos="phrase_n" stat="pref" tcomm="no">sträng kyla</tf>
+            <t pos="n" stat="notpref" tcomm="yes">kyla</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">sprengkulde_ENG</t>
@@ -3102,6 +3119,8 @@ For the full license text, see the link above.</lic>
          </tg>
          <tg xml:lang="swe">
             <t pos="n" stat="pref" tcomm="no">lön</t>
+            <t pos="n" stat="notpref" tcomm="no" xml:lang="swe">avlöning</t>
+            <t pos="n" stat="notpref" tcomm="no" xml:lang="swe">arvode</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">lønn_ENG</t>
@@ -3121,7 +3140,7 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">tverrstang</t>
          </tg>
          <tg xml:lang="swe">
-            <t pos="n" stat="notpref" tcomm="no">tverrstang_SWE</t>
+            <t pos="phrase_n" stat="notpref" tcomm="no">stång för upphängning av saker </t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="notpref" tcomm="no">tverrstang_ENG</t>
@@ -3141,8 +3160,9 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">snor</t>
             <te>til å henge ting på</te>
          </tg>
-         <tg xml:lang="swe">
-            <t pos="n" stat="notpref" tcomm="no">snöre</t>
+         <tg xml:lang="nob">
+            <t pos="n" stat="notpref" tcomm="no">rep</t>
+            <te>att hänga saker i</te>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="notpref" tcomm="no">snor_ENG</t>
@@ -3177,7 +3197,8 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">lønningstillegg</t>
          </tg>
          <tg xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">lönepåslag</t>
+            <t pos="n" stat="pref" tcomm="no">lönetilläggg</t>
+            <t pos="n" stat="notpref" tcomm="no">lönetillägg</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">lønnstillegg_ENG</t>
@@ -3404,7 +3425,10 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">lærsko</t>
          </tg>
          <tg xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">komag_SWE</t>
+            <t pos="n" stat="pref" tcomm="no">lädersko</t>
+            <te>sommersko av barkat läder utan hår</te>
+            <t pos="n" stat="notpref" tcomm="no">läderkänga</t>
+            <t pos="n" stat="notpref" tcomm="no">sommarsko</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">komag_ENG</t>
@@ -3495,8 +3519,9 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="pref" tcomm="no">barsok</t>
             <te>begynner 24. august</te>
          </tg>
-         <tg xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">barsok_SWE</t>
+         <tg xml:lang="nob">
+            <t pos="n" stat="pref" tcomm="no">Bartolomeus-veckan</t>
+            <te>börjar 24 augusti</te>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">barsok_ENG</t>
@@ -3522,7 +3547,7 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="pref" tcomm="no">flyktning</t>
          </tg>
          <tg xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">flyktning</t>
+            <t pos="n" stat="pref" tcomm="no">flykting</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">refugee</t>
@@ -3556,7 +3581,12 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">skismørning</t>
          </tg>
          <tg xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">vallning</t>
+            <t pos="n" stat="pref" tcomm="no">smorning</t>
+            <te>för skida, skinn, sko m.m</te>
+            <t pos="n" stat="notpref" tcomm="no">skidvalla</t>
+            <t pos="n" stat="notpref" tcomm="no">skidsmorning</t>
+            <t pos="n" stat="notpref" tcomm="no">skinnsmorning</t>
+            <t pos="n" stat="notpref" tcomm="no">skomorning</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">smurning_ENG</t>
@@ -3620,6 +3650,7 @@ For the full license text, see the link above.</lic>
          </tg>
          <tg xml:lang="swe">
             <t pos="n" stat="pref" tcomm="no">fjäder</t>
+            <tf pos="phrase_n" tcomm="no" xml:lang="swe">dun</tf>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">fjær_ENG</t>
@@ -3907,6 +3938,7 @@ For the full license text, see the link above.</lic>
          </tg>
          <tg xml:lang="swe">
             <t pos="n" stat="pref" tcomm="no">pojke</t>
+            <t pos="n" stat="notpref" tcomm="no" xml:lang="swe">kille</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">gutt_ENG</t>
@@ -4009,7 +4041,8 @@ For the full license text, see the link above.</lic>
             <te>den tiden da de fleste kalver fødes</te>
          </tg>
          <tg xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">kalvingstid_SWE</t>
+            <t pos="n" stat="pref" tcomm="no">kalvingstid</t>
+            <te>tiden när de flesta kalvar föds</te>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">kalvingstid_ENG</t>
@@ -4040,7 +4073,8 @@ For the full license text, see the link above.</lic>
             <te>den mest aktive parringstiden, ved Mikkelsmesse 24. september</te>
          </tg>
          <tg xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">parringstid_SWE</t>
+            <t pos="n" stat="pref" tcomm="no">parningstid</t>
+            <te>den mest aktiva parningstiden, vid Mikkelmäss 24 september</te>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">parringstid_ENG</t>
@@ -4097,7 +4131,7 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">rompe</t>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
-            <re>om kroppsdel på menneske_SWE</re>
+            <re>om kroppsdel på människa</re>
             <t pos="n" stat="pref" tcomm="no">bak</t>
             <t pos="n" stat="notpref" tcomm="no">rumpa</t>
             <t pos="n" stat="notpref" tcomm="no">ända</t>
@@ -4132,7 +4166,9 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">gang</t>
          </tg>
          <tg xml:lang="swe">
-            <tf pos="phrase_n" stat="pref" tcomm="no">nederste plass i gamma_SWE</tf>
+            <tf pos="phrase_n" stat="pref" tcomm="no">nedersta platsen i kåtan</tf>
+            <te>nedersta platsen på var sida i kåtan, från dörren till den första bågstången</te>
+            <t pos="n" stat="notpref" tcomm="no">gång</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="phrase_n" stat="pref" tcomm="no">nederste plass i gamma_ENG</t>
@@ -4161,7 +4197,7 @@ For the full license text, see the link above.</lic>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
             <t pos="n" stat="pref" tcomm="no">knapp</t>
-            <t pos="n" stat="notpref" tcomm="no">klädesknapp</t>
+            <t pos="phrase_n" stat="notpref" tcomm="no" xml:lang="swe">knapp på kläder</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">knapp_ENG</t>
@@ -4445,8 +4481,7 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">arbetserbjudande</t>
             <t pos="n" stat="notpref" tcomm="no">jobberbjudande</t>
             <tf pos="phrase_n" tcomm="no">jobb erbjudande</tf>
-            <t pos="n" stat="notpref" tcomm="no">arbetserbjudande</t>
-            <tf pos="phrase_n" tcomm="no">arbets erbjudande</tf>
+            <tf pos="phrase_n" tcomm="no">erbjudande om arbete</tf>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">jobbtilbud_ENG</t>
@@ -4511,9 +4546,9 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">arbeidsmetode</t>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">arbetsform</t>
+            <t pos="n" stat="pref" tcomm="no">arbetsmetod</t>
             <t pos="n" stat="notpref" tcomm="no">arbetssätt</t>
-            <t pos="n" stat="notpref" tcomm="no">arbetsmetod</t>
+            <t pos="n" stat="notpref" tcomm="no">arbetsform</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">arbeidsform_ENG</t>
@@ -4545,8 +4580,9 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">reinspæl</t>
             <t pos="n" stat="notpref" tcomm="no">hale</t>
          </tg>
-         <tg check="'semantics_and_re'" xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">rensvans</t>
+         <tg xml:lang="swe">
+            <t pos="n" stat="pref" tcomm="no">svans</t>
+            <t pos="n" stat="notpref" tcomm="no">rensvans</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">spæl_ENG</t>
@@ -4576,7 +4612,8 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">tommel</t>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">tumme</t>
+            <t pos="n" stat="pref" tcomm="no">liten tumme</t>
+            <t pos="n" stat="notpref" tcomm="no" xml:lang="swe">tummen</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="n" stat="pref" tcomm="no">tommelfinger_ENG</t>
@@ -4849,8 +4886,7 @@ For the full license text, see the link above.</lic>
             <tf tcomm="no">fredag kveld</tf>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">fredagkväll</t>
-            <t pos="n" stat="notpref" tcomm="no">fredagskväll</t>
+            <t pos="n" stat="pref" tcomm="no">fredagskväll</t>
             <tf tcomm="no">fredag kväll</tf>
             <tf tcomm="no">fredags kväll</tf>
          </tg>
@@ -5245,8 +5281,8 @@ For the full license text, see the link above.</lic>
          <tg xml:lang="nob">
             <te pos="phrase_n" stat="pref">stokk som går fra ildstedet til døra</te>
          </tg>
-         <tg xml:lang="swe">
-            <te pos="phrase_n" stat="pref">stokk som går fra ildstedet til døra_SWE</te>
+         <tg xml:lang="eng">
+            <t pos="phrase_n" stat="pref">stock som går från eldstaden till dörren</t>
          </tg>
          <tg xml:lang="eng">
             <t pos="phrase_n" stat="pref">stokk som går fra ildstedet til døra_ENG</t>
@@ -5367,11 +5403,8 @@ For the full license text, see the link above.</lic>
          <tg xml:lang="nob">
             <te pos="phrase_n" stat="pref">rein som blir stående igjen i hovedgjerde etter skilling</te>
          </tg>
-         <tg xml:lang="swe">
-            <te pos="phrase_n" stat="pref">rein som blir stående igjen i hovedgjerde etter skilling_SWE</te>
-         </tg>
          <tg xml:lang="eng">
-            <t pos="phrase_n" stat="pref">rein som blir stående igjen i hovedgjerde etter skilling_ENG</t>
+            <t pos="phrase_n" stat="pref">kvarvarande renar i gärdet efter renskiljning</t>
          </tg>
          <tg xml:lang="deu">
             <t pos="phrase_n" stat="pref">rein som blir stående igjen i hovedgjerde etter skilling_DEU</t>
@@ -5566,8 +5599,8 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">solside</t>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
-            <t pos="n" stat="pref" tcomm="no">solgass</t>
-            <t pos="n" stat="notpref" tcomm="no">solsken</t>
+            <t pos="n" stat="pref" tcomm="no">solsken</t>
+            <t pos="n" stat="notpref" tcomm="no">solgass</t>
             <t pos="n" stat="notpref" tcomm="no">solljus</t>
          </tg>
          <tg xml:lang="eng">
@@ -45510,7 +45543,7 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="pref" tcomm="no">kaffekjøtt</t>
          </tg>
          <tg xml:lang="swe">
-            <tf pos="phrase_n" stat="pref" tcomm="no">torkat eller rökt kött </tf>
+            <tf pos="phrase_n" stat="pref" tcomm="no">torkat eller rökt kött</tf>
             <te>att lägga i kaffet</te>
          </tg>
          <tg xml:lang="eng">
@@ -49362,7 +49395,7 @@ For the full license text, see the link above.</lic>
             <t pos="n" stat="notpref" tcomm="no">marbakke</t>
          </tg>
          <tg xml:lang="nob">
-            <tf pos="phrase_n" stat="pref" tcomm="no">den övre kanten av en sluttning </tf>
+            <tf pos="phrase_n" stat="pref" tcomm="no">den övre kanten av en sluttning</tf>
             <te pos="phrase_n">den övre kanten av en sluttningen mot en älv</te>
             <t pos="n" stat="notpref" tcomm="no">bråddjup</t>
          </tg>
