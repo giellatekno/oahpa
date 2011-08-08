@@ -1,0 +1,40 @@
+Installing nu_oahpa on victorio:
+
+1. create homedir for the application
+
+>mkdir nu_oahpa
+
+>chgrp -R oahpa nu_oahpa
+
+2. in the homedir create a django project (this will result into the path /home/nu_oahpa/nu_oahpa)
+
+>cd /home/nu_oahpa
+
+>django-admin.py startproject nu_oahpa
+
+3.  create all applications for the project
+
+>python manage.py startapp nu_conf
+>python manage.py startapp nu_courses
+>python manage.py startapp nu_drill
+>python manage.py startapp nu_feedback
+
+4. save the django-generated key
+
+# Make this unique, and don't share it with anybody.
+SECRET_KEY = '....................' 
+
+5. remove the nu_oahpa project dir
+
+6. svn-copy the existing oahpa dir into the nu_oahpa dir: 
+svn copy https://victorio.uit.no/langtech/trunk/ped/oahpa/ https://victorio.uit.no/langtech/trunk/ped/nu_oahpa/ -m "Creating the branch for NU-Oahpa"
+
+7. svn-checkout the dir on victorio:
+
+svn co https://victorio.uit.no/langtech/trunk/ped/nu_oahpa/
+
+8. replace the SECRET_KEY with the saved one
+
+9. rename all applications from oahpa to nu_oahpa (otherwise name conflict in django)
+
+
