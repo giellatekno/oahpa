@@ -1,1 +1,98 @@
-adsf
+
+
+!!!Møte 8.8. 2011, Veka som kjem
+
+!!!Saksliste
+
+* Sandbox-oahpa
+* Cealkka
+* Lokalisering
+* Program for veka med Heli
+* Framdrift
+
+!!!Sandbox-oahpa
+
+
+Sandbox-oahpa
+
+Binærfiler for oahpa:
+
+Sti: filene her skal ikke røres! /opt/smi/sme/bin/
+
+* isme-KJ.restr.fst  -  genererer til django-databasen KJ-dialekt til django-databasen for generering av oppgaver
+* isme-GG.restr.fst  -  genererer til django-databasen GG-dialekt til django-databasen for generering av oppgaver
+* isme-norm.fst   -  genererer til django-databasen de formene som skal aksepteres 
+* sme-num.fst - for Numra
+* iclock-sme.fst - for klokka i Numra
+* ped-sme.fst - analyserer studentenes free-input i Vasta og Sahka
+* sme-ped.cg3  sme-ped.cg3.bin  - analyserer studentenes free-input i Vasta og Sahka
+
+Ny sti: /opt/sami/smi/sme/nuo_bin
+
+{{{
+nuo_bin>ll
+totalt 960
+-rwxr-xr-x 1 root root   1776 aug  8 12:56 iclock-sme.fst
+-rwxr-xr-x 1 root root   3266 aug  8 12:56 sme-num.fst
+-rwxr-xr-x 1 root root 364483 aug  8 12:55 sme-ped.cg3
+-rwxr-xr-x 1 root root 600037 aug  8 12:55 sme-ped.cg3.bin
+}}}
+
+
+__TODO__: Lag separate bin-katalogar for oahpa på victorio
+
+{{{
+ling.py:        fstdir="/opt/smi/sme/bin"
+ling.py:        gen_norm_fst = fstdir + "/isme-norm.fst"
+ling.py:        gen_gg_restr_fst = fstdir + "/isme-KJ.restr.fst"            
+ling.py:        gen_kj_restr_fst = fstdir + "/isme-GG.restr.fst" 
+}}}
+
+!!!Cealkka
+
+I vasta får du svare det du vil.
+I cealkka får du ei rekkje med ord, noen som ordform, noen som lemmaform, og du skal lage setning.
+
+* som valg i Vasta
+
+
+
+!!!Lokalisering
+
+* Engelsk
+** Engelskspråklege må komplettere (Trond ser på det)
+* Svensk (Korrektur: Trond. Oppfølgjing: Via bruk?)
+* Finsk: Treng oppdatering. Hki/Oulu.
+
+
+!!!Program for veka m/Heli
+
+!!Saker å ta opp
+
+* Installere hjelpeprogram osb. på Heli si maskin -- Cip
+** Generelle gt-program
+** Oahpa-relevante program
+* Innføring i oahpa -- Lene
+* Innføring i django -- Cip
+* Sosialt: Fjellheis? Middag? Bellvika? -- Trond
+
+!!Vekeplan
+* Tysdag
+** Hei
+** Installering av programvare - Ciprian
+** Innføring i Oahpa frå brukarperspektiv, se på funksjoner i sma som skal kopieres til sme
+** Sjølvstudium
+* Onsdag
+** Innføring i django -- Cip
+* Torsdag
+** Planlegge hausten
+* Fredag
+** Oppsummering
+
+
+!!!Framdrift
+!! læringsstier inn i oahpa-innlogginga
+* Eksportere frå Fronter -- Lene + Uni
+ 
+
+
