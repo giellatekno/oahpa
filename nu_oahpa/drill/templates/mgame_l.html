@@ -1,0 +1,112 @@
+{% extends "game.html" %}
+{% load i18n %}
+
+{% block navbar %}
+<div id="navbar">
+{% ifequal settings.gametype "bare" %}
+<img width="120" height="120" border="0" src="/oahpa/media/images/morfa.png"/>
+<p class="bigheader">{% trans 'MORFA-S' %}</p>
+<ul class="sidelist"> 
+<li><a href="/oahpa/morfa_s/">{% trans 'Nouns' %}</a></li>                                                 
+<li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>                                              
+<li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li>                                            
+<li class="selected">{% trans 'Numerals' %}</li>
+</ul>                                                        
+{% else %}
+<img width="120" height="120" border="0" src="/oahpa/media/images/morfac.png"/>
+<p class="bigheader">{% trans 'MORFA-C' %}</p>
+<ul class="sidelist"> 
+<li><a href="/oahpa/morfac_s/">{% trans 'Nouns' %}</a></li>                                                 
+<li><a href="/oahpa/morfac_v/">{% trans 'Verbs' %}</a></li>                                              
+<li><a href="/oahpa/morfac_a/">{% trans 'Adjectives' %}</a></li>
+<li class="selected">{% trans 'Numerals' %}</li>
+</ul>                                                        
+{% endifequal %}
+</div>
+{% endblock %}
+
+
+{% block name %}{% trans "Morphology" %}{% endblock %}
+{% block pagename %}/oahpa/morfa/{% endblock %}
+{% block settings %}
+
+<table width="700">
+<tr>
+<td>{% trans "Case" %}</td>
+  {% ifequal settings.gametype "bare" %}
+<td>{% trans "Level" %}</td>
+  {% endifequal %}
+</tr>
+<tr>
+  {% ifequal settings.gametype "bare" %}
+<td>{{ settingsform.num_bare }}</td>
+<td>{{ settingsform.num_level }}</td>
+  {% else %}
+<td>    {{ settingsform.num_context }} </td>
+  {% endifequal %}
+</tr>
+</table>
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+
+{% endblock %}
+{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block instructions %}
+  {% ifequal settings.gametype "bare" %}
+    {% trans "Add numerals in correct forms." %}
+  {% else %}
+    {% trans "Add numerals in correct forms." %}
+  {% endifequal %}
+{% endblock %}
+
+{% block question %}
+
+{% ifequal settings.gametype "bare" %}
+  <td>
+  {% if forloop.first %}
+    <div id='lemma'>
+  {% else %}
+    <div id='lemma_{{ forloop.counter0 }}'>
+  {% endif %}
+
+  {{ form.lemma }}
+  </div>
+
+  {% if forloop.first %}
+    <div id='tooltip' style="display:none; margin:5px; background-color:white;">
+    {{ form.translations }}
+    </div>
+    <script type="text/javascript"> 
+	var lemma_tooltip = new Tooltip('lemma','tooltip')
+    </script>
+  {% else %}
+    <div id='tooltip_{{ forloop.counter0 }}' style="display:none; background-color:white;">
+    {{ form.translations }} 
+    </div>
+    <script type="text/javascript">
+      var lemma_{{ forloop.counter0 }}_tooltip = new Tooltip('lemma_{{ forloop.counter0 }}','tooltip_{{ forloop.counter0 }}')
+    </script>
+  {% endif %}
+  </td>
+
+{% else %}
+<td>{{ form.question }} ({{ form.lemma }})</td>
+{% endifequal %}
+
+{% endblock %}
+
+{% block submit %}
+<tr>
+<td>
+</td>
+<td>
+{% if not all_correct %}
+   {% if not show_correct %}
+   <input type="submit" name="test" value="{% trans "Test answers" %}"/>
+   {% endif %}
+   {% ifequal count 1 %}
+   <input type="submit" name="show_correct" value="{% trans "Show correct answers" %}" />
+   {% endifequal %}
+{% endif %}
+</td>
+</tr>
+{% endblock %}

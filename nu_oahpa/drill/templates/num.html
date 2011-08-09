@@ -1,0 +1,76 @@
+{% extends "game.html" %}
+{% load i18n %}
+
+{% block helpaddress %}
+{% ifequal LANGUAGE_CODE "no" %}
+<a href="http://giellatekno.uit.no/oahpa/numra.nno.html"
+{% else %}
+<a href="http://giellatekno.uit.no/oahpa/numra.html"
+{% endifequal %}
+{% endblock %}
+
+{% block navbar %}
+<div id="navbar">
+<img width="120" height="120" border="0" src="/oahpa/media/images/numra_big.png"/>
+<div class="bigheader">NUMRA</div>
+
+<ul class="sidelist">
+<li class="selected">{% trans 'Cardinals' %}</li>
+<li><a href="/oahpa/numra_ord/">{% trans 'Ordinals' %}</a>
+</ul>
+</div>
+{% endblock %}
+
+
+{% block name %}{% trans "Numerals" %}{% endblock %}
+{% block pagename %}/oahpa/numra/{% endblock %}
+
+{% block gamename %}{% endblock %}
+{% block instructions %}
+{% endblock %}
+
+
+{% block settings %}
+
+<table width="700">
+<tr>
+<td>{% trans "Select the range of numerals." %}</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>{{ settingsform.maxnum }}</td>
+<td>{{ settingsform.numgame }}</td>
+<td>{{ settingsform.numlanguage }}</td>
+<td>&nbsp;</td>
+</tr>
+</table>
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+{% endblock %}
+
+
+
+{% block question %}
+{% if form.numstring %}
+<td>{{ form.numstring }} </td>
+{% else %}
+<td>{{ form.numeral }} </td>
+{% endif %}
+<td>{{ form.numeral_id }}</td>
+{% endblock %}
+
+{% block submit %}
+<tr>
+<td>
+</td>
+<td>
+{% if not all_correct %}
+   {% if not show_correct %}
+   <input type="submit" name="test" value="{% trans "Test answers" %}"/>
+   {% endif %}
+   {% ifequal count 1 %}
+   <input type="submit" name="show_correct" value="{% trans "Show correct answers" %}" />
+   {% endifequal %}
+{% endif %}
+</td>
+</tr>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'oahpa.html' %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+
+{% block page_class %}fixed{% endblock %}
+
+{# {% block page_header %} #}
+{# 	<img width="240px" src="/oahpa/media/images/Oahpa_logo0001.png" alt="OAHPA!"/> #}
+{# 	<ul id="games_menu" class="small"> #}
+{# 		{# 60 by 60 #} #}
+{# 		<li class="game"> #}
+{# 			<a href="{% url oahpa.drill.views.quizz %}" class="game"> #}
+{# 				<img src="/oahpa/media/images/leksa_small.png" alt="LEKSA" /><br /> #}
+{# 				<span>LEKSA</span> #}
+{# 			</a> #}
+{# 		</li> #}
+{# 		<li class="game"> #}
+{# 			<a href="{% url drill.views.num %}" class="game"> #}
+{# 				<img src="/oahpa/media/images/numra_small.png" alt="NUMRA" /><br /> #}
+{# 				<span>NUMRA</span> #}
+{# 			</a> #}
+{# 		</li> #}
+{# 		<li class="game"> #}
+{# 			<a href="/oahpa/morfa_s/" class="game"> #}
+{# 				<img src="/oahpa/media/images/morfa_small.png" alt="MORFA" /><br /> #}
+{# 				<span>MORFA</span> #}
+{# 			</a> #}
+{# 		</li> #}
+{# 	</ul> #}
+{# {% endblock %} #}
+
+{% block content %}
+	{# Add blocktrans and trans tags #}
+	<div id="courses">
+		<ul id="subnav">
+			<li><a href="{% url oahpa.courses.urls.logout %}">Log
+					out</a></li>
+		</ul>
+		<h2>{% trans 'Welcome, ' %}{{ user.first_name }}!</h2>
+		{% if is_student %}
+			{% if new_profile %}
+				<p>You don't have any scores yet, go play some games!</p>
+			{% else %}
+				<p>The following scores represent your progress
+					in the games available in Oahpa.
+					Instructors will see your scores as shown
+					below, but will also be able to see individual scores from
+					every game. Good luck!</p>
+				<h3>Course progress</h3>
+				<dl>
+					{% for summary in summaries %}
+						<dt>{{ summary.game }}</dt>
+						<dd>
+							<ul>
+								<li>{% trans "Average" %} &mdash; {{ summary.average }}</li>
+								<li>{% trans "Highest score" %} &mdash; {{ summary.maximum }}</li>
+								<li>{% trans "Lowest score" %} &mdash; {{ summary.minimum }}</li>
+								<li>{% trans "Number of tries" %} &mdash; {{ summary.count }}</li>
+							</ul>		
+						</dd>
+					{% endfor %}
+				</dl>
+
+				<h3>Enrolled in... </h3>
+				<ul class="courselist">
+					{% for course in courses %}
+					<li>{{ course.identifier }} &ndash; {{ course.name }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		{% else %}
+			<p>You are a course instructor.</p>
+			<p><a href="/oahpa/admin/courses/">View students' grades</a></p>
+		{% endif %}
+	</div>
+
+{% endblock %}
+

@@ -1,0 +1,26 @@
+{% extends "mgame.html" %}
+{% load i18n %}
+
+
+{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block instructions %}
+  {% ifequal settings.gametype "bare" %}
+    {% trans "Add nouns in correct forms. You get translation if you click the word." %}
+  {% else %}
+    {% trans "Add nouns in correct forms." %}
+  {% endifequal %}
+{% endblock %}
+
+
+{% block selectionname %}<td>{% trans "Case" %}</td>{% endblock %}
+{% block selection %}
+<td>
+  {% ifequal settings.gametype "bare" %}
+    {{ settingsform.case }}
+  {% else %}
+    {{ settingsform.case_context }}
+  {% endifequal %}
+
+</td>
+{% endblock %}
+

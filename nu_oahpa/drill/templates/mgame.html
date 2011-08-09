@@ -1,0 +1,149 @@
+{% extends "game.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block name %}{% trans "Morphology" %}{% endblock %}
+{% block pagename %}/oahpa/morfa/{% endblock %}
+
+{% block helpaddress %}
+{% ifequal LANGUAGE_CODE "no" %}
+<a href="http://giellatekno.uit.no/oahpa/morfa.nno.html"
+{% else %}
+<a href="http://giellatekno.uit.no/oahpa/morfa.html"
+{% endifequal %}
+
+{% endblock %}
+
+{% block navbar %}
+  {% ifequal settings.gametype "bare" %}
+<img width="120" height="120" border="0" src="/oahpa/media/images/morfa_big.png"/>
+<div class="bigheader">MORFA-S</div>
+<ul class="sidelist"> 
+{% ifequal settings.pos "N" %}
+  <li class="selected">{% trans 'Nouns' %}</li>
+{% else %}
+  <li><a href="/oahpa/morfa/">{% trans 'Nouns' %}</a></li>                                                 
+{% endifequal %}
+{% ifequal settings.pos "V" %}
+  <li class="selected">{% trans 'Verbs' %}</li>
+{% else %}
+   <li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>                                                 
+{% endifequal %}
+{% ifequal settings.pos "A" %}
+  <li class="selected">{% trans 'Adjectives' %}</li>
+{% else %}
+  <li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li>                                            
+{% endifequal %}
+{% ifequal settings.pos "Num" %}
+  <li class="selected">{% trans 'Numerals' %}</li>
+{% else %}
+<li><a href="/oahpa/morfa_l/">{% trans 'Numerals' %}</a></li>                                              
+{% endifequal %}
+</ul>                                                        
+{% else %}
+<img width="120" height="120" border="0" src="/oahpa/media/images/morfac_big.png"/>
+<div class="bigheader">MORFA-C</div>
+<ul class="sidelist"> 
+{% ifequal settings.pos "N" %}
+  <li class="selected">{% trans 'Nouns' %}</li>
+{% else %}
+  <li><a href="/oahpa/morfac/">{% trans 'Nouns' %}</a></li>                                                 
+{% endifequal %}
+{% ifequal settings.pos "V" %}
+  <li class="selected">{% trans 'Verbs' %}</li>
+{% else %}
+  <li><a href="/oahpa/morfac_v/">{% trans 'Verbs' %}</a></li>                                                 
+{% endifequal %}
+{% ifequal settings.pos "A" %}
+  <li class="selected">{% trans 'Adjectives' %}</li>
+{% else %}
+  <li><a href="/oahpa/morfac_a/">{% trans 'Adjectives' %}</a></li>                                            
+{% endifequal %}
+{% ifequal settings.pos "Num" %}
+  <li class="selected">{% trans 'Numerals' %}</li>
+{% else %}
+<li><a href="/oahpa/morfac_l/">{% trans 'Numerals' %}</a></li>                                              
+{% endifequal %}
+</ul>                                                        
+
+{% endifequal %}
+{% endblock %}
+
+{% block settings %}
+<table width="700">
+<tr>
+{% block selectionname %}{% endblock %}
+
+{% ifequal settings.gametype "bare" %}
+<td>{% trans "Stem" %}</td>
+{% endifequal %}
+<td>{% trans "Book" %}</td>
+
+</tr>
+<tr>
+{% block selection %}{% endblock %}
+
+{% ifequal settings.gametype "bare" %}
+<td>
+{{ settingsform.bisyllabic }}{% trans "bisyllabic" %}<br/>
+{{ settingsform.trisyllabic }}{% trans "trisyllabic" %}<br/>
+{{ settingsform.contracted }}{% trans "contracted" %}<br/>
+</td>
+{% endifequal %}
+<td>{{ settingsform.book }}</td>
+</tr>
+</table>
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+
+{% endblock %}
+
+{% block question %}
+
+{% ifequal settings.gametype "bare" %} 
+  <td>
+  {% if forloop.first %}
+    <div id='lemma'>
+  {% else %}
+    <div id='lemma_{{ forloop.counter0 }}'>
+  {% endif %}
+{{ form.lemma }}
+  </div>
+
+  {% if forloop.first %}
+    <div id='tooltip' style="display:none; margin:10px; padding:20px; background-color:white;">
+    {{ form.translations }}
+    </div>
+    <script type="text/javascript"> 
+	var lemma_tooltip = new Tooltip('lemma','tooltip')
+    </script>
+  {% else %}
+    <div id='tooltip_{{ forloop.counter0 }}' style="display:none; background-color:white;">
+    {{ form.translations }} 
+    </div>
+    <script type="text/javascript">
+      var lemma_{{ forloop.counter0 }}_tooltip = new Tooltip('lemma_{{ forloop.counter0 }}','tooltip_{{ forloop.counter0 }}')
+    </script>
+  {% endif %}
+  </td>
+
+{% else %}                                                                                                       
+<td>{{ form.question }} {% if form.lemma %} ({{ form.lemma }}) {% endif %}</td>
+{% endifequal %}                      
+
+{% endblock %}
+
+{% block submit %}
+<tr>
+<td align="right">
+{% if not all_correct %}
+   {% if not show_correct %}
+   <input type="submit" name="test" value="{% trans "Test answers" %}"/>
+   {% endif %}
+   {% ifequal count 1 %}
+   <input type="submit" name="show_correct" value="{% trans "Show correct answers" %}" />
+   {% endifequal %}
+{% endif %}
+</td>
+<td></td>
+</tr>
+{% endblock %}

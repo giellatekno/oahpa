@@ -1,0 +1,19 @@
+﻿{% comment %}
+
+	This is just a snippet that is inserted in the sidebar, mainly. May
+	be used elsewhere, too.
+
+{% endcomment %}
+
+{% load i18n %}
+<div id="auth">
+	<ul class="auth_links">
+	{% if rquser.is_authenticated %}
+	<li>Logged in as {{ rquser.username }}.</li>
+	<li><a href="{% url courses.views.courses_main %}">View progress</a></li>
+	<li><a href="{% url courses.urls.logout %}">Log out</a></li>
+	{% else %}
+	<li><a href="{% url courses.urls.login %}">{% trans "Course login" %}</a></li>
+	{% endif %}
+	</ul>
+</div>

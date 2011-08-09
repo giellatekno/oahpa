@@ -1,0 +1,224 @@
+{% extends "game.html" %}
+{% load i18n %}
+
+{% block addcss %}
+<script type="text/javascript">
+function submitSahka(dia) {
+   document.gameform.dialogue.value=dia;
+   document.gameform.submit();
+   return True;
+}
+</script>
+<style type="text/css">
+
+html {
+    overflow: scroll;
+    height: 100%;
+    margin-bottom: 1px;
+}
+
+body {
+margin:10px 10px 0px 10px;
+padding:0px;
+background-image: url(/oahpa/media/images/bakgrunn12.jpg);
+}
+
+#leftcontent {
+position: fixed;
+left: 10px;
+top: 95px;
+width: 180px;
+}
+#centercontent {
+background:white;
+margin-left: 179px;
+margin-right:9px;
+padding: 20px;
+border: 1px solid #150517;
+
+font-family: Times;
+margin-left: 181px;
+margin-right:11px;
+margin-bottom: 1px;
+}
+body #centercontent {
+margin-left: 181px;
+margin-right:11px;
+}
+#rightcontent {
+position: fixed;
+right:10px;
+top:95px;
+width:120px;
+}
+
+#banner {
+height:80px;
+height:80px;
+}
+html>body #banner {
+height:80px;
+}
+
+
+{% if not forms %}
+
+#centercontent {
+background:white;
+margin-left: 179px;
+margin-right:9px;
+padding: 20px;
+border: 1px solid #150517;
+font-family: Times;
+margin-left: 181px;
+margin-right:11px;
+margin-bottom: 1px;
+}
+body #centercontent {
+margin-left: 181px;
+margin-right:11px;
+}
+{% endif %}
+</style>
+
+{% endblock %}
+
+{% block helpaddress %}
+{% ifequal LANGUAGE_CODE "no" %}
+<a href="http://giellatekno.uit.no/oahpa/sahka.nno.html"
+{% else %}
+<a href="http://giellatekno.uit.no/oahpa/sahka.html"
+{% endifequal %}
+{% endblock %}
+
+{% block navbar %}
+{% if not forms %}
+&nbsp;<br/>
+&nbsp;<br/>
+
+<a href="/oahpa/sahka/"><img width="120" height="120" border="0" src="/oahpa/media/images/sahka_big.png"/></a><br/>
+<div class="bigheader">SAHKA</div>
+<p class="header">{% trans "Select a dialogue" %}</p>
+
+{% endif %}
+
+<!-- Image included from the dialogue -->
+{% if image %}
+<p>&nbsp;<p>
+<center>
+<img border="1" width="140" border="0" src="/oahpa/media/images/{{ image }}"/><br/>
+</center>
+{% endif %}
+
+{% if wordlist %}
+<center>
+<br/>
+<table cellpadding="8px" bgcolor="white" border="1" class="wordlist"><tr><td>{{ wordlist }}</td></tr></table>
+</center>
+{% endif %}
+{% endblock %}
+
+{% block name %}Sahka{% endblock %}
+{% block pagename %}/oahpa/sahka/{% endblock %}
+{% block settings %}
+
+{% if forms %}
+<tr><td>
+<!--<p>{% trans "NB! NB! The Sahka game is not working properly, due to technical problems! NB! NB!</p> -->
+<p> {% trans "Answer to the questions with full sentences. Remember big initial letter in placenames." %} </p>
+<hr/>
+</td></tr>
+{% endif %}
+
+
+{% if not forms %}
+
+<table width="700">
+<!-- emergency tag starts -->
+<tr>
+<!--{% trans "NB! NB! The Sahka game is not working properly, due to technical problems! NB! NB!" %} -->
+<!--{% trans "NB! NB! The Sahka game is temporarily out of order, due to technical maintenance! NB! NB!" %} -->
+</tr>
+<!-- emergency tag ends -->
+<tr>
+<td>
+<table cellpadding="10px">
+<tr><td>
+<input type="hidden" name="dialogue" id="id_dialogue" />
+<input type="hidden" name="settings" id="settings" />
+<a href="javascript:submitSahka('firstmeeting');">
+<img border="0px" width="100"  src="/oahpa/media/images/woman001_small.jpg"/>
+{% trans "Meeting with Kare" %}</a>
+</td><td>
+<a href="javascript:submitSahka('firstmeeting_man');">
+<img border="0px" width="108"  src="/oahpa/media/images/man_small.jpg"/>
+{% trans "Meeting with Hansa" %}</a>
+</td><td>
+<a href="javascript:submitSahka('firstmeeting_girl');">
+<img border="0px" width="100"  src="/oahpa/media/images/girl_small.jpg"/>
+{% trans "Meeting with Lisa" %}</a>
+</td><td>
+<a href="javascript:submitSahka('firstmeeting_boy');">
+<img border="0px" width="100"  src="/oahpa/media/images/boy_small.jpg"/>
+{% trans "Meeting with Lemet" %}</a>
+</td>
+</tr>
+</table>
+<table cellpadding="10px">
+<tr>
+<td>
+<a href="javascript:submitSahka('visit');">
+<img border="0px" width="150" height="200" src="/oahpa/media/images/visit001.jpg"/>
+{% trans "Visit" %}</a>
+</td>
+<td>
+<a href="javascript:submitSahka('grocery');">
+<img border="0px" width="200" height="150" src="/oahpa/media/images/grocery.jpg"/>
+{% trans "Grocery" %}</a>
+</td>
+<td>
+<a href="javascript:submitSahka('shopadj');">
+<img border="0px" width="100" src="/oahpa/media/images/2scarves_small.jpg"/><br/>
+{% trans "Shop" %}</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+{% endif %}
+{% endblock %}
+
+{% block hidden %}
+<input type="hidden" name="topicnumber" value="{{ topicnumber }}" />
+<input type="hidden" name="num_fields" value="{{ num_fields }}" />
+<input type="hidden" name="image" value="{{ image }}" />
+<input type="hidden" name="wordlist" value="{{ wordlist }}" />
+<input type="hidden" name="gametype" value="sahka" />
+<input type="hidden" name="dialogue" value="{{ dialogue }}" />
+{% endblock %}
+
+{% block question %}
+
+{% if forms %}
+{% if form.utterance %}
+<td>{{ form.utterance }}</td>
+{% endif %}
+{% endif %}
+{% endblock %}
+
+{% block submit %}
+{% if forms %}
+<tr>
+<td align="right">
+  {% if not all_correct %}
+  <input type="submit" id="test" name="test" value="{% trans "Answer" %}"/>
+  {% endif %}
+</td>
+
+</tr>
+{% endif %}
+
+{% endblock %}
+

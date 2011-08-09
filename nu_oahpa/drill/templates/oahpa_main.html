@@ -1,0 +1,233 @@
+{% load i18n %}
+{{ lang_switch }}
+{% get_available_languages as LANGUAGES %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="/oahpa/media/css/oahpa.css"/>
+<link rel="stylesheet" type="text/css" href="/oahpa/media/css/oahpa_main.css"/>
+<!--[if lt IE 7.]>
+<script defer type="text/javascript" src="/oahpa/media/js/pngfix.js"></script>
+<![endif]-->
+</head>
+<body class="mainbody">
+
+<div id="mainheader">
+<center>
+<div class="plainbackground">
+<img width="320" src="/oahpa/media/images/Oahpa_logo0001.png" alt="OAHPA!"/><br/>
+</div>
+</center>
+</div>
+
+<div id="maincontent">
+<center>
+<table cellspacing="2px" cellpadding="2px">
+<tr>
+<td class="plain" width="700" align="center">
+{% trans "Oahpa is a collection of games that are developed for North Sami learners. From the right, select the instruction language (Norwegian and North Sami are fully supported) and if you prefer Eastern or Western dialect. Then select the game." %}
+</td>
+</tr>
+<tr>
+<td>
+<table cellspacing="2px" cellpadding="2px" align="center">
+<tr>
+<td class="header" width="200">
+
+<center>
+<div class="plainbackground">
+<a href="/oahpa/morfa/">
+<img  width="80" height="80" border="0" src="/oahpa/media/images/morfa.png" alt="MORFA-S"/><br/>
+MORFA-S</a>
+</div>
+<p class="plain">{% trans "Practise morphology" %}</p>
+</center>
+</td>
+<td class="header" width="200">
+<center>
+<div class="plainbackground">
+<a href="/oahpa/vasta/">
+<img width="80" height="80" border="0" src="/oahpa/media/images/vasta.png" alt="VASTA"/><br/>
+VASTA</a>
+</div>
+<p class="plain">{% trans "Answer to questions" %}</p>
+</center>
+</td>
+<td class="header" width="200">
+<center>
+<div class="plainbackground">
+<a href="/oahpa/leksa/">
+<img width="80" height="80" border="0" src="/oahpa/media/images/leksa.png" alt="LEKSA"/><br/>
+LEKSA</a>&nbsp;&nbsp;
+</div>
+<p class="plain">{% trans "Words and translations" %}</p>
+</center>
+</td>
+</tr>
+
+<tr>
+<td class="header" width="200">
+<center>
+<div class="plainbackground">
+<a href="/oahpa/morfac/">
+<img width="80" height="80" border="0" src="/oahpa/media/images/morfac.png" alt="MORFA-C"/><br/>
+MORFA-C</a>&nbsp;&nbsp;
+</div>
+<p class="plain">{% trans "Morphology in sentential context" %}</p>
+</center>
+</td>
+<td class="header" width="200">
+<center>
+<div class="plainbackground">
+<a href="/oahpa/sahka/">
+<img width="80" height="80" border="0" src="/oahpa/media/images/sahka.png" alt="SAHKA"/><br/>
+SAHKA</a>&nbsp;&nbsp;
+</div>
+<p class="plain">{% trans "Dialogue game" %}</p>
+</center>
+</td>
+<td class="header" width="200">
+<center>
+<div class="plainbackground">
+<a href="/oahpa/numra/">
+<img width="80" height="80" border="0" src="/oahpa/media/images/numra.png" alt="NUMRA"/><br/>
+NUMRA</a>&nbsp;&nbsp;
+</div>
+<p class="plain">{% trans "Practise numerals" %}</p>
+</center>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</center>
+</div>
+
+<div id="rightbar">
+<table>
+<tr><td>
+
+{% get_current_language as LANGUAGE_CODE %}
+<form action="/oahpa/i18n/setlang/" method="post" name="newlang">
+{% trans "Interface language" %}
+<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
+<select name="language" onChange="javascript:this.form.submit();">
+
+{% ifequal LANGUAGE_CODE "en" %}
+<option value="en" selected="selected">English</option>
+{% else %}
+<option value="en">English</option>
+{% endifequal %}
+
+{% ifequal LANGUAGE_CODE "sme" %}
+<option value="sme" selected="selected">Davvisámegiella</option>
+{% else %}
+<option value="sme">Davvisámegiella</option>
+{% endifequal %}
+
+{% ifequal LANGUAGE_CODE "no" %}
+<option value="no" selected="selected">Norsk</option>
+{% else %}
+<option value="no">Norsk</option>
+{% endifequal %}
+
+{% ifequal LANGUAGE_CODE "fi" %}
+<option value="fi" selected="selected">Suomi</option>
+{% else %}
+<option value="fi">Suomi</option>
+{% endifequal %}
+
+{% ifequal LANGUAGE_CODE "sv" %}
+<option value="sv" selected="selected">Svensk</option>
+{% else %}
+<option value="sv">Svensk</option>
+{% endifequal %}
+</select>
+
+</form>
+</td>
+</tr>
+<tr>
+<td>
+<form action="/oahpa/dialect/" method="post">
+<table>
+<tr><td>
+{% trans "North Sami dialect" %}
+<select name="dialect" onChange="javascript:this.form.submit();">
+{% if dialect %}
+  {% ifequal dialect "GG" %}
+  <option value="GG" selected="selected">{% trans 'western' %}</option>
+  <option value="KJ">{% trans 'eastern' %}</option>
+  {% else %}
+  <option value="GG">{% trans 'western' %}</option>
+  <option value="KJ" selected="selected">{% trans 'eastern' %}</option>
+  {% endifequal %}  
+{% else %}
+<option value="GG">{% trans 'western' %}</option>
+<option value="KJ">{% trans 'eastern' %}</option>
+{% endif %}
+</select>
+</td></tr>
+</table>
+</form>
+</td></tr>
+<tr>
+<td>
+<table>
+<tr>
+<td>
+<center>
+<div class="plainbackground" >
+<a href="http://giellatekno.uit.no/oahpa/OAHPAveiledning.html">
+<img  height="80" border="0" src="/oahpa/media/images/littleman.png" alt="Documentation"/><br/>
+<font size="0">{% trans 'Teachers and students guide' %}</font>
+</a>
+</div>
+</center>
+&nbsp;<br/>
+
+</td>
+</tr>
+<tr>
+<td>
+<a href="/oahpa/visl/">{% trans 'VISL-games for North Sami' %}</a><br/>&nbsp;
+</td>
+</tr>
+<tr>
+<td>
+<a href="http://giellatekno.uit.no/words/dicts/index.nno.html">{% trans 'Dictionary' %}</a><br/>&nbsp;
+</td>
+</tr>
+<tr>
+<td><a href="http://giellatekno.uit.no/oahpa/index.html">{% trans 'About OAHPA!' %}</a><br/>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="/oahpa/feedback/">{% trans 'Feedback' %}</a><br/>&nbsp;</td>
+</tr>
+<tr>
+<td><a href="{% url courses.views.courses_main %}">Kurs innlogging</a><br/>&nbsp;</td>
+</tr>
+<tr>
+<td>
+<center>
+<img width="50" height="50" src="/oahpa/media/images/LogoSamisk.jpg" alt="Universitetet i Tromsø"/>
+</center>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+
+<div id="copyright">
+<p>
+{% trans "Copyright 2009 The University of Tromso." %}
+{% trans "Contact" %} oahpa@hum.uit.no</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% extends "mgame.html" %}
+{% load i18n %}
+
+
+{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block instructions %}
+  {% ifequal settings.gametype "bare" %}
+    {% trans "Add verbs in correct forms. You get translation if you click the word." %}
+  {% else %}
+    {% trans "Add verbs in correct forms." %}
+  {% endifequal %}
+{% endblock %}
+
+
+{% block selectionname %}<td>{% trans "Type" %}</td>{% endblock %}
+{% block selection %}
+<td>
+  {% ifequal settings.gametype "bare" %}
+    {{ settingsform.vtype }}
+  {% else %}
+    {{ settingsform.vtype_context }}
+  {% endifequal %}
+
+</td>
+{% endblock %}

@@ -1,0 +1,206 @@
+{% extends "oahpa.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% block content %}
+
+{% ifnotequal gametype "sahka" %}
+<hr/>
+{% endifnotequal %}
+
+<table width="100%">
+<tr>
+<td>
+
+<table>
+<tr><td>
+<table>
+     {% for form in forms %}
+
+{% ifequal settings.gametype 'context' %} 
+    {% ifnotequal forloop.counter 1 %}
+    <tr>
+    <td>&nbsp;</td>
+    </tr>
+    {% endifnotequal %}
+{% endifequal %}
+<tr>
+{% block question %}{% endblock %}
+</tr>
+
+<tr>
+  {% if form.answer %}
+
+  <!-- Show correct answers if "show correct" is pressed -->
+{% if show_correct %}
+  <td> 
+    {% if form.answertext1 %}{{ form.answertext1 }}{% endif %}
+    {% if form.pron %}
+    &nbsp;&nbsp;{{ form.pron }}&nbsp;&nbsp;
+    {% endif %}    
+    {% ifequal form.error "correct" %}
+    <font color="green">{{ form.userans }}</font>
+    {% else %}
+      {% ifequal form.error "error" %}
+       <font color="red">{{ form.userans }}</font>
+       {% else %}
+       ___________________
+      {% endifequal %}
+    {% endifequal %}
+    {% if form.pron_imp %}
+    &nbsp;&nbsp;{{ form.pron_imp }}&nbsp;&nbsp;
+    {% endif %}    
+
+    {% if form.answertext2 %}{{ form.answertext2 }}{% endif %}
+  </td>
+
+  {% else %}
+
+   <!-- If just test answers, mark correct answers as green -->
+  <td>
+    {% if form.answertext1 %}{{ form.answertext1 }}{% endif %}
+      {% ifnotequal form.userans "" %}
+          {% if form.pron %}
+	  &nbsp;&nbsp;{{ form.pron }}&nbsp;&nbsp;
+	  {% endif %}
+
+        {% ifequal form.error "correct" %}
+          <font color="green">{{ form.userans }}</font>
+        {% else %}
+	  <!-- Answer field -->
+	  {{ form.answer }} 
+	{% endifequal %}
+          {% if form.pron_imp %}
+	  &nbsp;&nbsp;{{ form.pron_imp }}&nbsp;&nbsp;
+	  {% endif %}
+
+      {% else %}
+      <!-- Answer field -->
+      {% if form.pron %}
+      &nbsp;&nbsp;{{ form.pron }}&nbsp;&nbsp;
+      {% endif %}
+      {{ form.answer}}
+      {% if form.pron_imp %}
+      &nbsp;&nbsp;{{ form.pron_imp }}&nbsp;&nbsp;
+      {% endif %}
+      {% endifnotequal %}
+    {% if form.answertext2 %}{{ form.answertext2 }}{% endif %}
+
+     </td>
+{% endif %}
+
+    <td align="left">
+    {% if show_correct %}
+      {% ifnotequal form.error "correct" %}
+        {{ form.correct_answers }}
+      {% endifnotequal %}
+    {% else %}
+      {% ifequal form.error "error" %}
+      <!-- Feedback -->
+          {% if form.feedback %}
+	   <div class='popupcontent' id='popup_{{ forloop.counter }}'>{{ form.feedback }}</div>
+	   <a href="#" onclick="showPopup(300,150,'popup_{{ forloop.counter }}');" >
+      <img width="15" height="15" border="0" src="/oahpa/media/images/error.png"/>
+<font color="#093970"><small>{% trans "help" %}</small></font></a>
+	  {% else %}
+      <img width="15" height="15" border="0" src="/oahpa/media/images/error.png"/>
+	  {% endif %}
+
+      {% endifequal %}
+
+	  {% if forloop.last %}
+	  {% ifequal gametype "sahka" %}
+       </td><td>
+      <table width="250px">
+	  <tr><td>
+	  {% if messages %}
+	  <div id="rightbarsahka">
+	  {% for m in messages %}{{ m }}<br/>{% endfor %}
+	  </div>
+	  {% endif %}
+      </td></tr></table>
+	  {% endifequal %}
+	  {% endif %}
+
+
+  {% endif %}
+      </td>
+{% endif %}
+
+<td>
+
+ {{ form.word_id }}       {{ form.tag_id }}
+{{ form.question_id }} {{ form.answer_id }}       
+{{ form.utterance_id }}
+{{ form.qstring }} {{ form.astring }}
+{% block hidden %}{% endblock %}
+<input type="hidden" name="{{ forloop.counter }}-userans" value="{{ form.userans }}" />
+<input type="hidden" name="{{ forloop.counter }}-correct" value="{{ form.error }}" />
+  {% for detail, value in form.qattrs.items %}
+       <input type="hidden" name="{{ forloop.parentloop.counter }}-{{ detail }}" value="{{ value }}" />
+  {% endfor %}
+  {% for detail, value in form.aattrs.items %}
+       <input type="hidden" name="{{ forloop.parentloop.counter }}-{{ detail }}" value="{{ value }}" />
+  {% endfor %}
+
+</td>
+</tr>
+     {% endfor %}
+
+{% block submit %}{% endblock %}
+
+</table>
+
+</td>
+</tr>
+
+<tr><td>
+
+
+{% if score %}
+&nbsp;<br/>
+{% if all_correct %}
+{% trans "Congratulations!" %}
+{% endif %}
+
+<br/>
+{% trans "Your score:" %} {{ score }}
+{% endif %}
+
+
+{% if comment %}
+<br/>
+{{ comment }}
+{% endif %}
+
+</td>
+</tr>
+
+</table>
+</td>
+{% ifnotequal gametype "sahka" %}
+{% ifnotequal gametype "sahka_main" %}
+<td width="30%" valign="top">
+<table class="instructions" cellpadding="8px">
+<tr><td>
+{% endifnotequal %}
+{% endifnotequal %}
+
+{% block gamename %}{% endblock %}<br/>
+{% block instructions %}{% endblock %}
+
+{% ifnotequal gametype "sahka" %}
+{% ifnotequal gametype "sahka_main" %}
+</td></tr></table></td>
+{% endifnotequal %}
+{% endifnotequal %}
+<td width="10%" valign="top">
+</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</table>
+
+{% endblock %}
+

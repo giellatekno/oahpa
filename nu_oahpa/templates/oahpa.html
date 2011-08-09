@@ -1,0 +1,299 @@
+{% load i18n %}
+{{ lang_switch }}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+
+<style type="text/css">
+
+html {
+    overflow: scroll;
+    height: 100%;
+    margin-bottom: 1px;
+}
+body {
+    margin:10px 10px 0px 10px;
+    padding:0px;
+    font-family: Arial Pro;
+    color: #150517;
+    background-image: url(/oahpa/media/images/bakgrunn12.jpg);
+}
+
+#leftcontent {
+position: fixed;
+left: 10px;
+top: 95px;
+width: 140px;
+font-family: Arial Pro;
+
+}
+#centercontent {
+position:absolute;
+background:#fff;
+margin-left: 141px;
+margin-right:1px;
+top: 95px;
+padding: 10px;
+border: 1px solid #150517;
+font-family: Times;
+margin-bottom: 1px;
+}
+body #centercontent {
+top: 95px;
+margin-left: 141px;
+margin-right:11px;
+}
+#rightcontent {
+position: fixed;
+right:10px;
+top:95px;
+width:120px;
+}
+
+#banner {
+height:80px;
+}
+html>body #banner {
+height:80px;
+}
+
+
+</style>
+
+
+<link rel="stylesheet" type="text/css" href="/oahpa/media/css/oahpa.css"/>
+<script src="/oahpa/media/js/prototype.js" type="text/javascript"></script>
+<script src="/oahpa/media/js/tooltip2.js" type="text/javascript"></script>
+<script src="/oahpa/media/js/oahpa.js" type="text/javascript"></script>
+<!--[if lt IE 7]>
+<script defer type="text/javascript" src="/oahpa/media/js/pngfix.js"></script>
+<![endif]-->
+
+<script type="text/javascript">
+
+function showPopup(w,h,elid){
+   var popUp = document.getElementById(elid);
+
+   var baseText = null;
+ 
+   popUp.style.top = "200px";
+   popUp.style.left = "400px";
+   popUp.style.width = w + "px";
+   popUp.style.height = h + "px";
+
+
+   if (baseText === null) baseText = popUp.innerHTML;
+
+   if (baseText.match(elid) == null) {
+       popUp.innerHTML = baseText + "<div id=\"statusbar\"><button onclick=\"hidePopup(\'" + elid + "\');\">Close window<button></div>"; 
+   }
+   else {
+       popUp.innerHTML = baseText;
+   }
+   var sbar = document.getElementById("statusbar");
+   sbar.style.marginTop = (parseInt(h)-70) + "px";
+   popUp.style.visibility = "visible";
+}
+
+function hidePopup(elid){
+   var popUp = document.getElementById(elid);
+   popUp.style.visibility = "hidden";
+}
+
+
+function SetIndex(list,value) {
+    if (value == "all") {
+	   return;
+    }
+	if(list && list.options.length){ 
+		for(var i=0; i<list.options.length; i++){ 
+		if(list.options[i].value == "all"){ 
+			list.selectedIndex = i; 
+			return; 
+			} 
+		} 
+	} 
+}
+
+function getSize() {
+  var myWidth = 0, myHeight = 0;
+  if( typeof( window.innerWidth ) == 'number' ) {
+    //Non-IE
+    myWidth = window.innerWidth;
+    myHeight = window.innerHeight;
+  } else if( document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+    //IE 6+ in 'standards compliant mode'
+    myWidth = document.documentElement.clientWidth;
+    myHeight = document.documentElement.clientHeight;
+  } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+    //IE 4 compatible
+    myWidth = document.body.clientWidth;
+    myHeight = document.body.clientHeight;
+  }
+  return myHeight;
+}
+
+function scrollSahka(form) {
+    var scrollLoc = getSize();
+    if (self.pageYOffset) // all except Explorer
+    {
+    window.scroll(0, scrollLoc);
+    }
+    else if (document.documentElement && document.documentElement.scrollTop)
+    // Explorer 6 Strict
+    {
+    window.scrollTo(0, scrollLoc);
+    }
+   else if (document.body) // all other Explorers
+   {
+   window.scrollTo(0, scrollLoc);
+   }				   
+}
+
+</script>
+{% block addcss %}{% endblock %}
+</head>
+
+
+{% ifequal gametype "sahka" %}
+<body onload="javascript:scrollSahka(document.gameform);">
+{% else %}
+<body onload="javascript:setFocus(document.gameform);">
+{% endifequal %}
+
+<div id="banner">
+<div class="title">
+<table>
+<tr>
+<td>
+<a href="/oahpa/">
+<img border="0" width="200" height="70" src="/oahpa/media/images/Oahpa_logo0001.png" alt="OAHPA!"/></a>
+</td>
+<td>
+<table cellspacing="0px" cellpadding="0px">
+<tr> 
+<td class="header" width="90">
+<a href="/oahpa/morfa/">
+<img  width="60" height="60" border="0" src="/oahpa/media/images/morfa_small.png" alt="MORFA-S"/><br/>
+MORFA-S</a>&nbsp;&nbsp;
+</td>
+<td class="header" width="90">
+<a href="/oahpa/morfac/">
+<img width="60" height="60" border="0" src="/oahpa/media/images/morfac_small.png" alt="MORFA-C"/><br/>
+MORFA-C</a>&nbsp;&nbsp;
+</td>
+<td class="header" width="90">
+<a href="/oahpa/vasta/">
+<img width="60" height="60" border="0" src="/oahpa/media/images/vasta_small.png" alt="VASTA"/><br/>
+VASTA</a>&nbsp;&nbsp;
+</td>
+<td class="header" width="90">
+<a href="/oahpa/sahka/">
+<img width="60" height="60" border="0" src="/oahpa/media/images/sahka_small.png" alt="SAHKA"/><br/>
+SAHKA</a>&nbsp;&nbsp;
+</td>
+<td class="header" width="90">
+<a href="/oahpa/leksa/">
+<img width="60" height="60" border="0" src="/oahpa/media/images/leksa_small.png" alt="LEKSA"/><br/>
+LEKSA</a>&nbsp;&nbsp;
+</td>
+<td class="header" width="90">
+<a href="/oahpa/numra/">
+<img width="60" height="60" border="0" src="/oahpa/media/images/numra_small.png" alt="NUMRA"/><br/>
+NUMRA</a>&nbsp;&nbsp;
+</td>
+<td>
+
+
+{% ifequal LANGUAGE_CODE "sme" %}
+
+{% trans "Grammar" %}<br/>
+<form name="jump">
+<select name="menu" onChange="javascript:if (this.selectedIndex > 0) window.open(this.value)">
+<option value="">grammatihkkačilgehusat</option>
+{% for link in settingsform.grammarlinkssme %}
+<option value="{{ link.address }}">{{ link.name }}</option>
+{% endfor %}
+</select>
+</form>
+
+{% else %}
+
+{% trans "Grammar" %}<br/>
+<form name="jump">
+<select name="menu" onChange="javascript:if (this.selectedIndex > 0) window.open(this.value)">
+<option value="">grammatikkforklaringer</option>
+{% for link in settingsform.grammarlinksno %}
+<option value="{{ link.address }}">{{ link.name }}</option>
+{% endfor %}
+</select>
+</form>
+{% endifequal %}
+
+
+
+</td>
+
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div id="leftcontent">
+{% block navbar %}{% endblock %}
+{% comment %}
+<p>{% trans 'OAHPA is under development and may not function all the time.' %}</p>
+{% endcomment %}
+<p><a href="/oahpa/">
+<img border="0" width="60" src="/oahpa/media/images/Oahpa_logo0001red.png" alt="OAHPA!"/><br/>
+{% trans 'Main page' %}</a><br/>
+</p>
+{% include 'user_auth_block.html' %}
+<p>
+<center>
+<div class="plainbackground" >
+{% block helpaddress %}{% endblock %}
+
+<img height="80" border="0" src="/oahpa/media/images/littleman.png" alt="Documentation"/><br/>
+<font size="0">{% trans 'Teachers and students guide' %}</font>
+</a>
+</div>
+</center>
+&nbsp;<br/>
+<a href="http://giellatekno.uit.no/cgi/geo.nno.html">{% trans 'Geo placenames' %}</a><br/>
+
+</div>
+&nbsp;<br/>
+<a href="/oahpa/feedback/">{% trans 'Feedback' %}</a><br/>
+
+</div>
+
+  <div id="centercontent">
+<form method="post" action="" name="gameform" >
+
+<div class="settings">
+{% block settings %}{% endblock %}
+</div>
+
+<div class="game">
+    {% block content %}{% endblock %}
+</div>
+</form>
+</div>
+
+<div id="footer">
+  <a name="bottom">&nbsp;</a> 
+
+<p>&nbsp;</p>
+</div>
+
+</body>
+</html>

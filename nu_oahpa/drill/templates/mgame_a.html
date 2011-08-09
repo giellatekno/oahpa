@@ -1,0 +1,30 @@
+{% extends "mgame.html" %}
+{% load i18n %}
+
+
+{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block instructions %}
+  {% ifequal settings.gametype "bare" %}
+    {% trans "Add adjectives in correct forms. You get translation into Norwegian if you click the word." %}
+  {% else %}
+    {% trans "Add adjectives in correct forms." %}
+  {% endifequal %}
+{% endblock %}
+
+{% block selectionname %}
+<td>{% trans "Type" %}</td>
+  {% ifequal settings.gametype "bare" %}
+<td>{% trans "Grade" %}</td>
+{% endifequal %}
+{% endblock %}
+
+{% block selection %}
+  {% ifequal settings.gametype "bare" %}
+<td> {{ settingsform.adjcase }} </td>
+<td> {{ settingsform.grade }} </td>
+  {% else %}
+<td> {{ settingsform.adj_context }}</td>
+  {% endifequal %}
+
+{% endblock %}
+

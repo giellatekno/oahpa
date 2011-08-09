@@ -1,0 +1,67 @@
+{% extends "game.html" %}
+{% load i18n %}
+
+{% block helpaddress %}
+{% ifequal LANGUAGE_CODE "no" %}
+<a href="http://giellatekno.uit.no/oahpa/leksa.nno.html"
+{% else %}
+<a href="http://giellatekno.uit.no/oahpa/leksa.html"
+{% endifequal %}
+{% endblock %}
+
+{% block navbar %}
+<div id="navbar">
+<img width="120" height="120" border="0" src="/oahpa/media/images/leksa_big.png"/>
+<div class="bigheader">LEKSA</div>
+
+<ul class="sidelist">
+<li class="selected">{% trans 'Words' %}</li>
+<li><a href="/oahpa/leksa_n/">{% trans 'Placenames' %}</a>
+</ul>
+</div>
+{% endblock %}
+
+{% block name %}{% trans "Quizz" %}{% endblock %}
+{% block pagename %}/oahpa/leksa/{% endblock %}
+{% block gamename %}{% endblock %}
+{% block instructions %}{% trans "Give translations for words. You can choose set or book, not both." %}{% endblock %}
+
+{% block settings %}
+<table width="700">
+<tr>
+<td>{% trans "Set" %}</td>
+<td>{% trans "Book" %}</td>
+<td>{% trans "Select the language pair" %}</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>{{ settingsform.semtype }}</td>
+<td>{{ settingsform.book }}</td>
+<td>{{ settingsform.transtype }}</td>
+<td>&nbsp;</td>
+</tr>
+</table>
+
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+{% endblock %}
+
+{% block question %}
+<td>{{ form.lemma }} </td>
+{% endblock %}
+
+{% block submit %}
+<tr>
+<td>
+</td>
+<td>
+{% if not all_correct %}
+   {% if not show_correct %}
+   <input type="submit" name="test" value="{% trans "Test answers" %}"/>
+   {% endif %}
+   {% ifequal count 1 %}
+   <input type="submit" name="show_correct" value="{% trans "Show correct answers" %}" />
+   {% endifequal %}
+{% endif %}
+</td>
+</tr>
+{% endblock %}

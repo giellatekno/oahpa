@@ -1,0 +1,74 @@
+{% extends "game.html" %}
+{% load i18n %}
+
+{% block helpaddress %}
+{% ifequal LANGUAGE_CODE "no" %}
+<a href="http://giellatekno.uit.no/oahpa/vasta.nno.html"
+{% else %}
+<a href="http://giellatekno.uit.no/oahpa/vasta.html"
+{% endifequal %}
+{% endblock %}
+
+
+{% block navbar %}
+<div id="navbar">
+<img width="120" height="120" border="0" src="/oahpa/media/images/vasta_big.png"/>
+<div class="bigheader">VASTA</div>
+</div>
+{% endblock %}
+
+
+{% block name %}{% trans "Vasta" %}{% endblock %}
+{% block pagename %}/oahpa/vasta/{% endblock %}
+{% block instructions %}{% trans "Answer to the questions with full sentences. Be aware of that if there is moai/mii in the question, you have to answer with doai/dii. " %}{% endblock %}
+{% block settings %}
+
+<table width="700">
+<!-- emergency tag starts -->
+<tr>
+<!--{% trans "NB! NB! The Vasta game is not working properly, due to technical problems! NB! NB!" %}-->
+<!--{% trans "NB! NB! The Vasta game is temporarily out of order, due to technical maintenance! NB! NB!" %} -->
+</tr>
+<!-- emergency tag ends -->
+<tr>
+<td>{% trans "Level" %}</td>
+<!--<td>{% trans "Book" %}</td>-->
+</tr>
+<tr>
+<td>{{ settingsform.level }}</td>
+<!--<td>{{ settingsform.book }}</td>-->
+</tr>
+</table>
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+<input type="hidden" name="gametype" value="qa" />
+
+{% endblock %}
+
+{% block question %}
+
+<td><br/>{{ form.question }}</td>
+{% endblock %}
+
+{% block submit %}
+<tr>
+<td>
+</td>
+<td>
+  {% if not all_correct %}
+  <input type="submit" name="test" value="{% trans "Test answers" %}"/>
+  {% endif %}
+</td>
+</tr>
+
+{% if messages %}
+<tr><td>
+<table border='1' cellpadding='10' bgcolor='#F9F9F9'>
+<tr><td>
+{% for m in messages %}{{ m }}<br/>{% endfor %}
+</td></tr>
+</table>
+</td></tr>
+{% endif %}
+
+{% endblock %}
+
