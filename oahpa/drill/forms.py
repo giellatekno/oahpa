@@ -231,9 +231,9 @@ def is_correct(self, game, example=None):
     # Log information about user answers.
     correctlist = ",".join(self.correct_anslist)
     today=datetime.date.today()
-	log, c = Log.objects.get_or_create(userinput=answer,correct=correctlist,iscorrect=iscorrect,\
-									   example=example,game=game,date=today)
-	log.save()
+    log, c = Log.objects.get_or_create(userinput=answer,correct=correctlist,iscorrect=iscorrect,\
+                                       example=example,game=game,date=today)
+    log.save()
 
 def set_correct(self):
     """
@@ -333,7 +333,7 @@ def get_feedback(self,word,tag,wordform,dialect,language):
         #print tag.pos, tag.personnumber, tag.tense, tag.mood
         
         feedbacks = Feedback.objects.filter(Q(stem=word.stem) & Q(rime=word.rime) & \
-											Q(gradation=word.gradation) &\
+                                            Q(gradation=word.gradation) &\
                                             Q(diphthong=word.diphthong) & Q(soggi=word.soggi) & \
                                             Q(mood=tag.mood) & Q(tense=tag.tense) & \
                                             Q(personnumber = tag.personnumber) & Q(dialects__dialect=dialect))
@@ -525,7 +525,7 @@ class QuizzQuestion(OahpaQuestion):
         self.generate_fields(30,30)
         self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
         self.lemma = word.lemma
-        oo = u'å '
+        oo = 'å '
         
         if word.pos == 'V' and transtype=="nobsme":
             if not self.lemma.startswith(oo):
@@ -667,7 +667,7 @@ class ContextMorfaQuestion(OahpaQuestion):
         atext = qanswer.string
         task = qanswer.task
         if not task:
-            raise Http404("not task: " + atext)			
+            raise Http404("not task: " + atext)            
 
         super(ContextMorfaQuestion, self).__init__(*args, **kwargs)
 
@@ -684,9 +684,9 @@ class ContextMorfaQuestion(OahpaQuestion):
 
         form_list=[]
         if not selected_awords.has_key(task):
-            raise Http404(task + " " + atext + " " + str(qanswer.id))			
+            raise Http404(task + " " + atext + " " + str(qanswer.id))            
         if len(selected_awords[task]['fullform'])>0:
-            for f in selected_awords[task]['fullform']:				
+            for f in selected_awords[task]['fullform']:                
                 self.correct_anslist.append(force_unicode(f))
             self.is_correct("contextual morfa")
             self.correct_ans = self.correct_anslist[0]
@@ -884,7 +884,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
             analysis3=c + analyzed + c
 
     except socket.timeout:
-        raise Http404("Technical error, please try again later.")	        
+        raise Http404("Technical error, please try again later.")            
 
     s.send("q")
     s.close()
@@ -900,7 +900,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
     messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
     targetObj=re.compile(r'^.*\"(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\".*dia-.*$', re.U)
-    # Extract the lemma	
+    # Extract the lemma    
     constantObj=re.compile(r'^.*\"\<(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\>\".*$', re.U)
     diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
 
@@ -943,7 +943,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
         if matchObj:
             msgstring = matchObj.expand(r'\g<targetString>')
             msgstrings[wordform][msgstring] = 1
-            diastring=msgstring			
+            diastring=msgstring            
             
 
     msg=[]
@@ -952,7 +952,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     variable=""
     constant=""
     found=False
-    #Interface language	
+    #Interface language    
     if not language: language = "nob"
     if language == "no" : language = "nob"
     if language == "fi" : language = "fin"
@@ -970,7 +970,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
                 msg.append(message)
                 if not spelling:
                     found=True
-                    break				
+                    break                
             else:
                 if m.count("dia-") == 0:
                     msg.append(m)
@@ -996,8 +996,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     today=datetime.date.today()
     log, c = Log.objects.get_or_create(userinput=self.userans,feedback=feedbackmsg,iscorrect=iscorrect,\
                                        example=question,game=self.gametype,date=today)
-    log.save()		   
-		
+    log.save()           
+        
     variables = []
     variables.append(variable)
     variables.append(constant)
@@ -1035,7 +1035,7 @@ class VastaQuestion(OahpaQuestion):
         answer_size=50
         self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                 widget=forms.TextInput(\
-			attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
+            attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
 
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
@@ -1206,7 +1206,7 @@ class SahkaQuestion(OahpaQuestion):
 
         self.target=""
         self.constant=""
-        self.dia_messages = ""		
+        self.dia_messages = ""        
         self.gametype="sahka"
         self.variables = []
         self.variables.append("")
