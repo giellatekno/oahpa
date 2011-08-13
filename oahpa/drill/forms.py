@@ -231,9 +231,9 @@ def is_correct(self, game, example=None):
     # Log information about user answers.
     correctlist = ",".join(self.correct_anslist)
     today=datetime.date.today()
-    log, c = Log.objects.get_or_create(userinput=answer,correct=correctlist,iscorrect=iscorrect,\
-                                       example=example,game=game,date=today)
-    log.save()
+	log, c = Log.objects.get_or_create(userinput=answer,correct=correctlist,iscorrect=iscorrect,\
+									   example=example,game=game,date=today)
+	log.save()
 
 def set_correct(self):
     """
@@ -525,10 +525,11 @@ class QuizzQuestion(OahpaQuestion):
         self.generate_fields(30,30)
         self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
         self.lemma = word.lemma
-        oo = "å "
+        oo = u'å '
         
         if word.pos == 'V' and transtype=="nobsme":
-            self.lemma = oo.decode('utf-8') + force_unicode(self.lemma)
+            if not self.lemma.startswith(oo):
+                self.lemma = force_unicode(oo + self.lemma)
 
         self.is_correct("leksa", self.lemma)
 
