@@ -436,7 +436,10 @@ class QuizzGame(Game):
             else:                                                        print "Empty else branch!"
             
             if self.settings['book'].count('all') > 0:
-                QUERY = QUERY & Q(semtype__semtype__in=semtypes)
+                if WordObj != Word:
+                    QUERY = QUERY & Q(word__semtype__semtype__in=semtypes)
+                else:
+                    QUERY = QUERY & Q(semtype__semtype__in=semtypes)
 
             else:
                 semtypes = self.settings['allsem']

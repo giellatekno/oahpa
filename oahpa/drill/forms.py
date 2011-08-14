@@ -525,7 +525,7 @@ class QuizzQuestion(OahpaQuestion):
         self.generate_fields(30,30)
         self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
         self.lemma = word.lemma
-        oo = 'å '
+        oo = u'å '
         
         if word.pos == 'V' and transtype=="nobsme":
             if not self.lemma.startswith(oo):
