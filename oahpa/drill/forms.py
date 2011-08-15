@@ -534,12 +534,12 @@ class QuizzQuestion(OahpaQuestion):
         if word.pos == 'V':
             if transtype == "nobsme":
                 if not self.lemma.startswith(oo):
-                    self.lemma = force_unicode(oo + self.lemma)
+                    self.lemma = oo + force_unicode(self.lemma)
             if transtype == "smenob":
                 if not userans_val.startswith(oo):
-                    userans_val = force_unicode(oo + self.lemma)
+                    userans_val = oo + force_unicode(self.lemma)
                 if not correct.startswith(oo):
-                    correct = force_unicode(oo + self.lemma)
+                    correct = oo + force_unicode(self.lemma)
 
 
         self.is_correct("leksa", self.lemma)
