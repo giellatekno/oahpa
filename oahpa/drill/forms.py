@@ -231,8 +231,12 @@ def is_correct(self, game, example=None):
     # Log information about user answers.
     correctlist = ",".join(self.correct_anslist)
     today=datetime.date.today()
-    log, c = Log.objects.get_or_create(userinput=answer,correct=correctlist,iscorrect=iscorrect,\
-                                       example=example,game=game,date=today)
+    log, c = Log.objects.create(userinput=answer,
+                                correct=correctlist,
+                                iscorrect=iscorrect,
+                                example=example,
+                                game=game,
+                                date=today)
     log.save()
 
 def set_correct(self):
@@ -527,9 +531,16 @@ class QuizzQuestion(OahpaQuestion):
         self.lemma = word.lemma
         oo = u'å '
         
-        if word.pos == 'V' and transtype=="nobsme":
-            if not self.lemma.startswith(oo):
-                self.lemma = force_unicode(oo + self.lemma)
+        if word.pos == 'V':
+            if transtype == "nobsme":
+                if not self.lemma.startswith(oo):
+                    self.lemma = force_unicode(oo + self.lemma)
+            if transtype == "smenob":
+                if not userans_val.startswith(oo):
+                    userans_val = force_unicode(oo + self.lemma)
+                if not correct.startswith(oo):
+                    correct = force_unicode(oo + self.lemma)
+
 
         self.is_correct("leksa", self.lemma)
 
