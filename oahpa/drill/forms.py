@@ -231,7 +231,7 @@ def is_correct(self, game, example=None):
     # Log information about user answers.
     correctlist = ",".join(self.correct_anslist)
     today=datetime.date.today()
-    log, c = Log.objects.create(userinput=answer,
+    log = Log.objects.create(userinput=answer,
                                 correct=correctlist,
                                 iscorrect=iscorrect,
                                 example=example,
@@ -1005,7 +1005,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     feedbackmsg=' '.join(msg)
     today=datetime.date.today()
-    log, c = Log.objects.get_or_create(userinput=self.userans,feedback=feedbackmsg,iscorrect=iscorrect,\
+    log = Log.objects.get_or_create(userinput=self.userans,feedback=feedbackmsg,iscorrect=iscorrect,\
                                        example=question,game=self.gametype,date=today)
     log.save()           
         
