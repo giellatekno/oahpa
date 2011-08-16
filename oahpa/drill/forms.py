@@ -529,17 +529,20 @@ class QuizzQuestion(OahpaQuestion):
         self.generate_fields(30,30)
         self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
         self.lemma = word.lemma
-        oo = u'å '.encode('utf-8')
-        
+        oo = u'å '
+        # Sometimes these are in utf8 and sometimes they are not.
+
         if word.pos == 'V':
             if transtype == "nobsme":
                 if not self.lemma.startswith(oo):
                     self.lemma = force_unicode(oo + self.lemma)
             if transtype == "smenob":
+                userans_val = force_unicode(userans_val)
+                correct = force_unicode(correct)
                 if not userans_val.startswith(oo):
-                    userans_val = force_unicode(oo + self.lemma)
+                    userans_val = force_unicode(oo + userans_val)
                 if not correct.startswith(oo):
-                    correct = force_unicode(oo + self.lemma)
+                    correct = force_unicode(oo + correct)
 
 
         self.is_correct("leksa", self.lemma)
