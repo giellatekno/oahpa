@@ -528,7 +528,7 @@ class QuizzQuestion(OahpaQuestion):
 
         self.generate_fields(30,30)
         self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
-        self.lemma = word.lemma
+        self.lemma = force_unicode(word.lemma)
         oo = u'å '
         # Sometimes these are in utf8 and sometimes they are not.
 
@@ -1008,7 +1008,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     feedbackmsg=' '.join(msg)
     today=datetime.date.today()
-    log, _ = Log.objects.create(userinput=self.userans,feedback=feedbackmsg,iscorrect=iscorrect,\
+    log = Log.objects.create(userinput=self.userans,feedback=feedbackmsg,iscorrect=iscorrect,\
                                        example=question,game=self.gametype,date=today)
     log.save()           
         
