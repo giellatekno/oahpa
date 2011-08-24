@@ -1,0 +1,189 @@
+!!!Møte om sørsamisk oahpa 24.8.2011
+
+Til stades: Lene, Sissel, Toini, Marit, Trond,
+
+!!!Saksliste
+* Status quo
+** Layout
+** sma-fin
+** Lokalisering
+** Stedsnavn
+** Grammatikk
+** Morfa C oppgaver
+** Numra - dato
+** nob-sma
+** dialekt
+* Bugliste
+* Hva skal gjøres videre?
+** Aajege
+** Lene
+** Trond
+** Programmerer
+* Neste møte
+
+!!!Status quo
+
+!! Layout
+
+Ingen ting nytt. Tiltak: Toini og Sissel tar det opp att etter skolestart.
+
+
+!! sma-fin
+
+Biret-Ánne, Lene og Trond var i Finland. Med oss heim tok vi ein finsk versjon
+av sma-oahpa. Universitetet i Helsingfors underviser i mange samiske språk, og dei
+har eit kurs i sørsamisk over jul, ved Eino Koponen. Eino har omsett ordlistene
+frå Åarjelsaemien 1-6 og SA 1-4 til finsk. Vi får dermed ein finsk versjon av sma-oahpa.
+
+Eino er også interessert i å få vite om tilgjengelege lydfiler, og tar kanskje
+kontakt.
+
+!! Lokalisering
+
+Viehkievierhtieh
+
+Oahpa inneholder lenker til referansemateriale som ligger online. Noe av det har blitt laget med hjelp av de samme grunnlagsdata som ble brukt til å lage Oahpa-programma.
+
+Må gjennomgås og leses korrektur på.
+
+!! Stedsnavn
+Sissel og Toini arbeider med dette. Skal jobbes mer med før det skal implementeres.
+
+Inspirasjon frå filene
+{{{
+$GTHOME/words/dicts/smanob/src/propPl_smanob.xml
+$GTHOME/words/dicts/smanob/src/prop_smanob.xml
+}}}
+
+!! Grammatikk
+
+Det har vore sommarferie.
+
+"Ferdig":
+* Substantiv - intro
+* Substantiv - lang tekst
+* Verb - intro
+* Verb - lang tekst
+* Omlyd
+* Pronomen
+* Pre- og postposisjoner
+
+"Under arbeid":
+* [Konjunksjoner og subjunksjoner|http://giellatekno.uit.no/uped/smagramm/konjunksjoner.nob.html]
+* [Adverb|http://giellatekno.uit.no/uped/smagramm/adverb.nob.html]
+* [Partikler|http://giellatekno.uit.no/uped/smagramm/partikler.nob.html]
+* [Interjeksjoner|http://giellatekno.uit.no/uped/smagramm/interjeksjoner.nob.html]
+* [Tallord|http://giellatekno.uit.no/uped/smagramm/tallord.nob.html]
+* Adjektiv
+
+Lene skal lage en statusoversikt om hva som mangler i de forskjellige filene.
+
+!! Morfa C oppgaver
+Vi kvalitetssikrer det vi har (tester, vurderer). Lene lager noen flere nektelsesoppgaver og jakt/fiske/reindrift.
+
+
+!! Numra - dato
+Trond har lyst til å lage datooppgaver under Numra, og har laga automatar:
+
+$GTHOME/gt/sma/src/date-sma.lexc
+
+{{{
+xfst[1]: down
+apply down> 12.3.
+njoktjen luhkiemubpie biejjie
+==> njoktjen luhkiemubpien biejjien
+apply down> 1.6.
+ruffien voestes biejjie
+==> ruffien voestes biejjien
+apply down> 30.2.
+goevten golmelåhkede biejjie
+==> goevten golmelåhkeden biejjien
+}}}
+
+
+Dato og dag skal stå i genitiv, eller?
+
+{{{
+kva er 12.3. på sørsamisk?
+= njoktjen luhkiemubpie biejjie
+  ^^^^^^^^
+}}}
+  
+* hvilken dato er det idag?
+** = njoktjen luhkiemubpie biejjie
+* 12.3. = njoktjen luhkiemubpie biejjie
+* __Når kommer du?__ <======== (i firkanten til høgre?)
+** = njoktjen luhkiemubpieN biejjieN
+
+__TILTAK__:
+* Røros diskuterer rammesetning og oppsett (nominativ/genitiv).
+* Trond ser på 31.4 og 30.2.
+
+
+!! nob-sma
+adverb og substantiv er bare påbegynt, de andre to filene er gjort
+
+!!Dialekt
+
+SH og L er kryptisk. Kva med ''Språkvariant'' eller ''Variant'' i staden for 
+''Dialekt'', og ''kortformer'' og ''langformer'' heller enn ''SH'' og ''L''?
+
+
+
+!!!Bugliste
+
+* 1084	MorfaC_pronomen: feil i illativoppgave	- kan lukkes
+* 1099	Morfa-s: Oversetting av ordene kommer ikke når man trykke... - 	funker for "alle andre" enn sissel
+* 1102	Flertallsending på -eh på substantiv i morfaS	
+* 1103	Bytte ut "klasse" med "verbgruppe" i inforute
+**   - ok - kan lukkes
+* 1105	Leksa frå svensk til sørsamisk er nede	
+* 1106	MorfaC_ feil verb dukker opp i parantesen i verboppgave v...	
+* 1107	MorfaC_ verbet dukker ikke opp i vprt22	
+* 1108	MorfaC_ ie-substantiv og vokalendringer	
+* 1111	SUBJ kommer opp som fasit i pronomenoppgave	
+* 1112	Flertallsord: goelkegaamegh
+
+Meir fokus på bugmeldingane framover no.
+
+!!!Hva skal gjøres videre?
+
+!! Aajege
+* teste, også med elever
+* se på loggen, f.eks. se på alle feildiagnoser fra Leksa
+* jobbe videre med stedsnavn og nobsma
+* layout
+* lokalisering
+* finpusse på morfa-C oppgaver
+* se på 118 usikre sma-fin (men mange av disse er ikke oahpa-ord)
+
+!! Lene
+* lage flere Morfa-C oppgaver
+* grammatikk
+* følge opp bugmeldinger
+* lage liste over de manglende sma-fin-oversettelsene til Eino
+* skrive mail til Sylvia/David om deadline for svensk oversetting - og om de mener det er realistisk å bli ferdig
+
+686 tilfelle av ''_SWE'' i kjeldekoden:
+
+{{{
+adv_smanob.xml:            <t pos="adv" stat="pref" tcomm="no">nettopp_SWE</t>
+adv_smanob.xml:            <t pos="adv" stat="notpref" tcomm="no">lett_SWE</t>
+adv_smanob.xml:            <t pos="adv" stat="pref" tcomm="no">lettvint_SWE</t>
+...
+}}}
+
+!! Trond
+* datoautomat
+* grammatikk - sammen med Lene
+* smafin - se på oversettelsen (OBS!)
+* fin lokalisering (korrektur frå finskspråklege)
+
+!! Programmerer
+* innstallere dato-automat
+* arbeide med bugger
+
+!!! Neste møte
+
+__Måndag 5.9. klokka 12:30.__
+
