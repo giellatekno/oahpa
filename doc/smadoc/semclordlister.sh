@@ -101,7 +101,7 @@ cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"TRA
 cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"VEHICLE"'		   | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_VEHICLE.jspwiki
 cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"VERBAL_V"'	   | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_VERBAL_V.jspwiki
 cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"VUEKIE"'		   | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_VUEKIE.jspwiki
-cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"VÆTNOE"'		   | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_VÆTNOE.jspwiki
+cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"VÆTNOE"'		   | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_VAETNOE.jspwiki
 cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"WEATHER"'		   | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_WEATHER.jspwiki
 cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"WEATHER_A"'	   | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_WEATHER_A.jspwiki
 cat *smanob.xml | sed 's/<\/e>/<\/e>$/' | tr "\n" " " | tr "$" "\n" | grep '"WEATHER_V"'	   | cut -d">" -f4 | cut -d"<" -f1 | sort | sed 's/^/* /' > sem_sett/Sem_WEATHER_V.jspwiki
