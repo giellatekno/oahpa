@@ -2,6 +2,10 @@
 
 As usual, commands on victorio.
 
+!!For smeoahpa
+
+Go to the oahpa catalogue.
+
 {{{
 mysql -u admin -p
 salasana: 
@@ -12,4 +16,18 @@ mysql> exit
 }}}
 
 The resulting file can then be gathered. Note that the command will overwrite earlier files in the tmp catalogue. As can be seen, more refined commands are possible (refining the log result).
+
+
+!!For other oahpa versions
+
+Go to the smaoahpa (etc.) catalogue. We use smaoahpa as example, replace with smnoahpa etc.
+
+{{{
+mysql -u admin -p
+salasana: 
+
+mysql> use smaoahpa;
+mysql> select * from smadrill_log order by game into outfile '/usr/tmp/smaoahpalog.txt' fields terminated by '|';
+mysql> exit
+}}}
 
