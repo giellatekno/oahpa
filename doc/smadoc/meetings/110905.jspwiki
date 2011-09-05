@@ -1,0 +1,236 @@
+!!!Møte om sørsamisk oahpa 05.9.2011
+
+Til stades: Lene, Sissel, Marit, Trond,
+
+!!!Saksliste
+Forrige møtes saksliste var:
+* Sma-oahpa
+** Navn
+** url
+* Status quo
+** Lokalisering
+** Grammatikk
+** Morfa C oppgaver
+** Numra - dato
+** nob-sma
+** dialekt
+* Bugliste
+* Hva skal gjøres videre?
+** Aajege
+** Lene
+** Trond
+** Programmerer
+* Neste møte
+
+
+!!! Sma-oahpa
+
+!! Navn
+
+å-oahpa
+åarjel-oahpa
+oahpa hov!
+oahpa åarjelsaemien
+åarjelsaemien oahpa <==
+åahpa
+
+!! Url
+
+Ulike modellar:
+
+Slik?
+* http://oahpa.net/ ==> fellesportal
+* http://oahpa.net/åarjel
+* http://oahpa.net/davvi
+
+
+… eller slik?
+* http://oahpa.no/ ==> fellesportal
+* http://oahpa.no/åarjel
+* http://oahpa.no/davvi
+
+
+… eller slik?  - denne?? hvis ikke .net eller .org går bra
+* http://oahpa.uit.no/ ==> fellesportal
+* http://oahpa.uit.no/åarjel
+* http://oahpa.uit.no/davvi
+
+
+… eller slik?
+* http://åarjel_oahpa.uit.no/
+* http://davvi_oahpa.uit.no/
+
+
+… eller slik?
+* http://åarjel.oahpa.uit.no/
+* http://davvi.oahpa.uit.no/
+
+
+__TILTAKSLISTE__:
+
+* __Trond__: Sjekke med .net og .org, om dei har eingongs
+* Viss vi ikkje får eingongsbetaling går vi for oahpa.uit.no
+* Ta opp med IS om muligheter for årlig betaling
+* Morfa-B Morfa-R, __Lene__ tar kontakt med Ryan
+* Fellesportal oahpa.uit.no til lanseringa (og redirect oahpa.uit.no/leksa osb. + endre adresser i læringsstier)
+
+
+!!! Status quo
+
+!! Lokalisering
+* bugane er i orden, og lokaliseringsprosessen fungerer.
+* Denne mangler: Oahpa inneholder lenker til referansemateriale som ligger online. Noe av det har blitt laget med hjelp av de samme grunnlagsdata som ble brukt til å lage Oahpa-programma.
+* Viehkievierhtieh … også hjelpemidler, på norsk (sjå på intern konsistens).
+
+__TILTAKSLISTE__:
+* Vurdere tekstene (__Røros__)
+* Oversette det som mangler på nettsidene (__Røros__)
+* Redigere lærerveiledning (__Lene__)
+** kopiere sme til sma, kutte ned og skrive om
+* Ha i tankane: Reorganisering av userdoc: 
+** ein katalog per målspråk + ein underkatalog per emne (omv?)
+
+!! Grammatikk
+* [status quo-rapport|http://uped/smadoc/grammatikk_status_quo.html]
+
+__TILTAKSLISTE__:
+* __Lene__ henter eksempelsetninger fra litteraturen
+* __Røros__ legger til eksempelsetninger og ser sjekker Lenes
+* __Lene__ skriver om adjektiv
+* __Trond__ sjekker eksempler vs. ordklasse og spesielt partikkelartikkelen
+
+!! Morfa C oppgaver
+* __Lene__ lager flere oppgaver
+
+
+!! Numra - dato
+
+Framleis open: Fjerne ikkjeeksisterande datoar, 30.2, 31.4, osb.
+
+* __Trond__ arbeider videre.
+
+!! nob-sma
+
+Thomas går no gjennom sma-orda frå nob-sma som ikke er i analysatoren vår. Dette har ikkje
+innverknad på Oahpa, men det styrkar analysatoren, og det gjer
+det mogleg å leggje dei til i ordboka.
+
+Nobsma med sørsamiske synonym er det også mogleg å la danne utgangspunkt
+for ei sørsamisk synonymordbok.
+
+{{{
+sliehtie-elmie
+sliehtieelmie
+krist’
+
+soen'åedtjie ~ soenåedtjie
+krist'ietnie
+
+soen’åedtjie ~ soenåedtjie
+krist’ietnie
+
+johke-elmie
+johkeelmie
+}}}
+
+__TILTAKSLISTE__:
+* __Lene__ sjekker at ’ og ikkje ' ligg i kjeldefila.
+* __Lene, Ciprian__ og  legger til varianter av substantiver (noen adjektiver) med bindestrek, se på tcomm
+
+
+!! dialekt
+SH og L er kryptisk. Kva med Språkvariant eller Variant i staden for Dialekt , og kortformer og langformer heller enn SH og L ?
+
+Fra epost om mulig markering av usikre ord:
+
+2) vi har utvida attributten stat slik at den har verdiene "pref" "notpref" og "perhaps"
+stat="pref" er som tidligere den oversettelsen som skal presenteres
+stat="notpref" er de som ikke skal presenteres (default - dvs at dere ikke trenger å velge denne - det blir automatisk valgt hvis ingenting er valgt)
+stat="perhaps" er for former som man er usikker på om er et sørsamisk ord, men man legger dem til for sikkerhets skyld.
+
+
+__TILTAKSLISTE__:
+* Implementere Språkvariant og Kortformer/Langformer i brukergrensesnittet __Trond__
+
+
+!!! Bugliste
+
+!!1120	cri	P1	LEKSA_ Mange ord mangler i tre av settene
+
+Ventar på at folk legg til manglande lemma.
+
+Lene ser på det.
+
+!!1107	maj	P3	MorfaC_ verbet dukker ikke opp i vprt22
+
+Ryan har funne feilen, og testar litt til før han sjekkar inn..
+
+!!1121	maj	P2	LEKSA_ bokstavene ÅÅ mangler i fasit av ordet ÅÅJMEDIDH
+
+Dette var ein quick-fix, og no ser det ut til at det er i orden 
+(knytt til ein feil med å som infinitivsmerke).
+
+!!1126	maj	P2	MorfaC_ Spørsmål samsvarer ikke med svar i vprs28
+
+Lene:; "Så neste gang Ryan innstallerer verboppgavene, skulle det fungere."
+
+!!1112	enh	P5	Flertallsord: goelkegaamegh
+
+Bugen er no skifta til eit Use/NG-tema.
+
+!!1124	enh	P5	Pronomen og dialekt
+
+P5.
+
+!!1117	enh	P3	Informasjon om verbgruppe når det er trestavelsesverb
+
+Ligg hos Ryan.
+
+!!1116	enh	P2	MorfaC_Feil ord dukker opp i pela8
+
+Ligg hos Ryan.
+
+
+!!! Hva skal gjøres videre?
+
+!! Aajege
+
+* Morfa-B Morfa-R, __Lene__ tar kontakt med Ryan
+* Fellesportal oahpa.uit.no til lanseringa (og redirect oahpa.uit.no/leksa osb. + endre adresser i læringsstier)
+* __Røros__ legger til eksempelsetninger og ser sjekker Lenes
+* Vurdere tekstene (__Røros__)
+* Oversette det som mangler på nettsidene (__Røros__)
+
+!! Lene
+
+* henter eksempelsetninger fra litteraturen
+* skriver om adjektiv
+* lager flere oppgaver Morfa-C-oppgaver
+* sjekker at ’ og ikkje ' ligg i kjeldefila.
+* Med Ciprian: legger til varianter av substantiver (noen adjektiver) med bindestrek, se på tcomm
+* Redigere lærerveiledning
+** kopiere sme til sma, kutte ned og skrive om
+
+
+!! Trond
+
+* Sjekke med .net og .org, om dei har eingongsavgift
+** Ta opp med IS om muligheter for årlig betaling
+* Arbeider videre med Numra 31.2.
+* Implementere Språkvariant og Kortformer/Langformer i brukergrensesnittet
+* Grammatikk: sjekker eksempler vs. ordklasse og spesielt partikkelartikkelen
+
+
+!! Programmerer
+
+* Ha i tankane: Reorganisering av userdoc: 
+** ein katalog per målspråk + ein underkatalog per emne (omv?)
+
+!!! Neste møte
+* 15. september kl 12.30
+
+
+
+
+
+
