@@ -2,354 +2,477 @@
 <!DOCTYPE document PUBLIC "-//APACHE//DTD Documentation V2.0//EN"
 "http://forrest.apache.org/dtd/document-v20.dtd">
 <document>
-  <header>
-    <title>Tallord (påbegynt arbeid!)</title>
-  </header>
-
-  <body>
-  
-
-<p><strong>Tallord</strong> er ord som forteller hvor mange ting uttrykk refererer til. De deles inn i <strong>grunntall, ordenstall og samlingstall</strong>. Grunntall er ord som <code>akte, göökte, golme</code> (en, to, tre), ordenstall er ord som <code>voestes, mubpie, gåalmede</code> (første, andre, tredje) og regnes som adjektiv. Samlingstall er ord som <code>gööktesh, golmesh, gööktege, golmege</code> (to personer, tre personer, to rein, tre rein), og de er substantiver.</p>
-
-
-<section>
-<title>Kasus</title>
-<p>er bøyningsformer som markerer hvilken funksjon substantiv, adjektiv, tallord og pronomen har i setninga (disse 4 ordklassene kalles med et samlebegrep for <strong>nomen</strong>). I sørsamisk er det åtte kasus. Grunntall og samlingstall følger vanlig kasusbøyning for substantiv:</p>
-</section>
-
-<section>
-<title>Enkle grunntall</title>
-
-    <p><strong>Nominativ</strong> er grunnformen av tallordet. <code>akte, göökte, golme</code>.  
-</p>
-            <p><strong>Akkusativ</strong> er kasus som brukes for objekt, f.eks. <code>aktem, gööktem, golmem.</code> Eksempel: <code>Mijjieh daarpesjibie 'aktem' mij maahta bovtsi luvnie vahkedh.</code> (Vi trenger en som kan arbeide med reinen.) </p>
-            <p><strong>Genitiv</strong> er kasus som angir eieform f.eks. <code>akten, göökten, golmen</code>. Genitiv brukes også i  postposisjonsuttrykk, f.eks. <code>xxxx</code>.</p> 
-            <p><strong>Illativ</strong> er kasus som betegner bevegelse til eller inn i noe. <code> aktese, gööktese, golmese</code>. f.eks. <code>xxxx</code>.</p>
-            <p><strong>Inessiv</strong> er kasus som betegner på/i/hos.  <code>aktesne, gööktesne, golmesne</code>. f.eks. <code>xxxx</code>.</p>
-            <p><strong>Elativ</strong> er kasus som betegner fra/av.  <code>akteste, göökteste, golmeste</code>. Eksempel: <code>Idtji dïhte gih maehtieh dallah jiehtedh gïem galka dejstie 'göökteste' vaeltedh.</code> (Han kunne ikke med en gang si hvem av de to de skulle ta.)
- </p>
-            <p><strong>Komitativ</strong> er kasus som ofte gir betydningen "med".  <code>aktine, gööktine, golmine</code>. f.eks. <code>xxxx</code>.</p>
-            <p><strong>Essiv</strong> er tilstandskasus som ofte gir betydningen "som".  <code>aktine, gööktine, golmine</code>. Formen er lik komitativ. f.eks. <code>xxxx</code>.</p> 
-<p></p>
-            <table>
-                <tr>
-                    <td colspan="8"><strong>Entall</strong></td>
-                </tr>
-                <tr>
-                    <td><strong>Nom.</strong></td>
-                    <td><strong>Akk.</strong></td>
-                    <td><strong>Gen.</strong></td>
-                    <td><strong>Ill.</strong></td>
-                    <td><strong>Ine.</strong></td>
-                    <td><strong>Ela.</strong></td>
-                    <td><strong>Kom.</strong></td>
-                    <td><strong>Essiv</strong></td>
-                </tr>
-                <tr>
-                    <td>akte</td>
-                    <td>aktem</td>
-                    <td>akten</td>
-                    <td>aktese</td>
-                    <td>aktesne</td>
-                    <td>akteste</td>
-                    <td>aktine</td>
-                    <td>aktine</td>
-                </tr>
-                <tr>
-                    <td>göökte</td>
-                    <td>gööktem</td>
-                    <td>göökten</td>
-                    <td>gööktese</td>
-                    <td>gööktesne</td>
-                    <td>göökteste</td>
-                    <td>gööktine</td>
-                    <td>gööktine</td>
-                </tr>
-                <tr>
-                    <td>golme</td>
-                    <td>golmem</td>
-                    <td>golmen</td>
-                    <td>golmese</td>
-                    <td>golmesne</td>
-                    <td>golmeste</td>
-                    <td>golmine</td>
-                    <td>golmine</td>
-                </tr>
-                <tr>
-                    <td>njieljie</td>
-                    <td>njieljiem</td>
-                    <td>njieljien, njealjan</td>
-                    <td>njieljese</td>
-                    <td>njieljesne</td>
-                    <td>njieljeste</td>
-                    <td>njieljine</td>
-                    <td>njieljine</td>
-                </tr>
-                <tr>
-                    <td>vïjhte</td>
-                    <td>vïjhtem</td>
-                    <td>vïjhten</td>
-                    <td>vïjhtese</td>
-                    <td>vïjhtesne</td>
-                    <td>vïjhteste</td>
-                    <td>vïjhtine</td>
-                    <td>vïjhtine</td>
-                </tr>
-                <tr>
-                    <td>govhte</td>
-                    <td>govhtem</td>
-                    <td>govhten</td>
-                    <td>govhtese</td>
-                    <td>govhtesne</td>
-                    <td>govhteste</td>
-                    <td>govhtine</td>
-                    <td>govhtine</td>
-                </tr>
-                <tr>
-                    <td>tjïjhtje</td>
-                    <td>tjïjhtjem</td>
-                    <td>tjïjhtjen</td>
-                    <td>tjïjhtjese</td>
-                    <td>tjïjhtjesne</td>
-                    <td>tjïjhtjeste</td>
-                    <td>tjïjhtjine</td>
-                    <td>tjïjhtjine</td>
-                </tr>
-                <tr>
-                    <td>gaektsie</td>
-                    <td>gaektsiem</td>
-                    <td>gaektsien</td>
-                    <td>gaaktsan</td>
-                    <td>gaektsesne</td>
-                    <td>gaektseste</td>
-                    <td>gaektsine</td>
-                    <td>gaektsine</td>
-                    </tr>
-                <tr>
-                    <td>uktsie</td>
-                    <td>uktsiem</td>
-                    <td>uktsien</td>
-                    <td>åktsan</td>
-                    <td>uktsesne</td>
-                    <td>uktseste</td>
-                    <td>uktsine</td>
-                    <td>uktsine</td>
-                </tr>
-                <tr>
-                    <td>luhkie</td>
-                    <td>luhkiem</td>
-                    <td>luhkien</td>
-                    <td>låhkan</td>
-                    <td>luhkesne</td>
-                    <td>luhkeste</td>
-                    <td>luhkine</td>
-                    <td>luhkine</td>
-                </tr>
-<tr>
-                    <td>tjuetie</td>
-                    <td>tjuetiem</td>
-                    <td>tjuetien</td>
-                    <td>tjuatan</td>
-                    <td>tjuetesne</td>
-                    <td>tjueteste</td>
-                    <td>tjuetine</td>
-                    <td>tjuetine</td>
-                </tr>
-<tr>
-                    <td>stoeretjuetie - tåvsene</td>
-                    <td>stoeretjuetiem - tåvsenem</td>
-                    <td>stoeretjuetien - tåvsene</td>
-                    <td>stoeretjuatan - tåvsanasse</td>
-                    <td>stoeretjuetesne - tåvsanisnie</td>
-                    <td>stoeretjueteste - tåvsanistie</td>
-                    <td>stoeretjuetine - tåvsaninie</td>
-                    <td>stoeretjuetine - tåvsaninie</td>
-                </tr>
-<tr>
-                    <td>gellie</td>
-                    <td>gelliem</td>
-                    <td>gellien</td>
-                    <td>gallan</td>
-                    <td>gellesne</td>
-                    <td>gelleste</td>
-                    <td>gelline</td>
-                    <td>gelline</td>
-                </tr>
-
-            </table>
-            <p></p>
-
-        
-        </section>
-
-<section>
-<title>Sammensatte grunntall</title>
-
-<p>Samisk har mange sammensatte tallord. Tallene  11-19, hele tiere, hundreder og tusener har to ledd, f.eks <code>luhkie/govhte (16), göökte/luhkie (20), govhte/tjuetie (600)</code>. Tall kan ha tre eller flere ledd: <code>njieljie/luhkie/uktsie (49), govhte/tjuetie/njieljie/luhkie/göökte (642)</code> .</p>
-
-<p>I sammensatte tallord bøyes det siste leddet i kasus, feks. <code>Dïhte 'vïjhteluhkien' jaepien båeries.</code> (Hun er femti år gammel.) </p>
-<p></p>
-
-
- </section>
-<section>
-<title>Tallord sammen med substantiv</title>
-<p>Når tallord står sammen med substantiv i samme setningsledd, er det egne regler for samsvarsbøyning. Hvis setningsleddet står i nominativ, er tallordet i nominativ og substantivet i nominativ flertall. <code>xxxx</code>. (xxxx). Ord som står til 'akte' står derimot i nominativ entall: <code>xxxx</code>.</p>
-<p>Også andre kasus er det samsvarsbøyning mellom tallord og substantiv. I akkusativ entall, genitiv entall og komitativ entall bøyes substantivet i samme kasus og tall som substantivet. Når substantivet står i illativ entall, står tallordet i genitiv og det er egne attributtformer for tallordet når det står til substantiv i inessiv og elativ entall. For flertall er det full samsvarsbøying for nominativ, genitiv, illativ, inessiv og elativ. Hvis setningsleddet står i akkusativ, har både tallordet og substantivet samme for som for nominativ flertall. Ved komitativ flertall står tallordet i genitiv flertall.
- Legg merke til at ordenstallet 'mubpie' følger de samme reglene for samsvarsbøyning:</p>
-<ul>
-<li><code>Tjidtjie lea 'vïjhte maanah' bijjiedamme.</code> (Mor har oppdratt fem barn.) </li>
-<li><code>Eah gaajhkesh voestes aejkien nöödth meksiehtidh; dovne 'akten, göökten jïh golmen aejkien'.</code> (xxx). </li>
-<li><code>Aktem skåerriestuhtjem gååre 'akten plïehtje reagkese'.</code> (xxx). </li>
-<li><code>'Mubpiem gietjiem' snijrem, jïh die 'aktem duahpam' gåaroem dan geatjan.</code> (xxx). </li>
-<li><code>Dïhte reakasovvi bijjene vaeresne 'aktene gåetesne'.</code> (xxx). </li>
-<li><code>Gosse eah 'aktene biejjesne' vitnh gih, dellie pruvhkieh tjåadtjoehtehtedh 'mubpien beajjan'.</code> (xxx). </li>
-<li><code>Gosse nïejte lij 'luhkien jaepien' båeries die aahka bööti.</code> (xxx). </li>
-</ul>
-<p></p>
-<table>
-                <tr>
-                    <td colspan="3"><strong>Tallord sammen med substantiv</strong></td>
-                </tr>
-                <tr>
-                    <td>ENTALL</td>
-                    <td><strong>akte</strong></td>
-                    <td><strong>göökte</strong></td>
-                </tr>
-                <tr>
-                    <td>Nom.</td>
-                    <td>akte gåetie</td>
-                    <td>göökte gåetieh</td>
-                </tr>
-                <tr>
-                    <td>Akk.</td>
-                    <td>aktem gåetiem</td>
-                    <td>göökte gåetieh</td>
-                </tr>
-                <tr>
-                    <td>Gen.</td>
-                    <td>akten gåetien</td>
-                    <td>guektien gåetieh</td>
-                </tr>
-
-                <tr>
-                    <td>Ill.</td>
-                    <td>akten gåatan</td>
-                    <td>guektien gåatan</td>
-                </tr>
-                <tr>
-                    <td>Ine.</td>
-                    <td>aktene gåetesne</td>
-                    <td>gööktene gåetesne</td>
-                </tr>
-                <tr>
-                    <td>Ela.</td>
-                    <td>aktede gåeteste</td>
-                    <td>gööktede gåeteste</td>
-                </tr>
-                <tr>
-                    <td>Kom.</td>
-                    <td>aktine gåetine</td>
-                    <td>gööktine gåetine</td>
-                </tr>
-                <tr>
-                    <td>FLERTALL</td>
-                    <td><strong>akth</strong></td>
-                    <td><strong>göökth</strong></td>
-                </tr>
-                <tr>
-                    <td>Nom./Akk.</td>
-                    <td>akth gaamegh</td>
-                    <td>göökth gaamegh</td>
-                </tr>
-                <tr>
-                    <td>Gen.</td>
-                    <td>akti gaamegi</td>
-                    <td>göökti gaamegi</td>
-                </tr>
-
-                <tr>
-                    <td>Ill.</td>
-                    <td>aktide gaamegidie</td>
-                    <td>gööktide gaamegidie</td>
-                </tr>
-                <tr>
-                    <td>Ine.</td>
-                    <td>aktine gaameginie</td>
-                    <td>gööktine gaameginie</td>
-                </tr>
-                <tr>
-                    <td>Ela.</td>
-                    <td>aktijste gaamegijstie</td>
-                    <td>gööktijste gaamegijstie</td>
-                </tr>
-                <tr>
-                    <td>Kom.</td>
-                    <td>akti gaamegigujmie</td>
-                    <td>göökti gaamegigujmie</td>
-                </tr>
-            </table> 
-
-</section>
-
-
-<section>
-<title>Ordenstall</title>
-<p>Man kan lage ordenstall av alle grunntall, bortsett fra 'xxx' og 'xxx'. Ordenstall lages vanligvis ved at endelsen '-de' legges til genitivsformen av grunntallet i entall, <code>gåalmede</code>. Denne endelsen kan også legges til sammensatte tall. <code>gööktelåhkede</code>. Unntakene til denne regelen er 'voestese' og 'mubpie'.</p>
-<p>Ordenstall bøyes som ulikestavelsesadjektiver. Unntaket er 'mubpie', som bøyes som likestavelsesadjektiv. </p>
-<table>
-<tr><td>1.</td><td>voestes</td></tr>
-<tr><td>2.</td><td>mubpie</td></tr>
-<tr><td>3.</td><td>gåalmede</td></tr>
-<tr><td>4.</td><td>njealjede</td></tr>
-<tr><td>5.</td><td>vïjhtede</td></tr>
-<tr><td>6.</td><td>govhtede</td></tr>
-<tr><td>7.</td><td>tjïjhtjede</td></tr>
-<tr><td>8.</td><td>gaaktsede</td></tr>
-<tr><td>9.</td><td>åktsede</td></tr>
-<tr><td>10.</td><td>låhkede</td></tr>
-<tr><td>100.</td><td>tjuatede</td></tr>
-</table>
-
-<ul><li><code>xxx</code> (xxx). </li>
-<li><code>xxx</code> (xxx). </li>
-<li><code>xxx</code> (xxx). </li>
-<li><code>xxx</code> (xxx). </li></ul>
-
- </section>
-
-<section>
-<title>Samlingstall</title>
-<p>Samlingstall lages ved å legge endelsen '-sh' til grunntallet i entall. Omlyd i tallene som får vokalveksling fra 'ie' til 'e'. Samlingstall viser til hvor mange personer eller til hvor mange rein det er snakk om. Samlingstall for personer er ulikestavelsessubstantiv i flertall, samlingstall for rein er ulikestavelsessubstantiv i entall.</p>
-<table>
-<tr><td colspan="3"><strong>SAMLINGSTALL</strong></td></tr>
-<tr><td></td><td><strong>om personer</strong></td><td><strong>om rein</strong></td></tr>
-<tr><td>2</td><td>gööktesh</td><td>gööktege</td></tr>
-<tr><td>3</td><td>golmesh</td><td>golmege</td></tr>
-<tr><td>4</td><td>njealjesh</td><td>njealjege</td></tr>
-<tr><td>5</td><td>vïjhtesh</td><td>vïjhtege</td></tr>
-<tr><td>6</td><td>govhtesh</td><td>govhtege</td></tr>
-<tr><td>7</td><td>tjïjhtjesh</td><td>tjïhtjege</td></tr>
-<tr><td>8</td><td>gaaktsesh</td><td>gaaktsege</td></tr>
-<tr><td>9</td><td>åktsesh</td><td>åktsege</td></tr>
-<tr><td>10</td><td>låhkesh</td><td>låhkege / tsiehkie bovtseste/bovsijste</td></tr>
-</table>
-
-<ul>
-<li><code>Jïh dan jïjjen 'gööktesh' 'golmesh' ryöjnesjin.</code> (Og den natta gjetet de to og tre personer sammen.) </li>
-<li><code>Daelie gelkien vuartasjidh gïem galkh dejstie 'gööktesijstie' vaeltedh dov geelline.</code> (Nå skal vi to se hvem av de to du skal ta som ektemann.) </li>
-<li><code>xxx</code> (xxx). </li></ul>
-
-<p>Samlingstall kan ikke stå sammen med substantiv i et setningsledd.</p>
-</section>
-
-
-
-  </body>
+   <header>
+      <title>Tallord (påbegynt arbeid!)</title>
+   </header>
+   <body>
+      <p><strong>Tallord</strong> er ord som forteller hvor mange ting uttrykk refererer til. De deles inn i
+      <strong>grunntall, ordenstall og samlingstall</strong>. Grunntall er ord som <code>akte, göökte, golme</code> (en,
+      to, tre), ordenstall er ord som <code>voestes, mubpie, gåalmede</code> (første, andre, tredje) og regnes som
+      adjektiv. Samlingstall er ord som <code>gööktesh, golmesh, gööktege, golmege</code> (to personer, tre personer, to
+      rein, tre rein), og de er substantiver.</p>
+      <section>
+         <title>Kasus</title>
+         <p>er bøyningsformer som markerer hvilken funksjon substantiv, adjektiv, tallord og pronomen har i setninga
+         (disse 4 ordklassene kalles med et samlebegrep for <strong>nomen</strong>). I sørsamisk er det åtte kasus.
+         Grunntall og samlingstall følger vanlig kasusbøyning for substantiv:</p>
+      </section>
+      <section>
+         <title>Enkle grunntall</title>
+         <p><strong>Nominativ</strong> er grunnformen av tallordet. <code>akte, göökte, golme</code>. Eksempel: Govhte
+         lea stöörebe goh golme (Seks er større enn tre).</p>
+         <p><strong>Akkusativ</strong> er kasus som brukes for objekt, f.eks. <code>aktem, gööktem, golmem.</code>
+         Eksempel: <code>Mijjieh daarpesjibie 'aktem' mij maahta bovtsi luvnie vahkedh.</code> (Vi trenger en som kan
+         arbeide med reinen.)</p>
+         <p><strong>Genitiv</strong> er kasus som angir eieform f.eks. <code>akten, göökten, golmen</code>. Eksempel:
+         <code>Göökti leah båajtoeh.</code>(To har feil.) Genitiv brukes også i postposisjonsuttrykk, f.eks.
+         <code>xxxx</code>.</p>
+         <p><strong>Illativ</strong> er kasus som betegner bevegelse til eller inn i noe. <code> aktese, gööktese,
+         golmese</code>. Eksempel: <code>Im manne annje lïereme tjuatan ryöknedh.</code>(Jeg har ikke lært meg å regne
+         til hundre ennå.)</p>
+         <p><strong>Inessiv</strong> er kasus som betegner på/i/hos. <code>aktesne, gööktesne, golmesne</code>. f.eks.
+         <code>xxxx</code>.</p>
+         <p><strong>Elativ</strong> er kasus som betegner fra/av. <code>akteste, göökteste, golmeste</code>. Eksempel:
+         <code>Idtji dïhte gih maehtieh dallah jiehtedh gïem galka dejstie 'göökteste' vaeltedh.</code> (Han kunne ikke
+         med en gang si hvem av de to de skulle ta.)</p>
+         <p><strong>Komitativ</strong> er kasus som ofte gir betydningen "med". <code>aktine, gööktine, golmine</code>.
+         Eksempel: <code>Man åvteste göökte nejpieh nuhtjedh, gosse dam maahtah aktine darjodh?</code> (Hvorfor skal du
+         bruke to kniver, når du kan gjøre det med en?)</p>
+         <p><strong>Essiv</strong> er tilstandskasus som ofte gir betydningen "som". <code>aktine, gööktine,
+         golmine</code>. Formen er lik komitativ. f.eks. <code>xxxx</code>.</p>
+         <p></p>
+         <table>
+            <tr>
+               <td colspan="8"><strong>Entall</strong></td>
+            </tr>
+            <tr>
+               <td><strong>Nom.</strong></td>
+               <td><strong>Akk.</strong></td>
+               <td><strong>Gen.</strong></td>
+               <td><strong>Ill.</strong></td>
+               <td><strong>Ine.</strong></td>
+               <td><strong>Ela.</strong></td>
+               <td><strong>Kom.</strong></td>
+               <td><strong>Essiv</strong></td>
+            </tr>
+            <tr>
+               <td>akte</td>
+               <td>aktem</td>
+               <td>akten</td>
+               <td>aktese</td>
+               <td>aktesne</td>
+               <td>akteste</td>
+               <td>aktine</td>
+               <td>aktine</td>
+            </tr>
+            <tr>
+               <td>göökte</td>
+               <td>gööktem</td>
+               <td>göökten</td>
+               <td>gööktese</td>
+               <td>gööktesne</td>
+               <td>göökteste</td>
+               <td>gööktine</td>
+               <td>gööktine</td>
+            </tr>
+            <tr>
+               <td>golme</td>
+               <td>golmem</td>
+               <td>golmen</td>
+               <td>golmese</td>
+               <td>golmesne</td>
+               <td>golmeste</td>
+               <td>golmine</td>
+               <td>golmine</td>
+            </tr>
+            <tr>
+               <td>njieljie</td>
+               <td>njieljiem</td>
+               <td>njieljien, njealjan</td>
+               <td>njieljese</td>
+               <td>njieljesne</td>
+               <td>njieljeste</td>
+               <td>njieljine</td>
+               <td>njieljine</td>
+            </tr>
+            <tr>
+               <td>vïjhte</td>
+               <td>vïjhtem</td>
+               <td>vïjhten</td>
+               <td>vïjhtese</td>
+               <td>vïjhtesne</td>
+               <td>vïjhteste</td>
+               <td>vïjhtine</td>
+               <td>vïjhtine</td>
+            </tr>
+            <tr>
+               <td>govhte</td>
+               <td>govhtem</td>
+               <td>govhten</td>
+               <td>govhtese</td>
+               <td>govhtesne</td>
+               <td>govhteste</td>
+               <td>govhtine</td>
+               <td>govhtine</td>
+            </tr>
+            <tr>
+               <td>tjïjhtje</td>
+               <td>tjïjhtjem</td>
+               <td>tjïjhtjen</td>
+               <td>tjïjhtjese</td>
+               <td>tjïjhtjesne</td>
+               <td>tjïjhtjeste</td>
+               <td>tjïjhtjine</td>
+               <td>tjïjhtjine</td>
+            </tr>
+            <tr>
+               <td>gaektsie</td>
+               <td>gaektsiem</td>
+               <td>gaektsien</td>
+               <td>gaaktsan</td>
+               <td>gaektsesne</td>
+               <td>gaektseste</td>
+               <td>gaektsine</td>
+               <td>gaektsine</td>
+            </tr>
+            <tr>
+               <td>uktsie</td>
+               <td>uktsiem</td>
+               <td>uktsien</td>
+               <td>åktsan</td>
+               <td>uktsesne</td>
+               <td>uktseste</td>
+               <td>uktsine</td>
+               <td>uktsine</td>
+            </tr>
+            <tr>
+               <td>luhkie</td>
+               <td>luhkiem</td>
+               <td>luhkien</td>
+               <td>låhkan</td>
+               <td>luhkesne</td>
+               <td>luhkeste</td>
+               <td>luhkine</td>
+               <td>luhkine</td>
+            </tr>
+            <tr>
+               <td>tjuetie</td>
+               <td>tjuetiem</td>
+               <td>tjuetien</td>
+               <td>tjuatan</td>
+               <td>tjuetesne</td>
+               <td>tjueteste</td>
+               <td>tjuetine</td>
+               <td>tjuetine</td>
+            </tr>
+            <tr>
+               <td>stoeretjuetie - tåvsene</td>
+               <td>stoeretjuetiem - tåvsenem</td>
+               <td>stoeretjuetien - tåvsene</td>
+               <td>stoeretjuatan - tåvsanasse</td>
+               <td>stoeretjuetesne - tåvsanisnie</td>
+               <td>stoeretjueteste - tåvsanistie</td>
+               <td>stoeretjuetine - tåvsaninie</td>
+               <td>stoeretjuetine - tåvsaninie</td>
+            </tr>
+            <tr>
+               <td>gellie</td>
+               <td>gelliem</td>
+               <td>gellien</td>
+               <td>gallan</td>
+               <td>gellesne</td>
+               <td>gelleste</td>
+               <td>gelline</td>
+               <td>gelline</td>
+            </tr>
+         </table>
+         <p></p>
+      </section>
+      <section>
+         <title>Sammensatte grunntall</title>
+         <p>Samisk har mange sammensatte tallord. Tallene 11-19, hele tiere, hundreder og tusener har to ledd, f.eks
+         <code>luhkie/govhte (16), göökte/luhkie (20), govhte/tjuetie (600), göökte/tovsene (2000) </code>. Tall kan ha
+         tre eller flere ledd: <code>njieljie/luhkie/uktsie (49), govhte/tjuetie/njieljie/luhkie/göökte (642)</code> .
+         Hele hundreder og tusener kan også ha tre ledd, f.eks: golme/stoerre/luhkie <code>(300),</code>
+         govhte/stoerre/tjueti<code>e (6000). </code></p>
+         <p>I sammensatte tallord bøyes det siste leddet i kasus, f.eks: </p>
+         <ul>
+            <li><code>Dïhte 'vïjhteluhkien' jaepien båeries.</code> (Hun er femti år gammel.)</li>
+            <li><code>Daan biejjien skiereden göökteluhkiegaaktseden biejjien</code>. (Idag er det den 28.
+            September.)</li>
+            <li><code>Ryöknedh luhkieaktese.</code> (Regn til elleve.)</li>
+         </ul>
+      </section>
+      <section>
+         <title>Tallord sammen med substantiv</title>
+         <p>Når tallord står sammen med substantiv i samme setningsledd, er det egne regler for samsvarsbøyning. Hvis
+         setningsleddet står i nominativ, er tallordet i nominativ og substantivet i nominativ flertall. <code>Mov leah
+         golme bïenjeh</code>. (Jeg har tre hunder). Ord som står til 'akte' står derimot i nominativ entall: <code>Mov
+         lea akte bienje.</code> (Jeg har én hund).</p>
+         <p>Også andre kasus er det samsvarsbøyning mellom tallord og substantiv. I akkusativ entall, genitiv entall og
+         komitativ entall bøyes substantivet i samme kasus og tall som substantivet. Når substantivet står i illativ
+         entall, står tallordet i genitiv og det er egne attributtformer for tallordet når det står til substantiv i
+         inessiv og elativ entall. For flertall er det full samsvarsbøying for nominativ, genitiv, illativ, inessiv og
+         elativ. Hvis setningsleddet står i akkusativ, har både tallordet og substantivet samme for som for nominativ
+         flertall. Ved komitativ flertall står tallordet i genitiv flertall. Legg merke til at ordenstallet 'mubpie'
+         følger de samme reglene for samsvarsbøyning:</p>
+         <ul>
+            <li><code>Tjidtjie lea 'vïjhte maanah' bijjiedamme.</code> (Mor har oppdratt fem barn.)</li>
+            <li><code>Eah gaajhkesh voestes aejkien nöödth meksiehtidh; dovne 'akten, göökten jïh golmen
+            aejkien'.</code> (xxx).</li>
+            <li><code>Aktem skåerriestuhtjem gååre 'akten plïehtje reagkese'.</code> (Man tar en skinnbit og syr den
+            fast til en flat ring).</li>
+            <li><code>'Mubpiem gietjiem' snijrem, jïh die 'aktem duahpam' gåaroem dan geatjan.</code> (Jeg fletter den
+            andre enden, og så syr jeg en dusk på den enden).</li>
+            <li><code>Dïhte reakasovvi bijjene vaeresne 'aktene gåetesne'.</code> (Han føddes oppe til fjells i en
+            gamme).</li>
+            <li><code>Gosse eah 'aktene biejjesne' vitnh gih, dellie pruvhkieh tjåadtjoehtehtedh 'mubpien
+            beajjan'.</code> (Når vi ikke rekker det på én dag, så bruker vi å la reinen stå til neste dag).</li>
+            <li><code>Gosse nïejte lij 'luhkien jaepien' båeries die aahka bööti.</code> (Når jenta var elleve år gamel,
+            så kom bestemoren).</li>
+            <li><code>Dïhte nïejte 'gööktine plaerine' veedtsi jïh dejtie aahkese vedti. </code>(Jenta gikk med to
+            aviser og ga dem til bestemoren).</li>
+            <li><code>Gåajvoeh joptsem 'golmen gaaran'! </code>( Hell suppa i tre skåler!)</li>
+            <li><code>Manne leam barre 'aktem gærjam' lohkeme.</code> (Jeg har bare lest en bok.)</li>
+            <li><code>Åestieh 'njieljie laejpieh'!</code> ( Kjøp fire brød!)</li>
+            <li><code>Manne leam blåammah vadteme 'golmen nïejtese'. </code>(Jeg har gitt blomster til tre jenter).</li>
+            <li><code>Nuekies hov 'akth gaamegh' meatan vaeltedh. </code>(Det er nok å ha med ett par sko).</li>
+         </ul>
+         <p></p>
+         <p>Selv om tallordet står til et substantiv i andre kasus enn nominativ og akkusativ, kan man i mange tilfeller
+         velge å la det stå helt ubøyd.</p>
+         <ul>
+            <li><code>Sara peannam öösti luhkie kråvnan åvteste. </code>(Sara kjøpte pennen for ti kroner.)</li>
+            <li><code>Gåajvoeh die bearkoeh krovhteste jih die göökte gaeriej sijse. </code>(Hell så kjøttet fra gryta
+            og ha det i to skåler.)</li>
+         </ul>
+         <p></p>
+         <p>Ofte vil man bruke et påpekende pronomen foran tallordet. For tallord høyere en én, står gjerne både det
+         påpekende pronomenet og substantivet i flertall. Tallordet bøyer man enten i samme kasus, eller man kan la det
+         stå ubøyd.</p>
+         <ul>
+            <li><code>Im manne daejrieh gieh dejnie golme gåetine årroeminie. (</code>Jeg vet ikke hvem som bor i de tre
+            husene der.)</li>
+            <li><code>Dej golme baerniej gærjah leah skåapesne.</code>(De tre guttenes bøker er i skapet.)</li>
+            <li><code>Dellie numhtie saernie jåhta dej göökte fraejjeri bijre. </code>(Og slik går historien om de to
+            frierne.)</li>
+            <li>xxx</li>
+         </ul>
+         <p></p>
+         <table>
+            <tr>
+               <td colspan="3"><strong>Tallord sammen med substantiv</strong></td>
+            </tr>
+            <tr>
+               <td>ENTALL</td>
+               <td><strong>akte</strong></td>
+               <td><strong>göökte</strong></td>
+            </tr>
+            <tr>
+               <td>Nom.</td>
+               <td>akte gåetie</td>
+               <td>göökte gåetieh</td>
+            </tr>
+            <tr>
+               <td>Akk.</td>
+               <td>aktem gåetiem</td>
+               <td>göökte gåetieh</td>
+            </tr>
+            <tr>
+               <td>Gen.</td>
+               <td>akten gåetien</td>
+               <td>guektien gåetieh</td>
+            </tr>
+            <tr>
+               <td>Ill.</td>
+               <td>akten gåatan</td>
+               <td>guektien gåatan</td>
+            </tr>
+            <tr>
+               <td>Ine.</td>
+               <td>aktene gåetesne</td>
+               <td>gööktene gåetesne</td>
+            </tr>
+            <tr>
+               <td>Ela.</td>
+               <td>aktede gåeteste</td>
+               <td>gööktede gåeteste</td>
+            </tr>
+            <tr>
+               <td>Kom.</td>
+               <td>aktine gåetine</td>
+               <td>gööktine gåetine</td>
+            </tr>
+            <tr>
+               <td>FLERTALL</td>
+               <td><strong>akth</strong></td>
+               <td><strong>göökth</strong></td>
+            </tr>
+            <tr>
+               <td>Nom./Akk.</td>
+               <td>akth gaamegh</td>
+               <td>göökth gaamegh</td>
+            </tr>
+            <tr>
+               <td>Gen.</td>
+               <td>akti gaamegi</td>
+               <td>göökti gaamegi</td>
+            </tr>
+            <tr>
+               <td>Ill.</td>
+               <td>aktide gaamegidie</td>
+               <td>gööktide gaamegidie</td>
+            </tr>
+            <tr>
+               <td>Ine.</td>
+               <td>aktine gaameginie</td>
+               <td>gööktine gaameginie</td>
+            </tr>
+            <tr>
+               <td>Ela.</td>
+               <td>aktijste gaamegijstie</td>
+               <td>gööktijste gaamegijstie</td>
+            </tr>
+            <tr>
+               <td>Kom.</td>
+               <td>akti gaamegigujmie</td>
+               <td>göökti gaamegigujmie</td>
+            </tr>
+         </table>
+      </section>
+      <section>
+         <title>Ordenstall</title>
+         <p>Man kan lage ordenstall av alle grunntall, bortsett fra 'xxx' og 'xxx'. Ordenstall lages vanligvis ved at
+         endelsen '-de' legges til genitivsformen av grunntallet i entall, <code>gåalmede</code>. Denne endelsen kan
+         også legges til sammensatte tall. <code>gööktelåhkede</code>. Unntakene til denne regelen er 'voestes' og
+         'mubpie'.</p>
+         <p>Ordenstall bøyes som ulikestavelsesadjektiver. Unntaket er 'mubpie', som bøyes som
+         likestavelsesadjektiv.</p>
+         <table>
+            <tr>
+               <td>1.</td>
+               <td>voestes</td>
+            </tr>
+            <tr>
+               <td>2.</td>
+               <td>mubpie</td>
+            </tr>
+            <tr>
+               <td>3.</td>
+               <td>gåalmede</td>
+            </tr>
+            <tr>
+               <td>4.</td>
+               <td>njealjede</td>
+            </tr>
+            <tr>
+               <td>5.</td>
+               <td>vïjhtede</td>
+            </tr>
+            <tr>
+               <td>6.</td>
+               <td>govhtede</td>
+            </tr>
+            <tr>
+               <td>7.</td>
+               <td>tjïjhtjede</td>
+            </tr>
+            <tr>
+               <td>8.</td>
+               <td>gaaktsede</td>
+            </tr>
+            <tr>
+               <td>9.</td>
+               <td>åktsede</td>
+            </tr>
+            <tr>
+               <td>10.</td>
+               <td>låhkede</td>
+            </tr>
+            <tr>
+               <td>100.</td>
+               <td>tjuatede</td>
+            </tr>
+         </table>
+         <ul>
+            <li><code>Mijjieh gujht mubpien bealan vaedtsebe.</code> (Vi går nok til den andre siden).</li>
+            <li><code>Daate lea dïhte govhtede gærja mij Aanta lea tjaaleme. </code>( Dette er den sjette boka som Aanta
+            har skrevet).</li>
+            <li><code>Manne gåalmede klaassesne vaadtsam</code> (Jeg går i tredje klasse).</li>
+            <li><code>Gieh sijhtieh artigkelem lohkedh mij njealjedinie bielesne tjåådtje?</code>(Hvem vil lese
+            artikkelen som står på fjerde siden?).</li>
+            <li><code>Manne 'mubpien gåatan' vaadtsam</code>. (Jeg går til det andre huset).</li>
+         </ul>
+      </section>
+      <section>
+         <title>Samlingstall</title>
+         <p>Samlingstall lages ved å legge endelsen '-sh' til grunntallet i entall. Omlyd i tallene som får
+         vokalveksling fra 'ie' til 'e'. Samlingstall viser til hvor mange personer eller til hvor mange rein det er
+         snakk om. Samlingstall for personer er ulikestavelsessubstantiv i flertall, samlingstall for rein er
+         ulikestavelsessubstantiv i entall.</p>
+         <table>
+            <tr>
+               <td colspan="3"><strong>SAMLINGSTALL</strong></td>
+            </tr>
+            <tr>
+               <td></td>
+               <td><strong>om personer</strong></td>
+               <td><strong>om rein</strong></td>
+            </tr>
+            <tr>
+               <td>2</td>
+               <td>gööktesh</td>
+               <td>gööktege</td>
+            </tr>
+            <tr>
+               <td>3</td>
+               <td>golmesh</td>
+               <td>golmege</td>
+            </tr>
+            <tr>
+               <td>4</td>
+               <td>njealjesh</td>
+               <td>njealjege</td>
+            </tr>
+            <tr>
+               <td>5</td>
+               <td>vïjhtesh</td>
+               <td>vïjhtege</td>
+            </tr>
+            <tr>
+               <td>6</td>
+               <td>govhtesh</td>
+               <td>govhtege</td>
+            </tr>
+            <tr>
+               <td>7</td>
+               <td>tjïjhtjesh</td>
+               <td>tjïhtjege</td>
+            </tr>
+            <tr>
+               <td>8</td>
+               <td>gaaktsesh</td>
+               <td>gaaktsege</td>
+            </tr>
+            <tr>
+               <td>9</td>
+               <td>åktsesh</td>
+               <td>åktsege</td>
+            </tr>
+            <tr>
+               <td>10</td>
+               <td>låhkesh</td>
+               <td>låhkege / tsiehkie bovtseste/bovsijste</td>
+            </tr>
+         </table>
+         <ul>
+            <li><code>Jïh dan jïjjen 'gööktesh' 'golmesh' ryöjnesjin.</code> (Og den natta gjetet de to og tre personer
+            sammen.)</li>
+            <li><code>Daelie gelkien vuartasjidh gïem galkh dejstie 'gööktesijstie' vaeltedh dov geelline.</code> (Nå
+            skal vi to se hvem av de to du skal ta som ektemann.)</li>
+            <li>Daelie golmesh mah dejnie prosjektinie barkeminie (Nå er det tre som jobber med dette prosjektet).</li>
+         </ul>
+         <p>Samlingstall kan ikke stå sammen med substantiv i et setningsledd.</p>
+      </section>
+   </body>
 </document>
-
-
-
-
-
- 
