@@ -35,6 +35,13 @@ svn up
 django-admin.py compilemessages
 }}}
 
+If you are not allowed to compile the messages (the machine requires
+sudo rights), remove the __*.mo__ files:
+
+rm -f locale/*/LC_MESSAGES/django.mo
+
+Thereafter, repeate the compile message.
+
 !!New localisations
 
 Django has two locations for localisations, one is the "global" level, which contains
