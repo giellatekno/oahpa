@@ -2780,8 +2780,8 @@ For the full license text, see the link above.</lic>
             <sem class="WEATHER" />
          </semantics>
          <tg xml:lang="nob">
-            <t pos="n" stat="pref" tcomm="no">varme</t>
-            <tf pos="phrase_n" tcomm="no">varmt vær</tf>
+            <tf pos="phrase_n" stat="pref" tcomm="no">varmt vær</tf>
+            <t pos="???">varme</t>
             <tf tcomm="no">hett vær</tf>
             <t pos="n" stat="notpref" tcomm="no">hete</t>
          </tg>
@@ -2819,8 +2819,9 @@ For the full license text, see the link above.</lic>
             <sem class="DRINK" />
          </semantics>
          <tg xml:lang="nob">
+            <tf pos="phrase_n" stat="pref" tcomm="no">varmt vann</tf>
+            <t pos="???">varmtvann</t>
             <t pos="n" stat="notpref" tcomm="no">varmvann</t>
-            <t pos="n" stat="pref" tcomm="no">varmtvann</t>
             <t pos="n" stat="notpref" tcomm="no">varmvatn</t>
             <tf pos="phrase_n" tcomm="no">varmt vann</tf>
             <tf pos="phrase_n" tcomm="no">varmt vatn</tf>
@@ -4339,6 +4340,7 @@ For the full license text, see the link above.</lic>
          </semantics>
          <tg xml:lang="nob">
             <t pos="n" stat="pref" tcomm="no">sønn</t>
+            <te>ugift</te>
          </tg>
          <tg xml:lang="swe">
             <t pos="n" stat="pref" tcomm="no">son</t>
@@ -4378,6 +4380,29 @@ For the full license text, see the link above.</lic>
          </tg>
          <tg xml:lang="fin">
             <t pos="n" stat="pref" tcomm="no">kjæreste_FIN</t>
+         </tg>
+      </mg>
+      <mg>
+         <semantics>
+            <sem class="FAMILY" />
+         </semantics>
+         <tg xml:lang="nob">
+            <t pos="n" stat="pref" tcomm="no">ungkar</t>
+         </tg>
+         <tg xml:lang="swe">
+            <t pos="n" stat="pref" tcomm="no">ungkarl</t>
+         </tg>
+         <tg xml:lang="eng">
+            <t pos="n" stat="pref" tcomm="no">ungkar_ENG</t>
+         </tg>
+         <tg xml:lang="deu">
+            <t pos="n" stat="pref" tcomm="no">ungkar_DEU</t>
+         </tg>
+         <tg xml:lang="sme">
+            <t pos="n" stat="notpref" tcomm="no">ungkar</t>
+         </tg>
+         <tg xml:lang="fin">
+            <t pos="n" stat="pref" tcomm="no">ungkar_FIN</t>
          </tg>
       </mg>
    </e>
@@ -6882,8 +6907,10 @@ For the full license text, see the link above.</lic>
             <sem class="ROAD" />
          </semantics>
          <tg xml:lang="nob">
-            <t pos="n" stat="pref" tcomm="no">vegstykke</t>
-            <t pos="n" stat="notpref" tcomm="no">veistykke</t>
+            <t pos="n" stat="pref" tcomm="no">veistykke</t>
+            <te>strekning</te>
+            <t pos="n" stat="notpref" tcomm="no">vegstykke</t>
+            <t pos="???">strekning</t>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
             <t pos="n" stat="pref" tcomm="no">vägstycke</t>
@@ -9214,15 +9241,18 @@ For the full license text, see the link above.</lic>
       <mg>
          <semantics>
             <sem class="WEATHER" />
+            <sem class="ABSTRACT" />
          </semantics>
          <tg xml:lang="nob">
             <t pos="n" stat="pref" tcomm="no">mildvær</t>
             <tf>mildt vær</tf>
-            <t pos="n" stat="notpref" tcomm="no">varme</t>
-            <t pos="adv" stat="notpref" tcomm="no">varmt</t>
             <tf>varmt vær</tf>
-            <t pos="a" stat="notpref" tcomm="no">varm</t>
             <t pos="???">varmvær</t>
+         </tg>
+         <tg>
+            <t pos="" stat="pref">varme</t>
+            <t pos="n">varmt</t>
+            <t pos="n">varm</t>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
             <t pos="phrase_n" stat="pref" tcomm="no">milt väder</t>
@@ -19656,7 +19686,7 @@ For the full license text, see the link above.</lic>
    </e>
    <e>
       <lg>
-         <l pos="n" soggi="ie" stem="2syll">gårroebielie</l>
+         <l pos="n" soggi="ie" stem="2syll">gårroehbielie</l>
       </lg>
       <stem class="bisyllabic"></stem>
       <sources>
@@ -19667,7 +19697,9 @@ For the full license text, see the link above.</lic>
             <sem class="ABSTRACT" />
          </semantics>
          <tg xml:lang="nob">
-            <tf pos="phrase_n" stat="pref" tcomm="no">venstre side</tf>
+            <tf pos="phrase_n" stat="pref" tcomm="no">venstreside</tf>
+            <tf>venstre side</tf>
+            <t pos="???">venstre</t>
          </tg>
          <tg check="'semantics_and_re'" xml:lang="swe">
             <tf pos="phrase_n" stat="pref" tcomm="no">vänster sida</tf>
@@ -51861,6 +51893,7 @@ For the full license text, see the link above.</lic>
          <tg xml:lang="nob">
             <t pos="n" stat="pref" tcomm="no">vare</t>
             <t pos="n" stat="notpref" tcomm="no">varer</t>
+            <t pos="???">handelsvare</t>
          </tg>
          <tg xml:lang="swe">
             <t pos="n" stat="pref" tcomm="no">vara</t>
@@ -54333,7 +54366,8 @@ For the full license text, see the link above.</lic>
             <sem class="REINDEER_ANIMAL" />
          </semantics>
          <tg xml:lang="nob">
-            <tf pos="phrase_n" stat="pref" tcomm="no">2-3 år gammel simle</tf>
+            <tf pos="phrase_n" stat="pref" tcomm="no">ungsimle</tf>
+            <te>2-3 år gammel</te>
             <tf pos="phrase_n" tcomm="no">ung simle</tf>
             <t pos="n" stat="notpref" tcomm="no">ungsimle</t>
          </tg>
