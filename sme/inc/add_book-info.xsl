@@ -15,8 +15,8 @@
 	      omit-xml-declaration="no"
 	      indent="yes"/>
   
-<!--  <xsl:param name="inFile" select="'lemmat_only2A'"/> -->
-  <xsl:param name="inFile" select="'lemmat_only2V'"/>
+<!--  <xsl:param name="inFile" select="'lemmat_1A'"/> -->
+  <xsl:param name="inFile" select="'c1.txt'"/>
   <xsl:param name="inDir" select="'indir_test'"/>
   <xsl:variable name="outDir" select="'outdir'"/>
   <xsl:variable name="of" select="'xml'"/>
@@ -26,7 +26,7 @@
   <xsl:variable name="slang" select="'sme'"/>
   <xsl:variable name="tlang" select="'nob'"/>
 <!--  <xsl:variable name="theBook" select="'sam1031_1'"/> -->
-  <xsl:variable name="theBook" select="'sam1031_2'"/>
+  <xsl:variable name="theBook" select="'c1'"/>
   
   <xsl:template match="/" name="main">
     <xsl:if test="not(unparsed-text-available($inFile))">
@@ -54,6 +54,7 @@
       
       <xsl:variable name="cufi">
 	<lexicon xml:lang="{$slang}">
+	
 	  <xsl:for-each select="./lexicon/entry">
 	    <xsl:variable name="lemma" select="./lemma"/>
 
