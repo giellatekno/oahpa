@@ -55,6 +55,8 @@
       <xsl:variable name="cufi">
 	<lexicon xml:lang="{$slang}">
 	
+	  <xsl:copy-of select="./lexicon/comment()"/>
+
 	  <xsl:for-each select="./lexicon/entry">
 	    <xsl:variable name="lemma" select="./lemma"/>
 
