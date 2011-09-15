@@ -1,0 +1,204 @@
+!!!Møte om sørsamisk oahpa 15.9.2011
+
+Til stades: Lene, Sissel, Marit, Trond,
+
+!!!Saksliste
+Forrige møtes saksliste var:
+* Status quo
+** Lokalisering
+** Grammatikk
+** Morfa C oppgaver
+** Numra - dato
+** nob-sma
+* Bugliste
+* Hva skal gjøres videre?
+** Aajege
+** Lene
+** Trond
+** Programmerer
+* Neste møte
+
+
+!!! Status quo
+
+!! Lokalisering
+* bugane er i orden, og lokaliseringsprosessen fungerer.
+* må finpusses
+
+__TILTAKSLISTE__:
+* Vurdere tekstene (__Røros__)
+* Redigere lærerveiledning på norsk (__Lene__)
+** ped/userdoc/sma/useoahpa/
+
+!! Grammatikk
+* [status quo-rapport|http://giellatekno.uit.no/ped/smadoc/grammatikk_status_quo.html]
+* skrive om syntaks? på sikt (nyttig for kurs) 
+* [wikipedia om sørsamisk syntaks|http://nn.wikipedia.org/wiki/Sørsamisk_syntaks]
+
+__TILTAKSLISTE__:
+* __Lene__ skriver videre om adjektiv
+* __Trond__ adverb, partikler
+* __Aajege__ lese gjennom med kritisk blikk, etter at Trond og Lene har skrevet det de kan skrive 
+
+!! Morfa C oppgaver
+
+Mulige nye oppgaver:
+
+* genitivoppgaver med tidsuttrykk
+
+{{{
+* N-GEN id="gen13"
+** Gåessie mPERSNAME+Sg+Gen reakedsbiejjie?
+** Dan reakedsbiejjie mMONTH+Sg+Gen 10. biejjien 
+}}}
+
+
+Gåessie Laara båata?   Dïhte daan  mTIME_GEN båata.  jirreden - 
+mTIME_GEN: iehkeden/ biejjien/giesien
+
+
+Gåessie Laara bööti?    Dïhte don mTIME_GEN bööti.
+mTIME_GEN: iehkeden/ biejjien/ giesien
+
+Problemet med jååktan er at det er invariant, det må inn
+i andre oppgaver i steden.
+
+dager, måneder, år, klokka???
+
+evt. lage flere oppgaver med postposisjoner?
+
+
+Vanskelige former:
+
+* Akkusativ (objekt i akk vs. nom)
+* Numerusbøying, kasusformene i flertall
+* Flertallsobjekt (nom vs. akk)
+
+__TILTAKSLISTE__:
+* __Lene__ lager flere oppgaver
+
+
+!! Numra - dato
+
+Trond har fjerne ikkjeeksisterande datoar, 30.2, 31.4, osb.
+
+__TILTAKSLISTE__:
+
+* Trond sender genererte lister til Sissel/Marit
+* Sissel/Marit les korrektur
+* Trond diskuterer implementering med Ryan
+* Ryan implementerer
+
+!! nob-sma
+
+Thomas går no gjennom sma-orda frå nob-sma som ikke er i analysatoren vår. 
+
+__TILTAKSLISTE__:
+* __Lene__ lager ei ny liste til Thomas for sjekk.
+* __Lene__ sjekker at ’ og ikkje ' ligg i kjeldefila.
+* __Lene, Ciprian__ og  legger til varianter av substantiver (noen adjektiver) med bindestrek, se på tcomm
+
+Flere ord som står som fraser i nobsma for eksempel "5 ord" står merket som n, 
+altså som enkeltord og ikke som frase. 
+
+
+Det er 40 slike norske ord:
+
+Her er lista:
+
+{{{
+dyp kulp
+egg på kniv
+fint regn
+frodig område med løvtrær
+innbyrdes tremenninger
+innmat av dyr
+høye ste kalvingstid
+kvinnelig kjønnsorgan
+kjøre- eller grimetøm
+klov (hele kloven med med bein og/ eller klovskall)
+liten bamse (kosebamse)
+den fremste ledereinoksen som leies foran i raiden
+lita jente
+liten bunt
+liten flokk
+liten flokk
+liten venn
+løype (kjese)
+løype (kjese)
+mannlig onkelbarn til filleonkel
+matplassen i gamma
+varmt vær
+mildvær om vinteren
+niese til filleonkel
+reinmerkesnitt (rett avskåret ørespiss)
+reinokse under første året etter kastrering, dersom den mister hornene
+rundt hårlag på reinens bakfot på innsiden av hasen
+samisk organisasjon
+skur (regn eller snø)
+snøbre om sommeren
+snøsørpe på is
+spor (enkeltspor etter dyr eller menneske)
+tøy (stoff)
+stryk i elv
+stryk (deng)
+strøm i elv eller bekk
+svigerdatter (også om kvinne som er gift med ens yngre mannlige slektning)
+svigerinne (ektemannens yngre søster eller kusine eller en kvinnes eldre brors eller fetters
+svigersønn (også om andre yngre kvinnelige slekningers ektemann)
+sørlig vær
+tam rein som lett følger mennesker
+tette eller fortykningsmiddel
+toalett (wc, do)
+toalett (wc, do)
+bille (blåbukk, tordivel, vannbille o.l.)
+tretthet (søvnighet)
+dyre- eller fugleunge
+ustadig vind
+veistykke (strekning)
+trekkhull ved matplassen i gamma
+}}}
+
+__TILTAKSLISTE__
+* stryk (deng) -- juling, egg på kniv, og andre språkblomar. __Marit__ gjør det.
+* Merking av phrase eller ikkje løyser __programmerarane__
+
+__Deadline__: 
+* Vi distuterer deadline med programmererne
+
+
+!! Dialekt
+
+Trond har implementert ''Språkvariant'' og ''Kortformer/Langformer'' i 
+brukergrensesnittet, i steden for SH og L.
+
+
+!!! Bugliste
+
+
+!! 1060	blo	P1	Dobbel å i Leksa norsk-samisk
+Løst?
+
+!! 1126	maj	P2	MorfaC_ Spørsmål samsvarer ikke med svar i vprs28 
+forhåpentlig løst etter neste installering
+
+!! 1107	maj	P3	MorfaC_ verbet dukker ikke opp i vprt22
+forhåpentlig løst etter neste installering
+
+!! 1134	enh	P5	Mange feilmeldinger i LEKSA
+
+Dette er ein __viktig__ bug: Leksa krasjar når det sørsamiske ordet 
+inneheld ''æøå''.
+
+Sissel: Det gjeld også ord utan ''æøå''. F.eks 'baernie'.
+
+
+
+!!! Neste møte
+* 29. september kl 12.30
+
+
+
+
+
+
