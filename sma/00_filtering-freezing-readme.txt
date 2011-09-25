@@ -25,8 +25,14 @@ v_nobsma.xml:         <l pos="v">slippe lett (om bark)</l>
 
 Question: What to do with that? Shall I add the re automatically to the l-element in brackets?
 
+3. weird IDs:
 
+n_swesma.xml:   <e id="renoxe under första året efter kastrering, om den tappar hornen_n"
+n_swesma.xml:   <e id="träd där man fästat skavjärn på för att dra skinn genom för mjukgörning_phrase_n"
+prop_swesma.xml:   <e id="Renbetesdistrikt i området Nærøy, Leka, Namsskogan, Bindal, Brønnøy, Grane_phrase_prop"
 
+Question to Ryan: Do you have problems with the db feeding? Is the id field big enough to store that?
+Is that needed at all?
 
 
 ==========================================
