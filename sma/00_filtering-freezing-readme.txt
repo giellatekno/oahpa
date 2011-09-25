@@ -3,69 +3,31 @@ smanob files stemming from the dict directory.
 It is aimed to ease the communication between Cip, Lene and Trond, the reason
 is that the 00_readme.txt file was meant for the steady filtering and reverting files.
 
-File locations:
+Reverting smaswe to swesma
 
-1. smaX (X=nob, X=swe)
- - for the Røros team, Lene and Cip: gtsvn/ped/sma/src
- - for Cip, Lene and Ryan: pedversions/smaoahpa/data_sma/sma (this will be changed etter hvert!)
+1. Cip supposes that Ryan, Lene & Co don't need all attributes
+from sma-lemma into sma-translation (ignore stat="pref" for now).
+E.g.
 
-2. Xsma:
- - for the Røros team, Lene and Cip: gtsvn/ped/sma/Xsma
- - for Cip, Lene and Ryan: pedversions/smaoahpa/data_sma/X (this will be changed etter hvert!)
+<l gen_only="A+Attr" pos="a" stem="2syll">suejies</l>
+vs.
+<t pos="a">suejies</t>
 
-File status:
+2. Cip's reverting script copies the <re>-elements into the tg-element of the reverted file.
+   Trond means that re-info is not needed at all in smaoahpa. It is true that apparently there
+   is no re-element in the nobsma-files but there is some re-information in the l-element.
 
-1. smaX 
-1.a. in gtsvn/ped/sma/src:
+nobsma>grep '(om ' * | wc -l 
+      42
+v_nobsma.xml:         <l pos="v">reise seg (om hår)</l>
+v_nobsma.xml:         <l pos="v">reke uten lov (om barn)</l>
+v_nobsma.xml:         <l pos="v">slippe lett (om bark)</l>
 
-a_smanob.xml         
-adv_smanob.xml       
-multiword_smanob.xml 
-n_smanob.xml         
-propPl_smanob.xml
-prop_smanob.xml
-v_smanob.xml
- ==> all the files above have been filtered and synchronized between
- pedversions/.../sma and ped/sma/src directories
+Question: What to do with that? Shall I add the re automatically to the l-element in brackets?
 
-names.xml   ==> no reverting needed; synchronized with the file in pedversions/.../meta/names.xml         
-num_smanob.xml ==> filtered; no reverting needed; synchronized with the file in pedversions/.../meta/num_smanob.xml       
-pronPers_smanob.xml  ==> no filtering now; no reverting; Lene is in charge of synchronizing it with that in pedversions/.../meta
 
-These files are the input files for the filtering operation. Anybody can work with them.
-They will be replaced by the filtered ones when testing is done (working on it now).
 
-1.b. in pedversions/smaoahpa/data_sma/sma:
-These are the filtered files that are now tested, checked in, and
-synchronized with the ped/sma/src dir
-    ==> done 
-2. Xsma 
-2.a. in gtsvn/ped/sma/src:
-At the moment, there is no such file in there, because these have to be reverted from the filtered ones.
- ==> done
 
-2.b. in pedversions/smaoahpa/data_sma/X:
- reverting from smaX to Xsma ==> done
-
-File synchronization until we will have only ONE place to work with them (i.e., also for Ryan!):
-1. file to be reverted for Xsma:
- ==> done
- person in charge of that: Ciprian
-
-2. non-revertable file:
-
- person in charge of that: Lene
-
-==========================================
-Some notes for a common ground in our work:
-==========================================
-
-Default values are "xxx" (using both "XXX" and "yyy" and "YYY"
-leads to unnecessary problems, both when using grep, and find and when
-writing patterns during programming)
-
-"???" are definitely NOT wished, yet unfortunately, it seems to be
-some default of the XMlmind (Sjur kindly check it) 
 
 ==========================================
 Additional comments to Lene's idea of assigning sma pos multiword to the nob
