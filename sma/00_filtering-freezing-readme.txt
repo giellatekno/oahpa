@@ -30,7 +30,7 @@ v_smanob.xml
 
 names.xml   ==> no reverting needed; synchronized with the file in pedversions/.../meta/names.xml         
 num_smanob.xml ==> filtered; no reverting needed; synchronized with the file in pedversions/.../meta/num_smanob.xml       
-pronPers_smanob.xml  ==> no filtering now; no revertin; Lene is in charge of synchronizing it with that in pedversions/.../meta
+pronPers_smanob.xml  ==> no filtering now; no reverting; Lene is in charge of synchronizing it with that in pedversions/.../meta
 
 These files are the input files for the filtering operation. Anybody can work with them.
 They will be replaced by the filtered ones when testing is done (working on it now).
@@ -64,30 +64,8 @@ Default values are "xxx" (using both "XXX" and "yyy" and "YYY"
 leads to unnecessary problems, both when using grep, and find and when
 writing patterns during programming)
 
-"???" are definitely NOT allowed: with xslt this leads to time waiste
-(including the time for writing this comments!!!) for debugging and fixing
-such kinds of errors:
-
-data_sma>_sax pos-split_reverted-data.xsl 
------------------------------------------
-processing pos phrase_a
------------------------------------------
------------------------------------------
-processing pos a
------------------------------------------
------------------------------------------
-processing pos ???
------------------------------------------
-Error at xsl:result-document on line 41 of pos-split_reverted-data.xsl:
-  Exception thrown by OutputURIResolver: Invalid URI syntax: URI has a query component
-Transformation failed: Run-time errors were reported
-
-  14          <l pos="phrase_pron"
-  11          <l pos="phrase_prop"
-   9          <l pos="???"
-   3          <l pos="pron"
-   3          <l pos="i"
-
+"???" are definitely NOT wished, yet unfortunately, it seems to be
+some default of the XMlmind (Sjur kindly check it) 
 
 ==========================================
 Additional comments to Lene's idea of assigning sma pos multiword to the nob
