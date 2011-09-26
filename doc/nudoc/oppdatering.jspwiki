@@ -23,7 +23,7 @@
 
 !!Nye filer
 * pronomener skal implementeres i MorfaS og MorfaC (se smaOahpa)
-* ped/sme/src/persprongeneration.txt istedenfor leksikonfil.  - Ryan: me treng ikkje semantiske sett lengre, fordi det er lettare å nytta tag-setter i sma/data_sma/meta/tags.txt, slik at man kan velja 3 person eller 1 og 2 person pronomener. Det er heller ikkje noko pronomen-oppgåver i Leksa, då treng me ikkje semantiske setter for å skilja mellom deim. 
+* ped/sme/src/prongeneration.txt istedenfor leksikonfil.  - Ryan: me treng ikkje semantiske sett lengre, fordi det er lettare å nytta tag-setter i sma/data_sma/meta/tags.txt, slik at man kan velja 3 person eller 1 og 2 person pronomener. Det er heller ikkje noko pronomen-oppgåver i Leksa, då treng me ikkje semantiske setter for å skilja mellom deim. 
 * sjekk output av denne i forhold til dialekt og Use/NG [pronomener|pronomenoutput.html] 
 * lage adverbs.xml for leksa - ok - skal implementeres for bruk i Leksa
 * sjekke klokkeautomat - ok - skal implementeres i Numra
@@ -31,7 +31,7 @@
 
 !!Forskjeller mellom sma vs. sme
 * Filplassering. sme: Alle leksikonfiler, oppgavefiler, feedbackfiler ligger i ped/sme/xml. sma: spredt i pedversions og ped/sma/xml og ped/sma/src.
-* Generering i sme: generering med ped/sme/src/paradigms.txt, dessuten ped/sme/src/persprongeneration.txt, i 
+* Generering i sme: generering med ped/sme/src/paradigms.txt, dessuten ped/sme/src/prongeneration.txt, i 
 sma: i meta: a_paradigms.txt, num_paradigms.txt, v_paradigms.txt, n_paradigms.txt, prop_paradigms.txt
 * Begrense generering: sma: gen_only, sme: <only-sg/> <only-pl/>
 * sma: stat_pref - sme: første t er default stat_pref
