@@ -1,7 +1,6 @@
 !!!Overview
 
-This document tries to give an overview of what is where and why,
-in the {{ped}} catalogue, i.e. the file catalogue of Oahpa.
+This document tries to give an overview of what is where and why, in the {{ped}} catalogue, i.e. the file catalogue of Oahpa.
 
 
 !! The content of the {{ped}} catalogue
@@ -24,17 +23,21 @@ in the {{ped}} catalogue, i.e. the file catalogue of Oahpa.
 * __images__
 ** Images for Sahka are found here
 * __oahpa__
-** This is where all the files for the program is
+** This is where all the files for the program is (see below)
 * __qa-test__
 ** This catalogue is obsolete
 * __src__
-** Well, I do not know the difference between this one and __oahpa__ above
+** Hmm, what is the difference between this one and __oahpa__ above...
 * __userdoc__
-** This is for documentation for end users (teachers, pupils)
-
+** This is for documentation for end users (teachers, pupils). It has a 
+   somewhat flat structure at the moment, but will be ordered languagewise.
 
 
 !! The content of the language catalogues
+
+These catalogues are heterogenous, for historical reasons.
+
+!sme
 
 The target language catalogues (sme, sma) have the following content:
 
@@ -43,14 +46,28 @@ The target language catalogues (sme, sma) have the following content:
 * __dev__
 ** Your private playground. This catalogue is not under version control.
 * __src__
-** This contains the CG rules for Sahka, and other files relevant
-   to grammatical processing
+** CG rules for Sahka
+** paradigms.txt, for generating forms for the MySQL database ([Documentation|https://victorio.uit.no/langtech/trunk/gt/sme/res/paradigm.sme.txt])
+** tags.txt = list over legal tags for generation ([Documentation|https://victorio.uit.no/langtech/trunk/gt/sme/res/korpustags.sme.txt])
 * __xml__
 ** Files for dialogues and questions. 
-** For sme, the lexicon can be found here (adjectives.xml, verbs.xml, 
-   nouns.xml, numerals.xml, propernouns.xml)
-** For sma, the corresponding files are obsolote (we use the dictionary
-   directly)
+** For sme, the lexicon can be found here (__adjectives.xml, verbs.xml,  nouns.xml, numerals.xml, propernouns.xml__)
+
+!sma
+
+The sma and sme catalogues are very different, for the following reason: oahpa proper (the programmer's files) are in $GTLANG/ped for sme, but in pedversions/smaoahpa for sma. There are some sma files in $GTLANG/ped, though, namely the lexica for Leksa.
+
+* catalogues corp, inc, meta-data, old-xml, out-xml, __are all obsolete__ and should be removed
+* __src__
+** contains the lexicon files with L1=sma (corresponds to the lexion part of the sme/xml content)
+* __engsma__
+** Still not in use
+* __finsma__
+** lexicon files with L1=fin, L2=sma. To be populated
+* __swesma__
+** lexicon files with L1=swe, L2=sma. Work underway
+* __smj, smj__
+** Not in use
    
 !! The content of the oahpa catalogue
 
@@ -61,7 +78,6 @@ setting up the program.
 * ''conf''
 * ''djlocale''
 ** Here we add the interface localisation. See separate documentation
-* sadf
 * ''drill''
 ** python scripts for the drills (i.e., programs, aka games)
 ** ''admin.py'' (Admin interface for Log messages and database.)
@@ -76,7 +92,7 @@ setting up the program.
 ** ''views.py'' (Module for handling the html-pages and user data.)
 ** ''templates folder''
 * ''feedback''
-* ''locale''
+* ''locale'' (localisation files, one for each GUI language)
 * ''media''
 * ''templates'' (this folder contains the html pages for the games)
    
