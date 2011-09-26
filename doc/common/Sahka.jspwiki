@@ -1,0 +1,35 @@
+
+!!!Sahka
+
+Sahka contains pictures which have to be synchronized with the
+contents of the database, so the whole process is explained here in
+separate section.
+
+!!Updating the database
+Create the dialogue file and store it e.g. to
+ped/sme/xml/dialoguefile.xml. Give the dialogue a unique name in the 
+xml-structure, such as:
+
+{{{
+<dialogue name="firstmeeting_man">
+}}}
+
+Install it to database using the command:
+
+{{{
+cd ped/oahpa
+python install.py -k ../sme/xml/dialoguefile.xml
+}}}
+
+The script will give errors on links that do not point to an utterance
+and some information of wordsets and such.
+
+When you want to update an existing dialogue, use the same command:
+
+{{{
+cd ped/oahpa
+python install.py -k ../sme/xml/dialoguefile.xml
+}}}
+
+It will first remove the old dialogue and then install it as it was new. Do not
+change the dialogue name if you are updating an existing one.
