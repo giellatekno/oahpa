@@ -1,3 +1,24 @@
-!!!Documenting Numra
 
-tbw.
+
+
+
+Numra differs from Morfa in not using the MySQL database, but using transducers directly.
+
+The transducers behind numra are (where $LANG is the iso code for your language): 
+
+* Cardinal and ordinal numbers: $LANG-num.txt ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/sme-num.txt])
+* Clock clock-$LANG.lexc ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/clock-sme.lexc])
+* Date date-$LANG.lexc ([North Sámi example|https://victorio.uit.no/langtech/trunk/gt/sme/src/date-sme.lexc])
+
+The files governing the four programs are ''num.html, num_ord.html, clock.html, date.html''. These files are found here:
+
+* for sme: ''ped/oahpa/drill/templates/''
+* for sma and other languages: ''pedversions/smaoahpa/smadrill/templates/''
+
+These files refer to the fsts via ...
+
+!!!Documentation of the content production
+
+* [Documentation for linguists defeloping Numra content|http://giellatekno.uit.no/oahpa/addlang/developernumra.html]
+
+
