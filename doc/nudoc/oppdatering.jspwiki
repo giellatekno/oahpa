@@ -1,4 +1,22 @@
-!!!Oppdatering av kildefiler til smeOahpa
+!!!Implementering og installering av kildefiler i smeOahpa
+
+!!Progresjon og rekkefølge i implementeringsarbeidet
+# Ferdige kildefiler
+## reinstallere nouns.xml, numerals.xml, adjectives.xml, verbs.xml, fillings.xml - både smenob og nobsme
+## legge til c1, c1-c2, c1-c3, c1-c4 i bokmenyen
+## installere ny fil: adverbs.xml  - både smenob og nobsme, går inn i sett i semantic_sets.xml, som må reinstalleres LEKSA
+## implementere pronomener som oppgaver i MORFAS - pronomene må genereres src/prongeneration.txt. Personlige pronomener (som i smaOahpa), men også refleksive pronomener
+## Fikse bug i MORFAC
+## implementere klokka i NUMRA
+## implementere datoer i NUMRA
+# Ikke ferdige kildefiler
+## installere ny fil: mwe.xml - denne skal ha eget sett (se smaoahpa),  - både smenob og nobsme LEKSA - mangler oversettinger til swe og fin
+## implementere pronomener som oppgaver i MORFAC - questions_pronouns.xml er ikke skrevet
+## installere nye dialoger SAHKA - ingenting er forandra i oppsettet, men kildefilene er ikke skrevet
+## implementere CEALKKA i VASTA - kildefilene er ikke skrevet
+
+
+
 
 !!Eksisterende filer
 
