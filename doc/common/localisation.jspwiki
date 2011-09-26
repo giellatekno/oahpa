@@ -1,6 +1,4 @@
 
-!!!Localisation
-
 Translations for the texts in the interface are provided in files:
 
 {{{
@@ -36,7 +34,7 @@ django-admin.py compilemessages
 }}}
 
 If you are not allowed to compile the messages (the machine requires
-sudo rights), remove the __*.mo__ files:
+sudo rights), remove the {{ *.mo}} files:
 
 rm -f locale/*/LC_MESSAGES/django.mo
 
@@ -53,8 +51,8 @@ because end users will never see the internal global strings.
 
 !Creating a new localisation
 
-* Locate the site-packages directory for the version of python in use. The easiest way is from
-  the oahpa project directory by using the Python command-line interpreter.
+Locate the site-packages directory for the version of python in use. The easiest way to locate
+them is from the oahpa project directory by using the Python command-line interpreter.
 
 {{{
 	./manage.py shell
@@ -63,13 +61,13 @@ because end users will never see the internal global strings.
 	<module 'django' from '/usr/lib/python2.6/site-packages/django/__init__.pyc'>
 }}} 
 
-* In the directory that is returned, navigate to the locale directory
+In the directory that is returned, navigate to the locale directory
 
 {{{
     cd /usr/lib/python2.6/site-packages/django/conf/locale/
 }}}
 
-* Then copy one of the existing folders to a new folder with the language code for the localisation.
+Then copy one of the existing folders to a new folder with the language code for the localisation.
 
 {{{
 	cp -R nn sma
@@ -95,4 +93,4 @@ the application.
 
 !!!Official documentation
 
-https://docs.djangoproject.com/en/dev/topics/i18n/localization/
+[Django localisation documentation|https://docs.djangoproject.com/en/dev/topics/i18n/localization/]
