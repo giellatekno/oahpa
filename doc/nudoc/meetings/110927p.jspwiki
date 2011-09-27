@@ -1,0 +1,180 @@
+!!!Møte 27.09.11
+
+Til stades: Trond, Ciprian, Heli, Lene
+ 
+!!Saksliste
+
+* Status quo
+* Progresjon
+
+[Bakgrunnsdokument|http://giellatekno.uit.no/ped/nudoc/bestilling.html]
+(snart kjent som "bestilling")
+
+
+!! Status quo
+
+!Orientere om møtet i går
+
+[Møtereferatet|http://giellatekno.uit.no/ped/nudoc/meetings/110926.html]
+
+Bakgrunn for progresjonslista i det do:
+
+
+!Heli
+
+Heli sett opp Oahpa på egen maskin. Numra, Leksa fungerer. 
+
+
+!Dokumentasjonen
+
+NB: sme og sma er ulike, dette må inn i den tekniske dokumentasjonen. Eit oversyn over skilnadene er påbegynt nederst i dette dokumentet:
+
+[Bakgrunnsdokument|http://giellatekno.uit.no/ped/nudoc/bestilling.html]
+
+
+
+!!Leksa, installering
+
+* Reinstallere systemet (1.1-1.3): Fleire ord, fleire kjelder (bøker, semantikk)
+* c1-c4 er allereie lagt inn i XML.
+* c1-c4 skal inn i drill/forms.py:
+
+{{{
+BOOK_CHOICES = (
+    ('d1', _('Davvin 1')),
+    ('d2', _('Davvin 1-2')),
+    ('d3', _('Davvin 1-3')),
+    ('d4', _('Davvin 1-4')),
+    ('sam1031_1', _('SAM-1031-1')),
+    ('sam1031_2', _('SAM-1031-2')),
+    ('algu', _('algu')),
+    ('sara', _('sara')),
+    ('bures', _('Bures bures fas')),
+    ('oaidnalit', _('Oaidnalit')),
+    ('c1', _('Cealkke dearvv. 1')),
+    ('c2', _('Cealkke dearvv. 1-2')),
+    ('c3', _('Cealkke dearvv. 1-3')),
+    ('c4', _('Cealkke dearvv. 1-4')),
+    ('all', _('All')),
+)
+}}}
+
+Leksa skal installerast i nu-oahpa. I Leksa er ordklassene blanda, bortsett frå todelinga i __Stedsnavn__ (propernouns) og __Ord__ (alle andre). Orda i Leksa er gruppert etter ''semantiske sett''. I tillegg til de semantiske setta er mwe ein opsjon på linje med (andre) semantiske sett.
+
+Fila names.xml i sma finst ikkje i sme. Den gjeld ikkje Leksa.
+
+__TILTAK__
+
+* Døpe om kildefiler til sma-stil (__Lene__)
+* [Dokumentasjon|../../common/Leksa.html] av Leksa skal innehalde liste over filene som trengst.
+
+* [Relevant dokumentasjon: liste over filer|http://giellatekno.uit.no/oahpa/addlang/more.html]
+
+
+Installering av ny Leksa:
+
+# Finne katalog på victorio + registrere på apache (__Cip__)
+# Installere prøveversjon på victorio (__Heli, Cip__)
+## [Prosedyre|../../common/maintenance.html]
+# Teste (__alle__)
+# Installere nye filer i databasen:
+##  adv_smenob.xml - til disse skal det ikke genereres paradigme
+##  multiword_smenob.xml  - til disse skal det ikke genereres paradigme
+
+
+!! Restrukturering av katalogstruktur
+
+Vi treng ein ny filstruktur for nu-oahpa.
+
+sme/xml bør splittast der leksikonfiler og morfac-filer er separat
+
+__TILTAK__
+
+* Lage plan for ny katalogstruktur
+* Implementer i nu-oahpa
+
+(tidsplan: seinare)
+
+!! Pronomen i MorfaS
+
+paradigms.txt er nå splitta opp i:
+
+{{{
+prop_paradigms.txt
+v_paradigms.txt
+n_paradigms.txt
+num_paradigms.txt
+a_paradigms.txt
+}}}
+
+
+Pronomen: Nivå ein, to.
+
+Kasus, type. "Type" står altså der vi har stamme for andre ordklasser.
+
+Berre med personlege, berre refleksive, begge.
+
+__TILTAK__
+
+* Implementering av pronomener i MorfaS 
+
+
+!!Fikse bug i MORFAC
+
+Lene skriv to nye bugar.
+
+
+!!implementere klokka og dato i NUMRA
+
+I dag finst dei berre på sørsamisk.
+
+Sjå [dokumentasjonen|../../common/Numra.html] for kor filene for templat ligg. Fst-filene {{date-sme.fst, clock-sme.fst}} ligg klar på victorio i {{/opt/smi/sme/bin/}}.
+
+Lokalt (kompiler sjølv i {{$GTLANG/gt}}: ''make GTLANG=sme''), og binærfilene ligg deretter i {{$GTLANG/sme/bin/}}.
+
+__TILTAK__
+
+* Implementer i http://oahpa.uit.no/nu_oahpa (__Heli__) 
+
+
+
+!!tcomm, stat=pref
+
+sme: Den __første__ omsetjinga av fleire er tilsvarande stat="pref". For å harmonisere det 
+kan Ciprian leggje til attributtverdi på den første omsetjinga.
+
+__TILTAK__
+
+* Harmonisere kildefilstrukturen med sma senere (__Ciprian__)
+* Legge til stat="pref" for første omsetjing i hvert språk der det er fleire (__Ciprian__)
+* Sett opp testcase for implementering av tcomm (__Lene__)
+
+
+!Svensk inn i nordsamisk
+
+__TILTAK__
+
+* Legge til manglande omsetjingar  (__Ciprian, Trond__)
+* Snu smeswa til swasme (__Ciprian__)
+
+
+!! Framdrift, prioritering, deadline
+
+__Mål__: Alt i [dokumentet bestilling|../bestilling.html]  skal vere gjort i haust.
+
+
+!Deadline
+
+* Installering av ny database for ny versjon av ''smenob, nobsme, smefin, finsme'' for Leksa.  (__4. okt.__)
+* Installering av dato og klokka i Numra. (__11. okt.__)
+* Pronomener i MorfaS
+** Oppdatere fst. (__28. sept.__)
+** Implementere pronomener i MorfaS. (__18. okt.__)
+* Kildefilene under punkt 2. i [dokumentet bestilling|../bestilling.html]. (__1. nov.__)
+
+
+!! Neste møte
+
+__6. oktober 13.00__ (evt. tilpassa Ciprian)
+
+
