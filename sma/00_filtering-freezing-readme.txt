@@ -5,6 +5,11 @@ is that the 00_readme.txt file was meant for the steady filtering and reverting 
 
 Reverting smaswe to swesma
 
+VIC - Very Important Check before any reverting to swesma:
+ - check the language flag in all files systematically (cip)
+
+
+
 1. Cip supposes that Ryan, Lene & Co don't need all attributes
 from sma-lemma into sma-translation (ignore stat="pref" for now).
 E.g.
