@@ -12,7 +12,6 @@ from qagame import *
 
 from nu_oahpa.nu_courses.views import trackGrade
 
-
 class Gameview:
 
     def init_settings(self):

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.http import HttpResponse, Http404
-from nu_oahpa.nuÆdrill.models import *
+from nu_oahpa.nu_drill.models import *
 from nu_oahpa.nu_drill.forms import *
 from nu_oahpa.nu_drill.game import Game
 from django.db.models import Q
