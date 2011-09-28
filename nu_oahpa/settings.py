@@ -43,20 +43,20 @@ USE_I18N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = '/home/oahpa/ped/oahpa/media'
+MEDIA_ROOT = '/home/nu_oahpa/ped/nu_oahpa/media'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = 'http://victorio.uit.no/oahpa/media/'
+MEDIA_URL = 'http://victorio.uit.no/nu_oahpa/media/'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/oahpa/media/admin/'
+ADMIN_MEDIA_PREFIX = '/nu_oahpa/media/admin/'
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = '70!9mdey6-i-g5+-z5ty+44l^=n)m2+c0pi2z$)654q_h1jv18'
+SECRET_KEY = '@wun)vvu8w(66r9$0vh0y$7rkfr_1+4y(_h5awb%7ow0bgkudj'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -73,15 +73,15 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.doc.XViewMiddleware',
 )
 
-ROOT_URLCONF = 'oahpa.urls'
+ROOT_URLCONF = 'nu_oahpa.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 	os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),
-	os.path.join(os.path.dirname(__file__), 'drill/templates').replace('\\','/'),
-	os.path.join(os.path.dirname(__file__), 'feedback/templates').replace('\\','/'),
+	os.path.join(os.path.dirname(__file__), 'nu_drill/templates').replace('\\','/'),
+	os.path.join(os.path.dirname(__file__), 'nu_feedback/templates').replace('\\','/'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS =("django.core.context_processors.auth",
@@ -98,9 +98,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
-    'oahpa.drill',
-    'oahpa.feedback',
-    'oahpa.courses',
+    'nu_oahpa.nu_drill',
+    'nu_oahpa.nu_feedback',
+    'nu_oahpa.nu_courses',
 )
 
 
@@ -118,8 +118,8 @@ LANGUAGES = (
 #
 # #
 
-AUTH_PROFILE_MODULE = 'courses.UserProfile'
-LOGIN_REDIRECT_URL = '/oahpa/courses/'
-LOGIN_URL = '/oahpa/courses/login/'
+AUTH_PROFILE_MODULE = 'nu_courses.UserProfile'
+LOGIN_REDIRECT_URL = '/nu_oahpa/nu_courses/'
+LOGIN_URL = '/nu_oahpa/nu_courses/login/'
 SESSION_COOKIE_AGE = 45 * 60   # in seconds, timeout 45 minutes.
 
