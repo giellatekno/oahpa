@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# Change paths for fst files and fst tools below if you want to run the
+# system locally on your own computer.
 
 from settings import *
 from drill.models import *
