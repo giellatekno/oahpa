@@ -9,7 +9,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-     ('Saara Huhmarniemi', 'saara'),
+     ('Heli Uibo', 'heli'),
      ('Trond Trosterud', 'trond'),
      ('Lene Antonsen', 'lene'),
      ('Ciprian Gerstenberger', 'ciprian'),
@@ -89,8 +89,8 @@ TEMPLATE_CONTEXT_PROCESSORS =("django.core.context_processors.auth",
                               "django.core.context_processors.i18n",
                               "django.core.context_processors.media",
                               "django.core.context_processors.request",
-                              "oahpa.conf.context_processors.dialect",
-                              "oahpa.courses.context_processors.request_user",)
+                              "nu_oahpa.nu_conf.context_processors.dialect",
+                              "nu_oahpa.nu_courses.context_processors.request_user",)
 
 INSTALLED_APPS = (
     'django.contrib.auth',

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from oahpa.courses.models import Activity, UserGrade,\
+from nu_oahpa.nu_courses.models import Activity, UserGrade,\
 									UserGradeSummary, UserProfile,\
 									Course, UserLogin
 
