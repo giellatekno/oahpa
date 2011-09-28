@@ -7,10 +7,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>{% block title %}{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="/oahpa/media/css/oahpa.css"/>
-<link rel="stylesheet" type="text/css" href="/oahpa/media/css/oahpa_main.css"/>
+<link rel="stylesheet" type="text/css" href="/nu_oahpa/media/css/oahpa.css"/>
+<link rel="stylesheet" type="text/css" href="/nu_oahpa/media/css/oahpa_main.css"/>
 <!--[if lt IE 7.]>
-<script defer type="text/javascript" src="/oahpa/media/js/pngfix.js"></script>
+<script defer type="text/javascript" src="/nu_oahpa/media/js/pngfix.js"></script>
 <![endif]-->
 </head>
 <body class="mainbody">
@@ -18,7 +18,7 @@
 <div id="mainheader">
 <center>
 <div class="plainbackground">
-<img width="320" src="/oahpa/media/images/Oahpa_logo0001.png" alt="OAHPA!"/><br/>
+<img width="320" src="/nu_oahpa/media/images/Oahpa_logo0001.png" alt="OAHPA!"/><br/>
 </div>
 </center>
 </div>
@@ -39,8 +39,8 @@
 
 <center>
 <div class="plainbackground">
-<a href="/oahpa/morfa/">
-<img  width="80" height="80" border="0" src="/oahpa/media/images/morfa.png" alt="MORFA-S"/><br/>
+<a href="/nu_oahpa/morfa/">
+<img  width="80" height="80" border="0" src="/nu_oahpa/media/images/morfa.png" alt="MORFA-S"/><br/>
 MORFA-S</a>
 </div>
 <p class="plain">{% trans "Practise morphology" %}</p>
@@ -49,8 +49,8 @@ MORFA-S</a>
 <td class="header" width="200">
 <center>
 <div class="plainbackground">
-<a href="/oahpa/vasta/">
-<img width="80" height="80" border="0" src="/oahpa/media/images/vasta.png" alt="VASTA"/><br/>
+<a href="/nu_oahpa/vasta/">
+<img width="80" height="80" border="0" src="/nu_oahpa/media/images/vasta.png" alt="VASTA"/><br/>
 VASTA</a>
 </div>
 <p class="plain">{% trans "Answer to questions" %}</p>
@@ -59,8 +59,8 @@ VASTA</a>
 <td class="header" width="200">
 <center>
 <div class="plainbackground">
-<a href="/oahpa/leksa/">
-<img width="80" height="80" border="0" src="/oahpa/media/images/leksa.png" alt="LEKSA"/><br/>
+<a href="/nu_oahpa/leksa/">
+<img width="80" height="80" border="0" src="/nu_oahpa/media/images/leksa.png" alt="LEKSA"/><br/>
 LEKSA</a>&nbsp;&nbsp;
 </div>
 <p class="plain">{% trans "Words and translations" %}</p>
@@ -72,8 +72,8 @@ LEKSA</a>&nbsp;&nbsp;
 <td class="header" width="200">
 <center>
 <div class="plainbackground">
-<a href="/oahpa/morfac/">
-<img width="80" height="80" border="0" src="/oahpa/media/images/morfac.png" alt="MORFA-C"/><br/>
+<a href="/nu_oahpa/morfac/">
+<img width="80" height="80" border="0" src="/nu_oahpa/media/images/morfac.png" alt="MORFA-C"/><br/>
 MORFA-C</a>&nbsp;&nbsp;
 </div>
 <p class="plain">{% trans "Morphology in sentential context" %}</p>
@@ -82,8 +82,8 @@ MORFA-C</a>&nbsp;&nbsp;
 <td class="header" width="200">
 <center>
 <div class="plainbackground">
-<a href="/oahpa/sahka/">
-<img width="80" height="80" border="0" src="/oahpa/media/images/sahka.png" alt="SAHKA"/><br/>
+<a href="/nu_oahpa/sahka/">
+<img width="80" height="80" border="0" src="/nu_oahpa/media/images/sahka.png" alt="SAHKA"/><br/>
 SAHKA</a>&nbsp;&nbsp;
 </div>
 <p class="plain">{% trans "Dialogue game" %}</p>
@@ -92,8 +92,8 @@ SAHKA</a>&nbsp;&nbsp;
 <td class="header" width="200">
 <center>
 <div class="plainbackground">
-<a href="/oahpa/numra/">
-<img width="80" height="80" border="0" src="/oahpa/media/images/numra.png" alt="NUMRA"/><br/>
+<a href="/nu_oahpa/numra/">
+<img width="80" height="80" border="0" src="/nu_oahpa/media/images/numra.png" alt="NUMRA"/><br/>
 NUMRA</a>&nbsp;&nbsp;
 </div>
 <p class="plain">{% trans "Practise numerals" %}</p>
@@ -112,7 +112,7 @@ NUMRA</a>&nbsp;&nbsp;
 <tr><td>
 
 {% get_current_language as LANGUAGE_CODE %}
-<form action="/oahpa/i18n/setlang/" method="post" name="newlang">
+<form action="/nu_oahpa/i18n/setlang/" method="post" name="newlang">
 {% trans "Interface language" %}
 <input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
 <select name="language" onChange="javascript:this.form.submit();">
@@ -153,7 +153,7 @@ NUMRA</a>&nbsp;&nbsp;
 </tr>
 <tr>
 <td>
-<form action="/oahpa/dialect/" method="post">
+<form action="/nu_oahpa/dialect/" method="post">
 <table>
 <tr><td>
 {% trans "North Sami dialect" %}
@@ -183,7 +183,7 @@ NUMRA</a>&nbsp;&nbsp;
 <center>
 <div class="plainbackground" >
 <a href="http://giellatekno.uit.no/oahpa/OAHPAveiledning.html">
-<img  height="80" border="0" src="/oahpa/media/images/littleman.png" alt="Documentation"/><br/>
+<img  height="80" border="0" src="/nu_oahpa/media/images/littleman.png" alt="Documentation"/><br/>
 <font size="0">{% trans 'Teachers and students guide' %}</font>
 </a>
 </div>
@@ -194,7 +194,7 @@ NUMRA</a>&nbsp;&nbsp;
 </tr>
 <tr>
 <td>
-<a href="/oahpa/visl/">{% trans 'VISL-games for North Sami' %}</a><br/>&nbsp;
+<a href="/nu_oahpa/visl/">{% trans 'VISL-games for North Sami' %}</a><br/>&nbsp;
 </td>
 </tr>
 <tr>
@@ -206,15 +206,15 @@ NUMRA</a>&nbsp;&nbsp;
 <td><a href="http://giellatekno.uit.no/oahpa/index.html">{% trans 'About OAHPA!' %}</a><br/>&nbsp;</td>
 </tr>
 <tr>
-<td><a href="/oahpa/feedback/">{% trans 'Feedback' %}</a><br/>&nbsp;</td>
+<td><a href="/nu_oahpa/nu_feedback/">{% trans 'Feedback' %}</a><br/>&nbsp;</td>
 </tr>
 <tr>
-<td><a href="{% url courses.views.courses_main %}">Kurs innlogging</a><br/>&nbsp;</td>
+<td><a href="{% url nu_courses.views.courses_main %}">Kurs innlogging</a><br/>&nbsp;</td>
 </tr>
 <tr>
 <td>
 <center>
-<img width="50" height="50" src="/oahpa/media/images/LogoSamisk.jpg" alt="Universitetet i Tromsø"/>
+<img width="50" height="50" src="/nu_oahpa/media/images/LogoSamisk.jpg" alt="Universitetet i Tromsø"/>
 </center>
 </td>
 </tr>
