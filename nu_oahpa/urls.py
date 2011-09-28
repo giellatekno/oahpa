@@ -6,7 +6,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     (r'^oahpa/i18n/', include('django.conf.urls.i18n')),
     (r'^oahpa/media/(?P<path>.*)$', 'django.views.static.serve',
-                        {'document_root': '/Users/saara/ped/oahpa/media'}),
+                        {'document_root': '/home/nu_oahpa/nu_oahpa/media'}),
     (r'^oahpa/dialect/$', 'oahpa.conf.views.dialect'),
     (r'^oahpa/$', 'oahpa.drill.views.oahpa'),
     (r'^oahpa/visl/$', 'oahpa.drill.views.visl'),
