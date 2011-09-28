@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 from django.http import HttpResponse, Http404
-from oahpa.drill.models import *
-from oahpa.drill.forms import *
-from oahpa.drill.game import Game
+from nu_oahpa.nuÆdrill.models import *
+from nu_oahpa.nu_drill.forms import *
+from nu_oahpa.nu_drill.game import Game
 from django.db.models import Q
 from random import randint
 
