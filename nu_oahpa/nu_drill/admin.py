@@ -1,4 +1,4 @@
-from oahpa.drill.models import Log, Word, Semtype
+from nu_oahpa.nu_drill.models import Log, Word, Semtype
 from django.contrib import admin
 from django.contrib.contenttypes import generic
 
