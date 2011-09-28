@@ -6,7 +6,7 @@ urlpatterns = patterns('django.contrib.auth.views',
 	(r'^logout/$', logout, {'template_name': 'auth/logout.html'}),
 )
 
-urlpatterns += patterns('oahpa.courses.views',
+urlpatterns += patterns('nu_oahpa.nu_courses.views',
 	(r'^$', 'courses_main'),
 )
 
