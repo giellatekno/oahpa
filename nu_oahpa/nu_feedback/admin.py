@@ -1,4 +1,4 @@
-from oahpa.feedback.models import Feedback
+from nu_oahpa.nu_feedback.models import Feedback
 from django.contrib import admin
 
 class FeedbackAdmin(admin.ModelAdmin):
