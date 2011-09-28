@@ -10,7 +10,7 @@ from sahka import *
 from game import *
 from qagame import *
 
-from oahpa.courses.views import trackGrade
+from nu_oahpa.nu_courses.views import trackGrade
 
 
 class Gameview:
