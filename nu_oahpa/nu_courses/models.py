@@ -107,13 +107,13 @@ from django.db.models.signals import post_save, pre_save
 from signals import create_profile, aggregate_grades, grant_admin, user_presave
 
 post_save.connect(create_profile, sender=User, 
-	dispatch_uid="oahpa.courses.models.post_save")
+	dispatch_uid="nu_oahpa.nu_courses.models.post_save")
 
 post_save.connect(aggregate_grades, sender=UserGrade,
-	dispatch_uid="oahpa.courses.models.post_save")
+	dispatch_uid="nu_oahpa.nu_courses.models.post_save")
 
 post_save.connect(grant_admin, sender=Course,
-	dispatch_uid="oahpa.courses.models.post_save")
+	dispatch_uid="nu_oahpa.nu_courses.models.post_save")
 
 pre_save.connect(user_presave, sender=User,
-	dispatch_uid="oahpa.courses.models.pre_save")
+	dispatch_uid="nu_oahpa.nu_courses.models.pre_save")
