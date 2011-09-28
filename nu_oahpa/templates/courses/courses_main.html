@@ -6,24 +6,24 @@
 {% block page_class %}fixed{% endblock %}
 
 {# {% block page_header %} #}
-{# 	<img width="240px" src="/oahpa/media/images/Oahpa_logo0001.png" alt="OAHPA!"/> #}
+{# 	<img width="240px" src="/nu_oahpa/media/images/Oahpa_logo0001.png" alt="OAHPA!"/> #}
 {# 	<ul id="games_menu" class="small"> #}
 {# 		{# 60 by 60 #} #}
 {# 		<li class="game"> #}
-{# 			<a href="{% url oahpa.drill.views.quizz %}" class="game"> #}
-{# 				<img src="/oahpa/media/images/leksa_small.png" alt="LEKSA" /><br /> #}
+{# 			<a href="{% url nu_oahpa.nu_drill.views.quizz %}" class="game"> #}
+{# 				<img src="/nu_oahpa/media/images/leksa_small.png" alt="LEKSA" /><br /> #}
 {# 				<span>LEKSA</span> #}
 {# 			</a> #}
 {# 		</li> #}
 {# 		<li class="game"> #}
 {# 			<a href="{% url drill.views.num %}" class="game"> #}
-{# 				<img src="/oahpa/media/images/numra_small.png" alt="NUMRA" /><br /> #}
+{# 				<img src="/nu_oahpa/media/images/numra_small.png" alt="NUMRA" /><br /> #}
 {# 				<span>NUMRA</span> #}
 {# 			</a> #}
 {# 		</li> #}
 {# 		<li class="game"> #}
-{# 			<a href="/oahpa/morfa_s/" class="game"> #}
-{# 				<img src="/oahpa/media/images/morfa_small.png" alt="MORFA" /><br /> #}
+{# 			<a href="/nu_oahpa/morfa_s/" class="game"> #}
+{# 				<img src="/nu_oahpa/media/images/morfa_small.png" alt="MORFA" /><br /> #}
 {# 				<span>MORFA</span> #}
 {# 			</a> #}
 {# 		</li> #}
@@ -34,7 +34,7 @@
 	{# Add blocktrans and trans tags #}
 	<div id="courses">
 		<ul id="subnav">
-			<li><a href="{% url oahpa.courses.urls.logout %}">Log
+			<li><a href="{% url nu_oahpa.nu_courses.urls.logout %}">Log
 					out</a></li>
 		</ul>
 		<h2>{% trans 'Welcome, ' %}{{ user.first_name }}!</h2>
@@ -71,7 +71,7 @@
 			{% endif %}
 		{% else %}
 			<p>You are a course instructor.</p>
-			<p><a href="/oahpa/admin/courses/">View students' grades</a></p>
+			<p><a href="/nu_oahpa/admin/courses/">View students' grades</a></p>
 		{% endif %}
 	</div>
 

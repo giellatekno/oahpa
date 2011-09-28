@@ -3,7 +3,7 @@ from django.shortcuts import render_to_response
 
 from django.contrib.auth.decorators import login_required
 
-from oahpa.courses.models import UserProfile, Course, UserGrade, Activity
+from nu_oahpa.nu_courses.models import UserProfile, Course, UserGrade, Activity
 
 def trackGrade(gamename, request, c):
 	""" Takes a name of the game, request, and the context, and produces
