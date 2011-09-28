@@ -7,20 +7,7 @@ Reverting smaswe to swesma
 
 VIC - Very Important Check before any reverting to swesma:
  - check the language flag in all files systematically (cip)
- Results of the systematic check of the tg lang flag:
-3551             <mg>nob_swe_eng_deu_fin</mg>
- 192             <mg>nob_swe_eng_deu_sme_fin</mg>
- 105             <mg>nob_nob_eng_deu_fin</mg>
-  10             <mg>nob_swe_eng_deu_sme_sme_fin</mg>
-   8             <mg>nob_nob_eng_deu_sme_fin</mg>
-   5             <mg>nob_swe_eng_deu_sme_nob_fin</mg>
-   4             <mg>nob_swe_eng_deu_sme_nob_nob_fin</mg>
-   2             <mg>fin</mg>
-   1             <mg>swe_nob_eng_deu_fin</mg>
-   1             <mg>nob__swe_eng_deu_fin</mg>
-
-There is much to fix!
-
+   ==> done by cip and trond
 
 1. Cip supposes that Ryan, Lene & Co don't need all attributes
 from sma-lemma into sma-translation (ignore stat="pref" for now).
