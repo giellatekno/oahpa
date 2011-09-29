@@ -8,7 +8,16 @@ Reverting smaswe to swesma
 VIC - Very Important Check before any reverting to swesma:
  - check the language flag in all files systematically (cip)
 
-   ==> done by cip and trond
+   ==> not qute done
+
+sma>grep '<mg>' _tg-check.xml | sort | uniq -c | sort -nr 
+3650          <mg>nob_swe_eng_deu_fin</mg>
+ 217          <mg>nob_swe_eng_deu_sme_fin</mg>
+   9          <mg>nob_nob_eng_deu_fin</mg>
+   2          <mg>nob_swe_eng_deu_sme_sme_fin</mg>
+   2          <mg>fin</mg>
+
+Trond, please check and correct anew.
 
 
 
