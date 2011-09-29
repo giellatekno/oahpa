@@ -1,0 +1,275 @@
+!!! Møte 29.9.2011
+
+
+!!Tilstede:
+
+Lene, Toini, Trond, Sissel, Marit
+
+
+!!Saksliste
+
+* Layout
+* Brukerdokumentasjon
+* Leksa stedsnavn
+* Oktobermøtet Gïeleviermie
+* Status quo
+** Lokalisering
+** Grammatikk
+** Morfa C oppgaver
+** Numra - dato
+** nob-sma
+* Log og Leksa
+* Deadline
+* Bugliste
+* Neste møte
+
+!! Layout
+Ketil har laga skisser
+
+* Programside side2graa, men program-ikonet skal være med i venstre marg
+* Hovedside ønsker vi i 3 varianter; Hvit, grå og orange med blå ramme + blå horisontal linje
+
+!! Brukerdokumentasjon: 
+
+* [Sørsamisk Oahpa|http://giellatekno.uit.no/oahpa/sma/index.html]
+
+Dokumenta ligg her:
+
+* ped/userdoc/sma/index.xml
+* ped/userdoc/sma/useoahpa/om_oss.nob.xml osv.
+
+
+__TILTAKSLISTE__:
+* __Toini__ skriver om prosjektet
+* __Lene__ arbeider med menyen i margen
+* __Lene__ lager temaordlister
+* __alle__ kan redigere, legge til osv.
+
+
+
+!! Leksa stedsnavn
+Det er [oppdaterte lister|http://giellatekno.uit.no/ped/smadoc/stedsnavnoversikt.html]
+
+__TILTAKSLISTE__:
+* __Toini__ legger til nye navn som kopieres fra dicts til ped fil
+ 
+
+!! Oktobermøtet Gïeleviermie
+Sissel demonsterer og forteller om Oahpa - 20 min
+Plakater og handsout - oppdatere fra sist
+Ny ordbokversjon
+
+
+! Tema for fredag
+* [Terminalkommandoar (Unix for lingvistar)|http://giellatekno.uit.no/doc/tools/docu-unix-nno.html]
+* Bruk av dei sørsamiske analyseverktya (fst)
+* Korleis __redigere__ kjeldefilene til fst-en
+
+__TILTAKSLISTE__:
+* __Toini__ sjekker at det er godt internett i møtelokalet
+* __Trond__ vurderer muligheta for opplæring av Marit/Sissel på fredagen
+* __alle__ : ta bilde av prosjektgruppa (avklar før møtet: Kven tar med kamera)
+
+
+!! Status quo
+
+! Lokalisering
+
+* Framsida
+** ''Hjelpespråk'' heller enn ''Grensesnittspråk''
+* Dei tre boksane under Morfa-S Verbh på sørsamisk:
+** Verb: "type" (norsk og engelsk). sma: slaaje. Framlegg: ''Oppgavetype'', ''Oppgave'', ''hammoe''
+** Stammetype: ''Maadtege'' (I dag: ''Hammoe'')
+* __Viehkievierhtieh__ på venstre kolonne: Ordet er for langt, del det i to. (Lene kontaktar Ryan)
+* Numra
+** Hjelpetekst på sma (''Enter the South Sámi date'' etc.)
+
+__TILTAK__
+* Endre tekst (__alle__)
+* Kompilere ny (__Trond__)
+
+! Grammatikk
+Det er nå skrevet tekster for alle ordklassene
+
+[status quo|http://giellatekno.uit.no/ped/smadoc/grammatikk_status_quo.html]
+
+Filene ligger her: {{ped/userdoc/sma/gramm/}}
+
+! Morfa C oppgaver
+Lene skal arbeide mer med dette
+
+! Numra - dato
+Sissel sender flere varianter av månedsnavnene til Trond for å legge inn i 
+
+Namna skal inn i {{$GTLANG/gt/sma/src/date-sma.lexc}}. Det står alternative namn
+i ped/sma/nobsma. For ''desember'' er ''goeve'' standard, og ''jåvleaske, jåvle-aske, javleaske, jåvlemaanoe, javle-aske, jåvle-maanoe''
+
+
+__TILTAK__
+
+* Trond ordnar tolerant datoautomat frå tal til bokstav.
+
+!! Log og Leksa
+
+Trond har sett på loggen:
+
+Rapport:
+
+{{{
+ 471 leksa
+ 184 contextual morfa
+  83 morfa_N
+  69 numra
+  19 dato
+   5 morfa_Pron
+}}}
+
+Leksa:
+
+* rett: 285
+* feil: 186
+
+
+Falske positive? (feil som kanskje ikkje er feil):
+
+
+Brukersvar | 0 = feil | fasit | oppgåvetekst
+
+{{{
+nobsma
+
+aeredsledtie|0|voerpehke,våårpehke,voerpehke,våårpehke|morgenfugl
+pååske|0|påaske,påaske|påske
+gærjasæjroe|0|bielie,sæjroe,sæjra,bielie,säjroe,sæjroe,sæjra,säjra|bokside
+laarhkenidh|0|skïemmenidh,skiemmenidh,skïemmenidh|å ta skade
+pedagogigke|0|pedagogihke,pedagogihke|pedagogikk
+raajroe|0|baakoeraajroe,baakoeraajroe|rim og regler
+
+smanob
+Röros|0|Røros,Røros|Plassje
+dette|0|å falle,å ramle,å falle ned,å ramle ned,falle,ramle,falle ned,ramle ned,å falle,å ramle,å falle ned,å ramle ned,falle,ramle,falle ned,ramle ned|gahtjedh
+konte til yngste far tante|0|fars yngre bror,pappas yngre bror,pappa sin yngre bror,farbror yngre än far,farbror yngre än pappa,farbror som är yngre än far,farbror som är yngre än pappa,fars yngre kusin,pappas yngre kusin,fars yn|tjietsie
+nærme seg|0|å rekke,å sende,å overrekke,å komme med,å bringe nærmere,å rekke fram,å rekke frem,rekke,sende,overrekke,komme med,bringe nærmere,rekke fram,rekke frem,å rekke,å sende,å overrekke,å komme med,å bringe|gietskiedidh
+pære|0|potet,poteter,potet,poteter|peara
+regnskap|0|rapport,rapport|reektehtse
+sette seg på kne|0|å knele,å gå ned på kne,knele,gå ned på kne,å knele,å gå ned på kne,knele,gå ned på kne|boelvedidh
+sølvsmykke|0|sølvmedalje,sølvmerke,sølvmedalje,sølvmerke|sïlpevæhta
+
+smaswe
+flicka|0|jente,datter,flickvän,jente,datter,flickvän|nïejte
+kveita|0|kvæjta,kvæjta,kväjta|kveite
+liten kändis|0|bekant,kändis,känd person,bekant,kändis,känd person|åahpetje
+}}}
+
+{{{
+pedagogihke+N+Sg+Nom
+pedagogihke+N+Sg+Nom	pedagogigke
+pedagogihke+N+Sg+Nom	pedagogihke
+pedagogihke+N+Sg+Nom	pedagogijke
+pedagogihke+N+Sg+Nom	pedagogïgke
+pedagogihke+N+Sg+Nom	pedagogïhke
+pedagogihke+N+Sg+Nom	pedagogïjke
+
+grammatihke+N+Sg+Nom
+grammatihke+N+Sg+Nom	grammatigke
+grammatihke+N+Sg+Nom	grammatihke
+grammatihke+N+Sg+Nom	grammatijke
+grammatihke+N+Sg+Nom	grammatïgke
+grammatihke+N+Sg+Nom	grammatïhke
+grammatihke+N+Sg+Nom	grammatïjke
+
+}}}
+
+
+__TILTAK__
+
+* Ordne öø på geografiske namn (__Lene, Trond__)
+* Legge til varianter på lånord (__Lene__)
+* Sjå på logresultata ovafor (__Marit, Sissel__)
+
+
+!! Deadline
+
+Lene tar kontakt med Ryan og Ciprian og lager en deadlineliste som sender ut på mail til alle.
+Arbeidet med implementeringa av svensk og finsk i leksikonet.
+
+* Ny layout
+* fin, swe leksa
+* Lokalisering
+* Nye numra-automatar
+* Testing, testing
+* Gjennomgang av leksikona
+
+__TILTAK__
+
+* Lage liste over deadline for de forskjellige filene (__Lene__)
+
+
+!! Bugliste
+
+!MorfaC_ verbet dukker ikke opp i vprt22	 - gjort en del, vi må teste
+Lene har sett på denne
+
+!MorfaC_ Spørsmål samsvarer ikke med svar i vprs28	 - 
+må ses på
+
+!apostrofe	
+Fiksa (?)
+
+!Svensk i fasit istedet for norsk	
+Pga. svenske omsetjingar er merka med "nob" i leksikon. Dette 
+er no fiksa i xml-filene, og kjem til å vere ok i neste oppdatering
+
+!LEKSA_ fasitord kommer i en parantes	
+Evt problemer med html-koden, Ryan ser på det
+
+!MorfaC _ Illativordet kommer ikke fremfeil i VPRF7	
+Problemer med databasen? 
+
+!verbgruppe vises ikke i morfac 
+
+!oversettelsen av ord når sørsamisk er valgt som hjelpespråk
+Til hvilket språk?
+
+Default = norsk. Framtidsfin løysing: etter nettlesarspråk.
+
+!Hva skal Leksa-innstillinga være når man har sørsamisk som brukergrensesnittpsråk?
+
+Frå og med i dag gjev norsk ''sma til nob'', og svensk gjev ''sma til swe''. Snart
+får vi også finsk, med ''sma til finsk'' som default.
+
+Kva med sørsamisk og engelsk som brukargrensesnittspråk
+
+Default = norsk. Framtidsfin løysing: etter nettlesarspråk.
+
+
+!Problemer med adjektiver i MorfaS
+* Adjektiver Morfa-S: Fasitsvar blir liggende over svaret som bruker skriver, f.eks. kopmarativ av lyövles + jïjnje og sikkert flere.
+* gyödtsehke kommer fram på likestavelses stammer, komparativ svar: giedtsebe.
+
+{{{
+nobsma$ dsmaNorm 
+giedtsies+A+Comp+Sg+Nom 
+giedtsies+A+Comp+Sg+Nom	gyödtsehkåbpoe
+giedtsies+A+Comp+Sg+Nom	giedtsebe
+
+gyödtsehke  =>  gyödtsehkåbpoe bør være  fasit
+}}}
+
+__TILTAK__
+
+* fikse fasiten i MorfaS (__Lene__)
+* legge ut nye lister med bøyningslister for adjektiver på internett (__Lene__)
+
+
+!! Neste møte
+13. oktober kl 13.30
+
+
+
+
+
+
+
+
+
