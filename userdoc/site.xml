@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <site label="OAHPA!" href="" xmlns="http://apache.org/forrest/linkmap/1.0" tab="">
-  <about label="Davvisámegiella">
-    <index label=" " href="index.html" description="Bures boahtin OAHPA!-portálii"/>
+  <about label="Intro" tab="OAHPA!">
+    <northsami label="Bures boahtin" href="index.html"/>
+    <norwegian label="Velkommen" href="index.nno.html"/>
+    <english label="Welcome" href="index.eng.html"/>
+  </about>
+  <northsami label="Davvisámegillii" tab="forNorthSami_inNorthSami">
+    <index label="Bures boahtin" href="index.html" description="Bures boahtin OAHPA!-portálii"/>
 
-  <L2 label="OAHPA!">
+  <L2 label="OAHPA-davvi">
     <numra label="Numra" href="numra.html"/>
     <leksa label="Leksa" href="leksa.html"/>
     <sojahanharjehusat  label="Morfa" href="morfa.html"/>
     <vasta  label="Vasta" href="vasta.html"/>
     <sahka  label="Sahka" href="sahka.html"/>       
     <satnevuorka  label="Sátnevuorká" href="satnevuorka.html"/>  
-    <bagadus label="Oahpaheaddji bagadus" href="OAHPAveiledning.html"/>
+    <bagadus label="Oahpaheaddjái" href="OAHPAveiledning.html"/>
 
   </L2>
   <L1 label="VISL">
@@ -25,20 +30,20 @@
     <killerfiller label="Killerfiller" href="Killerfiller_sme.html"/>
     <animalquiz label="Animal Quiz" href="animalquiz.html"/>
   </L1>
-  <res label="Resurssat">
+  <res label="Veahkkeneavvut">
     <satneluohkat  label="Sátneluohkát" href="satneluohkat.html"/>
     <cealkkalahtut  label="Cealkkačoavdin" href="cealkkalahtut.html"/>
-    <paradigmat  label="Grammatihkka ja paradigmat" href="grammatihkka.html"/>
-    <satnegirji  label="Leksikálalaš resurssat" href="satnegirji.html"/>
-    <analyseren  label="Sátne- ja teakstanalyseren" href="analyseren.html"/>
+    <paradigmat  label="Grammatihkka" href="grammatihkka.html"/>
+    <satnegirji  label="Sátnegirjjit" href="satnegirji.html"/>
+    <analyseren  label="Teakstanalyseren" href="analyseren.html"/>
   </res>
-  </about>  
-<norwegian label="Nordsamisk" tab="norsk">
+  </northsami>  
+<norwegian label="For nordsamisk" tab="forNorthSami_inNorwegian">
     <index label="Velkommen" href="norsk.html" description="Velkomen til læringsportalen"/>
     <!--  <about label="Velkomen">
     <index label="Intro" href="norsk.html" description="Velkomen til læringsportalen"/>
   </about>-->
-  <L2 label="OAHPA!">
+  <L2 label="OAHPA-davvi">
     <numra label="Numra" href="numra.nno.html"/>
     <leksa label="Leksa" href="leksa.nno.html"/>
     <sojahanharjehusat  label="Morfa" href="morfa.nno.html"/>
@@ -58,33 +63,33 @@
     <killerfiller label="Killerfiller" href="Killerfiller_nno.html"/>
     <animalquiz label="Animal Quiz" href="animalquiz.html"/>
   </L1>
-  <res label="Ressursar">
+  <res label="Hjelpemidler">
     <satneluohkat  label="Ordklassar" href="satneluohkat.nno.html"/>
     <cealkkalahtut  label="Setningsanalyse" href="cealkkalahtut.nno.html"/>
     <paradigmat  label="Grammatikk" href="grammatihkka.nno.html"/>
     <satnegirji  label="Ordbøker" href="satnegirji.nno.html"/>
-    <analyseren  label="Ord- og tekstanalyse" href="analyseren.nno.html"/> 
+    <analyseren  label="Tekstanalyse" href="analyseren.nno.html"/> 
   </res>
   </norwegian>
-<norwegian2 label="Sørsamisk" tab="norsk">
+<norwegian2 label="Meny" tab="forSouthSami_inNorwegian">
     <index label="Velkommen" href="sma/index.html" description="Velkommen til læringsportalen"/>
     <!--  <about label="Velkomen">
     <index label="Intro" href="norsk.html" description="Velkomen til læringsportalen"/>
   </about>-->
-  <L2 label="OAHPA!">
+  <L2 label="OAHPA-åarjel">
     <numra label="Numra" href="sma/useoahpa/numra.nob.html"/>
     <leksa label="Leksa" href="sma/useoahpa/leksa.nob.html"/>
     <sojahanharjehusat  label="Morfa" href="sma/useoahpa/morfa.nob.html"/>
-    <background  label="Om oss" href="sma/useoahpa/om_oss.nob.html"/>
+    <background  label="Bakgrunn" href="sma/useoahpa/om_oss.nob.html"/>
   </L2>
-  <res label="Andre ressurser">
+  <res label="Hjelpemidler">
     <paradigmat  label="Grammatikk" href="sma/gramm/grammatikk.nob.html"/>
     <satnegirji  label="Ordbøker" href="sma/useoahpa/ordboker.nob.html"/>
-    <linker  label="Ressurser andre steder" href="sma/useoahpa/linker.nob.html"/>
+    <linker  label="Andre ressurser" href="sma/useoahpa/linker.nob.html"/>
   </res>
   </norwegian2>
 <!--  Sub menus    -->
-  <english label="For North Sami" tab="english">
+  <english label="For North Sami" tab="forNorthSami_inEnglish">
     <index label="Welcome" href="english.html" description="Welcome to the Sámi learning portal"/>
   <L2 label="OAHPA!">
      <numra label="Numra" href="numra.eng.html"/>
@@ -119,7 +124,7 @@
   </res>
   </english>
 
-  <extending label="For developers" href="addlang/" tab="New languages">
+  <extending label="New languages" href="addlang/" tab="For developers">
     <index label="Intro" href="index.html" description="Overview"/>
     <index label="Leksa" href="developerleksa.html" description="Leksa"/>
     <index label="Morfa" href="developermorfa.html" description="Overview"/>
