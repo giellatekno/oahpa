@@ -24,7 +24,7 @@ xmlns:jx="http://apache.org/cocoon/templates/jx/1.0">
             <jx:import
             uri="cocoon://#{$cocoon/parameters/getRequest}.toc.xml"/>
         </forrest:property>
-        <forrest:property name="expanding">true</forrest:property>
+        <forrest:property name="expanding">false</forrest:property>
         </forrest:contract>
         <forrest:contract name="siteinfo-credits">
         <forrest:property name="box-location">credit</forrest:property>
