@@ -3,7 +3,7 @@
 # system locally on your own computer.
 
 from settings import *
-from drill.models import *
+from nu_drill.models import *
 from xml.dom import minidom as _dom
 from optparse import OptionParser
 from django.db.models import Q

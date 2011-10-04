@@ -9,10 +9,10 @@ print " * Correcting paths"
 cur_path = os.getcwd()
 parent_path = '/' + '/'.join([a for a in cur_path.split('/') if a][0:-1]) + '/'
 sys.path.insert(0, parent_path)
-environ['DJANGO_SETTINGS_MODULE'] = 'oahpa.settings'
+environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 from settings import *
-from drill.models import *
+from nu_drill.models import *
 from xml.dom import minidom as _dom
 from optparse import OptionParser
 from django.db.models import Q
