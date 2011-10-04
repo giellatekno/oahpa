@@ -10,10 +10,12 @@
 	<ul class="auth_links">
 	{% if rquser.is_authenticated %}
 	<li>Logged in as {{ rquser.username }}.</li>
-	<li><a href="{% url courses.views.courses_main %}">View progress</a></li>
-	<li><a href="{% url courses.urls.logout %}">Log out</a></li>
+	<li><a href="{% url nu_courses.views.courses_main %}">View 
+progress</a></li>
+	<li><a href="{% url nu_courses.urls.logout %}">Log out</a></li>
 	{% else %}
-	<li><a href="{% url courses.urls.login %}">{% trans "Course login" %}</a></li>
+	<li><a href="{% url nu_courses.urls.login %}">Course 
+login</a></li>
 	{% endif %}
 	</ul>
 </div>
