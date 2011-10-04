@@ -4,21 +4,23 @@
 {% block navbar %}
 <div id="navbar">
 {% ifequal settings.gametype "bare" %}
-<img width="120" height="120" border="0" src="/oahpa/media/images/morfa.png"/>
+<img width="120" height="120" border="0" 
+src="/nu_oahpa/media/images/morfa.png"/>
 <p class="bigheader">{% trans 'MORFA-S' %}</p>
 <ul class="sidelist"> 
-<li><a href="/oahpa/morfa_s/">{% trans 'Nouns' %}</a></li>                                                 
-<li><a href="/oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>                                              
-<li><a href="/oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li>                                            
+<li><a href="/nu_oahpa/morfa_s/">{% trans 'Nouns' %}</a></li>                                                 
+<li><a href="/nu_oahpa/morfa_v/">{% trans 'Verbs' %}</a></li>                                              
+<li><a href="/nu_oahpa/morfa_a/">{% trans 'Adjectives' %}</a></li>                                            
 <li class="selected">{% trans 'Numerals' %}</li>
 </ul>                                                        
 {% else %}
-<img width="120" height="120" border="0" src="/oahpa/media/images/morfac.png"/>
+<img width="120" height="120" border="0" 
+src="/nu_oahpa/media/images/morfac.png"/>
 <p class="bigheader">{% trans 'MORFA-C' %}</p>
 <ul class="sidelist"> 
-<li><a href="/oahpa/morfac_s/">{% trans 'Nouns' %}</a></li>                                                 
-<li><a href="/oahpa/morfac_v/">{% trans 'Verbs' %}</a></li>                                              
-<li><a href="/oahpa/morfac_a/">{% trans 'Adjectives' %}</a></li>
+<li><a href="/nu_oahpa/morfac_s/">{% trans 'Nouns' %}</a></li>                                                 
+<li><a href="/nu_oahpa/morfac_v/">{% trans 'Verbs' %}</a></li>                                              
+<li><a href="/nu_oahpa/morfac_a/">{% trans 'Adjectives' %}</a></li>
 <li class="selected">{% trans 'Numerals' %}</li>
 </ul>                                                        
 {% endifequal %}
@@ -27,7 +29,7 @@
 
 
 {% block name %}{% trans "Morphology" %}{% endblock %}
-{% block pagename %}/oahpa/morfa/{% endblock %}
+{% block pagename %}/nu_oahpa/morfa/{% endblock %}
 {% block settings %}
 
 <table width="700">

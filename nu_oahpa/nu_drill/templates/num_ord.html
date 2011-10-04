@@ -3,19 +3,20 @@
 
 {% block helpaddress %}
 {% ifequal LANGUAGE_CODE "no" %}
-<a href="http://giellatekno.uit.no/oahpa/numra.nno.html"
+<a href="http://giellatekno.uit.no/nu_oahpa/numra.nno.html"
 {% else %}
-<a href="http://giellatekno.uit.no/oahpa/numra.html"
+<a href="http://giellatekno.uit.no/nu_oahpa/numra.html"
 {% endifequal %}
 {% endblock %}
 
 {% block navbar %}
 <div id="navbar">
-<img width="120" height="120" border="0" src="/oahpa/media/images/numra_big.png"/>
+<img width="120" height="120" border="0" 
+src="/nu_oahpa/media/images/numra_big.png"/>
 <div class="bigheader">NUMRA</div>
 
 <ul class="sidelist">
-<li><a href="/oahpa/numra/">{% trans 'Cardinals' %}</a>
+<li><a href="/nu_oahpa/numra/">{% trans 'Cardinals' %}</a>
 <li class="selected">{% trans 'Ordinals' %}</li>
 </ul>
 </div>
@@ -23,7 +24,7 @@
 
 
 {% block name %}{% trans "Numerals" %}{% endblock %}
-{% block pagename %}/oahpa/numra/{% endblock %}
+{% block pagename %}/nu_oahpa/numra/{% endblock %}
 
 {% block gamename %}{% endblock %}
 {% block instructions %}{% trans "Forms for ordinal numbers." %}{% endblock %}

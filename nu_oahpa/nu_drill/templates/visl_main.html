@@ -8,10 +8,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <title>{% block title %}{% endblock %}</title>
-<link rel="stylesheet" type="text/css" href="/oahpa/media/css/oahpa.css"/>
-<link rel="stylesheet" type="text/css" href="/oahpa/media/css/oahpa_main.css"/>
+<link rel="stylesheet" type="text/css" 
+href="/nu_oahpa/media/css/oahpa.css"/>
+<link rel="stylesheet" type="text/css" 
+href="/nu_oahpa/media/css/oahpa_main.css"/>
 <!--[if lt IE 7.]>
-<script defer type="text/javascript" src="/oahpa/media/js/pngfix.js"></script>
+<script defer type="text/javascript" 
+src="/nu_oahpa/media/js/pngfix.js"></script>
 <![endif]-->
 </head>
 <body class="mainbody">
@@ -21,7 +24,8 @@
 <tr>
 <td>
 <div class="plainbackground">
-<a href="http://beta.visl.sdu.dk/"><img width="220"  src="/oahpa/media/images/visl_map.png" alt="VISL"/></a>
+<a href="http://beta.visl.sdu.dk/"><img width="220"  
+src="/nu_oahpa/media/images/visl_map.png" alt="VISL"/></a>
 </div>
 </td>
 <td> &nbsp; &nbsp; &nbsp; &nbsp;</td>
@@ -54,7 +58,8 @@
 <center>
 <div class="plainbackground">
 <a href="http://beta.visl.sdu.dk/visl/sme/edutainment/games/paintbox.php?S=/global/edutainment/games/paintbox-start-both/">
-<img  width="100"  border="0" src="/oahpa/media/images/paintbox.png"/><br/>
+<img  width="100"  border="0" 
+src="/nu_oahpa/media/images/paintbox.png"/><br/>
 </div>PAINTBOX</a>
 
 </center>
@@ -63,7 +68,8 @@
 <center>
 <div class="plainbackground">
 <a href="http://beta.visl.sdu.dk/visl/sme/edutainment/games/wordfall.php">
-<img width="180" border="0" src="/oahpa/media/images/wordfall.png"/><br/>
+<img width="180" border="0" 
+src="/nu_oahpa/media/images/wordfall.png"/><br/>
 </div>
 WORDFALL</a>
 </center>
@@ -72,7 +78,8 @@ WORDFALL</a>
 <center>
 <div class="plainbackground">
 <a href="http://beta.visl.sdu.dk/visl/sme/edutainment/games/shoot.php">
-<img width="180" border="0" src="/oahpa/media/images/shooting.png"/><br/>
+<img width="180" border="0" 
+src="/nu_oahpa/media/images/shooting.png"/><br/>
 </div>
 SHOOTING GALLERY</a>
 </center>
@@ -85,22 +92,22 @@ SHOOTING GALLERY</a>
 <p class="plain">{% trans "Paint nouns, verbs and other words." %}
 <font color="blue" size="-1">
 {% ifequal LANGUAGE_CODE "en" %}
-<a href="http://giellatekno.uit.no/oahpa/Paintbox_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Paintbox_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sme" %}
-<a href="http://giellatekno.uit.no/oahpa/Paintbox_sme.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Paintbox_sme.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-<a href="http://giellatekno.uit.no/oahpa/Paintbox_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Paintbox_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-<a href="http://giellatekno.uit.no/oahpa/Paintbox_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Paintbox_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-<a href="http://giellatekno.uit.no/oahpa/Paintbox_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Paintbox_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "" %}
-<a href="http://giellatekno.uit.no/oahpa/Paintbox_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Paintbox_nno.html">
 {% endifequal %}
 {% trans "(instructions)" %}</a></font>
 </p>
@@ -111,22 +118,22 @@ SHOOTING GALLERY</a>
 <p class="plain">{% trans "Nouns, verbs and other words shall be put into the right place." %}
 <font color="blue" size="-1">
 {% ifequal LANGUAGE_CODE "en" %}
-<a href="http://giellatekno.uit.no/oahpa/WordFall_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/WordFall_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sme" %}
-<a href="http://giellatekno.uit.no/oahpa/WordFall_sme.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/WordFall_sme.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-<a href="http://giellatekno.uit.no/oahpa/WordFall_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/WordFall_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-<a href="http://giellatekno.uit.no/oahpa/WordFall_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/WordFall_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-<a href="http://giellatekno.uit.no/oahpa/WordFall_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/WordFall_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "" %}
-<a href="http://giellatekno.uit.no/oahpa/WordFall_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/WordFall_nno.html">
 {% endifequal %}
 {% trans "(instructions)" %}</a></font>
 </p></center>
@@ -136,22 +143,22 @@ SHOOTING GALLERY</a>
 <p class="plain">{% trans "Shoot nouns, verbs and other words flying through the air." %}
 <font color="blue" size="-1">
 {% ifequal LANGUAGE_CODE "en" %}
-<a href="http://giellatekno.uit.no/oahpa/Shooting_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Shooting_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sme" %}
-<a href="http://giellatekno.uit.no/oahpa/Shooting_sme.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Shooting_sme.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-<a href="http://giellatekno.uit.no/oahpa/Shooting_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Shooting_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-<a href="http://giellatekno.uit.no/oahpa/Shooting_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Shooting_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-<a href="http://giellatekno.uit.no/oahpa/Shooting_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Shooting_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "" %}
-<a href="http://giellatekno.uit.no/oahpa/Shooting_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Shooting_nno.html">
 {% endifequal %}
 {% trans "(instructions)" %}</a></font>
 </p>
@@ -164,7 +171,7 @@ SHOOTING GALLERY</a>
 <center>
 <div class="plainbackground">
 <a href="http://beta.visl.sdu.dk/visl/sme/edutainment/games/labyrinth.php">
-<img width="150" border="0" src="/oahpa/media/images/labyrinth.png"/><br/>
+<img width="150" border="0" src="/nu_oahpa/media/images/labyrinth.png"/><br/>
 </div>
 LABYRINTH</a>
 </center>
@@ -175,7 +182,7 @@ LABYRINTH</a>
 <center>
 <div class="plainbackground">
 <a href="http://beta.visl.sdu.dk/visl/sme/edutainment/games/syntris.php">
-<img width="120" border="0" src="/oahpa/media/images/syntris.png"/><br/>
+<img width="120" border="0" src="/nu_oahpa/media/images/syntris.png"/><br/>
 </div>SYNTRIS</a>
 
 </center>
@@ -185,7 +192,7 @@ LABYRINTH</a>
 <center>
 <div class="plainbackground">
 <a href="http://beta.visl.sdu.dk/visl/sme/edutainment/games/spacerescue.php">
-<img width="180" border="0" src="/oahpa/media/images/spacerescue.png"/><br/>
+<img width="180" border="0" src="/nu_oahpa/media/images/spacerescue.png"/><br/>
 </div>
 SPACE RESCUE</a>
 </center>
@@ -198,22 +205,22 @@ SPACE RESCUE</a>
 <p class="plain">{% trans "Hurry through the labyrinth to the right part of speech." %}
 <font color="blue" size="-1">
 {% ifequal LANGUAGE_CODE "en" %}
-<a href="http://giellatekno.uit.no/oahpa/Labyrinth_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Labyrinth_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sme" %}
-<a href="http://giellatekno.uit.no/oahpa/Labyrinth_sme.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Labyrinth_sme.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-<a href="http://giellatekno.uit.no/oahpa/Labyrinth_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Labyrinth_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-<a href="http://giellatekno.uit.no/oahpa/Labyrinth_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Labyrinth_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-<a href="http://giellatekno.uit.no/oahpa/Labyrinth_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Labyrinth_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "" %}
-<a href="http://giellatekno.uit.no/oahpa/Labyrinth_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Labyrinth_nno.html">
 {% endifequal %}
 {% trans "(instructions)" %}</a></font>
 </p>
@@ -224,22 +231,22 @@ SPACE RESCUE</a>
 <p class="plain">{% trans "Sentence members shall fall into right place - a Tetris game. (NOT for Mac!)" %}
 <font color="blue" size="-1">
 {% ifequal LANGUAGE_CODE "en" %}
-<a href="http://giellatekno.uit.no/oahpa/Syntris_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Syntris_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sme" %}
-<a href="http://giellatekno.uit.no/oahpa/Syntris_sme.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Syntris_sme.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-<a href="http://giellatekno.uit.no/oahpa/Syntris_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Syntris_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-<a href="http://giellatekno.uit.no/oahpa/Syntris_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Syntris_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-<a href="http://giellatekno.uit.no/oahpa/Syntris_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Syntris_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "" %}
-<a href="http://giellatekno.uit.no/oahpa/Syntris_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Syntris_nno.html">
 {% endifequal %}
 {% trans "(instructions)" %}</a></font>
 </p>
@@ -250,22 +257,22 @@ SPACE RESCUE</a>
 <p class="plain">{% trans "You shall save the parts of speech. (NOT for Mac!)" %}
 <font color="blue" size="-1">
 {% ifequal LANGUAGE_CODE "en" %}
-<a href="http://giellatekno.uit.no/oahpa/SpaceRescue_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/SpaceRescue_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sme" %}
-<a href="http://giellatekno.uit.no/oahpa/SpaceRescue_sme.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/SpaceRescue_sme.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-<a href="http://giellatekno.uit.no/oahpa/SpaceRescue_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/SpaceRescue_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-<a href="http://giellatekno.uit.no/oahpa/SpaceRescue_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/SpaceRescue_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-<a href="http://giellatekno.uit.no/oahpa/SpaceRescue_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/SpaceRescue_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "" %}
-<a href="http://giellatekno.uit.no/oahpa/SpaceRescue_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/SpaceRescue_nno.html">
 {% endifequal %}
 {% trans "(instructions)" %}</a></font>
 </p>
@@ -278,7 +285,7 @@ SPACE RESCUE</a>
 <center>
 <div class="plainbackground">
 <a href="http://beta.visl.sdu.dk/visl2/killerfiller.html">
-<img width="180" border="0" src="/oahpa/media/images/killerlogo.png"/><br/>
+<img width="180" border="0" src="/nu_oahpa/media/images/killerlogo.png"/><br/>
 </div>
 KILLER FILLER</a>
 </center>
@@ -287,7 +294,7 @@ KILLER FILLER</a>
 <center>
 <div class="plainbackground">
 <a href="http://beta.visl.sdu.dk/visl2/bestotesto_start_sme.htm">
-<img width="120" border="0" src="/oahpa/media/images/animalquiz.png"/><br/>
+<img width="120" border="0" src="/nu_oahpa/media/images/animalquiz.png"/><br/>
 </div>
 ANIMAL QUIZ</a>
 </center>
@@ -296,7 +303,7 @@ ANIMAL QUIZ</a>
 <center>
 <div class="plainbackground">
 <a href="http://beta.visl.sdu.dk/visl/sme/parsing/nonautomatic/treebank.php">
-<img width="120" border="0" src="/oahpa/media/images/trelogo.png"/><br/>
+<img width="120" border="0" src="/nu_oahpa/media/images/trelogo.png"/><br/>
 </div>
 TREEBANK</a>
 </center>
@@ -309,22 +316,22 @@ TREEBANK</a>
 <p class="plain">{% trans "Write the correct wordform for the lemma." %}
 <font color="blue" size="-1">
 {% ifequal LANGUAGE_CODE "en" %}
-<a href="http://giellatekno.uit.no/oahpa/Killerfiller_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Killerfiller_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sme" %}
-<a href="http://giellatekno.uit.no/oahpa/Killerfiller_sme.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Killerfiller_sme.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-<a href="http://giellatekno.uit.no/oahpa/Killerfiller_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Killerfiller_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-<a href="http://giellatekno.uit.no/oahpa/Killerfiller_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Killerfiller_nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-<a href="http://giellatekno.uit.no/oahpa/Killerfiller_eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Killerfiller_eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "" %}
-<a href="http://giellatekno.uit.no/oahpa/Killerfiller_nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/Killerfiller_nno.html">
 {% endifequal %}
 {% trans "(instructions)" %}</a></font>
 </p>
@@ -334,7 +341,7 @@ TREEBANK</a>
 <center>
 <p class="plain">{% trans "Guess the right animal." %}
 <font color="blue" size="-1">
-<a href="http://giellatekno.uit.no/oahpa/animalquiz.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/animalquiz.html">
 {% trans "(instructions)" %}</a></font>
 </p>
 </center>
@@ -344,22 +351,22 @@ TREEBANK</a>
 <p class="plain">{% trans "Examine and build sentence trees." %}
 <font color="blue" size="-1">
 {% ifequal LANGUAGE_CODE "en" %}
-<a href="http://giellatekno.uit.no/oahpa/cealkkamuorraravvagat.eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/cealkkamuorraravvagat.eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sme" %}
-<a href="http://giellatekno.uit.no/oahpa/cealkkamuorraravvagat.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/cealkkamuorraravvagat.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-<a href="http://giellatekno.uit.no/oahpa/cealkkamuorraravvagat.nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/cealkkamuorraravvagat.nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-<a href="http://giellatekno.uit.no/oahpa/cealkkamuorraravvagat.nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/cealkkamuorraravvagat.nno.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-<a href="http://giellatekno.uit.no/oahpa/cealkkamuorraravvagat.eng.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/cealkkamuorraravvagat.eng.html">
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "" %}
-<a href="http://giellatekno.uit.no/oahpa/cealkkamuorraravvagat.nno.html">
+<a href="http://giellatekno.uit.no/nu_oahpa/cealkkamuorraravvagat.nno.html">
 {% endifequal %}
 {% trans "(instructions)" %}</a></font>
 </p>
@@ -376,7 +383,7 @@ TREEBANK</a>
 
 
 <div id="rightbar" style="top:220px">
-<form action="/oahpa/i18n/setlang/" method="post" name="newlang">
+<form action="/nu_oahpa/i18n/setlang/" method="post" name="newlang">
 <table>
 <tr><td>
 {% trans "Page language" %}
@@ -430,8 +437,8 @@ TREEBANK</a>
 <tr>
 <td>
 <div class="plainbackground" >
-<a href="http://giellatekno.uit.no/oahpa/OAHPAveiledning.html">
-<img height="80" border="0" src="/oahpa/media/images/littleman.png"/><br/>
+<a href="http://giellatekno.uit.no/nu_oahpa/OAHPAveiledning.html">
+<img height="80" border="0" src="/nu_oahpa/media/images/littleman.png"/><br/>
 <font size="0">{% trans 'Teachers and students guide' %}</font></a>
 </div>
 &nbsp;<br/>
@@ -440,21 +447,21 @@ TREEBANK</a>
 </tr>
 <tr>
 <td>
-<a href="/oahpa/">
-<img border="0" width="80" src="/oahpa/media/images/Oahpa_logo0001red.png" alt="OAHPA!"/><br/>
+<a href="/nu_oahpa/">
+<img border="0" width="80" src="/nu_oahpa/media/images/Oahpa_logo0001red.png" alt="OAHPA!"/><br/>
 {% trans 'Main page' %}</a><br/>&nbsp;
 </td>
 </tr>
 <tr>
-<td><a href="http://giellatekno.uit.no/oahpa/index.html">{% trans 'About OAHPA!' %}</a><br/>&nbsp;</td>
+<td><a href="http://giellatekno.uit.no/nu_oahpa/index.html">{% trans 'About OAHPA!' %}</a><br/>&nbsp;</td>
 </tr>
 <tr>
-<td><a href="/oahpa/feedback/">{% trans 'Feedback' %}<br/>&nbsp;</td>
+<td><a href="/nu_oahpa/feedback/">{% trans 'Feedback' %}<br/>&nbsp;</td>
 </tr>
 <tr>
 <td>
 <center>
-<img width="50" height="50" src="/oahpa/media/images/LogoSamisk.jpg"/>
+<img width="50" height="50" src="/nu_oahpa/media/images/LogoSamisk.jpg"/>
 </center>
 </td>
 </tr>
