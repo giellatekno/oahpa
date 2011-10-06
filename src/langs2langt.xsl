@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <!--+
     | 
-    | compares (ped vs. smenob) and put ped-flags on smenob-entries 
-    | Usage: java net.sf.saxon.Transform -it main cfSmeSmj.xsl
+    | File to translate smeX to Xsme
+    | Usage: see next line.
     +-->
 
 <!-- java -Xmx2048m net.sf.saxon.Transform -it main langs2langt.xsl inFile= -->
