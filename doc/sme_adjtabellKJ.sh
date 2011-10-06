@@ -1,0 +1,33 @@
+# list of command making jspwiki document
+
+# c. only oahpa adjectives
+cat $GTHOME/words/dicts/smenob/src/adjective_smenob.xml | grep '<l ' | tr "<" ">" | cut -d ">" -f3 | sort -u > t3
+
+DATO=`date`
+
+# Printing headers:
+
+# c. oahpa adj
+echo "!!!Tabell over VD-adjektiv med KJ-dialekt" > nudoc/gen/sme_adjVDtabellKJ.jspwiki
+echo "" >> nudoc/gen/sme_adjVDtabellKJ.jspwiki
+echo "Testdato: $DATO" >> nudoc/gen/sme_adjVDtabellKJ.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom  || Sg Acc" >> nudoc/gen/sme_adjVDtabellKJ.jspwiki
+
+
+# Making the 4 columns
+cat t3|sed 's/$/+A+Attr/;'| lookup -q $GTHOME/gt/sme/bin/isme-KJ.restr.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tattr3
+
+cat t3|sed 's/$/+A+Sg+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-KJ.restr.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tsgnom3
+
+cat t3|sed 's/$/+A+Comp+Sg+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-KJ.restr.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tcomp3
+
+cat t3|sed 's/$/+A+Superl+Sg+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-KJ.restr.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tsuperl3
+
+cat t3|sed 's/$/+A+Sg+Acc/;'| lookup -q $GTHOME/gt/sme/bin/isme-KJ.restr.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A+.*/-/'|tr '\t' ',' > tAcc3
+
+paste -d"|" t3 tattr3 tsgnom3 tcomp3 tsuperl3 tAcc3 | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms3
+
+cat tadjforms3 >> nudoc/gen/sme_adjVDtabellKJ.jspwiki
+
+rm -f tattr*  tsgnom*  tcomp*   tsuperl* tAcc*
+
