@@ -1,7 +1,7 @@
 # list of command making jspwiki document
 
 # c. only oahpa adjectives
-cat $GTHOME/words/dicts/smenob/src/adjective_smenob.xml | grep '<l ' | tr "<" ">" | cut -d ">" -f3 | sort -u > t3
+cat $GTHOME/words/dicts/smenob/src/adjective_smenob.xml | sed 's/<e/$<e/' | tr "\n" "€" | tr "$" "\n" | grep 'usage="vd' | tr "€" "\n" | grep '<l ' | tr "<" ">" | cut -d ">" -f3 | sort -u > t3
 
 DATO=`date`
 
