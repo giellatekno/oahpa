@@ -11,7 +11,7 @@ DATO=`date`
 echo "!!!Tabell over VD-adjektiv med Norm" > nudoc/gen/sme_adjVDtabellNorm.jspwiki
 echo "" >> nudoc/gen/sme_adjVDtabellNorm.jspwiki
 echo "Testdato: $DATO" >> nudoc/gen/sme_adjVDtabellNorm.jspwiki
-echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom  || Sg Acc" >> nudoc/gen/sme_adjVDtabellNorm.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Attr || Comp Sg Nom || Superl Sg Nom" >> nudoc/gen/sme_adjVDtabellNorm.jspwiki
 
 
 # Making the 4 columns
@@ -19,15 +19,16 @@ cat t3|sed 's/$/+A+Attr/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' 
 
 cat t3|sed 's/$/+A+Sg+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tsgnom3
 
+cat t3|sed 's/$/+A+Comp+Attr/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tcompattr3
+
 cat t3|sed 's/$/+A+Comp+Sg+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tcomp3
+
 
 cat t3|sed 's/$/+A+Superl+Sg+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A.*/-/'|tr '\t' ',' > tsuperl3
 
-cat t3|sed 's/$/+A+Sg+Acc/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8|sed 's/.*+A+.*/-/'|tr '\t' ',' > tAcc3
-
-paste -d"|" t3 tattr3 tsgnom3 tcomp3 tsuperl3 tAcc3 | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms3
+paste -d"|" t3 tattr3 tsgnom3 tcompattr3 tcomp3 tsuperl3  | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms3
 
 cat tadjforms3 >> nudoc/gen/sme_adjVDtabellNorm.jspwiki
 
-rm -f tattr*  tsgnom*  tcomp*   tsuperl* tAcc*
+rm -f tattr*  tsgnom*  tcomp*   tsuperl* 
 
