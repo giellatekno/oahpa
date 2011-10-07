@@ -1,0 +1,104 @@
+!!!Møte 7.10.11
+
+Til stades: Ciprian, Heli, Trond
+
+!!Saksliste
+
+
+* Status quo
+* Göra sme-koden likt sma (Ryan) eller ikke
+* Neste møte
+
+!!Status quo
+
+!Installering av Leksa
+
+* I går: Database tømt og fylt, med verb og substantiv.
+* I går kveld: Trond har fylt finnob og finswe med semantiske sett.
+
+Det er også mogleg at feilen ikkje ligg i (manglande) semantiske sett. 
+Ei anna mogleg feilkjelde er manglande bøker: ''Manglande bok i fin: 323,  sme: 81, swe: 408,  nob: 338''. 
+
+Det finst ord som ikkje er henta frå bøker, men oversikta over
+viser at vi må komplettere bok-info i Xsme-katalogane.
+
+Dette ser vi når vi kompilerer på nytt.
+
+
+
+__TILTAK__
+
+* Nytt forsøk, med komplett semantisk settilordning (__Heli__)
+* Lage ei sjekkliste for manglande bøker + prøv automatikk (__Cip__)
+* Gå gjennom sjekklista (same procedure as yesterday)  (__Trond__)
+
+!Pronomen i MorfaS
+
+* Sjå forrige møtereferat.
+
+__TILTAK__
+
+* Implementering av pronomener i MorfaS 
+
+
+!Klokka og dato
+
+Det er umogleg å køyre Numra utan innhald i MySQL.
+
+Klokka, dato:
+
+Kode i:
+* main/sme/src/date-sme.lexc
+* main/sme/src/clock-sme.lexc
+* main/sme/src/sme-num.txt
+
+fst i:
+* /opt/smi/sme/bin/
+* Det blir to automatar: ''date-sme.fst, idate-sme.fst, clock-sme.fst, iclock-sme.fst, sme-num.fst, sme-inum.fst'', der "i" betyr "invers".
+
+* Kompiler automatar i main/gt med kommandoen 
+** {{make date.fst GTLANG=sme}}
+** {{make clock.fst GTLANG=sme}}
+** {{make num.fst GTLANG=sme}}
+* evt. alle med {{make GTLANG=sme}}
+
+!tcomm, statpref
+
+# statpref: Cip implementerer sma-systemet (ta første t-elementet).
+# tcomm: Diskusjon på neste møte.
+
+!Svensk
+
+Konvertering er gjort. Vi har no swesme. 
+
+__TILTAK__
+
+* Legge inn svensk i tillegg til norsk og finsk i Leksa (__Heli__)
+
+
+!site.uit.no/oahpa
+
+Arbeidet går framover, her: [http://site.uit.no/oahpa/|http://site.uit.no/oahpa/].
+
+!!Göra sme-koden meir likt sma (Ryan)
+
+I prinsipp skal vi ta over alt frå sma-oahpa, __men__ med visse endringar.
+T.d. ikkje meaning-group. Dette blir tema for neste møte.
+
+! preferred translation
+
+* sme: den som står øverst (fordel: umogleg med to stat="pref")
+* sma: stat="pref" vs. stat="notpref" vs. ingenting
+* best: stat="pref" vs. ingenting
+
+Vi må forandre koden etter mønster av sma-oahpa når det gjeld språkgeneralisering.
+
+__TILTAK__
+
+* Heli ser på koden for sma-oahpa og oahpa_ideas
+
+
+!!Neste møte
+
+* 26.10. klokka 10:00 (preliminært tidspunkt)
+
