@@ -119,6 +119,10 @@ BOOK_CHOICES = (
     ('sara', _('sara')),
     ('bures', _('Bures bures fas')),
     ('oaidnalit', _('Oaidnalit')),
+    ('c1', _('Cealkke dearvv. 1')),
+    ('c2', _('Cealkke dearvv. 1-2')),
+    ('c3', _('Cealkke dearvv. 1-3')),
+    ('c4', _('Cealkke dearvv. 1-4')),
     ('all', _('All')),
 )
 
