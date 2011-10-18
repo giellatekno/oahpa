@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from django.template import Context, loader
-from nu_oahpa.nu_drill.models import *
-from nu_oahpa.nu_drill.forms import *
+from oahpa.drill.models import *
+from oahpa.drill.forms import *
 from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404, render_to_response
@@ -183,7 +183,7 @@ class Game:
                 if language == "no" : language = "nob"
                 if language == "fi" : language = "fin"
                 if language == "en" : language = "eng"
-				
+                
                 com_count = Comment.objects.filter(Q(level=i) & Q(lang=language)).count()
                 if com_count > 0:
                     self.comment = Comment.objects.filter(Q(level=i) & Q(lang=language))[randint(0,com_count-1)].comment
@@ -192,7 +192,7 @@ class Game:
 class BareGame(Game):
 
     casetable = {'NOMPL' : 'Nom', 'ATTR':'Attr', 'N-ILL':'Ill', 'N-ESS':'Ess', 'N-GEN':'Gen', \
-				 'N-LOC':'Loc', 'N-ACC':'Acc', 'N-COM':'Com'}
+                 'N-LOC':'Loc', 'N-ACC':'Acc', 'N-COM':'Com'}
 
     def get_baseform(self, word_id, tag):
 
@@ -252,7 +252,7 @@ class BareGame(Game):
                     case = self.casetable[num_bare]
                 else:
                     if pos=="V":
-                        case = ""					
+                        case = ""                    
         
         if pos == "V" and self.settings.has_key('vtype'):
             if self.settings['vtype'] == "PRS":
@@ -322,7 +322,7 @@ class BareGame(Game):
         dialect = self.settings['dialect']
         language = self.settings['language']
         if not db_info.has_key('word_id'):
-            return None, None			
+            return None, None            
         word_id = db_info['word_id']
         tag_id = db_info['tag_id']
 
@@ -405,6 +405,92 @@ class NumGame(Game):
 
         return form, numstring
 
+class Clock(NumGame):
+
+    def get_db_info(self, db_info):
+        from random import choice
+
+        hour = str(randint(0, 23))
+
+        if len(hour) == 1:
+            hour = '0' + hour
+        else:
+            hour = str(hour)
+        if self.settings['gametype'] == "kl1":
+            min_options = ['00', '30']
+            minutes = choice(min_options)
+        elif self.settings['gametype'] == "kl2":
+            min_options = ['00', '15', '30', '45']
+            minutes = choice(min_options)
+        elif self.settings['gametype'] == "kl3":
+            mins = str(randint(0, 59))
+            if len(mins) == 1:
+                mins = '0' + mins
+            minutes = mins
+
+        random_num = '%s:%s' % (hour, minutes)
+
+        db_info['numeral_id'] = str(random_num)
+
+        return db_info
+
+
+    def create_form(self, db_info, n, data=None):
+        if self.settings['gametype'] in ["kl1", "kl2", "kl3"]:
+            language = 'sme'
+
+            numstring = ""
+
+            fstfile = "iclock-sme.fst"
+            q, a = 0, 1
+
+        # # need to extract accepted and nonaccepted, using
+        # # an inverted int-clock-sma.fst
+
+        lookup = "%s\n\n%s+Use/NG\n" % (db_info['numeral_id'], db_info['numeral_id'])
+
+        # lookup = "%s\n" % db_info['numeral_id']
+        output, err = self.generate_forms(lookup, fstfile)
+
+        norm, allnum = output.split('\n\n')[0:2]
+
+        norm_list = []
+        for num in norm.splitlines():
+            line = num.strip()
+            if line:
+                nums = line.split('\t')
+                norm_list.append(nums[a].decode('utf-8'))
+
+        allnum_list = []
+        for num in allnum.splitlines():
+            line = num.strip()
+            if line:
+                if line.find('?') == -1:
+                    nums = line.split('\t')
+                    allnum_list.append(nums[a].decode('utf-8'))
+
+        allnum_list += norm_list
+
+        try:
+            numstring = norm_list[0]
+        except IndexError:
+            error = "Morfa.Clock.create_form: Database is improperly loaded, or Numra is unable to look up words."
+            raise Http404(error)
+
+        form = (KlokkaQuestion(
+                    numeral=db_info['numeral_id'],
+                    num_string=numstring,
+                    present_list=norm_list,
+                    accept_list=allnum_list,
+                    gametype=self.settings['numgame'],
+                    userans_val=db_info['userans'],
+                    correct_val=db_info['correct'],
+                    data=data,
+                    prefix=n)
+                )
+
+        return form, numstring
+    
 class QuizzGame(Game):
 
     def get_db_info(self, db_info):
@@ -423,143 +509,43 @@ class QuizzGame(Game):
         i=0
         while i<maxnum:
             i=i+1
-            # smenob
-            if self.settings['transtype'].startswith("sme"):            
-                if self.settings['book'].count('all') > 0:
-                    w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                Q(frequency__in=frequency) & \
-                                                Q(geography__in=geography) & \
-                                                Q(dialects__dialect=dialect)).count()
-                    random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                    Q(frequency__in=frequency) & \
-                                                    Q(geography__in=geography) &\
-                                                    Q(dialects__dialect=dialect))[randint(0,w_count-1)]
-                                                        
+            
+            QUERY =    Q(frequency__in=frequency) & \
+                    Q(geography__in=geography)
+            
+            if self.settings['transtype'].startswith("sme"):            WordObj = Word ; QUERY = QUERY & Q(dialects__dialect=dialect)
+            elif self.settings['transtype'] == "nobsme":                WordObj = Wordnob
+            elif self.settings['transtype'] == "finsme":                WordObj = Wordfin
+            elif self.settings['transtype'] == "swesme":                 WordObj = Wordswe
+            elif self.settings['transtype'] == "engsme":                 WordObj = Wordeng
+            elif self.settings['transtype'] == "deusme":                 WordObj = Worddeu
+            else:                                                        print "Empty else branch!"
+            
+            if self.settings['book'].count('all') > 0:
+                if WordObj != Word:
+                    QUERY = QUERY & Q(word__semtype__semtype__in=semtypes)
                 else:
-                    semtypes = self.settings['allsem']
-                    w_count=Word.objects.filter(Q(semtype__semtype__in=semtypes) &\
-                                                Q(source__name__in=books) & \
-                                                Q(geography__in=geography) & \
-                                                Q(dialects__dialect=dialect)).count()
-                    random_word=Word.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                    Q(source__name__in=books) & \
-                                                    Q(geography__in=geography) &\
-                                                    Q(dialects__dialect=dialect))[randint(0,w_count-1)]
-                                                    
-            # nobsme
-            elif self.settings['transtype'] == "nobsme": 
-                if self.settings['book'].count('all') > 0:
-                    w_count=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                   Q(frequency__in=frequency) & \
-                                                   Q(geography__in=geography)).count()
-                    
-                    random_word=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                       Q(frequency__in=frequency) & \
-                                                       Q(geography__in=geography))[randint(0,w_count-1)]
-
-                else:
-                    semtypes = self.settings['allsem']
-                    w_count=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) &\
-                                                   Q(frequency__in=frequency) & \
-                                                   Q(geography__in=geography) & \
-                                                   Q(source__name__in=books)).count()
-                    random_word=Wordnob.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                       Q(frequency__in=frequency) & \
-                                                       Q(geography__in=geography) & \
-                                                       Q(source__name__in=books))[randint(0,w_count-1)]
-
-            # finsme
-            elif self.settings['transtype'] == "finsme": 
-                if self.settings['book'].count('all') > 0:
-                    w_count=Wordfin.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                   Q(frequency__in=frequency) & \
-                                                   Q(geography__in=geography)).count()
-                    
-                    random_word=Wordfin.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                       Q(frequency__in=frequency) & \
-                                                       Q(geography__in=geography))[randint(0,w_count-1)]
-
-                else:
-                    semtypes = self.settings['allsem']
-                    w_count=Wordfin.objects.filter(Q(semtype__semtype__in=semtypes) &\
-                                                   Q(frequency__in=frequency) & \
-                                                   Q(geography__in=geography) & \
-                                                   Q(source__name__in=books)).count()
-                    random_word=Wordfin.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                       Q(frequency__in=frequency) & \
-                                                       Q(geography__in=geography) & \
-                                                       Q(source__name__in=books))[randint(0,w_count-1)]
-
-            # swesme
-            elif self.settings['transtype'] == "swesme": 
-                if self.settings['book'].count('all') > 0:
-                    w_count=Wordswe.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                   Q(frequency__in=frequency) & \
-                                                   Q(geography__in=geography)).count()
-                    
-                    random_word=Wordswe.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                       Q(frequency__in=frequency) & \
-                                                       Q(geography__in=geography))[randint(0,w_count-1)]
-
-                else:
-                    semtypes = self.settings['allsem']
-                    w_count=Wordswe.objects.filter(Q(semtype__semtype__in=semtypes) &\
-                                                   Q(frequency__in=frequency) & \
-                                                   Q(geography__in=geography) & \
-                                                   Q(source__name__in=books)).count()
-                    random_word=Wordswe.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                       Q(frequency__in=frequency) & \
-                                                       Q(geography__in=geography) & \
-                                                       Q(source__name__in=books))[randint(0,w_count-1)]
-
-            # engsme
-            elif self.settings['transtype'] == "engsme": 
-                if self.settings['book'].count('all') > 0:
-                    w_count=Wordeng.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                   Q(frequency__in=frequency) & \
-                                                   Q(geography__in=geography)).count()
-                    
-                    random_word=Wordeng.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                       Q(frequency__in=frequency) & \
-                                                       Q(geography__in=geography))[randint(0,w_count-1)]
-
-                else:
-                    semtypes = self.settings['allsem']
-                    w_count=Wordeng.objects.filter(Q(semtype__semtype__in=semtypes) &\
-                                                   Q(frequency__in=frequency) & \
-                                                   Q(geography__in=geography) & \
-                                                   Q(source__name__in=books)).count()
-                    random_word=Wordeng.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                       Q(frequency__in=frequency) & \
-                                                       Q(geography__in=geography) & \
-                                                       Q(source__name__in=books))[randint(0,w_count-1)]
-
-            # deusme
-            elif self.settings['transtype'] == "deusme": 
-                if self.settings['book'].count('all') > 0:
-                    w_count=Worddeu.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                   Q(frequency__in=frequency) & \
-                                                   Q(geography__in=geography)).count()
-                    
-                    random_word=Worddeu.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                       Q(frequency__in=frequency) & \
-                                                       Q(geography__in=geography))[randint(0,w_count-1)]
-
-                else:
-                    semtypes = self.settings['allsem']
-                    w_count=Worddeu.objects.filter(Q(semtype__semtype__in=semtypes) &\
-                                                   Q(frequency__in=frequency) & \
-                                                   Q(geography__in=geography) & \
-                                                   Q(source__name__in=books)).count()
-                    random_word=Worddeu.objects.filter(Q(semtype__semtype__in=semtypes) & \
-                                                       Q(frequency__in=frequency) & \
-                                                       Q(geography__in=geography) & \
-                                                       Q(source__name__in=books))[randint(0,w_count-1)]
+                    QUERY = QUERY & Q(semtype__semtype__in=semtypes)
 
             else:
-                print "Empty else branch!"
+                semtypes = self.settings['allsem']
+                QUERY = QUERY & Q(source__name__in=books)
 
-                
+            words = WordObj.objects.filter(QUERY)
+            w_count = words.count()
+
+            # TODO: possibility here is that if there are no words to
+            # change the query so it is relative to Word, and return
+            # Wordnob/Wordfin words. Problem is that it appears that
+            # Word and Wordnob objects have different semantic sets from
+            # eachother.
+
+            try:
+                random_word = words.order_by('?')[0]
+            except IndexError:
+                errorstr = 'Query resulted in no words.\n'
+                errorstr += str(QUERY)
+                raise Http404(errorstr)
 
             word_id=random_word.id
             if self.settings['transtype'] == "smenob":  

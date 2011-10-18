@@ -556,13 +556,17 @@ def quizz(request):
 
 class Numview(Gameview):
     
-    def create_numgame(self,request):
+    def create_numgame(self,request, clock=False):
         
         if request.method == 'POST':
             data = request.POST.copy()
             
             # Settings form is checked and handled.
-            settings_form = NumSettings(request.POST)
+            if clock:
+                SettingsClass = KlokkaSettings
+            else:
+                SettingsClass = NumSettings
+            settings_form = SettingsClass(data)
             
             for k in settings_form.data.keys():
                 if not self.settings.has_key(k):
@@ -575,8 +579,11 @@ class Numview(Gameview):
                 self.settings['language'] = request.session['django_language']
             else:
                 self.settings['language'] = request.COOKIES.get("django_language", None)
-
-            game = NumGame(self.settings)
+            if clock:
+                GameClass = Clock
+            else:
+                GameClass = NumGame
+            game = GameClass(self.settings)
                 
             if "settings" in data:
                 game.new_game()
@@ -592,13 +599,20 @@ class Numview(Gameview):
         
         # If there is no POST data, default settings are applied
         else:
-            settings_form = NumSettings()
+            if clock:
+                SettingsClass = KlokkaSettings
+            else:
+                SettingsClass = NumSettings
+            settings_form = SettingsClass()
         
             for k in settings_form.default_data.keys():
                 if not self.settings.has_key(k):
                     self.settings[k] = settings_form.default_data[k]
-
-            game = NumGame(self.settings)
+            if clock:
+                GameClass = Clock
+            else:
+                GameClass = NumGame
+            game = GameClass(self.settings)
             game.new_game()
 
         #numstring=0
@@ -617,6 +631,17 @@ class Numview(Gameview):
             })
         return c
 
+def num_clock(request): # taken over from smaoahpa
+
+    numgame = Numview()
+    numgame.init_settings()
+    # numgame.settings['gametype'] = clocktype
+
+    c = numgame.create_numgame(request, clock=True)
+
+    # trackGrade('Numra clock', request, c)
+    return render_to_response('clock.html', c, context_instance=RequestContext(request))
+                        
 def num(request):
 
     numgame = Numview()
@@ -634,7 +659,6 @@ def num_ord(request):
     
     c = numgame.create_numgame(request)
     return render_to_response('num_ord.html', c, context_instance=RequestContext(request))
-
 
 class Sahkaview:
 

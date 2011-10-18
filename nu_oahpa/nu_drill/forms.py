@@ -200,6 +200,12 @@ NUMGAME_CHOICES = (
     ('string', _('String to numeral')),
 )
 
+KLOKKA_CHOICES = (
+    ('kl1', _('easy')),
+    ('kl2', _('medium')),
+    ('kl3', _('hard')),
+    )
+
 DIALOGUE_CHOICES = (
     ('firstmeeting', _('Firstmeeting')),
     ('firstmeeting_boy', _('Firstmeeting boy')),
@@ -645,6 +651,135 @@ def select_words(self, qwords, awords):
 
     return selected_awords
 
+class KlokkaSettings(NumSettings):  # copied from smaoahpa
+    gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
+    default_data = {'language' : 'nob', 'numlanguage' : 'sma', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'numeral'}
+    grammarlinkssma = Grammarlinks.objects.filter(language="sma")
+    # grammarlinksno = Grammarlinks.objects.filter(language="no")
+
+    def __init__(self, *args, **kwargs):
+        self.set_settings
+        super(KlokkaSettings, self).__init__(*args, **kwargs)
+
+
+        class KlokkaQuestion(NumQuestion):  # copied from smaoahpa
+            """
+            Questions for numeral quizz
+            """
+            def __init__(self, *args, **kwargs):
+                present_list = kwargs.get('present_list')
+                accept_list = kwargs.get('accept_list')
+                kwargs.pop('present_list')
+                kwargs.pop('accept_list')
+
+                numeral = kwargs.get('numeral')
+                num_string = kwargs.get('num_string')
+                correct_val = kwargs.get('correct_val')
+                userans_val = kwargs.get('userans_val')
+                self.gametype = gametype = kwargs.get('gametype')
+                prefix = kwargs.get('prefix')
+                data = kwargs.get('data')
+
+
+                numeral_widget = forms.HiddenInput(attrs={'value' : numeral})
+                kwargs['correct_val'] = correct_val
+                self.userans_val = self.userans = userans_val
+
+                kwargs['num_list'] = present_list
+                super(KlokkaQuestion, self).__init__(*args, **kwargs)
+
+                wforms = []
+                self.relaxings = []
+                # Initialize variables
+                if gametype == "string":
+                    self.init_variables(force_unicode(numeral), userans_val, [ numeral ])
+                    example = num_string
+
+                else:
+                    self.init_variables(force_unicode(accept_list), userans_val, present_list)
+                    wforms = sum([relax(force_unicode(item)) for item in accept_list], [])
+                    # need to subtract legal answers and make an only relaxed list.
+                    self.relaxings = [item for item in wforms if item not in accept_list]
+                    example = numeral
+
+                    self.correct_anslist = self.correct_anslist + [force_unicode(f) for f in wforms]
+
+                    self.fields['numeral_id'] = forms.CharField(widget=numeral_widget, required=False)
+
+                    if gametype == "string":
+                        self.numstring = num_string
+                        self.numeral = numeral
+
+                        self.is_correct("numra", example)
+
+                        if correct_val:
+                            if correct_val == "correct":
+                                self.error = "correct"
+                                # relax
+                                if userans_val in self.relaxings:
+                                    self.is_relaxed = "relaxed"
+                                    self.strict = 'Strict form'
+                                elif userans_val in accept_list and userans_val not in present_list:
+                                    self.is_relaxed = "relaxed"
+                                    self.strict = 'Strict form'
+                                else:
+                                    self.is_relaxed = ""
+
+                                    def relax_military(self, number):
+                                        """ Takes a string such as '08:00' or '20:00' and returns the opposite.
+
+                                        """
+                                        military = [
+                                            ('01', '13'),
+                                            ('02', '14'),
+                                            ('03', '15'),
+                                            ('04', '16'),
+                                            ('05', '17'),
+                                            ('06', '18'),
+                                            ('07', '19'),
+                                            ('08', '20'),
+                                            ('09', '21'),
+                                            ('10', '22'),
+                                            ('11', '23'),
+                                            ('12', '00'),
+                                            ]
+                                        reverse = [(b, a) for a, b in military]
+
+                                        military_dict = dict(military + reverse)
+
+                                        options = [number]
+                                        hh, _, mm = number.partition(':')
+
+                                        try:
+                                            switched = '%s:%s' % (military_dict[hh], mm)
+                                            options.append(switched)
+                                        except KeyError:
+                                            pass
+                                        return options
+
+                                    def is_correct(self, game, example=None):
+                                        if not self.is_valid():
+                                            return False
+                                        self.userans = self.cleaned_data['answer']
+                                        answer = self.userans.strip()
+
+                                        answer = answer.rstrip('.!?,')
+
+                                        self.error = "error"
+
+                                        iscorrect = False
+
+                                        # if self.gametype != "string":
+
+                                        if any([':' in a for a in self.correct_anslist]):
+                                            self.correct_anslist = sum([self.relax_military(a) for a in self.correct_anslist], [])
+
+                                            if answer in set(self.correct_anslist) or \
+                                               answer.lower() in set(self.correct_anslist) or \
+                                               answer.upper() in set(self.correct_anslist):
+                                                self.error = "correct"
+                                                iscorrect = True
+                                                
 
 class ContextMorfaQuestion(OahpaQuestion):
     """
