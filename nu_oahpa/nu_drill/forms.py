@@ -8,12 +8,13 @@ from django.http import Http404
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
+#import settings
 from random import randint
 from models import *
 import time
 import datetime
 import socket
-from nu_oahpa.nu_drill.game import relax
+#from game import relax
 
 POS_CHOICES = (
     ('N', _('noun')),
@@ -217,6 +218,59 @@ DIALOGUE_CHOICES = (
     ('shopadj', _('Shopadj')),
 )
 
+"""
+def relax(strict):
+    Returns a list of relaxed possibilities, making changes by relax_pairs.
+
+    Many possibilities are generated in the event that users are
+    inconsistent in terms of substituting one letter but not substituting
+    another, however, *all* possibilities are not generated.
+
+    E.g., *ryÂøjnesjÂäjja is accepted for ryÂöjnesjÂæjja
+    (user types Âø instead of Âö consistently)
+
+    ... but ...
+
+      *tÂöølledh is not accepted for tÂöölledh
+      (user mixes the two in one word)
+
+      Similarly, directionality is included. <i> is accepted for <Âï>, but
+      not vice versa.
+
+      E.g.:  *ÂååjmedÂïdh is not accepted for Âååjmedidh,
+      ... but ...
+      *miele is accepted for mÂïele.
+      
+    relaxed = strict
+    sub_str = lambda _string, _target, _sub: _string.replace(_target, _sub)
+
+    relax_pairs = {
+        # key: value
+        # key is accepted for value
+        u'Âø': u'Âö',
+        u'Âä': u'Âæ',
+        u'i': u'Âï'
+    }
+
+    # Create an iterator. We want to generate as many possibilities as
+    # possible (very fast), so more relaxed options are available.
+    searches = relax_pairs.items()
+    permutations = itertools.chain(itertools.permutations(searches))
+    perms_flat = sum([list(a) for a in permutations], [])
+
+    # Individual possibilities
+    relaxed_perms = [sub_str(relaxed, R, S) for S, R in perms_flat]
+
+    # Possibilities applied one by one
+    for S, R in perms_flat:
+        relaxed = sub_str(relaxed, R, S)
+        relaxed_perms.append(relaxed)
+
+        # Return list of unique possibilities
+        relaxed_perms = list(set(relaxed_perms))
+        return relaxed_perms
+    """
+    
 def is_correct(self, game, example=None):
     """
     Determines if the given answer is correct (for a bound form).
@@ -522,7 +576,7 @@ class QuizzSettings(OahpaSettings):
 
 class QuizzQuestion(OahpaQuestion):
     """
-    Questions for word quizz
+    Questions for word quiz
     """
     
     def __init__(self, transtype, word, correct, translations, question, userans_val, correct_val, *args, **kwargs):
@@ -652,6 +706,12 @@ def select_words(self, qwords, awords):
 
     return selected_awords
 
+# #
+#
+# Klokka Forms
+#
+# #
+
 class KlokkaSettings(NumSettings):  # copied from smaoahpa
     gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
     default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'numeral'}
@@ -664,7 +724,9 @@ class KlokkaSettings(NumSettings):  # copied from smaoahpa
 
 
 class KlokkaQuestion(NumQuestion):  # copied from smaoahpa
-
+    """
+    Questions for clock quiz    
+    """
     def __init__(self, *args, **kwargs):
         present_list = kwargs.get('present_list')
         accept_list = kwargs.get('accept_list')
@@ -695,7 +757,8 @@ class KlokkaQuestion(NumQuestion):  # copied from smaoahpa
 
         else:
             self.init_variables(force_unicode(accept_list), userans_val, present_list)
-            wforms = sum([relax(force_unicode(item)) for item in accept_list], [])
+            wforms = sum([item for item in accept_list],[])
+            # tog bort relax[force_unicode(item) for item in accept_list]
             # need to subtract legal answers and make an only relaxed list.
             self.relaxings = [item for item in wforms if item not in accept_list]
             example = numeral

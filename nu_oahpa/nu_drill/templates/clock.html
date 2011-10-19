@@ -2,21 +2,18 @@
 {% load i18n %}
 
 {% block navbar %}
-{% with 'klokka' as gamename_nav %}
-	<ul class="sidelist">
-		<li {% ifequal gamename_nav "numra_cardinal" %} class="selected"{% endifequal %}><a href="{% url numra %}">{% trans 'Cardinals' %}</a></li>
-		<li {% ifequal gamename_nav "numra_ordinal" %} class="selected"{% endifequal %}><a href="{% url numra.ord %}">{% trans 'Ordinals' %}</a></li>
-		<li {% ifequal gamename_nav 'klokka' %} class="selected"{% endifequal %}><a href="{% url numra.klokka %}">{% trans 'Klokka' %}</a></li>
-		<li {% ifequal gamename_nav 'dato' %} class="selected"{% endifequal %}><a href="{% url numra.dato %}">{% trans 'Dato' %}</a></li>
-	</ul>
-{% endwith %}
+<ul class="sidelist">
+<li><a href="/nu_oahpa/numra/">{% trans 'Cardinals' %}</li>
+<li><a href="/nu_oahpa/numra_ord/">{% trans 'Ordinals' %}</a>
+<li class="selected">{% trans 'Clock' %}</a></li>
+</ul>
 {% endblock %}
 
 {% block instructions %}
   {% ifequal gametype "string" %}
     {% trans "Enter the numeral. (Ex. 10:21)" %}
   {% else %}
-    {% trans "Enter the time in North Sámi. (Ex. bealli guovttá)." %}
+    {% trans "Enter the time in North Sámi. (Ex. beal vihtta)." %}
   {% endifequal %}
 {% endblock %}
 

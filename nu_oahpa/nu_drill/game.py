@@ -9,9 +9,10 @@ from django.shortcuts import get_list_or_404, render_to_response
 from random import randint
 #from django.contrib.admin.views.decorators import _encode_post_data, _decode_post_data
 import os,codecs,sys,re
+from nu_oahpa.nu_drill.forms import KlokkaQuestion
 
-def relax(strict):
-    """ Returns a list of relaxed possibilities, making changes by relax_pairs.
+"""def relax(strict):
+    Returns a list of relaxed possibilities, making changes by relax_pairs.
 
     Many possibilities are generated in the event that users are
     inconsistent in terms of substituting one letter but not substituting
@@ -31,7 +32,7 @@ def relax(strict):
       E.g.:  *ååjmedïdh is not accepted for ååjmedidh,
       ... but ...
       *miele is accepted for mïele.
-      """
+
     relaxed = strict
     sub_str = lambda _string, _target, _sub: _string.replace(_target, _sub)
 
@@ -60,7 +61,7 @@ def relax(strict):
     # Return list of unique possibilities
     relaxed_perms = list(set(relaxed_perms))
     return relaxed_perms
-    
+ """   
 class Info:
     pass
 
