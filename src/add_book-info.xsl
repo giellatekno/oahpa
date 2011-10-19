@@ -15,17 +15,17 @@
 	      omit-xml-declaration="no"
 	      indent="yes"/>
   
-  <xsl:param name="inFile" select="'gogo_file'"/>
-  <xsl:param name="inDir" select="'ind'"/>
+  <xsl:param name="inFile" select="'c1.txt'"/>
+  <xsl:param name="inDir" select="'indir_test'"/>
   <xsl:variable name="outDir" select="'outdxx'"/>
   <xsl:variable name="of" select="'xml'"/>
   <xsl:variable name="e" select="$of"/>
   <xsl:variable name="debug" select="'true_gogo'"/>
   <xsl:variable name="nl" select="'&#xa;'"/>
-  <xsl:variable name="slang" select="'sma'"/>
+  <xsl:variable name="slang" select="'sme'"/>
   <xsl:variable name="tlang" select="'nob'"/>
   <!--   <xsl:variable name="theBook" select="'åa4'"/> -->
-  <xsl:variable name="theBook" select="'åa6'"/>
+  <xsl:variable name="theBook" select="'c1'"/>
   
   <xsl:template match="/" name="main">
     <xsl:if test="not(unparsed-text-available($inFile))">

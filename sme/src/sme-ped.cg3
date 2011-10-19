@@ -5366,8 +5366,6 @@ MAPPING-PREFIX = & ;
 # The user wants to stop the dialogue
 MAP (&dia-stop) TARGET ("heaitit")(*-1 SAHKA) ; 
 
-#LIST PLACENAME-QUESTION = Gos_don_leat_eret Gos_don_orut_dál gos_du_eadni_lea_eret_adult gos_du_ahcci_lea_eret_adult gos_du_eadni_lea_eret_young gos_du_ahcci_lea_eret_young gos_du_eadni_lea_eret_child gos_du_ahcci_lea_eret_child ;
-
 MAP (&err-orthProp) TARGET LowercaseErr (*-1 QDL LINK 0 PLACENAME-QUESTION BARRIER Prop)(0 Plc) ;
 REMOVE LowercaseErr ;
 

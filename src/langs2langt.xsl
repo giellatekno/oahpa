@@ -28,7 +28,7 @@
   <!-- use only the first translation -->
   <xsl:variable name="modus" select="'only_one'"/>
   <xsl:param name="srcl" select="'sme'"/>
-  <xsl:param name="trgl" select="'swe'"/>
+  <xsl:param name="trgl" select="'nob'"/>
   
   <!-- Patterns for the feature values -->
   <xsl:variable name="output_format" select="'xml'"/>
