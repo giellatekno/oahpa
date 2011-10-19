@@ -608,6 +608,7 @@ class Numview(Gameview):
             for k in settings_form.default_data.keys():
                 if not self.settings.has_key(k):
                     self.settings[k] = settings_form.default_data[k]
+
             if clock:
                 GameClass = Clock
             else:

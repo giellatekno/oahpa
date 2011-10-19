@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from django.template import Context, loader
-from oahpa.drill.models import *
-from oahpa.drill.forms import *
+from nu_oahpa.nu_drill.models import *
+from nu_oahpa.nu_drill.forms import *
 from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404, render_to_response
@@ -10,6 +10,57 @@ from random import randint
 #from django.contrib.admin.views.decorators import _encode_post_data, _decode_post_data
 import os,codecs,sys,re
 
+def relax(strict):
+    """ Returns a list of relaxed possibilities, making changes by relax_pairs.
+
+    Many possibilities are generated in the event that users are
+    inconsistent in terms of substituting one letter but not substituting
+    another, however, *all* possibilities are not generated.
+
+    E.g., *ryøjnesjäjja is accepted for ryöjnesjæjja
+    (user types ø instead of ö consistently)
+
+    ... but ...
+
+      *töølledh is not accepted for töölledh
+      (user mixes the two in one word)
+
+      Similarly, directionality is included. <i> is accepted for <ï>, but
+      not vice versa.
+
+      E.g.:  *ååjmedïdh is not accepted for ååjmedidh,
+      ... but ...
+      *miele is accepted for mïele.
+      """
+    relaxed = strict
+    sub_str = lambda _string, _target, _sub: _string.replace(_target, _sub)
+
+    relax_pairs = {
+        # key: value
+        # key is accepted for value
+        u'ø': u'ö',
+        u'ä': u'æ',
+        u'i': u'ï'
+    }
+
+    # Create an iterator. We want to generate as many possibilities as
+    # possible (very fast), so more relaxed options are available.
+    searches = relax_pairs.items()
+    permutations = itertools.chain(itertools.permutations(searches))
+    perms_flat = sum([list(a) for a in permutations], [])
+
+    # Individual possibilities
+    relaxed_perms = [sub_str(relaxed, R, S) for S, R in perms_flat]
+
+    # Possibilities applied one by one
+    for S, R in perms_flat:
+        relaxed = sub_str(relaxed, R, S)
+        relaxed_perms.append(relaxed)
+
+    # Return list of unique possibilities
+    relaxed_perms = list(set(relaxed_perms))
+    return relaxed_perms
+    
 class Info:
     pass
 
@@ -372,7 +423,37 @@ class NumGame(Game):
         else:
             db_info['numeral_id'] = str(random_num)
         return db_info
-        
+
+    def generate_forms(self, forms, fstfile):
+        import subprocess
+        from threading import Timer
+
+        fstdir="/opt/smi/sme/bin"
+        # replaced variable language by sme
+        lookup = "/usr/local/bin/lookup"
+        gen_norm_fst = fstdir + "/" + fstfile
+        try:
+            open(gen_norm_fst)
+        except IOError:
+            raise Http404("File %s does not exist." % gen_norm_fst)
+
+        gen_norm_command = [lookup, "-flags", "mbTT", "-utf8",  "-d", gen_norm_fst]
+
+        num_proc = subprocess.Popen(gen_norm_command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        def kill_proc(proc=num_proc):
+            try:
+                proc.kill()
+                raise Http404("Process for %s took too long." % ''.join(gen_norm_command))
+            except OSError:
+                pass
+            return
+
+        t = Timer(5, kill_proc)
+        t.start()
+        output, err = num_proc.communicate(forms)
+
+        return output, err
+                
         
     def create_form(self, db_info, n, data=None):
 
@@ -387,7 +468,7 @@ class NumGame(Game):
         #lookup ="/Users/saara/bin/lookup"
         
         fstdir="/opt/smi/" + language + "/bin"
-        lookup = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
+        lookup = "/usr/local/bin/lookup"
         gen_norm_fst = fstdir + "/" + language + "-num.fst"
 
         gen_norm_lookup = "echo " + db_info['numeral_id'] + " | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
@@ -411,6 +492,7 @@ class Clock(NumGame):
         from random import choice
 
         hour = str(randint(0, 23))
+        mins = '00'
 
         if len(hour) == 1:
             hour = '0' + hour
@@ -447,10 +529,10 @@ class Clock(NumGame):
         # # need to extract accepted and nonaccepted, using
         # # an inverted int-clock-sma.fst
 
-        lookup = "%s\n\n%s+Use/NG\n" % (db_info['numeral_id'], db_info['numeral_id'])
+        lookupstr = "%s\n\n%s+Use/NG\n" % (db_info['numeral_id'], db_info['numeral_id'])
 
-        # lookup = "%s\n" % db_info['numeral_id']
-        output, err = self.generate_forms(lookup, fstfile)
+        # # lookup = "%s\n" % db_info['numeral_id']
+        output, err = self.generate_forms(lookupstr,fstfile)
 
         norm, allnum = output.split('\n\n')[0:2]
 

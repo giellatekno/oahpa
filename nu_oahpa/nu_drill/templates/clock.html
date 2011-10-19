@@ -1,0 +1,35 @@
+{% extends "num.html" %}
+{% load i18n %}
+
+{% block navbar %}
+{% with 'klokka' as gamename_nav %}
+	<ul class="sidelist">
+		<li {% ifequal gamename_nav "numra_cardinal" %} class="selected"{% endifequal %}><a href="{% url numra %}">{% trans 'Cardinals' %}</a></li>
+		<li {% ifequal gamename_nav "numra_ordinal" %} class="selected"{% endifequal %}><a href="{% url numra.ord %}">{% trans 'Ordinals' %}</a></li>
+		<li {% ifequal gamename_nav 'klokka' %} class="selected"{% endifequal %}><a href="{% url numra.klokka %}">{% trans 'Klokka' %}</a></li>
+		<li {% ifequal gamename_nav 'dato' %} class="selected"{% endifequal %}><a href="{% url numra.dato %}">{% trans 'Dato' %}</a></li>
+	</ul>
+{% endwith %}
+{% endblock %}
+
+{% block instructions %}
+  {% ifequal gametype "string" %}
+    {% trans "Enter the numeral. (Ex. 10:21)" %}
+  {% else %}
+    {% trans "Enter the time in North Sámi. (Ex. bealli guovttá)." %}
+  {% endifequal %}
+{% endblock %}
+
+
+{% block settings %}
+
+<ul id="settingsform">
+	<li><label for="id_{{ settingsform.gametype.name }}">{% trans "Select how many points of time to include." %}</label>
+		{{ settingsform.gametype }}</li>
+	<li><label for="id_{{ settingsform.numgame.name }}">{% trans "Select the direction" %}</label>{{ settingsform.numgame }}</li>
+</ul>
+
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+
+{% endblock %}
+

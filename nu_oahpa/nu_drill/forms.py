@@ -13,6 +13,7 @@ from models import *
 import time
 import datetime
 import socket
+from nu_drill.game import relax
 
 POS_CHOICES = (
     ('N', _('noun')),
@@ -133,7 +134,7 @@ FREQUENCY_CHOICES = (
 
 GEOGRAPHY_CHOICES = (
     ('world', _('world')),
-    ('s√°pmi', _('sapmi')),
+    ('s¬Å·pmi', _('sapmi')),
     ('suopma', _('suopma')),
 )
 
@@ -535,7 +536,7 @@ class QuizzQuestion(OahpaQuestion):
         self.generate_fields(30,30)
         self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
         self.lemma = word.lemma
-        oo = "√• "
+        oo = "¬ÅÂ "
         
         if word.pos == 'V' and transtype=="nobsme":
             self.lemma = oo.decode('utf-8') + force_unicode(self.lemma)
@@ -653,8 +654,8 @@ def select_words(self, qwords, awords):
 
 class KlokkaSettings(NumSettings):  # copied from smaoahpa
     gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
-    default_data = {'language' : 'nob', 'numlanguage' : 'sma', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'numeral'}
-    grammarlinkssma = Grammarlinks.objects.filter(language="sma")
+    default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'numeral'}
+    grammarlinkssme = Grammarlinks.objects.filter(language="sme")
     # grammarlinksno = Grammarlinks.objects.filter(language="no")
 
     def __init__(self, *args, **kwargs):
@@ -662,123 +663,119 @@ class KlokkaSettings(NumSettings):  # copied from smaoahpa
         super(KlokkaSettings, self).__init__(*args, **kwargs)
 
 
-        class KlokkaQuestion(NumQuestion):  # copied from smaoahpa
-            """
-            Questions for numeral quizz
-            """
-            def __init__(self, *args, **kwargs):
-                present_list = kwargs.get('present_list')
-                accept_list = kwargs.get('accept_list')
-                kwargs.pop('present_list')
-                kwargs.pop('accept_list')
+class KlokkaQuestion(NumQuestion):  # copied from smaoahpa
 
-                numeral = kwargs.get('numeral')
-                num_string = kwargs.get('num_string')
-                correct_val = kwargs.get('correct_val')
-                userans_val = kwargs.get('userans_val')
-                self.gametype = gametype = kwargs.get('gametype')
-                prefix = kwargs.get('prefix')
-                data = kwargs.get('data')
+    def __init__(self, *args, **kwargs):
+        present_list = kwargs.get('present_list')
+        accept_list = kwargs.get('accept_list')
+        kwargs.pop('present_list')
+        kwargs.pop('accept_list')
 
+        numeral = kwargs.get('numeral')
+        num_string = kwargs.get('num_string')
+        correct_val = kwargs.get('correct_val')
+        userans_val = kwargs.get('userans_val')
+        self.gametype = gametype = kwargs.get('gametype')
+        prefix = kwargs.get('prefix')
+        data = kwargs.get('data')
 
-                numeral_widget = forms.HiddenInput(attrs={'value' : numeral})
-                kwargs['correct_val'] = correct_val
-                self.userans_val = self.userans = userans_val
+        numeral_widget = forms.HiddenInput(attrs={'value' : numeral})
+        kwargs['correct_val'] = correct_val
+        self.userans_val = self.userans = userans_val
 
-                kwargs['num_list'] = present_list
-                super(KlokkaQuestion, self).__init__(*args, **kwargs)
+        kwargs['num_list'] = present_list
+        super(KlokkaQuestion, self).__init__(*args, **kwargs)
 
-                wforms = []
-                self.relaxings = []
-                # Initialize variables
-                if gametype == "string":
-                    self.init_variables(force_unicode(numeral), userans_val, [ numeral ])
-                    example = num_string
+        wforms = []
+        self.relaxings = []
+        # Initialize variables
+        if gametype == "string":
+            self.init_variables(force_unicode(numeral), userans_val, [ numeral ])
+            example = num_string
 
-                else:
-                    self.init_variables(force_unicode(accept_list), userans_val, present_list)
-                    wforms = sum([relax(force_unicode(item)) for item in accept_list], [])
-                    # need to subtract legal answers and make an only relaxed list.
-                    self.relaxings = [item for item in wforms if item not in accept_list]
-                    example = numeral
+        else:
+            self.init_variables(force_unicode(accept_list), userans_val, present_list)
+            wforms = sum([relax(force_unicode(item)) for item in accept_list], [])
+            # need to subtract legal answers and make an only relaxed list.
+            self.relaxings = [item for item in wforms if item not in accept_list]
+            example = numeral
 
-                    self.correct_anslist = self.correct_anslist + [force_unicode(f) for f in wforms]
+        self.correct_anslist = self.correct_anslist + [force_unicode(f) for f in wforms]
 
-                    self.fields['numeral_id'] = forms.CharField(widget=numeral_widget, required=False)
+        self.fields['numeral_id'] = forms.CharField(widget=numeral_widget, required=False)
 
-                    if gametype == "string":
-                        self.numstring = num_string
-                        self.numeral = numeral
+        if gametype == "string":
+            self.numstring = num_string
+        self.numeral = numeral
 
-                        self.is_correct("numra", example)
+        self.is_correct("numra", example)
 
-                        if correct_val:
-                            if correct_val == "correct":
-                                self.error = "correct"
-                                # relax
-                                if userans_val in self.relaxings:
-                                    self.is_relaxed = "relaxed"
-                                    self.strict = 'Strict form'
-                                elif userans_val in accept_list and userans_val not in present_list:
-                                    self.is_relaxed = "relaxed"
-                                    self.strict = 'Strict form'
-                                else:
-                                    self.is_relaxed = ""
+        if correct_val:
+            if correct_val == "correct":
+                self.error = "correct"
+            # relax
+            if userans_val in self.relaxings:
+                self.is_relaxed = "relaxed"
+                self.strict = 'Strict form'
+            elif userans_val in accept_list and userans_val not in present_list:
+                self.is_relaxed = "relaxed"
+                self.strict = 'Strict form'
+            else:
+                self.is_relaxed = ""
 
-                                    def relax_military(self, number):
-                                        """ Takes a string such as '08:00' or '20:00' and returns the opposite.
+    def relax_military(self, number):
+        """ Takes a string such as '08:00' or '20:00' and returns the opposite.
 
-                                        """
-                                        military = [
-                                            ('01', '13'),
-                                            ('02', '14'),
-                                            ('03', '15'),
-                                            ('04', '16'),
-                                            ('05', '17'),
-                                            ('06', '18'),
-                                            ('07', '19'),
-                                            ('08', '20'),
-                                            ('09', '21'),
-                                            ('10', '22'),
-                                            ('11', '23'),
-                                            ('12', '00'),
-                                            ]
-                                        reverse = [(b, a) for a, b in military]
+        """
+        military = [
+            ('01', '13'),
+            ('02', '14'),
+            ('03', '15'),
+            ('04', '16'),
+            ('05', '17'),
+            ('06', '18'),
+            ('07', '19'),
+            ('08', '20'),
+            ('09', '21'),
+            ('10', '22'),
+            ('11', '23'),
+            ('12', '00'),
+        ]
+        reverse = [(b, a) for a, b in military]
 
-                                        military_dict = dict(military + reverse)
+        military_dict = dict(military + reverse)
 
-                                        options = [number]
-                                        hh, _, mm = number.partition(':')
+        options = [number]
+        hh, _, mm = number.partition(':')
 
-                                        try:
-                                            switched = '%s:%s' % (military_dict[hh], mm)
-                                            options.append(switched)
-                                        except KeyError:
-                                            pass
-                                        return options
+        try:
+            switched = '%s:%s' % (military_dict[hh], mm)
+            options.append(switched)
+        except KeyError:
+            pass
+        return options
 
-                                    def is_correct(self, game, example=None):
-                                        if not self.is_valid():
-                                            return False
-                                        self.userans = self.cleaned_data['answer']
-                                        answer = self.userans.strip()
+    def is_correct(self, game, example=None):
+        if not self.is_valid():
+            return False
+        self.userans = self.cleaned_data['answer']
+        answer = self.userans.strip()
 
-                                        answer = answer.rstrip('.!?,')
+        answer = answer.rstrip('.!?,')
 
-                                        self.error = "error"
+        self.error = "error"
 
-                                        iscorrect = False
+        iscorrect = False
 
-                                        # if self.gametype != "string":
+        # if self.gametype != "string":
 
-                                        if any([':' in a for a in self.correct_anslist]):
-                                            self.correct_anslist = sum([self.relax_military(a) for a in self.correct_anslist], [])
+        if any([':' in a for a in self.correct_anslist]):
+            self.correct_anslist = sum([self.relax_military(a) for a in self.correct_anslist], [])
 
-                                            if answer in set(self.correct_anslist) or \
-                                               answer.lower() in set(self.correct_anslist) or \
+        if answer in set(self.correct_anslist) or answer.lower() in set(self.correct_anslist) or \
                                                answer.upper() in set(self.correct_anslist):
-                                                self.error = "correct"
-                                                iscorrect = True
+            self.error = "correct"
+            iscorrect = True
                                                 
 
 class ContextMorfaQuestion(OahpaQuestion):
@@ -1037,9 +1034,9 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
     messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
-    targetObj=re.compile(r'^.*\"(?P<targetString>[\w√°√Å√¶√Ü√•√Ö√°√Å≈°≈†≈ß≈¶≈ã≈ä√∏√òƒëƒê≈æZƒçƒå-]*)\".*dia-.*$', re.U)
+    targetObj=re.compile(r'^.*\"(?P<targetString>[\w¬Å·Å¡¬ÅÊÅ∆¬ÅÂÅ≈¬Å·Å¡¬úÙ°°¬úÙ°†¬¬úÙ°ß¬úÙ°¶¬¬úÙ†Î¬úÙ†Í¬¬Å¯Åÿ¬úÙ†±¬¬úÙ†∞¬úÙ°¬æZ¬úÙ†≠¬úÙ†¬¨-]*)\".*dia-.*$', re.U)
     # Extract the lemma	
-    constantObj=re.compile(r'^.*\"\<(?P<targetString>[\w√°√Å√¶√Ü√•√Ö√°√Å≈°≈†≈ß≈¶≈ã≈ä√∏√òƒëƒê≈æZƒçƒå-]*)\>\".*$', re.U)
+    constantObj=re.compile(r'^.*\"\<(?P<targetString>[\w¬Å·Å¡¬ÅÊÅ∆¬ÅÂÅ≈¬Å·Å¡¬úÙ°°¬úÙ°†¬¬úÙ°ß¬úÙ°¶¬¬úÙ†Î¬úÙ†Í¬¬Å¯Åÿ¬úÙ†±¬¬úÙ†∞¬úÙ°¬æZ¬úÙ†≠¬úÙ†¬¨-]*)\>\".*$', re.U)
     diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
 
     # Each wordform may have a set of tags.
@@ -1232,7 +1229,7 @@ def sahka_is_correct(self,utterance,targets,language):
     # Split the question to words for analaysis.
 
     self.messages, self.dia_messages, self.variables = self.vasta_is_correct(utterance.utterance, None, language, utterance.name)
-    #self.variables = [ "K√°r√°≈°johka" ]
+    #self.variables = [ "K¬Å·r¬Å·¬úÙ¬°¬°johka" ]
     #self.dia_messages = [ "dia-unknown" ]
 
     if not self.messages:
