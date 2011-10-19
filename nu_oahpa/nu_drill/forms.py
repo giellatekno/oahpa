@@ -13,7 +13,7 @@ from models import *
 import time
 import datetime
 import socket
-from nu_drill.game import relax
+from nu_oahpa.nu_drill.game import relax
 
 POS_CHOICES = (
     ('N', _('noun')),
