@@ -487,7 +487,7 @@ class NumGame(Game):
 
         return form, numstring
 
-class Clock(NumGame):
+class Klokka(NumGame):
 
     def get_db_info(self, db_info):
         from random import choice
@@ -574,6 +574,45 @@ class Clock(NumGame):
 
         return form, numstring
     
+class Dato(Klokka):
+    from forms import DatoQuestion as QuestionForm
+    # QuestionForm = DatoQuestion
+
+    generate_fst = 'idate-sme.fst'
+    answers_fst = 'date-sme.fst'
+
+    error_msg = "Dato.create_form: Database is improperly loaded, or Dato is unable to look up forms."
+
+    def get_db_info(self, db_info):
+        """ Going to need to subclass this because klokka generates the wrong thing.
+        Lookup format is DD.M.
+        Dato has no difficulty options.
+        """
+        from random import choice
+
+        def dayrange(x):
+            return range(1,x+1)
+
+        # List of tuples with all possible days
+        # built from (month, maxdays)
+
+        months = [(x, dayrange(y)) for x, y in [(1, 31),
+                                                (2, 29),
+                                                (3, 31),
+                                                (4, 30),
+                                                (5, 31),
+                                                (6, 30),
+                                                (7, 31),
+                                                (8, 31),
+                                                (9, 30),
+                                                (10, 31),
+                                                (11, 30),
+                                                (12, 31)]]
+        month, days = choice(months)
+
+        date = '%d.%d.' % (choice(days), month)
+        db_info['numeral_id'] = str(date)
+
 class QuizzGame(Game):
 
     def get_db_info(self, db_info):

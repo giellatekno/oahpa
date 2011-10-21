@@ -840,6 +840,32 @@ class KlokkaQuestion(NumQuestion):  # copied from smaoahpa
             self.error = "correct"
             iscorrect = True
                                                 
+# #
+#
+# Dato Forms
+#
+# #
+
+class DatoSettings(KlokkaSettings):
+    gametype = None # Disable gametype (easy, medium, hard)
+
+    default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'numgame': 'string'}
+
+# TODO: Relax answer format if number? Accept other things than DD.MM.?
+# DD.MM
+# DD/MM
+
+
+class DatoQuestion(KlokkaQuestion):
+
+    game_log_name = "dato"
+
+    def answer_relax(self, answer):
+        """ TODO: any need to relax the date?
+        TODO: perhaps relax MM.DD. to MM.D. if one digit is a zero?
+        """
+
+        return answer
 
 class ContextMorfaQuestion(OahpaQuestion):
     """

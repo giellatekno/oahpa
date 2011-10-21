@@ -1,0 +1,36 @@
+{% extends "num.html" %}
+{% load i18n %}
+
+{% block navbar %}
+<ul id="sidebar">
+<li><a href="/nu_oahpa/numra/">{% trans 'Cardinals' %}</li>
+<li><a href="/nu_oahpa/numra_ord/">{% trans 'Ordinals' %}</li>
+<li><a href="/nu_oahpa/numra_clock/">{% trans 'Clock' %}</li>
+<li class="selected">{% trans 'Date' %}</li>
+</ul>
+{% endblock %}
+
+
+
+{% block instructions %}
+  {# TODO: strings for instructions. #}
+  {% ifequal gametype "string" %}
+    {% trans "Enter the date in numerals (ex. 17.8.)" %}
+  {% else %}
+    {% trans "Enter the date in North Sámi." %}
+  {% endifequal %}
+{% endblock %}
+
+
+{% block settings %}
+
+{% trans "Expression of dates numeric to words or vice versa." %}
+<ul id="settingsform">
+	<li>{{ settingsform.numgame }}</li>
+</ul>
+
+<input type="submit" name="settings" value="{% trans "New set" %}" />
+
+{% endblock %}
+
+

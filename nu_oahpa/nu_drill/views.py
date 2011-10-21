@@ -553,7 +553,7 @@ def quizz(request):
     trackGrade('Leksa-N', request, c)
     return render_to_response('quizz.html', c, context_instance=RequestContext(request))
 
-
+""" This is the old version
 class Numview(Gameview):
     
     def create_numgame(self,request, clock=False):
@@ -578,14 +578,14 @@ class Numview(Gameview):
             if request.session.has_key('django_language'):
                 self.settings['language'] = request.session['django_language']
             else:
-                self.settings['language'] = request.COOKIES.get("django_language", None)
+                self.settings['language'] = request.COOKIES.get('django_language', None)
             if clock:
                 GameClass = Clock
             else:
                 GameClass = NumGame
             game = GameClass(self.settings)
                 
-            if "settings" in data:
+            if 'settings' in data:
                 game.new_game()
             else:
                 game.check_game(data)
@@ -593,7 +593,7 @@ class Numview(Gameview):
 
             if 'test' in data:
                 game.count=1
-            if "show_correct" in data:
+            if 'show_correct' in data:
                 game.show_correct = 1
 
         
@@ -632,7 +632,7 @@ class Numview(Gameview):
             })
         return c
 
-def num_clock(request): # taken over from smaoahpa
+def num_clock(request):
 
     numgame = Numview()
     numgame.init_settings()
@@ -642,6 +642,17 @@ def num_clock(request): # taken over from smaoahpa
 
     # trackGrade('Numra clock', request, c)
     return render_to_response('clock.html', c, context_instance=RequestContext(request))
+
+def dato(request): # from smaoahpa on victorio
+
+    datogame = Numview()
+    # In the parentheses was DatoSettings, dato in smaoahpa. But Numview is also different in the new smaoahpa
+    datogame.init_settings()
+
+    c = datogame.create_numgame(request, clock=False)
+
+    return render_to_response('dato.html', c, context_instance=RequestContext(request))
+                                
                         
 def num(request):
 
@@ -660,6 +671,112 @@ def num_ord(request):
     
     c = numgame.create_numgame(request)
     return render_to_response('num_ord.html', c, context_instance=RequestContext(request))
+"""
+
+class Numview(Gameview):
+    def __init__(self, settingsclass, gameclass):
+        self.SettingsClass = settingsclass
+        self.GameClass = gameclass
+
+    def create_numgame(self, request):
+        if request.method == 'POST':
+            data = request.POST.copy()
+
+            # Settings form is checked and handled.
+            settings_form = self.SettingsClass(data)
+
+            for k in settings_form.data.keys():
+                if not self.settings.has_key(k):
+                    self.settings[k] = settings_form.data[k]
+
+            if request.session.has_key('dialect'):
+                self.settings['dialect'] = request.session['dialect']
+
+            if hasattr(request, 'LANGUAGE_CODE'):
+                self.settings['language'] = request.LANGUAGE_CODE
+
+            game = self.GameClass(self.settings)
+
+            if "settings" in data:
+                game.new_game()
+            else:
+                game.check_game(data)
+                game.get_score(data)
+
+            if 'test' in data:
+                game.count=1
+
+            if "show_correct" in data:
+                game.show_correct = 1
+
+        # If there is no POST data, default settings are applied
+        else:
+            settings_form = self.SettingsClass()
+
+            for k in settings_form.default_data.keys():
+                if not self.settings.has_key(k):
+                    self.settings[k] = settings_form.default_data[k]
+            game = self.GameClass(self.settings)
+            game.new_game()
+
+        c = Context({
+                'settingsform': settings_form,
+                'forms': game.form_list,
+                'count': game.count,
+                'score': game.score,
+                'comment': game.comment,
+                'all_correct': game.all_correct,
+                'show_correct': game.show_correct,
+                'gametype': self.settings['numgame'],
+                # 'numstring': numstring,
+        })
+        return c
+
+#The individual Numra games:
+
+# Klokka
+def num_clock(request):
+
+    numgame = Numview(KlokkaSettings, Klokka)
+    numgame.init_settings()
+    # numgame.settings['gametype'] = clocktype
+
+    c = numgame.create_numgame(request)
+
+    # trackGrade('Numra clock', request, c)
+    return render_to_response('clock.html', c, context_instance=RequestContext(request))
+
+# Ordinals
+def num_ord(request):
+
+    numgame = Numview(NumSettings, NumGame)
+    numgame.init_settings()
+    numgame.settings['gametype'] = "ord"
+    
+    numgame.create_numgame(request)
+    # trackGrade('Numra ordinal', request, c)
+
+    return render_to_response('num_ord.html', c, context_instance=RequestContext(request))
+
+# Cardinals                                                                                          
+def num(request):
+    numgame = Numview(NumSettings, NumGame)
+    numgame.init_settings()
+    numgame.settings['gametype'] = "card"
+
+    c = numgame.create_numgame(request)
+
+    # trackGrade('Numra', request, c)
+
+    return render_to_response('num.html', c, context_instance=RequestContext(request))
+                                                                                     
+# Dato
+def dato(request): # from smaoahpa on victorio
+    datogame = Numview(DatoSettings, Dato)
+    datogame.init_settings()
+    c = datogame.create_numgame(request)
+
+    return render_to_response('dato.html', c, context_instance=RequestContext(request))
 
 class Sahkaview:
 
