@@ -753,7 +753,7 @@ def num_ord(request):
     numgame.init_settings()
     numgame.settings['gametype'] = "ord"
     
-    numgame.create_numgame(request)
+    c = numgame.create_numgame(request)
     # trackGrade('Numra ordinal', request, c)
 
     return render_to_response('num_ord.html', c, context_instance=RequestContext(request))

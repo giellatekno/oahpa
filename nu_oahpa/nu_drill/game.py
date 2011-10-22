@@ -522,10 +522,10 @@ class Klokka(NumGame):
         if self.settings['gametype'] in ["kl1", "kl2", "kl3"]:
             language = 'sme'
 
-            numstring = ""
+        numstring = ""
 
-            fstfile = "iclock-sme.fst"
-            q, a = 0, 1
+        fstfile = "iclock-sme.fst"
+        q, a = 0, 1
 
         # # need to extract accepted and nonaccepted, using
         # # an inverted int-clock-sma.fst

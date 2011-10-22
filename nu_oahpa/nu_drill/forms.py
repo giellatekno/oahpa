@@ -14,6 +14,7 @@ from models import *
 import time
 import datetime
 import socket
+import itertools
 #from game import relax
 
 POS_CHOICES = (
@@ -218,9 +219,8 @@ DIALOGUE_CHOICES = (
     ('shopadj', _('Shopadj')),
 )
 
-"""
 def relax(strict):
-    Returns a list of relaxed possibilities, making changes by relax_pairs.
+    """Returns a list of relaxed possibilities, making changes by relax_pairs.
 
     Many possibilities are generated in the event that users are
     inconsistent in terms of substituting one letter but not substituting
@@ -240,16 +240,16 @@ def relax(strict):
       E.g.:  *ÂååjmedÂïdh is not accepted for Âååjmedidh,
       ... but ...
       *miele is accepted for mÂïele.
-      
+    """  
     relaxed = strict
     sub_str = lambda _string, _target, _sub: _string.replace(_target, _sub)
 
     relax_pairs = {
         # key: value
         # key is accepted for value
-        u'Âø': u'Âö',
-        u'Âä': u'Âæ',
-        u'i': u'Âï'
+        u'Ã¸': u'Ã¶',
+        u'Ã¤': u'Ã¦',
+        u'i': u'Ã¯'
     }
 
     # Create an iterator. We want to generate as many possibilities as
@@ -267,9 +267,9 @@ def relax(strict):
         relaxed_perms.append(relaxed)
 
         # Return list of unique possibilities
-        relaxed_perms = list(set(relaxed_perms))
-        return relaxed_perms
-    """
+    relaxed_perms = list(set(relaxed_perms))
+    return relaxed_perms
+
     
 def is_correct(self, game, example=None):
     """
@@ -757,7 +757,7 @@ class KlokkaQuestion(NumQuestion):  # copied from smaoahpa
 
         else:
             self.init_variables(force_unicode(accept_list), userans_val, present_list)
-            wforms = sum([item for item in accept_list],[])
+            wforms = sum([relax(force_unicode(item)) for item in accept_list],[])
             # tog bort relax[force_unicode(item) for item in accept_list]
             # need to subtract legal answers and make an only relaxed list.
             self.relaxings = [item for item in wforms if item not in accept_list]
