@@ -1,386 +1,393 @@
 !!!Reversert tabell over dict-adjektiv - OBS! arbeidsliste for debugging
 
-Testdato: man 10 okt 2011 20:47:36 CEST
-||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom  || Sg Acc
-| kruana | kruana | kruana | kruenebe, kråanebe | kroenemes, kråanemes | -
-| mïrhkekruana | mïrhkekruana | mïrhkekruana | - | - | -
-| gåvva | gåvva | gåvva | - | - | -
-| minngebe | - | - | - | - | -
-| evtebe | - | - | evtebe | evtemes | -
-| rudtjege | rudtjege | rudtjege | rudtjebe, rudtjegåbpoe | rudtjemes, rudtjegommes | rudtjegem
-| madtege | madtege | madtege | - | - | madtegem
-| ovnuvhtege | ovnuvhtege | ovnuvhtege | - | - | ovnuvhtegem
-| tjalmerge | tjalmerge | tjalmerge | tjalmargåbpoe | tjalmargommes | tjalmergem
-| tjaalaldihkie | tjaalaldihkie | tjaalaldihkie | - | - | tjaalaldihkiem
-| gaptjeldihkie | gaptjeldihkie | gaptjeldihkie | - | - | gaptjeldihkiem
-| sleehpeldihkie | sleehpeldihkie | sleehpeldihkie | - | - | sleehpeldihkiem
-| gåårveldihkie | gåårveldihkie | gåårveldihkie | - | - | gåårveldihkiem
-| gejhkie | gejhkie | gejhkie | gejhkebe | gejhkemes | gejhkiem
-| åemie | åemie | - | - | - | -
-| vaenie | vaenie | vaenie | vaenebe | vaenemes | vaeniem
-| buerie | buerie | buerie | buerebe | bööremes | bueriem
-| ovmessie | ovmessie | ovmessie | - | - | ovmessiem
-| bissie | bissie | bissie | bissebe | bissemes | bissiem
-| åålije | åålije | åålijes, åålije | åålijåbpoe | åålijommes | åålijem
-| båetije | båetije | - | - | - | -
-| jeenje | jeenje | jeenje | jeenjebe | jeenjemes | jeenjem
-| jïjnje | jïjnje | jïjnje | jïjnjebe | jïjnjemes | jïjnjem
-| læhkoeladtje | læhkoeladtje | læhkoeladtje | - | - | læhkoeladtjem
-| dejpeladtje | dejpeladtje | dejpeladtje | - | - | dejpeladtjem
-| gyjhteladtje | gyjhteladtje | gyjhteladtje | gyjhtelåbpoe | gyjhtelommes | gyjhteladtjem
-| jealamadtje | - | jealamadtje | - | - | jealamadtjem
-| gïelehtadtje | - | gïelehtadtje | - | - | gïelehtadtjem
-| beajjetje | beajjetje | - | - | - | -
-| daanbeajjetje | daanbeajjetje | - | - | - | -
-| fïerhtenbeajjetje | fïerhtenbeajjetje | - | - | - | -
-| daaletje | daaletje | - | - | - | -
-| dovletje | dovletje | dovletje | - | - | dovletjem
-| sablehtje | sablehtje | sablehtje | - | - | sablehtjem
-| maehtehtje | maehtehtje | maehtehtje | - | - | maehtehtjem
-| raavtehtje | raavtehtje | raavtehtje | - | - | raavtehtjem
-| plïehtje | plïehtje | plïehtje | - | - | -
-| ohtje | ohtje | ohtje | uhtjebe | uhtjemes | ohtjem
-| snjaltje | snjaltje | - | - | - | -
-| skïemtje | skïemtje | skïemtjes | skïemtjebe, skïemtjesåbpoe | skïemtjemes, skïemtjesommes | skïemtjem, skïemtjesem
-| jovje | jovje | jovje | jovjebe | jovjemes | jovjem
-| nåake | nåake | nåake | vearrebe, vïerrebe, nåakebe | veerremes, vearremes, vïerremes, nåakemes | nåakem
-| byögke | byögke | byögkes | byögkebe, byögkesåbpoe | byögkemes, byögkesommes | byögkem, byögkesem
-| baahke | baahke | baahkes | baahkebe, baahkesåbpoe | baahkemes, baahkesommes | baahkem, baahkesem
-| sjyjjehke | sjyjjehke | sjyjjehke | sjyjjehkåbpoe | sjyjjehkommes | sjyjjehkem
-| bååktjehke | - | bååktjehke | bååktjehkåbpoe | bååktjehkommes | bååktjehkem
-| govjehke | govjehke | govjehke | govjehkåbpoe | govjehkommes | govjehkem
-| byögkehke | byögkehke | byögkehke | byögkehkåbpoe | byögkehkommes | byögkehkem
-| tjetskehke | tjetskehke | tjetskehke | tjetskiehkåbpoe | tjetskiehkommes | tjetskehkem
-| aajnehke | aajnehke | aajnehke | aajnehkåbpoe | aajnehkommes | aajnehkem
-| vååvnehke | vååvnehke | vååvnehke | vååvnehkåbpoe | vååvnehkommes | vååvnehkem
-| njaarpehke | njaarpehke | njaarpehke | njaarpahkåbpoe | njaarpahkommes | njaarpehkem
-| naarpehke | naarpehke | naarpehke | naarpahkåbpoe | naarpahkommes | naarpehkem
-| aarehke | aarehke | aarehke | aarehkåbpoe | aarehkommes | aarehkem
-| aavrehke | aavrehke | aavrehke | aavrehkåbpoe | aavrehkommes | aavrehkem
-| dovhtehke | dovhtehke | dovhtehke | dovhtehkåbpoe | dovhtehkommes | dovhtehkem
-| eadtjohke | eadtjohkes, eadtjohke | eadtjohkes | eadtjoehkåbpoe | eadtjoehkommes | eadtjohkem
-| våalohke | våalohke | våalohke | våaloehkåbpoe | våaloehkommes | våalohkem
-| prarrohke | prarrohke | prarrohke | prarroehkåbpoe | prarroehkommes | prarrohkem
-| mïevhke | mïevhke | mïevhkes | mïevhkebe, mïevhkesåbpoe | mïevhkemes, mïevhkesommes | mïevhkem, mïevhkesem
-| myövhke | myövhke | myövhkes | myövhkebe, myövhkesåbpoe | myövhkemes, myövhkesommes | myövhkem, myövhkesem
-| jalke | jalke | jalke | jalkebe | jalkemes | jalkem
-| tjïelke | tjïelkes, tjïelke | tjïelkes, tjyölkehke | tjïelkåbpoe, tjyölkehkåbpoe | tjïelkommes, tjyölkehkommes | tjïelkem, tjyölkehkem
-| tjamke | tjamke | tjamke | tjamkebe | tjamkemes | tjamkem
-| gearkeske | gearkeske | gearkeske | gearkaskåbpoe | gearkaskommes | gearkeskem
-| fïerske | fïerske | fïerske, fïerskese | fïerskebe, fïerskesåbpoe | fïerskemes, fïerskesommes | fïerskem, fïerskesem
-| tsåatske | tsåatske, tsåatskes | tsåatskes | tsåatskebe, tsåatskesåbpoe | tsåatskemes, tsåatskesommes | tsåatskem, tsåatskesem
-| heejle | heejle | - | - | - | -
-| jolle | jolle | jolle, jollehke | jollebe, jollehkåbpoe | jollemes, jollehkommes | jollem, jollehkem
-| jïlle | jïlle | jïlle | jillebe | jillemes | jïllem
-| tjöölle | tjöölle | tjöölle | tjööllebe | tjööllemes | tjööllem
-| jaame | jaame | jaames | - | - | jaamem
-| sïejhme | sïejhme | sïejhme | sïejhmebe | sïejhmemes | sïejhmem
-| galme | galme | galmes | galmebe, galmesåbpoe | galmemes, galmesommes | galmem, galmesem
-| tovme | tovme | tovmes | tovmebe | tovmemes | tovmem
-| feejjene | feejjene, feejjen, fööjjen | feejjene, feejjen, fööjjen | feejjenåbpoe | feejjenommes | feejjenem
-| geerjene | - | geerjene | - | - | -
-| hååkene | - | hååkene | - | - | -
-| girvene | - | girvene | - | - | -
-| lïene | lïene | lïenes | lïenebe, lïenesåbpoe | lïenemes, lïenesommes | lïenem, lïenesem
-| onne | onne | onne | onnebe, unnebe | onnemes, unnemes | onnem, unniem
-| provne | provne | provnes | provnebe | provnemes | provnem
-| jorpe | jorpe | jorpehke, jorpe | jorpehkåbpoe, jorpebe | jorpehkommes, jorpemes | jorpehkem
-| praare | praare | praares | praarebe, praaresåbpoe | praaremes, praaresommes | praarem, praaresem
-| njoere | njoere | njoeres | njoerebe | njoeremes | njoerem
-| noere | noere | noere | nuerebe | nööremes | noerem
-| stoere | stoerre, stoere | stoerre, stoere | stuerebe | stööremes | stoerrem, stoerem
-| måasere | måasere | måasere | måasaråbpoe | måasarommes | måaserem
-| aalvere | aalvere | aalvere | aalveråbpoe | aalverommes | aalverem
-| sjïere | sjïere | sjïere | sjïerebe | sjïeremes | sjïerem
-| garre | garre | garres | garresåbpoe, garrebe | garresommes, garremes | garresem
-| orre | orre | orre | urrebe, orrebe | urremes, orremes | orrem
-| ovmese | ovmese | - | - | - | -
-| gïsse | gïsse | gïsse, gïssege | gissebe | gissemes | gïssem
-| spaajhte | spaajhte | spaajhte | spaajhtebe | spaajhtemes | spaajhtem
-| rïekte | rïekte | rïektes | rïektebe, rïektesåbpoe | rïektemes, rïektesommes | rïektem, rïektesem
-| gamte | gamte | gamte, gamtege | gemtebe | gemtemes | gamtem
-| plaave | plaave | plaave, plaaves | plaavebe | plaavemes | plaavem
-| smaave | smaave | smaave, smaaves | smaavebe | smaavemes | smaavem
-| dïeve | dïeve | dïeves | dïevebe, dïevesåbpoe | dïevemes, dïevesommes | dïevem, dïevesem
-| geerve | geerve | geerve | giervebe, geervebe | giervemes, geervemes | geervem
-| lovve | lovves, lovve | lovves | lovvesåbpoe | lovvesommes | lovvesem
-| njåajjah | njåajjah | njåajjan | njåajjahkåbpoe | njåajjahkommes | -
-| vælnjah | vælnjah | vælnjan | vælnjahkåbpoe | vælnjahkommes | -
-| vealah | vealah | vealan | - | - | -
-| skuallah | skuallah | skuallan | skuallahkåbpoe | skuallahkommes | -
-| sleagrah | sleagrah | sleagran | sleagrahkåbpoe | sleagrahkommes | -
-| båadtsah | båadtsah | båadtsan | båadtsahkåbpoe | båadtsahkommes | -
-| njaalmeldh | njaalmeldh | - | - | - | -
-| njoetseldh | - | njoetseldh | - | - | -
-| sjeavodh | sjeavodh | sjeavodh | sjeavoedåbpoe | sjeavoedommes | sjeavodem
-| gyvjeh | gyvjeh | gyvjehke | gyvjehkåbpoe | gyvjehkommes | gyvjehkem
-| gåffoeh | gåffoeh | gåffoeh | gåffoehkåbpoe | gåffoehkommes | -
-| gæbjoeh | gæbjoeh | gæbjan | gæbjoehkåbpoe | gæbjoehkommes | -
-| njåajjoeh | njåajjoeh | njåajjan | njåajjoehkåbpoe | njåajjoehkommes | -
-| ealjoeh | ealjoeh | ealjoeh | ealjoehkåbpoe | ealjoehkommes | -
-| vælnjoeh | vælnjoeh | vælnjan | vælnjoehkåbpoe | vælnjoehkommes | -
-| gaavnjoeh | gaavnjoeh | gaavnjoeh | - | - | -
-| tjåadtjoeh | tjåadtjoeh | tjåadtjan | - | - | -
-| kranhtjoeh | kranhtjoeh | kranhtjan | kranhtjoehkåbpoe | kranhtjoehkommes | -
-| snjåhtjoeh | snjåhtjoeh | snjåhtjan | snjåhtjoehkåbpoe | snjåhtjoehkommes | -
-| gæhtjoeh | gæhtjoeh | gæhtjoeh, gyhtjehke | gæhtjoehkåbpoe, gyhtjehkåbpoe | gæhtjoehkommes, gyhtjehkommes | gyhtjehkem
-| båavjoeh | båavjoeh | båavjan | båavjoehkåbpoe | båavjoehkommes | -
-| låagkoeh | låagkoeh | låagkoeh | låagkoehkåbpoe | låagkoehkommes | -
-| gåangkoeh | gåangkoeh | gåangkan | gåangkoehkåbpoe | gåangkoehkommes | -
-| neahkoeh | neahkoeh | - | - | - | -
-| jåalhkoeh | jåalhkoeh | jåalhkoeh | jåalhkoehkåbpoe | jåalhkoehkommes | -
-| tsåalhkoeh | tsåalhkoeh | tsåalhkoeh, tsåalhkan | tsåalhkahkåbpoe, tsåalhkoehkåbpoe | tsåalhkahkommes, tsåalhkoehkommes | -
-| krænkoeh | krænkoeh | krænkan | krænkoehkåbpoe | krænkoehkommes | -
-| dearkoeh | dearkoeh | dearkoeh | dearkoehkåbpoe | dearkoehkommes | -
-| skualloeh | skualloeh | skuallan | skualloehkåbpoe | skualloehkommes | -
-| gælloeh | gælloeh | gællan | - | - | -
-| låabpoeh | låabpoeh | - | - | - | -
-| tjålhpoeh | tjålhpoeh | tjålhpoeh | tjålhpoehkåbpoe | tjålhpoehkommes | -
-| nåmhpoeh | nåmhpoeh | nåmhpan, nåmhpoeh | - | - | -
-| tråmhpoeh | tråmhpoeh | tråmhpoeh | tråmhpoehkåbpoe | tråmhpoehkommes | -
-| jarhpoeh | jarhpoeh | jarhpan | jarhpoehkåbpoe | jarhpoehkommes | -
-| sleagroeh | sleagroeh | sleagran | sleagroehkåbpoe | sleagroehkommes | -
-| gårroeh | gårroeh | - | - | - | -
-| pleasoeh | pleasoeh | pleasan, pleasoen | pleasoehkåbpoe | pleasoehkommes | -
-| jåasoeh | jåasoeh | jåasan | jåasoehkåbpoe, jåasebe | jåasoehkommes, jåasemes | -
-| båadtsoeh | båadtsoeh | båadtsan | båadtsoehkåbpoe | båadtsoehkommes | -
-| harhtsoeh | harhtsoeh | harhtsoeh | harhtsoehkåbpoe | harhtsoehkommes | -
-| klåadtoeh | klåadtoeh | klåadtan | klåadtoehkåbpoe | klåadtoehkommes | -
-| båajhtoeh | båajhtoeh | båajhtoeh | - | - | -
-| åajvoeh | åajvoeh | åajvoeh | åajvebe, åajvoehkåbpoe | åajvemes, åajvoehkommes | -
-| aareh | aarh, aareh | aarh, aareh, aares | aaregåbpoe, aarebe, aarehkåbpoe | aaregommes, aaremes, aarehkommes | -
-| sjeavohth | - | sjeavohth | sjeavoehthåbpoe | sjeavoehthommes | -
-| eensi | eensi | eensi | eensigåbpoe | eensigommes | -
-| slahtjan | slahtjan | slahtjan | - | - | -
-| nåajsan | nåajsan | nåajsan | - | - | -
-| baanhtsan | - | baanhtsan | - | - | -
-| madtan | madtan | madtan | - | - | -
-| mådtan | mådtan | mådtan | - | - | -
-| nuarvan | - | nuarvan | - | - | -
-| gaajhkenjevlien | gaajhkenjevlien | gaajhkenjevlien | - | - | -
-| nahkeren | - | nahkeren | nahkeråbpoe | nahkerommes | -
-| hijven | hijven | hijven | - | - | -
-| gallas | gallas | gallasadtje, gallasodtje | - | - | gallasadtjem, gallasodtjem
-| barras | barras | barras, barran | barrasåbpoe | barrasommes | -
-| bårras | bårras | bårras, bårran | bårrasåbpoe | bårrasommes | -
-| sjuevnjeds | sjuevnjeds | sjuevnjede, sjuevnjeds | sjuevnjiedåbpoe | sjuevnjiedommes | sjuevnjedem
-| jalkeds | jalkeds | jalkede, jalkeds | jalkedåbpoe | jalkedommes | jalkedem
-| lïemkeds | lïemkeds | lïemkede | lïemkedåbpoe | lïemkedommes | lïemkedem
-| tjuavkeds | tjuavkeds | tjuavkede | tjuavkadåbpoe | tjuavkadommes | tjuavkedem
-| murreds | murreds | murrede | murriedåbpoe | murriedommes | murredem
-| bihtseds | bihtseds | bihtsede | bihtsiedåbpoe | bihtsiedommes | bihtsedem
-| giefies | giefies | giefie | giefebe | giefemes | giefiem
-| raeffies | raeffies | raeffies | raeffebe | raeffemes | raeffiem
-| suejies | suejies | suejies | - | - | suejiem
-| geljies | geljies | geljie, geljies | geljebe | geljemes | geljiem
-| viesjies | viesjies | viesjie | viesjebe | viesjemes | viesjiem
-| låedtjies | låedtjies | låedtjie | låedtjebe | låedtjemes | låedtjiem
-| miehtjies | miehtjies | miehtjies | miehtjebe | miehtjemes | miehtjiem
-| gaertjies | gaertjies | gaertjie, gåårtjehke | gaertjebe, gåårtjehkåbpoe | gaertjemes, gåårtjehkommes | gaertjiem, gåårtjehkem
-| nåekies | nåekies, nåekie | nåekies | nåekebe | nåekemes | nåekiem
-| siegkies | siegkies | siegkie, siegkies | siegkebe | siegkemes | siegkiem
-| pliejhkies | pliejhkies | pliejhkies, plyöjhkehke | pliejhkebe, plyöjhkehkåbpoe | pliejhkemes, plyöjhkehkommes | pliejhkiem, plyöjhkehkem
-| aelhkies | aelhkies | aelhkie | aelhkebe | aelhkemes | aelhkiem
-| guhkies | guhkies | guhkie, guhkies | guhkebe | guhkemes | guhkiem
-| aevhkies | aevhkies | aevhkies | aevhkebe | aevhkemes | aevhkiem
-| saejkies | saejkies | saejkie, saejkies | saejkebe | saejkemes | saejkiem
-| baetjkies | baetjkies | baetjkie, baetjkies | baetjkebe | baetjkemes | baetjkiem
-| njaelkies | njaelkies | njaelkie, njåålkehke | njaelkebe, njåålkehkåbpoe | njaelkemes, njåålkehkommes | njaelkiem, njåålkehkem
-| åelkies | åelkies | - | - | - | -
-| aerkies | aerkies | aerkie, aerkies | aerkebe | aerkemes | aerkiem
-| jueskies | jueskies | jueskie | jueskebe | jueskemes | jueskiem
-| gietskies | gietskies | gietskie | gietskebe | gietskemes | gietskiem
-| aejlies | aejlies | aejlie, aejlies | - | - | aejliem
-| ellies | ellies | - | - | - | -
-| mullies | mullies | mullie, mullies | mullebe | mullemes | mulliem
-| daemies | daemies | daemies | - | - | daemiem
-| laemies | laemies | laemie, laemies | - | - | laemiem
-| elmies | elmies | elmies | - | - | elmesem
-| aelmies | aelmies | aelmies | - | - | aelmiem
-| rupmies | rupmies | rupmie, rupmies | rupmebe | rupmemes | rupmiem
-| raejnies | raejnies | raejnie | raejnebe | raejnemes | raejniem
-| hujnies | hujnies | hujnien | hujniesåbpoe | hujniesommes | -
-| saetnies | saetnies | saatna, saatnan | - | - | -
-| tjaebpies | tjaebpies | tjaebpie, tjaebpies, tjååbpehke | tjaebpebe, tjååbpehkåbpoe | tjaebpemes, tjååbpehkommes | tjaebpiem, tjååbpehkem
-| kruepies | kruepies | kruepies, krååpehke | kruepebe, krååpehkåbpoe | kruepemes, krååpehkommes | kruepiem, krååpehkem
-| tjiehpies | tjiehpies | tjiehpie, tjiehpies | tjiehpebe | tjiehpemes | tjiehpiem
-| åehpies | åehpies | åehpie | åehpebe, åahpatjåbpoe | åehpemes, åahpatjommes | åehpiem
-| kraejhpies | kraejhpies | kraejhpie | kraejhpebe | kraejhpemes | kraejhpiem
-| aelpies | aelpies | aelpies | aelpebe | aelpemes | aelpiem
-| daerpies | daerpies | daerpies | - | - | daerpiem
-| tjuerpies | tjuerpies | tjuerpie, tjuerpies | tjuerpebe | tjuerpemes | tjuerpiem
-| klaeries | klaeries | klaerie | klaerebe | klaeremes | klaeriem
-| staeries | staeries | staaran | - | - | -
-| gieries | gieries | gearehke | gearahkåbpoe | gearahkommes | gieriem
-| båeries | båeries | båeries | båarasåbpoe | båarasommes | -
-| riejries | riejries | riejries | - | - | riejriem
-| vijries | vijries | vijries | vijrebe | vijremes | vijriem
-| vijsies | vijsies | vijsies, væjsehke, vyjsehke | vijsebe, væjsehkåbpoe, vyjsehkåbpoe | vijsemes, væjsehkommes, vyjsehkommes | vijsiem, væjsehkem, vyjsehkem
-| giedtsies | giedtsies | giedtsie, gyödtsehke | giedtsebe, gyödtsehkåbpoe | giedtsemes, gyödtsehkommes | giedtsiem, gyödtsehkem
-| sieties | sieties | sietie, sieties | sietebe | sietemes | sietiem
-| liehties | liehties | liehties, lyöhtehke | liehtebe, lyöhtehkåbpoe | liehtemes, lyöhtehkommes | liehtiem, lyöhtehkem
-| vihties | vihties | vihtie | - | - | vihtiem
-| saelhties | saelhties | saelhtie, saelhties | saelhtebe | saelhtemes | saelhtiem
-| guelhties | guelhties | guelhtie | guelhtebe | guelhtemes | guelhtiem
-| plievhties | plievhties | plievhtie | plievhtebe | plievhtemes | plievhtiem
-| duvhties | duvhties | duvhties, dovhtehke | duvhtebe, dovhtehkåbpoe | duvhtemes, dovhtehkommes | duvhtiem, dovhtehkem
-| låemties | låemties | låemtie | låemtebe | låemtemes | låemtiem
-| vesties | vesties | vestie | vestebe | vestemes | vestiem
-| tjevties | tjevties | tjevtie, tjevties, tjavtehke, tjovtehke | tjevtebe, tjavtehkåbpoe, tjovtehkåbpoe | tjevtemes, tjavtehkommes, tjovtehkommes | tjevtiem, tjavtehkem, tjovtehkem
-| kraevies | kraevies | kraevie, kraevies | kraevebe | kraevemes | kraeviem
-| gaelhvies | gaelhvies | gaelhvie, gaelhvies | gaelhvebe | gaelhvemes | gaelhviem
-| vaejvies | vaejvies | vaejvie, vaejvies | vaejvebe | vaejvemes | vaejviem
-| dulvies | dulvies | dulvies, dolvehke | dulviesåbpoe, dolvehkåbpoe | dulviesommes, dolvehkommes | dolvehkem
-| gaervies | gaervies | gaervies | - | - | gaerviem
-| vervies | vervies | - | - | - | -
-| gualijes | gualijes, gualijs | gualije | gualajåbpoe | gualajommes | gualijem
-| dåajmijes | dåajmijes, dåajmijs | dåajmije | dåajmijåbpoe | dåajmijommes | dåajmijem
-| jearmijes | jearmijes, jearmijs | jearmije | jearmijåbpoe | jearmijommes | jearmijem
-| jïermijes | jïermijes, jïermijs | jïermije | jïermijåbpoe | jïermijommes | jïermijem
-| jassijes | jassijes, jassijs | jassije | jassajåbpoe | jassajommes | jassijem
-| byjjes | byjjes | byjjes | - | - | byjjesem
-| tryjjes | tryjjes | tryjjes | - | - | tryjjesem
-| fahkes | fahkes | fahkes | - | - | -
-| möövhkes | möövhkes | möövhkes | möövhkebe | möövhkemes | möövhkesem
-| lïhkes | lïhkes | lïhkes | lïhkebe | lïhkemes | lïhkesem
-| latjkes | latjkes | latjkes | latjkesåbpoe | latjkesommes | -
-| rutjkes | rutjkes | rutjkehke, rutjkes | rutjkehkåbpoe, rutjkesåbpoe, rutjkebe | rutjkehkommes, rutjkesommes, rutjkemes | rutjkehkem
-| veelkes | veelkes | vyölkehke, veelkes | vyölkehkåbpoe, vielkebe | vyölkehkommes, veelkemes | vyölkehkem
-| stinkes | stinkes | stinkes, stynkehke | stinkebe, stynkehkåbpoe | stinkemes, stynkehkommes | stinkesem, stynkehkem
-| stonkes | stonkes | stonkes, stonkehke | stonkebe, stonkehkåbpoe | stonkemes, stonkehkommes | stonkesem, stonkehkem
-| stunkes | stunkes | stunkes | stunkebe | stunkemes | stunkesem
-| tjïrkes | tjïrkes | tjïrkes | tjïrkesåbpoe | tjïrkesommes | -
-| måaskes | måaskes | måaskes | måaskebe | måaskemes | måaskesem
-| viskes | viskes | viskes, vyskehke | viskebe, vyskehkåbpoe | viskemes, vyskehkommes | vyskehkem
-| söökes | söökes | sååkehke, söökes | suekebe, sååkehkåbpoe | sååkehkommes, söökemes | sååkehkem, söökesem
-| aales | aales | aales | - | - | aalesem
-| maedeles | maedeles | maedele | maedielåbpoe | maedielommes | maedelem
-| geeles | geeles | geeles, gåålehke | geelesåbpoe, gåålehkåbpoe | geelesommes, gåålehkommes | gåålehkem
-| gïengeles | gïengeles | gïengele | gïengielåbpoe | gïengielommes | gïengelem
-| vïssjeles | vïssjeles | vïssjele | vïssjielåbpoe | vïssjielommes | vïssjelem
-| ovvïssjeles | ovvïssjeles | ovvïssjele | ovvïssjielåbpoe | ovvïssjielommes | ovvïssjelem
-| madtjeles | madtjeles | madtjele | madtjelåbpoe | madtjelommes | madtjelem
-| njoetjeles | njoetjeles | njoetjele | njoetjelåbpoe | njoetjelommes | njoetjelem
-| byögkeles | byögkeles | byögkeles, byögkele | byögkelåbpoe | byögkelommes | byögkelem
-| göögkeles | göögkeles | göögkeles, göögkele | göögkelåbpoe | göögkelommes | göögkelem
-| vihkeles | vihkeles | vihkeles, vihkele | vihkielåbpoe | vihkielommes | vihkelem
-| væjkeles | væjkeles | væjkeles, væjkele | væjkalåbpoe | væjkalommes | væjkelem
-| garkeles | garkeles | garkeles, garkele | garkelåbpoe | garkelommes | garkelem
-| jupmeles | jupmeles | jupmeles | - | - | jupmelem
-| faepeles | faepeles | faepeles, faepele | faepielåbpoe | faepielommes | faepelem
-| gaajpeles | gaajpeles | gaajpele | gaajpelåbpoe | gaajpelommes | gaajpelem
-| dæjpeles | dæjpeles | dæjpele | dæjpalåbpoe | dæjpalommes | dæjpelem
-| vietseles | vietseles | vietsele | vietsielåbpoe | vietsielommes | vietselem
-| iehtseles | iehtseles | iehtseles | iehtsielåbpoe | iehtsielommes | iehtselem
-| bihtseles | bihtseles | bihtseles, bihtsele | bihtsielåbpoe | bihtsielommes | bihtselem
-| jihtseles | jihtseles | jihtseles | jihtsielåbpoe | jihtsielommes | jihtselem
-| tsåeptseles | tsåeptseles | tsåeptseles, tsåeptsele | tsåeptsielåbpoe | tsåeptsielommes | tsåeptselem
-| maehteles | maehteles | maehtele | maehtielåbpoe | maehtielommes | maehtelem
-| sjiehteles | sjiehteles | sjiehtele | sjiehtielåbpoe | sjiehtielommes | sjiehtelem
-| gæjhteles | gæjhteles | gæjhteles | gæjhtalåbpoe | gæjhtalommes | gæjhtelem
-| juhteles | juhteles | juhtele | juhtielåbpoe | juhtielommes | juhtelem
-| besteles | besteles | besteles, bestele | bestielåbpoe | bestielommes | bestelem
-| bïjveles | bïjveles | bïjvele | bïjvelåbpoe | bïjvelommes | bïjvelem
-| eejles | eejles | eejles | - | - | eejlesem
-| leevles | lyövles, leevles, lïevles, löövles | lyövlehke, lyövles, leevls, lïevles, löövles | lyövlehkåbpoe, lyövlebe, leevlebe, lïevlebe, löövlebe | lyövlehkommes, lyövlemes, leevlemes, lïevlemes, löövlemes | lyövlesem, lyövlehkem, lïevlesem, löövlesem
-| gööles | - | - | - | - | -
-| gaskemes | - | - | - | gaskemes | -
-| tjåetskemes | tjåetskemes | - | - | - | -
-| sïemes | sïemes | sïemes | - | - | sïemesem
-| sööjmes | seejmes, sööjmes | seejmes, sååjmehke, sööjmes | seejmebe, sååjmehkåbpoe, sööjmebe | seejmemes, sååjmehkommes, sööjmemes | seejmesem, sååjmehkem
-| ammes | ammes | ammes | - | - | -
-| kroenes | kroenes | - | - | - | -
-| vïenes | vïenes | - | - | - | -
-| radtjoes | radtjoes | radtjoes | radtjoesåbpoe | radtjoesommes | -
-| tjeakoes | tjeakoes | tjeakoes | tjeakoesåbpoe | tjeakoesommes | -
-| seakoes | seakoes | seakoes | seakoesåbpoe | seakoesommes | -
-| beagkoes | beagkoes | beagkoes | beagkoehkåbpoe | beagkoehkommes | beagkoem
-| fahkoes | fahkoes | fahkoes, fahkan | - | - | -
-| ræjhkoes | ræjhkoes | ræjhkoes | ræjhkoesåbpoe | ræjhkoesommes | -
-| jåalhkoes | jåalhkoes | - | - | - | -
-| dearkoes | dearkoes | dearkoes | dearkoesåbpoe | dearkoesommes | -
-| hearskoes | hearskoes | hearskoes | hearskoesåbpoe | hearskoesommes | -
-| måskoes | måskoes | måskoes | - | - | måskosem
-| sæjloes | sæjloes | sæjloes | sæjloesåbpoe | sæjloesommes | -
-| aalloes | aalloes | - | - | - | -
-| beavloes | beavloes | beavloes | - | - | -
-| dasmoes | dasmoes | dasmoes | dasmoesåbpoe | dasmoesommes | dasmosem
-| dåsmoes | dåsmoes | dåsmoes | dåsmoesåbpoe | dåsmoesommes | dåsmosem
-| håjnoes | håjnoes | håjnan | håjnoesåbpoe | håjnoesommes | -
-| nænnoes | nænnoes | nænnoes | nænnebe, nennebe | nænnemes, nennemes | nænnosem
-| gaavnoes | gaavnoes | gaavnoes | - | - | -
-| gåaroes | gåaroes | gåaroes | - | - | -
-| våaroes | våaroes | våaroes | - | - | våarosem
-| daajroes | daajroes | daajroes | - | - | daajrosem
-| faavroes | faavroes, faavroes | faavroe, faavroes | faavrebe, faavroesåbpoe, faavrobe | faavremes, faavroesommes, faavromes | faavroem
-| måasoes | måasoes | måasoes | - | - | måasosem
-| låpsoes | låpsoes | låpsoes | - | - | -
-| jearsoes | jearsoes | jearsoes | jearsoesåbpoe | jearsoesommes | -
-| faatoes | faatoes | faatoes | faatoesåbpoe | faatoesommes | -
-| seadtoes | seadtoes | seadtoes | seadtoesåbpoe | seadtoesommes | -
-| geehpes | geehpes | gyöhpehke, geehpes | gyöhpehkåbpoe, geahpebe | gyöhpehkommes, geehpemes | gyöhpehkem, geehpesem
-| tjeehpes | tjeehpes | tjeehpes, tjååhpehke | tjeehpebe, tjeehpesåbpoe, tjååhpehkåbpoe | tjeehpemes, tjeehpesommes, tjååhpehkommes | tjååhpehkem
-| sneehpes | sneehpes | sneehpes, snååhpehke | sneehpesåbpoe, sneehpebe, snaehpebe, snååhpehkåbpoe | sneehpesommes, sneehpemes, snååhpehkommes | sneehpesem, snååhpehkem
-| gïemhpes | gïemhpes | gïemhpe | gïemhpebe | gïemhpemes | gïemhpem
-| njeerpes | njeerpes | njeerpes, njåårpehke | njeerpebe, njeerpesåbpoe, njåårpehkåbpoe | njeerpemes, njeerpesommes, njåårpehkommes | njeerpesem, njåårpehkem
-| gaavnjeres | gaavnjeres | gaavnjeres | - | - | -
-| ïskeres | ïskeres, yskeres | ïskeres, yskeres | ïskeråbpoe, yskeråbpoe | ïskerommes, yskerommes | ïskerem, yskerem
-| garmeres | garmeres | garmere | - | - | garmerem
-| voeres | voeres | voeres | voeresåbpoe | voeresommes | -
-| raavteres | raavteres | raavteres, raavtere | - | - | raavterem
-| bååvteres | bååvteres | bååvtere | bååvteråbpoe | bååvterommes | bååvterem
-| seammaplïeres | seammaplïeres | - | - | - | -
-| stïeres | - | stïeres | - | - | -
-| varres | varres | varres | varresåbpoe | varresommes | -
-| mïevres | mïevres | mïevre | mïevrebe | mïevremes | mïevrem
-| dovres | dovre, dovres | dovres, dovres, dovrehke | dovrehkåbpoe, duvrebe | dovrehkommes, duvremes | dovrem, dovrehkem
-| pruvres | pruvres | - | - | - | -
-| rööpses | reepses, rööpses | reepses, rååpsehke, rööpses | ruepsebe, rååpsehkåbpoe | rååpsehkommes, rööpsemes | reepsesem, rååpsehkem, rööpsesem
-| skaavhtes | skaavhtes | skaavhtes, skaavhtehke, skaavhtege | - | - | skaavhtehkem, skaavhtegem
-| rïektes | rïektes | rïekte | rïektebe | rïektemes | rïektem
-| lustes | lustes | luste, lustes | lustebe | lustemes | lustem
-| loeves | loeves | loeves | loevebe | loevemes | loevesem
-| slovves | slovves | slovves | slovvesåbpoe | slovvesommes | -
-| stööves | stööves | stööves, stååvehke | - | - | stååvehkem
-| åårmegs | åårmegs | åårmege | - | - | åårmegem
-| rovnegs | rovnegs, rovneges, rovnege | rovnege, rovnegs, rovneges, rovnege | rovnegåbpoe | rovnegommes | rovnegem
-| gyönegs | gyönegs | gyönehke, gyönege, gyönegs | gyönehkåbpoe, gyönegåbpoe | gyönehkommes, gyönegommes | gyönehkem, gyönegem
-| luvregs | luvregs | luvrege | luvregåbpoe | luvregommes | luvregem
-| oktegs | oktegs | oktegs | - | - | -
-| gieltegs | gieltegs | gieltege | gieltiegåbpoe | gieltiegommes | gieltegem
-| aarmogs | aarmogs | aarmogs | aarmoegåbpoe | aarmoegommes | aarmogem
-| åårmehks | åårmehks | åårmehke | - | - | åårmehkem
-| åenehks | åenehks | åenehke | åenebe, åeniehkåbpoe | åenemes, åeniehkommes | åenehkem
-| måarehks | måarehks | måarehke | måarahkåbpoe | måarahkommes | måarehkem
-| boerehks | boerehks | boerehke | boerehkåbpoe | boerehkommes | boerehkem
-| barrehks | barrehks | barrehke | barrehkåbpoe | barrehkommes | barrehkem
-| saavrehks | saavrehks | saavrehke | saavrehkåbpoe | saavrehkommes | saavrehkem
-| veaksehks | veaksehks | veaksehke | veaksahkåbpoe | veaksahkommes | veaksehkem
-| gåassehks | gåassehks | gåassehks | gåassehkåbpoe | gåassehkommes | gåassehkem
-| gaahtsehks | gaahtsehke, gaahtsehks | gaahtsehkes, gaahtsehke, gaahtsehks | gaahtsehkåbpoe | gaahtsehkommes | gaahtsehkem
-| vihtehks | vihtehks | vihtehke | - | - | vihtehkem
-| såålhtehks | såålhtehks | såålhtehke | såålhtehkåbpoe | såålhtehkommes | såålhtehkem
-| seatadihks | seatadihks | seatadihks | - | - | seatadihkem
-| njalhkedihks | njalhkedihks | njalhkedihkie | - | - | njalhkedihkiem
-| njalkedihks | njalkedihks | njalkedihks | - | - | njalkedihkem
-| ööjeldihks | ööjeldihks | ööjeldihks | - | - | ööjeldihkem
-| geesjelihks | geesjelihks | geesjelihks | - | - | geesjelihkem
-| isvelihks | isvelihks | isvelihks | - | - | isvelihkem
-| bårrohks | bårrohks | bårrohke | bårrohkåbpoe | bårrohkommes | bårrohkem
-| mujjels | mujjels | mujjels | mujjelåbpoe | mujjelommes | mujjelem
-| ovnohkens | ovnohkens, ovnohkens, ovnohkenes | ovnohkens, ovnohkens, ovnohkenes | ovnohkenåbpoe | ovnohkenommes | ovnohkenem
-| hiejjehts | hiejjehts | hiejjehts | hiejjiehtsåbpoe | hiejjiehtsommes | hiejjehtem
-| bieljehts | bieljehts | bieljehts, bieljiehtadtje | bieljiehtsåbpoe | bieljiehtsommes | bieljehtem, bieljiehtadtjem
-| aeblehts | aeblehts | aeblehts, aebliehtadtje | aebliehtsåbpoe | aebliehtsommes | aeblehtem, aebliehtadtjem
-| guelehts | guelehts | guelehts | gueliehtåbpoe | gueliehtommes | guelehtem
-| byölehts | byölehts | byölehth, byölehtadtjee | - | - | byölehtadtjeem
-| tjelmehts | tjelmehts | tjelmehts, tjelmiehtadtje | tjelmiehtåbpoe | tjelmiehtommes | tjelmehtem, tjelmiehtadtjem
-| baenehts | baenehts | baenehts, baeniehtadtje | baeniehtåbpoe | baeniehtommes | baenehtem, baeniehtadtjem
-| ovluhpehts | ovluhpehts | ovluhpehts | - | - | ovluhpehtem
-| kåvrehts | kåvrehts | kåvrehts | - | - | kåvrehtem
-| jissehts | jissehts | jissehts, jissiehtadtje | jissiehtåbpoe | jissiehtommes | jissehtem, jissiehtadtjem
-| ealjohts | ealjohts | ealjohts | ealjoehtsåbpoe, ealjoehtåbpoe | ealjoehtsommes, ealjoehtommes | ealjohtem
-| faamohts | faamohts | faamohts | faamoehtsåbpoe | faamoehtsommes | faamohtem
-| gelliengïerts | gelliengïerts | - | - | - | -
-| måedtiesåårts | måedtiesåarhts, måedtiesåårts | - | - | - | -
-| gaajhkesåårts | gaajhkesåarhts, gaajhkesåårts | - | - | - | -
+Testdato: tir 25 okt 2011 14:43:10 CEST
+||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom  || Sg Acc || Sg Ill
+| kruana | kruana | kruana | kruenebe, kråanebe | kroenemes, kråanemes | - | -
+| mïrhkekruana | mïrhkekruana | mïrhkekruana | - | - | - | -
+| gåvva | gåvva | gåvva | - | - | - | -
+| minngebe | - | - | - | - | - | -
+| evtebe | - | - | evtebe | evtemes | - | -
+| rudtjege | rudtjege | rudtjege | rudtjebe, rudtjegåbpoe | rudtjemes, rudtjegommes | rudtjegem | rudtjegasse
+| madtege | madtege | madtege | - | - | madtegem | madtegasse
+| ovnuvhtege | ovnuvhtege | ovnuvhtege | - | - | ovnuvhtegem | ovnuvhtegasse
+| tjalmerge | tjalmerge | tjalmerge | tjalmargåbpoe | tjalmargommes | tjalmergem | tjalmergasse
+| tjaalaldihkie | tjaalaldihkie | tjaalaldihkie | - | - | tjaalaldihkiem | tjaalaldæhkan
+| gaptjeldihkie | gaptjeldihkie | gaptjeldihkie | - | - | gaptjeldihkiem | gaptjeldæhkan
+| sleehpeldihkie | sleehpeldihkie | sleehpeldihkie | - | - | sleehpeldihkiem | sleehpeldæhkan
+| gåårveldihkie | gåårveldihkie | gåårveldihkie | - | - | gåårveldihkiem | gåårveldæhkan
+| gejhkie | gejhkie | gejhkie | gejhkebe | gejhkemes | gejhkiem | gajhkan
+| åemie | åemie | - | - | - | - | -
+| vaenie | vaenie | vaenie | vaenebe | vaenemes | vaeniem | vaanan
+| buerie | buerie | buerie | buerebe | bööremes | bueriem | buaran
+| ovmessie | ovmessie | ovmessie | - | - | ovmessiem | ovmassan
+| bissie | bissie | bissie | bissebe | bissemes | bissiem | bæssan
+| åålije | åålije | åålijes, åålije | åålijåbpoe | åålijommes | åålijem | åålijasse
+| båetije | båetije | - | - | - | - | -
+| jeenje | jeenje | jeenje | jeenjebe | jeenjemes | jeenjem | jeenjese
+| jïjnje | jïjnje | jïjnje | jïjnjebe | jïjnjemes | jïjnjem | jïjnjese
+| læhkoeladtje | læhkoeladtje | læhkoeladtje | - | - | læhkoeladtjem | læhkoeladtjese
+| dejpeladtje | dejpeladtje | dejpeladtje | - | - | dejpeladtjem | dejpeladtjese
+| gyjhteladtje | gyjhteladtje | gyjhteladtje | gyjhtelåbpoe | gyjhtelommes | gyjhteladtjem | gyjhteladtjese
+| jealamadtje | - | jealamadtje | - | - | jealamadtjem | jealamadtjese
+| gïelehtadtje | - | gïelehtadtje | - | - | gïelehtadtjem | gïelehtadtjese
+| beajjetje | beajjetje | - | - | - | - | -
+| daanbeajjetje | daanbeajjetje | - | - | - | - | -
+| fïerhtenbeajjetje | fïerhtenbeajjetje | - | - | - | - | -
+| daaletje | daaletje | - | - | - | - | -
+| dovletje | dovletje | dovletje | - | - | dovletjem | dovletjasse
+| sablehtje | sablehtje | sablehtje | - | - | sablehtjem | sablehtjasse
+| maehtehtje | maehtehtje | maehtehtje | - | - | maehtehtjem | maehtehtjasse
+| raavtehtje | raavtehtje | raavtehtje | - | - | raavtehtjem | raavtehtjasse
+| plïehtje | plïehtje | plïehtje | - | - | - | -
+| ohtje | ohtje | ohtje | uhtjebe | uhtjemes | ohtjem | ohtjese
+| snjaltje | snjaltje | - | - | - | - | -
+| skïemtje | skïemtje | skïemtjes | skïemtjebe, skïemtjesåbpoe | skïemtjemes, skïemtjesommes | skïemtjem, skïemtjesem | skïemtjese, skïemtjesasse
+| jovje | jovje | jovje | jovjebe | jovjemes | jovjem | jovjese
+| nåake | nåake | nåake | vearrebe, vïerrebe, nåakebe | veerremes, vearremes, vïerremes, nåakemes | nåakem | nåakese
+| byögke | byögke | byögkes | byögkebe, byögkesåbpoe | byögkemes, byögkesommes | byögkem, byögkesem | byögkese, byögkesasse
+| baahke | baahke | baahkes | baahkebe, baahkesåbpoe | baahkemes, baahkesommes | baahkem, baahkesem | baahkese, baahkesasse
+| sjyjjehke | sjyjjehke | sjyjjehke | sjyjjehkåbpoe | sjyjjehkommes | sjyjjehkem | sjyjjehkasse
+| bååktjehke | - | bååktjehke | bååktjehkåbpoe | bååktjehkommes | bååktjehkem | bååktjehkasse
+| govjehke | govjehke | govjehke | govjehkåbpoe | govjehkommes | govjehkem | govjehkasse
+| byögkehke | byögkehke | byögkehke | byögkehkåbpoe | byögkehkommes | byögkehkem | byögkehkasse
+| tjetskehke | tjetskehke | tjetskehke | tjetskiehkåbpoe | tjetskiehkommes | tjetskehkem | tjetskehkasse
+| aajnehke | aajnehke | aajnehke | aajnehkåbpoe | aajnehkommes | aajnehkem | aajnehkasse
+| vååvnehke | vååvnehke | vååvnehke | vååvnehkåbpoe | vååvnehkommes | vååvnehkem | vååvnehkasse
+| njaarpehke | njaarpehke | njaarpehke | njaarpahkåbpoe | njaarpahkommes | njaarpehkem | njaarpehkasse
+| naarpehke | naarpehke | naarpehke | naarpahkåbpoe | naarpahkommes | naarpehkem | naarpehkasse
+| aarehke | aarehke | aarehke | aarehkåbpoe | aarehkommes | aarehkem | aarehkasse
+| aavrehke | aavrehke | aavrehke | aavrehkåbpoe | aavrehkommes | aavrehkem | aavrehkasse
+| dovhtehke | dovhtehke | dovhtehke | dovhtehkåbpoe | dovhtehkommes | dovhtehkem | dovhtehkasse
+| eadtjohke | eadtjohkes, eadtjohke | eadtjohkes | eadtjoehkåbpoe | eadtjoehkommes | eadtjohkem | eadtjohkasse
+| våalohke | våalohke | våalohke | våaloehkåbpoe | våaloehkommes | våalohkem | våalohkasse
+| prarrohke | prarrohke | prarrohke | prarroehkåbpoe | prarroehkommes | prarrohkem | prarrohkasse
+| mïevhke | mïevhke | mïevhkes | mïevhkebe, mïevhkesåbpoe | mïevhkemes, mïevhkesommes | mïevhkem, mïevhkesem | mïevhkese, mïevhkesasse
+| myövhke | myövhke | myövhkes | myövhkebe, myövhkesåbpoe | myövhkemes, myövhkesommes | myövhkem, myövhkesem | myövhkese, myövhkesasse
+| jalke | jalke | jalke | jalkebe | jalkemes | jalkem | jalkese
+| tjïelke | tjïelkes, tjïelke | tjïelkes, tjyölkehke | tjïelkåbpoe, tjyölkehkåbpoe | tjïelkommes, tjyölkehkommes | tjïelkem, tjyölkehkem | tjïelkasse, tjyölkehkasse
+| tjamke | tjamke | tjamke | tjamkebe | tjamkemes | tjamkem | tjamkese
+| gearkeske | gearkeske | gearkeske | gearkaskåbpoe | gearkaskommes | gearkeskem | gearkeskasse
+| fïerske | fïerske | fïerske, fïerskese | fïerskebe, fïerskesåbpoe | fïerskemes, fïerskesommes | fïerskem, fïerskesem | fïerskese, fïerskesasse
+| tsåatske | tsåatske, tsåatskes | tsåatskes | tsåatskebe, tsåatskesåbpoe | tsåatskemes, tsåatskesommes | tsåatskem, tsåatskesem | tsåatskese, tsåatskesasse
+| digitaale | digitaales, digitaale | digitaale, digitaales | digitaalebe | digitaalemes | digitaalem | digitaalese
+| heejle | heejle | - | - | - | - | -
+| jolle | jolle | jolle, jollehke | jollebe, jollehkåbpoe | jollemes, jollehkommes | jollem, jollehkem | jollese, jollehkasse
+| jïlle | jïlle | jïlle | jillebe | jillemes | jïllem | jïllese
+| tjöölle | tjöölle | tjöölle | tjööllebe | tjööllemes | tjööllem | tjööllese
+| jaame | jaame | jaames | - | - | jaamem | jaamese
+| sïejhme | sïejhme | sïejhme | sïejhmebe | sïejhmemes | sïejhmem | sïejhmese
+| galme | galme | galmes | galmebe, galmesåbpoe | galmemes, galmesommes | galmem, galmesem | galmese, galmesasse
+| tovme | tovme | tovmes | tovmebe | tovmemes | tovmem | tovmese
+| feejjene | feejjene, feejjen, fööjjen | feejjene, feejjen, fööjjen | feejjenåbpoe | feejjenommes | feejjenem | feejjenasse
+| geerjene | - | geerjene | - | - | - | -
+| hååkene | - | hååkene | - | - | - | -
+| girvene | - | girvene | - | - | - | -
+| lïene | lïene | lïenes | lïenebe, lïenesåbpoe | lïenemes, lïenesommes | lïenem, lïenesem | lïenese, lïenesasse
+| onne | onne | onne | onnebe, unnebe | onnemes, unnemes | onnem, unniem | onnese, ånnan
+| provne | provne | provnes | provnebe | provnemes | provnem | provnese
+| jorpe | jorpe | jorpehke, jorpe | jorpehkåbpoe, jorpebe | jorpehkommes, jorpemes | jorpehkem | jorpehkasse
+| praare | praare | praares | praarebe, praaresåbpoe | praaremes, praaresommes | praarem, praaresem | praarese, praaresasse
+| njoere | njoere | njoeres | njoerebe | njoeremes | njoerem | njoerese
+| noere | noere | noere | nuerebe | nööremes | noerem | noerese
+| stoere | stoerre, stoere | stoerre, stoere | stuerebe | stööremes | stoerrem, stoerem | stoerrese, stoerese
+| måasere | måasere | måasere | måasaråbpoe | måasarommes | måaserem | måaserasse
+| aalvere | aalvere | aalvere | aalveråbpoe | aalverommes | aalverem | aalverasse
+| sjïere | sjïere | sjïere | sjïerebe | sjïeremes | sjïerem | sjïerese
+| garre | garre | garres | garresåbpoe, garrebe | garresommes, garremes | garresem | garresasse
+| orre | orre | orre | urrebe, orrebe | urremes, orremes | orrem | orrese
+| ovmese | ovmese | - | - | - | - | -
+| gïsse | gïsse | gïsse, gïssege | gissebe | gissemes | gïssem | gïssese
+| konkreete | konkreete | konkreete | konkreetebe | konkreetemes | konkreetem | konkreetese
+| spaajhte | spaajhte | spaajhte | spaajhtebe | spaajhtemes | spaajhtem | spaajhtese
+| abstrakte | abstrakte | abstrakte | abstraktebe | abstraktemes | abstraktem | abstraktese
+| rïekte | rïekte | rïektes | rïektebe, rïektesåbpoe | rïektemes, rïektesommes | rïektem, rïektesem | rïektese, rïektesasse
+| gamte | gamte | gamte, gamtege | gemtebe | gemtemes | gamtem | gamtese
+| plaave | plaave | plaave, plaaves | plaavebe | plaavemes | plaavem | plaavese
+| smaave | smaave | smaave, smaaves | smaavebe | smaavemes | smaavem | smaavese
+| dïeve | dïeve | dïeves | dïevebe, dïevesåbpoe | dïevemes, dïevesommes | dïevem, dïevesem | dïevese, dïevesasse
+| geerve | geerve | geerve | giervebe, geervebe | giervemes, geervemes | geervem | geervese
+| lovve | lovves, lovve | lovves | lovvesåbpoe | lovvesommes | lovvesem | lovvesasse
+| njåajjah | njåajjah | njåajjan | njåajjahkåbpoe | njåajjahkommes | - | -
+| vælnjah | vælnjah | vælnjan | vælnjahkåbpoe | vælnjahkommes | - | -
+| vealah | vealah | vealan | - | - | - | -
+| skuallah | skuallah | skuallan | skuallahkåbpoe | skuallahkommes | - | -
+| sleagrah | sleagrah | sleagran | sleagrahkåbpoe | sleagrahkommes | - | -
+| båadtsah | båadtsah | båadtsan | båadtsahkåbpoe | båadtsahkommes | - | -
+| njaalmeldh | njaalmeldh | - | - | - | - | -
+| njoetseldh | - | njoetseldh | - | - | - | -
+| sjeavodh | sjeavodh | sjeavodh | sjeavoedåbpoe | sjeavoedommes | sjeavodem | sjeavodasse
+| gyvjeh | gyvjeh | gyvjehke | gyvjehkåbpoe | gyvjehkommes | gyvjehkem | gyvjehkasse
+| gåffoeh | gåffoeh | gåffoeh | gåffoehkåbpoe | gåffoehkommes | - | -
+| gæbjoeh | gæbjoeh | gæbjan | gæbjoehkåbpoe | gæbjoehkommes | - | -
+| njåajjoeh | njåajjoeh | njåajjan | njåajjoehkåbpoe | njåajjoehkommes | - | -
+| ealjoeh | ealjoeh | ealjoeh | ealjoehkåbpoe | ealjoehkommes | - | -
+| vælnjoeh | vælnjoeh | vælnjan | vælnjoehkåbpoe | vælnjoehkommes | - | -
+| gaavnjoeh | gaavnjoeh | gaavnjoeh | - | - | - | -
+| tjåadtjoeh | tjåadtjoeh | tjåadtjan | - | - | - | -
+| kranhtjoeh | kranhtjoeh | kranhtjan | kranhtjoehkåbpoe | kranhtjoehkommes | - | -
+| snjåhtjoeh | snjåhtjoeh | snjåhtjan | snjåhtjoehkåbpoe | snjåhtjoehkommes | - | -
+| gæhtjoeh | gæhtjoeh | gæhtjoeh, gyhtjehke | gæhtjoehkåbpoe, gyhtjehkåbpoe | gæhtjoehkommes, gyhtjehkommes | gyhtjehkem | gyhtjehkasse
+| båavjoeh | båavjoeh | båavjan | båavjoehkåbpoe | båavjoehkommes | - | -
+| låagkoeh | låagkoeh | låagkoeh | låagkoehkåbpoe | låagkoehkommes | - | -
+| gåangkoeh | gåangkoeh | gåangkan | gåangkoehkåbpoe | gåangkoehkommes | - | -
+| neahkoeh | neahkoeh | - | - | - | - | -
+| jåalhkoeh | jåalhkoeh | jåalhkoeh | jåalhkoehkåbpoe | jåalhkoehkommes | - | -
+| tsåalhkoeh | tsåalhkoeh | tsåalhkoeh, tsåalhkan | tsåalhkahkåbpoe, tsåalhkoehkåbpoe | tsåalhkahkommes, tsåalhkoehkommes | - | -
+| krænkoeh | krænkoeh | krænkan | krænkoehkåbpoe | krænkoehkommes | - | -
+| dearkoeh | dearkoeh | dearkoeh | dearkoehkåbpoe | dearkoehkommes | - | -
+| skualloeh | skualloeh | skuallan | skualloehkåbpoe | skualloehkommes | - | -
+| gælloeh | gælloeh | gællan | - | - | - | -
+| gåpmoeh | gåpmoeh | gåpman | gåpmoehkåbpoe | gåpmoehkommes | - | -
+| låabpoeh | låabpoeh | - | - | - | - | -
+| tjålhpoeh | tjålhpoeh | tjålhpoeh | tjålhpoehkåbpoe | tjålhpoehkommes | - | -
+| nåmhpoeh | nåmhpoeh | nåmhpan, nåmhpoeh | - | - | - | -
+| tråmhpoeh | tråmhpoeh | tråmhpoeh | tråmhpoehkåbpoe | tråmhpoehkommes | - | -
+| jarhpoeh | jarhpoeh | jarhpan | jarhpoehkåbpoe | jarhpoehkommes | - | -
+| sleagroeh | sleagroeh | sleagran | sleagroehkåbpoe | sleagroehkommes | - | -
+| gårroeh | gårroeh | - | - | - | - | -
+| pleasoeh | pleasoeh | pleasan, pleasoen | pleasoehkåbpoe | pleasoehkommes | - | -
+| jåasoeh | jåasoeh | jåasan | jåasoehkåbpoe, jåasebe | jåasoehkommes, jåasemes | - | -
+| båadtsoeh | båadtsoeh | båadtsan | båadtsoehkåbpoe | båadtsoehkommes | - | -
+| harhtsoeh | harhtsoeh | harhtsoeh | harhtsoehkåbpoe | harhtsoehkommes | - | -
+| klåadtoeh | klåadtoeh | klåadtan | klåadtoehkåbpoe | klåadtoehkommes | - | -
+| båajhtoeh | båajhtoeh | båajhtoeh | - | - | - | -
+| åajvoeh | åajvoeh | åajvoeh | åajvebe, åajvoehkåbpoe | åajvemes, åajvoehkommes | - | -
+| aareh | aarh, aareh | aarh, aareh, aares | aaregåbpoe, aarebe, aarehkåbpoe | aaregommes, aaremes, aarehkommes | - | -
+| sjeavohth | - | sjeavohth | sjeavoehthåbpoe | sjeavoehthommes | - | -
+| eensi | eensi | eensi | eensigåbpoe | eensigommes | - | -
+| slahtjan | slahtjan | slahtjan | - | - | - | -
+| nåajsan | nåajsan | nåajsan | - | - | - | -
+| baanhtsan | - | baanhtsan | - | - | - | -
+| madtan | madtan | madtan | - | - | - | -
+| mådtan | mådtan | mådtan | - | - | - | -
+| nuarvan | - | nuarvan | - | - | - | -
+| gaajhkenjevlien | gaajhkenjevlien | gaajhkenjevlien | - | - | - | -
+| nahkeren | - | nahkeren | nahkeråbpoe | nahkerommes | - | -
+| golmenlïhtsen | golmenlïhtsen | golmenlïhtsen | - | - | golmenlïhtsenem | golmenlïhtsenasse
+| hijven | hijven | hijven | - | - | - | -
+| gallas | gallas | gallasadtje, gallasodtje | - | - | gallasadtjem, gallasodtjem | gallasadtjese, gallasodtjese
+| barras | barras | barras, barran | barrasåbpoe | barrasommes | - | -
+| bårras | bårras | bårras, bårran | bårrasåbpoe | bårrasommes | - | -
+| måasas | måasas | måasas | - | - | - | -
+| sjuevnjeds | sjuevnjeds | sjuevnjede, sjuevnjeds | sjuevnjiedåbpoe | sjuevnjiedommes | sjuevnjedem | sjuevnjedasse
+| jalkeds | jalkeds | jalkede, jalkeds | jalkedåbpoe | jalkedommes | jalkedem | jalkedasse
+| lïemkeds | lïemkeds | lïemkede | lïemkedåbpoe | lïemkedommes | lïemkedem | lïemkedasse
+| tjuavkeds | tjuavkeds | tjuavkede | tjuavkadåbpoe | tjuavkadommes | tjuavkedem | tjuavkedasse
+| murreds | murreds | murrede | murriedåbpoe | murriedommes | murredem | murredasse
+| bihtseds | bihtseds | bihtsede | bihtsiedåbpoe | bihtsiedommes | bihtsedem | bihtsedasse
+| giefies | giefies | giefie | giefebe | giefemes | giefiem | geafan
+| raeffies | raeffies | raeffies | raeffebe | raeffemes | raeffiem | raaffan
+| suejies | suejies | suejies | - | - | suejiem | suajan
+| geljies | geljies | geljie, geljies | geljebe | geljemes | geljiem | galjan
+| viesjies | viesjies | viesjie | viesjebe | viesjemes | viesjiem | veasjan
+| låedtjies | låedtjies | låedtjie | låedtjebe | låedtjemes | låedtjiem | låadtjan
+| miehtjies | miehtjies | miehtjies | miehtjebe | miehtjemes | miehtjiem | meahtjan
+| gaertjies | gaertjies | gaertjie, gåårtjehke | gaertjebe, gåårtjehkåbpoe | gaertjemes, gåårtjehkommes | gaertjiem, gåårtjehkem | gaartjan, gåårtjehkasse
+| nåekies | nåekies, nåekie | nåekies | nåekebe | nåekemes | nåekiem | nåakan
+| siegkies | siegkies | siegkie, siegkies | siegkebe | siegkemes | siegkiem | seagkan
+| pliejhkies | pliejhkies | pliejhkies, plyöjhkehke | pliejhkebe, plyöjhkehkåbpoe | pliejhkemes, plyöjhkehkommes | pliejhkiem, plyöjhkehkem | pleajhkan, plyöjhkehkasse
+| aelhkies | aelhkies | aelhkie | aelhkebe | aelhkemes | aelhkiem | aalhkan
+| guhkies | guhkies | guhkie, guhkies | guhkebe | guhkemes | guhkiem | gåhkan
+| aevhkies | aevhkies | aevhkies | aevhkebe | aevhkemes | aevhkiem | aavhkan
+| saejkies | saejkies | saejkie, saejkies | saejkebe | saejkemes | saejkiem | saajkan
+| baetjkies | baetjkies | baetjkie, baetjkies | baetjkebe | baetjkemes | baetjkiem | baatjkan
+| njaelkies | njaelkies | njaelkie, njåålkehke | njaelkebe, njåålkehkåbpoe | njaelkemes, njåålkehkommes | njaelkiem, njåålkehkem | njaalkan, njåålkehkasse
+| åelkies | åelkies | - | - | - | - | -
+| aerkies | aerkies | aerkie, aerkies | aerkebe | aerkemes | aerkiem | aarkan
+| jueskies | jueskies | jueskie | jueskebe | jueskemes | jueskiem | juaskan
+| gietskies | gietskies | gietskie | gietskebe | gietskemes | gietskiem | geatskan
+| aejlies | aejlies | aejlie, aejlies | - | - | aejliem | aajlan
+| ellies | ellies | - | - | - | - | -
+| mullies | mullies | mullie, mullies | mullebe | mullemes | mulliem | mållan
+| daemies | daemies | daemies | - | - | daemiem | daaman
+| laemies | laemies | laemie, laemies | - | - | laemiem | laaman
+| elmies | elmies | elmies | - | - | elmesem | elmiesasse
+| aelmies | aelmies | aelmies | - | - | aelmiem | aalman
+| rupmies | rupmies | rupmie, rupmies | rupmebe | rupmemes | rupmiem | råpman
+| raejnies | raejnies | raejnie | raejnebe | raejnemes | raejniem | raajnan
+| hujnies | hujnies | hujnien | hujniesåbpoe | hujniesommes | - | -
+| saetnies | saetnies | saatna, saatnan | - | - | - | -
+| tjaebpies | tjaebpies | tjaebpie, tjaebpies, tjååbpehke | tjaebpebe, tjååbpehkåbpoe | tjaebpemes, tjååbpehkommes | tjaebpiem, tjååbpehkem | tjaabpan, tjååbpehkasse
+| kruepies | kruepies | kruepies, krååpehke | kruepebe, krååpehkåbpoe | kruepemes, krååpehkommes | kruepiem, krååpehkem | kruapan, krååpehkasse
+| tjiehpies | tjiehpies | tjiehpie, tjiehpies | tjiehpebe | tjiehpemes | tjiehpiem | tjeahpan
+| åehpies | åehpies | åehpie | åehpebe, åahpatjåbpoe | åehpemes, åahpatjommes | åehpiem | åahpan
+| kraejhpies | kraejhpies | kraejhpie | kraejhpebe | kraejhpemes | kraejhpiem | kraajhpan
+| aelpies | aelpies | aelpies | aelpebe | aelpemes | aelpiem | aalpan
+| daerpies | daerpies | daerpies | - | - | daerpiem | daarpan
+| tjuerpies | tjuerpies | tjuerpie, tjuerpies | tjuerpebe | tjuerpemes | tjuerpiem | tjuarpan
+| klaeries | klaeries | klaerie | klaerebe | klaeremes | klaeriem | klaaran
+| staeries | staeries | staaran | - | - | - | -
+| gieries | gieries | gearehke | gearahkåbpoe | gearahkommes | gieriem | gearan
+| båeries | båeries | båeries | båarasåbpoe | båarasommes | - | -
+| riejries | riejries | riejries | - | - | riejriem | reajran
+| vijries | vijries | vijries | vijrebe | vijremes | vijriem | væjran
+| vijsies | vijsies | vijsies, væjsehke, vyjsehke | vijsebe, væjsehkåbpoe, vyjsehkåbpoe | vijsemes, væjsehkommes, vyjsehkommes | vijsiem, væjsehkem, vyjsehkem | væjsan, væjsehkasse, vyjsehkasse
+| giedtsies | giedtsies | giedtsie, gyödtsehke | giedtsebe, gyödtsehkåbpoe | giedtsemes, gyödtsehkommes | giedtsiem, gyödtsehkem | geadtsan, gyödtsehkasse
+| sieties | sieties | sietie, sieties | sietebe | sietemes | sietiem | seatan
+| liehties | liehties | liehties, lyöhtehke | liehtebe, lyöhtehkåbpoe | liehtemes, lyöhtehkommes | liehtiem, lyöhtehkem | leahtan, lyöhtehkasse
+| vihties | vihties | vihtie | - | - | vihtiem | væhtan
+| saelhties | saelhties | saelhtie, saelhties | saelhtebe | saelhtemes | saelhtiem | saalhtan
+| guelhties | guelhties | guelhtie | guelhtebe | guelhtemes | guelhtiem | gualhtan
+| plievhties | plievhties | plievhtie | plievhtebe | plievhtemes | plievhtiem | pleavhtan
+| duvhties | duvhties | duvhties, dovhtehke | duvhtebe, dovhtehkåbpoe | duvhtemes, dovhtehkommes | duvhtiem, dovhtehkem | dåvhtan, dovhtehkasse
+| låemties | låemties | låemtie | låemtebe | låemtemes | låemtiem | låamtan
+| vesties | vesties | vestie | vestebe | vestemes | vestiem | vastan
+| tjevties | tjevties | tjevtie, tjevties, tjavtehke, tjovtehke | tjevtebe, tjavtehkåbpoe, tjovtehkåbpoe | tjevtemes, tjavtehkommes, tjovtehkommes | tjevtiem, tjavtehkem, tjovtehkem | tjavtan, tjavtehkasse, tjovtehkasse
+| kraevies | kraevies | kraevie, kraevies | kraevebe | kraevemes | kraeviem | kraavan
+| gaelhvies | gaelhvies | gaelhvie, gaelhvies | gaelhvebe | gaelhvemes | gaelhviem | gaalhvan
+| vaejvies | vaejvies | vaejvie, vaejvies | vaejvebe | vaejvemes | vaejviem | vaajvan
+| dulvies | dulvies | dulvies, dolvehke | dulviesåbpoe, dolvehkåbpoe | dulviesommes, dolvehkommes | dolvehkem | dolvehkasse
+| gaervies | gaervies | gaervies | - | - | gaerviem | gaarvan
+| vervies | vervies | - | - | - | - | -
+| gualijes | gualijes, gualijs | gualije | gualajåbpoe | gualajommes | gualijem | gualijasse
+| dåajmijes | dåajmijes, dåajmijs | dåajmije | dåajmijåbpoe | dåajmijommes | dåajmijem | dåajmijasse
+| jearmijes | jearmijes, jearmijs | jearmije | jearmijåbpoe | jearmijommes | jearmijem | jearmijasse
+| jïermijes | jïermijes, jïermijs | jïermije | jïermijåbpoe | jïermijommes | jïermijem | jïermijasse
+| jassijes | jassijes, jassijs | jassije | jassajåbpoe | jassajommes | jassijem | jassijasse
+| byjjes | byjjes | byjjes | - | - | byjjesem | byjjesasse
+| tryjjes | tryjjes | tryjjes | - | - | tryjjesem | tryjjesasse
+| fahkes | fahkes | fahkes | - | - | - | -
+| möövhkes | möövhkes | möövhkes | möövhkebe | möövhkemes | möövhkesem | möövhkesasse
+| lïhkes | lïhkes | lïhkes | lïhkebe | lïhkemes | lïhkesem | lïhkesasse
+| latjkes | latjkes | latjkes | latjkesåbpoe | latjkesommes | - | -
+| rutjkes | rutjkes | rutjkehke, rutjkes | rutjkehkåbpoe, rutjkesåbpoe, rutjkebe | rutjkehkommes, rutjkesommes, rutjkemes | rutjkehkem | rutjkehkasse
+| veelkes | veelkes | vyölkehke, veelkes | vyölkehkåbpoe, vielkebe | vyölkehkommes, veelkemes | vyölkehkem | vyölkehkasse
+| stinkes | stinkes | stinkes, stynkehke | stinkebe, stynkehkåbpoe | stinkemes, stynkehkommes | stinkesem, stynkehkem | stinkesasse, stynkehkasse
+| stonkes | stonkes | stonkes, stonkehke | stonkebe, stonkehkåbpoe | stonkemes, stonkehkommes | stonkesem, stonkehkem | stonkesasse, stonkehkasse
+| stunkes | stunkes | stunkes | stunkebe | stunkemes | stunkesem | stunkesasse
+| tjïrkes | tjïrkes | tjïrkes | tjïrkesåbpoe | tjïrkesommes | - | -
+| måaskes | måaskes | måaskes | måaskebe | måaskemes | måaskesem | måaskesasse
+| viskes | viskes | viskes, vyskehke | viskebe, vyskehkåbpoe | viskemes, vyskehkommes | vyskehkem | vyskehkasse
+| söökes | söökes | sååkehke, söökes | suekebe, sååkehkåbpoe | sååkehkommes, söökemes | sååkehkem, söökesem | sååkehkasse, söökesasse
+| aales | aales | aales | - | - | aalesem | aalesasse
+| maedeles | maedeles | maedele | maedielåbpoe | maedielommes | maedelem | maedelasse
+| geeles | geeles | geeles, gåålehke | geelesåbpoe, gåålehkåbpoe | geelesommes, gåålehkommes | gåålehkem | gåålehkasse
+| gïengeles | gïengeles | gïengele | gïengielåbpoe | gïengielommes | gïengelem | gïengelasse
+| vïssjeles | vïssjeles | vïssjele | vïssjielåbpoe | vïssjielommes | vïssjelem | vïssjelasse
+| ovvïssjeles | ovvïssjeles | ovvïssjele | ovvïssjielåbpoe | ovvïssjielommes | ovvïssjelem | ovvïssjelasse
+| madtjeles | madtjeles | madtjele | madtjelåbpoe | madtjelommes | madtjelem | madtjelasse
+| njoetjeles | njoetjeles | njoetjele | njoetjelåbpoe | njoetjelommes | njoetjelem | njoetjelasse
+| byögkeles | byögkeles | byögkeles, byögkele | byögkelåbpoe | byögkelommes | byögkelem | byögkelasse
+| göögkeles | göögkeles | göögkeles, göögkele | göögkelåbpoe | göögkelommes | göögkelem | göögkelasse
+| vihkeles | vihkeles | vihkeles, vihkele | vihkielåbpoe | vihkielommes | vihkelem | vihkelasse
+| væjkeles | væjkeles | væjkeles, væjkele | væjkalåbpoe | væjkalommes | væjkelem | væjkelasse
+| garkeles | garkeles | garkeles, garkele | garkelåbpoe | garkelommes | garkelem | garkelasse
+| jupmeles | jupmeles | jupmeles | - | - | jupmelem | jupmelasse
+| faepeles | faepeles | faepeles, faepele | faepielåbpoe | faepielommes | faepelem | faepelasse
+| gaajpeles | gaajpeles | gaajpele | gaajpelåbpoe | gaajpelommes | gaajpelem | gaajpelasse
+| dæjpeles | dæjpeles | dæjpele | dæjpalåbpoe | dæjpalommes | dæjpelem | dæjpelasse
+| vietseles | vietseles | vietsele | vietsielåbpoe | vietsielommes | vietselem | vietselasse
+| iehtseles | iehtseles | iehtseles | iehtsielåbpoe | iehtsielommes | iehtselem | iehtselasse
+| bihtseles | bihtseles | bihtseles, bihtsele | bihtsielåbpoe | bihtsielommes | bihtselem | bihtselasse
+| jihtseles | jihtseles | jihtseles | jihtsielåbpoe | jihtsielommes | jihtselem | jihtselasse
+| tsåeptseles | tsåeptseles | tsåeptseles, tsåeptsele | tsåeptsielåbpoe | tsåeptsielommes | tsåeptselem | tsåeptselasse
+| maehteles | maehteles | maehtele | maehtielåbpoe | maehtielommes | maehtelem | maehtelasse
+| sjiehteles | sjiehteles | sjiehtele | sjiehtielåbpoe | sjiehtielommes | sjiehtelem | sjiehtelasse
+| gæjhteles | gæjhteles | gæjhteles | gæjhtalåbpoe | gæjhtalommes | gæjhtelem | gæjhtelasse
+| juhteles | juhteles | juhtele | juhtielåbpoe | juhtielommes | juhtelem | juhtelasse
+| besteles | besteles | besteles, bestele | bestielåbpoe | bestielommes | bestelem | bestelasse
+| bïjveles | bïjveles | bïjvele | bïjvelåbpoe | bïjvelommes | bïjvelem | bïjvelasse
+| eejles | eejles | eejles | - | - | eejlesem | eejlesasse
+| leevles | lyövles, leevles, lïevles, löövles | lyövlehke, lyövles, leevls, lïevles, löövles | lyövlehkåbpoe, lyövlebe, leevlebe, lïevlebe, löövlebe | lyövlehkommes, lyövlemes, leevlemes, lïevlemes, löövlemes | lyövlesem, lyövlehkem, lïevlesem, löövlesem | lyövlesasse, lyövlehkasse, lïevlesasse, löövlesasse
+| gööles | - | - | - | - | - | -
+| gaskemes | - | - | - | gaskemes | - | -
+| tjåetskemes | tjåetskemes | - | - | - | - | -
+| sïemes | sïemes | sïemes | - | - | sïemesem | sïemesasse
+| sööjmes | seejmes, sööjmes | seejmes, sååjmehke, sööjmes | seejmebe, sååjmehkåbpoe, sööjmebe | seejmemes, sååjmehkommes, sööjmemes | seejmesem, sååjmehkem | seejmesasse, sååjmehkasse
+| ammes | ammes | ammes | - | - | - | -
+| kroenes | kroenes | - | - | - | - | -
+| vïenes | vïenes | - | - | - | - | -
+| radtjoes | radtjoes | radtjoes | radtjoesåbpoe | radtjoesommes | - | -
+| tjeakoes | tjeakoes | tjeakoes | tjeakoesåbpoe | tjeakoesommes | - | -
+| seakoes | seakoes | seakoes | seakoesåbpoe | seakoesommes | - | -
+| beagkoes | beagkoes | beagkoes | beagkoehkåbpoe | beagkoehkommes | beagkoem | beagkoasse
+| fahkoes | fahkoes | fahkoes, fahkan | - | - | - | -
+| ræjhkoes | ræjhkoes | ræjhkoes | ræjhkoesåbpoe | ræjhkoesommes | - | -
+| jåalhkoes | jåalhkoes | - | - | - | - | -
+| dearkoes | dearkoes | dearkoes | dearkoesåbpoe | dearkoesommes | - | -
+| hearskoes | hearskoes | hearskoes | hearskoesåbpoe | hearskoesommes | - | -
+| måskoes | måskoes | måskoes | - | - | måskosem | måskoesasse
+| sæjloes | sæjloes | sæjloes | sæjloesåbpoe | sæjloesommes | - | -
+| aalloes | aalloes | - | - | - | - | -
+| beavloes | beavloes | beavloes | - | - | - | -
+| dasmoes | dasmoes | dasmoes | dasmoesåbpoe | dasmoesommes | dasmosem | dasmoesasse
+| dåsmoes | dåsmoes | dåsmoes | dåsmoesåbpoe | dåsmoesommes | dåsmosem | dåsmoesasse
+| håjnoes | håjnoes | håjnan | håjnoesåbpoe | håjnoesommes | - | -
+| nænnoes | nænnoes | nænnoes | nænnebe, nennebe | nænnemes, nennemes | nænnosem | nænnoesasse
+| gaavnoes | gaavnoes | gaavnoes | - | - | - | -
+| gåaroes | gåaroes | gåaroes | - | - | - | -
+| våaroes | våaroes | våaroes | - | - | våarosem | våaroesasse
+| daajroes | daajroes | daajroes | - | - | daajrosem | daajroesasse
+| faavroes | faavroes, faavroes | faavroe, faavroes | faavrebe, faavroesåbpoe, faavrobe | faavremes, faavroesommes, faavromes | faavroem | faavrose, fååvrese
+| måasoes | måasoes | måasoes | - | - | måasosem | måasoesasse
+| låpsoes | låpsoes | låpsoes | - | - | - | -
+| jearsoes | jearsoes | jearsoes | jearsoesåbpoe | jearsoesommes | - | -
+| faatoes | faatoes | faatoes | faatoesåbpoe | faatoesommes | - | -
+| seadtoes | seadtoes | seadtoes | seadtoesåbpoe | seadtoesommes | - | -
+| geehpes | geehpes | gyöhpehke, geehpes | gyöhpehkåbpoe, geahpebe | gyöhpehkommes, geehpemes | gyöhpehkem, geehpesem | gyöhpehkasse, geehpesasse
+| tjeehpes | tjeehpes | tjeehpes, tjååhpehke | tjeehpebe, tjeehpesåbpoe, tjååhpehkåbpoe | tjeehpemes, tjeehpesommes, tjååhpehkommes | tjååhpehkem | tjååhpehkasse
+| sneehpes | sneehpes | sneehpes, snååhpehke | sneehpesåbpoe, sneehpebe, snaehpebe, snååhpehkåbpoe | sneehpesommes, sneehpemes, snååhpehkommes | sneehpesem, snååhpehkem | sneehpesasse, snååhpehkasse
+| gïemhpes | gïemhpes | gïemhpe | gïemhpebe | gïemhpemes | gïemhpem | gïemhpese
+| njeerpes | njeerpes | njeerpes, njåårpehke | njeerpebe, njeerpesåbpoe, njåårpehkåbpoe | njeerpemes, njeerpesommes, njåårpehkommes | njeerpesem, njåårpehkem | njeerpesasse, njåårpehkasse
+| gaavnjeres | gaavnjeres | gaavnjeres | - | - | - | -
+| ïskeres | ïskeres, yskeres | ïskeres, yskeres | ïskeråbpoe, yskeråbpoe | ïskerommes, yskerommes | ïskerem, yskerem | ïskerasse, yskerasse
+| garmeres | garmeres | garmere | - | - | garmerem | garmerasse
+| voeres | voeres | voeres | voeresåbpoe | voeresommes | - | -
+| raavteres | raavteres | raavteres, raavtere | - | - | raavterem | raavterasse
+| bååvteres | bååvteres | bååvtere | bååvteråbpoe | bååvterommes | bååvterem | bååvterasse
+| seammaplïeres | seammaplïeres | - | - | - | - | -
+| stïeres | - | stïeres | - | - | - | -
+| varres | varres | varres | varresåbpoe | varresommes | - | -
+| mïevres | mïevres | mïevre | mïevrebe | mïevremes | mïevrem | mïevrese
+| dovres | dovre, dovres | dovres, dovres, dovrehke | dovrehkåbpoe, duvrebe | dovrehkommes, duvremes | dovrem, dovrehkem | dovrese, dovrehkasse
+| pruvres | pruvres | - | - | - | - | -
+| rööpses | reepses, rööpses | reepses, rååpsehke, rööpses | ruepsebe, rååpsehkåbpoe | rååpsehkommes, rööpsemes | reepsesem, rååpsehkem, rööpsesem | reepsesasse, rååpsehkasse, rööpsesasse
+| skaavhtes | skaavhtes | skaavhtes, skaavhtehke, skaavhtege | - | - | skaavhtehkem, skaavhtegem | skaavhtehkese, skaavhtegese
+| rïektes | rïektes | rïekte | rïektebe | rïektemes | rïektem | rïektese
+| lustes | lustes | luste, lustes | lustebe | lustemes | lustem | lustese
+| loeves | loeves | loeves | loevebe | loevemes | loevesem | loevesasse
+| slovves | slovves | slovves | slovvesåbpoe | slovvesommes | - | -
+| stööves | stööves | stööves, stååvehke | - | - | stååvehkem | stååvehkese
+| åårmegs | åårmegs | åårmege | - | - | åårmegem | åårmegasse
+| rovnegs | rovnegs, rovneges, rovnege | rovnege, rovnegs, rovneges, rovnege | rovnegåbpoe | rovnegommes | rovnegem | rovnegasse
+| gyönegs | gyönegs | gyönehke, gyönege, gyönegs | gyönehkåbpoe, gyönegåbpoe | gyönehkommes, gyönegommes | gyönehkem, gyönegem | gyönehkasse, gyönegasse
+| luvregs | luvregs | luvrege | luvregåbpoe | luvregommes | luvregem | luvregasse
+| oktegs | oktegs | oktegs | - | - | - | -
+| gieltegs | gieltegs | gieltege | gieltiegåbpoe | gieltiegommes | gieltegem | gieltegasse
+| aarmogs | aarmogs | aarmogs | aarmoegåbpoe | aarmoegommes | aarmogem | aarmogasse
+| åårmehks | åårmehks | åårmehke | - | - | åårmehkem | åårmehkasse
+| åenehks | åenehks | åenehke | åenebe, åeniehkåbpoe | åenemes, åeniehkommes | åenehkem | åenehkasse
+| måarehks | måarehks | måarehke | måarahkåbpoe | måarahkommes | måarehkem | måarehkasse
+| boerehks | boerehks | boerehke | boerehkåbpoe | boerehkommes | boerehkem | boerehkasse
+| barrehks | barrehks | barrehke | barrehkåbpoe | barrehkommes | barrehkem | barrehkasse
+| saavrehks | saavrehks | saavrehke | saavrehkåbpoe | saavrehkommes | saavrehkem | saavrehkasse
+| veaksehks | veaksehks | veaksehke | veaksahkåbpoe | veaksahkommes | veaksehkem | veaksehkasse
+| gåassehks | gåassehks | gåassehks | gåassehkåbpoe | gåassehkommes | gåassehkem | gåassehkasse
+| gaahtsehks | gaahtsehke, gaahtsehks | gaahtsehkes, gaahtsehke, gaahtsehks | gaahtsehkåbpoe | gaahtsehkommes | gaahtsehkem | gaahtsehkasse
+| vihtehks | vihtehks | vihtehke | - | - | vihtehkem | vihtehkasse
+| såålhtehks | såålhtehks | såålhtehke | såålhtehkåbpoe | såålhtehkommes | såålhtehkem | såålhtehkasse
+| buajtehks | buajtehks | buajtehke | båajtahkåbpoe | båajtahkommes | buajtehkem | buajtehkasse
+| seatadihks | seatadihks | seatadihks | - | - | seatadihkem | seatadihkese
+| njalhkedihks | njalhkedihks | njalhkedihkie | - | - | njalhkedihkiem | njalhkedæhkan
+| njalkedihks | njalkedihks | njalkedihks | - | - | njalkedihkem | njalkedihkese
+| ööjeldihks | ööjeldihks | ööjeldihks | - | - | ööjeldihkem | ööjeldihkese
+| geesjelihks | geesjelihks | geesjelihks | - | - | geesjelihkem | geesjelihkese
+| isvelihks | isvelihks | isvelihks | - | - | isvelihkem | isvelihkese
+| bårrohks | bårrohks | bårrohke | bårrohkåbpoe | bårrohkommes | bårrohkem | bårrohkasse
+| mujjels | mujjels | mujjels | mujjelåbpoe | mujjelommes | mujjelem | mujjelasse
+| ovnohkens | ovnohkens, ovnohkens, ovnohkenes | ovnohkens, ovnohkens, ovnohkenes | ovnohkenåbpoe | ovnohkenommes | ovnohkenem | ovnohkenasse
+| hiejjehts | hiejjehts | hiejjehts | hiejjiehtsåbpoe | hiejjiehtsommes | hiejjehtem | hiejjehtasse
+| bieljehts | bieljehts | bieljehts, bieljiehtadtje | bieljiehtsåbpoe | bieljiehtsommes | bieljehtem, bieljiehtadtjem | bieljehtasse, bieljiehtadtjese
+| aeblehts | aeblehts | aeblehts, aebliehtadtje | aebliehtsåbpoe | aebliehtsommes | aeblehtem, aebliehtadtjem | aeblehtasse, aebliehtadtjese
+| guelehts | guelehts | guelehts | gueliehtåbpoe | gueliehtommes | guelehtem | guelehtasse
+| byölehts | byölehts | byölehth, byölehtadtje | - | - | byölehtadtjem | byölehtadtjese
+| tjelmehts | tjelmehts | tjelmehts, tjelmiehtadtje | tjelmiehtåbpoe | tjelmiehtommes | tjelmehtem, tjelmiehtadtjem | tjelmehtasse, tjelmiehtadtjese
+| baenehts | baenehts | baenehts, baeniehtadtje | baeniehtåbpoe | baeniehtommes | baenehtem, baeniehtadtjem | baenehtasse, baeniehtadtjese
+| ovluhpehts | ovluhpehts | ovluhpehts | - | - | ovluhpehtem | ovluhpehtasse
+| kåvrehts | kåvrehts | kåvrehts | - | - | kåvrehtem | kåvrehtasse
+| jissehts | jissehts | jissehts, jissiehtadtje | jissiehtåbpoe | jissiehtommes | jissehtem, jissiehtadtjem | jissehtasse, jissiehtadtjese
+| ealjohts | ealjohts | ealjohts | ealjoehtsåbpoe, ealjoehtåbpoe | ealjoehtsommes, ealjoehtommes | ealjohtem | ealjohtasse
+| faamohts | faamohts | faamohts | faamoehtsåbpoe | faamoehtsommes | faamohtem | faamohtasse
+| gelliengïerts | gelliengïerts | - | - | - | - | -
+| måedtiesåårts | måedtiesåarhts, måedtiesåårts | - | - | - | - | -
+| gaajhkesåårts | gaajhkesåarhts, gaajhkesåårts | - | - | - | - | -
