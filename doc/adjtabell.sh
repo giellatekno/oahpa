@@ -15,25 +15,25 @@ cat $GTHOME/ped/sma/src/a_smanob.xml | grep '<l ' | tr "<" ">" | cut -d ">" -f3 
 
 echo "!!!Tabell over alle adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjalletabell.jspwiki
 echo "" >> smadoc/gen/adjalletabell.jspwiki
-echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom || Sg Acc " >> smadoc/gen/adjalletabell.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom || Sg Acc || Sg Ill" >> smadoc/gen/adjalletabell.jspwiki
 echo "!!!Reversert tabell over alle adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjalletabellrev.jspwiki
 echo "" >> smadoc/gen/adjalletabellrev.jspwiki
-echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom || Sg Acc " >> smadoc/gen/adjalletabellrev.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom || Sg Acc || Sg Ill" >> smadoc/gen/adjalletabellrev.jspwiki
 
 echo "!!!Tabell over dict-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjdicttabell.jspwiki
 echo "" >> smadoc/gen/adjdicttabell.jspwiki
-echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom || Sg Acc " >> smadoc/gen/adjdicttabell.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom || Sg Acc || Sg Ill" >> smadoc/gen/adjdicttabell.jspwiki
 echo "!!!Reversert tabell over dict-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjdicttabellrev.jspwiki
 echo "" >> smadoc/gen/adjdicttabellrev.jspwiki
-echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom || Sg Acc " >> smadoc/gen/adjdicttabellrev.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom || Sg Acc || Sg Ill " >> smadoc/gen/adjdicttabellrev.jspwiki
 
 echo "!!!Tabell over oahpa-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjoahpatabell.jspwiki
 echo "" >> smadoc/gen/adjoahpatabell.jspwiki
-echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom || Sg Acc " >> smadoc/gen/adjoahpatabell.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom || Sg Acc || Sg Ill " >> smadoc/gen/adjoahpatabell.jspwiki
 
 echo "!!!Reversert tabell over oahpa-adjektiv - OBS! arbeidsliste for debugging" > smadoc/gen/adjoahpatabellrev.jspwiki
 echo "" >> smadoc/gen/adjoahpatabellrev.jspwiki
-echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom || Sg Acc " >> smadoc/gen/adjoahpatabellrev.jspwiki
+echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Sg Nom || Superl Sg Nom || Sg Acc || Sg Ill " >> smadoc/gen/adjoahpatabellrev.jspwiki
 
 # Making the 4 columns
 cat t1|sed 's/$/+A+Attr/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' > tattr1
@@ -56,15 +56,19 @@ cat t1|sed 's/$/+A+Sg+Acc/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '�
 cat t2|sed 's/$/+A+Sg+Acc/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' > tAcc2
 cat t3|sed 's/$/+A+Sg+Acc/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' > tAcc3
 
-paste -d"|" t1 tattr1 tsgnom1 tcomp1 tsuperl1 tAcc1 | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms1
-paste -d"|" t2 tattr2 tsgnom2 tcomp2 tsuperl2 tAcc2 | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms2
-paste -d"|" t3 tattr3 tsgnom3 tcomp3 tsuperl3 tAcc3 | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms3
+cat t1|sed 's/$/+A+Sg+Ill/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' > tIll1
+cat t2|sed 's/$/+A+Sg+Ill/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' > tIll2
+cat t3|sed 's/$/+A+Sg+Ill/;'| lookup -q $GTHOME/gt/sma/bin/isma.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' > tIll3
+
+paste -d"|" t1 tattr1 tsgnom1 tcomp1 tsuperl1 tAcc1 tIll1 | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms1
+paste -d"|" t2 tattr2 tsgnom2 tcomp2 tsuperl2 tAcc2 tIll2 | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms2
+paste -d"|" t3 tattr3 tsgnom3 tcomp3 tsuperl3 tAcc3 tIll3 | sed 's/|/ | /g;' | sed 's/^/| /'| sed 's/,/, /g;' | grep '[A-Za-z]' > tadjforms3
 
 cat tadjforms1 >> smadoc/gen/adjalletabell.jspwiki
 cat tadjforms2 >> smadoc/gen/adjdicttabell.jspwiki
 cat tadjforms3 >> smadoc/gen/adjoahpatabell.jspwiki
 
-rm -f tattr*  tsgnom*  tcomp*   tsuperl* tAcc*
+rm -f tattr*  tsgnom*  tcomp*   tsuperl* tAcc* tIll*
 
 cat t1 | perl -nle 'print scalar reverse $_' > t1rev
 cat t2 | perl -nle 'print scalar reverse $_' > t2rev
