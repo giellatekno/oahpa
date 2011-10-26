@@ -1,0 +1,162 @@
+!!!Møte 26.10.11
+
+Til stades: Ciprian, Heli, Trond, Lene
+
+!!Saksliste
+* Leksa
+* MorfaS
+* Numra
+* sme-sma-harmonisering
+* Neste møte
+
+
+!! Leksa
+
+!leksika
+
+Finsk, svensk er installert i Leksa. Nye lister er installert med fulle sett, og fungerer.
+
+Det ser ut til at feilkjelda er manglande bøker: ''Manglande bok i fin: 323,  sme: 81, swe: 408,  nob: 338''. 
+
+Det finst ord som ikkje er henta frå bøker, men oversikta over
+viser at vi må komplettere bok-info i Xsme-katalogane.
+
+[nu-oahpa leksa|http://oahpa.uit.no/nu_oahpa/leksa/] places fin>sme og sme>fin fungerer for alle sett, 
+men ikkje for alle bøker.
+
+
+__TILTAK__
+* Lage ei sjekkliste for manglande bøker + prøv automatikk, og legg inn samme dummyer som i smaOahpa: <sem class="YYY" />
+<book name="xxx" /> (__Cip__)
+* Sjekk  (__Heli__)
+
+
+!! MorfaS
+
+!Verb
+Fungerer ikkje.
+
+{{{
+Exception Type: IndexError at /nu_oahpa/morfa_v/
+Exception Value: list index out of range
+}}}
+
+
+__TILTAK__
+
+* Få verb til å fungere (keine Ahnung) __Heli ++__
+
+!Pronomen
+Dei står ikkje på lista til venstre i MORFA-S.
+
+Dei blir generert v.hj.av denne fila ped/sme/src/prongeneration.txt.
+
+{{{
+cat prongeneration | lookup -flags mbTT -utf8 $GTHOME/sme/bin/isme-GG.restr.fst
+cat prongeneration | lookup -flags mbTT -utf8 $GTHOME/sme/bin/isme-KJ.restr.fst
+}}}
+
+{{{
+~/main/ped$cat sme/src/prongeneration.txt | head -2
+mun+Pron+Pers+Sg1+Nom
+mun+Pron+Pers+Sg1+Gen
+
+~/main/ped$cat sme/src/prongeneration.txt | head -2 | lookup -flsgs mbTT -utf8 $GTHOME/gt/sme/bin/isme-GG.restr.fst
+
+mun+Pron+Pers+Sg1+Nom	mun
+
+mun+Pron+Pers+Sg1+Gen	mu
+}}}
+
+Pronomen har ingen oversetting.
+
+
+__TILTAK__
+* Implementer pronomen i Morfa-S (__Heli__)
+
+
+!! Numra
+
+Klokka og dato er no implementert.
+
+fst-ane blir kompilert med kommando {{make GTLANG=sme}} og plassert i {{$GTHOME/gt/sme/bin}}
+
+Ein person med sudo må deretter kopiere til /opt/smi/sme/bin.
+
+{{{
+/opt/smi/sme/bin
+-rwxr-xr-x 1 root root 1755 okt 26 11:17 clock-sme.fst (string to numeral)
+-rwxr-xr-x 1 root cvs  1776 aug  8 12:51 iclock-sme.fst (numeral to string)
+}}}
+
+Jf. smaoahpa, som har eit anna system:
+
+{{{
+-rwxrwxr-x 1 ryan  oahpa    1756 jun 26 21:53 /home/smaoahpa/smaoahpa/gtsvn/gt/sma/bin/clock-sma.fst
+-rwxrwxr-x 1 ryan  oahpa    1471 sep 30 21:18 /home/smaoahpa/smaoahpa/gtsvn/gt/sma/bin/date-sma.fst
+}}}
+
+
+!Ordinals
+{{{
+okta
+okta	1
+okta	okta
+
+akta
+akta	akta
+}}}
+
+__TILTAK__
+
+* Lage differensiert sme-inum.fst (__Trond__)
+
+
+!Klokka
+Fungerer i to retningar, men har formatieringsproblem.
+Den manglande fila {{clock-sme.fst}} er no lagt til i /opt.
+
+__TILTAK__
+
+* Overføre sloppy talformat frå sma (__Trond__)
+
+!Dato
+Fungerer berre i ei retning, numeral to string.
+
+Men begge filene var i opt-katalogen.
+
+{{{
+-rwxrwxr-x 1 trond trond 1253 aug 16 16:32 /opt/smi/sme/bin/date-sme.fst
+-rwxr-xr-x 1 root  root  1354 okt 17 14:07 /opt/smi/sme/bin/idate-sme.fst
+}}}
+
+__TILTAK__
+* Implementer ''String to numeral'' og test. (__Heli__)
+* Overføre sloppy talformat frå sma (__Trond__)
+
+!! sme-sma-harmonisering
+
+I prinsipp skal vi ta over alt frå sma-oahpa, __men__ med visse endringar.
+T.d. ikkje meaning-group. Dette blir tema for neste møte.
+
+
+!tcomm, statpref
+
+''Statpref'': Cip implementerer sma-systemet (ta første t-elementet).
+
+__TILTAK__
+
+* Ciprian oppretter en ny katalog for å prøve ut statpref-systemet fra sma.
+* Vi legg til tcomm="yes", men lar tcomm="no" vere uuttrykt (det står ikkje som attributt)
+
+!! Neste møte
+
+* Onsdag 9.11. kl. 11:00
+
+
+
+
+
+
+
+
