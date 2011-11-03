@@ -1,0 +1,129 @@
+!!!Čoahkkin univ-oahpa 11.03.2011
+
+Čoahkkimis: Lene, Biret-Ánne, Trond
+
+
+!!Áššit
+
+* DeepDict
+* Oahppanbálggis
+* Helsinki ja Oulu
+* Ovddosguvlui
+* Boahtte čoahkkin
+
+
+!! DeepDict
+* @SUBJ + V Pass - sierra kategoriija
+** eallu can + eallu can __be__
+* adposišuvnnat
+* sátnehámiid frekveansa
+* Čorget adv-fiila
+
+!dis
+
+Mii fertet buoridit disambiguahtora.
+
+Váttis áššit:
+
+* ođđa pos: sajis Adv
+* goallossánit: Heastastálla
+* G3 ja Actor: bassi
+* Pr vs Po vs Adv
+
+Makkár korpus.
+
+** (at)titt:Deanu jnv.
+** Ó
+** Đ
+
+* Heivehit interface jnv ovdal juovllaid (__Tino__)
+* Boundcorpus ok geavahit? (__Sjur__)
+* Mannat korpusa čađa (válljet teavsttaid) (__Lene, __)
+* Buoridit korpusformateren (__Børre__)
+* Buoridit disambiguatora ovdal 1.5.12 (__Clarino, Lene, Trond, Grc__)
+* Ráhkadit plána CLARINO-resurssaid ektui
+
+! Oahppanbálggis
+* Vejolaš čovdosat:
+** rabas siiddut
+** rabas sisaloggen, muhto mii registreret geavaheddjiid, buorre min statistihkkii ja oahpa-loggii
+** sisaloggen seammá bálgái buot ovttasbargu-ásahusaid studeanttaide, giellaválljen ++
+** sisaloggen dušše UiT-studeanttaide, ja parallealla bálggis Oulu/Helsset-studeanttaide
+* ásahit oktasaš log-dokumeantta svn:s oahppanbálgá bargui
+* guorahallat vuoigatvuođaid geavahit earáid divttaid, min iežamet ÁninDánin-jietnafiillaid jnv. __Lene, Trond__
+* guorahallat vejolašvuođaid fleksibiliseret studeanta- ja eksamendieđiheami (áigemeriid ja giellagáibádusaid) __Biret Á__
+
+
+! Helsset ja Oulu
+Eat leat ožžon AA-sátnelisttuid.
+
+__Bargolistu__
+
+* Čállit status-quo-dokumeantta __Lene, Biret Á__
+* Jorgalit grammatihka eŋgelasgillii __Trond ohcá studeantta__
+* Bidjat Oahpa smefin webdictii (__Trond, Ciprian__)
+
+! Ovddosguvlui
+
+Ođđa bargobihtát __Biret Á, Lene__
+* Morfa C: refleksiiva, resiproka ja čujuheaddji pronomeniid 
+* Morfa C: eanet adjektiiva bargobihtáid
+* Vasta Cealkka
+* Vasta
+* Sahka dialogat: eambbo dialogat, rievdadit oahpásmuvvandialogaid
+
+! Boahtte čoahkkin
+18.11 dii 9.00
+
+
+
+!!!Mielddus: DeepDict-sagastallan
+
+
+Tilpasning af GUI kræver  at i kigger på det nuværende interface og laver en liste af alt der ikke fungerer som i vil, samt alt i mener der mangler.
+
+
+
+Så la oss halde fram diskusjonen, med dette som eit utgangspunkt:
+
+* Samisk dep-analysert tekst på GramTrans sin server i DeepDict-grensesnittet
+- Inkludert i det: Diskusjon av taggeformat, evt. skriving av script (men vi bruker vislcg3 så det bør vere relativt kompatibelt)
+For at komme i gang kræver det "kun" et dependens-opmærket korpus, en basepos-liste med frekvens, en fullform-liste med frekvens, og en ordbog af udvalgte former.
+Der kan også bruges semantic-PoS frekvens hvis opmærkningen indeholder semantic.
+
+Først når man har kørt et korpus gennem kan man se hvor der skal tilpasses for det sprog.
+
+- (Framtidig) tilgang for oss til å legge til nye tekstar
+Det kræver ihvertfald noget udvikling. Som det er nu, er det færdige format ikke venligt at opdatere; det kræver næsten altid en genkørsel af alle korpora for det sprog. Det er noget der skal forbedres.
+
+- Utviding av ordklasserepertoaret til å omfatte også pre- og postposisjonar (evt. minimalt legge +Pr, +Po under Adverb-opsjonen)
+- nye grensesnttspråk, modularisert slik at vi kan leggje til fleire språk ad lib
+
+For Tino og Giellatekno: Evt. andre arbeidsoppgåver, avhengig av kor mykje arbeid som ligg i DeepDict-inkorporeringa.
+
+Skal også lige nævnes at der ikke er noget i vejen for at lægge de processerede filer + GUI på jeres maskiner. Det fylder dog...selv det mindste sprog's Deepdict DB fylder 3gb; men det er også noget der skal forbedres.
+
+# Hvor store opmærkede korpora har i?
+## vástidit dasa
+# en basepos-liste med frekvens, en fullform-liste med frekvens, og
+## …det er vel eit spm om grep ... | wc -l på korpus? Ja, i dette tilfælde er det nok.
+# En liste af godkendte ordformer som skal bruges i det færdige produkt; 
+  til at filtrere stavefejl og andet fra.
+## Svar: fst. 
+
+
+* V:
+** http://gramtrans.com/deepdict/lookup.php?word=leat&class=V&lang=smi
+** http://gramtrans.com/deepdict/lookup.php?word=mannat&class=V&lang=smi
+** http://gramtrans.com/deepdict/lookup.php?word=boahtit&class=V&lang=smi
+* N:
+** http://gramtrans.com/deepdict/lookup.php?word=boazu&class=N&lang=smi
+** http://gramtrans.com/deepdict/lookup.php?word=eallu&class=N&lang=smi
+* ADJ:
+** http://gramtrans.com/deepdict/lookup.php?word=olu&class=ADJ&lang=smi
+** http://gramtrans.com/deepdict/lookup.php?word=stuoris&class=ADJ&lang=smi
+* ADV:
+** http://gramtrans.com/deepdict/lookup.php?word=de&class=ADV&lang=smi
+** http://gramtrans.com/deepdict/lookup.php?word=nu&class=ADV&lang=smi
+
+
