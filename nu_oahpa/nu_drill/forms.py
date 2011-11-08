@@ -8,7 +8,7 @@ from django.http import Http404
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-#import settings
+import settings
 from random import randint
 from models import *
 import time
@@ -275,30 +275,33 @@ def is_correct(self, game, example=None):
     """
     Determines if the given answer is correct (for a bound form).
     """
+    self.game = game
+    self.example = example
     if not self.is_valid():
         return False
 
     self.userans = self.cleaned_data['answer']
-    answer = self.userans.rstrip()
-    answer = answer.lstrip()
+    answer = self.userans.strip()
+    #answer = answer.lstrip()
     if not game == "numra":
         answer = answer.rstrip('.!?,')
     
     self.error = "error"
-    iscorrect = False
+    self.iscorrect = False
 
-    if answer in set(self.correct_anslist) or \
-           answer.lower() in set(self.correct_anslist) or \
-           answer.upper() in set(self.correct_anslist):
+    if self.answer in set(self.correct_anslist) or \
+           self.answer.lower() in set(self.correct_anslist) or \
+           self.answer.upper() in set(self.correct_anslist):
         self.error = "correct"
-        iscorrect = True
+        self.iscorrect = True
 
     # Log information about user answers.
-    correctlist = ",".join(self.correct_anslist)
-    today=datetime.date.today()
-    log, c = Log.objects.get_or_create(userinput=answer,correct=correctlist,iscorrect=iscorrect,\
-                                       example=example,game=game,date=today)
-    log.save()
+    correctlist = ",".join([a for a in self.correct_anslist])
+    self.correctlist = correctlist
+    self.log_response()
+    #today=datetime.date.today()
+    #log, c = Log.objects.get_or_create(userinput=answer,correct=correctlist,iscorrect=iscorrect,example=example,game=game,date=today)
+    #log.save()
 
 def set_correct(self):
     """
@@ -307,6 +310,8 @@ def set_correct(self):
     
     if self.correct_ans:
         self.correct_answers = self.correct_ans[:]
+        if type(self.correct_answers) == list:
+            self.correct_answers = ', '.join(self.correct_answers)
 
 
 def set_settings(self):
@@ -418,8 +423,16 @@ def get_feedback(self,word,tag,wordform,dialect,language):
         self.feedback = self.feedback.replace("WORDFORM", "\"" + wordform + "\"") 
         #print "FEEDBACK", self.feedback
 
+# #
+#
+# Oahpa form meta-classes
+#
+# #
 
 class OahpaSettings(forms.Form):
+"""
+The metaform for game settings. Various games subclass from this form.
+"""
     set_settings = set_settings
 
     def set_default_data(self):
@@ -604,12 +617,12 @@ class QuizzQuestion(OahpaQuestion):
 class NumSettings(OahpaSettings):
 
     maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
-    numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
+    numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
     numlanguage = forms.ChoiceField(initial='sme', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
-    default_data = {'language' : 'sme', 'numlanguage' : 'sme', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
+    default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'string'}
     # Link to grammatical explanation for each page
     grammarlinkssme = Grammarlinks.objects.filter(language="sme")
-    grammarlinksno = Grammarlinks.objects.filter(language="no")
+    grammarlinksno = Grammarlinks.objects.filter(language="nob")
                     
     def __init__(self, *args, **kwargs):
         self.set_settings
@@ -619,33 +632,84 @@ class NumQuestion(OahpaQuestion):
     """
     Questions for numeral quizz
     """
+    game_log_name = 'numra'
+
+    def is_correct(self, game, example=None):
+        self.game = game
+        self.example = example
+
+        if not self.is_valid():
+            return False
+
+        self.userans = self.cleaned_data['answer']
+        self.answer = self.userans.strip()
+
+        self.error = "error"
+        self.iscorrect = False
+
+        correct_test = self.game_obj.check_answer(self.question_str,
+                                                  self.userans,
+                                                  self.correct_anslist)
+        if correct_test:
+            self.error = "correct"
+            self.iscorrect = True
+
+        self.correctlist = u",".join(list(set(self.correct_anslist)))
+
+        self.log_response()
     
-    def __init__(self, numeral, num_string, num_list, gametype, userans_val, correct_val, *args, **kwargs):
+    def __init__(self, numeral, num_string, num_list, gametype, userans_val, correct_val, game, *args, **kwargs):
 
         numeral_widget = forms.HiddenInput(attrs={'value' : numeral})
+        kwargs['correct_val'] = correct_val
+        self.userans_val = self.userans = userans_val
+        self.game_obj = game
+        if 'no_eval_correct' in kwargs:
+            no_eval_correct = kwargs.pop('no_eval_correct')
+        else:
+            no_eval_correct = False
+
         super(NumQuestion, self).__init__(*args, **kwargs)
+        wforms = []
+        self.relaxings = []
 
         # Initialize variables
         if gametype == "string":
             self.init_variables(force_unicode(numeral), userans_val, [ numeral ])
             example = num_string
+            self.question_str = num_string
         else:
             self.init_variables(force_unicode(num_list[0]), userans_val, num_list)
+            wforms = sum([relax(force_unicode(item)) for item in num_list], [])
+            # need to subtract legal answers and make an only relaxed list.
+            self.relaxings = [item for item in wforms if item not in num_list]
             example = numeral
+            self.question_str = numeral
         # field length in numra set to 45
-        self.generate_fields(45,30)
+        #self.generate_fields(45,30)
+
+        self.correct_anslist = self.correct_anslist + [force_unicode(f) for f in wforms]
 
         self.fields['numeral_id'] = forms.CharField(widget=numeral_widget, required=False)
         if gametype == "string":
             self.numstring = num_string
         self.numeral = numeral
 
-        self.is_correct("numra", example)
+        # Correctness not evaluated here but in child class. Short fix
+        
+        if not no_eval_correct:
+            self.is_correct(self.game_log_name, example)
 
         # set correct and error values
-        if correct_val == "correct":
-            self.error="correct"
-
+        if correct_val:
+            if correct_val == "correct":
+                self.error="correct"
+            # relax
+            if userans_val in self.relaxings:
+                self.is_relaxed = "relaxed"
+                self.strict = 'Strict form'
+            else:
+                self.is_relaxed = ""
 
 def select_words(self, qwords, awords):
     """
@@ -713,6 +777,7 @@ def select_words(self, qwords, awords):
 # #
 
 class KlokkaSettings(NumSettings):  # copied from smaoahpa
+    numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES_PL, widget=forms.RadioSelect)
     gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
     default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'numeral'}
     grammarlinkssme = Grammarlinks.objects.filter(language="sme")
@@ -746,6 +811,9 @@ class KlokkaQuestion(NumQuestion):  # copied from smaoahpa
         self.userans_val = self.userans = userans_val
 
         kwargs['num_list'] = present_list
+        
+        # Prevent double evaluation of correctness
+        kwargs['no_eval_correct'] = True
         super(KlokkaQuestion, self).__init__(*args, **kwargs)
 
         wforms = []
@@ -758,7 +826,7 @@ class KlokkaQuestion(NumQuestion):  # copied from smaoahpa
         else:
             self.init_variables(force_unicode(accept_list), userans_val, present_list)
             wforms = sum([relax(force_unicode(item)) for item in accept_list],[])
-            # tog bort relax[force_unicode(item) for item in accept_list]
+        
             # need to subtract legal answers and make an only relaxed list.
             self.relaxings = [item for item in wforms if item not in accept_list]
             example = numeral
@@ -771,7 +839,7 @@ class KlokkaQuestion(NumQuestion):  # copied from smaoahpa
             self.numstring = num_string
         self.numeral = numeral
 
-        self.is_correct("numra", example)
+        self.is_correct(self.game_log_name, example)
 
         if correct_val:
             if correct_val == "correct":
@@ -818,7 +886,7 @@ class KlokkaQuestion(NumQuestion):  # copied from smaoahpa
             pass
         return options
 
-    def is_correct(self, game, example=None):
+"""    def is_correct(self, game, example=None):
         if not self.is_valid():
             return False
         self.userans = self.cleaned_data['answer']
@@ -839,7 +907,8 @@ class KlokkaQuestion(NumQuestion):  # copied from smaoahpa
                                                answer.upper() in set(self.correct_anslist):
             self.error = "correct"
             iscorrect = True
-                                                
+"""
+            
 # #
 #
 # Dato Forms

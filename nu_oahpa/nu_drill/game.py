@@ -8,8 +8,12 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404, render_to_response
 from random import randint
 #from django.contrib.admin.views.decorators import _encode_post_data, _decode_post_data
-import os,codecs,sys,re
+import os,codecs,sys,re,itertools
+import settings
 from nu_oahpa.nu_drill.forms import KlokkaQuestion
+
+FST_DIRECTORY = "/opt/smi/sme/bin"
+LOOKUP_TOOL = "/usr/local/bin/lookup"
 
 """def relax(strict):
     Returns a list of relaxed possibilities, making changes by relax_pairs.
@@ -249,7 +253,7 @@ class BareGame(Game):
     def get_baseform(self, word_id, tag):
 
         basetag=None
-        if tag.pos=="N" or tag.pos=="A" or tag.pos=="Num":
+        if tag.pos=="N" or tag.pos=="A" or tag.pos=="Num" or tag.pos=="Pron":
             if tag.number and tag.case != "Nom":
                 tagstring = tag.pos + "+" + tag.number + "+Nom"
             else:
@@ -410,9 +414,10 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-
+    generate_fst = FST_DIRECTORY+"/"+'sme-num.fst'
+    answers_fst = FST_DIRECTORY+"/"+'sme-inum.fst'
+    
     def get_db_info(self, db_info):
-
         numeral=""
         num_list = []
 
@@ -429,16 +434,21 @@ class NumGame(Game):
         import subprocess
         from threading import Timer
 
-        fstdir="/opt/smi/sme/bin"
+        #fstdir="/opt/smi/sme/bin"
         # replaced variable language by sme
-        lookup = "/usr/local/bin/lookup"
-        gen_norm_fst = fstdir + "/" + fstfile
+        #lookup = "/usr/local/bin/lookup"
+        gen_norm_fst = fstfile
         try:
             open(gen_norm_fst)
         except IOError:
             raise Http404("File %s does not exist." % gen_norm_fst)
 
-        gen_norm_command = [lookup, "-flags", "mbTT", "-utf8",  "-d", gen_norm_fst]
+        gen_norm_command = [LOOKUP_TOOL, "-flags", "mbTT", "-utf8",  "-d", gen_norm_fst]
+
+        try:
+            forms.encode('utf-8')
+        except UnicodeDecodeError:
+            pass
 
         num_proc = subprocess.Popen(gen_norm_command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         def kill_proc(proc=num_proc):
@@ -454,6 +464,67 @@ class NumGame(Game):
         output, err = num_proc.communicate(forms)
 
         return output, err
+
+    def clean_fst_output(self, output):  #Taken over from smaoahpa
+        num_tmp = output.decode('utf-8').splitlines()
+        cleaned = []
+        for num in num_tmp:
+            line = num.strip()
+            # line = line.replace(' ','')
+            if line:
+                nums = line.split('\t')
+                if len(nums) == 3:
+                    nums = (nums[0], '?')
+                else:
+                    nums = tuple(nums)
+            cleaned.append(nums)
+        return cleaned
+
+    def strip_unknown(self, analyses):
+        return [a for a in analyses if a[1] != '?']
+
+    def check_answer(self, question, useranswer, formanswer):
+        gametype = self.settings['numgame']
+        # print gametype
+        if useranswer.strip():
+            forms = useranswer.encode('utf-8')
+
+            if gametype == 'string':
+                fstfile = self.generate_fst
+            elif gametype == 'numeral':
+                fstfile = self.answers_fst
+
+            output, err = self.generate_forms(forms, fstfile)
+
+            num_list = self.clean_fst_output(output)
+            num_list = self.strip_unknown(num_list)
+            # print repr([question, useranswer, num_list])
+
+            # 'string' refers to the question here, not the answer
+            if gametype == 'string':
+                # user answer must match with numeral generated from
+                # the question
+
+                if useranswer in [a[0] for a in num_list] and \
+                   question in [a[1] for a in num_list]:
+                    return True
+                else:
+                    return False
+
+            elif gametype == 'numeral':
+                # Numbers generated from user answer must match up
+                # with numeral in the question
+                num_list = num_list + formanswer
+                try:
+                    _ = int(useranswer)
+                    return False
+                except ValueError:
+                    pass
+                if question in [a[1] for a in num_list] or \
+                   useranswer in num_list:
+                    return True
+                else:
+                    return False
                 
         
     def create_form(self, db_info, n, data=None):
@@ -467,33 +538,45 @@ class NumGame(Game):
         # Add generator call here
         #fstdir="/Users/saara/gt/" + language + "/bin"        
         #lookup ="/Users/saara/bin/lookup"
-        
-        fstdir="/opt/smi/" + language + "/bin"
-        lookup = "/usr/local/bin/lookup"
-        gen_norm_fst = fstdir + "/" + language + "-num.fst"
 
-        gen_norm_lookup = "echo " + db_info['numeral_id'] + " | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
+        fstfile = self.generate_fst
+        q, a = 0, 1
+        #fstdir="/opt/smi/" + language + "/bin"
+        #lookup = "/usr/local/bin/lookup"
+        lookupstr = "%s\n" % db_info['numeral_id']
+        output, err = self.generate_forms(lookupstr, fstfile)
 
-        num_tmp = os.popen(gen_norm_lookup).readlines()
+        #gen_norm_lookup = "echo " + db_info['numeral_id'] + " | " + lookup + " -flags mbTT -utf8 -d " + gen_norm_fst
+
+        #num_tmp = os.popen(gen_norm_lookup).readlines()
+        num_tmp = output.splitlines()
         num_list=[]
         for num in num_tmp:
             line = num.strip()
             line = line.replace(' ','')
             if line:
                 nums = line.split('\t')
-                num_list.append(nums[1].decode('utf-8'))
+                num_list.append(nums[a].decode('utf-8'))
         numstring = num_list[0]
-        form = (NumQuestion(db_info['numeral_id'], numstring, num_list, self.settings['numgame'], db_info['userans'], db_info['correct'], data, prefix=n))
+        form = (NumQuestion(db_info['numeral_id'], numstring, num_list, self.settings['numgame'], db_info['userans'], db_info['correct'], data, prefix=n,game=self))
 
         return form, numstring
 
 class Klokka(NumGame):
 
+    QuestionForm = KlokkaQuestion
+
+    generate_fst = FST_DIRECTORY+"/"+'iclock-sme.fst'
+    answers_fst = FST_DIRECTORY+"/"+'clock-sme.fst'
+
+    error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
+     or Numra is unable to look up words."
+    
     def get_db_info(self, db_info):
         from random import choice
 
         hour = str(randint(0, 23))
-        mins = '00'
+        #mins = '00'
 
         if len(hour) == 1:
             hour = '0' + hour
@@ -519,40 +602,40 @@ class Klokka(NumGame):
 
 
     def create_form(self, db_info, n, data=None):
-        if self.settings['gametype'] in ["kl1", "kl2", "kl3"]:
-            language = 'sme'
+        #if self.settings['gametype'] in ["kl1", "kl2", "kl3"]:
+         #   language = 'sme'
 
         numstring = ""
-
-        fstfile = "iclock-sme.fst"
+        #fstdir = "/opt/smi/" + language + "/bin"
+        fstfile = self.generate_fst
         q, a = 0, 1
 
         # # need to extract accepted and nonaccepted, using
         # # an inverted int-clock-sma.fst
 
-        lookupstr = "%s\n\n%s+Use/NG\n" % (db_info['numeral_id'], db_info['numeral_id'])
+        #lookupstr = "%s\n\n%s+Use/NG\n" % (db_info['numeral_id'], db_info['numeral_id'])
 
-        # # lookup = "%s\n" % db_info['numeral_id']
+        lookupstr = "%s\n" % db_info['numeral_id']
         output, err = self.generate_forms(lookupstr,fstfile)
 
-        norm, allnum = output.split('\n\n')[0:2]
+        #norm, allnum = output.split('\n\n')[0:2]
 
         norm_list = []
-        for num in norm.splitlines():
+        for num in output.splitlines():
             line = num.strip()
             if line:
                 nums = line.split('\t')
                 norm_list.append(nums[a].decode('utf-8'))
 
-        allnum_list = []
+        """allnum_list = []
         for num in allnum.splitlines():
             line = num.strip()
             if line:
                 if line.find('?') == -1:
                     nums = line.split('\t')
-                    allnum_list.append(nums[a].decode('utf-8'))
+                    allnum_list.append(nums[1].decode('utf-8'))
 
-        allnum_list += norm_list
+        allnum_list += norm_list"""
 
         try:
             numstring = norm_list[0]
@@ -560,16 +643,18 @@ class Klokka(NumGame):
             error = "Morfa.Clock.create_form: Database is improperly loaded, or Numra is unable to look up words."
             raise Http404(error)
 
-        form = (KlokkaQuestion(
+        form = (self.QuestionForm(
                     numeral=db_info['numeral_id'],
                     num_string=numstring,
                     present_list=norm_list,
-                    accept_list=allnum_list,
+                    accept_list=norm_list,
                     gametype=self.settings['numgame'],
                     userans_val=db_info['userans'],
                     correct_val=db_info['correct'],
                     data=data,
-                    prefix=n)
+                    prefix=n,
+                    game=self
+                    )
                 )
 
         return form, numstring
@@ -578,8 +663,8 @@ class Dato(Klokka):
     from forms import DatoQuestion as QuestionForm
     # QuestionForm = DatoQuestion
 
-    generate_fst = 'idate-sme.fst'
-    answers_fst = 'date-sme.fst'
+    generate_fst = FST_DIRECTORY+"/"+'idate-sme.fst'
+    answers_fst = FST_DIRECTORY+"/"+'date-sme.fst'
 
     error_msg = "Dato.create_form: Database is improperly loaded, or Dato is unable to look up forms."
 

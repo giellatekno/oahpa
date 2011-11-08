@@ -178,6 +178,12 @@ class Gameview:
                 self.settings['gamename'] = self.gamenames[self.settings['adjcase']]
             else:
                 self.settings['gamename'] = self.gamenames[self.settings['adj_context']]
+        if self.settings['pos'] == "Pron":
+            if self.settings['gametype'] == "bare":
+                self.settings['gamename'] = self.gamenames[self.settings['proncase']]
+            else:
+                self.settings['gamename'] = self.gamenames[self.settings['pron_context']]
+                        
 
         c = RequestContext(request, {
             'settingsform': settings_form,
@@ -260,6 +266,16 @@ def mgame_l(request):
     trackGrade('Morfa-Num', request, c)
     return render_to_response('mgame_l.html', c, context_instance=RequestContext(request))
 
+def mgame_p(request):
+
+    mgame = Gameview()
+    mgame.init_settings()
+    mgame.settings['pos'] = "Pron"
+    mgame.settings['gametype'] = "bare"
+
+    c = mgame.create_mgame(request)
+    trackGrade('Morfa-Pron', request, c)
+    return render_to_response('mgame_p.html', c, context_instance=RequestContext(request))
 
 ### Contextual Morfas
 
