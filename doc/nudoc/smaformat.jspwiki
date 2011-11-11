@@ -1,9 +1,4 @@
-!!!Converting to sma-format
-
-
-
-
-!!Konvertering til sma-stil
+!!!Konvertering til sma-stil
 
 Heli har tatt over heile koden frå sma for numra (jf. game.py)
 
@@ -21,28 +16,28 @@ __TILTAK__
 * __Ciprian, Heli__ overfører til sma-format og legg inn i univ_oahpa
 
 
-! Leksikonfilene
+!! Leksikonfilene
 
-Lene går gjennom entriane i leksikon og merker <mg> osv (til måndag morgon 14.11)
+Lene går gjennom entriane i leksikon (til måndag morgon 14.11)
 
-* Legge til oversettelser og bokinfo fra AA-listen fra Oulu (__Lene - OK__)
-* Dele opp i entryer når entryen bør ha minst 2 <mg> (__Lene__)
-** adv_smenob.xml ok - alle i normfst
-** adjectives.xml ok - alle i normfst
-** verbs.xml ok - alle i normfst
-** nouns.xml ok  - alle i normfst
-** prop_nouns.xml ok  - alle i normfst - stedsnavn som var i nouns.xml. Det var meninga at de skulle inngå i MorfaS, men generinga har ikke fungert pga av disse krever N+Prop. Men det kunne være lurt å ha dem med.
-** propernouns.xml ok - denne skal ikke genereres - kun for Leksa
-** numerals.xml - her er både N+Coll, A+Ord og Num
-* Endre attibutter til sma-stil (__Lene__) ok (det meste)
+* Legge til oversettelser og bokinfo fra AA-listen fra Oulu (__Lene - ok__)
+* Dele opp i entryer når entryen bør ha minst 2 <mg>, sjekke mot normfst (__Lene - ok__)
+** adv_smenob.xml  - ok
+** adjectives.xml  - ok
+** verbs.xml   - ok
+** nouns.xml - ok
+** prop_nouns.xml  -  stedsnavn som var i nouns.xml. Det var meninga at de skulle inngå i MorfaS, men generinga har ikke fungert pga av disse krever N+Prop. Men det kunne være lurt å ha dem med. - ok
+** propernouns.xml ok - denne skal ikke genereres - kun for Leksa - ok
+** numerals.xml - i denne er det er både N+Coll, A+Ord og Num - for Morfa
+* Endre attibutter til sma-stil (__Lene__) 
 ** <noleksa/> til exclude="smenob" - ok
 ** første nob-oversettelse og fin-oversettelse skal ha stat="pref"
-** gen_only="Pl" - ok - de som er igjen nouns.xml er slike som har lemma i sg. Dette er noe som ikke finnes i sma, vi får se på hvilken løsning vi velger.
+** gen_only="Pl"  - de som er igjen nouns.xml er slike som har lemma i sg. Dette er noe som ikke finnes i sma, vi får se på hvilken løsning vi velger. - ok
 ** gen_only="Sg" - ok
 ** tcomm="yes" - ok
-** type="Actor" - ok
-** type="G3" - ok
-** type="Prop" - ok
+** N type="Actor" - ok
+** N type="G3" - ok
+** N type="Prop" - ok
 
 * Konvertere fra sme til sma xml (__Ciprian__)
 
