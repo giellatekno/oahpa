@@ -48,20 +48,4 @@
 * sjekke klokkeautomat - ok - skal implementeres i Numra
 * lage multiword.xml for Leksa
 
-!!Forskjeller mellom sma vs. sme
-* Filplassering. sme: Alle leksikonfiler, oppgavefiler, feedbackfiler ligger i ped/sme/xml. sma: spredt i pedversions og ped/sma/xml og ped/sma/src.
-* Generering i sme: generering med ped/sme/src/paradigms.txt, dessuten ped/sme/src/prongeneration.txt, i 
-sma: i meta: a_paradigms.txt, num_paradigms.txt, v_paradigms.txt, n_paradigms.txt, prop_paradigms.txt
-* Begrense generering: sma: gen_only, sme: <only-sg/> <only-pl/>
-* sma: stat_pref - sme: første t er default stat_pref
-* sma: exclude="nobsma" sme: <noleksa/> 
-* sma: l-element sme: lemma-element
-* morfologisk info - sma: l-element. sme: stem-element 
-{{{
-sma: <l margo="e" pos="n" soggi="e" stem="3syll">
-sme: <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="i" rime="0"/>
-}}}
-* sma: spell relax ï/i, ö/ø, osv.
-* sma: installeringsprosessen genererar alle formane som vert innført i databasen ein gong på byrjinga, sme: genererar paradigmer til kvar ord ein gong per ord
-
 

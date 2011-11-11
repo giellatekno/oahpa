@@ -1,1 +1,54 @@
-asdf
+!!!Converting to sma-format
+
+
+
+
+!!Konvertering til sma-stil
+
+Heli har tatt over heile koden frå sma for numra (jf. game.py)
+
+__TILTAK__
+
+* __Ingen__ rører nu_oahpa-koden
+* __Ciprian__ lagar ein ny katalog, univ_oahpa, i pedversions.
+* __Heli__ lagar ein ny database 
+* __Heli__ tilpasser navner fra oahpa til univ_oahpa og teste det på victorio
+* Dokumentasjon: __Alle__, særleg __Ryan__ og __Heli__
+** Ei separat dokumentasjonsside for denne konverteringsprosessen:
+** Eiga jspwiki-fil (denne)
+** Katalogen inneheld ein kopi av smaOahpa, og blir fylt med sme-innhald
+* __Lene__ går gjennom entriane i leksikon og merker <mg> osv (til måndag morgon 14.11)
+* __Ciprian, Heli__ overfører til sma-format og legg inn i univ_oahpa
+
+
+! Leksikonfilene
+
+Lene går gjennom entriane i leksikon og merker <mg> osv (til måndag morgon 14.11)
+
+* Legge til oversettelser og bokinfo fra AA-listen fra Oulu (__Lene__)
+* Legge til attributter for <mg> når entryen bør ha minst 2 <mg> (__Lene__)
+* Endre attibutter til sma-stil (__Lene__)
+* Konvertere fra sme til sma xml (__Ciprian__)
+
+!Pronomen i Morfa
+
+* (__Lene__) har laga: sme/src/pronounforms.csv
+
+
+!!Forskjeller mellom sma vs. sme
+* Filplassering. sme: Alle leksikonfiler, oppgavefiler, feedbackfiler ligger i ped/sme/xml. sma: spredt i pedversions og ped/sma/xml og ped/sma/src.
+* Generering i sme: generering med ped/sme/src/paradigms.txt, dessuten ped/sme/src/prongeneration.txt, i 
+sma: i meta: a_paradigms.txt, num_paradigms.txt, v_paradigms.txt, n_paradigms.txt, prop_paradigms.txt
+* Begrense generering: sma: gen_only, sme: <only-sg/> <only-pl/>
+* sma: stat_pref - sme: første t er default stat_pref
+* sma: exclude="nobsma" sme: <noleksa/> 
+* sma: l-element sme: lemma-element
+* morfologisk info - sma: l-element. sme: stem-element 
+{{{
+sma: <l margo="e" pos="n" soggi="e" stem="3syll">
+sme: <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="i" rime="0"/>
+}}}
+* sma: spell relax ï/i, ö/ø, osv.
+* sma: installeringsprosessen genererar alle formane som vert innført i databasen ein gong på byrjinga, sme: genererar paradigmer til kvar ord ein gong per ord
+
+
