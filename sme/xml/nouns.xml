@@ -3,31 +3,14 @@
 <?xml-stylesheet title="Dictionary view" media="screen,tv,projection" href="../../../words/dicts/scripts/gt_dictionary.css" type="text/css"?>
 <?xml-stylesheet alternate="yes" title="Hierarchical view" media="screen,tv,projection" href="../../../words/dicts/scripts/gt_dictionary.css" type="text/css"?>
 
-<!-- About semantical classes:
-ANIMALs are devided into four:
-ANIMAL-DOM (domestic), ANIMAL-WILD, ANIMAL-PET, ANIMAL (which not belong to the ohter subsets)
-CLOTHING-PL and ARRANGEMENT-PL: the numeral has go be plural - especially for the Morph-drill
-superset HUMAN will contain FAMILY, PROFESSION, ACTOR and OTHERS
-GROUP is also human but contains collective nouns
-BIRD-set is connected to flying, so it contains also some insects
-FISH-set is connected to living in water, so it contains also some animals
-In CONTAINER-set there are objects which can be in local case if the question is "where is ..." og "where do you put ..."
-superset FOOD will contain FOOD-DISH (you can order in a restaurant), FOOD-GROCERY (you can buy in a shop) and FOOD-OTHER (only for quizes and wordlists) 
-NATURE-PLACE are both naturewords and place, like "To where are you going now?". NATURE-WATERset is for words like river, lake and so on. These are also PLACE, but can also be used in the connection of FISH or verbs like swimming.
-SHOW is for watching - geahččat
-There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POINT-LOC (it happened then - Loc), TIME-POINT-GEN (it happened then - Gen), TIME-SEASON (these are used both in Gen and as adverb) and TIME (for the leftovers). -->
-
 <lexicon xml:lang="sme">
    <entry>
       <lemma>ovtteš</lemma>
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">ener</tr> 
-         <!-- pick the first for the reverse-->
       <tr xml:lang="fin">ykkönen</tr> 
-         <!-- pick the first for the reverse-->
       <tr xml:lang="swe">etta</tr> 
-         <!-- pick the first for the reverse-->
    </translations>
       <semantics>
          <sem class="NUMNOUN"/>
@@ -325,6 +308,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -498,7 +482,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>visti</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">bygning</tr>
          <tr xml:lang="fin">rakennus</tr>
@@ -513,8 +497,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <stem class="bisyllabic" diphthong="no" gradation="yes" soggi="i" rime="0"/>
       <dialect class="NOT-GG"/>
       <sources>
-    </sources>
-  </entry>
+         <book name="AA"/>
+      </sources>
+   </entry>
    <entry>
       <lemma>suopman</lemma>
 	     <pos class="N"/>
@@ -797,7 +782,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>gobmi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">spøkelse</tr>
          <tr xml:lang="fin">kummitus</tr>
@@ -812,8 +797,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <stem class="bisyllabic" diphthong="no" gradation="yes" soggi="i" rime="0"/>
       <dialect/>
       <sources>
-    </sources>
-  </entry>
+         <book name="AA"/>
+      </sources>
+   </entry>
    <entry>
       <lemma>gonagas</lemma>
       <pos class="N"/>
@@ -832,6 +818,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -1840,6 +1827,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -1904,6 +1892,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sara"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -1930,6 +1919,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -1956,6 +1946,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -1983,6 +1974,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_2"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -2012,6 +2004,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -2043,6 +2036,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -2070,6 +2064,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -2097,6 +2092,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -2143,6 +2139,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -2336,6 +2333,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -2385,6 +2383,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -2520,6 +2519,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -2576,6 +2576,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="bures"/>
          <book name="sam1031_1"/>
          <book name="c4"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -2674,6 +2675,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -3013,6 +3015,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d2"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry id="buohccidikšu_actor">
@@ -3325,7 +3328,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>hoavda</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sjef</tr>
          <tr xml:lang="nob">leder</tr>
@@ -3343,8 +3346,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d2"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>jođiheaddji</lemma>
 	     <pos class="N" type="Actor"/>
@@ -3687,6 +3691,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -3744,6 +3749,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c4"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -3864,6 +3870,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="bures"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -4170,7 +4177,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>čálli</lemma>
-	     <pos class="N" type="Actor"/>
+      <pos class="N" type="Actor"/>
       <translations>
          <tr xml:lang="nob">forfatter</tr>
          <tr xml:lang="nob">sekretær</tr>
@@ -4191,8 +4198,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>juoigi</lemma>
 	     <pos class="N" type="Actor"/>
@@ -4446,7 +4454,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>dáža</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">nordmann</tr>
          <tr xml:lang="fin">norjalainen</tr>
@@ -4463,8 +4471,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d2"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>dievdu</lemma>
       <pos class="N"/>
@@ -4514,7 +4523,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>gánda</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">gutt</tr>
          <tr xml:lang="nob">sønn</tr>
@@ -4533,8 +4542,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d1"/>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>badjegánda</lemma>
 	     <pos class="N"/>
@@ -4607,6 +4617,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -4630,6 +4641,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -4717,7 +4729,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>juovlaruohtta</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">julaften</tr>
          <tr xml:lang="nob">julekvelden</tr>
@@ -4734,8 +4746,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>juovlastállu</lemma>
 	     <pos class="N"/>
@@ -4982,6 +4995,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -5122,6 +5136,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d3"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -5148,6 +5163,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -5168,6 +5184,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d3"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -5230,6 +5247,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -5396,6 +5414,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
       <forms>
          <form tag="N+Sg+Gen">nissona</form>
@@ -5427,6 +5446,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -5474,6 +5494,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -5495,6 +5516,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -5537,6 +5559,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="bures"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -5616,6 +5639,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -5677,6 +5701,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="bures"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -5733,6 +5758,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -5974,6 +6000,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -5999,7 +6026,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>aski</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">fang</tr>
          <tr xml:lang="fin">syli</tr>
@@ -6013,8 +6040,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <stem class="bisyllabic" diphthong="no" gradation="yes" soggi="i" rime="0"/>
       <dialect/>
       <sources>
-    </sources>
-  </entry>
+         <book name="AA"/>
+      </sources>
+   </entry>
    <entry>
       <lemma>bahta</lemma>
       <pos class="N"/>
@@ -6062,6 +6090,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -6147,6 +6176,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -6231,6 +6261,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -6316,6 +6347,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -6448,11 +6480,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
       <lemma>liiki</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">hud</tr>
          <tr xml:lang="fin">iho</tr>
@@ -6468,11 +6501,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d4"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>muohtu</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kinn</tr>
          <tr xml:lang="fin">poski</tr>
@@ -6486,8 +6520,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="u" rime="0"/>
       <dialect/>
       <sources>
-    </sources>
-  </entry>
+         <book name="AA"/>
+      </sources>
+   </entry>
    <entry>
       <lemma>nierra</lemma>
       <pos class="N"/>
@@ -6574,6 +6609,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -6595,6 +6631,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -6616,6 +6653,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -6658,6 +6696,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -6759,6 +6798,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -6784,6 +6824,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -6886,11 +6927,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_2"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
       <lemma>njuovčča</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">tunge</tr>
          <tr xml:lang="fin">kieli</tr>
@@ -6906,8 +6948,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d2"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>rumaš</lemma>
       <pos class="N"/>
@@ -6972,7 +7015,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>dávda</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sykdom</tr>
          <tr xml:lang="fin">tauti</tr>
@@ -6988,8 +7031,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d2"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>golgodávda</lemma>
       <pos class="N"/>
@@ -7036,7 +7080,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>hávvi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sår</tr>
          <tr xml:lang="fin">haava</tr>
@@ -7050,8 +7094,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <stem class="bisyllabic" diphthong="no" gradation="yes" soggi="i" rime="0"/>
       <dialect/>
       <sources>
-    </sources>
-  </entry>
+         <book name="AA"/>
+      </sources>
+   </entry>
    <entry>
       <lemma>leasmi</lemma>
 	     <pos class="N"/>
@@ -7152,6 +7197,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="bures"/>
          <book name="algu"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
       <forms>
          <form tag="G3+N+Sg+Gen">vuoru</form>
@@ -7236,6 +7282,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d3"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -7302,6 +7349,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="bures"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -7323,6 +7371,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -7365,6 +7414,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -7388,7 +7438,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>áiti</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">stabbur</tr>
          <tr xml:lang="nob">uthus</tr>
@@ -7404,8 +7454,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d1"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>barta</lemma>
       <pos class="N"/>
@@ -7648,7 +7699,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>buohcceviessu</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sykehus</tr>
          <tr xml:lang="fin">sairaala</tr>
@@ -7663,11 +7714,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>buvri</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">bu</tr>
          <tr xml:lang="fin">aitta</tr>
@@ -7684,8 +7736,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>darfegoahti</lemma>
 	     <pos class="N"/>
@@ -7728,6 +7781,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -7831,6 +7885,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -7854,7 +7909,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>gielis</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">løgn</tr>
          <tr xml:lang="fin">vale</tr>
@@ -7870,8 +7925,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="oaidnalit"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>giliviessu</lemma>
 	     <pos class="N"/>
@@ -8014,6 +8070,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -8078,6 +8135,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -8140,6 +8198,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -8588,6 +8647,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d3"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -8610,6 +8670,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -8635,6 +8696,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="algu"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -8699,6 +8761,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -8718,6 +8781,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -8797,6 +8861,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -8857,6 +8922,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -8972,6 +9038,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -9034,7 +9101,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>gámmir</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kammers</tr>
          <tr xml:lang="nob">rom</tr>
@@ -9052,8 +9119,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d2"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>gámmár</lemma>
       <pos class="N"/>
@@ -9104,6 +9172,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -9166,6 +9235,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="bures"/>
          <book name="algu"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -9266,11 +9336,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
       <lemma>bensiidna</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">bensin</tr>
          <tr xml:lang="fin">bensa</tr>
@@ -9287,11 +9358,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d3"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>beaŋka</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">benk</tr>
          <tr xml:lang="nob">stol</tr>
@@ -9308,8 +9380,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d4"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>čiehka</lemma>
 	     <pos class="N"/>
@@ -9450,7 +9523,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry id="gáhttu_room-part">
       <lemma>gáhttu</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">tak</tr>
          <tr xml:lang="fin">katto</tr>
@@ -9466,8 +9539,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>čuovgagovva</lemma>
 	     <pos class="N"/>
@@ -9548,8 +9622,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>gávnnit</lemma>
-      <only-pl/>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sengklær</tr>
          <tr xml:lang="fin">vuodevaatteet</tr>
@@ -9567,8 +9640,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="algu"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>hildu</lemma>
       <pos class="N"/>
@@ -9588,6 +9662,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -9650,6 +9725,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -9708,6 +9784,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="sara"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry id="lássa_room-part">
@@ -9731,6 +9808,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="sara"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry id="láse_container">
@@ -10011,7 +10089,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>rátnu</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">teppe</tr>
          <tr xml:lang="fin">raanu</tr>
@@ -10029,8 +10107,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d3"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>ridda</lemma>
 	     <pos class="N"/>
@@ -10136,6 +10215,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -10217,6 +10297,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="algu"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -10237,6 +10318,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -10279,6 +10361,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -10345,6 +10428,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -10492,6 +10576,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d4"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -10988,7 +11073,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>kursa</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kurs</tr>
          <tr xml:lang="fin">kurssi</tr>
@@ -11003,8 +11088,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect class="NOT-GG"/>
       <sources>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry id="luohkká_education">
       <lemma>luohkká</lemma>
       <pos class="N"/>
@@ -11026,6 +11112,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry id="luohkká_nature-place">
@@ -11046,6 +11133,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -11165,6 +11253,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -11186,6 +11275,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -11246,6 +11336,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d2"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -11266,6 +11357,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="algu"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -11349,7 +11441,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>beanna</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">penn</tr>
          <tr xml:lang="fin">kynä</tr>
@@ -11363,11 +11455,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d4"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>biellu</lemma>
-	     <pos class="N" type="G3"/>
+      <pos class="N" type="G3"/>
       <translations>
          <tr xml:lang="nob">bjelle</tr>
          <tr xml:lang="nob">klokke</tr>
@@ -11384,8 +11477,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d3"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>biergogievdni</lemma>
 	     <pos class="N"/>
@@ -11425,6 +11519,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d1"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -11468,7 +11563,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>bodni</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">bunn</tr>
          <tr xml:lang="fin">pohja</tr>
@@ -11484,8 +11579,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d4"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>bursa</lemma>
       <pos class="N"/>
@@ -11510,7 +11606,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>báddi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">tau</tr>
          <tr xml:lang="nob">rep</tr>
@@ -11531,8 +11627,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d4"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>čuojanas</lemma>
 	     <pos class="N"/>
@@ -11572,6 +11669,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d4"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -11615,7 +11713,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>fierbmi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">nett</tr>
          <tr xml:lang="nob">fiskegarn</tr>
@@ -11632,8 +11730,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d4"/>
          <book name="bures"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>gitárra</lemma>
 	     <pos class="N"/>
@@ -11675,7 +11774,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>juvla</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">hjul</tr>
          <tr xml:lang="fin">pyörä</tr>
@@ -11691,8 +11790,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d3"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry id="lohkki_obj">
       <lemma>lohkki</lemma>
 	     <pos class="N"/>
@@ -11775,7 +11875,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>mearka</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">merke</tr>
          <tr xml:lang="fin">merkki</tr>
@@ -11790,8 +11890,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d3"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry id="millu_construction">
       <lemma>millu</lemma>
 	     <pos class="N" type="G3"/>
@@ -12027,6 +12128,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
       <forms>
          <form tag="G3+N+Sg+Gen">rišša</form>
@@ -12051,6 +12153,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
       <forms>
          <form tag="N+Sg+Gen">riša</form>
@@ -12116,6 +12219,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -12628,7 +12732,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>dávvir</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">gjenstand</tr>
          <tr xml:lang="nob">ting</tr>
@@ -12644,8 +12748,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <stem class="trisyllabic" diphthong="no" gradation="no" rime="0"/>
       <dialect/>
       <sources>
-    </sources>
-  </entry>
+         <book name="AA"/>
+      </sources>
+   </entry>
    <entry>
       <lemma>dihtor</lemma>
       <pos class="N"/>
@@ -12670,6 +12775,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -12751,7 +12857,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>mohtor</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">motor</tr>
          <tr xml:lang="fin">moottori</tr>
@@ -12766,8 +12872,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d2"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>mutuvra</lemma>
         <pos class="N"/>
@@ -12846,6 +12953,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d1"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -12888,6 +12996,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d1"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -12955,7 +13064,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>salla</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">favn</tr>
          <tr xml:lang="fin">syli</tr>
@@ -12970,8 +13079,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="bures"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>lihtar</lemma>
 	     <pos class="N"/>
@@ -13030,6 +13140,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_2"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -13072,6 +13183,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -13262,6 +13374,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -13306,6 +13419,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -13329,6 +13443,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_2"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -13416,6 +13531,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -13461,6 +13577,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -13526,6 +13643,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -13669,6 +13787,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -13877,6 +13996,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -13899,6 +14019,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
       <forms>
          <form tag="N+Sg+Gen">geasi</form>
@@ -13991,6 +14112,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -14034,6 +14156,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -14137,6 +14260,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d1"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -14198,6 +14322,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -14319,6 +14444,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -14344,7 +14470,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>luoppal</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">innsjø mellom to elver</tr>
          <tr xml:lang="fin">lompolo</tr>
@@ -14360,8 +14486,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>luopmu</lemma>
       <pos class="N"/>
@@ -14405,6 +14532,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -14449,6 +14577,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -14472,6 +14601,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -14537,7 +14667,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry id="mánnu_time">
       <lemma>mánnu</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">måned</tr>
          <tr xml:lang="fin">kuukausi</tr>
@@ -14554,11 +14684,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="algu"/>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry id="mánnu_nature">
       <lemma>mánnu</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">måne</tr>
          <tr xml:lang="fin">kuu</tr>
@@ -14575,8 +14706,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="algu"/>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>njukčamánnu</lemma>
       <pos class="N"/>
@@ -14598,6 +14730,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -14758,6 +14891,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -14843,6 +14977,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -14940,6 +15075,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -14963,6 +15099,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -14985,6 +15122,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -15043,6 +15181,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d1"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -15088,6 +15227,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -15193,8 +15333,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>buvssat</lemma>
-      <only-pl/>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">bukse</tr>
          <tr xml:lang="nob">bukser</tr>
@@ -15213,8 +15352,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>lumma</lemma>
       <pos class="N"/>
@@ -15276,6 +15416,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d1"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -15337,6 +15478,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -15362,7 +15504,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>diehppi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">dusk</tr>
          <tr xml:lang="fin">tupsu</tr>
@@ -15379,8 +15521,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="i" rime="0"/>
       <dialect/>
       <sources>
-    </sources>
-  </entry>
+         <book name="AA"/>
+      </sources>
+   </entry>
    <entry>
       <lemma>dievdogákti</lemma>
 	     <pos class="N"/>
@@ -15468,6 +15611,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -15550,6 +15694,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -16123,11 +16268,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
       <lemma>boagán</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">belte</tr>
          <tr xml:lang="fin">vyö</tr>
@@ -16143,8 +16289,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d2"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>boŋkkus</lemma>
 	     <pos class="N"/>
@@ -16349,6 +16496,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -16750,6 +16898,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -16852,7 +17001,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>beassi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">reir</tr>
          <tr xml:lang="nob">rede</tr>
@@ -16870,11 +17019,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
       <forms>
          <form tag="N+Sg+Gen">beasi</form>
       </forms>
-  </entry>
+   </entry>
    <entry>
       <lemma>biedju</lemma>
       <pos class="N"/>
@@ -16918,7 +17068,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>bovdna</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">tue</tr>
          <tr xml:lang="fin">mätäs</tr>
@@ -16934,8 +17084,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="oaidnalit"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>cuoŋu</lemma>
       <only-sg/>
@@ -16978,6 +17129,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -17042,6 +17194,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="algu"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -17128,11 +17281,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
       <lemma>gieddi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">eng</tr>
          <tr xml:lang="nob">voll</tr>
@@ -17149,8 +17303,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>goikemuorra</lemma>
       <pos class="N"/>
@@ -17175,7 +17330,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    <entry>
       <lemma>golli</lemma>
       <only-sg/>
-	     <pos class="N" type="G3"/>
+      <pos class="N" type="G3"/>
       <translations>
          <tr xml:lang="nob">gull</tr>
          <tr xml:lang="fin">kulta</tr>
@@ -17190,8 +17345,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d4"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>gohpi</lemma>
 	     <pos class="N"/>
@@ -17337,6 +17493,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -17529,6 +17686,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -17551,6 +17709,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -17598,6 +17757,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="algu"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -17621,7 +17781,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>mohkki</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sving</tr>
          <tr xml:lang="nob">bukt</tr>
@@ -17639,8 +17799,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>muotki</lemma>
 	     <pos class="N"/>
@@ -17664,7 +17825,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>njárga</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">nes</tr>
          <tr xml:lang="nob">odde</tr>
@@ -17681,8 +17842,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d4"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>nuorri</lemma>
 	     <pos class="N"/>
@@ -17768,7 +17930,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>ruovdi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">jern</tr>
          <tr xml:lang="fin">rauta</tr>
@@ -17783,8 +17945,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d3"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>savu</lemma>
       <pos class="N"/>
@@ -17828,7 +17991,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    <entry>
       <lemma>silba</lemma>
       <only-sg/>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sølv</tr>
          <tr xml:lang="fin">hopea</tr>
@@ -17843,8 +18006,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d4"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>skálžu</lemma>
 	     <pos class="N"/>
@@ -17902,6 +18066,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="sam1031_1"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
       <forms>
          <form tag="N+Sg+Gen">vuovddi</form>
@@ -17925,6 +18090,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sam1031_1"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
       <forms>
          <form tag="N+Actor+Sg+Gen">vuovdi</form>
@@ -17970,11 +18136,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
       <lemma>stoarbma</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">storm</tr>
          <tr xml:lang="fin">myrsky</tr>
@@ -17991,8 +18158,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="algu"/>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>beaivváš</lemma>
       <only-sg/>
@@ -18041,6 +18209,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="bures"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -18063,6 +18232,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -18126,7 +18296,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>láttu</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">vanndam</tr>
          <tr xml:lang="nob">dam</tr>
@@ -18147,8 +18317,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="oaidnalit"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>sáttu</lemma>
 	     <pos class="N"/>
@@ -18172,7 +18343,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>suolu</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">øy</tr>
          <tr xml:lang="nob">holme</tr>
@@ -18190,8 +18361,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="sara"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>suovva</lemma>
       <only-sg/>
@@ -18271,7 +18443,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>čáhppesmuorji</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">krøkebær</tr>
          <tr xml:lang="nob">krekling</tr>
@@ -18288,8 +18460,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="algu"/>
          <book name="bures"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>eananmuorji</lemma>
 	     <pos class="N"/>
@@ -18348,7 +18521,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>jokŋa</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">tyttebær</tr>
          <tr xml:lang="fin">puolukka</tr>
@@ -18364,11 +18537,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="bures"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>lasta</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">løv</tr>
          <tr xml:lang="nob">blad</tr>
@@ -18385,8 +18559,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d4"/>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>gállu</lemma>
 	     <pos class="N" type="G3"/>
@@ -18447,7 +18622,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>muorji</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">bær</tr>
          <tr xml:lang="fin">marja</tr>
@@ -18464,8 +18639,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="algu"/>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>cuoppu</lemma>
       <pos class="N"/>
@@ -18485,6 +18661,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sara"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -18532,6 +18709,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_2"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -18597,6 +18775,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -18618,6 +18797,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sara"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -18722,6 +18902,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -18767,7 +18948,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>sarrit</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">blåbær</tr>
          <tr xml:lang="fin">mustikka</tr>
@@ -18783,8 +18964,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="bures"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>váran</lemma>
 	     <pos class="N"/>
@@ -18932,6 +19114,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -19047,6 +19230,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d3"/>
          <book name="sam1031_2"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -19093,6 +19277,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -19355,6 +19540,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d3"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -19375,6 +19561,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -19398,6 +19585,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -19481,6 +19669,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -19590,6 +19779,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -19960,6 +20150,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d1"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -20003,6 +20194,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -20070,8 +20262,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>jáffut</lemma>
-      <only-pl/>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">mel</tr>
          <tr xml:lang="nob">mjøl</tr>
@@ -20087,8 +20278,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect class="NOT-GG"/>
       <sources>
          <book name="d2"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>jáfu</lemma>
       <id>jáfut</id>
@@ -20230,6 +20422,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -20445,6 +20638,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -20616,6 +20810,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="oaidnalit"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -20753,6 +20948,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -20853,6 +21049,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -20979,6 +21176,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -21023,7 +21221,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>vuolla</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">øl</tr>
          <tr xml:lang="fin">olut</tr>
@@ -21038,8 +21236,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect class="NOT-GG"/>
       <sources>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>vilgesvuostá</lemma>
 	     <pos class="N"/>
@@ -21098,6 +21297,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -21219,6 +21419,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="sam1031_2"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -21523,6 +21724,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="algu"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -21728,6 +21930,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="algu"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -21887,6 +22090,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="sara"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -21906,6 +22110,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -21986,6 +22191,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d1"/>
          <book name="sam1031_2"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -22129,6 +22335,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -22340,7 +22547,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>šaldi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">bru</tr>
          <tr xml:lang="nob">bro</tr>
@@ -22356,8 +22563,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d4"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>toga</lemma>
 	     <pos class="N"/>
@@ -22611,6 +22819,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d2"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -22672,6 +22881,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -22803,6 +23013,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="algu"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -22966,6 +23177,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -23183,7 +23395,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>dorski</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">torsk</tr>
          <tr xml:lang="fin">turska</tr>
@@ -23199,8 +23411,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d2"/>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>ealli</lemma>
       <pos class="N" type="Actor"/>
@@ -23220,6 +23433,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -23246,6 +23460,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -23272,7 +23487,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry id="gáhttu_animal">
       <lemma>gáhttu</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">katt</tr>
          <tr xml:lang="nob">pus</tr>
@@ -23288,8 +23503,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <stem class="bisyllabic" diphthong="no" gradation="yes" soggi="u" rime="0"/>
       <dialect/>
       <sources>
-    </sources>
-  </entry>
+         <book name="AA"/>
+      </sources>
+   </entry>
    <entry>
       <lemma>gáica</lemma>
 	     <pos class="N"/>
@@ -23330,7 +23546,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>gálbi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kalv</tr>
          <tr xml:lang="fin">vasikka</tr>
@@ -23346,8 +23562,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="bures"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>gihcci</lemma>
 	     <pos class="N"/>
@@ -23476,6 +23693,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -23519,6 +23737,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="bures"/>
          <book name="algu"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -23560,11 +23779,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="bures"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
       <lemma>heasta</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">hest</tr>
          <tr xml:lang="fin">hevonen</tr>
@@ -23580,8 +23800,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d4"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>heavdni</lemma>
       <pos class="N"/>
@@ -23642,7 +23863,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>loddi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">fugl</tr>
          <tr xml:lang="fin">lintu</tr>
@@ -23659,8 +23880,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d4"/>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>luossa</lemma>
       <pos class="N"/>
@@ -23681,6 +23903,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_2"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -23741,7 +23964,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>miessi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">reinkalv</tr>
          <tr xml:lang="nob">kalv</tr>
@@ -23759,8 +23982,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="sara"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>návdi</lemma>
       <pos class="N"/>
@@ -23867,7 +24091,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>sáidi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sei</tr>
          <tr xml:lang="fin">seiti</tr>
@@ -23884,8 +24108,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d2"/>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>sáivačáhceguolli</lemma>
 	     <pos class="N"/>
@@ -23925,11 +24150,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="bures"/>
          <book name="algu"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
       <lemma>spiidni</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">gris</tr>
          <tr xml:lang="fin">sika</tr>
@@ -23946,8 +24172,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sara"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>vársá</lemma>
 	     <pos class="N"/>
@@ -24027,6 +24254,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -24146,6 +24374,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="sara"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -24372,6 +24601,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -24418,7 +24648,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>vielppis</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">valp</tr>
          <tr xml:lang="nob">kvalp</tr>
@@ -24437,8 +24667,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sara"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>aviisa</lemma>
       <pos class="N"/>
@@ -24584,6 +24815,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d1"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -24843,6 +25075,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -25100,6 +25333,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -25183,6 +25417,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -25339,7 +25574,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>čála</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">skriv</tr>
          <tr xml:lang="nob">skrift</tr>
@@ -25357,8 +25592,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d4"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>čálus</lemma>
       <pos class="N"/>
@@ -25481,6 +25717,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_2"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -25689,6 +25926,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -25810,6 +26048,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -25929,6 +26168,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -25973,7 +26213,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>gielda</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kommune</tr>
          <tr xml:lang="nob">sogn</tr>
@@ -25990,8 +26230,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d4"/>
          <book name="oaidnalit"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>gilli</lemma>
       <pos class="N"/>
@@ -26012,6 +26253,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -26038,7 +26280,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>máilbmi</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">verden</tr>
          <tr xml:lang="fin">maailma</tr>
@@ -26054,8 +26296,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="d4"/>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>márkanbáiki</lemma>
 	     <pos class="N"/>
@@ -26095,7 +26338,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>riika</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">land</tr>
          <tr xml:lang="nob">rike</tr>
@@ -26113,8 +26356,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="sara"/>
          <book name="algu"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>riikkarádji</lemma>
 	     <pos class="N"/>
@@ -26196,6 +26440,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -26279,6 +26524,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d1"/>
          <book name="algu"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -26300,6 +26546,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -26668,7 +26915,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>duodji</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">husflid</tr>
          <tr xml:lang="nob">handarbeid</tr>
@@ -26692,8 +26939,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="algu"/>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>dákti</lemma>
       <pos class="N"/>
@@ -26815,11 +27063,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
       <lemma>láđđi</lemma>
-	     <pos class="N" type="G3"/>
+      <pos class="N" type="G3"/>
       <translations>
          <tr xml:lang="nob">klede</tr>
          <tr xml:lang="fin">verka</tr>
@@ -26834,11 +27083,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <stem class="bisyllabic" diphthong="no" gradation="inv" soggi="i" rime="0"/>
       <dialect/>
       <sources>
-    </sources>
+         <book name="AA"/>
+      </sources>
       <forms>
          <form tag="G3+N+Sg+Gen">láđđi</form>
       </forms>
-  </entry>
+   </entry>
    <entry>
       <lemma>láigi</lemma>
 	     <pos class="N"/>
@@ -26877,6 +27127,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="bures"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -27075,7 +27326,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>borranmiella</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">matlyst</tr>
          <tr xml:lang="fin">ruokahalu</tr>
@@ -27089,8 +27340,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <stem class="bisyllabic" diphthong="no" gradation="yes" soggi="a" rime="0"/>
       <dialect/>
       <sources>
-    </sources>
-  </entry>
+         <book name="AA"/>
+      </sources>
+   </entry>
    <entry>
       <lemma>goiku</lemma>
       <only-sg/>
@@ -27188,6 +27440,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -27213,6 +27466,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d2"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -27424,7 +27678,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    <entry>
       <lemma>ávki</lemma>
       <only-sg/>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">nytte</tr>
          <tr xml:lang="fin">hyöty</tr>
@@ -27440,8 +27694,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d3"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>ášši</lemma>
       <pos class="N"/>
@@ -27462,6 +27717,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="sam1031_2"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry id="bassi_time">
@@ -27662,6 +27918,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -27685,7 +27942,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>geahči</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">ende</tr>
          <tr xml:lang="fin">kärki</tr>
@@ -27702,8 +27959,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d4"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>giitu</lemma>
       <only-sg/>
@@ -27931,11 +28189,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
       <lemma>niehku</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">drøm</tr>
          <tr xml:lang="fin">uni</tr>
@@ -27949,8 +28208,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="u" rime="0"/>
       <dialect/>
       <sources>
-    </sources>
-  </entry>
+         <book name="AA"/>
+      </sources>
+   </entry>
    <entry>
       <lemma>osku</lemma>
 	     <pos class="N"/>
@@ -28073,6 +28333,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -28338,6 +28599,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -28725,6 +28987,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -28771,6 +29034,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="bures"/>
          <book name="algu"/>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -29368,6 +29632,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="algu"/>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -29556,7 +29821,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>lávlla</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sang</tr>
          <tr xml:lang="fin">laulu</tr>
@@ -29571,8 +29836,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>luohti</lemma>
       <pos class="N"/>
@@ -29739,6 +30005,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d4"/>
          <book name="sara"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -30746,7 +31013,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
    </entry>
    <entry>
       <lemma>bábir</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">papir</tr>
          <tr xml:lang="fin">paperi</tr>
@@ -30763,11 +31030,12 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="d3"/>
          <book name="algu"/>
          <book name="sara"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry>
       <lemma>bálddis</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kveite</tr>
          <tr xml:lang="fin">pallas</tr>
@@ -30782,8 +31050,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect/>
       <sources>
          <book name="d3"/>
+         <book name="AA"/>
       </sources>
-  </entry>
+   </entry>
    <entry id="báhkka_container">
       <lemma>báhkka</lemma>
       <pos class="N"/>
@@ -30804,6 +31073,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry id="báhkka_weather">
@@ -30829,6 +31099,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="algu"/>
          <book name="sara"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -31221,6 +31492,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="algu"/>
          <book name="c3"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -31635,7 +31907,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
   </entry>
    <entry>
       <lemma>kvárta</lemma>
-	     <pos class="N"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kvart</tr>
          <tr xml:lang="nob">kvarter</tr>
@@ -31651,8 +31923,9 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <stem class="bisyllabic" diphthong="no" gradation="yes" soggi="a" rime="0"/>
       <dialect/>
       <sources>
-    </sources>
-  </entry>
+         <book name="AA"/>
+      </sources>
+   </entry>
    <entry>
       <lemma>lastagoahti</lemma>
 	     <pos class="N"/>
@@ -31718,6 +31991,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -31744,6 +32018,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
          <book name="sara"/>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -32245,6 +32520,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sam1031_1"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -32327,6 +32603,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect class=""/>
       <sources>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -32637,6 +32914,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect class=""/>
       <sources>
          <book name="sam1031_1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -33045,6 +33323,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect class=""/>
       <sources>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -33355,6 +33634,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sam1031_2"/>
          <book name="c1"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -33590,6 +33870,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <sources>
          <book name="sam1031_2"/>
          <book name="c2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -33800,6 +34081,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect class=""/>
       <sources>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
    <entry>
@@ -33924,6 +34206,7 @@ There are several kinds for timesets: TIME-DURABILITY (it lasted 2 ..), TIME-POI
       <dialect class=""/>
       <sources>
          <book name="sam1031_2"/>
+         <book name="AA"/>
       </sources>
    </entry>
 </lexicon>
