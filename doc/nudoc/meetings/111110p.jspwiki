@@ -1,161 +1,163 @@
-!!!Møte 26.10.11
+!!!Møte 10.11.11
 
 Til stades: Ciprian, Heli, Trond, Lene
 
+
 !!Saksliste
+* Numra
 * Leksa
 * MorfaS
-* Numra
 * sme-sma-harmonisering
-* Neste møte
 
 
-!! Leksa
+!!Numra
 
-!leksika
+Heli har sett på numra.
 
-Finsk, svensk er installert i Leksa. Nye lister er installert med fulle sett, og fungerer.
+Ho har sett på koden frå sma, og også når det gjeld num_game.
 
-Det ser ut til at feilkjelda er manglande bøker: ''Manglande bok i fin: 323,  sme: 81, swe: 408,  nob: 338''. 
+Ikkje berre klokke, dato, men også dei andre delane. Akkurat no 
+er det slik at verken ordinals eller cardinals fungerer.
 
-Det finst ord som ikkje er henta frå bøker, men oversikta over
-viser at vi må komplettere bok-info i Xsme-katalogane.
-
-[nu-oahpa leksa|http://oahpa.uit.no/nu_oahpa/leksa/] places fin>sme og sme>fin fungerer for alle sett, 
-men ikkje for alle bøker.
-
-
-__TILTAK__
-* Lage ei sjekkliste for manglande bøker + prøv automatikk, og legg inn samme dummyer som i smaOahpa: <sem class="YYY" />
-<book name="xxx" /> (__Cip__)
-* Sjekk  (__Heli__)
+Grunnen til at det ikkje fungerer er:
+* Heli har endra ein del i koden.
+** Først fungerte ikkje dato, den eine retninga kom for begge retningar
+** Klokka: Alt var ok, men fasiten kom ikkje opp i rett format
+** Konklusjon: ta over alt frå sma-oahpa.
 
 
-!! MorfaS
-
-!Verb
-Fungerer ikkje.
+Feilmelding:
 
 {{{
-Exception Type: IndexError at /nu_oahpa/morfa_v/
-Exception Value: list index out of range
+numra_date
+__init__() got an unexpected keyword argument 'correct_val'
+
+Endre koden i python, slik at det ikkje er tvetydig kva slags program
+som skal bli vald innafor numra-familien.
+
+__init__() got multiple values for keyword argument 'game'
+/home/nu_oahpa/nu_oahpa/nu_drill/game.py in create_form, line 561
 }}}
 
+game.py for nu_oahpa er henta frå smadrill.
 
-__TILTAK__
 
-* Få verb til å fungere (keine Ahnung) __Heli ++__
-
-!Pronomen
-Dei står ikkje på lista til venstre i MORFA-S.
-
-Dei blir generert v.hj.av denne fila ped/sme/src/prongeneration.txt.
-
+The offending line 561:
 {{{
-cat prongeneration | lookup -flags mbTT -utf8 $GTHOME/sme/bin/isme-GG.restr.fst
-cat prongeneration | lookup -flags mbTT -utf8 $GTHOME/sme/bin/isme-KJ.restr.fst
-}}}
-
-{{{
-~/main/ped$cat sme/src/prongeneration.txt | head -2
-mun+Pron+Pers+Sg1+Nom
-mun+Pron+Pers+Sg1+Gen
-
-~/main/ped$cat sme/src/prongeneration.txt | head -2 | lookup -flsgs mbTT -utf8 $GTHOME/gt/sme/bin/isme-GG.restr.fst
-
-mun+Pron+Pers+Sg1+Nom	mun
-
-mun+Pron+Pers+Sg1+Gen	mu
-}}}
-
-Pronomen har ingen oversetting.
-
-
-__TILTAK__
-* Implementer pronomen i Morfa-S (__Heli__)
-
-
-!! Numra
-
-Klokka og dato er no implementert.
-
-fst-ane blir kompilert med kommando {{make GTLANG=sme}} og plassert i {{$GTHOME/gt/sme/bin}}
-
-Ein person med sudo må deretter kopiere til /opt/smi/sme/bin.
-
-{{{
-/opt/smi/sme/bin
--rwxr-xr-x 1 root root 1755 okt 26 11:17 clock-sme.fst (string to numeral)
--rwxr-xr-x 1 root cvs  1776 aug  8 12:51 iclock-sme.fst (numeral to string)
-}}}
-
-Jf. smaoahpa, som har eit anna system:
-
-{{{
--rwxrwxr-x 1 ryan  oahpa    1756 jun 26 21:53 /home/smaoahpa/smaoahpa/gtsvn/gt/sma/bin/clock-sma.fst
--rwxrwxr-x 1 ryan  oahpa    1471 sep 30 21:18 /home/smaoahpa/smaoahpa/gtsvn/gt/sma/bin/date-sma.fst
-}}}
-
-
-!Ordinals
-{{{
-okta
-okta	1
-okta	okta
-
-akta
-akta	akta
+        form = (NumQuestion(db_info['numeral_id'], numstring, num_list, self.settings['numgame'], db_info['userans'], db_info['correct'], data, prefix=n,game=self))
 }}}
 
 __TILTAK__
 
-* Lage differensiert sme-inum.fst (__Trond__)
+* Lage dobbelt fst-oppsett (__Trond__)
+* Kopiere sma-treet til univ_oahpa
+* Implementere (__Heli__)
+** Numra bruker automatar i {{/home/univ_oahpa/univ_oahpa/gt/sme/bin/perhaps}}
+** {{cd /home/univ_oahpa/univ_oahpa/gt/ && make GTLANG=sme}}
 
+!!Leksa
 
-!Klokka
-Fungerer i to retningar, men har formatieringsproblem.
-Den manglande fila {{clock-sme.fst}} er no lagt til i /opt.
+!Status quo
 
-__TILTAK__
+Ingenting har skjedd til no
 
-* Overføre sloppy talformat frå sma (__Trond__)
+!Konvertering til sma-stil
 
-!Dato
-Fungerer berre i ei retning, numeral to string.
-
-Men begge filene var i opt-katalogen.
-
-{{{
--rwxrwxr-x 1 trond trond 1253 aug 16 16:32 /opt/smi/sme/bin/date-sme.fst
--rwxr-xr-x 1 root  root  1354 okt 17 14:07 /opt/smi/sme/bin/idate-sme.fst
-}}}
-
-__TILTAK__
-* Implementer ''String to numeral'' og test. (__Heli__)
-* Overføre sloppy talformat frå sma (__Trond__)
-
-!! sme-sma-harmonisering
-
-I prinsipp skal vi ta over alt frå sma-oahpa, __men__ med visse endringar.
-T.d. ikkje meaning-group. Dette blir tema for neste møte.
-
-
-!tcomm, statpref
-
-''Statpref'': Cip implementerer sma-systemet (ta første t-elementet).
+Endring av leksikonformat frå sme-stil til sma-stil.
 
 __TILTAK__
 
-* Ciprian oppretter en ny katalog for å prøve ut statpref-systemet fra sma.
-* Vi legg til tcomm="yes", men lar tcomm="no" vere uuttrykt (det står ikkje som attributt)
+* Lene ser på sme-leksikonfilene.
 
-!! Neste møte
+!!MorfaS
 
-* Onsdag 9.11. kl. 11:00
+(morfaB på sma)
+
+!Status quo
+
+Heli har sett på MorfaS.
+
+Heli prøvde å legge til det som mangla (templates).
+
+Det trengst debugging her.
+
+Ingenting vises på utsida, men mykje har skjedd i koden.
+
+!Konvertering til sma-stil
+
+Leksikonfilene blir endra (sjå __Leksa__-punktet ovafor)
+
+!Pronomen i sma-oahpa
+
+Vi genererer pronomen i sma-oahpa. Alle opplysningane ligg i sma-fila.
+Det som trengst er ei xml-fil for sme-pronomen.
+
+__TILTAK__
+
+* Pronomenfil (__Lingvistane__)
 
 
+!!sme-sma-harmonisering
+
+!Ulike strategiar for harmonisering
+
+# fungerande sme
+# nu_sme <===== based on old_sme
+# nu_sme <===== based on fungerande smaoahpa
+# fungerande sma
+# ryans sma_improvement (smaoahpa_new + oahpa_ideas)
 
 
+Sme har vanskelegare kode pga dialog-programma, som ikkje finst i sma.
+
+!Vasta og Sahka
+
+* Vasta er delvis parallell med MorfaC
+** genereringa av oppgaver er parallell med MorfaC, men med egne kildefiler for matrisene. Leksikonfilene og grammatikk-reglene i drill/qagame.py (flere?) er de samme
+** analyse og feedback av studentens input er lik med Sahka
+* Sahka bruker ingen fellesfiler, det er eit heilt eige opplegg
+** oppgaver genereres ikke, men er 'tailored' i sme/xml/dialogue_*.xml-filer
+** Spørsmål + svar blir sendt til preprocess + fst + cg i sme/src/sme-ped.cg3 
+** Cg-analysen genererer feedback til studenten, og neste dialogsteg som er i sme/xml/dialogue_*.xml-filene
+** feedback gis til studenten fra message-filer sme/xml/messages*.xml
+
+!Dokumentasjon:
+
+* [Vasta og MorfaC|http://giellatekno.uit.no/ped/common/VastaMorfaC.html]
+* [Sahka|http://giellatekno.uit.no/ped/common/Sahka.html]
+
+Manglande dokumentasjon:
+
+* Reinstallering er ikkje dokumentert, sjølv om reimplementering er det.
+* Korleis skaper vi relasjonar mellom tabellane -- det veit vi ikkje
+
+
+!Status quo for harmonisering
+
+Heli har tatt over heile koden frå sma for numra (jf. game.py)
+
+__TILTAK__
+
+* __Ingen__ rører nu_oahpa-koden
+* __Ciprian__ lagar ein ny katalog, univ_oahpa, i pedversions.
+* __Heli__ lagar ein ny database 
+* __Heli__ tilpasser navner fra oahpa til univ_oahpa og teste det på victorio
+* Dokumentasjon: __Alle__, særleg __Ryan__ og __Heli__
+** Ei separat dokumentasjonsside for denne konverteringsprosessen:
+** Eiga jspwiki-fil i {{doc/nudoc/smaformat.jspwiki}}, med lenkje frå {{univ-oahpa.jspwiki}}.
+** Katalogen inneheld ein kopi av smaOahpa, og blir fylt med sme-innhald
+* __Lene__ går gjennom entriane i leksikon og merker <mg> osv (til måndag morgon 14.11)
+* __Ciprian, Heli__ overfører til sma-format og legg inn i univ_oahpa
+
+
+!!Arbeidsmetodar
+
+* dokumentasjon
+* kontakt
+
+!!Neste møte
+
+… tar vi seinare.
 
 
 
