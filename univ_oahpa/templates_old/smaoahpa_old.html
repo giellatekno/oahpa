@@ -1,0 +1,375 @@
+{% load i18n %}
+{{ lang_switch }}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language as LANGUAGE_CODE %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{ LANGUAGE_CODE }}" lang="{{ LANGUAGE_CODE }}">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+
+<style type="text/css">
+
+html {
+    overflow: scroll;
+    height: 100%;
+    margin-bottom: 1px;
+}
+body {
+    margin:10px 10px 0px 10px;
+    padding:0px;
+    font-family: Arial Pro;
+    color: #150517;
+    background-image: url(../media/images/sma_bg.jpg);
+}
+
+#leftcontent {
+position: fixed;
+left: 10px;
+top: 95px;
+width: 140px;
+font-family: Arial Pro;
+
+}
+#centercontent {
+position:absolute;
+background:#fff;
+margin-left: 141px;
+margin-right:1px;
+top: 95px;
+padding: 10px;
+border: 1px solid #150517;
+font-family: Times;
+margin-bottom: 1px;
+}
+body #centercontent {
+top: 95px;
+margin-left: 141px;
+margin-right:11px;
+}
+#rightcontent {
+position: fixed;
+right:10px;
+top:95px;
+width:120px;
+}
+
+#banner {
+height:80px;
+}
+html>body #banner {
+height:80px;
+}
+
+
+</style>
+
+
+<link rel="stylesheet" type="text/css" href="/smaoahpa/media/css/smaoahpa.css"/>
+<script src="/smaoahpa/media/js/jquery-1.4.4.min.js" type="text/javascript"></script>
+
+{# <script src="/smaoahpa/media/js/prototype.js" type="text/javascript"></script> #}
+{# <script src="/smaoahpa/media/js/tooltip2.js" type="text/javascript"></script> #}
+{# <script src="/smaoahpa/media/js/smaoahpa.js" type="text/javascript"></script> #}
+
+<!--[if lt IE 7]>
+<script defer type="text/javascript" src="/smaoahpa/media/js/pngfix.js"></script>
+<![endif]-->
+
+{% comment %}
+<script type="text/javascript" charset="utf-8">
+	// Old stuff
+	function getSize() {
+	  var myWidth = 0, myHeight = 0;
+	  if( typeof( window.innerWidth ) == 'number' ) {
+	    //Non-IE
+	    myWidth = window.innerWidth;
+	    myHeight = window.innerHeight;
+	  } else if( document.documentElement && (document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+	    //IE 6+ in 'standards compliant mode'
+	    myWidth = document.documentElement.clientWidth;
+	    myHeight = document.documentElement.clientHeight;
+	  } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+	    //IE 4 compatible
+	    myWidth = document.body.clientWidth;
+	    myHeight = document.body.clientHeight;
+	  }
+	  return myHeight;
+	}
+
+	function scrollSahka(form) {
+	    var scrollLoc = getSize();
+	    if (self.pageYOffset) // all except Explorer
+	    {
+	    window.scroll(0, scrollLoc);
+	    }
+	    else if (document.documentElement && document.documentElement.scrollTop)
+	    // Explorer 6 Strict
+	    {
+	    window.scrollTo(0, scrollLoc);
+	    }
+	   else if (document.body) // all other Explorers
+	   {
+	   window.scrollTo(0, scrollLoc);
+	   }				   
+	}
+
+</script>
+{% endcomment %}
+
+{# <script type="text/javascript"> #}
+{#  #}
+{# // Event handler for a.feedback_link #}
+{# function showPopup(w,h,elid){ #}
+{#    var popUp = document.getElementById(elid); #}
+{#  #}
+{#    var baseText = null; #}
+{#   #}
+{#    popUp.style.top = "200px"; #}
+{#    popUp.style.left = "400px"; #}
+{#    popUp.style.width = w + "px"; #}
+{#    popUp.style.height = h + "px"; #}
+{#  #}
+{#  #}
+{#    if (baseText === null) baseText = popUp.innerHTML; #}
+{#  #}
+{#    if (baseText.match(elid) == null) { #}
+{#        popUp.innerHTML = baseText + "<div id=\"statusbar\"><button onclick=\"hidePopup(\'" + elid + "\');\">Close window<button></div>";  #}
+{#    } #}
+{#    else { #}
+{#        popUp.innerHTML = baseText; #}
+{#    } #}
+{#    var sbar = document.getElementById("statusbar"); #}
+{#    sbar.style.marginTop = (parseInt(h)-70) + "px"; #}
+{#    popUp.style.visibility = "visible"; #}
+{# } #}
+{#  #}
+{# function hidePopup(elid){ #}
+{#    var popUp = document.getElementById(elid); #}
+{#    popUp.style.visibility = "hidden"; #}
+{# } #}
+{#  #}
+{# // Event handler for making option menus in forms jump to 'all' #}
+{#  #}
+{#  #}
+{# </script> #}
+
+<script type="text/javascript" charset="utf-8">
+	// jQuery
+	
+	// Set up event handlers
+	$(document).ready(function(){
+		$('input[type="text"]').keydown(next_field);
+		$('a.link_tooltip').click(reveal_tooltip);
+	});
+	
+	function reveal_tooltip (event) {
+		reveal_id = event.target.id.match(/(tooltip-\d)/);
+		$('.tooltip').hide();
+		$('#' + reveal_id).show();
+		return false; 
+	}
+	
+	// Switch to next field on enter, at end, go back to first empty field
+	// or focus test
+	function next_field (event) {
+		if ((event.keyCode || event.which) == 13) {
+			function first_empty (inputs) {
+				return inputs[0];
+			}
+		
+			current_id = event.target.id;
+			match = current_id.match(/id_(\d)-answer/);
+			count = parseFloat(match[1]) - 1;
+			inputs = $('input[type="text"]');
+		
+			// Focus next
+			$(inputs[count+1]).focus();
+		
+			if(count == 4){
+				open_inputs = $("input:visible:enabled[type='text'][value='']").not(".nofocus");
+				if (open_inputs.length == 0) {
+					$('input[name="test"]').focus();
+					return false;
+				} else {
+					open_inputs.slice(0, 1).focus();
+					
+				}
+			}
+			
+			return false;
+		}
+		
+	}
+	
+	function SetIndex(list,value) {
+	    if (value == "all") {
+		   return;
+	    }
+		if(list && list.options.length){ 
+			for(var i=0; i<list.options.length; i++){ 
+			if(list.options[i].value == "all"){ 
+				list.selectedIndex = i; 
+				return; 
+				} 
+			} 
+		} 
+	}
+	
+</script>
+
+{% block addcss %}{% endblock %}
+</head>
+
+
+<body>
+
+<div id="banner">
+<div class="title">
+<table>
+<tr>
+<td>
+<a href="/smaoahpa/">
+<img border="0" width="200" height="70" src="/smaoahpa/media/images/Oahpa_logo0001.png" alt="OAHPA!"/></a>
+</td>
+<td>
+<table cellspacing="0px" cellpadding="0px">
+<tr>
+<!-- <td class="header" width="90"> -->
+<!-- <a href="/smaoahpa/morfac/"> -->
+<!-- <img width="60" height="60" border="0" src="/smaoahpa/media/images/morfac_small.png" alt="MORFA-C"/><br/> -->
+<!-- MORFA-C</a>&nbsp;&nbsp; -->
+<!-- </td> -->
+<td class="header" width="90">
+<a href="/smaoahpa/morfa_s/">
+<img width="60" height="60" border="0" src="/smaoahpa/media/images/morfa_small.png" alt="NUMRA"/><br/>
+MORFA-S</a>&nbsp;&nbsp;
+</td>
+
+<td class="header" width="90">
+<a href="/smaoahpa/leksa/">
+<img width="60" height="60" border="0" src="/smaoahpa/media/images/leksa_small.png" alt="LEKSA"/><br/>
+LEKSA</a>&nbsp;&nbsp;
+</td>
+
+<td class="header" width="90">
+<a href="/smaoahpa/numra/">
+<img width="60" height="60" border="0" src="/smaoahpa/media/images/numra_small.png" alt="NUMRA"/><br/>
+NUMRA</a>&nbsp;&nbsp;
+</td>
+
+
+
+{# <td class="header" width="90"> #}
+{# <a href="/smaoahpa/morfa_s/"> #}
+{# <img width="60" height="60" border="0" src="/smaoahpa/media/images/morfa_small.png" alt="NUMRA"/><br/> #}
+{# MORFA-S</a>&nbsp;&nbsp; #}
+<!-- <td> -->
+
+
+<!-- {% ifequal LANGUAGE_CODE "sme" %} -->
+
+<!-- {% trans "Grammar" %}<br/> -->
+<!-- <form name="jump"> -->
+<!-- <select name="menu" onChange="javascript:if (this.selectedIndex > 0) window.open(this.value)"> -->
+<!-- <option value="">grammatihkkačilgehusat</option> -->
+<!-- {% for link in settingsform.grammarlinkssme %} -->
+<!-- <option value="{{ link.address }}">{{ link.name }}</option> -->
+<!-- {% endfor %} -->
+<!-- </select> -->
+<!-- </form> -->
+
+<!-- {% else %} -->
+
+<!-- {% trans "Grammar" %}<br/> -->
+<!-- <form name="jump"> -->
+<!-- <select name="menu" onChange="javascript:if (this.selectedIndex > 0) window.open(this.value)"> -->
+<!-- <option value="">grammatikkforklaringer</option> -->
+<!-- {% for link in settingsform.grammarlinksno %} -->
+<!-- <option value="{{ link.address }}">{{ link.name }}</option> -->
+<!-- {% endfor %} -->
+<!-- </select> -->
+<!-- </form> -->
+<!-- {% endifequal %} -->
+
+
+
+<!-- </td> -->
+
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div id="leftcontent">
+{% block navbar %}{% endblock %}
+{% comment %}
+<p>{% trans 'OAHPA is under development and may not function all the time.' %}</p>
+{% endcomment %}
+<p><a href="/smaoahpa/"> 
+<img border="0" width="60" src="/smaoahpa/media/images/Oahpa_logo0001red.png" alt="OAHPA!"/><br/> </a></p>
+
+
+{% include 'user_auth_block.html' %}
+
+
+<!-- <a href="/smaoahpa/feedback/">{% trans 'Feedback' %}</a><br/> -->
+
+</div>
+
+  <div id="centercontent">
+<form method="post" action="" name="gameform" >
+
+<div class="settings">
+{% block settings %}{% endblock %}
+</div>
+
+<div class="game">
+    {% block content %}{% endblock %}
+</div>
+</form>
+</div>
+
+<div id="footer">
+  <a name="bottom">&nbsp;</a> 
+	
+	{% comment %}
+	<div id="debug">
+	  <h2>Queries</h2>
+	  <p>
+	    {{ sql_queries|length }} Quer{{ sql_queries|pluralize:"y,ies" }}
+	    {% ifnotequal sql_queries|length 0 %}
+	    (<span style="cursor: pointer;" onclick="var s=document.getElementById('debugQueryTable').style;s.display=s.display=='none'?'':'none';this.innerHTML=this.innerHTML=='Show'?'Hide':'Show';">Show</span>)
+	    {% endifnotequal %}
+	  </p>
+	  <table id="debugQueryTable" style="display: none;">
+	    <col width="1"></col>
+	    <col></col>
+	    <col width="1"></col>
+	    <thead>
+	    <tr>
+	      <th scope="col count">#</th>
+		      <th scope="col time">Time</th>
+	      <th scope="col sql">SQL</th>
+	    </tr>
+	    </thead>
+	    <tbody>
+	    {% for query in sql_queries %}<tr class="{% cycle odd,even %}">
+	      <td class="count">{{ forloop.counter }}</td>
+		      <td class="time">{{ query.time }}</td>
+	      <td class="sql">{{ query.sql|escape }}</td>
+	    </tr>{% endfor %}
+	    </tbody>
+	  </table>
+	</div>
+	{% endcomment %}
+
+<p>&nbsp;</p>
+</div>
+
+</body>
+</html>

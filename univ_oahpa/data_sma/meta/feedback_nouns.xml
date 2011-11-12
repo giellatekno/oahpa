@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feedback pos="N">
+
+<!-- Messageorder nouns: LEMMA A B C 
+A: 
+bisyllabic_stem
+trisyllabic_stem
+                 
+B: 
+umlaut
+soggi_a
+soggi_ie
+soggi_oe
+
+E:  
+suffix  
+-->
+
+  <stems>
+    <l stem="2syll">
+      <msg pos="n">bisyllabic_stem</msg>
+    </l>
+    <l stem="3syll">
+      <msg pos="n">trisyllabic_stem</msg>
+    </l>
+
+    <l stem="3syll" soggi="a">
+      <msg case="Ill">soggi_a</msg>
+      <msg case="Ine">soggi_a</msg>
+      <msg case="Ela">soggi_a</msg>
+      <msg case="Com" number="Sg">soggi_a</msg>
+      <msg case="Ess">soggi_a</msg>
+      <note>daktarasse, vuanavasse, e/o > a</note>
+    </l>
+
+    <l stem="3syll" soggi="ie">
+      <msg case="Ill">soggi_ie</msg>
+      <msg case="Ine">soggi_ie</msg>
+      <msg case="Ela">soggi_ie</msg>
+      <msg case="Com" number="Sg">soggi_ie</msg>
+      <msg case="Ess">soggi_ie</msg>
+      <note>gieriehtsasse, åerievasse, juhtiejasse, u/i/e > ie</note>
+    </l>
+ 
+    <l stem="3syll" soggi="oe">
+      <msg case="Ill">soggi_oe</msg>
+      <msg case="Ine">soggi_oe</msg>
+      <msg case="Ela">soggi_oe</msg>
+      <msg case="Com" number="Sg">soggi_oe</msg>
+      <msg case="Ess">soggi_oe</msg>
+      <note>gaalloehkasse, o > oe</note>
+    </l>
+        
+
+    <l stem="2syll" soggi="ie">
+      <msg case="Ill" number="Sg">umlaut_down</msg>
+      <note>gåetie > gåatan</note>
+    </l>
+
+    <l stem="2syll" soggi="a">
+      <msg case="Nom" number="Pl">suffix_ah</msg>
+      <msg case="Acc" number="Sg">suffix_m_acc</msg>
+      <msg case="Gen" number="Sg">suffix_n_gen</msg>
+      <msg case="Acc" number="Pl">suffix_ide</msg>
+      <msg case="Gen" number="Pl">suffix_aj</msg>
+      <msg case="Ill" number="Sg">suffix_ese</msg>
+      <msg case="Ill" number="Pl">suffix_ide</msg>
+      <msg case="Ine" number="Sg">suffix_esne</msg>
+      <msg case="Ine" number="Pl">suffix_ine</msg>
+      <msg case="Ela" number="Sg">suffix_este</msg>
+      <msg case="Ela" number="Pl">suffix_ijste</msg>
+      <msg case="Com" number="Sg">suffix_ine</msg>
+      <msg case="Com" number="Pl">suffix_jgujmie</msg>
+      <msg case="Ess">suffix_ine</msg>
+      <note>suffixes - maana</note>
+    </l>
+
+    <l stem="2syll" soggi="ie">
+      <msg case="Nom" number="Pl">suffix_h</msg>
+      <msg case="Acc" number="Sg">suffix_m_acc</msg>
+      <msg case="Gen" number="Sg">suffix_n_gen</msg>
+      <msg case="Acc" number="Pl">suffix_ide</msg>
+      <msg case="Gen" number="Pl">suffix_j</msg>
+      <msg case="Ill" number="Sg">suffix_an</msg>
+      <msg case="Ill" number="Pl">suffix_ide</msg>
+      <msg case="Ine" number="Sg">suffix_esne</msg>
+      <msg case="Ine" number="Pl">suffix_ine</msg>
+      <msg case="Ela" number="Sg">suffix_este</msg>
+      <msg case="Ela" number="Pl">suffix_ijste</msg>
+      <msg case="Com" number="Sg">suffix_ine</msg>
+      <msg case="Com" number="Pl">suffix_jgujmie</msg>
+      <msg case="Ess">suffix_ine</msg>
+      <note>suffixes - gåetie</note>
+    </l>
+
+    <l stem="2syll" soggi="oe">
+      <msg case="Nom" number="Pl">suffix_h</msg>
+      <msg case="Acc" number="Sg">suffix_m_acc</msg>
+      <msg case="Gen" number="Sg">suffix_n_gen</msg>
+      <msg case="Acc" number="Pl">suffix_jde</msg>
+      <msg case="Gen" number="Pl">suffix_j</msg>
+      <msg case="Ill" number="Sg">suffix_ose</msg>
+      <msg case="Ill" number="Pl">suffix_jde</msg>
+      <msg case="Ine" number="Sg">suffix_sne</msg>
+      <msg case="Ine" number="Pl">suffix_jne</msg>
+      <msg case="Ela" number="Sg">suffix_ste</msg>
+      <msg case="Ela" number="Pl">suffix_jste</msg>
+      <msg case="Com" number="Sg">suffix_jne</msg>
+      <msg case="Com" number="Pl">suffix_jgujmie</msg>
+      <msg case="Ess">suffix_jne</msg>
+      <note>suffixes -  bearkoe</note>
+    </l>
+
+    <l stem="2syll" soggi="e">
+      <msg case="Nom" number="Pl">suffix_h</msg>
+      <msg case="Acc" number="Sg">suffix_m_acc</msg>
+      <msg case="Gen" number="Sg">suffix_n_gen</msg>
+      <msg case="Acc" number="Pl">suffix_ide</msg>
+      <msg case="Gen" number="Pl">suffix_i</msg>
+      <msg case="Ill" number="Sg">suffix_ese</msg>
+      <msg case="Ill" number="Pl">suffix_ide</msg>
+      <msg case="Ine" number="Sg">suffix_esne</msg>
+      <msg case="Ine" number="Pl">suffix_ine</msg>
+      <msg case="Ela" number="Sg">suffix_este</msg>
+      <msg case="Ela" number="Pl">suffix_ijste</msg>
+      <msg case="Com" number="Sg">suffix_ine</msg>
+      <msg case="Com" number="Pl">suffix_jgujmie</msg>
+      <msg case="Ess">suffix_ine</msg>
+      <note>suffixes - nïejte</note>
+    </l>
+
+    <l stem="3syll">
+      <msg case="Nom" number="Pl">suffix_h</msg>
+      <msg case="Acc" number="Sg">suffix_m_acc</msg>
+      <msg case="Gen" number="Sg">suffix_n_gen</msg>
+      <msg case="Acc" number="Pl">suffix_idie</msg>
+      <msg case="Gen" number="Pl">suffix_i</msg>
+      <msg case="Ill" number="Sg">suffix_asse</msg>
+      <msg case="Ill" number="Pl">suffix_idie</msg>
+      <msg case="Ine" number="Sg">suffix_isnie</msg>
+      <msg case="Ine" number="Pl">suffix_inie</msg>
+      <msg case="Ela" number="Sg">suffix_istie</msg>
+      <msg case="Ela" number="Pl">suffix_ijstie</msg>
+      <msg case="Com" number="Sg">suffix_inie</msg>
+      <msg case="Com" number="Pl">suffix_igujmie</msg>
+      <msg case="Ess">suffix_inie</msg>
+      <note>suffixes - gaamege</note>
+    </l>
+
+
+  </stems>
+
+
+</feedback>

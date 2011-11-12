@@ -1,0 +1,33 @@
+﻿# Tracking template inheritance
+
+The most indented template has a statement at the beginning: {% extends 'filename.html' %} which extends the parent in the tree.
+
+
+
+	templates/smaoahpa_main.html
+		
+		templates/smaoahpa.html
+			
+			smadrill/templates/game.html
+
+				smadrill/templates/mgame.html
+					TODO:
+
+				smadrill/templates/num.html
+					smadrill/templates/num_ord.html
+					smadrill/templates/clock.html
+					smadrill/templates/dato.html
+					smadrill/templates/numra_submenu.html (include)
+
+				smadrill/templates/leksa.html
+					smadrill/templates/leksa_place.html
+
+
+
+TODO: try to get main layout stuff out of game.html and mgame.html, unless it's to do with dl#questions_set or forms.
+
+
+TODO: <ul> radio buttons in settings form look funky
+
+TODO: morfa and morfac still need to have templates reformatted
+

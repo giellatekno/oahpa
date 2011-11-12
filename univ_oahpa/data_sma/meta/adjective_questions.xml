@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
+-->
+<questions>
+	<q id="attrpos1">
+		<qtype>ATTRPOS</qtype>
+		<question>
+			<text>Mov tjidtjien THING lea ADJ . Dov lea THING</text>
+			<element id="THING">
+				<grammar tag="N+Sg+Nom"/>
+				<sem class="CLOTHING"/>
+			</element>
+			<element id="ADJ">
+				<grammar tag="A+Sg+Nom"/>
+				<sem class="COLOUR"/>
+			</element>
+		</question>
+		<answer>
+			<text>Mov aaj ADJ THING</text>
+			<element game="morfa" id="ADJ" content="ADJ" task="yes">
+				<grammar tag="A+Attr"/>
+			</element>
+		</answer>
+	</q>
+	<q id="attrpos2">
+		<qtype>ATTRPOS</qtype>
+		<qtype>A-MIX</qtype>
+		<question>
+			<text>GEN gåetie lea ADJ . Guktie dov gåetie</text>
+			<element id="GEN">
+				<grammar tag="N+Prop+Sg+Gen"/>
+				<sem class="mPERSNAME"/>
+			</element>
+			<element id="ADJ">
+				<grammar tag="A+Sg+Nom"/>
+				<sem class="BUILDING_ROOM_A"/>
+			</element>
+		</question>
+		<answer>
+			<text>Mov aaj ADJ gåetie</text>
+			<element game="morfa" id="ADJ" content="ADJ" task="yes">
+				<grammar tag="A+Attr"/>
+			</element>
+		</answer>
+	</q>
+	<q id="attrpos3">
+		<qtype>ATTRPOS</qtype>
+		<qtype>A-MIX</qtype>
+		<question>
+			<text>Datne tuhtjh mov THING lea ADJ</text>
+			<element id="THING">
+				<grammar tag="N+Sg+Nom"/>
+				<sem class="ANIMAL_DOM"/>
+			</element>
+			<element id="ADJ">
+				<grammar tag="A+Sg+Nom"/>
+				<sem class="ANIMAL_A"/>
+			</element>
+		</question>
+		<answer>
+			<text>Jaavoe, dov lea ADJ THING</text>
+			<element game="morfa" id="ADJ" content="ADJ" task="yes">
+				<grammar tag="A+Attr"/>
+			</element>
+		</answer>
+	</q>
+	<q id="attrpos4">
+		<qtype>ATTRPOS</qtype>
+		<qtype>A-MIX</qtype>
+		<question>
+			<text>Daate filme lea gaaje ADJ . Sïjhth dam vuartasjidh</text>
+			<element id="ADJ">
+				<grammar tag="A+Sg+Nom"/>
+				<sem class="EXPERIENCE_A"/>
+			</element>
+		</question>
+		<answer>
+			<text>Ijje, im sïjhth ADJ filmh vuartasjidh</text>
+			<element game="morfa" id="ADJ" content="ADJ" task="yes">
+				<grammar tag="A+Attr"/>
+			</element>
+		</answer>
+	</q>
+	<q id="attrpos5">
+		<qtype>ATTRPOS</qtype>
+		<qtype>A-MIX</qtype>
+		<question>
+			<text>Daate THING lea ADJ . Guktie doete</text>
+			<element id="THING">
+				<grammar tag="N+Sg+Nom"/>
+				<sem class="CLOTHING"/>
+			</element>
+			<element id="ADJ">
+				<grammar tag="A+Sg+Nom"/>
+				<sem class="CLOTHES_A"/>
+			</element>
+		</question>
+		<answer>
+			<text>Daate aaj ADJ THING</text>
+			<element game="morfa" id="ADJ" content="ADJ" task="yes">
+				<grammar tag="A+Attr"/>
+			</element>
+		</answer>
+	</q>
+	<q id="attrpos6">
+		<qtype>ATTRPOS</qtype>
+		<question>
+			<text>GEN THING lea ADJ</text>
+			<element id="GEN">
+				<grammar tag="N+Sg+Gen"/>
+				<sem class="FAMILY"/>
+			</element>
+			<element id="THING">
+				<grammar tag="N+Sg+Nom"/>
+				<sem class="ANIMAL_PET"/>
+			</element>
+			<element id="ADJ">
+				<grammar tag="A+Sg+Nom"/>
+				<sem class="ANIMAL_A"/>
+			</element>
+		</question>
+		<answer>
+			<text>Nov amma dïhte ADJ THING åtna</text>
+			<element game="morfa" id="ADJ" content="ADJ" task="yes">
+				<grammar tag="A+Attr"/>
+			</element>
+			<element id="THING" content="THING">
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="attrpos7">
+		<qtype>ATTRPOS</qtype>
+		<question>
+			<text>GEN bïjle lea ADJ</text>
+			<element id="GEN">
+				<grammar tag="N+Prop+Sg+Gen"/>
+				<sem class="mPERSNAME"/>
+			</element>
+			<element id="ADJ">
+				<grammar tag="A+Sg+Nom"/>
+				<sem class="mTHING_A"/>
+			</element>
+		</question>
+		<answer>
+			<text>Jaavoe, daelie hov lea ADJ bïjlem åasteme</text>
+			<element game="morfa" id="ADJ" content="ADJ" task="yes">
+				<grammar tag="A+Attr"/>
+			</element>
+		</answer>
+	</q>
+	<q id="attrpos8">
+		<qtype>ATTRPOS</qtype>
+		<question>
+			<text>Dov beapmoeh ADJ</text>
+			<element id="ADJ">
+				<grammar tag="A+Sg+Nom"/>
+				<sem class="SOUP_A"/>
+			</element>
+		</question>
+		<answer>
+			<text>Ijje, ij leah daate ADJ beapmoeh</text>
+			<element game="morfa" id="ADJ" content="ADJ" task="yes">
+				<grammar tag="A+Attr"/>
+			</element>
+		</answer>
+	</q>
+	<q id="predcomp1">
+   		<qtype>PREDCOMP</qtype>
+		<qtype>A-MIX</qtype>
+   		<question>
+			<text>Mov stoere gåetie. Guktie dov gåetie</text>
+		</question>
+		<answer>
+			<text>Mov gåetie ADJ goh dov</text>
+			<element game="morfa" id="ADJ" task="yes">
+				<grammar tag="A+Comp+Sg+Nom"/>
+				<id>stoere</id>
+			</element>
+		</answer>
+	</q>
+	<q id="predcomp2">
+   		<qtype>PREDCOMP</qtype>
+		<qtype>A-MIX</qtype>
+   		<question>
+			<text>GEN aajja båeries. Man båries dov aajja</text>
+			<element id="GEN">
+				<grammar tag="N+Prop+Sg+Gen"/>
+				<sem class="mPERSNAME"/>
+			</element>
+		</question>
+		<answer>
+			<text>Im daejrieh, men mov aajja ADJ sov aajjeste</text>
+			<element game="morfa" id="ADJ" task="yes">
+				<grammar tag="A+Comp+Sg+Nom"/>
+				<id>båeries</id>
+			</element>
+		</answer>
+	</q>
+	<q id="predcomp3">
+   		<qtype>PREDCOMP</qtype>
+   		<question>
+			<text>Jååktan garre bïegke daesnie</text>
+		</question>
+		<answer>
+			<text>Men daan biejien ADJ bïegke</text>
+			<element game="morfa" id="ADJ" task="yes">
+				<grammar tag="A+Comp+Sg+Nom"/>
+				<id>garre</id>
+			</element>
+		</answer>
+	</q>
+	<q id="predcomp4">
+   		<qtype>PREDCOMP</qtype>
+   		<question>
+			<text>SUBJ lea ADJ</text>
+			<element id="SUBJ">
+				<grammar tag="N+Prop+Sg+Nom"/>
+				<sem class="mPERSNAME"/>
+			</element>
+			<element id="ADJ">
+				<grammar tag="A+Sg+Nom"/>
+				<sem class="HUMAN_A"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dan voelph ADJ</text>
+			<element game="morfa" id="ADJ" content="ADJ" task="yes">
+				<grammar tag="A+Comp+Pl+Nom"/>
+				<id>noere</id>
+			</element>
+		</answer>
+		<answer>
+			<text>Manne leam ADJ</text>
+			<element game="morfa" id="ADJ" content="ADJ" task="yes">
+				<grammar tag="A+Comp+Sg+Nom"/>
+				<id>noere</id>
+			</element>
+		</answer>
+	</q>
+	<q id="predcomp5">
+   		<qtype>PREDCOMP</qtype>
+		<qtype>A-MIX</qtype>
+   		<question>
+			<text>GEN THING lea guhkie. Man guhkies THING dov</text>
+			<element id="GEN">
+				<grammar tag="N+Prop+Sg+Gen"/>
+				<sem class="mPERSNAME"/>
+			</element>
+			<element id="THING">
+				<grammar tag="N+Sg+Nom"/>
+				<sem class="mLONG_SHORT"/>
+			</element>
+		</question>
+		<answer>
+			<text>Mov THING ADJ goh GEN</text>
+			<element game="morfa" id="ADJ" task="yes">
+				<grammar tag="A+Comp+Sg+Nom"/>
+				<id>guhkies</id>
+			</element>
+		</answer>
+	</q>
+	<q id="predcomp6">
+   		<qtype>PREDCOMP</qtype>
+		<qtype>A-MIX</qtype>
+   		<question>
+			<text>GEN aehtjie veaksehke</text>
+			<element id="GEN">
+				<grammar tag="N+Prop+Sg+Gen"/>
+				<sem class="mPERSNAME"/>
+			</element>
+		</question>
+		<answer>
+			<text>Mov aehtjie ADJ sov aehtjeste</text>
+			<element game="morfa" id="ADJ" task="yes">
+				<grammar tag="A+Comp+Sg+Nom"/>
+				<id>veaksehks</id>
+			</element>
+		</answer>
+	</q>
+	<q id="predcomp7">
+   		<qtype>PREDCOMP</qtype>
+		<qtype>A-MIX</qtype>
+   		<question>
+			<text>GEN THING lea åenehke. Dov THING aaj åenehke</text>
+			<element id="GEN">
+				<grammar tag="N+Prop+Sg+Gen"/>
+				<sem class="mPERSNAME"/>
+			</element>
+			<element id="THING">
+				<grammar tag="N+Sg+Nom"/>
+				<sem class="mLONG_SHORT"/>
+			</element>
+		</question>
+		<answer>
+			<text>Mov THING ADJ goh GEN</text>
+			<element game="morfa" id="ADJ" task="yes">
+				<grammar tag="A+Comp+Sg+Nom"/>
+				<id>åenehks</id>
+			</element>
+		</answer>
+	</q>
+  <q id="predsup1">
+    <qtype>PREDSUP</qtype>
+   		<question>
+			<text>Daesnie jïjnjh ADJ THING . Maam daejstie sïjhth</text>
+			<element id="ADJ">
+				<grammar tag="A+Attr"/>
+				<id>stoere</id>
+			</element>
+			<element id="THING">
+				<grammar tag="N+Pl+Nom"/>
+				<sem class="FOOD_GROCERY"/>
+			</element>
+		</question>
+		<answer>
+			<text>Manne dam ADJ THING vaaltam</text>
+			<element game="morfa" id="ADJ" task="yes">
+				<grammar tag="A+Superl+Attr"/>
+				<id>stoere</id>
+			</element>
+			<element id="THING" content="THING">
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="predsup4">
+   		<qtype>PREDSUP</qtype>
+   		<question>
+			<text>Daesnie ADJ guvvieh. Magkeres guvvie datne lyjhkh</text>
+			<element id="ADJ">
+				<grammar tag="A+Attr"/>
+				<sem class="mTHING_A"/>
+			</element>
+		</question>
+		<answer>
+			<text>Manne gujht dam ADJ guvviem lyjhkem</text>
+			<element game="morfa" id="ADJ" content="ADJ" task="yes">
+				<grammar tag="A+Superl+Attr"/>
+			</element>
+		</answer>
+	</q>
+</questions>

@@ -1,0 +1,194 @@
+{% extends 'smaoahpa_main.html' %}
+
+{% load i18n %}
+{{ lang_switch }}
+{% get_available_languages as LANGUAGES %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{# the following css should be in a file somewhere #}
+
+{% comment %}
+	
+	<style type="text/css">
+	
+	html {
+	    overflow: scroll;
+	    height: 100%;
+	    margin-bottom: 1px;
+	}
+	body {
+	    margin:10px 10px 0px 10px;
+	    padding:0px;
+	    font-family: Arial Pro;
+	    color: #150517;
+	    background-image: url(../media/images/sma_bg.jpg);
+	}
+	
+	#leftcontent {
+	position: fixed;
+	left: 10px;
+	top: 95px;
+	width: 140px;
+	font-family: Arial Pro;
+	
+	}
+	#centercontent {
+	position:absolute;
+	background:#fff;
+	margin-left: 141px;
+	margin-right:1px;
+	top: 95px;
+	padding: 10px;
+	border: 1px solid #150517;
+	font-family: Times;
+	margin-bottom: 1px;
+	}
+	body #centercontent {
+	top: 95px;
+	margin-left: 141px;
+	margin-right:11px;
+	}
+	#rightcontent {
+	position: fixed;
+	right:10px;
+	top:95px;
+	width:120px;
+	}
+	
+	#banner {
+	height:80px;
+	}
+	html>body #banner {
+	height:80px;
+	}
+	
+	</style>
+{% endcomment %}
+
+{% block main_header %}
+	<link rel="stylesheet" type="text/css" href="/smaoahpa/media/css/smaoahpa_main.css"/>
+	<link rel="stylesheet" type="text/css" href="/smaoahpa/media/css/smaoahpa_new.css"/>
+	<script src="/smaoahpa/media/js/jquery-1.4.4.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript" charset="utf-8">
+		// jQuery
+		
+		// Set up event handlers
+		$(document).ready(function(){
+			$('input[type="text"]').keydown(next_field);
+			$('a.link_tooltip').click(reveal_tooltip);
+		});
+		
+		function reveal_tooltip (event) {
+			reveal_id = event.target.id.match(/(tooltip-\d)/);
+			$('.tooltip').hide();
+			$('#' + reveal_id).show();
+			return false; 
+		}
+		
+		// Switch to next field on enter, at end, go back to first empty field
+		// or focus test
+		function next_field (event) {
+			if ((event.keyCode || event.which) == 13) {
+				function first_empty (inputs) {
+					return inputs[0];
+				}
+			
+				current_id = event.target.id;
+				match = current_id.match(/id_(\d)-answer/);
+				count = parseFloat(match[1]) - 1;
+				inputs = $('input[type="text"]');
+			
+				// Focus next
+				$(inputs[count+1]).focus();
+			
+				if(count == 4){
+					open_inputs = $("input:visible:enabled[type='text'][value='']").not(".nofocus");
+					if (open_inputs.length == 0) {
+						$('input[name="test"]').focus();
+						return false;
+					} else {
+						open_inputs.slice(0, 1).focus();
+						
+					}
+				}
+				
+				return false;
+			}
+			
+		}
+		
+		function SetIndex(list,value) {
+		    if (value == "all") {
+			   return;
+		    }
+			if(list && list.options.length){ 
+				for(var i=0; i<list.options.length; i++){ 
+				if(list.options[i].value == "all"){ 
+					list.selectedIndex = i; 
+					return; 
+					} 
+				} 
+			} 
+		}
+		
+	</script>
+	
+{% endblock %}
+
+{% block addcss %}{% endblock %}
+
+{% block page_header %}
+	<img width="240px" src="/smaoahpa/media/images/Oahpa_logo0001.png" alt="OAHPA!"/>
+	<ul id="games_menu" class="small">
+		{# 60 by 60 #}
+		<li class="game">
+			<a href="{% url smadrill.views.leksa_game %}" class="game">
+				<img src="/smaoahpa/media/images/leksa_small.png" alt="LEKSA" /><br />
+				<span>LEKSA</span>
+			</a>
+		</li>
+		<li class="game">
+			<a href="{% url smadrill.views.num %}" class="game">
+				<img src="/smaoahpa/media/images/numra_small.png" alt="NUMRA" /><br />
+				<span>NUMRA</span>
+			</a>
+		</li>
+		<li class="game">
+			<a href="/smaoahpa/morfa_s/" class="game">
+				<img src="/smaoahpa/media/images/morfa_small.png" alt="MORFA" /><br />
+				<span>MORFA</span>
+			</a>
+		</li>
+	</ul>
+{% endblock %}
+
+{# May be necessary for proper sidebar position, and want to fork #page between
+   main page, and other pages. #}
+
+{% block page_class %}fixed{% endblock %}
+
+{% block page_content %}
+	<form method="post" action="" name="gameform">
+		<div class="settings">
+			{% block settings %}{% endblock %}
+		</div>
+		
+	<div class="game">
+	    {% block game_content %}{% endblock %}
+	</div>
+	</form>
+{% endblock %}
+
+{% block sidebar %}
+	{% block navbar %}{% endblock %}
+	{# <p>{% trans 'OAHPA is under development and may not function all the time.' %}</p> #}
+	<p><a href="/smaoahpa/"> 
+		{# {% include 'user_auth_block.html' %} #}
+	<br />
+	<br />
+	<br />
+	<img border="0" width="60" src="/smaoahpa/media/images/Oahpa_logo0001red.png" alt="OAHPA!"/><br/> </a></p>
+	
+	<!-- <a href="/smaoahpa/feedback/">{% trans 'Feedback' %}</a><br/> -->
+{% endblock %}

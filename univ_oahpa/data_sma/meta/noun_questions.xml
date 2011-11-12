@@ -1,0 +1,2012 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
+-->
+<questions>
+	<q id="acc1">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ jåvhka</text>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ACC jåvhka</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<grammar tag="N+Sg+Acc"/>
+				<sem class="DRINK"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc2">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ byöpmede</text>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ACC byöpmede</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="FOOD_DISH"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc3">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>jovkedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<grammar tag="N+Sg+Acc"/>
+				<sem class="DRINK"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc4">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>byöpmedidh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="FOOD_DISH"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc5">
+		<qtype>N-ACC</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>jovkedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="DRINK"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc6">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>byöpmedidh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="FOOD_DISH"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc7">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ bovresne MAINV</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>åestedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="FOOD_GROCERY"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc8">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>vuejedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="VEHICLE"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc9">
+		<qtype>N-ACC</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>vuejnedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc10">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV byöpmedidh</text>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>sïjhtedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ MAINV N-ACC byöpmedidh</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="FOOD_DISH"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc11">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ gåvla</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ACC gåvla</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="VEHICLE"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc12">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>SUBJ OBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>vuejnedh</id>
+			</element>
+			<element id="OBJ">
+				<sem class="BUILDING"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" content="OBJ" task="yes">
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc13">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Pl3"/>
+				<id>sïjhtedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>Dah N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="FOOD_DISH"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc14">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ jåvka</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ACC jåvka</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="DRINK"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc15">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam ADJ SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="N"/>
+				<sem class="FAMILY"/>
+			</element>
+			<element id="ADJ">
+				<grammar tag="A+Attr"/>
+				<sem class="HUMAN_A"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>jovkedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<grammar tag="N+Sg+Acc"/>
+				<sem class="DRINK"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc16">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="N"/>
+				<sem class="PEOPLE"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>vuejnedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="ANIMAL_DOM"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc17">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<sem class="mCLOTHES_WORK"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc18">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<sem class="mCLOTHES_WORK"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ ADJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+			<element id="ADJ">
+				<sem class="CLOTHES_A"/>
+				<grammar tag="A+Attr"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc19">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Sg3"/>
+				<sem class="mCLOTHES_WORK"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc20">
+		<qtype>N-ACC</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Sg3"/>
+				<sem class="mCLOTHES_WORK"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte ADJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+			<element id="ADJ">
+				<sem class="CLOTHES_A"/>
+				<grammar tag="A+Attr"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc21">
+		<qtype>N-ACC</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<sem class="mCLOTHES_WORK"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ ADJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+			<element id="ADJ">
+				<sem class="CLOTHES_A"/>
+				<grammar tag="A+Attr"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc22">
+		<qtype>N-ACC</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<sem class="mCLOTHES_WORK"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc23">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Datne dam ADJ OBJ vuajnah</text>
+			<element id="ADJ">
+				<sem class="BUILDING_ROOM_A"/>
+				<grammar tag="A+Attr"/>
+			</element>
+			<element id="OBJ">
+				<grammar tag="N+Sg+Acc"/>
+				<sem class="BUILDING"/>
+			</element>
+		</question>
+		<answer>
+			<text>Manne dam ADJ N-ACC vuajnam</text>
+			<element game="morfa" id="N-ACC" content="OBJ" task="yes">
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc25">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>SUBJ dah OBJ aarebi gaavnedamme</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="OBJ">
+				<grammar tag="N+Pl+Nom"/>
+				<sem class="PEOPLE"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ dejtie N-ACC gaavnedamme</text>
+			<element game="morfa" id="N-ACC" content="OBJ" task="yes">
+				<grammar tag="N+Pl+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc26">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>SUBJ dah OBJ råakeme</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="OBJ">
+				<grammar tag="N+Pl+Nom"/>
+				<sem class="PEOPLE"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC råakeme</text>
+			<element game="morfa" id="N-ACC" content="OBJ" task="yes">
+				<grammar tag="N+Pl+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc27">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>vuejnedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="ANIMAL_WILD"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc28">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="N"/>
+				<sem class="FAMILY"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>vuejnedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="ANIMAL_WILD"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc29">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ vuajna</text>
+			<element id="SUBJ">
+				<grammar tag="N+Prop+Sg+Nom"/>
+				<sem class="mPERSNAME"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ACC vuajna</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="ANIMAL_WILD"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc30">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>SUBJ dah OBJ vuajneme</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="OBJ">
+				<sem class="ANIMAL_WILD"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ dejtie N-ACC vuajneme</text>
+			<element game="morfa" id="N-ACC" content="OBJ" task="yes">
+				<grammar tag="N+Pl+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc31">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>vuejnedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="PLANT"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc32">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="N"/>
+				<sem class="FAMILY"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>vuejnedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="PLANT"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc33">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ vuajna</text>
+			<element id="SUBJ">
+				<grammar tag="N+Prop+Sg+Nom"/>
+				<sem class="mPERSNAME"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ACC vuajna</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="PLANT"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc34">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id hid="1">govledh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="ANIMAL_WILD"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc35">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="N"/>
+				<sem class="FAMILY"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id hid="1">govledh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ACC MAINV</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="ANIMAL_WILD"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="acc36">
+		<qtype>N-ACC</qtype>
+		<question>
+			<text>Maam SUBJ gåvla</text>
+			<element id="SUBJ">
+				<grammar tag="N+Prop+Sg+Nom"/>
+				<sem class="mPERSNAME"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ACC gåvla</text>
+			<element game="morfa" id="N-ACC" task="yes">
+				<sem class="ANIMAL_WILD"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="gen1">
+		<qtype>N-GEN</qtype>
+		<question>
+			<text>Gïen ADJ SUBJ dohte</text>
+			<element id="SUBJ">
+				<sem class="ANIMAL_PET"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+			<element id="ADJ">
+				<sem class="ANIMAL_A"/>
+				<grammar tag="A+Attr"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dohte N-GEN SUBJ</text>
+			<element game="morfa" id="N-GEN" task="yes">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Gen"/>
+			</element>
+		</answer>
+	</q>
+	<q id="gen2">
+		<qtype>N-GEN</qtype>
+		<question>
+			<text>Gïen ADJ SUBJ daate</text>
+			<element id="SUBJ">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+			<element id="ADJ">
+				<sem class="CLOTHES_A"/>
+				<grammar tag="A+Attr"/>
+			</element>
+		</question>
+		<answer>
+			<text>Daate N-GEN SUBJ</text>
+			<element game="morfa" id="N-GEN" task="yes">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Gen"/>
+			</element>
+		</answer>
+	</q>
+	<q id="gen4">
+		<qtype>N-GEN</qtype>
+		<question>
+			<text>Gïen SUBJ daate</text>
+			<element id="SUBJ">
+				<sem class="ANIMAL_PET"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Daate N-GEN SUBJ</text>
+			<element game="morfa" id="N-GEN" task="yes">
+				<sem class="FAMILY"/>
+				<grammar tag="N+Pl+Gen"/>
+			</element>
+		</answer>
+	</q>
+	<q id="gen5">
+		<qtype>N-GEN</qtype>
+		<question>
+			<text>Giej SUBJ doh</text>
+			<element id="SUBJ">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Doh N-GEN SUBJ</text>
+			<element game="morfa" id="N-GEN" task="yes">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Pl+Gen"/>
+			</element>
+		</answer>
+	</q>
+	<q id="gen6">
+		<qtype>N-GEN</qtype>
+		<question>
+			<text>Giej SUBJ doh</text>
+			<element id="SUBJ">
+				<sem class="VEHICLE"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Doh N-GEN SUBJ</text>
+			<element game="morfa" id="N-GEN" task="yes">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Pl+Gen"/>
+			</element>
+		</answer>
+	</q>
+	<q id="gen7">
+		<qtype>N-GEN</qtype>
+		<question>
+			<text>Gïen bïjre SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>soptsestidh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-GEN bïjre MAINV</text>
+			<element game="morfa" id="N-GEN" task="yes">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Gen"/>
+			</element>
+		</answer>
+	</q>
+	<q id="gen8">
+		<qtype>N-GEN</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Man bïjre SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Sg3"/>
+				<id>soptsestidh</id>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-GEN bïjre MAINV</text>
+			<element game="morfa" id="N-GEN" task="yes">
+				<sem class="ABSTRACT"/>
+				<grammar tag="N+Sg+Gen"/>
+			</element>
+		</answer>
+	</q>
+	<q id="gen9">
+		<qtype>N-GEN</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Gïen SUBJ daate</text>
+			<element id="SUBJ">
+				<sem class="ANIMAL_PET"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Daate N-GEN SUBJ</text>
+			<element game="morfa" id="N-GEN" task="yes">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Gen"/>
+			</element>
+		</answer>
+	</q>
+	<q id="gen12">
+		<qtype>N-GEN</qtype>
+		<question>
+			<text>Gïen ADJ SUBJ dohte</text>
+			<element id="SUBJ">
+				<sem class="ANIMAL_PET"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+			<element id="ADJ">
+				<grammar tag="A+Attr"/>
+				<sem class="ANIMAL_A"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dohte N-GEN SUBJ</text>
+			<element game="morfa" id="N-GEN" task="yes">
+				<sem class="FAMILY"/>
+				<grammar tag="N+Sg+Gen"/>
+			</element>
+		</answer>
+	</q>
+	<q id="gen13">
+		<qtype>N-GEN</qtype>
+		<question>
+			<text>Gåessie PERS reakedsbiejjie</text>
+			<element id="PERS">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Gen"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dan reakedsbiejjie N-GEN 10. biejjien</text>
+			<element game="morfa" id="N-GEN" task="yes">
+				<sem class="mMONTH"/>
+				<grammar tag="N+Sg+Gen"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ill1">
+		<qtype>N-ILL</qtype>
+		<question>
+			<text>Gåabph SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="PROFESSION"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<sem class="MOVEMENT_V"/>
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ILL MAINV</text>
+			<element game="morfa" id="N-ILL" task="yes">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ill"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ill2">
+		<qtype>N-ILL</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Gåabph SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="PROFESSION"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<sem class="MOVEMENT_V"/>
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ILL MAINV</text>
+			<element game="morfa" id="N-ILL" task="yes">
+				<sem class="NATURE_PLACE"/>
+				<grammar tag="N+Sg+Ill"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ill3">
+		<qtype>N-ILL</qtype>
+		<question>
+			<text>Gåabph daate SUBJ jåhta</text>
+			<element id="SUBJ">
+				<sem class="VEHICLE"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ILL jåhta</text>
+			<element game="morfa" id="N-ILL" task="yes">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ill"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ill4">
+		<qtype>N-ILL</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Gïese SUBJ OBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>vedtedh</id>
+			</element>
+			<element id="OBJ">
+				<sem class="TOY"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ OBJ N-ILL MAINV</text>
+			<element game="morfa" id="N-ILL" task="yes">
+				<sem class="FAMILY"/>
+				<grammar tag="N+Sg+Ill"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ill5">
+		<qtype>N-ILL</qtype>
+		<question>
+			<text>Gïese daate SUBJ</text>
+			<element id="SUBJ">
+				<sem class="FOOD_DISH"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Daate SUBJ N-ILL</text>
+			<element game="morfa" id="N-ILL" task="yes">
+				<sem class="FAMILY"/>
+				<grammar tag="N+Sg+Ill"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine1">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gusnie SUBJ årroeminie</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-INE årroeminie</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine2">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gusnie SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>årrodh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-INE MAINV</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine3">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gusnie SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>årrodh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-INE MAINV</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine4">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gusnie SUBJ orre</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-INE orre</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine5">
+		<qtype>N-INE</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Gusnie ADJ SUBJ årroeminie</text>
+			<element id="SUBJ">
+				<sem class="PROFESSION"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+			<element id="ADJ">
+				<sem class="HUMAN_A"/>
+				<grammar tag="A+Attr"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-INE årroeminie</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine6">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gusnie SUBJ daelie</text>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>Daelie SUBJ N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="PLACE_STAYING"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine7">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gusnie SUBJ</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="BUILDING"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine8">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gusnie SUBJ</text>
+			<element id="SUBJ">
+				<sem class="THING"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="CONTAINER"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine9">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gusnie SUBJ</text>
+			<element id="SUBJ">
+				<sem class="CLOTHING"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="CONTAINER"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine10">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gusnie SUBJ</text>
+			<element id="SUBJ">
+				<sem class="CLOTHING"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="ROOM"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine11">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gusnie ADJ SUBJ</text>
+			<element id="SUBJ">
+				<sem class="CLOTHING"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="ADJ">
+				<sem class="CLOTHES_A"/>
+				<grammar tag="A+Attr"/>
+			</element>
+		</question>
+		<answer>
+			<text>ADJ SUBJ N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="FURNITURE"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine12">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gusnie dov SUBJ</text>
+			<element id="SUBJ">
+				<sem class="THING"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="ROOM"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine13">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gusnie dov SUBJ</text>
+			<element id="SUBJ">
+				<sem class="ANIMAL_PET"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="BUILDING"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine14">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gusnie GEN SUBJ</text>
+			<element id="SUBJ">
+				<sem class="THING"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="GEN">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Gen"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dan SUBJ N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="CONTAINER"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine15">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gubpene SUBJ</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="NATURE_PLACE"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine16">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gubpene SUBJ</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="NATURE_PLACE"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine17">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gubpene SUBJ</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="NATURE_PLACE"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine18">
+		<qtype>N-INE</qtype>
+		<question>
+			<text>Gubpene SUBJ</text>
+			<element id="SUBJ">
+				<sem class="MYTH_HUMAN"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="NATURE_PLACE"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ine19">
+		<qtype>N-INE</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Gusnie GEN SUBJ</text>
+			<element id="SUBJ">
+				<sem class="BELONGINGS"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="GEN">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Gen"/>
+			</element>
+		</question>
+		<answer>
+			<text>GEN SUBJ N-INE</text>
+			<element game="morfa" id="N-INE" task="yes">
+				<sem class="ROOM"/>
+				<grammar tag="N+Sg+Ine"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ela3">
+		<qtype>N-ELA</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Gubpede SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>båetedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ELA MAINV</text>
+			<element game="morfa" id="N-ELA" task="yes">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ela"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ela3">
+		<qtype>N-ELA</qtype>
+		<question>
+			<text>Gubpede SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>båetedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ELA MAINV</text>
+			<element game="morfa" id="N-ELA" task="yes">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ela"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ela4">
+		<qtype>N-ELA</qtype>
+		<question>
+			<text>Gubpede SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>båetedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ELA MAINV</text>
+			<element game="morfa" id="N-ELA" task="yes">
+				<sem class="NATURE_PLACE"/>
+				<grammar tag="N+Sg+Ela"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ela5">
+		<qtype>N-ELA</qtype>
+		<question>
+			<text>Gubpede SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>båetedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ELA MAINV</text>
+			<element game="morfa" id="N-ELA" task="yes">
+				<sem class="NATURE_PLACE"/>
+				<grammar tag="N+Sg+Ela"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ela6">
+		<qtype>N-ELA</qtype>
+		<question>
+			<text>Gubpede SUBJ båata</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ELA båata</text>
+			<element game="morfa" id="N-ELA" task="yes">
+				<sem class="NATURE_PLACE"/>
+				<grammar tag="N+Sg+Ela"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ela10">
+		<qtype>N-ELA</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Gustie SUBJ båata</text>
+			<element id="SUBJ">
+				<sem class="ANIMAL_PET"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ELA båata</text>
+			<element game="morfa" id="N-ELA" task="yes">
+				<sem class="ROOM"/>
+				<grammar tag="N+Sg+Ela"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ela11">
+		<qtype>N-ELA</qtype>
+		<question>
+			<text>Gustie SUBJ båata</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ELA båata</text>
+			<element game="morfa" id="N-ELA" task="yes">
+				<sem class="ROOM"/>
+				<grammar tag="N+Sg+Ela"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ela13">
+		<qtype>N-ELA</qtype>
+		<question>
+			<text>Gubpede daate SUBJ jåhta</text>
+			<element id="SUBJ">
+				<sem class="VEHICLE"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ELA jåhta</text>
+			<element game="morfa" id="N-ELA" task="yes">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ela"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ela14">
+		<qtype>N-ELA</qtype>
+		<question>
+			<text>Gubpede SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Prt+Sg3"/>
+				<sem class="MOVEMENT_V"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ELA MAINV</text>
+			<element game="morfa" id="N-ELA" task="yes">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ela"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ela15">
+		<qtype>N-ELA</qtype>
+		<question>
+			<text>Gubpede SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Prs+Person-Number"/>
+				<sem class="TRAVELLING_V"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ELA MAINV</text>
+			<element game="morfa" id="N-ELA" task="yes">
+				<sem class="mPLACE_COUNTRY"/>
+				<grammar tag="N+Prop+Sg+Ela"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ela16">
+		<qtype>N-ELA</qtype>
+		<question>
+			<text>Gustie SUBJ OBJ veedtji</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+			<element id="OBJ">
+				<sem class="BELONGINGS"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-ELA veedtji</text>
+			<element game="morfa" id="N-ELA" task="yes">
+				<sem class="ROOM"/>
+				<grammar tag="N+Sg+Ela"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com4">
+		<qtype>N-COM</qtype>
+		<question>
+			<text>Giejnie SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>fealadidh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-COM MAINV</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Sg+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com5">
+		<qtype>N-COM</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Mejnie SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>vuelkedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-COM MAINV</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<sem class="VEHICLE"/>
+				<grammar tag="N+Sg+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com6">
+		<qtype>N-COM</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Mejnie SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>vuelkedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-COM MAINV</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<sem class="VEHICLE"/>
+				<grammar tag="N+Sg+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com7">
+		<qtype>N-COM</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Mejnie SUBJ vualka</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-COM vualka</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<sem class="VEHICLE"/>
+				<grammar tag="N+Sg+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com8">
+		<qtype>N-COM</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Mejnie SUBJ PLACE MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>fealadidh</id>
+			</element>
+			<element id="PLACE">
+				<sem class="mPLACE_COUNTRY"/>
+				<grammar tag="N+Prop+Sg+Ill"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-COM MAINV</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<sem class="VEHICLE"/>
+				<grammar tag="N+Sg+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com9">
+		<qtype>N-COM</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Giejnie SUBJ daan iehkeden MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>soptsestidh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-COM MAINV</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com10">
+		<qtype>N-COM</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Giejnie SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>saemiestidh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-COM MAINV</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<sem class="FAMILY"/>
+				<grammar tag="N+Sg+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com11">
+		<qtype>N-COM</qtype>
+		<question>
+			<text>Giejnie SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>daaroestidh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-COM MAINV</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<sem class="FAMILY"/>
+				<grammar tag="N+Sg+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com12">
+		<qtype>N-COM</qtype>
+		<question>
+			<text>Giejgujmie SUBJ digkede</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-COM digkede</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Pl+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com14">
+		<qtype>N-COM</qtype>
+		<question>
+			<text>Mejnie SUBJ stååkede</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-COM stååkede</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<sem class="TOY"/>
+				<grammar tag="N+Sg+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com15">
+		<qtype>N-COM</qtype>
+		<question>
+			<text>Guktie SUBJ dahkoe vualka</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-COM vualka</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<sem class="VEHICLE"/>
+				<grammar tag="N+Sg+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="com16">
+		<qtype>N-COM</qtype>
+		<question>
+			<text>Guktie SUBJ PLACE MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>båetedh</id>
+			</element>
+			<element id="PLACE">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ill"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ N-COM MAINV</text>
+			<element game="morfa" id="N-COM" task="yes">
+				<sem class="VEHICLE"/>
+				<grammar tag="N+Sg+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ess1">
+		<qtype>N-ESS</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Mejnie SUBJ barkeminie</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ESS barkeminie</text>
+			<element game="morfa" id="N-ESS" task="yes">
+				<sem class="PROFESSION"/>
+				<grammar tag="N+Ess"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ess2">
+		<qtype>N-ESS</qtype>
+		<question>
+			<text>Mejnie SUBJ PLACE barkeminie</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+			<element id="PLACE">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ine"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ESS barkeminie</text>
+			<element game="morfa" id="N-ESS" task="yes">
+				<sem class="PROFESSION"/>
+				<grammar tag="N+Ess"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ess2">
+		<qtype>N-ESS</qtype>
+		<qtype>N-MIX</qtype>
+		<question>
+			<text>Mejnie SUBJ PLACE barkeminie</text>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Sg+Nom"/>
+			</element>
+			<element id="PLACE">
+				<sem class="mPLACE_NAME"/>
+				<grammar tag="N+Prop+Sg+Ine"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dïhte N-ESS barkeminie</text>
+			<element game="morfa" id="N-ESS" task="yes">
+				<sem class="PROFESSION"/>
+				<grammar tag="N+Ess"/>
+			</element>
+		</answer>
+	</q>
+	<q id="nompl1">
+		<qtype>N-NOM-PL</qtype>
+		<question>
+			<text>Maam SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="PEOPLE"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>åestedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ NUM N-NOM-PL MAINV</text>
+			<element game="morfa" id="N-NOM-PL" task="yes">
+				<sem class="FOOD_GROCERY"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+			<element id="NUM">
+				<sem class="mNUMBER"/>
+				<grammar tag="Num+Sg+Nom"/>
+			</element>
+		</answer>
+	</q> 
+ 	<q id="nompl3">
+		<qtype>N-NOM-PL</qtype>
+		<question>
+			<text>Gïeh diekie iehkiedasse båetieh</text>
+		</question>
+		<answer>
+			<text>Iehkiedasse N-NOM-PL båetieh</text>
+			<element game="morfa" id="N-NOM-PL" task="yes">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+		</answer>
+	</q>
+	<q id="nompl4">
+		<qtype>N-NOM-PL</qtype>
+		<question>
+			<text>Gïeh edtjieh daelie laavlodh</text>
+		</question>
+		<answer>
+			<text>Daelie N-NOM-PL edtjieh laavlodh</text>
+			<element game="morfa" id="N-NOM-PL" task="yes">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+		</answer>
+	</q>
+	<q id="nompl2">
+		<qtype>N-NOM-PL</qtype>
+		<question>
+			<text>Man gellie SUBJ MAINV</text>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>byöpmedidh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ NUM N-NOM-PL MAINV</text>
+			<element game="morfa" id="N-NOM-PL" task="yes">
+				<sem class="FOOD_DISH"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+			<element id="NUM">
+				<sem class="mNUMBER"/>
+				<grammar tag="Num+Sg+Nom"/>
+			</element>
+		</answer>
+	</q>
+	<q id="nompl5">
+		<qtype>N-NOM-PL</qtype>
+		<question>
+			<text>Man gellie SUBJ MAINV</text>
+			<element id="SUBJ">
+				<grammar pos="Pron" type="Pers"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Tense+Person-Number"/>
+				<id>åestedh</id>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ NUM N-NOM-PL MAINV</text>
+			<element game="morfa" id="N-NOM-PL" task="yes">
+				<sem class="FOOD_GROCERY"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+			<element id="NUM">
+				<sem class="mNUMBER"/>
+				<grammar tag="Num+Sg+Nom"/>
+			</element>
+		</answer>
+	</q>
+	<q id="nompl6">
+		<qtype>N-NOM-PL</qtype>
+		<question>
+			<text>Gïeh iehkiedasse diekie båetieh</text>
+		</question>
+		<answer>
+			<text>Iehkiedasse N-NOM-PL båetieh</text>
+			<element game="morfa" id="N-NOM-PL" task="yes">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+		</answer>
+	</q>
+	<q id="nompl7">
+		<qtype>N-NOM-PL</qtype>
+		<question>
+			<text>Gïeh sijhtieh jirreden INFV</text>
+			<element id="INFV">
+				<grammar tag="V+Inf"/>
+				<sem class="mACTIVITY_V"/>
+			</element>
+		</question>
+		<answer>
+			<text>N-NOM-PL sijhtieh INFV</text>
+			<element game="morfa" id="N-NOM-PL" task="yes">
+				<sem class="PEOPLE"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+		</answer>
+	</q>
+	</questions>
+

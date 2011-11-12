@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Specify subsets for sematic supersets here-->
+<lexicon>
+	<subclasses class="HUMAN">
+      <sem class="PEOPLE"/> <!-- slike som ikke passer inn i de to andre, f.eks. kvinne, mann, tyv -->
+      <sem class="PEOPLE_OTHER"/> <!-- benevnelser på folk f. eks urfolk, urmenneske osv..-->
+      <sem class="MYTH_HUMAN"/> <!-- hulder, draug, troll, stallo-->
+    </subclasses>
+	<subclasses class="RELATIVES">
+      <sem class="FAMILY"/> <!-- slektskapsord, men også ord som venn, navnesøster -->
+      <sem class="FAMILY_OTHER"/> <!-- ord som ikke passer inn i den forrige; laahkoe, fuelhkie osv -->
+    </subclasses>
+	<subclasses class="WORKERS">
+      <sem class="PROFESSION"/> <!-- yrker-->
+    </subclasses>
+	<subclasses class="HUMAN_DOING">
+      <sem class="HUMAN_V"/> <!-- verb som typisk utføres av en person, og som ikke passer inn i de andre settene her-->
+      <sem class="HUMAN_A"/> <!-- adjektiv som kan karakterisere et menneske: flink, oppfinnsom....-->
+      <sem class="EXPERIENCE_A"/> <!-- hva synes du om filmen? Den var spennende, morsom, skummel..-->
+      <sem class="VERBAL_V"/> <!-- snakke, si, spørre, fortelle...-->
+      <sem class="EXPERIENCE_V"/> <!-- bli trøtt, vite, fryse, savne...-->
+      <sem class="AUX_V"/> <!-- hjelpeverb-->
+    </subclasses>
+	<subclasses class="FOOD/DRINK">
+      <sem class="FOOD_GROCERY"/> <!-- matvarer man kan kjøpe i butikken-->
+      <sem class="FOOD_DISH"/> <!-- mat man kan spise til middag, dessert, frokost, lunsj, kveldsmat osv-->
+      <sem class="FOOD_OTHER"/> <!-- ord som ikke passer inn i de to foregående, f.eks. fett, mat, deig, kveldsmat...-->
+      <sem class="DRINK"/>
+      <sem class="FOOD_DRINK_V"/> <!-- koke, steike, bake, dekke på, handle..-->
+      <sem class="SOUP_A"/> <!-- adjektiv som karaktiserer mat: varm, kald, bitter, god, fersk...-->
+      <sem class="FOOD_BERRY"/> <!-- multe,blåbær, bringebær.-->
+    </subclasses>
+	<subclasses class="ANIMAL">
+      <sem class="ANIMAL_DOM"/> <!-- husdyr -->
+      <sem class="ANIMAL_WILD"/> <!-- ville dyr -->
+      <sem class="ANIMAL_PET"/> <!-- kjæledyr -->
+      <sem class="ANIMAL_PREDATOR"/> <!-- aupe,ulv,bjørn -->
+      <sem class="ANIMAL_HUNT"/> <!-- dyr man jakter på -->
+      <sem class="ANIMAL_OTHER"/> <!-- andre ord om dyr -->
+      <sem class="ANIMAL_V"/> <!-- fly, kvitre, vrinske, mjaue, melke....-->
+      <sem class="ANIMAL_SOUND_V"/> <!--  lyder av dyr som pistre, mjaue, bjeffe.....-->
+      <sem class="ANIMAL_A"/> <!-- rask, feit, styg, slem, dum, treg, snill, liten, stor...-->
+    </subclasses>
+	<subclasses class="BIRD_FISH">
+      <sem class="BIRD"/>
+      <sem class="FISH"/>
+      <sem class="ANIMAL_FISH"/>
+      <sem class="ANIMAL_SALTFISH"/>
+      <sem class="ANIMAL_BIRDHUNT"/>
+      <sem class="BIRD_FISH_V"/>
+    </subclasses>
+	<subclasses class="OBJECT">
+      <sem class="TOOL"/> <!-- redskap-->
+      <sem class="THING"/> <!-- som ikke passer inn ellers-->
+      <sem class="KITCHEN"/> <!-- ting som hører til på kjøkkenet-->
+      <sem class="BATHROOM"/> <!-- ting som hører til på badet-->
+      <sem class="SLEEPINGROOM"/> <!-- ting som hører til på soverommet-->
+      <sem class="CONTAINER"/> <!-- hvor er ringen? (veske, bag, kiste, kasse, kopp)-->
+      <sem class="OBJECT_V"/> <!-- rund, lav, liten, stor,-->
+      <sem class="BELONGINGS"/> <!-- rund, lav, liten, stor,-->
+    </subclasses>
+	<subclasses class="CONCRETES">
+      <sem class="CONTAINER"/>
+      <sem class="INSTRUMENT"/> <!-- piano, fiolin..-->
+      <sem class="EXPOSURE_V"/> <!-- knuses, gå hull i, bli tom, ødelegges-->
+      <sem class="OBJECT_A"/> <!-- rund, lav, liten, stor,-->
+    </subclasses>
+	<subclasses class="BODY">
+      <sem class="BODYPART"/> <!-- kroppsdel-->
+      <sem class="BODYPART_PL"/> <!-- flertallssubstantiv, f.eks. hår-->
+      <sem class="ILLNESS"/> <!-- sykdommer-->
+      <sem class="BODY_V"/> <!-- sette seg, ligge, hinke, gjøre vondt...-->
+      <sem class="BODY_A"/> <!-- døv, blind, høy, liten, tynn, tykk...-->
+      <sem class="BODY_ADV"/> <!-- døv, blind, høy, liten, tynn, tykk...-->
+    </subclasses>
+	<subclasses class="CLOTHES">
+      <sem class="CLOTHING"/> <!-- klær-->
+      <sem class="CLOTHING_PL"/> <!-- flertallssubstantiv-->
+      <sem class="CLOTHING_OTHER"/> <!-- erme, knapp...-->
+      <sem class="CLOTHES_V"/> <!-- sy, lappe, dekorere...-->
+      <sem class="CLOTHES_A"/> <!-- vid, trang, høvelig, moderne...-->
+      <sem class="COLOUR"/> <!-- rød, grønn..-->
+    </subclasses>
+	<subclasses class="BUILDINGS/ROOMS">
+      <sem class="BUILDING"/>
+      <sem class="ROOM"/>
+      <sem class="ROOM_PART"/> <!-- golv, vegg, vindu, dør...-->
+      <sem class="ROOM_OTHER"/> <!-- møbel, rot, pute..-->
+      <sem class="SHOP"/> <!-- butikker-->
+      <sem class="CONSTRUCTION"/> <!-- gjerde, svømmebasseng, flaggstang...-->
+      <sem class="FURNITURE"/>>
+      <sem class="BUILDING_ROOM_A"/>>
+    </subclasses>
+	<subclasses class="NATUREWORDS">
+      <sem class="NATURE"/> <!-- måne, sol, himmelretning, luft..-->
+      <sem class="NATURE_WATER"/> <!-- elv, innsjø...-->
+      <sem class="NATURE_PLACE"/> <!-- jenta er i/på ... (åker, berg, fjell, marka..)-->
+      <sem class="NATURE_OTHER"/>
+      <sem class="NATURE_V"/> <!-- handlinger man typisk gjør i ute i naturen: gå på ski, jakte, fiske, ro, ha bål..-->
+      <sem class="NATURE_A"/> <!-- våt, tørr, trang, høy, bred...-->
+    </subclasses>
+	<subclasses class="PLANTS">
+      <sem class="PLANT"/>
+    </subclasses>
+	<subclasses class="WEATHERTYPES">
+      <sem class="WEATHER"/> <!-- vind, storm, regn, snøvær...-->
+      <sem class="WEATHER_V"/> <!-- blåse, regne...-->
+      <sem class="WEATHER_A"/> <!-- varm, kald, mild...-->
+      <sem class="SNOW"/> <!-- snøord-->
+    </subclasses>
+	<subclasses class="LEISURETIME/AT_HOME">
+      <sem class="ARRANGEMENT"/> <!-- fest, middag, dåp...-->
+      <sem class="SPORT"/> <!-- akebakke, handball, fotball,-->
+      <sem class="HOME_ACTIVITY"/> <!-- aktiviteter i hjemmet-->
+      <sem class="CHRISTMAS"/> <!-- julefest, juletre, julegave, stearinlys, pepperkake ...-->
+      <sem class="SLIDE_TOOL"/> <!-- akebrett, kjelke, ski...-->
+      <sem class="TOY"/> <!-- sandslott, spill, dukke...-->
+      <sem class="LEISURETIME_HOME_V"/> <!-- leke gjømt, spille, leke, gå i kirka, joike -->
+      <sem class="SHOW"/> <!-- duodjeutstilling, reinkappkjøring... (Jenta ser på ...)-->
+    </subclasses>
+	<subclasses class="TRAVEL">
+      <sem class="PLACE_STAYING"/> <!-- hvor man kan bo: by, bygd, tettsted, leilighet...-->
+      <sem class="PLACE_OTHER"/> <!-- sted, møtested...-->
+      <sem class="PLACE_LOCAL"/> <!-- gårdsplass, vedhugstplass, bålbredd...-->
+      <sem class="TRAVELLING"/> <!-- bensin, påsketur, billett...-->
+      <sem class="VEHICLE"/> <!-- buss, bil, tog..-->
+      <sem class="ROAD"/> <!-- veg, vegkant, gatekryss...-->
+      <sem class="TRAVELLING_V"/> <!-- verb med bevegelse i..-->
+      <sem class="TRAVEL_V"/> <!-- verb som handler om reising.-->
+      <sem class="MOVEMENT_V"/> <!-- springe, gå..-->
+      <sem class="MOVEMENT_A"/> <!-- raskt -->
+    </subclasses>
+	<subclasses class="ABSTRACTS">
+      <sem class="FEELING"/>
+      <sem class="THOUGHT"/>
+      <sem class="ACTION"/>
+      <sem class="ACTION_V"/> <!-- f.eks brenne, puffe, skyve, bruke, nytte-->
+      <sem class="ABSTRACT"/>
+      <sem class="SOUND"/>
+      <sem class="AMOUNT"/>
+      <sem class="ABSTRACT_A"/>
+    </subclasses>
+	<subclasses class="WORK/ECONOMY/TOOLS">
+      <sem class="JOB"/>
+      <sem class="ORGANIZATION"/>
+      <sem class="FINANCE"/>
+      <sem class="TOOL"/>
+      <sem class="WORK_ECONOMY_V"/> <!-- lage,skape,selge,bestille-->
+    </subclasses>
+	<subclasses class="TIMEEXPRESSIONS">
+      <sem class="TIME"/> <!-- måneder, år-->
+      <sem class="TIME_DAY"/> <!-- ukedager-->
+      <sem class="TIME_V"/> <!-- f.eks. begynne, ha tid, slutte-->
+      <sem class="TIME_A"/> <!-- ord som som beskriver tid f. eks tidlig, sein-->
+    </subclasses>
+	<subclasses class="LITERATURE/TEXT">
+      <sem class="TEXT"/>
+      <sem class="STORY"/>
+      <sem class="TEXT_OTHER"/>
+      <sem class="LANGUAGE"/> <!-- språk, dialekt,-->
+      <sem class="LANGUAGEPART"/> <!-- verb, substantiv, setning, spørsmål...-->
+      <sem class="ISSUE_A"/> <!-- adjektiv som passer til, f.eks. muntlig, skriftlig, aktuell,  internasjonal...-->
+    </subclasses>
+	<subclasses class="SCHOOL/EDUCATION">
+      <sem class="SCHOOL"/>
+      <sem class="EDUCATION"/> <!-- skoler, kurs-->
+      <sem class="SCHOOL_V"/> <!-- lære, undervise, skrive, regne, synge...-->
+      <sem class="SCHOOL_A"/> <!-- lett, vanskelig, elementært-->
+      <sem class="SCHOOL_ADV"/> <!-- lett, vanskelig, elementært-->
+    </subclasses>
+	<subclasses class="REINDEER/HERDING">
+      <sem class="HERDING"/> <!-- ord som har med reindriften å gjøre-->
+      <sem class="REINDEER"/> <!-- ord som har med rein å gjøre-->
+      <sem class="REINDEER_ANIMAL"/>  
+      <sem class="NATURE_PLACE_REINDEER"/>  
+      <sem class="REINDEER_HERD"/>  
+      <sem class="HERDING_THING"/>  
+    </subclasses>
+	<subclasses class="TRADITIONAL">
+      <sem class="GAMME"/> <!-- Hva man har og gjør i tilknytning til gamma-->
+      <sem class="FISHING"/>
+      <sem class="TRAD_OBJECT"/>
+      <sem class="TRAD_OTHER"/>
+      <sem class="TRAD_FOOD"/>
+      <sem class="TRAD_CLOTHING"/> <!-- ord med tradisjonelle klær-->
+      <sem class="VUEKIE"/>
+    </subclasses>
+	<subclasses class="DUEDTIE">
+      <sem class="VÆTNOE"/>
+      <sem class="HANDICRAFTS"/> <!-- duodjeverktøy, arbeidsredskaper-->
+      <sem class="VÆTNOE_GÅARODH"/>  
+      <sem class="VÆTNOE_GARRE"/>  
+    </subclasses>
+	<subclasses class="MULTIWORD">
+      <sem class="EXPRESSIONS"/> <!-- flerordsuttrykk -->
+      <sem class="TIME_U"/> <!-- flerordsuttrykk om tid -->
+    </subclasses>
+</lexicon>
