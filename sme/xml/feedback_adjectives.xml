@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feedback pos="A" dialect="GG">
-
+<feedback pos="a" dialect="GG">
+<stems>
 <!--Attr is here a case-feature.... ?? -->
 
 <!-- Messageorder: LEMMA A B C E
@@ -81,7 +81,7 @@ t-suffix
 
 <!--Special feedback for LEMMA="buorre" as attribute - (but it does not get Attr-tag!) - semiagreement with noun: -->
 
-    <lemma>buorre</lemma>
+    <l>buorre</l>
       <msg grade="Pos" case="Nom" number="Sg">nom_sg</msg>
       <msg grade="Pos" case="Nom" number="Pl">nom_pl</msg>
       <msg grade="Pos" case="Acc" number="Sg">acc_sg</msg>
@@ -97,62 +97,62 @@ t-suffix
       <msg grade="Pos" case="Ess">ess</msg>
       <note>buorre, som attributt</note>
 
-      <stem>
+      <l>
       <msg dialect="NOT-GG" grade="Comp" attribute="1">attribute_like_pred</msg>
       <msg dialect="NOT-GG" grade="Superl" attribute="1">attribute_like_pred</msg>
       <note>Attr = Nom</note>
-    </stem>
+    </l>
 
 
-      <stem class="bisyllabic">
+      <l stem="2syll">
       <msg dialect="NOT-KJ" grade="Comp" attribute="1">attribute_like_pred</msg>
       <msg dialect="NOT-KJ" grade="Superl" attribute="1">attribute_like_pred</msg>
       <note>Attr: dábálet, dábáleamos</note>
-    </stem>
+    </l>
 
 
 
-      <stem class="trisyllabic">
+      <l stem="3syll">
       <msg dialect="NOT-KJ" grade="Comp" attribute="1">et-suffix</msg>
       <msg dialect="NOT-KJ" grade="Superl" attribute="1">attribute_like_pred</msg>
       <note>Attr = Nom</note>
-    </stem>
+    </l>
 
 
-      <stem attrsuffix="0">
+      <l attrsuffix="0">
       <msg grade="Pos" attribute="1">attribute_like_pred</msg>
       <note>Attr = Nom</note>
-    </stem>
-      <stem attrsuffix="a">
+    </l>
+      <l attrsuffix="a">
       <msg grade="Pos" attribute="1">a-suffix</msg>
       <note>galmmas -a</note>
-    </stem>
-      <stem attrsuffix="s">
+    </l>
+      <l attrsuffix="s">
       <msg grade="Pos" attribute="1">s-suffix</msg>
       <note>somá -s</note>
-    </stem>
-      <stem attrsuffix="es">
+    </l>
+      <l attrsuffix="es">
       <msg grade="Pos" attribute="1">es-suffix</msg>
       <note>fiskat -es</note>
-    </stem>
-      <stem attrsuffix="os">
+    </l>
+      <l attrsuffix="os">
       <msg grade="Pos" attribute="1">os-suffix</msg>
       <note>headju -os</note>
-    </stem>
-      <stem attrsuffix="is">
+    </l>
+      <l attrsuffix="is">
       <msg grade="Pos" attribute="1">is-suffix</msg>
       <note>gávvil -is</note>
-    </stem>
-      <stem attrsuffix="i_e">
+    </l>
+      <l attrsuffix="i_e">
       <msg grade="Pos" attribute="1">i_e</msg>
       <note>viiddis -e-</note>
-    </stem>
-      <stem attrsuffix="u_o">
+    </l>
+      <l attrsuffix="u_o">
       <msg grade="Pos" attribute="1">u_o</msg>
       <note>gearggus -o-</note>
-    </stem>
+    </l>
 
-    <stem class="bisyllabic">
+    <l stem="2syll">
       <msg grade="Pos" case="Nom" number="Pl">Bis_NomPl</msg>
       <msg grade="Pos" case="Acc" number="Sg">Bis_AccSg</msg>
       <msg grade="Pos" case="Acc" number="Pl">Bis_AccPl</msg>
@@ -165,9 +165,9 @@ t-suffix
       <msg grade="Pos" case="Com" number="Sg">Bis_ComSg</msg>
       <msg grade="Pos" case="Com" number="Pl">Bis_ComPl</msg>
       <msg grade="Pos" case="Ess">Bis_Ess</msg>
-    </stem>
+    </l>
 
-    <stem class="trisyllabic">
+    <l stem="3syll">
       <msg grade="Pos" case="Nom" number="Pl">Tris_NomPl</msg>
       <msg grade="Pos" case="Acc" number="Sg">Tris_AccSg</msg>
       <msg grade="Pos" case="Acc" number="Pl">Tris_AccPl</msg>
@@ -180,9 +180,9 @@ t-suffix
       <msg grade="Pos" case="Com" number="Sg">Tris_ComSg</msg>
       <msg grade="Pos" case="Com" number="Pl">Tris_ComPl</msg>
       <msg grade="Pos" case="Ess">Tris_Ess</msg>
-    </stem> 
+    </l> 
 
-    <stem class="contracted">
+    <l stem="Csyll">
       <msg grade="Pos" case="Nom" number="Pl">Con_NomPl</msg>
       <msg grade="Pos" case="Acc" number="Sg">Con_AccSg</msg>
       <msg grade="Pos" case="Acc" number="Pl">Con_AccPl</msg>
@@ -195,22 +195,21 @@ t-suffix
       <msg grade="Pos" case="Com" number="Sg">Con_ComSg</msg>
       <msg grade="Pos" case="Com" number="Pl">Con_ComPl</msg>
       <msg grade="Pos" case="Ess">Con_Ess</msg>
-    </stem> 
+    </l> 
 
 
 
-  <stems>
-    <stem gradation="inv">
+    <l gradation="inv">
       <msg>inv_gradation</msg>
-    </stem>
-    <stem gradation="no">
+    </l>
+    <l gradation="no">
       <msg>no_gradation</msg>
-    </stem>
+    </l>
 
 <!-- predicative form: -->
 
 
-      <stem rime="t-g">
+      <l rime="t-g">
       <msg grade="Pos" case="Acc" number="Sg">t_g</msg>
       <msg grade="Pos" case="Gen" number="Sg">t_g</msg>
       <msg grade="Pos" case="Ill" number="Sg">t_g</msg>
@@ -221,9 +220,9 @@ t-suffix
       <msg grade="Comp">t_g</msg>
       <msg grade="Superl">t_g</msg>
       <note>ártet -g-</note>
-    </stem>
+    </l>
 
-      <stem rime="t-d">
+      <l rime="t-d">
       <msg grade="Pos" case="Acc" number="Sg">t_d</msg>
       <msg grade="Pos" case="Gen" number="Sg">t_d</msg>
       <msg grade="Pos" case="Ill" number="Sg">t_d</msg>
@@ -234,9 +233,9 @@ t-suffix
       <msg grade="Comp">t_d</msg>
       <msg grade="Superl">t_d</msg>
       <note>lossat -d-</note>
-    </stem>
+    </l>
 
-      <stem rime="t-h">
+      <l rime="t-h">
       <msg grade="Pos" case="Acc" number="Sg">t_h</msg>
       <msg grade="Pos" case="Gen" number="Sg">t_h</msg>
       <msg grade="Pos" case="Ill" number="Sg">t_h</msg>
@@ -247,10 +246,10 @@ t-suffix
       <msg grade="Comp">t_h</msg>
       <msg grade="Superl">t_h</msg>
       <note>alit -h-</note>
-    </stem>
+    </l>
 
 
-     <stem rime="+g">
+     <l rime="+g">
       <msg grade="Pos" case="Acc" number="Sg">+g</msg>
       <msg grade="Pos" case="Gen" number="Sg">+g</msg>
       <msg grade="Pos" case="Ill" number="Sg">+g</msg>
@@ -261,12 +260,12 @@ t-suffix
       <msg grade="Comp">+g</msg>
       <msg grade="Superl">+g</msg>
       <note>bahča rime</note>
-    </stem>
+    </l>
 
 <!-- Case and number -->
 
 
-    <stem rime="t-g">
+    <l rime="t-g">
       <msg grade="Pos" case="Nom" number="Pl">t_g</msg>
       <msg grade="Pos" case="Acc" number="Sg">t_g</msg>
       <msg grade="Pos" case="Gen" number="Sg">t_g</msg>
@@ -275,9 +274,9 @@ t-suffix
       <msg grade="Pos" case="Com" number="Sg">t_g</msg>
       <msg grade="Pos" case="Ess">t_g</msg>
       <note>heittot rime</note>
-    </stem>
+    </l>
 
-    <stem rime="t-h">
+    <l rime="t-h">
       <msg grade="Pos" case="Nom" number="Pl">t_h</msg>
       <msg grade="Pos" case="Acc" number="Sg">t_h</msg>
       <msg grade="Pos" case="Gen" number="Sg">t_h</msg>
@@ -286,9 +285,9 @@ t-suffix
       <msg grade="Pos" case="Com" number="Sg">t_h</msg>
       <msg grade="Pos" case="Ess">t_h</msg>
       <note>alit rime</note>
-    </stem>
+    </l>
 
-    <stem rime="t-d">
+    <l rime="t-d">
       <msg grade="Pos" case="Nom" number="Pl">t_d</msg>
       <msg grade="Pos" case="Acc" number="Sg">t_d</msg>
       <msg grade="Pos" case="Gen" number="Sg">t_d</msg>
@@ -297,35 +296,35 @@ t-suffix
       <msg grade="Pos" case="Com" number="Sg">t_d</msg>
       <msg grade="Pos" case="Ess">t_d</msg>
       <note>fiskat rime</note>
-    </stem>
+    </l>
 
 
 <!-- COMPARATIVES and SUPERLATIVES-->
 
-      <stem class="trisyllabic" compsuffix="it" gradation="yes">
+      <l stem="3syll" compsuffix="it" gradation="yes">
       <msg grade="Comp">get_bisyllabic_stem_and_a_i</msg>
       <msg grade="Superl">get_bisyllabic_stem_and_a_i</msg>
       <note>gassat gasit</note>
-    </stem>
+    </l>
 
-      <stem class="trisyllabic" compsuffix="at" gradation="yes">
+      <l stem="3syll" compsuffix="at" gradation="yes">
       <msg grade="Comp">get_bisyllabic_stem</msg>
       <msg grade="Superl">get_bisyllabic_stem</msg>
       <note>árrat árat</note>
-    </stem>
+    </l>
  
-     <stem class="bisyllabic">
+     <l stem="2syll">
       <msg grade="Superl">mus</msg>
       <note>nuoramus</note>
-    </stem>
+    </l>
 
-     <stem class="contracted">
+     <l stem="Csyll">
       <msg grade="Superl">mus</msg>
       <note>riggát riggámus</note>
-    </stem>
+    </l>
 
 
-     <stem class="trisyllabic">
+     <l stem="3syll">
       <msg dialect="NOT-KJ" grade="Comp" case="Nom" number="Sg">eabbo-suffix</msg>
       <msg dialect="NOT-KJ" grade="Comp" case="Nom" number="Pl">eappot-suffix</msg>
       <msg dialect="NOT-KJ" grade="Comp" case="Acc" number="Sg">eappo-suffix</msg>
@@ -354,9 +353,9 @@ t-suffix
       <msg dialect="NOT-KJ" grade="Superl" case="Com" number="Pl">epmosiiguin-suffix</msg>
       <msg dialect="NOT-KJ" grade="Superl" case="Ess">eamosin-suffix</msg>
       <note>čoaskásat - čoaskáseamos - suffixes</note>
-    </stem>
+    </l>
 
-     <stem class="trisyllabic">
+     <l stem="3syll">
       <msg grade="Comp" attribute="1">at-suffix</msg>
       <msg dialect="NOT-GG" grade="Comp" case="Nom" number="Sg">at-suffix</msg>
       <msg dialect="NOT-GG" grade="Comp" case="Nom" number="Pl">abbot-suffix</msg>
@@ -386,10 +385,10 @@ t-suffix
       <msg dialect="NOT-GG" grade="Superl" case="Com" number="Pl">amosiiguin-suffix</msg>
       <msg dialect="NOT-GG" grade="Superl" case="Ess">amosin-suffix</msg>
       <note>čoaskásat - čoaskásamos - suffixes</note>
-    </stem>
+    </l>
 
 
-     <stem stem="bisyllabic">
+     <l stem="bisyllabic">
       <msg grade="Comp" case="Nom" number="Sg">t-suffix</msg>
       <msg grade="Comp" case="Nom" number="Pl">but-suffix</msg>
       <msg grade="Comp" case="Acc" number="Sg">bu-suffix</msg>
@@ -417,9 +416,9 @@ t-suffix
       <msg grade="Superl" case="Com" number="Pl">iguin-suffix</msg>
       <msg grade="Superl" case="Ess">ss_and_an</msg>
       <note>nuorat - nuoramus - suffixes</note>
-    </stem>
+    </l>
 
-     <stem stem="contracted">
+     <l stem="contracted">
       <msg grade="Comp"  attribute="1">t-suffix</msg>
       <msg grade="Comp" case="Nom" number="Sg">t-suffix</msg>
       <msg grade="Comp" case="Nom" number="Pl">but-suffix</msg>
@@ -447,7 +446,7 @@ t-suffix
       <msg grade="Superl" case="Com" number="Pl">iguin-suffix</msg>
       <msg grade="Superl" case="Ess">ss_and_an</msg>
       <note>riggát - riggámus - suffixes</note>
-    </stem>
+    </l>
 
   </stems>
 
