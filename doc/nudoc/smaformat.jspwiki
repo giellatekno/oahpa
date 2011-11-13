@@ -18,33 +18,85 @@ __TILTAK__
 
 !! Leksikonfilene
 
-Lene går gjennom entriane i leksikon (til måndag morgon 14.11)
+__Lene__ har gått gjennom filene i sme/xml:
 
-* Legge til oversettelser og bokinfo fra AA-listen fra Oulu (__Lene - ok__)
-* Dele opp i entryer når entryen bør ha minst 2 <mg>, sjekke mot normfst (__Lene - ok__)
-** adv_smenob.xml  - ok
-** adjectives.xml  - ok
-** verbs.xml   - ok
-** nouns.xml - ok
-** prop_nouns.xml  -  stedsnavn som var i nouns.xml. Det var meninga at de skulle inngå i MorfaS, men generinga har ikke fungert pga av disse krever N+Prop. Men det kunne være lurt å ha dem med. - ok
-** propernouns.xml ok - denne skal ikke genereres - kun for Leksa - ok
-** numerals.xml - i denne er det er både N+Coll, A+Ord og Num - for Morfa
-** fillings.xml - ikke for Leksa - skal se på denne
-* Endre attibutter til sma-stil (__Lene__) 
-** <noleksa/> til exclude="smenob" - ok
+* Legge til oversettelser og bokinfo fra AA-listen fra Oulu (__done__)
+* Dele opp i entryer når entryen bør ha minst 2 <mg>, sjekke mot normfst (__done__)
+** adv_smenob.xml  - ikke brukt i smeOahpa tidligere - oppdatert
+** multiword_smenob.xml - bare for Leksa - ikke brukt i smeOahpa tidligere - oppdatert
+** adjectives.xml  - oppdatert
+** verbs.xml   - oppdatert
+** nouns.xml - oppdatert
+** prop_nouns.xml  -  stedsnavn som var i nouns.xml. Det var meninga at de skulle inngå i MorfaS, men generinga har ikke fungert pga av disse krever N+Prop. Men det kunne være lurt å ha dem med i MorfaS, som nouns. - ny fil
+** propernouns.xml - denne skal ikke genereres - kun for Leksa 
+** numerals.xml - i denne er det er både N+Coll, A+Ord og Num - for MorfaC
+** fillings.xml - kanskje vi ikke trenger den i sma-oppsettet?
+* Endre attibutter og elementer til sma-stil (__Lene, Ciprian__) 
+** <noleksa/> til exclude="smenob" - Lene: done
 ** første nob-oversettelse og fin-oversettelse skal ha stat="pref"
-** <only-pl/> til gen_only="Pl"  - de som er igjen nouns.xml er slike som har lemma i sg. Dette er noe som ikke finnes i sma, vi får se på hvilken løsning vi velger. - ok
-** <only-sg/> til gen_only="Sg" - ok
-** tcomm="yes" - ok
-** N type="Actor" - ok
-** N type="G3" - ok
-** N type="Prop" - ok
+** <only-pl/> til gen_only="Pl"  - Lene: done. De som er igjen nouns.xml er slike som har lemma i sg. Dette er noe som ikke finnes i sma, vi får se på hvilken løsning vi velger.  
+** <only-sg/> til gen_only="Sg" - Lene: done
+** tcomm="yes" - Lene: done
+** N type="Actor" - Lene: done
+** N type="G3" - Lene: done
+** N type="Prop" - Lene: done
+** entry –> e, lemma –> l
+** <pos class="N"/> osv –> pos="n" i l-element
+** stem-attributter flyttes til l-element: trisyllabic –> 3syll, bisyllabic –> 2syll contracted –> Csyll (denne finnes ikke i sma)
 
-* Konvertere fra sme til sma xml (__Ciprian__)
 
-!Pronomen i Morfa
+!Feedback-filer for Morfa - de har samme struktur som for smaOahpa
+* feedback_adjectives.xml
+* feedback_adjectives_eastern.xml
+* feedback_nouns.xml
+* feedback_numerals.xml
+* feedback_verbs.xml
+* feedback_verbs_eastern.xml
+* messages.eng.xml
+* messages.fin.xml
+* messages.sme.xml
+* messages.xml
 
-* (__Lene__) har laga: sme/src/pronounforms.csv som inneholder både lemma+morfology og ordform - ok
+!Filer for MorfaC i sme/xml - de har samme struktur som sma
+* grammar_defaults.xml
+* questions_adjectives.xml
+* questions_nouns.xml
+* questions_numerals.xml
+* questions_verbs.xml
+
+
+!Filer for Vasta i  sme/xml
+* cealkka.xml - påbegynt arbeid for Vasta Cealkka
+* messages_vasta.eng.xml - også for Sahka
+* messages_vasta.fin.xml - også for Sahka
+* messages_vasta.sme.xml - også for Sahka
+* messages_vasta.xml - også for Sahka
+* questions_vasta.xml
+
+!Filer for Sahka i sme/xml
+* dialogue_firstmeeting.xml
+* dialogue_firstmeeting_boy.xml
+* dialogue_firstmeeting_girl.xml
+* dialogue_firstmeeting_man.xml
+* dialogue_grocery.xml
+* dialogue_shopadj.xml
+* dialogue_visit.xml
+* dialogues.dtd
+
+
+! Andre viktige filer i sme/xml
+* comments.nob.xml - kommentarer til brukeren
+* semantic_sets.xml - for Leksa - oppdatert
+
+
+! Diverse filer i sme/xml - ikke i bruk?
+* outcommented_propernouns.xml
+* verbs.css
+* verbs.dtd
+
+!Pronomen i Morfa - har ikke vært implementert i smeOahpa tidligere
+
+* (__Lene__) har laga: sme/src/pronounforms.csv som inneholder både lemma+morfology og ordform - oppdatert
 
 
 !!Forskjeller mellom sma vs. sme
