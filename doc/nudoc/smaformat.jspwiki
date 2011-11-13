@@ -18,10 +18,9 @@ __TILTAK__
 
 !! Leksikonfilene
 
-__Lene__ har gått gjennom filene i sme/xml:
-
-* Legge til oversettelser og bokinfo fra AA-listen fra Oulu (__done__)
-* Dele opp i entryer når entryen bør ha minst 2 <mg>, sjekke mot normfst (__done__)
+!Leksikonfiler i sme/xml:
+* Legge til oversettelser og bokinfo fra AA-listen fra Oulu - Lene: done
+* Dele opp i entryer når entryen bør ha minst 2 <mg>, sjekke mot normfst (__Lene__)
 ** adv_smenob.xml  - ikke brukt i smeOahpa tidligere - oppdatert
 ** multiword_smenob.xml - bare for Leksa - ikke brukt i smeOahpa tidligere - oppdatert
 ** adjectives.xml  - oppdatert
@@ -44,8 +43,13 @@ __Lene__ har gått gjennom filene i sme/xml:
 ** <pos class="N"/> osv –> pos="n" i l-element
 ** stem-attributter flyttes til l-element: trisyllabic –> 3syll, bisyllabic –> 2syll contracted –> Csyll (denne finnes ikke i sma)
 
+!Leksikonfiler i nob/xml og fin/xml:
+* Skal konverteres fra sme/nob på samme måte som smanob til nobsma
+* Legg til ekstra sme-synonymer fra sme/xml-filene på samme som det gjort i sma
 
-!Feedback-filer for Morfa - de har samme struktur som for smaOahpa
+!! Andre filer i sme/xml
+
+!Feedback-filer for Morfa i sme/xml - de har samme struktur som for smaOahpa
 * feedback_adjectives.xml
 * feedback_adjectives_eastern.xml
 * feedback_nouns.xml
@@ -93,6 +97,8 @@ __Lene__ har gått gjennom filene i sme/xml:
 * outcommented_propernouns.xml
 * verbs.css
 * verbs.dtd
+
+!! Filer i sme/src
 
 !Pronomen i Morfa - har ikke vært implementert i smeOahpa tidligere
 
