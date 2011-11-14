@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feedback pos="v" dialect="KJ">
+<feedback pos="V" dialect="KJ">
 
   <stems>
 
-    <l stem="2syll">
+    <stem class="bisyllabic">
       <msg mood="Ind" tense="Prs" personnumber="Sg1">bisyllabic_stem</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">bisyllabic_stem</msg>
       <msg mood="Ind" tnse="Prs" personnumber="Sg3">bisyllabic_stem</msg>
@@ -15,9 +15,9 @@
       <msg mood="Ind" tense="Prs" personnumber="Pl3">bisyllabic_stem</msg>
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">bisyllabic_stem</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-    <l stem="3syll">
+    <stem class="trisyllabic">
       <msg mood="Ind" tense="Prs" personnumber="Sg1">trisyllabic_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">trisyllabic_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg3">trisyllabic_stem_no_gradation</msg>
@@ -29,9 +29,9 @@
       <msg mood="Ind" tense="Prs" personnumber="Pl3">trisyllabic_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">trisyllabic_stem_no_gradation</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-    <l stem="Csyll">
+    <stem class="contracted">
       <msg mood="Ind" tense="Prs" personnumber="Sg1">contracted_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">contracted_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg3">contracted_stem_no_gradation</msg>
@@ -43,9 +43,9 @@
       <msg mood="Ind" tense="Prs" personnumber="Pl3">contracted_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">contracted_stem_no_gradation</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-    <l stem="2syll">
+    <stem class="bisyllabic">
       <msg mood="Ind" tense="Prs" personnumber="Sg1">weak_grade</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">weak_grade</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg3">strong_grade</msg>
@@ -57,15 +57,15 @@
       <msg mood="Ind" tense="Prs" personnumber="Pl3">strong_grade</msg>
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">weak_grade</msg>
       <note>gradation</note>
-    </l>
+    </stem>
 
-    <l diphthong="yes">
+    <stem diphthong="yes">
       <msg mood="Ind" tense="Prs" personnumber="Du2">diphthong_simplification</msg>
       <msg mood="Ind" tense="Prs" personnumber="Pl3">diphthong_simplification</msg>
       <note>diftongforenkling</note>
-    </l>
+    </stem>
 
-    <l soggi="i">
+    <stem soggi="i">
       <msg mood="Ind" tense="Prs" personnumber="Sg1">i_á</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">i_á</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg3">i_á</msg>
@@ -73,23 +73,23 @@
       <msg mood="Ind" tense="Prs" personnumber="Pl3">i_e</msg>
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">i_e</msg>
       <note>boahtit i>á i>e</note>
-    </l>
+    </stem>
 
-    <l soggi="u">
+    <stem soggi="u">
       <msg mood="Ind" tense="Prs" personnumber="Du1">u_o</msg>
       <msg mood="Ind" tense="Prs" personnumber="Pl3">u_o</msg>
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">u_o</msg>
       <note>goarrut u>o</note>
-    </l>
+    </stem>
 
-    <l soggi="a">
+    <stem soggi="a">
       <msg mood="Ind" tense="Prs" personnumber="Sg3">a_á</msg>
       <msg mood="Ind" tense="Prs" personnumber="Du1">a_e</msg>
       <msg mood="Ind" tense="Prs" personnumber="Pl3">a_e</msg>
       <note>mannat a>á  a>e</note>
-    </l>
+    </stem>
 
-    <l stem="2syll">
+    <stem class="bisyllabic">
       <msg mood="Ind" tense="Prs" personnumber="Sg1">n-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">t-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg3">no_suffix</msg>
@@ -101,9 +101,9 @@
       <msg mood="Ind" tense="Prs" personnumber="Pl3">t-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">no_suffix</msg>
       <note>suffixes</note>
-    </l>
+    </stem>
 
-    <l stem="3syll">
+    <stem class="trisyllabic">
       <msg mood="Ind" tense="Prs" personnumber="Sg1">an-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">at-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg3">a-suffix</msg>
@@ -115,9 +115,9 @@
       <msg mood="Ind" tense="Prs" personnumber="Pl3">it-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">no_suffix</msg>
       <note>suffixes</note>
-    </l>
+    </stem>
 
-    <l>leat</l>
+    <lemma>leat</lemma>
       <msg mood="Ind" tense="Prs" personnumber="Sg1">n-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">t-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg3">no_suffix</msg>
@@ -130,7 +130,7 @@
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">t-suffix</msg>
       <note>suffixes</note>
 
-    <l stem="Csyll">
+    <stem class="contracted">
       <msg mood="Ind" tense="Prs" personnumber="Sg1">n-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">t-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg3">no_suffix</msg>
@@ -142,9 +142,9 @@
       <msg mood="Ind" tense="Prs" personnumber="Pl3">jit-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">no_suffix</msg>
       <note>suffixes</note>
-    </l>
+    </stem>
 
-    <l stem="2syll">
+    <stem class="bisyllabic">
       <msg mood="Ind" tense="Prt" personnumber="Sg1">bisyllabic_stem</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">bisyllabic_stem</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg3">bisyllabic_stem</msg>
@@ -156,9 +156,9 @@
       <msg mood="Ind" tense="Prt" personnumber="Pl3">bisyllabic_stem</msg>
       <msg mood="PrfPrc">bisyllabic_stem</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-    <l stem="3syll">
+    <stem class="trisyllabic">
       <msg mood="Ind" tense="Prt" personnumber="Sg1">trisyllabic_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">trisyllabic_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg3">trisyllabic_stem_no_gradation</msg>
@@ -170,9 +170,9 @@
       <msg mood="Ind" tense="Prt" personnumber="Pl3">trisyllabic_stem_no_gradation</msg>
       <msg mood="PrfPrc">trisyllabic_stem_no_gradation</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-    <l stem="Csyll">
+    <stem class="contracted">
       <msg mood="Ind" tense="Prt" personnumber="Sg1">contracted_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">contracted_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg3">contracted_stem_no_gradation</msg>
@@ -184,9 +184,9 @@
       <msg mood="Ind" tense="Prt" personnumber="Pl3">contracted_stem_no_gradation</msg>
       <msg mood="PrfPrc">contracted_stem_no_gradation</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-    <l stem="2syll">
+    <stem class="bisyllabic">
       <msg mood="Ind" tense="Prt" personnumber="Sg1">strong_grade</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">strong_grade</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg3">weak_grade</msg>
@@ -197,9 +197,9 @@
       <msg mood="Ind" tense="Prt" personnumber="Pl2">weak_grade</msg>
       <msg mood="Ind" tense="Prt" personnumber="Pl3">strong_grade</msg>
       <note>gradation</note>
-    </l>
+    </stem>
 
-    <l diphthong="yes" soggi="i">
+    <stem diphthong="yes" soggi="i">
       <msg mood="Ind" tense="Prt" personnumber="Sg1">diphthong_simplification</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">diphthong_simplification</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg3">diphthong_simplification</msg>
@@ -210,47 +210,47 @@
       <msg mood="Ind" tense="Prt" personnumber="Pl2">diphthong_simplification</msg>
       <msg mood="Ind" tense="Prt" personnumber="Pl3">diphthong_simplification</msg>
       <note>boahtit diftongforenkling</note>
-    </l>
+    </stem>
 
-    <l diphthong="yes" soggi="a">
+    <stem diphthong="yes" soggi="a">
       <msg mood="Ind" tense="Prt" personnumber="Sg1">diphthong_simplification</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">diphthong_simplification</msg>
       <msg mood="Ind" tense="Prt" personnumber="Pl3">diphthong_simplification</msg>
       <note>ruohttat diftongforenkling</note>
-    </l>
+    </stem>
 
-    <l diphthong="yes" soggi="u">
+    <stem diphthong="yes" soggi="u">
       <msg mood="Ind" tense="Prt" personnumber="Sg1">diphthong_simplification</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">diphthong_simplification</msg>
       <msg mood="Ind" tense="Prt" personnumber="Pl3">diphthong_simplification</msg>
       <msg mood="PrfPrc">diphthong_simplification</msg>
       <note>goarrut diftongforenkling</note>
-    </l>
+    </stem>
 
-    <l soggi="i">
+    <stem soggi="i">
       <msg mood="Ind" tense="Prt" personnumber="Sg1">i_e</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">i_e</msg>
       <msg mood="Ind" tense="Prt" personnumber="Pl3">i_e</msg>
       <msg mood="PrfPrc">i_á</msg>
       <note>boahtit i>e</note>
-    </l>
+    </stem>
 
-    <l soggi="a">
+    <stem soggi="a">
       <msg mood="Ind" tense="Prt" personnumber="Sg1">a_e</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">a_e</msg>
       <msg mood="Ind" tense="Prt" personnumber="Pl3">a_e</msg>
       <note>ruohttat a>e</note>
-    </l>
+    </stem>
 
-    <l soggi="u">
+    <stem soggi="u">
       <msg mood="Ind" tense="Prt" personnumber="Sg1">u_o</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">u_o</msg>
       <msg mood="Ind" tense="Prt" personnumber="Pl3">u_o</msg>
       <msg mood="PrfPrc">u_o</msg>
       <note>goarrut u>o</note>
-    </l>
+    </stem>
 
-    <l soggi="e">
+    <stem soggi="e">
       <msg mood="Ind" tense="Prt" personnumber="Sg3">e_i</msg>
       <msg mood="Ind" tense="Prt" personnumber="Du1">e_i</msg>
       <msg mood="Ind" tense="Prt" personnumber="Du2">e_i</msg>
@@ -258,9 +258,9 @@
       <msg mood="Ind" tense="Prt" personnumber="Pl1">e_i</msg>
       <msg mood="Ind" tense="Prt" personnumber="Pl2">e_i</msg>
       <note>fertet e>i</note>
-    </l>
+    </stem>
 
-    <l soggi="o">
+    <stem soggi="o">
       <msg mood="Ind" tense="Prt" personnumber="Sg3">o_u</msg>
       <msg mood="Ind" tense="Prt" personnumber="Du1">o_u</msg>
       <msg mood="Ind" tense="Prt" personnumber="Du2">o_u</msg>
@@ -268,9 +268,9 @@
       <msg mood="Ind" tense="Prt" personnumber="Pl1">o_u</msg>
       <msg mood="Ind" tense="Prt" personnumber="Pl2">o_u</msg>
       <note>fertet e>i</note>
-    </l>
+    </stem>
 
-    <l stem="2syll">
+    <stem class="bisyllabic">
       <msg mood="Ind" tense="Prt" personnumber="Sg1">n-suffix</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">t-suffix</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg3">i-suffix</msg>
@@ -282,9 +282,9 @@
       <msg mood="Ind" tense="Prt" personnumber="Pl3">no_suffix</msg>
       <msg mood="PrfPrc">n-suffix</msg>
       <note>suffixes</note>
-    </l>
+    </stem>
 
-    <l stem="3syll">
+    <stem class="trisyllabic">
       <msg mood="Ind" tense="Prt" personnumber="Sg1">in-suffix</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">it-suffix</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg3">ii-suffix</msg>
@@ -296,9 +296,9 @@
       <msg mood="Ind" tense="Prt" personnumber="Pl3">edje-suffix</msg>
       <msg mood="PrfPrc">an-suffix</msg>
       <note>suffixes</note>
-    </l>
+    </stem>
 
-    <l>leat</l>
+    <lemma>leat</lemma>
       <msg mood="Ind" tense="Prt" personnumber="Sg1">djen-suffix</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">djet-suffix</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg3">i-suffix</msg>
@@ -312,7 +312,7 @@
       <note>suffixes</note>
 
 
-    <l stem="Csyll">
+    <stem class="contracted">
       <msg mood="Ind" tense="Prt" personnumber="Sg1">jin-suffix</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg2">jit-suffix</msg>
       <msg mood="Ind" tense="Prt" personnumber="Sg3">i-suffix</msg>
@@ -324,9 +324,9 @@
       <msg mood="Ind" tense="Prt" personnumber="Pl3">jedje-suffix</msg>
       <msg mood="PrfPrc">n-suffix</msg>
       <note>suffixes</note>
-    </l>
+    </stem>
 
-    <l stem="2syll">
+    <stem class="bisyllabic">
       <msg mood="Cond" tense="Prs" personnumber="Sg1">š_and_trisyllabic_stem_and_weak_grade</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg2">š_and_trisyllabic_stem_and_weak_grade</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg3">š_and_trisyllabic_stem_and_weak_grade</msg>
@@ -338,9 +338,9 @@
       <msg mood="Cond" tense="Prs" personnumber="Pl3">š_and_trisyllabic_stem_and_weak_grade</msg>
       <msg mood="Cond" tense="Prs" personnumber="ConNeg">še_and_trisyllabic_stem_and_weak_grade</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-    <l stem="3syll">
+    <stem class="trisyllabic">
       <msg mood="Cond" tense="Prs" personnumber="Sg1">včči_and_bisyllabic_stem</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg2">včči_and_bisyllabic_stem</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg3">včči_and_bisyllabic_stem</msg>
@@ -352,9 +352,9 @@
       <msg mood="Cond" tense="Prs" personnumber="Pl3">včči_and_bisyllabic_stem</msg>
       <msg mood="Cond" tense="Prs" personnumber="ConNeg">včče_and_trisyllabic_stem_and_weak_grade</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-    <l stem="Csyll">
+    <stem class="contracted">
       <msg mood="Cond" tense="Prs" personnumber="Sg1">š_and_trisyllabic_stem_and_weak_grade</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg2">š_and_trisyllabic_stem_and_weak_grade</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg3">š_and_trisyllabic_stem_and_weak_grade</msg>
@@ -366,10 +366,10 @@
       <msg mood="Cond" tense="Prs" personnumber="Pl3">š_and_trisyllabic_stem_and_weak_grade</msg>
       <msg mood="Cond" tense="Prs" personnumber="ConNeg">še_and_trisyllabic_stem_and_weak_grade</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
 
-    <l diphthong="yes" soggi="u">
+    <stem diphthong="yes" soggi="u">
       <msg mood="Cond" tense="Prs" personnumber="Sg1">diphthong_simplification</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg2">diphthong_simplification</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg3">diphthong_simplification</msg>
@@ -381,9 +381,9 @@
       <msg mood="Cond" tense="Prs" personnumber="Pl3">diphthong_simplification</msg>
       <msg mood="Cond" tense="Prs" personnumber="ConNeg">diphthong_simplification</msg>
       <note>diftongforenkling</note>
-    </l>
+    </stem>
 
-    <l soggi="i">
+    <stem soggi="i">
       <msg mood="Cond" tense="Prs" personnumber="Sg1">i_á</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg2">i_á</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg3">i_á</msg>
@@ -395,9 +395,9 @@
       <msg mood="Cond" tense="Prs" personnumber="Pl3">i_á</msg>
       <msg mood="Cond" tense="Prs" personnumber="ConNeg">i_á</msg>
       <note>boahtit i>á</note>
-    </l>
+    </stem>
 
-    <l soggi="u">
+    <stem soggi="u">
       <msg mood="Cond" tense="Prs" personnumber="Sg1">u_o</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg2">u_o</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg3">u_o</msg>
@@ -409,9 +409,9 @@
       <msg mood="Cond" tense="Prs" personnumber="Pl3">u_o</msg>
       <msg mood="Cond" tense="Prs" personnumber="ConNeg">u_o</msg>
       <note>goarrut u>o</note>
-    </l>
+    </stem>
 
-    <l stem="2syll">
+    <stem class="bisyllabic">
       <msg mood="Cond" tense="Prs" personnumber="Sg1">in-suffix</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg2">it-suffix</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg3">ii-suffix</msg>
@@ -422,16 +422,16 @@
       <msg mood="Cond" tense="Prs" personnumber="Pl2">eiddet-suffix</msg>
       <msg mood="Cond" tense="Prs" personnumber="Pl3">edje-suffix</msg>
       <note>suffixes</note>
-    </l>
+    </stem>
 
-    <l stem="3syll">
+    <stem class="trisyllabic">
       <msg mood="Cond" tense="Prs" personnumber="Sg1">i_e</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg2">i_e</msg>
       <msg mood="Cond" tense="Prs" personnumber="Pl3">i_e</msg>
       <note>ivčči i>e</note>
-    </l>
+    </stem>
 
-    <l stem="3syll">
+    <stem class="trisyllabic">
       <msg mood="Cond" tense="Prs" personnumber="Sg1">n-suffix</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg2">t-suffix</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg3">i-suffix</msg>
@@ -442,9 +442,9 @@
       <msg mood="Cond" tense="Prs" personnumber="Pl2">idet-suffix</msg>
       <msg mood="Cond" tense="Prs" personnumber="Pl3">no_suffix</msg>
       <note>suffixes</note>
-    </l>
+    </stem>
 
-    <l stem="Csyll">
+    <stem class="contracted">
       <msg mood="Cond" tense="Prs" personnumber="Sg1">in-suffix</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg2">it-suffix</msg>
       <msg mood="Cond" tense="Prs" personnumber="Sg3">ii-suffix</msg>
@@ -455,9 +455,9 @@
       <msg mood="Cond" tense="Prs" personnumber="Pl2">eiddet-suffix</msg>
       <msg mood="Cond" tense="Prs" personnumber="Pl3">edje-suffix</msg>
       <note>suffixes</note>
-    </l>
+    </stem>
 
-    <l stem="2syll">
+    <stem class="bisyllabic">
       <msg mood="Pot" tense="Prs" personnumber="Sg1">ž_and_trisyllabic_stem_and_weak_grade</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg2">ž_and_trisyllabic_stem_and_weak_grade</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg3">pot_eš</msg>
@@ -469,9 +469,9 @@
       <msg mood="Pot" tense="Prs" personnumber="Pl3">ž_and_trisyllabic_stem_and_weak_grade</msg>
       <msg mood="Pot" tense="Prs" personnumber="ConNeg">pot_eš</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-    <l stem="3syll">
+    <stem class="trisyllabic">
       <msg mood="Pot" tense="Prs" personnumber="Sg1">eažža_and_bisyllabic_stem</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg2">eažža_and_bisyllabic_stem</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg3">pot_eš</msg>
@@ -483,9 +483,9 @@
       <msg mood="Pot" tense="Prs" personnumber="Pl3">eažža_and_bisyllabic_stem</msg>
       <msg mood="Pot" tense="Prs" personnumber="ConNeg">pot_eš</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-    <l stem="Csyll">
+    <stem class="contracted">
       <msg mood="Pot" tense="Prs" personnumber="Sg1">ž_and_trisyllabic_stem_and_weak_grade</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg2">ž_and_trisyllabic_stem_and_weak_grade</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg3">pot_eš</msg>
@@ -497,9 +497,9 @@
       <msg mood="Pot" tense="Prs" personnumber="Pl3">ž_and_trisyllabic_stem_and_weak_grade</msg>
       <msg mood="Pot" tense="Prs" personnumber="ConNeg">pot_eš</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-    <l stem="3syll">
+    <stem class="trisyllabic">
       <msg mood="Pot" tense="Prs" personnumber="Sg1">weak_grade</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg2">weak_grade</msg>
       <msg mood="Pot" tense="Prs" personnumber="Du1">strong_grade</msg>
@@ -509,9 +509,9 @@
       <msg mood="Pot" tense="Prs" personnumber="Pl2">strong_grade</msg>
       <msg mood="Pot" tense="Prs" personnumber="Pl3">strong_grade</msg>
       <note>gradation</note>
-    </l>
+    </stem>
 
-    <l diphthong="yes" soggi="i">
+    <stem diphthong="yes" soggi="i">
       <msg mood="Pot" tense="Prs" personnumber="Sg1">diphthong_simplification</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg2">diphthong_simplification</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg3">diphthong_simplification</msg>
@@ -523,9 +523,9 @@
       <msg mood="Pot" tense="Prs" personnumber="Pl3">diphthong_simplification</msg>
       <msg mood="Pot" tense="Prs" personnumber="ConNeg">diphthong_simplification</msg>
       <note>diftongforenkling</note>
-    </l>
+    </stem>
 
-    <l diphthong="yes" soggi="u">
+    <stem diphthong="yes" soggi="u">
       <msg mood="Pot" tense="Prs" personnumber="Sg1">diphthong_simplification</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg2">diphthong_simplification</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg3">diphthong_simplification</msg>
@@ -537,21 +537,21 @@
       <msg mood="Pot" tense="Prs" personnumber="Pl3">diphthong_simplification</msg>
       <msg mood="Pot" tense="Prs" personnumber="ConNeg">diphthong_simplification</msg>
       <note>diftongforenkling</note>
-    </l>
+    </stem>
 
-    <l stem="3syll">
+    <stem class="trisyllabic">
       <msg mood="Pot" tense="Prs" personnumber="Du1">diphthong_simplification_2</msg>
       <msg mood="Pot" tense="Prs" personnumber="Pl3">diphthong_simplification_2</msg>
       <note>diftongforenkling i nestsiste stavelse</note>
-    </l>
+    </stem>
 
-    <l stem="3syll">
+    <stem class="trisyllabic">
       <msg mood="Pot" tense="Prs" personnumber="Du1">a_e</msg>
       <msg mood="Pot" tense="Prs" personnumber="Pl3">a_e</msg>
       <note>eažža a>á a>e</note>
-    </l>
+    </stem>
 
-    <l stem="2syll">
+    <stem class="bisyllabic">
       <msg mood="Pot" tense="Prs" personnumber="Sg1">an-suffix</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg2">at-suffix</msg>
       <msg mood="Pot" tense="Prs" personnumber="Du1">etne-suffix</msg>
@@ -561,9 +561,9 @@
       <msg mood="Pot" tense="Prs" personnumber="Pl2">ehpet-suffix</msg>
       <msg mood="Pot" tense="Prs" personnumber="Pl3">it-suffix</msg>
       <note>suffixes</note>
-    </l>
+    </stem>
 
-    <l stem="3syll">
+    <stem class="trisyllabic">
       <msg mood="Pot" tense="Prs" personnumber="Sg1">an-suffix</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg2">at-suffix</msg>
       <msg mood="Pot" tense="Prs" personnumber="Du1">no_suffix</msg>
@@ -573,9 +573,9 @@
       <msg mood="Pot" tense="Prs" personnumber="Pl2">behtet-suffix</msg>
       <msg mood="Pot" tense="Prs" personnumber="Pl3">t-suffix</msg>
       <note>suffixes</note>
-    </l>
+    </stem>
 
-    <l stem="Csyll">
+    <stem class="contracted">
       <msg mood="Pot" tense="Prs" personnumber="Sg1">an-suffix</msg>
       <msg mood="Pot" tense="Prs" personnumber="Sg2">at-suffix</msg>
       <msg mood="Pot" tense="Prs" personnumber="Du1">etne-suffix</msg>
@@ -585,9 +585,9 @@
       <msg mood="Pot" tense="Prs" personnumber="Pl2">ehpet-suffix</msg>
       <msg mood="Pot" tense="Prs" personnumber="Pl3">it-suffix</msg>
       <note>suffixes</note>
-    </l>
+    </stem>
 
-  <l stem="2syll">
+  <stem class="bisyllabic">
       <msg mood="Imprt" tense="Prs" personnumber="Sg1">bisyllabic_stem</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg2">bisyllabic_stem</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg3">bisyllabic_stem</msg>
@@ -598,9 +598,9 @@
       <msg mood="Imprt" tense="Prs" personnumber="Pl2">bisyllabic_stem</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">bisyllabic_stem</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-    <l>leat</l>
+    <lemma>leat</lemma>
       <msg mood="Imprt" tense="Prs" personnumber="Sg1">ehkon-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg2">ge-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg3">ehkos-suffix</msg>
@@ -613,7 +613,7 @@
       <note>steminfo</note>
 
 
-  <l stem="3syll">
+  <stem class="trisyllabic">
       <msg mood="Imprt" tense="Prs" personnumber="Sg1">trisyllabic_stem_no_gradation</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg2">trisyllabic_stem_no_gradation</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg3">trisyllabic_stem_no_gradation</msg>
@@ -624,9 +624,9 @@
       <msg mood="Imprt" tense="Prs" personnumber="Pl2">trisyllabic_stem_no_gradation</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">trisyllabic_stem_no_gradation</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-  <l stem="Csyll">
+  <stem class="contracted">
       <msg mood="Imprt" tense="Prs" personnumber="Sg1">contracted_stem_no_gradation</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg2">contracted_stem_no_gradation</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg3">contracted_stem_no_gradation</msg>
@@ -637,9 +637,9 @@
       <msg mood="Imprt" tense="Prs" personnumber="Pl2">contracted_stem_no_gradation</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">contracted_stem_no_gradation</msg>
       <note>steminfo</note>
-    </l>
+    </stem>
 
-  <l stem="2syll" gradation="yes">
+  <stem class="bisyllabic" gradation="yes">
       <msg mood="Imprt" tense="Prs" personnumber="Sg1">strong_grade</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg2">weak_grade</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg3">strong_grade</msg>
@@ -650,25 +650,25 @@
       <msg mood="Imprt" tense="Prs" personnumber="Pl2">strong_grade</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">strong_grade</msg>
       <note>gradation</note>
-    </l>
+    </stem>
 
-  <l gradation="extrastrong">
+  <stem gradation="extrastrong">
       <msg mood="Imprt" tense="Prs" personnumber="Du1">extra_strong_grade</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du2">extra_strong_grade</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl1">extra_strong_grade</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl2">extra_strong_grade</msg>
       <note>exstrastrong</note>
-    </l>
+    </stem>
 
-  <l diphthong="yes">
+  <stem diphthong="yes">
       <msg mood="Imprt" tense="Prs" personnumber="Sg1">diphthong_simplification</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg3">diphthong_simplification</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Du3">diphthong_simplification</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">diphthong_simplification</msg>
       <note>diftongforenkling</note>
-    </l>
+    </stem>
 
-  <l soggi="i">
+  <stem soggi="i">
       <msg mood="Imprt" tense="Prs" personnumber="Sg1">on-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg2">i_e</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg3">os-suffix</msg>
@@ -679,9 +679,9 @@
       <msg mood="Imprt" tense="Prs" personnumber="Pl2">it-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">oset-suffix</msg>
       <note>boahtit suffixes</note>
-    </l>
+    </stem>
 
-  <l soggi="u">
+  <stem soggi="u">
       <msg mood="Imprt" tense="Prs" personnumber="Sg1">on-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg2">u_o</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg3">os-suffix</msg>
@@ -692,9 +692,9 @@
       <msg mood="Imprt" tense="Prs" personnumber="Pl2">ut-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">oset-suffix</msg>
       <note>goarrut suffixes</note>
-    </l>
+    </stem>
 
-  <l soggi="a">
+  <stem soggi="a">
       <msg mood="Imprt" tense="Prs" personnumber="Sg1">on-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg2">no_suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg3">os-suffix</msg>
@@ -705,20 +705,20 @@
       <msg mood="Imprt" tense="Prs" personnumber="Pl2">it-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">oset-suffix</msg>
       <note>mannat suffixes</note>
-    </l>
+    </stem>
 
-   <l rime="d_t">
+   <stem rime="d_t">
       <msg mood="Imprt" tense="Prs" personnumber="Sg2">d_t</msg>
       <note>boradit d > t</note>
-    </l>
+    </stem>
 
-   <l rime="h_t">
+   <stem rime="h_t">
       <msg mood="Imprt" tense="Prs" personnumber="Sg2">h_t</msg>
       <note>borahit h > t</note>
-    </l>
+    </stem>
 
 
-  <l stem="3syll">
+  <stem class="trisyllabic">
       <msg mood="Imprt" tense="Prs" personnumber="Sg1">ehkon-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg2">remove_it</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg3">ehkos-suffix</msg>
@@ -729,9 +729,9 @@
       <msg mood="Imprt" tense="Prs" personnumber="Pl2">ehket-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">ehkoset-suffix</msg>
       <note>muitalit suffixes</note>
-    </l>
+    </stem>
 
-  <l stem="Csyll">
+  <stem class="contracted">
       <msg mood="Imprt" tense="Prs" personnumber="Sg1">jehkon-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg2">no_suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Sg3">jehkos-suffix</msg>
@@ -742,7 +742,7 @@
       <msg mood="Imprt" tense="Prs" personnumber="Pl2">jehket-suffix</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">jehkoset-suffix</msg>
       <note>fárret suffixes</note>
-    </l>
+    </stem>
 
   </stems>
 
