@@ -180,6 +180,7 @@
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">dokke</tr> 
+         <!-- pick the first for the reverse-->
       <tr xml:lang="nob">dukke</tr>
          <tr xml:lang="fin">nukke</tr>
          <tr xml:lang="eng">doll</tr>
@@ -233,7 +234,8 @@
   </entry>
    <entry>
       <lemma>elrávdnji</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">elektrisitet</tr>
          <tr xml:lang="nob">strøm</tr>
@@ -407,7 +409,8 @@
   </entry>
    <entry>
       <lemma>oahpahus</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">undervisning</tr>
          <tr xml:lang="fin">opetus</tr>
@@ -634,7 +637,8 @@
   </entry>
    <entry>
       <lemma>máttasámegiella</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sørsamisk språk</tr>
          <tr xml:lang="nob">sørsamisk</tr>
@@ -656,7 +660,8 @@
   </entry>
    <entry>
       <lemma>lullisámegiella</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sørsamisk språk</tr>
          <tr xml:lang="nob">sørsamisk</tr>
@@ -679,7 +684,8 @@
    </entry>
    <entry>
       <lemma>julevsámegiella</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">lulesamisk språk</tr>
          <tr xml:lang="nob">lulesamisk</tr>
@@ -700,7 +706,8 @@
   </entry>
    <entry>
       <lemma>davvisámegiella</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">nordsamisk språk</tr>
          <tr xml:lang="nob">nordsamisk</tr>
@@ -843,7 +850,6 @@
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sammensatt ord</tr>
-         <tr xml:lang="nob">sammensetning</tr>
          <tr xml:lang="fin">yhdyssana</tr>
          <tr xml:lang="eng">compound word</tr>
          <tr xml:lang="eng">compound</tr>
@@ -975,7 +981,6 @@
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sametingsråd</tr>
-         <tr xml:lang="nob">sametingsrådet</tr>
          <tr xml:lang="fin">saamelaisneuvosto</tr>
          <tr xml:lang="eng">Sámi Parliament Council</tr>
          <tr xml:lang="eng">Sami Parliament Council</tr>
@@ -991,11 +996,12 @@
       <sources>
     </sources>
   </entry>
-   <entry id="áddjá_bestefar">
+   <entry>
       <lemma>áddjá</lemma>
       <pos class="N"/>
       <translations>
          <tr xml:lang="nob">bestefar</tr>
+         <tr xml:lang="nob">gammel mann</tr>
          <tr xml:lang="fin">isoisä</tr>
          <tr xml:lang="fin">äijä</tr>
          <tr xml:lang="eng">grandfather</tr>
@@ -1008,26 +1014,6 @@
       <semantics>
          <sem class="FAMILY"/>
          <sem class="PAIR"/>
-      </semantics>
-      <stem class="bisyllabic" diphthong="no" gradation="yes" rime="0"/>
-      <dialect/>
-      <sources>
-         <book name="d1"/>
-         <book name="algu"/>
-         <book name="sara"/>
-         <book name="sam1031_1"/>
-         <book name="AA"/>
-      </sources>
-   </entry>
-   <entry id="áddjá_mann">
-      <lemma>áddjá</lemma>
-      <pos class="N"/>
-      <translations>
-         <tr xml:lang="nob">gammel mann</tr>
-         <tr xml:lang="fin">äijä</tr>
-      </translations>
-      <semantics>
-         <sem class="OTHERS"/>
       </semantics>
       <stem class="bisyllabic" diphthong="no" gradation="yes" rime="0"/>
       <dialect/>
@@ -1059,8 +1045,9 @@
          <book name="algu"/>
       </sources>
   </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>rivgu</lemma>
+      <noleksa/>
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">ikke-samisk kvinne</tr>
@@ -1108,12 +1095,12 @@
       <pos class="N"/>
       <translations>
          <tr xml:lang="nob">mors eldre søster</tr>
-         <tr tcomm="yes" xml:lang="nob">tante</tr>
+         <tr xml:lang="nob">tante</tr>
          <tr xml:lang="fin">äidin vanhempi sisar</tr>
-         <tr tcomm="yes" xml:lang="fin">täti</tr>
+         <tr xml:lang="fin">täti</tr>
          <tr xml:lang="eng">aunt</tr>
          <tr xml:lang="swe">mors äldre syster</tr>
-         <tr tcomm="yes" xml:lang="swe">tant</tr>
+         <tr xml:lang="swe">tant</tr>
          <tr xml:lang="deu">Tante</tr>
       </translations>
       <semantics>
@@ -1135,12 +1122,12 @@
       <pos class="N"/>
       <translations>
          <tr xml:lang="nob">fars søster</tr>
-         <tr tcomm="yes" xml:lang="nob">tante</tr>
+         <tr xml:lang="nob">tante</tr>
          <tr xml:lang="fin">isän sisar</tr>
-         <tr tcomm="yes" xml:lang="fin">täti</tr>
-         <tr xml:lang="swe">fars syster</tr>
-         <tr tcomm="yes" xml:lang="swe">tant</tr>
+         <tr xml:lang="fin">täti</tr>
          <tr xml:lang="eng">aunt</tr>
+         <tr xml:lang="swe">fars syster</tr>
+         <tr xml:lang="swe">tant</tr>
          <tr xml:lang="deu">Tante</tr>
       </translations>
       <semantics>
@@ -1162,13 +1149,13 @@
       <pos class="N"/>
       <translations>
          <tr xml:lang="nob">mors yngre søster</tr>
-         <tr tcomm="yes" xml:lang="nob">tante</tr>
-         <tr tcomm="yes" xml:lang="nob">moster</tr>
+         <tr xml:lang="nob">tante</tr>
+         <tr xml:lang="nob">moster</tr>
          <tr xml:lang="fin">äidin nuorempi sisar</tr>
-         <tr tcomm="yes" xml:lang="fin">täti</tr>
+         <tr xml:lang="fin">täti</tr>
          <tr xml:lang="eng">aunt</tr>
          <tr xml:lang="swe">mors yngre syster</tr>
-         <tr tcomm="yes" xml:lang="swe">tant</tr>
+         <tr xml:lang="swe">tant</tr>
          <tr xml:lang="deu">Tante</tr>
       </translations>
       <semantics>
@@ -1190,14 +1177,14 @@
       <pos class="N"/>
       <translations>
          <tr xml:lang="nob">fars yngre bror</tr>
-         <tr tcomm="yes" xml:lang="nob">onkel</tr>
-         <tr tcomm="yes" xml:lang="nob">farbror</tr>
-         <tr tcomm="yes" xml:lang="nob">fars bror</tr>     
+         <tr xml:lang="nob">onkel</tr>
+         <tr xml:lang="nob">farbror</tr>
+         <tr xml:lang="nob">fars bror</tr>     
          <tr xml:lang="fin">isän nuorempi veli</tr>
-         <tr tcomm="yes" xml:lang="fin">setä</tr>
+         <tr xml:lang="fin">setä</tr>
          <tr xml:lang="eng">uncle</tr>
          <tr xml:lang="swe">fars yngre bror</tr>
-         <tr tcomm="yes" xml:lang="swe">farbror</tr>
+         <tr xml:lang="swe">farbror</tr>
          <tr xml:lang="deu">Onkel</tr>
       </translations>
       <semantics>
@@ -1215,19 +1202,16 @@
          <book name="AA"/>
       </sources>
    </entry>
-   <entry id="áhkku_bestemor">
+   <entry>
       <lemma>áhkku</lemma>
       <pos class="N"/>
       <translations>
          <tr xml:lang="nob">bestemor</tr>
          <tr xml:lang="nob">farmor</tr>
          <tr xml:lang="nob">mormor</tr>      
-         <tr xml:lang="nob">gammeltante</tr>
-         <tr xml:lang="nob">gammel dame</tr>
          <tr xml:lang="nob">gammel kone</tr>
-         <tr xml:lang="nob">gammel kvinne</tr>
-         <tr xml:lang="nob">eldre kvinne</tr>
-         <tr xml:lang="nob">eldre dame</tr>
+         <tr xml:lang="nob">gammel dame</tr>
+         <tr xml:lang="nob">gammeltante</tr>
          <tr xml:lang="fin">isoäiti</tr>
          <tr xml:lang="fin">akka</tr>
          <tr xml:lang="eng">grandmother</tr>
@@ -1238,42 +1222,6 @@
       </translations>
       <semantics>
          <sem class="FAMILY"/>
-         <sem class="PAIR"/>
-      </semantics>
-      <stem class="bisyllabic" diphthong="no" gradation="yes" soggi="u" rime="0"/>
-      <dialect/>
-      <sources>
-         <book name="d1"/>
-         <book name="algu"/>
-         <book name="sara"/>
-         <book name="sam1031_1"/>
-         <book name="AA"/>
-      </sources>
-   </entry>
-   <entry id="ahkku_dame">
-      <lemma>áhkku</lemma>
-      <pos class="N"/>
-      <translations>
-         <tr xml:lang="nob">gammel dame</tr>
-         <tr xml:lang="nob">gammel kone</tr>
-         <tr xml:lang="nob">gammel kvinne</tr>
-         <tr xml:lang="nob">eldre kvinne</tr>
-         <tr xml:lang="nob">eldre dame</tr>
-         <tr xml:lang="nob">gammeltante</tr>
-         <tr xml:lang="nob">bestemor</tr>
-         <tr xml:lang="nob">farmor</tr>
-         <tr xml:lang="nob">mormor</tr>      
-         <tr xml:lang="fin">gammel dame_FIN</tr>
-         <tr xml:lang="fin">isoäiti</tr>
-         <tr xml:lang="fin">akka</tr>
-         <tr xml:lang="eng">grandmother</tr>
-         <tr xml:lang="swe">farmor</tr>
-         <tr xml:lang="swe">mormor</tr>
-         <tr xml:lang="deu">Großmutter</tr>
-         <tr xml:lang="deu">Oma</tr>
-      </translations>
-      <semantics>
-         <sem class="OTHERS"/>
          <sem class="PAIR"/>
       </semantics>
       <stem class="bisyllabic" diphthong="no" gradation="yes" soggi="u" rime="0"/>
@@ -1320,8 +1268,6 @@
       <translations>
          <tr xml:lang="nob">gutt</tr>
          <tr xml:lang="nob">sønn</tr>
-         <tr xml:lang="nob">ungkar</tr>
-         <tr xml:lang="nob">ugift mann</tr>
          <tr xml:lang="fin">poika</tr>
          <tr xml:lang="fin">nuori mies</tr>
          <tr xml:lang="eng">boy</tr>
@@ -1422,10 +1368,9 @@
          <tr xml:lang="nob">farbrors kone</tr>
          <tr xml:lang="nob">morbrors kone</tr>
          <tr xml:lang="nob">inngift tante</tr>
-         <tr tcomm="yes" xml:lang="nob">tante</tr>
+         <tr xml:lang="nob">tante</tr>
          <tr xml:lang="nob">filletante</tr>
-         <tr xml:lang="fin">onkels kone_FIN</tr>
-         <tr tcomm="yes" xml:lang="fin">täti</tr>
+         <tr xml:lang="fin">täti</tr>
          <tr xml:lang="eng">aunt</tr>
          <tr xml:lang="swe">farbrors fru</tr>
          <tr xml:lang="swe">morbrors fru</tr>
@@ -1451,7 +1396,7 @@
          <tr xml:lang="nob">svoger</tr>
          <tr xml:lang="nob">filleonkel</tr>
          <tr xml:lang="nob">inngift onkel</tr>
-         <tr tcomm="yes" xml:lang="nob">onkel</tr>
+         <tr xml:lang="nob">onkel</tr>
          <tr xml:lang="fin">setä</tr>
          <tr xml:lang="fin">lanko</tr>
          <tr xml:lang="eng">uncle</tr>
@@ -1565,7 +1510,6 @@
          <tr xml:lang="nob">jente</tr>
          <tr xml:lang="nob">pike</tr>
          <tr xml:lang="nob">datter</tr>
-         <tr xml:lang="nob">ugift kvinne</tr>
          <tr xml:lang="fin">tyttö</tr>
          <tr xml:lang="fin">tytär</tr>
          <tr xml:lang="eng">girl</tr>
@@ -1654,7 +1598,7 @@
          <sem class="FAMILY"/>
          <sem class="PAIR"/>
       </semantics>
-      <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="i" rime="0"/>
+      <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="e" rime="0"/>
       <dialect class="NOT-KJ"/>
       <sources>
          <book name="d2"/>
@@ -1679,13 +1623,11 @@
          <sem class="FAMILY"/>
          <sem class="PAIR"/>
       </semantics>
-      <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="i" rime="0"/>
+      <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="e" rime="0"/>
       <dialect class="NOT-GG"/>
       <sources>
          <book name="d2"/>
          <book name="sara"/>
-         <book name="AA"/>
-         <book name="c2"/>
       </sources>
   </entry>
    <entry>
@@ -1793,14 +1735,12 @@
          <sem class="FAMILY"/>
          <sem class="PAIR"/>
       </semantics>
-      <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="i" rime="0"/>
+      <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="e" rime="0"/>
       <dialect/>
       <sources>
          <book name="d2"/>
          <book name="sara"/>
          <book name="algu"/>
-         <book name="AA"/>
-         <book name="c2"/>
          <book name="sam1031_2"/>
       </sources>
    </entry>
@@ -1954,7 +1894,8 @@
   </entry>
    <entry>
       <lemma>obbadálki</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">overskyet vær</tr>
          <tr xml:lang="nob">overskyet</tr>
@@ -2253,8 +2194,8 @@
       <lemma>buohcci</lemma>
       <pos class="N" type="Actor"/>
       <translations>
-         <tr xml:lang="nob">pasient</tr>
          <tr xml:lang="nob">syk</tr>
+         <tr xml:lang="nob">pasient</tr>
          <tr xml:lang="fin">potilas</tr>
          <tr xml:lang="eng">patient</tr>
          <tr xml:lang="swe">sjuk</tr>
@@ -2488,7 +2429,6 @@
       <translations>
          <tr xml:lang="nob">skredder</tr>
          <tr xml:lang="nob">syerske</tr>
-         <tr xml:lang="nob">syer</tr>
          <tr xml:lang="fin">räätäli</tr>
          <tr xml:lang="eng">tailor</tr>
          <tr xml:lang="swe">skräddare</tr>
@@ -2732,6 +2672,7 @@
          <tr xml:lang="deu"/>
       </translations>
       <semantics>
+    
          <sem class="PROFESSION"/>
       </semantics>
       <stem class="bisyllabic" diphthong="yes" gradation="no" soggi="i" rime="0"/>
@@ -3603,8 +3544,9 @@
          <book name="oaidnalit"/>
       </sources>
   </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>boaššu</lemma>
+      <noleksa/>
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">innerrom i gamme</tr>
@@ -3709,8 +3651,9 @@
          <book name="sam1031_1"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>gáibmi</lemma>
+      <noleksa/>
       <pos class="N"/>
       <translations>
          <tr xml:lang="nob">navnebror/søster</tr>
@@ -3777,8 +3720,9 @@
          <book name="d4"/>
       </sources>
   </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>gávttehas</lemma>
+      <noleksa/>
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">koftekledd person</tr>
@@ -5262,7 +5206,6 @@
          <tr xml:lang="nob">rumpe</tr>
          <tr xml:lang="nob">rompe</tr>
          <tr xml:lang="nob">bakende</tr>
-         <tr xml:lang="nob">bak</tr>
          <tr xml:lang="fin">pylly</tr>
          <tr xml:lang="fin">takamus</tr>
          <tr xml:lang="fin">perse</tr>
@@ -5569,8 +5512,6 @@
       <translations>
          <tr xml:lang="nob">rumpe</tr>
          <tr xml:lang="nob">bak</tr>
-         <tr xml:lang="nob">rompe</tr>
-         <tr xml:lang="nob">bakende</tr>
          <tr xml:lang="fin">pylly</tr>
          <tr xml:lang="nob">takamus</tr>
          <tr xml:lang="nob">perse</tr>
@@ -5777,7 +5718,8 @@
   </entry>
    <entry>
       <lemma>muohtti</lemma>
-      <pos class="N" type="G3" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N" type="G3"/>
       <translations>
          <tr xml:lang="nob">snøvær</tr>
          <tr xml:lang="fin">lumipyry</tr>
@@ -5995,7 +5937,8 @@
    </entry>
    <entry>
       <lemma>varra</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">blod</tr>
          <tr xml:lang="fin">veri</tr>
@@ -6567,7 +6510,8 @@
    </entry>
    <entry>
       <lemma>feber</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">feber</tr>
          <tr xml:lang="fin">kuume</tr>
@@ -7473,8 +7417,9 @@
          <book name="sam1031_1"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>loaidu</lemma>
+      <noleksa/>
       <pos class="N"/>
       <translations>
          <tr xml:lang="nob">soveplass i telt</tr>
@@ -8121,7 +8066,7 @@
    </entry>
    <entry>
       <lemma>mehter</lemma>
-	     <pos class="N"/>
+         <pos class="N"/>
       <translations>
          <tr xml:lang="nob">meter</tr>
          <tr xml:lang="fin">metri</tr>
@@ -8398,8 +8343,9 @@
          <book name="AA"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>rántet</lemma>
+      <noleksa/>
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sted man hogger ved</tr>
@@ -9736,7 +9682,8 @@
   </entry>
    <entry>
       <lemma>dárogiella</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">norsk språk</tr>
          <tr xml:lang="nob">norsk</tr>
@@ -9761,7 +9708,8 @@
    </entry>
    <entry>
       <lemma>eatnigiella</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">morsmål</tr>
          <tr xml:lang="fin">äidinkieli</tr>
@@ -9781,7 +9729,8 @@
   </entry>
    <entry>
       <lemma>eŋgelasgiella</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">engelsk språk</tr>
          <tr xml:lang="nob">engelsk</tr>
@@ -9847,7 +9796,8 @@
    </entry>
    <entry>
       <lemma>ruoššagiella</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">russisk språk</tr>
          <tr xml:lang="nob">russisk</tr>
@@ -9868,7 +9818,8 @@
   </entry>
    <entry>
       <lemma>ruoŧagiella</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">svensk språk</tr>
          <tr xml:lang="nob">svensk</tr>
@@ -9890,7 +9841,8 @@
   </entry>
    <entry>
       <lemma>suomagiella</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">finsk språk</tr>
          <tr xml:lang="nob">finsk</tr>
@@ -11084,7 +11036,8 @@
    </entry>
    <entry>
       <lemma>olju</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">olje</tr>
          <tr xml:lang="fin">öljy</tr>
@@ -11154,8 +11107,7 @@
       <stem class="bisyllabic" diphthong="no" gradation="yes" soggi="a" rime="0"/>
       <dialect/>
       <sources>
-         <book name="c2"/>
-      </sources>
+    </sources>
   </entry>
    <entry>
       <lemma>bliánta</lemma>
@@ -11470,8 +11422,9 @@
          <book name="sara"/>
       </sources>
   </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>biergoláibi</lemma>
+      <noleksa/>
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">smørbrød med kjøtt</tr>
@@ -12576,7 +12529,8 @@
    </entry>
    <entry>
       <lemma>čakčadálvi</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">seinhøst</tr>
          <tr xml:lang="nob">senhøst</tr>
@@ -12597,7 +12551,8 @@
    </entry>
    <entry>
       <lemma>čakčageassi</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">ettersommer</tr>
          <tr xml:lang="nob">sensommer</tr>
@@ -12874,7 +12829,8 @@
    </entry>
    <entry>
       <lemma>gaskabeaivi</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">midt på dagen</tr>
          <tr xml:lang="fin">keskipäivä</tr>
@@ -13174,7 +13130,8 @@
    </entry>
    <entry>
       <lemma>giđđadálvi</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">ettervinter</tr>
          <tr xml:lang="nob">senvinter</tr>
@@ -13197,7 +13154,8 @@
    </entry>
    <entry>
       <lemma>giđđageassi</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">forsommer</tr>
          <tr xml:lang="fin">suvi</tr>
@@ -13284,7 +13242,7 @@
    </entry>
    <entry>
       <lemma>hellodagat</lemma>
-	     <pos class="N" gen_only="Pl"/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">pinse</tr>
          <tr xml:lang="fin">helluntai</tr>
@@ -13303,7 +13261,8 @@
   </entry>
    <entry>
       <lemma>historjá</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">historie</tr>
          <tr xml:lang="fin">historia</tr>
@@ -13571,7 +13530,7 @@
    </entry>
    <entry>
       <lemma>juovllat</lemma>
-	     <pos class="N" gen_only="Pl"/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">jul</tr>
          <tr xml:lang="fin">joulu</tr>
@@ -13728,7 +13687,7 @@
    </entry>
    <entry>
       <lemma>mihcamárat</lemma>
-	     <pos class="N" gen_only="Pl"/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sankthans</tr>
          <tr xml:lang="fin">juhannus</tr>
@@ -13989,7 +13948,6 @@
       <sources>
          <book name="oaidnalit"/>
          <book name="algu"/>
-         <book name="c2"/>
       </sources>
   </entry>
    <entry>
@@ -14309,7 +14267,7 @@
    </entry>
    <entry>
       <lemma>beassážat</lemma>
-      <pos class="N" gen_only="Pl"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">påske</tr>
          <tr xml:lang="fin">pääsiäinen</tr>
@@ -14456,7 +14414,7 @@
   </entry>
    <entry>
       <lemma>buvssat</lemma>
-      <pos class="N" gen_only="Pl"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">bukse</tr>
          <tr xml:lang="nob">bukser</tr>
@@ -14540,12 +14498,11 @@
          <book name="algu"/>
          <book name="sam1031_1"/>
          <book name="AA"/>
-         <book name="c1"/>
       </sources>
    </entry>
    <entry>
       <lemma>čalbmelásat</lemma>
-	     <pos class="N" gen_only="Pl"/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">briller</tr>
          <tr xml:lang="fin">silmälasit</tr>
@@ -14564,7 +14521,7 @@
   </entry>
    <entry>
       <lemma>čalbmeláset</lemma>
-	     <pos class="N" gen_only="Pl"/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">briller</tr>
          <tr xml:lang="fin">silmälasit</tr>
@@ -14777,8 +14734,9 @@
          <book name="sara"/>
       </sources>
   </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>holbi</lemma>
+      <noleksa/>
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">påsydd kant på koftekanten</tr>
@@ -15415,7 +15373,7 @@
   </entry>
    <entry>
       <lemma>čuoiganbuvssat</lemma>
-	     <pos class="N" gen_only="Pl"/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">skibukse</tr>
          <tr xml:lang="nob">skibukser</tr>
@@ -15474,7 +15432,7 @@
   </entry>
    <entry>
       <lemma>doŋgeribuvssat</lemma>
-	     <pos class="N" gen_only="Pl"/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">dongeribukse</tr>
          <tr xml:lang="nob">dongeribukser</tr>
@@ -15693,7 +15651,7 @@
   </entry>
    <entry>
       <lemma>hárjehallanbuvssat</lemma>
-	     <pos class="N" gen_only="Pl"/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">treningsbukse</tr>
          <tr xml:lang="nob">treningsbukser</tr>
@@ -15876,7 +15834,8 @@
   </entry>
    <entry>
       <lemma>sisbuvssat</lemma>
-	     <pos class="N" gen_only="Pl"/>
+      <only-pl/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">underbukse</tr>
          <tr xml:lang="nob">underbukser</tr>
@@ -15919,7 +15878,7 @@
   </entry>
    <entry>
       <lemma>suohkkobuvssat</lemma>
-      <pos class="N" gen_only="Pl"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">strømpebukse</tr>
          <tr xml:lang="nob">strømpebukser</tr>
@@ -16003,7 +15962,8 @@
   </entry>
    <entry>
       <lemma>áibmu</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">luft</tr>
          <tr xml:lang="fin">ilma</tr>
@@ -16169,7 +16129,8 @@
    </entry>
    <entry>
       <lemma>cuoŋu</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">skare</tr>
          <tr xml:lang="fin">hanki</tr>
@@ -16408,7 +16369,8 @@
    </entry>
    <entry>
       <lemma>golli</lemma>
-      <pos class="N" type="G3" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N" type="G3"/>
       <translations>
          <tr xml:lang="nob">gull</tr>
          <tr xml:lang="fin">kulta</tr>
@@ -16720,7 +16682,8 @@
   </entry>
    <entry>
       <lemma>luondu</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">natur</tr>
          <tr xml:lang="fin">luonto</tr>
@@ -16815,7 +16778,7 @@
    </entry>
    <entry>
       <lemma>mielli</lemma>
-      <pos class="N" type="G3"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">elvemel</tr>
          <tr xml:lang="nob">bakke</tr>
@@ -17067,7 +17030,8 @@
   </entry>
    <entry>
       <lemma>silba</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sølv</tr>
          <tr xml:lang="fin">hopea</tr>
@@ -17239,7 +17203,8 @@
    </entry>
    <entry>
       <lemma>beaivváš</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sol</tr>
          <tr xml:lang="fin">aurinko</tr>
@@ -17403,7 +17368,8 @@
    </entry>
    <entry>
       <lemma>suovva</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">røyk</tr>
          <tr xml:lang="fin">savu</tr>
@@ -18044,7 +18010,8 @@
   </entry>
    <entry>
       <lemma>arvi</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">regn</tr>
          <tr xml:lang="fin">sade</tr>
@@ -18220,7 +18187,8 @@
    </entry>
    <entry>
       <lemma>borga</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">snøfokk</tr>
          <tr xml:lang="nob">snøfyk</tr>
@@ -18269,7 +18237,8 @@
    </entry>
    <entry>
       <lemma>čáppadálki</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">finvær</tr>
          <tr xml:lang="nob">godvær</tr>
@@ -18315,7 +18284,8 @@
    </entry>
    <entry>
       <lemma>fiertu</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">oppholdsvær</tr>
          <tr xml:lang="fin">pouta</tr>
@@ -18335,7 +18305,8 @@
   </entry>
    <entry>
       <lemma>goalki</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">vindstille</tr>
          <tr xml:lang="fin">tyyni</tr>
@@ -18356,7 +18327,8 @@
    </entry>
    <entry>
       <lemma>guoldu</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kaldsno</tr>
          <tr xml:lang="nob">sno</tr>
@@ -18382,7 +18354,7 @@
    </entry>
    <entry>
       <lemma>guovssahasat</lemma>
-	     <pos class="N" gen_only="Pl"/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">nordlys</tr>
          <tr xml:lang="fin">revontuli</tr>
@@ -18396,8 +18368,7 @@
       <stem class="bisyllabic" diphthong="no" gradation="no" rime="0"/>
       <dialect/>
       <sources>
-         <book name="c3"/>
-      </sources>
+    </sources>
   </entry>
    <entry>
       <lemma>hieibma</lemma>
@@ -18487,7 +18458,8 @@
    </entry>
    <entry>
       <lemma>gaskaijabeaivváš</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">midnattssol</tr>
          <tr xml:lang="nob">midnattsol</tr>
@@ -18507,7 +18479,8 @@
   </entry>
    <entry>
       <lemma>muohta</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">snø</tr>
          <tr xml:lang="nob">sne</tr>
@@ -18550,7 +18523,8 @@
   </entry>
    <entry>
       <lemma>čáhci</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">vann</tr>
          <tr xml:lang="nob">vatn</tr>
@@ -18725,7 +18699,8 @@
    </entry>
    <entry>
       <lemma>buvru</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">grøt</tr>
          <tr xml:lang="nob">graut</tr>
@@ -18745,7 +18720,8 @@
    </entry>
    <entry>
       <lemma>dáigi</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">deig</tr>
          <tr xml:lang="fin">taikina</tr>
@@ -18763,7 +18739,8 @@
   </entry>
    <entry>
       <lemma>teadja</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">te</tr>
          <tr xml:lang="fin">tee</tr>
@@ -18784,7 +18761,8 @@
   </entry>
    <entry>
       <lemma>deadja</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">te</tr>
          <tr xml:lang="fin">tee</tr>
@@ -18806,9 +18784,10 @@
          <book name="AA"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>deajat</lemma>
-      <pos class="N" gen_only="Pl"/>
+      <noleksa/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">ukokt te</tr>
          <tr xml:lang="fin">tee</tr>
@@ -18826,9 +18805,11 @@
          <book name="sam1031_1"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>teajat</lemma>
-	     <pos class="N" gen_only="Pl"/>
+      <noleksa/>
+      <only-pl/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">ukokt te</tr>
          <tr xml:lang="nob">teblader</tr>
@@ -18890,7 +18871,7 @@
    </entry>
    <entry>
       <lemma>gaskabeaivvit</lemma>
-      <pos class="N" gen_only="Pl"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">middag</tr>
          <tr xml:lang="fin">keskipäivä</tr>
@@ -18909,7 +18890,8 @@
    </entry>
    <entry>
       <lemma>gássi</lemma>
-	     <pos class="N" type="G3" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N" type="G3"/>
       <translations>
          <tr xml:lang="nob">råmelk</tr>
          <tr xml:lang="fin">termimaito</tr>
@@ -19106,9 +19088,10 @@
          <book name="d2"/>
       </sources>
   </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>gáfet</lemma>
-      <pos class="N" gen_only="Pl"/>
+      <noleksa/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">ukokt kaffe</tr>
          <tr xml:lang="nob">kaffebønner</tr>
@@ -19127,9 +19110,11 @@
          <book name="sam1031_1"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>káfet</lemma>
-	     <pos class="N" gen_only="Pl"/>
+      <noleksa/>
+      <only-pl/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">ukokt kaffe</tr>
          <tr xml:lang="fin">kahvi</tr>
@@ -19149,7 +19134,8 @@
   </entry>
    <entry>
       <lemma>gáffe</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kaffe</tr>
          <tr xml:lang="fin">kahvi</tr>
@@ -19171,7 +19157,8 @@
    </entry>
    <entry>
       <lemma>káffe</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kaffe</tr>
          <tr xml:lang="fin">kahvi</tr>
@@ -19277,7 +19264,7 @@
   </entry>
    <entry>
       <lemma>jáffut</lemma>
-      <pos class="N" gen_only="Pl"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">mel</tr>
          <tr xml:lang="nob">mjøl</tr>
@@ -19319,7 +19306,8 @@
   </entry>
    <entry>
       <lemma>jeasta</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">gjær</tr>
          <tr xml:lang="fin">hiiva</tr>
@@ -19338,7 +19326,8 @@
   </entry>
    <entry>
       <lemma>kakáo</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kakao</tr>
          <tr xml:lang="fin">kaakao</tr>
@@ -19440,7 +19429,8 @@
    </entry>
    <entry>
       <lemma>lákca</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">fløte</tr>
          <tr xml:lang="fin">kerma</tr>
@@ -19482,7 +19472,8 @@
    </entry>
    <entry>
       <lemma>liepma</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">buljong</tr>
          <tr xml:lang="nob">kraft</tr>
@@ -19504,7 +19495,8 @@
    </entry>
    <entry>
       <lemma>luomemeastu</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">moltesyltetøy</tr>
          <tr xml:lang="nob">multesyltetøy</tr>
@@ -19568,7 +19560,8 @@
    </entry>
    <entry id="málli_food-other">
       <lemma>málli</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">velling</tr>
          <tr xml:lang="nob">blodvelling</tr>
@@ -19652,7 +19645,8 @@
    </entry>
    <entry>
       <lemma>majonesa</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">majones</tr>
          <tr xml:lang="fin">majoneesi</tr>
@@ -19670,7 +19664,8 @@
   </entry>
    <entry>
       <lemma>mielki</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">melk</tr>
          <tr xml:lang="nob">mjølk</tr>
@@ -19716,7 +19711,8 @@
    </entry>
    <entry id="mullju_dish">
       <lemma>mullju</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">mølje</tr>
          <tr xml:lang="nob">mølja</tr>
@@ -19735,7 +19731,8 @@
   </entry>
    <entry id="mullju_grums">
       <lemma>mullju</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">grums</tr>
          <tr xml:lang="fin">sekamelska</tr>
@@ -19751,7 +19748,8 @@
   </entry>
    <entry>
       <lemma>muorjemeastu</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">syltetøy</tr>
          <tr xml:lang="fin">hillo</tr>
@@ -19838,7 +19836,8 @@
   </entry>
    <entry>
       <lemma>risenbuvru</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">risengrynsgrøt</tr>
          <tr xml:lang="nob">risengrynsgraut</tr>
@@ -19933,7 +19932,8 @@
   </entry>
    <entry>
       <lemma>sákta</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">saft</tr>
          <tr xml:lang="fin">mehu</tr>
@@ -20014,7 +20014,8 @@
   </entry>
    <entry>
       <lemma>sevsa</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">saus</tr>
          <tr xml:lang="fin">kastike</tr>
@@ -20033,7 +20034,8 @@
   </entry>
    <entry>
       <lemma>suovasbiergu</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">røykakjøtt</tr>
          <tr xml:lang="nob">røkt kjøtt</tr>
@@ -20096,7 +20098,8 @@
    </entry>
    <entry>
       <lemma>váffelmávka</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">vaffelrøre</tr>
          <tr xml:lang="fin">vohvelitaikina</tr>
@@ -20155,7 +20158,8 @@
   </entry>
    <entry>
       <lemma>vuodja</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">smør</tr>
          <tr xml:lang="fin">voi</tr>
@@ -20199,7 +20203,8 @@
    </entry>
    <entry>
       <lemma>vuoivvasmeastu</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">leverpostei</tr>
          <tr xml:lang="fin">maksapasteija</tr>
@@ -20445,7 +20450,8 @@
    </entry>
    <entry>
       <lemma>duhpát</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">tobakk</tr>
          <tr xml:lang="fin">tupakka</tr>
@@ -20645,7 +20651,8 @@
   </entry>
    <entry>
       <lemma>sirát</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sirup</tr>
          <tr xml:lang="fin">siirappi</tr>
@@ -20664,7 +20671,8 @@
   </entry>
    <entry>
       <lemma>sierát</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sirup</tr>
          <tr xml:lang="fin">siirappi</tr>
@@ -20704,7 +20712,8 @@
    </entry>
    <entry>
       <lemma>suohkat</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">grøt</tr>
          <tr xml:lang="nob">graut</tr>
@@ -20724,7 +20733,8 @@
    </entry>
    <entry>
       <lemma>vuoivvasnjuvddus</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">leverpostei</tr>
          <tr xml:lang="fin">maksapasteija</tr>
@@ -21003,8 +21013,9 @@
       <sources>
     </sources>
   </entry>
-   <entry exclude="smenob" id="galba_animal-other">
+   <entry id="galba_animal-other">
       <lemma>galba</lemma>
+      <noleksa/>
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">nederste del av reinhorn</tr>
@@ -21498,7 +21509,8 @@
   </entry>
    <entry>
       <lemma>sáhttu</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">skyss</tr>
          <tr xml:lang="fin">kyyti</tr>
@@ -21902,7 +21914,8 @@
    </entry>
    <entry>
       <lemma>skohtercrossa</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">skutercross</tr>
          <tr xml:lang="nob">scootercross</tr>
@@ -22995,7 +23008,6 @@
       <dialect/>
       <sources>
          <book name="oaidnalit"/>
-         <book name="c2"/>
       </sources>
   </entry>
    <entry>
@@ -23306,8 +23318,9 @@
          <book name="d4"/>
       </sources>
   </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>muzet</lemma>
+      <noleksa/>
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">brunsvart rein</tr>
@@ -23529,8 +23542,9 @@
          <book name="algu"/>
       </sources>
   </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>čearpmat</lemma>
+      <noleksa/>
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">ett-årig reinkalv</tr>
@@ -24263,7 +24277,8 @@
   </entry>
    <entry>
       <lemma>poasta</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">post</tr>
          <tr xml:lang="fin">posti</tr>
@@ -24306,7 +24321,7 @@
    </entry>
    <entry>
       <lemma>riegádanbeaivedearvvuođat</lemma>
-	     <pos class="N" gen_only="Pl"/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">fødselsdagshilsen</tr>
          <tr xml:lang="nob">bursdagshilsen</tr>
@@ -25139,8 +25154,9 @@
          <book name="AA"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>bárbmu</lemma>
+      <noleksa/>
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">varme strøk</tr>
@@ -25636,7 +25652,6 @@
       <translations>
          <tr xml:lang="nob">sameting</tr>
          <tr xml:lang="nob">sametinget</tr>
-         <tr xml:lang="nob">Sametinget</tr>
          <tr xml:lang="fin">saamelaiskäräjät</tr>
          <tr xml:lang="eng"/>
          <tr xml:lang="swe">sameting</tr>
@@ -25657,7 +25672,6 @@
       <translations>
          <tr xml:lang="nob">kommune</tr>
          <tr xml:lang="nob">sogn</tr>
-         <tr xml:lang="nob">sokn</tr>
          <tr xml:lang="fin">kunta</tr>
          <tr xml:lang="eng"/>
          <tr xml:lang="swe">kommun</tr>
@@ -25787,7 +25801,8 @@
   </entry>
    <entry>
       <lemma>mierká</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">tåke</tr>
          <tr xml:lang="fin">sumu</tr>
@@ -26156,7 +26171,7 @@
    </entry>
    <entry>
       <lemma>skierat</lemma>
-	     <pos class="N" gen_only="Pl"/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">saks</tr>
          <tr xml:lang="fin">sakset</tr>
@@ -26175,7 +26190,8 @@
   </entry>
    <entry>
       <lemma>skárrit</lemma>
-	     <pos class="N" type="G3" gen_only="Pl"/>
+      <only-pl/>
+	     <pos class="N" type="G3"/>
       <translations>
          <tr xml:lang="nob">saks</tr>
          <tr xml:lang="fin">sakset</tr>
@@ -26312,7 +26328,8 @@
    </entry>
    <entry>
       <lemma>goiku</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">tørst</tr>
          <tr xml:lang="fin">jano</tr>
@@ -26499,7 +26516,8 @@
   </entry>
    <entry>
       <lemma>ráhkesvuohta</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kjærlighet</tr>
          <tr xml:lang="fin">rakkaus</tr>
@@ -26520,7 +26538,8 @@
    </entry>
    <entry>
       <lemma>ustitvuohta</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">vennskap</tr>
          <tr xml:lang="fin">ystävyys</tr>
@@ -26641,7 +26660,8 @@
    </entry>
    <entry>
       <lemma>ávki</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">nytte</tr>
          <tr xml:lang="fin">hyöty</tr>
@@ -26886,7 +26906,8 @@
    </entry>
    <entry>
       <lemma>duohtavuohta</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">sannhet</tr>
          <tr xml:lang="fin">totuus</tr>
@@ -26964,7 +26985,8 @@
   </entry>
    <entry>
       <lemma>hoahppu</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">hast</tr>
          <tr xml:lang="nob">hastverk</tr>
@@ -26986,7 +27008,8 @@
    </entry>
    <entry>
       <lemma>lihkku</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">lykke</tr>
          <tr xml:lang="fin">onni</tr>
@@ -27678,7 +27701,8 @@
    </entry>
    <entry>
       <lemma>guolásteapmi</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">fiske</tr>
          <tr xml:lang="fin">kalastus</tr>
@@ -27853,8 +27877,9 @@
       <sources>
     </sources>
   </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>šibitdállu</lemma>
+      <noleksa/>
       <pos class="N"/>
       <translations>
          <tr xml:lang="nob">gårdsbruk med husdyr</tr>
@@ -28136,7 +28161,7 @@
    </entry>
    <entry>
       <lemma>mállásat</lemma>
-      <pos class="N" gen_only="Pl"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">middag</tr>
          <tr xml:lang="nob">kokt mat</tr>
@@ -28156,7 +28181,7 @@
    </entry>
    <entry>
       <lemma>heajat</lemma>
-      <pos class="N" gen_only="Pl"/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">bryllup</tr>
          <tr xml:lang="nob">selskap</tr>
@@ -28794,7 +28819,8 @@
    </entry>
    <entry>
       <lemma>musihkka</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">musikk</tr>
          <tr xml:lang="fin">musiikki</tr>
@@ -28892,7 +28918,8 @@
   </entry>
    <entry>
       <lemma>birasoahppu</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">miljøfag</tr>
          <tr xml:lang="nob">orienteringsfag</tr>
@@ -29061,7 +29088,8 @@
   </entry>
    <entry>
       <lemma>etihkka</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">etikk</tr>
          <tr xml:lang="fin">etiikka</tr>
@@ -29174,7 +29202,8 @@
   </entry>
    <entry>
       <lemma>kristtalašvuohta</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kristendom</tr>
          <tr xml:lang="fin">kristinusko</tr>
@@ -29193,7 +29222,8 @@
   </entry>
    <entry>
       <lemma>risttalašvuohta</lemma>
-      <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">kristendom</tr>
          <tr xml:lang="fin">ristinusko</tr>
@@ -29211,7 +29241,8 @@
   </entry>
    <entry>
       <lemma>lášmmohallan</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">gymnastikk</tr>
          <tr xml:lang="nob">kroppsøving</tr>
@@ -29308,7 +29339,8 @@
   </entry>
    <entry>
       <lemma>matematihkka</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">matematikk</tr>
          <tr xml:lang="fin">matematiikka</tr>
@@ -29368,7 +29400,8 @@
    </entry>
    <entry>
       <lemma>mánoheahpi</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">måneskinn</tr>
          <tr xml:lang="fin">kuutamo</tr>
@@ -29386,8 +29419,9 @@
          <book name="oaidnalit"/>
       </sources>
   </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>oktobargu</lemma>
+      <noleksa/>
 	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">individuelt arbeid</tr>
@@ -29448,7 +29482,8 @@
   </entry>
    <entry>
       <lemma>ruovttudoallu</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">heimkunnskap</tr>
          <tr xml:lang="fin">kotitalous</tr>
@@ -29467,7 +29502,8 @@
   </entry>
    <entry>
       <lemma>servodatoahppu</lemma>
-	     <pos class="N" gen_only="Sg"/>
+      <only-sg/>
+	     <pos class="N"/>
       <translations>
          <tr xml:lang="nob">samfunnsfag</tr>
          <tr xml:lang="fin">yhteiskuntatieto</tr>
@@ -30892,11 +30928,12 @@
       <pos class="N"/>
       <translations>
          <tr xml:lang="nob">fars eldre bror</tr>
-         <tr tcomm="yes" xml:lang="nob">onkel</tr>
-         <tr tcomm="yes" xml:lang="nob">farbror</tr>
-         <tr tcomm="yes" xml:lang="nob">fars bror</tr>
+         <tr xml:lang="nob">onkel</tr>
+         <tr xml:lang="nob">farbror</tr>
+         <tr xml:lang="nob">onkel</tr>
+         <tr xml:lang="nob">fars bror</tr>
          <tr xml:lang="fin">isän vanhempi veli</tr>
-         <tr tcomm="yes" xml:lang="fin">setä</tr>
+         <tr xml:lang="fin">setä</tr>
          <tr xml:lang="eng"/>
          <tr xml:lang="swe">fars äldre bror</tr>
          <tr xml:lang="deu"/>
@@ -30920,7 +30957,7 @@
       <pos class="N"/>
       <translations>
          <tr xml:lang="nob">mors bror</tr>
-         <tr tcomm="yes" xml:lang="nob">onkel</tr>
+         <tr xml:lang="nob">onkel</tr>
          <tr xml:lang="nob">onkel på morsiden</tr>
          <tr xml:lang="nob">morbror</tr>
          <tr xml:lang="fin">eno</tr>
@@ -32881,7 +32918,8 @@
    </entry>
    <entry>
       <lemma>ságat</lemma>
-      <pos class="N" gen_only="Pl"/>
+      <only-pl/>
+      <pos class="N"/>
       <translations>
          <tr xml:lang="nob">nyheter</tr>
          <tr xml:lang="fin">uutiset</tr>
