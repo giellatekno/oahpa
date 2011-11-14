@@ -809,8 +809,9 @@
          <book name="AA"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>čuoigalit</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å gå avgårde på ski</tr>
@@ -834,8 +835,9 @@
          <book name="oaidnalit"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>čohkohallat</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å holde på å sitte</tr>
@@ -1508,11 +1510,13 @@
          <book name="sara"/>
       </sources>
    </entry>
-   <entry id="suhkat_row">
+   <entry>
       <lemma>suhkat</lemma>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å ro</tr>
+         <tr xml:lang="nob">å disse</tr>
+         <tr xml:lang="nob">å gynge</tr>
          <tr xml:lang="fin">soutaa</tr>
          <tr xml:lang="eng">to row</tr>
          <tr xml:lang="swe">att ro</tr>
@@ -1526,28 +1530,6 @@
          <sem class="ACTIVITY"/>
          <sem class="MOVEMENT"/>
          <sem class="NATURE-V"/>
-      </semantics>
-      <stem class="bisyllabic" diphthong="no" gradation="extrastrong" soggi="a"/>
-      <dialect class=""/>
-      <sources>
-         <book name="sara"/>
-         <book name="AA"/>
-      </sources>
-   </entry>
-   <entry id="suhkat_wobble">
-      <lemma>suhkat</lemma>
-      <pos class="V"/>
-      <translations>
-         <tr xml:lang="nob">å disse</tr>
-         <tr xml:lang="nob">å gynge</tr>
-         <tr xml:lang="fin">keinua</tr>
-      </translations>
-      <valency>
-         <val class=""/>
-         <val class="IV"/>
-      </valency>
-      <semantics>
-         <sem class="LEISURETIME/AT_HOME-V"/>
       </semantics>
       <stem class="bisyllabic" diphthong="no" gradation="extrastrong" soggi="a"/>
       <dialect class=""/>
@@ -2006,8 +1988,7 @@
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å låne bort</tr>
-         <tr xml:lang="nob">å låne til</tr>
-         <tr tcomm="yes" xml:lang="nob">å låne</tr>
+         <tr xml:lang="nob">å låne</tr>
          <tr xml:lang="fin">lainata</tr>
          <tr xml:lang="eng">to borrow</tr>
          <tr xml:lang="eng">to lend</tr>
@@ -2123,9 +2104,6 @@
       <translations>
          <tr xml:lang="nob">å føde (om dyr)</tr>
          <tr xml:lang="nob">å føde</tr>
-         <tr xml:lang="nob">å kalve</tr>
-         <tr xml:lang="nob">å lamme</tr>
-         <tr xml:lang="nob">å grise</tr>
          <tr xml:lang="fin">synnyttää</tr>
          <tr xml:lang="eng">to give birth</tr>
          <tr xml:lang="swe">att kalva</tr>
@@ -2226,8 +2204,9 @@
          <book name="AA"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>geahkat</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å ymte om</tr>
@@ -3578,43 +3557,22 @@
          <book name="sam1031_2"/>
       </sources>
    </entry>
-   <entry id="saddat_grow">
+   <entry>
       <lemma>šaddat</lemma>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å vokse</tr>
+         <tr xml:lang="nob">å bli</tr>
          <tr xml:lang="fin">kasvaa</tr>
+         <tr xml:lang="fin">tulla</tr>
+         <tr xml:lang="fin">joutua</tr>
          <tr xml:lang="eng">to grow</tr>
+         <tr xml:lang="eng">to become</tr>
          <tr xml:lang="swe">att växa</tr>
          <tr xml:lang="deu">wachsen</tr>
       </translations>
       <valency>
          <val class=""/>
-         <val class="IV"/>
-      </valency>
-      <semantics>
-         <sem class="AUX-V"/>
-      </semantics>
-      <stem class="bisyllabic" diphthong="no" gradation="yes" soggi="a"/>
-      <dialect class=""/>
-      <sources>
-         <book name="d2"/>
-         <book name="algu"/>
-         <book name="sara"/>
-         <book name="sam1031_1"/>
-         <book name="AA"/>
-      </sources>
-   </entry>
-   <entry id="saddat_become">
-      <lemma>šaddat</lemma>
-      <pos class="V"/>
-      <translations>
-         <tr xml:lang="nob">å bli</tr>
-         <tr xml:lang="fin">tulla</tr>
-         <tr xml:lang="fin">joutua</tr>
-         <tr xml:lang="eng">to become</tr>
-      </translations>
-      <valency>
          <val class="IV"/>
       </valency>
       <semantics>
@@ -3877,18 +3835,20 @@
          <book name="AA"/>
       </sources>
    </entry>
-   <entry id="atnit_use">
+   <entry>
       <lemma>atnit</lemma>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å bruke</tr>
          <tr xml:lang="nob">å anvende</tr>
+         <tr xml:lang="nob">å synes</tr>
          <tr xml:lang="fin">käyttää</tr>
          <tr xml:lang="eng">to use</tr>
          <tr xml:lang="swe">att bruka</tr>
          <tr xml:lang="deu">gebrauchen</tr>
       </translations>
       <valency>
+         <val class=""/>
          <val class="TV"/>
       </valency>
       <semantics>
@@ -3900,24 +3860,6 @@
          <book name="algu"/>
          <book name="sam1031_1"/>
       </sources>
-   </entry>
-   <entry id="atnit_reckon">
-      <lemma>atnit</lemma>
-      <pos class="V"/>
-      <translations>
-         <tr xml:lang="nob">å anse</tr>
-         <tr xml:lang="nob">å synes</tr>
-         <tr xml:lang="fin">pitää</tr>
-         <tr xml:lang="fin">olla mieltä</tr>
-      </translations>
-      <valency>
-         <val class="TV"/>
-      </valency>
-      <semantics>
-         <sem class="HUMAN-V"/>
-      </semantics>
-      <stem class="bisyllabic" diphthong="no" gradation="extrastrong" soggi="i"/>
-      <sources />
    </entry>
    <entry>
       <lemma>bordit</lemma>
@@ -4024,8 +3966,9 @@
          <book name="c1"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>giksat</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å bli ferdigkokt</tr>
@@ -4632,6 +4575,7 @@
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å brukes opp</tr>
+         <tr xml:lang="nob">å gå (om tid)</tr>
          <tr xml:lang="nob">å gå</tr>
          <tr xml:lang="fin">kulua</tr>
          <tr xml:lang="eng">to get worn</tr>
@@ -4735,14 +4679,14 @@
       <dialect class="NOT-GG"/>
       <sources/>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>girkostallat</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å delta i gudstjeneste</tr>
          <tr xml:lang="nob">å gå i kirka</tr>
          <tr xml:lang="fin">käydä jumalanpalveluksessa</tr>
-         <tr xml:lang="fin">käydä kirkossa</tr>
          <tr xml:lang="eng">to attend a service</tr>
          <tr xml:lang="swe">att bevista gudstjänsten</tr>
          <tr xml:lang="deu">den Gottesdienst besuchen</tr>
@@ -5231,8 +5175,9 @@
          <book name="d4"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>doahput</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å gripe</tr>
@@ -5681,8 +5626,9 @@
          <book name="bures"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>boatkuluvvat</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å bli lemster</tr>
@@ -6967,8 +6913,9 @@
          <book name="AA"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>čieskat</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å kløyve margebein</tr>
@@ -7587,8 +7534,9 @@
          <book name="sam1031_1"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>barggahit</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å få noen til å arbeide</tr>
@@ -7795,7 +7743,6 @@
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å ha måltid</tr>
-         <tr xml:lang="nob">å holde måltid</tr>
          <tr xml:lang="nob">å spise</tr>
          <tr xml:lang="fin">aterioida</tr>
          <tr xml:lang="fin">syödä</tr>
@@ -8230,8 +8177,9 @@
          <book name="AA"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>heavahit</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å få til å velte</tr>
@@ -8939,8 +8887,9 @@
          <book name="sara"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>joradit</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å sverme omkring</tr>
@@ -9089,8 +9038,9 @@
          <book name="oaidnalit"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>ribahit</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å være uheldig å miste</tr>
@@ -9457,8 +9407,9 @@
          <book name="sam1031_2"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>geahčastit</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å se litt på</tr>
@@ -9641,8 +9592,9 @@
          <book name="algu"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>čuoiggahit</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å forfølge på ski</tr>
@@ -9749,8 +9701,9 @@
          <book name="sam1031_2"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>jearralit</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å spørre som snarest</tr>
@@ -10187,8 +10140,9 @@
          <book name="AA"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>firrestit</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å røre litt rundt</tr>
@@ -10211,8 +10165,9 @@
          <book name="bures"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>guovllastit</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å kikke som snarest</tr>
@@ -11893,8 +11848,9 @@
          <book name="algu"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>firtet</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å bli oppholdsvær</tr>
@@ -12934,8 +12890,9 @@
          <book name="sam1031_1"/>
       </sources>
    </entry>
-   <entry exclude="smenob">
+   <entry>
       <lemma>johttát</lemma>
+      <noleksa/>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å begynne å flytte med rein</tr>
@@ -13917,11 +13874,12 @@
          <book name="sam1031_2"/>
       </sources>
    </entry>
-   <entry id="njoammudit_smitte">
+   <entry>
       <lemma>njoammudit</lemma>
       <pos class="V"/>
       <translations>
          <tr xml:lang="nob">å smitte</tr>
+         <tr xml:lang="nob">å krype</tr>
         <tr xml:lang="fin">tartuttaa</tr>
          <tr xml:lang="swe">att infektera</tr>
       </translations>
@@ -13936,23 +13894,6 @@
       <sources>
          <book name="sam1031_2"/>
       </sources>
-   </entry>
-   <entry id="njoammudit_krype">
-      <lemma>njoammudit</lemma>
-      <pos class="V"/>
-      <translations>
-         <tr xml:lang="nob">å krype</tr>
-        <tr xml:lang="fin">ryömiä</tr>
-      </translations>
-      <valency>
-         <val class=""/>
-      </valency>
-      <semantics>
-         <sem class="MOVEMENT"/>
-      </semantics>
-      <stem class="trisyllabic" diphthong="no" gradation="no" rime="d_t"/>
-      <dialect class=""/>
-      <sources />
    </entry>
    <entry>
       <lemma>návddašit</lemma>
