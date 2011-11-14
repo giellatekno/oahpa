@@ -18,18 +18,18 @@ __TILTAK__
 
 !! Leksikonfilene
 
-!Leksikonfiler i sme/xml:
+!Leksikonfiler i sme/xml
 * Legge til oversettelser og bokinfo fra AA-listen fra Oulu - Lene: done
 * Dele opp i entryer når entryen bør ha minst 2 <mg>, sjekke mot normfst (__Lene__)
-** adv_smenob.xml  - ikke brukt i smeOahpa tidligere - oppdatert
-** multiword_smenob.xml - bare for Leksa - ikke brukt i smeOahpa tidligere - oppdatert
-** adjectives.xml  - oppdatert
-** verbs.xml   - oppdatert
-** nouns.xml - oppdatert
-** prop_nouns.xml  -  stedsnavn som var i nouns.xml. Det var meninga at de skulle inngå i MorfaS, men generinga har ikke fungert pga av disse krever N+Prop. Men det kunne være lurt å ha dem med i MorfaS, som nouns. - ny fil
-** propernouns.xml - denne skal ikke genereres - kun for Leksa 
-** numerals.xml - i denne er det er både N+Coll, A+Ord og Num - for MorfaC
-** fillings.xml - kanskje vi ikke trenger den i sma-oppsettet?
+** adv_smenob.xml  - ikke brukt i smeOahpa tidligere - oppdatert - flytta til tmp_towards-sma-format/data_sme/sme/adv_smenob.xml
+** multiword_smenob.xml - bare for Leksa - ikke brukt i smeOahpa tidligere - oppdatert - tmp_towards-sma-format/data_sme/sme/multiword_smenob.xml
+** adjectives.xml  - oppdatert og flytta til tmp_towards-sma-format/data_sme/sme/a_smenob.xml
+** verbs.xml   - oppdatert og flytta til tmp_towards-sma-format/data_sme/sme/v_smenob.xml
+** nouns.xml - oppdatert og flytta til tmp_towards-sma-format/data_sme/sme/n_smenob.xml - obs - denne bør deles til g3, actor og n ?
+** prop_nouns.xml  -  stedsnavn som var i nouns.xml. Det var meninga at de skulle inngå i MorfaS, men generinga har ikke fungert pga av disse krever N+Prop. Men det kunne være lurt å ha dem med i MorfaS, som nouns. - ny fil tmp_towards-sma-format/data_sme/sme/n_prop_smenob.xml
+** propernouns.xml - denne skal ikke genereres - kun for Leksa, flytta til tmp_towards-sma-format/data_sme/sme/prop_smenob.xml
+** numerals.xml - i denne er det er både N+Coll, A+Ord og Num - for MorfaC, flytta til tmp_towards-sma-format/data_sme/sme/num_smenob.xml
+** fillings.xml - kanskje vi ikke trenger den i sma-oppsettet? - flytta til tmp_towards-sma-format/data_sme/meta/fillings.xml
 * Endre attibutter og elementer til sma-stil (__Lene, Ciprian__) 
 ** <noleksa/> til exclude="smenob" - Lene: done
 ** første nob-oversettelse og fin-oversettelse skal ha stat="pref"
@@ -49,24 +49,24 @@ __TILTAK__
 
 !! Andre filer i sme/xml
 
-!Feedback-filer for Morfa i sme/xml - oppdateres til samme struktur som for smaOahpa
-* feedback_adjectives.xml  - Lene: done
+!Feedback-filer for Morfa i sme/xml - oppdateres til samme struktur som for smaOahpa - alle er flytta/kopiert til tmp_towards-sma-format/data_sme/meta/
+* feedback_adjectives.xml  - Lene: done, 
 * feedback_adjectives_eastern.xml  - Lene: done
 * feedback_nouns.xml  - Lene: done
 * feedback_numerals.xml  - Lene: done
 * feedback_verbs.xml  - Lene: done
-* feedback_verbs_eastern.xml  - Lene: done
+* feedback_verbs_eastern.xml  - Lene: done 
 * messages.eng.xml - har samme struktur som sma
 * messages.fin.xml - har samme struktur som sma
 * messages.sme.xml - har samme struktur som sma
 * messages.xml - har samme struktur som sma
 
 !Filer for MorfaC i sme/xml - de har samme struktur som sma
-* grammar_defaults.xml
-* questions_adjectives.xml
-* questions_nouns.xml
-* questions_numerals.xml
-* questions_verbs.xml
+* grammar_defaults.xml, kopiert til tmp_towards-sma-format/data_sme/meta/
+* questions_adjectives.xml, kopiert til tmp_towards-sma-format/data_sme/meta/adjective_questions.xml
+* questions_nouns.xml, kopiert til tmp_towards-sma-format/data_sme/meta/noun_questions.xml
+* questions_numerals.xml, kopiert til tmp_towards-sma-format/data_sme/meta/noun_questions.xml
+* questions_verbs.xml, kopiert til tmp_towards-sma-format/data_sme/meta/verb_questions.xml
 
 
 !Filer for Vasta i  sme/xml
@@ -92,7 +92,7 @@ __TILTAK__
 
 ! Andre viktige filer i sme/xml
 * comments.nob.xml - kommentarer til brukeren
-* semantic_sets.xml - for Leksa - oppdatert
+* semantic_sets.xml - for Leksa - oppdatert, flytta til tmp_towards-sma-format/data_sme/meta/
 
 
 ! Diverse filer i sme/xml - ikke i bruk?
@@ -109,16 +109,16 @@ __TILTAK__
 ! Andre filer i sme/src
 * Makefile - for Sahka / Vasta
 * paradigms.txt - denne har vært brukt i smeOahpa, men erstattes nå av egne filer for hver PoS
-* a_paradigms.txt - skal brukes  
-* n_paradigms.txt - skal brukes
-* v_paradigms.txt - skal brukes
-* prop_paradigms.txt - skal brukes, inneholder både Sg og Pl, men gen_only - attributter i leksikonfilene styrer dette
-* num_paradigms.txt - skal brukes
+* a_paradigms.txt - skal brukes, kopiert til tmp_towards-sma-format/data_sme/meta/
+* n_paradigms.txt - skal brukes, kopiert til tmp_towards-sma-format/data_sme/meta/
+* v_paradigms.txt - skal brukes, kopiert til tmp_towards-sma-format/data_sme/meta/
+* prop_paradigms.txt - skal brukes, inneholder både Sg og Pl, men gen_only - attributter i leksikonfilene styrer dette, kopiert til tmp_towards-sma-format/data_sme/meta/
+* num_paradigms.txt - skal brukes, kopiert til tmp_towards-sma-format/data_sme/meta/
 * comments.nobsme - kommentarer til bruker
 * comments.sme  - kommentarer til bruker
-* grammatikklinker.txt - for grammatikkmenyen - samme struktur som smaOahpa
+* grammatikklinker.txt - for grammatikkmenyen - samme struktur som smaOahpa, kopiert til tmp_towards-sma-format/data_sme/meta/
 * sme-ped.cg3 - for Vasta og Sahka
-* tags.txt
+* tags.txt, kopiert til tmp_towards-sma-format/data_sme/meta/
 * adv.txt - skal ikke brukes, bør flyttes i en doc-mappe
 * pp.txt - skal ikke brukes, bør flyttes i en doc-mappe
 * conj.txt - skal ikke brukes, bør flyttes i en doc-mappe
