@@ -1,4 +1,3 @@
-
 tbw.
 
 !!!Background
@@ -7,16 +6,34 @@ To be included here: A list of relevant files. While waiting, [see this document
 
 !!Installation
 
-asdf
+Installation is performed via ./install.py with one option.
 
-__To be written:__
+    ./install.py --file/-f XML
+
+
+!!Files and classes
 
 * forms.py
-** … (relevant classes for this program)
-* game.py
-** … (relevant classes, functions , their relations to other classes/functions)
-* views.py
-** ...
+** LeksaSettings, LeksaQuestion
+** SEMTYPE_CHOICES, TRANS_CHOICES, GEOGRAPHY_CHOICES
 
+* game.py
+** relax - spell relaxing, used in all games where user input is accepted in South Sámi
+** QuizzGame - The whole goal of QuizzGame is to produce a LeksaForm object. To do this, it initializes variables (QuizzGame.get_db_info), and then queries the database and creates the form (QuizzGame.create_form). As QuizzGame is a subclass of Game, there are many relevant methods there, such as __init__, and new_game (called by *** Game in views.py), as well as check_game
+
+* views.py
+** leksa_game, Quizzview
+** views.py is essentially what does everything.
+*** leksa_game is called, which uses Quizzview to set up a lot of common variables, and then a response is returned. This is where the browser language is checked and a game is produced based on those settings. 
+*** Quizzview handles the processing of the settings form, and GET and POST data. GET is available so that outside courses can link directly to certain exercises, and in addition, Quizzview handles instantiating game.QuizzGame, and setting various template variables.
+
+
+!! Game settings and relevant variables
+
+* forms.py choices
+* settings.py:
+** INFINITIVE_SUBTRACT
+** INFINITIVE_ADD
+** OLD_NEW_ISO_CODES - used in producing the corresponding language pair for the user's browser language settings. If more languages are added, this must be altered.
 
 
