@@ -1,6 +1,15 @@
 
 
+__To be written:__
 
+* forms.py
+** … (relevant classes for this program)
+* game.py
+** … (relevant classes, functions , their relations to other classes/functions)
+* views.py
+** ...
+
+!!!Intro
 
 Numra differs from Morfa in not using the MySQL database, but using transducers directly.
 
@@ -21,4 +30,28 @@ These files refer to the fsts via the working smaoahpa catalogue on victorio, in
 
 * [Documentation for linguists defeloping Numra content|http://giellatekno.uit.no/oahpa/addlang/developernumra.html]
 
+
+!!!The different types of Numra
+
+There are four different subprograms.
+
+!!Numra cardinal
+
+* $LANG-num.fst
+* $LANG-inum.fst
+
+!!Numra ordinal
+
+* $LANG-num.fst
+* $LANG-inum.fst
+
+!!Numra clock
+
+* clock-$LANG.fst
+* iclock-lang.fst
+
+!!Numra date
+
+* clock-$LANG.fst
+* iclock-lang.fst
 
