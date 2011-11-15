@@ -1,13 +1,31 @@
+!!!Documentation for programmers
 
+__To be completed:__
+* Common for all Numra-games:
+** views.py:
+*** class Numview(Gameview)
 
-__To be written:__
-
+* Cardinals
 * forms.py
 ** … (relevant classes for this program)
 * game.py
 ** … (relevant classes, functions , their relations to other classes/functions)
 * views.py
 ** ...
+* Ordinals
+** to be specified
+* Klokka
+** to be specified
+* Dato
+** forms.py
+*** class DatoSettings(KlokkaSettings)
+*** class DatoQuestion(KlokkaQuestion)
+** game.py
+*** class Dato(Klokka)
+**** def get_db_info(self, db_info)
+** views.py
+*** within class Numview(Gameview):
+**** def num_date
 
 !!!Intro
 
