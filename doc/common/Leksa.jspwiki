@@ -8,7 +8,15 @@ To be included here: A list of relevant files. While waiting, [see this document
 
 Installation is performed via ./install.py with one option.
 
+{{{
     ./install.py --file/-f XML
+}}}
+
+However, installation of Leksa is performed in combination with installation of Morfa-S (Morfa-B), thus a tagfile and paradigm file must be specified. For more information on this, see the Morfa-S documentation, however, the command that will typically be performed for these operations is: 
+
+{{{
+	./install.py --file XML --tagfile tags.txt --paradigmfile paradigms.txt
+}}}
 
 
 !!Files and classes
