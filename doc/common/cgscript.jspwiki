@@ -10,9 +10,9 @@ Copy the file oahpa/sme/src/sme-ped.cg3 to /opt/smi/sme/bin on victorio.
 
 There is a Makefile in oahpa/sme/src as well, it compiles sme-ped.cg3.bin.
 
-The .bin file is dependent upon being compiled with a vislcg3 file not
+The {{.bin}} file is dependent upon being compiled with a {{vislcg3}} compiler not
 older than the vislcg3 that runs it. Therefore, we do not use the .bin 
-file, but rather the .cg3 film.
+file, but rather the {{.cg3}} file.
 
 The command for calling the cg3 file is found in {{oahpa/drill/forms.py}}.
 

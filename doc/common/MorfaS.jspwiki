@@ -12,10 +12,12 @@ Morfa-S relies on three types of files to be installed properly.
 
 Both the paradigms file and tags file are important for Morfa-S and Morfa-C to function. paradigms.txt is simply a list of all of the tags for the wordforms that will be generated. These are separated by newlines.
 
+{{{
     V+Ind+Prs+Sg1
     V+Ind+Prs+Sg2
     V+Ind+Prs+Sg3
 	etc...
+}}}
 
 It may be useful to split up the paradigm files by part of speech, in order to have more detailed control over the paradigms in the event that certain kinds of verbs need to be separated from eachother, and so on... 
 
@@ -25,6 +27,7 @@ NOTE: If you split up paradigm files, it is important to also have one file cont
 
 This file defines tag classes and groups. It is required for both Morfa-C and Morfa-S. The file is a collection of lists of individual tags (Prop, Pers, Logo; PxSg1, PxSg2, etc.) split up by a name.
 
+{{{
    #Subclass
    Prop
    Pers
@@ -33,9 +36,11 @@ This file defines tag classes and groups. It is required for both Morfa-C and Mo
    PxSg1
    PxSg2
    PxSg3
+}}}
 
 This file may also be used to generate custom tag sets for Morfa-C, so that when creating questions, one could refer to only 1st and 2nd persons:
 
+{{{
    #1st2ndPerson
    Sg1
    Sg2
@@ -43,7 +48,7 @@ This file may also be used to generate custom tag sets for Morfa-C, so that when
    Du2
    Pl1
    Pl2
-
+}}}
 
 !! Installation command 
 
