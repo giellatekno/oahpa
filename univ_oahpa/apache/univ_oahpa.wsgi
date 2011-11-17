@@ -2,8 +2,8 @@ import os, sys
 
 ## sys.path = []
 ## # sys.path.append('/usr/lib/python2.6/site-packages/django')
-sys.path.append('/home/smaoahpa/smaoahpa')
-sys.path.append('/home/smaoahpa/')
+sys.path.append('/home/univ_oahpa/univ_oahpa')
+sys.path.append('/home/univ_oahpa/')
 
 ## import django ## ## 
 ## 
@@ -14,7 +14,7 @@ sys.path.append('/home/smaoahpa/')
 ## print >> fpath, 'tmp2'
 ## fpath.close()
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'smaoahpa.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'univ_oahpa.settings'
 
 from django.core.handlers import wsgi # import django.core.handlers.wsgi
 
