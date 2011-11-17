@@ -14,7 +14,7 @@ def site_root(request):
 	return {'URL_PREFIX': settings.URL_PREFIX}
 
 def grammarlinks(request):
-	from smadrill.models import Grammarlinks
+	from univ_drill.models import Grammarlinks
 	from conf.tools import switch_language_code
 	
 	default_lang = 'nob'

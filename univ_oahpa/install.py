@@ -7,11 +7,11 @@ print " * Correcting paths"
 cur_path = os.getcwd()
 parent_path = '/' + '/'.join([a for a in cur_path.split('/') if a][0:-1]) + '/'
 sys.path.insert(0, parent_path)
-environ['DJANGO_SETTINGS_MODULE'] = 'smaoahpa.settings'
+environ['DJANGO_SETTINGS_MODULE'] = 'univ_oahpa.settings'
 
 settings.DEBUG = False
 
-from smadrill.models import *
+from univ_drill.models import *
 from optparse import OptionParser, make_option
 import sys
 from ling import Paradigm
@@ -20,7 +20,7 @@ from extra_install import Extra
 from feedback_install import Feedback_install
 from questions_install import Questions
 
-# TODO: option for oa="yes" only, for sma
+# TODO: option for oa="yes" only, for univ_
 # ota lemma jos on name="oahpa"
 # jos on lemma, niin ota käännös jos on oa="yes"
 

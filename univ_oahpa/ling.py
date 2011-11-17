@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import settings
-from smadrill.models import *
+from univ_drill.models import *
 # from xml.dom import minidom as _dom
 # from django.db.models import Q
 import sys
@@ -443,7 +443,7 @@ class Paradigm:
 
 		gen_norm_fst = fstdir + "/i%s-norm.fst" % language
 		
-		# None of these dialects in sma
+		# None of these dialects in sma. Obs! Dialects! sme-specific!!!
 		# gen_gg_restr_fst = fstdir + "/isme-KJ.restr.fst"			
 		# gen_kj_restr_fst = fstdir + "/isme-GG.restr.fst"			
 		print >> _D, lookups.encode('utf-8')

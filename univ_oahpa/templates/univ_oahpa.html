@@ -1,4 +1,4 @@
-{% extends 'smaoahpa_main.html' %}
+{% extends 'univ_oahpa_main.html' %}
 {% load i18n %}
 {{ lang_switch }}
 {% get_available_languages as LANGUAGES %}
@@ -21,14 +21,14 @@
 	<li class="game">
 		<a href="{% url morfa_c.noun %}">
 			<img src="{{ MEDIA_URL }}/images/morfac_small.png" alt="MORFA-R"/><br/>
-			<span class="gamename">MORFA-R</span>
+			<span class="gamename">MORFA-C</span>
 		</a>
 	</li>
 
 	<li class="game">
 		<a href="{% url morfa_s.noun %}">
 			<img src="{{ MEDIA_URL }}/images/morfa_small.png" alt="MORFA-B"/><br/>
-			<span class="gamename">MORFA-B</span>
+			<span class="gamename">MORFA-S</span>
 		</a>
 	</li>
 
@@ -55,7 +55,7 @@
 		{% block navbar %}{% endblock %}
 	</div>
 	
-	<strong>{% trans "Reference materials" %}</strong>
+	<strong>{% trans "Reference materials" %}</strong> <!-- NB!!! To be changed for sme -->
 	<ul class="sidelist small">
 		<li><a href="{% block veiledning %}{% endblock %}">{% trans "Veiledning" %}</a></li>
 		<li><a href="http://victorio.uit.no/webdict/index_sma-nob.html">{% trans "Dictionary" %}</a></li>
@@ -64,7 +64,7 @@
 </div>
 
 {% comment %}
-<a href="/smaoahpa/feedback/">{% trans 'Feedback' %}</a><br/>
+<a href="/univ_oahpa/univ_feedback/">{% trans 'Feedback' %}</a><br/>
 {% endcomment %}
 
 <div id="rightcontent">

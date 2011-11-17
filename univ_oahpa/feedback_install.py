@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from settings import *
-from smadrill.models import Feedback,Feedbackmsg,Feedbacktext,Dialect,Comment,Tag
+from univ_drill.models import Feedback,Feedbackmsg,Feedbacktext,Dialect,Comment,Tag
 from xml.dom import minidom as _dom
 from django.db.models import Q
 import sys

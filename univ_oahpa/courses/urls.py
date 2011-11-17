@@ -13,7 +13,7 @@ urlpatterns = patterns('django.contrib.auth.views',
 
 from courses.views import courses_main
 
-urlpatterns += patterns('smaoahpa.courses.views',
+urlpatterns += patterns('univ_oahpa.courses.views',
 	(r'^$', courses_main),
 )
 

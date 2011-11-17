@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from settings import *
-from smadrill.models import *
+from univ_drill.models import *
 from django.db.models import Q
 from xml.dom import minidom as _dom
 from django.utils.encoding import force_unicode
@@ -12,7 +12,7 @@ import codecs
 # TODO: get these from settings
 
 languages = [
-	'sma',
+	'sme',
 	'nob',
 	'eng',
 	'fin', 
@@ -65,7 +65,7 @@ class Extra:
 
 	# Installs links to the grammatical information under giellatekno.
 	# The link list appears to the upper right corner of the oahpa-pages.
-	# File sma/src/grammarlinks.txt
+	# File sma/src/grammarlinks.txt ?? Is there a similar file for sme?
 	def read_address(self,linkfile):
 
 		
@@ -109,7 +109,7 @@ class Extra:
 				comment.save()
 
 	# Installs the semantic superclasses
-	# defined in sma/xml/semantic_sets.xml
+	# defined in sme/xml/semantic_sets.xml
 	def read_semtypes(self, infile):
 
 		xmlfile=file(infile)

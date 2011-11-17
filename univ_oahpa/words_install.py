@@ -5,7 +5,7 @@ from xml.dom import minidom as _dom
 from django.utils.encoding import force_unicode
 import sys
 
-from smadrill.models import * 
+from univ_drill.models import * 
 
 
 # For easier debugging.
@@ -14,7 +14,7 @@ _D = open('/dev/null', 'w')
 
 COUNT_ONLY = False
 
-supported_langs = ['sme', 'nob', 'sma', 'swe', 'deu', 'eng']
+supported_langs = ['sme', 'nob', 'sme', 'swe', 'deu', 'eng']
 
 # # # 
 # 

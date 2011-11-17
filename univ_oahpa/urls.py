@@ -19,14 +19,14 @@ else:
 
 urlpatterns = patterns('',
 	# Example:
-	# (r'^smaoahpa/', include('smaoahpa.foo.urls')),
-	url(r'^%s/$' % prefix, 'smaoahpa.smadrill.views.smaoahpa'),
+	# (r'^univ_oahpa/', include('univ_oahpa.foo.urls')),
+	url(r'^%s/$' % prefix, 'univ_oahpa.univ_drill.views.univ_oahpa'),
 	url(r'^%s/i18n/' % prefix, include('django.conf.urls.i18n')),
 	url(r'^%s/media/(?P<path>.*)$' % prefix, 'django.views.static.serve',
 		      	{'document_root': settings.MEDIA_ROOT}),
-	url(r'^%s/courses/' % prefix, include('smaoahpa.courses.urls')),
-	url(r'^%s/' % prefix, include('smaoahpa.smadrill.urls')),
-	url(r'^%s/dialect/$' % prefix, 'smaoahpa.conf.views.dialect'),
+	url(r'^%s/courses/' % prefix, include('univ_oahpa.courses.urls')),
+	url(r'^%s/' % prefix, include('univ_oahpa.univ_drill.urls')),
+	url(r'^%s/dialect/$' % prefix, 'univ_oahpa.conf.views.dialect'),
 	url(admin_url, admin.site.root),
 	# (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 )
