@@ -60,6 +60,30 @@ This file may also be used to generate custom tag sets for Morfa-C, so that when
 
 See [FST documentation|fsts.html] for more information.
 
+!! Relevant classes and variables
+
+* settings.py
+** DEFAULT_DIALECT
+** L1
+
+* smadrill/urls.py
+** Several URL patterns are set up for 'pretty' URLS. The relevant ones are morfa/baakoe/ (sma. *baakoe* 'word')
+
+* smadrill/views.py
+** views.morfa_game - instantiates a Gameview class, returns a response
+** views.Gameview - class for POST/GET responses, which calls the Morfa class, game.BareGame
+
+* smadrill/game.py
+** relax
+** Game - Parent class to all game classes, contains a lot of shared methods for all subclasses.
+** BareGame (a subclass of Game) - subclass of Game, overrides several methods. See BareGame docstrings for more information.
+
+* smadrill/forms.py
+** MorfaSettings - Settings form dropdown menues and choices
+** MorfaQuestion - Handles the display and generation of form fields
+** Form Choice data: CASE_CHOICES, CASE_CHOIES_PRONOUN, VTYPE_CHOICES, etc.
+
+
 !! Adding question types
 
 To add a new question type to Morfa-S I need to edit the following files, often doing things that are repeated across multiple places. It is also a little more complex if adding a new part of speech, for instance, since this isn't a question of adding another value to a form, but also adding form fields.
@@ -71,15 +95,3 @@ To add a new question type to Morfa-S I need to edit the following files, often 
  * smadrill/forms.py
  ** CASE_CHOICES, POS_CHOICES, etc.,
 
-
-__To be written:__
-
-* forms.py
-** MorfaQuestion, MorfaSettings, and many objects relating to choices: CASE_CHOICES, CASE_CHOIES_PRONOUN, VTYPE_CHOICES, etc.
-* game.py
-** relax, Game, BareGame,  … (relevant classes, functions , their relations to other classes/functions)
-* views.py
-** ...
-
-* settings.py
-** DEFAULT_DIALECT
