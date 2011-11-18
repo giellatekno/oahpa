@@ -83,6 +83,22 @@ See [FST documentation|fsts.html] for more information.
 ** MorfaQuestion - Handles the display and generation of form fields
 ** Form Choice data: CASE_CHOICES, CASE_CHOIES_PRONOUN, VTYPE_CHOICES, etc.
 
+** templates and their inheritance structure
+*** views call the farthest down template in the inheritance hierarchy, and 
+    the rest are extended via the {% extends %} template tag.
+
+{{{
+templates/smaoahpa_main.html
+	templates/smaoahpa.html
+		smadrill/templates/game.html
+			smadrill/templates/mgame.html
+				smadrill/templates/mgame_a.html
+				smadrill/templates/mgame_l.html
+				smadrill/templates/mgame_n.html
+				smadrill/templates/mgame_p.html
+				smadrill/templates/mgame_v.html
+
+}}}
 
 !! Adding question types
 

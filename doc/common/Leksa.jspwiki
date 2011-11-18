@@ -27,6 +27,9 @@ I'm organizing these to reflect somewhat what the structure is for dependencies 
 ** INFINITIVE_SUBTRACT, INFINITIVE_ADD - settings for adding and subtracting infinitive markers; dictionaries of regular expressions.
 ** OLD_NEW_ISO_CODES - used in producing the corresponding language pair for the user's browser language settings. If more languages are added, this must be altered.
 
+* conf/tools.py
+** switch_language_code
+
 * views.py
 ** leksa_game
 ** Quizzview
@@ -45,4 +48,19 @@ I'm organizing these to reflect somewhat what the structure is for dependencies 
 ** SEMTYPE_CHOICES - These correspond to semtypes both in semantical_sets.xml (the supersets) and one or two in the actual lexicon files.
 ** TRANS_CHOICES - keys representing language pairs, with 3-character ISO codes corresponding to the iso codes used in lexicon files. ZZZWWW
 ** GEOGRAPHY_CHOICES - Choices corresponding to lexicon files.
+
+
+** templates and their inheritance structure
+*** views call the farthest down template in the inheritance hierarchy, and 
+    the rest are extended via the {% extends %} template tag.
+
+{{{
+
+templates/smaoahpa_main.html
+	templates/smaoahpa.html
+		smadrill/templates/game.html
+			smadrill/templates/leksa.html
+				smadrill/templates/leksa_place.html
+
+}}}
 

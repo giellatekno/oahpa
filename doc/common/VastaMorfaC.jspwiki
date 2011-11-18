@@ -1,5 +1,3 @@
-
-
 !!!Vasta and Morfa-C
 
 !! File dependencies
@@ -51,7 +49,7 @@ In Morfa-C these tags are used in both question files and grammar_defaults.xml a
 
 !!! grammar_defaults.xml
 
-
+Grammar_defaults is a collection of shortcuts for oft repeated material, which may be used in Morfa-C questions. They may be overridden by specifying in more detail in the individual question files. Grammar default definitions and syntax follow those in question files, and they must be included in the install of every question file. They also rely on paradigms and tags files, because they may refer to tagsets.
 
 
 !! Installation command 
@@ -70,14 +68,43 @@ In Morfa-C these tags are used in both question files and grammar_defaults.xml a
 
 __To be written:__
 
-* forms.py
-** … (relevant classes for this program)
-* game.py
-** … (relevant classes, functions , their relations to other classes/functions)
-* mgame.py
-** ...
-* views.py
-** ...
+* settings.py
+** DEFAULT_DIALECT
+** L1
+
+* smadrill/urls.py
+**  Urls pertaining to Morfa-C/Morfa-R are those named for sma. *raajese* 'sentence'
+
+* smadrill/views.py
+** cmgame
+** Gameview
+
+* smadrill/game.py
+** Game
+
+* smadrill/mgame.py
+** QAGame (a subclass of game.Game)
+
+* smadrill/forms.py
+** MorfaSettings
+** ContextMorfaQuestion
+
+** templates and their inheritance structure
+*** views call the farthest down template in the inheritance hierarchy, and 
+    the rest are extended via the {% extends %} template tag.
+
+{{{
+templates/smaoahpa_main.html
+	templates/smaoahpa.html
+		smadrill/templates/game.html
+			smadrill/templates/mgame.html
+				smadrill/templates/mgame_a.html
+				smadrill/templates/mgame_l.html
+				smadrill/templates/mgame_n.html
+				smadrill/templates/mgame_p.html
+				smadrill/templates/mgame_v.html
+
+}}}
 
 !!Intro
 
