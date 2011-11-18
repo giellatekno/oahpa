@@ -2,12 +2,80 @@
 
 !!!Vasta and Morfa-C
 
+!! File dependencies
+
+* Word lexicon file (n_smanob.xml)
+* Paradigm file (paradigms.txt)
+* tags file (tags.txt)
+
+!!! paradigms.txt
+
+Both the paradigms file and tags file are important for Morfa-S and Morfa-C to function. paradigms.txt is simply a list of all of the tags for the wordforms that will be generated. These are separated by newlines.
+
+    V+Ind+Prs+Sg1
+    V+Ind+Prs+Sg2
+    V+Ind+Prs+Sg3
+	etc...
+
+It may be useful to split up the paradigm files by part of speech, in order to have more detailed control over the paradigms in the event that certain kinds of verbs need to be separated from eachother, and so on... 
+
+NOTE: If you split up paradigm files, it is important to also have one file containing all of the possible tag strings, because tag and paradigm files are also installed separately for Morfa-C.
+
+!!! tags.txt
+
+This file defines tag classes and groups. It is required for both Morfa-C and Morfa-S. The file is a collection of lists of individual tags (Prop, Pers, Logo; PxSg1, PxSg2, etc.) split up by a name.
+
+   #Subclass
+   Prop
+   Pers
+   Logo
+   #Possessive
+   PxSg1
+   PxSg2
+   PxSg3
+
+This file may also be used to generate custom tag sets for Morfa-C, so that when creating questions, one could refer to only 1st and 2nd persons:
+
+   #1st2ndPerson
+   Sg1
+   Sg2
+   Du1
+   Du2
+   Pl1
+   Pl2
+
+In Morfa-C these tags are used in both question files and grammar_defaults.xml any time a tag is specified:
+
+	<grammar tag="Pron+Pers+1st2ndPerson+Nom" />
+
+
+!!! grammar_defaults.xml
+
+
+
+
+!! Installation command 
+
+* Tag and Paradigm installation (must be completed first)
+
+{{{
+	python install.py -r paradigms.txt -t tags.txt
+}}}
+
+* Question file installation
+
+{{{
+	python install.py -g grammar_defaults.xml -q question_file.xml
+}}}
+
 __To be written:__
 
 * forms.py
 ** … (relevant classes for this program)
 * game.py
 ** … (relevant classes, functions , their relations to other classes/functions)
+* mgame.py
+** ...
 * views.py
 ** ...
 
@@ -26,6 +94,20 @@ for Morfa-C and Vasta to function properly, these must be updated before install
 Sometimes, additional words are required which are not in the other lexicon files.
 These are stored in a fillings file, which is installed like any other word lexicon
 file.
+
+!! Adding question types
+
+To add a new question type to Morfa-C I need to edit the following files, often doing things that are repeated across multiple places
+
+ * smadrill/game.py 
+
+ * smadrill/views.py 
+ ** Add a key-value pair to self.gamenames
+
+ * smadrill/forms.py
+ ** ContextMorfaQuestion, CASE_CONTEXT_CHOICES, PRON_CONTEXT_CHOICES, etc.
+
+ * smadrill/mgame.py 
 
 !!Dependencies
 

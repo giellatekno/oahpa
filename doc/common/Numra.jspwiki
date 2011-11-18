@@ -1,27 +1,38 @@
 !!!Documentation for programmers
 
-__To be completed:__
+The class inheritance structure for Numra, Klokka and Dato is the same in both the classes in smadrill.game and smadrill.forms, with the classes getting progressively simpler, where Dato is the simplest. 
+
+Overall, methods and classes in smadrill.views call methods in smadrill.game, which creates smadrill.forms classes. This pattern is found throughout the rest of the game types. Views also handle POST/GET responses and requests, Forms handle the creation of form objects and their validation, and Game classes handle evaluation of whether answers are correct or not as well as the selection of words or numbers from the FSTs.
+
+There is room for some decoupling of functionality in smadrill.forms and smadrill.games as development progresses.
+
 * Common for all Numra-games:
+** settings.py: FST_DIRECTORY, L1
+
 ** views.py:
 *** class Numview(Gameview)
 
-* Cardinals
+* Cardinals & Ordinals
 * forms.py
 ** … (relevant classes for this program)
 * game.py
-** … (relevant classes, functions , their relations to other classes/functions)
+** NumGame (see docstrings for method information)
 * views.py
 ** ...
-* Ordinals
-** to be specified
+
 * Klokka
-** to be specified
+* forms.py: 
+* game.py: Klokka (subclass of NumGame)
+** Subclass contains filenames of the question/answer FSTs, and depends on settigns.FST_DIRECTORY
+** Subclass of NumGame, results in need to only override NumGame.get_db_info and NumGame.create_form
+
 * Dato
 ** forms.py
 *** class DatoSettings(KlokkaSettings)
 *** class DatoQuestion(KlokkaQuestion)
 ** game.py
 *** class Dato(Klokka)
+*** only needs to override Klokka.get_db_info, simple class.
 *** def get_db_info(self, db_info)
 ** views.py
 *** within class Numview(Gameview):

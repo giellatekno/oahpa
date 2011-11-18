@@ -19,7 +19,7 @@ Both the paradigms file and tags file are important for Morfa-S and Morfa-C to f
 	etc...
 }}}
 
-It may be useful to split up the paradigm files by part of speech, in order to have more detailed control over the paradigms in the event that certain kinds of verbs need to be separated from eachother, and so on... 
+It may be useful to split up the paradigm files by part of speech (v_paradigms.txt, n_paradigms.txt), in order to have more detailed control over the paradigms in the event that certain kinds of verbs need to be separated from eachother, and so on... 
 
 NOTE: If you split up paradigm files, it is important to also have one file containing all of the possible tag strings, because tag and paradigm files are also installed separately for Morfa-C.
 
@@ -62,19 +62,24 @@ See [FST documentation|fsts.html] for more information.
 
 !! Adding question types
 
-To add a new question type to Morfa-S I need to edit the following files, often doing things that are repeated across multiple places
+To add a new question type to Morfa-S I need to edit the following files, often doing things that are repeated across multiple places. It is also a little more complex if adding a new part of speech, for instance, since this isn't a question of adding another value to a form, but also adding form fields.
 
  * smadrill/game.py 
+ ** Add an entry to BareGame.casetable, review code for things dependent on casetable. The methods in BareGame also contains miscellaneous other instances of dictionaries that correspond to parts of speech and morphological type that need to be checked here
  * smadrill/views.py 
+ ** Add a key-value pair to self.gamenames
  * smadrill/forms.py
+ ** CASE_CHOICES, POS_CHOICES, etc.,
 
 
 __To be written:__
 
 * forms.py
-** … (relevant classes for this program)
+** MorfaQuestion, MorfaSettings, and many objects relating to choices: CASE_CHOICES, CASE_CHOIES_PRONOUN, VTYPE_CHOICES, etc.
 * game.py
-** … (relevant classes, functions , their relations to other classes/functions)
+** relax, Game, BareGame,  … (relevant classes, functions , their relations to other classes/functions)
 * views.py
 ** ...
 
+* settings.py
+** DEFAULT_DIALECT
