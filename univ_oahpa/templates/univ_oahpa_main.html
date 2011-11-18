@@ -79,21 +79,21 @@
 			</form>
 			<form action="/{{ URL_PREFIX }}/dialect/" method="post">
 				<dl>
-					<dt><label for="dialect">{% trans "Southern Sami dialect" %}</label></dt>
+					<dt><label for="dialect">{% trans "Northern Sami dialect" %}</label></dt>
 					<dd>
 						<input name="next" type="hidden" value="/{{ URL_PREFIX }}/" />
 						<select name="dialect" onChange="javascript:this.form.submit();">
 						{% if dialect %}
-							{% ifequal dialect "SH" %}
-								<option value="SH" selected="selected">{% trans 'SH' %}</option>
-								<option value="L">{% trans 'L' %}</option>
+							{% ifequal dialect "GG" %}
+								<option value="GG" selected="selected">{% trans 'GG' %}</option>
+								<option value="KJ">{% trans 'KJ' %}</option>
 							{% else %}
-								<option value="SH">{% trans 'SH' %}</option>
-								<option value="L" selected="selected">{% trans 'L' %}</option>
+								<option value="GG">{% trans 'GG' %}</option>
+								<option value="KJ" selected="selected">{% trans 'KJ' %}</option>
 							{% endifequal %}  
 						{% else %}
-							<option value="SH">{% trans 'SH' %}</option>
-							<option value="L">{% trans 'L' %}</option>
+							<option value="GG">{% trans 'GG' %}</option>
+							<option value="KJ">{% trans 'KJ' %}</option>
 						{% endif %}
 					</select>
 					</dd>
@@ -115,15 +115,15 @@
 			<ul id="games_menu">
 				<li class="game">
 					<a href="{% url morfa_c.noun %}">
-						<span>MORFA-R</span><br />
-						<img src="{{ MEDIA_URL }}/images/morfac.png" alt="MORFA-R" /><br />
+						<span>MORFA-C</span><br />
+						<img src="{{ MEDIA_URL }}/images/morfac.png" alt="MORFA-C" /><br />
 						<span>{% trans "Practise morphology in context" %}</span>
 					</a>
 				</li>
 				<li class="game">
 					<a href="{% url morfa_s.noun %}">
-						<span>MORFA-B</span><br />
-						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-B" /><br />
+						<span>MORFA-S</span><br />
+						<img src="{{ MEDIA_URL }}/images/morfa.png" alt="MORFA-S" /><br />
 						<span>{% trans "Practise morphology" %}</span>
 					</a>
 				</li>
@@ -153,7 +153,7 @@
 			{% comment %}
 			<h3>{% trans "Online reference materials" %}</h3>
 			{% endcomment %}
-			<p class="intro">{% trans "Åarjel-Oahpa is an internet program for youth and grownups learning South Sámi. The program can be adjusted to different themes and levels of difficulty, and it generates new task sets automatically." %}</p>
+			<p class="intro">{% trans "Oahpa is an internet program for youth and grownups learning South Sámi. The program can be adjusted to different themes and levels of difficulty, and it generates new task sets automatically." %}</p>
 			{% comment %}
 			<p>{% trans "Oahpa is connected with online reference materials." %}</p>
 			{% endcomment %}
@@ -170,7 +170,7 @@
 		<div id="footer">
 			<div id="copyright">
 			  <p>
-				  {% trans "Copyright 2011 Universitetet i Troms&oslash; og Aajege Saemien g&iuml;ele- j&iuml;h maahtoejarnge" %}<br />
+				  {% trans "Copyright 2011 Universitetet i Troms&oslash; " %}<br />
 			{% trans "Contact" %} oahpa@hum.uit.no</p>
 			</div>
 		</div>
