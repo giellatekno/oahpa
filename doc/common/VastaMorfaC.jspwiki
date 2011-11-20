@@ -1,19 +1,20 @@
-!!!Vasta and Morfa-C
 
-!! File dependencies
+!!! File dependencies
 
-* Word lexicon file (n_smanob.xml)
-* Paradigm file (paradigms.txt)
-* tags file (tags.txt)
+* Word lexicon file ({{n_smanob.xml}})
+* Paradigm file ({{paradigms.txt}})
+* tags file ({{tags.txt}})
 
 !!! paradigms.txt
 
 Both the paradigms file and tags file are important for Morfa-S and Morfa-C to function. paradigms.txt is simply a list of all of the tags for the wordforms that will be generated. These are separated by newlines.
 
+{{{
     V+Ind+Prs+Sg1
     V+Ind+Prs+Sg2
     V+Ind+Prs+Sg3
 	etc...
+}}}
 
 It may be useful to split up the paradigm files by part of speech, in order to have more detailed control over the paradigms in the event that certain kinds of verbs need to be separated from eachother, and so on... 
 
@@ -21,8 +22,9 @@ NOTE: If you split up paradigm files, it is important to also have one file cont
 
 !!! tags.txt
 
-This file defines tag classes and groups. It is required for both Morfa-C and Morfa-S. The file is a collection of lists of individual tags (Prop, Pers, Logo; PxSg1, PxSg2, etc.) split up by a name.
+This file defines tag classes and groups. It is required for both Morfa-C and Morfa-S. The file is a collection of lists of individual tags ({{Prop, Pers, Logo; PxSg1, PxSg2}}, etc.) split up by a name.
 
+{{{
    #Subclass
    Prop
    Pers
@@ -31,9 +33,11 @@ This file defines tag classes and groups. It is required for both Morfa-C and Mo
    PxSg1
    PxSg2
    PxSg3
+}}}
 
 This file may also be used to generate custom tag sets for Morfa-C, so that when creating questions, one could refer to only 1st and 2nd persons:
 
+{{{
    #1st2ndPerson
    Sg1
    Sg2
@@ -41,10 +45,11 @@ This file may also be used to generate custom tag sets for Morfa-C, so that when
    Du2
    Pl1
    Pl2
+}}}
 
 In Morfa-C these tags are used in both question files and grammar_defaults.xml any time a tag is specified:
 
-	<grammar tag="Pron+Pers+1st2ndPerson+Nom" />
+{{<grammar tag="Pron+Pers+1st2ndPerson+Nom" />}}
 
 
 !!! grammar_defaults.xml
@@ -73,7 +78,7 @@ __To be written:__
 ** L1
 
 * smadrill/urls.py
-**  Urls pertaining to Morfa-C/Morfa-R are those named for sma. *raajese* 'sentence'
+**  Urls pertaining to Morfa-C/Morfa-R are those named for sma. ''raajese'' "sentence"
 
 * smadrill/views.py
 ** cmgame
@@ -89,30 +94,29 @@ __To be written:__
 ** MorfaSettings
 ** ContextMorfaQuestion
 
-** templates and their inheritance structure
-*** views call the farthest down template in the inheritance hierarchy, and 
+* templates and their inheritance structure
+** views call the farthest down template in the inheritance hierarchy, and 
     the rest are extended via the {% extends %} template tag.
 
 {{{
-templates/smaoahpa_main.html
-	templates/smaoahpa.html
-		smadrill/templates/game.html
-			smadrill/templates/mgame.html
-				smadrill/templates/mgame_a.html
-				smadrill/templates/mgame_l.html
-				smadrill/templates/mgame_n.html
-				smadrill/templates/mgame_p.html
-				smadrill/templates/mgame_v.html
-
+	templates/smaoahpa_main.html
+		templates/smaoahpa.html
+			smadrill/templates/game.html
+				smadrill/templates/mgame.html
+					smadrill/templates/mgame_a.html
+					smadrill/templates/mgame_l.html
+					smadrill/templates/mgame_n.html
+					smadrill/templates/mgame_p.html
+					smadrill/templates/mgame_v.html
 }}}
 
-!!Intro
+!!Installing questions
 
 Morfa-C and Vasta share the same mechanism for installing the
 questions. Questions are defined, for example, in
-sme/xml/questions_vasta.xml. In addition some defaults for certain
-elements (such as subject/SUBJ) are defined in
-sme/xml/grammar_defaults.xml. 
+{{sme/xml/questions_vasta.xml}}. In addition some defaults for certain
+elements (such as ''subject/SUBJ'') are defined in
+{{sme/xml/grammar_defaults.xml}}. 
 
 Morfa-C and Vasta also use tag, tag-set and paradigm information, which is
 installed separately and maintained in tags.txt and paradigms.txt. In order
@@ -148,15 +152,15 @@ To add a new question type to Morfa-C I need to edit the following files, often 
 
 1. Install grammar tags and paradigm information
 {{{
-	python install.py -r data_sma/meta/paradigms.txt -t data_sma/meta/tags.txt -b
+ python install.py -r data_sma/meta/paradigms.txt -t data_sma/meta/tags.txt -b
 }}}
 2. Install fillings (optional)
 {{{
-	python install.py -f fillingsfile.xml --paradigmfile paradigms.txt --tagfile tags.txt
+ python install.py -f fillingsfile.xml --paradigmfile paradigms.txt --tagfile tags.txt
 }}}
 3. Install question file
 {{{
-python install.py -g ../sme/xml/grammar_defaults.xml -q ../sme/xml/questions_nouns.xml
+ python install.py -g ../sme/xml/grammar_defaults.xml -q ../sme/xml/questions_nouns.xml
 }}}
 
 Everything inside the question xml-file may be changed and the database
@@ -164,11 +168,11 @@ will be updated during the next. With one exception: if a question is
 removed and there is no new question with the same id, it has to be
 specifically deleted using command:
  
-{{{
-python install.py --qid <question_id>
+{{python install.py --qid <question_id>}}
+
 .. or by using the question text
-python install.py --qid "Maid SUBJ MAINV"
-}}}
+
+{{python install.py --qid "Maid SUBJ MAINV"}}
 
 Of course the latter command will delete all the questions with that
 string. However, the deletion with the string may be useful if the qid
