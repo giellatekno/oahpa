@@ -20,7 +20,7 @@ __TILTAK__
 
 !Leksikonfiler i sme/xml
 * Legge til oversettelser og bokinfo fra AA-listen fra Oulu - Lene: __done__
-* Dele opp i entryer når entryen bør ha minst 2 <mg>, sjekke mot normfst (__Lene__)
+* Dele opp i entryer når entryen bør ha minst 2 <mg>, sjekke mot normfst (__done__)
 ** adv_smenob.xml  - ikke brukt i smeOahpa tidligere - oppdatert - flytta til tmp_towards-sma-format/data_sme/sme/adv_smenob.xml
 ** multiword_smenob.xml - bare for Leksa - ikke brukt i smeOahpa tidligere - oppdatert - tmp_towards-sma-format/data_sme/sme/multiword_smenob.xml
 ** adjectives.xml  - oppdatert og flytta til tmp_towards-sma-format/data_sme/sme/a_smenob.xml
@@ -104,7 +104,8 @@ __TILTAK__
 
 !Pronomen i Morfa - har ikke vært implementert i smeOahpa tidligere
 
-* sme/src/pronounforms.csv som inneholder både lemma+morfology og ordform - oppdatert
+* sme/src/pronounforms.csv som inneholder både lemma+morfology og ordform  __done__
+** Added forms which should be accepted as answer from students, but not presented as facit. They are marked with the tag Use/NG.
 
 ! Andre filer i sme/src
 * Makefile - for Sahka / Vasta
