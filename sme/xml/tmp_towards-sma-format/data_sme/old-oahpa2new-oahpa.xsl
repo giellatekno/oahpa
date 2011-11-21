@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!--+
+    | 
+    | Script for transforming the smeoahpa source files into the smaoahpa format, i.e., into a more dictionary-like format
+    | Usage: java net.sf.saxon.Transform -it main STYLESHEET_NAME.xsl (inFile=INPUT_FILE_NAME.xml | inDir=INPUT_DIR)
+    +-->
+
+<xsl:stylesheet version="2.0"
+		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns:local="nightbar"
+		xmlns:fmp="http://www.filemaker.com/fmpxmlresult"
+		xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+		exclude-result-prefixes="xs local fmp ss">
+
+  <xsl:strip-space elements="*"/>
+  <xsl:output method="xml" name="xml"
+              encoding="UTF-8"
+	      omit-xml-declaration="no"
+	      indent="yes"/>
+  
+  <!-- Input -->
+  <xsl:param name="inFile" select="'xxxfilexxx'"/>
+  <xsl:param name="inDir" select="'xxxdirxxx'"/>
+  
+  <!-- Output -->
+  <xsl:variable name="outputDir" select="'000_outDir'"/>
+  
+  <!-- Patterns for the feature values -->
+  <xsl:variable name="output_format" select="'xml'"/>
+  <xsl:variable name="e" select="$output_format"/>
+  <xsl:variable name="file_name" select="substring-before((tokenize($inFile, '/'))[last()], '.xml')"/>
+  <xsl:variable name="nl" select="'&#xA;'"/>
+  <xsl:variable name="debug" select="true()"/>
+  
+  
+  
+  <xsl:template match="/" name="main">
+    
+    <xsl:if test="doc-available($inFile)">
+
+      <xsl:message terminate="no">
+	<xsl:value-of select="concat('Processing file: ', $inFile)"/>
+      </xsl:message>
+      
+      <xsl:call-template name="processFile">
+	<xsl:with-param name="theFile" select="document($inFile)"/>
+	<xsl:with-param name="theName" select="$file_name"/>
+      </xsl:call-template>
+    </xsl:if>
+
+    <!-- xsl:if test="doc-available($inDir)" -->
+    <xsl:if test="not($inDir = 'xxxdirxxx')">
+      <xsl:for-each select="for $f in collection(concat($inDir, '?select=*.xml')) return $f">
+	
+	<xsl:variable name="current_file" select="substring-before((tokenize(document-uri(.), '/'))[last()], '.xml')"/>
+	<xsl:variable name="current_dir" select="substring-before(document-uri(.), $current_file)"/>
+	<xsl:variable name="current_location" select="concat($inDir, substring-after($current_dir, $inDir))"/>
+	
+	<xsl:message terminate="no">
+	  <xsl:value-of select="concat('Processing file: ', $current_file)"/>
+	</xsl:message>
+
+	<xsl:call-template name="processFile">
+	  <xsl:with-param name="theFile" select="."/>
+	  <xsl:with-param name="theName" select="$current_file"/>
+	</xsl:call-template>
+      </xsl:for-each>
+    </xsl:if>
+    
+	
+    
+    <xsl:if test="not(doc-available($inFile) or not($inDir = 'xxxdirxxx'))">
+      <xsl:value-of select="concat('Neither ', $inFile, ' nor ', $inDir, ' found.', $nl)"/>
+    </xsl:if>
+    
+  </xsl:template>
+
+  <xsl:template name="processFile">
+    <xsl:param name="theFile"/>
+    <xsl:param name="theName"/>
+
+    <xsl:variable name="output">
+      <r>
+	<xsl:copy-of select="$theFile/lexicon/@*"/>
+	<xsl:for-each select="$theFile/lexicon/entry">
+	  <xsl:message terminate="no">
+	    <xsl:value-of select="concat('Entry ', ./lemma)"/>
+	  </xsl:message>
+	  <e>
+	    <xsl:copy-of select="normalize-space(./lemma)"/>
+	    <lg>
+	      <l>
+		<xsl:value-of select="normalize-space(./lemma)"/>
+	      </l>
+	    </lg>
+	    <mg>
+	      <semantics>
+	      </semantics>
+<!-- 	      <xsl:for-each select=""> -->
+		
+<!-- 	      </xsl:for-each> -->
+	    </mg>
+	  </e>
+	</xsl:for-each>
+      </r>
+    </xsl:variable>
+
+    <!-- output file -->
+    <xsl:result-document href="{$outputDir}/result_{$theName}.{$e}" format="{$output_format}">
+      <xsl:copy-of select="$output"/>
+    </xsl:result-document>
+    
+  </xsl:template>
+  
+</xsl:stylesheet>
+
