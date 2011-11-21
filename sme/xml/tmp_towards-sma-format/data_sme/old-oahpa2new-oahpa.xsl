@@ -123,12 +123,30 @@
 		   </stem_test>
 		   </xsl:if -->
 	    </lg>
+	    <xsl:copy-of select="./dialect"/>
 	    <xsl:copy-of select="./sources"/>
 	    <mg>
 	      <xsl:copy-of select="./semantics"/>
-<!-- 	      <xsl:for-each select=""> -->
-		
-<!-- 	      </xsl:for-each> -->
+	      <xsl:variable name="cTrans" select="./translations"/>
+	      <xsl:variable name="tTrans">
+		<xsl:for-each select="('nob', 'fin', 'swe', 'eng', 'deu')">
+		  <xsl:variable name="cl" select="."/>
+		  <tg xml:lang="{$cl}">
+		    <xsl:for-each select="$cTrans/tr[./@xml:lang = $cl]">
+		      <t>
+			<xsl:if test="position() = 1">
+			  <xsl:attribute name="stat">
+			    <xsl:value-of select="'pref'"/>
+			  </xsl:attribute>
+			</xsl:if>
+			<xsl:copy-of select="./@tcomm"/>
+			<xsl:value-of select="normalize-space(.)"/>
+		      </t>
+		    </xsl:for-each>
+		  </tg>
+		</xsl:for-each>
+	      </xsl:variable>
+	      <xsl:copy-of select="$tTrans"/>
 	    </mg>
 	  </e>
 	</xsl:for-each>
@@ -136,7 +154,7 @@
     </xsl:variable>
 
     <!-- output file -->
-    <xsl:result-document href="{$outputDir}/result_{$theName}.{$e}" format="{$output_format}">
+    <xsl:result-document href="{$outputDir}/{$theName}.{$e}" format="{$output_format}">
       <xsl:copy-of select="$output"/>
     </xsl:result-document>
     
