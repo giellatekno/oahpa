@@ -88,15 +88,44 @@
 	    <xsl:value-of select="concat('Entry ', ./lemma)"/>
 	  </xsl:message>
 	  <e>
-	    <xsl:copy-of select="normalize-space(./lemma)"/>
+	    <xsl:copy-of select="./@*"/>
 	    <lg>
-	      <l>
+	      <l pos="{lower-case(./pos/@class)}">
+		<xsl:if test="./pos/@type">
+		  <xsl:attribute name="type">
+		    <xsl:value-of select="lower-case(./pos/@type)"/>
+		  </xsl:attribute>
+		</xsl:if>
+		<xsl:if test="./pos/@gen_only">
+		  <xsl:attribute name="gen_only">
+		    <xsl:value-of select="./pos/@gen_only"/>
+		  </xsl:attribute>
+		</xsl:if>
+		<xsl:if test="./stem/@class">
+		  <xsl:attribute name="stem">
+		    <xsl:variable name="cc" select="normalize-space(./stem/@class)"/>
+		    <xsl:value-of select="if ($cc = 'bisyllabic') then '2syll' else
+					  if ($cc = 'trisyllabic') then '3syll' else
+					  if ($cc = 'contracted') then 'Csyll' else 'xxx'"/>
+		  </xsl:attribute>
+		</xsl:if>
+		<xsl:for-each select="./stem/@*[not(local-name() = 'class')]">
+		  <xsl:copy-of select="."/>
+		</xsl:for-each>
 		<xsl:value-of select="normalize-space(./lemma)"/>
 	      </l>
+	      <!-- xsl:if test="./stem/@class">
+		   <stem_test>
+		   <xsl:variable name="cc" select="normalize-space(./stem/@class)"/>
+		   <xsl:value-of select="if ($cc = 'bisyllabic') then '2syll' else
+		   if ($cc = 'trisyllabic') then '3syll' else
+		   if ($cc = 'contracted') then 'Csyll' else 'xxx'"/>
+		   </stem_test>
+		   </xsl:if -->
 	    </lg>
+	    <xsl:copy-of select="./sources"/>
 	    <mg>
-	      <semantics>
-	      </semantics>
+	      <xsl:copy-of select="./semantics"/>
 <!-- 	      <xsl:for-each select=""> -->
 		
 <!-- 	      </xsl:for-each> -->
