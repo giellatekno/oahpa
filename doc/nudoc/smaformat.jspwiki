@@ -5,21 +5,21 @@ Heli har tatt over heile koden frå sma for numra (jf. game.py)
 __TILTAK__
 
 * __Ingen__ rører nu_oahpa-koden
-* __Ciprian__ lagar ein ny katalog, univ_oahpa, i pedversions.
-* __Heli__ lagar ein ny database 
-* __Heli__ tilpasser navner fra oahpa til univ_oahpa og teste det på victorio
+* __Ciprian__ lagar ein ny katalog, univ_oahpa, i pedversions. __done__
+* __Heli__ lagar ein ny database __todo__
+* __Heli__ tilpasser navner fra oahpa til univ_oahpa og teste det på victorio __todo__
 * Dokumentasjon: __Alle__, særleg __Ryan__ og __Heli__
 ** Ei separat dokumentasjonsside for denne konverteringsprosessen:
 ** Eiga jspwiki-fil (denne)
 ** Katalogen inneheld ein kopi av smaOahpa, og blir fylt med sme-innhald
-* __Lene__ går gjennom entriane i leksikon og merker <mg> osv (til måndag morgon 14.11)
-* __Ciprian, Heli__ overfører til sma-format og legg inn i univ_oahpa
+* __Lene__ går gjennom entriane i leksikon og merker <mg> osv (til måndag morgon 14.11) __done__
+* __Ciprian, Heli__ overfører til sma-format og legg inn i univ_oahpa __todo__
 
 
 !! Leksikonfilene
 
 !Leksikonfiler i sme/xml
-* Legge til oversettelser og bokinfo fra AA-listen fra Oulu - Lene: done
+* Legge til oversettelser og bokinfo fra AA-listen fra Oulu - Lene: __done__
 * Dele opp i entryer når entryen bør ha minst 2 <mg>, sjekke mot normfst (__Lene__)
 ** adv_smenob.xml  - ikke brukt i smeOahpa tidligere - oppdatert - flytta til tmp_towards-sma-format/data_sme/sme/adv_smenob.xml
 ** multiword_smenob.xml - bare for Leksa - ikke brukt i smeOahpa tidligere - oppdatert - tmp_towards-sma-format/data_sme/sme/multiword_smenob.xml
@@ -31,14 +31,14 @@ __TILTAK__
 ** numerals.xml - i denne er det er både N+Coll, A+Ord og Num - for MorfaC, flytta til tmp_towards-sma-format/data_sme/sme/num_smenob.xml
 ** fillings.xml - kanskje vi ikke trenger den i sma-oppsettet? - flytta til tmp_towards-sma-format/data_sme/meta/fillings.xml
 * Endre attibutter og elementer til sma-stil (__Lene, Ciprian__) 
-** <noleksa/> til exclude="smenob" - Lene: done
+** <noleksa/> til exclude="smenob" - Lene: __done__
 ** første nob-oversettelse og fin-oversettelse skal ha stat="pref"
 ** <only-pl/> til gen_only="Pl"  - Lene: done. De som er igjen nouns.xml er slike som har lemma i sg. Dette er noe som ikke finnes i sma, vi får se på hvilken løsning vi velger.  
-** <only-sg/> til gen_only="Sg" - Lene: done
-** tcomm="yes" - Lene: done
-** N type="Actor" - Lene: done
-** N type="G3" - Lene: done
-** N type="Prop" - Lene: done
+** <only-sg/> til gen_only="Sg" - Lene: __done__
+** tcomm="yes" - Lene: __done__
+** N type="Actor" - Lene: __done__
+** N type="G3" - Lene: __done__
+** N type="Prop" - Lene: __done__
 ** entry –> e, lemma –> l
 ** <pos class="N"/> osv –> pos="n" i l-element
 ** stem-attributter flyttes til l-element: trisyllabic –> 3syll, bisyllabic –> 2syll contracted –> Csyll (denne finnes ikke i sma)
@@ -50,12 +50,12 @@ __TILTAK__
 !! Andre filer i sme/xml
 
 !Feedback-filer for Morfa i sme/xml - oppdateres til samme struktur som for smaOahpa - alle er flytta/kopiert til tmp_towards-sma-format/data_sme/meta/
-* feedback_adjectives.xml  - Lene: done, 
-* feedback_adjectives_eastern.xml  - Lene: done
-* feedback_nouns.xml  - Lene: done
-* feedback_numerals.xml  - Lene: done
-* feedback_verbs.xml  - Lene: done
-* feedback_verbs_eastern.xml  - Lene: done 
+* feedback_adjectives.xml  - Lene: __done__ 
+* feedback_adjectives_eastern.xml  - Lene: __done__
+* feedback_nouns.xml  - Lene: __done__
+* feedback_numerals.xml  - Lene: __done__
+* feedback_verbs.xml  - Lene: __done__
+* feedback_verbs_eastern.xml  - Lene: __done__ 
 * messages.eng.xml - har samme struktur som sma
 * messages.fin.xml - har samme struktur som sma
 * messages.sme.xml - har samme struktur som sma
@@ -140,5 +140,4 @@ sme: <stem class="bisyllabic" diphthong="yes" gradation="yes" soggi="i" rime="0"
 }}}
 * sma: spell relax ï/i, ö/ø, osv.
 * sma: installeringsprosessen genererar alle formane som vert innført i databasen ein gong på byrjinga, sme: genererar paradigmer til kvar ord ein gong per ord
-
 
