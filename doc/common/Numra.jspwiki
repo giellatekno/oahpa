@@ -38,6 +38,20 @@ There is room for some decoupling of functionality in smadrill.forms and smadril
 *** within class Numview(Gameview):
 *** def num_date
 
+** templates and their inheritance structure
+*** views call the farthest down template in the inheritance hierarchy, and 
+    the rest are extended via the {% extends %} template tag.
+
+{{{
+templates/smaoahpa_main.html
+	templates/smaoahpa.html
+		smadrill/templates/game.html
+			smadrill/templates/num.html
+				smadrill/templates/num_ord.html
+				smadrill/templates/clock.html
+				smadrill/templates/dato.html
+}}}
+
 !!!Intro
 
 Numra differs from Morfa in not using the MySQL database, but using transducers directly.
