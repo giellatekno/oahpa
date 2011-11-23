@@ -17,7 +17,7 @@
       <sem class="OTHERS"/>  
       <sem class="MYTH-HUMAN"/>  
       <sem class="HUMAN-V"/>  
-      <sem class="HUMAN-adj2"/>  
+      <sem class="HUMAN-adj2"/>   <!-- HUMAN-adj is meant only for Morfa, and contains words from other sets also -->
       <sem class="VERBAL-V"/>   
       <sem class="EXPERIENCE-V"/>       
       <sem class="AUX-V"/> <!-- More widely defined than in sme-dis.rle,  verbs which typically are followed by an Inf -->
@@ -44,13 +44,13 @@
       <sem class="FOOD/DRINK-V"/> 
       <sem class="SOUP-adj"/> <!-- adjectives about food -->
     </subclasses>
-    <subclasses class="TIME">   <
-      <sem class="TIME-DURABILITY"/>
-      <sem class="TIME-POINT-LOC"/>
-      <sem class="TIME-POINT-LOC-PL"/>
-      <sem class="TIME-POINT-GEN"/>
-      <sem class="TIME-SEASON"/>
-      <sem class="TIME-POINT-GEN-PL"/>
+    <subclasses class="TIME">   
+      <sem class="TIME-DURABILITY"/>  <!-- it lasted 2 -->
+      <sem class="TIME-POINT-LOC"/> <!-- it happened then loc, e.g. geassemánnu -->
+      <sem class="TIME-POINT-LOC-PL"/> <!-- it happened then loc-pl, bassi -->
+      <sem class="TIME-POINT-GEN"/> <!-- it happened then gen, e.g. mánnodat -->
+      <sem class="TIME-SEASON"/>  <!--  e.g. čakča -->
+      <sem class="TIME-POINT-GEN-PL"/> <!-- it happened then gen-pl, e.g. juovllat  -->
       <sem class="TIME-OTHER"/>
       <sem class="TIME_ADV"/>
     </subclasses>
