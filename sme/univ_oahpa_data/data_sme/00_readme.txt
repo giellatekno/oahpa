@@ -23,7 +23,7 @@ sme>grep '<tg xml:lang="fin"/>' *.xml | wc -l
       41
 sme>grep '<tg xml:lang="swe"/>' *.xml | wc -l 
       41
- ==> only in num (there is not translation needed apparently)
+ ==> only in num (there is no translation needed apparently)
 
 sme>grep '<tg xml:lang="eng"/>' *.xml | wc -l 
      255
