@@ -50,3 +50,10 @@ sme>grep '<t stat="pref"/>' *xml | sort | uniq -c | sort -nr
  - pos="prop" vs. pos="n" type="prop"
  - at the moment, just overtaken strukture from the sme lemmata
 
+5. another question wrt. propernouns:
+   Why are there two different files with propernouns?
+	n_prop_smenob.xml  
+	prop_smenob.xml 
+
+
+
