@@ -54,4 +54,16 @@ Setting the mobile variable is carried out in the following manner:
 
 * Form fields, when entered, display shortcuts to enter special keys (ï, etc.). Most mobile phones have norwegian and swedish layouts that allow easily typing æ, ø, ä, etc., but ï is not present on these layouts. Strangely enough, the default English layout in both iOS and Android is more fully functional in this regard.
 
+!!! Misc notes
 
+Testing the mobile version through Django's built in http server seems to give separate results, and often you need to restart the http server in order to actually see it (after clicking the link, of course). This doesn't happen in Apache, which is why it works, but it could be that switching away from mod_python to mod_wsgi will result in similar difficulties. 
+
+Also, Android devices have an SSH client that allows for port forwarding, thus it is possible to test changes without deploying them. The way I managed to do this if unable to connect directly to my test machine on the local network was establishing a reverse tunnel (e.g. ssh user@host -R 8888:localhost:8888) from my machine to an external server, and then tunneling from the android device (ssh user@host -L 8888:localhost:8888). Then navigating to http://localhost:8888/ on the android device worked.
+
+Testing for iOS is much easier if you have XCode 4.2 installed on mac, as an iPhone and iPad emulator may be found in:
+
+{{{
+	/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/
+}}}
+
+Additional testing complications on mobile devices can be that one must constantly clear the browser cache, as the devices assume they should load from cache first.
