@@ -23,13 +23,18 @@ sme>grep '<tg xml:lang="fin"/>' *.xml | wc -l
       41
 sme>grep '<tg xml:lang="swe"/>' *.xml | wc -l 
       41
- ==> only in num (there is no translation needed apparently)
+ ==> only in num: according to Lene, we need the translations for numerals, too
 
 sme>grep '<tg xml:lang="eng"/>' *.xml | wc -l 
      255
 sme>grep '<tg xml:lang="deu"/>' *.xml | wc -l 
      256
- ==> todo
+ ==> done
+
+sme>grep '_DEU' *xml | wc -l 
+    2223
+sme>grep '_ENG' *xml | wc -l 
+    1714
 
 2. add pos to the translation: there are pos attribute in smaoahpa but not in sme
 
