@@ -37,7 +37,7 @@ sme>grep '_ENG' *xml | wc -l
     1714
 
 2. add pos to the translation: there are pos attribute in smaoahpa but not in sme
-
+ ==> done
 
 3. empty swe t-elements: to be transferred from the nob pendants
  ==> todo
