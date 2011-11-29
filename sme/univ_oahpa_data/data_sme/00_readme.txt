@@ -38,3 +38,12 @@ sme>grep '_ENG' *xml | wc -l
 
 2. add pos to the translation: there are pos attribute in smaoahpa but not in sme
 
+
+3. empty swe t-elements: to be transferred from the nob pendants
+ ==> todo
+
+sme>grep '<t stat="pref"/>' *xml | sort | uniq -c | sort -nr 
+ 251 prop_smenob.xml:            <t stat="pref"/>
+  67 multiword_smenob.xml:            <t stat="pref"/>
+
+
