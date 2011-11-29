@@ -31,4 +31,5 @@ sme>grep '<tg xml:lang="deu"/>' *.xml | wc -l
      256
  ==> todo
 
+2. add pos to the translation: there are pos attribute in smaoahpa but not in sme
 
