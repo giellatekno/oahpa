@@ -46,4 +46,7 @@ sme>grep '<t stat="pref"/>' *xml | sort | uniq -c | sort -nr
  251 prop_smenob.xml:            <t stat="pref"/>
   67 multiword_smenob.xml:            <t stat="pref"/>
 
+4. check the consistency of propernouns pos assignment:
+ - pos="prop" vs. pos="n" type="prop"
+ - at the moment, just overtaken strukture from the sme lemmata
 
