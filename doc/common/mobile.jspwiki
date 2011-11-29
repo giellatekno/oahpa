@@ -1,0 +1,57 @@
+!!!Mobile site
+
+The mobile site relies exclusively on programming in templates, CSS and javascript to provide a different experience for mobile users.
+
+The user is not automatically redirected to a mobile site, so much as automatically presented the option to be redirected. This is done in the event that JavaScript detects a mobile user agent, and the user for some reason would prefer to rmain on the non-mobile site (in the case of iPads and similar tablet devices, which may have mobile useragents but have enough screen real-estate).
+
+!! Relevant files
+
+{{{
+	urls.py
+	conf/views.py		-		set_mobile, leave_mobile
+
+	media/js/mobile.js	-		mobile-specific javascript
+
+	media/css/main.css	-		mobile banner rules
+	media/css/mobile.css		-	mobile specific CSS
+
+	templates/smaoahpa_main.html		-	 mobile detect javascript function and banner html
+
+	templates/smaoahpa.html
+	smadrill/templates/game.html
+	smadrill/templates/leksa.html
+	smadrill/templates/leksa_place.html
+	smadrill/templates/mgame.html
+	smadrill/templates/morfa_tooltip.html
+	smadrill/templates/num.html
+	smadrill/templates/special_chars.html
+}}}
+
+!!! Templates
+
+Templates use separate if statements to control specific content that is displayedi n the mobile site. This is done with testing whether request.session.is_mobile is set:
+
+{{{
+	{% if request.session.is_mobile %}
+		{{ ... mobile content ... }}
+	{% else %}
+		{{ ... nonmobile content ... }}
+	{% endif %}
+}}}
+
+!!! Mobile variable setting
+
+Setting the mobile variable is carried out in the following manner: 
+
+1.) Javascript detects whether the user agent contains 'iphone', 'android', or 'mobile'
+2.) Javascript displays a banner at the top of the front page
+3.) The user clicks the link (which directs them to /aarjel/mobile/) and then sends them back to the newly created front-page
+4.) The session variable is set in conf.views.set_mobile (and alternatively conf.views.leave_mobile) if the user decides to leave
+
+!!! Additional features
+
+* Game settings are hidden unless the user chooses to display them (more room for game form)
+
+* Form fields, when entered, display shortcuts to enter special keys (ï, etc.). Most mobile phones have norwegian and swedish layouts that allow easily typing æ, ø, ä, etc., but ï is not present on these layouts. Strangely enough, the default English layout in both iOS and Android is more fully functional in this regard.
+
+
