@@ -1,4 +1,4 @@
-from smaoahpa.smadrill.models import Log, Word, Semtype, Source, Form, Tag, Feedback, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
+from univ_oahpa.univ_drill.models import Log, Word, Semtype, Source, Form, Tag, Feedback, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
 from django.contrib import admin
 from django.contrib.contenttypes import generic
 

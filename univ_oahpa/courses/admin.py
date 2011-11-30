@@ -1,5 +1,5 @@
 from django.contrib import admin
-from courses.models import UserGrade, UserGradeSummary, UserProfile, Course
+from models import UserGrade, UserGradeSummary, UserProfile, Course
 
 class UserGradeInline(admin.TabularInline):
 	model = UserGrade

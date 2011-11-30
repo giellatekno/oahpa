@@ -1,9 +1,9 @@
-import settings
+import univ_oahpa.settings
 
 try:
-	default = settings.DEFAULT_DIALECT
+	default = univ_oahpa.settings.DEFAULT_DIALECT
 except:
-	default = 'SH'
+	default = 'GG'
 
 def dialect(request):
     if not request.session.get('dialect'):
@@ -11,7 +11,7 @@ def dialect(request):
     return {'dialect': request.session.get('dialect')}
 
 def site_root(request):
-	return {'URL_PREFIX': settings.URL_PREFIX}
+	return {'URL_PREFIX': univ_oahpa.settings.URL_PREFIX}
 
 def grammarlinks(request):
 	from univ_drill.models import Grammarlinks

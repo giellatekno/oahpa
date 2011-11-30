@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response
 
 from django.contrib.auth.decorators import login_required
 
-from courses.models import UserProfile, Course, UserGrade
+from models import UserProfile, Course, UserGrade
 
 def trackGrade(gamename, request, c):
 	""" Takes a name of the game, request, and the context, and produces

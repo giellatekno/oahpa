@@ -11,7 +11,7 @@ urlpatterns = patterns('django.contrib.auth.views',
 	(r'^logout/$', logout, {'template_name': 'auth/logout.html'}),
 )
 
-from courses.views import courses_main
+from views import courses_main
 
 urlpatterns += patterns('univ_oahpa.courses.views',
 	(r'^$', courses_main),

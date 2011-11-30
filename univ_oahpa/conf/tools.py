@@ -1,5 +1,4 @@
-﻿import settings
-from settings import OLD_NEW_ISO_CODES as ISO
+from univ_oahpa.settings import OLD_NEW_ISO_CODES as ISO
 
 def switch_language_code(CODE):
 	"""
