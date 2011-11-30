@@ -10,8 +10,8 @@ Temporary dir with the xml formatted entries from ped/sme/inc/morelemmasfromfin.
  ==> DONE
 
 4. check for doubling against the existing entries
- ==> TODO
+ ==> DONE (with exception of nouns and verbs)
 
 5. unify with the existing entries
- ==> TODO
+ ==> DONE
 
