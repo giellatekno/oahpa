@@ -78,7 +78,7 @@ extend_lexicon>grep '<e' out/morelemmasfromfin.csv.xml | wc -l
     AA.csv -> AA
   ==> done
 
-Check these entries for correct books and translations (look for "comment"):
+Check these entries for correct books and translations (search for "comment"):
    2 čáihni
    2 sierra
    2 lasi
@@ -96,7 +96,18 @@ ghandi>grep '<e' * | cut -d ':' -f1 | sort | uniq -c | sort -nr
 
 
  6.3 before merging with the existing entries, check for duplicates and the like
-  ==> todo
+  ==> done
+
+NB: search for "comment"
+
+duplicates in adv_smenob.xml:
+   2 visot
+   2 sierra
+   2 ollu
+   2 hirbmat
+
+Duplicates in noun and verb file: todo by native speakers
 
  6.4 pos-based splitting of the entries and merging with the existing entries
-  ==> todo
+  ==> done
+
