@@ -87,6 +87,13 @@ Check these entries for correct books and translations (look for "comment"):
 
 default <book name="xxx"/> as usual!
 
+ghandi>grep '<e' * | cut -d ':' -f1 | sort | uniq -c | sort -nr
+ 323 n_smenob.xml
+ 179 v_smenob.xml
+  89 adv_smenob.xml
+  67 a_smenob.xml
+  14 mwe_smenob.xml
+
 
  6.3 before merging with the existing entries, check for duplicates and the like
   ==> todo
