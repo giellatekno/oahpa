@@ -309,6 +309,60 @@ import re
 from univ_oahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
 from univ_oahpa.settings import INFINITIVE_ADD as infinitives_add
 
+def relax(strict):
+	"""Returns a list of relaxed possibilities, making changes by relax_pairs.
+		
+		Many possibilities are generated in the event that users are
+		inconsistent in terms of substituting one letter but not substituting 
+		another, however, *all* possibilities are not generated.
+		
+		E.g., *ryøjnesjäjja is accepted for ryöjnesjæjja
+				(user types ø instead of ö consistently)
+				
+				... but ...
+			  
+			  *töølledh is not accepted for töölledh
+				(user mixes the two in one word)
+		
+		Similarly, directionality is included. <i> is accepted for <ï>, but
+		not vice versa.
+		
+		E.g.:  *ååjmedïdh is not accepted for ååjmedidh, 
+				... but ...
+				*miele is accepted for mïele.
+	"""
+	from django.utils.encoding import force_unicode
+	
+	relaxed = strict
+	sub_str = lambda _string, _target, _sub: _string.replace(_target, _sub)
+	
+	relax_pairs = {
+		# key: value
+		# key is accepted for value
+		u'ø': u'ö',
+		u'ä': u'æ',
+		u'i': u'ï'
+	}
+	
+	# Create an iterator. We want to generate as many possibilities as 
+	# possible (very fast), so more relaxed options are available.
+	searches = relax_pairs.items()
+	permutations = itertools.chain(itertools.permutations(searches))
+	perms_flat = sum([list(a) for a in permutations], [])
+	
+	# Individual possibilities
+	relaxed_perms = [sub_str(relaxed, R, S) for S, R in perms_flat]
+	
+	# Possibilities applied one by one
+	for S, R in perms_flat:
+		relaxed = sub_str(relaxed, R, S)
+		relaxed_perms.append(relaxed)
+	
+	# Return list of unique possibilities
+	relaxed_perms = list(set(relaxed_perms))
+	relaxed_perms = [force_unicode(item) for item in relaxed_perms]
+
+	return relaxed_perms
 
 def is_correct(self, game, example=None):
 	"""
