@@ -55,5 +55,8 @@ sme>grep '<t stat="pref"/>' *xml | sort | uniq -c | sort -nr
 	n_prop_smenob.xml  
 	prop_smenob.xml 
 
-
+<quotation>
+prop_nouns.xml - stedsnavn som var i nouns.xml. Det var meninga at de skulle inngå i MorfaS, men generinga har ikke fungert pga av disse krever N+Prop. Men det kunne være lurt å ha dem med i MorfaS, som nouns. - ny fil tmp_towards-sma-format/data_sme/sme/n_prop_smenob.xml
+propernouns.xml - denne skal ikke genereres - kun for Leksa, flytta til 
+</quotation>
 
