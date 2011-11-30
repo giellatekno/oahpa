@@ -1,6 +1,17 @@
-Temporary dir with the xml formatted entries from
-ped/sme/inc/morelemmasfromfin.csv
+Temporary dir with the xml formatted entries from ped/sme/inc/morelemmasfromfin.csv
 
-TODO: add book infos from
-words/dicts/smefin/inc
+1. add book infos from words/dicts/smefin/inc
+ ==> DONE
+
+2. add dummies for _ENG (from fin) and _DEU (from nob) as with the existing entries
+ ==> TODO
+
+3. pos-based split
+ ==> TODO
+
+4. check for doubling against the existing entries
+ ==> TODO
+
+5. unify with the existing entries
+ ==> TODO
 
