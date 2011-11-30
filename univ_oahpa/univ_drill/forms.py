@@ -10,7 +10,7 @@ from univ_oahpa.conf.tools import switch_language_code
 
 from models import *
 #from game import * 
-from univ_oahpa.univ_drill.game import relax
+#from univ_oahpa.univ_drill.game import relax
 import datetime
 import sys
 
