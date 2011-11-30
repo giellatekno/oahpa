@@ -48,14 +48,17 @@ __TILTAK__
 ** tomme '<tr xml:lang="eng"/>' gis dummy-t-element med FIN-VERDI_ENG etter mønster fra sma; also for deu from nob - Ciprian __done__
 ** add pos attributes to t-elements with default of the sme-lemmata - Ciprian: __done__
 
-!Utviding av smeX leksikonfilene
-* Leksikonfilene utvides med ped/sme/inc/morelemmasfromfin.csv. Der hvor semantisk sett mangler, legges foreløpig YYY, så kan vi gå gjennom filene manuelt etter utvidinga. Bokinformasjon finnes i words/dicts/smefin/inc - Ciprian __todo__
-* NB: smenob/smeX leksikonfiler bør utvides med ped/sme/inc/morelemmasfromfin.csv før konvertering til nobsme og finsme. 
+!Utviding av smeX leksikonfilene - Ciprian __todo__
+* Leksikonfilene utvides med ped/sme/inc/morelemmasfromfin.csv. 
+** hvis semantisk sett mangler -> legges foreløpig YYY (manuelt redigering etter utvidinga) 
+** bokinformasjon finnes i words/dicts/smefin/inc i
 ** cealkke1.csv -> c1
 ** cealkke2.csv -> c2
 ** cealkke3.csv -> c3
 ** cealkke4.csv -> c4
 ** AA.csv -> AA
+* stem, gradation, compare, diphthong, rime attributer og dialect elementer må legges til separat
+* NB: smenob/smeX leksikonfiler bør utvides med ped/sme/inc/morelemmasfromfin.csv før konvertering til nobsme og finsme. 
 
 !Leksikonfiler nobsme og finsme: 
 * Skal konverteres fra smenob til nobsme og finsme på samme måte som smanob til nobsma og finsma - algoritme med hensyn til statpref. Ciprian __todo__
