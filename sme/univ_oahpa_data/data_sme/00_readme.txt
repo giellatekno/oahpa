@@ -76,7 +76,14 @@ extend_lexicon>grep '<e' out/morelemmasfromfin.csv.xml | wc -l
     cealkke3.csv -> c3
     cealkke4.csv -> c4
     AA.csv -> AA
-  ==> todo
+  ==> done
+
+Check these entries for correct books and translations (look for "comment"):
+   2 čáihni
+   2 sierra
+   2 lasi
+   2 duohta
+   2 besset
 
  6.3 before merging with the existing entries, check for duplicates and the like
   ==> todo
