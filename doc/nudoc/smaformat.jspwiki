@@ -15,7 +15,7 @@ __TILTAK__
 ** Eiga jspwiki-fil (denne)
 ** Katalogen inneheld ein kopi av smaOahpa, og blir fylt med sme-innhald
 * __Lene__ går gjennom entriane i leksikon og merker <mg> osv (til måndag morgon 14.11) __done__
-* __Ciprian, Heli__ overfører til sma-format og legg inn i univ_oahpa __done__
+* __Ciprian__ overfører til sma-format og legg inn i univ_oahpa __done__
 
 
 !! Leksikonfilene
@@ -44,13 +44,13 @@ __TILTAK__
 ** entry –> e, lemma –> l - Ciprian: __done__
 ** <pos class="N"/> osv –> pos="n" i l-element - Ciprian: __done__
 ** stem-attributter flyttes til l-element: trisyllabic –> 3syll, bisyllabic –> 2syll contracted –> Csyll (denne finnes ikke i sma) - Ciprian: __done__
-** tomme 'book name' gis dummy xxx og tomme 'sem class' gis YYY etter mønster fra sma - Ciprian/Heli __done__
+** tomme 'book name' gis dummy xxx og tomme 'sem class' gis YYY etter mønster fra sma - Ciprian __done__
 ** tomme '<tr xml:lang="eng"/>' gis dummy-t-element med FIN-VERDI_ENG etter mønster fra sma; also for deu from nob - Ciprian __done__
 ** add pos attributes to t-elements with default of the sme-lemmata - Ciprian: __done__
 
 !Utviding av smeX leksikonfilene
-* Leksikonfilene utvides med ped/sme/inc/morelemmasfromfin.csv. Der hvor semantisk sett mangler, legges foreløpig YYY, så kan vi gå gjennom filene manuelt etter utvidinga. Bokinformasjon finnes i words/dicts/smefin/inc - Ciprian/Heli __todo__
-* NB: smenob/smeX leksikonfiler bør utvides med ped/sme/inc/morelemmasfromfin.csv før konvertering til nobsme og finsme. Ciprian/Heli
+* Leksikonfilene utvides med ped/sme/inc/morelemmasfromfin.csv. Der hvor semantisk sett mangler, legges foreløpig YYY, så kan vi gå gjennom filene manuelt etter utvidinga. Bokinformasjon finnes i words/dicts/smefin/inc - Ciprian __todo__
+* NB: smenob/smeX leksikonfiler bør utvides med ped/sme/inc/morelemmasfromfin.csv før konvertering til nobsme og finsme. 
 ** cealkke1.csv -> c1
 ** cealkke2.csv -> c2
 ** cealkke3.csv -> c3
@@ -58,8 +58,8 @@ __TILTAK__
 ** AA.csv -> AA
 
 !Leksikonfiler nobsme og finsme: 
-* Skal konverteres fra smenob til nobsme og finsme på samme måte som smanob til nobsma og finsma - algoritme med hensyn til statpref. Ciprian/Heli __todo__
-* Legg til ekstra sme-synonymer fra de gamle nobsme- og finsme-filene på samme som det gjort i sma fra smanob til smafin - Ciprian/Heli __todo__
+* Skal konverteres fra smenob til nobsme og finsme på samme måte som smanob til nobsma og finsma - algoritme med hensyn til statpref. Ciprian __todo__
+* Legg til ekstra sme-synonymer fra de gamle nobsme- og finsme-filene på samme som det gjort i sma fra smanob til smafin - Ciprian __todo__
 
 !! Andre filer i sme/xml
 
