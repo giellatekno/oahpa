@@ -7,8 +7,8 @@ here_cross = lambda x: os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])
 
 
 # Uncomment the next two lines to enable the admin:
-from django.contrib import admin
-admin.autodiscover()
+# from django.contrib import admin
+# admin.autodiscover()
 
 from settings import URL_PREFIX as prefix
 
@@ -27,7 +27,7 @@ urlpatterns = patterns('',
 	url(r'^%s/courses/' % prefix, include('univ_oahpa.courses.urls')),
 	url(r'^%s/' % prefix, include('univ_oahpa.univ_drill.urls')),
 	url(r'^%s/dialect/$' % prefix, 'univ_oahpa.conf.views.dialect'),
-	url(admin_url, admin.site.root),
+	# url(admin_url, admin.site.root),
 	# (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 )
 

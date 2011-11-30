@@ -4,18 +4,18 @@ from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404, render_to_response
 from django.utils.translation import ugettext as _
 
-from conf.tools import switch_language_code
+from univ_oahpa.conf.tools import switch_language_code
 
 from random import randint
 
-from game import *
+from univ_oahpa.univ_drill.game import *
 from forms import *
 from qagame import *
 
 # comment this out
 # DEBUG = open('/dev/ttys001', 'w')
 
-from courses.views import trackGrade
+from univ_oahpa.courses.views import trackGrade
 
 class Gameview:
 	def init_settings(self):
@@ -226,11 +226,11 @@ class Gameview:
 		return c
 
 
-def smaoahpa(request):
+def univ_oahpa(request):
 	c = RequestContext(request, {
 		'jee': "joku arvo",
 		})
-	return render_to_response('smaoahpa_main.html', c,
+	return render_to_response('univ_oahpa_main.html', c,
 				context_instance=RequestContext(request))
 
 def updating(request):

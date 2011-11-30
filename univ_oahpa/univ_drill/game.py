@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from smaoahpa.smadrill.models import *
-from smaoahpa.smadrill.forms import *
+from univ_oahpa.univ_drill.models import *
+from univ_oahpa.univ_drill.forms import *
 
-from conf.tools import switch_language_code
+from univ_oahpa.conf.tools import switch_language_code
 
 from django.db.models import Q
 from django.http import HttpResponse, Http404
@@ -15,7 +15,7 @@ import os
 import re
 import itertools
 
-import settings
+import univ_oahpa.settings
 
 # DEBUG = open('/dev/ttys001', 'w')
 
@@ -24,7 +24,7 @@ from random import choice
 try:
 	L1 = settings.L1
 except:
-	L1 = 'sma'
+	L1 = 'sme'
 
 try:
 	LOOKUP_TOOL = settings.LOOKUP_TOOL
@@ -43,10 +43,12 @@ except:
 	DEFAULT_DIALECT = None
 
 
+FST_DIRECTORY = '/opt/smi/sme/bin' #Just testing. Hardcoded here because it looks like looking it up in settings.py failed
+LOOKUP_TOOL = '/usr/local/bin/lookup'
 
-
+""" moved to forms.py
 def relax(strict):
-	""" Returns a list of relaxed possibilities, making changes by relax_pairs.
+	Returns a list of relaxed possibilities, making changes by relax_pairs.
 		
 		Many possibilities are generated in the event that users are
 		inconsistent in terms of substituting one letter but not substituting 
@@ -66,7 +68,7 @@ def relax(strict):
 		E.g.:  *ååjmedïdh is not accepted for ååjmedidh, 
 				... but ...
 				*miele is accepted for mïele.
-	"""
+	
 	from django.utils.encoding import force_unicode
 	
 	relaxed = strict
@@ -99,6 +101,7 @@ def relax(strict):
 	relaxed_perms = [force_unicode(item) for item in relaxed_perms]
 
 	return relaxed_perms
+"""
 
 class Info:
 	pass
@@ -724,8 +727,8 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = 'sma-num.fst'
-	answers_fst = 'sma-inum.fst'
+	generate_fst = 'sme-num.fst'
+	answers_fst = 'sme-inum.fst'
 	
 	def get_db_info(self, db_info):
 		""" Options supplied by views
@@ -897,8 +900,8 @@ class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
 	
-	generate_fst = 'iclock-sma.fst'
-	answers_fst = 'clock-sma.fst'
+	generate_fst = 'iclock-sme.fst'
+	answers_fst = 'clock-sme.fst'
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -986,8 +989,8 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 	
-	generate_fst = 'idate-sma.fst'
-	answers_fst = 'date-sma.fst'
+	generate_fst = 'idate-sme.fst'
+	answers_fst = 'date-sme.fst'
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."

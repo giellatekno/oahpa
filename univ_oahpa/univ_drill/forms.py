@@ -4,12 +4,13 @@ from django.db.models import Q
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-import settings
+import univ_oahpa.settings
 
-from conf.tools import switch_language_code
+from univ_oahpa.conf.tools import switch_language_code
 
 from models import *
-from smadrill.game import relax
+#from game import * 
+from univ_oahpa.univ_drill.game import relax
 import datetime
 import sys
 
@@ -305,8 +306,8 @@ BOOK_CHOICES = (
 
 import re
 
-from settings import INFINITIVE_SUBTRACT as infinitives_sub
-from settings import INFINITIVE_ADD as infinitives_add
+from univ_oahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
+from univ_oahpa.settings import INFINITIVE_ADD as infinitives_add
 
 
 def is_correct(self, game, example=None):

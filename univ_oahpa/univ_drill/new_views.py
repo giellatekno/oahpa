@@ -10,7 +10,7 @@ from django.forms.models import formset_factory
 
 from models import Translations2, Word, Tag, Form
 
-from courses.models import UserGrade
+from univ_oahpa.courses.models import UserGrade
 
 # comment this out
 # DEBUG = open('/dev/ttys001', 'w')
