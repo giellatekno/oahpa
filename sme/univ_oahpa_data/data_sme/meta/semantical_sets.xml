@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Specify subsets for sematic supersets here -->
 <lexicon>
-    <subclasses class="CLADV">
-      <sem class="CLADVinit"/>
-      <sem class="CLADVmedial"/>
-      <sem class="CLADVfinal"/>
-    </subclasses>
 	<subclasses class="HUMAN">  <!--Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to "Who do you see?"  -->
       <sem class="FAMILY"/> <!-- Also words like friend..  -->  
       <sem class="PROFESSION"/>   
@@ -59,7 +54,6 @@
       <sem class="PLACE-STAYING"/>
       <sem class="ROOM"/>
       <sem class="BUILDING"/>
-      <sem class="MOVE-V"/>
     </subclasses>
     <subclasses class="OBJECT"> <!-- Fit as answer to "What do you see?"  -->  
       <sem class="THING"/> 
@@ -68,7 +62,6 @@
       <sem class="SLIDE-TOOL"/>
       <sem class="FURNITURE"/>
       <sem class="KITCHEN"/>
-      <sem class="HANDICRAFT"/>
       <sem class="CONTAINER"/> <!-- objects which can be in local case if the question is where is ... og where do you put ...-->
     </subclasses>
     <subclasses class="CONCRETES"> 
