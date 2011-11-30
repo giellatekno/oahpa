@@ -12,9 +12,9 @@
 {% block instructions %}
   {# TODO: strings for instructions. #}
   {% ifequal gametype "string" %}
-    {% trans "Enter the date in numerals (ex. 17.8.)" %}
+    {% trans "Enter the date in numeric format (ex. 17.8.)" %}
   {% else %}
-    {% trans "Enter the South Sámi date." %}
+    {% trans "Write the date in North Sámi (ex. geassemánu goalmmát beaivi)." %}
   {% endifequal %}
 {% endblock %}
 

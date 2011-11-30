@@ -13,6 +13,7 @@ from models import *
 #from univ_oahpa.univ_drill.game import relax
 import datetime
 import sys
+import itertools
 
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
