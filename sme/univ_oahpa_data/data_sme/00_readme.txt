@@ -85,6 +85,9 @@ Check these entries for correct books and translations (look for "comment"):
    2 duohta
    2 besset
 
+default <book name="xxx"/> as usual!
+
+
  6.3 before merging with the existing entries, check for duplicates and the like
   ==> todo
 
