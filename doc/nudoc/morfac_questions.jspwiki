@@ -4,31 +4,37 @@
 !!Attributtoppgaver
 ! <q id="attrpos0">
 * <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
+* <id>leat</id>
 *	<sem class="CLOTHING"/>
 *	<sem class="CLOTHES-adj"/>
 * <text>Dus MAINV ATTR SUBJ</text>
 ! <q id="attrpos1">
 * <text>SUBJ MAINV PRED . Makkár SUBJ2 dá MAINV2</text>
+* <id>leat</id>
 *	<sem class="ABSTRACT"/>
 *	<sem class="ISSUE-adj"/>
 * <text>Dá MAINV ATTR SUBJ</text>
 ! <q id="attrcomp0">
 * <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
+* <id>leat</id>
 *	<sem class="CLOTHING"/>
 *	<sem class="CLOTHES-adj"/>
 * <text>Dus MAINV ATTR SUBJ</text>
 ! <q id="attrcomp1">
 * <text>Dát SUBJ MAINV PRED . Makkár SUBJ2 dát MAINV2</text>
+* <id>leat</id>
 *	<sem class="ABSTRACT"/>
 *	<sem class="ISSUE-adj"/>
 * <text>Dát MAINV ATTR SUBJ</text>
 ! <q id="attrsup0">
 * <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
+* <id>leat</id>
 *	<sem class="CLOTHING"/>
 *	<sem class="CLOTHES-adj"/>
 * <text>Dus MAINV ATTR SUBJ</text>
 ! <q id="attrsup1">
 * <text>Dát SUBJ MAINV PRED . Makkár SUBJ2 dát MAINV2</text>
+* <id>leat</id>
 *	<sem class="ABSTRACT"/>
 *	<sem class="ISSUE-adj"/>
 * <text>Dát MAINV ATTR SUBJ</text>
@@ -79,12 +85,14 @@
 
 !!Predsuperlativ oppgaver
 ! <q id="predsup0">
+* <id>leat</id>
 * <text>Gal dáppe MAINV ATTR SUBJ</text> <!-- compare="yes"-->
 *	<sem class="CLOTHING"/>
 *	<sem class="CLOTHES-adj"/>
 * <text>Muhto mu SUBJ MAINV PRED</text>
 ! <q id="predsup1">
 * <text>Gal die MAINV ATTR SUBJ</text> <!-- compare="yes"-->
+* <id>leat</id>
 *	<sem class="ABSTRACT"/>
 *	<sem class="ISSUE-adj"/>
 * <text>Muhto dát SUBJ MAINV PRED</text>
@@ -94,30 +102,37 @@
 !! Illativ
 ! <q id="nill0">
 * <text>Masa SUBJ MAINV</text>
+* <id>liikot</id>
 * <text>SUBJ MAINV N-ILL</text>
 *	<sem class="OBJECT"/>
 ! <!-- <q id="nill1">
 * <text>INTERR SUBJ MAINV OBJ</text>
+* <id>gii</id>
+* <id>addit</id>
 *	<sem class="OBJECT"/>
 * <text>SUBJ MAINV OBJ N-ILL</text>
 *	<sem class="HUMAN"/>
 ! <q id="nill1sg">
 * <text>Geasa SUBJ MAINV OBJ</text>
+* <id>addit</id>
 *	<sem class="OBJECT"/>
 * <text>SUBJ MAINV OBJ N-ILL</text>
 *	<sem class="HUMAN"/>
 ! <q id="nill1pl">
 * <text>Geaidda SUBJ MAINV OBJ</text>
+* <id>addit</id>
 *	<sem class="OBJECT"/>
 * <text>SUBJ MAINV OBJ N-ILL</text>
 *	<sem class="HUMAN"/>
 ! <q id="nill2">
 * <text>Gosa SUBJ MAINV</text>
+* <id>mannat</id>
 * <text>SUBJ MAINV N-ILL</text>
 *	<sem class="PLACE"/>
 ! <!-- <q id="nill3">
 * <text>Gosa SUBJ MAINV čoavdagiid</text>
 *	<sem class="HUMAN"/>
+* <id>bidjat</id>
 * <text>SUBJ MAINV čoavdagiid N-ILL</text>
 *	<sem class="CONTAINER"/>
 ! <q id="nill3sg">
@@ -133,6 +148,8 @@
 ! <!-- <q id="nill4">
 * <text>INTERR SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>gii</id>
+* <id>suhttat</id>
 * <text>SUBJ MAINV N-ILL</text>
 *	<sem class="HUMAN"/>
 ! <q id="nill4sg">
@@ -148,7 +165,10 @@
 ! <!-- <q id="nill5">
 * <text>INTERR SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>gii</id>
+* <id>luohttit</id>
 * <text>SUBJ MAINV N-ILL</text>
+* <id>son</id>
 *	<sem class="HUMAN"/>
 ! <q id="nill5sg">
 * <text>Geasa SUBJ luohttá</text>
@@ -162,144 +182,183 @@
 *	<sem class="HUMAN"/>
 ! <q id="nill6">
 * <text>Masa SUBJ MAINV</text>
+* <id>illudit</id>
 * <text>SUBJ MAINV N-ILL</text>
 *	<sem class="TIME-POINT-GEN"/>
 ! <q id="nill7">
 * <text>Masa SUBJ MAINV</text>
+* <id>illudit</id>
 * <text>SUBJ MAINV N-ILL</text>
 *	<sem class="TIME-POINT-GEN-PL"/>
 ! <!-- <q id="nill8">
 * <text>INTERR SUBJ MAINV</text>
+* <id>gii</id>
+* <id>jáhkkit</id>
 * <text>SUBJ MAINV N-ILL</text>
 *	<sem class="HUMAN"/>
 ! <q id="nill8sg">
 * <text>Geasa SUBJ MAINV</text>
+* <id>jáhkkit</id>
 * <text>SUBJ MAINV N-ILL</text>
 *	<sem class="HUMAN"/>
 ! <q id="nill8pl">
 * <text>Geaidda SUBJ MAINV</text>
+* <id>jáhkkit</id>
 * <text>SUBJ MAINV N-ILL</text>
 *	<sem class="HUMAN"/>
 ! <q id="nill9">
 * <text>Masa SUBJ MAINV</text>
+* <id>jáhkkit</id>
 * <text>SUBJ MAINV N-ILL</text>
 *	<sem class="EDUCATION"/>
+
+!! Lokativ
 ! <!-- <q id="nloc0">
 * <text>INTERR MAINV váralaš SUBJ</text>
+* <id>gii</id>
+* <id>leat</id>
 *	<sem class="ANIMAL"/>
 * <text>N-LOC MAINV</text>
 *	<sem class="HUMAN"/>
-
-!! Lokativ
-
 ! <q id="nloc0sg">
 * <text>Geas MAINV váralaš SUBJ</text>
 *	<sem class="ANIMAL"/>
+* <id>leat</id>
 * <text>N-LOC MAINV</text>
 *	<sem class="HUMAN"/>
 ! <q id="nloc0pl">
 * <text>Geain MAINV váralaš SUBJ</text>
 *	<sem class="ANIMAL"/>
+* <id>leat</id>
 * <text>N-LOC MAINV</text>
 *	<sem class="HUMAN"/>
 ! <!-- <q id="nloc1">
 * <text>Gos SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>leat</id>
 * <text>SUBJ MAINV N-LOC</text>
+* <id>son</id>
 *	<sem class="PLACE"/>
 ! <q id="nloc1sg">
 * <text>Gos SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>leat</id>
 * <text>Son MAINV N-LOC</text>
 *	<sem class="PLACE"/>
 ! <q id="nloc1pl">
 * <text>Gos SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>leat</id>
 * <text>Sii MAINV N-LOC</text>
 *	<sem class="PLACE"/>
 ! <!-- <q id="nloc2">
 * <text>Gos SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>boahtit</id>
 * <text>SUBJ MAINV N-LOC</text>
+* <id>son</id>
 *	<sem class="PLACE"/>
 ! <q id="nloc2sg">
 * <text>Gos SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>boahtit</id>
 * <text>Son MAINV N-LOC</text>
 *	<sem class="PLACE"/>
 ! <q id="nloc2pl">
 * <text>Gos SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>boahtit</id>
 * <text>Sii MAINV N-LOC</text>
 *	<sem class="PLACE"/>
 ! <!-- <q id="nloc3">
 * <text>Mas SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>ballat</id>
 * <text>SUBJ MAINV N-LOC</text>
 *	<sem class="ANIMAL"/>
+* <id>son</id>
 ! <q id="nloc3sg">
 * <text>Mas SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>boahtit</id>
 * <text>Son MAINV N-LOC</text>
 *	<sem class="ANIMAL"/>
 ! <q id="nloc3pl">
 * <text>Mas SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>boahtit</id>
 * <text>Sii MAINV N-LOC</text>
 *	<sem class="ANIMAL"/>
 ! <!-- <q id="nloc4">
 * <text>Mas SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>váruhit</id>
 * <text>SUBJ MAINV N-LOC</text>
 *	<sem class="VEHICLE"/>
+* <id>son</id>
 ! <q id="nloc4sg">
 * <text>Mas SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>váruhit</id>
 * <text>Son MAINV N-LOC</text>
 *	<sem class="VEHICLE"/>
 ! <q id="nloc4pl">
 * <text>Mas SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>váruhit</id>
 * <text>Sii MAINV N-LOC</text>
 *	<sem class="VEHICLE"/>
 ! <!-- <q id="nloc5">
 * <text>INTERR SUBJ MAINV</text>
+* <id>gii</id>
+* <id>beroštit</id>
 * <text>SUBJ MAINV N-LOC</text>
 *	<sem class="HUMAN"/>
 ! <q id="nloc5sg">
 * <text>Geas SUBJ MAINV</text>
+* <id>beroštit</id>
 * <text>SUBJ MAINV N-LOC</text>
 *	<sem class="HUMAN"/>
 ! <q id="nloc5pl">
 * <text>Geain SUBJ MAINV</text>
+* <id>beroštit</id>
 * <text>SUBJ MAINV N-LOC</text>
 *	<sem class="HUMAN"/>
 ! <q id="nloc6">
 * <text>Mas SUBJ MAINV</text>
+* <id>geargat</id>
 * <text>SUBJ MAINV N-LOC</text>
 *	<sem class="EDUCATION"/>
 ! <!-- <q id="nloc7">
 * <text>INTERR SUBJ MAINV skeaŋkka</text>
+* <id>gii</id>
+* <id>oažžut</id>
 * <text>SUBJ MAINV skeaŋkka N-LOC</text>
 *	<sem class="HUMAN"/>
 ! <q id="nloc7sg">
 * <text>Geas SUBJ MAINV skeaŋkka</text>
+* <id>oažžut</id>
 * <text>SUBJ MAINV skeaŋkka N-LOC</text>
 *	<sem class="HUMAN"/>
 ! <q id="nloc7pl">
 * <text>Geain SUBJ MAINV skeaŋkkaid</text>
+* <id>oažžut</id>
 * <text>SUBJ MAINV skeaŋkkaid N-LOC</text>
 *	<sem class="HUMAN"/>
 ! <!-- <q id="nloc8">
 * <text>INTERR SUBJ MAINV ságaid</text>
+* <id>gii</id>
+* <id>gullat</id>
 * <text>SUBJ MAINV ságaid N-LOC</text>
 *	<sem class="HUMAN"/>
 ! <q id="nloc8sg">
 * <text>Geas SUBJ MAINV ságaid</text>
+* <id>gullat</id>
 * <text>SUBJ MAINV ságaid N-LOC</text>
 *	<sem class="HUMAN"/>
 ! <q id="nloc8pl">
 * <text>Geain SUBJ MAINV ságaid</text>
+* <id>gullat</id>
 * <text>SUBJ MAINV ságaid N-LOC</text>
 *	<sem class="HUMAN"/>
 
@@ -307,41 +366,51 @@
 
 ! <q id="nacc0">
 * <text>Maid SUBJ MAINV</text>
+* <id>oaidnit</id>
 * <text>SUBJ MAINV N-ACC</text>
 *	<sem class="OBJECT"/>
 ! <!-- <q id="nacc1">
 * <text>Maid SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>niegadit</id>
 * <text>SUBJ MAINV N-ACC</text>
 *	<sem class="OBJECT"/>
 ! <q id="nacc1sg">
 * <text>Maid SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>niegadit</id>
 * <text>Son MAINV N-ACC</text>
 *	<sem class="OBJECT"/>
 ! <q id="nacc1pl">
 * <text>Maid SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>niegadit</id>
 * <text>Sii MAINV N-ACC</text>
 *	<sem class="OBJECT"/>
 ! <q id="nacc2">
 * <text>Maid SUBJ MAINV</text>
+* <id>oastit</id>
 * <text>SUBJ MAINV N-ACC</text>
 *	<sem class="CLOTHING"/>
 ! <q id="nacc3">
 * <text>Maid SUBJ MAINV</text>
+* <id>sárgut</id>
 * <text>SUBJ MAINV N-ACC</text>
 *	<sem class="ANIMAL"/>
 ! <!-- <q id="nacc4">
 * <text>INTERR SUBJ MAINV</text>
+* <id>gii</id>
+* <id>dovdat</id>
 * <text>SUBJ MAINV N-ACC</text>
 *	<sem class="HUMAN"/>
 ! <q id="nacc4sg">
 * <text>Gean SUBJ MAINV</text>
+* <id>dovdat</id>
 * <text>SUBJ MAINV N-ACC</text>
 *	<sem class="HUMAN"/>
 ! <q id="nacc4pl">
 * <text>Geaid SUBJ MAINV</text>
+* <id>dovdat</id>
 * <text>SUBJ MAINV N-ACC</text>
 *	<sem class="HUMAN"/>
 
@@ -350,6 +419,8 @@
 ! <!-- <q id="ngen0">
 * <text>INTERR SUBJ dát MAINV</text>
 *	<sem class="OBJECT"/>
+* <id>gii</id>
+* <id>leat</id>
 * <text>Dát MAINV N-GEN</text>
 *	<sem class="HUMAN"/>
 * <text>Dát MAINV N-GEN</text>
@@ -365,77 +436,97 @@
 *	<sem class="HUMAN"/>
 ! <!-- <q id="ngen1">
 * <text>Man duohkái SUBJ MAINV</text>
+* <id>čiehkadit</id>
 *	<sem class="HUMAN"/>
+* <id>son</id>
 * <text>SUBJ MAINV N-GEN duohkái</text>
 *	<sem class="BUILDING"/>
 ! <q id="ngen1sg">
 * <text>Man duohkái SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>čiehkadit</id>
 * <text>Son MAINV N-GEN duohkái</text>
 *	<sem class="BUILDING"/>
 ! <q id="ngen1pl">
 * <text>Man duohkái SUBJ MAINV</text>
 *	<sem class="HUMAN"/>
+* <id>čiehkadit</id>
 * <text>Sii MAINV N-GEN duohkái</text>
 *	<sem class="BUILDING"/>
 ! <!-- <q id="ngen2">
 * <text>Goas SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>vuoiŋŋastit</id>
 * <text>SUBJ MAINV N-GEN</text>
 *	<sem class="TIME-POINT-GEN"/>
+* <id>son</id>
 ! <q id="ngen2sg">
 * <text>Goas SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>vuoiŋŋastit</id>
 * <text>Son MAINV N-GEN</text>
 *	<sem class="TIME-POINT-GEN"/>
 ! <q id="ngen2pl">
 * <text>Goas SUBJ MAINV</text>
+* <id>vuoiŋŋastit</id>
 *	<sem class="FAMILY"/>
 * <text>Sii MAINV N-GEN</text>
 *	<sem class="TIME-POINT-GEN"/>
 ! <!-- <q id="ngen3">
 * <text>Goas SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>hárjehallat</id>
 * <text>SUBJ MAINV N-GEN</text>
 *	<sem class="TIME-POINT-GEN"/>
+* <id>son</id>
 ! <q id="ngen3sg">
 * <text>Goas SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>hárjehallat</id>
 * <text>Son MAINV N-GEN</text>
 *	<sem class="TIME-POINT-GEN"/>
 ! <q id="ngen3pl">
 * <text>Goas SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>hárjehallat</id>
 * <text>Sii MAINV N-GEN</text>
 *	<sem class="TIME-POINT-GEN"/>
 ! <!-- <q id="ngen4">
 * <text>Goas SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>vuoiŋŋastit</id>
 * <text>SUBJ MAINV N-GEN</text>
 *	<sem class="TIME-POINT-GEN-PL"/>
+* <id>son</id>
 ! <q id="ngen4sg">
 * <text>Goas SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>vuoiŋŋastit</id>
 * <text>Son MAINV N-GEN</text>
 *	<sem class="TIME-POINT-GEN-PL"/>
 ! <q id="ngen4pl">
 * <text>Goas SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>vuoiŋŋastit</id>
 * <text>Sii MAINV N-GEN</text>
 *	<sem class="TIME-POINT-GEN-PL"/>
 ! <!-- <q id="ngen5">
 * <text>Goas SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>hárjehallat</id>
 * <text>SUBJ MAINV N-GEN</text>
+* <id>son</id>
 *	<sem class="TIME-POINT-GEN-PL"/>
 ! <q id="ngen5sg">
 * <text>Goas SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>hárjehallat</id>
 * <text>Son MAINV N-GEN</text>
 *	<sem class="TIME-POINT-GEN-PL"/>
 ! <q id="ngen5pl">
 * <text>Goas SUBJ MAINV</text>
 *	<sem class="FAMILY"/>
+* <id>hárjehallat</id>
 * <text>Sii MAINV N-GEN</text>
 *	<sem class="TIME-POINT-GEN-PL"/>
 
@@ -444,6 +535,7 @@
 ! <!-- <q id="ncom6">
 * <text>INTERR SUBJ MAINV</text>
 *	<sem class="COMV"></sem>
+* <id>gii</id>
 * <text>SUBJ MAINV N-COM</text>
 *	<sem class="HUMAN"/>
 ! <q id="ncom6sg">
@@ -458,22 +550,29 @@
 *	<sem class="HUMAN"/>
 ! <!-- <q id="ncom7">
 * <text>INTERR SUBJ MAINV ruoktot</text>
+* <id>mii</id>
+* <id>mannat</id>
 * <text>SUBJ MAINV ruoktot N-COM</text>
 *	<sem class="VEHICLE"/>
 ! <q id="ncom7sg">
 * <text>Mainna SUBJ MAINV ruoktot</text>
+* <id>mannat</id>
 * <text>SUBJ MAINV ruoktot N-COM</text>
 *	<sem class="VEHICLE"/>
 ! <q id="ncom7pl">
 * <text>Maiguin SUBJ MAINV ruoktot</text>
+* <id>mannat</id>
 * <text>SUBJ MAINV ruoktot N-COM</text>
 *	<sem class="VEHICLE"/>
 *<!--<q id="ncom8">
 * <text>INTERR SUBJ MAINV</text>
+* <id>mii</id>
+* <id>čierastit</id>
 * <text>SUBJ MAINV N-COM</text>
 *	<sem class="SLIDE-TOOL"/>
 ! <q id="ncom8sg">
 * <text>Mainna SUBJ MAINV</text>
+* <id>čierastit</id>
 * <text>SUBJ MAINV N-COM</text>
 *	<sem class="SLIDE-TOOL"/>
 
@@ -483,41 +582,52 @@
 * <text>Manin SUBJ MAINV PLACE</text>
 *	<sem class="FAMILY"/>
 *	<sem class="PLACE-NAME"/>
+* <id>bargat</id>
 * <text>SUBJ MAINV N-ESS</text>
 *	<sem class="PROFESSION"/>
+* <id>son</id>
 ! <q id="ness0sg">
 * <text>Manin SUBJ MAINV PLACE</text>
 *	<sem class="FAMILY"/>
 *	<sem class="PLACE-NAME"/>
+* <id>bargat</id>
 * <text>Son MAINV N-ESS</text>
 *	<sem class="PROFESSION"/>
 ! <q id="ness0pl">
 * <text>Manin SUBJ MAINV PLACE</text>
 *	<sem class="FAMILY"/>
 *	<sem class="PLACE-NAME"/>
+* <id>bargat</id>
 * <text>Sii MAINV N-ESS</text>
 *	<sem class="PROFESSION"/>
 ! <!-- <q id="ness1">
 * <text>Manin SUBJ MAINV máidnasis</text>
 *	<sem class="HUMAN"/>
+* <id>šaddat</id>
 * <text>SUBJ MAINV N-ESS</text>
 *	<sem class="MYTH"/>
+* <id>son</id>
 ! <q id="ness1sg">
 * <text>Manin SUBJ MAINV máidnasis</text>
 *	<sem class="PAIR"/>
+* <id>šaddat</id>
 * <text>Son MAINV N-ESS</text>
 *	<sem class="MYTH"/>
 ! <q id="ness1pl">
 * <text>Manin SUBJ MAINV máidnasis</text>
 *	<sem class="PAIR"/>
+* <id>šaddat</id>
 * <text>Sii MAINV N-ESS</text>
 *	<sem class="MYTH"/>
 ! <q id="ness2">
 * <text>Manin SUBJ MAINV karneválas</text>
+* <id>gárvodit</id>
 * <text>SUBJ MAINV N-ESS</text>
+* <id>son</id>
 *	<sem class="MYTH-HUMAN"/>
 ! <q id="ness3">
 * <text>Manin SUBJ MAINV OBJ</text>
+* <id>gohkčodit</id>
 * <text>SUBJ MAINV OBJ N-ESS</text>
 *	<sem class="FAMILY"/>
 ! <q id="ness4">
@@ -800,13 +910,16 @@
 
 ! <q id="prs0">
 * <text>Maid SUBJ MAINV odne</text>
+* <id>bargat</id>
 * <text>Odne SUBJ MAINV</text>
 *	<sem class="ACTIVITY"/>
 ! <!-- <q id="prs1">
 * <text>Maid SUBJ MAINV odne</text>
 *	<sem class="HUMAN"/>
+* <id>bargat</id>
 * <text>Odne SUBJ MAINV</text>
 *	<sem class="ACTIVITY"/>
+* <id>son</id>
 ! <q id="prs1sg">
 * <text>Maid SUBJ bargá odne</text>
 *	<sem class="HUMAN"/>
@@ -827,19 +940,24 @@
 *	<sem class="ACTIVITY"/>
 * <text>De MAINV</text>
 * <text>Odne gal NEG CONNEG</text>
+* <id>ii</id>
 * <text>Odne gal NEG CONNEG</text>
+* <id>ii</id>
 
 
 !! Preteritum
 
 ! <q id="prt0">
 * <text>Maid SUBJ MAINV ikte</text>
+* <id>bargat</id>
 * <text>Ikte SUBJ MAINV</text>
 *	<sem class="ACTIVITY"/>
 ! <!-- <q id="prt1">
 * <text>Maid SUBJ MAINV ikte</text>
 *	<sem class="HUMAN"/>
+* <id>bargat</id>
 * <text>Ikte SUBJ MAINV</text>
+* <id>son</id>
 *	<sem class="ACTIVITY"/>
 ! <q id="prt1sg">
 * <text>Maid SUBJ barggai ikte</text>
@@ -861,7 +979,9 @@
 *	<sem class="ACTIVITY"/>
 * <text>De MAINV</text>
 * <text>Ikte gal NEG PRFPRC</text>
+* <id>ii</id>
 * <text>Ikte gal NEG PRFPRC</text>
+* <id>ii</id>
 
 
 !! Kondisjonalis
@@ -870,10 +990,13 @@
 * <text>Maid SUBJ MAINV luomus</text>
 * <text>Luomus SUBJ V-COND</text>
 *	<sem class="ACTIVITY"/>
+* <id>bargat</id>
 ! <!-- <q id="vcond1">
 * <text>Maid SUBJ MAINV luomus</text>
 *	<sem class="HUMAN"/>
+* <id>bargat</id>
 * <text>Luomus SUBJ V-COND</text>
+* <id>son</id>
 *	<sem class="ACTIVITY"/>
 ! <q id="vcond1sg">
 * <text>Maid SUBJ barggašii luomus</text>
@@ -900,7 +1023,9 @@
 * <sem class="ACTIVITY"/>
 * <text>Luomus gal MAINV</text>
 * <text>Luomus gal NEG CONNEG</text>
+* <id>ii</id>
 * <text>Luomus gal NEG CONNEG</text>
+* <id>ii</id>
 
 
 !! Potensialis
