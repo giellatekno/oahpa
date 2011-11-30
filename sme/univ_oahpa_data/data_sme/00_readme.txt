@@ -81,3 +81,5 @@ extend_lexicon>grep '<e' out/morelemmasfromfin.csv.xml | wc -l
  6.3 before merging with the existing entries, check for duplicates and the like
   ==> todo
 
+ 6.4 pos-based splitting of the entries and merging with the existing entries
+  ==> todo
