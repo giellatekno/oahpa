@@ -7,7 +7,7 @@ Temporary dir with the xml formatted entries from ped/sme/inc/morelemmasfromfin.
  ==> DONE
 
 3. pos-based split
- ==> TODO
+ ==> DONE
 
 4. check for doubling against the existing entries
  ==> TODO
