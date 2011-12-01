@@ -8,7 +8,7 @@ DATO=`date`
 # Printing headers:
 
 # c. oahpa adj
-echo "!!!Tabell over VD-adjektiv med Norm" > nudoc/gen/sme_adjOahpatabellNorm.jspwiki
+echo "!!!Tabell over Oahpa-adjektiv med Norm" > nudoc/gen/sme_adjOahpatabellNorm.jspwiki
 echo "" >> nudoc/gen/sme_adjOahpatabellNorm.jspwiki
 echo "Testdato: $DATO" >> nudoc/gen/sme_adjOahpatabellNorm.jspwiki
 echo "||  lemma  ||  Attr  ||  Sg Nom || Comp Attr || Comp Sg Nom || Superl Sg Nom" >> nudoc/gen/sme_adjOahpatabellNorm.jspwiki
