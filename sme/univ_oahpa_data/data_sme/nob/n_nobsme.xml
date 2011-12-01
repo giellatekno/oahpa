@@ -57,7 +57,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="TIME"/>
+            <sem class="TIME-OTHER"/>
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">báresahki</t>
@@ -415,7 +415,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="TIME"/>
+            <sem class="TIME-OTHER"/>
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">mearrebeaivi</t>
@@ -2377,7 +2377,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="TIME"/>
+            <sem class="TIME-OTHER"/>
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">gaskaáigi</t>
@@ -3727,7 +3727,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="TIME"/>
+            <sem class="TIME-OTHER"/>
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">mánnávuohta</t>
@@ -3759,7 +3759,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="TIME"/>
+            <sem class="TIME-OTHER"/>
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">nealgejahki</t>
@@ -3855,7 +3855,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="TIME"/>
+            <sem class="TIME-OTHER"/>
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">nohkkanáigi</t>
@@ -3903,7 +3903,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="TIME"/>
+            <sem class="TIME-OTHER"/>
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">nuorravuohta</t>
@@ -3927,7 +3927,7 @@
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">nuorra</t>
-            <t pos="n" sem-cl="TIME" src="c2" nob-stat="yes">nuorravuohta</t>
+            <t pos="n" sem-cl="TIME-OTHER" src="c2" nob-stat="yes">nuorravuohta</t>
          </tg>
       </mg>
    </e>
@@ -4241,7 +4241,7 @@
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">ođđajagemánnu</t>
-            <t pos="n" sem-cl="TIME" src="AA" nob-stat="yes">ođđajagimánnu</t>
+            <t pos="n" src="AA" nob-stat="yes">ođđajagimánnu</t>
          </tg>
       </mg>
    </e>
@@ -5936,31 +5936,12 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="TIME"/>
+            <sem class="TIME-DURABILITY"/>
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">kvárta</t>
-            <t pos="n" sem-cl="TIME" src="AA" nob-stat="yes">várta</t>
+            <t pos="n" src="AA" nob-stat="yes">várta</t>
             <t pos="n" sem-cl="AMOUNT" src="algu" nob-stat="yes">goartil</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_kvarter_n" stat="pref">
-      <lg>
-         <l pos="n">kvarter</l>
-      </lg>
-      <sources>
-         <book name="AA"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="TIME"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">várta</t>
-            <t pos="n" sem-cl="TIME" src="AA" nob-stat="yes">kvárta</t>
-            <t pos="n" sem-cl="AMOUNT" src="algu" nob-stat="yes">goartil</t>
-            <t pos="n" sem-cl="TIME-DURABILITY" src="AA" nob-stat="yes">kvárta</t>
          </tg>
       </mg>
    </e>
@@ -6005,7 +5986,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="TIME"/>
+            <sem class="TIME-OTHER"/>
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">áigelohku</t>
@@ -6236,7 +6217,7 @@
       </sources>
       <mg>
          <semantics>
-            <sem class="TIME"/>
+            <sem class="TIME-OTHER"/>
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">šaddanbeaivi</t>
@@ -6261,7 +6242,7 @@
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">riegádanbeaivi</t>
-            <t pos="n" sem-cl="TIME" src="c1" nob-stat="yes">šaddanbeaivi</t>
+            <t pos="n" sem-cl="TIME-OTHER" src="c1" nob-stat="yes">šaddanbeaivi</t>
          </tg>
       </mg>
    </e>
@@ -31309,6 +31290,7 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">goartil</t>
             <t pos="n" sem-cl="TIME-DURABILITY" src="AA" nob-stat="yes">kvárta</t>
+            <t pos="n" nob-stat="yes">várta</t>
          </tg>
       </mg>
    </e>
@@ -31326,6 +31308,7 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">kvárta</t>
             <t pos="n" sem-cl="AMOUNT" src="algu" nob-stat="yes">goartil</t>
+            <t pos="n" nob-stat="yes">várta</t>
          </tg>
       </mg>
    </e>
