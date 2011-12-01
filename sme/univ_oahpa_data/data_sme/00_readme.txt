@@ -9,5 +9,5 @@ sme>grep '<t stat="pref"/>' *xml | sort | uniq -c | sort -nr
   67 multiword_smenob.xml:            <t stat="pref"/>
 
 2. add synonyms from the old data from nobsme and finsme to the new data sets
- ==>
+ ==> todo
 
