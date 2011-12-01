@@ -14,11 +14,11 @@ Vi skal rydde opp og forbedre strukturen.
 Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to Who do you see?  
 * 53 FAMILY  - Also words like friend..    
 * 88 PROFESSION   
-* 18 ACTOR
-* 87 OTHERS
+* 18 ACTOR - in 2 supersets
+* 87 OTHERS  - in 2 supersets
 !HUMAN-LIKE  
-* 18 ACTOR  
-* 87 OTHERS  
+* 18 ACTOR - does not fit as answer to Who do you see?  - in 2 supersets
+* 87 OTHERS   - in 2 supersets
 * 15 MYTH-HUMAN  
 * 104 HUMAN-V  
 * 61 HUMAN-adj2    - HUMAN-adj is meant only for Morfa, and contains words from other sets also 
@@ -53,21 +53,21 @@ Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to Who d
 * 17 TIME-OTHER
 * 70 TIME_ADV
 !PLACE  - Fit as answer to Where is the girl?  
-* 19 PLACE-STAYING
-* 26 ROOM
-* 78 BUILDING
+* 19 PLACE-STAYING  - in two supersets
+* 26 ROOM  - in two supersets
+* 78 BUILDING - in two supersets
 !OBJECT - Fit as answer to What do you see?    
-* 51 THING 
-* 26 TOOL 
-* 8 TOY
-* 5 SLIDE-TOOL
-* 36 FURNITURE
-* 12 KITCHEN
-* 29 CONTAINER - objects which can be in local case if the question is where is ... og where do you put ...
+* 51 THING  - in two supersets
+* 26 TOOL   - in two supersets
+* 8 TOY   - in two supersets
+* 5 SLIDE-TOOL - in two supersets
+* 36 FURNITURE  - in two supersets
+* 12 KITCHEN - in two supersets
+* 29 CONTAINER - objects which can be in local case if the question is where is ... og where do you put ...  - in two supersets
 !CONCRETES 
-* 51 THING 
-* 12 KITCHEN 
-* 29 CONTAINER
+* 51 THING  - in two supersets
+* 12 KITCHEN  - in two supersets
+* 29 CONTAINER  - in two supersets
 * 5 INSTRUMENT
 * 43 EXPOSURE-V 
 * 29 OBJECT-adj
@@ -85,11 +85,11 @@ Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to Who d
 * 12 CLOTHES-V 
 * 34 CLOTHES-adj
 !BUILDINGSROOMS   
-* 78 BUILDING
-* 26 ROOM
+* 78 BUILDING - in two supersets
+* 26 ROOM - in two supersets
 * 10 SHOP
 * 9 CONSTRUCTION 
-* 36 FURNITURE
+* 36 FURNITURE  - in two supersets
 * 31 ROOM-PART
 * 13 ROOM-OTHER
 !NATUREWORDS   
@@ -108,14 +108,14 @@ Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to Who d
 * 3 ARRANGEMENT-PL  
 * 15 CHRISTMAS 
 * 6 SPORT
-* 5 SLIDE-TOOL
-* 8 TOY
+* 5 SLIDE-TOOL  - in two supersets
+* 8 TOY   - in two supersets
 * 25 LEISURETIME/AT_HOME-V
 * 13 SHOW   - For Morfa: Maid don geahčat? 
 !PLACES  
 * 38 PLACE-NAME  
 * 2 PLACE-NAME-PL  
-* 19 PLACE-STAYING
+* 19 PLACE-STAYING  - in two supersets
 * 6 PLACE-OTHER
 * 10 PLACE-LOCAL
 * 20 TRAVELLING 
@@ -148,7 +148,7 @@ Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to Who d
 * 19 ORGANIZATION
 * 23 FINANCE  
 * 2 HANDICRAFTS-PL 
-* 26 TOOL 
+* 26 TOOL   - in two supersets
 * 25 HANDICRAFTS
 * 49 WORK/ECONOMY-V
 * 4 WORK/ECONOMY_ADV
