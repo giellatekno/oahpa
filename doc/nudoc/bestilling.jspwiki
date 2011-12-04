@@ -6,14 +6,19 @@
 # implementere klokka
 # implementere datoer
 ! Leksikonfiler for Leksa, MorfaS, MorfaC og Vasta
-* a_smenob.xml
-* adv_smenob.xml
-* multiword_smenob.xml
-* n_smenob.xml
-* num_smenob.xml
-* prop_smenob.xml
-* v_smenob.xml
-* pronounforms.csv
+Bøyningsparadigme trenges ikke for Leksa, men for de andre programmene
+* Skal genereres bøyningsparadigme:
+** a_smenob.xml
+** n_smenob.xml
+*** Generering: vær obs på type-attributt for noen av entryene: N+Actor og G3+N
+** num_smenob.xml
+** prop_smenob.xml
+** v_smenob.xml
+** fillings_smenob.xml - er usikker på om vi trenger denne fila
+* Skal ikke genereres bøyningsparadigme:
+** adv_smenob.xml
+** multiword_smenob.xml
+* pronounforms.csv inneholder paradigmer
 * Tilsvarende filer i nob/ og fin/ bortsett fra pronounforms.csv
 ! Leksa
 # implementere funksjoner som allerede finnes i smeOahpa, med adv_fila i tillegg
