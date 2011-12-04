@@ -1,52 +1,33 @@
 !!!Implementering og installering av kildefiler i smeOahpa
 
-!!Progresjon og rekkefølge i implementeringsarbeidet
-# Ferdige kildefiler
-## reinstallere nouns.xml, numerals.xml, adjectives.xml, verbs.xml, fillings.xml - både smenob og nobsme
-## legge til c1, c1-c2, c1-c3, c1-c4 i bokmenyen
-## installere ny fil: adverbs.xml  - både smenob og nobsme, går inn i sett i semantic_sets.xml, som må reinstalleres LEKSA
-## implementere pronomener som oppgaver i MORFAS - pronomene må genereres src/prongeneration.txt. Personlige pronomener (som i smaOahpa), men også refleksive pronomener
-## Fikse bug i MORFAC
-## implementere klokka i NUMRA
-## implementere datoer i NUMRA
-# Ikke ferdige kildefiler
-## installere ny fil: mwe.xml - denne skal ha eget sett (se smaoahpa),  - både smenob og nobsme LEKSA - mangler oversettinger til swe og fin
-## implementere pronomener som oppgaver i MORFAC - questions_pronouns.xml er ikke skrevet
-## installere nye dialoger SAHKA - ingenting er forandra i oppsettet, men kildefilene er ikke skrevet
-## implementere CEALKKA i VASTA - kildefilene er ikke skrevet
+!!Oversikt og rekkefølge i implementeringsarbeidet
+! Numra 
+* implementere klokka
+* implementere datoer
+! Leksikonfiler for Leksa, MorfaS, MorfaC og Vasta
+* a_smenob.xml
+* adv_smenob.xml
+* multiword_smenob.xml
+* n_smenob.xml
+* num_smenob.xml
+* prop_smenob.xml
+* v_smenob.xml
+* pronounforms.csv
+* Tilsvarende filer i nob/ og fin/ bortsett fra pronounforms.csv
+! Leksa
+* implementere tcomm
+! MorfaS
+* implementere pronomener som oppgaver - kildefil er pronounforms.csv. Personlige pronomener (som i smaOahpa), men også refleksive, demonstrative og resiproke pronomener
+** personlige - som i smaOahpa
+** refleksive - etter samme mal som personlige pron.
+** demonstrative - etter samme mal som personlige pron.
+** resiproke - etter samme mal som personlige pron.
+! MorfaC
+* implementere pronomener som oppgaver - questions_pronouns.xml er ikke skrevet
+! Sahka
+* installere nye dialoger - ingenting er forandra i oppsettet, men kildefilene er ikke skrevet
+! Vasta
+* implementere Cealkka - kildefilene er ikke skrevet
 
-
-
-
-!!Eksisterende filer
-
-!Leksikonfiler
-* nouns.xml, numerals.xml, adjectives.xml, verbs.xml, fillings.xml
-* lemmaform i leksikonfilene skal være lemmaform i fst - ok
-* tagger, se output av fst - ok
-* legge til nye ord, unifisere, se more-filer - ok
-* legge til tcomm ? 
-
-
-!Morfa_c-filer
-* sjekke lemmaformer - ok
-* sjekke tagger - ok
-* fikse buger
-* lage pronomenoppgaver
-* lage flere adjektivoppgaver
-
-!CG-fil
-* oppdatere tagger
-* testing
-
-!!Nye filer
-* pronomener skal implementeres i MorfaS og MorfaC (se smaOahpa)
-* ped/sme/src/prongeneration.txt istedenfor leksikonfil.  
-** Ryan: me treng ikkje semantiske sett lengre, fordi det er lettare å nytta tag-setter i sma/data_sma/meta/tags.txt, slik at man kan velja 3 person eller 1 og 2 person pronomener. Det er heller ikkje noko pronomen-oppgåver i Leksa, då treng me ikkje semantiske setter for å skilja mellom deim. 
-* lage adverbs.xml for leksa - ok - skal implementeres for bruk i Leksa
-* sjekke klokkeautomat - ok - skal implementeres i Numra
-** {{sme-num.fst, sme-inum.fst, date-sme.fst, idate-sme.fst clock-sme.fst iclock-sme.fst}} er no
-   parallell med sma. Dei er testa med stikkprøver.
-* lage multiword.xml for Leksa
 
 
