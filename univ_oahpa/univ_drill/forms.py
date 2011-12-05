@@ -209,6 +209,7 @@ SEMTYPE_CHOICES = (
     ('SCHOOL/EDUCATION', _('school/education')),
     ('ABSTRACTS', _('abstracts')),
     ('WORK/ECONOMY/TOOLS', _('work/economy/tools')),
+    ('MULTIWORD', _('Multiword')),
     ('all', _('all')),
 )
 
