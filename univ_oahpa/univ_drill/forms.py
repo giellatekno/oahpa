@@ -33,8 +33,7 @@ CASE_CHOICES = (
 	('NOMPL', _('plural')),
 	('N-ACC', _('accusative')),
 	('N-ILL', _('illative')),
-	('N-INE', _('inessive')),
-	('N-ELA', _('elative')),
+	('N-LOC', _('locative')),
 	('N-COM', _('comitative')),
 	('N-GEN', _('genitive')),
 	('N-ESS', _('essive')),
@@ -43,8 +42,7 @@ CASE_CHOICES = (
 CASE_CHOICES_PRONOUN = (
 	('N-ACC', _('accusative')),
 	('N-ILL', _('illative')),
-	('N-INE', _('inessive')),
-	('N-ELA', _('elative')),
+	('N-LOC', _('locative')),
 	('N-COM', _('comitative')),
 	('N-GEN', _('genitive')),
 	# ('N-ESS', _('essive')),
@@ -55,8 +53,7 @@ CASE_CONTEXT_CHOICES = (
 	('N-ACC', _('accusative')),
 	('N-GEN', _('genitive')),
 	('N-ILL', _('illative')),
-	('N-INE', _('inessive')),
-	('N-ELA', _('elative')),
+	('N-LOC', _('locative')),
 	('N-COM', _('comitative')),
 	('N-ESS', _('essive')),
 	('N-MIX', _('mix')),
@@ -70,15 +67,19 @@ PRON_CONTEXT_CHOICES = (
 	('P-ACC', _('accusative')),
 	('P-GEN', _('genitive')),
 	('P-ILL', _('illative')),
-	('P-ELA', _('elative')),
 	('P-COM', _('comitative')),
 	('P-MIX', _('mix')),
 )
 
 ADJCASE_CHOICES = (
-	('N-NOM', _('nominative')),
+	('NOMPL', _('plural')),
 	('ATTR', _('attributive')),
-# 	('PRED', _('predicative')),
+	('N-ACC', _('accusative')),
+	('N-ILL', _('illative')),
+	('N-LOC', _('locative')),
+	('N-COM', _('comitative')),
+	('N-GEN', _('genitive')),
+	('N-ESS', _('essive')),
 )
 
 ADJEX_CHOICES = (
@@ -90,9 +91,11 @@ ADJEX_CHOICES = (
 
 ADJ_CONTEXT_CHOICES = (
 	('ATTRPOS', _('attributive positive')),
+	('ATTRCOMP', _('attributive comparative')),
+	('ATTRSUP', _('attributive superlative')),
+	('PREDPOS', _('predicative positive')),
 	('PREDCOMP', _('predicative comparative')),
 	('PREDSUP', _('predicative superlative')),
-	('A-MIX', _('mix')),
 )
 
 GRADE_CHOICES = (
@@ -116,8 +119,7 @@ NUM_BARE_CHOICES = (
 	('NOMPL', _('plural')),
 	('N-ACC', _('accusative')),
 	('N-ILL', _('illative')),
-	('N-INE', _('inessive')),
-	('N-ELA', _('elative')),
+	('N-LOC', _('locative')),
 	('N-COM', _('comitative')),
 )
 
@@ -131,9 +133,9 @@ VTYPE_CHOICES = (
 	('PRT', _('past')),
 	('PRF', _('perfect')),
 	('GER', _('gerund')),
-# 	('COND', _('conditional')),
+	('COND', _('conditional')),
 	('IMPRT', _('imperative')),
-# 	('POT', _('potential')),
+	('POT', _('potential')),
 )
 
 VTYPE_CONTEXT_CHOICES = (
@@ -141,11 +143,11 @@ VTYPE_CONTEXT_CHOICES = (
 	('V-PRT', _('past')),
 	('V-PRF', _('perfect')),
 	('V-GER', _('gerund')),
-	# ('V-COND', _('conditional')),
+	('V-COND', _('conditional')),
 	('V-IMPRT', _('imperative')),
 	('V-MIX', _('mix')),
 	('TEST', _('test questions')),
-	# ('V-POT', _('potential')),
+	('V-POT', _('potential')),
  )
 
 LEVEL_CHOICES = (
@@ -155,15 +157,29 @@ LEVEL_CHOICES = (
 	('all', _('All')),
 )
 
+BOOK_CHOICES = (
+    ('d1', _('Davvin 1')),
+    ('d2', _('Davvin 1-2')),
+    ('d3', _('Davvin 1-3')),
+    ('d4', _('Davvin 1-4')),
+    ('sam1031_1', _('SAM-1031-1')),
+    ('sam1031_2', _('SAM-1031-2')),
+    ('algu', _('algu')),
+    ('sara', _('sara')),
+    ('bures', _('Bures bures fas')),
+    ('oaidnalit', _('Oaidnalit')),
+    ('all', _('All')),
+)
+
 FREQUENCY_CHOICES = (
+	('rare', _('rare')),
 	('common', _('common')),
 )
 
 GEOGRAPHY_CHOICES = (
-	('mid', _('mid')),
-	('north', _('north')),
-	('other', _('other')),
-	('south', _('south')),
+	('world', _('world')),
+	('sápmi', _('sapmi')),
+	('suopma', _('suopma')),
 )
 
 VASTA_LEVELS = (
@@ -173,44 +189,48 @@ VASTA_LEVELS = (
 )
 
 TRANS_CHOICES = (
-	('smenob', _('South Sami to Norwegian')),
-	('nobsme', _('Norwegian to South Sami')),
-#	('smasme', _('South Sami to North Sami')),
-#	('smesma', _('North Sami to South Sami')),
-	('smeswe', _('South Sami to Swedish')),
-	('swesme', _('Swedish to South Sami')),
-	('smefin', _('South Sami to Finnish')),
-	('finsme', _('Finnish to South Sami')),
-#	('smaeng', _('South Sami to English')),
-#	('engsma', _('English to South Sami')),
-#	('smadeu', _('South Sami to German')),
-#	('deusma', _('German to South Sami')),
+	('smenob', _('North Sami to Norwegian')),
+	('nobsme', _('Norwegian to North Sami')),
+#	('smeswe', _('North Sami to Swedish')),
+#	('swesme', _('Swedish to North Sami')),
+	('smefin', _('North Sami to Finnish')),
+	('finsme', _('Finnish to North Sami')),
+#	('smeeng', _('North Sami to English')),
+#	('engsme', _('English to North Sami')),
+#	('smedeu', _('North Sami to German')),
+#	('deusme', _('German to North Sami')),
 )
 
 NUMLANGUAGE_CHOICES = (
 	('sme', _('North Sami')),
+#	('smj', _('Lule Sami')),
+#	('sma', _('South Sami')),
+#	('smn', _('Inari Sami')),
+#	('sjd', _('Kildin Sami')),
+#	('sms', _('Skolt Sami')),
+#	('fin', _('Finnish')),
 )
 
 SEMTYPE_CHOICES = (
 	('FAMILY', _('family')),
-    ('PROFESSION', _('profession')),
-    ('HUMAN-LIKE', _('human-like')),
-    ('ANIMAL', _('animal')),
-    ('FOOD/DRINK', _('food/drink')),
-    ('TIME', _('time')),
-    ('CONCRETES', _('concretes')),
-    ('BODY', _('body')),
-    ('CLOTHES', _('clothes')),
-    ('BUILDINGS/ROOMS', _('buildings/rooms')),
-    ('NATUREWORDS', _('naturewords')),
-    ('LEISURETIME/AT_HOME', _('leisuretime/at_home')),
-    ('PLACES', _('places')),
-    ('LITERATURE', _('literature')),
-    ('SCHOOL/EDUCATION', _('school/education')),
-    ('ABSTRACTS', _('abstracts')),
-    ('WORK/ECONOMY/TOOLS', _('work/economy/tools')),
-    ('MULTIWORD', _('Multiword')),
-    ('all', _('all')),
+	('PROFESSION', _('profession')),
+	('HUMAN-LIKE', _('human-like')),
+	('ANIMAL', _('animal')),
+	('FOOD/DRINK', _('food/drink')),
+	('TIME', _('time')),
+	('CONCRETES', _('concretes')),
+	('BODY', _('body')),
+	('CLOTHES', _('clothes')),
+	('BUILDINGS/ROOMS', _('buildings/rooms')),
+	('NATUREWORDS', _('naturewords')),
+	('LEISURETIME/AT_HOME', _('leisuretime/at_home')),
+	('PLACES', _('places')),
+	('LITERATURE', _('literature')),
+	('SCHOOL/EDUCATION', _('school/education')),
+	('ABSTRACTS', _('abstracts')),
+	('WORK/ECONOMY/TOOLS', _('work/economy/tools')),
+	('MULTIWORD', _('Multiword')),
+	('all', _('all')),
 )
 
 NUM_CHOICES = (
