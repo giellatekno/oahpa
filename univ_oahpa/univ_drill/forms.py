@@ -278,19 +278,17 @@ DIALOGUE_CHOICES = (
 # #
 
 BOOK_CHOICES = (
-	('a1', _(u'Aalkoe')),
-	('dej', _(u'Dejpeladtje vætnoeh vuekieh')),
-	('s1', _(u'Saemesth amma 1')),
-	('s2', _(u'Saemesth amma 2')),
-	('s3', _(u'Saemesth amma 3')),
-	('s4', _(u'Saemesth amma 4')),
-	('åa1', _(u'Åarjel-saemien 1')),
-	('åa2', _(u'Åarjel-saemien 2')),
-	('åa3', _(u'Åarjel-saemien 3')),
-	('åa4', _(u'Åarjel-saemien 4')),
-	('åa5', _(u'Åarjel-saemien 5')),
-	('åa6', _(u'Åarjel-saemien 6')),
-	('all', _(u'All')),
+	('d1', _('Davvin 1')),
+    ('d2', _('Davvin 1-2')),
+    ('d3', _('Davvin 1-3')),
+    ('d4', _('Davvin 1-4')),
+    ('sam1031_1', _('SAM-1031-1')),
+    ('sam1031_2', _('SAM-1031-2')),
+    ('algu', _('algu')),
+    ('sara', _('sara')),
+    ('bures', _('Bures bures fas')),
+    ('oaidnalit', _('Oaidnalit')),
+    ('all', _('All')),
 )
 
 # BOOK_CHOICES = tuple(
