@@ -15,25 +15,25 @@ import os
 import re
 import itertools
 
-import univ_oahpa.settings as settings
+import univ_oahpa.settings
 
 # DEBUG = open('/dev/ttys001', 'w')
 
 from random import choice
 
 try:
-	L1 = settings.L1
+	L1 = univ_oahpa.settings.L1
 except:
 	L1 = 'sme'
 
 try:
-	LOOKUP_TOOL = settings.LOOKUP_TOOL
+	LOOKUP_TOOL = univ_oahpa.settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
 
 
 try:
-	FST_DIRECTORY = settings.FST_DIRECTORY
+	FST_DIRECTORY = univ_oahpa.settings.FST_DIRECTORY
 except:
 	FST_DIRECTORY = False
 
@@ -119,6 +119,7 @@ class Game:
 		self.show_correct = 0
 		self.num_fields = 6
 		self.global_targets = {}
+		self.settings['source'] = 'all'  # Heli: trying to get rid of the Leksa error: book=all and semtype=FAMILY gives 0 results
 		# .has_key deprecated, is there a way to use in with this?
 		if not self.settings.has_key('gametype'):
 			self.settings['gametype'] = "bare"
