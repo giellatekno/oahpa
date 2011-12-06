@@ -896,6 +896,7 @@
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">ambulánsa</t>
+            <t pos="n">buohccebiila</t>
          </tg>
       </mg>
    </e>
@@ -2255,23 +2256,6 @@
          </tg>
       </mg>
    </e>
-   <e id="1_barnevakt_n" stat="pref">
-      <lg>
-         <l pos="n">barnevakt</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="PROFESSION"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">mánnágeahčči</t>
-            <t pos="n" sem-cl="PROFESSION" src="xxx" nob-stat="yes">mánnábiigá</t>
-         </tg>
-      </mg>
-   </e>
    <e id="2_barnevakt_n" stat="pref">
       <lg>
          <l pos="n">barnevakt</l>
@@ -2285,12 +2269,11 @@
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">mánnábiigá</t>
-            <t pos="n" sem-cl="PROFESSION" src="xxx" nob-stat="yes">mánnágeahčči</t>
             <t pos="n" sem-cl="PROFESSION" src="d4" nob-stat="yes">mánnágeahčči</t>
          </tg>
       </mg>
    </e>
-   <e id="3_barnevakt_n" stat="pref">
+   <e id="1_barnevakt_n" stat="pref">
       <lg>
          <l pos="n">barnevakt</l>
       </lg>
@@ -3426,12 +3409,14 @@
          </tg>
       </mg>
    </e>
-   <e id="1_maskin_n" stat="pref">
+   <e id="maskin_n" stat="pref">
       <lg>
          <l pos="n">maskin</l>
       </lg>
       <sources>
          <book name="AA"/>
+         <book name="d4"/>
+         <book name="c2"/>
       </sources>
       <mg>
          <semantics>
@@ -3439,25 +3424,7 @@
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">mašiidna</t>
-            <t pos="n" sem-cl="THING" src="d4;c2" nob-stat="yes">mášiidna</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_maskin_n" stat="pref">
-      <lg>
-         <l pos="n">maskin</l>
-      </lg>
-      <sources>
-         <book name="d4"/>
-         <book name="c2"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="THING"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">mášiidna</t>
-            <t pos="n" sem-cl="TOOL" src="AA" nob-stat="yes">mašiidna</t>
+            <t pos="n">mášiidna</t>
          </tg>
       </mg>
    </e>
@@ -9020,24 +8987,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_minister_n" stat="pref">
-      <lg>
-         <l pos="n">minister</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="PROFESSION"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">minister</t>
-            <t pos="n" sem-cl="" src="xxx" nob-stat="yes">ministtar</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_minister_n" stat="pref">
+   <e id="minister_n" stat="pref">
       <lg>
          <l pos="n">minister</l>
       </lg>
@@ -9048,7 +8998,7 @@
          <semantics/>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">ministtar</t>
-            <t pos="n" sem-cl="PROFESSION" src="xxx" nob-stat="yes">minister</t>
+            <t pos="n">minister</t>
          </tg>
       </mg>
    </e>
@@ -9116,7 +9066,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_statsminister_n" stat="pref">
+   <e id="statsminister_n" stat="pref">
       <lg>
          <l pos="n">statsminister</l>
       </lg>
@@ -9124,27 +9074,10 @@
          <book name="sara"/>
       </sources>
       <mg>
-         <semantics>
-            <sem class="PROFESSION"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">stáhtaminister</t>
-            <t pos="n" sem-cl="" src="xxx" nob-stat="yes">stáhtaministtar</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_statsminister_n" stat="pref">
-      <lg>
-         <l pos="n">statsminister</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
          <semantics/>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">stáhtaministtar</t>
-            <t pos="n" sem-cl="PROFESSION" src="sara" nob-stat="yes">stáhtaminister</t>
+            <t pos="n">stáhtaminister</t>
          </tg>
       </mg>
    </e>
@@ -12103,30 +12036,12 @@
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">gávpi</t>
-            <t pos="n" sem-cl="BUILDING" src="xxx" nob-stat="yes">rámbuvri</t>
+            <t pos="n">rámbuvri</t>
             <t pos="n" sem-cl="SHOP" src="sam1031_1" nob-stat="yes">rámbuvra</t>
          </tg>
       </mg>
    </e>
    <e id="2_butikk_n" stat="pref">
-      <lg>
-         <l pos="n">butikk</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="BUILDING"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">rámbuvri</t>
-            <t pos="n" sem-cl="SHOP" src="d1;sara;algu;sam1031_1;AA" nob-stat="yes">gávpi</t>
-            <t pos="n" sem-cl="SHOP" src="sam1031_1" nob-stat="yes">rámbuvra</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="3_butikk_n" stat="pref">
       <lg>
          <l pos="n">butikk</l>
       </lg>
@@ -12140,7 +12055,7 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">rámbuvra</t>
             <t pos="n" sem-cl="SHOP" src="d1;sara;algu;sam1031_1;AA" nob-stat="yes">gávpi</t>
-            <t pos="n" sem-cl="BUILDING" src="xxx" nob-stat="yes">rámbuvri</t>
+            <t pos="n">rámbuvri</t>
          </tg>
       </mg>
    </e>
@@ -12432,6 +12347,8 @@
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">mánáidmánná</t>
+            <t pos="n">áhkkut</t>
+            <t pos="n">áddjut</t>
          </tg>
       </mg>
    </e>
@@ -13119,7 +13036,8 @@
             <sem class="FURNITURE"/>
          </semantics>
          <tg xml:lang="sme">
-            <t pos="n" stat="pref">bassaladdanmášiidna</t>
+            <t pos="n" stat="pref">bassaladdanmašiidna</t>
+            <t pos="n">bassaladdanmášiidna</t>
          </tg>
       </mg>
    </e>
@@ -13807,7 +13725,8 @@
             <sem class="FURNITURE"/>
          </semantics>
          <tg xml:lang="sme">
-            <t pos="n" stat="pref">lihttebassanmášiidna</t>
+            <t pos="n" stat="pref">lihttebassanmašiidna</t>
+            <t pos="n">lihttebassanmášiidna</t>
          </tg>
       </mg>
    </e>
@@ -23948,7 +23867,8 @@
             <sem class="TRAVELLING"/>
          </semantics>
          <tg xml:lang="sme">
-            <t pos="n" stat="pref">oađđinseahkka</t>
+            <t pos="n" stat="pref">oađđenseahkka</t>
+            <t pos="n">oađđinseahkka</t>
          </tg>
       </mg>
    </e>
@@ -29654,6 +29574,7 @@
          </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">lávlla</t>
+            <t pos="n">lávlu</t>
          </tg>
       </mg>
    </e>
