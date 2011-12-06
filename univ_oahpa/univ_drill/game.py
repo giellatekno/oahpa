@@ -38,7 +38,7 @@ except:
 	FST_DIRECTORY = False
 
 try:
-	DEFAULT_DIALECT = settings.DEFAULT_DIALECT
+	DEFAULT_DIALECT = univ_oahpa.settings.DEFAULT_DIALECT
 except:
 	DEFAULT_DIALECT = None
 
@@ -119,7 +119,6 @@ class Game:
 		self.show_correct = 0
 		self.num_fields = 6
 		self.global_targets = {}
-		self.settings['source'] = 'all'  # Heli: trying to get rid of the Leksa error: book=all and semtype=FAMILY gives 0 results
 		# .has_key deprecated, is there a way to use in with this?
 		if not self.settings.has_key('gametype'):
 			self.settings['gametype'] = "bare"
