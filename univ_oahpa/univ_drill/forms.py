@@ -18,8 +18,8 @@ import itertools
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
 PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'son',
-		  'Pl1':'moai', 'Pl2':'doai', 'Pl3':'soai',
-		  'Du1':'mii', 'Du2':'dii', 'Du3':'sii'}
+		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'sii',
+		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
 
 POS_CHOICES = (
 	('N', _('noun')),
