@@ -296,6 +296,7 @@ echo " "
 echo "done"
 echo "==================================================="
 
+
 echo "==================================================="
 echo "adding feedback to nouns"
 $P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml
@@ -312,7 +313,6 @@ echo "==================================================="
 
 #  ... for eastern dialect there are additional feedback files feedback_verbs_eastern, feedback_adjectives_eastern that we ignore right now
 
-: <<'COMMENT'
 # Morfa-C 
 
 echo "==================================================="
@@ -342,7 +342,7 @@ $P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml
 echo " "
 echo "done"
 echo "==================================================="
-
+: <<'COMMENT'
 echo "==================================================="
 echo "installing Morfa-C questions for verbs"
 $P install.py -g $META/grammar_defaults.xml -q $META/verb_problems.xml
@@ -363,14 +363,6 @@ echo "==================================================="
 # echo " "
 # echo "done"
 # echo "==================================================="
-
-echo "==================================================="
-echo "installing Morfa-C questions for adjectives"
-$P install.py -g $META/grammar_defaults.xml -q $META/adjective_questions.xml
-echo " "
-echo "done"
-echo "==================================================="
-
 echo "==================================================="
 echo "installing Morfa-C questions for pronoun"
 $P install.py -g $META/grammar_defaults.xml -q $META/pron_questions.xml
@@ -378,6 +370,14 @@ echo " "
 echo "done"
 echo "==================================================="
 
+COMMENT
+
+echo "==================================================="
+echo "installing Morfa-C questions for adjectives"
+$P install.py -g $META/grammar_defaults.xml -q $META/adjective_questions.xml
+echo " "
+echo "done"
+echo "==================================================="
 
 echo "==================================================="
 echo "installing grammar links for norwegian"
