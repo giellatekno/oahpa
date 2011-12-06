@@ -945,7 +945,7 @@ class MorfaSettings(OahpaSettings):
 	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select) 
 	bisyllabic = forms.BooleanField(required=False, initial='1')
 	trisyllabic = forms.BooleanField(required=False, initial=0)
-	xsyllabic = forms.BooleanField(required=False, initial=0)
+	contracted = forms.BooleanField(required=False, initial=0)
 	# contracted = forms.BooleanField(required=False, initial=0)
 # 	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
 	
