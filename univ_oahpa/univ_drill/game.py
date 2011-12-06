@@ -15,7 +15,7 @@ import os
 import re
 import itertools
 
-import univ_oahpa.settings
+import univ_oahpa.settings as settings
 
 # DEBUG = open('/dev/ttys001', 'w')
 
@@ -345,8 +345,7 @@ class BareGame(Game):
 		'N-ILL':'Ill', 
 		'N-ESS':'Ess', 
 		'N-GEN':'Gen',
-		'N-INE':'Ine', 
-		'N-ELA':'Ela',
+		'N-LOC':'Loc',
 		'N-ACC':'Acc', 
 		'N-COM':'Com',
 		'A-ATTR': 'Attr',
@@ -398,8 +397,8 @@ class BareGame(Game):
 		# 	levels = self.settings['level']
 		# if self.settings.has_key('adjcase'):
 		# 	adjcase = self.settings['adjcase']
-		if self.settings.has_key('book'):
-			source = self.settings['book']
+		if self.settings.has_key('source'):  # was: book, but in forms.py it is called source
+			source = self.settings['source']
 			if source.lower() != 'all':
 				try:
 					S = Source.objects.filter(name=source)

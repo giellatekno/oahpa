@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-import univ_oahpa.settings
+import univ_oahpa.settings as settings
 
 from univ_oahpa.conf.tools import switch_language_code
 
@@ -162,6 +162,11 @@ BOOK_CHOICES = (
     ('d2', _('Davvin 1-2')),
     ('d3', _('Davvin 1-3')),
     ('d4', _('Davvin 1-4')),
+    ('AA', _('Aikio komp.')),
+    ('c1', _('Cealkke dearvvuođaid 1')),
+    ('c2', _('Cealkke dearvvuođaid 1-2')),
+    ('c3', _('Cealkke dearvvuođaid 1-3')),
+    ('c4', _('Cealkke dearvvuođaid 1-4')),
     ('sam1031_1', _('SAM-1031-1')),
     ('sam1031_2', _('SAM-1031-2')),
     ('algu', _('algu')),
@@ -279,26 +284,6 @@ DIALOGUE_CHOICES = (
 	('visit', _('Visit')),
 	('grocery', _('Grocery')),
 	('shopadj', _('Shopadj')),
-)
-
-# # 
-#
-# Morfa-S choices
-#
-# #
-
-BOOK_CHOICES = (
-	('d1', _('Davvin 1')),
-    ('d2', _('Davvin 1-2')),
-    ('d3', _('Davvin 1-3')),
-    ('d4', _('Davvin 1-4')),
-    ('sam1031_1', _('SAM-1031-1')),
-    ('sam1031_2', _('SAM-1031-2')),
-    ('algu', _('algu')),
-    ('sara', _('sara')),
-    ('bures', _('Bures bures fas')),
-    ('oaidnalit', _('Oaidnalit')),
-    ('all', _('All')),
 )
 
 # BOOK_CHOICES = tuple(
@@ -456,7 +441,7 @@ def set_settings(self):
 	self.alladj_context = dict(ADJ_CONTEXT_CHOICES).keys()
 	self.allnum_context = dict(NUM_CONTEXT_CHOICES).keys()
 	self.allnum_bare = dict(NUM_BARE_CHOICES).keys()
-	self.sources = dict(BOOK_CHOICES).keys()
+	self.source = dict(BOOK_CHOICES).keys() # was: sources
 	self.geography = dict(GEOGRAPHY_CHOICES).keys()
 
 
@@ -731,7 +716,7 @@ class OahpaSettings(forms.Form):
 							 'geography': 'south',
 							 'num_bare' : 'N-ILL',
 							 'adj_context' : 'ATTRPOS',
-							 'source' : 'all'}
+							 'source' : 'all'} 
 
 
 
@@ -828,10 +813,10 @@ class OahpaQuestion(forms.Form):
 # #
 
 class LeksaSettings(OahpaSettings):
-	semtype = forms.ChoiceField(initial='HUMAN', choices=SEMTYPE_CHOICES)
+	semtype = forms.ChoiceField(initial='FAMILY', choices=SEMTYPE_CHOICES)
 	transtype = forms.ChoiceField(choices=TRANS_CHOICES, widget=forms.Select)
 	# For placename quizz
-	geography = forms.ChoiceField(initial='south', choices=GEOGRAPHY_CHOICES)
+	geography = forms.ChoiceField(initial='world', choices=GEOGRAPHY_CHOICES)
 	# common = forms.BooleanField(required=False, initial='1')
 	# rare = forms.BooleanField(required=False,initial=0)
 	# sapmi = forms.BooleanField(required=False, initial='1')
@@ -840,10 +825,10 @@ class LeksaSettings(OahpaSettings):
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 	
-	default_data = {'gametype' : 'bare', 'language' : 'sma', 'dialogue' : 'GG', 
+	default_data = {'gametype' : 'bare', 'language' : 'sme', 'dialogue' : 'GG', 
 					'syll' : [], 'source': 'all',
-					'semtype' : 'HUMAN',
-					'geography' : 'south',
+					'semtype' : 'FAMILY',
+					'geography' : 'world',
 					}
 
 	
@@ -1046,8 +1031,8 @@ class MorfaQuestion(OahpaQuestion):
 class NumSettings(OahpaSettings):
 	maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
 	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
-	numlanguage = forms.ChoiceField(initial='sma', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
-	default_data = {'language' : 'nob', 'numlanguage' : 'sma', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'string'}
+	numlanguage = forms.ChoiceField(initial='sme', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
+	default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'string'}
 					
 	def __init__(self, *args, **kwargs):
 		self.set_settings
@@ -1153,7 +1138,7 @@ class NumQuestion(OahpaQuestion):
 class KlokkaSettings(NumSettings):
 	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES_PL, widget=forms.RadioSelect)
 	gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
-	default_data = {'language' : 'nob', 'numlanguage' : 'sma', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
+	default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
 					
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1239,7 +1224,7 @@ class KlokkaQuestion(NumQuestion):
 class DatoSettings(KlokkaSettings):
 	gametype = None # Disable gametype (easy, medium, hard)
 
-	default_data = {'language' : 'nob', 'numlanguage' : 'sma', 'numgame': 'string'}
+	default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'numgame': 'string'}
 
 # TODO: Relax answer format if number? Accept other things than DD.MM.?
 # DD.MM
