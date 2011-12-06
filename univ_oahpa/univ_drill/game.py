@@ -397,8 +397,8 @@ class BareGame(Game):
 		# 	levels = self.settings['level']
 		# if self.settings.has_key('adjcase'):
 		# 	adjcase = self.settings['adjcase']
-		if self.settings.has_key('source'):  # was: book, but in forms.py it is called source
-			source = self.settings['source']
+		if self.settings.has_key('book'):  # was: book, but in forms.py it is called source
+			source = self.settings['book']
 			if source.lower() != 'all':
 				try:
 					S = Source.objects.filter(name=source)

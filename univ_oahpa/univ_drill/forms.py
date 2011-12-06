@@ -441,7 +441,7 @@ def set_settings(self):
 	self.alladj_context = dict(ADJ_CONTEXT_CHOICES).keys()
 	self.allnum_context = dict(NUM_CONTEXT_CHOICES).keys()
 	self.allnum_bare = dict(NUM_BARE_CHOICES).keys()
-	self.source = dict(BOOK_CHOICES).keys() # was: sources
+	self.sources = dict(BOOK_CHOICES).keys() # was: sources
 	self.geography = dict(GEOGRAPHY_CHOICES).keys()
 
 
@@ -943,7 +943,7 @@ class MorfaSettings(OahpaSettings):
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-ILL', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
-	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select) # book replaced by source
+	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select) 
 	bisyllabic = forms.BooleanField(required=False, initial='1')
 	trisyllabic = forms.BooleanField(required=False, initial=0)
 	xsyllabic = forms.BooleanField(required=False, initial=0)
