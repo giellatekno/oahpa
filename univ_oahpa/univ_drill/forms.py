@@ -713,7 +713,7 @@ class OahpaSettings(forms.Form):
 							 'pron_context' : 'P-ILL',
 							 'num_context' : 'NUM-ATTR',
 							 'num_level' : '1',
-							 'geography': 'south',
+							 'geography': 'world',
 							 'num_bare' : 'N-ILL',
 							 'adj_context' : 'ATTRPOS',
 							 'source' : 'all'} 
@@ -851,8 +851,7 @@ class LeksaQuestion(OahpaQuestion):
 	Questions for word quizz
 	"""
 	
-	def __init__(self, tcomms, stat_pref, preferred, possible, transtype, word, correct, translations, 
-				 question, userans_val, correct_val, *args, **kwargs):
+	def __init__(self, tcomms, stat_pref, preferred, possible, transtype, word, correct, translations, question, userans_val, correct_val, *args, **kwargs):
 		lemma_widget = forms.HiddenInput(attrs={'value' : word.id})
 		self.translang = transtype[-3::]
 		self.word = word
@@ -944,8 +943,7 @@ class MorfaSettings(OahpaSettings):
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-ILL', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
-	# Was BOOK_CHOICES
-	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
+	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select) # book replaced by source
 	bisyllabic = forms.BooleanField(required=False, initial='1')
 	trisyllabic = forms.BooleanField(required=False, initial=0)
 	xsyllabic = forms.BooleanField(required=False, initial=0)
