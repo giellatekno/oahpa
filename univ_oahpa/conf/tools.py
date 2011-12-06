@@ -1,4 +1,4 @@
-from univ_oahpa.settings import OLD_NEW_ISO_CODES as ISO, LANGUAGE_CODE as settings_CODE
+from univ_oahpa.settings import OLD_NEW_ISO_CODES as ISO, LANGUAGE_CODE as SCODE
 
 def switch_language_code(CODE):
 	"""
@@ -13,6 +13,6 @@ def switch_language_code(CODE):
 	except:
 		# logger.warning("*** Unidentified language code %s." % CODE)
 		# print >> sys.stdout, "*** Unidentified language code %s." % CODE
-		return settings_CODE
+		return SCODE
 	
 
