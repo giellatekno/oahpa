@@ -8,10 +8,10 @@ DATO=`date`
 # Printing headers:
 
 # c. oahpa adj
-echo "!!!Tabell over Oahpa-substantiv med GG" > nudoc/gen/sme_verbOahpaGG.jspwiki
+echo "!!!Tabell over Oahpa-verb med GG" > nudoc/gen/sme_verbOahpaGG.jspwiki
 echo "" >> nudoc/gen/sme_verbOahpaGG.jspwiki
 echo "Testdato: $DATO" >> nudoc/gen/sme_verbOahpaGG.jspwiki
-echo "||  lemma  ||  Inf  ||  Prs Pl1 || Prt Sg3 || Ger " >> nudoc/gen/sme_verbOahpaGG.jspwiki
+echo "||  lemma  ||  Inf  ||  Prs Pl1 || Pot Prs Sg3 || Cond Prs Sg1 || Imprt Pl1 || Imprt Pl2 || Ger " >> nudoc/gen/sme_verbOahpaGG.jspwiki
 
 
 # Making the 4 columns
