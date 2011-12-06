@@ -13,6 +13,6 @@ def switch_language_code(CODE):
 	except:
 		# logger.warning("*** Unidentified language code %s." % CODE)
 		# print >> sys.stdout, "*** Unidentified language code %s." % CODE
-		return settings.LANGUAGE_CODE
+		return univ_oahpa.settings.LANGUAGE_CODE
 	
 
