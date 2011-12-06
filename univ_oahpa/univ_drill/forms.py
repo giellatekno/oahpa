@@ -217,8 +217,7 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-	('FAMILY', _('family')),
-	('PROFESSION', _('profession')),
+	('HUMAN', _('family')),
 	('HUMAN-LIKE', _('human-like')),
 	('ANIMAL', _('animal')),
 	('FOOD/DRINK', _('food/drink')),
