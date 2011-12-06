@@ -812,7 +812,7 @@ class OahpaQuestion(forms.Form):
 # #
 
 class LeksaSettings(OahpaSettings):
-	semtype = forms.ChoiceField(initial='FAMILY', choices=SEMTYPE_CHOICES)
+	semtype = forms.ChoiceField(initial='HUMAN', choices=SEMTYPE_CHOICES)
 	transtype = forms.ChoiceField(choices=TRANS_CHOICES, widget=forms.Select)
 	# For placename quizz
 	geography = forms.ChoiceField(initial='world', choices=GEOGRAPHY_CHOICES)
@@ -826,7 +826,7 @@ class LeksaSettings(OahpaSettings):
 	
 	default_data = {'gametype' : 'bare', 'language' : 'sme', 'dialogue' : 'GG', 
 					'syll' : [], 'source': 'all',
-					'semtype' : 'FAMILY',
+					'semtype' : 'HUMAN',
 					'geography' : 'world',
 					}
 
