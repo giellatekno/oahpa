@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feedback pos="a" dialect="GG">
+<stems>
+<!--Attr is here a case-feature.... ?? -->
+
+<!-- Messageorder: LEMMA A B C E
+A: 
+bisyllabic_stem
+trisyllabic_stem
+contracted_stem
+ 
+B:
+inv_gradiation
+no_gradiation
+weak_grade
+strong_grade
+
+C:
+diphthong_simplification
+is_á
+a_and_
+t_g
+t_h
+t_d
+get_bisyllabic_stem_and_a_i
+get_bisyllabic_stem
+attribute_like_pred
+i_e
+u_o
+mus
+a-suffix
+s-suffix
+es-suffix
+os-suffix
+
+E: 
+a-suffix
+aid-suffix
+at-suffix
+bu-suffix
+bui-suffix
+buid-suffix
+buide-suffix
+buiguin-suffix
+buin-suffix
+bun-suffix
+bus-suffix
+but-suffix
+eabbo-suffix
+eabbon-suffix
+eamos-suffix
+eamosin-suffix
+eappo-suffix
+eappot-suffix
+eappuid-suffix
+eappuide-suffix
+eappuiguin-suffix
+eappuin-suffix
+eappus-suffix
+ebbui-suffix
+epmosa-suffix
+epmosat-suffix
+epmosii-suffix
+epmosiid-suffix
+epmosiidda-suffix
+epmosiiguin-suffix
+epmosiin-suffix
+epmosis-suffix
+ide-suffix
+iguin-suffix
+in-suffix
+no_suffix
+s-suffix
+ss_and_an
+ss_and_ii
+t-suffix
+
+
+
+  -->
+
+<!--Special feedback for LEMMA="buorre" as attribute - (but it does not get Attr-tag!) - semiagreement with noun: -->
+
+    <l>buorre</l>
+      <msg grade="Pos" case="Nom" number="Sg">nom_sg</msg>
+      <msg grade="Pos" case="Nom" number="Pl">nom_pl</msg>
+      <msg grade="Pos" case="Acc" number="Sg">acc_sg</msg>
+      <msg grade="Pos" case="Acc" number="Pl">acc_pl</msg>
+      <msg grade="Pos" case="Gen" number="Sg">gen_sg</msg>
+      <msg grade="Pos" case="Gen" number="Pl">gen_pl</msg>
+      <msg grade="Pos" case="Ill" number="Sg">ill_sg</msg>
+      <msg grade="Pos" case="Ill" number="Pl">ill_pl</msg>
+      <msg grade="Pos" case="Loc" number="Sg">loc_sg</msg>
+      <msg grade="Pos" case="Loc" number="Pl">loc_pl</msg>
+      <msg grade="Pos" case="Com" number="Sg">com_sg</msg>
+      <msg grade="Pos" case="Com" number="Pl">com_pl</msg>
+      <msg grade="Pos" case="Ess">ess</msg>
+      <note>buorre, som attributt</note>
+
+      <l>
+      <msg dialect="NOT-GG" grade="Comp" attribute="1">attribute_like_pred</msg>
+      <msg dialect="NOT-GG" grade="Superl" attribute="1">attribute_like_pred</msg>
+      <note>Attr = Nom</note>
+    </l>
+
+
+      <l stem="2syll">
+      <msg dialect="NOT-KJ" grade="Comp" attribute="1">attribute_like_pred</msg>
+      <msg dialect="NOT-KJ" grade="Superl" attribute="1">attribute_like_pred</msg>
+      <note>Attr: dábálet, dábáleamos</note>
+    </l>
+
+
+
+      <l stem="3syll">
+      <msg dialect="NOT-KJ" grade="Comp" attribute="1">et-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" attribute="1">attribute_like_pred</msg>
+      <note>Attr = Nom</note>
+    </l>
+
+
+      <l attrsuffix="0">
+      <msg grade="Pos" attribute="1">attribute_like_pred</msg>
+      <note>Attr = Nom</note>
+    </l>
+      <l attrsuffix="a">
+      <msg grade="Pos" attribute="1">a-suffix</msg>
+      <note>galmmas -a</note>
+    </l>
+      <l attrsuffix="s">
+      <msg grade="Pos" attribute="1">s-suffix</msg>
+      <note>somá -s</note>
+    </l>
+      <l attrsuffix="es">
+      <msg grade="Pos" attribute="1">es-suffix</msg>
+      <note>fiskat -es</note>
+    </l>
+      <l attrsuffix="os">
+      <msg grade="Pos" attribute="1">os-suffix</msg>
+      <note>headju -os</note>
+    </l>
+      <l attrsuffix="is">
+      <msg grade="Pos" attribute="1">is-suffix</msg>
+      <note>gávvil -is</note>
+    </l>
+      <l attrsuffix="i_e">
+      <msg grade="Pos" attribute="1">i_e</msg>
+      <note>viiddis -e-</note>
+    </l>
+      <l attrsuffix="u_o">
+      <msg grade="Pos" attribute="1">u_o</msg>
+      <note>gearggus -o-</note>
+    </l>
+
+    <l stem="2syll">
+      <msg grade="Pos" case="Nom" number="Pl">Bis_NomPl</msg>
+      <msg grade="Pos" case="Acc" number="Sg">Bis_AccSg</msg>
+      <msg grade="Pos" case="Acc" number="Pl">Bis_AccPl</msg>
+      <msg grade="Pos" case="Gen" number="Sg">Bis_GenSg</msg>
+      <msg grade="Pos" case="Gen" number="Pl">Bis_GenPl</msg>
+      <msg grade="Pos" case="Ill" number="Sg">Bis_IllSg</msg>
+      <msg grade="Pos" case="Ill" number="Pl">Bis_IllPl</msg>
+      <msg grade="Pos" case="Loc" number="Sg">Bis_LocSg</msg>
+      <msg grade="Pos" case="Loc" number="Pl">Bis_LocPl</msg>
+      <msg grade="Pos" case="Com" number="Sg">Bis_ComSg</msg>
+      <msg grade="Pos" case="Com" number="Pl">Bis_ComPl</msg>
+      <msg grade="Pos" case="Ess">Bis_Ess</msg>
+    </l>
+
+    <l stem="3syll">
+      <msg grade="Pos" case="Nom" number="Pl">Tris_NomPl</msg>
+      <msg grade="Pos" case="Acc" number="Sg">Tris_AccSg</msg>
+      <msg grade="Pos" case="Acc" number="Pl">Tris_AccPl</msg>
+      <msg grade="Pos" case="Gen" number="Sg">Tris_GenSg</msg>
+      <msg grade="Pos" case="Gen" number="Pl">Tris_GenPl</msg>
+      <msg grade="Pos" case="Ill" number="Sg">Tris_IllSg</msg>
+      <msg grade="Pos" case="Ill" number="Pl">Tris_IllPl</msg>
+      <msg grade="Pos" case="Loc" number="Sg">Tris_LocSg</msg>
+      <msg grade="Pos" case="Loc" number="Pl">Tris_LocPl</msg>
+      <msg grade="Pos" case="Com" number="Sg">Tris_ComSg</msg>
+      <msg grade="Pos" case="Com" number="Pl">Tris_ComPl</msg>
+      <msg grade="Pos" case="Ess">Tris_Ess</msg>
+    </l> 
+
+    <l stem="Csyll">
+      <msg grade="Pos" case="Nom" number="Pl">Con_NomPl</msg>
+      <msg grade="Pos" case="Acc" number="Sg">Con_AccSg</msg>
+      <msg grade="Pos" case="Acc" number="Pl">Con_AccPl</msg>
+      <msg grade="Pos" case="Gen" number="Sg">Con_GenSg</msg>
+      <msg grade="Pos" case="Gen" number="Pl">Con_GenPl</msg>
+      <msg grade="Pos" case="Ill" number="Sg">Con_IllSg</msg>
+      <msg grade="Pos" case="Ill" number="Pl">Con_IllPl</msg>
+      <msg grade="Pos" case="Loc" number="Sg">Con_LocSg</msg>
+      <msg grade="Pos" case="Loc" number="Pl">Con_LocPl</msg>
+      <msg grade="Pos" case="Com" number="Sg">Con_ComSg</msg>
+      <msg grade="Pos" case="Com" number="Pl">Con_ComPl</msg>
+      <msg grade="Pos" case="Ess">Con_Ess</msg>
+    </l> 
+
+
+
+    <l gradation="inv">
+      <msg>inv_gradation</msg>
+    </l>
+    <l gradation="no">
+      <msg>no_gradation</msg>
+    </l>
+
+<!-- predicative form: -->
+
+
+      <l rime="t-g">
+      <msg grade="Pos" case="Acc" number="Sg">t_g</msg>
+      <msg grade="Pos" case="Gen" number="Sg">t_g</msg>
+      <msg grade="Pos" case="Ill" number="Sg">t_g</msg>
+      <msg grade="Pos" case="Loc" number="Sg">t_g</msg>
+      <msg grade="Pos" case="Com" number="Sg">t_g</msg>
+      <msg grade="Pos" case="Ess">t_g</msg>
+      <msg grade="Pos" case="Nom" number="Pl">t_g</msg>
+      <msg grade="Comp">t_g</msg>
+      <msg grade="Superl">t_g</msg>
+      <note>ártet -g-</note>
+    </l>
+
+      <l rime="t-d">
+      <msg grade="Pos" case="Acc" number="Sg">t_d</msg>
+      <msg grade="Pos" case="Gen" number="Sg">t_d</msg>
+      <msg grade="Pos" case="Ill" number="Sg">t_d</msg>
+      <msg grade="Pos" case="Loc" number="Sg">t_d</msg>
+      <msg grade="Pos" case="Com" number="Sg">t_d</msg>
+      <msg grade="Pos" case="Ess">t_d</msg>
+      <msg grade="Pos" case="Nom" number="Pl">t_d</msg>
+      <msg grade="Comp">t_d</msg>
+      <msg grade="Superl">t_d</msg>
+      <note>lossat -d-</note>
+    </l>
+
+      <l rime="t-h">
+      <msg grade="Pos" case="Acc" number="Sg">t_h</msg>
+      <msg grade="Pos" case="Gen" number="Sg">t_h</msg>
+      <msg grade="Pos" case="Ill" number="Sg">t_h</msg>
+      <msg grade="Pos" case="Loc" number="Sg">t_h</msg>
+      <msg grade="Pos" case="Com" number="Sg">t_h</msg>
+      <msg grade="Pos" case="Ess">t_h</msg>
+      <msg grade="Pos" case="Nom" number="Pl">t_h</msg>
+      <msg grade="Comp">t_h</msg>
+      <msg grade="Superl">t_h</msg>
+      <note>alit -h-</note>
+    </l>
+
+
+     <l rime="+g">
+      <msg grade="Pos" case="Acc" number="Sg">+g</msg>
+      <msg grade="Pos" case="Gen" number="Sg">+g</msg>
+      <msg grade="Pos" case="Ill" number="Sg">+g</msg>
+      <msg grade="Pos" case="Loc" number="Sg">+g</msg>
+      <msg grade="Pos" case="Com" number="Sg">+g</msg>
+      <msg grade="Pos" case="Ess">+g</msg>
+      <msg grade="Pos" case="Nom" number="Pl">+g</msg>
+      <msg grade="Comp">+g</msg>
+      <msg grade="Superl">+g</msg>
+      <note>bahča rime</note>
+    </l>
+
+<!-- Case and number -->
+
+
+    <l rime="t-g">
+      <msg grade="Pos" case="Nom" number="Pl">t_g</msg>
+      <msg grade="Pos" case="Acc" number="Sg">t_g</msg>
+      <msg grade="Pos" case="Gen" number="Sg">t_g</msg>
+      <msg grade="Pos" case="Ill" number="Sg">t_g</msg>
+      <msg grade="Pos" case="Loc" number="Sg">t_g</msg>
+      <msg grade="Pos" case="Com" number="Sg">t_g</msg>
+      <msg grade="Pos" case="Ess">t_g</msg>
+      <note>heittot rime</note>
+    </l>
+
+    <l rime="t-h">
+      <msg grade="Pos" case="Nom" number="Pl">t_h</msg>
+      <msg grade="Pos" case="Acc" number="Sg">t_h</msg>
+      <msg grade="Pos" case="Gen" number="Sg">t_h</msg>
+      <msg grade="Pos" case="Ill" number="Sg">t_h</msg>
+      <msg grade="Pos" case="Loc" number="Sg">t_h</msg>
+      <msg grade="Pos" case="Com" number="Sg">t_h</msg>
+      <msg grade="Pos" case="Ess">t_h</msg>
+      <note>alit rime</note>
+    </l>
+
+    <l rime="t-d">
+      <msg grade="Pos" case="Nom" number="Pl">t_d</msg>
+      <msg grade="Pos" case="Acc" number="Sg">t_d</msg>
+      <msg grade="Pos" case="Gen" number="Sg">t_d</msg>
+      <msg grade="Pos" case="Ill" number="Sg">t_d</msg>
+      <msg grade="Pos" case="Loc" number="Sg">t_d</msg>
+      <msg grade="Pos" case="Com" number="Sg">t_d</msg>
+      <msg grade="Pos" case="Ess">t_d</msg>
+      <note>fiskat rime</note>
+    </l>
+
+
+<!-- COMPARATIVES and SUPERLATIVES-->
+
+      <l stem="3syll" compsuffix="it" gradation="yes">
+      <msg grade="Comp">get_bisyllabic_stem_and_a_i</msg>
+      <msg grade="Superl">get_bisyllabic_stem_and_a_i</msg>
+      <note>gassat gasit</note>
+    </l>
+
+      <l stem="3syll" compsuffix="at" gradation="yes">
+      <msg grade="Comp">get_bisyllabic_stem</msg>
+      <msg grade="Superl">get_bisyllabic_stem</msg>
+      <note>árrat árat</note>
+    </l>
+ 
+     <l stem="2syll">
+      <msg grade="Superl">mus</msg>
+      <note>nuoramus</note>
+    </l>
+
+     <l stem="Csyll">
+      <msg grade="Superl">mus</msg>
+      <note>riggát riggámus</note>
+    </l>
+
+
+     <l stem="3syll">
+      <msg dialect="NOT-KJ" grade="Comp" case="Nom" number="Sg">eabbo-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Nom" number="Pl">eappot-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Acc" number="Sg">eappo-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Acc" number="Pl">eappuid-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Gen" number="Sg">eappo-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Gen" number="Pl">eappuid-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Ill" number="Sg">ebbui-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Ill" number="Pl">eappuide-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Loc" number="Sg">eappus-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Loc" number="Pl">eappuin-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Com" number="Sg">eappuin-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Com" number="Pl">eappuiguin-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Comp" case="Ess">eabbon-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl"  attribute="1">eamos-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Nom" number="Sg">eamos-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Nom" number="Pl">epmosat-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Acc" number="Sg">epmosa-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Acc" number="Pl">epmosiid-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Gen" number="Sg">epmosa-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Gen" number="Pl">epmosiid-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Ill" number="Sg">epmosii-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Ill" number="Pl">epmosiidda-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Loc" number="Sg">epmosis-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Loc" number="Pl">epmosiin-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Com" number="Sg">epmosiin-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Com" number="Pl">epmosiiguin-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" case="Ess">eamosin-suffix</msg>
+      <note>čoaskásat - čoaskáseamos - suffixes</note>
+    </l>
+
+     <l stem="3syll">
+      <msg grade="Comp" attribute="1">at-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Nom" number="Sg">at-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Nom" number="Pl">abbot-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Acc" number="Sg">abbo-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Acc" number="Pl">abbuid-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Gen" number="Sg">abbo-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Gen" number="Pl">abbuid-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Ill" number="Sg">abbui-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Ill" number="Pl">abbuide-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Loc" number="Sg">abbos-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Loc" number="Pl">abbuin-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Com" number="Sg">abbuin-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Com" number="Pl">abbuiguin-suffix</msg>
+      <msg dialect="NOT-GG" grade="Comp" case="Ess">abbon-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" attribute="1">amos-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Nom" number="Sg">amos-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Nom" number="Pl">amosat-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Acc" number="Sg">amosa-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Acc" number="Pl">amosiid-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Gen" number="Sg">amosa-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Gen" number="Pl">amosiid-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Ill" number="Sg">amosii-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Ill" number="Pl">amosiidda-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Loc" number="Sg">amosis-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Loc" number="Pl">amosiin-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Com" number="Sg">amosiin-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Com" number="Pl">amosiiguin-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" case="Ess">amosin-suffix</msg>
+      <note>čoaskásat - čoaskásamos - suffixes</note>
+    </l>
+
+
+     <l stem="bisyllabic">
+      <msg grade="Comp" case="Nom" number="Sg">t-suffix</msg>
+      <msg grade="Comp" case="Nom" number="Pl">but-suffix</msg>
+      <msg grade="Comp" case="Acc" number="Sg">bu-suffix</msg>
+      <msg grade="Comp" case="Acc" number="Pl">buid-suffix</msg>
+      <msg grade="Comp" case="Gen" number="Sg">bu-suffix</msg>
+      <msg grade="Comp" case="Gen" number="Pl">buid-suffix</msg>
+      <msg grade="Comp" case="Ill" number="Sg">bui-suffix</msg>
+      <msg grade="Comp" case="Ill" number="Pl">buidda-suffix</msg>
+      <msg grade="Comp" case="Loc" number="Sg">bus-suffix</msg>
+      <msg grade="Comp" case="Loc" number="Pl">buin-suffix</msg>
+      <msg grade="Comp" case="Com" number="Sg">buin-suffix</msg>
+      <msg grade="Comp" case="Com" number="Pl">buiguin-suffix</msg>
+      <msg grade="Comp" case="Ess">bun-suffix</msg>
+      <msg grade="Comp" attribute="1">t-suffix</msg>
+      <msg grade="Superl" case="Nom" number="Pl">at-suffix</msg>
+      <msg grade="Superl" case="Acc" number="Sg">a-suffix</msg>
+      <msg grade="Superl" case="Acc" number="Pl">aid-suffix</msg>
+      <msg grade="Superl" case="Gen" number="Sg">a-suffix</msg>
+      <msg grade="Superl" case="Gen" number="Pl">aid-suffix</msg>
+      <msg grade="Superl" case="Ill" number="Sg">ss_and_ii</msg>
+      <msg grade="Superl" case="Ill" number="Pl">ide-suffix</msg>
+      <msg grade="Superl" case="Loc" number="Sg">s-suffix</msg>
+      <msg grade="Superl" case="Loc" number="Pl">in-suffix</msg>
+      <msg grade="Superl" case="Com" number="Sg">in-suffix</msg>
+      <msg grade="Superl" case="Com" number="Pl">iguin-suffix</msg>
+      <msg grade="Superl" case="Ess">ss_and_an</msg>
+      <note>nuorat - nuoramus - suffixes</note>
+    </l>
+
+     <l stem="contracted">
+      <msg grade="Comp"  attribute="1">t-suffix</msg>
+      <msg grade="Comp" case="Nom" number="Sg">t-suffix</msg>
+      <msg grade="Comp" case="Nom" number="Pl">but-suffix</msg>
+      <msg grade="Comp" case="Acc" number="Sg">bu-suffix</msg>
+      <msg grade="Comp" case="Acc" number="Pl">buid-suffix</msg>
+      <msg grade="Comp" case="Gen" number="Sg">bu-suffix</msg>
+      <msg grade="Comp" case="Gen" number="Pl">buid-suffix</msg>
+      <msg grade="Comp" case="Ill" number="Sg">bui-suffix</msg>
+      <msg grade="Comp" case="Ill" number="Pl">buide-suffix</msg>
+      <msg grade="Comp" case="Loc" number="Sg">bus-suffix</msg>
+      <msg grade="Comp" case="Loc" number="Pl">buin-suffix</msg>
+      <msg grade="Comp" case="Com" number="Sg">buin-suffix</msg>
+      <msg grade="Comp" case="Com" number="Pl">buiguin-suffix</msg>
+      <msg grade="Comp" case="Ess">bun-suffix</msg>
+      <msg grade="Superl" case="Nom" number="Pl">at-suffix</msg>
+      <msg grade="Superl" case="Acc" number="Sg">a-suffix</msg>
+      <msg grade="Superl" case="Acc" number="Pl">aid-suffix</msg>
+      <msg grade="Superl" case="Gen" number="Sg">a-suffix</msg>
+      <msg grade="Superl" case="Gen" number="Pl">aid-suffix</msg>
+      <msg grade="Superl" case="Ill" number="Sg">ss_and_ii</msg>
+      <msg grade="Superl" case="Ill" number="Pl">ide-suffix</msg>
+      <msg grade="Superl" case="Loc" number="Sg">s-suffix</msg>
+      <msg grade="Superl" case="Loc" number="Pl">in-suffix</msg>
+      <msg grade="Superl" case="Com" number="Sg">in-suffix</msg>
+      <msg grade="Superl" case="Com" number="Pl">iguin-suffix</msg>
+      <msg grade="Superl" case="Ess">ss_and_an</msg>
+      <note>riggát - riggámus - suffixes</note>
+    </l>
+
+  </stems>
+
+
+</feedback>
+
+ 
+
