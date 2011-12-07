@@ -1,0 +1,203 @@
+!!!Møte 10.11.11
+
+Til stades: Ciprian, Heli, Trond, Biret-Ánne, Lene
+
+!!Saksliste
+* Arbeidet med implementeringa av univOahpa
+* Hvilke kommunikasjonskanaler skal vi bruke framover?
+* Innlogging for site.uit.no/oahpa kombinert med innlogging for oahpa
+
+
+
+!! Arbeidet med implementeringa av univOahpa, se dette dokumentet:  
+
+* gjennomgang av arbeidsoppgaver
+* arbeidsfordeling
+* tidsfrister og intern avhengighet oppgav
+
+
+Numra og MorfaS fungerer, Leksa ikke. Det er ennå mye i py-skriptene som ikke er endra fra sma til sme.
+
+
+
+* [Innhald|http://giellatekno.uit.no/ped/nudoc/bestilling.html]
+* [Lokalisering|http://giellatekno.uit.no/ped/nudoc/bestilling_lokalisering.html]
+
+
+Det er skript som ikke er i bruk: new_views.py
+
+forms.py: inneheld språkpar (TRANS_CHOICES: smanob, smaswe, swesma, nobsma, osv.) til leksa. om denne står ikkje i dokumentasjonen, då bør det. 
+models.py: til smaoahpa var skrive litt meir generelt enn i original smeoahpa
+views.py: Inneheld fleire sma-trekk: xsyll, INE, 
+
+
+!Filstruktur
+
+I dag har vi ein interim filstruktur der nye filer ligg inni gamle. Her er
+status quo + 
+
+{{{
+main/ped/oahpa = ur-oahpa
+main/ped/sme/univ_oahpa_data/data_sme ==> main/ped/sme
+main/ped/sme/univ_oahpa_data/data_sme/sme ==> main/ped/sme/src
+pedversions/smaoahpa/data_sma
+
+Eit alternativ er dermed
+main/ped/sme ==> main/ped/oldsme (dvs. la dagens sme eksistere vidare)
+main/ped/sme/univ_oahpa_data/data_sme ==> main/ped/sme
+}}}
+
+Omdøping:
+
+{{{
+ped/old_sme    # gml data
+ped/old_oahpa  # gml django
+ped/sme        # ny data
+ped/univ_oahpa # ny django
+}}}
+
+
+http://giellatekno.uit.no/ped/nudoc/bestilling.html
+
+__TILTAK__
+
+* Gjennomgang av filene i {{univ_drill}} og {{templates}} for sme-oppdatering:: (__Heli og Ryan__)
+* Omdøpe som spesifisert ovafor idag (__Ciprian__)
+* Arbeide videre med forbedring av innholdet i kildefilene (__Lene, Biret Ánne__)
+
+!Leksa
+
+Svensk, engelsk
+
+Vi kan ha _ENG og _SWE som dummies i leksikonfilene for å implementere til og frå svensk også.
+
+To alternativ:
+
+# Legge inn _SWE dummies, og implementere svensk
+# Ignorere svensk no og legge det til seinare.
+
+
+!MorfaS
+
+Pronomen
+
+Vi skal ha fleire pronomentypar: refleksive, demonstrative, resiproke.
+
+
+Kontrakte stammer: sma har ikkje kontrakte stammer:
+* sma: 2syll, 3syll, xsyll (xsyll for adjektiv)
+* sme: 2syll, 3syll, Csyll (ikkje contracted)
+
+referanser til bisyllabic, trisyllabic, xsyllabic:
+*   univ_drill/game.py
+*   univ_drill/forms.py
+*   univ_drill/views.py
+
+Oppgavetyper - se bestillingsdokumentet
+
+pron_smenob.xml -> pron_sme.xml   (pronPers_smanob.xml)
+
+Kan vera litt arbeid i words_install.py for å vera sikkert at ms="Pron_Refl_osv" funkar i installeringa (~l.140).
+
+rekkjefylgje er litt annerleides i taggane
+
+sma: <analysis ms="Pron_Pers_Sg1_Acc">
+sme: <analysis ms="Pron_Refl_Ill_PxSg1">
+
+__TILTAK__
+
+* Omdøpe pron_smenob.xml (__Lene__)
+* Installere i basen, føre inn i .py-filene (__Heli, Ryan__)
+
+!MorfaC
+
+Status quo: 
+* N fungerer, V, A, Pron fungerer ikkje. 
+* Kjeldefilene i sma og sme ser like ut.
+
+Num skal bli lagt til.
+
+Databasen inneheld sma-pronomen, skal ha sme-pronomen.
+
+Det må vere informasjon om stamme, etc. i l-elementet. Det er framleis sma-kode i scriptet.
+
+
+
+__TILTAK__
+* Bytte pronomen til sme
+* Implementere andre ordklasser
+* Endre script til sme: attributtyper, osb.
+
+
+!Numra
+
+Dagens Numra har 6 språk, univ_oahpa har berre nordsamisk. La oss halde oss til det.
+
+Fungerer med alle fire menyvalg.
+
+__TILTAK__
+* Fjerne referansen til andre numra-språk frå koden i forms.py
+
+
+!Lokalisering, referanser
+
+Det må vere referanse til sme-lokalisering i django-koden.
+
+__TILTAK__
+* Lokalisering: Endre instruksjonen til number-to-string for dato (geassemánu 3. b.)
+* Grammatikk-meny må legges til
+* Referanser: Rett referansane i {{univ_drill/templates/*.html}} (__Lene__)
+** Referansen bør vere if-interfacelanguage-then-referencecontentlanguage (som for framsida)
+** Lokaliseringsspråk til grammatikk og veiledning, slik: ''sme, fin til sme, swe, nob til nob, eng til eng''
+* Legge sme til i django-global (__Ryan, Heli__)
+* Oversette til sme (__Lene__)
+* Sjå over dei andre språka (__Trond__)
+* Lage kontrastiv sme/sma-grammatikk i form av ei kort 10-punktsliste (__Trond, evt. Lene__)
+* Legge Heli til på giellatekno (__Børre__) og på AIM (__Heli__)
+
+
+
+
+
+!! Hvilke kommunikasjonskanaler skal vi bruke framover?
+
+* mellom lingvister og programmerere
+** Dokumentasjonssider
+** Møtereferat
+** epost for diskusjon
+* mellom programmerere
+* Bugzilla? Dokumentasjonsside på web?
+** Bugzilla berre når det er bug
+* Klokkeslett med Ryan? (fra kl. 1500 er Ryan kanskje online)
+
+!Framdriftsdokument:
+* [Sentral:|ped/univ-oahpa.html]
+* [Implementering av kjeldefiler|../bestilling.html]
+* [Implementering av grensesnitt (lokalisering, referansar|../bestilling_lokalisering.html]
+
+
+!! Innlogging for site.uit.no/oahpa kombinert med innlogging for oahpa
+
+Vær obs på at en del kildefiler og deres plassering er dokumentert her:
+
+[http://giellatekno.uit.no/ped/nudoc/smaformat.html|http://giellatekno.uit.no/ped/nudoc/smaformat.html]
+
+Det gjeld oppsettet på [site.uit.no/oahpa|http://site.uit.no/oahpa].
+Vi har også  [site.uit.no/giellatekno|http://site.uit.no/giellatekno].
+
+
+__TILTAK__
+
+* Gje Heli og Ryan passord til site.uit.no, både oahpa og giellatekno (__Berit Ánne og Ciprian__)
+* Eksperimentere med site.uit.no/giellatekno (__Trond, Ryan, Heli__)
+* Lage innlogging-oppsettet, må være operativt for studenter fra 2.1.12, men bør kunne testes i god tid før det (__Ryan, UiT IT__)
+
+!!Neste møte
+
+Allmenn deadline for tiltaka ovafor: Alt skal vere prøvd før neste møte, og så mykje som mogleg skal vere gjort.
+
+__onsdag 14.12 kl. 8.00__
+
+
+
+
