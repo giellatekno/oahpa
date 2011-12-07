@@ -8,7 +8,7 @@ from univ_oahpa.conf.tools import switch_language_code
 
 from random import randint
 
-from univ_oahpa.univ_drill.game import *
+from game import *
 from forms import *
 from qagame import *
 
@@ -44,8 +44,7 @@ class Gameview:
 			'N-ESS' :  _('Practise essive'),
 			'N-GEN' :  _('Practise genitive'),
 			'N-NOM-PL' :  _('Practise plural'),
-			'N-INE' :  _('Practise inessive'),
-			'N-ELA' :  _('Practise elative'),
+			'N-LOC' :  _('Practise locative'),
 			'N-MIX' :  _('Practise a mix'),
 			'V-MIX' :  _('Practise a mix'),
 			'A-MIX' :  _('Practise a mix'),
@@ -75,7 +74,7 @@ class Gameview:
 			'V-POT'   : _('Practise potential'),
 			'P-ACC'  : _('Practise accusative'),
 			'P-COM'  : _('Practise comitative'),
-			'P-ELA'  : _('Practise elative'),
+			'P-LOC'  : _('Practise locative'),
 			'P-GEN'  : _('Practise genitive'),
 			'P-NOM'  : _('Practise nominative'),
 			'P-ILL'  : _('Practise illative'),
@@ -89,7 +88,7 @@ class Gameview:
 		if 'trisyllabic' in settings_form.data:
 			self.settings['syll'].append('3syll')
 		if 'contracted' in settings_form.data:
-			self.settings['syll'].append('contracted')
+			self.settings['syll'].append('Csyll')
 		if 'xsyllabic' in settings_form.data:
 			self.settings['syll'].append('xsyll')
 		if len(self.settings['syll']) == 0:
@@ -261,11 +260,11 @@ class Quizzview(Gameview):
 			if not 'source' in post_like_data:
 				post_like_data['source'] = 'all'
 			if not 'transtype' in post_like_data:
-				post_like_data['transtype'] = 'smanob'
+				post_like_data['transtype'] = 'smenob'
 			if not 'semtype' in post_like_data:
 				post_like_data['semtype'] = 'all'
 			if not 'geography' in post_like_data:
-				post_like_data['geography'] = 'south'
+				post_like_data['geography'] = 'world'
 		else:
 			post_like_data = False
 
@@ -370,15 +369,15 @@ def leksa_game(request, place=False):
 
 	if place:
 		leksagame.settings['allsem'] = []
-		leksagame.settings['semtype'] = "PLACE_LEKSA"
-		leksagame.settings['geography'] = 'south'
+		leksagame.settings['semtype'] = "PLACE_NAME" # was PLACE-LEKSA
+		leksagame.settings['geography'] = 'world'
 		template = 'leksa_place.html'
 
 	sess_lang = request.session.get('django_language')
 
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
-		if sess_lang == 'sma':
+		if sess_lang == 'sme':
 			sess_lang = 'nob'
 	else:
 		sess_lang = 'nob'
