@@ -382,7 +382,7 @@ def leksa_game(request, place=False):
 	else:
 		sess_lang = 'nob'
 
-	default_langpair = 'sma%s' % sess_lang
+	default_langpair = 'sme%s' % sess_lang
 
 	c = leksagame.create_leksagame(request, default_langpair)
 	# Not true or false
