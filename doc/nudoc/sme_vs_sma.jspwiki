@@ -1,6 +1,6 @@
 !!! Lingvistiske forskjeller som er relevante for Oahpa
 
-!!Stem
+!!Stem attributter
 
 || Stem  ||sme	||sma	
 | 2syll | +	| +	
@@ -14,7 +14,7 @@
 | margo  |  -  |  + 	
 | umlaut  |  -  |  + 	
 | class  |  -  |  + 	
-| p3p  |  -  |  + brukes ikke
+| p3p  |  -  |  + (brukes ikke, bør fjernes)
 
 
 
@@ -48,11 +48,11 @@
 !!Generering
 || Ordklasse ||sme	||sma	
 | Substantiv | N	| N	
-| Substantiv | type="g3" ->  G3+N	| - 
-|  Substantiv | type="actor" -> N+Actor	|  -	
+| Substantiv | type="g3" ->  +G3+N	| - 
+|  Substantiv | type="actor" -> +N+Actor	|  -	
 | Verb | V	| V
-|  Verb |  -	| hid="1"  -> 1+V, bare "govledh"
-| Verb  | -	| hid="2"  -> 2+V - bare "govledh"
+|  Verb |  -	| hid="1"  -> +1+V, bare "govledh"
+| Verb  | -	| hid="2"  -> +2+V - bare "govledh"
 
 
 
@@ -60,22 +60,22 @@
 
 !! Dialekter
 || Dialekt ||sme	||sma	
-| Valg | GG, KJ	| SH, L	
-| i leksikon | NOT-GG, NOT-KJ	| -	
+| Brukervalg | GG, KJ	| SH, L	
+| leksikon | NOT-GG, NOT-KJ	| -	
 | fst | isme-KJ.restr.fst, isme-GG.restr.fst	| isma-SO.restr.fst, isma-L.restr.fst	
 
 
-!! Leksa
+!! Leksa stedsnavn
 
-|| Stedsnavn ||sme	||sma	
+|| Attributt ||sme	||sma	
 | geography | world, sapmi, suopma	| south, north, mid, other	
-| frequency | rare, common	| common (ingen valg)	
+| frequency | rare, common	| common (alle har samme)	
 
 
 
 !! Numra
  
-|| Numra ||sme	||sma	
+||Oppgaver ||sme	||sma	
 | cardinals | +	| +	
 | ordinals | +	| +	
 | klokka | ny	| +	
@@ -94,14 +94,12 @@
 | numeraler | +	| -	
 | pronomen | ny	| +	
 
-! MorfaS / MorfaB substantiv
-|| oppgaver ||sme	||sma	
-| alle kasus | +	| +	
-| Pl+Nom | +	| +	
-|  mix | -	| MorfaR
+! MorfaS / MorfaB substantiv - oppgaver for sma og sme
+* alle kasus
+* Pl+Nom  	 
 
 !MorfaC / MorfaR substantiv
-|| oppgaver ||sme	||sma	
+|| Oppgaver ||sme	||sma	
 | N-NOM-PL | +	| +	
 | N-ACC| +	| +	
 | N-ESS | +	|  +
@@ -114,19 +112,19 @@
 
 
 
-!MorfaB adjektiv sma
+!MorfaB adjektivoppgaver: sma
 * Attr   
 * Pl+Nom  	 
 * Comp+Sg+Nom  	 	
 * Superl+Sg+Nom  
 
-!MorfaS adjektiv sme
+!MorfaS adjektivoppgaver: sme
 Alle kombinasjoner av
 * attributt, alle kasus, nominativ flertall
 * positiv, komparativ, superlativ
 
 !MorfaC / MorfaR adjektiv
-|| oppgaver ||sme	||sma	
+|| Oppgaver ||sme	||sma	
 | ATTRPOS | +	| +	
 | ATTRCOMP | +	| -	
 | ATTRSUP | +	| -
@@ -138,7 +136,7 @@ Alle kombinasjoner av
 
 
 ! MorfaS / MorfaB verb
-|| oppgaver ||sme	||sma	
+|| Oppgaver ||sme	||sma	
 | Prs | +	| +	
 | Prt | +	| +	
 | Imprt | +	| +	
@@ -146,10 +144,9 @@ Alle kombinasjoner av
 | Ger | ny	| +	
 | Cond | +	| -	
 | Pot | +	| -	
-|  mix | -	| MorfaR
 
 ! MorfaC / MorfaR verb
-|| oppgaver ||sme	||sma	
+|| Oppgaver ||sme	||sma	
 | V-PRS | +	| +	
 | V-PRT | +	| +	
 | V-IMPRT | +	| +	
@@ -161,7 +158,7 @@ Alle kombinasjoner av
 
 
 ! MorfaS / MorfaB pronomen
-|| oppgaver ||sme	||sma	
+|| Oppgaver ||sme	||sma	
 | Pron+Pers | +	| +	
 | Pron+Refl | +	| -	
 | Pron+Rec | +	| -
@@ -169,8 +166,8 @@ Alle kombinasjoner av
 
 
 ! MorfaC / MorfaR pronomen
-Oppgaver skal lages for sme
-|| oppgaver ||sme	||sma	
+Oppgaver skal lages for sme-kasus
+|| Oppgaver ||sme	||sma	
 | P-NOM | -	| +	
 | P-ACC | -	| +	
 | P-GEN | -	| +	
@@ -180,7 +177,7 @@ Oppgaver skal lages for sme
 | P-MIX | -	| +	
 
 ! MorfaS / MorfaB numeraler
-|| oppgaver ||sme	||sma	
+|| Oppgaver ||sme	||sma	
 | Pl+Nom | +	| -	
 | Acc | +	| -	
 | Loc | +	| -
@@ -189,7 +186,7 @@ Oppgaver skal lages for sme
 
 
 ! MorfaC / MorfaR numeraler
-|| oppgaver ||sme	||sma	
+|| Oppgaver ||sme	||sma	
 | ORD-NUM | +	| -	
 | COLL-NUM | +	| -	
 | NUM-ATTR | +	| -	
@@ -202,7 +199,4 @@ Oppgaver skal lages for sme
 
 
 !! Vasta og Sahka
-
-|| program ||sme	||sma	
-| Vasta | +	| -	
-| Sahka | +	| -	
+finnes bare for sme
