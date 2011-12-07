@@ -67,6 +67,7 @@ PRON_CONTEXT_CHOICES = (
 	('P-ACC', _('accusative')),
 	('P-GEN', _('genitive')),
 	('P-ILL', _('illative')),
+	('P-LOC', _('locative')),
 	('P-COM', _('comitative')),
 	('P-MIX', _('mix')),
 )
