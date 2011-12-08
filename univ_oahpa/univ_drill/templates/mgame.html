@@ -10,12 +10,16 @@
 {% ifequal LANGUAGE_CODE "sme" %}
 <a href="http://giellatekno.uit.no/oahpa/morfa.html"
 {% endifequal %}
-{% ifequal LANGUAGE_CODE "fin" %}
+{% ifequal LANGUAGE_CODE "fi" %}
 <a href="http://giellatekno.uit.no/oahpa/morfa.html"
 {% endifequal %}
-{% ifequal LANGUAGE_CODE "eng" %}
+{% ifequal LANGUAGE_CODE "en" %}
 <a href="http://giellatekno.uit.no/oahpa/morfa.eng.html"
-{% else %}
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "no" %}
+<a href="http://giellatekno.uit.no/oahpa/morfa.nno.html"
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "sv" %}
 <a href="http://giellatekno.uit.no/oahpa/morfa.nno.html"
 {% endifequal %}
 {% endblock %}
