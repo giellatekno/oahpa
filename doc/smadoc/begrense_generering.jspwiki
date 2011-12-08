@@ -3,10 +3,10 @@
 Her er lister over hvilke attributter vi bruker for å begrense genereringa i smaOAHPA. Attributtverdien viser deler av taggene som skal genereres, evt flere deler med komma mellom. Det er mulig også med andre kombinasjoner enn det som er på denne lista.
 
 {{{
-gen_only="Inf,PrfPrc,Ger,Sg3"
+gen_only="Inf,PrfPrc,Ger,ConNeg,Sg3"
 }}} for verb som bare har 3. person entall, uten subjekt, f.eks. abrodh, tidl. context=upers
 {{{
-gen_only="Inf,PrfPrc,Ger,3"
+gen_only="Inf,PrfPrc,Ger,ConNeg,3"
 }}} for verb som bare 3. person entall og flertall, med subjekt, f.eks. deahpadidh, tidl. context=3.pers
 {{{
 gen_only="Sg"
@@ -18,7 +18,7 @@ gen_only="Sg+Nom"
 gen_only="Pl"
 }}} for substantiv som har grunnform i flertall
 {{{
-gen_only="Inf,PrfPrc,Ger,Du,Pl"
+gen_only="Inf,PrfPrc,Ger,ConNeg,Du,Pl"
 }}} for verb som vi ikke ønsker i entall
 {{{
 gen_only="A+Sg,A+Attr"
