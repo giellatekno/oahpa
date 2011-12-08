@@ -168,7 +168,11 @@
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "eng" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/grammatihkka.eng.html">{% trans "North Sámi grammar" %}</a></li>
-            {% else %}
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "nob" %}
+				<li><a href="http://giellatekno.uit.no/oahpa/grammatihkka.nno.html">{% trans "North Sámi grammar" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "swe" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/grammatihkka.nno.html">{% trans "North Sámi grammar" %}</a></li>
             {% endifequal %}
 			</ul>
