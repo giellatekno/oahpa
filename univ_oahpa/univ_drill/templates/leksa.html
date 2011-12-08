@@ -22,7 +22,19 @@
 {% block name %}{% trans "Quizz" %}{% endblock %}
 {% block pagename %}/{{ URL_PREFIX }}/leksa/{% endblock %}
 
-{% block veiledning %}http://giellatekno.uit.no/oahpa/sma/useoahpa/leksa.nob.html{% endblock %}
+{% block veiledning %}
+{% ifequal LANGUAGE_CODE "sme" %}
+<a href="http://giellatekno.uit.no/oahpa/leksa.html"
+{% else %}
+{% ifequal LANGUAGE_CODE "fin" %}
+<a href="http://giellatekno.uit.no/oahpa/leksa.html"
+{% else %}
+{% ifequal LANGUAGE_CODE "eng" %}
+<a href="http://giellatekno.uit.no/oahpa/leksa.eng.html"
+{% else %}
+<a href="http://giellatekno.uit.no/oahpa/leksa.nno.html"
+{% endifequal %}
+{% endblock %}
 
 {% block instructions %}
 	{% trans "Give translations for words. You can choose set or level, not both." %}

@@ -12,7 +12,20 @@
 {% block gametitlename %}NUMRA{% endblock %}
 {% block imgprefix %}numra{% endblock %}
 
-{% block veiledning %}http://giellatekno.uit.no/oahpa/sma/useoahpa/numra.nob.html{% endblock %}
+
+{% block veiledning %}
+{% ifequal LANGUAGE_CODE "sme" %}
+<a href="http://giellatekno.uit.no/oahpa/numra.html"
+{% else %}
+{% ifequal LANGUAGE_CODE "fin" %}
+<a href="http://giellatekno.uit.no/oahpa/numra.html"
+{% else %}
+{% ifequal LANGUAGE_CODE "eng" %}
+<a href="http://giellatekno.uit.no/oahpa/numra.eng.html"
+{% else %}
+<a href="http://giellatekno.uit.no/oahpa/numra.nno.html"
+{% endifequal %}
+{% endblock %}
 
 {% block navbar %}
 	{% with "numra_cardinal" as gamename_nav %}

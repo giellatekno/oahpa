@@ -6,7 +6,19 @@
 {% block gametitlename %}{% ifequal settings.gametype "bare" %}MORFA-B{% else %}MORFA-R{% endifequal %}{% endblock %}
 {% block imgprefix %}{% ifequal settings.gametype "bare" %}morfa{% else %}morfac{% endifequal %}{% endblock %}
 
-{% block veiledning %}http://giellatekno.uit.no/oahpa/sma/useoahpa/morfa.nob.html{% endblock %}
+{% block veiledning %}
+{% ifequal LANGUAGE_CODE "sme" %}
+<a href="http://giellatekno.uit.no/oahpa/morfa.html"
+{% else %}
+{% ifequal LANGUAGE_CODE "fin" %}
+<a href="http://giellatekno.uit.no/oahpa/morfa.html"
+{% else %}
+{% ifequal LANGUAGE_CODE "eng" %}
+<a href="http://giellatekno.uit.no/oahpa/morfa.eng.html"
+{% else %}
+<a href="http://giellatekno.uit.no/oahpa/morfa.nno.html"
+{% endifequal %}
+{% endblock %}
 
 {% block navbar %}
 {% ifequal settings.gametype "bare" %}
