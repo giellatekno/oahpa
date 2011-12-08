@@ -1,7 +1,7 @@
 # list of command making jspwiki document
 
 # c. only oahpa verbs
-cat $GTHOME/ped/sme/univ_oahpa_data/data_sme/sme/v_smenob.xml | tr "\n" " " | tr "<" "\n" | grep '^l ' | cut -d ">" -f2 | sort -u > t3
+cat $GTHOME/ped/sme/src/v_smenob.xml | tr "\n" " " | tr "<" "\n" | grep '^l ' | cut -d ">" -f2 | sort -u > t3
 
 DATO=`date`
 
