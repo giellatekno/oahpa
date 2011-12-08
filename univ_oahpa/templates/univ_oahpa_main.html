@@ -106,7 +106,7 @@
 		<div id="header">
 			{% block header_content %}
 			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!" /></h1>
-			<h2>Buerie båeteme!</h2>
+			<h2>Bures boahtin!</h2>
 			{% endblock %}
 		</div>
 
@@ -158,9 +158,19 @@
 			<p>{% trans "Oahpa is connected with online reference materials." %}</p>
 			{% endcomment %}
 			<ul class="linklist">
-				<li><a href="http://giellatekno.uit.no/oahpa/sme/index.html">{% trans "Veiledning" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/index.html">{% trans "Veiledning" %}</a></li>
 				<li><a href="http://victorio.uit.no/webdict/index_sme-nob.html">{% trans "North Sámi" %}-{% trans "Norwegian" %} {% trans "dictionary" %}</a></li>
+            {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/grammatihkka.html">{% trans "North Sámi grammar" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "fin" %}
+				<li><a href="http://giellatekno.uit.no/oahpa/grammatihkka.html">{% trans "North Sámi grammar" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "eng" %}
+				<li><a href="http://giellatekno.uit.no/oahpa/grammatihkka.eng.html">{% trans "North Sámi grammar" %}</a></li>
+            {% else %}
+				<li><a href="http://giellatekno.uit.no/oahpa/grammatihkka.nno.html">{% trans "North Sámi grammar" %}</a></li>
+            {% endifequal %}
 			</ul>
 
 			{# <p>Are you visiting this site as part of a course? <a href="{% url courses.views.courses_main %}">Log in here</a></p> #}
