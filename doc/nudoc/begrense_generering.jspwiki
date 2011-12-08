@@ -1,0 +1,44 @@
+!!!Begrense generering av ordformer - nordsamisk
+
+Her er lister over hvilke attributter vi brukerfor å begrense genereringa i univOAHPA. Attributtverdien viser deler av taggene som skal genereres, evt flere deler med komma mellom. Det er mulig også med andre kombinasjoner enn det som er på denne lista.
+
+* for negasjonsverbet
+** gen_only="Neg"
+
+* for verb som bare har 3. person entall, uten subjekt, f.eks. arvit
+** gen_only="Inf,Ind+Prt+Sg3,Pot+Prs+Sg3,Cond+Prs+Sg3,ConNeg,PrfPrc"
+
+* for verb som bare 3. person entall og flertall, med subjekt,
+** gen_only="Inf,PrfPrc,Ger,ConNeg,3"
+   
+* for verb som vi ikke ønsker i entall, f.eks. deaivvadit
+** gen_only="Inf,PrfPrc,Ger,ConNeg,Du,Pl"
+ 
+* for substantiv som vi ikke vil presentere i flertall 
+** gen_only="Sg"
+ 
+* for substantiv som bare har denne grunnformen (f.eks. buaredh)
+** gen_only="Sg+Nom"
+ 
+* for substantiv som har grunnform i flertall, f.eks. gávnnit
+** gen_only="Pl"
+ 
+* for adjektiver som bare har superlativformer, f.eks. maŋimuš
+** gen_only="Superl"
+ 
+* for adjektiver som ikke skal kompareres
+** gen_only="A+Attr,A+Sg,A+Pl"
+ 
+* for adjektiver som bare har attributtform
+** gen_only="A+Attr"
+ 
+* for adjektiver ikke har attributtform i positiv
+** gen_only="A+Sg,A+Pl,Comp,Superl"
+ 
+* for adjektiver som bare har predikatform, og ikke skal kompareres
+** gen_only="A+Sg"
+ 
+* for lemmaer som ikke kan genereres, f.eks. stedsnavn som bare skal brukes i Leksa
+** gen_only="none"
+
+
