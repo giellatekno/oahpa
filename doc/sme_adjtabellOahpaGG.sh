@@ -1,7 +1,7 @@
 # list of command making jspwiki document
 
 # c. only oahpa adjectives
-cat $GTHOME/ped/sme/univ_oahpa_data/data_sme/sme/a_smenob.xml | sed 's/<l /$<l /' | sed 's/<mg>/$<mg>/' | tr "\n" " " | tr "$" "\n" | grep '<l ' | grep -v 'NOT-GG' | tr "<" ">" | cut -d ">" -f3 | sort -u > t3
+cat $GTHOME/ped/sme/src/a_smenob.xml | sed 's/<l /$<l /' | sed 's/<mg>/$<mg>/' | tr "\n" " " | tr "$" "\n" | grep '<l ' | grep -v 'NOT-GG' | tr "<" ">" | cut -d ">" -f3 | sort -u > t3
 
 DATO=`date`
 
