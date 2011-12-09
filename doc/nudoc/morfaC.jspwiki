@@ -1,0 +1,93 @@
+!!!Om Morfa-C
+
+Man lager grammatikkoppgaver, hvor elevene får et spørsmål/svar eller setnig/kommentar med et åpent felt. De får oppgitt et lemma (ord i grunnform) og de skal skrive riktig form at dette. Lemmaet kommer fra et semantiske sett, og slik vil datamaskinen generere mange ulike oppgaver ut av en mal. Ved å bruke variabler for noen av de andre ordene i setningene, vil antall forskjellige oppgaver bli mye større. +kongr betyr at ordet skal kongruere da f.eks. FAMILY kan være både entall og flertall.
+
+!!Eksempel
+ Maid HUMAN-adj FAMILY oastit+kongr? FAMILY ..... (DRINK akkusativ)  oastit+kongr.
+
+!! XML-format - i ped/sme/meta/
+
+Oppgavene i xml-format, f.eks.
+
+{{{
+  <q id="nill1sg">                 <= unik id, den kan være hvordan som helst
+    <qtype>N-ILL</qtype>           <= oppgavetype. Menyvalg gjøres ut fra denne.
+    <question>
+      <text>Geasa SUBJ OBJ MAINV</text>
+      <element id="SUBJ">          <= grammardefault: SUBJ er Nom
+    <grammar pos="Pron"/>          <= kan være Sg og Pl. Kan spesifiseres: Pron+Pers+Sg
+      </element>
+      <element id="MAINV">         <= grammardefault: MAINV kongruerer med SUBJ
+    <grammar tag="V+Ind+Tense+Person-Number"/>  <= Tense og Person-Number er variabler
+     <id>vedtedh</id>              <= man kan bruke id istedenfor semantisk sett
+      </element>
+      <element id="OBJ">           <= OBJ er semantisk sett
+    <sem class="TOY"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ OBJ MAINV N-ILL</text>  <== SUBJ for å få svaret til å kongruere med spørsmål
+      <element game='morfa' id="N-ILL" task="yes">  <= slik defineres hva som er oppgave
+    <grammar tag="N+Sg+Ill"/>                       <= fasit
+    <sem class="FAMILY"/>
+      </element>
+    </answer>
+  </q>
+}}}
+
+Hvis man ønsker et annet verb i svaret enn i spørsmålet, kan man legge til <agreement id="MAINV"/>
+
+Hvis man ønsker å bruke en annen variabel i svaret, kan man legge til content="MAINV" i element.
+
+Vasta er som MorfaC, men bare question.
+
+!! Semantiske sett for Morfa-C og Vasta
+! Disse settene er brukt i nordsamisk MorfaC 
+* ABSTRACT 
+* ACTIVITY 
+* ANIMAL 
+* ANIMAL-DOM 
+* ANIMAL-PET 
+* ARRANGEMENT 
+* ARRANGEMENT-PL 
+* BUILDING 
+* CARDINAL-SMALL 
+* CLOTHES-adj 
+* CLOTHING 
+* CLOTHING-PL 
+* COLL-NUM 
+* COLL-NUM-DU 
+* COLL-NUM-NOT-DU 
+* COMV 
+* CONTAINER 
+* DILLI-ESS 
+* EDUCATION 
+* FAMILY 
+* FOOD-GROCERY 
+* FURNITURE 
+* HANDICRAFTS-PL 
+* HUMAN 
+* HUMAN-adj 
+* INSTRUMENT 
+* ISSUE-adj 
+* KITCHEN 
+* MYTH 
+* MYTH-HUMAN 
+* OBJECT 
+* ORDINAL 
+* ORDINAL-SMALL 
+* PAIR 
+* PLACE 
+* PLACE-NAME 
+* PROFESSION 
+* SLIDE-TOOL 
+* TEXT 
+* THING 
+* TIME-POINT-ESS 
+* TIME-POINT-GEN 
+* TIME-POINT-GEN-PL 
+* TIME-SEASON 
+* TOY 
+* VEHICLE 
+
+
