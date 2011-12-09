@@ -1,9 +1,9 @@
 # list of command making jspwiki document
 
 # c. only oahpa nouns
-cat $GTHOME/ped/sme/src/n_smenob.xml | sed 's/<l /$<l /' | sed 's/<mg>/$<mg>/' | tr "\n" " " | tr "$" "\n" | grep '<l ' | grep -v 'NOT-GG' | egrep -v '(g3|actor)' | tr "<" ">" | cut -d ">" -f3 | sort -u > t3
-cat $GTHOME/ped/sme/src/n_smenob.xml | sed 's/<l /$<l /' | sed 's/<mg>/$<mg>/' | tr "\n" " " | tr "$" "\n" | grep '<l ' | grep -v 'NOT-GG' | grep  g3 | tr "<" ">" | cut -d ">" -f3 | sort -u > g3t3
-cat $GTHOME/ped/sme/src/n_smenob.xml | sed 's/<l /$<l /' | sed 's/<mg>/$<mg>/' | tr "\n" " " | tr "$" "\n" | grep '<l ' | grep -v 'NOT-GG' | grep actor | tr "<" ">" | cut -d ">" -f3 | sort -u > actort3
+cat $GTHOME/ped/sme/src/n_smenob.xml | sed 's/<l /$<l /' | sed 's/<mg>/$<mg>/' | tr "\n" " " | tr "$" "\n" | grep '<l ' | egrep -v '(g3|actor)' | tr "<" ">" | cut -d ">" -f3 | sort -u > t3
+cat $GTHOME/ped/sme/src/n_smenob.xml | sed 's/<l /$<l /' | sed 's/<mg>/$<mg>/' | tr "\n" " " | tr "$" "\n" | grep '<l ' | grep  g3 | tr "<" ">" | cut -d ">" -f3 | sort -u > g3t3
+cat $GTHOME/ped/sme/src/n_smenob.xml | sed 's/<l /$<l /' | sed 's/<mg>/$<mg>/' | tr "\n" " " | tr "$" "\n" | grep '<l ' | grep actor | tr "<" ">" | cut -d ">" -f3 | sort -u > actort3
 
 DATO=`date`
 
