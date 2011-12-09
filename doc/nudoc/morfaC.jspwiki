@@ -1,6 +1,6 @@
 !!!Om Morfa-C
 
-Man lager grammatikkoppgaver, hvor elevene får et spørsmål/svar eller setnig/kommentar med et åpent felt. De får oppgitt et lemma (ord i grunnform) og de skal skrive riktig form at dette. Lemmaet kommer fra et semantiske sett, og slik vil datamaskinen generere mange ulike oppgaver ut av en mal. Ved å bruke variabler for noen av de andre ordene i setningene, vil antall forskjellige oppgaver bli mye større. +kongr betyr at ordet skal kongruere da f.eks. FAMILY kan være både entall og flertall.
+Man lager grammatikkoppgaver, hvor elevene får et spørsmål/svar eller setning/kommentar med et åpent felt. De får oppgitt et lemma (ord i grunnform) og de skal skrive riktig form at dette. Lemmaet kommer fra et semantiske sett, og slik vil datamaskinen generere mange ulike oppgaver ut av en mal. Ved å bruke variabler for noen av de andre ordene i setningene, vil antall forskjellige oppgaver bli mye større. +kongr betyr at ordet skal kongruere da f.eks. FAMILY kan være både entall og flertall.
 
 !!Eksempel
  Maid HUMAN-adj FAMILY oastit+kongr? FAMILY ..... (DRINK akkusativ)  oastit+kongr.
@@ -12,6 +12,7 @@ Oppgavene i xml-format, f.eks.
 {{{
   <q id="nill1sg">                 <= unik id, den kan være hvordan som helst
     <qtype>N-ILL</qtype>           <= oppgavetype. Menyvalg gjøres ut fra denne.
+    <qtype>N-MIX</qtype>           <= det kan være flere menyvalg
     <question>                        dvs. like mange oppgavetyper som menyvalg
       <text>Geasa SUBJ OBJ MAINV</text>
       <element id="SUBJ">          <= grammardefault: SUBJ er Nom
@@ -21,8 +22,8 @@ Oppgavene i xml-format, f.eks.
     <grammar tag="V+Ind+Tense+Person-Number"/>  <= Tense og Person-Number er variabler
      <id>vedtedh</id>              <= man kan bruke id istedenfor semantisk sett
       </element>
-      <element id="OBJ">           <= OBJ er semantisk sett
-    <sem class="TOY"/>
+      <element id="OBJ">           <= grammardefault: OBJ er Acc
+    <sem class="TOY"/>             <= TOY er semantisk sett
       </element>
     </question>
     <answer> 
@@ -34,6 +35,8 @@ Oppgavene i xml-format, f.eks.
     </answer>
   </q>
 }}}
+
+meta/grammar_defaults.xml
 
 Hvis man ønsker et annet verb i svaret enn i spørsmålet, kan man legge til <agreement id="MAINV"/>
 
@@ -47,7 +50,7 @@ Oversikt over oppgavetyper er i [dette dokumentet|sme_vs_sma.html]
 Vasta er som MorfaC, men bare question.
 
 !! Semantiske sett for Morfa-C og Vasta
-! Disse settene er brukt i nordsamisk MorfaC, men man kan lage nye sett adhoc.
+! Disse settene er brukt i nordsamisk MorfaC, men man kan lage nye sett adhoc med prefiks m.
 * ABSTRACT 
 * ACTIVITY 
 * ANIMAL 
