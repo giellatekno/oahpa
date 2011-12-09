@@ -17,29 +17,29 @@ echo "||  lemma  ||  Sg Nom  ||  Pl Nom || Sg Ill || Pl Acc " >> nudoc/gen/sme_n
 
 
 # Making the 4 columns
-cat t3|sed 's/$/+N+Sg+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' > tsgnom3
+cat t3|sed 's/$/+N+Sg+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+N.*/-/'|tr '\t' ',' > tsgnom3
 
-cat t3|sed 's/$/+N+Pl+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' > tplnom3
+cat t3|sed 's/$/+N+Pl+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+N.*/-/'|tr '\t' ',' > tplnom3
 
-cat t3|sed 's/$/+N+Sg+Ill/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' > tsgill3
+cat t3|sed 's/$/+N+Sg+Ill/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+N.*/-/'|tr '\t' ',' > tsgill3
 
-cat t3|sed 's/$/+N+Pl+Acc/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' > tplacc3
+cat t3|sed 's/$/+N+Pl+Acc/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+N.*/-/'|tr '\t' ',' > tplacc3
 
-cat g3t3|sed 's/$/+G3+N+Sg+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' >> tsgnom3
+cat g3t3|sed 's/$/+G3+N+Sg+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+N.*/-/'|tr '\t' ',' >> tsgnom3
 
-cat g3t3|sed 's/$/+G3+N+Pl+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' >> tplnom3
+cat g3t3|sed 's/$/+G3+N+Pl+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+N.*/-/'|tr '\t' ',' >> tplnom3
 
-cat g3t3|sed 's/$/+G3+N+Sg+Ill/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' >> tsgill3
+cat g3t3|sed 's/$/+G3+N+Sg+Ill/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+N.*/-/'|tr '\t' ',' >> tsgill3
 
-cat g3t3|sed 's/$/+G3+N+Pl+Acc/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' >> tplacc3
+cat g3t3|sed 's/$/+G3+N+Pl+Acc/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+N.*/-/'|tr '\t' ',' >> tplacc3
 
-cat actort3|sed 's/$/+N+Actor+Sg+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' >> tsgnom3
+cat actort3|sed 's/$/+N+Actor+Sg+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+N.*/-/'|tr '\t' ',' >> tsgnom3
 
-cat actort3|sed 's/$/+N+Actor+Pl+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' >> tplnom3
+cat actort3|sed 's/$/+N+Actor+Pl+Nom/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+N.*/-/'|tr '\t' ',' >> tplnom3
 
-cat actort3|sed 's/$/+N+Actor+Sg+Ill/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' >> tsgill3
+cat actort3|sed 's/$/+N+Actor+Sg+Ill/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+N.*/-/'|tr '\t' ',' >> tsgill3
 
-cat actort3|sed 's/$/+N+Actor+Pl+Acc/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+A.*/-/'|tr '\t' ',' >> tplacc3
+cat actort3|sed 's/$/+N+Actor+Pl+Acc/;'| lookup -q $GTHOME/gt/sme/bin/isme-norm.fst |tr '\n' '™'|sed 's/™™/£/g;'|tr '£' '\n'|tr '™' '\t'|cut -f2,4,6,8,10,12,14,16|sed 's/.*+N.*/-/'|tr '\t' ',' >> tplacc3
 
 echo '- ' >> t3
 
