@@ -18,75 +18,99 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !!Oppgavene lagres i univ_oahpa_data/data_sme/meta/question_*.xml
 
 !!! Adjektiv
-!!Attributtoppgaver
-! <q id="attrpos0">
+!!Attributtoppgaver 
+! <q id="attrpos0"> 
+* <qtype>ATTRPOS</qtype>
 * <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
 * <id>leat</id>  <sem class="CLOTHING" 	<sem class="CLOTHES-adj"/>
 * <text>Dus MAINV ATTR SUBJ</text>
-! <q id="attrpos1"> Kommentar: vi bør sammenligne semantiske klasser "ABSTRACT" og "ISSUE-adj". Vi får noen rare par (dá leat oahpes vuođut).
+! <q id="attrpos1"> 
+__Kommentar: vi bør sammenligne semantiske klasser "ABSTRACT" og "ISSUE-adj". Vi får noen rare par (dá leat oahpes vuođut).__
+* <qtype>ATTRPOS</qtype>
 * <text>SUBJ MAINV PRED . Makkár SUBJ2 dá MAINV2</text>
 * <id>leat</id>  <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
 * <text>Dá MAINV ATTR SUBJ</text>
 ! <q id="attrcomp0">
+* <qtype>ATTRCOMP</qtype>
 * <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
 * <id>leat</id>  <sem class="CLOTHING"/>  <sem class="CLOTHES-adj"/>
 * <text>Dus MAINV ATTR SUBJ</text>
-! <q id="attrcomp1"> Kommentar: vi bør sammenligne semantiske klasser.
+! <q id="attrcomp1"> 
+__Kommentar: vi bør sammenligne semantiske klasser.__
+* <qtype>ATTRCOMP</qtype>
 * <text>Dát SUBJ MAINV PRED . Makkár SUBJ2 dát MAINV2</text>
 * <id>leat</id>  <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
 * <text>Dát MAINV ATTR SUBJ</text>
 ! <q id="attrsup0">
+* <qtype>ATTRSUP</qtype>
 * <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
 * <id>leat</id>  <sem class="CLOTHING"/>  <sem class="CLOTHES-adj"/>
 * <text>Dus MAINV ATTR SUBJ</text>
-! <q id="attrsup1"> Kommentar: vi bør sammenligne semantiske klasser.
+! <q id="attrsup1"> 
+__Kommentar: vi bør sammenligne semantiske klasser.__
+* <qtype>ATTRSUP</qtype>
 * <text>Dát SUBJ MAINV PRED . Makkár SUBJ2 dát MAINV2</text>
 * <id>leat</id>  <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
 * <text>Dát MAINV ATTR SUBJ</text>
 
 !!Predpos oppgaver
 ! <q id="predpos0">
+* <qtype>PREDPOS</qtype>
 * <text>Mus leat ATTR SUBJ . Makkárat SUBJ2 leat</text>
 * <sem class="CLOTHING"/>  <sem class="CLOTHES-adj"/>
 * <text>SUBJ leat PRED</text>
 ! <q id="predpos1">
+* <qtype>PREDPOS</qtype>
 * <text>Mus lea ATTR SUBJ . Makkár SUBJ2 lea</text>
 * <sem class="CLOTHING"/>  <sem class="CLOTHES-adj"/>
 * <text>SUBJ lea PRED</text>
-! <q id="predpos2"> Kommentar: vi bør sammenligne semantiske klasser.
+! <q id="predpos2"> 
+__Kommentar: vi bør sammenligne semantiske klasser.__
+* <qtype>PREDPOS</qtype>
 * <text>Dát leat ATTR SUBJ . Makkárat SUBJ2 leat</text>
 * <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
 * <text>SUBJ leat PRED</text>
-! <q id="predpos3"> Kommentar: vi bør sammenligne semantiske klasser.
+! <q id="predpos3"> 
+__Kommentar: vi bør sammenligne semantiske klasser.__
+* <qtype>PREDPOS</qtype>
 * <text>Dát lea ATTR SUBJ . Makkár SUBJ2 lea</text>
 * <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
 * <text>SUBJ lea PRED</text>
 
 !!Predkomparativ oppgaver
 ! <q id="predcomp0">
+* <qtype>PREDCOMP</qtype>
 * <text>Mu SUBJ lea PRED . Makkár du SUBJ2 lea</text>
 * <sem class="FAMILY"/>  <sem class="HUMAN-adj"/>
 * <text>Mu SUBJ lea PREDCOMP</text>
 ! <q id="predcomp1">
+* <qtype>PREDCOMP</qtype>
 * <text>Mu SUBJ leat PRED . Makkárat du SUBJ2 leat</text>
 * <sem class="FAMILY"/>  <sem class="HUMAN-adj"/>
 * <text>Mu SUBJ leat PREDCOMP</text>
-! <q id="predcomp2"> Kommentar: vi bør sammenligne semantiske klasser.
+! <q id="predcomp2"> 
+__Kommentar: vi bør sammenligne semantiske klasser.__
+* <qtype>PREDCOMP</qtype>
 * <text>Dát SUBJ lea PRED . Makkár diet SUBJ2 lea</text>
 * <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
 * <text>Dát SUBJ lea PREDCOMP</text>
-! <q id="predcomp3"> Kommentar: vi bør sammenligne semantiske klasser.
+! <q id="predcomp3"> 
+__Kommentar: vi bør sammenligne semantiske klasser.__
+* <qtype>PREDCOMP</qtype>
 * <text>Dát SUBJ leat PRED . Makkárat diet SUBJ2 leat</text>
 * <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
 * <text>Dát SUBJ leat PREDCOMP</text>
 
 !!Predsuperlativ oppgaver
 ! <q id="predsup0">
-* <text>Gal dáppe MAINV ATTR SUBJ</text> <!-- compare="yes"-->
+*  <qtype>PREDSUP</qtype>
+* <text>Gal dáppe MAINV ATTR SUBJ</text> 
 * <id>leat</id> <sem class="CLOTHING"/>  <sem class="CLOTHES-adj"/>
 * <text>Muhto mu SUBJ MAINV PRED</text>
-! <q id="predsup1"> Kommentar: vi bør sammenligne semantiske klasser.
-* <text>Gal die MAINV ATTR SUBJ</text> <!-- compare="yes"--> 
+! <q id="predsup1"> 
+__Kommentar: vi bør sammenligne semantiske klasser.__
+*  <qtype>PREDSUP</qtype>
+* <text>Gal die MAINV ATTR SUBJ</text> 
 * <id>leat</id>  <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
 * <text>Muhto dát SUBJ MAINV PRED</text>
 
@@ -94,101 +118,121 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 
 !! Illativ
 ! <q id="nill0">
+* <qtype>N-ILL</qtype>
 * <text>Masa SUBJ MAINV</text>
 * <id>liikot</id>
 * <text>SUBJ MAINV N-ILL</text>
 * <sem class="OBJECT"/>
 ! <!-- <q id="nill1">
+* <qtype>N-ILL</qtype>
 * <text>INTERR SUBJ MAINV OBJ</text>
 * <id>gii</id> <id>addit</id>  <sem class="OBJECT"/>
 * <text>SUBJ MAINV OBJ N-ILL</text>
 * <sem class="HUMAN"/>
 ! <q id="nill1sg">
+* <qtype>N-ILL</qtype>
 * <text>Geasa SUBJ MAINV OBJ</text>
 * <id>addit</id>  <sem class="OBJECT"/>
 * <text>SUBJ MAINV OBJ N-ILL</text>
 * <sem class="HUMAN"/>
 ! <q id="nill1pl">
+* <qtype>N-ILL</qtype>
 * <text>Geaidda SUBJ MAINV OBJ</text>
 * <id>addit</id>  <sem class="OBJECT"/>
 * <text>SUBJ MAINV OBJ N-ILL</text>
 * <sem class="HUMAN"/>
 ! <q id="nill2">
+* <qtype>N-ILL</qtype>
 * <text>Gosa SUBJ MAINV</text>
 * <id>mannat</id>
 * <text>SUBJ MAINV N-ILL</text>
 * <sem class="PLACE"/>
 ! <!-- <q id="nill3">
+* <qtype>N-ILL</qtype>
 * <text>Gosa SUBJ MAINV čoavdagiid</text>
 * <sem class="HUMAN"/> <id>bidjat</id>
 * <text>SUBJ MAINV čoavdagiid N-ILL</text>
 * <sem class="CONTAINER"/>
 ! <q id="nill3sg">
+* <qtype>N-ILL</qtype>
 * <text>Gosa SUBJ bidjá čoavdagiid</text>
 * <sem class="HUMAN"/>
 * <text>Son bidjá čoavdagiid N-ILL</text>
 * <sem class="CONTAINER"/>
 ! <q id="nill3pl">
+* <qtype>N-ILL</qtype>
 * <text>Gosa SUBJ bidjet čoavdagiid</text>
 * <sem class="HUMAN"/>
 * <text>Sii bidjet čoavdagiid N-ILL</text>
 * <sem class="CONTAINER"/>
 ! <!-- <q id="nill4">
+* <qtype>N-ILL</qtype>
 * <text>INTERR SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>gii</id> <id>suhttat</id>
 * <text>SUBJ MAINV N-ILL</text>
-* <sem class="HUMAN"/> Kommentar: innskrenke semantisk klasse
+* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
 ! <q id="nill4sg">
+* <qtype>N-ILL</qtype>
 * <text>Geasa SUBJ suhttá</text>
 * <sem class="FAMILY"/>
 * <text>Son suhttá N-ILL</text>
-* <sem class="HUMAN"/> Kommentar: innskrenke semantisk klasse
+* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
 ! <q id="nill4pl">
+* <qtype>N-ILL</qtype>
 * <text>Geaidda SUBJ suhttá</text>
 * <sem class="FAMILY"/>
 * <text>Son suhttá N-ILL</text>
-* <sem class="HUMAN"/> Kommentar: innskrenke semantisk klasse
+* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
 ! <!-- <q id="nill5">
+* <qtype>N-ILL</qtype>
 * <text>INTERR SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>gii</id> <id>luohttit</id>
 * <text>SUBJ MAINV N-ILL</text>
-* <id>son</id>  <sem class="HUMAN"/> Kommentar: innskrenke semantisk klasse
+* <id>son</id>  <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
 ! <q id="nill5sg">
+* <qtype>N-ILL</qtype>
 * <text>Geasa SUBJ luohttá</text>
 * <sem class="FAMILY"/>
 * <text>Son luohttá N-ILL</text>
-* <sem class="HUMAN"/> Kommentar: innskrenke semantisk klasse
+* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
 ! <q id="nill5pl">
+* <qtype>N-ILL</qtype>
 * <text>Geaidda SUBJ luohttá</text>
 * <sem class="FAMILY"/>
 * <text>Son luohttá N-ILL</text>
-* <sem class="HUMAN"/> Kommentar: innskrenke semantisk klasse
+* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
 ! <q id="nill6">
+* <qtype>N-ILL</qtype>
 * <text>Masa SUBJ MAINV</text>
 * <id>illudit</id>
 * <text>SUBJ MAINV N-ILL</text>
 * <sem class="TIME-POINT-GEN"/>
 ! <q id="nill7">
+* <qtype>N-ILL</qtype>
 * <text>Masa SUBJ MAINV</text>
 * <id>illudit</id>
 * <text>SUBJ MAINV N-ILL</text>
 * <sem class="TIME-POINT-GEN-PL"/>
 ! <!-- <q id="nill8">
+* <qtype>N-ILL</qtype>
 * <text>INTERR SUBJ MAINV</text>
 * <id>gii</id> <id>jáhkkit</id>
 * <text>SUBJ MAINV N-ILL</text>
 * <sem class="HUMAN"/> 
 ! <q id="nill8sg">
+* <qtype>N-ILL</qtype>
 * <text>Geasa SUBJ MAINV</text>
 * <id>jáhkkit</id>
 * <text>SUBJ MAINV N-ILL</text>
 * <sem class="HUMAN"/>
 ! <q id="nill8pl">
+* <qtype>N-ILL</qtype>
 * <text>Geaidda SUBJ MAINV</text>
 * <id>jáhkkit</id>
 * <text>SUBJ MAINV N-ILL</text>
 * <sem class="HUMAN"/>
 ! <q id="nill9">
+* <qtype>N-ILL</qtype>
 * <text>Masa SUBJ MAINV</text>
 * <id>jáhkkit</id>
 * <text>SUBJ MAINV N-ILL</text>
@@ -196,126 +240,151 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 
 !! Lokativ
 ! <!-- <q id="nloc0">
+* <qtype>N-LOC</qtype>
 * <text>INTERR MAINV váralaš SUBJ</text>
 * <id>gii</id> <id>leat</id>  <sem class="ANIMAL"/>
 * <text>N-LOC MAINV</text>
 * <sem class="HUMAN"/>
 ! <q id="nloc0sg">
+* <qtype>N-LOC</qtype>
 * <text>Geas MAINV váralaš SUBJ</text>
 * <sem class="ANIMAL"/> <id>leat</id>
 * <text>N-LOC MAINV</text>
 * <sem class="HUMAN"/>
 ! <q id="nloc0pl">
+* <qtype>N-LOC</qtype>
 * <text>Geain MAINV váralaš SUBJ</text>
 * <sem class="ANIMAL"/> <id>leat</id>
 * <text>N-LOC MAINV</text>
 * <sem class="HUMAN"/>
 ! <!-- <q id="nloc1">
+* <qtype>N-LOC</qtype>
 * <text>Gos SUBJ MAINV</text>
 * <sem class="HUMAN"/> <id>leat</id>
 * <text>SUBJ MAINV N-LOC</text>
 * <id>son</id>  <sem class="PLACE"/>
 ! <q id="nloc1sg">
+* <qtype>N-LOC</qtype>
 * <text>Gos SUBJ MAINV</text>
 * <sem class="HUMAN"/> <id>leat</id>
 * <text>Son MAINV N-LOC</text>
 * <sem class="PLACE"/>
 ! <q id="nloc1pl">
+* <qtype>N-LOC</qtype>
 * <text>Gos SUBJ MAINV</text>
 * <sem class="HUMAN"/> <id>leat</id>
 * <text>Sii MAINV N-LOC</text>
 * <sem class="PLACE"/>
 ! <!-- <q id="nloc2">
+* <qtype>N-LOC</qtype>
 * <text>Gos SUBJ MAINV</text>
 * <sem class="HUMAN"/> <id>boahtit</id>
 * <text>SUBJ MAINV N-LOC</text>
 * <id>son</id>  <sem class="PLACE"/>
 ! <q id="nloc2sg">
+* <qtype>N-LOC</qtype>
 * <text>Gos SUBJ MAINV</text>
 * <sem class="HUMAN"/> <id>boahtit</id>
 * <text>Son MAINV N-LOC</text>
 * <sem class="PLACE"/>
 ! <q id="nloc2pl">
+* <qtype>N-LOC</qtype>
 * <text>Gos SUBJ MAINV</text>
 * <sem class="HUMAN"/> <id>boahtit</id>
 * <text>Sii MAINV N-LOC</text>
 * <sem class="PLACE"/>
 ! <!-- <q id="nloc3">
+* <qtype>N-LOC</qtype>
 * <text>Mas SUBJ MAINV</text>
 * <sem class="HUMAN"/> <id>ballat</id>
 * <text>SUBJ MAINV N-LOC</text>
 * <sem class="ANIMAL"/> <id>son</id>
 ! <q id="nloc3sg">
+* <qtype>N-LOC</qtype>
 * <text>Mas SUBJ MAINV</text>
 * <sem class="HUMAN"/> <id>boahtit</id>
 * <text>Son MAINV N-LOC</text>
 * <sem class="ANIMAL"/>
 ! <q id="nloc3pl">
+* <qtype>N-LOC</qtype>
 * <text>Mas SUBJ MAINV</text>
 * <sem class="HUMAN"/> <id>boahtit</id>
 * <text>Sii MAINV N-LOC</text>
 * <sem class="ANIMAL"/>
 ! <!-- <q id="nloc4">
+* <qtype>N-LOC</qtype>
 * <text>Mas SUBJ MAINV</text>
 * <sem class="HUMAN"/> <id>váruhit</id>
 * <text>SUBJ MAINV N-LOC</text>
 * <sem class="VEHICLE"/> <id>son</id>
 ! <q id="nloc4sg">
+* <qtype>N-LOC</qtype>
 * <text>Mas SUBJ MAINV</text>
 * <sem class="HUMAN"/> <id>váruhit</id>
 * <text>Son MAINV N-LOC</text>
 * <sem class="VEHICLE"/>
 ! <q id="nloc4pl">
+* <qtype>N-LOC</qtype>
 * <text>Mas SUBJ MAINV</text>
 * <sem class="HUMAN"/> <id>váruhit</id>
 * <text>Sii MAINV N-LOC</text>
 * <sem class="VEHICLE"/>
 ! <!-- <q id="nloc5">
+* <qtype>N-LOC</qtype>
 * <text>INTERR SUBJ MAINV</text>
 * <id>gii</id> <id>beroštit</id>
 * <text>SUBJ MAINV N-LOC</text>
-* <sem class="HUMAN"/> Kommentar: innskrenke semantisk klasse
+* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
 ! <q id="nloc5sg">
+* <qtype>N-LOC</qtype>
 * <text>Geas SUBJ MAINV</text>
 * <id>beroštit</id>
 * <text>SUBJ MAINV N-LOC</text>
-* <sem class="HUMAN"/> Kommentar: innskrenke semantisk klasse
+* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
 ! <q id="nloc5pl">
+* <qtype>N-LOC</qtype>
 * <text>Geain SUBJ MAINV</text>
 * <id>beroštit</id>
 * <text>SUBJ MAINV N-LOC</text>
-* <sem class="HUMAN"/> Kommentar: innskrenke semantisk klasse
+* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
 ! <q id="nloc6">
+* <qtype>N-LOC</qtype>
 * <text>Mas SUBJ MAINV</text>
 * <id>geargat</id>
 * <text>SUBJ MAINV N-LOC</text>
 * <sem class="EDUCATION"/>
 ! <!-- <q id="nloc7">
+* <qtype>N-LOC</qtype>
 * <text>INTERR SUBJ MAINV skeaŋkka</text>
 * <id>gii</id> <id>oažžut</id>
 * <text>SUBJ MAINV skeaŋkka N-LOC</text>
 * <sem class="HUMAN"/>
 ! <q id="nloc7sg">
+* <qtype>N-LOC</qtype>
 * <text>Geas SUBJ MAINV skeaŋkka</text>
 * <id>oažžut</id>
 * <text>SUBJ MAINV skeaŋkka N-LOC</text>
 * <sem class="HUMAN"/>
 ! <q id="nloc7pl">
+* <qtype>N-LOC</qtype>
 * <text>Geain SUBJ MAINV skeaŋkkaid</text>
 * <id>oažžut</id>
 * <text>SUBJ MAINV skeaŋkkaid N-LOC</text>
 * <sem class="HUMAN"/>
 ! <!-- <q id="nloc8">
+* <qtype>N-LOC</qtype>
 * <text>INTERR SUBJ MAINV ságaid</text>
 * <id>gii</id> <id>gullat</id>
 * <text>SUBJ MAINV ságaid N-LOC</text>
 * <sem class="HUMAN"/>
 ! <q id="nloc8sg">
+* <qtype>N-LOC</qtype>
 * <text>Geas SUBJ MAINV ságaid</text>
 * <id>gullat</id>
 * <text>SUBJ MAINV ságaid N-LOC</text>
 * <sem class="HUMAN"/>
 ! <q id="nloc8pl">
+* <qtype>N-LOC</qtype>
 * <text>Geain SUBJ MAINV ságaid</text>
 * <id>gullat</id>
 * <text>SUBJ MAINV ságaid N-LOC</text>
@@ -324,46 +393,55 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !! Akkusativ
 
 ! <q id="nacc0">
+* <qtype>N-ACC</qtype>
 * <text>Maid SUBJ MAINV</text>
 * <id>oaidnit</id>
 * <text>SUBJ MAINV N-ACC</text>
 * <sem class="OBJECT"/>
 ! <!-- <q id="nacc1">
+* <qtype>N-ACC</qtype>
 * <text>Maid SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>niegadit</id>
 * <text>SUBJ MAINV N-ACC</text>
 * <sem class="OBJECT"/>
 ! <q id="nacc1sg">
+* <qtype>N-ACC</qtype>
 * <text>Maid SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>niegadit</id>
 * <text>Son MAINV N-ACC</text>
 * <sem class="OBJECT"/>
 ! <q id="nacc1pl">
+* <qtype>N-ACC</qtype>
 * <text>Maid SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>niegadit</id>
 * <text>Sii MAINV N-ACC</text>
 * <sem class="OBJECT"/>
 ! <q id="nacc2">
+* <qtype>N-ACC</qtype>
 * <text>Maid SUBJ MAINV</text>
 * <id>oastit</id>
 * <text>SUBJ MAINV N-ACC</text>
 * <sem class="CLOTHING"/>
 ! <q id="nacc3">
+* <qtype>N-ACC</qtype>
 * <text>Maid SUBJ MAINV</text>
 * <id>sárgut</id>
 * <text>SUBJ MAINV N-ACC</text>
 * <sem class="ANIMAL"/>
 ! <!-- <q id="nacc4">
+* <qtype>N-ACC</qtype>
 * <text>INTERR SUBJ MAINV</text>
 * <id>gii</id> <id>dovdat</id>
 * <text>SUBJ MAINV N-ACC</text>
 * <sem class="HUMAN"/>
 ! <q id="nacc4sg">
+* <qtype>N-ACC</qtype>
 * <text>Gean SUBJ MAINV</text>
 * <id>dovdat</id>
 * <text>SUBJ MAINV N-ACC</text>
 * <sem class="HUMAN"/>
 ! <q id="nacc4pl">
+* <qtype>N-ACC</qtype>
 * <text>Geaid SUBJ MAINV</text>
 * <id>dovdat</id>
 * <text>SUBJ MAINV N-ACC</text>
@@ -372,92 +450,110 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !! Genitiv
 
 ! <!-- <q id="ngen0">
+* <qtype>N-GEN</qtype>
 * <text>INTERR SUBJ dát MAINV</text>
-* <sem class="OBJECT"/> <id>gii</id> <id>leat</id> Kommentar: vurdere semantisk klasse, alle ting har ikke flere eiere (geaid penna dát lea)
+* <sem class="OBJECT"/> <id>gii</id> <id>leat</id> __Kommentar: vurdere semantisk klasse, alle ting har ikke flere eiere (geaid penna dát lea)__
 * <text>Dát MAINV N-GEN</text>
 * <sem class="HUMAN"/>
 * <text>Dát MAINV N-GEN</text>
 ! <q id="ngen0sg">
+* <qtype>N-GEN</qtype>
 * <text>Gean SUBJ dát lea</text>
 * <sem class="OBJECT"/>
 * <text>Dát lea N-GEN SUBJ</text>
 * <sem class="HUMAN"/>
 ! <q id="ngen0pl">
+* <qtype>N-GEN</qtype>
 * <text>Geaid SUBJ dát leat</text>
 * <sem class="OBJECT"/>
 * <text>Dát leat N-GEN SUBJ</text>
 * <sem class="HUMAN"/>
 ! <!-- <q id="ngen1">
+* <qtype>N-GEN</qtype>
 * <text>Man duohkái SUBJ MAINV</text>
 * <id>čiehkadit</id>  <sem class="HUMAN"/> <id>son</id>
 * <text>SUBJ MAINV N-GEN duohkái</text>
 * <sem class="BUILDING"/>
 ! <q id="ngen1sg">
+* <qtype>N-GEN</qtype>
 * <text>Man duohkái SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>čiehkadit</id> Kommentar: innskrenke semantisk klasse
+* <sem class="HUMAN"/> <id>čiehkadit</id> __Kommentar: innskrenke semantisk klasse__
 * <text>Son MAINV N-GEN duohkái</text>
 * <sem class="BUILDING"/>
 ! <q id="ngen1pl">
+* <qtype>N-GEN</qtype>
 * <text>Man duohkái SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>čiehkadit</id> Kommentar: innskrenke semantisk klasse
+* <sem class="HUMAN"/> <id>čiehkadit</id> __Kommentar: innskrenke semantisk klasse__
 * <text>Sii MAINV N-GEN duohkái</text>
 * <sem class="BUILDING"/>
 ! <!-- <q id="ngen2">
+* <qtype>N-GEN</qtype>
 * <text>Goas SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>vuoiŋŋastit</id>
 * <text>SUBJ MAINV N-GEN</text>
 * <sem class="TIME-POINT-GEN"/> <id>son</id>
 ! <q id="ngen2sg">
+* <qtype>N-GEN</qtype>
 * <text>Goas SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>vuoiŋŋastit</id>
 * <text>Son MAINV N-GEN</text>
 * <sem class="TIME-POINT-GEN"/>
 ! <q id="ngen2pl">
+* <qtype>N-GEN</qtype>
 * <text>Goas SUBJ MAINV</text>
 * <id>vuoiŋŋastit</id>  <sem class="FAMILY"/>
 * <text>Sii MAINV N-GEN</text>
 * <sem class="TIME-POINT-GEN"/>
 ! <!-- <q id="ngen3">
+* <qtype>N-GEN</qtype>
 * <text>Goas SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>hárjehallat</id>
 * <text>SUBJ MAINV N-GEN</text>
 * <sem class="TIME-POINT-GEN"/> <id>son</id>
 ! <q id="ngen3sg">
+* <qtype>N-GEN</qtype>
 * <text>Goas SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>hárjehallat</id>
 * <text>Son MAINV N-GEN</text>
 * <sem class="TIME-POINT-GEN"/>
 ! <q id="ngen3pl">
+* <qtype>N-GEN</qtype>
 * <text>Goas SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>hárjehallat</id>
 * <text>Sii MAINV N-GEN</text>
 * <sem class="TIME-POINT-GEN"/>
 ! <!-- <q id="ngen4">
+* <qtype>N-GEN</qtype>
 * <text>Goas SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>vuoiŋŋastit</id>
 * <text>SUBJ MAINV N-GEN</text>
 * <sem class="TIME-POINT-GEN-PL"/> <id>son</id>
 ! <q id="ngen4sg">
+* <qtype>N-GEN</qtype>
 * <text>Goas SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>vuoiŋŋastit</id>
 * <text>Son MAINV N-GEN</text>
 * <sem class="TIME-POINT-GEN-PL"/>
 ! <q id="ngen4pl">
+* <qtype>N-GEN</qtype>
 * <text>Goas SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>vuoiŋŋastit</id>
 * <text>Sii MAINV N-GEN</text>
 * <sem class="TIME-POINT-GEN-PL"/>
 ! <!-- <q id="ngen5">
+* <qtype>N-GEN</qtype>
 * <text>Goas SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>hárjehallat</id>
 * <text>SUBJ MAINV N-GEN</text>
 * <id>son</id>  <sem class="TIME-POINT-GEN-PL"/>
 ! <q id="ngen5sg">
+* <qtype>N-GEN</qtype>
 * <text>Goas SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>hárjehallat</id>
 * <text>Son MAINV N-GEN</text>
 * <sem class="TIME-POINT-GEN-PL"/>
 ! <q id="ngen5pl">
+* <qtype>N-GEN</qtype>
 * <text>Goas SUBJ MAINV</text>
 * <sem class="FAMILY"/> <id>hárjehallat</id>
 * <text>Sii MAINV N-GEN</text>
@@ -466,42 +562,52 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !! Komitativ
 
 ! <!-- <q id="ncom6">
+* <qtype>N-COM</qtype>
 * <text>INTERR SUBJ MAINV</text>
 * <sem class="COMV"></sem>
 * <id>gii</id>
 * <text>SUBJ MAINV N-COM</text>
 * <sem class="HUMAN"/>
 ! <q id="ncom6sg">
+* <qtype>N-COM</qtype>
 * <text>Geainna SUBJ MAINV</text>
 * <sem class="COMV"></sem>
 * <text>SUBJ MAINV N-COM</text>
 * <sem class="HUMAN"/>
 ! <q id="ncom6pl">
+* <qtype>N-COM</qtype>
 * <text>Geaiguin SUBJ MAINV</text>
-* <sem class="COMV"></sem> Kommentar: vurdere oppgaven i forhold til verb som náitalit (geaiguin soai náitaleaba? Mearrasámiin.)
+* <sem class="COMV"></sem> __Kommentar: vurdere oppgaven i forhold til verb som náitalit (geaiguin soai náitaleaba? Mearrasámiin.)__
 * <text>SUBJ MAINV N-COM</text>
 * <sem class="HUMAN"/>
 ! <!-- <q id="ncom7">
+* <qtype>N-COM</qtype>
 * <text>INTERR SUBJ MAINV ruoktot</text>
 * <id>mii</id> <id>mannat</id>
 * <text>SUBJ MAINV ruoktot N-COM</text>
 * <sem class="VEHICLE"/>
 ! <q id="ncom7sg">
+* <qtype>N-COM</qtype>
 * <text>Mainna SUBJ MAINV ruoktot</text>
 * <id>mannat</id>
 * <text>SUBJ MAINV ruoktot N-COM</text>
 * <sem class="VEHICLE"/>
 ! <q id="ncom7pl">
+* <qtype>N-COM</qtype>
 * <text>Maiguin SUBJ MAINV ruoktot</text>
 * <id>mannat</id>
 * <text>SUBJ MAINV ruoktot N-COM</text>
 * <sem class="VEHICLE"/>
-*<!--<q id="ncom8"> Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i semantisk sett
+*<!--<q id="ncom8"> 
+__Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i semantisk sett__
+* <qtype>N-COM</qtype>
 * <text>INTERR SUBJ MAINV</text>
 * <id>mii</id> <id>čierastit</id>
 * <text>SUBJ MAINV N-COM</text>
 * <sem class="SLIDE-TOOL"/>
-! <q id="ncom8sg"> Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i semantisk sett
+! <q id="ncom8sg"> 
+__Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i semantisk sett__
+* <qtype>N-COM</qtype>
 * <text>Mainna SUBJ MAINV</text>
 * <id>čierastit</id>
 * <text>SUBJ MAINV N-COM</text>
@@ -510,46 +616,55 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !! Essiv
 
 ! <!-- <q id="ness0">
+* <qtype>N-ESS</qtype>
 * <text>Manin SUBJ MAINV PLACE</text>
 * <sem class="FAMILY"/>  <sem class="PLACE-NAME"/> <id>bargat</id>
 * <text>SUBJ MAINV N-ESS</text>
 * <sem class="PROFESSION"/> <id>son</id>
 ! <q id="ness0sg">
+* <qtype>N-ESS</qtype>
 * <text>Manin SUBJ MAINV PLACE</text>
 * <sem class="FAMILY"/>  <sem class="PLACE-NAME"/> <id>bargat</id>
 * <text>Son MAINV N-ESS</text>
 * <sem class="PROFESSION"/>
 ! <q id="ness0pl">
+* <qtype>N-ESS</qtype>
 * <text>Manin SUBJ MAINV PLACE</text>
 * <sem class="FAMILY"/>  <sem class="PLACE-NAME"/> <id>bargat</id>
 * <text>Sii MAINV N-ESS</text>
 * <sem class="PROFESSION"/>
 ! <!-- <q id="ness1">
+* <qtype>N-ESS</qtype>
 * <text>Manin SUBJ MAINV máidnasis</text>
 * <sem class="HUMAN"/> <id>šaddat</id>
 * <text>SUBJ MAINV N-ESS</text>
 * <sem class="MYTH"/> <id>son</id>
 ! <q id="ness1sg">
+* <qtype>N-ESS</qtype>
 * <text>Manin SUBJ MAINV máidnasis</text>
 * <sem class="PAIR"/> <id>šaddat</id>
 * <text>Son MAINV N-ESS</text>
 * <sem class="MYTH"/>
 ! <q id="ness1pl">
+* <qtype>N-ESS</qtype>
 * <text>Manin SUBJ MAINV máidnasis</text>
 * <sem class="PAIR"/> <id>šaddat</id>
 * <text>Sii MAINV N-ESS</text>
 * <sem class="MYTH"/>
 ! <q id="ness2">
+* <qtype>N-ESS</qtype>
 * <text>Manin SUBJ MAINV karneválas</text>
 * <id>gárvodit</id>
 * <text>SUBJ MAINV N-ESS</text>
 * <id>son</id>  <sem class="MYTH-HUMAN"/>
 ! <q id="ness3">
+* <qtype>N-ESS</qtype>
 * <text>Manin SUBJ MAINV OBJ</text>
 * <id>gohkčodit</id>
 * <text>SUBJ MAINV OBJ N-ESS</text>
 * <sem class="FAMILY"/>
 ! <q id="ness4">
+* <qtype>N-ESS</qtype>
 * <text>Goas heive MAINV</text>
 * <sem class="ACTIVITY"/>
 * <text>N-ESS heive MAINV</text>
@@ -557,6 +672,7 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 * <text>MAINV heive N-ESS</text>
 * <sem class="TIME-POINT-ESS"/>
 ! <q id="ness4">
+* <qtype>N-ESS</qtype>
 * <text>Goas heive MAINV</text>
 * <sem class="ACTIVITY"/>
 * <text>N-ESS heive MAINV</text>
@@ -567,19 +683,23 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !! Nominativ pluralis
 
 ! <q id="nnompl0">
+* <qtype>N-NOM-PL</qtype>
 * <text>Geat vulget LOC</text>
 * <sem class="PLACE-NAME"/>
 * <text>N-NOM-PL dat vulget</text>
 * <sem class="HUMAN"/>
 ! <q id="nnompl1">
+* <qtype>N-NOM-PL</qtype>
 * <text>Makkár eallit leat doppe</text>
 * <text>Doppe leat N-NOM-PL</text>
 * <sem class="ANIMAL"/>
 ! <q id="nnompl2">
+* <qtype>N-NOM-PL</qtype>
 * <text>Makkár gálvvut sis leat</text>
 * <text>Sis leat N-NOM-PL</text>
 * <sem class="THING"/>
 ! <q id="nnompl3">
+* <qtype>N-NOM-PL</qtype>
 * <text>Makkár stohpogálvvut leat sin viesus</text>
 * <text>Viesus leat N-NOM-PL</text>
 * <sem class="FURNITURE"/>
@@ -589,68 +709,82 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !! Attributt
 
 ! <q id="numattr0">
+* <qtype>NUM-ATTR</qtype>
 * <text>Maid SUBJ áigu oastit</text>
 * <sem class="HUMAN"/>
 * <text>Son áigu oastit NUM-ATTR NOUN</text>
 * <sem class="CARDINAL-SMALL"/>  <sem class="CLOTHING"/>
 ! <q level="2" id="numattr1">
+* <qtype>NUM-ATTR</qtype>
 * <text>Maid SUBJ áigu oastit</text>
 * <sem class="HUMAN"/>
 * <text>Son áigu oastit NUM-ATTR NOUN</text>
 * <sem class="CARDINAL-SMALL"/>  <sem class="CLOTHING-PL"/>
 ! <q id="numattr3">
+* <qtype>NUM-ATTR</qtype>
 * <text>Maid oainnát</text>
 * <text>Oainnán NUM-ATTR NOUN</text>
 * <sem class="CARDINAL-SMALL"/>  <sem class="ANIMAL"/>
 ! <q id="numattr4">
+* <qtype>NUM-ATTR</qtype>
 * <text>Geaid SUBJ dát leat</text>
 * <sem class="TEXT"/>
 * <text>Dat leat NUM-ATTR NOUN SUBJ</text>
 * <sem class="CARDINAL-SMALL"/>  <sem class="HUMAN"/>
 ! <q id="numattr5">
+* <qtype>NUM-ATTR</qtype>
 * <text>Geaidda don attát OBJ</text>
 * <sem class="FOOD-GROCERY"/>
 * <text>Attán OBJ NUM-ATTR NOUN</text>
 * <sem class="CARDINAL-SMALL"/>  <sem class="FAMILY"/>
 ! <q id="numattr6">
+* <qtype>NUM-ATTR</qtype>
 * <text>Masa don bijat duogŋasa</text>
 * <text>Bijan duogŋasa NUM-ATTR NOUN</text>
 * <sem class="CARDINAL-SMALL"/>  <sem class="CLOTHING"/>
 ! <q level="2" id="numattr7">
+* <qtype>NUM-ATTR</qtype>
 * <text>Masa don bijat duogŋasa</text>
 * <text>Bijan duogŋasa NUM-ATTR NOUN</text>
 * <sem class="CARDINAL-SMALL"/>  <sem class="CLOTHING-PL"/>
 ! <q id="numattr8">
+* <qtype>NUM-ATTR</qtype>
 * <text>Geain lea váralaš SUBJ</text>
 * <sem class="ANIMAL"/>
 * <text>NUM-ATTR NOUN lea</text>
 * <sem class="CARDINAL-SMALL"/>  <sem class="PROFESSION"/>
 ! <q id="numattr9">
+* <qtype>NUM-ATTR</qtype>
 * <text>Man guhká oaččut OBJ luoikkasin</text>
 * <sem class="TEXT"/>
 * <text>NUM-ATTR vahkkui</text>
 * <sem class="CARDINAL-SMALL"/>
 ! <q id="numattr10">
+* <qtype>NUM-ATTR</qtype>
 * <text>Gos SUBJ leat</text>
 * <sem class="HUMAN"/>
 * <text>Sii leat NUM-ATTR NOUN</text>
 * <sem class="CARDINAL-SMALL"/>  <sem class="BUILDING"/>
 ! <q level="1" id="numattr11">
+* <qtype>NUM-ATTR</qtype>
 * <text>Gos SUBJ finai</text>
 * <sem class="HUMAN"/>
 * <text>Son finai NUM-ATTR NOUN</text>
 * <sem class="CARDINAL-SMALL"/>  <sem class="ARRANGEMENT"/>
 ! <q level="2" id="numattr12">
+* <qtype>NUM-ATTR</qtype>
 * <text>Gos SUBJ finai</text>
 * <sem class="HUMAN"/>
 * <text>Son finai NUM-ATTR NOUN</text>
 * <sem class="CARDINAL-SMALL"/>  <sem class="ARRANGEMENT-PL"/>
 ! <q id="numattr13">
+* <qtype>NUM-ATTR</qtype>
 * <text>Geaiguin SUBJ MAINV</text>
 * <sem class="COMV"/>
 * <text>SUBJ MAINV NUM-ATTR NOUN</text>
 * <sem class="CARDINAL-SMALL"/>  <sem class="HUMAN"/>
 ! <q id="numattr14">
+* <qtype>NUM-ATTR</qtype>
 * <text>Gallin joavkun SUBJ barget</text>
 * <sem class="HUMAN"/>
 * <text>Sii barget NUM-ATTR joavkun</text>
@@ -658,27 +792,39 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 
 !! Lokativ
 ! <q id="numloc0">
+* <qtype>NUM-LOC</qtype>
 * <text>Gallis sii bohtet ruoktot</text>
 * <text>Sii bohtet NUM-LOC</text>
 * <sem class="CARDINAL-SMALL"/>
 ! <q id="numloc01">
+* <qtype>NUM-LOC</qtype>
 * <text>Gallis SUBJ álgá</text>
 * <sem class="ARRANGEMENT"/>
 * <text>SUBJ álgá NUM-LOC</text>
 * <sem class="CARDINAL-SMALL"/>
 ! <q id="numloc02">
+* <qtype>NUM-LOC</qtype>
 * <text>Gallis SUBJ nohká</text>
 * <sem class="ARRANGEMENT"/>
 * <text>SUBJ nohká NUM-LOC</text>
 * <sem class="CARDINAL-SMALL"/>
+! <q level="2" id="numloc04">
+* <qtype>NUM-LOC</qtype>
+* <text>Lea go buot du NOUN ráigi</text>
+* <sem class="CLOTHING-PL"/>
+* <text>Ii, dušše NUM-LOC lea ráigi</text>
+* <sem class="CARDINAL-SMALL"/>
+
 
 !! Illativ
 
 ! <q id="numill0">
+* <qtype>NUM-ILL</qtype>
 * <text>Gallii son lea lohkan OBJ</text>
 * <sem class="TEXT"/>
 * <text>Son lea lohkan OBJ NUM-ILL</text>
 ! <q level="2" id="numill01">
+* <qtype>NUM-ILL</qtype>
 * <text>Man guhká son bargá odne</text>
 * <text>Son bargá ovttas NUM-ILL</text>
 * <sem class="CARDINAL-SMALL"/>
@@ -686,36 +832,33 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !! Komitativ
 
 ! <q id="numcom0">
+* <qtype>NUM-COM</qtype>
 * <text>Sii dárbbašit duljiid. Galliin sii birgejit</text>
 * <text>Sii birgejit gal NUM-COM</text>
 * <sem class="CARDINAL-SMALL"/>
-
-!! Lokativ
-
-! <q id="numloc1">
+! <q id="numcom1">
+* <qtype>NUM-COM</qtype>
 * <text>Galliin oahppi galgá juohkit loahppasupmi</text>
 * <text>Son galgá juohkit loahppasupmi NUM-COM</text>
-* <sem class="CARDINAL-SMALL"/>
-! <q level="2" id="numloc04">
-* <text>Lea go buot du NOUN ráigi</text>
-* <sem class="CLOTHING-PL"/>
-* <text>Ii, dušše NUM-LOC lea ráigi</text>
 * <sem class="CARDINAL-SMALL"/>
 
 
 !! Akkusativ
 
 ! <q id="numacc0">
+* <qtype>NUM-ACC</qtype>
 * <text>Galle OBJ sii áigot oastit</text>
 * <sem class="CLOTHING"/>
 * <text>Sii áigot oastit NUM-ACC</text>
 * <sem class="CARDINAL-SMALL"/>
 ! <q level="2" id="numacc1">
+* <qtype>NUM-ACC</qtype>
 * <text>Galliid OBJ sii áigot oastit</text>
 * <sem class="CLOTHING-PL"/>
 * <text>Sii áigot oastit NUM-ACC</text>
 * <sem class="CARDINAL-SMALL"/>
 ! <q level="2" id="numacc2">
+* <qtype>NUM-ACC</qtype>
 * <text>Galliid OBJ sii leat lágidan</text>
 * <sem class="ARRANGEMENT-PL"/>
 * <text>Sii leat lágidan NUM-ACC</text>
@@ -724,16 +867,19 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !! Nomitativ flertall
 
 ! <q level="2" id="numnompl0">
+* <qtype>NUM-NOM-PL</qtype
 * <text>Gallit SUBJ dus leat</text>
 * <sem class="CLOTHING-PL"/>
 * <text>Mus leat NUM-NOM</text>
 * <sem class="CARDINAL-SMALL"/>
 ! <q level="2" id="numnompl1">
+* <qtype>NUM-NOM-PL</qtype
 * <text>Gallit SUBJ dus leat</text>
 * <sem class="HANDICRAFTS-PL"/>
 * <text>Mus leat NUM-NOM</text>
 * <sem class="CARDINAL-SMALL"/>
 ! <q level="2" id="numnompl2">
+* <qtype>NUM-NOM-PL</qtype
 * <text>Gallit SUBJ leat dáid beassážiid</text>
 * <sem class="ARRANGEMENT-PL"/>
 * <text>Dál leat NUM-NOM</text>
@@ -742,6 +888,7 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !! Genitiv
 
 ! <q game="morfa" id="numgen0">
+* <qtype>NUM-GEN</qtype>
 * <text>Mannan OBJ lei badjel logi gráda juohke beaivve</text>
 * <sem class="TIME-SEASON"/>
 * <text>Dán OBJ ii lean badjel NUM-GEN</text>
@@ -750,10 +897,12 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !! Samlingstall
 
 ! <q level="2" id="collnum0">
+* <qtype>COLL-NUM</qtype>
 * <text>Gallásiin son ferte juohkit daid ruđaid</text>
 * <text>Son ferte juohkit ruđaid COLL-NUM</text>
 * <sem class="COLL-NUM"/>
 ! <q id="collnum1">
+* <qtype>COLL-NUM</qtype>
 * <text>Gallis bohtet N-ILL</text>
 * <sem class="BUILDING"/>
 * <text>COLL-NUM bohtet</text>
@@ -761,24 +910,29 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 * <text>COLL-NUM boahtiba</text>
 * <sem class="COLL-NUM-DU"/>
 ! <q level="2" id="collnum2">
+* <qtype>COLL-NUM</qtype>
 * <text>Gallása don oidnet gávppis</text>
 * <text>Oidnen COLL-NUM</text>
 * <sem class="COLL-NUM"/>
 ! <q level="2" id="collnum3">
+* <qtype>COLL-NUM</qtype>
 * <text>Geaid SUBJ dát lea</text>
 * <sem class="INSTRUMENT"/>
 * <text>Dan COLL-NUM</text>
 * <sem class="COLL-NUM"/>
 ! <q level="2" id="collnum4">
+* <qtype>COLL-NUM</qtype>
 * <text>Gallásii son muitalii ságaid</text>
 * <text>Son muitalii daid COLL-NUM</text>
 * <sem class="COLL-NUM"/>
 ! <q level="2" id="collnum5">
+* <qtype>COLL-NUM</qtype>
 * <text>Gallásis lea dilli VERB</text>
 * <sem class="ACTIVITY"/>
 * <text>COLL-NUM lea</text>
 * <sem class="COLL-NUM"/>
 ! <q level="2" id="collnum6">
+* <qtype>COLL-NUM</qtype>
 * <text>Gallásiin don vuolggát N-ILL</text>
 * <sem class="PLACE-NAME"/>
 * <text>Vuolggán dohko COLL-NUM</text>
@@ -787,26 +941,32 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !! Ordensstall
 
 ! <q level="2" id="ordnum0">
+* <qtype>ORD-NUM</qtype>
 * <text>Gallát luohkás don leat dál</text>
 * <text>Mun lean ORD-NUM</text>
 * <sem class="ORDINAL-SMALL"/>
 ! <q level="2" id="ordnum1">
+* <qtype>ORD-NUM</qtype>
 * <text>Galládin don bohtet mollii</text>
 * <text>Mun bohten ORD-NUM</text>
 * <sem class="ORDINAL"/>
 ! <q level="2" id="ordnum2">
+* <qtype>ORD-NUM</qtype>
 * <text>Gallát luohkkái don álggát dál</text>
 * <text>Mun álggán ORD-NUM</text>
 * <sem class="ORDINAL-SMALL"/>
 ! <q level="2" id="ordnum3">
+* <qtype>ORD-NUM</qtype>
 * <text>Goas mis lea čoahkkin</text>
 * <text>Mis lea čoahkkin ORD-NUM</text>
 * <sem class="ORDINAL"/>
 ! <q level="2" id="ordnum4">
+* <qtype>ORD-NUM</qtype>
 * <text>Man guhká gursa bistá</text>
 * <text>Gursa bistá vuosttažis ORD-NUM</text>
 * <sem class="ORDINAL"/>
 ! <q level="2" id="ordnum5">
+* <qtype>ORD-NUM</qtype>
 * <text>Gallát bargobihtá don čállet</text>
 * <text>Mun čállen ORD-NUM</text>
 * <sem class="ORDINAL-SMALL"/>
@@ -816,108 +976,118 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !! Presens
 
 ! <q id="prs0">
+* <qtype>V-PRS</qtype>
 * <text>Maid SUBJ MAINV odne</text>
 * <id>bargat</id>
 * <text>Odne SUBJ MAINV</text>
 * <sem class="ACTIVITY"/>
 ! <!-- <q id="prs1">
+* <qtype>V-PRS</qtype>
 * <text>Maid SUBJ MAINV odne</text>
 * <sem class="HUMAN"/> <id>bargat</id>
 * <text>Odne SUBJ MAINV</text>
 * <sem class="ACTIVITY"/> <id>son</id>
 ! <q id="prs1sg">
+* <qtype>V-PRS</qtype>
 * <text>Maid SUBJ bargá odne</text>
 * <sem class="HUMAN"/>
 * <text>Odne son MAINV</text>
 * <sem class="ACTIVITY"/>
 ! <q id="prs1pl">
+* <qtype>V-PRS</qtype>
 * <text>Maid SUBJ barget odne</text>
 * <sem class="HUMAN"/>
 * <text>Odne sii MAINV</text>
 * <sem class="ACTIVITY"/>
 ! <q id="prs2">
+* <qtype>V-PRS</qtype>
 * <text>Maid NOUN -guovttos bargaba odne</text>
 * <sem class="PAIR"/>
 * <text>Odne soai MAINV</text>
 * <sem class="ACTIVITY"/>
 ! <q id="goprt1">   - Denne ser ut å ha feil id - prt istedenfor prs
+* <qtype>V-PRS</qtype>
 * <text>MAINV go SUBJ odne</text>
 * <sem class="ACTIVITY"/>
 * <text>De MAINV</text>
-* <text>Odne gal NEG CONNEG</text>
-* <id>ii</id>
-* <text>Odne gal NEG CONNEG</text>
-* <id>ii</id>
+* <text>Odne gal NEG CONNEG</text> <id>ii</id>
+* <text>Odne gal NEG CONNEG</text> <id>ii</id>
 
 
 !! Preteritum
 
 ! <q id="prt0">
+* <qtype>V-PRT</qtype>
 * <text>Maid SUBJ MAINV ikte</text>
 * <id>bargat</id>
 * <text>Ikte SUBJ MAINV</text>
 * <sem class="ACTIVITY"/>
 ! <!-- <q id="prt1">
+* <qtype>V-PRT</qtype>
 * <text>Maid SUBJ MAINV ikte</text>
 * <sem class="HUMAN"/> <id>bargat</id>
 * <text>Ikte SUBJ MAINV</text>
 * <id>son</id>  <sem class="ACTIVITY"/>
 ! <q id="prt1sg">
+* <qtype>V-PRT</qtype>
 * <text>Maid SUBJ barggai ikte</text>
 * <sem class="HUMAN"/>
 * <text>Ikte son MAINV</text>
 * <sem class="ACTIVITY"/>
 ! <q id="prt1pl">
+* <qtype>V-PRT</qtype>
 * <text>Maid SUBJ barge ikte</text>
 * <sem class="HUMAN"/>
 * <text>Ikte sii MAINV</text>
 * <sem class="ACTIVITY"/>
 ! <q id="prt2">
+* <qtype>V-PRT</qtype>
 * <text>Maid NOUN -guovttos barggaiga ikte</text>
 * <sem class="PAIR"/>
 * <text>Ikte soai MAINV</text>
 * <sem class="ACTIVITY"/>
 ! <q id="goprt0">
+* <qtype>V-PRT</qtype>
 * <text>MAINV go SUBJ ikte</text>
 * <sem class="ACTIVITY"/>
 * <text>De MAINV</text>
-* <text>Ikte gal NEG PRFPRC</text>
-* <id>ii</id>
-* <text>Ikte gal NEG PRFPRC</text>
-* <id>ii</id>
+* <text>Ikte gal NEG PRFPRC</text> <id>ii</id>
+* <text>Ikte gal NEG PRFPRC</text> <id>ii</id>
 
 
 !! Kondisjonalis
 
 ! <q id="vcond0">
+* <qtype>V-COND</qtype>
 * <text>Maid SUBJ MAINV luomus</text>
 * <text>Luomus SUBJ V-COND</text>
 * <sem class="ACTIVITY"/> <id>bargat</id>
 ! <!-- <q id="vcond1">
+* <qtype>V-COND</qtype>
 * <text>Maid SUBJ MAINV luomus</text>
 * <sem class="HUMAN"/> <id>bargat</id>
 * <text>Luomus SUBJ V-COND</text>
 * <id>son</id>  <sem class="ACTIVITY"/>
 ! <q id="vcond1sg">
+* <qtype>V-COND</qtype>
 * <text>Maid SUBJ barggašii luomus</text>
 * <sem class="HUMAN"/>
 * <text>Luomus son V-COND</text>
 * <sem class="ACTIVITY"/>
 ! <q id="vcond1pl">
+* <qtype>V-COND</qtype>
 * <text>Maid SUBJ barggašedje luomus</text>
 * <sem class="HUMAN"/>
 * <text>Luomus sii V-COND</text>
 * <sem class="ACTIVITY"/>
 ! <q id="vcond2">
+* <qtype>V-COND</qtype>
 * <text>Maid NOUN -guovttos barggašeigga luomus</text>
 * <sem class="PAIR"/>
 * <text>Luomus soai V-COND</text>
 * <sem class="ACTIVITY"/>
-! <!-- <q id="vpot0">
-* <text>MAINV go SUBJ</text>
-* <sem class="ACTIVITY"/>  <sem class="HUMAN"/>
-* <text>In dieđe V-POT go</text>
 ! <q id="gocond0">
+* <qtype>V-COND</qtype>
 * <text>MAINV go SUBJ luomus</text>
 * <sem class="ACTIVITY"/>
 * <text>Luomus gal MAINV</text>
@@ -929,15 +1099,23 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 
 !! Potensialis
 
+! <!-- <q id="vpot0">
+* <qtype>V-POT</qtype>
+* <text>MAINV go SUBJ</text>
+* <sem class="ACTIVITY"/>  <sem class="HUMAN"/>
+* <text>In dieđe V-POT go</text>
 ! <q id="vpot0sg">
+* <qtype>V-POT</qtype>
 * <text>MAINV go SUBJ</text>
 * <sem class="ACTIVITY"/>  <sem class="HUMAN"/>
 * <text>In dieđe V-POT go</text>
 ! <q id="vpot0pl">
+* <qtype>V-POT</qtype>
 * <text>MAINV go SUBJ</text>
 * <sem class="ACTIVITY"/>  <sem class="HUMAN"/>
 * <text>In dieđe V-POT go</text>
 ! <q id="vpot1">
+* <qtype>V-POT</qtype>
 * <text>MAINV go SUBJ</text>
 * <sem class="ACTIVITY"/>
 * <text>In dieđe V-POT go</text>
@@ -945,22 +1123,27 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 !! Imperativ
 
 ! <q id="vimprt0">
+* <qtype>V-IMPRT</qtype>
 * <text>Mun áiggošin MAINV</text>
 * <sem class="ACTIVITY"/>
 * <text>V-IMPRT fal</text>
 ! <q id="vimprt1">
+* <qtype>V-IMPRT</qtype>
 * <text>Moai áiggošeimme MAINV</text>
 * <sem class="ACTIVITY"/>
 * <text>V-IMPRT fal!</text>
 ! <q id="vimprt2">
+* <qtype>V-IMPRT</qtype>
 * <text>Mii áiggošeimmet MAINV</text>
 * <sem class="ACTIVITY"/>
 * <text>V-IMPRT fal!</text>
 ! <q id="vimprt3">
+* <qtype>V-IMPRT</qtype>
 * <text>Sihke don ja mun áiggošeimme MAINV</text>
 * <sem class="ACTIVITY"/>
 * <text>V-IMPRT dál!</text>
 ! <q id="vimprt4">
+* <qtype>V-IMPRT</qtype>
 * <text>Sihke don ja mii áiggošeimmet MAINV</text>
 * <sem class="ACTIVITY"/>
 * <text>V-IMPRT dál!</text>

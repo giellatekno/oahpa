@@ -13,14 +13,14 @@ Oppgavene i xml-format, f.eks.
   <q id="nill1sg">                 <= unik id, den kan være hvordan som helst
     <qtype>N-ILL</qtype>           <= oppgavetype. Menyvalg gjøres ut fra denne.
     <qtype>N-MIX</qtype>           <= det kan være flere menyvalg
-    <question>                        dvs. like mange oppgavetyper som menyvalg
+    <question>                         
       <text>Geasa SUBJ OBJ MAINV</text>
       <element id="SUBJ">          <= grammardefault: SUBJ er Nom
     <grammar pos="Pron"/>          <= kan være Sg og Pl. Kan spesifiseres: Pron+Pers+Sg
       </element>
       <element id="MAINV">         <= grammardefault: MAINV kongruerer med SUBJ
     <grammar tag="V+Ind+Tense+Person-Number"/>  <= Tense og Person-Number er variabler
-     <id>vedtedh</id>              <= man kan bruke id istedenfor semantisk sett
+     <id>oastit</id>               <= man kan bruke id istedenfor semantisk sett
       </element>
       <element id="OBJ">           <= grammardefault: OBJ er Acc
     <sem class="TOY"/>             <= TOY er semantisk sett
@@ -40,9 +40,9 @@ meta/grammar_defaults.xml
 
 Hvis man ønsker et annet verb i svaret enn i spørsmålet, kan man legge til <agreement id="MAINV"/>
 
-Hvis man ønsker å bruke en annen variabel i svaret, kan man legge til content="MAINV" i element.
+Hvis man ønsker å bruke en annen variabel i svaret, kan man skrive content="MAINV" i element.
 
-Ved å bruke variabel istedenfor å hardkode ordform i spørsmål/svar, kan man få inn dialektvariasjon. 
+Ved å bruke variabel istedenfor å hardkode ordform i spørsmål/svar, kan man få dialektvariasjon. 
 F.eks. muitalit+V+Ind+Prs+Pl1 vil gi ''muitalit'' for GG og ''muitalat'' for KJ.
 
 Oversikt over oppgavetyper er i [dette dokumentet|sme_vs_sma.html]
@@ -51,51 +51,46 @@ Vasta er som MorfaC, men bare question.
 
 !! Semantiske sett for Morfa-C og Vasta
 ! Disse settene er brukt i nordsamisk MorfaC, men man kan lage nye sett adhoc med prefiks m.
-* ABSTRACT 
-* ACTIVITY 
-* ANIMAL 
-* ANIMAL-DOM 
-* ANIMAL-PET 
-* ARRANGEMENT 
-* ARRANGEMENT-PL 
-* BUILDING 
-* CARDINAL-SMALL 
-* CLOTHES-adj 
-* CLOTHING 
-* CLOTHING-PL 
-* COLL-NUM 
-* COLL-NUM-DU 
-* COLL-NUM-NOT-DU 
-* COMV 
-* CONTAINER 
-* DILLI-ESS 
-* EDUCATION 
-* FAMILY 
-* FOOD-GROCERY 
-* FURNITURE 
-* HANDICRAFTS-PL 
-* HUMAN 
-* HUMAN-adj 
-* INSTRUMENT 
-* ISSUE-adj 
-* KITCHEN 
-* MYTH 
-* MYTH-HUMAN 
-* OBJECT 
-* ORDINAL 
-* ORDINAL-SMALL 
-* PAIR 
-* PLACE 
-* PLACE-NAME 
-* PROFESSION 
-* SLIDE-TOOL 
-* TEXT 
-* THING 
-* TIME-POINT-ESS 
-* TIME-POINT-GEN 
-* TIME-POINT-GEN-PL 
-* TIME-SEASON 
-* TOY 
-* VEHICLE 
 
-
+*   8 ABSTRACT
+*   7 ANIMAL_DOM
+*   3 ANIMAL_WILD
+*   3 ARRANGEMENT
+*   3 ARRANGEMENT_PL
+*   5 BUILDING
+*  10 CLOTHING
+*   6 CLOTHING_A
+*   5 CLOTHING_PL
+*   3 CONTAINER
+*   2 EDUCATION
+*  28 FAMILY
+*   1 FOOD_GROCERY
+*   1 FURNITURE
+*   1 HANDICRAFTS_PL
+*  73 HUMAN
+*   1 INSTRUMENT
+*   8 ISSUE_A
+*   3 MYTH
+*   1 MYTH_HUM
+*  11 OBJECT
+*   4 PROFESSION
+*   2 SLIDETOOL
+*   3 TEXT
+*   1 THING
+*   2 TIME_POINT_ESS
+*   7 TIME_POINT_GEN
+*   7 TIME_POINT_GEN_PL
+*   1 TIME_SEASON
+*   6 VEHICLE
+*  30 mACTIVITY
+*  27 mCARD_SMALL
+*   6 mCOLL
+*   1 mCOLL_DU
+*   1 mCOLL_NOT_DU
+*   4 mCOMV
+*   2 mDILLI_ESS
+*   2 mHUM_A
+*   3 mORD
+*   3 mORD_SMALL
+*   5 mPAIR
+*  12 mPLACENAME
