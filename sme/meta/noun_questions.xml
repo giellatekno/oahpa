@@ -488,7 +488,7 @@
       </element>
       <element id="SUBJ">
 	<grammar tag="N+Number+Nom"/>
-	<sem class="ANIMAL"/>
+	<sem class="ANIMAL_DOM"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -510,7 +510,7 @@
       <text>Geas MAINV váralaš SUBJ</text>
       <element id="SUBJ">
 	<grammar tag="N+Number+Nom"/>
-	<sem class="ANIMAL"/>
+	<sem class="ANIMAL_DOM"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -531,7 +531,7 @@
       <text>Geain MAINV váralaš SUBJ</text>
       <element id="SUBJ">
 	<grammar tag="N+Number+Nom"/>
-	<sem class="ANIMAL"/>
+	<sem class="ANIMAL_DOM"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -715,7 +715,7 @@
       </element>
       <element game='morfa' id="N-LOC" task="yes">
 	<grammar tag="N+Sg+Loc"/>
-	<sem class="ANIMAL"/>
+	<sem class="ANIMAL_DOM"/>
       </element>
     </answer>
   </q> -->
@@ -736,7 +736,7 @@
       <text>Son MAINV N-LOC</text>
       <element game='morfa' id="N-LOC" task="yes">
 	<grammar tag="N+Sg+Loc"/>
-	<sem class="ANIMAL"/>
+	<sem class="ANIMAL_WILD"/>
       </element>
     </answer>
   </q>
@@ -757,7 +757,7 @@
       <text>Sii MAINV N-LOC</text>
       <element game='morfa' id="N-LOC" task="yes">
 	<grammar tag="N+Sg+Loc"/>
-	<sem class="ANIMAL"/>
+	<sem class="ANIMAL_WILD"/>
       </element>
     </answer>
   </q>
@@ -1182,7 +1182,7 @@
     <answer> 
       <text>SUBJ MAINV N-ACC</text>
       <element game='morfa' id="N-ACC" task="yes">
-	<sem class="ANIMAL"/>
+	<sem class="ANIMAL_WILD"/>
       </element>
 <!--      <element game='qa' id="N-ACC">
         <grammar pos="N"/>
@@ -2149,7 +2149,7 @@
       <text>Goas heive MAINV</text>
       <element id="MAINV">
 	<grammar tag="V+Inf"/>
-	<sem class="ACTIVITY"/>
+	<sem class="mACTIVITY"/>
       </element>
     </question>
     <answer> 
@@ -2174,7 +2174,7 @@
       <text>Goas heive MAINV</text>
       <element id="MAINV">
 	<grammar tag="V+Inf"/>
-	<sem class="ACTIVITY"/>
+	<sem class="mACTIVITY"/>
       </element>
     </question>
     <answer> 
@@ -2219,7 +2219,7 @@
     <answer> 
       <text>Doppe leat N-NOM-PL</text>
       <element game='morfa' id="N-NOM-PL" task="yes">
-	<sem class="ANIMAL"/>
+	<sem class="ANIMAL_DOM"/>
  	<grammar tag="N+Pl+Nom"/>
       </element>
     </answer>
