@@ -1,15 +1,15 @@
 #!/bin/sh
 
 P="python2.6"
-DATA="data_sme/"
-DPS="data_sme/sme"
-META="data_sme/meta"
-DPN="data_sme/nob"
-DPF="data_sme/fin"
-DPW="data_sme/swe"
+$GTHOME="~/main"
 SRC="ped/sme/univ_oahpa_data/data_sme"
-SP=$GTHOME/$SRC
-WORDS=$GTHOME/words/dicts/smenob/src
+DATA=$GTHOME/$SRC
+DPS="$DATA/sme"
+META="$DATA/meta"
+DPN="$DATA/nob"
+DPF="$DATA/fin"
+#DPW="$DATA/swe"
+#WORDS=$GTHOME/words/dicts/smenob/src
 
 ##
 ##  sme->X
