@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
+-->
+<questions>
+	<q id="pnom1">
+		<qtype>P-NOM</qtype>
+		<question>
+			<text>SUBJ MAINV odne</text>
+			<element id="SUBJ">
+				<grammar pos="Interr"/>
+				<id>gii</id>
+			</element>
+			<element id="MAINV">
+				<sem class="mACTIVITY"/>
+				<grammar tag="V+Ind+Prs+Person-Number"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ MAINV</text>
+			<element game="morfa" id="SUBJ" task="yes">
+				<grammar pos="Pron" type="Pers"/>
+				<grammar tag="Pron+Pers+1p-2p+Nom"/>
+			<agreement id="SUBJ"/>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Prs+Person-Number"/>
+			</element>
+			</element>
+		</answer>
+	</q>
+	<q id="pnom2">
+		<qtype>P-NOM</qtype>
+		<question>
+			<text>Gii MAINV odne</text>
+			<element id="MAINV">
+				<sem class="mACTIVITY"/>
+				<grammar tag="V+Ind+Prs+Sg3"/>
+			</element>
+		</question>
+		<answer>
+			<text>Odne SUBJ MAINV</text>
+			<element game="morfa" id="SUBJ" task="yes">
+				<grammar pos="Pron" type="Pers"/>
+				<grammar tag="Pron+Pers+1p-2p+Nom"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Prs+Person-Number"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pnom4">
+		<qtype>P-NOM</qtype>
+		<question>
+			<text>Gii AUX VERB</text>
+			<element id="AUX">
+				<sem class="AUX_V"/>
+				<grammar tag="V+Ind+Prs+Pl3"/>
+			</element>
+			<element id="VERB">
+			<id>boahtit</id>				
+			<grammar tag="V+Inf"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ MAINV</text>
+			<element game="morfa" id="SUBJ" task="yes">
+				<grammar pos="Pron" type="Pers"/>
+				<grammar tag="Pron+Pers+1p-2p+Nom"/>
+			</element>
+			<element id="MAINV" content="AUX">
+				<grammar tag="V+Ind+Prs+Person-Number"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pacc1">
+		<qtype>P-ACC</qtype>
+		<qtype>P-MIX</qtype>
+		<question>
+			<text>Gean SUBJ oaidná</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>Son oaidná P-ACC</text>
+			<element game="morfa" id="P-ACC" task="yes">
+				<grammar tag="Pron+Pers+Person-Number+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pacc6">
+		<qtype>P-ACC</qtype>
+		<question>
+			<text>Geaid SUBJ MAINV buorástahttán</text>
+			<element id="SUBJ">
+				<sem class="PAIR"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="MAINV">
+				<grammar tag="V+Ind+Prs+Person-Number"/>
+			<id>leat</id>				
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ leat buorástahttán P-ACC</text>
+			<element game="morfa" id="P-ACC" task="yes">
+				<grammar tag="Pron+Pers+Person-Number+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pgen1">
+		<qtype>P-GEN</qtype>
+		<qtype>P-MIX</qtype>
+		<question>
+			<text>Gean SUBJ diet lea</text>
+			<element id="SUBJ">
+				<sem class="VEHICLE"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dát lea P-GEN SUBJ</text>
+			<element game="morfa" id="P-GEN" task="yes">
+				<grammar tag="Pron+Pers+Person-Number+Gen"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pgen2">
+		<qtype>P-GEN</qtype>
+		<question>
+			<text>Leago dát GEN SUBJ</text>
+			<element id="GEN">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Gen"/>
+			</element>
+			<element id="SUBJ">
+				<sem class="ANIMAL_PET"/>
+				<grammar pos="N+Sg"/>
+			</element>
+		</question>
+		<answer>
+			<text>Juo, diet lea P-GEN SUBJ</text>
+			<element game="morfa" id="P-GEN" task="yes">
+				<grammar tag="Pron+Pers+Sg3+Gen"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pill1">
+		<qtype>P-ILL</qtype>
+		<qtype>P-MIX</qtype>
+		<question>
+			<text>Geasa SUBJ čálii OBJ</text>
+			<element id="OBJ">
+				<sem class="TEXT"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ čálii dan P-ILL</text>
+			<element game="morfa" id="P-ILL" task="yes">
+				<grammar tag="Pron+Pers+1p-2p+Ill"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pill2">
+		<qtype>P-ILL</qtype>
+		<qtype>P-MIX</qtype>
+		<question>
+			<text>Geaidda SUBJ čálii OBJ</text>
+			<element id="OBJ">
+				<sem class="TEXT"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ čálii dan P-ILL</text>
+			<element game="morfa" id="P-ILL" task="yes">
+				<grammar tag="Pron+Pers+1p-2p+Ill"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pill3">
+		<qtype>P-ILL</qtype>
+		<qtype>P-MIX</qtype>
+		<question>
+			<text>Geasa SUBJ osttii OBJ</text>
+			<element id="OBJ">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N+Sg"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ osttii dan P-ILL</text>
+			<element game="morfa" id="P-ILL" task="yes">
+				<grammar tag="Pron+Pers+1p-2p+Ill"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ploc1">
+		<qtype>P-LOC</qtype>
+		<question>
+			<text>Geas SUBJ lea oastán OBJ</text>
+			<element id="OBJ">
+				<sem class="VEHICLE"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+			<element id="SUBJ">
+				<sem class="FAMILY"/>
+				<grammar pos="N+Sg"/>
+			</element>
+		</question>
+		<answer>
+			<text>Son lea oastán dan P-LOC</text>
+			<element game="morfa" id="P-LOC" task="yes">
+				<grammar tag="Pron+Pers+1p-2p+Loc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ploc3">
+		<qtype>P-LOC</qtype>
+		<qtype>P-MIX</qtype>
+		<question>
+			<text>Geas SUBJ lea OBJ ožžon</text>
+			<element id="OBJ">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>Son lea OBJ ožžon P-LOC</text>
+			<element game="morfa" id="P-LOC" task="yes">
+				<grammar tag="Pron+Pers+1p-2p+Loc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="ploc3">
+		<qtype>P-LOC</qtype>
+		<qtype>P-MIX</qtype>
+		<question>
+			<text>Geas lea ADJ SUBJ</text>
+			<element id="SUBJ">
+				<sem class="ANIMAL_DOM"/>
+				<grammar tag="N+Sg"/>
+			</element>
+			<element id="ADJ">
+				<sem class="ANIMAL_A"/>
+				<grammar pos="A+Attr"/>
+			</element>
+		</question>
+		<answer>
+			<text>HAB lea ADJ SUBJ</text>
+			<element game="morfa" id="HAB" task="yes">
+				<grammar tag="Pron+Pers+1p-2p+Loc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pcom4">
+		<qtype>P-COM</qtype>
+		<question>
+			<text>Geainna SUBJ bođii deike</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar pos="N"/>
+			</element>
+		</question>
+		<answer>
+			<text>Son bođii deike P-COM</text>
+			<element game="morfa" id="P-COM" task="yes">
+				<grammar tag="Pron+Pers+1p-2p+Com"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pcom8">
+		<qtype>P-COM</qtype>
+		<question>
+			<text>Geainna SUBJ lea VERB</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar pos="N"/>
+			</element>
+			<element id="VERB">
+				<grammar tag="V+Actio+Ess"/> 
+				<id>ságastallat</id>
+			</element>
+		</question>
+		<answer>
+			<text>Son lea P-COM VERB</text>
+			<element game="morfa" id="P-COM" task="yes">
+				<grammar tag="Pron+Person-Number+Com"/>
+			</element>
+		</answer>
+	</q>
+	</questions>
