@@ -36,36 +36,36 @@ class QAGame(Game):
 		# TODO: check this in smeoahpa, possible source of error.
 		# Values for pairs QPN-APN
 		
-		# spørsmål:       svar:
-		# manne           datne
-		# datne           manne
-		# dïhte           dïhte
+		# spørsmål:   svar:
+		# mun         don
+		# don         mun
+		# son         son
         # 
-		# månnoeh dåtnoeh
-		# dåtnoeh         månnoeh
-		# dah guaktah     dah guaktah
+		# moai 		  doai
+		# doai        moai
+		# soai        soai
         # 
-		# mijjieh         dijjieh
-		# dijjieh         mijjieh
-		# dah                     dah
+		# mii         dii
+		# dii         mii
+		# sii		  sii
         # 
-		# Noun Sg dïhte
-		# Noun Pl         dah
+		# Noun Sg 	son
+		# Noun Pl   sii
 		
-		self.QAPN={	'Sg':'Sg',			# Dïhte? Dïhte.
-					'Pl':'Pl',			# Dah? Dah.
+		self.QAPN={	'Sg':'Sg',			#  
+					'Pl':'Pl',			#  
 					
-					'Sg1':'Sg2',		# Manne? Datne.
-					'Sg2':'Sg1',		# Datne? Manne.
-					'Sg3':'Sg3',		# Dïhte? Dïhte.
+					'Sg1':'Sg2',		# Mun? Don.
+					'Sg2':'Sg1',		# Don? Mun.
+					'Sg3':'Sg3',		# Son? Son.
 					
-					'Du1':'Du2',		# Månnoeh? Dåtnoeh.
-					'Du2':'Du1',		# Dåtnoeh? Månnoeh.
-					'Du3':'Du3',		# Dah guaktah? Dah guaktah.
+					'Du1':'Du2',		# Moai? Doai.
+					'Du2':'Du1',		# Doai? Moai.
+					'Du3':'Du3',		# Soai? Soai.
 					
-					'Pl1':'Pl2',		# Mijjieh? Dijjieh.
-					'Pl2':'Pl1',		# Dijjieh? Mijjieh.
-					'Pl3':'Pl3'}		# Dah? Dah.
+					'Pl1':'Pl2',		# Mii? Dii.
+					'Pl2':'Pl1',		# Dii? Mii.
+					'Pl3':'Pl3'}		# Sii? Sii.
 					
 					
 
@@ -77,9 +77,9 @@ class QAGame(Game):
 
 		# Available values for Number
 		self.PronPN=['Sg1','Sg2','Sg3','Pl1','Pl2','Pl3','Du1','Du2','Du3']
-		self.PronPNBase={'Sg1':'manne','Sg2':'datne','Sg3':u'dïhte',\
-						 'Pl1':'mijjieh','Pl2':'dijjieh','Pl3':'dah',\
-						 'Du1':'månnoeh','Du2':'dåtnoeh','Du3':'dah guaktah'}
+		self.PronPNBase={'Sg1':'mun','Sg2':'don','Sg3':u'son',\
+						 'Pl1':'mii','Pl2':'dii','Pl3':'sii',\
+						 'Du1':'moai','Du2':'doai','Du3':'soai'}
 		self.NounPN=['Sg','Pl']
 		self.NountoPronPN={'Sg':'Sg3','Pl':'Pl3'}
 
