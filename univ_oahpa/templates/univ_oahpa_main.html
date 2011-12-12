@@ -160,7 +160,17 @@
 			<ul class="linklist">
             {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/OAHPAveiledning.html">{% trans "Veiledning" %}</a></li>
-            {% else %}
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "fi" %}
+                <li><a href="http://giellatekno.uit.no/oahpa/OAHPAveiledning.html">{% trans "Veiledning" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "en" %}
+                <li><a href="http://giellatekno.uit.no/oahpa/OAHPAveiledning.eng.html">{% trans "Veiledning" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "no" %}
+                <li><a href="http://giellatekno.uit.no/oahpa/OAHPAveiledning.nno.html">{% trans "Veiledning" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "sv" %}
                 <li><a href="http://giellatekno.uit.no/oahpa/OAHPAveiledning.nno.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
 				<li><a href="http://victorio.uit.no/webdict/index_sme-nob.html">{% trans "North Sámi" %}-{% trans "Norwegian" %} {% trans "dictionary" %}</a></li>
