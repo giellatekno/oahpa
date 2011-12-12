@@ -158,7 +158,11 @@
 			<p>{% trans "Oahpa is connected with online reference materials." %}</p>
 			{% endcomment %}
 			<ul class="linklist">
-				<li><a href="http://giellatekno.uit.no/oahpa/index.html">{% trans "Veiledning" %}</a></li>
+            {% ifequal LANGUAGE_CODE "sme" %}
+				<li><a href="http://giellatekno.uit.no/oahpa/OAHPAveiledning.html">{% trans "Veiledning" %}</a></li>
+            {% else %}
+                <li><a href="http://giellatekno.uit.no/oahpa/OAHPAveiledning.nno.html">{% trans "Veiledning" %}</a></li>
+            {% endifequal %}
 				<li><a href="http://victorio.uit.no/webdict/index_sme-nob.html">{% trans "North Sámi" %}-{% trans "Norwegian" %} {% trans "dictionary" %}</a></li>
             {% ifequal LANGUAGE_CODE "sme" %}
 				<li><a href="http://giellatekno.uit.no/oahpa/grammatihkka.html">{% trans "North Sámi grammar" %}</a></li>
