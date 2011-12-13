@@ -20,11 +20,11 @@
 {% endblock %}
 
 {% block name %}{% trans "Quizz" %}{% endblock %}
-{% block pagename %}/{{ URL_PREFIX }}/leksa/{% endblock %}
+<!---{% block pagename %}/{{ URL_PREFIX }}/leksa/{% endblock %} -->
 
 {% block veiledning %}
 {% ifequal LANGUAGE_CODE "sme" %}
-{http://giellatekno.uit.no/oahpa/leksa.html}
+http://giellatekno.uit.no/oahpa/leksa.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
 <a href="http://giellatekno.uit.no/oahpa/leksa.html"
