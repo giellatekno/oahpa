@@ -24,19 +24,19 @@
 
 {% block veiledning %}
 {% ifequal LANGUAGE_CODE "sme" %}
-<a href="http://giellatekno.uit.no/oahpa/leksa.html"/>
+<li><a href="http://giellatekno.uit.no/oahpa/leksa.html">{% trans "Veiledning" %}</a></li>
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
-<a href="http://giellatekno.uit.no/oahpa/leksa.html"/>
+<li><a href="http://giellatekno.uit.no/oahpa/leksa.html">{% trans "Veiledning" %}</a></li>
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "en" %}
-<a href="http://giellatekno.uit.no/oahpa/leksa.eng.html"/>
+<li><a href="http://giellatekno.uit.no/oahpa/leksa.eng.html"/>{% trans "Veiledning" %}</a></li>
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
-<a href="http://giellatekno.uit.no/oahpa/leksa.nno.html"/>
+<li><a href="http://giellatekno.uit.no/oahpa/leksa.nno.html"/>{% trans "Veiledning" %}</a></li>
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "sv" %}
-<a href="http://giellatekno.uit.no/oahpa/leksa.nno.html"/>
+<li><a href="http://giellatekno.uit.no/oahpa/leksa.nno.html"/>{% trans "Veiledning" %}</a></li>
 {% endifequal %}
 {% endblock %}
 
