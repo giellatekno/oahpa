@@ -22,7 +22,7 @@
 {% block name %}{% trans "Quizz" %}{% endblock %}
 {% block pagename %}/{{ URL_PREFIX }}/leksa/{% endblock %}
 
-{% block veiledning %}
+<!---{% block veiledning %}
 {% ifequal LANGUAGE_CODE "sme" %}
 <a href="http://giellatekno.uit.no/oahpa/leksa.html">{% trans "Veiledning" %}</a>
 {% endifequal %}
@@ -39,7 +39,7 @@
 <a href="http://giellatekno.uit.no/oahpa/leksa.nno.html"
 {% endifequal %}
 {% endblock %}
-
+--->
 {% block instructions %}
 	{% trans "Give translations for words. You can choose set or level, not both." %}
 {% endblock %}
