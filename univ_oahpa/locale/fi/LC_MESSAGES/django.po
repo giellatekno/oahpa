@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-08 09:25+0100\n"
+"POT-Creation-Date: 2011-12-13 20:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,21 +48,26 @@ msgstr "Kielioppiselitykset"
 msgid "Reference materials"
 msgstr "Apuneuvoja"
 
-#: templates/univ_oahpa.html:60 templates/univ_oahpa_main.html:161
+#: templates/univ_oahpa.html:60 templates/univ_oahpa_main.html:162
+#: templates/univ_oahpa_main.html.py:165 templates/univ_oahpa_main.html:168
+#: templates/univ_oahpa_main.html.py:171 templates/univ_oahpa_main.html:174
+#: univ_drill/templates/leksa.html:27
 msgid "Veiledning"
-msgstr ""
+msgstr "Käyttöohje"
 
 #: templates/univ_oahpa.html:61 templates_old/smaoahpa.html:332
 msgid "Dictionary"
 msgstr "Nettisanakirja"
 
-#: templates/univ_oahpa.html:62 templates_old/smaoahpa.html:288
+#: templates/univ_oahpa.html:63 templates/univ_oahpa.html.py:66
+#: templates/univ_oahpa.html:69 templates/univ_oahpa.html.py:72
+#: templates/univ_oahpa.html:75 templates_old/smaoahpa.html:288
 #: templates_old/smaoahpa.html.py:300 templates_old/smaoahpa.html:333
 #: templates_old/smaoahpa_old.html:273 templates_old/smaoahpa_old.html:285
 msgid "Grammar"
 msgstr "Kielioppi"
 
-#: templates/univ_oahpa.html:67 templates_old/smaoahpa.html:338
+#: templates/univ_oahpa.html:82 templates_old/smaoahpa.html:338
 #: templates_old/smaoahpa_new.html:193 templates_old/smaoahpa_old.html:320
 msgid "Feedback"
 msgstr "Palaute"
@@ -78,12 +83,12 @@ msgstr "Kielimuoto"
 #: templates/univ_oahpa_main.html:88 templates/univ_oahpa_main.html.py:91
 #: templates/univ_oahpa_main.html:95
 msgid "GG"
-msgstr ""
+msgstr "Koutokeino"
 
 #: templates/univ_oahpa_main.html:89 templates/univ_oahpa_main.html.py:92
 #: templates/univ_oahpa_main.html:96
 msgid "KJ"
-msgstr ""
+msgstr "Kaarasjoki"
 
 #: templates/univ_oahpa_main.html:120 templates_old/smaoahpa_main.html:119
 msgid "Practise morphology in context"
@@ -119,29 +124,31 @@ msgstr ""
 msgid "Oahpa is connected with online reference materials."
 msgstr "Ressursit"
 
-#: templates/univ_oahpa_main.html:162
+#: templates/univ_oahpa_main.html:176
 msgid "North Sámi"
 msgstr "Pohjoissaame"
 
-#: templates/univ_oahpa_main.html:162 templates_old/smaoahpa_main.html:135
+#: templates/univ_oahpa_main.html:176 templates_old/smaoahpa_main.html:135
 #: templates_old/smaoahpa_main.html:146
 msgid "Norwegian"
 msgstr "norja"
 
-#: templates/univ_oahpa_main.html:162 templates_old/smaoahpa_main.html:135
+#: templates/univ_oahpa_main.html:176 templates_old/smaoahpa_main.html:135
 #: templates_old/smaoahpa_main.html:146
 msgid "dictionary"
 msgstr "nettisanakirja"
 
-#: templates/univ_oahpa_main.html:163
+#: templates/univ_oahpa_main.html:178 templates/univ_oahpa_main.html.py:181
+#: templates/univ_oahpa_main.html:184 templates/univ_oahpa_main.html.py:187
+#: templates/univ_oahpa_main.html:190
 msgid "North Sámi grammar"
 msgstr "Pohjoissaamen kielioppi"
 
-#: templates/univ_oahpa_main.html:173
+#: templates/univ_oahpa_main.html:201
 msgid "Copyright 2011 Universitetet i Troms&oslash; "
 msgstr "Copyright 2010 Tromssan yliopisto"
 
-#: templates/univ_oahpa_main.html:174 templates_old/smaoahpa_main.html:155
+#: templates/univ_oahpa_main.html:202 templates_old/smaoahpa_main.html:155
 msgid "Contact"
 msgstr "Ota yhteyttä"
 
@@ -366,7 +373,7 @@ msgstr "Ingen er tilgjengelig"
 
 #: templates/admin/index.html:72
 msgid "Unknown content"
-msgstr "Ukjent innhold"
+msgstr "Tuntematon sisältö"
 
 #: templates/admin/invalid_setup.html:7
 msgid ""
@@ -380,24 +387,24 @@ msgstr ""
 
 #: templates/admin/login.html:19
 msgid "Username:"
-msgstr "Brukernavn:"
+msgstr "Käyttäjänimi:"
 
 #: templates/admin/login.html:22
 msgid "Password:"
-msgstr "Password:"
+msgstr "Salasana:"
 
 #: templates/admin/login.html:26
 #: templates/registration/password_reset_complete.html:14
 msgid "Log in"
-msgstr "Logg inn"
+msgstr "Kirjaudu sisään"
 
 #: templates/admin/object_history.html:22
 msgid "Date/time"
-msgstr "Dato/tid"
+msgstr "Päivämäärä/aika"
 
 #: templates/admin/object_history.html:23
 msgid "User"
-msgstr "Bruker"
+msgstr "Käyttäjä"
 
 #: templates/admin/object_history.html:24
 msgid "Action"
@@ -413,15 +420,15 @@ msgstr ""
 
 #: templates/admin/pagination.html:10
 msgid "Show all"
-msgstr "Vis alle"
+msgstr "Näytä kaikki"
 
 #: templates/admin/pagination.html:11 templates/admin/submit_line.html:3
 msgid "Save"
-msgstr "Lagre"
+msgstr "Tallenna"
 
 #: templates/admin/search_form.html:8
 msgid "Search"
-msgstr "Søk"
+msgstr "Etsi"
 
 #: templates/admin/search_form.html:10
 #, python-format
@@ -1321,7 +1328,7 @@ msgstr "Eteläsaamesta norjaksi"
 msgid "Norwegian to South Sami"
 msgstr "Norjasta eteläsaameksi"
 
-#: univ_drill/new_views.py:510 univ_drill/templates/leksa.html:37
+#: univ_drill/new_views.py:510 univ_drill/templates/leksa.html:53
 msgid "Set"
 msgstr "Joukko"
 
@@ -1494,7 +1501,7 @@ msgstr "Kirjoita pohjoissaamelainen aikailmaisu sanoina (esim. beal guokte)"
 msgid "Select how many points of time to include."
 msgstr "Valitse kellonaikojen vaikeusaste"
 
-#: univ_drill/templates/clock.html:22 univ_drill/templates/num.html:46
+#: univ_drill/templates/clock.html:22 univ_drill/templates/num.html:63
 msgid "Select the direction"
 msgstr "Valitse suunta"
 
@@ -1518,11 +1525,11 @@ msgstr "apu"
 msgid "This is almost correct!"
 msgstr "Tämä on melkein oikein!"
 
-#: univ_drill/templates/game.html:172 univ_drill/templates/leksa.html:58
+#: univ_drill/templates/game.html:172 univ_drill/templates/leksa.html:74
 msgid "Test answers"
 msgstr "Testaa vastauksesi"
 
-#: univ_drill/templates/game.html:175 univ_drill/templates/leksa.html:61
+#: univ_drill/templates/game.html:175 univ_drill/templates/leksa.html:77
 msgid "Show the correct answers"
 msgstr "Näytä oikeat vastaukset"
 
@@ -1546,21 +1553,21 @@ msgstr "Paikannimet"
 msgid "Quizz"
 msgstr ""
 
-#: univ_drill/templates/leksa.html:28
+#: univ_drill/templates/leksa.html:44
 msgid "Give translations for words. You can choose set or level, not both."
 msgstr "Käännä sanoja. Voit valita aihepiirin tai kirjan, mutta et molempia."
 
-#: univ_drill/templates/leksa.html:39 univ_drill/templates/leksa_place.html:21
+#: univ_drill/templates/leksa.html:55 univ_drill/templates/leksa_place.html:21
 msgid "Select the language pair"
 msgstr "Valitse kielipari"
 
-#: univ_drill/templates/leksa.html:41 univ_drill/templates/mgame.html:43
+#: univ_drill/templates/leksa.html:57 univ_drill/templates/mgame.html:59
 msgid "Book"
 msgstr "Kirja"
 
-#: univ_drill/templates/leksa.html:46 univ_drill/templates/leksa.html.py:49
-#: univ_drill/templates/leksa_place.html:34 univ_drill/templates/mgame.html:51
-#: univ_drill/templates/num.html:51
+#: univ_drill/templates/leksa.html:62 univ_drill/templates/leksa.html.py:65
+#: univ_drill/templates/leksa_place.html:34 univ_drill/templates/mgame.html:67
+#: univ_drill/templates/num.html:68
 msgid "New set"
 msgstr "Uusi joukko"
 
@@ -1574,23 +1581,23 @@ msgstr ""
 msgid "Geography"
 msgstr "Sijainti"
 
-#: univ_drill/templates/mgame.html:14 univ_drill/templates/mgame.html.py:21
+#: univ_drill/templates/mgame.html:30 univ_drill/templates/mgame.html.py:37
 msgid "Nouns"
 msgstr "Substantiivit"
 
-#: univ_drill/templates/mgame.html:15 univ_drill/templates/mgame.html.py:22
+#: univ_drill/templates/mgame.html:31 univ_drill/templates/mgame.html.py:38
 msgid "Verbs"
 msgstr "Verbit"
 
-#: univ_drill/templates/mgame.html:16 univ_drill/templates/mgame.html.py:23
+#: univ_drill/templates/mgame.html:32 univ_drill/templates/mgame.html.py:39
 msgid "Adjectives"
 msgstr "Adjektiivit"
 
-#: univ_drill/templates/mgame.html:17 univ_drill/templates/mgame.html.py:24
+#: univ_drill/templates/mgame.html:33 univ_drill/templates/mgame.html.py:40
 msgid "Pronouns"
 msgstr "Pronominit"
 
-#: univ_drill/templates/mgame.html:29
+#: univ_drill/templates/mgame.html:45
 msgid "Morphology"
 msgstr "Morfologia"
 
@@ -1672,19 +1679,19 @@ msgstr "Kirjoita verbit oikeissa muodoissa."
 msgid "Verbgruppe"
 msgstr "Verbiryhmä"
 
-#: univ_drill/templates/num.html:23
+#: univ_drill/templates/num.html:40
 msgid "Numerals"
 msgstr "Lukusanat"
 
-#: univ_drill/templates/num.html:30
+#: univ_drill/templates/num.html:47
 msgid "Enter the numeral. (Ex. 8)"
 msgstr "Kirjoita luku (esim. 8)"
 
-#: univ_drill/templates/num.html:32
+#: univ_drill/templates/num.html:49
 msgid "Enter the North Sámi number. (Ex. vihtta)."
 msgstr "Kirjoita pohjoissaamelainen lukusana (esim. vihtta)"
 
-#: univ_drill/templates/num.html:44
+#: univ_drill/templates/num.html:61
 msgid "Select the range of numerals."
 msgstr "Valitse lukujoukko."
 

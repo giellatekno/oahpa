@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-08 09:25+0100\n"
+"POT-Creation-Date: 2011-12-13 20:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,21 +48,26 @@ msgstr "Grammatikförklaringar"
 msgid "Reference materials"
 msgstr "Resurser"
 
-#: templates/univ_oahpa.html:60 templates/univ_oahpa_main.html:161
+#: templates/univ_oahpa.html:60 templates/univ_oahpa_main.html:162
+#: templates/univ_oahpa_main.html.py:165 templates/univ_oahpa_main.html:168
+#: templates/univ_oahpa_main.html.py:171 templates/univ_oahpa_main.html:174
+#: univ_drill/templates/leksa.html:27
 msgid "Veiledning"
-msgstr ""
+msgstr "Vägledning"
 
 #: templates/univ_oahpa.html:61 templates_old/smaoahpa.html:332
 msgid "Dictionary"
 msgstr "Digital ordbok"
 
-#: templates/univ_oahpa.html:62 templates_old/smaoahpa.html:288
+#: templates/univ_oahpa.html:63 templates/univ_oahpa.html.py:66
+#: templates/univ_oahpa.html:69 templates/univ_oahpa.html.py:72
+#: templates/univ_oahpa.html:75 templates_old/smaoahpa.html:288
 #: templates_old/smaoahpa.html.py:300 templates_old/smaoahpa.html:333
 #: templates_old/smaoahpa_old.html:273 templates_old/smaoahpa_old.html:285
 msgid "Grammar"
 msgstr "Grammatik"
 
-#: templates/univ_oahpa.html:67 templates_old/smaoahpa.html:338
+#: templates/univ_oahpa.html:82 templates_old/smaoahpa.html:338
 #: templates_old/smaoahpa_new.html:193 templates_old/smaoahpa_old.html:320
 msgid "Feedback"
 msgstr "Respons"
@@ -119,29 +124,31 @@ msgstr ""
 msgid "Oahpa is connected with online reference materials."
 msgstr "Referensmaterial"
 
-#: templates/univ_oahpa_main.html:162
+#: templates/univ_oahpa_main.html:176
 msgid "North Sámi"
 msgstr "Nordsamiska"
 
-#: templates/univ_oahpa_main.html:162 templates_old/smaoahpa_main.html:135
+#: templates/univ_oahpa_main.html:176 templates_old/smaoahpa_main.html:135
 #: templates_old/smaoahpa_main.html:146
 msgid "Norwegian"
 msgstr "norska"
 
-#: templates/univ_oahpa_main.html:162 templates_old/smaoahpa_main.html:135
+#: templates/univ_oahpa_main.html:176 templates_old/smaoahpa_main.html:135
 #: templates_old/smaoahpa_main.html:146
 msgid "dictionary"
 msgstr "digital ordbok"
 
-#: templates/univ_oahpa_main.html:163
+#: templates/univ_oahpa_main.html:178 templates/univ_oahpa_main.html.py:181
+#: templates/univ_oahpa_main.html:184 templates/univ_oahpa_main.html.py:187
+#: templates/univ_oahpa_main.html:190
 msgid "North Sámi grammar"
 msgstr "Nordsamisk grammatik"
 
-#: templates/univ_oahpa_main.html:173
+#: templates/univ_oahpa_main.html:201
 msgid "Copyright 2011 Universitetet i Troms&oslash; "
 msgstr "Copyright 2010 Universitetet i Tromsö"
 
-#: templates/univ_oahpa_main.html:174 templates_old/smaoahpa_main.html:155
+#: templates/univ_oahpa_main.html:202 templates_old/smaoahpa_main.html:155
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -1321,7 +1328,7 @@ msgstr "Sydsamiska till norska"
 msgid "Norwegian to South Sami"
 msgstr "Norska till sydsamiska"
 
-#: univ_drill/new_views.py:510 univ_drill/templates/leksa.html:37
+#: univ_drill/new_views.py:510 univ_drill/templates/leksa.html:53
 msgid "Set"
 msgstr "Uppsättning"
 
@@ -1494,7 +1501,7 @@ msgstr "Skriv den nordsamiska tidpunkten med bokstäver (tex. beal guokte)"
 msgid "Select how many points of time to include."
 msgstr "Välj hur många tidpunkter som skall vara med"
 
-#: univ_drill/templates/clock.html:22 univ_drill/templates/num.html:46
+#: univ_drill/templates/clock.html:22 univ_drill/templates/num.html:63
 msgid "Select the direction"
 msgstr "Välj riktning"
 
@@ -1518,11 +1525,11 @@ msgstr "Hjälp"
 msgid "This is almost correct!"
 msgstr "Det här är nästan rätt!"
 
-#: univ_drill/templates/game.html:172 univ_drill/templates/leksa.html:58
+#: univ_drill/templates/game.html:172 univ_drill/templates/leksa.html:74
 msgid "Test answers"
 msgstr "Testa svaren"
 
-#: univ_drill/templates/game.html:175 univ_drill/templates/leksa.html:61
+#: univ_drill/templates/game.html:175 univ_drill/templates/leksa.html:77
 msgid "Show the correct answers"
 msgstr "Visa korrekta svar"
 
@@ -1546,21 +1553,21 @@ msgstr "Ortnamn"
 msgid "Quizz"
 msgstr ""
 
-#: univ_drill/templates/leksa.html:28
+#: univ_drill/templates/leksa.html:44
 msgid "Give translations for words. You can choose set or level, not both."
 msgstr "Översätt orden. Du kan välja uppsättning eller bok, inte båda."
 
-#: univ_drill/templates/leksa.html:39 univ_drill/templates/leksa_place.html:21
+#: univ_drill/templates/leksa.html:55 univ_drill/templates/leksa_place.html:21
 msgid "Select the language pair"
 msgstr "Välj språkpar"
 
-#: univ_drill/templates/leksa.html:41 univ_drill/templates/mgame.html:43
+#: univ_drill/templates/leksa.html:57 univ_drill/templates/mgame.html:59
 msgid "Book"
 msgstr "Bok"
 
-#: univ_drill/templates/leksa.html:46 univ_drill/templates/leksa.html.py:49
-#: univ_drill/templates/leksa_place.html:34 univ_drill/templates/mgame.html:51
-#: univ_drill/templates/num.html:51
+#: univ_drill/templates/leksa.html:62 univ_drill/templates/leksa.html.py:65
+#: univ_drill/templates/leksa_place.html:34 univ_drill/templates/mgame.html:67
+#: univ_drill/templates/num.html:68
 msgid "New set"
 msgstr "Ny uppsättning"
 
@@ -1572,23 +1579,23 @@ msgstr "Ge översättning för ortnamn"
 msgid "Geography"
 msgstr "Geografi"
 
-#: univ_drill/templates/mgame.html:14 univ_drill/templates/mgame.html.py:21
+#: univ_drill/templates/mgame.html:30 univ_drill/templates/mgame.html.py:37
 msgid "Nouns"
 msgstr "Substantiv"
 
-#: univ_drill/templates/mgame.html:15 univ_drill/templates/mgame.html.py:22
+#: univ_drill/templates/mgame.html:31 univ_drill/templates/mgame.html.py:38
 msgid "Verbs"
 msgstr "Verb"
 
-#: univ_drill/templates/mgame.html:16 univ_drill/templates/mgame.html.py:23
+#: univ_drill/templates/mgame.html:32 univ_drill/templates/mgame.html.py:39
 msgid "Adjectives"
 msgstr "Adjektiver"
 
-#: univ_drill/templates/mgame.html:17 univ_drill/templates/mgame.html.py:24
+#: univ_drill/templates/mgame.html:33 univ_drill/templates/mgame.html.py:40
 msgid "Pronouns"
 msgstr "Pronomen"
 
-#: univ_drill/templates/mgame.html:29
+#: univ_drill/templates/mgame.html:45
 msgid "Morphology"
 msgstr "Morfologi"
 
@@ -1670,19 +1677,19 @@ msgstr "Skriv in den riktiga formen av verbet"
 msgid "Verbgruppe"
 msgstr "Verbgrupp"
 
-#: univ_drill/templates/num.html:23
+#: univ_drill/templates/num.html:40
 msgid "Numerals"
 msgstr "Räkneord"
 
-#: univ_drill/templates/num.html:30
+#: univ_drill/templates/num.html:47
 msgid "Enter the numeral. (Ex. 8)"
 msgstr "Skriv den nordsamiska siffran (tex 8)"
 
-#: univ_drill/templates/num.html:32
+#: univ_drill/templates/num.html:49
 msgid "Enter the North Sámi number. (Ex. vihtta)."
 msgstr "Skriv det nordsamiska räkneordet (tex vihtta)"
 
-#: univ_drill/templates/num.html:44
+#: univ_drill/templates/num.html:61
 msgid "Select the range of numerals."
 msgstr "Välj talområde"
 
