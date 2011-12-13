@@ -770,10 +770,10 @@ class Words:
 				if not COUNT_ONLY:
 					if dialect:
 						if VERBOSE:
-							print >> _STDOUT, "Created form: " + tag.string + "\t" + g.form.encode('utf-8') + "\t\t" + dialect.dialect
+							print >> _STDOUT, force_unicode("Created form: %s\t%s\t\t%s" % (tag.string, g.form, dialect.dialect)).encode('utf-8')
 					else:
 						if VERBOSE:
-							print >> _STDOUT, force_unicode("Created form: " + tag.string + "\t" + g.form)
+							print >> _STDOUT, force_unicode("Created form: %s\t%s" % (tag.string, g.form)).encode('utf-8')
 		elif paradigmfile:
 			for dialect in dialect_objects:
 				if VERBOSE:
