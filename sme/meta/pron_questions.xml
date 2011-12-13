@@ -48,7 +48,45 @@
 			</element>
 		</answer>
 	</q>
+	<q id="pnom3">
+		<qtype>P-NOM</qtype>
+		<question>
+			<text>MAINV go SUBJ ikte</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+			</element>
+			<element id="MAINV">
+				<sem class="mACTIVITY"/>
+				<grammar tag="V+Ind+Prt+Sg3"/>
+			</element>
+		</question>
+		<answer>
+			<text>Gal PRON MAINV</text>
+			<element game="morfa" id="PRON" task="yes">
+				<grammar tag="Pron+Pers+Sg3+Nom"/>
+			</element>
+		</answer>
+	</q>
 	<q id="pnom4">
+		<qtype>P-NOM</qtype>
+		<question>
+			<text>MAINV go GEN -guovttos ikte</text>
+			<element id="GEN">
+				<sem class="PAIR"/>
+			</element>
+			<element id="MAINV">
+				<sem class="mACTIVITY"/>
+				<grammar tag="V+Ind+Prt+Du3"/>
+			</element>
+		</question>
+		<answer>
+			<text>Gal PRON MAINV</text>
+			<element game="morfa" id="PRON" task="yes">
+				<grammar tag="Pron+Pers+Du3+Nom"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pnom3">
 		<qtype>P-NOM</qtype>
 		<question>
 			<text>Gii AUX VERB</text>
