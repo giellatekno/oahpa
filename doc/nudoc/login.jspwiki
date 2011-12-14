@@ -26,6 +26,24 @@ Studenten loggar seg inn, og site.uit.no/oahpa veit kven
 # Editor
 # Administrator
 
+!!Moglege løysingar
+
+Oahpa/Django kan nytta ulike eksterne kjeldor for å få inn brukerkontoer. Eg (Ryan) hev tenkt over ulike moglegheitar (database-løysingar er ute) og fann at ei moglegheit er å nytta cookies. Me treng då at nokon på WordPress-sida kan installera ein plugin som opner opp WP-cookie til bruk på eit større nivå (utafor site.uit.no til *.uit.no). Fordi både WP og Oahpa! sitt på uit.no domainen, kan Oahpa! få tilgang til denne nye WP-cookien. 
+
+Eg fann fleire moglegheitar til denne cookie-løysing, men det ser ut som den beste kjem i ein ready-made plugin:
+
+http://wordpress.org/extend/plugins/root-cookie/download/
+
+Med denne går det slik: 
+
+ * Brukaren logger seg inn på http://site.uit.no/
+ * Brukaren klikkar på lenkja til oahpa
+ * Oahpa sjekker WordPress-Cookie, får kontoinformasjon
+ * Oahpa lager ein Oahpa-konto om det ikkje eksisterar
+ * Brukaren får øva på nordsamisk
+
+Spørsmålet om kva me gjer med brukarar som ikkje er logga inn er litt meir kompleks: det kan vera dei deltek i kurset, og det kan vera at dei ikkje gjer det. Me kan visa melding på framsida om at det er eit kurs ved site.uit.no/, spyrja om dei ville vera med, omdirigera til infosida. Elles brukarar som ikkje vil det kan berre halda fram. Eg synest det går godt ann å reklamera kurset litt. 
+
 !!Login i Oahpa
 
 
