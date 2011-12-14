@@ -1,14 +1,14 @@
 #!/bin/sh
 
 P="python2.6"
-$GTHOME="~/main"
-SRC="ped/sme/univ_oahpa_data/data_sme"
-DATA=$GTHOME/$SRC
-DPS="$DATA/sme"
+GTHOME="~/main"
+LANGDIR="ped/sme"
+DATA=$GTHOME/$LANGDIR
+DPS="$DATA/src"
 META="$DATA/meta"
-DPN="$DATA/nob"
-DPF="$DATA/fin"
-#DPW="$DATA/swe"
+DPN="$DATA/nobsme"
+DPF="$DATA/finsme"
+#DPW="$DATA/swesme"
 #WORDS=$GTHOME/words/dicts/smenob/src
 
 ##
@@ -22,12 +22,12 @@ echo " "
 echo "done"
 echo "==================================================="
 
-#echo "==================================================="
-#echo "feeding db with $META/names.xml" - does not exist for sme
-#$P install.py --file $META/names.xml --tagfile $META/tags.txt --paradigmfile $META/prop_paradigms.txt 2>>error.log
-#echo " "
-#echo "done"
-#echo "==================================================="
+echo "==================================================="
+echo "feeding db with $META/names.xml"
+$P install.py --file $META/names.xml --tagfile $META/tags.txt --paradigmfile $META/prop_paradigms.txt 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/prop_smenob.xml"
@@ -233,8 +233,8 @@ echo "===================================================
 COMMENT
 
 echo "==================================================="
-echo "feeding db with data_sma/sma/pronPers_smanob.xml"
-$P install.py --file /home/smaoahpa/smaoahpa/data_sma/sma/pronPers_smanob.xml --tagfile /home/smaoahpa/smaoahpa/data_sma/meta/tags.txt --paradigmfile /home/smaoahpa/smaoahpa/data_sma/meta/pron_paradigms.txt 
+echo "feeding db with $DPW/pron_sme.xml"
+$P install.py --file $DPW/pron_sme.xml --tagfile $META/tags.txt 
 echo " "
 echo "done"
 echo "==================================================="
@@ -342,35 +342,13 @@ $P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml
 echo " "
 echo "done"
 echo "==================================================="
-: <<'COMMENT'
-echo "==================================================="
-echo "installing Morfa-C questions for verbs"
-$P install.py -g $META/grammar_defaults.xml -q $META/verb_problems.xml
-echo " "
-echo "done"
-echo "==================================================="
 
-# echo "==================================================="
-# echo "installing Morfa-C questions for verbs"
-# $P install.py -g $META/grammar_defaults.xml -q $META/more_verb_questions.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
-
-# echo "==================================================="
-# echo "installing Morfa-C questions for verbs"
-# $P install.py -g $META/grammar_defaults.xml -q $META/imprt_questions.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
 echo "==================================================="
 echo "installing Morfa-C questions for pronoun"
 $P install.py -g $META/grammar_defaults.xml -q $META/pron_questions.xml
 echo " "
 echo "done"
 echo "==================================================="
-
-COMMENT
 
 echo "==================================================="
 echo "installing Morfa-C questions for adjectives"
