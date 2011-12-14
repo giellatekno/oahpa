@@ -8,7 +8,7 @@
 
 ! Leksikonfiler for Leksa, MorfaS, MorfaC og Vasta
 Bøyningsparadigme trenges ikke for Leksa, men for de andre programmene. Filene er utvidet med flere lemmaer, og ikke alle er i fst enda, og dermed får man ikke paradigme. I l-elementet mangler fremdeles en del attributter for morfologisk hjelpefunksjon, og det kommer etterhvert. Filene skal man likevel kunne implementere.
-* Skal genereres bøyningsparadigme:
+* Skal genereres bøyningsparadigme (bare fra smenob-filer):
 ** a_smenob.xml
 ** n_smenob.xml
 *** Generering: vær obs på type-attributt for noen av entryene: N+Actor og G3+N
@@ -19,8 +19,8 @@ Bøyningsparadigme trenges ikke for Leksa, men for de andre programmene. Filene 
 * Skal ikke genereres bøyningsparadigme:
 ** adv_smenob.xml
 ** multiword_smenob.xml
-* pronounforms.csv inneholder paradigmer
-* Tilsvarende filer i nob/ og fin/ bortsett fra pronounforms.csv
+* pron_sme.xml inneholder paradigmer
+* Tilsvarende filer i nob/ og fin/ bortsett fra pron_sme.xml
 
 ! Leksa
 # implementere funksjoner som allerede finnes i smeOahpa: n_smenob.xml, v_smenob.xml, a_smenob.xml, adv_smenob.xml, prop_smenob.xml pluss tilsvarende filer nob/ og fin/  . Dessuten semantical_sets.xml
@@ -50,10 +50,10 @@ Bøyningsparadigme trenges ikke for Leksa, men for de andre programmene. Filene 
 
 ! MorfaC
 # implementere funksjoner som allerede finnes i smeOahpa
-# implementere pronomener som oppgavetype - questions_pronouns.xml må skrives
+# implementere pronomener som oppgavetype - pron_questions.xml inneholder foreløpig bare oppgaver for personlige pronomener
 # __NB!__ I tillegg til de kasusdelte oppgavene er det ei mixed case -oppgave i MorfaC. (den siste
   oppgavetypen). Den blei utvikla for sma og fungerer ikke for sme i dag. (Feilmelding: No questions
-  found for query. qtype: u'N-MIX')
+  found for query. qtype: u'N-MIX'). Vil kommer for sme også.
 
 ! Sahka
 # implementere funksjoner som allerede finnes i smeOahpa
