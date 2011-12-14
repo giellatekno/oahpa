@@ -369,7 +369,7 @@ def leksa_game(request, place=False):
 
 	if place:
 		leksagame.settings['allsem'] = []
-		leksagame.settings['semtype'] = "PLACE_NAME" # was PLACE-LEKSA
+		leksagame.settings['semtype'] = "PLACE_LEKSA" # was PLACE-LEKSA
 		leksagame.settings['geography'] = 'world'
 		template = 'leksa_place.html'
 
