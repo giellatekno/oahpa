@@ -9,8 +9,8 @@ Til stades: Heli, Ryan, Trond, Biret-Ánne, Lene
 ## MorfaS
 ## MorfaC
 # Innlogging for site.uit.no/oahpa kombinert med innlogging for oahpa
-
-
+# Diverse
+# Neste møte
 
 !Arbeidet med implementeringa av univOahpa
 
@@ -87,232 +87,56 @@ __TILTAK__
 
 
 
-!!!Innlogging for site.uit.no/oahpa kombinert med innlogging for oahpa
+!!Innlogging for site.uit.no/oahpa kombinert med innlogging for oahpa
 
-!!Status quo
-
-Ryan har fått svar frå Bjørn.
-
-No at sidor er satt opp, eg hev eit par spørsmål for deg om WordPress installasjonen ved UiT. Eg arbeider med GT-gruppa for å få ei løsning til innlogging-delen av ein Python/Django webapp. Me ynskjer å vidaresende studentar til ein ekstern app, og der skal me spora kva dei gjer for å gjeva karakterar. Alt me treng for å gjera dette er å få eit brukarnamn og brukar-id frå WordPress.
-
-Det som eg lurte på først då er: korleis får WordPress kontoinformasjon frå UiT, eller kva systemet er det hjå UiT som eksternale applikasjonar som WordPress og Oahpa kunne nytta for å hente brukarkontoar? Er det lett å få tilgang for slik ei applikasjon?
-
-Hei Ryan!
-
-site.uit.no/oahpa begynner å ta form, veldig inspirerende for oss som vil lære samisk!
-
-Jeg vet ikke hvordan Wordpress får kontoinformasjon fra UiT. Jeg har ikke noe med multisite-installasjonen av wordpress til UiT å gjøre. Det er it-avdelinga som står for drift og support. 
-
-Siden Wordpress nylig er blitt tilgjengelig, og fremdeles er på prøve/vurderingsstadiet, ønsker jeg å holde behovet for support på et minimum. En av grunnene ser du her: http://site.uit.no/dette-tilbyr-site-uit-no/
-
-Jeg foreslår at de av dere som vet hvilke tråer en skal trekke i, på en diplomatisk måte, finner ut hvordan vi kan få tilgang til det vi måtte ha behov for mht. utviklinga av Oahpa.
-
-Vi utvikler i mellomtiden wordpresstemaet på min lokale maskin her: http://129.242.218.43/wordpress/ . Du kan få tilgang til alle filene på vår testserver via ftp om ønskelig.
-
-Bjørn
-
+!Status quo
 
 Lagar admin konto frå e-post-adressa, eller automatisk?
 Minnesota: Kontoinformasjon kjem frå ein servar
 
+Studenten loggar seg inn, og site.uit.no/oahpa veit kven
+# Orakel oppretta site.uit.no/giellatekno med oss som admin
+# Vi legger til brukere med forskjellig tilgang (lese, skrive) 
+# I dag er det ikke mulig for brukere selv å registrere seg som bruker (visl-metoden)
+
+[Dette tilbyr site.uit.no:|http://site.uit.no/dette-tilbyr-site-uit-no/]
+* URL av typen http://site.uit.no/navn, hvor navn er valgfritt (feks navn på gruppe, prosjekt, …)
+* Tilgang til WordPress Dashboard for eier/administrator
+* __Eier/administrator__ kan invitere/legge til brukere (også eksterne) til sin side
+
+Flere typar tilgang:
+# Subscriber
+# Contributor
+# Author
+# Editor
+# Administrator
+
+[WordPress har dokumentert dette|http://codex.wordpress.org/Roles_and_Capabilities].
+
+Det vi ønskjer er at info frå site-innlogging går 
+# __frå__ site.uit.no og
+# vidare __til__ oahpa-innlogging.
+
+Vi vil gjerne vite om restriksjonen "Eier/administrator legger til brukere" er absolutt 
+frå WordPress si side, eller berre site.uit.no sin politikk.
+
+__TILTAK__
+* Ryan: Registrere seg.
+* Lese dokumentasjon om WordPress-roller (__Ryan, Trond, Berit Ánne__)
+** Sjølv dokumentere den løysinga vi vil ha (''login.jspwiki'')
+** Vi må dokumentere både sendar (site) og mottakar (oahpa)
+* Finne mekanisme i WordPress (plugin, t.d.) som sender brukarinfo til Oahpa. (__Ryan__)
+* Evt. gå til Orakel (__Trond__)
+* Oppsummeringsdiskusjon fredag 15.00 / 08.00 Minnesota
+
+!! Diverse
+__TILTAK__
+* Grammatikk-meny må legges til __ikkje gjort__
+* Legge Heli til på giellatekno (__Børre__) 
+
+
 !! Neste møte
 
-
-
-see://129.242.102.184
-
-
-Forrige møte:
-
-!!!Møte 07.12.11
-
-
-!! Arbeidet med implementeringa av univOahpa
-se disse dokumentene:
-
-* [Innhald|http://giellatekno.uit.no/ped/nudoc/bestilling.html]
-* [Lokalisering|http://giellatekno.uit.no/ped/nudoc/bestilling_lokalisering.html]
-
-Numra og MorfaS fungerer, Leksa ikke. Det er ennå mye i py-skriptene som ikke er endra fra sma til sme.
-
-Det er skript som ikke er i bruk: new_views.py
-
-forms.py: inneheld språkpar (TRANS_CHOICES: smanob, smaswe, swesma, nobsma, osv.) til leksa. om denne står ikkje i dokumentasjonen, då bør det. 
-models.py: til smaoahpa var skrive litt meir generelt enn i original smeoahpa
-views.py: Inneheld fleire sma-trekk: xsyll, INE, 
-
-
-!Filstruktur
-
-I dag har vi ein interim filstruktur der nye filer ligg inni gamle. Her er
-status quo + 
-
-{{{
-main/ped/oahpa = ur-oahpa
-main/ped/sme/univ_oahpa_data/data_sme ==> main/ped/sme
-main/ped/sme/univ_oahpa_data/data_sme/sme ==> main/ped/sme/src
-pedversions/smaoahpa/data_sma
-
-Eit alternativ er dermed
-main/ped/sme ==> main/ped/oldsme (dvs. la dagens sme eksistere vidare)
-main/ped/sme/univ_oahpa_data/data_sme ==> main/ped/sme
-}}}
-
-Omdøping:
-
-{{{
-ped/old_sme    # gml data
-ped/old_oahpa  # gml django
-ped/sme        # ny data
-ped/univ_oahpa # ny django
-}}}
-
-
-http://giellatekno.uit.no/ped/nudoc/bestilling.html
-
-__TILTAK__
-
-* Gjennomgang av filene i {{univ_drill}} og {{templates}} for sme-oppdatering:: (__Heli og Ryan__)
-* Omdøpe som spesifisert ovafor idag (__Ciprian__)
-* Arbeide videre med forbedring av innholdet i kildefilene (__Lene, Biret Ánne__)
-
-!Leksa
-
-Svensk, engelsk
-
-Vi kan ha _ENG og _SWE som dummies i leksikonfilene for å implementere til og frå svensk også.
-
-To alternativ:
-
-# Legge inn _SWE dummies, og implementere svensk
-# Ignorere svensk no og legge det til seinare.
-
-
-!MorfaS
-
-Pronomen
-
-Vi skal ha fleire pronomentypar: refleksive, demonstrative, resiproke.
-
-
-Kontrakte stammer: sma har ikkje kontrakte stammer:
-* sma: 2syll, 3syll, xsyll (xsyll for adjektiv)
-* sme: 2syll, 3syll, Csyll (ikkje contracted)
-
-referanser til bisyllabic, trisyllabic, xsyllabic:
-*   univ_drill/game.py
-*   univ_drill/forms.py
-*   univ_drill/views.py
-
-Oppgavetyper - se bestillingsdokumentet
-
-pron_smenob.xml -> pron_sme.xml   (pronPers_smanob.xml)
-
-Kan vera litt arbeid i words_install.py for å vera sikkert at ms="Pron_Refl_osv" funkar i installeringa (~l.140).
-
-rekkjefylgje er litt annerleides i taggane
-
-sma: <analysis ms="Pron_Pers_Sg1_Acc">
-sme: <analysis ms="Pron_Refl_Ill_PxSg1">
-
-__TILTAK__
-
-* Omdøpe pron_smenob.xml (__Lene__)
-* Installere i basen, føre inn i .py-filene (__Heli, Ryan__)
-
-!MorfaC
-
-Status quo: 
-* N fungerer, V, A, Pron fungerer ikkje. 
-* Kjeldefilene i sma og sme ser like ut.
-
-Num skal bli lagt til.
-
-Databasen inneheld sma-pronomen, skal ha sme-pronomen.
-
-Det må vere informasjon om stamme, etc. i l-elementet. Det er framleis sma-kode i scriptet.
-
-
-
-__TILTAK__
-* Bytte pronomen til sme
-* Implementere andre ordklasser
-* Endre script til sme: attributtyper, osb.
-
-
-!Numra
-
-Dagens Numra har 6 språk, univ_oahpa har berre nordsamisk. La oss halde oss til det.
-
-Fungerer med alle fire menyvalg.
-
-__TILTAK__
-* Fjerne referansen til andre numra-språk frå koden i forms.py
-
-
-!Lokalisering, referanser
-
-Det må vere referanse til sme-lokalisering i django-koden.
-
-__TILTAK__
-* Lokalisering: Endre instruksjonen til number-to-string for dato (geassemánu 3. b.)
-* Grammatikk-meny må legges til
-* Referanser: Rett referansane i {{univ_drill/templates/*.html}} (__Lene__)
-** Referansen bør vere if-interfacelanguage-then-referencecontentlanguage (som for framsida)
-** Lokaliseringsspråk til grammatikk og veiledning, slik: ''sme, fin til sme, swe, nob til nob, eng til eng''
-* Legge sme til i django-global (__Ryan, Heli__)
-* Oversette til sme (__Lene__)
-* Sjå over dei andre språka (__Trond__)
-* Lage kontrastiv sme/sma-grammatikk i form av ei kort 10-punktsliste (__Trond, evt. Lene__)
-[sme versus sma|http://giellatekno.uit.no/ped/nudoc/sme_vs_sma.html]
-
-* Legge Heli til på giellatekno (__Børre__) og på AIM (__Heli__)
-
-
-
-
-
-!! Hvilke kommunikasjonskanaler skal vi bruke framover?
-
-* mellom lingvister og programmerere
-** Dokumentasjonssider
-** Møtereferat
-** epost for diskusjon
-* mellom programmerere
-** chat  (fra kl. 1500 er Ryan kanskje online)
-* Bugzilla? Dokumentasjonsside på web?
-** Bugzilla berre når det er bug
-
-!Framdriftsdokument:
-* [Sentral-dok|../../univ-oahpa.html]
-* [Implementering av kjeldefiler|../bestilling.html]
-* [Implementering av grensesnitt (lokalisering, referansar)|../bestilling_lokalisering.html]
-
-Vær obs på at en del kildefiler og deres plassering er dokumentert her:
-
-[http://giellatekno.uit.no/ped/nudoc/smaformat.html|http://giellatekno.uit.no/ped/nudoc/smaformat.html]
-
-
-!! Innlogging for site.uit.no/oahpa kombinert med innlogging for oahpa
-
-
-Det gjeld oppsettet på [site.uit.no/oahpa|http://site.uit.no/oahpa].
-Vi har også  [site.uit.no/giellatekno|http://site.uit.no/giellatekno].
-
-
-__TILTAK__
-
-* Gje Heli og Ryan passord til site.uit.no, både oahpa og giellatekno (__Berit Ánne og Ciprian__)
-* Eksperimentere med site.uit.no/giellatekno (__Trond, Ryan, Heli__)
-* Lage innlogging-oppsettet, må være operativt for studenter fra 2.1.12, men bør kunne testes i god tid før det (__Ryan, UiT IT__)
-
-!!Neste møte
-
-Allmenn deadline for tiltaka ovafor: Alt skal vere prøvd før neste møte, og så mykje som mogleg skal vere gjort.
-
-__onsdag 14.12 kl. 8.00__
-
-
-
-
+# Oppsummeringsdiskusjon login (utan Heli) fredag 15.00 / 08.00 Minnesota
+# Programmerarmøte: __tirsdag 20.12 kl 8.00__
 
