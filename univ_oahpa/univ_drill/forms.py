@@ -184,7 +184,7 @@ FREQUENCY_CHOICES = (
 
 GEOGRAPHY_CHOICES = (
 	('world', _('world')),
-	('sápmi', _('sapmi')),
+	('sapmi', _('sapmi')), # was: sápmi, maybe characters with diacritics not allowed in drop-down menus
 	('suopma', _('suopma')),
 )
 
