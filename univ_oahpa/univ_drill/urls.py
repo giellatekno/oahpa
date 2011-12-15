@@ -7,6 +7,7 @@ urlpatterns = patterns('univ_oahpa.univ_drill.views',
 	url(r'^morfa/baakoe/s/$', 'morfa_game', {'pos': 'N'}),
 	url(r'^morfa/baakoe/a/$', 'morfa_game', {'pos': 'A'}, name="morfa_s.adj"),
 	url(r'^morfa/baakoe/p/$', 'morfa_game', {'pos': 'Pron'}, name="morfa_s.pron"),
+	url(r'^morfa/baakoe/l/$', 'morfa_game', {'pos': 'Num'}, name="morfa_s.num"),
 	url(r'^morfa/baakoe/$', 'morfa_game', {'pos': 'N'}, name="morfa_s.noun"),
 	
 	url(r'^leksa/$', 'leksa_game', name="leksa"),
