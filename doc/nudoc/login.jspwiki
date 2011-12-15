@@ -1,14 +1,16 @@
 !!!Dokumentasjon om login
-Det vi ønskjer er at info frå site-innlogging går 
-# __frå__ site.uit.no og
-# vidare __til__ oahpa-innlogging.
+Det vi ønskjer er at info frå site-innlogging 
+# går __frå__ site.uit.no og
+# vidare __til__ oahpa-innlogging
+# kan brukes til å navigere brukeren til en bestemt __home-side__
 
 
 !!Login i wordpress
 
 Studenten loggar seg inn, og site.uit.no/oahpa veit kven
 # Orakel oppretta site.uit.no/giellatekno med oss som admin
-# Vi legger til brukere med forskjellig tilgang (lese, skrive) 
+# Vi legger til brukere med forskjellig tilgang (lese, skrive)
+# Bare brukere som er innlogget kan skrive kommentarer på sidene 
 # I dag er det ikke mulig for brukere selv å registrere seg som bruker (visl-metoden)
 
 [Dette tilbyr site.uit.no:|http://site.uit.no/dette-tilbyr-site-uit-no/]
@@ -26,6 +28,8 @@ Studenten loggar seg inn, og site.uit.no/oahpa veit kven
 # Editor
 # Administrator
 
+En ''Subscriber'' kan bare lese poster, og legge inn kommentarer på de sidene der det er mulighet for det. Denne rollen passer til studenter. Kursansvarlige får rollen som ''Author''. Denne rollen gir bedre oversikt for folk som ikke er helt inne i Word Press. De får en egen visning som kalles for ''Mine'', og der vises de postene som vedkommende kan vedlikeholde. En ''Author'' kan lage og publisere sine egne posts, men kan ikke endre eller slette andre poster. De kan også laste opp sine egne filer. En ''Author'' vil få beskjed på sin vanlige epost når noen skriver en kommentar på de sidene vedkommende har laget. En ''Editor'' får tilgang til å endre og slette alle posts og pages, men får ikke tilgang til å lage menyer. Hvis noen kursansvarlige ønsker å sette seg mer inn i Word Press og jobbe selvstendig med materialet og menyer, så kan vi vurdere å gi dem ''Administrator''-rolle. 
+
 !!Moglege løysingar
 
 Oahpa/Django kan nytta ulike eksterne kjeldor for å få inn brukerkontoer. Eg (Ryan) hev tenkt over ulike moglegheitar (database-løysingar er ute) og fann at ei moglegheit er å nytta cookies. Me treng då at nokon på WordPress-sida kan installera ein plugin som opner opp WP-cookie til bruk på eit større nivå (utafor site.uit.no til *.uit.no). Fordi både WP og Oahpa! sitt på uit.no domainen, kan Oahpa! få tilgang til denne nye WP-cookien. 
@@ -42,6 +46,12 @@ Med denne går det slik:
 
 Spørsmålet om kva me gjer med brukarar som ikkje er logga inn er litt meir kompleks: det kan vera dei deltek i kurset, og det kan vera at dei ikkje gjer det. Me kan visa melding på framsida om at det er eit kurs ved site.uit.no/, spyrja om dei ville vera med, omdirigera til infosida. Elles brukarar som ikkje vil det kan berre halda fram. Eg synest det går godt ann å reklamera kurset litt. 
 
+Spørsmål: Når Oahpa lager en Oahpa-konto, får brukeren beskjed om dette? Skal kontoen aktiveres på noe vis? Hvis ikke, blir det da slik at studenten ikke trenger å tenke på Oahpa-kontoen i det hele tatt (brukernavn og passord)?
+
 !!Login i Oahpa
+
+Kursansvarlig skal ha tilgang til sine studenters bevegelser og resultater. Skal dette gjøres manuelt etter at Oahpa-kontoene er opprettet? Våren 2012 får vi to forskjellige lærere for det samme kurset, og som har ansvaret for hver sin studentgruppe. Denne tilgangen bør begrenses til så lenge kurset varer.
+
+
 
 
