@@ -20,10 +20,26 @@ To import this information into a WordPress site follow these steps:
 
 !!!Testing
 
+!!Pages, Posts, All content
+
+Det er mogleg å velje kva ein skal laste ned. Eg er usikker på skilnaden, både på pages og all content får eg alle sidene lasta ned.
+
+!!Nedlasting av All content
+
 Eg har eksportert giellatekno.uit.no som forklart ovafor (vald ''All content''), lagt til innhald i form av ''eit nytt'' {{item}} ''med unik url og site_id'' i den eksporterte fila, og importert på nytt. Jf. [http://site.uit.no/giellatekno/|http://site.uit.no/giellatekno/], der ''Testing'' er laga i dashbordet, og ''Tasting'' er laga i SubEthaEdit lokalt.
 
-Derimot har det ikkje fungert å eksportere site-n, endre på sideinnhaldet, og importere same (reviderte) item på nytt. Når eg gjer det får eg beskjed om at ''Item Gielat already exists'', i staden for at WordPress erstattar sin item Gielat med den nye versjonen eg har laga på mi maskin.
+Derimot har det ikkje fungert å eksportere site-n, endre på sideinnhaldet, og importere same (reviderte) item på nytt. Når eg gjer det får eg beskjed om at ''Item Gielat already exists'', i staden for at WordPress erstattar sin item Gielat med den nye versjonen eg har laga på mi maskin. 
+
+Eit nytt {{item}} laga lokalt må ha alle disse 4 verdiane unik for å bli akseptert av site.uit.no:
+
+* {{title}}
+* {{link}}
+* {{post_id}}
+* page_id (del av {{guid}})
+
+For å få ein ny versjon av same post som før må eg altså lage ein ny.
 
 Så vi er ikkje der enno.
+
 
 
