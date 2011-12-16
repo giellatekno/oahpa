@@ -1,0 +1,29 @@
+
+Det er mogleg å eksportere og importere heile site.uit.no/oahpa etc., via ''Dashboard / Tools / Import Export''.
+
+!!!Dokumentasjon
+
+Dei eksporterte filene inneheld denne dokumentasjonen:
+
+To import this information into a WordPress site follow these steps: 
+# Log in to that site as an administrator. 
+# Go to Tools: Import in the WordPress admin panel. 
+# Install the "WordPress" importer from the list. 
+# Activate & Run Importer. 
+# Upload this file using the form provided on that page. 
+# You will first be asked to map the authors in this export file to users 
+  on the site. For each author, you may choose to map to an 
+  existing user on the site or to create a new user. 
+# WordPress will then import each of the posts, pages, comments, categories, 
+  etc. contained in this file into your site. 
+
+
+!!!Testing
+
+Eg har eksportert giellatekno.uit.no som forklart ovafor (vald ''All content''), lagt til innhald i form av ''eit nytt'' {{item}} ''med unik url og site_id'' i den eksporterte fila, og importert på nytt. Jf. [http://site.uit.no/giellatekno/|http://site.uit.no/giellatekno/], der ''Testing'' er laga i dashbordet, og ''Tasting'' er laga i SubEthaEdit lokalt.
+
+Derimot har det ikkje fungert å eksportere site-n, endre på sideinnhaldet, og importere same (reviderte) item på nytt. Når eg gjer det får eg beskjed om at ''Item Gielat already exists'', i staden for at WordPress erstattar sin item Gielat med den nye versjonen eg har laga på mi maskin.
+
+Så vi er ikkje der enno.
+
+
