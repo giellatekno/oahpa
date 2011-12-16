@@ -227,8 +227,8 @@ echo "===================================================
 COMMENT
 
 echo "==================================================="
-echo "feeding db with $DPW/pron_sme.xml"
-$P install.py --file $DPW/pron_sme.xml --tagfile $META/tags.txt 
+echo "feeding db with $DPS/pron_sme.xml"
+$P install.py --file $DPS/pron_sme.xml --tagfile $META/tags.txt 
 echo " "
 echo "done"
 echo "==================================================="
