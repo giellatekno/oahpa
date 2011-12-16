@@ -36,16 +36,10 @@ echo " "
 echo "done"
 echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with $DPS/prop_smenob.xml"
-$P install.py --file $DPS/propPl_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/prop_paradigms.txt 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/num_smenob.xml"
-$P install.py --file $META/num_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/num_paradigms.txt 2>>error.log
+$P install.py --file $DPS/num_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/num_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
