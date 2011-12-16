@@ -60,6 +60,24 @@ Spørsmål: Når Oahpa lager en Oahpa-konto, får brukeren beskjed om dette? Ska
 
 Kursansvarlig skal ha tilgang til sine studenters bevegelser og resultater. Skal dette gjøres manuelt etter at Oahpa-kontoene er opprettet? Våren 2012 får vi to forskjellige lærere for det samme kurset, og som har ansvaret for hver sin studentgruppe. Denne tilgangen bør begrenses til så lenge kurset varer.
 
+! Courses-modulen
 
+* templates/auth
+* templates/courses
+* courses/
 
+! Merknadar om implementering til programerar
+
+* Det kan vera at me må laga kontoar til lærerane på ei spesiel vis som er ikkje heilt automatisk (som med site.uit.no-studentar). ... Noko å halda i tankar medan me arbeider.
+* Det skal vera eit site.uit.no-kurs som studentar med site.uit.no cookie er automatisk lagt inn som medlem. Då om det må vera noko spesiel plassering (f. eks., dei bør vera i site.uit.no-vår eller site.uit.no-haust, då kan lærerane gjera dette etterpå)
+* Eg (ryan) må laga ein fixtures-fila som kan automatiskt laga kursobjekt til site.uit.no som er installert når databasen er fornydd, men eg vonar at desse tablene skal ikkje vera sletta når ordi er ladne på nytt.
+* tidsbegrensing: lærer-kurs objekt skal kopiera endspunkt frå kurs når ein legg til ein lærer til kurset. Då er det mogleg å ikkje ha nokon endtidspunkt: ein lærer (f. eks. Biret-Ánne) kan ha tilgang permanent, slik at ho kan leggja til andre lærare, medan andre får tilgang som utløper med kurset.
+* passord skjema: merknad til alle brukare om at dei treng ikkje å vita passord om dei kjem direkt frå site.uit.no, men elles kan dei vita passordet eller endra den om dei ikkje er medlem i site.uit.no kurs, eller vil få tilgang til oahpa.uit.no utan å måtte logga seg inn ved site.uit.no først. Kompleks, men kan skrivast på ei enklare vis.
+
+! Implementering todos:
+
+* Tidsbegrensing av tilgang for kursandsvarlege
+* skjema til passord-endring for alle brukare 
+* Default site.uit.no kurs
+* cookie / ny ekstern auth metode
 
