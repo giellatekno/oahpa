@@ -9,7 +9,14 @@ from django.db.models import Avg, Max, Min, Count
 try: 
 	instructor_group = Group.objects.get(name='Instructors')
 except:
-	pass
+	from django.db.utils import DatabaseError
+	try:
+		instructor_group = Group.objects.create(name='Instructors')
+		root = User.objects.get(pk=1)
+		instructor_group.user_set.add(root)
+		instructor_group.save()
+	except DatabaseError:
+		pass
 
 
 

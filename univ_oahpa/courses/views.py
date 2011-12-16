@@ -1,10 +1,61 @@
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 # from django.utils.translation import ugettext as _
+from django.http import HttpResponseRedirect, HttpResponseForbidden
+
 
 from django.contrib.auth.decorators import login_required
 
 from models import UserProfile, Course, UserGrade
+
+def cookie_login(request, next_page=None, required=False, **kwargs):
+	""" Check for existing site.uit.no cookie
+	"""
+
+	if not next_page:
+		next_page = '/univ_oahpa/courses/' # TODO: change next url for deep links
+	if request.user.is_authenticated():
+		message = "You are logged in as %s." % request.user.username
+		request.user.message_set.create(message=message)
+		return HttpResponseRedirect(next_page)
+
+	# TODO: get cookie uid, for now just using a get variable.
+	cookie_uid = int(request.GET.get('some_cookie'))
+
+	if cookie_uid:
+		from django.contrib import auth
+		user = auth.authenticate(cookie_uid=cookie_uid)
+		if user is not None:
+			auth.login(request, user)
+			name = user.first_name or user.username
+			message = "Login succeeded. Welcome, %s." % name
+			user.message_set.create(message=message)
+			return HttpResponseRedirect(next_page)
+		# elif settings.CAS_RETRY_LOGIN or required:
+			# return HttpResponseRedirect(_login_url(service))
+		else:
+			error = "<h1>Forbidden</h1><p>Login failed.</p>"
+			return HttpResponseForbidden(error)
+	else:
+		return HttpResponseRedirect('/univ_oahpa/courses/standard_login/') # TODO: check
+
+
+def cookie_logout(request, next_page=None, **kwargs):
+	"""
+	"""
+
+	from django.contrib.auth import logout
+
+	logout(request)
+
+	# This can't redirect to cookie_logout, or else there are unlimited
+	# redirects.
+
+	if not next_page:
+		next_page = '/univ_oahpa/courses/logout/'
+	
+	return HttpResponseRedirect(next_page)
+
 
 def trackGrade(gamename, request, c):
 	""" Takes a name of the game, request, and the context, and produces
@@ -93,9 +144,9 @@ def trackGrade(gamename, request, c):
 @login_required
 def courses_main(request):
 	""" This is the main view presented to users after login.
-	    Instructors will be shown a link to view grades and student progress,
-	    students will be shown their current progress in all of the games
-	    that they have records in.
+		Instructors will be shown a link to view grades and student progress,
+		students will be shown their current progress in all of the games
+		that they have records in.
 	"""
 	template = 'courses/courses_main.html'
 	

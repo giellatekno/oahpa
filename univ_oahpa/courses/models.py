@@ -28,6 +28,7 @@ class UserProfile(models.Model):
 		what the problem is.
 	"""
 	user = models.ForeignKey(User)
+	site_cookie = models.IntegerField(null=True)
 	
 	def __unicode__(self):
 		userinfo = (self.user.username, self.user.first_name, 
@@ -78,7 +79,8 @@ class Course(models.Model):
 	identifier = models.CharField(max_length=12, default="SAM-1234")
 	instructors = models.ManyToManyField(User, related_name='instructorships')
 	students = models.ManyToManyField(User, related_name='studentships')
-
+	end_date = models.DateTimeField(null=True)
+	# TODO: course end_date needs to end up on instructor and student relationship
 	def __unicode__(self):
 		r = self.identifier + u': ' + self.name
 		return r
