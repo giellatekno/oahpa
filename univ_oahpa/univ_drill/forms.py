@@ -994,10 +994,7 @@ class MorfaQuestion(OahpaQuestion):
 
 		if tag.pos == 'Pron':
 			self.case = tag.case
-			
-        if tag.pos == 'Num':   # added by Heli
-			self.case = tag.case
-		
+					
 		self.tag = tag.string
 		
 		if tag.pos=="V" and tag.personnumber and not tag.personnumber == "ConNeg":
