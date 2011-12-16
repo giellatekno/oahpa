@@ -1,4 +1,4 @@
-from smafeedback.models import Feedback
+from univ_feedback.models import Feedback
 from django.contrib import admin
 
 # class FeedbackAdmin(admin.ModelAdmin):
