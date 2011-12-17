@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-13 20:52+0100\n"
+"POT-Creation-Date: 2011-12-17 15:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: courses/models.py:88
+#: courses/models.py:90
 msgid "Student"
 msgstr ""
 
-#: courses/models.py:89
+#: courses/models.py:91
 msgid "Instructor"
 msgstr ""
 
@@ -51,7 +51,6 @@ msgstr ""
 #: templates/univ_oahpa.html:60 templates/univ_oahpa_main.html:162
 #: templates/univ_oahpa_main.html.py:165 templates/univ_oahpa_main.html:168
 #: templates/univ_oahpa_main.html.py:171 templates/univ_oahpa_main.html:174
-#: univ_drill/templates/leksa.html:27
 msgid "Veiledning"
 msgstr "Instruction"
 
@@ -479,6 +478,47 @@ msgstr ""
 msgid "Delete?"
 msgstr ""
 
+#: templates/auth/login.html:11
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: templates/auth/login.html:15
+msgid "Log out?"
+msgstr ""
+
+#: templates/auth/login.html:17
+msgid "Please log in to continue..."
+msgstr ""
+
+#: templates/auth/login.html:33
+msgid "log in"
+msgstr ""
+
+#: templates/courses/courses_main.html:14
+#: templates_old/courses/courses_main.html:40
+msgid "Welcome, "
+msgstr ""
+
+#: templates/courses/courses_main.html:30
+#: templates_old/courses/courses_main.html:56
+msgid "Average"
+msgstr ""
+
+#: templates/courses/courses_main.html:31
+#: templates_old/courses/courses_main.html:57
+msgid "Highest score"
+msgstr ""
+
+#: templates/courses/courses_main.html:32
+#: templates_old/courses/courses_main.html:58
+msgid "Lowest score"
+msgstr ""
+
+#: templates/courses/courses_main.html:33
+#: templates_old/courses/courses_main.html:59
+msgid "Number of tries"
+msgstr ""
+
 #: templates/registration/logged_out.html:8
 msgid "Thanks for spending some quality time with the Web site today."
 msgstr ""
@@ -671,26 +711,6 @@ msgstr "Copyright 2011 the University of Troms&oslash;"
 
 #: templates_old/user_auth_block.html:16
 msgid "Course login"
-msgstr ""
-
-#: templates_old/courses/courses_main.html:40
-msgid "Welcome, "
-msgstr ""
-
-#: templates_old/courses/courses_main.html:56
-msgid "Average"
-msgstr ""
-
-#: templates_old/courses/courses_main.html:57
-msgid "Highest score"
-msgstr ""
-
-#: templates_old/courses/courses_main.html:58
-msgid "Lowest score"
-msgstr ""
-
-#: templates_old/courses/courses_main.html:59
-msgid "Number of tries"
 msgstr ""
 
 #: univ_drill/forms.py:25
@@ -1515,24 +1535,24 @@ msgstr ""
 msgid "Placenames"
 msgstr ""
 
-#: univ_drill/templates/leksa.html:22
-msgid "Quizz"
+#: univ_drill/templates/leksa.html:41
+msgid "Give translations for words. You can choose set or level, not both."
 msgstr ""
 
 #: univ_drill/templates/leksa.html:44
-msgid "Give translations for words. You can choose set or level, not both."
+msgid "Quizz"
 msgstr ""
 
 #: univ_drill/templates/leksa.html:55 univ_drill/templates/leksa_place.html:21
 msgid "Select the language pair"
 msgstr ""
 
-#: univ_drill/templates/leksa.html:57 univ_drill/templates/mgame.html:59
+#: univ_drill/templates/leksa.html:57 univ_drill/templates/mgame.html:61
 msgid "Book"
 msgstr ""
 
 #: univ_drill/templates/leksa.html:62 univ_drill/templates/leksa.html.py:65
-#: univ_drill/templates/leksa_place.html:34 univ_drill/templates/mgame.html:67
+#: univ_drill/templates/leksa_place.html:34 univ_drill/templates/mgame.html:69
 #: univ_drill/templates/num.html:68
 msgid "New set"
 msgstr ""
@@ -1545,23 +1565,28 @@ msgstr ""
 msgid "Geography"
 msgstr ""
 
-#: univ_drill/templates/mgame.html:30 univ_drill/templates/mgame.html.py:37
+#: univ_drill/templates/mgame.html:30 univ_drill/templates/mgame.html.py:38
 msgid "Nouns"
 msgstr ""
 
-#: univ_drill/templates/mgame.html:31 univ_drill/templates/mgame.html.py:38
+#: univ_drill/templates/mgame.html:31 univ_drill/templates/mgame.html.py:39
 msgid "Verbs"
 msgstr ""
 
-#: univ_drill/templates/mgame.html:32 univ_drill/templates/mgame.html.py:39
+#: univ_drill/templates/mgame.html:32 univ_drill/templates/mgame.html.py:40
 msgid "Adjectives"
 msgstr ""
 
-#: univ_drill/templates/mgame.html:33 univ_drill/templates/mgame.html.py:40
+#: univ_drill/templates/mgame.html:33 univ_drill/templates/mgame.html.py:41
 msgid "Pronouns"
 msgstr ""
 
-#: univ_drill/templates/mgame.html:45
+#: univ_drill/templates/mgame.html:34 univ_drill/templates/mgame.html.py:42
+#: univ_drill/templates/num.html:40
+msgid "Numerals"
+msgstr ""
+
+#: univ_drill/templates/mgame.html:47
 msgid "Morphology"
 msgstr ""
 
@@ -1635,10 +1660,6 @@ msgstr ""
 
 #: univ_drill/templates/morfa_tooltip.html:4
 msgid "Verbgruppe"
-msgstr ""
-
-#: univ_drill/templates/num.html:40
-msgid "Numerals"
 msgstr ""
 
 #: univ_drill/templates/num.html:47

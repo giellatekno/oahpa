@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-13 20:53+0100\n"
+"POT-Creation-Date: 2011-12-17 15:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,17 +16,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: courses/models.py:88
+#: courses/models.py:90
 msgid "Student"
 msgstr "Opiskelija"
 
-#: courses/models.py:89
+#: courses/models.py:91
 msgid "Instructor"
 msgstr "Opettaja"
 
 #: templates/404.html:8 templates/500.html:8
 msgid "Error"
-msgstr ""
+msgstr "Virhe"
 
 #: templates/404.html:9
 msgid "Page not found."
@@ -51,7 +51,6 @@ msgstr "Apuneuvoja"
 #: templates/univ_oahpa.html:60 templates/univ_oahpa_main.html:162
 #: templates/univ_oahpa_main.html.py:165 templates/univ_oahpa_main.html:168
 #: templates/univ_oahpa_main.html.py:171 templates/univ_oahpa_main.html:174
-#: univ_drill/templates/leksa.html:27
 msgid "Veiledning"
 msgstr "Käyttöohje"
 
@@ -204,7 +203,7 @@ msgstr "Utfør handlinga som er valgt"
 
 #: templates/admin/actions.html:4
 msgid "Go"
-msgstr "Kjør"
+msgstr "Aja"
 
 #: templates/admin/actions.html:11
 msgid "Click here to select the objects across all pages"
@@ -217,7 +216,7 @@ msgstr "Velg alle %(total_count)s %(module_name)s"
 
 #: templates/admin/actions.html:13
 msgid "Clear selection"
-msgstr "Nullstill valg"
+msgstr "Nollaa valinta"
 
 #: templates/admin/app_index.html:10 templates/admin/index.html:19
 #, python-format
@@ -246,7 +245,7 @@ msgstr "Muuta salasana"
 #: templates/registration/password_change_done.html:3
 #: templates/registration/password_change_form.html:4
 msgid "Log out"
-msgstr "Logg ut"
+msgstr "Kirjaudu ulos"
 
 #: templates/admin/base_site.html:4
 msgid "Django site admin"
@@ -258,17 +257,17 @@ msgstr "Djangoadministrasjon"
 
 #: templates/admin/change_form.html:21 templates/admin/index.html:29
 msgid "Add"
-msgstr "Legg til"
+msgstr "Lisää"
 
 #: templates/admin/change_form.html:28 templates/admin/object_history.html:10
 msgid "History"
-msgstr "Historie"
+msgstr "Historia"
 
 #: templates/admin/change_form.html:29
 #: templates/admin/edit_inline/stacked.html:9
 #: templates/admin/edit_inline/tabular.html:28
 msgid "View on site"
-msgstr "Vis på nettstedet"
+msgstr "Näytä nettipaikalla"
 
 #: templates/admin/change_form.html:39 templates/admin/change_list.html:71
 #: templates/admin/auth/user/change_password.html:24
@@ -290,7 +289,7 @@ msgstr "Filter"
 #: templates/admin/delete_confirmation.html:10
 #: templates/admin/submit_line.html:4
 msgid "Delete"
-msgstr "Slett"
+msgstr "Poista"
 
 #: templates/admin/delete_confirmation.html:16
 #, python-format
@@ -315,7 +314,7 @@ msgstr ""
 #: templates/admin/delete_confirmation.html:28
 #: templates/admin/delete_selected_confirmation.html:33
 msgid "Yes, I'm sure"
-msgstr "Ja, jeg er sikker"
+msgstr "Kyllä, olen varma"
 
 #: templates/admin/delete_selected_confirmation.html:9
 msgid "Delete multiple objects"
@@ -408,7 +407,7 @@ msgstr "Käyttäjä"
 
 #: templates/admin/object_history.html:24
 msgid "Action"
-msgstr "Handling"
+msgstr "Toiminta"
 
 #: templates/admin/object_history.html:38
 msgid ""
@@ -444,15 +443,15 @@ msgstr "%(full_result_count)s resultater"
 
 #: templates/admin/submit_line.html:5
 msgid "Save as new"
-msgstr "Lagre som ny"
+msgstr "Tallenna uutena"
 
 #: templates/admin/submit_line.html:6
 msgid "Save and add another"
-msgstr "Lagre og legg til en til"
+msgstr "Tallenna ja lisää toinen"
 
 #: templates/admin/submit_line.html:7
 msgid "Save and continue editing"
-msgstr "Lagre og fortsett å redigere"
+msgstr "Tallenna ja jatka kirjoittamista"
 
 #: templates/admin/auth/user/add_form.html:6
 msgid ""
@@ -473,12 +472,12 @@ msgstr "Lag et nytt passord for brukeren <strong>%(username)s</strong>"
 
 #: templates/admin/auth/user/change_password.html:35
 msgid "Password"
-msgstr "Passord"
+msgstr "Salasana"
 
 #: templates/admin/auth/user/change_password.html:41
 #: templates/registration/password_change_form.html:37
 msgid "Password (again)"
-msgstr "Passord (en gang til)"
+msgstr "Salasana (uudestaan)"
 
 #: templates/admin/auth/user/change_password.html:42
 msgid "Enter the same password as above, for verification."
@@ -498,6 +497,47 @@ msgstr "Fjern"
 #: templates/admin/edit_inline/tabular.html:15
 msgid "Delete?"
 msgstr "Slett?"
+
+#: templates/auth/login.html:11
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+
+#: templates/auth/login.html:15
+msgid "Log out?"
+msgstr "Kirjaudu ulos?"
+
+#: templates/auth/login.html:17
+msgid "Please log in to continue..."
+msgstr ""
+
+#: templates/auth/login.html:33
+msgid "log in"
+msgstr "Kirjaudu sisään"
+
+#: templates/courses/courses_main.html:14
+#: templates_old/courses/courses_main.html:40
+msgid "Welcome, "
+msgstr "Tervetuloa,"
+
+#: templates/courses/courses_main.html:30
+#: templates_old/courses/courses_main.html:56
+msgid "Average"
+msgstr ""
+
+#: templates/courses/courses_main.html:31
+#: templates_old/courses/courses_main.html:57
+msgid "Highest score"
+msgstr ""
+
+#: templates/courses/courses_main.html:32
+#: templates_old/courses/courses_main.html:58
+msgid "Lowest score"
+msgstr "Pisteesi:"
+
+#: templates/courses/courses_main.html:33
+#: templates_old/courses/courses_main.html:59
+msgid "Number of tries"
+msgstr ""
 
 #: templates/registration/logged_out.html:8
 msgid "Thanks for spending some quality time with the Web site today."
@@ -534,11 +574,11 @@ msgstr ""
 
 #: templates/registration/password_change_form.html:27
 msgid "Old password"
-msgstr "Gammelt passord"
+msgstr "Vanha salasana"
 
 #: templates/registration/password_change_form.html:32
 msgid "New password"
-msgstr "Nytt passord"
+msgstr "Uusi salasana"
 
 #: templates/registration/password_change_form.html:43
 #: templates/registration/password_reset_confirm.html:21
@@ -705,27 +745,7 @@ msgstr "Copyright 2010 Tromssan yliopisto"
 
 #: templates_old/user_auth_block.html:16
 msgid "Course login"
-msgstr ""
-
-#: templates_old/courses/courses_main.html:40
-msgid "Welcome, "
-msgstr "Tervetuloa,"
-
-#: templates_old/courses/courses_main.html:56
-msgid "Average"
-msgstr ""
-
-#: templates_old/courses/courses_main.html:57
-msgid "Highest score"
-msgstr ""
-
-#: templates_old/courses/courses_main.html:58
-msgid "Lowest score"
-msgstr "Pisteesi:"
-
-#: templates_old/courses/courses_main.html:59
-msgid "Number of tries"
-msgstr ""
+msgstr "Kurssin sisäänkirjautuminen"
 
 #: univ_drill/forms.py:25
 msgid "noun"
@@ -1549,24 +1569,24 @@ msgstr "Sanat"
 msgid "Placenames"
 msgstr "Paikannimet"
 
-#: univ_drill/templates/leksa.html:22
-msgid "Quizz"
-msgstr ""
-
-#: univ_drill/templates/leksa.html:44
+#: univ_drill/templates/leksa.html:41
 msgid "Give translations for words. You can choose set or level, not both."
 msgstr "Käännä sanoja. Voit valita aihepiirin tai kirjan, mutta et molempia."
+
+#: univ_drill/templates/leksa.html:44
+msgid "Quizz"
+msgstr ""
 
 #: univ_drill/templates/leksa.html:55 univ_drill/templates/leksa_place.html:21
 msgid "Select the language pair"
 msgstr "Valitse kielipari"
 
-#: univ_drill/templates/leksa.html:57 univ_drill/templates/mgame.html:59
+#: univ_drill/templates/leksa.html:57 univ_drill/templates/mgame.html:61
 msgid "Book"
 msgstr "Kirja"
 
 #: univ_drill/templates/leksa.html:62 univ_drill/templates/leksa.html.py:65
-#: univ_drill/templates/leksa_place.html:34 univ_drill/templates/mgame.html:67
+#: univ_drill/templates/leksa_place.html:34 univ_drill/templates/mgame.html:69
 #: univ_drill/templates/num.html:68
 msgid "New set"
 msgstr "Uusi joukko"
@@ -1581,23 +1601,28 @@ msgstr ""
 msgid "Geography"
 msgstr "Sijainti"
 
-#: univ_drill/templates/mgame.html:30 univ_drill/templates/mgame.html.py:37
+#: univ_drill/templates/mgame.html:30 univ_drill/templates/mgame.html.py:38
 msgid "Nouns"
 msgstr "Substantiivit"
 
-#: univ_drill/templates/mgame.html:31 univ_drill/templates/mgame.html.py:38
+#: univ_drill/templates/mgame.html:31 univ_drill/templates/mgame.html.py:39
 msgid "Verbs"
 msgstr "Verbit"
 
-#: univ_drill/templates/mgame.html:32 univ_drill/templates/mgame.html.py:39
+#: univ_drill/templates/mgame.html:32 univ_drill/templates/mgame.html.py:40
 msgid "Adjectives"
 msgstr "Adjektiivit"
 
-#: univ_drill/templates/mgame.html:33 univ_drill/templates/mgame.html.py:40
+#: univ_drill/templates/mgame.html:33 univ_drill/templates/mgame.html.py:41
 msgid "Pronouns"
 msgstr "Pronominit"
 
-#: univ_drill/templates/mgame.html:45
+#: univ_drill/templates/mgame.html:34 univ_drill/templates/mgame.html.py:42
+#: univ_drill/templates/num.html:40
+msgid "Numerals"
+msgstr "Lukusanat"
+
+#: univ_drill/templates/mgame.html:47
 msgid "Morphology"
 msgstr "Morfologia"
 
@@ -1678,10 +1703,6 @@ msgstr "Kirjoita verbit oikeissa muodoissa."
 #: univ_drill/templates/morfa_tooltip.html:4
 msgid "Verbgruppe"
 msgstr "Verbiryhmä"
-
-#: univ_drill/templates/num.html:40
-msgid "Numerals"
-msgstr "Lukusanat"
 
 #: univ_drill/templates/num.html:47
 msgid "Enter the numeral. (Ex. 8)"
