@@ -152,9 +152,10 @@ post_save.connect(create_profile, sender=User,
 post_save.connect(aggregate_grades, sender=UserGrade,
 	dispatch_uid="univ_oahpa.courses.models.post_save")
 
-post_save.connect(grant_admin, sender=Course,
+post_save.connect(grant_admin, sender=CourseRelationship,
 	dispatch_uid="univ_oahpa.courses.models.post_save")
 
+# TODO: seems not to be copying date properly
 post_save.connect(copy_date, sender=CourseRelationship,
 	dispatch_uid="univ_oahpa.courses.models.post_save")
 
