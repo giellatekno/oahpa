@@ -92,6 +92,7 @@ def grant_admin(sender, **kwargs):
 	
 	return True
 
+# TODO: not working
 @disable_for_loaddata
 def copy_date(sender, **kwargs):
 	""" Copy the date from the user's course, if it exists. If the date

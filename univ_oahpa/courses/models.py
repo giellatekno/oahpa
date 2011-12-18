@@ -112,7 +112,7 @@ class Course(models.Model):
 	identifier = models.CharField(max_length=12, default="SAM-1234")
 	# instructors = models.ManyToManyField(User, related_name='instructorships')
 	# students = models.ManyToManyField(User, related_name='studentships')
-	end_date = models.DateTimeField(null=True)
+	end_date = models.DateTimeField(null=True, default=None)
 
 	def __unicode__(self):
 		r = self.identifier + u': ' + self.name
@@ -136,6 +136,10 @@ class CourseRelationship(models.Model):
 	user = models.ForeignKey(User)
 	course = models.ForeignKey(Course)
 	end_date = models.DateTimeField(null=True, blank=True, help_text=DATE_HELP)
+
+	def create(self, *args, **kwargs):
+		print 'created?'
+		super(CourseRelationship, self).create(*args, **kwargs)
 
 	class Meta:
 		unique_together = ("user",

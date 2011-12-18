@@ -2,6 +2,9 @@ from django.contrib import admin
 from models import UserGrade, UserGradeSummary, UserProfile, Course
 from models import CourseRelationship
 
+from django.db.models import Q
+import datetime
+
 class UserGradeInline(admin.TabularInline):
 	model = UserGrade
 	ordering = ['game']
@@ -30,7 +33,12 @@ class UserProfileAdmin(admin.ModelAdmin):
 			return qs
 		elif request.user.is_staff:
 			# Get instructor's courses
-			courses = request.user.courserelationship_set.filter(user=request.user)
+			courses = request.user.courserelationship_set.filter(
+				Q(end_date__isnull=True) |\
+				Q(end_date__gt=datetime.datetime.now())
+			)
+
+			courses = [c.course for c in courses]
 
 			# Return only user profiles which are in instructor's course
 			# and which are students
@@ -44,6 +52,7 @@ class UserProfileAdmin(admin.ModelAdmin):
 class InstructorInline(admin.TabularInline):
 	from django.contrib.auth.models import Group
 	model = CourseRelationship
+	extra = 1
 
 	def queryset(self, request):
 		""" Filter relationships by Instructor group """
@@ -53,6 +62,7 @@ class InstructorInline(admin.TabularInline):
 
 class StudentInline(admin.TabularInline):
 	model = CourseRelationship
+	extra = 1
 
 	def queryset(self, request):
 		""" Filter relationships by Student group """
@@ -71,16 +81,14 @@ class CourseAdmin(admin.ModelAdmin):
 		""" Filter only courses that request user is instructor of.
 			Admin sees all.
 		"""
-		import datetime
-		from django.db.models import Q
 
 		qs = super(CourseAdmin, self).queryset(request)
 		if request.user.is_superuser:
 			return qs
 		elif request.user.is_staff:
-			qs = qs.filter(courserelationship__user=request.user).filter(
-				Q(courserelationship__end_date__isnull=True) |\
-				Q(courserelationship__end_date__gt=datetime.datetime.now())
+			qs = qs.filter(
+				Q(courserelationship__user=request.user, courserelationship__end_date__isnull=True) |\
+				Q(courserelationship__user=request.user, courserelationship__end_date__gt=datetime.datetime.now())
 			).distinct()
 
 			return qs
