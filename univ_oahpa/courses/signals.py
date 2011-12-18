@@ -79,7 +79,9 @@ def grant_admin(sender, **kwargs):
 		need to be assigned, this should be done here.
 	"""
 
-	course = kwargs['instance']
+	courserelationship = kwargs['instance']
+
+	course = courserelationship.course
 	instructors = course.courserelationship_set.filter(relationship_type__name='Instructors')
 	instructors = [i.user for i in instructors]
 

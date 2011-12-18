@@ -71,14 +71,20 @@ class CourseAdmin(admin.ModelAdmin):
 		""" Filter only courses that request user is instructor of.
 			Admin sees all.
 		"""
+		import datetime
+		from django.db.models import Q
+
 		qs = super(CourseAdmin, self).queryset(request)
 		if request.user.is_superuser:
 			return qs
 		elif request.user.is_staff:
-			# qs = Course
-			# course expiration date, hide courses where courserelationship__date
-			# is less than now.
-			return qs.filter(courserelationship__user=request.user)
+			qs = qs.filter(courserelationship__user=request.user).filter(
+				Q(courserelationship__end_date__isnull=True) |\
+				Q(courserelationship__end_date__gt=datetime.datetime.now())
+			).distinct()
+
+			return qs
+
 		else:
 			return qs
 
