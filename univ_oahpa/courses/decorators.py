@@ -48,67 +48,50 @@ class trackGrade(object):
 	""" This decorator expects that an HttpResponse has a context attribute,
 	which it uses to retrieve the context. This is passed on to trackGrade.
 
-	In order to use this, views_to_names must be defined on the decorator, as a
-	dictionary with the decorated function name as the key, and the fancy log
-	name as the value.
-
-	It is probably easiest to define this in the view file that trackGrade is
-	imported into:
+	In order to use this import the following things 
 
 		from courses.views import render_to_response
-		from courses.views import trackGrade
+		from courses.decorators import trackGrade
 
-		trackGrade.views_to_names = {
-			# view function name: fancy log name
-			'leksa_game': 'Leksa',
+	And then decorate a view function, passing a log entry heading to the
+	decorator.
 
-			'morfa_game': 'Morfa',
+		@trackGrade("Leksa")
+		def leksa_game(request, place=False):
+			...
 
-			'num': 'Numra cardinal',
-		}
-
-	This decorator also relies on a special render_to_response method, imported
-	from courses.views. This method simply returns the response as normal, but
-	includes a context attribute that is needed to track the grade.
-
-
+	Currently the more detailed behavior of log subheadings is defined in
+	courses.views.trackGrade.
 
 	"""
 
-	views_to_names = {
-		'num': 'Numra',
-		'num_ord': 'Numra ordinal',
-		# etc...
-
-	}
-
-	def __init__(self, function):
-		self.view_func = function
+	def __init__(self, log_name):
+		self.log_name = log_name
 	
-	def __call__(self, *args, **kwargs):
+	def __call__(self, view_function):
 		""" This must return the HttpResponse from the original function
 		"""
 
-		from univ_oahpa.courses.views import trackGrade
+		def decorated_function(*args, **kwargs):
+			from univ_oahpa.courses.views import trackGrade
 
-		# grab the request, and execute the view function as normal
-		request = args[0]
-		response = self.view_func(*args, **kwargs)
+			# grab the request, and execute the view function as normal
+			request = args[0]
+			response = view_function(*args, **kwargs)
 
-		# It may be that the view somehow doesn't have a context argument,
-		# in this case we don't want to track or return anything
-		try:
-			context = response.context
-		except:
-			context = False
+			# It may be that the view somehow doesn't have a context argument,
+			# in this case we don't want to track or return anything
+			try:
+				context = response.context
+			except:
+				context = False
 
-		if context:
-			log_entry_name = self.views_to_names.get(
-								self.view_func.__name__, False)
+			if context:
+				if self.log_name:
+					trackGrade(self.log_name, request, context)
 
-			if log_entry_name:
-				trackGrade(log_entry_name, request, context)
+			return response
 
-		return response
+		return decorated_function 
 
 
