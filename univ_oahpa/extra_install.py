@@ -41,6 +41,8 @@ class Link(object):
 
 		if language == 'nno':
 		  language = 'nob' # added this
+        if language == 'html':
+            language = 'sme'
 		self.language = language
 
 	def __init__(self, S):
