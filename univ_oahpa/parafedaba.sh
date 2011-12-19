@@ -24,7 +24,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $META/names.xml"
-$P install.py --file $META/names.xml --tagfile $META/tags.txt --paradigmfile $META/prop_paradigms.txt 2>>error.log
+$P install.py --file $DPS/names.xml --tagfile $META/tags.txt --paradigmfile $META/prop_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -292,14 +292,14 @@ echo "==================================================="
 
 
 echo "==================================================="
-echo "adding feedback to nouns"
+echo "adding feedback to adjectives"
 $P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "adding feedback to nouns"
+echo "adding feedback to numerals"
 $P install.py -f $DPS/num_smenob.xml --feedbackfile $META/feedback_numerals.xml
 echo " "
 echo "done"
@@ -358,10 +358,10 @@ echo " "
 echo "done"
 echo "==================================================="
 
-echo "==================================================="
-echo "Optimizing tables"
-cat optimize_analyze_tables.sql | $P manage.py dbshell
-echo " "
-echo "done"
-echo "==================================================="
+#echo "==================================================="
+#echo "Optimizing tables"
+#cat optimize_analyze_tables.sql | $P manage.py dbshell
+#echo " "
+#echo "done"
+#echo "==================================================="
 

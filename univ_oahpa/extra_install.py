@@ -13,7 +13,7 @@ import codecs
 
 languages = [
 	'sme',
-	'nob',
+	'nno', # was: 'nob' But in the documentation url-s the abbreviation nno is used to mark the Norwegian version of a help page. 
 	'eng',
 	'fin', 
 	'deu',
@@ -65,7 +65,7 @@ class Extra:
 
 	# Installs links to the grammatical information under giellatekno.
 	# The link list appears to the upper right corner of the oahpa-pages.
-	# File sma/src/grammarlinks.txt ?? Is there a similar file for sme?
+	# The links are in the file sme/meta/grammarlinks.txt 
 	def read_address(self,linkfile):
 
 		
