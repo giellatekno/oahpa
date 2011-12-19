@@ -32,14 +32,15 @@ class Link(object):
 		file_name, _, _ = file_name.partition('#')
 		
 		try:
-			title, suffix = file_name.split('.') # took away language
+			title, language, suffix = file_name.split('.')
 			
 		except ValueError:
 			print >> sys.stdout, "Unable to guess language from filename."
 			print >> sys.stdout, "Line\n\t" + self.S
 			raise Exception
 
-		language = 'nob' # added this
+		if language == 'nno'
+		  language = 'nob' # added this
 		self.language = language
 
 	def __init__(self, S):
