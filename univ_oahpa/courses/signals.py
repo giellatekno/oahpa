@@ -73,15 +73,24 @@ def create_profile(sender, **kwargs):
 		profile.save()
 	return True
 
+
 @disable_for_loaddata
-def grant_admin(sender, **kwargs):
-	""" Course instructors gain access via is_staff. If extra permissions
-		need to be assigned, this should be done here.
-	"""
+def course_relationship_postsave(sender, **kwargs):
+	""" Course instructors gain access via is_staff. If extra permissions need
+	to be assigned, this should be done here.
 
+	Also, copy the date from the user's course, if it exists. If the date
+	existent on the object is not the same as the course, we assume that a user
+	has modified it and will not copy the date over.
+	
+	The model is only saved if a change has been made, that way there is no
+	endless loop."""
+
+	created = kwargs['created']
 	courserelationship = kwargs['instance']
-
 	course = courserelationship.course
+
+	# Grant admin access to instructor
 	instructors = course.courserelationship_set.filter(relationship_type__name='Instructors')
 	instructors = [i.user for i in instructors]
 
@@ -90,34 +99,20 @@ def grant_admin(sender, **kwargs):
 		i.groups.add(instructor_group)
 		i.save()
 	
-	return True
-
-# TODO: not working
-@disable_for_loaddata
-def copy_date(sender, **kwargs):
-	""" Copy the date from the user's course, if it exists. If the date
-	existent on the object is not the same as the course, we assume that a user
-	has modified it and will not copy the date over.
-	
-	The model is only saved if a change has been made, that way there is no
-	endless loop. """
-
-	courserelationship = kwargs['instance']
-	course = courserelationship.course
+	# Copy the course end_date
 	user = courserelationship.user
 	previous = courserelationship.end_date
 
 	if course.end_date:
-		# if these are not equal, must assume a user is modifying the date
-		# to not be the course end date, so we don't want to change it.
-		if courserelationship.end_date != course.end_date:
-			return False
-		courserelationship.end_date = course.end_date
+		if created:
+			courserelationship.end_date = course.end_date
 	
 	if previous != courserelationship.end_date:
 		courserelationship.save()
 
+	
 	return True
+
 	
 @disable_for_loaddata
 def user_presave(sender, instance, **kwargs):

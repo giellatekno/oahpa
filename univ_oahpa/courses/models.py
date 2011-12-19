@@ -137,18 +137,14 @@ class CourseRelationship(models.Model):
 	course = models.ForeignKey(Course)
 	end_date = models.DateTimeField(null=True, blank=True, help_text=DATE_HELP)
 
-	def create(self, *args, **kwargs):
-		print 'created?'
-		super(CourseRelationship, self).create(*args, **kwargs)
-
 	class Meta:
 		unique_together = ("user",
 							"course",
 							"relationship_type",)
 
 
-from django.db.models.signals import post_save
-from signals import create_profile, aggregate_grades, grant_admin, copy_date
+from django.db.models.signals import post_save, pre_save
+from signals import create_profile, aggregate_grades, user_presave, course_relationship_postsave
 
 post_save.connect(create_profile, sender=User, 
 	dispatch_uid="univ_oahpa.courses.models.post_save")
@@ -156,13 +152,9 @@ post_save.connect(create_profile, sender=User,
 post_save.connect(aggregate_grades, sender=UserGrade,
 	dispatch_uid="univ_oahpa.courses.models.post_save")
 
-post_save.connect(grant_admin, sender=CourseRelationship,
+post_save.connect(course_relationship_postsave, sender=CourseRelationship,
 	dispatch_uid="univ_oahpa.courses.models.post_save")
 
-# TODO: seems not to be copying date properly
-post_save.connect(copy_date, sender=CourseRelationship,
-	dispatch_uid="univ_oahpa.courses.models.post_save")
-
-# pre_save.connect(user_presave, sender=User,
-#	dispatch_uid="oahpa.courses.models.pre_save")
+pre_save.connect(user_presave, sender=User,
+	dispatch_uid="univ_oahpa.courses.models.pre_save")
 
