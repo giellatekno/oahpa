@@ -30,19 +30,13 @@ class Link(object):
 		"""
 		file_name = self.url.split('/')[-1]
 		file_name, _, _ = file_name.partition('#')
-		
 		try:
 			title, language, suffix = file_name.split('.')
-			
 		except ValueError:
-			print >> sys.stdout, "Unable to guess language from filename."
-			print >> sys.stdout, "Line\n\t" + self.S
-			raise Exception
-
+			language = 'sme'
 		if language == 'nno':
-		  language = 'nob' # added this
-        if language == 'html':
-            language = 'sme'
+			language = 'nob' # added this
+		
 		self.language = language
 
 	def __init__(self, S):
