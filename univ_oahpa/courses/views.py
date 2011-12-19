@@ -1,8 +1,21 @@
 from django.template import RequestContext
-from django.shortcuts import render_to_response
 # from django.utils.translation import ugettext as _
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 
+
+def render_to_response(*args, **kwargs):
+	""" Append an attribute onto the response so that we can grab the context
+	from it in the track decorator. It has to be an attribute so that it
+	doesn't depend on the function returning the response to be decorated by
+	@trackGrade to get proper output. """
+
+	from django.shortcuts import render_to_response
+
+	response = render_to_response(*args, **kwargs)
+	# response.response_args = args
+	response.context = args[1]
+
+	return response
 
 from django.contrib.auth.decorators import login_required
 
@@ -164,7 +177,7 @@ def trackGrade(gamename, request, c):
 					if book != 'all':
 						game_type += 'book: %s' % book
 			elif gamename == 'Numra':
-				game_type = 'TODO:'
+				game_type = SETTINGS['numgame']
 			
 			
 			elif gamename.startswith('C-Morfa'):

@@ -131,7 +131,7 @@ class CourseRelationship(models.Model):
 	DATE_HELP = ("Leave this blank to copy the course end date." 
 				 "If you wish to specify no end date, you will need to come back, "
 				 "and remove it after adding the instructor.")
-	# TODO: unique for user, course
+
 	relationship_type = models.ForeignKey(Group)
 	user = models.ForeignKey(User)
 	course = models.ForeignKey(Course)
