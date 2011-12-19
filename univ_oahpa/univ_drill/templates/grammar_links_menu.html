@@ -1,6 +1,6 @@
-﻿{% load cache %}
+{% load cache %}
 {% load i18n %}
-{% if grammarlinks %}
+<!--{% if grammarlinks %} -->
 <select id="grammarlink" name="grammarlink">
 	<option value="">{% trans "Grammar explanations" %}</option>
     {% cache 500 grammarlinks cache_language %} 
@@ -10,4 +10,4 @@
     {% endcache %} 
 </select>
 
-{% endif %}
+<!-- {% endif %} -->
