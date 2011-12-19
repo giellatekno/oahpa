@@ -1,4 +1,5 @@
-"""Replacement authentication decorators that work around redirection loops"""
+""" Replacement authentication decorators that work around redirection loops,
+as well as the trackGrade decorator. """
 
 try:
 	from functools import wraps
@@ -10,7 +11,11 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden, HttpResponseRedirect
 from django.utils.http import urlquote
 
-__all__ = ['login_required', 'permission_required', 'user_passes_test']
+__all__ = ['login_required', 'permission_required', 'user_passes_test', 'trackGrade']
+
+###
+### Authentication decorators
+###
 
 def user_passes_test(test_func, login_url=None,
 					 redirect_field_name=REDIRECT_FIELD_NAME):
@@ -43,6 +48,12 @@ def permission_required(perm, login_url=None):
 	"""
 
 	return user_passes_test(lambda u: u.has_perm(perm), login_url=login_url)
+
+
+###
+### Grade tracking
+###
+
 
 class trackGrade(object):
 	""" This decorator expects that an HttpResponse has a context attribute,
