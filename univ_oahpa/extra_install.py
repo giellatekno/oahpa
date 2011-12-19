@@ -13,7 +13,7 @@ import codecs
 
 languages = [
 	'sme',
-	'nno', # was: 'nob' But in the documentation url-s the abbreviation nno is used to mark the Norwegian version of a help page. 
+	'nob', # was: 'nob' But in the documentation url-s the abbreviation nno is used to mark the Norwegian version of a help page. 
 	'eng',
 	'fin', 
 	'deu',
@@ -32,12 +32,14 @@ class Link(object):
 		file_name, _, _ = file_name.partition('#')
 		
 		try:
-			title, language, suffix = file_name.split('.')
+			title, suffix = file_name.split('.') # took away language
+			
 		except ValueError:
 			print >> sys.stdout, "Unable to guess language from filename."
 			print >> sys.stdout, "Line\n\t" + self.S
 			raise Exception
 
+		language = 'nob' # added this
 		self.language = language
 
 	def __init__(self, S):
