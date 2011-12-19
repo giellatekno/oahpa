@@ -39,7 +39,7 @@ class Link(object):
 			print >> sys.stdout, "Line\n\t" + self.S
 			raise Exception
 
-		if language == 'nno'
+		if language == 'nno':
 		  language = 'nob' # added this
 		self.language = language
 
