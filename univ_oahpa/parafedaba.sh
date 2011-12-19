@@ -1,7 +1,7 @@
 #!/bin/sh
 
 P="python2.6"
-GTHOME="~/main"
+GTHOME="/home/heli/main"
 LANGDIR="ped/sme"
 DATA=$GTHOME/$LANGDIR
 DPS="$DATA/src"
