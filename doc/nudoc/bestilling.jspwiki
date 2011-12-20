@@ -15,21 +15,22 @@ Bøyningsparadigme trenges ikke for Leksa, men for de andre programmene. Filene 
 ** num_smenob.xml
 ** prop_smenob.xml
 ** v_smenob.xml
+** names.xml (generers med prop_paradigms.txt)
 ** fillings_smenob.xml - er usikker på om vi trenger denne fila
 * Skal ikke genereres bøyningsparadigme:
 ** adv_smenob.xml
 ** multiword_smenob.xml
-* pron_sme.xml inneholder paradigmer
-* Tilsvarende filer i nob/ og fin/ bortsett fra pron_sme.xml
+* pron_sme.xml inneholder paradigmer 
+* Tilsvarende filer i nob/ og fin/ bortsett fra pron_sme.xml og names.xml
 
 ! Leksa
 # implementere funksjoner som allerede finnes i smeOahpa: n_smenob.xml, v_smenob.xml, a_smenob.xml, adv_smenob.xml, prop_smenob.xml pluss tilsvarende filer nob/ og fin/  . Dessuten semantical_sets.xml
 # implementere multiword: multiword_smenob.xml og tilsvarende nob/ og fin/
 # implementere tcomm
-# evt. implementere swe og eng - men dette må ikke forsinke resten av arbeidet
+# evt. implementere swe og eng med dummies (f.eks. hus_SWE) - men dette må ikke forsinke resten av arbeidet
 
 ! MorfaS
-# implementere funksjoner som allerede finnes i smeOahpa - vær obs på at i sme er det 3 stammetyper, i sma er det 2
+# implementere funksjoner som allerede finnes i smeOahpa - vær obs på at i sme er det 3 stammetyper (2syll, 3syll, Csyll), i sma er det 2 for de fleste ordklassene
 ## substantiv:
 ### som i smeOAHPA: nom.pl., akkusativ, genitiv, illativ, lokativ, komitativ, essiv
 ### OBS smeOahpa: lokativ istedenfor smaOahpa: elativ og inessiv
@@ -38,12 +39,12 @@ Bøyningsparadigme trenges ikke for Leksa, men for de andre programmene. Filene 
 ### Dessuten perfektum og gerundium som i smaOahpa. Perfektum skal ha "lea" som kontekst.
 ## adjektiv:
 ### som i smeOAHPA, mange flere oppgavetyper enn i smaOahpa
-## tallord: som i smeOAHPA. Tallord er ikke med i smaOahpa
+## tallord: som i smeOAHPA. Tallord er ikke med i smaOahpa. Tallord skal ikke ha stammetypevalg. Kasus: nom.pl., akkusativ, genitiv, illativ, lokativ, komitativ.
 # implementere pronomener som oppgaver - kildefil er pron_sme.xml. Former med dial="NG" skal aksepteres som riktig svar, men ikke presenteres som fasit.
-## personlige - som i smaOahpa
-## demonstrative - som personlige pron. Grunnform er Pron+Dem+Number+Nom. Det blir problemer i presentasjonen for brukeren med homonymi mellom Sg+Nom og Pl+Nom. Det må vi finne løsning på.
-## refleksive - grunnform er Pron+Refl+Gen. Nominativ er ikke oppgavetype.  
-## resiproke - grunnform er Pron+Recipr+Sg+Gen. Nominativ er ikke med som oppgavetype. Disse oppgavene skal i tillegg ha kontekst, på samme måte som verb-oppgavene har det:
+## personlige - som i smaOahpa. Kasusvalg: akk, gen, ill, lok, kom.
+## demonstrative - som personlige pron. Grunnform er Pron+Dem+Number+Nom. Det blir problemer i presentasjonen for brukeren med homonymi mellom Sg+Nom og Pl+Nom. Det må vi finne løsning på. Kasusvalg: akk, gen, ill, lok, kom.
+## refleksive - grunnform er Pron+Refl+Gen. Nominativ er ikke oppgavetype.  Kasusvalg: ill, lok, kom.
+## resiproke - grunnform er Pron+Recipr+Sg+Gen. Nominativ er ikke med som oppgavetype. Kasusvalg: ill, lok, kom. Disse oppgavene skal i tillegg ha kontekst, på samme måte som verb-oppgavene har det:
 ### PxDu skal ha ''goabbat'' som kontekst
 ### PxPl skal ha ''guhtet''  som kontekst
 
