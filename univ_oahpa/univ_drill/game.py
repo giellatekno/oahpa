@@ -424,15 +424,15 @@ class BareGame(Game):
 		sylls = []
 		bisyl = ['2syll', 'bisyllabic']
 		trisyl = ['3syll', 'trisyllabic']
-		xsyl = ['xsyll', 'xsyllabic']
+		Csyl = ['Csyll', 'Csyllabic']
 
 		for item in syll:
 			if item in bisyl:
 				sylls.extend(bisyl)
 			if item in trisyl:
 				sylls.extend(trisyl)
-			if item in xsyl:
-				sylls.extend(xsyl)
+			if item in Csyl:
+				sylls.extend(Csyl)
 		
 		if pos == 'Pron':
 			syll = ['']
@@ -1071,8 +1071,8 @@ class QuizzGame(Game):
 			if geography:
 				leksa_kwargs['geography'] = geography
 				
-            if frequency:
-                leksa_kwargs['frequency'] = frequency # added
+			if frequency:
+				leksa_kwargs['frequency'] = frequency # added
 
 			if excl:
 				leksa_kwargs['semtype_excl'] = excl
