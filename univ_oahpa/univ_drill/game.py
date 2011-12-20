@@ -627,7 +627,7 @@ class BareGame(Game):
 		# print ', '.join([a.fullform for a in form_list])
 		correct = form_list[0]
 		
-		if pos in ['N', 'V', 'A']:
+		if pos in ['N', 'V', 'A', 'Num']: # added Num
 			word = Word.objects.get(Q(id=word_id))
 			# Preserve number in nouns: Sg-Sg, Pl-Pl
 		elif pos == 'Pron':
@@ -1037,6 +1037,7 @@ class QuizzGame(Game):
 		# levels = self.settings['level']
 		semtypes = self.settings['semtype']
 		geography = self.settings['geography']
+		frequency = self.settings['frequency']
 		source = self.settings['source']
 		
 		source_language = self.settings['transtype'][0:3]
@@ -1069,6 +1070,9 @@ class QuizzGame(Game):
 			
 			if geography:
 				leksa_kwargs['geography'] = geography
+				
+            if frequency:
+                leksa_kwargs['frequency'] = frequency # added
 
 			if excl:
 				leksa_kwargs['semtype_excl'] = excl
