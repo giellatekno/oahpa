@@ -1,1 +1,195 @@
-asdf
+!!!Møte 20.12.11
+
+Til stades: Heli, Lene, Trond, Biret-Ánne
+
+
+!!Saksliste
+* Generelt
+* MorfaC
+* MorfaS
+* Leksa
+* Numra
+* Innlogging
+* Prioriteringer og mål
+* Neste møte
+
+
+!! Generelt
+
+! Grammatikklinkar
+
+Fixat: grammatikklinker (meny högst upp till höger)
+
+Grammatikken er no trespråkleg, vi vil dermed også ha drop-down-menyen trespråkleg
+
+* sme, fin -> sme  (muligens fin -> eng)
+* nob, swe -> nob
+* eng -> eng
+
+
+__TILTAK__
+
+* Referansefila til grammatikken skal også på engelsk (__Lene__)
+* Eit par lenkefeil (__Lene__)
+
+! Webdictionary
+
+Är nu parametriserad efter gränssnittsspråk. Fint.
+
+__TILTAK__
+
+* Fornye nobsme i webdict (__Ciprian__)
+
+!! MorfaC
+
+!Feedback (vurderingar)
+
+
+Håller Heli på med just nu. 
+
+Fråga: Varför funkar inte installering av morfaC feedback och questions?
+
+Feedback (rett/feil?) fungerer ikkje.
+
+Lene: Jeg har endra på en del settnavn, og derfor må ''leksikonfilene, *questions.xml- filene'' 
+og ''semantical_sets.xml'' innstalleres på nytt.
+
+!Numeralier i MorfaC
+
+Reverse for 'morfa_c.num' with arguments '()' and keyword arguments '{}' not found.
+
+Det kjem av at Heli har gjort visse tillegg.
+
+__TILTAK__
+
+# Fikse num-installasjonsfeilen (__Heli__)
+# … for deretter å få tilgang til installeringsfeilen (__Heli__)
+
+
+!! MorfaS
+
+! Numerals i morfaS - svarfunksjonen fungerer ikke
+
+/home/univ_oahpa/univ_oahpa/univ_drill/views.py in create_morfagame, line 198
+
+__TILTAK__
+
+* Debugge (__Heli__)
+* Fjerne menyen ''Stem'' for numerals (det er for få til å dele dei inn etter stammetype, 
+  og det finnes heller ingen Csyll)
+
+! verb mangler kontrakt stamme som valg (Csyll) i grensesnittet
+
+Alle N, V, A er merka for stammetype i leksikon (kontrakt = Csyll):
+
+{{{
+<l pos="n" diphthong="no" gradation="yes" rime="is" stem="Csyll">sárggis</l>
+<l pos="n" stem="2syll" diphthong="yes" gradation="yes" soggi="i" rime="0">vihaheapmi</l>
+<l pos="n" stem="3syll" diphthong="no" gradation="yes" rime="0">bálggus</l>
+}}}
+
+
+Substantiv - kontrakte stammer - feilmelding:
+
+{{{
+Exception Value:	'QuerySet' object has no attribute 'id'
+Exception Location:	/home/univ_oahpa/univ_oahpa/univ_drill/game.py in get_db_info, line 581
+}}}
+
+Adjektiv - kontrakte stammer - fungerer.
+
+__TILTAK__
+
+* Kontrakt stamme i grensesnittet for verb
+* Stammefordeling (2syll, 3syll, Csyll) skal stemme med valg
+
+
+
+! Pronomen i morfaS
+
+sme-fila har eit litt anna namn enn sma-fila. Det er i orden.
+''pron_sme.xml'' vs. ''pron_smanob.xml''
+
+Mogleg problem: Installering. Det kan vere nokre attributt som ikkje kjem med til databasen.
+
+Pronomen blir ''ikkje'' bøygd i numerus i MorfaS, verken i sma eller sme. 
+Ingen ''Stem''- eller ''Book''-valg (samme som for sma)
+
+{{/home/univ_oahpa/univ_oahpa/univ_drill/game.py in get_db_info, line 581}}
+
+Kasusrepertoar for pronomen i MorfaS: ''Acc - Gen - Ill - Loc - Com''
+
+__TILTAK__
+
+* Sjekk kasusrepertoaret for pronomen
+* Først personlege (likt med sma), så resten (jf. dokumentasjonen), som ikke finnes i sma
+* Debugge
+
+
+!! Leksa
+ 
+! Leksa-stedsnavn
+
+De er ustabil nå, men har fungert tidligere - därför att Heli håller på lägga till 
+frequency-valet
+
+Ikkje-ASCII er ikkje bra for rullegardinar. 
+
+!Lokalisering til svensk
+Vi vil ha inn dummyer:
+
+{{{
+Helsset
+Helsingfors      <- norsk
+Helsingfors_SWE  <- svensk
+}}}
+
+__TILTAK__
+
+* Legge til dummy _SWE (__Ciprian__)
+* Synonym frå smeoahpa til dei nye filene, i nobsme og finsme (__Ciprian__)
+
+!! Numra
+
+Alles gut.
+
+
+!! Innlogging
+
+
+!Korrespondanse:
+
+Spørsmål om plugin er i praksis på vent til i januar.
+
+Vi veit ikkje kva som skal til:
+
+* aktiv plugin (fungerer, istallert og aktivert)
+* passiv plugin på ei liste (installert) 
+* ukjent plugin (ikkje installert)
+
+__TILTAK__
+
+* Sjekke versjonsnummer og kompabilitet på plugin (__Ryan, Trond, Berit Ánne__)
+* Undersøke om vi får separat installasjon, og kven som skal installere det (__Trond__)
+
+
+!!Prioriteringar, mål
+
+# Funksjonell Oahpa __til kursstart 2.1.__
+## Numra, MorfaS, Leksa
+## MorfaC
+# Lokalisering og hjelpefunksjonar
+## grammatikkmenyen også for engelsk
+# Nye programmer __etter kursstart__
+## Vasta (samme som i gammel smeOahpa)
+## Sahka (samme som i gammel smeOahpa, men med nye og forbedra dialoger)
+## Vasta Cealkka (ny)
+
+
+!!Neste møte
+
+__27.12. kl. 08.00.__
+
+
+
+
