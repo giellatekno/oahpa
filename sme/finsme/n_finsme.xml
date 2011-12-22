@@ -22013,12 +22013,13 @@
          </tg>
       </mg>
    </e>
-   <e id="1_maksapasteija_n" stat="pref">
+   <e id="maksapasteija_n" stat="pref">
       <lg>
          <l pos="n">maksapasteija</l>
       </lg>
       <sources>
          <book name="sam1031_2"/>
+         <book name="oaidnalit"/>
       </sources>
       <mg>
          <semantics>
@@ -22030,24 +22031,7 @@
          </tg>
       </mg>
    </e>
-   <e id="2_maksapasteija_n" stat="pref">
-      <lg>
-         <l pos="n">maksapasteija</l>
-      </lg>
-      <sources>
-         <book name="oaidnalit"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="FOOD-GROCERY"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">vuoivvasnjuvddus</t>
-            <t pos="n" sem-cl="FOOD-GROCERY" src="sam1031_2" fin-stat="yes">vuoivvasmeastu</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="1_olut_n" stat="pref">
+   <e id="olut_n" stat="pref">
       <lg>
          <l pos="n">olut</l>
       </lg>
@@ -22062,23 +22046,6 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">vuolla</t>
             <t pos="n" sem-cl="DRINK" src="algu" fin-stat="yes">vuola</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_olut_n" stat="pref">
-      <lg>
-         <l pos="n">olut</l>
-      </lg>
-      <sources>
-         <book name="algu"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="DRINK"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">vuola</t>
-            <t pos="n" sem-cl="DRINK" src="algu;AA" fin-stat="yes">vuolla</t>
          </tg>
       </mg>
    </e>
@@ -22168,43 +22135,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_lihakeitto_n" stat="pref">
-      <lg>
-         <l pos="n">lihakeitto</l>
-      </lg>
-      <sources>
-         <book name="d3"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="FOOD-DISH"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">biergomális</t>
-            <t pos="n" sem-cl="FOOD-DISH" src="d3" fin-stat="yes">biergomálli</t>
-            <t pos="n" sem-cl="FOOD-DISH" src="d2;sam1031_2;c3;AA" fin-stat="yes">biđus</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_lihakeitto_n" stat="pref">
-      <lg>
-         <l pos="n">lihakeitto</l>
-      </lg>
-      <sources>
-         <book name="d3"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="FOOD-DISH"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">biergomálli</t>
-            <t pos="n" sem-cl="FOOD-DISH" src="d3" fin-stat="yes">biergomális</t>
-            <t pos="n" sem-cl="FOOD-DISH" src="d2;sam1031_2;c3;AA" fin-stat="yes">biđus</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="3_lihakeitto_n" stat="pref">
+   <e id="lihakeitto_n" stat="pref">
       <lg>
          <l pos="n">lihakeitto</l>
       </lg>
@@ -22213,6 +22144,7 @@
          <book name="sam1031_2"/>
          <book name="c3"/>
          <book name="AA"/>
+         <book name="d3"/>
       </sources>
       <mg>
          <semantics>
@@ -22261,12 +22193,13 @@
          </tg>
       </mg>
    </e>
-   <e id="1_omena_n" stat="pref">
+   <e id="omena_n" stat="pref">
       <lg>
          <l pos="n">omena</l>
       </lg>
       <sources>
          <book name="sam1031_2"/>
+         <book name="sara"/>
       </sources>
       <mg>
          <semantics>
@@ -22279,41 +22212,7 @@
          </tg>
       </mg>
    </e>
-   <e id="2_omena_n" stat="pref">
-      <lg>
-         <l pos="n">omena</l>
-      </lg>
-      <sources>
-         <book name="sara"/>
-      </sources>
-      <mg>
-         <semantics/>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">ebel</t>
-            <t pos="n" sem-cl="FOOD-GROCERY" src="sam1031_2" fin-stat="yes">eahppel</t>
-            <t pos="n" sem-cl="FOOD-GROCERY" src="sam1031_2" fin-stat="yes">eappel</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="3_omena_n" stat="pref">
-      <lg>
-         <l pos="n">omena</l>
-      </lg>
-      <sources>
-         <book name="sam1031_2"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="FOOD-GROCERY"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">eappel</t>
-            <t pos="n" sem-cl="FOOD-GROCERY" src="sam1031_2" fin-stat="yes">eahppel</t>
-            <t pos="n" sem-cl="" src="sara" fin-stat="yes">ebel</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="1_veripaltto_n" stat="pref">
+   <e id="veripaltto_n" stat="pref">
       <lg>
          <l pos="n">veripaltto</l>
       </lg>
@@ -22327,23 +22226,6 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">gumppus</t>
             <t pos="n" sem-cl="FOOD-DISH" src="xxx" fin-stat="yes">guhppár</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_veripaltto_n" stat="pref">
-      <lg>
-         <l pos="n">veripaltto</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="FOOD-DISH"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">guhppár</t>
-            <t pos="n" sem-cl="FOOD-DISH" src="bures" fin-stat="yes">gumppus</t>
          </tg>
       </mg>
    </e>
@@ -22412,7 +22294,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_siirappi_n" stat="pref">
+   <e id="siirappi_n" stat="pref">
       <lg>
          <l pos="n">siirappi</l>
       </lg>
@@ -22426,21 +22308,6 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">sirát</t>
             <t pos="n" sem-cl="" src="xxx" fin-stat="yes">sierát</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_siirappi_n" stat="pref">
-      <lg>
-         <l pos="n">siirappi</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics/>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">sierát</t>
-            <t pos="n" sem-cl="FOOD-GROCERY" src="oaidnalit" fin-stat="yes">sirát</t>
          </tg>
       </mg>
    </e>
@@ -22535,7 +22402,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_polku_n" stat="pref">
+   <e id="polku_n" stat="pref">
       <lg>
          <l pos="n">polku</l>
       </lg>
@@ -22543,6 +22410,8 @@
          <book name="algu"/>
          <book name="c2"/>
          <book name="AA"/>
+         <book name="d4"/>
+         <book name="sam1031_2"/>
       </sources>
       <mg>
          <semantics>
@@ -22551,25 +22420,6 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">bálggis</t>
             <t pos="n" sem-cl="ROAD" src="d4;sam1031_2;c2" fin-stat="yes">luodda</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_polku_n" stat="pref">
-      <lg>
-         <l pos="n">polku</l>
-      </lg>
-      <sources>
-         <book name="d4"/>
-         <book name="sam1031_2"/>
-         <book name="c2"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ROAD"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">luodda</t>
-            <t pos="n" sem-cl="ROAD" src="algu;c2;AA" fin-stat="yes">bálggis</t>
          </tg>
       </mg>
    </e>
@@ -22589,15 +22439,18 @@
          </tg>
       </mg>
    </e>
-   <e id="1_taksi_n" stat="pref">
+   <e id="taksi_n" stat="pref">
       <lg>
          <l pos="n">taksi</l>
       </lg>
       <sources>
+         <book name="oaidnalit"/>
          <book name="d4"/>
       </sources>
       <mg>
-         <semantics/>
+         <semantics>
+            <sem class="VEHICLE"/>
+         </semantics>
          <tg xml:lang="sme">
             <t pos="n" stat="pref">dákse</t>
             <t pos="n" sem-cl="VEHICLE" src="oaidnalit" fin-stat="yes">drošše</t>
@@ -22605,59 +22458,7 @@
          </tg>
       </mg>
    </e>
-   <e id="2_taksi_n" stat="pref">
-      <lg>
-         <l pos="n">taksi</l>
-      </lg>
-      <sources>
-         <book name="oaidnalit"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="VEHICLE"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">drošše</t>
-            <t pos="n" sem-cl="" src="d4" fin-stat="yes">dákse</t>
-            <t pos="n" sem-cl="VEHICLE" src="xxx" fin-stat="yes">táksi</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="3_taksi_n" stat="pref">
-      <lg>
-         <l pos="n">taksi</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="VEHICLE"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">táksi</t>
-            <t pos="n" sem-cl="" src="d4" fin-stat="yes">dákse</t>
-            <t pos="n" sem-cl="VEHICLE" src="oaidnalit" fin-stat="yes">drošše</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="1_kilpi_n" stat="pref">
-      <lg>
-         <l pos="n">kilpi</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="THING"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">galba</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_kilpi_n" stat="pref">
+   <e id="kilpi_n" stat="pref">
       <lg>
          <l pos="n">kilpi</l>
       </lg>
@@ -22725,24 +22526,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_kyyti_n" stat="pref">
-      <lg>
-         <l pos="n">kyyti</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="TRAVELLING"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">gikta</t>
-            <t pos="n" sem-cl="TRAVELLING" src="d4;c2" fin-stat="yes">sáhttu</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_kyyti_n" stat="pref">
+   <e id="kyyti_n" stat="pref">
       <lg>
          <l pos="n">kyyti</l>
       </lg>
@@ -22828,7 +22612,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_liikennevalo_n" stat="pref">
+   <e id="liikennevalo_n" stat="pref">
       <lg>
          <l pos="n">liikennevalo</l>
       </lg>
@@ -22843,23 +22627,6 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">johtalusčuovga</t>
             <t pos="n" sem-cl="TRAVELLING" src="sam1031_2" fin-stat="yes">johtolatčuovga</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_liikennevalo_n" stat="pref">
-      <lg>
-         <l pos="n">liikennevalo</l>
-      </lg>
-      <sources>
-         <book name="sam1031_2"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="TRAVELLING"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">johtolatčuovga</t>
-            <t pos="n" sem-cl="TRAVELLING" src="bures;sam1031_2" fin-stat="yes">johtalusčuovga</t>
          </tg>
       </mg>
    </e>
@@ -22931,24 +22698,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_lumikelkka_n" stat="pref">
-      <lg>
-         <l pos="n">lumikelkka</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="VEHICLE"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">mohtorgielká</t>
-            <t pos="n" sem-cl="VEHICLE" src="d1;sara;algu;sam1031_1" fin-stat="yes">skohter</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_lumikelkka_n" stat="pref">
+   <e id="lumikelkka_n" stat="pref">
       <lg>
          <l pos="n">lumikelkka</l>
       </lg>
@@ -23054,43 +22804,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_silta_n" stat="pref">
-      <lg>
-         <l pos="n">silta</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ROAD"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">rovvi</t>
-            <t pos="n" sem-cl="ROAD" src="xxx" fin-stat="yes">sildi</t>
-            <t pos="n" sem-cl="ROAD" src="d4;AA" fin-stat="yes">šaldi</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_silta_n" stat="pref">
-      <lg>
-         <l pos="n">silta</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ROAD"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">sildi</t>
-            <t pos="n" sem-cl="ROAD" src="xxx" fin-stat="yes">rovvi</t>
-            <t pos="n" sem-cl="ROAD" src="d4;AA" fin-stat="yes">šaldi</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="3_silta_n" stat="pref">
+   <e id="silta_n" stat="pref">
       <lg>
          <l pos="n">silta</l>
       </lg>
@@ -23142,24 +22856,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_vene_n" stat="pref">
-      <lg>
-         <l pos="n">vene</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="VEHICLE"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">vanca</t>
-            <t pos="n" sem-cl="VEHICLE" src="d2;sam1031_1;AA" fin-stat="yes">fanas</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_vene_n" stat="pref">
+   <e id="vene_n" stat="pref">
       <lg>
          <l pos="n">vene</l>
       </lg>
@@ -23196,13 +22893,14 @@
          </tg>
       </mg>
    </e>
-   <e id="1_kortti_n" stat="pref">
+   <e id="kortti_n" stat="pref">
       <lg>
          <l pos="n">kortti</l>
       </lg>
       <sources>
          <book name="d2"/>
          <book name="c1"/>
+         <book name="sara"/>
       </sources>
       <mg>
          <semantics>
@@ -23211,24 +22909,6 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">goarta</t>
             <t pos="n" sem-cl="THING" src="d2;sara" fin-stat="yes">koarta</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_kortti_n" stat="pref">
-      <lg>
-         <l pos="n">kortti</l>
-      </lg>
-      <sources>
-         <book name="d2"/>
-         <book name="sara"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="THING"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">koarta</t>
-            <t pos="n" sem-cl="THING" src="d2;c1" fin-stat="yes">goarta</t>
          </tg>
       </mg>
    </e>
@@ -23302,25 +22982,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_polkupyörä_n" stat="pref">
-      <lg>
-         <l pos="n">polkupyörä</l>
-      </lg>
-      <sources>
-         <book name="sara"/>
-         <book name="sam1031_1"/>
-         <book name="c2"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="VEHICLE"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">sihkkel</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_polkupyörä_n" stat="pref">
+   <e id="polkupyörä_n" stat="pref">
       <lg>
          <l pos="n">polkupyörä</l>
       </lg>
@@ -23490,7 +23152,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_sonni_n" stat="pref">
+   <e id="sonni_n" stat="pref">
       <lg>
          <l pos="n">sonni</l>
       </lg>
@@ -23507,24 +23169,7 @@
          </tg>
       </mg>
    </e>
-   <e id="2_sonni_n" stat="pref">
-      <lg>
-         <l pos="n">sonni</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ANIMAL-DOM"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">vuoksá</t>
-            <t pos="n" sem-cl="ANIMAL-DOM" src="xxx" fin-stat="yes">burru</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="1_kissa_n" stat="pref">
+   <e id="kissa_n" stat="pref">
       <lg>
          <l pos="n">kissa</l>
       </lg>
@@ -23543,24 +23188,6 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">bussá</t>
             <t pos="n" sem-cl="ANIMAL-PET" src="AA" fin-stat="yes">gáhttu</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_kissa_n" stat="pref">
-      <lg>
-         <l pos="n">kissa</l>
-      </lg>
-      <sources>
-         <book name="AA"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ANIMAL-PET"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">gáhttu</t>
-            <t pos="n" sem-cl="ANIMAL-PET;MYTH-OTHER" src="algu;sara;sam1031_1;c2;AA"
-               fin-stat="yes">bussá</t>
          </tg>
       </mg>
    </e>
@@ -23928,7 +23555,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_susi_n" stat="pref">
+   <e id="susi_n" stat="pref">
       <lg>
          <l pos="n">susi</l>
       </lg>
@@ -23936,6 +23563,7 @@
          <book name="d3"/>
          <book name="sara"/>
          <book name="sam1031_1"/>
+         <book name="c2"/>
       </sources>
       <mg>
          <semantics>
@@ -23945,24 +23573,6 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">gumpe</t>
             <t pos="n" sem-cl="ANIMAL-WILD;MYTH-OTHER" src="c2" fin-stat="yes">návdi</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_susi_n" stat="pref">
-      <lg>
-         <l pos="n">susi</l>
-      </lg>
-      <sources>
-         <book name="c2"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ANIMAL-WILD"/>
-            <sem class="MYTH-OTHER"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">návdi</t>
-            <t pos="n" sem-cl="ANIMAL-WILD;MYTH-OTHER" src="d3;sara;sam1031_1" fin-stat="yes">gumpe</t>
          </tg>
       </mg>
    </e>
@@ -24162,24 +23772,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_merikala_n" stat="pref">
-      <lg>
-         <l pos="n">merikala</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="FISH"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">mearaguolli</t>
-            <t pos="n" sem-cl="" src="d3" fin-stat="yes">mearraguolli</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_merikala_n" stat="pref">
+   <e id="merikala_n" stat="pref">
       <lg>
          <l pos="n">merikala</l>
       </lg>
@@ -24194,7 +23787,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_vasa_n" stat="pref">
+   <e id="vasa_n" stat="pref">
       <lg>
          <l pos="n">vasa</l>
       </lg>
@@ -24211,23 +23804,6 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">miessi</t>
             <t pos="n" sem-cl="ANIMAL-DOM" src="d2" fin-stat="yes">čearpmat</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_vasa_n" stat="pref">
-      <lg>
-         <l pos="n">vasa</l>
-      </lg>
-      <sources>
-         <book name="d2"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="ANIMAL-DOM"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">čearpmat</t>
-            <t pos="n" sem-cl="ANIMAL-DOM" src="d2;sara;algu;AA" fin-stat="yes">miessi</t>
          </tg>
       </mg>
    </e>
@@ -24804,7 +24380,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_posti_n" stat="pref">
+   <e id="posti_n" stat="pref">
       <lg>
          <l pos="n">posti</l>
       </lg>
@@ -24812,6 +24388,7 @@
          <book name="d1"/>
          <book name="sam1031_1"/>
          <book name="AA"/>
+         <book name="sara"/>
       </sources>
       <mg>
          <semantics>
@@ -24823,44 +24400,7 @@
          </tg>
       </mg>
    </e>
-   <e id="2_posti_n" stat="pref">
-      <lg>
-         <l pos="n">posti</l>
-      </lg>
-      <sources>
-         <book name="d1"/>
-         <book name="sara"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="TEXT"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">poasta</t>
-            <t pos="n" sem-cl="TEXT" src="d1;sam1031_1;AA" fin-stat="yes">boasta</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="1_kirje_n" stat="pref">
-      <lg>
-         <l pos="n">kirje</l>
-      </lg>
-      <sources>
-         <book name="sara"/>
-         <book name="algu"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="TEXT"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">breava</t>
-            <t pos="n" sem-cl="TEXT" src="d3;algu;sara;sam1031_1;c2;AA" fin-stat="yes">girji</t>
-            <t pos="n" sem-cl="TEXT" src="d1;sara;algu;sam1031_1;AA" fin-stat="yes">reive</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_kirje_n" stat="pref">
+   <e id="kirje_n" stat="pref">
       <lg>
          <l pos="n">kirje</l>
       </lg>
@@ -24882,12 +24422,13 @@
          </tg>
       </mg>
    </e>
-   <e id="1_sanonta_n" stat="pref">
+   <e id="sanonta_n" stat="pref">
       <lg>
          <l pos="n">sanonta</l>
       </lg>
       <sources>
          <book name="d4"/>
+         <book name="oaidnalit"/>
       </sources>
       <mg>
          <semantics>
@@ -24899,24 +24440,7 @@
          </tg>
       </mg>
    </e>
-   <e id="2_sanonta_n" stat="pref">
-      <lg>
-         <l pos="n">sanonta</l>
-      </lg>
-      <sources>
-         <book name="oaidnalit"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="LANGUAGE-PART"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">dajaldat</t>
-            <t pos="n" sem-cl="TEXT" src="d4" fin-stat="yes">dajahus</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="1_usko_n" stat="pref">
+   <e id="usko_n" stat="pref">
       <lg>
          <l pos="n">usko</l>
       </lg>
@@ -24930,23 +24454,7 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">doaivu</t>
             <t pos="n" sem-cl="THOUGHT" src="xxx" fin-stat="yes">osku</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_usko_n" stat="pref">
-      <lg>
-         <l pos="n">usko</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="THOUGHT"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">osku</t>
-            <t pos="n" sem-cl="THOUGHT" src="oaidnalit" fin-stat="yes">doaivu</t>
+            <t pos="n">jáhkku</t>
          </tg>
       </mg>
    </e>
@@ -25419,29 +24927,12 @@
          </tg>
       </mg>
    </e>
-   <e id="1_raamattu_n" stat="pref">
+   <e id="raamattu_n" stat="pref">
       <lg>
          <l pos="n">raamattu</l>
       </lg>
       <sources>
          <book name="d4"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="TEXT"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">biibal</t>
-            <t pos="n" sem-cl="" src="xxx" fin-stat="yes">biibbal</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_raamattu_n" stat="pref">
-      <lg>
-         <l pos="n">raamattu</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
       </sources>
       <mg>
          <semantics/>
@@ -25501,24 +24992,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_pata_n" stat="pref">
-      <lg>
-         <l pos="n">pata</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="CONTAINER"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">báhti</t>
-            <t pos="n" sem-cl="CONTAINER" src="d4" fin-stat="yes">ruitu</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_pata_n" stat="pref">
+   <e id="pata_n" stat="pref">
       <lg>
          <l pos="n">pata</l>
       </lg>
@@ -25535,24 +25009,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_kirstu_n" stat="pref">
-      <lg>
-         <l pos="n">kirstu</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="CONTAINER"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">bumbá</t>
-            <t pos="n" sem-cl="CONTAINER" src="d2" fin-stat="yes">giisá</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_kirstu_n" stat="pref">
+   <e id="kirstu_n" stat="pref">
       <lg>
          <l pos="n">kirstu</l>
       </lg>
@@ -25569,25 +25026,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_laatikko_n" stat="pref">
-      <lg>
-         <l pos="n">laatikko</l>
-      </lg>
-      <sources>
-         <book name="d2"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="CONTAINER"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">gássa</t>
-            <t pos="n" sem-cl="CONTAINER" src="d2;algu;sam1031_2;c1;AA" fin-stat="yes">kássa</t>
-            <t pos="n" sem-cl="CONTAINER" src="xxx" fin-stat="yes">skáhppu</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_laatikko_n" stat="pref">
+   <e id="laatikko_n" stat="pref">
       <lg>
          <l pos="n">laatikko</l>
       </lg>
@@ -25609,24 +25048,6 @@
          </tg>
       </mg>
    </e>
-   <e id="3_laatikko_n" stat="pref">
-      <lg>
-         <l pos="n">laatikko</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="CONTAINER"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">skáhppu</t>
-            <t pos="n" sem-cl="CONTAINER" src="d2" fin-stat="yes">gássa</t>
-            <t pos="n" sem-cl="CONTAINER" src="d2;algu;sam1031_2;c1;AA" fin-stat="yes">kássa</t>
-         </tg>
-      </mg>
-   </e>
    <e id="käsilaukku_n" stat="pref">
       <lg>
          <l pos="n">käsilaukku</l>
@@ -25643,24 +25064,8 @@
          </tg>
       </mg>
    </e>
-   <e id="1_teekuppi_n" stat="pref">
-      <lg>
-         <l pos="n">teekuppi</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="CONTAINER"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">teadjakohppa</t>
-            <t pos="n" sem-cl="CONTAINER" src="xxx" fin-stat="yes">deadjagohppu</t>
-         </tg>
-      </mg>
    </e>
-   <e id="2_teekuppi_n" stat="pref">
+   <e id="teekuppi_n" stat="pref">
       <lg>
          <l pos="n">teekuppi</l>
       </lg>
@@ -25677,7 +25082,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_kuppi_n" stat="pref">
+   <e id="kuppi_n" stat="pref">
       <lg>
          <l pos="n">kuppi</l>
       </lg>
@@ -25693,23 +25098,6 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">gohppu</t>
             <t pos="n" sem-cl="CONTAINER" src="d3" fin-stat="yes">kohppa</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_kuppi_n" stat="pref">
-      <lg>
-         <l pos="n">kuppi</l>
-      </lg>
-      <sources>
-         <book name="d3"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="CONTAINER"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">kohppa</t>
-            <t pos="n" sem-cl="CONTAINER" src="d3;algu;sam1031_1" fin-stat="yes">gohppu</t>
          </tg>
       </mg>
    </e>
@@ -25852,7 +25240,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_paikka_n" stat="pref">
+   <e id="paikka_n" stat="pref">
       <lg>
          <l pos="n">paikka</l>
       </lg>
@@ -25861,6 +25249,8 @@
          <book name="sara"/>
          <book name="sam1031_1"/>
          <book name="AA"/>
+         <book name="d1"/>
+         <book name="c2"/>
       </sources>
       <mg>
          <semantics>
@@ -25869,26 +25259,6 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">báiki</t>
             <t pos="n" sem-cl="PLACE-OTHER" src="d1;algu;c2;AA" fin-stat="yes">sadji</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_paikka_n" stat="pref">
-      <lg>
-         <l pos="n">paikka</l>
-      </lg>
-      <sources>
-         <book name="d1"/>
-         <book name="algu"/>
-         <book name="c2"/>
-         <book name="AA"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="PLACE-OTHER"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">sadji</t>
-            <t pos="n" sem-cl="PLACE-OTHER" src="algu;sara;sam1031_1;AA" fin-stat="yes">báiki</t>
          </tg>
       </mg>
    </e>
@@ -25924,7 +25294,7 @@
          </tg>
       </mg>
    </e>
-   <e id="1_kunta_n" stat="pref">
+   <e id="kunta_n" stat="pref">
       <lg>
          <l pos="n">kunta</l>
       </lg>
@@ -25940,23 +25310,6 @@
          <tg xml:lang="sme">
             <t pos="n" stat="pref">gielda</t>
             <t pos="n" sem-cl="PLACE-STAYING" src="xxx" fin-stat="yes">suohkan</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_kunta_n" stat="pref">
-      <lg>
-         <l pos="n">kunta</l>
-      </lg>
-      <sources>
-         <book name="xxx"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="PLACE-STAYING"/>
-         </semantics>
-         <tg xml:lang="sme">
-            <t pos="n" stat="pref">suohkan</t>
-            <t pos="n" sem-cl="PLACE-STAYING" src="d4;oaidnalit;AA" fin-stat="yes">gielda</t>
          </tg>
       </mg>
    </e>
