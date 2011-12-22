@@ -10,14 +10,14 @@ Det vi ønskjer er at info frå site-innlogging
 Studenten loggar seg inn, og site.uit.no/oahpa veit kven
 # Orakel oppretta site.uit.no/giellatekno med oss som admin
 # Vi legger til brukere med forskjellig tilgang (lese, skrive)
-# Bare brukere som er innlogget kan skrive kommentarer på sidene 
-# I dag er det ikke mulig for brukere selv å registrere seg som bruker (visl-metoden)
+# Bare brukere som er innlogget kan skrive kommentarer på sidene
+# Det er mulig å logge seg inn på forsiden, for registrerte brukere 
+# I dag er det ikke mulig for brukere selv å registrere seg som bruker (visl-metoden) 
 
 [Dette tilbyr site.uit.no:|http://site.uit.no/dette-tilbyr-site-uit-no/]
 * URL av typen http://site.uit.no/navn, hvor navn er valgfritt (feks navn på gruppe, prosjekt, …)
 * Tilgang til WordPress Dashboard for eier/administrator
 * __Eier/administrator__ kan invitere/legge til brukere (også eksterne) til sin side
-
 
 
 !Roller
@@ -82,6 +82,16 @@ Kursansvarlig skal ha tilgang til sine studenters bevegelser og resultater. Skal
 * Default site.uit.no kurs
 * cookie / ny ekstern auth metode
 
-!! Mulighet for egne startsider til brukere:
-Alle kurslærere får sin egen side, der de kan legge ut informasjon. Vi ønsker at deres studenter navigeres til denne siden etter log-in, og at de jobber med læringsstiene derifra. Jeg fant en mulig plug-in: http://wordpress.org/extend/plugins/peters-login-redirect/
+!! Brukerregistrering og egne startsider til brukere:
+Vi ønsker at alle skal kunne registrere seg som brukere og få rollen som ''subscriber''. Deretter skal brukerne navigeres (redirect) til en egen startside, f.eks lærerens side. Alle kurslærere får sin egen side, der de kan legge ut informasjon. Vi ønsker at deres studenter navigeres til denne siden etter log-in, og at de jobber med læringsstiene derifra. De som ikke følger et kurs, skal navigeres til en default startside.
+
+Mulige plug-ins:
+# Registrering: http://wordpress.org/extend/plugins/profile-builder/, kompatibel opp til 3.3
+# Registrering: http://wordpress.org/extend/plugins/simplr-registration-form/, kompatibel opp til 3.2.1
+# Log in redirect: http://wordpress.org/extend/plugins/peters-login-redirect/, kompatibel opp til 3.2.1
+
+Man får en ''Register'' side på menyen øverst på sida, eller som en menylinje, der alle kan registrere seg. Nå har vi en log-in boks i høyre marg, men da må brukere allerede være registrert. I plug-in finnes det en ''custom registration form''. Jeg er ikke helt sikker på hvor mye man kan tilpasse den, men jeg skal prøve å finne ut. Det finnes også en ''Profile Builder Pro'', der man kan lage egne spørsmål til registreringa, men den må man visst kjøpe.
+
+En annen mulighet som kanskje kunne brukes, er en poll plug-in som allerede er installert på site. Da kunne vi ha den aktiv på registreringssida, med noen tillegsspørsmål, om for eksempel språkbakgrunn, kurstilhørighet og lærer. Jeg skal undersøke mulighetene der.
+
 Kan noen sjekke om dette vil gi oss det vi vil ha?
