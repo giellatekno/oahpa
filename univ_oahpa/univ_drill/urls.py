@@ -24,7 +24,8 @@ urlpatterns = patterns('univ_oahpa.univ_drill.views',
 	url(r'^morfa/raajese/s/$', 'cmgame', {'pos': 'n'}),
 	url(r'^morfa/raajese/v/$', 'cmgame', {'pos': 'v'}, name="morfa_c.verb"),
 	url(r'^morfa/raajese/a/$', 'cmgame', {'pos': 'a'}, name="morfa_c.adj"),
-	url(r'^morfa/raajese/p/$', 'cmgame', {'pos': 'Pron'}, name="morfa_c.pron"),                       
+	url(r'^morfa/raajese/p/$', 'cmgame', {'pos': 'Pron'}, name="morfa_c.pron"),
+	url(r'^morfa/raajese/l/$', 'cmgame', {'pos': 'Num'}, name="morfa_c.num"),                       
 	url(r'^morfa/raajese/$', 'cmgame', {'pos': 'n'}, name="morfa_c.noun"),
 )
 
