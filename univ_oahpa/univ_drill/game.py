@@ -1078,13 +1078,13 @@ class QuizzGame(Game):
 """
 			if excl:
 				leksa_kwargs['semtype_excl'] = excl
-# The following is written by the example of sylls in MorfaS:
-            frequency = []
-            common = ['common', 'common']
-            rare = ['rare', 'rare']
+			# The following is written by the example of sylls in MorfaS:
+			frequency = []
+			common = ['common', 'common']
+			rare = ['rare', 'rare']
 
-            for item in frequency:
-                if item in common:
+			for item in frequency:
+				if item in common:
 				    frequency.extend(common)
 				if item in rare:
 				    frequency.extend(rare)

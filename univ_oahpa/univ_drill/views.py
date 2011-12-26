@@ -265,8 +265,8 @@ class Quizzview(Gameview):
 				post_like_data['semtype'] = 'all'
 			if not 'geography' in post_like_data:
 				post_like_data['geography'] = 'world'
-            if not 'frequency' in post_like_data:
-                post_like_data['frequency'] = 'common'
+			if not 'frequency' in post_like_data:
+				post_like_data['frequency'] = 'common'
 		else:
 			post_like_data = False
 
