@@ -89,8 +89,6 @@ class Gameview:
 			self.settings['syll'].append('3syll')
 		if 'contracted' in settings_form.data:
 			self.settings['syll'].append('Csyll')
-		if 'xsyllabic' in settings_form.data:
-			self.settings['syll'].append('xsyll')
 		if len(self.settings['syll']) == 0:
 			self.settings['syll'].append('2syll')
 
@@ -247,8 +245,8 @@ class Quizzview(Gameview):
 			self.settings['frequency'].append('common')
 		if 'rare' in settings_form.data:
 			self.settings['frequency'].append('rare')
-		if len(self.settings['frequency']) == 0:
-			self.settings['frequency'].append('common')
+		#if len(self.settings['frequency']) == 0:
+		#	self.settings['frequency'].append('common')
 			
 		self.settings['geography'] = []
 		if 'geography' in settings_form.data:
