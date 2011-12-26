@@ -703,21 +703,24 @@ class OahpaSettings(forms.Form):
 	
 	def set_default_data(self):
 		self.default_data = {'language' : 'rus',
-							 'syll' : ['2syll'], 'level' : 'all',
-							 'case': 'N-ILL', 'pos' : 'N',
-							 'vtype' : 'PRS',
-							 'adjcase' : 'ATTR',
-							 'proncase' : 'N-ILL',
-							 'grade' : '',
-							 'case_context' : 'N-ILL',
-							 'vtype_context' : 'V-PRS',
-							 'pron_context' : 'P-ILL',
-							 'num_context' : 'NUM-ATTR',
-							 'num_level' : '1',
-							 'geography': 'world',
-							 'num_bare' : 'N-ILL',
-							 'adj_context' : 'ATTRPOS',
-							 'source' : 'all'} 
+				     'syll' : ['2syll'],
+				     'level' : 'all',
+				     'case': 'N-ILL',
+				     'pos' : 'N',
+				     'vtype' : 'PRS',
+				     'adjcase' : 'ATTR',
+				     'proncase' : 'N-ILL',
+				     'grade' : '',
+				     'case_context' : 'N-ILL',
+				     'vtype_context' : 'V-PRS',
+				     'pron_context' : 'P-ILL',
+				     'num_context' : 'NUM-ATTR',
+				     'num_level' : '1',
+				     'geography': 'world',
+				     'frequency': 'common',
+				     'num_bare' : 'N-ILL',
+				     'adj_context' : 'ATTRPOS',
+				     'source' : 'all'} 
 
 
 
@@ -818,7 +821,7 @@ class LeksaSettings(OahpaSettings):
 	transtype = forms.ChoiceField(choices=TRANS_CHOICES, widget=forms.Select)
 	# For placename quizz
 	geography = forms.ChoiceField(initial='world', choices=GEOGRAPHY_CHOICES)
-	frequency = forms.MultipleChoiceField(required=False, choices=FREQUENCY_CHOICES)  # added
+	#frequency = forms.MultipleChoiceField(required=False, widget=CheckboxSelectMultiple, choices=FREQUENCY_CHOICES)  # added
 	common = forms.BooleanField(required=False, initial='1')
 	rare = forms.BooleanField(required=False,initial=0)
 	# sapmi = forms.BooleanField(required=False, initial='1')

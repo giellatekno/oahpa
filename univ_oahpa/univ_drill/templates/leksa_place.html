@@ -20,10 +20,10 @@
 		{{ settingsform.geography }}</li>
     <li><label>{% trans "Frequency" %}</label>
     <ul>
-        <li>{{ settingsform.common }} <label for="id_{{ settingsform.common.name }}">{% trans "Common" %}</label></li>
-        <li>{{ settingsform.rare }} <label for="id_{{ settingsform.rare.name }}">{% trans "Rare" %}</label></li>
+        <li>{{ settingsform.common }} <label for="id_{{ settingsform.common.name }}">{% trans settingsform.common.name %}</label></li>
+        <li>{{ settingsform.rare }} <label for="id_{{ settingsform.rare.name }}">{% trans settingsform.rare.name %}</label></li>
     </ul>
-    <!---<li><label for="{{ settingsform.frequency.name }}">{% trans "Frequency" %}</label>{{ settingsform.frequency }}</li> --->
+   <!--- <li><label for="id_{{ settingsform.frequency.name }}">{% trans "Frequency" %}</label> -->    
 	<li><label for="{{ settingsform.transtype.name }}">{% trans "Select the language pair" %}</label>
 		{{ settingsform.transtype }}</li>
 </ul>
@@ -35,6 +35,8 @@
 <input type="hidden" name="semtype" value="PLACE_NAME" />
 <input type="hidden" name="source" value="all" />
 <input type="hidden" name="frequency" value="common" />
+<!---<input type="hidden" name="common" value=TRUE /> --->
+<!---<input type="hidden" name="rare" value=FALSE /> --->
 
 <ul id="submittable">
     <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
