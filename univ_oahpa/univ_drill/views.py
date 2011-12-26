@@ -243,10 +243,14 @@ class Quizzview(Gameview):
 	def placename_settings(self, settings_form):
 
 		self.settings['frequency'] = []
+		if 'common' in settings_form.data:
+			self.settings['frequency'].append('common')
+		if 'rare' in settings_form.data:
+			self.settings['frequency'].append('rare')
+		if len(self.settings['frequency']) == 0:
+			self.settings['frequency'].append('common')
+			
 		self.settings['geography'] = []
-
-		if 'frequency' in settings_form.data:
-			self.settings['frequency'] = settings_form.data['frequency']
 		if 'geography' in settings_form.data:
 			self.settings['geography'] = settings_form.data['geography']
 
@@ -265,8 +269,8 @@ class Quizzview(Gameview):
 				post_like_data['semtype'] = 'all'
 			if not 'geography' in post_like_data:
 				post_like_data['geography'] = 'world'
-			if not 'frequency' in post_like_data:
-				post_like_data['frequency'] = 'common'
+			#if not 'frequency' in post_like_data:
+			#	post_like_data['frequency'] = 'common'
 		else:
 			post_like_data = False
 
