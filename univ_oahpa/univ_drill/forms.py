@@ -817,8 +817,9 @@ class LeksaSettings(OahpaSettings):
 	transtype = forms.ChoiceField(choices=TRANS_CHOICES, widget=forms.Select)
 	# For placename quizz
 	geography = forms.ChoiceField(initial='world', choices=GEOGRAPHY_CHOICES)
-	# common = forms.BooleanField(required=False, initial='1')
-	# rare = forms.BooleanField(required=False,initial=0)
+	frequency = forms.MultipleChoiceField(required=False, choices=FREQUENCY_CHOICES)  # added
+	common = forms.BooleanField(required=False, initial='1')
+	rare = forms.BooleanField(required=False,initial=0)
 	# sapmi = forms.BooleanField(required=False, initial='1')
 	# world = forms.BooleanField(required=False,initial=0)
 	# suopma = forms.BooleanField(required=False,initial=0)
@@ -828,7 +829,7 @@ class LeksaSettings(OahpaSettings):
 	default_data = {'gametype' : 'bare', 'language' : 'sme', 'dialogue' : 'GG', 
 					'syll' : [], 'source': 'all',
 					'semtype' : 'HUMAN',
-					'geography' : 'world',
+					'geography' : 'world', 'frequency' : 'common' # added
 					}
 
 	

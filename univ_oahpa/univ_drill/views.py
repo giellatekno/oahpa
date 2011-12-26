@@ -265,6 +265,8 @@ class Quizzview(Gameview):
 				post_like_data['semtype'] = 'all'
 			if not 'geography' in post_like_data:
 				post_like_data['geography'] = 'world'
+            if not 'frequency' in post_like_data:
+				post_like_data['frequency'] = 'common'
 		else:
 			post_like_data = False
 
@@ -369,8 +371,9 @@ def leksa_game(request, place=False):
 
 	if place:
 		leksagame.settings['allsem'] = []
-		leksagame.settings['semtype'] = "PLACE_LEKSA" # was PLACE-LEKSA
+		leksagame.settings['semtype'] = "PLACE_LEKSA"
 		leksagame.settings['geography'] = 'world'
+		leksagame.settings['frequency'] = 'common' # added
 		template = 'leksa_place.html'
 
 	sess_lang = request.session.get('django_language')

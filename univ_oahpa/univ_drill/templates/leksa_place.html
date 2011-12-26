@@ -18,6 +18,7 @@
 <ul id="settingsform">
 	<li><label for="{{ settingsform.geography.name }}">{% trans "Geography" %}</label>
 		{{ settingsform.geography }}</li>
+    <li><label for="{{ settingsform.frequency.name }}">{% trans "Frequency" %}</label>{{ settingsform.frequency }}</li>
 	<li><label for="{{ settingsform.transtype.name }}">{% trans "Select the language pair" %}</label>
 		{{ settingsform.transtype }}</li>
 </ul>
@@ -25,6 +26,10 @@
 {# {{ settingsform.sapmi }}{% trans "sapmi" %}<br/> #}
 {# {{ settingsform.world }}{% trans "world" %}<br/> #}
 {# {{ settingsform.suopma }}{% trans "suopma" %}<br/> #}
+
+
+<input checked="checked" type="checkbox" name="frequency" value="{% trans "common" %}" id="id_common" />{% trans "Common" %}<br/>
+<input type="checkbox" name="rare" id="id_rare" />{% trans "Rare" %}<br/>
 
 <input type="hidden" name="semtype" value="PLACE_NAME" />
 <input type="hidden" name="source" value="all" />
