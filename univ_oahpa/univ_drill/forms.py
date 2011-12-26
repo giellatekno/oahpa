@@ -443,6 +443,7 @@ def set_settings(self):
 	self.allnum_bare = dict(NUM_BARE_CHOICES).keys()
 	self.sources = dict(BOOK_CHOICES).keys() # was: sources
 	self.geography = dict(GEOGRAPHY_CHOICES).keys()
+	self.frequency = dict(FREQUENCY_CHOICES).keys() # added by Heli
 
 
 # comment
