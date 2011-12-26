@@ -424,7 +424,7 @@ class BareGame(Game):
 		sylls = []
 		bisyl = ['2syll', 'bisyllabic']
 		trisyl = ['3syll', 'trisyllabic']
-		Csyl = ['Csyll', 'Csyllabic']
+		Csyl = ['Csyll', 'contracted'] # added for sme
 
 		for item in syll:
 			if item in bisyl:
@@ -1037,7 +1037,7 @@ class QuizzGame(Game):
 		# levels = self.settings['level']
 		semtypes = self.settings['semtype']
 		geography = self.settings['geography']
-		frequency = self.settings['frequency']
+		frequency = True and self.settings['frequency'] or 'common' # by example of syll in MorfaS
 		source = self.settings['source']
 		
 		source_language = self.settings['transtype'][0:3]
@@ -1070,12 +1070,24 @@ class QuizzGame(Game):
 			
 			if geography:
 				leksa_kwargs['geography'] = geography
-				
-			if frequency:
-				leksa_kwargs['frequency'] = frequency # added
-
+			"""	
+			if common:
+				leksa_kwargs['frequency'] = 'common' 
+            if rare:
+                leksa_kwargs['frequency'] = 'rare' # first tried with frequency
+"""
 			if excl:
 				leksa_kwargs['semtype_excl'] = excl
+# The following is written by the example of sylls in MorfaS:
+            frequency = []
+            common = ['common', 'common']
+            rare = ['rare', 'rare']
+
+            for item in frequency:
+                if item in common:
+				    frequency.extend(common)
+				if item in rare:
+				    frequency.extend(rare)
 
 			word_set = leksa_filter(QueryModel, **leksa_kwargs)
 
