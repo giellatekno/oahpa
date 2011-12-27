@@ -1,1 +1,85 @@
-adsf
+
+!!!Møte 27.12.11
+
+Til stades: Heli, Lene, Trond
+
+!!Saksliste
+* Generelt
+* Leksa
+* MorfaS
+* MorfaC
+* Loggfunksjon
+* Neste møte
+
+
+!! Generelt
+
+Leksa, MorfaC, MorfaS er nede.
+
+
+!! Leksa
+
+Frekvens var inne i gamle smeOahpa, men ikkje i smaOahpa.
+Det å få det inn att har ført til at Oahpa er nede.
+
+
+
+!! MorfaS
+
+Ikkje prøvd.
+
+!! MorfaC
+Substantiv og verb fungerer. 
+
+Pronomen ligg inne i databasen.
+
+Lene har prøvd adjektiv eller numeral, får "Finn ikkje NUM-ATTR".
+
+For adjektiv er ikkje lista for oppgåvetypar den same som for sme.
+For numeraler er det ingen oppgåvetypar i sma.
+
+Oppgåvetypen er ikkje oppdatert.
+
+Nye stiar for dei to Morfa-variantane:
+
+* morfa/baakoe => /morfas   
+* morfa/raajese => /morfac 
+
+!!Loggfunksjon
+
+Nye kommandoar i univ_oahpa:
+ 
+* use univ_oahpa;
+* select * from univ_drill_log order by game into outfile '/usr/tmp/univoahpalog.txt' fields terminated by '|';
+
+Loggfunksjonen fungerer heilt fint:
+
+{{{
+~$tail /usr/tmp/univoahpalog.txt 
+11|morfa_Num|2011-12-20|gávccái|0|gávcciin,gávcciin|gávcci+Num+Sg+Com|\N|
+18|morfa_Num|2011-12-22|njealljet|0|njealje,njealji,njealje-,njealje,njealji,njealje-|njeallje+Num+Sg+Gen|\N|
+19|morfa_Num|2011-12-22|logit|0|login,lohkin,login,lohkin|logi+Num+Ess|\N|
+20|morfa_Num|2011-12-22|gudat|0|guđas,guđas|guhtta+Num+Sg+Loc|\N|
+6|morfa_V|2011-12-20|xcz|0|anát,anát|atnit+V+Ind+Prs+Sg2|\N|
+58|numra|2011-12-27|2|1|2|guokte|\N|
+59|numra|2011-12-27|8|1|8|gávcci|\N|
+60|numra|2011-12-27|9|1|9|ovcci|\N|
+61|numra|2011-12-27|1|1|1|okta|\N|
+62|numra|2011-12-27|3|1|3|golbma|\N|
+}}}
+
+Det grafiske brukargrensesnittet fungerer derimot ikkje.
+
+__TILTAK__
+* Oppdatere dokumentasjon (__Trond__)
+* Ordne det grafiske grensesnittet for logfunksjonen (ikkje prioritet no)
+
+!! Neste møte
+
+28.12. 08:00 T 01:00 M
+
+
+
+
+
+
