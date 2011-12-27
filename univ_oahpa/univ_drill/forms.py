@@ -717,7 +717,7 @@ class OahpaSettings(forms.Form):
 				     'num_context' : 'NUM-ATTR',
 				     'num_level' : '1',
 				     'geography': 'world',
-				     'frequency': 'common',
+				     'frequency' : [],
 				     'num_bare' : 'N-ILL',
 				     'adj_context' : 'ATTRPOS',
 				     'source' : 'all'} 
@@ -784,7 +784,7 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		if hasattr(self, 'translang'):
-			if self.translang == 'sma':
+			if self.translang == 'sme':
 				# Relax spellings.
 				accepted_answers = [force_unicode(item) for item in accepted_answers]
 				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
@@ -831,10 +831,11 @@ class LeksaSettings(OahpaSettings):
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 	
 	default_data = {'gametype' : 'bare', 'language' : 'sme', 'dialogue' : 'GG', 
-					'syll' : [], 'source': 'all',
-					'semtype' : 'HUMAN',
-					'geography' : 'world', 'frequency' : 'common' # added
-					}
+			'syll' : [], 'source': 'all',
+			'semtype' : 'HUMAN',
+			'geography' : 'world',
+			'frequency' : ['common'] # added
+			}
 
 	
 	# TODO: set default language pair from session language setting.
@@ -970,7 +971,7 @@ class MorfaQuestion(OahpaQuestion):
 		
 		lemma_widget = forms.HiddenInput(attrs={'value': word.id})
 		tag_widget = forms.HiddenInput(attrs={'value': tag.id})
-		self.translang = 'sma'
+		self.translang = 'sme'  # was: sma
 		kwargs['correct_val'] = correct_val
 		super(MorfaQuestion, self).__init__(*args, **kwargs)
 		

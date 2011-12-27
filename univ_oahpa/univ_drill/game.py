@@ -1037,9 +1037,9 @@ class QuizzGame(Game):
 		# levels = self.settings['level']
 		semtypes = self.settings['semtype']
 		geography = self.settings['geography']
-		frequency = True and self.settings['frequency'] or 'common' # by example of syll in MorfaS
+		frequency = self.settings['frequency']
 		source = self.settings['source']
-		
+				
 		source_language = self.settings['transtype'][0:3]
 		target_language = self.settings['transtype'][-3::]
 		QueryModel = Word
@@ -1070,25 +1070,23 @@ class QuizzGame(Game):
 			
 			if geography:
 				leksa_kwargs['geography'] = geography
-			"""	
-			if common:
-				leksa_kwargs['frequency'] = 'common' 
-            if rare:
-                leksa_kwargs['frequency'] = 'rare' # first tried with frequency
-"""
+				
+			if frequency:
+				leksa_kwargs['frequency'] = frequency
+			
 			if excl:
 				leksa_kwargs['semtype_excl'] = excl
-			# The following is written by the example of sylls in MorfaS:
-			frequency = []
-			common = ['common', 'common']
-			rare = ['rare', 'rare']
+			
+			frequencys = []  # by example of syll
+			cmn = ['common', 'common']
+			rr = ['rare', 'rare']
 
 			for item in frequency:
-				if item in common:
-				    frequency.extend(common)
-				if item in rare:
-				    frequency.extend(rare)
-
+				if item in cmn:
+				    frequencys.extend(cmn)
+				if item in rr:
+				    frequencys.extend(rr)
+		
 			word_set = leksa_filter(QueryModel, **leksa_kwargs)
 
 			self.query_set = word_set

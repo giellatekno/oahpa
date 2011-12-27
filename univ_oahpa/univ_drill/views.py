@@ -69,7 +69,7 @@ class Gameview:
 			'V-PRT'   : _('Practise past'),
 			'V-PRF'   : _('Practise perfect'),
 			'V-GER'   : _('Practise gerund'),
-			# 'V-COND'  : _('Practise conditional'),
+			'V-COND'  : _('Practise conditional'),
 			'V-IMPRT' : _('Practise imperative'),
 			'V-POT'   : _('Practise potential'),
 			'P-ACC'  : _('Practise accusative'),
@@ -245,8 +245,8 @@ class Quizzview(Gameview):
 			self.settings['frequency'].append('common')
 		if 'rare' in settings_form.data:
 			self.settings['frequency'].append('rare')
-		#if len(self.settings['frequency']) == 0:
-		#	self.settings['frequency'].append('common')
+		if len(self.settings['frequency']) == 0:
+			self.settings['frequency'].append('common')
 			
 		self.settings['geography'] = []
 		if 'geography' in settings_form.data:
@@ -267,8 +267,8 @@ class Quizzview(Gameview):
 				post_like_data['semtype'] = 'all'
 			if not 'geography' in post_like_data:
 				post_like_data['geography'] = 'world'
-			#if not 'frequency' in post_like_data:
-			#	post_like_data['frequency'] = 'common'
+			if not 'frequency' in post_like_data:
+				post_like_data['frequency'] = 'common'
 		else:
 			post_like_data = False
 
@@ -375,7 +375,7 @@ def leksa_game(request, place=False):
 		leksagame.settings['allsem'] = []
 		leksagame.settings['semtype'] = "PLACE_LEKSA"
 		leksagame.settings['geography'] = 'world'
-		leksagame.settings['frequency'] = 'common' # added
+		leksagame.settings['frequency'] = ['common'] # added
 		template = 'leksa_place.html'
 
 	sess_lang = request.session.get('django_language')

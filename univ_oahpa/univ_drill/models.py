@@ -153,13 +153,14 @@ class MorphPhonTag(models.Model):
 							"rime",
 							"soggi",)
 def leksa_filter(Model,
-					lang=False, 
-					tx_lang=False, 
-					semtype_incl=False, 
-					semtype_excl=False, 
-					source=False, 
-					geography=False,
-					ids=False):
+		 lang=False, 
+		 tx_lang=False, 
+		 semtype_incl=False, 
+		 semtype_excl=False, 
+		 source=False, 
+		 geography=False,
+		 frequency=False, # added
+		 ids=False):
 	EXCL = {}
 	QUERY = {}
 	
@@ -168,6 +169,8 @@ def leksa_filter(Model,
 	
 	QUERY['language'] = lang
 	QUERY['wordtranslation__language'] = tx_lang
+	if frequency:
+		QUERY['frequency'] = frequency  # added
 	
 	if geography:
 		QUERY['geography'] = geography
@@ -197,7 +200,7 @@ class Word(models.Model):
 		>>> a.wordnob_set.create(lemma='bbq')	
 	"""
 	wordid = models.CharField(max_length=200, db_index=True)
-	language = models.CharField(max_length=5, default='sma', db_index=True)
+	language = models.CharField(max_length=5, default='sme', db_index=True)
 	lemma = models.CharField(max_length=200, db_index=True)
 	presentationform = models.CharField(max_length=5)
 	pos = models.CharField(max_length=12) # Accomodate larger PoS 
@@ -557,8 +560,8 @@ class Feedback(models.Model):
 	# Word morphology / classes
 	attrsuffix = models.CharField(max_length=10,null=True,blank=True)
 	dialects = models.ManyToManyField(Dialect)
-	# diphthong = models.CharField(max_length=5,blank=True,null=True)
-	# gradation = models.CharField(max_length=15,null=True,blank=True)
+	diphthong = models.CharField(max_length=5,blank=True,null=True)
+	gradation = models.CharField(max_length=15,null=True,blank=True)
 	# rime = models.CharField(max_length=20,null=True,blank=True)
 	soggi = models.CharField(max_length=10,null=True,blank=True)
 	stem = models.CharField(max_length=20,blank=True,null=True)
@@ -579,25 +582,28 @@ class Feedback(models.Model):
 		# Sma doesn't have "rime"
 		# unique_together = ("tag")
 		unique_together = ( "pos",
-							"stem",
-							"soggi",
-							"wordclass",
-							
-							"case2",
-							"number",
+				    "stem",
+				    "soggi",
+				    "wordclass",
+				    #"diphtong", # added for sme
+				    #"gradation", # added for sme
+				    "case2",
+				    "number",
 						
-							"personnumber",
-							"tense",
-							"mood",
+				    "personnumber",
+				    "tense",
+				    "mood",
 						
-							"grade",
-							"attrsuffix",
-							"attributive", )
+				    "grade",
+				    "attrsuffix",
+				    "attributive", )
 
 	def __unicode__(self):
 		attrs = [
 				self.stem,
 				self.wordclass,
+				#self.diphtong, # added for sme
+				#self.gradation,  # added for sme
 				self.pos,
 				self.case2, 
 				self.grade, 
