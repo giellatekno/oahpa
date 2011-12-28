@@ -195,7 +195,7 @@
             {% endifequal %}
 			</ul>
 
-			<p>Are you visiting this site as part of a course? <a href="{% url courses.views.courses_main %}">Log in here</a></p>
+			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p>
 			{% endblock %}
 		</div>
 		
