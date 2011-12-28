@@ -22,8 +22,8 @@ from qagame import *
 # applies a context attribute to the returned response so that
 # the trackGrade decorator can work.
 
-from courses.views import render_to_response
-from courses.decorators import trackGrade
+# from courses.views import render_to_response
+# from courses.decorators import trackGrade
 
 class Gameview:
 	def init_settings(self):
@@ -370,7 +370,7 @@ class Quizzview(Gameview):
 ## #
 ## 	return timed
 
-@trackGrade("Leksa")
+# @trackGrade("Leksa")
 def leksa_game(request, place=False):
 	# from django.db import connection
 	# time = 1.0
@@ -473,7 +473,7 @@ class Numview(Gameview):
 
 
 
-@trackGrade("Numra clock")
+# @trackGrade("Numra clock")
 def num_clock(request):
 
 	numgame = Numview(KlokkaSettings, Klokka)
@@ -485,7 +485,7 @@ def num_clock(request):
 	return render_to_response('clock.html', c,
 				context_instance=RequestContext(request))
 
-@trackGrade("Numra ordinal")
+# @trackGrade("Numra ordinal")
 def num_ord(request):
 
 	numgame = Numview(NumSettings, NumGame)
@@ -498,7 +498,7 @@ def num_ord(request):
 				context_instance=RequestContext(request))
 
 
-@trackGrade("Numra cardinal")
+# @trackGrade("Numra cardinal")
 def num(request):
 	numgame = Numview(NumSettings, NumGame)
 	numgame.init_settings()
@@ -509,7 +509,7 @@ def num(request):
 	return render_to_response('num.html', c,
 				context_instance=RequestContext(request))
 
-@trackGrade("Numra dato")
+# @trackGrade("Numra dato")
 def dato(request):
 
 	datogame = Numview(DatoSettings, Dato)
@@ -517,12 +517,12 @@ def dato(request):
 
 	c = datogame.create_numgame(request)
 
-	trackGrade('Numra dato', request, c)
+	# trackGrade('Numra dato', request, c)
 	return render_to_response('dato.html', c,
 				context_instance=RequestContext(request))
 
 # @timeit
-@trackGrade("Morfa")
+# @trackGrade("Morfa")
 def morfa_game(request, pos):
 	"""
 		View for Morfa game. Requires pos argument, ['N', 'V', 'A', 'Num']
@@ -543,7 +543,7 @@ def morfa_game(request, pos):
 ### Contextual Morfas
 
 # @timeit
-@trackGrade("Contextual Morfa")
+# @trackGrade("Contextual Morfa")
 def cmgame(request, pos):
 
 	mgame = Gameview()
