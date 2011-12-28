@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-17 15:54+0100\n"
+"POT-Creation-Date: 2011-12-28 22:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,14 +15,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: courses/models.py:90
-msgid "Student"
-msgstr "Opiskelija"
-
-#: courses/models.py:91
-msgid "Instructor"
-msgstr "Opettaja"
 
 #: templates/404.html:8 templates/500.html:8
 msgid "Error"
@@ -41,6 +33,7 @@ msgid "We are developing the program."
 msgstr "Ohjelman kehitystyö on vielä kesken, pahoittelemme virheitä."
 
 #: templates/grammar_links_menu.html:5
+#: univ_drill/templates/grammar_links_menu.html:5
 msgid "Grammar explanations"
 msgstr "Kielioppiselitykset"
 
@@ -54,19 +47,39 @@ msgstr "Apuneuvoja"
 msgid "Veiledning"
 msgstr "Käyttöohje"
 
-#: templates/univ_oahpa.html:61 templates_old/smaoahpa.html:332
+#: templates/univ_oahpa.html:62 templates/univ_oahpa.html.py:64
+#: templates_old/smaoahpa.html:332
 msgid "Dictionary"
 msgstr "Nettisanakirja"
 
-#: templates/univ_oahpa.html:63 templates/univ_oahpa.html.py:66
-#: templates/univ_oahpa.html:69 templates/univ_oahpa.html.py:72
-#: templates/univ_oahpa.html:75 templates_old/smaoahpa.html:288
+#: templates/univ_oahpa.html:67 templates/univ_oahpa.html.py:70
+#: templates/univ_oahpa.html:73 templates/univ_oahpa.html.py:76
+#: templates/univ_oahpa.html:79 templates_old/smaoahpa.html:288
 #: templates_old/smaoahpa.html.py:300 templates_old/smaoahpa.html:333
 #: templates_old/smaoahpa_old.html:273 templates_old/smaoahpa_old.html:285
 msgid "Grammar"
 msgstr "Kielioppi"
 
-#: templates/univ_oahpa.html:82 templates_old/smaoahpa.html:338
+#: templates/univ_oahpa.html:83
+msgid "Online courses"
+msgstr ""
+
+#: templates/univ_oahpa.html:86
+msgid "View progress"
+msgstr ""
+
+#: templates/univ_oahpa.html:87 templates/admin/base.html:48
+#: templates/registration/password_change_done.html:3
+#: templates/registration/password_change_form.html:4
+msgid "Log out"
+msgstr "Kirjaudu ulos"
+
+#: templates/univ_oahpa.html:89 templates/admin/login.html:26
+#: templates/registration/password_reset_complete.html:14
+msgid "Log in"
+msgstr "Kirjaudu sisään"
+
+#: templates/univ_oahpa.html:97 templates_old/smaoahpa.html:338
 #: templates_old/smaoahpa_new.html:193 templates_old/smaoahpa_old.html:320
 msgid "Feedback"
 msgstr "Palaute"
@@ -123,31 +136,35 @@ msgstr ""
 msgid "Oahpa is connected with online reference materials."
 msgstr "Ressursit"
 
-#: templates/univ_oahpa_main.html:176
+#: templates/univ_oahpa_main.html:177 templates/univ_oahpa_main.html.py:179
 msgid "North Sámi"
 msgstr "Pohjoissaame"
 
-#: templates/univ_oahpa_main.html:176 templates_old/smaoahpa_main.html:135
+#: templates/univ_oahpa_main.html:177
+msgid "Finnish"
+msgstr ""
+
+#: templates/univ_oahpa_main.html:177 templates/univ_oahpa_main.html.py:179
+#: templates_old/smaoahpa_main.html:135 templates_old/smaoahpa_main.html:146
+msgid "dictionary"
+msgstr "nettisanakirja"
+
+#: templates/univ_oahpa_main.html:179 templates_old/smaoahpa_main.html:135
 #: templates_old/smaoahpa_main.html:146
 msgid "Norwegian"
 msgstr "norja"
 
-#: templates/univ_oahpa_main.html:176 templates_old/smaoahpa_main.html:135
-#: templates_old/smaoahpa_main.html:146
-msgid "dictionary"
-msgstr "nettisanakirja"
-
-#: templates/univ_oahpa_main.html:178 templates/univ_oahpa_main.html.py:181
-#: templates/univ_oahpa_main.html:184 templates/univ_oahpa_main.html.py:187
-#: templates/univ_oahpa_main.html:190
+#: templates/univ_oahpa_main.html:182 templates/univ_oahpa_main.html.py:185
+#: templates/univ_oahpa_main.html:188 templates/univ_oahpa_main.html.py:191
+#: templates/univ_oahpa_main.html:194
 msgid "North Sámi grammar"
 msgstr "Pohjoissaamen kielioppi"
 
-#: templates/univ_oahpa_main.html:201
+#: templates/univ_oahpa_main.html:205
 msgid "Copyright 2011 Universitetet i Troms&oslash; "
 msgstr "Copyright 2010 Tromssan yliopisto"
 
-#: templates/univ_oahpa_main.html:202 templates_old/smaoahpa_main.html:155
+#: templates/univ_oahpa_main.html:206 templates_old/smaoahpa_main.html:155
 msgid "Contact"
 msgstr "Ota yhteyttä"
 
@@ -240,12 +257,6 @@ msgstr "Dokumentointi"
 #: templates/registration/password_change_form.html:4
 msgid "Change password"
 msgstr "Muuta salasana"
-
-#: templates/admin/base.html:48
-#: templates/registration/password_change_done.html:3
-#: templates/registration/password_change_form.html:4
-msgid "Log out"
-msgstr "Kirjaudu ulos"
 
 #: templates/admin/base_site.html:4
 msgid "Django site admin"
@@ -392,11 +403,6 @@ msgstr "Käyttäjänimi:"
 msgid "Password:"
 msgstr "Salasana:"
 
-#: templates/admin/login.html:26
-#: templates/registration/password_reset_complete.html:14
-msgid "Log in"
-msgstr "Kirjaudu sisään"
-
 #: templates/admin/object_history.html:22
 msgid "Date/time"
 msgstr "Päivämäärä/aika"
@@ -514,27 +520,40 @@ msgstr ""
 msgid "log in"
 msgstr "Kirjaudu sisään"
 
-#: templates/courses/courses_main.html:14
-#: templates_old/courses/courses_main.html:40
-msgid "Welcome, "
-msgstr "Tervetuloa,"
+#: templates/auth/login.html:38
+msgid ""
+"If you are participating in a course at <a href=\"http://site.uit.no/"
+"\">http://site.uit.no/</a> and are seeing this page, you must log in at site."
+"uit.no first.  If you have already done so click <a href=\"/univ_oahpa/login/"
+"\">here</a> to try logging in again.  If it is still not working, make sure "
+"that you do not have cookies disabled."
+msgstr ""
+"Jos osallistut kurssissa tällä: <a href=\"http://site.uit.no/"
+"\">http://site.uit.no/</a> ja näet tämän sivun, sinun täytyy kirjautua sisään "
+"site.uit.no-sivulle ensin. Jos olet jo tehnyt sen, klikkaa "
+"<a href=\"/univ_oahpa/login/\">tähän</a> ja yritä uudestaan. Jos se ei vieläkään "
+"toimi voit tarkista että evästeet eivät ole estetty."
 
-#: templates/courses/courses_main.html:30
+#: templates/courses/courses_main.html:19
+msgid "Welcome"
+msgstr "Tervetuloa"
+
+#: templates/courses/courses_main.html:35
 #: templates_old/courses/courses_main.html:56
 msgid "Average"
 msgstr ""
 
-#: templates/courses/courses_main.html:31
+#: templates/courses/courses_main.html:36
 #: templates_old/courses/courses_main.html:57
 msgid "Highest score"
 msgstr ""
 
-#: templates/courses/courses_main.html:32
+#: templates/courses/courses_main.html:37
 #: templates_old/courses/courses_main.html:58
 msgid "Lowest score"
 msgstr "Pisteesi:"
 
-#: templates/courses/courses_main.html:33
+#: templates/courses/courses_main.html:38
 #: templates_old/courses/courses_main.html:59
 msgid "Number of tries"
 msgstr ""
@@ -609,7 +628,7 @@ msgstr "Bekreftelse av passordskifte"
 
 #: templates/registration/password_reset_confirm.html:12
 msgid "Enter new password"
-msgstr "Oppgi nytt passord"
+msgstr "Anna uusi salasana"
 
 #: templates/registration/password_reset_confirm.html:14
 msgid ""
@@ -746,6 +765,10 @@ msgstr "Copyright 2010 Tromssan yliopisto"
 #: templates_old/user_auth_block.html:16
 msgid "Course login"
 msgstr "Kurssin sisäänkirjautuminen"
+
+#: templates_old/courses/courses_main.html:40
+msgid "Welcome, "
+msgstr "Tervetuloa,"
 
 #: univ_drill/forms.py:25
 msgid "noun"
@@ -1368,144 +1391,144 @@ msgstr "Mahdollisia vastauksia ei olemassa "
 msgid "No answer given."
 msgstr "Et ole vastannut"
 
-#: univ_drill/views.py:27 univ_drill/views.py:28
+#: univ_drill/views.py:35 univ_drill/views.py:36
 msgid "Practise attributes"
 msgstr "Harjoittele attribuuttimuotoja"
 
-#: univ_drill/views.py:29
+#: univ_drill/views.py:37
 msgid "Practise comparative"
 msgstr "Harjoittele komparatiivia"
 
-#: univ_drill/views.py:30
+#: univ_drill/views.py:38
 msgid "Practise superlative"
 msgstr "Harjoittele superlatiivia"
 
-#: univ_drill/views.py:31
+#: univ_drill/views.py:39
 msgid "Practise attributes in positive"
 msgstr "Harjoittele positiivin attribuuttimuotoja"
 
-#: univ_drill/views.py:32
+#: univ_drill/views.py:40
 msgid "Practise attributes in comparative"
 msgstr "Harjoittele komparatiivin attribuuttimuotoja"
 
-#: univ_drill/views.py:33
+#: univ_drill/views.py:41
 msgid "Practise attributes in superlative"
 msgstr "Harjoittele superlatiivin attribuuttimuotoja"
 
-#: univ_drill/views.py:34
+#: univ_drill/views.py:42
 msgid "Practise predicative in positive"
 msgstr "Harjoittele positiivin predikatiivimuotoja"
 
-#: univ_drill/views.py:35
+#: univ_drill/views.py:43
 msgid "Practise predicative in comparative"
 msgstr "Harjoittele komparatiivin predikatiivimuotoja"
 
-#: univ_drill/views.py:36
+#: univ_drill/views.py:44
 msgid "Practise predicative in superlative"
 msgstr "Harjoittele superlatiivin predikatiivimuotoja"
 
-#: univ_drill/views.py:37
+#: univ_drill/views.py:45
 msgid "Practise numeral attributes"
 msgstr "Harjoittele lukusanojen attribuuttimuotoja"
 
-#: univ_drill/views.py:38 univ_drill/views.py:46
+#: univ_drill/views.py:46 univ_drill/views.py:54
 msgid "Practise plural"
 msgstr "Harjoittele nominatiivin monikkoa"
 
-#: univ_drill/views.py:39 univ_drill/views.py:40 univ_drill/views.py:79
+#: univ_drill/views.py:47 univ_drill/views.py:48 univ_drill/views.py:87
 msgid "Practise nominative"
 msgstr "Harjoittele nominatiivia"
 
-#: univ_drill/views.py:41 univ_drill/views.py:80
+#: univ_drill/views.py:49 univ_drill/views.py:88
 msgid "Practise illative"
 msgstr "Harjoittele illatiivia"
 
-#: univ_drill/views.py:42 univ_drill/views.py:75
+#: univ_drill/views.py:50 univ_drill/views.py:83
 msgid "Practise accusative"
 msgstr "Harjoittele akkusatiivia"
 
-#: univ_drill/views.py:43 univ_drill/views.py:76
+#: univ_drill/views.py:51 univ_drill/views.py:84
 msgid "Practise comitative"
 msgstr "Harjoittele komitatiivia"
 
-#: univ_drill/views.py:44
+#: univ_drill/views.py:52
 msgid "Practise essive"
 msgstr "Harjoittele essiiviä"
 
-#: univ_drill/views.py:45 univ_drill/views.py:78
+#: univ_drill/views.py:53 univ_drill/views.py:86
 msgid "Practise genitive"
 msgstr "Harjoittele genetiiviä"
 
-#: univ_drill/views.py:47 univ_drill/views.py:77
+#: univ_drill/views.py:55 univ_drill/views.py:85
 msgid "Practise locative"
 msgstr "Harjoittele lokatiivia."
 
-#: univ_drill/views.py:48 univ_drill/views.py:49 univ_drill/views.py:50
-#: univ_drill/views.py:51
+#: univ_drill/views.py:56 univ_drill/views.py:57 univ_drill/views.py:58
+#: univ_drill/views.py:59
 msgid "Practise a mix"
 msgstr "Harjoittele sekoitettuja tehtäviä"
 
-#: univ_drill/views.py:52
+#: univ_drill/views.py:60
 msgid "Practise numerals in illative"
 msgstr "Harjoittele lukusanojen illatiivia"
 
-#: univ_drill/views.py:53
+#: univ_drill/views.py:61
 msgid "Practise numerals in accusative"
 msgstr "Harjoittele lukusanojen akkusatiivia"
 
-#: univ_drill/views.py:54
+#: univ_drill/views.py:62
 msgid "Practise numerals in comitative"
 msgstr "Harjoittele lukusanojen komitatiivia"
 
-#: univ_drill/views.py:55
+#: univ_drill/views.py:63
 msgid "Practise numerals in essive"
 msgstr "Harjoittele lukusanojen essiiviä"
 
-#: univ_drill/views.py:56
+#: univ_drill/views.py:64
 msgid "Practise numerals in genitive"
 msgstr "Harjoittele lukusanojen genetiiviä"
 
-#: univ_drill/views.py:57
+#: univ_drill/views.py:65
 msgid "Practise numerals in plural"
 msgstr "Harjoittele lukusanojen monikkoa"
 
-#: univ_drill/views.py:58
+#: univ_drill/views.py:66
 msgid "Practise numerals in locative"
 msgstr "Harjoittele lukusanojen lokatiivia"
 
-#: univ_drill/views.py:59
+#: univ_drill/views.py:67
 msgid "Practise collective numerals"
 msgstr "Harjoittele kollektiivisia lukuja"
 
-#: univ_drill/views.py:60
+#: univ_drill/views.py:68
 msgid "Practise ordinal numbers"
 msgstr "Harjoittele järjestyslukuja"
 
-#: univ_drill/views.py:61 univ_drill/views.py:68
+#: univ_drill/views.py:69 univ_drill/views.py:76
 msgid "Practise present"
 msgstr "Harjoittele preesensiä"
 
-#: univ_drill/views.py:62 univ_drill/views.py:69
+#: univ_drill/views.py:70 univ_drill/views.py:77
 msgid "Practise past"
 msgstr "Harjoittele preteritiä"
 
-#: univ_drill/views.py:63 univ_drill/views.py:70
+#: univ_drill/views.py:71 univ_drill/views.py:78
 msgid "Practise perfect"
 msgstr "Harjoittele perfektiä"
 
-#: univ_drill/views.py:64 univ_drill/views.py:71
+#: univ_drill/views.py:72 univ_drill/views.py:79
 msgid "Practise gerund"
 msgstr "Harjoittele gerundia"
 
-#: univ_drill/views.py:65
+#: univ_drill/views.py:73 univ_drill/views.py:80
 msgid "Practise conditional"
 msgstr "Harjoittele konditionaalia"
 
-#: univ_drill/views.py:66 univ_drill/views.py:73
+#: univ_drill/views.py:74 univ_drill/views.py:81
 msgid "Practise imperative"
 msgstr "Harjoittele imperatiivia"
 
-#: univ_drill/views.py:67 univ_drill/views.py:74
+#: univ_drill/views.py:75 univ_drill/views.py:82
 msgid "Practise potential"
 msgstr "Harjoittele potentiaalia"
 
@@ -1577,7 +1600,7 @@ msgstr "Käännä sanoja. Voit valita aihepiirin tai kirjan, mutta et molempia."
 msgid "Quizz"
 msgstr ""
 
-#: univ_drill/templates/leksa.html:55 univ_drill/templates/leksa_place.html:21
+#: univ_drill/templates/leksa.html:55 univ_drill/templates/leksa_place.html:27
 msgid "Select the language pair"
 msgstr "Valitse kielipari"
 
@@ -1586,7 +1609,7 @@ msgid "Book"
 msgstr "Kirja"
 
 #: univ_drill/templates/leksa.html:62 univ_drill/templates/leksa.html.py:65
-#: univ_drill/templates/leksa_place.html:34 univ_drill/templates/mgame.html:69
+#: univ_drill/templates/leksa_place.html:42 univ_drill/templates/mgame.html:69
 #: univ_drill/templates/num.html:68
 msgid "New set"
 msgstr "Uusi joukko"
@@ -1600,6 +1623,11 @@ msgstr ""
 #: univ_drill/templates/leksa_place.html:19
 msgid "Geography"
 msgstr "Sijainti"
+
+#: univ_drill/templates/leksa_place.html:21
+#: univ_drill/templates/leksa_place.html:26
+msgid "Frequency"
+msgstr "Frekvenssi"
 
 #: univ_drill/templates/mgame.html:30 univ_drill/templates/mgame.html.py:38
 msgid "Nouns"
@@ -1779,6 +1807,12 @@ msgstr "Lähetä viesti"
 #: univ_feedback/templates/thankyou.html:6
 msgid "Thank you for you feedback!"
 msgstr "Kiitos palautteestasi"
+
+#~ msgid "Student"
+#~ msgstr "Opiskelija"
+
+#~ msgid "Instructor"
+#~ msgstr "Opettaja"
 
 #~ msgid "Practise inessive"
 #~ msgstr "Harjoittele inessiiviä"

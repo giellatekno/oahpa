@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-17 15:54+0100\n"
+"POT-Creation-Date: 2011-12-28 22:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,14 +15,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: courses/models.py:90
-msgid "Student"
-msgstr "Studeanta"
-
-#: courses/models.py:91
-msgid "Instructor"
-msgstr "(Bagadus)"
 
 #: templates/404.html:8 templates/500.html:8
 msgid "Error"
@@ -41,6 +33,7 @@ msgid "We are developing the program."
 msgstr "Mii leat bargame dáinna prográmmain."
 
 #: templates/grammar_links_menu.html:5
+#: univ_drill/templates/grammar_links_menu.html:5
 msgid "Grammar explanations"
 msgstr "Grammatihkkačilgehusat"
 
@@ -54,19 +47,39 @@ msgstr "Resurssat"
 msgid "Veiledning"
 msgstr "Bagadus"
 
-#: templates/univ_oahpa.html:61 templates_old/smaoahpa.html:332
+#: templates/univ_oahpa.html:62 templates/univ_oahpa.html.py:64
+#: templates_old/smaoahpa.html:332
 msgid "Dictionary"
 msgstr "Neahttasátnegirji"
 
-#: templates/univ_oahpa.html:63 templates/univ_oahpa.html.py:66
-#: templates/univ_oahpa.html:69 templates/univ_oahpa.html.py:72
-#: templates/univ_oahpa.html:75 templates_old/smaoahpa.html:288
+#: templates/univ_oahpa.html:67 templates/univ_oahpa.html.py:70
+#: templates/univ_oahpa.html:73 templates/univ_oahpa.html.py:76
+#: templates/univ_oahpa.html:79 templates_old/smaoahpa.html:288
 #: templates_old/smaoahpa.html.py:300 templates_old/smaoahpa.html:333
 #: templates_old/smaoahpa_old.html:273 templates_old/smaoahpa_old.html:285
 msgid "Grammar"
 msgstr "Grammatihkka"
 
-#: templates/univ_oahpa.html:82 templates_old/smaoahpa.html:338
+#: templates/univ_oahpa.html:83
+msgid "Online courses"
+msgstr ""
+
+#: templates/univ_oahpa.html:86
+msgid "View progress"
+msgstr ""
+
+#: templates/univ_oahpa.html:87 templates/admin/base.html:48
+#: templates/registration/password_change_done.html:3
+#: templates/registration/password_change_form.html:4
+msgid "Log out"
+msgstr "Logg ut"
+
+#: templates/univ_oahpa.html:89 templates/admin/login.html:26
+#: templates/registration/password_reset_complete.html:14
+msgid "Log in"
+msgstr "Logge sisa"
+
+#: templates/univ_oahpa.html:97 templates_old/smaoahpa.html:338
 #: templates_old/smaoahpa_new.html:193 templates_old/smaoahpa_old.html:320
 msgid "Feedback"
 msgstr "Máhcahus"
@@ -123,31 +136,35 @@ msgstr ""
 msgid "Oahpa is connected with online reference materials."
 msgstr "Resurssat"
 
-#: templates/univ_oahpa_main.html:176
+#: templates/univ_oahpa_main.html:177 templates/univ_oahpa_main.html.py:179
 msgid "North Sámi"
 msgstr "Davvisámegiella"
 
-#: templates/univ_oahpa_main.html:176 templates_old/smaoahpa_main.html:135
+#: templates/univ_oahpa_main.html:177
+msgid "Finnish"
+msgstr ""
+
+#: templates/univ_oahpa_main.html:177 templates/univ_oahpa_main.html.py:179
+#: templates_old/smaoahpa_main.html:135 templates_old/smaoahpa_main.html:146
+msgid "dictionary"
+msgstr "neahttasátnegirji"
+
+#: templates/univ_oahpa_main.html:179 templates_old/smaoahpa_main.html:135
 #: templates_old/smaoahpa_main.html:146
 msgid "Norwegian"
 msgstr "dárogiella"
 
-#: templates/univ_oahpa_main.html:176 templates_old/smaoahpa_main.html:135
-#: templates_old/smaoahpa_main.html:146
-msgid "dictionary"
-msgstr "neahttasátnegirji"
-
-#: templates/univ_oahpa_main.html:178 templates/univ_oahpa_main.html.py:181
-#: templates/univ_oahpa_main.html:184 templates/univ_oahpa_main.html.py:187
-#: templates/univ_oahpa_main.html:190
+#: templates/univ_oahpa_main.html:182 templates/univ_oahpa_main.html.py:185
+#: templates/univ_oahpa_main.html:188 templates/univ_oahpa_main.html.py:191
+#: templates/univ_oahpa_main.html:194
 msgid "North Sámi grammar"
 msgstr "Davvisámegiela grammatihkka"
 
-#: templates/univ_oahpa_main.html:201
+#: templates/univ_oahpa_main.html:205
 msgid "Copyright 2011 Universitetet i Troms&oslash; "
 msgstr "Copyright 2010 Romssa universitehta"
 
-#: templates/univ_oahpa_main.html:202 templates_old/smaoahpa_main.html:155
+#: templates/univ_oahpa_main.html:206 templates_old/smaoahpa_main.html:155
 msgid "Contact"
 msgstr "Váldde oktavuođa minguin:"
 
@@ -240,12 +257,6 @@ msgstr "Dokumentašuvdna"
 #: templates/registration/password_change_form.html:4
 msgid "Change password"
 msgstr "Rievdat čiegussáni"
-
-#: templates/admin/base.html:48
-#: templates/registration/password_change_done.html:3
-#: templates/registration/password_change_form.html:4
-msgid "Log out"
-msgstr "Logg ut"
 
 #: templates/admin/base_site.html:4
 msgid "Django site admin"
@@ -392,11 +403,6 @@ msgstr "Dovddaldat:"
 msgid "Password:"
 msgstr "Čiegussátni:"
 
-#: templates/admin/login.html:26
-#: templates/registration/password_reset_complete.html:14
-msgid "Log in"
-msgstr "Logge sisa"
-
 #: templates/admin/object_history.html:22
 msgid "Date/time"
 msgstr "Dáhton/áigi"
@@ -514,27 +520,35 @@ msgstr ""
 msgid "log in"
 msgstr "Logge sisa"
 
-#: templates/courses/courses_main.html:14
-#: templates_old/courses/courses_main.html:40
-msgid "Welcome, "
+#: templates/auth/login.html:38
+msgid ""
+"If you are participating in a course at <a href=\"http://site.uit.no/"
+"\">http://site.uit.no/</a> and are seeing this page, you must log in at site."
+"uit.no first.  If you have already done so click <a href=\"/univ_oahpa/login/"
+"\">here</a> to try logging in again.  If it is still not working, make sure "
+"that you do not have cookies disabled."
+msgstr ""
+
+#: templates/courses/courses_main.html:19
+msgid "Welcome"
 msgstr "Bures boahtin,"
 
-#: templates/courses/courses_main.html:30
+#: templates/courses/courses_main.html:35
 #: templates_old/courses/courses_main.html:56
 msgid "Average"
 msgstr "Gaskamearálaččat"
 
-#: templates/courses/courses_main.html:31
+#: templates/courses/courses_main.html:36
 #: templates_old/courses/courses_main.html:57
 msgid "Highest score"
 msgstr "Buoremus boađus"
 
-#: templates/courses/courses_main.html:32
+#: templates/courses/courses_main.html:37
 #: templates_old/courses/courses_main.html:58
 msgid "Lowest score"
 msgstr "Du čuoggát:"
 
-#: templates/courses/courses_main.html:33
+#: templates/courses/courses_main.html:38
 #: templates_old/courses/courses_main.html:59
 msgid "Number of tries"
 msgstr ""
@@ -747,6 +761,10 @@ msgstr "Copyright 2011 Romssa universitehta"
 #: templates_old/user_auth_block.html:16
 msgid "Course login"
 msgstr "Kurssa sisaloggen"
+
+#: templates_old/courses/courses_main.html:40
+msgid "Welcome, "
+msgstr "Bures boahtin,"
 
 #: univ_drill/forms.py:25
 msgid "noun"
@@ -1369,144 +1387,144 @@ msgstr "Ingen mulige svar."
 msgid "No answer given."
 msgstr "Du har ikke gitt noe svar."
 
-#: univ_drill/views.py:27 univ_drill/views.py:28
+#: univ_drill/views.py:35 univ_drill/views.py:36
 msgid "Practise attributes"
 msgstr "Hárjehala attribuhttahámiid"
 
-#: univ_drill/views.py:29
+#: univ_drill/views.py:37
 msgid "Practise comparative"
 msgstr "Hárjehala komparatiivva."
 
-#: univ_drill/views.py:30
+#: univ_drill/views.py:38
 msgid "Practise superlative"
 msgstr "Hárjehala superlatiivva."
 
-#: univ_drill/views.py:31
+#: univ_drill/views.py:39
 msgid "Practise attributes in positive"
 msgstr "Hárjehala positiivva attribuhttahámiid."
 
-#: univ_drill/views.py:32
+#: univ_drill/views.py:40
 msgid "Practise attributes in comparative"
 msgstr "Hárjehala komparatiivva attribuhttahámiid."
 
-#: univ_drill/views.py:33
+#: univ_drill/views.py:41
 msgid "Practise attributes in superlative"
 msgstr "Hárjehala superlatiivva attribuhttahámiid."
 
-#: univ_drill/views.py:34
+#: univ_drill/views.py:42
 msgid "Practise predicative in positive"
 msgstr "Hárjehala predikatiivva positiivvas."
 
-#: univ_drill/views.py:35
+#: univ_drill/views.py:43
 msgid "Practise predicative in comparative"
 msgstr "Hárjehala predikatiivva komparatiivvas."
 
-#: univ_drill/views.py:36
+#: univ_drill/views.py:44
 msgid "Practise predicative in superlative"
 msgstr "Hárjehala predikatiivva superlatiivvas."
 
-#: univ_drill/views.py:37
+#: univ_drill/views.py:45
 msgid "Practise numeral attributes"
 msgstr "Hárjehala lohkosániid attribuhttahámiid."
 
-#: univ_drill/views.py:38 univ_drill/views.py:46
+#: univ_drill/views.py:46 univ_drill/views.py:54
 msgid "Practise plural"
 msgstr "Hárjehala eanetlogu nominatiivva."
 
-#: univ_drill/views.py:39 univ_drill/views.py:40 univ_drill/views.py:79
+#: univ_drill/views.py:47 univ_drill/views.py:48 univ_drill/views.py:87
 msgid "Practise nominative"
 msgstr "Hárjehala nominatiivva."
 
-#: univ_drill/views.py:41 univ_drill/views.py:80
+#: univ_drill/views.py:49 univ_drill/views.py:88
 msgid "Practise illative"
 msgstr "Hárjehala illatiivva."
 
-#: univ_drill/views.py:42 univ_drill/views.py:75
+#: univ_drill/views.py:50 univ_drill/views.py:83
 msgid "Practise accusative"
 msgstr "Hárjehala akkusatiivva."
 
-#: univ_drill/views.py:43 univ_drill/views.py:76
+#: univ_drill/views.py:51 univ_drill/views.py:84
 msgid "Practise comitative"
 msgstr "Hárjehala komitatiivva."
 
-#: univ_drill/views.py:44
+#: univ_drill/views.py:52
 msgid "Practise essive"
 msgstr "Hárjehala essiivva."
 
-#: univ_drill/views.py:45 univ_drill/views.py:78
+#: univ_drill/views.py:53 univ_drill/views.py:86
 msgid "Practise genitive"
 msgstr "Hárjehala genetiivva."
 
-#: univ_drill/views.py:47 univ_drill/views.py:77
+#: univ_drill/views.py:55 univ_drill/views.py:85
 msgid "Practise locative"
 msgstr "Hárjehala lokatiivva."
 
-#: univ_drill/views.py:48 univ_drill/views.py:49 univ_drill/views.py:50
-#: univ_drill/views.py:51
+#: univ_drill/views.py:56 univ_drill/views.py:57 univ_drill/views.py:58
+#: univ_drill/views.py:59
 msgid "Practise a mix"
 msgstr "Hárjehala seaghuvvon bargobihtáid."
 
-#: univ_drill/views.py:52
+#: univ_drill/views.py:60
 msgid "Practise numerals in illative"
 msgstr "Hárjehala lohkosániid illatiivvas."
 
-#: univ_drill/views.py:53
+#: univ_drill/views.py:61
 msgid "Practise numerals in accusative"
 msgstr "Hárjehala lohkosániid akkusatiivvas."
 
-#: univ_drill/views.py:54
+#: univ_drill/views.py:62
 msgid "Practise numerals in comitative"
 msgstr "Hárjehala lohkosániid komitatiivvas."
 
-#: univ_drill/views.py:55
+#: univ_drill/views.py:63
 msgid "Practise numerals in essive"
 msgstr "Hárjehala lohkosániid essiivvas."
 
-#: univ_drill/views.py:56
+#: univ_drill/views.py:64
 msgid "Practise numerals in genitive"
 msgstr "Hárjehala lohkosániid genetiivvas."
 
-#: univ_drill/views.py:57
+#: univ_drill/views.py:65
 msgid "Practise numerals in plural"
 msgstr "Hárjehala lohkosániid eanetlogus."
 
-#: univ_drill/views.py:58
+#: univ_drill/views.py:66
 msgid "Practise numerals in locative"
 msgstr "Hárjehala lohkosániid lokatiivvas."
 
-#: univ_drill/views.py:59
+#: univ_drill/views.py:67
 msgid "Practise collective numerals"
 msgstr "Hárjehala čoahkkeloguid."
 
-#: univ_drill/views.py:60
+#: univ_drill/views.py:68
 msgid "Practise ordinal numbers"
 msgstr "Hárjehala ortnetloguid."
 
-#: univ_drill/views.py:61 univ_drill/views.py:68
+#: univ_drill/views.py:69 univ_drill/views.py:76
 msgid "Practise present"
 msgstr "Hárjehala preseanssa."
 
-#: univ_drill/views.py:62 univ_drill/views.py:69
+#: univ_drill/views.py:70 univ_drill/views.py:77
 msgid "Practise past"
 msgstr "Hárjehala preterihta."
 
-#: univ_drill/views.py:63 univ_drill/views.py:70
+#: univ_drill/views.py:71 univ_drill/views.py:78
 msgid "Practise perfect"
 msgstr "Hárjehala perfeavtta."
 
-#: univ_drill/views.py:64 univ_drill/views.py:71
+#: univ_drill/views.py:72 univ_drill/views.py:79
 msgid "Practise gerund"
 msgstr "Hárjehala gerunda."
 
-#: univ_drill/views.py:65
+#: univ_drill/views.py:73 univ_drill/views.py:80
 msgid "Practise conditional"
 msgstr "Hárjehala konditionála."
 
-#: univ_drill/views.py:66 univ_drill/views.py:73
+#: univ_drill/views.py:74 univ_drill/views.py:81
 msgid "Practise imperative"
 msgstr "Hárjehala imperatiivva."
 
-#: univ_drill/views.py:67 univ_drill/views.py:74
+#: univ_drill/views.py:75 univ_drill/views.py:82
 msgid "Practise potential"
 msgstr "Hárjehala potentiála."
 
@@ -1578,7 +1596,7 @@ msgstr "Jogal sániid. Beasat válljet juogo seahta dahje girjji."
 msgid "Quizz"
 msgstr ""
 
-#: univ_drill/templates/leksa.html:55 univ_drill/templates/leksa_place.html:21
+#: univ_drill/templates/leksa.html:55 univ_drill/templates/leksa_place.html:27
 msgid "Select the language pair"
 msgstr "Vállje giellapára"
 
@@ -1587,7 +1605,7 @@ msgid "Book"
 msgstr "Girji"
 
 #: univ_drill/templates/leksa.html:62 univ_drill/templates/leksa.html.py:65
-#: univ_drill/templates/leksa_place.html:34 univ_drill/templates/mgame.html:69
+#: univ_drill/templates/leksa_place.html:42 univ_drill/templates/mgame.html:69
 #: univ_drill/templates/num.html:68
 msgid "New set"
 msgstr "Ođđa bargobihtát"
@@ -1599,6 +1617,11 @@ msgstr "Jorgal báikenamaid"
 #: univ_drill/templates/leksa_place.html:19
 msgid "Geography"
 msgstr "Geografiija"
+
+#: univ_drill/templates/leksa_place.html:21
+#: univ_drill/templates/leksa_place.html:26
+msgid "Frequency"
+msgstr "Frekveansa"
 
 #: univ_drill/templates/mgame.html:30 univ_drill/templates/mgame.html.py:38
 msgid "Nouns"
@@ -1774,6 +1797,12 @@ msgstr "Send melding"
 #: univ_feedback/templates/thankyou.html:6
 msgid "Thank you for you feedback!"
 msgstr "Takk for tilbakemeldinga di!"
+
+#~ msgid "Student"
+#~ msgstr "Studeanta"
+
+#~ msgid "Instructor"
+#~ msgstr "(Bagadus)"
 
 #~ msgid "Practise inessive"
 #~ msgstr "Hárjehala inessiivva"
