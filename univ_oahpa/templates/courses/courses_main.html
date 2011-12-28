@@ -2,6 +2,11 @@
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
+{% comment %}
+TODO: game logo
+TODO: link in user interface
+
+{% endcomment %}
 
 {% block page_class %}fixed{% endblock %}
 
@@ -11,7 +16,7 @@
 		<ul id="subnav">
 			<li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li>
 		</ul>
-		<h2>{% trans 'Welcome, ' %}{{ user.first_name }}!</h2>
+		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
 		{% if is_student %}
 			{% if new_profile %}
 				<p>You don't have any scores yet, go play some games!</p>

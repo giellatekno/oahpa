@@ -78,6 +78,17 @@
         {% ifequal LANGUAGE_CODE "sv" %}
             <li><a href="http://giellatekno.uit.no/oahpa/grammatihkka.nno.html">{% trans "Grammar" %}</a></li>
         {% endifequal %}
+    </ul>
+
+	<strong>{% trans "Online courses" %}</strong>
+	<ul class="sidelist small">
+		{% if user.is_authenticated %}
+			<li><a href="{% url univ_oahpa.courses.views.courses_main %}">{% trans "View progress" %}</a></li>
+			<li><a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>
+		{% else %}
+    		<li><a href="/univ_oahpa/courses/login/">{% trans "Log in" %}</a></li>
+    	{% endif %}
+    </ul>
 	
 	
 </div>
