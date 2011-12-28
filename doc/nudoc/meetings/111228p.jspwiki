@@ -9,6 +9,7 @@ Til stades: Heli, Lene, Ryan, Trond
 * MorfaS
 * MorfaC
 * Loggfunksjon
+* Innlogging
 * Neste møte
 
 
@@ -40,14 +41,10 @@ sma og sme ikkje var innført. Det må Heli og Ryan sjå på i lag.
 
 Den har framleis morfa/baakoe/ som adresse
 
-Det er nye kolonnar i models.py, som ikkje er i databasen.
-(1054, "Unknown column 'univ_drill_feedback.diphthong' in 'field list'")
-
-
 __TILTAK__
 
 * Pronomenkode frå sma-stil til sme-stil (__Heli, Ryan__)
-* url (__Heli__)
+* url, fikse baakoe/ etc. (__Heli__)
 * Lade database (__Heli__)
 
 !! MorfaC
@@ -60,7 +57,7 @@ MorfaC har ulike måtar å vise feil i systemet på. Ryan dokumenterer.
 
 __TILTAK__
 * Lade database (__Heli__)
-* url
+* url (__Heli__, sjå under MorfaS)
 * Deretter teste
 * Dokumentere feilindikatorar (__Ryan__)
 
@@ -70,17 +67,22 @@ Det finst ein midlertidig loggfunksjon.
 
 Det er også ein kommento frå manage.py: 
 
-python manage.py [help] printlogs 
+{{{
+python manage.py [help] printlogs
+}}}
 
-Som prentar ut alle entryane, utan krav til å gå inn i mysql sin shell
+som prentar ut alle entryane, utan krav til å gå inn i mysql sin shell:
 
+{{{
 $ python manage.py printlogs --game numra
 numra|2011/12/27|2|2|True|guokte|None|None
 numra|2011/12/27|8|8|True|gávcci|None|None
 numra|2011/12/27|9|9|True|ovcci|None|None
 numra|2011/12/27|1|1|True|okta|None|None
 numra|2011/12/27|3|3|True|golbma|None|None
+}}}
 
+Oppsett av grafisk loggfunksjon flyttar vi dermed nedover på prioriteringslista.
 
 !! Innlogging
 
@@ -89,22 +91,19 @@ numra|2011/12/27|3|3|True|golbma|None|None
 Her har vi ein plan, jf. [dokumentasjon|http://giellatekno.uit.no/ped/nudoc/login.html].
 
 Det er mogleg å logge seg inn som Subscriber. Biret-Ánne har laga ulike roller.
+Når du loggar inn kjem du på læraren si side, og får sjå beskjedar, osb., slik som i
+Fronter. Vi vil ha spørreskjema for studentane på kurssida, og vi vil ha identifisering 
+for Oahpa (sjå nedanfor)
 
-# Når du loggar inn kjem du på læraren si side, og får sjå beskjedar, osb., slik som i
-  Fronter.
-# Vi vil ha spørreskjema for studentane på kurssida
-# Vi vil ha identifisering for Oahpa (sjå nedanfor)
-
-Det som skal skje er:
-
-* Studenter og lærere legges til av oss (vi registrerer)
-* Folk som ikkje går på kurs kan registrere seg, under pseudonym eller fullt namn,
-  og få tilgang (egenregistrering)
+Det som skal skje er ar studenter og lærere legges til av oss (vi registrerer).
+Folk som ikkje går på kurs kan registrere seg, under pseudonym eller fullt namn,
+og få tilgang (egenregistrering)
 
 __TILTAK__
 
-* Lage kurssider hvor lærerne kan legge informasjon til studentene, knytta til studentinnlogging
-* Lage nivåtestar for studentane
+* Lage kurssider hvor lærerne kan legge informasjon til studentene, 
+  knytta til studentinnlogging (__Lene, Biret Ánne, lærarane__)
+* Lage nivåtestar for studentane (__Lene, Biret Ánne__)
 
 
 
@@ -132,8 +131,10 @@ __TILTAK__
 
 !Innlogging på oahpa
 
-* Innlogging fungerer på univ-Oahpa (Ryan har testa på eigen maskin)
-* tidsbegrensa lærerinnlogging (fungerer for den perioden kurset varer)
+Innlogging fungerer på univ-Oahpa (Ryan har testa på eigen maskin). 
+
+Vi vil også ha tidsbegrensa lærerinnlogging (som fungerer for den 
+perioden kurset varer).
 
 __TILTAK__
 
@@ -147,32 +148,37 @@ Mulig plugin [root-cookie|http://wordpress.org/extend/plugins/root-cookie/downlo
 Men pluginen er ikke oppdatert siden 2009 og kompatibel opp til versjon
 2.8.4. Vi kjører 3.2 (snart 3.3).  
 
+Det vi treng å vite om ''root-cookie'' er dermed:
 
-* root-cookie
-** Finst det verkeleg ikkje andre plugin-ar med same funksjonalitet?
-** Er det mogleg å få root-cookie-programmeraren til å oppdatere plugin-en?
-** Vil vi ha WordPress 2.8.4, eller vil vi finne ein annan plugin?
-** Er det ulemper med 2.8.4, t.d. til å migrere innhaldet vårt til ein eldre versjon?
-* Dobbel innlogging 
-** dvs at Oahpa-innloggingsruta dukker opp når man logger inn på 
-   site.uit.no/oahpa i tillegg til vanlig innlogging til site
+* Finst det verkeleg ikkje andre plugin-ar med same funksjonalitet?
+* Er det mogleg å få root-cookie-programmeraren til å oppdatere plugin-en?
+* Vil vi ha WordPress 2.8.4, eller vil vi finne ein annan plugin?
+* Er det ulemper med 2.8.4, t.d. til å migrere innhaldet vårt til ein eldre versjon?
+
+Eit mogleg utfall er at denne koblinga (innlogging på site medfører identifisering
+som brukar på oahpa) ikkje vil fungere. Alternativet til å koble site.uit.no/oahpa 
+og oahpa er dermed  dobbel innlogging, dvs at studenten må registrere seg to gonger.
+I praksis kan det skje ved at Oahpa-innloggingsruta dukker opp når man logger inn på 
+site.uit.no/oahpa ''i tillegg til'' (dvs. etter) vanlig innlogging til site
+
+Tiltakslista blir dermed nummerert i prioritert rekkjefølgje:
 
 __TILTAK__
 
-# Undersøk versjonsproblemet med root-cookie
-# Leite etter tilsvarande funksjonalitet
-# Lage dobbel innlogging
+# Undersøk versjonsproblemet med root-cookie (__Ryan__)
+# Leite etter tilsvarande funksjonalitet (__Ryan__)
+# Lage dobbel innlogging (__Bjørn, Ryan, Biret-Ánne__ (?))
 
 
 !!Kursstart 2.1.
 
 Dette skal vere på plass:
 
-* Studentar og lærarar må kunne logge seg inn på site.uit.no/oahpa 
+* Studentar og lærarar må kunne logge seg inn på [site.uit.no/oahpa|http://site.uit.no/oahpa]
 ** bare kurslærerside mangler. (__Lene, Biret Ánne__) 
 * Spørreskjemaer og tester (__Lene, Biret Ánne__)
-* ihvertfall Numra, Leksa og MorfaS må fungere (__Heli__)
-* innlogging må vere på plass på univ_oahpa
+* Univ_oahpa: ihvertfall Numra, Leksa og MorfaS må fungere (__Heli__)
+* ''Innlogging'' må vere på plass på univ_oahpa
 ** Funksjonalitet
 ** Plassering  av menyen ''Logg inn''
 ** Lokalisering
