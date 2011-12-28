@@ -153,14 +153,14 @@ class MorphPhonTag(models.Model):
 							"rime",
 							"soggi",)
 def leksa_filter(Model,
-		 lang=False, 
-		 tx_lang=False, 
-		 semtype_incl=False, 
-		 semtype_excl=False, 
-		 source=False, 
-		 geography=False,
-		 frequency=False, # added
-		 ids=False):
+					lang=False, 
+					tx_lang=False, 
+					semtype_incl=False, 
+					semtype_excl=False, 
+					source=False, 
+					geography=False,
+					frequency=False,
+					ids=False):
 	EXCL = {}
 	QUERY = {}
 	
@@ -169,8 +169,6 @@ def leksa_filter(Model,
 	
 	QUERY['language'] = lang
 	QUERY['wordtranslation__language'] = tx_lang
-	if frequency:
-		QUERY['frequency'] = frequency  # added
 	
 	if geography:
 		QUERY['geography'] = geography
@@ -184,14 +182,17 @@ def leksa_filter(Model,
 	if semtype_incl:
 		QUERY['semtype__semtype__in'] = list(semtype_incl)
 	
+	if frequency:
+		QUERY['frequency__in'] = frequency
+	
 	if source and source not in ['all', 'All']:
 		QUERY['source__name__in'] = [source]
 	
 	query_set = Model.objects.exclude(**EXCL).filter(**QUERY).order_by('?')[:10]
 	query_ids = query_set.values_list('id', 'lemma')
 
-	# print connections['default'].queries
 	return query_ids
+
 
 
 class Word(models.Model):
