@@ -1,7 +1,7 @@
 from django.template import Context, RequestContext, loader
 from django.db.models import Q
 from django.http import HttpResponse, Http404
-from django.shortcuts import get_list_or_404, render_to_response
+from django.shortcuts import get_list_or_404
 from django.utils.translation import ugettext as _
 
 from univ_oahpa.conf.tools import switch_language_code
@@ -15,7 +15,15 @@ from qagame import *
 # comment this out
 # DEBUG = open('/dev/ttys001', 'w')
 
-from univ_oahpa.courses.views import trackGrade
+
+# This is some crazy voodoo for course tracking
+
+# render_to_response needs to be imported from here because it
+# applies a context attribute to the returned response so that
+# the trackGrade decorator can work.
+
+from courses.views import render_to_response
+from courses.decorators import trackGrade
 
 class Gameview:
 	def init_settings(self):
@@ -245,8 +253,8 @@ class Quizzview(Gameview):
 			self.settings['frequency'].append('common')
 		if 'rare' in settings_form.data:
 			self.settings['frequency'].append('rare')
-		if len(self.settings['frequency']) == 0:
-			self.settings['frequency'].append('common')
+# 		if len(self.settings['frequency']) == 0:
+# 			self.settings['frequency'].append('common')
 			
 		self.settings['geography'] = []
 		if 'geography' in settings_form.data:
@@ -268,7 +276,7 @@ class Quizzview(Gameview):
 			if not 'geography' in post_like_data:
 				post_like_data['geography'] = 'world'
 			if not 'frequency' in post_like_data:
-				post_like_data['frequency'] = 'common'
+				post_like_data['frequency'] = ''
 		else:
 			post_like_data = False
 
@@ -362,6 +370,7 @@ class Quizzview(Gameview):
 ## #
 ## 	return timed
 
+@trackGrade("Leksa")
 def leksa_game(request, place=False):
 	# from django.db import connection
 	# time = 1.0
@@ -391,7 +400,6 @@ def leksa_game(request, place=False):
 
 	c = leksagame.create_leksagame(request, default_langpair)
 	# Not true or false
-	# trackGrade('Leksa', request, c)
 
 	# querytime = [float(q['time']) for q in connection.queries]
 	# count = len(querytime)
@@ -465,6 +473,7 @@ class Numview(Gameview):
 
 
 
+@trackGrade("Numra clock")
 def num_clock(request):
 
 	numgame = Numview(KlokkaSettings, Klokka)
@@ -473,10 +482,10 @@ def num_clock(request):
 
 	c = numgame.create_numgame(request)
 
-	# trackGrade('Numra clock', request, c)
 	return render_to_response('clock.html', c,
 				context_instance=RequestContext(request))
 
+@trackGrade("Numra ordinal")
 def num_ord(request):
 
 	numgame = Numview(NumSettings, NumGame)
@@ -485,12 +494,11 @@ def num_ord(request):
 
 	c = numgame.create_numgame(request)
 
-	# trackGrade('Numra ordinal', request, c)
 	return render_to_response('num_ord.html', c,
 				context_instance=RequestContext(request))
 
 
-
+@trackGrade("Numra cardinal")
 def num(request):
 	numgame = Numview(NumSettings, NumGame)
 	numgame.init_settings()
@@ -498,11 +506,10 @@ def num(request):
 
 	c = numgame.create_numgame(request)
 
-	# trackGrade('Numra', request, c)
-
 	return render_to_response('num.html', c,
 				context_instance=RequestContext(request))
 
+@trackGrade("Numra dato")
 def dato(request):
 
 	datogame = Numview(DatoSettings, Dato)
@@ -510,10 +517,12 @@ def dato(request):
 
 	c = datogame.create_numgame(request)
 
+	trackGrade('Numra dato', request, c)
 	return render_to_response('dato.html', c,
 				context_instance=RequestContext(request))
 
 # @timeit
+@trackGrade("Morfa")
 def morfa_game(request, pos):
 	"""
 		View for Morfa game. Requires pos argument, ['N', 'V', 'A', 'Num']
@@ -526,8 +535,6 @@ def morfa_game(request, pos):
 	template = 'mgame_%s.html' % pos.lower()[0]
 	c = mgame.create_morfagame(request)
 
-	# trackGrade('Morfa', request, c)
-
 	return render_to_response(template, c,
 				context_instance=RequestContext(request))
 
@@ -536,6 +543,7 @@ def morfa_game(request, pos):
 ### Contextual Morfas
 
 # @timeit
+@trackGrade("Contextual Morfa")
 def cmgame(request, pos):
 
 	mgame = Gameview()
@@ -548,8 +556,6 @@ def cmgame(request, pos):
 
 	template = "mgame_%s.html" % pos.lower()[0]
 	c = mgame.create_morfagame(request)
-
-	# trackGrade('Contextual Morfa', request, c)
 
 	return render_to_response(template, c,
 				context_instance=RequestContext(request))
