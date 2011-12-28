@@ -1,1 +1,194 @@
-adf
+
+!!!Møte 28.12.11
+
+Til stades: Heli, Lene, Ryan, Trond
+
+!!Saksliste
+* Generelt
+* Leksa
+* MorfaS
+* MorfaC
+* Loggfunksjon
+* Neste møte
+
+
+!! Generelt
+
+Manglande endringar i model.py er det som hindrar oss i å sjå MorfaS og MorfaC.
+
+Når univ_oahpa er funskjonell må programmet vere stabilt på dagtid. Databaseinstallering
+skal dermed skje på nattetid.
+
+
+!! Leksa
+
+Leksa fungerer, takk til Ryan :-)
+
+Problemet var at frekvens var lagt inn på feil stad. Då Heli sette den inn stoppa 
+vanleg Leksa å fungere.
+
+Synonym er lagt til. _SWE er ikkje komplett for propernouns.
+
+__TILTAK__
+
+* ''Frequency'' er ikkje lokalisert (__Trond__)
+
+!! MorfaS
+
+Sist: Det var berre pronomen som ikkje fungerte, fordi skilnaden mellom
+sma og sme ikkje var innført. Det må Heli og Ryan sjå på i lag.
+
+Den har framleis morfa/baakoe/ som adresse
+
+Det er nye kolonnar i models.py, som ikkje er i databasen.
+(1054, "Unknown column 'univ_drill_feedback.diphthong' in 'field list'")
+
+
+__TILTAK__
+
+* Pronomenkode frå sma-stil til sme-stil (__Heli, Ryan__)
+* url (__Heli__)
+* Lade database (__Heli__)
+
+!! MorfaC
+
+Substantiv og verb får vi presentert ei liste med 5 ord for.
+Vi har ikkje testa om det går an å få svar frå systemet. 
+Det var feilmeldingar ved installeringa av MorfaC feedback.
+
+MorfaC har ulike måtar å vise feil i systemet på. Ryan dokumenterer.
+
+__TILTAK__
+* Lade database (__Heli__)
+* url
+* Deretter teste
+* Dokumentere feilindikatorar (__Ryan__)
+
+!! Loggfunksjon
+
+Det finst ein midlertidig loggfunksjon.
+
+Det er også ein kommento frå manage.py: 
+
+python manage.py [help] printlogs 
+
+Som prentar ut alle entryane, utan krav til å gå inn i mysql sin shell
+
+$ python manage.py printlogs --game numra
+numra|2011/12/27|2|2|True|guokte|None|None
+numra|2011/12/27|8|8|True|gávcci|None|None
+numra|2011/12/27|9|9|True|ovcci|None|None
+numra|2011/12/27|1|1|True|okta|None|None
+numra|2011/12/27|3|3|True|golbma|None|None
+
+
+!! Innlogging
+
+!site.uit.no/oahpa
+
+Her har vi ein plan, jf. [dokumentasjon|http://giellatekno.uit.no/ped/nudoc/login.html].
+
+Det er mogleg å logge seg inn som Subscriber. Biret-Ánne har laga ulike roller.
+
+# Når du loggar inn kjem du på læraren si side, og får sjå beskjedar, osb., slik som i
+  Fronter.
+# Vi vil ha spørreskjema for studentane på kurssida
+# Vi vil ha identifisering for Oahpa (sjå nedanfor)
+
+Det som skal skje er:
+
+* Studenter og lærere legges til av oss (vi registrerer)
+* Folk som ikkje går på kurs kan registrere seg, under pseudonym eller fullt namn,
+  og få tilgang (egenregistrering)
+
+__TILTAK__
+
+* Lage kurssider hvor lærerne kan legge informasjon til studentene, knytta til studentinnlogging
+* Lage nivåtestar for studentane
+
+
+
+!Brukerregistrering
+
+Jf. siste avsnitt i [dokumentasjonsside om login|../login.html]
+
+Vi ønsker at alle skal kunne registrere seg som brukere og få rollen som subscriber (uten å legges inn av oss) . Deretter skal brukerne navigeres (redirect) til en egen startside, f.eks lærerens side. Alle kurslærere får sin egen side, der de kan legge ut informasjon. Vi ønsker at deres studenter navigeres til denne siden etter log-in, og at de jobber med læringsstiene derifra. De som ikke følger et kurs, skal navigeres til en default startside.
+
+Mulige plug-ins:
+
+* Registrering: [profile-builder|http://wordpress.org/extend/plugins/profile-builder/], kompatibel opp til 3.3
+* Registrering: [simplr-registration-form|http://wordpress.org/extend/plugins/simplr-registration-form/], kompatibel opp til 3.2.1
+* Log in redirect: [peters-login-redirect|http://wordpress.org/extend/plugins/peters-login-redirect/], kompatibel opp til 3.2.1
+
+Man får en Register side på menyen øverst på sida, eller som en menylinje, der alle kan registrere seg. Nå har vi en log-in boks i høyre marg, men da må brukere allerede være registrert (dvs lagt inn av oss). 
+
+En annen mulighet som kanskje kunne brukes, er en poll plug-in som allerede er installert på site.
+
+__TILTAK__
+* Teste poll-pluginen (__Biret-Ánne__)
+* Sjå om poll-pluginen gir oss det vi vil ha (__Ryan__)
+* Sjå på registrering/redirect-plugins (__Ryan__)
+
+
+!Innlogging på oahpa
+
+* Innlogging fungerer på univ-Oahpa (Ryan har testa på eigen maskin)
+* tidsbegrensa lærerinnlogging (fungerer for den perioden kurset varer)
+
+__TILTAK__
+
+* Få innlogging inn i grensesnittet for univ_oahpa (__Ryan__)
+* Lokalisere (__Trond, Lene__)
+* Ny funksjonalitet: Tidsbegrensa lærerinnlogging (__Ryan__)
+
+!Integrering av site.uit.no/oahpa +´oahpa sjølv
+
+Mulig plugin [root-cookie|http://wordpress.org/extend/plugins/root-cookie/download/] 
+Men pluginen er ikke oppdatert siden 2009 og kompatibel opp til versjon
+2.8.4. Vi kjører 3.2 (snart 3.3).  
+
+
+* root-cookie
+** Finst det verkeleg ikkje andre plugin-ar med same funksjonalitet?
+** Er det mogleg å få root-cookie-programmeraren til å oppdatere plugin-en?
+** Vil vi ha WordPress 2.8.4, eller vil vi finne ein annan plugin?
+** Er det ulemper med 2.8.4, t.d. til å migrere innhaldet vårt til ein eldre versjon?
+* Dobbel innlogging 
+** dvs at Oahpa-innloggingsruta dukker opp når man logger inn på 
+   site.uit.no/oahpa i tillegg til vanlig innlogging til site
+
+__TILTAK__
+
+# Undersøk versjonsproblemet med root-cookie
+# Leite etter tilsvarande funksjonalitet
+# Lage dobbel innlogging
+
+
+!!Kursstart 2.1.
+
+Dette skal vere på plass:
+
+* Studentar og lærarar må kunne logge seg inn på site.uit.no/oahpa 
+** bare kurslærerside mangler. (__Lene, Biret Ánne__) 
+* Spørreskjemaer og tester (__Lene, Biret Ánne__)
+* ihvertfall Numra, Leksa og MorfaS må fungere (__Heli__)
+* innlogging må vere på plass på univ_oahpa
+** Funksjonalitet
+** Plassering  av menyen ''Logg inn''
+** Lokalisering
+* Testing
+
+Ferdig til fredag.
+
+!! Neste møte
+
+Fredag 08.00 T / 01.00 M (dvs. torsdag kveld etter midnatt M)
+
+
+
+
+
+
+
+
+
