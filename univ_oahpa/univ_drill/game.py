@@ -43,8 +43,8 @@ except:
 	DEFAULT_DIALECT = None
 
 
-FST_DIRECTORY = '/opt/smi/sme/bin' #Just testing. Hardcoded here because it looks like looking it up in settings.py failed
-LOOKUP_TOOL = '/usr/local/bin/lookup'
+# FST_DIRECTORY = '/opt/smi/sme/bin' #Just testing. Hardcoded here because it looks like looking it up in settings.py failed
+# LOOKUP_TOOL = '/usr/local/bin/lookup'
 
 """ moved to forms.py
 def relax(strict):
@@ -1037,9 +1037,9 @@ class QuizzGame(Game):
 		# levels = self.settings['level']
 		semtypes = self.settings['semtype']
 		geography = self.settings['geography']
-		frequency = self.settings['frequency']
+		frequency = True and self.settings['frequency'] or False # frequency value or False
 		source = self.settings['source']
-				
+		
 		source_language = self.settings['transtype'][0:3]
 		target_language = self.settings['transtype'][-3::]
 		QueryModel = Word
@@ -1070,23 +1070,28 @@ class QuizzGame(Game):
 			
 			if geography:
 				leksa_kwargs['geography'] = geography
-				
-			if frequency:
-				leksa_kwargs['frequency'] = frequency
-			
+
 			if excl:
 				leksa_kwargs['semtype_excl'] = excl
-			
-			frequencys = []  # by example of syll
-			cmn = ['common', 'common']
-			rr = ['rare', 'rare']
 
-			for item in frequency:
-				if item in cmn:
-				    frequencys.extend(cmn)
-				if item in rr:
-				    frequencys.extend(rr)
-		
+			# The following is written by the example of sylls in MorfaS: this
+			# can probably be simplified-- with sylls in MorfaS there was a
+			# time when there were several possible values (3syll,
+			# trisyllabic), but this should be no longer the case...
+
+			kw_frequency = []
+			common = ['common', 'common']
+			rare = ['rare', 'rare']
+
+			if frequency:
+				for item in frequency:
+					if item in common:
+					    kw_frequency.extend(common)
+					if item in rare:
+					    kw_frequency.extend(rare)
+				
+				leksa_kwargs['frequency'] = list(set(kw_frequency))
+
 			word_set = leksa_filter(QueryModel, **leksa_kwargs)
 
 			self.query_set = word_set
