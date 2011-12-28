@@ -19,7 +19,7 @@ stem_convert = {
 	'3syll': '3syll',
 	'bisyllabic': '2syll',
 	'trisyllabic': '3syll',
-	'': '',
+	'': '', # contracted : Csyll ?
 }
 
 
@@ -58,9 +58,9 @@ class Feedback_install:
 		attrs = {
 			'pos': pos,
 			'stem': stem,
-			# 'diphthong': diphthong,
-			# 'gradation': gradation,
-			# 'rime': rime,
+			'diphthong': diphthong,
+			'gradation': gradation,
+			'rime': rime,
 			'soggi': soggi,
 			'case2': case,
 			'number': number,
@@ -108,9 +108,9 @@ class Feedback_install:
 				rime = el.getAttribute("rime")
 				if rime=="0": rime = ""
 				rimes[rime] = 1
-			# if el.getAttribute("gradation"):
-				# gradation = el.getAttribute("gradation")
-				# gradations[gradation] = 1
+			if el.getAttribute("gradation"):
+				gradation = el.getAttribute("gradation")
+				gradations[gradation] = 1
 			if el.getAttribute("attrsuffix"):
 				attrsuffix = el.getAttribute("attrsuffix")
 				if attrsuffix=="0": attrsuffix = "noattr"
@@ -135,21 +135,21 @@ class Feedback_install:
 		# so note that adding things to these lists and the forloops further down
 		# may result in big changes.
 		
-		# diphthongs = ["yes","no"]
-		stems = ["3syll", "2syll"]
+		diphthongs = ["yes","no"]
+		stems = ["3syll", "2syll", "Csyll"]
 		wordclasses = ['I', 'II', 'III', 'IV', 'V', 'VI']
 		grades = ["Comp","Superl","Pos"]
 		# Sma requires different cases
-		cases = ["Nom", "Acc", "Gen", "Ill", "Ine", "Ela", "Com", "Ess"]
+		cases = ["Nom", "Acc", "Gen", "Ill", "Loc", "Com", "Ess"]
 		numbers = ["Sg","Pl"]
 		tenses = ["Prs","Prt"]
 		moods = ["Ind","Cond","Pot","Imprt"]
 		personnumbers = ["Sg1","Sg2","Sg3","Du1","Du2","Du3","Pl1","Pl2","Pl3"]
 		
 		messages=[]
-		# print rimes.keys()
+		print rimes.keys()
 		print soggis.keys()
-		# print gradations.keys()
+		print gradations.keys()
 		print compsuffixs.keys()
 		print attrsuffixs.keys()
 		print wordclasses
@@ -158,7 +158,7 @@ class Feedback_install:
 		print numbers
 		print personnumbers
 		
-		# print diphthongs
+		print diphthongs
 
 		
 		# Read the feedback file
@@ -173,14 +173,14 @@ class Feedback_install:
 			for f in oldfs:
 				f.delete()				
 		stem_messages = {}
-		# gradation_messages = {}
+		gradation_messages = {}
 
 		if pos=="V":
 			rimes[""] = 1
-			# diphthongs.append("")
+			diphthongs.append("")
 		if pos=="Num":
 			rimes[""] = 1
-			# diphthongs.append("")
+			diphthongs.append("")
 
 		# cursor = connection.cursor()						
 
@@ -190,7 +190,7 @@ class Feedback_install:
 			stem =""
 			diphthong =""
 			rime =""
-			# gradation=""
+			gradation=""
 			soggi =""
 			attrsuffix =""
 			wordclass = ""
@@ -219,22 +219,22 @@ class Feedback_install:
 			if not wordclass:  ftempl.wordclass = wordclasses
 			
 			# Complementary distribution of stem and wordclass
-			if pos == 'V':
+			if pos == 'V':  # NB! HERE ARE SOME CHANGES NEEDED FOR sme
 				if stem == '3syll':
 					ftempl.wordclass = ['']
 				elif wordclass:
 					ftempl.stem = [ '2syll' ]
 			# print 'wc: ' + repr(ftempl.wordclass)
 			# print 'st: ' + repr(ftempl.stem)
-			# if el.getAttribute("gradation"):
-				# gradation=el.getAttribute("gradation")
-				# if gradation: ftempl.gradation = [ gradation ]
-			# if not gradation: ftempl.gradation = gradations.keys()
+			if el.getAttribute("gradation"):
+				gradation=el.getAttribute("gradation")
+				if gradation: ftempl.gradation = [ gradation ]
+			if not gradation: ftempl.gradation = gradations.keys()
 				
-			# if el.getAttribute("diphthong"):
-				# diphthong=el.getAttribute("diphthong")
-				# if diphthong: ftempl.diphthong = [ diphthong ]
-			# if not diphthong: ftempl.diphthong = diphthongs
+			if el.getAttribute("diphthong"):
+				diphthong=el.getAttribute("diphthong")
+				if diphthong: ftempl.diphthong = [ diphthong ]
+			if not diphthong: ftempl.diphthong = diphthongs
 
 			if el.getAttribute("soggi"):
 				soggi=el.getAttribute("soggi")
@@ -269,8 +269,8 @@ class Feedback_install:
 				f.pos = ftempl.pos[:]
 				f.stem = ftempl.stem[:]
 				f.wordclass = ftempl.wordclass[:]
-				# f.gradation = ftempl.gradation[:]
-				# f.diphthong = ftempl.diphthong[:]
+				f.gradation = ftempl.gradation[:]
+				f.diphthong = ftempl.diphthong[:]
 				f.soggi = ftempl.soggi[:]
 				f.rime = ftempl.rime[:]
 				f.attrsuffix = ftempl.attrsuffix[:]
@@ -339,57 +339,57 @@ class Feedback_install:
 			
 			if f.pos == "A": # or pos=="A" or pos=="Num":
 				for stem in f.stem:
-					# for gradation in f.gradation:
-					# for diphthong in f.diphthong:
-					for rime in f.rime:
-						for soggi in f.soggi:
-							if f.pos == "A":
-								for grade in f.grade:
-									for attributive in f.attributive:
-										if attributive == 'Attr':
-											# Attributive forms: no case inflection.
-											for attrsuffix in f.attrsuffix:
-												case=""
-												number=""												
-												self.insert_feedback(
-													pos=pos,
-													stem=stem,
-													rime=rime,
-													soggi=soggi,
-													case=case,
-													number=number,
-													personnumber='',
-													tense='',
-													mood='',
-													attributive='Attr',
-													grade=grade,
-													attrsuffix=attrsuffix,
-													wordclass='')
+					for gradation in f.gradation:
+                        for diphthong in f.diphthong:
+                            for rime in f.rime:
+                                for soggi in f.soggi
+                                    if f.pos == "A":
+				                        for grade in f.grade:
+                                            for attributive in f.attributive:
+                                                if attributive == 'Attr':
+											     # Attributive forms: no case inflection.
+											         for attrsuffix in f.attrsuffix:
+                                                        case=""
+												        number=""												
+												        self.insert_feedback(
+													       pos=pos,
+													       stem=stem,
+													       rime=rime,
+													       soggi=soggi,
+													       case=case,
+													       number=number,
+													       personnumber='',
+													       tense='',
+													       mood='',
+													       attributive='Attr',
+													       grade=grade,
+													       attrsuffix=attrsuffix,
+													       wordclass='')
 												
-												f2, created=Feedback.objects.get_or_create(stem=stem,\
-																						   # diphthong=diphthong,\
-																						   # gradation=gradation,\
-																						   # rime=rime,\
-																						   attributive='Attr',\
-																						   attrsuffix=attrsuffix,\
-																						   pos=pos,\
-																						   number=number,\
-																						   grade=grade,\
-																						   soggi=soggi)
-												if messages:
-													f2.messages.add(msgs[0])
-												else : print "No messages found:", f.msgid
-												# for d in dialects:
-													# f2.dialects.add(d)
-												f2.save()
-							
-										else:
-											for case in f.case:
-												#essive without number inflection
-												if case == "Ess":
-													number=""
+												        f2, created=Feedback.objects.get_or_create(
+												            stem=stem,
+												            diphthong=diphthong,
+												            gradation=gradation,
+												            rime=rime,
+												            attributive='Attr',
+												            attrsuffix=attrsuffix,
+												            pos=pos,
+												            number=number,
+												            grade=grade,
+												            soggi=soggi)
+												        if messages:
+													       f2.messages.add(msgs[0])
+												        else : print "No messages found:", f.msgid
+												        # for d in dialects:
+													       # f2.dialects.add(d)
+												        f2.save()
+							                     else:
+											         for case in f.case:
+												        #essive without number inflection
+												        if case == "Ess":
+													       number=""
 													
-													self.insert_feedback(pos=pos,
+													   self.insert_feedback(pos=pos,
 																		stem=stem,
 																		rime=rime,
 																		soggi=soggi,
@@ -403,16 +403,18 @@ class Feedback_install:
 																		attrsuffix='',
 																		wordclass='')
 													
-													f2, created=Feedback.objects.get_or_create(stem=stem,\
-																							   # diphthong=diphthong,\
-																							   # gradation=gradation,\
-																							   # rime=rime,\
-																							   attributive='NoAttr',\
-																							   pos=pos,\
-																							   number=number,\
-																							   case2=case,\
-																							   grade=grade,\
-																							   soggi=soggi)
+													f2, created=Feedback.objects.get_or_create(
+													       stem=stem,
+													       diphthong=diphthong, 
+													       gradation=gradation,
+													       rime=rime,
+													       attributive='NoAttr',
+													       pos=pos,
+													       number=number,
+													       case2=case,
+													       grade=grade,
+													       soggi=soggi)
+													       
 													if messages:
 														f2.messages.add(msgs[0])
 													else : print "No messages found:", f.msgid
@@ -437,16 +439,17 @@ class Feedback_install:
 																			# attrsuffix='',
 																			wordclass='')
 														
-														f2, created=Feedback.objects.get_or_create(stem=stem,\
-																								   # diphthong=diphthong,\
-																								   # gradation=gradation,\
-																								   # rime=rime,\
-																								   attributive='NoAttr',\
-																								   pos=pos,\
-																								   case2=case,\
-																								   number=number, \
-																								   grade=grade,\
-																								   soggi=soggi)
+														f2, created=Feedback.objects.get_or_create(
+														      stem=stem, 
+														      diphthong=diphthong,
+														      gradation=gradation,
+														      rime=rime,
+														      attributive='NoAttr',
+														      pos=pos,
+														      case2=case,
+														      number=number,
+														      grade=grade,
+														      soggi=soggi)
 														if messages:
 															f2.messages.add(msgs[0])
 														else : print "No messages found:", f.msgid
@@ -477,6 +480,7 @@ class Feedback_install:
 					f.soggi, 
 					f.case, 
 					f.number)
+					# include gradation, diphthong, rime also ?
 				messages = Feedbackmsg.objects.filter(msgid=f.msgid)
 				
 				for iteration in products:
@@ -492,7 +496,9 @@ class Feedback_install:
 								case=case,
 								number=number,
 								# empties
-								rime='',
+								rime='', 
+								gradation='', # added for sme
+								diphthong='', # added for sme
 								personnumber='',
 								tense='',
 								mood='',
@@ -515,9 +521,10 @@ class Feedback_install:
 			if f.pos == "V":				
 				products = product(f.wordclass, 
 									f.stem, 
-#									f.diphthong, 
+									f.diphthong,
+									f.gradation, # added 
 									f.soggi, 
-#									f.rime, 
+									f.rime, 
 									f.personnumber, 
 									f.tense, 
 									f.mood)
@@ -541,6 +548,8 @@ class Feedback_install:
 						'mood': mood,
 						'attributive': '',
 						'rime': '',
+						'diphthong': '',  # added for sme
+						'gradation': '',  # added for sme
 						'case': '',
 						'number': '',
 						'grade': '',
