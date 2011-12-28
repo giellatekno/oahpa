@@ -563,7 +563,7 @@ class Feedback(models.Model):
 	dialects = models.ManyToManyField(Dialect)
 	diphthong = models.CharField(max_length=5,blank=True,null=True)
 	gradation = models.CharField(max_length=15,null=True,blank=True)
-	# rime = models.CharField(max_length=20,null=True,blank=True)
+	rime = models.CharField(max_length=20,null=True,blank=True) # added
 	soggi = models.CharField(max_length=10,null=True,blank=True)
 	stem = models.CharField(max_length=20,blank=True,null=True)
 	wordclass = models.CharField(max_length=20,blank=True,null=True)
@@ -586,8 +586,8 @@ class Feedback(models.Model):
 				    "stem",
 				    "soggi",
 				    "wordclass",
-				    #"diphtong", # added for sme
-				    #"gradation", # added for sme
+				    "diphthong", # added for sme
+				    "gradation", # added for sme
 				    "case2",
 				    "number",
 						
@@ -603,8 +603,8 @@ class Feedback(models.Model):
 		attrs = [
 				self.stem,
 				self.wordclass,
-				#self.diphtong, # added for sme
-				#self.gradation,  # added for sme
+				self.diphthong, # added for sme
+				self.gradation,  # added for sme
 				self.pos,
 				self.case2, 
 				self.grade, 
