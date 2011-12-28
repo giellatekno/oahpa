@@ -497,13 +497,19 @@ class BareGame(Game):
 			TAG_QUERY = TAG_QUERY & \
 						Q(possessive="") & \
 						Q(case=case)
+						# regardless of whether it's Actor, Coll, etc.
 
 			if case == 'Nom':
 				TAG_QUERY = TAG_QUERY & Q(number='Pl')
-		
-		if pos == 'Pron':
-			sylls = False
 
+			# 'Pers' subclass for pronouns, otherwise none.
+			# TODO: combine all subclasses so forms can be fetched
+			if pos == 'Pron':
+				sylls = False
+				TAG_QUERY = TAG_QUERY & Q(subclass='Pers')
+			else:
+				TAG_QUERY = TAG_QUERY & Q(subclass='')
+		
 		if pos == 'V':
 			TAG_QUERY =  TAG_QUERY & \
 							Q(tense=tense) & \
@@ -564,7 +570,7 @@ class BareGame(Game):
 			count = 0
 			while no_form and count < 10:
 				random_word = tag.form_set.filter(word__language=L1)
-				# .filter(dialects=Q_DIALECT)
+
 				if sylls:
 					random_word = random_word.filter(word__stem__in=sylls)
 				if source:
@@ -574,12 +580,17 @@ class BareGame(Game):
 					random_word = random_form.word
 					no_form = False
 					break
+				elif random_word.count () == 1:
+					random_form = random_word[0]
+					random_word = random_form.word
+					break
 				else:
 					count += 1
 					continue
 
 			db_info['word_id'] = random_word.id
 			db_info['tag_id'] = tag.id
+
 		except IndexError:
 			wc = Word.objects.count()
 			tc = Tag.objects.count()
