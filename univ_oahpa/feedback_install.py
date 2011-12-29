@@ -45,7 +45,7 @@ class Feedback_install:
 		for el in tree.getElementsByTagName("message"):
 			mid=el.getAttribute("id")
 			message = el.firstChild.data
-			print message
+			print >> sys.stdout, message
 			fm, created = Feedbackmsg.objects.get_or_create(msgid=mid)
 			fm.save()
 
@@ -72,7 +72,7 @@ class Feedback_install:
 		try:
 			stem = stem_convert[stem]
 		except KeyError:
-			print "Non-existent stem: %s" % stem
+			print >> sys.stderr, "Non-existent stem: %s" % stem
 			sys.exit(2)
 		
 		attrs = {
@@ -92,13 +92,19 @@ class Feedback_install:
 			'wordclass': wordclass,
 		}
 		
-		feed, created = Feedback.objects.get_or_create(**attrs)
+		try:
+			feed, created = Feedback.objects.get_or_create(**attrs)
+		except Exception, e:
+			print >> sys.stderr, Exception, e
+			print >> sys.stderr, attrs
+			sys.exit()
 
 		if created:
 			self.obj_count += 1
 		
 		return feed
 
+	# NOTE: this silences some exceptions, so if something goes wrong, comment it out
 	@transaction.commit_manually
 	def read_feedback(self, infile, wordfile):
 		"""
@@ -114,8 +120,8 @@ class Feedback_install:
 		"""
 
 		# from django.db import connection
-		print infile
-		print wordfile
+		print >> sys.stdout, infile
+		print >> sys.stdout, wordfile
 
 		wordfile=file(wordfile)
 		wordtree = _dom.parse(wordfile)
@@ -171,18 +177,18 @@ class Feedback_install:
 		personnumbers = ["Sg1","Sg2","Sg3","Du1","Du2","Du3","Pl1","Pl2","Pl3"]
 		
 		messages=[]
-		print rimes.keys()
-		print soggis.keys()
-		print gradations.keys()
-		print compsuffixs.keys()
-		print attrsuffixs.keys()
-		print wordclasses
-		print grades
-		print cases
-		print numbers
-		print personnumbers
+		print >> sys.stdout, rimes.keys()
+		print >> sys.stdout, soggis.keys()
+		print >> sys.stdout, gradations.keys()
+		print >> sys.stdout, compsuffixs.keys()
+		print >> sys.stdout, attrsuffixs.keys()
+		print >> sys.stdout, wordclasses
+		print >> sys.stdout, grades
+		print >> sys.stdout, cases
+		print >> sys.stdout, numbers
+		print >> sys.stdout, personnumbers
 		
-		print diphthongs
+		print >> sys.stdout, diphthongs
 
 		
 		# Read the feedback file
@@ -192,7 +198,7 @@ class Feedback_install:
 		fb = tree.getElementsByTagName("feedback")[0]
 		pos = fb.getAttribute("pos").upper()
 		if pos:
-			print "Deleting old feedbacks for pos", pos
+			print  >> sys.stdout,"Deleting old feedbacks for pos", pos
 			oldfs = Feedback.objects.filter(pos=pos)			
 			for f in oldfs:
 				f.delete()				
@@ -226,11 +232,11 @@ class Feedback_install:
 
 			if el.getAttribute("stem"):
 				stem=el.getAttribute("stem")
-				print 'stem found: %s' % repr(stem)
+				print >> sys.stdout, 'stem found: %s' % repr(stem)
 				try:
 					stem = stem_convert[stem]
 				except:
-					print "Unknown value: %s" % stem
+					print >> sys.stderr, "Unknown value: %s" % stem
 					sys.exit(2)
 				
 				if stem: ftempl.stem = [ stem ]
@@ -238,7 +244,7 @@ class Feedback_install:
 			
 			if el.getAttribute("class"):
 				wordclass=el.getAttribute("class")
-				print 'class found: %s' % repr(wordclass)
+				print >> sys.stdout, 'class found: %s' % repr(wordclass)
 				if wordclass: ftempl.wordclass = [ wordclass ]
 			if not wordclass:  ftempl.wordclass = wordclasses
 			
@@ -352,7 +358,7 @@ class Feedback_install:
 
 		
 		for f in messages:
-			print f.msgid + ': ' + u', '.join([a.value for a in f.attributes.values()])
+			print >> sys.stdout, f.msgid + ': ' + u', '.join([a.value for a in f.attributes.values()])
 			messages = Feedbackmsg.objects.filter(msgid=f.msgid)
 			# dialects = Dialect.objects.filter(dialect__in=f.dialects)
 			
@@ -434,20 +440,20 @@ class Feedback_install:
 						for msg in messages:
 				   	   		f2.messages.add(msg)
 				   	else:
-						print "No messages found:", f.msgid
+						print >> sys.stderr, "No messages found:", f.msgid
 					# for d in dialects:
 				   	   # f2.dialects.add(d)
 					f2.save()
 					count += 1
 					if count%100 == 0:
-						print 'created %d feedbacks' % self.obj_count
-						print '%s  %d/%d' % (f.msgid, count, total_iteration_count)
+						print >> sys.stdout, 'created %d feedbacks' % self.obj_count
+						print >> sys.stdout, '%s  %d/%d' % (f.msgid, count, total_iteration_count)
 
 					if count%2500 == 0:
 						print 'commit'
 						transaction.commit()
 					
-				print '%s  %d/%d' % (f.msgid, count, total_iteration_count)
+				print >> sys.stdout, '%s  %d/%d' % (f.msgid, count, total_iteration_count)
 				transaction.commit()
 			
 			#NEW_ATTRIBUTES
@@ -526,20 +532,20 @@ class Feedback_install:
 						for msg in messages:
 							f2.messages.add(msg)
 					else: 
-						print "No messages found:", f.msgid
+						print >> sys.stderr, "No messages found:", f.msgid
 					# for d in dialects:
 						# f2.dialects.add(d)
 					f2.save()
 					count += 1
 					if count%100 == 0:
-						print 'created %d feedbacks' % self.obj_count
-						print '%s  %d/%d' % (f.msgid, count, total_iteration_count)
+						print >> sys.stdout,'created %d feedbacks' % self.obj_count
+						print >> sys.stdout, '%s  %d/%d' % (f.msgid, count, total_iteration_count)
 
 					if count%2500 == 0:
 						print 'commit'
 						transaction.commit()
 					
-				print '%s  %d/%d' % (f.msgid, count, total_iteration_count)
+				print >> sys.stdout, '%s  %d/%d' % (f.msgid, count, total_iteration_count)
 				transaction.commit()
 				
 			
@@ -625,20 +631,20 @@ class Feedback_install:
 						for msg in messages:
 							f2.messages.add(msg)
 					else: 
-						print "No messages found:", f.msgid
+						print >> sys.stdout, "No messages found:", f.msgid
 					# for d in dialects:
 						# f2.dialects.add(d)
 					f2.save()
 					count += 1
 					if count%100 == 0:
-						print 'created %d feedbacks' % self.obj_count
-						print '%s  %d/%d' % (f.msgid, count, total_iteration_count)
+						print >> sys.stdout, 'created %d feedbacks' % self.obj_count
+						print >> sys.stdout, '%s  %d/%d' % (f.msgid, count, total_iteration_count)
 
 					if count%2500 == 0:
 						print 'commit'
 						transaction.commit()
 					
-				print '%s  %d/%d' % (f.msgid, count, total_iteration_count)
+				print >> sys.stdout, '%s  %d/%d' % (f.msgid, count, total_iteration_count)
 				transaction.commit()
 
 			transaction.commit()
