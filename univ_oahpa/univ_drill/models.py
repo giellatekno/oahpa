@@ -553,6 +553,7 @@ class Feedbacktext(models.Model):
 		S = unicode('/'.join([a for a in attrs if a.strip()])).encode('utf-8')
 		return self.language + u':' + self.message
 
+# Should insert some indexes here, should improve search time since a lot of these have repeated values
 class Feedback(models.Model):
 	messages = models.ManyToManyField(Feedbackmsg)
 	# TODO: pos = models.CharField(max_length=12)
@@ -588,6 +589,7 @@ class Feedback(models.Model):
 				    "wordclass",
 				    "diphthong", # added for sme
 				    "gradation", # added for sme
+				    "rime",
 				    "case2",
 				    "number",
 						
