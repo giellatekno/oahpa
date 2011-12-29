@@ -17,6 +17,22 @@ mysql> exit
 
 The resulting file can then be gathered. Note that the command will overwrite earlier files in the tmp catalogue. As can be seen, more refined commands are possible (refining the log result).
 
+Logs may also be extracted from the command line directly, and one program at a time. This command prints all the entries:
+
+{{{
+python manage.py [help] printlogs
+}}}
+
+Cf. an actual example:
+
+{{{
+$ python manage.py printlogs --game numra
+numra|2011/12/27|9|9|True|ovcci|None|None
+numra|2011/12/27|1|1|True|okta|None|None
+numra|2011/12/27|3|3|True|golbma|None|None
+}}}
+
+
 
 !!For other oahpa versions
 
@@ -31,3 +47,4 @@ mysql> select * from smadrill_log order by game into outfile '/usr/tmp/smaoahpal
 mysql> exit
 }}}
 
+… and correspondingly for the command line option.
