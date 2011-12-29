@@ -529,20 +529,38 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 
 	
 	# Word -> Feedback
+	# These should generally match up with attributes in <l /> in source data
 	word_attrs = {
 		'N': {
 			'pos': word.pos,
 			'soggi': word.soggi,
 			'stem': word.stem,
+			'diphthong': word.diphthong,
+			'gradation': word.gradation,
+			'rime': word.rime,
 		},
 		'V': {
+			'pos': word.pos,
+			'soggi': word.soggi,
+			'wordclass': word.wordclass,
+			'stem': word.stem,
+			'diphthong': word.diphthong,
+			'gradation': word.gradation,
+			'rime': word.rime,
+		},
+		'A': {
 			'wordclass': word.wordclass,
 			'stem': word.stem,
 			'pos': word.pos,
+			'diphthong': word.diphthong,
+			'gradation': word.gradation,
+			'attrsuffix': word.attrsuffix,
+			'rime': word.rime,
 		},
 	}
 	
 	# Tag -> Feedback
+	# inflectional information
 	tag_attrs = {
 		'N': {
 			'case2': tag.case,
@@ -552,6 +570,11 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 			'mood': tag.mood,
 			'tense': tag.tense,
 			'personnumber': tag.personnumber,
+		},
+		'A': {
+			'case2': tag.case,
+			'number': tag.number,
+			'attributive': tag.attributive,
 		}
 	}
 		
@@ -559,7 +582,7 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 		POS = 'N'
 		# build Q for noun
 	elif tag.pos == "A":
-		return
+		POS = 'A'
 		# build Q for verb
 	elif tag.pos == "V":
 		POS = 'V'
@@ -583,6 +606,13 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 		elif FILTERS['stem'] == '2syll':
 			FILTERS.pop('stem')
 	
+	if POS == 'A':
+		if 'grade' not in FILTERS:
+			FILTERS['grade'] = 'Pos'
+
+		if 'attributive' not in FILTERS:
+			FILTERS['attributive'] = 'NoAttr'
+
 	# Adopt this to new code.
 	# elif tag.pos == "A":
 	# 	if tag.grade: 
@@ -618,7 +648,7 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 					text = text.replace('WORDFORM', '"%s"' % wordform)
 					message_list.append(text)
 	
-	self.feedback = ' \n '.join(message_list)
+	self.feedback = ' \n '.join(list(message_list))
 	
 
 def select_words(self, qwords, awords):
