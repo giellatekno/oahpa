@@ -9,6 +9,7 @@ import re
 import string
 import codecs
 
+from django.db import transaction
 from itertools import product
 
 class Entry:
@@ -19,15 +20,19 @@ stem_convert = {
 	'3syll': '3syll',
 	'bisyllabic': '2syll',
 	'trisyllabic': '3syll',
+	'contracted': 'Csyll',
+	'Csyll': 'Csyll',
 	'': '', # contracted : Csyll ?
 }
 
 
 class Feedback_install:
 
+
 	def __init__(self):
 		self.tagset = {}
 		self.paradigms = {}
+		self.obj_count = 0
 		# self.dialects = ["KJ","GG"]
 
 	def read_messages(self,infile):
@@ -48,7 +53,22 @@ class Feedback_install:
 			fmtext.message=message
 			fmtext.save()
 
-	def insert_feedback(self,pos,stem,rime,soggi,case,number,personnumber="",tense="",mood="",attributive="",grade="",attrsuffix="", wordclass=""):
+	def insert_feedback(self,
+							pos,
+							stem,
+							rime,
+							soggi,
+							case,
+							number,
+							gradation="",
+							diphthong="",
+							personnumber="",
+							tense="",
+							mood="",
+							attributive="",
+							grade="",
+							attrsuffix="",
+							wordclass=""):
 		try:
 			stem = stem_convert[stem]
 		except KeyError:
@@ -73,9 +93,13 @@ class Feedback_install:
 		}
 		
 		feed, created = Feedback.objects.get_or_create(**attrs)
+
+		if created:
+			self.obj_count += 1
 		
 		return feed
 
+	@transaction.commit_manually
 	def read_feedback(self, infile, wordfile):
 		"""
 			There are some longer comments below on how to alter this code.
@@ -99,7 +123,7 @@ class Feedback_install:
 		# Find out different values for variables.
 		# Others can be listed, but soggi is searched at the moment.
 		rimes={}
-		# gradations={}
+		gradations={}
 		attrsuffixs={}
 		compsuffixs={}
 		soggis={}
@@ -274,6 +298,7 @@ class Feedback_install:
 				f.soggi = ftempl.soggi[:]
 				f.rime = ftempl.rime[:]
 				f.attrsuffix = ftempl.attrsuffix[:]
+				f.attributes = el.attributes
 				# f.dialects = self.dialects[:]
 				
 				msgid = mel.firstChild.data
@@ -327,7 +352,7 @@ class Feedback_install:
 
 		
 		for f in messages:
-			print f.msgid
+			print f.msgid + ': ' + u', '.join([a.value for a in f.attributes.values()])
 			messages = Feedbackmsg.objects.filter(msgid=f.msgid)
 			# dialects = Dialect.objects.filter(dialect__in=f.dialects)
 			
@@ -337,127 +362,94 @@ class Feedback_install:
 			# changed, as there are things being iterated here which are not a part
 			# of sma.
 			
-			if f.pos == "A": # or pos=="A" or pos=="Num":
-				for stem in f.stem:
-					for gradation in f.gradation:
-                        for diphthong in f.diphthong:
-                            for rime in f.rime:
-                                for soggi in f.soggi
-                                    if f.pos == "A":
-				                        for grade in f.grade:
-                                            for attributive in f.attributive:
-                                                if attributive == 'Attr':
-											     # Attributive forms: no case inflection.
-											         for attrsuffix in f.attrsuffix:
-                                                        case=""
-												        number=""												
-												        self.insert_feedback(
-													       pos=pos,
-													       stem=stem,
-													       rime=rime,
-													       soggi=soggi,
-													       case=case,
-													       number=number,
-													       personnumber='',
-													       tense='',
-													       mood='',
-													       attributive='Attr',
-													       grade=grade,
-													       attrsuffix=attrsuffix,
-													       wordclass='')
-												
-												        f2, created=Feedback.objects.get_or_create(
-												            stem=stem,
-												            diphthong=diphthong,
-												            gradation=gradation,
-												            rime=rime,
-												            attributive='Attr',
-												            attrsuffix=attrsuffix,
-												            pos=pos,
-												            number=number,
-												            grade=grade,
-												            soggi=soggi)
-												        if messages:
-													       f2.messages.add(msgs[0])
-												        else : print "No messages found:", f.msgid
-												        # for d in dialects:
-													       # f2.dialects.add(d)
-												        f2.save()
-							                     else:
-											         for case in f.case:
-												        #essive without number inflection
-												        if case == "Ess":
-													       number=""
-													
-													   self.insert_feedback(pos=pos,
-																		stem=stem,
-																		rime=rime,
-																		soggi=soggi,
-																		case=case,
-																		number=number,
-																		personnumber='',
-																		tense='',
-																		mood='',
-																		attributive='NoAttr',
-																		grade=grade,
-																		attrsuffix='',
-																		wordclass='')
-													
-													f2, created=Feedback.objects.get_or_create(
-													       stem=stem,
-													       diphthong=diphthong, 
-													       gradation=gradation,
-													       rime=rime,
-													       attributive='NoAttr',
-													       pos=pos,
-													       number=number,
-													       case2=case,
-													       grade=grade,
-													       soggi=soggi)
-													       
-													if messages:
-														f2.messages.add(msgs[0])
-													else : print "No messages found:", f.msgid
-													# for d in dialects:
-														# f2.dialects.add(d)
+			# TODO: test the adjective part
+			if f.pos == "A":
+				def gen_prod():
+					products = product(
+						list(set(f.stem)),
+						list(set(f.gradation)),
+						list(set(f.diphthong)),
+						list(set(f.rime)),
+						list(set(f.soggi)),
+						list(set(f.grade)),
+						list(set(f.case)),
+						list(set(f.number)),
+						list(set(f.attributive)),
+						list(set(f.attrsuffix)),
+					)
 
-													f2.save()
-													
-												else:
-													for number in f.number:
-														self.insert_feedback(pos=pos,
-																			stem=stem,
-																			rime=rime,
-																			soggi=soggi,
-																			case=case,
-																			number=number,
-																			personnumber='',
-																			tense='',
-																			mood='',
-																			attributive='NoAttr',
-																			grade=grade,
-																			# attrsuffix='',
-																			wordclass='')
-														
-														f2, created=Feedback.objects.get_or_create(
-														      stem=stem, 
-														      diphthong=diphthong,
-														      gradation=gradation,
-														      rime=rime,
-														      attributive='NoAttr',
-														      pos=pos,
-														      case2=case,
-														      number=number,
-														      grade=grade,
-														      soggi=soggi)
-														if messages:
-															f2.messages.add(msgs[0])
-														else : print "No messages found:", f.msgid
-														# for d in dialects:
-															# f2.dialects.add(d)
+					return products
 
-														f2.save()
+				total_iteration_count = len([a for a in gen_prod()])
+				# print 'Product: %d' % total_iteration_count
 
+				products = gen_prod()
+				
+				messages = Feedbackmsg.objects.filter(msgid=f.msgid)
+
+				# Create set of all arguments to insert, iteration will
+				# remove all of the redundant ones.
+				prep_for_insert = set()
+				for iteration in products:
+					stem, gradation, diphthong, rime, soggi, grade, case, \
+					number, attributive, attrsuffix = iteration
+
+					if attributive == 'Attr':
+				 		# Attributive forms: no case inflection.
+						case = ""
+						number = ""												
+					else:
+						attributive = 'NoAttr'
+						if case == "Ess":
+							number = ""
+
+					prep_for_insert.add((pos,
+									stem,
+									rime,
+									soggi,
+									case,
+									number,
+									'',
+									'',
+									'',
+									attributive,
+									grade,
+									attrsuffix,
+									''))
+				
+				keys = ('pos', 'stem', 'rime', 'soggi', 'case', 'number',
+					'personnumber', 'tense', 'mood', 'attributive', 'grade',
+					'attrsuffix', 'wordclass')
+
+				# Iterate and insert 
+				count = 0
+				prep_for_insert = list(prep_for_insert)
+				total_iteration_count = len(prep_for_insert)
+				for aset in prep_for_insert:
+					kwargs = dict(zip(keys, aset))
+
+					f2 = self.insert_feedback(**kwargs)
+					
+					if messages:
+						for msg in messages:
+				   	   		f2.messages.add(msg)
+				   	else:
+						print "No messages found:", f.msgid
+					# for d in dialects:
+				   	   # f2.dialects.add(d)
+					f2.save()
+					count += 1
+					if count%100 == 0:
+						print 'created %d feedbacks' % self.obj_count
+						print '%s  %d/%d' % (f.msgid, count, total_iteration_count)
+
+					if count%2500 == 0:
+						print 'commit'
+						transaction.commit()
+					
+				print '%s  %d/%d' % (f.msgid, count, total_iteration_count)
+				transaction.commit()
+			
 			#NEW_ATTRIBUTES
 			# The above was too complex and made troubleshooting difficult, so I simplified it. 
 			# Adjectives will take more work, but are possible-- just mind all of the if statements
@@ -475,38 +467,60 @@ class Feedback_install:
 			# New attributes will also need to be added above.
 			
 			if f.pos in ["N", "Num"]:				
-				products = product(
-					f.stem, 
-					f.soggi, 
-					f.case, 
-					f.number)
+				def gen_prod():
+					products = product(
+						f.stem, 
+						f.soggi, 
+						f.case, 
+						f.number)
+
+					return products
 					# include gradation, diphthong, rime also ?
+				total_iteration_count = len([a for a in gen_prod()])
+				# print 'Product: %d' % total_iteration_count
+
+				products = gen_prod()
+				
 				messages = Feedbackmsg.objects.filter(msgid=f.msgid)
 				
+				prep_for_insert = set()
+				count = 0
 				for iteration in products:
 					stem, soggi, case, number = iteration # Here
 					
 					if case == "Ess":
 						number = ""
 					
-					f2 = self.insert_feedback(
-								pos=pos,
-								stem=stem,
-								soggi=soggi,
-								case=case,
-								number=number,
+					prep_for_insert.add((pos,
+								stem,
+								soggi,
+								case,
+								number,
 								# empties
-								rime='', 
-								gradation='', # added for sme
-								diphthong='', # added for sme
-								personnumber='',
-								tense='',
-								mood='',
-								attributive='',
-								grade='',
-								attrsuffix='',
-								wordclass='',
-								)
+								'', 
+								'', # added for sme
+								'', # added for sme
+								'',
+								'',
+								'',
+								'',
+								'',
+								'',
+								'',
+								))
+
+				keys = ('pos', 'stem', 'rime', 'soggi', 'case', 'number',
+					'personnumber', 'tense', 'mood', 'attributive', 'grade',
+					'attrsuffix', 'wordclass')
+
+				# Iterate and insert 
+				count = 0
+				prep_for_insert = list(prep_for_insert)
+				total_iteration_count = len(prep_for_insert)
+				for aset in prep_for_insert:
+					kwargs = dict(zip(keys, aset))
+
+					f2 = self.insert_feedback(**kwargs)
 					
 					if messages:
 						for msg in messages:
@@ -516,48 +530,97 @@ class Feedback_install:
 					# for d in dialects:
 						# f2.dialects.add(d)
 					f2.save()
+					count += 1
+					if count%100 == 0:
+						print 'created %d feedbacks' % self.obj_count
+						print '%s  %d/%d' % (f.msgid, count, total_iteration_count)
+
+					if count%2500 == 0:
+						print 'commit'
+						transaction.commit()
+					
+				print '%s  %d/%d' % (f.msgid, count, total_iteration_count)
+				transaction.commit()
 				
 			
 			if f.pos == "V":				
-				products = product(f.wordclass, 
-									f.stem, 
-									f.diphthong,
-									f.gradation, # added 
-									f.soggi, 
-									f.rime, 
-									f.personnumber, 
-									f.tense, 
-									f.mood)
+				def gen_prod():
+					products = product(f.wordclass, 
+										f.stem, 
+										f.diphthong,
+										f.gradation, # added 
+										f.soggi, 
+										f.rime, 
+										f.personnumber, 
+										f.tense, 
+										f.mood)
+					
+					return products
+
+				total_iteration_count = len([a for a in gen_prod()])
+				# print 'Product: %d' % total_iteration_count
+
+				products = gen_prod()
+				
 				messages = Feedbackmsg.objects.filter(msgid=f.msgid)
 				
+				prep_for_insert = set()
+				count = 0
 				for iteration in products:
-					wordclass, stem, soggi, personnumber, tense, mood = iteration
+					wordclass, stem, diphthong, gradation, soggi, \
+					rime, personnumber, tense, mood = iteration
+
 					# Wordclass and stem are basically the same thing, 
 					# if one is set, the other is not. Complementary distribution.
 					# Leaving '2syll' in because it makes filtering later easier.
 					if stem == '3syll':
 						wordclass = ''
 						
-					insert_kwargs = {
-						'pos': pos,
-						'stem': stem,
-						'wordclass': wordclass,
-						'soggi': soggi,
-						'personnumber': personnumber,
-						'tense': tense,
-						'mood': mood,
-						'attributive': '',
-						'rime': '',
-						'diphthong': '',  # added for sme
-						'gradation': '',  # added for sme
-						'case': '',
-						'number': '',
-						'grade': '',
-						'attrsuffix': '',
-					}
+					insert_kwargs = (
+						pos,
+						stem,
+						wordclass,
+						soggi,
+						personnumber,
+						tense,
+						mood,
+						'',
+						'',
+						diphthong,  # added for sme
+						gradation,  # added for sme
+						'',
+						'',
+						'',
+						'',
+					)
 				
-					f2 = self.insert_feedback(**insert_kwargs)
+					prep_for_insert.add(insert_kwargs)
 					
+				keys = ['pos',
+						'stem',
+						'wordclass',
+						'soggi',
+						'personnumber',
+						'tense',
+						'mood',
+						'attributive',
+						'rime',
+						'diphthong',  # added for sme
+						'gradation',  # added for sme
+						'case',
+						'number',
+						'grade',
+						'attrsuffix']
+
+				# Iterate and insert 
+				count = 0
+				prep_for_insert = list(prep_for_insert)
+				total_iteration_count = len(prep_for_insert)
+				for aset in prep_for_insert:
+
+					kwargs = dict(zip(keys, aset))
+					f2 = self.insert_feedback(**kwargs)
+
 					if messages:
 						for msg in messages:
 							f2.messages.add(msg)
@@ -565,4 +628,19 @@ class Feedback_install:
 						print "No messages found:", f.msgid
 					# for d in dialects:
 						# f2.dialects.add(d)
-					f2.save()		
+					f2.save()
+					count += 1
+					if count%100 == 0:
+						print 'created %d feedbacks' % self.obj_count
+						print '%s  %d/%d' % (f.msgid, count, total_iteration_count)
+
+					if count%2500 == 0:
+						print 'commit'
+						transaction.commit()
+					
+				print '%s  %d/%d' % (f.msgid, count, total_iteration_count)
+				transaction.commit()
+
+			transaction.commit()
+		transaction.commit()
+
