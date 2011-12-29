@@ -642,6 +642,78 @@
       </element>
     </answer>
   </q>
+  <q id="prf0">
+    <qtype>V-PRF</qtype>
+   <question>
+      <text>Maid SUBJ MAINV bargan odne</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<id>leat</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Odne SUBJ MAINV V-PRF</text>
+      <element game='morfa' id="V-PRF" task="yes" >
+	<sem class="mACTIVITY"/>
+	<grammar tag="V+PrfPrc"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="prf1">
+    <qtype>V-PRF</qtype>
+   <question>
+      <text>Maid SUBJ MAINV bargan luomus</text>
+      <element id="N">
+	<grammar pos="FAMILY"/>
+      </element>
+      <element id="MAINV">
+	<id>leat</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV V-PRF luomus</text>
+      <element game='morfa' id="V-PRF" task="yes" >
+	<sem class="mACTIVITY"/>
+	<grammar tag="V+PrfPrc"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="ger0">
+    <qtype>V-GER</qtype>
+   <question>
+      <text>Mas SUBJ diehtá dan</text>
+      <element id="FAMILY">
+	<grammar tag="N+Sg"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ oinnii dan V-GER</text>
+      <element game='morfa' id="V-GER" task="yes" >
+	<sem class="mACTIVITY"/>
+	<grammar tag="V+Ger"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="ger1">
+    <qtype>V-GER</qtype>
+   <question>
+      <text>Mo SUBJ oaččui dákkár jurdaga</text>
+      <element id="FAMILY">
+	<grammar tag="N+Sg"/>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ fuobmái dan V-GER</text>
+      <element game='morfa' id="V-GER" task="yes" >
+	<sem class="mACTIVITY"/>
+	<grammar tag="V+Ger"/>
+      </element>
+    </answer>
+  </q> 
 
 </questions>
 
