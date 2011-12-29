@@ -200,6 +200,9 @@ class Entry(object):
 			("nr", None),
 			("p3p", None),
 			("pos", None),
+			("gradation", None),
+			("diphthong", None),
+			("rime", None),
 			("soggi", None),
 			("stem", None),
 			("type", "wordtype"),
@@ -666,7 +669,11 @@ class Words:
 			pos = 'N'
 
 		soggi = entry.soggi
+		diphthong = entry.diphthong
+		gradation = entry.gradation
 		stem = entry.stem
+		rime = entry.rime
+
 
 		trisyllabic = ['3syll', '3', 'trisyllabic']
 		bisyllabic = ['2syll', '2', 'bisyllabic']
@@ -709,6 +716,8 @@ class Words:
 
 		w.valency = valency
 		w.frequency = frequency
+		print frequency
+		print geography
 		w.geography = geography
 		w.hid = hid
 		w.save()
