@@ -13,22 +13,13 @@
 
 {% block subsetting %}
 
-	<li><label for="id_{{ settingsform.case.name }}">{% trans "Case" %}</label>
-		{{ settingsform.case }}</li>
+	<li><label for="id_{{ settingsform.num_bare.name }}">{% trans "Case" %}</label>
+		{{ settingsform.num_bare }}</li>
 
 {% ifequal settings.gametype "bare" %}
 	<li><label for="id_{{ settingsform.num_level.name }}">{% trans "Level" %}</label>
 		{{ settingsform.num_level }}</li>
 {% endifequal %}
-
-{% comment %}
-{% ifequal settings.gametype "bare" %}
-	{{ settingsform.num_bare }}
-	{{ settingsform.num_level }}
-{% else %}
-    {{ settingsform.num_context }} 
-{% endifequal %}
-{% endcomment %}
 
 
 {% endblock %}
