@@ -1,7 +1,7 @@
 #!/bin/sh
 
-P="python2.6"
-GTHOME="/home/heli/main"
+P="python2.7"
+GTHOME="/Users/pyry/gtsvn"
 LANGDIR="ped/sme"
 DATA=$GTHOME/$LANGDIR
 DPS="$DATA/src"
@@ -223,8 +223,7 @@ echo "feeding db with $DPW/prop_swesme.xml"
 $P install.py --file $DPW/prop_swesme.xml
 echo " "
 echo "done"
-echo "===================================================
-COMMENT
+echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/pron_sme.xml"
@@ -276,34 +275,6 @@ echo " "
 echo "done"
 echo "==================================================="
 
-echo "==================================================="
-echo "adding feedback to nouns"
-$P install.py -f $DPS/n_smenob.xml --feedbackfile $META/feedback_nouns.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "adding feedback to verbs"
-$P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_verbs.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-
-echo "==================================================="
-echo "adding feedback to adjectives"
-$P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "adding feedback to numerals"
-$P install.py -f $DPS/num_smenob.xml --feedbackfile $META/feedback_numerals.xml
-echo " "
-echo "done"
-echo "==================================================="
 
 #  ... for eastern dialect there are additional feedback files feedback_verbs_eastern, feedback_adjectives_eastern that we ignore right now
 
@@ -354,6 +325,34 @@ echo "==================================================="
 echo "==================================================="
 echo "installing grammar links for norwegian"
 $P install.py -i $META/grammatikklinker.txt
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "adding feedback to nouns"
+$P install.py -f $DPS/n_smenob.xml --feedbackfile $META/feedback_nouns.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "adding feedback to verbs"
+$P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_verbs.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "adding feedback to adjectives"
+$P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "adding feedback to numerals"
+$P install.py -f $DPS/num_smenob.xml --feedbackfile $META/feedback_numerals.xml
 echo " "
 echo "done"
 echo "==================================================="
