@@ -3,12 +3,12 @@ from django.conf.urls.defaults import patterns, url, include, handler404, handle
 
 urlpatterns = patterns('univ_oahpa.univ_drill.views',
 	# (r'^morfa/substantiv/$', 'smaoahpa.smadrill.views.morfa_game', {'pos': 'N'}),
-	url(r'^morfa/baakoe/v/$', 'morfa_game', {'pos': 'V'}, name="morfa_s.verb"),
-	url(r'^morfa/baakoe/s/$', 'morfa_game', {'pos': 'N'}),
-	url(r'^morfa/baakoe/a/$', 'morfa_game', {'pos': 'A'}, name="morfa_s.adj"),
-	url(r'^morfa/baakoe/p/$', 'morfa_game', {'pos': 'Pron'}, name="morfa_s.pron"),
-	url(r'^morfa/baakoe/l/$', 'morfa_game', {'pos': 'Num'}, name="morfa_s.num"),
-	url(r'^morfa/baakoe/$', 'morfa_game', {'pos': 'N'}, name="morfa_s.noun"),
+	url(r'^morfas/v/$', 'morfa_game', {'pos': 'V'}, name="morfa_s.verb"),
+	url(r'^morfas/s/$', 'morfa_game', {'pos': 'N'}),
+	url(r'^morfas/a/$', 'morfa_game', {'pos': 'A'}, name="morfa_s.adj"),
+	url(r'^morfas/p/$', 'morfa_game', {'pos': 'Pron'}, name="morfa_s.pron"),
+	url(r'^morfas/l/$', 'morfa_game', {'pos': 'Num'}, name="morfa_s.num"),
+	url(r'^morfas/$', 'morfa_game', {'pos': 'N'}, name="morfa_s.noun"),
 	
 	url(r'^leksa/$', 'leksa_game', name="leksa"),
 	url(r'^leksa/sted/$', 'leksa_game', {'place': True}, name="leksa.sted"),
@@ -21,12 +21,12 @@ urlpatterns = patterns('univ_oahpa.univ_drill.views',
 	# url(r'^numra_clock/hard/$', 'num_clock', {'clocktype': 'kl3'}), 
 
 	# Contextual morfas
-	url(r'^morfa/raajese/s/$', 'cmgame', {'pos': 'n'}),
-	url(r'^morfa/raajese/v/$', 'cmgame', {'pos': 'v'}, name="morfa_c.verb"),
-	url(r'^morfa/raajese/a/$', 'cmgame', {'pos': 'a'}, name="morfa_c.adj"),
-	url(r'^morfa/raajese/p/$', 'cmgame', {'pos': 'Pron'}, name="morfa_c.pron"),
-	url(r'^morfa/raajese/l/$', 'cmgame', {'pos': 'Num'}, name="morfa_c.num"),                       
-	url(r'^morfa/raajese/$', 'cmgame', {'pos': 'n'}, name="morfa_c.noun"),
+	url(r'^morfac/s/$', 'cmgame', {'pos': 'n'}),
+	url(r'^morfac/v/$', 'cmgame', {'pos': 'v'}, name="morfa_c.verb"),
+	url(r'^morfac/a/$', 'cmgame', {'pos': 'a'}, name="morfa_c.adj"),
+	url(r'^morfac/p/$', 'cmgame', {'pos': 'Pron'}, name="morfa_c.pron"),
+	url(r'^morfac/l/$', 'cmgame', {'pos': 'Num'}, name="morfa_c.num"),                       
+	url(r'^morfac/$', 'cmgame', {'pos': 'n'}, name="morfa_c.noun"),
 )
 
 # # These are for me testing things, otherwise ignore.
