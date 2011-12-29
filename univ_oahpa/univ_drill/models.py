@@ -574,9 +574,9 @@ class Feedback(models.Model):
 	grade = models.CharField(max_length=10,null=True,blank=True)
 	mood = models.CharField(max_length=10,null=True,blank=True)
 	number = models.CharField(max_length=5,null=True,blank=True)
-	personnumber = models.CharField(max_length=5,null=True,blank=True)
+	personnumber = models.CharField(max_length=6,null=True,blank=True)
 	pos = models.CharField(max_length=12,blank=True,null=True)
-	tense = models.CharField(max_length=5,null=True,blank=True)
+	tense = models.CharField(max_length=6,null=True,blank=True)
 
 	class Meta:
 		# Sma doesn't have "diphthong","gradation"
