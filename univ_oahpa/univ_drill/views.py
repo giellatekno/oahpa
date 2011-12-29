@@ -531,7 +531,11 @@ def morfa_game(request, pos):
 	mgame.settings['pos'] = pos.capitalize()
 	mgame.settings['gametype'] = "bare"
 
-	template = 'mgame_%s.html' % pos.lower()[0]
+	if pos == 'Num':
+		template = 'mgame_l.html'
+	else:
+		template = 'mgame_%s.html' % pos.lower()[0]
+
 	c = mgame.create_morfagame(request)
 
 	return render_to_response(template, c,
