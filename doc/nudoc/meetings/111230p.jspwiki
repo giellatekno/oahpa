@@ -1,0 +1,385 @@
+!!!Møte 30.12.11
+
+Til stades: Biret-Ánne, Lene, Ryan, Trond
+
+
+!!Saksliste
+* MorfaS
+* MorfaC
+* Login i Oahpa
+* Innlogging
+* Neste møte
+
+
+!! MorfaS
+
+!Status quo
+
+Fungerer, men test talord. Substantiv, verb, pronomen, adjektiv fungerer.
+
+Talord har feil kasus i fasiten:
+
+{{{
+"Illativ:"
+gávccit
+	gávcciide
+njealjit
+	njeljiid
+logi
+	login, lohkin
+ovcci
+	ovccis
+viđat
+	viđaid
+Pisteesi: 0/5
+}}}
+
+Det er mogleg programmet berre vel "Num" og ikkje ser resten av tagstrengen.
+Vi hadde ikkje talord i MorfaS for sørsamisk, der ligg nok forklaringa.
+
+
+Vi har same feil som i gamle sme-oahpa, programmet tar ikkje omsyn til Actor.
+Vi bør fjerne ein del ord som er homonyme i grunnforma.
+
+
+
+!!MorfaC
+
+MorfaC fungerer ikkje no, det er ein muligens feil i nokre av spørsmåla(?).
+Det er noko som manglar i installeringa.
+
+Feil: Substantiv Ess4 (qid ness4)
+Det finst ikkje ord med mTIME_POINT_ESS
+
+Det skal vere __m__ foran! Det manglar m i settnamnet. Lene 
+har retta det og skal sjekke systematisk at alle settnavn i oppgaver vs. 
+leksikonfiler stemmer overens. Det var eitt sett til som mangla __m__, men
+no skal alle settnamna stemme overeins.
+
+Ryan fann eit par feil til i adjektiv og pronomen. Han sendar ein e-post
+med siste feilmelding. For pronomen kan det vere ein global feil.
+
+MorfaC må fungere, deretter hjelpefunksjonen på MorfaS til å fungere.
+
+!!Login i Oahpa
+
+Fungerer, men må legge til loginrettar for oss.
+
+__TILTAK__
+
+# MorfaC
+## __Ryan__ installerer før han legg seg
+## __Lene__ går gjennom settnamna
+## __Ryan__ installerer evt. på nytt i morgon
+# Legge inn loginrettar i Oahpa (__Ryan__)
+# MorfaS numeral
+# Hjelpefunksjonen i MorfaS
+
+
+!! Innlogging
+
+!site.uit.no/oahpa
+
+* Lage kurssider hvor lærerne kan legge informasjon til studentene, 
+  knytta til studentinnlogging (__Lene, Biret Ánne, lærarane__)
+* Lage nivåtestar for studentane (__Lene, Biret Ánne__)
+
+BÁ har laga kurssider for Gáisi og nesseby og stengt dei for andre, har hatt
+kontakt med Nesseby-læraren og vist henne korleis ho skal arbeide.
+Kravet om å vere innlogga for å kommentere er førebels lagt bort.
+BÁ ventar no på e-post-adressene til alle studentane. Dei kan ikkje bli
+registrert på site utan e-post-adresser, så når dei to kjem til blir
+alle registrert. Vi her kan sjå sidene via dashbordet, og også sjå 
+passordet der.
+
+
+!Brukerregistrering
+
+
+__TILTAK__
+* Teste poll-pluginen (__Biret-Ánne__)
+* Sjå om poll-pluginen gir oss det vi vil ha (__Ryan__)
+* Sjå på registrering/redirect-plugins (__Ryan__)
+
+
+!Innlogging på oahpa
+
+__TILTAK__
+
+* Få innlogging inn i grensesnittet for univ_oahpa (__Ryan__)
+* Lokalisere (__Trond, Lene__)
+* Ny funksjonalitet: Tidsbegrensa lærerinnlogging (__Ryan__)
+
+!Integrering av site.uit.no/oahpa +´oahpa sjølv
+
+
+__TILTAK__
+
+# Undersøk versjonsproblemet med root-cookie (__Ryan__)
+# Leite etter tilsvarande funksjonalitet (__Ryan__)
+# Lage dobbel innlogging (__Bjørn, Ryan, Biret-Ánne__)
+
+cookie-plugin. Ryan har funne ein annan plugin.
+
+
+!Ny løysing: Innlogging VIA Oahpa
+
+Den opprinnelege planen var å gå inn via Oahpa. I Fronter måtte
+vi gjere det omvendt. La oss no tenkje attende til den første tanken:
+Dei loggar seg inn i Oahpa, og er dermed også innlogga, eller kjent att,
+i site. Detmed vil vi heller ha ein plugin som lar oss gå frå oahpa til
+site. Fordelen med det er at vi sjølv har full kontroll på site.
+
+Sitat frå Lene sin mail:
+
+''Beste løsning:''
+
+* __Oahpa'' sender informasjon til ''site'' som indentifiserer brukeren, slik at__
+  __vedkommende blir gjenkjent som subscriber og kan skrive kommentarer.__
+** Hvordan gjøres det i praksis? Oppretter vi brukerkontoer på site og Oahpa
+   samtidig, med lik informasjon (brukernavn etc)? Skal studentene få beskjed 
+   om at de alltid logger seg inn på Oahpa når de skal jobbe på site, og deretter
+    trykker på site-linken?
+
+Poenget er at site-adressen ikke markedsføres, men det er oahpa.uit.no som markedsføres. Egentlig er det slik vi så det for oss fra begynnelsen,  
+kurset blir  integrert i Oahpa. I Oahpa kan vi ha forskjellige linker for de
+forskjellige kursene på site. Når Isak Saba-studentene logger seg inn på Oahpa, evt
+alltid er innlogga, trykker de  på linken for IsakSaba-kurset og kommer inn i site via IsakSaba-kurssida.   
+
+
+Nestbeste løsninger:
+* __Site er uten innlogging for brukerne, kursdeltakersidene er synlige i__ 
+  __menyen men passordbestyttet, og studenten har fått utdelt passord.__
+** Dette er det vi gjør nå. Hvis vi passordbeskytter kurssidene, så kan vi ta bort 
+   valget om at man må være innlogget for å kunne kommentere. Da vil studentene ikke
+   trenge å være innlogget i det hele tatt.  
+    Nettopp. Vi hopper over alle problemene :-)
+* __Site er uten innlogging for brukerne, men kursdeltakerne kan logge seg__
+  __inn i site for å kunne skrive kommentarer og kommer da til automatisk__
+  __ til kurssiden som home.__
+** Med peters log-in redirect kan studentene etter log-in føres til kurssida, men
+   den vil ikke bli deres 'home'.  BÁ må lete etter en egen plug-in som gjør det.
+   Denne må evt. bli installert.
+
+
+
+!! Neste møte
+
+
+
+
+
+
+
+
+
+
+--------------
+
+
+
+
+!!!Møte 28.12.11
+
+Til stades: Heli, Lene, Ryan, Trond
+
+!!Saksliste
+* Generelt
+* Leksa
+* MorfaS
+* MorfaC
+* Loggfunksjon
+* Innlogging
+* Neste møte
+
+
+!! Generelt
+
+Manglande endringar i model.py er det som hindrar oss i å sjå MorfaS og MorfaC.
+
+Når univ_oahpa er funskjonell må programmet vere stabilt på dagtid. Databaseinstallering
+skal dermed skje på nattetid.
+
+
+!! Leksa
+
+Leksa fungerer, takk til Ryan :-)
+
+Problemet var at frekvens var lagt inn på feil stad. Då Heli sette den inn stoppa 
+vanleg Leksa å fungere.
+
+Synonym er lagt til. _SWE er ikkje komplett for propernouns.
+
+__TILTAK__
+
+* ''Frequency'' er ikkje lokalisert (__Trond__)
+
+!! MorfaS
+
+Sist: Det var berre pronomen som ikkje fungerte, fordi skilnaden mellom
+sma og sme ikkje var innført. Det må Heli og Ryan sjå på i lag.
+
+Den har framleis morfa/baakoe/ som adresse
+
+__TILTAK__
+
+* Pronomenkode frå sma-stil til sme-stil (__Heli, Ryan__)
+* url, fikse baakoe/ etc. (__Heli__)
+* Lade database (__Heli__)
+
+!! MorfaC
+
+Substantiv og verb får vi presentert ei liste med 5 ord for.
+Vi har ikkje testa om det går an å få svar frå systemet. 
+Det var feilmeldingar ved installeringa av MorfaC feedback.
+
+MorfaC har ulike måtar å vise feil i systemet på. Ryan dokumenterer.
+
+__TILTAK__
+* Lade database (__Heli__)
+* url (__Heli__, sjå under MorfaS)
+* Deretter teste
+* Dokumentere feilindikatorar (__Ryan__)
+
+!! Loggfunksjon
+
+Det finst ein midlertidig loggfunksjon.
+
+Det er også ein kommento frå manage.py: 
+
+{{{
+python manage.py [help] printlogs
+}}}
+
+som prentar ut alle entryane, utan krav til å gå inn i mysql sin shell:
+
+{{{
+$ python manage.py printlogs --game numra
+numra|2011/12/27|2|2|True|guokte|None|None
+numra|2011/12/27|8|8|True|gávcci|None|None
+numra|2011/12/27|9|9|True|ovcci|None|None
+numra|2011/12/27|1|1|True|okta|None|None
+numra|2011/12/27|3|3|True|golbma|None|None
+}}}
+
+Oppsett av grafisk loggfunksjon flyttar vi dermed nedover på prioriteringslista.
+
+!! Innlogging
+
+!site.uit.no/oahpa
+
+Her har vi ein plan, jf. [dokumentasjon|http://giellatekno.uit.no/ped/nudoc/login.html].
+
+Det er mogleg å logge seg inn som Subscriber. Biret-Ánne har laga ulike roller.
+Når du loggar inn kjem du på læraren si side, og får sjå beskjedar, osb., slik som i
+Fronter. Vi vil ha spørreskjema for studentane på kurssida, og vi vil ha identifisering 
+for Oahpa (sjå nedanfor)
+
+Det som skal skje er ar studenter og lærere legges til av oss (vi registrerer).
+Folk som ikkje går på kurs kan registrere seg, under pseudonym eller fullt namn,
+og få tilgang (egenregistrering)
+
+__TILTAK__
+
+* Lage kurssider hvor lærerne kan legge informasjon til studentene, 
+  knytta til studentinnlogging (__Lene, Biret Ánne, lærarane__)
+* Lage nivåtestar for studentane (__Lene, Biret Ánne__)
+
+
+
+!Brukerregistrering
+
+Jf. siste avsnitt i [dokumentasjonsside om login|../login.html]
+
+Vi ønsker at alle skal kunne registrere seg som brukere og få rollen som subscriber (uten å legges inn av oss) . Deretter skal brukerne navigeres (redirect) til en egen startside, f.eks lærerens side. Alle kurslærere får sin egen side, der de kan legge ut informasjon. Vi ønsker at deres studenter navigeres til denne siden etter log-in, og at de jobber med læringsstiene derifra. De som ikke følger et kurs, skal navigeres til en default startside.
+
+Mulige plug-ins:
+
+* Registrering: [profile-builder|http://wordpress.org/extend/plugins/profile-builder/], kompatibel opp til 3.3
+* Registrering: [simplr-registration-form|http://wordpress.org/extend/plugins/simplr-registration-form/], kompatibel opp til 3.2.1
+* Log in redirect: [peters-login-redirect|http://wordpress.org/extend/plugins/peters-login-redirect/], kompatibel opp til 3.2.1
+
+Man får en Register side på menyen øverst på sida, eller som en menylinje, der alle kan registrere seg. Nå har vi en log-in boks i høyre marg, men da må brukere allerede være registrert (dvs lagt inn av oss). 
+
+En annen mulighet som kanskje kunne brukes, er en poll plug-in som allerede er installert på site.
+
+__TILTAK__
+* Teste poll-pluginen (__Biret-Ánne__)
+* Sjå om poll-pluginen gir oss det vi vil ha (__Ryan__)
+* Sjå på registrering/redirect-plugins (__Ryan__)
+
+
+!Innlogging på oahpa
+
+Innlogging fungerer på univ-Oahpa (Ryan har testa på eigen maskin). 
+
+Vi vil også ha tidsbegrensa lærerinnlogging (som fungerer for den 
+perioden kurset varer).
+
+__TILTAK__
+
+* Få innlogging inn i grensesnittet for univ_oahpa (__Ryan__)
+* Lokalisere (__Trond, Lene__)
+* Ny funksjonalitet: Tidsbegrensa lærerinnlogging (__Ryan__)
+
+!Integrering av site.uit.no/oahpa +´oahpa sjølv
+
+Mulig plugin [root-cookie|http://wordpress.org/extend/plugins/root-cookie/download/] 
+Men pluginen er ikke oppdatert siden 2009 og kompatibel opp til versjon
+2.8.4. Vi kjører 3.2 (snart 3.3).  
+
+Det vi treng å vite om ''root-cookie'' er dermed:
+
+* Finst det verkeleg ikkje andre plugin-ar med same funksjonalitet?
+* Er det mogleg å få root-cookie-programmeraren til å oppdatere plugin-en?
+* Vil vi ha WordPress 2.8.4, eller vil vi finne ein annan plugin?
+* Er det ulemper med 2.8.4, t.d. til å migrere innhaldet vårt til ein eldre versjon?
+
+Eit mogleg utfall er at denne koblinga (innlogging på site medfører identifisering
+som brukar på oahpa) ikkje vil fungere. Alternativet til å koble site.uit.no/oahpa 
+og oahpa er dermed  dobbel innlogging, dvs at studenten må registrere seg to gonger.
+I praksis kan det skje ved at Oahpa-innloggingsruta dukker opp når man logger inn på 
+site.uit.no/oahpa ''i tillegg til'' (dvs. etter) vanlig innlogging til site
+
+Tiltakslista blir dermed nummerert i prioritert rekkjefølgje:
+
+__TILTAK__
+
+# Undersøk versjonsproblemet med root-cookie (__Ryan__)
+# Leite etter tilsvarande funksjonalitet (__Ryan__)
+# Lage dobbel innlogging (__Bjørn, Ryan, Biret-Ánne__)
+
+
+!!Kursstart 2.1.
+
+Dette skal vere på plass:
+
+* Studentar og lærarar må kunne logge seg inn på [site.uit.no/oahpa|http://site.uit.no/oahpa]
+** bare kurslærerside mangler. (__Lene, Biret Ánne__) 
+* Spørreskjemaer og tester (__Lene, Biret Ánne__)
+* Univ_oahpa: ihvertfall Numra, Leksa og MorfaS må fungere (__Heli__)
+* ''Innlogging'' må vere på plass på univ_oahpa
+** Funksjonalitet
+** Plassering  av menyen ''Logg inn''
+** Lokalisering
+* Testing
+
+Ferdig til fredag.
+
+!! Neste møte
+
+Fredag 08.00 T / 01.00 M (dvs. torsdag kveld etter midnatt M)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
