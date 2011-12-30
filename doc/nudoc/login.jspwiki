@@ -10,7 +10,7 @@ Det vi ønskjer er at info frå site-innlogging
 Studenten loggar seg inn, og site.uit.no/oahpa veit kven
 # Orakel oppretta site.uit.no/giellatekno med oss som admin
 # Vi legger til brukere med forskjellig tilgang (lese, skrive)
-# Bare brukere som er innlogget kan skrive kommentarer på sidene
+# Bare brukere som er innlogget kan skrive kommentarer på sidene (denne er tatt bort foreløpig)
 # Det er mulig å logge seg inn på forsiden, for registrerte brukere 
 # I dag er det ikke mulig for brukere selv å registrere seg som bruker (visl-metoden) 
 
@@ -95,3 +95,17 @@ Man får en ''Register'' side på menyen øverst på sida, eller som en menylinj
 En annen mulighet som kanskje kunne brukes, er en poll plug-in som allerede er installert på site. Da kunne vi ha den aktiv på registreringssida, med noen tillegsspørsmål, om for eksempel språkbakgrunn, kurstilhørighet og lærer. Jeg skal undersøke mulighetene der. Bjørn Hatteng installerer disse på test-siten, så kan jeg teste ut mulighetene der.
 
 Kan noen sjekke om dette vil gi oss det vi vil ha?
+
+!Testing av plug-ins
+
+Plug-in simplr-registration-form gir oss mulighet til å lage egne registreringsskjemaer for lærere. Siden vi tenker å legge til lærere selv, med ''author'' rettigheter, så trenger vi ikke denne.
+
+Profile-builder gir et standard registreringsskjema, der man kan velge hvilke (av forhåndsvalgte) spørsmål dine brukere skal svare på. Man kan ikke legge til egne spørsmål. Skjemaet har et felt der brukeren skal skrive om seg selv. Der kan vi oppfordre folk til å skrive om sin språkbakgrunn, og grunner for å lære seg samisk. Vi har ingen mulighet å sikre oss at vi faktisk får den informasjonen fra brukerne.
+
+Peters-log-in-redirect fører brukerne til en bestemt URL etter innlogging. Man kan velge ut enkeltbrukere eller roller. Denne landingssiden blir dessverre ikke en ''home'' for brukerne. Når de er inne i læringsstien så vil de dermed ikke føres tilbake til lærerens side når de trykker på home øverst i margen.
+
+Poll-plugin gir oss en mulighet å legge til spørsmål i margen, som en ''widget''. Hvert spørsmål utgjør en poll, og hver poll kan ha flere svar. Det er ikke mulig å ha flere spørsmål i samme poll.  
+
+!Dagens løsning
+
+Vi har ikke brukerregistrering på site. Vi har egne kurssider for Isak Saba senteret og Gáisi giellaguovddáš. Disse er passordbeskyttet, og kurslærere gir passordet til sine studenter. Man trenger foreløpig ikke å være registrert som bruker for å kunne kommentere på sidene, men man må legge igjen navn og epost. Foreløpig er ingen studenter lagt til som brukere, men kurslærerne har fått rollen som Author.
