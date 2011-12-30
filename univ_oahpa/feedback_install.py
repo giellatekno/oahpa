@@ -476,9 +476,13 @@ class Feedback_install:
 				def gen_prod():
 					products = product(
 						f.stem, 
+						f.diphthong, 
+						f.gradation, 
 						f.soggi, 
+						f.rime, 
 						f.case, 
-						f.number)
+						f.number,
+						)
 
 					return products
 					# include gradation, diphthong, rime also ?
@@ -492,14 +496,18 @@ class Feedback_install:
 				prep_for_insert = set()
 				count = 0
 				for iteration in products:
-					stem, soggi, case, number = iteration # Here
+					stem, diphthong, gradation, soggi, rime, \
+					case, number = iteration # Here
 					
 					if case == "Ess":
 						number = ""
 					
 					prep_for_insert.add((pos,
 								stem,
+								diphthong,
+								gradation,
 								soggi,
+								rime,
 								case,
 								number,
 								# empties
@@ -515,7 +523,8 @@ class Feedback_install:
 								'',
 								))
 
-				keys = ('pos', 'stem', 'rime', 'soggi', 'case', 'number',
+				keys = ('pos', 'stem', 'diphthong', 'gradation', 'soggi', 'rime', 
+					'case', 'number',
 					'personnumber', 'tense', 'mood', 'attributive', 'grade',
 					'attrsuffix', 'wordclass')
 
