@@ -19,14 +19,10 @@ TODO: link in user interface
 		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
 		{% if is_student %}
 			{% if new_profile %}
-				<p>You don't have any scores yet, go play some games!</p>
+				<p>{% trans "You don't have any scores yet, go play some games!" %}</p>
 			{% else %}
-				<p>The following scores represent your progress
-					in the games available in Oahpa.
-					Instructors will see your scores as shown
-					below, but will also be able to see individual scores from
-					every game. Good luck!</p>
-				<h3>Course progress</h3>
+				<p>{% trans "The following scores represent your progress in the games available in Oahpa. Instructors will see your scores as shown below, but will also be able to see individual scores from every game. Good luck!" %}</p>
+				<h3>{% trans "Course progress" %}</h3>
 				<dl>
 					{% for summary in summaries %}
 						<dt>{{ summary.game }}</dt>
@@ -41,7 +37,7 @@ TODO: link in user interface
 					{% endfor %}
 				</dl>
 
-				<h3>Enrolled in... </h3>
+				<h3>{% trans "Enrolled in…" %} </h3>
 				<ul class="courselist">
 					{% for course in courses %}
 					<li>{{ course.identifier }} &ndash; {{ course.name }}</li>
@@ -49,8 +45,8 @@ TODO: link in user interface
 				</ul>
 			{% endif %}
 		{% else %}
-			<p>You are a course instructor.</p>
-			<p><a href="/univ_oahpa/admin/courses/">View students' grades</a></p>
+			<p>{% trans "You are a course instructor." %}</p>
+			<p><a href="/univ_oahpa/admin/courses/">{% trans "View students' grades" %}</a></p>
 		{% endif %}
 	</div>
 
