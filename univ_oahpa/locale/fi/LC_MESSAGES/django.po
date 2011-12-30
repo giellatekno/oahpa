@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-28 23:30+0100\n"
+"POT-Creation-Date: 2011-12-30 12:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,11 +62,11 @@ msgstr "Kielioppi"
 
 #: templates/univ_oahpa.html:83
 msgid "Online courses"
-msgstr ""
+msgstr "Online-resurssit"
 
 #: templates/univ_oahpa.html:86
 msgid "View progress"
-msgstr ""
+msgstr "Näytä edistyminen"
 
 #: templates/univ_oahpa.html:87 templates/admin/base.html:48
 #: templates/registration/password_change_done.html:3
@@ -142,7 +142,7 @@ msgstr "Pohjoissaame"
 
 #: templates/univ_oahpa_main.html:177
 msgid "Finnish"
-msgstr ""
+msgstr "Suomi"
 
 #: templates/univ_oahpa_main.html:177 templates/univ_oahpa_main.html.py:179
 #: templates_old/smaoahpa_main.html:135 templates_old/smaoahpa_main.html:146
@@ -514,7 +514,7 @@ msgstr "Slett?"
 
 #: templates/auth/login.html:11
 msgid "Your username and password didn't match. Please try again."
-msgstr ""
+msgstr "Käyttäjätunnus ja salasana eivät täsmänneet. Kokeile uudestaan."
 
 #: templates/auth/login.html:15
 msgid "Log out?"
@@ -522,7 +522,7 @@ msgstr "Kirjaudu ulos?"
 
 #: templates/auth/login.html:17
 msgid "Please log in to continue..."
-msgstr ""
+msgstr "Kirjaudu sisään jatkaakseesi"
 
 #: templates/auth/login.html:33
 msgid "log in"
@@ -549,46 +549,46 @@ msgstr "Tervetuloa"
 #: templates/courses/courses_main.html:35
 #: templates_old/courses/courses_main.html:56
 msgid "Average"
-msgstr ""
+msgstr "Keskitulos"
 
 #: templates/courses/courses_main.html:36
 #: templates_old/courses/courses_main.html:57
 msgid "Highest score"
-msgstr ""
+msgstr "Korkein tulos"
 
 #: templates/courses/courses_main.html:37
 #: templates_old/courses/courses_main.html:58
 msgid "Lowest score"
-msgstr "Pisteesi:"
+msgstr "Matalin tulos:"
 
 #: templates/courses/courses_main.html:38
 #: templates_old/courses/courses_main.html:59
 msgid "Number of tries"
-msgstr ""
+msgstr "Kokeilujen määrä"
 
 #: templates/registration/logged_out.html:8
 msgid "Thanks for spending some quality time with the Web site today."
-msgstr "Takk for at du har brukt litt kvalitetstid på dette nettstedet i dag."
+msgstr "Kiitos, että olet käyttänyt laatuaikaa tässä nettipaikassa tänään."
 
 #: templates/registration/logged_out.html:10
 msgid "Log in again"
-msgstr "Logg inn igjen"
+msgstr "Kirjaudu sisään uudestaan"
 
 #: templates/registration/password_change_done.html:4
 #: templates/registration/password_change_form.html:5
 #: templates/registration/password_change_form.html:7
 #: templates/registration/password_change_form.html:19
 msgid "Password change"
-msgstr "Passordendring"
+msgstr "Salasanan vaihto"
 
 #: templates/registration/password_change_done.html:6
 #: templates/registration/password_change_done.html:10
 msgid "Password change successful"
-msgstr "Passordendring var vellykket"
+msgstr "Salasanan vaihto onnistui"
 
 #: templates/registration/password_change_done.html:12
 msgid "Your password was changed."
-msgstr "Passordet ditt har blitt endret."
+msgstr "Salasanasi on muuttunut."
 
 #: templates/registration/password_change_form.html:21
 msgid ""
@@ -610,7 +610,7 @@ msgstr "Uusi salasana"
 #: templates/registration/password_change_form.html:43
 #: templates/registration/password_reset_confirm.html:21
 msgid "Change my password"
-msgstr "Endre passordet mitt"
+msgstr "Vaihda salasanani"
 
 #: templates/registration/password_reset_complete.html:4
 #: templates/registration/password_reset_confirm.html:6
@@ -619,12 +619,12 @@ msgstr "Endre passordet mitt"
 #: templates/registration/password_reset_form.html:6
 #: templates/registration/password_reset_form.html:10
 msgid "Password reset"
-msgstr "Sett nytt passord."
+msgstr "Aseta uusi salasana."
 
 #: templates/registration/password_reset_complete.html:6
 #: templates/registration/password_reset_complete.html:10
 msgid "Password reset complete"
-msgstr "Ferdig med å sette nytt passord"
+msgstr "Salasanan uusiminen on valmis."
 
 #: templates/registration/password_reset_complete.html:12
 msgid "Your password has been set.  You may go ahead and log in now."
@@ -648,15 +648,15 @@ msgstr ""
 
 #: templates/registration/password_reset_confirm.html:18
 msgid "New password:"
-msgstr "Nytt passord:"
+msgstr "Uusi salasana:"
 
 #: templates/registration/password_reset_confirm.html:20
 msgid "Confirm password:"
-msgstr "Verifiser passordet:"
+msgstr "Vahvista salasana:"
 
 #: templates/registration/password_reset_confirm.html:26
 msgid "Password reset unsuccessful"
-msgstr "Passordskifte var mislykket"
+msgstr "Salasanan vaihto epäonnistui."
 
 #: templates/registration/password_reset_confirm.html:28
 msgid ""
@@ -1675,7 +1675,7 @@ msgid "Add adjectives in correct forms."
 msgstr "Kirjoita pohjoissaamen adjektiivi oikeassa muodossa."
 
 #: univ_drill/templates/mgame_a.html:20 univ_drill/templates/mgame_a.html:33
-#: univ_drill/templates/mgame_v.html:16 univ_drill/templates/mgame_v.html:25
+#: univ_drill/templates/mgame_v.html:16 univ_drill/templates/mgame_v.html:26
 msgid "Type"
 msgstr "Laji"
 
@@ -1695,6 +1695,7 @@ msgid "trisyllabic"
 msgstr "paritontavut"
 
 #: univ_drill/templates/mgame_a.html:26 univ_drill/templates/mgame_n.html:21
+#: univ_drill/templates/mgame_v.html:22
 msgid "contracted"
 msgstr ""
 
