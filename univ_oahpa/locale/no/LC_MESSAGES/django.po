@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-30 12:22+0100\n"
+"POT-Creation-Date: 2011-12-30 12:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -546,25 +546,56 @@ msgstr ""
 msgid "Welcome"
 msgstr "Velkommen"
 
-#: templates/courses/courses_main.html:35
+#: templates/courses/courses_main.html:22
+msgid "You don't have any scores yet, go play some games!"
+msgstr "Du har ingen resultater enda, kom i gang og bruk Oahpa!"
+
+#: templates/courses/courses_main.html:24
+msgid ""
+"The following scores represent your progress in the games available in "
+"Oahpa. Instructors will see your scores as shown below, but will also be "
+"able to see individual scores from every game. Good luck!"
+msgstr ""
+"Resultatene du ser her viser framgangen din i programmene som er "
+"tilgjengelig i Oahpa. Kurslæreren kan se resultatene dine, og kan også "
+"følge resultatene dine fra hvert program. Lykke til!"
+
+#: templates/courses/courses_main.html:25
+#, fuzzy
+msgid "Course progress"
+msgstr "Se framgang"
+
+#: templates/courses/courses_main.html:31
 #: templates_old/courses/courses_main.html:56
 msgid "Average"
 msgstr "Gjennomsnitt"
 
-#: templates/courses/courses_main.html:36
+#: templates/courses/courses_main.html:32
 #: templates_old/courses/courses_main.html:57
 msgid "Highest score"
 msgstr "Høyeste poengsum:"
 
-#: templates/courses/courses_main.html:37
+#: templates/courses/courses_main.html:33
 #: templates_old/courses/courses_main.html:58
 msgid "Lowest score"
 msgstr "Laveste poengsum:"
 
-#: templates/courses/courses_main.html:38
+#: templates/courses/courses_main.html:34
 #: templates_old/courses/courses_main.html:59
 msgid "Number of tries"
 msgstr "Antall forsøk"
+
+#: templates/courses/courses_main.html:40
+msgid "Enrolled in…"
+msgstr "Deltaker på kurset…"
+
+#: templates/courses/courses_main.html:48
+msgid "You are a course instructor."
+msgstr "Du er kursinstruktør."
+
+#: templates/courses/courses_main.html:49
+msgid "View students' grades"
+msgstr "Se studentresultater"
 
 #: templates/registration/logged_out.html:8
 msgid "Thanks for spending some quality time with the Web site today."

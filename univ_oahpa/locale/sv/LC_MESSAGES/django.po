@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-30 12:23+0100\n"
+"POT-Creation-Date: 2011-12-30 12:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: templates/404.html:8 templates/500.html:8
 msgid "Error"
-msgstr ""
+msgstr "Fel"
 
 #: templates/404.html:9
 msgid "Page not found."
@@ -62,11 +62,11 @@ msgstr "Grammatik"
 
 #: templates/univ_oahpa.html:83
 msgid "Online courses"
-msgstr ""
+msgstr "Online-kurs"
 
 #: templates/univ_oahpa.html:86
 msgid "View progress"
-msgstr ""
+msgstr "Se framgång"
 
 #: templates/univ_oahpa.html:87 templates/admin/base.html:48
 #: templates/registration/password_change_done.html:3
@@ -520,7 +520,7 @@ msgstr "Logga ut"
 
 #: templates/auth/login.html:17
 msgid "Please log in to continue..."
-msgstr ""
+msgstr "Var god logga in för att fortsätta"
 
 #: templates/auth/login.html:33
 msgid "log in"
@@ -544,25 +544,55 @@ msgstr ""
 msgid "Welcome"
 msgstr "Välkommen"
 
-#: templates/courses/courses_main.html:35
+#: templates/courses/courses_main.html:22
+msgid "You don't have any scores yet, go play some games!"
+msgstr "Du har ingen resultater än, så gå igång, bara!"
+
+#: templates/courses/courses_main.html:24
+msgid ""
+"The following scores represent your progress in the games available in "
+"Oahpa. Instructors will see your scores as shown below, but will also be "
+"able to see individual scores from every game. Good luck!"
+msgstr ""
+"De här resultaten viser din framgång i programmen tillgängliga i "
+"Oahpa. Kursinstruktören vil se dina resultat som visat hör, men kan också "
+"se individuella resultat från varje delprogram. Lycka till!"
+
+#: templates/courses/courses_main.html:25
+msgid "Course progress"
+msgstr "Kursframgång"
+
+#: templates/courses/courses_main.html:31
 #: templates_old/courses/courses_main.html:56
 msgid "Average"
-msgstr ""
+msgstr "Genomsnitt"
 
-#: templates/courses/courses_main.html:36
+#: templates/courses/courses_main.html:32
 #: templates_old/courses/courses_main.html:57
 msgid "Highest score"
-msgstr ""
+msgstr "Högste resultat"
 
-#: templates/courses/courses_main.html:37
+#: templates/courses/courses_main.html:33
 #: templates_old/courses/courses_main.html:58
 msgid "Lowest score"
-msgstr "Din poängsumma:"
+msgstr "Lägsta resultat:"
 
-#: templates/courses/courses_main.html:38
+#: templates/courses/courses_main.html:34
 #: templates_old/courses/courses_main.html:59
 msgid "Number of tries"
-msgstr ""
+msgstr "Talet på försök"
+
+#: templates/courses/courses_main.html:40
+msgid "Enrolled in…"
+msgstr "Deltagare på…"
+
+#: templates/courses/courses_main.html:48
+msgid "You are a course instructor."
+msgstr "Du är en kursinstruktör"
+
+#: templates/courses/courses_main.html:49
+msgid "View students' grades"
+msgstr "Se studentresultat"
 
 #: templates/registration/logged_out.html:8
 msgid "Thanks for spending some quality time with the Web site today."
