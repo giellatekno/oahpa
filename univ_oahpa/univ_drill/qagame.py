@@ -159,11 +159,33 @@ class QAGame(Game):
 			form = form_set[0]
 		else:
 			if word_id and tag_el:
-				word_set = Word.objects.filter(id=word_id)
-				if qelement:
-					if qelement.semtype:
-						word_set.filter(semtype=qelement.semtype)
-				word = word_set[0]
+				###		word_set = Word.objects.filter(id=word_id)
+				###		if qelement:
+				###			if qelement.semtype:
+				###				word_set.filter(semtype=qelement.semtype)
+				###		word = word_set[0]
+
+				word = Word.objects.get(id=word_id)
+				# if qelement:
+					# if qelement.semtype:
+						# word_set.filter(semtype=qelement.semtype)
+
+				# word = word_set[0]
+
+				form_set = word.form_set.filter(tag=tag_el)
+
+				excl = form_set.exclude(dialects__dialect='NG')
+
+				if excl.count() > 0:
+					form_set = excl
+
+				dialect_forms = form_set.filter(dialects__dialect=dialect)
+
+				if dialect_forms.count() > 0:
+					form_set = dialect_forms
+
+				form = form_set[0]
+
 		
 		if form:
 			fullform = form.fullform
@@ -246,6 +268,8 @@ class QAGame(Game):
 			subjword = {}
 			if tag_el.pos == "Pron":
 				subjnumber = tag_el.personnumber
+				if not subjnumber:
+					raise Http404("Tag Element missing personnumber. Database may be improperly installed for tags.")
 				pronbase = self.PronPNBase[subjnumber]
 				word_el = Word.objects.filter(lemma=pronbase)[0]
 				words_ = self.get_words(None, tag_el, None, word_el.id)
@@ -445,22 +469,24 @@ class QAGame(Game):
 		
 		copy_id = subj_el.copy_id
 		
-		if copy_id:
-			subj_copy = QElement.objects.filter(id=copy_id)[0]
+		if subj_el.copy:
+			subj_copy = subj_el.copy
 			copy_syntax = subj_copy.syntax
 			if qwords.has_key(copy_syntax):
 				qword = qwords[copy_syntax]
-				subjtag_id=qword['tag']
+
+				subjtag_id = qword['tag']
 				subjtag = Tag.objects.get(id=subjtag_id)
-				subjword_id=qword['word']
-				if subjtag.pos=="Pron":
+				subjword_id = qword['word']
+
+				if subjtag.pos == "Pron":
 					subjnumber = subjtag.personnumber
 				else:
 					subjnumber = subjtag.number
 				
 				# this should only happen if there's subj person
-				a_number=self.QAPN[subjnumber]
-				asubjtag = subjtag.string.replace(subjnumber,a_number)
+				a_number = self.QAPN[subjnumber]
+				asubjtag = subjtag.string.replace(subjnumber, a_number)
 				asubjtag_el = Tag.objects.get(string=asubjtag)
 				
 				# If pronoun, get the correct form
@@ -503,7 +529,6 @@ class QAGame(Game):
 		
 		# If SUBJ is appearing in the output, this means subjword is set to none for some reason.
 		# subjword is set to none because subj_el.copy_id is none
-		
 		return awords
 
 	

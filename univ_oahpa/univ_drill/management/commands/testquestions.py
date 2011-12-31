@@ -39,7 +39,7 @@ def _firstelement(e, x):
         return None
 
 
-from smadrill.models import Tagname, Tagset, Form
+from univ_drill.models import Tagname, Tagset, Form
 
 _boolify = lambda v: True and v.lower() in ['yes', 'true', 'y'] or False
 
