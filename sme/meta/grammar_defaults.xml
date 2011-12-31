@@ -5,36 +5,35 @@
   <tags>
     <element id="SUBJ">
       <grammar pos="Pron" tag="Pron+Pers+Person-Number+Nom"/>
-      <grammar pos="Interr" tag="Pron+Interr+Number+Nom"/>
-      <grammar pos="N" tag="N+Number+Nom"/>
-      <grammar pos="N" tag="N+Prop+Number+Nom"/>
+      <grammar pos="N" tag="N+NumberN+Nom"/>
+      <grammar pos="N" tag="N+Prop+NumberN+Nom"/>
     </element>
     <element id="HAB">
       <grammar pos="Pron" tag="Pron+Pers+Person-Number+Loc"/>
-      <grammar pos="Interr" tag="Pron+Interr+Number+Loc"/>
-      <grammar pos="N" tag="N+Number+Loc"/>
-      <grammar pos="N" tag="N+Prop+Number+Loc"/>
+      <grammar pos="Interr" tag="Pron+Interr+NumberN+Loc"/>
+      <grammar pos="N" tag="N+NumberN+Loc"/>
+      <grammar pos="N" tag="N+Prop+NumberN+Loc"/>
     </element>
     <element id="MAINV">
       <grammar pos="V" tag="V+Mood+Tense+Person-Number"/>
     </element>  
     <element id="N-ILL">
-      <grammar pos="N" tag="N+Number+Ill"/>
+      <grammar pos="N" tag="N+NumberN+Ill"/>
     </element>
     <element id="N-LOC">
-      <grammar pos="N" tag="N+Number+Loc"/>
+      <grammar pos="N" tag="N+NumberN+Loc"/>
     </element>
     <element id="N-COM">
-      <grammar pos="N" tag="N+Number+Com"/>
+      <grammar pos="N" tag="N+NumberN+Com"/>
     </element>
     <element id="N-ACC">
-      <grammar pos="N" tag="N+Number+Acc"/>
+      <grammar pos="N" tag="N+NumberN+Acc"/>
     </element>
     <element id="N-GEN">
-      <grammar pos="N" tag="N+Number+Gen"/>
+      <grammar pos="N" tag="N+NumberN+Gen"/>
     </element>
     <element id="OBJ">
-      <grammar pos="N" tag="N+Number+Acc"/>
+      <grammar pos="N" tag="N+NumberN+Acc"/>
     </element>
     <element id="NEG">
       <id>ii</id>
@@ -45,7 +44,7 @@
     <part name="ANSWERSUBJECT">
       <select>
 	<element id="SUBJ">
-	  <grammar pos="N" tag="N+Number+Nom"/>
+	  <grammar pos="N" tag="N+NumberN+Nom"/>
 	  <grammar pos="Pron" tag="Pron+Pers+Sg3+Nom"/>
 	  <grammar pos="Pron" tag="Pron+Pers+Pl3+Nom"/>
 	  <grammar pos="Pron" tag="Pron+Pers+Du3+Nom"/>

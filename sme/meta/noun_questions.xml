@@ -14,7 +14,7 @@
     <question>
       <text>Masa SUBJ MAINV</text>
       <element id="SUBJ">
-	    <grammar pos="Pron"/>
+	    <grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -40,7 +40,7 @@
 	<id>gii</id>
       </element>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -65,7 +65,7 @@
     <question>
       <text>Geasa SUBJ MAINV OBJ</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+		<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -89,7 +89,7 @@
     <question>
       <text>Geaidda SUBJ MAINV OBJ</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+		<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -116,7 +116,7 @@
     <question>
       <text>Gosa SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+		<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -126,13 +126,13 @@
     <answer> 
       <text>SUBJ MAINV N-ILL</text>
       <element game='morfa' id="N-ILL" task="yes">
-	<grammar tag="N+Sg+Ill"/>
+	<grammar tag="N+Prop+Sg+Ill"/>
 	<sem class="mPLACENAME"/>
       </element>
     </answer>
   </q>
   
-  !-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N or Adv-set DOHKO: -->
+  <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N or Adv-set DOHKO: -->
 <!--  <q id="nill3">
     <qtype>N-ILL</qtype>
     <question>
@@ -214,7 +214,7 @@
     <answer> 
       <text>SUBJ MAINV N-ILL</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element game='morfa' id="N-ILL" task="yes">
 	<grammar tag="N+Number+Ill"/>
@@ -283,7 +283,7 @@
     <answer> 
       <text>SUBJ MAINV N-ILL</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<id>son</id>
       </element>
       <element game='morfa' id="N-ILL" task="yes">
@@ -336,7 +336,7 @@
     <question>
       <text>Masa SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -367,7 +367,7 @@
     <question>
       <text>Masa SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -395,7 +395,7 @@
 	<id>gii</id>
       </element>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	   <grammar tag="V+Ind+Tense+Person-Number"/>
@@ -417,7 +417,7 @@
     <question>
       <text>Geasa SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	   <grammar tag="V+Ind+Tense+Person-Number"/>
@@ -437,7 +437,7 @@
     <question>
       <text>Geaidda SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	   <grammar tag="V+Ind+Tense+Person-Number"/>
@@ -459,7 +459,7 @@
     <question>
       <text>Masa SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	   <grammar tag="V+Ind+Tense+Person-Number"/>
@@ -487,7 +487,7 @@
 	<id>gii</id>
       </element>
       <element id="SUBJ">
-	<grammar tag="N+Number+Nom"/>
+	<grammar tag="N+NumberN+Nom"/>
 	<sem class="ANIMAL_DOM"/>
       </element>
       <element id="MAINV">
@@ -509,7 +509,7 @@
     <question>
       <text>Geas MAINV váralaš SUBJ</text>
       <element id="SUBJ">
-	<grammar tag="N+Number+Nom"/>
+	<grammar tag="N+NumberN+Nom"/>
 	<sem class="ANIMAL_DOM"/>
       </element>
       <element id="MAINV">
@@ -530,7 +530,7 @@
     <question>
       <text>Geain MAINV váralaš SUBJ</text>
       <element id="SUBJ">
-	<grammar tag="N+Number+Nom"/>
+	<grammar tag="N+NumberN+Nom"/>
 	<sem class="ANIMAL_DOM"/>
       </element>
       <element id="MAINV">
@@ -554,7 +554,7 @@
     <question>
       <text>Gos SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar tag="N+Number+Nom"/>
+	<grammar tag="N+NumberN+Nom"/>
 	<sem class="HUMAN"/>
       </element>
       <element id="MAINV">
@@ -565,11 +565,11 @@
     <answer> 
       <text>SUBJ MAINV N-LOC</text>
       <element game='morfa' id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<id>son</id>
       </element>
       <element game='morfa' id="N-LOC" task="yes">
-	<grammar tag="N+Sg+Loc"/>
+	<grammar tag="N+Prop+Sg+Loc"/>
 	<sem class="mPLACENAME"/>
       </element>
     </answer>
@@ -590,7 +590,7 @@
     <answer> 
       <text>Son MAINV N-LOC</text>
       <element game='morfa' id="N-LOC" task="yes">
-	<grammar tag="N+Sg+Loc"/>
+	<grammar tag="N+Prop+Sg+Loc"/>
 	<sem class="mPLACENAME"/>
       </element>
     </answer>
@@ -611,7 +611,7 @@
     <answer> 
       <text>Sii MAINV N-LOC</text>
       <element game='morfa' id="N-LOC" task="yes">
-	<grammar tag="N+Sg+Loc"/>
+	<grammar tag="N+Prop+Sg+Loc"/>
 	<sem class="mPLACENAME"/>
       </element>
     </answer>
@@ -624,7 +624,7 @@
     <question>
       <text>Gos SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar tag="N+Number+Nom"/>
+	<grammar tag="N+NumberN+Nom"/>
 	<sem class="HUMAN"/>
       </element>
       <element id="MAINV">
@@ -635,11 +635,11 @@
     <answer> 
       <text>SUBJ MAINV N-LOC</text>
       <element game='morfa' id="N-LOC" task="yes">
-      <grammar tag="N+Sg+Loc"/>
+      <grammar tag="N+Prop+Sg+Loc"/>
 	<sem class="mPLACENAME"/>
       </element>
       <element game='morfa' id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<id>son</id>
       </element>
     </answer>
@@ -660,7 +660,7 @@
     <answer> 
       <text>Son MAINV N-LOC</text>
       <element game='morfa' id="N-LOC" task="yes">
-      <grammar tag="N+Sg+Loc"/>
+      <grammar tag="N+Prop+Sg+Loc"/>
 	<sem class="mPLACENAME"/>
       </element>
     </answer>
@@ -682,7 +682,7 @@
     <answer> 
       <text>Sii MAINV N-LOC</text>
       <element game='morfa' id="N-LOC" task="yes">
-      <grammar tag="N+Sg+Loc"/>
+      <grammar tag="N+Prop+Sg+Loc"/>
 	<sem class="mPLACENAME"/>
       </element>
     </answer>
@@ -710,7 +710,7 @@
     <answer> 
       <text>SUBJ MAINV N-LOC</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<id>son</id>
       </element>
       <element game='morfa' id="N-LOC" task="yes">
@@ -780,7 +780,7 @@
     <answer> 
       <text>SUBJ MAINV N-LOC</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<id>son</id>
       </element>
       <element game='morfa' id="N-LOC" task="yes">
@@ -841,7 +841,7 @@
 	<id>gii</id>
       </element>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -861,7 +861,7 @@
     <question>
       <text>Geas SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -881,7 +881,7 @@
     <question>
       <text>Geain SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -905,7 +905,7 @@
     <question>
       <text>Mas SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -931,7 +931,7 @@
 	<id>gii</id>
       </element>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -952,7 +952,7 @@
     <question>
       <text>Geas SUBJ MAINV skeaŋkka</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -972,7 +972,7 @@
     <question>
       <text>Geain SUBJ MAINV skeaŋkkaid</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1000,7 +1000,7 @@
 	<id>gii</id>
       </element>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1021,7 +1021,7 @@
     <question>
       <text>Geas SUBJ MAINV ságaid</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1041,7 +1041,7 @@
     <question>
       <text>Geain SUBJ MAINV ságaid</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1066,7 +1066,7 @@
     <question>
       <text>Maid SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1087,7 +1087,7 @@
     <question>
       <text>Maid SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar tag="N+Number+Nom"/>
+	<grammar tag="N+NumberN+Nom"/>
 	<sem class="FAMILY"/>
       </element>
       <element id="MAINV">
@@ -1151,7 +1151,7 @@
     <question>
       <text>Maid SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1172,7 +1172,7 @@
     <question>
       <text>Maid SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1186,7 +1186,7 @@
       </element>
 <!--      <element game='qa' id="N-ACC">
         <grammar pos="N"/>
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>   -->
  </answer>
   </q>
@@ -1203,7 +1203,7 @@
 	<id>gii</id>
       </element>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1218,7 +1218,7 @@
       </element>     <element game='qa' id="N-ACC">
         <agreement id="INTERR"/>
         <grammar pos="N"/>
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>    
  </answer>
   </q> -->
@@ -1227,7 +1227,7 @@
     <question>
       <text>Gean SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1247,7 +1247,7 @@
     <question>
       <text>Geaid SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1350,7 +1350,7 @@
     <answer> 
       <text>SUBJ MAINV N-GEN duohkái</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<id>son</id>
       </element>
       <element game='morfa' id="N-GEN" task="yes">
@@ -1422,7 +1422,7 @@
     <answer> 
       <text>SUBJ MAINV N-GEN</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<id>son</id>
       </element>
       <element  id="N-GEN" task="yes">
@@ -1492,7 +1492,7 @@
     <answer> 
       <text>SUBJ MAINV N-GEN</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<id>son</id>
       </element>
       <element id="N-GEN" task="yes">
@@ -1571,7 +1571,7 @@
     <answer> 
       <text>SUBJ MAINV N-GEN</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<id>son</id>
       </element>
       <element game='morfa' id="N-GEN" task="yes">
@@ -1668,7 +1668,7 @@
     <answer> 
       <text>SUBJ MAINV N-GEN</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<id>son</id>
       </element>
       <element game='morfa' id="N-GEN" task="yes">
@@ -1749,7 +1749,7 @@
 	<id>gii</id>
       </element>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1769,7 +1769,7 @@
     <question>
       <text>Geainna SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1789,7 +1789,7 @@
     <question>
       <text>Geaiguin SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1816,7 +1816,7 @@
 	<id>mii</id>
       </element>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1836,7 +1836,7 @@
     <question>
       <text>Mainna SUBJ MAINV ruoktot</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1856,7 +1856,7 @@
     <question>
       <text>Maiguin SUBJ MAINV ruoktot</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1892,7 +1892,7 @@
 	<id>mii</id>
       </element>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1921,7 +1921,7 @@
     <question>
       <text>Mainna SUBJ MAINV</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -1948,7 +1948,7 @@
 	<sem class="FAMILY"/>
       </element>
       <element id="PLACE">
-	<grammar tag="N+Sg+Loc"/>
+	<grammar tag="N+Prop+Sg+Loc"/>
 	<sem class="mPLACENAME"/>
       </element>
        <element id="MAINV">
@@ -1959,7 +1959,7 @@
     <answer> 
       <text>SUBJ MAINV N-ESS</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<id>son</id>
       </element>
       <element game='morfa' id="N-ESS" task="yes">
@@ -1977,7 +1977,7 @@
 	<sem class="FAMILY"/>
       </element>
       <element id="PLACE">
-	<grammar tag="N+Sg+Loc"/>
+	<grammar tag="N+Prop+Sg+Loc"/>
 	<sem class="mPLACENAME"/>
       </element>
        <element id="MAINV">
@@ -2002,7 +2002,7 @@
 	<sem class="FAMILY"/>
       </element>
       <element id="PLACE">
-	<grammar tag="N+Sg+Loc"/>
+	<grammar tag="N+Prop+Sg+Loc"/>
 	<sem class="mPLACENAME"/>
       </element>
        <element id="MAINV">
@@ -2037,7 +2037,7 @@
     <answer> 
       <text>SUBJ MAINV N-ESS</text>
       <element game='morfa' id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
 	<id>son</id>
       </element>
       <element game='morfa' id="N-ESS" task="yes">
@@ -2096,7 +2096,7 @@
     <question>
       <text>Manin SUBJ MAINV karneválas</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
        <element id="MAINV">
 	<grammar tag="V+Ind+Tense+Person-Number"/>
@@ -2106,8 +2106,7 @@
     <answer> 
       <text>SUBJ MAINV N-ESS</text>
       <element game='morfa' id="SUBJ">
-	<grammar pos="Pron"/>
-	<id>son</id>
+	<grammar tag="Pron+Pers+Sg3+Nom"/>
       </element>
       <element game='morfa' id="N-ESS" task="yes">
 	<grammar tag="N+Ess"/>
@@ -2123,7 +2122,7 @@
     <question>
       <text>Manin SUBJ MAINV OBJ</text>
       <element id="SUBJ">
-	<grammar pos="Pron"/>
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
       </element>
       <element id="OBJ">
 	<grammar tag="Pron+Pers+Person-Number+Acc"/>
@@ -2198,7 +2197,7 @@
     <question>
       <text>Geat vulget LOC</text>
       <element id="LOC">
-	<grammar tag="N+Sg+Ill"/>
+	<grammar tag="N+Prop+Sg+Ill"/>
 	<sem class="mPLACENAME"/>
       </element>
     </question>
