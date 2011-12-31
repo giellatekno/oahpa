@@ -6,11 +6,7 @@
 	<q id="pnom1">
 		<qtype>P-NOM</qtype>
 		<question>
-			<text>SUBJ MAINV odne</text>
-			<element id="SUBJ">
-				<grammar pos="Interr"/>
-				<id>gii</id>
-			</element>
+			<text>Gii MAINV odne</text>
 			<element id="MAINV">
 				<sem class="mACTIVITY"/>
 				<grammar tag="V+Ind+Prs+Person-Number"/>
@@ -54,6 +50,7 @@
 			<text>MAINV go SUBJ ikte</text>
 			<element id="SUBJ">
 				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom" />
 			</element>
 			<element id="MAINV">
 				<sem class="mACTIVITY"/>
@@ -117,7 +114,7 @@
 			<text>Gean SUBJ oaidná</text>
 			<element id="SUBJ">
 				<sem class="mPERSNAME"/>
-				<grammar pos="N"/>
+				<grammar tag="N+Prop+Sg+Nom" />
 			</element>
 		</question>
 		<answer>
@@ -127,6 +124,7 @@
 			</element>
 		</answer>
 	</q>
+	<!-- TODO: mPAIR
 	<q id="pacc6">
 		<qtype>P-ACC</qtype>
 		<question>
@@ -147,6 +145,7 @@
 			</element>
 		</answer>
 	</q>
+	-->
 	<q id="pgen1">
 		<qtype>P-GEN</qtype>
 		<qtype>P-MIX</qtype>
@@ -154,7 +153,7 @@
 			<text>Gean SUBJ diet lea</text>
 			<element id="SUBJ">
 				<sem class="VEHICLE"/>
-				<grammar pos="N"/>
+				<grammar tag="N+Sg+Nom"/>
 			</element>
 		</question>
 		<answer>
@@ -174,7 +173,7 @@
 			</element>
 			<element id="SUBJ">
 				<sem class="ANIMAL_PET"/>
-				<grammar tag="N+Sg"/>
+				<grammar tag="N+Sg+Nom"/>
 			</element>
 		</question>
 		<answer>
@@ -189,13 +188,13 @@
 		<qtype>P-MIX</qtype>
 		<question>
 			<text>Geasa SUBJ čálii OBJ</text>
+			<element id="SUBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Subclass+Sg+Nom" />
+			</element>
 			<element id="OBJ">
 				<sem class="TEXT"/>
 				<grammar tag="N+Sg+Acc"/>
-			</element>
-			<element id="SUBJ">
-				<sem class="mPERSNAME"/>
-				<grammar pos="N"/>
 			</element>
 		</question>
 		<answer>
@@ -216,7 +215,7 @@
 			</element>
 			<element id="SUBJ">
 				<sem class="mPERSNAME"/>
-				<grammar pos="N"/>
+				<grammar tag="N+Subclass+Sg+Nom" />
 			</element>
 		</question>
 		<answer>
@@ -237,7 +236,7 @@
 			</element>
 			<element id="SUBJ">
 				<sem class="FAMILY"/>
-				<grammar tag="N+Sg"/>
+				<grammar tag="N+Subclass+Sg+Nom"/>
 			</element>
 		</question>
 		<answer>
@@ -257,7 +256,7 @@
 			</element>
 			<element id="SUBJ">
 				<sem class="FAMILY"/>
-				<grammar tag="N+Sg"/>
+				<grammar tag="N+Sg+Nom"/>
 			</element>
 		</question>
 		<answer>
@@ -278,7 +277,7 @@
 			</element>
 			<element id="SUBJ">
 				<sem class="mPERSNAME"/>
-				<grammar pos="N"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
 			</element>
 		</question>
 		<answer>
@@ -295,7 +294,7 @@
 			<text>Geas lea ADJ SUBJ</text>
 			<element id="SUBJ">
 				<sem class="ANIMAL_DOM"/>
-				<grammar tag="N+Sg"/>
+				<grammar tag="N+Sg+Nom"/>
 			</element>
 			<element id="ADJ">
 				<sem class="ANIMAL_A"/>
@@ -315,7 +314,7 @@
 			<text>Geainna SUBJ bođii deike</text>
 			<element id="SUBJ">
 				<sem class="mPERSNAME"/>
-				<grammar pos="N"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
 			</element>
 		</question>
 		<answer>
@@ -325,13 +324,14 @@
 			</element>
 		</answer>
 	</q>
+	<!-- TODO: gen Actio+ess
 	<q id="pcom8">
 		<qtype>P-COM</qtype>
 		<question>
 			<text>Geainna SUBJ lea VERB</text>
 			<element id="SUBJ">
 				<sem class="mPERSNAME"/>
-				<grammar pos="N"/>
+				<grammar pos="N" type="Prop"/>
 			</element>
 			<element id="VERB">
 				<grammar tag="V+Actio+Ess"/> 
@@ -341,8 +341,9 @@
 		<answer>
 			<text>Son lea P-COM VERB</text>
 			<element game="morfa" id="P-COM" task="yes">
-				<grammar tag="Pron+Person-Number+Com"/>
+				<grammar tag="Pron+Pers+Person-Number+Com"/>
 			</element>
 		</answer>
 	</q>
+	-->
 	</questions>
