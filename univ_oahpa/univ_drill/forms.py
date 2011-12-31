@@ -672,32 +672,54 @@ def select_words(self, qwords, awords):
 				selected_awords[syntax]['word'] = aword['word']
 			else:
 				if aword.has_key('qelement') and selected_awords[syntax].has_key('tag'):
-					form_list = None
-					max=50
-					i=0
-					while not form_list and i<max:
-						i=i+1
-						word_count = WordQElement.objects.filter(qelement__id=aword['qelement']).count()
-						if word_count>0:
-							wqel = WordQElement.objects.filter(qelement__id=aword['qelement']).order_by('?')[0]
+					# get form_list for a given qelement
+
+					wqelems = WordQElement.objects.filter(qelement__id=aword['qelement'])
+
+					# Some WordQElements are associated with words that have no
+					# Forms, as such we have to randomly select one until we
+					# find an element with forms. This is faster than filtering
+					# by annotating and Count() 
+
+					if wqelems.count() > 0:
+
+						form_list = None
+						i, max = 0, 50
+
+						while not form_list and i < max:
+							i += 1
+
+							wqel = wqelems.order_by('?')[0]
+
 							selected_awords[syntax]['word'] = wqel.word.id
-							form_list = Form.objects.filter(Q(word__id=selected_awords[syntax]['word']) &\
-															Q(tag__id=selected_awords[syntax]['tag']))
+
+							form_list = wqel.word.form_set.filter(
+								tag__id = selected_awords[syntax]['tag']
+							)
+
 					if form_list:
-						fullf=[]
-						for f in form_list:
-							fullf.append(f.fullform)
+						fullf = [f.fullform for f in form_list]
 						selected_awords[syntax]['fullform'] = fullf[:]
 
 				if not selected_awords[syntax].has_key('fullform'):
-					if aword.has_key('fullform') and len(aword['fullform'])>0:
+					if aword.has_key('fullform') and len(aword['fullform']) > 0:
 						selected_awords[syntax]['fullform'] = aword['fullform'][:]
 
 		if not selected_awords[syntax].has_key('fullform'):
-			if selected_awords[syntax].has_key('word') and selected_awords[syntax].has_key('tag'):
-				form_list = Form.objects.filter(word__id=selected_awords[syntax]['word'],
-												tag__id=selected_awords[syntax]['tag'])\
-										.exclude(dialects__dialect='NG')
+
+			if selected_awords[syntax].has_key('word')\
+				and selected_awords[syntax].has_key('tag'):
+
+				form_list = Form.objects.filter(
+								word__id=selected_awords[syntax]['word'],
+								tag__id=selected_awords[syntax]['tag'],
+							)
+				
+				excl = form_list.exclude(dialects__dialect='NG')
+
+				if excl.count() > 0:
+					form_list = excl
+
 				form_list_dialects = form_list.filter(dialects__dialect=self.dialect)
 
 				if form_list_dialects.count() > 0:
@@ -713,6 +735,7 @@ def select_words(self, qwords, awords):
 		if not selected_awords[syntax].has_key('fullform'):
 			selected_awords[syntax]['fullform'] = []
 			selected_awords[syntax]['fullform'].append(syntax)
+
 	return selected_awords
 
 
