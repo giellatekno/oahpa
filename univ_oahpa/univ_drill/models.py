@@ -451,6 +451,44 @@ class Tag(models.Model):
 		
 	def __unicode__(self):
 		return self.string
+	
+	def fix_attributes(self):
+		
+		tagset_names = {
+			# object attribute: tagset name
+			'attributive': 'attributive',
+			'case': 'Case',
+			'conneg': 'ConNeg',
+			'grade': 'Grade',
+			'infinite': 'Infinite',
+			'mood': 'Mood',
+			'number': 'Number',
+			'personnumber': 'Person-Number',
+			'polarity': 'Polarity',
+			'pos': 'Wordclass',
+			'possessive': 'Possessive',
+			'subclass': 'Subclass',
+			'tense': 'Tense',
+		}
+
+		tagname_to_set = {}
+		for attr, tsetname in tagset_names.items():
+			tagnames = Tagname.objects.filter(tagset__tagset=tsetname)\
+							.values_list('tagname', flat=True)
+			
+			for t in tagnames:
+					tagname_to_set[t] = attr
+			
+
+		for piece in self.string.split('+'):
+			attrname = tagname_to_set.get(piece, False)
+
+			if attrname:
+				self.__setattr__(attrname, piece)
+
+		self.save()
+
+
 
 class Form(models.Model):
 	word = models.ForeignKey(Word)
