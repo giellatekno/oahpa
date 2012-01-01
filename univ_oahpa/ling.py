@@ -142,7 +142,7 @@ class Paradigm:
 		classObj=re.compile(r'^#\s*(?P<typeString>[\w\-]*)\s*$', re.U)
 		stringObj=re.compile(r'^(?P<tagString>[\w]*)\s*$', re.U)
 
-		tagclass=""
+		tagclass = ""
 		for line in tags:
 			line.strip()
 			matchObj=classObj.search(line) 
@@ -157,6 +157,11 @@ class Paradigm:
 						#print "adding " + tagclass + " " + string
 						tagset, created = Tagset.objects.get_or_create(tagset=tagclass)
 						pos, created = Tagname.objects.get_or_create(tagname=string,tagset=tagset)
+
+		print >> sys.stdout, "Fixing Tag attributes..."
+		for tag in Tag.objects.all():
+			tag.fix_attributes()
+		print >> sys.stdout, "Done."
 
 
 	def read_paradigms(self, paradigmfile, tagfile, add_database):
