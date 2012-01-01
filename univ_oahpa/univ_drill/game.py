@@ -493,7 +493,7 @@ class BareGame(Game):
 		# SUB_QUERY = Q(word__stem__in=sylls)
 		SUB_QUERY = False
 
-		if pos in ['Pron', 'N']:
+		if pos in ['Pron', 'N', 'Num']:
 			TAG_QUERY = TAG_QUERY & \
 						Q(possessive="") & \
 						Q(case=case)
@@ -509,6 +509,9 @@ class BareGame(Game):
 				TAG_QUERY = TAG_QUERY & Q(subclass='Pers')
 			else:
 				TAG_QUERY = TAG_QUERY & Q(subclass='')
+
+			if pos == 'Num':
+				TAG_QUERY = TAG_QUERY & Q(number='Sg') & Q(subclass='')
 		
 		if pos == 'V':
 			TAG_QUERY =  TAG_QUERY & \

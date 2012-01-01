@@ -96,12 +96,10 @@ class QAGame(Game):
 		word=None
 		if tag_el.pos=="Num" and self.settings.has_key('num_level') and str(self.settings['num_level'])=="1":
 				smallnum = ["1","2","3","4","5","6","7","8","9","10"]
-				word_count=Word.objects.filter(Q(presentationform__in=smallnum) & \
-											   Q(wordqelement__qelement=qelement) & \
-											   Q(form__tag=tag_el.id)).count()
-				word=Word.objects.filter(Q(presentationform__in=smallnum) & \
-										 Q(wordqelement__qelement=qelement) & \
-										 Q(form__tag=tag_el.id))[randint(0,word_count-1)]
+				word = Word.objects.filter(wordqelement__qelement=qelement,
+										 form__tag=tag_el.id)
+				if word.count() > 0:
+					word = word.order_by('?')[0]
 		else:
 			# Dialect is commented out still because we're only getting
 			# dialectical form variants, not word variants.
@@ -110,13 +108,15 @@ class QAGame(Game):
 												form__tag=tag_el.id)
 			if possible_words.count() > 0:
 				word = possible_words.order_by('?')[0]
-				form_set_filter = word.form_set.filter(tag=tag_el.id)
-				# filter forms by dialect
-				form_set_filter_dial = form_set_filter\
-											.exclude(dialects__dialect='NG')\
-											.filter(dialects__dialect=dialect)
-				if form_set_filter_dial.count() > 0:
-					form_set_filter = form_set_filter_dial
+
+		form_set_filter = word.form_set.filter(tag=tag_el.id)
+		# filter forms by dialect
+		form_set_filter_dial = form_set_filter\
+									.exclude(dialects__dialect='NG')\
+									.filter(dialects__dialect=dialect)
+		if form_set_filter_dial.count() > 0:
+			form_set_filter = form_set_filter_dial
+
 		if word and form_set_filter.count()>0:
 			form = form_set_filter[0] 
 		else: return None

@@ -436,7 +436,12 @@ class QObj(GrammarDefaults):
         
         # Check for Question-Answer person agreement (see QAPN)
         if elements_d.has_key('SUBJ'):
-            if elements_d['SUBJ'].has_key('copy'):
+            try:
+            	copy_key = elements_d['SUBJ'].has_key('copy')
+            except AttributeError:
+            	print >> sys.stderr, '     *** Missing SUBJ element in question %s.' % self.qid
+            	copy_key = False
+            if copy_key:
                 if elements_d['SUBJ']['copy']:
                     SUBJ = elements_d.get('SUBJ')
                     
