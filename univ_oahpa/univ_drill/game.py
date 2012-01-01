@@ -485,7 +485,7 @@ class BareGame(Game):
 		
 		TAG_QUERY = Q(pos=pos)
 		
-		TAG_EXCLUDES = Q(personnumber="ConNeg") & Q(subclass="Prop")
+		TAG_EXCLUDES = Q(string__contains="ConNeg") & Q(subclass="Prop")
 		
 		FORM_FILTER = False
 
@@ -530,7 +530,7 @@ class BareGame(Game):
 		# filter can include several queries, exclude must have only one
 		# to work successfully
 		tags = Tag.objects.filter(TAG_QUERY)\
-							.exclude(personnumber='ConNeg')\
+							.exclude(string__contains='ConNeg')\
 							.exclude(subclass='Prop')\
 							.exclude(polarity='Neg')
 
@@ -718,6 +718,7 @@ class BareGame(Game):
 		
 		present_ng = present_ng.values_list('fullform',flat=True)
 		
+		print tag.string, repr(correct)
 		morph = (MorfaQuestion(
 					word=word,
 					tag=tag,
