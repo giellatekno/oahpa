@@ -672,13 +672,15 @@
       </element>
     </answer>
   </q> 
+
+  <!-- fix
   <q id="vprf1">
     <qtype>V-PRF</qtype>
     <qtype>V-MIX</qtype>
    <question>
       <text>Maid SUBJ MAINV bargan luomus</text>
-      <element id="N">
-	<grammar pos="FAMILY"/>
+        <grammar tag="N+Sg+Nom" />
+	    <sem class="FAMILY"/>
       </element>
       <element id="MAINV">
 	<id>leat</id> 
@@ -693,14 +695,16 @@
       </element>
     </answer>
   </q> 
+  -->
   <q id="vger0">
     <qtype>V-GER</qtype>
     <qtype>V-MIX</qtype>
    <question>
       <text>Mas SUBJ diehtá dan</text>
-      <element id="FAMILY">
-	<grammar tag="N+Sg"/>
-      </element>
+		<element id="SUBJ">
+			<sem class="FAMILY"/>
+			<grammar tag="N+Sg+Nom"/>
+		</element>
     </question>
     <answer> 
       <text>SUBJ oinnii dan V-GER</text>
@@ -715,9 +719,10 @@
     <qtype>V-MIX</qtype>
    <question>
       <text>Mo SUBJ oaččui dákkár jurdaga</text>
-      <element id="FAMILY">
-	<grammar tag="N+Sg"/>
-      </element>
+		<element id="SUBJ">
+			<sem class="FAMILY"/>
+			<grammar tag="N+Sg+Nom"/>
+		</element>
     </question>
     <answer> 
       <text>SUBJ fuobmái dan V-GER</text>

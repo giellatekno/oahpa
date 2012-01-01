@@ -20,7 +20,7 @@ D-->
 	<question>
       <text>Maid SUBJ áigu oastit</text>
       <element id="SUBJ">
-	<grammar pos="N+Sg"/>
+	<grammar tag="N+Sg+Nom"/>
 	<sem class="HUMAN"/>
       </element>
     </question>
@@ -42,7 +42,7 @@ D-->
 	<question>
       <text>Maid SUBJ áigu oastit</text>
       <element id="SUBJ">
-	<grammar pos="N+Sg"/>
+	<grammar tag="N+Sg+Nom"/>
 	<sem class="HUMAN"/>
       </element>
     </question>
@@ -675,7 +675,7 @@ D-->
       <text>Geaid SUBJ dát lea</text>
       <element id="SUBJ">    
 	<sem class="INSTRUMENT"/>
-	<grammar pos="N+Sg"/>         
+	<grammar tag="N+Sg+Nom"/>         
 	</element>
    </question>
    <answer> 
@@ -737,6 +737,8 @@ D-->
     </answer>
   </q>
 
+  <!--
+  TODO:
   <q level="2" id="ordnum0">
     <qtype>ORD-NUM</qtype>
    <question>
@@ -750,7 +752,9 @@ D-->
       </element>
     </answer>
   </q>
+  -->
 
+	<!--
   <q level="2" id="ordnum1">
     <qtype>ORD-NUM</qtype>
    <question>
@@ -820,6 +824,7 @@ D-->
     </element>
   </answer>
 </q>
+-->
 
   </questions>
   
