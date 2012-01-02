@@ -1,8 +1,12 @@
 !!!Dokumentasjon om login
-Det vi ønskjer er at info frå site-innlogging 
-# går __frå__ site.uit.no og
-# vidare __til__ oahpa-innlogging
-# kan brukes til å navigere brukeren til en bestemt __home-side__
+Vi ønsker Oahpa-innlogging som hovedinnlogging og at info frå innlogging 
+# går videre __til__ site.uit.no 
+# der brukeren gjenkjennes som __subscriber__
+# og kan navigeres til en bestemt __home-side__
+
+Nestbeste løsninger
+# Site er uten innlogging for brukerne, kursdeltakersidene er synlige i menyen men passordbeskyttet, og studenten har fått utdelt passord.
+# Site er uten brukerregistrering, men kursdeltakerne kan logge seg inn i site for å kunne skrive kommentarer og kommer da til automatisk til kurssiden som home.
 
 
 !!Login i wordpress
@@ -91,10 +95,13 @@ Mulige plug-ins:
 # Log in redirect: http://wordpress.org/extend/plugins/peters-login-redirect/, kompatibel opp til 3.2.1
 # WP-polls: allerede installert i site
 # Forskjellig landings-side for forskjellige grupper: http://wordpress.org/extend/plugins/role-scoper/, kompatibel opp til 3.3
+# Oppdaterings-epost til brukere: http://wordpress.org/extend/plugins/subscribe2/, kompatibel opp til 3.3
 
 Med ''Role scoper'' definerer man egne roller, uten å rasere WP-rollene, og kan gi ulike brukerrettigheter til ulike brukergrupper. Det ser ut til at man kan gi en egen ''landing-page'' for brukergrupper også, hvis jeg har forstått denne samtalen riktig: http://wordpress.org/support/topic/diffierent-landinghome-page-per-user-group
 
 Hvis dette er riktig, så vil denne plug-in gi oss egne kurssider som fungerer som startsider.
+
+Med ''Subscribe2'' får vi sendt epost til studentene når læreren legger ut nye beskjeder på sin side. Det ser ut til at den også tilbyr en mulighet til å registrere seg selv som subscriber til en side, så da trenger man ikke en egen registrerings-plug-in.
 
 En annen mulighet som kanskje kunne brukes, er en poll plug-in som allerede er installert på site. Da kunne vi ha den aktiv på registreringssida, med noen tillegsspørsmål, om for eksempel språkbakgrunn, kurstilhørighet og lærer. Jeg skal undersøke mulighetene der. Bjørn Hatteng installerer disse på test-siten, så kan jeg teste ut mulighetene der.
 
