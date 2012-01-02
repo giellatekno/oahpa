@@ -89,8 +89,12 @@ Mulige plug-ins:
 # Registrering: http://wordpress.org/extend/plugins/profile-builder/, kompatibel opp til 3.3
 # Registrering: http://wordpress.org/extend/plugins/simplr-registration-form/, kompatibel opp til 3.2.1
 # Log in redirect: http://wordpress.org/extend/plugins/peters-login-redirect/, kompatibel opp til 3.2.1
+# WP-polls: allerede installert i site
+# Forskjellig landings-side for forskjellige grupper: http://wordpress.org/extend/plugins/role-scoper/, kompatibel opp til 3.3
 
-Man får en ''Register'' side på menyen øverst på sida, eller som en menylinje, der alle kan registrere seg. Nå har vi en log-in boks i høyre marg, men da må brukere allerede være registrert. I plug-in finnes det en ''custom registration form''. Jeg er ikke helt sikker på hvor mye man kan tilpasse den, men jeg skal prøve å finne ut. Det finnes også en ''Profile Builder Pro'', der man kan lage egne spørsmål til registreringa, men den må man visst kjøpe.
+Med ''Role scoper'' definerer man egne roller, uten å rasere WP-rollene, og kan gi ulike brukerrettigheter til ulike brukergrupper. Det ser ut til at man kan gi en egen ''landing-page'' for brukergrupper også, hvis jeg har forstått denne samtalen riktig: http://wordpress.org/support/topic/diffierent-landinghome-page-per-user-group
+
+Hvis dette er riktig, så vil denne plug-in gi oss egne kurssider som fungerer som startsider.
 
 En annen mulighet som kanskje kunne brukes, er en poll plug-in som allerede er installert på site. Da kunne vi ha den aktiv på registreringssida, med noen tillegsspørsmål, om for eksempel språkbakgrunn, kurstilhørighet og lærer. Jeg skal undersøke mulighetene der. Bjørn Hatteng installerer disse på test-siten, så kan jeg teste ut mulighetene der.
 
@@ -100,9 +104,9 @@ Kan noen sjekke om dette vil gi oss det vi vil ha?
 
 Plug-in simplr-registration-form gir oss mulighet til å lage egne registreringsskjemaer for lærere. Siden vi tenker å legge til lærere selv, med ''author'' rettigheter, så trenger vi ikke denne.
 
-Profile-builder gir et standard registreringsskjema, der man kan velge hvilke (av forhåndsvalgte) spørsmål dine brukere skal svare på. Man kan ikke legge til egne spørsmål. Skjemaet har et felt der brukeren skal skrive om seg selv. Der kan vi oppfordre folk til å skrive om sin språkbakgrunn, og grunner for å lære seg samisk. Vi har ingen mulighet å sikre oss at vi faktisk får den informasjonen fra brukerne.
+Profile-builder gir et standard registreringsskjema, der man kan velge hvilke (av forhåndsvalgte) spørsmål dine brukere skal svare på. Man kan ikke legge til egne spørsmål. Skjemaet har et felt der brukeren skal skrive om seg selv. Der kan vi oppfordre folk til å skrive om sin språkbakgrunn, og grunner for å lære seg samisk. Vi har ingen mulighet å sikre oss at vi faktisk får den informasjonen fra brukerne. Man får en ''Register'' side på menyen øverst på sida, eller som en menylinje, der alle kan registrere seg. Nå har vi en log-in boks i høyre marg, men da må brukere allerede være registrert. Det finnes også en ''Profile Builder Pro'', der man kan lage egne spørsmål til registreringa, men den må man visst kjøpe
 
-Peters-log-in-redirect fører brukerne til en bestemt URL etter innlogging. Man kan velge ut enkeltbrukere eller roller. Denne landingssiden blir dessverre ikke en ''home'' for brukerne. Når de er inne i læringsstien så vil de dermed ikke føres tilbake til lærerens side når de trykker på home øverst i margen.
+Peters-log-in-redirect fører brukerne til en bestemt URL etter innlogging. Man kan velge ut enkeltbrukere eller roller. Denne landingssiden blir dessverre ikke en ''home'' for brukerne. Når de er inne i læringsstien så vil de dermed ikke føres tilbake til lærerens side når de trykker på home øverst i margen. 
 
 Poll-plugin gir oss en mulighet å legge til spørsmål i margen, som en ''widget''. Hvert spørsmål utgjør en poll, og hver poll kan ha flere svar. Det er ikke mulig å ha flere spørsmål i samme poll.  
 
