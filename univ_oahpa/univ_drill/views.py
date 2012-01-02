@@ -84,7 +84,7 @@ class Gameview:
 			'P-COM'  : _('Practise comitative'),
 			'P-LOC'  : _('Practise locative'),
 			'P-GEN'  : _('Practise genitive'),
-			'P-NOM'  : _('Practise nominative'),
+			#'P-NOM'  : _('Practise nominative'),
 			'P-ILL'  : _('Practise illative'),
 		}
 

@@ -63,7 +63,7 @@ CASE_CONTEXT_CHOICES = (
 # No inessive or essive, and no choice between nom sg. and pl, but nom sg and pl come together.
 # 
 PRON_CONTEXT_CHOICES = (
-	('P-NOM', _('nominative')),
+	#('P-NOM', _('nominative')), Morfa C pronomen nominativ skal fjernes fra menyen dersom oppgavene har ingen hensikt.
 	('P-ACC', _('accusative')),
 	('P-GEN', _('genitive')),
 	('P-ILL', _('illative')),
