@@ -17,103 +17,6 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 
 !!Oppgavene lagres i univ_oahpa_data/data_sme/meta/question_*.xml
 
-!!! Adjektiv
-!!Attributtoppgaver 
-! <q id="attrpos0"> 
-* <qtype>ATTRPOS</qtype>
-* <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
-* <id>leat</id>  <sem class="CLOTHING" 	<sem class="CLOTHES-adj"/>
-* <text>Dus MAINV ATTR SUBJ</text>
-! <q id="attrpos1"> 
-__Kommentar: vi bør sammenligne semantiske klasser "ABSTRACT" og "ISSUE-adj". Vi får noen rare par (dá leat oahpes vuođut).__
-* <qtype>ATTRPOS</qtype>
-* <text>SUBJ MAINV PRED . Makkár SUBJ2 dá MAINV2</text>
-* <id>leat</id>  <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
-* <text>Dá MAINV ATTR SUBJ</text>
-! <q id="attrcomp0">
-* <qtype>ATTRCOMP</qtype>
-* <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
-* <id>leat</id>  <sem class="CLOTHING"/>  <sem class="CLOTHES-adj"/>
-* <text>Dus MAINV ATTR SUBJ</text>
-! <q id="attrcomp1"> 
-__Kommentar: vi bør sammenligne semantiske klasser.__
-* <qtype>ATTRCOMP</qtype>
-* <text>Dát SUBJ MAINV PRED . Makkár SUBJ2 dát MAINV2</text>
-* <id>leat</id>  <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
-* <text>Dát MAINV ATTR SUBJ</text>
-! <q id="attrsup0">
-* <qtype>ATTRSUP</qtype>
-* <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
-* <id>leat</id>  <sem class="CLOTHING"/>  <sem class="CLOTHES-adj"/>
-* <text>Dus MAINV ATTR SUBJ</text>
-! <q id="attrsup1"> 
-__Kommentar: vi bør sammenligne semantiske klasser.__
-* <qtype>ATTRSUP</qtype>
-* <text>Dát SUBJ MAINV PRED . Makkár SUBJ2 dát MAINV2</text>
-* <id>leat</id>  <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
-* <text>Dát MAINV ATTR SUBJ</text>
-
-!!Predpos oppgaver
-! <q id="predpos0">
-* <qtype>PREDPOS</qtype>
-* <text>Mus leat ATTR SUBJ . Makkárat SUBJ2 leat</text>
-* <sem class="CLOTHING"/>  <sem class="CLOTHES-adj"/>
-* <text>SUBJ leat PRED</text>
-! <q id="predpos1">
-* <qtype>PREDPOS</qtype>
-* <text>Mus lea ATTR SUBJ . Makkár SUBJ2 lea</text>
-* <sem class="CLOTHING"/>  <sem class="CLOTHES-adj"/>
-* <text>SUBJ lea PRED</text>
-! <q id="predpos2"> 
-__Kommentar: vi bør sammenligne semantiske klasser.__
-* <qtype>PREDPOS</qtype>
-* <text>Dát leat ATTR SUBJ . Makkárat SUBJ2 leat</text>
-* <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
-* <text>SUBJ leat PRED</text>
-! <q id="predpos3"> 
-__Kommentar: vi bør sammenligne semantiske klasser.__
-* <qtype>PREDPOS</qtype>
-* <text>Dát lea ATTR SUBJ . Makkár SUBJ2 lea</text>
-* <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
-* <text>SUBJ lea PRED</text>
-
-!!Predkomparativ oppgaver
-! <q id="predcomp0">
-* <qtype>PREDCOMP</qtype>
-* <text>Mu SUBJ lea PRED . Makkár du SUBJ2 lea</text>
-* <sem class="FAMILY"/>  <sem class="HUMAN-adj"/>
-* <text>Mu SUBJ lea PREDCOMP</text>
-! <q id="predcomp1">
-* <qtype>PREDCOMP</qtype>
-* <text>Mu SUBJ leat PRED . Makkárat du SUBJ2 leat</text>
-* <sem class="FAMILY"/>  <sem class="HUMAN-adj"/>
-* <text>Mu SUBJ leat PREDCOMP</text>
-! <q id="predcomp2"> 
-__Kommentar: vi bør sammenligne semantiske klasser.__
-* <qtype>PREDCOMP</qtype>
-* <text>Dát SUBJ lea PRED . Makkár diet SUBJ2 lea</text>
-* <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
-* <text>Dát SUBJ lea PREDCOMP</text>
-! <q id="predcomp3"> 
-__Kommentar: vi bør sammenligne semantiske klasser.__
-* <qtype>PREDCOMP</qtype>
-* <text>Dát SUBJ leat PRED . Makkárat diet SUBJ2 leat</text>
-* <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
-* <text>Dát SUBJ leat PREDCOMP</text>
-
-!!Predsuperlativ oppgaver
-! <q id="predsup0">
-*  <qtype>PREDSUP</qtype>
-* <text>Gal dáppe MAINV ATTR SUBJ</text> 
-* <id>leat</id> <sem class="CLOTHING"/>  <sem class="CLOTHES-adj"/>
-* <text>Muhto mu SUBJ MAINV PRED</text>
-! <q id="predsup1"> 
-__Kommentar: vi bør sammenligne semantiske klasser.__
-*  <qtype>PREDSUP</qtype>
-* <text>Gal die MAINV ATTR SUBJ</text> 
-* <id>leat</id>  <sem class="ABSTRACT"/>  <sem class="ISSUE-adj"/>
-* <text>Muhto dát SUBJ MAINV PRED</text>
-
 !!! Substantiv
 
 !! Illativ
@@ -1148,4 +1051,131 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <sem class="ACTIVITY"/>
 * <text>V-IMPRT dál!</text>
 
+!!! Adjektiver
+
+!!Attributt-oppgaver positiv
+! <qtype>ATTRPOS</qtype>
+* <text>Mu THING lea PRED . Makkár THING mus lea</text>
+* <grammar tag="N+Sg+Nom"/><sem class="CLOTHING"/>
+* <grammar tag="A+Sg+Nom"/><sem class="CLOTHING_A"/>
+* <text>Dus lea ATTR THING</text><grammar tag="A+Attr"/>
+! <qtype>ATTRPOS</qtype>
+* <text>Mu THING leat PRED . Makkár THING mus leat</text>
+* <grammar tag="N+Sg+Nom"/><sem class="CLOTHING"/>
+* <grammar tag="A+Pl+Nom"/> <sem class="CLOTHING_A"/>
+* <text>Dus leat ATTR THING</text><grammar tag="A+Attr"/>
+! <qtype>ATTRPOS</qtype>
+* <text>THING lea PRED . Makkár THING dá lea</text>
+* <grammar tag="N+Sg+Nom"/><sem class="FURNITURE"/>
+* <grammar tag="A+Sg+Nom"/><sem class="mCOLOUR"/>
+* <text>Dá lea ATTR THING</text><grammar tag="A+Attr"/>
+! <qtype>ATTRPOS</qtype>
+* <text>THING lea PRED . Makkár THING dá lea</text>
+* <grammar tag="N+Sg+Nom"/><id>málli</id> 
+* <grammar tag="A+Sg+Nom"/><sem class="SOUP_A"/>
+* <text>Dá lea ATTR THING</text><grammar tag="A+Attr"/>
+! <qtype>ATTRPOS</qtype>
+* <text>Mu SUBJ MAINV PRED . Makkár SUBJ mus MAINV</text>
+* <grammar pos="N"/><sem class="CLOTHING"/>
+* <id>leat</id> <grammar tag="V+Ind+Prs+Person-Number"/>
+* <grammar tag="A+Number+Nom"/><sem class="CLOTHING_A"/>
+* <text>Dus MAINV ATTR SUBJ</text><grammar tag="A+Attr"/> 
+! <qtype>ATTRPOS</qtype>
+* <text>THING lea PRED . Makkár THING dá lea</text>
+* <grammar tag="N+Sg+Nom"/><id>bálggis</id> 
+* <grammar tag="A+Number+Nom"/><sem class="mROAD_A"/>
+* <text>Dá lea ATTR THING</text><grammar tag="A+Attr"/>  
+
+!!Attributt-oppgaver komparativ
+
+! <qtype>ATTRCOMP</qtype>
+* <text>GEN THING leat PRED. Makkár THING dus leat</text>
+* <grammar pos="N+Pl+Nom"/><sem class="CLOTHING"/>
+* <grammar tag="N+Prop+Sg+Gen"/><sem class="mPERSNAME"/>
+* <grammar tag="A+Pl+Nom"/> <sem class="CLOTHING_A"/>
+* <text>Mus leat ATTR THING go sus</text><grammar tag="A+Comp+Attr"/>
+! <qtype>ATTRCOMP</qtype>
+* <text>Dát THING lea PRED . Makkár THING duot lea</text>
+* <grammar tag="N+Sg+Nom"/><id>bálggis</id> 
+* <grammar tag="A+Sg+Nom"/> <sem class="mROAD_A"/>
+* <text>Dát lea ATTR THING go diet</text><grammar tag="A+Comp+Attr"/> 
+! <qtype>ATTRCOMP</qtype> 
+* <text>Dát THING lea ADJ . Makkár THING duot lea</text>
+* <grammar tag="N+Sg+Nom"/><id>bálggis</id> 
+* <grammar tag="A+Sg+Nom"/> <sem class="mROAD_A"/>
+* <text>Dát lea ADJ THING go diet</text><grammar tag="A+Comp+Attr"/> 
+
+!!Attributt-oppgaver superlativ
+
+! <qtype>ATTRSUP</qtype>
+* <text>GEN THING leat COMP go mu THING. Makkár THING dus leat</text>
+* <grammar tag="N+Pl+Nom"/><sem class="CLOTHING"/>
+* <grammar tag="N+Prop+Sg+Gen"/><sem class="mPERSNAME"/>
+* <grammar tag="A+Comp+Pl+Nom"/><sem class="CLOTHING_A"/>
+* <text>Mus leat ATTR THING</text><grammar tag="A+Superl+Attr"/> 
+! <qtype>ATTRSUP</qtype>
+* <text>Dát THING leat PRED . Makkár THING diet lea</text>
+* <grammar tag="N+Pl+Nom"/><id>bálggis</id>
+* <grammar tag="A+Pl+Nom"/> <sem class="mROAD_A"/>
+* <text>Dát lea ATTR THING</text><grammar tag="A+Superl+Attr"/> 
+
+!!Predikativ-oppgaver positiv
+
+! <qtype>PREDPOS</qtype>
+* <text>Mus leat ATTR THING . Makkárat du THING leat</text>
+* <grammar tag="N+Pl+Nom"/><sem class="CLOTHING"/>
+* <grammar tag="A+Attr"/> <sem class="CLOTHING_A"/>
+* <text>Maid mu THING leat PRED</text><grammar tag="A+Pl+Nom"/>
+! <qtype>PREDPOS</qtype>
+* <text>GEN leat ATTR THING . Makkárat du THING leat</text>
+* <grammar tag="N+Pl+Nom"/><sem class="FURNITURE"/>
+* <grammar tag="A+Attr"/> <sem class="mCOLOUR"/>
+* <grammar tag="N+Prop+Sg+Gen"/><sem class="mPERSNAME"/>
+* <text>Maid mu THING leat PRED</text><grammar tag="A+Pl+Nom"/> 
+! <qtype>PREDPOS</qtype>
+* <text>GEN lea ATTR THING . Makkár du THING lea</text>
+* <grammar tag="N+Sg+Nom"/><sem class="FURNITURE"/>
+* <grammar tag="A+Attr"/> <sem class="mCOLOUR"/>
+* <grammar tag="N+Prop+Sg+Gen"/><sem class="mPERSNAME"/>
+* <text>Maid mu THING lea PRED</text><grammar tag="A+Sg+Nom"/> 
+
+!!Predikativ-oppgaver komparativ
+
+! <qtype>PREDCOMP</qtype>
+* <text>Mu THING lea PRED . Makkár du THING lea</text>
+* <grammar tag="N+Sg+Nom"/><sem class="FAMILY"/>
+* <grammar tag="A+Sg+Nom"/><sem class="mHUM_A"/>
+* <text>Mu THING lea PREDCOMP go du</text><grammar tag="A+Comp+Sg+Nom"/>
+! <qtype>PREDCOMP</qtype>
+* <text>Mu THING leat PRED . Makkárat du THING leat</text>
+* <grammar tag="N+Pl+Nom"/><sem class="FAMILY"/>
+* <grammar tag="A+Pl+Nom"/><sem class="mHUM_A"/>
+* <text>Mu THING leat PREDCOMP go du</text><grammar tag="A+Comp+Pl+Nom"/>
+! <qtype>PREDCOMP</qtype>
+* <text>Dát THING lea PRED . Makkár diet THING lea</text>
+* <grammar tag="N+Sg+Nom"/><id>geaidnu</id>
+* <grammar tag="A+Sg+Nom"/><sem class="mROAD_A"/>
+* <text>Dát THING lea PREDCOMP</text><grammar tag="A+Comp+Sg+Nom"/>
+! <qtype>PREDCOMP</qtype>
+* <text>Dát THING leat PRED . Makkárat diet THING leat</text>
+* <grammar tag="N+Pl+Nom"/><id>geaidnu</id>
+* <grammar tag="A+Pl+Nom"/> <sem class="mROAD_A"/>
+* <text>Dát THING leat PREDCOMP</text>
+* <grammar tag="A+Comp+Pl+Nom"/>  
+
+!!Predikativ-oppgaver superlativ
+
+! <qtype>PREDSUP</qtype>
+* <text>Gal HAB MAINV ATTR SUBJ</text>  
+* <grammar pos="N"/> <sem class="CLOTHING"/>
+* <grammar tag="A+Attr"/> <sem class="CLOTHING_A"/>
+* <id>leat</id> <grammar tag="V+Ind+Prs+Person-Number"/>
+* <grammar tag="N+Prop+Sg+Loc"/><sem class="mPERSNAME"/>
+* <text>Muhto mu SUBJ MAINV PRED</text><grammar tag="A+Superl+Number+Nom"/> 
+! <qtype>PREDSUP</qtype>
+* <text>Gal dus MAINV ATTR SUBJ</text> 
+* <grammar pos="N"/><sem class="FURNITURE"/>
+* <grammar tag="A+Attr"/> <id>čáppat</id>
+* <id>leat</id> <grammar tag="V+Ind+Prs+Person-Number"/>
+* <text>Muhto mu SUBJ MAINV PRED</text><grammar tag="A+Superl+Number+Nom"/> 
 
