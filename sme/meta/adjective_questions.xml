@@ -10,6 +10,87 @@
 
 <!-- Attribute positive -->
 
+  <q id="attrpos3sg">
+    <qtype>ATTRPOS</qtype>
+   <question>
+      <text>Mu THING lea PRED . Makkár THING mus lea</text>
+      <element id="THING">   
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="CLOTHING"/>
+      </element>
+      <element id="PRED">     
+	<grammar tag="A+Sg+Nom"/>   
+	<sem class="CLOTHING_A"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Dus lea ATTR THING</text>
+      <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
+	<grammar tag="A+Attr"/>   
+      </element>
+    </answer>
+  </q>
+  <q id="attrpos3pl">
+    <qtype>ATTRPOS</qtype>
+   <question>
+      <text>Mu THING leat PRED . Makkár THING mus leat</text>
+      <element id="THING">   
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="CLOTHING"/>
+      </element>
+      <element id="PRED">     
+	<grammar tag="A+Pl+Nom"/>    
+	<sem class="CLOTHING_A"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Dus leat ATTR THING</text>
+      <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
+	<grammar tag="A+Attr"/>   
+      </element>
+    </answer>
+  </q>
+  <q id="attrpos4">
+    <qtype>ATTRPOS</qtype>
+   <question>
+      <text>THING lea PRED . Makkár THING dá lea</text>
+      <element id="THING">   
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="FURNITURE"/>
+      </element>
+      <element id="PRED">     
+	<grammar tag="A+Sg+Nom"/>   
+	<sem class="mCOLOUR"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Dá lea ATTR THING</text>
+      <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
+	<grammar tag="A+Attr"/>   
+      </element>
+    </answer>
+  </q>
+  <q id="attrpos5">
+    <qtype>ATTRPOS</qtype>
+   <question>
+      <text>THING lea PRED . Makkár THING dá lea</text>
+      <element id="THING">   
+	<grammar tag="N+Sg+Nom"/>
+	<id>málli</id> 
+      </element>
+      <element id="PRED">     
+	<grammar tag="A+Sg+Nom"/>   
+	<sem class="SOUP_A"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Dá lea ATTR THING</text>
+      <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
+	<grammar tag="A+Attr"/>   
+      </element>
+    </answer>
+  </q>
+
   <q id="attrpos0">
     <qtype>ATTRPOS</qtype>
    <question>
@@ -288,7 +369,7 @@
       </element>
     </answer>
   </q>
-  
+  s
   <q id="predcomp1">
    <qtype>PREDCOMP</qtype>
    <question>
