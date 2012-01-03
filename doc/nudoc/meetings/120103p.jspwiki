@@ -1,1 +1,358 @@
-adsf
+!!!Møte 03.01.12
+
+Til stades: Biret-Ánne, Lene, Trond, Heli, Ryan
+
+
+!!Saksliste
+* Bugzilla
+* MorfaS
+* MorfaC
+* Leksa
+* Vasta og Sahka
+* Login i Oahpa
+* Innlogging
+* Neste møte
+
+
+!!Bugzilla
+Vi har no ny klassifisering:
+
+{{{
+kom-oahpa: All bugs related to Komi oahpa 
+sme-oahpa: All bugs related to the North Sámi Oahpa 
+…
+Technical: Issues related to the project-independent functionality 
+of Oahpa. We prefer grouping the bugs according to projects 
+(sma, sme, etc.), so please consider filing your bug there instead. 
+}}}
+
+Det inneber at alle bugar som kjem opp under sme-prosjektet skal dit, osb.
+
+
+!!Generell
+
+! 1241	NEW		MorfaS og MorfaC har ulike loggrutiner
+
+{{{
+trond grade totals for Contextual Morfa -                        
+trond grade totals for Morfa - N-ILL - bisyllabic                        
+trond grade totals for Morfa - PRS - bisyllabic                        
+trond grade totals for Morfa - N-ILL - trisyllabic    
+}}}
+
+Problemet er at MorfaS-programma har ulike namn i loggen, mens MorfaC-programma
+har like namn. Setta blir logga separat både for MorfaS og MorfaC, men i 
+samandraget (User grade summaries) blir MorfaC-resultata slått saman ''fordi''
+''dei i "user grades" har like namn'', der MorfaS-resultata blir slått saman etter 
+kasus- og stammetype, ''fordi dei i "User grades" har ulike namn''.
+
+Løysinga ser dermed ut til å vere å gje Contextual Morfa-oppgåvesetta differensierte
+namn.
+
+
+
+__TILTAK__
+
+* Sjå på korfor MorfaS og MorfaC er ulike, og lag MorfaC som MorfaS.
+  Leksa skal vere delt etter sett. (__Heli__)
+
+! 1245	Morfa S og C verb: fjerne informasjon om verbtype
+
+For nordsamisk har vi berre stammetypar, og det vil vi ikkje vise
+for studenten. Dette var ein arv frå sma-Oahpa. Denne funksjonen 
+skal koblast ut.
+
+__TILTAK__
+
+* Koble ut verbtypeinformasjon (ulikest. osb.). Spørsmålsnummer 
+  skal stå i MorfaC. (__Heli__)
+
+
+
+
+!!MorfaS
+
+! 1240	MorfaS: # blir presentert i lemmaet ris#váhnen
+
+Teiknet # har overlevd frå fst. xml-fila har former
+utan #. 
+
+
+
+{{{
+ris#váhnen+v2+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:ris#váhnem GAHPIR ;
+ris#váhnen+v1+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum+Use/NG:rist9#váhnem GAHPIR ;
+ris#vánhen+v2+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum:ris#vánhem GAHPIR ;
+ris#vánhen+v1+CmpN/SgN+CmpN/SgG+CmpN/PlG+Hum+Use/NG:rist9#vánhem GAHPIR ;
+}}}
+
+Desse orda (ris-, rist-) har nettopp vorte endra (?) i fst. Dei nye
+namna er: ''oahpa-isme-norm.fst, isme-GG.restr.fst, isme-KJ.restr.fst''
+
+
+Fst-ane er no fornya i /opt/smi/:
+
+{{{
+-rwxr-xr-x 1 lene  lene   3478521 jan  3 08:46 isme-KJ.restr.fst
+-rwxr-xr-x 1 lene  lene   3480046 jan  3 08:45 isme-GG.restr.fst
+-rwxr-xr-x 1 root  root  29473706 jan  3 08:45 oahpa-isme-norm.fst
+}}}
+
+__TILTAK__
+
+* Sjekke om det hjalp. (__Ryan__)
+
+
+
+
+
+! 1242	MorfaS numeraler
+I gamle smeOahpa inneholdt Morfa S numeraler nivå 1 tallord 1-10 i Sg og Pl, og
+nivå 2 11-20 i Sg og Pl. 
+
+I univ_Oahpa inneholder både nivå 1 og 2 tallord 1-10 i Sg. 
+
+Jeg tror at vi istedenfor å legge til i leksikonet tallord 11-20, så gjør vi
+slik:
+
+{{{
+nivå 1: numeraler 1-10 Sg
+nivå 2: numeraler 1-10 Pl
+}}}
+Menyvalgene blir som nå:
+
+{{{
+nivå 1
+nivå 1-2
+}}}
+
+Så er det spørsmål om Coll og Ord, om vi ikke burde ha disse med i menyen i
+MorfaS. De er ikke med i gamle smeOahpa, men de finnes i leksikonet og er også
+med i MorfaC-oppgavene.
+
+Jeg foreslår en meny til høyre med valgene: cardinal (Num), ordinal (A+Ord),
+collective (N+Coll) i tillegg til den menyen vi har i dag. Dermed får vi
+valgene med kombinasjonen Num, Ord eller Coll og kasus.
+
+Coll er i ''n_smenob.xml'', Ord er i ''a_smenob.xml''.
+
+__TILTAK__
+* fjerne Coll og Ord fra num_smenob.xml (__Lene__)
+* Innføre Coll og Ord i menyen (__Heli__)
+
+! 1243	MorfaS adjektiver mangler kasusmeny
+
+Dette er ein arv frå sma-Oahpa. Der ville vi ikkje bøye adjektiv i kasus
+i MorfaS, vi meinte det var for vanskeleg for elevane.
+
+Morfa S adjektiver skal ha to menyer: komparering + attr og kasus (se gamle
+smeOahpa). Nå har den bare komparering + attr, slik som i smaOahpa.
+
+
+!!MorfaC
+
+! 1232  MorfaC: adjektiver fungerer ikke
+
+Adjektiv: 
+
+* attrpos - SUBJ2, MAINV2 dukker opp - må finne løysing. 
+* attrcomp - NO - no questions
+* attrsup - NO
+* predpos - NO
+* predcomp - NO
+
+__TILTAK__
+* endre xml-malen til smaOahpa-type (__Lene__)
+
+! 1233	MorfaC: numeraler og pronomener fungerer ikke
+
+Cardinaler fungerer, men i Coll og Ord blir ikke lemmaet presentert for 
+brukeren (TASK).
+
+__TILTAK__
+* generere databasen på nytt (__Ryan__)
+
+! 1244	Morfa C: substantiv: Mix mangler
+
+__TILTAK__
+* merke oppgave med MIX (__Lene__)
+
+! Implementere Refl, Recipr og Dem for pronomener i MorfaS og MorfaC
+
+Sjå bestillingsdokument. Grunnformene er ulike frå personale pronomen 
+(Gen i staden for Nom)
+
+
+__TILTAK__
+
+* Implementere denne uka (__Ryan__)
+* Lage oppgaver til MorfaC for alle pronomentyper (__Lene, Berit Á__)
+
+
+! Problemet med homonyme fleirtalsformer av demonstrative pronomen
+
+{{{
+dat
+dat	dat+Pron+Dem+Pl+Nom
+dat	dat+Pron+Dem+Sg+Nom
+}}}
+
+
+Desse formene står i xml-fil, og blir ikkje henta med analysator. Vi kan dermed
+skrive eit kvasilemma: __dat (okta)__ for Sg Nom og 
+__dat (máŋga)__ for Pl Nom.
+
+__TILTAK__
+
+* Lage xml-fil
+* Implementere
+
+
+
+
+!!Leksa
+
+dyplinking til semantiske sett, slik http://oahpa.uit.no/univ_oahpa/leksa/?semtype=CLOTHES
+
+Resulterar i "Page not found" error.
+
+!! Vasta og Sahka
+
+Opent spørsmål: Om Vasta- og Sahka-oppsettet er kompatibelt med sme-oppsettet.
+
+Vasta har spørsmåla til felles med MorfaC (men Vasta har eigne filer). Vasta har
+ikkje ferdiggenererte svar, men sender svara til føringsgrammatikken (constraint 
+grammar).
+
+
+Disse filene (nedafor) skal kopieres over til univ_oahpa:
+
+!Filer for Vasta ligger i old_sme/xml
+* cealkka.xml - påbegynt arbeid for Vasta Cealkka, ikke i bruk 
+* questions_vasta.xml
+
+!Feedbackfiler for Vasta og Sahka ligger i old_sme/xml
+* messages_vasta.eng.xml - også for Sahka
+* messages_vasta.fin.xml - også for Sahka
+* messages_vasta.sme.xml - også for Sahka
+* messages_vasta.xml - også for Sahka
+
+!CG-fil for Vasta og Sahka ligger i old_sme/src
+* sme-ped.cg3
+
+!Dialogfiler for Sahka i old_sme/xml
+* dialogue_firstmeeting.xml
+* dialogue_firstmeeting_boy.xml
+* dialogue_firstmeeting_girl.xml
+* dialogue_firstmeeting_man.xml
+* dialogue_grocery.xml
+* dialogue_shopadj.xml
+* dialogue_visit.xml
+* dialogues.dtd - denne trur jeg ikke er oppdatert, dvs ikke i bruk?
+
+!Filer med imager for dialogene i Sahka ligger i ped/oahpa/media/images/
+* images i .jpg-format
+
+{{{
+^sahka - sahka
+^qst - vasta
+}}}
+
+
+__TILTAK__
+
+Implementere Vasta og Sahka
+
+!Tidsplan
+# Sjekke dokumentasjon for Vasta, Sahka (__Lene__)
+# Implementere (denne veka, etter pronomener) (__Heli__)
+# Teste (__Biret Ánne, Lene, Trond__)
+# Skrive nye reglar (__Lene, Biret Á__)
+# Kursstart (26.1.)
+
+
+!! Login i Oahpa
+
+Dette fungerer når studentane får brukar-id.
+
+Idé for vidareutvikling av Oahpa:
+* Opne for sjølvregistrering (inkludert ''Ronja Røvardotter'')
+* Dette kunne også bli brukt til ein ''Topp ti''-funksjon
+* … og også ein ''Del dette resultatet på Facebook''-knapp !
+
+Dette blir etter at støvet etter kursstart har lagt seg.
+
+
+!! Innlogging - dvs. identifisering på site.uit.no/oahpa
+
+Det manglar lenkje frå studentsida til Oahpa.
+
+I dag står denne teksten
+{{{
+Osallistujana kurssissa…
+site-default – Site.uit.no default course
+}}}
+
+__under__ course progress-avsnittet.
+
+Lenkja til site.uit.no må stå over det avsnittet, og under ''Tervetuloa, student1!''.
+
+Det må vere parametrisert kurs: Student på Kurs A skal få lenkja til kurssida på 
+Kurs A, osb.
+
+''oahpa --> site''.
+
+Vi må gje studenten grunnar til å gå inn via Oahpa. Viss den einaste
+måten å kome inn på kurssida er via Oahpa, så har vi ein slik grunn.
+Ein annan god grunn er at studentane ser resultata sine i Oahpa.
+
+Studentane blir identifisert på site.uit.no med OpenID. Her er det fleire
+plugin-ar å ta av.
+
+[OpenID|http://en.wikipedia.org/wiki/OpenID]. Django funkar som OpenID provider, 
+WordPress treng OpenID for å logge studentar inn frå Django/Oahpa. For 
+WordPress-folk er dette også godt nok, fordi folk kan logge seg inn frå andre 
+OpenID-stadar.
+
+{{{
+Log out
+Tervetuloa, student1!
+
+Osallistujana kurssissa…
+site-default – Site.uit.no default course
+
+Seuraavat tulokset näyttävät edistymisesi Oahpassa olevissa ohjelmissa. Kurssin opettaja pysty näkemään tuloksesi, myös tulokset joka ohjelmassa. Onnea opiskeluun!
+
+Course progress
+Leksa - set: human
+Keskitulos — 2.5
+Korkein tulos — 5.0
+Course progress
+Matalin tulos: — 0.0
+Kokeilujen määrä — 2
+Numra cardinal -
+Keskitulos — 5.0
+Korkein tulos — 5.0
+Matalin tulos: — 5.0
+Kokeilujen määrä — 1
+…
+}}}
+
+Biret-Ánne har testa to nye plugins. Men viss vi berre skal til kurssida treng
+vi ikkje ein redirect-plugin.
+
+Bjørn Hatteng har funne undervisnings-plugins (Buddy). Den har fronter-funksjonalitet.
+Vi kan installere den sjøl på hans test-server. 
+
+__TILTAK__
+
+* Teste Buddy (__Biret-Ánne__)
+* Legge inn lenkje til site.uit.no frå studentsida på Oahpa, 
+  og ommøblere studentsida (resultata til slutt, etter innlogging) (__Ryan__)
+* Brukarnamn til studentane (__Lærarane, Biret-Ánne__)
+** Vi får nicknames frå lærarane, opprettar konto, og sendar passord attende
+
+!! Neste møte
+
+* Onsdag 11.1. kl. 08.00T / 01.00M (tysdag kveld i Minneapolis)
+
