@@ -13,7 +13,7 @@
   <q id="attrpos0">
     <qtype>ATTRPOS</qtype>
    <question>
-      <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
+      <text>Mu SUBJ MAINV PRED . Makkár SUBJ mus MAINV</text>
       <element id="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="CLOTHING"/>
@@ -27,12 +27,6 @@
 	<sem class="CLOTHING_A"/>
 	<agreement id="SUBJ"/>
       </element>
-      <element id="SUBJ2" content="SUBJ">   
-	<agreement id="SUBJ"/>
-      </element>
-      <element id="MAINV2" content="MAINV">
-	<agreement id="MAINV"/>
-      </element>
     </question>
     <answer> 
       <text>Dus MAINV ATTR SUBJ</text>
@@ -45,7 +39,7 @@
   <q id="attrpos1">
     <qtype>ATTRPOS</qtype>
    <question>
-      <text>SUBJ MAINV PRED . Makkár SUBJ2 dá MAINV2</text>
+      <text>SUBJ MAINV PRED . Makkár SUBJ dá MAINV</text>
       <element id="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="ABSTRACT"/>
@@ -58,12 +52,6 @@
 	<grammar tag="A+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="ISSUE_A"/>
 	<agreement id="SUBJ"/>
-      </element>
-      <element id="SUBJ2" content="SUBJ">   
-	<agreement id="SUBJ"/>
-      </element>
-      <element id="MAINV2" content="MAINV">
-	<agreement id="MAINV"/>
       </element>
     </question>
     <answer> 
@@ -80,7 +68,7 @@
   <q id="attrcomp0">
     <qtype>ATTRCOMP</qtype>
    <question>
-      <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
+      <text>Mu SUBJ MAINV PRED . Makkár SUBJ mus MAINV</text>
       <element id="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="CLOTHING"/>
@@ -94,12 +82,6 @@
 	<sem class="CLOTHING_A"/>
 	<agreement id="SUBJ"/>
       </element>
-      <element id="SUBJ2" content="SUBJ">   
-	<agreement id="SUBJ"/>
-      </element>
-      <element id="MAINV2" content="MAINV">
-	<agreement id="MAINV"/>
-      </element>
     </question>
     <answer> 
       <text>Dus MAINV ATTR SUBJ</text>
@@ -112,7 +94,7 @@
   <q id="attrcomp1">
     <qtype>ATTRCOMP</qtype>
    <question>
-      <text>Dát SUBJ MAINV PRED . Makkár SUBJ2 dát MAINV2</text>
+      <text>Dát SUBJ MAINV PRED . Makkár SUBJ dát MAINV</text>
       <element id="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="ABSTRACT"/>
@@ -125,12 +107,6 @@
 	<grammar tag="A+Comp+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="ISSUE_A"/>
 	<agreement id="SUBJ"/>
-      </element>
-      <element id="SUBJ2" content="SUBJ">   
-	<agreement id="SUBJ"/>
-      </element>
-      <element id="MAINV2" content="MAINV">
-	<agreement id="MAINV"/>
       </element>
     </question>
     <answer> 
@@ -147,7 +123,7 @@
   <q id="attrsup0">
     <qtype>ATTRSUP</qtype>
    <question>
-      <text>Mu SUBJ MAINV PRED . Makkár SUBJ2 mus MAINV2</text>
+      <text>Mu SUBJ MAINV PRED . Makkár SUBJ mus MAINV</text>
       <element id="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="CLOTHING"/>
@@ -161,12 +137,6 @@
 	<sem class="CLOTHING_A"/>
 	<agreement id="SUBJ"/>
       </element>
-      <element id="SUBJ2" content="SUBJ">   
-	<agreement id="SUBJ"/>
-      </element>
-      <element id="MAINV2" content="MAINV">
-	<agreement id="MAINV"/>
-      </element>
     </question>
     <answer> 
       <text>Dus MAINV ATTR SUBJ</text>
@@ -179,7 +149,7 @@
   <q id="attrsup1">
     <qtype>ATTRSUP</qtype>
    <question>
-      <text>Dát SUBJ MAINV PRED . Makkár SUBJ2 dát MAINV2</text>
+      <text>Dát SUBJ MAINV PRED . Makkár SUBJ dát MAINV</text>
       <element id="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="ABSTRACT"/>
@@ -192,12 +162,6 @@
 	<grammar tag="A+Superl+Number+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="ISSUE_A"/>
 	<agreement id="SUBJ"/>
-      </element>
-      <element id="SUBJ2" content="SUBJ">   
-	<agreement id="SUBJ"/>
-      </element>
-      <element id="MAINV2" content="MAINV">
-	<agreement id="MAINV"/>
       </element>
     </question>
     <answer> 
@@ -214,7 +178,7 @@
   <q id="predpos0">
     <qtype>PREDPOS</qtype>
     <question>
-      <text>Mus leat ATTR SUBJ . Makkárat SUBJ2 leat</text>
+      <text>Mus leat ATTR SUBJ . Makkárat SUBJ leat</text>
       <element id="SUBJ">   
 	<grammar tag="N+Pl+Nom"/>
 	<sem class="CLOTHING"/>
@@ -222,9 +186,6 @@
       <element id="ATTR">
 	<grammar tag="A+Attr"/>  <!-- no number -->
 	<sem class="CLOTHING_A"/>
-      </element>
-      <element id="SUBJ2" content="SUBJ">   
-	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
@@ -239,7 +200,7 @@
   <q id="predpos1">
     <qtype>PREDPOS</qtype>
     <question>
-      <text>Mus lea ATTR SUBJ . Makkár SUBJ2 lea</text>
+      <text>Mus lea ATTR SUBJ . Makkár SUBJ lea</text>
       <element id="SUBJ">   
 	<grammar tag="N+Sg+Nom"/>
 	<sem class="CLOTHING"/>
@@ -247,9 +208,6 @@
       <element id="ATTR">
 	<grammar tag="A+Attr"/>  <!-- no number -->
 	<sem class="CLOTHING_A"/>
-      </element>
-      <element id="SUBJ2" content="SUBJ">   
-	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
@@ -264,7 +222,7 @@
   <q id="predpos2">
     <qtype>PREDPOS</qtype>
     <question>
-      <text>Dát leat ATTR SUBJ . Makkárat SUBJ2 leat</text>
+      <text>Dát leat ATTR SUBJ . Makkárat SUBJ leat</text>
       <element id="SUBJ">   
 	<grammar tag="N+Pl+Nom"/>
 	<sem class="ABSTRACT"/>
@@ -272,9 +230,6 @@
       <element id="ATTR">
 	<grammar tag="A+Attr"/>  <!-- no number -->
 	<sem class="ISSUE_A"/>
-      </element>
-      <element id="SUBJ2" content="SUBJ">   
-	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
@@ -289,7 +244,7 @@
   <q id="predpos3">
     <qtype>PREDPOS</qtype>
     <question>
-      <text>Dát lea ATTR SUBJ . Makkár SUBJ2 lea</text>
+      <text>Dát lea ATTR SUBJ . Makkár SUBJ lea</text>
       <element id="SUBJ">   
 	<grammar tag="N+Sg+Nom"/>
 	<sem class="ABSTRACT"/>
@@ -297,9 +252,6 @@
       <element id="ATTR">
 	<grammar tag="A+Attr"/>  <!-- no number -->
 	<sem class="ISSUE_A"/>
-      </element>
-      <element id="SUBJ2" content="SUBJ">   
-	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
@@ -317,7 +269,7 @@
  <q id="predcomp0">
    <qtype>PREDCOMP</qtype>
    <question>
-      <text>Mu SUBJ lea PRED . Makkár du SUBJ2 lea</text>
+      <text>Mu SUBJ lea PRED . Makkár du SUBJ lea</text>
       <element id="SUBJ">   
 	<grammar tag="N+Sg+Nom"/>
 	<sem class="FAMILY"/>
@@ -325,9 +277,6 @@
       <element id="PRED">  <!-- compare="yes"-->  
 	<grammar tag="A+Sg+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="mHUM_A"/>
-	<agreement id="SUBJ"/>
-      </element>
-      <element id="SUBJ2" content="SUBJ">   
 	<agreement id="SUBJ"/>
       </element>
     </question>
@@ -343,7 +292,7 @@
   <q id="predcomp1">
    <qtype>PREDCOMP</qtype>
    <question>
-      <text>Mu SUBJ leat PRED . Makkárat du SUBJ2 leat</text>
+      <text>Mu SUBJ leat PRED . Makkárat du SUBJ leat</text>
       <element id="SUBJ">   
 	<grammar tag="N+Pl+Nom"/>
 	<sem class="FAMILY"/>
@@ -351,9 +300,6 @@
       <element id="PRED">  <!-- compare="yes"-->  
 	<grammar tag="A+Pl+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="mHUM_A"/>
-	<agreement id="SUBJ"/>
-      </element>
-      <element id="SUBJ2" content="SUBJ">   
 	<agreement id="SUBJ"/>
       </element>
     </question>
@@ -371,7 +317,7 @@
   <q id="predcomp2">
    <qtype>PREDCOMP</qtype>
    <question>
-      <text>Dát SUBJ lea PRED . Makkár diet SUBJ2 lea</text>
+      <text>Dát SUBJ lea PRED . Makkár diet SUBJ lea</text>
       <element id="SUBJ">   
 	<grammar tag="N+Sg+Nom"/>
 	<sem class="ABSTRACT"/>
@@ -379,9 +325,6 @@
       <element id="PRED">  <!-- compare="yes"-->  
 	<grammar tag="A+Sg+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="ISSUE_A"/>
-	<agreement id="SUBJ"/>
-      </element>
-      <element id="SUBJ2" content="SUBJ">   
 	<agreement id="SUBJ"/>
       </element>
     </question>
@@ -397,7 +340,7 @@
   <q id="predcomp3">
    <qtype>PREDCOMP</qtype>
    <question>
-      <text>Dát SUBJ leat PRED . Makkárat diet SUBJ2 leat</text>
+      <text>Dát SUBJ leat PRED . Makkárat diet SUBJ leat</text>
       <element id="SUBJ">   
 	<grammar tag="N+Pl+Nom"/>
 	<sem class="ABSTRACT"/>
@@ -405,9 +348,6 @@
       <element id="PRED">  <!-- compare="yes"-->  
 	<grammar tag="A+Pl+Nom"/>   <!-- same number as SUBJ -->
 	<sem class="ISSUE_A"/>
-	<agreement id="SUBJ"/>
-      </element>
-      <element id="SUBJ2" content="SUBJ">   
 	<agreement id="SUBJ"/>
       </element>
     </question>
