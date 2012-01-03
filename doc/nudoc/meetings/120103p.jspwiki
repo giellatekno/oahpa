@@ -191,14 +191,8 @@ __TILTAK__
 
 ! Problemet med homonyme fleirtalsformer av demonstrative pronomen
 
-{{{
-dat
-dat	dat+Pron+Dem+Pl+Nom
-dat	dat+Pron+Dem+Sg+Nom
-}}}
-
-
-Desse formene står i xml-fil, og blir ikkje henta med analysator. Vi kan dermed
+For demonstrative pronomen er sg nom og pl nom identiske. Desse formene står 
+i ei statisk xml-fil, og blir ikkje henta med analysator. Vi kan dermed
 skrive eit kvasilemma: __dat (okta)__ for Sg Nom og 
 __dat (máŋga)__ for Pl Nom.
 
@@ -287,23 +281,20 @@ Dette blir etter at støvet etter kursstart har lagt seg.
 
 Det manglar lenkje frå studentsida til Oahpa.
 
-I dag står denne teksten
+I dag står denne teksten __under__ course progress-avsnittet:
+
 {{{
 Osallistujana kurssissa…
 site-default – Site.uit.no default course
 }}}
 
-__under__ course progress-avsnittet.
 
-Lenkja til site.uit.no må stå over det avsnittet, og under ''Tervetuloa, student1!''.
+Lenkja til site.uit.no må stå __over__ det avsnittet, og __under__ 
+''Tervetuloa, student1!''.
 
 Det må vere parametrisert kurs: Student på Kurs A skal få lenkja til kurssida på 
-Kurs A, osb.
-
-''oahpa --> site''.
-
-Vi må gje studenten grunnar til å gå inn via Oahpa. Viss den einaste
-måten å kome inn på kurssida er via Oahpa, så har vi ein slik grunn.
+Kurs A, osb. Vi må gje studenten grunnar til å gå inn via Oahpa. Viss den 
+einaste måten å kome inn på kurssida er via Oahpa, så har vi ein slik grunn.
 Ein annan god grunn er at studentane ser resultata sine i Oahpa.
 
 Studentane blir identifisert på site.uit.no med OpenID. Her er det fleire
@@ -321,20 +312,14 @@ Tervetuloa, student1!
 Osallistujana kurssissa…
 site-default – Site.uit.no default course
 
-Seuraavat tulokset näyttävät edistymisesi Oahpassa olevissa ohjelmissa. Kurssin opettaja pysty näkemään tuloksesi, myös tulokset joka ohjelmassa. Onnea opiskeluun!
+Seuraavat tulokset näyttävät edistymisesi Oahpassa olevissa ohjelmissa. 
+Kurssin opettaja pysty näkemään tuloksesi, myös tulokset joka ohjelmassa. 
+Onnea opiskeluun!
 
 Course progress
 Leksa - set: human
 Keskitulos — 2.5
 Korkein tulos — 5.0
-Course progress
-Matalin tulos: — 0.0
-Kokeilujen määrä — 2
-Numra cardinal -
-Keskitulos — 5.0
-Korkein tulos — 5.0
-Matalin tulos: — 5.0
-Kokeilujen määrä — 1
 …
 }}}
 
