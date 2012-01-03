@@ -263,8 +263,8 @@
   <q id="predpos0">
     <qtype>PREDPOS</qtype>
     <question>
-      <text>Mus leat ATTR SUBJ . Makkárat du SUBJ leat</text>
-      <element id="SUBJ">   
+      <text>Mus leat ATTR THING . Makkárat du THING leat</text>
+      <element id="THING">   
 	<grammar tag="N+Pl+Nom"/>
 	<sem class="CLOTHING"/>
       </element>
@@ -274,7 +274,7 @@
       </element>
     </question>
     <answer> 
-      <text>Maid mu SUBJ leat PRED</text>
+      <text>Maid mu THING leat PRED</text>
       <element id="PRED" task="yes" content="ATTR">     <!-- Same A as ATTR -->
 	<grammar tag="A+Pl+Nom"/>   
       </element>
@@ -284,8 +284,8 @@
   <q id="predpos1">
     <qtype>PREDPOS</qtype>
     <question>
-      <text>GEN leat ATTR SUBJ . Makkárat du SUBJ leat</text>
-      <element id="SUBJ">   
+      <text>GEN leat ATTR THING . Makkárat du THING leat</text>
+      <element id="THING">   
 	<grammar tag="N+Pl+Nom"/>
 	<sem class="FURNITURE"/>
       </element>
@@ -299,7 +299,7 @@
       </element>
     </question>
     <answer> 
-      <text>Maid mu SUBJ leat PRED</text>
+      <text>Maid mu THING leat PRED</text>
       <element id="PRED" task="yes" content="ATTR">     <!-- Same A as ATTR -->
 	<grammar tag="A+Pl+Nom"/>    
       </element>
@@ -309,8 +309,8 @@
   <q id="predpos2">
     <qtype>PREDPOS</qtype>
     <question>
-      <text>GEN lea ATTR SUBJ . Makkár du SUBJ lea</text>
-      <element id="SUBJ">   
+      <text>GEN lea ATTR THING . Makkár du THING lea</text>
+      <element id="THING">   
 	<grammar tag="N+Sg+Nom"/>
 	<sem class="FURNITURE"/>
       </element>
@@ -324,7 +324,7 @@
       </element>
     </question>
     <answer> 
-      <text>Maid mu SUBJ lea PRED</text>
+      <text>Maid mu THING lea PRED</text>
       <element id="PRED" task="yes" content="ATTR">     <!-- Same A as ATTR -->
 	<grammar tag="A+Sg+Nom"/>    
       </element>
@@ -338,8 +338,8 @@
  <q id="predcomp0">
    <qtype>PREDCOMP</qtype>
    <question>
-      <text>Mu SUBJ lea PRED . Makkár du SUBJ lea</text>
-      <element id="SUBJ">   
+      <text>Mu THING lea PRED . Makkár du THING lea</text>
+      <element id="THING">   
 	<grammar tag="N+Sg+Nom"/>
 	<sem class="FAMILY"/>
       </element>
@@ -349,7 +349,7 @@
       </element>
     </question>
     <answer> 
-      <text>Mu SUBJ lea PREDCOMP go du</text>
+      <text>Mu THING lea PREDCOMP go du</text>
       <element id="PREDCOMP" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Comp+Sg+Nom"/>   
       </element>
@@ -359,8 +359,8 @@
   <q id="predcomp1">
    <qtype>PREDCOMP</qtype>
    <question>
-      <text>Mu SUBJ leat PRED . Makkárat du SUBJ leat</text>
-      <element id="SUBJ">   
+      <text>Mu THING leat PRED . Makkárat du THING leat</text>
+      <element id="THING">   
 	<grammar tag="N+Pl+Nom"/>
 	<sem class="FAMILY"/>
       </element>
@@ -370,7 +370,7 @@
       </element>
     </question>
     <answer> 
-      <text>Mu SUBJ leat PREDCOMP go du</text>
+      <text>Mu THING leat PREDCOMP go du</text>
       <element id="PREDCOMP" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Comp+Pl+Nom"/>   
       </element>
