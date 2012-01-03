@@ -120,25 +120,20 @@
   <q id="attrpos1">
     <qtype>ATTRPOS</qtype>
    <question>
-      <text>SUBJ MAINV PRED . Makkár SUBJ dá MAINV</text>
-      <element id="SUBJ">   
-	<grammar pos="N"/>
-	<sem class="ABSTRACT"/>
-      </element>
-      <element id="MAINV">
-	<id>leat</id> 
-	<grammar tag="V+Ind+Prs+Person-Number"/>   
+      <text>THING lea PRED . Makkár THING dá lea</text>
+      <element id="THING">   
+	<grammar tag="N+Sg+Nom"/>
+	<id>bálggis</id> 
       </element>
       <element id="PRED">     
 	<grammar tag="A+Number+Nom"/>   <!-- same number as SUBJ -->
-	<sem class="ISSUE_A"/>
-	<agreement id="SUBJ"/>
+	<sem class="mROAD_A"/>
       </element>
     </question>
     <answer> 
-      <text>Dá MAINV ATTR SUBJ</text>
+      <text>Dá lea ATTR THING</text>
       <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
-	<grammar tag="A+Attr"/>  <!-- no number -->
+	<grammar tag="A+Attr"/>  
       </element>
     </answer>
   </q>
@@ -149,25 +144,24 @@
   <q id="attrcomp0">
     <qtype>ATTRCOMP</qtype>
    <question>
-      <text>Mu SUBJ MAINV PRED . Makkár SUBJ mus MAINV</text>
-      <element id="SUBJ">   
-	<grammar pos="N"/>
+      <text>GEN THING leat PRED. Makkár THING dus leat</text>
+      <element id="THING">   
+	<grammar pos="N+Pl+Nom"/>
 	<sem class="CLOTHING"/>
       </element>
-      <element id="MAINV">
-	<id>leat</id> 
-	<grammar tag="V+Ind+Prs+Person-Number"/>   
+      <element id="GEN">   
+	<grammar tag="N+Prop+Sg+Gen"/>
+	<sem class="mPERSNAME"/>
       </element>
       <element id="PRED">     
-	<grammar tag="A+Comp+Number+Nom"/>   <!-- same number as SUBJ -->
+	<grammar tag="A+Pl+Nom"/>    
 	<sem class="CLOTHING_A"/>
-	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
-      <text>Dus MAINV ATTR SUBJ</text>
+      <text>Mus leat ATTR THING go sus</text>
       <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
-	<grammar tag="A+Comp+Attr"/>  <!-- no number -->
+	<grammar tag="A+Comp+Attr"/>   
       </element>
     </answer>
   </q>
@@ -175,25 +169,41 @@
   <q id="attrcomp1">
     <qtype>ATTRCOMP</qtype>
    <question>
-      <text>Dát SUBJ MAINV PRED . Makkár SUBJ dát MAINV</text>
-      <element id="SUBJ">   
-	<grammar pos="N"/>
-	<sem class="ABSTRACT"/>
-      </element>
-      <element id="MAINV">
-	<id>leat</id> 
-	<grammar tag="V+Ind+Prs+Person-Number"/>   
+      <text>Dát THING lea PRED . Makkár THING duot lea</text>
+      <element id="THING">   
+	<grammar tag="N+Sg+Nom"/>
+	<id>bálggis</id> 
       </element>
       <element id="PRED">     
-	<grammar tag="A+Comp+Number+Nom"/>   <!-- same number as SUBJ -->
-	<sem class="ISSUE_A"/>
-	<agreement id="SUBJ"/>
+	<grammar tag="A+Sg+Nom"/>    
+	<sem class="mROAD_A"/>
       </element>
     </question>
     <answer> 
-      <text>Dát MAINV ATTR SUBJ</text>
+      <text>Dát lea ATTR THING go diet</text>
       <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Comp+Attr"/>  <!-- no number -->
+      </element>
+    </answer>
+  </q>
+
+  <q id="attrcomp2"> <!-- experiment -->
+    <qtype>ATTRCOMP</qtype> 
+   <question>
+      <text>Dát THING lea ADJ . Makkár THING duot lea</text>
+      <element id="THING">   
+	<grammar tag="N+Sg+Nom"/>
+	<id>bálggis</id> 
+      </element>
+      <element id="ADJ">     
+	<grammar tag="A+Sg+Nom"/>    
+	<sem class="mROAD_A"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Dát lea ADJ THING go diet</text>
+      <element id="ADJ" task="yes">    
+   	<grammar tag="A+Comp+Attr"/>  <!-- no number -->
       </element>
     </answer>
   </q>
