@@ -533,6 +533,7 @@ class Form(models.Model):
 				raise Form.DoesNotExist
 			
 		elif self.tag.pos in ['A', 'a']:
+			# TODO: veljer systemet Coll og Ord grunnformen?
 			baseform = self.word.form_set.filter(tag__attributive='',
 												 	tag__case='Nom',
 													tag__number='Sg',
