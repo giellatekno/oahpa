@@ -21,7 +21,7 @@ D-->
       <text>Maid SUBJ áigu oastit</text>
       <element id="SUBJ">
 	<grammar tag="N+Sg+Nom"/>
-	<sem class="HUMAN"/>
+	<sem class="mPEOPLE"/>
       </element>
     </question>
     <answer> 
@@ -43,7 +43,7 @@ D-->
       <text>Maid SUBJ áigu oastit</text>
       <element id="SUBJ">
 	<grammar tag="N+Sg+Nom"/>
-	<sem class="HUMAN"/>
+	<sem class="mPEOPLE"/>
       </element>
     </question>
     <answer> 
@@ -84,7 +84,7 @@ D-->
       <text>Geaid SUBJ dát leat</text>
       <element id="SUBJ">    
 	<grammar tag="N+Pl+Nom"/>         
-	<sem class="TEXT"/>
+	<sem class="mPRINTEDMATTER"/>
       </element>
       </question>
     <answer> 
@@ -95,7 +95,7 @@ D-->
 	</element>
       <element id="NOUN">    
 	<grammar tag="N+Sg+Gen"/>         
-	<sem class="HUMAN"/>
+	<sem class="mPEOPLE"/>
 	</element>
     </answer>
   </q>
@@ -168,12 +168,12 @@ D-->
       </element>
     </question>
     <answer> 
-      <text>NUM-ATTR NOUN lea</text>
+      <text>NUM-ATTR HAB lea</text>
       <element id="NUM-ATTR" task="yes">    
 	<grammar tag="Num+Sg+Gen"/>         
 	<sem class="mCARD_SMALL"/>
       </element>
-      <element id="NOUN">    
+      <element id="HAB">    
 	<grammar tag="N+Sg+Loc"/>         
 	<sem class="PROFESSION"/>
       </element>
@@ -185,7 +185,7 @@ D-->
       <text>Man guhká oaččut OBJ luoikkasin</text>
     <element id="OBJ">    
 	<grammar tag="N+Sg+Acc"/>         
-	<sem class="TEXT"/>
+	<sem class="mPRINTEDMATTER"/>
 	</element>
     </question>
     <answer> 
@@ -203,7 +203,7 @@ D-->
       <text>Gos SUBJ leat</text>
     <element id="SUBJ">    
 	<grammar tag="N+Pl+Nom"/>         
-	<sem class="HUMAN"/>
+	<id>nuorra</id>
 	</element>
     </question>
     <answer> 
@@ -234,7 +234,7 @@ D-->
       <text>Gos SUBJ finai</text>
     <element id="SUBJ">    
 	<grammar tag="N+Sg+Nom"/>         
-	<sem class="HUMAN"/>
+	<sem class="mPEOPLE"/>
 	</element>
     </question>
     <answer> 
@@ -265,7 +265,7 @@ D-->
       <text>Gos SUBJ finai</text>
     <element id="SUBJ">    
 	<grammar tag="N+Sg+Nom"/>         
-	<sem class="HUMAN"/>
+	<sem class="mPEOPLE"/>
 	</element>
     </question>
     <answer> 
@@ -301,7 +301,7 @@ D-->
       </element>
       <element id="NOUN">    
 	<grammar tag="N+Sg+Com"/>         
-	<sem class="HUMAN"/>
+	<sem class="mPEOPLE"/>
       </element>
     </answer>
   </q>
@@ -312,7 +312,7 @@ D-->
       <text>Gallin joavkun SUBJ barget</text>
       <element id="SUBJ">    
 	<grammar tag="N+Pl+Nom"/>         
-	<sem class="HUMAN"/>
+	<sem class="mPEOPLE"/>
       </element>
     </question>
     <answer> 
@@ -383,7 +383,7 @@ D-->
       <text>Gallii son lea lohkan OBJ</text>
       <element id="OBJ">    
 	<grammar tag="N+Sg+Acc"/>         
-	<sem class="TEXT"/>
+	<sem class="mPRINTEDMATTER"/>
       </element>
     </question>
     <answer> 
