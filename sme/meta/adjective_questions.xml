@@ -214,24 +214,23 @@
   <q id="attrsup0">
     <qtype>ATTRSUP</qtype>
    <question>
-      <text>Mu SUBJ MAINV PRED . Makkár SUBJ mus MAINV</text>
-      <element id="SUBJ">   
-	<grammar pos="N"/>
+      <text>GEN THING leat COMP go mu THING. Makkár THING dus leat</text>
+      <element id="THING">   
+	<grammar tag="N+Pl+Nom"/>
 	<sem class="CLOTHING"/>
       </element>
-      <element id="MAINV">
-	<id>leat</id> 
-	<grammar tag="V+Ind+Prs+Person-Number"/>   
+      <element id="GEN">   
+	<grammar tag="N+Prop+Sg+Gen"/>
+	<sem class="mPERSNAME"/>
       </element>
-      <element id="PRED">     
-	<grammar tag="A+Superl+Number+Nom"/>   <!-- same number as SUBJ -->
+      <element id="COMP">     
+	<grammar tag="A+Comp+Pl+Nom"/>   
 	<sem class="CLOTHING_A"/>
-	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
-      <text>Dus MAINV ATTR SUBJ</text>
-      <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
+      <text>Mus leat ATTR THING</text>
+      <element id="ATTR" task="yes" content="COMP">    
 	<grammar tag="A+Superl+Attr"/>  <!-- no number -->
       </element>
     </answer>
@@ -240,23 +239,18 @@
   <q id="attrsup1">
     <qtype>ATTRSUP</qtype>
    <question>
-      <text>Dát SUBJ MAINV PRED . Makkár SUBJ dát MAINV</text>
-      <element id="SUBJ">   
-	<grammar pos="N"/>
-	<sem class="ABSTRACT"/>
-      </element>
-      <element id="MAINV">
-	<id>leat</id> 
-	<grammar tag="V+Ind+Prs+Person-Number"/>   
+      <text>Dát THING leat PRED . Makkár THING diet lea</text>
+      <element id="THING">   
+	<grammar tag="N+Pl+Nom"/>
+	<id>bálggis</id>
       </element>
       <element id="PRED">     
-	<grammar tag="A+Superl+Number+Nom"/>   <!-- same number as SUBJ -->
-	<sem class="ISSUE_A"/>
-	<agreement id="SUBJ"/>
+	<grammar tag="A+Pl+Nom"/>    
+	<sem class="mROAD_A"/>
       </element>
     </question>
     <answer> 
-      <text>Dát MAINV ATTR SUBJ</text>
+      <text>Dát lea ATTR THING</text>
       <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Superl+Attr"/>  <!-- no number -->
       </element>
@@ -269,7 +263,7 @@
   <q id="predpos0">
     <qtype>PREDPOS</qtype>
     <question>
-      <text>Mus leat ATTR SUBJ . Makkárat SUBJ leat</text>
+      <text>Mus leat ATTR SUBJ . Makkárat du SUBJ leat</text>
       <element id="SUBJ">   
 	<grammar tag="N+Pl+Nom"/>
 	<sem class="CLOTHING"/>
@@ -280,10 +274,9 @@
       </element>
     </question>
     <answer> 
-      <text>SUBJ leat PRED</text>
+      <text>Maid mu SUBJ leat PRED</text>
       <element id="PRED" task="yes" content="ATTR">     <!-- Same A as ATTR -->
-	<grammar tag="A+Number+Nom"/>   <!-- same number as SUBJ -->
-	<agreement id="SUBJ"/>
+	<grammar tag="A+Pl+Nom"/>   
       </element>
     </answer>
   </q>
@@ -291,21 +284,24 @@
   <q id="predpos1">
     <qtype>PREDPOS</qtype>
     <question>
-      <text>Mus lea ATTR SUBJ . Makkár SUBJ lea</text>
+      <text>GEN leat ATTR SUBJ . Makkárat du SUBJ leat</text>
       <element id="SUBJ">   
-	<grammar tag="N+Sg+Nom"/>
-	<sem class="CLOTHING"/>
+	<grammar tag="N+Pl+Nom"/>
+	<sem class="FURNITURE"/>
       </element>
       <element id="ATTR">
 	<grammar tag="A+Attr"/>  <!-- no number -->
-	<sem class="CLOTHING_A"/>
+	<sem class="mCOLOUR"/>
+      </element>
+      <element id="GEN">   
+	<grammar tag="N+Prop+Sg+Gen"/>
+	<sem class="mPERSNAME"/>
       </element>
     </question>
     <answer> 
-      <text>SUBJ lea PRED</text>
+      <text>Maid mu SUBJ leat PRED</text>
       <element id="PRED" task="yes" content="ATTR">     <!-- Same A as ATTR -->
-	<grammar tag="A+Number+Nom"/>   <!-- same number as SUBJ -->
-	<agreement id="SUBJ"/>
+	<grammar tag="A+Pl+Nom"/>    
       </element>
     </answer>
   </q>
@@ -313,46 +309,28 @@
   <q id="predpos2">
     <qtype>PREDPOS</qtype>
     <question>
-      <text>Dát leat ATTR SUBJ . Makkárat SUBJ leat</text>
+      <text>GEN lea ATTR SUBJ . Makkár du SUBJ lea</text>
       <element id="SUBJ">   
-	<grammar tag="N+Pl+Nom"/>
-	<sem class="ABSTRACT"/>
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="FURNITURE"/>
       </element>
       <element id="ATTR">
 	<grammar tag="A+Attr"/>  <!-- no number -->
-	<sem class="ISSUE_A"/>
+	<sem class="mCOLOUR"/>
+      </element>
+      <element id="GEN">   
+	<grammar tag="N+Prop+Sg+Gen"/>
+	<sem class="mPERSNAME"/>
       </element>
     </question>
     <answer> 
-      <text>SUBJ leat PRED</text>
+      <text>Maid mu SUBJ lea PRED</text>
       <element id="PRED" task="yes" content="ATTR">     <!-- Same A as ATTR -->
-	<grammar tag="A+Number+Nom"/>   <!-- same number as SUBJ -->
-	<agreement id="SUBJ"/>
+	<grammar tag="A+Sg+Nom"/>    
       </element>
     </answer>
   </q>
   
-  <q id="predpos3">
-    <qtype>PREDPOS</qtype>
-    <question>
-      <text>Dát lea ATTR SUBJ . Makkár SUBJ lea</text>
-      <element id="SUBJ">   
-	<grammar tag="N+Sg+Nom"/>
-	<sem class="ABSTRACT"/>
-      </element>
-      <element id="ATTR">
-	<grammar tag="A+Attr"/>  <!-- no number -->
-	<sem class="ISSUE_A"/>
-      </element>
-    </question>
-    <answer> 
-      <text>SUBJ lea PRED</text>
-      <element id="PRED" task="yes" content="ATTR">     <!-- Same A as ATTR -->
-	<grammar tag="A+Number+Nom"/>   <!-- same number as SUBJ -->
-	<agreement id="SUBJ"/>
-      </element>
-    </answer>
-  </q>
  
 
  <!-- comparative predicative - sg and pl-->
@@ -366,16 +344,14 @@
 	<sem class="FAMILY"/>
       </element>
       <element id="PRED">  <!-- compare="yes"-->  
-	<grammar tag="A+Sg+Nom"/>   <!-- same number as SUBJ -->
+	<grammar tag="A+Sg+Nom"/>   
 	<sem class="mHUM_A"/>
-	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
-      <text>Mu SUBJ lea PREDCOMP</text>
+      <text>Mu SUBJ lea PREDCOMP go du</text>
       <element id="PREDCOMP" task="yes" content="PRED">   <!-- Same A as PRED -->
-	<grammar tag="A+Comp+Sg+Nom"/>  <!-- same number as SUBJ -->
-	<agreement id="SUBJ"/>
+	<grammar tag="A+Comp+Sg+Nom"/>   
       </element>
     </answer>
   </q>
@@ -388,17 +364,15 @@
 	<grammar tag="N+Pl+Nom"/>
 	<sem class="FAMILY"/>
       </element>
-      <element id="PRED">  <!-- compare="yes"-->  
-	<grammar tag="A+Pl+Nom"/>   <!-- same number as SUBJ -->
+      <element id="PRED">     
+	<grammar tag="A+Pl+Nom"/>   
 	<sem class="mHUM_A"/>
-	<agreement id="SUBJ"/>
       </element>
     </question>
     <answer> 
-      <text>Mu SUBJ leat PREDCOMP</text>
+      <text>Mu SUBJ leat PREDCOMP go du</text>
       <element id="PREDCOMP" task="yes" content="PRED">   <!-- Same A as PRED -->
-	<grammar tag="A+Comp+Pl+Nom"/>  <!-- same number as SUBJ -->
-	<agreement id="SUBJ"/>
+	<grammar tag="A+Comp+Pl+Nom"/>   
       </element>
     </answer>
   </q>
@@ -408,22 +382,20 @@
   <q id="predcomp2">
    <qtype>PREDCOMP</qtype>
    <question>
-      <text>Dát SUBJ lea PRED . Makkár diet SUBJ lea</text>
-      <element id="SUBJ">   
+      <text>Dát THING lea PRED . Makkár diet THING lea</text>
+      <element id="THING">   
 	<grammar tag="N+Sg+Nom"/>
-	<sem class="ABSTRACT"/>
+	<id>geaidnu</id>
       </element>
       <element id="PRED">  <!-- compare="yes"-->  
 	<grammar tag="A+Sg+Nom"/>   <!-- same number as SUBJ -->
-	<sem class="ISSUE_A"/>
-	<agreement id="SUBJ"/>
+	<sem class="mROAD_A"/>
       </element>
     </question>
     <answer> 
-      <text>Dát SUBJ lea PREDCOMP</text>
+      <text>Dát THING lea PREDCOMP</text>
       <element id="PREDCOMP" task="yes" content="PRED">   <!-- Same A as PRED -->
-	<grammar tag="A+Comp+Sg+Nom"/>  <!-- same number as SUBJ -->
-	<agreement id="SUBJ"/>
+	<grammar tag="A+Comp+Sg+Nom"/>   
       </element>
     </answer>
   </q>
@@ -431,22 +403,20 @@
   <q id="predcomp3">
    <qtype>PREDCOMP</qtype>
    <question>
-      <text>Dát SUBJ leat PRED . Makkárat diet SUBJ leat</text>
-      <element id="SUBJ">   
+      <text>Dát THING leat PRED . Makkárat diet THING leat</text>
+      <element id="THING">   
 	<grammar tag="N+Pl+Nom"/>
-	<sem class="ABSTRACT"/>
+	<id>geaidnu</id>
       </element>
-      <element id="PRED">  <!-- compare="yes"-->  
-	<grammar tag="A+Pl+Nom"/>   <!-- same number as SUBJ -->
-	<sem class="ISSUE_A"/>
-	<agreement id="SUBJ"/>
+      <element id="PRED">     
+	<grammar tag="A+Pl+Nom"/>    
+	<sem class="mROAD_A"/>
       </element>
     </question>
     <answer> 
-      <text>Dát SUBJ leat PREDCOMP</text>
+      <text>Dát THING leat PREDCOMP</text>
       <element id="PREDCOMP" task="yes" content="PRED">   <!-- Same A as PRED -->
-	<grammar tag="A+Comp+Pl+Nom"/>  <!-- same number as SUBJ -->
-	<agreement id="SUBJ"/>
+	<grammar tag="A+Comp+Pl+Nom"/>  
       </element>
     </answer>
   </q>
@@ -458,7 +428,7 @@
   <q id="predsup0">
     <qtype>PREDSUP</qtype>
     <question>
-      <text>Gal dáppe MAINV ATTR SUBJ</text>  <!-- compare="yes"-->
+      <text>Gal HAB MAINV ATTR SUBJ</text>  <!-- compare="yes"-->
       <element id="SUBJ">   
 	<grammar pos="N"/>
 	<sem class="CLOTHING"/>
@@ -470,6 +440,10 @@
       <element id="MAINV">
 	<id>leat</id> 
 	<grammar tag="V+Ind+Prs+Person-Number"/>   
+      </element>
+      <element id="HAB">   
+	<grammar tag="N+Prop+Sg+Loc"/>
+	<sem class="mPERSNAME"/>
       </element>
     </question>
     <answer> 
@@ -484,14 +458,14 @@
   <q id="predsup1">
     <qtype>PREDSUP</qtype>
     <question>
-      <text>Gal die MAINV ATTR SUBJ</text>  <!-- compare="yes"-->
+      <text>Gal dus MAINV ATTR SUBJ</text>  <!-- compare="yes"-->
       <element id="SUBJ">   
 	<grammar pos="N"/>
-	<sem class="ABSTRACT"/>
+	<sem class="FURNITURE"/>
       </element>
       <element id="ATTR">
 	<grammar tag="A+Attr"/>  <!-- no number -->
-	<sem class="ISSUE_A"/>
+	<id>čáppat</id>
       </element>
       <element id="MAINV">
 	<id>leat</id> 
@@ -499,7 +473,7 @@
       </element>
     </question>
     <answer> 
-      <text>Muhto dát SUBJ MAINV PRED</text>
+      <text>Muhto mu SUBJ MAINV PRED</text>
       <element id="PRED" task="yes" content="ATTR">   <!-- Same A as ATTR -->
 	<grammar tag="A+Superl+Number+Nom"/>  <!-- same number as SUBJ -->
 	<agreement id="SUBJ"/>
