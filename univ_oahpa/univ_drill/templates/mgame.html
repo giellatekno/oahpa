@@ -79,6 +79,8 @@ http://giellatekno.uit.no/oahpa/morfa.nno.html
 	{% endifequal %}
 {% endblock %}
 
-{% block tooltip %}
-	{% include 'morfa_tooltip.html' %}
-{% endblock %}
+{% if settings.pos == "N" or settings.pos == "V" or settings.pos == "A" %}
+    {% block tooltip %}
+        {% include 'morfa_tooltip.html' %}
+    {% endblock %}
+{% endif %}
