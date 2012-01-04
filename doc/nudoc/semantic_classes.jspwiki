@@ -14,19 +14,19 @@ Vi skal rydde opp og forbedre strukturen.
 Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to Who do you see?  
 * 53 FAMILY  - Also words like friend..    
 * 88 PROFESSION   
-* 18 ACTOR - in 2 supersets
+* 15 ACTOR - in 2 supersets
 * 87 OTHERS  - in 2 supersets
 !HUMAN-LIKE  
-* 18 ACTOR - does not fit as answer to Who do you see?  - in 2 supersets
+* 15 ACTOR - does not fit as answer to Who do you see?  - in 2 supersets
 * 87 OTHERS   - in 2 supersets
 * 15 MYTH_HUM  
-* 104 HUM_V  
+* 105 HUM_V  
 * 61 HUM_A  
 * 57 VERBAL_V   
 * 61 EXPERIENCE_V       
 * 24 AUX_V -  More widely defined than in sme-dis.rle,  verbs which typically are followed by an Inf 
 !ANIMAL  
-* 32 ANIMAL_DOM  - domestic  
+* 31 ANIMAL_DOM  - domestic  
 * 31 ANIMAL_WILD
 * 7 ANIMAL_PET
 * 15 ANIMAL_OTHER
@@ -38,7 +38,7 @@ Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to Who d
 * 62 FOOD_GROCERY  - one can buy in the shop 
 * 8 FOOD_GROCERY_PL
 * 25 FOOD_DISH - one can buy in a cafe 
-* 19 FOOD_OTHER
+* 20 FOOD_OTHER
 * 18 DRINK  
 * 37 FOOD_DRINK_V 
 * 14 SOUP_A  adjectives about food 
@@ -51,7 +51,7 @@ Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to Who d
 * 9 TIME_POINT_ESS
 * 4 TIME_POINT_GEN_PL - it happened then gen-pl, e.g. juovllat  
 * 17 TIME_OTHER
-* 70 TIME_ADV
+* 62 TIME_ADV
 !PLACE  - Fit as answer to Where is the girl?  
 * 19 PLACE_STAYING  - in two supersets
 * 26 ROOM  - in two supersets
@@ -59,7 +59,7 @@ Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to Who d
 !OBJECT - Fit as answer to What do you see?    
 * 51 THING  - in two supersets
 * 26 TOOL   - in two supersets
-* 8 TOY   - in two supersets
+* 9 TOY   - in two supersets
 * 5 SLIDETOOL - in two supersets
 * 36 FURNITURE  - in two supersets
 * 12 KITCHEN - in two supersets
@@ -110,7 +110,7 @@ Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to Who d
 * 6 SPORT
 * 5 SLIDETOOL  - in two supersets
 * 8 TOY   - in two supersets
-* 25 LEISURETIME_HOME_V
+* 24 LEISURETIME_HOME_V
 * 13 SHOW   - For Morfa: Maid don geahčat? 
 !PLACES  
 * 38 PLACE_NAME  
@@ -137,12 +137,12 @@ Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to Who d
 !ABSTRACTS   
 * 20 FEELING 
 * 13 THOUGHT 
-* 18 ACTION  
-* 49 ABSTRACT
+* 17 ACTION  
+* 50 ABSTRACT
 * 15 SOUND 
 * 17 AMOUNT
 * 102 ACTION_V
-* 122 DIV_ADV 
+* 113 DIV_ADV 
 !WORK/ECONOMY/TOOLS   
 * 34 JOB  
 * 19 ORGANIZATION
@@ -159,11 +159,18 @@ Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to Who d
 * 251 PLACE_LEKSA
 
 !! Dummy
-* 75 YYY
+* 81 YYY
 
 !! SETT for Morfa - med eksempel på bruk
 * 99 mACTIVITY  - MAINV go son ikte? - ii galgga gáibidit objeavtta
-* 10 mCARD_SMALL - Son áigu oastit mCARD_SMALL CLOTHING Acc - 1-10
+* 38 mFAMILY
+* 12 mFAMILYsg
+* 19 mPERSNAME
+* 9 mFEM
+* 10 mMAL
+* 5 mROAD
+* 9 mCARD_SMALL - Son áigu oastit mCARD_SMALL CLOTHING Acc - 2-10
+* 1 mOKTA
 * 11 mCOLL - Son ferte juohkit ruđaid mCOLL Com
 * 1 mCOLL_DU - COLL_DU boahtiba
 * 10 mCOLL_NOT_DU - COLL_NOT_DU bohtet
@@ -176,7 +183,8 @@ Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to Who d
 * 1 PL - ikke i bruk i Morfa, men ordet i dette settet skal presenteres som plural i oppgaver, sjøl om grunnformen er sg
 * 3 mPLACE - Gosa son manná? Son manná mPLACE Ill. - girdišillju, siida, ruoktu!
 * 39 mPLACENAME - ikke i bruk i Morfa
-* 10 mCOMV - Geainna son mCOMV? - deaivvadit, gulahallat osv
+* 9 mCOMV - Geainna son mCOMV? - deaivvadit, gulahallat osv - not náitalit
+* 2 mMARRY
 * 1 mILLV - ikke i bruk i Morfa - searvat
 * 4 mLOCV - ikke i bruk i Morfa - ballat, dolkat osv
 * 12 mMONTH - ikke i bruk i Morfa 
