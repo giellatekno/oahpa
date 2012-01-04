@@ -146,7 +146,7 @@
    <question>
       <text>GEN ITEM leat PRED. Makkár ITEM dus leat</text>
       <element id="ITEM">   
-	<grammar pos="N+Pl+Nom"/>
+	<grammar tag="N+Pl+Nom"/>
 	<sem class="CLOTHING"/>
       </element>
       <element id="GEN">   
@@ -449,7 +449,7 @@
     <answer> 
       <text>Muhto mu SUBJ MAINV PRED</text>
       <element id="PRED" task="yes" content="ATTR">   <!-- Same A as ATTR -->
-	<grammar tag="A+Superl+Number+Nom"/>  <!-- same number as SUBJ -->
+	<grammar tag="A+Superl+NumberN+Nom"/>  <!-- same number as SUBJ -->
 	<agreement id="SUBJ"/>
       </element>
     </answer>
@@ -475,7 +475,7 @@
     <answer> 
       <text>Muhto mu SUBJ MAINV PRED</text>
       <element id="PRED" task="yes" content="ATTR">   <!-- Same A as ATTR -->
-	<grammar tag="A+Superl+Number+Nom"/>  <!-- same number as SUBJ -->
+	<grammar tag="A+Superl+NumberN+Nom"/>  <!-- same number as SUBJ -->
 	<agreement id="SUBJ"/>
       </element>
     </answer>
