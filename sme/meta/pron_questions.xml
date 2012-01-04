@@ -237,7 +237,7 @@
 				<grammar tag="N+Sg+Acc"/>
 			</element>
 			<element id="SUBJ">
-				<sem class="FAMILY"/>
+				<sem class="FAMILY"/>  <!-- mFAMILYsg -->
 				<grammar tag="N+Sg+Nom"/>
 			</element>
 		</question>
@@ -257,7 +257,7 @@
 				<grammar tag="N+Sg+Acc"/>
 			</element>
 			<element id="SUBJ">
-				<sem class="FAMILY"/>
+				<sem class="FAMILY"/> <!-- mFAMILYsg -->
 				<grammar tag="N+Sg+Nom"/>
 			</element>
 		</question>
@@ -346,4 +346,256 @@
 			</element>
 		</answer>
 	</q>
+  <q id="pdem0">
+    <qtype>P-DEM</qtype>
+    <question>
+      <text>Guđe OBJ SUBJ MAINV</text>
+      <element id="SUBJ">
+		<sem class="mPERSNAME"/>
+		<grammar pos="N" type="Prop"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Sg3"/>
+	<id>oastit</id>
+      </element>
+ 		<element id="OBJ">
+		<sem class="VEHICLE"/>
+		<grammar tag="N+Sg+Acc"/>
+	  </element>
+    </question>
+    <answer> 
+      <text>Son MAINV P-DEM OBJ</text>
+      <element game='morfa' id="P-DEM" task="yes">
+	<grammar tag="Pron+Dem+Sg+Acc"/>
+	  </element>
+    </answer>
+  </q>
+  <q id="pdem0pl">
+    <qtype>P-DEM</qtype>
+    <question>
+      <text>Maid SUBJ MAINV VERB</text>
+      <element id="SUBJ">
+		<sem class="mPERSNAME"/>
+		<grammar pos="N" type="Prop"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Sg3"/>
+		<sem class="AUX_V"/>
+      </element>
+       <element id="VERB">
+	<grammar tag="V+Inf"/>
+	<id>oastit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Son MAINV P-DEM OBJ VERB</text>
+      <element game='morfa' id="P-DEM" task="yes">
+	<grammar tag="Pron+Dem+Pl+Acc"/>
+	  </element>
+		<element id="OBJ">
+		<grammar tag="N+Pl+Acc"/>
+		<id>girji</id>
+		  </element>
+    </answer>
+  </q>
+  <q id="pdem1">
+    <qtype>P-DEM</qtype>
+    <question>
+      <text>Guđe ILL SUBJ MAINV</text>
+      <element id="SUBJ">
+		<sem class="mFEM"/>
+		<grammar pos="N" type="Prop"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Sg3"/>
+	<id>liikot</id>
+      </element>
+ 		<element id="ILL">
+		<id>bárdni</id>
+		<grammar tag="N+Sg+Ill"/>
+	  </element>
+    </question>
+    <answer> 
+      <text>Son MAINV P-DEM ILL</text>
+      <element game='morfa' id="P-DEM" task="yes">
+	<grammar tag="Pron+Dem+Sg+Gen"/>
+	  </element>
+    </answer>
+  </q>
+  <q id="pdem1pl">
+    <qtype>P-DEM</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element id="SUBJ">
+		<sem class="mPERSNAME"/>
+		<grammar pos="N" type="Prop"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Sg3"/>
+	<id>liikot</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Son MAINV P-DEM ILL</text>
+      <element game='morfa' id="P-DEM" task="yes">
+	<grammar tag="Pron+Dem+Pl+Ill"/>
+	  </element>
+ 		<element id="ILL">
+		<id>girji</id>
+		<grammar tag="N+Pl+Ill"/>
+	  </element>
+    </answer>
+  </q>
+  <q id="prefl0">
+    <qtype>P-REFL</qtype>
+    <question>
+      <text>Geasa SUBJ MAINV</text>
+      <element id="SUBJ">
+		<sem class="mPERSNAME"/>
+		<grammar pos="N" type="Prop"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Sg3"/>
+	<id>liikot</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Son MAINV dušše P-REFL</text>
+      <element game='morfa' id="P-REFL" task="yes">
+	<grammar tag="Pron+Refl+Ill+PxSg3"/>
+      </element>
+    </answer>
+  </q>
+  <q id="prefl1">
+    <qtype>P-REFL</qtype>
+    <question>
+      <text>Geainna SUBJ MAINV</text>
+      <element id="SUBJ">
+		<sem class="mPERSNAME"/>
+		<grammar pos="N" type="Prop"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Sg3"/>
+	<id>hupmat</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Son MAINV dušše P-REFL</text>
+      <element game='morfa' id="P-REFL" task="yes">
+	<grammar tag="Pron+Refl+Com+PxSg3"/>
+      </element>
+    </answer>
+  </q>
+  <q id="prefl2">
+    <qtype>P-REFL</qtype>
+    <question>
+      <text>Mo SUBJ MAINV OBJ</text>
+      <element id="SUBJ">
+		<sem class="mPERSNAME"/>
+		<grammar pos="N" type="Prop"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Sg3"/>
+	<id>ruhtadit</id>
+      </element>
+ 		<element id="OBJ">
+		<sem class="VEHICLE"/>
+		<grammar tag="N+Sg+Acc"/>
+	  </element>
+    </question>
+    <answer> 
+      <text>Sus lei P-REFL ruhta</text>
+      <element game='morfa' id="P-REFL" task="yes">
+	<grammar tag="Pron+Refl+Loc+PxSg3"/>
+      </element>
+    </answer>
+  </q>
+  <q id="prefl2">
+    <qtype>P-REFL</qtype>
+    <question>
+      <text>Mo SUBJ MAINV OBJ</text>
+      <element id="SUBJ">
+		<sem class="PEOPLE"/>
+		<grammar tag="N+Pl+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Pl3"/>
+	<id>ruhtadit</id>
+      </element>
+ 		<element id="OBJ">
+		<grammar tag="N+Sg+Acc"/>
+		<id>mátki</id>
+	  </element>
+    </question>
+    <answer> 
+      <text>Sis lei P-REFL ruhta</text>
+      <element game='morfa' id="P-REFL" task="yes">
+	<grammar tag="Pron+Refl+Loc+PxPl3"/>
+      </element>
+    </answer>
+  </q>
+  <q id="prec1">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Geaidda SUBJ MAINV OBJ</text>
+      <element id="SUBJ">
+		<sem class="PEOPLE"/>
+		<grammar tag="N+Pl+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Pl3"/>
+	<id>addit</id>
+      </element>
+ 		<element id="OBJ">
+		<grammar tag="N+Pl+Acc"/>
+		<id>ruđa</id>
+	  </element>
+    </question>
+    <answer> 
+      <text>Sii MAINV OBJ guhtet P-REC</text>
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Sg+Ill+PxPl3"/>
+      </element>
+    </answer>
+  </q>
+  <q id="prec2">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Geaidda SUBJ MAINV OBJ</text>
+      <element id="SUBJ">
+		<sem class="PEOPLE"/>
+		<grammar tag="N+Pl+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Pl3"/>
+	<id>muitalit</id>
+      </element>
+ 		<element id="OBJ">
+		<grammar tag="N+Pl+Acc"/>
+		<id>sáhka</id>
+	  </element>
+    </question>
+    <answer> 
+      <text>Sii MAINV OBJ guhtet P-REC</text>
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Sg+Ill+PxPl3"/>
+      </element>
+    </answer>
+  </q>
+  <q id="prec3">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Dovddat go OBJ</text>
+ 		<element id="OBJ">
+		<sem class="mPERSNAME"/>
+		<grammar tag="N+Prop+Acc"/>
+	  </element>
+    </question>
+    <answer> 
+      <text>Moai dovde goabbat P-REC</text>
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Sg+Acc+PxDu1"/>
+      </element>
+    </answer>
+  </q>
 	</questions>
