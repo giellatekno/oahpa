@@ -1804,6 +1804,55 @@
       </element>
     </answer>
   </q>
+  <q id="ncom9">
+    <qtype>N-COM</qtype>
+    <question>
+      <text>Geainna SUBJ MAINV VERB</text>
+      <element id="SUBJ">
+	<grammar tag="N+Prop+Sg+Nom"/>
+	<sem class="mPERSNAME"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Cond+Prs+Sg3"/>
+	<id>berret</id>
+      </element>
+       <element id="VERB">
+	<grammar tag="V+Inf"/>
+	<sem class="mMARRY"></sem>
+      </element>
+   </question>
+    <answer> 
+      <text>Son MAINV VERB N-COM</text>
+      <element game='morfa' id="N-COM" task="yes">
+	<grammar tag="N+Sg+Com"/>
+	<sem class="mPEOPLE"/>
+      </element>
+    </answer>
+  </q>
+  <q id="ncom10">
+    <qtype>N-COM</qtype>
+    <question>
+      <text>Geainna SUBJ MAINV VERB</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Sg1+Nom"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Cond+Prs+Sg1"/>
+	<id>berret</id>
+      </element>
+       <element id="VERB">
+	<grammar tag="V+Inf"/>
+	<sem class="mMARRY"></sem>
+      </element>
+   </question>
+    <answer> 
+      <text>SUBJ MAINV VERB N-COM</text>
+      <element game='morfa' id="N-COM" task="yes">
+	<grammar tag="N+Prop+Sg+Nom"/>
+	<sem class="mPERSNAME"/>
+      </element>
+    </answer>
+  </q>
   
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
