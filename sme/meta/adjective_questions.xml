@@ -35,7 +35,7 @@
    <question>
       <text>Mu ITEM leat PRED . Makkár ITEM mus leat</text>
       <element id="ITEM">   
-	<grammar tag="N+Sg+Nom"/>
+	<grammar tag="N+Pl+Nom"/>
 	<sem class="CLOTHING"/>
       </element>
       <element id="PRED">     
@@ -53,7 +53,7 @@
   <q id="attrpos4">
     <qtype>ATTRPOS</qtype>
    <question>
-      <text>ITEM lea PRED . Makkár ITEM dá lea</text>
+      <text>ITEM lea PRED . Makkár ITEM dát lea</text>
       <element id="ITEM">   
 	<grammar tag="N+Sg+Nom"/>
 	<sem class="FURNITURE"/>
@@ -64,7 +64,7 @@
       </element>
     </question>
     <answer> 
-      <text>Dá lea ATTR ITEM</text>
+      <text>Diet lea ATTR ITEM</text>
       <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Attr"/>   
       </element>
@@ -73,7 +73,7 @@
   <q id="attrpos5">
     <qtype>ATTRPOS</qtype>
    <question>
-      <text>ITEM lea PRED . Makkár ITEM dá lea</text>
+      <text>ITEM lea PRED . Makkár ITEM dát lea</text>
       <element id="ITEM">   
 	<grammar tag="N+Sg+Nom"/>
 	<id>málli</id> 
@@ -84,7 +84,7 @@
       </element>
     </question>
     <answer> 
-      <text>Dá lea ATTR ITEM</text>
+      <text>Diet lea ATTR ITEM</text>
       <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Attr"/>   
       </element>
@@ -120,7 +120,7 @@
   <q id="attrpos1">
     <qtype>ATTRPOS</qtype>
    <question>
-      <text>ITEM lea PRED . Makkár ITEM dá lea</text>
+      <text>ITEM lea PRED . Makkár ITEM dát lea</text>
       <element id="ITEM">   
 	<grammar tag="N+Sg+Nom"/>
 	<id>bálggis</id> 
@@ -131,7 +131,7 @@
       </element>
     </question>
     <answer> 
-      <text>Dá lea ATTR ITEM</text>
+      <text>Diet lea ATTR ITEM</text>
       <element id="ATTR" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Attr"/>  
       </element>
@@ -284,7 +284,7 @@
   <q id="predpos1">
     <qtype>PREDPOS</qtype>
     <question>
-      <text>GEN leat ATTR ITEM . Makkárat du ITEM leat</text>
+      <text>HAB leat ATTR ITEM . Makkárat du ITEM leat</text>
       <element id="ITEM">   
 	<grammar tag="N+Pl+Nom"/>
 	<sem class="FURNITURE"/>
@@ -293,8 +293,8 @@
 	<grammar tag="A+Attr"/>  <!-- no number -->
 	<sem class="mCOLOUR"/>
       </element>
-      <element id="GEN">   
-	<grammar tag="N+Prop+Sg+Gen"/>
+      <element id="HAB">   
+	<grammar tag="N+Prop+Sg+Loc"/>
 	<sem class="mPERSNAME"/>
       </element>
     </question>
