@@ -1453,6 +1453,49 @@
       </element>
  </answer>
   </q>
+  
+  <q id="nacc9sg">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>borrat</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ACC</text>
+      <element game='morfa' id="N-ACC" task="yes">
+      <grammar tag="N+Sg+Acc"/>
+	<sem class="FOOD_DISH"/>
+      </element>
+ </answer>
+  </q>
+  
+  <q id="nacc10">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>borrat</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ACC</text>
+      <element game='morfa' id="N-ACC" task="yes">
+      <grammar tag="N+Sg+Acc"/>
+	<sem class="FISH"/>
+      </element>
+ </answer>
+  </q>
+
 
 
 
@@ -1928,6 +1971,72 @@
       </element>
     </answer>
   </q>
+  
+  <q id="ngen6sg">
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>Gean fárrui SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="FAMILY"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Sg3"/>
+	<id>vuolgit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Son MAINV N-GEN fárrui</text>
+      <element game='morfa' id="N-GEN" task="yes">
+	<grammar tag="N+Sg+Gen"/>
+	<sem class="mPEOPLE"/>
+      </element>
+    </answer>
+  </q>
+  
+  <q id="ngen7sg">
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>Gean birra SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>jurddašit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Son MAINV N-GEN birra</text>
+      <element game='morfa' id="N-GEN" task="yes">
+	<grammar tag="N+Sg+Gen"/>
+	<sem class="FAMILY"/>
+      </element>
+    </answer>
+  </q>
+  
+  <q id="ngen7pl">
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>Gean birra SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>jurddašit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Son MAINV N-GEN birra</text>
+      <element game='morfa' id="N-GEN" task="yes">
+	<grammar tag="N+Pl+Gen"/>
+	<sem class="FAMILY"/>
+      </element>
+    </answer>
+  </q>
+
+
   
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->   
