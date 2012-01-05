@@ -1455,8 +1455,8 @@ class ContextMorfaQuestion(OahpaQuestion):
 						self.lemma = nplforms[0].fullform
 					else:
 						self.lemma = answer_word_el.lemma + " (plural) fix this"
-		if answer_tag_el.pos=="A":
-			self.lemma=""
+		# if answer_tag_el.pos=="A":
+		# 	self.lemma=""
 
 		if qtype=="ORD-NUM":
 			self.lemma=answer_word_el.presentationform
