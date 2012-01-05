@@ -14,7 +14,7 @@ Oppgavene i xml-format, f.eks.
     <qtype>N-ILL</qtype>           <= oppgavetype. Menyvalg gjøres ut fra denne.
     <qtype>N-MIX</qtype>           <= det kan være flere menyvalg
     <question>                         
-      <text>Geasa SUBJ OBJ MAINV</text>
+      <text>Geasa SUBJ OBJ MAINV</text> 
       <element id="SUBJ">          <= grammardefault: SUBJ er Nom
     <grammar pos="Pron"/>          <= kan være Sg og Pl. Kan spesifiseres: Pron+Pers+Sg
       </element>
@@ -34,6 +34,10 @@ Oppgavene i xml-format, f.eks.
       </element>
     </answer>
   </q>
+}}}
+
+{{{
+<text>Mu THING lea PRED . Makkár du THING lea</text>  <= Alltid mellomrom mellom variabel og punktum.
 }}}
 
 meta/grammar_defaults.xml
