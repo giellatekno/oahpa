@@ -476,6 +476,27 @@
     </answer>
   </q>
 
+<q id="nill10">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Gosa SUBJ MAINV</text>
+      <element id="SUBJ">
+		<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>báhcit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ILL</text>
+      <element game='morfa' id="N-ILL" task="yes">
+	<grammar tag="N+Sg+Ill"/>
+	<sem class="BUILDING"/>
+      </element>
+    </answer>
+  </q>
+
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N Loc or Pron Pers: -->
 <!--  <q id="nloc0">
@@ -1057,6 +1078,29 @@
    </answer>
   </q>
   
+  <q id="nloc9sg">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Gos SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="mPEOPLE"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Sg3"/>
+	<id>boahtit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>Son MAINV N-LOC</text>
+      <element game='morfa' id="N-LOC" task="yes">
+      <grammar tag="N+Sg+Loc"/>
+	<sem class="BUILDING"/>
+      </element>
+    </answer>
+  </q>
+  
+
   
 
 
@@ -1263,6 +1307,153 @@
  </answer>
   </q>
   
+  <q id="nacc5sg">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>bivdit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ACC</text>
+      <element game='morfa' id="N-ACC" task="yes">
+      <grammar tag="N+Sg+Acc"/>
+	<sem class="ANIMAL_WILD"/>
+      </element>
+ </answer>
+  </q>
+  
+  <q id="nacc5pl">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>bivdit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ACC</text>
+      <element game='morfa' id="N-ACC" task="yes">
+      <grammar tag="N+Pl+Acc"/>
+	<sem class="ANIMAL_WILD"/>
+      </element>
+ </answer>
+  </q>
+  
+  <q id="nacc6sg">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>bivdit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ACC</text>
+      <element game='morfa' id="N-ACC" task="yes">
+      <grammar tag="N+Sg+Acc"/>
+	<sem class="BIRD"/>
+      </element>
+ </answer>
+  </q>
+  
+  <q id="nacc6pl">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>bivdit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ACC</text>
+      <element game='morfa' id="N-ACC" task="yes">
+      <grammar tag="N+Pl+Acc"/>
+	<sem class="BIRD"/>
+      </element>
+ </answer>
+  </q>
+  
+  <q id="nacc7sg">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>juhkat</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ACC</text>
+      <element game='morfa' id="N-ACC" task="yes">
+      <grammar tag="N+Sg+Acc"/>
+	<sem class="DRINK"/>
+      </element>
+ </answer>
+  </q>
+  
+  <q id="nacc8sg">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>bivdit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ACC</text>
+      <element game='morfa' id="N-ACC" task="yes">
+      <grammar tag="N+Sg+Acc"/>
+	<sem class="FISH"/>
+      </element>
+ </answer>
+  </q>
+  
+  <q id="nacc8pl">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>bivdit</id>
+      </element>
+    </question>
+    <answer> 
+      <text>SUBJ MAINV N-ACC</text>
+      <element game='morfa' id="N-ACC" task="yes">
+      <grammar tag="N+Pl+Acc"/>
+	<sem class="FISH"/>
+      </element>
+ </answer>
+  </q>
+
 
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->   
@@ -1985,6 +2176,50 @@
       </element>
     </answer>
   </q>
+  
+  <q id="ncom11sg">
+    <qtype>N-COM</qtype>
+    <question>
+      <text>Mainna SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>duhkoraddat</id>
+      </element>
+   </question>
+    <answer> 
+      <text>SUBJ MAINV N-COM</text>
+      <element game='morfa' id="N-COM" task="yes">
+	<grammar tag="N+Sg+Com" />
+	<sem class="TOY"/>
+      </element>
+    </answer>
+  </q>
+  
+  <q id="ncom11pl">
+    <qtype>N-COM</qtype>
+    <question>
+      <text>Maiguin SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Person-Number+Nom"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Tense+Person-Number"/>
+	<id>duhkoraddat</id>
+      </element>
+   </question>
+    <answer> 
+      <text>SUBJ MAINV N-COM</text>
+      <element game='morfa' id="N-COM" task="yes">
+	<grammar tag="N+Pl+Com" />
+	<sem class="TOY"/>
+      </element>
+    </answer>
+  </q>
+
+
   
 
 <!-- Both Morfa and QA, but in QA the answer does not have to be OBJECT, but any N : -->
