@@ -349,7 +349,7 @@
       </element>
     </question>
     <answer> 
-      <text>Mu ITEM lea PREDCOMP go du</text>
+      <text>Mu ITEM lea PREDCOMP go du ITEM</text>
       <element id="PREDCOMP" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Comp+Sg+Nom"/>   
       </element>
@@ -370,7 +370,7 @@
       </element>
     </question>
     <answer> 
-      <text>Mu ITEM leat PREDCOMP go du</text>
+      <text>Mu ITEM leat PREDCOMP go du ITEM</text>
       <element id="PREDCOMP" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Comp+Pl+Nom"/>   
       </element>
@@ -393,7 +393,7 @@
       </element>
     </question>
     <answer> 
-      <text>Dát ITEM lea PREDCOMP</text>
+      <text>Dát ITEM lea PREDCOMP go diet</text>
       <element id="PREDCOMP" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Comp+Sg+Nom"/>   
       </element>
@@ -414,7 +414,7 @@
       </element>
     </question>
     <answer> 
-      <text>Dát ITEM leat PREDCOMP</text>
+      <text>Dát ITEM leat PREDCOMP go diet</text>
       <element id="PREDCOMP" task="yes" content="PRED">   <!-- Same A as PRED -->
 	<grammar tag="A+Comp+Pl+Nom"/>  
       </element>
@@ -428,18 +428,14 @@
   <q id="predsup0">
     <qtype>PREDSUP</qtype>
     <question>
-      <text>Gal HAB MAINV ATTR SUBJ</text>  <!-- compare="yes"-->
-      <element id="SUBJ">   
-	<grammar pos="N"/>
+      <text>Gal HAB leat ATTR ITEM</text>  <!-- compare="yes"-->
+      <element id="ITEM">   
+	<grammar tag="N+Pl+Nom"/>
 	<sem class="CLOTHING"/>
       </element>
       <element id="ATTR">
 	<grammar tag="A+Attr"/>  <!-- no number -->
 	<sem class="CLOTHING_A"/>
-      </element>
-      <element id="MAINV">
-	<id>leat</id> 
-	<grammar tag="V+Ind+Prs+Person-Number"/>   
       </element>
       <element id="HAB">   
 	<grammar tag="N+Prop+Sg+Loc"/>
@@ -447,10 +443,13 @@
       </element>
     </question>
     <answer> 
-      <text>Muhto mu SUBJ MAINV PRED</text>
+      <text>Muhto mu ITEM lea buot PRED</text>
       <element id="PRED" task="yes" content="ATTR">   <!-- Same A as ATTR -->
 	<grammar tag="A+Superl+NumberN+Nom"/>  <!-- same number as SUBJ -->
 	<agreement id="SUBJ"/>
+      </element>
+      <element id="ITEM" content="ITEM">   
+	<grammar tag="N+Sg+Nom"/>	
       </element>
     </answer>
   </q>
@@ -458,9 +457,9 @@
   <q id="predsup1">
     <qtype>PREDSUP</qtype>
     <question>
-      <text>Gal dus MAINV ATTR SUBJ</text>  <!-- compare="yes"-->
-      <element id="SUBJ">   
-	<grammar pos="N"/>
+      <text>Gal dus leat ATTR ITEM</text>  <!-- compare="yes"-->
+      <element id="ITEM">   
+	<grammar tag="N+Pl+Nom"/>
 	<sem class="FURNITURE"/>
       </element>
       <element id="ATTR">
@@ -473,10 +472,12 @@
       </element>
     </question>
     <answer> 
-      <text>Muhto mu SUBJ MAINV PRED</text>
+      <text>Muhto mu ITEM lea buot PRED</text>
       <element id="PRED" task="yes" content="ATTR">   <!-- Same A as ATTR -->
 	<grammar tag="A+Superl+NumberN+Nom"/>  <!-- same number as SUBJ -->
-	<agreement id="SUBJ"/>
+      </element>
+      <element id="ITEM" content="ITEM">   
+	<grammar tag="N+Sg+Nom"/>	
       </element>
     </answer>
   </q>
