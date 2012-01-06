@@ -14,10 +14,15 @@ from models import *
 import datetime
 import sys
 import itertools
+from random import choice
 
 # TODO: These should be accessible in the admin interface, not hardcoded.
 
 PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'son',
+		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'sii',
+		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
+
+NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'sii',
 		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
 
@@ -69,6 +74,9 @@ PRON_CONTEXT_CHOICES = (
 	('P-ILL', _('illative')),
 	('P-LOC', _('locative')),
 	('P-COM', _('comitative')),
+    ('P-DEM', _('demonstrative')),
+    ('P-RECIPR', _('reciprocative')),
+    ('P-REFL', _('reflexive')),
 	('P-MIX', _('mix')),
 )
 
@@ -146,9 +154,9 @@ VTYPE_CONTEXT_CHOICES = (
 	('V-GER', _('gerund')),
 	('V-COND', _('conditional')),
 	('V-IMPRT', _('imperative')),
+	('V-POT', _('potential')),
 	('V-MIX', _('mix')),
 	('TEST', _('test questions')),
-	('V-POT', _('potential')),
  )
 
 LEVEL_CHOICES = (
@@ -1056,14 +1064,23 @@ class MorfaQuestion(OahpaQuestion):
 					
 		self.tag = tag.string
 		
-		if tag.pos=="V" and tag.personnumber and not tag.personnumber == "ConNeg":
-			pronbase = self.PronPNBase[tag.personnumber]
-			pronoun = pronbase
-			self.pron = pronoun
-			
-			if self.pron and tag.mood == "Imprt":
-				self.pron_imp = "(" + self.pron + ")"
-				self.pron = ""
+		print tag.string
+		if tag.pos == "V": 
+			if tag.string.find("ConNeg") > -1:
+				pers = choice(self.PronPNBase.keys())
+				pronoun = self.PronPNBase[pers]
+				neg_verb = NEGATIVE_VERB_PRES[pers]
+
+				self.pron = '%s %s' % (pronoun, neg_verb)
+			elif tag.personnumber:
+				pronbase = self.PronPNBase[tag.personnumber]
+				pronoun = pronbase
+				self.pron = pronoun
+				
+				if self.pron and tag.mood == "Imprt":
+					self.pron_imp = "(" + self.pron + ")"
+					self.pron = ""
+				# TODO: conneg only in Prs
 		
 		self.is_correct("morfa" + "_" + tag.pos, self.lemma + "+" + self.tag)
 		# set correct and error values
