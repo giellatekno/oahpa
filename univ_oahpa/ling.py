@@ -158,10 +158,10 @@ class Paradigm:
 						tagset, created = Tagset.objects.get_or_create(tagset=tagclass)
 						pos, created = Tagname.objects.get_or_create(tagname=string,tagset=tagset)
 
-		print >> sys.stdout, "Fixing Tag attributes..."
-		for tag in Tag.objects.all():
-			tag.fix_attributes()
-		print >> sys.stdout, "Done."
+		# print >> sys.stdout, "Fixing Tag attributes..."
+		# for tag in Tag.objects.all():
+			# tag.fix_attributes()
+		# print >> sys.stdout, "Done."
 
 
 	def read_paradigms(self, paradigmfile, tagfile, add_database):
@@ -350,6 +350,9 @@ class Paradigm:
 		except Exception, e:
 			print >> STDERR, 'No forms generated for %s in dialect %s' % (lemma.encode('utf-8'), dialect.encode('utf-8'))
 			lines_tmp = False
+			if not forms:
+				self.paradigm = False
+				return
 		if forms:
 			if forms.getElementsByTagName("form"):
 				form_els = forms.getElementsByTagName("form")
@@ -417,7 +420,11 @@ class Paradigm:
 						g.form = extraforms[g.tags]
 				else:
 					print >> STDERR, 'No form created: %s+%s' % (lemma.encode('utf-8'), tag.encode('utf-8'))
-				
+		else:
+			self.paradigm = False
+
+		return self.paradigm
+
 	
 	def create_paradigm(self, lemma, pos, forms, dialect=False):
 		
