@@ -10,6 +10,15 @@ import re
 import string
 import codecs
 
+class TagError(Exception):
+
+	def __str__(self):
+		msg = (" ** Grammars defined in element, but no inflections were found."
+				"    Check that tags.txt and paradigms.txt include all tags."
+				""
+				"    Alternatively, ensure that <grammar tag /> is a valid tag,"
+				"    or that <grammar pos /> is a valid PoS.")
+		return repr(msg)
 
 class Questions:
 
@@ -18,7 +27,7 @@ class Questions:
 		semclass = False
 		
 		print
-		print "Creating element", el_id
+		print "Creating element %s (%s)" % (el_id, qaelement.qatype)
 
 		# Syntactic function of the element
 		if self.values.has_key(el_id) and self.values[el_id].has_key('syntax'):
@@ -26,10 +35,11 @@ class Questions:
 		else:
 			syntax = el_id
 		
-		if not el: print syntax, "No element given."
+		if not el: 
+			print syntax, "No element given."
 
 		# Some of the answer elements share content of question elements.
-		content_id=""
+		content_id = ""
 		if el:
 			content_id = el.getAttribute("content")
 		if not content_id: content_id=el_id
@@ -38,6 +48,9 @@ class Questions:
 		# is a copy of the question.
 		question_qelements = None
 		
+		qelems = QElement.objects.filter(question__id=qaelement.question_id,
+								identifier=content_id)
+
 		if (not el or el.getAttribute("content")) and \
 			QElement.objects.filter(question__id=qaelement.question_id,
 									identifier=content_id).count() > 0:
@@ -49,12 +62,16 @@ class Questions:
 										   identifier=content_id).count() > 0:
 					question_qelements = QElement.objects.filter(question__id=qaelement.id,
 																 identifier=content_id)
-			
+		
+		# Hmm, maybe not detecting copy correctly
 		if not el and question_qelements:
 			for q in question_qelements:
 				qe = QElement.objects.create(question=qaelement,
 											 identifier=el_id,
 											 syntax=q.syntax)
+				# copy = QElement.objects.get(question=qaelement.question,
+				# 									identifier=el_id,
+				# 									syntax=q.syntax)
 				# mark as a copy
 				q.copy_set.add(qe)
 				qe.save()
@@ -102,8 +119,11 @@ class Questions:
 				
 		############ WORDS
 		# Search for existing word in the database.
-		ids = []
-		if el: ids=el.getElementsByTagName("id")
+		if el: 
+			ids = el.getElementsByTagName("id")
+		else:
+			ids = list()
+
 		words = {}
 		word_elements = None
 		for i in ids:
@@ -123,16 +143,27 @@ class Questions:
 		# Search for existing semtype
 		# Semtype overrides the word id selection
 		if not word_elements:
-			semclasses= []
-			if el: semclasses=el.getElementsByTagName("sem")
-			if semclasses:
-				semclass=semclasses[0].getAttribute("class")
-				word_elements = Word.objects.filter(semtype__semtype=semclass)
-			valclasses= []
-			if el: valclasses=el.getElementsByTagName("val")
-			if valclasses:
-				valclass=valclasses[0].getAttribute("class")
-				word_elements = Word.objects.filter(valency=valclass)
+			semclasses = []
+			if el:
+				semclasses = el.getElementsByTagName("sem")
+				if semclasses:
+					semclass = semclasses[0].getAttribute("class")
+					word_elements = Word.objects.filter(semtype__semtype=semclass)
+			elif qaelement.question:
+				# check question for copy, grab semclasses
+				has_copies = QElement.objects.filter(question=qaelement.question,
+								identifier=el_id)
+				if has_copies:
+					semclasses = has_copies.values_list('semtype__semtype', flat=True)
+					semclass = semclasses[0]
+					word_elements = Word.objects.filter(semtype__semtype=semclass)
+
+			if el: 
+				valclasses = el.getElementsByTagName("val")
+
+				if valclasses:
+					valclass = valclasses[0].getAttribute("class")
+					word_elements = Word.objects.filter(valency=valclass)
 
 		# If still no words, get the default words for this element:
 		if not word_elements:
@@ -144,16 +175,50 @@ class Questions:
 				if not words.has_key(w.pos): words[w.pos] = []
 				words[w.pos].append(w)
 
-		############# GRAMAMR
+		############# GRAMMAR
 		tagelements = None
-		grammars = []
-		if el: grammars = el.getElementsByTagName("grammar")
+		grammars = list()
+		
+		if el: 
+			grammars = el.getElementsByTagName("grammar")
+
 		if not el or not grammars:
-			# If there is no grammatical specification, the element is created solely
-			# on the basis of grammar.
-			if self.values.has_key(el_id):
+			# If there is no grammatical specification, the element is created
+			# solely on the basis of grammar.
+
+			# However, if the element is already defined previously in the
+			# sentence, there is no need to create another element. In fact,
+			# this could result in weirdness if the element is also defined in
+			# the grammar, because otherwise the install process would recreate
+			# it with the wrong default tags.
+
+			# If the element is declared in the question, and we are now
+			# processing the answer, tags need to be grabbed from the question
+			# elements so that the normal copy process can procede, otherwise
+			# they are copied from the grammar, which is not what should
+			# happen.
+
+			preceding = QElement.objects.filter(question=qaelement, 
+												identifier=el_id,)
+			
+			if qaelement.question:
+				has_copies = QElement.objects.filter(question=qaelement.question,
+												 identifier=el_id,)
+			else:
+				has_copies = False
+
+			if preceding:
+				print " * Element already declared in the question"
+				return
+			if has_copies:
+				tagelements = sum([list(p.tags.all()) for p in has_copies], [])
+			elif self.values.has_key(el_id):
 				if self.values[el_id].has_key('tags'):
 					tagelements = self.values[el_id]['tags']
+
+			if tagelements:
+				tagelements = list(set(tagelements))
+
 		# An element for each different grammatical specification.
 		else:
 			poses = []
@@ -207,18 +272,17 @@ class Questions:
 		if not tagelements and not agr_elements:
 			print "no inflection for", el_id
 			if len(grammars) > 0:
-				print >> sys.stderr, " ** Grammars defined in element, but no inflections were found."
-				print >> sys.stderr, "    Check that tags.txt and paradigms.txt include all tags."
-				print >> sys.stderr, ""
-				print >> sys.stderr, "    Alternatively, ensure that <grammar tag /> is a valid tag,"
-				print >> sys.stderr, "    or that <grammar pos /> is a valid PoS."
-				sys.exit(2)
+				raise TagError
 			return
-		if not tagelements: posvalues[""] = 1
+
+		if not tagelements: 
+			posvalues[""] = 1
 		else:
 			for t in tagelements:
 				posvalues[t.pos] = 1
+
 		attempt = False
+
 		if el:
 			task = el.getAttribute("task")
 			if task:
