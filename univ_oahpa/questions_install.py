@@ -27,7 +27,7 @@ class Questions:
 		semclass = False
 		
 		print
-		print "Creating element %s (%s)" % (el_id, qaelement.qatype)
+		print "\tCreating element %s (%s)" % (el_id, qaelement.qatype)
 
 		# Syntactic function of the element
 		if self.values.has_key(el_id) and self.values[el_id].has_key('syntax'):
@@ -36,7 +36,7 @@ class Questions:
 			syntax = el_id
 		
 		if not el: 
-			print syntax, "No element given."
+			print '\t', syntax, "No element given."
 
 		# Some of the answer elements share content of question elements.
 		content_id = ""
@@ -83,7 +83,7 @@ class Questions:
 		agr_elements=None
 		if syntax=="MAINV":
 			agr_id="SUBJ"
-			print "TRYING verb agreement " + agr_id + " " + qaelement.qatype
+			print "\tTRYING verb agreement " + agr_id + " " + qaelement.qatype
 			if QElement.objects.filter(question=qaelement, syntax=agr_id,
 									   question__qatype=qaelement.qatype).count() > 0:
 				agr_elements = QElement.objects.filter(question=qaelement,
@@ -93,7 +93,7 @@ class Questions:
 
 		agreement = ""
 		if el: agreement = el.getElementsByTagName("agreement")
-		if agreement: print "Agreement:", agreement[0].getAttribute("id")
+		if agreement: print "\tAgreement:", agreement[0].getAttribute("id")
 		
 		# Agreement from xml-files
 		# Try first inside question or answer
@@ -115,7 +115,7 @@ class Questions:
 															   syntax=agr_id)
 
 			if not agr_elements:
-				print "ERROR: no agreement elements found"
+				print "* ERROR: no agreement elements found"
 				
 		############ WORDS
 		# Search for existing word in the database.
@@ -131,14 +131,14 @@ class Questions:
 			word_id_hid = i.getAttribute("hid").strip()
 			if word_id:
 				if word_id_hid:
-					print "found word %s/%s" % (word_id, word_id_hid)
+					print "\tfound word %s/%s" % (word_id, word_id_hid)
 					word_elements = Word.objects.filter(wordid=word_id, hid=int(word_id_hid))
 				else:
-					print "found word %s" % word_id
+					print "\tfound word %s" % word_id
 					word_elements = Word.objects.filter(wordid=word_id)
 				# Add pos information here!
 				if not word_elements:
-					print "Word not found! " + word_id
+					print "\tWord not found! " + word_id
 					
 		# Search for existing semtype
 		# Semtype overrides the word id selection
@@ -270,7 +270,7 @@ class Questions:
 		posvalues = {}
 		# Elements that do not inflection information are not created.
 		if not tagelements and not agr_elements:
-			print "no inflection for", el_id
+			print "\tno inflection for", el_id
 			if len(grammars) > 0:
 				raise TagError
 			return
@@ -286,7 +286,7 @@ class Questions:
 		if el:
 			task = el.getAttribute("task")
 			if task:
-				print "setting", el_id, "as task"
+				print "\tsetting", el_id, "as task"
 				qaelement.task = syntax
 				qaelement.save()
 		else:
@@ -325,9 +325,9 @@ class Questions:
 				# sys.exit(2)
 
 		############# CREATE ELEMENTS
-		print 'CREATING ELEMENTS'
-		print 'Elements for the following keys...'
-		print posvalues.keys()
+		print '\tCREATING ELEMENTS'
+		print '\tElements for the following keys...'
+		print '\t' + repr(posvalues.keys())
 		# Add an element for each pos:
 		for p in posvalues.keys():
 			qe = QElement.objects.create(question=qaelement,\
@@ -338,7 +338,7 @@ class Questions:
 				qe.semtype = semty
 				qe.save()
 			
-			print '\tsemtype: ', semclass
+			print '\t\tsemtype: ', semclass
 			# Add links to corresponding question elements.
 			if question_qelements:
 				for q in question_qelements:
@@ -348,14 +348,14 @@ class Questions:
 
 			if tagelements:
 				for t in tagelements:
-					print '\ttag: ', t.string
+					print '\t\ttag: ', t.string
 					if t.pos == p:
 						qe.tags.add(t)
 
 			# Create links to words.
 			if not words.has_key(p):
 				word_pks = None
-				print "looking for words..", el_id, p
+				print "\tlooking for words..", el_id, p
 				# word_elements = Word.objects.filter(form__tag__in=qe.tags.all()) # pos=p)
 				
 				# Just filtering isn't enough; .filter() doesn't return a list of unique items with this kind of query. 
@@ -371,7 +371,7 @@ class Questions:
 					print ' > Word tags: %s' % repr(qe.tags.all())
 					print ' > semtypes: %s' % repr(qe.semtype)
 					sys.exit(2)
-				print '%d elements available. ' % len(word_pks)
+				print '\t%d elements available. ' % len(word_pks)
 				
 				word_elements_gen = (Word.objects.get(pk=int(b)) for b in word_pks)
 				
@@ -457,7 +457,11 @@ class Questions:
 			if not qid:
 				print "ERROR Missing question id, stopping."
 				exit()
-			print qid.encode('utf-8')
+
+			print "\n##"
+			print "### INSTALLING QUESTION: %s" % qid.encode('utf-8')
+			print "##\n"
+				
 			level = q.getAttribute('level')
 			if not level: level="1"
 
@@ -495,7 +499,7 @@ class Questions:
 						# Leave this if DTD is used
 						book_entry, created = Source.objects.get_or_create(name=book)
 						if created:
-							print "Created book entry with name ", book
+							print "\tCreated book entry with name ", book
 					question_element.source.add(book_entry)
 					question_element.save()					
 
@@ -504,7 +508,7 @@ class Questions:
 				# Add book to the database
 				book_entry, created = Source.objects.get_or_create(name=book)
 				if created:
-					print "Created book entry with name ", book
+					print "\tCreated book entry with name ", book
 				question_element.source.add(book_entry)
 				question_element.save()
 
