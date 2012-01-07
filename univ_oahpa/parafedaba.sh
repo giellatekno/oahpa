@@ -181,49 +181,48 @@ echo "==================================================="
 ##
 ## swesme - has not been created for the new format yet
 ##
-: <<'COMMENT'
 
-echo "==================================================="
-echo "feeding db with $DPW/a_swesme.xml"
-$P install.py --file $DPW/a_swesme.xml
-echo " "
-echo "done"
-echo "==================================================="
+# echo "==================================================="
+# echo "feeding db with $DPW/a_swesme.xml"
+# $P install.py --file $DPW/a_swesme.xml
+# echo " "
+# echo "done"
+# echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with $DPW/n_swesme.xml"
-$P install.py --file $DPW/n_swesme.xml
-echo " "
-echo "done"
-echo "==================================================="
+# echo "==================================================="
+# echo "feeding db with $DPW/n_swesme.xml"
+# $P install.py --file $DPW/n_swesme.xml
+# echo " "
+# echo "done"
+# echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with $DPW/v_swesme.xml"
-$P install.py --file $DPW/v_swesme.xml
-echo " "
-echo "done"
-echo "==================================================="
+# echo "==================================================="
+# echo "feeding db with $DPW/v_swesme.xml"
+# $P install.py --file $DPW/v_swesme.xml
+# echo " "
+# echo "done"
+# echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with $DPW/adv_swesme.xml"
-$P install.py --file $DPW/adv_swesme.xml
-echo " "
-echo "done"
-echo "==================================================="
+# echo "==================================================="
+# echo "feeding db with $DPW/adv_swesme.xml"
+# $P install.py --file $DPW/adv_swesme.xml
+# echo " "
+# echo "done"
+# echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with $DPW/multiword_swesme.xml"
-$P install.py --file $DPW/multiword_swesme.xml
-echo " "
-echo "done"
-echo "==================================================="
+# echo "==================================================="
+# echo "feeding db with $DPW/multiword_swesme.xml"
+# $P install.py --file $DPW/multiword_swesme.xml
+# echo " "
+# echo "done"
+# echo "==================================================="
 
-echo "==================================================="
-echo "feeding db with $DPW/prop_swesme.xml"
-$P install.py --file $DPW/prop_swesme.xml
-echo " "
-echo "done"
-echo "==================================================="
+# echo "==================================================="
+# echo "feeding db with $DPW/prop_swesme.xml"
+# $P install.py --file $DPW/prop_swesme.xml
+# echo " "
+# echo "done"
+# echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/pron_sme.xml"
@@ -318,6 +317,13 @@ echo "==================================================="
 echo "==================================================="
 echo "installing Morfa-C questions for adjectives"
 $P install.py -g $META/grammar_defaults.xml -q $META/adjective_questions.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "installing Morfa-C questions for numerals"
+$P install.py -g $META/grammar_defaults.xml -q $META/numeral_questions.xml
 echo " "
 echo "done"
 echo "==================================================="
