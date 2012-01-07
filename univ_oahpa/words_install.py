@@ -789,6 +789,8 @@ class Words:
 					print >> _STDOUT, 'Forms for dialect %s' % dialect.dialect
 				linginfo.get_paradigm(lemma=lemma,pos=pos,forms=forms, dialect=dialect.dialect)
 
+				if not linginfo.paradigm:
+					continue
 				for f in linginfo.paradigm:
 
 					g=f.classes
