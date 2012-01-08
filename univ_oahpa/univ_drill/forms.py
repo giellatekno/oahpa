@@ -446,10 +446,12 @@ def set_settings(self):
 	self.allcase_context = dict(CASE_CONTEXT_CHOICES).keys()
 	self.proncase_context = dict(PRON_CONTEXT_CHOICES).keys()
 	self.allvtype_context = dict(VTYPE_CONTEXT_CHOICES).keys()
+	self.alladjcase = dict(ADJCASE_CHOICES).keys()  # added by Heli
+	self.allgrade = dict(GRADE_CHOICES).keys() # added by Heli
 	self.alladj_context = dict(ADJ_CONTEXT_CHOICES).keys()
 	self.allnum_context = dict(NUM_CONTEXT_CHOICES).keys()
 	self.allnum_bare = dict(NUM_BARE_CHOICES).keys()
-	self.sources = dict(BOOK_CHOICES).keys() # was: sources
+	self.sources = dict(BOOK_CHOICES).keys()
 	self.geography = dict(GEOGRAPHY_CHOICES).keys()
 	self.frequency = dict(FREQUENCY_CHOICES).keys() # added by Heli
 
@@ -583,6 +585,7 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 			'case2': tag.case,
 			'number': tag.number,
 			'attributive': tag.attributive,
+			'grade':tag.grade  # added by Heli
 		}
 	}
 		
@@ -616,7 +619,7 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 	
 	if POS == 'A':
 		if 'grade' not in FILTERS:
-			FILTERS['grade'] = 'Pos'
+			FILTERS['grade'] = 'POS' # was 'Pos'
 
 		if 'attributive' not in FILTERS:
 			FILTERS['attributive'] = 'NoAttr'
@@ -770,8 +773,9 @@ class OahpaSettings(forms.Form):
 				     'pos' : 'N',
 				     'vtype' : 'PRS',
 				     'adjcase' : 'ATTR',
+				     'number' : '',  
 				     'proncase' : 'N-ILL',
-				     'grade' : '',
+				     'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
 				     'case_context' : 'N-ILL',
 				     'vtype_context' : 'V-PRS',
 				     'pron_context' : 'P-ILL',
@@ -1001,7 +1005,7 @@ class MorfaSettings(OahpaSettings):
 	"""
 	case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
-	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJEX_CHOICES, widget=forms.Select)
+	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
 	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
 	num_bare = forms.ChoiceField(initial='N-ILL', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
@@ -1014,8 +1018,7 @@ class MorfaSettings(OahpaSettings):
 	bisyllabic = forms.BooleanField(required=False, initial='1')
 	trisyllabic = forms.BooleanField(required=False, initial=0)
 	contracted = forms.BooleanField(required=False, initial=0)
-	# contracted = forms.BooleanField(required=False, initial=0)
-# 	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
+	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select) 
 	
 	def __init__(self, *args, **kwargs):
 		self.set_settings()

@@ -34,6 +34,15 @@ class Gameview:
 		self.gamenames = {
 			'ATTR' :  _('Practise attributes'),
 			'A-ATTR' :  _('Practise attributes'),
+			#'A' : _('Practise adjectives'),  # added by Heli
+			'A-NOM' :  _('Practise adjectives in nominative'),
+			'A-ILL' :  _('Practise adjectives in illative'),
+			'A-ACC' :  _('Practise adjectives in accusative'),
+			'A-COM' :  _('Practise adjectives in comitative'),
+			'A-ESS' :  _('Practise adjectives in essive'),
+			'A-GEN' :  _('Practise adjectives in genitive'),
+			'A-NOM-PL' :  _('Practise adjectives in plural'),
+			'N-LOC' :  _('Practise adjectives in locative'),
 			'A-COMP' :  _('Practise comparative'),
 			'A-SUPERL' :  _('Practise superlative'),
 			'ATTRPOS' :  _('Practise attributes in positive'),

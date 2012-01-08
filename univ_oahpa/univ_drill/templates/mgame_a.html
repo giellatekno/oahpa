@@ -4,9 +4,7 @@
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
- <!-- {% ifequal settings.gametype "bare" %} -->
     {% trans "Add adjectives in correct forms. You get translation if you click the word." %}
- <!-- {% else %}{% trans "Add adjectives in correct forms." %} {% endifequal %} -->
 {% endblock %}
 
 
@@ -15,8 +13,10 @@
 {# {% trans "Stem" %} #}
 
 {% ifequal settings.gametype "bare" %}
-	<li><label for="id_{{ settingsform.adj_context.name }}">{% trans "Type" %}</label>
+    <li><label for="id_{{ settingsform.adjcase.name }}">{% trans "Case" %}</label>
 		{{ settingsform.adjcase }}</li>
+	<li><label for="id_{{ settingsform.grade.name }}">{% trans "Grade" %}</label>
+		{{ settingsform.grade }}</li>
 	<li><label>{% trans "Stem" %}</label>
 		<ul>
 			<li>{{ settingsform.bisyllabic }} <label for="id_{{ settingsform.bisyllabic.name }}">{% trans "bisyllabic" %}</label></li>

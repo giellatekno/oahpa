@@ -349,8 +349,9 @@ class BareGame(Game):
 		'N-ACC':'Acc', 
 		'N-COM':'Com',
 		'A-ATTR': 'Attr',
-		'A-COMP': 'Comp',
-		'A-SUPERL': 'Superl',
+		'COMP': 'Comp', # was: A-COMP
+		'SUPERL': 'Superl', # was: A-SUPERL
+		'POS':'',
 		'': ''
 	}
 	
@@ -387,7 +388,8 @@ class BareGame(Game):
 		grade = True and self.settings.get('grade')   or   ""
 		source = ""
 		
-		mood, tense, attributive, infinite = "", "", "", ""
+		mood, tense, infinite, attributive = "", "", "", ""
+
 		num_bare = ""
 		# if self.settings.has_key('syll'):
 		# 	syll = self.settings['syll']
@@ -438,6 +440,7 @@ class BareGame(Game):
 			syll = ['']
 		
 		case = self.casetable[pos_tables[pos]]
+		grade = self.casetable[grade] 
 		
 		pos_mood_tense = {
 			"PRS":	("Ind", "Prs", ""),
@@ -453,10 +456,14 @@ class BareGame(Game):
 			mood, tense, infinite = pos_mood_tense[self.settings['vtype']]
 		
 		
-		number = ["Sg","Pl",""]
-		if case == "Nom" and pos != "Pron":
-			number = ["Pl"]
+		# number = ["Sg","Pl",""] - this gave a false query
 		
+		if case == "Ess":
+			number = "" 
+		elif case == "Nom" and pos != "Pron":
+			number = "Pl" # took away [] - number is not a list !?
+		else:
+			number = "Sg"  # added by Heli
 
 		# A+Sg+Nom
 		
@@ -468,18 +475,19 @@ class BareGame(Game):
 		# A+Attr
 		if pos == "A":
 			pform = False
-			if "Attr" in [attributive, case]:
+			if "Attr" in [attributive, case]:  
 				attributive = "Attr"
-				grade = ""
-				case = ""
+				case = ""  
 				number = ""
-				pform = 'A+Sg+Nom'
-			elif case in ["Comp", "Superl"]:
-				grade = case
-				case = "Nom" ; number = "Sg"
-				attributive = ""
-				pform = 'A+Attr'
-
+				pform = 'A+Attr'  
+			else:			
+				# case = "Nom" ; number = "Sg"  # query by the case that user entered instead
+				#attributive = "" 
+				pform = 'A+Sg+Nom' 
+		
+                # case in ["Comp", "Superl"]: all the remaining adjectives can be declined in all cases
+		# grade = case What a mix of grade and case! Why?
+				
 		
 		maxnum, i = 20, 0
 		
@@ -499,8 +507,8 @@ class BareGame(Game):
 						Q(case=case)
 						# regardless of whether it's Actor, Coll, etc.
 
-			if case == 'Nom':
-				TAG_QUERY = TAG_QUERY & Q(number='Pl')
+			if pos == 'N':
+				TAG_QUERY = TAG_QUERY & Q(number=number)
 
 			# 'Pers' subclass for pronouns, otherwise none.
 			# TODO: combine all subclasses so forms can be fetched
@@ -512,7 +520,7 @@ class BareGame(Game):
 
 			if pos == 'Num':
 				TAG_QUERY = TAG_QUERY & Q(number='Sg') & Q(subclass='')
-		
+             
 		if pos == 'V':
 			TAG_QUERY =  TAG_QUERY & \
 							Q(tense=tense) & \
@@ -526,6 +534,7 @@ class BareGame(Game):
 						Q(grade=grade) & \
 						Q(case=case) & \
 						Q(number=number)
+		# case -> adjcase ?
 		
 		# filter can include several queries, exclude must have only one
 		# to work successfully
