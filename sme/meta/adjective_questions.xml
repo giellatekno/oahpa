@@ -445,8 +445,7 @@
     <answer> 
       <text>Muhto mu ITEM lea buot PRED</text>
       <element id="PRED" task="yes" content="ATTR">   <!-- Same A as ATTR -->
-	<grammar tag="A+Superl+NumberN+Nom"/>  <!-- same number as SUBJ -->
-	<agreement id="SUBJ"/>
+	<grammar tag="A+Superl+Sg+Nom"/>  <!-- same number as SUBJ -->
       </element>
       <element id="ITEM" content="ITEM">   
 	<grammar tag="N+Sg+Nom"/>	
@@ -466,18 +465,14 @@
 	<grammar tag="A+Attr"/>  <!-- no number -->
 	<id>čáppat</id>
       </element>
-      <element id="MAINV">
-	<id>leat</id> 
-	<grammar tag="V+Ind+Prs+Person-Number"/>   
-      </element>
     </question>
     <answer> 
-      <text>Muhto mu ITEM lea buot PRED</text>
+      <text>Muhto mu ITEM leat buot PRED</text>
       <element id="PRED" task="yes" content="ATTR">   <!-- Same A as ATTR -->
-	<grammar tag="A+Superl+NumberN+Nom"/>  <!-- same number as SUBJ -->
+	<grammar tag="A+Superl+Pl+Nom"/>  <!-- same number as SUBJ -->
       </element>
       <element id="ITEM" content="ITEM">   
-	<grammar tag="N+Sg+Nom"/>	
+	<grammar tag="N+Pl+Nom"/>	
       </element>
     </answer>
   </q>
