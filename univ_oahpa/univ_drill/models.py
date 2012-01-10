@@ -508,9 +508,23 @@ class Form(models.Model):
 			@param match_num:
 				True - If the form supplied is a noun and plural
 					   the baseform will be Nominative Plural
+			
+			TODO: baseforms for
+			Pron+Refl+Sg+Nom
+			 ** no form
+
+			Pron+Refl+Pl+Nom
+			  ** no form
+			
+			All Recipr+Pl forms are not returning baseforms
+				Pron+Recipr+Pl+Acc+PxDu2
+				Pron+Recipr+Pl+Ill+PxDu2
+				Pron+Recipr+Pl+Loc+PxDu2
+				Pron+Recipr+Pl+Com+PxDu2
+				 ... etc
 		"""
 
-		if self.tag.pos in ['N', 'n', 'Pron', 'Num']:
+		if self.tag.pos in ['N', 'n', 'Num']:
 			if match_num:
 				number = self.tag.number
 			else:
@@ -520,6 +534,46 @@ class Form(models.Model):
 			baseform = baseform_num.filter(tag__number=number)
 			if baseform.count() == 0 and number == 'Sg' and baseform_num.count() > 0:
 				baseform = baseform_num
+		elif self.tag.pos == 'Pron':
+
+			person_match_attr = False
+			if self.tag.personnumber:
+				person_match_attr = 'personnumber'
+			elif self.tag.possessive:
+				person_match_attr = 'possessive'
+
+			number_match = False
+			if self.tag.number:
+				number_match = self.tag.number
+			else:
+				number_match = 'Sg'
+
+			kwargs = {}
+
+			if person_match_attr:
+				try:
+					person_value = self.tag__getattribute(person_match_attr)
+				except AttributeError:
+					# TODO: handle error?
+					person_value = ''
+				kwargs['tag__' + person_match_attr] = person_value
+
+			base_case = 'Nom'
+			if self.tag.subclass in ['Recipr', 'Refl']:
+				base_case = 'Gen'
+
+			if self.tag.subclass in ['Recipr', 'Dem']:
+				kwargs['tag__number'] = number_match
+
+			
+			# print kwargs
+			baseform_num = self.word.form_set.filter(tag__case=base_case)
+			# print baseform_num
+			baseform = baseform_num.filter(**kwargs)
+
+			if baseform.count() == 0 and number_match == 'Sg' and baseform_num.count() > 0:
+				baseform = baseform_num
+			
 		elif self.tag.pos in ['V', 'v']:
 			if self.word.lemma in [u'lea', u'ij']:
 				kwarg = {'tag__personnumber': 'Sg3'}

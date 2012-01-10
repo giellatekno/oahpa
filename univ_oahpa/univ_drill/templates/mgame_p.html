@@ -10,6 +10,8 @@
 
 {% block subsetting %}
 	{% ifequal settings.gametype "bare" %}
+		<li><label for="id_{{ settingsform.pron_type.name }}">{% trans "Type" %}</label>
+			{{ settingsform.pron_type }}</li>
 		<li><label for="id_{{ settingsform.proncase.name }}">{% trans "Case" %}</label>
 			{{ settingsform.proncase }}</li>
 	{% else %}

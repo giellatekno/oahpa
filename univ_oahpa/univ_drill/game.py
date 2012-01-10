@@ -338,16 +338,16 @@ class Game:
 class BareGame(Game):
 	
 	casetable = {
-		'NOMPL' : 'Nom', 
-		'ATTR':'Attr',
-		'PRED':'Pred', 
+		'NOMPL': 'Nom', 
+		'ATTR': 'Attr',
+		'PRED': 'Pred', 
 		'N-NOM': 'Nom',
-		'N-ILL':'Ill', 
-		'N-ESS':'Ess', 
-		'N-GEN':'Gen',
-		'N-LOC':'Loc',
-		'N-ACC':'Acc', 
-		'N-COM':'Com',
+		'N-ILL': 'Ill', 
+		'N-ESS': 'Ess', 
+		'N-GEN': 'Gen',
+		'N-LOC': 'Loc',
+		'N-ACC': 'Acc', 
+		'N-COM': 'Com',
 		'A-ATTR': 'Attr',
 		'COMP': 'Comp', # was: A-COMP
 		'SUPERL': 'Superl', # was: A-SUPERL
@@ -384,6 +384,7 @@ class BareGame(Game):
 		case = True and	self.settings.get('case')	or   ""
 		levels = True and  self.settings.get('level')   or   []
 		adjcase = True and self.settings.get('adjcase') or   ""
+		pron_type = True and self.settings.get('pron_type') or   ""
 		proncase = True and self.settings.get('proncase') or   ""
 		grade = True and self.settings.get('grade')   or   ""
 		source = ""
@@ -415,6 +416,7 @@ class BareGame(Game):
 			num_level = self.settings['num_level']
 		if self.settings.has_key('grade'):
 			grade = self.settings['grade']
+
 		pos_tables = {
 			"N":	case,
 			"A":	adjcase,
@@ -493,7 +495,7 @@ class BareGame(Game):
 		
 		TAG_QUERY = Q(pos=pos)
 		
-		TAG_EXCLUDES = Q(string__contains="ConNeg") & Q(subclass="Prop")
+		TAG_EXCLUDES = False
 		
 		FORM_FILTER = False
 
@@ -503,18 +505,19 @@ class BareGame(Game):
 
 		if pos in ['Pron', 'N', 'Num']:
 			TAG_QUERY = TAG_QUERY & \
-						Q(possessive="") & \
 						Q(case=case)
 						# regardless of whether it's Actor, Coll, etc.
 
 			if pos == 'N':
-				TAG_QUERY = TAG_QUERY & Q(number=number)
+				TAG_QUERY = TAG_QUERY & \
+							Q(possessive="") & \
+							Q(number=number)
 
 			# 'Pers' subclass for pronouns, otherwise none.
 			# TODO: combine all subclasses so forms can be fetched
 			if pos == 'Pron':
 				sylls = False
-				TAG_QUERY = TAG_QUERY & Q(subclass='Pers')
+				TAG_QUERY = TAG_QUERY & Q(subclass=pron_type)
 			else:
 				TAG_QUERY = TAG_QUERY & Q(subclass='')
 
@@ -526,6 +529,9 @@ class BareGame(Game):
 							Q(tense=tense) & \
 							Q(mood=mood) & \
 							Q(infinite=infinite)
+
+			if tense != 'Prs':
+				TAG_EXCLUDES = Q(string__contains='ConNeg')
 			
 		if pos == 'A':
 			base_set = Form.objects.filter(tag__string=pform)
@@ -539,9 +545,11 @@ class BareGame(Game):
 		# filter can include several queries, exclude must have only one
 		# to work successfully
 		tags = Tag.objects.filter(TAG_QUERY)\
-							.exclude(string__contains='ConNeg')\
 							.exclude(subclass='Prop')\
 							.exclude(polarity='Neg')
+
+		if TAG_EXCLUDES:
+			tags = tags.exclude(TAG_EXCLUDES)
 
 		if tags.count() == 0:
 			keys = ['pos', 'case', 'tense', 'mood', 'attributive', 'grade', 'number']
@@ -550,6 +558,10 @@ class BareGame(Game):
 					 No tags for the query were found.\n\n\
 					 %s\n\n\
 					 %s" % (TAG_QUERY, SUB_QUERY)
+
+			if TAG_EXCLUDES:
+				error += "\nexcludes: %" % TAG_EXCLUDES
+
 			raise Http404(error)
 		
 		if self.settings['pos'] == "Num":
@@ -581,6 +593,11 @@ class BareGame(Game):
 			no_form = True
 			count = 0
 			while no_form and count < 10:
+
+				# Pronouns are a bit different, so we need to resort the tags
+				if tag.pos == 'Pron':
+					tag = tags.order_by('?')[0]
+
 				random_word = tag.form_set.filter(word__language=L1)
 
 				if sylls:
@@ -727,7 +744,7 @@ class BareGame(Game):
 		
 		present_ng = present_ng.values_list('fullform',flat=True)
 		
-		print tag.string, repr(correct)
+		# print tag.string, repr(correct)
 		morph = (MorfaQuestion(
 					word=word,
 					tag=tag,
