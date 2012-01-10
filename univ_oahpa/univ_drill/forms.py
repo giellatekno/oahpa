@@ -1151,7 +1151,7 @@ class MorfaQuestion(OahpaQuestion):
 				noun_pres = DEMONSTRATIVE_PRESENTATION.get(tag.number, False)
 
 				if noun_pres:
-					self.lemma += ' (%s)' % noun_pres
+					self.lemma += ' (%s)' % force_unicode(noun_pres).encode('utf-8')
 		
 		self.is_correct("morfa" + "_" + tag.pos, self.lemma + "+" + self.tag)
 		# set correct and error values
