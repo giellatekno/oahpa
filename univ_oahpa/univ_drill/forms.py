@@ -26,6 +26,16 @@ NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'sii',
 		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
 
+RECIPROCATIVE_PRESENTATION = {
+	'Du': u'guhtet',
+	'Pl': u'goabbat',
+}
+
+DEMONSTRATIVE_PRESENTATION = {
+	'Sg': u'okta',
+	'Pl': u'máŋga',
+}
+
 POS_CHOICES = (
 	('N', _('noun')),
 	('V', _('verb')),
@@ -44,13 +54,31 @@ CASE_CHOICES = (
 	('N-ESS', _('essive')),
 )
 
+# Pers - akk, gen, ill, lok, kom
+# Dem - akk, gen, ill, lok, kom
 CASE_CHOICES_PRONOUN = (
+	# TODO: N-ACC should probably be P-ACC, and so on for consistency
 	('N-ACC', _('accusative')),
 	('N-ILL', _('illative')),
 	('N-LOC', _('locative')),
 	('N-COM', _('comitative')),
 	('N-GEN', _('genitive')),
 	# ('N-ESS', _('essive')),
+)
+
+# Refl - ill, lok, kom
+# Recipr - ill, lok, kom
+RECIP_REFL_CHOICES = (
+	('N-ILL', _('illative')),
+	('N-LOC', _('locative')),
+	('N-COM', _('comitative')),
+)
+
+PRONOUN_SUBCLASSES = (
+	('Pers', _('personal')),
+	('Dem', _('demonstrative')),
+	('Recipr', _('reciprocative')),
+	('Refl', _('reflexive')),
 )
 
 CASE_CONTEXT_CHOICES = (
@@ -774,6 +802,7 @@ class OahpaSettings(forms.Form):
 				     'vtype' : 'PRS',
 				     'adjcase' : 'ATTR',
 				     'number' : '',  
+				     'pron_type': 'Pers',
 				     'proncase' : 'N-ILL',
 				     'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
 				     'case_context' : 'N-ILL',
@@ -1004,6 +1033,7 @@ class MorfaSettings(OahpaSettings):
 		answers.
 	"""
 	case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
+	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
 	proncase = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
 	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
@@ -1024,6 +1054,19 @@ class MorfaSettings(OahpaSettings):
 		self.set_settings()
 		self.set_default_data()
 		super(MorfaSettings, self).__init__(*args, **kwargs)
+
+		# If this is set, then the form has been posted by the user otherwise
+		# it hasn't
+		try:
+			post_data = args[0]
+		except:
+			post_data = False
+
+		if post_data:
+			# Use a restricted choice set for pronoun case for Refl and Recipr
+			if 'pron_type' in post_data:
+				if post_data['pron_type'].lower() in ['refl', 'recipr']:
+					self.fields['proncase'].choices = RECIP_REFL_CHOICES
 
 
 class MorfaQuestion(OahpaQuestion):
@@ -1067,7 +1110,6 @@ class MorfaQuestion(OahpaQuestion):
 					
 		self.tag = tag.string
 		
-		print tag.string
 		if tag.pos == "V": 
 			if tag.string.find("ConNeg") > -1:
 				pers = choice(self.PronPNBase.keys())
@@ -1084,6 +1126,32 @@ class MorfaQuestion(OahpaQuestion):
 					self.pron_imp = "(" + self.pron + ")"
 					self.pron = ""
 				# TODO: conneg only in Prs
+
+		if tag.pos == "Pron":
+			# Various display alternations for pronouns.
+			
+			# Reciprocative:
+			# 	guhtet guoibmámet
+			# 	goabbat guoibmámet
+
+			if tag.subclass == 'Recipr':
+				if tag.possessive.find('PxDu'):
+					px_no = 'Du'
+				elif tag.possessive.find('PxPl'):
+					px_no = 'Pl'
+				pronoun = RECIPROCATIVE_PRESENTATION.get(px_no, False)
+				if pronoun:
+					self.pron = pronoun
+
+			# Demonstrative:
+			# 	dát okta
+			# 	dát máŋga
+
+			if tag.subclass == 'Dem':
+				noun_pres = DEMONSTRATIVE_PRESENTATION.get(tag.number, False)
+
+				if noun_pres:
+					self.lemma += ' (%s)' % noun_pres
 		
 		self.is_correct("morfa" + "_" + tag.pos, self.lemma + "+" + self.tag)
 		# set correct and error values
