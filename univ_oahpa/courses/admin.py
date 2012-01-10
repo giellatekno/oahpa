@@ -76,6 +76,7 @@ class UserProfileInlineAdmin(admin.TabularInline):
 
 class CourseAdmin(admin.ModelAdmin):
 	inlines = [InstructorInline, StudentInline]
+	list_display = ('identifier', 'name', 'end_date',)
 
 	def queryset(self, request):
 		""" Filter only courses that request user is instructor of.

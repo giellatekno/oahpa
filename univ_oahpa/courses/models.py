@@ -29,7 +29,7 @@ class UserProfile(models.Model):
 	site_cookie = models.IntegerField(null=True)
 	
 	def __unicode__(self):
-		return self.user.username
+		return self.user.username.encode('utf-8')
 	
 
 
@@ -113,10 +113,6 @@ class Course(models.Model):
 	# instructors = models.ManyToManyField(User, related_name='instructorships')
 	# students = models.ManyToManyField(User, related_name='studentships')
 	end_date = models.DateTimeField(null=True, default=None)
-
-	def __unicode__(self):
-		r = self.identifier + u': ' + self.name
-		return r
 
 class CourseRelationship(models.Model):
 	""" This model contains information about the relationships of
