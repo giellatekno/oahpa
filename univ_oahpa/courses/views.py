@@ -180,7 +180,7 @@ def trackGrade(gamename, request, c):
 				game_type = SETTINGS['numgame']
 			
 			
-			elif gamename.startswith('C-Morfa'):
+			elif gamename.startswith('Contextual Morfa'):
 				game_type = ''
 				try:			case_context = SETTINGS['case_context']
 				except:			case_context = ''
