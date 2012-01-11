@@ -1153,7 +1153,9 @@ class MorfaQuestion(OahpaQuestion):
 				if noun_pres:
 					self.lemma += ' (%s)' % force_unicode(noun_pres).encode('utf-8')
 		
-		self.is_correct("morfa" + "_" + tag.pos, self.lemma + "+" + self.tag)
+		log_name = "morfa_%s" % tag.pos
+		self.is_correct(log_name, self.lemma + "+" + self.tag)
+		
 		# set correct and error values
 		if correct_val:
 			if correct_val == "correct":
@@ -1457,7 +1459,11 @@ class ContextMorfaQuestion(OahpaQuestion):
 			accepted = sum([relax(force_unicode(item)) for item in self.correct_anslist], [])
 			self.relaxings = [item for item in accepted if item not in self.correct_anslist]
 			self.correct_anslist.extend(self.relaxings)
-			self.is_correct("contextual morfa")
+			log_name = "contextual_morfa_" + qtype
+			w_str = Word.objects.get(id=selected_awords[task]['word']).lemma
+			t_str = Tag.objects.get(id=selected_awords[task]['tag']).string
+			log_value = '%s+%s' % (w_str, t_str)
+			self.is_correct(log_name, log_value)
 			self.correct_ans = self.correct_anslist[0]
 
 		self.correct_anslist = [force_unicode(item) for item in accepted] 
