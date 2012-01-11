@@ -95,6 +95,10 @@ class Gameview:
 			'P-GEN'  : _('Practise genitive'),
 			#'P-NOM'  : _('Practise nominative'),
 			'P-ILL'  : _('Practise illative'),
+			'P-RECIPR': _('reciprocative'),
+			'P-REFL':  _('reflexive'),
+			'P-DEM':   _('demonstrative'),
+
 		}
 
 
