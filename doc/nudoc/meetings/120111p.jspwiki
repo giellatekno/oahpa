@@ -1,0 +1,106 @@
+
+!!!Møte 11.01.12
+
+Til stades: Biret-Ánne, Lene, Heli, Ryan
+
+!!Saksliste
+* MorfaS
+* MorfaC
+* Leksa dyplinking
+* Vasta og Sahka
+* Log
+* Innlogging
+* Buger
+* Neste møte
+
+!! MorfaS
+
+Pronomen: "Oppgavetype" endres til "Pronomentype". Vi treng eit anna stykkeord i HTML-fila slik at lokaliseringsfilene vert genererte med ein ny term.  __Ryan__
+
+Numeraler: Nivå 2 skal ha flertall og bokvalg skal bort __Heli__
+
+Feedback skal arbeides med etter at MOrfaC er ok __Ryan, Lene__
+
+!! MorfaC
+
+Adjektiver: 
+* ett spørsmål gir AttributeError at /univ_oahpa/morfac/a/, finne ut hvilket __Ryan__
+
+Pronomener: 
+* Vi blander kasusoppgavene for personlige pronomener: P-PERS og menyen vil da hete "Pronomentype" i stedenfor Kasus.
+* De nye pronomenoppgavene fungerer, vi lager flere __Lene, Biret-Á__
+* Lage oppgaver for ''nuppi nubbi'' ? __Lene, Biret Á__
+
+
+!! Leksa dyplinking
+* oahpa - semtype
+* univ_oahpa - semtype_incl og semtype_excl - Ryan?
+
+* Finne ut av dette, kurs starter 16.1 __Heli, Ryan__
+
+!! Vasta og Sahka
+* Grensesnittet er på plass lokalt på Helis maskin
+* Arbeidet fortsetter __Heli__
+
+
+!! Logg
+* 1241 	MorfaS og MorfaC har ulike loggrutiner, fikset men må også fikses i kursmodul __Ryan__
+
+{{{
+morfa_A				|2012/1/11|jállu|jálus,jálos,jálus,jálos|False|jállu+A+Attr|None|None
+contextual_morfa_A	|2012/1/11|seavdnjat|seavdnjadis|False|seavdnjat+A+Attr|None|None
+contextual_morfa_Pron|2012/1/11|iehčanii|alccesis|False|iežas+Pron+Refl+Ill+PxSg3|None|None
+}}}
+
+Idag:
+{{{
+Contextual Morfa -
+Gjennomsnitt — 4.0
+Høyeste poengsum: — 5.0
+Laveste poengsum: — 3.0
+Antall forsøk — 2
+}}}
+
+Vi ønsker:
+{{{
+Contextual Morfa - P-PERS
+Gjennomsnitt — 4.0
+Høyeste poengsum: — 5.0
+Laveste poengsum: — 3.0
+Antall forsøk — 2
+}}}
+
+!! Innlogging
+Det har vært problematisk å legge inn nye kurs, men det fungerer nå
+* Isak Saba studenter skal legges inn når vi får deres nickname __Biret Á__
+
+Etter innlogging skal det være link til site, til riktig kursside:
+* Legges til kolonne i databasen for å knytte student til kurs og dermed en bestemt kursside __Ryan__
+
+Registrering for Oahpa:
+* vi satser på innlogging via Oahpa til site, og legger til side arbeidet med å lage innlogging direkte på site. 
+Oppdatere dokumentasjon __Biret Á__
+* lage skjema for registrering på Oahpa  __Ryan__
+* gjøre link til site tilgjengelig for studenten etter innloggin  __Ryan__
+* få testa OpenID-plugin på testserver __Biret Á, Bjørn, Ryan__
+* gi Ryan passord til testserver __Biret Á__
+* wordpress.org/extend/plugins/openid/
+
+[OpenID|http://en.wikipedia.org/wiki/OpenID]. Django funkar som OpenID provider, 
+WordPress treng OpenID for å logge studentar inn frå Django/Oahpa. For 
+WordPress-folk er dette også godt nok, fordi folk kan logge seg inn frå andre 
+OpenID-stadar.
+
+
+!! Buger
+
+!1244 	Morfa C: substantiv: Mix mangler 
+* Fikse denne __Lene__
+
+
+!! Neste møte
+16. januar kl 8.00
+(15. januar - minnesotastid)
+
+
+
