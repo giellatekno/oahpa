@@ -98,10 +98,14 @@ def trackGrade(gamename, request, c):
 			if gamename.startswith('Morfa'):
 				if 'case' in SETTINGS:
 					game_type = SETTINGS['case']
+				elif 'proncase' in SETTINGS:
+					game_type = SETTINGS['pron_type'] + ' - ' + SETTINGS['proncase']
 				elif 'vtype' in SETTINGS:
 					game_type = SETTINGS['vtype']
 				elif 'adjcase' in SETTINGS:
 					game_type = SETTINGS['adjcase']
+				elif 'num_bare' in SETTINGS:
+					game_type = SETTINGS['num_bare']
 				else:
 					game_type = ''
 				
@@ -185,6 +189,9 @@ def trackGrade(gamename, request, c):
 				try:			case_context = SETTINGS['case_context']
 				except:			case_context = ''
 				
+				try:			proncase_context = SETTINGS['proncase_context']
+				except:			proncase_context = ''
+				
 				try:			vtype_context = SETTINGS['vtype_context']
 				except:			vtype_context = ''
 				
@@ -200,7 +207,8 @@ def trackGrade(gamename, request, c):
 				try:			source = SETTINGS['source']
 				except:			source = ''
 				
-				game_type += case_context + vtype_context + adj_context + num_context
+				game_type += case_context + proncase_context + \
+								vtype_context + adj_context + num_context
 				game_type += ' '
 				game_type += book + source
 							
