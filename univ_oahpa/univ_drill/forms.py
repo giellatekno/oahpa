@@ -1459,9 +1459,11 @@ class ContextMorfaQuestion(OahpaQuestion):
 			accepted = sum([relax(force_unicode(item)) for item in self.correct_anslist], [])
 			self.relaxings = [item for item in accepted if item not in self.correct_anslist]
 			self.correct_anslist.extend(self.relaxings)
-			log_name = "contextual_morfa_" + qtype
-			w_str = Word.objects.get(id=selected_awords[task]['word']).lemma
+			log_w = Word.objects.get(id=selected_awords[task]['word'])
+			w_str = log_w.lemma
+			w_pos = log_w.pos
 			t_str = Tag.objects.get(id=selected_awords[task]['tag']).string
+			log_name = "contextual_morfa_" + w_pos
 			log_value = '%s+%s' % (w_str, t_str)
 			self.is_correct(log_name, log_value)
 			self.correct_ans = self.correct_anslist[0]
