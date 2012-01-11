@@ -527,7 +527,115 @@
       </element>
     </answer>
   </q>
-  <q id="prec1">
+   <q id="prefl4">
+    <qtype>P-REFL</qtype>
+    <question>
+      <text>Manne SUBJ manai PLACE</text>
+      <element id="SUBJ">
+		<sem class="mPEOPLE"/>
+		<grammar tag="N+Sg+Nom"/>
+      </element>
+ 		<element id="PLACE">
+		<sem class="mPLACENAME"/>
+		<grammar tag="N+Prop+Sg+Ill"/>
+	  </element>
+    </question>
+    <answer> 
+      <text>Son mieđuštii P-REFL OBJ</text>
+      <element game='morfa' id="P-REFL" task="yes">
+	<grammar tag="Pron+Refl+Loc+PxSg3"/>
+      </element>
+ 		<element id="OBJ">
+		<grammar tag="N+Sg+Acc"/>
+		<sem class="mFAMILY"/>
+	  </element>
+    </answer>
+  </q>
+   <q id="prefl5">
+    <qtype>P-REFL</qtype>
+    <question>
+      <text>Geasa osttiide OBJ</text>
+ 		<element id="OBJ">
+		<grammar tag="N+Pl+Acc"/>
+		<sem class="FOOD_GROCERY"/>
+	  </element>
+    </question>
+    <answer> 
+      <text>Moai osttiime OBJ P-REFL</text>
+      <element game='morfa' id="P-REFL" task="yes">
+	<grammar tag="Pron+Refl+Ill+PxDu1"/>
+      </element>
+    </answer>
+  </q>
+   <q id="prefl6">
+    <qtype>P-REFL</qtype>
+    <question>
+      <text>Geas don ohppet VERB</text>
+ 		<element id="VERB">
+		<sem class="mACTIVITY"/>
+		<grammar tag="V+Inf"/>
+	  </element>
+    </question>
+    <answer> 
+      <text>Mun ohppen dan P-REFL</text>
+      <element game='morfa' id="P-REFL" task="yes">
+	<grammar tag="Pron+Refl+Loc+PxSg1"/>
+      </element>
+    </answer>
+  </q>
+   <q id="prefl7">
+    <qtype>P-REFL</qtype>
+    <question>
+      <text>Geas doai oahpaide VERB</text>
+ 		<element id="VERB">
+		<sem class="mACTIVITY"/>
+		<grammar tag="V+Inf"/>
+	  </element>
+    </question>
+    <answer> 
+      <text>Moai oahpaime dan P-REFL</text>
+      <element game='morfa' id="P-REFL" task="yes">
+	<grammar tag="Pron+Refl+Loc+PxDu1"/>
+      </element>
+    </answer>
+  </q>
+   <q id="prefl8">
+    <qtype>P-REFL</qtype>
+    <question>
+      <text>Geainna SUBJ gullui VERB</text>
+      <element id="SUBJ">
+		<sem class="mFAMILY"/>
+		<grammar tag="N+Sg+Nom"/>
+      </element>
+ 		<element id="VERB">
+		<id>háleštit</id>
+		<grammar tag="V+Actio+Ess"/>
+	  </element>
+    </question>
+    <answer> 
+      <text>Son gullui VERB P-REFL</text>
+      <element game='morfa' id="P-REFL" task="yes">
+	<grammar tag="Pron+Refl+Com+PxSg3"/>
+      </element>
+    </answer>
+  </q>
+    <q id="prefl9">
+    <qtype>P-REFL</qtype>
+    <question>
+      <text>Geainna don ledjet VERB</text>
+ 		<element id="VERB">
+		<id>háleštit</id>
+		<grammar tag="V+Actio+Ess"/>
+	  </element>
+    </question>
+    <answer> 
+      <text>Mun ledjen VERB P-REFL</text>
+      <element game='morfa' id="P-REFL" task="yes">
+	<grammar tag="Pron+Refl+Com+PxSg1"/>
+      </element>
+    </answer>
+  </q>
+<q id="prec1">
     <qtype>P-RECIPR</qtype>
     <question>
       <text>Geaidda SUBJ MAINV OBJ</text>
