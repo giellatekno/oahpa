@@ -19,6 +19,10 @@ class QAGame(Game):
 
 	test = 0
 	
+	def __init__(self, *args, **kwargs):
+		super(QAGame, self).__init__(*args, **kwargs)
+		self.init_tags()
+	
 	def init_tags(self):
 		"""
 		Initialize the grammatical information.

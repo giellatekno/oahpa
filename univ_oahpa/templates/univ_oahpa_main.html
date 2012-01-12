@@ -201,6 +201,14 @@
 		
 		<div id="footer">
 			<div id="copyright">
+			{% block deeplink %}
+			{% if deeplink %}
+			<div id="deeplink">
+				<a href="{{ deeplink }}">{% trans 'Link to this exercise' %}</a>
+			</div>
+			{% endif %}
+			{% endblock %}
+
 			  <p>
 				  {% trans "Copyright 2011 Universitetet i Troms&oslash; " %}<br />
 			{% trans "Contact" %} oahpa@hum.uit.no</p>

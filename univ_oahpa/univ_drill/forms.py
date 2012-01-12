@@ -57,7 +57,6 @@ CASE_CHOICES = (
 # Pers - akk, gen, ill, lok, kom
 # Dem - akk, gen, ill, lok, kom
 CASE_CHOICES_PRONOUN = (
-	# TODO: N-ACC should probably be P-ACC, and so on for consistency
 	('N-ACC', _('accusative')),
 	('N-ILL', _('illative')),
 	('N-LOC', _('locative')),
@@ -97,15 +96,10 @@ CASE_CONTEXT_CHOICES = (
 # 
 PRON_CONTEXT_CHOICES = (
 	#('P-NOM', _('nominative')), Morfa C pronomen nominativ skal fjernes fra menyen dersom oppgavene har ingen hensikt.
-	('P-ACC', _('accusative')),
-	('P-GEN', _('genitive')),
-	('P-ILL', _('illative')),
-	('P-LOC', _('locative')),
-	('P-COM', _('comitative')),
+    ('P-PERS', _('personal')),
     ('P-DEM', _('demonstrative')),
     ('P-RECIPR', _('reciprocative')),
     ('P-REFL', _('reflexive')),
-	('P-MIX', _('mix')),
 )
 
 ADJCASE_CHOICES = (
@@ -807,7 +801,7 @@ class OahpaSettings(forms.Form):
 				     'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
 				     'case_context' : 'N-ILL',
 				     'vtype_context' : 'V-PRS',
-				     'pron_context' : 'P-ILL',
+				     'pron_context' : 'P-PERS',
 				     'num_context' : 'NUM-ATTR',
 				     'num_level' : '1',
 				     'geography': 'world',
@@ -932,7 +926,7 @@ class LeksaSettings(OahpaSettings):
 			}
 
 	
-	# TODO: set default language pair from session language setting.
+	# set default language pair from session language setting.
 	def __init__(self, *args, **kwargs):
 		if 'initial_transtype' in kwargs:
 			initial_transtype = kwargs.pop('initial_transtype')
@@ -944,6 +938,7 @@ class LeksaSettings(OahpaSettings):
 
 		if initial_transtype:
 			self.fields['transtype'].initial = initial_transtype
+			self.default_data['transtype'] = initial_transtype
 	
 
 class LeksaQuestion(OahpaQuestion):
@@ -1043,7 +1038,7 @@ class MorfaSettings(OahpaSettings):
 	case_context = forms.ChoiceField(initial='N-ILL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
-	pron_context = forms.ChoiceField(initial='P-ILL', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
+	pron_context = forms.ChoiceField(initial='P-PERS', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
 	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select) 
 	bisyllabic = forms.BooleanField(required=False, initial='1')
 	trisyllabic = forms.BooleanField(required=False, initial=0)
@@ -1179,10 +1174,11 @@ class NumSettings(OahpaSettings):
 	maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
 	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
 	numlanguage = forms.ChoiceField(initial='sme', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
+	# TODO: remove mandatory need to set default data, should be done through 'initial' field setting.
 	default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'string'}
 					
 	def __init__(self, *args, **kwargs):
-		self.set_settings
+		self.set_settings()
 		super(NumSettings, self).__init__(*args, **kwargs)
 
 

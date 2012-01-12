@@ -106,7 +106,7 @@ def relax(strict):
 class Info:
 	pass
 
-class Game:
+class Game(object):
 	def __init__(self, settings):
 		self.query_set = False
 		self.lemmas_selected = []
