@@ -216,7 +216,7 @@
 	<q id="pill1">
 		<qtype>P-PERS</qtype>
 		<question>
-			<text>Geasa SUBJ čálii OBJ</text>
+			<text>Geasa SUBJ MAINV OBJ</text>
 			<element id="SUBJ">
 				<sem class="mPERSNAME"/>
 				<grammar tag="N+Prop+Sg+Nom" />
@@ -225,9 +225,13 @@
 				<sem class="mPRINTEDMATTER"/>
 				<grammar tag="N+Sg+Acc"/>
 			</element>
+      		<element id="MAINV">
+			<grammar tag="V+Ind+Prt+Sg3"/>
+				<sem class="mPRINTEDMATTER_V"/>
+      		</element>
 		</question>
 		<answer>
-			<text>SUBJ čálii dan P-ILL</text>
+			<text>SUBJ MAINV dan P-ILL</text>
 			<element game="morfa" id="P-ILL" task="yes">
 				<grammar tag="Pron+Pers+1p-2p+Ill"/>
 			</element>
@@ -236,7 +240,7 @@
 	<q id="pill2">
 		<qtype>P-PERS</qtype>
 		<question>
-			<text>Geasa SUBJ čálii OBJ</text>
+			<text>Geasa SUBJ MAINV OBJ</text>
 			<element id="OBJ">
 				<sem class="mPRINTEDMATTER"/>
 				<grammar tag="N+Sg+Acc"/>
@@ -245,9 +249,13 @@
 				<sem class="mPERSNAME"/>
 				<grammar tag="N+Prop+Sg+Nom" />
 			</element>
+      		<element id="MAINV">
+			<grammar tag="V+Ind+Prt+Sg3"/>
+				<sem class="mPRINTEDMATTER_V"/>
+      		</element>
 		</question>
 		<answer>
-			<text>SUBJ čálii dan P-ILL</text>
+			<text>SUBJ MAINV dan P-ILL</text>
 			<element game="morfa" id="P-ILL" task="yes">
 				<grammar tag="Pron+Pers+1p-2p+Ill"/>
 			</element>
