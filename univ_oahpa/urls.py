@@ -17,7 +17,7 @@ admin_url = r'^%s/admin/' % prefix
 urlpatterns = patterns('',
 	# Example:
 	# (r'^univ_oahpa/', include('univ_oahpa.foo.urls')),
-	url(r'^%s/$' % prefix, 'univ_oahpa.univ_drill.views.univ_oahpa'),
+	url(r'^%s/$' % prefix, 'univ_oahpa.univ_drill.views.index'),
 	url(r'^%s/i18n/' % prefix, include('django.conf.urls.i18n')),
 	url(r'^%s/media/(?P<path>.*)$' % prefix, 'django.views.static.serve',
 		      	{'document_root': settings.MEDIA_ROOT}),
