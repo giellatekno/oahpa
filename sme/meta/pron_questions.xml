@@ -19,7 +19,7 @@
 				<grammar tag="Pron+Pers+1p-2p+Nom"/>
 			<agreement id="SUBJ"/>
 			</element>
-			<element id="MAINV">
+			<element id="MAINV" content="MAINV">
 				<grammar tag="V+Ind+Prs+Person-Number"/>
 			</element>
 		</answer>
@@ -39,7 +39,7 @@
 				<grammar pos="Pron" type="Pers"/>
 				<grammar tag="Pron+Pers+1p-2p+Nom"/>
 			</element>
-			<element id="MAINV">
+			<element id="MAINV" content="MAINV">
 				<grammar tag="V+Ind+Prs+Person-Number"/>
 			</element>
 		</answer>
@@ -106,6 +106,36 @@
 			</element>
 			<element id="MAINV" content="AUX">
 				<grammar tag="V+Ind+Prs+Person-Number"/>
+			</element>
+		</answer>
+	</q>
+	<q id="pnom6">
+		<qtype>P-PERS</qtype>
+		<question>
+			<text>MAINV go mánát</text>
+			<element id="MAINV">
+				<sem class="mPLAY_V"/>
+				<grammar tag="V+Ind+Prs+Pl3"/>
+			</element>
+		</question>
+		<answer>
+			<text>Juo, SUBJ geain leat ITEM MAINV</text>
+			<element game="morfa" id="SUBJ" task="yes">
+				<grammar tag="Pron+Pers+Pl3+Nom"/>
+			<element id="ITEM">
+				<sem class="TOY"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+			</element>
+		</answer>
+		<answer>
+			<text>Juo, sii HAB leat ITEM MAINV</text>
+			<element game="morfa" id="HAB" task="yes">
+				<grammar tag="Pron+Rel+Pl3+Loc"/>
+			<element id="ITEM">
+				<sem class="TOY"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
 			</element>
 		</answer>
 	</q>
@@ -325,7 +355,7 @@
 			<text>Geainna SUBJ lea VERB</text>
 			<element id="SUBJ">
 				<sem class="mPERSNAME"/>
-				<grammar pos="N" type="Prop"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
 			</element>
 			<element id="VERB">
 				<grammar tag="V+PrfPrc"/> 
@@ -909,6 +939,46 @@
       <element game='morfa' id="P-REC" task="yes">
 	<grammar tag="Pron+Recipr+Sg+Loc+PxDu1"/>
       </element>
+    </answer>
+  </q>
+  <q id="prec18">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Dál juo fárreba oktii</text>
+    </question>
+    <answer> 
+      <text>oai mannan TIME juo VERB goabbat P-REC</text>  
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Sg+Loc+PxDu3"/>
+      </element>
+ 		<element id="VERB">
+		<sem class="mLIKE_ILL"/>
+		<grammar tag="V+Ind+Prt+Du3"/>
+	  </element>
+ 		<element id="TIME">
+		<sem class="TIME_SEASON"/>
+		<grammar tag="N+Sg+Gen"/>
+	  </element>
+    </answer>
+  </q>
+  <q id="prec19">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Dál juo fárrebeahtti oktii</text>
+    </question>
+    <answer> 
+      <text>Moai mannan TIME juo VERB goabbat P-REC</text>  
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Sg+Loc+PxDu1"/>
+      </element>
+ 		<element id="VERB">
+		<sem class="mLIKE_ILL"/>
+		<grammar tag="V+Ind+Prt+Du1"/>
+	  </element>
+ 		<element id="TIME">
+		<sem class="TIME_SEASON"/>
+		<grammar tag="N+Sg+Gen"/>
+	  </element>
     </answer>
   </q>
 	</questions>
