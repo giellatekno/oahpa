@@ -87,7 +87,7 @@ Kursansvarlig skal ha tilgang til sine studenters bevegelser og resultater. Skal
 * cookie / ny ekstern auth metode
 
 !! Brukerregistrering og egne startsider til brukere:
-Vi ønsker at alle skal kunne registrere seg som brukere og få rollen som ''subscriber''. Deretter skal brukerne navigeres (redirect) til en egen startside, f.eks lærerens side. Alle kurslærere får sin egen side, der de kan legge ut informasjon. Vi ønsker at deres studenter navigeres til denne siden etter log-in, og at de jobber med læringsstiene derifra. De som ikke følger et kurs, skal navigeres til en default startside.
+Vi ønsker at alle skal kunne registrere seg som brukere og få rollen som ''subscriber''. Registrering skal skje på Oahpa. Site skal kjenne igjen brukere fra Oahpa. Deretter skal brukerne navigeres (redirect) til en egen startside, f.eks lærerens side. Alle kurslærere får sin egen side, der de kan legge ut informasjon. Vi ønsker at deres studenter navigeres til denne siden etter log-in, og at de jobber med læringsstiene derifra. Vi ønsker at denne siden skal fungere som ''home''. De som ikke følger et kurs, skal navigeres til en default startside.
 
 Mulige plug-ins:
 # Registrering: http://wordpress.org/extend/plugins/profile-builder/, kompatibel opp til 3.3
@@ -96,6 +96,8 @@ Mulige plug-ins:
 # WP-polls: allerede installert i site
 # Forskjellig landings-side for forskjellige grupper: http://wordpress.org/extend/plugins/role-scoper/, kompatibel opp til 3.3
 # Oppdaterings-epost til brukere: http://wordpress.org/extend/plugins/subscribe2/, kompatibel opp til 3.3
+# Undervisnings-plugin: http://wordpress.org/extend/plugins/buddypress-courseware/, kompatibel opp til 3.3
+# Gjenkjenning av brukere: http://wordpress.org/extend/plugins/openid/, kompatibel opp til 2.8.5
 
 Med ''Role scoper'' definerer man egne roller, uten å rasere WP-rollene, og kan gi ulike brukerrettigheter til ulike brukergrupper. Det ser ut til at man kan gi en egen ''landing-page'' for brukergrupper også, hvis jeg har forstått denne samtalen riktig: http://wordpress.org/support/topic/diffierent-landinghome-page-per-user-group
 
@@ -115,7 +117,9 @@ Profile-builder gir et standard registreringsskjema, der man kan velge hvilke (a
 
 Peters-log-in-redirect fører brukerne til en bestemt URL etter innlogging. Man kan velge ut enkeltbrukere eller roller. Denne landingssiden blir dessverre ikke en ''home'' for brukerne. Når de er inne i læringsstien så vil de dermed ikke føres tilbake til lærerens side når de trykker på home øverst i margen. 
 
-Poll-plugin gir oss en mulighet å legge til spørsmål i margen, som en ''widget''. Hvert spørsmål utgjør en poll, og hver poll kan ha flere svar. Det er ikke mulig å ha flere spørsmål i samme poll.  
+Poll-plugin gir oss en mulighet å legge til spørsmål i margen, som en ''widget''. Hvert spørsmål utgjør en poll, og hver poll kan ha flere svar. Det er ikke mulig å ha flere spørsmål i samme poll. 
+
+Buddypress-courseware gjør det mulig med ut- og innlevering av oppgaver, med innleveringsfrister, og responsmulighet for lærer, slik som Fronter. Den gir mulighet til å gruppere brukere, slik at man innad i en gruppe kan ha kommunikasjon, som ikke berører andre brukere. Den gir mulighet til å lage quizer og tester med automatisk retting. Den gir også mulighet å sende oppdaterings-epost til brukere eller brukergrupper. 
 
 !Dagens løsning
 
