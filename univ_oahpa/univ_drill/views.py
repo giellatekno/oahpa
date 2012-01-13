@@ -124,6 +124,13 @@ class Gameview(object):
 
 		pass
 	
+	def set_gamename(self):
+		""" Sets the courses log name subtype for the game.
+		"""
+
+		if 'gamename_key' not in self.settings:
+			self.settings['gamename_key'] = self.settings['gametype']
+
 	def getSettingsForm(self, request, initial_kwargs=False):
 		""" Set self.settings and return settings_form (a SettingsForm
 		instance) and is_new_game, a boolean value that is True if a user has
@@ -240,6 +247,8 @@ class Gameview(object):
 			if "show_correct" in settings_form.data:
 				game.show_correct = 1
 
+		self.set_gamename()
+
 		return self.context(request, game, settings_form)
 
 
@@ -252,9 +261,19 @@ class Leksaview(Gameview):
 
 		# settings_form.default_data['transtype'] = default_langpair
 
+	def set_gamename(self):
+		transtype = self.settings['transtype']
+		semtype = self.settings['semtype']
+
+		if type(semtype) == list:
+			semtype = ', '.join(semtype)
+
+		self.settings['gamename_key'] = "%s - %s" % (semtype, transtype)
+		
 	def context(self, request, game, settings_form):
 		return Context({
 			'settingsform': settings_form,
+			'settings' : self.settings,
 			'forms': game.form_list,
 			'count': game.count,
 			'score': game.score,
@@ -292,9 +311,15 @@ class LeksaPlaceview(Gameview):
 	def deeplink_keys(self, game, settings_form):
 		return ['semtype', 'geography', 'common', 'rare', 'transtype', 'source']
 	
+	def set_gamename(self):
+		geog = self.settings['geography']
+		freq = ', '.join(self.settings['frequency'])
+		self.settings['gamename_key'] = "Place - %s - %s" % (geog, freq)
+
 	def context(self, request, game, settings_form):
 		return Context({
 			'settingsform': settings_form,
+			'settings' : self.settings,
 			'forms': game.form_list,
 			'count': game.count,
 			'score': game.score,
@@ -335,6 +360,9 @@ def leksa_game(request, place=False):
 
 class Numview(Gameview):
 	
+	def set_gamename(self):
+		self.settings['gamename_key'] = ''
+	
 	def deeplink_keys(self, game, settings_form):
 		keys = ['numgame', 'maxnum']
 
@@ -347,6 +375,7 @@ class Numview(Gameview):
 
 		return Context({
 			'settingsform': settings_form,
+			'settings' : self.settings,
 			'forms': game.form_list,
 			'count': game.count,
 			'score': game.score,
@@ -535,6 +564,8 @@ class Morfaview(Gameview):
 		self.settings['allcase'] = settings_form.allcase
 		self.syll_settings(settings_form)
 
+	def set_gamename(self):
+		subname = False
 		# Create a gamename which will be used in log entries.
 		if self.settings['pos'] == "N":
 			if self.settings['gametype'] == "bare":
@@ -544,11 +575,13 @@ class Morfaview(Gameview):
 		if self.settings['pos'] == "Pron":
 			if self.settings['gametype'] == "bare":
 				gamename_key = self.settings['proncase']
+				subname = self.settings['pron_type'] # dem, recipr, etc.
 			else:
 				gamename_key = self.settings['pron_context']
 		if self.settings['pos'] == "Num":
 			if self.settings['gametype'] == "bare":
 				gamename_key = self.settings['num_bare']
+				subname = 'level %s' % str(self.settings['num_level'])
 			else:
 				gamename_key = self.settings['num_context']
 		if self.settings['pos'] == "V":
@@ -559,10 +592,17 @@ class Morfaview(Gameview):
 		if self.settings['pos'] == "A":
 			if self.settings['gametype'] == "bare":
 				gamename_key = self.settings['adjcase']
+				subname = self.settings['grade']
 			else:
 				gamename_key = self.settings['adj_context']
 
 		self.settings['gamename'] = self.gamenames[gamename_key]
+		names = [self.settings['pos'], gamename_key]
+
+		if subname:
+			names.append(subname)
+
+		self.settings['gamename_key'] = ' - '.join(names) 
 
 
 # @timeit
