@@ -1040,9 +1040,9 @@ class MorfaSettings(OahpaSettings):
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-PERS', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
 	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select) 
-	bisyllabic = forms.BooleanField(required=False, initial='1')
-	trisyllabic = forms.BooleanField(required=False, initial=0)
-	contracted = forms.BooleanField(required=False, initial=0)
+	bisyllabic = forms.BooleanField(required=False, initial=True)
+	trisyllabic = forms.BooleanField(required=False, initial=False)
+	contracted = forms.BooleanField(required=False, initial=False)
 	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select) 
 	
 	def __init__(self, *args, **kwargs):
