@@ -571,29 +571,39 @@ class Morfaview(Gameview):
 	def set_gamename(self):
 		subname = False
 		# Create a gamename which will be used in log entries.
+
+		# N-ILL
 		if self.settings['pos'] == "N":
 			if self.settings['gametype'] == "bare":
 				gamename_key = self.settings['case']
 			else:
 				gamename_key = self.settings['case_context']
+
+		# N-ILL, etc.
 		if self.settings['pos'] == "Pron":
 			if self.settings['gametype'] == "bare":
 				gamename_key = self.settings['proncase']
 				subname = self.settings['pron_type'] # dem, recipr, etc.
 			else:
 				gamename_key = self.settings['pron_context']
+
+		# N-LOC - level 1/2
 		if self.settings['pos'] == "Num":
 			if self.settings['gametype'] == "bare":
 				gamename_key = self.settings['num_bare']
 				subname = 'level %s' % str(self.settings['num_level'])
 			else:
 				gamename_key = self.settings['num_context']
+
+		# PRS
 		if self.settings['pos'] == "V":
 			if self.settings['gametype'] == "bare":
 				gamename_key = self.settings['vtype']
 
 			else:
 				gamename_key = self.settings['vtype_context']
+
+		# ATTR - COMP
 		if self.settings['pos'] == "A":
 			if self.settings['gametype'] == "bare":
 				gamename_key = self.settings['adjcase']
@@ -604,18 +614,21 @@ class Morfaview(Gameview):
 		self.settings['gamename'] = self.gamenames[gamename_key]
 		names = [self.settings['pos'], gamename_key]
 
+		if subname:
+			names.append(subname)
+
+		# 2syll/3syll/Csyll
 		if 'syll' in self.settings:
 			sylls = '/'.join(self.settings['syll'])
 		else:
 			sylls = ''
 
-		if subname:
-			names.append(subname)
-
+		# Append syllable types if set
 		if sylls and self.settings['pos'] not in ["Pron", "Num"]:
 			names.append(sylls)
 
 		self.settings['gamename_key'] = ' - '.join(names) 
+		
 
 
 # @timeit
