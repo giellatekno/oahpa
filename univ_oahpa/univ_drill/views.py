@@ -501,11 +501,15 @@ class Morfaview(Gameview):
 
 		self.settings['syll'] = []
 
-		if 'bisyllabic' in settings_form.data:
+		bisyl = settings_form.data.get('bisyllabic', False)
+		trisyl = settings_form.data.get('trisyllabic', False)
+		cont = settings_form.data.get('contracted', False)
+
+		if bisyl:
 			self.settings['syll'].append('2syll')
-		if 'trisyllabic' in settings_form.data:
+		if trisyl:
 			self.settings['syll'].append('3syll')
-		if 'contracted' in settings_form.data:
+		if cont:
 			self.settings['syll'].append('Csyll')
 		if len(self.settings['syll']) == 0:
 			self.settings['syll'].append('2syll')
@@ -523,7 +527,7 @@ class Morfaview(Gameview):
 				return ['case' 'bisyllabic', 'trisyllabic', 'contracted',
 						'book',]
 			if self.settings['pos'] == 'V':
-				return ['vtype' 'bisyllabic', 'trisyllabic', 'contracted',
+				return ['vtype', 'bisyllabic', 'trisyllabic', 'contracted',
 						'book',]
 			if self.settings['pos'] == 'A':
 				return ['adjcase', 'grade', 'bisyllabic', 'trisyllabic',
@@ -587,6 +591,7 @@ class Morfaview(Gameview):
 		if self.settings['pos'] == "V":
 			if self.settings['gametype'] == "bare":
 				gamename_key = self.settings['vtype']
+
 			else:
 				gamename_key = self.settings['vtype_context']
 		if self.settings['pos'] == "A":
@@ -599,8 +604,16 @@ class Morfaview(Gameview):
 		self.settings['gamename'] = self.gamenames[gamename_key]
 		names = [self.settings['pos'], gamename_key]
 
+		if 'syll' in self.settings:
+			sylls = '/'.join(self.settings['syll'])
+		else:
+			sylls = ''
+
 		if subname:
 			names.append(subname)
+
+		if sylls and self.settings['pos'] not in ["Pron", "Num"]:
+			names.append(sylls)
 
 		self.settings['gamename_key'] = ' - '.join(names) 
 
