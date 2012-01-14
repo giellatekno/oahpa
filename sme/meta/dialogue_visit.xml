@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dialogue PUBLIC "-//UIT//DTD Corpus V1.0//EN" "dialogues.dtd">
+
+<!-- topics_cafe.xml: Test dialogue in cafe                        -->
+<!-- Specifies the structure for a dialogue                        -->
+<!-- The exact format of the questions is not given here, neither  -->
+<!-- feedback or anything other that does no immediately belong to -->
+<!-- the main discussion.                                          --> 
+<!-- This file is potentially language-independent (it would require -->
+<!-- moving uttances etc. also to links.)                          -->
+<!-- The topics follow each other in the order given here.         -->
+<!-- Topic changes when there are no further links to questions.   -->
+<!-- $Id: dialogue_visit.xml 32365 2010-06-07 20:03:52Z lene $ -->
+
+<dialogue name="visit">
+  
+  <topic name="Buorre_beaivi" image="visit001.jpg">
+    <utt type="opening" name="buorre_beaivi">
+      <text>Buorre beaivi! Bures boahtin mu geahčái!</text>
+    </utt>
+  </topic>  
+  
+  <topic name="viessogalvvut">
+	  <utt type="question" name="gillet_go_veahkehit">
+	<word class="ROOMS"/>
+      <text>Mun lean aiddo fárren sisa iežan ođđa orrunsadjái. Mus leat lossa viessogálvvut dáppe feaskáris. Gillešit go veahkehit mu?</text>
+     <alt target="default" link="gos_dus_lea_TV"/>
+      <alt target="neg" link="gos_dus_lea_TV">
+      <text>Gal mun oaččun eará veahki losimus diŋggaide, muhto gal don fertet veaháš veahkehit.</text>
+      </alt>
+      </utt>
+
+    <utt type="question" name="gos_dus_lea_TV">
+      <text>Mus lea TV dás. Guđe lanjas TV lea du orrunsajis?</text>
+      <alt target="default" link="gosa_bidjat_TV">
+      </alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_TV">
+      <text>Guđe latnjii moai bidje mu TV?</text>
+      <alt target="hivsset" link="gosa_bidjat_TV">
+      <text>Dat gal ii heive! Geahččal ođđasit.</text>
+            </alt>
+      <alt target="basadanlatnja" link="gosa_bidjat_TV">
+      <text>Doppe lea njuoska áibmu, mii sáhttá bilidit mu TV. Geahččal ođđasit.</text>
+            </alt>
+      <alt target="default" link="gosa_bidjat_beavddi">
+	<text>Moai gudde dan ovttas dohko.</text>       
+	</alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_beavddi">
+      <text>Gosa moai bidje boradanbeavddi?</text>
+      <alt target="hivsset" link="gosa_bidjat_beavddi">
+      <text>Ii heive dohko mu mielas! Geahččal ođđasit.</text>
+    </alt>
+      <alt target="default" link="gosa_bidjat_gamahildu">
+     </alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_gamahildu">
+      <text>Naba gosa moai bidje gámahildu?</text>
+      <alt target="hivsset" link="gosa_bidjat_gamahildu">
+      <text>In leat ovtta oaivilis! Geahččal ođđasit.</text>
+            </alt>
+      <alt target="default" link="gosa_bidjat_lahttelamppa">
+      <text>Dat lea geahpas. Mun sáhtán ieš doalvut dan dohko.</text>
+      </alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_lahttelamppa">
+      <text>Guđe latnjii moai bidje láhttelámppá?</text>
+      <alt target="hivsset" link="gosa_bidjat_lahttelamppa">
+      <text>Doppe in dárbbaš láhttelámppá! Geahččal ođđasit.</text>
+            </alt>
+      <alt target="default" link="gosa_bidjat_lohkanlamppa">
+      <text>Dat gal heive!</text>
+      </alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_lohkanlamppa">
+      <text>Guđe latnjii moai bidje lohkanlámppá?</text>
+      <alt target="hivsset" link="gosa_bidjat_lohkanlamppa">
+      <text>Ii leat buorre evttohus! Geahččal ođđasit.</text>
+    </alt>
+      <alt target="default" link="gos_dus_lea_soffa">
+      <text>Buorre evttohus!</text>
+    </alt>
+    </utt>
+
+
+    <utt type="question" name="gos_dus_lea_soffa">
+      <text>Guđe lanjas soffá lea du orrunsajis?</text>
+      <alt target="default" link="gosa_bidjat_soffa">
+      </alt>
+    </utt>
+
+
+    <utt type="question" name="gosa_bidjat_soffa">
+      <text>Guđe latnjii moai bidje mu soffá?</text>
+      <alt target="hivsset" link="gosa_bidjat_soffa">
+      <text>Ii dat gal čága dohko! Geahččal ođđasit.</text>
+      </alt>
+      <alt target="default" link="gosa_bidjat_lahtteranu">
+      <text>Mu soffá lea oalle lossat!</text>
+      </alt>
+    </utt>
+
+
+    <utt type="question" name="gosa_bidjat_lahtteranu">
+      <text>Naba gosa moai bidje láhtteránu?</text>
+      <alt target="default" link="gosa_bidjat_speadjala">
+      <text>Gal mun birgen okto dainna!</text>
+      </alt>
+    </utt>
+
+    <utt type="question" name="gosa_bidjat_speadjala">
+      <text>Guđe latnjii moai bidje mu stuora speadjala?</text>
+      <alt target="hivsset" link="gosa_bidjat_speadjala">
+      <text>Ii leat buorre evttohus! Geahččal ođđasit.</text>
+    </alt>
+      <alt target="default" link="viessogalvvut_closing">
+      </alt>
+    </utt>
+
+
+    <utt type="closing" name="viessogalvvut_closing">
+      <text>Dál heive gáfestallat.</text>
+    </utt>
+  </topic>  
+
+
+  <topic name="cohkkat">
+    <utt type="question" name="cohkkajetne_go_stobus">
+      <text>Čohkkájetne go stobus?</text>
+      <alt target="neg" link="Manne_go_gievkkanii"/>
+      <alt target="default">
+	<text>Na moai čohkkájetne dás.</text>
+      </alt>
+    </utt>
+  
+    <utt type="question" name="Manne_go_gievkkanii">
+      <text>Gievkkanis lea vuogas čohkkát. Lássaráiggis oaidná meara. Manne go gievkkanii?</text>
+      <alt target="pos">
+	<text>Gievkkanis lea buorre.</text>
+      </alt>
+      <alt target="default">
+	<text>Na moai čohkkájetne dás.</text>
+      </alt>
+    </utt>
+
+    <utt type="closing" name="cohkkat_closing">
+      <text>Mun lean okto ruovttus odne.</text>
+      </utt>            
+  </topic>
+
+  <topic name="juhkat">    
+    <utt type="question" name="Haliidat_go_gafe_vai_deaja">
+      <text>Háliidat go gáfe vai deaja?</text>
+      <alt target="gáffe" link="Geavahat_go_mielkki"/>
+      <alt target="deadja" link="Háliidat_go_honnega"/>
+      <alt target="neg" link="Háliidat_go_juoida_eará"/>
+      <alt target="default"><text>Mus ii leat.</text>
+      </alt>
+    </utt>  
+    
+    <utt type="question" name="Háliidat_go_juoida_eará">
+      <text>Háliidat go juoidá eará?</text>
+      <alt target="pos" link="Maid_juhkat"/>
+      <alt target="default" link="juhkat_closing"/>
+    </utt>
+    
+    <utt type="question" name="Háliidat_go_honnega">
+      <text>Háliidat go honnega?</text>
+      <alt target="neg" link="Geavahat_go_sohkkara"/>
+      <alt target="default" link="Geavahat_go_mielkki"/>
+    </utt>
+    
+    <utt type="question" name="Geavahat_go_sohkkara">
+      <text>Geavahat go sohkkara?</text>
+      <alt target="default" link="Geavahat_go_mielkki"/>   
+    </utt>
+    
+    <utt type="question" name="Geavahat_go_mielkki">
+      <text>Geavahat go mielkki?</text>
+      <alt target="default">
+	<text>Dá lea dutnje. Leage buorre.</text>
+      </alt>
+    </utt>
+    
+    <utt type="question" name="Maid_juhkat">
+	<word class="DRINK"/>
+      <text>Dás oainnát makkár juhkamušat mus leat. Maid don háliidat juhkat?</text>
+      <alt variable="DRINK" >
+	<text>Mun buvttán dutnje DRINK</text>
+	<element id="DRINK">
+	  <grammar tag="N+Sg+Acc"/>
+	</element> 
+      </alt>
+      <alt target="default" link="juhkat_closing"/>
+    </utt>  
+    
+    <utt type="closing" name="juhkat_closing">
+      <text>Galggašii leat juoga borrat maid...</text>
+    </utt>
+  </topic>
+  
+  <topic name="gáhkku">
+    <utt type="opening" name="Mus_lea_lákcagáhkku">
+      <text>Mus lea lákcagáhkku mii bázii mu riegádanbeaifeasttas.</text>
+    </utt>
+    <utt type="question" name="Háliidat_go_gáhku">
+      <text>Háliidat go gáhku?</text>
+      <alt target="pos"><text>Mun buvttán gáhku!</text></alt>
+      <alt target="default"><text>In sáhte fállat eará odne.</text></alt>
+    </utt>
+    
+    <utt type="closing" name="gáhkku_closing">
+      <text>Suohtas duinna humadit.</text>
+    </utt>
+    
+    
+  </topic>
+  
+  <topic name="Giitu_fitnamis">
+    <utt type="closing" name="dialogue_closing">
+      <text>Giitu fitnamis!</text>
+    </utt>
+  </topic>
+
+
+</dialogue>

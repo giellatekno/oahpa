@@ -1,0 +1,1726 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
+-->
+
+<questions game="qa">
+  <q level="1" id="maid_odne_pron">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid SUBJ MAINV odne</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<id>bargat</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </question>
+  </q> 
+
+  <q level="1" id="maid_odne">
+    <qtype>PRS</qtype>
+    <question>
+     <text>Maid SUBJ MAINV odne</text>
+      <element id="SUBJ">
+	<sem class="PAIR"/>
+	<grammar pos="N"/>
+      </element>
+      <element id="MAINV">
+	<id>bargat</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </question>
+  </q>
+
+
+  <q level="1" id="maid_guovttos_odne">
+    <qtype>PRS</qtype>
+    <question>
+      <text>Maid SUBJ - guovttos bargaba odne</text>
+      <element id="SUBJ">
+	<sem class="PAIR"/>
+	<grammar tag="N+Sg+Gen"/>
+      </element>
+    </question>
+  </q>
+
+
+    <q level="2" id="maid_ikte_pron">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Maid SUBJ MAINV ikte</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<id>bargat</id> 
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element>
+    </question>
+  </q> 
+
+  <q level="2" id="maid_ikte">
+    <qtype>PRT</qtype>
+    <question>
+      <text>Maid SUBJ MAINV ikte</text>
+      <element id="SUBJ">
+	<sem class="PAIR"/>
+	<grammar pos="N"/>
+      </element>
+      <element  id="MAINV">
+	<id>bargat</id> 
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="maid_guovttos_ikte">
+    <qtype>PRT</qtype>
+    <question>
+      <text>Maid SUBJ - guovttos barggaiga ikte</text>
+      <element id="SUBJ">
+	<sem class="PAIR"/>
+	<grammar tag="N+Sg+Gen"/>
+      </element>
+    </question>
+  </q>
+
+<!--- ==========  conditional =========   -->
+
+  <q level="3" id="maid_luomus_pron">
+    <qtype>V-COND</qtype>
+    <question>
+      <text>Maid SUBJ MAINV luomus</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<id>bargat</id> 
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+      </element>
+    </question>
+  </q>
+
+  <q level="3" id="maid_luomus">
+    <qtype>V-COND</qtype>
+    <question>
+      <text>Maid SUBJ MAINV luomus</text>
+      <element id="SUBJ">
+	<sem class="PROFESSION"/>
+	<grammar tag="N+Number+Nom"/>
+      </element>
+      <element  id="MAINV">
+	<id>bargat</id> 
+	<grammar tag="V+Cond+Prs+Person-Number"/>
+      </element>
+    </question>
+  </q>
+
+
+  <q level="3" id="maid_guovttos_luomus">
+    <qtype>V-COND</qtype>
+    <question>
+      <text>Maid SUBJ - guovttos barggašeigga luomus</text>
+      <element id="SUBJ">
+	<sem class="PAIR"/>
+	<grammar tag="N+Sg+Gen"/>
+      </element>
+    </question>
+  </q>
+-->
+
+
+
+<!--- ==========  go-questions =========   -->
+
+
+  <q level="2" id="go_ikte_pron">
+    <qtype>PRT</qtype>
+    <question>
+      <text>MAINV go SUBJ ikte</text>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<sem class="ACTIVITY"/>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+    </question>
+  </q>
+
+
+  <q level="2" id="go_ikte">
+    <qtype>PRT</qtype>
+    <question>
+      <text>MAINV go SUBJ ikte</text>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<sem class="ACTIVITY"/>
+      </element>
+      <element id="SUBJ">
+	<sem class="PAIR"/>
+	<grammar pos="N"/>
+      </element>
+    </question>
+  </q>
+
+  <q level="1" id="go_odne">
+    <qtype>PRS</qtype>
+    <question>
+      <text>MAINV go SUBJ odne</text>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<sem class="ACTIVITY"/>
+      </element>
+      <element id="SUBJ">
+	<sem class="PAIR"/>
+	<grammar pos="N"/>
+      </element>
+    </question>
+  </q>
+
+<q level="3" id="go_luomus">
+  <qtype>V-COND</qtype>
+  <question>
+    <text>MAINV go SUBJ luomus</text>
+    <element id="MAINV">
+      <grammar tag="V+Cond+Prs+Person-Number"/>
+      <sem class="ACTIVITY"/>
+    </element>
+    <element id="SUBJ">
+      <sem class="PROFESSION"/>
+      <grammar pos="N"/>
+    </element>
+  </question>
+  </q>
+
+
+  <q level="1" id="masa_prs">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Prs+Person-Number"/>
+	  <id>liikot</id>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="masa_prt">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Prt+Person-Number"/>
+	  <id>liikot</id>
+      </element>
+    </question>
+  </q>
+
+
+  <q level="1" id="interr_pron_prs">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV OBJ</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Ill"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>addit</id>
+      </element>
+      <element id="OBJ">
+	<sem class="KITCHEN"/>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="interr_pron_prt">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV OBJ</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Ill"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>addit</id>
+      </element>
+      <element id="OBJ">
+	<sem class="KITCHEN"/>
+      </element>
+    </question>
+  </q>
+
+  <q level="1" id="gosa_prs">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Gosa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>mannat</id>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="gosa_prt">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Gosa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>mannat</id>
+      </element>
+    </question>
+  </q>
+  
+  <q level="1" id="gosa_coavdagiid_prs">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Gosa SUBJ MAINV čoavdagiid</text>
+      <element id="SUBJ">
+	<grammar pos="N"/>
+	<sem class="PAIR"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>bidjat</id>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="gosa_coavdagiid_prt">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Gosa SUBJ MAINV čoavdagiid</text>
+      <element id="SUBJ">
+	<grammar pos="N"/>
+	<sem class="PAIR"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>bidjat</id>
+      </element>
+    </question>
+  </q>
+
+ 
+  <q level="1" id="interr_suhttat_prs">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Ill"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="FAMILY"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Prs+Person-Number"/>
+	  <id>suhttat</id>
+      </element>
+    </question>
+      </q>
+
+  <q level="2" id="interr_suhttat_prt">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Ill"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="FAMILY"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Prt+Person-Number"/>
+	  <id>suhttat</id>
+      </element>
+    </question>
+      </q>
+  
+  
+ 
+  <q level="1" id="interr_luohttit_prs">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Ill"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="FAMILY"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Prs+Person-Number"/>
+	  <id>luohttit</id>
+      </element>
+    </question>
+    </q>
+
+  <q level="2" id="interr_luohttit_prt">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Ill"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="FAMILY"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Prt+Person-Number"/>
+	  <id>luohttit</id>
+      </element>
+    </question>
+    </q>
+  
+  
+  <q level="1" id="masa_illudit_prs">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>illudit</id>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="masa_illudit_prt">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>illudit</id>
+      </element>
+    </question>
+  </q>
+  
+  
+  
+ 
+  <q level="1" id="interr_jahkkit_prs">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Ill"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Prs+Person-Number"/>
+	  <id>jáhkkit</id>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="interr_jahkkit_prt">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Ill"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Prt+Person-Number"/>
+	  <id>jáhkkit</id>
+      </element>
+    </question>
+  </q>
+
+
+  <q level="1" id="masa_algit_prs">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	   <grammar tag="V+Ind+Prs+Person-Number"/>
+	  <id>álgit</id>
+      </element>
+    </question>
+  </q>  
+
+  <q level="2" id="masa_algit_prt">
+    <qtype>N-ILL</qtype>
+    <question>
+      <text>Masa SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>álgit</id>
+      </element>
+    </question>
+  </q>  
+    
+  <q level="1" id="interr_varalas_prs">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR MAINV váralaš SUBJ</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="ANIMAL-PET"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>leat</id>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="interr_varalas_prt">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR MAINV váralaš SUBJ</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="ANIMAL-DOM"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>leat</id>
+      </element>
+    </question>
+  </q>
+
+
+   <q level="1" id="gos_leat_prs">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Gos SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>leat</id>
+      </element>
+    </question>
+  </q>
+
+   <q level="2" id="gos_leat_prt">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Gos SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="HUMAN"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>leat</id>
+      </element>
+    </question>
+  </q>
+
+
+  <q level="1" id="gos_boahtit_prs">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Gos SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="N"/>
+	<sem class="HUMAN"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>boahtit</id>
+      </element>
+    </question>
+  </q>
+
+
+  <q level="2" id="gos_boahtit_prt">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Gos SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="N"/>
+	<sem class="HUMAN"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>boahtit</id>
+      </element>
+    </question>
+  </q>
+
+
+  <q level="2" id="mas_ballat_prs">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Mas SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="N"/>
+	<sem class="PAIR"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>ballat</id>
+      </element>
+   </question>
+  </q>
+
+  <q level="2" id="mas_ballat_prt">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Mas SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="N"/>
+	<sem class="PAIR"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>ballat</id>
+      </element>
+   </question>
+  </q>
+ 
+  <q level="2" id="mas_varuhit_prs">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Mas SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="N"/>
+	<sem class="FAMILY"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>váruhit</id>
+      </element>
+   </question>
+  </q>
+  
+ 
+  <q level="2" id="mas_varuhit_prt">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Mas SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="N"/>
+	<sem class="FAMILY"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>váruhit</id>
+      </element>
+   </question>
+  </q>
+ 
+  <q level="2" id="interr_berostit_prs">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>beroštit</id>
+      </element>
+   </question>
+  </q>
+  
+  <q level="2" id="interr_berostit_prt">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>beroštit</id>
+      </element>
+   </question>
+  </q>
+  
+ 
+  <q level="2" id="mas_geargat_prs">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Mas SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>geargat</id>
+      </element>
+   </question>
+  </q> 
+  
+ 
+  <q level="2" id="mas_geargat_prt">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>Mas SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>geargat</id>
+      </element>
+   </question>
+  </q> 
+  
+  <q level="1" id="interr_oazzut_prs">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV skeaŋkka</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>oažžut</id>
+      </element>
+    </question>
+  </q>
+  
+  <q level="2" id="interr_oazzut_prt">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV skeaŋkka</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>oažžut</id>
+      </element>
+    </question>
+  </q>
+
+  
+  <q level="1" id="interr_sagaid_prs">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV ságaid</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>gullat</id>
+      </element>
+    </question>
+     </q>
+  
+  <q level="2" id="interr_sagaid_prt">
+    <qtype>N-LOC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV ságaid</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Loc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>gullat</id>
+      </element>
+    </question>
+     </q>
+
+  <q level="1" id="maid_oaidnit_prs">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>oaidnit</id>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="maid_oaidnit_prt">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>oaidnit</id>
+      </element>
+    </question>
+  </q>
+  
+  <q level="1" id="maid_niegadit_prs">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="PAIR"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>niegadit</id>
+      </element>
+    </question>
+  </q>
+  
+  <q level="2" id="maid_niegadit_prt">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="PAIR"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>niegadit</id>
+      </element>
+    </question>
+  </q>
+
+
+  <q level="1" id="maid_oastit_prs">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>oastit</id>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="maid_oastit_prt">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>oastit</id>
+      </element>
+    </question>
+  </q>
+
+  <q level="1" id="maid_sargut_prs">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>sárgut</id>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="maid_sargut_prt">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>sárgut</id>
+      </element>
+    </question>
+  </q>
+
+
+<!-- Interr and N-Acc must agree in number and SUBJ and MAINV must agree in number but all four variables do not have to agree --> 
+  <q level="1" id="interr_dovdat_prs">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Acc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>dovdat</id>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="interr_dovdat_prt">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Acc"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>dovdat</id>
+      </element>
+    </question>
+  </q>
+
+
+  <q level="2" id="interr_leat_prt">
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>INTERR SUBJ dát MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Gen"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="FURNITURE"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>leat</id>
+      </element>
+    </question>
+  </q>
+
+  <q level="1" id="interr_leat_prs">
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>INTERR SUBJ dát MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Gen"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="TOY"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>leat</id>
+      </element>
+    </question>
+  </q>
+  
+  <q level="2" id="man_duohkai_prs">
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>Man duohkái SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="PAIR"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>čiehkádit</id>
+      </element>
+    </question>
+      </q>
+  
+  <q level="2" id="man_duohkai_prt">
+    <qtype>N-GEN</qtype>
+    <question>
+      <text>Man duohkái SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="PAIR"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>čiehkádit</id>
+      </element>
+    </question>
+      </q>
+      
+
+  <q level="1" id="interr_comv_prs">
+    <qtype>N-COM</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Com"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<sem class="COMV"/>
+      </element>
+   </question>
+  </q>
+
+  <q level="2" id="interr_comv_prt">
+    <qtype>N-COM</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Com"/>
+	<id>gii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<sem class="COMV"/>
+      </element>
+   </question>
+  </q>
+
+  <q level="1" id="interr_mannat_prs">
+    <qtype>N-COM</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV ruoktot</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Com"/>
+	<id>mii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>mannat</id>
+      </element>
+   </question>
+  </q>
+
+  <q level="2" id="interr_mannat_prt">
+    <qtype>N-COM</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV ruoktot</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Com"/>
+	<id>mii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>mannat</id>
+      </element>
+   </question>
+  </q>
+
+<q level="1" id="interr_cierastit_prs">
+    <qtype>N-COM</qtype>
+    <question>
+      <text>Mainna SUBJ MAINV</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>čierastit</id>
+      </element>
+   </question>
+  </q>
+
+<q level="1" id="interr_cierastit_prs2">
+    <qtype>N-COM</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Pl+Com"/>
+	<id>mii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>čierastit</id>
+      </element>
+   </question>
+  </q>
+
+<q level="2" id="interr_cierastit_prt">
+    <qtype>N-COM</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Com"/>
+	<id>mii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>čierastit</id>
+      </element>
+   </question>
+  </q>
+
+
+<q level="2" id="interr_cierastit_prt2">
+    <qtype>N-COM</qtype>
+    <question>
+      <text>INTERR SUBJ MAINV</text>
+      <element id="INTERR">
+	<grammar tag="Pron+Interr+Number+Com"/>
+	<id>mii</id>
+      </element>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>čierastit</id>
+      </element>
+   </question>
+  </q>
+
+  <q level="2" id="manin_bargat_prs">
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV PLACE</text>
+      <element id="SUBJ">
+	<grammar tag="Pron+Pers+Sg+Nom"/>
+      </element>
+      <element id="PLACE">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE-NAME"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>bargat</id>
+      </element>
+   </question>
+  </q>
+
+  <q level="2" id="manin_bargat_prt">
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV PLACE</text>
+      <element id="SUBJ">
+	<grammar tag="N+Sg+Nom"/>
+	<sem class="FAMILY"/>
+      </element>
+      <element id="PLACE">
+	<grammar tag="N+Sg+Loc"/>
+	<sem class="PLACE-NAME"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>bargat</id>
+      </element>
+   </question>
+  </q>
+ 
+  <q level="2" id="manin_maidnasis_prs">
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV máidnasis</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="PAIR"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>šaddat</id>
+      </element>
+   </question>
+  </q>
+
+  <q level="2" id="manin_maidnasis_prt">
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV máidnasis</text>
+      <element id="SUBJ">
+	<grammar tag="N+Number+Nom"/>
+	<sem class="PAIR"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>šaddat</id>
+      </element>
+   </question>
+  </q>
+
+  <q level="2" id="manin_karnevalas_prs">
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV karneválas</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>gárvodit</id>
+      </element>
+   </question>
+  </q>
+
+  <q level="2" id="manin_karnevalas_prt">
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV karneválas</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>gárvodit</id>
+      </element>
+   </question>
+  </q>
+  
+  
+  <q level="2" id="manin_gohcodit_prs">
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV OBJ</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="OBJ">
+	<grammar tag="Pron+Pers+Person-Number+Acc"/>
+	<id>son</id>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+	<id>gohčodit</id>
+      </element>
+   </question>
+    </q>
+
+  
+  <q level="2" id="manin_gohcodit_prt">
+    <qtype>N-ESS</qtype>
+    <question>
+      <text>Manin SUBJ MAINV OBJ</text>
+      <element id="SUBJ">
+	<grammar pos="Pron"/>
+      </element>
+      <element id="OBJ">
+	<grammar tag="Pron+Pers+Person-Number+Acc"/>
+	<id>son</id>
+      </element>
+       <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Person-Number"/>
+	<id>gohčodit</id>
+      </element>
+   </question>
+    </q>
+
+
+  <q level="1" id="maid_aigut_prs">
+    <qtype>NUM-ATTR</qtype>
+    <question>
+      <text>Maid SUBJ MAINV oastit</text>
+      <element id="SUBJ">
+	<grammar pos="N"/>
+	<sem class="PROFESSION"/>
+      </element>
+      <element id="MAINV">
+	<id>áigut</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+   </question>
+  </q>
+
+  <q level="1" id="maid_oainnat">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Maid oainnát</text>
+    </question>
+  </q>
+
+  <q level="2" id="geaid_leat_1">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Geaid SUBJ dát MAINV</text>
+      <element id="SUBJ">    
+	<grammar tag="N+Number+Nom"/>         
+	<sem class="INSTRUMENT"/>
+      </element>
+      <element id="MAINV">
+	<id>leat</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="geaidda">
+    <qtype>N-ILL</qtype>
+   <question>
+      <text>Geaidda don attát OBJ</text>
+    <element id="OBJ">    
+	<grammar tag="N+Pl+Acc"/>         
+	<sem class="THING"/>
+	</element>
+    </question>
+  </q>
+
+
+  <q level="2" id="masa_bijat">
+    <qtype>N-ILL</qtype>
+   <question>
+      <text>Masa don bijat duogŋasa</text>
+    </question>
+  </q>
+
+  <q level="2" id="geain_varalas">
+    <qtype>N-LOC</qtype>
+   <question>
+      <text>Geain lea váralaš SUBJ</text>
+      <element id="SUBJ">    
+	<grammar tag="N+Sg+Nom"/>         
+	<sem class="ANIMAL-PET"/>
+      </element>
+    </question>
+   </q>
+   
+  <q level="3" id="man_luoikkasin">
+    <qtype>N-ACC</qtype>
+    <question>
+      <text>Man guhká oaččut OBJ luoikkasin</text>
+      <element id="OBJ">    
+	<grammar tag="N+Sg+Acc"/>         
+	<sem class="THING"/>
+      </element>
+    </question>
+  </q>
+
+  <q level="1" id="gos_leat">
+    <qtype>N-LOC</qtype>
+   <question>
+      <text>Gos SUBJ leat</text>
+    <element id="SUBJ">    
+	<grammar tag="N+Pl+Nom"/>         
+	<sem class="HUMAN"/>
+	</element>
+    </question>
+  </q>
+
+  <q level="1" id="gos_finai">
+    <qtype>N-LOC</qtype>
+   <question>
+      <text>Gos SUBJ finai</text>
+    <element id="SUBJ">    
+	<grammar tag="N+Sg+Nom"/>         
+	<sem class="HUMAN"/>
+	</element>
+    </question>
+  </q>
+
+  <q level="2" id="geaiguin_comv">
+    <qtype>N-COM</qtype>
+    <question>
+      <text>Geaiguin SUBJ MAINV</text>
+      <element id="SUBJ">    
+	<grammar pos="Pron"/> 
+	<id>son</id>
+      </element>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<sem class="COMV"/>
+      </element>
+    </question>
+  </q>
+ 
+  <q level="3" id="gallin_joavkun">
+    <qtype>NUM-ATTR</qtype>
+    <question>
+      <text>Gallin joavkun SUBJ MAINV</text>
+      <element id="SUBJ">    
+	<grammar tag="N+Pl+Nom"/>         
+	<sem class="HUMAN"/>
+      </element>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>bargat</id> 
+      </element>
+    </question>
+  </q>
+
+
+  <q level="3" id="gallis_ruoktot">
+    <qtype>NUM-LOC</qtype>
+    <question>
+      <text>Gallis SUBJ MAINV ruoktot</text>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>boahtit</id> 
+      </element>
+      <element id="SUBJ">    
+	<grammar pos="Pron"/>         
+      </element>
+    </question>
+  </q>
+
+  <q level="3" id="gallis_alga">
+    <qtype>NUM-LOC</qtype>
+   <question>
+      <text>Gallis SUBJ álgá</text>
+    <element id="SUBJ">    
+	<grammar tag="N+Sg+Nom"/>         
+	<sem class="ARRANGEMENT"/>
+	</element>
+    </question>
+  </q>
+
+  <q level="3" id="gallis_nohka">
+    <qtype>NUM-LOC</qtype>
+   <question>
+      <text>Gallis SUBJ nohká</text>
+    <element id="SUBJ">    
+	<grammar tag="N+Sg+Nom"/>         
+	<sem class="ARRANGEMENT"/>
+	</element>
+    </question>
+  </q>
+
+  <q level="2" id="gallii_lohkan">
+    <qtype>NUM-ILL</qtype>
+   <question>
+     <text>Gallii SUBJ MAINV lohkan OBJ</text>
+     <element id="SUBJ">    
+       <grammar pos="Pron"/>         
+     </element>
+     <element id="MAINV">    
+       <grammar tag="V+Ind+Prs+Person-Number"/>         
+       <id>leat</id> 
+     </element>
+     <element id="OBJ">    
+       <grammar tag="N+Sg+Acc"/>         
+       <sem class="TEXT"/>
+     </element>
+    </question>
+  </q>
+
+  <q level="3" id="galliin_birget">
+    <qtype>NUM-COM</qtype>
+    <question>
+      <text>Galliin SUBJ MAINV</text>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>birget</id> 
+      </element>
+      <element id="SUBJ">    
+	<grammar pos="Pron"/>         
+      </element>
+    </question>
+  </q>
+
+  <q level="3" id="galliin_juohkit">
+    <qtype>NUM-COM</qtype>
+    <question>
+      <text>Galliin SUBJ MAINV loahppasupmi</text>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>juohkit</id> 
+      </element>
+      <element id="SUBJ">    
+	<grammar pos="Pron"/>         
+      </element>
+    </question>
+  </q>
+
+
+  <q level="3" id="galle_oastit">
+    <qtype>NUM-ACC</qtype>
+    <question>
+      <text>Galle OBJ SUBJ MAINV oastit</text>
+      <element id="SUBJ">    
+	<grammar pos="Pron"/>         
+      </element>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>áigut</id> 
+      </element>
+      <element id="OBJ">    
+	<grammar tag="N+Sg+Gen"/>         
+	<sem class="CLOTHING"/>
+      </element>
+    </question>
+  </q>
+
+  <q level="3" id="galliid_oastit_pl">
+    <qtype>NUM-ACC</qtype>
+    <question>
+      <text>Galliid OBJ SUBJ MAINV oastit</text>
+      <element id="SUBJ">    
+	<grammar pos="Pron"/>         
+      </element>
+    <element id="MAINV">    
+      <grammar tag="V+Ind+Prs+Person-Number"/>         
+      <id>áigut</id> 
+    </element>
+    <element id="OBJ">    
+      <grammar tag="N+Pl+Acc"/>         
+      <sem class="CLOTHING-PL"/>
+    </element>
+    </question>
+  </q>
+
+  <q level="3" id="galliid_lagidan">
+    <qtype>NUM-ACC</qtype>
+    <question>
+      <text>Galliid OBJ sii leat lágidan</text>
+      <element id="OBJ">    
+	<grammar tag="N+Pl+Acc"/>         
+	<sem class="ARRANGEMENT-PL"/>
+      </element>
+    </question>
+  </q>
+
+  <q level="3" id="gallit_dus_1">
+    <qtype>NUM-NOMPL</qtype>
+    <question>
+      <text>Gallit SUBJ dus leat</text>
+      <element id="SUBJ">    
+	<grammar tag="N+Pl+Nom"/>         
+	<sem class="CLOTHING-PL"/>
+      </element>
+    </question>
+  </q>
+
+  <q level="3" id="gallit_dus_2">
+    <qtype>NUM-NOMPL</qtype>
+    <question>
+      <text>Gallit SUBJ dus leat</text>
+      <element id="SUBJ">    
+	<grammar tag="N+Pl+Nom"/>         
+	<sem class="HANDICRAFTS-PL"/>
+      </element>
+    </question>
+  </q>
+
+
+  <q level="3" id="gallit_dus_3">
+    <qtype>NUM-NOMPL</qtype>
+    <question>
+      <text>Gallit SUBJ leat dáid beassážiid</text>
+      <element id="SUBJ">    
+	<grammar tag="N+Pl+Nom"/>         
+	<sem class="ARRANGEMENT-PL"/>
+      </element>
+    </question>
+  </q>
+
+
+
+  <q level="3" id="man_guhka">
+    <qtype>NUM-ILL</qtype>
+    <question>
+      <text>Man guhká SUBJ MAINV odne?</text>
+      <element id="SUBJ">    
+	<grammar pos="Pron"/>         
+      </element>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>bargat</id> 
+      </element>
+    </question>
+  </q>
+
+
+  <q level="3" id="gallasiin_juohkit">
+    <qtype>COLL-NUM</qtype>
+    <question>
+      <text>Gallásiin SUBJ MAINV juohkit daid ruđaid</text>
+      <element id="MAINV">    
+	<id>fertet</id> 
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+      </element>
+      <element id="SUBJ">    
+	<grammar pos="Pron"/>         
+      </element>
+    </question>
+  </q>
+
+
+  <q level="2" id="gallis_bohtet">
+    <qtype>COLL-NUM</qtype>
+    <question>
+      <text>Gallis bohtet N-ILL</text>
+      <element id="N-ILL">    
+	<grammar tag="N+Sg+Ill"/>         
+	<sem class="BUILDING"/>
+      </element>
+    </question>
+  </q>
+
+  <q level="3" id="gallasa_don">
+    <qtype>COLL-NUM</qtype>
+   <question>
+      <text>Gallása don oainnát</text>
+    </question>
+  </q>
+
+  <q level="2" id="geaid_leat_2">
+    <qtype>COLL-NUM</qtype>
+    <question>
+      <text>Geaid SUBJ dát MAINV</text>
+      <element id="SUBJ">    
+	<sem class="THING"/>
+	<grammar pos="N"/>         
+      </element>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>leat</id> 
+      </element>
+    </question>
+  </q>
+
+  <q level="3" id="gallasii_muitalit">
+    <qtype>COLL-NUM</qtype>
+    <question>
+      <text>Gallásii SUBJ MAINV ságaid</text>
+      <element id="SUBJ">    
+	<grammar pos="Pron"/>         
+      </element>
+      <element id="MAINV">    
+	<grammar tag="V+Ind+Prs+Person-Number"/>         
+	<id>muitalit</id> 
+      </element>
+    </question>
+  </q>
+
+  <q level="3" id="gallasis_dilli">
+    <qtype>COLL-NUM</qtype>
+    <question>
+      <text>Gallásis lea dilli VERB</text>
+      <element id="VERB">    
+	<grammar tag="V+Inf"/>         
+	<sem class="ACTIVITY"/>
+      </element>
+    </question>
+  </q>
+
+  <q level="3" id="gallasiin_vuolggat">
+    <qtype>COLL-NUM</qtype>
+    <question>
+      <text>Gallásiin don vuolggát N-ILL</text>
+      <element id="N-ILL">    
+	<grammar tag="N+Sg+Ill"/>         
+	<sem class="PLACE-NAME"/>
+      </element>
+    </question>
+  </q>
+
+  <q level="2" id="gallat_leat">
+    <qtype>ORD-NUM</qtype>
+   <question>
+      <text>Gallát luohkás don leat dál</text>
+    </question>
+  </q>
+
+  <q level="3" id="galladin_bohtet">
+    <qtype>ORD-NUM</qtype>
+   <question>
+      <text>Galládin don bohtet mollii</text>
+    </question>
+  </q>
+
+  <q level="2" id="gallat_alggat">
+    <qtype>ORD-NUM</qtype>
+   <question>
+      <text>Gallát luohkkái don álggát dál</text>
+    </question>
+  </q>
+
+
+</questions>
+
+
+
+
