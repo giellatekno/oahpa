@@ -27,6 +27,9 @@ urlpatterns = patterns('univ_oahpa.univ_drill.views',
 	url(r'^morfac/p/$', 'cmgame', {'pos': 'Pron'}, name="morfa_c.pron"),
 	url(r'^morfac/l/$', 'cmgame', {'pos': 'Num'}, name="morfa_c.num"),                       
 	url(r'^morfac/$', 'cmgame', {'pos': 'n'}, name="morfa_c.noun"),
+	url(r'^vasta/$', 'vasta', name="vasta"),
+	url(r'^sahka/$', 'sahka', name="sahka"),
+	
 )
 
 # # These are for me testing things, otherwise ignore.

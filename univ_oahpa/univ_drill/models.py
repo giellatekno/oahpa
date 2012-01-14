@@ -170,6 +170,8 @@ def leksa_filter(Model,
 	QUERY['language'] = lang
 	QUERY['wordtranslation__language'] = tx_lang
 	
+	# Heli: I think that the next if-clause is relevant only for leksa-place ?
+	
 	if geography:
 		QUERY['geography'] = geography
 	else:
@@ -788,10 +790,39 @@ class WordQElement(models.Model):
 	"""
 	word = models.ForeignKey(Word, null=True)
 	qelement = models.ForeignKey(QElement, null=True)
-	#semtype = models.ForeignKey(Semtype, null=True)
+	# semtype = models.ForeignKey(Semtype, null=True) 
 	
 
+############ SAHKA
+        
+class Dialogue(models.Model):
+    name = models.CharField(max_length=50,blank=True,null=True)
 
+class Utterance(models.Model):
+    utterance = models.CharField(max_length=500,blank=True,null=True)
+    utttype = models.CharField(max_length=20,blank=True,null=True)
+    links = models.ManyToManyField('LinkUtterance')
+    name = models.CharField(max_length=200,blank=True,null=True)
+    topic = models.ForeignKey('Topic')
+    formlist = models.ManyToManyField(Form)
+
+class UElement(models.Model):
+    utterance=models.ForeignKey(Utterance, null=True)
+    syntax = models.CharField(max_length=50)
+    tag = models.ForeignKey(Tag,null=True,blank=True)
+
+class LinkUtterance(models.Model):
+    link = models.ForeignKey(Utterance,null=True,blank=True)
+    target = models.CharField(max_length=20,null=True,blank=True)
+    variable = models.CharField(max_length=20,null=True,blank=True)
+    constant = models.CharField(max_length=20,null=True,blank=True)
+
+class Topic(models.Model):
+    topicname = models.CharField(max_length=50,blank=True,null=True)
+    dialogue = models.ForeignKey(Dialogue)
+    number = models.IntegerField(max_length=3,null=True)
+    image = models.CharField(max_length=50,null=True,blank=True)
+    formlist = models.ManyToManyField(Form)
 
 ######### EXTRA
 class Grammarlinks(models.Model):

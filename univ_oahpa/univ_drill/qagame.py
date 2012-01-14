@@ -35,8 +35,8 @@ class QAGame(Game):
 		# Default tense and mood for testing
 		self.tense = "Prs"
 		self.mood = "Ind"
-		self.gametype = "morfa"
-		
+		self.gametype = "morfa" # why morfa? it is "qa"
+				
 		# TODO: check this in smeoahpa, possible source of error.
 		# Values for pairs QPN-APN
 		
@@ -752,8 +752,9 @@ class QAGame(Game):
 	def get_question_qa(self,db_info,qtype):
 
 		qwords = {}
-		if self.settings.has_key('level'): level=int(self.settings['level'])
-		else: level='1'
+		# if self.settings.has_key('level'): level=int(self.settings['level'])
+		# else: # default level was set to 'all', but I could not find where
+		level='1'
 		
 		q_count = Question.objects.filter(gametype="qa", level__lte=level).count()
 		question = Question.objects.filter(gametype="qa", level__lte=level)[randint(0,q_count-1)] 

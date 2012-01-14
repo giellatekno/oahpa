@@ -19,6 +19,7 @@ from words_install import Words
 from extra_install import Extra
 from feedback_install import Feedback_install
 from questions_install import Questions
+from sahka_install import Sahka  # added by Heli
 
 # TODO: option for oa="yes" only, for univ_
 # ota lemma jos on name="oahpa"
@@ -49,6 +50,8 @@ OPTION_LIST = (
                   help="XML-file for feedback messages"),
 	make_option("-q", "--questionfile", dest="questionfile",
 	              help="XML-file that contains questions"),
+	make_option("-k", "--sahka", dest="sahkafile",
+                  help="XML-file for Dialogues"),  # added
 	make_option("-w", "--wid", dest="wordid",
 					  help="delete word using id or lemma"),
 	make_option("-p", "--pos", dest="pos",
@@ -76,6 +79,7 @@ def main(opts):
 	linginfo = Paradigm()
 	words = Words()
 	extra = Extra()
+	sahka = Sahka() # added by Heli
 	feedback = Feedback_install()
 	questions = Questions()
 
@@ -100,6 +104,10 @@ def main(opts):
 	if options.messagefile:
 	    feedback.read_messages(options.messagefile)
 	    sys.exit()
+	    
+	if options.sahkafile:
+		sahka.read_dialogue(options.sahkafile)
+		sys.exit()
 
 	if options.feedbackfile and options.infile:
 	    feedback.read_feedback(options.feedbackfile,options.infile)

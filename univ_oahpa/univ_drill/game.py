@@ -124,7 +124,7 @@ class Game(object):
 			self.settings['gametype'] = "bare"
 		
 		if self.settings.has_key('semtype'):
-			if self.settings['semtype'] == 'all':
+			if self.settings['semtype'] in ('all','All'):  # upper- or lowercase
 				# self.settings['semtype'] = self.settings['allsem']
 				self.settings['semtype'] = 'all'
 			else:
@@ -1107,7 +1107,7 @@ class QuizzGame(Game):
 
 			if source and source not in ['all', 'All']:
 				leksa_kwargs['source'] = source
-				leksa_kwargs['semtype_incl'] = False
+				leksa_kwargs['semtype_incl'] = False 
 			
 			if geography:
 				leksa_kwargs['geography'] = geography

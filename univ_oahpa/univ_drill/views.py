@@ -11,6 +11,7 @@ from random import randint
 from game import *
 from forms import *
 from qagame import *
+from sahka import *
 
 # comment this out
 # DEBUG = open('/dev/ttys001', 'w')
@@ -673,4 +674,217 @@ def cmgame(request, pos):
 
 	return render_to_response(template, c,
 				context_instance=RequestContext(request))
+
+class Vastaview:
+
+    def init_settings(self):
+
+        show_data=0
+        self.settings = {}
+        
+    def create_vastagame(self,request):
+
+        count=0
+        correct=0
+
+        self.settings['gametype'] = "qa"
+        
+        if request.method == 'POST':
+            data = request.POST.copy()
+
+            # Settings form is checked and handled.
+            settings_form = VastaSettings(request.POST)
+
+            for k in settings_form.data.keys():
+                self.settings[k] = settings_form.data[k]
+
+            if request.session.has_key('dialect'):
+                self.settings['dialect'] = request.session['dialect']
+
+            if request.session.has_key('django_language'):
+                self.settings['language'] = request.session['django_language']
+            else:
+                self.settings['language'] = request.COOKIES.get("django_language", None)
+
+            self.settings['allcase_context']=settings_form.allcase_context
+            self.settings['allvtype_context']=settings_form.allvtype_context
+            self.settings['allnum_context']=settings_form.allnum_context
+            self.settings['alladj_context']=settings_form.alladj_context
+            self.settings['allsem']=settings_form.allsem
+
+            if settings_form.data.has_key('book'):
+                self.settings['book'] = settings_form.books[settings_form.data['book']]
+
+            # Vasta
+            game = QAGame(self.settings)
+            game.init_tags()
+            game.num_fields = 2
+
+            game.gametype="qa"
+
+            # If settings are changed, a new game is created
+            # Otherwise the game is created using the user input.
+            if "settings" in data:
+                game.new_game()
+            else:
+                game.check_game(data)
+                game.get_score(data)
+
+        # If there is no POST data, default settings are applied
+        else:
+            settings_form = VastaSettings()
+
+            self.settings['allsem']=settings_form.allsem
+            self.settings['allcase_context']=settings_form.allcase_context
+            self.settings['allvtype_context']=settings_form.allvtype_context
+            self.settings['allnum_context']=settings_form.allnum_context
+            self.settings['alladj_context']=settings_form.alladj_context
+            self.settings['level'] = '1'  # added by Heli
+
+            for k in settings_form.default_data.keys():
+                self.settings[k] = settings_form.default_data[k]
+
+            if request.session.has_key('dialect'):
+                self.settings['dialect'] = request.session['dialect']
+
+            if request.session.has_key('django_language'):
+                self.settings['language'] = request.session['django_language']
+            else:
+                self.settings['language'] = request.COOKIES.get("django_language", None)
+
+            # Vasta
+            game = QAGame(self.settings)
+            game.init_tags()
+            game.gametype="qa"
+            game.num_fields = 2
+
+            game.new_game()
+
+        all_correct = 0
+        if game.form_list[0].error == "correct":
+            all_correct = 1
+
+        c = Context({
+            'settingsform': settings_form,
+            'forms': game.form_list,
+            'messages': game.form_list[0].messages,
+            'count': game.count,
+            'comment': game.comment,
+            'all_correct': all_correct,
+            })
+        return c
+
+
+def vasta(request):
+
+    vastagame = Vastaview()
+    vastagame.init_settings()
+
+    c = vastagame.create_vastagame(request)
+    return render_to_response('vasta.html', c, context_instance=RequestContext(request))
+
+class Sahkaview:
+
+    def init_settings(self):
+
+        show_data=0
+        self.settings = {}
+        
+    def create_sahkagame(self,request):
+
+        count=0
+        correct=0
+
+        self.settings['gametype'] = "sahka"
+        if request.session.has_key('dialect'):
+            self.settings['dialect'] = request.session['dialect']
+        if request.session.has_key('django_language'):
+            self.settings['language'] = request.session['django_language']
+        else:
+            self.settings['language'] = request.COOKIES.get("django_language", None)
+
+            
+        # With post data, continue the dialogue
+        if request.method == 'POST':
+            data = request.POST.copy()
+            # Settings form is checked and handled.
+            settings_form = SahkaSettings(request.POST)
+
+            for k in settings_form.data.keys():
+                self.settings[k] = settings_form.data[k]
+
+            # Vasta
+            game = SahkaGame(self.settings)
+
+            # If settings are changed, a new game is created
+            # Otherwise the game is created using the user input.
+            if "settings" in data:
+                game.settings['dialogue'] = data['dialogue']
+                game.settings['topicnumber']=0
+                game.settings['image']="sahka.png"
+                game.settings['wordlist']=""
+                game.num_fields=1
+                game.update_game(1)
+            else:
+                if settings_form.data.has_key('num_fields'):
+                    game.num_fields = int(settings_form.data['num_fields'])
+                else:
+                    game.num_fields = 1                    
+                #print "num_fields", game.num_fields
+                game.check_game(data)
+                # If the last answer was correct, add new field
+                if game.form_list[game.num_fields-2].error == "correct":
+                    game.update_game(len(game.form_list)+1, game.form_list[game.num_fields-2])
+
+            settings_form.init_hidden(game.settings['topicnumber'],game.num_fields,\
+                                      game.settings['dialogue'],game.settings['image'],game.settings['wordlist'])
+
+            errormsg=""
+            for f in game.form_list:
+                errormsg = errormsg + f.errormsg
+                
+            c = Context({
+                'settingsform': settings_form,
+                'forms': game.form_list,
+                'messages': game.form_list[-1].messages,
+                'errormsg': errormsg,
+                'count': game.count,
+                'score': game.score,
+                'comment': game.comment,
+                'gametype': "sahka",
+                'topicnumber' : game.settings['topicnumber'],
+                'num_fields' : game.num_fields,
+                'image' : game.settings['image'],
+                'wordlist' : game.settings['wordlist'],
+                'dialogue' : game.settings['dialogue'],
+                })
+            return c
+
+        # If there is no POST data, present the dialogue selection page
+        else:
+            settings_form = SahkaSettings()
+            for k in settings_form.default_data.keys():
+                self.settings[k] = settings_form.default_data[k]
+
+            if request.session.has_key('dialect'):
+                self.settings['dialect'] = request.session['dialect']
+            if request.session.has_key('django_language'):
+                self.settings['language'] = request.session['django_language']
+            else:
+                self.settings['language'] = request.COOKIES.get("django_language", None)
+
+            c = Context({
+                'settingsform': settings_form,
+                'gametype' : "sahka_main",
+                })
+            return c
+
+
+def sahka(request):
+
+    sahkagame = Sahkaview()
+    sahkagame.init_settings()
+
+    c = sahkagame.create_sahkagame(request)
+    return render_to_response('sahka.html', c, context_instance=RequestContext(request))
 
