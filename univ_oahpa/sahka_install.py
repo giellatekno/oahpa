@@ -15,8 +15,8 @@ import codecs
 class Sahka:
 
     def add_wordlist(self,word,t):
-        #cgfile="/opt/smi/sme/bin/sme-ped.cg3"  # on victorio
-        cgfile="../sme/src/sme-ped.cg3" # relative path, for local use
+        cgfile="/opt/smi/sme/bin/sme-ped.cg3"  # on victorio
+        #cgfile="../sme/src/sme-ped.cg3" # relative path, for local use
 
         wordclass = word.getAttribute("class")
         print wordclass
