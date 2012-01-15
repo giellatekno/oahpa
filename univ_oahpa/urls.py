@@ -28,6 +28,34 @@ urlpatterns = patterns('',
 	# (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 )
 
+from django.http import HttpResponseRedirect
+
+from django_openid.provider import Provider
+from django.shortcuts import render_to_response as render
+
+class AnonProvider(Provider):
+    def user_is_logged_in(self, *args):
+        return True
+    
+    def user_owns_openid(self, *args):
+        return True
+    
+    def user_trusts_root(self, *args):
+        return True
+
+def openid_page(request, slug):
+    return render('openid_page.html', {
+        'slug': slug,
+        'full_url': request.build_absolute_uri(),
+        'server_url': request.build_absolute_uri('%s/u/' % prefix),
+    })
+
+urlpatterns += patterns('',
+    (r'^%s/openid/$' % prefix, lambda r: HttpResponseRedirect('/openid/')),
+    (r'^%s/u/(\w+)/$' % prefix, openid_page),
+    (r'^%s/u/$' % prefix, AnonProvider()),
+)
+
 
 
 # urlpatterns += patterns(''
