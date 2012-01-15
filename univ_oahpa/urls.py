@@ -20,45 +20,11 @@ urlpatterns = patterns('',
 	url(r'^%s/$' % prefix, 'univ_oahpa.univ_drill.views.index'),
 	url(r'^%s/i18n/' % prefix, include('django.conf.urls.i18n')),
 	url(r'^%s/media/(?P<path>.*)$' % prefix, 'django.views.static.serve',
-		      	{'document_root': settings.MEDIA_ROOT}),
+			  	{'document_root': settings.MEDIA_ROOT}),
 	url(r'^%s/courses/' % prefix, include('univ_oahpa.courses.urls')),
 	url(r'^%s/' % prefix, include('univ_oahpa.univ_drill.urls')),
 	url(r'^%s/dialect/$' % prefix, 'univ_oahpa.conf.views.dialect'),
 	url(admin_url, include(admin.site.urls)),
 	# (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 )
-
-from django.http import HttpResponseRedirect
-
-from django_openid.provider import Provider
-from django.shortcuts import render_to_response as render
-
-class AnonProvider(Provider):
-    def user_is_logged_in(self, *args):
-        return True
-    
-    def user_owns_openid(self, *args):
-        return True
-    
-    def user_trusts_root(self, *args):
-        return True
-
-def openid_page(request, slug):
-    return render('openid_page.html', {
-        'slug': slug,
-        'full_url': request.build_absolute_uri(),
-        'server_url': request.build_absolute_uri('%s/u/' % prefix),
-    })
-
-urlpatterns += patterns('',
-    (r'^%s/openid/$' % prefix, lambda r: HttpResponseRedirect('/openid/')),
-    (r'^%s/u/(\w+)/$' % prefix, openid_page),
-    (r'^%s/u/$' % prefix, AnonProvider()),
-)
-
-
-
-# urlpatterns += patterns(''
-#	 (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': here('m')}),
-# )
 
