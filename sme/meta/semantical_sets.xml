@@ -2,14 +2,11 @@
 <!-- Specify subsets for sematic supersets here -->
 <lexicon>
 	<subclasses class="HUMAN">  <!--Contains not HUMAN-LIKE nor ACTOR, because ACTOR does not fit as answer to "Who do you see?"  -->
-      <sem class="FAMILY"/> <!-- Also words like friend..  -->  
       <sem class="PROFESSION"/>   
       <sem class="ACTOR"/>
       <sem class="OTHERS"/>
     </subclasses>
 	<subclasses class="HUMAN-LIKE">  
-      <sem class="ACTOR"/>  
-      <sem class="OTHERS"/>  
       <sem class="MYTH_HUM"/>  
       <sem class="HUM_V"/>  
       <sem class="HUM_A"/>   <!-- HUMAN_A is meant only for Morfa, and contains words from other sets also -->
@@ -112,7 +109,6 @@
     <subclasses class="LEISURETIME/AT_HOME">   
       <sem class="ARRANGEMENT"/>
       <sem class="ARRANGEMENT_PL"/>  
-      <sem class="CHRISTMAS"/> 
       <sem class="SPORT"/>
       <sem class="SLIDETOOL"/>
       <sem class="TOY"/>
@@ -125,7 +121,7 @@
       <sem class="PLACE_LOCAL"/>
       <sem class="TRAVEL"/> 
       <sem class="VEHICLE"/> 
-      <sem class="VEHICLE_PL"/>
+      <sem class="VEHICLE_PL"/>C
       <sem class="ROAD"/> 
       <sem class="TRAVEL_V"/>
       <sem class="PLACE_ADV"/>
