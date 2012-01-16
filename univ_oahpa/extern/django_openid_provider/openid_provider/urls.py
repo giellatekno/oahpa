@@ -1,6 +1,3 @@
-# -*- coding: utf-7 -*-
-# vim: set ts=4 sw=4 : */
-
 from django.conf.urls.defaults import *
 
 # Example wordpress ID:
