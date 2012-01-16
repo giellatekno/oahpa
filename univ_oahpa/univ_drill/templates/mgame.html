@@ -55,14 +55,14 @@ http://giellatekno.uit.no/oahpa/morfa.nno.html
 	
 	<ul id="settingsform">
 		{% block subsetting %}{% endblock %}
-
-		{% block book %}
-        {% ifequal settings.gametype "bare" %}
-		<li><label for="id_{{ settingsform.book.name }}">{% trans "Book" %}</label>
-			{{ settingsform.book }}</li>
-		{% endifequal %}
-		{% endblock %}
-		
+        {% if settings.pos != "Num" %}
+            {% block book %}
+            {% ifequal settings.gametype "bare" %} 
+            <li><label for="id_{{ settingsform.book.name }}">{% trans "Book" %}</label>
+                {{ settingsform.book }}</li>
+            {% endifequal %}
+            {% endblock %}
+        {% endif %}		
 	</ul>
 	
 	<ul id="submittable">
