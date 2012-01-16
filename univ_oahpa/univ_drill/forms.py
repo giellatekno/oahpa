@@ -1618,8 +1618,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     lookup2cg = " | lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /usr/local/bin/preprocess "
-    # dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    dis_bin = "../sme/src/sme-ped.cg3" 
+    dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
+    # dis_bin = "../sme/src/sme-ped.cg3" # in Heli's machine
     
     #fstdir = "/Users/saara/gt/sme/bin"
     #lookup2cg = " | /Users/saara/gt/script/lookup2cg"
@@ -1641,7 +1641,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     qtext = qtext.rstrip('.!?,')
     
     host = 'localhost'
-    port = 8000  # was: 9000
+    port = 9000  # was: 9000
     size = 1024
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
