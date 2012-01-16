@@ -1,0 +1,112 @@
+
+!!!Møte 16.01.12
+
+Til stades: Lene, Heli, Ryan, Trond, Biret-Á
+
+
+!!Saksliste
+
+* MorfaS
+* MorfaC
+* Vasta og Sahka
+* Log
+* Innlogging
+* Buger
+* Neste møte
+
+
+!!MorfaS
+Numeraler - nivå2 skal inneholde plurale numeraler, men dette er ikke prioritert foreløpig.
+
+!!MorfaC
+Nytt sett i leksikon og MorfaC: mPRINTEDMATTER_V, dette gjør det umulig å installere oppgaver uten å installere leksikonet først. Ryan har løst dette problemet nå ved å legge semsett mPRINTEDMATTER_V, mLIKE_ILL  direkte i databasen. Vi bør bli enige om tidspunkt for fornying av databasen.
+
+__TODO:__
+* Gi beskjed til lingvistene om tidspunkt for fornying av hele databasen (__Heli, Ryan__)
+* Lemmaer som har fått nye semantiske sett kopieres over i update_lexicon.xml 
+  og oppgaver som krever nye sett, legges i update_question.xml for delvis 
+  installering  (__Lene, Biret-Á__)
+* Fikse rot i lokalisering: finsk i norsk, elativ for refleksiv (__Trond__)
+
+!! Vasta
+Vasta produserer spørsmål, men ikkje svar. Feilmelding: timeout.
+{{{
+error at /univ_oahpa/vasta/ [Errno 110] Connection timed out
+}}}
+
+Bruker vasta tekst- eller binærversjonen av cg-fila?
+
+{{{
+cat spørsmål+svar.txt | lookup ped-sme.fst | lookup2cg | vislcg3 -g sme-ped.cg3
+}}}
+
+__TODO:__
+
+* Lage ei tekstfil som input til Vasta  (__Lene__)
+* Gå gjennom heile pipeline på kommandolinja (__Heli__)
+
+!! Sahka
+Samme problem som i Vasta.
+
+I tillegg eit anna problem: Det er fem linjer som tekstfelt.
+
+Grensesnittet vårt er laga for sma-oahpa. Vi har 5 oppgåver i dei
+andre oppgåvene, og vi får dermed fem linjer her også.
+
+Når du vel ein dialog, er dialogbiletet nederst til venstre for stort, og 
+det manglar ramme. Venstremargen er større i gamle sme-oahpa.
+
+''Grammatikkforklaringer'' manglar i Vasta og Sahka.
+
+__TODO:__
+* Fikse grensesnittet (__Heli__)
+
+!! Log
+
+Brukarloggen er tapt som individuelle studentresultat, men den blir starta
+på nytt no. Den globale loggen er frå og med 4.1.
+
+Brukarloggen er nå forbedra slik at den viser meir informasjon om MorfaC.
+
+__TODO:__
+* Loggen for studentene skal gjøres mer forståelig (__Ryan__)
+
+!! Innlogging
+Ryan har sjekka inn masse.
+
+OpenID fungerer på WordPress og Django. Fleire ting står att.
+Vi må vise kva dei må gjere for å logge seg inn på WordPress. Noko
+må gjerast internt i Django. Desse fornyingane gjer Ryan på Bjørn sin
+testversjon.
+
+Brukarnamn ser ut slik første gongen brukaren kjem inn på Site.uit.no 
+frå Oahpa! - Gå gjennom heile pipeline på kommandolinja
+oahpa.uit.no-univ_oahpa-openid-ryan
+Gå gjennom heile pipeline på kommandolinja
+
+[http://129.242.218.43/wordpress/|http://129.242.218.43/wordpress/]
+
+ -> log in
+ 
+ [http://oahpa.uit.no/univ_oahpa/openid/username|http://oahpa.uit.no/univ_oahpa/openid/username]
+
+ ex. [http://profile.oahpa.uit.no/username|http://profile.oahpa.uit.no/username]
+ 
+* Biret-Á kan legge inn studentene. En gruppe startet 2.1. , neste gruppe starter 17.1, deretter 26.1, deretter februar/mars
+* Registration form - legge til spørsmål om språkkunnskap, undervisning etc.
+ 
+!! Buger
+
+Flere buger kan lukkes (__Ryan, Lene, Heli__)
+
+!! Neste møte
+
+__31.1. 08:00__ (30.1. Minnesota)
+
+
+
+
+
+
+
+
