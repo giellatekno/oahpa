@@ -12,8 +12,8 @@ from os import environ
 environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
 from random import randint
-from oahpa.drill.game import *
-from oahpa.drill.qagame import *
+from univ_oahpa.univ_drill.game import *
+from univ_oahpa.univ_drill.qagame import *
 from optparse import OptionParser
 
 
@@ -55,10 +55,10 @@ preprocess = " | /usr/local/bin/preprocess "
 if options.grammar:
     dis = options.grammar
 else:
-    dis = "/home/saara/ped/sme/src/sme-ped.cg3"
+    dis = "/opt/smi/sme/bin/sme-ped.cg3"
 
-fst = fstdir + "/sme.fst"
-#fst = fstdir + "/ped-sme.fst"
+#fst = fstdir + "/sme.fst"
+fst = fstdir + "/ped-sme.fst"
 lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst        
 vislcg3 = " | " + cg3 + " --grammar " + dis + " -C UTF-8"
 disamb = lookup + lookup2cg + vislcg3
