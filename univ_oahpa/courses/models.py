@@ -31,6 +31,9 @@ class UserProfile(models.Model):
 	def __unicode__(self):
 		return self.user.username.encode('utf-8')
 	
+	def open_id_link(self):
+		return 'http://oahpa.uit.no/univ_oahpa/openid/%s' % self.user.username
+	
 
 
 class UserLogin(models.Model):

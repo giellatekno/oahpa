@@ -64,15 +64,37 @@ def aggregate_grades(sender, **kwargs):
 		gradesummary.count = game_count
 		gradesummary.save()
 
+
+DEFAULT_ROOTS = [
+	'http://129.242.218.43/wordpress/',
+	'http://site.uit.no/',
+	'http://site.uit.no/oahpa/',
+]
+
+
+
+
+
 @disable_for_loaddata
 def create_profile(sender, **kwargs):
 	""" This signal creates UserProfile objects when the Django
 		user models are saved.
 	"""
+	from openid_provider.models import OpenID, TrustedRoot
+
 	user_obj = kwargs['instance']
 	profile, created = UserProfile.objects.get_or_create(user=user_obj)
 	if created:
 		profile.save()
+
+	new_oid, created = OpenID.objects.get_or_create(user=user_obj,
+										openid=user_obj.username,
+										default=True)
+	for root in DEFAULT_ROOTS:
+		n, _ = new_oid.trustedroot_set.get_or_create(trust_root=root)
+		n.save()
+	
+
 	return True
 
 
