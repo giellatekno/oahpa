@@ -33,6 +33,14 @@ TODO: link in user interface
 					{% endif %}
 					{% endfor %}
 				</ul>
+				<h3>Site.uit.no login information</h3>
+				<ul class="courselist">
+					{# TODO: generalize this #}
+					<li>Copy and paste this link into the OpenID field to log in.</li>
+					<li><img src="/univ_oahpa/media/images/openid.png" /> <a href="http://oahpa.uit.no/univ_oahpa/openid/{{ user.username }}/">http://oahpa.uit.no/univ_oahpa/openid/{{ user.username }}/</a></li>
+				</ul>
+
+
 
 				<h3>{% trans "Course progress" %}</h3>
 				<dl>
