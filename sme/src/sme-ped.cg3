@@ -2626,8 +2626,8 @@ SELECT:r722 ("láhka" Loc) IF (0 ("lága"))(*-1 BOC LINK *1 LAHKA-V-PASS LINK 0 
 	## Dat lea mearriduvvon lágas 33.
   	## Ii adnon norgga lágas daid attáldagaid birra maid dáččat mákse iežaset gonagassii.
 
-SELECT:r723 ("láhka") IF (0 ("lága" Loc))(*-1 ("reguleret") OR ("sihkkarastit") OR ("ovdan#boahtit") OR (Der/Pass + "oaidnit") BARRIER VERB OR S-BOUNDARY) ;
-     ## Dan ferte reguleret lágain.
+SELECT:r723 ("láhka") IF (0 ("lága" Loc))(*-1 ("reguleret") OR ("sihkkarastit") OR ("ovdan#boahtit") OR Der/Pass + ("oaidnit") BARRIER VERB OR S-BOUNDARY) ;
+    ## Dan ferte reguleret lágain.
      
 SELECT:r724 ("láhka") IF (0 ("lága"))(1 ("guoskat") OR ("gustot")) ; 
 SELECT:r725 ("láhka") IF (0 ("lága"))(*1 Rel BARRIER WORD LINK 1 ("guoskat") OR ("gustot")) ;        
