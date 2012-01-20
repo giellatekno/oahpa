@@ -8,14 +8,15 @@
 {% endblock %}
 
 {% block content %}
-
+{% ifnotequal gametype "sahka" %}
+{% ifnotequal gametype "sahka_main" %}
 <hr/>
-
 <div id="game_right_float">
-	<div id="instructions">
-		<p>{% block gamename %}{% endblock %}</p>
-		<p>{% block instructions %}{% endblock %}</p>
-	</div>
+    
+        <div id="instructions">
+            <p>{% block gamename %}{% endblock %}</p>
+            <p>{% block instructions %}{% endblock %}</p>
+        </div>
 	
 	{% block tooltips %}
 	<div id="tooltips">
@@ -33,10 +34,11 @@
 			{% endifequal %}
 		{% endfor %}
 		
-
 	</div>
-	{% endblock %}
+    {% endblock %}
 </div>
+{% endifnotequal %}
+{% endifnotequal %}
 
 <div id="game_left">
 	<dl id="question_set" class="{% block questionsetclass %}{% endblock %}">
@@ -44,7 +46,7 @@
 	
 	<dt>{% block question %}{% endblock %}</dt>
 	{# TODO: Switch rendering of tooltip to a different loop in a different block? #}
-	
+    
 	<dd>
 	{% if form.answer %}
 	
@@ -71,9 +73,9 @@
 		
 		{% if form.answertext2 %}<span class="answertext">{{ form.answertext2 }}</span>{% endif %}
 	
-	{% else %} 
-		{# If just test answers, mark correct answers as green #}
-	
+	{% else %}
+        {# If just test answers, mark correct answers as green #}
+        
 		{% if form.answertext1 %}<span class="answertext">{{ form.answertext1 }}</span>{% endif %}
 		
 		{% ifnotequal form.userans "" %}
@@ -87,17 +89,22 @@
 				<span class="incorrect">{{ form.answer }}</span>
 			{% endifequal %}
 	
-			{% if form.pron_imp %}<span class="pronoun">{{ form.pron_imp }}</span>{% endif %}
+			{% if form.pron_imp %}
+                <span class="pronoun">{{ form.pron_imp }}</span>
+            {% endif %}
 	
 		{% else %}
-			<!-- Answer field -->
+			<!-- Answer field -->                        
 			{% if form.pron %}<span class="pronoun">{{ form.pron }}</span>{% endif %}
-			
-			{{ form.answer }}
-			
-			{% if form.pron_imp %}<span class="pronoun">{{ form.pron_imp }}</span>{% endif %}
+			{% if gametype != "sahka" or forloop.last %}
+                {{ form.answer }}
+			{% endif %}
+			{% if form.pron_imp %}
+                <span class="pronoun">{{ form.pron_imp }}</span>
+            {% endif %}
 	
 		{% endifnotequal %}
+    {% endif %}
 		
 		{% if form.answertext2 %}<span class="answertext">{{ form.answertext2 }}</span>{% endif %}
 		
@@ -115,9 +122,8 @@
 		
 		{% endifequal %}
 	
-	{% endif %}
 	</span>
-	
+	{% endif %}
 	<span class="rightpart">
 	{% if show_correct %}
 		{% ifnotequal form.error "correct" %}
@@ -129,19 +135,7 @@
 				<span class="relaxed">{{ form.relaxed }}</span>
 			{% endifequal %}
 		{% endifnotequal %}
-	{% else %}
 	
-		{% if forloop.last %} 
-			{% ifequal gametype "sahka" %} 
-				{% if messages %} 
-					<div id="rightbarsahka"> 
-						{% for m in messages %}{{ m }}<br/>{% endfor %} 
-					</div> 
-				{% endif %} 
-			{% endifequal %} 
-		{% endif %} 
-	
-	{% endif %}
 	{% endif %}
 	</span>
 	
@@ -163,6 +157,7 @@
 	{% endfor %}
 	
 	</dd>
+    
 	{% endfor %}
 	</dl>
 	
@@ -177,16 +172,19 @@
 	{% endif %}
 	{% endblock %}
 	
-	<div id="score">
-		{% if 1 %}
-			{% if all_correct %}
-				{% trans "Congratulations!" %}<br />
+    <div id="score">
+        {% if 1 %}
+            {% if all_correct %}
+                {% trans "Congratulations!" %}<br />
 			{% endif %}
-			{% trans "Your score:" %} <span class="points">{{ score }}</span>
+            {% if score %}
+                {% trans "Your score:" %} <span class="points">{{ score }}</span>
+            {% endif %}
 		{% endif %}
 	</div>
 	
 	{% if comment %}
+        <br/>
 		{{ comment }}
 	{% endif %}
 	

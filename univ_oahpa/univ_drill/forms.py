@@ -897,10 +897,10 @@ class OahpaQuestion(forms.Form):
 							   [force_unicode(f) for f in forms]
 		self.relaxings = relaxings
 
-		def generate_fields(self,answer_size, maxlength):
-			self.fields['answer'] = forms.CharField(max_length = maxlength, \
-                                                widget=forms.TextInput(\
-            attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event,document.gameform);',}))  # copied from old-oahpa
+		#def generate_fields(self,answer_size, maxlength):
+		#	self.fields['answer'] = forms.CharField(max_length = maxlength, \
+         #                                       widget=forms.TextInput(\
+          #  attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event,document.gameform);',}))  # copied from old-oahpa
 
 # #
 #
