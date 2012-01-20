@@ -46,8 +46,21 @@
 	
 	<dt>{% block question %}{% endblock %}</dt>
 	{# TODO: Switch rendering of tooltip to a different loop in a different block? #}
-    
+    {% if gametype == "sahka" and not form.utterance %}
+        {{ form.utterance_id }}
+        <input type="hidden" name="{{ forloop.counter }}-userans" value="{{ form.userans }}" />
+		<input type="hidden" name="{{ forloop.counter }}-correct" value="{{ form.error }}" />
+        {% for detail, value in form.qattrs.items %}
+            <input type="hidden" name="{{ forloop.parentloop.counter }}-{{ detail }}" value="{{ value }}" />
+        {% endfor %}
+        {% for detail, value in form.aattrs.items %}
+            <input type="hidden" name="{{ forloop.parentloop.counter }}-{{ detail }}" value="{{ value }}" />
+        {% endfor %}
+
+     {% else %}
+
 	<dd>
+        
 	{% if form.answer %}
 	
 	{#	Show which answers are correct if "show correct" is pressed, else show a form#}
@@ -138,7 +151,7 @@
 	
 	{% endif %}
 	</span>
-	
+    
 	{{ form.word_id }}
 	{{ form.tag_id }}
 	{{ form.question_id }}
@@ -157,6 +170,7 @@
 	{% endfor %}
 	
 	</dd>
+    {% endif %} {# empty sahka form #}
     
 	{% endfor %}
 	</dl>

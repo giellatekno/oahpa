@@ -126,6 +126,7 @@ function submitSahka(dia) {
 
 {% block name %}Sahka{% endblock %}
 {% block pagename %}/univ_oahpa/sahka/{% endblock %}
+
 {% block settings %}
 
 {% if forms %}
@@ -189,7 +190,7 @@ function submitSahka(dia) {
 </table>
 
 {% endif %}
-{% endblock %}
+{% endblock settings %}
 
 {% block hidden %}
 <input type="hidden" name="topicnumber" value="{{ topicnumber }}" />
@@ -204,7 +205,7 @@ function submitSahka(dia) {
 
 {% if forms %} 
 {% if form.utterance %}
-  <td>  {{ form.utterance }}</td>
+    {{ form.utterance }}
 {% endif %}
 {% endif %}
 {% endblock %}
@@ -228,5 +229,6 @@ function submitSahka(dia) {
 </table>
 {% endif %}
 
-{% endblock %}
+{% endblock submit %}
+
 
