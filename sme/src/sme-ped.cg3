@@ -940,7 +940,7 @@ LIST COM-ADV = "fárrolaga" "oktan" "oktanaga" "ovtta#mielas" "ovttas" "ovttas#r
 # Other adverb sets
 # - - - - - - - - - 
 
-LIST GRADE-ADV =  "áibbas" "beare" ("eanet" Adv) "erenoamán" "erenoamáš" "earenoamáš" "hirbmat" "hui" "ila" "issoras" ("man" Adv) "menddo" "nu" "oalle" "oba" ("oppa" Adv) "seamma" "seammá" ("veaháš" Adv) "vehá" "veháš" "veahá" "veaháš" ;
+LIST GRADE-ADV =  "áibbas" "beare" "duođaid"  ("eanet" Adv) "erenoamán" "erenoamáš" "earenoamáš" "hirbmat" "hui" "ila" "issoras" ("man" Adv) "menddo" "nu" "oalle" "oba" "olu" ("oppa" Adv) "seamma" "seammá" ("veaháš" Adv) "vehá" "veháš" "veahá" "veaháš" ;
 
 
 # Adjectives
@@ -2136,6 +2136,11 @@ REMOVE:r551 (V*) IF (0 A-NOT-V) ;
 	# Particular adjectives
 	# - - - - - - - - - - -
 	
+REMOVE V (0 ("vielgahit")) ; # we want vielgat
+
+REMOVE N (0 (A Nom) OR (A Attr) LINK *1 N BARRIER NOT-ADJ) ;
+	## Mii oinniimet boaris viessu.
+
 REMOVE Inf IF (-1 GRADE-ADV)(0 (A Pl)) ;
 	## Soai leaba goappašagat nu jallat.
 
@@ -2506,6 +2511,12 @@ SELECT:r678 ("vuoncá#fálli") IF (0 ("vuoncá#fális"));
 	# friddjagoartta
 	# - - - - - - - -
 REMOVE:r679 ("friddja#agoarta") IF (0 ("friddja#goarta"));
+
+	# geardu vs geardut
+	# - - - - - - - -
+IFF:r542a ("geardut" V Prs Sg3) (NEGATE *0 VFIN BARRIER CLB) ;
+	## Go golmma geardu golmmain, de šaddá ovcci.
+
 
     # geassi vs. geasis
     # - - - - - - - - -
@@ -3389,7 +3400,7 @@ REMOVE:r953 Inf IF (*-1 BOS BARRIER VFIN)(*1 ("ahte" CS) BARRIER NOT-ADV);
 SELECT:r954 (V Sg3) IF (*-1 SON BARRIER Nom OR V-SG3 OR CS OR PUNCT LINK NOT *-1 V-SG3 BARRIER NOT-ADV-PCLE)(NEGATE 0 Adv LINK *1 V-SG3);
 	## Geas ležžet bealjit, son gullos!
 
-SELECT:r955 (V Sg3) IF (*1 SON BARRIER NOT-ADV-PCLE OR go OR CLB)(NEGATE 0 CS)(NEGATE 0 Adv LINK *1 (V Sg3) BARRIER SV-BOUNDARY);
+SELECT:r955 (V Sg3) IF (*1 SON BARRIER NOT-ADV-PCLE OR go OR CLB OR S-BOUNDARY)(NEGATE 0 CS)(NEGATE 0 Adv LINK *1 (V Sg3) BARRIER SV-BOUNDARY);
 	## ...oažžu son atnit dušše dan čázis mii sutnje lea mearriduvvon.
 
 REMOVE:r956 (V Sg3) IF (-1 (Pron Nom))(NEGATE -1 Sg OR Sg3);
@@ -5567,10 +5578,10 @@ MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 ("birget") OR ("birgehallat") OR (
 MAP (&grm-should-not-PP) TARGET Po (-1 ANIMATE + Com LINK *-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL) ;
 
 # If a STRICTLOCV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Loc (no Inf is accepted) Exception for Gen + N - e.g. bártni moarsi beatnagis: 
-MAP (&grm-should-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Gen LINK 1 Actio) ;
+MAP (&grm-should-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc OR Nom)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Gen LINK 1 Actio) ;
 
 # If a STRICTILLV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Ill, (no Inf is accepted). Exception is "liikot" + Inf, for PP amd for Gen + N - e.g. bártni moarsi beatnagii: 
-MAP (&grm-should-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH) ;
+MAP (&grm-should-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill OR Nom)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH) ;
 
 # Noun Ess only after an ESSV (other words can be between): 
 #MAP (&grm-should-not-Ess) TARGET (N Ess) (NOT *-1 ESSV OR ACCESSV BARRIER S-BOUNDARY) ; 
@@ -5626,10 +5637,15 @@ SELECT A (*-1 QDL)(*1 N OR Pers BARRIER NPNH LINK 1 COPULAS) ;
     ## Čeahppi son lea.
 
 # Should be Attr when: + (Attr) + N
-MAP (&grm-shouldAttr) TARGET A IF (*-1 QDL)(NEGATE 0 Attr OR ("nubbi") OR ("buorre"))(*1 N BARRIER NOT-Attr-CC-Adv) ;
+#MAP (&grm-shouldAttr) TARGET A IF (*-1 QDL)(NEGATE 0 Attr OR ("nubbi") OR ("buorre"))(*1 N BARRIER NOT-Attr-CC-Adv) ;
+
+MAP (&grm-shouldAttr) TARGET A IF (*-1 QDL)(NEGATE 0 Attr OR ("nubbi") OR ("buorre") OR Adv OR Ord) (*1 N BARRIER NOT-Attr-CC-Adv OR COMMA OR CC LINK NOT 0 Inf) (NEGATE *-1 COPULAS BARRIER NOT-ADV LINK *2 ADVLCASE BARRIER NPNH) ;
+	## Ájlin lei hui čeahppi dan váivves matematihkas.
+	## Áilin lei čeahppi matematihkas.
+
 
 # Should not be an Attr if it is not in front of N
-MAP (&grm-shouldNotAttr) TARGET Attr IF (*-1 QDL)(NEGATE 0 Nom)(NEGATE *1 N BARRIER VERB OR S-BOUNDARY) ;
+MAP (&grm-shouldNotAttr) TARGET Attr IF (*-1 QDL)(NEGATE 0 Nom)(NEGATE *1 N BARRIER NPNH)(NEGATE 0 Adv)(NEGATE 0 GRADE-ADV LINK 1 Adv) ;
 
 # When Nom = Acc
 SELECT (N Acc)(*-1 V-TRANS-ACT-NOT-ACT BARRIER S-BOUNDARY OR VERB LINK *-1 Nom)(NOT *1 Acc BARRIER QDL)(*1 QDL);
@@ -5689,11 +5705,11 @@ MAP (&grm-Vehicle-Com) TARGET VEHICLE IF (NOT 0 Com LINK *-1 VERB LINK 0 ("vuodj
 MAP (&grm-Loc-leaving) TARGET PLACE + Loc IF (*-1 VERB LINK 0 ("vuodjit") OR ("vuolgit") OR ("mannat") BARRIER Ill OR VERB OR S-BOUNDARY LINK *-1 QDL) ;
 
 # Acc in S V O
-REMOVE Nom IF (-1 V-TRANS-ACT-NOT-ACT LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(NOT 0 TIME OR ROUTE);
+REMOVE Nom IF (-1 V-TRANS-ACT-NOT-ACT LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(NOT 0 TIME OR ROUTE)(NEGATE 0 A LINK *1 N BARRIER NOT-ADJ);
 REMOVE Nom IF (-1 V-TRANS-ACT-NOT-ACT OR DURATION-V LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(0 TIME);
 REMOVE Nom IF (-1 V-TRANS-ACT-NOT-ACT OR DURATION-V LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(0 Num LINK 1 TIME);
 
-MAP (&grm-should-not-Nom) TARGET Nom IF (-1 V-TRANS-ACT-NOT-ACT LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(NOT 0 TIME OR ROUTE);
+MAP (&grm-should-not-Nom) TARGET Nom IF (-1 V-TRANS-ACT-NOT-ACT LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(NOT 0 TIME OR ROUTE OR Rel);
 
 # Acc when time
 MAP (&grm-should-not-Nom) TARGET Nom IF (-1 V-TRANS-ACT-NOT-ACT OR DURATION-V LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(0 TIME);
@@ -5825,7 +5841,7 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1
 # -------
 
 # After Neg
-MAP (&grm-should-negV) TARGET V IF (*-1 QDL)(*-1 Neg BARRIER NOT-ADV)(NOT 0 ConNeg OR PrfPrc) ;
+MAP (&grm-should-negV) TARGET V IF (*-1 QDL)(*-1 Neg BARRIER NOT-ADV OR Foc/ge OR COMMA LINK NOT 0 Foc/ge)(NOT 0 ConNeg OR PrfPrc) ;
 
 # -----------------------------
 # Answering with the same verb?
@@ -5839,7 +5855,7 @@ MAP (&grm-should-negV) TARGET ConNeg (-1 Neg LINK *-1 QDL BARRIER S-BOUNDARY LIN
 MAP (&sem-dont-know) TARGET ("diehtit" ConNeg) (*-1 QDL BARRIER S-BOUNDARY LINK NOT *-1 ("diehtit")) ;
 
 LIST VERBLEMMA = (".*"r) ;
-LIST SOAITIT = "soaitit" "dáidit" "veadjit" ;
+LIST SOAITIT = "soaitit" "dáidit" "veadjit" "sáhttit" ;
 LIST BARGGUS = Leat_go_barggus_adult Leat_go_barggus_young ;
 
 MAP (&grm-soaitit) TARGET ("soaitit")(*-1 QDL)(0 V LINK *1 VFIN BARRIER S-BOUNDARY LINK NOT 0 Inf)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
@@ -5895,7 +5911,7 @@ MAP (&grm-incorr-tense) TARGET VFIN + Prt (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0
 
 # If not agreement:
 MAP (&grm-non-agr-subj-v) TARGET VFIN IF (0 $$VFIN-PRON-TAG LINK -1 (Pers Nom) LINK NOT 0 $$VFIN-PRON-TAG LINK *-1 QDL) ;
-MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Sg3 LINK -1 (N Sg Nom) LINK NOT 0 (Coll Nom) OR DUALIS-NOUN LINK *-1 QDL) ;
+MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Sg3 LINK -1 (N Sg Nom) LINK NOT 0 (Coll Nom) OR DUALIS-NOUN  LINK NEGATE *-1 CC BARRIER NPNH LINK -1 N LINK *-1 QDL) ;
 MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Pl3 LINK -1 (N Pl Nom) LINK *-1 QDL) ;
 MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Du3 LINK -1 DUALIS-NOUN + Nom LINK *-1 QDL) ;
 
@@ -5907,7 +5923,7 @@ MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Du3 LINK -1 DUALIS-NOUN + Nom LI
 # ONLY ONE VFIN
 # -------------
 
-MAP (&grm-should-not-Vfin) TARGET VFIN IF (*-1 VFIN BARRIER CC OR COMMA OR S-BOUNDARY LINK 0 AUX OR INFV LINK *-1 QDL)(NOT 0 Neg) ;
+MAP (&grm-should-not-Vfin) TARGET VFIN IF (*-1 VFIN BARRIER CC OR COMMA OR S-BOUNDARY OR Nom LINK 0 AUX OR INFV LINK *-1 QDL)(NOT 0 Neg) ;
     ## Mun áiggun láibut.
 
 MAP (&grm-not-verb-after-workverb) TARGET VERB IF (*-1 VFIN BARRIER CC OR S-BOUNDARY LINK 0 WORK-V LINK *-1 QDL) ;
