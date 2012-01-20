@@ -1,8 +1,12 @@
 <?xml version="1.0"?>
 <!--+
-    | 
-    | The parameter: the path to the collection of XML-files to check
-    | Usage: java -Xmx2048m net.sf.saxon.Transform -it main THIS_FILE inDir=DIR outDir=DIR
+    | Description: 
+    |   This script generates templates for question-answer pairs from the dialogue files
+    |   for Sahka. The default answer 'xxx' should be replaces by at least one natural language
+    |   sentence utterance for the given question.
+    |
+    | Parameter: the path to the collection of XML-files to check
+    | Usage: java -Xmx2048m net.sf.saxon.Transform -it main THIS_SCRIPT inDir=DIR outDir=DIR
     | 
     +-->
 
