@@ -2,7 +2,7 @@
 <!--+
     | 
     | The parameter: the path to the collection of XML-files to check
-    | Usage: java -Xmx2048m net.sf.saxon.Transform -it main THIS_FILE inputDir=DIR
+    | Usage: java -Xmx2048m net.sf.saxon.Transform -it main THIS_FILE inDir=DIR outDir=DIR
     | 
     +-->
 
@@ -14,8 +14,8 @@
 	      omit-xml-declaration="no"
 	      indent="yes"/>
 
-  <xsl:param name="inputDir" select="'default'"/>
-  <xsl:variable name="outputDir" select="'out_dir'"/>
+  <xsl:param name="inDir" select="'default'"/>
+  <xsl:variable name="outDir" select="'out_dir'"/>
   <xsl:variable name="e" select="'xml'"/>
   <xsl:variable name="dt" select="'.'"/>
   <xsl:variable name="qm" select="'?'"/>
@@ -24,7 +24,7 @@
 
     <xsl:variable name="output">
       <out>
-	<xsl:for-each select="collection(concat($inputDir, '?select=dialogue_*.xml'))">
+	<xsl:for-each select="collection(concat($inDir, '?select=dialogue_*.xml'))">
 	  <xsl:variable name="filename" select="substring-before(tokenize(document-uri(.), '/')[last()], '.xml')"/>
 	  <xsl:variable name="dial" select="substring-after($filename, 'dialogue_')"/>
 	  <q_tests>
@@ -79,7 +79,7 @@
     
     <!-- output the data into separate txt-files: pos it the file name descriptor-->
     <xsl:for-each select="$output/out/q_tests">
-      <xsl:result-document href="{$outputDir}/out_{./@dialogue}.{$e}">
+      <xsl:result-document href="{$outDir}/out_{./@dialogue}.{$e}">
 	
 	<xsl:copy-of select="."/>
 	
