@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-14 08:48+0100\n"
+"POT-Creation-Date: 2012-01-22 21:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: extern/django_openid_provider/openid_provider/models.py:15
+msgid "OpenID"
+msgstr ""
+
+#: extern/django_openid_provider/openid_provider/models.py:16
+msgid "OpenIDs"
+msgstr ""
+
+#: extern/django_openid_provider/openid_provider/views.py:159
+msgid "Trust this site?"
+msgstr ""
+
+#: extern/django_openid_provider/openid_provider/views.py:167
 #: templates/404.html:8 templates/500.html:8
 msgid "Error"
 msgstr "Feaila"
@@ -578,35 +591,43 @@ msgstr ""
 msgid "View course lessons"
 msgstr "Čájet kurssa cehkiid"
 
-#: templates/courses/courses_main.html:37
+#: templates/courses/courses_main.html:36
+msgid "Site.uit.no login information"
+msgstr ""
+
+#: templates/courses/courses_main.html:39
+msgid "Copy and paste this link into the OpenID field to log in."
+msgstr ""
+
+#: templates/courses/courses_main.html:45
 msgid "Course progress"
 msgstr "Kurssa ovdáneami"
 
-#: templates/courses/courses_main.html:43
+#: templates/courses/courses_main.html:51
 #: templates_old/courses/courses_main.html:56
 msgid "Average"
 msgstr "Gaskamearálaččat"
 
-#: templates/courses/courses_main.html:44
+#: templates/courses/courses_main.html:52
 #: templates_old/courses/courses_main.html:57
 msgid "Highest score"
 msgstr "Buoremus boađus"
 
-#: templates/courses/courses_main.html:45
+#: templates/courses/courses_main.html:53
 #: templates_old/courses/courses_main.html:58
 msgid "Lowest score"
 msgstr "Du čuoggát:"
 
-#: templates/courses/courses_main.html:46
+#: templates/courses/courses_main.html:54
 #: templates_old/courses/courses_main.html:59
 msgid "Number of tries"
 msgstr ""
 
-#: templates/courses/courses_main.html:54
+#: templates/courses/courses_main.html:62
 msgid "You are a course instructor."
 msgstr ""
 
-#: templates/courses/courses_main.html:55
+#: templates/courses/courses_main.html:63
 msgid "View students' grades"
 msgstr ""
 
@@ -1286,11 +1307,11 @@ msgstr "Oahpásmuva Lisái"
 msgid "Firstmeeting man"
 msgstr "Oahpásmuva Hánsii"
 
-#: univ_drill/forms.py:315 univ_drill/templates/sahka.html:178
+#: univ_drill/forms.py:315 univ_drill/templates/sahka.html:177
 msgid "Visit"
 msgstr "Guossis"
 
-#: univ_drill/forms.py:316 univ_drill/templates/sahka.html:183
+#: univ_drill/forms.py:316 univ_drill/templates/sahka.html:182
 msgid "Grocery"
 msgstr "Borramušgávppis"
 
@@ -1673,28 +1694,28 @@ msgstr "Čále dáhtona sámegillii (omd. geassemánu 3. b.)"
 msgid "Expression of dates numeric to words or vice versa."
 msgstr "Čále dáhtona mánnonamain dahje loguiguin"
 
-#: univ_drill/templates/game.html:109
+#: univ_drill/templates/game.html:129
 msgid "help"
 msgstr "Veahkki"
 
-#: univ_drill/templates/game.html:113
+#: univ_drill/templates/game.html:133
 msgid "This is almost correct!"
 msgstr "Measta riekta!"
 
-#: univ_drill/templates/game.html:172 univ_drill/templates/leksa.html:74
+#: univ_drill/templates/game.html:181 univ_drill/templates/leksa.html:74
 #: univ_drill/templates/vasta.html:53
 msgid "Test answers"
 msgstr "Iskka vástádusaid"
 
-#: univ_drill/templates/game.html:175 univ_drill/templates/leksa.html:77
+#: univ_drill/templates/game.html:184 univ_drill/templates/leksa.html:77
 msgid "Show the correct answers"
 msgstr "Čájet rivttes vástádusaid"
 
-#: univ_drill/templates/game.html:183
+#: univ_drill/templates/game.html:192
 msgid "Congratulations!"
 msgstr "Gratulerer!"
 
-#: univ_drill/templates/game.html:185
+#: univ_drill/templates/game.html:195
 msgid "Your score:"
 msgstr "Du čuoggát:"
 
@@ -1877,49 +1898,49 @@ msgstr "Diibmu"
 msgid "Dato"
 msgstr "Dáhtonat"
 
-#: univ_drill/templates/sahka.html:108
+#: univ_drill/templates/sahka.html:106
 msgid "Select a dialogue"
 msgstr ""
 
-#: univ_drill/templates/sahka.html:136
+#: univ_drill/templates/sahka.html:135
 msgid ""
 "Answer to the questions with full sentences. Remember big initial letter in "
 "placenames."
 msgstr ""
 
-#: univ_drill/templates/sahka.html:147
+#: univ_drill/templates/sahka.html:146
 msgid ""
 "NB! NB! The Sahka game is not working properly, due to technical problems! "
 "NB! NB!"
 msgstr ""
 
-#: univ_drill/templates/sahka.html:148
+#: univ_drill/templates/sahka.html:147
 msgid ""
 "NB! NB! The Sahka game is temporarily out of order, due to technical "
 "maintenance! NB! NB!"
 msgstr ""
 
-#: univ_drill/templates/sahka.html:159
+#: univ_drill/templates/sahka.html:158
 msgid "Meeting with Kare"
 msgstr "Oahpásmuva Kárii"
 
-#: univ_drill/templates/sahka.html:163
+#: univ_drill/templates/sahka.html:162
 msgid "Meeting with Hansa"
 msgstr "Oahpásmuva Hánsii"
 
-#: univ_drill/templates/sahka.html:167
+#: univ_drill/templates/sahka.html:166
 msgid "Meeting with Lisa"
 msgstr "Oahpásmuva Lisái"
 
-#: univ_drill/templates/sahka.html:171
+#: univ_drill/templates/sahka.html:170
 msgid "Meeting with Lemet"
 msgstr "Oahpásmuva Lemehii"
 
-#: univ_drill/templates/sahka.html:188
+#: univ_drill/templates/sahka.html:187
 msgid "Shop"
 msgstr ""
 
-#: univ_drill/templates/sahka.html:219
+#: univ_drill/templates/sahka.html:217
 msgid "Answer"
 msgstr ""
 
