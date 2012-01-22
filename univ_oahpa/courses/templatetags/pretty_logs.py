@@ -4,44 +4,24 @@ from django.utils.translation import ugettext_lazy as _
 
 register = template.Library()
 
-FILTER_WORDS = [
-	'Contextual',
-	'ordinal',
-	'cardinal',
-	'clock',
-	'dato',
-	'Place',
-]
+FILTER_EXCEPTIONS = dict([
+	(u'Contextual Morfa', u'Morfa C'),
+])
 
-from univ_drill.forms import ADJCASE_CHOICES, ADJEX_CHOICES, ADJ_CONTEXT_CHOICES, BOOK_CHOICES, CASE_CHOICES, CASE_CHOICES_PRONOUN, CASE_CONTEXT_CHOICES, DIALOGUE_CHOICES, FREQUENCY_CHOICES, GEOGRAPHY_CHOICES, GRADE_CHOICES, KLOKKA_CHOICES, LEVEL_CHOICES, NUMGAME_CHOICES, NUMGAME_CHOICES_PL, NUMLANGUAGE_CHOICES, NUM_BARE_CHOICES, NUM_CHOICES, NUM_CONTEXT_CHOICES, NUM_LEVEL_CHOICES, POS_CHOICES, PRONOUN_SUBCLASSES, PRON_CONTEXT_CHOICES, RECIP_REFL_CHOICES, SEMTYPE_CHOICES, TRANS_CHOICES, VASTA_LEVELS, VERB_CLASSES, VTYPE_CHOICES, VTYPE_CONTEXT_CHOICES
-
-tuple_sets = [
-ADJCASE_CHOICES, ADJEX_CHOICES, ADJ_CONTEXT_CHOICES, BOOK_CHOICES,
-CASE_CHOICES, CASE_CHOICES_PRONOUN, CASE_CONTEXT_CHOICES, DIALOGUE_CHOICES,
-FREQUENCY_CHOICES, GEOGRAPHY_CHOICES, GRADE_CHOICES, KLOKKA_CHOICES,
-LEVEL_CHOICES, NUMGAME_CHOICES, NUMGAME_CHOICES_PL, NUMLANGUAGE_CHOICES,
-NUM_BARE_CHOICES, NUM_CHOICES, NUM_CONTEXT_CHOICES, NUM_LEVEL_CHOICES,
-POS_CHOICES, PRONOUN_SUBCLASSES, PRON_CONTEXT_CHOICES, RECIP_REFL_CHOICES,
-SEMTYPE_CHOICES, TRANS_CHOICES, VASTA_LEVELS, VERB_CLASSES, VTYPE_CHOICES,
-VTYPE_CONTEXT_CHOICES, 
-
-				# CASE_CHOICES, 
-				# CASE_CHOICES_PRONOUN, 
-				# CASE_CONTEXT_CHOICES,
-				# PRONOUN_SUBCLASSES,
-				# PRON_CONTEXT_CHOICES,
-				# ADJCASE_CHOICES,
-				# ADJEX_CHOICES,
-				# VTYPE_CHOICES,
-				# VTYPE_CONTEXT_CHOICES,
-]
+from univ_drill.forms import ALL_CHOICES
 
 key_to_string = {}
 
-for s in tuple_sets:
+for s in ALL_CHOICES:
 	for k, v in s:
-		key_to_string[k] = v
+		if k.lower() not in key_to_string:
+			key_to_string[unicode(k.lower())] = v
+		elif k.lower() in key_to_string:
+			continue
+			# print 'possible duplicate? ', k.lower(), ' ', v
+			# key_to_string[unicode(k.lower())] = v
 
+# TODO: Leksa - Place - maailma - tavalliset - harvat
 
 @register.filter(name='filter_log')
 def filter_log(value):
@@ -51,14 +31,23 @@ def filter_log(value):
 
 	substituted = []
 
-	items = value.split(' - ')
+	items = [i for i in value.split(' - ') if i.strip()]
+	print items
 	for item in items:
 		subitems = item.split(', ')
 
 		sub_subs = []
 		for subitem in subitems:
-			sub = key_to_string.get(subitem, subitem)
-			sub_subs.append(sub)
+			if subitem not in FILTER_EXCEPTIONS:
+				sub = key_to_string.get(subitem.lower(), subitem)
+				if type(sub) not in [str, unicode]:
+					sub_subs.append(sub)
+				else:
+					sub_subs.append(subitem)
+			else:
+				sub = FILTER_EXCEPTIONS[subitem]
+				sub_subs.append(sub)
+
 
 		substituted.extend(sub_subs)
 	
