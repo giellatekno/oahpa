@@ -500,20 +500,37 @@ class Morfaview(Gameview):
 
 	def syll_settings(self,settings_form):
 
-		self.settings['syll'] = []
+		def true_false_filter(val):
+			if val in ['on', 'On', u'on', u'On']:
+				return True
+			else:
+				return False
 
-		bisyl = settings_form.data.get('bisyllabic', False)
-		trisyl = settings_form.data.get('trisyllabic', False)
-		cont = settings_form.data.get('contracted', False)
+		bisyl = settings_form.data.get('bisyllabic', None)
+		trisyl = settings_form.data.get('trisyllabic', None)
+		cont = settings_form.data.get('contracted', None)
 
-		if bisyl:
+		if 'syll' not in self.settings:
+			self.settings['syll'] = []
+
+		# Special treatment of settings_form.data['bisyllabic'] since 
+		# it is set by default.
+		
+		if true_false_filter(bisyl):
 			self.settings['syll'].append('2syll')
-		if trisyl:
+			settings_form.data['bisyllabic'] = 'on'
+		else:
+			settings_form.data['bisyllabic'] = None
+
+		if true_false_filter(trisyl):
 			self.settings['syll'].append('3syll')
-		if cont:
+		if true_false_filter(cont):
 			self.settings['syll'].append('Csyll')
 		if len(self.settings['syll']) == 0:
 			self.settings['syll'].append('2syll')
+
+		self.settings['syll'] = list(set(self.settings['syll']))
+
 	
 	def deeplink_keys(self, game, settings_form):
 		""" The MorfaSettings form has a lot of values in it, so we need to
