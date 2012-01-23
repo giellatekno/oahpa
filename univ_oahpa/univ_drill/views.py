@@ -288,6 +288,13 @@ class Leksaview(Gameview):
 class LeksaPlaceview(Gameview):
 
 	def additional_settings(self, settings_form):
+		
+		def true_false_filter(val):
+			if val in ['on', 'On', u'on', u'On']:
+				return True
+			else:
+				return False
+
 		self.settings['allsem'] = []
 		self.settings['semtype'] = "PLACE_LEKSA"
 		self.settings['geography'] = 'world'
@@ -297,10 +304,27 @@ class LeksaPlaceview(Gameview):
 		# settings_form.default_data['transtype'] = default_langpair
 
 		self.settings['frequency'] = []
+
+		# NOTE: Checkboxes as choices seem to be weird, thus more complex logic
+		# I wonder if the problem is that the form is not being validated
+		# Because it seems like there's a lot of code getting around this fact
+
 		if 'common' in settings_form.data:
-			self.settings['frequency'].append('common')
+			if true_false_filter(settings_form.data['common']):
+				self.settings['frequency'].append('common')
+				settings_form.data['common'] = 'on'
+			else:
+				settings_form.data['common'] = None
+
 		if 'rare' in settings_form.data:
 			self.settings['frequency'].append('rare')
+			if true_false_filter(settings_form.data['rare']):
+				self.settings['frequency'].append('rare')
+				settings_form.data['rare'] = 'on'
+			else:
+				settings_form.data['rare'] = None
+		
+		
 # 		if len(self.settings['frequency']) == 0:
 # 			self.settings['frequency'].append('common')
 			
