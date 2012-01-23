@@ -1600,10 +1600,10 @@ class ContextMorfaQuestion(OahpaQuestion):
 			self.wordclass = answer_word_el.wordclass
 	
 		# If the asked word is in Pl, generate nominal form
-		if answer_tag_el.pos=="N":
-			# For collective numerals, take the presentationform
-			if qtype=="COLL-NUM":
-				self.lemma = answer_word_el.presentationform
+
+		if answer_tag_el.pos == "N":
+			if qtype == "COLL-NUM":
+				self.lemma = answer_word_el.lemma
 			else:
 				if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess" or qtype=="N-NOM-PL":
 					self.lemma = answer_word_el.lemma
@@ -1613,11 +1613,10 @@ class ContextMorfaQuestion(OahpaQuestion):
 						self.lemma = nplforms[0].fullform
 					else:
 						self.lemma = answer_word_el.lemma + " (plural) fix this"
-		# if answer_tag_el.pos=="A":
-		# 	self.lemma=""
 
-		if qtype=="ORD-NUM":
-			self.lemma=answer_word_el.presentationform
+		if qtype == "ORD-NUM":
+			self.lemma = answer_word_el.lemma
+
 		# Retrieve feedback information
 		self.get_feedback(answer_word_el,answer_tag_el,self.lemma,dialect,language)
 
