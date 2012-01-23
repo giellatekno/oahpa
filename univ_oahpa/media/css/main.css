@@ -400,16 +400,15 @@ div#game hr {
 #leftcontent .bigheader {
 	text-align: left;
 	font-weight: light;
-	margin-bottom: .25em;
+	margin-bottom: .75em;
 	font-size: 125%;
 	letter-spacing: 1px;
 	color: #144ea6;
 }
 
 #leftcontent img {
-	display: inline;
+	display: block;
 	margin: 0 auto;
-    width: 140px;
 }
 
 #leftcontent strong {
@@ -580,7 +579,7 @@ span.rightpart a.feedback_link {
 }
 
 #question_set dd {
-	display: table-row;
+	display: tablerow;
 	padding-top: .25em;
 	margin-bottom: .75em;
 	padding-bottom: 1.5em;
@@ -610,35 +609,7 @@ span.incorrect input {
 	color: #900;
 }
 
-/* Sahka */
 
-dl#question_set.sahka dd {
-	display: table-row;
-	padding-top: .5em;
-	margin-bottom: .5em;
-	padding-bottom: 2em;
-	position: relative;
-}
-
-dl#question_set.sahka dt {
-    display: inline;
-}
-
-dl#question_set.sahka input[type='text'] {
-	width: 30em;
-    display: table-row;
-}
-
-#question_set.sahka span.leftpart {
-    margin-left: 1.5em;
-	display: table-row;
-    position: relative;
-}
-
-
-#question_set.sahka span.correct span.incorrect {
-	display: table-cell;
-}
 
 #footer a {
 	text-decoration: none;
