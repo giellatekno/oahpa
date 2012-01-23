@@ -323,6 +323,9 @@ DIALOGUE_CHOICES = (
 # )
 
 
+# Syllables are manually coded in the templates, but it's useful to get the
+# translation strings here, also for the courses module logging.
+
 SYLLABLE_VALUES = (
 	('2syll', _('bisyllabic')),
 	('3syll', _('trisyllabic')),
@@ -830,28 +833,38 @@ class OahpaSettings(forms.Form):
 	"""
 	set_settings = set_settings
 	
+	def clean(self):
+		x = self.cleaned_data['bisyllabic']
+		print 'clean: ', x
+		return self.cleaned_data
+	
 	def set_default_data(self):
-		self.default_data = {'language' : 'sme', # why rus ?
-				     'syll' : ['2syll'],
-				     'level' : 'all',
-				     'case': 'N-ILL',
-				     'pos' : 'N',
-				     'vtype' : 'PRS',
-				     'adjcase' : 'ATTR',
-				     'number' : '',  
-				     'pron_type': 'Pers',
-				     'proncase' : 'N-ILL',
-				     'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
-				     'case_context' : 'N-ILL',
-				     'vtype_context' : 'V-PRS',
-				     'pron_context' : 'P-PERS',
-				     'num_context' : 'NUM-ATTR',
-				     'num_level' : '1',
-				     'geography': 'world',
-				     'frequency' : [],
-				     'num_bare' : 'N-ILL',
-				     'adj_context' : 'ATTRPOS',
-				     'source' : 'all'} 
+		self.default_data = {
+					'language' : 'sme', # why rus ?
+					'syll' : ['2syll'],
+					'bisyllabic': 'on',
+					'trisyllabic': False,
+					'contracted': False,
+					'level' : 'all',
+					'case': 'N-ILL',
+					'pos' : 'N',
+					'vtype' : 'PRS',
+					'adjcase' : 'ATTR',
+					'number' : '',
+					'pron_type': 'Pers',
+					'proncase' : 'N-ILL',
+					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
+					'case_context' : 'N-ILL',
+					'vtype_context' : 'V-PRS',
+					'pron_context' : 'P-PERS',
+					'num_context' : 'NUM-ATTR',
+					'num_level' : '1',
+					'geography': 'world',
+					'frequency' : [],
+					'num_bare' : 'N-ILL',
+					'adj_context' : 'ATTRPOS',
+					'source' : 'all'}
+
 
 
 
@@ -965,7 +978,12 @@ class LeksaSettings(OahpaSettings):
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 	
 	default_data = {'gametype' : 'bare', 'language' : 'sme', 'dialogue' : 'GG', 
-			'syll' : [], 'source': 'all',
+			'syll' : [], 
+			'bisyllabic': False,
+			'trisyllabic': False,
+			'bisyllabic': False,
+			'contracted': False,
+			'source': 'all',
 			'semtype' : 'HUMAN',
 			'geography' : 'world',
 			'frequency' : ['common'] # added
@@ -1108,6 +1126,8 @@ class MorfaSettings(OahpaSettings):
 			if 'pron_type' in post_data:
 				if post_data['pron_type'].lower() in ['refl', 'recipr']:
 					self.fields['proncase'].choices = RECIP_REFL_CHOICES
+
+
 
 
 class MorfaQuestion(OahpaQuestion):
