@@ -323,6 +323,11 @@ DIALOGUE_CHOICES = (
 # )
 
 
+SYLLABLE_VALUES = (
+	('2syll', _('bisyllabic')),
+	('3syll', _('trisyllabic')),
+	('Csyll', _('contracted')),
+)
 
 ALL_CHOICES = [
 	ADJCASE_CHOICES, 
@@ -350,6 +355,7 @@ ALL_CHOICES = [
 	PRON_CONTEXT_CHOICES,
 	RECIP_REFL_CHOICES, 
 	SEMTYPE_CHOICES, 
+	SYLLABLE_VALUES,
 	TRANS_CHOICES, 
 	VASTA_LEVELS, 
 	VERB_CLASSES,
