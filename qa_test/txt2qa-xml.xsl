@@ -56,9 +56,11 @@
 	    <xsl:for-each select="$file_lines">
 	      <xsl:variable name="normLine" select="normalize-space(.)"/>
 	      <xsl:if test="not($normLine = '')">
-		<test name="{translate($normLine, ' ', '_')}">
+		<xsl:variable name="name" select="normalize-space(substring-before($normLine, $cl))"/>
+		<xsl:variable name="question" select="normalize-space(substring-after($normLine, $cl))"/>
+		<test name="{$name}">
 		  <q>
-		    <xsl:copy-of select="."/>
+		    <xsl:copy-of select="$question"/>
 		  </q>
 		  <a>
 		    <xsl:copy-of select="'xxx.'"/>
