@@ -5389,13 +5389,25 @@ LIST C_ACC = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc ;
 
 LIST C_SG1 = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc ;
 
+LIST NOUNLEMMA = (".*"r) ;
+LIST ADJLEMMA = (".*"r) ;
+LIST VERBLEMMA = (".*"r) ;
+
+
+
+MAP (&sem-answer-with-same-noun) TARGET (N Acc) (0 $$NOUNLEMMA LINK *-1 CEALKKA BARRIER N LINK NOT *-1 $$NOUNLEMMA) ;
+
+MAP (&sem-answer-with-same-adj) TARGET (A Attr) (0 $$ADJLEMMA LINK *-1 CEALKKA BARRIER A LINK NOT *-1 $$ADJLEMMA) ;
+
+MAP (&sem-answer-with-same-verb) TARGET VFIN (0 $$VERBLEMMA LINK *-1 CEALKKA BARRIER V LINK NOT *-1 $$VERBLEMMA) ;
+
 
 MAP (&grm-missing-Acc) TARGET N (*-1 C_ACC BARRIER (N Acc))(NOT 0 Acc OR Gen) ;
 
 MAP (&grm-non-agr-subj-v) TARGET V (*-1 C_SG1 BARRIER (V Sg1))(NOT 0 Sg1) ;
 
 
-
+# Sahka
 
 # The user wants to stop the dialogue
 MAP (&dia-stop) TARGET ("heaitit")(*-1 SAHKA) ; 
@@ -5876,7 +5888,6 @@ MAP (&grm-should-negV) TARGET ConNeg (-1 Neg LINK *-1 QDL BARRIER S-BOUNDARY LIN
 
 MAP (&sem-dont-know) TARGET ("diehtit" ConNeg) (*-1 QDL BARRIER S-BOUNDARY LINK NOT *-1 ("diehtit")) ;
 
-LIST VERBLEMMA = (".*"r) ;
 LIST SOAITIT = "soaitit" "dáidit" "veadjit" "sáhttit" ;
 LIST BARGGUS = Leat_go_barggus_adult Leat_go_barggus_young ;
 
