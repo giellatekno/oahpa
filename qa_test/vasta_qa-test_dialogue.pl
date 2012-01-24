@@ -11,7 +11,7 @@ $mode = $ARGV[1];
 my $twig = XML::Twig->new();
 # to extend for vasta, too
 my $s = '^'.$mode;
-if (($mode eq "sahka") or ($mode eq "cealka"))
+if (($mode eq "sahka") or ($mode eq "cealkka"))
 {
   $s = '^'.$mode;
   print "mode is $mode\n";
@@ -19,7 +19,6 @@ if (($mode eq "sahka") or ($mode eq "cealka"))
   $s = '^'.$mode;
 }
 
-my $s = '^sahka';
 my $lon = 'lookup -flags mbTT -utf8 ~/gtsvn/gt/sme/bin/sme-norm.fst';
 my $tmp_file = "tmp_data.txt";
 my $out_file = "final_data.txt";
