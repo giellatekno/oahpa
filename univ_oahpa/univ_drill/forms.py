@@ -249,6 +249,7 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
+	('FAMILY', _('family')), 
 	('HUMAN', _('human')),
 	('HUMAN-LIKE', _('human-like')),
 	('ANIMAL', _('animal')),
@@ -258,8 +259,10 @@ SEMTYPE_CHOICES = (
 	('BODY', _('body')),
 	('CLOTHES', _('clothes')),
 	('BUILDINGS/ROOMS', _('buildings/rooms')),
+	('CITY', _('city')), 
 	('NATUREWORDS', _('naturewords')),
 	('LEISURETIME/AT_HOME', _('leisuretime/at_home')),
+	('CHRISTMAS', _('christmas')),
 	('PLACES', _('places')),
 	('LITERATURE', _('literature')),
 	('SCHOOL/EDUCATION', _('school/education')),
@@ -1602,8 +1605,6 @@ class ContextMorfaQuestion(OahpaQuestion):
 		# If the asked word is in Pl, generate nominal form
 
 		if answer_tag_el.pos == "N":
-			self.lemma = answer_word_el.lemma
-			""" Commented out to get the sg nom form as lemma, never pl nom
 			if qtype == "COLL-NUM":
 				self.lemma = answer_word_el.lemma
 			else:
@@ -1615,7 +1616,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 						self.lemma = nplforms[0].fullform
 					else:
 						self.lemma = answer_word_el.lemma + " (plural) fix this"
-			"""
+		
 		if qtype == "ORD-NUM":
 			self.lemma = answer_word_el.lemma
 
