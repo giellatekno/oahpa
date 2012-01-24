@@ -5395,11 +5395,11 @@ LIST VERBLEMMA = (".*"r) ;
 
 
 
-MAP (&sem-answer-with-same-noun) TARGET (N Acc) (0 $$NOUNLEMMA LINK *-1 CEALKKA BARRIER N LINK NOT *-1 $$NOUNLEMMA) ;
+MAP (&sem-same-noun) TARGET (N Acc) (0 $$NOUNLEMMA LINK *-1 CEALKKA BARRIER N LINK NOT *-1 $$NOUNLEMMA) ;
 
-MAP (&sem-answer-with-same-adj) TARGET (A Attr) (0 $$ADJLEMMA LINK *-1 CEALKKA BARRIER A LINK NOT *-1 $$ADJLEMMA) ;
+MAP (&sem-same-adj) TARGET (A Attr) (0 $$ADJLEMMA LINK *-1 CEALKKA BARRIER A LINK NOT *-1 $$ADJLEMMA) ;
 
-MAP (&sem-answer-with-same-verb) TARGET VFIN (0 $$VERBLEMMA LINK *-1 CEALKKA BARRIER V LINK NOT *-1 $$VERBLEMMA) ;
+MAP (&sem-same-verb) TARGET VFIN (0 $$VERBLEMMA LINK *-1 CEALKKA BARRIER V LINK NOT *-1 $$VERBLEMMA) ;
 
 
 MAP (&grm-missing-Acc) TARGET N (*-1 C_ACC BARRIER (N Acc))(NOT 0 Acc OR Gen) ;
