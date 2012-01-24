@@ -566,7 +566,7 @@ class Morfaview(Gameview):
 
 		if self.settings['gametype'] == "bare":
 			if self.settings['pos'] == 'N':
-				return ['case' 'bisyllabic', 'trisyllabic', 'contracted',
+				return ['case', 'bisyllabic', 'trisyllabic', 'contracted',
 						'book',]
 			if self.settings['pos'] == 'V':
 				return ['vtype', 'bisyllabic', 'trisyllabic', 'contracted',
