@@ -5,10 +5,24 @@ use File::Spec;
 use XML::Twig;
 
 my $infile = $ARGV[0];
+my $mode = 'sahka';
+if ($ARGV[1] ne "")
+{
+  $mode = $ARGV[1];
+  print "mode is $mode\n";
+}
+
 #my $twig = XML::Twig->new(keep_encoding => 1);
 my $twig = XML::Twig->new();
 # to extend for vasta, too
-my $s = '^sahka';
+my $s = '^'.$mode;
+if (($mode eq "sahka") or ($mode eq "cealkka"))
+{
+  $s = '^'.$mode;
+} else {
+  $s = '^qst';
+}
+
 my $lon = 'lookup -flags mbTT -utf8 ~/gtsvn/gt/sme/bin/sme-norm.fst';
 my $tmp_file = "tmp_data.txt";
 my $out_file = "final_data.txt";
@@ -33,7 +47,22 @@ foreach my $test ($root->children('test')){
     open (TMPFILE, ">>$tmp_file");
     open (CMD1, $command1);
     while (<CMD1>){
-      s/^(\s+\"\^sahka\"\s+)(\?.*)$/$1$i/;
+      #s/^(\s+\"\^sahka\"\s+)(\?.*)$/$1$i/;
+      if ($mode eq "sahka")
+	{
+	  s/^(\s+\"\^sahka\"\s+)(\?.*)$/$1$i/;
+	}
+      
+      if ($mode eq "cealkka")
+	{
+	  s/^(\s+\"\^cealkka\"\s+)(\?.*)$/$1$i/;
+	}
+
+      if ($mode eq "vasta")
+	{
+	  s/^(\s+\"\^qst\"\s+)(\?.*)$/$1$i/;
+	}
+      
       print TMPFILE;
     }
     print TMPFILE "\n=========================================================\n\n";
