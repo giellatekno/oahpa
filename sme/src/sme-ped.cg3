@@ -1911,7 +1911,7 @@ SET INTR-END = COMMA OR PUNCT-RIGHT ;
 	# Moved here due to error msg.
 
 LIST SAHKA = "^sahka" ;
-
+LIST CEALKKA = "^cealkka" ;
 
 
 
@@ -2136,7 +2136,9 @@ REMOVE:r551 (V*) IF (0 A-NOT-V) ;
 	# Particular adjectives
 	# - - - - - - - - - - -
 	
-REMOVE V (0 ("vielgahit")) ; # we want vielgat
+LIST COLOURVERB = "alidit" "čáhppahit" "fiskahit" "ruoksahit" "vielgahit"   ;
+
+REMOVE COLOURVERB (0 A) ; # we want vielgat jnv.
 
 REMOVE N (0 (A Nom) OR (A Attr) LINK *1 N BARRIER NOT-ADJ) ;
 	## Mii oinniimet boaris viessu.
@@ -5375,6 +5377,26 @@ MAPPING-PREFIX = & ;
 
           SECTION
 
+# Cealkka
+
+LIST C_PRS = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc ;
+
+LIST C_PRT = 1_PrtSg1_AAttr_Acc ;
+
+LIST C_AATTR = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc ;
+
+LIST C_ACC = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc ;
+
+LIST C_SG1 = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc ;
+
+
+MAP (&grm-missing-Acc) TARGET N (*-1 C_ACC BARRIER (N Acc))(NOT 0 Acc OR Gen) ;
+
+MAP (&grm-non-agr-subj-v) TARGET V (*-1 C_SG1 BARRIER (V Sg1))(NOT 0 Sg1) ;
+
+
+
+
 # The user wants to stop the dialogue
 MAP (&dia-stop) TARGET ("heaitit")(*-1 SAHKA) ; 
 
@@ -5821,18 +5843,18 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom)  (NOT 0 Pl1)(*-1 QDL BARRIER S-BOUND
 LIST MAKKAR-BARGU = Makkár_bargu_dus_lea_young Makkár_bargu_dus_lea_adult   ; 
 
 # Answer with the correct pronoun:
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg1) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Sg2);
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg2) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Sg1) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Sg3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 SAHKA LINK *-1 (Pers Nom) LINK NOT 0 Du2) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du2) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Du1) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Du3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 SAHKA LINK *-1 (Pers Nom) LINK NOT 0 Pl2) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Pl1) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA LINK *-1 (Pers Nom) LINK NOT 0 Sg2);
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg2) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Sg1) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg3) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 SAHKA OR CEALKKA LINK *-1 (Pers Nom) LINK NOT 0 Du2) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du2) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Du1) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du3) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Du3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 SAHKA OR CEALKKA LINK *-1 (Pers Nom) LINK NOT 0 Pl2) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Pl1) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
 
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (N Pl Nom) LINK NOT 0 NUM-QUESTION OR Inf)(NOT 0 Pl3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU OR (Mii_namma_lea) LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (N Pl Nom) LINK NOT 0 NUM-QUESTION OR Inf OR CEALKKA)(NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU OR (Mii_namma_lea) OR  CEALKKA LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
 
