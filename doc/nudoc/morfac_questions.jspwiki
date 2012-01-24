@@ -15,7 +15,7 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 * Numeraler
 * Verb
 
-!!Oppgavene lagres i univ_oahpa_data/data_sme/meta/question_*.xml
+!!Oppgavene lagres i sme/meta/*_question.xml
 
 !!! Substantiv
 
@@ -24,194 +24,235 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 * <text>Masa SUBJ MAINV</text>
 * <id>liikot</id>
 * <text>SUBJ MAINV N-ILL</text>
-* <sem class="OBJECT"/>
+* <sem class="THING"/>
 ! <!-- <q id="nill1">
 * <text>INTERR SUBJ MAINV OBJ</text>
-* <id>gii</id> <id>addit</id>  <sem class="OBJECT"/>
+* <id>gii</id>
+* <id>addit</id>
+* <sem class="THING"/>
 * <text>SUBJ MAINV OBJ N-ILL</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nill1sg">
 * <text>Geasa SUBJ MAINV OBJ</text>
-* <id>addit</id>  <sem class="OBJECT"/>
+* <id>addit</id>
+* <sem class="THING"/>
 * <text>SUBJ MAINV OBJ N-ILL</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nill1pl">
 * <text>Geaidda SUBJ MAINV OBJ</text>
-* <id>addit</id>  <sem class="OBJECT"/>
+* <id>addit</id>
+* <sem class="THING"/>
 * <text>SUBJ MAINV OBJ N-ILL</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nill2">
 * <text>Gosa SUBJ MAINV</text>
 * <id>mannat</id>
 * <text>SUBJ MAINV N-ILL</text>
-* <sem class="PLACE"/>
+* <sem class="mPLACENAME"/>
 ! <!-- <q id="nill3">
 * <text>Gosa SUBJ MAINV čoavdagiid</text>
-* <sem class="HUMAN"/> <id>bidjat</id>
+* <sem class="mPEOPLE"/>
+* <id>bidjat</id>
 * <text>SUBJ MAINV čoavdagiid N-ILL</text>
 * <sem class="CONTAINER"/>
 ! <q id="nill3sg">
 * <text>Gosa SUBJ bidjá čoavdagiid</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 * <text>Son bidjá čoavdagiid N-ILL</text>
 * <sem class="CONTAINER"/>
 ! <q id="nill3pl">
 * <text>Gosa SUBJ bidjet čoavdagiid</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 * <text>Sii bidjet čoavdagiid N-ILL</text>
 * <sem class="CONTAINER"/>
 ! <!-- <q id="nill4">
 * <text>INTERR SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>gii</id> <id>suhttat</id>
+* <id>gii</id>
+* <sem class="FAMILY"/>
+*  <id>suhttat</id>
 * <text>SUBJ MAINV N-ILL</text>
-* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
+* <sem class="mPEOPLE"/>
 ! <q id="nill4sg">
 * <text>Geasa SUBJ suhttá</text>
 * <sem class="FAMILY"/>
 * <text>Son suhttá N-ILL</text>
-* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
+* <sem class="mPEOPLE"/>
 ! <q id="nill4pl">
 * <text>Geaidda SUBJ suhttá</text>
 * <sem class="FAMILY"/>
 * <text>Son suhttá N-ILL</text>
-* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
+* <sem class="mPEOPLE"/>
 ! <!-- <q id="nill5">
 * <text>INTERR SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>gii</id> <id>luohttit</id>
+* <id>gii</id>
+* <sem class="FAMILY"/>
+*  <id>luohttit</id>
 * <text>SUBJ MAINV N-ILL</text>
-* <id>son</id>  <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
+* <id>son</id>
+* <sem class="mPEOPLE"/>
 ! <q id="nill5sg">
 * <text>Geasa SUBJ luohttá</text>
 * <sem class="FAMILY"/>
 * <text>Son luohttá N-ILL</text>
-* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
+* <sem class="mPEOPLE"/>
 ! <q id="nill5pl">
 * <text>Geaidda SUBJ luohttá</text>
 * <sem class="FAMILY"/>
 * <text>Son luohttá N-ILL</text>
-* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
+* <sem class="mPEOPLE"/>
 ! <q id="nill6">
 * <text>Masa SUBJ MAINV</text>
 * <id>illudit</id>
 * <text>SUBJ MAINV N-ILL</text>
-* <sem class="TIME-POINT-GEN"/>
+* <sem class="TIME_POINT_GEN"/>
 ! <q id="nill7">
 * <text>Masa SUBJ MAINV</text>
 * <id>illudit</id>
 * <text>SUBJ MAINV N-ILL</text>
-* <sem class="TIME-POINT-GEN-PL"/>
+* <sem class="TIME_POINT_GEN_PL"/>
 ! <!-- <q id="nill8">
 * <text>INTERR SUBJ MAINV</text>
-* <id>gii</id> <id>jáhkkit</id>
+* <id>gii</id>
+*  <id>jáhkkit</id>
 * <text>SUBJ MAINV N-ILL</text>
-* <sem class="HUMAN"/> 
+* <sem class="mPEOPLE"/>
 ! <q id="nill8sg">
 * <text>Geasa SUBJ MAINV</text>
-* <id>jáhkkit</id>
+*  <id>jáhkkit</id>
 * <text>SUBJ MAINV N-ILL</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nill8pl">
 * <text>Geaidda SUBJ MAINV</text>
-* <id>jáhkkit</id>
+*  <id>jáhkkit</id>
 * <text>SUBJ MAINV N-ILL</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nill9">
 * <text>Masa SUBJ MAINV</text>
-* <id>jáhkkit</id>
+*  <id>álgit</id>
 * <text>SUBJ MAINV N-ILL</text>
 * <sem class="EDUCATION"/>
+*<q id="nill10">
+* <text>Gosa SUBJ MAINV</text>
+* <id>báhcit</id>
+* <text>SUBJ MAINV N-ILL</text>
+* <sem class="BUILDING"/>
 
 !! Lokativ
 ! <!-- <q id="nloc0">
 * <text>INTERR MAINV váralaš SUBJ</text>
-* <id>gii</id> <id>leat</id>  <sem class="ANIMAL"/>
+* <id>gii</id>
+* <sem class="ANIMAL_DOM"/>
+* <id>leat</id>
 * <text>N-LOC MAINV</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nloc0sg">
 * <text>Geas MAINV váralaš SUBJ</text>
-* <sem class="ANIMAL"/> <id>leat</id>
+* <sem class="ANIMAL_DOM"/>
+* <id>leat</id>
 * <text>N-LOC MAINV</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nloc0pl">
 * <text>Geain MAINV váralaš SUBJ</text>
-* <sem class="ANIMAL"/> <id>leat</id>
+* <sem class="ANIMAL_DOM"/>
+* <id>leat</id>
 * <text>N-LOC MAINV</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <!-- <q id="nloc1">
 * <text>Gos SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>leat</id>
+* <sem class="mPEOPLE"/>
+* <id>leat</id>
 * <text>SUBJ MAINV N-LOC</text>
-* <id>son</id>  <sem class="PLACE"/>
+* <id>son</id>
+* <sem class="mPLACENAME"/>
 ! <q id="nloc1sg">
 * <text>Gos SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>leat</id>
+* <sem class="mPEOPLE"/>
+* <id>leat</id>
 * <text>Son MAINV N-LOC</text>
-* <sem class="PLACE"/>
+* <sem class="mPLACENAME"/>
 ! <q id="nloc1pl">
 * <text>Gos SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>leat</id>
+* <sem class="mPEOPLE"/>
+* <id>leat</id>
 * <text>Sii MAINV N-LOC</text>
-* <sem class="PLACE"/>
+* <sem class="mPLACENAME"/>
 ! <!-- <q id="nloc2">
 * <text>Gos SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>boahtit</id>
+* <sem class="mPEOPLE"/>
+* <id>boahtit</id>
 * <text>SUBJ MAINV N-LOC</text>
-* <id>son</id>  <sem class="PLACE"/>
-! <q id="nloc2sg">
+* <sem class="mPLACENAME"/>
+* <id>son</id>
+*<q id="nloc2sg">
 * <text>Gos SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>boahtit</id>
+* <sem class="mPEOPLE"/>
+* <id>boahtit</id>
 * <text>Son MAINV N-LOC</text>
-* <sem class="PLACE"/>
+* <sem class="mPLACENAME"/>
+* <text>Son MAINV N-LOC</text>
+* <sem class="BUILDING"/>
 ! <q id="nloc2pl">
 * <text>Gos SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>boahtit</id>
+* <sem class="mPEOPLE"/>
+* <id>boahtit</id>
 * <text>Sii MAINV N-LOC</text>
-* <sem class="PLACE"/>
+* <sem class="mPLACENAME"/>
+* <text>Son MAINV N-LOC</text>
+* <sem class="BUILDING"/>
 ! <!-- <q id="nloc3">
 * <text>Mas SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>ballat</id>
+* <sem class="mPEOPLE"/>
+* <id>ballat</id>
 * <text>SUBJ MAINV N-LOC</text>
-* <sem class="ANIMAL"/> <id>son</id>
+* <id>son</id>
+* <sem class="ANIMAL_DOM"/>
 ! <q id="nloc3sg">
 * <text>Mas SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>boahtit</id>
+* <sem class="mPEOPLE"/>
+* <id>ballat</id>
 * <text>Son MAINV N-LOC</text>
-* <sem class="ANIMAL"/>
+* <sem class="ANIMAL_WILD"/>
 ! <q id="nloc3pl">
 * <text>Mas SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>boahtit</id>
+* <sem class="mPEOPLE"/>
+* <id>ballat</id>
 * <text>Sii MAINV N-LOC</text>
-* <sem class="ANIMAL"/>
+* <sem class="ANIMAL_WILD"/>
 ! <!-- <q id="nloc4">
 * <text>Mas SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>váruhit</id>
+* <sem class="mPEOPLE"/>
+* <id>váruhit</id>
 * <text>SUBJ MAINV N-LOC</text>
-* <sem class="VEHICLE"/> <id>son</id>
+* <id>son</id>
+* <sem class="VEHICLE"/>
 ! <q id="nloc4sg">
 * <text>Mas SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>váruhit</id>
+* <sem class="mPEOPLE"/>
+* <id>váruhit</id>
 * <text>Son MAINV N-LOC</text>
 * <sem class="VEHICLE"/>
 ! <q id="nloc4pl">
 * <text>Mas SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>váruhit</id>
+* <sem class="mPEOPLE"/>
+* <id>váruhit</id>
 * <text>Sii MAINV N-LOC</text>
 * <sem class="VEHICLE"/>
 ! <!-- <q id="nloc5">
 * <text>INTERR SUBJ MAINV</text>
-* <id>gii</id> <id>beroštit</id>
+* <id>gii</id>
+* <id>beroštit</id>
 * <text>SUBJ MAINV N-LOC</text>
-* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
+* <sem class="mPEOPLE"/>
 ! <q id="nloc5sg">
 * <text>Geas SUBJ MAINV</text>
 * <id>beroštit</id>
 * <text>SUBJ MAINV N-LOC</text>
-* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
+* <sem class="mPEOPLE"/>
 ! <q id="nloc5pl">
 * <text>Geain SUBJ MAINV</text>
 * <id>beroštit</id>
 * <text>SUBJ MAINV N-LOC</text>
-* <sem class="HUMAN"/> __Kommentar: innskrenke semantisk klasse__
+* <sem class="mPEOPLE"/>
 ! <q id="nloc6">
 * <text>Mas SUBJ MAINV</text>
 * <id>geargat</id>
@@ -219,34 +260,36 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 * <sem class="EDUCATION"/>
 ! <!-- <q id="nloc7">
 * <text>INTERR SUBJ MAINV skeaŋkka</text>
-* <id>gii</id> <id>oažžut</id>
+* <id>gii</id>
+* <id>oažžut</id>
 * <text>SUBJ MAINV skeaŋkka N-LOC</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nloc7sg">
 * <text>Geas SUBJ MAINV skeaŋkka</text>
 * <id>oažžut</id>
 * <text>SUBJ MAINV skeaŋkka N-LOC</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nloc7pl">
 * <text>Geain SUBJ MAINV skeaŋkkaid</text>
 * <id>oažžut</id>
 * <text>SUBJ MAINV skeaŋkkaid N-LOC</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <!-- <q id="nloc8">
 * <text>INTERR SUBJ MAINV ságaid</text>
-* <id>gii</id> <id>gullat</id>
+* <id>gii</id>
+* <id>gullat</id>
 * <text>SUBJ MAINV ságaid N-LOC</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nloc8sg">
 * <text>Geas SUBJ MAINV ságaid</text>
 * <id>gullat</id>
 * <text>SUBJ MAINV ságaid N-LOC</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nloc8pl">
 * <text>Geain SUBJ MAINV ságaid</text>
 * <id>gullat</id>
 * <text>SUBJ MAINV ságaid N-LOC</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 
 !! Akkusativ
 
@@ -254,22 +297,25 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 * <text>Maid SUBJ MAINV</text>
 * <id>oaidnit</id>
 * <text>SUBJ MAINV N-ACC</text>
-* <sem class="OBJECT"/>
+* <sem class="THING"/>
 ! <!-- <q id="nacc1">
 * <text>Maid SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>niegadit</id>
+* <sem class="FAMILY"/>
+* <id>niegadit</id>
 * <text>SUBJ MAINV N-ACC</text>
-* <sem class="OBJECT"/>
+* <sem class="THING"/>
 ! <q id="nacc1sg">
 * <text>Maid SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>niegadit</id>
+* <sem class="FAMILY"/>
+* <id>niegadit</id>
 * <text>Son MAINV N-ACC</text>
-* <sem class="OBJECT"/>
+* <sem class="BIRD"/>
 ! <q id="nacc1pl">
 * <text>Maid SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>niegadit</id>
+* <sem class="FAMILY"/>
+* <id>niegadit</id>
 * <text>Sii MAINV N-ACC</text>
-* <sem class="OBJECT"/>
+* <sem class="BIRD"/>
 ! <q id="nacc2">
 * <text>Maid SUBJ MAINV</text>
 * <id>oastit</id>
@@ -279,138 +325,222 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 * <text>Maid SUBJ MAINV</text>
 * <id>sárgut</id>
 * <text>SUBJ MAINV N-ACC</text>
-* <sem class="ANIMAL"/>
+* <sem class="ANIMAL_WILD"/>
 ! <!-- <q id="nacc4">
 * <text>INTERR SUBJ MAINV</text>
-* <id>gii</id> <id>dovdat</id>
+* <id>gii</id>
+* <id>dovdat</id>
 * <text>SUBJ MAINV N-ACC</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nacc4sg">
 * <text>Gean SUBJ MAINV</text>
 * <id>dovdat</id>
 * <text>SUBJ MAINV N-ACC</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nacc4pl">
 * <text>Geaid SUBJ MAINV</text>
 * <id>dovdat</id>
 * <text>SUBJ MAINV N-ACC</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
+! <q id="nacc5sg">
+* <text>Maid SUBJ MAINV</text>
+* <id>bivdit</id>
+* <text>SUBJ MAINV N-ACC</text>
+* <sem class="ANIMAL_WILD"/>
+* <text>SUBJ MAINV N-ACC</text>
+* <sem class="BIRD"/>
+* <text>SUBJ MAINV N-ACC</text>
+* <sem class="FISH"/>
+! <q id="nacc5pl">
+* <text>Maid SUBJ MAINV</text>
+* <id>bivdit</id>
+* <text>SUBJ MAINV N-ACC</text>
+* <sem class="ANIMAL_WILD"/>
+* <text>SUBJ MAINV N-ACC</text>
+* <sem class="BIRD"/>
+* <text>SUBJ MAINV N-ACC</text>
+* <sem class="FISH"/>
+! <q id="nacc7sg">
+* <text>Maid SUBJ MAINV</text>
+* <id>juhkat</id>
+* <text>SUBJ MAINV N-ACC</text>
+* <sem class="DRINK"/>
+! <q id="nacc9sg">
+* <text>Maid SUBJ MAINV</text>
+* <id>borrat</id>
+* <text>SUBJ MAINV N-ACC</text>
+* <sem class="FOOD_DISH"/>
+* <text>SUBJ MAINV N-ACC</text>
+* <sem class="FISH"/>
 
 !! Genitiv
 
 ! <!-- <q id="ngen0">
+__Kommentar: vurdere semantisk klasse, alle ting har ikke flere eiere (geaid penna dát lea) - Lene: endra til THING__
 * <text>INTERR SUBJ dát MAINV</text>
-* <sem class="OBJECT"/> <id>gii</id> <id>leat</id> __Kommentar: vurdere semantisk klasse, alle ting har ikke flere eiere (geaid penna dát lea)__
+* <id>gii</id>
+* <sem class="THING"/>
+* <id>leat</id>
 * <text>Dát MAINV N-GEN</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 * <text>Dát MAINV N-GEN</text>
 ! <q id="ngen0sg">
 * <text>Gean SUBJ dát lea</text>
-* <sem class="OBJECT"/>
+* <sem class="THING"/>
 * <text>Dát lea N-GEN SUBJ</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="ngen0pl">
 * <text>Geaid SUBJ dát leat</text>
-* <sem class="OBJECT"/>
+* <sem class="THING"/>
 * <text>Dát leat N-GEN SUBJ</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <!-- <q id="ngen1">
 * <text>Man duohkái SUBJ MAINV</text>
-* <id>čiehkadit</id>  <sem class="HUMAN"/> <id>son</id>
+* <sem class="mPEOPLE"/>
+* <id>čiehkádit</id>
 * <text>SUBJ MAINV N-GEN duohkái</text>
+* <id>son</id>
 * <sem class="BUILDING"/>
 ! <q id="ngen1sg">
 * <text>Man duohkái SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>čiehkadit</id> __Kommentar: innskrenke semantisk klasse__
+* <sem class="mPEOPLE"/>
+* <id>čiehkádit</id>
 * <text>Son MAINV N-GEN duohkái</text>
 * <sem class="BUILDING"/>
 ! <q id="ngen1pl">
 * <text>Man duohkái SUBJ MAINV</text>
-* <sem class="HUMAN"/> <id>čiehkadit</id> __Kommentar: innskrenke semantisk klasse__
+* <sem class="mPEOPLE"/>
+* <id>čiehkádit</id>
 * <text>Sii MAINV N-GEN duohkái</text>
 * <sem class="BUILDING"/>
 ! <!-- <q id="ngen2">
 * <text>Goas SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>vuoiŋŋastit</id>
+* <sem class="FAMILY"/>
+* <id>vuoiŋŋastit</id>
 * <text>SUBJ MAINV N-GEN</text>
-* <sem class="TIME-POINT-GEN"/> <id>son</id>
+* <id>son</id>
+* <sem class="TIME_POINT_GEN"/>
 ! <q id="ngen2sg">
 * <text>Goas SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>vuoiŋŋastit</id>
+* <sem class="FAMILY"/>
+* <id>vuoiŋŋastit</id>
 * <text>Son MAINV N-GEN</text>
-* <sem class="TIME-POINT-GEN"/>
+* <sem class="TIME_POINT_GEN"/>
 ! <q id="ngen2pl">
 * <text>Goas SUBJ MAINV</text>
-* <id>vuoiŋŋastit</id>  <sem class="FAMILY"/>
+* <sem class="FAMILY"/>
+* <id>vuoiŋŋastit</id>
 * <text>Sii MAINV N-GEN</text>
-* <sem class="TIME-POINT-GEN"/>
+* <sem class="TIME_POINT_GEN"/>
 ! <!-- <q id="ngen3">
 * <text>Goas SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>hárjehallat</id>
+* <sem class="FAMILY"/>
+* <id>hárjehallat</id>
 * <text>SUBJ MAINV N-GEN</text>
-* <sem class="TIME-POINT-GEN"/> <id>son</id>
+* <id>son</id>
+* <sem class="TIME_POINT_GEN"/>
 ! <q id="ngen3sg">
 * <text>Goas SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>hárjehallat</id>
+* <sem class="FAMILY"/>
+* <id>hárjehallat</id>
 * <text>Son MAINV N-GEN</text>
-* <sem class="TIME-POINT-GEN"/>
+* <sem class="TIME_POINT_GEN"/>
 ! <q id="ngen3pl">
 * <text>Goas SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>hárjehallat</id>
+* <sem class="FAMILY"/>
+* <id>hárjehallat</id>
 * <text>Sii MAINV N-GEN</text>
-* <sem class="TIME-POINT-GEN"/>
+* <sem class="TIME_POINT_GEN"/>
 ! <!-- <q id="ngen4">
 * <text>Goas SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>vuoiŋŋastit</id>
+* <sem class="FAMILY"/>
+* <id>vuoiŋŋastit</id>
 * <text>SUBJ MAINV N-GEN</text>
-* <sem class="TIME-POINT-GEN-PL"/> <id>son</id>
+* <id>son</id>
+* <sem class="TIME_POINT_GEN_PL"/>
 ! <q id="ngen4sg">
 * <text>Goas SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>vuoiŋŋastit</id>
+* <sem class="FAMILY"/>
+* <id>vuoiŋŋastit</id>
 * <text>Son MAINV N-GEN</text>
-* <sem class="TIME-POINT-GEN-PL"/>
+* <sem class="TIME_POINT_GEN_PL"/>
 ! <q id="ngen4pl">
 * <text>Goas SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>vuoiŋŋastit</id>
+* <sem class="FAMILY"/>
+* <id>vuoiŋŋastit</id>
 * <text>Sii MAINV N-GEN</text>
-* <sem class="TIME-POINT-GEN-PL"/>
+* <sem class="TIME_POINT_GEN_PL"/>
 ! <!-- <q id="ngen5">
 * <text>Goas SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>hárjehallat</id>
+* <sem class="FAMILY"/>
+* <id>hárjehallat</id>
 * <text>SUBJ MAINV N-GEN</text>
-* <id>son</id>  <sem class="TIME-POINT-GEN-PL"/>
+* <id>son</id>
+* <sem class="TIME_POINT_GEN_PL"/>
 ! <q id="ngen5sg">
 * <text>Goas SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>hárjehallat</id>
+* <sem class="FAMILY"/>
+* <id>hárjehallat</id>
 * <text>Son MAINV N-GEN</text>
-* <sem class="TIME-POINT-GEN-PL"/>
+* <sem class="TIME_POINT_GEN_PL"/>
 ! <q id="ngen5pl">
 * <text>Goas SUBJ MAINV</text>
-* <sem class="FAMILY"/> <id>hárjehallat</id>
+* <sem class="FAMILY"/>
+* <id>hárjehallat</id>
 * <text>Sii MAINV N-GEN</text>
-* <sem class="TIME-POINT-GEN-PL"/>
+* <sem class="TIME_POINT_GEN_PL"/>
+! <q id="ngen6sg">
+* <text>Gean fárrui SUBJ MAINV</text>
+* <sem class="FAMILY"/>
+* <id>vuolgit</id>
+* <text>Son MAINV N-GEN fárrui</text>
+* <sem class="mPEOPLE"/>
+! <q id="ngen7sg">
+* <text>Gean birra SUBJ MAINV</text>
+* <id>jurddašit</id>
+* <text>Son MAINV N-GEN birra</text>
+* <sem class="FAMILY"/>
+! <q id="ngen7pl">
+* <text>Gean birra SUBJ MAINV</text>
+* <id>jurddašit</id>
+* <text>Son MAINV N-GEN birra</text>
+* <sem class="FAMILY"/>
 
 !! Komitativ
 
 ! <!-- <q id="ncom6">
 * <text>INTERR SUBJ MAINV</text>
-* <sem class="COMV"></sem>
 * <id>gii</id>
+* <sem class="mCOMV"></sem>
 * <text>SUBJ MAINV N-COM</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="ncom6sg">
 * <text>Geainna SUBJ MAINV</text>
-* <sem class="COMV"></sem>
+* <sem class="mCOMV"></sem>
 * <text>SUBJ MAINV N-COM</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="ncom6pl">
 * <text>Geaiguin SUBJ MAINV</text>
-* <sem class="COMV"></sem> __Kommentar: vurdere oppgaven i forhold til verb som náitalit (geaiguin soai náitaleaba? Mearrasámiin.)__
+* <sem class="mCOMV"></sem>
 * <text>SUBJ MAINV N-COM</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
+! <q id="ncom9">
+* <text>Geainna SUBJ MAINV VERB</text>
+* <sem class="mPERSNAME"/>
+* <id>berret</id>
+* <sem class="mMARRY"></sem>
+* <text>Son MAINV VERB N-COM</text>
+* <sem class="mPEOPLE"/>
+! <q id="ncom10">
+* <text>Geainna SUBJ MAINV VERB</text>
+* <id>berret</id>
+* <sem class="mMARRY"></sem>
+* <text>SUBJ MAINV VERB N-COM</text>
+* <sem class="mPERSNAME"/>
 ! <!-- <q id="ncom7">
 * <text>INTERR SUBJ MAINV ruoktot</text>
-* <id>mii</id> <id>mannat</id>
+* <id>mii</id>
+* <id>mannat</id>
 * <text>SUBJ MAINV ruoktot N-COM</text>
 * <sem class="VEHICLE"/>
 ! <q id="ncom7sg">
@@ -423,87 +553,109 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 * <id>mannat</id>
 * <text>SUBJ MAINV ruoktot N-COM</text>
 * <sem class="VEHICLE"/>
-*<!--<q id="ncom8"> 
+! <!--<q id="ncom8">
 __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i semantisk sett__
 * <text>INTERR SUBJ MAINV</text>
-* <id>mii</id> <id>čierastit</id>
+* <id>mii</id>
+* <id>čierastit</id>
 * <text>SUBJ MAINV N-COM</text>
-* <sem class="SLIDE-TOOL"/>
-! <q id="ncom8sg"> 
+* <sem class="SLIDETOOL"/>
+*<q id="ncom8sg">
 __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i semantisk sett__
 * <text>Mainna SUBJ MAINV</text>
 * <id>čierastit</id>
 * <text>SUBJ MAINV N-COM</text>
-* <sem class="SLIDE-TOOL"/>
+* <sem class="SLIDETOOL"/>
+! <q id="ncom11sg">
+* <text>Mainna SUBJ MAINV</text>
+* <sem class="mPLAY_V"/>
+* <text>SUBJ MAINV N-COM</text>
+* <sem class="TOY"/>
+! <q id="ncom11pl">
+* <text>Maiguin SUBJ MAINV</text>
+* <sem class="mPLAY_V"/>
+* <text>SUBJ MAINV N-COM</text>
+* <sem class="TOY"/>
 
 !! Essiv
 
 ! <!-- <q id="ness0">
 * <text>Manin SUBJ MAINV PLACE</text>
-* <sem class="FAMILY"/>  <sem class="PLACE-NAME"/> <id>bargat</id>
+* <sem class="FAMILY"/>
+* <sem class="mPLACENAME"/>
+* <id>bargat</id>
 * <text>SUBJ MAINV N-ESS</text>
-* <sem class="PROFESSION"/> <id>son</id>
+* <id>son</id>
+* <sem class="PROFESSION"/>
 ! <q id="ness0sg">
 * <text>Manin SUBJ MAINV PLACE</text>
-* <sem class="FAMILY"/>  <sem class="PLACE-NAME"/> <id>bargat</id>
+* <sem class="FAMILY"/>
+* <sem class="mPLACENAME"/>
+* <id>bargat</id>
 * <text>Son MAINV N-ESS</text>
 * <sem class="PROFESSION"/>
 ! <q id="ness0pl">
 * <text>Manin SUBJ MAINV PLACE</text>
-* <sem class="FAMILY"/>  <sem class="PLACE-NAME"/> <id>bargat</id>
+* <sem class="FAMILY"/>
+* <sem class="mPLACENAME"/>
+* <id>bargat</id>
 * <text>Sii MAINV N-ESS</text>
 * <sem class="PROFESSION"/>
 ! <!-- <q id="ness1">
 * <text>Manin SUBJ MAINV máidnasis</text>
-* <sem class="HUMAN"/> <id>šaddat</id>
+* <sem class="mPEOPLE"/>
+* <id>šaddat</id>
 * <text>SUBJ MAINV N-ESS</text>
-* <sem class="MYTH"/> <id>son</id>
+* <id>son</id>
+* <sem class="MYTH"/>
 ! <q id="ness1sg">
 * <text>Manin SUBJ MAINV máidnasis</text>
-* <sem class="PAIR"/> <id>šaddat</id>
+* <sem class="mPAIR"/>
+* <id>šaddat</id>
 * <text>Son MAINV N-ESS</text>
 * <sem class="MYTH"/>
 ! <q id="ness1pl">
 * <text>Manin SUBJ MAINV máidnasis</text>
-* <sem class="PAIR"/> <id>šaddat</id>
+* <sem class="mPAIR"/>
+* <id>šaddat</id>
 * <text>Sii MAINV N-ESS</text>
 * <sem class="MYTH"/>
 ! <q id="ness2">
 * <text>Manin SUBJ MAINV karneválas</text>
 * <id>gárvodit</id>
 * <text>SUBJ MAINV N-ESS</text>
-* <id>son</id>  <sem class="MYTH-HUMAN"/>
+* <sem class="MYTH_HUM"/>
 ! <q id="ness3">
 * <text>Manin SUBJ MAINV OBJ</text>
-* <id>gohkčodit</id>
+* <id>gohčodit</id>
 * <text>SUBJ MAINV OBJ N-ESS</text>
 * <sem class="FAMILY"/>
 ! <q id="ness4">
 * <text>Goas heive MAINV</text>
-* <sem class="ACTIVITY"/>
+* <sem class="mACTIVITY"/>
 * <text>N-ESS heive MAINV</text>
-* <sem class="TIME-POINT-ESS"/>
+* <sem class="mTIME_POINT_ESS"/>
 * <text>MAINV heive N-ESS</text>
-* <sem class="TIME-POINT-ESS"/>
+* <sem class="mTIME_POINT_ESS"/>
 ! <q id="ness4">
 * <text>Goas heive MAINV</text>
-* <sem class="ACTIVITY"/>
+* <sem class="mACTIVITY"/>
 * <text>N-ESS heive MAINV</text>
-* <sem class="DILLI-ESS"/>
+* <sem class="mDILLI_ESS"/>
 * <text>MAINV heive N-ESS</text>
-* <sem class="DILLI-ESS"/>
+* <sem class="mDILLI_ESS"/>
 
 !! Nominativ pluralis
 
 ! <q id="nnompl0">
 * <text>Geat vulget LOC</text>
-* <sem class="PLACE-NAME"/>
+* <sem class="mPLACENAME"/>
 * <text>N-NOM-PL dat vulget</text>
-* <sem class="HUMAN"/>
+* <sem class="mPEOPLE"/>
 ! <q id="nnompl1">
 * <text>Makkár eallit leat doppe</text>
 * <text>Doppe leat N-NOM-PL</text>
-* <sem class="ANIMAL"/>
+* <sem class="ANIMAL_DOM"/>
 ! <q id="nnompl2">
 * <text>Makkár gálvvut sis leat</text>
 * <text>Sis leat N-NOM-PL</text>
