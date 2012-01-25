@@ -13,7 +13,7 @@ for testing.
       (b) question ID column as separator and question, for example
             id07: Gosa don manat
  Command:
-   java net.sf.saxon.Transform -it main inFile=INPUT-FILE.txt outDir=OUTPUT-DIR
+   java net.sf.saxon.Transform -it main txt2qa-xml.xsl inFile=INPUT-FILE.txt outDir=OUTPUT-DIR
 
 The output will be generated in OUTPUT-DIR/INPUT-FILE.xml.
 
