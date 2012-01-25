@@ -5404,7 +5404,13 @@ MAP (&sem-same-noun) TARGET (N Acc) (0 $$NOUNLEMMA LINK *-1 CEALKKA BARRIER N LI
 
 MAP (&sem-same-adj) TARGET (A Attr) (0 $$ADJLEMMA LINK *-1 CEALKKA BARRIER A LINK NOT *-1 $$ADJLEMMA) ;
 
+MAP (&grm-incorr-tense) TARGET VFIN ((0 (V Prt) LINK *-1 C_PRS BARRIER Prs) OR ((0 (V Prs) LINK *-1 C_PRT BARRIER Prt))) ;
+
+MAP (&grm-incorr-tense) TARGET (PrfPrc) ((NOT 0 (V Prs) LINK *-1 C_PRS BARRIER Prs) OR ((NOT 0 (V Prt) LINK *-1 C_PRT BARRIER Prt))) ;
+
+
 MAP (&sem-same-verb) TARGET VFIN (0 $$VERBLEMMA LINK *-1 CEALKKA BARRIER V LINK NOT *-1 $$VERBLEMMA) ;
+
 
 
 MAP (&grm-missing-Acc) TARGET N (*-1 C_ACC BARRIER (N Acc))(NOT 0 Acc OR Gen) ;
@@ -5940,10 +5946,10 @@ MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN
 
 LIST BOTH-PRS-PRT = gos_du_eadni_lea_eret_adult gos_du_eadni_lea_eret_young gos_du_eadni_lea_eret_child gos_du_ahcci_lea_eret_adult gos_du_ahcci_lea_eret_young gos_du_ahcci_lea_eret_child ;
 
-MAP (&grm-incorr-tense) TARGET VFIN + Prs (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prt LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-tense) TARGET ConNeg (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prt  LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-tense) TARGET PrfPrc (*-1 Neg BARRIER VERB LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prs  LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-tense) TARGET VFIN + Prt (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BOTH-PRS-PRT LINK *-1 VFIN + Prs LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-tense) TARGET VFIN + Prs (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prt LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
+MAP (&grm-incorr-tense) TARGET ConNeg (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prt  LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
+MAP (&grm-incorr-tense) TARGET PrfPrc (*-1 Neg BARRIER VERB LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prs  LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
+MAP (&grm-incorr-tense) TARGET VFIN + Prt (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BOTH-PRS-PRT LINK *-1 VFIN + Prs LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
 
 
 # -------------------
