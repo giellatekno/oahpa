@@ -5422,6 +5422,10 @@ REMOVE LowercaseErr ;
 
 LIST ACCEPT-EVERYTHING = Makkar_snowboard_child Makkar_snowboard_adult Makkar_snowboard_young Mii_namma_lea ;
 
+LIST DOYOUHAVE =  Lea_go_dus_heasta_adult Lea_go_dus_heasta_child Lea_go_dus_heasta_young Lea_go_dus_snowboard_adult Lea_go_dus_snowboard_child Lea_go_dus_snowboard_young Lea_go_dus_biila_adult Lea_go_eara_ealli_adult Lea_go_eara_ealli_young Lea_go_eara_ealli_child Leat_go_dus_sihkkelat_adult Leat_go_dus_sihkkelat_young Leat_go_dus_sihkkelat_child ;
+
+LIST MAKKAR-BARGU = Makkár_bargu_dus_lea_young Makkár_bargu_dus_lea_adult   ; 
+
 
 SELECT Prop (*-1 ACCEPT-EVERYTHING BARRIER NOT-ADV-PCLE)(NOT *1 Prop) ; 
 
@@ -5726,7 +5730,7 @@ MAP (&grm-missing-Ill) TARGET ("guhte") IF (1 (N Ill) LINK *1 QDL LINK NOT *1 Il
 
 MAP (&grm-missing-Com) TARGET TARGETQUESTION-COM IF (*1 QDL LINK NOT *1 Com OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Com);
 MAP (&grm-missing-Acc) TARGET TARGETQUESTION-ACC IF (*1 QDL BARRIER WORK-V LINK NOT *1 Acc OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Acc);
-MAP (&grm-missing-Nom) TARGET TARGETQUESTION-NOM IF (*1 QDL LINK NOT *1 Nom OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Nom);
+MAP (&grm-missing-Nom) TARGET TARGETQUESTION-NOM IF (*1 QDL LINK NOT *1 Nom OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Nom)(NEGATE *1 ACCEPT-EVERYTHING);
 MAP (&grm-missing-Ess) TARGET TARGETQUESTION-ESS IF (*1 QDL LINK NOT *1 Ess OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Ess);
 MAP (&grm-missing-Gen) TARGET TARGETQUESTION-GEN IF (*1 QDL LINK NOT *1 Gen OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Gen);
 
@@ -5737,7 +5741,7 @@ MAP (&grm-missing-Ill-PP) TARGET ("gosa") IF (*1 QDL LINK NOT *1 Ill OR DOHKO OR
     ## Mun váccán vári nala.
 
 MAP (&grm-missing-Acc) TARGET ("makkár") IF (1 Acc LINK NOT 0 Nom LINK *1 QDL LINK NOT *1 Acc BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Acc);
-MAP (&grm-missing-Nom) TARGET ("makkár") IF (1 Nom LINK NOT 0 Acc LINK *1 QDL LINK NOT *1 Nom OR QMRK BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Nom);
+MAP (&grm-missing-Nom) TARGET ("makkár") IF (1 Nom LINK NOT 0 Acc LINK *1 QDL LINK NOT *1 Nom OR QMRK BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Nom)(NEGATE *1 MAKKAR-BARGU);
 
 MAP (&grm-Vehicle-Com) TARGET VEHICLE IF (NOT 0 Com LINK *-1 VERB LINK 0 ("vuodjit") OR ("vuolgit") OR ("mannat") BARRIER NPNH LINK *-1 QDL) ;
 
@@ -5799,7 +5803,7 @@ LIST BUORRE = ("buorre" A) ;
 
 SELECT Nom (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Nom);
 SELECT Gen (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Loc OR (Sg Ill) OR (Pl Com));
-SELECT Acc (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Acc);
+#SELECT Acc (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Acc);
 SELECT (Pl Ill) (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Ill));
 SELECT Ess (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Ess);
 SELECT Com (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Com);
@@ -5809,7 +5813,7 @@ MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Nom))(*1 N BA
 MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Pl Nom))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Nom));
 MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Acc))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0C (Sg Acc));
 MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Pl Acc))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Acc));
-MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0C (Sg Loc) OR (Sg Ill) OR (Sg Gen));
+MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0C (Sg Loc) OR (Sg Ill));
 MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 Ess)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Ess);
 MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Com))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Com));
 MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Com));
@@ -5857,7 +5861,6 @@ MAP (&grm-NoEret) TARGET QDL IF (-1 ("eret") LINK *-1 ("gos" Adv))(*1 (N Loc) LI
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (NOT 0 Du1)(*-1 QDL BARRIER S-BOUNDARY LINK 0 SAHKA LINK *-1 (Pers Nom) LINK 0 Du1) ;
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom)  (NOT 0 Pl1)(*-1 QDL BARRIER S-BOUNDARY LINK 0 SAHKA LINK *-1 (Pers Nom) LINK 0 Pl1) ;
 
-LIST MAKKAR-BARGU = Makkár_bargu_dus_lea_young Makkár_bargu_dus_lea_adult   ; 
 
 # Answer with the correct pronoun:
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA LINK *-1 (Pers Nom) LINK NOT 0 Sg2);
@@ -5919,13 +5922,13 @@ MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK
 # VASTA: Answer with the correct verbform if there is no Pers:
 MAP (&grm-incorr-pers-nr) TARGET (V Sg1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 MAKKAR-BARGU LINK *-1 VFIN LINK NOT 0 Sg2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Sg2) (*-1 QDL BARRIER S-BOUNDARY  OR Nom LINK *-1 VFIN LINK NOT 0 Sg1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL BARRIER S-BOUNDARY OR Nom OR VFIN LINK *-1 VFIN LINK NOT 0 Sg3 LINK NOT *-1 ("galle"))(NEGATE 0 ("leat") LINK *-1 QDL LINK *-1 go LINK -1 ("leat") LINK -1 BOS)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL BARRIER S-BOUNDARY OR Nom OR VFIN LINK *-1 VFIN LINK NOT 0 Sg3 LINK NOT *-1 ("galle"))(NEGATE 0 ("leat") LINK *-1 QDL LINK *-1 go LINK -1 ("leat") LINK -1 BOS)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 DOYOUHAVE) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA LINK *-1 VFIN LINK NOT 0 Du2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Du2) (*-1 QDL BARRIER S-BOUNDARY  OR Nom LINK *-1 VFIN LINK NOT 0 Du1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Du3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Du3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA LINK *-1 VFIN LINK NOT 0 Pl2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Pl2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Pl1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Pl3)(NEGATE *-1 (hálbiduvvon_galvvut))(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Pl3)(NEGATE *-1 (hálbiduvvon_galvvut) OR DOYOUHAVE)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 
 #MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 V-3)(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 #MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 V-3)(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
@@ -6058,6 +6061,8 @@ MAP (&dia-child) TARGET Num (*-1 QDL LINK 0 (Man_boaris_don_leat))(0 ("([1-9])"r
 LIST NOTHING = Foc/ge "mihkkege" "giige" ;
 
 LIST CAR = Lea_go_dus_biila_adult ;
+
+
 
 MAP (&dia-pass) TARGET PROFESSION IF (*-1 QDL LINK 0 BARGGUS);
 MAP (&dia-pass) TARGET (Prop Obj) IF (*-1 QDL LINK 0 CAR);
