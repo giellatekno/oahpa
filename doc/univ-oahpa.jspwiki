@@ -90,6 +90,13 @@ Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-
 * [Genererte pronomener|nudoc/pronounforms.html]
 * Numra: [num2clock|nudoc/gen/numra_num2clock.csv], [clock2num|nudoc/gen/numra_clock2num.csv]  ([testrutine|common/TestingClockFst.html])
 
+!Testing
+* Testing av Vasta-, Sahka- og Cealkka-oppgaver skjer i ped/qa_test , les 00_readme . I qa_test/regressiontests/ er det filer med spørsmål fra de nevnte programmene. Filene bør prøvekjøres med qa-test_dialogue.pl hver gang det er gjort større endringer i fst eller sme-ped.cg3.
+** Filene med _corr.xml skal ikke gi noen &grm- eller &sem-tagger. 
+** Det bør lages tilsvarende filer som skal gi &grm- og &sem-tagger også, filene kan ha navn _errors.xml.
+
+
+
 !!Framdriftsplan - Ovdánanplána
 
 !Arbeidsliste / Barggut 2011
@@ -108,6 +115,7 @@ Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-
 !Arbeidsliste / Barggut 2012
 
 ! Innhold / Sisdoallu
+* workshop for lærere 2-3.2.12 i Tromsø / bargobadji oahpaheddjiiguin Romssas 2-3.2.12
 * Åpen innlogging i Oahpa med automatisk gjenkjenning på site / Rabas sisaloggen Oahpai ja automáhtalaš dohkkeheapmi site:i
 * Tilpasse grammatikk til ny referansegrammatikk / Heivehit grammatihka ođđa referánsagrammatihkkii
 * MorfaS: pronomen - personlige, refleksive, resiproke og demonstrative / pronomenhárjehallan  __ok__
