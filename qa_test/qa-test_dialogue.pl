@@ -23,7 +23,7 @@ if (($mode eq "sahka") or ($mode eq "cealkka"))
   $s = '^qst';
 }
 
-my $lon = 'lookup -flags mbTT -utf8 ~/gtsvn/gt/sme/bin/sme-norm.fst';
+my $lon = 'lookup -flags mbTT -utf8 ~/gtsvn/gt/sme/bin/ped-sme.fst';
 my $tmp_file = "tmp_data.txt";
 my $out_file = "final_data.txt";
 my $command0 = "rm $tmp_file $out_file" ;
