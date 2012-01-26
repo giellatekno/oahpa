@@ -1608,7 +1608,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 			if qtype == "COLL-NUM":
 				self.lemma = answer_word_el.lemma
 			else:
-				if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess" or qtype=="N-NOM-PL":
+				if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess" or answer_tag_el.case=="Nom":  #was: qtype="N-NOM-PL"
 					self.lemma = answer_word_el.lemma
 				else:
 					nplforms = Form.objects.filter(word__pk=answer_word, tag__string='N+Pl+Nom')
