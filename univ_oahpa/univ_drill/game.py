@@ -524,7 +524,7 @@ class BareGame(Game):
 				if num_level == '1':  # Numerals in Sg on level 1
 				    TAG_QUERY = TAG_QUERY & Q(number='Sg')
 				else:  # Numerals in both Sg and Pl on level 1-2
-					TAG_QUERY = TAG_QUERY & Q(number='Pl')
+					TAG_QUERY = TAG_QUERY & Q(number__in=['Sg','Pl'])
 				if num_type == 'ORD':  # Card / Ord / Coll
 					TAG_QUERY = TAG_QUERY & Q(tag__string__contains="A+Ord")
 				elif num_type == 'COLL':
