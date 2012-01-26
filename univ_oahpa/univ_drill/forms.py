@@ -1435,6 +1435,29 @@ class KlokkaQuestion(NumQuestion):
 			else:
 				self.is_relaxed = ""
 	
+	def is_correct(self, game, example=None):
+		self.game = game
+		self.example = example
+
+		if not self.is_valid():
+			return False
+
+		self.userans = self.cleaned_data['answer']
+		self.answer = self.userans.strip()
+
+		self.error = "error"
+		self.iscorrect = False
+
+		correct_test = self.game_obj.check_answer(self.question_str, 
+													self.userans, 
+													self.correct_anslist)
+		if correct_test:
+			self.error = "correct"
+			self.iscorrect = True
+
+		self.correctlist = u",".join(list(set(self.correct_anslist)))
+		
+		self.log_response()
 
 
 # #
@@ -1596,6 +1619,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 		selected_awords[task]['fullform'][0] = 'Q'
 		
 		# Get lemma for contextual morfa
+		# lemma is displayed as the 'task' word in parentheses after the question
 		answer_word_el = Word.objects.get(id=answer_word)
 		answer_tag_el = Tag.objects.get(id=answer_tag)
 		self.lemma = answer_word_el.lemma
@@ -1630,6 +1654,11 @@ class ContextMorfaQuestion(OahpaQuestion):
 		if qtype == "ORD-NUM":
 			self.lemma = answer_word_el.lemma
 
+		if answer_tag_el.pos == "Pron":
+			# Hide task word for Recipr and Refl
+			if qtype in ["P-REFL", "P-RECIPR"]:
+				self.lemma = False
+
 		# Retrieve feedback information
 		self.get_feedback(answer_word_el,answer_tag_el,self.lemma,dialect,language)
 
@@ -1660,9 +1689,9 @@ class ContextMorfaQuestion(OahpaQuestion):
 		if q_count > 0:
 			astrings = astring.split('Q')
 			if astrings[0]:
-				self.answertext1=astrings[0]
+				self.answertext1 = astrings[0]
 			if astrings[1]:
-				self.answertext2=astrings[1]
+				self.answertext2 = astrings[1]
 
 		# set correct and error values
 		if correct_val:
@@ -1677,6 +1706,8 @@ class ContextMorfaQuestion(OahpaQuestion):
 
 		if answer_word == False:
 			self.lemma = '%s - error: %s' % (answer_word_el.lemma, question.qid)
+
+
 
 def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     """
