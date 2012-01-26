@@ -590,9 +590,15 @@ class Form(models.Model):
 			
 		elif self.tag.pos in ['A', 'a']:
 			# TODO: veljer systemet Coll og Ord grunnformen?
+			if match_num:  # added by Heli, by example of N
+				number = self.tag.number
+			elif self.tag.case == 'Nom':
+				number = 'Sg'
+			else:
+				number = ''
 			baseform = self.word.form_set.filter(tag__attributive='',
 												 	tag__case='Nom',
-													tag__number='Sg',
+													tag__number=number, # was: 'Sg'
 													tag__grade='')
 			if baseform.count() == 0:
 				baseform = self.word.form_set.all()

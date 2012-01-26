@@ -341,7 +341,7 @@ class BareGame(Game):
 		'NOMPL': 'Nom', 
 		'ATTR': 'Attr',
 		'PRED': 'Pred', 
-		'N-NOM': 'Nom',
+		#'N-NOM': 'Nom',
 		'N-ILL': 'Ill', 
 		'N-ESS': 'Ess', 
 		'N-GEN': 'Gen',
@@ -458,14 +458,14 @@ class BareGame(Game):
 			mood, tense, infinite = pos_mood_tense[self.settings['vtype']]
 		
 		
-		# number = ["Sg","Pl",""] - this gave a false query
+		number = ["Sg","Pl",""]
 		
 		if case == "Ess":
-			number = "" 
+			number = [""] 
 		elif case == "Nom" and pos != "Pron":
-			number = "Pl" # took away [] - number is not a list !?
+			number = ["Pl"]
 		else:
-			number = "Sg"  # added by Heli
+			number = ["Sg","Pl"]  # added by Heli
 
 		# A+Sg+Nom
 		
@@ -475,21 +475,13 @@ class BareGame(Game):
 
 		# following value is in case
 		# A+Attr
-		if pos == "A":
-			pform = False
-			if "Attr" in [attributive, case]:  
+		if pos == 'A':
+			if "Attr" in [attributive, case]: 
 				attributive = "Attr"
 				case = ""  
-				number = ""
-				pform = 'A+Attr'  
+				number = [""]
 			else:			
-				# case = "Nom" ; number = "Sg"  # query by the case that user entered instead
-				#attributive = "" 
-				pform = 'A+Sg+Nom' 
-		
-                # case in ["Comp", "Superl"]: all the remaining adjectives can be declined in all cases
-		# grade = case What a mix of grade and case! Why?
-				
+				attributive = ""  		
 		
 		maxnum, i = 20, 0
 		
@@ -511,7 +503,7 @@ class BareGame(Game):
 			if pos == 'N':
 				TAG_QUERY = TAG_QUERY & \
 							Q(possessive="") & \
-							Q(number=number)
+							Q(number__in=number)
 
 			# 'Pers' subclass for pronouns, otherwise none.
 			# TODO: combine all subclasses so forms can be fetched
@@ -534,12 +526,12 @@ class BareGame(Game):
 				TAG_EXCLUDES = Q(string__contains='ConNeg')
 			
 		if pos == 'A':
-			base_set = Form.objects.filter(tag__string=pform)
+			base_set = Form.objects.filter(Q(tag__string__contains="A+") & (Q(tag__string='A+Attr') | Q(tag__string__contains='Nom')))
 			TAG_QUERY = Q(pos="A") & \
 						Q(attributive=attributive) & \
 						Q(grade=grade) & \
 						Q(case=case) & \
-						Q(number=number)
+						Q(number__in=number)
 		# case -> adjcase ?
 		
 		# filter can include several queries, exclude must have only one
@@ -547,7 +539,7 @@ class BareGame(Game):
 		tags = Tag.objects.filter(TAG_QUERY)\
 							.exclude(subclass='Prop')\
 							.exclude(polarity='Neg')
-
+			
 		if TAG_EXCLUDES:
 			tags = tags.exclude(TAG_EXCLUDES)
 
@@ -685,11 +677,10 @@ class BareGame(Game):
 		
 		
 		def baseformFilter(form):
-			""" Get baseforms, and filter based on dialects.
+			#   Get baseforms, and filter based on dialects.
 				
-				NOTE: Need to use getBaseform on Form object, not Word, 
-				because Word.getBaseform doesn't pay attention to number.
-			"""
+			#	NOTE: Need to use getBaseform on Form object, not Word, 
+			#	because Word.getBaseform doesn't pay attention to number.
 
 			if self.settings.has_key('dialect'):
 				UI_Dialect = self.settings['dialect']
