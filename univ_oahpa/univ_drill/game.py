@@ -352,6 +352,9 @@ class BareGame(Game):
 		'COMP': 'Comp', # was: A-COMP
 		'SUPERL': 'Superl', # was: A-SUPERL
 		'POS':'',
+		'CARD': 'Num', # these 3 added for implementing num_type choice
+		'ORD': 'A+Ord',
+		'COLL': 'N+Coll',
 		'': ''
 	}
 	
@@ -414,6 +417,8 @@ class BareGame(Game):
 			num_bare = self.settings['num_bare']
 		if self.settings.has_key('num_level'):
 			num_level = self.settings['num_level']
+		if self.settings.has_key('num_type'):  # added by Heli
+			num_type = self.settings['num_type']	
 		if self.settings.has_key('grade'):
 			grade = self.settings['grade']
 
@@ -442,7 +447,8 @@ class BareGame(Game):
 			syll = ['']
 		
 		case = self.casetable[pos_tables[pos]]
-		grade = self.casetable[grade] 
+		grade = self.casetable[grade]
+		num_type = self.casetable[num_type] # added by Heli
 		
 		pos_mood_tense = {
 			"PRS":	("Ind", "Prs", ""),
@@ -514,8 +520,16 @@ class BareGame(Game):
 				TAG_QUERY = TAG_QUERY & Q(subclass='')
 
 			if pos == 'Num':
-				TAG_QUERY = TAG_QUERY & Q(number='Sg') & Q(subclass='')
-             
+				TAG_QUERY = TAG_QUERY & Q(subclass='')
+				if num_level == '1':  # Numerals in Sg on level 1
+				    TAG_QUERY = TAG_QUERY & Q(number='Sg')
+				else:  # Numerals in both Sg and Pl on level 1-2
+					TAG_QUERY = TAG_QUERY & Q(number='Pl')
+				if num_type == 'ORD':  # Card / Ord / Coll
+					TAG_QUERY = TAG_QUERY & Q(tag__string__contains="A+Ord")
+				elif num_type == 'COLL':
+					TAG_QUERY = TAG_QUERY & Q(tag__string__contains="N+Coll")
+                    
 		if pos == 'V':
 			TAG_QUERY =  TAG_QUERY & \
 							Q(tense=tense) & \

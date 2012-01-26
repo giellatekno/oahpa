@@ -461,7 +461,6 @@ class Morfaview(Gameview):
 	gamenames = {
 		'ATTR' :  _('Practise attributes'),
 		'A-ATTR' :  _('Practise attributes'),
-		#'A' : _('Practise adjectives'),  # added by Heli
 		'A-NOM' :  _('Practise adjectives in nominative'),
 		'A-ILL' :  _('Practise adjectives in illative'),
 		'A-ACC' :  _('Practise adjectives in accusative'),
@@ -502,6 +501,9 @@ class Morfaview(Gameview):
 		'NUM-LOC' :  _('Practise numerals in locative'),
 		'COLL-NUM' :  _('Practise collective numerals'),
 		'ORD-NUM' :  _('Practise ordinal numbers'),
+		'CARD' : _('Practise numerals'), # added by Heli
+		'ORD' : _('Practise ordinal numerals'),  # added by Heli
+		'COLL' : _('Practise collective numerals'), # added by Heli
 		'PRS'   :  _('Practise present'),
 		'PRT'   : _('Practise past'),
 		'PRF'   : _('Practise perfect'),
@@ -577,7 +579,7 @@ class Morfaview(Gameview):
 			if self.settings['pos'] == 'Pron':
 				return ['pron_type', 'proncase']
 			if self.settings['pos'] == 'Num':
-				return ['num_bare', 'num_level', 'book']
+				return ['num_bare', 'num_level', 'num_type', 'book'] # added num_type
 		else:
 			if self.settings['pos'] == 'N':
 				return ['case_context']
@@ -634,6 +636,7 @@ class Morfaview(Gameview):
 			if self.settings['gametype'] == "bare":
 				gamename_key = self.settings['num_bare']
 				subname = 'level %s' % str(self.settings['num_level'])
+				# another subname for Card/Ord/Coll ?
 			else:
 				gamename_key = self.settings['num_context']
 
@@ -668,6 +671,9 @@ class Morfaview(Gameview):
 		# Append syllable types if set
 		if sylls and self.settings['pos'] not in ["Pron", "Num"]:
 			names.append(sylls)
+			
+		#if 'num_type' in self.settings:  # added by Heli. I am not sure if it works.
+		#	names.append(num_type) 
 
 		self.settings['gamename_key'] = ' - '.join(names) 
 		

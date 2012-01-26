@@ -160,6 +160,12 @@ NUM_LEVEL_CHOICES = (
 	('2', _('Second level')),
 )
 
+NUM_TYPE_CHOICES = (
+    ('CARD', _('cardinal')),
+    ('ORD', _('ordinal')),
+    ('COLL', _('collective')),
+)
+
 VTYPE_CHOICES = (
 	('PRS', _('present')),
 	('PRT', _('past')),
@@ -355,7 +361,8 @@ ALL_CHOICES = [
 	NUM_BARE_CHOICES, 
 	NUM_CHOICES, 
 	NUM_CONTEXT_CHOICES,
-	NUM_LEVEL_CHOICES, 
+	NUM_LEVEL_CHOICES,
+	NUM_TYPE_CHOICES, 
 	POS_CHOICES, 
 	PRONOUN_SUBCLASSES, 
 	PRON_CONTEXT_CHOICES,
@@ -522,6 +529,7 @@ def set_settings(self):
 	self.alladj_context = dict(ADJ_CONTEXT_CHOICES).keys()
 	self.allnum_context = dict(NUM_CONTEXT_CHOICES).keys()
 	self.allnum_bare = dict(NUM_BARE_CHOICES).keys()
+	self.allnum_type = dict(NUM_TYPE_CHOICES).keys() # added by Heli
 	self.sources = dict(BOOK_CHOICES).keys()
 	self.geography = dict(GEOGRAPHY_CHOICES).keys()
 	self.frequency = dict(FREQUENCY_CHOICES).keys() # added by Heli
@@ -862,6 +870,7 @@ class OahpaSettings(forms.Form):
 					'pron_context' : 'P-PERS',
 					'num_context' : 'NUM-ATTR',
 					'num_level' : '1',
+					'num_type' : 'CARD',  # added by Heli
 					'geography': 'world',
 					'frequency' : [],
 					'num_bare' : 'N-ILL',
@@ -1101,6 +1110,7 @@ class MorfaSettings(OahpaSettings):
 	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
 	num_bare = forms.ChoiceField(initial='N-ILL', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
+	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-ILL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
@@ -1683,7 +1693,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /usr/local/bin/preprocess "
     dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    # dis_bin = "../sme/src/sme-ped.cg3" # in Heli's machine
+    # dis_bin = "../sme/src/sme-ped.cg3" # in Heli's machine TODO: add to settings.py
     
     #fstdir = "/Users/saara/gt/sme/bin"
     #lookup2cg = " | /Users/saara/gt/script/lookup2cg"
@@ -1705,7 +1715,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     qtext = qtext.rstrip('.!?,')
     
     host = 'localhost'
-    port = 9000  # was: 9000
+    port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -1996,6 +2006,7 @@ class SahkaSettings(OahpaSettings):
         self.default_data['topicnumber'] = '0'
         self.default_data['image'] = 'sahka.png'
         self.default_data['wordlist'] = ''
+        self.default_data['num_fields'] = '2'
         super(SahkaSettings, self).__init__(*args, **kwargs)
 
         # Link to grammatical explanation for each page
