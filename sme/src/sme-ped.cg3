@@ -5910,7 +5910,7 @@ MAP (&grm-soaitit) TARGET ("soaitit")(*-1 QDL)(0 V LINK *1 VFIN BARRIER S-BOUNDA
 MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY OR VFIN LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE 0 ("hálihit") LINK *-1 ("háliidit")) ;
 
-MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg OR SOAITIT)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0  MAKKAR-BARGU LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg OR SOAITIT)(0 $$VERBLEMMA LINK *-1 QDL BARRIER SV-BOUNDARY  LINK NOT 0  MAKKAR-BARGU LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA LINK NOT 0 WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE 0 ("hálihit") LINK *-1 ("háliidit"))(NOT 0 SOAITIT) ;
 
 
@@ -5946,10 +5946,10 @@ MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN
 
 LIST BOTH-PRS-PRT = gos_du_eadni_lea_eret_adult gos_du_eadni_lea_eret_young gos_du_eadni_lea_eret_child gos_du_ahcci_lea_eret_adult gos_du_ahcci_lea_eret_young gos_du_ahcci_lea_eret_child ;
 
-MAP (&grm-incorr-tense) TARGET VFIN + Prs (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prt LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
-MAP (&grm-incorr-tense) TARGET ConNeg (*-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prt  LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
-MAP (&grm-incorr-tense) TARGET PrfPrc (*-1 Neg BARRIER VERB LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN + Prs  LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
-MAP (&grm-incorr-tense) TARGET VFIN + Prt (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BOTH-PRS-PRT LINK *-1 VFIN + Prs LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
+MAP (&grm-incorr-tense) TARGET VFIN + Prs (*-1 QDL BARRIER SV-BOUNDARY LINK *-1 VFIN + Prt LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
+MAP (&grm-incorr-tense) TARGET ConNeg (*-1 QDL BARRIER SV-BOUNDARY LINK *-1 VFIN + Prt  LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
+MAP (&grm-incorr-tense) TARGET PrfPrc (*-1 Neg BARRIER VERB LINK *-1 QDL BARRIER SV-BOUNDARY LINK *-1 VFIN + Prs  LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
+MAP (&grm-incorr-tense) TARGET VFIN + Prt (*-1 QDL BARRIER SV-BOUNDARY LINK NOT 0 BOTH-PRS-PRT LINK *-1 VFIN + Prs LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
 
 
 # -------------------
@@ -6120,8 +6120,8 @@ MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL BARRIER Acc OR S-BOUNDARY LINK *-1 
 
 # Rules for dialogue_visit
 #-----------------------------
-#LIST ROOMS = stohpu gievkkan oađđenlatnja basadanlatnja hivsset feaskkir ;
-LIST ROOMS = "stohpu" "gievkkan"  "kievkkan" "oađđen#latnja" "oađđin#latnja" "basadan#latnja" "hivsset" "feaskkir";
+#LIST ROOMS = stohpu gievkkan oađđenlatnja basadanlatnja hivsset feaskkir viessu lokta ráigi goahti ;
+LIST ROOMS = "stohpu" "gievkkan"  "kievkkan" "oađđen#latnja" "oađđin#latnja" "basadan#latnja" "hivsset" "feaskkir" "viessu" "lokta" "ráigi" "goahti" ;
 
 #LIST DRINK = bruvsa sákta mielki viidni vuola ;
 LIST DRINK = "bruvsa" "sákta" "mielki" "viidni" "viidná" "vuola" "vuolla" ;
