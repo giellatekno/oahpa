@@ -1,24 +1,176 @@
-!!! Oversikt over Morfa-C oppgaver
+!!!Oversikt over Morfa-C oppgaver
 
+Testdato: fre 27 jan 2012 11:53:32 CET
 
-!! Mulige nye oppgavetyper
-* Påpekende pronomen - kongruensoppgaver
-* Personlige pronomen
-* Refleksive pronomen
-* Resiproke pronomen
+Oppgavene lagres i sme/meta/*_question.xml
+!!Verb
+! <q id="vprs0">
+* <text>Maid SUBJ MAINV odne</text>
+* <id>bargat</id> 
+* <text>Odne SUBJ MAINV</text>
+* <sem class="mACTIVITY"/>
+! <!-- <q id="vprs1">
+* <text>Maid SUBJ MAINV odne</text>
+* <sem class="mPEOPLE"/>
+* <id>bargat</id> 
+* <text>Odne SUBJ MAINV</text>
+* <id>son</id>
+* <sem class="mACTIVITY"/>
+! <q id="vprs1sg">
+* <text>Maid SUBJ bargá odne</text>
+* <sem class="mPEOPLE"/>
+* <text>Odne son MAINV</text>
+* <sem class="mACTIVITY"/>
+! <q id="vprs1pl">
+* <text>Maid SUBJ barget odne</text>
+* <sem class="mPEOPLE"/>
+* <text>Odne sii MAINV</text>
+* <sem class="mACTIVITY"/>
+! <q id="vprs2">
+* <text>Maid NOUN -guovttos bargaba odne</text>
+* <sem class="mPAIR"/>
+* <text>Odne soai MAINV</text>
+* <sem class="mACTIVITY"/>
+! <q id="vprt0">
+* <text>Maid SUBJ MAINV ikte</text>
+* <id>bargat</id> 
+* <text>Ikte SUBJ MAINV</text>
+* <sem class="mACTIVITY"/>
+! <!-- <q id="vprt1">
+* <text>Maid SUBJ MAINV ikte</text>
+* <sem class="mPEOPLE"/>
+* <id>bargat</id> 
+* <text>Ikte SUBJ MAINV</text>
+* <id>son</id>
+* <sem class="mACTIVITY"/>
+! <q id="vprt1sg">
+* <text>Maid SUBJ barggai ikte</text>
+* <sem class="mPEOPLE"/>
+* <text>Ikte son MAINV</text>
+* <sem class="mACTIVITY"/>
+! <q id="vprt1pl">
+* <text>Maid SUBJ barge ikte</text>
+* <sem class="mPEOPLE"/>
+* <text>Ikte sii MAINV</text>
+* <sem class="mACTIVITY"/>
+! <q id="vprt2">
+* <text>Maid NOUN -guovttos barggaiga ikte</text>
+* <sem class="mPAIR"/>
+* <text>Ikte soai MAINV</text>
+* <sem class="mACTIVITY"/>
+! <q id="vcond0">
+* <text>Maid SUBJ MAINV luomus</text>
+* <id>bargat</id> 
+* <text>Luomus SUBJ V-COND</text>
+* <sem class="mACTIVITY"/>
+! <!-- <q id="vcond1">
+* <text>Maid SUBJ MAINV luomus</text>
+* <sem class="mPEOPLE"/>
+* <id>bargat</id> 
+* <text>Luomus SUBJ V-COND</text>
+* <id>son</id>
+* <sem class="mACTIVITY"/>
+! <q id="vcond1sg">
+* <text>Maid SUBJ barggašii luomus</text>
+* <sem class="mPEOPLE"/>
+* <text>Luomus son V-COND</text>
+* <sem class="mACTIVITY"/>
+! <q id="vcond1pl">
+* <text>Maid SUBJ barggašedje luomus</text>
+* <sem class="mPEOPLE"/>
+* <text>Luomus sii V-COND</text>
+* <sem class="mACTIVITY"/>
+! <q id="vcond2">
+* <text>Maid NOUN -guovttos barggašeigga luomus</text>
+* <sem class="mPAIR"/>
+* <text>Luomus soai V-COND</text>
+* <sem class="mACTIVITY"/>
+! <!-- <q id="vpot0">
+* <text>MAINV go SUBJ</text>
+* <sem class="mACTIVITY"/>
+* <sem class="mPEOPLE"/>
+* <text>In dieđe V-POT go</text>
+! <q id="vpot0sg">
+* <text>MAINV go SUBJ</text>
+* <sem class="mACTIVITY"/>
+* <sem class="mPEOPLE"/>
+* <text>In dieđe V-POT go</text>
+! <q id="vpot0pl">
+* <text>MAINV go SUBJ</text>
+* <sem class="mACTIVITY"/>
+* <sem class="mPEOPLE"/>
+* <text>In dieđe V-POT go</text>
+! <q id="vpot1">
+* <text>MAINV go SUBJ</text>
+* <sem class="mACTIVITY"/>
+* <text>In dieđe V-POT go</text>
+! <q id="vimprt0">
+* <text>Mun áiggošin MAINV</text>
+* <sem class="mACTIVITY"/>
+* <text>V-IMPRT fal</text>
+! <q id="vimprt1">
+* <text>Moai áiggošeimme MAINV</text>
+* <sem class="mACTIVITY"/>
+* <text>V-IMPRT fal!</text>
+! <q id="vimprt2">
+* <text>Mii áiggošeimmet MAINV</text>
+* <sem class="mACTIVITY"/>
+* <text>V-IMPRT fal!</text>
+! <q id="vimprt3">
+* <text>Sihke don ja mun áiggošeimme MAINV</text>
+* <sem class="mACTIVITY"/>
+* <text>V-IMPRT dál!</text>
+! <q id="vimprt4">
+* <text>Sihke don ja mii áiggošeimmet MAINV</text>
+* <sem class="mACTIVITY"/>
+* <text>V-IMPRT dál!</text>
+! <q id="vgoprt0">
+* <text>MAINV go SUBJ ikte</text>
+* <sem class="mACTIVITY"/>
+* <text>De MAINV</text>
+* <text>Ikte gal NEG PRFPRC</text>
+* <id>ii</id>
+* <text>Ikte gal NEG PRFPRC</text>
+* <id>ii</id>
+! <q id="vgoprt1">
+* <text>MAINV go SUBJ odne</text>
+* <sem class="mACTIVITY"/>
+* <text>De MAINV</text>
+* <text>Odne gal NEG CONNEG</text>
+* <id>ii</id>
+* <text>Odne gal NEG CONNEG</text>
+* <id>ii</id>
+! <q id="vgocond0">
+* <text>MAINV go SUBJ luomus</text>
+* <sem class="mACTIVITY"/>
+* <text>Luomus gal MAINV</text>
+* <text>Luomus gal NEG CONNEG</text>
+* <id>ii</id>
+* <text>Luomus gal NEG CONNEG</text>
+* <id>ii</id>
+! <q id="vprf0">
+* <text>Maid SUBJ MAINV bargan odne</text>
+* <id>leat</id> 
+* <text>Odne SUBJ MAINV V-PRF</text>
+* <sem class="mACTIVITY"/>
+! <q id="vprf1">
+* <text>Maid SUBJ MAINV bargan luomus</text>
+*  <sem class="FAMILY"/>
+* <id>leat</id> 
+* <text>SUBJ MAINV V-PRF luomus</text>
+* <sem class="mACTIVITY"/>
+! <q id="vger0">
+* <text>Mas SUBJ diehtá dan</text>
+* <sem class="FAMILY"/>
+* <text>SUBJ oinnii dan V-GER</text>
+* <sem class="mACTIVITY"/>
+! <q id="vger1">
+* <text>Mo SUBJ oaččui dákkár jurdaga</text>
+* <sem class="FAMILY"/>
+* <text>SUBJ fuobmái dan V-GER</text>
+* <sem class="mACTIVITY"/>
 
-
-!!Oppgaver som allerede er laga
-Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i sg og pl med pronomenet som konstant. Dette skulle være mulig å få til å fungere no.
-* Adjektiv
-* Substantiv
-* Numeraler
-* Verb
-
-!!Oppgavene lagres i sme/meta/*_question.xml
-
-!!! Substantiv
-
+!!Substantiv
 !! Illativ
 ! <q id="nill0">
 * <text>Masa SUBJ MAINV</text>
@@ -131,12 +283,11 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 *  <id>álgit</id>
 * <text>SUBJ MAINV N-ILL</text>
 * <sem class="EDUCATION"/>
-*<q id="nill10">
+! <q id="nill10">
 * <text>Gosa SUBJ MAINV</text>
 * <id>báhcit</id>
 * <text>SUBJ MAINV N-ILL</text>
 * <sem class="BUILDING"/>
-
 !! Lokativ
 ! <!-- <q id="nloc0">
 * <text>INTERR MAINV váralaš SUBJ</text>
@@ -183,7 +334,7 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 * <text>SUBJ MAINV N-LOC</text>
 * <sem class="mPLACENAME"/>
 * <id>son</id>
-*<q id="nloc2sg">
+! <q id="nloc2sg">
 * <text>Gos SUBJ MAINV</text>
 * <sem class="mPEOPLE"/>
 * <id>boahtit</id>
@@ -290,9 +441,7 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 * <id>gullat</id>
 * <text>SUBJ MAINV ságaid N-LOC</text>
 * <sem class="mPEOPLE"/>
-
 !! Akkusativ
-
 ! <q id="nacc0">
 * <text>Maid SUBJ MAINV</text>
 * <id>oaidnit</id>
@@ -374,9 +523,7 @@ Oppgaver med pronomen som variabel har ikke fungert, derfor er de splittet opp i
 * <sem class="FISH"/>
 
 !! Genitiv
-
 ! <!-- <q id="ngen0">
-__Kommentar: vurdere semantisk klasse, alle ting har ikke flere eiere (geaid penna dát lea) - Lene: endra til THING__
 * <text>INTERR SUBJ dát MAINV</text>
 * <id>gii</id>
 * <sem class="THING"/>
@@ -507,7 +654,6 @@ __Kommentar: vurdere semantisk klasse, alle ting har ikke flere eiere (geaid pen
 * <sem class="FAMILY"/>
 
 !! Komitativ
-
 ! <!-- <q id="ncom6">
 * <text>INTERR SUBJ MAINV</text>
 * <id>gii</id>
@@ -553,15 +699,13 @@ __Kommentar: vurdere semantisk klasse, alle ting har ikke flere eiere (geaid pen
 * <id>mannat</id>
 * <text>SUBJ MAINV ruoktot N-COM</text>
 * <sem class="VEHICLE"/>
-! <!--<q id="ncom8">
-__Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i semantisk sett__
+* <!--<q id="ncom8">
 * <text>INTERR SUBJ MAINV</text>
 * <id>mii</id>
 * <id>čierastit</id>
 * <text>SUBJ MAINV N-COM</text>
 * <sem class="SLIDETOOL"/>
-*<q id="ncom8sg">
-__Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i semantisk sett__
+! <q id="ncom8sg">
 * <text>Mainna SUBJ MAINV</text>
 * <id>čierastit</id>
 * <text>SUBJ MAINV N-COM</text>
@@ -578,7 +722,6 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <sem class="TOY"/>
 
 !! Essiv
-
 ! <!-- <q id="ness0">
 * <text>Manin SUBJ MAINV PLACE</text>
 * <sem class="FAMILY"/>
@@ -646,7 +789,6 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <sem class="mDILLI_ESS"/>
 
 !! Nominativ pluralis
-
 ! <q id="nnompl0">
 * <text>Geat vulget LOC</text>
 * <sem class="mPLACENAME"/>
@@ -665,412 +807,7 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <text>Viesus leat N-NOM-PL</text>
 * <sem class="FURNITURE"/>
 
-!!! Numeraler
-
-!! Attributt
-
-! <q id="numattr0">
-* <text>Maid SUBJ áigu oastit</text>
-* <sem class="HUMAN"/>
-* <text>Son áigu oastit NUM-ATTR NOUN</text>
-* <sem class="CARDINAL-SMALL"/>  <sem class="CLOTHING"/>
-! <q level="2" id="numattr1">
-* <text>Maid SUBJ áigu oastit</text>
-* <sem class="HUMAN"/>
-* <text>Son áigu oastit NUM-ATTR NOUN</text>
-* <sem class="CARDINAL-SMALL"/>  <sem class="CLOTHING-PL"/>
-! <q id="numattr3">
-* <text>Maid oainnát</text>
-* <text>Oainnán NUM-ATTR NOUN</text>
-* <sem class="CARDINAL-SMALL"/>  <sem class="ANIMAL"/>
-! <q id="numattr4">
-* <text>Geaid SUBJ dát leat</text>
-* <sem class="TEXT"/>
-* <text>Dat leat NUM-ATTR NOUN SUBJ</text>
-* <sem class="CARDINAL-SMALL"/>  <sem class="HUMAN"/>
-! <q id="numattr5">
-* <text>Geaidda don attát OBJ</text>
-* <sem class="FOOD-GROCERY"/>
-* <text>Attán OBJ NUM-ATTR NOUN</text>
-* <sem class="CARDINAL-SMALL"/>  <sem class="FAMILY"/>
-! <q id="numattr6">
-* <text>Masa don bijat duogŋasa</text>
-* <text>Bijan duogŋasa NUM-ATTR NOUN</text>
-* <sem class="CARDINAL-SMALL"/>  <sem class="CLOTHING"/>
-! <q level="2" id="numattr7">
-* <text>Masa don bijat duogŋasa</text>
-* <text>Bijan duogŋasa NUM-ATTR NOUN</text>
-* <sem class="CARDINAL-SMALL"/>  <sem class="CLOTHING-PL"/>
-! <q id="numattr8">
-* <text>Geain lea váralaš SUBJ</text>
-* <sem class="ANIMAL"/>
-* <text>NUM-ATTR NOUN lea</text>
-* <sem class="CARDINAL-SMALL"/>  <sem class="PROFESSION"/>
-! <q id="numattr9">
-* <text>Man guhká oaččut OBJ luoikkasin</text>
-* <sem class="TEXT"/>
-* <text>NUM-ATTR vahkkui</text>
-* <sem class="CARDINAL-SMALL"/>
-! <q id="numattr10">
-* <text>Gos SUBJ leat</text>
-* <sem class="HUMAN"/>
-* <text>Sii leat NUM-ATTR NOUN</text>
-* <sem class="CARDINAL-SMALL"/>  <sem class="BUILDING"/>
-! <q level="1" id="numattr11">
-* <text>Gos SUBJ finai</text>
-* <sem class="HUMAN"/>
-* <text>Son finai NUM-ATTR NOUN</text>
-* <sem class="CARDINAL-SMALL"/>  <sem class="ARRANGEMENT"/>
-! <q level="2" id="numattr12">
-* <text>Gos SUBJ finai</text>
-* <sem class="HUMAN"/>
-* <text>Son finai NUM-ATTR NOUN</text>
-* <sem class="CARDINAL-SMALL"/>  <sem class="ARRANGEMENT-PL"/>
-! <q id="numattr13">
-* <text>Geaiguin SUBJ MAINV</text>
-* <sem class="COMV"/>
-* <text>SUBJ MAINV NUM-ATTR NOUN</text>
-* <sem class="CARDINAL-SMALL"/>  <sem class="HUMAN"/>
-! <q id="numattr14">
-* <text>Gallin joavkun SUBJ barget</text>
-* <sem class="HUMAN"/>
-* <text>Sii barget NUM-ATTR joavkun</text>
-* <sem class="CARDINAL-SMALL"/>
-
-!! Lokativ
-! <q id="numloc0">
-* <text>Gallis sii bohtet ruoktot</text>
-* <text>Sii bohtet NUM-LOC</text>
-* <sem class="CARDINAL-SMALL"/>
-! <q id="numloc01">
-* <text>Gallis SUBJ álgá</text>
-* <sem class="ARRANGEMENT"/>
-* <text>SUBJ álgá NUM-LOC</text>
-* <sem class="CARDINAL-SMALL"/>
-! <q id="numloc02">
-* <text>Gallis SUBJ nohká</text>
-* <sem class="ARRANGEMENT"/>
-* <text>SUBJ nohká NUM-LOC</text>
-* <sem class="CARDINAL-SMALL"/>
-! <q level="2" id="numloc04">
-* <text>Lea go buot du NOUN ráigi</text>
-* <sem class="CLOTHING-PL"/>
-* <text>Ii, dušše NUM-LOC lea ráigi</text>
-* <sem class="CARDINAL-SMALL"/>
-
-
-!! Illativ
-
-! <q id="numill0">
-* <text>Gallii son lea lohkan OBJ</text>
-* <sem class="TEXT"/>
-* <text>Son lea lohkan OBJ NUM-ILL</text>
-! <q level="2" id="numill01">
-* <text>Man guhká son bargá odne</text>
-* <text>Son bargá ovttas NUM-ILL</text>
-* <sem class="CARDINAL-SMALL"/>
-
-!! Komitativ
-
-! <q id="numcom0">
-* <text>Sii dárbbašit duljiid. Galliin sii birgejit</text>
-* <text>Sii birgejit gal NUM-COM</text>
-* <sem class="CARDINAL-SMALL"/>
-! <q id="numcom1">
-* <qtype>NUM-COM</qtype>
-* <text>Galliin oahppi galgá juohkit loahppasupmi</text>
-* <text>Son galgá juohkit loahppasupmi NUM-COM</text>
-* <sem class="CARDINAL-SMALL"/>
-
-
-!! Akkusativ
-
-! <q id="numacc0">
-* <text>Galle OBJ sii áigot oastit</text>
-* <sem class="CLOTHING"/>
-* <text>Sii áigot oastit NUM-ACC</text>
-* <sem class="CARDINAL-SMALL"/>
-! <q level="2" id="numacc1">
-* <text>Galliid OBJ sii áigot oastit</text>
-* <sem class="CLOTHING-PL"/>
-* <text>Sii áigot oastit NUM-ACC</text>
-* <sem class="CARDINAL-SMALL"/>
-! <q level="2" id="numacc2">
-* <text>Galliid OBJ sii leat lágidan</text>
-* <sem class="ARRANGEMENT-PL"/>
-* <text>Sii leat lágidan NUM-ACC</text>
-* <sem class="CARDINAL-SMALL"/>
-
-!! Nomitativ flertall
-
-! <q level="2" id="numnompl0">
-* <text>Gallit SUBJ dus leat</text>
-* <sem class="CLOTHING-PL"/>
-* <text>Mus leat NUM-NOM</text>
-* <sem class="CARDINAL-SMALL"/>
-! <q level="2" id="numnompl1">
-* <text>Gallit SUBJ dus leat</text>
-* <sem class="HANDICRAFTS-PL"/>
-* <text>Mus leat NUM-NOM</text>
-* <sem class="CARDINAL-SMALL"/>
-! <q level="2" id="numnompl2">
-* <text>Gallit SUBJ leat dáid beassážiid</text>
-* <sem class="ARRANGEMENT-PL"/>
-* <text>Dál leat NUM-NOM</text>
-* <sem class="CARDINAL-SMALL"/>
-
-!! Genitiv
-
-! <q game="morfa" id="numgen0">
-* <text>Mannan OBJ lei badjel logi gráda juohke beaivve</text>
-* <sem class="TIME-SEASON"/>
-* <text>Dán OBJ ii lean badjel NUM-GEN</text>
-
-
-!! Samlingstall
-
-! <q level="2" id="collnum0">
-* <text>Gallásiin son ferte juohkit daid ruđaid</text>
-* <text>Son ferte juohkit ruđaid COLL-NUM</text>
-* <sem class="COLL-NUM"/>
-! <q id="collnum1">
-* <text>Gallis bohtet N-ILL</text>
-* <sem class="BUILDING"/>
-* <text>COLL-NUM bohtet</text>
-* <sem class="COLL-NUM-NOT-DU"/>
-* <text>COLL-NUM boahtiba</text>
-* <sem class="COLL-NUM-DU"/>
-! <q level="2" id="collnum2">
-* <text>Gallása don oidnet gávppis</text>
-* <text>Oidnen COLL-NUM</text>
-* <sem class="COLL-NUM"/>
-! <q level="2" id="collnum3">
-* <text>Geaid SUBJ dát lea</text>
-* <sem class="INSTRUMENT"/>
-* <text>Dan COLL-NUM</text>
-* <sem class="COLL-NUM"/>
-! <q level="2" id="collnum4">
-* <text>Gallásii son muitalii ságaid</text>
-* <text>Son muitalii daid COLL-NUM</text>
-* <sem class="COLL-NUM"/>
-! <q level="2" id="collnum5">
-* <text>Gallásis lea dilli VERB</text>
-* <sem class="ACTIVITY"/>
-* <text>COLL-NUM lea</text>
-* <sem class="COLL-NUM"/>
-! <q level="2" id="collnum6">
-* <text>Gallásiin don vuolggát N-ILL</text>
-* <sem class="PLACE-NAME"/>
-* <text>Vuolggán dohko COLL-NUM</text>
-* <sem class="COLL-NUM"/>
-
-!! Ordensstall
-
-! <q level="2" id="ordnum0">
-* <text>Gallát luohkás don leat dál</text>
-* <text>Mun lean ORD-NUM</text>
-* <sem class="ORDINAL-SMALL"/>
-! <q level="2" id="ordnum1">
-* <text>Galládin don bohtet mollii</text>
-* <text>Mun bohten ORD-NUM</text>
-* <sem class="ORDINAL"/>
-! <q level="2" id="ordnum2">
-* <text>Gallát luohkkái don álggát dál</text>
-* <text>Mun álggán ORD-NUM</text>
-* <sem class="ORDINAL-SMALL"/>
-! <q level="2" id="ordnum3">
-* <text>Goas mis lea čoahkkin</text>
-* <text>Mis lea čoahkkin ORD-NUM</text>
-* <sem class="ORDINAL"/>
-! <q level="2" id="ordnum4">
-* <text>Man guhká gursa bistá</text>
-* <text>Gursa bistá vuosttažis ORD-NUM</text>
-* <sem class="ORDINAL"/>
-! <q level="2" id="ordnum5">
-* <text>Gallát bargobihtá don čállet</text>
-* <text>Mun čállen ORD-NUM</text>
-* <sem class="ORDINAL-SMALL"/>
-
-!!! Verb
-
-!! Presens
-
-! <q id="prs0">
-* <text>Maid SUBJ MAINV odne</text>
-* <id>bargat</id>
-* <text>Odne SUBJ MAINV</text>
-* <sem class="ACTIVITY"/>
-! <!-- <q id="prs1">
-* <text>Maid SUBJ MAINV odne</text>
-* <sem class="HUMAN"/> <id>bargat</id>
-* <text>Odne SUBJ MAINV</text>
-* <sem class="ACTIVITY"/> <id>son</id>
-! <q id="prs1sg">
-* <text>Maid SUBJ bargá odne</text>
-* <sem class="HUMAN"/>
-* <text>Odne son MAINV</text>
-* <sem class="ACTIVITY"/>
-! <q id="prs1pl">
-* <text>Maid SUBJ barget odne</text>
-* <sem class="HUMAN"/>
-* <text>Odne sii MAINV</text>
-* <sem class="ACTIVITY"/>
-! <q id="prs2">
-* <text>Maid NOUN -guovttos bargaba odne</text>
-* <sem class="PAIR"/>
-* <text>Odne soai MAINV</text>
-* <sem class="ACTIVITY"/>
-! <q id="goprt1">   - Denne ser ut å ha feil id - prt istedenfor prs
-* <text>MAINV go SUBJ odne</text>
-* <sem class="ACTIVITY"/>
-* <text>De MAINV</text>
-* <text>Odne gal NEG CONNEG</text> <id>ii</id>
-* <text>Odne gal NEG CONNEG</text> <id>ii</id>
-
-
-!! Preteritum
-
-! <q id="prt0">
-* <text>Maid SUBJ MAINV ikte</text>
-* <id>bargat</id>
-* <text>Ikte SUBJ MAINV</text>
-* <sem class="ACTIVITY"/>
-! <!-- <q id="prt1">
-* <text>Maid SUBJ MAINV ikte</text>
-* <sem class="HUMAN"/> <id>bargat</id>
-* <text>Ikte SUBJ MAINV</text>
-* <id>son</id>  <sem class="ACTIVITY"/>
-! <q id="prt1sg">
-* <text>Maid SUBJ barggai ikte</text>
-* <sem class="HUMAN"/>
-* <text>Ikte son MAINV</text>
-* <sem class="ACTIVITY"/>
-! <q id="prt1pl">
-* <text>Maid SUBJ barge ikte</text>
-* <sem class="HUMAN"/>
-* <text>Ikte sii MAINV</text>
-* <sem class="ACTIVITY"/>
-! <q id="prt2">
-* <text>Maid NOUN -guovttos barggaiga ikte</text>
-* <sem class="PAIR"/>
-* <text>Ikte soai MAINV</text>
-* <sem class="ACTIVITY"/>
-! <q id="goprt0">
-* <text>MAINV go SUBJ ikte</text>
-* <sem class="ACTIVITY"/>
-* <text>De MAINV</text>
-* <text>Ikte gal NEG PRFPRC</text> <id>ii</id>
-* <text>Ikte gal NEG PRFPRC</text> <id>ii</id>
-
-
-!! Kondisjonalis
-
-! <q id="vcond0">
-* <text>Maid SUBJ MAINV luomus</text>
-* <text>Luomus SUBJ V-COND</text>
-* <sem class="ACTIVITY"/> <id>bargat</id>
-! <!-- <q id="vcond1">
-* <text>Maid SUBJ MAINV luomus</text>
-* <sem class="HUMAN"/> <id>bargat</id>
-* <text>Luomus SUBJ V-COND</text>
-* <id>son</id>  <sem class="ACTIVITY"/>
-! <q id="vcond1sg">
-* <text>Maid SUBJ barggašii luomus</text>
-* <sem class="HUMAN"/>
-* <text>Luomus son V-COND</text>
-* <sem class="ACTIVITY"/>
-! <q id="vcond1pl">
-* <text>Maid SUBJ barggašedje luomus</text>
-* <sem class="HUMAN"/>
-* <text>Luomus sii V-COND</text>
-* <sem class="ACTIVITY"/>
-! <q id="vcond2">
-* <text>Maid NOUN -guovttos barggašeigga luomus</text>
-* <sem class="PAIR"/>
-* <text>Luomus soai V-COND</text>
-* <sem class="ACTIVITY"/>
-! <q id="gocond0">
-* <text>MAINV go SUBJ luomus</text>
-* <sem class="ACTIVITY"/>
-* <text>Luomus gal MAINV</text>
-* <text>Luomus gal NEG CONNEG</text>
-* <id>ii</id>
-* <text>Luomus gal NEG CONNEG</text>
-* <id>ii</id>
-
-
-!! Potensialis
-
-! <!-- <q id="vpot0">
-* <text>MAINV go SUBJ</text>
-* <sem class="ACTIVITY"/>  <sem class="HUMAN"/>
-* <text>In dieđe V-POT go</text>
-! <q id="vpot0sg">
-* <text>MAINV go SUBJ</text>
-* <sem class="ACTIVITY"/>  <sem class="HUMAN"/>
-* <text>In dieđe V-POT go</text>
-! <q id="vpot0pl">
-* <text>MAINV go SUBJ</text>
-* <sem class="ACTIVITY"/>  <sem class="HUMAN"/>
-* <text>In dieđe V-POT go</text>
-! <q id="vpot1">
-* <text>MAINV go SUBJ</text>
-* <sem class="ACTIVITY"/>
-* <text>In dieđe V-POT go</text>
-
-!! Imperativ
-
-! <q id="vimprt0">
-* <text>Mun áiggošin MAINV</text>
-* <sem class="ACTIVITY"/>
-* <text>V-IMPRT fal</text>
-! <q id="vimprt1">
-* <text>Moai áiggošeimme MAINV</text>
-* <sem class="ACTIVITY"/>
-* <text>V-IMPRT fal!</text>
-! <q id="vimprt2">
-* <text>Mii áiggošeimmet MAINV</text>
-* <sem class="ACTIVITY"/>
-* <text>V-IMPRT fal!</text>
-! <q id="vimprt3">
-* <text>Sihke don ja mun áiggošeimme MAINV</text>
-* <sem class="ACTIVITY"/>
-* <text>V-IMPRT dál!</text>
-! <q id="vimprt4">
-* <text>Sihke don ja mii áiggošeimmet MAINV</text>
-* <sem class="ACTIVITY"/>
-* <text>V-IMPRT dál!</text>
-
-!! Perfektum
-
-! <q id="vprf0">
-* <text>Maid SUBJ MAINV bargan odne</text>
-* <id>leat</id> 
-* <text>Odne SUBJ MAINV V-PRF</text>
-* <sem class="mACTIVITY"/>
-! <q id="vprf1">
-* <text>Maid SUBJ MAINV bargan luomus</text>
-* <sem class="FAMILY"/>
-* <id>leat</id> 
-* <text>SUBJ MAINV V-PRF luomus</text>
-* <sem class="mACTIVITY"/>
-
-
-!! Gerundium
-! <q id="vger0">
-* <text>Mas SUBJ diehtá dan</text>
-* <sem class="FAMILY"/>
-* <text>SUBJ oinnii dan V-GER</text>
-* <sem class="mACTIVITY"/>
-
-! <q id="vger1">
-* <text>Mo SUBJ oaččui dákkár jurdaga</text>
-* <sem class="FAMILY"/>
-* <text>SUBJ fuobmái dan V-GER</text>
-* <sem class="mACTIVITY"/>
-
-
-!!! Adjektiver
+!!Adjektiv
 
 !!Attributt-oppgaver positiv
 ! <q id="attrpos3sg">
@@ -1106,7 +843,6 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <text>Diet lea ATTR ITEM</text>
 
 !!Attributt-oppgaver komparativ
-
 ! <q id="attrcomp0">
 * <text>GEN ITEM leat PRED . Makkár ITEM dus leat</text>
 * <sem class="CLOTHING"/>
@@ -1118,14 +854,13 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <id>bálggis</id> 
 * <sem class="mROAD_A"/>
 * <text>Duot lea ATTR ITEM go diet</text>
-! <q id="attrcomp2">
+! <q id="attrcomp2"> <!-- experiment -->
 * <text>Dát ITEM lea ADJ . Makkár ITEM duot lea</text>
 * <id>bálggis</id> 
 * <sem class="mROAD_A"/>
 * <text>Duot lea ADJ ITEM go diet</text>
 
 !!Attributt-oppgaver superlativ
-
 ! <q id="attrsup0">
 * <text>GEN ITEM leat COMP go mu ITEM . Makkár ITEM dus leat</text>
 * <sem class="CLOTHING"/>
@@ -1139,7 +874,6 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <text>Dát lea ATTR ITEM</text>
 
 !!Predikativ-oppgaver positiv
-
 ! <q id="predpos0">
 * <text>Mus leat ATTR ITEM . Makkárat du ITEM leat</text>
 * <sem class="CLOTHING"/>
@@ -1159,15 +893,14 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <text>Maid mu ITEM lea PRED</text>
 
 !!Predikativ-oppgaver komparativ
-
-* <q id="predcomp0">
+! <q id="predcomp0">
 * <text>Mu ITEM lea PRED . Makkár du ITEM lea</text>
 * <sem class="mFAMILY"/>
 * <sem class="mHUM_A"/>
 * <text>Mu ITEM lea PREDCOMP go du ITEM</text>
 ! <q id="predcomp1">
 * <text>Mu ITEM leat PRED . Makkárat du ITEM leat</text>
-* <sem class="mFAMILY"/> 
+* <sem class="mFAMILY"/>
 * <sem class="mHUM_A"/>
 * <text>Mu ITEM leat PREDCOMP go du ITEM</text>
 ! <q id="predcomp2">
@@ -1182,23 +915,243 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <text>Dát ITEM leat PREDCOMP go diet</text>
 
 !!Predikativ-oppgaver superlativ
-
 ! <q id="predsup0">
-* <text>Gal HAB leat ATTR ITEM</text>   
+* <text>Gal HAB leat ATTR ITEM</text> <!-- compare="yes"-->
 * <sem class="CLOTHING"/>
 * <sem class="CLOTHING_A"/>
 * <sem class="mPERSNAME"/>
 * <text>Muhto mu ITEM lea buot PRED</text>
 ! <q id="predsup1">
-* <text>Gal dus leat ATTR ITEM</text>   
+* <text>Gal dus leat ATTR ITEM</text> <!-- compare="yes"-->
 * <sem class="FURNITURE"/>
 * <id>čáppat</id>
 * <text>Muhto du ITEM leat buot PRED</text>
 
-!!!Pronomen
+!!Numeraler
+
+!! Attributt
+! <q id="numattr0">
+* <text>Maid SUBJ áigu oastit</text>
+* <sem class="mPEOPLE"/>
+* <text>Son áigu oastit NUM-ATTR NOUN</text>
+* <sem class="mCARD_SMALL"/>
+* <sem class="CLOTHING"/>
+! <q level="2" id="numattr1">
+* <text>Maid SUBJ áigu oastit</text>
+* <sem class="mPEOPLE"/>
+* <text>Son áigu oastit NUM-ATTR NOUN</text>
+* <sem class="mCARD_SMALL"/>
+* <sem class="CLOTHING_PL"/>
+! <q id="numattr3">
+* <text>Maid oainnát</text>
+* <text>Oainnán NUM-ATTR NOUN</text>
+* <sem class="mCARD_SMALL"/>
+* <sem class="ANIMAL_DOM"/>
+! <q id="numattr4">
+* <text>Geaid SUBJ dát leat</text>
+* <sem class="mPRINTEDMATTER"/>
+* <text>Dat leat NUM-ATTR NOUN SUBJ</text>
+* <sem class="mCARD_SMALL"/>
+* <sem class="mPEOPLE"/>
+! <q id="numattr5">
+* <text>Geaidda don attát OBJ</text>
+* <sem class="FOOD_GROCERY"/>
+* <text>Attán OBJ NUM-ATTR NOUN</text>
+* <sem class="mCARD_SMALL"/>
+* <sem class="FAMILY"/>
+! <q id="numattr6">
+* <text>Masa don bijat duogŋasa</text>
+* <text>Bijan duogŋasa NUM-ATTR NOUN</text>
+* <sem class="mCARD_SMALL"/>
+* <sem class="CLOTHING"/>
+! <q level="2" id="numattr7">
+* <text>Masa don bijat duogŋasa</text>
+* <text>Bijan duogŋasa NUM-ATTR NOUN</text>
+* <sem class="mCARD_SMALL"/>
+* <sem class="CLOTHING_PL"/>
+! <q id="numattr8">
+* <text>Geain lea váralaš SUBJ</text>
+* <sem class="ANIMAL_DOM"/>
+* <text>NUM-ATTR HAB lea</text>
+* <sem class="mCARD_SMALL"/>
+* <sem class="PROFESSION"/>
+! <q id="numattr9">
+* <text>Man guhká oaččut OBJ luoikkasin</text>
+* <sem class="mPRINTEDMATTER"/>
+* <text>NUM-ATTR vahkkui</text>
+* <sem class="mCARD_SMALL"/>
+! <q id="numattr10">
+* <text>Gos SUBJ leat</text>
+* <id>nuorra</id>
+* <text>Sii leat NUM-ATTR NOUN</text>
+* <sem class="mCARD_SMALL"/>
+* <sem class="BUILDING"/>
+! <q level="1" id="numattr11">
+* <text>Gos SUBJ finai</text>
+* <sem class="mPEOPLE"/>
+* <text>Son finai NUM-ATTR NOUN</text>
+* <sem class="mCARD_SMALL"/>
+* <sem class="ARRANGEMENT"/>
+! <q level="2" id="numattr12">
+* <text>Gos SUBJ finai</text>
+* <sem class="mPEOPLE"/>
+* <text>Son finai NUM-ATTR NOUN</text>
+* <sem class="mCARD_SMALL"/>
+* <sem class="ARRANGEMENT_PL"/>
+! <q id="numattr13">
+* <text>Geaiguin SUBJ MAINV</text>
+* <sem class="mCOMV"/>
+* <text>SUBJ MAINV NUM-ATTR NOUN</text>
+* <sem class="mCARD_SMALL"/>
+* <sem class="mPEOPLE"/>
+! <q id="numattr14">
+* <text>Gallin joavkun SUBJ barget</text>
+* <sem class="mPEOPLE"/>
+* <text>Sii barget NUM-ATTR joavkun</text>
+* <sem class="mCARD_SMALL"/>
+
+!! Lokativ
+! <q id="numloc0">
+* <text>Gallis sii bohtet ruoktot</text>
+* <text>Sii bohtet NUM-LOC</text>
+* <sem class="mCARD_SMALL"/>
+! <q id="numloc01">
+* <text>Gallis SUBJ álgá</text>
+* <sem class="ARRANGEMENT"/>
+* <text>SUBJ álgá NUM-LOC</text>
+* <sem class="mCARD_SMALL"/>
+! <q id="numloc02">
+* <text>Gallis SUBJ nohká</text>
+* <sem class="ARRANGEMENT"/>
+* <text>SUBJ nohká NUM-LOC</text>
+* <sem class="mCARD_SMALL"/>
+
+
+
+!! Komitativ
+! <q id="numcom0">
+* <text>Sii dárbbašit duljiid. Galliin sii birgejit</text>
+* <text>Sii birgejit gal NUM-COM</text>
+* <sem class="mCARD_SMALL"/>
+! <q id="numcom1">
+* <text>Galliin oahppi galgá juohkit loahppasupmi</text>
+* <text>Son galgá juohkit loahppasupmi NUM-COM</text>
+* <sem class="mCARD_SMALL"/>
+
+!! Akkusativ
+! <q id="numacc0">
+* <text>Galle OBJ sii áigot oastit</text>
+* <sem class="CLOTHING"/>
+* <text>Sii áigot oastit NUM-ACC</text>
+* <sem class="mCARD_SMALL"/>
+! <q level="2" id="numacc1">
+* <text>Galliid OBJ sii áigot oastit</text>
+* <sem class="CLOTHING_PL"/>
+* <text>Sii áigot oastit NUM-ACC</text>
+* <sem class="mCARD_SMALL"/>
+! <q level="2" id="numacc2">
+* <text>Galliid OBJ sii leat lágidan</text>
+* <sem class="ARRANGEMENT_PL"/>
+* <text>Sii leat lágidan NUM-ACC</text>
+* <sem class="mCARD_SMALL"/>
+
+!! Nomitativ flertall
+! <q level="2" id="numnompl0">
+* <text>Gallit SUBJ dus leat</text>
+* <sem class="CLOTHING_PL"/>
+* <text>Mus leat NUM-NOM</text>
+* <sem class="mCARD_SMALL"/>
+! <q level="2" id="numnompl1">
+* <text>Gallit SUBJ dus leat</text>
+* <sem class="HANDICRAFTS_PL"/>
+* <text>Mus leat NUM-NOM</text>
+* <sem class="mCARD_SMALL"/>
+! <q level="2" id="numnompl2">
+* <text>Gallit SUBJ leat dáid beassážiid</text>
+* <sem class="ARRANGEMENT_PL"/>
+* <text>Dál leat NUM-NOM</text>
+* <sem class="mCARD_SMALL"/>
+
+!! Genitiv
+
+! <q game="morfa" id="numgen0">
+* <text>Galle gráda sii leat lohpidan odne</text>
+* <text>Sii leat lohpidan badjel NUM-GEN</text>
+
+!! Lokativ
+
+! <q level="2" id="numloc04">
+* <text>Lea go buot du NOUN ráigi</text>
+* <sem class="CLOTHING_PL"/>
+* <text>Ii, dušše NUM-LOC lea ráigi</text>
+* <sem class="mCARD_SMALL"/>
+
+!! Samlingstall
+
+! <q level="2" id="collnum0">
+* <text>Gallásiin son ferte juohkit daid ruđaid</text>
+* <text>Son ferte juohkit ruđaid COLL-NUM</text>
+* <!-- <sem class="mCOLL"/> -->
+! <q id="collnum1">
+* <text>Gallis bohtet N-ILL</text>
+* <sem class="BUILDING"/>
+* <text>COLL-NUM bohtet</text>
+* <sem class="mCOLL_NOT_DU"/>
+* <text>COLL-NUM boahtiba</text>
+* <sem class="mCOLL_DU"/>
+! <q level="2" id="collnum2">
+* <text>Gallása don oidnet gávppis</text>
+* <text>Oidnen COLL-NUM</text>
+* <!-- <sem class="mCOLL"/> -->
+! <q level="2" id="collnum3">
+* <text>Geaid SUBJ dát lea</text>
+* <sem class="INSTRUMENT"/>
+* <text>Dan COLL-NUM</text>
+* <!-- <sem class="mCOLL"/> -->
+! <q level="2" id="collnum4">
+* <text>Gallásii son muitalii ságaid</text>
+* <text>Son muitalii daid COLL-NUM</text>
+* <!-- <sem class="mCOLL"/> -->
+! <q level="2" id="collnum5">
+* <text>Gallásis lea dilli VERB</text>
+* <sem class="mACTIVITY"/>
+* <text>COLL-NUM lea</text>
+* <!-- <sem class="mCOLL"/> -->
+! <q level="2" id="collnum6">
+* <text>Gallásiin don vuolggát N-ILL</text>
+* <sem class="mPLACENAME"/>
+* <text>Vuolggán dohko COLL-NUM</text>
+* <!-- <sem class="mCOLL"/> -->
+
+!! Ordensstall
+! <q level="2" id="ordnum0">
+* <text>Gallát luohkás don leat dál</text>
+* <text>Mun lean ORD-NUM</text>
+* <sem class="mORD_SMALL"/>
+! <q level="2" id="ordnum1">
+* <text>Galládin don bohtet mollii</text>
+* <text>Mun bohten ORD-NUM</text>
+* <sem class="mORD"/>
+! <q level="2" id="ordnum2">
+* <text>Gallát luohkkái don álggát dál</text>
+* <text>Mun álggán ORD-NUM</text>
+* <sem class="mORD_SMALL"/>
+! <q level="2" id="ordnum3">
+* <text>Goas mis lea čoahkkin</text>
+* <text>Mis lea čoahkkin ORD-NUM</text>
+* <sem class="mORD"/>
+! <q level="2" id="ordnum4">
+* <text>Man guhká gursa bistá</text>
+* <text>Gursa bistá vuosttažis ORD-NUM</text>
+* <sem class="mORD"/>
+! <q level="2" id="ordnum5">
+* <text>Gallát bargobihtá don čállet</text>
+* <text>Mun čállen ORD-NUM</text>
+* <sem class="mORD_SMALL"/>
+
+!!Pronomener
 
 !! Personlige pronomen
-
 ! <q id="pnom1">
 * <text>Gii MAINV odne</text>
 * <sem class="mACTIVITY"/>
@@ -1220,7 +1173,7 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 ! <q id="pnom5">
 * <text>Gii AUX VERB</text>
 * <sem class="AUX_V"/>
-* <id>boahtit</id>
+* <id>boahtit</id> 
 * <text>SUBJ MAINV</text>
 ! <q id="pnom6">
 * <text>MAINV go mánát</text>
@@ -1237,7 +1190,7 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 ! <q id="pacc6">
 * <text>Geaid SUBJ MAINV buorástahttán</text>
 * <sem class="mPAIR"/>
-* <id>leat</id>
+* <id>leat</id> 
 * <text>SUBJ leat buorástahttán P-ACC</text>
 ! <q id="pgen1">
 * <text>Gean SUBJ diet lea</text>
@@ -1263,7 +1216,7 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 ! <q id="pill3">
 * <text>Geasa SUBJ osttii OBJ</text>
 * <sem class="CLOTHING"/>
-* <sem class="mFAMILYsg"/><!-- mFAMILYsg -->
+* <sem class="mFAMILYsg"/> <!-- mFAMILYsg -->
 * <text>SUBJ osttii daid P-ILL</text>
 ! <q id="ploc1">
 * <text>Geas SUBJ lea oastán OBJ</text>
@@ -1291,7 +1244,6 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <text>Son lea P-COM VERB</text>
 
 !! Demonstrative pronomen
-
 ! <q id="pdem0sgacc">
 * <text>Guđe OBJ SUBJ MAINV</text>
 * <sem class="mPERSNAME"/>
@@ -1319,7 +1271,6 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <id>girji</id>
 
 !! Refleksive pronomen
-
 ! <q id="prefl0illsg3">
 * <text>Geasa SUBJ MAINV</text>
 * <sem class="mPERSNAME"/>
@@ -1342,7 +1293,7 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <id>ruhtadit</id>
 * <id>mátki</id>
 * <text>Sis lei P-REFL ruhta</text>
-! <q id="prefl4locsg3">
+! <q id="prefl4gensg3">
 * <text>Manne SUBJ manai PLACE</text>
 * <sem class="mPEOPLE"/>
 * <sem class="mPLACENAME"/>
@@ -1371,7 +1322,6 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <text>Mun ledjen VERB P-REFL</text>
 
 !! Resiproke pronomen
-
 ! <q id="prec1illpl3">
 * <text>Geaidda SUBJ MAINV OBJ</text>
 * <sem class="mPEOPLE"/>
@@ -1443,11 +1393,11 @@ __Kommentar: vurdere oppgaven, den er veldig frekvent, men har bare 5 ord i sema
 * <text>Moai gulaime goabbat P-REC</text>
 ! <q id="prec18locdu3">
 * <text>Dál juo fárreba oktii</text>
-* <text>Soai mannan TIME juo VERB goabbat P-REC</text>
+* <text>Soai mannan TIME juo VERB goabbat P-REC</text> 
 * <sem class="mLIKE_ILL"/>
 * <sem class="TIME_SEASON"/>
 ! <q id="prec19locdu1">
 * <text>Dál juo fárrebeahtti oktii</text>
-* <text>Moai mannan TIME juo VERB goabbat P-REC</text>
+* <text>Moai mannan TIME juo VERB goabbat P-REC</text> 
 * <sem class="mLIKE_ILL"/>
 * <sem class="TIME_SEASON"/>
