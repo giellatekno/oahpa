@@ -5,14 +5,6 @@
 
 <!-- xml-structure for questions in morphdrill -->
 <!-- Questions for numerals  -->
-<!---
-	<sources>
-<book name="bures"/>
-<book name="d2"/>
-<book name="d3"/>
-<book name="d4"/>
-	</sources>    
-D-->
 
 <questions>
     <q id="numattr0">
@@ -376,24 +368,6 @@ D-->
     </answer>
   </q>
 
-<!-- This is not illative
-  <q id="numill0">
-    <qtype>NUM-ILL</qtype>
-    <question>
-      <text>Gallii son lea lohkan OBJ</text>
-      <element id="OBJ">    
-	<grammar tag="N+Sg+Acc"/>         
-	<sem class="mPRINTEDMATTER"/>
-      </element>
-    </question>
-    <answer> 
-      <text>Son lea lohkan OBJ NUM-ILL</text>
-      <element id="NUM-ILL" task="yes">    
-	<grammar tag="Num+Sg+Ill"/>         
-      </element>
-    </answer>
-  </q>-->
-
   <q id="numcom0">
     <qtype>NUM-COM</qtype>
    <question>
@@ -555,32 +529,18 @@ D-->
     </answer>
   </q>
 
-<!--  this one is not so good... :-(
-  <q game="morfa" id="numgen0">
+<q game="morfa" id="numgen0"> 
     <qtype>NUM-GEN</qtype>
-	<sources>
-	<book name="bures"/>
-	<book name="sara"/>
-	<book name="oaidnalit"/>
-	<book name="algu"/>
-	<book name="d2"/>
-	<book name="d3"/>
-	<book name="d4"/>
-	</sources>    
     <question>
-      <text>Mannan OBJ lei badjel logi gráda juohke beaivve</text>
-      <element id="OBJ">    
-	<grammar tag="N+Sg+Gen"/>         
-	<sem class="TIME_SEASON"/>
-      </element>
+      <text>Galle gráda sii leat lohpidan odne</text>
     </question>
     <answer> 
-      <text>Dán OBJ ii lean badjel NUM-GEN</text>
+      <text>Sii leat lohpidan badjel NUM-GEN</text>
       <element id="NUM-GEN" task="yes">    
 	<grammar tag="Num+Sg+Gen"/>         
       </element>
     </answer>
-  </q> -->
+  </q>  
 
   <q level="2" id="numloc04">
     <qtype>NUM-LOC</qtype>
@@ -628,7 +588,6 @@ D-->
     </answer>
   </q>
 
-<!--
   <q id="collnum1">
     <qtype>COLL-NUM</qtype>
    <question>
@@ -641,19 +600,18 @@ D-->
     <answer> 
       <text>COLL-NUM bohtet</text>
       <element id="COLL-NUM" task="yes">    
-	<grammar tag="N+Num+Sg+Nom"/>         
+	<grammar tag="N+Coll+Sg+Nom"/>         
 	<sem class="mCOLL_NOT_DU"/>
 	</element>
     </answer>
     <answer> 
       <text>COLL-NUM boahtiba</text>
       <element id="COLL-NUM" task="yes">    
-	<grammar tag="N+Num+Sg+Nom"/>         
+	<grammar tag="N+Coll+Sg+Nom"/>         
 	<sem class="mCOLL_DU"/>
 	</element>
     </answer>
   </q>
--->
 
   <q level="2" id="collnum2">
     <qtype>COLL-NUM</qtype>
