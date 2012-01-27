@@ -155,9 +155,10 @@ function submitSahka(dia) {
 <input type="hidden" name="dialogue" id="id_dialogue" />
 <input type="hidden" name="settings" id="settings" />
 <a href="javascript:submitSahka('firstmeeting');">
-<img border="0px" width="100"  src="{{ MEDIA_URL }}/images/woman001_small.jpg"/></br>
+<img border="0px" height="250" src="{{ MEDIA_URL }}/images/woman001_small.jpg"/></br>
 {% trans "Meeting with Kare" %}</a>
-</td><td>
+</td>
+<!-- <td>
 <a href="javascript:submitSahka('firstmeeting_man');">
 <img border="0px" width="108"  src="{{ MEDIA_URL }}/images/man_small.jpg"/></br>
 {% trans "Meeting with Hansa" %}</a>
@@ -171,20 +172,20 @@ function submitSahka(dia) {
 </br>{% trans "Meeting with Lemet" %}</a>
 </td>
 </tr>
-<tr>
-<td>
+<tr> --->
+<td align="center">
 <a href="javascript:submitSahka('visit');">
-<img border="0px" width="150" height="200" src="{{ MEDIA_URL }}/images/visit001.jpg"/></br>
+<img border="0px" width="180" height="250" src="{{ MEDIA_URL }}/images/visit001.jpg"/></br>
 {% trans "Visit" %}</a>
 </td>
-<td>
+<td align="center">
 <a href="javascript:submitSahka('grocery');">
-<img border="0px" width="200" height="150" src="{{ MEDIA_URL }}/images/grocery.jpg"/></br>
+<img border="0px" width="200" height="200" src="{{ MEDIA_URL }}/images/grocery.jpg"/></br>
 {% trans "Grocery" %}</a>
 </td>
-<td>
+<td align="center">
 <a href="javascript:submitSahka('shopadj');">
-<img border="0px" width="100" src="{{ MEDIA_URL }}/images/2scarves_small.jpg"/><br/>
+<img border="0px" height="200" src="{{ MEDIA_URL }}/images/2scarves_small.jpg"/><br/>
 {% trans "Shop" %}</a>
 </td>
 </tr>
