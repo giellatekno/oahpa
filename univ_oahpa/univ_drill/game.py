@@ -437,11 +437,11 @@ class BareGame(Game):
 
 		for item in syll:
 			if item in bisyl:
-				sylls.extend(bisyl)
+				sylls.append('2syll')
 			if item in trisyl:
-				sylls.extend(trisyl)
+				sylls.append('3syll')
 			if item in Csyl:
-				sylls.extend(Csyl)
+				sylls.append('Csyll')
 		
 		if pos == 'Pron':
 			syll = ['']
@@ -978,6 +978,55 @@ class Klokka(NumGame):
 		return db_info
 	
 	
+	def check_answer(self, question, useranswer, formanswer):
+		# TODO: in string->num, need to display the corresponding numeral if
+		# it is one that can be 14 hour time
+		gametype = self.settings['numgame']
+		if useranswer.strip():
+			forms = useranswer.encode('utf-8')
+			
+			if gametype == 'string':
+				fstfile = self.generate_fst
+			elif gametype == 'numeral':
+				fstfile = self.answers_fst
+			
+			output, err = self.generate_forms(forms, fstfile)
+			
+			num_list = self.clean_fst_output(output)
+			num_list = self.strip_unknown(num_list)
+			# print repr([question, useranswer, num_list])
+			
+			# 'string' refers to the question here, not the answer
+			if gametype == 'string':
+				# user answer must match with numeral generated from
+				# the question
+				
+				if useranswer in [a[0] for a in num_list] and \
+					question in [a[1] for a in num_list]:
+					return True
+				else:
+					return False
+
+			elif gametype == 'numeral':
+				# Numbers generated from user answer must match up
+				# with numeral in the question
+
+				# Bug in numeral game seems to be presenting wrong set of numerals, 
+				# so if answerset contains 13+, need to remove and take the lower.
+				# Or 'militaryrelax' the answer
+
+				num_list = num_list + formanswer
+				try:
+					_ = int(useranswer)
+					return False
+				except ValueError:
+					pass
+				if question in [a[1] for a in num_list] or \
+					useranswer in num_list:
+					return True
+				else:
+					return False
+
 	def create_form(self, db_info, n, data=None):
 		if self.settings['gametype'] in ["kl1", "kl2", "kl3"]:
 			language = L1
@@ -987,8 +1036,6 @@ class Klokka(NumGame):
 		fstfile = self.generate_fst
 		q, a = 0, 1
 	
-		# TODO: need to switch fsts here depending on numgame?
-
 		lookup = "%s\n" % db_info['numeral_id']
 
 		# lookup = "%s\n" % db_info['numeral_id']
@@ -1002,7 +1049,7 @@ class Klokka(NumGame):
 			if line:
 				nums = line.split('\t')
 				norm_list.append(nums[a])
-		
+
 		try:
 			numstring = norm_list[0]
 		except IndexError:

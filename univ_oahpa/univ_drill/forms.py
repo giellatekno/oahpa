@@ -1373,6 +1373,35 @@ class KlokkaQuestion(NumQuestion):
 	"""
 	game_log_name = "klokka"
 
+	def relax_military(self, number):
+		""" Change the presentation of numerals above 13 to their lower equivalents.
+
+		"""
+		military = [
+			('13', '01'),
+			('14', '02'),
+			('15', '03'),
+			('16', '04'),
+			('17', '05'),
+			('18', '06'),
+			('19', '07'),
+			('20', '08'),
+			('21', '09'),
+			('22', '10'),
+			('23', '11'),
+			('00', '12'),
+		]
+		military_dict = dict(military)
+
+		options = [number]
+		hh, _, mm = number.partition(':')
+		
+		try:
+			switched = '%s:%s' % (military_dict[hh], mm)
+			return switched
+		except KeyError:
+			return number
+
 	def __init__(self, *args, **kwargs):
 		present_list = kwargs.get('present_list')
 		accept_list = kwargs.get('accept_list')
@@ -1413,11 +1442,22 @@ class KlokkaQuestion(NumQuestion):
 			example = numeral
 		
 		self.correct_anslist = self.correct_anslist + [force_unicode(f) for f in wforms]
+
 		
 		self.fields['numeral_id'] = forms.CharField(widget=numeral_widget, required=False)
 		
+		self.numstring = num_string
+
+		# Need to change presentation of certain numerals to avoid 
 		if gametype == "string":
-			self.numstring = num_string
+			relaxed_presentation = [self.relax_military(a) for a in self.correct_anslist[:]]
+			self.correct_ans = relaxed_presentation + self.correct_anslist
+			self.correct_ans = self.correct_ans[0]
+		else:
+			# Clear numstring to switch presentation
+			self.numstring = None
+
+		
 		self.numeral = numeral
 
 		self.is_correct(self.game_log_name, example)
