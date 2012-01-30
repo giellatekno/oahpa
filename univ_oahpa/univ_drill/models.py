@@ -489,8 +489,6 @@ class Tag(models.Model):
 
 		self.save()
 
-
-
 class Form(models.Model):
 	word = models.ForeignKey(Word)
 	tag = models.ForeignKey(Tag)
@@ -591,17 +589,15 @@ class Form(models.Model):
 			# TODO: veljer systemet Coll og Ord grunnformen?
 			if match_num:  # added by Heli, by example of N
 				number = self.tag.number
-			elif self.tag.case == 'Nom':
-				number = 'Sg'
 			else:
-				number = ''
-
+				number = 'Sg'
+		
 			if self.tag.subclass:
-				subclass = 'Ord'
+				subclass = self.tag.subclass
 			else:
 				subclass = ''
 
-			baseform = self.word.form_set.filter(tag__case='Nom', tag__number=number, tag__grade='',tag__subclass='Ord',tag__attributive='')
+			baseform = self.word.form_set.filter(tag__case='Nom', tag__number=number, tag__grade='',tag__subclass=subclass,tag__attributive='')
 			# print baseform
 			if baseform.count() == 0:
 				baseform = self.word.form_set.all()
