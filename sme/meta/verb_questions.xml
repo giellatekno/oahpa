@@ -727,6 +727,52 @@
       </element>
     </answer>
   </q> 
+  <q id="vprf4">
+    <qtype>V-PRF</qtype>
+    <qtype>V-MIX</qtype>
+   <question>
+      <text>Makkár dálki leamaš odne</text>
+    </question>
+    <answer> 
+      <text>Odne lea eanaš V-PRF</text>
+      <element game='morfa' id="V-PRF" task="yes" >
+	<sem class="mRAIN"/>
+	<grammar tag="V+PrfPrc"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="vprf5">
+    <qtype>V-PRF</qtype>
+    <qtype>V-MIX</qtype>
+   <question>
+      <text>Makkár mielas SUBJ leamaš</text>
+      <element id="SUBJ">
+        <grammar tag="N+Prop+Sg+Nom" />
+	    <sem class="mPERSNAME"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Son lea beare V-PRF</text>
+      <element game='morfa' id="V-PRF" task="yes" >
+	<sem class="mLAUGH"/>
+	<grammar tag="V+PrfPrc"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="vprf6">
+    <qtype>V-PRF</qtype>
+    <qtype>V-MIX</qtype>
+   <question>
+      <text>Manne sii leat ádjánan nu guhká</text>
+    </question>
+    <answer> 
+      <text>Sii leat V-PRF</text>
+      <element game='morfa' id="V-PRF" task="yes" >
+	<sem class="mUSETIME"/>
+	<grammar tag="V+PrfPrc"/>
+      </element>
+    </answer>
+  </q> 
   <q id="vger0">
     <qtype>V-GER</qtype>
     <qtype>V-MIX</qtype>
