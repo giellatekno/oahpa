@@ -695,7 +695,38 @@
       </element>
     </answer>
   </q> 
-  -->
+  <q id="vprf2">
+    <qtype>V-PRF</qtype>
+    <qtype>V-MIX</qtype>
+    <question>
+      <text>Maid NOUN -guovttos leaba bargan gáffádagas</text>
+      <element id="NOUN">
+	<sem class="mPAIR"/>
+	<grammar tag="N+Sg+Gen"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Soai leaba eanaš V-PRF</text>
+      <element id="V-PRF" task="yes">
+	<sem class="mVERBAL_COM"/>
+	<grammar tag="V+PrfPrc"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="vprf3">
+    <qtype>V-PRF</qtype>
+    <qtype>V-MIX</qtype>
+   <question>
+      <text>Maid mánát leat bargan odne</text>
+    </question>
+    <answer> 
+      <text>Sii leat áŋgirit V-PRF birccuiguin</text>
+      <element game='morfa' id="V-PRF" task="yes" >
+	<sem class="mPLAY_V"/>
+	<grammar tag="V+PrfPrc"/>
+      </element>
+    </answer>
+  </q> 
   <q id="vger0">
     <qtype>V-GER</qtype>
     <qtype>V-MIX</qtype>
