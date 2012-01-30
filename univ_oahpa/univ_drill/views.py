@@ -501,9 +501,20 @@ class Morfaview(Gameview):
 		'NUM-LOC' :  _('Practise numerals in locative'),
 		'COLL-NUM' :  _('Practise collective numerals'),
 		'ORD-NUM' :  _('Practise ordinal numbers'),
-		'CARD' : _('Practise numerals'), # added by Heli
-		'ORD' : _('Practise ordinal numerals'),  # added by Heli
-		'COLL' : _('Practise collective numerals'), # added by Heli
+		'ORD-N-ILL' : _('Practise ordinal numerals in illative'),  # added by Heli
+		'ORD-N-ACC' : _('Practise ordinal numerals in accusative'),  # added by Heli
+		'ORD-N-COM' : _('Practise ordinal numerals in comitative'),  # added by Heli
+		'ORD-N-ESS' : _('Practise ordinal numerals in essive'),  # added by Heli
+		'ORD-N-GEN' : _('Practise ordinal numerals in genitive'),  # added by Heli
+		'ORD-N-NOM-PL' : _('Practise ordinal numerals in plural'),  # added by Heli
+		'ORD-N-LOC' : _('Practise ordinal numerals in locative'),  # added by Heli
+        'COLL-N-ILL' : _('Practise collective numerals in illative'),  # added by Heli
+		'COLL-N-ACC' : _('Practise collective numerals in accusative'),  # added by Heli
+		'COLL-N-COM' : _('Practise collective numerals in comitative'),  # added by Heli
+		'COLL-N-ESS' : _('Practise collective numerals in essive'),  # added by Heli
+		'COLL-N-GEN' : _('Practise collective numerals in genitive'),  # added by Heli
+		'COLL-NOMPL' : _('Practise collective numerals in plural'),  # added by Heli
+		'COLL-N-LOC' : _('Practise collective numerals in locative'),  # added by Heli
 		'PRS'   :  _('Practise present'),
 		'PRT'   : _('Practise past'),
 		'PRF'   : _('Practise perfect'),
@@ -611,6 +622,7 @@ class Morfaview(Gameview):
 
 		self.settings['allcase'] = settings_form.allcase
 		self.syll_settings(settings_form)
+		self.settings['allnum_type'] = settings_form.allnum_type  # added by Heli
 
 	def set_gamename(self):
 		subname = False
@@ -634,9 +646,11 @@ class Morfaview(Gameview):
 		# N-LOC - level 1/2
 		if self.settings['pos'] == "Num":
 			if self.settings['gametype'] == "bare":
-				gamename_key = self.settings['num_bare']
+				if not self.settings['num_type'] or self.settings['num_type'] == 'CARD':
+					gamename_key = self.settings['num_bare']
+				else:
+				    gamename_key = '%s-%s' % (self.settings['num_type'], self.settings['num_bare'])
 				subname = 'level %s' % str(self.settings['num_level'])
-				# another subname for Card/Ord/Coll ?
 			else:
 				gamename_key = self.settings['num_context']
 
@@ -673,6 +687,7 @@ class Morfaview(Gameview):
 			names.append(sylls)
 			
 		#if 'num_type' in self.settings:  # added by Heli. I am not sure if it works.
+		#	num_type = self.settings['num_type']
 		#	names.append(num_type) 
 
 		self.settings['gamename_key'] = ' - '.join(names) 

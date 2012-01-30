@@ -327,7 +327,6 @@ class Word(models.Model):
 				form_filter = 'A+Sg+Nom'
 			else:
 				form_filter = 'A+Attr'
-
 			try:
 				return self.form_set.filter(tag__string=form_filter)[0]
 			except:
@@ -596,10 +595,14 @@ class Form(models.Model):
 				number = 'Sg'
 			else:
 				number = ''
-			baseform = self.word.form_set.filter(tag__attributive='',
-												 	tag__case='Nom',
-													tag__number=number, # was: 'Sg'
-													tag__grade='')
+
+			if self.tag.subclass:
+				subclass = 'Ord'
+			else:
+				subclass = ''
+
+			baseform = self.word.form_set.filter(tag__case='Nom', tag__number=number, tag__grade='',tag__subclass='Ord',tag__attributive='')
+			# print baseform
 			if baseform.count() == 0:
 				baseform = self.word.form_set.all()
 			if not baseform:

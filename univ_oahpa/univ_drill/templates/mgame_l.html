@@ -26,5 +26,9 @@
 		{{ settingsform.num_level }}</li>
 {% endifequal %}
 
+{% ifequal settings.gametype "bare" %}
+	<li><label for="id_{{ settingsform.num_type.name }}">{% trans "Type" %}</label>
+		{{ settingsform.num_type }}</li>
+{% endifequal %}
 
 {% endblock %}

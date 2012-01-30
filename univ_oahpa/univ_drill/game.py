@@ -352,14 +352,14 @@ class BareGame(Game):
 		'COMP': 'Comp', # was: A-COMP
 		'SUPERL': 'Superl', # was: A-SUPERL
 		'POS':'',
-		'CARD': 'Num', # these 3 added for implementing num_type choice
+		'CARD': '', # CARD, ORD, COLL added for implementing num_type choice
 		'ORD': 'A+Ord',
 		'COLL': 'N+Coll',
 		'': ''
 	}
 	
 	def get_baseform(self, word_id, tag):
-		
+	# This function is no longer in use. There is getBaseform in models.py that does the job.	
 		basetag = None
 		
 		if tag.pos in ["N", "A", "Num", "Pron"]:
@@ -383,13 +383,14 @@ class BareGame(Game):
 			pos = self.settings['pos']
 
 		
-		syll = True and	self.settings.get('syll')	or   "All"
+		syll = True and	self.settings.get('syll')	or ['']
 		case = True and	self.settings.get('case')	or   ""
 		levels = True and  self.settings.get('level')   or   []
 		adjcase = True and self.settings.get('adjcase') or   ""
 		pron_type = True and self.settings.get('pron_type') or   ""
 		proncase = True and self.settings.get('proncase') or   ""
 		grade = True and self.settings.get('grade')   or   ""
+		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
 		source = ""
 		
 		mood, tense, infinite, attributive = "", "", "", ""
@@ -463,6 +464,19 @@ class BareGame(Game):
 		if pos == "V" and self.settings.has_key('vtype'):
 			mood, tense, infinite = pos_mood_tense[self.settings['vtype']]
 		
+		pos2 = ''
+		subclass = ''
+		if pos == "Num":
+			if num_type == "A+Ord":  # Ordinal numerals have tag A+Ord
+				pos = 'A'
+				#self.settings['pos'] = 'A'
+				pos2 = 'Num'
+				subclass='Ord'
+			elif num_type == "N+Coll":  # Collective numerals have tag N+Coll
+				pos = 'N'
+				#self.settings['pos'] = 'N'
+				pos2 = 'Num'
+				subclass='Coll'
 		
 		number = ["Sg","Pl",""]
 		
@@ -471,8 +485,8 @@ class BareGame(Game):
 		elif case == "Nom" and pos != "Pron":
 			number = ["Pl"]
 		else:
-			number = ["Sg","Pl"]  # added by Heli
-
+			number = ["Sg","Pl"]
+		
 		# A+Sg+Nom
 		
 		# following values are in grade
@@ -485,9 +499,7 @@ class BareGame(Game):
 			if "Attr" in [attributive, case]: 
 				attributive = "Attr"
 				case = ""  
-				number = [""]
-			else:			
-				attributive = ""  		
+				number = [""]  		
 		
 		maxnum, i = 20, 0
 		
@@ -516,20 +528,18 @@ class BareGame(Game):
 			if pos == 'Pron':
 				sylls = False
 				TAG_QUERY = TAG_QUERY & Q(subclass=pron_type)
+			elif pos2 == 'Num':
+				sylls = False
+				TAG_QUERY = TAG_QUERY & Q(subclass=subclass)
 			else:
-				TAG_QUERY = TAG_QUERY & Q(subclass='')
-
-			if pos == 'Num':
-				TAG_QUERY = TAG_QUERY & Q(subclass='')
-				if num_level == '1':  # Numerals in Sg on level 1
-				    TAG_QUERY = TAG_QUERY & Q(number='Sg')
-				else:  # Numerals in both Sg and Pl on level 1-2
-					TAG_QUERY = TAG_QUERY & Q(number__in=['Sg','Pl'])
-				if num_type == 'ORD':  # Card / Ord / Coll
-					TAG_QUERY = TAG_QUERY & Q(tag__string__contains="A+Ord")
-				elif num_type == 'COLL':
-					TAG_QUERY = TAG_QUERY & Q(tag__string__contains="N+Coll")
-                    
+				TAG_QUERY = TAG_QUERY & Q(subclass='')  
+			
+		if pos == 'Num' or pos2 == 'Num':
+			if num_level == '1':  # Numerals in Sg on level 1
+				TAG_QUERY = TAG_QUERY & Q(number='Sg')
+			else:  # Numerals in both Sg and Pl on level 1-2
+				TAG_QUERY = TAG_QUERY & Q(number__in=['Sg','Pl'])
+					            
 		if pos == 'V':
 			TAG_QUERY =  TAG_QUERY & \
 							Q(tense=tense) & \
@@ -540,13 +550,17 @@ class BareGame(Game):
 				TAG_EXCLUDES = Q(string__contains='ConNeg')
 			
 		if pos == 'A':
-			base_set = Form.objects.filter(Q(tag__string__contains="A+") & (Q(tag__string='A+Attr') | Q(tag__string__contains='Nom')))
-			TAG_QUERY = Q(pos="A") & \
+		#	base_set = Form.objects.filter(Q(tag__string__contains="A+") & (Q(tag__string='A+Attr') | Q(tag__string__contains='Nom')))  # Is not used.
+			if pos2 == 'Num':
+			     sylls = False
+			     TAG_QUERY = TAG_QUERY & Q(subclass=subclass) & Q(case=case) & Q(attributive='') & Q(grade='')
+			else:     
+			     TAG_QUERY = TAG_QUERY & \
+			             Q(subclass='') & \
 						Q(attributive=attributive) & \
 						Q(grade=grade) & \
 						Q(case=case) & \
 						Q(number__in=number)
-		# case -> adjcase ?
 		
 		# filter can include several queries, exclude must have only one
 		# to work successfully
@@ -570,18 +584,31 @@ class BareGame(Game):
 
 			raise Http404(error)
 		
-		if self.settings['pos'] == "Num":
+		"""if self.settings['pos'] == "Num":
 			if self.settings.has_key('num_level') and str(self.settings['num_level']) == "1":
-				smallnum = ["1","2","3","4","5","6","7","8","9","10"]
-				QUERY = Q(pos__iexact=pos) & Q(presentationform__in=smallnum)
-			else:
-				QUERY = Q(pos__iexact=pos)
+			"""
+        
+		#		QUERY = Q(pos__iexact=pos) & Q(presentationform__in=smallnum)
+		#	else:
+		#		QUERY = Q(pos__iexact=pos)
+		if pos == 'Num' or pos2 == 'Num':
+		      QUERY = Q(pos__iexact=pos) & Q(form__tag__subclass=subclass)
 		else:
 			# levels is not what we're looking for
-			QUERY = Q(pos__iexact=pos) & Q(stem__in=syll)
-			if source and source not in ['all', 'All']:
-				QUERY = QUERY & Q(source__name=source)
-				
+		      QUERY = Q(pos__iexact=pos) & Q(stem__in=syll)
+		      if source and source not in ['all', 'All']:
+			     QUERY = QUERY & Q(source__name=source)
+		      
+		
+		smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta", "čieža", "gávcci","ovcci","logi"]
+		smallnum_ord = ["vuosttaš", "nubbi", "goalmmát", "njealját", "viđát", "guđát", "čihččet", "gávccát", "ovccát", "logát"]
+		
+		if pos == 'Num' and subclass == '':
+			QUERY = QUERY & Q(lemma__in=smallnum)
+		      
+		if pos2 == 'Num' and subclass == 'Ord':
+			QUERY = QUERY & Q(lemma__in=smallnum_ord)
+                      				
 		error = "Morfa.get_db_info: Database is improperly loaded.\
 				 There are no Words, Tags or Forms, or the query\
 				 is not returning any."
