@@ -33,28 +33,32 @@ Bøyningsparadigme trenges ikke for Leksa, men for de andre programmene. Filene 
 # implementere funksjoner som allerede finnes i smeOahpa - vær obs på at i sme er det 3 stammetyper (2syll, 3syll, Csyll), i sma er det 2 for de fleste ordklassene
 ## substantiv:
 ### som i smeOAHPA: nom.pl., akkusativ, genitiv, illativ, lokativ, komitativ, essiv
-### OBS smeOahpa: lokativ istedenfor smaOahpa: elativ og inessiv
+### smeOahpa: lokativ istedenfor smaOahpa: elativ og inessiv
 ## verb: 
 ### som i smeOAHPA: presens, preteritum, kondisjonalis, potensialis, imperativ.  
 ### Dessuten perfektum og gerundium som i smaOahpa. Perfektum skal ha "lea" som kontekst.
 ## adjektiv:
 ### som i smeOAHPA, mange flere oppgavetyper enn i smaOahpa
-## tallord: som i smeOAHPA. Tallord er ikke med i smaOahpa. Tallord skal ikke ha stammetypevalg. Kasus: nom.pl., akkusativ, genitiv, illativ, lokativ, komitativ.
+## tallord: som i smeOAHPA. Tallord er ikke med i smaOahpa. Tallord skal ikke ha stammetypevalg. Kasus: nom.pl., akkusativ, genitiv, illativ, lokativ, komitativ. Typer: Card, Ord, Coll. Nivå 1: Sg Nivå 2: Pl
 # implementere pronomener som oppgaver - kildefil er pron_sme.xml. Former med dial="NG" skal aksepteres som riktig svar, men ikke presenteres som fasit.
-## personlige - som i smaOahpa. Kasusvalg: akk, gen, ill, lok, kom.
-## demonstrative - som personlige pron. Grunnform er Pron+Dem+Number+Nom. Det blir problemer i presentasjonen for brukeren med homonymi mellom Sg+Nom og Pl+Nom. Det må vi finne løsning på. Kasusvalg: akk, gen, ill, lok, kom.
-## refleksive - grunnform er Pron+Refl+Gen. Nominativ er ikke oppgavetype.  Kasusvalg: ill, lok, kom.
-## resiproke - grunnform er Pron+Recipr+Sg+Gen. Nominativ er ikke med som oppgavetype. Kasusvalg: ill, lok, kom. Disse oppgavene skal i tillegg ha kontekst, på samme måte som verb-oppgavene har det:
-### PxDu skal ha ''goabbat'' som kontekst
-### PxPl skal ha ''guhtet''  som kontekst
+## __personlige__ - som i smaOahpa. Kasusvalg: akk, gen, ill, lok, kom.
+## __relative__ - som i Pers. grunnform er Pron+Rel+Nom.  Kasusvalg: akk, gen, ill, lok, kom.
+## __demonstrative__ - som personlige pron. Grunnform er Pron+Dem+Number+Nom. Det blir problemer i presentasjonen for brukeren med homonymi mellom Sg+Nom og Pl+Nom. Det må vi finne løsning på. Kasusvalg: akk, gen, ill, lok, kom.
+## __refleksive__ - grunnform er Pron+Refl+Gen. Nominativ er ikke oppgavetype.  Kasusvalg: ill, lok, kom.
+## __resiproke__ - grunnform er Pron+Recipr+Sg+Gen. Nominativ er ikke med som oppgavetype. Kasusvalg: ill, lok, kom. Disse oppgavene skal i tillegg ha kontekst, på samme måte som verb-oppgavene har det. Det finnes to typer resiproke pronomener, med og uten Px. 
+## med Px
+### guoibmi+Pron+Recipr+Sg+Case+PxDuNumber skal ha ''goabbat'' som kontekst
+### guoibmi+Pron+Recipr+Sg+Case+PxPlNumber skal ha ''guhtet''  som kontekst
+## uten Px
+### nubbi+Pron+Recipr+Sg+Case skal ha ''nubbi'' som kontekst
+### nubbi+Pron+Recipr+Pl+Case skal ha ''nuppit'' som kontekst
+
 
 
 ! MorfaC
-# implementere funksjoner som allerede finnes i smeOahpa
-# implementere pronomener som oppgavetype - pron_questions.xml inneholder foreløpig bare oppgaver for personlige pronomener
-# __NB!__ I tillegg til de kasusdelte oppgavene er det ei mixed case -oppgave i MorfaC. (den siste
-  oppgavetypen). Den blei utvikla for sma og fungerer ikke for sme i dag. (Feilmelding: No questions
-  found for query. qtype: u'N-MIX'). Vil kommer for sme også.
+# implementere funksjoner som allerede finnes i smeOahpa: substantiver, verb, adjektiver og tallord
+# implementere Gerund og Perfektum som oppgavetyper for verb
+# implementere pronomener som oppgavetype - Pers, Dem, Recipr, Refl, Rel
 
 ! Sahka
 # implementere funksjoner som allerede finnes i smeOahpa
