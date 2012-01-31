@@ -163,7 +163,7 @@ LIST EOS = (<<<) (</s>) QDL;
 LIST QDL = QDL ;
 
 # Spelling-error
-LIST QMRK = ? ;
+LIST QMRK = ? Guess ;
 
 
 # Parts of speech
@@ -186,6 +186,7 @@ LIST Pcle = Pcle ;
 LIST Num = Num ;
 LIST Prop = Prop ;
 LIST LowercaseErr = LowercaseErr ;
+LIST Guess = Guess ;
 
 LIST LEFT = LEFT ;
 LIST RIGHT = RIGHT ;
@@ -218,6 +219,10 @@ LIST Acc = Acc ;
 
 LIST Gen = Gen ;
 LIST Ill = Ill ;
+LIST IllErr = IllErr ;
+LIST IllVErr = IllVErr ;
+LIST CGErr = CGErr ;
+LIST DiphErr = DiphErr ;
 
 LIST Loc = Loc ;
 LIST Com = Com ;
@@ -1960,6 +1965,10 @@ REMOVE ("Le^a" N) ;
 
 REMOVE LowercaseErr ;
 SELECT (Pers Du1) (0 ("Moa"))  ;
+REMOVE IllErr (0 Ill)  ;
+REMOVE IllVErr (0 Ill)  ;
+REMOVE CGErr  ;
+
 
 LIST NOT-LIKELY-VERB = "ikte" "bárdni" "vávvá" ;
 
@@ -1968,6 +1977,7 @@ REMOVE V (0 NOT-LIKELY-VERB) ;
 REMOVE Attr (0 ("eahkedis"));
 
 LIST PLACENAME-QUESTION = Gos_don_leat_eret Gos_don_orut_dál gos_du_eadni_lea_eret_adult gos_du_ahcci_lea_eret_adult gos_du_eadni_lea_eret_young gos_du_ahcci_lea_eret_young gos_du_eadni_lea_eret_child gos_du_ahcci_lea_eret_child ;
+
 
 SELECT (Plc Loc) (*-1 PLACENAME-QUESTION BARRIER Plc)(NEGATE *1 Plc) ;
 
@@ -5379,8 +5389,13 @@ BEFORE-SECTIONS
 MAPPING-PREFIX = & ;
 
 
+# Guesser
+# Ord med  
+SUBSTITUTE (?) (N Prop Plc Sg Loc Guess) TARGET ("<[A-ZÆØÅÄÖČŠÁ].*s>"r ?) ;
+SUBSTITUTE (?) (N Prop Plc Sg Nom Guess) TARGET ("<[A-ZÆØÅÄÖČŠÁ].*>"r ?)(NOT -1 BOS) ;
 
           SECTION
+
 
 # Cealkka
 
@@ -5452,12 +5467,12 @@ MAP (&dia-target) TARGET (N Plc Loc) IF (*-1 QDL BARRIER (&dia-target) LINK 0 SA
 MAP (&dia-target) TARGET (N Plc Loc) IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv)) ;
 
 
-# Collecting place name, if it is not in the lexicon - for SAHKA
-MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
-MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
-
-MAP (&dia-unknown) TARGET N IF (NOT 0 Prop OR HUMAN)(*-1 QDL BARRIER (&dia-target) OR (&dia-unknown) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
-MAP (&dia-unknown) TARGET N IF (NOT 0 Prop OR HUMAN)(*-1 QDL BARRIER (&dia-target) OR (&dia-unknown) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
+# Collecting place name, if it is not in the lexicon - for SAHKA - utkommentert pga Guesser - må vurderes
+#MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
+#MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
+#
+#MAP (&dia-unknown) TARGET N IF (NOT 0 Prop OR HUMAN)(*-1 QDL BARRIER (&dia-target) OR (&dia-unknown) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
+#MAP (&dia-unknown) TARGET N IF (NOT 0 Prop OR HUMAN)(*-1 QDL BARRIER (&dia-target) OR (&dia-unknown) LINK 0 SAHKA LINK *-1 ("eret") LINK -1 ("leat") LINK *-1 ("gos" Adv))(NOT *1 (&dia-target)) ;
 
 
 # Placename should be in locative:
@@ -5730,6 +5745,9 @@ MAP (&grm-Px-shouldbe-Loc) TARGET ("guhte") IF (*1 QDL LINK NOT 0 PLACENAME-QUES
 
 MAP (&grm-missing-Loc) TARGET TARGETQUESTION-LOC IF (*1 QDL LINK NOT *1 Loc OR DOPPE OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gos") OR Loc);
 MAP (&grm-missing-Loc) TARGET ("guhte") IF (1 (N Loc) LINK *1 QDL LINK NOT *1 Loc OR DOPPE OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gos") OR Loc);
+
+MAP (&grm-error-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK *1C IllErr OR IllVErr BARRIER S-BOUNDARY OR DOHKO OR Ill)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
+MAP (&grm-error-Ill) TARGET ("guhte") IF (1 (N Ill) LINK *1 QDL LINK *1C IllErr OR IllVErr BARRIER S-BOUNDARY OR DOHKO OR Ill)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
 
 MAP (&grm-missing-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK NOT *1 Ill OR DOHKO OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
 MAP (&grm-missing-Ill) TARGET ("guhte") IF (1 (N Ill) LINK *1 QDL LINK NOT *1 Ill OR DOHKO OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
@@ -6279,6 +6297,7 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &grm-missing-Ess      	there should be an essive
 # &grm-missing-Gen      	there should be a genetive
 # &grm-missing-Ill      	there should be an illative
+# &grm-error-Ill			the illative form is not quite correct
 # &grm-missing-Loc      	there should be a locative
 # &grm-missing-Nom      	there should be a nominative
 # &grm-missing-Loc-PP   	there should be a Loc or a PP
