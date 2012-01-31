@@ -602,6 +602,7 @@ class BareGame(Game):
 		
 		smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta", "čieža", "gávcci","ovcci","logi"]
 		smallnum_ord = ["vuosttaš", "nubbi", "goalmmát", "njealját", "viđát", "guđát", "čihččet", "gávccát", "ovccát", "logát"]
+		smallnum_coll = ["guovttis", "guovttes", "golmmas", "njealjis", "viđás", "guđás", "čiežas", "gávccis","ovccis","logis"]
 		
 		if pos == 'Num' and subclass == '':
 			QUERY = QUERY & Q(lemma__in=smallnum)
@@ -637,6 +638,11 @@ class BareGame(Game):
 					random_word = random_word.filter(word__stem__in=sylls)
 				if source:
 					random_word = random_word.filter(word__source__in=source)
+				if pos2 == 'Num':
+				        if subclass == 'Ord':
+						random_word = random_word.filter(word__lemma__in=smallnum_ord)  # added to constrain the set of ordinal numerals 
+					elif subclass == 'Coll':
+						random_word = random_word.filter(word__lemma__in=smallnum_coll) # constrains the set of collective numerals
 				if random_word.count() > 0:
 					random_form = random_word.order_by('?')[0]
 					random_word = random_form.word
