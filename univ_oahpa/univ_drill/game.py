@@ -498,8 +498,8 @@ class BareGame(Game):
 		if pos == 'A':
 			if "Attr" in [attributive, case]: 
 				attributive = "Attr"
-				case = ""  
-				number = [""]  		
+				case = "" 
+				number = [""]  	
 		
 		maxnum, i = 20, 0
 		
@@ -550,7 +550,7 @@ class BareGame(Game):
 				TAG_EXCLUDES = Q(string__contains='ConNeg')
 			
 		if pos == 'A':
-		#	base_set = Form.objects.filter(Q(tag__string__contains="A+") & (Q(tag__string='A+Attr') | Q(tag__string__contains='Nom')))  # Is not used.
+			base_set = Form.objects.filter(Q(tag__pos="A") & Q(tag__case='Nom'))  # Is not used?
 			if pos2 == 'Num':
 			     sylls = False
 			     TAG_QUERY = TAG_QUERY & Q(subclass=subclass) & Q(case=case) & Q(attributive='') & Q(grade='')
@@ -711,7 +711,7 @@ class BareGame(Game):
 		# about turning nominative singular into nominative plural, 
 		# thus all baseforms should be singular.
 
-		if tag.case in ['Ess', 'Nom']:
+		if tag.case in ['Ess', 'Nom'] or tag.attributive:
 			match_number = False
 		else:
 			match_number = True
