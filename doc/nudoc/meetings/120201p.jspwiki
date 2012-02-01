@@ -1,0 +1,137 @@
+
+!!! Møte 1.2.12
+
+Til stades: Biret-Ánne, Lene, Heli, Ryan, Trond
+
+
+!!Saksliste
+* Cealkka
+* Oppdatering av database
+* Buggar
+* Pronomen
+* Site
+* Neste møte
+
+!! Cealkka - VastaS
+
+(Nytt namn: VastaS)
+
+Status quo: Cealkka viser spørsmål henta frå databasen. Det fungerer som
+Vasta, men er uferdig: 
+* Den viser spørsmål, men ikkje framlegg til svar.
+
+Lene sin opprinnelege tanke var å lage rute til venstre med orda.
+Det ho i praksis har gjort er å inkludere orda i svaret, slik at
+dei står i grunnform i ein annan farge. Dessutan inneheld denne oppgåvetypen
+''variablar'', slik at det i praksis ikkje er mogleg å referere til dei 
+i CG-en.
+
+I grensesnittet no står det ''Gean deivet gáffádagas?''. Svaret, med ord i
+grunnform, skal stå etterpå. Til analyse går: 
+* spørsmål-id
+* spørsmålet med grunnform
+* studenten sitt svar
+
+Skilnaden mellom Vasta og Cealkka blir dermed ein mellom ferdigutfylt
+og open.
+
+Jf. kjeldekoden:
+
+Orda er definert som i MorfaC, men som grunnformer. Orda i grunnform
+må ha ein annan farge i oppgaven, slik at studenten forstår at det 
+er desse orda som skal endrast i svaret.
+
+http://giellatekno.uit.no/univOahpa/02_2012/info_nob.html
+
+{{{
+<questions game="cealkka">
+  <q level="1" id="1_PrsSg1_AAttr_Acc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid oainnát šiljus</text>   <==== spørsmål
+    </question>
+    <answer> 
+      <text>Mun VERB ADJ NOUN</text>  <===== oppgave - denne + svar skal til analyse
+      <element id="VERB">
+        <grammar tag="V+Inf"/>
+        <id>oaidnit</id>
+      </element>
+      <element id="ADJ">
+        <grammar tag="A+Sg+Nom"/>
+        <sem class="COLOUR"/>
+      </element>
+      <element id="NOUN">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mPRIVVEHICLE"/>
+      </element>
+    </answer>
+  </q> 
+}}}
+
+TODO:
+* __Heli__ arbeider videre med VastaS
+
+
+!! Oppdatering av database
+
+Det er mogleg å legge til berre dei nye orda, som ligg her:
+''v_update_smenob.xml''. Evt. er det mogleg å installere heile
+basen på nytt.
+
+Ord-spesifikke endringar:
+* ''drošše'' (den kommer med igjen ved neste oppdatering, men den har feil bøyningsparadigme 
+  i django nå. Bøyningsparadigmet er retta i fst)
+* ''skáhppa'' og ''televišuvdna'' (disse lemmaene er fjerna fra leksikonet og skal ikke lenger være med)
+
+
+
+!!Buggar
+! Bug 1268 (negative verbet) vgoprt1 og vgoprt0
+
+Problemet er at det ikkje er subjekt i svaret.
+Løysing: Kongruensen skal referere til verbet i spørsmålet, heller enn til 
+subjektet i svaret.
+
+! Bug 1257 (Problemer med lokaliseringa)
+
+Lokaliseringsfila er korrekt, men det kommer feil språk i øverste linje i boksen til høyre
+
+{{{
+Harjoittele illatiivia
+Skriv nordsamisk substantiv i riktig 
+bøyingsform. Du får oversettelse hvis du
+klikker på ordet.
+}}}
+
+Det er også ein msgstr "Practice "
+
+TODO:
+* __Ryan__ sjekker templatet
+
+
+!! Pronomen
+
+Vi skal implementere Pron Rel etterhvert, både MorfaS og MorfaC, pluss ''nubbi nuppi'' Recipr. 
+
+Generell kongruenstagg for resiproke pronomen? Det ville ha gjort det lettare å
+variere oppgåvene.
+
+
+TODO:
+* __Ryan__ ser på det, testar (etter VastaS)
+
+!! Site
+Vi hadde møte i dag med e-campus-team: 
+* Vi får en egen wordpress-site, og da er vi friere til å implementere plug-ins.
+* Universitetet har også åpna for flere url-er, slik at vi kan få ''oahpa.no''
+* Lage wiki-dokumentasjon
+* heller bruke penger på å styrke UiTs IT-avdeling enn å bruke eksterne bedrifter
+  som underleverandører
+
+!! Neste møte
+
+13.02 kl 8.00 norsk tid (søndag kveld i San Franscisco)
+
+
+
+
