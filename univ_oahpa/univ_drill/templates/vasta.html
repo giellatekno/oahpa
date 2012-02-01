@@ -11,11 +11,17 @@
 {% block imgprefix %}vasta{% endblock %}
 {% block gametitlename %}<a href="/univ_oahpa/vasta">VASTA</a>{% endblock %}
 
-{% block navbar %}{% endblock %}
+{% block navbar %}
+<ul class="sidelist"> 
+{% ifequal settings.gametype "vasta" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta %}">{% trans 'Vasta' %}</a></li>
+{% ifequal settings.gametype "cealk" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url cealkka %}">{% trans 'Cealkka' %}</a></li>
+</ul>
+{% endblock %}
 
 {% block name %}{% trans "Vasta" %}{% endblock %}
 {% block pagename %}/univ_oahpa/vasta/{% endblock %}
 {% block instructions %}{% trans "Answer to the questions with full sentences. Be aware of that if there is moai/mii in the question, you have to answer with doai/dii. " %}{% endblock %}
+
 {% block settings %}
 
 <table width="700">
@@ -36,6 +42,7 @@
 </table>
 <input type="submit" name="settings" value="{% trans "New set" %}" />
 <input type="hidden" name="gametype" value="qa" />
+
 
 {% endblock %}
 

@@ -2193,3 +2193,289 @@ class SahkaQuestion(OahpaQuestion):
         if correct_val == "correct":
             self.error="correct"
 
+###########
+## Cealkka
+###########
+def cealkka_is_correct(self,question,qwords,language,question_id=None):
+    """
+    Analyzes the answer and returns a message.
+    """
+    if not self.is_valid():
+        return None, None, None
+
+    noanalysis=False
+
+    #fstdir = "/opt/smi/sme/bin"
+    fstdir = settings.FST_DIRECTORY
+    lookup2cg = " | lookup2cg"
+    cg3 = "/usr/local/bin/vislcg3"
+    preprocess = " | /usr/local/bin/preprocess "
+    dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
+    # dis_bin = "../sme/src/sme-ped.cg3" # in Heli's machine TODO: add to settings.py
+    
+    vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
+    
+    self.userans = self.cleaned_data['answer']
+    answer = self.userans.rstrip()
+    answer = answer.lstrip()
+    answer = answer.rstrip('.!?,')
+
+    self.error = "error"
+                
+    qtext = question
+    qtext = qtext.rstrip('.!?,')
+    
+    host = 'localhost'
+    port = 9000  # was: 9000, TODO - add to settings.py
+    size = 1024
+
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    try:
+        s.connect((host,port))
+        sys.stdout.write('%')
+
+        analysis = ""
+        data_lookup = "echo \"" + qtext + "\"" + preprocess
+        words = os.popen(data_lookup).readlines()
+        for w in words:
+            cohort=""
+            if qwords and qwords.has_key(w):
+                qword = qwords[w]
+                if qword.has_key('word'):
+                    if qword.has_key('fullform') and qword['fullform']:
+                        cohort = cohort + "\"<" + qword['fullform'][0].encode('utf-8') + ">\"\n"
+                        lemma = Word.objects.filter(id=qword['word'])[0].lemma
+                        cohort = cohort + "\t\"" + lemma + "\""
+                    if qword.has_key('tag') and qword['tag']:
+                        string = Tag.objects.filter(id=qword['tag'])[0].string
+                        tag = string.replace("+"," ")
+                        cohort = cohort + " " + tag + "\n"
+                else:
+                    w=w.lstrip().rstrip()
+                    s.send(w)
+                    cohort = s.recv(size)
+            else:
+                w=w.lstrip().rstrip()
+                s.send(w)
+                cohort = s.recv(size)
+
+            if not cohort or cohort == w:
+                cohort = w + "\n"
+            if cohort=="error":
+                raise Http500
+                
+            analysis = analysis + cohort
+
+        if self.gametype=="sahka":
+            analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
+        elif self.gametype=="cealk":
+            analysis = analysis + "\"<^qdl_id>\"\n\t\"^cealkka\" QDL " + question_id +"\n"
+        else:
+            analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
+
+        ans_cohort=""
+        data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
+        word = os.popen(data_lookup).readlines()
+        analyzed=""
+        for c in word:
+            c=c.strip()
+            s.send(c)
+            analyzed = analyzed + s.recv(size)
+            analysis3=c + analyzed + c
+
+    except socket.timeout:
+        raise Http404("Technical error, please try again later.")            
+
+    s.send("q")
+    s.close()
+
+    analysis = analysis + analyzed
+    analysis = analysis + "\"<.>\"\n\t\".\" CLB"
+    analysis = analysis.rstrip()
+    analysis = analysis.replace("\"","\\\"")
+
+    ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
+    checked = os.popen(ped_cg3).readlines()
+
+    wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
+    messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
+    targetObj=re.compile(r'^.*\"(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\".*dia-.*$', re.U)
+    # Extract the lemma    
+    constantObj=re.compile(r'^.*\"\<(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\>\".*$', re.U)
+    diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
+
+    # Each wordform may have a set of tags.
+    spelling = False
+    msgstrings = {}
+    diastring = "jee"
+    lemma=""
+    for line in checked:
+        line = line.strip()
+
+        #Find the lemma first
+        matchObj=constantObj.search(line)
+        if matchObj:
+            lemma = matchObj.expand(r'\g<targetString>')
+
+        #The wordform
+        matchObj=wordformObj.search(line)
+        if matchObj:
+            wordform = matchObj.expand(r'\g<msgString>')
+            msgstrings[wordform] = {}
+            
+        #grammatical/semantic/other error
+        matchObj=messageObj.search(line)
+        if matchObj:
+            msgstring = matchObj.expand(r'\g<msgString>')
+            if msgstring.count("spellingerror") > 0:
+                spelling = True
+            msgstrings[wordform][msgstring] = 1
+
+        #Store the baseform if tehre is dia-whatever
+        matchObj=targetObj.search(line)
+        if matchObj:
+            msgstring = matchObj.expand(r'\g<targetString>')
+            msgstrings[wordform]['dia-target'] = msgstring
+            msgstrings[wordform]['dia-lemma'] = lemma
+
+        # What is the dia-tag?
+        matchObj=diaObj.search(line)
+        if matchObj:
+            msgstring = matchObj.expand(r'\g<targetString>')
+            msgstrings[wordform][msgstring] = 1
+            diastring=msgstring            
+            
+
+    msg=[]
+    dia_msg = []
+    target = ""
+    variable=""
+    constant=""
+    found=False
+    #Interface language    
+    if not language: language = "nob"
+    if language == "no" : language = "nob"
+    if language == "fi" : language = "fin"
+    if language == "en" : language = "eng"
+    if not language=="nob" and not language=="sme" and not language=="fin" and not language=="eng": language="nob"
+    for w in msgstrings.keys():
+        if found: break
+        for m in msgstrings[w].keys():
+            if spelling and m.count("spelling") == 0: continue
+            m = m.replace("&","") 
+            if Feedbackmsg.objects.filter(msgid=m).count() > 0:
+                msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
+                message = Feedbacktext.objects.filter(feedbackmsg=msg_el,language=language)[0].message
+                message = message.replace("WORDFORM","\"" + w + "\"") 
+                msg.append(message)
+                if not spelling:
+                    found=True
+                    break                
+            else:
+                if m.count("dia-") == 0:
+                    msg.append(m)
+                    if not spelling:
+                        found=True
+                        break
+            if m.count("dia-") > 0:
+                dia_msg.append(m)
+        if msgstrings[w].has_key('dia-target'):
+            constant = msgstrings[w]['dia-lemma']
+            variable = msgstrings[w]['dia-target']
+        if msgstrings[w].has_key('dia-unknown'):
+            constant = msgstrings[w]['dia-lemma']
+            variable = msgstrings[w]['dia-unknown']
+
+    #iscorrect is used only in logging
+    iscorrect=False
+    if not msg:
+        self.error = "correct"
+        iscorrect=True
+
+    feedbackmsg=' '.join(msg)
+    today=datetime.date.today()
+    log = Log.objects.create(userinput=self.userans,feedback=feedbackmsg,iscorrect=iscorrect,\
+                                       example=question,game=self.gametype,date=today)
+    log.save()           
+        
+    variables = []
+    variables.append(variable)
+    variables.append(constant)
+    return msg, dia_msg, variables
+
+
+class CealkkaSettings(OahpaSettings):
+
+    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
+    #level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
+
+    def __init__(self, *args, **kwargs):
+        self.set_settings()
+        self.set_default_data()
+        self.default_data['gametype'] = 'cealk',
+        super(CealkkaSettings, self).__init__(*args, **kwargs)
+
+class CealkkaQuestion(OahpaQuestion):
+    """
+    Questions for cealkka
+    """
+
+    select_words = select_words
+    cealkka_is_correct = cealkka_is_correct
+        
+    def __init__(self, question, qwords, language, userans_val, correct_val, *args, **kwargs):                 
+
+        self.init_variables("", userans_val, [])
+        
+        question_widget = forms.HiddenInput(attrs={'value' : question.id})
+
+        super(CealkkaQuestion, self).__init__(*args, **kwargs)
+
+        maxlength=50
+        answer_size=50
+        self.fields['answer'] = forms.CharField(max_length = maxlength, \
+                                                widget=forms.TextInput(\
+            attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
+
+        self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
+
+        self.qattrs= {}
+        for syntax in qwords.keys():
+            qword = qwords[syntax]
+            if qword.has_key('word'):
+                self.qattrs['question_word_' + syntax] = qword['word']
+            if qword.has_key('tag') and qword['tag']:
+                self.qattrs['question_tag_' + syntax] = qword['tag']
+            if qword.has_key('fullform') and qword['fullform']:
+                self.qattrs['question_fullform_' + syntax] = qword['fullform'][0]
+
+        # Forms question string and answer string out of grammatical elements and other strings.
+        qstring = ""
+
+        # Format question string
+        qtext = question.string
+        for w in qtext.split():
+            if not qwords.has_key(w): qstring = qstring + " " + force_unicode(w)
+            else:
+                if qwords[w].has_key('fullform'):
+                    qstring = qstring + " " + force_unicode(qwords[w]['fullform'][0])
+                else:
+                    qstring = qstring + " " + w
+        # this is for -guovttos
+        qstring=qstring.replace(" -","-");
+        qstring=qstring.replace("- ","-");
+                    
+        # Remove leading whitespace and capitalize.
+        qstring = qstring.lstrip()
+        qstring = qstring[0].capitalize() + qstring[1:]
+
+        qstring = qstring + "?"
+        self.question=qstring
+
+        # In qagame, all words are considered as answers.
+        self.gametype="cealk"
+        self.messages, jee, joo  = self.cealkka_is_correct(qstring.encode('utf-8'), qwords, language)
+        
+        # set correct and error values
+        if correct_val == "correct":
+            self.error="correct"
