@@ -92,6 +92,7 @@ class QAGame(Game):
 			Note: attempting to reduce amount of queries run here, there are still some that are repeated,
 				  but these should reduced once we come along to testing numbers.
 		"""
+
 		if self.settings.has_key('dialect'):
 			dialect = self.settings['dialect']
 		else:
@@ -187,10 +188,14 @@ class QAGame(Game):
 
 				dialect_forms = form_set.filter(dialects__dialect=dialect)
 
+				# If there are no dialect forms, but there are still forms in
+				# form_set, we want to return these forms, otherwise dialect
+				# forms.
 				if dialect_forms.count() > 0:
 					form_set = dialect_forms
-
+				
 				form = form_set[0]
+
 
 		
 		if form:
@@ -273,11 +278,13 @@ class QAGame(Game):
 			# Get number information for subject
 			subjword = {}
 			if tag_el.pos == "Pron":
+				# NOTE: mii is interrogative and mii is personal
+				# filtering by 'pronbase' isn't enough here.
 				subjnumber = tag_el.personnumber
 				if not subjnumber:
 					raise Http404("Tag Element missing personnumber. Database may be improperly installed for tags.")
 				pronbase = self.PronPNBase[subjnumber]
-				word_el = Word.objects.filter(lemma=pronbase)[0]
+				word_el = Word.objects.filter(lemma=pronbase, form__tag=tag_el)[0]
 				words_ = self.get_words(None, tag_el, None, word_el.id)
 				try:
 					info = words_[0]
@@ -538,9 +545,9 @@ class QAGame(Game):
 		return awords
 
 	
-	def generate_answers_mainv(self, answer, question, awords, qwords):
+	def generate_answers_mainv(self, answer, question, awords, qwords, element="MAINV"):
 
-		mainv_elements = self.get_elements(answer,"MAINV")
+		mainv_elements = self.get_elements(answer, element)
 		# print '--'
 		# print question.qid
 		# print mainv_elements
@@ -568,8 +575,8 @@ class QAGame(Game):
 			va_number=self.SVPN[a_number]
 			# print 'va_number: ', va_number
 		else:
-            # No SUBJ defined, MAINV is a copy of the question MAINV
-            # and needs to have Question-Answer subject change
+			# No SUBJ defined, MAINV is a copy of the question MAINV
+			# and needs to have Question-Answer subject change
 			if qwords.has_key(copy_syntax):
 				qmainv = qwords[copy_syntax]
 				q_number = qmainv['number']
@@ -577,12 +584,21 @@ class QAGame(Game):
 					va_number = self.QAPN[q_number]
 			else:
 				# No SUBJ defined, and MAINV is defined (and not a copy from Q)
-                # but MAINV still needs to have Question-Answer subject change
-				if qwords.has_key('MAINV'):
-					qmainv = qwords['MAINV']
+				# but MAINV still needs to have Question-Answer subject change
+				if qwords.has_key(element):
+					qmainv = qwords[element]
 					q_number = qmainv['number']
 					if q_number:
 						va_number = self.QAPN[q_number]
+
+				# The element we're looking at is not present in qwords, 
+				# but it is present in awords; which means that it's probably NEG
+				if awords.has_key(element) and not qwords.has_key(element):
+					qmainv = qwords["MAINV"]
+					q_number = qmainv['number']
+					if q_number:
+						va_number = self.QAPN[q_number]
+					
 					
 		# If there is no subject, then the number of the question
 		# mainverb determines the number.
@@ -622,7 +638,7 @@ class QAGame(Game):
 			mainv_fullform = mainv_form.fullform
 
 		# If the main verb is under question, then generate full list.
-		if answer.task == "MAINV":
+		if answer.task in ["MAINV", "NEG"]:
 			mainv_words = []
 			if mainv_elements:
 				for mainv_el in mainv_elements:
@@ -647,8 +663,6 @@ class QAGame(Game):
 			else:
 				if mainv_word:
 					mainv_words.extend(self.get_words(mainv_el, mainv_tag, None, mainv_word))
-					
-		# Otherwise take only one element
 		else:
 			if mainv_elements:
 				mainv_element = mainv_elements[0]
@@ -664,17 +678,17 @@ class QAGame(Game):
 					info = { 'tag' : mainv_tag.id, 'word' : mainv_word }
 					mainv_words.append(info)
 					
-		if not mainv_words and qwords.has_key("MAINV"):
-			mainv_words.append(qwords["MAINV"])
+		if not mainv_words and qwords.has_key(element):
+			mainv_words.append(qwords[element])
 		
-		awords["MAINV"] = mainv_words
+		awords[element] = mainv_words
 		
 		return awords
 
 	def generate_syntax(self, answer, question, awords, qwords, s):
 
 		
-		if s in ["SUBJ", "MAINV", "HAB"]: return awords
+		if s in ["SUBJ", "MAINV", "HAB", "NEG"]: return awords
 		
 		if not awords.has_key(s):
 			awords[s] = []
@@ -832,9 +846,12 @@ class QAGame(Game):
 		# Otherwise select answer that is related to the question.
 		awords = {}
 		if db_info.has_key('answer_id'):
-			answer=Question.objects.get(id=db_info['answer_id'])
+			answer = Question.objects.get(id=db_info['answer_id'])
 		else:
-			answer=question.answer_set.all().order_by('?')[0]
+			try:
+				answer = question.answer_set.all().order_by('?')[0]
+			except IndexError:
+				raise Http404("No answer found for qid %s, check that questions are properly installed." % question.qid)
 
 		# Generate the set of possible answers if they are not coming from the interface
 		# Or if the gametype is qa.
@@ -857,6 +874,14 @@ class QAGame(Game):
 				
 			if 'HAB' in words_strings:
 				awords = self.generate_answers_subject(answer, question, awords, db_info['qwords'], element="HAB")
+
+			# NOTE: seems to be generating correct negative number...
+			if 'NEG' in words_strings:
+				try:
+					awords = self.generate_answers_mainv(answer, question, awords, db_info['qwords'], element="NEG")
+				except AttributeError:
+					if self.test: raise Http404("problem")
+					return "error"
 
 			if 'MAINV' in words_strings:
 				try:
