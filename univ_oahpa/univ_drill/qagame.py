@@ -594,10 +594,11 @@ class QAGame(Game):
 				# The element we're looking at is not present in qwords, 
 				# but it is present in awords; which means that it's probably NEG
 				if awords.has_key(element) and not qwords.has_key(element):
-					qmainv = qwords["MAINV"]
-					q_number = qmainv['number']
-					if q_number:
-						va_number = self.QAPN[q_number]
+					qmainv = qwords.get("MAINV", False)
+					if qmainv:
+						q_number = qmainv['number']
+						if q_number:
+							va_number = self.QAPN[q_number]
 					
 					
 		# If there is no subject, then the number of the question
