@@ -14,7 +14,7 @@
 {% block navbar %}
 <ul class="sidelist"> 
 {% ifequal settings.gametype "vasta" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta %}">{% trans 'Vasta' %}</a></li>
-{% ifequal settings.gametype "cealk" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url cealkka %}">{% trans 'Cealkka' %}</a></li>
+{% ifequal settings.gametype "cealk" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url cealkka %}">{% trans 'VastaS' %} <span style="font-color:#FF0000; font-size:70%">(under construction)</span></a></li>
 </ul>
 {% endblock %}
 

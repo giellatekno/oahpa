@@ -2331,7 +2331,7 @@ def cealkka_is_correct(self,question,qwords,language,question_id=None):
                 spelling = True
             msgstrings[wordform][msgstring] = 1
 
-        #Store the baseform if tehre is dia-whatever
+        #Store the baseform if there is dia-whatever
         matchObj=targetObj.search(line)
         if matchObj:
             msgstring = matchObj.expand(r'\g<targetString>')
@@ -2407,7 +2407,7 @@ def cealkka_is_correct(self,question,qwords,language,question_id=None):
 class CealkkaSettings(OahpaSettings):
 
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
-    #level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
+    level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
 
     def __init__(self, *args, **kwargs):
         self.set_settings()

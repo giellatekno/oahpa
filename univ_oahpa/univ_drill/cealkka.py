@@ -918,11 +918,11 @@ class CealkkaGame(Game):
 		if self.settings.has_key('language'):
 			language = self.settings['language']
 		#if not self.gametype == "qa":
-		#	answer = Question.objects.get(Q(id=db_info['answer_id']))
+			#answer = Question.objects.get(Q(id=db_info['answer_id']))
 			# print answer.string
-		#	form = (ContextMorfaQuestion(question, answer, \
-		#								 db_info['qwords'], db_info['awords'], dialect, language,\
-		#								 db_info['userans'], db_info['correct'], data, prefix=n))
+			#form = (CealkkaQuestion(question, answer, \
+				#						 db_info['qwords'], db_info['awords'], dialect, language,\
+					#					 db_info['userans'], db_info['correct'], data, prefix=n))
 		#else:
 		form = (CealkkaQuestion(question, \
 								  db_info['qwords'], language, \
