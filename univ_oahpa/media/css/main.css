@@ -716,3 +716,48 @@ ul.courselist li {
 	right: -2em;
 
 }
+
+
+/* Instructor view */
+
+.course_students > li {
+	margin-bottom: .5em;
+}
+
+.course_students > li > ul.row > li {
+	list-style-type: circle;
+	margin-left: 2.5em;
+}
+
+table.grades {
+	margin-left: 1.75em;
+	margin-top: .5em;
+	margin-bottom: .5em;
+}
+
+table.grades td {
+	padding: 7px 5px;
+}
+
+ul.course_students > li {
+	padding-bottom: 2em;
+}
+
+
+strong.student_name {
+	font-size: 120%;
+	font-weight: bold;
+}
+table.grades th {
+	font-weight: bold;
+	color: #333;
+}
+
+table.grades tr.odd {
+	background-color: #EEE;
+}
+
+.course_students > li > ul.grades > li > ul.row > li.cell {
+	display: table-cell;
+	background-color: #00F;
+}

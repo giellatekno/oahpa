@@ -42,7 +42,8 @@ class UserProfile(models.Model):
 	@property
 	def is_student(self):
 		grs = self.user.courserelationship_set\
-						.values_list('relationship_type__name', flat=True)
+					   .values_list('relationship_type__name',
+					   				flat=True)
 		if 'Students' in grs:
 			return True
 		else:
@@ -88,6 +89,10 @@ class UserGradeSummary(models.Model):
 	class Meta:
 		verbose_name_plural = 'User grade summaries'
 		ordering = ['average']
+	
+	@property
+	def game_name(self):
+		return self.game.name
 
 	def __unicode__(self):
 		return '%s grade totals for %s' % (self.user.user.username, self.game)

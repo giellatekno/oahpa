@@ -25,26 +25,26 @@ TODO: internationalization strings
 			<h3>{{ course.identifier }} - {{ course.name }}</h3>
 			<a href="{{ course.site_link }}">Site.uit.no</a>
 
-			<h4>Students</h4>
+			<br />
 			<ul class="course_students">
 			{% for student in course.students.all %}
-			<li><strong>{{ student.user.username }}</strong>
+			<li><strong class="student_name">{{ student.user.username }}</strong>
 				<ul class="row">
-					<li>login count: {{ student.login_count }}</li>
-					<li>last login on: {{ student.last_login }}</li>
+					<li>{% trans "login count" %}: {{ student.login_count }}</li>
+					<li>{% trans "last login" %}: {{ student.last_login }}</li>
 				</ul>
 				{% if student.grades %}
 				<table class="grades">
-				<th>
-					<td>exercise type</td>
-					<td>average score</td>
-					<td>minimum score</td>
-					<td>maximum score</td>
-					<td>game count</td>
-				</th>
-				{% for grade in student.grades %}
 				<tr>
-					<td>{{ grade.game.name }}</td>
+					<th>{% trans "exercise type" %}</th>
+					<th>{% trans "average score" %}</th>
+					<th>{% trans "minimum score" %}</th>
+					<th>{% trans "maximum score" %}</th>
+					<th>{% trans "game count" %}</th>
+				</tr>
+				{% for grade in student.grades|dictsort:"game_name" %}
+				<tr class="{% cycle "even" "odd" %}">
+					<td>{{ grade.game_name }}</td>
 					<td>{{ grade.average }}</td>
 					<td>{{ grade.minimum }}</td>
 					<td>{{ grade.maximum }}</td>
