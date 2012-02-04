@@ -502,38 +502,38 @@ class Morfaview(Gameview):
 		'NUM-LOC' :  _('Practise numerals in locative'),
 		'COLL-NUM' :  _('Practise collective numerals'),
 		'ORD-NUM' :  _('Practise ordinal numbers'),
-		'ORD-N-ILL' : _('Practise ordinal numerals in illative'),  # added by Heli
-		'ORD-N-ACC' : _('Practise ordinal numerals in accusative'),  # added by Heli
-		'ORD-N-COM' : _('Practise ordinal numerals in comitative'),  # added by Heli
-		'ORD-N-ESS' : _('Practise ordinal numerals in essive'),  # added by Heli
-		'ORD-N-GEN' : _('Practise ordinal numerals in genitive'),  # added by Heli
-		'ORD-N-NOM-PL' : _('Practise ordinal numerals in plural'),  # added by Heli
-		'ORD-N-LOC' : _('Practise ordinal numerals in locative'),  # added by Heli
-		'COLL-N-ILL' : _('Practise collective numerals in illative'),  # added by Heli
-		'COLL-N-ACC' : _('Practise collective numerals in accusative'),  # added by Heli
-		'COLL-N-COM' : _('Practise collective numerals in comitative'),  # added by Heli
-		'COLL-N-ESS' : _('Practise collective numerals in essive'),  # added by Heli
-		'COLL-N-GEN' : _('Practise collective numerals in genitive'),  # added by Heli
-		'COLL-NOMPL' : _('Practise collective numerals in plural'),  # added by Heli
-		'COLL-N-LOC' : _('Practise collective numerals in locative'),  # added by Heli
-		'PRS'   :  _('Practise present'),
-		'PRT'   : _('Practise past'),
-		'PRF'   : _('Practise perfect'),
-		'GER'   : _('Practise gerund'),
-		'COND'  : _('Practise conditional'),
-		'IMPRT' : _('Practise imperative'),
-		'POT'   : _('Practise potential'),
-		'V-PRS'   :  _('Practise present'),
-		'V-PRT'   : _('Practise past'),
-		'V-PRF'   : _('Practise perfect'),
-		'V-GER'   : _('Practise gerund'),
-		'V-COND'  : _('Practise conditional'),
-		'V-IMPRT' : _('Practise imperative'),
-		'V-POT'   : _('Practise potential'),
-		'P-PERS'  : _('Practise '),
-		'P-RECIPR': _('Practise reciprocative pronouns'),
-		'P-REFL':  _('Practise reflexive pronouns'),
-		'P-DEM':   _('Practise demonstrative pronouns'),
+		'ORD-N-ILL' :  _('Practise ordinal numerals in illative'),
+		'ORD-N-ACC' :  _('Practise ordinal numerals in accusative'),
+		'ORD-N-COM' :  _('Practise ordinal numerals in comitative'),
+		'ORD-N-ESS' :  _('Practise ordinal numerals in essive'),
+		'ORD-N-GEN' :  _('Practise ordinal numerals in genitive'),
+		'ORD-N-NOM-PL' :  _('Practise ordinal numerals in plural'),
+		'ORD-N-LOC' :  _('Practise ordinal numerals in locative'),
+		'COLL-N-ILL' :  _('Practise collective numerals in illative'),
+		'COLL-N-ACC' :  _('Practise collective numerals in accusative'),
+		'COLL-N-COM' :  _('Practise collective numerals in comitative'),
+		'COLL-N-ESS' :  _('Practise collective numerals in essive'),
+		'COLL-N-GEN' :  _('Practise collective numerals in genitive'),
+		'COLL-NOMPL' :  _('Practise collective numerals in plural'),
+		'COLL-N-LOC' :  _('Practise collective numerals in locative'),
+		'PRS' :  _('Practise present'),
+		'PRT' :  _('Practise past'),
+		'PRF' :  _('Practise perfect'),
+		'GER' :  _('Practise gerund'),
+		'COND' :  _('Practise conditional'),
+		'IMPRT' :  _('Practise imperative'),
+		'POT' :  _('Practise potential'),
+		'V-PRS' :  _('Practise present'),
+		'V-PRT' :  _('Practise past'),
+		'V-PRF' :  _('Practise perfect'),
+		'V-GER' :  _('Practise gerund'),
+		'V-COND' :  _('Practise conditional'),
+		'V-IMPRT' :  _('Practise imperative'),
+		'V-POT' :  _('Practise potential'),
+		'P-PERS' :  _('Practise '),
+		'P-RECIPR' :  _('Practise reciprocative pronouns'),
+		'P-REFL' :  _('Practise reflexive pronouns'),
+		'P-DEM' :  _('Practise demonstrative pronouns'),
 	}
 
 	def syll_settings(self,settings_form):
