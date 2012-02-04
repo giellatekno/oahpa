@@ -19,7 +19,6 @@ TODO: link in user interface
 		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
 
 		<p>{% trans "You are a course instructor." %}</p>
-		<p><a href="/univ_oahpa/admin/courses/">{% trans "View students' grades" %}</a></p>
 		{% for course in courses %}
 		<div class="instructor_course">
 			<h3>{{ course.identifier }} - {{ course.name }}</h3>
