@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-29 08:06+0400\n"
+"POT-Creation-Date: 2012-02-04 08:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,7 +137,6 @@ msgid "Dialogue game"
 msgstr "Dialogit"
 
 #: templates/univ_oahpa_main.html:160 templates_old/smaoahpa_main.html:112
-#: univ_drill/views.py:504
 msgid "Practise numerals"
 msgstr "Harjoittele lukusanoja"
 
@@ -571,6 +570,7 @@ msgstr ""
 "että evästeet eivät ole estetty."
 
 #: templates/courses/courses_main.html:19
+#: templates/courses/courses_main_instructor.html:20
 msgid "Welcome"
 msgstr "Tervetuloa"
 
@@ -629,6 +629,7 @@ msgid "Number of tries"
 msgstr "Kokeilujen määrä"
 
 #: templates/courses/courses_main.html:65
+#: templates/courses/courses_main_instructor.html:22
 msgid "You are a course instructor."
 msgstr "Sinä olet kurssin opettaja"
 
@@ -1506,204 +1507,256 @@ msgstr "Yritä uudestaan!"
 
 #: univ_drill/new_views.py:620
 msgid "No possible answers."
-msgstr "Mahdollisia vastauksia ei olemassa "
+msgstr "Mahdollisia vastauksia ei olemassa."
 
 #: univ_drill/new_views.py:621
 msgid "No answer given."
-msgstr "Et ole vastannut"
+msgstr "Et ole vastannut."
 
-#: univ_drill/views.py:462 univ_drill/views.py:463
+#: univ_drill/views.py:463 univ_drill/views.py:464
 msgid "Practise attributes"
-msgstr "Harjoittele attribuuttimuotoja"
-
-#: univ_drill/views.py:464
-msgid "Practise adjectives in nominative"
-msgstr "Harjoittele adjektiivin nominatiivimuotoja"
+msgstr "Harjoittele attribuuttimuotoja."
 
 #: univ_drill/views.py:465
-msgid "Practise adjectives in illative"
-msgstr "Harjoittele adjektiivien illatiivia"
+msgid "Practise adjectives in nominative"
+msgstr "Harjoittele adjektiivin nominatiivimuotoja."
 
 #: univ_drill/views.py:466
-msgid "Practise adjectives in accusative"
-msgstr "Harjoittele akkusatiivien akkusatiivia"
+msgid "Practise adjectives in illative"
+msgstr "Harjoittele adjektiivien illatiivia."
 
 #: univ_drill/views.py:467
-msgid "Practise adjectives in comitative"
-msgstr "Harjoittele adjektiivien komitatiivimuotoja"
+msgid "Practise adjectives in accusative"
+msgstr "Harjoittele akkusatiivien akkusatiivia."
 
 #: univ_drill/views.py:468
-msgid "Practise adjectives in essive"
-msgstr "Harjoittele adjektiivien predikatiivimuotoja"
+msgid "Practise adjectives in comitative"
+msgstr "Harjoittele adjektiivien komitatiivimuotoja."
 
 #: univ_drill/views.py:469
-msgid "Practise adjectives in genitive"
-msgstr "Harjoittele adjektiivien genetiiviä"
+msgid "Practise adjectives in essive"
+msgstr "Harjoittele adjektiivien predikatiivimuotoja."
 
 #: univ_drill/views.py:470
-msgid "Practise adjectives in plural"
-msgstr "Harjoittele adjektiivien monikkoa"
+msgid "Practise adjectives in genitive"
+msgstr "Harjoittele adjektiivien genetiiviä."
 
 #: univ_drill/views.py:471
-msgid "Practise adjectives in locative"
-msgstr "Harjoittele adjektiivien lokatiivia"
+msgid "Practise adjectives in plural"
+msgstr "Harjoittele adjektiivien monikkoa."
 
 #: univ_drill/views.py:472
-msgid "Practise comparative"
-msgstr "Harjoittele komparatiivia"
+msgid "Practise adjectives in locative"
+msgstr "Harjoittele adjektiivien lokatiivia."
 
 #: univ_drill/views.py:473
-msgid "Practise superlative"
-msgstr "Harjoittele superlatiivia"
+msgid "Practise comparative"
+msgstr "Harjoittele komparatiivia."
 
 #: univ_drill/views.py:474
-msgid "Practise attributes in positive"
-msgstr "Harjoittele positiivin attribuuttimuotoja"
+msgid "Practise superlative"
+msgstr "Harjoittele superlatiivia."
 
 #: univ_drill/views.py:475
-msgid "Practise attributes in comparative"
-msgstr "Harjoittele komparatiivin attribuuttimuotoja"
+msgid "Practise attributes in positive"
+msgstr "Harjoittele positiivin attribuuttimuotoja."
 
 #: univ_drill/views.py:476
-msgid "Practise attributes in superlative"
-msgstr "Harjoittele superlatiivin attribuuttimuotoja"
+msgid "Practise attributes in comparative"
+msgstr "Harjoittele komparatiivin attribuuttimuotoja."
 
 #: univ_drill/views.py:477
-msgid "Practise predicative in positive"
-msgstr "Harjoittele positiivin predikatiivimuotoja"
+msgid "Practise attributes in superlative"
+msgstr "Harjoittele superlatiivin attribuuttimuotoja."
 
 #: univ_drill/views.py:478
-msgid "Practise predicative in comparative"
-msgstr "Harjoittele komparatiivin predikatiivimuotoja"
+msgid "Practise predicative in positive"
+msgstr "Harjoittele positiivin predikatiivimuotoja."
 
 #: univ_drill/views.py:479
-msgid "Practise predicative in superlative"
-msgstr "Harjoittele superlatiivin predikatiivimuotoja"
+msgid "Practise predicative in comparative"
+msgstr "Harjoittele komparatiivin predikatiivimuotoja."
 
 #: univ_drill/views.py:480
+msgid "Practise predicative in superlative"
+msgstr "Harjoittele superlatiivin predikatiivimuotoja."
+
+#: univ_drill/views.py:481
 msgid "Practise numeral attributes"
-msgstr "Harjoittele lukusanojen attribuuttimuotoja"
+msgstr "Harjoittele lukusanojen attribuuttimuotoja."
 
-#: univ_drill/views.py:481 univ_drill/views.py:489
+#: univ_drill/views.py:482 univ_drill/views.py:490
 msgid "Practise plural"
-msgstr "Harjoittele nominatiivin monikkoa"
+msgstr "Harjoittele nominatiivin monikkoa."
 
-#: univ_drill/views.py:482 univ_drill/views.py:483
+#: univ_drill/views.py:483 univ_drill/views.py:484
 msgid "Practise nominative"
-msgstr "Harjoittele nominatiivia"
-
-#: univ_drill/views.py:484
-msgid "Practise illative"
-msgstr "Harjoittele illatiivia"
+msgstr "Harjoittele nominatiivia."
 
 #: univ_drill/views.py:485
-msgid "Practise accusative"
-msgstr "Harjoittele akkusatiivia"
+msgid "Practise illative"
+msgstr "Harjoittele illatiivia."
 
 #: univ_drill/views.py:486
-msgid "Practise comitative"
-msgstr "Harjoittele komitatiivia"
+msgid "Practise accusative"
+msgstr "Harjoittele akkusatiivia."
 
 #: univ_drill/views.py:487
-msgid "Practise essive"
-msgstr "Harjoittele essiiviä"
+msgid "Practise comitative"
+msgstr "Harjoittele komitatiivia."
 
 #: univ_drill/views.py:488
-msgid "Practise genitive"
-msgstr "Harjoittele genetiiviä"
+msgid "Practise essive"
+msgstr "Harjoittele essiiviä."
 
-#: univ_drill/views.py:490
+#: univ_drill/views.py:489
+msgid "Practise genitive"
+msgstr "Harjoittele genetiiviä."
+
+#: univ_drill/views.py:491
 msgid "Practise locative"
 msgstr "Harjoittele lokatiivia."
 
-#: univ_drill/views.py:491 univ_drill/views.py:492 univ_drill/views.py:493
-#: univ_drill/views.py:494
-msgid "Practise a mix"
-msgstr "Harjoittele sekoitettuja tehtäviä"
-
+#: univ_drill/views.py:492 univ_drill/views.py:493 univ_drill/views.py:494
 #: univ_drill/views.py:495
-msgid "Practise numerals in illative"
-msgstr "Harjoittele lukusanojen illatiivia"
+msgid "Practise a mix"
+msgstr "Harjoittele sekoitettuja tehtäviä."
 
 #: univ_drill/views.py:496
-msgid "Practise numerals in accusative"
-msgstr "Harjoittele lukusanojen akkusatiivia"
+msgid "Practise numerals in illative"
+msgstr "Harjoittele lukusanojen illatiivia."
 
 #: univ_drill/views.py:497
-msgid "Practise numerals in comitative"
-msgstr "Harjoittele lukusanojen komitatiivia"
+msgid "Practise numerals in accusative"
+msgstr "Harjoittele lukusanojen akkusatiivia."
 
 #: univ_drill/views.py:498
-msgid "Practise numerals in essive"
-msgstr "Harjoittele lukusanojen essiiviä"
+msgid "Practise numerals in comitative"
+msgstr "Harjoittele lukusanojen komitatiivia."
 
 #: univ_drill/views.py:499
-msgid "Practise numerals in genitive"
-msgstr "Harjoittele lukusanojen genetiiviä"
+msgid "Practise numerals in essive"
+msgstr "Harjoittele lukusanojen essiiviä."
 
 #: univ_drill/views.py:500
-msgid "Practise numerals in plural"
-msgstr "Harjoittele lukusanojen monikkoa"
+msgid "Practise numerals in genitive"
+msgstr "Harjoittele lukusanojen genetiiviä."
 
 #: univ_drill/views.py:501
-msgid "Practise numerals in locative"
-msgstr "Harjoittele lukusanojen lokatiivia"
+msgid "Practise numerals in plural"
+msgstr "Harjoittele lukusanojen monikkoa."
 
-#: univ_drill/views.py:502 univ_drill/views.py:506
-msgid "Practise collective numerals"
-msgstr "Harjoittele kollektiivisia lukuja"
+#: univ_drill/views.py:502
+msgid "Practise numerals in locative"
+msgstr "Harjoittele lukusanojen lokatiivia."
 
 #: univ_drill/views.py:503
+msgid "Practise collective numerals"
+msgstr "Harjoittele kollektiivisia lukuja."
+
+#: univ_drill/views.py:504
 msgid "Practise ordinal numbers"
-msgstr "Harjoittele järjestyslukuja"
+msgstr "Harjoittele järjestyslukuja."
 
 #: univ_drill/views.py:505
-msgid "Practise ordinal numerals"
-msgstr "Harjoittele järjestyslukuja"
+msgid "Practise ordinal numerals in illative"
+msgstr "Harjoittele järjestyslukujen illatiivia."
 
-#: univ_drill/views.py:507 univ_drill/views.py:514
+#: univ_drill/views.py:506
+msgid "Practise ordinal numerals in accusative"
+msgstr "Harjoittele järjestyslukujen akkusatiivia."
+
+#: univ_drill/views.py:507
+msgid "Practise ordinal numerals in comitative"
+msgstr "Harjoittele järjestyslukujen komitatiivia."
+
+#: univ_drill/views.py:508
+msgid "Practise ordinal numerals in essive"
+msgstr "Harjoittele järjestyslukujen essiiviä."
+
+#: univ_drill/views.py:509
+msgid "Practise ordinal numerals in genitive"
+msgstr "Harjoittele järjestyslukujen genetiiviä."
+
+#: univ_drill/views.py:510
+msgid "Practise ordinal numerals in plural"
+msgstr "Harjoittele järjestyslukujen monikkoa."
+
+#: univ_drill/views.py:511
+msgid "Practise ordinal numerals in locative"
+msgstr "Harjoittele järjestyslukujen lokatiivia."
+
+#: univ_drill/views.py:512
+msgid "Practise collective numerals in illative"
+msgstr "Harjoittele kollektiivisten lukujen illatiivia."
+
+#: univ_drill/views.py:513
+msgid "Practise collective numerals in accusative"
+msgstr "Harjoittele kollektiivisten lukujen akkusatiivia."
+
+#: univ_drill/views.py:514
+msgid "Practise collective numerals in comitative"
+msgstr "Harjoittele kollektiivisten lukujen komitatiivia."
+
+#: univ_drill/views.py:515
+msgid "Practise collective numerals in essive"
+msgstr "Harjoittele kollektiivisten lukujen essiiviä."
+
+#: univ_drill/views.py:516
+msgid "Practise collective numerals in genitive"
+msgstr "Harjoittele kollektiivisten lukujen genetiiviä."
+
+#: univ_drill/views.py:517
+msgid "Practise collective numerals in plural"
+msgstr "Harjoittele kollektiivisten lukujen monikkoa."
+
+#: univ_drill/views.py:518
+msgid "Practise collective numerals in locative"
+msgstr "Harjoittele kollektiivisten lukujen lokatiivia."
+
+#: univ_drill/views.py:519 univ_drill/views.py:526
 msgid "Practise present"
-msgstr "Harjoittele preesensiä"
+msgstr "Harjoittele preesensiä."
 
-#: univ_drill/views.py:508 univ_drill/views.py:515
+#: univ_drill/views.py:520 univ_drill/views.py:527
 msgid "Practise past"
-msgstr "Harjoittele preteritiä"
+msgstr "Harjoittele preteritiä."
 
-#: univ_drill/views.py:509 univ_drill/views.py:516
+#: univ_drill/views.py:521 univ_drill/views.py:528
 msgid "Practise perfect"
-msgstr "Harjoittele perfektiä"
+msgstr "Harjoittele perfektiä."
 
-#: univ_drill/views.py:510 univ_drill/views.py:517
+#: univ_drill/views.py:522 univ_drill/views.py:529
 msgid "Practise gerund"
-msgstr "Harjoittele gerundia"
+msgstr "Harjoittele gerundia."
 
-#: univ_drill/views.py:511 univ_drill/views.py:518
+#: univ_drill/views.py:523 univ_drill/views.py:530
 msgid "Practise conditional"
-msgstr "Harjoittele konditionaalia"
+msgstr "Harjoittele konditionaalia."
 
-#: univ_drill/views.py:512 univ_drill/views.py:519
+#: univ_drill/views.py:524 univ_drill/views.py:531
 msgid "Practise imperative"
-msgstr "Harjoittele imperatiivia"
+msgstr "Harjoittele imperatiivia."
 
-#: univ_drill/views.py:513 univ_drill/views.py:520
+#: univ_drill/views.py:525 univ_drill/views.py:532
 msgid "Practise potential"
-msgstr "Harjoittele potentiaalia"
+msgstr "Harjoittele potentiaalia."
 
-#: univ_drill/views.py:521
+#: univ_drill/views.py:533
 msgid "Practise "
 msgstr "Harjoittele "
 
-#: univ_drill/views.py:522
+#: univ_drill/views.py:534
 msgid "Practise reciprocative pronouns"
-msgstr "Harjoittele resiprookkipronomineja"
+msgstr "Harjoittele resiprookkipronomineja."
 
-#: univ_drill/views.py:523
+#: univ_drill/views.py:535
 msgid "Practise reflexive pronouns"
-msgstr "Harjoittele refleksiivipronomineja"
+msgstr "Harjoittele refleksiivipronomineja."
 
-#: univ_drill/views.py:524
+#: univ_drill/views.py:536
 msgid "Practise demonstrative pronouns"
-msgstr "Harjoittele demonstratiivipronomineja"
+msgstr "Harjoittele demonstratiivipronomineja."
 
 #: univ_drill/templates/clock.html:12
 msgid "Enter the time in the digital clock format. (Ex. 10:21)"
@@ -1727,7 +1780,8 @@ msgstr "Kirjoita päivämäärä numeroina (esim. 17.8.)"
 
 #: univ_drill/templates/dato.html:17
 msgid "Write the date in North Sámi (ex. geassemánu goalmmát beaivi)."
-msgstr "Kirjoita päivämäärä pohjoissaameksi (esim. geassemánu goalmmát beaivi)."
+msgstr ""
+"Kirjoita päivämäärä pohjoissaameksi (esim. geassemánu goalmmát beaivi)."
 
 #: univ_drill/templates/dato.html:23
 msgid "Expression of dates numeric to words or vice versa."
@@ -1742,7 +1796,7 @@ msgid "This is almost correct!"
 msgstr "Tämä on melkein oikein!"
 
 #: univ_drill/templates/game.html:183 univ_drill/templates/leksa.html:74
-#: univ_drill/templates/vasta.html:53
+#: univ_drill/templates/vasta.html:60
 msgid "Test answers"
 msgstr "Testaa vastauksesi"
 
@@ -1779,13 +1833,13 @@ msgid "Select the language pair"
 msgstr "Valitse kielipari"
 
 #: univ_drill/templates/leksa.html:57 univ_drill/templates/mgame.html:61
-#: univ_drill/templates/vasta.html:30
+#: univ_drill/templates/vasta.html:36
 msgid "Book"
 msgstr "Kirja"
 
 #: univ_drill/templates/leksa.html:62 univ_drill/templates/leksa.html.py:65
 #: univ_drill/templates/leksa_place.html:42 univ_drill/templates/mgame.html:69
-#: univ_drill/templates/num.html:68 univ_drill/templates/vasta.html:37
+#: univ_drill/templates/num.html:68 univ_drill/templates/vasta.html:43
 msgid "New set"
 msgstr "Uusi joukko"
 
@@ -1851,8 +1905,8 @@ msgstr "Grad"
 msgid "Stem"
 msgstr "Vartalo"
 
-#: univ_drill/templates/mgame_a.html:31 univ_drill/templates/mgame_v.html:16
-#: univ_drill/templates/mgame_v.html:26
+#: univ_drill/templates/mgame_a.html:31 univ_drill/templates/mgame_l.html:30
+#: univ_drill/templates/mgame_v.html:16 univ_drill/templates/mgame_v.html:26
 msgid "Type"
 msgstr "Laji"
 
@@ -1860,7 +1914,7 @@ msgstr "Laji"
 msgid "Add numerals in correct forms."
 msgstr "Kirjoita pohjoissaamen lukusanat oikeissa muodoissa."
 
-#: univ_drill/templates/mgame_l.html:25 univ_drill/templates/vasta.html:29
+#: univ_drill/templates/mgame_l.html:25 univ_drill/templates/vasta.html:35
 msgid "Level"
 msgstr "Taso"
 
@@ -1976,11 +2030,15 @@ msgstr "Veardideapmi rámbuvrris"
 msgid "Answer"
 msgstr "Vastaus"
 
-#: univ_drill/templates/vasta.html:16
+#: univ_drill/templates/vasta.html:16 univ_drill/templates/vasta.html.py:21
 msgid "Vasta"
 msgstr ""
 
-#: univ_drill/templates/vasta.html:18
+#: univ_drill/templates/vasta.html:17
+msgid "VastaS"
+msgstr ""
+
+#: univ_drill/templates/vasta.html:23
 msgid ""
 "Answer to the questions with full sentences. Be aware of that if there is "
 "moai/mii in the question, you have to answer with doai/dii. "
@@ -1988,13 +2046,13 @@ msgstr ""
 "Vasta kysymyksiin täydellisella lauseella. Huomaa, että jos kysymyksessä on "
 "moai/mii, niin vastauksessa pitää olla doai/dii. "
 
-#: univ_drill/templates/vasta.html:24
+#: univ_drill/templates/vasta.html:30
 msgid ""
 "NB! NB! The Vasta game is not working properly, due to technical problems! "
 "NB! NB!"
 msgstr ""
 
-#: univ_drill/templates/vasta.html:25
+#: univ_drill/templates/vasta.html:31
 msgid ""
 "NB! NB! The Vasta game is temporarily out of order, due to technical "
 "maintenance! NB! NB!"
@@ -2117,6 +2175,9 @@ msgstr "Lähetä viesti"
 #: univ_feedback/templates/thankyou.html:6
 msgid "Thank you for you feedback!"
 msgstr "Kiitos palautteestasi"
+
+#~ msgid "Practise ordinal numerals"
+#~ msgstr "Harjoittele järjestyslukuja"
 
 #~ msgid ""
 #~ "Add adjectives in correct forms. You get translation into Norwegian if "

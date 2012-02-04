@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-29 08:06+0400\n"
+"POT-Creation-Date: 2012-02-04 08:36+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -137,7 +137,6 @@ msgid "Dialogue game"
 msgstr "Dialoger"
 
 #: templates/univ_oahpa_main.html:160 templates_old/smaoahpa_main.html:112
-#: univ_drill/views.py:504
 msgid "Practise numerals"
 msgstr "Øv på tallord"
 
@@ -571,6 +570,7 @@ msgstr ""
 "fungerer, så forsikre deg om at du har slått av cookies i nettleseren."
 
 #: templates/courses/courses_main.html:19
+#: templates/courses/courses_main_instructor.html:20
 msgid "Welcome"
 msgstr "Velkommen"
 
@@ -629,6 +629,7 @@ msgid "Number of tries"
 msgstr "Antall forsøk"
 
 #: templates/courses/courses_main.html:65
+#: templates/courses/courses_main_instructor.html:22
 msgid "You are a course instructor."
 msgstr "Du er kursinstruktør."
 
@@ -1513,198 +1514,250 @@ msgstr "Ingen mulige svar."
 msgid "No answer given."
 msgstr "Du har ikke gitt noe svar."
 
-#: univ_drill/views.py:462 univ_drill/views.py:463
+#: univ_drill/views.py:463 univ_drill/views.py:464
 msgid "Practise attributes"
-msgstr "Øv på attributtformer"
-
-#: univ_drill/views.py:464
-msgid "Practise adjectives in nominative"
-msgstr "Øv på adjektivformer i nominativ"
+msgstr "Øv på attributtformer."
 
 #: univ_drill/views.py:465
-msgid "Practise adjectives in illative"
-msgstr "Øv på adjektivformer i illativ"
+msgid "Practise adjectives in nominative"
+msgstr "Øv på adjektivformer i nominativ."
 
 #: univ_drill/views.py:466
-msgid "Practise adjectives in accusative"
-msgstr "Øv på adjektivformer i akkusativ"
+msgid "Practise adjectives in illative"
+msgstr "Øv på adjektivformer i illativ."
 
 #: univ_drill/views.py:467
-msgid "Practise adjectives in comitative"
-msgstr "Øv på adjektivformer i komitativ"
+msgid "Practise adjectives in accusative"
+msgstr "Øv på adjektivformer i akkusativ."
 
 #: univ_drill/views.py:468
-msgid "Practise adjectives in essive"
-msgstr "Øv på adjektivformer i essiv"
+msgid "Practise adjectives in comitative"
+msgstr "Øv på adjektivformer i komitativ."
 
 #: univ_drill/views.py:469
-msgid "Practise adjectives in genitive"
-msgstr "Øv på adjektivformer i genitiv"
+msgid "Practise adjectives in essive"
+msgstr "Øv på adjektivformer i essiv."
 
 #: univ_drill/views.py:470
-msgid "Practise adjectives in plural"
-msgstr "Øv på adjektivformer i flertall"
+msgid "Practise adjectives in genitive"
+msgstr "Øv på adjektivformer i genitiv."
 
 #: univ_drill/views.py:471
-msgid "Practise adjectives in locative"
-msgstr "Øv på tallord i lokativ"
+msgid "Practise adjectives in plural"
+msgstr "Øv på adjektivformer i flertall."
 
 #: univ_drill/views.py:472
-msgid "Practise comparative"
-msgstr "Øv på komparativ"
+msgid "Practise adjectives in locative"
+msgstr "Øv på tallord i lokativ."
 
 #: univ_drill/views.py:473
-msgid "Practise superlative"
-msgstr "Øv på superlativ"
+msgid "Practise comparative"
+msgstr "Øv på komparativ."
 
 #: univ_drill/views.py:474
-msgid "Practise attributes in positive"
-msgstr "Øv på attributtformer i positiv"
+msgid "Practise superlative"
+msgstr "Øv på superlativ."
 
 #: univ_drill/views.py:475
-msgid "Practise attributes in comparative"
-msgstr "Øv på attributtformer i komparativ"
+msgid "Practise attributes in positive"
+msgstr "Øv på attributtformer i positiv."
 
 #: univ_drill/views.py:476
-msgid "Practise attributes in superlative"
-msgstr "Øv på attributtformer i superlativ"
+msgid "Practise attributes in comparative"
+msgstr "Øv på attributtformer i komparativ."
 
 #: univ_drill/views.py:477
-msgid "Practise predicative in positive"
-msgstr "Øv på predikativformer i positiv"
+msgid "Practise attributes in superlative"
+msgstr "Øv på attributtformer i superlativ."
 
 #: univ_drill/views.py:478
-msgid "Practise predicative in comparative"
-msgstr "Øv på predikativformer i komparativ"
+msgid "Practise predicative in positive"
+msgstr "Øv på predikativformer i positiv."
 
 #: univ_drill/views.py:479
-msgid "Practise predicative in superlative"
-msgstr "Øv på predikativformer i superlativ"
+msgid "Practise predicative in comparative"
+msgstr "Øv på predikativformer i komparativ."
 
 #: univ_drill/views.py:480
+msgid "Practise predicative in superlative"
+msgstr "Øv på predikativformer i superlativ."
+
+#: univ_drill/views.py:481
 msgid "Practise numeral attributes"
-msgstr "Øv på attributtformer for tallord"
+msgstr "Øv på attributtformer for tallord."
 
-#: univ_drill/views.py:481 univ_drill/views.py:489
+#: univ_drill/views.py:482 univ_drill/views.py:490
 msgid "Practise plural"
-msgstr "Øv på nominativ flertall"
+msgstr "Øv på nominativ flertall."
 
-#: univ_drill/views.py:482 univ_drill/views.py:483
+#: univ_drill/views.py:483 univ_drill/views.py:484
 msgid "Practise nominative"
-msgstr "Øv på nominativ"
-
-#: univ_drill/views.py:484
-msgid "Practise illative"
-msgstr "Øv på illativ"
+msgstr "Øv på nominativ."
 
 #: univ_drill/views.py:485
-msgid "Practise accusative"
-msgstr "Øv på akkusativ"
+msgid "Practise illative"
+msgstr "Øv på illativ."
 
 #: univ_drill/views.py:486
-msgid "Practise comitative"
-msgstr "Øv på komitativ"
+msgid "Practise accusative"
+msgstr "Øv på akkusativ."
 
 #: univ_drill/views.py:487
-msgid "Practise essive"
-msgstr "Øv på essiv"
+msgid "Practise comitative"
+msgstr "Øv på komitativ."
 
 #: univ_drill/views.py:488
+msgid "Practise essive"
+msgstr "Øv på essiv."
+
+#: univ_drill/views.py:489
 msgid "Practise genitive"
-msgstr "Øv på genitiv"
+msgstr "Øv på genitiv."
 
-#: univ_drill/views.py:490
+#: univ_drill/views.py:491
 msgid "Practise locative"
-msgstr "Øv på lokativ"
+msgstr "Øv på lokativ."
 
-#: univ_drill/views.py:491 univ_drill/views.py:492 univ_drill/views.py:493
-#: univ_drill/views.py:494
-msgid "Practise a mix"
-msgstr "Øv på blanda oppgaver"
-
+#: univ_drill/views.py:492 univ_drill/views.py:493 univ_drill/views.py:494
 #: univ_drill/views.py:495
-msgid "Practise numerals in illative"
-msgstr "Øv på tallord i illativ"
+msgid "Practise a mix"
+msgstr "Øv på blanda oppgaver."
 
 #: univ_drill/views.py:496
-msgid "Practise numerals in accusative"
-msgstr "Øv på tallord i akkusativ"
+msgid "Practise numerals in illative"
+msgstr "Øv på tallord i illativ."
 
 #: univ_drill/views.py:497
-msgid "Practise numerals in comitative"
-msgstr "Øv på tallord i komitativ"
+msgid "Practise numerals in accusative"
+msgstr "Øv på tallord i akkusativ."
 
 #: univ_drill/views.py:498
-msgid "Practise numerals in essive"
-msgstr "Øv på tallord i essiv"
+msgid "Practise numerals in comitative"
+msgstr "Øv på tallord i komitativ."
 
 #: univ_drill/views.py:499
-msgid "Practise numerals in genitive"
-msgstr "Øv på tallord i genitiv"
+msgid "Practise numerals in essive"
+msgstr "Øv på tallord i essiv."
 
 #: univ_drill/views.py:500
-msgid "Practise numerals in plural"
-msgstr "Øv på tallord i flertall"
+msgid "Practise numerals in genitive"
+msgstr "Øv på tallord i genitiv."
 
 #: univ_drill/views.py:501
-msgid "Practise numerals in locative"
-msgstr "Øv på tallord i lokativ"
+msgid "Practise numerals in plural"
+msgstr "Øv på tallord i flertall."
 
-#: univ_drill/views.py:502 univ_drill/views.py:506
-msgid "Practise collective numerals"
-msgstr "Øv på samlingstall"
+#: univ_drill/views.py:502
+msgid "Practise numerals in locative"
+msgstr "Øv på tallord i lokativ."
 
 #: univ_drill/views.py:503
+msgid "Practise collective numerals"
+msgstr "Øv på samlingstall."
+
+#: univ_drill/views.py:504
 msgid "Practise ordinal numbers"
-msgstr "Øv på ordenstall"
+msgstr "Øv på ordenstall."
 
 #: univ_drill/views.py:505
-msgid "Practise ordinal numerals"
-msgstr "Øv på ordenstall"
+msgid "Practise ordinal numerals in illative"
+msgstr "Øv på ordenstall i illativ."
 
-#: univ_drill/views.py:507 univ_drill/views.py:514
+#: univ_drill/views.py:506
+msgid "Practise ordinal numerals in accusative"
+msgstr "Øv på ordenstall i akkusativ."
+
+#: univ_drill/views.py:507
+msgid "Practise ordinal numerals in comitative"
+msgstr "Øv på ordenstall i komitativ."
+
+#: univ_drill/views.py:508
+msgid "Practise ordinal numerals in essive"
+msgstr "Øv på ordenstall i essiv."
+
+#: univ_drill/views.py:509
+msgid "Practise ordinal numerals in genitive"
+msgstr "Øv på ordenstall i genitiv."
+
+#: univ_drill/views.py:510
+msgid "Practise ordinal numerals in plural"
+msgstr "Øv på ordenstall i flertall."
+
+#: univ_drill/views.py:511
+msgid "Practise ordinal numerals in locative"
+msgstr "Øv på ordenstall i lokativ."
+
+#: univ_drill/views.py:512
+msgid "Practise collective numerals in illative"
+msgstr "Øv på samlingstall i illativ."
+
+#: univ_drill/views.py:513
+msgid "Practise collective numerals in accusative"
+msgstr "Øv på samlingstall i akkusativ."
+
+#: univ_drill/views.py:514
+msgid "Practise collective numerals in comitative"
+msgstr "Øv på samlingstall i komitativ."
+
+#: univ_drill/views.py:515
+msgid "Practise collective numerals in essive"
+msgstr "Øv på samlingstall i essiv."
+
+#: univ_drill/views.py:516
+msgid "Practise collective numerals in genitive"
+msgstr "Øv på samlingstall i genitiv."
+
+#: univ_drill/views.py:517
+msgid "Practise collective numerals in plural"
+msgstr "Øv på samlingstall i flertall."
+
+#: univ_drill/views.py:518
+msgid "Practise collective numerals in locative"
+msgstr "Øv på tallord i lokativ."
+
+#: univ_drill/views.py:519 univ_drill/views.py:526
 msgid "Practise present"
-msgstr "Øv på presens"
+msgstr "Øv på presens."
 
-#: univ_drill/views.py:508 univ_drill/views.py:515
+#: univ_drill/views.py:520 univ_drill/views.py:527
 msgid "Practise past"
-msgstr "Øv på preteritum"
+msgstr "Øv på preteritum."
 
-#: univ_drill/views.py:509 univ_drill/views.py:516
+#: univ_drill/views.py:521 univ_drill/views.py:528
 msgid "Practise perfect"
-msgstr "Øv på perfektum"
+msgstr "Øv på perfektum."
 
-#: univ_drill/views.py:510 univ_drill/views.py:517
+#: univ_drill/views.py:522 univ_drill/views.py:529
 msgid "Practise gerund"
-msgstr "Øv på gerundium"
+msgstr "Øv på gerundium."
 
-#: univ_drill/views.py:511 univ_drill/views.py:518
+#: univ_drill/views.py:523 univ_drill/views.py:530
 msgid "Practise conditional"
-msgstr "Øv på kondisjonalis"
+msgstr "Øv på kondisjonalis."
 
-#: univ_drill/views.py:512 univ_drill/views.py:519
+#: univ_drill/views.py:524 univ_drill/views.py:531
 msgid "Practise imperative"
-msgstr "Øv på imperativ"
+msgstr "Øv på imperativ."
 
-#: univ_drill/views.py:513 univ_drill/views.py:520
+#: univ_drill/views.py:525 univ_drill/views.py:532
 msgid "Practise potential"
-msgstr "Øv på potensialis"
+msgstr "Øv på potensialis."
 
-#: univ_drill/views.py:521
+#: univ_drill/views.py:533
 msgid "Practise "
 msgstr "Øv på "
 
-#: univ_drill/views.py:522
+#: univ_drill/views.py:534
 msgid "Practise reciprocative pronouns"
-msgstr "Øv på predikativformer i positiv"
+msgstr "Øv på predikativformer i positiv."
 
-#: univ_drill/views.py:523
+#: univ_drill/views.py:535
 msgid "Practise reflexive pronouns"
-msgstr "Øv på refleksive pronomen"
+msgstr "Øv på refleksive pronomen."
 
-#: univ_drill/views.py:524
+#: univ_drill/views.py:536
 msgid "Practise demonstrative pronouns"
-msgstr "Øv på demonstrative pronomen"
+msgstr "Øv på demonstrative pronomen."
 
 #: univ_drill/templates/clock.html:12
 msgid "Enter the time in the digital clock format. (Ex. 10:21)"
@@ -1743,7 +1796,7 @@ msgid "This is almost correct!"
 msgstr "Dette er nesten rett!"
 
 #: univ_drill/templates/game.html:183 univ_drill/templates/leksa.html:74
-#: univ_drill/templates/vasta.html:53
+#: univ_drill/templates/vasta.html:60
 msgid "Test answers"
 msgstr "Test svarene"
 
@@ -1780,13 +1833,13 @@ msgid "Select the language pair"
 msgstr "Velg språkpar"
 
 #: univ_drill/templates/leksa.html:57 univ_drill/templates/mgame.html:61
-#: univ_drill/templates/vasta.html:30
+#: univ_drill/templates/vasta.html:36
 msgid "Book"
 msgstr "Bok"
 
 #: univ_drill/templates/leksa.html:62 univ_drill/templates/leksa.html.py:65
 #: univ_drill/templates/leksa_place.html:42 univ_drill/templates/mgame.html:69
-#: univ_drill/templates/num.html:68 univ_drill/templates/vasta.html:37
+#: univ_drill/templates/num.html:68 univ_drill/templates/vasta.html:43
 msgid "New set"
 msgstr "Nytt sett"
 
@@ -1850,8 +1903,8 @@ msgstr "Grad"
 msgid "Stem"
 msgstr "Stamme"
 
-#: univ_drill/templates/mgame_a.html:31 univ_drill/templates/mgame_v.html:16
-#: univ_drill/templates/mgame_v.html:26
+#: univ_drill/templates/mgame_a.html:31 univ_drill/templates/mgame_l.html:30
+#: univ_drill/templates/mgame_v.html:16 univ_drill/templates/mgame_v.html:26
 msgid "Type"
 msgstr "Oppgavetype"
 
@@ -1859,7 +1912,7 @@ msgstr "Oppgavetype"
 msgid "Add numerals in correct forms."
 msgstr "Skriv nordsamisk tallord i riktig bøyingsform"
 
-#: univ_drill/templates/mgame_l.html:25 univ_drill/templates/vasta.html:29
+#: univ_drill/templates/mgame_l.html:25 univ_drill/templates/vasta.html:35
 msgid "Level"
 msgstr "Nivå"
 
@@ -1974,11 +2027,15 @@ msgstr "Veardideapmi rámbuvrris"
 msgid "Answer"
 msgstr "Svar"
 
-#: univ_drill/templates/vasta.html:16
+#: univ_drill/templates/vasta.html:16 univ_drill/templates/vasta.html.py:21
 msgid "Vasta"
 msgstr ""
 
-#: univ_drill/templates/vasta.html:18
+#: univ_drill/templates/vasta.html:17
+msgid "VastaS"
+msgstr ""
+
+#: univ_drill/templates/vasta.html:23
 msgid ""
 "Answer to the questions with full sentences. Be aware of that if there is "
 "moai/mii in the question, you have to answer with doai/dii. "
@@ -1986,13 +2043,13 @@ msgstr ""
 "Svar på spørsmåla med fulle setninger. Vær oppmerksom på at hvis det er moai/"
 "mii i spørsmålet, skal svaret ha doai/dii."
 
-#: univ_drill/templates/vasta.html:24
+#: univ_drill/templates/vasta.html:30
 msgid ""
 "NB! NB! The Vasta game is not working properly, due to technical problems! "
 "NB! NB!"
 msgstr ""
 
-#: univ_drill/templates/vasta.html:25
+#: univ_drill/templates/vasta.html:31
 msgid ""
 "NB! NB! The Vasta game is temporarily out of order, due to technical "
 "maintenance! NB! NB!"
@@ -2115,6 +2172,9 @@ msgstr "Send melding"
 #: univ_feedback/templates/thankyou.html:6
 msgid "Thank you for you feedback!"
 msgstr "Takk for tilbakemeldinga di!"
+
+#~ msgid "Practise ordinal numerals"
+#~ msgstr "Øv på ordenstall."
 
 #~ msgid ""
 #~ "Add adjectives in correct forms. You get translation into Norwegian if "
