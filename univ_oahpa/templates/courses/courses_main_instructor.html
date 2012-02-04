@@ -1,0 +1,67 @@
+{% extends 'univ_oahpa.html' %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
+{% comment %}
+TODO: game logo
+TODO: link in user interface
+
+{% endcomment %}
+
+{% block page_class %}fixed{% endblock %}
+
+{% block content %}
+	{# Add blocktrans and trans tags #}
+	<div id="courses">
+		<ul id="subnav">
+			<li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li>
+		</ul>
+		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
+
+		<p>{% trans "You are a course instructor." %}</p>
+		<p><a href="/univ_oahpa/admin/courses/">{% trans "View students' grades" %}</a></p>
+		{% for course in courses %}
+		<div class="instructor_course">
+			<h3>{{ course.identifier }} - {{ course.name }}</h3>
+			<a href="{{ course.site_link }}">Site.uit.no</a>
+
+			<h4>Students</h4>
+			<ul class="course_students">
+			{% for student in course.students.all %}
+			<li><strong>{{ student.user.username }}</strong>
+				<ul class="row">
+					<li>login count: {{ student.login_count }}</li>
+					<li>last login on: {{ student.last_login }}</li>
+				</ul>
+				{% if student.grades %}
+				<table class="grades">
+				<th>
+					<td>exercise type</td>
+					<td>average score</td>
+					<td>minimum score</td>
+					<td>maximum score</td>
+					<td>game count</td>
+				</th>
+				{% for grade in student.grades %}
+				<tr>
+					<td>{{ grade.game.name }}</td>
+					<td>{{ grade.average }}</td>
+					<td>{{ grade.minimum }}</td>
+					<td>{{ grade.maximum }}</td>
+					<td>{{ grade.count }}</td>
+				</tr>
+				{% endfor %}
+				</table>
+				{% endif %}
+			</li>
+			{% endfor %}
+			</ul>
+		</div>
+		{% endfor %}
+
+	</div>
+
+{% endblock %}
+
+{# vim: set ts=4 sw=4 tw=0 syntax=htmldjango : #}
+

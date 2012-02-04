@@ -31,8 +31,19 @@ class UserProfile(models.Model):
 	def __unicode__(self):
 		return self.user.username.encode('utf-8')
 	
+	@property
 	def open_id_link(self):
 		return 'http://oahpa.uit.no/univ_oahpa/openid/%s' % self.user.username
+	
+	@property
+	def grades(self):
+
+		grades = self.usergradesummary_set.all()
+
+		if grades.count() > 0:
+			return grades
+		else:
+			return None
 	
 
 
@@ -117,6 +128,12 @@ class Course(models.Model):
 	# students = models.ManyToManyField(User, related_name='studentships')
 	site_link = models.URLField(verify_exists=False, max_length=200, blank=True, null=True)
 	end_date = models.DateTimeField(null=True, default=None)
+
+	@property
+	def students(self):
+		us = UserProfile.objects.filter(user__courserelationship__course=self)\
+								.distinct()
+		return us
 
 class CourseRelationship(models.Model):
 	""" This model contains information about the relationships of
