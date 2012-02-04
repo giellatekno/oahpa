@@ -32,6 +32,24 @@ class UserProfile(models.Model):
 		return self.user.username.encode('utf-8')
 	
 	@property
+	def is_instructor(self):
+		grs = self.user.groups.values_list('name', flat=True)
+		if 'Instructors' in grs:
+			return True
+		else:
+			return False
+	
+	@property
+	def is_student(self):
+		grs = self.user.courserelationship_set\
+						.values_list('relationship_type__name', flat=True)
+		if 'Students' in grs:
+			return True
+		else:
+			return False
+		
+	
+	@property
 	def open_id_link(self):
 		return 'http://oahpa.uit.no/univ_oahpa/openid/%s' % self.user.username
 	
