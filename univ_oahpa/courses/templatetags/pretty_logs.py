@@ -22,6 +22,11 @@ for s in ALL_CHOICES:
 			# key_to_string[unicode(k.lower())] = v
 
 # TODO: Leksa - Place - maailma - tavalliset - harvat
+#								  ^-----------------^
+
+# TODO: Morfa - substantiivi - essiivi - 2syll/3syll
+#										 ^---------^
+
 
 @register.filter(name='filter_log')
 def filter_log(value):
@@ -32,9 +37,11 @@ def filter_log(value):
 	substituted = []
 
 	items = [i for i in value.split(' - ') if i.strip()]
-	print items
+	# print items
 	for item in items:
 		subitems = item.split(', ')
+		subitems = [a.split('/') for a in subitems]
+		subitems = sum(subitems, [])
 
 		sub_subs = []
 		for subitem in subitems:

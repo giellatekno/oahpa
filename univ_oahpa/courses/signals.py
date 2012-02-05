@@ -3,6 +3,8 @@ from django.contrib.auth.models import User, Group
 from models import UserProfile
 from django.db.models import Avg, Max, Min, Count
 
+# TODO: instructors do not need admin access anymore, should disable those bits
+
 # This causes an error on sync with a fresh db, so catch the error because this
 # group does not need to be created if the script is called from the
 # commandline.
@@ -55,8 +57,8 @@ def aggregate_grades(sender, **kwargs):
 
 	if game_count > 0:
 		stats = grades.aggregate(grade_max=Max('score'),
-								grade_min=Min('score'),
-								grade_avg=Avg('score'))
+								 grade_min=Min('score'),
+								 grade_avg=Avg('score'))
 
 		gradesummary.average = stats['grade_avg']
 		gradesummary.maximum = stats['grade_max']
@@ -88,8 +90,8 @@ def create_profile(sender, **kwargs):
 		profile.save()
 
 	new_oid, created = OpenID.objects.get_or_create(user=user_obj,
-										openid=user_obj.username,
-										default=True)
+													openid=user_obj.username,
+													default=True)
 	for root in DEFAULT_ROOTS:
 		n, _ = new_oid.trustedroot_set.get_or_create(trust_root=root)
 		n.save()
@@ -100,8 +102,8 @@ def create_profile(sender, **kwargs):
 
 @disable_for_loaddata
 def course_relationship_postsave(sender, **kwargs):
-	""" Course instructors gain access via is_staff. If extra permissions need
-	to be assigned, this should be done here.
+	""" Course instructors are added to the group Instructors, but not given
+	permissions to log into the admin site anymore.
 
 	Also, copy the date from the user's course, if it exists. If the date
 	existent on the object is not the same as the course, we assume that a user
@@ -115,11 +117,12 @@ def course_relationship_postsave(sender, **kwargs):
 	course = courserelationship.course
 
 	# Grant admin access to instructor
-	instructors = course.courserelationship_set.filter(relationship_type__name='Instructors')
+	instructors = course.courserelationship_set\
+						.filter(relationship_type__name='Instructors')
 	instructors = [i.user for i in instructors]
 
 	for i in instructors:
-		i.is_staff = True
+		# i.is_staff = True
 		i.groups.add(instructor_group)
 		i.save()
 	

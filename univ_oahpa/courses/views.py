@@ -108,7 +108,6 @@ def trackGrade(gamename, request, c):
 												total=total)
 
 
-
 @login_required
 def courses_main(request):
 	""" This is the main view presented to users after login.
@@ -130,11 +129,16 @@ def courses_main(request):
 	
 	summary = False
 	
-	if not request.user.is_staff:
+	if profile.is_student:
 		summary = profile.usergradesummary_set.all()
 		if summary.count() == 0:
 			new_profile = True
 		is_student = True
+	
+	if profile.is_student:
+		template = 'courses/courses_main.html'
+	elif profile.is_instructor:
+		template = 'courses/courses_main_instructor.html'
 	
 	c = {
 		'user':  request.user,
@@ -142,37 +146,13 @@ def courses_main(request):
 		'new_profile':  new_profile,
 		'is_student':  is_student,
 		'summaries':  summary,
-		'courses': Course.objects.filter(courserelationship__user=request.user),
+		'courses': Course.objects.filter(
+									courserelationship__user=request.user)\
+								 .distinct(),
 	}
 
-	return render_to_response(template, c, context_instance=RequestContext(request))
+	return render_to_response(template, 
+							  c, 
+							  context_instance=RequestContext(request))
 
-
-# NOTES:
-#	forms.LeksaSettings - user selects: semtype, transtype, source
-#						  form has: gametype, language, frequency,
-#						  geography, syll []
-
-#	forms.MorfaSettings - user selects: case, adjcase, vtype, num_bare,
-#						adj_context, vtype_context, book, bisyllabic,
-#						trisyllabic, contracted, grade
-
-
-#   smaoahpa and smeoahpa will differ on this a lot.
-
-#	maybe shouldn't try to subclass forms, so much as make dicts/lists of
-#	stuff that will be settings.
-
-def course_link(request):
-	""" This view creates a Morfa or Leksa game corresponding to instructors' preset 
-		options. 
-
-		Could be slightly tough, require creating request objects with post data.
-
-		one Link model may be tricky, would like to include a cutoff for dates that
-		new grades will no longer be stored. Link object should be passed to trackGrade
-
-	"""
-	
-	pass
 
