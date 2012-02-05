@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-04 09:25+0100\n"
+"POT-Creation-Date: 2012-02-05 14:26+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,7 +50,7 @@ msgstr "Dette programmet er under utvikling."
 msgid "Grammar explanations"
 msgstr "Grammatikkforklaringer"
 
-#: templates/univ_oahpa.html:72 templates_old/smaoahpa.html:330
+#: templates/univ_oahpa.html:72
 msgid "Reference materials"
 msgstr "Ressurser"
 
@@ -61,15 +61,12 @@ msgid "Veiledning"
 msgstr "Veiledning"
 
 #: templates/univ_oahpa.html:76 templates/univ_oahpa.html.py:78
-#: templates_old/smaoahpa.html:332
 msgid "Dictionary"
 msgstr "Nettordbok"
 
 #: templates/univ_oahpa.html:81 templates/univ_oahpa.html.py:84
 #: templates/univ_oahpa.html:87 templates/univ_oahpa.html.py:90
-#: templates/univ_oahpa.html:93 templates_old/smaoahpa.html:288
-#: templates_old/smaoahpa.html.py:300 templates_old/smaoahpa.html:333
-#: templates_old/smaoahpa_old.html:273 templates_old/smaoahpa_old.html:285
+#: templates/univ_oahpa.html:93
 msgid "Grammar"
 msgstr "Grammatikk"
 
@@ -92,13 +89,11 @@ msgstr "Logg ut"
 msgid "Log in"
 msgstr "Logg inn"
 
-#: templates/univ_oahpa.html:111 templates_old/smaoahpa.html:338
-#: templates_old/smaoahpa_new.html:193 templates_old/smaoahpa_old.html:320
-#: univ_drill/templates/visl_main.html:452
+#: templates/univ_oahpa.html:111 univ_drill/templates/visl_main.html:452
 msgid "Feedback"
 msgstr "Tilbakemelding"
 
-#: templates/univ_oahpa_main.html:40 templates_old/smaoahpa_main.html:20
+#: templates/univ_oahpa_main.html:40
 msgid "Interface language"
 msgstr "Hjelpespråk"
 
@@ -116,7 +111,7 @@ msgstr "Kautokeino"
 msgid "KJ"
 msgstr "Karasjok"
 
-#: templates/univ_oahpa_main.html:120 templates_old/smaoahpa_main.html:98
+#: templates/univ_oahpa_main.html:120
 msgid "Practise morphology"
 msgstr "Øv på bøying"
 
@@ -124,11 +119,11 @@ msgstr "Øv på bøying"
 msgid "Answer to questions"
 msgstr "Svar på spørsmåla"
 
-#: templates/univ_oahpa_main.html:135 templates_old/smaoahpa_main.html:105
+#: templates/univ_oahpa_main.html:135
 msgid "Words and translations"
 msgstr "Ord og oversettelser"
 
-#: templates/univ_oahpa_main.html:146 templates_old/smaoahpa_main.html:119
+#: templates/univ_oahpa_main.html:146
 msgid "Practise morphology in context"
 msgstr "Bøy ord i setninger"
 
@@ -136,11 +131,11 @@ msgstr "Bøy ord i setninger"
 msgid "Dialogue game"
 msgstr "Dialoger"
 
-#: templates/univ_oahpa_main.html:160 templates_old/smaoahpa_main.html:112
+#: templates/univ_oahpa_main.html:160
 msgid "Practise numerals"
 msgstr "Øv på tallord"
 
-#: templates/univ_oahpa_main.html:165 templates_old/smaoahpa_main.html:132
+#: templates/univ_oahpa_main.html:165
 msgid "Online reference materials"
 msgstr "Ressurser"
 
@@ -167,12 +162,10 @@ msgid "Finnish"
 msgstr "Finsk"
 
 #: templates/univ_oahpa_main.html:188 templates/univ_oahpa_main.html.py:190
-#: templates_old/smaoahpa_main.html:135 templates_old/smaoahpa_main.html:146
 msgid "dictionary"
 msgstr "nettordbok"
 
-#: templates/univ_oahpa_main.html:190 templates_old/smaoahpa_main.html:135
-#: templates_old/smaoahpa_main.html:146
+#: templates/univ_oahpa_main.html:190
 msgid "Norwegian"
 msgstr "norsk"
 
@@ -198,8 +191,7 @@ msgstr "Lenke til denne øvinga"
 msgid "Copyright 2011 Universitetet i Troms&oslash; "
 msgstr "Copyright 2010 Universitetet i Tromsø"
 
-#: templates/univ_oahpa_main.html:225 templates_old/smaoahpa_main.html:155
-#: univ_drill/templates/visl_main.html:472
+#: templates/univ_oahpa_main.html:225 univ_drill/templates/visl_main.html:472
 msgid "Contact"
 msgstr "Kontakt"
 
@@ -609,22 +601,18 @@ msgid "Course progress"
 msgstr "Se framgang"
 
 #: templates/courses/courses_main.html:54
-#: templates_old/courses/courses_main.html:56
 msgid "Average"
 msgstr "Gjennomsnitt"
 
 #: templates/courses/courses_main.html:55
-#: templates_old/courses/courses_main.html:57
 msgid "Highest score"
 msgstr "Høyeste poengsum:"
 
 #: templates/courses/courses_main.html:56
-#: templates_old/courses/courses_main.html:58
 msgid "Lowest score"
 msgstr "Laveste poengsum:"
 
 #: templates/courses/courses_main.html:57
-#: templates_old/courses/courses_main.html:59
 msgid "Number of tries"
 msgstr "Antall forsøk"
 
@@ -636,6 +624,34 @@ msgstr "Du er kursinstruktør."
 #: templates/courses/courses_main.html:66
 msgid "View students' grades"
 msgstr "Se studentresultater"
+
+#: templates/courses/courses_main_instructor.html:33
+msgid "login count"
+msgstr "Antall login"
+
+#: templates/courses/courses_main_instructor.html:34
+msgid "last login"
+msgstr "Siste innlogging"
+
+#: templates/courses/courses_main_instructor.html:39
+msgid "exercise type"
+msgstr "Oppgavetype"
+
+#: templates/courses/courses_main_instructor.html:40
+msgid "average score"
+msgstr "Gjennomsnittlig poengsum:"
+
+#: templates/courses/courses_main_instructor.html:41
+msgid "minimum score"
+msgstr "Minimumsresultat"
+
+#: templates/courses/courses_main_instructor.html:42
+msgid "maximum score"
+msgstr "Maksimumsresultat"
+
+#: templates/courses/courses_main_instructor.html:43
+msgid "game count"
+msgstr "Antall spill"
 
 #: templates/registration/logged_out.html:8
 msgid "Thanks for spending some quality time with the Web site today."
@@ -793,63 +809,6 @@ msgstr "E-post-adresse"
 msgid "Reset my password"
 msgstr "Endre passordet mitt"
 
-#: templates_old/smaoahpa.html:326 templates_old/smaoahpa_old.html:311
-msgid "OAHPA is under development and may not function all the time."
-msgstr "OAHPA er under utvikling og vil kanskje ikke fungere hele tida."
-
-#: templates_old/smaoahpa_main.html:63
-msgid "Southern Sami dialect"
-msgstr "Språkvariant"
-
-#: templates_old/smaoahpa_main.html:68 templates_old/smaoahpa_main.html:71
-#: templates_old/smaoahpa_main.html:75
-msgid "SH"
-msgstr "SH"
-
-#: templates_old/smaoahpa_main.html:69 templates_old/smaoahpa_main.html:72
-#: templates_old/smaoahpa_main.html:76
-msgid "L"
-msgstr "L"
-
-#: templates_old/smaoahpa_main.html:86
-msgid ""
-"Sma-Oahpa is a small demo of learning exercises for learners of South Saami "
-"language. One can currently choose between South Saami&hArr;Norwegian, with "
-"more language pairs to come soon."
-msgstr ""
-"Sma-Oahpa er et programm for å lære sørsamisk. Man kan velge ulike  arbeide "
-"mellom sørsamisk og norsk eller svensk, men det vil komme flere språkpar "
-"etterhvert."
-
-#: templates_old/smaoahpa_main.html:133
-msgid ""
-"Oahpa is connected with online reference materials, some of which have been "
-"produced using the same data which made these games."
-msgstr ""
-
-#: templates_old/smaoahpa_main.html:135 templates_old/smaoahpa_main.html:136
-#: templates_old/smaoahpa_main.html:146 templates_old/smaoahpa_main.html:148
-msgid "South Sámi"
-msgstr "Nordsamisk"
-
-#: templates_old/smaoahpa_main.html:136 templates_old/smaoahpa_main.html:148
-msgid "grammar"
-msgstr "Grammatikk"
-
-#: templates_old/smaoahpa_main.html:154
-msgid ""
-"Copyright 2011 Universitetet i Troms&oslash; og Aajege Saemien g&iuml;ele- "
-"j&iuml;h maahtoejarnge"
-msgstr "Copyright 2012 Universitetet i Tromsø"
-
-#: templates_old/user_auth_block.html:16
-msgid "Course login"
-msgstr "Kursinnlogging"
-
-#: templates_old/courses/courses_main.html:40
-msgid "Welcome, "
-msgstr "Velkommen,"
-
 #: univ_drill/forms.py:41
 msgid "noun"
 msgstr "substantiv"
@@ -871,51 +830,39 @@ msgid "pronoun"
 msgstr "pronomen"
 
 #: univ_drill/forms.py:49 univ_drill/forms.py:85 univ_drill/forms.py:107
-#: univ_drill/forms.py:141 univ_drill/forms.py:151 univ_drill/new_views.py:149
-#: univ_drill/new_views.py:159 univ_drill/new_views.py:187
-#: univ_drill/new_views.py:197 univ_drill/new_views.py:285
+#: univ_drill/forms.py:141 univ_drill/forms.py:151
 msgid "plural"
 msgstr "nominativ flertall"
 
 #: univ_drill/forms.py:50 univ_drill/forms.py:61 univ_drill/forms.py:86
 #: univ_drill/forms.py:109 univ_drill/forms.py:142 univ_drill/forms.py:152
-#: univ_drill/new_views.py:150 univ_drill/new_views.py:161
-#: univ_drill/new_views.py:188 univ_drill/new_views.py:198
-#: univ_drill/new_views.py:286
 msgid "accusative"
 msgstr "akkusativ"
 
 #: univ_drill/forms.py:51 univ_drill/forms.py:62 univ_drill/forms.py:72
 #: univ_drill/forms.py:88 univ_drill/forms.py:110 univ_drill/forms.py:143
-#: univ_drill/forms.py:153 univ_drill/new_views.py:151
-#: univ_drill/new_views.py:162 univ_drill/new_views.py:189
-#: univ_drill/new_views.py:199 univ_drill/new_views.py:287
+#: univ_drill/forms.py:153
 msgid "illative"
 msgstr "illativ"
 
 #: univ_drill/forms.py:52 univ_drill/forms.py:63 univ_drill/forms.py:73
 #: univ_drill/forms.py:89 univ_drill/forms.py:111 univ_drill/forms.py:144
-#: univ_drill/forms.py:154 univ_drill/new_views.py:190
+#: univ_drill/forms.py:154
 msgid "locative"
 msgstr "lokativ"
 
 #: univ_drill/forms.py:53 univ_drill/forms.py:64 univ_drill/forms.py:74
 #: univ_drill/forms.py:90 univ_drill/forms.py:112 univ_drill/forms.py:145
-#: univ_drill/forms.py:155 univ_drill/new_views.py:154
-#: univ_drill/new_views.py:165 univ_drill/new_views.py:191
-#: univ_drill/new_views.py:202 univ_drill/new_views.py:290
+#: univ_drill/forms.py:155
 msgid "comitative"
 msgstr "komitativ"
 
 #: univ_drill/forms.py:54 univ_drill/forms.py:65 univ_drill/forms.py:87
-#: univ_drill/forms.py:113 univ_drill/new_views.py:166
-#: univ_drill/new_views.py:291
+#: univ_drill/forms.py:113
 msgid "genitive"
 msgstr "genitiv"
 
 #: univ_drill/forms.py:55 univ_drill/forms.py:91 univ_drill/forms.py:114
-#: univ_drill/new_views.py:155 univ_drill/new_views.py:167
-#: univ_drill/new_views.py:292
 msgid "essive"
 msgstr "essiv"
 
@@ -940,59 +887,58 @@ msgid "mix"
 msgstr "blanda oppgaver"
 
 #: univ_drill/forms.py:108 univ_drill/forms.py:118 univ_drill/forms.py:140
-#: univ_drill/new_views.py:160 univ_drill/new_views.py:186
 msgid "attributive"
 msgstr "attributt"
 
-#: univ_drill/forms.py:119 univ_drill/forms.py:135 univ_drill/new_views.py:181
+#: univ_drill/forms.py:119 univ_drill/forms.py:135
 msgid "comparative"
 msgstr "komparativ"
 
-#: univ_drill/forms.py:120 univ_drill/forms.py:136 univ_drill/new_views.py:182
+#: univ_drill/forms.py:120 univ_drill/forms.py:136
 msgid "superlative"
 msgstr "superlativ"
 
-#: univ_drill/forms.py:125 univ_drill/new_views.py:171
+#: univ_drill/forms.py:125
 msgid "attributive positive"
 msgstr "positivt attributt"
 
-#: univ_drill/forms.py:126 univ_drill/new_views.py:172
+#: univ_drill/forms.py:126
 msgid "attributive comparative"
 msgstr "komparativt attributt"
 
-#: univ_drill/forms.py:127 univ_drill/new_views.py:173
+#: univ_drill/forms.py:127
 msgid "attributive superlative"
 msgstr "superlativt attributt"
 
-#: univ_drill/forms.py:128 univ_drill/new_views.py:174
+#: univ_drill/forms.py:128
 msgid "predicative positive"
 msgstr "positiv predikativ"
 
-#: univ_drill/forms.py:129 univ_drill/new_views.py:175
+#: univ_drill/forms.py:129
 msgid "predicative comparative"
 msgstr "komparativ predikativ"
 
-#: univ_drill/forms.py:130 univ_drill/new_views.py:176
+#: univ_drill/forms.py:130
 msgid "predicative superlative"
 msgstr "superlativ predikativ"
 
-#: univ_drill/forms.py:134 univ_drill/new_views.py:180
+#: univ_drill/forms.py:134
 msgid "positive"
 msgstr "positiv"
 
-#: univ_drill/forms.py:146 univ_drill/forms.py:166 univ_drill/new_views.py:192
+#: univ_drill/forms.py:146 univ_drill/forms.py:166
 msgid "collective"
 msgstr "samlingstall"
 
-#: univ_drill/forms.py:147 univ_drill/new_views.py:193
+#: univ_drill/forms.py:147
 msgid "ordinals"
 msgstr "ordenstall"
 
-#: univ_drill/forms.py:159 univ_drill/forms.py:229 univ_drill/new_views.py:206
+#: univ_drill/forms.py:159 univ_drill/forms.py:229
 msgid "First level"
 msgstr "Nivå 1"
 
-#: univ_drill/forms.py:160 univ_drill/forms.py:230 univ_drill/new_views.py:207
+#: univ_drill/forms.py:160 univ_drill/forms.py:230
 msgid "Second level"
 msgstr "Nivå 1-2"
 
@@ -1004,13 +950,11 @@ msgstr "Grunntall"
 msgid "ordinal"
 msgstr "Ordenstall"
 
-#: univ_drill/forms.py:170 univ_drill/forms.py:180 univ_drill/new_views.py:358
-#: univ_drill/new_views.py:366
+#: univ_drill/forms.py:170 univ_drill/forms.py:180
 msgid "present"
 msgstr "presens"
 
-#: univ_drill/forms.py:171 univ_drill/forms.py:181 univ_drill/new_views.py:359
-#: univ_drill/new_views.py:367
+#: univ_drill/forms.py:171 univ_drill/forms.py:181
 msgid "past"
 msgstr "preteritum"
 
@@ -1022,18 +966,15 @@ msgstr "perfektum"
 msgid "gerund"
 msgstr "gerundium"
 
-#: univ_drill/forms.py:174 univ_drill/forms.py:184 univ_drill/new_views.py:360
-#: univ_drill/new_views.py:368
+#: univ_drill/forms.py:174 univ_drill/forms.py:184
 msgid "conditional"
 msgstr "kondisjonalis"
 
-#: univ_drill/forms.py:175 univ_drill/forms.py:185 univ_drill/new_views.py:361
-#: univ_drill/new_views.py:369
+#: univ_drill/forms.py:175 univ_drill/forms.py:185
 msgid "imperative"
 msgstr "imperativ"
 
-#: univ_drill/forms.py:176 univ_drill/forms.py:186 univ_drill/new_views.py:362
-#: univ_drill/new_views.py:370
+#: univ_drill/forms.py:176 univ_drill/forms.py:186
 msgid "potential"
 msgstr "potensialis"
 
@@ -1053,33 +994,33 @@ msgstr "Nivå 1-2"
 msgid "Level 1-3"
 msgstr "Nivå 1-3"
 
-#: univ_drill/forms.py:195 univ_drill/forms.py:214 univ_drill/new_views.py:43
+#: univ_drill/forms.py:195 univ_drill/forms.py:214
 msgid "All"
 msgstr "Alle"
 
 #: univ_drill/forms.py:199
 msgid "Davvin 1"
-msgstr ""
+msgstr "Davvin 1"
 
 #: univ_drill/forms.py:200
 msgid "Davvin 1-2"
-msgstr ""
+msgstr "Davvin 1-2"
 
 #: univ_drill/forms.py:201
 msgid "Davvin 1-3"
-msgstr ""
+msgstr "Davvin 1-3"
 
 #: univ_drill/forms.py:202
 msgid "Davvin 1-4"
-msgstr ""
+msgstr "Davvin 1-4"
 
 #: univ_drill/forms.py:203
 msgid "Aikio komp."
-msgstr ""
+msgstr "Aikio komp."
 
 #: univ_drill/forms.py:204
 msgid "Cealkke 1"
-msgstr ""
+msgstr "Cealkke dearvvuođaid 1"
 
 #: univ_drill/forms.py:205
 msgid "Cealkke 1-2"
@@ -1095,11 +1036,11 @@ msgstr "Cealkke dearvvuođaid 1-4"
 
 #: univ_drill/forms.py:208
 msgid "SAM-1031-1"
-msgstr ""
+msgstr "SAM-1031-1"
 
 #: univ_drill/forms.py:209
 msgid "SAM-1031-2"
-msgstr ""
+msgstr "SAM-1031-2"
 
 #: univ_drill/forms.py:210
 msgid "algu"
@@ -1111,11 +1052,11 @@ msgstr "Sárá ja su ustibat"
 
 #: univ_drill/forms.py:212
 msgid "Bures bures fas"
-msgstr ""
+msgstr "Bures bures fas"
 
 #: univ_drill/forms.py:213
 msgid "Oaidnalit"
-msgstr ""
+msgstr "Oaidnalit"
 
 #: univ_drill/forms.py:218
 msgid "rare"
@@ -1161,7 +1102,7 @@ msgstr "Finsk til nordsamisk"
 msgid "North Sami"
 msgstr "Nordsamisk"
 
-#: univ_drill/forms.py:258 univ_drill/new_views.py:482
+#: univ_drill/forms.py:258
 msgid "family"
 msgstr "Slekt"
 
@@ -1241,25 +1182,25 @@ msgstr "Arbeid/økonomi/verktøy"
 msgid "Multiword"
 msgstr "Flerordsuttrykk"
 
-#: univ_drill/forms.py:278 univ_drill/new_views.py:500
+#: univ_drill/forms.py:278
 msgid "all"
 msgstr "Alle"
 
 #: univ_drill/forms.py:282
 msgid "0-10"
-msgstr ""
+msgstr "0-10"
 
 #: univ_drill/forms.py:283
 msgid "0-20"
-msgstr ""
+msgstr "0-20"
 
 #: univ_drill/forms.py:284
 msgid "0-100"
-msgstr ""
+msgstr "0-100"
 
 #: univ_drill/forms.py:285
 msgid "0-1000"
-msgstr ""
+msgstr "0-1000"
 
 #: univ_drill/forms.py:290
 msgid "String to numeral"
@@ -1279,27 +1220,27 @@ msgstr "Skriv tallene som tallord"
 
 #: univ_drill/forms.py:304
 msgid "I"
-msgstr ""
+msgstr "I"
 
 #: univ_drill/forms.py:305
 msgid "II"
-msgstr ""
+msgstr "II"
 
 #: univ_drill/forms.py:306
 msgid "III"
-msgstr ""
+msgstr "III"
 
 #: univ_drill/forms.py:307
 msgid "IV"
-msgstr ""
+msgstr "IV"
 
 #: univ_drill/forms.py:308
 msgid "V"
-msgstr ""
+msgstr "V"
 
 #: univ_drill/forms.py:309
 msgid "VI"
-msgstr ""
+msgstr "VI"
 
 #: univ_drill/forms.py:310
 msgid "Odd"
@@ -1360,402 +1301,248 @@ msgstr "ulikestavelsesstammer"
 msgid "contracted"
 msgstr "kontrakte stammer"
 
-#: univ_drill/new_views.py:31
-msgid "Aalkoe"
-msgstr ""
-
-#: univ_drill/new_views.py:32
-msgid "Dejpeladtje vætnoeh vuekieh"
-msgstr ""
-
-#: univ_drill/new_views.py:33
-msgid "Saemesth amma 1"
-msgstr ""
-
-#: univ_drill/new_views.py:34
-msgid "Saemesth amma 2"
-msgstr ""
-
-#: univ_drill/new_views.py:35
-msgid "Saemesth amma 3"
-msgstr ""
-
-#: univ_drill/new_views.py:36
-msgid "Saemesth amma 4"
-msgstr ""
-
-#: univ_drill/new_views.py:37
-msgid "Åarjel-saemien 1"
-msgstr ""
-
-#: univ_drill/new_views.py:38
-msgid "Åarjel-saemien 2"
-msgstr ""
-
-#: univ_drill/new_views.py:39
-msgid "Åarjel-saemien 3"
-msgstr ""
-
-#: univ_drill/new_views.py:40
-msgid "Åarjel-saemien 4"
-msgstr ""
-
-#: univ_drill/new_views.py:41
-msgid "Åarjel-saemien 5"
-msgstr ""
-
-#: univ_drill/new_views.py:42
-msgid "Åarjel-saemien 6"
-msgstr ""
-
-#: univ_drill/new_views.py:152 univ_drill/new_views.py:163
-#: univ_drill/new_views.py:200 univ_drill/new_views.py:288
-msgid "inessive"
-msgstr "inessiv"
-
-#: univ_drill/new_views.py:153 univ_drill/new_views.py:164
-#: univ_drill/new_views.py:201 univ_drill/new_views.py:289
-msgid "elative"
-msgstr "elativ"
-
-#: univ_drill/new_views.py:483
-msgid "Food/drink"
-msgstr "Mat/drikke"
-
-#: univ_drill/new_views.py:484
-msgid "Animal"
-msgstr "Dyr"
-
-#: univ_drill/new_views.py:485
-msgid "Object"
-msgstr "Ting"
-
-#: univ_drill/new_views.py:486
-msgid "Concretes"
-msgstr "Konkret"
-
-#: univ_drill/new_views.py:487
-msgid "Body"
-msgstr "Kropp"
-
-#: univ_drill/new_views.py:488
-msgid "Clothes"
-msgstr "Klær"
-
-#: univ_drill/new_views.py:489
-msgid "Buildings/rooms"
-msgstr "Bygninger/rom"
-
-#: univ_drill/new_views.py:490
-msgid "Nature words"
-msgstr "Natur"
-
-#: univ_drill/new_views.py:491
-msgid "Leisuretime/at home"
-msgstr "Fritid/hjemme"
-
-#: univ_drill/new_views.py:492
-msgid "Places"
-msgstr "Steder/reise"
-
-#: univ_drill/new_views.py:493
-msgid "Abstracts"
-msgstr "Abstrakte ord"
-
-#: univ_drill/new_views.py:494
-msgid "Work/economy/tools"
-msgstr "Arbeid/økonomi/verktøy"
-
-#: univ_drill/new_views.py:495
-msgid "Timeexpressions"
-msgstr "Tidsuttrykk"
-
-#: univ_drill/new_views.py:496
-msgid "Literature/text"
-msgstr "Litteratur/tekst"
-
-#: univ_drill/new_views.py:497
-msgid "School/education"
-msgstr "Skole/utdanning"
-
-#: univ_drill/new_views.py:498
-msgid "Reindeerherding"
-msgstr "Reindrift"
-
-#: univ_drill/new_views.py:499
-msgid "Traditional"
-msgstr "Tradisjonsord"
-
-#: univ_drill/new_views.py:504
-msgid "South Sami to Norwegian"
-msgstr "Sørsamisk til norsk"
-
-#: univ_drill/new_views.py:505
-msgid "Norwegian to South Sami"
-msgstr "Norsk til sørsamisk"
-
-#: univ_drill/new_views.py:510 univ_drill/templates/leksa.html:53
-msgid "Set"
-msgstr "Sett"
-
-#: univ_drill/new_views.py:515
-msgid "Language pair"
-msgstr "Språkpar"
-
-#: univ_drill/new_views.py:619
-msgid "Try again!"
-msgstr "Prøv igjen!"
-
-#: univ_drill/new_views.py:620
-msgid "No possible answers."
-msgstr "Ingen mulige svar."
-
-#: univ_drill/new_views.py:621
-msgid "No answer given."
-msgstr "Du har ikke gitt noe svar."
-
-#: univ_drill/views.py:463 univ_drill/views.py:464
+#: univ_drill/views.py:471 univ_drill/views.py:472
 msgid "Practise attributes"
 msgstr "Øv på attributtformer."
 
-#: univ_drill/views.py:465
+#: univ_drill/views.py:473
 msgid "Practise adjectives in nominative"
 msgstr "Øv på adjektivformer i nominativ."
 
-#: univ_drill/views.py:466
+#: univ_drill/views.py:474
 msgid "Practise adjectives in illative"
 msgstr "Øv på adjektivformer i illativ."
 
-#: univ_drill/views.py:467
+#: univ_drill/views.py:475
 msgid "Practise adjectives in accusative"
 msgstr "Øv på adjektivformer i akkusativ."
 
-#: univ_drill/views.py:468
+#: univ_drill/views.py:476
 msgid "Practise adjectives in comitative"
 msgstr "Øv på adjektivformer i komitativ."
 
-#: univ_drill/views.py:469
+#: univ_drill/views.py:477
 msgid "Practise adjectives in essive"
 msgstr "Øv på adjektivformer i essiv."
 
-#: univ_drill/views.py:470
+#: univ_drill/views.py:478
 msgid "Practise adjectives in genitive"
 msgstr "Øv på adjektivformer i genitiv."
 
-#: univ_drill/views.py:471
+#: univ_drill/views.py:479
 msgid "Practise adjectives in plural"
 msgstr "Øv på adjektivformer i flertall."
 
-#: univ_drill/views.py:472
+#: univ_drill/views.py:480
 msgid "Practise adjectives in locative"
 msgstr "Øv på tallord i lokativ."
 
-#: univ_drill/views.py:473
+#: univ_drill/views.py:481
 msgid "Practise comparative"
 msgstr "Øv på komparativ."
 
-#: univ_drill/views.py:474
+#: univ_drill/views.py:482
 msgid "Practise superlative"
 msgstr "Øv på superlativ."
 
-#: univ_drill/views.py:475
+#: univ_drill/views.py:483
 msgid "Practise attributes in positive"
 msgstr "Øv på attributtformer i positiv."
 
-#: univ_drill/views.py:476
+#: univ_drill/views.py:484
 msgid "Practise attributes in comparative"
 msgstr "Øv på attributtformer i komparativ."
 
-#: univ_drill/views.py:477
+#: univ_drill/views.py:485
 msgid "Practise attributes in superlative"
 msgstr "Øv på attributtformer i superlativ."
 
-#: univ_drill/views.py:478
+#: univ_drill/views.py:486
 msgid "Practise predicative in positive"
 msgstr "Øv på predikativformer i positiv."
 
-#: univ_drill/views.py:479
+#: univ_drill/views.py:487
 msgid "Practise predicative in comparative"
 msgstr "Øv på predikativformer i komparativ."
 
-#: univ_drill/views.py:480
+#: univ_drill/views.py:488
 msgid "Practise predicative in superlative"
 msgstr "Øv på predikativformer i superlativ."
 
-#: univ_drill/views.py:481
+#: univ_drill/views.py:489
 msgid "Practise numeral attributes"
 msgstr "Øv på attributtformer for tallord."
 
-#: univ_drill/views.py:482 univ_drill/views.py:490
+#: univ_drill/views.py:490 univ_drill/views.py:498
 msgid "Practise plural"
 msgstr "Øv på nominativ flertall."
 
-#: univ_drill/views.py:483 univ_drill/views.py:484
+#: univ_drill/views.py:491 univ_drill/views.py:492
 msgid "Practise nominative"
 msgstr "Øv på nominativ."
 
-#: univ_drill/views.py:485
+#: univ_drill/views.py:493
 msgid "Practise illative"
 msgstr "Øv på illativ."
 
-#: univ_drill/views.py:486
+#: univ_drill/views.py:494
 msgid "Practise accusative"
 msgstr "Øv på akkusativ."
 
-#: univ_drill/views.py:487
+#: univ_drill/views.py:495
 msgid "Practise comitative"
 msgstr "Øv på komitativ."
 
-#: univ_drill/views.py:488
+#: univ_drill/views.py:496
 msgid "Practise essive"
 msgstr "Øv på essiv."
 
-#: univ_drill/views.py:489
+#: univ_drill/views.py:497
 msgid "Practise genitive"
 msgstr "Øv på genitiv."
 
-#: univ_drill/views.py:491
+#: univ_drill/views.py:499
 msgid "Practise locative"
 msgstr "Øv på lokativ."
 
-#: univ_drill/views.py:492 univ_drill/views.py:493 univ_drill/views.py:494
-#: univ_drill/views.py:495
+#: univ_drill/views.py:500 univ_drill/views.py:501 univ_drill/views.py:502
+#: univ_drill/views.py:503
 msgid "Practise a mix"
 msgstr "Øv på blanda oppgaver."
 
-#: univ_drill/views.py:496
+#: univ_drill/views.py:504
 msgid "Practise numerals in illative"
 msgstr "Øv på tallord i illativ."
 
-#: univ_drill/views.py:497
+#: univ_drill/views.py:505
 msgid "Practise numerals in accusative"
 msgstr "Øv på tallord i akkusativ."
 
-#: univ_drill/views.py:498
+#: univ_drill/views.py:506
 msgid "Practise numerals in comitative"
 msgstr "Øv på tallord i komitativ."
 
-#: univ_drill/views.py:499
+#: univ_drill/views.py:507
 msgid "Practise numerals in essive"
 msgstr "Øv på tallord i essiv."
 
-#: univ_drill/views.py:500
+#: univ_drill/views.py:508
 msgid "Practise numerals in genitive"
 msgstr "Øv på tallord i genitiv."
 
-#: univ_drill/views.py:501
+#: univ_drill/views.py:509
 msgid "Practise numerals in plural"
 msgstr "Øv på tallord i flertall."
 
-#: univ_drill/views.py:502
+#: univ_drill/views.py:510
 msgid "Practise numerals in locative"
 msgstr "Øv på tallord i lokativ."
 
-#: univ_drill/views.py:503
+#: univ_drill/views.py:511
 msgid "Practise collective numerals"
 msgstr "Øv på samlingstall."
 
-#: univ_drill/views.py:504
+#: univ_drill/views.py:512
 msgid "Practise ordinal numbers"
 msgstr "Øv på ordenstall."
 
-#: univ_drill/views.py:505
+#: univ_drill/views.py:513
 msgid "Practise ordinal numerals in illative"
 msgstr "Øv på ordenstall i illativ."
 
-#: univ_drill/views.py:506
+#: univ_drill/views.py:514
 msgid "Practise ordinal numerals in accusative"
 msgstr "Øv på ordenstall i akkusativ."
 
-#: univ_drill/views.py:507
+#: univ_drill/views.py:515
 msgid "Practise ordinal numerals in comitative"
 msgstr "Øv på ordenstall i komitativ."
 
-#: univ_drill/views.py:508
+#: univ_drill/views.py:516
 msgid "Practise ordinal numerals in essive"
 msgstr "Øv på ordenstall i essiv."
 
-#: univ_drill/views.py:509
+#: univ_drill/views.py:517
 msgid "Practise ordinal numerals in genitive"
 msgstr "Øv på ordenstall i genitiv."
 
-#: univ_drill/views.py:510
+#: univ_drill/views.py:518
 msgid "Practise ordinal numerals in plural"
 msgstr "Øv på ordenstall i flertall."
 
-#: univ_drill/views.py:511
+#: univ_drill/views.py:519
 msgid "Practise ordinal numerals in locative"
 msgstr "Øv på ordenstall i lokativ."
 
-#: univ_drill/views.py:512
+#: univ_drill/views.py:520
 msgid "Practise collective numerals in illative"
 msgstr "Øv på samlingstall i illativ."
 
-#: univ_drill/views.py:513
+#: univ_drill/views.py:521
 msgid "Practise collective numerals in accusative"
 msgstr "Øv på samlingstall i akkusativ."
 
-#: univ_drill/views.py:514
+#: univ_drill/views.py:522
 msgid "Practise collective numerals in comitative"
 msgstr "Øv på samlingstall i komitativ."
 
-#: univ_drill/views.py:515
+#: univ_drill/views.py:523
 msgid "Practise collective numerals in essive"
 msgstr "Øv på samlingstall i essiv."
 
-#: univ_drill/views.py:516
+#: univ_drill/views.py:524
 msgid "Practise collective numerals in genitive"
 msgstr "Øv på samlingstall i genitiv."
 
-#: univ_drill/views.py:517
+#: univ_drill/views.py:525
 msgid "Practise collective numerals in plural"
 msgstr "Øv på samlingstall i flertall."
 
-#: univ_drill/views.py:518
+#: univ_drill/views.py:526
 msgid "Practise collective numerals in locative"
 msgstr "Øv på tallord i lokativ."
 
-#: univ_drill/views.py:519 univ_drill/views.py:526
+#: univ_drill/views.py:527 univ_drill/views.py:534
 msgid "Practise present"
 msgstr "Øv på presens."
 
-#: univ_drill/views.py:520 univ_drill/views.py:527
+#: univ_drill/views.py:528 univ_drill/views.py:535
 msgid "Practise past"
 msgstr "Øv på preteritum."
 
-#: univ_drill/views.py:521 univ_drill/views.py:528
+#: univ_drill/views.py:529 univ_drill/views.py:536
 msgid "Practise perfect"
 msgstr "Øv på perfektum."
 
-#: univ_drill/views.py:522 univ_drill/views.py:529
+#: univ_drill/views.py:530 univ_drill/views.py:537
 msgid "Practise gerund"
 msgstr "Øv på gerundium."
 
-#: univ_drill/views.py:523 univ_drill/views.py:530
+#: univ_drill/views.py:531 univ_drill/views.py:538
 msgid "Practise conditional"
 msgstr "Øv på kondisjonalis."
 
-#: univ_drill/views.py:524 univ_drill/views.py:531
+#: univ_drill/views.py:532 univ_drill/views.py:539
 msgid "Practise imperative"
 msgstr "Øv på imperativ."
 
-#: univ_drill/views.py:525 univ_drill/views.py:532
+#: univ_drill/views.py:533 univ_drill/views.py:540
 msgid "Practise potential"
 msgstr "Øv på potensialis."
 
-#: univ_drill/views.py:533
+#: univ_drill/views.py:541
 msgid "Practise "
 msgstr "Øv på "
 
-#: univ_drill/views.py:534
+#: univ_drill/views.py:542
 msgid "Practise reciprocative pronouns"
 msgstr "Øv på predikativformer i positiv."
 
-#: univ_drill/views.py:535
+#: univ_drill/views.py:543
 msgid "Practise reflexive pronouns"
 msgstr "Øv på refleksive pronomen."
 
-#: univ_drill/views.py:536
+#: univ_drill/views.py:544
 msgid "Practise demonstrative pronouns"
 msgstr "Øv på demonstrative pronomen."
 
@@ -1826,7 +1613,11 @@ msgstr "Oversett ordene. Du kan velge sett eller bok, ikke begge."
 
 #: univ_drill/templates/leksa.html:44
 msgid "Quizz"
-msgstr ""
+msgstr "Kviss"
+
+#: univ_drill/templates/leksa.html:53
+msgid "Set"
+msgstr "Sett"
 
 #: univ_drill/templates/leksa.html:55 univ_drill/templates/leksa_place.html:27
 msgid "Select the language pair"
@@ -2029,11 +1820,11 @@ msgstr "Svar"
 
 #: univ_drill/templates/vasta.html:16 univ_drill/templates/vasta.html.py:21
 msgid "Vasta"
-msgstr ""
+msgstr "Vasta"
 
 #: univ_drill/templates/vasta.html:17
 msgid "VastaS"
-msgstr ""
+msgstr "VastaS"
 
 #: univ_drill/templates/vasta.html:23
 msgid ""
@@ -2172,6 +1963,116 @@ msgstr "Send melding"
 #: univ_feedback/templates/thankyou.html:6
 msgid "Thank you for you feedback!"
 msgstr "Takk for tilbakemeldinga di!"
+
+#~ msgid "inessive"
+#~ msgstr "inessiv"
+
+#~ msgid "elative"
+#~ msgstr "elativ"
+
+#~ msgid "Food/drink"
+#~ msgstr "Mat/drikke"
+
+#~ msgid "Animal"
+#~ msgstr "Dyr"
+
+#~ msgid "Object"
+#~ msgstr "Ting"
+
+#~ msgid "Concretes"
+#~ msgstr "Konkret"
+
+#~ msgid "Body"
+#~ msgstr "Kropp"
+
+#~ msgid "Clothes"
+#~ msgstr "Klær"
+
+#~ msgid "Buildings/rooms"
+#~ msgstr "Bygninger/rom"
+
+#~ msgid "Nature words"
+#~ msgstr "Natur"
+
+#~ msgid "Leisuretime/at home"
+#~ msgstr "Fritid/hjemme"
+
+#~ msgid "Places"
+#~ msgstr "Steder/reise"
+
+#~ msgid "Abstracts"
+#~ msgstr "Abstrakte ord"
+
+#~ msgid "Work/economy/tools"
+#~ msgstr "Arbeid/økonomi/verktøy"
+
+#~ msgid "Timeexpressions"
+#~ msgstr "Tidsuttrykk"
+
+#~ msgid "Literature/text"
+#~ msgstr "Litteratur/tekst"
+
+#~ msgid "School/education"
+#~ msgstr "Skole/utdanning"
+
+#~ msgid "Reindeerherding"
+#~ msgstr "Reindrift"
+
+#~ msgid "Traditional"
+#~ msgstr "Tradisjonsord"
+
+#~ msgid "South Sami to Norwegian"
+#~ msgstr "Sørsamisk til norsk"
+
+#~ msgid "Norwegian to South Sami"
+#~ msgstr "Norsk til sørsamisk"
+
+#~ msgid "Language pair"
+#~ msgstr "Språkpar"
+
+#~ msgid "Try again!"
+#~ msgstr "Prøv igjen!"
+
+#~ msgid "No possible answers."
+#~ msgstr "Ingen mulige svar."
+
+#~ msgid "No answer given."
+#~ msgstr "Du har ikke gitt noe svar."
+
+#~ msgid "OAHPA is under development and may not function all the time."
+#~ msgstr "OAHPA er under utvikling og vil kanskje ikke fungere hele tida."
+
+#~ msgid "Southern Sami dialect"
+#~ msgstr "Språkvariant"
+
+#~ msgid "SH"
+#~ msgstr "SH"
+
+#~ msgid "L"
+#~ msgstr "L"
+
+#~ msgid ""
+#~ "Sma-Oahpa is a small demo of learning exercises for learners of South "
+#~ "Saami language. One can currently choose between South Saami&hArr;"
+#~ "Norwegian, with more language pairs to come soon."
+#~ msgstr ""
+#~ "Sma-Oahpa er et programm for å lære sørsamisk. Man kan velge ulike  "
+#~ "arbeide mellom sørsamisk og norsk eller svensk, men det vil komme flere "
+#~ "språkpar etterhvert."
+
+#~ msgid "South Sámi"
+#~ msgstr "Nordsamisk"
+
+#~ msgid "grammar"
+#~ msgstr "Grammatikk"
+
+#~ msgid ""
+#~ "Copyright 2011 Universitetet i Troms&oslash; og Aajege Saemien g&iuml;"
+#~ "ele- j&iuml;h maahtoejarnge"
+#~ msgstr "Copyright 2012 Universitetet i Tromsø"
+
+#~ msgid "Welcome, "
+#~ msgstr "Velkommen,"
 
 #~ msgid "Practise ordinal numerals"
 #~ msgstr "Øv på ordenstall."
