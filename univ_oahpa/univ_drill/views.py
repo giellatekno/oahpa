@@ -213,6 +213,10 @@ class Gameview(object):
 			self.settings['language'] = request.session['django_language']
 		else:
 			self.settings['language'] = request.COOKIES.get("django_language", None)  # added by Heli
+			if not self.settings['language']:
+				self.settings['language'] = request.LANGUAGE_CODE
+				request.session['django_language'] = request.LANGUAGE_CODE
+
 		# TODO: should probably be moved out 
 		# to individual game object self.syll_settings(settings_form)
 
