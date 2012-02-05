@@ -206,9 +206,13 @@ class Gameview(object):
 		if request.session.has_key('dialect'):
 			self.settings['dialect'] = request.session['dialect']
 
-		if hasattr(request, 'LANGUAGE_CODE'):
-			self.settings['language'] = request.LANGUAGE_CODE
+		#if hasattr(request, 'LANGUAGE_CODE'):
+			#self.settings['language'] = request.LANGUAGE_CODE
 
+		if request.session.has_key('django_language'):
+			self.settings['language'] = request.session['django_language']
+		else:
+			self.settings['language'] = request.COOKIES.get("django_language", None)  # added by Heli
 		# TODO: should probably be moved out 
 		# to individual game object self.syll_settings(settings_form)
 
