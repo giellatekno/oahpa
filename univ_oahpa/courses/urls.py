@@ -20,9 +20,10 @@ urlpatterns = patterns('django.contrib.auth.views',
 	(r'^cookie_logout/$', cookie_logout),
 )
 
-from views import courses_main
+from views import courses_main, instructor_student_detail
 
 urlpatterns += patterns('univ_oahpa.courses.views',
+	(r'^(?P<uid>\d+)/$', instructor_student_detail),
 	(r'^$', courses_main),
 )
 

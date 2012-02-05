@@ -155,4 +155,21 @@ def courses_main(request):
 							  c, 
 							  context_instance=RequestContext(request))
 
+from django.contrib.auth.decorators import user_passes_test
+
+def instructor_group(user):
+	if user.get_profile().is_instructor:
+		return True
+	else:
+		return False
+	
+@user_passes_test(instructor_group)
+def instructor_student_detail(request, uid):
+	template = 'courses/instructor_student_detail.html'
+	c = {}
+	c['student'] = UserProfile.objects.get(user__id=uid)
+	return render_to_response(template,
+							  c,
+							  context_instance=RequestContext(request))
+
 
