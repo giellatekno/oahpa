@@ -1,5 +1,6 @@
 {% extends 'univ_oahpa.html' %}
 {% load i18n %}
+{% load cache %}
 {% get_current_language as LANGUAGE_CODE %}
 
 {% comment %}
@@ -20,26 +21,28 @@ TODO: internationalization strings
 		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
 
 		<p>{% trans "You are a course instructor." %}</p>
+		{# cache 300 courses user.username #}
 		{% for course in courses %}
 		<div class="instructor_course">
 			<h3>{{ course.identifier }} - {{ course.name }}</h3>
-			<a href="{{ course.site_link }}">Site.uit.no</a>
+			<p>{% trans "Course content is available online" %}: <a href="{{ course.site_link }}">{{ course.site_link }}</a></p>
 
 			<br />
 			<ul class="course_students">
 			{% for student in course.students.all %}
 			<li><strong class="student_name">{{ student.user.username }}</strong>
 				<ul class="row">
-					<li>{% trans "login count" %}: {{ student.login_count }}</li>
 					<li>{% trans "last login" %}: {{ student.last_login }}</li>
+					<li>{% trans "login count" %}: {{ student.login_count }}</li>
 				</ul>
 				{% if student.grades %}
 				<table class="grades">
 				<tr>
-					<th>{% trans "exercise type" %}</th>
-					<th>{% trans "average score" %}</th>
-					<th>{% trans "minimum score" %}</th>
-					<th>{% trans "maximum score" %}</th>
+					{# TODO: padding here is not working #}
+					<th>{% trans "exercise" %}&nbsp;</th>
+					<th>{% trans "average" %}&nbsp;</th>
+					<th>{% trans "minimum" %}&nbsp;</th>
+					<th>{% trans "maximum" %}&nbsp;</th>
 					<th>{% trans "game count" %}</th>
 				</tr>
 				{% for grade in student.grades|dictsort:"game_name" %}
@@ -52,12 +55,14 @@ TODO: internationalization strings
 				</tr>
 				{% endfor %}
 				</table>
+				<p><a href="/univ_oahpa/courses/{{ student.user.id }}">{% trans "More information about this student" %}.</a></p>
 				{% endif %}
 			</li>
 			{% endfor %}
 			</ul>
 		</div>
 		{% endfor %}
+		{# endcache #}
 
 	</div>
 
