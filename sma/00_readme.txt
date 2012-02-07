@@ -1,6 +1,6 @@
 This directory contains the files relevant to the smaoahpa application.
  - src: the source files with the lexicon smaX (i.e., smanob, smaswe, smaeng)
- - Xsma: the reverted files from smaX to Xsma 
+ - Xsma: the reverted files from smaX to Xsma
 
 Caveat: the reverted files are already frozen, i.e., 
 	they are ready for extension for synonyms and the like.
