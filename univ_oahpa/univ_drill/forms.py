@@ -2210,8 +2210,8 @@ def cealkka_is_correct(self,question,qwords,language,question_id=None):
     lookup2cg = " | lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /usr/local/bin/preprocess "
-    dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    # dis_bin = "../sme/src/sme-ped.cg3" # in Heli's machine TODO: add to settings.py
+    # dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
+    dis_bin = "../sme/src/sme-ped.cg3" # in Heli's machine TODO: add to settings.py
     
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
     
@@ -2226,7 +2226,7 @@ def cealkka_is_correct(self,question,qwords,language,question_id=None):
     qtext = qtext.rstrip('.!?,')
     
     host = 'localhost'
-    port = 9000  # was: 9000, TODO - add to settings.py
+    port = 8000  # was: 9000, TODO - add to settings.py
     size = 1024
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -2423,23 +2423,78 @@ class CealkkaQuestion(OahpaQuestion):
     select_words = select_words
     cealkka_is_correct = cealkka_is_correct
         
-    def __init__(self, question, qwords, language, userans_val, correct_val, *args, **kwargs):                 
+    def __init__(self, question, qanswer, qwords, awords, dialect, language, userans_val, correct_val, *args, **kwargs):                 
 
         self.init_variables("", userans_val, [])
-        
+        self.dialect = dialect
+        qtype=question.qtype
+        atext = qanswer.string # added get() to fix RelatedManager error
+        # print atext
+        # task = qanswer.get().task # there is no task attribute in VastaS answer elements
+	#if not task:
+	#	error_msg = u"not task: %s %s (%s)" % (atext, question.qid, question.qatype)			
+	#	raise Http404(error_msg)
+
         question_widget = forms.HiddenInput(attrs={'value' : question.id})
+        answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})  #was: qanswer.id
 
         super(CealkkaQuestion, self).__init__(*args, **kwargs)
 
         maxlength=50
         answer_size=50
+        self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
+        
+	self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
+
         self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                 widget=forms.TextInput(\
             attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
 
-        self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
+        	   # Select words for the answer
+        selected_awords = self.select_words(qwords, awords)
+	       # print selected_awords
+	       
+        astring = ""
+        
+        awords = []
+        for asynt in atext.split():	   # det här har jag (Heli) hittat på
+            word = selected_awords[asynt]
+            if word.has_key('fullform') and word['fullform']:
+                astring=astring+" "+force_unicode(word['fullform'][0])
+                word['fullform'] = force_unicode(word['fullform'][0])
+                awords.append(word)
 
+        # print astring
+        
+        #self.answertext1=astring
+        #print self.answertext1
+        self.awords=awords
+        print self.awords
+
+        relaxed = []
+        form_list=[]
+		
+	#if not selected_awords.has_key('task'):
+	#	raise Http404(task + " " + atext + " " + str(qanswer.id))	     #if len(selected_awords[task]['fullform'])>0:
+	#	for f in selected_awords[task]['fullform']:
+	#		self.correct_anslist.append(force_unicode(f))
+			
+	#	accepted = sum([relax(force_unicode(item)) for item in self.correct_anslist], [])
+	#	self.relaxings = [item for item in accepted if item not in self.correct_anslist]
+	#	self.correct_anslist.extend(self.relaxings)
+	#log_w = Word.objects.get(id=selected_awords[syntax]['word'])  # was: awords[task]['word']
+	#w_str = log_w.lemma
+	#w_pos = log_w.pos
+	#t_str = Tag.objects.get(id=selected_awords['tag']).string
+	#log_name = "vastaS" + w_pos
+	#log_value = '%s+%s' % (w_str, t_str)
+	#self.is_correct(log_name, log_value)
+	#self.correct_ans = self.correct_anslist[0]
+
+	#self.correct_anslist = [force_unicode(item) for item in accepted] 
+        
         self.qattrs= {}
+        self.aattrs = {}
         for syntax in qwords.keys():
             qword = qwords[syntax]
             if qword.has_key('word'):
@@ -2448,9 +2503,18 @@ class CealkkaQuestion(OahpaQuestion):
                 self.qattrs['question_tag_' + syntax] = qword['tag']
             if qword.has_key('fullform') and qword['fullform']:
                 self.qattrs['question_fullform_' + syntax] = qword['fullform'][0]
-
+			
+	for syntax in selected_awords.keys():
+		if selected_awords[syntax].has_key('word'):
+			self.aattrs['answer_word_' + syntax] = selected_awords[syntax]['word']
+		if selected_awords[syntax].has_key('tag'):
+			self.aattrs['answer_tag_' + syntax] = selected_awords[syntax]['tag']
+		if selected_awords[syntax].has_key('fullform') and len(selected_awords[syntax]['fullform']) == 1:
+			self.aattrs['answer_fullform_' + syntax] = selected_awords[syntax]['fullform'][0]
+				
         # Forms question string and answer string out of grammatical elements and other strings.
         qstring = ""
+        astring= ""
 
         # Format question string
         qtext = question.string
@@ -2472,10 +2536,63 @@ class CealkkaQuestion(OahpaQuestion):
         qstring = qstring + "?"
         self.question=qstring
 
-        # In qagame, all words are considered as answers.
+        # TODO: Add fetching and displaying the answer with some words in primary form and different color. 
+        try:
+		answer_word = selected_awords['word']  # deleted [task]
+	except KeyError:
+		answer_word = False
+		# print 'fail: ', question.qid
+		# print ' task: ', task
+		self.error = 'error'
+		self.lemma = 'error in answer words: ' + question.qid
+		return
+	# self.lemma = question.qid
+	answer_tag = selected_awords['tag'] # deleted [task]
+	selected_awords['fullform'][0] = 'Q' # deleted [task]
+		
+	# Get lemma for contextual morfa
+	# lemma is displayed as the 'task' word in parentheses after the question
+	answer_word_el = Word.objects.get(id=answer_word)
+	answer_tag_el = Tag.objects.get(id=answer_tag)
+	self.lemma = answer_word_el.lemma
+
+        if answer_word_el.pos == 'V':
+		self.wordclass = answer_word_el.wordclass
+
+	# Format answer string
+	for w in atext.split():
+		if w.count("(") > 0:
+			continue
+			
+		if not selected_awords.has_key(w) or not selected_awords[w].has_key('fullform'):
+			astring = astring + " " + force_unicode(w)
+		else:
+			astring = astring + " " + force_unicode(selected_awords[w]['fullform'][0])
+					
+        # Remove leading whitespace and capitalize.
+	astring = astring.lstrip()
+        astring = astring[0].capitalize() + astring[1:]
+		
+	# Add dot if the last word is not the open question.
+	if astring.count("!")==0 and not astring[-1]=="Q":
+		astring = astring + "."
+	self.question=qstring
+	
+
+	# Format answer strings for context
+	#q_count = astring.count('Q')
+	#if q_count > 0:
+	#	astrings = astring.split('Q')
+	#	if astrings[0]:
+	#		self.answertext1 = astrings[0]
+	#	if astrings[1]:
+	#		self.answertext2 = astrings[1]
+
+
         self.gametype="cealk"
         self.messages, jee, joo  = self.cealkka_is_correct(qstring.encode('utf-8'), qwords, language)
         
         # set correct and error values
         if correct_val == "correct":
             self.error="correct"
+            

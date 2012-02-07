@@ -8,7 +8,7 @@ from models import *
 from forms import *
 from game import Game
 
-import univ_oahpa.settings
+import univ_oahpa.settings as settings
 
 try:
 	DEFAULT_DIALECT = settings.DEFAULT_DIALECT
@@ -34,7 +34,7 @@ class CealkkaGame(Game):
 		# Default tense and mood for testing
 		self.tense = "Prs"
 		self.mood = "Ind"
-		self.gametype = "cealk" # why morfa? it is "qa"
+		self.gametype = "cealk" 
 				
 		# TODO: check this in smeoahpa, possible source of error.
 		# Values for pairs QPN-APN
@@ -751,8 +751,9 @@ class CealkkaGame(Game):
 	def get_question_cealkka(self,db_info,qtype):
 
 		qwords = {}
-		# if self.settings.has_key('level'): level=int(self.settings['level'])
-		# else: # default level was set to 'all', but I could not find where
+		#if self.settings.has_key('level'): 
+		 # level=int(self.settings['level'])
+		#else: # default level was set to 'all', but I could not find where
 		level='1'
 		
 		q_count = Question.objects.filter(gametype="cealk", level__lte=level).count()
@@ -765,70 +766,12 @@ class CealkkaGame(Game):
 		db_info['qwords'] = qwords
 
 		db_info['question_id'] = question.id
-		return db_info
-
-	######## Morfa questions
-	def get_question_morfa(self,db_info,qtype):
-		qwords = {}
-		
-		if self.settings.has_key('pos'):
-			pos=self.settings['pos']
-
-		# Get qtype from settings.
-		if not qtype:
-			if pos == "N":
-				qtype = self.settings['case_context']
-			if pos == "V":
-				qtype=self.settings['vtype_context']
-			if pos == "Num":
-				qtype=self.settings['num_context']
-			if pos == "A":
-				qtype=self.settings['adj_context']
-			if pos == "Pron":
-				qtype=self.settings['pron_context']
-
-		books=None
-		if self.settings.has_key('book'): books=self.settings['book']
-		# TODO: Debugging. 
-		# qtype = 'N-ILL'
-		# MIX
-		if books:
-			q_count=Question.objects.filter(Q(qtype__contains=qtype) & \
-											Q(gametype="morfa") & \
-											(Q(source__name__in=books) | Q(source__name="all" ))).count()
-		else:
-			q_count=Question.objects.filter(Q(qtype__contains=qtype) & Q(gametype="morfa")).count()
-		
-		### Generate question. If it fails, select another one.
-		max = 20
-		i=0
-		while not qwords and i<max:
-			i = i+1
-			if books:	
-				question = Question.objects.filter(Q(qtype__contains=qtype) & \
-												   Q(gametype="morfa") & \
-												   (Q(source__name__in=books) | Q(source__name="all" )))
-			else:
-				question = Question.objects.filter(Q(qtype__contains=qtype) & Q(gametype="morfa"))
-			if question.count() > 0:
-				question = question.order_by('?')[0]
-			else:
-				errormsg = 'Database may not be properly loaded. No questions found for query.'
-				errormsg += '\n qtype: %s' % repr(qtype)
-				raise Http404(errormsg)
-			qwords = None
-			qwords = self.generate_question(question, qtype)
-
-		db_info['qwords'] = qwords
-		db_info['question_id'] = question.id
 		return db_info,question
 
-
-	########### Morfa answers
+	########### Cealkka answers (like morfa)
 	def get_answer_morfa(self,db_info,question):
 		
-		# Select answer using the id from the interface.
-		# Otherwise select answer that is related to the question.
+		# Select answer that is related to the question.
 		awords = {}
 		if db_info.has_key('answer_id'):
 			answer=Question.objects.get(id=db_info['answer_id'])
@@ -837,7 +780,7 @@ class CealkkaGame(Game):
 
 		# Generate the set of possible answers if they are not coming from the interface
 		# Or if the gametype is qa.
-		if db_info.has_key('answer_id') and self.settings['gametype'] == 'context':
+		if db_info.has_key('answer_id') and self.settings['gametype'] == 'cealk':
 			awords=db_info['awords']
 		else:
 			# Generate the set of possible answers
@@ -900,7 +843,9 @@ class CealkkaGame(Game):
 
 			# If no default information select question
 			else:
-				db_info = self.get_question_cealkka(db_info,qtype)
+				db_info,question = self.get_question_cealkka(db_info,qtype)
+				
+		db_info = self.get_answer_morfa(db_info,question)
 
 		return db_info
 
@@ -917,16 +862,11 @@ class CealkkaGame(Game):
 		language = "nob"
 		if self.settings.has_key('language'):
 			language = self.settings['language']
-		#if not self.gametype == "qa":
-			#answer = Question.objects.get(Q(id=db_info['answer_id']))
-			# print answer.string
-			#form = (CealkkaQuestion(question, answer, \
-				#						 db_info['qwords'], db_info['awords'], dialect, language,\
-					#					 db_info['userans'], db_info['correct'], data, prefix=n))
-		#else:
-		form = (CealkkaQuestion(question, \
-								  db_info['qwords'], language, \
-								  db_info['userans'], db_info['correct'], data, prefix=n))
+
+		answer = Question.objects.get(Q(id=db_info['answer_id']))
+		#print answer.string
+
+		form = (CealkkaQuestion(question, answer, db_info['qwords'], db_info['awords'], dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))  # added the answer part
 			
 		#print "awords:", db_info['awords']
 		#print "awords ...................."

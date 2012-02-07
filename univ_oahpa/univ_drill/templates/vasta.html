@@ -14,7 +14,7 @@
 {% block navbar %}
 <ul class="sidelist"> 
 {% ifequal settings.gametype "vasta" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta %}">{% trans 'Vasta' %}</a></li>
-{% ifequal settings.gametype "cealk" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url cealkka %}">{% trans 'VastaS' %} <span style="font-color:#FF0000; font-size:70%">(under construction)</span></a></li>
+{% ifequal settings.gametype "cealk" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url cealkka %}">{% trans 'VastaS' %}</a><span style="font-size:70%; color:#FF3300">&nbsp;(under construction)</span></li>
 </ul>
 {% endblock %}
 
@@ -41,14 +41,30 @@
 </tr>
 </table>
 <input type="submit" name="settings" value="{% trans "New set" %}" />
-<input type="hidden" name="gametype" value="qa" />
+<!----<input type="hidden" name="gametype" value="qa" /> --->
 
 
 {% endblock %}
 
 {% block question %}
-
+<tr>
 <td><br/>{{ form.question }}</td>
+</tr>
+<tr>
+</br>
+    {% for w in form.awords %}
+        {% if w.tag %}
+            <span style="color:#0000FF">{{ w.fullform }}</span>
+        {% else %}
+            {{ w.fullform }}
+        {% endif %}
+        {% if forloop.last %}
+            &#46;
+        {% endif %}
+    {% endfor %}
+
+</tr>
+</br>
 {% endblock %}
 
 {% block submit %}

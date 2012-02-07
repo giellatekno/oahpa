@@ -754,7 +754,7 @@ class Question(models.Model):
 								 blank=True, 
 								 null=True, 
 								 related_name='answer_set')
-	gametype = models.CharField(max_length=5)
+	gametype = models.CharField(max_length=7)
 	source = models.ManyToManyField(Source)
 	def __unicode__(self):
 		return self.qid + ': ' + self.string
@@ -773,7 +773,7 @@ class QElement(models.Model):
 	question = models.ForeignKey(Question, null=True)
 	syntax = models.CharField(max_length=50)
 	identifier = models.CharField(max_length=20)
-	gametype = models.CharField(max_length=5)
+	gametype = models.CharField(max_length=7)
 	agreement = models.ForeignKey('self', 
 								  blank=True,
 								  null=True,
