@@ -206,16 +206,13 @@ class Gameview(object):
 		if request.session.has_key('dialect'):
 			self.settings['dialect'] = request.session['dialect']
 
-		#if hasattr(request, 'LANGUAGE_CODE'):
-			#self.settings['language'] = request.LANGUAGE_CODE
-
 		if request.session.has_key('django_language'):
 			self.settings['language'] = request.session['django_language']
 		else:
-			self.settings['language'] = request.COOKIES.get("django_language", None)  # added by Heli
-			if not self.settings['language']:
-				self.settings['language'] = request.LANGUAGE_CODE
-				request.session['django_language'] = request.LANGUAGE_CODE
+			self.settings['language'] = request.COOKIES.get("django_language", None)
+				
+		#if hasattr(request, 'LANGUAGE_CODE'):
+		#	self.settings['language'] = request.LANGUAGE_CODE
 
 		# TODO: should probably be moved out 
 		# to individual game object self.syll_settings(settings_form)
@@ -850,6 +847,7 @@ def vasta(request):
 
 	vastagame = Vastaview()
 	vastagame.init_settings()
+	vastagame.settings['gametype'] = "qa"
 
 	c = vastagame.create_vastagame(request)
 	return render_to_response('vasta.html', c, context_instance=RequestContext(request))
@@ -957,6 +955,7 @@ def cealkka(request):
 
 	cealkkagame = Cealkkaview()
 	cealkkagame.init_settings()
+	cealkkagame.settings['gametype'] = "cealk"
 
 	c = cealkkagame.create_cealkkagame(request)
 	return render_to_response('vasta.html', c, context_instance=RequestContext(request))
