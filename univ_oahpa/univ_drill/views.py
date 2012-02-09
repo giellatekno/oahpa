@@ -2,7 +2,7 @@ from django.template import Context, RequestContext, loader
 from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from univ_oahpa.conf.tools import switch_language_code
 
@@ -210,6 +210,10 @@ class Gameview(object):
 			self.settings['language'] = request.session['django_language']
 		else:
 			self.settings['language'] = request.COOKIES.get("django_language", None)
+			if not self.settings['language']:
+				self.settings['language'] = request.LANGUAGE_CODE
+				request.session['django_language'] = request.LANGUAGE_CODE
+				
 				
 		#if hasattr(request, 'LANGUAGE_CODE'):
 		#	self.settings['language'] = request.LANGUAGE_CODE
@@ -232,6 +236,7 @@ class Gameview(object):
 										initial_kwargs=init_kwargs)
 
 		# Apply whatever additional settings need to be made
+
 		self.additional_settings(settings_form)
 
 		# Create the game class. If the game is new, self.settings will not
