@@ -2196,7 +2196,7 @@ class SahkaQuestion(OahpaQuestion):
 ###########
 ## Cealkka
 ###########
-def cealkka_is_correct(self,question,qwords,language,question_id=None):
+def cealkka_is_correct(self,question,qwords,language,question_id):  #was: question_id=None
     """
     Analyzes the answer and returns a message.
     """
@@ -2205,13 +2205,14 @@ def cealkka_is_correct(self,question,qwords,language,question_id=None):
 
     noanalysis=False
 
-    #fstdir = "/opt/smi/sme/bin"
-    fstdir = settings.FST_DIRECTORY
+    fstdir = "/opt/smi/sme/bin"
+    #fstdir = settings.FST_DIRECTORY
     lookup2cg = " | lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
-    preprocess = " | /usr/local/bin/preprocess "
-    # dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    dis_bin = "../sme/src/sme-ped.cg3" # in Heli's machine TODO: add to settings.py
+    preprocess = " | /usr/local/bin/preprocess " # on victorio
+    #preprocess = " | /Users/mslm/main/gt/script/preprocess " # on Heli's machine
+    dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
+    #dis_bin = "../sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
     
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
     
@@ -2219,6 +2220,7 @@ def cealkka_is_correct(self,question,qwords,language,question_id=None):
     answer = self.userans.rstrip()
     answer = answer.lstrip()
     answer = answer.rstrip('.!?,')
+    print answer
 
     self.error = "error"
                 
@@ -2226,7 +2228,7 @@ def cealkka_is_correct(self,question,qwords,language,question_id=None):
     qtext = qtext.rstrip('.!?,')
     
     host = 'localhost'
-    port = 8000  # was: 9000, TODO - add to settings.py
+    port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -2237,48 +2239,49 @@ def cealkka_is_correct(self,question,qwords,language,question_id=None):
         analysis = ""
         data_lookup = "echo \"" + qtext + "\"" + preprocess
         words = os.popen(data_lookup).readlines()
-        for w in words:
+        #print words
+        #print qwords
+        for qword in qwords:
+            w=""
             cohort=""
-            if qwords and qwords.has_key(w):
-                qword = qwords[w]
-                if qword.has_key('word'):
-                    if qword.has_key('fullform') and qword['fullform']:
-                        cohort = cohort + "\"<" + qword['fullform'][0].encode('utf-8') + ">\"\n"
-                        lemma = Word.objects.filter(id=qword['word'])[0].lemma
-                        cohort = cohort + "\t\"" + lemma + "\""
-                    if qword.has_key('tag') and qword['tag']:
-                        string = Tag.objects.filter(id=qword['tag'])[0].string
-                        tag = string.replace("+"," ")
-                        cohort = cohort + " " + tag + "\n"
-                else:
-                    w=w.lstrip().rstrip()
-                    s.send(w)
-                    cohort = s.recv(size)
+            print qword
+            if qword.has_key('word'):
+                if qword.has_key('fullform') and qword['fullform']:
+                    cohort = cohort + "\"<" + qword['fullform'].encode('utf-8') + ">\"\n"
+                    lemma = Word.objects.filter(id=qword['word'])[0].lemma
+                    cohort = cohort + "\t\"" + lemma + "\""
+                if qword.has_key('tag') and qword['tag']:
+                    string = Tag.objects.filter(id=qword['tag'])[0].string
+                    tag = string.replace("+"," ")
+                    cohort = cohort + " " + tag + "\n"
             else:
+                w = qword['fullform']  # Words that are given. (Mun etc.)
                 w=w.lstrip().rstrip()
+                # cohort = cohort + "\"<" + w + ">\"\n" + "\t\"" + w.lower() + "\"" + " Pron Pers Sg1 Nom" + "\n"  # just for testing
                 s.send(w)
-                cohort = s.recv(size)
 
-            if not cohort or cohort == w:
+           if not cohort or cohort == w:
                 cohort = w + "\n"
             if cohort=="error":
                 raise Http500
                 
             analysis = analysis + cohort
-
-        if self.gametype=="sahka":
-            analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
-        elif self.gametype=="cealk":
+        
+        #print analysis
+        if self.gametype=="cealk":
             analysis = analysis + "\"<^qdl_id>\"\n\t\"^cealkka\" QDL " + question_id +"\n"
         else:
             analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
+        #print analysis
         ans_cohort=""
         data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
         word = os.popen(data_lookup).readlines()
+        #print word
         analyzed=""
         for c in word:
             c=c.strip()
+            #print c
             s.send(c)
             analyzed = analyzed + s.recv(size)
             analysis3=c + analyzed + c
@@ -2428,7 +2431,7 @@ class CealkkaQuestion(OahpaQuestion):
         self.init_variables("", userans_val, [])
         self.dialect = dialect
         qtype=question.qtype
-        atext = qanswer.string # added get() to fix RelatedManager error
+        atext = qanswer.string 
         # print atext
         # task = qanswer.get().task # there is no task attribute in VastaS answer elements
 	#if not task:
@@ -2458,18 +2461,24 @@ class CealkkaQuestion(OahpaQuestion):
         
         awords = []
         for asynt in atext.split():	   # det här har jag (Heli) hittat på
-            word = selected_awords[asynt]
-            if word.has_key('fullform') and word['fullform']:
-                astring=astring+" "+force_unicode(word['fullform'][0])
-                word['fullform'] = force_unicode(word['fullform'][0])
-                awords.append(word)
+            if asynt.isupper():  # added because of keyerror
+                word = selected_awords[asynt]
+                if word.has_key('fullform') and word['fullform']:                    
+                    word['fullform'] = force_unicode(word['fullform'][0])
+            else:
+                word = {}
+                word['fullform'] = asynt
+                word['tag'] = ""
+            awords.append(word)
+            astring=astring+" "+word['fullform']
 
-        # print astring
+        astring = astring.lstrip()
+        #print astring
         
         #self.answertext1=astring
         #print self.answertext1
         self.awords=awords
-        print self.awords
+        #print self.awords
 
         relaxed = []
         form_list=[]
@@ -2514,7 +2523,7 @@ class CealkkaQuestion(OahpaQuestion):
 				
         # Forms question string and answer string out of grammatical elements and other strings.
         qstring = ""
-        astring= ""
+       # astring= ""
 
         # Format question string
         qtext = question.string
@@ -2535,47 +2544,46 @@ class CealkkaQuestion(OahpaQuestion):
 
         qstring = qstring + "?"
         self.question=qstring
-
-        # TODO: Add fetching and displaying the answer with some words in primary form and different color. 
-        try:
-		answer_word = selected_awords['word']  # deleted [task]
-	except KeyError:
-		answer_word = False
+ 
+#        try:
+#		answer_word = selected_awords['word']  # deleted [task]
+#	except KeyError:
+#		answer_word = False
 		# print 'fail: ', question.qid
 		# print ' task: ', task
-		self.error = 'error'
-		self.lemma = 'error in answer words: ' + question.qid
-		return
+#		self.error = 'error'
+#		self.lemma = 'error in answer words: ' + question.qid
+#		return
 	# self.lemma = question.qid
-	answer_tag = selected_awords['tag'] # deleted [task]
-	selected_awords['fullform'][0] = 'Q' # deleted [task]
+#	answer_tag = selected_awords['tag'] # deleted [task]
+#	selected_awords['fullform'][0] = 'Q' # deleted [task]
 		
 	# Get lemma for contextual morfa
 	# lemma is displayed as the 'task' word in parentheses after the question
-	answer_word_el = Word.objects.get(id=answer_word)
-	answer_tag_el = Tag.objects.get(id=answer_tag)
-	self.lemma = answer_word_el.lemma
+#	answer_word_el = Word.objects.get(id=answer_word)
+#	answer_tag_el = Tag.objects.get(id=answer_tag)
+#	self.lemma = answer_word_el.lemma
 
-        if answer_word_el.pos == 'V':
-		self.wordclass = answer_word_el.wordclass
+ #       if answer_word_el.pos == 'V':
+#		self.wordclass = answer_word_el.wordclass
 
 	# Format answer string
-	for w in atext.split():
-		if w.count("(") > 0:
-			continue
+#	for w in atext.split():
+#		if w.count("(") > 0:
+#			continue
 			
-		if not selected_awords.has_key(w) or not selected_awords[w].has_key('fullform'):
-			astring = astring + " " + force_unicode(w)
-		else:
-			astring = astring + " " + force_unicode(selected_awords[w]['fullform'][0])
+#		if not selected_awords.has_key(w) or not selected_awords[w].has_key('fullform'):
+#			astring = astring + " " + force_unicode(w)
+#		else:
+#			astring = astring + " " + force_unicode(selected_awords[w]#['fullform'][0])
 					
         # Remove leading whitespace and capitalize.
-	astring = astring.lstrip()
-        astring = astring[0].capitalize() + astring[1:]
+#	astring = astring.lstrip()
+ #       astring = astring[0].capitalize() + astring[1:]
 		
 	# Add dot if the last word is not the open question.
-	if astring.count("!")==0 and not astring[-1]=="Q":
-		astring = astring + "."
+#	if astring.count("!")==0 and not astring[-1]=="Q":
+#		astring = astring + "."
 	self.question=qstring
 	
 
@@ -2590,7 +2598,7 @@ class CealkkaQuestion(OahpaQuestion):
 
 
         self.gametype="cealk"
-        self.messages, jee, joo  = self.cealkka_is_correct(qstring.encode('utf-8'), qwords, language)
+        self.messages, jee, joo  = self.cealkka_is_correct(astring.encode('utf-8'), awords, language, question.qid)   # was qstring, qwords
         
         # set correct and error values
         if correct_val == "correct":
