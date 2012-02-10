@@ -2220,7 +2220,7 @@ def cealkka_is_correct(self,question,qwords,language,question_id):  #was: questi
     answer = self.userans.rstrip()
     answer = answer.lstrip()
     answer = answer.rstrip('.!?,')
-    print answer
+    #print answer
 
     self.error = "error"
                 
@@ -2246,24 +2246,24 @@ def cealkka_is_correct(self,question,qwords,language,question_id):  #was: questi
             cohort=""
             print qword
             if qword.has_key('word'):
-                if qword.has_key('fullform') and qword['fullform']:
-                    cohort = cohort + "\"<" + qword['fullform'].encode('utf-8') + ">\"\n"
-                    lemma = Word.objects.filter(id=qword['word'])[0].lemma
-                    cohort = cohort + "\t\"" + lemma + "\""
-                if qword.has_key('tag') and qword['tag']:
-                    string = Tag.objects.filter(id=qword['tag'])[0].string
-                    tag = string.replace("+"," ")
-                    cohort = cohort + " " + tag + "\n"
-            else:
-                w = qword['fullform']  # Words that are given. (Mun etc.)
-                w=w.lstrip().rstrip()
-                # cohort = cohort + "\"<" + w + ">\"\n" + "\t\"" + w.lower() + "\"" + " Pron Pers Sg1 Nom" + "\n"  # just for testing
-                s.send(w)
+		    if qword.has_key('fullform') and qword['fullform']:
+			    cohort = cohort + "\"<" + qword['fullform'].encode('utf-8') + ">\"\n"
+			    lemma = Word.objects.filter(id=qword['word'])[0].lemma
+			    cohort = cohort + "\t\"" + lemma + "\""
+		    if qword.has_key('tag') and qword['tag']:
+			    string = Tag.objects.filter(id=qword['tag'])[0].string
+			    tag = string.replace("+"," ")
+			    cohort = cohort + " " + tag + "\n"
+	    else:
+		    w = qword['fullform'].encode('utf-8')  # Words that are given. (Mun etc.)
+		    #w=w.lstrip().rstrip()
+		    # cohort = cohort + "\"<" + w + ">\"\n" + "\t\"" + w.lower() + "\"" + " Pron Pers Sg1 Nom" + "\n"  # just for testing
+		    s.send(w)
 
-           if not cohort or cohort == w:
-                cohort = w + "\n"
-            if cohort=="error":
-                raise Http500
+	    if not cohort or cohort == w:
+		    cohort = w + "\n"
+	    if cohort=="error":
+		    raise Http500
                 
             analysis = analysis + cohort
         
