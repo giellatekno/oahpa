@@ -13,14 +13,21 @@
 
 {% block navbar %}
 <ul class="sidelist"> 
-{% ifequal settings.gametype "vasta" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta %}">{% trans 'Vasta' %}</a></li>
-{% ifequal settings.gametype "cealk" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url cealkka %}">{% trans 'VastaS' %}</a><span style="font-size:70%; color:#FF3300">&nbsp;(under construction)</span></li>
+{% ifequal gametype "qa" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta %}">{% trans 'Vasta' %}</a></li>
+{% ifequal gametype "cealk" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url cealkka %}">{% trans 'VastaS' %}</a></li>
 </ul>
 {% endblock %}
 
 {% block name %}{% trans "Vasta" %}{% endblock %}
 {% block pagename %}/univ_oahpa/vasta/{% endblock %}
-{% block instructions %}{% trans "Answer to the questions with full sentences. Be aware of that if there is moai/mii in the question, you have to answer with doai/dii. " %}{% endblock %}
+{% block instructions %}
+{% ifequal gametype "cealk" %}
+{% trans "Answer the questions with full sentences." %} </br> 
+{% trans "The blue words are given in the primary form. Your task is to write them in the correct grammatical form." %}
+{% else %}
+{% trans "Answer to the questions with full sentences. Be aware of that if there is moai/mii in the question, you have to answer with doai/dii. " %}
+{% endifequal %}
+{% endblock %}
 
 {% block settings %}
 

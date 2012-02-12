@@ -225,14 +225,14 @@ class Gameview(object):
 		if 'settings' in settings_form.data:
 			new_game = True
 
-		return settings_form, new_game
+		return settings, settings_form, new_game
 	
 	def create_game(self, request, **init_kwargs):
 		""" Instantiate the Game object, check answers and return the context
 		for the view. """
 
 		# Grab form POST data, or URL GET data.
-		settings_form, is_new_game = self.getSettingsForm(request,
+		settings, settings_form, is_new_game = self.getSettingsForm(request,
 										initial_kwargs=init_kwargs)
 
 		# Apply whatever additional settings need to be made
@@ -246,6 +246,8 @@ class Gameview(object):
 		# and check whether or not the answers are correct or incorrect.
 
 		game = self.GameClass(self.settings)
+		
+		self.set_gamename()
 
 		if is_new_game:
 			game.new_game()
@@ -259,7 +261,7 @@ class Gameview(object):
 			if "show_correct" in settings_form.data:
 				game.show_correct = 1
 
-		self.set_gamename()
+		
 
 		return self.context(request, game, settings_form)
 
@@ -844,6 +846,7 @@ class Vastaview:
 			'count': game.count,
 			'comment': game.comment,
 			'all_correct': all_correct,
+			'gametype': "qa",
 			})
 		return c
 
@@ -952,6 +955,7 @@ class Cealkkaview:
 			'count': game.count,
 			'comment': game.comment,
 			'all_correct': all_correct,
+			'gametype': "cealk"
 			})
 		return c
 

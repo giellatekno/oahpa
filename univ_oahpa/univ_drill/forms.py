@@ -1758,13 +1758,17 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     noanalysis=False
 
-    #fstdir = "/opt/smi/sme/bin"
-    fstdir = settings.FST_DIRECTORY
+    fstdir = "/opt/smi/sme/bin"
+    #fstdir = settings.FST_DIRECTORY
+    #fst = fstdir + "/ped-sme.fst"
+    #lo="/Users/mslm/bin/lookup" # on Heli's machine
+    #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
     lookup2cg = " | lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
-    preprocess = " | /usr/local/bin/preprocess "
+    preprocess = " | /usr/local/bin/preprocess " # on victorio
+    #preprocess = " | /Users/mslm/main/gt/script/preprocess "
     dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    # dis_bin = "../sme/src/sme-ped.cg3" # in Heli's machine TODO: add to settings.py
+    #dis_bin = "../sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
     
     #fstdir = "/Users/saara/gt/sme/bin"
     #lookup2cg = " | /Users/saara/gt/script/lookup2cg"
@@ -1791,7 +1795,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        s.connect((host,port))
+        s.connect((host,port)) # on victorio
         sys.stdout.write('%')
 
         analysis = ""
@@ -1812,12 +1816,16 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
                         cohort = cohort + " " + tag + "\n"
                 else:
                     w=w.lstrip().rstrip()
-                    s.send(w)
+                    s.send(w)  # on victorio
                     cohort = s.recv(size)
+                    #word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+                    #cohort = cohort + word_lookup  # as the same thing in cealkka
             else:
                 w=w.lstrip().rstrip()
-                s.send(w)
+                s.send(w)  # on victorio
                 cohort = s.recv(size)
+                #word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+                #cohort = cohort + word_lookup
 
             if not cohort or cohort == w:
                 cohort = w + "\n"
@@ -1837,14 +1845,16 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
         analyzed=""
         for c in word:
             c=c.strip()
-            s.send(c)
+            s.send(c)  # on vic
             analyzed = analyzed + s.recv(size)
+            #word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+            #analyzed = analyzed + word_lookup
             analysis3=c + analyzed + c
 
     except socket.timeout:
         raise Http404("Technical error, please try again later.")            
 
-    s.send("q")
+    s.send("q")  # on vic
     s.close()
 
     analysis = analysis + analyzed
@@ -1970,7 +1980,7 @@ class VastaSettings(OahpaSettings):
     def __init__(self, *args, **kwargs):
         self.set_settings()
         self.set_default_data()
-        self.default_data['gametype'] = 'qa',
+        self.default_data['gametype'] = 'qa'
         super(VastaSettings, self).__init__(*args, **kwargs)
 
 class VastaQuestion(OahpaQuestion):
@@ -2207,12 +2217,15 @@ def cealkka_is_correct(self,question,qwords,language,question_id):  #was: questi
 
     fstdir = "/opt/smi/sme/bin"
     #fstdir = settings.FST_DIRECTORY
+    #fst = fstdir + "/ped-sme.fst"
+    #lo="/Users/mslm/bin/lookup" # on Heli's machine
+    #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
     lookup2cg = " | lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /usr/local/bin/preprocess " # on victorio
     #preprocess = " | /Users/mslm/main/gt/script/preprocess " # on Heli's machine
     dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    #dis_bin = "../sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
+    #dis_bin = "/Users/mslm/main/ped/sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
     
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
     
@@ -2233,7 +2246,7 @@ def cealkka_is_correct(self,question,qwords,language,question_id):  #was: questi
 
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        s.connect((host,port))
+        s.connect((host,port)) # on vic
         sys.stdout.write('%')
 
         analysis = ""
@@ -2246,30 +2259,36 @@ def cealkka_is_correct(self,question,qwords,language,question_id):  #was: questi
             cohort=""
             print qword
             if qword.has_key('word'):
-		    if qword.has_key('fullform') and qword['fullform']:
-			    cohort = cohort + "\"<" + qword['fullform'].encode('utf-8') + ">\"\n"
-			    lemma = Word.objects.filter(id=qword['word'])[0].lemma
-			    cohort = cohort + "\t\"" + lemma + "\""
-		    if qword.has_key('tag') and qword['tag']:
-			    string = Tag.objects.filter(id=qword['tag'])[0].string
-			    tag = string.replace("+"," ")
-			    cohort = cohort + " " + tag + "\n"
-	    else:
-		    w = qword['fullform'].encode('utf-8')  # Words that are given. (Mun etc.)
-		    #w=w.lstrip().rstrip()
-		    # cohort = cohort + "\"<" + w + ">\"\n" + "\t\"" + w.lower() + "\"" + " Pron Pers Sg1 Nom" + "\n"  # just for testing
-		    s.send(w)
+                if qword.has_key('fullform') and qword['fullform']:
+                    cohort = cohort + "\"<" + qword['fullform'].encode('utf-8') + ">\"\n"
+                    lemma = Word.objects.filter(id=qword['word'])[0].lemma
+                    cohort = cohort + "\t\"" + lemma + "\""
+                if qword.has_key('tag') and qword['tag']:
+                    string = Tag.objects.filter(id=qword['tag'])[0].string
+                    tag = string.replace("+"," ")
+                    cohort = cohort + " " + tag + "\n"
+            else:
+                w = qword['fullform'].encode('utf-8')  # Words that are given. (Mun etc.)
+                w=w.lstrip().rstrip()
+                s.send(w) # on victorio
+                cohort = s.recv(size)
+                #word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+                #morfanal = os.popen(word_lookup).readlines()
+                #for row in morfanal:
+                 #   row = row.strip()
+                  #  cohort = cohort + row + "\n" + "\t"
 
-	    if not cohort or cohort == w:
-		    cohort = w + "\n"
-	    if cohort=="error":
-		    raise Http500
+                if not cohort or cohort == w:
+		              cohort = w + "\n"
+                if cohort=="error":
+                    raise Http500
                 
+            #print cohort
             analysis = analysis + cohort
         
         #print analysis
         if self.gametype=="cealk":
-            analysis = analysis + "\"<^qdl_id>\"\n\t\"^cealkka\" QDL " + question_id +"\n"
+            analysis = analysis + "\"<^cealkka>\"\n\t\"^cealkka\" QDL " + question_id +"\n"
         else:
             analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
@@ -2281,24 +2300,31 @@ def cealkka_is_correct(self,question,qwords,language,question_id):  #was: questi
         analyzed=""
         for c in word:
             c=c.strip()
-            #print c
-            s.send(c)
+            print c
+            s.send(c) # on vic
             analyzed = analyzed + s.recv(size)
+            #word_lookup = "echo \"" + c + "\"" + lookup + lookup2cg  # on Heli's machine
+            #morfanal = os.popen(word_lookup).readlines()
+            #for row in morfanal:
+             #   row = row.strip()
+            #    ans_cohort = ans_cohort + row + "\n" + "\t"
+            #analyzed = analyzed + ans_cohort
             analysis3=c + analyzed + c
 
     except socket.timeout:
         raise Http404("Technical error, please try again later.")            
 
-    s.send("q")
-    s.close()
+    s.send("q")  # on vic
+    s.close()  # on vic
 
     analysis = analysis + analyzed
     analysis = analysis + "\"<.>\"\n\t\".\" CLB"
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
-
+    #print analysis
     ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
     checked = os.popen(ped_cg3).readlines()
+    #print checked
 
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
     messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
@@ -2411,6 +2437,7 @@ class CealkkaSettings(OahpaSettings):
 
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
     level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
+    default_data = {'gametype' : 'cealk'}
 
     def __init__(self, *args, **kwargs):
         self.set_settings()
@@ -2430,6 +2457,7 @@ class CealkkaQuestion(OahpaQuestion):
 
         self.init_variables("", userans_val, [])
         self.dialect = dialect
+        self.gametype = "cealk"
         qtype=question.qtype
         atext = qanswer.string 
         # print atext
@@ -2482,26 +2510,7 @@ class CealkkaQuestion(OahpaQuestion):
 
         relaxed = []
         form_list=[]
-		
-	#if not selected_awords.has_key('task'):
-	#	raise Http404(task + " " + atext + " " + str(qanswer.id))	     #if len(selected_awords[task]['fullform'])>0:
-	#	for f in selected_awords[task]['fullform']:
-	#		self.correct_anslist.append(force_unicode(f))
-			
-	#	accepted = sum([relax(force_unicode(item)) for item in self.correct_anslist], [])
-	#	self.relaxings = [item for item in accepted if item not in self.correct_anslist]
-	#	self.correct_anslist.extend(self.relaxings)
-	#log_w = Word.objects.get(id=selected_awords[syntax]['word'])  # was: awords[task]['word']
-	#w_str = log_w.lemma
-	#w_pos = log_w.pos
-	#t_str = Tag.objects.get(id=selected_awords['tag']).string
-	#log_name = "vastaS" + w_pos
-	#log_value = '%s+%s' % (w_str, t_str)
-	#self.is_correct(log_name, log_value)
-	#self.correct_ans = self.correct_anslist[0]
-
-	#self.correct_anslist = [force_unicode(item) for item in accepted] 
-        
+		        
         self.qattrs= {}
         self.aattrs = {}
         for syntax in qwords.keys():
@@ -2544,59 +2553,7 @@ class CealkkaQuestion(OahpaQuestion):
 
         qstring = qstring + "?"
         self.question=qstring
- 
-#        try:
-#		answer_word = selected_awords['word']  # deleted [task]
-#	except KeyError:
-#		answer_word = False
-		# print 'fail: ', question.qid
-		# print ' task: ', task
-#		self.error = 'error'
-#		self.lemma = 'error in answer words: ' + question.qid
-#		return
-	# self.lemma = question.qid
-#	answer_tag = selected_awords['tag'] # deleted [task]
-#	selected_awords['fullform'][0] = 'Q' # deleted [task]
-		
-	# Get lemma for contextual morfa
-	# lemma is displayed as the 'task' word in parentheses after the question
-#	answer_word_el = Word.objects.get(id=answer_word)
-#	answer_tag_el = Tag.objects.get(id=answer_tag)
-#	self.lemma = answer_word_el.lemma
-
- #       if answer_word_el.pos == 'V':
-#		self.wordclass = answer_word_el.wordclass
-
-	# Format answer string
-#	for w in atext.split():
-#		if w.count("(") > 0:
-#			continue
-			
-#		if not selected_awords.has_key(w) or not selected_awords[w].has_key('fullform'):
-#			astring = astring + " " + force_unicode(w)
-#		else:
-#			astring = astring + " " + force_unicode(selected_awords[w]#['fullform'][0])
-					
-        # Remove leading whitespace and capitalize.
-#	astring = astring.lstrip()
- #       astring = astring[0].capitalize() + astring[1:]
-		
-	# Add dot if the last word is not the open question.
-#	if astring.count("!")==0 and not astring[-1]=="Q":
-#		astring = astring + "."
-	self.question=qstring
-	
-
-	# Format answer strings for context
-	#q_count = astring.count('Q')
-	#if q_count > 0:
-	#	astrings = astring.split('Q')
-	#	if astrings[0]:
-	#		self.answertext1 = astrings[0]
-	#	if astrings[1]:
-	#		self.answertext2 = astrings[1]
-
-
+ 	
         self.gametype="cealk"
         self.messages, jee, joo  = self.cealkka_is_correct(astring.encode('utf-8'), awords, language, question.qid)   # was qstring, qwords
         
