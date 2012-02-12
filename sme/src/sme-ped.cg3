@@ -683,8 +683,7 @@ LIST NEGFOC = (Neg Foc/ge) ;
 
 LIST XGO = "dego" "dugo" "nugo" "seammaládjego" "seammaláhkaigo" ;
   # Compounds
-LIST SEAMMAX = "seamma#ládje" "seamma#láhkai" "seamma#láhkái" ;
-  # Those combine with go
+LIST SEAMMAX = "seamma_ládje" "seamma#láhkai" "seamma#láhkái" ;  # Those combine with go
   
 LIST MADE = "mađe" "mađi" ;
 LIST DADE = "dađe" "dađi" ; 
@@ -1006,7 +1005,7 @@ SET PRE-NP-HEAD = (Prop Attr) OR (Prop Gen) OR (A Attr) OR (ABBR Attr) OR ("buor
          (PrfPrc) OR PrsPrc OR (A Ord) ;
          # The strict version of items that can only be premodifiers, not parts of the predicate
          
-SET V-PRE-NP = PrfPrc OR PrsPrc OR Actor OR Actio OR (V A) OR (Ind Prs Sg3) OR (Ind Prs Sg1) OR (Imprt Prs Du2) ;
+SET V-PRE-NP = PrfPrc OR PrsPrc OR (V* Actor) OR Actio OR (V A) OR (Ind Prs Sg3) OR (Ind Prs Sg1) OR (Imprt Prs Du2) ;
     # to be used together with PRE-NP-HEAD before @>N is disambiguated
          
 SET NP-MEMBER   = PRE-NP-HEAD OR N ;
@@ -1860,7 +1859,7 @@ SET NOT-CAP-INITIAL-CC = WORD - CAP-INITIAL - CC ;
 SET CP = (Pron Interr) OR (Pron Rel) OR MO ;
 
  
-SET S-BOUNDARY  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR CS OR QDL ;
+SET S-BOUNDARY  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR CS OR ("de" Adv) OR QDL ;
 	# includes CP. Remember that (",") and CC are potential sentence boundaries, too
 
 SET S-BOUNDARY1  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR QDL ;
@@ -2022,10 +2021,11 @@ REMOVE:r1302 Actor IF (0 ("duššat")); 	# Make a set for non-agentive verbs?
 SELECT:r1303 Adv IF (*-1 BOC BARRIER NOT-PCLE)(0 ADV-NOT-VERB);
 	## Dušše daid dieđuid, mat gusket konkrehta várraárvvoštallamii, sáhttá čuoldit geahččanlobis.
 
-
-
  # This rule has to precede particle rules, so that the verb reading of 
  # "dušše" will not force the CS reading of a preceding particle.
+
+SELECT:r1303 Adv IF (*-1 BOC BARRIER NOT-PCLE)(0 ADV-NOT-VERB);
+	## Dušše daid dieđuid, mat gusket konkrehta várraárvvoštallamii, sáhttá čuoldit geahččanlobis.
 
 
  	# Proper nouns
@@ -2519,10 +2519,6 @@ REMOVE:r677 Sg IF (*-1 ("stáhta") OR ("priváhta") OR ("matrikuleret"))(0 ("ean
     # fálli vs. fális
     # - - - - - - - -
 SELECT:r678 ("vuoncá#fálli") IF (0 ("vuoncá#fális"));
-
-	# friddjagoartta
-	# - - - - - - - -
-REMOVE:r679 ("friddja#agoarta") IF (0 ("friddja#goarta"));
 
 	# geardu vs geardut
 	# - - - - - - - -
@@ -3898,7 +3894,7 @@ REMOVE:r1029 Adv IF (NEGATE *-1 (Pl Nom) BARRIER S-BOUNDARY)(0 (N Pl Nom))(*1C V
 REMOVE:r1030 V IF (-1C Dem)(1 V-IND-FIN);	
 	## Dán báhkis šaddá čáppa gohppu.
 
-REMOVE:r1031 V IF (-1 BOC)(0 N LINK NOT 0 ("leat") OR Actor)(1 ("go"))(2 VFIN LINK NOT 0 Adv OR Imprt);	
+REMOVE:r1031 V IF (-1 BOC)(0 N LINK NOT 0 ("leat") OR (V* Actor))(1 ("go"))(2 VFIN LINK NOT 0 Adv OR Imprt);	
 	## Ádjás go lea ođđa fanas?
 
 REMOVE:r1032 (V Ind) IF (-1 Dem)(0 N)(1C (V Ind));
@@ -4902,24 +4898,6 @@ SELECT:r1296 Adv IF (-1 COPULAS)(0 ("duođaid"))(1 Ess);
 	# - - - -
  # There is a rule "Lea dušše okta Ipmil" for the typical dušše cases.
 
-REMOVE:r1297 N IF (0 ("dušše")); 
-REMOVE:r1298 A IF (0 ("dušše"));
-	## Vihtta bivdovuogi mun gal dušše namahin,...
-	## Oar-julggiid atnet olbmot dušše dalle go bodni lea nu garas... 
- # Brutal, but the noun and the adjective are almost always "dušši".
-
-REMOVE:r1299 VFIN IF (*-1 VFIN BARRIER S-BOUNDARY)(0 ("dušše"));
-REMOVE:r1300 VFIN IF (0 ("dušše"))(*1 VFIN BARRIER S-BOUNDARY);
-	## Nu eai dieđus dárbbaš skáhppot birra buot gal, dušše lasi 
-	## dan sadjái mii mieská.
-	## ...go dušše áibbas moatti sajis heive meardebuođđu adnojuvvot.
-
-REMOVE:r1301 VFIN IF (-1 ("leat"))(0 ("dušše"));
-	## Leamaš dušše vihtta dorski nuhtiin.
-
-REMOVE:r1302 Actor IF (0 ("duššat")); 	# Make a set for non-agentive verbs?
-	## Oktagaslaš olbmo lonuheami dohkálašvuohta lea stáhtii geavadis duššin.
-
 SELECT:r1303 Adv IF (*-1 BOC BARRIER NOT-PCLE)(0 ADV-NOT-VERB);
 	## Dušše daid dieđuid, mat gusket konkrehta várraárvvoštallamii, sáhttá čuoldit geahččanlobis.
 
@@ -5391,8 +5369,8 @@ MAPPING-PREFIX = & ;
 
 # Guesser
 # Ord med  
-SUBSTITUTE (?) (N Prop Plc Sg Loc Guess) TARGET ("<[A-ZÆØÅÄÖČŠÁ].*s>"r ?) ;
-SUBSTITUTE (?) (N Prop Plc Sg Nom Guess) TARGET ("<[A-ZÆØÅÄÖČŠÁ].*>"r ?)(NOT -1 BOS) ;
+#SUBSTITUTE (?) (N Prop Plc Sg Loc Guess) TARGET ("<[A-ZÆØÅÄÖČŠÁ].*s>"r ?) ;
+#SUBSTITUTE (?) (N Prop Plc Sg Nom Guess) TARGET ("<[A-ZÆØÅÄÖČŠÁ].*>"r ?)(NOT -1 BOS) ;
 
           SECTION
 
@@ -6139,7 +6117,7 @@ MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL BARRIER Acc OR S-BOUNDARY LINK *-1 
 # Rules for dialogue_visit
 #-----------------------------
 #LIST ROOMS = stohpu gievkkan oađđenlatnja basadanlatnja hivsset feaskkir viessu lokta ráigi goahti ;
-LIST ROOMS = "stohpu" "gievkkan"  "kievkkan" "oađđen#latnja" "oađđin#latnja" "basadan#latnja" "hivsset" "feaskkir" "viessu" "lokta" "ráigi" "goahti" ;
+LIST ROOMS = "stohpu" "gievkkan"  "kievkkan" "oađđen#latnja" "oađđin#latnja" "basadan#latnja" "hivsset" "feaskkir" ;
 
 #LIST DRINK = bruvsa sákta mielki viidni vuola ;
 LIST DRINK = "bruvsa" "sákta" "mielki" "viidni" "viidná" "vuola" "vuolla" ;
