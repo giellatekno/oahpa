@@ -1,0 +1,198 @@
+
+
+!!! Møte 13.2.12
+
+Til stades: Biret-Ánne, Lene, Heli, Ryan, Trond
+
+
+!!Saksliste
+
+* Vasta / Vasta-S (Cealkka)
+* Courses-sida til lærarar
+* Site
+* Lokalisering
+* Morfa-C 
+** Resiproke / Refleksive Pronomen
+** verb (bug 1268)
+* Oppdatering av database
+** Oppgåvor frå Lene til Vasta-S
+** Resiproke?
+* Morfologisk feedback
+* Buggar
+* Lokalisering
+* Neste møte
+
+
+
+!! Vasta / Vasta-S (Cealkka)
+
+Lene har sett på det som er implementert, det ser bra ut, slik vi vil ha det.
+Vasta-S er testa ut på ein samisklærar, som er interessert i eit oppsett der han
+kan sjå korleis elevane gjer det. Dette peikar mot eit oppsett der vi via OpenID
+tilbyr lærarar og elevar å logge seg på som nettopp det, etter mønster frå
+VISL sin KillerFiller.
+
+Lene har i natt sjekka inn fleire messagefiler.
+
+Det er framleis ikkje tillegg til cealkka-filene, men det kjem. Heli er nøgd
+med formatet, men har endra nivå til eit numerisk format. Heli har skrive
+instruksjonsteksten på engelsk, vi kan evt. endre den.
+
+Lene har starta med å endre cg-fila, og har ein lokal fst med errortags.
+
+Biret Ánne og Lene laga eit dokument om Vasta-S for eit år sidan, det dokumentet
+må no fram att for å vurdere nivåinndeling.
+
+__TILTAK__
+
+* Ta fram gammalt dokument og vurder nivåinndeling (task-ord, innhald) __Lene__
+* Utvikle CG-fila __Lene__
+* Implementere nye beskjedar (messages.xml) __Heli__
+* Checklist for 2 eller 3 task-ord __Heli__
+
+
+!! Courses-sida til lærarar
+
+Sida har no klasseliste der det er mogleg å klikke på namna og få informasjon.
+
+Spørsmål: Blir ikkje dette ei veldig lang liste, når kvar opgåve for kvar student 
+blir vist? Vi treng eit meir kompakt format, slik at det blir maks 5 liner per student.
+Namnet på kvar student kan også bli sett i mindre typesnitt.
+
+Lærarar skal taast bort frå lista.
+
+Poeng til Gbg: ''Det virtuelle klasserommet''
+
+__TILTAK__
+* Lage kompakt liste (__Ryan__)
+* Vurdere tiltak for å informere samisklærarar om at det er mogleg å få eit virtuelt
+  klasserom. Dette kan vi gjere i samband med overgangen til ny oahpa.
+
+Krav før overgang til ny oahpa
+* univ_oahpa er stabil
+* Morfologisk feedback er på plass
+* Vi har eit oppsett for bruk av url-ane, og sider til det
+* Vi må tilpasse oahpa-dokumentasjonen til univ_oahpa
+
+
+!! Site
+
+Vi har fått oahpa.no (som ikkje viser til noko side). 
+Vi skal få egen site.
+
+__TILTAK__
+
+* __Trond__ følgjer opp kontakten med IT-avdelinga
+  Til det høyrer også spørsmålet om eigen virtuell server for oahpa
+
+!! Lokalisering
+Det var en bug som Ryan har fiksa i python-fila, og Heli har fjerna
+gamle python-filer. Administrasjonsdelen kan med fordel fjernes fra 
+lokaliseringa.
+
+
+!! Morfa-C 
+Ryan har laga kongruens for resiproke og refleksive pronomen. Det fungerer på hans maskin.
+
+Vi vil implemnetere også ''nubbi/nuppit'' som resiproke pronomener i Morfa S og Morfa C.
+
+Dagens versjon ''goabbat/guhtet'' (1) er default, og ''nubbi/nuppit'' (2) blir tilleggsval.
+
+Vi skal også ha inn relative pronomener.
+
+Frå bestillingsdokument: 
+relative - som i Pers. grunnform er Pron+Rel+Nom. Kasusvalg: akk, gen, ill, lok, kom.
+
+[se her|http://giellatekno.uit.no/ped/nudoc/bestilling.html] 
+
+
+__TILTAK__
+
+* __Lene__ lager oppgaver med automatisk kongruens som __Ryan__ tester på sin maskin før 
+  det implementeres på victorio.
+* Det lages meny med to valg på MorfaS resiproke pronomener på samme måte som 
+  nivå-inndeling i numeraler.
+* __Lene__ lager oppgaver med relative pronomener til MorfaC
+* __Heli__ implementerer relative pronomener i MorfaS
+
+
+
+!! Oppdatering av databaser
+
+sme: Det er ikke behov for oppdatering av databasen før vi har laget flere Morfa-C oppgaver.
+
+Det er framleis ord som treng opprydding. Vi kan også sjå på finsk (og svensk?) i sme.
+
+sma: Det var doble stat-pref for svensk og finsk, og det var skrivefeil i finsk.
+
+__TILTAK__
+* Gå gjenom ordlister for sma (__Lene, Trond__) før tysdag kl 16.00
+  Send e-post til Ryan når vi sett strek.
+* Oppdater smaOahpa (amerikansk tysdag) __Ryan__
+
+
+!! Buggar
+! 791	Wed 18:07	enh	Ryan Johnson	Possible with alternative grammartags?
+Poenget er at eit spörsmål kan ha to svar (dvs. svar med ulike grammatiske spesifikasjonar). 
+Dermed vil vi ha to ulike taggar som fasit. Dette har låg prioritet, men tenk på det.
+
+! 1190	2012-01-02	enh	Lene Antonsen	Grammatikkforklaringer kjem ikkje opp i Safari
+
+Löysinga er dokumentasjon. Vi laga dokumentasjon for sma-Oahpa. Den bör vi no ta fram
+for sme-oahpa også.
+
+__TILTAK__
+* Grav fram og implementer (__Trond__)
+
+! 1268	Bug 1268 - MorfaC verb vgoprt1 fungerer ikke
+* __Lene__ har testa, og den er fiksa
+
+{{{
+Njoarosteaba go soai odne? (ii)
+Odne gal ________________ njoaros. eaba
+
+čorgestalat go don odne? (čorgestallat)
+De ________________ čorgestalan
+
+Njurggoda go son odne? (njurggodit)
+De ________________ njurggoda
+
+Batnibeahtti go doai odne? (ii)
+Odne gal ________________ bane. ean
+
+Čiehkádehpet go dii odne? (čiehkádit)
+Odne gal eat ________________ čiehkát
+
+Čiehkádit go mii odne? (čiehkádit)
+De ________________ čiehkádehpet
+}}}
+
+
+!! Konferanse Eurocall
+
+* [Her er informasjon om konferanser|http://giellatekno.uit.no/ped/nudoc/publisering.html]
+* Deadline for abstrakter 20.2, dealine proceedingsartikkel 30.6, EUROCALL Review 30.11
+
+
+# Abstrakt 1: ''Porting oahpa to new languages''
+# Abstrakt 2: ''Integrating oahpa + site''
+# Abstrakt 3?? ''Virtuelt klasserom?'' evt. 3 som del av 2
+
+__TILTAK__
+* Gå inn på eurocall-sida, og sjå
+* Gå evt. inn på ''$GTHOME/art/2012/eurocall/notes.txt'' og skriv deg på
+
+!! Oahpa på svensk
+
+Uppsala underviser i samisk.
+
+__TILTAK__
+
+* __Trond__ tar kontakt med Uppsala
+
+!! Neste møte
+Vi avtaler etterhvert pr mail.
+
+
+
+
