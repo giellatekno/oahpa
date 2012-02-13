@@ -1,6 +1,6 @@
 from django.template import RequestContext
 # from django.utils.translation import ugettext as _
-from django.http import HttpResponseRedirect, HttpResponseForbidden
+from django.http import HttpResponseRedirect, HttpResponseForbidden, Http404
 
 
 def render_to_response(*args, **kwargs):
@@ -165,6 +165,18 @@ def instructor_group(user):
 	
 @user_passes_test(instructor_group)
 def instructor_student_detail(request, uid):
+	student = UserProfile.objects.get(user__id=uid)
+	instructor = request.user.get_profile()
+
+	instructor_courses = list([a.id for a in instructor.instructorships])
+	student_courses = list([a.id for a in student.courses])
+
+	intersection = list(set(instructor_courses) & set(student_courses))
+
+	if len(intersection) == 0:
+		error = 'Student not found.'
+		return HttpResponseForbidden(error)
+	
 	template = 'courses/instructor_student_detail.html'
 	c = {}
 	c['student'] = UserProfile.objects.get(user__id=uid)
