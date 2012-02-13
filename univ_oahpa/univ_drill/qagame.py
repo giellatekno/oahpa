@@ -405,9 +405,11 @@ class QAGame(Game):
 								anumber = agr_tag.personnumber
 							else:
 								anumber = agr_tag.number
-							tag_count = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber)).count()
-							if tag_count>0:
-								tag_el = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber))[randint(0, tag_count-1)]
+
+							_tag_query = Q(personnumber=anumber) | Q(number=anumber)
+							tags = element.tags.filter(_tag_query)
+							if tags.count() > 0:
+								tag_el = choice(tags)
 				if not tag_el: 
 					tag_el_count = element.tags.count()
 					if tag_el_count > 0:
@@ -749,9 +751,9 @@ class QAGame(Game):
 						anumber = agr_tag.personnumber
 					else:
 						anumber = agr_tag.number
-					tag_count = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber)).count()
-					if tag_count>0:
-						tag_elements = element.tags.filter(Q(personnumber=anumber) | Q(number=anumber))
+
+					_tag_query = Q(personnumber=anumber) | Q(number=anumber)
+					tags_elements = element.tags.filter(_tag_query)
 
 		# if no agreement, take all tags.
 		else:
@@ -801,60 +803,51 @@ class QAGame(Game):
 		return db_info
 
 	######## Morfa questions
-	def get_question_morfa(self,db_info,qtype):
+	def get_question_morfa(self, db_info, qtype):
 		qwords = {}
 		
-		if self.settings.has_key('pos'):
-			pos=self.settings['pos']
+		pos = self.settings.get('pos', False)
+		
 
 		# Get qtype from settings.
 		if not qtype:
 			if pos == "N":
 				qtype = self.settings['case_context']
 			if pos == "V":
-				qtype=self.settings['vtype_context']
+				qtype = self.settings['vtype_context']
 			if pos == "Num":
-				qtype=self.settings['num_context']
+				qtype = self.settings['num_context']
 			if pos == "A":
-				qtype=self.settings['adj_context']
+				qtype = self.settings['adj_context']
 			if pos == "Pron":
-				qtype=self.settings['pron_context']
+				qtype = self.settings['pron_context']
 
-		books=None
-		if self.settings.has_key('book'): books=self.settings['book']
-		# TODO: Debugging. 
-		# qtype = 'N-ILL'
-		# MIX
+		books = self.settings.get('book', None)
+
+		question_query = Q(qtype__contains=qtype) & Q(gametype="morfa")
 		if books:
-			q_count=Question.objects.filter(Q(qtype__contains=qtype) & \
-											Q(gametype="morfa") & \
-											(Q(source__name__in=books) | Q(source__name="all" ))).count()
-		else:
-			q_count=Question.objects.filter(Q(qtype__contains=qtype) & Q(gametype="morfa")).count()
-		
+			question_query = question_query & (Q(source__name__in=books) | Q(source__name="all" ))
+
 		### Generate question. If it fails, select another one.
-		max = 20
-		i=0
-		while not qwords and i<max:
-			i = i+1
-			if books:	
-				question = Question.objects.filter(Q(qtype__contains=qtype) & \
-												   Q(gametype="morfa") & \
-												   (Q(source__name__in=books) | Q(source__name="all" )))
-			else:
-				question = Question.objects.filter(Q(qtype__contains=qtype) & Q(gametype="morfa"))
+		i, max_ = 0, 20
+		while not qwords and i < max_:
+			i += 1
+			question = Question.objects.filter(question_query)
+
 			if question.count() > 0:
 				question = question.order_by('?')[0]
 			else:
 				errormsg = 'Database may not be properly loaded. No questions found for query.'
 				errormsg += '\n qtype: %s' % repr(qtype)
 				raise Http404(errormsg)
+
 			qwords = None
 			qwords = self.generate_question(question, qtype)
 
 		db_info['qwords'] = qwords
 		db_info['question_id'] = question.id
-		return db_info,question
+		
+		return db_info, question
 
 
 	########### Morfa answers
@@ -989,4 +982,5 @@ class QAGame(Game):
 		#print "qwords ...................."
 
 		return form, None
+
 
