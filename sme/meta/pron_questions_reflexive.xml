@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<!DOCTYPE lexicon  PUBLIC '-//XMLmind//DTD lexicon//FI'  '../../dtd/questions.dtd'>
+-->
+<questions>
+
+	<q id="prefl0">
+    	<qtype>P-REFL</qtype>
+		<question>
+			<text>Mo SUBJ MAINV doppe</text>
+			<example>Mo soai oaidniba doppe?</example>
+			<element id="SUBJ">
+				<grammar tag="Pron+Pers+Dual+Nom"/>    <!-- Dual: Du1, Du2, Du3 -->
+			</element>
+			<element id="MAINV">
+				<id>oaidnit</id>
+				<grammar tag="V+Ind+Prs+Person-Number"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ MAINV goabbat RPRON</text>
+			<example>Soai oaidniba goabbat guoimmiska.</example>
+			<element game='morfa' id="RPRON" task="yes">
+				<!-- ReflexivePossessive: alle Px bortsett frå 1. person -->
+				<grammar tag="Pron+Recipr+Acc+ReflexivePossessive"/>
+				<agreement id="MAINV" />
+			</element>
+		</answer>
+  </q> 
+
+	<q id="prefl1">
+    	<qtype>P-REFL</qtype>
+		<question>
+			<text>Geasa SUBJ MAINV</text>
+			<example>Geasa soai liikoba?</example>
+			<element id="SUBJ">
+				<grammar tag="Pron+Pers+Dual+Nom"/>    <!-- Dual: Du1, Du2, Du3 -->
+			</element>
+			<element id="MAINV">
+				<id>liikot</id>
+				<grammar tag="V+Ind+Prs+Person-Number"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ MAINV dušše goabbat RPRON</text>
+			<example>Soai liikoba goabbat guoibmáseaskka.</example>
+			<element game='morfa' id="RPRON" task="yes">
+				<!-- ReflexivePossessive: Alle Px bortsett frå 1. person -->
+				<grammar tag="Pron+Recipr+Ill+ReflexivePossessive"/>
+				<agreement id="MAINV" />
+			</element>
+		</answer>
+  </q> 
+
+	<q id="prefl2">
+    	<qtype>P-REFL</qtype>
+		<question>
+			<text>Geasa SUBJ MAINV OBJ</text>
+			<example>Geasa mun oastán girjjiid?</example>
+			<element id="SUBJ">
+				<grammar tag="Pron+Pers+Person-Number+Nom"/>
+			</element>
+			<element id="MAINV">
+				<id>oastit</id>
+				<grammar tag="V+Ind+Prs+Person-Number"/>
+			</element>
+			<element id="OBJ">
+				<id>girji</id>
+				<grammar tag="N+Pl+Acc"/>
+			</element>
+		</question>
+		<answer>
+			<text>SUBJ MAINV OBJ RPRON</text>
+			<example>Don oastát girjjiid alccesat.</example>
+			<element game='morfa' id="RPRON" task="yes">
+				<!-- Possessive: Alle Px -->
+				<grammar tag="Pron+Refl+Ill+Possessive"/>
+				<agreement id="MAINV" />
+			</element>
+		</answer>
+  </q> 
+
+	<q id="prefl3">
+    	<qtype>P-REFL</qtype>
+		<question>
+			<text>Geas SUBJ MAINV PTCPL dan</text>
+			<example>Geas leat oahppan dan?</example>
+			<element id="SUBJ">
+				<grammar tag="Pron+Pers+Person-Number+Nom"/>
+			</element>
+			<element id="MAINV">
+				<id>leat</id>
+				<grammar tag="V+Ind+Prs+Person-Number"/>
+			</element>
+			<element id="PTCPL">
+				<id>oahppat</id>
+				<grammar tag="V+PrfPrc"/>
+			</element>
+		</question>
+		<answer>
+			<text>Dan SUBJ MAINV PTCPL RPRON</text>
+			<example>Dan lean oahppan alddán.</example>
+			<element game='morfa' id="RPRON" task="yes">
+				<!-- Possessive: alle Px -->
+				<grammar tag="Pron+Refl+Ill+Possessive"/>
+				<agreement id="MAINV" />
+			</element>
+		</answer>
+  </q> 
+
+</questions>
+
