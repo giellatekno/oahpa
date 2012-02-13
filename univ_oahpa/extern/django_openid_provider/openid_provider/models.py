@@ -39,3 +39,11 @@ class TrustedRoot(models.Model):
 
     def __unicode__(self):
         return unicode(self.trust_root)
+
+
+from django.db.models.signals import post_save
+from signals import create_openid
+
+post_save.connect(create_openid, sender=User, 
+	dispatch_uid="univ_oahpa.openid_provider.models.post_save")
+
