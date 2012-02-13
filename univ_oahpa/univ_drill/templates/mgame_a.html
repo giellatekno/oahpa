@@ -9,8 +9,6 @@
 
 
 {% block subsetting %}
-{# TODO: something funky here. #}
-{# {% trans "Stem" %} #}
 
 {% ifequal settings.gametype "bare" %}
     <li><label for="id_{{ settingsform.adjcase.name }}">{% trans "Case" %}</label>
@@ -25,8 +23,6 @@
 		</ul>
 	</li>
 
-	{# <li><label for="id_{{ settingsform.grade.name }}">{% trans "Stem" %}</label> #}
-		{#	{{ settingsform.grade }}</li> #}
 {% else %}
 	<li><label for="id_{{ settingsform.adj_context.name }}">{% trans "Type" %}</label>
 		{{ settingsform.adj_context }}</li>
