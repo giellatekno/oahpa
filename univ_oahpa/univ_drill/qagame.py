@@ -465,6 +465,37 @@ class QAGame(Game):
 		# Return the ready qwords list.			
 		return qwords
 
+	def generate_answers_reflexive(self, answer, question, awords, qwords):
+		""" Checks reflexive agreement on RPRON with MAINV, returns awords.
+		"""
+
+		# TODO: replace hardcoded MAINV with agreement id
+		# Find MAINV person
+		_mainv = choice(awords['MAINV'])
+		_mainv_tag = Tag.objects.get(id=_mainv['tag'])
+		_mainv_person = _mainv_tag.personnumber
+
+		# Get corresponding RPRON tag
+		_refl_person = 'Px%s' % _mainv_person
+		_refl_qelement = answer.qelement_set.get(identifier='RPRON')
+		_refl_tag = _refl_qelement.tags.get(possessive=_refl_person)
+
+		# Get RPRON forms, tags, word element
+		_refl_forms = _refl_tag.form_set.all()
+		# TODO: dialect form selection
+
+		_refl_word = _refl_forms.order_by('?')[0].word
+		_refl_fullforms = _refl_forms.values_list('fullform', flat=True)
+
+
+		awords['RPRON'] = [{
+			'tag': _refl_tag.id, 
+			'word': _refl_word.id, 
+			'fullform': _refl_fullforms, 
+		}]
+
+		return awords
+
 	def generate_answers_subject(self, answer, question, awords, qwords, element="SUBJ"):
 		""" Can be used to generate answers for habitive, just supply element="HAB"
 		"""
@@ -689,7 +720,7 @@ class QAGame(Game):
 	def generate_syntax(self, answer, question, awords, qwords, s):
 
 		
-		if s in ["SUBJ", "MAINV", "HAB", "NEG"]: return awords
+		if s in ["SUBJ", "MAINV", "HAB", "NEG", "RPRON"]: return awords
 		
 		if not awords.has_key(s):
 			awords[s] = []
@@ -890,6 +921,10 @@ class QAGame(Game):
 				except AttributeError:
 					if self.test: raise Http404("problem")
 					return "error"
+
+			# RPRON needs to be processed after MAINV and SUBJ so that person information is available
+			if 'RPRON' in words_strings:
+				awords = self.generate_answers_reflexive(answer, question, awords, db_info['qwords'])
 
 			# Rest of the syntax
 			#if self.test: raise Http404(words_strings)
