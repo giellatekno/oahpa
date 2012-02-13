@@ -162,7 +162,7 @@ class QAGame(Game):
 
 				# word = word_set[0]
 
-				form_set = self.filter_forms_by_dialect(word.form_set.all())
+				form_set = self.filter_forms_by_dialect(word.form_set.filter(tag=tag_el))
 
 				form = form_set[0]
 
