@@ -106,24 +106,15 @@ class QAGame(Game):
 			if word.count() > 0:
 				word = word.order_by('?')[0]
 		else:
-			# Dialect is commented out still because we're only getting
-			# dialectical form variants, not word variants.
+			# Do not filter dialect here
 			possible_words = Word.objects.filter(wordqelement__qelement=qelement,
-												# dialects__dialect=dialect,
 												form__tag=tag_el.id)
 			if possible_words.count() > 0:
 				word = possible_words.order_by('?')[0]
 
-		form_set_filter = word.form_set.filter(tag=tag_el.id)
-
-		# filter forms by dialect
-		form_set_filter_dial = form_set_filter\
-									.exclude(dialects__dialect='NG')\
-									.filter(dialects__dialect=dialect)
-
-		if form_set_filter_dial.count() > 0:
-			form_set_filter = form_set_filter_dial
-
+		form_set_filter = self.filter_forms_by_dialect(
+							word.form_set.filter(tag=tag_el.id))
+		
 		if word and form_set_filter.count()>0:
 			form = form_set_filter[0] 
 		else: return None
@@ -145,20 +136,12 @@ class QAGame(Game):
 		"""
 		words = []
 
-		if self.settings.has_key('dialect'):
-			dialect = self.settings['dialect']
-		else:
-			dialect = DEFAULT_DIALECT
-		
 		# If there are no information available for these elements, try to use other info.
 		word = None
 		form = None
 				
 		if lemma and tag_el:
-			form_set = tag_el.form_set.exclude(dialects__dialect='NG')
-			dialect_forms = form_set.filter(dialects__dialect=dialect)
-			if dialect_forms.count() > 0:
-				form_set = dialect_forms
+			form_set = self.filter_forms_by_dialect(tag_el.form_set.all())
 
 			if qelement:
 				if qelement.semtype:
@@ -179,21 +162,8 @@ class QAGame(Game):
 
 				# word = word_set[0]
 
-				form_set = word.form_set.filter(tag=tag_el)
+				form_set = self.filter_forms_by_dialect(word.form_set.all())
 
-				excl = form_set.exclude(dialects__dialect='NG')
-
-				if excl.count() > 0:
-					form_set = excl
-
-				dialect_forms = form_set.filter(dialects__dialect=dialect)
-
-				# If there are no dialect forms, but there are still forms in
-				# form_set, we want to return these forms, otherwise dialect
-				# forms.
-				if dialect_forms.count() > 0:
-					form_set = dialect_forms
-				
 				form = form_set[0]
 
 
@@ -203,12 +173,7 @@ class QAGame(Game):
 			info = {'word': form.word.id, 'tag': tag_el.id, 'fullform': [ fullform ]}
 			words.append(info)
 		elif word:
-			form_list = word.form_set.exclude(dialects__dialect='NG')
-
-			filtered = form_list.filter(dialects__dialect=dialect)
-			
-			if filtered.count() > 0:
-				form_list = filtered
+			form_list = self.filter_forms_by_dialect(word.form_set.all())
 
 			if tag_el:
 				form_list = form_list.filter(tag=tag_el)
@@ -465,8 +430,32 @@ class QAGame(Game):
 		# Return the ready qwords list.			
 		return qwords
 
+	def filter_forms_by_dialect(self, form_set):
+		""" Filters forms by the current session dialect
+		"""
+
+		if self.settings.has_key('dialect'):
+			dialect = self.settings['dialect']
+		else:
+			dialect = DEFAULT_DIALECT
+
+		excl = form_set.exclude(dialects__dialect='NG')
+
+		if excl.count() > 0:
+			form_set = excl
+
+		dialect_forms = form_set.filter(dialects__dialect=dialect)
+
+		if dialect_forms.count() > 0:
+			form_set = dialect_forms
+
+		return form_set
+
+		
 	def generate_answers_reflexive(self, answer, question, awords, qwords):
 		""" Checks reflexive agreement on RPRON with MAINV, returns awords.
+			
+			TODO: a little about how reflexive questions need to be structured
 		"""
 
 		# TODO: replace hardcoded MAINV with agreement id
@@ -481,12 +470,9 @@ class QAGame(Game):
 		_refl_tag = _refl_qelement.tags.get(possessive=_refl_person)
 
 		# Get RPRON forms, tags, word element
-		_refl_forms = _refl_tag.form_set.all()
-		# TODO: dialect form selection
-
+		_refl_forms = self.filter_forms_by_dialect(_refl_tag.form_set.all())
 		_refl_word = _refl_forms.order_by('?')[0].word
 		_refl_fullforms = _refl_forms.values_list('fullform', flat=True)
-
 
 		awords['RPRON'] = [{
 			'tag': _refl_tag.id, 
