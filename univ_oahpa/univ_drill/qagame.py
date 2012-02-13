@@ -455,20 +455,34 @@ class QAGame(Game):
 
 		
 	def generate_answers_reflexive(self, answer, question, awords, qwords):
-		""" Checks reflexive agreement on RPRON with MAINV, returns awords.
+		""" Checks reflexive agreement on RPRON with a specified agreement
+		element, returns awords. If agreement isn't specified, default behavior
+		is MAINV.
 			
-			TODO: a little about how reflexive questions need to be structured
+		Task element should be specified like this to get RPRON agreement
+		from MAINV.
+
+			<element game='morfa' id="RPRON" task="yes">
+				<grammar tag="Pron+Refl+Ill+Possessive"/>
+				<agreement id="MAINV" />
+			</element>
+
 		"""
 
-		# TODO: replace hardcoded MAINV with agreement id
-		# Find MAINV person
-		_mainv = choice(awords['MAINV'])
-		_mainv_tag = Tag.objects.get(id=_mainv['tag'])
-		_mainv_person = _mainv_tag.personnumber
-
 		# Get corresponding RPRON tag
-		_refl_person = 'Px%s' % _mainv_person
 		_refl_qelement = answer.qelement_set.get(identifier='RPRON')
+		try:
+			_refl_agreement_head = _refl_qelement.agreement.identifier
+		except AttributeError:
+			_refl_agreement_head = 'MAINV'
+
+		# Find agreement head's person (MAINV)
+		_head = choice(awords[_refl_agreement_head])
+		_head_tag = Tag.objects.get(id=_head['tag'])
+		_head_person = _head_tag.personnumber
+
+		# Get agreeing tag
+		_refl_person = 'Px%s' % _head_person
 		_refl_tag = _refl_qelement.tags.get(possessive=_refl_person)
 
 		# Get RPRON forms, tags, word element
