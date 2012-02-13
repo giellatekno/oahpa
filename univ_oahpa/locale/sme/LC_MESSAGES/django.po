@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-02-05 14:26+0100\n"
+"POT-Creation-Date: 2012-02-13 09:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -561,7 +561,7 @@ msgstr ""
 "dohkkeha cookies."
 
 #: templates/courses/courses_main.html:19
-#: templates/courses/courses_main_instructor.html:20
+#: templates/courses/courses_main_instructor.html:21
 msgid "Welcome"
 msgstr "Bures boahtin"
 
@@ -616,7 +616,7 @@ msgid "Number of tries"
 msgstr "Galle geahččaleami"
 
 #: templates/courses/courses_main.html:65
-#: templates/courses/courses_main_instructor.html:22
+#: templates/courses/courses_main_instructor.html:23
 msgid "You are a course instructor."
 msgstr "Don lea oahpaheaddji"
 
@@ -624,32 +624,47 @@ msgstr "Don lea oahpaheaddji"
 msgid "View students' grades"
 msgstr "Čájet studeanttaid bohtosiid"
 
-#: templates/courses/courses_main_instructor.html:33
-msgid "login count"
+#: templates/courses/courses_main_instructor.html:28
+msgid "Course content is available online"
 msgstr ""
 
-#: templates/courses/courses_main_instructor.html:34
+#: templates/courses/courses_main_instructor.html:35
+#: templates/courses/instructor_student_detail.html:23
 msgid "last login"
 msgstr "Máŋimus sisaloggen"
 
-#: templates/courses/courses_main_instructor.html:39
-msgid "exercise type"
-msgstr ""
-
-#: templates/courses/courses_main_instructor.html:40
-msgid "average score"
-msgstr "Gaskamearreboađus"
-
-#: templates/courses/courses_main_instructor.html:41
-msgid "minimum score"
+#: templates/courses/courses_main_instructor.html:36
+#: templates/courses/instructor_student_detail.html:24
+msgid "login count"
 msgstr ""
 
 #: templates/courses/courses_main_instructor.html:42
-msgid "maximum score"
-msgstr ""
+#: templates/courses/instructor_student_detail.html:30
+msgid "exercise"
+msgstr "Hárjehusat"
 
 #: templates/courses/courses_main_instructor.html:43
+#: templates/courses/instructor_student_detail.html:31
+msgid "average"
+msgstr "Gaskamearálaččat"
+
+#: templates/courses/courses_main_instructor.html:44
+#: templates/courses/instructor_student_detail.html:32
+msgid "minimum"
+msgstr ""
+
+#: templates/courses/courses_main_instructor.html:45
+#: templates/courses/instructor_student_detail.html:33
+msgid "maximum"
+msgstr ""
+
+#: templates/courses/courses_main_instructor.html:46
+#: templates/courses/instructor_student_detail.html:34
 msgid "game count"
+msgstr ""
+
+#: templates/courses/courses_main_instructor.html:58
+msgid "More information about this student"
 msgstr ""
 
 #: templates/registration/logged_out.html:8
@@ -1285,263 +1300,263 @@ msgstr "Borramušgávppis"
 msgid "Shopadj"
 msgstr "Veardideapmi rámbuvrris"
 
-#: univ_drill/forms.py:339 univ_drill/templates/mgame_a.html:22
+#: univ_drill/forms.py:339 univ_drill/templates/mgame_a.html:20
 #: univ_drill/templates/mgame_n.html:19 univ_drill/templates/mgame_v.html:20
 msgid "bisyllabic"
 msgstr "bárrastávvalmáddagat"
 
-#: univ_drill/forms.py:340 univ_drill/templates/mgame_a.html:23
+#: univ_drill/forms.py:340 univ_drill/templates/mgame_a.html:21
 #: univ_drill/templates/mgame_n.html:20 univ_drill/templates/mgame_v.html:21
 msgid "trisyllabic"
 msgstr "bárahisstávvalmáddagat"
 
-#: univ_drill/forms.py:341 univ_drill/templates/mgame_a.html:24
+#: univ_drill/forms.py:341 univ_drill/templates/mgame_a.html:22
 #: univ_drill/templates/mgame_n.html:21 univ_drill/templates/mgame_v.html:22
 msgid "contracted"
 msgstr "kontrákta máddagat"
 
-#: univ_drill/views.py:471 univ_drill/views.py:472
+#: univ_drill/views.py:475 univ_drill/views.py:476
 msgid "Practise attributes"
 msgstr "Hárjehala attribuhttahámiid"
 
-#: univ_drill/views.py:473
+#: univ_drill/views.py:477
 msgid "Practise adjectives in nominative"
 msgstr "Hárjehala adjektiivvaid nominatiivvas."
 
-#: univ_drill/views.py:474
+#: univ_drill/views.py:478
 msgid "Practise adjectives in illative"
 msgstr "Hárjehala adjektiivvaid illatiivvas."
 
-#: univ_drill/views.py:475
+#: univ_drill/views.py:479
 msgid "Practise adjectives in accusative"
 msgstr "Hárjehala adjektiivvaid akkusatiivvas."
 
-#: univ_drill/views.py:476
+#: univ_drill/views.py:480
 msgid "Practise adjectives in comitative"
 msgstr "Hárjehala adjektiivvaid komitatiivvas."
 
-#: univ_drill/views.py:477
+#: univ_drill/views.py:481
 msgid "Practise adjectives in essive"
 msgstr "Hárjehala adjektiivvaid essiivvas."
 
-#: univ_drill/views.py:478
+#: univ_drill/views.py:482
 msgid "Practise adjectives in genitive"
 msgstr "Hárjehala adjektiivvaid genetiivvas."
 
-#: univ_drill/views.py:479
+#: univ_drill/views.py:483
 msgid "Practise adjectives in plural"
 msgstr "Hárjehala adjektiivvaid eanetlogus."
 
-#: univ_drill/views.py:480
+#: univ_drill/views.py:484
 msgid "Practise adjectives in locative"
 msgstr "Hárjehala adjektiivvaid lokatiivvas."
 
-#: univ_drill/views.py:481
+#: univ_drill/views.py:485
 msgid "Practise comparative"
 msgstr "Hárjehala komparatiivva."
 
-#: univ_drill/views.py:482
+#: univ_drill/views.py:486
 msgid "Practise superlative"
 msgstr "Hárjehala superlatiivva."
 
-#: univ_drill/views.py:483
+#: univ_drill/views.py:487
 msgid "Practise attributes in positive"
 msgstr "Hárjehala positiivva attribuhttahámiid."
 
-#: univ_drill/views.py:484
+#: univ_drill/views.py:488
 msgid "Practise attributes in comparative"
 msgstr "Hárjehala komparatiivva attribuhttahámiid."
 
-#: univ_drill/views.py:485
+#: univ_drill/views.py:489
 msgid "Practise attributes in superlative"
 msgstr "Hárjehala superlatiivva attribuhttahámiid."
 
-#: univ_drill/views.py:486
+#: univ_drill/views.py:490
 msgid "Practise predicative in positive"
 msgstr "Hárjehala predikatiivva positiivvas."
 
-#: univ_drill/views.py:487
+#: univ_drill/views.py:491
 msgid "Practise predicative in comparative"
 msgstr "Hárjehala predikatiivva komparatiivvas."
 
-#: univ_drill/views.py:488
+#: univ_drill/views.py:492
 msgid "Practise predicative in superlative"
 msgstr "Hárjehala predikatiivva superlatiivvas."
 
-#: univ_drill/views.py:489
+#: univ_drill/views.py:493
 msgid "Practise numeral attributes"
 msgstr "Hárjehala lohkosániid attribuhttahámiid."
 
-#: univ_drill/views.py:490 univ_drill/views.py:498
+#: univ_drill/views.py:494 univ_drill/views.py:502
 msgid "Practise plural"
 msgstr "Hárjehala eanetlogu nominatiivva."
 
-#: univ_drill/views.py:491 univ_drill/views.py:492
+#: univ_drill/views.py:495 univ_drill/views.py:496
 msgid "Practise nominative"
 msgstr "Hárjehala nominatiivva."
 
-#: univ_drill/views.py:493
+#: univ_drill/views.py:497
 msgid "Practise illative"
 msgstr "Hárjehala illatiivva."
 
-#: univ_drill/views.py:494
+#: univ_drill/views.py:498
 msgid "Practise accusative"
 msgstr "Hárjehala akkusatiivva."
 
-#: univ_drill/views.py:495
+#: univ_drill/views.py:499
 msgid "Practise comitative"
 msgstr "Hárjehala komitatiivva."
 
-#: univ_drill/views.py:496
+#: univ_drill/views.py:500
 msgid "Practise essive"
 msgstr "Hárjehala essiivva."
 
-#: univ_drill/views.py:497
+#: univ_drill/views.py:501
 msgid "Practise genitive"
 msgstr "Hárjehala genetiivva."
 
-#: univ_drill/views.py:499
+#: univ_drill/views.py:503
 msgid "Practise locative"
 msgstr "Hárjehala lokatiivva."
 
-#: univ_drill/views.py:500 univ_drill/views.py:501 univ_drill/views.py:502
-#: univ_drill/views.py:503
+#: univ_drill/views.py:504 univ_drill/views.py:505 univ_drill/views.py:506
+#: univ_drill/views.py:507
 msgid "Practise a mix"
 msgstr "Hárjehala seaghuvvon bargobihtáid."
 
-#: univ_drill/views.py:504
+#: univ_drill/views.py:508
 msgid "Practise numerals in illative"
 msgstr "Hárjehala lohkosániid illatiivvas."
 
-#: univ_drill/views.py:505
+#: univ_drill/views.py:509
 msgid "Practise numerals in accusative"
 msgstr "Hárjehala lohkosániid akkusatiivvas."
 
-#: univ_drill/views.py:506
+#: univ_drill/views.py:510
 msgid "Practise numerals in comitative"
 msgstr "Hárjehala lohkosániid komitatiivvas."
 
-#: univ_drill/views.py:507
+#: univ_drill/views.py:511
 msgid "Practise numerals in essive"
 msgstr "Hárjehala lohkosániid essiivvas."
 
-#: univ_drill/views.py:508
+#: univ_drill/views.py:512
 msgid "Practise numerals in genitive"
 msgstr "Hárjehala lohkosániid genetiivvas."
 
-#: univ_drill/views.py:509
+#: univ_drill/views.py:513
 msgid "Practise numerals in plural"
 msgstr "Hárjehala lohkosániid eanetlogus."
 
-#: univ_drill/views.py:510
+#: univ_drill/views.py:514
 msgid "Practise numerals in locative"
 msgstr "Hárjehala lohkosániid lokatiivvas."
 
-#: univ_drill/views.py:511
+#: univ_drill/views.py:515
 msgid "Practise collective numerals"
 msgstr "Hárjehala čoahkkeloguid."
 
-#: univ_drill/views.py:512
+#: univ_drill/views.py:516
 msgid "Practise ordinal numbers"
 msgstr "Hárjehala ortnetloguid."
 
-#: univ_drill/views.py:513
+#: univ_drill/views.py:517
 msgid "Practise ordinal numerals in illative"
 msgstr "Hárjehala ortnetloguid illatiivvas."
 
-#: univ_drill/views.py:514
+#: univ_drill/views.py:518
 msgid "Practise ordinal numerals in accusative"
 msgstr "Hárjehala ortnetloguid akkusatiivvas."
 
-#: univ_drill/views.py:515
+#: univ_drill/views.py:519
 msgid "Practise ordinal numerals in comitative"
 msgstr "Hárjehala ortnetloguid komitatiivvas."
 
-#: univ_drill/views.py:516
+#: univ_drill/views.py:520
 msgid "Practise ordinal numerals in essive"
 msgstr "Hárjehala ortnetloguid essiivvas."
 
-#: univ_drill/views.py:517
+#: univ_drill/views.py:521
 msgid "Practise ordinal numerals in genitive"
 msgstr "Hárjehala ortnetloguid genetiivvas."
 
-#: univ_drill/views.py:518
+#: univ_drill/views.py:522
 msgid "Practise ordinal numerals in plural"
 msgstr "Hárjehala ortnetloguid eanetlogus."
 
-#: univ_drill/views.py:519
+#: univ_drill/views.py:523
 msgid "Practise ordinal numerals in locative"
 msgstr "Hárjehala lohkosániid lokatiivvas."
 
-#: univ_drill/views.py:520
+#: univ_drill/views.py:524
 msgid "Practise collective numerals in illative"
 msgstr "Hárjehala lohkosániid illatiivvas."
 
-#: univ_drill/views.py:521
+#: univ_drill/views.py:525
 msgid "Practise collective numerals in accusative"
 msgstr "Hárjehala lohkosániid akkusatiivvas."
 
-#: univ_drill/views.py:522
+#: univ_drill/views.py:526
 msgid "Practise collective numerals in comitative"
 msgstr "Hárjehala čoahkkeloguid komitatiivvas."
 
-#: univ_drill/views.py:523
+#: univ_drill/views.py:527
 msgid "Practise collective numerals in essive"
 msgstr "Hárjehala čoahkkeloguid essiivvas."
 
-#: univ_drill/views.py:524
+#: univ_drill/views.py:528
 msgid "Practise collective numerals in genitive"
 msgstr "Hárjehala čoahkkeloguid genetiivvas."
 
-#: univ_drill/views.py:525
+#: univ_drill/views.py:529
 msgid "Practise collective numerals in plural"
 msgstr "Hárjehala čoahkkeloguid eanetlogus."
 
-#: univ_drill/views.py:526
+#: univ_drill/views.py:530
 msgid "Practise collective numerals in locative"
 msgstr "Hárjehala čoahkkeloguid lokatiivvas."
 
-#: univ_drill/views.py:527 univ_drill/views.py:534
+#: univ_drill/views.py:531 univ_drill/views.py:538
 msgid "Practise present"
 msgstr "Hárjehala preseanssa."
 
-#: univ_drill/views.py:528 univ_drill/views.py:535
+#: univ_drill/views.py:532 univ_drill/views.py:539
 msgid "Practise past"
 msgstr "Hárjehala preterihta."
 
-#: univ_drill/views.py:529 univ_drill/views.py:536
+#: univ_drill/views.py:533 univ_drill/views.py:540
 msgid "Practise perfect"
 msgstr "Hárjehala perfeavtta."
 
-#: univ_drill/views.py:530 univ_drill/views.py:537
+#: univ_drill/views.py:534 univ_drill/views.py:541
 msgid "Practise gerund"
 msgstr "Hárjehala gerunda."
 
-#: univ_drill/views.py:531 univ_drill/views.py:538
+#: univ_drill/views.py:535 univ_drill/views.py:542
 msgid "Practise conditional"
 msgstr "Hárjehala konditionála."
 
-#: univ_drill/views.py:532 univ_drill/views.py:539
+#: univ_drill/views.py:536 univ_drill/views.py:543
 msgid "Practise imperative"
 msgstr "Hárjehala imperatiivva."
 
-#: univ_drill/views.py:533 univ_drill/views.py:540
+#: univ_drill/views.py:537 univ_drill/views.py:544
 msgid "Practise potential"
 msgstr "Hárjehala potentiála."
 
-#: univ_drill/views.py:541
+#: univ_drill/views.py:545
 msgid "Practise "
 msgstr "Hárjehala "
 
-#: univ_drill/views.py:542
+#: univ_drill/views.py:546
 msgid "Practise reciprocative pronouns"
 msgstr "Hárjehala resiprohka pronomeniid"
 
-#: univ_drill/views.py:543
+#: univ_drill/views.py:547
 msgid "Practise reflexive pronouns"
 msgstr "Hárjehala refleksiiva pronomeniid."
 
-#: univ_drill/views.py:544
+#: univ_drill/views.py:548
 msgid "Practise demonstrative pronouns"
 msgstr "Hárjehala čujuheaddji pronomeniid."
 
@@ -1581,20 +1596,20 @@ msgstr "Veahkki"
 msgid "This is almost correct!"
 msgstr "Measta riekta!"
 
-#: univ_drill/templates/game.html:183 univ_drill/templates/leksa.html:74
-#: univ_drill/templates/vasta.html:60
+#: univ_drill/templates/game.html:186 univ_drill/templates/leksa.html:74
+#: univ_drill/templates/vasta.html:83
 msgid "Test answers"
 msgstr "Iskka vástádusaid"
 
-#: univ_drill/templates/game.html:186 univ_drill/templates/leksa.html:77
+#: univ_drill/templates/game.html:189 univ_drill/templates/leksa.html:77
 msgid "Show the correct answers"
 msgstr "Čájet rivttes vástádusaid"
 
-#: univ_drill/templates/game.html:194
+#: univ_drill/templates/game.html:197
 msgid "Congratulations!"
 msgstr "Gratulerer!"
 
-#: univ_drill/templates/game.html:197
+#: univ_drill/templates/game.html:200
 msgid "Your score:"
 msgstr "Du čuoggát:"
 
@@ -1623,13 +1638,13 @@ msgid "Select the language pair"
 msgstr "Vállje giellapára"
 
 #: univ_drill/templates/leksa.html:57 univ_drill/templates/mgame.html:61
-#: univ_drill/templates/vasta.html:36
+#: univ_drill/templates/vasta.html:43
 msgid "Book"
 msgstr "Girji"
 
 #: univ_drill/templates/leksa.html:62 univ_drill/templates/leksa.html.py:65
 #: univ_drill/templates/leksa_place.html:42 univ_drill/templates/mgame.html:69
-#: univ_drill/templates/num.html:68 univ_drill/templates/vasta.html:43
+#: univ_drill/templates/num.html:68 univ_drill/templates/vasta.html:50
 msgid "New set"
 msgstr "Ođđa bargobihtát"
 
@@ -1677,22 +1692,22 @@ msgid ""
 msgstr ""
 "Sojat adjektiivvaid. Jus coahkkalat sáni, de oaččut dárogiel jorgalusa."
 
-#: univ_drill/templates/mgame_a.html:16 univ_drill/templates/mgame_l.html:17
+#: univ_drill/templates/mgame_a.html:14 univ_drill/templates/mgame_l.html:17
 #: univ_drill/templates/mgame_l.html:20 univ_drill/templates/mgame_n.html:15
 #: univ_drill/templates/mgame_n.html:25 univ_drill/templates/mgame_p.html:15
 msgid "Case"
 msgstr "Kasusa"
 
-#: univ_drill/templates/mgame_a.html:18
+#: univ_drill/templates/mgame_a.html:16
 msgid "Grade"
 msgstr "Gráda"
 
-#: univ_drill/templates/mgame_a.html:20 univ_drill/templates/mgame_n.html:17
+#: univ_drill/templates/mgame_a.html:18 univ_drill/templates/mgame_n.html:17
 #: univ_drill/templates/mgame_v.html:18
 msgid "Stem"
 msgstr "Máddagat"
 
-#: univ_drill/templates/mgame_a.html:31 univ_drill/templates/mgame_l.html:30
+#: univ_drill/templates/mgame_a.html:27 univ_drill/templates/mgame_l.html:30
 #: univ_drill/templates/mgame_v.html:16 univ_drill/templates/mgame_v.html:26
 msgid "Type"
 msgstr "Bargobihtát"
@@ -1701,7 +1716,7 @@ msgstr "Bargobihtát"
 msgid "Add numerals in correct forms."
 msgstr "Sojat lohkosániid riekta"
 
-#: univ_drill/templates/mgame_l.html:25 univ_drill/templates/vasta.html:35
+#: univ_drill/templates/mgame_l.html:25 univ_drill/templates/vasta.html:42
 msgid "Level"
 msgstr "Dássi"
 
@@ -1822,7 +1837,17 @@ msgstr "Vasta"
 msgid "VastaS"
 msgstr "VastaS"
 
-#: univ_drill/templates/vasta.html:23
+#: univ_drill/templates/vasta.html:25
+msgid "Answer the questions with full sentences."
+msgstr "Vástit olles cealkagiin."
+
+#: univ_drill/templates/vasta.html:26
+msgid ""
+"The blue words are given in the primary form. Your task is to write them in "
+"the correct grammatical form."
+msgstr ""
+
+#: univ_drill/templates/vasta.html:28
 msgid ""
 "Answer to the questions with full sentences. Be aware of that if there is "
 "moai/mii in the question, you have to answer with doai/dii. "
@@ -1830,13 +1855,13 @@ msgstr ""
 "Vástit olles cealkagiin. Fuobmá ahte jus jearaldagas lea moai/mii, de don "
 "vástidat doai/dii. "
 
-#: univ_drill/templates/vasta.html:30
+#: univ_drill/templates/vasta.html:37
 msgid ""
 "NB! NB! The Vasta game is not working properly, due to technical problems! "
 "NB! NB!"
 msgstr ""
 
-#: univ_drill/templates/vasta.html:31
+#: univ_drill/templates/vasta.html:38
 msgid ""
 "NB! NB! The Vasta game is temporarily out of order, due to technical "
 "maintenance! NB! NB!"
@@ -1961,6 +1986,9 @@ msgstr "Sádde dieđu"
 #: univ_feedback/templates/thankyou.html:6
 msgid "Thank you for you feedback!"
 msgstr "Giitu máhcahusa ovddas!"
+
+#~ msgid "average score"
+#~ msgstr "Gaskamearreboađus"
 
 #~ msgid "inessive"
 #~ msgstr "Inessiiva"
