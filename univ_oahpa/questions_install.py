@@ -13,12 +13,12 @@ import codecs
 class TagError(Exception):
 
 	def __str__(self):
-		msg = (" ** Grammars defined in element, but no inflections were found."
-				"    Check that tags.txt and paradigms.txt include all tags."
-				""
-				"    Alternatively, ensure that <grammar tag /> is a valid tag,"
-				"    or that <grammar pos /> is a valid PoS.")
-		return repr(msg)
+		msg = ("\n ** Grammars defined in element, but no inflections were found.\n"
+				"    Check that tags.txt and paradigms.txt include all tags.\n"
+				"\n"
+				"    Alternatively, ensure that <grammar tag /> is a valid tag,\n"
+				"    or that <grammar pos /> is a valid PoS.\n")
+		return msg
 
 class Questions:
 
@@ -272,7 +272,8 @@ class Questions:
 		if not tagelements and not agr_elements:
 			print "\tno inflection for", el_id
 			if len(grammars) > 0:
-				raise TagError
+				print TagError()
+				sys.exit(2)
 			return
 
 		if not tagelements: 
