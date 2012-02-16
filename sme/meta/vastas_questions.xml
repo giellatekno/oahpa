@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <questions game="cealkka">
-  <q level="M" id="1_PrsSg1_AAttr_Acc">
+  <q level="1" lemmacount="3" id="1_PrsSg1_AAttr_Acc">
     <qtype>PRS</qtype>
    <question>
       <text>Maid oainnát šiljus</text>
@@ -13,7 +13,7 @@
         <id>oaidnit</id>
       </element>
       <element id="ADJ">
-        <grammar tag="A+Sg+Nom"/>
+        <grammar tag="A+Sg+Nom"/>f
         <sem class="COLOUR"/>
       </element>
       <element id="NOUN">
@@ -22,7 +22,7 @@
       </element>
     </answer>
   </q> 
-  <q level="M" id="2_PrsSg1_AAttr_Acc">
+  <q level="1"  lemmacount="3" id="2_PrsSg1_AAttr_Acc">
     <qtype>PRS</qtype>
    <question>
       <text>Maid oainnát gáttis</text>
@@ -43,7 +43,7 @@
       </element>
     </answer>
   </q> 
-  <q level="M" id="1_PrtSg1_AAttr_Acc">
+  <q level="2" lemmacount="3" id="1_PrtSg1_AAttr_Acc">
     <qtype>PRT</qtype>
    <question>
       <text>Gean deivet gáffádagas</text>
@@ -57,6 +57,57 @@
       <element id="ADJ">
         <grammar tag="A+Sg+Nom"/>
         <sem class="mHUM_A"/>
+      </element>
+      <element id="NOUN">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mPEOPLE"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="1" lemmacount="2" id="1_PrsSg1_AAttr_Acc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid oainnát šiljus</text>
+    </question>
+    <answer> 
+      <text>Mun VERB NOUN</text>
+      <element id="VERB">
+        <grammar tag="V+Inf"/>
+        <id>oaidnit</id>
+      </element>
+      <element id="NOUN">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mPRIVVEHICLE"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="1"  lemmacount="2" id="2_PrsSg1_AAttr_Acc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid oainnát gáttis</text>
+    </question>
+    <answer> 
+      <text>Mun VERB NOUN</text>
+      <element id="VERB">
+        <grammar tag="V+Inf"/>
+        <id>oaidnit</id>
+      </element>
+      <element id="NOUN">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="ANIMAL_DOM"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="2" id="1_PrtSg1_AAttr_Acc">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Gean deivet gáffádagas</text>
+    </question>
+    <answer> 
+      <text>Mun VERB NOUN</text>
+      <element id="VERB">
+        <grammar tag="V+Inf"/>
+        <id>deaivat</id>
       </element>
       <element id="NOUN">
         <grammar tag="N+Sg+Nom"/>
