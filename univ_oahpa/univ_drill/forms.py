@@ -116,8 +116,8 @@ ADJCASE_CHOICES = (
 
 ADJEX_CHOICES = (
 	('A-ATTR', _('attributive')), 	# A+Nom+Sg -> A+Attr
- 	('A-COMP', _('comparative')),		# A+Nom+Sg -> Comp	TODO: A+Attr -> Comp
- 	('A-SUPERL', _('superlative')),	# A+Nom+Sg -> Superl	TODO: A+Attr -> Comp
+ 	('A-COMP', _('comparative')),		# A+Nom+Sg -> Comp	
+ 	('A-SUPERL', _('superlative')),	# A+Nom+Sg -> Superl	
 
 )
 
@@ -1044,7 +1044,6 @@ class LeksaQuestion(OahpaQuestion):
 		else:
 			self.lemma = word.definition
 		
-		# TODO: insert infinitives with settings.INFINITIVES
 		if word.pos.upper() == 'V':
 			if word.language in infinitives_sub and infinitives_add:
 				infin_s = infinitives_sub[word.language]
@@ -1511,20 +1510,13 @@ class DatoSettings(KlokkaSettings):
 
 	default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'numgame': 'string'}
 
-# TODO: Relax answer format if number? Accept other things than DD.MM.?
-# DD.MM
-# DD/MM
-
 
 class DatoQuestion(KlokkaQuestion):
 	
 	game_log_name = "dato"
 
 	def answer_relax(self, answer):
-		""" TODO: any need to relax the date?
-			
-			TODO: perhaps relax MM.DD. to MM.D. if one digit
-				  is a zero?
+		""" No need to relax.
 		"""
 
 		return answer
