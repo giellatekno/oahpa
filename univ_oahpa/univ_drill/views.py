@@ -875,7 +875,7 @@ class Cealkkaview:
 		count=0
 		correct=0
 
-		self.settings['gametype'] = "cealk"
+		self.settings['gametype'] = "cealkka"
 		
 		if request.method == 'POST':
 			data = request.POST.copy()
@@ -908,7 +908,7 @@ class Cealkkaview:
 			game.init_tags()
 			game.num_fields = 2
 
-			game.gametype="cealk"
+			game.gametype="cealkka"
 
 			# If settings are changed, a new game is created
 			# Otherwise the game is created using the user input.
@@ -942,7 +942,7 @@ class Cealkkaview:
 			# Cealkka
 			game = CealkkaGame(self.settings)
 			game.init_tags()
-			game.gametype="cealk"
+			game.gametype="cealkka"
 			game.num_fields = 2
 
 			game.new_game()
@@ -958,7 +958,7 @@ class Cealkkaview:
 			'count': game.count,
 			'comment': game.comment,
 			'all_correct': all_correct,
-			'gametype': "cealk"
+			'gametype': "cealkka"
 			})
 		return c
 
@@ -967,7 +967,7 @@ def cealkka(request):
 
 	cealkkagame = Cealkkaview()
 	cealkkagame.init_settings()
-	cealkkagame.settings['gametype'] = "cealk"
+	cealkkagame.settings['gametype'] = "cealkka"
 
 	c = cealkkagame.create_cealkkagame(request)
 	return render_to_response('vasta.html', c, context_instance=RequestContext(request))

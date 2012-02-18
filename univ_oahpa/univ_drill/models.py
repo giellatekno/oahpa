@@ -755,6 +755,7 @@ class Question(models.Model):
 								 null=True, 
 								 related_name='answer_set')
 	gametype = models.CharField(max_length=7)
+	lemmacount = models.IntegerField(max_length=3)
 	source = models.ManyToManyField(Source)
 	def __unicode__(self):
 		return self.qid + ': ' + self.string

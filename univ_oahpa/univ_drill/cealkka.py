@@ -34,7 +34,7 @@ class CealkkaGame(Game):
 		# Default tense and mood for testing
 		self.tense = "Prs"
 		self.mood = "Ind"
-		self.gametype = "cealk" 
+		self.gametype = "cealkka" 
 				
 		# TODO: check this in smeoahpa, possible source of error.
 		# Values for pairs QPN-APN
@@ -751,13 +751,18 @@ class CealkkaGame(Game):
 	def get_question_cealkka(self,db_info,qtype):
 
 		qwords = {}
-		#if self.settings.has_key('level'): 
-		 # level=int(self.settings['level'])
-		#else: # default level was set to 'all', but I could not find where
-		level='1'
-		
-		q_count = Question.objects.filter(gametype="cealk", level__lte=level).count()
-		question = Question.objects.filter(gametype="cealk", level__lte=level)[randint(0,q_count-1)] 
+                if self.settings.has_key('level') and self.settings['level'] not in ['All','all']: 
+                    level=int(self.settings['level'])
+                else: # default level was set to 'all', but I could not find where
+                    level=1
+                if self.settings.has_key('lemmacount'):  # added by Heli
+                    lemmacount=int(self.settings['lemmacount'])
+                else:
+                    lemmacount=3		
+		q_count = Question.objects.filter(gametype="cealkka", level__lte=level,lemmacount__lte=lemmacount).count()
+		question = Question.objects.filter(gametype="cealkka", level__lte=level, lemmacount__lte=lemmacount)[randint(0,q_count-1)]
+		#print level
+		#print lemmacount 
 		#question = Question.objects.get(id="107")
 	   
 		qtype = question.qtype
@@ -780,7 +785,7 @@ class CealkkaGame(Game):
 
 		# Generate the set of possible answers if they are not coming from the interface
 		# Or if the gametype is qa.
-		if db_info.has_key('answer_id') and self.settings['gametype'] == 'cealk':
+		if db_info.has_key('answer_id') and self.settings['gametype'] == 'cealkka':
 			awords=db_info['awords']
 		else:
 			# Generate the set of possible answers

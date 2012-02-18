@@ -236,6 +236,11 @@ VASTA_LEVELS = (
 	('3', _('Third level')),
 )
 
+VASTAS_NR_OF_TASKWORDS = (
+	('2', _('2')),
+	('3', _('2-3')),
+)
+
 TRANS_CHOICES = (
 	('smenob', _('North Sami to Norwegian')),
 	('nobsme', _('Norwegian to North Sami')),
@@ -375,7 +380,8 @@ ALL_CHOICES = [
 	SEMTYPE_CHOICES, 
 	SYLLABLE_VALUES,
 	TRANS_CHOICES, 
-	VASTA_LEVELS, 
+	VASTA_LEVELS,
+	VASTAS_NR_OF_TASKWORDS, 
 	VERB_CLASSES,
 	VTYPE_CHOICES, 
 	VTYPE_CONTEXT_CHOICES]
@@ -862,6 +868,7 @@ class OahpaSettings(forms.Form):
 					'trisyllabic': False,
 					'contracted': False,
 					'level' : 'all',
+					'lemmacount' : '3',
 					'case': 'N-ILL',
 					'pos' : 'N',
 					'vtype' : 'PRS',
@@ -2285,7 +2292,7 @@ def cealkka_is_correct(self,question,qwords,language,question_id):  #was: questi
             analysis = analysis + cohort
         
         #print analysis
-        if self.gametype=="cealk":
+        if self.gametype=="cealkka":
             analysis = analysis + "\"<^cealkka>\"\n\t\"^cealkka\" QDL " + question_id +"\n"
         else:
             analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
@@ -2435,12 +2442,14 @@ class CealkkaSettings(OahpaSettings):
 
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
     level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
-    default_data = {'gametype' : 'cealk'}
+    lemmacount = forms.ChoiceField(initial='3', choices=VASTAS_NR_OF_TASKWORDS, widget=forms.Select)
+
+    default_data = {'gametype' : 'cealkka'}
 
     def __init__(self, *args, **kwargs):
         self.set_settings()
         self.set_default_data()
-        self.default_data['gametype'] = 'cealk',
+        self.default_data['gametype'] = 'cealkka',
         super(CealkkaSettings, self).__init__(*args, **kwargs)
 
 class CealkkaQuestion(OahpaQuestion):
@@ -2455,7 +2464,7 @@ class CealkkaQuestion(OahpaQuestion):
 
         self.init_variables("", userans_val, [])
         self.dialect = dialect
-        self.gametype = "cealk"
+        self.gametype = "cealkka"
         qtype=question.qtype
         atext = qanswer.string 
         # print atext
@@ -2552,7 +2561,7 @@ class CealkkaQuestion(OahpaQuestion):
         qstring = qstring + "?"
         self.question=qstring
  	
-        self.gametype="cealk"
+        self.gametype="cealkka"
         self.messages, jee, joo  = self.cealkka_is_correct(astring.encode('utf-8'), awords, language, question.qid)   # was qstring, qwords
         
         # set correct and error values
