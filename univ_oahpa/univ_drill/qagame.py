@@ -822,6 +822,7 @@ class QAGame(Game):
 		
 		pos = self.settings.get('pos', False)
 		
+		qtype_wordform = False
 
 		# Get qtype from settings.
 		if not qtype:
@@ -835,6 +836,8 @@ class QAGame(Game):
 				qtype = self.settings['adj_context']
 			if pos == "Pron":
 				qtype = self.settings['pron_context']
+				# TODO: reciprocative
+				# qtype_wordform = self.settings.get('wordform_type', False)
 
 		books = self.settings.get('book', None)
 

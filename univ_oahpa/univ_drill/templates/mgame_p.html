@@ -15,8 +15,15 @@
 		<li><label for="id_{{ settingsform.proncase.name }}">{% trans "Case" %}</label>
 			{{ settingsform.proncase }}</li>
 	{% else %}
+	{# context #}
 		<li><label for="id_{{ settingsform.pron_context.name }}">{% trans "Pronoun type" %}</label>
 			{{ settingsform.pron_context }}</li>
+		{% comment %}
+		{% ifequal settingsform.pron_context.value "P-RECIPR" %}
+			<li><label for="id_{{ settingsform.wordform_type.name }}">{% trans "Reciprocative type" %}</label>
+			{{ settingsform.wordform_type }}</li>
+		{% endifequal %}
+		{% endcomment %}
 	{% endifequal %}
 {% endblock %}
 
