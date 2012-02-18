@@ -45,7 +45,7 @@ TODO: internationalization strings
 					<th>{% trans "maximum" %}&nbsp;</th>
 					<th>{% trans "game count" %}</th>
 				</tr>
-				{% for grade in student.grades|dictsort:"game_name" %}
+				{% for grade in student.grades|dictsort:"game_name"|slice:":5" %}
 				<tr class="{% cycle "even" "odd" %}">
 					<td>{{ grade.game_name }}</td>
 					<td>{{ grade.average }}</td>
