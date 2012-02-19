@@ -465,7 +465,9 @@ class Questions:
 				
 			level = q.getAttribute('level')
 			if not level: level="1"
-
+			lemmacount = q.getAttribute('lemmacount')  # added by Heli
+			if not lemmacount: lemmacount="0"
+			
 			# Store question
 			qtype=""
 			qtype_els = q.getElementsByTagName("qtype")
@@ -483,7 +485,7 @@ class Questions:
 					questions[0].delete()
 
 			question_element,created = Question.objects.get_or_create(qid=qid, \
-																	  level=int(level), \
+																	  level=int(level),lemmacount=int(lemmacount), \
 																	  string=text, \
 																	  qtype=qtype, \
 																	  gametype=gametype,\
@@ -521,7 +523,7 @@ class Questions:
 			answers=q.getElementsByTagName("answer")
 			for ans in answers:				
 				text=ans.getElementsByTagName("text")[0].firstChild.data
-				answer_element = Question.objects.create(string=text,qatype="answer",question=question_element,level=1)
+				answer_element = Question.objects.create(string=text,qatype="answer",question=question_element,level=1,lemmacount=0)
 
 				answer_element.save()
 				self.read_elements(ans, answer_element, qtype)
