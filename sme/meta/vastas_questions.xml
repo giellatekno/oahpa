@@ -8,15 +8,15 @@
     </question>
     <answer> 
       <text>Mun VERB ADJ NOUN</text>
-      <element id="VERB">
+      <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <id>oaidnit</id>
       </element>
-      <element id="ADJ">
+      <element id="ADJ" task="yes">
         <grammar tag="A+Sg+Nom"/>
         <sem class="COLOUR"/>
       </element>
-      <element id="NOUN">
+      <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
         <sem class="mPRIVVEHICLE"/>
       </element>
@@ -29,15 +29,15 @@
     </question>
     <answer> 
       <text>Mun VERB ADJ NOUN</text>
-      <element id="VERB">
+      <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <id>oaidnit</id>
       </element>
-      <element id="ADJ">
+      <element id="ADJ" task="yes">
         <grammar tag="A+Sg+Nom"/>
         <sem class="ANIMAL_A"/>
       </element>
-      <element id="NOUN">
+      <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
         <sem class="ANIMAL_DOM"/>
       </element>
@@ -54,11 +54,11 @@
         <grammar tag="V+Inf"/>
         <id>deaivat</id>
       </element>
-      <element id="ADJ">
+      <element id="ADJ" task="yes">
         <grammar tag="A+Sg+Nom"/>
         <sem class="mHUM_A"/>
       </element>
-      <element id="NOUN">
+      <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
         <sem class="mPEOPLE"/>
       </element>
@@ -71,11 +71,11 @@
     </question>
     <answer> 
       <text>Mun VERB NOUN</text>
-      <element id="VERB">
+      <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <id>oaidnit</id>
       </element>
-      <element id="NOUN">
+      <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
         <sem class="mPRIVVEHICLE"/>
       </element>
@@ -88,11 +88,11 @@
     </question>
     <answer> 
       <text>Mun VERB NOUN</text>
-      <element id="VERB">
+      <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <id>oaidnit</id>
       </element>
-      <element id="NOUN">
+      <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
         <sem class="ANIMAL_DOM"/>
       </element>
@@ -105,11 +105,32 @@
     </question>
     <answer> 
       <text>Mun VERB NOUN</text>
-      <element id="VERB">
+      <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <id>deaivat</id>
       </element>
-      <element id="NOUN">
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mPEOPLE"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="2" id="3_PrtSg1_AAttr_Acc">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Gean deivet gáffádagas</text>
+    </question>
+    <answer> 
+      <text>Mun VERB NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>deaivat</id>
+      </element>
+      <element id="ADJ">
+        <grammar tag="A+Sg+Nom"/>
+        <sem class="mHUM_A"/>
+      </element>
+      <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
         <sem class="mPEOPLE"/>
       </element>
