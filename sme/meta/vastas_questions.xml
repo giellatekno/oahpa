@@ -43,28 +43,7 @@
       </element>
     </answer>
   </q> 
-  <q level="2" lemmacount="3" id="1_PrtSg1_AAttr_Acc">
-    <qtype>PRT</qtype>
-   <question>
-      <text>Gean deivet gáffádagas</text>
-    </question>
-    <answer> 
-      <text>Mun VERB ADJ NOUN</text>
-      <element id="VERB">
-        <grammar tag="V+Inf"/>
-        <id>deaivat</id>
-      </element>
-      <element id="ADJ" task="yes">
-        <grammar tag="A+Sg+Nom"/>
-        <sem class="mHUM_A"/>
-      </element>
-      <element id="NOUN" task="yes">
-        <grammar tag="N+Sg+Nom"/>
-        <sem class="mPEOPLE"/>
-      </element>
-    </answer>
-  </q> 
-  <q level="1" lemmacount="2" id="3_PrsSg1_AAttr_Acc">
+  <q level="1" lemmacount="2" id="1_PrsSg1_Acc">
     <qtype>PRS</qtype>
    <question>
       <text>Maid oainnát šiljus</text>
@@ -81,7 +60,7 @@
       </element>
     </answer>
   </q> 
-  <q level="1"  lemmacount="2" id="4_PrsSg1_AAttr_Acc">
+  <q level="1"  lemmacount="2" id="2_PrsSg1_Acc">
     <qtype>PRS</qtype>
    <question>
       <text>Maid oainnát gáttis</text>
@@ -98,7 +77,49 @@
       </element>
     </answer>
   </q> 
-  <q level="2" lemmacount="2" id="2_PrtSg1_AAttr_Acc">
+  <q level="1" lemmacount="3" id="1_PrsSg1_Dem_AAttr_Acc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Makkár biilla áiggut oastit</text>
+    </question>
+    <answer> 
+      <text>Mun áiggun oastit DEM ADJ NOUN</text>
+      <element id="DEM" task="yes">
+        <grammar tag="Pron+Dem+Sg+Nom"/>
+        <id>diet</id>
+      </element>
+      <element id="ADJ" task="yes">
+        <grammar tag="Adj+Sg+Nom"/>
+        <sem class="COLOUR"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>biila</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="3" id="1_PrtSg1_AAttr_Acc">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Gean deivet gáffádagas</text>
+    </question>
+    <answer> 
+      <text>Mun VERB ADJ NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>deaivat</id>
+      </element>
+      <element id="ADJ" task="yes">
+        <grammar tag="A+Sg+Nom"/>
+        <sem class="mHUM_A"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mPEOPLE"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="2" id="1_PrtSg1_Acc">
     <qtype>PRT</qtype>
    <question>
       <text>Gean deivet gáffádagas</text>
@@ -121,7 +142,7 @@
       <text>Gean deivet gáffádagas</text>
     </question>
     <answer> 
-      <text>Mun VERB NOUN</text>
+      <text>Mun VERB ADJ NOUN</text>
       <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <id>deaivat</id>
@@ -136,7 +157,171 @@
       </element>
     </answer>
   </q> 
-
+  <q level="2" lemmacount="3" id="1_PrtSg1_Num_Acc">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Maid borret gáffádagas</text>
+    </question>
+    <answer> 
+      <text>Mun VERB NUMBER NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>borrat</id>
+      </element>
+      <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_SMALL"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>guolli</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="1" lemmacount="3" id="1_PrfSg3_Dem_AAttr_Ill">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Geasa Heaika lea liikostan</text>
+    </question>
+    <answer> 
+      <text>Son lea liikostan DEM ADJ NOUN</text>
+      <element id="DEM" task="yes">
+        <grammar tag="Pron+Dem+Sg+Nom"/>
+        <id>duot</id>
+      </element>
+      <element id="ADJ" task="yes">
+        <grammar tag="Adj+Sg+Nom"/>
+        <sem class="mHUM_A"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>nieida</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="1" lemmacount="3" id="2_PrfSg3_Dem_AAttr_Ill">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Geasa Risten lea liikostan</text>
+    </question>
+    <answer> 
+      <text>Son lea liikostan DEM ADJ NOUN</text>
+      <element id="DEM" task="yes">
+        <grammar tag="Pron+Dem+Sg+Nom"/>
+        <id>duot</id>
+      </element>
+      <element id="ADJ" task="yes">
+        <grammar tag="Adj+Sg+Nom"/>
+        <sem class="mHUM_A"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>bárdni</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="1" lemmacount="2" id="1_PrsSg1_Dem_Ill">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Gosa bijat ildu</text>
+    </question>
+    <answer> 
+      <text>Bijan ildu DEM NOUN</text>
+      <element id="DEM" task="yes">
+        <grammar tag="Pron+Dem+Sg+Nom"/>
+        <id>diet</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>latnja</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="1" lemmacount="2" id="2_PrsSg1_Dem_Ill">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Gosa manat dál</text>
+    </question>
+    <answer> 
+      <text>Manan DEM NOUN</text>
+      <element id="DEM" task="yes">
+        <grammar tag="Pron+Dem+Sg+Nom"/>
+        <id>duot</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>viessu</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="1" lemmacount="2" id="1_PrsPl3_Loc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Gos min boares stuolut leat</text>
+    </question>
+    <answer> 
+      <text>Stuolut VERB NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>leat</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>lokta</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="1" lemmacount="2" id="2_PrsPl3_Loc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Gos eatni stuolut leat</text>
+    </question>
+    <answer> 
+      <text>Stuolut VERB NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>leat</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>oađđenlatnja</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="1" lemmacount="2" id="3_PrsPl3_Loc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Gos lihtit leat</text>
+    </question>
+    <answer> 
+      <text>Lihtit VERB NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>leat</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="ROOM"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="1" lemmacount="2" id="4_PrsPl3_Loc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Gos du fuolkkit orrot</text>
+    </question>
+    <answer> 
+      <text>Mu fuolkkit VERB NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>orrut</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mPLACENAME"/>
+      </element>
+    </answer>
+  </q> 
 
 </questions>
 
