@@ -1958,15 +1958,16 @@ LIST CEALKKA = "^cealkka" ;
 # These are the most common rules. They are put first, if possible, 
 # in order to get a more efficient parser.   
 
-REMOVE Px ;
-REMOVE ("Lea" N) ;
-REMOVE ("Le^a" N) ;
+LIST PROBLEMLEMMA = ("duo" N) ("Lea" N) ("Le^a" N) ("ristet" V) ;
+
+REMOVE PROBLEMLEMMA ;
 
 REMOVE LowercaseErr ;
 SELECT (Pers Du1) (0 ("Moa"))  ;
-REMOVE IllErr (0 Ill)  ;
-REMOVE IllVErr (0 Ill)  ;
-REMOVE CGErr  ;
+#REMOVE DiphErr (0 Ill)  ;
+#REMOVE IllErr (0 Ill)  ;
+#REMOVE IllVErr (0 Ill)  ;
+#REMOVE CGErr  ;
 
 
 LIST NOT-LIKELY-VERB = "ikte" "bárdni" "vávvá" ;
@@ -5377,19 +5378,38 @@ MAPPING-PREFIX = & ;
 
 # Cealkka
 
-LIST C_PRS = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc ;
+LIST C_PRS = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrsSg1_Acc 2_PrsSg1_Acc 1_PrsSg3_Dem_Ill 2_PrsSg3_Dem_Ill ;
 
-LIST C_PRT = 1_PrtSg1_AAttr_Acc ;
+LIST C_PRT = 1_PrtSg1_AAttr_Acc 1_PrtSg1_Acc 3_PrtSg1_AAttr_Acc 1_PrtSg1_Num_Acc ;
 
-LIST C_AATTR = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc ;
+LIST C_PRF = 1_PrfSg3_Dem_AAttr_Ill 2_PrfSg3_Dem_AAttr_Ill ;
 
-LIST C_ACC = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc ;
+LIST C_SG1 = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc 1_PrsSg1_Acc 2_PrsSg1_Acc 1_PrsSg1_Dem_AAttr_Acc 1_PrtSg1_Acc 3_PrtSg1_AAttr_Acc 1_PrtSg1_Num_Acc 1_PrsSg1_Dem_Ill 2_PrsSg1_Dem_Ill ;
 
-LIST C_SG1 = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc ;
+LIST C_SG3 = 1_PrsSg3_Prf_Dem_AAttr_Ill 2_PrsSg3_Prf_Dem_AAttr_Ill  ;
+
+LIST C_DEM = 1_PrsSg1_Dem_AAttr_Acc 1_PrsSg3_Prf_Dem_AAttr_Ill 2_PrsSg3_Prf_Dem_AAttr_Ill 1_PrsSg3_Dem_Ill 2_PrsSg3_Dem_Ill ;
+
+LIST C_AATTR = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc  1_PrsSg1_Dem_AAttr_Acc 3_PrtSg1_AAttr_Acc 1_PrsSg3_Prf_Dem_AAttr_Ill 2_PrsSg3_Prf_Dem_AAttr_Ill ;
+
+LIST C_ACC = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc 1_PrsSg1_Acc 2_PrsSg1_Acc 1_PrsSg1_Dem_AAttr_Acc 1_PrtSg1_Acc  3_PrtSg1_AAttr_Acc  ;
+
+LIST C_ILL = 1_PrfSg3_Dem_AAttr_Ill 2_PrfSg3_Dem_AAttr_Ill 1_PrsSg1_Dem_Ill 2_PrsSg1_Dem_Ill ;
+LIST C_LOC = 1_PrsPl3_Loc 2_PrsPl3_Loc 3_PrsPl3_Loc 4_PrsPl3_Loc ;
+
+LIST C_NUM_ACC = 1_PrtSg1_Num_Acc ;
+
 
 LIST NOUNLEMMA = (".*"r) ;
 LIST ADJLEMMA = (".*"r) ;
 LIST VERBLEMMA = (".*"r) ;
+
+SELECT $$NOUNLEMMA (0 (N Ill) OR (N Loc) LINK *-1 C_ILL OR C_LOC LINK *-1 $$NOUNLEMMA) ;
+
+REMOVE DiphErr (0 Ill)  ;
+REMOVE IllErr (0 Ill)  ;
+REMOVE IllVErr (0 Ill)  ;
+REMOVE CGErr  ;
 
 
 
@@ -5404,11 +5424,23 @@ MAP (&grm-incorr-tense) TARGET (PrfPrc) ((NOT 0 (V Prs) LINK *-1 C_PRS BARRIER P
 
 MAP (&sem-same-verb) TARGET VFIN (0 $$VERBLEMMA LINK *-1 CEALKKA BARRIER V LINK NOT *-1 $$VERBLEMMA) ;
 
+MAP (&grm-missing-Acc) TARGET Num (*-1 C_NUM_ACC BARRIER Num)(NOT 0 Acc) ;
 
+MAP (&grm-missing-Acc) TARGET N (*-1 C_ACC BARRIER (N Acc) OR Num)(NOT 0 Acc OR Gen) ;
 
-MAP (&grm-missing-Acc) TARGET N (*-1 C_ACC BARRIER (N Acc))(NOT 0 Acc OR Gen) ;
+MAP (&grm-error-Diph) TARGET (N Ill DiphErr) (*-1 C_ILL BARRIER (N Ill)) ; 
+MAP (&grm-error-Ill) TARGET (N IllErr) (*-1 C_ILL BARRIER (N Ill)) ;
+MAP (&grm-error-VIll) TARGET (N IllVErr) (*-1 C_ILL BARRIER (N Ill)) ; 
+MAP (&grm-missing-Ill) TARGET C_ILL (NOT *1 (N Ill)) ;
+
+MAP (&grm-Px-shouldbe-Loc) TARGET (N Loc CGErr) (*-1 C_LOC BARRIER (N Loc)) ; 
+MAP (&grm-Px-shouldbe-Loc) TARGET (N Nom PxSg3) (*-1 C_LOC BARRIER (N Loc)) ; 
+MAP (&grm-missing-Loc) TARGET C_LOC (NOT *1 (N Loc) OR (N Nom PxSg3)) ;
+
 
 MAP (&grm-non-agr-subj-v) TARGET V (*-1 C_SG1 BARRIER (V Sg1))(NOT 0 Sg1) ;
+
+MAP (&grm-non-agr-subj-v) TARGET V (*-1 C_SG3 BARRIER (V Sg3))(NOT 0 Sg3) ;
 
 
 # Sahka
@@ -5611,19 +5643,19 @@ LIST STRICTLOCV = "ávkkástallat" "ballat" "beasadit" "beroštit" "biehttalit" 
 LIST VALENCY-OBJ = N Pron Actio Inf ;
 
 # If a STRICTCOMV is followed by a ANIMATE, then the ANIMATE has to be Com. Exception for Gen + N - e.g. bártni moarsi beatnagiin): 
-MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE LINK NOT 0 Com)(NEGATE 0 Gen LINK *1 N BARRIER NPNH) ;
+MAP (&grm-missing-Com) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE LINK NOT 0 Com)(NEGATE 0 Gen LINK *1 N BARRIER NPNH) ;
 
 # If a STRICTCOMV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Com: 
-MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 ("birget") OR ("birgehallat") OR ("leaikkastallat") BARRIER NPNH LINK *-1 QDL)(NOT 0 Com OR Loc OR Ess) ;
+MAP (&grm-missing-Com) TARGET VALENCY-OBJ (*-1 ("birget") OR ("birgehallat") OR ("leaikkastallat") BARRIER NPNH LINK *-1 QDL)(NOT 0 Com OR Loc OR Ess) ;
 
 # If a STRICTCOMV is followd by a ANIMATE in Com, then there should be no Po: 
 MAP (&grm-should-not-PP) TARGET Po (-1 ANIMATE + Com LINK *-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL) ;
 
 # If a STRICTLOCV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Loc (no Inf is accepted) Exception for Gen + N - e.g. bártni moarsi beatnagis: 
-MAP (&grm-should-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc OR Nom)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Gen LINK 1 Actio) ;
+MAP (&grm-missing-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc OR Nom)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Gen LINK 1 Actio) ;
 
 # If a STRICTILLV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Ill, (no Inf is accepted). Exception is "liikot" + Inf, for PP amd for Gen + N - e.g. bártni moarsi beatnagii: 
-MAP (&grm-should-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill OR Nom)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH) ;
+MAP (&grm-missing-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill OR Nom)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK 1 (N Ill)) ;
 
 # Noun Ess only after an ESSV (other words can be between): 
 #MAP (&grm-should-not-Ess) TARGET (N Ess) (NOT *-1 ESSV OR ACCESSV BARRIER S-BOUNDARY) ; 
@@ -5727,6 +5759,11 @@ MAP (&grm-missing-Loc) TARGET ("guhte") IF (1 (N Loc) LINK *1 QDL LINK NOT *1 Lo
 MAP (&grm-error-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK *1C IllErr OR IllVErr BARRIER S-BOUNDARY OR DOHKO OR Ill)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
 MAP (&grm-error-Ill) TARGET ("guhte") IF (1 (N Ill) LINK *1 QDL LINK *1C IllErr OR IllVErr BARRIER S-BOUNDARY OR DOHKO OR Ill)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
 
+
+MAP (&grm-error-Diph) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK *1C DiphErr BARRIER S-BOUNDARY OR DOHKO OR Ill)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
+MAP (&grm-error-Diph) TARGET ("guhte") IF (1 (N Ill) LINK *1 QDL LINK *1C DiphErr BARRIER S-BOUNDARY OR DOHKO OR Ill)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
+
+
 MAP (&grm-missing-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK NOT *1 Ill OR DOHKO OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
 MAP (&grm-missing-Ill) TARGET ("guhte") IF (1 (N Ill) LINK *1 QDL LINK NOT *1 Ill OR DOHKO OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
 
@@ -5778,15 +5815,15 @@ REMOVE Gen IF (-1 ("makkár") LINK -1 BOS) ;
 # AGREEMENT INSIDE NP
 # -------------------
 
-###LIST DEM-SG-ACC-GEN = (Dem Sg Acc) (Dem Sg Gen) ;
-###LIST DEM-PL-ACC-GEN = (Dem Pl Acc) (Dem Pl Gen) ;
+LIST DEM-SG-ACC-GEN = (Dem Sg Acc) (Dem Sg Gen) ;
+LIST DEM-PL-ACC-GEN = (Dem Pl Acc) (Dem Pl Gen) ;
 
-#MAP (&grm-non-agreement-Dem) TARGET (Dem Nom) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 Nom) ;
-#MAP (&grm-non-agreement-Dem) TARGET DEM-SG-ACC-GEN IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Acc) OR (Sg Gen) OR (Sg Ill) OR (Sg Loc));
-#MAP (&grm-non-agreement-Dem) TARGET (Dem Sg Com) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Com));
-#MAP (&grm-non-agreement-Dem) TARGET DEM-PL-ACC-GEN IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Acc) OR (Pl Gen) OR (Pl Com));
-#MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Ill) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Ill));
-#MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Loc) IF (*-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Loc));
+MAP (&grm-non-agreement-Dem) TARGET (Dem Nom) IF (*-1 CEALKKA)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 Nom) ;
+MAP (&grm-non-agreement-Dem) TARGET DEM-SG-ACC-GEN IF (*-1 CEALKKA)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Acc) OR (Sg Gen) OR (Sg Ill) OR (Sg Loc));
+MAP (&grm-non-agreement-Dem) TARGET (Dem Sg Com) IF (*-1 CEALKKA)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Com));
+MAP (&grm-non-agreement-Dem) TARGET DEM-PL-ACC-GEN IF (*-1 CEALKKA)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Acc) OR (Pl Gen) OR (Pl Com));
+MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Ill) IF (*-1 CEALKKA)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Ill));
+MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Loc) IF (*-1 CEALKKA)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Loc));
 
 # dat viessu
 # dan viesu, vissui, viesus
@@ -5875,8 +5912,8 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl1) (*-1 QDL BARRIER S-BOUNDARY LINK
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Pl1) ;
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
 
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (N Pl Nom) LINK NOT 0 NUM-QUESTION OR Inf OR CEALKKA)(NOT 0 Pl3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU OR (Mii_namma_lea) OR  CEALKKA LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 NUM-QUESTION OR CEALKKA LINK *-1 (N Pl Nom) LINK NOT 0 Inf)(NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU OR (Mii_namma_lea) OR CEALKKA LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
 
@@ -5922,15 +5959,15 @@ MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK
 MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK 0 SAHKA LINK *-1 VFIN LINK NOT 0 Pl1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 
 # VASTA: Answer with the correct verbform if there is no Pers:
-MAP (&grm-incorr-pers-nr) TARGET (V Sg1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 MAKKAR-BARGU LINK *-1 VFIN LINK NOT 0 Sg2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Sg2) (*-1 QDL BARRIER S-BOUNDARY  OR Nom LINK *-1 VFIN LINK NOT 0 Sg1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL BARRIER S-BOUNDARY OR Nom OR VFIN LINK *-1 VFIN LINK NOT 0 Sg3 LINK NOT *-1 ("galle"))(NEGATE 0 ("leat") LINK *-1 QDL LINK *-1 go LINK -1 ("leat") LINK -1 BOS)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 DOYOUHAVE) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA LINK *-1 VFIN LINK NOT 0 Du2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Du2) (*-1 QDL BARRIER S-BOUNDARY  OR Nom LINK *-1 VFIN LINK NOT 0 Du1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Du3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Du3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA LINK *-1 VFIN LINK NOT 0 Pl2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Pl1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Pl3)(NEGATE *-1 (hálbiduvvon_galvvut) OR DOYOUHAVE)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 MAKKAR-BARGU OR CEALKKA LINK *-1 VFIN LINK NOT 0 Sg2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 CEALKKA LINK *-1 VFIN LINK NOT 0 Sg1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL BARRIER S-BOUNDARY OR Nom OR VFIN LINK NOT 0 CEALKKA LINK *-1 VFIN LINK NOT 0 Sg3 LINK NOT *-1 ("galle"))(NEGATE 0 ("leat") LINK *-1 QDL LINK *-1 go LINK -1 ("leat") LINK -1 BOS)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 DOYOUHAVE) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA OR CEALKKA LINK *-1 VFIN LINK NOT 0 Du2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Du2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 CEALKKA LINK *-1 VFIN LINK NOT 0 Du1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Du3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 CEALKKA LINK *-1 VFIN LINK NOT 0 Du3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA OR CEALKKA LINK *-1 VFIN LINK NOT 0 Pl2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 CEALKKA LINK *-1 VFIN LINK NOT 0 Pl1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 CEALKKA LINK *-1 VFIN LINK NOT 0 Pl3)(NEGATE *-1 (hálbiduvvon_galvvut) OR DOYOUHAVE)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 
 #MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 V-3)(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 #MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 V-3)(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
@@ -6275,7 +6312,7 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &grm-missing-Ess      	there should be an essive
 # &grm-missing-Gen      	there should be a genetive
 # &grm-missing-Ill      	there should be an illative
-# &grm-error-Ill			the illative form is not quite correct
+# &grm-error-Ill			the illative form is missing vowelchange
 # &grm-missing-Loc      	there should be a locative
 # &grm-missing-Nom      	there should be a nominative
 # &grm-missing-Loc-PP   	there should be a Loc or a PP
