@@ -5655,7 +5655,7 @@ MAP (&grm-should-not-PP) TARGET Po (-1 ANIMATE + Com LINK *-1 STRICTCOMV BARRIER
 MAP (&grm-missing-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc OR Nom)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Gen LINK 1 Actio) ;
 
 # If a STRICTILLV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Ill, (no Inf is accepted). Exception is "liikot" + Inf, for PP amd for Gen + N - e.g. bártni moarsi beatnagii: 
-MAP (&grm-missing-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill OR Nom)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK 1 (N Ill)) ;
+MAP (&grm-missing-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill OR Nom)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill)) ;
 
 # Noun Ess only after an ESSV (other words can be between): 
 #MAP (&grm-should-not-Ess) TARGET (N Ess) (NOT *-1 ESSV OR ACCESSV BARRIER S-BOUNDARY) ; 
