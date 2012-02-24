@@ -119,20 +119,9 @@
 			</element>
 		</question>
 		<answer>
-			<text>Juo, SUBJ geain leat ITEM MAINV</text>
+			<text>Juo, SUBJ geain leat ITEM</text>
 			<element game="morfa" id="SUBJ" task="yes">
 				<grammar tag="Pron+Pers+Pl3+Nom"/>
-			</element>
-			<element id="ITEM">
-				<sem class="TOY"/>
-				<grammar tag="N+Pl+Nom"/>
-			</element>
-		</answer>
-		<answer>
-			<text>Juo, sii HAB leat ITEM MAINV</text>
-			<element game="morfa" id="HAB" task="yes">
-				<grammar tag="Pron+Rel+Pl+Loc"/>
-				<id>geat</id>
 			</element>
 			<element id="ITEM">
 				<sem class="TOY"/>
@@ -990,4 +979,264 @@
 	  </element>
     </answer>
   </q>
+	<q id="prel1">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Gean don deivet ikte</text>
+		</question>
+		<answer>
+			<text>Deiven OBJ P-REL leamaš seammá luohkás go mun</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Nom"/>
+				<id>gii</id>
+			</element>
+			<element id="OBJ">
+				<sem class="mPERSNAME"/>
+				<grammar tag="N+Prop+Sg+Nom"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel2">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>MAINV go mánát</text>
+			<element id="MAINV">
+				<sem class="mPLAY_V"/>
+				<grammar tag="V+Ind+Prs+Pl3"/>
+			</element>
+		</question>
+		<answer>
+			<text>Juo, sii P-REL leat ITEM</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Loc"/>
+				<id>geat</id>
+			</element>
+			<element id="ITEM">
+				<sem class="TOY"/>
+				<grammar tag="N+Pl+Nom"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel3">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Gii riŋgii dutnje?</text>
+		</question>
+		<answer>
+			<text>Riŋgii olmmoš P-REL ledje máŋga ITEM</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Loc"/>
+				<id>geat</id>
+			</element>
+			<element id="ITEM">
+				<sem class="ANIMAL_PET"/>
+				<grammar tag="N+Sg+Gen"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel4">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Gean don deivet ikte</text>
+		</question>
+		<answer>
+			<text>Deiven olbmuid P-REL mánát leamaš mu oahppit</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Gen"/>
+				<id>geat</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel5">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Gean don deivet ikte?</text>
+		</question>
+		<answer>
+			<text>Deiven olbmo P-REL mánát leamaš mu oahppit</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Gen"/>
+				<id>gii</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel6">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Gean don deivet ikte?</text>
+		</question>
+		<answer>
+			<text>Deiven olbmo P-REL in liiko</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Ill"/>
+				<id>gii</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel7">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Gean don deivet ikte</text>
+		</question>
+		<answer>
+			<text>Deiven olbmuid P-REL in liiko</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Ill"/>
+				<id>geat</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel8">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid háliidat oastit</text>
+		</question>
+		<answer>
+			<text>Háliidan oastit OBJ P-REL ii leat nu divrras</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Nom"/>
+				<id>mii</id>
+			</element>
+			<element id="OBJ">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel9">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid háliidat oastit</text>
+		</question>
+		<answer>
+			<text>Háliidan oastit OBJ P-REL leat máŋga ivnni</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Loc"/>
+				<id>mii</id>
+			</element>
+			<element id="OBJ">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel10">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid háliidat oastit</text>
+		</question>
+		<answer>
+			<text>Háliidan oastit OBJ P-REL leat hearvvat</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Loc"/>
+				<id>mat</id>
+			</element>
+			<element id="OBJ">
+				<sem class="CLOTHING-PL"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel11">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid háliidat oastit</text>
+		</question>
+		<answer>
+			<text>Háliidan oastit OBJ P-REL duođaid liikon</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Ill"/>
+				<id>mat</id>
+			</element>
+			<element id="OBJ">
+				<sem class="CLOTHING-PL"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel12">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid háliidat oastit</text>
+		</question>
+		<answer>
+			<text>Háliidan oastit OBJ P-REL mu eadni liikošii</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Ill"/>
+				<id>mii</id>
+			</element>
+			<element id="OBJ">
+				<sem class="CLOTHING"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel13">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid háliidat oastit</text>
+		</question>
+		<answer>
+			<text>Háliidan oastit OBJ P-REL mu mánná ii balaše</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Loc"/>
+				<id>mii</id>
+			</element>
+			<element id="OBJ">
+				<sem class="ANIMAL_PET"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel14">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid háliidat oastit</text>
+		</question>
+		<answer>
+			<text>Háliidan oastit OBJ P-REL sáhtán čuohppat bierggu</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Com"/>
+				<id>mii</id>
+			</element>
+			<element id="OBJ">
+				<id>niibi</id>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel15">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid háliidat oastit</text>
+		</question>
+		<answer>
+			<text>Háliidan oastit OBJ P-REL sáhtán mannat festii</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Com"/>
+				<id>mii</id>
+			</element>
+			<element id="OBJ">
+				<sem class="CLOTHING-PL"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel16">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Makkár olbmo ozat</text>
+		</question>
+		<answer>
+			<text>Ozan nieidda P-REL sáhtášin VERB</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Com"/>
+				<id>gii</id>
+			</element>
+			<element id="VERB">
+				<sem class="mMARRY"/>
+				<grammar tag="V+Inf"/>
+			</element>
+		</answer>
+	</q>
 	</questions>
