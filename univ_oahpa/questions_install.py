@@ -10,7 +10,33 @@ import re
 import string
 import codecs
 
+def monitor(function):
+	from functools import wraps
+
+	@wraps(function)
+	def wrapper(*args, **kwargs):
+		print '--\n'
+		print ' %s args'
+		print '    ' + repr(args)
+		print ' %s kwargs'
+		print '    ' + repr(kwargs)
+		result = function(*args, **kwargs)
+		print ' %s args'
+		print '    ' + repr(args)
+		print ' %s kwargs'
+		print '    ' + repr(kwargs)
+		print ' %s result'
+		print '    ' + repr(result)
+		print '--\n'
+		return result
+	
+	return wrapper
+
+
 class TagError(Exception):
+	
+	def __init__(self, msg=False):
+		self.msg = msg
 
 	def __str__(self):
 		msg = ("\n ** Grammars defined in element, but no inflections were found.\n"
@@ -18,6 +44,8 @@ class TagError(Exception):
 				"\n"
 				"    Alternatively, ensure that <grammar tag /> is a valid tag,\n"
 				"    or that <grammar pos /> is a valid PoS.\n")
+		if self.msg:
+			msg += self.msg
 		return msg
 
 class Questions:
@@ -232,14 +260,14 @@ class Questions:
 					if self.values[el_id].has_key('tags'):
 						tagelements = self.values[el_id]['tags'].filter(pos__in=poses)
 			if tags:
-				for tag in tags:
-					tagvalues = []
-					self.get_tagvalues(tag,"",tagvalues)
-					tagstrings.extend(tagvalues)
+				tagstrings = self.get_tagvalues(tags)
 				if tagelements:
 					tagelements = tagelements or Tag.objects.filter(string__in=tagstrings)
 				else:
 					tagelements = Tag.objects.filter(string__in=tagstrings)
+				
+				# print tagelements
+				# raw_input()
 
 
 			# Extra check for pronouns
@@ -272,8 +300,7 @@ class Questions:
 		if not tagelements and not agr_elements:
 			print "\tno inflection for", el_id
 			if len(grammars) > 0:
-				print TagError()
-				sys.exit(2)
+				raise TagError
 			return
 
 		if not tagelements: 
@@ -573,10 +600,8 @@ class Questions:
 				if pos:
 					info2['pos'].append(pos)
 
-				tag=gr.getAttribute("tag")
-				tagvalues = []
-				self.get_tagvalues(tag,"",tagvalues)
-				tagstrings.extend(tagvalues)
+				tag = gr.getAttribute("tag")
+				tagstrings = self.get_tagvalues([tag])
 
 			if len(tagstrings) > 0:
 				tags = Tag.objects.filter(string__in=tagstrings)
@@ -584,32 +609,46 @@ class Questions:
 				
 			self.values[identifier] = info2
 
-	def get_tagvalues(self,rest,tagstring,tagvalues):
+	def get_tagvalues(self, tags):
+		""" This alters state of things without returning objects 
 
-		if not rest:
-			tagvalues.append(tagstring)
-			return
-		if rest.count("+") > 0:
-			t, rest = rest.split('+',1)
-		else:
-			t=rest
-			rest=""
-		if Tagname.objects.filter(tagname=t).count() > 0:
-			if tagstring:
-				tagstring = tagstring + "+" + t
+			Recurses through set of supplied tags to ensure that each element
+			is represented in tags.txt and paradigms.txt. """
+
+		def fill_out(tags):
+			from itertools import product
+
+			def make_list(item):
+				if type(item) == list:
+					return item
+				else:
+					return [item]
+
+			return list(product(*map(make_list, tags)))
+
+		def parse_tag(tag):
+			""" Iterate through a tag string by chunks, and check for tag sets
+			and tag names. Return the reassembled tag on success. """
+
+			tag_string = []
+			for item in tag.split('+'):
+				if Tagname.objects.filter(tagname=item).count() > 0:
+					tag_string.append(item)
+				elif Tagset.objects.filter(tagset=item).count() > 0:
+					tagnames = Tagname.objects.filter(tagset__tagset=item)
+					tag_string.append([t.tagname for t in tagnames])
+
+			if len(tag_string) > 0:
+				return ['+'.join(item) for item in fill_out(tag_string)]
 			else:
-				tagstring = t
-			self.get_tagvalues(rest,tagstring,tagvalues)
+				return False
+
+		if type(tags) == list:
+			tags = [a for a in tags if a]
+			parsed = sum(map(parse_tag, tags), [])
+			return parsed
 		else:
-			if Tagset.objects.filter(tagset=t).count() > 0:
-				tagnames=Tagname.objects.filter(tagset__tagset=t)
-				for t in tagnames:
-					if tagstring:
-						tagstring2 = tagstring + "+" + t.tagname
-					else:
-						tagstring2 = t.tagname
-					self.get_tagvalues(rest,tagstring2,tagvalues)
-	
+			return False
 
 	def delete_question(self, qid=None):
 		
