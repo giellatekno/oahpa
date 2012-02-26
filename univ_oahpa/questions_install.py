@@ -35,17 +35,33 @@ def monitor(function):
 
 class TagError(Exception):
 	
-	def __init__(self, msg=False):
-		self.msg = msg
+	def __init__(self, additional_messages=False):
+		self.additional_messages = additional_messages
 
 	def __str__(self):
 		msg = ("\n ** Grammars defined in element, but no inflections were found.\n"
 				"    Check that tags.txt and paradigms.txt include all tags.\n"
 				"\n"
 				"    Alternatively, ensure that <grammar tag /> is a valid tag,\n"
-				"    or that <grammar pos /> is a valid PoS.\n")
-		if self.msg:
-			msg += self.msg
+				"    or that <grammar pos /> is a valid PoS.\n"
+				"\n"
+				"    If the element specification includes an <id />, ensure that\n"
+				"    the <id /> refers to a word in the database that has forms  \n"
+				"    with the tags specified.\n")
+		if self.additional_messages:
+			for k, v in self.additional_messages.iteritems():
+				values = "\n".join(["        %s" % i for i in v])
+				append = ("\n"
+						"    %s:\n" % k)
+				append += values
+				msg += append
+		# if self.id_forms:
+			# msg += ("\n"
+					# "    Word in <id /> has forms matching:\n")
+			
+			# for item in self.id_forms:
+				# msg += "     %s\n" % item
+
 		return msg
 
 class Questions:
@@ -206,7 +222,8 @@ class Questions:
 		############# GRAMMAR
 		tagelements = None
 		grammars = list()
-		
+		not_found = []
+
 		if el: 
 			grammars = el.getElementsByTagName("grammar")
 
@@ -276,10 +293,21 @@ class Questions:
 				if t.pos == 'Pron':
 					if not words.has_key('Pron'): break
 					found = False
-					for w in words['Pron']:
-						if Form.objects.filter(tag=t,word=w).count()>0:
+					for w in words['Pron'][:]:
+						corresponding_forms = Form.objects.filter(tag__in=tagelements,
+																	word=w)
+						if corresponding_forms.count() > 0:
 							found = True
-							break
+						else:
+							# Should pop those that don't match, or else
+							# problems may arise
+							# TODO: this for other POS
+							not_found.append(
+								(list(set([w.lemma + '+' + form.tag.string
+									for form in w.form_set.all()])), 
+								t.string)
+							)
+							words['Pron'].pop(words['Pron'].index(w))
 					if not found:
 						tagelements = tagelements.exclude(id=t.id)
 
@@ -300,7 +328,13 @@ class Questions:
 		if not tagelements and not agr_elements:
 			print "\tno inflection for", el_id
 			if len(grammars) > 0:
-				raise TagError
+				additional_messages = {
+					'Grammar tags available for word id': 
+						sum([a[0] for a in not_found], []),
+					'<grammar /> specified': 
+						[a[1] for a in not_found],
+				}
+				raise TagError(additional_messages)
 			return
 
 		if not tagelements: 
