@@ -81,7 +81,7 @@ Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-
 * Morfa-feedback: [l-attributter|nudoc/l_atributes.html]
 * Semantiske sett: [Oversikt|nudoc/semantic_classes.html] //  [Innhold|nudoc/wordlists.html]
 * [MorfaC hvordan|nudoc/morfaC.html] // [MorfaC-oppgaver|nudoc/morfac_questions.html] //  [Vasta-oppgaver|nudoc/vasta_questions.html] 
-* Cealkka-dokumentasjon: [SAM-1030 ektui|nudoc/cealkka_dasit.html] // [xml-ovdamearka|nudoc/cealkka.html] 
+* VastaS-dokumentasjon: [Plan|nudoc/cealkka_dasit.html] // [xml-ovdamearka|nudoc/cealkka.html] 
 * [gen_only - begrensning av generering|nudoc/begrense_generering.html] 
 * [sme versus sma - lingvistisk og valg for Oahpa|nudoc/sme_vs_sma.html] 
 
@@ -96,9 +96,9 @@ Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-
 * Numra: [num2clock|nudoc/gen/numra_num2clock.csv], [clock2num|nudoc/gen/numra_clock2num.csv]  ([testrutine|common/TestingClockFst.html])
 
 !Testing
-* Testing av Vasta-, Sahka- og Cealkka-oppgaver skjer i ped/qa_test , les 00_readme . I qa_test/regressiontests/ er det filer med spørsmål fra de nevnte programmene. Filene bør prøvekjøres med qa-test_dialogue.pl hver gang det er gjort større endringer i fst eller sme-ped.cg3.
+* Testing av Vasta-, Sahka- og VastaS-oppgaver skjer i ped/qa_test , les 00_readme . I qa_test/regressiontests/ er det filer med spørsmål fra de nevnte programmene. Filene bør prøvekjøres med qa-test_dialogue.pl hver gang det er gjort større endringer i fst eller sme-ped.cg3.
 ** Filene med _corr.xml skal ikke gi noen &grm- eller &sem-tagger. 
-** Det bør lages tilsvarende filer som skal gi &grm- og &sem-tagger også, filene kan ha navn _errors.xml.
+** Det bør lages tilsvarende filer som skal gi &grm- og &sem-tagger også, filene lagres i errortests.
 
 
 
@@ -120,12 +120,12 @@ Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-
 !Arbeidsliste / Barggut 2012
 
 ! Innhold / Sisdoallu
-* [workshop for lærere 2-3.2.12 i Tromsø|http://giellatekno.uit.no/univOahpa/02_2012/info_nob.html] // [bargobadji oahpaheddjiiguin Romssas 2-3.2.12|http://giellatekno.uit.no/univOahpa/02_2012/index.html]
+* [workshop for lærere 2-3.2.12 i Tromsø|http://giellatekno.uit.no/univOahpa/02_2012/info_nob.html] // [bargobadji oahpaheddjiiguin Romssas 2-3.2.12|http://giellatekno.uit.no/univOahpa/02_2012/index.html] __ok__
 * Åpen innlogging i Oahpa med automatisk gjenkjenning på site / Rabas sisaloggen Oahpai ja automáhtalaš dohkkeheapmi site:i
 * Tilpasse grammatikk til ny referansegrammatikk / Heivehit grammatihka ođđa referánsagrammatihkkii
 * MorfaS: pronomen - personlige, refleksive, resiproke og demonstrative / pronomenhárjehallan  __ok__
-* MorfaC: pronomen - lage oppgaver / ráhkadit pronomenbargobihtáid 
-* Cealkka: lage oppgaver og tilpasse cg-fil / ráhkadit bargobihtáid ja lasihit cg-fiilii
+* MorfaC: pronomen - lage oppgaver / ráhkadit pronomenbargobihtáid  __ok__
+* VastaS: lage oppgaver og tilpasse cg-fil / ráhkadit bargobihtáid ja lasihit cg-fiilii
 * Sahka: nye dialoger / ođđa ságastallamat
 * Vasta: temaer / fáttát
 * nettordbok i grensesnittet i Vasta og Sahka (?) / fierbmesátnegirji [nettordbok|http://victorio.uit.no/webdict/index.html]
