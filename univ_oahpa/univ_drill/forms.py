@@ -101,6 +101,7 @@ PRON_CONTEXT_CHOICES = (
     ('P-DEM', _('demonstrative')),
     ('P-RECIPR', _('reciprocative')),
     ('P-REFL', _('reflexive')),
+    ('P-REL', _('relative')),
 )
 
 WORDFORM_TYPE_CHOICES = (
