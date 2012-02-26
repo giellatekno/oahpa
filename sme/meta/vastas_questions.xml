@@ -375,13 +375,13 @@
         <grammar tag="N+Prop+Sg+Nom"/>
         <sem class="mPERSNAME"/>
       </element>
-      <element id="AUX" task="yes">
-        <grammar tag="V+Inf"/>
-        <id>astat</id> 
-      </element>
       <element id="NEG" task="yes">
         <grammar tag="V+Neg+Ind+Sg3"/>
         <id>ii</id>
+      </element>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>astat</id> 
       </element>
       <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
@@ -623,7 +623,7 @@
         <id>oastit</id> 
       </element>
       <element id="OBJ">
-        <grammar tag="N+Sg+Acc"/>
+        <grammar tag="N+Pl+Acc"/>
         <sem class="FOOD_GROCERY"/>
       </element>
     </answer>
