@@ -987,7 +987,7 @@
 		<answer>
 			<text>Deiven OBJ P-REL leamaš seammá luohkás go mun</text>
 			<element game="morfa" id="P-REL" task="yes">
-				<grammar tag="Pron+Rel+Pl+Nom"/>
+				<grammar tag="Pron+Rel+Sg+Nom"/>
 				<id>gii</id>
 			</element>
 			<element id="OBJ">
@@ -1026,7 +1026,7 @@
 			<text>Riŋgii olmmoš P-REL ledje máŋga ITEM</text>
 			<element game="morfa" id="P-REL" task="yes">
 				<grammar tag="Pron+Rel+Sg+Loc"/>
-				<id>geat</id>
+				<id>gii</id>
 			</element>
 			<element id="ITEM">
 				<sem class="ANIMAL_PET"/>
@@ -1120,6 +1120,8 @@
 			</element>
 		</answer>
 	</q>
+	<!-- TODO: unable to find words with CLOTHING-PL and N+Sg+Acc -->
+	<!-- 
 	<q id="prel10">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1154,6 +1156,7 @@
 			</element>
 		</answer>
 	</q>
+	-->
 	<q id="prel12">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1205,6 +1208,8 @@
 			</element>
 		</answer>
 	</q>
+	<!-- TODO: clothing -->
+	<!--
 	<q id="prel15">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1222,6 +1227,7 @@
 			</element>
 		</answer>
 	</q>
+	-->
 	<q id="prel16">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1239,4 +1245,4 @@
 			</element>
 		</answer>
 	</q>
-	</questions>
+</questions>
