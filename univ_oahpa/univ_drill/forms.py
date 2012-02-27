@@ -1128,7 +1128,7 @@ class MorfaSettings(OahpaSettings):
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-PERS', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
-	wordform_type = forms.ChoiceField(initial='1', choices=WORDFORM_TYPE_CHOICES, widget=forms.Select)
+	wordform_type = forms.ChoiceField(initial='', choices=WORDFORM_TYPE_CHOICES, widget=forms.Select)
 	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select) 
 	bisyllabic = forms.BooleanField(required=False, initial=True)
 	trisyllabic = forms.BooleanField(required=False, initial=False)

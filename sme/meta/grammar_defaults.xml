@@ -13,21 +13,23 @@
       <grammar pos="N" tag="N+NumberN+Loc"/>
       <grammar pos="N" tag="N+Prop+NumberN+Loc"/>
     </element>
+
 	<!--
 		see pron_sme.xml:
 		guhtet	guhtet+Pron+Indef+Pl+Nom
 		nuppit	nubbi+Pron+Indef+Pl+Nom
 	-->
     <element id="RECPL">
-      <grammar pos="Pron" tag="Pron+Indef+Pl+Nom" />
+      <grammar pos="Pron" tag="Pron+Recipr+Pl+Nom" />
     </element>
+
 	<!--
 		see pron_sme.xml:
 		goabbat	goabbat+Pron+Indef+Du+Nom
 		nubbi	nubbi+Pron+Indef+Du+Nom
 	-->
     <element id="RECDU">
-      <grammar pos="Pron" tag="Pron+Indef+Du+Nom" />
+      <grammar pos="Pron" tag="Pron+Recipr+Du+Nom" />
     </element>
     <element id="MAINV">
       <grammar pos="V" tag="V+Mood+Tense+Person-Number"/>

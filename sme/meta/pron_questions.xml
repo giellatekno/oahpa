@@ -663,6 +663,33 @@
       </element>
     </answer>
   </q>
+  <!-- TODO: recipr example -->
+<q id="prec1illpl3">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Geaidda SUBJ MAINV OBJ</text>
+      <element id="SUBJ">
+		<sem class="mPEOPLE"/>
+		<grammar tag="N+Pl+Nom"/>
+      </element>
+      <element id="MAINV">
+	<grammar tag="V+Ind+Prt+Pl3"/>
+	<id>addit</id>
+      </element>
+ 		<element id="OBJ">
+		<grammar tag="N+Pl+Acc"/>
+		<id>ruhta</id>
+	  </element>
+    </question>
+    <answer> 
+      <text>Sii MAINV OBJ RECPL P-REC</text>
+      <element game='morfa' id="P-REC" task="yes">
+		<grammar tag="Pron+Recipr+Ill+PxPl3"/>
+      </element>
+    </answer>
+  </q>
+  <!-- TODO: recipr -->
+  <!--
 <q id="prec1illpl3">
     <qtype>P-RECIPR</qtype>
     <question>
@@ -998,6 +1025,8 @@
 	  </element>
     </answer>
   </q>
+  -->
+  <!-- TODO recipr -->
   <!--
 <q id="p2rec1illpl3">
     <qtype>P-RECIPR2</qtype>
@@ -1457,6 +1486,7 @@
 			</element>
 		</answer>
 	</q>
+	<!-- TODO: clothing -->
 	<!--
 	<q id="prel10">
 		<qtype>P-REL</qtype>
@@ -1492,7 +1522,6 @@
 			</element>
 		</answer>
 	</q>
-	-->
 	<q id="prel12">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1510,6 +1539,7 @@
 			</element>
 		</answer>
 	</q>
+	-->
 	<q id="prel13">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1544,6 +1574,7 @@
 			</element>
 		</answer>
 	</q>
+	<!-- TODO: clothing -->
 	<!--
 	<q id="prel15">
 		<qtype>P-REL</qtype>

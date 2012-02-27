@@ -20,6 +20,7 @@ class QAGame(Game):
 	test = 0
 	
 	def __init__(self, *args, **kwargs):
+		self.generated_syntaxes = list()
 		super(QAGame, self).__init__(*args, **kwargs)
 		self.init_tags()
 	
@@ -454,6 +455,40 @@ class QAGame(Game):
 		return form_set
 
 		
+	def select_reciprocative_forms(self, answer, awords, target):
+		""" Follows user selection of reciprocative type and returns the relevant
+		wordform.
+		"""
+		wordform_type = self.settings['wordform_type']
+		if not wordform_type:
+			wordform_type = 'goabbat'
+
+		_recipr_qelement = answer.qelement_set.get(identifier=target)
+
+		_recipr_tag = _recipr_qelement.tags.all().order_by('?')[0]
+
+		if target == 'P-REC':
+			# P-REC needs to search by word stem, which should be set
+			# to guoibmi or nubb
+			if wordform_type == 'goabbat':
+				stem_type = 'guoibmi'
+			else:
+				stem_type = 'nubbi'
+			_recipr_forms = _recipr_tag.form_set.filter(word__stem=stem_type)
+		else:
+			_recipr_forms = _recipr_tag.form_set.filter(word__lemma=wordform_type)
+
+		_recipr_word = _recipr_forms[0].word
+		_recipr_fullforms = [a.fullform for a in _recipr_forms]
+
+		awords[target] = [{
+			'tag': _recipr_tag.id, 
+			'word': _recipr_word.id, 
+			'fullform': _recipr_fullforms, 
+		}]
+
+		return awords
+	
 	def generate_answers_reflexive(self, answer, question, awords, qwords):
 		""" Checks reflexive agreement on RPRON with a specified agreement
 		element, returns awords. If agreement isn't specified, default behavior
@@ -720,9 +755,9 @@ class QAGame(Game):
 		return awords
 
 	def generate_syntax(self, answer, question, awords, qwords, s):
-
 		
-		if s in ["SUBJ", "MAINV", "HAB", "NEG", "RPRON"]: return awords
+		if s in self.generated_syntaxes: 
+			return awords
 		
 		if not awords.has_key(s):
 			awords[s] = []
@@ -836,8 +871,6 @@ class QAGame(Game):
 				qtype = self.settings['adj_context']
 			if pos == "Pron":
 				qtype = self.settings['pron_context']
-				# TODO: reciprocative
-				# qtype_wordform = self.settings.get('wordform_type', False)
 
 		books = self.settings.get('book', None)
 
@@ -899,9 +932,11 @@ class QAGame(Game):
 			# There is subject-verb agreement and correspondence with question elements.
 			if 'SUBJ' in words_strings:
 				awords = self.generate_answers_subject(answer, question, awords, db_info['qwords'])
+				self.generated_syntaxes.append('SUBJ')
 				
 			if 'HAB' in words_strings:
 				awords = self.generate_answers_subject(answer, question, awords, db_info['qwords'], element="HAB")
+				self.generated_syntaxes.append('HAB')
 
 			# NOTE: seems to be generating correct negative number...
 			if 'NEG' in words_strings:
@@ -910,10 +945,12 @@ class QAGame(Game):
 				except AttributeError:
 					if self.test: raise Http404("problem")
 					return "error"
+				self.generated_syntaxes.append('NEG')
 
 			if 'MAINV' in words_strings:
 				try:
 					awords = self.generate_answers_mainv(answer, question, awords, db_info['qwords'])
+					self.generated_syntaxes.append('MAINV')
 				except AttributeError:
 					if self.test: raise Http404("problem")
 					return "error"
@@ -921,6 +958,20 @@ class QAGame(Game):
 			# RPRON needs to be processed after MAINV and SUBJ so that person information is available
 			if 'RPRON' in words_strings:
 				awords = self.generate_answers_reflexive(answer, question, awords, db_info['qwords'])
+				self.generated_syntaxes.append('RPRON')
+
+			# RECPL, RECDU, P-REC processing here?
+			if 'RECPL' in words_strings:
+				awords = self.select_reciprocative_forms(answer, awords, target='RECPL')
+				self.generated_syntaxes.append('RECPL')
+			
+			if 'RECDU' in words_strings:
+				awords = self.select_reciprocative_forms(answer, awords, target='RECDU')
+				self.generated_syntaxes.append('RECDU')
+
+			if 'P-REC' in words_strings:
+				awords = self.select_reciprocative_forms(answer, awords, target='P-REC')
+				self.generated_syntaxes.append('P-REC')
 
 			# Rest of the syntax
 			#if self.test: raise Http404(words_strings)
