@@ -1771,7 +1771,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
     lookup2cg = " | lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
-    preprocess = " | /usr/local/bin/preprocess " # on victorio
+    preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
     #preprocess = " | /Users/mslm/main/gt/script/preprocess "
     dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
     #dis_bin = "../sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
@@ -2228,7 +2228,7 @@ def cealkka_is_correct(self,question,qwords,language,question_id):  #was: questi
     #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
     lookup2cg = " | lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
-    preprocess = " | /usr/local/bin/preprocess " # on victorio
+    preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
     #preprocess = " | /Users/mslm/main/gt/script/preprocess " # on Heli's machine
     dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
     #dis_bin = "/Users/mslm/main/ped/sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
