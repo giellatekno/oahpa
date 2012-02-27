@@ -18,10 +18,11 @@ function start()
     echo -n $"Starting lookup server: "
 	daemon $server >/var/log/lserv.log 2>&1 &
     RETVAL=$?
-	echo
-    #if [ $RETVAL -eq 0 ] ; then
+    if [ $RETVAL -eq 0 ] ; then
     #   touch /var/lock/subsys/lookupserv
-    #fi
+	echo -n "[ OK ]"
+	echo 
+    fi
 }
 
 function stop()
@@ -32,10 +33,17 @@ function stop()
 	   echo $LPID
 	   kill -1 $LPID
        RETVAL=$?
+
        if [ $RETVAL -ne 0 ]; then
 		   kill -HUP $LPID
 		   RETVAL=$?
-	   fi
+        	   echo -n "2-stop test $RETVAL"
+       	           echo
+       fi
+       if [ $RETVAL -eq 0 ] ; then
+               echo -n "[ OK ]"
+       fi
+
        #if [ $RETVAL -ne 0 ]; then
 	#	   failure
 	#   else
@@ -43,7 +51,7 @@ function stop()
        #if [ $RETVAL -eq 0 ] ; then
        #   rm -f /var/lock/subsys/lookupserv
        #fi
-	   killproc lookupserv
+	#   killproc lookupserv
 	   echo
 #    fi
 }
