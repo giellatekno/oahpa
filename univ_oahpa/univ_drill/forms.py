@@ -1702,7 +1702,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 
 		if answer_tag_el.pos == "Pron":
 			# Hide task word for Recipr and Refl
-			if qtype in ["P-REFL", "P-RECIPR"]:
+			if qtype in ["P-REFL", "P-RECIPR", "P-REL"]:
 				self.lemma = False
 
 		# Retrieve feedback information
