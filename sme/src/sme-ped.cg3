@@ -5433,7 +5433,9 @@ MAP (&grm-incorr-tense) TARGET VFIN ((0 (V Prt) LINK *-1 C_PRS BARRIER Prs) OR (
 MAP (&grm-incorr-tense) TARGET VERB (0 ("leat" PrfPrc) LINK *-1 C_PRF BARRIER COPULAS) ;
 
 
-MAP (&grm-incorr-tense) TARGET (PrfPrc) ((NOT 0 (V Prs) LINK *-1 C_PRS BARRIER Prs) OR ((NOT 0 (V Prt) LINK *-1 C_PRT BARRIER Prt))) ;
+MAP (&grm-incorr-tense) TARGET (PrfPrc) (NOT 0 (V Prs) LINK *-1 C_PRS BARRIER Prs) ;  
+MAP (&grm-incorr-tense) TARGET (PrfPrc) (NOT 0 (V Prt) LINK *-1 C_PRT BARRIER Prt OR Neg) ;
+MAP (&grm-incorr-tense) TARGET (ConNeg) (NOT 0 (V Prt) LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 C_PRT BARRIER Prt) ;
 
 LIST Der1 = Der/h Der/d ;
 
