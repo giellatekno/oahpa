@@ -613,9 +613,7 @@ class Morfaview(Gameview):
 			if self.settings['pos'] == 'A':
 				return ['adj_context']
 			if self.settings['pos'] == 'Pron':
-				return ['pron_context']
-				# TODO: reciprocative
-				# return ['pron_context', 'wordform_type']
+				return ['pron_context', 'wordform_type']
 			if self.settings['pos'] == 'Num':
 				return ['num_context']
 
