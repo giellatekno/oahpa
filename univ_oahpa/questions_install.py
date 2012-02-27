@@ -74,8 +74,8 @@ class Questions:
 		print "\tCreating element %s (%s)" % (el_id, qaelement.qatype)
 
 		# Syntactic function of the element
-		if self.values.has_key(el_id) and self.values[el_id].has_key('syntax'):
-			syntax = self.values[el_id]['syntax']
+		if self.grammar_defaults.has_key(el_id) and self.grammar_defaults[el_id].syntax:
+			syntax = self.grammar_defaults[el_id].syntax
 		else:
 			syntax = el_id
 		
@@ -211,8 +211,10 @@ class Questions:
 
 		# If still no words, get the default words for this element:
 		if not word_elements:
-			if self.values.has_key(el_id) and self.values[el_id].has_key('words'):
-				word_elements = self.values[el_id]['words']
+			grammar_def = self.grammar_defaults.get(el_id, False)
+			if grammar_def:
+				if grammar_def.words:
+					word_elements = self.grammar_defaults[el_id].words
 
 		if word_elements:
 			for w in word_elements:
@@ -257,9 +259,9 @@ class Questions:
 				return
 			if has_copies:
 				tagelements = sum([list(p.tags.all()) for p in has_copies], [])
-			elif self.values.has_key(el_id):
-				if self.values[el_id].has_key('tags'):
-					tagelements = self.values[el_id]['tags']
+			elif self.grammar_defaults.has_key(el_id):
+				if self.grammar_defaults[el_id].tags:
+					tagelements = self.grammar_defaults[el_id].tags
 
 			if tagelements:
 				tagelements = list(set(tagelements))
@@ -273,9 +275,9 @@ class Questions:
 				poses.append(gr.getAttribute("pos"))
 			tagstrings = []
 			if poses:
-				if self.values.has_key(el_id):
-					if self.values[el_id].has_key('tags'):
-						tagelements = self.values[el_id]['tags'].filter(pos__in=poses)
+				if self.grammar_defaults.has_key(el_id):
+					if self.grammar_defaults[el_id].tags:
+						tagelements = self.grammar_defaults[el_id].tags.filter(pos__in=poses)
 			if tags:
 				tagstrings = self.get_tagvalues(tags)
 				if tagelements:
@@ -507,7 +509,7 @@ class Questions:
 		xmlfile=file(infile)
 		tree = _dom.parse(infile)
 
-		self.read_grammar(grammarfile)
+		self.read_grammar_defaults(grammarfile)
 
 		qs = tree.getElementsByTagName("questions")[0]
 		gametype = qs.getAttribute("game")
@@ -591,29 +593,111 @@ class Questions:
 			db.reset_queries() 
 
 
-	def read_grammar(self, infile):
+	def read_grammar_defaults(self, infile):
+		""" Read a grammar file and make the results accessible in 
+		self.grammar_defaults
+
+		This has the structure:
+			{
+				'SUBJ': {
+					'pos': [u'N', u'Pron'],
+					'tags': [<Tag: N+Sg+Nom>, <Tag: N+Pl+Nom>, etc...]
+				},
+				'N-LOC': {
+					'pos': [u'N'],
+					'tags': [<Tag N+Sg+Loc>, <Tag: N+Pl+Nom>, etc...]
+				},
+			}
+
+			<element id="SUBJ">
+				<grammar pos="Pron" tag="Pron+Pers+Person-Number+Nom"/>
+				<grammar pos="N" tag="N+NumberN+Nom"/>
+			</element>
+
+			{
+				'SUBJ': 
+			}
+		"""
+
+		class GrammarDefaultError(Exception):
+			def __init__(self, element=False, tagstrings=False):
+				self.element = element
+				self.tagstrings = tagstrings
+
+			def __str__(self):
+				msg = (
+				"\n ** No tags were present in the database matching\n"
+				)
+				if self.element:
+					msg += "    grammar element: %s\n" % self.element
+				else:
+					msg += "    an unknown grammar element\n"
+
+				if self.tagstrings:
+					msg += "    with the following expanded tag strings:\n"
+					msg += "      " + "      ".join(self.tagstrings)
+				
+				msg += "\n    Check that these words/forms are installed"
+				return msg
+
+		class GrammarDefault(object):
+
+			Error = GrammarDefaultError
+
+			def __init__(self, 
+						poses=False, 
+						tags=False, 
+						words=False, 
+						syntax=False):
+
+				self.tags = tags or list()
+				self.poses = poses or list()
+				self.words = words or list()
+				self.syntax = syntax or list()
+
+			def __str__(self):
+				returns = []
+
+				if self.poses:
+					returns.append('|'.join(self.poses) + ' - ')
+
+				if self.tags:
+					returns.append(', '.join([t.string for t in self.tags]))
+				else:
+					if self.poses:
+						returns.append('None')
+				if self.words:
+					returns.append(', '.join([w.lemma for w in self.words]))
+
+				if self.syntax:
+					returns.append(', '.join(self.syntax))
+
+				return ' '.join(returns)
+
+			def __repr__(self):
+				return '<GrammarDefault: %s>' % str(self)
 	
-		xmlfile=file(infile)
+		xmlfile = file(infile)
 		tree = _dom.parse(infile)
 
-		self.values = {}
+		self.grammar_defaults = {}
 		
-		tags=tree.getElementsByTagName("tags")[0]
-		for el in tags.getElementsByTagName("element"):
+		tags = tree.getElementsByTagName("tags")[0]
+		elements = tags.getElementsByTagName("element")
 
-			identifier=el.getAttribute("id")
+		for el in elements:
+			identifier = el.getAttribute("id")
 			
-			info2 = {}
+			grammar_default = GrammarDefault()
 			
-			elements = []
-			word_id=""
+			word_id = None
 			word = None
 			
-			syntax =""
+			syntax = ""
 			syntaxes = el.getElementsByTagName("syntax")
 			if syntaxes:
 				syntax = syntaxes[0].firstChild.data
-				info2['syntax'] = syntax
+				grammar_default.syntax = syntax
 				
 			word_ids = el.getElementsByTagName("id")
 			if word_ids:
@@ -623,25 +707,29 @@ class Questions:
 					words = Word.objects.filter(wordid=word_id)
 					if word_id_hid:
 						words = words.filter(hid=int(word_id_hid))
-					info2['words'] = words
+					grammar_default.words = words
 
-			info2['pos'] = []
 			tagstrings = []
 
 			grammars = el.getElementsByTagName("grammar")
 			for gr in grammars:
-				pos=gr.getAttribute("pos")
+				pos = gr.getAttribute("pos")
 				if pos:
-					info2['pos'].append(pos)
+					grammar_default.poses.append(pos)
 
 				tag = gr.getAttribute("tag")
-				tagstrings = self.get_tagvalues([tag])
+				tagstrings.extend(self.get_tagvalues([tag]))
 
 			if len(tagstrings) > 0:
 				tags = Tag.objects.filter(string__in=tagstrings)
-				info2['tags'] = tags
+				if tags.count() == 0:
+					tag_elements = ', '.join([e.toprettyxml() for e in grammars])
+					raise GrammarDefault.Error(element=tag_elements,
+												tagstrings=tagstrings)
+				else:
+					grammar_default.tags = tags
 				
-			self.values[identifier] = info2
+			self.grammar_defaults[identifier] = grammar_default
 
 	def get_tagvalues(self, tags):
 		""" This alters state of things without returning objects 
