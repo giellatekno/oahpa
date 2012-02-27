@@ -458,9 +458,6 @@ LIST A-V = (V* A) ;
 SET A-NOT-V = A - A-V ;
 
 # Der1 etc er ikke lenger i input
-LIST Der1 = Der1 ; 
-LIST Der2 = Der2 ;
-LIST Der3 = Der3 ;
 
 SET V-ACT = V - Der/Pass ;
 
@@ -1958,7 +1955,12 @@ LIST CEALKKA = "^cealkka" ;
 # These are the most common rules. They are put first, if possible, 
 # in order to get a more efficient parser.   
 
-LIST PROBLEMLEMMA = ("duo" N) ("Lea" N) ("Le^a" N) ("ristet" V) ;
+# Oppgaveteksten i vastas mangler syntaks og må behandles deretter:
+SELECT Inf (*1 CEALKKA) ; 
+SELECT Nom (*1 CEALKKA) ;
+
+
+LIST PROBLEMLEMMA = ("duo" N) ("Lea" N) ("Le^a" N) ("ristet" V) ("riestit" V) ("ristat" V) ;
 
 REMOVE PROBLEMLEMMA ;
 
@@ -1968,6 +1970,8 @@ SELECT (Pers Du1) (0 ("Moa"))  ;
 #REMOVE IllErr (0 Ill)  ;
 #REMOVE IllVErr (0 Ill)  ;
 #REMOVE CGErr  ;
+
+
 
 
 LIST NOT-LIKELY-VERB = "ikte" "bárdni" "vávvá" ;
@@ -2095,8 +2099,8 @@ REMOVE:r543 N-DER IF (0 N-DER LINK 0 Ess)(0 LEX-N LINK 0 Ess)(NEGATE 0 Actio);
 REMOVE:r544 A-DER IF (0 LEX-A);
  	## Dábálaš mearrádusat.
  
-REMOVE:r545 Der1 IF (0 Der3 OR Der2);  # Der1 etc er ikke lenger i input
-REMOVE:r546 Der2 IF (0 Der3);  # Der1 etc er ikke lenger i input
+#REMOVE:r545 Der1 IF (0 Der3 OR Der2);  # Der1 etc er ikke lenger i input
+#REMOVE:r546 Der2 IF (0 Der3);  # Der1 etc er ikke lenger i input
 REMOVE:r548 V-DER IF (0 LEX-V)(NEGATE 0 (eaddji)); 
 
  
@@ -3836,7 +3840,7 @@ REMOVE:r1017 A IF (NEGATE -1 ("mii" Sg Gen))(0 N)(NEGATE 0 Comp OR Ess OR Der/ve
 SELECT:r1018 VFIN IF (1 go)(*2 ("ahte") BARRIER NOT-ADV);
 	## Dáhtut go ahte mii gáikut dat eret?
 
-REMOVE:r1019 VFIN IF (-1 BOC)(0 NP-HEAD-SG-NOM)(1C V-SG3); 
+REMOVE:r1019 VFIN IF (-1 BOC)(0 NP-HEAD-SG-NOM LINK NOT 0 Actor)(1C V-SG3);  # Pga vanlig med fin + fin i elevsetninger
 	## Lásse lea mus reaŋgan.
  # Here I am careful, and require the V-SG3 to be a secure reading.
 
@@ -5378,15 +5382,20 @@ MAPPING-PREFIX = & ;
 
 # Cealkka
 
-LIST C_PRS = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrsSg1_Acc 2_PrsSg1_Acc 1_PrsSg3_Dem_Ill 2_PrsSg3_Dem_Ill ;
+LIST C_PRS = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrsSg1_Acc 2_PrsSg1_Acc 1_PrsSg3_Dem_Ill 2_PrsSg3_Dem_Ill 1_PrsSg1_Neg_Aux_Inf 2_PrsSg1_Neg_Aux_Inf 1_PrsSg3_Orrut_Actioess 1_PrsSg3_Neg_Orrut_Actioess 2_PrsSg3_Orrut_Actioess 2_PrsSg3_Neg_Orrut_Actioess 2_PrsPl3_Orrut_Actioess 2_PrsPl3_Neg_Orrut_Actioess 1_PrsSg1_Aux_Fitnat_Acc_Actioess ;
 
-LIST C_PRT = 1_PrtSg1_AAttr_Acc 1_PrtSg1_Acc 3_PrtSg1_AAttr_Acc 1_PrtSg1_Num_Acc ;
+LIST C_PRT = 1_PrtSg1_AAttr_Acc 1_PrtSg1_Acc 3_PrtSg1_AAttr_Acc 1_PrtSg1_Num_Acc 1_PrtSg3_Neg_Aux_Inf 2_PrtSg3_Neg_Aux_Inf 1_PrtSg3_Cop_Actioess 1_PrtSg1_Verb_Acc_Actioess  ;
 
-LIST C_PRF = 1_PrfSg3_Dem_AAttr_Ill 2_PrfSg3_Dem_AAttr_Ill ;
+LIST C_PRF = 1_PrfSg3_Dem_AAttr_Ill 2_PrfSg3_Dem_AAttr_Ill 1_PrfPl3_Neg_Aux 1_PrfDu3_Neg_Aux 1_PrfSg3_Neg_Aux ;
 
-LIST C_SG1 = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc 1_PrsSg1_Acc 2_PrsSg1_Acc 1_PrsSg1_Dem_AAttr_Acc 1_PrtSg1_Acc 3_PrtSg1_AAttr_Acc 1_PrtSg1_Num_Acc 1_PrsSg1_Dem_Ill 2_PrsSg1_Dem_Ill ;
+LIST C_SG1 = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc 1_PrsSg1_Acc 2_PrsSg1_Acc 1_PrsSg1_Dem_AAttr_Acc 1_PrtSg1_Acc 3_PrtSg1_AAttr_Acc 1_PrtSg1_Num_Acc 1_PrsSg1_Dem_Ill 2_PrsSg1_Dem_Ill 1_PrsSg1_Neg_Aux_Inf 2_PrsSg1_Neg_Aux_Inf ;
 
 LIST C_SG3 = 1_PrsSg3_Prf_Dem_AAttr_Ill 2_PrsSg3_Prf_Dem_AAttr_Ill  ;
+
+LIST C_DU3 = 1_PrfDu3_Neg_Aux ;
+
+LIST C_ACTESS = 1_PrtSg1_Verb_Acc_Actioess 1_PrtSg3_Cop_Actioess ;
+
 
 LIST C_DEM = 1_PrsSg1_Dem_AAttr_Acc 1_PrsSg3_Prf_Dem_AAttr_Ill 2_PrsSg3_Prf_Dem_AAttr_Ill 1_PrsSg3_Dem_Ill 2_PrsSg3_Dem_Ill ;
 
@@ -5405,6 +5414,7 @@ LIST ADJLEMMA = (".*"r) ;
 LIST VERBLEMMA = (".*"r) ;
 
 SELECT $$NOUNLEMMA (0 (N Ill) OR (N Loc) LINK *-1 C_ILL OR C_LOC LINK *-1 $$NOUNLEMMA) ;
+SELECT $$VERBLEMMA (0 VERB LINK *-1 CEALKKA LINK *-1 $$VERBLEMMA) ;
 
 REMOVE DiphErr (0 Ill)  ;
 REMOVE IllErr (0 Ill)  ;
@@ -5419,10 +5429,17 @@ MAP (&sem-same-adj) TARGET (A Attr) (0 $$ADJLEMMA LINK *-1 CEALKKA BARRIER A LIN
 
 MAP (&grm-incorr-tense) TARGET VFIN ((0 (V Prt) LINK *-1 C_PRS BARRIER Prs) OR ((0 (V Prs) LINK *-1 C_PRT BARRIER Prt))) ;
 
+MAP (&grm-incorr-tense) TARGET VERB (0 ("leat" PrfPrc) LINK *-1 C_PRF BARRIER COPULAS) ;
+
+
 MAP (&grm-incorr-tense) TARGET (PrfPrc) ((NOT 0 (V Prs) LINK *-1 C_PRS BARRIER Prs) OR ((NOT 0 (V Prt) LINK *-1 C_PRT BARRIER Prt))) ;
 
+LIST Der1 = Der/h Der/d ;
 
 MAP (&sem-same-verb) TARGET VFIN (0 $$VERBLEMMA LINK *-1 CEALKKA BARRIER V LINK NOT *-1 $$VERBLEMMA) ;
+MAP (&sem-same-verb) TARGET VERB (0 $$VERBLEMMA LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 CEALKKA LINK *-1 Neg BARRIER $$VERBLEMMA) ;
+MAP (&grm-should-negV) TARGET VERB (0 $$VERBLEMMA + Der1 LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 CEALKKA LINK *-1 $$VERBLEMMA LINK NOT 0 Der1 LINK -1 Neg) ;
+
 
 MAP (&grm-missing-Acc) TARGET Num (*-1 C_NUM_ACC BARRIER Num)(NOT 0 Acc) ;
 
@@ -5438,9 +5455,15 @@ MAP (&grm-Px-shouldbe-Loc) TARGET (N Nom PxSg3) (*-1 C_LOC BARRIER (N Loc)) ;
 MAP (&grm-missing-Loc) TARGET C_LOC (NOT *1 (N Loc) OR (N Nom PxSg3)) ;
 
 
-MAP (&grm-non-agr-subj-v) TARGET V (*-1 C_SG1 BARRIER (V Sg1))(NOT 0 Sg1) ;
+MAP (&grm-incorr-pers-nr) TARGET V (*-1 C_SG1 BARRIER (V Sg1))(NOT 0 Sg1) ;
 
-MAP (&grm-non-agr-subj-v) TARGET V (*-1 C_SG3 BARRIER (V Sg3))(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET V (*-1 C_SG3 BARRIER (V Sg3))(NOT 0 Sg3) ;
+
+
+# orrut + Actio Ess
+#MAP (&grm-missing-ActEss) TARGET ("orrut") OR ("fitnat") (*-1 QDL)(*1 VERB BARRIER NOT-ADV-PCLE LINK NOT 0 (Actio Ess)) ;
+MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK *-1 ("orrut") OR ("fitnat") BARRIER NOT-ADV-PCLE LINK *-1 QDL) ;
+MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK *-1 C_ACTESS BARRIER (Actio Ess))(NEGATE *1 (Actio Ess)) ;
 
 
 # Sahka
@@ -5652,7 +5675,7 @@ MAP (&grm-missing-Com) TARGET VALENCY-OBJ (*-1 ("birget") OR ("birgehallat") OR 
 MAP (&grm-should-not-PP) TARGET Po (-1 ANIMATE + Com LINK *-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL) ;
 
 # If a STRICTLOCV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Loc (no Inf is accepted) Exception for Gen + N - e.g. bártni moarsi beatnagis: 
-MAP (&grm-missing-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc OR Nom)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Gen LINK 1 Actio) ;
+MAP (&grm-missing-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc OR Nom)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Gen LINK 1 Actio)(NEGATE 0 Dem LINK *1 (N Loc)) ;
 
 # If a STRICTILLV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Ill, (no Inf is accepted). Exception is "liikot" + Inf, for PP amd for Gen + N - e.g. bártni moarsi beatnagii: 
 MAP (&grm-missing-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill OR Nom)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill)) ;
@@ -5928,6 +5951,7 @@ MAP (&grm-should-negV) TARGET V IF (*-1 QDL)(*-1 Neg BARRIER NOT-ADV OR Foc/ge O
 # Answering with the same verb?
 # -----------------------------
 
+
 LIST UNINTENDED-VERB =  "asttahit" "baladit" "balahit" "barggadit" "barggahit" "basadit" "basahit" "beasadit" "beasahit" "bijadit" "bijahit" "birgehit" "bisuhit" "biškkuhit" "boradit" "borahit" "bosuhit" "bovdehit" "bállehit" "cakkadit" "cieladit" "cielahit" "cokkadit" "dagadit" "dagahit" "dajadit" "deaivvadit" "deaivvahit" "divuhit" "divššuhit" "doaimmahit" "doaivvuhit" "doaladit" "doalahit" "doalvvuhit" "doamahit" "doarjjuhit" "doaruhit" "dohppehit" "dovddadit" "dovddahit" "duokŋadit" "duolddadit" "duolddahit" "dutkkadit" "dutkkahit" "dájuhit" "dámadit" "dámahit" "fidnehit" "finadit" "finahit" "fáladit" "fárrehit" "gahčadit" "gahčahit" "gaikkuhit" "galbmodit" "geagadit" "geahčadit" "geahčahit" "gearggadit" "gearggahit" "goaluhit" "goaruhit" "goikkahit" "golahit" "golggadit" "golggahit" "gosadit" "gosahit" "gozádit" "gođahit" "gulahit" "gáradit" "gávnnadit" "gávnnahit" "heaŋgáhit" "heivedit" "heivehit" "hoiggadit" "hoiggahit" "huikkádit" "huksehit" "humadit" "humahit" "háladit" "hálahit" "iskkadit" "iskkahit" "jearadit" "jearahit" "johttáhit" "joradit" "jorahit" "jugadit" "jugahit" "juoiggadit" "juoiggahit" "leaikkuhit" "leikehit" "lihkadit" "lihkahit" "liikodit" "liktedit" "logadit" "logahit" "lohkkadit" "lonehit" "lubmedit" "luoikkahit" "láhppohit" "láibbuhit" "manadit" "manahit" "moddjádit" "murjedit" "njiejadit" "njiejahit" "njoaradit" "njoarahit" "njorrehit" "njuikehit" "njuikkuhit" "njuoskkadi"t "njuovadit" "njuovahit" "njávggádit" "nogahit" "nohkadit" "nuoladit" "nuolahit" "oahpadit" "oahpahit" "oakkuhit" "ollehit" "oláhit" "ozadit" "rabadit" "rokkadit" "rokkagit" "ruohtadit" "ruohtahit" "rájadit" "rájahit" "rávkkahit" "searvvadit" "sihkuhit" "smiehtadit" "smiehtahit" "sugadit" "sugahit" "suhtadit" "suttadit" "sáddedit" "sáddehit" "sártnuhit" "sávadit" "tevdnedit" "viegadit" "viegahit" "vieččahit" "višahit" "vuoiddadit" "vuojadit" "vuojahit" "vuojádit" "váibbadit" "váibbahit" "válddáhit" "ásadit" "ásahit" "čaimmadit" "čaimmahit" "čanadit" "čanahit" "čiegadit" "čiegahit" "čieruhit" "čieskkadit" "čieskkahit" "čievččadit" "čievččahit" "čilgedit" "čilgehit" "čiŋkkuhit" "čohkkádit" "čohkkáhit" "čollehit" "čorgehit" "čuogadit" "čuogahit" "čuohpadit" "čuohpahit" "čuoiggadit" "čuoiggahit" "čuorvvuhit" "čuovuhit" "čuoččuhit" "čágadit" ("ballát" Der1) ("bearrái#geahččat" Der1) ("berret" Der1) ("bivvat" Der1) ("bossut" Der1) ("bovdet" Der1) ("bovret" Der1) ("caggat" Der1) ("coakcut" Der1) ("coggat" Der1) ("dadjat" Der1) ("dekoreret" Der1) ("dievvat" Der1) ("dinet" Der1) ("diŋgot" Der1) ("doahput" Der1) ("doaibmat" Der1) ("doapmat" Der1) ("dohkket" Der1) ("dohppet" Der1) ("dolkat" Der1) ("duddjot" Der1) ("dulkot" Der1) ("duogŋat" Der1) ("duostat" Der1) ("dustet" Der1) ("dádjut" Der1) ("dáhttut" Der1) ("dánset" Der1) ("dánsut" Der1) ("ferdnet" Der1) ("fidnet" Der1) ("fuobmát" Der1) ("fállat" Der1) ("fárret" Der1) ("galbmot" Der1) ("geahkat" Der1) ("geahččat" Der1) ("geallat" Der1) ("geargat" Der1) ("geiget" Der1) ("giddet" Der1) ("gierdat" Der1) ("giksat" Der1) ("gillet" Der1) ("goikat" Der1) ("gokčat" Der1) ("gollat" Der1) ("govvet" Der1) ("gođđat" Der1) ("gullat Der/PassS) ("gullat" Der1) ("gurput" Der1) ("gárrat" Der1) ("gávdnot" Der1) ("heaŋgát" Der1) ("hervet" Der1) ("heŋget" Der1) ("hukset" Der1) ("huškut" Der1) ("ivdnet" Der1) ("joavdat" Der1) ("johttát" Der1) ("joksat" Der1) ("jávkat" Der1) ("leiket" Der1) ("ligget" Der1) ("liikot" Der1) ("liktet" Der1) ("lonet" Der1) ("lubmet" Der1) ("luoikat" Der1) ("láhppit Der/PassS) ("láhppot" Der1) ("lávet" Der1) ("lávlut" Der1) ("moddját" Der1) ("murjet" Der1) ("murret" Der1) ("máhccut" Der1) ("málet" Der1) ("márfut" Der1) ("nannet" Der1) ("njorret" Der1) ("njuiket" Der1) ("njuoskat" Der1) ("nohkat" Der1) ("nohkkat" Der1) ("oaggut" Der1) ("oažžut" Der1) ("ohcat" Der1) ("oidnot" Der1) ("ollet" Der1) ("orrut" Der1) ("rahpat" Der1) ("riessat" Der1) ("riessut" Der1) ("rigeret" Der1) ("riidet" Der1) ("riŋget" Der1) ("roggat" Der1) ("rávkat" Der1) ("rávvet" Der1) ("searvat" Der1) ("sihtat" Der1) ("skeŋket" Der1) ("sorját" Der1) ("speallat" Der1) ("stoahkat" Der1) ("stunžet" Der1) ("stuorrut" Der1) ("suddat" Der1) ("suhttat" Der1) ("suohpput" Der1) ("sáltet" Der1) ("sárgut" Der1) ("sávvat" Der1) ("tevdnet" Der1) ("veallát" Der1) ("viežžat" Der1) ("viššat" Der1) ("vuoidat" Der1) ("válljet" Der1) ("áddet" Der1) ("áigut" Der1) ("šaddat" Der1) ("čoaskut" Der1) ("čollet" Der1) ("čorget" Der1) ("čugget" Der1) ("čurvet" Der1) ("čáhkat" Der1)  ;
 
 MAP (&grm-should-negV) TARGET ConNeg (-1 Neg LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT *-1 UNINTENDED-VERB)(0 UNINTENDED-VERB) ;
@@ -5941,7 +5965,7 @@ LIST BARGGUS = Leat_go_barggus_adult Leat_go_barggus_young ;
 MAP (&grm-soaitit) TARGET ("soaitit")(*-1 QDL)(0 V LINK *1 VFIN BARRIER S-BOUNDARY LINK NOT 0 Inf)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 
 MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY OR VFIN LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE 0 ("hálihit") LINK *-1 ("háliidit")) ;
+MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA)(NEGATE 0 ("hálihit") LINK *-1 ("háliidit")) ;
 
 MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg OR SOAITIT)(0 $$VERBLEMMA LINK *-1 QDL BARRIER SV-BOUNDARY  LINK NOT 0  MAKKAR-BARGU LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA LINK NOT 0 WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE 0 ("hálihit") LINK *-1 ("háliidit"))(NOT 0 SOAITIT) ;
@@ -5953,6 +5977,9 @@ SELECT V-3 (-1 HAB-ACTOR + Loc LINK *-1 QDL) ;
 
 MAP (&grm-should-be-Vfin) TARGET QDL IF (NOT 0 (Mii_namma_lea))(NOT *1 VFIN);
 	# You should use a finite verb when answering...
+MAP (&grm-should-not-ConNeg) TARGET VERB IF (0 ConNeg LINK *-1 ConNeg BARRIER NOT-ADV-PCLE LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 QDL LINK NOT 0 (Mii_namma_lea))(NOT 0 N);
+
+
 
 # SAHKA: Answer with the correct verbform if there is no Pers:
 MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK 0 SAHKA LINK *-1 VFIN LINK NOT 0 Du1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
@@ -5991,9 +6018,10 @@ MAP (&grm-incorr-tense) TARGET VFIN + Prt (*-1 QDL BARRIER SV-BOUNDARY LINK NOT 
 
 # If not agreement:
 MAP (&grm-non-agr-subj-v) TARGET VFIN IF (0 $$VFIN-PRON-TAG LINK -1 (Pers Nom) LINK NOT 0 $$VFIN-PRON-TAG LINK *-1 QDL) ;
-MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Sg3 LINK -1 (N Sg Nom) LINK NOT 0 (Coll Nom) OR DUALIS-NOUN  LINK NEGATE *-1 CC BARRIER NPNH LINK -1 N LINK *-1 QDL) ;
+MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Sg3 LINK -1 (N Sg Nom) LINK NOT 0 (Coll Nom) OR DUALIS-NOUN  LINK NEGATE *-1 CC BARRIER NPNH LINK -1 N LINK *-1 QDL)(*-1 QDL) ;
 MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Pl3 LINK -1 (N Pl Nom) LINK *-1 QDL) ;
 MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Du3 LINK -1 DUALIS-NOUN + Nom LINK *-1 QDL) ;
+MAP (&grm-non-agr-subj-v) TARGET VFIN IF (NOT 0 Du3 LINK -1 N + (Nom Sg) LINK *-1 CC BARRIER NPNH LINK -1 N + (Nom Sg) LINK *-1 QDL) ;
 
 # perhaps no need for it? because of &grm-should-be-Vfin
 #MAP (&grm-non-agr-subj-v) TARGET VERB IF (NOT 0 VFIN LINK -1 HAB-ACTOR + Nom LINK *-1 QDL) ;
@@ -6072,12 +6100,12 @@ MAP (&grm-incorr-tense-past) TARGET PAST-MARKER (-1 VFIN + Prs LINK NOT 0 Prt LI
 
 # leat_go_dus_mánát - for this one we do not want dia-pos:
 
-MAP (&dia-pass) TARGET QDL (0 (leat_go_dus_mánát_adult) LINK *1 Num);
+MAP (&dia-pass) TARGET QDL (0 (leat_go_dus_mánát_adult) LINK *1 Num)(NOT 0 CEALKKA);
 
 
-MAP (&dia-neg) TARGET QDL IF (*1 Neg BARRIER S-BOUNDARY);
+MAP (&dia-neg) TARGET QDL IF (*1 Neg BARRIER S-BOUNDARY)(NOT 0 CEALKKA);
 	## Háliidatgo bruvssa? In háliit.
-MAP (&dia-pos) TARGET QDL IF (*-1 Qst OR go)(NOT *1 Neg);
+MAP (&dia-pos) TARGET QDL IF (*-1 Qst OR go)(NOT *1 Neg)(NOT 0 CEALKKA);
 	## Háliidatgo bruvssa? De háliidan.
 
 
@@ -6301,6 +6329,13 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &sem-not_wordlist
 
 # &err-spellingerror    	spellingerror word is not in lexicon
+# &grm-error-Diph
+# &grm-error-VIll
+# &sem-same-adj
+# &sem-same-noun
+# &sem-same-verb
+# &sem-not_correct_adj
+# &sem-not_correct_infl
 
 # &grm-NoEret			there should be "eret" 
 # &grm-falAdv           	"fal" can never be initial
@@ -6317,6 +6352,10 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &grm-missing-Nom      	there should be a nominative
 # &grm-missing-Loc-PP   	there should be a Loc or a PP
 # &grm-missing-Ill-PP   	there should be an Ill or a PP
+# &grm-missing-ActEss
+# &grm-missing-NumLoc
+# &grm-should-not-ConNeg
+# &grm-should-not-PP
 
 # &grm-should-LocPP     	you should answer with a LocPo
 # &grm-should-IllPP     	you should answer with an IllPo
