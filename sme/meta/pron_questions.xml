@@ -663,7 +663,6 @@
       </element>
     </answer>
   </q>
-  <!-- TODO: recipr example -->
 <q id="prec1illpl3">
     <qtype>P-RECIPR</qtype>
     <question>
@@ -684,33 +683,6 @@
     <answer> 
       <text>Sii MAINV OBJ RECPL P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<grammar tag="Pron+Recipr+Ill+PxPl3"/>
-      </element>
-    </answer>
-  </q>
-  <!-- TODO: recipr -->
-  <!--
-<q id="prec1illpl3">
-    <qtype>P-RECIPR</qtype>
-    <question>
-      <text>Geaidda SUBJ MAINV OBJ</text>
-      <element id="SUBJ">
-		<sem class="mPEOPLE"/>
-		<grammar tag="N+Pl+Nom"/>
-      </element>
-      <element id="MAINV">
-	<grammar tag="V+Ind+Prt+Pl3"/>
-	<id>addit</id>
-      </element>
- 		<element id="OBJ">
-		<grammar tag="N+Pl+Acc"/>
-		<id>ruhta</id>
-	  </element>
-    </question>
-    <answer> 
-      <text>Sii MAINV OBJ guhtet P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-		<id>guoimmiset</id>
 	<grammar tag="Pron+Recipr+Ill+PxPl3"/>
       </element>
     </answer>
@@ -733,9 +705,8 @@
 	  </element>
     </question>
     <answer> 
-      <text>Sii MAINV OBJ guhtet P-REC</text>
+      <text>Sii MAINV OBJ RECPL P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoimmiset</id>
 	<grammar tag="Pron+Recipr+Ill+PxPl3"/>
       </element>
     </answer>
@@ -750,9 +721,8 @@
 	  </element>
     </question>
     <answer> 
-      <text>Juo, moai dovde goabbat P-REC</text>
+      <text>Juo, moai dovde RECDU P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoibmáme</id>
 	<grammar tag="Pron+Recipr+Acc+PxDu1"/>
       </element>
     </answer>
@@ -767,9 +737,8 @@
 	  </element>
     </question>
     <answer> 
-      <text>Juo, doai gal dovdabeahtti goabbat P-REC</text>
+      <text>Juo, doai gal dovdabeahtti RECDU P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoimmáde</id>
 	<grammar tag="Pron+Recipr+Acc+PxDu2"/>
       </element>
     </answer>
@@ -784,9 +753,8 @@
 	  </element>
     </question>
     <answer> 
-      <text>Juo, soai dovdaba goabbat P-REC</text>
+      <text>Juo, soai dovdaba RECDU P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoimmiska</id>
 	<grammar tag="Pron+Recipr+Acc+PxDu3"/>
       </element>
     </answer>
@@ -801,9 +769,8 @@
 	  </element>
     </question>
     <answer> 
-      <text>Juo, sii dovdet guhtet P-REC</text>
+      <text>Juo, sii dovdet RECPL P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoimmiset</id>
 	<grammar tag="Pron+Recipr+Acc+PxPl3"/>
       </element>
     </answer>
@@ -814,9 +781,8 @@
       <text>Sáhttibeahtti go ovttasbargat bures</text>
     </question>
     <answer> 
-      <text>Juo, moai gal liikojetne goabbat P-REC</text>
+      <text>Juo, moai gal liikojetne RECDU P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoibmáme</id>
 	<grammar tag="Pron+Recipr+Ill+PxDu1"/>
       </element>
     </answer>
@@ -827,9 +793,8 @@
       <text>Mo soai birgiiga doppe</text>
     </question>
     <answer> 
-      <text>Soai veahkeheigga goabbat P-REC</text>
+      <text>Soai veahkeheigga RECDU P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoimmiska</id>
 	<grammar tag="Pron+Recipr+Acc+PxDu3"/>
       </element>
     </answer>
@@ -844,9 +809,8 @@
 	  </element>
     </question>
     <answer> 
-      <text>Soai oahpaiga goabbat P-REC</text>
+      <text>Soai oahpaiga RECDU P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoimmiska</id>
 	<grammar tag="Pron+Recipr+Loc+PxDu3"/>
       </element>
     </answer>
@@ -857,9 +821,8 @@
       <text>Mo doai birgiide doppe</text>
     </question>
     <answer> 
-      <text>Moai veahkeheimme goabbat P-REC</text>
+      <text>Moai veahkeheimme RECDU P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoibmáme</id>
 	<grammar tag="Pron+Recipr+Acc+PxDu1"/>
       </element>
     </answer>
@@ -874,9 +837,8 @@
 	  </element>
     </question>
     <answer> 
-      <text>Moai oahpaime goabbat P-REC</text>
+      <text>Moai oahpaime RECDU P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoibmáme</id>
 	<grammar tag="Pron+Recipr+Loc+PxDu1"/>
       </element>
     </answer>
@@ -891,9 +853,8 @@
 	  </element>
     </question>
     <answer> 
-      <text>Sii muitaledje guhtet P-REC</text>
+      <text>Sii muitaledje RECPL P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoimmiset</id>
 	<grammar tag="Pron+Recipr+Ill+PxPl3"/>
       </element>
     </answer>
@@ -908,9 +869,8 @@
 	  </element>
     </question>
     <answer> 
-      <text>Sii gulle guhtet P-REC</text>
+      <text>Sii gulle RECPL P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoimmiset</id>
 	<grammar tag="Pron+Recipr+Loc+PxPl3"/>
       </element>
     </answer>
@@ -925,9 +885,8 @@
 	  </element>
     </question>
     <answer> 
-      <text>Mii muitaleimmet guhtet P-REC</text>
+      <text>Mii muitaleimmet RECPL P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoibmámet</id>
 	<grammar tag="Pron+Recipr+Ill+PxPl1"/>
       </element>
     </answer>
@@ -942,9 +901,8 @@
 	  </element>
     </question>
     <answer> 
-      <text>Mii gulaimet guhtet P-REC</text>
+      <text>Mii gulaimet RECPL P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoibmámet</id>
 	<grammar tag="Pron+Recipr+Loc+PxPl1"/>
       </element>
     </answer>
@@ -959,9 +917,8 @@
 	  </element>
     </question>
     <answer> 
-      <text>Moai muitaleimme goabbat P-REC</text>
+      <text>Moai muitaleimme RECDU P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoibmáme</id>
 	<grammar tag="Pron+Recipr+Ill+PxDu1"/>
       </element>
     </answer>
@@ -976,9 +933,8 @@
 	  </element>
     </question>
     <answer> 
-      <text>Moai gulaime goabbat P-REC</text>
+      <text>Moai gulaime RECDU P-REC</text>
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoibmáme</id>
 	<grammar tag="Pron+Recipr+Loc+PxDu1"/>
       </element>
     </answer>
@@ -989,10 +945,9 @@
       <text>Dál juo fárreba oktii</text>
     </question>
     <answer> 
-      <text>Soai mannan TIME juo VERB goabbat P-REC</text>  
+      <text>Soai mannan TIME juo VERB RECDU P-REC</text>  
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoimmiska</id>
-	<grammar tag="Pron+Recipr+Loc+PxDu3"/>
+	<grammar tag="Pron+Recipr+Ill+PxDu3"/>
       </element>
  		<element id="VERB">
 		<sem class="mLIKE_ILL"/>
@@ -1010,10 +965,9 @@
       <text>Dál juo fárrebeahtti oktii</text>
     </question>
     <answer> 
-      <text>Moai mannan TIME juo VERB goabbat P-REC</text>  
+      <text>Moai mannan TIME juo VERB RECDU P-REC</text>  
       <element game='morfa' id="P-REC" task="yes">
-		<id>guoibmáme</id>
-	<grammar tag="Pron+Recipr+Loc+PxDu1"/>
+	<grammar tag="Pron+Recipr+Ill+PxDu1"/>
       </element>
  		<element id="VERB">
 		<sem class="mLIKE_ILL"/>
@@ -1025,326 +979,6 @@
 	  </element>
     </answer>
   </q>
-  -->
-  <!-- TODO recipr -->
-  <!--
-<q id="p2rec1illpl3">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Geaidda SUBJ MAINV OBJ</text>
-      <element id="SUBJ">
-		<sem class="mPEOPLE"/>
-		<grammar tag="N+Pl+Nom"/>
-      </element>
-      <element id="MAINV">
-	<grammar tag="V+Ind+Prt+Pl3"/>
-	<id>addit</id>
-      </element>
- 		<element id="OBJ">
-		<grammar tag="N+Pl+Acc"/>
-		<id>ruhta</id>
-	  </element>
-    </question>
-    <answer> 
-      <text>Sii MAINV OBJ nuppit P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Pl+Ill"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec2illpl3">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Geaidda SUBJ MAINV OBJ</text>
-      <element id="SUBJ">
-		<sem class="mPEOPLE"/>
-		<grammar tag="N+Pl+Nom"/>
-      </element>
-      <element id="MAINV">
-	<grammar tag="V+Ind+Prt+Pl3"/>
-	<id>muitalit</id>
-      </element>
- 		<element id="OBJ">
-		<grammar tag="N+Pl+Acc"/>
-		<id>sáhka</id>
-	  </element>
-    </question>
-    <answer> 
-      <text>Sii MAINV OBJ nuppit P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Pl+Ill"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec3accdu1">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Dovddat go OBJ</text>
- 		<element id="OBJ">
-		<sem class="mPERSNAME"/>
-		<grammar tag="N+Prop+Sg+Acc"/>
-	  </element>
-    </question>
-    <answer> 
-      <text>Juo, moai dovde nuppi P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Du+Acc"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec4accdu2">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Lean go mun deaivan OBJ</text>
- 		<element id="OBJ">
-		<sem class="mPERSNAME"/>
-		<grammar tag="N+Prop+Sg+Acc"/>
-	  </element>
-    </question>
-    <answer> 
-      <text>Juo, doai gal dovdabeahtti nuppi P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Du+Acc"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec5accdu3">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Dovdá go son OBJ</text>
- 		<element id="OBJ">
-		<sem class="mPERSNAME"/>
-		<grammar tag="N+Prop+Sg+Acc"/>
-	  </element>
-    </question>
-    <answer> 
-      <text>Juo, soai dovdaba nuppi P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Du+Acc"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec6accpl3">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Leat go SUBJ ovdal deaivvadan</text>
- 		<element id="SUBJ">
-		<sem class="mPEOPLE"/>
-		<grammar tag="N+Pl+Nom"/>
-	  </element>
-    </question>
-    <answer> 
-      <text>Juo, sii dovdet nuppit P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Pl+Acc"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec7illdu1">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Sáhttibeahtti go ovttasbargat bures</text>
-    </question>
-    <answer> 
-      <text>Juo, moai gal liikojetne nuppit P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Pl+Ill"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec8accdu3">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Mo soai birgiiga doppe</text>
-    </question>
-    <answer> 
-      <text>Soai veahkeheigga nuppi P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Du+Acc"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec9locdu3">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Mo soai oahpaiga VERB</text>
- 		<element id="VERB">
-		<sem class="mACTIVITY"/>
-		<grammar tag="V+Inf"/>
-	  </element>
-    </question>
-    <answer> 
-      <text>Soai oahpaiga nuppi P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Du+Loc"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec10accdu1">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Mo doai birgiide doppe</text>
-    </question>
-    <answer> 
-      <text>Moai veahkeheimme nuppi P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Du+Acc"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec11locdu1">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Mo doai oahpaide VERB</text>
- 		<element id="VERB">
-		<sem class="mACTIVITY"/>
-		<grammar tag="V+Inf"/>
-	  </element>
-    </question>
-    <answer> 
-      <text>Moai oahpaime nuppi P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Du+Loc"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec12illpl3">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Mo sii dihte mii lei dáhpáhuvvan PLACE</text>
- 		<element id="PLACE">
-		<sem class="mPLACENAME"/>
-		<grammar tag="N+Prop+Sg+Loc"/>
-	  </element>
-    </question>
-    <answer> 
-      <text>Sii muitaledje nuppit P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Pl+Ill"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec13locpl3">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Mo sii dihte mii lei dáhpáhuvvan PLACE</text>
- 		<element id="PLACE">
-		<sem class="mPLACENAME"/>
-		<grammar tag="N+Prop+Sg+Loc"/>
-	  </element>
-    </question>
-    <answer> 
-      <text>Sii gulle nuppit P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Pl+Loc"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec14illpl1">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Mo dii diđiidet mii lei dáhpáhuvvan PLACE</text>
- 		<element id="PLACE">
-		<sem class="mPLACENAME"/>
-		<grammar tag="N+Prop+Sg+Loc"/>
-	  </element>
-    </question>
-    <answer> 
-      <text>Mii muitaleimmet nuppit P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Pl+Ill"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec15locpl1">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Mo dii diđiidet mii lei dáhpáhuvvan PLACE</text>
- 		<element id="PLACE">
-		<sem class="mPLACENAME"/>
-		<grammar tag="N+Prop+Sg+Loc"/>
-	  </element>
-    </question>
-    <answer> 
-      <text>Mii gulaimet nuppit P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Pl+Loc"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec16illdu1">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Mo doai diđiide mii lei dáhpáhuvvan PLACE</text>
- 		<element id="PLACE">
-		<sem class="mPLACENAME"/>
-		<grammar tag="N+Prop+Sg+Loc"/>
-	  </element>
-    </question>
-    <answer> 
-      <text>Moai muitaleimme nuppi P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Du+Ill"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec17locdu1">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Mo dii diđiidet mii lei dáhpáhuvvan PLACE</text>
- 		<element id="PLACE">
-		<sem class="mPLACENAME"/>
-		<grammar tag="N+Prop+Sg+Loc"/>
-	  </element>
-    </question>
-    <answer> 
-      <text>Moai gulaime nuppi P-REC</text>
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Du+Loc"/>
-      </element>
-    </answer>
-  </q>
-  <q id="p2rec18locdu3">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Dál juo fárreba oktii</text>
-    </question>
-    <answer> 
-      <text>Soai mannan TIME juo VERB nuppi P-REC</text>  
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Du+Loc"/>
-      </element>
- 		<element id="VERB">
-		<sem class="mLIKE_ILL"/>
-		<grammar tag="V+Ind+Prt+Du3"/>
-	  </element>
- 		<element id="TIME">
-		<sem class="TIME_SEASON"/>
-		<grammar tag="N+Sg+Gen"/>
-	  </element>
-    </answer>
-  </q>
-  <q id="p2rec19locdu1">
-    <qtype>P-RECIPR2</qtype>
-    <question>
-      <text>Dál juo fárrebeahtti oktii</text>
-    </question>
-    <answer> 
-      <text>Moai mannan TIME juo VERB nuppi P-REC</text>  
-      <element game='morfa' id="P-REC" task="yes">
-	<grammar tag="Pron+Recipr+Du+Loc"/>
-      </element>
- 		<element id="VERB">
-		<sem class="mLIKE_ILL"/>
-		<grammar tag="V+Ind+Prt+Du1"/>
-	  </element>
- 		<element id="TIME">
-		<sem class="TIME_SEASON"/>
-		<grammar tag="N+Sg+Gen"/>
-	  </element>
-    </answer>
-  </q>
-  -->
 	<q id="prel1">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1486,8 +1120,6 @@
 			</element>
 		</answer>
 	</q>
-	<!-- TODO: clothing -->
-	<!--
 	<q id="prel10">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1539,7 +1171,6 @@
 			</element>
 		</answer>
 	</q>
-	-->
 	<q id="prel13">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1574,8 +1205,6 @@
 			</element>
 		</answer>
 	</q>
-	<!-- TODO: clothing -->
-	<!--
 	<q id="prel15">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1593,7 +1222,6 @@
 			</element>
 		</answer>
 	</q>
-	-->
 	<q id="prel16">
 		<qtype>P-REL</qtype>
 		<question>
