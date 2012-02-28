@@ -79,6 +79,7 @@ PRONOUN_SUBCLASSES = (
 	('Dem', _('demonstrative')),
 	('Recipr', _('reciprocative')),
 	('Refl', _('reflexive')),
+	('Rel', _('relative')),
 )
 
 CASE_CONTEXT_CHOICES = (
@@ -768,10 +769,19 @@ def select_words(self, qwords, awords):
 		# Select answer words and fullforms for interface
 		if awords.has_key(syntax) and len(awords[syntax]) > 0:
 			aword = choice(awords[syntax])
+			# print aword
 			if aword.has_key('tag'):
 				selected_awords[syntax]['tag'] = aword['tag']
+			if aword.has_key('task'): 
+				selected_awords[syntax]['task'] = aword['task']
+			if aword.has_key('qelement'):
+				qelem = aword['qelement']
+				#print qelem
+				if qelem.question.task:
+				    selected_awords[syntax]['taskword'] = qelem.identifier   # words in VastaS where task="yes". question_install sets attribute syntax if task="yes"	
 			if aword.has_key('word') and aword['word']:
 				selected_awords[syntax]['word'] = aword['word']
+                	
 			else:
 				if aword.has_key('qelement') and selected_awords[syntax].has_key('tag'):
 					# get form_list for a given qelement
@@ -1701,7 +1711,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 			self.lemma = answer_word_el.lemma
 
 		if answer_tag_el.pos == "Pron":
-			# Hide task word for Recipr and Refl
+			# Hide task word for Recipr, Refl and Rel
 			if qtype in ["P-REFL", "P-RECIPR", "P-REL"]:
 				self.lemma = False
 
@@ -1806,6 +1816,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
         analysis = ""
         data_lookup = "echo \"" + qtext + "\"" + preprocess
+        #print data_lookup
         words = os.popen(data_lookup).readlines()
         for w in words:
             cohort=""
@@ -2481,6 +2492,7 @@ class CealkkaQuestion(OahpaQuestion):
 
         maxlength=50
         answer_size=50
+        print question.qid
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
         
 	self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
@@ -2499,14 +2511,17 @@ class CealkkaQuestion(OahpaQuestion):
         for asynt in atext.split():	   # det här har jag (Heli) hittat på
             if asynt.isupper():  # added because of keyerror
                 word = selected_awords[asynt]
+                print word
                 if word.has_key('fullform') and word['fullform']:                    
                     word['fullform'] = force_unicode(word['fullform'][0])
+                if not word.has_key('taskword'):  # if element task="yes" the variable is saved in the attribute syntax for QElement in questions_install.py
+                    word['tag'] = ""
             else:
                 word = {}
                 word['fullform'] = asynt
                 word['tag'] = ""
             awords.append(word)
-            astring=astring+" "+word['fullform']
+            astring=astring+" "+force_unicode(word['fullform'])
 
         astring = astring.lstrip()
         #print astring
