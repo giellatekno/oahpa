@@ -5426,7 +5426,7 @@ REMOVE CGErr  ;
 
 MAP (&sem-same-noun) TARGET (N Acc) (0 $$NOUNLEMMA LINK *-1 CEALKKA BARRIER N LINK NOT *-1 $$NOUNLEMMA) ;
 
-MAP (&sem-same-adj) TARGET (A Attr) (0 $$ADJLEMMA LINK *-1 CEALKKA BARRIER A LINK NOT *-1 $$ADJLEMMA) ;
+MAP (&sem-same-adj) TARGET (A Attr) (0 $$ADJLEMMA LINK *-1 CEALKKA BARRIER A LINK *-1 (A Nom) LINK NOT 0 $$ADJLEMMA) ;
 
 MAP (&grm-incorr-tense) TARGET VFIN ((0 (V Prt) LINK *-1 C_PRS BARRIER Prs) OR ((0 (V Prs) LINK *-1 C_PRT BARRIER Prt))) ;
 
