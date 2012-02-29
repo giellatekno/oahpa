@@ -99,10 +99,10 @@ class CealkkaGame(Game):
 		word=None
 		if tag_el.pos=="Num" and self.settings.has_key('num_level') and str(self.settings['num_level'])=="1":
 			smallnum = ["1","2","3","4","5","6","7","8","9","10"]
-			word = Word.objects.filter(wordqelement__qelement=qelement,
+		word = Word.objects.filter(wordqelement__qelement=qelement,
 									 form__tag=tag_el.id)
-			if word.count() > 0:
-				word = word.order_by('?')[0]
+		if word.count() > 0:
+			word = word.order_by('?')[0]
 		else:
 			# Dialect is commented out still because we're only getting
 			# dialectical form variants, not word variants.
@@ -124,7 +124,8 @@ class CealkkaGame(Game):
 
 		if word and form_set_filter.count()>0:
 			form = form_set_filter[0] 
-		else: return None
+		else: raise Form.DoesNotExist("No words found.")
+		# return None
 		# TODO: better error handling here-- this needs to point out
 		# that the DB is not installing properly, but I need to check
 		# first that the code doesn't depend on returning None
