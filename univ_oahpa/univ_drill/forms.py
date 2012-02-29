@@ -2264,35 +2264,32 @@ def cealkka_is_correct(self,question,qwords,language,question_id):  #was: questi
             w=""
             cohort=""
             print qword
-            if qword.has_key('word'):
-                if qword.has_key('fullform') and qword['fullform']:
-                    cohort = cohort + "\"<" + qword['fullform'].encode('utf-8') + ">\"\n"
-                    lemma = Word.objects.filter(id=qword['word'])[0].lemma
-                    cohort = cohort + "\t\"" + lemma + "\""
-                if qword.has_key('tag') and qword['tag']:
-                    string = Tag.objects.filter(id=qword['tag'])[0].string
-                    tag = string.replace("+"," ")
-                    cohort = cohort + " " + tag + "\n"
-            else:
-                w = qword['fullform'].encode('utf-8')  # Words that are given. (Mun etc.)
-                w=w.lstrip().rstrip()
-                s.send(w) # on victorio
-                cohort = s.recv(size)
-                #word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-                #morfanal = os.popen(word_lookup).readlines()
-                #for row in morfanal:
-                 #   row = row.strip()
-                  #  cohort = cohort + row + "\n" + "\t"
-
-                if not cohort or cohort == w:
-		              cohort = w + "\n"
-                if cohort=="error":
-                    raise Http500
-                
-            #print cohort
-            analysis = analysis + cohort
-        
-        #print analysis
+            #if qword.has_key('word'): # All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
+             #   if qword.has_key('fullform') and qword['fullform']:
+              #      cohort = cohort + "\"<" + force_unicode(qword['fullform']).encode('utf-8') + ">\"\n"
+               #     lemma = Word.objects.filter(id=qword['word'])[0].lemma
+               #     cohort = cohort + "\t\"" + lemma + "\""
+                #if qword.has_key('tag') and qword['tag']:
+                 #   string = Tag.objects.filter(id=qword['tag'])[0].string
+                  #  tag = string.replace("+"," ")
+                   # cohort = cohort + " " + tag + "\n"
+            #else:
+	    w = force_unicode(qword['fullform']).encode('utf-8')  # Words that are given.
+	    w=w.lstrip().rstrip()
+	    s.send(w) # on victorio
+	    cohort = s.recv(size)
+            #word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+	    #morfanal = os.popen(word_lookup).readlines()
+	    #for row in morfanal:
+	    #   row = row.strip()
+	    #  cohort = cohort + row + "\n" + "\t"
+	    if not cohort or cohort == w:
+		    cohort = w + "\n"
+	    if cohort=="error":
+		    raise Http500
+	    #print cohort
+	    analysis = analysis + cohort
+            #print analysis
         if self.gametype=="cealkka":
             analysis = analysis + "\"<^cealkka>\"\n\t\"^cealkka\" QDL " + question_id +"\n"
         else:
@@ -2300,7 +2297,7 @@ def cealkka_is_correct(self,question,qwords,language,question_id):  #was: questi
 
         #print analysis
         ans_cohort=""
-        data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
+        data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
         word = os.popen(data_lookup).readlines()
         #print word
         analyzed=""
