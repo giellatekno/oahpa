@@ -1956,8 +1956,8 @@ LIST CEALKKA = "^cealkka" ;
 # in order to get a more efficient parser.   
 
 # Oppgaveteksten i vastas mangler syntaks og må behandles deretter:
-SELECT Inf (*1 CEALKKA) ; 
-SELECT Nom (*1 CEALKKA) ;
+#SELECT Inf (*1 CEALKKA) ; 
+#SELECT Nom (*1 CEALKKA) ;
 
 
 LIST PROBLEMLEMMA = ("duo" N) ("Lea" N) ("Le^a" N) ("ristet" V) ("riestit" V) ("ristat" V) ;
@@ -5468,6 +5468,9 @@ MAP (&grm-incorr-pers-nr) TARGET V (*-1 C_SG3 BARRIER (V Sg3))(NOT 0 Sg3) ;
 MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK *-1 ("orrut") OR ("fitnat") BARRIER NOT-ADV-PCLE LINK *-1 QDL) ;
 MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK *-1 C_ACTESS BARRIER (Actio Ess))(NEGATE *1 (Actio Ess)) ;
 
+# inf
+MAP (&grm-missing-Inf) TARGET VERB (NOT 0 Inf)(-1 INFV LINK *-1 CEALKKA) ;
+
 
 # Sahka
 
@@ -5593,8 +5596,8 @@ SELECT VFIN (-1 BOS)(1 go) ;
 REMOVE VFIN (-1 go LINK -2 BOS) ; 
 
 REMOVE Imprt (-1 BOS)(1 go) ; 
-SELECT ConNeg (-1 Neg) ;
-SELECT PrfPrc (-1 Neg) ;
+SELECT ConNeg (-1 Neg LINK NOT *1 CEALKKA) ;
+SELECT PrfPrc (-1 Neg LINK NOT *1 CEALKKA) ;
 SELECT Inf (*0 AUX BARRIER NOT-ADV OR S-BOUNDARY OR VERB) ; 
 SELECT PrfPrc (*-1 ("leat") BARRIER NOT-ADV OR QDL) ; 
 
@@ -6370,7 +6373,7 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &grm-incorr-tense-future
 # &grm-incorr-tense-past
 # &grm-incorr-pers-nr   	you should answer with another Person-Number
-
+# &grm-missing-Inf
 # &grm-missing-NumSg    	You should answer with Num Sg
 # &grm-missing-NumPl    	You should answer with Num Pl
 # &grm-missing-NNum     	You should answer with Coll
