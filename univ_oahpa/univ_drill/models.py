@@ -561,13 +561,14 @@ class Form(models.Model):
 			if self.tag.subclass in ['Recipr', 'Refl']:
 				base_case = 'Gen'
 
-			if self.tag.subclass in ['Recipr', 'Dem']:
+			if self.tag.subclass in ['Recipr', 'Dem', 'Rel']: # Rel added by Heli
 				kwargs['tag__number'] = number_match
 
-			
+			#if self.tag.subclass:
+			 #    kwargs['tag__subclass'] = self.tag.subclass # added by Heli
 			# print kwargs
 			baseform_num = self.word.form_set.filter(tag__case=base_case)
-			# print baseform_num
+			#print baseform_num
 			baseform = baseform_num.filter(**kwargs)
 
 			if baseform.count() == 0 and number_match == 'Sg' and baseform_num.count() > 0:
@@ -774,6 +775,7 @@ class QElement(models.Model):
 	question = models.ForeignKey(Question, null=True)
 	syntax = models.CharField(max_length=50)
 	identifier = models.CharField(max_length=20)
+	task = models.CharField(max_length=20)  # added for VastaS
 	gametype = models.CharField(max_length=7)
 	agreement = models.ForeignKey('self', 
 								  blank=True,

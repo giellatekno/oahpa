@@ -79,6 +79,7 @@ PRONOUN_SUBCLASSES = (
 	('Dem', _('demonstrative')),
 	('Recipr', _('reciprocative')),
 	('Refl', _('reflexive')),
+	('Rel', _('relative')),
 )
 
 CASE_CONTEXT_CHOICES = (
@@ -770,6 +771,13 @@ def select_words(self, qwords, awords):
 			aword = choice(awords[syntax])
 			if aword.has_key('tag'):
 				selected_awords[syntax]['tag'] = aword['tag']
+			if aword.has_key('task'): 
+				selected_awords[syntax]['task'] = aword['task']
+			if aword.has_key('qelement'):
+				qelem = aword['qelement']
+				if type(qelem) is not long:  # to exclude MorfaC 
+				    if qelem.task:
+				        selected_awords[syntax]['taskword'] = qelem.task   # words in VastaS where task="yes".	
 			if aword.has_key('word') and aword['word']:
 				selected_awords[syntax]['word'] = aword['word']
 			else:
@@ -1165,7 +1173,7 @@ class MorfaQuestion(OahpaQuestion):
 		
 		lemma_widget = forms.HiddenInput(attrs={'value': word.id})
 		tag_widget = forms.HiddenInput(attrs={'value': tag.id})
-		self.translang = 'sme'  # was: sma
+		self.translang = 'sme'
 		kwargs['correct_val'] = correct_val
 		super(MorfaQuestion, self).__init__(*args, **kwargs)
 		
@@ -1178,8 +1186,8 @@ class MorfaQuestion(OahpaQuestion):
 		self.lemma = baseform.fullform
 		self.wordclass = word.wordclass
 		
-		# print self.lemma, correct
-		# print baseform.tag, correct.tag
+		print self.lemma, correct
+		print baseform.tag, correct.tag
 		
 		# Retrieve feedback information
 		self.get_feedback(word=word, tag=tag, wordform=baseform.fullform,
@@ -2258,6 +2266,7 @@ def cealkka_is_correct(self,question,qwords,language,question_id):  #was: questi
         analysis = ""
         data_lookup = "echo \"" + qtext + "\"" + preprocess
         words = os.popen(data_lookup).readlines()
+        print question_id
         #print words
         #print qwords
         for qword in qwords:
@@ -2498,6 +2507,8 @@ class CealkkaQuestion(OahpaQuestion):
                 word = selected_awords[asynt]
                 if word.has_key('fullform') and word['fullform']:                    
                     word['fullform'] = force_unicode(word['fullform'][0])
+                if not word.has_key('taskword'):
+                    word['tag'] = ""
             else:
                 word = {}
                 word['fullform'] = asynt
@@ -2511,7 +2522,8 @@ class CealkkaQuestion(OahpaQuestion):
         #self.answertext1=astring
         #print self.answertext1
         self.awords=awords
-        #print self.awords
+        print question.qid
+        print self.awords
 
         relaxed = []
         form_list=[]

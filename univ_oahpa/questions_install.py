@@ -112,7 +112,8 @@ class Questions:
 			for q in question_qelements:
 				qe = QElement.objects.create(question=qaelement,
 											 identifier=el_id,
-											 syntax=q.syntax)
+											 syntax=q.syntax,
+											 gametype=qaelement.gametype)  # added by Heli
 				# copy = QElement.objects.get(question=qaelement.question,
 				# 									identifier=el_id,
 				# 									syntax=q.syntax)
@@ -326,6 +327,7 @@ class Questions:
 			
 		# Find different pos-values in tagelements
 		posvalues = {}
+		task = ""
 		# Elements that do not inflection information are not created.
 		if not tagelements and not agr_elements:
 			print "\tno inflection for", el_id
@@ -396,10 +398,13 @@ class Questions:
 		for p in posvalues.keys():
 			qe = QElement.objects.create(question=qaelement,\
 										 identifier=el_id,\
-										 syntax=syntax)
+										 syntax=syntax)  
 			if semclass:
 				semty, _ = Semtype.objects.get_or_create(semtype=semclass)
 				qe.semtype = semty
+				qe.save()
+			if task:
+				qe.task=task
 				qe.save()
 			
 			print '\t\tsemtype: ', semclass

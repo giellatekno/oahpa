@@ -156,7 +156,7 @@ class Game(object):
 		
 		# Can this be changed? Self.create_form should go without fail.
 		tries = 0
-		maxtries = 40
+		maxtries = 40 
 		
 		while i < self.num_fields and len(self.form_list) < 5 and tries < maxtries:
 			tries += 1
@@ -183,7 +183,7 @@ class Game(object):
 			# Do not generate same question twice
 			if word_id:
 				num = num + 1
-				if word_id in set(word_ids):
+				if word_id in set(word_ids): # If there are less than 5 different lemmas to choose from then this causes a "No questions were able to be generated." error. F.ex. there was a problem with relative pronouns in the beginning.
 					continue
 				else: word_ids.append(word_id)
 		
@@ -638,6 +638,7 @@ class BareGame(Game):
 					random_word = random_word.filter(word__stem__in=sylls)
 				if source:
 					random_word = random_word.filter(word__source__in=source)
+				
 				if pos2 == 'Num':
 				        if subclass == 'Ord':
 						random_word = random_word.filter(word__lemma__in=smallnum_ord)  # added to constrain the set of ordinal numerals 
@@ -703,7 +704,7 @@ class BareGame(Game):
 		
 		if not form_list:
 			raise Form.DoesNotExist
-		# print ', '.join([a.fullform for a in form_list])
+		#print ', '.join([a.fullform for a in form_list])
 		correct = form_list[0]
 		
 		if pos in ['N', 'V', 'A', 'Num']: # added Num
@@ -750,6 +751,7 @@ class BareGame(Game):
 
 		# Flatten
 		base_forms = sum(base_forms, [])
+		#print base_forms
 		
 		# Just in case multiple are returned, get the first.
 		try:

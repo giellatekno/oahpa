@@ -9,12 +9,12 @@
 {% endifequal %}
 {% endblock %}
 {% block imgprefix %}vasta{% endblock %}
-{% block gametitlename %}<a href="/univ_oahpa/vasta">VASTA</a>{% endblock %}
+{% block gametitlename %}<a href="{% url vasta_s %}">VASTA</a>{% endblock %}
 
 {% block navbar %}
 <ul class="sidelist"> 
-{% ifequal gametype "qa" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta %}">{% trans 'Vasta' %}</a></li>
-{% ifequal gametype "cealkka" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url cealkka %}">{% trans 'VastaS' %}</a></li>
+{% ifequal gametype "cealkka" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta_s %}">{% trans 'Vasta-S' %}</a></li>
+{% ifequal gametype "qa" %}<li class="selected">{% else %}<li>{% endifequal %}<a href="{% url vasta_f %}">{% trans 'Vasta-F' %}</a></li>
 </ul>
 {% endblock %}
 
@@ -60,7 +60,7 @@
 <tr>
 </br>
     {% for w in form.awords %}
-        {% if w.tag %}
+        {% if w.taskword %}
             <span style="color:#0000FF">{{ w.fullform }}</span>
         {% else %}
             {{ w.fullform }}
