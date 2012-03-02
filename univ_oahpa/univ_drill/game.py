@@ -5,7 +5,7 @@ from univ_oahpa.univ_drill.forms import *
 
 from univ_oahpa.conf.tools import switch_language_code
 
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404, render_to_response
 from django.core.exceptions import ObjectDoesNotExist
@@ -527,7 +527,7 @@ class BareGame(Game):
 			# TODO: combine all subclasses so forms can be fetched
 			if pos == 'Pron':
 				sylls = False
-				TAG_QUERY = TAG_QUERY & Q(subclass=pron_type)
+				TAG_QUERY = TAG_QUERY & Q(subclass=pron_type) & Q(number__in=['', 'Du', 'Pl'])
 			elif pos2 == 'Num':
 				sylls = False
 				TAG_QUERY = TAG_QUERY & Q(subclass=subclass)
@@ -635,8 +635,8 @@ class BareGame(Game):
 				random_word = tag.form_set.filter(word__language=L1)
 
 				if tag.pos == 'Pron':
-					random_word = random_word.exclude(word__stem='nubbi')
-
+					random_word = random_word\
+									.exclude(word__stem='nubbi')
 				if sylls:
 					random_word = random_word.filter(word__stem__in=sylls)
 				if source:
