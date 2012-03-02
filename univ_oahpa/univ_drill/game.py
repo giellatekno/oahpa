@@ -539,7 +539,7 @@ class BareGame(Game):
 				TAG_QUERY = TAG_QUERY & Q(number='Sg')
 			else:  # Numerals in both Sg and Pl on level 1-2
 				TAG_QUERY = TAG_QUERY & Q(number__in=['Sg','Pl'])
-					            
+								
 		if pos == 'V':
 			TAG_QUERY =  TAG_QUERY & \
 							Q(tense=tense) & \
@@ -552,11 +552,11 @@ class BareGame(Game):
 		if pos == 'A':
 			base_set = Form.objects.filter(Q(tag__pos="A") & Q(tag__case='Nom'))  # Is not used?
 			if pos2 == 'Num':
-			     sylls = False
-			     TAG_QUERY = TAG_QUERY & Q(subclass=subclass) & Q(case=case) & Q(attributive='') & Q(grade='')
-			else:     
-			     TAG_QUERY = TAG_QUERY & \
-			             Q(subclass='') & \
+				 sylls = False
+				 TAG_QUERY = TAG_QUERY & Q(subclass=subclass) & Q(case=case) & Q(attributive='') & Q(grade='')
+			else:	 
+				 TAG_QUERY = TAG_QUERY & \
+						 Q(subclass='') & \
 						Q(attributive=attributive) & \
 						Q(grade=grade) & \
 						Q(case=case) & \
@@ -587,18 +587,18 @@ class BareGame(Game):
 		"""if self.settings['pos'] == "Num":
 			if self.settings.has_key('num_level') and str(self.settings['num_level']) == "1":
 			"""
-        
+		
 		#		QUERY = Q(pos__iexact=pos) & Q(presentationform__in=smallnum)
 		#	else:
 		#		QUERY = Q(pos__iexact=pos)
 		if pos == 'Num' or pos2 == 'Num':
-		      QUERY = Q(pos__iexact=pos) & Q(form__tag__subclass=subclass)
+			  QUERY = Q(pos__iexact=pos) & Q(form__tag__subclass=subclass)
 		else:
 			# levels is not what we're looking for
-		      QUERY = Q(pos__iexact=pos) & Q(stem__in=syll)
-		      if source and source not in ['all', 'All']:
-			     QUERY = QUERY & Q(source__name=source)
-		      
+			  QUERY = Q(pos__iexact=pos) & Q(stem__in=syll)
+			  if source and source not in ['all', 'All']:
+				 QUERY = QUERY & Q(source__name=source)
+			  
 		
 		smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta", "čieža", "gávcci","ovcci","logi"]
 		smallnum_ord = ["vuosttaš", "nubbi", "goalmmát", "njealját", "viđát", "guđát", "čihččet", "gávccát", "ovccát", "logát"]
@@ -606,10 +606,10 @@ class BareGame(Game):
 		
 		if pos == 'Num' and subclass == '':
 			QUERY = QUERY & Q(lemma__in=smallnum)
-		      
+			  
 		if pos2 == 'Num' and subclass == 'Ord':
 			QUERY = QUERY & Q(lemma__in=smallnum_ord)
-                      				
+					  				
 		error = "Morfa.get_db_info: Database is improperly loaded.\
 				 There are no Words, Tags or Forms, or the query\
 				 is not returning any."
@@ -634,13 +634,16 @@ class BareGame(Game):
 
 				random_word = tag.form_set.filter(word__language=L1)
 
+				if tag.pos == 'Pron':
+					random_word = random_word.exclude(word__stem='nubbi')
+
 				if sylls:
 					random_word = random_word.filter(word__stem__in=sylls)
 				if source:
 					random_word = random_word.filter(word__source__in=source)
 				
 				if pos2 == 'Num':
-				        if subclass == 'Ord':
+					if subclass == 'Ord':
 						random_word = random_word.filter(word__lemma__in=smallnum_ord)  # added to constrain the set of ordinal numerals 
 					elif subclass == 'Coll':
 						random_word = random_word.filter(word__lemma__in=smallnum_coll) # constrains the set of collective numerals
@@ -760,7 +763,10 @@ class BareGame(Game):
 			if len(base_forms) == 0:
 				baseform = form.getBaseform(match_num=match_number)
 		
+		# if 'language' in self.settings:
 		target_key = switch_language_code(self.settings['language'][-3::])
+		# else:
+		# 	# TODO:
 		
 		translations = sum([w.word_answers for w in word.translations2(target_key).all()],[])
 		
@@ -1214,9 +1220,9 @@ class QuizzGame(Game):
 			if frequency:
 				for item in frequency:
 					if item in common:
-					    kw_frequency.extend(common)
+						kw_frequency.extend(common)
 					if item in rare:
-					    kw_frequency.extend(rare)
+						kw_frequency.extend(rare)
 				
 				leksa_kwargs['frequency'] = list(set(kw_frequency))
 
