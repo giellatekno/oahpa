@@ -1186,8 +1186,8 @@ class MorfaQuestion(OahpaQuestion):
 		self.lemma = baseform.fullform
 		self.wordclass = word.wordclass
 		
-		print self.lemma, correct
-		print baseform.tag, correct.tag
+		#print self.lemma, correct
+		#print baseform.tag, correct.tag
 		
 		# Retrieve feedback information
 		self.get_feedback(word=word, tag=tag, wordform=baseform.fullform,
@@ -2507,12 +2507,12 @@ class CealkkaQuestion(OahpaQuestion):
                 word = selected_awords[asynt]
                 if word.has_key('fullform') and word['fullform']:                    
                     word['fullform'] = force_unicode(word['fullform'][0])
-                if not word.has_key('taskword'):
-                    word['tag'] = ""
+                #if not word.has_key('taskword'):
+                 #   word['tag'] = ""
             else:
                 word = {}
                 word['fullform'] = asynt
-                word['tag'] = ""
+                #word['tag'] = ""
             awords.append(word)
             astring=astring+" "+force_unicode(word['fullform'])
 
