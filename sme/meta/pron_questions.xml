@@ -64,7 +64,6 @@
 			</element>
 		</answer>
 	</q>
-	<!-- TODO: mPAIR -->
 	<q id="pnom4">
 		<qtype>P-PERS</qtype>
 		<question>
@@ -145,7 +144,6 @@
 			</element>
 		</answer>
 	</q>
-	<!-- TODO: mPAIR
 	<q id="pacc6">
 		<qtype>P-PERS</qtype>
 		<question>
@@ -160,13 +158,13 @@
 			</element>
 		</question>
 		<answer>
-			<text>SUBJ leat buorástahttán P-ACC</text>
+			<text>SUBJ MAINV buorástahttán P-ACC</text>
 			<element game="morfa" id="P-ACC" task="yes">
-				<grammar tag="Pron+Pers+Person-Number+Acc"/>
+				<grammar tag="Pron+Pers+Pl3+Acc"/>
+			<id>sii</id>				
 			</element>
 		</answer>
 	</q>
-	-->
 	<q id="pgen1">
 		<qtype>P-PERS</qtype>
 		<question>
@@ -260,7 +258,7 @@
 				<grammar tag="N+Pl+Acc"/>
 			</element>
 			<element id="SUBJ">
-				<sem class="mFAMILYsg"/>  <!-- mFAMILYsg -->
+				<sem class="mFAMILYsg"/> 
 				<grammar tag="N+Sg+Nom"/>
 			</element>
 		</question>
@@ -280,7 +278,7 @@
 				<grammar tag="N+Sg+Acc"/>
 			</element>
 			<element id="SUBJ">
-				<sem class="mFAMILYsg"/> <!-- mFAMILYsg -->
+				<sem class="mFAMILYsg"/>
 				<grammar tag="N+Sg+Nom"/>
 			</element>
 		</question>
@@ -1120,7 +1118,6 @@
 			</element>
 		</answer>
 	</q>
-	<!--
 	<q id="prel10">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1133,7 +1130,7 @@
 				<id>mat</id>
 			</element>
 			<element id="OBJ">
-				<sem class="CLOTHING-PL"/>
+				<sem class="CLOTHING_PL"/>
 				<grammar tag="N+Pl+Acc"/>
 			</element>
 		</answer>
@@ -1150,12 +1147,11 @@
 				<id>mat</id>
 			</element>
 			<element id="OBJ">
-				<sem class="CLOTHING-PL"/>
+				<sem class="CLOTHING_PL"/>
 				<grammar tag="N+Pl+Acc"/>
 			</element>
 		</answer>
 	</q>
-	-->
 	<q id="prel12">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1207,7 +1203,6 @@
 			</element>
 		</answer>
 	</q>
-	<!--
 	<q id="prel15">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1220,12 +1215,11 @@
 				<id>mii</id>
 			</element>
 			<element id="OBJ">
-				<sem class="CLOTHING-PL"/>
+				<sem class="CLOTHING_PL"/>
 				<grammar tag="N+Pl+Acc"/>
 			</element>
 		</answer>
 	</q>
-	-->
 	<q id="prel16">
 		<qtype>P-REL</qtype>
 		<question>
