@@ -16,14 +16,14 @@ if ($ARGV[1] ne "")
 my $twig = XML::Twig->new();
 # to extend for vasta, too
 my $s = '^'.$mode;
-if (($mode eq "sahka") or ($mode eq "cealkka"))
+if (($mode eq "sahka") or ($mode eq "vastas"))
 {
   $s = '^'.$mode;
 } else {
   $s = '^qst';
 }
 
-my $lon = 'lookup -flags mbTT -utf8 ~/gtsvn/gt/sme/bin/ped-sme.fst';
+my $lon = 'lookup -flags mbTT -utf8 ~/errortag-gt/gt/sme/bin/ped-sme.fst';
 my $tmp_file = "tmp_data.txt";
 my $out_file = "final_data.txt";
 my $command0 = "rm $tmp_file $out_file" ;
@@ -53,12 +53,12 @@ foreach my $test ($root->children('test')){
 	  s/^(\s+\"\^sahka\"\s+)(\?.*)$/$1$i/;
 	}
       
-      if ($mode eq "cealkka")
+      if ($mode eq "vastas")
 	{
-	  s/^(\s+\"\^cealkka\"\s+)(\?.*)$/$1$i/;
+	  s/^(\s+\"\^vastas\"\s+)(\?.*)$/$1$i/;
 	}
 
-      if ($mode eq "vasta")
+      if ($mode eq "vastaf")
 	{
 	  s/^(\s+\"\^qst\"\s+)(\?.*)$/$1$i/;
 	}
@@ -74,7 +74,7 @@ foreach my $test ($root->children('test')){
   print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 }
 
-my $command2 = "cat $tmp_file | vislcg3 -g ../sme/src/sme-ped.cg3 |" ;
+my $command2 = "cat $tmp_file | vislcg3 -g ../sme/src/sme-ped.cg3 --trace |" ;
 
 #    print "$command2\n";
 

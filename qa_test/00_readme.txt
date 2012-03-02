@@ -1,5 +1,5 @@
 This is a directory for automatizing question-answer pair testing for
-vasta, ceallka and sahka.
+vastaf, vastas and sahka.
 
 First, questions are extracted from xml or txt and paired with a dummy
 answer, then this dummy answer is replaced by one or more answer the
@@ -27,7 +27,7 @@ java net.sf.saxon.Transform -it main gen_sahka-qa-templates.xsl inDir=PATH/TO/IN
 
 perl qa-test_dialogue.pl QA-PAIR-FILE.xml MODE
 
-The parameter MODE can be: vasta, cealkka, or sahka.
+The parameter MODE can be: vastaf, vastas, or sahka.
 
 For example:
 perl qa-test_dialogue.pl xyz_firstmeeting.xml sahka
@@ -44,7 +44,7 @@ Det legges til delimiter mellom Q og A (se forms.py)
 
 
 
-vasta:					
+vastaf:					
 "<^qst>"
 	 "^qst" QDL
 	 
