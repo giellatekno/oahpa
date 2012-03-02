@@ -18,7 +18,7 @@
 	{# context #}
 		<li><label for="id_{{ settingsform.pron_context.name }}">{% trans "Pronoun type" %}</label>
 			{{ settingsform.pron_context }}</li>
-		{% ifequal settingsform.pron_context.value "P-RECIPR" %}
+		{% ifequal settings.pron_context "P-RECIPR" %}
 			<li><label for="id_{{ settingsform.wordform_type.name }}">{% trans "Reciprocative type" %}</label>
 			{{ settingsform.wordform_type }}</li>
 		{% endifequal %}
