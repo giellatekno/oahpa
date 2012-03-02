@@ -1862,7 +1862,7 @@ SET S-BOUNDARY  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR ("
 SET S-BOUNDARY1  = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR QDL ;
 	# includes not CS because of "go" in questions, before it is disambugated.
 	
-SET S-BOUNDARY2 = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") ;
+SET S-BOUNDARY2 = (Pron Interr) OR (Pron Rel) OR ("muhto") OR MO OR ("\;") OR (":") OR ("-") OR ("–") OR QDL ;
  
 	# includes CP
 	# this one includes @CVP, the conjunction which actually connects two sentences (each with a finite verb) to each other, 
@@ -1912,7 +1912,7 @@ SET INTR-END = COMMA OR PUNCT-RIGHT ;
 	# Moved here due to error msg.
 
 LIST SAHKA = "^sahka" ;
-LIST CEALKKA = "^cealkka" ;
+LIST VASTAS = "^cealkka" "^vastas" ;
 
 
 
@@ -1956,8 +1956,10 @@ LIST CEALKKA = "^cealkka" ;
 # in order to get a more efficient parser.   
 
 # Oppgaveteksten i vastas mangler syntaks og må behandles deretter:
-#SELECT Inf (*1 CEALKKA) ; 
-#SELECT Nom (*1 CEALKKA) ;
+
+LIST VASTAS_LEMMA = (N Nom) (A Nom) (V Inf) (Pron Nom) ;
+
+SELECT VASTAS_LEMMA (*1 VASTAS) ; 
 
 
 LIST PROBLEMLEMMA = ("duo" N) ("Lea" N) ("Le^a" N) ("ristet" V) ("riestit" V) ("ristat" V) ;
@@ -2326,6 +2328,7 @@ REMOVE:r597 PrsPrc IF (0 (N Sg))(NEGATE -1 ("nu") LINK 2 go)(NEGATE *1 Acc BARRI
 	## geavaheaddji
 	
 REMOVE:r598 Imprt IF (0 ("fápmudus"));	
+REMOVE:r598 Imprt (0 N LINK -1 BOS)(1 Neg);	
 
 REMOVE:r599 VFIN IF (-1 ("makkár"))(0 N);
 REMOVE:r600 Inf IF (-1 ("makkár"))(0 N);
@@ -5415,7 +5418,7 @@ LIST ADJLEMMA = (".*"r) ;
 LIST VERBLEMMA = (".*"r) ;
 
 SELECT $$NOUNLEMMA (0 (N Ill) OR (N Loc) LINK *-1 C_ILL OR C_LOC LINK *-1 $$NOUNLEMMA) ;
-SELECT $$VERBLEMMA (0 VERB LINK *-1 CEALKKA LINK *-1 $$VERBLEMMA) ;
+SELECT $$VERBLEMMA (0 VERB LINK *-1 VASTAS LINK *-1 $$VERBLEMMA) ;
 
 REMOVE DiphErr (0 Ill)  ;
 REMOVE IllErr (0 Ill)  ;
@@ -5424,9 +5427,9 @@ REMOVE CGErr  ;
 
 
 
-MAP (&sem-same-noun) TARGET (N Acc) (0 $$NOUNLEMMA LINK *-1 CEALKKA BARRIER N LINK NOT *-1 $$NOUNLEMMA) ;
+MAP (&sem-same-noun) TARGET (N Acc) (0 $$NOUNLEMMA LINK *-1 VASTAS BARRIER N LINK NOT *-1 $$NOUNLEMMA) ;
 
-MAP (&sem-same-adj) TARGET (A Attr) (0 $$ADJLEMMA LINK *-1 CEALKKA BARRIER A LINK *-1 (A Nom) LINK NOT 0 $$ADJLEMMA) ;
+MAP (&sem-same-adj) TARGET (A Attr) (0 $$ADJLEMMA LINK *-1 VASTAS BARRIER A LINK *-1 (A Nom) LINK NOT 0 $$ADJLEMMA) ;
 
 MAP (&grm-incorr-tense) TARGET VFIN ((0 (V Prt) LINK *-1 C_PRS BARRIER Prs) OR ((0 (V Prs) LINK *-1 C_PRT BARRIER Prt))) ;
 
@@ -5439,9 +5442,9 @@ MAP (&grm-incorr-tense) TARGET (ConNeg) (NOT 0 (V Prt) LINK *-1 Neg BARRIER NOT-
 
 LIST Der1 = Der/h Der/d ;
 
-MAP (&sem-same-verb) TARGET VFIN (0 $$VERBLEMMA LINK *-1 CEALKKA BARRIER V LINK NOT *-1 $$VERBLEMMA) ;
-MAP (&sem-same-verb) TARGET VERB (0 $$VERBLEMMA LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 CEALKKA LINK *-1 Neg BARRIER $$VERBLEMMA) ;
-MAP (&grm-should-negV) TARGET VERB (0 $$VERBLEMMA + Der1 LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 CEALKKA LINK *-1 $$VERBLEMMA LINK NOT 0 Der1 LINK -1 Neg) ;
+MAP (&sem-same-verb) TARGET VFIN (0 $$VERBLEMMA LINK NOT 0 Neg LINK *-1 VASTAS BARRIER V LINK NOT *-1 $$VERBLEMMA) ;
+MAP (&sem-same-verb) TARGET VERB (0 $$VERBLEMMA LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 VASTAS LINK *-1 Neg BARRIER $$VERBLEMMA) ;
+MAP (&grm-should-negV) TARGET VERB (0 $$VERBLEMMA + Der1 LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 VASTAS LINK *-1 $$VERBLEMMA LINK NOT 0 Der1 LINK -1 Neg) ;
 
 
 MAP (&grm-missing-Acc) TARGET Num (*-1 C_NUM_ACC BARRIER Num)(NOT 0 Acc) ;
@@ -5469,7 +5472,7 @@ MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK *-1 ("orrut") OR (
 MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK *-1 C_ACTESS BARRIER (Actio Ess))(NEGATE *1 (Actio Ess)) ;
 
 # inf
-MAP (&grm-missing-Inf) TARGET VERB (NOT 0 Inf)(-1 INFV LINK *-1 CEALKKA) ;
+MAP (&grm-missing-Inf) TARGET VERB (NOT 0 Inf OR Neg)(-1 INFV LINK *-1 VASTAS) ;
 
 
 # Sahka
@@ -5596,9 +5599,9 @@ SELECT VFIN (-1 BOS)(1 go) ;
 REMOVE VFIN (-1 go LINK -2 BOS) ; 
 
 REMOVE Imprt (-1 BOS)(1 go) ; 
-SELECT ConNeg (-1 Neg LINK NOT *1 CEALKKA) ;
-SELECT PrfPrc (-1 Neg LINK NOT *1 CEALKKA) ;
-SELECT Inf (*0 AUX BARRIER NOT-ADV OR S-BOUNDARY OR VERB) ; 
+SELECT ConNeg (-1 Neg LINK NOT *1 VASTAS) ;
+SELECT PrfPrc (-1 Neg LINK NOT *1 VASTAS) ;
+SELECT Inf (*-1 AUX BARRIER NOT-ADV OR S-BOUNDARY OR VERB LINK NOT 0 Neg) ; 
 SELECT PrfPrc (*-1 ("leat") BARRIER NOT-ADV OR QDL) ; 
 
 # Selecting PrfPrc after VFIN and Neg:
@@ -5684,7 +5687,7 @@ MAP (&grm-should-not-PP) TARGET Po (-1 ANIMATE + Com LINK *-1 STRICTCOMV BARRIER
 MAP (&grm-missing-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 Loc OR Nom)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Gen LINK 1 Actio)(NEGATE 0 Dem LINK *1 (N Loc)) ;
 
 # If a STRICTILLV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Ill, (no Inf is accepted). Exception is "liikot" + Inf, for PP amd for Gen + N - e.g. bártni moarsi beatnagii: 
-MAP (&grm-missing-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH LINK *-1 QDL)(NOT 0 Ill OR Nom)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill)) ;
+MAP (&grm-missing-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH OR Ill LINK *-1 QDL)(NOT 0 Ill OR Nom)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill)) ;
 
 # Noun Ess only after an ESSV (other words can be between): 
 #MAP (&grm-should-not-Ess) TARGET (N Ess) (NOT *-1 ESSV OR ACCESSV BARRIER S-BOUNDARY) ; 
@@ -5706,6 +5709,7 @@ MAP (&grm-missing-Gen-PP) TARGET N (*-1 QDL)(NOT 0 Gen LINK 1 Po) ;
 # NP - RULES
 # ----------
 
+LIST ACCGEN = (N Gen) (N Acc) ;
 
 LIST Attr-CC-Adv             = Attr CC Adv ;
 LIST Attr-CC-Adv-Num         = Attr CC Adv Num ;
@@ -5723,7 +5727,7 @@ SELECT Attr (NEGATE 0C Prop LINK NOT 1 Prop)(*1 N BARRIER NOT-Attr-CC-Adv OR QDL
     # once again
 SELECT Num (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ;
     ## guokte stuorra ja hui boares viesu
-SELECT (N Gen) (*-1 QDL)(NEGATE 0C Prop LINK NOT 1 Prop)(NEGATE 0 ACR OR ABBR OR Prop LINK 1 ACR OR ABBR)(*1 N BARRIER NOT-Attr-CC-Adv-Num OR QDL LINK NOT 0 Prop)(NOT 0 PrfPrc)(NEGATE 1 CC LINK *1 N BARRIER NPNHA LINK NOT *1 N BARRIER NPNHA) ;
+SELECT ACCGEN (*-1 QDL)(NEGATE 0C Prop LINK NOT 1 Prop)(NEGATE 0 ACR OR ABBR OR Prop LINK 1 ACR OR ABBR)(*1 N BARRIER NOT-Attr-CC-Adv-Num OR QDL LINK NOT 0 Prop)(NOT 0 PrfPrc)(NEGATE 1 CC LINK *1 N BARRIER NPNHA LINK NOT *1 N BARRIER NPNHA) ;
     ## eatni guokte stuorra ja hui boares viesu
 SELECT (Refl Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
     ## mu iežan eatni guokte stuorra ja hui boares viesu
@@ -5847,12 +5851,12 @@ REMOVE Gen IF (-1 ("makkár") LINK -1 BOS) ;
 LIST DEM-SG-ACC-GEN = (Dem Sg Acc) (Dem Sg Gen) ;
 LIST DEM-PL-ACC-GEN = (Dem Pl Acc) (Dem Pl Gen) ;
 
-MAP (&grm-non-agreement-Dem) TARGET (Dem Nom) IF (*-1 CEALKKA)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 Nom) ;
-MAP (&grm-non-agreement-Dem) TARGET DEM-SG-ACC-GEN IF (*-1 CEALKKA)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Acc) OR (Sg Gen) OR (Sg Ill) OR (Sg Loc));
-MAP (&grm-non-agreement-Dem) TARGET (Dem Sg Com) IF (*-1 CEALKKA)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Com));
-MAP (&grm-non-agreement-Dem) TARGET DEM-PL-ACC-GEN IF (*-1 CEALKKA)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Acc) OR (Pl Gen) OR (Pl Com));
-MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Ill) IF (*-1 CEALKKA)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Ill));
-MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Loc) IF (*-1 CEALKKA)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Loc));
+MAP (&grm-non-agreement-Dem) TARGET (Dem Nom) IF (*-1 VASTAS)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 Nom) ;
+MAP (&grm-non-agreement-Dem) TARGET DEM-SG-ACC-GEN IF (*-1 VASTAS)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Acc) OR (Sg Gen) OR (Sg Ill) OR (Sg Loc));
+MAP (&grm-non-agreement-Dem) TARGET (Dem Sg Com) IF (*-1 VASTAS)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Sg Com));
+MAP (&grm-non-agreement-Dem) TARGET DEM-PL-ACC-GEN IF (*-1 VASTAS)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Acc) OR (Pl Gen) OR (Pl Com));
+MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Ill) IF (*-1 VASTAS)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Ill));
+MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Loc) IF (*-1 VASTAS)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 0 (Pl Loc));
 
 # dat viessu
 # dan viesu, vissui, viesus
@@ -5931,18 +5935,18 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom)  (NOT 0 Pl1)(*-1 QDL BARRIER S-BOUND
 
 
 # Answer with the correct pronoun:
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA LINK *-1 (Pers Nom) LINK NOT 0 Sg2);
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg2) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Sg1) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg3) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Sg3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 SAHKA OR CEALKKA LINK *-1 (Pers Nom) LINK NOT 0 Du2) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du2) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Du1) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du3) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Du3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 SAHKA OR CEALKKA LINK *-1 (Pers Nom) LINK NOT 0 Pl2) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Pl1) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 CEALKKA  LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS LINK *-1 (Pers Nom) LINK NOT 0 Sg2);
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg2) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS  LINK *-1 (Pers Nom) LINK NOT 0 Sg1) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg3) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS  LINK *-1 (Pers Nom) LINK NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 SAHKA OR VASTAS LINK *-1 (Pers Nom) LINK NOT 0 Du2) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du2) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS  LINK *-1 (Pers Nom) LINK NOT 0 Du1) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du3) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS  LINK *-1 (Pers Nom) LINK NOT 0 Du3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 SAHKA OR VASTAS LINK *-1 (Pers Nom) LINK NOT 0 Pl2) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS  LINK *-1 (Pers Nom) LINK NOT 0 Pl1) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS  LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
 
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 NUM-QUESTION OR CEALKKA LINK *-1 (N Pl Nom) LINK NOT 0 Inf)(NOT 0 Pl3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU OR (Mii_namma_lea) OR CEALKKA LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 NUM-QUESTION OR VASTAS LINK *-1 (N Pl Nom) LINK NOT 0 Inf)(NOT 0 Pl3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU OR (Mii_namma_lea) OR VASTAS LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION)(NOT 0 Sg3) ;
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
 
@@ -5971,7 +5975,7 @@ LIST BARGGUS = Leat_go_barggus_adult Leat_go_barggus_young ;
 MAP (&grm-soaitit) TARGET ("soaitit")(*-1 QDL)(0 V LINK *1 VFIN BARRIER S-BOUNDARY LINK NOT 0 Inf)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 
 MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY OR VFIN LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA)(NEGATE 0 ("hálihit") LINK *-1 ("háliidit")) ;
+MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BARGGUS LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 VASTAS)(NEGATE 0 ("hálihit") LINK *-1 ("háliidit")) ;
 
 MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg OR SOAITIT)(0 $$VERBLEMMA LINK *-1 QDL BARRIER SV-BOUNDARY  LINK NOT 0  MAKKAR-BARGU LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK *-1 VFIN LINK NOT 0 $$VERBLEMMA LINK NOT 0 WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE 0 ("hálihit") LINK *-1 ("háliidit"))(NOT 0 SOAITIT) ;
@@ -5992,15 +5996,15 @@ MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK
 MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK 0 SAHKA LINK *-1 VFIN LINK NOT 0 Pl1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 
 # VASTA: Answer with the correct verbform if there is no Pers:
-MAP (&grm-incorr-pers-nr) TARGET (V Sg1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 MAKKAR-BARGU OR CEALKKA LINK *-1 VFIN LINK NOT 0 Sg2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Sg2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 CEALKKA LINK *-1 VFIN LINK NOT 0 Sg1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL BARRIER S-BOUNDARY OR Nom OR VFIN LINK NOT 0 CEALKKA LINK *-1 VFIN LINK NOT 0 Sg3 LINK NOT *-1 ("galle"))(NEGATE 0 ("leat") LINK *-1 QDL LINK *-1 go LINK -1 ("leat") LINK -1 BOS)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 DOYOUHAVE) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA OR CEALKKA LINK *-1 VFIN LINK NOT 0 Du2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Du2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 CEALKKA LINK *-1 VFIN LINK NOT 0 Du1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Du3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 CEALKKA LINK *-1 VFIN LINK NOT 0 Du3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA OR CEALKKA LINK *-1 VFIN LINK NOT 0 Pl2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 CEALKKA LINK *-1 VFIN LINK NOT 0 Pl1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 CEALKKA LINK *-1 VFIN LINK NOT 0 Pl3)(NEGATE *-1 (hálbiduvvon_galvvut) OR DOYOUHAVE)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 MAKKAR-BARGU OR VASTAS LINK *-1 VFIN LINK NOT 0 Sg2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 VASTAS LINK *-1 VFIN LINK NOT 0 Sg1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL BARRIER S-BOUNDARY OR Nom OR VFIN LINK NOT 0 VASTAS LINK *-1 VFIN LINK NOT 0 Sg3 LINK NOT *-1 ("galle"))(NEGATE 0 ("leat") LINK *-1 QDL LINK *-1 go LINK -1 ("leat") LINK -1 BOS)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 DOYOUHAVE) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA OR VASTAS LINK *-1 VFIN LINK NOT 0 Du2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Du2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 VASTAS LINK *-1 VFIN LINK NOT 0 Du1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Du3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 VASTAS LINK *-1 VFIN LINK NOT 0 Du3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA OR VASTAS LINK *-1 VFIN LINK NOT 0 Pl2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 VASTAS LINK *-1 VFIN LINK NOT 0 Pl1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 VASTAS LINK *-1 VFIN LINK NOT 0 Pl3)(NEGATE *-1 (hálbiduvvon_galvvut) OR DOYOUHAVE)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 
 #MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 V-3)(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 #MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 V-3)(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
@@ -6012,10 +6016,10 @@ MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN
 
 LIST BOTH-PRS-PRT = gos_du_eadni_lea_eret_adult gos_du_eadni_lea_eret_young gos_du_eadni_lea_eret_child gos_du_ahcci_lea_eret_adult gos_du_ahcci_lea_eret_young gos_du_ahcci_lea_eret_child ;
 
-MAP (&grm-incorr-tense) TARGET VFIN + Prs (*-1 QDL BARRIER SV-BOUNDARY LINK *-1 VFIN + Prt LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
-MAP (&grm-incorr-tense) TARGET ConNeg (*-1 QDL BARRIER SV-BOUNDARY LINK *-1 VFIN + Prt  LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
-MAP (&grm-incorr-tense) TARGET PrfPrc (*-1 Neg BARRIER VERB LINK *-1 QDL BARRIER SV-BOUNDARY LINK *-1 VFIN + Prs  LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
-MAP (&grm-incorr-tense) TARGET VFIN + Prt (*-1 QDL BARRIER SV-BOUNDARY LINK NOT 0 BOTH-PRS-PRT LINK *-1 VFIN + Prs LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 CEALKKA) ;
+MAP (&grm-incorr-tense) TARGET VFIN + Prs (*-1 QDL BARRIER SV-BOUNDARY LINK *-1 VFIN + Prt LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 VASTAS) ;
+MAP (&grm-incorr-tense) TARGET ConNeg (*-1 QDL BARRIER SV-BOUNDARY LINK *-1 VFIN + Prt  LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 VASTAS) ;
+MAP (&grm-incorr-tense) TARGET PrfPrc (*-1 Neg BARRIER VERB LINK *-1 QDL BARRIER SV-BOUNDARY LINK *-1 VFIN + Prs  LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 VASTAS) ;
+MAP (&grm-incorr-tense) TARGET VFIN + Prt (*-1 QDL BARRIER SV-BOUNDARY LINK NOT 0 BOTH-PRS-PRT LINK *-1 VFIN + Prs LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 VASTAS) ;
 
 
 # -------------------
@@ -6106,12 +6110,12 @@ MAP (&grm-incorr-tense-past) TARGET PAST-MARKER (-1 VFIN + Prs LINK NOT 0 Prt LI
 
 # leat_go_dus_mánát - for this one we do not want dia-pos:
 
-MAP (&dia-pass) TARGET QDL (0 (leat_go_dus_mánát_adult) LINK *1 Num)(NOT 0 CEALKKA);
+MAP (&dia-pass) TARGET QDL (0 (leat_go_dus_mánát_adult) LINK *1 Num)(NOT 0 VASTAS);
 
 
-MAP (&dia-neg) TARGET QDL IF (*1 Neg BARRIER S-BOUNDARY)(NOT 0 CEALKKA);
+MAP (&dia-neg) TARGET QDL IF (*1 Neg BARRIER S-BOUNDARY)(0 SAHKA);
 	## Háliidatgo bruvssa? In háliit.
-MAP (&dia-pos) TARGET QDL IF (*-1 Qst OR go)(NOT *1 Neg)(NOT 0 CEALKKA);
+MAP (&dia-pos) TARGET QDL IF (*-1 Qst OR go)(NOT *1 Neg)(0 SAHKA);
 	## Háliidatgo bruvssa? De háliidan.
 
 
@@ -6145,44 +6149,44 @@ MAP (&dia-pass) TARGET (Prop Obj) IF (*-1 QDL LINK 0 CAR);
 #_________________________
 LIST NUM-ADV = "oktii" "guktii" "golbmii" "njelljii" "vihttii" "guhttii" "čihččii" "gávccii" "ovccii" ;
 
-MAP (&dia-target) TARGET Coll IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gallis" Nom) LINK -1 BOS)(NOT 0 NOTHING);
-MAP (&dia-target) TARGET Num IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("galle") LINK -1 BOS)(NOT 0 NOTHING);
-MAP (&dia-target) TARGET Ord IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gallát") OR ("galládat") LINK -1 BOS)(NOT 0 NOTHING);
-MAP (&dia-target) TARGET NUM-ADV IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gallii") LINK -1 BOS)(NOT 0 NOTHING);
+MAP (&dia-target) TARGET Coll IF (*-1 SAHKA BARRIER S-BOUNDARY LINK *-1 ("gallis" Nom) LINK -1 BOS)(NOT 0 NOTHING);
+MAP (&dia-target) TARGET Num IF (*-1 SAHKA BARRIER S-BOUNDARY LINK *-1 ("galle") LINK -1 BOS)(NOT 0 NOTHING);
+MAP (&dia-target) TARGET Ord IF (*-1 SAHKA BARRIER S-BOUNDARY LINK *-1 ("gallát") OR ("galládat") LINK -1 BOS)(NOT 0 NOTHING);
+MAP (&dia-target) TARGET NUM-ADV IF (*-1 SAHKA BARRIER S-BOUNDARY LINK *-1 ("gallii") LINK -1 BOS)(NOT 0 NOTHING);
 
 MAP (&dia-target) TARGET NP-HEAD + Nom IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-NOM LINK NOT 0 Num  LINK -1 BOS)(NEGATE *-1 QDL LINK *-1 ("namma" Nom) LINK *-1 ("mii" Nom))(NOT 0 NOTHING)  ;
-MAP (&dia-target) TARGET NP-HEAD + Acc IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-ACC LINK NOT 0 Num LINK -1 BOS)(NEGATE *1 (N Acc) BARRIER VERB OR CC)(NOT 0 NOTHING) ;
-MAP (&dia-target) TARGET NP-HEAD + Acc IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (N Acc) LINK NOT 0 Num LINK -1 ("makkár"))(NEGATE *1 (N Acc) BARRIER VERB OR CC)(NOT 0 NOTHING) ;
+ADD (&dia-target) TARGET NP-HEAD + Acc IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-ACC LINK NOT 0 Num LINK -1 BOS)(NEGATE *1 (N Acc) BARRIER VERB OR CC)(NOT 0 NOTHING) ;
+ADD (&dia-target) TARGET NP-HEAD + Acc IF (*-1 SAHKA BARRIER S-BOUNDARY LINK *-1 (N Acc) LINK NOT 0 Num LINK -1 ("makkár"))(NEGATE *1 (N Acc) BARRIER VERB OR CC)(NOT 0 NOTHING) ;
 
 MAP (&dia-target) TARGET VFIN IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 WORK-V LINK *-1 TARGETQUESTION-ACC LINK NOT 0 Num  LINK -1 BOS)(NOT 0 Neg)(NOT 0 NOTHING) ;
 
 MAP (&dia-target) TARGET NP-HEAD + Gen IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-GEN LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
 MAP (&dia-target) TARGET NP-HEAD + Ill IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-ILL OR ("gosa") LINK NOT 0 Num LINK -1 BOS)(NOT 0 NOTHING) ;
-MAP (&dia-target) TARGET NP-HEAD + Ill IF (*-1 QDL BARRIER S-BOUNDARY LINK **-1 (N Ill) LINK -1 ("guhte"))(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Ill IF (*-1 SAHKA BARRIER S-BOUNDARY LINK **-1 (N Ill) LINK -1 ("guhte"))(NOT 0 NOTHING) ;
 MAP (&dia-target) TARGET NP-HEAD + Loc IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-LOC OR ("gos") OR ("gokko") LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
-MAP (&dia-target) TARGET NP-HEAD + Loc IF (*-1 QDL BARRIER S-BOUNDARY LINK **-1 (N Loc) LINK -1 ("guhte"))(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Loc IF (*-1 SAHKA BARRIER S-BOUNDARY LINK **-1 (N Loc) LINK -1 ("guhte"))(NOT 0 NOTHING) ;
 MAP (&dia-target) TARGET NP-HEAD + Com IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-COM LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
 MAP (&dia-target) TARGET NP-HEAD + Ess IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-ESS LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
 
 # This one is commented out because it messes up the rules according to wordlists.
 #MAP (&dia-target) TARGET Num (1 (&dia-target))(NOT 0 NOTHING) ;
 
-MAP (&dia-nothing) TARGET NOTHING IF (*-1 QDL BARRIER (&dia-target))(NOT *1 (&dia-target)) ;
+MAP (&dia-nothing) TARGET NOTHING IF (*-1 SAHKA BARRIER (&dia-target))(NOT *1 (&dia-target)) ;
     ## in oro gostege
     ## in háliit maidege
 
 
-MAP (&dia-target) TARGET DOPPE IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gos") OR ("gokko") LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Loc))(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET DOPPE IF (*-1 SAHKA BARRIER S-BOUNDARY LINK *-1 ("gos") OR ("gokko") LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Loc))(NOT 0 NOTHING) ;
 # picking "dáppe" if no Loc
-MAP (&dia-target) TARGET DOHKO IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 ("gosa") LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Ill))(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET DOHKO IF (*-1 SAHKA BARRIER S-BOUNDARY LINK *-1 ("gosa") LINK -1 BOS)(*-1 QDL LINK NOT *1 (N Ill))(NOT 0 NOTHING) ;
 # picking "deike" if no Loc
 
 # The Nom rule do not pick Num + N Gen !!
 # You can live in a Num (40:s) !!
 
 # In the question are alternatives:
-MAP (&dia-target) TARGET (N Nom) IF (*-1 QDL BARRIER Nom OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Nom))(NOT 0 NOTHING)  ;
-MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL BARRIER Acc OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Acc))(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET (N Nom) IF (*-1 SAHKA BARRIER Nom OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Nom))(NOT 0 NOTHING)  ;
+MAP (&dia-target) TARGET (N Acc) IF (*-1 SAHKA BARRIER Acc OR S-BOUNDARY LINK *-1 ("vai") LINK -1 (N Acc))(NOT 0 NOTHING) ;
 
 
 # Rules for dialogue_visit
@@ -6190,52 +6194,61 @@ MAP (&dia-target) TARGET (N Acc) IF (*-1 QDL BARRIER Acc OR S-BOUNDARY LINK *-1 
 #LIST ROOMS = stohpu gievkkan oađđenlatnja basadanlatnja hivsset feaskkir lokta vuorká ;
 LIST ROOMS = "stohpu" "gievkkan"  "kievkkan" "oađđen#latnja" "oađđin#latnja" "basadan#latnja" "hivsset" "feaskkir" "lokta" "vuorká" ;
 
-#LIST DRINK = bruvsa sákta mielki viidni vuola ;
-LIST DRINK = "bruvsa" "sákta" "mielki" "viidni" "viidná" "vuola" "vuolla" ;
+#LIST DRINK = bruvsa sákta mielki viidni vuola gáfet deajat minerálačáhci ;
+LIST DRINK = "bruvsa" "sákta" "mielki" "viidni" "viidna" "vuola" "vuolla" "gáfet" "deajat" "káfet" "teajat" "minerála#čáhci" "gáffe" "káffe" "deadja" "teadja" ;
 
-#LIST CANDY =  šuhkoláda lákcajiekŋa keavssat ;
-LIST CANDY =  "šuhkoláda" "lákca#jiekŋa" "keaksa" ;
+LIST GAFFE = "gáffe" "káffe" "deadja" "teadja" ;
 
-#LIST BREAD = láibi garraláibi roavvaláibi beaivvášláibbáš nisoláibi ; 
-LIST BREAD = "láibi" "garra#láibi" "roavva#láibi" "beaivváš#láibbáš" "niso#láibi";
+#LIST CANDY =  šuhkoláda lákcajiekŋa keavssat čottanjálgát ;
+LIST CANDY =  "šuhkoláda" "lákca#jiekŋa" "keaksa" "geaksa" "čotta#njálggis" ;
+
+#LIST BREAD = láibi garraláibi roavvaláibi beaivvášláibbáš nisoláibi rohkaláibi ; 
+LIST BREAD = "láibi" "garra#láibi" "roavva#láibi" "beaivváš#láibbáš" "niso#láibi" "rohka#láibi";
 
 #LIST VEGETABLE = rušppit buđehat saláhtta návrraš lávki ;
 LIST VEGETABLE = "rušpi" "buđet" "buđeita" "saláhtta" "saláhta" "návrraš" "lávki" ;
 
-#LIST FRUIT = eahppelat appelsiinnat ;
-LIST FRUIT = "eahppel" "appelsiidna" ;
+#LIST FRUIT = eahppelat appelsiinnat banána ;
+LIST FRUIT = "eahppel" "eappel" "ebel" "appelsiidna" "banána" ;
 
-#LIST MEAT = márffit sáltemárfi buoidi bohccobiergu  ;
-LIST MEAT = "márfi" "sálte#márfi" "buoidi" "bohcco#biergu"  ;
+#LIST MEAT = márffit sáltemárfi buoidi bohccobiergu spiinnebiergu čoarbbealli vuoivvas  ;
+LIST MEAT = "márfi" "sálte#márfi" "buoidi" "bohcco#biergu" "čoarb#bealli" "vuoivvas" "spiinne#biergu"  ;
 
-#LIST GROCERYFISH = guolli sálteluossa goikeguolli guollegáhkut bálddis dápmot ;
-LIST GROCERYFISH = "guolli" "goike#guolli" "sálte#luossa" "guolle#gáhkku" "bálddis" "dápmot" ;
+#LIST GROCERYFISH = guolli sálteluossa sálteguolli guollegáhkut bálddis dápmot sáidi ;
+LIST GROCERYFISH = "guolli" "sálte#guolli" "sálte#luossa" "guolle#gáhkku" "bálddis" "dápmot" "sáidi" ;
 
-#LIST BAKING =  sálttit sohkkarat  monit jáffut jeasta sirát ;
-LIST BAKING =  "sálti" "sohkar" "monni" "jáffu" "jeasta" "sirát" "sierát" ;
+#LIST BAKING =  sálttit sohkkarat  monit nisojáffut jeasta sirát lákca ;
+LIST BAKING =  "sálti" "sohkar" "monni" "niso#jáffu" "niso#jáffut" "jeasta" "sirát" "sierát" "lákca" ;
 
 #LIST SUVLI = vuodja vuostá muorjemeastu vuoivvasmeastu luomemeastu majonesa ;
 LIST SUVLI = "vuodja" "vuostá" "muorje#meastu" "vuoivvas#meastu" "luome#meastu" "majonesa" ;
 
-#LIST OFFERS = gintalat  gohput rátnu speajal ruskalihtti govva ;
-LIST OFFERS = "ginttal" "gohppu" "kohppu" "rátnu" "speajal" "ruska#lihtti" "govva" ;
+#LIST OFFERS = gintalat  gohput rátnu speajal ruskalihtti govva beavdeliidni ;
+LIST OFFERS = "ginttal" "gohppu" "kohppu" "rátnu" "speajal" "ruska#lihtti" "govva" "beavde#liidni" ;
 
 LIST VIESSOGALVVUT-Q = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_lahttelamppa gosa_bidjat_lohkanlamppa gosa_bidjat_soffa gosa_bidjat_lahtteranu gosa_bidjat_speadjala ; 
 
 LIST NOT-ACC-ROOM = gosa_bidjat_TV gosa_bidjat_gamahildu gosa_bidjat_speadjala gosa_bidjat_lahttelamppa gosa_bidjat_lohkanlamppa gosa_bidjat_soffa ;  
  
 # Question according to wordlists:
-MAP (&sem-not_wordlist) TARGET QDL IF (0 VIESSOGALVVUT-Q)(*1 (&dia-target) BARRIER Neg LINK NOT 0 ROOMS)  ;
+MAP (&sem-not_wordlist) TARGET SAHKA IF (0 VIESSOGALVVUT-Q)(*1 (&dia-target) BARRIER Neg LINK NOT 0 ROOMS)  ;
 
-MAP (&dia-hivsset) TARGET QDL IF (0 (gosa_bidjat_TV))(*1 ("hivsset") BARRIER Neg OR ROOMS)  ;
+MAP (&dia-hivsset) TARGET SAHKA IF (0 (gosa_bidjat_TV))(*1 ("hivsset") BARRIER Neg OR ROOMS)  ;
 
-MAP (&dia-basadanlatnja) TARGET QDL IF (0 NOT-ACC-ROOM)(*1 (&dia-target) BARRIER Neg LINK 0 ("basadan#latnja"))  ;
+MAP (&dia-basadanlatnja) TARGET SAHKA IF (0 NOT-ACC-ROOM)(*1 (&dia-target) BARRIER Neg LINK 0 ("basadan#latnja"))  ;
 
+MAP (&sem-not_wordlist) TARGET SAHKA IF (0 (Maid_juhkat))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
 
-MAP (&sem-not_wordlist) TARGET QDL IF (0 (Maid_juhkat))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
+ADD (&sem-gaffe) TARGET N (0 GAFFE + Sg LINK *-1 (makkar_juhkamusaid)) ;
+
 
 # Rules for dialogue_grocery
 #-----------------------------
+
+SET GROCERIES-ACC = DRINK OR CANDY OR BREAD OR VEGETABLE OR FRUIT OR MEAT OR GROCERYFISH OR BAKING OR SUVLI ;
+
+LIST ACCLIST-QUESTION = makkar_laibegalvvuid makkar_juhkamusaid makkar_ruotnasiid makkar_sattuid makkar_bierggu makkar_guoli makkar_suvlliid makkar_laibunavdnasiid makkar_njalgaid ;
+
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_laibegalvvuid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 BREAD)  ;
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_juhkamusaid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_ruotnasiid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 VEGETABLE)  ;
@@ -6246,6 +6259,9 @@ MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_suvlliid))(*1 (&dia-target) BAR
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_laibunavdnasiid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 BAKING)  ;
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (makkar_njalgaid))(*1 (&dia-target) BARRIER Neg LINK NOT 0 CANDY)  ;
 MAP (&sem-not_wordlist) TARGET QDL IF (0 (hálbiduvvon_galvvut))(*1 (&dia-target) BARRIER Neg LINK NOT 0 OFFERS)  ;
+
+MAP (&grm-all-Acc) TARGET N (0 GROCERIES-ACC LINK NOT 0 Acc LINK *-1 V-TRANS-ACT-NOT-ACT LINK *-1 ACCLIST-QUESTION) ;
+
 
 # Rules for dialogue_shopadj - quite many...
 #--------------------------------------------------
@@ -6333,6 +6349,7 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &dia-young
 # &dia-child
 # &sem-not_wordlist
+# &sem-gaffe				gáffe vs. gáfet
 
 # &err-spellingerror    	spellingerror word is not in lexicon
 # &grm-error-Diph
@@ -6349,6 +6366,7 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &grm-notInterj        	Interj can only be initial or final
 
 # &grm-missing-Acc      	there should be an accusative
+# &grm-all-Acc				remember all objects in accusative
 # &grm-missing-Com      	there should be a comitative
 # &grm-missing-Ess      	there should be an essive
 # &grm-missing-Gen      	there should be a genetive
