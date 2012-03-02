@@ -65,7 +65,7 @@ foreach my $test ($root->children('test')){
       
       print TMPFILE;
     }
-    print TMPFILE "\n=========================================================\n\n";
+    print TMPFILE "\n\"<\.>\"\n\n";
     print "=========================================================\n";
 
     close CMD1;
