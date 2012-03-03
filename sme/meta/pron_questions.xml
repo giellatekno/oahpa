@@ -675,7 +675,7 @@
       </element>
  		<element id="OBJ">
 		<grammar tag="N+Pl+Acc"/>
-		<id>ruhta</id>
+		<id>skeaŋka</id>
 	  </element>
     </question>
     <answer> 
@@ -940,10 +940,14 @@
   <q id="prec18locdu3">
     <qtype>P-RECIPR</qtype>
     <question>
-      <text>Dál juo fárreba oktii</text>
+      <text>Dál juo VERB</text>
+ 		<element id="VERB">
+		<sem class="mMARRY"/>
+		<grammar tag="V+Ind+Prs+Du3"/>
+	  </element>
     </question>
     <answer> 
-      <text>Soai mannan TIME juo VERB RECDU P-REC</text>  
+      <text>Soai TIME juo VERB RECDU P-REC</text>  
       <element game='morfa' id="P-REC" task="yes">
 	<grammar tag="Pron+Recipr+Ill+PxDu3"/>
       </element>
@@ -952,7 +956,7 @@
 		<grammar tag="V+Ind+Prt+Du3"/>
 	  </element>
  		<element id="TIME">
-		<sem class="TIME_SEASON"/>
+		<sem class="TIME_POINT_GEN"/>
 		<grammar tag="N+Sg+Gen"/>
 	  </element>
     </answer>
@@ -963,7 +967,7 @@
       <text>Dál juo fárrebeahtti oktii</text>
     </question>
     <answer> 
-      <text>Moai mannan TIME juo VERB RECDU P-REC</text>  
+      <text>Moai TIME juo VERB RECDU P-REC</text>  
       <element game='morfa' id="P-REC" task="yes">
 	<grammar tag="Pron+Recipr+Ill+PxDu1"/>
       </element>
@@ -972,9 +976,141 @@
 		<grammar tag="V+Ind+Prt+Du1"/>
 	  </element>
  		<element id="TIME">
-		<sem class="TIME_SEASON"/>
-		<grammar tag="N+Sg+Gen"/>
+		<sem class="TIME_POINT_GEN_PL"/>
+		<grammar tag="N+Pl+Gen"/>
 	  </element>
+    </answer>
+  </q>
+  <q id="prec20compl3">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Mo čoahkkimis manai</text>
+    </question>
+    <answer> 
+      <text>Oasseváldit VERB RECPL P-REC</text>  
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Com+PxPl3"/>
+      </element>
+ 		<element id="VERB">
+		<sem class="mCOMV"/>
+		<grammar tag="V+Ind+Prt+Pl3"/>
+	  </element>
+    </answer>
+  </q>
+  <q id="prec21compl1">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Mo čoahkkimis manai</text>
+    </question>
+    <answer> 
+      <text>Mii VERB RECPL P-REC</text>  
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Com+PxPl1"/>
+      </element>
+ 		<element id="VERB">
+		<sem class="mCOMV"/>
+		<grammar tag="V+Ind+Prt+Pl1"/>
+	  </element>
+    </answer>
+  </q>
+  <q id="prec22compl2">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Maid mii galgat dahkat</text>
+    </question>
+    <answer> 
+      <text>Na, dii sáhttitbehtet VERB RECPL P-REC</text>  
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Com+PxPl2"/>
+      </element>
+ 		<element id="VERB">
+		<sem class="mCOMV"/>
+		<grammar tag="V+Ind+Prt+Pl2"/>
+	  </element>
+    </answer>
+  </q>
+  <q id="prec23accplPl2">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Mo mii sáhttit čoavdit ášši</text>
+    </question>
+    <answer> 
+      <text>Lea váttis go dii sivahehpet RECPL P-REC</text>  
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Acc+PxPl2"/>
+      </element>
+    </answer>
+  </q>
+  <q id="prec24accplDu3">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Maid sáhttá dahkat dáinna áššiin</text>
+    </question>
+    <answer> 
+      <text>Lea váttis go soai sivaheaba RECDU P-REC</text>  
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Acc+PxDu3"/>
+      </element>
+    </answer>
+  </q>
+  <q id="prec25genpl3">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Mo vuosttaš skuvlabeaivi manai</text>
+    </question>
+    <answer> 
+      <text>Mánát leat oahppan RECPL P-REC namaid</text>  
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Gen+PxPl3"/>
+      </element>
+    </answer>
+  </q>
+  <q id="prec26gendu3">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Leaba go deaivan ovdal</text>
+    </question>
+    <answer> 
+      <text>In jáhke go eaba dieđe RECDU P-REC nama</text>  
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Gen+PxDu3"/>
+      </element>
+    </answer>
+  </q>
+  <q id="prec27genpl2">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Mainna mii álgit</text>
+    </question>
+    <answer> 
+      <text>Vuos dii geahčabehtet RECPL P-REC čállosiid</text>  
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Gen+PxPl2"/>
+      </element>
+    </answer>
+  </q>
+  <q id="prec28genpl3">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Maid oahppit galget bargat odne</text>
+    </question>
+    <answer> 
+      <text>Sii galget tevdnet RECPL P-REC portreahtaid</text>  
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Gen+PxPl3"/>
+      </element>
+    </answer>
+  </q>
+  <q id="prec29genpl2">
+    <qtype>P-RECIPR</qtype>
+    <question>
+      <text>Maid mii galgat bargat odne</text>
+    </question>
+    <answer> 
+      <text>Dii galgabehtet lohkat RECPL P-REC čállosiid</text>  
+      <element game='morfa' id="P-REC" task="yes">
+	<grammar tag="Pron+Recipr+Gen+PxPl2"/>
+      </element>
     </answer>
   </q>
 	<q id="prel1">
