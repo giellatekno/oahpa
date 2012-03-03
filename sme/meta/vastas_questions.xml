@@ -1,7 +1,385 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <questions game="cealkka">
-  <q level="1" lemmacount="3" id="1_PrsSg1_AAttr_Acc">
+   <q level="1" lemmacount="3" id="1_PrsSg1_Inf_PlAcc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid don áigut bargat odne</text>
+    </question>
+    <answer> 
+      <text>Odne AUX VERB NOUN</text>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>áigut</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>čoaggit</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mFOR_PICKING"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="3" id="1_PrsPl3_Inf_PlAcc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Mii dáhpáhuvvá skuvllas odne</text>
+    </question>
+    <answer> 
+      <text>Odne oahppit AUX VERB NOUN</text>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>galgat</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>čoaggit</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mFOR_PICKING"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="3" id="1_PrsSg3_Inf_SgCom">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Makkár plánat Heaikkas leat</text>
+    </question>
+    <answer> 
+      <text>Son AUX VERB NOUN</text>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>áigut</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <sem class="mMARRY"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mFEM"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="3" id="2_PrsSg3_Inf_SgCom">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Manne Biret lea nu buori mielas</text>
+    </question>
+    <answer> 
+      <text>Son AUX VERB NOUN</text>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>áigut</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <sem class="mMARRY"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mMAL"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="3" id="1_PrsPl2_Inf_Acc_SgIll">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid mii galgat bargat odne</text>
+    </question>
+    <answer> 
+      <text>Dii AUX VERB muitalusa NOUN</text>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>galgat</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>čállit</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="LANGUAGE"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="3" id="1_PrsSg1_Acc_SgLoc_SgIll">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid don barggat</text>
+    </question>
+    <answer> 
+      <text>Mun VERB muitalusa NOUN1 NOUN1</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>jorgalit</id>
+      </element>
+      <element id="NOUN1" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="LANGUAGE"/>
+      </element>
+      <element id="NOUN2" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="LANGUAGE"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="2" id="1_PrsSg1_Neg_Ill">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Manne it bora</text>
+    </question>
+    <answer> 
+      <text>In VERB NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>liikot</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="3" id="1_PrsPl3_Neg_Ill">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid mánát dadjet</text>
+    </question>
+    <answer> 
+      <text>Sii NEG VERB NOUN</text>
+      <element id="NEG" task="yes">
+        <grammar tag="V+Neg+Ind+Sg3"/>
+        <id>ii</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>liikot</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="2" id="1_PrsSg2_SgAcc_SgIll">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid mun galggan bargat dál</text>
+    </question>
+    <answer> 
+      <text>Njuora ITEM NOUN</text>
+      <element id="ITEM" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="DRINK"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mPERSNAME"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="2" id="1_PrsPl3_SgIll">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid nieiddat leat mearridan</text>
+    </question>
+    <answer> 
+      <text>Sii VERB NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>vuolgit</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mPLACENAME"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="2" id="1_PrsSg1_Acc_Ill">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Gosa bijat dan</text>
+    </question>
+    <answer> 
+      <text>Bijan ITEM NOUN</text>
+      <element id="ITEM" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>seahkka</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="ROOM"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="2" id="1_PrsPl3_Acc_Ess">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Mii lea su namma</text>
+    </question>
+    <answer> 
+      <text>Sii VERB su NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>gohčodit</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mPERSNAME"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="2" id="1_PrsSg3_Ess">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Makkár bargu sus lea doppe</text>
+    </question>
+    <answer> 
+      <text>Son VERB NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>doaibmat</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mPROFESSION"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="2" id="1_PrsSg1_Neg_Ess">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Manne it boađe mielde</text>
+    </question>
+    <answer> 
+      <text>In VERB NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>oaggut</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mDILLI_ESS"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="2" id="1_PrsSg1_Dem_SgGen_Po">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid don áiggut dál</text>
+    </question>
+    <answer> 
+      <text>VERB duon NOUN mielde</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>mannat</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mROAD"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="2" lemmacount="2" id="1_PrtSg3_Dem_SgLoc">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Gos dat lei</text>
+    </question>
+    <answer> 
+      <text>Dat lei DEM NOUN</text>
+      <element id="DEM" task="yes">
+        <grammar tag="Pron+Dem+Sg+Nom"/>
+        <id>dát</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="CONTAINER"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="3" id="1_PrsPl3_AAttr_Acc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid sii barget doppe</text>
+    </question>
+    <answer> 
+      <text>Sii VERB ADJ NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>ráhkadit</id>
+      </element>
+      <element id="ADJ" task="yes">
+        <grammar tag="A+Sg+Nom"/>
+        <id>ođas</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mROAD"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="2" id="1_PrsDu3_Com">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid máná-guovttos bargaba</text>
+    </question>
+    <answer> 
+      <text>Soai VERB NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <sem class="mPLAY_V"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="TOY"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="2" id="1_PrsDu1_Acc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid doai borrabeahtti</text>
+    </question>
+    <answer> 
+      <text>Moai VERB NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>borrat</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+  </q> 
+   <q level="1" lemmacount="2" id="1_Loc_PrsSg3_Nom">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid moai sáhte juhkat</text>
+    </question>
+    <answer> 
+      <text>NOUN VERB ITEM</text>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>gohppu</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>leat</id>
+      </element>
+      <element id="ITEM" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="DRINK"/>
+      </element>
+    </answer>
+  </q> 
+  
+  
+ <q level="1" lemmacount="3" id="1_PrsSg1_AAttr_Acc">
     <qtype>PRS</qtype>
    <question>
       <text>Maid oainnát šiljus</text>
@@ -77,7 +455,7 @@
       </element>
     </answer>
   </q> 
-  <q level="1" lemmacount="3" id="1_PrsSg1_Dem_AAttr_Acc">
+  <q level="2" lemmacount="3" id="1_PrsSg1_Dem_AAttr_Acc">
     <qtype>PRS</qtype>
    <question>
       <text>Makkár biilla áiggut oastit</text>
@@ -178,7 +556,7 @@
       </element>
     </answer>
   </q> 
-  <q level="1" lemmacount="3" id="1_PrfSg3_Dem_AAttr_Ill">
+  <q level="2" lemmacount="3" id="1_PrfSg3_Dem_AAttr_Ill">
     <qtype>PRS</qtype>
    <question>
       <text>Geasa Heaika lea liikostan</text>
@@ -199,7 +577,7 @@
       </element>
     </answer>
   </q> 
-  <q level="1" lemmacount="3" id="2_PrfSg3_Dem_AAttr_Ill">
+  <q level="2" lemmacount="3" id="2_PrfSg3_Dem_AAttr_Ill">
     <qtype>PRS</qtype>
    <question>
       <text>Geasa Risten lea liikostan</text>
@@ -220,7 +598,7 @@
       </element>
     </answer>
   </q> 
-  <q level="1" lemmacount="2" id="1_PrsSg1_Dem_Ill">
+  <q level="2" lemmacount="2" id="1_PrsSg1_Dem_Ill">
     <qtype>PRS</qtype>
    <question>
       <text>Gosa bijat ildu</text>
@@ -237,7 +615,7 @@
       </element>
     </answer>
   </q> 
-  <q level="1" lemmacount="2" id="2_PrsSg1_Dem_Ill">
+  <q level="2" lemmacount="2" id="2_PrsSg1_Dem_Ill">
     <qtype>PRS</qtype>
    <question>
       <text>Gosa manat dál</text>
