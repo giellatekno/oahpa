@@ -5443,7 +5443,6 @@ REMOVE IllVErr (0 Ill)  ;
 REMOVE CGErr  ;
 
 
-
 MAP (&sem-same-noun) TARGET (N Acc) (0 $$NOUNLEMMA LINK *-1 VASTAS BARRIER N LINK NOT *-1 $$NOUNLEMMA) ;
 
 MAP (&sem-same-adj) TARGET (A Attr) (0 $$ADJLEMMA LINK *-1 VASTAS BARRIER A LINK *-1 (A Nom) LINK NOT 0 $$ADJLEMMA) ;
@@ -5478,7 +5477,8 @@ MAP (&grm-missing-Ill) TARGET V_ILL (NOT *1 (N Ill)) ;
 MAP (&grm-Px-shouldbe-Loc) TARGET (N Loc CGErr) (*-1 V_LOC BARRIER (N Loc)) ; 
 MAP (&grm-Px-shouldbe-Loc) TARGET (N Nom PxSg3) (*-1 V_LOC BARRIER (N Loc)) ; 
 MAP (&grm-missing-Loc) TARGET V_LOC (NOT *1 (N Loc) OR (N Nom PxSg3)) ;
-
+MAP (&grm-missing-Ess) TARGET V_ESS (NOT *1 (N Ess) OR (A Ess)) ;
+MAP (&grm-missing-Nom) TARGET V_NOM (NOT *1 (N Nom)) ;
 
 MAP (&grm-incorr-pers-nr) TARGET V (*-1 V_SG1 BARRIER (V Sg1))(NOT 0 Sg1) ;
 
