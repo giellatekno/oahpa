@@ -1199,7 +1199,7 @@ SET NOTIME = N - TIME ;
 LIST GEASSET = "dálvet" "dálvit" "giđđat" "geasset" ("geassit" Adv) "čakčat" ;
  # What is special here?
 
-LIST PAST-MARKER = ("mánná" Ess) "dalle" "diibmá" "dolin" "dološ" "dovle" "duvle" "eske" "gieskat" "ikte" ("nuorra" Ess) "ovdal" ("ovddit#beaivi" Gen) ("vássán#áigi" Loc) ("boares#áigi" Gen) ;
+LIST PAST-MARKER = ("mánná" Ess) "diibmá" "dolin" "dološ" "dovle" "duvle" "eske" "gieskat" "ikte" ("nuorra" Ess) ("ovddit#beaivi" Gen) ("vássán#áigi" Loc) ("boares#áigi" Gen) ;
 
 LIST PRESENT-MARKER = "dál" "ihttin" "odne" "otne" ("boahtte#áigi" Loc) ("boahtte#áigi" Gen)  ;
 
@@ -5385,31 +5385,48 @@ MAPPING-PREFIX = & ;
 
 # Cealkka
 
-LIST C_PRS = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrsSg1_Acc 2_PrsSg1_Acc 1_PrsSg3_Dem_Ill 2_PrsSg3_Dem_Ill 1_PrsSg1_Neg_Aux_Inf 2_PrsSg1_Neg_Aux_Inf 1_PrsSg3_Orrut_Actioess 1_PrsSg3_Neg_Orrut_Actioess 2_PrsSg3_Orrut_Actioess 2_PrsSg3_Neg_Orrut_Actioess 2_PrsPl3_Orrut_Actioess 2_PrsPl3_Neg_Orrut_Actioess 1_PrsSg1_Aux_Fitnat_Acc_Actioess ;
+LIST V_PRS = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrsSg1_Acc 2_PrsSg1_Acc 1_PrsSg3_Dem_Ill 2_PrsSg3_Dem_Ill 1_PrsSg1_Neg_Aux_Inf 2_PrsSg1_Neg_Aux_Inf 1_PrsSg3_Orrut_Actioess 1_PrsSg3_Neg_Orrut_Actioess 2_PrsSg3_Orrut_Actioess 2_PrsSg3_Neg_Orrut_Actioess 2_PrsPl3_Orrut_Actioess 2_PrsPl3_Neg_Orrut_Actioess 1_PrsSg1_Aux_Fitnat_Acc_Actioess 1_Loc_PrsSg3_Nom 1_PrsDu1_Acc 1_PrsDu3_Com 1_PrsPl3_AAttr_Acc 1_PrsSg1_Dem_SgGen_Po 1_PrsSg1_Neg_Ess 1_PrsSg3_Ess 1_PrsPl3_Acc_Ess 1_PrsSg1_Acc_Ill 1_PrsPl3_SgIll 1_PrsPl3_Neg_Ill 1_PrsSg1_Neg_Ill 1_PrsSg1_Acc_SgLoc_SgIll 1_PrsPl2_Inf_Acc_SgIll 2_PrsSg3_Inf_SgCom 1_PrsSg3_Inf_SgCom 1_PrsPl3_Inf_PlAcc 1_PrsSg1_Inf_PlAcc ;
 
-LIST C_PRT = 1_PrtSg1_AAttr_Acc 1_PrtSg1_Acc 3_PrtSg1_AAttr_Acc 1_PrtSg1_Num_Acc 1_PrtSg3_Neg_Aux_Inf 2_PrtSg3_Neg_Aux_Inf 1_PrtSg3_Cop_Actioess 1_PrtSg1_Verb_Acc_Actioess  ;
+LIST V_PRT = 1_PrtSg1_AAttr_Acc 1_PrtSg1_Acc 3_PrtSg1_AAttr_Acc 1_PrtSg1_Num_Acc 1_PrtSg3_Neg_Aux_Inf 2_PrtSg3_Neg_Aux_Inf 1_PrtSg3_Cop_Actioess 1_PrtSg1_Verb_Acc_Actioess 1_PrtSg3_Dem_SgLoc ;
 
-LIST C_PRF = 1_PrfSg3_Dem_AAttr_Ill 2_PrfSg3_Dem_AAttr_Ill 1_PrfPl3_Neg_Aux 1_PrfDu3_Neg_Aux 1_PrfSg3_Neg_Aux 1_PrsPl3_Neg_Aux_Prf 1_PrsDu3_Neg_Aux_Prf ;
+LIST V_PRF = 1_PrfSg3_Dem_AAttr_Ill 2_PrfSg3_Dem_AAttr_Ill 1_PrfPl3_Neg_Aux 1_PrfDu3_Neg_Aux 1_PrfSg3_Neg_Aux 1_PrsPl3_Neg_Aux_Prf 1_PrsDu3_Neg_Aux_Prf ;
 
-LIST C_SG1 = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc 1_PrsSg1_Acc 2_PrsSg1_Acc 1_PrsSg1_Dem_AAttr_Acc 1_PrtSg1_Acc 3_PrtSg1_AAttr_Acc 1_PrtSg1_Num_Acc 1_PrsSg1_Dem_Ill 2_PrsSg1_Dem_Ill 1_PrsSg1_Neg_Aux_Inf 2_PrsSg1_Neg_Aux_Inf ;
+LIST V_IMPRT = 1_PrsSg2_SgAcc_SgIll ;
 
-LIST C_SG3 = 1_PrsSg3_Prf_Dem_AAttr_Ill 2_PrsSg3_Prf_Dem_AAttr_Ill  ;
+LIST V_SG1 = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc 1_PrsSg1_Acc 2_PrsSg1_Acc 1_PrsSg1_Dem_AAttr_Acc 1_PrtSg1_Acc 3_PrtSg1_AAttr_Acc 1_PrtSg1_Num_Acc 1_PrsSg1_Dem_Ill 2_PrsSg1_Dem_Ill 1_PrsSg1_Neg_Aux_Inf 2_PrsSg1_Neg_Aux_Inf 1_PrsSg1_Dem_SgGen_Po 1_PrsSg1_Neg_Ess 1_PrsSg1_Acc_Ill 1_PrsSg1_Neg_Ill 1_PrsSg1_Acc_SgLoc_SgIll 1_PrsSg1_Inf_PlAcc ;
 
-LIST C_DU3 = 1_PrfDu3_Neg_Aux  1_PrsDu3_Neg_Aux_Prf ;
+LIST V_SG2 = 1_PrsSg2_SgAcc_SgIll ;
 
-LIST C_ACTESS = 1_PrtSg1_Verb_Acc_Actioess 1_PrtSg3_Cop_Actioess ;
+LIST V_SG3 = 1_PrsSg3_Prf_Dem_AAttr_Ill 2_PrsSg3_Prf_Dem_AAttr_Ill 1_Loc_PrsSg3_Nom 1_PrtSg3_Dem_SgLoc 1_PrsSg3_Ess 2_PrsSg3_Inf_SgCom 1_PrsSg3_Inf_SgCom ;
+
+LIST V_DU1 = 1_PrsDu1_Acc ;
+
+LIST V_DU3 = 1_PrfDu3_Neg_Aux  1_PrsDu3_Neg_Aux_Prf 1_PrsDu3_Com ;
+
+LIST V_PL2 = 1_PrsPl2_Inf_Acc_SgIll ;
+
+LIST V_PL3 = 1_PrsPl3_AAttr_Acc 1_PrsPl3_Acc_Ess 1_PrsPl3_SgIll 1_PrsPl3_Neg_Ill 1_PrsPl3_Inf_PlAcc ;
 
 
-LIST C_DEM = 1_PrsSg1_Dem_AAttr_Acc 1_PrsSg3_Prf_Dem_AAttr_Ill 2_PrsSg3_Prf_Dem_AAttr_Ill 1_PrsSg3_Dem_Ill 2_PrsSg3_Dem_Ill ;
+LIST V_ACTESS = 1_PrtSg1_Verb_Acc_Actioess 1_PrtSg3_Cop_Actioess ;
 
-LIST C_AATTR = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc  1_PrsSg1_Dem_AAttr_Acc 3_PrtSg1_AAttr_Acc 1_PrsSg3_Prf_Dem_AAttr_Ill 2_PrsSg3_Prf_Dem_AAttr_Ill ;
 
-LIST C_ACC = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc 1_PrsSg1_Acc 2_PrsSg1_Acc 1_PrsSg1_Dem_AAttr_Acc 1_PrtSg1_Acc  3_PrtSg1_AAttr_Acc  ;
+LIST V_DEM = 1_PrsSg1_Dem_AAttr_Acc 1_PrsSg3_Prf_Dem_AAttr_Ill 2_PrsSg3_Prf_Dem_AAttr_Ill 1_PrsSg3_Dem_Ill 2_PrsSg3_Dem_Ill 1_PrtSg3_Dem_SgLoc 1_PrsSg1_Dem_SgGen_Po ;
 
-LIST C_ILL = 1_PrfSg3_Dem_AAttr_Ill 2_PrfSg3_Dem_AAttr_Ill 1_PrsSg1_Dem_Ill 2_PrsSg1_Dem_Ill ;
-LIST C_LOC = 1_PrsPl3_Loc 2_PrsPl3_Loc 3_PrsPl3_Loc 4_PrsPl3_Loc ;
+LIST V_AATTR = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc  1_PrsSg1_Dem_AAttr_Acc 3_PrtSg1_AAttr_Acc 1_PrsSg3_Prf_Dem_AAttr_Ill 2_PrsSg3_Prf_Dem_AAttr_Ill 1_PrsPl3_AAttr_Acc ;
 
-LIST C_NUM_ACC = 1_PrtSg1_Num_Acc ;
+LIST V_ACC = 1_PrsSg1_AAttr_Acc 2_PrsSg1_AAttr_Acc 1_PrtSg1_AAttr_Acc 1_PrsSg1_Acc 2_PrsSg1_Acc 1_PrsSg1_Dem_AAttr_Acc 1_PrtSg1_Acc  3_PrtSg1_AAttr_Acc 1_PrsPl3_AAttr_Acc 1_PrsPl3_Acc_Ess 1_PrsSg1_Acc_Ill 1_PrsSg2_SgAcc_SgIll 1_PrsSg1_Acc_SgLoc_SgIll 1_PrsPl2_Inf_Acc_SgIll 1_PrsPl3_Inf_PlAcc 1_PrsSg1_Inf_PlAcc ;
+
+LIST V_ILL = 1_PrfSg3_Dem_AAttr_Ill 2_PrfSg3_Dem_AAttr_Ill 1_PrsSg1_Dem_Ill 2_PrsSg1_Dem_Ill1_PrsSg1_Acc_Ill  1_PrsPl3_SgIll 1_PrsSg2_SgAcc_SgIll 1_PrsPl3_Neg_Ill 1_PrsSg1_Neg_Ill 1_PrsSg1_Acc_SgLoc_SgIll 1_PrsPl2_Inf_Acc_SgIll ;
+
+LIST V_LOC = 1_PrsPl3_Loc 2_PrsPl3_Loc 3_PrsPl3_Loc 4_PrsPl3_Loc 1_Loc_PrsSg3_Nom 1_PrtSg3_Dem_SgLoc 1_PrsSg1_Acc_SgLoc_SgIll ;
+
+LIST V_COM = 1_PrsDu3_Com 2_PrsSg3_Inf_SgCom 1_PrsSg3_Inf_SgCom;
+
+LIST V_ESS = 1_PrsSg1_Neg_Ess 1_PrsSg3_Ess 1_PrsPl3_Acc_Ess;
+
+LIST V_PO = 1_PrsSg1_Dem_SgGen_Po ;
+LIST V_NUM_ACC = 1_PrtSg1_Num_Acc ;
 
 LIST NLOC = (N Loc) (Prop Loc) ;
 
@@ -5417,7 +5434,7 @@ LIST NOUNLEMMA = (".*"r) ;
 LIST ADJLEMMA = (".*"r) ;
 LIST VERBLEMMA = (".*"r) ;
 
-SELECT $$NOUNLEMMA (0 (N Ill) OR (N Loc) LINK *-1 C_ILL OR C_LOC LINK *-1 $$NOUNLEMMA) ;
+SELECT $$NOUNLEMMA (0 (N Ill) OR (N Loc) LINK *-1 V_ILL OR V_LOC LINK *-1 $$NOUNLEMMA) ;
 SELECT $$VERBLEMMA (0 VERB LINK *-1 VASTAS LINK *-1 $$VERBLEMMA) ;
 
 REMOVE DiphErr (0 Ill)  ;
@@ -5431,14 +5448,14 @@ MAP (&sem-same-noun) TARGET (N Acc) (0 $$NOUNLEMMA LINK *-1 VASTAS BARRIER N LIN
 
 MAP (&sem-same-adj) TARGET (A Attr) (0 $$ADJLEMMA LINK *-1 VASTAS BARRIER A LINK *-1 (A Nom) LINK NOT 0 $$ADJLEMMA) ;
 
-MAP (&grm-incorr-tense) TARGET VFIN ((0 (V Prt) LINK *-1 C_PRS BARRIER Prs) OR ((0 (V Prs) LINK *-1 C_PRT BARRIER Prt))) ;
+MAP (&grm-incorr-tense) TARGET VFIN ((0 (V Prt) LINK *-1 V_PRS BARRIER Prs) OR ((0 (V Prs) LINK *-1 V_PRT BARRIER Prt))) ;
 
-MAP (&grm-incorr-tense) TARGET VERB (0 ("leat" PrfPrc) LINK *-1 C_PRF BARRIER COPULAS) ;
+MAP (&grm-incorr-tense) TARGET VERB (0 ("leat" PrfPrc) LINK *-1 V_PRF BARRIER COPULAS) ;
 
 
-MAP (&grm-incorr-tense) TARGET (PrfPrc) (NOT 0 (V Prs) LINK *-1 C_PRS BARRIER Prs) ;  
-MAP (&grm-incorr-tense) TARGET (PrfPrc) (NOT 0 (V Prt) LINK *-1 C_PRT BARRIER Prt OR Neg) ;
-MAP (&grm-incorr-tense) TARGET (ConNeg) (NOT 0 (V Prt) LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 C_PRT BARRIER Prt) ;
+MAP (&grm-incorr-tense) TARGET (PrfPrc) (NOT 0 (V Prs) LINK *-1 V_PRS BARRIER Prs) ;  
+MAP (&grm-incorr-tense) TARGET (PrfPrc) (NOT 0 (V Prt) LINK *-1 V_PRT BARRIER Prt OR Neg) ;
+MAP (&grm-incorr-tense) TARGET (ConNeg) (NOT 0 (V Prt) LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 V_PRT BARRIER Prt) ;
 
 LIST Der1 = Der/h Der/d ;
 
@@ -5446,33 +5463,35 @@ MAP (&sem-same-verb) TARGET VFIN (0 $$VERBLEMMA LINK NOT 0 Neg LINK *-1 VASTAS B
 MAP (&sem-same-verb) TARGET VERB (0 $$VERBLEMMA LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 VASTAS LINK *-1 Neg BARRIER $$VERBLEMMA) ;
 MAP (&grm-should-negV) TARGET VERB (0 $$VERBLEMMA + Der1 LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 VASTAS LINK *-1 $$VERBLEMMA LINK NOT 0 Der1 LINK -1 Neg) ;
 
-
-MAP (&grm-missing-Acc) TARGET Num (*-1 C_NUM_ACC BARRIER Num)(NOT 0 Acc) ;
-
-MAP (&grm-missing-Acc) TARGET N (*-1 C_ACC BARRIER (N Acc) OR Num)(NOT 0 Acc OR Gen) ;
-
-MAP (&grm-error-Diph) TARGET (N Ill DiphErr) (*-1 C_ILL BARRIER (N Ill)) ; 
-MAP (&grm-error-Ill) TARGET (N IllErr) (*-1 C_ILL BARRIER (N Ill)) ;
-MAP (&grm-error-VIll) TARGET (N IllVErr) (*-1 C_ILL BARRIER (N Ill)) ; 
-MAP (&grm-missing-Ill) TARGET C_ILL (NOT *1 (N Ill)) ;
-
-MAP (&grm-Px-shouldbe-Loc) TARGET (N Loc CGErr) (*-1 C_LOC BARRIER (N Loc)) ; 
-MAP (&grm-Px-shouldbe-Loc) TARGET (N Nom PxSg3) (*-1 C_LOC BARRIER (N Loc)) ; 
-MAP (&grm-missing-Loc) TARGET C_LOC (NOT *1 (N Loc) OR (N Nom PxSg3)) ;
+LIST ACCGEN = (N Gen) (N Acc) (Pers Acc) (Pers Gen)  ;
 
 
-MAP (&grm-incorr-pers-nr) TARGET V (*-1 C_SG1 BARRIER (V Sg1))(NOT 0 Sg1) ;
+MAP (&grm-missing-Acc) TARGET Num (*-1 V_NUM_ACC BARRIER Num)(NOT 0 Acc) ;
 
-MAP (&grm-incorr-pers-nr) TARGET V (*-1 C_SG3 BARRIER (V Sg3))(NOT 0 Sg3) ;
+MAP (&grm-missing-Acc) TARGET N (NOT 0 ACCGEN LINK *-1 V_ACC BARRIER ACCGEN OR Num)(NOT *1 ACCGEN) ;
+
+MAP (&grm-error-Diph) TARGET (N Ill DiphErr) (*-1 V_ILL BARRIER (N Ill)) ; 
+MAP (&grm-error-Ill) TARGET (N IllErr) (*-1 V_ILL BARRIER (N Ill)) ;
+MAP (&grm-error-VIll) TARGET (N IllVErr) (*-1 V_ILL BARRIER (N Ill)) ; 
+MAP (&grm-missing-Ill) TARGET V_ILL (NOT *1 (N Ill)) ;
+
+MAP (&grm-Px-shouldbe-Loc) TARGET (N Loc CGErr) (*-1 V_LOC BARRIER (N Loc)) ; 
+MAP (&grm-Px-shouldbe-Loc) TARGET (N Nom PxSg3) (*-1 V_LOC BARRIER (N Loc)) ; 
+MAP (&grm-missing-Loc) TARGET V_LOC (NOT *1 (N Loc) OR (N Nom PxSg3)) ;
+
+
+MAP (&grm-incorr-pers-nr) TARGET V (*-1 V_SG1 BARRIER (V Sg1))(NOT 0 Sg1) ;
+
+MAP (&grm-incorr-pers-nr) TARGET V (*-1 V_SG3 BARRIER (V Sg3))(NOT 0 Sg3) ;
 
 
 # orrut + Actio Ess
 #MAP (&grm-missing-ActEss) TARGET ("orrut") OR ("fitnat") (*-1 QDL)(*1 VERB BARRIER NOT-ADV-PCLE LINK NOT 0 (Actio Ess)) ;
 MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK *-1 ("orrut") OR ("fitnat") BARRIER NOT-ADV-PCLE LINK *-1 QDL) ;
-MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK *-1 C_ACTESS BARRIER (Actio Ess))(NEGATE *1 (Actio Ess)) ;
+MAP (&grm-missing-ActEss) TARGET VERB (NOT 0 (Actio Ess) LINK *-1 V_ACTESS BARRIER (Actio Ess))(NEGATE *1 (Actio Ess)) ;
 
 # inf
-MAP (&grm-missing-Inf) TARGET VERB (NOT 0 Inf OR Neg)(-1 INFV LINK *-1 VASTAS) ;
+MAP (&grm-missing-Inf) TARGET VERB (NOT 0 Inf OR Neg)(-1 INFV LINK NOT 0 (N Nom) LINK *-1 VASTAS) ;
 
 
 # Sahka
@@ -5709,7 +5728,6 @@ MAP (&grm-missing-Gen-PP) TARGET N (*-1 QDL)(NOT 0 Gen LINK 1 Po) ;
 # NP - RULES
 # ----------
 
-LIST ACCGEN = (N Gen) (N Acc) ;
 
 LIST Attr-CC-Adv             = Attr CC Adv ;
 LIST Attr-CC-Adv-Num         = Attr CC Adv Num ;
@@ -5727,11 +5745,11 @@ SELECT Attr (NEGATE 0C Prop LINK NOT 1 Prop)(*1 N BARRIER NOT-Attr-CC-Adv OR QDL
     # once again
 SELECT Num (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ;
     ## guokte stuorra ja hui boares viesu
-SELECT ACCGEN (*-1 QDL)(NEGATE 0C Prop LINK NOT 1 Prop)(NEGATE 0 ACR OR ABBR OR Prop LINK 1 ACR OR ABBR)(*1 N BARRIER NOT-Attr-CC-Adv-Num OR QDL LINK NOT 0 Prop)(NOT 0 PrfPrc)(NEGATE 1 CC LINK *1 N BARRIER NPNHA LINK NOT *1 N BARRIER NPNHA) ;
+SELECT ACCGEN (*-1 QDL)(NEGATE 0C Prop LINK NOT 1 Prop)(NEGATE 0 ACR OR ABBR OR Prop LINK 1 ACR OR ABBR)(*1 N BARRIER NOT-Attr-CC-Adv-Num OR QDL LINK NOT 0 Prop)(NOT 0 VERB)(NEGATE 1 CC LINK *1 N BARRIER NPNHA LINK NOT *1 N BARRIER NPNHA) ;
     ## eatni guokte stuorra ja hui boares viesu
 SELECT (Refl Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
     ## mu iežan eatni guokte stuorra ja hui boares viesu
-SELECT (Pers Gen) (NOT 0 Dem)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
+SELECT (Pers Gen) (NOT 0 Dem)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 1 PRE-APP OR EOS LINK *-1 QDL) ;
     ## mu iežan eatni guokte stuorra ja hui boares viesu
 
 #SELECT Dem (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ; 
@@ -6160,13 +6178,13 @@ ADD (&dia-target) TARGET NP-HEAD + Acc IF (*-1 SAHKA BARRIER S-BOUNDARY LINK *-1
 
 MAP (&dia-target) TARGET VFIN IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 WORK-V LINK *-1 TARGETQUESTION-ACC LINK NOT 0 Num  LINK -1 BOS)(NOT 0 Neg)(NOT 0 NOTHING) ;
 
-MAP (&dia-target) TARGET NP-HEAD + Gen IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-GEN LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
-MAP (&dia-target) TARGET NP-HEAD + Ill IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-ILL OR ("gosa") LINK NOT 0 Num LINK -1 BOS)(NOT 0 NOTHING) ;
-MAP (&dia-target) TARGET NP-HEAD + Ill IF (*-1 SAHKA BARRIER S-BOUNDARY LINK **-1 (N Ill) LINK -1 ("guhte"))(NOT 0 NOTHING) ;
-MAP (&dia-target) TARGET NP-HEAD + Loc IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-LOC OR ("gos") OR ("gokko") LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
-MAP (&dia-target) TARGET NP-HEAD + Loc IF (*-1 SAHKA BARRIER S-BOUNDARY LINK **-1 (N Loc) LINK -1 ("guhte"))(NOT 0 NOTHING) ;
-MAP (&dia-target) TARGET NP-HEAD + Com IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-COM LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
-MAP (&dia-target) TARGET NP-HEAD + Ess IF (*-1 QDL BARRIER S-BOUNDARY LINK *-1 TARGETQUESTION-ESS LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Gen IF (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS LINK *-1 TARGETQUESTION-GEN LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Ill IF (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS LINK *-1 TARGETQUESTION-ILL OR ("gosa") LINK NOT 0 Num LINK -1 BOS)(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Ill IF (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS LINK **-1 (N Ill) LINK -1 ("guhte"))(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Loc IF (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS LINK *-1 TARGETQUESTION-LOC OR ("gos") OR ("gokko") LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Loc IF (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS LINK **-1 (N Loc) LINK -1 ("guhte"))(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Com IF (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS LINK *-1 TARGETQUESTION-COM LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
+MAP (&dia-target) TARGET NP-HEAD + Ess IF (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 VASTAS LINK *-1 TARGETQUESTION-ESS LINK NOT 0 Num  LINK -1 BOS)(NOT 0 NOTHING) ;
 
 # This one is commented out because it messes up the rules according to wordlists.
 #MAP (&dia-target) TARGET Num (1 (&dia-target))(NOT 0 NOTHING) ;
