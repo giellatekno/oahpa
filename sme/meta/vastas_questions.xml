@@ -91,7 +91,7 @@
       <text>Maid mii galgat bargat odne</text>
     </question>
     <answer> 
-      <text>Dii AUX VERB muitalusa NOUN</text>
+      <text>Dii AUX VERB ITEM NOUN</text>
       <element id="AUX" task="yes">
         <grammar tag="V+Inf"/>
         <id>galgat</id>
@@ -99,6 +99,10 @@
       <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <id>čállit</id>
+      </element>
+      <element id="ITEM" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>muitalus</id>
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
@@ -112,10 +116,10 @@
       <text>Maid don barggat</text>
     </question>
     <answer> 
-      <text>Mun VERB muitalusa NOUN1 NOUN1</text>
-      <element id="VERB" task="yes">
-        <grammar tag="V+Inf"/>
-        <id>jorgalit</id>
+      <text>Mun jorgalan ITEM NOUN1 NOUN1</text>
+      <element id="ITEM" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>muitalus</id>
       </element>
       <element id="NOUN1" task="yes">
         <grammar tag="N+Sg+Nom"/>
@@ -208,7 +212,7 @@
       <text>Bijan ITEM NOUN</text>
       <element id="ITEM" task="yes">
         <grammar tag="N+Sg+Nom"/>
-        <id>seahkka</id>
+        <id>lávka</id>
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
@@ -270,7 +274,7 @@
    <q level="1" lemmacount="2" id="1_PrsSg1_Dem_SgGen_Po">
     <qtype>PRS</qtype>
    <question>
-      <text>Maid don áiggut dál</text>
+      <text>Gosa manat dál</text>
     </question>
     <answer> 
       <text>VERB duon NOUN mielde</text>
@@ -287,7 +291,7 @@
    <q level="2" lemmacount="2" id="1_PrtSg3_Dem_SgLoc">
     <qtype>PRT</qtype>
    <question>
-      <text>Gos dat lei</text>
+      <text>Buorre go gávdnet. Gos dat lei</text>
     </question>
     <answer> 
       <text>Dat lei DEM NOUN</text>
