@@ -5423,6 +5423,8 @@ LIST V_LOC = 1_PrsPl3_Loc 2_PrsPl3_Loc 3_PrsPl3_Loc 4_PrsPl3_Loc 1_Loc_PrsSg3_No
 
 LIST V_COM = 1_PrsDu3_Com 2_PrsSg3_Inf_SgCom 1_PrsSg3_Inf_SgCom;
 
+LIST V_NOM = 1_Loc_PrsSg3_Nom ;
+
 LIST V_ESS = 1_PrsSg1_Neg_Ess 1_PrsSg3_Ess 1_PrsPl3_Acc_Ess;
 
 LIST V_PO = 1_PrsSg1_Dem_SgGen_Po ;
@@ -5478,7 +5480,7 @@ MAP (&grm-Px-shouldbe-Loc) TARGET (N Loc CGErr) (*-1 V_LOC BARRIER (N Loc)) ;
 MAP (&grm-Px-shouldbe-Loc) TARGET (N Nom PxSg3) (*-1 V_LOC BARRIER (N Loc)) ; 
 MAP (&grm-missing-Loc) TARGET V_LOC (NOT *1 (N Loc) OR (N Nom PxSg3)) ;
 MAP (&grm-missing-Ess) TARGET V_ESS (NOT *1 (N Ess) OR (A Ess)) ;
-MAP (&grm-missing-Nom) TARGET V_NOM (NOT *1 (N Nom)) ;
+MAP (&grm-Hab-Nom) TARGET V_NOM (NOT *1 (N Nom)) ;
 
 MAP (&grm-incorr-pers-nr) TARGET V (*-1 V_SG1 BARRIER (V Sg1))(NOT 0 Sg1) ;
 
@@ -6392,6 +6394,7 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &grm-error-Ill			the illative form is missing vowelchange
 # &grm-missing-Loc      	there should be a locative
 # &grm-missing-Nom      	there should be a nominative
+# &grm-Hab-Nom
 # &grm-missing-Loc-PP   	there should be a Loc or a PP
 # &grm-missing-Ill-PP   	there should be an Ill or a PP
 # &grm-missing-ActEss
