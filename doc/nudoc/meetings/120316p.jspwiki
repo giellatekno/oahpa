@@ -1,0 +1,99 @@
+!!! Møte 06.03.12
+
+Til stades: Lene, Heli, Trond, Ryan
+
+
+!!Saksliste
+
+* Sahka og Vasta
+* djuplenkjing i VastaS
+* univ_oahpa som default
+* egen server
+* deepdict
+* neste møte
+
+!! Sahka og Vasta
+
+Lene har arbeidd mykje i helga, Heli har implementert. Lene og Heli har lagt ut
+meldinger i site og Oahpa med oppfordring til å bruke desse to programma.
+
+Nytt oppsett for VastaS: Analysere spørsmål og svar, som i Vasta-F og
+Sahka, men med de gitte lemmaene som attributt. Fordel: Man kan lage nye VastaS-oppgaver uten å 
+gjøre endringer i CG, og man arbeider med samme reglar for alle programtypene.
+
+Problem: Hash i lemma.  "skuvlabusse" "skuvla#busse"
+Ei løysing: Først sende lemmaet til fst, og deretter få grunnforma derifrå attende.
+
+__TILTAK__
+* __Heli__ testar på eiga maskin
+* Etterpå avtaler __Lene og Heli__ implementering og CG-regelendring
+* Tidsramma: Onsdag 7.3
+* VastaS: meny med 2 lemmaer, 3 lemmaer og 4 lemmaer
+
+!! djuplenkjing i VastaS
+
+Biret-Ánne sende ei melding i går om ønske om djuplenkjing til VastaS. 
+
+__TILTAK__
+* __Ryan__ fikser dette
+
+!! univ_oahpa som default
+
+Mål: Bruke univ_oahpa i [http://oahpa.uit.no|oahpa.uit.no] OBS! det blir ny url
+
+Liste over arbeid som må være gjort før dette kan gjøres:
+* relative pronomener i MorfaS Heli eller Ryan
+** Implementert
+* implementere valg for to typer resiproke pronomener i MorfaC Ryan
+** Implementert for MorfaC, resiproke pronomen er problematisk i MorfaS 
+   (fordi vi berre har to lemma i nubbi nuppi-systemet, sg og på), så
+   det er betre å berre ha det i MorfaS. Vi kan lage ein infotekst i
+   MorfaS som viser til MorfaC for nubbi nuppi.
+* implementere morfologisk feedback Ryan
+** __Ryan__ (ikkje byrja). Deadline for implementering: 9.3. Deretter testing.
+** Merk, dei finst ikkje for pronomen og for verb, ikke for perfektum og gerundium.
+* lage flere pronomenoppgaver  __Lene__
+** Lene har laget en god del, men skal lage enda flere
+* oppdatere brukerdokumentasjonen  __Lene__
+** Lene gjør dette siste dagen før deadline
+* leksikonet
+** fjerne er del varianter av lemmaer i leksikonet, og legge til noen nye morfa-sem class __Lene__ 
+** oppdatere databasen f.eks. 10. mars __Ryan__
+* lay-out
+** Halde på sma-tema, men skifte farger. Vi diskuterer med Bjørn.
+* lokalisering: 
+** oppdatere finsk, engelsk og svensk i message __Trond__
+* Sverige:
+** Ta kontakt med Uppsala osv. __Trond__
+
+Overgangen til ny Oahpa kan vi la gå i lag med ei offentleg lansering av nye Oahpa, samtidig
+med at vi fortel om dei nye ordbøkene. Oppdateringa bør gå ut på SESAM-lista.
+
+Vi kan sende ut ein invitasjon til relevante personar med tilbod om å stå på ei liste
+der dei får informasjon om oppdateringar, ca. 2-3 gonger i året.
+
+Kandidat til lanseringsdato: 26.3.
+
+!! egen server
+Vi har fått egen server, litt forsinka pga sykdom i IT-avdelinga.  Bjørn er foreløpig
+administrator. 
+
+Vi skal ha møte med IT-avdelinga i morgen.. Vi skriv rapport etter møtet.
+
+!! deepdict
+Vi har endelig løst alle admnistritative problemer (kontrakt osv.)
+Tino begynner å arbeide med dette.
+
+* Oppsettet __Tino__
+* Valg av korpus __Lene__
+* Forbedre formattering av deler av korpus, spesielt news
+* Forbedre cg-analysatoren
+
+
+!! neste møte
+
+mandag 19.3 kl 8.00
+
+
+
+
