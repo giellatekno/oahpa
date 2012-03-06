@@ -217,6 +217,9 @@ class Game(object):
 		answer_tagObj = re.compile(r'^answer_tag_(?P<syntaxString>[\w\-]*)$', re.U)
 		answer_wordObj = re.compile(r'^answer_word_(?P<syntaxString>[\w\-]*)$', re.U)
 		answer_fullformObj = re.compile(r'^answer_fullform_(?P<syntaxString>[\w\-]*)$', re.U)
+		
+		answer_taskwordObj = re.compile(r'^answer_taskword_(?P<syntaxString>[\w\-]*)$', re.U)  # added by Heli
+		
 		targetObj = re.compile(r'^target_(?P<syntaxString>[\w\-]*)$', re.U)
 		
 		# Collect all the game targets as global variables
@@ -247,7 +250,8 @@ class Game(object):
 					
 					tmpawords = self.search_info(answer_tagObj, fieldname, value, tmpawords, 'tag')
 					tmpawords = self.search_info(answer_wordObj, fieldname, value, tmpawords, 'word')
-					tmpawords = self.search_info(answer_fullformObj, fieldname, value, tmpawords, 'fullform')
+					tmpawords = self.search_info(answer_fullformObj, fieldname, value, tmpawords, 'fullform')					
+					tmpawords = self.search_info(answer_taskwordObj, fieldname, value, tmpawords, 'taskword')  # added by Heli
 					
 					self.global_targets = self.search_info(targetObj, fieldname, value, self.global_targets, 'target')
 					
@@ -275,14 +279,15 @@ class Game(object):
 						info['tag'] = tmpawords[syntax]['tag']
 					if tmpawords[syntax].has_key('fullform'):
 						info['fullform'] = [ tmpawords[syntax]['fullform']]
-					
-					awords[syntax].append(info)
-				# print info
-			
-			
+				if tmpawords[syntax].has_key('taskword'):
+					info['taskword'] = tmpawords[syntax]['taskword']  # added by Heli
+				awords[syntax].append(info)
+				print info
 			db_info['awords'] = awords
 			db_info['qwords'] = qwords
 			db_info['global_targets'] = self.global_targets
+			#print "db_info['awords'] in check_game "
+			#print db_info['awords']
 			
 			new_db_info = {}
 			
@@ -294,6 +299,7 @@ class Game(object):
 			form, word_id = self.create_form(new_db_info, n, data)
 			if form:
 				self.form_list.append(form)
+                        #print form
 	
 	def get_score(self, data):
 		

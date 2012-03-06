@@ -27,7 +27,7 @@ class CealkkaGame(Game):
 		Initialize the grammatical information.
 		This information should be moved to parameters
 		"""
-		self.num_fields = 6
+		self.num_fields = 3
 		self.syntax =('MAINV','SUBJ','HAB')
 		self.qtype_verbs = set(['V-COND','V-IMPRT','V-POT', 'PRS','PRT', 'V-PRS', 'V-PRT', 'V-GER', 'V-PRF'])
 
@@ -759,9 +759,9 @@ class CealkkaGame(Game):
                 if self.settings.has_key('lemmacount'):  # added by Heli
                     lemmacount=int(self.settings['lemmacount'])
                 else:
-                    lemmacount=3		
-		q_count = Question.objects.filter(gametype="cealkka", level__lte=level,lemmacount__lte=lemmacount).count()
-		question = Question.objects.filter(gametype="cealkka", level__lte=level, lemmacount__lte=lemmacount)[randint(0,q_count-1)]
+                    lemmacount=2		
+		q_count = Question.objects.filter(gametype="cealkka", level__lte=level,lemmacount=lemmacount).count()
+		question = Question.objects.filter(gametype="cealkka", level__lte=level, lemmacount=lemmacount)[randint(0,q_count-1)]
 		#print level
 		#print lemmacount 
 		#question = Question.objects.get(id="107")
@@ -788,6 +788,7 @@ class CealkkaGame(Game):
 		# Or if the gametype is qa.
 		if db_info.has_key('answer_id') and self.settings['gametype'] == 'cealkka':
 			awords=db_info['awords']
+			print awords
 		else:
 			# Generate the set of possible answers
 			# Here only the text of the first answer is considered!!
@@ -874,7 +875,7 @@ class CealkkaGame(Game):
 
 		form = (CealkkaQuestion(question, answer, db_info['qwords'], db_info['awords'], dialect, language, db_info['userans'], db_info['correct'], data, prefix=n))  # added the answer part
 			
-		#print "awords:", db_info['awords']
+		print "awords:", db_info['awords']
 		#print "awords ...................."
 		#print "qwords:", db_info['qwords']
 		#print "qwords ...................."

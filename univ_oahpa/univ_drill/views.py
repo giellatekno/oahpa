@@ -912,9 +912,11 @@ class Cealkkaview:
 			# If settings are changed, a new game is created
 			# Otherwise the game is created using the user input.
 			if "settings" in data:
-				game.new_game()
+				print "new game \n"
+				game.new_game()				
 			else:
-				game.check_game(data)
+				print "check game \n"
+				game.check_game(data)				
 				game.get_score(data)
 
 		# If there is no POST data, default settings are applied

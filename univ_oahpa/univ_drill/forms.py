@@ -240,7 +240,8 @@ VASTA_LEVELS = (
 
 VASTAS_NR_OF_TASKWORDS = (
 	('2', _('2')),
-	('3', _('2-3')),
+	('3', _('3')),
+	('4', _('4')),
 )
 
 TRANS_CHOICES = (
@@ -773,6 +774,8 @@ def select_words(self, qwords, awords):
 				selected_awords[syntax]['tag'] = aword['tag']
 			if aword.has_key('task'): 
 				selected_awords[syntax]['task'] = aword['task']
+			if aword.has_key('taskword'):
+				selected_awords[syntax]['taskword'] = aword['taskword']
 			if aword.has_key('qelement'):
 				qelem = aword['qelement']
 				if type(qelem) is not long:  # to exclude MorfaC 
@@ -845,7 +848,8 @@ def select_words(self, qwords, awords):
 		if not selected_awords[syntax].has_key('fullform'):
 			selected_awords[syntax]['fullform'] = []
 			selected_awords[syntax]['fullform'].append(syntax)
-
+        print "selected awords: "
+        print selected_awords
 	return selected_awords
 
 
@@ -877,7 +881,7 @@ class OahpaSettings(forms.Form):
 					'trisyllabic': False,
 					'contracted': False,
 					'level' : 'all',
-					'lemmacount' : '3',
+					'lemmacount' : '2',
 					'case': 'N-ILL',
 					'pos' : 'N',
 					'vtype' : 'PRS',
@@ -1783,15 +1787,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     #preprocess = " | /Users/mslm/main/gt/script/preprocess "
     dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
     #dis_bin = "../sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
-    
-    #fstdir = "/Users/saara/gt/sme/bin"
-    #lookup2cg = " | /Users/saara/gt/script/lookup2cg"
-    #cg3 = "/Users/saara/bin/vislcg3"
-    #preprocess = " | /Users/saara/gt/script/preprocess "
-    #dis_bin = "/Users/saara/ped/sme/src/sme-ped.cg3"
-    
+        
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
-
     
     self.userans = self.cleaned_data['answer']
     answer = self.userans.rstrip()
@@ -2218,9 +2215,9 @@ class SahkaQuestion(OahpaQuestion):
             self.error="correct"
 
 ###########
-## Cealkka
+## Vasta-S (Cealkka)
 ###########
-def cealkka_is_correct(self,question,qwords,language,question_id):  #was: question_id=None
+def cealkka_is_correct(self,question,qwords,language,question_id=None):  #was: question_id=None
     """
     Analyzes the answer and returns a message.
     """
@@ -2273,29 +2270,20 @@ def cealkka_is_correct(self,question,qwords,language,question_id):  #was: questi
             w=""
             cohort=""
             print qword
-            #if qword.has_key('word'): # All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
-             #   if qword.has_key('fullform') and qword['fullform']:
-              #      cohort = cohort + "\"<" + force_unicode(qword['fullform']).encode('utf-8') + ">\"\n"
-               #     lemma = Word.objects.filter(id=qword['word'])[0].lemma
-               #     cohort = cohort + "\t\"" + lemma + "\""
-                #if qword.has_key('tag') and qword['tag']:
-                 #   string = Tag.objects.filter(id=qword['tag'])[0].string
-                  #  tag = string.replace("+"," ")
-                   # cohort = cohort + " " + tag + "\n"
-            #else:
-	    w = force_unicode(qword['fullform']).encode('utf-8')  # Words that are given.
-	    w=w.lstrip().rstrip()
-	    s.send(w) # on victorio
-	    cohort = s.recv(size)
-            #word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-	    #morfanal = os.popen(word_lookup).readlines()
-	    #for row in morfanal:
-	    #   row = row.strip()
-	    #  cohort = cohort + row + "\n" + "\t"
-	    if not cohort or cohort == w:
-		    cohort = w + "\n"
-	    if cohort=="error":
-		    raise Http500
+            # All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
+            w = force_unicode(qword['fullform']).encode('utf-8')
+            w=w.lstrip().rstrip()
+            s.send(w) # on victorio
+            cohort = s.recv(size)
+            #word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+            #morfanal = os.popen(word_lookup).readlines()
+            #for row in morfanal:
+             #   row = row.strip()
+              #  cohort = cohort + row + "\n" + "\t"
+            if not cohort or cohort == w:
+                cohort = w + "\n"
+            if cohort=="error":
+                raise Http500
 	    #print cohort
 	    analysis = analysis + cohort
             #print analysis
@@ -2319,7 +2307,7 @@ def cealkka_is_correct(self,question,qwords,language,question_id):  #was: questi
             #morfanal = os.popen(word_lookup).readlines()
             #for row in morfanal:
              #   row = row.strip()
-            #    ans_cohort = ans_cohort + row + "\n" + "\t"
+              #  ans_cohort = ans_cohort + row + "\n" + "\t"
             #analyzed = analyzed + ans_cohort
             analysis3=c + analyzed + c
 
@@ -2449,9 +2437,7 @@ class CealkkaSettings(OahpaSettings):
 
     book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
     level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
-    lemmacount = forms.ChoiceField(initial='3', choices=VASTAS_NR_OF_TASKWORDS, widget=forms.Select)
-
-    default_data = {'gametype' : 'cealkka'}
+    lemmacount = forms.ChoiceField(initial='2', choices=VASTAS_NR_OF_TASKWORDS, widget=forms.Select)
 
     def __init__(self, *args, **kwargs):
         self.set_settings()
@@ -2473,12 +2459,8 @@ class CealkkaQuestion(OahpaQuestion):
         self.dialect = dialect
         self.gametype = "cealkka"
         qtype=question.qtype
-        atext = qanswer.string 
+        atext = qanswer.string
         # print atext
-        # task = qanswer.get().task # there is no task attribute in VastaS answer elements
-	#if not task:
-	#	error_msg = u"not task: %s %s (%s)" % (atext, question.qid, question.qatype)			
-	#	raise Http404(error_msg)
 
         question_widget = forms.HiddenInput(attrs={'value' : question.id})
         answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})  #was: qanswer.id
@@ -2489,42 +2471,36 @@ class CealkkaQuestion(OahpaQuestion):
         answer_size=50
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
         
-	self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
+        self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
 
         self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                 widget=forms.TextInput(\
-            attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
+        attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
 
-        	   # Select words for the answer
-        selected_awords = self.select_words(qwords, awords)
-	       # print selected_awords
-	       
+        # Select words for the answer
         astring = ""
-        
+        print "awords that come in CealkkaQuestion as parameter: "
+        print awords
+        selected_awords = self.select_words(qwords, awords)
+                    
         awords = []
-        for asynt in atext.split():	   # det här har jag (Heli) hittat på
-            if asynt.isupper():  # added because of keyerror
-                word = selected_awords[asynt]
+        for token in atext.split():	   # det här har jag (Heli) hittat på
+            if token.isupper():  # added because of keyerror
+                word = selected_awords[token]
                 if word.has_key('fullform') and word['fullform']:                    
                     word['fullform'] = force_unicode(word['fullform'][0])
-                #if not word.has_key('taskword'):
-                 #   word['tag'] = ""
             else:
                 word = {}
-                word['fullform'] = asynt
-                #word['tag'] = ""
+                word['fullform'] = token
+                word['taskword'] = ""
             awords.append(word)
             astring=astring+" "+force_unicode(word['fullform'])
 
         astring = astring.lstrip()
         #print astring
         
-        #self.answertext1=astring
-        #print self.answertext1
         self.awords=awords
-        print question.qid
-        print self.awords
-
+        
         relaxed = []
         form_list=[]
 		        
@@ -2537,19 +2513,20 @@ class CealkkaQuestion(OahpaQuestion):
             if qword.has_key('tag') and qword['tag']:
                 self.qattrs['question_tag_' + syntax] = qword['tag']
             if qword.has_key('fullform') and qword['fullform']:
-                self.qattrs['question_fullform_' + syntax] = qword['fullform'][0]
-			
-	for syntax in selected_awords.keys():
-		if selected_awords[syntax].has_key('word'):
-			self.aattrs['answer_word_' + syntax] = selected_awords[syntax]['word']
-		if selected_awords[syntax].has_key('tag'):
-			self.aattrs['answer_tag_' + syntax] = selected_awords[syntax]['tag']
-		if selected_awords[syntax].has_key('fullform') and len(selected_awords[syntax]['fullform']) == 1:
-			self.aattrs['answer_fullform_' + syntax] = selected_awords[syntax]['fullform'][0]
-				
+                self.qattrs['question_fullform_' + syntax] = qword['fullform'][0]			
+        for syntax in selected_awords.keys():
+            if selected_awords[syntax].has_key('word'):
+                self.aattrs['answer_word_' + syntax] = selected_awords[syntax]['word']
+            if selected_awords[syntax].has_key('tag'):
+                self.aattrs['answer_tag_' + syntax] = selected_awords[syntax]['tag']
+            if selected_awords[syntax].has_key('fullform') and len(selected_awords[syntax]['fullform']) == 1:
+                self.aattrs['answer_fullform_' + syntax] = selected_awords[syntax]['fullform'][0]
+            if selected_awords[syntax].has_key('taskword'):
+                self.aattrs['answer_taskword_' + syntax] = selected_awords[syntax]['taskword']  # to track the taskword attribute
+		print question.qid
+        print self.awords		
         # Forms question string and answer string out of grammatical elements and other strings.
         qstring = ""
-       # astring= ""
 
         # Format question string
         qtext = question.string
