@@ -241,7 +241,7 @@ VASTA_LEVELS = (
 VASTAS_NR_OF_TASKWORDS = (
 	('2', _('2')),
 	('3', _('3')),
-	('4', _('4')),
+	#('4', _('4')),
 )
 
 TRANS_CHOICES = (
