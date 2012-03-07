@@ -183,7 +183,7 @@ class Game(object):
 			# Do not generate same question twice
 			if word_id:
 				num = num + 1
-				if word_id in set(word_ids) and not (self.settings['gametype'] == "bare" and self.settings['pron_type'] in ['Rel','Dem']): # If there are less than 5 different lemmas to choose from then this causes a "No questions were able to be generated."
+				if word_id in set(word_ids): # If there are less than 5 different lemmas to choose from then this causes a "No questions were able to be generated."
 					continue
 				else: word_ids.append(word_id)
 		
@@ -533,7 +533,7 @@ class BareGame(Game):
 			# TODO: combine all subclasses so forms can be fetched
 			if pos == 'Pron':
 				sylls = False
-				TAG_QUERY = TAG_QUERY & Q(subclass=pron_type) & Q(number__in=['', 'Du', 'Pl'])
+				TAG_QUERY = TAG_QUERY & Q(subclass=pron_type) & Q(number__in=['', 'Du', 'Pl', 'Sg'])  # Sg added by Heli
 			elif pos2 == 'Num':
 				sylls = False
 				TAG_QUERY = TAG_QUERY & Q(subclass=subclass)
