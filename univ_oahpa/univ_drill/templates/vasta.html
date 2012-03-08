@@ -18,6 +18,24 @@
 </ul>
 {% endblock %}
 
+{% block veiledning %}
+{% ifequal LANGUAGE_CODE "sme" %}
+http://giellatekno.uit.no/oahpa/sme/useoahpa/vasta.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "fi" %}
+http://giellatekno.uit.no/oahpa/sme/useoahpa/vasta.fin.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "en" %}
+http://giellatekno.uit.no/oahpa/sme/useoahpa/vasta.eng.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "no" %}
+http://giellatekno.uit.no/oahpa/sme/useoahpa/vasta.nno.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "sv" %}
+http://giellatekno.uit.no/oahpa/sme/useoahpa/vasta.nno.html
+{% endifequal %}
+{% endblock %}
+
 {% block name %}{% trans "Vasta" %}{% endblock %}
 {% block pagename %}/univ_oahpa/vasta/{% endblock %}
 {% block instructions %}
