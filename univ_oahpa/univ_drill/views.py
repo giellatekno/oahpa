@@ -926,27 +926,20 @@ def cealkka(request):
 
 
 class Sahkaview(Cealkkaview):
+	""" TODO: what differs from Cealkkaview here?
+	"""
 	
 	def deeplink_keys(self, game, settings_form):
-		print settings_form.keys()
-		return []
+		return ['dialogue']
 	
 	def additional_settings(self, settings_form):
-		print settings_form.data.keys()
-		print repr(settings_form.data.get('settings', False))
 		self.settings['gametype'] = 'sahka'
 		self.settings['image'] = 'sahka.png'
 		self.settings['wordlist'] = ''
-
-		# self.settings['dialogue_id'] = '1'
 		self.settings['dialogue'] = settings_form.data.get('dialogue', '')
+
 		if 'topicnumber' not in self.settings:
 			self.settings['topicnumber'] = 0
-		# self.settings['num_fields'] = '2'
-	
-	def change_game_settings(self, game):
-		# TODO: something here... 
-		return game
 
 	def create_game(self, request, **init_kwargs):
 		""" Vasta's needs are a bit different. """
@@ -1023,105 +1016,11 @@ class Sahkaview(Cealkkaview):
 			'all_correct': game.all_correct,
 			'wordlist' : game.settings['wordlist'],
 			'dialogue' : game.settings['dialogue'],
+			'deeplink': self.create_deeplink(game, settings_form),
 			})
 		return c
 
 
-class OldSahkaview:
-
-	def init_settings(self):
-
-		show_data=0
-		self.settings = {}
-		
-	def create_sahkagame(self,request):
-
-		count=0
-		correct=0
-
-		self.settings['gametype'] = "sahka"
-		if request.session.has_key('dialect'):
-			self.settings['dialect'] = request.session['dialect']
-		if request.session.has_key('django_language'):
-			self.settings['language'] = request.session['django_language']
-		else:
-			self.settings['language'] = request.COOKIES.get("django_language", None)
-
-			
-		# With post data, continue the dialogue
-		if request.method == 'POST':
-			data = request.POST.copy()
-			# Settings form is checked and handled.
-			settings_form = SahkaSettings(request.POST)
-
-			for k in settings_form.data.keys():
-				self.settings[k] = settings_form.data[k]
-
-			# Vasta
-			game = SahkaGame(self.settings)
-
-			# If settings are changed, a new game is created
-			# Otherwise the game is created using the user input.
-			if "settings" in data:
-				game.settings['dialogue'] = data['dialogue']
-				game.settings['topicnumber']=0
-				game.settings['image']="sahka.png"
-				game.settings['wordlist']=""
-				game.num_fields=1
-				game.update_game(1)
-			else:
-				if settings_form.data.has_key('num_fields'):
-					game.num_fields = int(settings_form.data['num_fields'])
-				else:
-					game.num_fields = 1					
-				#print "num_fields", game.num_fields
-				game.check_game(data)
-				# If the last answer was correct, add new field
-				if game.form_list[game.num_fields-2].error == "correct":
-					game.update_game(len(game.form_list)+1, game.form_list[game.num_fields-2])
-
-			settings_form.init_hidden(game.settings['topicnumber'],game.num_fields,\
-  									game.settings['dialogue'],game.settings['image'],game.settings['wordlist'])
-
-			errormsg=""
-			for f in game.form_list:
-				errormsg = errormsg + f.errormsg
-				
-			c = Context({
-				'settingsform': settings_form,
-				'forms': game.form_list,
-				'messages': game.form_list[-1].messages,
-				'errormsg': errormsg,
-				'count': game.count,
-				'score': game.score,
-				'comment': game.comment,
-				'gametype': "sahka",
-				'topicnumber' : game.settings['topicnumber'],
-				'num_fields' : game.num_fields,
-				'image' : game.settings['image'],
-				'wordlist' : game.settings['wordlist'],
-				'dialogue' : game.settings['dialogue'],
-				})
-			return c
-
-		# If there is no POST data, present the dialogue selection page
-		else:
-			settings_form = SahkaSettings()
-			for k in settings_form.default_data.keys():
-				self.settings[k] = settings_form.default_data[k]
-
-			if request.session.has_key('dialect'):
-				self.settings['dialect'] = request.session['dialect']
-			if request.session.has_key('django_language'):
-				self.settings['language'] = request.session['django_language']
-			else:
-				self.settings['language'] = request.COOKIES.get("django_language", None)
-
-			c = Context({
-				'settingsform': settings_form,
-				'gametype' : "sahka_main",
-				})
-			return c
 
 
 @trackGrade("Sahka")
