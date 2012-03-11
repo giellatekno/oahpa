@@ -926,8 +926,10 @@ def cealkka(request):
 
 
 class Sahkaview(Cealkkaview):
-	""" TODO: what differs from Cealkkaview here?
-	"""
+	""" Sahka is a bit different: it has a main view page (topicnumber = 0) and
+	has separate methods to call the creation of a new game and to continue
+	with an existing game. There are also some attributes that must always be
+	set, such as the image, and wordlist.  """
 	
 	def deeplink_keys(self, game, settings_form):
 		return ['dialogue', 'topicnumber']
@@ -942,14 +944,14 @@ class Sahkaview(Cealkkaview):
 			self.settings['topicnumber'] = 0
 
 	def create_game(self, request, **init_kwargs):
-		""" Vasta's needs are a bit different. """
 
 		# Grab form POST data, or URL GET data.
+		#
 		settings, settings_form, is_new_game = self.getSettingsForm(request,
 										initial_kwargs=init_kwargs)
 
 		# Apply whatever additional settings need to be made
-
+		#
 		self.additional_settings(settings_form)
 
 		# Create the game class. If the game is new, self.settings will not
@@ -957,33 +959,36 @@ class Sahkaview(Cealkkaview):
 		# random words and create the question/answers.  If a game is in
 		# progress, it will reselect the existing values from the game form,
 		# and check whether or not the answers are correct or incorrect.
-
+		#
 		game = self.GameClass(self.settings)
 		
 		self.set_gamename()
 
 		if is_new_game:
+			# Set default topic number, clear wordlist.
+			#
 			game.settings['dialogue'] = settings_form.data.get('dialogue', '')
 			game.settings['topicnumber'] = 0
 			game.settings['wordlist'] = ""
 			game.num_fields = 1
 			game.update_game(1)
 		else:
-			if settings_form.data.has_key('num_fields'):
-				game.num_fields = int(settings_form.data['num_fields'])
-			else:
-				game.num_fields = 1					
-			#print "num_fields", game.num_fields
+			game.num_fields = int(settings_form.data.get('num_fields', 1))
 			game.check_game(settings_form.data)
+
 			# If the last answer was correct, add new field
+			# 
 			if game.form_list[game.num_fields-2].error == "correct":
-				game.update_game(len(game.form_list)+1, game.form_list[game.num_fields-2])
+				game.update_game(
+					len(game.form_list)+1, 
+					game.form_list[game.num_fields-2])
 		
-		settings_form.init_hidden(game.settings['topicnumber'],game.num_fields,\
-  									game.settings['dialogue'],game.settings['image'],game.settings['wordlist'])
-
-
-		
+		settings_form.init_hidden(
+			game.settings['topicnumber'],
+			game.num_fields,
+  			game.settings['dialogue'],
+  			game.settings['image'],
+  			game.settings['wordlist'])
 
 		return self.context(request, game, settings_form)
 
@@ -996,7 +1001,7 @@ class Sahkaview(Cealkkaview):
 			else:
 				return []
 
-		errormsg=""
+		errormsg = ""
 		for f in game.form_list:
 			errormsg = errormsg + f.errormsg
 			
