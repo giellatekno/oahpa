@@ -259,6 +259,7 @@ class Gameview(object):
 			game = self.change_game_settings(game)
 			game.new_game()
 		else:
+			game = self.change_game_settings(game)
 			game.check_game(settings_form.data)
 			game.get_score(settings_form.data)
 
