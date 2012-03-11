@@ -886,10 +886,10 @@ class Cealkkaview(Gameview):
 		return ['lemmacount', 'level']
 
 	def additional_settings(self, settings_form):
+		# TODO: anything more necessary?
 		self.settings['gametype'] = "cealkka"
 
 	def change_game_settings(self, game):
-		# TODO: document this method, decorator to return game?
 		game.num_fields = 2
 		return game
 		
@@ -899,7 +899,6 @@ class Cealkkaview(Gameview):
 	
 	def context(self, request, game, settings_form):
 
-		print "LIST COUNT: %d" % len(game.form_list)
 		c = Context({
 			'settingsform': settings_form,
 			'forms': game.form_list,
