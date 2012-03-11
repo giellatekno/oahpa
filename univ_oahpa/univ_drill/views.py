@@ -876,11 +876,12 @@ class Cealkkaview(Gameview):
 	""" View for Cealkka, main difference here is context.
 	"""
 
-	def __init__(self, settingsclass, gameclass):
-		self.SettingsClass = settingsclass
-		self.GameClass = gameclass
+	# TODO: no need, test on victorio?
+	# def __init__(self, settingsclass, gameclass):
+		# self.SettingsClass = settingsclass
+		# self.GameClass = gameclass
 
-		self.init_settings()
+		# self.init_settings()
 	
 	def deeplink_keys(self, game, settings_form):
 		return ['lemmacount', 'level']
@@ -923,7 +924,110 @@ def cealkka(request):
 	c = cealkkagame.create_game(request)
 	return render_to_response('vasta.html', c, context_instance=RequestContext(request))
 
-class Sahkaview:
+
+class Sahkaview(Cealkkaview):
+	
+	def deeplink_keys(self, game, settings_form):
+		print settings_form.keys()
+		return []
+	
+	def additional_settings(self, settings_form):
+		print settings_form.data.keys()
+		print repr(settings_form.data.get('settings', False))
+		self.settings['gametype'] = 'sahka'
+		self.settings['image'] = 'sahka.png'
+		self.settings['wordlist'] = ''
+
+		# self.settings['dialogue_id'] = '1'
+		self.settings['dialogue'] = settings_form.data.get('dialogue', '')
+		if 'topicnumber' not in self.settings:
+			self.settings['topicnumber'] = 0
+		# self.settings['num_fields'] = '2'
+	
+	def change_game_settings(self, game):
+		# TODO: something here... 
+		return game
+
+	def create_game(self, request, **init_kwargs):
+		""" Vasta's needs are a bit different. """
+
+		# Grab form POST data, or URL GET data.
+		settings, settings_form, is_new_game = self.getSettingsForm(request,
+										initial_kwargs=init_kwargs)
+
+		# Apply whatever additional settings need to be made
+
+		self.additional_settings(settings_form)
+
+		# Create the game class. If the game is new, self.settings will not
+		# contain any word or wordform data, and thus GameClass will select
+		# random words and create the question/answers.  If a game is in
+		# progress, it will reselect the existing values from the game form,
+		# and check whether or not the answers are correct or incorrect.
+
+		game = self.GameClass(self.settings)
+		
+		self.set_gamename()
+
+		if is_new_game:
+			game.settings['dialogue'] = settings_form.data['dialogue']
+			game.settings['topicnumber'] = 0
+			game.settings['wordlist'] = ""
+			game.num_fields = 1
+			game.update_game(1)
+		else:
+			if settings_form.data.has_key('num_fields'):
+				game.num_fields = int(settings_form.data['num_fields'])
+			else:
+				game.num_fields = 1					
+			#print "num_fields", game.num_fields
+			game.check_game(settings_form.data)
+			# If the last answer was correct, add new field
+			if game.form_list[game.num_fields-2].error == "correct":
+				game.update_game(len(game.form_list)+1, game.form_list[game.num_fields-2])
+		
+		settings_form.init_hidden(game.settings['topicnumber'],game.num_fields,\
+  									game.settings['dialogue'],game.settings['image'],game.settings['wordlist'])
+
+
+		
+
+		return self.context(request, game, settings_form)
+
+
+	def context(self, request, game, settings_form):
+
+		def getmessages(g):
+			if len(g.form_list) > 0:
+				return g.form_list[-1].messages
+			else:
+				return []
+
+		errormsg=""
+		for f in game.form_list:
+			errormsg = errormsg + f.errormsg
+			
+		c = Context({
+			'settingsform': settings_form,
+			'forms': game.form_list,
+			'messages': getmessages(game),
+			'errormsg': errormsg,
+			'count': game.count,
+			'score': game.score,
+			'comment': game.comment,
+			'gametype': self.settings['gametype'],
+			'topicnumber' : game.settings['topicnumber'],
+			'num_fields' : game.num_fields,
+			'image' : game.settings['image'],
+			'show_correct': game.show_correct,
+			'all_correct': game.all_correct,
+			'wordlist' : game.settings['wordlist'],
+			'dialogue' : game.settings['dialogue'],
+			})
+		return c
+
+
+class OldSahkaview:
 
 	def init_settings(self):
 
@@ -1020,11 +1124,12 @@ class Sahkaview:
 			return c
 
 
+@trackGrade("Sahka")
 def sahka(request):
 
-	sahkagame = Sahkaview()
+	sahkagame = Sahkaview(SahkaSettings, SahkaGame)
 	sahkagame.init_settings()
 
-	c = sahkagame.create_sahkagame(request)
+	c = sahkagame.create_game(request)
 	return render_to_response('sahka.html', c, context_instance=RequestContext(request))
 
