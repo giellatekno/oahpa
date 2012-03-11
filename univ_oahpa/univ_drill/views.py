@@ -930,7 +930,7 @@ class Sahkaview(Cealkkaview):
 	"""
 	
 	def deeplink_keys(self, game, settings_form):
-		return ['dialogue']
+		return ['dialogue', 'topicnumber']
 	
 	def additional_settings(self, settings_form):
 		self.settings['gametype'] = 'sahka'
@@ -1016,7 +1016,7 @@ class Sahkaview(Cealkkaview):
 			'all_correct': game.all_correct,
 			'wordlist' : game.settings['wordlist'],
 			'dialogue' : game.settings['dialogue'],
-			'deeplink': self.create_deeplink(game, settings_form),
+			# 'deeplink': self.create_deeplink(game, settings_form),
 			})
 		return c
 
