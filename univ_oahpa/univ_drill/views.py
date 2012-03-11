@@ -111,6 +111,12 @@ class Gameview(object):
 
 		return '?' + '&'.join(key_values)
 
+	def change_game_settings(self, game):
+		""" If any settings need to be set before Game.new_game is called, 
+		they are set here. """
+
+		return game
+	
 	def additional_settings(self, settings_form):
 		""" Override this method if any additional settings need to be applied
 		to the game before it returns a context. This is called within the
@@ -250,6 +256,7 @@ class Gameview(object):
 		self.set_gamename()
 
 		if is_new_game:
+			game = self.change_game_settings(game)
 			game.new_game()
 		else:
 			game.check_game(settings_form.data)
@@ -863,127 +870,35 @@ def vasta(request):
 	c = vastagame.create_vastagame(request)
 	return render_to_response('vasta.html', c, context_instance=RequestContext(request))
 
-class OldCealkkaview:
-
-	def init_settings(self):
-
-		show_data=0
-		self.settings = {}
-		
-	def create_cealkkagame(self,request):
-
-		count=0
-		correct=0
-
-		self.settings['gametype'] = "cealkka"
-		
-		if request.method == 'POST':
-			data = request.POST.copy()
-
-			# Settings form is checked and handled.
-			settings_form = CealkkaSettings(request.POST)
-
-			for k in settings_form.data.keys():
-				self.settings[k] = settings_form.data[k]
-
-			if request.session.has_key('dialect'):
-				self.settings['dialect'] = request.session['dialect']
-
-			if request.session.has_key('django_language'):
-				self.settings['language'] = request.session['django_language']
-			else:
-				self.settings['language'] = request.COOKIES.get("django_language", None)
-
-			self.settings['allcase_context']=settings_form.allcase_context
-			self.settings['allvtype_context']=settings_form.allvtype_context
-			self.settings['allnum_context']=settings_form.allnum_context
-			self.settings['alladj_context']=settings_form.alladj_context
-			self.settings['allsem']=settings_form.allsem
-
-			if settings_form.data.has_key('book'):
-				self.settings['book'] = settings_form.books[settings_form.data['book']]
-
-			# Cealkka
-			game = CealkkaGame(self.settings)
-			game.init_tags()
-			game.num_fields = 2
-
-			game.gametype="cealkka"
-
-			# If settings are changed, a new game is created
-			# Otherwise the game is created using the user input.
-			if "settings" in data:
-				print "new game \n"
-				game.new_game()				
-			else:
-				print "check game \n"
-				game.check_game(data)				
-				game.get_score(data)
-
-		# If there is no POST data, default settings are applied
-		else:
-			settings_form = CealkkaSettings()
-
-			self.settings['allsem']=settings_form.allsem
-			self.settings['allcase_context']=settings_form.allcase_context
-			self.settings['allvtype_context']=settings_form.allvtype_context
-			self.settings['allnum_context']=settings_form.allnum_context
-			self.settings['alladj_context']=settings_form.alladj_context
-
-			for k in settings_form.default_data.keys():
-				self.settings[k] = settings_form.default_data[k]
-
-			if request.session.has_key('dialect'):
-				self.settings['dialect'] = request.session['dialect']
-
-			if request.session.has_key('django_language'):
-				self.settings['language'] = request.session['django_language']
-			else:
-				self.settings['language'] = request.COOKIES.get("django_language", None)
-
-			# Cealkka
-			game = CealkkaGame(self.settings)
-			game.init_tags()
-			game.gametype="cealkka"
-			game.num_fields = 2
-
-			game.new_game()
-
-		all_correct = 0
-		if game.form_list[0].error == "correct":
-			all_correct = 1
-
-		c = Context({
-			'settingsform': settings_form,
-			'forms': game.form_list,
-			'messages': game.form_list[0].messages,
-			'count': game.count,
-			'comment': game.comment,
-			'all_correct': all_correct,
-			'gametype': "cealkka"
-			})
-		return c
 
 class Cealkkaview(Gameview):
 	""" View for Cealkka, main difference here is context.
 	"""
 
+	def __init__(self, settingsclass, gameclass):
+		self.SettingsClass = settingsclass
+		self.GameClass = gameclass
+
+		self.init_settings()
+	
 	def deeplink_keys(self, game, settings_form):
 		return ['lemmacount', 'level']
 
-	# No need for additional settings...? 
-	# def additional_settings(self, settings_form):
-	# 	self.settings['lemmacount'] = settings_form.lemmacount
+	def additional_settings(self, settings_form):
+		self.settings['gametype'] = "cealkka"
 
-	# Game name must be set for logs.
-	# def set_gamename(self):
-	# 	print self.settings.keys()
-	# 	pass
+	def change_game_settings(self, game):
+		# TODO: document this method, decorator to return game?
+		game.num_fields = 2
+		return game
+		
+	def set_gamename(self):
+		if 'gamename_key' not in self.settings:
+			self.settings['gamename_key'] = self.settings['gametype']
 	
 	def context(self, request, game, settings_form):
 
-		game.num_fields = 2
-
+		print "LIST COUNT: %d" % len(game.form_list)
 		c = Context({
 			'settingsform': settings_form,
 			'forms': game.form_list,
@@ -1004,7 +919,6 @@ def cealkka(request):
 
 	cealkkagame = Cealkkaview(CealkkaSettings, CealkkaGame)
 	cealkkagame.init_settings()
-	cealkkagame.settings['gametype'] = "cealkka"
 
 	c = cealkkagame.create_game(request)
 	return render_to_response('vasta.html', c, context_instance=RequestContext(request))
