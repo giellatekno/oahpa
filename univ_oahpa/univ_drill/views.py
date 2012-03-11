@@ -970,7 +970,7 @@ class Sahkaview(Cealkkaview):
 		self.set_gamename()
 
 		if is_new_game:
-			game.settings['dialogue'] = settings_form.data['dialogue']
+			game.settings['dialogue'] = settings_form.data.get('dialogue', '')
 			game.settings['topicnumber'] = 0
 			game.settings['wordlist'] = ""
 			game.num_fields = 1
