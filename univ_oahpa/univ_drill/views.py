@@ -285,6 +285,7 @@ class Leksaview(Gameview):
 		self.settings['gamename_key'] = "%s - %s" % (semtype, transtype)
 		
 	def context(self, request, game, settings_form):
+
 		return Context({
 			'settingsform': settings_form,
 			'settings' : self.settings,
@@ -862,7 +863,7 @@ def vasta(request):
 	c = vastagame.create_vastagame(request)
 	return render_to_response('vasta.html', c, context_instance=RequestContext(request))
 
-class Cealkkaview:
+class OldCealkkaview:
 
 	def init_settings(self):
 
@@ -963,14 +964,49 @@ class Cealkkaview:
 			})
 		return c
 
+class Cealkkaview(Gameview):
+	""" View for Cealkka, main difference here is context.
+	"""
 
+	def deeplink_keys(self, game, settings_form):
+		return ['lemmacount', 'level']
+
+	# No need for additional settings...? 
+	# def additional_settings(self, settings_form):
+	# 	self.settings['lemmacount'] = settings_form.lemmacount
+
+	# Game name must be set for logs.
+	# def set_gamename(self):
+	# 	print self.settings.keys()
+	# 	pass
+	
+	def context(self, request, game, settings_form):
+
+		game.num_fields = 2
+
+		c = Context({
+			'settingsform': settings_form,
+			'forms': game.form_list,
+			'messages': game.form_list[0].messages,
+			'count': game.count,
+			'comment': game.comment,
+			'all_correct': game.all_correct,
+			'show_correct': game.show_correct,
+			'gametype': "cealkka",
+			'deeplink': self.create_deeplink(game, settings_form),
+			})
+		return c
+
+
+
+@trackGrade("Cealkka")
 def cealkka(request):
 
-	cealkkagame = Cealkkaview()
+	cealkkagame = Cealkkaview(CealkkaSettings, CealkkaGame)
 	cealkkagame.init_settings()
 	cealkkagame.settings['gametype'] = "cealkka"
 
-	c = cealkkagame.create_cealkkagame(request)
+	c = cealkkagame.create_game(request)
 	return render_to_response('vasta.html', c, context_instance=RequestContext(request))
 
 class Sahkaview:
