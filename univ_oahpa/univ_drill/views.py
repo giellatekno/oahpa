@@ -873,24 +873,20 @@ def vasta(request):
 
 
 class Cealkkaview(Gameview):
-	""" View for Cealkka, main difference here is context.
+	""" View for Cealkka, main difference here is context, and cealkka requires
+	one form set.
 	"""
-
-	# TODO: no need, test on victorio?
-	# def __init__(self, settingsclass, gameclass):
-		# self.SettingsClass = settingsclass
-		# self.GameClass = gameclass
-
-		# self.init_settings()
 	
 	def deeplink_keys(self, game, settings_form):
 		return ['lemmacount', 'level']
 
 	def additional_settings(self, settings_form):
-		# TODO: anything more necessary?
 		self.settings['gametype'] = "cealkka"
 
 	def change_game_settings(self, game):
+		""" This is run before Game.new_game() is called.
+		"""
+
 		game.num_fields = 2
 		return game
 		
@@ -933,6 +929,13 @@ class Sahkaview(Cealkkaview):
 	
 	def deeplink_keys(self, game, settings_form):
 		return ['dialogue', 'topicnumber']
+
+	def set_gamename(self):
+		if 'gamename_key' not in self.settings:
+			game_name = ' - '.join([self.settings['gametype'],
+									self.settings['dialogue']])
+
+			self.settings['gamename_key'] = game_name
 	
 	def additional_settings(self, settings_form):
 		self.settings['gametype'] = 'sahka'
