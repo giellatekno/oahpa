@@ -54,12 +54,12 @@ class Feedback_install:
 			fmtext.save()
 
 	def insert_feedback(self,
-							pos,
-							stem,
-							rime,
-							soggi,
-							case,
-							number,
+							pos="",
+							stem="",
+							rime="",
+							soggi="",
+							case="",
+							number="",
 							gradation="",
 							diphthong="",
 							personnumber="",
@@ -89,7 +89,7 @@ class Feedback_install:
 			'mood': mood,
 			'grade': grade,
 			'attrsuffix': attrsuffix,
-			'wordclass': wordclass,
+			# 'wordclass': wordclass,
 		}
 		
 		try:
@@ -288,6 +288,11 @@ class Feedback_install:
 
 				f = Entry()
 
+				# TODO: are all of the default options that need to be here
+				# here?
+
+				# TODO: subclasses?
+
 				case = ""
 				number = ""
 				personnumber = ""
@@ -411,21 +416,28 @@ class Feedback_install:
 
 					prep_for_insert.add((pos,
 									stem,
+									gradation,
+									diphthong,
 									rime,
 									soggi,
+									grade,
 									case,
 									number,
-									'',
-									'',
-									'',
 									attributive,
-									grade,
 									attrsuffix,
-									''))
+									))
 				
-				keys = ('pos', 'stem', 'rime', 'soggi', 'case', 'number',
-					'personnumber', 'tense', 'mood', 'attributive', 'grade',
-					'attrsuffix', 'wordclass')
+				keys = ('pos',
+						'stem',
+						'gradation',
+						'diphthong',
+						'rime',
+						'soggi',
+						'grade',
+						'case',
+						'number',
+						'attributive',
+						'attrsuffix',)
 
 				# Iterate and insert 
 				count = 0
@@ -473,6 +485,10 @@ class Feedback_install:
 			# New attributes will also need to be added above.
 			
 			if f.pos in ["N", "Num"]:				
+				# TODO: check what the actual contents of f.stem, etc are,
+				# make sure that there are null options for all of these 
+				# (except for probably case and number are not possibly null)
+
 				def gen_prod():
 					products = product(
 						f.stem, 
@@ -510,23 +526,16 @@ class Feedback_install:
 								rime,
 								case,
 								number,
-								# empties
-								'', 
-								'', # added for sme
-								'', # added for sme
-								'',
-								'',
-								'',
-								'',
-								'',
-								'',
-								'',
 								))
 
-				keys = ('pos', 'stem', 'diphthong', 'gradation', 'soggi', 'rime', 
-					'case', 'number',
-					'personnumber', 'tense', 'mood', 'attributive', 'grade',
-					'attrsuffix', 'wordclass')
+				keys = ('pos',
+ 						'stem',
+ 						'diphthong',
+ 						'gradation',
+ 						'soggi',
+ 						'rime',
+						'case',
+ 						'number')
 
 				# Iterate and insert 
 				count = 0
@@ -560,7 +569,7 @@ class Feedback_install:
 			
 			if f.pos == "V":				
 				def gen_prod():
-					products = product(f.wordclass, 
+					products = product( 
 										f.stem, 
 										f.diphthong,
 										f.gradation, # added 
@@ -582,7 +591,7 @@ class Feedback_install:
 				prep_for_insert = set()
 				count = 0
 				for iteration in products:
-					wordclass, stem, diphthong, gradation, soggi, \
+					stem, diphthong, gradation, soggi, \
 					rime, personnumber, tense, mood = iteration
 
 					# Wordclass and stem are basically the same thing, 
@@ -594,38 +603,27 @@ class Feedback_install:
 					insert_kwargs = (
 						pos,
 						stem,
-						wordclass,
 						soggi,
+						diphthong,  # added for sme
+						gradation,  # added for sme
+						rime,
 						personnumber,
 						tense,
 						mood,
-						'',
-						'',
-						diphthong,  # added for sme
-						gradation,  # added for sme
-						'',
-						'',
-						'',
-						'',
 					)
 				
 					prep_for_insert.add(insert_kwargs)
 					
 				keys = ['pos',
 						'stem',
-						'wordclass',
 						'soggi',
+						'diphthong',  # added for sme
+						'gradation',  # added for sme
+						'rime',
 						'personnumber',
 						'tense',
 						'mood',
-						'attributive',
-						'rime',
-						'diphthong',  # added for sme
-						'gradation',  # added for sme
-						'case',
-						'number',
-						'grade',
-						'attrsuffix']
+						]
 
 				# Iterate and insert 
 				count = 0
