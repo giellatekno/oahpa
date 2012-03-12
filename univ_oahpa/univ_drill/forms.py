@@ -627,12 +627,18 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 				}
 		
 	"""
+	from operator import itemgetter
 	
 	# Dictionaries here contain mapping of attributes, and where the data is stored.
 
 	
 	# Word -> Feedback
 	# These should generally match up with attributes in <l /> in source data
+	if word.rime == '0':
+		rime = ''
+	else:
+		rime = word.rime
+	
 	word_attrs = {
 		'N': {
 			'pos': word.pos,
@@ -640,7 +646,7 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 			'stem': word.stem,
 			'diphthong': word.diphthong,
 			'gradation': word.gradation,
-			'rime': word.rime,
+			'rime': rime,
 		},
 		'V': {
 			'pos': word.pos,
@@ -649,7 +655,7 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 			'stem': word.stem,
 			'diphthong': word.diphthong,
 			'gradation': word.gradation,
-			'rime': word.rime,
+			'rime': rime,
 		},
 		'A': {
 			'wordclass': word.wordclass,
@@ -658,7 +664,7 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 			'diphthong': word.diphthong,
 			'gradation': word.gradation,
 			'attrsuffix': word.attrsuffix,
-			'rime': word.rime,
+			'rime': rime,
 		},
 	}
 	
@@ -704,6 +710,7 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 		# stem and wordclass are in complementary distribution
 		# when one is set the other is not. All 2syll verbs
 		# have class information, but all 3syll verbs do not.
+		# TODO: CSyll necessary here? 
 		
 		if FILTERS['stem'] == '3syll':
 			FILTERS.pop('wordclass')
@@ -749,9 +756,12 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 				messages = m.feedbacktext_set.filter(language=language)
 				if messages.count() > 0:
 					text = messages[0].message
+					order = messages[0].order
 					text = text.replace('WORDFORM', '"%s"' % wordform)
-					message_list.append(text)
+					message_list.append((order, text))
 	
+	# sort by order attribute, and then select only the message
+	message_list = [a[1] for a in sorted(message_list, key=itemgetter(0))]
 	self.feedback = ' \n '.join(list(message_list))
 	
 
@@ -1776,17 +1786,17 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     noanalysis=False
 
-    fstdir = "/opt/smi/sme/bin"
-    #fstdir = settings.FST_DIRECTORY
+    # fstdir = "/opt/smi/sme/bin"
+    fstdir = settings.FST_DIRECTORY
     #fst = fstdir + "/ped-sme.fst"
     #lo="/Users/mslm/bin/lookup" # on Heli's machine
     #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
-    lookup2cg = " | lookup2cg"
+    lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
     #preprocess = " | /Users/mslm/main/gt/script/preprocess "
-    dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    #dis_bin = "../sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
+    # dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
+    dis_bin = "../sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
         
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
     

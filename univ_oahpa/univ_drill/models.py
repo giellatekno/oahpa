@@ -645,10 +645,12 @@ class Feedbacktext(models.Model):
 	message = models.CharField(max_length=200)
 	language = models.CharField(max_length=6)
 	feedbackmsg = models.ForeignKey(Feedbackmsg)
+	order = models.CharField(max_length=3, blank=True)
 	
 	def __unicode__(self):
 		attrs = [
 				self.language,
+				self.order,
 				self.message, 
 			]
 		S = unicode('/'.join([a for a in attrs if a.strip()])).encode('utf-8')

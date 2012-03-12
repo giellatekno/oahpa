@@ -44,12 +44,14 @@ class Feedback_install:
 
 		for el in tree.getElementsByTagName("message"):
 			mid=el.getAttribute("id")
+			order = ""
+			order = el.getAttribute("order")
 			message = el.firstChild.data
 			print >> sys.stdout, message
 			fm, created = Feedbackmsg.objects.get_or_create(msgid=mid)
 			fm.save()
 
-			fmtext, created=Feedbacktext.objects.get_or_create(language=lang,feedbackmsg=fm)
+			fmtext, created=Feedbacktext.objects.get_or_create(language=lang,feedbackmsg=fm,order=order)
 			fmtext.message=message
 			fmtext.save()
 
