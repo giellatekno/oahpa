@@ -123,6 +123,9 @@ class Game(object):
 		if not self.settings.has_key('gametype'):
 			self.settings['gametype'] = "bare"
 		
+		if self.settings['gametype'] == "bare" and self.settings.has_key('pron_type') and self.settings['pron_type'] in ['Rel', 'Dem']:
+			self.num_fields = 4
+            
 		if self.settings.has_key('semtype'):
 			if self.settings['semtype'] in ('all','All'):  # upper- or lowercase
 				# self.settings['semtype'] = self.settings['allsem']
@@ -183,7 +186,7 @@ class Game(object):
 			# Do not generate same question twice
 			if word_id:
 				num = num + 1
-				if word_id in set(word_ids): # If there are less than 5 different lemmas to choose from then this causes a "No questions were able to be generated."
+				if word_id in set(word_ids): #and not (self.settings['gametype'] == "bare" and self.settings['pron_type'] in ['Rel','Dem']): # If there are less than 5 different lemmas to choose from then this causes a "No questions were able to be generated."
 					continue
 				else: word_ids.append(word_id)
 		

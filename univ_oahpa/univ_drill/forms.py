@@ -807,8 +807,8 @@ def select_words(self, qwords, awords):
 			if aword.has_key('qelement'):
 				qelem = aword['qelement']
 				if type(qelem) is not long:  # to exclude MorfaC 
-				    if qelem.task:
-				        selected_awords[syntax]['taskword'] = qelem.task   # words in VastaS where task="yes".	
+				    if qelem.task:  # words in VastaS answer frame where task="yes".
+				        selected_awords[syntax]['taskword'] = qelem.task   
 			if aword.has_key('word') and aword['word']:
 				selected_awords[syntax]['word'] = aword['word']
 			else:
@@ -2245,7 +2245,7 @@ class SahkaQuestion(OahpaQuestion):
 ###########
 ## Vasta-S (Cealkka)
 ###########
-def cealkka_is_correct(self,question,qwords,language,question_id=None):  #was: question_id=None
+def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  #was: question_id=None
     """
     Analyzes the answer and returns a message.
     """
@@ -2294,33 +2294,60 @@ def cealkka_is_correct(self,question,qwords,language,question_id=None):  #was: q
         print question_id
         #print words
         #print qwords
-        for qword in qwords:
+        for word in words:
             w=""
             cohort=""
-            print qword
+            print word
             # All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
-            w = force_unicode(qword['fullform']).encode('utf-8')
+            w = force_unicode(word).encode('utf-8')
             w=w.lstrip().rstrip()
             s.send(w) # on victorio
             cohort = s.recv(size)
             #word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
             #morfanal = os.popen(word_lookup).readlines()
             #for row in morfanal:
-             #   row = row.strip()
-              #  cohort = cohort + row + "\n" + "\t"
-            if not cohort or cohort == w:
-                cohort = w + "\n"
-            if cohort=="error":
-                raise Http500
-	    #print cohort
-	    analysis = analysis + cohort
-            #print analysis
-        if self.gametype=="cealkka":
-            analysis = analysis + "\"<^cealkka>\"\n\t\"^cealkka\" QDL " + question_id +"\n"
-        else:
-            analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
-
-        #print analysis
+             #   cohort = cohort + row
+	       #print cohort
+            analysis = analysis + cohort
+        print analysis
+        ### Lemmas and POS tags of task words are gathered into the variables 
+        ### tasklemmas and taskpos respectively. Tasklemmas and taskpos will be 
+        ### sent to CG together with the morph. analysed question and answer.
+        tasklemmas = ""
+        for aword in awords:
+            print aword
+            if aword.has_key('taskword') and aword['taskword']:
+                tlemma = aword['fullform']
+                tlemma = force_unicode(tlemma).encode('utf-8')
+                tlemma = tlemma.strip()
+                print tlemma
+                tasktag = Tag.objects.filter(id=aword['tag'])
+                tasktagstring = tasktag[0].string
+                taskpos = tasktag[0].pos
+                ttag = tasktagstring.replace("+"," ")
+                print ttag
+                s.send(tlemma)  # on vic
+                word_lookup = s.recv(size)
+                ans_cohort = ""
+                #word_lookup = "echo \"" + tlemma + "\"" + lookup + lookup2cg  # on Heli's machine
+                rows = os.popen(word_lookup).readlines()
+                #print rows
+                morfanal = ""
+                for row in rows:
+                    ans_cohort = ans_cohort + row
+                    malemmas = row.split("\"")
+                    malemma = malemmas[1]
+                    malemma_without_hash = malemma.replace('#','')
+                    if ttag in row and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
+                            print malemmas
+                            print malemma
+                            print malemma_without_hash
+                            tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
+                morfanal = morfanal + ans_cohort  # END
+                    
+        analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
+        #####
+        print analysis
         ans_cohort=""
         data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
         word = os.popen(data_lookup).readlines()
@@ -2334,10 +2361,9 @@ def cealkka_is_correct(self,question,qwords,language,question_id=None):  #was: q
             #word_lookup = "echo \"" + c + "\"" + lookup + lookup2cg  # on Heli's machine
             #morfanal = os.popen(word_lookup).readlines()
             #for row in morfanal:
-             #   row = row.strip()
-              #  ans_cohort = ans_cohort + row + "\n" + "\t"
-            #analyzed = analyzed + ans_cohort
-            analysis3=c + analyzed + c
+             #   ans_cohort = ans_cohort + row
+        #analyzed = analyzed + ans_cohort
+        analysis3=c + analyzed + c
 
     except socket.timeout:
         raise Http404("Technical error, please try again later.")            
@@ -2349,7 +2375,7 @@ def cealkka_is_correct(self,question,qwords,language,question_id=None):  #was: q
     analysis = analysis + "\"<.>\"\n\t\".\" CLB"
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
-    #print analysis
+    print analysis
     ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
     checked = os.popen(ped_cg3).readlines()
     #print checked
@@ -2577,7 +2603,7 @@ class CealkkaQuestion(OahpaQuestion):
         self.question=qstring
  	
         self.gametype="cealkka"
-        self.messages, jee, joo  = self.cealkka_is_correct(astring.encode('utf-8'), awords, language, question.qid)   # was qstring, qwords
+        self.messages, jee, joo  = self.cealkka_is_correct(qstring.encode('utf-8'), qwords, awords, language, question.qid)   # was astring, awords for VastaS before
         
         # set correct and error values
         if correct_val == "correct":
