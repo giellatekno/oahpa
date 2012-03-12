@@ -557,7 +557,25 @@ def set_settings(self):
 def get_feedback(self, word, tag, wordform, language, dialect):
 	"""
 		FEEDBACK AND XML-SOURCE
-		
+
+		Feedback message files have the following structure:
+
+			<?xml version="1.0" encoding="utf-8"?>
+			<messages xml:lang="fin"> 
+				<message order="A" id="case1">WORDFORM has ... </message>  
+				<message order="A" id="case2">WORDFORM has ... </message>  
+				<message order="A" id="case3">WORDFORM has ... </message>  
+				<message order="A" id="case4">WORDFORM has ... </message>  
+				<message order="B" id="number1"> and is in singular.</message>  
+				<message order="B" id="number2"> and is in plural.</message>  
+			</messages>
+
+		In this case the id attribute corresponds to the message id, and the
+		order attribute corresponds to the order that the message will appear
+		in in the user interface. Orders are specified with the letters A-Z,
+		and if an order is not specified, it is assumed that this message will
+		come first, before A.
+
 		Nouns: attributes required: pos, soggi, stem, case/case2, number
 
 			<l> nodes in messages.xml and n_smanob must match for
