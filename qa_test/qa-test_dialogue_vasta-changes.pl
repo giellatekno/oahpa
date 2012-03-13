@@ -3,6 +3,38 @@
 # however this is a special version only for vastas
 # Lene should decide upon using the same new structure for both vastas and rest
 # or whether not.
+# usage:
+#  perl qa-test_dialogue_vasta-changes.pl vasta_test.xml vastas
+# output in tmp_data.txt
+# for instance as 
+
+# "<Makkár>"
+#          "makkár" Pron Interr Sg Nom
+#          "makkár" Pron Interr Attr
+# "<juhkamuš>"
+#          "juhkamuš" N Sg Nom
+#          "juhkat" V* TV Der/muš N Sg Nom
+# "<mis>"
+#          "mun" Pron Pers Pl1 Loc
+# "<lea>"
+#          "leat" V IV Ind Prs Sg3
+# "<^vastas>"
+#          "^vastas" QDL 1_Loc_PrsSg3_Nom
+#          "gohppu" N
+#          "leat" V
+#          "deaja" N
+# "<Gohpus>"
+#          "gohppu" N Sg Loc
+#          "gohppu" N Sg Acc PxSg3
+#          "gohppu" N Sg Gen PxSg3
+# "<lea>"
+#          "leat" V IV Ind Prs Sg3
+# "<deadja>"
+#          "deadja" N CGErr Sg Gen
+#          "deadja" N Sg Nom
+#          "deadja" N CGErr Sg Acc
+# "<.>"
+#          "." CLB
 
 
 
