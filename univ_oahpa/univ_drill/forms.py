@@ -1961,10 +1961,11 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     found=False
     #Interface language    
     if not language: language = "nob"
-    if language == "no" : language = "nob"
-    if language == "fi" : language = "fin"
-    if language == "en" : language = "eng"
-    if not language=="nob" and not language=="sme" and not language=="fin" and not language=="eng": language="nob"
+    language = switch_language_code(language)
+    #if language == "no" : language = "nob"
+    #if language == "fi" : language = "fin"
+    #if language == "en" : language = "eng"
+    if not language in ["nob","sme","fin","eng","swe"]: language="nob"
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
@@ -2437,10 +2438,12 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     found=False
     #Interface language    
     if not language: language = "nob"
-    if language == "no" : language = "nob"
-    if language == "fi" : language = "fin"
-    if language == "en" : language = "eng"
-    if not language=="nob" and not language=="sme" and not language=="fin" and not language=="eng": language="nob"
+    language = switch_language_code(language)
+    #if language == "no" : language = "nob"
+    #if language == "fi" : language = "fin"
+    #if language == "en" : language = "eng"
+    if not language in ["nob","sme","fin","eng","swe"]: language="nob"
+
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
