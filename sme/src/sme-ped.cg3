@@ -5730,7 +5730,7 @@ MAP (&grm-missing-NumLoc) TARGET ("galle" Loc) IF (*1 QDL LINK NOT *1 (Num Loc) 
 MAP (&grm-missing-Ord) TARGET ("gallát") IF (*1 QDL LINK NOT *1 (A Ord) OR Neg BARRIER S-BOUNDARY);
 
 
-MAP (&grm-Px-shouldbe-Loc) TARGET (PxSg3) OR (CGErr)((*-1 QDL BARRIER Loc OR DOPPE LINK *-1 TARGETQUESTION-LOC) OR (*-1 QDL BARRIER Loc OR DOPPE LINK **-1 (N Loc) LINK -1 ("guhte"))) ;
+MAP (&grm-Px-shouldbe-Loc) TARGET (Nom PxSg3) OR (CGErr)((*-1 QDL BARRIER Loc OR DOPPE LINK *-1 TARGETQUESTION-LOC) OR (*-1 QDL BARRIER Loc OR DOPPE LINK **-1 (N Loc) LINK -1 ("guhte"))) ;
 
 
 MAP (&grm-missing-Loc) TARGET TARGETQUESTION-LOC IF (*1 QDL LINK NOT *1 Loc OR DOPPE OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gos") OR Loc);
