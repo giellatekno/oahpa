@@ -2279,7 +2279,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
                 
     qtext = question
     qtext = qtext.rstrip('.!?,')
-    
+
+    logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastas_log.txt', 'w')
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
@@ -2310,37 +2311,52 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
              #   cohort = cohort + row
 	       #print cohort
             analysis = analysis + cohort
-        print analysis
+
+        logfile.write(analysis+"\n")
+	print analysis
         ### Lemmas and POS tags of task words are gathered into the variables 
         ### tasklemmas and taskpos respectively. Tasklemmas and taskpos will be 
         ### sent to CG together with the morph. analysed question and answer.
         tasklemmas = ""
         for aword in awords:
             print aword
+	    #logfile.write(aword)
             if aword.has_key('taskword') and aword['taskword']:
                 tlemma = aword['fullform']
                 tlemma = force_unicode(tlemma).encode('utf-8')
                 tlemma = tlemma.strip()
                 print tlemma
+		logfile.write(tlemma+" ")
                 tasktag = Tag.objects.filter(id=aword['tag'])
                 tasktagstring = tasktag[0].string
                 taskpos = tasktag[0].pos
                 ttag = tasktagstring.replace("+"," ")
                 print ttag
+		logfile.write(ttag+"\n")
                 s.send(tlemma)  # on vic
-                word_lookup = s.recv(size)
+                word_lookup = s.recv(size)  # on vic
+		logfile.write(word_lookup)
                 ans_cohort = ""
                 #word_lookup = "echo \"" + tlemma + "\"" + lookup + lookup2cg  # on Heli's machine
-                rows = os.popen(word_lookup).readlines()
+                #rows = os.popen(word_lookup).readlines()
                 #print rows
+		rows = word_lookup.split("\n")
                 morfanal = ""
                 for row in rows:
                     ans_cohort = ans_cohort + row
+		    logfile.write(row + "\n")
                     malemmas = row.split("\"")
-                    malemma = malemmas[1]
+		    if row:
+			    malemma = malemmas[1]
                     malemma_without_hash = malemma.replace('#','')
-                    if ttag in row and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
+		    taglist = ttag.split()
+		    tag_match = 1
+		    for entag in taglist:
+			    if entag not in row:
+				    tag_match = 0
+                    if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
                             print malemmas
+			    logfile.write(malemma+"\n")
                             print malemma
                             print malemma_without_hash
                             tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
@@ -2349,6 +2365,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
         analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
         #####
         print analysis
+	logfile.write(analysis)
         ans_cohort=""
         data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
         word = os.popen(data_lookup).readlines()
@@ -2377,6 +2394,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
     print analysis
+    logfile.write(analysis)
     ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
     checked = os.popen(ped_cg3).readlines()
     #print checked
