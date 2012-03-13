@@ -5712,7 +5712,7 @@ LIST NUM-QUESTION = "galle" "gallis" "gallát" "gallii" ;
 LIST TARGETQUESTION-NOM = ("mii" Nom) ("gii" Nom) ("galle" Nom) ("gallis" N Nom) ;
 LIST TARGETQUESTION-ACC = ("mii" Acc) ("gii" Acc) ("galle" Acc) ("gallis" N Acc) ;
 LIST TARGETQUESTION-GEN = ("gii" Gen) ;
-LIST TARGETQUESTION-ILL = ("mii" Ill) ("gii" Ill) ("gallis" N Ill) ("gosa" Adv) ;
+LIST TARGETQUESTION-ILL = ("mii" Ill) ("gii" Ill) ("gallis" N Ill) ;
 LIST TARGETQUESTION-LOC = ("mii" Loc) ("gii" Loc) ("galle" Loc) ("gallis" N Loc) ("gos" Adv) ;
 LIST TARGETQUESTION-COM = ("mii" Com) ("gii" Com) ("galle" Com) ("gallis" N Com) ;
 LIST TARGETQUESTION-ESS = ("mii" Ess) ("manin" Adv) ("gii" Ess) ;
@@ -5738,6 +5738,8 @@ MAP (&grm-missing-Loc) TARGET ("guhte") IF (1 (N Loc) LINK *1 QDL LINK NOT *1 Lo
 
 MAP (&grm-error-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK *1C IllErr OR IllVErr BARRIER S-BOUNDARY OR DOHKO OR Ill)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
 MAP (&grm-error-Ill) TARGET ("guhte") IF (1 (N Ill) LINK *1 QDL LINK *1C IllErr OR IllVErr BARRIER S-BOUNDARY OR DOHKO OR Ill)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
+
+MAP (&grm-error-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH OR Ill LINK *-1 QDL)(0 IllVErr OR IllErr)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill)) ;
 
 
 MAP (&grm-error-Diph) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK *1C DiphErr BARRIER S-BOUNDARY OR DOHKO OR Ill)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
