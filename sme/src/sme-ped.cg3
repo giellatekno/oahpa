@@ -5373,6 +5373,7 @@ LIST V_PO = 1_PrsSg1_Dem_SgGen_Po ;
 LIST V_NUM_ACC = 1_PrtSg1_Num_Acc ;
 
 LIST NLOC = (N Loc) (Prop Loc) ;
+LIST V_HAB = 1_Loc_PrsSg3_Nom ;
 
 LIST NOUNLEMMA = (".*"r N) ;
 LIST ADJLEMMA = (".*"r A) ;
@@ -5396,8 +5397,8 @@ MAP (&sem-neg-verb) TARGET ("ii") (0 VASTAS LINK NOT *1 ("ii")) ;
 MAP (&sem-same-verb) TARGET $$VERBLEMMA (0 VASTAS LINK NOT *1 $$VERBLEMMA) ;
 MAP (&sem-same-pron) TARGET $$PRONLEMMA (0 VASTAS LINK NOT *1 $$PRONLEMMA) ;
 MAP (&sem-same-po) TARGET $$POLEMMA (0 VASTAS LINK NOT *1 $$POLEMMA) ;
-
-
+MAP (&grm-Hab-Nom) TARGET (N Acc)(NOT 0 Nom LINK *-1 COPULAS LINK *-1 Loc LINK *-1 V_HAB) ;
+MAP (&grm-missing-Loc) TARGET V_HAB (NOT *1 Loc) ; 
 
 LIST Der1 = Der/h Der/d ;
 
