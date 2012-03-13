@@ -1,5 +1,10 @@
 #!/opt/local/bin/perl -w
-# Perl script to test question-answers pairs for sahka and vasta
+# Perl script to test question-answers pairs for sahka and vasta,
+# however this is a special version only for vastas
+# Lene should decide upon using the same new structure for both vastas and rest
+# or whether not.
+
+
 
 use File::Spec;
 use XML::Twig;
