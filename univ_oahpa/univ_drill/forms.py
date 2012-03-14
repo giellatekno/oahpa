@@ -1799,8 +1799,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     noanalysis=False
 
-    # fstdir = "/opt/smi/sme/bin"
-    fstdir = settings.FST_DIRECTORY
+    fstdir = "/opt/smi/sme/bin"
+    #fstdir = settings.FST_DIRECTORY
     #fst = fstdir + "/ped-sme.fst"
     #lo="/Users/mslm/bin/lookup" # on Heli's machine
     #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
@@ -1808,8 +1808,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
     #preprocess = " | /Users/mslm/main/gt/script/preprocess "
-    # dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    dis_bin = "../sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
+    dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
+    #dis_bin = "../sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
         
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
     
