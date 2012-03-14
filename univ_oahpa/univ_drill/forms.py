@@ -725,15 +725,9 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 	
 	# Now make changes.
 	if POS == 'V':
-		# stem and wordclass are in complementary distribution
-		# when one is set the other is not. All 2syll verbs
-		# have class information, but all 3syll verbs do not.
-		# TODO: CSyll necessary here? 
-		
-		if FILTERS['stem'] == '3syll':
-			FILTERS.pop('wordclass')
-		elif FILTERS['stem'] == '2syll':
-			FILTERS.pop('stem')
+		FILTERS.pop('wordclass')
+		if FILTERS['diphthong'] not in ['', 'yes', 'no']:
+			FILTERS['diphthong'] = 'yes'
 	
 	if POS == 'A':
 		if 'grade' not in FILTERS:
@@ -765,6 +759,9 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 	
 	if FILTERS:
 		feedbacks = Feedback.objects.filter(**FILTERS)
+		# TODO: debug
+		print FILTERS
+		print feedbacks
 	
 	message_list = []
 	if feedbacks:
@@ -781,8 +778,6 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 	# sort by order attribute, and then select only the message
 	message_list = [a[1] for a in sorted(message_list, key=itemgetter(0))]
 	self.feedback = ' \n '.join(list(message_list))
-	
-
 def select_words(self, qwords, awords):
 	"""
 		Fetch words and tags from the database.
