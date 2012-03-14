@@ -661,9 +661,24 @@ from django.db import connection
 from django.db import transaction
 
 class BulkManager(models.Manager):
+	""" This Manager adds additional methods to Feedback.objects. That allows
+	for bulk inserting via custom SQL query (calling INSERT INTO on a list of
+	dictionaries), this is much faster than using the standard .create() if 
+	many objects need to be added.
+
+		.create() -> .bulk_inesrt()
+		.messages.add() -> .bulk_add_messages()
+		.dialects.add() -> .bulk_add_dialects()
+
+	
+	"""
 
 	@transaction.commit_manually
 	def bulk_insert(self, fields, objs):
+		""" Takes a list of fields and a list dictionaries of fields and values,
+		iterates and inserts. @transaction.commit_manually is active, and the 
+		transaction is committed after insert.
+		"""
 		qn = connection.ops.quote_name
 		cursor = connection.cursor()
 
@@ -676,6 +691,8 @@ class BulkManager(models.Manager):
 	
 	@transaction.commit_manually
 	def bulk_add_messages(self, objs):
+		""" Takes a list of IDs, (feedback_id, feedback_message_id) and inserts
+		these to the many-to-many table, committing on complete.  """
 		qn = connection.ops.quote_name
 		cursor = connection.cursor()
 
@@ -693,6 +710,8 @@ class BulkManager(models.Manager):
 		
 	@transaction.commit_manually
 	def bulk_add_dialects(self, objs):
+		""" Takes a list of IDs, (feedback_id, dialect_id) and inserts these to
+		the many-to-many table, committing on complete.  """
 		qn = connection.ops.quote_name
 		cursor = connection.cursor()
 
