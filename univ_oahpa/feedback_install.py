@@ -384,7 +384,7 @@ class Feedback_install:
 		prep_for_insert = set()
 		inverse_kwargs_to_message = {}
 
-		poses = ["N", "Num", "V", "Adj"]
+		poses = ["N", "Num", "V", "A"]
 		for f in messages:
 			if f.pos not in poses:
 				print "No POS match."
@@ -463,15 +463,6 @@ class Feedback_install:
 				# make sure that there are null options for all of these 
 				# (except for probably case and number are not possibly null)
 
-				print "Computing for ..." 
-				print f.stem
-				print f.diphthong
-				print f.gradation
-				print f.soggi
-				print f.rime
-				print f.case
-				print f.number
-
 				def gen_prod():
 					products = product(
 						f.stem, 
@@ -520,8 +511,7 @@ class Feedback_install:
 			
 			if f.pos == "V":				
 				def gen_prod():
-					products = product( 
-										f.stem, 
+					products = product( f.stem, 
 										f.diphthong,
 										f.gradation, # added 
 										f.soggi, 
@@ -571,6 +561,7 @@ class Feedback_install:
 					else:
 						inverse_kwargs_to_message[item] = [f]
 
+		# These are the field names for Feedback 
 		insert_keys = {
 			"A": ('pos',
 					'stem',
@@ -579,7 +570,7 @@ class Feedback_install:
 					'rime',
 					'soggi',
 					'grade',
-					'case',
+					'case2',
 					'number',
 					'attributive',
 					'attrsuffix',),
@@ -647,13 +638,7 @@ class Feedback_install:
 							dialects_cache[f.msgid] = [dial.id]
 
 		print 'Done preselecting messages and dialects.'
-
-
-		# Timing purposes
-		import datetime
-		sec = datetime.datetime.now()
-		secb = datetime.datetime.now()
-
+		
 		# Now that all of the arguments, dialects and messages are prepared,
 		# create all of the Feedback objects and add message and dialects
 		#
@@ -661,8 +646,7 @@ class Feedback_install:
 		# 
 		iteration_count = 0
 		total_iteration_count = len(inverse_kwargs_to_message.keys())
-
-
+		
 		def chunks(l, n):
 			""" Yield successive n-sized chunks from l.
 			"""
@@ -676,20 +660,28 @@ class Feedback_install:
 			kwarg_chunks = chunks(inverse_kwargs_to_message.keys(), 1000)
 			keys = insert_keys.get(inverse_kwargs_to_message.values()[0][0].pos)
 
+		# All of the Feedback objects are inserted, 1000 per commit
 		print >> sys.stdout, " * Bulk inserting... "
 		for chunk in kwarg_chunks:
-			zipped = [dict(zip(keys, a)) for a in chunk]
-			Feedback.objects.bulk_insert(keys, zipped)
+			feedback_kwargs_for_insert = [dict(zip(keys, values)) for values in chunk]
+			Feedback.objects.bulk_insert(keys, feedback_kwargs_for_insert)
 
 		def get_key_values(obj, ks):
+			" Fetch a list of keys from an object, return those keys "
 			vs = []
 			for k in ks:
 				vs.append(obj.__getattribute__(k))
 			return vs
 
 		total_feedbacks = Feedback.objects.count()
-		print 'Inserted: %d' % total_feedbacks
+		print 'Feedback object count: %d' % total_feedbacks
 
+		# Create a unique set of feedback IDs and message or dialect IDS
+		# for bulk insert, based on using inverse_kwargs_to_message, 
+		# and the object caches compiled above
+		# 
+		# First step, collect all the IDs.
+		# 
 		feedback_messages_mtm = set()
 		feedback_dialects_mtm = set()
 
@@ -713,28 +705,32 @@ class Feedback_install:
 						feedback_dialects_mtm.add(d)
 
 
-		message_chunks = chunks(list(feedback_messages_mtm), 500)
+		# Chunk message and feedback IDs and bulk-insert them.
+		# 
+		message_chunks = chunks(list(feedback_messages_mtm), 1000)
 		total_objs = len(list(feedback_messages_mtm))
 		prog = 0
 		print ' * Bulk inserting messages'
 		for chunk in message_chunks:
 			zipped = [dict(zip(keys, a)) for a in chunk]
 			Feedback.objects.bulk_add_messages(chunk)
-			prog += 500
+			prog += 1000
 			if prog%10000 == 0:
-				print '%d/%d dialect relations' % (prog, total_objs)
+				print '%d/%d Feedback-Message relations' % (prog, total_objs)
 
 
-		dialect_chunks = chunks(list(feedback_dialects_mtm), 500)
+		# Chunk dialect and feedback IDs and bulk-insert them.
+		# 
+		dialect_chunks = chunks(list(feedback_dialects_mtm), 1000)
 		total_objs = len(list(feedback_dialects_mtm))
 		prog = 0
 		print ' * Bulk inserting dialects'
 		for chunk in dialect_chunks:
 			zipped = [dict(zip(keys, a)) for a in chunk]
 			Feedback.objects.bulk_add_dialects(chunk)
-			prog += 500
+			prog += 1000
 			if prog%10000 == 0:
-				print '%d/%d dialect relations' % (prog, total_objs)
+				print '%d/%d Feedback-Dialect relations' % (prog, total_objs)
 
-
+		# Done!
 
