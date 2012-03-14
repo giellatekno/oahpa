@@ -734,24 +734,24 @@ class Feedback(models.Model):
 	# tag = models.ForeignKey(Tag)
 	
 	# Word morphology / classes
-	attrsuffix = models.CharField(max_length=10,null=True,blank=True)
+	attrsuffix = models.CharField(max_length=10,null=True,blank=True,db_index=True)
 	dialects = models.ManyToManyField(Dialect)
-	diphthong = models.CharField(max_length=5,blank=True,null=True)
-	gradation = models.CharField(max_length=15,null=True,blank=True)
-	rime = models.CharField(max_length=20,null=True,blank=True) # added
-	soggi = models.CharField(max_length=10,null=True,blank=True)
-	stem = models.CharField(max_length=20,blank=True,null=True)
-	wordclass = models.CharField(max_length=20,blank=True,null=True)
+	diphthong = models.CharField(max_length=5,blank=True,null=True,db_index=True)
+	gradation = models.CharField(max_length=15,null=True,blank=True,db_index=True)
+	rime = models.CharField(max_length=20,null=True,blank=True,db_index=True) # added
+	soggi = models.CharField(max_length=10,null=True,blank=True,db_index=True)
+	stem = models.CharField(max_length=20,blank=True,null=True,db_index=True)
+	wordclass = models.CharField(max_length=20,blank=True,null=True,db_index=True)
 
 	# Tag / inflection 
-	attributive = models.CharField(max_length=10,null=True,blank=True)
-	case2 = models.CharField(max_length=5,null=True,blank=True)
-	grade = models.CharField(max_length=10,null=True,blank=True)
-	mood = models.CharField(max_length=10,null=True,blank=True)
-	number = models.CharField(max_length=5,null=True,blank=True)
-	personnumber = models.CharField(max_length=6,null=True,blank=True)
-	pos = models.CharField(max_length=12,blank=True,null=True)
-	tense = models.CharField(max_length=6,null=True,blank=True)
+	attributive = models.CharField(max_length=10,null=True,blank=True,db_index=True)
+	case2 = models.CharField(max_length=5,null=True,blank=True,db_index=True)
+	grade = models.CharField(max_length=10,null=True,blank=True,db_index=True)
+	mood = models.CharField(max_length=10,null=True,blank=True,db_index=True)
+	number = models.CharField(max_length=5,null=True,blank=True,db_index=True)
+	personnumber = models.CharField(max_length=6,null=True,blank=True,db_index=True)
+	pos = models.CharField(max_length=12,blank=True,null=True,db_index=True)
+	tense = models.CharField(max_length=6,null=True,blank=True,db_index=True)
 
 	objects = BulkManager()
 
