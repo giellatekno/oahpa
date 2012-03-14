@@ -151,7 +151,7 @@
    <q level="1" lemmacount="3" id="1_PrsPl3_Neg_Ill">
     <qtype>PRS</qtype>
    <question>
-      <text>Maid mánát dadjet</text>
+      <text>Manne mánát váidalit</text>
     </question>
     <answer> 
       <text>Sii NEG VERB NOUN</text>
@@ -661,10 +661,27 @@
       </element>
     </answer>
   </q> 
+  <q level="2" lemmacount="2" id="3_PrsSg1_Dem_Ill">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Gosa manat dál</text>
+    </question>
+    <answer> 
+      <text>Mun VERB NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>mannat</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="BUILDING"/>
+      </element>
+    </answer>
+  </q> 
   <q level="1" lemmacount="2" id="1_PrsPl3_Loc">
     <qtype>PRS</qtype>
    <question>
-      <text>Gos min boares stuolut leat</text>
+      <text>Gos min boares stuolut leat dán áigge</text>
     </question>
     <answer> 
       <text>Stuolut VERB NOUN</text>
@@ -674,37 +691,37 @@
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
-        <id>lokta</id>
+        <sem class="BUILDING"/>
       </element>
     </answer>
   </q> 
   <q level="1" lemmacount="2" id="2_PrsPl3_Loc">
     <qtype>PRS</qtype>
    <question>
-      <text>Gos eatni stuolut leat</text>
+      <text>Gos eatni dávvirat leat</text>
     </question>
     <answer> 
-      <text>Stuolut VERB NOUN</text>
+      <text>Dávvirat VERB NOUN</text>
       <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <id>leat</id>
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
-        <id>oađđenlatnja</id>
+        <sem class="ROOM"/>
       </element>
     </answer>
   </q> 
   <q level="1" lemmacount="2" id="3_PrsPl3_Loc">
     <qtype>PRS</qtype>
    <question>
-      <text>Gos lihtit leat</text>
+      <text>Gosa bidjet dávviriid</text>
     </question>
     <answer> 
-      <text>Lihtit VERB NOUN</text>
+      <text>Mun VERB daid NOUN</text>
       <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
-        <id>leat</id>
+        <id>bidjat</id>
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
