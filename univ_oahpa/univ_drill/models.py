@@ -656,6 +656,58 @@ class Feedbacktext(models.Model):
 		S = unicode('/'.join([a for a in attrs if a.strip()])).encode('utf-8')
 		return self.language + u':' + self.message
 
+from django.db import models
+from django.db import connection
+from django.db import transaction
+
+class BulkManager(models.Manager):
+
+	@transaction.commit_manually
+	def bulk_insert(self, fields, objs):
+		qn = connection.ops.quote_name
+		cursor = connection.cursor()
+
+		flds = ', '.join([qn(f) for f in fields])
+		values_list = [ r[f] for r in objs for f in fields]
+		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(objs))		   
+		sql = "INSERT INTO %s (%s) VALUES %s" % (self.model._meta.db_table, flds, arg_string,)	     
+		cursor.execute(sql, values_list)
+		transaction.commit()
+	
+	@transaction.commit_manually
+	def bulk_add_messages(self, objs):
+		qn = connection.ops.quote_name
+		cursor = connection.cursor()
+
+		fields = ['feedback_id', 'feedbackmsg_id']
+
+		vals = [dict(zip(fields, a)) for a in objs]
+		flds = ', '.join([qn(f) for f in fields])
+		values_list = [ r[f] for r in vals for f in fields]
+
+		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
+		sql = "INSERT INTO %s (%s) VALUES %s" % ("univ_drill_feedback_messages", flds, arg_string,)
+
+		cursor.execute(sql, values_list)
+		transaction.commit()
+		
+	@transaction.commit_manually
+	def bulk_add_dialects(self, objs):
+		qn = connection.ops.quote_name
+		cursor = connection.cursor()
+
+		fields = ['feedback_id', 'dialect_id']
+
+		vals = [dict(zip(fields, a)) for a in objs]
+		flds = ', '.join([qn(f) for f in fields])
+		values_list = [ r[f] for r in vals for f in fields]
+
+		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
+		sql = "INSERT INTO %s (%s) VALUES %s" % ("univ_drill_feedback_dialects", flds, arg_string,)
+
+		cursor.execute(sql, values_list)
+		transaction.commit()
+
 # Should insert some indexes here, should improve search time since a lot of these have repeated values
 class Feedback(models.Model):
 	messages = models.ManyToManyField(Feedbackmsg)
@@ -681,6 +733,8 @@ class Feedback(models.Model):
 	personnumber = models.CharField(max_length=6,null=True,blank=True)
 	pos = models.CharField(max_length=12,blank=True,null=True)
 	tense = models.CharField(max_length=6,null=True,blank=True)
+
+	objects = BulkManager()
 
 	class Meta:
 		# Sma doesn't have "diphthong","gradation"

@@ -25,7 +25,6 @@ stem_convert = {
 	'': '', # contracted : Csyll ?
 }
 
-
 class Feedback_install:
 
 
@@ -116,7 +115,7 @@ class Feedback_install:
 		return feed
 
 	# NOTE: this silences some exceptions, so if something goes wrong, comment it out
-	@transaction.commit_manually
+	# @transaction.commit_manually
 	def read_feedback(self, infile, wordfile):
 		"""
 			There are some longer comments below on how to alter this code.
@@ -207,7 +206,7 @@ class Feedback_install:
 		tree = _dom.parse(infile)
 
 		fb = tree.getElementsByTagName("feedback")[0]
-		pos = fb.getAttribute("pos").upper()
+		pos = fb.getAttribute("pos").capitalize()
 		if pos:
 			print  >> sys.stdout,"Deleting old feedbacks for pos", pos
 			oldfs = Feedback.objects.filter(pos=pos).delete()			
@@ -292,6 +291,9 @@ class Feedback_install:
 					ftempl.rime = [ rime ]
 			if not rime: ftempl.rime = rimes.keys()
 
+			# Compile a message object, figuring out which morphosyntactic
+			# selections are relevant
+			# 
 			msgs = el.getElementsByTagName("msg")
 			for mel in msgs:
 
@@ -370,20 +372,33 @@ class Feedback_install:
 
 				messages.append(f)
 
+		# Here we run through all permutations of all of the cases, stem types,
+		# rimes, soggis, etc., and compile a dictionary of each unique
+		# permutation and the messages it is associated with:
+
+		# 	{
+		#		("stemtype", "strong", "uo-o", "etc..."): [<Feedback obj: g_and_as>, <Feedback obj: t_g>, etc...],
+		#		("stemtype", "weak", "x", "etc..."): [<Feedback obj: weak_grade>, <Feedback obj: t_g>, <Feedback obj: -iin-ending>, etc...],
+		#	}
+
 		prep_for_insert = set()
 		inverse_kwargs_to_message = {}
+
+		poses = ["N", "Num", "V", "Adj"]
 		for f in messages:
-			print >> sys.stdout, f.msgid + ': ' + u', '.join([a.value for a in f.attributes.values()])
-			# messages = Feedbackmsg.objects.filter(msgid=f.msgid)
-			# dialects = Dialect.objects.filter(dialect__in=f.dialects)
+			if f.pos not in poses:
+				print "No POS match."
+				sys.exit()
+			print >> sys.stdout, 'Calculating permutations for ' + f.msgid + ': ' + u', '.join([a.value for a in f.attributes.values()])
 			
-			# Beginning to refactor this code in a simpler way below
-			# Adjectives is untouched, but nominals and verbs are simplified.
-			# Once we begin importing adjectives, this will probably need tob e
-			# changed, as there are things being iterated here which are not a part
-			# of sma.
-			
-			# TODO: test the adjective part
+			# For each message and pos, we get all of the permutations for the
+			# relevant morphosyntactic categories run through them and see if
+			# there are relevante feedback messages, then collect these in the
+			# big dictionary object.
+			# 
+			# Permutations are first appended to a set to remove any potential
+			# duplicates.
+			# 
 			if f.pos == "A":
 				def gen_prod():
 					products = product(
@@ -402,7 +417,6 @@ class Feedback_install:
 					return products
 
 				total_iteration_count = len([a for a in gen_prod()])
-				# print 'Product: %d' % total_iteration_count
 
 				products = gen_prod()
 				
@@ -436,7 +450,7 @@ class Feedback_install:
 									attrsuffix,
 									))
 
-
+				# Assign to the big dictionary
 				for item in prep_for_insert:
 					if item in inverse_kwargs_to_message:
 						inverse_kwargs_to_message[item].append(f)
@@ -444,26 +458,19 @@ class Feedback_install:
 						inverse_kwargs_to_message[item] = [f]
 				
 			
-			#NEW_ATTRIBUTES
-			# The above was too complex and made troubleshooting difficult, so I simplified it. 
-			# Adjectives will take more work, but are possible-- just mind all of the if statements
-			# splitting things up between Attr and NoAttr and so on.
-			
-			# Eventually this code can be combined with verbs.
-			
-			# Here we iterate through all possible values of the items in product()
-			# and create Feedback items for each of them. Then, if messages match
-			# these attributes, they are added to the Feedback.
-			
-			# If new attributes need to be added, be sure to include them in products
-			# as well as pop them out of the iteration variable below ('here').
-			
-			# New attributes will also need to be added above.
-			
 			if f.pos in ["N", "Num"]:				
 				# TODO: check what the actual contents of f.stem, etc are,
 				# make sure that there are null options for all of these 
 				# (except for probably case and number are not possibly null)
+
+				print "Computing for ..." 
+				print f.stem
+				print f.diphthong
+				print f.gradation
+				print f.soggi
+				print f.rime
+				print f.case
+				print f.number
 
 				def gen_prod():
 					products = product(
@@ -583,7 +590,7 @@ class Feedback_install:
  					'gradation',
  					'soggi',
  					'rime',
-					'case',
+					'case2',
  					'number'),
 
 			"N": ('pos',
@@ -592,7 +599,7 @@ class Feedback_install:
  					'gradation',
  					'soggi',
  					'rime',
-					'case',
+					'case2',
  					'number'),
 
 			"V": ('pos',
@@ -607,12 +614,13 @@ class Feedback_install:
 					),
 		}
 
-
+		# Here we collect all of the dialect and message objects in a cache, to
+		# prevent the need for many successive database queries, the less, the
+		# better!
+		# 
 		dialects_cache = {}
 		messages_cache = {}
 
-		print len(inverse_kwargs_to_message.keys())
-		# raw_input()
 		count = 0
 		for kwargs, fs in inverse_kwargs_to_message.iteritems():
 			count += 1
@@ -638,54 +646,95 @@ class Feedback_install:
 						else:
 							dialects_cache[f.msgid] = [dial.id]
 
-				# print '\t' + repr(messages)
-				# print '\t' + repr(dialects)
 		print 'Done preselecting messages and dialects.'
-		# raw_input()
 
+
+		# Timing purposes
+		import datetime
+		sec = datetime.datetime.now()
+		secb = datetime.datetime.now()
+
+		# Now that all of the arguments, dialects and messages are prepared,
+		# create all of the Feedback objects and add message and dialects
+		#
+		# Some caching is necessary here, and performed in self.insert_feedback
+		# 
 		iteration_count = 0
 		total_iteration_count = len(inverse_kwargs_to_message.keys())
 
-		import datetime
-		sec = datetime.datetime.now()
 
-		secb = datetime.datetime.now()
-		# print >> sys.stderr, '# Line: %d | %d secs %s' % (line_number, abs((sec - secb).total_seconds()), note)
-		# sec = datetime.datetime.now()
-		for kwargs, fs in inverse_kwargs_to_message.iteritems():
+		def chunks(l, n):
+			""" Yield successive n-sized chunks from l.
+			"""
+			for i in xrange(0, len(l), n):
+				yield l[i:i+n]
+		
+		if len(inverse_kwargs_to_message.keys()) == 0:
+			print "No messages were compiled."
+			sys.exit()
+		else:
+			kwarg_chunks = chunks(inverse_kwargs_to_message.keys(), 1000)
+			keys = insert_keys.get(inverse_kwargs_to_message.values()[0][0].pos)
+
+		print >> sys.stdout, " * Bulk inserting... "
+		for chunk in kwarg_chunks:
+			zipped = [dict(zip(keys, a)) for a in chunk]
+			Feedback.objects.bulk_insert(keys, zipped)
+
+		def get_key_values(obj, ks):
+			vs = []
+			for k in ks:
+				vs.append(obj.__getattribute__(k))
+			return vs
+
+		total_feedbacks = Feedback.objects.count()
+		print 'Inserted: %d' % total_feedbacks
+
+		feedback_messages_mtm = set()
+		feedback_dialects_mtm = set()
+
+		print 'Collecting Messages and Dialects for Feedback'
+		for feedback in Feedback.objects.only(*keys).iterator():
+			vals = tuple(get_key_values(feedback, keys))
+			fs = inverse_kwargs_to_message.get(vals, False)
+			if not fs:
+				# print 'skipped %s' % repr(vals)
+				continue
 			for f in fs:
-				# print >> sys.stdout, f.msgid + ': ' + u', '.join([a.value for a in f.attributes.values()])
 				messages = messages_cache.get(f.msgid, False)
 				dialects = dialects_cache.get(f.msgid, False)
-
-				keys = insert_keys.get(f.pos)
-				insert_kwargs = dict(zip(keys, kwargs))
-				f2 = self.insert_feedback(**insert_kwargs)
-
 				if messages:
-					for msg in messages:
-						f2.messages.add(msg)
-				else:
-					print >> sys.stderr, "No messages found:", f.msgid
+					msgs = [(feedback.id, m) for m in messages]
+					for m in msgs:
+						feedback_messages_mtm.add(m)
+				if dialects:
+					dials = [(feedback.id, d) for d in dialects]
+					for d in dials:
+						feedback_dialects_mtm.add(d)
 
-				for dialect in dialects:
-					f2.dialects.add(dialect)
 
-				iteration_count += 1
-				if iteration_count%100 == 0:
-					secb = datetime.datetime.now()
-					time = abs((sec - secb).total_seconds())
-					sec = datetime.datetime.now()
-					print >> sys.stdout, '%d/%d permutations processed (%.3f secs).' % (iteration_count, total_iteration_count, time)
-					print >> sys.stdout, 'created %d feedbacks' % self.obj_count
-					print >> sys.stdout, 'fetched %d duplicates' % self.duplicate_count
-					print >> sys.stdout, '---\n'
-				# if self.obj_count%1000 == 0:
-					# print >> sys.stdout, " *** Commit *** "
-					# transaction.commit()
-			
-			# print >> sys.stdout, '%s  %d/%d' % (f.msgid, count, total_iteration_count)
-				# transaction.commit()
-			# transaction.commit()
-		transaction.commit()
+		message_chunks = chunks(list(feedback_messages_mtm), 500)
+		total_objs = len(list(feedback_messages_mtm))
+		prog = 0
+		print ' * Bulk inserting messages'
+		for chunk in message_chunks:
+			zipped = [dict(zip(keys, a)) for a in chunk]
+			Feedback.objects.bulk_add_messages(chunk)
+			prog += 500
+			if prog%10000 == 0:
+				print '%d/%d dialect relations' % (prog, total_objs)
+
+
+		dialect_chunks = chunks(list(feedback_dialects_mtm), 500)
+		total_objs = len(list(feedback_dialects_mtm))
+		prog = 0
+		print ' * Bulk inserting dialects'
+		for chunk in dialect_chunks:
+			zipped = [dict(zip(keys, a)) for a in chunk]
+			Feedback.objects.bulk_add_dialects(chunk)
+			prog += 500
+			if prog%10000 == 0:
+				print '%d/%d dialect relations' % (prog, total_objs)
+
+
 
