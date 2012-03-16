@@ -5407,6 +5407,7 @@ MAP (&grm-missing-Ess) TARGET ESS-ADVL-N (NOT 0 Ess LINK -1 VERB LINK *-1 QDL) ;
 MAP (&grm-missing-Ess) TARGET N (NOT 0 Ess LINK -1 Acc LINK -1 ACCESSV LINK *-1 QDL) ;
 MAP (&grm-missing-Ess) TARGET PROFESSION (NOT 0 Ess LINK -1 ("bargat") OR ("doaibmat") LINK *-1 QDL) ;
 
+
 # Sahka
 
 # The user wants to stop the dialogue
@@ -5600,6 +5601,8 @@ LIST STRICTILLV = "ásaiduvvat" "báitit" "čalmmástuvvat" "čiehkádit" "čohk
 
 LIST STRICTLOCV = "ávkkástallat" "ballat" "beasadit" "beroštit" "biehttalit" "bihtit" "ceavzit" "dolkat" "eastadallat" "eastadit" "fuollat" "geargat" "heaitit" "ilbmat" "luohpat" "nohkkot" "spiehkastit" ;
 
+LIST ACCILLV = "čállit" "muitalit" "jorgalit" ;
+
 
 LIST VALENCY-OBJ = N Pron Actio Inf ;
 
@@ -5621,6 +5624,11 @@ MAP (&grm-missing-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH OR Ill LI
 # Noun Ess only after an ESSV (other words can be between): 
 #MAP (&grm-should-not-Ess) TARGET (N Ess) (NOT *-1 ESSV OR ACCESSV BARRIER S-BOUNDARY) ; 
 # LINK *-1 QDL) ;
+
+MAP (&grm-missing-Loc) TARGET LANGUAGE (NOT 0 Loc LINK *-1 ("jorgalit") BARRIER LANGUAGE + Loc LINK *-1 QDL)(*1 LANGUAGE + Ill BARRIER VERB) ;
+MAP (&grm-missing-Ill) TARGET LANGUAGE (NOT 0 Ill OR Loc LINK *-1 ("jorgalit") LINK *-1 QDL)(NOT *1 LANGUAGE) ;
+MAP (&grm-missing-Ill) TARGET LANGUAGE (NOT 0 Ill LINK *-1 ACCILLV LINK NOT 0 ("jorgalit") LINK *-1 QDL) ;
+MAP (&grm-missing-Ill) TARGET LANGUAGE (NOT 0 Ill LINK *-1 LANGUAGE + Loc BARRIER VERB LINK *-1 ("jorgalit") BARRIER VERB LINK *-1 QDL)(NOT *1 LANGUAGE) ;
 
 
 
