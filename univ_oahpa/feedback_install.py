@@ -782,31 +782,36 @@ class Feedback_install:
 					for d in dials:
 						feedback_dialects_mtm.add(d)
 
+		_pos = inverse_kwargs_to_message.values()[0][0].pos
+		if _pos == 'A':
+			chunk_size = 10000
+		else:
+			chunk_size = 1000
 
 		# Chunk message and feedback IDs and bulk-insert them.
 		# 
-		message_chunks = chunks(list(feedback_messages_mtm), 1000)
+		message_chunks = chunks(list(feedback_messages_mtm), chunk_size)
 		total_objs = len(list(feedback_messages_mtm))
 		prog = 0
 		print ' * Bulk inserting messages'
 		for chunk in message_chunks:
 			zipped = [dict(zip(keys, a)) for a in chunk]
 			Feedback.objects.bulk_add_messages(chunk)
-			prog += 1000
+			prog += chunk_size
 			if prog%10000 == 0:
 				print '%d/%d Feedback-Message relations' % (prog, total_objs)
 
 
 		# Chunk dialect and feedback IDs and bulk-insert them.
 		# 
-		dialect_chunks = chunks(list(feedback_dialects_mtm), 1000)
+		dialect_chunks = chunks(list(feedback_dialects_mtm), chunk_size)
 		total_objs = len(list(feedback_dialects_mtm))
 		prog = 0
 		print ' * Bulk inserting dialects'
 		for chunk in dialect_chunks:
 			zipped = [dict(zip(keys, a)) for a in chunk]
 			Feedback.objects.bulk_add_dialects(chunk)
-			prog += 1000
+			prog += chunk_size
 			if prog%10000 == 0:
 				print '%d/%d Feedback-Dialect relations' % (prog, total_objs)
 

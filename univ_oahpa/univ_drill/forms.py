@@ -656,6 +656,22 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 		rime = ''
 	else:
 		rime = word.rime
+
+	# diphthong = word.diphthong
+	# if diphthong == '':
+		# diphthong = 'no'
+
+	# attrsuffix = word.attrsuffix
+	# if attrsuffix == '':
+		# attrsuffix = 'noattr'
+	
+	# gradation = word.gradation
+	# if gradation == '':
+		# gradation = 'no'
+
+	# grade = tag.grade
+	# if grade == '':
+		# grade = 'Pos'
 	
 	word_attrs = {
 		'N': {
@@ -676,13 +692,14 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 			'rime': rime,
 		},
 		'A': {
+			'pos': word.pos,
+			'soggi': word.soggi,
 			'wordclass': word.wordclass,
 			'stem': word.stem,
-			'pos': word.pos,
 			'diphthong': word.diphthong,
 			'gradation': word.gradation,
-			'attrsuffix': word.attrsuffix,
 			'rime': rime,
+			'attrsuffix': word.attrsuffix,
 		},
 	}
 	
@@ -702,7 +719,7 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 			'case2': tag.case,
 			'number': tag.number,
 			'attributive': tag.attributive,
-			'grade':tag.grade  # added by Heli
+			'grade': tag.grade  # added by Heli
 		}
 	}
 		
@@ -726,15 +743,30 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 	# Now make changes.
 	if POS == 'V':
 		FILTERS.pop('wordclass')
-		if FILTERS['diphthong'] not in ['', 'yes', 'no']:
-			FILTERS['diphthong'] = 'yes'
 	
 	if POS == 'A':
+		FILTERS.pop('wordclass')
+
 		if 'grade' not in FILTERS:
-			FILTERS['grade'] = 'POS' # was 'Pos'
+			FILTERS['grade'] = 'Pos'
+		else:
+			if FILTERS['grade'] == '':
+				FILTERS['grade'] = 'Pos'
+
+		# TODO: attrsuffix, 'NoAttr'
+		if 'attrsuffix' not in FILTERS:
+			FILTERS['attrsuffix'] = 'noattr'
+		else:
+			if FILTERS['attrsuffix'] == '':
+				FILTERS['attrsuffix'] = 'noattr'
 
 		if 'attributive' not in FILTERS:
 			FILTERS['attributive'] = 'NoAttr'
+		else:
+			if FILTERS['attributive'] == '':
+				FILTERS['attributive'] = 'NoAttr'
+
+			# FILTERS['attributive'] = 'NoAttr'
 
 	# Adopt this to new code.
 	# elif tag.pos == "A":
@@ -760,8 +792,8 @@ def get_feedback(self, word, tag, wordform, language, dialect):
 	if FILTERS:
 		feedbacks = Feedback.objects.filter(**FILTERS)
 		# TODO: debug
-		print FILTERS
-		print feedbacks
+		# print FILTERS
+		# print feedbacks
 	
 	message_list = []
 	if feedbacks:
