@@ -221,8 +221,10 @@ LIST Gen = Gen ;
 LIST Ill = Ill ;
 LIST IllErr = IllErr ;
 LIST IllVErr = IllVErr ;
+LIST ComVErr = ComVErr ;
 LIST CGErr = CGErr ;
 LIST DiphErr = DiphErr ;
+
 
 LIST Loc = Loc ;
 LIST Com = Com ;
@@ -2005,7 +2007,7 @@ SELECT:r1303 Adv IF (*-1 BOC BARRIER NOT-PCLE)(0 ADV-NOT-VERB LINK NOT 0 QDL);
 	# This is a Lule Sámi form.
 REMOVE:r853 ("Sámedigge") IF (0 ("Sámediggi"));
 
-SELECT:r855 Prop IF (NEGATE *-1 BOS OR (":") BARRIER WORD)(0 N LINK NOT 0 (Der/t) OR (Der/laš) OR QDL);
+#SELECT:r855 Prop IF (NEGATE *-1 BOS OR (":") BARRIER WORD)(0 N LINK NOT 0 (Der/t) OR (Der/laš) OR QDL);
 	## Son riegádii jagi 1943 Suoma bealde.
 
 	# The form "norga" is not in the dictionary...
@@ -2335,7 +2337,7 @@ SELECT:r612 ("guhtta") IF (0 ("guđđa"))(1 ("geardde") OR (N Loc)) ;
 	# - - - - - - - - - - - - - - - - 
 	# where we have two dictionary forms and in other than nominative get two analyses
 	
-LIST LEMMA1 = "agibeaivái" "álbmot" "álggahit" "árran" "biebmobázahusat" "beassáš" "boadnji" "boasttuvuohta" "boazoeamit" "boazolohku" "čoahkkin" "čuvla" "dálueamit" (".*diibmu"r) "eanaláigoboahtu" "Elle"
+LIST LEMMA1 = "agibeaivái" "álbmot" "álggahit" "árran" "biebmobázahusat" "beassáš" "boadnji" "boasttuvuohta" "boazoeamit" "boazolohku" "čoahkkin" "čuvla" "dálueamit" (".*diibmu"r) "eanaláigoboahtu"
 "gárrenoaivvis" "gávnnit" "gaskkamuddu" "goađeeamit" "heastabiergasat" (".*kruvdno"r) "guollebivdu" (".*gursa"r) "kaleandar" (".*keallir"r)
 "lihpar" ("[0-9]*-lohku"r) (".*millu"r) (".*mirko"r) "moattis" "moraš" (".*crossa"r) (".*muslima"r)
 "násti" ("*.násti"r) (".*neavva"r) "njealjádaskilomehter" "nuorttanásti" 
@@ -2343,7 +2345,7 @@ LIST LEMMA1 = "agibeaivái" "álbmot" "álggahit" "árran" "biebmobázahusat" "b
 (".*studeanta"r) (".*suoivva"r) "unnitlohku" (".*valuhtta"r) "vilbealli" ;
     # first dictionary form
 
-LIST LEMMA2 = ("agibeaivi" Ill) "álbmut" ("álgga" N* Der/heapmi) "ára" ("beassi" Der/Dimin) "biebmobázahus" "boadnjá" "boasttovuohta" "boazoeapmi" "boazoloahku" "čoahkki" "čuvlla" "dálueapmi" (".*diibmu"r) "eanaláigoboađđu" "Elli"
+LIST LEMMA2 = ("agibeaivi" Ill) "álbmut" ("álgga" N* Der/heapmi) "ára" ("beassi" Der/Dimin) "biebmobázahus" "boadnjá" "boasttovuohta" "boazoeapmi" "boazoloahku" "čoahkki" "čuvlla" "dálueapmi" (".*diibmu"r) "eanaláigoboađđu"
 "gárrenoaivi" "gávdni" "gaskkamuddo" "goađeeapmi" (".*kruvdnu"r) "guollebivddus" (".*gurse"r) "heastabierggas" "kaleanddar" (".*keallár"r)
 "libar" ("[0-9]*-loahku"r) ("[0-9]*-logus"r) (".*millo"r) (".*mirku"r) (".*mirkko"r) "moattes" "mora" (".*cross"r) (".*muslim"r)
 "náste" (".*náste"r) (".*neava"r) "njealjádaskilomehter" "nuorttanástá" 
@@ -5358,10 +5360,15 @@ SELECT $$NOUNLEMMA (0 N LINK *-1 VASTAS LINK 0 $$NOUNLEMMA) ;
 SELECT $$VERBLEMMA (0 VERB LINK *-1 VASTAS LINK 0 $$VERBLEMMA) ;
 SELECT $$ADJLEMMA (0 A LINK *-1 VASTAS LINK 0 $$ADJLEMMA) ;
 
-REMOVE DiphErr (0 Ill)  ;
-REMOVE IllErr (0 Ill)  ;
-REMOVE IllVErr (0 Ill)  ;
-REMOVE CGErr  ;
+LIST ILLERRORS = IllErr IllVErr (DiphErr Ill) ;
+SET ILL-NOT-ERRORS = Ill - ILLERRORS ;
+SET COM-NOT-ERRORS = Com - ComVErr ;
+SET NOUN-NOT-CG-ERRORS = N - CGErr ;
+
+REMOVE ILLERRORS + $$NOUNLEMMA (0 $$NOUNLEMMA + ILL-NOT-ERRORS) ;
+REMOVE ComVErr + $$NOUNLEMMA (0 $$NOUNLEMMA + COM-NOT-ERRORS) ;
+REMOVE CGErr + $$NOUNLEMMA (0 $$NOUNLEMMA + NOUN-NOT-CG-ERRORS) ;
+
 
 MAP (&sem-same-noun) TARGET $$NOUNLEMMA (0 VASTAS LINK NOT *1 $$NOUNLEMMA) ;
 MAP (&sem-same-adj) TARGET $$ADJLEMMA (0 VASTAS LINK NOT *1 $$ADJLEMMA) ;
