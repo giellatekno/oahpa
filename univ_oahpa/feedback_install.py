@@ -529,9 +529,9 @@ class Feedback_install(object):
 
 			lemma = el.getAttribute("lemma")
 			if not lemma.strip():
-				word_lemma = False
+				form_lemma = False
 			else:
-				word_lemma = lemma.strip()
+				form_lemma = lemma.strip()
 
 			for msg in msgs:
 				m = msg.firstChild.data
