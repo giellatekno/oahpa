@@ -126,7 +126,7 @@ various permutations of morphosyntactic features.
 """
 
 from settings import *
-from univ_drill.models import Feedback,Feedbackmsg,Feedbacktext,Dialect,Comment,Tag
+from univ_drill.models import Feedbackmsg,Feedbacktext,Dialect,Comment,Tag
 from xml.dom import minidom as _dom
 from django.db.models import Q
 import sys
@@ -134,23 +134,115 @@ import re
 import string
 import codecs
 
+from univ_drill.models import Form
+
 from django.db import transaction
 from itertools import product
 
-class Entry:
-	pass
+from collections import OrderedDict
 
-stem_convert = {
-	'2syll': '2syll',
-	'3syll': '3syll',
-	'bisyllabic': '2syll',
-	'trisyllabic': '3syll',
-	'contracted': 'Csyll',
-	'Csyll': 'Csyll',
-	'': '', # contracted : Csyll ?
-}
+def chunks(l, n):
+	""" Yield successive n-sized chunks from l.
+	"""
+	for i in xrange(0, len(l), n):
+		yield l[i:i+n]
 
-class Feedback_install:
+def get_attrs(item, attr_names):
+	""" For an object, get attributes from a list of attributes.
+	"""
+	vals = []
+	for attr in attr_names:
+		val = item.__getattribute__(attr)
+		if val:
+			vals.append(val)
+		else:
+			vals.append('')
+	return vals
+
+def render_kwargs(D):
+	lines = []
+	for k, vs in D.iteritems():
+		line = ' %s = %s ' % (k, ', '.join(vs))
+		lines.append(line)
+	
+	return '\n'.join(lines)
+
+def get_attrs_with_defaults(element, attr_list, defaults):
+	""" Collect attributes from an XML element node, if there is no
+	value, use a default value supplied from a defaults dictionary,
+	return an OrderedDict of the attr_list and values. """
+	vals = []
+	for attr in attr_list:
+		val = element.getAttribute(attr)
+
+		if not val:
+			val = defaults.get(attr)
+
+		if isinstance(val, list):
+			val = val
+		elif isinstance(val, set):
+			val = list(val)
+		else:
+			val = [val]
+		vals.append(val)
+			
+	return OrderedDict(zip(attr_list, vals))
+
+
+class Entry(object):
+
+	def __init__(self, word, tag):
+
+		self.word_kwargs = word
+		self.tag_kwargs = tag
+	
+	@property
+	def permutations(self):
+		from itertools import product
+
+		args = []
+		self.kwarg_ordering = []
+		for attr, arg in self.word_kwargs.iteritems():
+			self.kwarg_ordering.append(attr)
+			if isinstance(arg, list) or isinstance(arg, set):
+				args.append(list(arg))
+			else:
+				args.append([arg])
+
+		for attr, arg in self.tag_kwargs.iteritems():
+			self.kwarg_ordering.append(attr)
+			if isinstance(arg, list) or isinstance(arg, set):
+				args.append(list(arg))
+			else:
+				args.append([arg])
+		
+		
+		return product(*args)
+
+
+class Feedback_install(object):
+
+	# All dialects (except for NG and main)
+	dialects = ['KJ', 'GG']
+
+	# Each part of speech followed by relevant word/lemma attributes
+	word_attribute_names = OrderedDict([
+		("N", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
+		("A", ['stem', 'gradation', 'diphthong', 'rime', 'soggi', 'attrsuffix']),
+		("Num", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
+		("V", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
+	])
+
+	# Each part of speech followed by relevant tag/wordform attributes
+	tag_attribute_names = OrderedDict([
+		("N", ('case', 'number', )),
+		("A", ('case', 'number', 'grade', 'attributive', )),
+		("Num", ('case', 'number',)),
+		("V", ('personnumber', 'tense', 'mood',)),
+	])
+
+	# NOTE: processing of dialects and lemma exclusions is not something that
+	# is available here, see below for ideas for adding similar things
 
 
 	def __init__(self):
@@ -158,8 +250,18 @@ class Feedback_install:
 		self.paradigms = {}
 		self.obj_count = 0
 		self.duplicate_count = 0
-		self.dialects = ["KJ","GG"]
+		# self.dialects = ["KJ","GG"]
 		self.created_objects_cache = {}
+
+		self._file_pos = False
+		self._wordtree = False
+		self._word_elements = False
+		self._feedbacktree = False
+		self._feedback_elements = False
+		self._form_objects = False
+
+		self._lexicon_dialects = False # TODO: this
+		self._feedback_global_dialect = False # TODO: this
 
 	def read_messages(self,infile):
 
@@ -181,639 +283,393 @@ class Feedback_install:
 			fmtext.message=message
 			fmtext.save()
 
-	# NOTE: this silences some exceptions, so if something goes wrong, comment it out
-	# @transaction.commit_manually
-	def read_feedback(self, infile, wordfile):
+
+	@property
+	def feedbacktree(self):
+		if not self._feedbacktree:
+			self._feedbacktree = _dom.parse(self.feedbackfilename)
+		return self._feedbacktree
+
+	@property
+	def feedback_elements(self):
+		if not self._feedback_elements:
+			stems = self.feedbacktree.getElementsByTagName("stems")[0]
+			self._feedback_elements = stems.getElementsByTagName("l")
+		return self._feedback_elements
+	
+	@property
+	def wordtree(self):
+		if not self._wordtree:
+			self._wordtree = _dom.parse(self.wordfilename)
+		return self._wordtree
+
+	@property
+	def lexicon_word_elements(self):
+		if not self._word_elements:
+			self._word_elements = self.wordtree.getElementsByTagName("l")
+		return self._word_elements
+	
+	@property
+	def file_pos(self):
+		if not self._file_pos:
+			root = self.feedbacktree.getElementsByTagName("feedback")[0]
+			self._file_pos = root.getAttribute("pos").capitalize()
+		return self._file_pos
+	
+	@property
+	def feedback_global_dialect(self):
+		if not self._feedback_global_dialect:
+			root = self.feedbacktree.getElementsByTagName("feedback")[0]
+			self._feedback_global_dialect = root.getAttribute("dialect")
+		return self._feedback_global_dialect
+
+	@property
+	def form_objects(self):
+		if not self._form_objects:
+			self._form_objects = Form.objects.filter(tag__pos=self.file_pos)
+		return self._form_objects
+	
+	@property
+	def word_attr_names(self):
+		return self.word_attribute_names.get(self.file_pos)
+
+	@property
+	def tag_attr_names(self):
+		return self.tag_attribute_names.get(self.file_pos)
+	
+
+	def find_intersection(self):
+		""" Find the intersection of lexicon and feedback attribute values,
+		return intersection, but also print it """
+
+		def get_word_argument_and_lemma(el):
+			" For a lexicon word element, get all of the morphological attributes " 
+			vals = [el.getAttribute(attr) for attr in self.word_attr_names]
+			# attributes and lemma
+			return (OrderedDict(zip(self.word_attr_names, vals)), el.firstChild.data)
+
+		def get_word_argument(el):
+			return get_word_argument_and_lemma(el)[0]
+		
+		def get_tag_argument(attr_):
+			" For a Tag object, get all of the morphological attributes "
+			vals = list(set(Tag.objects.filter(pos=self.file_pos).values_list(attr_, flat=True)))
+			if vals[0] != '':
+				vals = sorted([''] + vals) # empty value necessary
+			else:
+				vals = sorted(vals)
+			# attributes and lemma
+			return (attr_, vals)
+
+		# Fetch all word attributes for all entries in the lexicon
+		word_attributes = map(get_word_argument_and_lemma, self.lexicon_word_elements)
+		
+		# Collate all the possible values in a dictionary
+		# {'rime': ['a', 'e', 'i', 'o', 'u', etc ... ], 
+		#  'soggi': ['a', 'b', 'c', etc ..]}
+		#
+		self.word_possible_values = OrderedDict([
+			(attr_name, list(set([''] + [word_attr.get(attr_name, None) for word_attr, lemma in word_attributes])))
+			for attr_name in self.word_attr_names
+		])
+
+		# Do the same for Tag objects.
+		# 
+		self.tag_possible_values = OrderedDict(map(get_tag_argument, self.tag_attr_names))
+
+		# Collect Feedback <l /> attributes
+		feedback_attributes = map(get_word_argument, self.feedback_elements)
+		self.feedback_possible_values = OrderedDict([
+			(attr_name, list(set([''] + [word_attr.get(attr_name, None) for word_attr in feedback_attributes])))
+			for attr_name in self.word_attr_names
+		])
+		
+		# TODO: msg attributes and Tag comparison
+
+		# Get the intersection of feedback word attributes and lexicon word
+		# attributes
+		# 
+		def diff(attribute):
+			return set(self.feedback_possible_values.get(attribute)) | \
+					set(self.word_possible_values.get(attribute))
+
+		self.attributes_intersection = OrderedDict([
+			(attr_name, diff(attr_name))
+			for attr_name in self.word_attr_names
+		])
+		
+		return self.attributes_intersection
+
+	def print_intersection(self):
+
+		def fmt_dict(D):
+			lines = []
+			for k, v in D.iteritems():
+				vs = ', '.join(sorted(v))
+				line = "        %s: %s" % (k, vs)
+				lines.append(line)
+			return '\n'.join(lines)
+
+		print >> sys.stdout, "\n  LEXICON"
+		print >> sys.stdout, "    Attributes in word file:"
+		print >> sys.stdout, fmt_dict(self.word_possible_values)
+
+		print >> sys.stdout, "    Tag attributes in lexicon for %s:" % self.file_pos 
+		print >> sys.stdout, fmt_dict(self.tag_possible_values)
+
+		print >> sys.stdout, "\n  FEEDBACK"
+		print >> sys.stdout, "    Attributes in feedback file:"
+		print >> sys.stdout, fmt_dict(self.feedback_possible_values)
+
+		print >> sys.stdout, "\n  COMPARISON"
+		print >> sys.stdout, "    Symmetric difference between lexicon and feedback:"
+
+		for attribute_name, lexicon_attribute_values in self.word_possible_values.iteritems():
+			fb_attr_vals = self.feedback_possible_values.get(attribute_name, False)
+			missing = []
+			if fb_attr_vals:
+				missing.extend(list(set(fb_attr_vals) ^ set(lexicon_attribute_values)))
+			print >> sys.stdout, "        %s: %s" % (attribute_name, ', '.join(missing))
+
+		print >> sys.stdout, '\n'
+
+
+	def read_feedback(self, feedbackfile, wordfile):
 		"""
-			There are some longer comments below on how to alter this code.
-			CTRL+F #NEW_ATTRIBUTES.
-			
-			General notes: changed 'empty' values to '', because this is completely
-			fine in the database. The part of the code that reset 'empty' to ''
-			was deleting some data, so it seems best to just set null from the beginning
-			and keep in mind that filtering with val='' is different than filtering without
-			val=''.
-			
+			TODO: update this.
 		"""
 
-		# from django.db import connection
-		print >> sys.stdout, infile
-		print >> sys.stdout, wordfile
+		self.feedbackfilename = feedbackfile
+		self.wordfilename = wordfile
 
-		wordfile=file(wordfile)
-		wordtree = _dom.parse(wordfile)
+		print >> sys.stdout, self.feedbackfilename
+		print >> sys.stdout, self.wordfilename
 
-		# Find out different values for variables.
-		# Others can be listed, but soggi is searched at the moment.
-		rimes={}
-		gradations={}
-		attrsuffixs={}
-		compsuffixs={}
-		soggis={}
-		for el in wordtree.getElementsByTagName("l"):
-			if el.getAttribute("rime"):
-				rime = el.getAttribute("rime")
-				if rime=="0": rime = ""
-				rimes[rime] = 1
-			if el.getAttribute("gradation"):
-				gradation = el.getAttribute("gradation")
-				gradations[gradation] = 1
-			if el.getAttribute("attrsuffix"):
-				attrsuffix = el.getAttribute("attrsuffix")
-				if attrsuffix=="0": attrsuffix = "noattr"
-				attrsuffixs[attrsuffix] = 1
-			if el.getAttribute("compsuffix"):
-				compsuffix = el.getAttribute("compsuffix")
-				if compsuffix=="0": compsuffix = "nocomp"
-				compsuffixs[compsuffix] = 1
-			if el.getAttribute("soggi"):
-				soggi = el.getAttribute("soggi")
-				soggis[soggi] = 1
+		print >> sys.stdout, " * Deleting existing feedbacks"
+		Form.objects.bulk_remove_form_messages(self.form_objects)
+
+		# Get intersection of elements and tags
+		self.attributes_intersection = self.find_intersection()
+		self.print_intersection()
+
+		# collect all form attributes to lessen size of permutation objects
+		def word_and_tag_keys(f):
+			return tuple(get_attrs(f.word, self.word_attr_names) + \
+							get_attrs(f.tag, self.tag_attr_names))
+
+		values = ['word__' + w_attr for w_attr in self.word_attr_names] + \
+					['tag__' + t_attr for t_attr in self.tag_attr_names] + \
+					['dialects__dialect', 'id', 'word__lemma', 'tag__string']
+
+		print >> sys.stdout, "Fetching wordform attributes."
 		
-		soggis[''] = 1
-		attrsuffixs["noattr"] = 1
-		compsuffixs[""] = 1
-		rimes[""] = 1
-		
-		#NEW_ATTRIBUTES
-		# More with this search tag below.
-		# New attributes should go here, with a list of all possible values.
-		# Later in the code, these will all be iterated through in a factorial style, 
-		# so note that adding things to these lists and the forloops further down
-		# may result in big changes.
-		
-		# TODO: fetch these from the database
-		# list(set(Tag.objects.filter(pos=pos).values_list('tense', flat=True)))
+		forms = self.form_objects.only(*values) # Get only the things we need.
+		total = forms.count()
+		form_keys = {}
 
-		diphthongs = ["yes","no"]
-		stems = ["3syll", "2syll", "Csyll"]
-		wordclasses = ['I', 'II', 'III', 'IV', 'V', 'VI']
-		grades = ["Comp","Superl","Pos"]
-		# Sma requires different cases
-		cases = ["Nom", "Acc", "Gen", "Ill", "Loc", "Com", "Ess"]
-		numbers = ["Sg","Pl"]
-		tenses = ["Prs","Prt"]
-		moods = ["Ind","Cond","Pot","Imprt"]
-		personnumbers = ["Sg1","Sg2","Sg3","Du1","Du2","Du3","Pl1","Pl2","Pl3"]
-		
-		messages = []
-		print >> sys.stdout, rimes.keys()
-		print >> sys.stdout, soggis.keys()
-		print >> sys.stdout, gradations.keys()
-		print >> sys.stdout, compsuffixs.keys()
-		print >> sys.stdout, attrsuffixs.keys()
-		print >> sys.stdout, wordclasses
-		print >> sys.stdout, grades
-		print >> sys.stdout, cases
-		print >> sys.stdout, numbers
-		print >> sys.stdout, personnumbers
-		
-		print >> sys.stdout, diphthongs
+		# .iterator() necessary because QuerySet is very large.
+		for f in forms.iterator():
+			total -= 1
+			w_keys = word_and_tag_keys(f)
 
-		
-		# Read the feedback file
-		xmlfile=file(infile)
-		tree = _dom.parse(infile)
+			dialects = [''] + [d.dialect for d in f.dialects.all() 
+						if d.dialect in self.dialects]
 
-		fb = tree.getElementsByTagName("feedback")[0]
-		pos = fb.getAttribute("pos").capitalize()
-		if pos:
-			print  >> sys.stdout,"Deleting old feedbacks for pos", pos
-			oldfs = Feedback.objects.filter(pos=pos).delete()			
-		stem_messages = {}
-		gradation_messages = {}
+			# TODO: global dialects
 
-		if pos=="V":
-			rimes[""] = 1
-			diphthongs.append("")
-		if pos=="Num":
-			rimes[""] = 1
-			diphthongs.append("")
+			w_vals = [f.id, f.word.lemma, f.tag.string, dialects]
 
-		# cursor = connection.cursor()						
+			if w_keys in form_keys:
+				form_keys[w_keys].append(w_vals)
+			else:
+				form_keys[w_keys] = [w_vals]
 
-		wordforms = tree.getElementsByTagName("stems")[0]
-		for el in wordforms.getElementsByTagName("l"):
-			feedback = None
-			stem =""
-			diphthong =""
-			rime =""
-			gradation=""
-			soggi =""
-			attrsuffix =""
-			wordclass = ""
+			if total%1000 == 0:
+				print "  Fetching wordform attributes: %d left" % total 
 
-			ftempl = Entry()
+		form_keys_key_set = set(form_keys.keys())
 
-			ftempl.pos = pos
-			ftempl.wordclass = ""
-
-			if el.getAttribute("stem"):
-				stem=el.getAttribute("stem")
-				print >> sys.stdout, 'stem found: %s' % repr(stem)
-				try:
-					stem = stem_convert[stem]
-				except:
-					print >> sys.stderr, "Unknown value: %s" % stem
-					sys.exit(2)
-				
-				if stem: ftempl.stem = [ stem ]
-			if not stem:  ftempl.stem = stems
+		# Here we check through all of the feedback elements and figure out
+		# whether:
+		#
+		# 	(a) the permutation of attributes is attested in the lexicon, if
+		# 	    not, skip
+		#	(b) dialects (if available) in each <msg /> element match up with
+		#	    the words in the lexicon that match up with the other
+		#	    attributes
+		#   (c) if a lemma is specified in <l />, then a similar pattern is
+		#       used to dialect filtering to remove words not matching the
+		#       lemma.
+		# 
+		# Feedback attribute permutations are defined as such: 
+		# 
+		# Each feedback <l /> has some attributes which correspond to
+		# attributes of Word objects, and <msg /> elements if they exist have
+		# attributes which correspond to attributes of Form objects. For either
+		# of these sets of possible attributes, some are not defined, and these
+		# can be anything: e.g., if tense is defined as Prs, then tense
+		# permutations will only include Prs, if it is undefined, it could
+		# include Prs Prt, etc. Those attributes which are not defined instead
+		# take their values from the set of possible values in the lexicon.
+		#
+		# In order to match Feedback elements to Form objects, the product of
+		# all of these potential feedback values must be generated, which is
+		# more or less depending on which attributes have and have not been
+		# defined. Each permutation is then associated with a message id
+		# (n-suffix, etc.)
+		# 
+		print >> sys.stdout, "Compiling word/tag attribute permutations and msg names"
+		attrs_and_messages = {}
+		for el in self.feedback_elements:
+			kwargs = get_attrs_with_defaults(el, 
+											self.word_attr_names, 
+											self.attributes_intersection)
 			
-			if el.getAttribute("class"):
-				wordclass=el.getAttribute("class")
-				print >> sys.stdout, 'class found: %s' % repr(wordclass)
-				if wordclass: ftempl.wordclass = [ wordclass ]
-			if not wordclass:  ftempl.wordclass = wordclasses
-			
-			# Complementary distribution of stem and wordclass
-			if pos == 'V':  # NB! HERE ARE SOME CHANGES NEEDED FOR sme
-				if stem == '3syll':
-					ftempl.wordclass = ['']
-				elif wordclass:
-					ftempl.stem = [ '2syll' ]
-			# print 'wc: ' + repr(ftempl.wordclass)
-			# print 'st: ' + repr(ftempl.stem)
-			if el.getAttribute("gradation"):
-				gradation=el.getAttribute("gradation")
-				if gradation: ftempl.gradation = [ gradation ]
-			if not gradation: ftempl.gradation = gradations.keys()
-				
-			if el.getAttribute("diphthong"):
-				diphthong=el.getAttribute("diphthong")
-				if diphthong: ftempl.diphthong = [ diphthong ]
-			if not diphthong: ftempl.diphthong = diphthongs
-
-			if el.getAttribute("soggi"):
-				soggi=el.getAttribute("soggi")
-				if soggi: ftempl.soggi = [ soggi ]
-			if not soggi: ftempl.soggi = soggis.keys()
-
-			if el.getAttribute("attrsuffix"):
-				attrsuffix=el.getAttribute("attrsuffix")
-				if attrsuffix: ftempl.attrsuffix = [ attrsuffix ]
-			if not attrsuffix: ftempl.attrsuffix = attrsuffixs.keys()
-
-			if el.getAttribute("rime"):
-				rime=el.getAttribute("rime")
-				if rime:
-					if rime=="0": rime = ""
-					ftempl.rime = [ rime ]
-			if not rime: ftempl.rime = rimes.keys()
-
-			# Compile a message object, figuring out which morphosyntactic
-			# selections are relevant
-			# 
 			msgs = el.getElementsByTagName("msg")
-			for mel in msgs:
 
-				f = Entry()
+			lemma = el.getAttribute("lemma")
+			if not lemma.strip():
+				word_lemma = False
+			else:
+				word_lemma = lemma.strip()
 
-				# TODO: are all of the default options that need to be here
-				# here?
+			for msg in msgs:
+				m = msg.firstChild.data
+				tagkwargs = get_attrs_with_defaults(msg, 
+													self.tag_attr_names, 
+													self.tag_possible_values)
 
-				# TODO: subclasses?
+				# TODO: global dialects
+				dial = msg.getAttribute("dialect")
 
-				case = ""
-				number = ""
-				personnumber = ""
-				tense = ""
-				mood = ""
-				grade = ""
-				attributive = ""
-
-				#NEW_ATTRIBUTES
-				# (Leave comment for documentation)
-				f.pos = ftempl.pos[:]
-				f.stem = ftempl.stem[:]
-				f.wordclass = ftempl.wordclass[:]
-				f.gradation = ftempl.gradation[:]
-				f.diphthong = ftempl.diphthong[:]
-				f.soggi = ftempl.soggi[:]
-				f.rime = ftempl.rime[:]
-				f.attrsuffix = ftempl.attrsuffix[:]
-				f.attributes = el.attributes
-				f.dialects = self.dialects[:]
-				
-				msgid = mel.firstChild.data
-				#print "Message id", msgid
-				f.msgid = msgid
-
-				if el.getAttribute("attribute"):
-					attributive=el.getAttribute("attribute")
-					if attributive: f.attributive = [ 'Attr' ]
-				else: f.attributive = ['Attr', 'NoAttr']
-				
-				if mel.getAttribute("case"):
-					case=mel.getAttribute("case")
-					if case: f.case = [ case ]
-					# Since noattr is not marked, case entails noattr.
-					f.attributive = [ 'NoAttr' ]
-				if not case: f.case = cases
-
-				if mel.getAttribute("number"):
-					number=mel.getAttribute("number")
-					if number: f.number = [ number ]
-				if not number: f.number = numbers
-
-				if mel.getAttribute("personnumber"):
-					personnumber=mel.getAttribute("personnumber")
-					if personnumber: f.personnumber = [ personnumber ]
-				if not personnumber: f.personnumber = personnumbers
-
-				if mel.getAttribute("tense"):
-					tense=mel.getAttribute("tense")
-					if tense: f.tense = [ tense ]
-				if not tense: f.tense = tenses
-
-				if mel.getAttribute("mood"):
-					mood=mel.getAttribute("mood")
-					if mood: f.mood = [ mood ]
-				if not mood: f.mood = moods
-
-				if mel.getAttribute("grade"):
-					grade=mel.getAttribute("grade")
-					if grade: f.grade = [ grade ]
-				if not grade: f.grade = grades
-
-				if mel.getAttribute("dialect"):
-					dialect=mel.getAttribute("dialect")
-					if dialect:
-						invd=dialect.lstrip("NOT-")
-						f.dialects.remove(invd)
-
-				messages.append(f)
-
-		# Here we run through all permutations of all of the cases, stem types,
-		# rimes, soggis, etc., and compile a dictionary of each unique
-		# permutation and the messages it is associated with:
-
-		# 	{
-		#		("stemtype", "strong", "uo-o", "etc..."): [<Feedback obj: g_and_as>, <Feedback obj: t_g>, etc...],
-		#		("stemtype", "weak", "x", "etc..."): [<Feedback obj: weak_grade>, <Feedback obj: t_g>, <Feedback obj: -iin-ending>, etc...],
-		#	}
-
-		prep_for_insert = set()
-		inverse_kwargs_to_message = {}
-
-		poses = ["N", "Num", "V", "A"]
-		for f in messages:
-			if f.pos not in poses:
-				print "No POS match."
-				sys.exit()
-			print >> sys.stdout, 'Calculating permutations for ' + f.msgid + ': ' + u', '.join([a.value for a in f.attributes.values()])
-			
-			# For each message and pos, we get all of the permutations for the
-			# relevant morphosyntactic categories run through them and see if
-			# there are relevante feedback messages, then collect these in the
-			# big dictionary object.
-			# 
-			# Permutations are first appended to a set to remove any potential
-			# duplicates.
-			# 
-			# If you are adding new attributes, there are several places
-			# immediately below to do so (#NEW_ATTRIBUTES)
-			if f.pos == "A":
-				def gen_prod():
-					products = product(
-						list(set(f.stem)),
-						list(set(f.gradation)),
-						list(set(f.diphthong)),
-						list(set(f.rime)),
-						list(set(f.soggi)),
-						list(set(f.grade)),
-						list(set(f.case)),
-						list(set(f.number)),
-						list(set(f.attributive)),
-						list(set(f.attrsuffix)),
-					)
-
-					return products
-
-				total_iteration_count = len([a for a in gen_prod()])
-
-				products = gen_prod()
-				
-				# Create set of all arguments to insert, iteration will
-				# remove all of the redundant ones.
-				prep_for_insert = set()
-				for iteration in products:
-					stem, gradation, diphthong, rime, soggi, grade, \
-					case, number, attributive, attrsuffix = iteration
-
-					if attributive == 'Attr':
-				 		# Attributive forms: no case inflection.
-						case = ""
-						number = ""												
+				if dial and not self.feedback_global_dialect:
+					if dial.startswith('NOT-'):
+						# Get all other dialects 
+						feedback_dialects = [
+							d 
+							for d in self.dialects 
+							if d != dial.replace('NOT-', '')
+						]
 					else:
-						attributive = 'NoAttr'
-						if case == "Ess":
-							number = ""
+						feedback_dialects = [dial]
+				else:
+					feedback_dialects = False
 
-					prep_for_insert.add((
-									pos,
-									stem,
-									gradation,
-									diphthong,
-									rime,
-									soggi,
-									grade,
-									case,
-									number,
-									attributive,
-									attrsuffix,
-									))
+				if self.feedback_global_dialect:
+					feedback_dialects = [self.feedback_global_dialect]
 
-				# Assign to the big dictionary
-				for item in prep_for_insert:
-					if item in inverse_kwargs_to_message:
-						inverse_kwargs_to_message[item].append(f)
+				print >> sys.stderr, render_kwargs(kwargs)
+				print >> sys.stderr, render_kwargs(tagkwargs)
+
+				param_set = set()
+				for perm in Entry(kwargs, tagkwargs).permutations:
+					param_set.add(tuple(perm))
+
+				# Set intersections work much faster, rather than iterating and
+				# doing a series of if statements.
+				intersection = form_keys_key_set & param_set
+				for item in intersection:
+					if lemma:
+						form_keys[item] = [
+							[a, word_lemma, c, d]
+							for a, b, c, d in form_keys[item][:]
+							if word_lemma == form_lemma
+						]
+
+					if dial:
+						# Filter out entries not matching the dialect, these
+						# will not be inserted later.
+						form_keys[item] = [
+							[a, b, c, d] 
+							for a, b, c, d in form_keys[item][:]
+							if len(set(d) & set(feedback_dialects)) > 0
+						]
+
+					# Then for a set of attributes, append the message id
+					if item in attrs_and_messages:
+						attrs_and_messages[item].append(m)
 					else:
-						inverse_kwargs_to_message[item] = [f]
-				
-			
-			if f.pos in ["N", "Num"]:				
-				# TODO: check what the actual contents of f.stem, etc are,
-				# make sure that there are null options for all of these 
-				# (except for probably case and number are not possibly null)
+						attrs_and_messages[item] = [m]
 
-				def gen_prod():
-					products = product(
-						f.stem, 
-						f.diphthong, 
-						f.gradation, 
-						f.soggi, 
-						f.rime, 
-						f.case, 
-						f.number,
-						)
-
-					return products
-					# include gradation, diphthong, rime also ?
-				total_iteration_count = len([a for a in gen_prod()])
-				# print 'Product: %d' % total_iteration_count
-
-				products = gen_prod()
-				
-				
-				prep_for_insert = set()
-				count = 0
-				for iteration in products:
-					stem, diphthong, gradation, soggi, rime, \
-					case, number = iteration # Here
-					
-					if case == "Ess":
-						number = ""
-					
-					prep_for_insert.add((
-								pos,
-								stem,
-								diphthong,
-								gradation,
-								soggi,
-								rime,
-								case,
-								number,
-								))
+				# Delete just incase.
+				del param_set
+				print "identified %d\n" % len(intersection)
 
 
-				for item in prep_for_insert:
-					if item in inverse_kwargs_to_message:
-						inverse_kwargs_to_message[item].append(f)
-					else:
-						inverse_kwargs_to_message[item] = [f]
-			
-			if f.pos == "V":				
-				def gen_prod():
-					products = product( f.stem, 
-										f.diphthong,
-										f.gradation, # added 
-										f.soggi, 
-										f.rime, 
-										f.personnumber, 
-										f.tense, 
-										f.mood)
-					
-					return products
+		# TODO: store words with no matches somewhere=
 
-				total_iteration_count = len([a for a in gen_prod()])
-				# print 'Product: %d' % total_iteration_count
+		# Prefetch all feedback ids and msgids: {'bisyllabic_stem': 4, etc ...}
+		feedbackmsg_ids = dict([(msg.msgid, msg.id) 
+								for msg in Feedbackmsg.objects.iterator()])
 
-				products = gen_prod()
-				
-				
-				prep_for_insert = set()
-				count = 0
-				for iteration in products:
-					stem, diphthong, gradation, soggi, \
-					rime, personnumber, tense, mood = iteration
+		# values = ['word__' + w_attr for w_attr in self.word_attr_names] + \
+					# ['tag__' + t_attr for t_attr in self.tag_attr_names] + \
+					# ['id', 'fullform', 'tag__string', 'word__lemma']
 
-					# Wordclass and stem are basically the same thing, 
-					# if one is set, the other is not. Complementary distribution.
-					# Leaving '2syll' in because it makes filtering later easier.
-					if stem == '3syll':
-						wordclass = ''
-						
-					insert_kwargs = (
-						pos,
-						stem,
-						soggi,
-						diphthong,  # added for sme
-						gradation,  # added for sme
-						rime,
-						personnumber,
-						tense,
-						mood,
-					)
-				
-					prep_for_insert.add(insert_kwargs)
+		# Get only the things we need.
+		# forms = self.form_objects.only(*values)
+		total_forms = self.form_objects.count()
+
+		print len(attrs_and_messages.keys())
+		print >> sys.stdout, "Collecting form and msg ids for %d forms..." % total_forms
+
+		# def form_key(f):
+			# return tuple(get_attrs(f.word, self.word_attr_names) + \
+							# get_attrs(f.tag, self.tag_attr_names))
 
 
-				for item in prep_for_insert:
-					if item in inverse_kwargs_to_message:
-						inverse_kwargs_to_message[item].append(f)
-					else:
-						inverse_kwargs_to_message[item] = [f]
-
-		# These are the field names for Feedback 
-		#
-		# If you are adding new morphosyntactic attributes, this is one of the
-		# places to do it (#NEW_ATTRIBUTES). There should be no need to edit
-		# the code following this dictionary for processing bulk inserts, only
-		# unless you are adding a new related model, or removing them.
-
-		insert_keys = {
-			"A": ('pos',
-					'stem',
-					'gradation',
-					'diphthong',
-					'rime',
-					'soggi',
-					'grade',
-					'case2',
-					'number',
-					'attributive',
-					'attrsuffix',),
-
-			"Num": ('pos',
- 					'stem',
- 					'diphthong',
- 					'gradation',
- 					'soggi',
- 					'rime',
-					'case2',
- 					'number'),
-
-			"N": ('pos',
- 					'stem',
- 					'diphthong',
- 					'gradation',
- 					'soggi',
- 					'rime',
-					'case2',
- 					'number'),
-
-			"V": ('pos',
-					'stem',
-					'soggi',
-					'diphthong',  # added for sme
-					'gradation',  # added for sme
-					'rime',
-					'personnumber',
-					'tense',
-					'mood',
-					),
-		}
-
-		# Here we collect all of the dialect and message objects in a cache, to
-		# prevent the need for many successive database queries, the less, the
-		# better!
+		# Now we iterate through the prefetched form attributes and form IDs,
+		# etc., and collect the message ids (n-suffix, t-suffix, etc.) for each
+		# set of form attributes. Some of this does not really need to be here,
+		# but is left for debugging purposes, so it is easy to run through the
+		# attribute sets that have made it through previous iterations.
 		# 
-		dialects_cache = {}
-		messages_cache = {}
-
-		count = 0
-		for kwargs, fs in inverse_kwargs_to_message.iteritems():
-			count += 1
-			# print kwargs
-			for f in fs:
-				if f.msgid in dialects_cache:
-					messages = dialects_cache[f.msgid]
-				else:
-					messages = Feedbackmsg.objects.filter(msgid=f.msgid)
-					for msg in messages:
-						if f.msgid in messages_cache:
-							messages_cache[f.msgid].append(msg.id)
-						else:
-							messages_cache[f.msgid] = [msg.id]
-
-				if f.msgid in dialects_cache:
-					dialects = dialects_cache[f.msgid]
-				else:
-					dialects = Dialect.objects.filter(dialect__in=f.dialects)
-					for dial in dialects:
-						if f.msgid in dialects_cache:
-							dialects_cache[f.msgid].append(dial.id)
-						else:
-							dialects_cache[f.msgid] = [dial.id]
-
-		print 'Done preselecting messages and dialects.'
-		
-		# Now that all of the arguments, dialects and messages are prepared,
-		# create all of the Feedback objects and add message and dialects
+		# Form ID and message IDs will later be expanded and used to insert
+		# into the database in bulk.
 		#
-		iteration_count = 0
-		total_iteration_count = len(inverse_kwargs_to_message.keys())
-		
-		def chunks(l, n):
-			""" Yield successive n-sized chunks from l.
-			"""
-			for i in xrange(0, len(l), n):
-				yield l[i:i+n]
-		
-		if len(inverse_kwargs_to_message.keys()) == 0:
-			print "No messages were compiled."
-			sys.exit()
-		else:
-			kwarg_chunks = chunks(inverse_kwargs_to_message.keys(), 1000)
-			keys = insert_keys.get(inverse_kwargs_to_message.values()[0][0].pos)
+		print >> sys.stdout, "Collecting for insert."
+		form_to_msgs = []
+		for form_key, form_info in form_keys.iteritems():
+			total_forms -= 1
+			for inf in form_info:
+				form_id, lemma, tag_string, dialects = inf 
 
-		# All of the Feedback objects are inserted, 1000 per commit
+				msg_strings = attrs_and_messages.get(form_key, False)
+
+				if msg_strings:
+					msg_ids = [feedbackmsg_ids.get(msg_string) for msg_string in msg_strings]
+					# If in doubt, print this.
+					form_entry = (lemma, tag_string, msg_strings, form_id, msg_ids)
+					form_to_msgs.append(form_entry)
+				else:
+					continue
+
+		# Expand (id, [msgid, msgid, msgid]) into 
+		#        [(id, msgid), (id, msgid), (id, msgid)]
+		# Produce a set to avoid duplicates for bulk insert.
+		# 
+		form_id_msg_ids = list(set([
+			(id, msgid) 
+			for _, _, _, id, msgids in form_to_msgs
+			for msgid in msgids
+		]))
+
+		total_objs = len(form_id_msg_ids)
+
+		# Chunk the data up into reasonable sizes for bulk insert, kind of
+		# arbitrary, but main constraint is avoiding inserting too much SQL
+		#
+		chunk_size = 10000
+		arg_chunks = chunks(form_id_msg_ids, chunk_size)
+
+		# All of the Feedback objects are inserted chunk by chunk
+		progress = 0
 		print >> sys.stdout, " * Bulk inserting... "
-		for chunk in kwarg_chunks:
-			feedback_kwargs_for_insert = [dict(zip(keys, values)) for values in chunk]
-			Feedback.objects.bulk_insert(keys, feedback_kwargs_for_insert)
+		for chunk in arg_chunks:
+			Form.objects.bulk_add_form_messages(chunk)
+			progress += chunk_size
+			if progress%10000 == 0:
+				print '%d/%d Form-Feedbackmsg relations' % (progress, total_objs)
 
-		def get_key_values(obj, ks):
-			" Fetch a list of keys from an object, return those keys "
-			vs = []
-			for k in ks:
-				vs.append(obj.__getattribute__(k))
-			return vs
-
-		total_feedbacks = Feedback.objects.count()
-		print 'Feedback object count: %d' % total_feedbacks
-
-		# Create a unique set of feedback IDs and message or dialect IDS
-		# for bulk insert, based on using inverse_kwargs_to_message, 
-		# and the object caches compiled above
-		# 
-		# First step, collect all the IDs.
-		# 
-		feedback_messages_mtm = set()
-		feedback_dialects_mtm = set()
-
-		print 'Collecting Messages and Dialects for Feedback'
-		for feedback in Feedback.objects.only(*keys).iterator():
-			vals = tuple(get_key_values(feedback, keys))
-			fs = inverse_kwargs_to_message.get(vals, False)
-			if not fs:
-				# print 'skipped %s' % repr(vals)
-				continue
-			for f in fs:
-				messages = messages_cache.get(f.msgid, False)
-				dialects = dialects_cache.get(f.msgid, False)
-				if messages:
-					msgs = [(feedback.id, m) for m in messages]
-					for m in msgs:
-						feedback_messages_mtm.add(m)
-				if dialects:
-					dials = [(feedback.id, d) for d in dialects]
-					for d in dials:
-						feedback_dialects_mtm.add(d)
-
-		_pos = inverse_kwargs_to_message.values()[0][0].pos
-		if _pos == 'A':
-			chunk_size = 10000
-		else:
-			chunk_size = 1000
-
-		# Chunk message and feedback IDs and bulk-insert them.
-		# 
-		message_chunks = chunks(list(feedback_messages_mtm), chunk_size)
-		total_objs = len(list(feedback_messages_mtm))
-		prog = 0
-		print ' * Bulk inserting messages'
-		for chunk in message_chunks:
-			zipped = [dict(zip(keys, a)) for a in chunk]
-			Feedback.objects.bulk_add_messages(chunk)
-			prog += chunk_size
-			if prog%10000 == 0:
-				print '%d/%d Feedback-Message relations' % (prog, total_objs)
-
-
-		# Chunk dialect and feedback IDs and bulk-insert them.
-		# 
-		dialect_chunks = chunks(list(feedback_dialects_mtm), chunk_size)
-		total_objs = len(list(feedback_dialects_mtm))
-		prog = 0
-		print ' * Bulk inserting dialects'
-		for chunk in dialect_chunks:
-			zipped = [dict(zip(keys, a)) for a in chunk]
-			Feedback.objects.bulk_add_dialects(chunk)
-			prog += chunk_size
-			if prog%10000 == 0:
-				print '%d/%d Feedback-Dialect relations' % (prog, total_objs)
-
-		# Done!
+		print >> sys.stdout, "Done!"
 
