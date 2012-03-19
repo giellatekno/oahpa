@@ -1014,7 +1014,7 @@ class MorfaQuestion(OahpaQuestion):
 		#print baseform.tag, correct.tag
 		
 		# Retrieve feedback information
-		self.get_feedback(correct, language)
+		# TODO: self.get_feedback(correct, language)
 		
 		# Take only the first translation for the tooltip
 		if len(translations) > 0:
@@ -1601,7 +1601,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     lo = "/usr/local/bin/lookup" # on victorio
     #lo="/Users/mslm/bin/lookup" # on Heli's machine
     lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
-    lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg"
+    #lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine
+    lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
     #preprocess = " | /Users/mslm/main/gt/script/preprocess "
@@ -1649,13 +1650,13 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
                     w=w.lstrip().rstrip()
                     #s.send(w)  # on victorio
                     #cohort = s.recv(size)
-                    word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+                    word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
                     cohort = cohort + word_lookup  # as the same thing in cealkka
             else:
                 w=w.lstrip().rstrip()
                 #s.send(w)  # on victorio
                 #cohort = s.recv(size)
-                word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+                word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
                 cohort = cohort + word_lookup
 
             if not cohort or cohort == w:
@@ -1671,14 +1672,14 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
             analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
         ans_cohort=""
-        data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
+        data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
         word = os.popen(data_lookup).readlines()
         analyzed=""
         for c in word:
             c=c.strip()
             #s.send(c)  # on vic
             #analyzed = analyzed + s.recv(size)
-            word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+            word_lookup = "echo \"" + force_unicode(c).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
             analyzed = analyzed + word_lookup
             analysis3=c + analyzed + c
 
@@ -2052,8 +2053,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     fst = fstdir + "/ped-sme.fst"
     lo = "/usr/local/bin/lookup"  # on victorio
     #lo="/Users/mslm/bin/lookup" # on Heli's machine
-    #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
-    lookup2cg = " | lookup2cg"
+    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
+    lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
     #preprocess = " | /Users/mslm/main/gt/script/preprocess " # on Heli's machine
@@ -2130,10 +2131,10 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
                 #word_lookup = s.recv(size)  # on vic
 		logfile.write(word_lookup)
                 ans_cohort = ""
-                #word_lookup = "echo \"" + tlemma + "\"" + lookup + lookup2cg  # on Heli's machine
-                #rows = os.popen(word_lookup).readlines()
+                word_lookup = "echo \"" + tlemma + "\"" + lookup + lookup2cg  # on Heli's machine
+                rows = os.popen(word_lookup).readlines()
                 #print rows
-		rows = word_lookup.split("\n")
+		#rows = word_lookup.split("\n")  # on vic
                 morfanal = ""
                 for row in rows:
                     ans_cohort = ans_cohort + row
@@ -2153,27 +2154,27 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
                             print malemma
                             print malemma_without_hash
                             tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
-                morfanal = morfanal + ans_cohort  # END
+		    morfanal = morfanal + ans_cohort  # END
                     
         analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
         #####
         print analysis
 	logfile.write(analysis)
-        ans_cohort=""
         data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
         word = os.popen(data_lookup).readlines()
         #print word
         analyzed=""
-        for c in word:
+        for c in word:		
             c=c.strip()
             print c
             #s.send(c) # on vic
             #analyzed = analyzed + s.recv(size)
-            word_lookup = "echo \"" + c + "\"" + lookup + lookup2cg  # on Heli's machine
+            word_lookup = "echo \"" + force_unicode(c).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
             morfanal = os.popen(word_lookup).readlines()
+	    ans_cohort=""
             for row in morfanal:
                 ans_cohort = ans_cohort + row
-        analyzed = analyzed + ans_cohort
+	    analyzed = analyzed + ans_cohort
         analysis3=c + analyzed + c
 
     except socket.timeout:
