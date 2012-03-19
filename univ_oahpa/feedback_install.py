@@ -228,10 +228,12 @@ class Feedback_install(object):
 	# Each part of speech followed by relevant word/lemma attributes
 	word_attribute_names = OrderedDict([
 		("N", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
-		("A", ['stem', 'gradation', 'diphthong', 'rime', 'soggi', 'attrsuffix']),
+		("A", ['stem', 'gradation', 'diphthong', 'rime', 'soggi', 'attrsuffix', 'compsuffix']),
 		("Num", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
 		("V", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
 	])
+
+	# TODO: compsuffix
 
 	# Each part of speech followed by relevant tag/wordform attributes
 	tag_attribute_names = OrderedDict([
@@ -258,6 +260,7 @@ class Feedback_install(object):
 		self._word_elements = False
 		self._feedbacktree = False
 		self._feedback_elements = False
+		self._feedback_msg_elements = False
 		self._form_objects = False
 
 		self._lexicon_dialects = False # TODO: this
@@ -296,6 +299,13 @@ class Feedback_install(object):
 			stems = self.feedbacktree.getElementsByTagName("stems")[0]
 			self._feedback_elements = stems.getElementsByTagName("l")
 		return self._feedback_elements
+
+	@property
+	def feedback_msg_elements(self):
+		if not self._feedback_msg_elements:
+			stems = self.feedbacktree.getElementsByTagName("stems")[0]
+			self._feedback_msg_elements = stems.getElementsByTagName("msg")
+		return self._feedback_msg_elements
 	
 	@property
 	def wordtree(self):
@@ -342,14 +352,20 @@ class Feedback_install(object):
 		""" Find the intersection of lexicon and feedback attribute values,
 		return intersection, but also print it """
 
-		def get_word_argument_and_lemma(el):
+		def get_word_argument_and_lemma(el, attr_names_list=self.word_attr_names):
 			" For a lexicon word element, get all of the morphological attributes " 
-			vals = [el.getAttribute(attr) for attr in self.word_attr_names]
+			vals = [el.getAttribute(attr) for attr in attr_names_list]
 			# attributes and lemma
-			return (OrderedDict(zip(self.word_attr_names, vals)), el.firstChild.data)
+			return (OrderedDict(zip(attr_names_list, vals)), el.firstChild.data)
 
 		def get_word_argument(el):
 			return get_word_argument_and_lemma(el)[0]
+
+		def get_msg_argument(el):
+			" For a lexicon word element, get all of the morphological attributes " 
+			vals = [el.getAttribute(attr) for attr in self.tag_attr_names]
+			# attributes and lemma
+			return OrderedDict(zip(self.tag_attr_names, vals))
 		
 		def get_tag_argument(attr_):
 			" For a Tag object, get all of the morphological attributes "
@@ -383,7 +399,14 @@ class Feedback_install(object):
 			(attr_name, list(set([''] + [word_attr.get(attr_name, None) for word_attr in feedback_attributes])))
 			for attr_name in self.word_attr_names
 		])
-		
+
+		# Collect Feedback <msg /> attributes
+		feedback_msg_attributes = map(get_msg_argument, self.feedback_msg_elements)
+		self.feedback_msg_possible_values = OrderedDict([
+			(attr_name, list(set([''] + [tag_attr.get(attr_name, None) for tag_attr in feedback_msg_attributes])))
+			for attr_name in self.tag_attr_names
+		])
+
 		# TODO: msg attributes and Tag comparison
 
 		# Get the intersection of feedback word attributes and lexicon word
@@ -396,6 +419,16 @@ class Feedback_install(object):
 		self.attributes_intersection = OrderedDict([
 			(attr_name, diff(attr_name))
 			for attr_name in self.word_attr_names
+		])
+
+		def tag_diff(attribute):
+			d = set(self.feedback_msg_possible_values.get(attribute)) | \
+					set(self.tag_possible_values.get(attribute))
+			return d
+			
+		self.tag_attributes_intersection = OrderedDict([
+			(attr_name, tag_diff(attr_name))
+			for attr_name in self.tag_attr_names
 		])
 		
 		return self.attributes_intersection
@@ -426,6 +459,17 @@ class Feedback_install(object):
 
 		for attribute_name, lexicon_attribute_values in self.word_possible_values.iteritems():
 			fb_attr_vals = self.feedback_possible_values.get(attribute_name, False)
+			missing = []
+			if fb_attr_vals:
+				missing.extend(list(set(fb_attr_vals) ^ set(lexicon_attribute_values)))
+			print >> sys.stdout, "        %s: %s" % (attribute_name, ', '.join(missing))
+
+		print >> sys.stdout, '\n'
+
+		print >> sys.stdout, "    Symmetric difference between Tag and <msg />:"
+
+		for attribute_name, lexicon_attribute_values in self.tag_possible_values.iteritems():
+			fb_attr_vals = self.feedback_msg_possible_values.get(attribute_name, False)
 			missing = []
 			if fb_attr_vals:
 				missing.extend(list(set(fb_attr_vals) ^ set(lexicon_attribute_values)))
