@@ -107,26 +107,31 @@ t-suffix
 
     <!-- TODO: global dialect of GG and msg NOT-GG will exclude all forms
     		corresponding to this set
-    -->
+    
     <l>
       <msg dialect="NOT-GG" grade="Comp" attributive="Attr">attribute_like_pred</msg>
       <msg dialect="NOT-GG" grade="Superl" attributive="Attr">attribute_like_pred</msg>
       <note>Attr = Nom</note>
     </l>
 
-    <!-- TODO: global dialect of GG and msg NOT-KJ is redundant unless other
+     TODO: global dialect of GG and msg NOT-KJ is redundant unless other
     			dialects will be added, in which case there should not be a
     			global dialect setting
     -->
 
     <l stem="2syll">
-      <msg dialect="NOT-KJ" grade="Comp" attributive="Attr">attribute_like_pred</msg>
-      <msg dialect="NOT-KJ" grade="Superl" attributive="Attr">attribute_like_pred</msg>
+      <msg grade="Comp" attributive="Attr">attribute_like_pred</msg>
+      <msg grade="Superl" attributive="Attr">attribute_like_pred</msg>
       <note>Attr: dábálet, dábáleamos</note>
     </l>
     <l stem="3syll">
       <msg dialect="NOT-KJ" grade="Comp" attributive="Attr">et-suffix</msg>
       <msg dialect="NOT-KJ" grade="Superl" attributive="Attr">attribute_like_pred</msg>
+      <note>Attr = Nom</note>
+    </l>
+    <l stem="3syll">
+      <msg dialect="NOT-GG" grade="Comp" attributive="Attr">at-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" attributive="Attr">attribute_like_pred</msg>
       <note>Attr = Nom</note>
     </l>
 
