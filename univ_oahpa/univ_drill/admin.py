@@ -1,4 +1,4 @@
-from univ_oahpa.univ_drill.models import Log, Word, Semtype, Source, Form, Tag, Feedback, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
+from univ_oahpa.univ_drill.models import Log, Word, Semtype, Source, Form, Tag, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
 from django.contrib import admin
 from django.contrib.contenttypes import generic
 
@@ -40,7 +40,6 @@ admin.site.register(Semtype)
 admin.site.register(Question)
 admin.site.register(QElement)
 admin.site.register(WordQElement)
-admin.site.register(Feedback, FeedbackAdmin)
 admin.site.register(Feedbacktext)
 admin.site.register(Feedbackmsg)
 admin.site.register(Word, WordAdmin)

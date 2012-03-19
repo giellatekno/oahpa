@@ -554,262 +554,27 @@ def set_settings(self):
 # DEBUG = open('/dev/null', 'w')
 
 
-def get_feedback(self, word, tag, wordform, language, dialect):
-	"""
-		FEEDBACK AND XML-SOURCE
+def get_feedback(self, wordform, language):
 
-		Feedback message files have the following structure:
-
-			<?xml version="1.0" encoding="utf-8"?>
-			<messages xml:lang="fin"> 
-				<message order="A" id="case1">WORDFORM has ... </message>  
-				<message order="A" id="case2">WORDFORM has ... </message>  
-				<message order="A" id="case3">WORDFORM has ... </message>  
-				<message order="A" id="case4">WORDFORM has ... </message>  
-				<message order="B" id="number1"> and is in singular.</message>  
-				<message order="B" id="number2"> and is in plural.</message>  
-			</messages>
-
-		In this case the id attribute corresponds to the message id, and the
-		order attribute corresponds to the order that the message will appear
-		in in the user interface. Orders are specified with the letters A-Z,
-		and if an order is not specified, it is assumed that this message will
-		come first, before A.
-
-		Nouns: attributes required: pos, soggi, stem, case/case2, number
-
-			<l> nodes in messages.xml and n_smanob must match for
-				pos, soggi, stem
-			
-			Remaining inflectional items, case and number, come from the tag.
-						
-			feedback_nouns.xml: 
-			
-			<feedback pos="N">
-			  <stems>
-				<l stem="2syll">
-				  <msg pos="n">bisyllabic_stem</msg>
-				</l>
-				<l stem="3syll">
-				  <msg pos="n">trisyllabic_stem</msg>
-				</l>
-
-				<l stem="3syll" soggi="a">
-				  <msg case="Ill">soggi_a</msg>
-				  <msg case="Ine">soggi_a</msg>
-				  <msg case="Ela">soggi_a</msg>
-				  <msg case="Com" number="Sg">soggi_a</msg>
-				  <msg case="Ess">soggi_a</msg>
-				  <note>daktarasse, vuanavasse, e/o > a</note>
-				</l>
-			 </stems>
-			</feedback>
-			
-			
-			n_smanob.xml:
-			
-			<e>
-			  <lg>
-				 <l margo="e" pos="n" soggi="e" stem="3syll">aagkele</l>
-			  </lg>
-			  { ... SNIP ... }
-			</e>
-			
-		Verbs: Mostly the same. <l/>s match for class, stem, pos
-		inflectional information from Tag object pertaining to mood, tense, personnumber.
-		
-		FEEDBACK DATA STRUCTURE
-		
-		Remember that this code runs once per word, and not on a huge set of words,
-		so it should ideally be returning only one Feedback object.
-		
-		Feedback objects are then linked to Feedbackmsg objects, which contain
-		message IDs, such as soggi_o, class_1, which then link to Feedbacktext objects
-		which contain the corresponding messages in other languages.
-		
-		Feedback objects should be linked to multiple Feedbackmsg items (typically, 3)
-		which individually contain class, syllable and umlaut information.
-		
-		Feedback.messages.all()
-		
-		CHANGES
-		
-		Altering the way the code functions should be as simple as adding new attributes
-		to the dictionary objects below, and making sure that they have access to the
-		variable with the data to be included.
-		
-				word_attrs = {
-					'POS': {
-						'soggi' : word.soggi,
-					},
-				}
-		
-	"""
-	from operator import itemgetter
-	
-	# Dictionaries here contain mapping of attributes, and where the data is stored.
-
-	
-	# Word -> Feedback
-	# These should generally match up with attributes in <l /> in source data
-	if word.rime == '0':
-		rime = ''
-	else:
-		rime = word.rime
-
-	# diphthong = word.diphthong
-	# if diphthong == '':
-		# diphthong = 'no'
-
-	# attrsuffix = word.attrsuffix
-	# if attrsuffix == '':
-		# attrsuffix = 'noattr'
-	
-	# gradation = word.gradation
-	# if gradation == '':
-		# gradation = 'no'
-
-	# grade = tag.grade
-	# if grade == '':
-		# grade = 'Pos'
-	
-	word_attrs = {
-		'N': {
-			'pos': word.pos,
-			'soggi': word.soggi,
-			'stem': word.stem,
-			'diphthong': word.diphthong,
-			'gradation': word.gradation,
-			'rime': rime,
-		},
-		'V': {
-			'pos': word.pos,
-			'soggi': word.soggi,
-			'wordclass': word.wordclass,
-			'stem': word.stem,
-			'diphthong': word.diphthong,
-			'gradation': word.gradation,
-			'rime': rime,
-		},
-		'A': {
-			'pos': word.pos,
-			'soggi': word.soggi,
-			'wordclass': word.wordclass,
-			'stem': word.stem,
-			'diphthong': word.diphthong,
-			'gradation': word.gradation,
-			'rime': rime,
-			'attrsuffix': word.attrsuffix,
-		},
-	}
-	
-	# Tag -> Feedback
-	# inflectional information
-	tag_attrs = {
-		'N': {
-			'case2': tag.case,
-			'number': tag.number,
-		},
-		'V': {
-			'mood': tag.mood,
-			'tense': tag.tense,
-			'personnumber': tag.personnumber,
-		},
-		'A': {
-			'case2': tag.case,
-			'number': tag.number,
-			'attributive': tag.attributive,
-			'grade': tag.grade  # added by Heli
-		}
-	}
-		
-	if tag.pos in ["N", "Num"]:
-		POS = 'N'
-		# build Q for noun
-	elif tag.pos == "A":
-		POS = 'A'
-		# build Q for verb
-	elif tag.pos == "V":
-		POS = 'V'
-	else:
-		POS = tag.pos
-
-	# Combine the filter sets...
-	try:
-		FILTERS = dict(word_attrs[POS], **tag_attrs[POS])
-	except KeyError:
-		return False
-	
-	# Now make changes.
-	if POS == 'V':
-		FILTERS.pop('wordclass')
-	
-	if POS == 'A':
-		FILTERS.pop('wordclass')
-
-		if 'grade' not in FILTERS:
-			FILTERS['grade'] = 'Pos'
-		else:
-			if FILTERS['grade'] == '':
-				FILTERS['grade'] = 'Pos'
-
-		# TODO: attrsuffix, 'NoAttr'
-		if 'attrsuffix' not in FILTERS:
-			FILTERS['attrsuffix'] = 'noattr'
-		else:
-			if FILTERS['attrsuffix'] == '':
-				FILTERS['attrsuffix'] = 'noattr'
-
-		if 'attributive' not in FILTERS:
-			FILTERS['attributive'] = 'NoAttr'
-		else:
-			if FILTERS['attributive'] == '':
-				FILTERS['attributive'] = 'NoAttr'
-
-			# FILTERS['attributive'] = 'NoAttr'
-
-	# Adopt this to new code.
-	# elif tag.pos == "A":
-	# 	if tag.grade: 
-	# 		grade = tag.grade
-	# 	else:
-	# 		grade = "Pos"
-	# 	
-	# 	if tag.attributive:
-	# 		attributive = "Attr"
-	# 		attrsuffix = word.attrsuffix
-	# 	else:
-	# 		attributive = "NoAttr"
-	# 	
-	# 	FEEDBACK_Q = Q(case2=tag.case) & \
-	# 					Q(pos=tag.pos) & Q(grade=grade) &\
-	# 					Q(attributive=attributive) & Q(attrsuffix=attrsuffix) & \
-	# 					Q(number=tag.number)
-	# 
-	
 	language = switch_language_code(language)
 	
-	if FILTERS:
-		feedbacks = Feedback.objects.filter(**FILTERS)
-		# TODO: debug
-		# print FILTERS
-		# print feedbacks
-	
+	print wordform.id
+	print wordform.feedback.all()
+	feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
+					.order_by('feedbacktext__order')\
+					.values_list('feedbacktext__message', flat=True)
+	print feedbacks
+
 	message_list = []
 	if feedbacks:
-		for f in feedbacks:
-			msgs = f.messages.all()
-			for m in msgs:
-				messages = m.feedbacktext_set.filter(language=language)
-				if messages.count() > 0:
-					text = messages[0].message
-					order = messages[0].order
-					text = text.replace('WORDFORM', '"%s"' % wordform)
-					message_list.append((order, text))
+		for text in feedbacks:
+			text = text.replace('WORDFORM', '"%s"' % wordform.word.lemma)
+			message_list.append(text)
 	
-	# sort by order attribute, and then select only the message
-	message_list = [a[1] for a in sorted(message_list, key=itemgetter(0))]
 	self.feedback = ' \n '.join(list(message_list))
+	print self.feedback
+	print '\n'
+
 def select_words(self, qwords, awords):
 	"""
 		Fetch words and tags from the database.
@@ -1249,8 +1014,7 @@ class MorfaQuestion(OahpaQuestion):
 		#print baseform.tag, correct.tag
 		
 		# Retrieve feedback information
-		self.get_feedback(word=word, tag=tag, wordform=baseform.fullform,
-							language=language, dialect=dialect.dialect)
+		self.get_feedback(correct, language)
 		
 		# Take only the first translation for the tooltip
 		if len(translations) > 0:
