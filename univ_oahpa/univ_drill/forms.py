@@ -1597,9 +1597,10 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     fstdir = "/opt/smi/sme/bin"
     #fstdir = settings.FST_DIRECTORY
-    #fst = fstdir + "/ped-sme.fst"
+    fst = fstdir + "/ped-sme.fst"
+    lo = "/usr/local/bin/lookup" # on victorio
     #lo="/Users/mslm/bin/lookup" # on Heli's machine
-    #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
+    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
     lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg"
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
@@ -1623,9 +1624,9 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
 
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        s.connect((host,port)) # on victorio
+        #s.connect((host,port)) # on victorio
         sys.stdout.write('%')
 
         analysis = ""
@@ -1646,16 +1647,16 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
                         cohort = cohort + " " + tag + "\n"
                 else:
                     w=w.lstrip().rstrip()
-                    s.send(w)  # on victorio
-                    cohort = s.recv(size)
-                    #word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-                    #cohort = cohort + word_lookup  # as the same thing in cealkka
+                    #s.send(w)  # on victorio
+                    #cohort = s.recv(size)
+                    word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+                    cohort = cohort + word_lookup  # as the same thing in cealkka
             else:
                 w=w.lstrip().rstrip()
-                s.send(w)  # on victorio
-                cohort = s.recv(size)
-                #word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-                #cohort = cohort + word_lookup
+                #s.send(w)  # on victorio
+                #cohort = s.recv(size)
+                word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+                cohort = cohort + word_lookup
 
             if not cohort or cohort == w:
                 cohort = w + "\n"
@@ -1675,17 +1676,17 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
         analyzed=""
         for c in word:
             c=c.strip()
-            s.send(c)  # on vic
-            analyzed = analyzed + s.recv(size)
-            #word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-            #analyzed = analyzed + word_lookup
+            #s.send(c)  # on vic
+            #analyzed = analyzed + s.recv(size)
+            word_lookup = "echo \"" + w.encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+            analyzed = analyzed + word_lookup
             analysis3=c + analyzed + c
 
     except socket.timeout:
         raise Http404("Technical error, please try again later.")            
 
-    s.send("q")  # on vic
-    s.close()
+    #s.send("q")  # on vic
+    #s.close()
 
     analysis = analysis + analyzed
     analysis = analysis + "\"<.>\"\n\t\".\" CLB"
@@ -2048,7 +2049,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 
     fstdir = "/opt/smi/sme/bin"
     #fstdir = settings.FST_DIRECTORY
-    #fst = fstdir + "/ped-sme.fst"
+    fst = fstdir + "/ped-sme.fst"
+    lo = "/usr/local/bin/lookup"  # on victorio
     #lo="/Users/mslm/bin/lookup" # on Heli's machine
     #lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
     lookup2cg = " | lookup2cg"
@@ -2076,10 +2078,10 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
 
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        s.connect((host,port)) # on vic
-        sys.stdout.write('%')
+        #s.connect((host,port)) # on vic
+        #sys.stdout.write('%')
 
         analysis = ""
         data_lookup = "echo \"" + qtext + "\"" + preprocess
@@ -2094,12 +2096,12 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
             # All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
             w = force_unicode(word).encode('utf-8')
             w=w.lstrip().rstrip()
-            s.send(w) # on victorio
-            cohort = s.recv(size)
-            #word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-            #morfanal = os.popen(word_lookup).readlines()
-            #for row in morfanal:
-             #   cohort = cohort + row
+            #s.send(w) # on victorio
+            #cohort = s.recv(size)
+            word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+            morfanal = os.popen(word_lookup).readlines()
+            for row in morfanal:
+                cohort = cohort + row
 	       #print cohort
             analysis = analysis + cohort
 
@@ -2124,8 +2126,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
                 ttag = tasktagstring.replace("+"," ")
                 print ttag
 		logfile.write(ttag+"\n")
-                s.send(tlemma)  # on vic
-                word_lookup = s.recv(size)  # on vic
+                #s.send(tlemma)  # on vic
+                #word_lookup = s.recv(size)  # on vic
 		logfile.write(word_lookup)
                 ans_cohort = ""
                 #word_lookup = "echo \"" + tlemma + "\"" + lookup + lookup2cg  # on Heli's machine
@@ -2165,20 +2167,20 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
         for c in word:
             c=c.strip()
             print c
-            s.send(c) # on vic
-            analyzed = analyzed + s.recv(size)
-            #word_lookup = "echo \"" + c + "\"" + lookup + lookup2cg  # on Heli's machine
-            #morfanal = os.popen(word_lookup).readlines()
-            #for row in morfanal:
-             #   ans_cohort = ans_cohort + row
-        #analyzed = analyzed + ans_cohort
+            #s.send(c) # on vic
+            #analyzed = analyzed + s.recv(size)
+            word_lookup = "echo \"" + c + "\"" + lookup + lookup2cg  # on Heli's machine
+            morfanal = os.popen(word_lookup).readlines()
+            for row in morfanal:
+                ans_cohort = ans_cohort + row
+        analyzed = analyzed + ans_cohort
         analysis3=c + analyzed + c
 
     except socket.timeout:
         raise Http404("Technical error, please try again later.")            
 
-    s.send("q")  # on vic
-    s.close()  # on vic
+    #s.send("q")  # on vic
+    #s.close()  # on vic
 
     analysis = analysis + analyzed
     analysis = analysis + "\"<.>\"\n\t\".\" CLB"
