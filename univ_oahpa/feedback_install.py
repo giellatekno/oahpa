@@ -133,6 +133,7 @@ import sys
 import re
 import string
 import codecs
+import operator
 
 from univ_drill.models import Form
 
@@ -171,6 +172,7 @@ def get_attrs_with_defaults(element, attr_list, defaults):
 	""" Collect attributes from an XML element node, if there is no
 	value, use a default value supplied from a defaults dictionary,
 	return an OrderedDict of the attr_list and values. """
+	# TODO: Pos, Comp, Superl, currently only returns Comp, Superl
 	vals = []
 	for attr in attr_list:
 		val = element.getAttribute(attr)
@@ -228,7 +230,8 @@ class Feedback_install(object):
 	# Each part of speech followed by relevant word/lemma attributes
 	word_attribute_names = OrderedDict([
 		("N", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
-		("A", ['stem', 'gradation', 'diphthong', 'rime', 'soggi', 'attrsuffix', 'compsuffix']),
+		("A", ['stem', 'gradation', 'diphthong', 'rime', 'soggi', 
+										'attrsuffix', 'compsuffix',]),
 		("Num", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
 		("V", ['stem', 'gradation', 'diphthong', 'rime', 'soggi',]),
 	])
@@ -430,6 +433,11 @@ class Feedback_install(object):
 			(attr_name, tag_diff(attr_name))
 			for attr_name in self.tag_attr_names
 		])
+
+		self.default_attributes = OrderedDict(
+			list(self.attributes_intersection.iteritems()) + 
+			list(self.tag_attributes_intersection.iteritems())
+		)
 		
 		return self.attributes_intersection
 
@@ -483,6 +491,9 @@ class Feedback_install(object):
 			TODO: update this.
 		"""
 
+		if Feedbackmsg.objects.count() == 0:
+			print >> sys.stderr, "No message strings have been installed (messages.sme.xml, etc)."
+			sys.exit()
 		self.feedbackfilename = feedbackfile
 		self.wordfilename = wordfile
 
@@ -498,8 +509,10 @@ class Feedback_install(object):
 
 		# collect all form attributes to lessen size of permutation objects
 		def word_and_tag_keys(f):
-			return tuple(get_attrs(f.word, self.word_attr_names) + \
+			vals = tuple(get_attrs(f.word, self.word_attr_names) + \
 							get_attrs(f.tag, self.tag_attr_names))
+			keys = list(self.word_attr_names) + list(self.tag_attr_names)
+			return OrderedDict(zip(keys, vals))
 
 		values = ['word__' + w_attr for w_attr in self.word_attr_names] + \
 					['tag__' + t_attr for t_attr in self.tag_attr_names] + \
@@ -507,19 +520,31 @@ class Feedback_install(object):
 
 		print >> sys.stdout, "Fetching wordform attributes."
 		
-		forms = self.form_objects.only(*values) # Get only the things we need.
+		forms = self.form_objects.only(*values)[0:2000] # Get only the things we need.
 		total = forms.count()
 		form_keys = {}
+
+		# Since this isn't really in the database, it won't be included in iteration later
+		self.default_attributes['grade'].add('Pos')
 
 		# .iterator() necessary because QuerySet is very large.
 		for f in forms.iterator():
 			total -= 1
-			w_keys = word_and_tag_keys(f)
+			w_key_vals = word_and_tag_keys(f)
+
+			# Exception here because there is no 'Pos' in the db, but 'Pos' in
+			# feedback. TODO: make a generaelized version of this for a class
+			# setting
+			if self.file_pos == 'A':
+				if not w_key_vals['grade'] in ['Comp', 'Superl']:
+					w_key_vals['grade'] = 'Pos'
+
+			w_keys = tuple(w_key_vals.values())
 
 			dialects = [''] + [d.dialect for d in f.dialects.all() 
 						if d.dialect in self.dialects]
 
-			# TODO: global dialects
+			# TODO: global dialects?
 
 			w_vals = [f.id, f.word.lemma, f.tag.string, dialects]
 
@@ -567,7 +592,7 @@ class Feedback_install(object):
 		for el in self.feedback_elements:
 			kwargs = get_attrs_with_defaults(el, 
 											self.word_attr_names, 
-											self.attributes_intersection)
+											self.default_attributes)
 			
 			msgs = el.getElementsByTagName("msg")
 
@@ -581,7 +606,7 @@ class Feedback_install(object):
 				m = msg.firstChild.data
 				tagkwargs = get_attrs_with_defaults(msg, 
 													self.tag_attr_names, 
-													self.tag_possible_values)
+													self.default_attributes)
 
 				# TODO: global dialects
 				dial = msg.getAttribute("dialect")
@@ -605,39 +630,61 @@ class Feedback_install(object):
 				print >> sys.stderr, render_kwargs(kwargs)
 				print >> sys.stderr, render_kwargs(tagkwargs)
 
-				param_set = set()
+				prod_count = reduce(
+					operator.mul, 
+					[len(a) for a in kwargs.values() + tagkwargs.values()]
+				)
+				
+				def intersect_param_set(param_set):
+					print >> sys.stderr, "Intersecting..."
+					intersection = form_keys_key_set & param_set
+					for item in intersection:
+						if lemma:
+							form_keys[item] = [
+								[a, word_lemma, c, d]
+								for a, word_lemma, c, d in form_keys[item][:]
+								if word_lemma == form_lemma
+							]
+
+						if dial:
+							# Filter out entries not matching the dialect, these
+							# will not be inserted later.
+							form_keys[item] = [
+								[a, b, c, d] 
+								for a, b, c, d in form_keys[item][:]
+								if len(set(d) & set(feedback_dialects)) > 0
+							]
+
+						# Then for a set of attributes, append the message id
+						if item in attrs_and_messages:
+							attrs_and_messages[item].append(m)
+						else:
+							attrs_and_messages[item] = [m]
+
+					print "Identified %d\n" % len(intersection)
+					del param_set
+				
+				param_set_ = set()
+				print >> sys.stderr, "Permutation count: %d" % prod_count
+				perm_count = 0
 				for perm in Entry(kwargs, tagkwargs).permutations:
-					param_set.add(tuple(perm))
+					param_set_.add(tuple(perm))
+
+					perm_count += 1
+					if prod_count > 100000:
+						if perm_count%100000 == 0:
+							print "  %s processed." % perm_count
+
+					if len(param_set_) > 1000000:
+						intersect_param_set(param_set_)
+						param_set_ = set()
+
+				intersect_param_set(param_set_)
 
 				# Set intersections work much faster, rather than iterating and
 				# doing a series of if statements.
-				intersection = form_keys_key_set & param_set
-				for item in intersection:
-					if lemma:
-						form_keys[item] = [
-							[a, word_lemma, c, d]
-							for a, b, c, d in form_keys[item][:]
-							if word_lemma == form_lemma
-						]
+				# TODO: intersect in chunks for much biggger sets, probs intersect in 1mil?
 
-					if dial:
-						# Filter out entries not matching the dialect, these
-						# will not be inserted later.
-						form_keys[item] = [
-							[a, b, c, d] 
-							for a, b, c, d in form_keys[item][:]
-							if len(set(d) & set(feedback_dialects)) > 0
-						]
-
-					# Then for a set of attributes, append the message id
-					if item in attrs_and_messages:
-						attrs_and_messages[item].append(m)
-					else:
-						attrs_and_messages[item] = [m]
-
-				# Delete just incase.
-				del param_set
-				print "identified %d\n" % len(intersection)
 
 
 		# TODO: store words with no matches somewhere=
@@ -710,7 +757,13 @@ class Feedback_install(object):
 		progress = 0
 		print >> sys.stdout, " * Bulk inserting... "
 		for chunk in arg_chunks:
-			Form.objects.bulk_add_form_messages(chunk)
+			try:
+				Form.objects.bulk_add_form_messages(chunk)
+			except Exception, e:
+				print Exception, e
+				print repr(chunk[0:10]) + " ... " 
+				print >> sys.stderr, "Chunk contains null values, are messages.xml files installed?"
+				sys.exit()
 			progress += chunk_size
 			if progress%10000 == 0:
 				print '%d/%d Form-Feedbackmsg relations' % (progress, total_objs)
