@@ -1598,7 +1598,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     fstdir = "/opt/smi/sme/bin"
     #fstdir = settings.FST_DIRECTORY
     fst = fstdir + "/ped-sme.fst"
-    lo = "/usr/local/bin/lookup" # on victorio
+    lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup" # on victorio
     #lo="/Users/mslm/bin/lookup" # on Heli's machine
     lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
     #lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine
@@ -1620,6 +1620,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
                 
     qtext = question
     qtext = qtext.rstrip('.!?,')
+
+    logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_log.txt','w')
     
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
@@ -1631,64 +1633,78 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
         sys.stdout.write('%')
 
         analysis = ""
-        data_lookup = "echo \"" + qtext + "\"" + preprocess
-        words = os.popen(data_lookup).readlines()
-        for w in words:
-            cohort=""
-            if qwords and qwords.has_key(w):
-                qword = qwords[w]
-                if qword.has_key('word'):
-                    if qword.has_key('fullform') and qword['fullform']:
-                        cohort = cohort + "\"<" + qword['fullform'][0].encode('utf-8') + ">\"\n"
-                        lemma = Word.objects.filter(id=qword['word'])[0].lemma
-                        cohort = cohort + "\t\"" + lemma + "\""
-                    if qword.has_key('tag') and qword['tag']:
-                        string = Tag.objects.filter(id=qword['tag'])[0].string
-                        tag = string.replace("+"," ")
-                        cohort = cohort + " " + tag + "\n"
-                else:
-                    w=w.lstrip().rstrip()
+        question_lookup = "echo \"" + qtext + "\"" + preprocess
+        words = os.popen(question_lookup).readlines()
+        for qword in qwords:
+		cohort=""
+		#logfile.write(qword+"\t")
+		#w = w.strip()
+            #if qwords and qwords.has_key(w):
+             #   qword = qwords[w]
+              #  if qword.has_key('word'):
+               #     if qword.has_key('fullform') and qword['fullform']:
+                #        cohort = cohort + "\"<" + qword['fullform'][0].encode('utf-8') + ">\"\n"
+                 #       lemma = Word.objects.filter(id=qword['word'])[0].lemma
+                  #      cohort = cohort + "\t\"" + lemma + "\""
+                   # if qword.has_key('tag') and qword['tag']:
+                    #    string = Tag.objects.filter(id=qword['tag'])[0].string
+                     #   tag = string.replace("+"," ")
+                      #  cohort = cohort + " " + tag + "\n"
+                #else:
+                 #   w=w.lstrip().rstrip()
                     #s.send(w)  # on victorio
                     #cohort = s.recv(size)
-                    word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-                    cohort = cohort + word_lookup  # as the same thing in cealkka
-            else:
-                w=w.lstrip().rstrip()
+                  #  word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+		   # morfanal = os.popen(word_lookup).readlines()
+		    #for row in morfanal:
+			#    row = row.strip()
+			 #   cohort = cohort + row + "\n" + "\t"  # as the same thing in cealkka
+            #else:
+	        #w=w.strip()
                 #s.send(w)  # on victorio
                 #cohort = s.recv(size)
-                word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-                cohort = cohort + word_lookup
-
-            if not cohort or cohort == w:
-                cohort = w + "\n"
-            if cohort=="error":
-                raise Http500
-                
-            analysis = analysis + cohort
+		#w = force_unicode(qword['fullform']).encode('utf-8')  # Words that are given.
+		w = qword.lstrip().rstrip()
+		word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+		morfanal = os.popen(word_lookup).readlines()
+		for row in morfanal:
+			row = row.strip()
+			cohort = cohort + row + "\n" + "\t"
+		if not cohort or cohort == w:
+			cohort = w + "\n"
+		if cohort=="error":
+			raise Http500
+		analysis = analysis + cohort
 
         if self.gametype=="sahka":
             analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
         else:
             analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
-        ans_cohort=""
-        data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
-        word = os.popen(data_lookup).readlines()
+	#logfile.write(analysis+"\n")
+        data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
+        words = os.popen(data_lookup).readlines()
         analyzed=""
-        for c in word:
-            c=c.strip()
-            #s.send(c)  # on vic
+        for w in words:
+            w=w.strip()
+            #s.send(w)  # on vic
             #analyzed = analyzed + s.recv(size)
-            word_lookup = "echo \"" + force_unicode(c).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-            analyzed = analyzed + word_lookup
-            analysis3=c + analyzed + c
+            word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+	    morfanal = os.popen(word_lookup).readlines()
+	    ans_cohort=""
+	    for row in morfanal:
+		    row = row.strip()
+		    ans_cohort = ans_cohort + row + "\n" + "\t"
+            analyzed = analyzed + ans_cohort
+	    
+            analysis3=w + analyzed + w
 
     except socket.timeout:
         raise Http404("Technical error, please try again later.")            
 
     #s.send("q")  # on vic
     #s.close()
-
+    #logfile.write(analyzed+"\n")
     analysis = analysis + analyzed
     analysis = analysis + "\"<.>\"\n\t\".\" CLB"
     analysis = analysis.rstrip()
@@ -1711,6 +1727,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     lemma=""
     for line in checked:
         line = line.strip()
+	logfile.write(line+"\n")
 
         #Find the lemma first
         matchObj=constantObj.search(line)
@@ -2051,7 +2068,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     fstdir = "/opt/smi/sme/bin"
     #fstdir = settings.FST_DIRECTORY
     fst = fstdir + "/ped-sme.fst"
-    lo = "/usr/local/bin/lookup"  # on victorio
+    lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"# on victorio
     #lo="/Users/mslm/bin/lookup" # on Heli's machine
     lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
     lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
