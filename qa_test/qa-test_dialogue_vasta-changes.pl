@@ -35,30 +35,48 @@
 #          "deadja" N CGErr Sg Acc
 # "<.>"
 #          "." CLB
+# "<Gohpus1>"
+#          "gohppu" N Sg Loc
+#          "gohppu" N Sg Acc PxSg3
+#          "gohppu" N Sg Gen PxSg3
+# "<lea1>"
+#          "leat" V IV Ind Prs Sg3
+# "<deadja1>"
+#          "deadja" N CGErr Sg Gen
+#          "deadja" N Sg Nom
+#          "deadja" N CGErr Sg Acc
+# "<.>"
+#          "." CLB
+# "<Gohpus2>"
+#          "gohppu" N Sg Loc
+#          "gohppu" N Sg Acc PxSg3
+#          "gohppu" N Sg Gen PxSg3
+# "<lea2>"
+#          "leat" V IV Ind Prs Sg3
+# "<deadja2>"
+#          "deadja" N CGErr Sg Gen
+#          "deadja" N Sg Nom
+#          "deadja" N CGErr Sg Acc
+# "<.>"
+#          "." CLB
 
 
 
 use File::Spec;
 use XML::Twig;
 
-my $infile = $ARGV[0];
-my $mode = 'sahka';
-if ($ARGV[1] ne "")
-{
-  $mode = $ARGV[1];
-  print "mode is $mode\n";
-}
-
+my $infile = '';
+my $mode = 'vastas';
+if ($ARGV[0] eq "")
+  {
+    die "Cannot open file input file!";
+  } else {
+    $infile = $ARGV[0];
+  }
 #my $twig = XML::Twig->new(keep_encoding => 1);
 my $twig = XML::Twig->new();
-# to extend for vasta, too
+
 my $s = '^'.$mode;
-if (($mode eq "sahka") or ($mode eq "vastas"))
-{
-  $s = '^'.$mode;
-} else {
-  $s = '^qst';
-}
 
 my $lon = 'lookup -flags mbTT -utf8 ./bin/ped-sme.fst';
 my $tmp_file = "tmp_data.txt";
@@ -76,49 +94,45 @@ foreach my $test ($root->children('test')){
   print "processing =>ID: $i\n";
   my $q = $test->first_child_text('q');
   foreach my $r ($test->children('ag')){
-    my $a = $r->first_child('a')->text();
+    #my $a = $r->first_child('a')->text();
     print "question: $q\n";
     print "s: $s\n";
-    print "answer: $a\n";
+    #print "answer: $a\n";
 
-    my $command1 = "echo '$q $s $a' | preprocess | $lon | lookup2cg | " ;
+    my $command1 = "echo '$q $s' | preprocess | $lon | lookup2cg | " ;
+
     open (TMPFILE, ">>$tmp_file");
     open (CMD1, $command1);
     while (<CMD1>){
-      #s/^(\s+\"\^sahka\"\s+)(\?.*)$/$1$i/;
-      if ($mode eq "sahka")
-	{
-	  s/^(\s+\"\^sahka\"\s+)(\?.*)$/$1$i/;
-	}
-      
-      if ($mode eq "vastas")
-	{
-	  if ($_ =~ m/^(\s+\"\^vastas\"\s+)(\?.*)$/) {
-	    s/^(\s+\"\^vastas\"\s+)(\?.*)$/$1$i/;
-	    print TMPFILE;
-	     foreach my $l ($r->children('l')){
-	       print TMPFILE "         \"$l->{'att'}->{'base'}\" $l->{'att'}->{'pos'}\n";
-	      
-	       # my $b = $l->att->{'base'};
-	       # my $p = $l->att->{'pos'};
-	     }
-	  } 
-	  #s/^(\s+\"\^vastas\"\s+)(\?.*)$/$1$i/;
-	}
-
-      if ($mode eq "vastaf")
-	{
-	  s/^(\s+\"\^qst\"\s+)(\?.*)$/$1$i/;
-	}
       if ($_ !~ m/^(\s+\"\^vastas\"\s+)(.*)$/)
 	{
 	  print TMPFILE;
 	}
+      
+      if ($_ =~ m/^(\s+\"\^vastas\"\s+)(\?.*)$/) {
+	s/^(\s+\"\^vastas\"\s+)(\?.*)$/$1$i/;
+	print TMPFILE;
+	foreach my $l ($r->children('l')){
+	  print TMPFILE "         \"$l->{'att'}->{'base'}\" $l->{'att'}->{'pos'}\n";
+	}
+      } 
     }
-    print TMPFILE "\n\"<\.>\"\n\n";
-    print "=========================================================\n";
-
+    
     close CMD1;
+      
+    foreach my $a ($r->children('a')){
+      my $a_txt = $a->text();
+      
+      my $command2 = "echo '$a_txt' | preprocess | $lon | lookup2cg | " ;
+      open (CMD2, $command2);
+      while (<CMD2>){
+	print TMPFILE;
+      }
+      print TMPFILE "\n\"<\.>\"\n\n";
+      print "=========================================================\n";
+      close CMD2;
+    }
+    
     close (TMPFILE);     
   }
   print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
