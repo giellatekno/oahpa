@@ -5329,13 +5329,15 @@ BEFORE-SECTIONS
 
 MAPPING-PREFIX = & ;
 
-
 # Guesser
 # Ord med  
 SUBSTITUTE (?) (N Prop Plc Sg Loc Guess) TARGET ("<[A-ZÆØÅÄÖČŠÁ].*s>"r ?) ;
 SUBSTITUTE (?) (N Prop Plc Sg Nom Guess) TARGET ("<[A-ZÆØÅÄÖČŠÁ].*>"r ?)(NOT -1 BOS) ;
 
           SECTION
+
+
+MAP (&err-no_fst) TARGET QDL (NEGATE *1 WORD OR QMRK) ;
 
 
 # Cealkka
