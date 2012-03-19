@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feedback pos="A" dialect="GG">
+<!-- NOTE: a dialect setting here will apply feedbacks only to forms with 
+     this dialect, all others will be excluded.-->
+<!-- <feedback pos="A" dialect="GG"> -->
+<feedback pos="A">
 
 <!--Attr is here a case-feature.... ?? -->
 
@@ -81,7 +84,11 @@ t-suffix
 
 <!--Special feedback for LEMMA="buorre" as attribute - (but it does not get Attr-tag!) - semiagreement with noun: -->
 
-    <l>buorre</l>
+    <!-- where do these go?
+
+	-->
+  <stems>
+    <l lemma="buorre">
       <msg grade="Pos" case="Nom" number="Sg">nom_sg</msg>
       <msg grade="Pos" case="Nom" number="Pl">nom_pl</msg>
       <msg grade="Pos" case="Acc" number="Sg">acc_sg</msg>
@@ -96,63 +103,75 @@ t-suffix
       <msg grade="Pos" case="Com" number="Pl">com_pl</msg>
       <msg grade="Pos" case="Ess">ess</msg>
       <note>buorre, som attributt</note>
+    </l>
 
-      <l>
-      <msg dialect="NOT-GG" grade="Comp" attribute="1">attribute_like_pred</msg>
-      <msg dialect="NOT-GG" grade="Superl" attribute="1">attribute_like_pred</msg>
+    <!-- TODO: global dialect of GG and msg NOT-GG will exclude all forms
+    		corresponding to this set
+    -->
+    <l>
+      <msg dialect="NOT-GG" grade="Comp" attributive="Attr">attribute_like_pred</msg>
+      <msg dialect="NOT-GG" grade="Superl" attributive="Attr">attribute_like_pred</msg>
       <note>Attr = Nom</note>
     </l>
 
+    <!-- TODO: global dialect of GG and msg NOT-KJ is redundant unless other
+    			dialects will be added, in which case there should not be a
+    			global dialect setting
+    -->
 
-      <l stem="2syll">
-      <msg dialect="NOT-KJ" grade="Comp" attribute="1">attribute_like_pred</msg>
-      <msg dialect="NOT-KJ" grade="Superl" attribute="1">attribute_like_pred</msg>
+    <l stem="2syll">
+      <msg dialect="NOT-KJ" grade="Comp" attributive="Attr">attribute_like_pred</msg>
+      <msg dialect="NOT-KJ" grade="Superl" attributive="Attr">attribute_like_pred</msg>
       <note>Attr: dábálet, dábáleamos</note>
     </l>
-
-
-
-      <l stem="3syll">
-      <msg dialect="NOT-KJ" grade="Comp" attribute="1">et-suffix</msg>
-      <msg dialect="NOT-KJ" grade="Superl" attribute="1">attribute_like_pred</msg>
+    <l stem="3syll">
+      <msg dialect="NOT-KJ" grade="Comp" attributive="Attr">et-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl" attributive="Attr">attribute_like_pred</msg>
       <note>Attr = Nom</note>
     </l>
 
-
-      <l attrsuffix="0">
-      <msg grade="Pos" attribute="1">attribute_like_pred</msg>
+    <l attrsuffix="0">
+      <msg grade="Pos" attributive="Attr">attribute_like_pred</msg>
       <note>Attr = Nom</note>
     </l>
-      <l attrsuffix="a">
-      <msg grade="Pos" attribute="1">a-suffix</msg>
+    
+    <l attrsuffix="a">
+      <msg grade="Pos" attributive="Attr">a-suffix</msg>
       <note>galmmas -a</note>
     </l>
-      <l attrsuffix="s">
-      <msg grade="Pos" attribute="1">s-suffix</msg>
+
+    <l attrsuffix="s">
+      <msg grade="Pos" attributive="Attr">s-suffix</msg>
       <note>somá -s</note>
     </l>
-      <l attrsuffix="es">
-      <msg grade="Pos" attribute="1">es-suffix</msg>
+
+    <l attrsuffix="es">
+      <msg grade="Pos" attributive="Attr">es-suffix</msg>
       <note>fiskat -es</note>
     </l>
-      <l attrsuffix="os">
-      <msg grade="Pos" attribute="1">os-suffix</msg>
+
+    <l attrsuffix="os">
+      <msg grade="Pos" attributive="Attr">os-suffix</msg>
       <note>headju -os</note>
     </l>
-      <l attrsuffix="is">
-      <msg grade="Pos" attribute="1">is-suffix</msg>
+
+    <l attrsuffix="is">
+      <msg grade="Pos" attributive="Attr">is-suffix</msg>
       <note>gávvil -is</note>
     </l>
-      <l attrsuffix="i_e">
-      <msg grade="Pos" attribute="1">i_e</msg>
+
+    <l attrsuffix="i_e">
+      <msg grade="Pos" attributive="Attr">i_e</msg>
       <note>viiddis -e-</note>
     </l>
-      <l attrsuffix="u_o">
-      <msg grade="Pos" attribute="1">u_o</msg>
+
+    <l attrsuffix="u_o">
+      <msg grade="Pos" attributive="Attr">u_o</msg>
       <note>gearggus -o-</note>
     </l>
 
-  <stems>
+	<!-- TOOD: move other 2syll only things up here and test? 
+	-->
     <l stem="2syll">
       <msg>bisyllabic_stem</msg>
     </l>
@@ -200,7 +219,7 @@ t-suffix
     </l>
 
     <l stem="Csyll" gradation="yes">
-      <msg attribute="1">weak_grade</msg>
+      <msg attributive="Attr">weak_grade</msg>
       <msg grade="Pos" case="Nom" number="Sg">weak_grade</msg>
       <msg grade="Pos" case="Acc" number="Sg">strong_grade</msg>
       <msg grade="Pos" case="Gen" number="Sg">strong_grade</msg>
@@ -514,6 +533,10 @@ t-suffix
     </l>
 
 
+    <!-- TODO: global dialect of GG and msg NOT-KJ is redundant unless other
+    			dialects will be added, in which case there should not be a
+    			global dialect setting
+    -->
      <l stem="3syll">
       <msg dialect="NOT-KJ" grade="Comp" case="Nom" number="Sg">eabbo-suffix</msg>
       <msg dialect="NOT-KJ" grade="Comp" case="Nom" number="Pl">eappot-suffix</msg>
@@ -528,7 +551,7 @@ t-suffix
       <msg dialect="NOT-KJ" grade="Comp" case="Com" number="Sg">eappuin-suffix</msg>
       <msg dialect="NOT-KJ" grade="Comp" case="Com" number="Pl">eappuiguin-suffix</msg>
       <msg dialect="NOT-KJ" grade="Comp" case="Ess">eabbon-suffix</msg>
-      <msg dialect="NOT-KJ" grade="Superl"  attribute="1">eamos-suffix</msg>
+      <msg dialect="NOT-KJ" grade="Superl"  attributive="Attr">eamos-suffix</msg>
       <msg dialect="NOT-KJ" grade="Superl" case="Nom" number="Sg">eamos-suffix</msg>
       <msg dialect="NOT-KJ" grade="Superl" case="Nom" number="Pl">epmosat-suffix</msg>
       <msg dialect="NOT-KJ" grade="Superl" case="Acc" number="Sg">epmosa-suffix</msg>
@@ -545,8 +568,11 @@ t-suffix
       <note>čoaskásat - čoaskáseamos - suffixes</note>
     </l>
 
+    <!-- TODO: global dialect of GG and msg NOT-GG will exclude all forms
+    		corresponding to this set
+    -->
      <l stem="3syll">
-      <msg grade="Comp" attribute="1">at-suffix</msg>
+      <msg grade="Comp" attributive="Attr">at-suffix</msg>
       <msg dialect="NOT-GG" grade="Comp" case="Nom" number="Sg">at-suffix</msg>
       <msg dialect="NOT-GG" grade="Comp" case="Nom" number="Pl">abbot-suffix</msg>
       <msg dialect="NOT-GG" grade="Comp" case="Acc" number="Sg">abbo-suffix</msg>
@@ -560,7 +586,7 @@ t-suffix
       <msg dialect="NOT-GG" grade="Comp" case="Com" number="Sg">abbuin-suffix</msg>
       <msg dialect="NOT-GG" grade="Comp" case="Com" number="Pl">abbuiguin-suffix</msg>
       <msg dialect="NOT-GG" grade="Comp" case="Ess">abbon-suffix</msg>
-      <msg dialect="NOT-GG" grade="Superl" attribute="1">amos-suffix</msg>
+      <msg dialect="NOT-GG" grade="Superl" attributive="Attr">amos-suffix</msg>
       <msg dialect="NOT-GG" grade="Superl" case="Nom" number="Sg">amos-suffix</msg>
       <msg dialect="NOT-GG" grade="Superl" case="Nom" number="Pl">amosat-suffix</msg>
       <msg dialect="NOT-GG" grade="Superl" case="Acc" number="Sg">amosa-suffix</msg>
@@ -592,7 +618,7 @@ t-suffix
       <msg grade="Comp" case="Com" number="Sg">buin-suffix</msg>
       <msg grade="Comp" case="Com" number="Pl">buiguin-suffix</msg>
       <msg grade="Comp" case="Ess">bun-suffix</msg>
-      <msg grade="Comp" attribute="1">t-suffix</msg>
+      <msg grade="Comp" attributive="Attr">t-suffix</msg>
       <msg grade="Superl" case="Nom" number="Pl">at-suffix</msg>
       <msg grade="Superl" case="Acc" number="Sg">a-suffix</msg>
       <msg grade="Superl" case="Acc" number="Pl">aid-suffix</msg>
@@ -609,7 +635,7 @@ t-suffix
     </l>
 
      <l stem="Csyll">
-      <msg grade="Comp"  attribute="1">t-suffix</msg>
+      <msg grade="Comp"  attributive="Attr">t-suffix</msg>
       <msg grade="Comp" case="Nom" number="Sg">t-suffix</msg>
       <msg grade="Comp" case="Nom" number="Pl">but-suffix</msg>
       <msg grade="Comp" case="Acc" number="Sg">bu-suffix</msg>
