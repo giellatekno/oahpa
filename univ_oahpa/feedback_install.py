@@ -140,6 +140,9 @@ from univ_drill.models import Form
 from django.db import transaction
 from itertools import product
 
+
+_ERRORTMP = open('error.feedback.log', 'w')
+
 from collections import OrderedDict
 
 def chunks(l, n):
@@ -243,7 +246,7 @@ class Feedback_install(object):
 		("N", ('case', 'number', )),
 		("A", ('case', 'number', 'grade', 'attributive', )),
 		("Num", ('case', 'number',)),
-		("V", ('personnumber', 'tense', 'mood',)),
+		("V", ('mood', 'tense', 'personnumber', )),
 	])
 
 	# NOTE: processing of dialects and lemma exclusions is not something that
@@ -520,12 +523,13 @@ class Feedback_install(object):
 
 		print >> sys.stdout, "Fetching wordform attributes."
 		
-		forms = self.form_objects.only(*values)[0:2000] # Get only the things we need.
+		forms = self.form_objects.only(*values) # Get only the things we need.
 		total = forms.count()
 		form_keys = {}
 
 		# Since this isn't really in the database, it won't be included in iteration later
-		self.default_attributes['grade'].add('Pos')
+		if self.file_pos == 'A':
+			self.default_attributes['grade'].add('Pos')
 
 		# .iterator() necessary because QuerySet is very large.
 		for f in forms.iterator():
@@ -557,6 +561,8 @@ class Feedback_install(object):
 				print "  Fetching wordform attributes: %d left" % total 
 
 		form_keys_key_set = set(form_keys.keys())
+		# print list(form_keys_key_set)[0:20]
+		# raw_input()
 
 		# Here we check through all of the feedback elements and figure out
 		# whether:
@@ -589,6 +595,8 @@ class Feedback_install(object):
 		# 
 		print >> sys.stdout, "Compiling word/tag attribute permutations and msg names"
 		attrs_and_messages = {}
+		# collect form and msg ids here
+		form_infos = []
 		for el in self.feedback_elements:
 			kwargs = get_attrs_with_defaults(el, 
 											self.word_attr_names, 
@@ -627,6 +635,7 @@ class Feedback_install(object):
 				if self.feedback_global_dialect:
 					feedback_dialects = [self.feedback_global_dialect]
 
+				print >> sys.stderr, "\nSearching for Wordforms matching ... " 
 				print >> sys.stderr, render_kwargs(kwargs)
 				print >> sys.stderr, render_kwargs(tagkwargs)
 
@@ -637,7 +646,9 @@ class Feedback_install(object):
 				
 				def intersect_param_set(param_set):
 					print >> sys.stderr, "Intersecting..."
+					# print list(param_set)[0:10]
 					intersection = form_keys_key_set & param_set
+					# raw_input()
 					for item in intersection:
 						if lemma:
 							form_keys[item] = [
@@ -656,6 +667,12 @@ class Feedback_install(object):
 							]
 
 						# Then for a set of attributes, append the message id
+						print >> _ERRORTMP, unicode(item).encode('utf-8')
+						for f_id, f_lem, f_tag, f_dial in form_keys[item]:
+							# Collect IDs and msgs
+							form_infos.append((f_id, f_lem, f_tag, m))
+							print >> _ERRORTMP, unicode('%s - %s - %s' % (m, f_lem, f_tag)).encode('utf-8')
+
 						if item in attrs_and_messages:
 							attrs_and_messages[item].append(m)
 						else:
@@ -701,9 +718,6 @@ class Feedback_install(object):
 		# forms = self.form_objects.only(*values)
 		total_forms = self.form_objects.count()
 
-		print len(attrs_and_messages.keys())
-		print >> sys.stdout, "Collecting form and msg ids for %d forms..." % total_forms
-
 		# def form_key(f):
 			# return tuple(get_attrs(f.word, self.word_attr_names) + \
 							# get_attrs(f.tag, self.tag_attr_names))
@@ -718,32 +732,45 @@ class Feedback_install(object):
 		# Form ID and message IDs will later be expanded and used to insert
 		# into the database in bulk.
 		#
+
 		print >> sys.stdout, "Collecting for insert."
-		form_to_msgs = []
-		for form_key, form_info in form_keys.iteritems():
-			total_forms -= 1
-			for inf in form_info:
-				form_id, lemma, tag_string, dialects = inf 
 
-				msg_strings = attrs_and_messages.get(form_key, False)
+		form_id_msg_id = []
+		for f_id, f_lemma, f_tag, f_msg in form_infos:
+			msg_id = feedbackmsg_ids.get(f_msg)
+			form_id_msg_id.append((f_id, msg_id))
 
-				if msg_strings:
-					msg_ids = [feedbackmsg_ids.get(msg_string) for msg_string in msg_strings]
-					# If in doubt, print this.
-					form_entry = (lemma, tag_string, msg_strings, form_id, msg_ids)
-					form_to_msgs.append(form_entry)
-				else:
-					continue
+
+
+		### print >> sys.stdout, "Collecting for insert."
+		### form_to_msgs = []
+		### for form_key, form_info in form_keys.iteritems():
+		### 	total_forms -= 1
+		### 	for inf in form_info:
+		### 		form_id, lemma, tag_string, dialects = inf 
+
+		### 		msg_strings = attrs_and_messages.get(form_key, False)
+
+		### 		if msg_strings:
+		### 			msg_ids = [feedbackmsg_ids.get(msg_string) for msg_string in msg_strings]
+		### 			# If in doubt, print this.
+		### 			form_entry = (lemma, tag_string, msg_strings, form_id, msg_ids)
+		### 			print >> _ERRORTMP, form_entry
+		### 			form_to_msgs.append(form_entry)
+		### 		else:
+		### 			continue
 
 		# Expand (id, [msgid, msgid, msgid]) into 
 		#        [(id, msgid), (id, msgid), (id, msgid)]
 		# Produce a set to avoid duplicates for bulk insert.
 		# 
-		form_id_msg_ids = list(set([
-			(id, msgid) 
-			for _, _, _, id, msgids in form_to_msgs
-			for msgid in msgids
-		]))
+		# form_id_msg_ids = list(set([
+			# (id, msgid) 
+			# for _, _, _, id, msgids in form_to_msgs
+			# for msgid in msgids
+		# ]))
+
+		form_id_msg_ids = list(set(form_id_msg_id))
 
 		total_objs = len(form_id_msg_ids)
 
