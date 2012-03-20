@@ -558,12 +558,9 @@ def get_feedback(self, wordform, language):
 
 	language = switch_language_code(language)
 	
-	print wordform.id
-	print wordform.feedback.all()
 	feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
 					.order_by('feedbacktext__order')\
 					.values_list('feedbacktext__message', flat=True)
-	print feedbacks
 
 	message_list = []
 	if feedbacks:
@@ -572,8 +569,12 @@ def get_feedback(self, wordform, language):
 			message_list.append(text)
 	
 	self.feedback = ' \n '.join(list(message_list))
-	print self.feedback
-	print '\n'
+	# NOTE: debug
+	# print wordform.id
+	# print wordform.feedback.all()
+	# print feedbacks
+	# print self.feedback
+	# print '\n'
 
 def select_words(self, qwords, awords):
 	"""
