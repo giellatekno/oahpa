@@ -4,7 +4,7 @@
 # Lene should decide upon using the same new structure for both vastas and rest
 # or whether not.
 # usage:
-#  perl qa-test_dialogue_vasta-changes.pl vasta_test.xml vastas
+#  perl qa-test_dialogue_vasta-changes.pl vasta_test.xml
 # output in tmp_data.txt
 
 use File::Spec;
