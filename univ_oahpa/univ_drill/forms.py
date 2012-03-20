@@ -1622,89 +1622,91 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_log.txt','w')
+    #logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_log.txt','w')
     
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
 
-    #s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        #s.connect((host,port)) # on victorio
+        s.connect((host,port)) # on victorio
         sys.stdout.write('%')
 
         analysis = ""
         question_lookup = "echo \"" + qtext + "\"" + preprocess
         words = os.popen(question_lookup).readlines()
-        for qword in qwords:
-		cohort=""
-		#logfile.write(qword+"\t")
-		#w = w.strip()
-            #if qwords and qwords.has_key(w):
-             #   qword = qwords[w]
-              #  if qword.has_key('word'):
-               #     if qword.has_key('fullform') and qword['fullform']:
-                #        cohort = cohort + "\"<" + qword['fullform'][0].encode('utf-8') + ">\"\n"
-                 #       lemma = Word.objects.filter(id=qword['word'])[0].lemma
-                  #      cohort = cohort + "\t\"" + lemma + "\""
-                   # if qword.has_key('tag') and qword['tag']:
-                    #    string = Tag.objects.filter(id=qword['tag'])[0].string
-                     #   tag = string.replace("+"," ")
-                      #  cohort = cohort + " " + tag + "\n"
-                #else:
-                 #   w=w.lstrip().rstrip()
-                    #s.send(w)  # on victorio
-                    #cohort = s.recv(size)
-                  #  word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-		   # morfanal = os.popen(word_lookup).readlines()
-		    #for row in morfanal:
-			#    row = row.strip()
-			 #   cohort = cohort + row + "\n" + "\t"  # as the same thing in cealkka
-            #else:
-	        #w=w.strip()
-                #s.send(w)  # on victorio
-                #cohort = s.recv(size)
-		#w = force_unicode(qword['fullform']).encode('utf-8')  # Words that are given.
-		w = qword.lstrip().rstrip()
-		word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-		morfanal = os.popen(word_lookup).readlines()
-		for row in morfanal:
-			row = row.strip()
-			cohort = cohort + row + "\n" + "\t"
-		if not cohort or cohort == w:
-			cohort = w + "\n"
-		if cohort=="error":
-			raise Http500
-		analysis = analysis + cohort
+        for qword in words: # or qwords ?
+            cohort=""
+            w = qword.lstrip().rstrip()
+            s.send(w)  # on victorio
+            cohort = s.recv(size)
+		  
+            if not cohort or cohort == w:
+                cohort = w + "\n"
+            if cohort=="error":
+                raise Http500
+            analysis = analysis + cohort
 
         if self.gametype=="sahka":
             analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
         else:
             analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
-	#logfile.write(analysis+"\n")
+	   #logfile.write(analysis+"\n")
         data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
         words = os.popen(data_lookup).readlines()
         analyzed=""
         for w in words:
             w=w.strip()
-            #s.send(w)  # on vic
-            #analyzed = analyzed + s.recv(size)
+            s.send(w)  # on vic
+            analyzed = analyzed + s.recv(size)
+        s.send("q")  # on vic
+        s.close()
+
+    except socket.error:    # port 9000 not available => morph. analysis will be done by ped-sme.fst
+        # analyse words in the question
+        analysis = ""
+        question_lookup = "echo \"" + qtext + "\"" + preprocess
+        words = os.popen(question_lookup).readlines()
+        for qword in words: # or qwords ?
+            cohort=""
+            w = qword.lstrip().rstrip()
             word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-	    morfanal = os.popen(word_lookup).readlines()
-	    ans_cohort=""
-	    for row in morfanal:
-		    row = row.strip()
-		    ans_cohort = ans_cohort + row + "\n" + "\t"
+            morfanal = os.popen(word_lookup).readlines()
+            for row in morfanal:
+                row = row.strip()
+                cohort = cohort + row + "\n" + "\t"
+            if not cohort or cohort == w:
+                cohort = w + "\n"
+            if cohort=="error":
+                raise Http500
+            analysis = analysis + cohort
+
+        if self.gametype=="sahka":
+            analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
+        else:
+            analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
+
+	    #logfile.write(analysis+"\n")
+		
+		# analyse words in the answer
+		
+        data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
+        words = os.popen(data_lookup).readlines()
+        analyzed=""
+        for w in words:
+            w=w.strip()	
+            word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+            morfanal = os.popen(word_lookup).readlines()
+            ans_cohort=""
+            for row in morfanal:
+                row = row.strip()
+                ans_cohort = ans_cohort + row + "\n" + "\t"
             analyzed = analyzed + ans_cohort
-	    
-            analysis3=w + analyzed + w
+   # except socket.timeout:
+    #    raise Http404("Technical error, please try again later.")            
 
-    except socket.timeout:
-        raise Http404("Technical error, please try again later.")            
-
-    #s.send("q")  # on vic
-    #s.close()
     #logfile.write(analyzed+"\n")
     analysis = analysis + analyzed
     analysis = analysis + "\"<.>\"\n\t\".\" CLB"
@@ -1728,7 +1730,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     lemma=""
     for line in checked:
         line = line.strip()
-	logfile.write(line+"\n")
+	   #logfile.write(line+"\n")
 
         #Find the lemma first
         matchObj=constantObj.search(line)
@@ -2097,10 +2099,10 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
 
-    #s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        #s.connect((host,port)) # on vic
-        #sys.stdout.write('%')
+        s.connect((host,port)) # on vic
+        sys.stdout.write('%')
 
         analysis = ""
         data_lookup = "echo \"" + qtext + "\"" + preprocess
@@ -2115,69 +2117,61 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
             # All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
             w = force_unicode(word).encode('utf-8')
             w=w.lstrip().rstrip()
-            #s.send(w) # on victorio
-            #cohort = s.recv(size)
-            word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-            morfanal = os.popen(word_lookup).readlines()
-            for row in morfanal:
-                cohort = cohort + row
-	       #print cohort
+            s.send(w) # on victorio
+            cohort = s.recv(size)
             analysis = analysis + cohort
-
-        logfile.write(analysis+"\n")
-	print analysis
+            #logfile.write(analysis+"\n")
+            print analysis
         ### Lemmas and POS tags of task words are gathered into the variables 
         ### tasklemmas and taskpos respectively. Tasklemmas and taskpos will be 
         ### sent to CG together with the morph. analysed question and answer.
         tasklemmas = ""
         for aword in awords:
             print aword
-	    #logfile.write(aword)
+	        #logfile.write(aword)
             if aword.has_key('taskword') and aword['taskword']:
                 tlemma = aword['fullform']
                 tlemma = force_unicode(tlemma).encode('utf-8')
                 tlemma = tlemma.strip()
                 print tlemma
-		logfile.write(tlemma+" ")
+		        #logfile.write(tlemma+" ")
                 tasktag = Tag.objects.filter(id=aword['tag'])
                 tasktagstring = tasktag[0].string
                 taskpos = tasktag[0].pos
                 ttag = tasktagstring.replace("+"," ")
                 print ttag
-		logfile.write(ttag+"\n")
-                #s.send(tlemma)  # on vic
-                #word_lookup = s.recv(size)  # on vic
-		logfile.write(word_lookup)
-                ans_cohort = ""
-                word_lookup = "echo \"" + tlemma + "\"" + lookup + lookup2cg  # on Heli's machine
-                rows = os.popen(word_lookup).readlines()
+		        #logfile.write(ttag+"\n")
+                s.send(tlemma)  # on vic
+                word_lookup = s.recv(size)  # on vic
+		        #logfile.write(word_lookup)
+                ans_cohort=""
                 #print rows
-		#rows = word_lookup.split("\n")  # on vic
+                rows = word_lookup.split("\n")  # on vic
                 morfanal = ""
                 for row in rows:
                     ans_cohort = ans_cohort + row
-		    logfile.write(row + "\n")
+		              #logfile.write(row + "\n")
                     malemmas = row.split("\"")
-		    if row:
-			    malemma = malemmas[1]
+                    if row:
+			             malemma = malemmas[1]
                     malemma_without_hash = malemma.replace('#','')
-		    taglist = ttag.split()
-		    tag_match = 1
-		    for entag in taglist:
-			    if entag not in row:
-				    tag_match = 0
+                    taglist = ttag.split()
+                    tag_match = 1
+                    for entag in taglist:
+                        if entag not in row:
+                            tag_match = 0
                     if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
-                            print malemmas
-			    logfile.write(malemma+"\n")
-                            print malemma
-                            print malemma_without_hash
-                            tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
-		    morfanal = morfanal + ans_cohort  # END
+                        print malemmas
+			             #logfile.write(malemma+"\n")
+                        print malemma
+                        print malemma_without_hash
+                        tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
+                    morfanal = morfanal + ans_cohort  # END
                     
         analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
         #####
         print analysis
-	logfile.write(analysis)
+	   #logfile.write(analysis)
         data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
         word = os.popen(data_lookup).readlines()
         #print word
@@ -2185,28 +2179,98 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
         for c in word:		
             c=c.strip()
             print c
-            #s.send(c) # on vic
-            #analyzed = analyzed + s.recv(size)
+            s.send(c) # on vic
+            analyzed = analyzed + s.recv(size)
+            
+        s.send("q")  # on vic
+        s.close()  # on vic
+
+
+    except socket.error:
+        analysis = ""
+        data_lookup = "echo \"" + qtext + "\"" + preprocess
+        words = os.popen(data_lookup).readlines()
+        print question_id
+        #print words
+        #print qwords
+        for word in words:
+            w=""
+            cohort=""
+            print word
+            # All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
+            w = force_unicode(word).encode('utf-8')
+            w=w.lstrip().rstrip()
+            word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+            morfanal = os.popen(word_lookup).readlines()
+            for row in morfanal:
+                cohort = cohort + row
+	       #print cohort
+            analysis = analysis + cohort
+        tasklemmas = ""
+        for aword in awords:
+            print aword
+	       #logfile.write(aword)
+            if aword.has_key('taskword') and aword['taskword']:
+                tlemma = aword['fullform']
+                tlemma = force_unicode(tlemma).encode('utf-8')
+                tlemma = tlemma.strip()
+                print tlemma
+		        #logfile.write(tlemma+" ")
+                tasktag = Tag.objects.filter(id=aword['tag'])
+                tasktagstring = tasktag[0].string
+                taskpos = tasktag[0].pos
+                ttag = tasktagstring.replace("+"," ")
+                print ttag
+		        #logfile.write(ttag+"\n")
+                ans_cohort = ""
+                word_lookup = "echo \"" + tlemma + "\"" + lookup + lookup2cg  # on Heli's machine
+                rows = os.popen(word_lookup).readlines()
+                morfanal = ""
+                for row in rows:
+                    ans_cohort = ans_cohort + row
+		            #logfile.write(row + "\n")
+                    malemmas = row.split("\"")
+                    if row:
+			             malemma = malemmas[1]
+                    malemma_without_hash = malemma.replace('#','')
+                    taglist = ttag.split()
+                    tag_match = 1
+                    for entag in taglist:
+                        if entag not in row:
+                            tag_match = 0
+                    if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
+                        print malemmas
+			             #logfile.write(malemma+"\n")
+                        print malemma
+                        print malemma_without_hash
+                        tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
+                    morfanal = morfanal + ans_cohort  # END
+                    
+        analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
+        # analyse the user's answer
+        data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
+        word = os.popen(data_lookup).readlines()
+        #print word
+        analyzed=""
+        for c in word:		
+            c=c.strip()    
             word_lookup = "echo \"" + force_unicode(c).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
             morfanal = os.popen(word_lookup).readlines()
-	    ans_cohort=""
+            ans_cohort=""
             for row in morfanal:
                 ans_cohort = ans_cohort + row
-	    analyzed = analyzed + ans_cohort
-        analysis3=c + analyzed + c
+            analyzed = analyzed + ans_cohort
 
-    except socket.timeout:
-        raise Http404("Technical error, please try again later.")            
+    #except socket.timeout:    
+        #raise Http404("Technical error, please try again later.")            
 
-    #s.send("q")  # on vic
-    #s.close()  # on vic
-
+    
     analysis = analysis + analyzed
     analysis = analysis + "\"<.>\"\n\t\".\" CLB"
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
     print analysis
-    logfile.write(analysis)
+    #logfile.write(analysis)
     ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
     checked = os.popen(ped_cg3).readlines()
     #print checked
