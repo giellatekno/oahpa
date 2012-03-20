@@ -6,61 +6,6 @@
 # usage:
 #  perl qa-test_dialogue_vasta-changes.pl vasta_test.xml vastas
 # output in tmp_data.txt
-# for instance as 
-
-# "<Makkár>"
-#          "makkár" Pron Interr Sg Nom
-#          "makkár" Pron Interr Attr
-# "<juhkamuš>"
-#          "juhkamuš" N Sg Nom
-#          "juhkat" V* TV Der/muš N Sg Nom
-# "<mis>"
-#          "mun" Pron Pers Pl1 Loc
-# "<lea>"
-#          "leat" V IV Ind Prs Sg3
-# "<^vastas>"
-#          "^vastas" QDL 1_Loc_PrsSg3_Nom
-#          "gohppu" N
-#          "leat" V
-#          "deaja" N
-# "<Gohpus>"
-#          "gohppu" N Sg Loc
-#          "gohppu" N Sg Acc PxSg3
-#          "gohppu" N Sg Gen PxSg3
-# "<lea>"
-#          "leat" V IV Ind Prs Sg3
-# "<deadja>"
-#          "deadja" N CGErr Sg Gen
-#          "deadja" N Sg Nom
-#          "deadja" N CGErr Sg Acc
-# "<.>"
-#          "." CLB
-# "<Gohpus1>"
-#          "gohppu" N Sg Loc
-#          "gohppu" N Sg Acc PxSg3
-#          "gohppu" N Sg Gen PxSg3
-# "<lea1>"
-#          "leat" V IV Ind Prs Sg3
-# "<deadja1>"
-#          "deadja" N CGErr Sg Gen
-#          "deadja" N Sg Nom
-#          "deadja" N CGErr Sg Acc
-# "<.>"
-#          "." CLB
-# "<Gohpus2>"
-#          "gohppu" N Sg Loc
-#          "gohppu" N Sg Acc PxSg3
-#          "gohppu" N Sg Gen PxSg3
-# "<lea2>"
-#          "leat" V IV Ind Prs Sg3
-# "<deadja2>"
-#          "deadja" N CGErr Sg Gen
-#          "deadja" N Sg Nom
-#          "deadja" N CGErr Sg Acc
-# "<.>"
-#          "." CLB
-
-
 
 use File::Spec;
 use XML::Twig;
@@ -94,46 +39,30 @@ foreach my $test ($root->children('test')){
   print "processing =>ID: $i\n";
   my $q = $test->first_child_text('q');
   foreach my $r ($test->children('ag')){
-    #my $a = $r->first_child('a')->text();
-    print "question: $q\n";
-    print "s: $s\n";
-    #print "answer: $a\n";
-
-    my $command1 = "echo '$q $s' | preprocess | $lon | lookup2cg | " ;
-
-    open (TMPFILE, ">>$tmp_file");
-    open (CMD1, $command1);
-    while (<CMD1>){
-      if ($_ !~ m/^(\s+\"\^vastas\"\s+)(.*)$/)
-	{
-	  print TMPFILE;
-	}
-      
-      if ($_ =~ m/^(\s+\"\^vastas\"\s+)(\?.*)$/) {
-	s/^(\s+\"\^vastas\"\s+)(\?.*)$/$1$i/;
-	print TMPFILE;
-	foreach my $l ($r->children('l')){
-	  print TMPFILE "         \"$l->{'att'}->{'base'}\" $l->{'att'}->{'pos'}\n";
-	}
-      } 
-    }
-    
-    close CMD1;
-      
     foreach my $a ($r->children('a')){
       my $a_txt = $a->text();
-      
-      my $command2 = "echo '$a_txt' | preprocess | $lon | lookup2cg | " ;
-      open (CMD2, $command2);
-      while (<CMD2>){
-	print TMPFILE;
+      print "question: $q \n s: $s \n answer: $a_txt\n";
+      my $command1 = "echo '$q $s $a_txt' | preprocess | $lon | lookup2cg | " ;
+      open (TMPFILE, ">>$tmp_file");
+      open (CMD1, $command1);
+      while (<CMD1>){
+	if ($_ !~ m/^(\s+\"\^vastas\"\s+)(.*)$/)
+	  {
+	    print TMPFILE;
+	  }
+	if ($_ =~ m/^(\s+\"\^vastas\"\s+)(\?.*)$/){
+	  s/^(\s+\"\^vastas\"\s+)(\?.*)$/$1$i/;
+	  print TMPFILE;
+	  foreach my $l ($r->children('l')){
+	    print TMPFILE "         \"$l->{'att'}->{'base'}\" $l->{'att'}->{'pos'}\n";
+	  }
+	}
       }
-      print TMPFILE "\n\"<\.>\"\n\n";
+      print TMPFILE "\"<\.>\"\n\n";
       print "=========================================================\n";
-      close CMD2;
+      close CMD1;
     }
-    
-    close (TMPFILE);     
+    close (TMPFILE);
   }
   print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 }
