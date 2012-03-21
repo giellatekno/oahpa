@@ -1015,7 +1015,7 @@ class MorfaQuestion(OahpaQuestion):
 		#print baseform.tag, correct.tag
 		
 		# Retrieve feedback information
-		# TODO: self.get_feedback(correct, language)
+		self.get_feedback(correct, language)
 		
 		# Take only the first translation for the tooltip
 		if len(translations) > 0:
@@ -1538,7 +1538,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 				self.lemma = False
 
 		# Retrieve feedback information
-		self.get_feedback(answer_word_el,answer_tag_el,self.lemma,dialect,language)
+		# self.get_feedback(answer_word_form, language)
 
 		# Format answer string
 		for w in atext.split():
