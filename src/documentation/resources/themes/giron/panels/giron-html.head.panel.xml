@@ -27,8 +27,8 @@ xmlns:jx="http://apache.org/cocoon/templates/jx/1.0">
             theme="common"/>
             <css url="leather-dev.css" media="screen" rel="alternate stylesheet"
             theme="common"/>
-            <css url="pelt.screen.css" media="screen" theme="Pelt"/>
-            <css url="pelt.print.css" media="print"/>
+            <css url="giron.screen.css" media="screen" theme="Pelt"/>
+            <css url="giron.print.css" media="print"/>
             <css>/* Extra css */
 p.quote {
 margin-left: 2em;
@@ -43,7 +43,7 @@ font-family: monospace;
         <forrest:property name="custom">
             <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
         </forrest:property>
-        <forrest:property name="theme" value="pelt"/>
+        <forrest:property name="theme" value="giron"/>
         </forrest:contract>
         <forrest:contract name="siteinfo-meta-navigation"
         dataURI="cocoon://#{$getRequest}.navigation.xml"/>
