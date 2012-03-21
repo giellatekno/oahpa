@@ -205,6 +205,8 @@ class Entry(object):
 			("gradation", None),
 			("diphthong", None),
 			("rime", None),
+			("attrsuffix", None),
+			("compsuffix", None),
 			("soggi", None),
 			("stem", None),
 			("type", "wordtype"),
