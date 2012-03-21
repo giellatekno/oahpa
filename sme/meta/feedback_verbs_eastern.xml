@@ -4,6 +4,8 @@
   <stems>
 
     <l stem="2syll">
+      <msg mood="PrfPrc">bisyllabic_stem</msg>
+      <msg mood="Ger">bisyllabic_stem</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg1">bisyllabic_stem</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">bisyllabic_stem</msg>
       <msg mood="Ind" tnse="Prs" personnumber="Sg3">bisyllabic_stem</msg>
@@ -18,6 +20,8 @@
     </l>
 
     <l stem="3syll">
+      <msg mood="PrfPrc">trisyllabic_stem</msg>
+      <msg mood="Ger">trisyllabic_stem</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg1">trisyllabic_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">trisyllabic_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg3">trisyllabic_stem_no_gradation</msg>
@@ -32,6 +36,8 @@
     </l>
 
     <l stem="Csyll">
+      <msg mood="PrfPrc">contracted_stem</msg>
+      <msg mood="Ger">contracted_stem</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg1">contracted_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">contracted_stem_no_gradation</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg3">contracted_stem_no_gradation</msg>
@@ -46,6 +52,7 @@
     </l>
 
     <l stem="2syll">
+      <msg mood="Ger">weak_grade</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg1">weak_grade</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">weak_grade</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg3">strong_grade</msg>
@@ -65,7 +72,14 @@
       <note>diftongforenkling</note>
     </l>
 
+    <l diphthong="yes" soggi="u">
+      <msg mood="PrfPrc">diphthong_simplification</msg>
+      <note>diftongforenkling</note>
+    </l>
+
+
     <l soggi="i">
+      <msg mood="PrfPrc">i_á</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg1">i_á</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">i_á</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg3">i_á</msg>
@@ -76,6 +90,7 @@
     </l>
 
     <l soggi="u">
+      <msg mood="PrfPrc">u_o</msg>
       <msg mood="Ind" tense="Prs" personnumber="Du1">u_o</msg>
       <msg mood="Ind" tense="Prs" personnumber="Pl3">u_o</msg>
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">u_o</msg>
@@ -103,6 +118,8 @@
     </l>
 
     <l stem="3syll">
+      <msg mood="PrfPrc">an-suffix</msg>
+      <msg mood="Ger">ettiin-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg1">an-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg2">at-suffix</msg>
       <msg mood="Ind" tense="Prs" personnumber="Sg3">a-suffix</msg>
