@@ -16,23 +16,25 @@
 */
 
 body {
-    margin: 0px 0px 0px 0px; font-family: Verdana, Helvetica, sans-serif;
+    margin: 0px 0px 0px 0px; font-family: "Verdana", Helvetica, sans-serif;
     background-color: #FFFFFF;
     color: #000000;
-    font-size: 100%;
+    font-size: 90%;
 }
 
 p {
-  line-height: 120%;
+  line-height: 160%;
   text-align: left;
-  margin-top: .5em;
-  margin-bottom: 1em;
+  margin-top: .8em;
+  margin-bottom: 0em;
+  font-family: "Verdana";
+  
 }
 
 em {
-    font-weight: bold;
+    font-weight: normal;
     font-style: normal;
-    color: darkred;
+    color: #41B7D8;
 }
 
 /* example style for lene */
@@ -54,10 +56,10 @@ to view the changes, refresh the view of the file in ones web browser.*/
 }
 
 
-h1, h2, h3, h4, h5, h6 { font-family: Verdana, Arial, Helvetica, sans-serif; }
+h1, h2, h3, h4, h5, h6 { font-family: Georgia, Arial, Helvetica, sans-serif; }
 
-h1     { font-size : 1.6em; margin: 0px 0px 0px 0px;  padding: 0px; }
-h2     { font-size : 1.4em; margin: 0.9em 0px 0px 0px; padding: 0px; font-weight : bold;}
+h1     { font-size : 2.4em; margin: 25px 0px 0px 0px;  padding: 0px; font-weight: normal; }
+h2     { font-size : 1.8em; margin: 0.9em 0px 0px 0px; padding: 0px; font-weight : bold;}
 h3     { font-size : 1.3em; margin: 0.8em 0px 0px 0px; padding: 0px; font-weight : bold; }
 .h3 { margin: 22px 0px 3px 0px; }
 h4     { font-size : 1.1em; margin: 0.7em 0px 0px 0px; padding: 0px; font-weight : normal; text-align: left; }
@@ -78,34 +80,41 @@ h5     { font-size : 0.9em; margin: 14px 0px 0px 0px; padding: 0px; font-weight 
 
 #content {
     padding: 20px 20px 20px 20px;
-    margin-left: 190px;
+    margin-left: 30px;
     font-family : Verdana, Helvetica, sans-serif;
-    font-size: 0.95em;
-/* 	border-style: solid; */
-    border-right: groove;
-    border-left: groove;
-	border-top: groove;
+    font-size: 0.90em;
+	width: 600px;
+	min-height:600px;
+/* 	border-style: solid; */	
 }
 
-#content a:link { color: #000000;}
-#content a:visited { color: #000000;}
+#content a:link { color: #3399FF;
+}
+#content a:visited { color: #3399FF;}
 #content a:hover {
-        background-color: #4A6D8C;
-        color: #000000;
+        color: #F3763F;
+		
 }
 
 #content ul {
     margin: 0;
-    padding: 0 1em;
-}
-#content li {
-    padding: 0 5px;
+    padding: 0 0em;
 }
 
-#content li, #content th, #content td {
-  line-height: 110%;  
+#content li {
+    padding: 0 0px;
+	line-height: 160%
+}
+
+
+#content li, {
+  line-height: 160%;
+text-indent: -10px;  
+  margin-left: 20px;
   margin-top: .2em;
   margin-bottom: .2em;
+}
+#content th, #content td {
 }
 
 .red {
@@ -125,6 +134,7 @@ h5     { font-size : 0.9em; margin: 14px 0px 0px 0px; padding: 0px; font-weight 
 #content table {
 	border: 0;
 	width: 100%;
+	margin: 10px 10px 10px 0px;
 }
 
 
@@ -158,7 +168,7 @@ table .title { background-color: #000000; }
 .ForrestTable {
     color: #ffffff;
     background-color: black;
-    width: 100%;
+    width: 50%;
     font-size : 100%;
     empty-cells: show;
 }
@@ -172,8 +182,11 @@ table caption {
 .ForrestTable td {
     color: black;
     background-color: #FFFFFF;
+	
 }
-.ForrestTable th { text-align: center; }
+.ForrestTable th { text-align: center; 
+
+}
 
 	td.lightshadow  {
 	background-color:#E2E2E2;	
@@ -203,7 +216,7 @@ table caption {
 #container {
     position: relative;
     float: left;
-    width: 800px;
+    width: 850px;
     background-color: #FFFFFF;
 }
 
@@ -215,6 +228,7 @@ table caption {
 /*     background-image: url("../themes/images/header_white_line.gif"); */
     background-position: bottom left;
     background-repeat: repeat-x;
+	
 }
 
 /* branding-logo Template */
@@ -252,7 +266,7 @@ table caption {
 #nav-main {
     font-size: 0.9em;
     clear: both;
-    padding-left: 10px;
+    padding-left: 45px;
     margin: 0;
     list-style: none;
 }
@@ -261,12 +275,12 @@ table caption {
     float: left;
     background-repeat: no-repeat;
     background-position: top right;
-    margin: 0 3px 0 0;
-    padding: 0;
-	border-right: groove;
-	border-bottom: groove;
-	border-color: lightgray;
-	background-color: lightgray;
+    margin: 0 1px 5px 0;
+    padding: 7px;
+	border-right: #D1E5F0;
+	border-bottom: #F3763F;
+	border-color: #F3763F;
+	background-color: #F0F0F0;
 }
 
 #nav-main li a {
@@ -277,12 +291,12 @@ table caption {
     white-space: nowrap;
     background-repeat: no-repeat;
     background-position: top left;
-    padding: 5px 15px 4px;
+    padding: 5px 15px 10px;
     width: .1em; /* IE/Win fix */
 }
-#nav-main li a:link {  color: #000000; }
-#nav-main li a:visited { color: #000000; }
-#nav-main li a:hover { color: #000000; }
+#nav-main li a:link {  color: #3399FF; }
+#nav-main li a:visited { color: #3399FF; }
+#nav-main li a:hover { color: #F3763F; }
 
 #nav-main > li a { width: auto; } /* Rest of IE/Win fix */
 
@@ -349,10 +363,10 @@ table caption {
 }
 
 #leftbar a {  font-weight: normal;}
-#leftbar a:link { color: blue; }
-#leftbar a:visited { color: blue; }
+#leftbar a:link { color: #3399FF; }
+#leftbar a:visited { color: #3399FF; }
 #leftbar a:active { color: #000000; }
-#leftbar a:hover { color: red; }
+#leftbar a:hover { color: #F3763F; }
 
 #menuarea { width:10em;}
 
@@ -363,11 +377,11 @@ table caption {
     padding-top: 20px;
     left:10px;
     z-index: 20;
-    border-color: #000000; 
+     
     background-color: #ffffff;
     font-size: 0.9em;
     color: #000000;
-	border-top: groove;
+	
 }
 
 
@@ -380,18 +394,23 @@ table caption {
         cursor:pointer;
 }
 
+#nav-section {
+float: right;
+}
+
 #nav-section span {
         background-repeat: no-repeat;
         background-position: center left;
-        margin-left: 10px;
-        padding: 3px 12px;
-        font-weight : bold;
+        margin-left: 0px;
+        padding: 2px 12px;
+        font-weight : normal
+		
 }
 #nav-section .pagegroup span {
-        color: #000000;
+        color: #F3763F;
 }
 .pagegroupselected span {
-        color: #000000;
+        color: #F3763F
 }
 .pagegroupopen span {
         color: #000000;
@@ -407,9 +426,11 @@ table caption {
         cursor:pointer;
 }
 #nav-section .menuitemgroup {
-        margin: 0px 0px 6px 8px;
+        margin: 0px 0px 12px 0px;
         padding: 0px;
-        font-weight : bold; }
+        font-weight : normal;
+		font-size: 90%;		
+		}
 
 #nav-section .selectedmenuitemgroup{
         margin: 0px 0px 6px 8px;
@@ -417,11 +438,13 @@ table caption {
         /*font-weight : bold;*/ }
 
 #nav-section .menuitem {
-        padding: 0px 0px 2px 12px;
+        padding: 0px 0px 2px 3px;
         background-repeat: no-repeat;
         background-position: center left;
         font-weight : normal;
         margin-left: 10px;
+		font-size: 110%;
+		line-height: 160%;
 }
 
 #nav-section .menupage {
@@ -432,8 +455,8 @@ table caption {
 }
 
 #nav-section .menupagetitle {
-        color: #000000;
-        padding: 0px 0px 0px 6px;
+        color: #F3763F;
+        padding: 10px 0px 0px 0px;
         font-style : normal;
         margin-right: 10px;
         border-color: #999999;
@@ -463,6 +486,11 @@ table caption {
 #nav-section .menupageitem a:hover {
         background-color: #4A6D8C;
         color: #000000;
+}
+
+#leftbar {
+float: right;
+margin-top: 30px;
 }
 
 #leftbar #credit {
@@ -550,7 +578,7 @@ acronym { cursor: help; }
 
 #content .motd-area {
     position: relative; /* IE bugfix cont'd */
-    float: right;
+    float: left;
     width: 35%;
     background-color: #f0f0ff;
     border-top: solid 1px #4A6D8C;
@@ -657,11 +685,11 @@ p.instruction {
     display: none;
 }
 
-a:link { color: #0F3660; } 
-a:visited { color: #009999; } 
+a:link { color: #85D0E1; } 
+a:visited { color: #85D0E1; } 
 a:hover { color: #000066; }
 
-/* This stuff was in pelt.basic.css. Any duplicate code or other code that
+/* This stuff was in giron.basic.css. Any duplicate code or other code that
 could be combined have been added above */
 
 img { border: 0; }
