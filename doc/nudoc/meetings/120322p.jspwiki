@@ -1,0 +1,98 @@
+!!! Møte 19.03.12
+
+Til stades: Lene, Heli, Trond, Ryan
+
+
+!!Saksliste
+
+* Morfologisk feedback
+* Sahka og Vasta
+* univ_oahpa som default
+* egen server, OpenID
+* Grafisk utforming av sluttbrukardokumentasjonen
+* neste møte
+
+
+!! Morfologisk feedback
+
+Ryan arbeider med det, har implementert ein del, særleg adjektiv treng arbeid.
+Heile databasen må bli installert på nytt. Det var ein del attributt som ikkje 
+var installert tidlegare, grunnen til det er at det ikkje er feedback på adjektiva
+i sma. Det er heller ikkje feedback på pronomen, gerundium og perfektum. Men den 
+er litt vel ordrik no.
+
+Oppdatering av databasen tar mellom 5 og 6 timar.
+
+__TILTAK__
+* Lene forenklar feedbacken
+* Deretter installerer Ryan basen på nytt, natt til 22.3.
+
+
+!! Sahka og Vasta
+
+Lene og Heli har arbeidd ein del, det kjem nye error-tagar. Det er
+avhengig av utviklinga av twol.
+
+Eit par postposisjonar må inn i leksikon. Lene skal også sende ut
+spørjeskjema til studentane. 
+
+Det er lenge sidan Sahkadialogane er oppdatert på nettet. Sist gong
+heile basen vart oppdatert vart også dialogane oppdatert. Neste gong 
+Vasta blir oppdatert tar vi Sahka med det same.
+
+!! egen server, OpenID
+
+Vi kan få fire ulike virtuelle servarar. site oahpa er no oppe på ein
+eigen servar.
+
+Den nye adressa blir [kursa.oahpa.no|http://kursa.oahpa.no/]. Studentane
+brukar likevel den nye siten. Bjørn Hatteng er hovudadministrator.
+Biret Ánne vil ha Buddy-plugin inn. Bjørn har funne ein plugin som gjer
+det mogleg å utføre globale endringar på basen (t.d. søk-erstatt nye url-ar).
+
+Innspel: Bruke facebook-innlogging som alternativ til OpenID.
+
+
+__TILTAK__
+* Gjennomføre oppdelinga (__Trond__ diskuterer med Divvun og tar kontakt med IT)
+
+    
+!! univ_oahpa som default
+
+Vi satsar på ny oahpa på ny server, slik at den gamle kan gå parallelt.
+
+* Frå ein servar til ein annan
+* Frå ein url til ein annan
+
+Kan vi gjere klar den nye url-en mens den gamle går?
+
+oahpa.no/davvi
+
+__TILTAK__
+* Skrive brukardokumentasjon for nye oahpa
+** Dette er gjort. 
+* Lage plan for å migrere til ny servar (__Heli, Ryan__)
+
+!! Grafisk utforming
+
+* av Oahpa
+** Vi diskuterer med Bjørn
+** utgangspunkt i den som er nå (sma), men andre farger
+* av sluttbrukardokumentasjonen
+** endre css i Forrest
+** Bjørn setter inn verdier fra hans css i wordpress til forrest-css
+** vi trenger en grafisk editor som lager verdiene som vi kan kopiere inn i css
+** Ryan foreslår programmet ''css-edit''
+
+__TILTAK__
+* Dokumentere forrest (__Trond, Sjur__)
+* Få oahpa-forrest til å fungere med ny css (__Trond__)
+* css-editor for oss andre (__Trond, Sjur, Bjørn, Ryan__)
+* Evaluere, diskutere (__Alle__)
+
+!! Neste møte
+
+__Torsdag klokka 0800 norsk tid.__
+
+
+
