@@ -1,4 +1,4 @@
-!!! Møte 19.03.12
+!!! Møte 22.03.12
 
 Til stades: Lene, Heli, Trond, Ryan
 
@@ -6,93 +6,192 @@ Til stades: Lene, Heli, Trond, Ryan
 !!Saksliste
 
 * Morfologisk feedback
+* Passive verb i MorfaS og MorfaC
 * Sahka og Vasta
-* univ_oahpa som default
-* egen server, OpenID
+* Migrering til ny server og url
+* OpenID
 * Grafisk utforming av sluttbrukardokumentasjonen
-* neste møte
+* Lanseringsdato
+* Neste møte
 
 
 !! Morfologisk feedback
 
-Ryan arbeider med det, har implementert ein del, særleg adjektiv treng arbeid.
-Heile databasen må bli installert på nytt. Det var ein del attributt som ikkje 
-var installert tidlegare, grunnen til det er at det ikkje er feedback på adjektiva
-i sma. Det er heller ikkje feedback på pronomen, gerundium og perfektum. Men den 
-er litt vel ordrik no.
+Feedback fungerer ikkje. Merk at A ikkje har tag ''+Pos''. Saara definerte 
++Pos som fråver av +Comp og +Superl i koden. Ryan har gjort det same no.
 
-Oppdatering av databasen tar mellom 5 og 6 timar.
+lemmatag + lemma var inne, og msg-tag og alle andre
+
+Oppsettet for ''buorre'' og ''leat'' er ulik, og fungerer ikkje (?).
+
+Ryan får feedback på si maskin, men det er vanskeleg å få fram for
+
+F. ex.) Sanalla "dehálaš" on kaksitavuinen vartalo ilman astevaihtelua. Attribuuttimuoto on sama kuin predikatiivimuoto. - ilman astevaihtelua
+
+Sanalla "riekta" on kaksitavuinen vartalo ilman astevaihtelua. -es-pääte. - har stadieveksling
+
+Sanalla "mánáheapme" on kaksitavuinen vartalo –is-pääte. - A Attr
 
 __TILTAK__
-* Lene forenklar feedbacken
-* Deretter installerer Ryan basen på nytt, natt til 22.3.
+* __Lene__ forbedrer feedbacken for -laš nomen.
 
+!! Passive verb i MorfaS og MorfaC
+
+Passiv:
+I dag er taggane:
+{{{
+borrat+V+TV+Der/PassL+V+Ind+Prs+Pl1
+borrat+V+TV+Der/PassS+V+Ind+Prs+Pl1
+}}}
+
+Problem: MorfaS må godta +Der/PassL __og__ +Der/PassS. Mogleg løysing: Regulært 
+uttrykk +Der/Pass. eller liknande.
+
+Dessuten har vi typen 
+
+njuoskat	njuoskat+V+IV+Inf som er derivasjon av adjektivet ''njuoskkas''
+
+Lene lager ei fil av samme type som pron_sme.xml kalt ''derverb_sme.xml'' hvor adjektivet blir lemma for verbet
+{{{
+njuoskat    njuoskkas+A+Der/AV+V+Inf
+njusken		njuoskkas+A+Der/AV+V+Ind+Prt+Sg1
+}}}
+
+__TILTAK__
+
+* Ryan installerer basen på nytt, med feedback
+* Passive tagger må setjast inn i paradigme-filer 
+* words_install.py - liten endring for å få inn Pass-tagger
+* __Lene__ legger inn Der/Pass i v_paradigms.xml for oppgaver i MorfaS og MorfaC
+* __Lene__ lager ei fil derverb_sme.xml med derivasjoner fra adjektiver til verb, for oppgaver i MorfaS og MorfaC. Oppgavetype: deriverte verb. MorfaS: Vi legger til ''ikte'' og ''odne'' foran pronomenet for å angi om det er presens eller preteritum: ''ikte mun'' vs ''odne mun''. Eksemplar er sjekka inn allerede: sme/src/derverb_sme.xml, men det er fleire ordformer på veg
+* __Lene__ lager MorfaC oppgaver med passive verb og derverb. Oppgavetype: deriverte verb
 
 !! Sahka og Vasta
 
-Lene og Heli har arbeidd ein del, det kjem nye error-tagar. Det er
-avhengig av utviklinga av twol.
+Lene har lagt inn feilmelding i CG-fila. Viss den morfologiske analysen er slått av, 
+slit at setninga kjem gjennom til CG-fila utan taggar, har CG tidlegare gjeve meldinga
+"Svaret ditt må alltid inneholde et finitt verb. Kan det være en skrivefeil i verbet ditt?". 
+Dette er misvisande, og no blir det
+i staden ei melding med "Beklager – systemet fungerer ikke for øyeblikket.".
 
-Eit par postposisjonar må inn i leksikon. Lene skal også sende ut
-spørjeskjema til studentane. 
+Status quo for lookupservaren er at den er slått av fram til vi har ein
+ny servar på plass.
 
-Det er lenge sidan Sahkadialogane er oppdatert på nettet. Sist gong
-heile basen vart oppdatert vart også dialogane oppdatert. Neste gong 
-Vasta blir oppdatert tar vi Sahka med det same.
+Buggen som førte til at victorio gjekk ned på måndag var ein loop i preprocess.
+Børre fann feilen og retta den, slik:
 
-!! egen server, OpenID
+{{{
+Modified:
+  trunk/gt/script/preprocess
+Log:
+Hack to break the infinite loop
+preprocess went into an infinite loop if it found
+an idiom without an ending punctum, but in fact
+expected an abbreviation with an ending punctum.
 
-Vi kan få fire ulike virtuelle servarar. site oahpa er no oppe på ein
-eigen servar.
+     # Test for multiword expression.
+-    if ( $idioms_short{$word}) { 
+-        test_idiom(\$word, $words_aref, $next_aref, $MULTIWORD_SIZE); 
++    if ( $idioms_short{$word}) {
++        test_idiom(\$word, $words_aref, $next_aref, $MULTIWORD_SIZE);
++        if ($last_word eq $word && $word !~ /\.$/) {
++            $word = $word . ".";
++        }
++        $last_word = $word;
+     }
+}}} 
 
-Den nye adressa blir [kursa.oahpa.no|http://kursa.oahpa.no/]. Studentane
-brukar likevel den nye siten. Bjørn Hatteng er hovudadministrator.
-Biret Ánne vil ha Buddy-plugin inn. Bjørn har funne ein plugin som gjer
-det mogleg å utføre globale endringar på basen (t.d. søk-erstatt nye url-ar).
+NB! abbr.txt må bli kompilert separat:
 
-Innspel: Bruke facebook-innlogging som alternativ til OpenID.
-
-
-__TILTAK__
-* Gjennomføre oppdelinga (__Trond__ diskuterer med Divvun og tar kontakt med IT)
-
-    
-!! univ_oahpa som default
-
-Vi satsar på ny oahpa på ny server, slik at den gamle kan gå parallelt.
-
-* Frå ein servar til ein annan
-* Frå ein url til ein annan
-
-Kan vi gjere klar den nye url-en mens den gamle går?
-
-oahpa.no/davvi
-
-__TILTAK__
-* Skrive brukardokumentasjon for nye oahpa
-** Dette er gjort. 
-* Lage plan for å migrere til ny servar (__Heli, Ryan__)
-
-!! Grafisk utforming
-
-* av Oahpa
-** Vi diskuterer med Bjørn
-** utgangspunkt i den som er nå (sma), men andre farger
-* av sluttbrukardokumentasjonen
-** endre css i Forrest
-** Bjørn setter inn verdier fra hans css i wordpress til forrest-css
-** vi trenger en grafisk editor som lager verdiene som vi kan kopiere inn i css
-** Ryan foreslår programmet ''css-edit''
+''make abbr GTLANG=sme''
 
 __TILTAK__
-* Dokumentere forrest (__Trond, Sjur__)
-* Få oahpa-forrest til å fungere med ny css (__Trond__)
-* css-editor for oss andre (__Trond, Sjur, Bjørn, Ryan__)
-* Evaluere, diskutere (__Alle__)
+
+* Dokumenter dette (__Trond__)
+
+
+!! Migrering til ny server og url
+
+
+
+* ny framsida til både Oahpa og WP, er det Bjørn, og skal han skriva alle html, css osv., eller er det kun layoutarbeid han gjer? Om framsida skal vera på http://oahpa.no/ der det er Oahpa sin httpd som svarer, kan eg setja opp eit mappe der Bjørn kan arbeide. Skal skriva til han for å avtale dette når plannen her er godkjent. 
+** Trond: Eg diskuterte ny layout med Bjørn i går ettermiddag, og han skulle sjå på det.
+
+I mellomtida tenkte eg at det kan vera godt å få subdomainen test.oahpa.no til å dirigera til den nye Oahpa serveren, berre slik at me hev noko som me hugsar godt i neste dagar, når det er tid til å bytta heilt til den nye serveren frå victorio, kan DNS-rekorden byttest frå victorio til oahpa.
+
+* byrja med fastcgi (og nginx-- ein annan httpd som eg hev mest erfaring med) fordi me får ein ny server og det er ikkje andre ting som er i drift på den som kan øydeleggjest. Fordel til nginx og fastcgi er at dei er mykje raskare når det er mange brukarar, og mod_python er ikkje lengre offisielt støtta. 
+
+* Om eg får SSH-tilgang med sudo, kan eg få httpd og Django-appen i drift i ein dag, ikkje inkluderande ting som må endrast i Django appen, om me finn at det er noko som ikkje fungerar. Det bør ikkje vera trang til å endra koden for å nytta Oahpa i ein ny miljø, men eg antek at det skal vera noko slik at me ikkje er overraska om det tek litt meir tid til ;) 
+
+* A svn-server
+* B utviklingsservar, sandkasse
+* C stabile nett-tenester: oahpa og cgi-bin for nettsidene
+* D oahpa.site.no (denne er installert)
+
+Medan eg arbeider med å få den nye serveren i drift, skal eg skriva ein logg/dokumentasjon til alle andre (spesielt Børre)
+
+Misc: Det var eit problem med lookupserveren på Victorio, p.g.a. blokkert port, Heli gjorde ein kvikk fiks men vil helst at lookupserveren er tilbake. Det hadde vore bra å finne ut kva som blokkerer portet på Victorio, men på ein ny server skal det vera mykje anna som er tilgjengeleg.
+
+Vi har tilgang til wordpress på site-serveren, men ikkje til serveren sjølv.
+
+! Domenenavnsystem DNS
+
+* oahpa.no dirigerest ved DNS til den nye serveren (som me ikkje hev no) 
+* oahpa.no hev framsida til Oahpa! og kursa.oahpa.no
+* site.oahpa.no skal bli dirigert til site-servaren (67.215.65.132)
+
+
+{{{
+$ host oahpa.site.no
+oahpa.site.no has address 67.215.65.132
+}}}
+
+__TILTAK__
+
+# Nye servarar (Roy Dragseth: "OK, skal sette fart på dette her.")
+46256 Roy.Dragseth@cc.uit.no http://www.cc.uit.no/royd/
+# SSH-tilgang og sudo til Heli og Ryan på ny server
+# Ryan: nginx, fastcgi
+# Ryan & Heli: Kopiera programkod och databas
+# Heli & Ryan: Tillpassa koden (lookupserv)
+# Ryan: Få DNS-rekorder bytta til den nye serveren, vera sikkert om at CNAME-rekord framleis går til WP/kursa.oahpa.no (kontakt med relevant person på universitetet, Ingeborg Østrem Hellemo)
+
+
+!! OpenID
+Ryan og Bjørn arbeider med dette.
+
+
+!! Grafisk utforming av sluttbrukardokumentasjonen
+
+Ny drakt (skin) for brukardokumentasjon:
+
+* ped/src/documentation/resources/themes/giron (nytt eksperimentelt)
+* ped/src/documentation/resources/themes/pelt (dagens system online)
+
+For dei som vil sjå på: Endre "pelt" til "giron" i fila
+{{ped/forrest.properties.xml}}
+
+
+Menyen til høgre heiter "left", og er lang. Site-fila må regulere dette.
+Bruk av <p><strong> i staden for <section><title>.
+
+<p><strong> er brukt dels som utheving, og dels som overskrift. Ikkje
+endre automatisk til <title>, men sjå på funksjonen det har på sida.
+Døme:
+
+http://129.242.102.158:8888/OAHPAveiledning.html
+
+Status quo: http://129.242.102.158:8888/index.html
+
+__TILTAK__
+* Arbeide med dette: __Bjørn, Trond__
+* Dokumentere forrest: __Trond, Sjur__
+
+!! Lanseringsdato
+16. april
 
 !! Neste møte
 
-__Torsdag klokka 0800 norsk tid.__
-
+27. mars kl 8.00
 
 
