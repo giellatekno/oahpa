@@ -559,12 +559,16 @@ def get_feedback(self, wordform, language):
 	language = switch_language_code(language)
 	
 	feedbacks = wordform.feedback.filter(feedbacktext__language=language)\
-					.order_by('feedbacktext__order')\
-					.values_list('feedbacktext__message', flat=True)
+					.order_by('feedbacktext__order')
+	
+	feedback_messages = []
+	for feedback in feedbacks:
+		texts = feedback.feedbacktext_set.filter(language=language).order_by('order')
+		feedback_messages.extend([a.message for a in texts])
 
 	message_list = []
-	if feedbacks:
-		for text in feedbacks:
+	if feedback_messages:
+		for text in feedback_messages:
 			text = text.replace('WORDFORM', '"%s"' % wordform.word.lemma)
 			message_list.append(text)
 	
