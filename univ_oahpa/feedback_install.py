@@ -141,7 +141,6 @@ from django.db import transaction
 from itertools import product
 
 
-_ERRORTMP = open('error.feedback.log', 'w')
 
 from collections import OrderedDict
 
@@ -667,11 +666,9 @@ class Feedback_install(object):
 							]
 
 						# Then for a set of attributes, append the message id
-						print >> _ERRORTMP, unicode(item).encode('utf-8')
 						for f_id, f_lem, f_tag, f_dial in form_keys[item]:
 							# Collect IDs and msgs
 							form_infos.append((f_id, f_lem, f_tag, m))
-							print >> _ERRORTMP, unicode('%s - %s - %s' % (m, f_lem, f_tag)).encode('utf-8')
 
 						if item in attrs_and_messages:
 							attrs_and_messages[item].append(m)
@@ -755,7 +752,6 @@ class Feedback_install(object):
 		### 			msg_ids = [feedbackmsg_ids.get(msg_string) for msg_string in msg_strings]
 		### 			# If in doubt, print this.
 		### 			form_entry = (lemma, tag_string, msg_strings, form_id, msg_ids)
-		### 			print >> _ERRORTMP, form_entry
 		### 			form_to_msgs.append(form_entry)
 		### 		else:
 		### 			continue
@@ -770,7 +766,7 @@ class Feedback_install(object):
 			# for msgid in msgids
 		# ]))
 
-		form_id_msg_ids = list(set(form_id_msg_id))
+		form_id_msg_ids = [(a, b) for a, b in list(set(form_id_msg_id)) if a and b]
 
 		total_objs = len(form_id_msg_ids)
 
@@ -787,10 +783,12 @@ class Feedback_install(object):
 			try:
 				Form.objects.bulk_add_form_messages(chunk)
 			except Exception, e:
-				print Exception, e
-				print repr(chunk[0:10]) + " ... " 
+				print >> sys.stderr, Exception, e
+				print >> sys.stderr, repr(chunk[0:10]) + " ... " 
 				print >> sys.stderr, "Chunk contains null values, are messages.xml files installed?"
-				sys.exit()
+				print >> sys.stderr, "Removing null values and inserting..."
+				chunk = [(a, b) for a, b in chunk if a and b]
+				Form.objects.bulk_add_form_messages(chunk)
 			progress += chunk_size
 			if progress%10000 == 0:
 				print '%d/%d Form-Feedbackmsg relations' % (progress, total_objs)
