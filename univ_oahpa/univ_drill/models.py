@@ -627,7 +627,7 @@ class Tagname(models.Model):
 		return self.tagname
 
 class Tag(models.Model):
-	string = models.CharField(max_length=25)
+	string = models.CharField(max_length=40)
 	# TODO: pos = models.CharField(max_length=12)
 	attributive = models.CharField(max_length=5)
 	case = models.CharField(max_length=5)
