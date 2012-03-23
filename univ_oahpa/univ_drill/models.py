@@ -49,7 +49,7 @@ class BulkManager(models.Manager):
 		values_list = [ r[f] for r in vals for f in fields]
 
 		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
-		sql = "INSERT INTO %s (%s) VALUES %s" % ("univ_drill_form_feedback", flds, arg_string,)
+		sql = "INSERT IGNORE INTO %s (%s) VALUES %s" % ("univ_drill_form_feedback", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
 		transaction.commit()
