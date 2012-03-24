@@ -231,6 +231,13 @@ echo " "
 echo "done"
 echo "==================================================="
 
+echo "==================================================="
+echo "feeding db with $DPS/pron_sme.xml"
+$P install.py --file $DPS/derverb_sme.xml --tagfile $META/tags.txt 
+echo " "
+echo "done"
+echo "==================================================="
+
 
 echo "==================================================="
 echo "feeding db with $META/semantical_sets.xml"
@@ -239,40 +246,40 @@ echo " "
 echo "done"
 echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with messages to feedback"
-# $P install.py --messagefile $META/messages.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
-# 
-# echo "==================================================="
-# echo "feeding db with messages to feedback"
-# $P install.py --messagefile $META/messages.sme.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
-# 
-# echo "==================================================="
-# echo "feeding db with messages to feedback"
-# $P install.py --messagefile $META/messages.eng.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with messages to feedback"
+$P install.py --messagefile $META/messages.xml
+echo " "
+echo "done"
+echo "==================================================="
 
-#echo "==================================================="
-#echo "feeding db with messages to feedback"
-#$P install.py --messagefile $META/messages.swe.xml
-#echo " "
-#echo "done"
-#echo "==================================================="
+echo "==================================================="
+echo "feeding db with messages to feedback"
+$P install.py --messagefile $META/messages.sme.xml
+echo " "
+echo "done"
+echo "==================================================="
 
-# echo "==================================================="
-# echo "feeding db with messages to feedback"
-# $P install.py --messagefile $META/messages.fin.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
+echo "==================================================="
+echo "feeding db with messages to feedback"
+$P install.py --messagefile $META/messages.eng.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with messages to feedback"
+$P install.py --messagefile $META/messages.swe.xml
+echo " "
+echo "done"
+cho "==================================================="
+
+echo "==================================================="
+echo "feeding db with messages to feedback"
+$P install.py --messagefile $META/messages.fin.xml
+echo " "
+echo "done"
+echo "==================================================="
 
 
 #  ... for eastern dialect there are additional feedback files feedback_verbs_eastern, feedback_adjectives_eastern that we ignore right now
@@ -344,6 +351,14 @@ $P install.py -g $META/grammar_defaults.xml -q $META/questions_vasta.xml
 echo " "
 echo "done"
 echo "==================================================="
+
+echo "==================================================="
+echo "installing Vasta-S questions"
+$P install.py -g $META/grammar_defaults.xml -q $META/vastas_questions.xml
+echo " "
+echo "done"
+echo "==================================================="
+
 
 echo "==================================================="
 echo "Installing feedback messages for vasta"
@@ -425,33 +440,36 @@ echo " "
 echo "done"
 echo "==================================================="
 
-# echo "==================================================="
-# echo "adding feedback to nouns"
-# $P install.py -f $DPS/n_smenob.xml --feedbackfile $META/feedback_nouns.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
-# 
-# echo "==================================================="
-# echo "adding feedback to verbs"
-# $P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_verbs.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
-# 
-# echo "==================================================="
-# echo "adding feedback to adjectives"
-# $P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
-# 
-# echo "==================================================="
-# echo "adding feedback to numerals"
-# $P install.py -f $DPS/num_smenob.xml --feedbackfile $META/feedback_numerals.xml
-# echo " "
-# echo "done"
-# echo "==================================================="
+# TODO: 
+# fixtagattributes
+# mergetags
+echo "==================================================="
+echo "adding feedback to nouns"
+$P install.py -f $DPS/n_smenob.xml --feedbackfile $META/feedback_nouns.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "adding feedback to verbs"
+$P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_verbs.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "adding feedback to adjectives"
+$P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "adding feedback to numerals"
+$P install.py -f $DPS/num_smenob.xml --feedbackfile $META/feedback_numerals.xml
+echo " "
+echo "done"
+echo "==================================================="
 
 #echo "==================================================="
 #echo "Optimizing tables"
