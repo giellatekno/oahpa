@@ -660,6 +660,7 @@ class Tag(models.Model):
 	
 	def fix_attributes(self):
 		
+		# TODO: check that all tagsets are in here 
 		tagset_names = {
 			# object attribute: tagset name
 			'attributive': 'attributive',
@@ -692,7 +693,9 @@ class Tag(models.Model):
 			if attrname:
 				self.__setattr__(attrname, piece)
 
-		self.save()
+	def create(self, *args, **kwargs):
+		self.fix_attributes()
+		super(Tag, self).create(*args, **kwargs)
 
 class Form(models.Model):
 	word = models.ForeignKey(Word)
@@ -965,3 +968,4 @@ class Grammarlinks(models.Model):
 	name = models.CharField(max_length=200,blank=True,null=True)
 	address = models.CharField(max_length=800,blank=True,null=True)
 	language = models.CharField(max_length=5,blank=True,null=True)
+

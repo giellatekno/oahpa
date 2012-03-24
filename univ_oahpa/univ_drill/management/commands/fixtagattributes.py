@@ -21,6 +21,7 @@ def fixtags():
 	for tag in tags:
 		print tag.string
 		tag.fix_attributes()
+		tag.save()
 	
 	print 'Done'
 
@@ -33,3 +34,4 @@ class Command(BaseCommand):
 
 	def handle(self, *args, **options):
 		fixtags()
+
