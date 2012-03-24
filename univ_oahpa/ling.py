@@ -129,39 +129,24 @@ class Paradigm:
 		
 
 	def handle_tags(self, tagfile, add_db):
-		# try:
-		# 	with codecs.open(tagfile, "r", "utf-8" ) as fileObj:
-		# 		tags = fileObj.readlines()
-		# except IOError:
-		# 	print >> STDERR, 'Could not open %s. Check paths?' % tagfile
-		# 	sys.exit()
-		fileObj = codecs.open(tagfile, "r", "utf-8" )
-		tags = fileObj.readlines()
-		fileObj.close()
 
-		classObj=re.compile(r'^#\s*(?P<typeString>[\w\-]*)\s*$', re.U)
-		stringObj=re.compile(r'^(?P<tagString>[\w]*)\s*$', re.U)
+		with open(tagfile, "r") as F:
+			# Read tags, remove newlines
+			tags = [a.strip() for a in F.readlines()]
 
 		tagclass = ""
 		for line in tags:
-			line.strip()
-			matchObj=classObj.search(line) 
-			if matchObj:
-				tagclass = matchObj.expand(r'\g<typeString>')
+			if line.startswith("#"):
+				tagclass = line.lstrip("#")
 			else:
-				matchObj=stringObj.search(line)
-				if matchObj:
-					string = matchObj.expand(r'\g<tagString>')
-					self.tagset[string]=tagclass
-					if add_db and tagclass and string:
-						#print "adding " + tagclass + " " + string
-						tagset, created = Tagset.objects.get_or_create(tagset=tagclass)
-						pos, created = Tagname.objects.get_or_create(tagname=string,tagset=tagset)
+				string = line.strip().replace('*', '')
+				self.tagset[string] = tagclass
+				if add_db and tagclass and string:
+					#print "adding " + tagclass + " " + string
+					tagset, created = Tagset.objects.get_or_create(tagset=tagclass)
+					pos, created = Tagname.objects.get_or_create(tagname=string, tagset=tagset)
+					print "%s added to %s" % (string, tagclass)
 
-		# print >> sys.stdout, "Fixing Tag attributes..."
-		# for tag in Tag.objects.all():
-			# tag.fix_attributes()
-		# print >> sys.stdout, "Done."
 
 
 	def read_paradigms(self, paradigmfile, tagfile, add_database):
