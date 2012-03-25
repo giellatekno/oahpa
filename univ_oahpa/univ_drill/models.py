@@ -737,6 +737,18 @@ class Form(models.Model):
 				 ... etc
 		"""
 
+		# Exceptional behavior for Der/AV, and other possibilities, f. ex., Der/AN
+		if self.tag.subclass.find('Der/') > -1:
+			# Der  /  AV
+			_, _, poses = self.tag.subclass.partition('/')
+
+			if len(poses) == 2:
+				_from, _to = poses[0], poses[1]
+				# Return the base form of a tag from the word's form set that
+				# matches the _from part of the derivation tag, this will be
+				# the underived wordform's base form
+				return self.word.form_set.filter(tag__pos=_from)[0].getBaseform()
+				
 		if self.tag.pos in ['N', 'n', 'Num']:
 			if match_num:
 				number = self.tag.number
@@ -812,7 +824,12 @@ class Form(models.Model):
 			else:
 				subclass = ''
 
-			baseform = self.word.form_set.filter(tag__case='Nom', tag__number=number, tag__grade='',tag__subclass=subclass,tag__attributive='')
+			print subclass
+			baseform = self.word.form_set.filter(tag__case='Nom', 
+													tag__number=number, 
+													tag__grade='',
+													tag__subclass=subclass,
+													tag__attributive='')
 			# print baseform
 			if baseform.count() == 0:
 				baseform = self.word.form_set.all()
