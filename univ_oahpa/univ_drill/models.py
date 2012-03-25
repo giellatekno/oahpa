@@ -742,6 +742,14 @@ class Form(models.Model):
 			# Der  /  AV
 			_, _, poses = self.tag.subclass.partition('/')
 
+			if poses in ['PassL', 'PassS']:
+				# Chop off V+Der/PassL bit, and search for forms with tag that
+				# is the rest.
+				rest = self.tag.string.replace('+Der/PassS+V', '')\
+										.replace('+Der/PassL+V', '')
+				return self.word.form_set.filter(tag__string=rest)[0].getBaseform(
+					match_num=match_num,
+					return_all=False)
 			if len(poses) == 2:
 				_from, _to = poses[0], poses[1]
 				# Return the base form of a tag from the word's form set that
@@ -749,7 +757,7 @@ class Form(models.Model):
 				# the underived wordform's base form
 				return self.word.form_set.filter(tag__pos=_from)[0].getBaseform(
 					match_num=match_num,
-					return_all=return_all)
+					return_all=False)
 				
 		if self.tag.pos in ['N', 'n', 'Num']:
 			if match_num:
