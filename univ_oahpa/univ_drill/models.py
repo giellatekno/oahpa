@@ -747,7 +747,9 @@ class Form(models.Model):
 				# Return the base form of a tag from the word's form set that
 				# matches the _from part of the derivation tag, this will be
 				# the underived wordform's base form
-				return self.word.form_set.filter(tag__pos=_from)[0].getBaseform()
+				return self.word.form_set.filter(tag__pos=_from)[0].getBaseform(
+					match_num=match_num,
+					return_all=return_all)
 				
 		if self.tag.pos in ['N', 'n', 'Num']:
 			if match_num:
