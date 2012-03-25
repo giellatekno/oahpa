@@ -364,27 +364,9 @@ class BareGame(Game):
 		'CARD': '', # CARD, ORD, COLL added for implementing num_type choice
 		'ORD': 'A+Ord',
 		'COLL': 'N+Coll',
-		'': ''
+		'A-DER-V': 'A+Der/AV+V',
+		'': '',
 	}
-	
-	def get_baseform(self, word_id, tag):
-	# This function is no longer in use. There is getBaseform in models.py that does the job.	
-		basetag = None
-		
-		if tag.pos in ["N", "A", "Num", "Pron"]:
-			if tag.number and tag.case != "Nom":
-				tagstring = tag.pos + "+" + tag.number + "+Nom"
-			else:
-				tagstring = tag.pos + "+Sg" + "+Nom"
-			if Form.objects.filter(word__pk=word_id, tag__string=tagstring).count() > 0:
-				basetag = Tag.objects.filter(string=tagstring)[0]
-		
-		if tag.pos=="V":
-			tagstring = "V+Inf"
-			if Form.objects.filter(word__pk=word_id,tag__string=tagstring).count() > 0:
-				basetag = Tag.objects.filter(string=tagstring)[0]
-		
-		return basetag
 	
 	def get_db_info(self, db_info):
 		
@@ -398,7 +380,8 @@ class BareGame(Game):
 		adjcase = True and self.settings.get('adjcase') or   ""
 		pron_type = True and self.settings.get('pron_type') or   ""
 		proncase = True and self.settings.get('proncase') or   ""
-		grade = True and self.settings.get('grade')   or   ""
+		derivation_type = True and self.settings.get('derivation_type') or   ""
+		grade = True and self.settings.get('grade')  or  ""
 		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
 		source = ""
 		
@@ -438,6 +421,7 @@ class BareGame(Game):
 			"Num":  num_bare,
 			"V":	"",
 			"Pron": proncase,
+			"Der": derivation_type, 
 		}
 		
 		sylls = []
@@ -514,13 +498,63 @@ class BareGame(Game):
 		
 		TAG_QUERY = Q(pos=pos)
 		
-		TAG_EXCLUDES = False
+		# Exclude derivations by default
+		TAG_EXCLUDES = Q(subclass__contains='Der')
 		
 		FORM_FILTER = False
 
 		# Query filtering on words
 		# SUB_QUERY = Q(word__stem__in=sylls)
 		SUB_QUERY = False
+
+		# NOTE: copied this from questions_install, to make it easier to define
+		# what kind of exercise it is. It would be nice to extend this to everything
+		# because then we can just define a question/answer tag as something like:
+		#     question_types = [
+		#       ('V+Inf', 'V+Ind+Prs+Person-Number'),
+		#       ('V+Inf', 'V+Pot+Tense+Person-Number'),
+		#     ]
+		#
+		# And it will save the need for a lot of lines of code.
+		def parse_tag(tag):
+			""" Iterate through a tag string by chunks, and check for tag sets
+			and tag names. Return the reassembled tag on success. """
+
+			def fill_out(tags):
+				from itertools import product
+
+				def make_list(item):
+					if type(item) == list:
+						return item
+					else:
+						return [item]
+
+				return list(product(*map(make_list, tags)))
+
+			tag_string = []
+			for item in tag.split('+'):
+				if Tagname.objects.filter(tagname=item).count() > 0:
+					tag_string.append(item)
+				elif Tagset.objects.filter(tagset=item).count() > 0:
+					tagnames = Tagname.objects.filter(tagset__tagset=item)
+					tag_string.append([t.tagname for t in tagnames])
+
+			if len(tag_string) > 0:
+				return ['+'.join(item) for item in fill_out(tag_string)]
+			else:
+				return False
+
+		if pos == "Der":
+			_from, _, _to = derivation_type.partition('-DER-')
+			dertype = 'Der/%s%s' % (_from, _to)
+			derivation_types = {
+				# 'Der/AV': parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"),
+				'Der/AV': parse_tag("A+Der/AV+V+Ind+Prs+Person-Number"),
+			}
+			TAG_QUERY = Q(string__in=derivation_types[dertype])
+			TAG_EXCLUDES = False
+			sylls = False
+			source = False
 
 		if pos in ['Pron', 'N', 'Num']:
 			TAG_QUERY = TAG_QUERY & \
@@ -576,7 +610,7 @@ class BareGame(Game):
 		tags = Tag.objects.filter(TAG_QUERY)\
 							.exclude(subclass='Prop')\
 							.exclude(polarity='Neg')
-			
+		
 		if TAG_EXCLUDES:
 			tags = tags.exclude(TAG_EXCLUDES)
 
@@ -609,9 +643,12 @@ class BareGame(Game):
 				 QUERY = QUERY & Q(source__name=source)
 			  
 		
-		smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta", "čieža", "gávcci","ovcci","logi"]
-		smallnum_ord = ["vuosttaš", "nubbi", "goalmmát", "njealját", "viđát", "guđát", "čihččet", "gávccát", "ovccát", "logát"]
-		smallnum_coll = ["guovttis", "guovttes", "golmmas", "njealjis", "viđás", "guđás", "čiežas", "gávccis","ovccis","logis"]
+		smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta",
+					"čieža", "gávcci","ovcci","logi"]
+		smallnum_ord = ["vuosttaš", "nubbi", "goalmmát", "njealját", "viđát",
+						"guđát", "čihččet", "gávccát", "ovccát", "logát"]
+		smallnum_coll = ["guovttis", "guovttes", "golmmas", "njealjis",
+						"viđás", "guđás", "čiežas", "gávccis","ovccis","logis"]
 		
 		if pos == 'Num' and subclass == '':
 			QUERY = QUERY & Q(lemma__in=smallnum)
@@ -656,12 +693,13 @@ class BareGame(Game):
 						random_word = random_word.filter(word__lemma__in=smallnum_ord)  # added to constrain the set of ordinal numerals 
 					elif subclass == 'Coll':
 						random_word = random_word.filter(word__lemma__in=smallnum_coll) # constrains the set of collective numerals
+
 				if random_word.count() > 0:
 					random_form = random_word.order_by('?')[0]
 					random_word = random_form.word
 					no_form = False
 					break
-				elif random_word.count () == 1:
+				elif random_word.count() == 1:
 					random_form = random_word[0]
 					random_word = random_form.word
 					break
@@ -719,7 +757,7 @@ class BareGame(Game):
 		#print ', '.join([a.fullform for a in form_list])
 		correct = form_list[0]
 		
-		if pos in ['N', 'V', 'A', 'Num']: # added Num
+		if pos in ['N', 'V', 'A', 'Num', 'Der']: # added Num
 			word = Word.objects.get(Q(id=word_id))
 			# Preserve number in nouns: Sg-Sg, Pl-Pl
 		elif pos == 'Pron':
