@@ -939,8 +939,11 @@ class BareGame(Game):
 			### else:
 
 			bfs = form.getBaseform(match_num=match_number, return_all=True)
-			excluded = bfs.exclude(dialects__dialect='NG')
-			filtered = excluded.filter(dialects__dialect=UI_Dialect)
+			try:
+				excluded = bfs.exclude(dialects__dialect='NG')
+				filtered = excluded.filter(dialects__dialect=UI_Dialect)
+			except:
+				return bfs
 		
 			# If no non-NG forms are found, then we have to display those.
 			if filtered.count() == 0 and excluded.count() > 0:
