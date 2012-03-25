@@ -124,7 +124,7 @@ ADJCASE_CHOICES = (
 ADJEX_CHOICES = (
 	('A-ATTR', _('attributive')), 	# A+Nom+Sg -> A+Attr
  	('A-COMP', _('comparative')),		# A+Nom+Sg -> Comp	
- 	('A-SUPERL', _('superlative')),	# A+Nom+Sg -> Superl	
+ 	('A-SUPERL', _('superlative')),	# A+Nom+Sg -> Superl
 
 )
 
@@ -200,6 +200,11 @@ LEVEL_CHOICES = (
 	('l2', _('Level 1-2')),
 	('l3', _('Level 1-3')),
 	('all', _('All')),
+)
+
+
+DERIVATION_CHOICES = (
+ 	('A-DER-V', _('adjective->verb derivation')),
 )
 
 BOOK_CHOICES = (
@@ -721,6 +726,7 @@ class OahpaSettings(forms.Form):
 					'num_context' : 'NUM-ATTR',
 					'num_level' : '1',
 					'num_type' : 'CARD',  # added by Heli
+					'derivation_type' : 'A-DER-V',
 					'geography': 'world',
 					'frequency' : [],
 					'num_bare' : 'N-ILL',
@@ -960,6 +966,7 @@ class MorfaSettings(OahpaSettings):
 	num_bare = forms.ChoiceField(initial='N-ILL', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
+	derivation_type = forms.ChoiceField(initial='A-DER-V', choices=DERIVATION_CHOICES, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-ILL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
