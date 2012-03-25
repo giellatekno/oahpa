@@ -926,24 +926,16 @@ class BareGame(Game):
 			else:
 				UI_Dialect = DEFAULT_DIALECT
 			
-			# This was in use while I was testing returning V+Inf for
-			# V+Der/PassS+V+ forms, leaving it here in case we need it again.
-
-			### Derived forms need return_all=False otherwise derived infinitive
-			### forms may be returned, and we need them to be underived in
-			### presentation of the question wordform.
-
-			### if pos == 'Der':
-			### 	bfs = form.getBaseform(match_num=match_number, return_all=False)
-			### 	return bfs
-			### else:
-
-			bfs = form.getBaseform(match_num=match_number, return_all=True)
-			try:
+			# Derived forms need return_all=False otherwise derived infinitive
+			# forms may be returned, and we need them to be underived in
+			# presentation of the question wordform.
+			if pos == 'Der':
+				bfs = form.getBaseform(match_num=match_number, return_all=False)
+				return bfs
+			else:
+				bfs = form.getBaseform(match_num=match_number, return_all=True)
 				excluded = bfs.exclude(dialects__dialect='NG')
 				filtered = excluded.filter(dialects__dialect=UI_Dialect)
-			except:
-				return bfs
 		
 			# If no non-NG forms are found, then we have to display those.
 			if filtered.count() == 0 and excluded.count() > 0:
