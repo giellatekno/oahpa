@@ -3,6 +3,7 @@ from django.conf.urls.defaults import patterns, url, include, handler404, handle
 
 urlpatterns = patterns('univ_oahpa.univ_drill.views',
 	# (r'^morfa/substantiv/$', 'smaoahpa.smadrill.views.morfa_game', {'pos': 'N'}),
+	url(r'^morfas/der/$', 'morfa_game', {'pos': 'Der'}, name="morfa_s.der"),
 	url(r'^morfas/v/$', 'morfa_game', {'pos': 'V'}, name="morfa_s.verb"),
 	url(r'^morfas/s/$', 'morfa_game', {'pos': 'N'}),
 	url(r'^morfas/a/$', 'morfa_game', {'pos': 'A'}, name="morfa_s.adj"),
