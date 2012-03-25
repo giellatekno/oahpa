@@ -55,6 +55,9 @@ CASE_CHOICES = (
 	('N-ESS', _('essive')),
 )
 
+# For now this is just a part of a test, used in game.Game.get_db_info_new
+# I wanted a very general way to specify question/answers.
+
 NOUN_QUESTION_ANSWER = {
 	# gametype			question		answer
 	'NOMPL': [('N+Sg+Nom', 'N+Pl+Nom')],
@@ -263,11 +266,12 @@ LEVEL_CHOICES = (
 
 
 DERIVATION_CHOICES = (
+ 	('V-DER-PASS', _('passive derivation')),
  	('A-DER-V', _('adjective->verb derivation')),
 )
 
 DERIVATION_QUESTION_ANSWER = {
-	'Der/AV': [('A+Sg+Nom', 'A+Der/AV+V+Ind+Prs+Person-Number')],
+	'A-DER-V': [('A+Sg+Nom', 'A+Der/AV+V+Ind+Prs+Person-Number')],
 
 }
 
@@ -809,7 +813,7 @@ class OahpaSettings(forms.Form):
 					'num_context' : 'NUM-ATTR',
 					'num_level' : '1',
 					'num_type' : 'CARD',  # added by Heli
-					'derivation_type' : 'A-DER-V',
+					'derivation_type' : 'V-DER-PASS',
 					'geography': 'world',
 					'frequency' : [],
 					'num_bare' : 'N-ILL',
@@ -1049,7 +1053,7 @@ class MorfaSettings(OahpaSettings):
 	num_bare = forms.ChoiceField(initial='N-ILL', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
-	derivation_type = forms.ChoiceField(initial='A-DER-V', choices=DERIVATION_CHOICES, widget=forms.Select)
+	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-ILL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
