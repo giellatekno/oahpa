@@ -393,6 +393,7 @@ class BareGame(Game):
 		'ORD': 'A+Ord',
 		'COLL': 'N+Coll',
 		'A-DER-V': 'A+Der/AV+V',
+		'V-DER-PASS': '',
 		'': '',
 	}
 	
@@ -687,13 +688,12 @@ class BareGame(Game):
 				return False
 
 		if pos == "Der":
-			_from, _, _to = derivation_type.partition('-DER-')
-			dertype = 'Der/%s%s' % (_from, _to)
 			derivation_types = {
 				# 'Der/AV': parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"),
-				'Der/AV': parse_tag("A+Der/AV+V+Ind+Prs+Person-Number"),
+				'A-DER-V': parse_tag("A+Der/AV+V+Ind+Prs+Person-Number"),
+				'V-DER-PASS': parse_tag("V+Passive+V+Ind+Tense+Person-Number"),
 			}
-			TAG_QUERY = Q(string__in=derivation_types[dertype])
+			TAG_QUERY = Q(string__in=derivation_types[derivation_type])
 			TAG_EXCLUDES = False
 			sylls = False
 			source = False
@@ -735,7 +735,6 @@ class BareGame(Game):
 				TAG_EXCLUDES = Q(string__contains='ConNeg')
 			
 		if pos == 'A':
-			base_set = Form.objects.filter(Q(tag__pos="A") & Q(tag__case='Nom'))  # Is not used?
 			if pos2 == 'Num':
 				 sylls = False
 				 TAG_QUERY = TAG_QUERY & Q(subclass=subclass) & Q(case=case) & Q(attributive='') & Q(grade='')
@@ -921,30 +920,37 @@ class BareGame(Game):
 				
 			#	NOTE: Need to use getBaseform on Form object, not Word, 
 			#	because Word.getBaseform doesn't pay attention to number.
-
+		
 			if self.settings.has_key('dialect'):
 				UI_Dialect = self.settings['dialect']
 			else:
 				UI_Dialect = DEFAULT_DIALECT
 			
-			bfs = form.getBaseform(match_num=match_number, return_all=True)
-
-			excluded = bfs.exclude(dialects__dialect='NG')
-			filtered = excluded.filter(dialects__dialect=UI_Dialect)
-
+			# Derived forms need return_all=False otherwise derived infinitive
+			# forms may be returned, and we need them to be underived in
+			# presentation of the question wordform.
+			if pos == 'Der':
+				bfs = form.getBaseform(match_num=match_number, return_all=False)
+				return bfs
+			else:
+				bfs = form.getBaseform(match_num=match_number, return_all=True)
+				excluded = bfs.exclude(dialects__dialect='NG')
+				filtered = excluded.filter(dialects__dialect=UI_Dialect)
+		
 			# If no non-NG forms are found, then we have to display those.
 			if filtered.count() == 0 and excluded.count() > 0:
 				return list(excluded)
 			else:
 				return list(filtered)
-
 		
-		base_forms = [baseformFilter(form) for form in form_list]
+		base_forms = map(baseformFilter, form_list)
 
-		# Flatten
-		base_forms = sum(base_forms, [])
-		#print base_forms
-		
+		# Flatten, but if this isn't an iterateable object, don't worry
+		try:
+			base_forms = sum(base_forms, [])
+		except TypeError:
+			pass
+
 		# Just in case multiple are returned, get the first.
 		try:
 			baseform = list(set(base_forms))[0]
@@ -952,10 +958,7 @@ class BareGame(Game):
 			if len(base_forms) == 0:
 				baseform = form.getBaseform(match_num=match_number)
 		
-		# if 'language' in self.settings:
 		target_key = switch_language_code(self.settings['language'][-3::])
-		# else:
-		# 	# TODO:
 		
 		translations = sum([w.word_answers for w in word.translations2(target_key).all()],[])
 		
