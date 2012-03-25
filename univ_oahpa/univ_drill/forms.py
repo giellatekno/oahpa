@@ -55,6 +55,19 @@ CASE_CHOICES = (
 	('N-ESS', _('essive')),
 )
 
+NOUN_QUESTION_ANSWER = {
+	# gametype			question		answer
+	'NOMPL': [('N+Sg+Nom', 'N+Pl+Nom')],
+	'N-ACC': [('N+NumberN+Nom', 'N+NumberN+Acc')],
+	'N-ILL': [('N+NumberN+Nom', 'N+NumberN+Ill')],
+	'N-LOC': [('N+NumberN+Nom', 'N+NumberN+Loc')],
+	'N-COM': [('N+NumberN+Nom', 'N+NumberN+Com')],
+	'N-GEN': [('N+NumberN+Nom', 'N+NumberN+Gen')],
+	'N-ESS': [('N+NumberN+Nom', 'N+Ess')],
+}
+
+NOUN_FILTER_DEFINITION = ['stem', 'source']
+
 # Pers - akk, gen, ill, lok, kom
 # Dem - akk, gen, ill, lok, kom
 CASE_CHOICES_PRONOUN = (
@@ -65,6 +78,17 @@ CASE_CHOICES_PRONOUN = (
 	('N-GEN', _('genitive')),
 	# ('N-ESS', _('essive')),
 )
+
+PRONOUN_QUESTION_ANSWER = {
+	# gametype			question		answer
+	'N-ACC': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Acc')],
+	'N-ILL': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Ill')],
+	'N-LOC': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Loc')],
+	'N-COM': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Com')],
+	'N-GEN': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Gen')],
+}
+
+PRONOUN_FILTER_DEFINITION = ['pron_type',]
 
 # Refl - ill, lok, kom
 # Recipr - ill, lok, kom
@@ -121,6 +145,20 @@ ADJCASE_CHOICES = (
 	('N-ESS', _('essive')),
 )
 
+ADJECTIVE_QUESTION_ANSWER = {
+	# gametype			question		answer
+	'NOMPL': [('A+Sg+Nom', 'A+Pl+Nom')],
+	'ATTR': [('A+Sg+Nom', 'A+Attr')],
+	'N-ACC': [('A+NumberA+Nom', 'A+NumberN+Acc')],
+	'N-ILL': [('A+NumberA+Nom', 'A+NumberN+Ill')],
+	'N-LOC': [('A+NumberA+Nom', 'A+NumberN+Loc')],
+	'N-COM': [('A+NumberA+Nom', 'A+NumberN+Com')],
+	'N-GEN': [('A+NumberA+Nom', 'A+NumberN+Gen')],
+	'N-ESS': [('A+NumberA+Nom', 'A+Ess')],
+}
+
+ADJECTIVE_FILTER_DEFINITION = ['grade', 'stem', 'source']
+
 ADJEX_CHOICES = (
 	('A-ATTR', _('attributive')), 	# A+Nom+Sg -> A+Attr
  	('A-COMP', _('comparative')),		# A+Nom+Sg -> Comp	
@@ -162,6 +200,15 @@ NUM_BARE_CHOICES = (
 	('N-COM', _('comitative')),
 )
 
+NUMERAL_QUESTION_ANSWER = {
+	# gametype			question		answer
+	'N-ESS': [('Num+NumberN+Nom', 'Num+Ess')],
+	'N-LOC': [('Num+NumberN+Nom', 'Num+NumberN+Loc')],
+	'N-ILL': [('Num+NumberN+Nom', 'Num+NumberN+Ill')],
+}
+
+NUMERAL_FILTER_DEFINITION = ['stem', 'source']
+
 NUM_LEVEL_CHOICES = (
 	('1', _('First level')),
 	('2', _('Second level')),
@@ -182,6 +229,18 @@ VTYPE_CHOICES = (
 	('IMPRT', _('imperative')),
 	('POT', _('potential')),
 )
+
+VERB_QUESTION_ANSWER = {
+	'PRS': [('V+Inf', 'V+Ind+Prs+Person-Number')],
+	'PRT': [('V+Inf', 'V+Ind+Prt+Person-Number')],
+	'PRF': [('V+Inf', 'V+PrfPrc')],
+	'GER': [('V+Inf', 'V+Ger')],
+	'COND': [('V+Inf', 'V+Cond+Prs+Person-Number')],
+	'IMPRT': [('V+Inf', 'V+Imprt+Person-Number')],
+	'POT': [('V+Inf', 'V+Pot+Prs+Person-Number')],
+}
+
+VERB_FILTER_DEFINITION = ['stem', 'source']
 
 VTYPE_CONTEXT_CHOICES = (
 	('V-PRS', _('present')),
@@ -206,6 +265,13 @@ LEVEL_CHOICES = (
 DERIVATION_CHOICES = (
  	('A-DER-V', _('adjective->verb derivation')),
 )
+
+DERIVATION_QUESTION_ANSWER = {
+	'Der/AV': [('A+Sg+Nom', 'A+Der/AV+V+Ind+Prs+Person-Number')],
+
+}
+
+DERIVATION_FILTER_DEFINITION = False
 
 BOOK_CHOICES = (
     ('d1', _('Davvin 1')),
@@ -395,6 +461,23 @@ ALL_CHOICES = [
 	VTYPE_CONTEXT_CHOICES]
 
 
+GAME_TYPE_DEFINITIONS = {
+	'A': ADJECTIVE_QUESTION_ANSWER,
+	'Der': DERIVATION_QUESTION_ANSWER,
+	'N': NOUN_QUESTION_ANSWER,
+	'Num': NUMERAL_QUESTION_ANSWER,
+	'Pron': PRONOUN_QUESTION_ANSWER,
+	'V': VERB_QUESTION_ANSWER,
+}
+
+GAME_FILTER_DEFINITIONS = {
+	'A': ADJECTIVE_FILTER_DEFINITION,
+	'Der': DERIVATION_FILTER_DEFINITION,
+	'N': NOUN_FILTER_DEFINITION,
+	'Num': NUMERAL_FILTER_DEFINITION,
+	'Pron': PRONOUN_FILTER_DEFINITION,
+	'V': VERB_FILTER_DEFINITION,
+}
 
 # #
 #

@@ -103,6 +103,34 @@ def relax(strict):
 	return relaxed_perms
 """
 
+def parse_tag(tag):
+	""" Iterate through a tag string by chunks, and check for tag sets
+	and tag names. Return the reassembled tag on success. """
+
+	def fill_out(tags):
+		from itertools import product
+
+		def make_list(item):
+			if type(item) == list:
+				return item
+			else:
+				return [item]
+
+		return list(product(*map(make_list, tags)))
+
+	tag_string = []
+	for item in tag.split('+'):
+		if Tagname.objects.filter(tagname=item).count() > 0:
+			tag_string.append(item)
+		elif Tagset.objects.filter(tagset=item).count() > 0:
+			tagnames = Tagname.objects.filter(tagset__tagset=item)
+			tag_string.append([t.tagname for t in tagnames])
+
+	if len(tag_string) > 0:
+		return ['+'.join(item) for item in fill_out(tag_string)]
+	else:
+		return False
+
 class Info:
 	pass
 
@@ -368,6 +396,119 @@ class BareGame(Game):
 		'': '',
 	}
 	
+	def get_db_info_new(self, db_info):
+
+		from .forms import GAME_TYPE_DEFINITIONS
+		from .forms import GAME_FILTER_DEFINITIONS
+
+		if self.settings.has_key('pos'):
+			pos = self.settings['pos']
+
+		# Where to find the game type for each POS
+		pos_gametype_keys = {
+			'N': 'case', 
+			'V': 'vtype',
+			'Der': 'derivation_type',
+			'A': 'adjcase',
+			'Num': 'num_bare',
+			'Pron': 'proncase',
+		}
+		game_type_location = pos_gametype_keys.get(pos, False)
+		gametype = self.settings.get(game_type_location, False)
+
+		if not game_type_location:
+			raise Http404("Undefined POS-form relationship, or wrong type.")
+
+		if not gametype:
+			raise Http404("Game type was not set on the form object.")
+
+
+		game_types = GAME_TYPE_DEFINITIONS.get(pos, False)
+		game_filters = GAME_FILTER_DEFINITIONS.get(pos, False)
+		
+		if not game_types:
+			raise Http404("Undefined POS in game_type_definitions")
+
+
+		possible_types = game_types.get(gametype, False)
+		if not possible_types:
+			raise Http404("Undefined type %s" % gametype)
+
+		question, answer = choice(possible_types)
+
+		answer_tags = parse_tag(answer)
+
+		TAG_QUERY = Q(string__in=answer_tags)
+
+		tags = Tag.objects.filter(TAG_QUERY).order_by('?')
+
+		if len(tags) == 0:
+			t_q = str(TAG_QUERY)
+			raise Http404("Oops, no tags matching query!\n\n\t\n%s" % t_q)
+
+
+		# Pronoun type and grade must be filtered here because it affects the
+		# set of tags available for the next step.
+
+		# TODO: grade
+
+		if 'pron_type' in game_filters:
+			ptype = True and self.settings.get('pron_type') or False
+			print ptype
+			if ptype:
+				tags = tags.filter(subclass=ptype)
+				print tags
+
+		# select a random tag and set of forms associated with it to begin
+		tag = tags[0]
+		random_form = tag.form_set.order_by('?')
+
+		no_forms = True
+		failure_count = 0
+
+		while no_forms and failure_count < 10:
+
+			for filter_ in game_filters:
+				if filter_ == 'source':
+					source = True and self.settings.get('book') or False
+					if source:
+						random_form = random_form.filter(word__source__name__in=[source])
+
+				if filter_ == 'stem':
+					bisyl = ['2syll', 'bisyllabic']
+					trisyl = ['3syll', 'trisyllabic']
+					Csyl = ['Csyll', 'contracted'] # added for sme
+
+					syll = True and	self.settings.get('syll') or ['']
+
+					sylls = []
+					for item in syll:
+						if item in bisyl:
+							sylls.append('2syll')
+						if item in trisyl:
+							sylls.append('3syll')
+						if item in Csyl:
+							sylls.append('Csyll')
+
+					random_form = random_form.filter(word__stem__in=sylls)
+
+			# If there are forms left, we select one 
+			if random_form.count() > 0:
+				no_forms = False
+				break
+			else:
+				# Otherwise try a new tag and form set and run through the
+				# filters again
+				tag = tags.order_by('?')[0]
+				random_form = tag.form_set.order_by('?')
+				failure_count += 1
+				continue
+		
+		random_form = random_form[0]
+		db_info['word_id'] = random_form.word.id
+		db_info['tag_id'] = tag.id
+
+
 	def get_db_info(self, db_info):
 		
 		if self.settings.has_key('pos'):
@@ -376,7 +517,7 @@ class BareGame(Game):
 		
 		syll = True and	self.settings.get('syll')	or ['']
 		case = True and	self.settings.get('case')	or   ""
-		levels = True and  self.settings.get('level')   or   []
+		levels = True and self.settings.get('level')   or   []
 		adjcase = True and self.settings.get('adjcase') or   ""
 		pron_type = True and self.settings.get('pron_type') or   ""
 		proncase = True and self.settings.get('proncase') or   ""
@@ -513,6 +654,7 @@ class BareGame(Game):
 		#     question_types = [
 		#       ('V+Inf', 'V+Ind+Prs+Person-Number'),
 		#       ('V+Inf', 'V+Pot+Tense+Person-Number'),
+		#		('A+Sg+Nom', 'A+Der/AV+V+Ind+Prs+Person-Number'),
 		#     ]
 		#
 		# And it will save the need for a lot of lines of code.
