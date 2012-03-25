@@ -751,7 +751,7 @@ class Form(models.Model):
 											.filter(tag__string__contains='Der/PassS')
 
 			# PassL/PassS get their usual form, here's code for if underived forms are needed
-			### if poses in ['PassL', 'PassS']:
+			### if dertype in ['PassL', 'PassS']:
 			### 	# Chop off V+Der/PassL bit, and search for forms with tag that
 			### 	# is the rest.
 			### 	rest = self.tag.string.replace('+Der/PassS+V', '')\
@@ -760,8 +760,8 @@ class Form(models.Model):
 			### 		match_num=match_num,
 			### 		return_all=False)
 
-			if len(poses) == 2:
-				_from, _to = poses[0], poses[1]
+			if len(dertype) == 2:
+				_from, _to = dertype[0], dertype[1]
 				# Return the base form of a tag from the word's form set that
 				# matches the _from part of the derivation tag, this will be
 				# the underived wordform's base form
