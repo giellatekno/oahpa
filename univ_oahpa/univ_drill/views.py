@@ -493,6 +493,7 @@ class Morfaview(Gameview):
 		'N-LOC':  _('Practise adjectives in locative'),
 		'A-COMP':  _('Practise comparative'),
 		'A-SUPERL':  _('Practise superlative'),
+		'A-DER-V':  _('Practise adjective to verb derivation'),
 		'ATTRPOS':  _('Practise attributes in positive'),
 		'ATTRCOMP':  _('Practise attributes in comparative'),
 		'ATTRSUP':  _('Practise attributes in superlative'),
@@ -694,6 +695,13 @@ class Morfaview(Gameview):
 			else:
 				gamename_key = self.settings['adj_context']
 
+		# A-DER-V
+		if self.settings['pos'] == "Der":
+			if self.settings['gametype'] == "bare":
+				gamename_key = self.settings['derivation_type']
+			else:
+				gamename_key = self.settings['derivation_type_context']
+
 		self.settings['gamename'] = self.gamenames[gamename_key]
 		names = [self.settings['pos'], gamename_key]
 
@@ -731,6 +739,8 @@ def morfa_game(request, pos):
 
 	if pos == 'Num':
 		template = 'mgame_l.html'
+	elif pos == 'Der':
+		template = 'mgame_der.html'
 	else:
 		template = 'mgame_%s.html' % pos.lower()[0]
 
