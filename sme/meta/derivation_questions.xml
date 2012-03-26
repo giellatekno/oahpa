@@ -67,6 +67,13 @@
 	<grammar tag="A+Der/AV+V+PrfPrc"/>
       </element>
     </answer>
+    <answer> 
+      <text>VERB ovdalgo mun bohten</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<sem class="mWEATHER_V"/>
+	<grammar tag="A+Der/AV+V+Ind+Prt+Sg3"/>
+      </element>
+    </answer>
   </q> 
   <q id="derav5">
     <qtype>V-DER</qtype>
@@ -84,7 +91,7 @@
   <q id="derav6">
     <qtype>V-DER</qtype>
    <question>
-      <text>Lei go buorre riegádanfeasta</text>
+      <text>Ledje go buorit heajat</text>
     </question>
     <answer> 
       <text>Lei, muhto mun nu VERB</text>
@@ -104,6 +111,39 @@
       <element game='morfa' id="VERB" task="yes" >
 	<sem class="mBAIDI_V"/>
 	<grammar tag="A+Der/AV+V+PrfPrc"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Mu buvssat VERB</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<sem class="mBAIDI_V"/>
+	<grammar tag="A+Der/AV+V+Ind+Prt+Pl3"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="derav8">
+    <qtype>V-DER</qtype>
+   <question>
+      <text>Mii dáhpáhuvai du čáppa gáktái</text>
+    </question>
+    <answer> 
+      <text>Mu gákti VERB</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<sem class="mBAIDI_V"/>
+	<grammar tag="A+Der/AV+V+Ind+Prt+Sg3"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="derav9">
+    <qtype>V-DER</qtype>
+   <question>
+      <text>Mo manai mánáin riegádanfeasttas</text>
+    </question>
+    <answer> 
+      <text>Bures, muhto sii nu VERB</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<sem class="mFEASTA_V"/>
+	<grammar tag="A+Der/AV+V+Ind+Prt+Pl3"/>
       </element>
     </answer>
   </q> 
