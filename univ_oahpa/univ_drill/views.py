@@ -493,6 +493,7 @@ class Morfaview(Gameview):
 		'N-LOC':  _('Practise adjectives in locative'),
 		'A-COMP':  _('Practise comparative'),
 		'A-SUPERL':  _('Practise superlative'),
+		'V-DER':  _('Practise verb derivation'),
 		'V-DER-PASS':  _('Practise verb passive derivation'),
 		'A-DER-V':  _('Practise adjective to verb derivation'),
 		'ATTRPOS':  _('Practise attributes in positive'),
@@ -764,9 +765,13 @@ def cmgame(request, pos):
 	mgame.settings['gametype'] = "context"
 
 	if pos in ['Num', 'num']:
-		pos = 'l'
+		p = 'l'
+	elif pos == 'Der':
+		p = 'der'
+	else:
+		p = pos.lower()[0]
 
-	template = "mgame_%s.html" % pos.lower()[0]
+	template = "mgame_%s.html" % p
 	c = mgame.create_game(request)
 
 	return render_to_response(template, c,

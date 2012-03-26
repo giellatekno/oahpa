@@ -871,6 +871,8 @@ class QAGame(Game):
 				qtype = self.settings['adj_context']
 			if pos == "Pron":
 				qtype = self.settings['pron_context']
+			if pos == "Der":
+				qtype = self.settings['derivation_type_context']
 
 		books = self.settings.get('book', None)
 

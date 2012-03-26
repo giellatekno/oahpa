@@ -277,6 +277,10 @@ DERIVATION_QUESTION_ANSWER = {
 
 DERIVATION_FILTER_DEFINITION = False
 
+DERIVATION_CHOICES_CONTEXT = (
+ 	('V-DER', _('verbal derivation')),
+)
+
 BOOK_CHOICES = (
     ('d1', _('Davvin 1')),
     ('d2', _('Davvin 1-2')),
@@ -814,6 +818,7 @@ class OahpaSettings(forms.Form):
 					'num_level' : '1',
 					'num_type' : 'CARD',  # added by Heli
 					'derivation_type' : 'V-DER-PASS',
+					'derivation_type_context' : 'V-DER',
 					'geography': 'world',
 					'frequency' : [],
 					'num_bare' : 'N-ILL',
@@ -1054,6 +1059,7 @@ class MorfaSettings(OahpaSettings):
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
 	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
+	derivation_type_context = forms.ChoiceField(initial='V-DER', choices=DERIVATION_CHOICES_CONTEXT, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-ILL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
