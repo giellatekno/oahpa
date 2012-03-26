@@ -89,11 +89,21 @@
     <answer> 
       <text>Lei, muhto mun nu VERB</text>
       <element game='morfa' id="VERB" task="yes" >
-	<!-- TODO: installeringa gikk ikkje med denne taggen, då gissa eg at det kunne vera mOLBMO_V,
-	<sem class="mBIILA_V"/>
-	-->
 	<sem class="mFEASTA_V"/>
 	<grammar tag="A+Der/AV+V+Ind+Prt+Sg1"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="derav7">
+    <qtype>V-DER</qtype>
+   <question>
+      <text>Manne don háliidat molsut buvssaid</text>
+    </question>
+    <answer> 
+      <text>Mu buvssat leat VERB</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<sem class="mBAIDI_V"/>
+	<grammar tag="A+Der/AV+V+PrfPrc"/>
       </element>
     </answer>
   </q> 
