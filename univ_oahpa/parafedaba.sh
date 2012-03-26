@@ -336,6 +336,13 @@ echo "done"
 echo "==================================================="
 
 echo "==================================================="
+echo "installing Morfa-C questions for derivation"
+$P install.py -g $META/grammar_defaults.xml -q $META/derivation_questions.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
 echo "installing grammar links for norwegian"
 $P install.py -i $META/grammatikklinker.txt
 echo " "
