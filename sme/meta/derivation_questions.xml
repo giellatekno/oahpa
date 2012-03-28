@@ -147,6 +147,143 @@
       </element>
     </answer>
   </q> 
+  <q id="dervv1">
+    <qtype>DER-V</qtype>
+   <question>
+      <text>Áiggut go oastit ITEM</text>
+      <element id="ITEM" task="yes" >
+	<sem class="CLOTHING"/>
+	<grammar tag="N+Sg+Acc"/>
+      </element>
+    </question>
+    <answer> 
+      <text>In áiggo, dat VERB juo ikte</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<id>vuovdit</id>
+	<grammar tag="V+TV+Der/PassL+V+Ind+Prt+Sg3"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="dervv2">
+    <qtype>DER-V</qtype>
+   <question>
+      <text>Áiggut go oastit ITEM</text>
+      <element id="ITEM" task="yes" >
+	<sem class="mPRIVVEHICLE"/>
+	<grammar tag="N+Sg+Acc"/>
+      </element>
+    </question>
+    <answer> 
+      <text>In áiggo, dat VERB juo ikte</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<id>vuovdit</id>
+	<grammar tag="V+TV+Der/PassL+V+Ind+Prt+Sg3"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="dervv3">
+    <qtype>DER-V</qtype>
+   <question>
+      <text>Goas áiggut divvut ITEM</text>
+      <element id="ITEM" task="yes" >
+	<sem class="mPRIVVEHICLE"/>
+	<grammar tag="N+Sg+Acc"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Dat VERB juo ikte</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<id>divvut</id>
+	<grammar tag="V+TV+Der/PassL+V+Ind+Prt+Sg3"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="dervv4">
+    <qtype>DER-V</qtype>
+   <question>
+      <text>Goas áiggut máksit ITEM</text>
+      <element id="ITEM" task="yes" >
+	<sem class="mPRIVVEHICLE"/>
+	<grammar tag="N+Sg+Acc"/>
+      </element>
+    </question>
+    <answer> 
+      <text>ITEM lea juo VERB</text>
+      <element id="ITEM" content="ITEM">
+	<grammar tag="N+Sg+Nom"/>
+      </element>
+      <element game='morfa' id="VERB" task="yes" >
+	<id>máksit</id>
+	<grammar tag="V+TV+Der/PassL+V+PrfPrc"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="dervv5">
+    <qtype>DER-V</qtype>
+   <question>
+      <text>Manne mis ii leat láibi</text>
+    </question>
+    <answer> 
+      <text>Láibi lea VERB</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<id>borrat</id>
+	<grammar tag="V+TV+Der/PassL+V+PrfPrc"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Láibi lea VERB</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<id>suoladit</id>
+	<grammar tag="V+TV+Der/PassL+V+PrfPrc"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="dervv6">
+    <qtype>DER-V</qtype>
+   <question>
+      <text>Man boarrásat duot viesut leat</text>
+    </question>
+    <answer> 
+      <text>Dat VERB 50-logus</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<id>hukset</id>
+	<grammar tag="V+TV+Der/PassL+V+Ind+Prt+Pl3"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="dervv7">
+    <qtype>DER-V</qtype>
+   <question>
+      <text>Man boaris lea dát girji</text>
+    </question>
+    <answer> 
+      <text>Dat VERB soađi áigge</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<id>čállit</id>
+	<grammar tag="V+TV+Der/PassL+V+Ind+Prt+Sg3"/>
+      </element>
+    </answer>
+  </q> 
+  <q id="dervv8">
+    <qtype>DER-V</qtype>
+   <question>
+      <text>Manne oasttát nu ollu girjjiid</text>
+    </question>
+    <answer> 
+      <text>Dat VERB oahpahussii</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<id>dárbbašit</id>
+	<grammar tag="V+TV+Der/PassL+V+Ind+Prs+Pl3"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Dat VERB oahpahusas</text>
+      <element game='morfa' id="VERB" task="yes" >
+	<id>geavahit</id>
+	<grammar tag="V+TV+Der/PassL+V+Ind+Prs+Pl3"/>
+      </element>
+    </answer>
+  </q> 
 </questions>
 
 
