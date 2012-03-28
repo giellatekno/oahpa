@@ -748,10 +748,16 @@ class BareGame(Game):
 		
 		# filter can include several queries, exclude must have only one
 		# to work successfully
-		tags = Tag.objects.filter(TAG_QUERY)\
-							.exclude(subclass='Prop')\
-							.exclude(polarity='Neg')
-		
+		if pos != 'Der':
+			tags = Tag.objects.exclude(string__contains='Der')\
+								.filter(TAG_QUERY)\
+								.exclude(subclass='Prop')\
+								.exclude(polarity='Neg')
+		else:
+			tags = Tag.objects.filter(TAG_QUERY)\
+								.exclude(subclass='Prop')\
+								.exclude(polarity='Neg')
+
 		if TAG_EXCLUDES:
 			tags = tags.exclude(TAG_EXCLUDES)
 
@@ -810,7 +816,6 @@ class BareGame(Game):
 
 		try:
 			tag = tags.order_by('?')[0]
-			
 			no_form = True
 			count = 0
 			while no_form and count < 10:
