@@ -58,9 +58,10 @@ echo " "
 echo "done"
 echo "==================================================="
 
+# NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
 echo "==================================================="
 echo "feeding db with $DPS/v_pass.xml"
-$P install.py --file $META/v_pass.xml --tagfile $META/tags.txt --paradigmfile $META/v_pass_paradigms.txt 2>>error.log
+$P install.py --file $META/v_pass.xml --tagfile $META/tags.txt --paradigmfile $META/v_pass_paradigms.txt --append 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
