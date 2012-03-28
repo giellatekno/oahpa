@@ -109,14 +109,14 @@
       </element>
     </answer>
     <answer> 
-      <text>Son AUX VERB NOUN</text>
+      <text>Son AUX VERB ruoktot NOUN</text>
       <element id="AUX" task="yes">
         <grammar tag="V+Inf"/>
         <id>áigut</id>
       </element>
       <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
-        <id>oastit</id>
+        <id>vuolgit</id>
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
@@ -144,6 +144,12 @@
         <sem class="mMAL"/>
       </element>
     </answer>
+   </q> 
+   <q level="1" lemmacount="3" id="2_PrsSg3_Inf_Acc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Manne Biret lea nu buori mielas</text>
+    </question>
     <answer> 
       <text>Son AUX VERB NOUN</text>
       <element id="AUX" task="yes">
@@ -241,6 +247,12 @@
         <sem class="FOOD_DISH"/>
       </element>
     </answer>
+  </q> 
+   <q level="1" lemmacount="3" id="1_PrsSg1_Neg_Acc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Manne it bora</text>
+    </question>
     <answer> 
       <text>NEG VERB NOUN</text>
       <element id="NEG" task="yes">
@@ -277,6 +289,12 @@
         <sem class="FOOD_DISH"/>
       </element>
     </answer>
+  </q> 
+   <q level="1" lemmacount="3" id="1_PrsPl3_Neg_Acc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Manne mánát váidalit</text>
+    </question>
     <answer> 
       <text>Sii NEG VERB NOUN</text>
       <element id="NEG" task="yes">
@@ -525,11 +543,11 @@
       </element>
       <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
-        <id>borrat</id>
+        <sem class="mCOMV"/>
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
-        <id>njálggis</id>
+        <id>ustit</id>
       </element>
     </answer>
   </q> 
