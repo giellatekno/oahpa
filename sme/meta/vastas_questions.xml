@@ -91,7 +91,11 @@
    <q level="1" lemmacount="3" id="1_PrsSg3_Inf_SgCom">
     <qtype>PRS</qtype>
    <question>
-      <text>Maid Heaika áigu dál</text>
+      <text>Maid PERSON áigu dál</text>
+      <element id="PERSON">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mMAL"/>
+      </element>
     </question>
     <answer> 
       <text>Son AUX VERB NOUN</text>
@@ -127,7 +131,11 @@
    <q level="1" lemmacount="3" id="2_PrsSg3_Inf_SgCom">
     <qtype>PRS</qtype>
    <question>
-      <text>Manne Biret lea nu buori mielas</text>
+      <text>Manne PERSON lea nu buori mielas</text>
+      <element id="PERSON">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mFEM"/>
+      </element>
     </question>
     <answer> 
       <text>Son AUX VERB NOUN</text>
@@ -148,7 +156,11 @@
    <q level="1" lemmacount="3" id="2_PrsSg3_Inf_Acc">
     <qtype>PRS</qtype>
    <question>
-      <text>Manne Biret lea nu buori mielas</text>
+      <text>Manne PERSON lea nu buori mielas</text>
+      <element id="PERSON">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mFEM"/>
+      </element>
     </question>
     <answer> 
       <text>Son AUX VERB NOUN</text>
@@ -807,10 +819,21 @@
   <q level="2" lemmacount="3" id="1_PrfSg3_Dem_AAttr_Ill">
     <qtype>PRS</qtype>
    <question>
-      <text>Geasa Heaika lea liikostan</text>
+      <text>Geasa PERSON lea VERB</text>
+      <element id="PERSON">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mMAL"/>
+      </element>
+      <element id="VERB">
+        <grammar tag="V+PrfPrc"/>
+        <sem class="mLIKE_ILL"/>
+      </element>
     </question>
     <answer> 
-      <text>Son lea liikostan DEM ADJ NOUN</text>
+      <text>Son lea VERB DEM ADJ NOUN</text>
+      <element id="VERB" content="VERB">
+        <grammar tag="V+PrfPrc"/>
+      </element>
       <element id="DEM" task="yes">
         <grammar tag="Pron+Dem+Sg+Nom"/>
         <id>duot</id>
@@ -828,10 +851,21 @@
   <q level="2" lemmacount="3" id="2_PrfSg3_Dem_AAttr_Ill">
     <qtype>PRS</qtype>
    <question>
-      <text>Geasa Risten lea liikostan</text>
+      <text>Geasa PERSON lea VERB</text>
+      <element id="PERSON">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mFEM"/>
+      </element>
+      <element id="VERB">
+        <grammar tag="V+PrfPrc"/>
+        <sem class="mLIKE_ILL"/>
+      </element>
     </question>
     <answer> 
-      <text>Son lea liikostan DEM ADJ NOUN</text>
+      <text>Son lea VERB DEM ADJ NOUN</text>
+      <element id="VERB" content="VERB">
+        <grammar tag="V+PrfPrc"/>
+      </element>
       <element id="DEM" task="yes">
         <grammar tag="Pron+Dem+Sg+Nom"/>
         <id>duot</id>
