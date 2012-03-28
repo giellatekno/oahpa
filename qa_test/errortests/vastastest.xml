@@ -1,5 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <q_tests>
+   <test name="1_PrsSg1_Inf_PlAcc">
+      <q>Maid don áiggut bargat odne</q>
+    <ag>
+      <a>Odne čoakkán sarridiid</a>
+      <l base="áigut" pos="V"/>
+      <l base="čoaggit" pos="V"/>
+      <l base="sarrit" pos="N"/>
+    </ag>
+    <ag>
+      <a>Odne áiggun oastit suohkku</a>
+      <l base="áigut" pos="V"/>
+      <l base="oastit" pos="V"/>
+      <l base="suohkku" pos="N"/>
+    </ag>
+     <ag>
+      <a>Odne áiggun oastime njálgáid</a>
+      <l base="áigut" pos="V"/>
+      <l base="oastit" pos="V"/>
+      <l base="njálggis" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsSg3_Inf_SgCom">
+      <q>Maid Heaika jurddaša dál</q>
+    <ag>
+      <a>Son áigu náitalit Ristena</a>
+      <l base="áigut" pos="V"/>
+      <l base="náitalit" pos="V"/>
+      <l base="Risten" pos="N"/>
+    </ag>
+    <ag>
+      <a>Son áigu vuodjit ruoktot njealjejuvlageassi</a>
+      <l base="áigut" pos="V"/>
+      <l base="vuodjit" pos="V"/>
+      <l base="njealjejuvlageassi" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsSg1_Gen_Nom">
+      <q>Gii don leat</q>
+    <ag>
+      <a>Mun lean du vuoni ustit</a>
+      <a>Mun lean du vuoni ustiba</a>
+      <a>Mun lean du vuotnáma ustiba</a>
+      <l base="vuoni" pos="N"/>
+      <l base="ustit" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrsSg1_Acc_SgLoc_SgIll">
       <q>Maid don barggat</q>
     <ag>
@@ -48,14 +94,52 @@
       <l base="son" pos="Pron"/>
       <l base="spábba" pos="N"/>
     </ag>
+    <ag>
+      <a>Soai riidalit ustibiiguin</a>
+      <l base="riidalit" pos="V"/>
+      <l base="son" pos="Pron"/>
+      <l base="ustit" pos="N"/>
+    </ag>
+    <ag>
+      <a>Soai riidaleaba ustibiid</a>
+      <l base="riidalit" pos="V"/>
+      <l base="son" pos="Pron"/>
+      <l base="ustit" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsSg1_Neg_Acc">
+      <q>Manne it bora</q>
+    <ag>
+      <a>Ii hálit biđđosa</a>
+      <l base="ii" pos="V"/>
+      <l base="háliidit" pos="V"/>
+      <l base="biđus" pos="N"/>
+    </ag>
+  </test>
+   <test name="2_PrsSg3_Inf_Acc">
+      <q>Manne Biret lea nu buori mielas</q>
+    <ag>
+      <a>Son áigu geahččat náittus</a>
+      <l base="áigut" pos="V"/>
+      <l base="geahččat" pos="V"/>
+      <l base="náittus" pos="N"/>
+    </ag>
+    <ag>
+      <a>Son áigu borrá buvrru</a>
+      <l base="áigut" pos="V"/>
+      <l base="borrat" pos="V"/>
+      <l base="buvru" pos="N"/>
+    </ag>
   </test>
    <test name="1_PrsPl3_AAttr_Acc">
       <q>Maid sii barget doppe</q>
     <ag>
-      <a>Sii ráhkadit ođđa geaidnu</a>
-      <l base="ráhkadit" pos="V"/>
+      <a>Sii huksejit ođđa barta</a>
+      <a>Sii hukset ođđa barta</a>
+      <a>Sii hukset ođđa bartta</a>
+      <l base="hukset" pos="V"/>
       <l base="ođas" pos="A"/>
-      <l base="geaidnu" pos="N"/>
+      <l base="barta" pos="N"/>
     </ag>
   </test>
    <test name="1_PrtSg3_Dem_SgLoc">
@@ -109,6 +193,11 @@
       <l base="lávka" pos="N"/>
       <l base="latnja" pos="N"/>
     </ag>
+    <ag>
+      <a>Bijan lávkka oađđenlatnji</a>
+      <l base="lávka" pos="N"/>
+      <l base="oađđenlatnja" pos="N"/>
+    </ag>
   </test>
    <test name="1_PrsPl3_SgIll">
       <q>Gosa nieiddat áigot vuolgit</q>
@@ -121,17 +210,32 @@
    <test name="1_PrsSg2_SgAcc_SgIll">
       <q>Geasa galggan njoarrat dál</q>
     <ag>
-      <a>Njoara gáfe munnje</a>
+      <a>Njoara gáfe mu</a>
+      <l base="gáffe" pos="N"/>
+      <l base="mun" pos="Pron"/>
+    </ag>
+    <ag>
+      <a>Njoara gáfe Ellei</a>
       <l base="gáffe" pos="N"/>
       <l base="Elle" pos="N"/>
     </ag>
   </test>
    <test name="1_PrsPl3_Neg_Ill">
-      <q>Maid mánát dadjet</q>
+      <q>Manne mánát váidalit</q>
     <ag>
       <a>Sii liikojit biđđosii</a>
       <l base="ii" pos="V"/>
       <l base="liikot" pos="V"/>
+      <l base="biđus" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsPl3_Neg_Acc">
+      <q>Manne mánát váidalit</q>
+    <ag>
+      <a>Sii eai hálida biđđosa</a>
+      <a>Sii eai hálidit biđđosa</a>
+      <l base="ii" pos="V"/>
+      <l base="háliidit" pos="V"/>
       <l base="biđus" pos="N"/>
     </ag>
   </test>
@@ -172,15 +276,6 @@
       <l base="Heaika" pos="N"/>
     </ag>
   </test>
-   <test name="1_PrsSg3_Inf_SgCom">
-      <q>Maid Heaika jurddaša dál</q>
-    <ag>
-      <a>Son áigu náitalit Ristena</a>
-      <l base="áigut" pos="V"/>
-      <l base="náitalit" pos="V"/>
-      <l base="Risten" pos="N"/>
-    </ag>
-  </test>
    <test name="1_PrsPl3_Inf_PlAcc">
       <q>Maid oahppit barget odne</q>
     <ag>
@@ -189,14 +284,11 @@
       <l base="čoaggit" pos="V"/>
       <l base="jokŋa" pos="N"/>
     </ag>
-  </test>
-   <test name="1_PrsSg1_Inf_PlAcc">
-      <q>Maid don áiggut bargat odne</q>
     <ag>
-      <a>Odne čoakkán sarridiid</a>
-      <l base="áigut" pos="V"/>
-      <l base="čoaggit" pos="V"/>
-      <l base="sarrit" pos="N"/>
+      <a>Odne oahppit galget oahppat julevsámegiella</a>
+      <l base="galgat" pos="V"/>
+      <l base="oahppat" pos="V"/>
+      <l base="julevsámegiella" pos="N"/>
     </ag>
   </test>
    <test name="1_PrfDu3_Neg_Aux">
@@ -259,7 +351,7 @@
    <test name="4_PrsPl3_Loc">
       <q>Gos du fuolkkit orrot</q>
     <ag>
-      <a>Mu fuolkkit orrut Avvilis</a>
+      <a>Sii orrut Avvilis</a>
       <l base="orrut" pos="V"/>
       <l base="Avvil" pos="N"/>
     </ag>
@@ -323,13 +415,31 @@
       <l base="neavttár" pos="N"/>
     </ag>
   </test>
+   <test name="2_PrsSg1_Dem_SgGen_Po">
+      <q>Gosa manat dál</q>
+    <ag>
+      <a>Mun manan bálggis mielde</a>
+      <l base="mannat" pos="V"/>
+      <l base="bálggis" pos="N"/>
+      <l base="mielde" pos="Po"/>
+    </ag>
+  </test>
+   <test name="2_PrsSg1_Dem_SgGen_Po">
+      <q>Gosa manat dál</q>
+    <ag>
+      <a>Mun manan bálgá</a>
+      <l base="mannat" pos="V"/>
+      <l base="bálggis" pos="N"/>
+      <l base="mielde" pos="Po"/>
+    </ag>
+  </test>
    <test name="1_PrtSg1_Num_Acc">
       <q>Maid borret gáffádagas</q>
     <ag>
-      <a>Mun borren guovtti guoli</a>
+      <a>Mun borren guovtti márfi</a>
       <l base="borrat" pos="V"/>
       <l base="guokte" pos="Num"/>
-      <l base="guolli" pos="N"/>
+      <l base="márfi" pos="N"/>
     </ag>
   </test>
    <test name="1_PrfSg3_Dem_AAttr_Ill">
@@ -504,9 +614,9 @@
     </ag>
   </test>
    <test name="1_PrfDu3_Neg_Aux">
-      <q>Leaba go dáppe</q>
+      <q>Leaba go Risten ja Sunná dáppe</q>
     <ag>
-      <a>Risten ja Sunná ii leat vel boahtán</a>
+      <a>Soai ii leat vel boahtán</a>
       <l base="ii" pos="V"/>
       <l base="leat" pos="V"/>
       <l base="boahtit" pos="V"/>
