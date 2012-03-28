@@ -142,7 +142,10 @@ from itertools import product
 
 
 
-from collections import OrderedDict
+try:
+	from collections import OrderedDict
+except ImportError:
+	from conf.ordereddict import OrderedDict
 
 def chunks(l, n):
 	""" Yield successive n-sized chunks from l.
@@ -463,6 +466,10 @@ class Feedback_install(object):
 		print >> sys.stdout, "\n  FEEDBACK"
 		print >> sys.stdout, "    Attributes in feedback file:"
 		print >> sys.stdout, fmt_dict(self.feedback_possible_values)
+
+		print >> sys.stdout, "    <msg />  attributes in feedback file:"
+		print >> sys.stdout, fmt_dict(self.feedback_msg_possible_values)
+
 
 		print >> sys.stdout, "\n  COMPARISON"
 		print >> sys.stdout, "    Symmetric difference between lexicon and feedback:"
