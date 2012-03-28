@@ -26,6 +26,9 @@ from sahka_install import Sahka  # added by Heli
 # jos on lemma, niin ota käännös jos on oa="yes"
 
 OPTION_LIST = (
+	make_option("-a", "--append-words", dest="append",
+					  action="store_true", default=False,
+					  help="Add wordforms to words without deleting existing wordforms"),
 	make_option("-b", "--db", dest="add_db",
 					  action="store_true", default=False,
 					  help="Used for adding tag infoformation to database"),
@@ -118,7 +121,17 @@ def main(opts):
 		sys.exit()
 
 	if options.infile:
-		words.install_lexicon(infile=options.infile,linginfo=linginfo,delete=options.delete,paradigmfile=options.paradigmfile)
+
+		if options.append:
+			append_only = True
+		else:
+			append_only = False
+
+		words.install_lexicon(infile=options.infile,
+								linginfo=linginfo,
+								delete=options.delete,
+								paradigmfile=options.paradigmfile,
+								append_only=append_only)
 		sys.exit()
 
 

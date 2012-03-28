@@ -445,7 +445,7 @@ class Words(object):
 
 	
 	@transaction.commit_on_success
-	def install_lexicon(self,infile,linginfo,delete=None,paradigmfile=False, verbose=True):
+	def install_lexicon(self,infile,linginfo,delete=None,paradigmfile=False, verbose=True,append_only=False):
 		global VERBOSE
 		VERBOSE = verbose
 
@@ -517,7 +517,8 @@ class Words(object):
 								linginfo=linginfo,
 								mainlang=mainlang,
 								delete=delete,
-								paradigmfile=paradigmfile)
+								paradigmfile=paradigmfile,
+								append_only=append_only)
 				
 			else:
 				try:
@@ -642,7 +643,7 @@ class Words(object):
 			w.source.add(book_entry)
 			w.save()
 
-	def store_word(self,entry,linginfo,mainlang,paradigmfile,delete):
+	def store_word(self,entry,linginfo,mainlang,paradigmfile,delete,append_only=False):
 		OUT_STRS = []
 		ERR_STRS = []
 
@@ -890,8 +891,9 @@ class Words(object):
 
 				existing = Form.objects.filter(word=w)
 
-				if existing.count() > 0:
-					existing.delete()
+				if not append_only:
+					if existing.count() > 0:
+						existing.delete()
 
 				for key, item in paradigms_to_create.iteritems():
 					f_dialects = item.get('dialects', False)
