@@ -1,275 +1,555 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <q_tests>
-   <test name="1_Loc_PrsSg3_Nom">
-      <q>Gohppu leat deadja</q>
-      <a>Gohpus lea deadja.</a>
-   </test>
-   <test name="1_PrsDu1_Acc">
-      <q>Moai borrat biđus</q>
-      <a>Moai borre biđđosa.</a>
-   </test>
-   <test name="1_PrsDu3_Com">
-      <q>Soai buđaldit spábba</q>
-      <a>Soai buđaldeaba spáppain.</a>
-   </test>
-   <test name="1_PrsPl3_AAttr_Acc">
-      <q>Sii ráhkadit ođas vázzingeaidnu</q>
-      <a>Sii ráhkadit ođđa vázzingeainnu.</a>
-      <a>Sii ráhkadit ođđa vázzingeainnuid.</a>
-   </test>
-   <test name="1_PrtSg3_Dem_SgLoc">
-      <q>Dat lei dát lávka</q>
-      <a>Dat lei dán lávkkas.</a>
-   </test>
-   <test name="1_PrsSg1_Dem_SgGen_Po">
-      <q>mannat duon bálggis mielde</q>
-      <a>Manan duon bálgá mielde.</a>
-      <a>Mun manan duon bálgá mielde.</a>
-   </test>
-   <test name="1_PrsSg1_Neg_Ess">
-      <q>In oaggut arvi</q>
-      <a>In oakko arvin.</a>
-   </test>
-   <test name="1_PrsSg3_Ess">
-      <q>Son doaibmat doavttir</q>
-      <a>Son doaibmá doavttirin.</a>
-   </test>
-   <test name="1_PrsPl3_Acc_Ess">
-      <q>Sii gohčodit su Heaika</q>
-      <a>Sii gohčodit su Heaikan.</a>
-   </test>
-   <test name="1_PrsSg1_Acc_Ill">
-      <q>Bijan lávka oađđenlatnja</q>
-      <a>Bijan lávkka oađđenlatnjii.</a>
-   </test>
-   <test name="1_PrsPl3_SgIll">
-      <q>Sii vuolgit Helsset</q>
-      <a>Sii vulget Helssegii.</a>
-   </test>
-   <test name="1_PrsSg2_SgAcc_SgIll">
-      <q>Njuora gáffe Elle</q>
-      <a>Njuora gáfe Ellii.</a>
-   </test>
-   <test name="1_PrsPl3_Neg_Ill">
-      <q>Sii ii liikot biđus</q>
-      <a>Sii eai liiko biđđosii.</a>
-   </test>
-   <test name="1_PrsSg1_Neg_Ill">
-      <q>In liikot biđus</q>
-      <a>In liiko biđđosii.</a>
-   </test>
    <test name="1_PrsSg1_Acc_SgLoc_SgIll">
-      <q>Mun jorgalit muitalus dárogiella sámegiella</q>
+      <q>Maid don barggat</q>
+    <ag>
+      <a>Mun jorgalan muitalusa sámegielas dárogillii</a>
+      <l base="sámegiella" pos="N"/>
+      <l base="muitalus" pos="N"/>
+      <l base="dárogiella" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_Loc_PrsSg3_Nom">
+      <q>Makkár juhkamuš mis lea</q>
+    <ag>
+      <a>Gohpus lea deadja</a>
+      <a>Dán gohpus lea deadja</a>
+      <l base="gohppu" pos="N"/>
+      <l base="leat" pos="V"/>
+      <l base="deadja" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_Loc_PrsSg3_Nom">
+      <q>Makkár juhkamuš mis lea</q>
+    <ag>
+      <a>Gohpus lea gáffe</a>
+      <l base="gohppu" pos="N"/>
+      <l base="leat" pos="V"/>
+      <l base="gáffe" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsDu1_Acc">
+      <q>Maid doai borrabeahtti</q>
+    <ag>
+      <a>Moai borre biđđosa</a>
+      <a>Odne moai borre biđđosa</a>
+      <l base="borrat" pos="V"/>
+      <l base="biđus" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsDu3_Com">
+      <q>Maid máná-guovttos bargaba</q>
+    <ag>
+      <a>Soai buđaldeaba spáppain</a>
+      <l base="buđaldit" pos="V"/>
+      <l base="son" pos="Pron"/>
+      <l base="spábba" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsPl3_AAttr_Acc">
+      <q>Maid sii barget doppe</q>
+    <ag>
+      <a>Sii ráhkadit ođđa vázzingeainnu</a>
+      <a>Sii ráhkadit ođđa vázzingeainnuid</a>
+      <l base="ráhkadit" pos="V"/>
+      <l base="ođas" pos="A"/>
+      <l base="vázzingeaidnu" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrtSg3_Dem_SgLoc">
+      <q>Gos dat lei</q>
+    <ag>
+      <a>Dat lei dán lávkkas</a>
+      <l base="dát" pos="Pron"/>
+      <l base="lávka" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsSg1_Dem_SgGen_Po">
+      <q>Gosa manat dál</q>
+    <ag>
+      <a>Manan duon bálgá mielde</a>
+      <a>Mun manan duon bálgá mielde</a>
+      <l base="mannat" pos="V"/>
+      <l base="duot" pos="Pron"/>
+      <l base="bálggis" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsSg1_Neg_Ess">
+      <q>Manne it boađe mielde oaggut</q>
+    <ag>
+      <a>In oakko arvin</a>
+      <l base="oaggut" pos="V"/>
+      <l base="arvi" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsSg3_Ess">
+      <q>Makkár bargu sus lea doppe</q>
+    <ag>
+      <a>Son bargá doavttirin</a>
+      <l base="bargat" pos="V"/>
+      <l base="doavttir" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsPl3_Acc_Ess">
+      <q>Mii lea su namma</q>
+    <ag>
+      <a>Sii gohčodit su Heaikan</a>
+      <l base="gohčodit" pos="V"/>
+      <l base="Heaika" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsSg1_Acc_Ill">
+      <q>Gosa bijat dan</q>
+    <ag>
+      <a>Bijan lávkka oađđenlatnjii</a>
+      <l base="lávka" pos="N"/>
+      <l base="oađđenlatnja" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsPl3_SgIll">
+      <q>Gosa nieiddat áigot vuolgit</q>
+    <ag>
+      <a>Sii vulget Helssegii</a>
+      <l base="vuolgit" pos="V"/>
+      <l base="Helsset" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsSg2_SgAcc_SgIll">
+      <q>Geasa galggan njoarrat dál</q>
+    <ag>
+      <a>Njuora gáfe Ellii</a>
+      <l base="gáffe" pos="N"/>
+      <l base="Elle" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsPl3_Neg_Ill">
+      <q>Maid mánát dadjet</q>
+    <ag>
+      <a>Sii eai liiko biđđosii</a>
+      <l base="ii" pos="V"/>
+      <l base="liikot" pos="V"/>
+      <l base="biđus" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsSg1_Neg_Ill">
+      <q>Manne it bora</q>
+    <ag>
+      <a>In liiko biđđosii</a>
+      <l base="ii" pos="V"/>
+      <l base="liikot" pos="V"/>
+      <l base="biđus" pos="N"/>
+    </ag>
+  </test>
+   <test name="1_PrsSg1_Acc_SgLoc_SgIll">
+      <q>Maid don barggat</q>
+    <ag>
       <a>Mun jorgalan muitalusa dárogielas sámegillii</a>
-   </test>
+      <l base="muitalus" pos="N"/>
+      <l base="dárogiella" pos="N"/>
+      <l base="sámegiella" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrsPl2_Inf_Acc_SgIll">
-      <q>Dii galgat čállit muitalus dárogiella</q>
-      <a>Dii galgabehtet čállit muitalusa dárogillii.</a>
-   </test>
+      <q>Maid mii galgat bargat odne</q>
+    <ag>
+      <a>Dii galgabehtet čállit muitalusa dárogillii</a>
+      <l base="galgat" pos="V"/>
+      <l base="čállit" pos="V"/>
+      <l base="muitalus" pos="N"/>
+      <l base="dárogiella" pos="N"/>
+    </ag>
+  </test>
    <test name="2_PrsSg3_Inf_SgCom">
-      <q>Son áigut lohpádaddat Heaika</q>
-      <a>Son áigu lohpádaddat Heaikkain.</a>
-   </test>
+      <q>Manne Biret lea nu buori mielas</q>
+    <ag>
+      <a>Son áigu lohpádaddat Heaikkain</a>
+      <l base="áigut" pos="V"/>
+      <l base="lohpádaddat" pos="V"/>
+      <l base="Heaika" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrsSg3_Inf_SgCom">
-      <q>Son áigut náitalit Risten</q>
-      <a>Son áigu náitalit Risteniin.</a>
-   </test>
+      <q>Maid Heaika jurddaša dál</q>
+    <ag>
+      <a>Son áigu náitalit Risteniin</a>
+      <l base="áigut" pos="V"/>
+      <l base="náitalit" pos="V"/>
+      <l base="Risten" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrsPl3_Inf_PlAcc">
-      <q>Odne oahppit galgat čoaggit jokŋa</q>
-      <a>Odne oahppit galget čoaggit joŋaid.</a>
-   </test>
+      <q>Maid oahppit barget odne</q>
+    <ag>
+      <a>Odne oahppit galget čoaggit joŋaid</a>
+      <l base="galgat" pos="V"/>
+      <l base="čoaggit" pos="V"/>
+      <l base="jokŋa" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrsSg1_Inf_PlAcc">
-      <q>Odne áigut čoaggit sarrit</q>
-      <a>Odne áiggun čoaggit sarridiid.</a>
-   </test>
+      <q>Maid don áiggut bargat odne</q>
+    <ag>
+      <a>Odne áiggun čoaggit sarridiid</a>
+      <l base="áigut" pos="V"/>
+      <l base="čoaggit" pos="V"/>
+      <l base="sarrit" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrfDu3_Neg_Aux">
-      <q>Risten ja Sunná ii leat vel boahtit</q>
-      <a>Soai eaba vel leat boahtán.</a>
-      <a>Soai eaba leat vel boahtán.</a>
-      <a>Soai eaba leat boahtán.</a>
-   </test>
+      <q>Leaba go dáppe</q>
+    <ag>
+      <a>Soai eaba vel leat boahtán</a>
+      <a>Soai eaba leat vel boahtán</a>
+      <a>Soai eaba leat boahtán</a>
+      <l base="ii" pos="V"/>
+      <l base="leat" pos="V"/>
+      <l base="boahtit" pos="V"/>
+    </ag>
+  </test>
    <test name="2_PrsPl3_Neg_Orrut_Actioess">
-      <q>Oahppit ii orrut birget bures</q>
-      <a>Oahppit eai oro birgeme bures.</a>
-   </test>
+      <q>Mo oahppit birgejit</q>
+    <ag>
+      <a>Oahppit eai oro birgeme bures</a>
+      <l base="ii" pos="V"/>
+      <l base="orrut" pos="V"/>
+      <l base="birget" pos="V"/>
+    </ag>
+  </test>
    <test name="1_PrsSg1_Aux_Fitnat_Acc_Actioess">
-      <q>Mun áigut fitnat oastit buvssat</q>
-      <a>Mun áiggun fitnat oastime buvssaid.</a>
-   </test>
+      <q>Maid don áiggut dál</q>
+    <ag>
+      <a>Mun áiggun fitnat oastime buđehiid</a>
+      <l base="áigut" pos="V"/>
+      <l base="fitnat" pos="V"/>
+      <l base="oastit" pos="V"/>
+      <l base="buđet" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrsSg1_Dem_AAttr_Acc">
-      <q>Mun áiggun oastit dien alit biila</q>
-      <a>Mun áiggun oastit dien alit biilla.</a>
-   </test>
-   <test name="1_PrsSg1_Dem_AAttr_Acc">
-      <q>Mun áiggun oastit dien alit biila</q>
-      <a>Mun áiggun oastit dien alit biilla.</a>
-   </test>
-   <test name="1_PrsSg1_Dem_AAttr_Acc">
-      <q>Mun áiggun oastit dien alit biila</q>
-      <a>Mun áiggun oastit dien alit biilla.</a>
-   </test>
-   <test name="1_PrsSg1_Dem_AAttr_Acc">
-      <q>Mun áigut oastit diet alit biila</q>
-      <a>Mun áiggun oastit dien alit biilla.</a>
-   </test>
+      <q>Makkár biilla áiggut oastit</q>
+    <ag>
+      <a>Mun áiggun oastit dien alit biilla</a>
+      <a>Dien alit biilla áiggun oastit</a>
+      <l base="diet" pos="Pron"/>
+      <l base="alit" pos="A"/>
+      <l base="biila" pos="N"/>
+    </ag>
+  </test>
+   <test name="2_PrsSg1_Dem_AAttr_Acc">
+      <q>Maid áiggut oastit</q>
+    <ag>
+      <a>Mun áiggun oastit dien rukses fatnasa</a>
+      <a>In áiggo, mun áiggun oastit dien rukses fatnasa</a>
+      <l base="diet" pos="Pron"/>
+      <l base="ruoksat" pos="A"/>
+      <l base="fanas" pos="N"/>
+    </ag>
+  </test>
    <test name="2_PrfSg3_Dem_AAttr_Ill">
-      <q>Son lea liikostan duot dárogielat bárdni</q>
-      <a>Son lea liikostan duon dárogielat bárdnái.</a>
-   </test>
+      <q>Geasa Risten lea liikostan</q>
+    <ag>
+      <a>Son lea liikostan duon dárogielat bárdnái</a>
+      <l base="duot" pos="Pron"/>
+      <l base="dárogielat" pos="A"/>
+      <l base="bárdni" pos="N"/>
+    </ag>
+  </test>
    <test name="4_PrsPl3_Loc">
-      <q>Mu fuolkkit orrut Avvil</q>
-      <a>Mu fuolkkit orrot Avvilis.</a>
-   </test>
+      <q>Gos du fuolkkit orrot</q>
+    <ag>
+      <a>Mu fuolkkit orrot Avvilis</a>
+      <l base="orrut" pos="V"/>
+      <l base="Avvil" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrsPl3_Loc">
-      <q>Stuolut leat duot viessu</q>
-      <a>Stuolut leat duon viesus.</a>
-   </test>
-   <test name="1_PrsPl3_Loc">
-      <q>Stuolut leat duot viessu</q>
-      <a>Stuolut leat duon viesus.</a>
-   </test>
+      <q>Gos min boares stuolut leat dán áigge</q>
+    <ag>
+      <a>Stuolut leat duon viesus</a>
+      <l base="leat" pos="V"/>
+      <l base="viessu" pos="N"/>
+    </ag>
+  </test>
    <test name="2_PrsPl3_Loc">
-      <q>Stuolut leat duot latnja</q>
-      <a>Stuolut leat duon lanjas.</a>
-   </test>
+      <q>Gos eatni dávvirat leat</q>
+    <ag>
+      <a>Dávvirat leat duon viesus</a>
+      <a>Eatni dávvirat leat viesus</a>
+      <l base="leat" pos="V"/>
+      <l base="viessu" pos="N"/>
+    </ag>
+  </test>
    <test name="3_PrsPl3_Loc">
-      <q>Stuolut leat oađđenlatnja</q>
-      <a>Stuolut leat oađđenlanjas.</a>
-   </test>
+      <q>Gos gávttit leat</q>
+    <ag>
+      <a>Dat leat lovttas</a>
+      <l base="dat" pos="Pron"/>
+      <l base="lokta" pos="N"/>
+    </ag>
+  </test>
+   <test name="3_PrsPl3_Ill">
+      <q>Gosa bidjet dávviriid</q>
+    <ag>
+      <a>Mun bidjen daid latnjii</a>
+      <l base="bidjat" pos="V"/>
+      <l base="latnja" pos="N"/>
+    </ag>
+  </test>
    <test name="4_PrsPl3_Loc">
-      <q>Stuolut leat lokta</q>
-      <a>Stuolut leat lovttas.</a>
-   </test>
+      <q>Gos du fuolkkit orrot</q>
+    <ag>
+      <a>Mu fuolkkit orrot Helssegis</a>
+      <a>Sii orrot Helssegis</a>
+      <l base="orrut" pos="V"/>
+      <l base="Helsset" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrtSg1_Acc">
-      <q>Mun deaivat vilbealle</q>
-      <a>Mun deiven vilbeale.</a>
-      <a>Mun deiven iežan vilbeale.</a>
-      <a>Mun deiven du vilbeale.</a>
-   </test>
+      <q>Gean deivet gáffádagas</q>
+    <ag>
+      <a>Mun deiven vilbeale</a>
+      <a>Mun deiven iežan vilbeale</a>
+      <a>Mun deiven du vilbeale</a>
+      <l base="deaivat" pos="V"/>
+      <l base="vilbealle" pos="N"/>
+    </ag>
+  </test>
    <test name="3_PrtSg1_AAttr_Acc">
-      <q>Mun deaivat hávski neavttár</q>
-      <a>Mun deiven hávskes neavttára.</a>
-   </test>
+      <q>Gean deivet gáffádagas</q>
+    <ag>
+      <a>Mun deiven hávskes neavttára</a>
+      <l base="deaivat" pos="V"/>
+      <l base="hávski" pos="A"/>
+      <l base="neavttár" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrtSg1_Num_Acc">
-      <q>Mun borrat guokte guolli</q>
-      <a>Mun borren guokte guoli.</a>
-   </test>
+      <q>Maid borret gáffádagas</q>
+    <ag>
+      <a>Mun borren guokte guoli</a>
+      <l base="borrat" pos="V"/>
+      <l base="guokte" pos="Num"/>
+      <l base="guolli" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrfSg3_Dem_AAttr_Ill">
-      <q>Son lea liikostan duot hávski nieida</q>
-      <a>Son lea liikostan duon hávskes niidii.</a>
-      <a>Heaika lea liikostan duon hávskes niidii.</a>
-   </test>
+      <q>Geasa Heaika lea liikostan</q>
+    <ag>
+      <a>Son lea liikostan duon hávskes niidii</a>
+      <a>Heaika lea liikostan duon hávskes niidii</a>
+      <l base="duot" pos="Pron"/>
+      <l base="hávski" pos="A"/>
+      <l base="nieida" pos="N"/>
+    </ag>
+  </test>
    <test name="2_PrfSg3_Dem_AAttr_Ill">
-      <q>Son lea liikostan duot láiki bárdni</q>
-      <a>Son lea liikostan duon láikkes bárdnái.</a>
-      <a>Risten lea liikostan duon láikkes bárdnái.</a>
-   </test>
+      <q>Geasa Risten lea liikostan</q>
+    <ag>
+      <a>Son lea liikostan duon láikkes bárdnái</a>
+      <a>Risten lea liikostan duon láikkes bárdnái</a>
+      <l base="duot" pos="Pron"/>
+      <l base="láiki" pos="A"/>
+      <l base="bárdni" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrsSg1_Dem_Ill">
-      <q>Bijan ildu diet latnja</q>
-      <a>Bijan ildu dien latnjii.</a>
-      <a>Mun bijan ildu dien latnjii.</a>
-   </test>
+      <q>Gosa bijat ildu</q>
+    <ag>
+      <a>Bijan ildu dien latnjii</a>
+      <a>Mun bijan ildu dien latnjii</a>
+      <l base="diet" pos="Pron"/>
+      <l base="latnja" pos="N"/>
+    </ag>
+  </test>
    <test name="2_PrsSg1_Dem_Ill">
-      <q>Manan duot viessu</q>
-      <a>Manan duon vissui.</a>
-      <a>Mun manan duon vissui dál.</a>
-   </test>
+      <q>Gosa manat dál</q>
+    <ag>
+      <a>Manan duon vissui</a>
+      <a>Mun manan duon vissui dál</a>
+      <l base="mannat" pos="V"/>
+      <l base="viessu" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrsSg1_AAttr_Acc">
-      <q>Mun oaidnit ruoksat biila</q>
-      <a>Mun oainnán rukses biilla.</a>
-      <a>Mun oainnán rukses biillaid.</a>
-   </test>
-   <test name="1_PrsSg1_AAttr_Acc">
-      <q>Mun oaidnit alit sihkkel</q>
-      <a>Mun oainnán alit sihkkela.</a>
-      <a>Mun oainnán alit sihkkeliid.</a>
-   </test>
+      <q>Maid oainnát šiljus</q>
+    <ag>
+      <a>Mun oainnán rukses biilla</a>
+      <a>Mun oainnán rukses biillaid</a>
+      <l base="oaidnit" pos="V"/>
+      <l base="ruoksat" pos="A"/>
+      <l base="biila" pos="N"/>
+    </ag>
+  </test>
    <test name="2_PrsSg1_AAttr_Acc">
-      <q>Mun oaidnit váralaš guovža</q>
-      <a>Mun oainnán váralaš guovžža.</a>
-   </test>
+      <q>Maid oainnát gáttis</q>
+    <ag>
+      <a>Mun oainnán váralaš guovžža</a>
+      <l base="oaidnit" pos="V"/>
+      <l base="váralaš" pos="A"/>
+      <l base="guovža" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrtSg1_AAttr_Acc">
-      <q>Mun deaivat boaris nisu</q>
-      <a>Mun deiven boares nissona.</a>
-   </test>
-   <test name="1_PrtSg1_AAttr_Acc">
-      <q>Mun deaivat geafi johttisápmelaš</q>
-      <a>Mun deiven geafes johttisápmelačča.</a>
-   </test>
-   <test name="1_PrsSg1_Acc">
-      <q>Mun oaidnit guorbmebiila</q>
-      <a>Mun oainnán guorbmebiilla.</a>
-   </test>
+      <q>Gean deivet gáffádagas</q>
+    <ag>
+      <a>Mun deiven boares nissona</a>
+      <l base="deaivat" pos="V"/>
+      <l base="boaris" pos="A"/>
+      <l base="nisu" pos="N"/>
+    </ag>
+    <ag>
+      <a>Mun deiven geafes johttisápmelačča</a>
+      <l base="deaivat" pos="V"/>
+      <l base="geafi" pos="A"/>
+      <l base="johttisápmelaš" pos="N"/>
+    </ag>
+  </test>
    <test name="2_PrsSg1_Acc">
-      <q>Mun oaidnit gussa</q>
-      <a>Mun oainnán gusa.</a>
-   </test>
-   <test name="1_PrsSg1_Dem_AAttr_Acc">
-      <q>Mun áiggun oastit diet ruoksat biila</q>
-      <a>Mun áiggun oastit dien rukses biilla.</a>
-   </test>
+      <q>Maid oainnát gáttis</q>
+    <ag>
+      <a>Mun oainnán gusa</a>
+      <l base="oaidnit" pos="V"/>
+      <l base="gussa" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrsSg1_Neg_Aux_Inf">
-      <q>ii sáhttit boahtit odne</q>
-      <a>In sáhte boahtit odne.</a>
-   </test>
+      <q>Boađát go odne</q>
+    <ag>
+      <a>In sáhte boahtit odne</a>
+      <l base="ii" pos="V"/>
+      <l base="sáhttit" pos="V"/>
+      <l base="boahtit" pos="V"/>
+    </ag>
+  </test>
    <test name="2_PrsSg1_Neg_Aux_Inf">
-      <q>ii astat boahtit odne</q>
-      <a>In astta boahtit odne.</a>
-   </test>
+      <q>Boađát go odne</q>
+    <ag>
+      <a>In astta boahtit odne</a>
+      <l base="ii" pos="V"/>
+      <l base="astat" pos="V"/>
+      <l base="boahtit" pos="V"/>
+    </ag>
+  </test>
    <test name="1_PrtSg3_Neg_Aux_Inf">
-      <q>Risten ii astat veahkehit</q>
-      <a>Risten ii astan veahkehit.</a>
-   </test>
+      <q>Mo manai ikte</q>
+    <ag>
+      <a>Risten ii astan veahkehit</a>
+      <l base="ii" pos="V"/>
+      <l base="astat" pos="V"/>
+      <l base="veahkehit" pos="V"/>
+    </ag>
+  </test>
    <test name="2_PrtSg3_Neg_Aux_Inf">
-      <q>Risten ii astat boahtit</q>
-      <a>Risten ii astan boahtit.</a>
-   </test>
+      <q>Mo manai ikte</q>
+    <ag>
+      <a>Risten ii astan boahtit</a>
+      <l base="ii" pos="V"/>
+      <l base="astat" pos="V"/>
+      <l base="boahtit" pos="V"/>
+    </ag>
+  </test>
    <test name="1_PrsSg3_Orrut_Actioess">
-      <q>orrut mannat bures</q>
-      <a>Orru manname bures.</a>
-   </test>
+      <q>Mo manná</q>
+    <ag>
+      <a>Orru manname bures</a>
+      <l base="mannat" pos="V"/>
+      <l base="orrut" pos="V"/>
+    </ag>
+  </test>
    <test name="1_PrsSg3_Neg_Orrut_Actioess">
-      <q>ii orrut mannat bures</q>
-      <a>Ii oro manname bures.</a>
-   </test>
+      <q>Mo manná</q>
+    <ag>
+      <a>Ii oro manname bures</a>
+      <l base="ii" pos="V"/>
+      <l base="mannat" pos="V"/>
+      <l base="orrut" pos="V"/>
+    </ag>
+  </test>
    <test name="2_PrsSg3_Orrut_Actioess">
-      <q>Risten orrut birget</q>
-      <a>Risten orru birgeme.</a>
-   </test>
+      <q>Mo manná</q>
+    <ag>
+      <a>Risten orru birgeme</a>
+      <l base="birget" pos="V"/>
+      <l base="orrut" pos="V"/>
+    </ag>
+  </test>
    <test name="2_PrsSg3_Neg_Orrut_Actioess">
-      <q>Risten ii orrut birget</q>
-      <a>Risten ii oro birgeme.</a>
-   </test>
+      <q>Mo manná</q>
+    <ag>
+      <a>Risten ii oro birgeme</a>
+      <l base="ii" pos="V"/>
+      <l base="birget" pos="V"/>
+      <l base="orrut" pos="V"/>
+    </ag>
+  </test>
    <test name="2_PrsPl3_Orrut_Actioess">
-      <q>Mánát orrut birget bures</q>
-      <a>Mánát orrot birgeme bures.</a>
-   </test>
+      <q>Mo oahppit birgejit</q>
+    <ag>
+      <a>Sii orrot birgeme bures</a>
+      <l base="birget" pos="V"/>
+      <l base="orrut" pos="V"/>
+    </ag>
+  </test>
    <test name="2_PrsPl3_Neg_Orrut_Actioess">
-      <q>Mánát ii orrut birget bures</q>
-      <a>Mánát eai oro birgeme bures.</a>
-   </test>
+      <q>Mo oahppit birgejit</q>
+    <ag>
+      <a>Sii eai oro birgeme bures</a>
+      <l base="ii" pos="V"/>
+      <l base="birget" pos="V"/>
+      <l base="orrut" pos="V"/>
+    </ag>
+  </test>
    <test name="1_PrfPl3_Neg_Aux">
-      <q>Mánát ii leat boahtit</q>
-      <a>Mánát eai leat birgen bures.</a>
-   </test>
+      <q>Leat go buohkat dáppe</q>
+    <ag>
+      <a>Oahppit eai leat vel boahtán</a>
+      <l base="ii" pos="V"/>
+      <l base="leat" pos="V"/>
+      <l base="boahtit" pos="V"/>
+    </ag>
+  </test>
    <test name="1_PrfDu3_Neg_Aux">
-      <q>Risten ja Sunná ii leat vel boahtit</q>
-      <a>Risten ja Sunná eaba leat vel boahtán.</a>
-   </test>
+      <q>Leaba go dáppe</q>
+    <ag>
+      <a>Risten ja Sunná eaba leat vel boahtán</a>
+      <l base="ii" pos="V"/>
+      <l base="leat" pos="V"/>
+      <l base="boahtit" pos="V"/>
+    </ag>
+  </test>
    <test name="1_PrfSg3_Neg_Aux">
-      <q>Risten ii leat boahtit</q>
-      <a>Risten ii leat boahtán.</a>
-   </test>
+      <q>Leat go buohkat dáppe</q>
+    <ag>
+      <l base="ii" pos="V"/>
+      <l base="leat" pos="V"/>
+      <l base="boahtit" pos="V"/>
+      <a>Risten ii leat boahtán</a>
+    </ag>
+  </test>
    <test name="1_PrsSg1_Aux_Fitnat_Acc_Actioess">
-      <q>Mun áigut fitnat oastit rušppiid</q>
-      <a>Mun áiggun fitnat oastime rušppiid.</a>
-   </test>
+      <q>Maid don áiggut dál</q>
+    <ag>
+      <a>Mun áiggun fitnat oastime rušppiid</a>
+      <l base="áigut" pos="V"/>
+      <l base="fitnat" pos="V"/>
+      <l base="oastit" pos="V"/>
+      <l base="rušpi" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrtSg3_Cop_Actioess">
-      <q>Risten leat oppa áigge čaibmat</q>
-      <a>Risten lei oppa áigge čaibmame.</a>
-   </test>
+      <q>Mo manai ikte</q>
+    <ag>
+      <a>Risten lei oppa áigge čaibmame</a>
+      <l base="leat" pos="V"/>
+      <l base="čaibmat" pos="V"/>
+    </ag>
+  </test>
    <test name="1_PrtSg1_Verb_Acc_Actioess">
-      <q>Mun ikte juo oaidnit su boahtit</q>
-      <a>Mun ikte juo oidnen su boahtime.</a>
-   </test>
+      <q>Maid oidnet ikte</q>
+    <ag>
+      <a>Mun oidnen su boahtime ruoktot</a>
+      <l base="oaidnit" pos="V"/>
+      <l base="boahtit" pos="V"/>
+    </ag>
+  </test>
 </q_tests>
