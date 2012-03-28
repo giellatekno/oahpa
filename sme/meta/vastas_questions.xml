@@ -21,11 +21,41 @@
         <sem class="mFOR_PICKING"/>
       </element>
     </answer>
-  </q> 
+    <answer> 
+      <text>Odne AUX VERB NOUN</text>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>áigut</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>oastit</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="CLOTHING"/>
+      </element>
+    </answer>
+     <answer> 
+      <text>Odne AUX VERB NOUN</text>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>áigut</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>oastit</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="FOOD_GROCERY"/>
+      </element>
+    </answer>
+ </q> 
    <q level="1" lemmacount="3" id="1_PrsPl3_Inf_PlAcc">
     <qtype>PRS</qtype>
    <question>
-      <text>Mii dáhpáhuvvá skuvllas odne</text>
+      <text>Maid oahppit barget odne</text>
     </question>
     <answer> 
       <text>Odne oahppit AUX VERB NOUN</text>
@@ -40,6 +70,21 @@
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
         <sem class="mFOR_PICKING"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Odne oahppit AUX VERB NOUN</text>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>galgat</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>oahppat</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="LANGUAGE"/>
       </element>
     </answer>
   </q> 
@@ -63,6 +108,21 @@
         <sem class="mFEM"/>
       </element>
     </answer>
+    <answer> 
+      <text>Son AUX VERB NOUN</text>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>áigut</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>oastit</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mPRIVVEHICLE"/>
+      </element>
+    </answer>
   </q> 
    <q level="1" lemmacount="3" id="2_PrsSg3_Inf_SgCom">
     <qtype>PRS</qtype>
@@ -82,6 +142,36 @@
       <element id="NOUN" task="yes">
         <grammar tag="N+Prop+Sg+Nom"/>
         <sem class="mMAL"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Son AUX VERB NOUN</text>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>áigut</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>geahččat</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="SHOW"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Son AUX VERB NOUN</text>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>áigut</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>borrat</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="FOOD_DISH"/>
       </element>
     </answer>
   </q> 
@@ -131,16 +221,35 @@
       </element>
     </answer>
   </q> 
-   <q level="1" lemmacount="2" id="1_PrsSg1_Neg_Ill">
+   <q level="2" lemmacount="3" id="1_PrsSg1_Neg_Ill">
     <qtype>PRS</qtype>
    <question>
       <text>Manne it bora</text>
     </question>
     <answer> 
-      <text>In VERB NOUN</text>
+      <text>NEG VERB NOUN</text>
+      <element id="NEG" task="yes">
+        <grammar tag="V+Neg+Ind+Sg3"/>
+        <id>ii</id>
+      </element>
       <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <id>liikot</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>NEG VERB NOUN</text>
+      <element id="NEG" task="yes">
+        <grammar tag="V+Neg+Ind+Sg3"/>
+        <id>ii</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>háliidit</id>
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
@@ -168,6 +277,21 @@
         <sem class="FOOD_DISH"/>
       </element>
     </answer>
+    <answer> 
+      <text>Sii NEG VERB NOUN</text>
+      <element id="NEG" task="yes">
+        <grammar tag="V+Neg+Ind+Sg3"/>
+        <id>ii</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>háliidit</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="FOOD_DISH"/>
+      </element>
+    </answer>
   </q> 
    <q level="1" lemmacount="2" id="1_PrsSg2_SgAcc_SgIll">
     <qtype>PRS</qtype>
@@ -183,6 +307,17 @@
       <element id="NOUN" task="yes">
         <grammar tag="N+Prop+Sg+Nom"/>
         <sem class="mPERSNAME"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Njoara ITEM PRON</text>
+      <element id="ITEM" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="DRINK"/>
+      </element>
+      <element id="PRON" task="yes">
+        <grammar tag="Pron+Pers+Sg1+Nom"/>
+        <id>mun</id>
       </element>
     </answer>
   </q> 
@@ -219,6 +354,17 @@
         <sem class="ROOM"/>
       </element>
     </answer>
+    <answer> 
+      <text>Bijan ITEM NOUN</text>
+      <element id="PRON" task="yes">
+        <grammar tag="Pron+Pers+Sg3+Nom"/>
+        <id>dat</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="CONTAINER"/>
+      </element>
+    </answer>
   </q> 
    <q level="1" lemmacount="2" id="1_PrsPl3_Acc_Ess">
     <qtype>PRS</qtype>
@@ -237,7 +383,7 @@
       </element>
     </answer>
   </q> 
-<!--   <q level="1" lemmacount="2" id="1_PrsSg3_Ess">
+<q level="1" lemmacount="2" id="1_PrsSg3_Ess">
     <qtype>PRS</qtype>
    <question>
       <text>Makkár bargu sus lea doppe</text>
@@ -253,7 +399,7 @@
         <sem class="mPROFESSION"/>
       </element>
     </answer>
-  </q> -->
+  </q> 
    <q level="1" lemmacount="2" id="1_PrsSg1_Neg_Ess">
     <qtype>PRS</qtype>
    <question>
@@ -292,13 +438,13 @@
       </element>
    </answer>
   </q> 
-   <q level="1" lemmacount="2" id="2_PrsSg1_Dem_SgGen_Po">
+   <q level="1" lemmacount="3" id="2_PrsSg1_Dem_SgGen_Po">
     <qtype>PRS</qtype>
    <question>
       <text>Gosa manat dál</text>
     </question>
     <answer> 
-      <text>VERB NOUN mielde</text>
+      <text>VERB NOUN ADP</text>
       <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <id>mannat</id>
@@ -306,6 +452,10 @@
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
         <sem class="mROAD"/>
+      </element>
+      <element id="ADP" task="yes">
+        <grammar tag="Po"/>
+        <id>mielde</id>
       </element>
    </answer>
   </q> 
@@ -365,6 +515,21 @@
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
         <sem class="TOY"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>PERSON VERB NOUN</text>
+      <element id="PERSON" task="yes">
+        <grammar tag="Pron+Pers+Sg3+Nom"/>
+        <id>son</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>borrat</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>njálggis</id>
       </element>
     </answer>
   </q> 
@@ -490,7 +655,7 @@
       <text>Makkár biilla áiggut oastit</text>
     </question>
     <answer> 
-      <text>Mun áiggun oastit DEM ADJ NOUN</text>
+      <text>Áiggun oastit DEM ADJ NOUN</text>
       <element id="DEM" task="yes">
         <grammar tag="Pron+Dem+Sg+Nom"/>
         <id>diet</id>
@@ -502,6 +667,27 @@
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
         <id>biila</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="3" id="2_PrsSg1_Dem_AAttr_Acc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid áiggut oastit</text>
+    </question>
+    <answer> 
+      <text>Mun áiggun oastit DEM ADJ NOUN</text>
+      <element id="DEM" task="yes">
+        <grammar tag="Pron+Dem+Sg+Nom"/>
+        <id>diet</id>
+      </element>
+      <element id="ADJ" task="yes">
+        <grammar tag="A+Sg+Nom"/>
+        <sem class="COLOUR"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+         <sem class="mPRIVVEHICLE"/>
       </element>
     </answer>
   </q> 
@@ -569,6 +755,21 @@
    <question>
       <text>Maid borret gáffádagas</text>
     </question>
+    <answer> 
+      <text>Mun VERB NUMBER NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>borrat</id>
+      </element>
+      <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_SMALL"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>márfi</id>
+      </element>
+    </answer>
     <answer> 
       <text>Mun VERB NUMBER NOUN</text>
       <element id="VERB" task="yes">
@@ -712,7 +913,7 @@
       </element>
     </answer>
   </q> 
-  <q level="1" lemmacount="2" id="3_PrsPl3_Loc">
+   <q level="1" lemmacount="2" id="3_PrsPl3_Ill">
     <qtype>PRS</qtype>
    <question>
       <text>Gosa bidjet dávviriid</text>
@@ -729,13 +930,34 @@
       </element>
     </answer>
   </q> 
+ <q level="1" lemmacount="2" id="3_PrsPl3_Loc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Gos ITEM leat</text>
+      <element id="ITEM">
+        <grammar tag="N+Pl+Nom"/>
+        <sem class="CLOTHING"/>
+      </element>
+    </question>
+    <answer> 
+      <text>PRON leat NOUN</text>
+      <element id="PRON" task="yes">
+        <grammar tag="Pron+Pers+Sg3+Nom"/>
+        <id>dat</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="ROOM"/>
+      </element>
+    </answer>
+  </q> 
   <q level="1" lemmacount="2" id="4_PrsPl3_Loc">
     <qtype>PRS</qtype>
    <question>
       <text>Gos du fuolkkit orrot</text>
     </question>
     <answer> 
-      <text>Mu fuolkkit VERB NOUN</text>
+      <text>Sii VERB NOUN</text>
       <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <id>orrut</id>
@@ -743,6 +965,23 @@
       <element id="NOUN" task="yes">
         <grammar tag="N+Prop+Sg+Nom"/>
         <sem class="mPLACENAME"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="2" id="1_PrsSg1_Gen_Nom">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Gii don leat</text>
+    </question>
+    <answer> 
+      <text>Mun lean du PERS NOUN</text>
+      <element id="PERS" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mFAMILYsg"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>ustit</id>
       </element>
     </answer>
   </q> 
@@ -805,7 +1044,7 @@
       </element>
       <element id="AUX" task="yes">
         <grammar tag="V+Inf"/>
-        <id>astat</id> 
+        <id>háliidit</id> 
       </element>
       <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
@@ -984,10 +1223,10 @@
   <q level="2" lemmacount="3" id="1_PrfDu3_Neg_Aux">
     <qtype>PRF</qtype>
    <question>
-      <text>Leaba go dáppe</text>
+      <text>Leaba go Risten ja Sunná dáppe</text>
     </question>
     <answer> 
-      <text>Risten ja Sunná NEG AUX vel VERB</text>
+      <text>Soai NEG AUX vel VERB</text>
       <element id="NEG" task="yes">
         <grammar tag="V+Neg+Ind+Sg3"/>
         <id>ii</id>
@@ -1047,8 +1286,27 @@
         <id>oastit</id> 
       </element>
       <element id="OBJ" task="yes">
-        <grammar tag="N+Pl+Acc"/>
+        <grammar tag="N+Sg+Nom"/>
         <sem class="FOOD_GROCERY"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>Mun AUX VERB OBJ ACTIOESS</text>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>áigut</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>fitnat</id>
+      </element>
+      <element id="ACTIOESS" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>oastit</id> 
+      </element>
+      <element id="OBJ" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="CLOTHING"/>
       </element>
     </answer>
   </q> 
@@ -1072,15 +1330,34 @@
         <sem class="mLAUGH"/>
       </element>
     </answer>
+    <answer> 
+      <text>PERSON AUX oppa áigge VERB</text>
+      <element id="PERSON">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mPERSNAME"/>
+      </element>
+      <element id="AUX" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>leat</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>juoigat</id> 
+      </element>
+    </answer>
   </q> 
   <q level="2" lemmacount="2" id="1_PrtSg1_Verb_Acc_Actioess">
     <qtype>PRT</qtype>
    <question>
-      <text>Mo don fuomášit ahte son bođii</text>
+      <text>Maid VERB ikte</text>
+      <element id="VERB">
+        <grammar tag="V+Ind+Prt+Sg2"/>
+        <sem class="mSEE"/>
+      </element>
     </question>
     <answer> 
-      <text>Mun VERB su ACTIOESS</text>
-      <element id="VERB" task="yes">
+      <text>Mun VERB su ACTIOESS ruoktot</text>
+      <element id="VERB" content="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <sem class="mSEE"/>
       </element>
