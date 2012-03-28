@@ -57,6 +57,15 @@ $P install.py --file $DPS/v_smenob.xml --tagfile $META/tags.txt --paradigmfile $
 echo " "
 echo "done"
 echo "==================================================="
+
+echo "==================================================="
+echo "feeding db with $DPS/v_pass.xml"
+$P install.py --file $META/v_pass.xml --tagfile $META/tags.txt --paradigmfile $META/v_pass_paradigms.txt 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+
 COMMENT
 echo "==================================================="
 echo "feeding db with $DPS/adv_smenob.xml"
