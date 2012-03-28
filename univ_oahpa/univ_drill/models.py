@@ -816,7 +816,9 @@ class Form(models.Model):
 			else:
 				kwarg = {'tag__infinite': 'Inf'}
 			
-			baseform = self.word.form_set.filter(**kwarg)
+			# Non-derived verbs need to exclude Der
+			baseform = self.word.form_set.exclude(tag__string__contains='Der')\
+											.filter(**kwarg)
 			if baseform.count() == 0:
 				baseform = self.word.form_set.filter(tag__personnumber='Sg3')
 			if baseform.count() == 0:
