@@ -235,6 +235,13 @@ echo "==================================================="
 # echo "==================================================="
 
 echo "==================================================="
+echo "feeding db with $DPS/grammaticalwords.xml"
+$P install.py --file $DPS/grammaticalwords.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
 echo "feeding db with $DPS/pron_sme.xml"
 $P install.py --file $DPS/pron_sme.xml --tagfile $META/tags.txt 
 echo " "
