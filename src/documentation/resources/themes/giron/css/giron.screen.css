@@ -33,8 +33,8 @@ p {
 
 em {
     font-weight: normal;
-    font-style: normal;
-    color: #41B7D8;
+    font-style: italic;
+    color: #black;
 }
 
 /* example style for lene */
@@ -59,8 +59,8 @@ to view the changes, refresh the view of the file in ones web browser.*/
 h1, h2, h3, h4, h5, h6 { font-family: Georgia, Arial, Helvetica, sans-serif; }
 
 h1     { font-size : 2.4em; margin: 25px 0px 0px 0px;  padding: 0px; font-weight: normal; }
-h2     { font-size : 1.8em; margin: 0.9em 0px 0px 0px; padding: 0px; font-weight : bold;}
-h3     { font-size : 1.3em; margin: 0.8em 0px 0px 0px; padding: 0px; font-weight : bold; }
+h2     { font-size : 1.8em; margin: 0.9em 0px 0px 0px; padding: 0px; font-weight : normal;}
+h3     { font-size : 1.3em; margin: 0.8em 0px 0px 0px; padding: 0px; font-weight : normal; }
 .h3 { margin: 22px 0px 3px 0px; }
 h4     { font-size : 1.1em; margin: 0.7em 0px 0px 0px; padding: 0px; font-weight : normal; text-align: left; }
 .h4 { margin: 18px 0px 0px 0px; }
@@ -77,13 +77,24 @@ h5     { font-size : 0.9em; margin: 14px 0px 0px 0px; padding: 0px; font-weight 
   background: #336699;
   color: white;
 }
+strong {
+font-weight: normal;
+font-variant: normal;
+font-family: "Comic Sans";
+font-size: 120%;
+color: black;
+font-style: normal;
+
+}
 
 #content {
+	background: none repeat scroll 0 0 white;
     padding: 20px 20px 20px 20px;
     margin-left: 30px;
     font-family : Verdana, Helvetica, sans-serif;
     font-size: 0.90em;
-	width: 600px;
+	max-width: 1200px;
+	min-width: 500px;
 	min-height:600px;
 /* 	border-style: solid; */	
 }
@@ -216,7 +227,8 @@ table caption {
 #container {
     position: relative;
     float: left;
-    width: 850px;
+    max-width: 1200px;
+	min-width: 500px;
     background-color: #FFFFFF;
 }
 
@@ -280,7 +292,7 @@ table caption {
 	border-right: #D1E5F0;
 	border-bottom: #F3763F;
 	border-color: #F3763F;
-	background-color: #F0F0F0;
+	background-color: black;
 }
 
 #nav-main li a {
@@ -591,13 +603,13 @@ acronym { cursor: help; }
 }
 
 #content-minitoc-area {
-    border-top: solid 1px #4A6D8C;
-    border-bottom: solid 1px #4A6D8C;
+    border-top: dotted 1px #4A6D8C;
+    border-bottom: dotted 1px #4A6D8C;
     margin-bottom: 15px;
-    margin-left: 15px;
-    margin-right: 10%;
-    padding-bottom: 5px;
-    padding-top: 5px;
+    margin-left: 30px;
+    margin-right: 0%;
+    padding-bottom: 20px;
+    padding-top: 10px;
 }
 /*** CD : Lien en bleu lors du survol de la souris... **/
 #content-minitoc-area a:hover   { border: 0px solid #a5b6c6; background: #CFDCED; }
@@ -605,6 +617,7 @@ acronym { cursor: help; }
 .minitoc {
     list-style-image: url('../themes/images/current.gif');
     font-weight: normal;
+	margin-left: 20px;
 }
 
 li p {
