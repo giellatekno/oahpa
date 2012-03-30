@@ -4,9 +4,9 @@
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
   {% ifequal settings.gametype "bare" %}
-    {% trans "Write a verb derived from a given adjective." %}
+    {% trans "Write a derived form." %}
   {% else %}
-    {% trans "Write a verb derived from a given adjective." %}
+    {% trans "Write a derived form." %}
   {% endifequal %}
 {% endblock %}
 
