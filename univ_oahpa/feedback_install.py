@@ -248,7 +248,7 @@ class Feedback_install(object):
 		("N", ('case', 'number', )),
 		("A", ('case', 'number', 'grade', 'attributive', )),
 		("Num", ('case', 'number',)),
-		("V", ('mood', 'tense', 'personnumber', )),
+		("V", ('infinite', 'mood', 'tense', 'personnumber', )),
 	])
 
 	# NOTE: processing of dialects and lemma exclusions is not something that
