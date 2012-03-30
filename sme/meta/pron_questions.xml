@@ -1178,7 +1178,7 @@
 	<q id="prel3">
 		<qtype>P-REL</qtype>
 		<question>
-			<text>Gii riŋgii dutnje?</text>
+			<text>Gii riŋgii dutnje</text>
 		</question>
 		<answer>
 			<text>Riŋgii olmmoš P-REL ledje máŋga ITEM</text>
@@ -1208,7 +1208,7 @@
 	<q id="prel5">
 		<qtype>P-REL</qtype>
 		<question>
-			<text>Gean don deivet ikte?</text>
+			<text>Gean don deivet ikte</text>
 		</question>
 		<answer>
 			<text>Deiven olbmo P-REL mánát leamaš mu oahppit</text>
@@ -1221,7 +1221,7 @@
 	<q id="prel6">
 		<qtype>P-REL</qtype>
 		<question>
-			<text>Gean don deivet ikte?</text>
+			<text>Gean don deivet ikte</text>
 		</question>
 		<answer>
 			<text>Deiven olbmo P-REL in liiko</text>
@@ -1394,6 +1394,131 @@
 			<element id="VERB">
 				<sem class="mMARRY"/>
 				<grammar tag="V+Inf"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel17">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Gos don ledjet ikte</text>
+		</question>
+		<answer>
+			<text>Ledjen hávskes NOUN P-REL mu ustibat lágidedje</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Acc"/>
+				<id>mii</id>
+			</element>
+			<element id="NOUN">
+				<sem class="ARRANGEMENT_PL"/>
+				<grammar tag="N+Pl+Loc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel18">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Gosa manat lupmui</text>
+		</question>
+		<answer>
+			<text>Manan PLACE P-REL lea mu fásta luopmobáiki</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Acc"/>
+				<id>mii</id>
+			</element>
+			<element id="PLACE">
+				<sem class="mPLACENAME"/>
+				<grammar tag="N+Prop+Sg+Ill"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel19">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Manne sii eat láve sihkkelastit</text>
+		</question>
+		<answer>
+			<text>Olbmot P-REL lea biila, eai láve sihkkelastit</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Loc"/>
+				<id>gii</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel20">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Manne don geahččat láseráigge olggos</text>
+		</question>
+		<answer>
+			<text>Mun háliidan diehtit P-REL bohtet</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Nom"/>
+				<id>gii</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel21">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid don čálát</text>
+		</question>
+		<answer>
+			<text>Mun čálán fearána P-REL birra eske muitalin dutnje</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Gen"/>
+				<id>mii</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel21">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Gii riŋgii</text>
+		</question>
+		<answer>
+			<text>Bárdn P-REL luhtte mun fitnen ikte</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Gen"/>
+				<id>gii</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel22">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Geas don ožžot sms</text>
+		</question>
+		<answer>
+			<text>Bártnis P-REL luhtte mun fitnen ikte</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Gen"/>
+				<id>gii</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel23">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid don leat oastán</text>
+		</question>
+		<answer>
+			<text>Osten spedjala P-REL buot oidno vulosoivviid</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Loc"/>
+				<id>mii</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel24">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid don dahket dainna áššiin</text>
+		</question>
+		<answer>
+			<text>Mun humadin ustibiin P-REL ledjen juo muitalan buot</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Ill"/>
+				<id>gii</id>
 			</element>
 		</answer>
 	</q>
