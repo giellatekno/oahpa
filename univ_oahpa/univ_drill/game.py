@@ -770,7 +770,7 @@ class BareGame(Game):
 					 %s" % (TAG_QUERY, SUB_QUERY)
 
 			if TAG_EXCLUDES:
-				error += "\nexcludes: %" % TAG_EXCLUDES
+				error += "\nexcludes: %s" % TAG_EXCLUDES
 
 			raise Http404(error)
 		
