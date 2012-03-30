@@ -93,19 +93,36 @@ jehkoset-suffix
  -->
 
   <stems>
-	  <!-- dialect testing - ryan -->
-	  <!--
-	<l stem="2syll">
-	  <msg dialect="KJ">bisyllabic_stem</msg>
-	  <msg dialect="GG">bisyllabic_stem</msg>
-	</l>
+
+	<!--
+
+		<l /> attributes:
+
+			attrsuffix
+			compsuffix
+			diphthong
+			gradation
+			rime
+			soggi
+			stem
+
+		<msg /> attributes
+
+			attributive
+			case
+			grade
+			infinite
+			mood
+			number
+			personnumber
+			tense
+
+		NOTE: if feedback doesn't work it may be there are msising attributes,
+		too many attributes, or the wrong values for the attributes. Must match
+		with either values in the lexicon or values that result from generation
+		in FST.
+
 	-->
-    <!-- lemma testing - ryan -->
-    <!--
-    <l lemma="leat">
-      <msg tense="Prs">bisyllabic_stem</msg>
-    </l>
-    -->
 
     <l stem="2syll">
       <msg infinite="PrfPrc">bisyllabic_stem</msg>
@@ -718,169 +735,169 @@ jehkoset-suffix
     </l>
 
   <l stem="2syll">
-      <msg mood="Imprt" tense="Prs" personnumber="Sg1">bisyllabic_stem</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg2">bisyllabic_stem</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg3">bisyllabic_stem</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du1">bisyllabic_stem</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du2">bisyllabic_stem</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du3">bisyllabic_stem</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">bisyllabic_stem</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl2">bisyllabic_stem</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl3">bisyllabic_stem</msg>
+      <msg mood="Imprt" personnumber="Sg1">bisyllabic_stem</msg>
+      <msg mood="Imprt" personnumber="Sg2">bisyllabic_stem</msg>
+      <msg mood="Imprt" personnumber="Sg3">bisyllabic_stem</msg>
+      <msg mood="Imprt" personnumber="Du1">bisyllabic_stem</msg>
+      <msg mood="Imprt" personnumber="Du2">bisyllabic_stem</msg>
+      <msg mood="Imprt" personnumber="Du3">bisyllabic_stem</msg>
+      <msg mood="Imprt" personnumber="Pl1">bisyllabic_stem</msg>
+      <msg mood="Imprt" personnumber="Pl2">bisyllabic_stem</msg>
+      <msg mood="Imprt" personnumber="Pl3">bisyllabic_stem</msg>
       <note>steminfo</note>
     </l>
 
     <l lemma="leat">
-      <msg mood="Imprt" tense="Prs" personnumber="Sg1">ehkon-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg2">ge-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg3">ehkos-suffix</msg>
-      <msg mood="Imprt" dialect="NOT-KJ" tense="Prs" personnumber="Du1">eadnu-suffix</msg>
-      <msg mood="Imprt" dialect="NOT-GG" tense="Prs" personnumber="Du1">eahkku-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du2">eahkki-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du3">ehkoska-suffix</msg>
-      <msg mood="Imprt" dialect="NOT-KJ"  tense="Prs" personnumber="Pl1">eatnot-suffix</msg>
-      <msg mood="Imprt" dialect="NOT-GG" tense="Prs" personnumber="Pl1">ehkot-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl2">ehket-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl3">ehkoset-suffix</msg>
+      <msg mood="Imprt" personnumber="Sg1">ehkon-suffix</msg>
+      <msg mood="Imprt" personnumber="Sg2">ge-suffix</msg>
+      <msg mood="Imprt" personnumber="Sg3">ehkos-suffix</msg>
+      <msg mood="Imprt" dialect="NOT-KJ" personnumber="Du1">eadnu-suffix</msg>
+      <msg mood="Imprt" dialect="NOT-GG" personnumber="Du1">eahkku-suffix</msg>
+      <msg mood="Imprt" personnumber="Du2">eahkki-suffix</msg>
+      <msg mood="Imprt" personnumber="Du3">ehkoska-suffix</msg>
+      <msg mood="Imprt" dialect="NOT-KJ" personnumber="Pl1">eatnot-suffix</msg>
+      <msg mood="Imprt" dialect="NOT-GG" personnumber="Pl1">ehkot-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl2">ehket-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl3">ehkoset-suffix</msg>
       <note>steminfo</note>
     </l>
       -->
 
 
   <l stem="3syll">
-      <msg mood="Imprt" tense="Prs" personnumber="Sg1">trisyllabic_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg2">trisyllabic_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg3">trisyllabic_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du1">trisyllabic_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du2">trisyllabic_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du3">trisyllabic_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">trisyllabic_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl2">trisyllabic_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl3">trisyllabic_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Sg1">trisyllabic_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Sg2">trisyllabic_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Sg3">trisyllabic_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Du1">trisyllabic_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Du2">trisyllabic_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Du3">trisyllabic_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Pl1">trisyllabic_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Pl2">trisyllabic_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Pl3">trisyllabic_stem_no_gradation</msg>
       <note>steminfo</note>
     </l>
 
   <l stem="Csyll">
-      <msg mood="Imprt" tense="Prs" personnumber="Sg1">contracted_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg2">contracted_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg3">contracted_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du1">contracted_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du2">contracted_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du3">contracted_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">contracted_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl2">contracted_stem_no_gradation</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl3">contracted_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Sg1">contracted_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Sg2">contracted_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Sg3">contracted_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Du1">contracted_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Du2">contracted_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Du3">contracted_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Pl1">contracted_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Pl2">contracted_stem_no_gradation</msg>
+      <msg mood="Imprt" personnumber="Pl3">contracted_stem_no_gradation</msg>
       <note>steminfo</note>
     </l>
 
   <l stem="2syll" gradation="yes">
-      <msg mood="Imprt" tense="Prs" personnumber="Sg1">strong_grade</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg2">weak_grade</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg3">strong_grade</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du1">strong_grade</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du2">strong_grade</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du3">strong_grade</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">strong_grade</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl2">strong_grade</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl3">strong_grade</msg>
+      <msg mood="Imprt" personnumber="Sg1">strong_grade</msg>
+      <msg mood="Imprt" personnumber="Sg2">weak_grade</msg>
+      <msg mood="Imprt" personnumber="Sg3">strong_grade</msg>
+      <msg mood="Imprt" personnumber="Du1">strong_grade</msg>
+      <msg mood="Imprt" personnumber="Du2">strong_grade</msg>
+      <msg mood="Imprt" personnumber="Du3">strong_grade</msg>
+      <msg mood="Imprt" personnumber="Pl1">strong_grade</msg>
+      <msg mood="Imprt" personnumber="Pl2">strong_grade</msg>
+      <msg mood="Imprt" personnumber="Pl3">strong_grade</msg>
       <note>gradation</note>
     </l>
 
   <l gradation="extrastrong">
-      <msg mood="Imprt" tense="Prs" personnumber="Du1">extra_strong_grade</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du2">extra_strong_grade</msg>
-      <msg mood="Imprt" dialect="NOT-GG" tense="Prs" personnumber="Pl1">extra_strong_grade</msg>
-      <msg mood="Imprt" dialect="NOT-GG" tense="Prs" personnumber="Pl2">extra_strong_grade</msg>
+      <msg mood="Imprt" personnumber="Du1">extra_strong_grade</msg>
+      <msg mood="Imprt" personnumber="Du2">extra_strong_grade</msg>
+      <msg mood="Imprt" dialect="NOT-GG" personnumber="Pl1">extra_strong_grade</msg>
+      <msg mood="Imprt" dialect="NOT-GG" personnumber="Pl2">extra_strong_grade</msg>
       <note>exstrastrong</note>
     </l>
 
   <l diphthong="yes">
-      <msg mood="Imprt" tense="Prs" personnumber="Sg1">diphthong_simplification</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg3">diphthong_simplification</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du3">diphthong_simplification</msg>
-      <msg mood="Imprt" dialect="NOT-KJ" tense="Prs" personnumber="Pl1">diphthong_simplification</msg>
-      <msg mood="Imprt" dialect="NOT-KJ" tense="Prs" personnumber="Pl2">diphthong_simplification</msg>
+      <msg mood="Imprt" personnumber="Sg1">diphthong_simplification</msg>
+      <msg mood="Imprt" personnumber="Sg3">diphthong_simplification</msg>
+      <msg mood="Imprt" personnumber="Du3">diphthong_simplification</msg>
+      <msg mood="Imprt" dialect="NOT-KJ" personnumber="Pl1">diphthong_simplification</msg>
+      <msg mood="Imprt" dialect="NOT-KJ" personnumber="Pl2">diphthong_simplification</msg>
       <msg mood="Imprt" tense="Prs" personnumber="Pl3">diphthong_simplification</msg>
       <note>diftongforenkling</note>
     </l>
 
   <l soggi="i">
-      <msg mood="Imprt" tense="Prs" personnumber="Sg1">on-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg2">i_e</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg3">os-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du1">u-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du2">no_suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du3">oska-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">ot-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl2">et-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl3">oset-suffix</msg>
+      <msg mood="Imprt" personnumber="Sg1">on-suffix</msg>
+      <msg mood="Imprt" personnumber="Sg2">i_e</msg>
+      <msg mood="Imprt" personnumber="Sg3">os-suffix</msg>
+      <msg mood="Imprt" personnumber="Du1">u-suffix</msg>
+      <msg mood="Imprt" personnumber="Du2">no_suffix</msg>
+      <msg mood="Imprt" personnumber="Du3">oska-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl1">ot-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl2">et-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl3">oset-suffix</msg>
       <note>boahtit suffixes</note>
     </l>
 
   <l soggi="u">
-      <msg mood="Imprt" tense="Prs" personnumber="Sg1">on-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg2">u_o</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg3">os-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du1">no_suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du2">no_suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du3">oska-suffix</msg>
-      <msg mood="Imprt" dialect="NOT-KJ" tense="Prs" personnumber="Pl1">ot-suffix</msg>
-      <msg mood="Imprt" dialect="NOT-KJ" tense="Prs" personnumber="Pl2">ot-suffix</msg>
-      <msg mood="Imprt" dialect="NOT-GG" tense="Prs" personnumber="Pl1">ut-suffix</msg>
-      <msg mood="Imprt" dialect="NOT-GG" tense="Prs" personnumber="Pl2">ut-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl3">oset-suffix</msg>
+      <msg mood="Imprt" personnumber="Sg1">on-suffix</msg>
+      <msg mood="Imprt" personnumber="Sg2">u_o</msg>
+      <msg mood="Imprt" personnumber="Sg3">os-suffix</msg>
+      <msg mood="Imprt" personnumber="Du1">no_suffix</msg>
+      <msg mood="Imprt" personnumber="Du2">no_suffix</msg>
+      <msg mood="Imprt" personnumber="Du3">oska-suffix</msg>
+      <msg mood="Imprt" dialect="NOT-KJ" personnumber="Pl1">ot-suffix</msg>
+      <msg mood="Imprt" dialect="NOT-KJ" personnumber="Pl2">ot-suffix</msg>
+      <msg mood="Imprt" dialect="NOT-GG" personnumber="Pl1">ut-suffix</msg>
+      <msg mood="Imprt" dialect="NOT-GG" personnumber="Pl2">ut-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl3">oset-suffix</msg>
       <note>goarrut suffixes</note>
     </l>
 
   <l soggi="a">
-      <msg mood="Imprt" tense="Prs" personnumber="Sg1">on-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg2">no_suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg3">os-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du1">u-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du2">a_i</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du3">oska-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">ot-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl2">et-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl3">oset-suffix</msg>
+      <msg mood="Imprt" personnumber="Sg1">on-suffix</msg>
+      <msg mood="Imprt" personnumber="Sg2">no_suffix</msg>
+      <msg mood="Imprt" personnumber="Sg3">os-suffix</msg>
+      <msg mood="Imprt" personnumber="Du1">u-suffix</msg>
+      <msg mood="Imprt" personnumber="Du2">a_i</msg>
+      <msg mood="Imprt" personnumber="Du3">oska-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl1">ot-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl2">et-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl3">oset-suffix</msg>
       <note>mannat suffixes</note>
     </l>
 
    <l rime="d_t">
-      <msg mood="Imprt" tense="Prs" personnumber="Sg2">d_t</msg>
+      <msg mood="Imprt" personnumber="Sg2">d_t</msg>
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">d_t</msg>
       <note>boradit d_t</note>
     </l>
 
    <l rime="h_t">
-      <msg mood="Imprt" tense="Prs" personnumber="Sg2">h_t</msg>
+      <msg mood="Imprt" personnumber="Sg2">h_t</msg>
       <msg mood="Ind" tense="Prs" personnumber="ConNeg">h_t</msg>
       <note>borahit h_t</note>
     </l>
 
 
   <l stem="3syll">
-      <msg mood="Imprt" tense="Prs" personnumber="Sg1">ehkon-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg2">remove_it</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg3">ehkos-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du1">eadnu-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du2">eahkki-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du3">ehkoska-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">eatnot-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl2">ehket-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl3">ehkoset-suffix</msg>
+      <msg mood="Imprt" personnumber="Sg1">ehkon-suffix</msg>
+      <msg mood="Imprt" personnumber="Sg2">remove_it</msg>
+      <msg mood="Imprt" personnumber="Sg3">ehkos-suffix</msg>
+      <msg mood="Imprt" personnumber="Du1">eadnu-suffix</msg>
+      <msg mood="Imprt" personnumber="Du2">eahkki-suffix</msg>
+      <msg mood="Imprt" personnumber="Du3">ehkoska-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl1">eatnot-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl2">ehket-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl3">ehkoset-suffix</msg>
       <note>muitalit suffixes</note>
     </l>
 
   <l stem="Csyll">
-      <msg mood="Imprt" tense="Prs" personnumber="Sg1">jehkon-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg2">no_suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Sg3">jehkos-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du1">jeadnu-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du2">jeahkki-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Du3">jehkoska-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl1">jednot-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl2">jehket-suffix</msg>
-      <msg mood="Imprt" tense="Prs" personnumber="Pl3">jehkoset-suffix</msg>
+      <msg mood="Imprt" personnumber="Sg1">jehkon-suffix</msg>
+      <msg mood="Imprt" personnumber="Sg2">no_suffix</msg>
+      <msg mood="Imprt" personnumber="Sg3">jehkos-suffix</msg>
+      <msg mood="Imprt" personnumber="Du1">jeadnu-suffix</msg>
+      <msg mood="Imprt" personnumber="Du2">jeahkki-suffix</msg>
+      <msg mood="Imprt" personnumber="Du3">jehkoska-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl1">jednot-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl2">jehket-suffix</msg>
+      <msg mood="Imprt" personnumber="Pl3">jehkoset-suffix</msg>
       <note>fárret suffixes</note>
     </l>
 
