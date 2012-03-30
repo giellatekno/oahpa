@@ -1,12 +1,12 @@
-﻿{% extends "mgame.html" %}
+{% extends "mgame.html" %}
 {% load i18n %}
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
   {% ifequal settings.gametype "bare" %}
-    {% trans "Add numerals in correct forms." %}
+    {% trans "Write a verb derived from a given adjective." %}
   {% else %}
-    {% trans "Add numerals in correct forms." %}
+    {% trans "Write a verb derived from a given adjective." %}
   {% endifequal %}
 {% endblock %}
 
