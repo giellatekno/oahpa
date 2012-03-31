@@ -1643,7 +1643,17 @@ class ContextMorfaQuestion(OahpaQuestion):
 				self.lemma = False
 
 		# Retrieve feedback information
-		# self.get_feedback(answer_word_form, language)
+		try:
+			answer_word_form = Form.objects.exclude(dialects__dialect='NG')\
+										.filter(word__pk=answer_word, 
+												tag=answer_tag_el, 
+												dialects__dialect=self.dialect)
+			answer_word_form = answer_word_form[0]
+		except:
+			answer_word_form = False
+
+		if answer_word_form:
+			self.get_feedback(answer_word_form, language)
 
 		# Format answer string
 		for w in atext.split():
