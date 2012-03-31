@@ -279,7 +279,7 @@ DERIVATION_FILTER_DEFINITION = False
 
 DERIVATION_CHOICES_CONTEXT = (
  	('A-DER-V', _('adjective->verb derivation')),
-	('V-DER-PASS', _('passive derivation')),
+	('DER-PASSV', _('passive derivation')),
 )
 
 BOOK_CHOICES = (

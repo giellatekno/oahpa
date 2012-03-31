@@ -495,6 +495,7 @@ class Morfaview(Gameview):
 		'A-SUPERL':  _('Practise superlative'),
 		'V-DER':  _('Practise verb derivation'),
 		'V-DER-PASS':  _('Practise verb passive derivation'),
+		'DER-PASSV': _('Practise verb passive derivation'),
 		'A-DER-V':  _('Practise adjective to verb derivation'),
 		'ATTRPOS':  _('Practise attributes in positive'),
 		'ATTRCOMP':  _('Practise attributes in comparative'),
