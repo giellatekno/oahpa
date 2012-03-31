@@ -465,6 +465,70 @@
 	  </element>
     </answer>
   </q>
+  <q id="pdemsgcom1">
+    <qtype>P-DEM</qtype>
+    <question>
+      <text>Mo don vuolggát</text>
+    </question>
+    <answer> 
+      <text>Mun vuolggán P-DEM OBJ</text>
+      <element game='morfa' id="P-DEM" task="yes">
+	<grammar tag="Pron+Dem+Sg+Com"/>
+	  </element>
+ 		<element id="OBJ">
+		<sem class="mPRIVVEHICLE"/>
+		<grammar tag="N+Sg+Com"/>
+	  </element>
+    </answer>
+  </q>
+  <q id="pdemplcom1">
+    <qtype>P-DEM</qtype>
+    <question>
+      <text>Mo dii vuolgibehtet</text>
+    </question>
+    <answer> 
+      <text>Mii vuolgit P-DEM OBJ</text>
+      <element game='morfa' id="P-DEM" task="yes">
+	<grammar tag="Pron+Dem+Pl+Com"/>
+	  </element>
+ 		<element id="OBJ">
+		<sem class="mPRIVVEHICLE"/>
+		<grammar tag="N+Pl+Com"/>
+	  </element>
+    </answer>
+  </q>
+  <q id="pdemsgcom2">
+    <qtype>P-DEM</qtype>
+    <question>
+      <text>Mo dii vuolgibehtet</text>
+    </question>
+    <answer> 
+      <text>Mii vuolgit P-DEM guvttiin OBJ</text>
+      <element game='morfa' id="P-DEM" task="yes">
+	<grammar tag="Pron+Dem+Sg+Com"/>
+	  </element>
+ 		<element id="OBJ">
+		<sem class="mPRIVVEHICLE"/>
+		<grammar tag="N+Sg+Com"/>
+	  </element>
+    </answer>
+  </q>
+  <q id="pdemplacc2">
+    <qtype>P-DEM</qtype>
+    <question>
+      <text>Maid SUBJ áigu vuovdit</text>
+      <element id="SUBJ">
+		<sem class="mPERSNAME"/>
+		<grammar tag="N+Prop+Sg+Nom"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Son áigu oastit P-DEM golbma stuolu</text>
+      <element game='morfa' id="P-DEM" task="yes">
+	<grammar tag="Pron+Dem+Sg+Acc"/>
+	  </element>
+    </answer>
+  </q>
   <q id="prefl0illsg3">
     <qtype>P-REFL</qtype>
     <question>
@@ -1470,19 +1534,6 @@
 			</element>
 		</answer>
 	</q>
-	<q id="prel21">
-		<qtype>P-REL</qtype>
-		<question>
-			<text>Gii riŋgii</text>
-		</question>
-		<answer>
-			<text>Bárdn P-REL luhtte mun fitnen ikte</text>
-			<element game="morfa" id="P-REL" task="yes">
-				<grammar tag="Pron+Rel+Sg+Gen"/>
-				<id>gii</id>
-			</element>
-		</answer>
-	</q>
 	<q id="prel22">
 		<qtype>P-REL</qtype>
 		<question>
@@ -1532,6 +1583,19 @@
 			<element game="morfa" id="P-REL" task="yes">
 				<grammar tag="Pron+Rel+Pl+Loc"/>
 				<id>geat</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel26">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Gii riŋgii</text>
+		</question>
+		<answer>
+			<text>Bárdn P-REL luhtte mun fitnen ikte</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Gen"/>
+				<id>gii</id>
 			</element>
 		</answer>
 	</q>
