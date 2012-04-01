@@ -140,6 +140,7 @@ from univ_drill.models import Form
 from django.db import transaction
 from itertools import product
 
+from django.utils.encoding import smart_unicode
 
 
 try:
@@ -160,7 +161,7 @@ def get_attrs(item, attr_names):
 	for attr in attr_names:
 		val = item.__getattribute__(attr)
 		if val:
-			vals.append(unicode(val))
+			vals.append(smart_unicode(val))
 		else:
 			vals.append('')
 	return vals
@@ -186,11 +187,11 @@ def get_attrs_with_defaults(element, attr_list, defaults):
 			val = defaults.get(attr)
 
 		if isinstance(val, list):
-			val = [unicode(s) for s in val]
+			val = [smart_unicode(s) for s in val]
 		elif isinstance(val, set):
-			val = [unicode(s) for s in list(val)]
+			val = [smart_unicode(s) for s in list(val)]
 		else:
-			val = [unicode(val)]
+			val = [smart_unicode(val)]
 		vals.append(val)
 			
 	x = OrderedDict(zip(attr_list, vals))
