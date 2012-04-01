@@ -160,7 +160,7 @@ def get_attrs(item, attr_names):
 	for attr in attr_names:
 		val = item.__getattribute__(attr)
 		if val:
-			vals.append(val)
+			vals.append(unicode(val))
 		else:
 			vals.append('')
 	return vals
@@ -186,14 +186,19 @@ def get_attrs_with_defaults(element, attr_list, defaults):
 			val = defaults.get(attr)
 
 		if isinstance(val, list):
-			val = val
+			val = [unicode(s) for s in val]
 		elif isinstance(val, set):
-			val = list(val)
+			val = [unicode(s) for s in list(val)]
 		else:
-			val = [val]
+			val = [unicode(val)]
 		vals.append(val)
 			
-	return OrderedDict(zip(attr_list, vals))
+	x = OrderedDict(zip(attr_list, vals))
+	grade = x.get('grade', False)
+	if grade:
+		if x['grade'] == ['Pos']:
+			x['grade'] == ['']
+	return x
 
 
 class Entry(object):
@@ -536,6 +541,7 @@ class Feedback_install(object):
 		# Since this isn't really in the database, it won't be included in iteration later
 		if self.file_pos == 'A':
 			self.default_attributes['grade'].add('Pos')
+			# self.default_attributes['grade'].remove("")
 
 		# .iterator() necessary because QuerySet is very large.
 		for f in forms.iterator():
