@@ -250,7 +250,7 @@ echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/pron_sme.xml"
-$P install.py --file $DPS/derverb_sme.xml --tagfile $META/tags.txt 
+$P install.py --file $DPS/derverb_sme.xml --tagfile $META/tags.txt --append # TODO: test append with this
 echo " "
 echo "done"
 echo "==================================================="
