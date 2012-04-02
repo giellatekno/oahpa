@@ -1,0 +1,129 @@
+!!!Kildin Sámi oahpa crash course first aid kit
+
+
+!!!Intro and stuff
+
+
+!!!Howto
+!! The commands
+
+==> assumption that mysql is installed and can communicate with django via python
+==> assumption that you have already create the project and the applications
+    via django-admin
+
+Caveat: This should be a new project, the settings in, for instance, sjdoahpa/settings.py
+are for the victorio server!
+
+mysql must be running. To make it run:
+
+start mysql server via system_preferences/control_panel/mysql
+
+!! Installing the database
+
+(note: The \# sign here to be read as shell \#)
+
+$ mysql -u root -p \# log in to the mysql application via terminal
+\# then in the mysql-shell
+mysql> show databases; \# see what dbs you have.
+
+suppose that you don't have sjdoahpa <==
+but suppose that you HAVE installed mysql (I installed it for Trond)
+however, one has to make mysql talk to django via python
+(see above)
+mysql> create database sjdoahpa character set utf8 collate utf8_bin; \# create sjdoahpa (this is only the db, no other tables in it!)
+mysql> exit; \# log out from mysql
+
+$ cd sjdoahpa/sjd_oahpa/ \# go into the oapha dir
+$ less settings.py \# here is the password for MySQL
+$ python manage.py syncdb \# install the tables in the newly created (or just empty) db called sjdoahpa 
+\# watch out: you have to answer yes/no to a question in the terminal during the installation of the db
+
+\# now install dictionaries
+
+$ python install.py -f ../sjd/dict_sjd-rus.xml \# one dic
+$ python install.py -f ../sjd/dict_rus-sjd.xml \# and the other
+
+Now, all should be installed properly.
+
+!! Start app
+
+Start application from sjdoahpa/sjd_oahpa/ dir
+$ python manage.py runserver
+
+The url where sjd_oahpa is found on the local machine is: 
+
+* [http://127.0.0.1:8000/sjd_oahpa/]
+
+!!Adding words
+1. add words in the xml file
+2. install dictionaries as described above
+
+
+!!Localisation
+
+$ django-admin.py makemessages -a
+$ django-admin.py compilemessages
+
+
+-------
+
+
+Does not belong here, but still:
+
+The keyboard issue:
+
+Report from Audun:
+
+Esa Anttikoski's README file: (ReadMeEng.rtf)
+
+KEYBOARD LAYOUT FOR WINDOWS NT/2000/XP
+http://www.peoples.org.ru/eng_key32U.html
+
+This keyboard layout replaces the standard Russian keyboard for
+Windows NT/2000/XP. Before installing a new layout, you must
+have the standard Russian keyboard installed. You must also have 
+administrative rights on your computer.
+
+HOW TO INSTALL THE KEYBOARD LAYOUT
+
+1) Download the zip-file, open it in a temporary folder, for example,
+c:\keyboard
+
+2) Copy the file kbdnewcy.dll in c:\keyboard to the system folder 
+c:\windows\system32 (for Windows 2000/XP) or c:\winnt\system32 (for
+Windows NT4). In case you cannot see the file kbdnewcy.dll, choose
+"Show all files" in "View" > "Options" > "View".
+
+3) Run the file regnewcy in the folder c:\keyboard. Answer "yes" to 
+the question about registering the information it contains.
+
+4) Restart Windows
+
+In order to return to the standard Russian keyboard, run unregnew in 
+the folder c:\keyboard and restart Windows.
+
+ADDITIONAL LETTERS are typed with thw help of AltGr (= right Alt) and
+Shift:
+
+- AltGr + letter = corresponding additional small letter (for example, 
+AltGr + Cyrillic "en" = Cyrillic "en" with hook)
+
+- AltGr + Shift + letter = corresponding additional capital letter (for 
+example, AltGr + Shift + Cyrillic "en" = Cyrillic "EN" with hook) 
+
+The author takes no responsability for any possible damage that might 
+occure while installing and using the keyboard layout. Send your 
+comments and suggestions to: Esa.Anttikoski@joensuu.fi
+
+(c) Esa Anttikoski, University of Joensuu, Finland. 2003.
+
+
+Hei
+
+Jeg ser at disse filene er laget i 2003. Derfor er de nok ikke kompatible med dagens versjoner av Windows, men det er jo ikke sikkert de fleste der borte bruker Vista og Win7. 
+
+Jeg la driveren inn der den skulle, men jeg fikk den ikke opp som valg.
+
+
+
+
