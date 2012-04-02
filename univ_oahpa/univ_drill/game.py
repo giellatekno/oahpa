@@ -935,7 +935,10 @@ class BareGame(Game):
 			# forms may be returned, and we need them to be underived in
 			# presentation of the question wordform.
 			if pos == 'Der':
-				bfs = form.getBaseform(match_num=match_number, return_all=False)
+				try:
+					bfs = form.getBaseform(match_num=match_number, return_all=False)
+				except:
+					bfs = [form.word]
 				return bfs
 
 			bfs = form.getBaseform(match_num=match_number, return_all=True)

@@ -27,6 +27,11 @@ NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'sii',
 		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
 
+TENSE_PRESENTATION = {
+	'Prs': u'ihtin',
+	'Prt': u'odne',
+}
+
 RECIPROCATIVE_PRESENTATION = {
 	'Du': u'guhtet',
 	'Pl': u'goabbat',
@@ -670,12 +675,27 @@ def get_feedback(self, wordform, language):
 			message_list.append(text)
 	
 	self.feedback = ' \n '.join(list(message_list))
-	# NOTE: debug
-	# print wordform.id
-	# print wordform.feedback.all()
-	# print feedbacks
-	# print self.feedback
-	# print '\n'
+
+	### print wordform.fullform
+	### print wordform.tag.string
+
+	### print 'stem:' + wordform.word.stem
+	### print 'gradation:' + wordform.word.gradation
+	### print 'diphthong:' + wordform.word.diphthong
+	### print 'rime:' + wordform.word.rime
+	### print 'soggi:' + wordform.word.soggi
+	### print 'attrsuffix:' + wordform.word.attrsuffix
+	### print 'compsuffix:' + wordform.word.compsuffix
+
+
+	### print self.feedback
+	### print '--'
+	### # NOTE: debug
+	### # print wordform.id
+	### # print wordform.feedback.all()
+	### # print feedbacks
+	### # print self.feedback
+	### # print '\n'
 
 def select_words(self, qwords, awords):
 	"""
@@ -1113,7 +1133,12 @@ class MorfaQuestion(OahpaQuestion):
 		
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
 		self.fields['tag_id'] = forms.CharField(widget=tag_widget, required=False)
-		self.lemma = baseform.fullform
+
+		try:
+			self.lemma = baseform.fullform
+		except AttributeError:
+			self.lemma = baseform
+
 		self.wordclass = word.wordclass
 		
 		#print self.lemma, correct
@@ -1150,6 +1175,15 @@ class MorfaQuestion(OahpaQuestion):
 					self.pron_imp = "(" + self.pron + ")"
 					self.pron = ""
 				# TODO: conneg only in Prs
+			
+			# Odne 'yesterday', ihtin 'today'
+
+			if tag.string.find("Der/Pass") > -1:
+				self.pron = TENSE_PRESENTATION.get(tag.tense, False) + " " + self.pron
+
+			# All pres? 
+			if tag.string.find("Der/AV") > -1:
+				self.pron = TENSE_PRESENTATION.get(tag.tense, False) + " " + self.pron
 
 		if tag.pos == "Pron":
 			# Various display alternations for pronouns.
@@ -1178,7 +1212,10 @@ class MorfaQuestion(OahpaQuestion):
 					self.lemma += ' (%s)' % force_unicode(noun_pres).encode('utf-8')
 		
 		log_name = "morfa_%s" % tag.pos
-		self.is_correct(log_name, self.lemma + "+" + self.tag)
+		try:
+			self.is_correct(log_name, self.lemma + "+" + self.tag)
+		except TypeError:
+			self.is_correct(log_name, self.lemma.lemma + "+" + self.tag)
 		
 		# set correct and error values
 		if correct_val:
