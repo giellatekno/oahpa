@@ -28,8 +28,8 @@ NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
 
 TENSE_PRESENTATION = {
-	'Prs': u'ikte',
-	'Prt': u'odne',
+	'Prt': u'ikte',
+	'Prs': u'odne',
 }
 
 RECIPROCATIVE_PRESENTATION = {
