@@ -6,6 +6,8 @@ from django.db.models import Q
 from django.db import connection
 from django.db import transaction
 
+from django.utils.encoding import smart_unicode
+
 class BulkManager(models.Manager):
 	""" This Manager adds additional methods to Feedback.objects. That allows
 	for bulk inserting via custom SQL query (calling INSERT INTO on a list of
@@ -282,7 +284,7 @@ class Semtype(models.Model):
 	semtype = models.CharField(max_length=50)
 	
 	def __unicode__(self):
-		return self.semtype
+		return smart_unicode(self.semtype)
 
 class Source(models.Model):
 	type = models.CharField(max_length=20)
@@ -291,9 +293,10 @@ class Source(models.Model):
 	
 	def __unicode__(self):
 		if self.type and self.name:
-			return "%s: %s" % (self.type, self.name)
+			S = "%s: %s" % (self.type, self.name)
 		elif self.name:
-			return "%s" % self.name
+			S = "%s" % self.name
+		return smart_unicode(S)
 
 # First, define the Manager subclass.
 class NPosManager(models.Manager):
@@ -306,11 +309,12 @@ class Dialect(models.Model):
 	
 	def __unicode__(self):
 		if self.dialect and self.name:
-			return "%s: %s" % (self.dialect, self.name)
+			S = "%s: %s" % (self.dialect, self.name)
 		elif self.name:
-			return "%s" % self.name
+			S = "%s" % self.name
 		elif self.dialect:
-			return "%s" % self.dialect
+			S = "%s" % self.dialect
+		return smart_unicode(S)
 
 def Translations2(target_lang):
 	if target_lang in ["nob", "swe", "sme", "eng", "deu", "sma", "no"]:
@@ -346,7 +350,7 @@ class MorphPhonTag(models.Model):
 				self.rime, 
 				self.soggi]
 		
-		S = unicode('/'.join([a for a in attrs if a.strip()])).encode('utf-8')
+		S = smart_unicode('/'.join([a for a in attrs if a.strip()])).encode('utf-8')
 		return S
 	
 	class Meta:
@@ -493,7 +497,7 @@ class Word(models.Model):
 		super(Word, self).save(*args, **kwargs)
 
 	def __unicode__(self):
-		return self.lemma
+		return smart_unicode(self.lemma)
 	
 	def sem_types_admin(self):
 		return ', '.join([item.semtype for item in self.semtype.order_by('semtype').all()])
@@ -593,7 +597,7 @@ class WordTranslation(models.Model):
 		return word_answers
 		
 	def __unicode__(self):
-		return self._getTrans().encode('utf-8')
+		return smart_unicode(self._getTrans())
 
 	def save(self, *args, **kwargs):
 		self.definition = self._getTrans()
@@ -626,14 +630,14 @@ class Tagset(models.Model):
 	tagset = models.CharField(max_length=25)
 	
 	def __unicode__(self):
-		return self.tagset
+		return smart_unicode(self.tagset)
 
 class Tagname(models.Model):
 	tagname = models.CharField(max_length=25)
 	tagset = models.ForeignKey(Tagset)	
 	
 	def __unicode__(self):
-		return self.tagname
+		return smart_unicode(self.tagname)
 
 class Tag(models.Model):
 	string = models.CharField(max_length=40)
@@ -656,7 +660,7 @@ class Tag(models.Model):
 		pass
 		
 	def __unicode__(self):
-		return self.string
+		return smart_unicode(self.string)
 	
 	def fix_attributes(self):
 		
@@ -710,7 +714,7 @@ class Form(models.Model):
  		return [d.dialect for d in self.dialects.all() if len(d.dialect) == 2]
 	
 	def __unicode__(self):
-		return u'%s' % self.fullform.decode('utf-8')
+		return smart_unicode(self.fullform)
 		# Testing-- related lookups seem to be quite slow in MySQL...?
 		# return '%s; %s+%s' % (self.fullform, self.word.lemma, self.tag)
 	
@@ -897,7 +901,7 @@ class Feedbacktext(models.Model):
 				self.message, 
 			]
 		S = unicode('/'.join([a for a in attrs if a.strip()])).encode('utf-8')
-		return self.language + u':' + self.message
+		return smart_unicode(self.language + u':' + self.message)
 
 	
 
@@ -950,7 +954,7 @@ class QElement(models.Model):
 							 null=True,
 							 related_name='copy_set')
 	def __unicode__(self):
-		return self.question.string + ': ' + self.identifier
+		return smart_unicode(self.question.string + ': ' + self.identifier)
 
 class WordQElement(models.Model):
 	"""
