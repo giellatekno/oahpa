@@ -22,6 +22,8 @@ def testbaseforms(tfilter=False, tag_string=False):
 	else:
 		missing = Form.objects.all()
 	
+	missing = missing.only('word__lemma', 'fullform', 'tag__string')
+	
 	def fmtform(f):
 		fs = {
 			'word__lemma': f.word.lemma,
@@ -50,13 +52,24 @@ def testbaseforms(tfilter=False, tag_string=False):
 class Command(BaseCommand):
 	args = '--tagelement'
 	help = """
-	Strips tags of an element and then merges them all.
+	Search through the lexicon and test .getBaseform() on each form.
+	Alternatively specify a tag (-t/--tagstring) to filter forms by.
+
+	View all baseforms:
+		python manage.py testbaseforms
+	
+	View only A+Attr baseforms:
+		python manage.py testbaseforms -t A+Attr | grep Baseform | grep A+Attr 
+
+	View only A+Attr, find baseforms returning A+Attr instead of A+Sg+Nom
+		python manage.py testbaseforms -t A+Attr | grep Baseform | grep A+Attr 
+	
+	Also, search for MISSING, which will reveal places where .getBaseform can't
+	actually return anything.
 	"""
 	option_list = BaseCommand.option_list + (
 		make_option("-t", "--tagstring", dest="tag_string", default=False,
 						  help="Tag element to search for"),
-		
-		# TODO: question iterations count
 	)
 
 	def handle(self, *args, **options):
