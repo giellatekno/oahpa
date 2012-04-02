@@ -3,6 +3,7 @@ from django.core.management.base import BaseCommand, CommandError
 # from_yaml(cls, loader, node)
 
 from optparse import make_option
+from django.utils.encoding import force_unicode
 
 import sys
 
@@ -46,8 +47,8 @@ def testbaseforms(tfilter=False, tag_string=False):
 		else:
 			b = "Baseform: MISSING."
 
-		print >> sys.stdout, s.encode('utf-8')
-		print >> sys.stdout, b.encode('utf-8') + '\n'
+		print >> sys.stdout, s
+		print >> sys.stdout, b + '\n'
 
 class Command(BaseCommand):
 	args = '--tagelement'
