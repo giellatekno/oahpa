@@ -1,0 +1,165 @@
+!!! Møte 02.04.12
+
+
+Til stades: Lene, Ryan, Trond, Heli
+
+!!Saksliste
+* Nye servere
+* Morfa Der
+* Morfologisk feedback
+* Bugger
+* Neste møte
+
+
+!! Nye servere
+Serverne har navn og ip-numre, men så mangler IT-advelinga diskplass. Vi venter.
+
+TILTAK:
+* __Trond__ følger opp, tlf og mail
+
+
+!! Morfa Der
+
+! Hjelpeorda
+
+MorfaS:
+* hjelpeordene skal være: 'ikte' (Prt) og 'odne' (Prs). Nå er det odne (Prt) og ihttin (Prs)
+* oversettelsen for adjektiv kommer ikke opp hvis det ikke er a_smenob.xml. 
+
+! dat vs. son/sii som matriseord i derivasjonsoppgavene
+
+Bruke 'dat' istedenfor 'son' for alle derivasjonsoppgavene:
+
+* son -> dat  (okta)
+* sii -> dat  (máŋga)
+
+! ascii / UTF-8-bug
+
+{{{
+DjangoUnicodeDecodeError at /univ_oahpa/morfas/der/
+'ascii' codec can't decode byte 0xc3 in position 1: ordinal not in range(128). You passed in <Word: [Bad Unicode data]> (<class 'univ_oahpa.univ_drill.models.Word'>)
+The string that could not be encoded/decoded was: r��ig��
+}}}
+
+UTF-8 verdien til á er C3 A1. Feilmeldinga seier at C3 er utanfor 7-bits ascii, og det er jo sant.
+Så ein stad er det noko (codec?!) som forventar ascii
+
+
+'ascii' codec can't decode byte 0xc3 in position 1: ordinal not in range(128). You passed in <Word: [Bad Unicode data]> (<class 'univ_oahpa.univ_drill.models.Word'>)
+
+/etc/my.cnf - 
+
+Dessuten kommer bare Prs i A-DER-V.
+
+
+
+__Under møtet__ fann vi ut at ráigái ikkje finst som adjektiv.
+Dette har vi sett før: feilmeldinga __can't decode byte…__
+viser ikkje til ein UTF-8-feil i det heile, men kjem når systemet
+ikkje finn grunnforma.
+
+
+__TILTAK__
+* Dokumenter ascii-feilen: Lage eit dokument (''mystiske feilmeldingar?'')
+  som fortel denne erfaringa til neste gong
+* __Ryan__ fikser feil feilmelding til rett feilmelding
+* __Lene__ legger til adjektivene som mangler i a_smenob.xml.
+* __Lene__ fjerner en del bøyningsformer fra derverb_sme.xml for å unngå dårlig semantikk
+
+
+! PassS 
+
+Derivasjonsoppgåvene har feil i passiv.
+
+Det vi vil: Vi vil ha Der/PassL som fasit, men også godta Der/PassS.
+
+__TILTAK__
+* __Lene__ legger til Use/NG til Der/PassS i ifst.
+
+
+! Morfa Der A -> V
+
+Her skal adjektiva bli presentert i A Sg Nom.
+
+__TILTAK__
+* __Ryan__ fikser slik at taskform er A Sg Nom
+
+
+!! Morfologisk feedback
+
+
+De fleste fungerer. 
+* __Ryan__ sender melding til Lene om former som ikke får feedback. 
+
+
+!! Bugger
+! 791 Possible with alternative grammartags?
+To ulike taggrekkar i svaret? Dette er ein P5. Spørsmåla kan vere tvetydige,
+og då hadde det vore fint.
+
+! 1190 Grammatikkforklaringer kjem ikkje opp i Safari
+
+Framleis ikkje gjort. __Trond__ legg inn streng ''Tillat popup-vindu'' øverst i
+nedfallsmenyen. 
+
+{{{
+Kielioppiselitykset
+--Sallii popup--
+Adjektiivit
+…
+}}}
+
+Fila sme/meta/grammatikklinker.txt er på formatet
+
+{{{
+adjektiv        http://giellatekno.uit.no/oahpa/adjintro.nno.html       
+
+adverb  http://giellatekno.uit.no/oahpa/adverb.nno.html
+
+adverbial       http://giellatekno.uit.no/oahpa/syntaks.nno.html#Setningsledd
+
+}}}
+
+
+
+
+! 1307 Negative verbet er av og til erstatta med duplikat pronomen
+
+{{{
+PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'son',
+		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'sii',
+		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
+
+NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
+		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'sii',
+		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
+}}}
+
+* Her mangler neg.former. __Ryan__ legger dem inn.
+
+
+! 1313 VastaS: problemer med oppgave 2_PrsSg1_Dem_SgGen_Po
+problemet er i src/grammaticalwords.xml som har feil format
+
+{{{
+<e>
+      <lg>
+         <l gen_only="none" pos="po">lusa</l>
+         <analys>Po</analys>
+      </lg>
+   </e>
+}}}
+
+TILTAK:
+* __Lene__ lager nytt format i src/grammaticalwords.xml
+
+!! Neste møte
+
+onsdag 11.4 kl 8.00
+
+
+
+
+
+
+
