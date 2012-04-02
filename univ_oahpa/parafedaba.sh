@@ -70,14 +70,14 @@ echo "==================================================="
 COMMENT
 echo "==================================================="
 echo "feeding db with $DPS/adv_smenob.xml"
-$P install.py --file $DPS/adv_smenob.xml
+$P install.py --file $DPS/adv_smenob.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/multiword_smenob.xml"
-$P install.py --file $DPS/multiword_smenob.xml
+$P install.py --file $DPS/multiword_smenob.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -88,49 +88,49 @@ echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPN/a_nobsme.xml"
-$P install.py --file $DPN/a_nobsme.xml
+$P install.py --file $DPN/a_nobsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPN/n_nobsme.xml"
-$P install.py --file $DPN/n_nobsme.xml
+$P install.py --file $DPN/n_nobsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPN/num_nobsme.xml"
-$P install.py --file $DPN/num_nobsme.xml
+$P install.py --file $DPN/num_nobsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPN/v_nobsme.xml"
-$P install.py --file $DPN/v_nobsme.xml
+$P install.py --file $DPN/v_nobsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPN/adv_nobsme.xml"
-$P install.py --file $DPN/adv_nobsme.xml
+$P install.py --file $DPN/adv_nobsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPN/mwe_nobsme.xml"
-$P install.py --file $DPN/mwe_nobsme.xml
+$P install.py --file $DPN/mwe_nobsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPN/prop_nobsme.xml"
-$P install.py --file $DPN/prop_nobsme.xml
+$P install.py --file $DPN/prop_nobsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -141,49 +141,49 @@ echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPF/a_finsme.xml"
-$P install.py --file $DPF/a_finsme.xml
+$P install.py --file $DPF/a_finsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPF/n_finsme.xml"
-$P install.py --file $DPF/n_finsme.xml
+$P install.py --file $DPF/n_finsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPF/num_finsme.xml"
-$P install.py --file $DPF/num_finsme.xml
+$P install.py --file $DPF/num_finsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPF/v_finsme.xml"
-$P install.py --file $DPF/v_finsme.xml
+$P install.py --file $DPF/v_finsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPF/adv_finsme.xml"
-$P install.py --file $DPF/adv_finsme.xml
+$P install.py --file $DPF/adv_finsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPF/mwe_finsme.xml"
-$P install.py --file $DPF/mwe_finsme.xml
+$P install.py --file $DPF/mwe_finsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPF/prop_finsme.xml"
-$P install.py --file $DPF/prop_finsme.xml
+$P install.py --file $DPF/prop_finsme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -236,21 +236,21 @@ echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/grammaticalwords.xml"
-$P install.py --file $DPS/grammaticalwords.xml
+$P install.py --file $DPS/grammaticalwords.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/pron_sme.xml"
-$P install.py --file $DPS/pron_sme.xml --tagfile $META/tags.txt 
+$P install.py --file $DPS/pron_sme.xml --tagfile $META/tags.txt  2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/pron_sme.xml"
-$P install.py --file $DPS/derverb_sme.xml --tagfile $META/tags.txt --append # TODO: test append with this
+$P install.py --file $DPS/derverb_sme.xml --tagfile $META/tags.txt --append  2>>error.log # TODO: test append with this
 echo " "
 echo "done"
 echo "==================================================="
@@ -258,42 +258,42 @@ echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $META/semantical_sets.xml"
-$P install.py --sem $META/semantical_sets.xml
+$P install.py --sem $META/semantical_sets.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with messages to feedback"
-$P install.py --messagefile $META/messages.xml
+$P install.py --messagefile $META/messages.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with messages to feedback"
-$P install.py --messagefile $META/messages.sme.xml
+$P install.py --messagefile $META/messages.sme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with messages to feedback"
-$P install.py --messagefile $META/messages.eng.xml
+$P install.py --messagefile $META/messages.eng.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with messages to feedback"
-$P install.py --messagefile $META/messages.swe.xml
+$P install.py --messagefile $META/messages.swe.xml 2>>error.log
 echo " "
 echo "done"
 cho "==================================================="
 
 echo "==================================================="
 echo "feeding db with messages to feedback"
-$P install.py --messagefile $META/messages.fin.xml
+$P install.py --messagefile $META/messages.fin.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -305,63 +305,63 @@ echo "==================================================="
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa-C"
-$P install.py -r $META/paradigms.txt -t $META/tags.txt -b
+$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C word fillings"
-$P install.py -f $META/fillings_smenob.xml --paradigmfile $META/paradigms.txt --tagfile $META/tags.txt
+$P install.py -f $META/fillings_smenob.xml --paradigmfile $META/paradigms.txt --tagfile $META/tags.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C questions for nouns"
-$P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml
+$P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C questions for verbs"
-$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml
+$P install.py -g $META/grammar_defaults.xml -q $META/verb_questions.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C questions for pronoun"
-$P install.py -g $META/grammar_defaults.xml -q $META/pron_questions.xml
+$P install.py -g $META/grammar_defaults.xml -q $META/pron_questions.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C questions for adjectives"
-$P install.py -g $META/grammar_defaults.xml -q $META/adjective_questions.xml
+$P install.py -g $META/grammar_defaults.xml -q $META/adjective_questions.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C questions for numerals"
-$P install.py -g $META/grammar_defaults.xml -q $META/numeral_questions.xml
+$P install.py -g $META/grammar_defaults.xml -q $META/numeral_questions.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C questions for derivation"
-$P install.py -g $META/grammar_defaults.xml -q $META/derivation_questions.xml
+$P install.py -g $META/grammar_defaults.xml -q $META/derivation_questions.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "installing grammar links for norwegian"
-$P install.py -i $META/grammatikklinker.txt
+$P install.py -i $META/grammatikklinker.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -371,14 +371,14 @@ echo "==================================================="
 #######
 echo "==================================================="
 echo "installing Vasta questions"
-$P install.py -g $META/grammar_defaults.xml -q $META/questions_vasta.xml
+$P install.py -g $META/grammar_defaults.xml -q $META/questions_vasta.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "installing Vasta-S questions"
-$P install.py -g $META/grammar_defaults.xml -q $META/vastas_questions.xml
+$P install.py -g $META/grammar_defaults.xml -q $META/vastas_questions.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -386,28 +386,28 @@ echo "==================================================="
 
 echo "==================================================="
 echo "Installing feedback messages for vasta"
-$P install.py --messagefile $META/messages_vasta.xml
+$P install.py --messagefile $META/messages_vasta.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "Installing feedback messages for vasta - in English"
-$P install.py --messagefile $META/messages_vasta.eng.xml
+$P install.py --messagefile $META/messages_vasta.eng.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "Installing feedback messages for vasta - in Finnish"
-$P install.py --messagefile $META/messages_vasta.fin.xml
+$P install.py --messagefile $META/messages_vasta.fin.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "Installing feedback messages for vasta - in North Sámi"
-$P install.py --messagefile $META/messages_vasta.sme.xml
+$P install.py --messagefile $META/messages_vasta.sme.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -417,49 +417,49 @@ echo "==================================================="
 #####
 echo "==================================================="
 echo "Installing dialogues for Sahka - firstmeeting"
-$P install.py -k $META/dialogue_firstmeeting.xml
+$P install.py -k $META/dialogue_firstmeeting.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "Installing dialogues for Sahka - firstmeeting - boy"
-$P install.py -k $META/dialogue_firstmeeting_boy.xml
+$P install.py -k $META/dialogue_firstmeeting_boy.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "Installing dialogues for Sahka - firstmeeting - girl"
-$P install.py -k $META/dialogue_firstmeeting_girl.xml
+$P install.py -k $META/dialogue_firstmeeting_girl.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "Installing dialogues for Sahka - firstmeeting - man"
-$P install.py -k $META/dialogue_firstmeeting_man.xml
+$P install.py -k $META/dialogue_firstmeeting_man.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "Installing dialogues for Sahka - grocery shop"
-$P install.py -k $META/dialogue_grocery.xml
+$P install.py -k $META/dialogue_grocery.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "Installing dialogues for Sahka - adjectives in shop"
-$P install.py -k $META/dialogue_shopadj.xml
+$P install.py -k $META/dialogue_shopadj.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "Installing dialogues for Sahka - visit"
-$P install.py -k $META/dialogue_visit.xml
+$P install.py -k $META/dialogue_visit.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -469,28 +469,28 @@ echo "==================================================="
 # mergetags
 echo "==================================================="
 echo "adding feedback to nouns"
-$P install.py -f $DPS/n_smenob.xml --feedbackfile $META/feedback_nouns.xml
+$P install.py -f $DPS/n_smenob.xml --feedbackfile $META/feedback_nouns.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "adding feedback to verbs"
-$P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_verbs.xml
+$P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_verbs.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "adding feedback to adjectives"
-$P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml
+$P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "adding feedback to numerals"
-$P install.py -f $DPS/num_smenob.xml --feedbackfile $META/feedback_numerals.xml
+$P install.py -f $DPS/num_smenob.xml --feedbackfile $META/feedback_numerals.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
