@@ -24,8 +24,8 @@ PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'son',
 		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
 
 NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
-		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'sii',
-		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
+		  'Pl1':'eat', 'Pl2':'ehpet', 'Pl3':'eai',
+		  'Du1':'ean', 'Du2':'eahppi', 'Du3':'eaba'}
 
 TENSE_PRESENTATION = {
 	'Prt': u'ikte',
