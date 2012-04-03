@@ -460,11 +460,15 @@ class Feedback_install(object):
 				vs = ', '.join(sorted(v))
 				line = "        %s: %s" % (k, vs)
 				lines.append(line)
-			return '\n'.join(lines)
+			try:
+				return smart_unicode('\n'.join(lines))
+			except:
+				return '\n'.join(lines)
+
 
 		print >> sys.stdout, "\n  LEXICON"
 		print >> sys.stdout, "    Attributes in word file:"
-		print >> sys.stdout, fmt_dict(self.word_possible_values)
+		print >> sys.stdout, fmt_dict(self.word_possible_values).encode('utf-8')
 
 		print >> sys.stdout, "    Tag attributes in lexicon for %s:" % self.file_pos 
 		print >> sys.stdout, fmt_dict(self.tag_possible_values)
@@ -485,7 +489,12 @@ class Feedback_install(object):
 			missing = []
 			if fb_attr_vals:
 				missing.extend(list(set(fb_attr_vals) ^ set(lexicon_attribute_values)))
-			print >> sys.stdout, "        %s: %s" % (attribute_name, ', '.join(missing))
+			_str = "        %s: %s" % (attribute_name, ', '.join(missing))
+			try:
+				print >> sys.stdout, _str.encode('utf-8')
+			except:
+				print >> sys.stdout, _str
+
 
 		print >> sys.stdout, '\n'
 
@@ -689,7 +698,7 @@ class Feedback_install(object):
 						else:
 							attrs_and_messages[item] = [m]
 
-					print "Identified %d\n" % len(intersection)
+					print >> sys.stdout, "Identified %d\n" % len(intersection)
 					del param_set
 				
 				param_set_ = set()
