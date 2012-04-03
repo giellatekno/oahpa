@@ -23,6 +23,12 @@ PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'son',
 		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'sii',
 		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
 
+# DEMONSTRATIVE_PRESENTATION plus Sg3/Pl3
+PASSIVE_PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'dat',
+		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'dat',
+		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
+
+
 NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 		  'Pl1':'eat', 'Pl2':'ehpet', 'Pl3':'eai',
 		  'Du1':'ean', 'Du2':'eahppi', 'Du3':'eaba'}
@@ -39,7 +45,9 @@ RECIPROCATIVE_PRESENTATION = {
 
 DEMONSTRATIVE_PRESENTATION = {
 	'Sg': u'okta',
+	'Sg3': u'okta',
 	'Pl': u'máŋga',
+	'Pl3': u'máŋga',
 }
 
 POS_CHOICES = (
@@ -1161,6 +1169,7 @@ class MorfaQuestion(OahpaQuestion):
 		
 		if tag.pos == "V": 
 			if tag.string.find("ConNeg") > -1:
+				# TODO: New choice for every refresh, fix!
 				pers = choice(self.PronPNBase.keys())
 				pronoun = self.PronPNBase[pers]
 				neg_verb = NEGATIVE_VERB_PRES[pers]
@@ -1176,10 +1185,20 @@ class MorfaQuestion(OahpaQuestion):
 					self.pron = ""
 				# TODO: conneg only in Prs
 			
-			# Odne 'yesterday', ihtin 'today'
-
+			# Odne 'today', ikte 'yesterday'
 			if tag.string.find("Der/Pass") > -1:
-				self.pron = TENSE_PRESENTATION.get(tag.tense, False) + " " + self.pron
+				# Odne mun ___
+				# Ikte mun ___
+				# Ikte dat (okta) ___ 
+				pers = tag.personnumber
+				time = TENSE_PRESENTATION.get(tag.tense, False) 
+				pronoun = PASSIVE_PRONOUNS_LIST[pers]
+
+				number = ''
+				if pers in ['Sg3', 'Pl3']:
+					number = '(%s)' % DEMONSTRATIVE_PRESENTATION.get(tag.personnumber, False)
+
+				self.pron = ' '.join([time, pronoun, number])
 
 			# All pres? 
 			if tag.string.find("Der/AV") > -1:
