@@ -20,6 +20,7 @@ import univ_oahpa.settings
 # DEBUG = open('/dev/ttys001', 'w')
 
 from random import choice
+from .forms import PRONOUNS_LIST
 
 try:
 	L1 = univ_oahpa.settings.L1
@@ -510,6 +511,7 @@ class BareGame(Game):
 		db_info['tag_id'] = tag.id
 
 
+
 	def get_db_info(self, db_info):
 		
 		if self.settings.has_key('pos'):
@@ -693,6 +695,7 @@ class BareGame(Game):
 				'A-DER-V': parse_tag("A+Der/AV+V+Ind+Prs+Person-Number"),
 				'V-DER-PASS': parse_tag("V+Passive+V+Ind+Tense+Person-Number"),
 			}
+
 			TAG_QUERY = Q(string__in=derivation_types[derivation_type])
 			TAG_EXCLUDES = False
 			sylls = False
@@ -824,7 +827,8 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
-				random_word = tag.form_set.filter(word__language=L1)
+				random_word = tag.form_set.filter(word__language=L1,
+													word__semtype__semtype="MORFAS")
 
 				if tag.pos == 'Pron':
 					random_word = random_word\
@@ -855,6 +859,8 @@ class BareGame(Game):
 
 			db_info['word_id'] = random_word.id
 			db_info['tag_id'] = tag.id
+			if tag.string.lower().find('conneg') > -1:
+				db_info['conneg'] = choice(PRONOUNS_LIST.keys())
 
 		except IndexError:
 			wc = Word.objects.count()
@@ -890,7 +896,7 @@ class BareGame(Game):
 		tag_id = db_info['tag_id']
 		
 		tag = Tag.objects.get(id=tag_id)
-		
+
 		if pos == 'Pron':
 			# Need to filter by lemma for pronouns
 			pronoun_lemma = Word.objects.get(id=word_id).lemma
