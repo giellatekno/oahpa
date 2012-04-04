@@ -262,19 +262,21 @@ class Paradigm:
 		# the first tag element, which should be the part of speech.
 		# If hid is defined simultaneously, this should not mess with that.
 
-		if not wordtype.strip():
-			wordtype = ""
-		else:
-			wordtype = '+' + wordtype
+		# No wordclass for now.
+		# if not wordtype.strip():
+		# 	wordtype = ""
+		# else:
+		# 	wordtype = '+' + wordtype.capitalize()
 
-		
 		if self.paradigms.has_key(pos):
 			for a in self.paradigms[pos]:
-				if wordtype.strip():
-					_pos, _, _rest = a.partition('+')
-					tag = "%s%s+%s" % (_pos, wordtype, _rest)
-				else:
-					tag = a
+				# No wordclass for now.
+				# if wordtype.strip():
+					# if not wordtype in a:
+						# _pos, _, _rest = a.partition('+')
+						# tag = "%s%s+%s" % (_pos, wordtype, _rest)
+				# else:
+				tag = a
 				
 				if gen_only:
 					for c in gen_only:
