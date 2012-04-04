@@ -5417,7 +5417,7 @@ MAP (&dia-stop) TARGET ("heaitit")(*-1 SAHKA) ;
 MAP (&err-orthProp) TARGET LowercaseErr (*-1 QDL LINK 0 PLACENAME-QUESTION BARRIER Prop)(0 Plc) ;
 REMOVE LowercaseErr ;
 
-LIST ACCEPT-EVERYTHING = Makkar_snowboard_child Makkar_snowboard_adult Makkar_snowboard_young Mii_namma_lea ;
+LIST ACCEPT-EVERYTHING = Makkar_snowboard_child Makkar_snowboard_adult Makkar_snowboard_young Mii_namma_lea dialogue_closing ;
 
 LIST DOYOUHAVE =  Lea_go_dus_heasta_adult Lea_go_dus_heasta_child Lea_go_dus_heasta_young Lea_go_dus_snowboard_adult Lea_go_dus_snowboard_child Lea_go_dus_snowboard_young Lea_go_dus_biila_adult Lea_go_eara_ealli_adult Lea_go_eara_ealli_young Lea_go_eara_ealli_child Leat_go_dus_sihkkelat_adult Leat_go_dus_sihkkelat_young Leat_go_dus_sihkkelat_child ;
 
@@ -5907,7 +5907,7 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL BARRIER S-BOUNDARY  LIN
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL BARRIER S-BOUNDARY  LINK *-1 (Pers Nom) LINK NOT 0 Pl3) ;
 
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 NUM-QUESTION LINK *-1 (N Pl Nom) LINK NOT 0 Inf OR Sg)(NOT 0 Pl3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU OR (Mii_namma_lea) LINK *-1 VERB LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION OR Pl)(NOT 0 Sg3) ;
+MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU OR ACCEPT-EVERYTHING LINK *-1 VERB LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION OR Pl)(NOT 0 Sg3) ;
 MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 DUALIS-NOUN)(NOT 0 Du3) ;
 
 
@@ -5938,11 +5938,11 @@ MAP (&grm-soaitit) TARGET ("soaitit")(*-1 QDL)(0 V LINK *1 VFIN BARRIER S-BOUNDA
 MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY OR VFIN LINK NOT 0 BARGGUS OR $$VERBLEMMA LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 QDL BARRIER S-BOUNDARY LINK NOT 0 BARGGUS OR $$VERBLEMMA LINK *-1 VFIN LINK -1 BOS LINK NOT 1 $$VERBLEMMA)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 VASTAS)(NEGATE 0 ("hálihit") LINK *-1 ("háliidit")) ;
 
-MAP (&sem-answer-with-same-verb) TARGET VFIN (0C $$VERBLEMMA LINK NOT 0 WORK-V LINK *1 QDL LINK NOT 0 MAKKAR-BARGU OR (Mii_namma_lea) OR V LINK NOT *1 $$VERBLEMMA)(*-1 MO OR Interr)(NEGATE 0 AUX LINK 1 Inf LINK *1 QDL LINK *1 Imprt) (NEGATE *1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&sem-answer-with-same-verb) TARGET VFIN (0C $$VERBLEMMA LINK NOT 0 WORK-V LINK *1 QDL LINK NOT 0 MAKKAR-BARGU OR ACCEPT-EVERYTHING OR V LINK NOT *1 $$VERBLEMMA)(*-1 MO OR Interr)(NEGATE 0 AUX LINK 1 Inf LINK *1 QDL LINK *1 Imprt) (NEGATE *1 SAHKA LINK *1 (&dia-stop)) ;
 
-#(NOT 0 Neg OR SOAITIT)(0 $$VERBLEMMA LINK *-1 QDL BARRIER SV-BOUNDARY LINK NOT 0 MAKKAR-BARGU  OR (Mii_namma_lea) OR $$VERBLEMMA LINK **-1 VERB LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+#(NOT 0 Neg OR SOAITIT)(0 $$VERBLEMMA LINK *-1 QDL BARRIER SV-BOUNDARY LINK NOT 0 MAKKAR-BARGU  OR ACCEPT-EVERYTHING OR $$VERBLEMMA LINK **-1 VERB LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 
-MAP (&sem-answer-with-same-verb) TARGET VFIN (0C $$VERBLEMMA LINK NOT 0 WORK-V LINK *1 QDL LINK NOT 0 MAKKAR-BARGU OR (Mii_namma_lea) OR V LINK NOT *1 $$VERBLEMMA)(*-1 MO OR Interr)(NEGATE 0 AUX LINK 1 Inf LINK *1 QDL LINK *1 Imprt)(NEGATE *1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&sem-answer-with-same-verb) TARGET VFIN (0C $$VERBLEMMA LINK NOT 0 WORK-V LINK *1 QDL LINK NOT 0 MAKKAR-BARGU OR ACCEPT-EVERYTHING OR V LINK NOT *1 $$VERBLEMMA)(*-1 MO OR Interr)(NEGATE 0 AUX LINK 1 Inf LINK *1 QDL LINK *1 Imprt)(NEGATE *1 SAHKA LINK *1 (&dia-stop)) ;
 
 
 #MAP (&sem-answer-with-same-verb) TARGET VFIN (NOT 0 Neg OR SOAITIT)(0 $$VERBLEMMA LINK *-1 QDL BARRIER SV-BOUNDARY LINK NOT 0 MAKKAR-BARGU OR $$VERBLEMMA LINK **-1 VERB LINK NOT 0 $$VERBLEMMA OR WORK-V LINK *-1 MO OR Interr)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
@@ -5953,9 +5953,9 @@ MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 Q
 
 SELECT V-3 (-1 HAB-ACTOR + Loc LINK *-1 QDL) ;
 
-MAP (&grm-should-be-Vfin) TARGET QDL IF (NOT 0 (Mii_namma_lea))(NOT *1 VFIN);
+MAP (&grm-should-be-Vfin) TARGET QDL IF (NOT 0 ACCEPT-EVERYTHING)(NOT *1 VFIN);
 	# You should use a finite verb when answering...
-MAP (&grm-should-not-ConNeg) TARGET VERB IF (0 ConNeg LINK *-1 ConNeg BARRIER NOT-ADV-PCLE LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 QDL LINK NOT 0 (Mii_namma_lea))(NOT 0 N);
+MAP (&grm-should-not-ConNeg) TARGET VERB IF (0 ConNeg LINK *-1 ConNeg BARRIER NOT-ADV-PCLE LINK *-1 Neg BARRIER NOT-ADV-PCLE LINK *-1 QDL LINK NOT 0 ACCEPT-EVERYTHING)(NOT 0 N);
 
 
 
