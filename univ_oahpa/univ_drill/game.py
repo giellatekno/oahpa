@@ -692,8 +692,8 @@ class BareGame(Game):
 		if pos == "Der":
 			derivation_types = {
 				# 'Der/AV': parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"),
-				'A-DER-V': parse_tag("A+Der/AV+V+Ind+Prs+Person-Number"),
-				'V-DER-PASS': parse_tag("V+Passive+V+Ind+Tense+Person-Number"),
+				'A-DER-V': parse_tag("A+Der/AV+V+Ind+Prs+Person-Number-ConNeg"),
+				'V-DER-PASS': parse_tag("V+Passive+V+Ind+Tense+Person-Number-ConNeg"),
 			}
 
 			TAG_QUERY = Q(string__in=derivation_types[derivation_type])
@@ -864,6 +864,8 @@ class BareGame(Game):
 			db_info['tag_id'] = tag.id
 			if tag.string.lower().find('conneg') > -1:
 				db_info['conneg'] = choice(PRONOUNS_LIST.keys())
+			else:
+				db_info['conneg'] = False
 
 		except IndexError:
 			wc = Word.objects.count()
@@ -897,7 +899,7 @@ class BareGame(Game):
 		word_id = db_info['word_id']
 		
 		tag_id = db_info['tag_id']
-		
+
 		tag = Tag.objects.get(id=tag_id)
 
 		if pos == 'Pron':
@@ -1018,7 +1020,8 @@ class BareGame(Game):
 					userans_val=db_info['userans'],  # TODO: userans not in use?
 					correct_val=db_info['correct'],
 					data=data,
-					prefix=n)
+					prefix=n,
+					conneg=db_info['conneg'])
 				)
 		return morph, word_id
 		

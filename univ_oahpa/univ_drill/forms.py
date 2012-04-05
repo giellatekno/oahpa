@@ -1127,7 +1127,7 @@ class MorfaQuestion(OahpaQuestion):
 	Questions for morphology game. 
 	"""
 	
-	def __init__(self, word, tag, baseform, correct, fullforms, present, translations, question, dialect, language, userans_val, correct_val, *args, **kwargs):
+	def __init__(self, word, tag, baseform, correct, fullforms, present, translations, question, dialect, language, userans_val, correct_val, conneg, *args, **kwargs):
 		
 		lemma_widget = forms.HiddenInput(attrs={'value': word.id})
 		tag_widget = forms.HiddenInput(attrs={'value': tag.id})
@@ -1138,9 +1138,19 @@ class MorfaQuestion(OahpaQuestion):
 		# initialize variables
 		self.init_variables(possible=[], userans_val=userans_val, accepted_answers=fullforms)
 		# init_variables(self, possible, userans_val, accepted_answers, preferred=False):
-		
+		if tag.string.lower().find('conneg') > -1:
+			if conneg:
+				conneg_agr = conneg
+			else:
+				conneg_agr = choice(self.PronPNBase.keys())
+		else:
+			conneg_agr = False
+
+		conneg_widget = forms.HiddenInput(attrs={'value': conneg_agr})
+
 		self.fields['word_id'] = forms.CharField(widget=lemma_widget, required=False)
 		self.fields['tag_id'] = forms.CharField(widget=tag_widget, required=False)
+		self.fields['conneg'] = forms.CharField(widget=conneg_widget, required=False)
 
 		try:
 			self.lemma = baseform.fullform
@@ -1148,6 +1158,8 @@ class MorfaQuestion(OahpaQuestion):
 			self.lemma = baseform
 
 		self.wordclass = word.wordclass
+		if not self.pron:
+			self.pron = False
 		
 		#print self.lemma, correct
 		#print baseform.tag, correct.tag
@@ -1168,37 +1180,42 @@ class MorfaQuestion(OahpaQuestion):
 		self.tag = tag.string
 		
 		if tag.pos == "V": 
-			if tag.string.find("ConNeg") > -1:
-				# TODO: New choice for every refresh, fix!
-				pers = choice(self.PronPNBase.keys())
-				pronoun = self.PronPNBase[pers]
-				neg_verb = NEGATIVE_VERB_PRES[pers]
+			if not self.pron:
+				if tag.string.find("ConNeg") > -1:
+					# TODO: New choice for every refresh, fix!
+					pers = conneg_agr
+					pronoun = self.PronPNBase[pers]
+					neg_verb = NEGATIVE_VERB_PRES[pers]
 
-				self.pron = '%s %s' % (pronoun, neg_verb)
-			elif tag.personnumber:
-				pronbase = self.PronPNBase[tag.personnumber]
-				pronoun = pronbase
-				self.pron = pronoun
-				
-				if self.pron and tag.mood == "Imprt":
-					self.pron_imp = "(" + self.pron + ")"
-					self.pron = ""
-				# TODO: conneg only in Prs
+					self.pron = '%s %s' % (pronoun, neg_verb)
+				elif tag.personnumber:
+					pronbase = self.PronPNBase[tag.personnumber]
+					pronoun = pronbase
+					self.pron = pronoun
+					
+					if self.pron and tag.mood == "Imprt":
+						self.pron_imp = "(" + self.pron + ")"
+						self.pron = ""
+					# TODO: conneg only in Prs
 			
 			# Odne 'today', ikte 'yesterday'
 			if tag.string.find("Der/Pass") > -1:
 				# Odne mun ___
 				# Ikte mun ___
 				# Ikte dat (okta) ___ 
-				pers = tag.personnumber
-				time = TENSE_PRESENTATION.get(tag.tense, False) 
-				pronoun = PASSIVE_PRONOUNS_LIST[pers]
 
-				number = ''
-				if pers in ['Sg3', 'Pl3']:
-					number = '(%s)' % DEMONSTRATIVE_PRESENTATION.get(tag.personnumber, False)
+				# Choose one if not set, if set then game is in progress, and
+				# do not choose another
+				if not self.pron:
+					pers = tag.personnumber
+					time = TENSE_PRESENTATION.get(tag.tense, False) 
+					pronoun = PASSIVE_PRONOUNS_LIST[pers]
 
-				self.pron = ' '.join([time, pronoun, number])
+					number = ''
+					if pers in ['Sg3', 'Pl3']:
+						number = '(%s)' % DEMONSTRATIVE_PRESENTATION.get(tag.personnumber, False)
+
+					self.pron = ' '.join([time, pronoun, number])
 
 			# All pres? 
 			if tag.string.find("Der/AV") > -1:
