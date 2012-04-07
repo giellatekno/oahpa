@@ -246,7 +246,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/sahka.nno.html
 </br>
 <table border='1' cellpadding='10' bgcolor='#F9F9F9'>
 <tr><td>
-{% for m in messages %}{{ m }}<br/>{% endfor %}
+{% for m in messages %}{{ m|safe }}<br/>{% endfor %}
 </td></tr>
 </table>
 {% endif %}
