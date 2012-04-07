@@ -298,9 +298,7 @@ class Feedback_install(object):
 				if node.nodeType == node.TEXT_NODE:
 					message = message + node.data
 				else:
-				        #link = node.getElementsByTagName("a")[0]
-				        link = node.toxml(encoding="utf-8")
-				        #message = message + "<a href=\"" + link.getAttribute("href") + "\">" + link.data + "</a>"  # parse the < a > tag and re-create html. Feels a bit stupid, so maybe there is a better solution.
+				        link = node.toxml(encoding="utf-8") # in case the feedback contains a link
 				        message = message + link  
 			print >> sys.stdout, message
 			fm, created = Feedbackmsg.objects.get_or_create(msgid=mid)
