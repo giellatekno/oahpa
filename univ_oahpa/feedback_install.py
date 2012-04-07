@@ -291,7 +291,17 @@ class Feedback_install(object):
 			mid=el.getAttribute("id")
 			order = ""
 			order = el.getAttribute("order")
-			message = el.firstChild.data
+			message = ""
+			#message = el.firstChild.data  # if the message contains a hyperlink then firstChild only returns the text before the < a href ...> tag
+			links = []
+			for node in el.childNodes:
+				if node.nodeType == node.TEXT_NODE:
+					message = message + node.data
+				else:
+				        #link = node.getElementsByTagName("a")[0]
+				        link = node.toxml(encoding="utf-8")
+				        #message = message + "<a href=\"" + link.getAttribute("href") + "\">" + link.data + "</a>"  # parse the < a > tag and re-create html. Feels a bit stupid, so maybe there is a better solution.
+				        message = message + link  
 			print >> sys.stdout, message
 			fm, created = Feedbackmsg.objects.get_or_create(msgid=mid)
 			fm.save()
