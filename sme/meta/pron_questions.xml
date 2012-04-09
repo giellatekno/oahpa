@@ -1111,7 +1111,7 @@
       <text>Maid mii galgat dahkat</text>
     </question>
     <answer> 
-      <text>Na, dii sáhttitbehtet VERB RECPL P-REC</text>  
+      <text>Na, dii sáhttibehtet VERB RECPL P-REC</text>  
       <element game='morfa' id="P-REC" task="yes">
 	<grammar tag="Pron+Recipr+Com+PxPl2"/>
       </element>
@@ -1175,7 +1175,7 @@
       <text>Mainna mii álgit</text>
     </question>
     <answer> 
-      <text>Vuos dii geahčabehtet RECPL P-REC čállosiid</text>  
+      <text>Vuos dii geahččabehtet RECPL P-REC čállosiid</text>  
       <element game='morfa' id="P-REC" task="yes">
 	<grammar tag="Pron+Recipr+Gen+PxPl2"/>
       </element>
@@ -1220,7 +1220,7 @@
   <q id="prec31gendu2">
     <qtype>P-RECIPR</qtype>
     <question>
-      <text>Manne don it jáhke munno plánáide</text>
+      <text>Manne don it jáhke munno plánaide</text>
     </question>
     <answer> 
       <text>Doai eahppi dieđe maidege RECDU P-REC birra</text>  
@@ -1581,7 +1581,7 @@
 			<text>Maid don leat oastán</text>
 		</question>
 		<answer>
-			<text>Osten spedjala P-REL buot oidno vulosoivviid</text>
+			<text>Osten speadjala P-REL buot oidno vulosoivviid</text>
 			<element game="morfa" id="P-REL" task="yes">
 				<grammar tag="Pron+Rel+Sg+Loc"/>
 				<id>mii</id>
@@ -1620,10 +1620,104 @@
 			<text>Gii riŋgii</text>
 		</question>
 		<answer>
-			<text>Bárdn P-REL luhtte mun fitnen ikte</text>
+			<text>Bárdni P-REL luhtte mun fitnen ikte</text>
 			<element game="morfa" id="P-REL" task="yes">
 				<grammar tag="Pron+Rel+Sg+Gen"/>
 				<id>gii</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel27">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Manne it čuorvvo beatnaga</text>
+		</question>
+		<answer>
+			<text>In dieđe P-REL beana gohčoduvvo</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Ess"/>
+				<id>mii</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel28">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Manne son bođii ruoktot dál juo</text>
+		</question>
+		<answer>
+			<text>In dieđe P-REL dáhpáhuvai</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Nom"/>
+				<id>mii</id>
+			</element>
+		</answer>
+	</q>
+	<q id="prel29">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid don barggat</text>
+		</question>
+		<answer>
+			<text>Mun jorgalan OBJ P-REL ii leat ovdal almmuhuvvon sámegillii</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Nom"/>
+				<id>mii</id>
+			</element>
+			<element id="OBJ">
+				<sem class="mSTORY"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel30">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid don barggat</text>
+		</question>
+		<answer>
+			<text>Mun čálán OBJ P-REL áiggun almmuhit</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Sg+Acc"/>
+				<id>mii</id>
+			</element>
+			<element id="OBJ">
+				<sem class="mSTORY"/>
+				<grammar tag="N+Sg+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel31">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Maid don barggat</text>
+		</question>
+		<answer>
+			<text>Mun jorgalan OBJ P-REL eai leat ovdal almmuhuvvon sámegillii</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Nom"/>
+				<id>mat</id>
+			</element>
+			<element id="OBJ">
+				<sem class="mSTORY"/>
+				<grammar tag="N+Pl+Acc"/>
+			</element>
+		</answer>
+	</q>
+	<q id="prel32">
+		<qtype>P-REL</qtype>
+		<question>
+			<text>Geat duot olbmot leat</text>
+		</question>
+		<answer>
+			<text>Duot leat mu ustibat P-REL áiggun mannat PLACE</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Com"/>
+				<id>geat</id>
+			</element>
+			<element id="PLACE">
+				<sem class="mPLACENAME"/>
+				<grammar tag="N+Proper+Sg+Ill"/>
 			</element>
 		</answer>
 	</q>
