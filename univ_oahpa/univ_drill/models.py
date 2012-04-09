@@ -225,6 +225,8 @@ class Log(models.Model):
 	example = models.CharField(max_length=200,null=True)
 	feedback = models.CharField(max_length=200,null=True)
 	comment = models.CharField(max_length=200)
+	messageid = models.CharField(max_length=100,null=True)
+	lang = models.CharField(max_length=3)
 
 	def outputEntry(self, printattrs=False, delimiter=False):
 		""" Renders log information in a one-line string.
