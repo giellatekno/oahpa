@@ -385,7 +385,7 @@
     <answer> 
       <text>Son MAINV P-DEM OBJ</text>
       <element game='morfa' id="P-DEM" task="yes">
-	<grammar tag="Pron+Dem+Sg+Acc"/>
+	<grammar tag="Pron+Dem+Sg+Acc+Attr"/>
 	  </element>
     </answer>
   </q>
@@ -409,7 +409,7 @@
     <answer> 
       <text>Son MAINV P-DEM OBJ VERB</text>
       <element game='morfa' id="P-DEM" task="yes">
-	<grammar tag="Pron+Dem+Pl+Acc"/>
+	<grammar tag="Pron+Dem+Pl+Acc+Attr"/>
 	  </element>
 		<element id="OBJ">
 		<grammar tag="N+Pl+Acc"/>
@@ -437,7 +437,7 @@
     <answer> 
       <text>Son MAINV P-DEM ILL</text>
       <element game='morfa' id="P-DEM" task="yes">
-	<grammar tag="Pron+Dem+Sg+Gen"/>
+	<grammar tag="Pron+Dem+Sg+Ill+Attr"/>
 	  </element>
     </answer>
   </q>
@@ -457,7 +457,7 @@
     <answer> 
       <text>Son MAINV P-DEM ILL</text>
       <element game='morfa' id="P-DEM" task="yes">
-	<grammar tag="Pron+Dem+Pl+Ill"/>
+	<grammar tag="Pron+Dem+Pl+Ill+Attr"/>
 	  </element>
  		<element id="ILL">
 		<id>girji</id>
@@ -473,7 +473,7 @@
     <answer> 
       <text>Mun vuolggán P-DEM OBJ</text>
       <element game='morfa' id="P-DEM" task="yes">
-	<grammar tag="Pron+Dem+Sg+Com"/>
+	<grammar tag="Pron+Dem+Sg+Com+Attr"/>
 	  </element>
  		<element id="OBJ">
 		<sem class="mPRIVVEHICLE"/>
@@ -489,7 +489,7 @@
     <answer> 
       <text>Mii vuolgit P-DEM OBJ</text>
       <element game='morfa' id="P-DEM" task="yes">
-	<grammar tag="Pron+Dem+Pl+Com"/>
+	<grammar tag="Pron+Dem+Pl+Com+Attr"/>
 	  </element>
  		<element id="OBJ">
 		<sem class="mPRIVVEHICLE"/>
@@ -505,11 +505,35 @@
     <answer> 
       <text>Mii vuolgit P-DEM guvttiin OBJ</text>
       <element game='morfa' id="P-DEM" task="yes">
-	<grammar tag="Pron+Dem+Sg+Com"/>
+	<grammar tag="Pron+Dem+Sg+Com+Attr"/>
 	  </element>
  		<element id="OBJ">
 		<sem class="mPRIVVEHICLE"/>
 		<grammar tag="N+Sg+Com"/>
+	  </element>
+    </answer>
+  </q>
+  <q id="pdemsgcom3">
+    <qtype>P-DEM</qtype>
+    <question>
+      <text>Bivat go</text>
+    </question>
+    <answer> 
+      <text>Gal mun bivan P-DEM ullobáiddiin</text>
+      <element game='morfa' id="P-DEM" task="yes">
+	<grammar tag="Pron+Dem+Sg+Com+Attr"/>
+	  </element>
+    </answer>
+  </q>
+  <q id="pdemplcom2">
+    <qtype>P-DEM</qtype>
+    <question>
+      <text>Bivat go</text>
+    </question>
+    <answer> 
+      <text>Gal mun bivan P-DEM gistáiguin</text>
+      <element game='morfa' id="P-DEM" task="yes">
+	<grammar tag="Pron+Dem+Pl+Com+Attr"/>
 	  </element>
     </answer>
   </q>
@@ -525,7 +549,7 @@
     <answer> 
       <text>Son áigu vuovdit P-DEM NUM stuolu</text>
       <element game='morfa' id="P-DEM" task="yes">
-	<grammar tag="Pron+Dem+Sg+Acc"/>
+	<grammar tag="Pron+Dem+Sg+Acc+Attr"/>
 	  </element>
       <element id="NUM">
 		<sem class="mCARD_SMALL"/>
@@ -541,7 +565,7 @@
     <answer> 
       <text>Gávdnen daid P-DEM lávkkas</text>
       <element game='morfa' id="P-DEM" task="yes">
-	<grammar tag="Pron+Dem+Sg+Gen"/>
+	<grammar tag="Pron+Dem+Sg+Loc+Attr"/>
 	  </element>
     </answer>
   </q>
@@ -553,7 +577,7 @@
     <answer> 
       <text>Bidjen daid P-DEM bursii</text>
       <element game='morfa' id="P-DEM" task="yes">
-	<grammar tag="Pron+Dem+Sg+Gen"/>
+	<grammar tag="Pron+Dem+Sg+Ill+Attr"/>
 	  </element>
     </answer>
   </q>
@@ -1273,7 +1297,7 @@
 			<text>Gii riŋgii dutnje</text>
 		</question>
 		<answer>
-			<text>Riŋgii olmmoš P-REL ledje máŋga ITEM</text>
+			<text>Riŋgii áddjá P-REL ledje máŋga ITEM</text>
 			<element game="morfa" id="P-REL" task="yes">
 				<grammar tag="Pron+Rel+Sg+Loc"/>
 				<id>gii</id>
@@ -1290,7 +1314,7 @@
 			<text>Gean don deivet ikte</text>
 		</question>
 		<answer>
-			<text>Deiven olbmuid P-REL mánát leamaš mu oahppit</text>
+			<text>Deiven nissoniid P-REL mánát leamaš mu oahppit</text>
 			<element game="morfa" id="P-REL" task="yes">
 				<grammar tag="Pron+Rel+Pl+Gen"/>
 				<id>geat</id>
@@ -1303,7 +1327,7 @@
 			<text>Gean don deivet ikte</text>
 		</question>
 		<answer>
-			<text>Deiven olbmo P-REL mánát leamaš mu oahppit</text>
+			<text>Deiven dievddu P-REL mánát leamaš mu oahppit</text>
 			<element game="morfa" id="P-REL" task="yes">
 				<grammar tag="Pron+Rel+Sg+Gen"/>
 				<id>gii</id>
@@ -1316,7 +1340,7 @@
 			<text>Gean don deivet ikte</text>
 		</question>
 		<answer>
-			<text>Deiven olbmo P-REL in liiko</text>
+			<text>Deiven dievddu P-REL in liiko</text>
 			<element game="morfa" id="P-REL" task="yes">
 				<grammar tag="Pron+Rel+Sg+Ill"/>
 				<id>gii</id>
@@ -1620,7 +1644,7 @@
 			<text>Gii riŋgii</text>
 		</question>
 		<answer>
-			<text>Bárdni P-REL luhtte mun fitnen ikte</text>
+			<text>Dievdu P-REL luhtte mun fitnen ikte</text>
 			<element game="morfa" id="P-REL" task="yes">
 				<grammar tag="Pron+Rel+Sg+Gen"/>
 				<id>gii</id>
@@ -1710,7 +1734,7 @@
 			<text>Geat duot olbmot leat</text>
 		</question>
 		<answer>
-			<text>Duot leat mu ustibat P-REL áiggun mannat PLACE</text>
+			<text>Duot leat ustibat P-REL áiggun mannat PLACE</text>
 			<element game="morfa" id="P-REL" task="yes">
 				<grammar tag="Pron+Rel+Pl+Com"/>
 				<id>geat</id>
@@ -1718,6 +1742,31 @@
 			<element id="PLACE">
 				<sem class="mPLACENAME"/>
 				<grammar tag="N+Proper+Sg+Ill"/>
+			</element>
+		</answer>
+		<answer>
+			<text>Duot leat mu ustibat P-REL leat PLACE eret</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Nom"/>
+				<id>geat</id>
+			</element>
+			<element id="PLACE">
+				<sem class="mPLACENAME"/>
+				<grammar tag="N+Proper+Sg+Loc"/>
+			</element>
+		</answer>
+		<answer>
+			<text>Duot leat mu ustibat P-REL luhtte mun ledjen luomus</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Gen"/>
+				<id>geat</id>
+			</element>
+		</answer>
+		<answer>
+			<text>Duot leat mu ustibat P-REL ásodat mun áiggun láigohit</text>
+			<element game="morfa" id="P-REL" task="yes">
+				<grammar tag="Pron+Rel+Pl+Gen"/>
+				<id>geat</id>
 			</element>
 		</answer>
 	</q>
