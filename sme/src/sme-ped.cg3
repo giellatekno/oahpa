@@ -5349,13 +5349,14 @@ LIST V_PO = 1_PrsSg1_Dem_SgGen_Po ;
 LIST V_NUM_ACC = 1_PrtSg1_Num_Acc ;
 
 LIST NLOC = (N Loc) (Prop Loc) ;
-LIST V_HAB = 1_Loc_PrsSg3_Nom ;
+LIST V_HAB = 1_Loc_PrsSg3_Nom 2_Hab_PrsSg3_Num_Gen 1_Hab_PrsSg3_Num_Gen ;
 
 LIST NOUNLEMMA = (".*"r N) ;
 LIST ADJLEMMA = (".*"r A) ;
 LIST VERBLEMMA = (".*"r V) ;
 LIST PRONLEMMA = (".*"r Pron) ;
 LIST POLEMMA = (".*"r Po) ;
+LIST NUMLEMMA = (".*"r Num) ;
 
 
 SELECT $$NOUNLEMMA (0 N LINK *-1 VASTAS LINK 0 $$NOUNLEMMA) ;
@@ -5373,12 +5374,13 @@ REMOVE CGErr + $$NOUNLEMMA (0 $$NOUNLEMMA + NOUN-NOT-CG-ERRORS) ;
 
 
 MAP (&sem-same-noun) TARGET $$NOUNLEMMA (0 VASTAS LINK NOT *1 $$NOUNLEMMA) ;
+MAP (&sem-same-num) TARGET $$NUMLEMMA (0 VASTAS LINK NOT *1 $$NUMLEMMA) ;
 MAP (&sem-same-adj) TARGET $$ADJLEMMA (0 VASTAS LINK NOT *1 $$ADJLEMMA) ;
 MAP (&sem-neg-verb) TARGET ("ii") (0 VASTAS LINK NOT *1 ("ii")) ;
 MAP (&sem-same-verb) TARGET $$VERBLEMMA (0 VASTAS LINK NOT *1 $$VERBLEMMA) ;
 MAP (&sem-same-pron) TARGET $$PRONLEMMA (0 VASTAS LINK NOT *1 $$PRONLEMMA) ;
 MAP (&sem-same-po) TARGET $$POLEMMA (0 VASTAS LINK NOT *1 $$POLEMMA) ;
-MAP (&grm-Hab-Nom) TARGET (N Acc)(NOT 0 Nom LINK *-1 COPULAS LINK *-1 Loc LINK *-1 V_HAB) ;
+MAP (&grm-Hab-Nom) TARGET (N Acc)(NOT 0 Nom LINK *-1 COPULAS BARRIER Num LINK *-1 Loc LINK *-1 V_HAB) ;
 MAP (&grm-missing-Loc) TARGET V_HAB (NOT *1 Loc) ; 
 
 LIST Der1 = Der/h Der/d ;
@@ -5469,11 +5471,11 @@ MAP (&grm-falAdv) TARGET ("fal" Adv) IF (NEGATE -1 WORD) ;
 REMOVE Interj ;
 
 # Interj can only be initial or final:
-MAP:1 (&grm-notInterj) TARGET Interj IF (-1 WORD)(NEGATE *1 EOS OR QDL BARRIER WORD);
+MAP:1 (&grm-notInterj) TARGET Interj IF (-1 WORD LINK NOT 0 QDL)(NEGATE *1 EOS OR QDL BARRIER WORD);
 MAP:2 (&grm-notInterj) TARGET Interj IF (NEGATE *-1 QDL BARRIER WORD)(1 WORD) ;
 
 SELECT ("viessu" N)(NOT 0 QDL) ; 
-#REMOVE Px ; Moved to the beginning.
+REMOVE Px ;  
 REMOVE Foc/ba (0 (V Du3)) ;
 
 #LIST SCARFS = guhkki oanehaš ;
@@ -5664,16 +5666,16 @@ SELECT Attr (NEGATE 0C Prop LINK NOT 1 Prop)(*1 N BARRIER NOT-Attr-CC-Adv OR QDL
     ## stuorra ja hui boares viessu
 SELECT Attr (NEGATE 0C Prop LINK NOT 1 Prop)(*1 N BARRIER NOT-Attr-CC-Adv OR QDL) ; # no there should be less ambiguity.
     # once again
-SELECT Num (*1 N BARRIER NOT-Attr-CC-Adv LINK *-1 QDL) ;
+SELECT Num (*1 N BARRIER NOT-Attr-CC-Adv)(*-1 QDL) ;
     ## guokte stuorra ja hui boares viesu
 SELECT ACCGEN (*-1 QDL)(NOT 0 Px)(NEGATE 0C Prop LINK NOT 1 Prop)(NEGATE 0 ACR OR ABBR OR Prop LINK 1 ACR OR ABBR)(*1 N BARRIER NOT-Attr-CC-Adv-Num OR QDL LINK NOT 0 Prop)(NOT 0 VERB)(NEGATE 1 CC LINK *1 N BARRIER NPNHA LINK NOT *1 N BARRIER NPNHA) ;
     ## eatni guokte stuorra ja hui boares viesu
-SELECT (Refl Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ;
+SELECT (Refl Gen) (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen)(*-1 QDL) ;
     ## mu iežan eatni guokte stuorra ja hui boares viesu
-SELECT (Pers Gen) (NOT 0 Dem)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 1 PRE-APP OR EOS LINK *-1 QDL) ;
+SELECT (Pers Gen) (NOT 0 Dem)(*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK NOT 1 PRE-APP OR EOS)(*-1 QDL) ;
     ## mu iežan eatni guokte stuorra ja hui boares viesu
 
-#SELECT Dem (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen LINK *-1 QDL) ; 
+#SELECT Dem (*1 N BARRIER NOT-Attr-CC-Adv-Num-Gen)(*-1 QDL) ; 
     ## dat mu iežan eatni guokte stuorra ja hui boares viesu
 
 SELECT N (-1 Attr OR Dem OR Gen OR Num)(NOT 0 VFIN OR QDL) ;
@@ -5829,27 +5831,50 @@ MAP (&grm-non-agreement-Dem) TARGET (Dem Pl Loc) IF (*-1 VASTAS)(*1 N BARRIER NO
 # daiguin viesuiguin
 
 LIST ARABIC = ("([1-9])*"r) ;
-SET HALFAGR =  ("nubbi") OR Num - ARABIC ;
+SET NUMCARD = Num - ARABIC ;
 #LIST HALFAGR =  ("nubbi") ("\\D.*"r) + (Num) ;
 
 LIST BUORRE = ("buorre" A) ;
 
-SELECT Nom (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Nom);
-SELECT Gen (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Loc OR (Sg Ill) OR (Pl Com));
-#SELECT Acc (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Acc);
-SELECT (Pl Ill) (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Ill));
-SELECT Ess (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Ess);
-SELECT Com (0 HALFAGR LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Com);
+
+SELECT (Num Pl Nom) (0 NUMCARD)(*1 (N Pl Nom) BARRIER NOT-Attr-CC-Adv OR QDL);
+SELECT (Num Pl Acc) (0 NUMCARD)(*1 (N Pl Acc) BARRIER NOT-Attr-CC-Adv OR QDL);
+SELECT (Num Pl Gen) (0 NUMCARD)(*1 (N Pl Gen) OR (N Pl Com) OR (N Pl Ill) BARRIER NOT-Attr-CC-Adv OR QDL);
+SELECT (Num Pl Ill) (0 NUMCARD)(*1 (N Pl Ill) BARRIER NOT-Attr-CC-Adv OR QDL);
+SELECT (Num Pl Com) (0 NUMCARD)(*1 (N Pl Com) BARRIER NOT-Attr-CC-Adv OR QDL);
+SELECT (Num Sg Gen) (0 NUMCARD)(*1 (N Sg Loc) OR (N Sg Ill) BARRIER NOT-Attr-CC-Adv OR QDL);
+SELECT (Num Sg Com) (0 NUMCARD)(*1 (N Sg Com) BARRIER NOT-Attr-CC-Adv OR QDL);
+SELECT (Num Ess) (0 NUMCARD)(*1 (N Ess) BARRIER NOT-Attr-CC-Adv OR QDL);
+
+#SELECT Nom (0 NUMCARD LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Gen);
+#SELECT Gen (0 NUMCARD LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Loc OR (Sg Ill) OR (Pl Com));
+##SELECT Acc (0 NUMCARD LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Acc);
+#SELECT (Pl Ill) (0 NUMCARD LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Ill));
+#SELECT Ess (0 NUMCARD LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Ess);
+#SELECT Com (0 NUMCARD LINK *-1 QDL)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Com);
+
+MAP (&grm-non-agreement-Num) TARGET NUMCARD (*-1 QDL)(0 (Num Pl Nom) LINK *1 N BARRIER NOT-Attr-CC-Adv LINK NOT 0 (N Pl Nom));
+MAP (&grm-non-agreement-Num) TARGET NUMCARD (*-1 QDL)(0 (Num Pl Acc) OR  (Num Pl Gen) LINK *1 N BARRIER NOT-Attr-CC-Adv LINK NOT 0 (N Pl Acc) OR (N Pl Gen) OR (N Pl Ill) OR (N Pl Com));
+MAP (&grm-non-agreement-Num) TARGET NUMCARD (*-1 QDL)(0 (Num Pl Ill) LINK *1 N BARRIER NOT-Attr-CC-Adv LINK NOT 0 (N Pl Ill));
+MAP (&grm-non-agreement-Num) TARGET NUMCARD (*-1 QDL)(0 (Num Pl Loc) LINK *1 N BARRIER NOT-Attr-CC-Adv LINK NOT 0 (N Pl Loc) OR (N Sg Com));
+MAP (&grm-non-agreement-Num) TARGET NUMCARD (*-1 QDL)(0 (Num Pl Com) LINK *1 N BARRIER NOT-Attr-CC-Adv LINK NOT 0 (N Pl Com));
+MAP (&grm-non-agreement-Num) TARGET NUMCARD (*-1 QDL)(0 (Num Ess) LINK *1 N BARRIER NOT-Attr-CC-Adv LINK NOT 0 (N Ess));
+MAP (&grm-non-agreement-Num) TARGET NUMCARD (*-1 QDL)(0 (Num Sg Nom) OR (Num Sg Acc) LINK NOT 0 OKTA LINK *1 N BARRIER NOT-Attr-CC-Adv LINK NOT 0 (N Sg Gen) OR (N Sg Acc));
+MAP (&grm-non-agreement-Num) TARGET NUMCARD (*-1 QDL)(0 (Num Sg Gen) LINK NOT 0 (Num Sg Nom) OR (Num Sg Acc) LINK *1 N BARRIER NOT-Attr-CC-Adv LINK NOT 0 (N Sg Gen) OR (N Sg Ill) OR (N Sg Loc));
+MAP (&grm-non-agreement-Num) TARGET NUMCARD (*-1 QDL)(0 (Num Sg Com) LINK *1 N BARRIER NOT-Attr-CC-Adv LINK NOT 0 (N Sg Com) OR (N Pl Loc));
+MAP (&grm-non-agreement-Num) TARGET OKTA (*-1 QDL)(0 (Num Sg Nom) LINK *1 N BARRIER NOT-Attr-CC-Adv LINK NOT 0 (N Sg Nom));
+MAP (&grm-non-agreement-Num) TARGET OKTA (*-1 QDL)(0 (Num Sg Acc) OR (Num Sg Acc) LINK *1 N BARRIER NOT-Attr-CC-Adv LINK NOT 0 (N Sg Acc) OR (N Sg Gen));
 
 
-MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Nom))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Nom));
-MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Pl Nom))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Nom));
-MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Acc))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0C (Sg Acc));
-MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Pl Acc))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Acc));
-MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0C (Sg Loc) OR (Sg Ill));
-MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 Ess)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Ess);
-MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Sg Com))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Com));
-MAP (&grm-non-agreement-Num) TARGET HALFAGR IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Com));
+#MAP (&grm-non-agreement-Num) TARGET NUMCARD IF (*-1 QDL)(NOT 0 (Sg Nom))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Nom));
+#MAP (&grm-non-agreement-Num) TARGET NUMCARD IF (*-1 QDL)(NOT 0 (Pl Nom))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Nom));
+#MAP (&grm-non-agreement-Num) TARGET NUMCARD IF (*-1 QDL)(NOT 0 (Sg Acc))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0C (Sg Acc));
+#MAP (&grm-non-agreement-Num) TARGET NUMCARD IF (*-1 QDL)(NOT 0 (Pl Acc))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Acc));
+#MAP (&grm-non-agreement-Num) TARGET NUMCARD IF (*-1 QDL)(NOT 0 (Sg Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0C (Sg Loc) OR (Sg Ill));
+#MAP (&grm-non-agreement-Num) TARGET NUMCARD IF (*-1 QDL)(NOT 0 Ess)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 Ess);
+#MAP (&grm-non-agreement-Num) TARGET NUMCARD IF (*-1 QDL)(NOT 0 (Sg Com))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Com));
+#MAP (&grm-non-agreement-Num) TARGET NUMCARD IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl Gen))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Com));
+#MAP (&grm-non-agreement-Num) TARGET NUMCARD IF (*-1 QDL)(NOT 0 (Pl Ill))(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Ill));
 
 MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Sg Nom) OR Comp OR Superl)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Sg Nom));
 MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Nom) OR Comp OR Superl)(*1 N BARRIER NOT-Attr-CC-Adv LINK 0 (Pl Nom));
@@ -5967,12 +5992,13 @@ MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK
 MAP (&grm-incorr-pers-nr) TARGET (V Sg1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 MAKKAR-BARGU LINK NEGATE **-1 VFIN LINK  0 Sg2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Sg2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Sg1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL BARRIER S-BOUNDARY OR Nom OR VFIN LINK *-1 VFIN LINK NOT 0 Sg3 LINK NOT *-1 ("galle"))(NEGATE 0 ("leat") LINK *-1 QDL LINK *-1 go LINK -1 ("leat") LINK -1 BOS)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 DOYOUHAVE) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (0 COPULAS LINK *-1 Loc BARRIER NOT-ADV-PCLE LINK *-1 QDL BARRIER S-BOUNDARY)(1 NUMERALS LINK *1 N BARRIER NOT-Attr-CC-Adv)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 DOYOUHAVE) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA LINK *-1 VFIN LINK NOT 0 Du2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Du2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Du1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Du3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Du3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA LINK *-1 VFIN LINK NOT 0 Pl2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 MAP (&grm-incorr-pers-nr) TARGET (V Pl2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Pl1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Pl3)(NEGATE *-1 (hálbiduvvon_galvvut) OR DOYOUHAVE)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Pl3)(NEGATE 0 COPULAS LINK *-1 Loc LINK *-1 QDL)(NEGATE *-1 (hálbiduvvon_galvvut) OR DOYOUHAVE)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 
 #MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 V-3)(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 #MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 V-3)(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
