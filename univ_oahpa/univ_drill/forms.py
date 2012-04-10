@@ -1199,23 +1199,22 @@ class MorfaQuestion(OahpaQuestion):
 					# TODO: conneg only in Prs
 			
 			# Odne 'today', ikte 'yesterday'
-			if tag.string.find("Der/Pass") > -1:
+			if (tag.string.find("+Der/Pass") > -1) and (tag.string.find("+V") > -1):
 				# Odne mun ___
 				# Ikte mun ___
 				# Ikte dat (okta) ___ 
 
 				# Choose one if not set, if set then game is in progress, and
 				# do not choose another
-				if not self.pron:
-					pers = tag.personnumber
-					time = TENSE_PRESENTATION.get(tag.tense, False) 
-					pronoun = PASSIVE_PRONOUNS_LIST[pers]
+				pers = tag.personnumber
+				time = TENSE_PRESENTATION.get(tag.tense, False) 
+				pronoun = PASSIVE_PRONOUNS_LIST[pers]
 
-					number = ''
-					if pers in ['Sg3', 'Pl3']:
-						number = '(%s)' % DEMONSTRATIVE_PRESENTATION.get(tag.personnumber, False)
+				number = ''
+				if pers in ['Sg3', 'Pl3']:
+					number = '(%s)' % DEMONSTRATIVE_PRESENTATION.get(tag.personnumber, False)
 
-					self.pron = ' '.join([time, pronoun, number])
+				self.pron = ' '.join([time, pronoun, number])
 
 			# All pres? 
 			if tag.string.find("Der/AV") > -1:
