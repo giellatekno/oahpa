@@ -66,17 +66,18 @@ AGREEMENT = {
     'Du': ['Du3'],
     'Pl': ['Pl3'],
 
-    'Sg1': ['Sg1'],
-    'Sg2': ['Sg2'],
-    'Sg3': ['Sg3'],
-    
-    'Du1': ['Du1'],
-    'Du2': ['Du2'],
-    'Du3': ['Du3'],
+    'Sg1': ['PxSg1', 'Sg1'],
+    'Sg2': ['PxSg2', 'Sg2'],
+    'Sg3': ['PxSg3', 'Sg3'],
+            
+    'Du1': ['PxDu1', 'Du1'],
+    'Du2': ['PxDu2', 'Du2'],
+    'Du3': ['PxDu3', 'Du3'],
+                     
+    'Pl1': ['PxPl1', 'Pl1'],
+    'Pl2': ['PxPl2', 'Pl2'],
+    'Pl3': ['PxPl3', 'Pl3'],
 
-    'Pl1': ['Pl1'],
-    'Pl2': ['Pl2'],
-    'Pl3': ['Pl3'],
     '': '',
 }
 
@@ -426,21 +427,23 @@ class QObj(GrammarDefaults):
     
     def checkSyntax(self, elements):
         elements_d = dict(elements)
+        agr = False
 
         if elements_d.has_key('SUBJ') and elements_d.has_key('MAINV'):
-            agr = 'SUBJ'
             if elements_d['MAINV']['meta']:
-                elements_d['MAINV']['meta']['agreement'] = agr
-        else:
-            agr = False
+                elements_d['MAINV']['meta']['agreement'] = 'SUBJ'
+
+        if elements_d.has_key('MAINV') and elements_d.has_key('RPRON'):
+            if elements_d['RPRON']['meta']:
+                elements_d['RPRON']['meta']['agreement'] = 'MAINV'
         
         # Check for Question-Answer person agreement (see QAPN)
         if elements_d.has_key('SUBJ'):
             try:
-            	copy_key = elements_d['SUBJ'].has_key('copy')
+                copy_key = elements_d['SUBJ'].has_key('copy')
             except AttributeError:
-            	print >> sys.stderr, '     *** Missing SUBJ element in question %s.' % self.qid
-            	copy_key = False
+                print >> sys.stderr, '     *** Missing SUBJ element in question %s.' % self.qid
+                copy_key = False
             if copy_key:
                 if elements_d['SUBJ']['copy']:
                     SUBJ = elements_d.get('SUBJ')
@@ -474,53 +477,55 @@ class QObj(GrammarDefaults):
     
     def selectItems(self, elements):
         elements_d = dict(elements)
-        agreement = False
+        agreements = list()
         
         # Find agreement
         for elem_id, elem_data in elements_d.items():
             if elem_data:
                 if elem_data.has_key('meta'):
                     if elem_data['meta'].has_key('agreement'):
-                        agreement = (elem_data['meta']['agreement'], elem_id)  # SUBJ, MAINV
+                        agreement = (elem_data['meta']['agreement'], elem_id)  # SUBJ, MAINV, RPRON?
+                        agreements.append(agreement)
         
         # If there's agreement, strip non-agreeing tags.
 
-        if agreement:
-            head_tag = ''
+        if len(agreements) > 0:
+            for agreement in agreements:
+                head_tag = ''
 
-            agreement_head = agreement[0]
-            agreeing_item = agreement[1]
-            try:
-                head = elements_d[agreement_head]
-            except KeyError:
-                # Likely cause of exception here is that the question
-                # had a SUBJ element, but the answer does not contain
-                # this element.
-                head = False
-            agree = elements_d[agreeing_item]
-            
-            if head:
-                if head.has_key('query'):
-                    if head['query'].has_key('tags'):
-                        head['query']['tags'] = head_tag = choice(head['query']['tags'])
-                        head_agr = ''.join([a for a in head_tag.split('+') if a in AGREEMENT.keys()])
+                agreement_head = agreement[0]
+                agreeing_item = agreement[1]
+                try:
+                    head = elements_d[agreement_head]
+                except KeyError:
+                    # Likely cause of exception here is that the question
+                    # had a SUBJ element, but the answer does not contain
+                    # this element.
+                    head = False
+                agree = elements_d[agreeing_item]
                 
-                # TODO: if a question is part of grammar_defaults but ends
-                # up without tags, an error happens here. This is something
-                # that should be added to error logging.
+                if head:
+                    if head.has_key('query'):
+                        if head['query'].has_key('tags'):
+                            head['query']['tags'] = head_tag = choice(head['query']['tags'])
+                            head_agr = ''.join([a for a in head_tag.split('+') if a in AGREEMENT.keys()])
+                    
+                    # TODO: if a question is part of grammar_defaults but ends
+                    # up without tags, an error happens here. This is something
+                    # that should be added to error logging.
 
-                if agree.has_key('query'):
-                    if agree['query'].has_key('tags'):
-                        agr_match = AGREEMENT[head_agr]
-                        allowed = []
-                        for a in agree['query']['tags']:
-                            for b in agr_match:
-                                if b in a:
-                                    allowed.append(a)
-                        agree['query']['tags'] = allowed
+                    if agree.has_key('query'):
+                        if agree['query'].has_key('tags'):
+                            agr_match = AGREEMENT[head_agr]
+                            allowed = []
+                            for a in agree['query']['tags']:
+                                for b in agr_match:
+                                    if b in a:
+                                        allowed.append(a)
+                            agree['query']['tags'] = allowed
 
-                elements_d[agreement_head] = head
-                elements_d[agreeing_item] = agree
+                    elements_d[agreement_head] = head
+                    elements_d[agreeing_item] = agree
         
         # Choose random tag
         for elem_id, elem_data in elements_d.items():
@@ -696,6 +701,9 @@ class FileLog(object):
         if fname:
             self.fname = fname
             self.logfile = open(fname, 'w')
+        else:
+            self.fname = "stdout"
+            self.logfile = False
 
     def log(self, string, pipe=False):
 
@@ -715,22 +723,39 @@ class FileLog(object):
         if not pipe:
             pipe = sys.stderr
         print >> pipe, string.rstrip('\n')
-        
-        return
 
 
 class Command(BaseCommand):
-    args = '--grammarfile FILE --questionfile FILE --qid QID'
+    args = '--grammarfile FILE --questionfile FILE'
     help = """
-    Runs through a question XML file and produces test sentences.
-    Errors are printed to stderr, so that the rest can be filtered out.
+    Runs through a question XML file and produces test sentences. In order for
+    this command to work, the database must be installed with all the words of
+    the lexicon. The goal of this test function is just to both check whether
+    grammar tags and semantic sets exist, but also to test whether the existing
+    database will be able to generate these questions for the user.
+    
+    Errors are printed to stderr, so that the rest can be filtered out. The two
+    obligatory arguments are --grammarfile and --questionfile just as with
+    installing questions.
 
-    Example command:
-        ./manage.py testquestions --grammarfile grammar_defaults.xml \\
-                                  --questionfile noun_questions.xml \\
-                                  --logfile accusative_errors.log \\
-                                  --iterations 3 \\
-                                  --qid acc#
+        Run everything:
+            ./manage.py testquestions --grammarfile grammar_defaults.xml \\
+                                      --questionfile noun_questions.xml
+
+    Other additional options are possible to check only one question, or a set
+    of questions matching with a simple wildcard filter, wildcard marked with
+    #.
+    
+        Example command:
+            ./manage.py testquestions --grammarfile grammar_defaults.xml \\
+                                      --questionfile noun_questions.xml \\
+                                      --logfile accusative_errors.log \\
+                                      --iterations 3 \\
+                                      --qid acc#
+
+    If you specify a log file, output will be duplicated in this file and in
+    STDOUT, if not, it is also possible to just pipe the output to a file as
+    normal.
     """
     option_list = BaseCommand.option_list + (
         make_option("-g", "--grammarfile", dest="grammarfile", default=False,
@@ -738,13 +763,15 @@ class Command(BaseCommand):
         make_option("-q", "--questionfile", dest="questionfile", default=False,
                       help="XML-file that contains questions"),
         make_option("--qid", dest="qid", default=False,
-                      help="Specify a list of IDs to test with commas and no spaces, or specify a partial part of an id to filter questions by, e.g. ill1,ill2  OR  ill#; note the wildcard symbol."),
+                      help=("Specify a list of IDs to test with commas and no"
+                      "spaces, or specify a partial part of an id to filter"
+                      "questions by, e.g. ill1,ill2  OR  ill#; note the wildcard"
+                      "symbol.")),
         
         make_option("--iterations", dest="itercount", default=5,
                         help="The count of iterations for each question"),
         make_option("--logfile", dest="logfile", default=False,
                         help="Store all output to a file in addition to stdout."),
-        # TODO: question iterations count
     )
 
     def handle(self, *args, **options):
@@ -763,10 +790,10 @@ class Command(BaseCommand):
             log = FileLog(None)
 
         if not qpath:
-            print 'Question file required.'
+            print >> sys.stderr, 'Question file required.'
 
         if not gpath:
-            print 'Grammar file required.'
+            print >> sys.stderr, 'Grammar file required.'
 
         if not qpath and not gpath:
             sys.exit(2)
@@ -812,7 +839,7 @@ class Command(BaseCommand):
 
                 
                 for answer in q.answer_set:
-                    try:        
+                    try:
                         qword = answer.task.values()[0]['selected'].getBaseform()
                         qword = qword.fullform
                     except Form.DoesNotExist:
@@ -826,10 +853,10 @@ class Command(BaseCommand):
                     log.log('    Q: ' + u'%s (%s)' % (q.question_text, qword), _OUT)
                     log.log('    A: ' + u'%s' % answer.answer_text_blank, _OUT)
                     
-                    try:        
+                    try:
                         aword = answer.task.values()[0]['selected']
                         aword = aword.fullform
-                    except:        
+                    except:
                         aword = 'TASK'
                     finally:
                         error = True
@@ -845,5 +872,10 @@ class Command(BaseCommand):
                             log.log('    *** Error in %s' % k, _ERR)
                             indent      = '        '
                             log.log(''.join([indent + a + '\n' for a in v]), _ERR)
+
                 q = QObj(q_node, grammar_defaults=defaults)
+
+
+
+# vim: set ts=4 sw=4 tw=0 syntax=python :
 
