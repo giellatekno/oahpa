@@ -601,8 +601,6 @@
       </element>
     </answer>
   </q> 
-  
-  
  <q level="1" lemmacount="3" id="1_PrsSg1_AAttr_Acc">
     <qtype>PRS</qtype>
    <question>
@@ -793,7 +791,7 @@
       </element>
       <element id="NUMBER" task="yes">
         <grammar tag="Num+Sg+Nom"/>
-        <sem class="mCARD_SMALL"/>
+        <sem class="mCARD_VERYSMALL"/>
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
@@ -808,11 +806,340 @@
       </element>
       <element id="NUMBER" task="yes">
         <grammar tag="Num+Sg+Nom"/>
-        <sem class="mCARD_SMALL"/>
+        <sem class="mCARD_VERYSMALL"/>
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Sg+Nom"/>
         <id>guolli</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="3" lemmacount="3" id="1_PrsPl3_Num_Com">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Mo studeanttat vulget Guovdageidnui</text>
+    </question>
+    <answer> 
+      <text>Sii VERB NUMBER NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>vuodjit</id>
+      </element>
+      <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_VERYSMALL"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>biila</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="3" lemmacount="3" id="1_PrtSg1_Num_Com">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Geaiguin don hupmet čoahkkimis</text>
+    </question>
+    <answer> 
+      <text>Mun VERB NUMBER NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>hupmat</id>
+      </element>
+      <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_VERYSMALL"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>oahppi</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="4" id="1_Hab_PrsSg3_Num_Gen">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Leat go PERSON mánát</text>
+       <element id="PERSON" task="yes">
+        <grammar tag="N+Proper+Sg+Loc"/>
+        <sem class="mPERSNAME"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Juo, PRON VERB NUMBER NOUN</text>
+      <element id="PRON" task="yes">
+        <grammar tag="Pron+Pers+Sg3+Nom"/>
+        <id>son</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>leat</id>
+      </element>
+      <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_VERYSMALL"/>
+      </element>
+       <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>mánná</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="4" id="2_Hab_PrsSg3_Num_Gen">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Lea go PERSON beana</text>
+       <element id="PERSON" task="yes">
+        <grammar tag="N+Proper+Sg+Loc"/>
+        <sem class="mPERSNAME"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Juo, PRON VERB NUMBER NOUN</text>
+      <element id="PRON" task="yes">
+        <grammar tag="Pron+Pers+Sg3+Nom"/>
+        <id>son</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>leat</id>
+      </element>
+      <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_VERYSMALL"/>
+      </element>
+       <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>beana</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="3" id="2_PrtPl3_Num_Gen">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Geat ledje doppe</text>
+    </question>
+    <answer> 
+      <text>Doppe VERB NUMBER NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>leat</id>
+      </element>
+      <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_SMALL"/>
+      </element>
+       <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>olmmoš</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="3" id="3_PrsPl3_Num_Gen">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Leat go sullot dien vuonas</text>
+    </question>
+    <answer> 
+      <text>Vuonas VERB NUMBER NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>leat</id>
+      </element>
+      <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_SMALL"/>
+      </element>
+       <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>suolu</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="3" id="1_PrtSg3_Num_Acc">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Mo PERSON manai</text>
+       <element id="PERSON" task="yes">
+        <grammar tag="N+Proper+Sg+Loc"/>
+        <sem class="mPERSNAME"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Son VERB NUMBER NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>goddit</id>
+      </element>
+      <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_SMALL"/>
+      </element>
+       <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="FISH"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="4" id="2_PrtSg1_Num_Acc">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Maid don ostet</text>
+    </question>
+    <answer> 
+      <text>PRON VERB NUMBER NOUN</text>
+      <element id="PRON" task="yes">
+        <grammar tag="Pron+Pers+Sg1+Nom"/>
+        <id>mun</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>oastit</id>
+      </element>
+      <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_VERYSMALL"/>
+      </element>
+       <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="CLOTHING"/>
+      </element>
+    </answer>
+    <answer> 
+      <text>PRON VERB NUMBER NOUN</text>
+      <element id="PRON" task="yes">
+        <grammar tag="Pron+Pers+Sg1+Nom"/>
+        <id>mun</id>
+      </element>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>oastit</id>
+      </element>
+      <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_VERYSMALL"/>
+      </element>
+       <element id="NOUN" task="yes">
+        <grammar tag="N+Pl+Nom"/>
+        <sem class="CLOTHING_PL"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="3" id="1_PrsSg1_Num_Acc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Maid oainnát šiljus</text>
+    </question>
+    <answer> 
+      <text>Mun VERB NUMBER NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>oaidnit</id>
+      </element>
+      <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_VERYSMALL"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mPRIVVEHICLE"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="3" lemmacount="4" id="1_PrsSg1_Acc_Num_Ill">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Mo don dagat girjjiiguin</text>
+    </question>
+    <answer> 
+      <text>Mun VERB ITEM NUMBER NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>bidjat</id>
+      </element>
+       <element id="ITEM" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>girji</id>
+      </element>
+     <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_VERYSMALL"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>kássa</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="3" lemmacount="2" id="1_PrsSg3_Num_Loc">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Manne PERSON lea nu hoahppu</text>
+       <element id="PERSON" task="yes">
+        <grammar tag="N+Proper+Sg+Loc"/>
+        <sem class="mPERSNAME"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Son lea mielde NUMBER NOUN</text>
+     <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_SMALL"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>searvi</id>
+      </element>
+    </answer>
+    <answer> 
+      <text>Son lea veahkkin NUMBER NOUN</text>
+    <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_VERYSMALL"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Pl+Nom"/>
+        <id>heajat</id>
+      </element>
+    </answer>
+  </q> 
+  <q level="3" lemmacount="3" id="1_PrsSg3_Num_Ill">
+    <qtype>PRS</qtype>
+   <question>
+      <text>Manne PERSON lea nu hoahppu</text>
+       <element id="PERSON" task="yes">
+        <grammar tag="N+Proper+Sg+Loc"/>
+        <sem class="mPERSNAME"/>
+      </element>
+    </question>
+    <answer> 
+      <text>Son VERB NUMBER NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>galgat</id>
+      </element>
+    <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_VERYSMALL"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <id>feasta</id>
+      </element>
+    </answer>
+    <answer> 
+      <text>Son VERB NUMBER NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>galgat</id>
+      </element>
+    <element id="NUMBER" task="yes">
+        <grammar tag="Num+Sg+Nom"/>
+        <sem class="mCARD_VERYSMALL"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Pl+Nom"/>
+        <id>heajat</id>
       </element>
     </answer>
   </q> 
