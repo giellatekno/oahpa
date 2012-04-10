@@ -1,5 +1,193 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <q_tests>
+   <test name="1_PrsSg3_Num_Ill">
+      <q>Manne Ristiinnas lea nu hoahppu</q>
+    <ag>
+      <a>Son galgá golbma festii</a>
+      <l base="galgat" pos="V"/>
+      <l base="golbma" pos="Num"/>
+      <l base="feasta" pos="N"/>
+    </ag>
+    <ag>
+      <a>Son galgá golmma heajaide</a>
+      <a>Son galgá golmma heajaid</a>
+      <a>Son galgá golbma heajaide</a>
+      <l base="galgat" pos="V"/>
+      <l base="golbma" pos="Num"/>
+      <l base="heajat" pos="N"/>
+    </ag>
+    <ag>
+      <a>Son galgá golbma mállásii</a>
+      <l base="galgat" pos="V"/>
+      <l base="golbma" pos="Num"/>
+      <l base="mállásat" pos="N"/>
+    </ag>
+ </test>
+   <test name="1_PrsSg3_Num_Loc">
+      <q>Manne Ristiinnas lea nu hoahppu</q>
+    <ag>
+      <a>Son lea mielde golbma searvvis</a>
+      <l base="golbma" pos="Num"/>
+      <l base="searvi" pos="N"/>
+    </ag>
+    <ag>
+      <a>Son lea veahkkin goalmmát heajain</a>
+      <l base="golbma" pos="Num"/>
+      <l base="heajat" pos="N"/>
+    </ag>
+ </test>
+   <test name="2_PrtSg1_Num_Acc">
+      <q>Maid oainnát šiljus</q>
+    <ag>
+      <a>Mun oainnán njealji biilla</a>
+      <a>Mun oainnán njeallje biillaid</a>
+      <l base="oaidnit" pos="V"/>
+      <l base="njeallje" pos="Num"/>
+      <l base="biila" pos="N"/>
+    </ag>
+ </test>
+   <test name="2_PrtSg1_Num_Acc">
+      <q>Maid don ostet</q>
+    <ag>
+      <a>Mun osten njeallje báiddit</a>
+      <l base="mun" pos="Pron"/>
+      <l base="oastit" pos="V"/>
+      <l base="njeallje" pos="Num"/>
+      <l base="báidi" pos="N"/>
+    </ag>
+    <ag>
+      <a>Mun osten moatte báiddi</a>
+      <l base="mun" pos="Pron"/>
+      <l base="oastit" pos="V"/>
+      <l base="moadde" pos="Num"/>
+      <l base="báidi" pos="N"/>
+    </ag>
+    <ag>
+      <a>Mun osten moatti buvssaid</a>
+      <l base="mun" pos="Pron"/>
+      <l base="oastit" pos="V"/>
+      <l base="moadde" pos="Num"/>
+      <l base="buvssat" pos="N"/>
+    </ag>
+ </test>
+   <test name="1_PrtSg3_Num_Acc">
+      <q>Mo Lemehis manai</q>
+    <ag>
+      <a>Son gottii vihtta dápmohiid</a>
+      <l base="goddit" pos="V"/>
+      <l base="vihtta" pos="Num"/>
+      <l base="dápmot" pos="N"/>
+    </ag>
+    <ag>
+      <a>Son gottii ovcci dorskiid</a>
+      <l base="goddit" pos="V"/>
+      <l base="ovcci" pos="Num"/>
+      <l base="dorski" pos="N"/>
+    </ag>
+ </test>
+   <test name="3_PrsPl3_Num_Gen">
+      <q>Leat go sullot dien vuonas</q>
+    <ag>
+      <a>Vuonas leat vihtta suolu</a>
+      <l base="vihtta" pos="Num"/>
+      <l base="suolu" pos="N"/>
+      <l base="leat" pos="V"/>
+    </ag>
+ </test>
+   <test name="2_PrtPl3_Num_Gen">
+      <q>Geat ledje doppe</q>
+    <ag>
+      <a>Doppe ledje gávcci olbmot</a>
+      <l base="leat" pos="V"/>
+      <l base="gávcci" pos="Num"/>
+      <l base="olmmoš" pos="N"/>
+    </ag>
+ </test>
+   <test name="2_Hab_PrsSg3_Num_Gen">
+      <q>Leat go Elles beana</q>
+    <ag>
+      <a>Juo, sus leat máŋga beana</a>
+      <l base="son" pos="Pron"/>
+      <l base="leat" pos="V"/>
+      <l base="máŋga" pos="Num"/>
+      <l base="beana" pos="N"/>
+    </ag>
+    <ag>
+      <a>Juo, sus lea golbma beatnaga</a>
+      <l base="son" pos="Pron"/>
+      <l base="leat" pos="V"/>
+      <l base="golbma" pos="Num"/>
+      <l base="beana" pos="N"/>
+    </ag>
+ </test>
+   <test name="1_Hab_PrsSg3_Num_Gen">
+      <q>Leat go Elles mánát</q>
+    <ag>
+      <a>Juo, sus lea máŋga máná</a>
+      <l base="son" pos="Pron"/>
+      <l base="leat" pos="V"/>
+      <l base="máŋga" pos="Num"/>
+      <l base="mánná" pos="N"/>
+    </ag>
+    <ag>
+      <a>Juo, sus leat njeallje mánát</a>
+      <l base="son" pos="Pron"/>
+      <l base="leat" pos="V"/>
+      <l base="njeallje" pos="Num"/>
+      <l base="mánná" pos="N"/>
+    </ag>
+ </test>
+   <test name="1_PrtSg1_Num_Com">
+      <q>Geaiguin hupmet čoahkkimis</q>
+    <ag>
+      <a>Mun hupmen guokte ohppiiguin</a>
+      <l base="hupmat" pos="V"/>
+      <l base="guokte" pos="Num"/>
+      <l base="oahppi" pos="N"/>
+    </ag>
+    <ag>
+      <a>Mun hupmen moadde ohppiin</a>
+      <l base="hupmat" pos="V"/>
+      <l base="moadde" pos="Num"/>
+      <l base="oahppi" pos="N"/>
+    </ag>
+ </test>
+   <test name="1_PrsSg1_Acc_Num_Ill">
+      <q>Gosa bijat girjjiid</q>
+    <ag>
+      <a>Mun bijan girjjiid guokte kássii</a>
+      <a>Mun bijan girjjiid ovtta kássii</a>
+      <a>Mun bijan girjjiid guovtti kássas</a>
+      <l base="bidjat" pos="V"/>
+      <l base="guokte" pos="Num"/>
+      <l base="kássa" pos="N"/>
+    </ag>
+    <ag>
+      <a>Mun bijan girjjiid okta kássii</a>
+      <l base="bidjat" pos="V"/>
+      <l base="okta" pos="Num"/>
+      <l base="kássa" pos="N"/>
+    </ag>
+ </test>
+   <test name="1_PrsPl3_Num_Com">
+      <q>Mo studeanttat vulget Guovdageidnui</q>
+    <ag>
+      <a>Sii vudjet guokte biillain</a>
+      <a>Sii vudjet guovtti biillain</a>
+      <a>Sii vudjet guokte biilla</a>
+      <l base="vuodjit" pos="V"/>
+      <l base="guokte" pos="Num"/>
+      <l base="biila" pos="N"/>
+    </ag>
+     <ag>
+      <a>Sii vudjet okta biillain</a>
+      <a>Sii vudjet ovtta biillain</a>
+      <a>Sii vudjet ovtta biilla</a>
+      <l base="vuodjit" pos="V"/>
+      <l base="okta" pos="Num"/>
+      <l base="biila" pos="N"/>
+    </ag>
+  </test>
    <test name="1_PrsSg1_Inf_PlAcc">
       <q>Maid don áiggut bargat odne</q>
     <ag>
@@ -21,7 +209,7 @@
       <l base="njálggis" pos="N"/>
     </ag>
   </test>
-   <test name="1_PrsSg3_Inf_SgCom">
+     <test name="1_PrsSg3_Inf_SgCom">
       <q>Maid Heaika jurddaša dál</q>
     <ag>
       <a>Son áigu náitalit Ristena</a>
