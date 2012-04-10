@@ -1006,6 +1006,9 @@ class BareGame(Game):
 		present_ng = present_ng.values_list('fullform',flat=True)
 		
 		# print tag.string, repr(correct)
+		if not db_info.get('conneg', False):
+			db_info['conneg'] = False
+
 		morph = (MorfaQuestion(
 					word=word,
 					tag=tag,
