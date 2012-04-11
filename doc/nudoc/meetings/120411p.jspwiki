@@ -1,0 +1,190 @@
+!!! Møte 11.04.12
+
+
+Til stades: Lene, Ryan, Trond, Heli
+
+!!Saksliste
+* Eurocall
+* Nye servere
+* Oppdatering av database
+* MorfaS Verb: legge til 'odne' og 'ikte'?
+* VastaS: fjerne lemma-antall valg
+* Bedre feedback og veiledning for brukerne
+* Morfologisk feedback
+* Bugger
+* Feedback/Tilbakemelding skjema fra brukeren
+* DeepDict
+* Ordbok med grammatikkinformasjon
+* Layout
+
+
+!! Eurocall 22-25.8.2012
+
+Vi sende inn tre abstract til [Eurocall|http://www.eurocall2012.eu/], 
+alle tre er akseptert, ein poster, ein under
+courseware/exhibition, og ein som vanleg paper.
+
+Til 30.6. skal vi ha ein artikkel på 1500 ord for hver av de tre. Dei kjem med
+i proceedings. Dessutan kan vi skrive ein lang artikkel med frist 30. november
+for evt. å kome med i eit eige Eurocall Review (Selected Papers) eller i Recall 2013.
+
+Etter kvart må vi lage ein plan for å skrive alt dette.
+
+Abstrakta er: 
+
+* courseware_design.txt
+* less_widely_taught_abstract.txt - skal også lages poster
+* multilingual_abstract.txt
+
+Formatet dei skal ha er Word. Tidleg påmeldingsfrist er 31. mai.
+
+!! Nye servere
+Ikke klart svar fra IT-avdelinga, 
+
+TILTAK:
+* __Trond__ følger opp, prioriteres.
+
+!! Oppdatering av database
+Om 16 timer, error log legges i [bugzilla|http://giellatekno.uit.no/bugzilla/show_bug.cgi?id=1314]
+
+!! MorfaS Verb: legge til "odne" og "ikte"?
+Legges til foran pronomenet
+
+TILTAK:
+* __Heli__ fikser dette.
+
+
+!! VastaS: fjerne lemma-antall valg
+
+TILTAK:
+* __Heli__ fikser dette.
+
+
+!! Bedre feedback og veiledning for brukerne
+
+[korte forklaringer|http://giellatekno.uit.no/oahpa/sme/gramm/cilgehusat.nno.html]
+
+Hur vill ni helst ha den textrutan? 
+
+* precis som "hjelp"-länken i MorfaC (när man klickar på länken, visas en textruta på vita ytan till höger)
+* som en popup-textruta (tooltip) som hoppar fram när man pekar på länken med musen (utan att klicka) och försvinner när fokus är någon annanstans
+
+TILTAK:
+* __Heli__ arbeider med dette.
+* __Lene__ forkorter tekstene og legger dem inn i en xml-fil: helptexts.xml
+
+
+!! Morfologisk feedback
+Fungerer nå både i MorfaS og MorfaC
+Noen ord mangler feedback, og det er mangler i noen av delene, f.eks.:
+
+{{{
+rábbii
+Sanalla "rábbi" on kaksitavuinen vartalo ja vahva aste. –i-pääte.
+}}}
+
+* __Lene__ ser på dette
+
+
+
+!! Bugger
+
+! 791 Possible with alternative grammartags?
+** Dette ser ut til å fungere
+* 1190 Grammatikkforklaringer kjem ikkje opp i Safari
+
+Trond la inn streng Tillat popup-vindu øverst i
+nedfallsmenyen.  popup.nno.html, den lenkjer (dessverre ikkje) til
+* ~/main/ped/userdoc/popup.nno.xml 
+** Trond
+
+! 1309 MorfaS Der og MorfaC Der - arbeides med
+
+! 1314 få til riktig generering av leksikonet 
+* endre pipeline 
+* arbeides med
+
+{{{
+N+Actor+Sg+Nom
+N+G3+Sg+Nom
+N+Sg+Nom
+
+N+VAR+Sg+Nom   VAR = tom, Actor, G3   (VAR = VARIABLE)
+}}}
+
+! 1315 OBS ved generering: Ny attributt morfas="no"
+Løsninga var Sem class MORFAS
+
+
+! 1316 Vasta: kolon forsvinner
+NRK:s leat váralaš beatnagat
+"NRKs" finnes ikke i vårt leksikon. Kan det være en skrivefeil?
+
+Dette skjer ikke i fst, men før input kommmer til fst.
+
+echo 'NRK:s' | /opt/sami/cg/bin/preprocess
+|/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup -flags mbTT -utf8 -d
+/opt/smi/sme/bin/ped-sme.fst
+0%>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>100%
+NRK:s    NRK+N+ACR+Sg+Loc
+
+
+[Online-analysatoren|http://giellatekno.uit.no/cgi/d-sme.sme.html] strippar
+skumle teikn, i $GTHOME/gt/script/cgi-script/
+
+~$echo 'NRK:s' | /opt/sami/cg/bin/preprocess
+NRK:s
+
+* __Heli__ arbeider med dette
+
+!! Feedback/Tilbakemelding skjema fra brukeren
+Denne lenka legges også til univ_oahpa
+Den må bli vidaresendt til oahpa@hum.uit.no, viss ikkje kan det bli liggande.
+
+* What do you think about Oahpa?
+* Hva synes du om Oahpa?
+* Mitä ajattelet Oahpasta?
+
+
+* __Heli__ fikser dette
+
+!! DeepDict
+
+Tino har jobba, og har ein demo klar til oss, til evaluering.
+
+[Demo|http://victorio.uit.no/deepdict/lookup.php?word=oažžut&class=V&lang=smi]
+
+Vi ser meir på dette.
+Vi må se på grensesnitt for en 'computer assisted writing'-bench
+etter modell fra CAT - comupter assisted translation 
+ 
+!! Ordbok med grammatikkinformasjon
+generere xml-fil av lexc?
+
+* som en del av Oahpa
+* som app for nedlastning til mobil, lesebrett osv (hvis vi bare finner en løsning for de sme-bokstaver, for sma er det ikke noe problem) vi kan ikkje skrive ŋŧ, men dei andre
+
+Brukeren kan skrive inn et ord, f.eks. "girku" og så kan hun velge:
+* oversetting til norsk (hvis vi har - tanken var å legge inn hele leksikonet, evt gi oversetting til delene av et sammensatt ord)
+* morfologisk info, ala: girku er et likestavelses substantiv som ikke har stadieveksling. (dette tas rett fra lexc-fil)
+* standardparadigme (ifst)
+* eksempler fra korpus?
+* på server - også deepdict i samme grensesnittet ?
+* Ordbogi (app for iPhone) er bra (laga av eit spin-off frå Center for Sproggteknologi i Kbh.
+* Vi har samisk WebDict...
+
+Vi tenker videre på dette, ikke minst før møte med FAD 20.4.12. Møte i neste uke når Sjur er her?
+
+
+!! Layout
+Ny grafisk formgiving av Oahpa-Forrest (Oahpa dokumentasjonen)
+Bjørn har arbeidd med dette.
+
+Layout for Univ_Oahpa
+
+TILTAK:
+* __Lene, Trond__ følger opp
+
+
+!! Neste møte
+Avtales pr mail. Bestemmes etter at vi har fått svar fra IT-adv.
