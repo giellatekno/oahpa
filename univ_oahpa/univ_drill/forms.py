@@ -1199,6 +1199,9 @@ class MorfaQuestion(OahpaQuestion):
 					# TODO: conneg only in Prs
 			
 			# Odne 'today', ikte 'yesterday'
+			if (tag.tense in ['Prs','Prt']) and (tag.mood == 'Ind'):
+				time = TENSE_PRESENTATION.get(tag.tense, False)
+				self.pron = ' '.join([time, pronoun])
 			if (tag.string.find("+Der/Pass") > -1) and (tag.string.find("+V") > -1):
 				# Odne mun ___
 				# Ikte mun ___
