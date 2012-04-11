@@ -703,6 +703,10 @@ class Tag(models.Model):
 		self.fix_attributes()
 		super(Tag, self).create(*args, **kwargs)
 
+	def save(self, *args, **kwargs):
+		self.fix_attributes()
+		super(Tag, self).save(*args, **kwargs)
+
 class Form(models.Model):
 	word = models.ForeignKey(Word)
 	tag = models.ForeignKey(Tag)
