@@ -11,6 +11,13 @@ DPF="$DATA/finsme"
 #DPW="$DATA/swesme"
 #WORDS=$GTHOME/words/dicts/smenob/src
 
+echo "==================================================="
+echo "installing tags and paradigms for Morfa-C"
+$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
 ##
 ##  sme->X
 ##
@@ -303,12 +310,6 @@ echo "==================================================="
 
 # Morfa-C 
 
-echo "==================================================="
-echo "installing tags and paradigms for Morfa-C"
-$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
 
 echo "==================================================="
 echo "installing Morfa-C word fillings"
