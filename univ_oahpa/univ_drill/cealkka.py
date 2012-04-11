@@ -756,12 +756,12 @@ class CealkkaGame(Game):
                     level=int(self.settings['level'])
                 else: # default level was set to 'all', but I could not find where
                     level=1
-                if self.settings.has_key('lemmacount'):  # added by Heli
-                    lemmacount=int(self.settings['lemmacount'])
-                else:
-                    lemmacount=2		
-		q_count = Question.objects.filter(gametype="cealkka", level__lte=level,lemmacount=lemmacount).count()
-		question = Question.objects.filter(gametype="cealkka", level__lte=level, lemmacount=lemmacount)[randint(0,q_count-1)]
+                #if self.settings.has_key('lemmacount'):  # added by Heli
+                 #   lemmacount=int(self.settings['lemmacount'])
+                #else:
+                 #   lemmacount=2		
+		q_count = Question.objects.filter(gametype="cealkka", level__lte=level).count()
+		question = Question.objects.filter(gametype="cealkka", level__lte=level)[randint(0,q_count-1)]  # removed lemmacount filter lemmacount=lemmacount
 		#print level
 		#print lemmacount 
 		#question = Question.objects.get(id="107")

@@ -895,7 +895,7 @@ class Cealkkaview(Gameview):
 	"""
 	
 	def deeplink_keys(self, game, settings_form):
-		return ['lemmacount', 'level']
+		return ['level']  # removed lemmacount
 
 	def additional_settings(self, settings_form):
 		self.settings['gametype'] = "cealkka"
