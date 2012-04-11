@@ -60,11 +60,11 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/vasta.nno.html
 <!-- emergency tag ends -->
 <tr>
 <td>{% trans "Level" %}</td>
-{% ifequal gametype "cealkka" %}<td>{% trans "Number of task words" %}</td>{% endifequal %}
+<!-- {% ifequal gametype "cealkka" %}<td>{% trans "Number of task words" %}</td>{% endifequal %} -->
 </tr>
 <tr>
 <td>{{ settingsform.level }}</td>
-{% ifequal gametype "cealkka" %}<td>{{ settingsform.lemmacount }}</td>{% endifequal %}
+<!--  {% ifequal gametype "cealkka" %}<td>{{ settingsform.lemmacount }}</td>{% endifequal %}  -->
 </tr>
 </table>
 <input type="submit" name="settings" value="{% trans "New set" %}" />
