@@ -1210,6 +1210,8 @@ class MorfaQuestion(OahpaQuestion):
 				# Choose one if not set, if set then game is in progress, and
 				# do not choose another
 				pers = tag.personnumber
+				if not pers:
+					pers = conneg_agr
 				time = TENSE_PRESENTATION.get(tag.tense, False) 
 				pronoun = PASSIVE_PRONOUNS_LIST[pers]
 
