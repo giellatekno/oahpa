@@ -708,13 +708,26 @@ class Words(object):
 
 		exist_kwargs['pos'] = pos
 		
-		soggi = entry.soggi
-		attrsuffix = entry.attrsuffix
-		compsuffix = entry.compsuffix
-		diphthong = entry.diphthong
-		gradation = entry.gradation
-		stem = entry.stem
-		rime = entry.rime
+		if entry.soggi:
+			soggi = entry.soggi
+
+		if entry.attrsuffix:
+			attrsuffix = entry.attrsuffix
+
+		if entry.compsuffix:
+			compsuffix = entry.compsuffix
+
+		if entry.diphthong:
+			diphthong = entry.diphthong
+
+		if entry.gradation:
+			gradation = entry.gradation
+
+		if entry.stem:
+			stem = entry.stem
+
+		if entry.rime:
+			rime = entry.rime
 
 
 		trisyllabic = ['3syll', '3', 'trisyllabic']
@@ -856,10 +869,12 @@ class Words(object):
 				if VERBOSE:
 					OUT_STRS.append('Forms for dialect %s' % dialect.dialect)
 
+				wordtype = entry.wordtype.capitalize() or None
 				generated_forms = linginfo.get_paradigm(lemma=lemma,
 										pos=pos,
 										forms=forms, 
-										dialect=dialect.dialect)
+										dialect=dialect.dialect,
+										wordtype=wordtype)
 
 				if not generated_forms:
 					continue

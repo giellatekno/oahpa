@@ -324,7 +324,7 @@ class Paradigm:
 			self.master_paradigm[dialect] = lookup_dictionary
 		
 		
-	def get_paradigm(self, lemma, pos, forms, dialect=False):
+	def get_paradigm(self, lemma, pos, forms, dialect=False, wordtype=None):
 		if not dialect:
 			dialect = 'main'
 		
@@ -396,15 +396,39 @@ class Paradigm:
 					g.form = fullform
 					g.hid = hid
 					g.tags = tag
+
 					for t in g.tags.split('+'):
 						if self.tagset.has_key(t):
 							tagclass=self.tagset[t]
 							g.classes[tagclass] = t
-					self.paradigm.append(g) 
+
+					# if wordtype is specified (G3, Actor, etc.,), we want only
+					# these forms, otherwise we want only forms without a
+					# wordtype
+					if wordtype is not None:
+						wordtype = wordtype.upper()
+						g_wordtype = g.classes.get('Subclass', False)
+						if g_wordtype:
+							if wordtype == g_wordtype.upper():
+								self.paradigm.append(g)
+							else:
+								continue
+						else:
+							continue
+					else:
+						g_wordtype = g.classes.get('Subclass', False)
+						if g_wordtype:
+							continue
+						else:
+							self.paradigm.append(g)
+
 					if extraforms.has_key(g.tags):
 						g.form = extraforms[g.tags]
 				else:
-					print >> STDERR, 'No form created: %s+%s' % (lemma.encode('utf-8'), tag.encode('utf-8'))
+					err_msg = 'No form created: %s+%s' % (lemma.encode('utf-8'), tag.encode('utf-8'))
+					if dialect:
+						err_msg += ' (%s)' % dialect.encode('utf-8')
+					print >> STDERR, err_msg
 		else:
 			self.paradigm = False
 
@@ -475,10 +499,14 @@ class Paradigm:
 				g.form = matchObj.expand(r'\g<formString>')
 				if re.compile("\?").match(g.form): continue
 				g.tags = matchObj.expand(r'\g<tagString>')
+				print 'amagad: '
+				print repr(g.tags)
 				for t in g.tags.split('+'):
 					if self.tagset.has_key(t):
 						tagclass=self.tagset[t]
 						g.classes[tagclass]=t
+				print g.classes
+				raw_input()
 				self.paradigm.append(g)
 				#extraforms override generated ones
 				if extraforms.has_key(g.tags):
