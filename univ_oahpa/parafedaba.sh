@@ -31,14 +31,14 @@ echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $META/names.xml"
-$P install.py --file $DPS/names.xml --tagfile $META/tags.txt --paradigmfile $META/prop_paradigms.txt 2>>error.log
+$P install.py --file $DPS/names.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/prop_smenob.xml"
-$P install.py --file $DPS/prop_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/prop_paradigms.txt 2>>error.log
+$P install.py --file $DPS/prop_smenob.xml --tagfile $META/tags.txt --paradigmfile $META/n_paradigms.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -256,7 +256,7 @@ echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/pron_sme.xml"
+echo "feeding db with $DPS/derverb_sme.xml"
 $P install.py --file $DPS/derverb_sme.xml --tagfile $META/tags.txt --append  2>>error.log # TODO: test append with this
 echo " "
 echo "done"
@@ -318,6 +318,11 @@ echo " "
 echo "done"
 echo "==================================================="
 
+$P manage.py fixattributes
+$P manage.py mergetags
+$P manage.py fixattributes
+
+
 echo "==================================================="
 echo "installing Morfa-C questions for nouns"
 $P install.py -g $META/grammar_defaults.xml -q $META/noun_questions.xml 2>>error.log
@@ -367,9 +372,9 @@ echo " "
 echo "done"
 echo "==================================================="
 
-#######
-# Vasta
-#######
+###################
+# Vasta and VastaS
+###################
 echo "==================================================="
 echo "installing Vasta questions"
 $P install.py -g $META/grammar_defaults.xml -q $META/questions_vasta.xml 2>>error.log
@@ -409,6 +414,13 @@ echo "==================================================="
 echo "==================================================="
 echo "Installing feedback messages for vasta - in North Sámi"
 $P install.py --messagefile $META/messages_vasta.sme.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "Installing feedback messages for vasta - in Swedish"
+$P install.py --messagefile $META/messages_vasta.swe.xml
 echo " "
 echo "done"
 echo "==================================================="
@@ -468,30 +480,35 @@ echo "==================================================="
 # TODO: 
 # fixtagattributes
 # mergetags
+
+$P manage.py fixattributes
+$P manage.py mergetags
+$P manage.py fixattributes
+
 echo "==================================================="
 echo "adding feedback to nouns"
-$P install.py -f $DPS/n_smenob.xml --feedbackfile $META/feedback_nouns.xml 2>>error.log
+$P install.py -f $DPS/n_smenob.xml --feedbackfile $META/feedback_nouns.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "adding feedback to verbs"
-$P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_verbs.xml 2>>error.log
+$P install.py -f $DPS/v_smenob.xml --feedbackfile $META/feedback_verbs.xml
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "adding feedback to adjectives"
-$P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml 2>>error.log
+$P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml 
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
 echo "adding feedback to numerals"
-$P install.py -f $DPS/num_smenob.xml --feedbackfile $META/feedback_numerals.xml 2>>error.log
+$P install.py -f $DPS/num_smenob.xml --feedbackfile $META/feedback_numerals.xml 
 echo " "
 echo "done"
 echo "==================================================="
@@ -502,4 +519,7 @@ echo "==================================================="
 #echo " "
 #echo "done"
 #echo "==================================================="
+
+echo "stopped at: "
+date '+%T'
 
