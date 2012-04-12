@@ -396,16 +396,20 @@
       </element>
     </answer>
   </q> 
-   <q level="1" lemmacount="2" id="1_PrsPl3_Acc_Ess">
+   <q level="3" lemmacount="3" id="1_PrsPl3_Acc_Ess">
     <qtype>PRS</qtype>
    <question>
       <text>Mii lea su namma</text>
     </question>
     <answer> 
-      <text>Sii VERB su NOUN</text>
+      <text>Sii VERB PERSON NOUN</text>
       <element id="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <id>gohčodit</id>
+      </element>
+      <element id="PERSON" task="yes">
+        <grammar tag="Pron+Pers+Sg3+Nom"/>
+        <id>son</id>
       </element>
       <element id="NOUN" task="yes">
         <grammar tag="N+Prop+Sg+Nom"/>
@@ -1725,7 +1729,7 @@
       </element>
     </answer>
   </q> 
-  <q level="2" lemmacount="2" id="1_PrtSg1_Verb_Acc_Actioess">
+  <q level="3" lemmacount="3" id="1_PrtSg1_Verb_Acc_Actioess">
     <qtype>PRT</qtype>
    <question>
       <text>Maid VERB ikte</text>
@@ -1735,10 +1739,14 @@
       </element>
     </question>
     <answer> 
-      <text>Mun VERB su ACTIOESS ruoktot</text>
+      <text>Mun VERB PERSON ACTIOESS ruoktot</text>
       <element id="VERB" content="VERB" task="yes">
         <grammar tag="V+Inf"/>
         <sem class="mSEE"/>
+      </element>
+      <element id="PERSON" task="yes">
+        <grammar tag="Pron+Pers+Sg3+Nom"/>
+        <id>son</id>
       </element>
       <element id="ACTIOESS" task="yes">
         <grammar tag="V+Inf"/>
