@@ -9,20 +9,11 @@ from the current sjdrus-files.
 
 !!!Test
 
-test, for instance, for the adv file:
-
-{{{
-xml>grep '<lemma>' adv_sjdrus.xml | sort | uniq -c | sort -nr | grep -v '1'
-   2       <lemma>шӣгтэнне</lemma>
-   2       <lemma>туаррэм</lemma>
-xml>grep 'id=' adv_sjdrus.xml | sort | uniq -c | sort -nr
-   1    <entry id="шӣгтэнне_school">
-   1    <entry id="шӣгтэнне_food">
-   1    <entry id="туаррэм_school">
-   1    <entry id="туаррэм_living">
-}}}
+No tests pending.
 
 !!!TODO
+
+
 correct the restrictions in the translations
 
 {{{
