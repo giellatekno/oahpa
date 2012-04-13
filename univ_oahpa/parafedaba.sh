@@ -242,8 +242,8 @@ echo "==================================================="
 # echo "==================================================="
 
 echo "==================================================="
-echo "feeding db with $DPS/grammaticalwords.xml"
-$P install.py --file $DPS/grammaticalwords.xml 2>>error.log
+echo "feeding db with $DPS/grammaticalwords_smenob.xml"
+$P install.py --file $DPS/grammaticalwords_smenob.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
