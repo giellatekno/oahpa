@@ -97,15 +97,11 @@ Unlike Trond's claim, no all sjd lemmata have an eng translation:
 
 Here is the list
 
-xml>grep -n ' <tr xml:lang="eng"/>' *
-xml>grep -n ' <tr xml:lang="eng"/>' *
-n_sjdrus.xml:1579:         <tr xml:lang="eng"/>
-n_sjdrus.xml:1597:         <tr xml:lang="eng"/>
-n_sjdrus.xml:2723:         <tr xml:lang="eng"/>
-v_sjdrus.xml:1074:         <tr xml:lang="eng"/>
-v_sjdrus.xml:1094:         <tr xml:lang="eng"/>
-v_sjdrus.xml:1112:         <tr xml:lang="eng"/>
-v_sjdrus.xml:1128:         <tr xml:lang="eng"/>
+xml>grep -n '_ENG' *.xml
+n_sjdrus.xml:1579:         <tr xml:lang="eng">ноготь_ENG</tr>
+n_sjdrus.xml:1597:         <tr xml:lang="eng">огонь_ENG</tr>
+n_sjdrus.xml:2723:         <tr xml:lang="eng">лосиха_ENG</tr>
+n_sjdrus.xml:2933:         <tr xml:lang="eng">важенка_ENG</tr>
 
 }}}
 
