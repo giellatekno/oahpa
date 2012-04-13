@@ -22,8 +22,38 @@ xml>grep 'id=' adv_sjdrus.xml | sort | uniq -c | sort -nr
    1    <entry id="туаррэм_living">
 }}}
 
-!!!possible future todo
+!!!TODO
+correct the restrictions in the translations
 
+{{{
+   <entry>
+      <lemma>моаӆӆьчхэ</lemma>
+      <pos class="v"/>
+      <translations>
+         <tr xml:lang="rus">облезать о шкуре</tr>
+         <tr xml:lang="rus">облезать</tr>
+         <tr xml:lang="rus">облезть</tr>
+         <tr xml:lang="eng">to grow bare about a skin</tr>
+         <tr xml:lang="eng">to grow bare</tr>
+      </translations>
+  </entry>
+}}}
+
+this way
+
+{{{
+   <entry>
+      <lemma>моаӆӆьчхэ</lemma>
+      <pos class="v"/>
+      <translations>
+         <tr xml:lang="rus" restr="о шкуре">облезать</tr>
+         <tr xml:lang="rus">облезть</tr>
+         <tr xml:lang="eng" restr="about a skin">to grow bare</tr>
+      </translations>
+  </entry>
+}}}
+
+!!!possible future todo
 
 @Micha: a few observations:
 
