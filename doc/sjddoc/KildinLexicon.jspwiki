@@ -1,0 +1,63 @@
+
+The directory {{pedversions/sjdoahpa/src/xml}} contains the entries used in the current online version of sjdoahpa.
+
+{{dict_sjd_common.xml}} is obsolete. The up-to-date sjdrus content is
+{{a_sjdrus.xml}} etc.
+
+{{dict_russjd.xml}} will be replaced by {{a_russjd.xml}} etc. But these files will be generated anew
+from the current sjdrus-files.
+
+!!!Test
+
+test, for instance, for the adv file:
+
+{{{
+xml>grep '<lemma>' adv_sjdrus.xml | sort | uniq -c | sort -nr | grep -v '1'
+   2       <lemma>шӣгтэнне</lemma>
+   2       <lemma>туаррэм</lemma>
+xml>grep 'id=' adv_sjdrus.xml | sort | uniq -c | sort -nr
+   1    <entry id="шӣгтэнне_school">
+   1    <entry id="шӣгтэнне_food">
+   1    <entry id="туаррэм_school">
+   1    <entry id="туаррэм_living">
+}}}
+
+!!!possible future todo
+
+
+@Micha: a few observations:
+
+* ё vs. е in Russian (e.g. вдвоём / вдвоем); perhaps we should consistently use ё in the xml, but include е (with spellrelax) for oahpa users?
+* the semantics should be checked (does the other oahpas use predefined sets of values?), e.g. why is <lemma>э̄ххт тоа̄фант</lemma> <tr xml:lang="eng">one thousand</tr> "HUMAN", or why is <lemma>кутӭ-кутӭ</lemma> <tr xml:lang="eng">two each</tr> "HUMAN" and "FOOD"? It could be anything: "cars", "reindeer", "xml databases", etc.
+* common (uni)coding issues (perhaps we can apply a script to future incoming data):
+** Latin letters in Cyrillic: a --> а, o --> о, etc. (even in Russian text)
+** Precomposed vs. combining diaeresis: ё --> ё, ӓ --> ӓ, ӭ --> ӭ
+** Precomposed vs. combining macron: ӣ --> ӣ, ӯ --> ӯ
+* several multi word lemmata, like <lemma>э̄ххт чӯдтҍ</lemma> or <lemma>югкеналла лыдцант</lemma> or <lemma>пя̄лла ӣнсэй оанҍхэсь нюннҍ тӣххт</lemma> (especially the latter two are definitely not lemmas, but paraphrases)
+** there are even entries with multiword expressions both as lemmas and translations, like:
+
+{{{
+   <entry>
+      <lemma>ко̄ппче соа̄йметҍ</lemma>
+      <pos class="v"/>
+      <translations>
+         <tr xml:lang="rus">собирать сетки</tr>
+         <tr xml:lang="eng">to collect grids</tr>
+      </translations>
+      <semantics>
+         <sem class="PLACE-WATER"/>
+         <sem class="VERB"/>
+      </semantics>
+      <sources>
+         <book name="Saamkilsyjjt"/>
+      </sources>
+  </entry>
+}}}
+  
+Can we use these for a vocabulary trainer?
+
+* English verbs with(out) "to"? (e.g. <tr xml:lang="eng">undress</tr> vs. <tr xml:lang="eng">to dress</tr>)
+* free word order in Russian NP? (e.g. <tr xml:lang="rus">хвост короткий</tr> and <tr xml:lang="rus">короткий хвост</tr>)
+* attr. vs. pred. adjectives (in sjd and rus!)
+
+
