@@ -1127,7 +1127,9 @@ class MorfaQuestion(OahpaQuestion):
 	Questions for morphology game. 
 	"""
 	
-	def __init__(self, word, tag, baseform, correct, accepted_answers, presentation, translations, question, dialect, language, userans_val, correct_val, conneg, *args, **kwargs):
+	def __init__(self, word, tag, baseform, correct, accepted_answers,
+					answer_presentation, translations, question, dialect, language,
+					userans_val, correct_val, conneg, *args, **kwargs):
 		
 		lemma_widget = forms.HiddenInput(attrs={'value': word.id})
 		tag_widget = forms.HiddenInput(attrs={'value': tag.id})
@@ -1136,8 +1138,10 @@ class MorfaQuestion(OahpaQuestion):
 		super(MorfaQuestion, self).__init__(*args, **kwargs)
 		
 		# initialize variables
-		self.init_variables(possible=[], userans_val=userans_val, accepted_answers=accepted_answers)
-		# init_variables(self, possible, userans_val, accepted_answers, preferred=False):
+		self.init_variables(possible=[], 
+							userans_val=userans_val, 
+							accepted_answers=accepted_answers)
+
 		if tag.string.lower().find('conneg') > -1:
 			if conneg:
 				conneg_agr = conneg
@@ -1269,7 +1273,7 @@ class MorfaQuestion(OahpaQuestion):
 			else:
 				self.is_relaxed = ""
 		
-		self.correct_ans = presentation
+		self.correct_ans = answer_presentation
 # #
 #
 # Numra Forms
