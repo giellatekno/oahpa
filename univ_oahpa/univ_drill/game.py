@@ -400,10 +400,10 @@ class BareGame(Game):
 
 		if 'pron_type' in game_filters:
 			ptype = True and self.settings.get('pron_type') or False
-			print ptype
+			# print ptype
 			if ptype:
 				tags = tags.filter(subclass=ptype)
-				print tags
+				# print tags
 
 		# select a random tag and set of forms associated with it to begin
 		tag = tags[0]
@@ -637,7 +637,7 @@ class BareGame(Game):
 			derivation_types = {
 				# 'Der/AV': parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"),
 				'A-DER-V': parse_tag("A+Der/AV+V+Ind+Prs+Person-Number-ConNeg"),
-				'V-DER-PASS': parse_tag("V+Passive+V+Ind+Tense+Person-Number-ConNeg"),
+				'V-DER-PASS': parse_tag("V+Der/PassL+V+Ind+Tense+Person-Number-ConNeg"),
 			}
 
 			TAG_QUERY = Q(string__in=derivation_types[derivation_type])
@@ -842,11 +842,24 @@ class BareGame(Game):
 		word = Word.objects.get(id=db_info['word_id'])
 		tag = Tag.objects.get(id=db_info['tag_id'])
 
+		# A little exception for derivation, we want to be able to accept PassS
+		# and PassL, but show only PassL in the answers. 
+
 		# Get the initial form list of forms matching the tag and word id
 		if pos == 'Pron':
 			# Need to filter by the word lemma for pronouns, otherwise
 			# ambiguities arise
 			form_list = Form.objects.filter(tag=tag, word__lemma=word.lemma)
+		elif pos == 'Der':
+			# Search for PassS and PassL forms, filter out later. NB: previous
+			# step only searches for PassL, so at this point we know some PassL
+			# forms exist for the word.
+			tag_strings = [tag.string]
+			if 'Der/PassL' in tag.string:
+				tag_strings.append(tag.string.replace('PassL', 'PassS'))
+			elif 'Der/PassS' in tag.string:
+				tag_strings.append(tag.string.replace('PassS', 'PassL'))
+			form_list = word.form_set.filter(tag__string__in=tag_strings)
 		else:
 			form_list = word.form_set.filter(tag=tag)
 		
@@ -855,6 +868,9 @@ class BareGame(Game):
 
 		# TODO: check this, there may be some forms that need to be filtered
 		# here instead.
+		if pos == 'Der':
+			correct = form_list.filter(tag__string__contains='PassL')
+
 		correct = form_list[0]
 		
 		# Due to the pronoun ambiguity potential (gii 'who', gii 'which'), 
@@ -932,6 +948,9 @@ class BareGame(Game):
 		
 		# Just the ones we want to present for just one dialect
 		presentation = form_list.filter(dialects=Q_DIALECT)
+
+		if pos == 'Der':
+			presentation = presentation.filter(tag__string__contains='PassL')
 		
 		# Unless there aren't any ... 
 		if presentation.count() == 0:
