@@ -883,42 +883,44 @@ class BareGame(Game):
 	
 	
 	def create_form(self, db_info, n, data=None):
-		language = self.settings['language']
-		pos = self.settings['pos']
-		
+		if not db_info.has_key('word_id'):
+			return None, None
+
 		if self.settings.has_key('dialect'):
 			UI_Dialect = self.settings['dialect']
 		else:
 			UI_Dialect = DEFAULT_DIALECT
 
+		language = self.settings['language']
+		pos = self.settings['pos']
 		Q_DIALECT = Dialect.objects.get(dialect=UI_Dialect)
-		
-		if not db_info.has_key('word_id'):
-			return None, None
-		
-		word_id = db_info['word_id']
-		
-		tag_id = db_info['tag_id']
 
-		tag = Tag.objects.get(id=tag_id)
+		word = Word.objects.get(id=db_info['word_id'])
+		tag = Tag.objects.get(id=db_info['tag_id'])
 
+		# Get the initial form list of forms matching the tag and word id
 		if pos == 'Pron':
-			# Need to filter by lemma for pronouns
-			pronoun_lemma = Word.objects.get(id=word_id).lemma
-			form_list = Form.objects.filter(tag=tag, word__lemma=pronoun_lemma)
+			# Need to filter by the word lemma for pronouns, otherwise
+			# ambiguities arise
+			form_list = Form.objects.filter(tag=tag, word__lemma=word.lemma)
 		else:
-			form_list = Form.objects.filter(word__id=word_id, tag=tag)
+			form_list = word.form_set.filter(tag=tag)
 		
 		if not form_list:
 			raise Form.DoesNotExist
-		#print ', '.join([a.fullform for a in form_list])
+
+		# TODO: check this, there may be some forms that need to be filtered
+		# here instead.
 		correct = form_list[0]
 		
-		if pos in ['N', 'V', 'A', 'Num', 'Der']: # added Num
-			word = Word.objects.get(Q(id=word_id))
-			# Preserve number in nouns: Sg-Sg, Pl-Pl
-		elif pos == 'Pron':
+		# Due to the pronoun ambiguity potential (gii 'who', gii 'which'), 
+		# we need to make sure that the word is the right one.
+		if pos == 'Pron':
 			word = correct.word
+		
+		# Get word translations for the tooltip
+		target_key = switch_language_code(self.settings['language'][-3::])
+		translations = sum([w.word_answers for w in word.translations2(target_key).all()],[])
 		
 		# Get baseform, matching number; except for in essive where
 		# there is no number, and with Nominative, where the test is
@@ -929,7 +931,6 @@ class BareGame(Game):
 			match_number = False
 		else:
 			match_number = True
-		
 		
 		def baseformFilter(form):
 			#   Get baseforms, and filter based on dialects.
@@ -968,44 +969,46 @@ class BareGame(Game):
 		
 		base_forms = map(baseformFilter, form_list)
 
-		# Flatten, but if this isn't an iterateable object, don't worry
+		# Flatten the lists, but if this isn't an iterateable object, don't worry
 		try:
 			base_forms = sum(base_forms, [])
 		except TypeError:
 			pass
 
 		# Just in case multiple are returned, get the first.
+		# TODO: make sure no forms that are needed are being lost here.
 		try:
 			baseform = list(set(base_forms))[0]
 		except IndexError:
 			if len(base_forms) == 0:
 				baseform = form.getBaseform(match_num=match_number)
 		
-		target_key = switch_language_code(self.settings['language'][-3::])
-		
-		translations = sum([w.word_answers for w in word.translations2(target_key).all()],[])
-		
-		# All possible forms
-		fullforms = form_list.values_list('fullform',flat=True)
+		# All possible form presentations
+		accepted_answers = form_list.values_list('fullform', flat=True)
 		
 		# Just the ones we want to present for just one dialect
-		present = form_list.filter(dialects=Q_DIALECT)
+		presentation = form_list.filter(dialects=Q_DIALECT)
 		
 		# Unless there aren't any ... 
-		if present.count() == 0:
-			present = form_list
+		if presentation.count() == 0:
+			presentation = form_list
 		
 		# Exclude those that shouldn't be displayed, but should be accepted
-		present_ng = present.exclude(dialects__dialect='NG')
-		
-		# Unless this results in none... 
+		presentation_ng = presentation.exclude(dialects__dialect='NG')
 
-		if present_ng.count() == 0:
-			present_ng = present
+		# Unless this results in no forms somehow, in which case we display
+		# them anyway... 
+		if presentation_ng.count() == 0:
+			presentation_ng = presentation
 		
-		present_ng = present_ng.values_list('fullform',flat=True)
+		presentation_ng = presentation_ng.values_list('fullform',flat=True)
 		
-		# print tag.string, repr(correct)
+		# Check if the form is connegative, if not, set to false.
+
+		# NB: this is part of making sure that since the connegative form is
+		# the same for all pronouns, that one pronoun is displayed throughout
+		# all of the steps of the user entering answers and checking that they
+		# are correct.
 		if not db_info.get('conneg', False):
 			db_info['conneg'] = False
 
@@ -1014,8 +1017,8 @@ class BareGame(Game):
 					tag=tag,
 					baseform=baseform, 
 					correct=correct,
-					fullforms=fullforms,
-					present=present_ng,
+					accepted_answers=accepted_answers,
+					presentation=presentation_ng,
 					translations=translations,
 					question="",
 					dialect=Q_DIALECT,
@@ -1026,7 +1029,7 @@ class BareGame(Game):
 					prefix=n,
 					conneg=db_info['conneg'])
 				)
-		return morph, word_id
+		return morph, word.id
 		
 	
 

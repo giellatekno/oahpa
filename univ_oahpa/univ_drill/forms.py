@@ -1127,7 +1127,7 @@ class MorfaQuestion(OahpaQuestion):
 	Questions for morphology game. 
 	"""
 	
-	def __init__(self, word, tag, baseform, correct, fullforms, present, translations, question, dialect, language, userans_val, correct_val, conneg, *args, **kwargs):
+	def __init__(self, word, tag, baseform, correct, accepted_answers, presentation, translations, question, dialect, language, userans_val, correct_val, conneg, *args, **kwargs):
 		
 		lemma_widget = forms.HiddenInput(attrs={'value': word.id})
 		tag_widget = forms.HiddenInput(attrs={'value': tag.id})
@@ -1136,7 +1136,7 @@ class MorfaQuestion(OahpaQuestion):
 		super(MorfaQuestion, self).__init__(*args, **kwargs)
 		
 		# initialize variables
-		self.init_variables(possible=[], userans_val=userans_val, accepted_answers=fullforms)
+		self.init_variables(possible=[], userans_val=userans_val, accepted_answers=accepted_answers)
 		# init_variables(self, possible, userans_val, accepted_answers, preferred=False):
 		if tag.string.lower().find('conneg') > -1:
 			if conneg:
@@ -1202,7 +1202,8 @@ class MorfaQuestion(OahpaQuestion):
 			if (tag.tense in ['Prs','Prt']) and (tag.mood == 'Ind'):
 				time = TENSE_PRESENTATION.get(tag.tense, False)
 				self.pron = ' '.join([time, pronoun])
-			if (tag.string.find("+Der/Pass") > -1) and (tag.string.find("+V") > -1):
+
+			if ("+Der/Pass" in tag.string) and ("+V" in tag.string):
 				# Odne mun ___
 				# Ikte mun ___
 				# Ikte dat (okta) ___ 
@@ -1268,7 +1269,7 @@ class MorfaQuestion(OahpaQuestion):
 			else:
 				self.is_relaxed = ""
 		
-		self.correct_ans = present
+		self.correct_ans = presentation
 # #
 #
 # Numra Forms
