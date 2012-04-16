@@ -1,4 +1,4 @@
-!!!Interaktiv samiskopplæring ~ Interaktiivalaš sámegiel oahpahus
+!!!Interaktiv samiskopplæring ~ Interaktiivalaš sámegiela oahpahus
 
 Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-oahpa, University Oahpa), 2011-2013. NUV-prosjekt P88/2011  
 
@@ -12,14 +12,14 @@ Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-
 
 !!Møtereferat ~ Čoahkkimat
  
-! Samarbeid ~ Ovttasbargu HY ja OY 
+! Samarbeid ~ Ovttasbargu HU:in ja OU:in 
 * [status quo 08.2011|nudoc/ovttasbargu_1.html]  // [status quo 11.2011|nudoc/status_quo.html] // [status quo 12.2011|nudoc/status_quo2.html]
 
-! Samarbeid ~ Ovttasbargu giellaguovddážiiguin ja HY 
-* [workshop - bargobadji 2-3.2.2012|nudoc/workshop02_030212.html]
+! Samarbeid ~ Ovttasbargu giellaguovddážiiguin ja HU:in 
+* [workshop - bargobádji 2-3.2.2012|nudoc/workshop02_030212.html]
 
 ! Lingvistmøter ~ Lingvistačoahkkimat
-* Haust ~ Čakča 2011:
+* Haust ~ Čakčat 2011:
  [17.8. Helsset|nudoc/meetings/110817.html]  //
  [18.8. Oulu|nudoc/meetings/110818.html]  //
  [8.9.|nudoc/meetings/110908.html]  //
@@ -29,7 +29,7 @@ Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-
  [18.11.|nudoc/meetings/111118.html]   //
  [02.12.|nudoc/meetings/111202.html]  //
  [16.12.|nudoc/meetings/111216.html]
-* Vår ~ Giđđa 2011:
+* Vår ~ Giđđat 2011:
  [3.1.|nudoc/meetings/120103.html] //
  [30.1.|nudoc/meetings/120130.html]
 
@@ -70,15 +70,15 @@ Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-
 
 !!Lærestoff og Oahpa-programmer ~ Kurssaid sisdoallu ja Oahpa-prográmmat
 * [ny/ođđa Oahpa|http://oahpa.uit.no/univ_oahpa/] 
-* [Læringsstier ~ Oahppanbálgát site.uit.no/oahpa|http://site.uit.no/oahpa/]  
+* [Læringsstier ~ Oahppanbálgát site.uit.no/oahpa|http://kursa.oahpa.no/]  
 * [site.uit.no/oahpa SAM-1031 ja SAM-1030 sisdoallu|nudoc/site.html] 
 * [jietnafiillat ~ listu|nudoc/sound.html] 
 
 !!Arbeidsdokumenter ~ Bargodokumeanttat
-!site.uit.no
+!kursa.uit.no
 * [Dokumentasjon av login|nudoc/login.html]
 * [Import og eksport av site.uit.no|nudoc/ImportereSite.uit.no.html]
-!Overføring til sma-format
+!Overføring til nytt format (sma-format)
 * [Dokumentasjon og log for overføring til sma-format|nudoc/smaformat.html]
 * Oversikt og rekkefølge i implementeringsarbeidet: [Innholdsfilene|nudoc/bestilling.html]   //  [Lokalisering|nudoc/bestilling_lokalisering.html]
 
@@ -102,9 +102,10 @@ Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-
 * Numra: [num2clock|nudoc/gen/numra_num2clock.csv], [clock2num|nudoc/gen/numra_clock2num.csv]  ([testrutine|common/TestingClockFst.html])
 
 !Testing
-* Testing av Vasta-, Sahka- og VastaS-oppgaver skjer i ped/qa_test , les 00_readme . I qa_test/regressiontests/ er det filer med spørsmål fra de nevnte programmene. Filene bør prøvekjøres med qa-test_dialogue.pl hver gang det er gjort større endringer i fst eller sme-ped.cg3.
-** Filene med _corr.xml skal ikke gi noen &grm- eller &sem-tagger. 
-** Det bør lages tilsvarende filer som skal gi &grm- og &sem-tagger også, filene lagres i errortests.
+* Testing av Vasta-, Sahka- og VastaS-oppgaver skjer i ped/qa_test , les 00_readme . 
+** Filene i regressiontests skal ikke gi noen &grm- eller &sem-tagger. 
+** Hvert spørsmål-svar-par i filene i errortests skal få &grm- eller &sem-tagg.
+** Filene bør testes testsahka.sh og  testvastas.sh hver gang det er gjort større endringer i fst eller sme-ped.cg3.
 
 
 
@@ -131,7 +132,8 @@ Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-
 * Tilpasse grammatikk til ny referansegrammatikk / Heivehit grammatihka ođđa referánsagrammatihkkii
 * MorfaS: pronomen - personlige, refleksive, resiproke og demonstrative / pronomenhárjehallan  __ok__
 * MorfaC: pronomen - lage oppgaver / ráhkadit pronomenbargobihtáid  __ok__
-* VastaS: lage oppgaver og tilpasse cg-fil / ráhkadit bargobihtáid ja lasihit cg-fiilii
+* VastaS: lage oppgaver og tilpasse cg-fil / ráhkadit bargobihtáid ja lasihit cg-fiilii __ok__
+* VastaS, Vasta og Sahka: Forbedre feedback og instruksjon / Buoridit máhcahusa ja bagadeami
 * Sahka: nye dialoger / ođđa ságastallamat
 * Vasta: temaer / fáttát
 * nettordbok i grensesnittet i Vasta og Sahka (?) / fierbmesátnegirji [nettordbok|http://victorio.uit.no/webdict/index.html]
