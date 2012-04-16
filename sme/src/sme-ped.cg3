@@ -5786,7 +5786,7 @@ REMOVE Nom IF (-1 V-TRANS-ACT-NOT-ACT OR DURATION-V LINK -1 NP-HEAD + Nom LINK *
 
 
 MAP (&grm-should-not-Nom) TARGET Nom IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH OR CLB LINK *-1 QDL BARRIER S-BOUNDARY OR Acc)(NOT 0 TIME OR ROUTE OR Rel OR Acc OR ("giitu"))(NOT *1 (N Acc));
-MAP (&grm-should-Plur) TARGET (Sg Acc) IF (*-1 ("čoaggit") BARRIER NPNH OR CLB LINK *-1 QDL BARRIER S-BOUNDARY OR Acc)(NOT 0 TIME OR ROUTE OR Rel OR Pl OR ("giitu"))(NOT *1 (N Acc));
+MAP (&grm-should-Plur) TARGET (Plant Sg Acc) IF (*-1 ("čoaggit") BARRIER NPNH OR CLB LINK *-1 QDL BARRIER S-BOUNDARY OR Acc)(NOT 0 Pl)(NOT *1 (N Acc));
 	## čoaggit sarridiid
 
 
