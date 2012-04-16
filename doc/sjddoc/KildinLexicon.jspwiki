@@ -200,4 +200,22 @@ Can we use these for a vocabulary trainer?
       </sources>
   </entry>
 }}}
+* inflected form as lemma
+{{{
+	   <entry>
+      <lemma>углясьт</lemma>
+      <pos class="adv"/>
+      <translations>
+         <tr xml:lang="rus">в уголке</tr>
+         <tr xml:lang="eng">in a corner</tr>
+      </translations>
+      <semantics>
+         <sem class="LIVING-PLACE"/>
+      </semantics>
+      <sources>
+         <book name="Saamkilsyjjt"/>
+      </sources>
+  </entry>
+}}}
+pos="adv" is wrong, because this is an inflected noun (which can of course be used as an adverbial); I understand that such forms should be used for training vocabulary, but we have to find another tag for the pos value here 
 
