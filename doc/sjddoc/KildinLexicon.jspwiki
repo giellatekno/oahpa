@@ -180,5 +180,24 @@ Can we use these for a vocabulary trainer?
 * English verbs with(out) "to"? (e.g. <tr xml:lang="eng">undress</tr> vs. <tr xml:lang="eng">to dress</tr>)
 * free word order in Russian NP? (e.g. <tr xml:lang="rus">хвост короткий</tr> and <tr xml:lang="rus">короткий хвост</tr>)
 * attr. vs. pred. adjectives (in sjd and rus!)
-
+* translations needs to be checked carefully: cf. this example: the basic meaning of this Kildin word clearly means "unfamiliar, unknown", of course in some situations this can also be expressed as "new", but as a translation of the lemma >eehk< "new" is clearly wrong, especially in a vocabulary trainer (in a true dict we could give this "new-meaning" in an example sentence)
+{{{
+   <entry>
+      <lemma>е̄ххк</lemma>
+      <pos class="a"/>
+      <translations>
+         <tr xml:lang="rus">незнакомый</tr>
+         <tr xml:lang="rus">новый</tr>
+         <tr xml:lang="eng">unfamiliar</tr>
+         <tr xml:lang="eng">new</tr>
+      </translations>
+      <semantics>
+         <sem class="HUMAN"/>
+         <sem class="CLOTHES"/>
+      </semantics>
+      <sources>
+         <book name="Saamkilsyjjt"/>
+      </sources>
+  </entry>
+}}}
 
