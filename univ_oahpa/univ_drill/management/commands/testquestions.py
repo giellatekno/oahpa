@@ -41,6 +41,36 @@ def _firstelement(e, x):
 
 from univ_drill.models import Tagname, Tagset, Form
 
+def parse_tag(tag):
+    """ Iterate through a tag string by chunks, and check for tag sets
+    and tag names. Return the reassembled tag on success. """
+
+    def fill_out(tags):
+        from itertools import product
+
+        def make_list(item):
+            if type(item) == list:
+                return item
+            else:
+                return [item]
+
+        return list(product(*map(make_list, tags)))
+
+    tag_string = []
+    for item in tag.split('+'):
+        if Tagname.objects.filter(tagname=item).count() > 0:
+            tag_string.append(item)
+        elif Tagset.objects.filter(tagset=item).count() > 0:
+            tagnames = Tagname.objects.filter(tagset__tagset=item)
+            tag_string.append([t.tagname for t in tagnames])
+        else:
+            tag_string.append(item)
+
+    if len(tag_string) > 0:
+        return ['+'.join(item) for item in fill_out(tag_string)]
+    else:
+        return False
+
 _boolify = lambda v: True and v.lower() in ['yes', 'true', 'y'] or False
 
 # TODO: for now i assume these don't change throughout the course of the
@@ -145,7 +175,256 @@ class GrammarDefaults(object):
         
         self.grammar_definitions = grammar_definitions
 
+class Agreement(object):
 
+    @property
+    def agreement(self):
+        if self._agreement:
+            return self._agreement
+
+        # Any processing that needs to be done here?
+
+        self._agreement = self.agreement_data['Agreements']
+        return self._agreement
+    
+    @property
+    def agreement_by_element_name_all(self):
+        """ A dictionary of all agreement names by targeted elements
+        """
+        if self._agreement_by_element_name_all:
+            return self._agreement_by_element_name_all
+        
+        elements_to_agreements_all = {}
+        for agreement_pattern in self.agreement:
+            elems = [e['element'] for e in agreement_pattern['elements']]
+            for elem in elems:
+                if elem in elements_to_agreements_all:
+                    elements_to_agreements_all[elem].append(agreement_pattern['name'])
+                else:
+                    elements_to_agreements_all[elem] = [agreement_pattern['name']]
+
+        self._agreement_by_element_name_all = elements_to_agreements_all
+        return self._agreement_by_element_name_all
+
+
+    @property
+    def agreement_by_element_name_question(self):
+        """ A dictionary of only agreement elements valid for the question.
+        """
+        if self._agreement_by_element_name_question:
+            return self._agreement_by_element_name_question
+
+        def question_only(item):
+            if item.starts_with('Question/'):
+                return item.replace('Question/', '')
+            else:
+                return None
+
+        self._agreement_by_element_name_question = filter(question_only,
+                    self.agreement_by_element_name_all)
+
+        return self._agreement_by_element_name_question
+
+    @property
+    def agreement_by_element_name_answer(self):
+        """ A dictionary of only agreement elements valid for the answer.
+        """
+        if self._agreement_by_element_name_answer:
+            return self._agreement_by_element_name_answer
+
+        def answer_only(item):
+            if item.starts_with('Answer/'):
+                return item.replace('Answer/', '')
+            else:
+                return None
+
+        self._agreement_by_element_name_answer = filter(answer_only,
+                    self.agreement_by_element_name_all)
+
+        return self._agreement_by_element_name_answer
+
+    @property
+    def agreement_by_name(self):
+        if self._agreement_by_name:
+            return self._agreement_by_name
+
+        by_name = {}
+        for agr in self.agreement:
+            by_name[agr['name']] = agr
+
+        self._agreement_by_name = by_name
+        return self.agreement_by_name
+
+    def get_agreement(self, agreementname):
+        agr_info = self.agreement_by_name.get(agreementname)
+
+        if not agr_info:
+            return False
+
+        class Agr(object):
+
+            def match_and_replace(agr_cls, head, targets):
+                import re
+
+                def pattern_match(x, y):
+                    x_head, x_agr, x_tail = x.partition('AGR')
+
+                    if y.startswith(x_head) and y.endswith(x_tail):
+                        return True
+                    else:
+                        return False
+
+                tag_patterns = agr_cls.head['tag']
+                head_element = agr_cls.head['element']
+
+                # TODO: when there are multiple targets
+                targ_patterns = agr_cls.targets[0]['tag']
+                targ_element = agr_cls.targets[0]['element']
+
+                tag_pattern = False
+                for tag_p in tag_patterns:
+                    if pattern_match(tag_p, head):
+                        tag_pattern = tag_p
+                        break
+                
+                try:
+                    agr_inner_re = re.escape(tag_pattern).replace('AGR', '(?P<agr>\w+)')
+                    agr_inner = re.match(agr_inner_re, head)
+                    agr_inner = agr_inner.group('agr')
+                except:
+                    agr_inner = False
+
+                # Take the chunk of the tag from the head tag pattern, and
+                # insert the agreed version (from agreements) into the target
+                # tag pattern then expand all the tags 
+                replacements = dict([(r[head_element], r[targ_element]) for r in agr_cls.replacements]) 
+                agr_target = replacements.get(agr_inner)
+                target_tags_set = parse_tag(targ_patterns.replace('AGR', agr_target))
+
+                def target_match(t):
+                    if t in target_tags_set:
+                        return True
+                    else:
+                        return False
+                    return True
+                    
+                targets = filter(target_match, targets)
+
+                return head, targets
+
+            def agree_for(agr_cls, element_tags):
+
+                # Get the head from the supplied tags
+                head_element = element_tags.get(agr_cls.head_name, False)
+                # TODO: no head found error
+
+                # Get the possible target tags from the supplied tags
+                target_elems = [(t.get('element'), element_tags.get(t.get('element'))) 
+                                for t in agr_cls.targets]
+
+                if len(agr_cls.targets) > 1:
+                    print >> sys.stderr, "Multiple targets. TODO."
+                    sys.exit()
+
+                target_elems_name = target_elems[0][0]
+                target_elems = target_elems[0][1]
+
+                # filter out non-agreeing target tags
+                head, agr_targets = agr_cls.match_and_replace(head_element, target_elems)
+
+                agreement = {
+                    agr_cls.head_name: head,
+                    target_elems_name: agr_targets
+                }
+
+                return agreement
+
+            def __init__(agr_cls):
+                agr_cls.agr_info = agr_info
+
+                is_head = lambda x: x and x.get('head', False) or False
+                isnt_head = lambda x: not is_head(x)
+
+                # TODO: need to make agr_info target elements available because
+                # need tag for match and replace above, also potential that
+                # there are mutliple targets, ugh, maybe should just ignore it
+                # for now 
+                agr_cls.targets = filter(isnt_head, agr_info['elements'])
+
+                print 'omg'
+                print agr_cls.targets
+                agr_cls.head = filter(is_head, agr_info['elements'])
+
+                if len(agr_cls.head) == 1:
+                    agr_cls.head = agr_cls.head[0]
+                    agr_cls.head_name = agr_cls.head['element']
+                else:
+                    # TODO: errors for multiple and no agr head specified
+                    agr_cls.head = False
+                    agr_cls.head_name = False
+
+                agr_cls.replacements = agr_info['agreements']
+
+
+        return Agr()
+
+
+
+    def __init__(self, agreementfilename):
+        import yaml
+
+        self._agreement = False
+        self._agreement_by_name = False
+        self._agreement_by_element_name_all = False
+        self._agreement_by_element_name_question = False
+        self._agreement_by_element_name_answer = False
+        
+
+        with open(agreementfilename, 'r') as F:
+            self.agreement_data = yaml.load(F)
+    
+    def agreement_requires_element(self, agreement_name, element_name):
+        agreement_item = self.agreement_by_name.get(agreement_name, False)
+
+        non_heads = [element_['element'] for element_ in agreement_item['elements']
+                        if element_.get('head', False) != True]
+
+        if len(non_heads) > 0:
+            if element_name in non_heads:
+                return True
+            else:
+                return False
+        else:
+            return False
+
+    def find_possible_agreements(self, element_names, question_or_answer=False):
+        """ Take a list of element names, and return possible agreement types.
+
+            @param question_or_answer (False) - if set to question or answer,
+            then only search for possible agreement items that have to do with
+            that context.
+        """
+
+        # TODO: maybe need a list of partial agreement things if a head is
+        # found but no tail is found, in the event that Question-Answer
+        # agreement systems need to be handled
+        agreements_matching_individual_elements = []
+        element_names_agreements_and_tails_exist = []
+
+        for element_name in element_names[:]:
+            agreement_names = self.agreement_by_element_name_all.get(element_name, [])
+            non_heads = [e for e in element_names[:] if e != element_name]
+
+            for agr_name in agreement_names:
+                for non_head in non_heads:
+                    if self.agreement_requires_element(agr_name, non_head):
+                        element_names_agreements_and_tails_exist.append((element_name, agr_name))
+
+        return element_names_agreements_and_tails_exist
+
+
+
+        
 
 class QObj(GrammarDefaults):
     """ Contains methods necessary for testing questions for Morfa-C.
@@ -426,6 +705,44 @@ class QObj(GrammarDefaults):
         return new_elems
     
     def checkSyntax(self, elements):
+        # TODO: Agreement() stuff needs to be included in other steps as well. 
+        if elements:
+            elements_d = dict(elements)
+        else:
+            return elements
+        if self.agreement:
+            agreement = self.agreement
+        else:
+            return elements
+    
+        keys = elements_d.keys()
+        possible_agreements = agreement.find_possible_agreements(keys)
+
+        # For each possible agreement, mark elem['meta']['agreement'] with the head
+        for poss in possible_agreements:
+            head, name = poss
+            head_elem = elements_d[head]
+
+            try:                head_elem.pop('wordforms')
+            except:             pass
+            
+            try:                head_elem.pop('copy')
+            except:             pass
+            
+            try:                head_elem.pop('selected')
+            except:             pass
+
+            elements_d[head] = head_elem
+
+
+        elements_reorder = []
+        for a, v in elements:
+            elements_reorder.append((a, elements_d[a]))
+
+        return elements_reorder
+
+
+    def checkSyntaxOld(self, elements):
         elements_d = dict(elements)
         agr = False
 
@@ -477,24 +794,27 @@ class QObj(GrammarDefaults):
     
     def selectItems(self, elements):
         elements_d = dict(elements)
-        agreements = list()
+        agreement = self.agreement
+        found_agreements = list()
         
         # Find agreement
         for elem_id, elem_data in elements_d.items():
             if elem_data:
                 if elem_data.has_key('meta'):
                     if elem_data['meta'].has_key('agreement'):
-                        agreement = (elem_data['meta']['agreement'], elem_id)  # SUBJ, MAINV, RPRON?
-                        agreements.append(agreement)
+                        agr = (elem_data['meta']['agreement'], elem_id)  # SUBJ, MAINV, RPRON?
+                        found_agreements.append(agr)
         
         # If there's agreement, strip non-agreeing tags.
 
-        if len(agreements) > 0:
-            for agreement in agreements:
+        print found_agreements
+        raw_input()
+        if len(found_agreements) > 0:
+            for agr in agreements:
                 head_tag = ''
 
-                agreement_head = agreement[0]
-                agreeing_item = agreement[1]
+                agreement_head = agr[0]
+                agreeing_item = agr[1]
                 try:
                     head = elements_d[agreement_head]
                 except KeyError:
@@ -668,7 +988,8 @@ class QObj(GrammarDefaults):
 
         pass
 
-    def __init__(self, q_node, grammar_defaults=False):
+    def __init__(self, q_node, grammar_defaults=False, agreements=None):
+        self.agreement = agreements
         self.errors = {}
         self.NO_ERRORS = False
         if grammar_defaults:
@@ -774,15 +1095,93 @@ class Command(BaseCommand):
                         help="Store all output to a file in addition to stdout."),
     )
 
+    def test_agreement(self):
+        fname = 'univ_drill/management/commands/testquestions_agreement_defs.yaml'
+
+        agr = Agreement(fname)
+
+        test = ['SUBJ', 'MAINV']
+        print agr.find_possible_agreements(test)
+
+        test = ['SUBJ', 'MAINV', 'OBJ']
+        print agr.find_possible_agreements(test)
+
+        # Capable of returning two agreements if there are several
+        test = ['SUBJ', 'P-REC', 'MAINV', 'RECPL']
+        print agr.find_possible_agreements(test)
+
+        # Will not return one if head is missing
+        test = ['P-REC', 'MAINV', 'RECPL']
+        print agr.find_possible_agreements(test)
+
+        # Will not return one if required elements are missing
+        test = ['SUBJ', 'P-REC', 'RECPL']
+        print agr.find_possible_agreements(test)
+
+        subj_mainv = agr.get_agreement('SUBJ-MAINV agreement')
+        print subj_mainv.agree_for({
+            'SUBJ': 'N+Sg+Nom',
+            'MAINV': [
+                'V+Ind+Prs+Sg1',
+                'V+Ind+Prs+Sg2',
+                'V+Ind+Prs+Sg3',
+                'V+Ind+Prs+Du1',
+                'V+Ind+Prs+Du2',
+                'V+Ind+Prs+Du3',
+                'V+Ind+Prs+Pl1',
+                'V+Ind+Prs+Pl2',
+                'V+Ind+Prs+Pl3',
+            ],
+        })
+
+
+        subj_mainv = agr.get_agreement('SUBJ-MAINV agreement')
+        print subj_mainv.agree_for({
+            'SUBJ': 'N+Pl+Nom',
+            'MAINV': [
+                'V+Ind+Prs+Sg1',
+                'V+Ind+Prs+Sg2',
+                'V+Ind+Prs+Sg3',
+                'V+Ind+Prs+Du1',
+                'V+Ind+Prs+Du2',
+                'V+Ind+Prs+Du3',
+                'V+Ind+Prs+Pl1',
+                'V+Ind+Prs+Pl2',
+                'V+Ind+Prs+Pl3',
+            ],
+        })
+
+        subj_mainv = agr.get_agreement('SUBJ-MAINV agreement')
+        print subj_mainv.agree_for({
+            'SUBJ': 'Pron+Pers+Sg3+Nom',
+            'MAINV': [
+                'V+Ind+Prs+Sg1',
+                'V+Ind+Prs+Sg2',
+                'V+Ind+Prs+Sg3',
+                'V+Ind+Prs+Du1',
+                'V+Ind+Prs+Du2',
+                'V+Ind+Prs+Du3',
+                'V+Ind+Prs+Pl1',
+                'V+Ind+Prs+Pl2',
+                'V+Ind+Prs+Pl3',
+            ],
+        })
+        raw_input()
+
     def handle(self, *args, **options):
         import sys, os
 
         qpath = options['questionfile']
         gpath = options['grammarfile']
+        agreement_defs = 'univ_drill/management/commands/testquestions_agreement_defs.yaml'
+
         iterations = int(options['itercount'])
         test_qid = options['qid']
 
         logfile = options['logfile']
+
+        # self.test_agreement()
+        raw_input()
 
         if logfile:
             log = FileLog(logfile)
@@ -802,6 +1201,7 @@ class Command(BaseCommand):
         defaults_tree = _dom.parse(defaults_file)
         
         defaults = GrammarDefaults(defaults_tree)
+        agreements = Agreement(agreement_defs)
 
         questionfile = open(qpath)
         tree = _dom.parse(questionfile)
@@ -827,7 +1227,7 @@ class Command(BaseCommand):
         _ERR = sys.stderr
         
         for q_node in tree:
-            q = QObj(q_node, grammar_defaults=defaults)
+            q = QObj(q_node, grammar_defaults=defaults, agreements=agreements)
             
             log.log(' == QUESTION: %s ==' % q.qid, _OUT)
         
@@ -877,5 +1277,5 @@ class Command(BaseCommand):
 
 
 
-# vim: set ts=4 sw=4 tw=0 syntax=python :
+# vim: set ts=4 sw=4 tw=0 syntax=python expandtab :
 
