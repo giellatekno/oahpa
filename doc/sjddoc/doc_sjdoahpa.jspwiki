@@ -5,67 +5,91 @@
 
 
 !!!Howto
+
 !! The commands
 
-==> assumption that mysql is installed and can communicate with django via python
-==> assumption that you have already create the project and the applications
-    via django-admin
+# ==> assumption that mysql is installed and can communicate with django via python
+# ==> assumption that you have already create the project and the applications
+      via django-admin
 
 Caveat: This should be a new project, the settings in, for instance, sjdoahpa/settings.py
 are for the victorio server!
 
 mysql must be running. To make it run:
 
-start mysql server via system_preferences/control_panel/mysql
+{{start mysql server via system_preferences/control_panel/mysql}}
 
 !! Installing the database
 
-(note: The \# sign here to be read as shell \#)
+log in to the mysql application via terminal
 
-$ mysql -u root -p \# log in to the mysql application via terminal
-\# then in the mysql-shell
-mysql> show databases; \# see what dbs you have.
+{{$ mysql -u root -p}}
 
-suppose that you don't have sjdoahpa <==
+Then in the mysql-shell,  see what dbs you have.
+
+{{mysql> show databases; }}
+
+suppose that you don't have sjdoahpa,
 but suppose that you HAVE installed mysql (I installed it for Trond)
 however, one has to make mysql talk to django via python
 (see above)
-mysql> create database sjdoahpa character set utf8 collate utf8_bin; \# create sjdoahpa (this is only the db, no other tables in it!)
-mysql> exit; \# log out from mysql
 
-$ cd sjdoahpa/sjd_oahpa/ \# go into the oapha dir
-$ less settings.py \# here is the password for MySQL
-$ python manage.py syncdb \# install the tables in the newly created (or just empty) db called sjdoahpa 
-\# watch out: you have to answer yes/no to a question in the terminal during the installation of the db
+Create sjdoahpa (this is only the db, no other tables in it), and then
+log out from mysql.
 
-\# now install dictionaries
+{{{
+mysql> create database sjdoahpa character set utf8 collate utf8_bin; 
+mysql> exit; 
+}}}
 
+go into the oapha dir (ks salasana)
+
+{{{
+$ cd sjdoahpa/sjd_oahpa/
+$ less settings.py
+}}}
+
+Install the tables in the newly created (or just empty) db called sjdoahpa.
+Watch out: you have to answer yes/no to a question in the terminal during 
+the installation of the db
+
+
+{{$ python manage.py syncdb}}
+
+Now install dictionaries
+
+{{{
 $ python install.py -f ../sjd/dict_sjd-rus.xml \# one dic
 $ python install.py -f ../sjd/dict_rus-sjd.xml \# and the other
+}}}
 
 Now, all should be installed properly.
 
 !! Start app
 
 Start application from sjdoahpa/sjd_oahpa/ dir
-$ python manage.py runserver
+
+{{$ python manage.py runserver}}
 
 The url where sjd_oahpa is found on the local machine is: 
 
-* [http://127.0.0.1:8000/sjd_oahpa/]
+* [http://127.0.0.1:8000/sjd_oahpa/|http://127.0.0.1:8000/sjd_oahpa/]
 
 !!Adding words
-1. add words in the xml file
-2. install dictionaries as described above
+
+# add words in the xml file
+# install dictionaries as described above
 
 
 !!Localisation
 
+This is as usual:
+{{{
 $ django-admin.py makemessages -a
 $ django-admin.py compilemessages
+}}}
 
-
--------
+----
 
 
 Does not belong here, but still:
@@ -77,7 +101,8 @@ Report from Audun:
 Esa Anttikoski's README file: (ReadMeEng.rtf)
 
 KEYBOARD LAYOUT FOR WINDOWS NT/2000/XP
-http://www.peoples.org.ru/eng_key32U.html
+
+[http://www.peoples.org.ru/eng_key32U.html|http://www.peoples.org.ru/eng_key32U.html]
 
 This keyboard layout replaces the standard Russian keyboard for
 Windows NT/2000/XP. Before installing a new layout, you must
