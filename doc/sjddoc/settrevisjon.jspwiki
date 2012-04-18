@@ -90,19 +90,25 @@ MOVE_V: gå, svømme..
 HUMAN_A: aktiv, snill....
 FEEL_V
 DO_V: lägga, putta, ge, ta, ...
-HUMAN_GROUP (?) - akkalasame, kildinsame, ...
+HUMAN_GROUP (?) - akkalasame, kildinsame, kvinna, man, barn,...
+de tre orden FRÅN PEOPLE_OTHER skulle passa in här (ungdomar, grupp, folk)
+
+Från HUMAN borde också en del ord flyttas över till andra grupper (HELTH, BODY etc)
+
 
 Akkala Saami,Akkala Saami language,I,Jukanga Saami language,Kildin,Kildin Saami,Lappish,RELATIVEd,Saami,Sami,Skolt,Skolt Saami,Ter Saami language,acquaintance,active,akkala-lappish,alone,always,amicably,any,anybody,anything,at the left,badly,beautiful,beautifully,behind,big meeting,bitterly,brisk,by foot,by swimming,clever,close,daring,deaf,dear,different,difficult,difficultly,during fight,during war,economic,everyone,expensive,following,for,forward,friendly,funny,greatest,greedy,happy,hard,heavy,here,high,highly,huge,in twos,it,lazy,left,long,loudly,modern,modest,near,nearby,negligent,nice,now,old,on foot,on the left,on the right,on the sly,on war,perfectly,pleasantly,quickly,right,senior,sensible,silently,silly,sincere,sincerely,skillful,skillfully,small,smart,somebody,someone,something,sredne-small,strong,stubborn,sweet,tender,the youngest,these,they,timid,to act,to allow,to answer,to anybody,to ask,to be,to be afraid,to be rather afraid,to become callous,to become hardened,to beg,to believe,to betray,to caress,to carry,to catch,to change a place,to come nearer,to cut hair or wool,to cut off,to die,to drag,to extract,to fall asleep,to find,to fix,to give,to go,to guess,to harden,to hunt,to indulge,to it is necessary,to kill,to lie,to listen,to live,to meet,to move,to nurse,to pass to a new place,to pull out,to push,to remember,to repair,to rise,to row,to run,to see,to sing,to sing a traditional lappish song,to sit,to sit down,to sleep,to speak,to sympathize,to talk,to tell,to the left,to trust,to walk,to wash,to watch,to work,to write,to yoik,today's,together,unfamiliar,unhappy,unintentionally,untidy,very much,warm,we,well,who,with anybody,with whom,you,young,
-* 14 PEOPLE
+* 14 PEOPLE   (ме̄ххьцла = jägare  flytta till PROFESSION?)
 * 3 PROFESSION
 * 3 PEOPLE_OTHER
 
 !! Supersett KIN
-* 86 RELATIVE
+* 86 RELATIVE (här finns även ord som hör till FAMILY, det finns även adverb, adjektiv med...ska de flyttas någon annanstans?)
 * 3 FAMILY
 
 !! Supersett NAME
 * 57 PERSNAME
+       PERSNAME_FEMAL
+	   PERSNAME_MALE
 * 10 PLACENAME
 * 1 NAME_OTHER
 
@@ -115,13 +121,27 @@ ash,day,earth,fire,forest,month,moon,mountain,night,rain,sand,sea,sky,smoke,star
 
 !! Supersett PLACE
 * 250 LIVING_PLACE
+      LIVING_PLACE_HOME  (allt som finns hemma i ett hus/en lägenhet)
+      LIVING_PLACE_NATURE (allt som kan finnas på en traditionell boplats: lavvu, eldstad, etc)
+     BUILDING
+     LIVING_PLACE_TOWN/VILLAGE (kyrkogård, sjukhus, butiker, buss, bil,...)
+     En del ska flyttas til PLACE_NAMES (okangsky country churchyard,Kildin,Kildinsky country, ...)
+
+
 Jokangsky country churchyard,Kildin,Kildinsky country churchyard,Kola,Kola peninsula,Lovozero,Lumbovka,Lumbovsky country churchyard,Pulozero ,Pulozersky country churchyard,RELATIVEdergarten,Saami tent,Saami tents,Teriberka,Varzinsky country churchyard,Voroninsy country churchyard,a branch for bed,a pet,a pole,a pure place,administration,always,animal house,anywhere,aperture for a smoke,arrival,artificial dirt,ash,at the left,attic,bag,ball,balls,barn,basket,bay,bed,bed place,behind,big branch,big meeting,blanket from cervine sRELATIVEs,blew,boat,boaššu_ENG,border,box,branch on a floor for bed,brand,breakfast,bucket,buffoonery,butt,candle,canvas,case,ceiling,chair,chairman,chock,city,clever,close,cloth,cloth for smoke adjustment,coast,complexity,coniferous branch,convenient,copper,corner,corridor,cover,crossbeam for kettles,cup,deep plate,different,difficulty,dinner,dirt,district,door,door handle,downwards,dry branch,dry fire wood from a pine,during fight,during war,economic,edge,everyone,far,fence,fight,fire,fire wood,fire wood tarry,fireplace,fishing hook,fishing tools,fishing utensils,flat plate,floor,for,from above,frying pan,further,game with stones,game-get,garbage,garden,granary,grid,gulf,hello,here,hi,high,highly,hook,hook for a kettle,horn,in a corner,in settlement,in the street,in village,input,inside,island,kettle,key,kitchen,kitchen garden,knot,ladder,lake,lasso,leader,left,lip,little table,little tables,lock,lovozersky country churchyard,match,nail,native land,natural dirt,near,nearby,oar,on foot,on the left,on the right,on the street,on war,outside,oven,owner,pan,peninsula,pillow,pipe,place,place for fire wood,plate,pole for a plague,porch,problem,pure place in куваксе,reduction,residence,right,river,roof,room,sandy coast,school,seaside,seine,shelf,skis,sledge,small branch,small fire-place,small plagues ,small river,small skis,soddy,soot,soup plate,spring,steam,stone,street,supper,table,tables,teapot,tent,tents,there,things,threshold,to awake,to be,to be afraid,to be broken off,to be frightened,to be seen,to begin,to break,to buy,to carry,to chop firewood,to close,to close the lock,to cover,to dig,to drag,to enter,to fix,to gather,to give,to go,to live,to lock,to open,to paint,to play,to prepare,to prick,to pull out,to put plagues,to put tent,to put куваксу,to repair,to seem,to sit,to sit down,to sleep,to split fire wood,to start to do something,to sweep,to the left,to thicket,to throw,to visit,to walk,to wash,toilet,toilet paper,tool,top,towel,train,trap,upwards,utensils,village,village seaside,war,whence,where,window,window leaf,wooden ware,world,
 * 86 PLACE_NATURE
  hill,a birchwood,a grove birch,abrupt mountain,artificial dirt,asterisk,barn,behind,bog,border,center,close,deep,deep about lake,deep about river,deeply,deeply about lake,den,depth,depth about lake,depth about river,dirt,distance,distant,district,edge,far,fenny bog,for,from above,fruitful the berries,further,further in forest,further on road,glade mow,granary,grove,grove birch,hay,height,here,high,highly,interval,it is deep about a reservoir,it is deep about the river,lengthways,lifting on mountain,long,low,more deeply,more deeply in the river,mountain peat,mountain top,mountain without vegetation,mountains ridge,naked mountain,narrow,narrowly,natural dirt,near,nearby,on foot,pasture,peat,place,plain,reduction,rich with berries,rock,rocky mountain,sacred stone,short,slope,small mountain,small wood,steep slope,stone signs in mountains,the middle,there,to,to be afraid,to be frightened,to be seen,to dig,to go down,to rise,to see,to seem,top,tundra,upwards,whence,where,wide,
 * 68 PLACE_WATER
-Golf Stream,a bank,a network on lake,bank at coast,bay,boat,bottom,bow,by swimming,coast,creek,current,deep,deep about lake,deep about river,deeply,deeply about lake,depth,depth about lake,depth about river,earth land,fishing hook,front part of a boat,further in lake,grid,gulf,hook,island,it is deep about a reservoir,it is deep about the river,lake,land,lengthways,lip,more deeply,more deeply in the river,mouth,neck,networks on lake,oar,passage,peninsula,quiet place on the river,reach,reservoir,rich with fish,rift on the river,rifts on the river,river,river bend,rowlock,sandy coast,scree,seine,silt,small lake,small lip,small river,small streamlet,small threshold,small thresholds,source,spring,stone,stream,there,threshold,thresholds,to,to adhere,to be afraid,to be frightened,to be seen,to carry,to catch a fishing tackle,to collect grids,to drag,to lower grids,to pull out,to push away a boat,to push away a boat from the coast,to repair grids,to row,to seem,wave,
+	 PLACE_WATER_V (simma, ro, drunkna,...)
+	 PLACE_WATER_A (blött, kallt, djup, ...)
+
+Golf Stream,a bank,a network on lake,bank at coast,bay,boat,bottom,bow,by swimming,coast,creek,current,deep,deep about lake,deep about river,deeply,deeply about lake,depth,depth about lake,depth about river,earth land,fishing hook,front part of a boat,further in lake,grid,gulf,hook,island,it is deep about a reservoir,it is deep about the river,lake,land,lengthways,lip,more deeply,more deeply in the river,mouth,neck,networks on lake,oar,passage,peninsula,quiet place on the river,reach,reservoir,rich with fish,rift on the river,rifts on the river,river,river bend,rowlock,sandy coast,scree,seine,silt,small lake,small lip,small river,small streamlet,small threshold,small thresholds,source,spring,stone,stream,there,threshold,thresholds,to,to adhere,to be afraid,to be frightened,to be seen,to carry,to catch a fishing tackle,to collect grids,to drag,to lower grids,to pull out,to push away a boat,to push away a boat from the coast,to repair grids,to row,to seem,wave
+
 !! Supersett PLANT
-* 65 PLANT
+* 65 PLANT  (björk, träd, blomma, blåbär, ...)
+     PLANT_PARTS (gren, löv, rot...)
+     PLANT_A (mogen om hjortron)
+	 PLANT_V (plocka bär, ...)
 
 !! Supersett PRONOUN
 * 122 PRONOUN
@@ -129,9 +149,18 @@ Golf Stream,a bank,a network on lake,bank at coast,bay,boat,bottom,bow,by swimmi
 !! Supersett EDUCATION
 * 2 BUILDING
 * 201 SCHOOL_EDUCATION
+
+      SCHOOL_EDUCATION_V  (lära ut, lära sig, skriva, läsa, ...)
+      SCHOOL_EDUCATION_A (duktig, klug, lat, ...)
+      SCHOOL_EDUCATION_TOOLS (bok, papper, penna, bord, stol...)
+      
+      LANGUAGE_TERMINOLOGY  (Kanske bättre än bara Grammarterminology? Då kan vi ha med både grammatisk terminologi: kasus, halvpalatalisering, ...  och beteckningarna på de olika samiska språken: kildinsamiska, akkalasamiska, nordsamiska,...) 
+     
+      
+      
 Akkala Saami,Akkala Saami language,Central Saami language ,East Saami language,Jukanga Saami language,Kildin,Kildin Saami,Kildin Saami language,Kildin language,Lappish,Lappish language,RELATIVEdergarten,Saami,Saami alphabet,Saami lanugage,Sami,Sami language,Skolt,Skolt Saami,Skolt Saami language,Skolt language,South Saami,South Saami language,Ter Saami language,account,active,activist,advantage,akkala-lappish,alphabet,amicably,answer,at seven o'clock,at the seventh o'clock,attentively,backpack,badly,bag,balls,before,before the end of the century,big meeting,board,book,break,brisk,business,by seven o'clock,carrier,case,cases,chairman,children,clear,clever,companion,complexity,composition,congratulation,consonant,conversation,dictionary,different,difficult,difficultly,difficulty,drawing,dream,drum,during fight,during war,earlier,education,end of the century,estimation,everyone,fairy tale,fight,funny,game with stones,game-get,hard,heavy,horn,hours,how many,imagination,in Saami,in a corner,inside,interest,knowledge,language group,language nest,language revitalisation,laughter,laziness,lazy,leader,letter,lot,loudly,manual,manuals,memory,mind,native speaker,note,number,pattern,perfectly,performance,phrase book,pleasantly,plural,possibility,present,price,problem,pta meeting,public,pupil,question,quickly,rattle,reading and writing,reason,recalls,report,resume,riddle,satchel,school,scientific,scientist,semisoft sign,sense,sensible,seven hours,short,short letter,short text,sign,silly,singular,smart,soft sign,sound,speaRELATIVEg,speech,story,task,teacher,teaching material,teaching materials,the native speaker talRELATIVEg,the seventh hour,the teacher,this year,thought,time,time later,to abuse,to act,to allow,to answer,to argue,to ask,to assume,to awake,to be brought up,to be engaged,to beg,to bring up,to congratulate,to consider,to cross out,to dictate,to divide,to draw,to dream,to exorcise,to forget,to gather,to go obstinate,to grumble,to have a rest,to inform,to know,to listen,to listen to somebody,to meet,to play,to play pranks,to prepare,to read,to remember,to say,to see,to show,to sing,to sing a traditional lappish song,to sit down,to solve,to speak,to start to speak,to study,to talk,to tell,to tell a fairy tale,to thicket,to think,to undersign,to understand,to watch,to write,toys,traditional lappish song,training,tutor,verb,verse,verses,vowel sound,war,well,word,work,
 * 22 NUMBER
-* 32 GRAMMAR_TERMINOLOGY
+* 32 GRAMMAR_TERMINOLOGY  (tabort den och putta in i LANGUAGE_TERMINOLOGY istället?)
 
 !! Supersett TRAVEL
 * 27 TRAVEL
@@ -140,6 +169,10 @@ Akkala Saami,Akkala Saami language,Central Saami language ,East Saami language,J
 * 13 MONTH
 * 93 TIME
 * 12 WEEKDAY
+
+     TIME_ADV  (tidigt, sent, förr, ...)
+     TIME_V
+     
 
 !! Supersett VERB
 * 187 VERB_OTHER
