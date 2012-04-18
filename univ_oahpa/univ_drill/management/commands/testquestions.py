@@ -3,6 +3,7 @@ from django.core.management.base import BaseCommand, CommandError
 # from_yaml(cls, loader, node)
 
 from optparse import make_option
+from django.utils.encoding import smart_unicode
 
 import sys
 
@@ -1091,10 +1092,7 @@ class FileLog(object):
         if not string.endswith('\n'):
             string += '\n'
         
-        try:
-            string = string.encode('utf-8')
-        except UnicodeEncodeError:
-            pass
+        string = smart_unicode(string)
 
         if self.logfile:
             self.logfile.write(string)
@@ -1309,8 +1307,11 @@ class Command(BaseCommand):
                     finally:
                         error = True
 
-                    log.log('    Q: ' + u'%s (%s)' % (q.question_text, qword), _OUT)
-                    log.log('    A: ' + u'%s' % answer.answer_text_blank, _OUT)
+                    q_fmt = '    Q: ' + u'%s (%s)' % (q.question_text, qword)
+                    a_fmt = '    A: ' + u'%s' % answer.answer_text_blank
+                    
+                    log.log(q_fmt.encode('utf-8'), _OUT)
+                    log.log(a_fmt.encode('utf-8'), _OUT)
                     
                     try:
                         aword = answer.task.values()[0]['selected']
