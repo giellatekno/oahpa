@@ -703,9 +703,9 @@ class Tag(models.Model):
 		self.fix_attributes()
 		super(Tag, self).create(*args, **kwargs)
 
-	def save(self, *args, **kwargs):
-		self.fix_attributes()
-		super(Tag, self).save(*args, **kwargs)
+	# def save(self, *args, **kwargs):
+	# 	self.fix_attributes()
+	# 	super(Tag, self).save(*args, **kwargs)
 
 class Form(models.Model):
 	word = models.ForeignKey(Word)
@@ -821,7 +821,7 @@ class Form(models.Model):
 				baseform = baseform_num
 			
 		elif self.tag.pos in ['V', 'v']:
-			if self.word.lemma in [u'lea', u'ij']:
+			if self.word.lemma in [u'lea', u'ii']:
 				kwarg = {'tag__personnumber': 'Sg3'}
 			else:
 				kwarg = {'tag__infinite': 'Inf'}
