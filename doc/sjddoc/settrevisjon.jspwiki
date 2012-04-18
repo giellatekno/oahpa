@@ -2,9 +2,6 @@
 
 Etterpå overfører vi
 
-Dette dokumentet inneheld eit oversyn over supersett og subsett (for ei 
-liste over orda i kvart sett, sjå [her|semsett/KildinSemsets.html]).
-
 !! Supersett ABSTRACT
 * 24 ABSTRACT
 
@@ -20,6 +17,24 @@ substantiver deles inn i
 verb: ANIMAL_V
 adjektiver: ANIMAL_A  (f.eks. bisk, sint, osv - høveligere her enn i HUMAN :-)
 
+semantical_set
+	<subclasses class="ANIMAL_FISH">
+      <sem class="BIRD"/>
+      <sem class="FISH"/>
+      <sem class="ANIMAL"/>
+	  <sem class="ANIMAL_WILD 
+	  <sem class="ANIMAL_DOM husdyr
+	  <sem class="ANIMAL_PET kjæledyr
+      <sem class="ANIMAL_OTHER"/>
+    </subclasses>
+
+forms.py
+SEMTYPE_CHOICES = (
+    ('KIN', _('family')), 
+    ('HUMAN', _('human')), 
+    ('ANIMAL_FISH', _('animal/fish')),
+    ('BODY', _('body')),
+
 * 2 ANIMAL_OTHER
 
 !! Supersett BODY
@@ -32,9 +47,9 @@ unersett:
 	
 !! Supersett CHURCH
 * 59 CHURCH
-undersett:
-	CHURCH_V - be, frälsa ...
-	CHURCH_A _ helig, ond ...
+undersett: -- done
+	CHURCH_V - be, frälsa ... (alle i v-sjdrus.xml) 
+	CHURCH_A _ helig, ond ... (alle i a-sjdrus.xml)
 
 !! Supersett CLOTHING
 * 94 CLOTHES
@@ -107,7 +122,7 @@ Akkala Saami,Akkala Saami language,I,Jukanga Saami language,Kildin,Kildin Saami,
 
 !! Supersett NAME
 * 57 PERSNAME
-       PERSNAME_FEMAL
+       PERSNAME_FEMALE
 	   PERSNAME_MALE
 * 10 PLACENAME
 * 1 NAME_OTHER
