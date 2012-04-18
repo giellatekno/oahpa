@@ -267,7 +267,18 @@ class Agreement(object):
                 import re
 
                 def pattern_match(x, y):
+                    # TODO: Clean this up
+                    # basically, can y match x with corresponding value replaced with AGR
                     x_head, x_agr, x_tail = x.partition('AGR')
+                    agr_inner_re = re.escape(x).replace('AGR', '(?P<agr>\w+)')
+                    agr_inner = re.match(agr_inner_re, y)
+                    try:
+                        agr_inner = agr_inner.group('agr')
+                        z = y.replace(agr_inner, 'AGR')
+                        if x == z:
+                            return True
+                    except:
+                        return False
 
                     if y.startswith(x_head) and y.endswith(x_tail):
                         return True
@@ -283,9 +294,11 @@ class Agreement(object):
 
                 tag_pattern = False
                 for tag_p in tag_patterns:
-                    if pattern_match(tag_p, head):
-                        tag_pattern = tag_p
-                        break
+                    exps = parse_tag(tag_p)
+                    for exp in exps:
+                        if pattern_match(exp, head):
+                            tag_pattern = exp
+                            break
                 
                 try:
                     agr_inner_re = re.escape(tag_pattern).replace('AGR', '(?P<agr>\w+)')
@@ -299,7 +312,18 @@ class Agreement(object):
                 # tag pattern then expand all the tags 
                 replacements = dict([(r[head_element], r[targ_element]) for r in agr_cls.replacements]) 
                 agr_target = replacements.get(agr_inner)
-                target_tags_set = parse_tag(targ_patterns.replace('AGR', agr_target))
+                try:
+                    target_tags_set = parse_tag(targ_patterns.replace('AGR', agr_target))
+                except Exception, e:
+                    print e
+                    print " * Could not match agreement, is it defined in agreements.yaml?"
+                    print 'name: ' + repr(agr_cls.name)
+                    print 'tag_pattern: ' + repr(tag_pattern)
+                    print 'targ_patterns: ' + repr(targ_patterns)
+                    print 'head: ' + repr(head)
+                    print 'targets: ' + repr(targets)
+                    print 'replacements: ' + repr(replacements)
+                    sys.exit()
 
                 def target_match(t):
                     if t in target_tags_set:
@@ -341,6 +365,7 @@ class Agreement(object):
 
             def __init__(agr_cls):
                 agr_cls.agr_info = agr_info
+                agr_cls.name = agreementname
 
                 is_head = lambda x: x and x.get('head', False) or False
                 isnt_head = lambda x: not is_head(x)
@@ -351,8 +376,9 @@ class Agreement(object):
                 # for now 
                 agr_cls.targets = filter(isnt_head, agr_info['elements'])
 
-                print 'omg'
-                print agr_cls.targets
+                # TODO: testing
+                # print 'omg'
+                # print agr_cls.targets
                 agr_cls.head = filter(is_head, agr_info['elements'])
 
                 if len(agr_cls.head) == 1:
@@ -364,7 +390,6 @@ class Agreement(object):
                     agr_cls.head_name = False
 
                 agr_cls.replacements = agr_info['agreements']
-
 
         return Agr()
 
@@ -705,7 +730,7 @@ class QObj(GrammarDefaults):
         return new_elems
     
     def checkSyntax(self, elements):
-        # TODO: Agreement() stuff needs to be included in other steps as well. 
+
         if elements:
             elements_d = dict(elements)
         else:
@@ -721,6 +746,8 @@ class QObj(GrammarDefaults):
         # For each possible agreement, mark elem['meta']['agreement'] with the head
         for poss in possible_agreements:
             head, name = poss
+            agree = agreement.get_agreement(name)
+            targets = agree.targets
             head_elem = elements_d[head]
 
             try:                head_elem.pop('wordforms')
@@ -733,6 +760,12 @@ class QObj(GrammarDefaults):
             except:             pass
 
             elements_d[head] = head_elem
+            # assign head to each target
+            for target in targets:
+                e_d = elements_d.get(target['element'], False)
+                if e_d:
+                    e_d['meta']['agreement'] = head
+                    elements_d[target['element']] = e_d
 
 
         elements_reorder = []
@@ -793,62 +826,82 @@ class QObj(GrammarDefaults):
         return elements_reorder
     
     def selectItems(self, elements):
+
+        def adjust_lookup_methods(D):
+            """ Remove __in and select an item, used in filtering below
+            """
+            new_D = {}
+            for k, v in D.iteritems():
+                if type(v) == list:
+                    new_v = choice(v)
+                else:
+                    new_v = v
+                new_D[k] = new_v
+            return new_D
+
         elements_d = dict(elements)
         agreement = self.agreement
-        found_agreements = list()
-        
-        # Find agreement
-        for elem_id, elem_data in elements_d.items():
-            if elem_data:
-                if elem_data.has_key('meta'):
-                    if elem_data['meta'].has_key('agreement'):
-                        agr = (elem_data['meta']['agreement'], elem_id)  # SUBJ, MAINV, RPRON?
-                        found_agreements.append(agr)
-        
-        # If there's agreement, strip non-agreeing tags.
-
-        print found_agreements
-        raw_input()
-        if len(found_agreements) > 0:
-            for agr in agreements:
-                head_tag = ''
-
-                agreement_head = agr[0]
-                agreeing_item = agr[1]
-                try:
-                    head = elements_d[agreement_head]
-                except KeyError:
-                    # Likely cause of exception here is that the question
-                    # had a SUBJ element, but the answer does not contain
-                    # this element.
-                    head = False
-                agree = elements_d[agreeing_item]
-                
-                if head:
-                    if head.has_key('query'):
-                        if head['query'].has_key('tags'):
-                            head['query']['tags'] = head_tag = choice(head['query']['tags'])
-                            head_agr = ''.join([a for a in head_tag.split('+') if a in AGREEMENT.keys()])
-                    
-                    # TODO: if a question is part of grammar_defaults but ends
-                    # up without tags, an error happens here. This is something
-                    # that should be added to error logging.
-
-                    if agree.has_key('query'):
-                        if agree['query'].has_key('tags'):
-                            agr_match = AGREEMENT[head_agr]
-                            allowed = []
-                            for a in agree['query']['tags']:
-                                for b in agr_match:
-                                    if b in a:
-                                        allowed.append(a)
-                            agree['query']['tags'] = allowed
-
-                    elements_d[agreement_head] = head
-                    elements_d[agreeing_item] = agree
+        # TODO: testing
+        # print '-=-=-=-'
+        # print 'agreement: ' + repr(agreement)
         
         # Choose random tag
-        for elem_id, elem_data in elements_d.items():
+        # To include agreement, need to check if an element is the head And
+        # then find target elements which should not just have a random choice
+        # so much as a random choice from the set of filtered and agreed
+        # elements
+
+        # found_agreements = list()
+
+        heads, agrees = False, False
+        if agreement:
+            possible_agreements = agreement.find_possible_agreements(elements_d.keys())
+            if len(possible_agreements) > 0:
+                heads = [pe[0] for pe in possible_agreements]
+                agrees = [agreement.get_agreement(pe[1]) for pe in possible_agreements]
+                # TODO: testing
+                # print possible_agreements
+
+
+        unchecked_elements = elements_d.copy()
+
+        # Iterate through possible agreements, choose a random item for the
+        # head, and then for each target choose the corresponding and agreeing
+        # target.
+
+        if heads and agrees:
+            for head_elem, agree in zip(heads, agrees):
+                head = elements_d.get(head_elem)
+                # Choose a random head tag
+                new_head = head.copy()
+                if type(head['query']['tags']) == list:
+                    new_head['query']['tags'] = choice(head['query']['tags'])
+
+                # Agreement targets...
+                for targ in agree.targets:
+                    t = elements_d.get(targ['element'])
+
+                    # Filter agreement based on the head tag
+                    try:
+                        agreed_t = agree.agree_for({
+                            head_elem: new_head['query']['tags'],
+                            targ['element']: t['query']['tags']
+                        })
+                    except TypeError, e:
+                        print e
+                        print new_head
+                        print targ
+                        print t
+                        raw_input()
+                    filtered_by_agreement = agreed_t[targ['element']]
+                    # Replace tags with filtered tags
+                    elements_d[targ['element']]['query']['tags'] = filtered_by_agreement
+                    elements_d[targ['element']]['query'] = adjust_lookup_methods(elements_d[targ['element']]['query'])
+                    unchecked_elements.pop(targ['element'])
+                unchecked_elements.pop(head_elem)
+            
+        # If there are any elements left that haven't had a choice or filter made, do it.
+        for elem_id, elem_data in unchecked_elements.items():
             if elem_data:
                 e_data = elem_data.copy()
 
@@ -868,6 +921,8 @@ class QObj(GrammarDefaults):
         for a, v in elements:
             elements_reorder.append((a, elements_d[a]))
         
+        # TODO: testing
+        # print elements_reorder
         return elements_reorder
 
     def handleQuestions(self):
@@ -1181,7 +1236,6 @@ class Command(BaseCommand):
         logfile = options['logfile']
 
         # self.test_agreement()
-        raw_input()
 
         if logfile:
             log = FileLog(logfile)
@@ -1273,7 +1327,7 @@ class Command(BaseCommand):
                             indent      = '        '
                             log.log(''.join([indent + a + '\n' for a in v]), _ERR)
 
-                q = QObj(q_node, grammar_defaults=defaults)
+                q = QObj(q_node, grammar_defaults=defaults, agreements=agreements)
 
 
 
