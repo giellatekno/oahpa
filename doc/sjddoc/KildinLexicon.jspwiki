@@ -218,4 +218,37 @@ Can we use these for a vocabulary trainer?
   </entry>
 }}}
 pos="adv" is wrong, because this is an inflected noun (which can of course be used as an adverbial); I understand that such forms should be used for training vocabulary, but we have to find another tag for the pos value here 
-
+* this is not a "dim_set", but a "pl_set"!
+{{{
+	   <entry>
+      <lemma>па̄лл</lemma>
+      <pos class="n"/> <!--noun in sg-->
+      <translations>
+         <tr xml:lang="rus">мяч</tr>
+         <tr xml:lang="eng">ball</tr>
+      </translations>
+      <semantics>
+         <sem class="LIVING_PLACE"/>
+         <sem class="DIM_SET"/>
+      </semantics>
+      <sources>
+         <book name="Saamkilsyjjt"/>
+      </sources>
+  </entry>
+   <entry>
+      <lemma>па̄л</lemma>
+      <pos class="n"/> <!-- n in pl-->
+      <translations>
+         <tr xml:lang="rus">мячи</tr>
+         <tr xml:lang="eng">balls</tr>
+      </translations>
+      <semantics>
+         <sem class="LIVING_PLACE"/>
+         <sem class="DIM_SET"/>
+      </semantics>
+      <sources>
+         <book name="Saamkilsyjjt"/>
+      </sources>
+  </entry>
+}}} 
+we could of course use the oahpa for the training of inflectional forms, but is it useful to have plural forms mixed up with diminutives?
