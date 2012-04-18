@@ -74,7 +74,6 @@ echo "done"
 echo "==================================================="
 
 
-COMMENT
 echo "==================================================="
 echo "feeding db with $DPS/adv_smenob.xml"
 $P install.py --file $DPS/adv_smenob.xml 2>>error.log
@@ -318,9 +317,9 @@ echo " "
 echo "done"
 echo "==================================================="
 
-$P manage.py fixattributes
+$P manage.py fixtagattributes
 $P manage.py mergetags
-$P manage.py fixattributes
+$P manage.py fixtagattributes
 
 
 echo "==================================================="
