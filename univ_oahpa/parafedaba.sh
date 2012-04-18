@@ -317,10 +317,8 @@ echo " "
 echo "done"
 echo "==================================================="
 
-$P manage.py fixtagattributes
 $P manage.py mergetags
 $P manage.py fixtagattributes
-
 
 echo "==================================================="
 echo "installing Morfa-C questions for nouns"
