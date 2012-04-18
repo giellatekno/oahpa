@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand, CommandError
 # from_yaml(cls, loader, node)
 
 from optparse import make_option
-from django.utils.encoding import smart_unicode
+from django.utils.encoding import force_unicode
 
 import sys
 
@@ -715,7 +715,7 @@ class QObj(GrammarDefaults):
             else:
                 sentence.append(item)
 
-        return ' '.join(sentence)
+        return ' '.join([force_unicode(s) for s in sentence])
 
     def personQA(self, tag):
         QA_tags = []
@@ -1032,8 +1032,8 @@ class QObj(GrammarDefaults):
             answer.task = self.selectTask(queried_elements)
             
             answer.answer_elements = queried_elements
-            answer.answer_full_text = sentence_text + '.'
-            answer.answer_text_blank = sentence_text_blank + '.'
+            answer.answer_full_text = force_unicode(sentence_text + '.')
+            answer.answer_text_blank = force_unicode(sentence_text_blank + '.')
             self.answer_set.append(answer)
             
     def reselect(self):
@@ -1089,10 +1089,16 @@ class FileLog(object):
 
     def log(self, string, pipe=False):
 
+        import codecs
+        import locale
+        import sys
+        sys.stdout = codecs.getwriter(locale.getpreferredencoding())(sys.stdout)
+        sys.stderr = codecs.getwriter(locale.getpreferredencoding())(sys.stderr)
+
         if not string.endswith('\n'):
             string += '\n'
         
-        string = smart_unicode(string)
+        string = force_unicode(string).encode('utf-8')
 
         if self.logfile:
             self.logfile.write(string)
@@ -1307,11 +1313,12 @@ class Command(BaseCommand):
                     finally:
                         error = True
 
-                    q_fmt = '    Q: ' + u'%s (%s)' % (q.question_text, qword)
-                    a_fmt = '    A: ' + u'%s' % answer.answer_text_blank
+                    qword = force_unicode(qword)
+                    q_fmt = '    Q: ' + '%s (%s)' % (q.question_text, qword)
+                    a_fmt = '    A: ' + '%s' % answer.answer_text_blank
                     
-                    log.log(q_fmt.encode('utf-8'), _OUT)
-                    log.log(a_fmt.encode('utf-8'), _OUT)
+                    log.log(q_fmt, _OUT)
+                    log.log(a_fmt, _OUT)
                     
                     try:
                         aword = answer.task.values()[0]['selected']
