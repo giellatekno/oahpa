@@ -878,26 +878,31 @@ class QObj(GrammarDefaults):
                     new_head['query']['tags'] = choice(head['query']['tags'])
 
                 # Agreement targets...
-                for targ in agree.targets:
+                targets_in_sentence = [t for t in agree.targets if t['element'] in elements_d.keys()]
+                
+                for targ in targets_in_sentence:
                     t = elements_d.get(targ['element'])
+                    if not t:
+                        msg = ("* Unable to build element <%s>, "
+                                "not specified in questionfile or grammar" % targ['element'])
+                        self.errors['self.selectItems'] = [msg]
+                        continue
+                    else:
+                        targ_elem = elements_d[targ['element']]
 
                     # Filter agreement based on the head tag
-                    try:
-                        agreed_t = agree.agree_for({
-                            head_elem: new_head['query']['tags'],
-                            targ['element']: t['query']['tags']
-                        })
-                    except TypeError, e:
-                        print e
-                        print new_head
-                        print targ
-                        print t
-                        raw_input()
+                    agreed_t = agree.agree_for({
+                        head_elem: new_head['query']['tags'],
+                        targ['element']: t['query']['tags']
+                    })
                     filtered_by_agreement = agreed_t[targ['element']]
                     # Replace tags with filtered tags
-                    elements_d[targ['element']]['query']['tags'] = filtered_by_agreement
-                    elements_d[targ['element']]['query'] = adjust_lookup_methods(elements_d[targ['element']]['query'])
+                    targ_elem['query']['tags'] = filtered_by_agreement
+                    targ_elem['query'] = adjust_lookup_methods(targ_elem['query'])
+
+                    elements_d[targ['element']] = targ_elem
                     unchecked_elements.pop(targ['element'])
+
                 unchecked_elements.pop(head_elem)
             
         # If there are any elements left that haven't had a choice or filter made, do it.

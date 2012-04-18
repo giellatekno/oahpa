@@ -92,7 +92,7 @@ Agreements:
   - name: "Reciprocative Agreement"
     elements: 
       - element: "P-REC"
-        tag: "Pron+Recipr+Acc+AGR"
+        tag: "Pron+Recipr+Case+AGR"
         head: True
       - element: "RECDU"
         tag: "Pron+Recipr+AGR+Nom"
@@ -117,6 +117,7 @@ Agreements:
       - element: "SUBJ"
         tag: 
           - "N+AGR+Nom"
+          - "N+Subclass+AGR+Nom"
           - "Pron+Pers+AGR+Nom"
         head: True
       - element: "MAINV"
