@@ -123,18 +123,7 @@ class GrammarDefaults(object):
         all_tags = []
         
         for tag in tags:
-            split = tag.split('+')
-            tag_items = []
-        
-            for i in split:
-                tag_item = []
-
-                if i in TAGS:        tag_item.append(i)
-                if i in TAGSETS:    tag_item.extend(_T[i])
-
-                tag_items.append(tag_item)
-            
-            tag_items = ['+'.join(a) for a in product(*tag_items)]
+            tag_items = parse_tag(tag)
             all_tags.append(tag_items)
         
         return all_tags
@@ -611,6 +600,25 @@ class QObj(GrammarDefaults):
         
         return new_elements
     
+    def filter_dialect(self, formqueryset):
+        """ TODO: make this faster """
+        return formqueryset
+        if not self.dialect:
+            return formqueryset
+
+        withdialect = formqueryset.filter(dialects__dialect=self.dialect)
+
+        if len(withdialect) == 0:
+            withdialect = formqueryset
+
+        exclude_ng = withdialect.exclude(dialects__dialect="NG")
+
+        if len(exclude_ng) == 0:
+            exclude_ng = withdialect
+
+        return exclude_ng
+
+
     def queryElements(self, elements):
         element_to_query = {
             'tags': 'tag__string',
@@ -655,7 +663,7 @@ class QObj(GrammarDefaults):
                         nocopy = True
 
                     if nocopy:
-                        data['wordforms'] = wfs = Form.objects.filter(**qkwargs)
+                        data['wordforms'] = wfs = self.filter_dialect(Form.objects.filter(**qkwargs))
                         wfs = wfs.order_by('?')
                         try:
                             data['selected'] = wfs[0]
@@ -875,8 +883,13 @@ class QObj(GrammarDefaults):
                 head = elements_d.get(head_elem)
                 # Choose a random head tag
                 new_head = head.copy()
-                if type(head['query']['tags']) == list:
-                    new_head['query']['tags'] = choice(head['query']['tags'])
+                if 'tags' in head['query']:
+                    if type(head['query']['tags']) == list:
+                        new_head['query']['tags'] = choice(head['query']['tags'])
+                else:
+                    print self.defaults
+                    head['query']['tags'] = self.defaults
+                    raw_input()
 
                 # Agreement targets...
                 targets_in_sentence = [t for t in agree.targets if t['element'] in elements_d.keys()]
@@ -1049,10 +1062,11 @@ class QObj(GrammarDefaults):
 
         pass
 
-    def __init__(self, q_node, grammar_defaults=False, agreements=None):
+    def __init__(self, q_node, grammar_defaults=False, agreements=None, dialect=False):
         self.agreement = agreements
         self.errors = {}
         self.NO_ERRORS = False
+        self.dialect = dialect
         if grammar_defaults:
             self.defaults = grammar_defaults.grammar_definitions
         else:
@@ -1157,6 +1171,10 @@ class Command(BaseCommand):
                         help="The count of iterations for each question"),
         make_option("--logfile", dest="logfile", default=False,
                         help="Store all output to a file in addition to stdout."),
+
+        make_option("--dialect", dest="dialect", default="GG",
+                      help=("Specify a dialect for presenting the generated output.")),
+
     )
 
     def test_agreement(self):
@@ -1241,6 +1259,7 @@ class Command(BaseCommand):
 
         iterations = int(options['itercount'])
         test_qid = options['qid']
+        dialect = options['dialect']
 
         logfile = options['logfile']
 
@@ -1290,7 +1309,7 @@ class Command(BaseCommand):
         _ERR = sys.stderr
         
         for q_node in tree:
-            q = QObj(q_node, grammar_defaults=defaults, agreements=agreements)
+            q = QObj(q_node, grammar_defaults=defaults, agreements=agreements, dialect=dialect)
             
             log.log(' == QUESTION: %s ==' % q.qid, _OUT)
         
@@ -1340,7 +1359,7 @@ class Command(BaseCommand):
                             indent      = '        '
                             log.log(''.join([indent + a + '\n' for a in v]), _ERR)
 
-                q = QObj(q_node, grammar_defaults=defaults, agreements=agreements)
+                q = QObj(q_node, grammar_defaults=defaults, agreements=agreements, dialect=dialect)
 
 
 
