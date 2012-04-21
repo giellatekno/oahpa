@@ -49,6 +49,11 @@ I'm organizing these to reflect somewhat what the structure is for dependencies 
 ** TRANS_CHOICES - keys representing language pairs, with 3-character ISO codes corresponding to the iso codes used in lexicon files. ZZZWWW
 ** GEOGRAPHY_CHOICES - Choices corresponding to lexicon files.
 
+* semantical_sets.xml
+** This file is in sme/xml in Ur-Oahpa, in LANG/meta-data in sma-type Oahpa versions.
+** It contains __the supersets__ (not found in the xml files) and their __subsets__ 
+   (found in the xml files). Sets in the xml files not being part of supersets are not
+   listed in this file. Both supersets and singleton sets are listed in {{forms.py}}, though.
 
 ** templates and their inheritance structure
 *** views call the farthest down template in the inheritance hierarchy, and 
