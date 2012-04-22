@@ -6,13 +6,32 @@ To be included here: A list of relevant files. While waiting, [see this document
 
 !!Installation
 
-Installation is performed via ./install.py with one option.
+Note that your .bashrc path must be ok. In .bashrc on the machine where
+the installation is, you need a path PYTHONPATH containing also
+the string {{/home/sjdoahpa/:/home/sjdoahpa/sjdoahpa/:/home/sjdoahpa/sjdoa
+hpa/sjddrill}}.
+
+Installation is performed via ./install.py with one option. The
+installation must be run for each .xml file (for each language
+direction), here marked with XML, so replace XML with each of the file
+names (todo: make a script for this):
 
 {{{
-    ./install.py --file/-f XML
+    python2.6 install.py --file/-f XML
 }}}
 
-However, installation of Leksa is performed in combination with installation of Morfa-S (Morfa-B), thus a tagfile and paradigm file must be specified. For more information on this, see the Morfa-S documentation, however, the command that will typically be performed for these operations is: 
+Also, superset must be indicated (the {{sjd}} here should be
+replaced with the language code of the language you work on):
+
+{{{
+    python2.6 install.py --sem sjd/meta-data/semantical_sets.xml
+}}}
+
+However, for most languages (not sjd, though), installation of Leksa
+is performed in combination with installation of Morfa-S (Morfa-B),
+thus a tagfile and paradigm file must be specified. For more
+information on this, see the Morfa-S documentation, however, the
+command that will typically be performed for these operations is:
 
 {{{
 	./install.py --file XML --tagfile tags.txt --paradigmfile paradigms.txt
