@@ -7,12 +7,9 @@ no vil vi gjere det same for sjd-oahpa.
 __TILTAK__
 
 * På eit tidspunkt __frys vi sjd-koden__
-* Vi flyttar dagens sjdoahpa til oldsjdoahpa og lagar ein ny 
-  katalog sjdoahpa i pedversions. 
-* Vi lagar ein ny katalog for kjeldefiler, 
+* Vi overfører xml og lagar ein ny katalog for kjeldefiler, 
   {{pedversions/sjdoahpa/sjdoahpa_data/data_sjd/sjd}} (eller tilsvarande).
 * Vi lagar ein ny database 
-* Vi tilpassar namn fra oldsjdoahpa til sjdoahpa og testar det på victorio
 * Dokumentasjon: __Alle__, særleg __Ryan__ og __Heli__
 ** Ei separat dokumentasjonsside for denne konverteringsprosessen:
 ** Eiga jspwiki-fil (denne)
@@ -21,10 +18,18 @@ __TILTAK__
 ** Overføre til sma-format og legge inn i sjdoahpa
 ** Lemma som i dag har lemma-id må inn under same <e>.
 
+
+__TIDSPLAN__
+
+* 24.4. kveld: xml-filene ferdig
+* 25.-26.4.: Ny pythonkode
+* 27.-29.4: Testing og debugging
+
 !! Leksikonfilene
 
 !Leksikonfiler i sjd/src
-* Sannsynlegvis kan dette bli gjort automatisk
+* dette blir gjort automatisk. Ciprian har scriptfilene frå
+  konverteringa for sme liggjande
 
 !Utviding av sjdX leksikonfilene
 * for stat="pref" gjelder: første oversetting får stat="pref"
