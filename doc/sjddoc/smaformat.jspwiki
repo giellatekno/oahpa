@@ -1,0 +1,49 @@
+!!!Konvertering til sma-stil
+
+Vi har [[../nudoc/smaformat.html|konvertert sme-oahpa frå gamalt til nytt format]], 
+no vil vi gjere det same for sjd-oahpa.
+
+
+__TILTAK__
+
+* På eit tidspunkt __frys vi sjd-koden__
+* Vi flyttar dagens sjdoahpa til oldsjdoahpa og lagar ein ny 
+  katalog sjdoahpa i pedversions. 
+* Vi lagar ein ny katalog for kjeldefiler, 
+  {{ped/sme/sjdoahpa_data/data_sjd/sjd}}.
+* Vi lagar ein ny database 
+* Vi tilpassar namn fra oldsjdoahpa til sjdoahpa og testar det på victorio
+* Dokumentasjon: __Alle__, særleg __Ryan__ og __Heli__
+** Ei separat dokumentasjonsside for denne konverteringsprosessen:
+** Eiga jspwiki-fil (denne)
+** Katalogen inneheld ein kopi av smaOahpa, og blir fylt med sjd-innhald
+* Leksikonkonvertering: Dette kan bli gjort automatisk:
+** Overføre til sma-format og legge inn i sjdoahpa
+** Lemma som i dag har lemma-id må inn under same <e>.
+
+!! Leksikonfilene
+
+!Leksikonfiler i sjd/src
+* Sannsynlegvis kan dette bli gjort automatisk
+
+!Utviding av sjdX leksikonfilene
+* for stat="pref" gjelder: første oversetting får stat="pref"
+
+!! Andre filer i sme/xml
+
+! Viktige filer i sme/xml
+* semantic_sets.xml - for Leksa, skal i rett katalog
+
+!! Numra
+
+Er det ting å gjere her? Eller er numra allereie (delvis) i sma-format?
+
+
+!!Forskjeller mellom sma vs. sjd
+* Filplassering: Er det skilnad her?
+* sma: stat_pref - sjd: første t er default stat_pref
+* sma: l-element sjd: lemma-element
+* sma: spell relax ï/i, ö/ø, osv. dette er gjort for sjd
+* Generering av paradigmer: Ikkje aktuelt for sjd
+
+
