@@ -1,0 +1,72 @@
+
+!!!Møte om forrest
+
+
+Til stades: Bjørn, Børre, Lene, Trond
+
+Spørsmål til Børre
+
+!!Saksliste:
+* Kor er logoImage
+* Problemer med menyen (ped/userdoc/site.xml)
+* Note
+
+!!Kor er logoImage
+
+Vi vil endre på "dobbeltlogoen" i grammatikkfilene
+
+I $GTHOME/ped/src/documentation/resources/themes/oahpa.structurer.xml finn vi denne lina:
+
+{{{
+<img class="logoImage" alt="" src="images/uit_ja_oahpa.png" title="Oahpa-portála" />
+}}}
+
+Relevante filer også her (?):
+
+* ~/main/xtdoc/gtuit/src/documentation/content/xdocs/images/
+* xtdoc/gtuit/src/documentation/skins/common/xslt/html/renderlogo.xsl
+* whiteboard/forrest2/wicket-demo/src/webapp/screen.css
+
+
+
+{{{
+/* logo */
+#header .logoImage {
+  border: 0;
+}
+}}}
+
+Kjeldekoden i html ser slik ut:
+
+{{{
+container for alt innhaldet på sida
+<div id="container"> 
+<div id="header">
+<div class="logo">
+<!--+ |start Logo +-->
+<a href="http://giellatekno.uit.no/ped/">
+<img class="logoImage" alt="" src="images/uit_ja_oahpa.png" title="Oahpa-portála" />
+</a>
+<!--+ |end group Logo +-->
+</div>
+}}}
+
+
+!!Problemer med menyen (ped/userdoc/site.xml)
+
+Her er det riktig venstremeny (oahpa i sme):
+http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.html
+
+Men her kommer alt fram i menyen (både oahpa og visl, og alle språk):
+http://giellatekno.uit.no/oahpa/sme/gramm/verb.html
+
+http://forrest.apache.org/pluginDocs/plugins_0_80/org.apache.forrest.plugin.internal.dispatcher/how/howto-dispatcher-structurer.html
+
+!!Note - storleik på notefeltet
+
+Børre skal leite.
+
+
+
+
+
