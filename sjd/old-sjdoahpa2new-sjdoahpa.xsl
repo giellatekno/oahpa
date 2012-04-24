@@ -131,7 +131,7 @@
 	      <xsl:copy-of select="./semantics"/>
 	      <xsl:variable name="cTrans" select="./translations"/>
 	      <xsl:variable name="tTrans">
-		<xsl:for-each select="('rus', 'eng', 'fin', 'ger')">
+		<xsl:for-each select="('rus', 'eng', 'sme', 'nob', 'fin', 'ger')">
 		  <xsl:variable name="cl" select="."/>
 		  <tg xml:lang="{$cl}">
 		    <xsl:if test="not($cTrans/tr[./@xml:lang = $cl])">
