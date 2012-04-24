@@ -8,5 +8,5 @@ main/ped/sma/00_readme.txt
  ==> DONE
 
  - revert sjdrus to russjd
- ==> TODO
+ ==> DONE
 
