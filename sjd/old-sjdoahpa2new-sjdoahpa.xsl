@@ -136,7 +136,7 @@
 		  <tg xml:lang="{$cl}">
 		    <xsl:if test="not($cTrans/tr[./@xml:lang = $cl])">
 		      <t stat="pref">
-			<xsl:value-of select="concat($cTrans/tr[./@xml:lang = 'eng'][01], '_', upper-case($cl))"/>
+			<xsl:value-of select="concat(normalize-space($cTrans/tr[./@xml:lang = 'eng'][01]), '_', upper-case($cl))"/>
 		      </t>
 		    </xsl:if>
 		    <xsl:for-each select="$cTrans/tr[./@xml:lang = $cl][not(normalize-space(./text()) = '')]">
