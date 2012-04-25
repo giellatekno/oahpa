@@ -12,6 +12,8 @@ inv_gradation
 no_gradation
 weak_grade
 strong_grade
+finalstrong_grade
+finalweak_grade
 
 C:
 diphthong_simplification
@@ -19,24 +21,15 @@ diphthong_simplification_and_a_i
 
 D: 
 u_o
-čč_and_a 
-žž_and_ii   
-g_and_a
-hk_and_ii   
 is_á
 oš_o
 š_ž
-ss_and_ii
-áš_á
 i_j
 a_i
 e_i
 i_á
 o_u
 oš_u
-šš_ja_ii
-n_m
-t_g
 t_h
 t_d
 t_b
@@ -60,14 +53,6 @@ is-suffix
 iin-suffix
 iid-suffix
 as-suffix
-žž_and_an
-hk_and_an
-ss_and_an
-šš_and_an
-čč_and_as
-čč_and_ain
-g_and_as
-g_and_ain
 -->
 
   <stems>
@@ -182,6 +167,22 @@ g_and_ain
       <note>giehta, gradation</note>
     </l>
 
+    <l stem="2syll" gradation="final">
+      <msg case="Nom" number="Pl">finalweak_grade</msg>
+      <msg case="Acc" number="Sg">finalweak_grade</msg>
+      <msg case="Gen" number="Sg">finalweak_grade</msg>
+      <msg case="Acc" number="Pl">finalweak_grade</msg>
+      <msg case="Gen" number="Pl">finalweak_grade</msg>
+      <msg case="Ill" number="Sg">finalstrong_grade</msg>
+      <msg case="Ill" number="Pl">finalweak_grade</msg>
+      <msg case="Loc" number="Sg">finalweak_grade</msg>
+      <msg case="Loc" number="Pl">finalweak_grade</msg>
+      <msg case="Com" number="Sg">finalweak_grade</msg>
+      <msg case="Com" number="Pl">finalweak_grade</msg>
+      <msg case="Ess">finalstrong_grade</msg>
+      <note>giehta, gradation</note>
+    </l>
+
     <l stem="3syll" gradation="yes">
       <msg case="Nom" number="Pl">strong_grade</msg>
       <msg case="Acc" number="Sg">strong_grade</msg>
@@ -235,70 +236,6 @@ g_and_ain
       <msg case="Com" number="Pl">o_u</msg>
       <note>reŋko, o>u</note>
     </l>
-
-    <l rime="s-ss">
-      <msg case="Nom" number="Pl">at-suffix</msg>
-      <msg case="Acc" number="Sg">a-suffix</msg>
-      <msg case="Gen" number="Sg">a-suffix</msg>
-      <msg case="Acc" number="Pl">id-suffix</msg>
-      <msg case="Gen" number="Pl">id-suffix</msg>
-      <msg case="Ill" number="Sg">ss_and_ii</msg>
-      <msg case="Ill" number="Pl">ide-suffix</msg>
-      <msg case="Loc" number="Sg">as-suffix</msg>
-      <msg case="Loc" number="Pl">in-suffix</msg>
-      <msg case="Com" number="Sg">in-suffix</msg>
-      <msg case="Com" number="Pl">iguin-suffix</msg>
-      <msg case="Ess">ss_and_an</msg>
-      <note>muitalus rime</note>
-    </l>
-
-    <l rime="š-šš">
-      <msg case="Nom" number="Pl">at-suffix</msg>
-      <msg case="Acc" number="Sg">a-suffix</msg>
-      <msg case="Gen" number="Sg">a-suffix</msg>
-      <msg case="Acc" number="Pl">id-suffix</msg>
-      <msg case="Gen" number="Pl">id-suffix</msg>
-      <msg case="Ill" number="Sg">šš_ja_ii</msg>
-      <msg case="Ill" number="Pl">ide-suffix</msg>
-      <msg case="Loc" number="Sg">as-suffix</msg>
-      <msg case="Loc" number="Pl">in-suffix</msg>
-      <msg case="Com" number="Sg">in-suffix</msg>
-      <msg case="Com" number="Pl">iguin-suffix</msg>
-      <msg case="Ess">šš_and_an</msg>
-      <note>borramuš rime</note>
-    </l>
-
-    <l rime="š-čč-žž">
-      <msg case="Nom" number="Pl">at-suffix</msg>
-      <msg case="Acc" number="Sg">čč_and_a</msg>
-      <msg case="Gen" number="Sg">čč_and_a</msg>
-      <msg case="Acc" number="Pl">id-suffix</msg>
-      <msg case="Gen" number="Pl">id-suffix</msg>
-      <msg case="Ill" number="Sg">žž_and_ii</msg>
-      <msg case="Ill" number="Pl">ide-suffix</msg>
-      <msg case="Loc" number="Sg">čč_and_as</msg>
-      <msg case="Loc" number="Pl">in-suffix</msg>
-      <msg case="Com" number="Sg">čč_and_ain</msg>
-      <msg case="Com" number="Pl">iguin-suffix</msg>
-      <msg case="Ess">žž_and_an</msg>
-      <note>sápmelaš rime</note>
-    </l>
-
-    <l rime="t-g-hk">
-      <msg case="Nom" number="Pl">g_and_at</msg>
-      <msg case="Acc" number="Sg">g_and_a</msg>
-      <msg case="Gen" number="Sg">g_and_a</msg>
-      <msg case="Acc" number="Pl">id-suffix</msg>
-      <msg case="Gen" number="Pl">id-suffix</msg>
-      <msg case="Ill" number="Sg">hk_and_ii</msg>
-      <msg case="Ill" number="Pl">ide-suffix</msg>
-      <msg case="Loc" number="Sg">g_and_as</msg>
-      <msg case="Loc" number="Pl">in-suffix</msg>
-      <msg case="Com" number="Sg">g_and_ain</msg>
-      <msg case="Com" number="Pl">iguin-suffix</msg>
-      <msg case="Ess">hk_and_an</msg>
-      <note>mánnodat rime</note>
-    </l>
     
     <l rime="is">
       <msg case="Nom" number="Pl">is_á</msg>
@@ -337,7 +274,7 @@ g_and_ain
       <note>olmmái rime</note>
     </l>
     
-    <l rime="š-ž">
+    <l rime="ž">
       <msg case="Nom" number="Pl">š_ž</msg>
       <msg case="Acc" number="Sg">š_ž</msg>
       <msg case="Gen" number="Sg">š_ž</msg>
@@ -348,18 +285,8 @@ g_and_ain
       <note>nieiddaš rime</note>
     </l>
     
-     <l rime="n-m">
-      <msg case="Nom" number="Pl">n_m</msg>
-      <msg case="Acc" number="Sg">n_m</msg>
-      <msg case="Gen" number="Sg">n_m</msg>
-      <msg case="Ill" number="Sg">n_m</msg>
-      <msg case="Loc" number="Sg">n_m</msg>
-      <msg case="Com" number="Sg">n_m</msg>
-      <msg case="Ess">n_m</msg>
-      <note>varan rime</note>
-    </l>
     
-     <l rime="t-p">
+     <l rime="p">
       <msg case="Nom" number="Pl">t_p</msg>
       <msg case="Acc" number="Sg">t_p</msg>
       <msg case="Gen" number="Sg">t_p</msg>
@@ -370,18 +297,7 @@ g_and_ain
       <note>gaccet rime</note>
     </l>
 
-    <l rime="t-g">
-      <msg case="Nom" number="Pl">t_g</msg>
-      <msg case="Acc" number="Sg">t_g</msg>
-      <msg case="Gen" number="Sg">t_g</msg>
-      <msg case="Ill" number="Sg">t_g</msg>
-      <msg case="Loc" number="Sg">t_g</msg>
-      <msg case="Com" number="Sg">t_g</msg>
-      <msg case="Ess">t_g</msg>
-      <note>hivsset rime</note>
-    </l>
-
-    <l rime="t-h">
+    <l rime="h">
       <msg case="Nom" number="Pl">t_h</msg>
       <msg case="Acc" number="Sg">t_h</msg>
       <msg case="Gen" number="Sg">t_h</msg>
@@ -392,7 +308,7 @@ g_and_ain
       <note>gállot rime</note>
     </l>
 
-    <l rime="t-d">
+    <l rime="d">
       <msg case="Nom" number="Pl">t_d</msg>
       <msg case="Acc" number="Sg">t_d</msg>
       <msg case="Gen" number="Sg">t_d</msg>
@@ -403,7 +319,7 @@ g_and_ain
       <note>eamit rime</note>
     </l>
  
-     <l rime="t-b">
+     <l rime="b">
       <msg case="Nom" number="Pl">t_b</msg>
       <msg case="Acc" number="Sg">t_b</msg>
       <msg case="Gen" number="Sg">t_b</msg>
@@ -414,7 +330,7 @@ g_and_ain
       <note>ustit rime</note>
     </l>
  
-     <l rime="+g">
+     <l rime="g">
       <msg case="Nom" number="Pl">+g</msg>
       <msg case="Acc" number="Sg">+g</msg>
       <msg case="Gen" number="Sg">+g</msg>
@@ -424,7 +340,7 @@ g_and_ain
       <note>doaivva rime</note>
     </l>
     
-    <l rime="+n">
+    <l rime="n">
       <msg case="Nom" number="Pl">+n</msg>
       <msg case="Acc" number="Sg">+n</msg>
       <msg case="Gen" number="Sg">+n</msg>
@@ -434,7 +350,7 @@ g_and_ain
       <note>nisu rime</note>
     </l>
     
-    <l rime="+m">
+    <l rime="m">
       <msg case="Nom" number="Pl">+m</msg>
       <msg case="Acc" number="Sg">+m</msg>
       <msg case="Gen" number="Sg">+m</msg>
