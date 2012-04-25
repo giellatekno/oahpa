@@ -12,6 +12,8 @@ import codecs
 # TODO: get these from settings
 
 languages = [
+    'sjd',
+    'rus',
 	'sme',
 	'nob', # was: 'nob' But in the documentation url-s the abbreviation nno is used to mark the Norwegian version of a help page. 
 	'eng',

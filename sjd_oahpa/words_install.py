@@ -15,7 +15,7 @@ _D = open('/dev/null', 'w')
 
 COUNT_ONLY = False
 
-supported_langs = ['sme', 'nob', 'sme', 'swe', 'deu', 'eng']
+supported_langs = ['sjd', 'rus', 'nob', 'sme', 'fin', 'eng']
 
 # # # 
 # 

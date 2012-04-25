@@ -14,7 +14,7 @@ class BulkManager(models.Manager):
 	dictionaries), this is much faster than using the standard .create() if 
 	many objects need to be added.
 
-		.create() -> .bulk_inesrt()
+		.create() -> .bulk_insert()
 		.messages.add() -> .bulk_add_messages()
 		.dialects.add() -> .bulk_add_dialects()
 
@@ -319,13 +319,13 @@ class Dialect(models.Model):
 		return smart_unicode(S)
 
 def Translations2(target_lang):
-	if target_lang in ["nob", "swe", "sme", "eng", "deu", "sma", "no"]:
+	if target_lang in ["nob", "rus", "sme", "eng", "deu", "sjd", "no"]:
 		if target_lang == "nob" or "no":	related = 'translations2nob'
-		if target_lang == "swe":	related = 'translations2swe'
+		if target_lang == "rus":	related = 'translations2rus'
 		if target_lang == "sme":	related = 'translations2sme'
 		if target_lang == "eng":	related = 'translations2eng'
 		if target_lang == "deu":	related = 'translations2deu'
-		if target_lang == "sma":	related = 'translations'
+		if target_lang == "sjd":	related = 'translations2sjd'
 		return related
 	else:
 		return None
@@ -479,8 +479,9 @@ class Word(models.Model):
 		self.translations2nob = partial(self.translations2, target_lang='nob')()
 		self.translations2eng = partial(self.translations2, target_lang='eng')()
 		self.translations2deu = partial(self.translations2, target_lang='deu')()
-		self.translations2swe = partial(self.translations2, target_lang='swe')()
+		self.translations2rus = partial(self.translations2, target_lang='rus')()
 		self.translations2sme = partial(self.translations2, target_lang='sme')()
+		self.translations2sjd = partial(self.translations2, target_lang='sjd')()
 		
 	def create(self, *args, **kwargs):
 		morphtag = self.morphTag()

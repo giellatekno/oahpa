@@ -29,7 +29,7 @@ except:
 try:
 	language = settings.MAIN_LANGUAGE[0]
 except:
-	language = "sme"
+	language = "sjd"
 
 numfst = fstdir + "/" + language + "-num.fst"
 

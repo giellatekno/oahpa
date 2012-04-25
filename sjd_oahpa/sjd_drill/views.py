@@ -392,12 +392,12 @@ def leksa_game(request, place=False):
 
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
-		if sess_lang == 'sme':
-			sess_lang = 'nob'
+		if sess_lang == 'sjd':  # was: sme
+			sess_lang = 'rus'  # was: nob
 	else:
 		sess_lang = 'nob'
 
-	default_langpair = 'sme%s' % sess_lang
+	default_langpair = 'sjd%s' % sess_lang  # was: sme
 
 	c = leksagame.create_game(request, initial_transtype=default_langpair)
 

@@ -25,7 +25,7 @@ from .forms import PRONOUNS_LIST
 try:
 	L1 = sjd_oahpa.settings.L1
 except:
-	L1 = 'sme'
+	L1 = 'sjd'  # was: sme
 
 try:
 	LOOKUP_TOOL = sjd_oahpa.settings.LOOKUP_TOOL
@@ -998,8 +998,8 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = 'sme-num.fst'
-	answers_fst = 'sme-inum.fst'
+	generate_fst = 'sjd-num.fst'
+	answers_fst = 'sjd-inum.fst'
 	
 	def get_db_info(self, db_info):
 		""" Options supplied by views
@@ -1171,8 +1171,8 @@ class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
 	
-	generate_fst = 'iclock-sme.fst'
-	answers_fst = 'clock-sme.fst'
+	generate_fst = 'iclock-sjd.fst'
+	answers_fst = 'clock-sjd.fst'
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1307,8 +1307,8 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 	
-	generate_fst = 'idate-sme.fst'
-	answers_fst = 'date-sme.fst'
+	generate_fst = 'idate-sjd.fst'
+	answers_fst = 'date-sjd.fst'
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."

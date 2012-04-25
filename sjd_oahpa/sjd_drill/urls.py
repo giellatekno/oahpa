@@ -12,7 +12,7 @@ urlpatterns = patterns('sjd_oahpa.sjd_drill.views',
 	url(r'^morfas/$', 'morfa_game', {'pos': 'N'}, name="morfa_s.noun"),
 	
 	url(r'^leksa/$', 'leksa_game', name="leksa"),
-	url(r'^leksa/sted/$', 'leksa_game', {'place': True}, name="leksa.sted"),
+	url(r'^leksa/names/$', 'leksa_game', {'place': True}, name="leksa.sted"),
 
 	url(r'^numra/$', 'num', name="numra"),
 	url(r'^numra/ord/$', 'num_ord', name="numra.ord"),

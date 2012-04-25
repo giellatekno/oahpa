@@ -338,50 +338,56 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-	('smenob', _('North Sami to Norwegian')),
-	('nobsme', _('Norwegian to North Sami')),
-#	('smeswe', _('North Sami to Swedish')),
-#	('swesme', _('Swedish to North Sami')),
-	('smefin', _('North Sami to Finnish')),
-	('finsme', _('Finnish to North Sami')),
-#	('smeeng', _('North Sami to English')),
-#	('engsme', _('English to North Sami')),
-#	('smedeu', _('North Sami to German')),
-#	('deusme', _('German to North Sami')),
+	('sjdrus', _('Kildin Sami to Russian')),
+	('russjd', _('Russian to Kildin Sami')),
+#	('sjdeng', _('Kildin Sami to English')),
+#	('engsjd', _('English to Kildin Sami')),
+#	('sjdfin', _('North Sami to Finnish')),
+#	('finsjd', _('Finnish to North Sami')),
+#   ('sjdnob', _('Kildin Sami to Norwegian')),
+#	('nobsjd', _('Norwegian to Kildin Sami')),
+#	('sjdsme', _('Kildin Sami to North Sami')),
+#	('smesjd', _('North Sami to Kildin Sami')),
 )
 
 NUMLANGUAGE_CHOICES = (
-	('sme', _('North Sami')),
+#	('sme', _('North Sami')),
 #	('smj', _('Lule Sami')),
 #	('sma', _('South Sami')),
 #	('smn', _('Inari Sami')),
-#	('sjd', _('Kildin Sami')),
+	('sjd', _('Kildin Sami')),
 #	('sms', _('Skolt Sami')),
 #	('fin', _('Finnish')),
 )
 
 SEMTYPE_CHOICES = (
-	('FAMILY', _('family')), 
-	('HUMAN', _('human')),
-	('HUMAN-LIKE', _('human-like')),
-	('ANIMAL', _('animal')),
-	('FOOD/DRINK', _('food/drink')),
-	('TIME', _('time')),
-	('CONCRETES', _('concretes')),
-	('BODY', _('body')),
-	('CLOTHES', _('clothes')),
-	('BUILDINGS/ROOMS', _('buildings/rooms')),
-	('CITY', _('city')), 
-	('NATUREWORDS', _('naturewords')),
-	('LEISURETIME/AT_HOME', _('leisuretime/at_home')),
-	('CHRISTMAS', _('christmas')),
-	('PLACES', _('places')),
-	('LITERATURE', _('literature')),
-	('SCHOOL/EDUCATION', _('school/education')),
-	('ABSTRACTS', _('abstracts')),
-	('WORK/ECONOMY/TOOLS', _('work/economy/tools')),
-	('MULTIWORD', _('Multiword')),
-	('all', _('all')),
+	('KIN', _('family')), 
+    ('HUMAN', _('human')), 
+    ('ANIMAL_FISH', _('animal/fish')),
+    ('BODY', _('body')),
+    ('FOOD_DRINK', _('food/drink')),
+    ('TIME', _('time')),
+    ('CLOTHING', _('clothes')),
+    ('HEALTH', _('health')),
+    ('PLACE', _('place')),
+    ('PLACE_DOMESTIC', _('domestic place')),
+    ('TRAVELING', _('travel')),
+    ('WEATHER', _('weather')),
+    ('NATURE_PHENOMENA', _('nature')),
+    ('PLANT', _('plant')),
+    ('HANDICRAFT', _('handicraft')),
+    ('GRAMMAR_TERMINOLOGY', _('grammar terminology')),
+    ('EDUCATION', _('school/education')),
+    ('EXPRESSIONS', _('expressions')),
+    ('CHURCH', _('church')),
+    ('ABSTRACT_CONCEPTS', _('abstract')), 
+    ('VERB1', _('easy verbs')),
+    ('VERB2', _('intermediate verbs')),
+    ('VERB3', _('difficult verbs')),
+    ('PRONOUN', _('pronoun')),
+    ('NAME', _('name')),
+    ('DIMINUTIVE', _('diminutive')),
+    ('all', _('all')),
 )
 
 NUM_CHOICES = (
@@ -543,9 +549,9 @@ def relax(strict):
 	relax_pairs = {
 		# key: value
 		# key is accepted for value
-		u'ø': u'ö',
-		u'ä': u'æ',
-		u'i': u'ï'
+        u'ӯ': u'ӯ',
+        u'ӣ': u'ӣ',
+        # u'р': u'ҏ' do we want spellrelax here? р vs. ҏ are neither orthographic nor typographic variants 
 	}
 	
 	# Create an iterator. We want to generate as many possibilities as 
@@ -825,7 +831,7 @@ class OahpaSettings(forms.Form):
 	
 	def set_default_data(self):
 		self.default_data = {
-					'language' : 'sme', # why rus ?
+					'language' : 'rus',  # sme in univ_oahpa
 					'syll' : ['2syll'],
 					'bisyllabic': 'on',
 					'trisyllabic': False,
@@ -917,8 +923,8 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		if hasattr(self, 'translang'):
-			if self.translang == 'sme':
-				# Relax spellings.
+			if self.translang == 'sjd':   # was: sme
+ 				# Relax spellings.
 				accepted_answers = [force_unicode(item) for item in accepted_answers]
 				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
 				# need to subtract legal answers and make an only relaxed list.
@@ -966,7 +972,7 @@ class LeksaSettings(OahpaSettings):
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 	
-	default_data = {'gametype' : 'bare', 'language' : 'sme', 'dialogue' : 'GG', 
+	default_data = {'gametype' : 'bare', 'language' : 'sjd', 'dialogue' : 'GG', 
 			'syll' : [], 
 			'bisyllabic': False,
 			'trisyllabic': False,
@@ -1283,10 +1289,10 @@ class MorfaQuestion(OahpaQuestion):
 
 class NumSettings(OahpaSettings):
 	maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
-	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
-	numlanguage = forms.ChoiceField(initial='sme', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
+	numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
+	#numlanguage = forms.ChoiceField(initial='sjd', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
 	# TODO: remove mandatory need to set default data, should be done through 'initial' field setting.
-	default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'string'}
+	default_data = {'language' : 'rus', 'numlanguage' : 'sjd', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
 					
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1392,7 +1398,7 @@ class NumQuestion(OahpaQuestion):
 class KlokkaSettings(NumSettings):
 	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES_PL, widget=forms.RadioSelect)
 	gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
-	default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
+	default_data = {'language' : 'rus', 'numlanguage' : 'sjd', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
 					
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1541,7 +1547,7 @@ class KlokkaQuestion(NumQuestion):
 class DatoSettings(KlokkaSettings):
 	gametype = None # Disable gametype (easy, medium, hard)
 
-	default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'numgame': 'string'}
+	default_data = {'language' : 'rus', 'numlanguage' : 'sjd', 'numgame': 'string'}
 
 
 class DatoQuestion(KlokkaQuestion):
