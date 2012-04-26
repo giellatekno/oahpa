@@ -122,6 +122,21 @@
       <msg grade="Superl">strong_grade</msg>
       <note>rikkis - gradation</note>
     </l>
+     <l stem="2syll" gradation="final">
+      <msg case="Nom" number="Pl">finalweak_grade</msg>
+      <msg case="Acc" number="Sg">finalweak_grade</msg>
+      <msg case="Gen" number="Sg">finalweak_grade</msg>
+      <msg case="Acc" number="Pl">finalweak_grade</msg>
+      <msg case="Gen" number="Pl">finalweak_grade</msg>
+      <msg case="Ill" number="Sg">finalstrong_grade</msg>
+      <msg case="Ill" number="Pl">finalweak_grade</msg>
+      <msg case="Loc" number="Sg">finalweak_grade</msg>
+      <msg case="Loc" number="Pl">finalweak_grade</msg>
+      <msg case="Com" number="Sg">finalweak_grade</msg>
+      <msg case="Com" number="Pl">finalweak_grade</msg>
+      <msg case="Ess">finalstrong_grade</msg>
+      <note>suollemas, gradation</note>
+    </l>
  
     <l stem="3syll" diphthong="yes">
       <msg grade="Pos" case="Acc" number="Sg">diphthong_simplification</msg>
@@ -254,21 +269,59 @@
       <note>fiskat rime</note>
     </l>
 
-    <l stem="2syll">
-      <msg grade="Pos" case="Nom" number="Pl">t-suffix</msg>
-      <msg grade="Pos" case="Acc" number="Sg">no_suffix</msg>
-      <msg grade="Pos" case="Gen" number="Sg">no_suffix</msg>
-      <msg grade="Pos" case="Acc" number="Pl">id-suffix</msg>
-      <msg grade="Pos" case="Gen" number="Pl">id-suffix</msg>
-      <msg grade="Pos" case="Ill" number="Sg">i-suffix</msg>
-      <msg grade="Pos" case="Ill" number="Pl">ide-suffix</msg>
-      <msg grade="Pos" case="Loc" number="Sg">s-suffix</msg>
-      <msg grade="Pos" case="Loc" number="Pl">in-suffix</msg>
-      <msg grade="Pos" case="Com" number="Sg">in-suffix</msg>
-      <msg grade="Pos" case="Com" number="Pl">iguin-suffix</msg>
-      <msg grade="Pos" case="Ess">n-suffix</msg>
+    <l rime="žž">
+      <msg>žž</msg>
+      <note>sápmelaš</note>
+    </l>
+
+
+    <l stem="2syll" gradation="yes">
+      <msg case="Nom" number="Pl">t-suffix</msg>
+      <msg case="Acc" number="Sg">no_suffix</msg>
+      <msg case="Gen" number="Sg">no_suffix</msg>
+      <msg case="Acc" number="Pl">id-suffix</msg>
+      <msg case="Gen" number="Pl">id-suffix</msg>
+      <msg case="Ill" number="Sg">i-suffix</msg>
+      <msg case="Ill" number="Pl">ide-suffix</msg>
+      <msg case="Loc" number="Sg">s-suffix</msg>
+      <msg case="Loc" number="Pl">in-suffix</msg>
+      <msg case="Com" number="Sg">in-suffix</msg>
+      <msg case="Com" number="Pl">iguin-suffix</msg>
+      <msg case="Ess">n-suffix</msg>
       <note>nuorra suffixes</note>
     </l>
+    <l stem="2syll" gradation="no">
+      <msg case="Nom" number="Pl">t-suffix</msg>
+      <msg case="Acc" number="Sg">no_suffix</msg>
+      <msg case="Gen" number="Sg">no_suffix</msg>
+      <msg case="Acc" number="Pl">id-suffix</msg>
+      <msg case="Gen" number="Pl">id-suffix</msg>
+      <msg case="Ill" number="Sg">i-suffix</msg>
+      <msg case="Ill" number="Pl">ide-suffix</msg>
+      <msg case="Loc" number="Sg">s-suffix</msg>
+      <msg case="Loc" number="Pl">in-suffix</msg>
+      <msg case="Com" number="Sg">in-suffix</msg>
+      <msg case="Com" number="Pl">iguin-suffix</msg>
+      <msg case="Ess">n-suffix</msg>
+      <note>suffixes</note>
+    </l>
+
+    <l stem="2syll" gradation="final">
+      <msg case="Nom" number="Pl">at-suffix</msg>
+      <msg case="Acc" number="Sg">a-suffix</msg>
+      <msg case="Gen" number="Sg">a-suffix</msg>
+      <msg case="Acc" number="Pl">aid-suffix</msg>
+      <msg case="Gen" number="Pl">aid-suffix</msg>
+      <msg case="Ill" number="Sg">ii-suffix</msg>
+      <msg case="Ill" number="Pl">aide-suffix</msg>
+      <msg case="Loc" number="Sg">as-suffix</msg>
+      <msg case="Loc" number="Pl">ain-suffix</msg>
+      <msg case="Com" number="Sg">ain-suffix</msg>
+      <msg case="Com" number="Pl">aiguin-suffix</msg>
+      <msg case="Ess">an-suffix</msg>
+      <note>suollemas suffixes</note>
+    </l>
+
 
 
 
