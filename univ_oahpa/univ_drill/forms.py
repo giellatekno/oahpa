@@ -831,7 +831,7 @@ class OahpaSettings(forms.Form):
 					'trisyllabic': False,
 					'contracted': False,
 					'level' : 'all',
-					'lemmacount' : '2',
+					'lemmacount' : ['2','3','4'], # was: '2', but we have removed the lemmacount menu from the GUI
 					'case': 'N-ILL',
 					'pos' : 'N',
 					'vtype' : 'PRS',
@@ -1203,11 +1203,16 @@ class MorfaQuestion(OahpaQuestion):
 					# TODO: conneg only in Prs
 			
 			# Odne 'today', ikte 'yesterday'
-			if (tag.tense in ['Prs','Prt']) and (tag.mood == 'Ind'):
+			
+			# All pres? 
+			# commented this one out to avoid double odne/ikte
+			#	self.pron = TENSE_PRESENTATION.get(tag.tense, False) + " " + self.pron
+
+			if tag.string.find("Der/AV") > -1 or tag.tense in ['Prs','Prt'] and tag.mood == 'Ind':
 				time = TENSE_PRESENTATION.get(tag.tense, False)
 				self.pron = ' '.join([time, pronoun])
 
-			if ("+Der/Pass" in tag.string) and ("+V" in tag.string):
+			elif ("+Der/Pass" in tag.string) and ("+V" in tag.string):
 				# Odne mun ___
 				# Ikte mun ___
 				# Ikte dat (okta) ___ 
@@ -1226,10 +1231,7 @@ class MorfaQuestion(OahpaQuestion):
 
 				self.pron = ' '.join([time, pronoun, number])
 
-			# All pres? 
-			if tag.string.find("Der/AV") > -1:
-				self.pron = TENSE_PRESENTATION.get(tag.tense, False) + " " + self.pron
-
+			
 		if tag.pos == "Pron":
 			# Various display alternations for pronouns.
 			
@@ -2265,18 +2267,19 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 
     noanalysis=False
 
-    fstdir = "/opt/smi/sme/bin"
-    #fstdir = settings.FST_DIRECTORY
+    #fstdir = "/opt/smi/sme/bin" # on victorio
+    fstdir = settings.FST_DIRECTORY
     fst = fstdir + "/ped-sme.fst"
-    lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"# on victorio
-    #lo="/Users/mslm/bin/lookup" # on Heli's machine
+    #lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"# on victorio
+    lo="/Users/mslm/bin/lookup" # on Heli's machine
     lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
-    lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
+    lookup2cg = " | /Users/mslm/main/gt/script/lookup2cg" # on Heli's machine
+    #lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
     cg3 = "/usr/local/bin/vislcg3"
-    preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
-    #preprocess = " | /Users/mslm/main/gt/script/preprocess " # on Heli's machine
-    dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    #dis_bin = "/Users/mslm/main/ped/sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
+    #preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
+    preprocess = " | /Users/mslm/main/gt/script/preprocess " # on Heli's machine
+    #dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
+    dis_bin = "/Users/mslm/main/ped/sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
     
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
     
@@ -2291,7 +2294,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastas_log.txt', 'w')
+    #logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastas_log.txt', 'w')
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024
