@@ -766,7 +766,8 @@ class Questions:
 					tag_string.append([t.tagname for t in tagnames])
 
 			if len(tag_string) > 0:
-				return ['+'.join(item) for item in fill_out(tag_string)]
+				# ++ -> + in order to support % as null in tags.txt
+				return ['+'.join(item).replace('++', '+') for item in fill_out(tag_string)]
 			else:
 				return False
 
