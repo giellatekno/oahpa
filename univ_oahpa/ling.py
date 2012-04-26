@@ -142,6 +142,7 @@ class Paradigm:
 				string = line.strip().replace('*', '')
 				self.tagset[string] = tagclass
 				if add_db and tagclass and string:
+					string = string.replace('%', '')
 					#print "adding " + tagclass + " " + string
 					tagset, created = Tagset.objects.get_or_create(tagset=tagclass)
 					pos, created = Tagname.objects.get_or_create(tagname=string, tagset=tagset)
@@ -489,6 +490,7 @@ class Paradigm:
 					extraforms[tagstring] = wordform
 					print >> STDOUT, "adding extra wordform..", wordform
 
+		# TODO: reproduce word type stuff up here
 		for line in lines_tmp:
 			if not line.strip(): continue
 			matchObj=genObj.search(line)
