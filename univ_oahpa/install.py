@@ -26,7 +26,7 @@ from sahka_install import Sahka  # added by Heli
 # jos on lemma, niin ota käännös jos on oa="yes"
 
 OPTION_LIST = (
-	make_option("-a", "--append-words", dest="append",
+	make_option("-a", "--append", dest="append",
 					  action="store_true", default=False,
 					  help="Add wordforms to words without deleting existing wordforms"),
 	make_option("-b", "--db", dest="add_db",
@@ -113,8 +113,12 @@ def main(opts):
 		sys.exit()
 
 	if options.feedbackfile and options.infile:
-	    feedback.read_feedback(options.feedbackfile,options.infile)
-	    sys.exit()
+		if options.append:
+			append_only = True
+		else:
+			append_only = False
+		feedback.read_feedback(options.feedbackfile,options.infile,append=append_only)
+		sys.exit()
 	
 	if options.linkfile:
 		extra.read_address(options.linkfile)

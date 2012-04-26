@@ -518,7 +518,7 @@ class Feedback_install(object):
 		print >> sys.stdout, '\n'
 
 
-	def read_feedback(self, feedbackfile, wordfile, append=False):
+	def read_feedback(self, feedbackfile, wordfile, append):
 		"""
 			TODO: update this.
 		"""
