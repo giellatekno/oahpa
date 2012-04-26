@@ -676,8 +676,8 @@ class Words(object):
 		self.all_wordids.append(wid)
 		
 		
-		if entry.wordclass:
-			wordclass = entry.wordclass
+		if entry.wordtype:
+			wordclass = entry.wordtype
 			if not COUNT_ONLY:
 				OUT_STRS.append(wordclass)
 		
@@ -745,9 +745,11 @@ class Words(object):
 			# and add the lemma here as fullform to Form models
 			exist_kwargs['lemma'] = entry.lemma_ref
 			exist_kwargs['wordid'] = entry.lemma_ref
+			exist_kwargs['wordclass'] = entry.wordtype.capitalize()
 		else:
 			exist_kwargs['lemma'] = lemma
 			exist_kwargs['wordid'] = lemma
+			exist_kwargs['wordclass'] = entry.wordtype.capitalize()
 
 		
 		try:
@@ -772,7 +774,7 @@ class Words(object):
 		# 	print >> sys.stdout, ' * No changes detected to word XML, skipping... '
 		# 	return
 
-		w.wordclass = wordclass
+		w.wordclass = entry.wordtype.capitalize()
 		w.pos = pos
 		w.wordid = w.lemma = lemma
 		# w.presentationform = presentationform
