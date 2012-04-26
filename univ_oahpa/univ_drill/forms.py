@@ -728,7 +728,7 @@ def select_words(self, qwords, awords):
 				selected_awords[syntax]['taskword'] = aword['taskword']
 			if aword.has_key('qelement'):
 				qelem = aword['qelement']
-				if type(qelem) is not long:  # to exclude MorfaC 
+				if isinstance(qelem, QElement):  # to exclude MorfaC 
 				    if qelem.task:  # words in VastaS answer frame where task="yes".
 				        selected_awords[syntax]['taskword'] = qelem.task   
 			if aword.has_key('word') and aword['word']:
