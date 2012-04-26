@@ -14,7 +14,7 @@ sys.path.append('/home/sjdoahpa')
 ## print >> fpath, 'tmp2'
 ## fpath.close()
 
-os.environ['DJANGO_SETTINGS_MODULE'] = 'sjd_oahpa.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'sjdoahpa.settings'
 
 from django.core.handlers import wsgi # import django.core.handlers.wsgi
 
