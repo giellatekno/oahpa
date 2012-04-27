@@ -69,7 +69,7 @@
 		<question>
 			<text>MAINV go GEN -guovttos ikte</text>
 			<element id="GEN">
-				<grammar tag="N+Sg+Gen"/>
+				<grammar tag="N+Nountype+Sg+Gen"/>
 				<sem class="mPAIR"/>
 			</element>
 			<element id="MAINV">
@@ -124,7 +124,7 @@
 			</element>
 			<element id="ITEM">
 				<sem class="TOY"/>
-				<grammar tag="N+Pl+Nom"/>
+				<grammar tag="N+Nountype+Pl+Nom"/>
 			</element>
 		</answer>
 	</q>
@@ -171,7 +171,7 @@
 			<text>Gean SUBJ diet lea</text>
 			<element id="SUBJ">
 				<sem class="mPRIVVEHICLE"/>
-				<grammar tag="N+Sg+Nom"/>
+				<grammar tag="N+Nountype+Sg+Nom"/>
 			</element>
 		</question>
 		<answer>
@@ -191,7 +191,7 @@
 			</element>
 			<element id="SUBJ">
 				<sem class="ANIMAL_PET"/>
-				<grammar tag="N+Sg+Nom"/>
+				<grammar tag="N+Nountype+Sg+Nom"/>
 			</element>
 		</question>
 		<answer>
@@ -211,7 +211,7 @@
 			</element>
 			<element id="OBJ">
 				<sem class="mPRINTEDMATTER"/>
-				<grammar tag="N+Sg+Acc"/>
+				<grammar tag="N+Nountype+Sg+Acc"/>
 			</element>
       		<element id="MAINV">
 			<grammar tag="V+Ind+Prt+Sg3"/>
@@ -231,7 +231,7 @@
 			<text>Geasa SUBJ MAINV OBJ</text>
 			<element id="OBJ">
 				<sem class="mPRINTEDMATTER"/>
-				<grammar tag="N+Sg+Acc"/>
+				<grammar tag="N+Nountype+Sg+Acc"/>
 			</element>
 			<element id="SUBJ">
 				<sem class="mPERSNAME"/>
@@ -255,11 +255,11 @@
 			<text>Geasa SUBJ osttii OBJ</text>
 			<element id="OBJ">
 				<sem class="CLOTHING"/>
-				<grammar tag="N+Pl+Acc"/>
+				<grammar tag="N+Nountype+Pl+Acc"/>
 			</element>
 			<element id="SUBJ">
 				<sem class="mFAMILYsg"/> 
-				<grammar tag="N+Sg+Nom"/>
+				<grammar tag="N+Nountype+Sg+Nom"/>
 			</element>
 		</question>
 		<answer>
@@ -275,11 +275,11 @@
 			<text>Geas SUBJ lea oastán OBJ</text>
 			<element id="OBJ">
 				<sem class="mPRIVVEHICLE"/>
-				<grammar tag="N+Sg+Acc"/>
+				<grammar tag="N+Nountype+Sg+Acc"/>
 			</element>
 			<element id="SUBJ">
 				<sem class="mFAMILYsg"/>
-				<grammar tag="N+Sg+Nom"/>
+				<grammar tag="N+Nountype+Sg+Nom"/>
 			</element>
 		</question>
 		<answer>
@@ -295,7 +295,7 @@
 			<text>Geas SUBJ lea OBJ ožžon</text>
 			<element id="OBJ">
 				<sem class="CLOTHING"/>
-				<grammar tag="N+Sg+Acc"/>
+				<grammar tag="N+Nountype+Sg+Acc"/>
 			</element>
 			<element id="SUBJ">
 				<sem class="mPERSNAME"/>
@@ -315,7 +315,7 @@
 			<text>Geas lea ADJ SUBJ</text>
 			<element id="SUBJ">
 				<sem class="ANIMAL_DOM"/>
-				<grammar tag="N+Sg+Nom"/>
+				<grammar tag="N+Nountype+Sg+Nom"/>
 			</element>
 			<element id="ADJ">
 				<sem class="ANIMAL_A"/>
@@ -379,7 +379,7 @@
       </element>
  		<element id="OBJ">
 		<sem class="mPRIVVEHICLE"/>
-		<grammar tag="N+Sg+Acc"/>
+		<grammar tag="N+Nountype+Sg+Acc"/>
 	  </element>
     </question>
     <answer> 
@@ -412,7 +412,7 @@
 	<grammar tag="Pron+Dem+Pl+Acc+Attr"/>
 	  </element>
 		<element id="OBJ">
-		<grammar tag="N+Pl+Acc"/>
+		<grammar tag="N+Nountype+Pl+Acc"/>
 		<id>girji</id>
 		  </element>
     </answer>
@@ -431,7 +431,7 @@
       </element>
  		<element id="ILL">
 		<id>bárdni</id>
-		<grammar tag="N+Sg+Ill"/>
+		<grammar tag="N+Nountype+Sg+Ill"/>
 	  </element>
     </question>
     <answer> 
@@ -461,7 +461,7 @@
 	  </element>
  		<element id="ILL">
 		<id>girji</id>
-		<grammar tag="N+Pl+Ill"/>
+		<grammar tag="N+Nountype+Pl+Ill"/>
 	  </element>
     </answer>
   </q>
@@ -477,7 +477,7 @@
 	  </element>
  		<element id="OBJ">
 		<sem class="mPRIVVEHICLE"/>
-		<grammar tag="N+Sg+Com"/>
+		<grammar tag="N+Nountype+Sg+Com"/>
 	  </element>
     </answer>
   </q>
@@ -493,7 +493,7 @@
 	  </element>
  		<element id="OBJ">
 		<sem class="mPRIVVEHICLE"/>
-		<grammar tag="N+Pl+Com"/>
+		<grammar tag="N+Nountype+Pl+Com"/>
 	  </element>
     </answer>
   </q>
@@ -509,7 +509,7 @@
 	  </element>
  		<element id="OBJ">
 		<sem class="mPRIVVEHICLE"/>
-		<grammar tag="N+Sg+Com"/>
+		<grammar tag="N+Nountype+Sg+Com"/>
 	  </element>
     </answer>
   </q>
@@ -635,7 +635,7 @@
       </element>
  		<element id="OBJ">
 		<sem class="mPRIVVEHICLE"/>
-		<grammar tag="N+Sg+Acc"/>
+		<grammar tag="N+Nountype+Sg+Acc"/>
 	  </element>
     </question>
     <answer> 
@@ -651,14 +651,14 @@
       <text>Mo SUBJ MAINV OBJ</text>
       <element id="SUBJ">
 		<sem class="mPEOPLE"/>
-		<grammar tag="N+Pl+Nom"/>
+		<grammar tag="N+Nountype+Pl+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Prt+Pl3"/>
 	<id>ruhtadit</id>
       </element>
  		<element id="OBJ">
-		<grammar tag="N+Sg+Acc"/>
+		<grammar tag="N+Nountype+Sg+Acc"/>
 		<id>mátki</id>
 	  </element>
     </question>
@@ -675,7 +675,7 @@
       <text>Manne SUBJ manai PLACE</text>
       <element id="SUBJ">
 		<sem class="mPEOPLE"/>
-		<grammar tag="N+Sg+Nom"/>
+		<grammar tag="N+Nountype+Sg+Nom"/>
       </element>
  		<element id="PLACE">
 		<sem class="mPLACENAME"/>
@@ -688,7 +688,7 @@
 	<grammar tag="Pron+Refl+Gen+PxSg3"/>
       </element>
  		<element id="OBJ">
-		<grammar tag="N+Sg+Acc"/>
+		<grammar tag="N+Nountype+Sg+Acc"/>
 		<sem class="mFAMILY"/>
 	  </element>
     </answer>
@@ -698,7 +698,7 @@
     <question>
       <text>Geasa osttiide OBJ</text>
  		<element id="OBJ">
-		<grammar tag="N+Pl+Acc"/>
+		<grammar tag="N+Nountype+Pl+Acc"/>
 		<sem class="FOOD_GROCERY"/>
 	  </element>
     </question>
@@ -747,7 +747,7 @@
       <text>Geainna SUBJ gullui VERB</text>
       <element id="SUBJ">
 		<sem class="mFAMILY"/>
-		<grammar tag="N+Sg+Nom"/>
+		<grammar tag="N+Nountype+Sg+Nom"/>
       </element>
  		<element id="VERB">
 		<id>háleštit</id>
@@ -783,14 +783,14 @@
       <text>Geaidda SUBJ MAINV OBJ</text>
       <element id="SUBJ">
 		<sem class="mPEOPLE"/>
-		<grammar tag="N+Pl+Nom"/>
+		<grammar tag="N+Nountype+Pl+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Prt+Pl3"/>
 	<id>addit</id>
       </element>
  		<element id="OBJ">
-		<grammar tag="N+Pl+Acc"/>
+		<grammar tag="N+Nountype+Pl+Acc"/>
 		<id>skeaŋka</id>
 	  </element>
     </question>
@@ -807,14 +807,14 @@
       <text>Geaidda SUBJ MAINV OBJ</text>
       <element id="SUBJ">
 		<sem class="mPEOPLE"/>
-		<grammar tag="N+Pl+Nom"/>
+		<grammar tag="N+Nountype+Pl+Nom"/>
       </element>
       <element id="MAINV">
 	<grammar tag="V+Ind+Prt+Pl3"/>
 	<id>muitalit</id>
       </element>
  		<element id="OBJ">
-		<grammar tag="N+Pl+Acc"/>
+		<grammar tag="N+Nountype+Pl+Acc"/>
 		<id>sáhka</id>
 	  </element>
     </question>
@@ -879,7 +879,7 @@
       <text>Leat go SUBJ ovdal deaivvadan</text>
  		<element id="SUBJ">
 		<sem class="mPEOPLE"/>
-		<grammar tag="N+Pl+Nom"/>
+		<grammar tag="N+Nountype+Pl+Nom"/>
 	  </element>
     </question>
     <answer> 
@@ -1073,7 +1073,7 @@
 	  </element>
  		<element id="TIME">
 		<sem class="TIME_SEASON"/>
-		<grammar tag="N+Sg+Gen"/>
+		<grammar tag="N+Nountype+Sg+Gen"/>
 	  </element>
     </answer>
   </q>
@@ -1093,7 +1093,7 @@
 	  </element>
  		<element id="TIME">
 		<sem class="TIME_POINT_GEN_PL"/>
-		<grammar tag="N+Pl+Gen"/>
+		<grammar tag="N+Nountype+Pl+Gen"/>
 	  </element>
     </answer>
   </q>
@@ -1287,7 +1287,7 @@
 			</element>
 			<element id="ITEM">
 				<sem class="TOY"/>
-				<grammar tag="N+Pl+Nom"/>
+				<grammar tag="N+Nountype+Pl+Nom"/>
 			</element>
 		</answer>
 	</q>
@@ -1304,7 +1304,7 @@
 			</element>
 			<element id="ITEM">
 				<sem class="ANIMAL_PET"/>
-				<grammar tag="N+Sg+Gen"/>
+				<grammar tag="N+Nountype+Sg+Gen"/>
 			</element>
 		</answer>
 	</q>
@@ -1373,7 +1373,7 @@
 			</element>
 			<element id="OBJ">
 				<sem class="CLOTHING"/>
-				<grammar tag="N+Sg+Acc"/>
+				<grammar tag="N+Nountype+Sg+Acc"/>
 			</element>
 		</answer>
 	</q>
@@ -1390,7 +1390,7 @@
 			</element>
 			<element id="OBJ">
 				<sem class="CLOTHING"/>
-				<grammar tag="N+Sg+Acc"/>
+				<grammar tag="N+Nountype+Sg+Acc"/>
 			</element>
 		</answer>
 	</q>
@@ -1407,7 +1407,7 @@
 			</element>
 			<element id="OBJ">
 				<sem class="CLOTHING_PL"/>
-				<grammar tag="N+Pl+Acc"/>
+				<grammar tag="N+Nountype+Pl+Acc"/>
 			</element>
 		</answer>
 	</q>
@@ -1424,7 +1424,7 @@
 			</element>
 			<element id="OBJ">
 				<sem class="CLOTHING_PL"/>
-				<grammar tag="N+Pl+Acc"/>
+				<grammar tag="N+Nountype+Pl+Acc"/>
 			</element>
 		</answer>
 	</q>
@@ -1441,7 +1441,7 @@
 			</element>
 			<element id="OBJ">
 				<sem class="CLOTHING"/>
-				<grammar tag="N+Sg+Acc"/>
+				<grammar tag="N+Nountype+Sg+Acc"/>
 			</element>
 		</answer>
 	</q>
@@ -1458,7 +1458,7 @@
 			</element>
 			<element id="OBJ">
 				<sem class="ANIMAL_PET"/>
-				<grammar tag="N+Sg+Acc"/>
+				<grammar tag="N+Nountype+Sg+Acc"/>
 			</element>
 		</answer>
 	</q>
@@ -1475,7 +1475,7 @@
 			</element>
 			<element id="OBJ">
 				<id>niibi</id>
-				<grammar tag="N+Sg+Acc"/>
+				<grammar tag="N+Nountype+Sg+Acc"/>
 			</element>
 		</answer>
 	</q>
@@ -1492,7 +1492,7 @@
 			</element>
 			<element id="OBJ">
 				<sem class="CLOTHING_PL"/>
-				<grammar tag="N+Pl+Acc"/>
+				<grammar tag="N+Nountype+Pl+Acc"/>
 			</element>
 		</answer>
 	</q>
@@ -1526,7 +1526,7 @@
 			</element>
 			<element id="NOUN">
 				<sem class="ARRANGEMENT_PL"/>
-				<grammar tag="N+Pl+Loc"/>
+				<grammar tag="N+Nountype+Pl+Loc"/>
 			</element>
 		</answer>
 	</q>
@@ -1690,7 +1690,7 @@
 			</element>
 			<element id="OBJ">
 				<sem class="mSTORY"/>
-				<grammar tag="N+Sg+Acc"/>
+				<grammar tag="N+Nountype+Sg+Acc"/>
 			</element>
 		</answer>
 	</q>
@@ -1707,7 +1707,7 @@
 			</element>
 			<element id="OBJ">
 				<sem class="mSTORY"/>
-				<grammar tag="N+Sg+Acc"/>
+				<grammar tag="N+Nountype+Sg+Acc"/>
 			</element>
 		</answer>
 	</q>
@@ -1724,7 +1724,7 @@
 			</element>
 			<element id="OBJ">
 				<sem class="mSTORY"/>
-				<grammar tag="N+Pl+Acc"/>
+				<grammar tag="N+Nountype+Pl+Acc"/>
 			</element>
 		</answer>
 	</q>

@@ -15,7 +15,7 @@
    <question>
       <text>Mu ITEM lea PRED . Makkár ITEM mus lea</text>
       <element id="ITEM">   
-	<grammar tag="N+Sg+Nom"/>
+	<grammar tag="N+Nountype+Sg+Nom"/>
 	<sem class="CLOTHING"/>
       </element>
       <element id="PRED">     
@@ -35,7 +35,7 @@
    <question>
       <text>Mu ITEM leat PRED . Makkár ITEM mus leat</text>
       <element id="ITEM">   
-	<grammar tag="N+Pl+Nom"/>
+	<grammar tag="N+Nountype+Pl+Nom"/>
 	<sem class="CLOTHING"/>
       </element>
       <element id="PRED">     
@@ -55,7 +55,7 @@
    <question>
       <text>ITEM lea PRED . Makkár ITEM dát lea</text>
       <element id="ITEM">   
-	<grammar tag="N+Sg+Nom"/>
+	<grammar tag="N+Nountype+Sg+Nom"/>
 	<sem class="FURNITURE"/>
       </element>
       <element id="PRED">     
@@ -75,7 +75,7 @@
    <question>
       <text>ITEM lea PRED . Makkár ITEM dát lea</text>
       <element id="ITEM">   
-	<grammar tag="N+Sg+Nom"/>
+	<grammar tag="N+Nountype+Sg+Nom"/>
 	<id>málli</id> 
       </element>
       <element id="PRED">     
@@ -122,7 +122,7 @@
    <question>
       <text>ITEM lea PRED . Makkár ITEM dát lea</text>
       <element id="ITEM">   
-	<grammar tag="N+Sg+Nom"/>
+	<grammar tag="N+Nountype+Sg+Nom"/>
 	<id>bálggis</id> 
       </element>
       <element id="PRED">     
@@ -146,7 +146,7 @@
    <question>
       <text>GEN ITEM leat PRED . Makkár ITEM dus leat</text>
       <element id="ITEM">   
-	<grammar tag="N+Pl+Nom"/>
+	<grammar tag="N+Nountype+Pl+Nom"/>
 	<sem class="CLOTHING"/>
       </element>
       <element id="GEN">   
@@ -171,7 +171,7 @@
    <question>
       <text>Dát ITEM lea PRED . Makkár ITEM duot lea</text>
       <element id="ITEM">   
-	<grammar tag="N+Sg+Nom"/>
+	<grammar tag="N+Nountype+Sg+Nom"/>
 	<id>bálggis</id> 
       </element>
       <element id="PRED">     
@@ -192,7 +192,7 @@
    <question>
       <text>Dát ITEM lea ADJ . Makkár ITEM duot lea</text>
       <element id="ITEM">   
-	<grammar tag="N+Sg+Nom"/>
+	<grammar tag="N+Nountype+Sg+Nom"/>
 	<id>bálggis</id> 
       </element>
       <element id="ADJ">     
@@ -216,7 +216,7 @@
    <question>
       <text>GEN ITEM leat COMP go mu ITEM . Makkár ITEM dus leat</text>
       <element id="ITEM">   
-	<grammar tag="N+Pl+Nom"/>
+	<grammar tag="N+Nountype+Pl+Nom"/>
 	<sem class="CLOTHING"/>
       </element>
       <element id="GEN">   
@@ -241,7 +241,7 @@
    <question>
       <text>Dát ITEM leat PRED . Makkár ITEM diet lea</text>
       <element id="ITEM">   
-	<grammar tag="N+Pl+Nom"/>
+	<grammar tag="N+Nountype+Pl+Nom"/>
 	<id>bálggis</id>
       </element>
       <element id="PRED">     
@@ -265,7 +265,7 @@
     <question>
       <text>Mus leat ATTR ITEM . Makkárat du ITEM leat</text>
       <element id="ITEM">   
-	<grammar tag="N+Pl+Nom"/>
+	<grammar tag="N+Nountype+Pl+Nom"/>
 	<sem class="CLOTHING"/>
       </element>
       <element id="ATTR">
@@ -286,7 +286,7 @@
     <question>
       <text>HAB leat ATTR ITEM . Makkárat du ITEM leat</text>
       <element id="ITEM">   
-	<grammar tag="N+Pl+Nom"/>
+	<grammar tag="N+Nountype+Pl+Nom"/>
 	<sem class="FURNITURE"/>
       </element>
       <element id="ATTR">
@@ -311,7 +311,7 @@
     <question>
       <text>HAB lea ATTR ITEM . Makkár du ITEM lea</text>
       <element id="ITEM">   
-	<grammar tag="N+Sg+Nom"/>
+	<grammar tag="N+Nountype+Sg+Nom"/>
 	<sem class="FURNITURE"/>
       </element>
       <element id="ATTR">
@@ -340,7 +340,7 @@
    <question>
       <text>Mu ITEM lea PRED . Makkár du ITEM lea</text>
       <element id="ITEM">   
-	<grammar tag="N+Sg+Nom"/>
+	<grammar tag="N+Nountype+Sg+Nom"/>
 	<sem class="mFAMILY"/>
       </element>
       <element id="PRED">    
@@ -361,7 +361,7 @@
    <question>
       <text>Mu ITEM leat PRED . Makkárat du ITEM leat</text>
       <element id="ITEM">   
-	<grammar tag="N+Pl+Nom"/>
+	<grammar tag="N+Nountype+Pl+Nom"/>
 	<sem class="mFAMILY"/>
       </element>
       <element id="PRED">     
@@ -384,7 +384,7 @@
    <question>
       <text>Dát ITEM lea PRED . Makkár diet ITEM lea</text>
       <element id="ITEM">   
-	<grammar tag="N+Sg+Nom"/>
+	<grammar tag="N+Nountype+Sg+Nom"/>
 	<id>geaidnu</id>
       </element>
       <element id="PRED">  <!-- compare="yes"-->  
@@ -405,7 +405,7 @@
    <question>
       <text>Dát ITEM leat PRED . Makkárat diet ITEM leat</text>
       <element id="ITEM">   
-	<grammar tag="N+Pl+Nom"/>
+	<grammar tag="N+Nountype+Pl+Nom"/>
 	<id>geaidnu</id>
       </element>
       <element id="PRED">     
@@ -430,7 +430,7 @@
     <question>
       <text>Gal HAB leat ATTR ITEM</text>  <!-- compare="yes"-->
       <element id="ITEM">   
-	<grammar tag="N+Pl+Nom"/>
+	<grammar tag="N+Nountype+Pl+Nom"/>
 	<sem class="CLOTHING"/>
       </element>
       <element id="ATTR">
@@ -448,7 +448,7 @@
 	<grammar tag="A+Superl+Sg+Nom"/>  <!-- same number as SUBJ -->
       </element>
       <element id="ITEM" content="ITEM">   
-	<grammar tag="N+Sg+Nom"/>	
+	<grammar tag="N+Nountype+Sg+Nom"/>	
       </element>
     </answer>
   </q>
@@ -458,7 +458,7 @@
     <question>
       <text>Gal dus leat ATTR ITEM</text>  <!-- compare="yes"-->
       <element id="ITEM">   
-	<grammar tag="N+Pl+Nom"/>
+	<grammar tag="N+Nountype+Pl+Nom"/>
 	<sem class="FURNITURE"/>
       </element>
       <element id="ATTR">
@@ -472,7 +472,7 @@
 	<grammar tag="A+Superl+Pl+Nom"/>  <!-- same number as SUBJ -->
       </element>
       <element id="ITEM" content="ITEM">   
-	<grammar tag="N+Pl+Nom"/>	
+	<grammar tag="N+Nountype+Pl+Nom"/>	
       </element>
     </answer>
   </q>
