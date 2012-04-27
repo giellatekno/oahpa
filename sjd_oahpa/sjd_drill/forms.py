@@ -296,21 +296,10 @@ DERIVATION_CHOICES_CONTEXT = (
 )
 
 BOOK_CHOICES = (
-    ('d1', _('Davvin 1')),
-    ('d2', _('Davvin 1-2')),
-    ('d3', _('Davvin 1-3')),
-    ('d4', _('Davvin 1-4')),
-    ('AA', _('Aikio komp.')),
-    ('c1', _('Cealkke 1')),
-    ('c2', _('Cealkke 1-2')),
-    ('c3', _('Cealkke 1-3')),
-    ('c4', _('Cealkke 1-4')),
-    ('sam1031_1', _('SAM-1031-1')),
-    ('sam1031_2', _('SAM-1031-2')),
-    ('algu', _('algu')),
-    ('sara', _('sara')),
-    ('bures', _('Bures bures fas')),
-    ('oaidnalit', _('Oaidnalit')),
+    #('l1', _('Level 1')),
+    #('l2', _('Level 1-2')),
+    #('l3', _('Level 1-3')),
+    ('Saamkilsyjjt', _('Saamkilsyjjt')),
     ('all', _('All')),
 )
 

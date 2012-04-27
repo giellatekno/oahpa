@@ -318,7 +318,7 @@ class LeksaPlaceview(Gameview):
 				return False
 
 		self.settings['allsem'] = []
-		self.settings['semtype'] = "PLACE_LEKSA"
+		self.settings['semtype'] = "NAME"
 		self.settings['geography'] = 'world'
 		self.settings['frequency'] = ['common'] # added
 
