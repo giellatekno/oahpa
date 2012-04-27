@@ -82,9 +82,10 @@
 				</dl>
 				<input type="submit" class="hide" value="submit" />
 			</form>
+			<!--
 			<form action="/{{ URL_PREFIX }}/dialect/" method="post">
 				<dl>
-					<dt><label for="dialect">{% trans "Northern Sami dialect" %}</label></dt>
+					<dt><label for="dialect">{% trans "Kildin Sami dialect" %}</label></dt>
 					<dd>
 						<input name="next" type="hidden" value="/{{ URL_PREFIX }}/" />
 						<select name="dialect" onChange="javascript:this.form.submit();">
@@ -105,6 +106,7 @@
 				</dl>
 				<input type="submit" class="hide" value="submit" />
 			</form>
+			-->
 		</div>
 		{% endblock %}
 		
@@ -140,7 +142,6 @@
 						<span>{% trans "Words and translations" %}</span>
 					</a>
 				</li>
-			</ul>
 			
 <!---			<ul id="games_menu">
 
@@ -186,28 +187,34 @@
             {% ifequal LANGUAGE_CODE "no" %}
                 <li><a href="http://giellatekno.uit.no/oahpa/sme/useoahpa/OAHPAveiledning.nno.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
-            {% ifequal LANGUAGE_CODE "sv" %}
+            {% ifequal LANGUAGE_CODE "ru" %}
                 <li><a href="http://giellatekno.uit.no/oahpa/sme/useoahpa/OAHPAveiledning.nno.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
+            {% ifequal LANGUAGE_CODE "sv" %}
+                <li><a href="http://giellatekno.uit.no/oahpa/sme/useoahpa/OAHPAveiledning.rus.html">{% trans "Veiledning" %}</a></li>
+            {% endifequal %}
             {% ifequal LANGUAGE_CODE "fi" %}
-                <li><a href="http://victorio.uit.no/webdict/index_sme-fin.html">{% trans "North Sámi" %}-{% trans "Finnish" %} {% trans "dictionary" %}</a></li>
+                <li><a href="http://victorio.uit.no/webdict/index_sme-fin.html">{% trans "Kildin Sámi" %}-{% trans "Finnish" %} {% trans "dictionary" %}</a></li>
             {% else %}
-				<li><a href="http://victorio.uit.no/webdict/index_sme-nob.html">{% trans "North Sámi" %}-{% trans "Norwegian" %} {% trans "dictionary" %}</a></li>
+				<li><a href="http://victorio.uit.no/webdict/index_sme-nob.html">{% trans "Kildin Sámi" %}-{% trans "Norwegian" %} {% trans "dictionary" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "sme" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.html">{% trans "North Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.html">{% trans "Kildin Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "fi" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.html">{% trans "North Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.html">{% trans "Kildin Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "en" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.eng.html">{% trans "North Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.eng.html">{% trans "Kildin Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "no" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.nob.html">{% trans "North Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.nob.html">{% trans "Kildin Sámi grammar" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "ru" %}
+				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.rus.html">{% trans "Kildin Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "sv" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.nob.html">{% trans "North Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.nob.html">{% trans "Kildin Sámi grammar" %}</a></li>
             {% endifequal %}
 			</ul>
 
