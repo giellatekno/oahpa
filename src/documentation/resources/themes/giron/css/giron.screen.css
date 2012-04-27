@@ -20,6 +20,7 @@ body {
     background-color: #FFFFFF;
     color: #000000;
     font-size: 90%;
+	
 }
 
 p {
@@ -28,7 +29,6 @@ p {
   margin-top: .8em;
   margin-bottom: 0em;
   font-family: "Verdana";
-  
 }
 
 em {
@@ -59,7 +59,7 @@ to view the changes, refresh the view of the file in ones web browser.*/
 h1, h2, h3, h4, h5, h6 { font-family: Georgia, Arial, Helvetica, sans-serif; }
 
 h1     { font-size : 2.4em; margin: 25px 0px 0px 0px;  padding: 0px; font-weight: normal; }
-h2     { font-size : 1.8em; margin: 0.9em 0px 0px 0px; padding: 0px; font-weight : normal;}
+h2     { font-size : 2.0em; margin: 0.9em 0px 0px 0px; padding: 0px; font-weight : normal;}
 h3     { font-size : 1.3em; margin: 0.8em 0px 0px 0px; padding: 0px; font-weight : normal; }
 .h3 { margin: 22px 0px 3px 0px; }
 h4     { font-size : 1.1em; margin: 0.7em 0px 0px 0px; padding: 0px; font-weight : normal; text-align: left; }
@@ -69,7 +69,10 @@ h5     { font-size : 0.9em; margin: 14px 0px 0px 0px; padding: 0px; font-weight 
 
 #content h1 { margin-bottom: .5em; }
 
-#content ul { list-style-type: none; }
+#content ul { 
+list-style-type: none;
+padding: 0.5em 0 1em 1em;
+ }
 
 #menu h1 {
   margin: 0;
@@ -80,10 +83,10 @@ h5     { font-size : 0.9em; margin: 14px 0px 0px 0px; padding: 0px; font-weight 
 strong {
 font-weight: normal;
 font-variant: normal;
-font-family: "Comic Sans";
-font-size: 120%;
-color: black;
+font-family: "Georgia";
+font-size: 110%;
 font-style: normal;
+font-weight: 100;
 
 }
 
@@ -93,24 +96,15 @@ font-style: normal;
     margin-left: 30px;
     font-family : Verdana, Helvetica, sans-serif;
     font-size: 0.90em;
-	max-width: 1200px;
-	min-width: 500px;
-	min-height:600px;
+	max-width: 900px;
+	min-width: 300px;
+	min-height: 1200px;
 /* 	border-style: solid; */	
 }
 
-#content a:link { color: #3399FF;
-}
-#content a:visited { color: #3399FF;}
-#content a:hover {
-        color: #F3763F;
-		
-}
-
-#content ul {
-    margin: 0;
-    padding: 0 0em;
-}
+#content a:link { color: #80A1B6;}
+#content a:visited { color: #80A1B6;}
+#content a:hover { color: #002B54;}
 
 #content li {
     padding: 0 0px;
@@ -120,8 +114,8 @@ font-style: normal;
 
 #content li, {
   line-height: 160%;
-text-indent: -10px;  
-  margin-left: 20px;
+/* text-indent: -10px;  */
+/*  margin-left: 10px; */
   margin-top: .2em;
   margin-bottom: .2em;
 }
@@ -236,7 +230,7 @@ table caption {
     position: relative;
     float: left;
     width: 100%;
-    background-color: #ffffff;
+    background-color: white;
 /*     background-image: url("../themes/images/header_white_line.gif"); */
     background-position: bottom left;
     background-repeat: repeat-x;
@@ -249,6 +243,9 @@ table caption {
 /*     float: center; */
 /*     text-align: center; */
 /* 	left: 180px; */
+}
+#header .logoImage {
+  width: 100%;
 }
 
 #header .searchbox {
@@ -288,11 +285,11 @@ table caption {
     background-repeat: no-repeat;
     background-position: top right;
     margin: 0 1px 5px 0;
-    padding: 7px;
+    padding: 5px;
 	border-right: #D1E5F0;
 	border-bottom: #F3763F;
 	border-color: #F3763F;
-	background-color: black;
+	background-color: #fff;
 }
 
 #nav-main li a {
@@ -306,9 +303,9 @@ table caption {
     padding: 5px 15px 10px;
     width: .1em; /* IE/Win fix */
 }
-#nav-main li a:link {  color: #3399FF; }
-#nav-main li a:visited { color: #3399FF; }
-#nav-main li a:hover { color: #F3763F; }
+#nav-main li a:link {  color: #80A1B6; }
+#nav-main li a:visited { color: #80A1B6; }
+#nav-main li a:hover { color: #002B54 }
 
 #nav-main > li a { width: auto; } /* Rest of IE/Win fix */
 
@@ -317,12 +314,12 @@ table caption {
 /* End IE5-Mac hack */
 
 #nav-main .current {
-    background-color: gray;
+    background-color: #fff;
     background-repeat: no-repeat;
     background-position: top right;
-	border-right: groove;
+	border-right: 0;
 	border-bottom: groove;
-	border-color: gray;
+	border-color: #80A1B6;
 }
 
 #nav-main .current a {
@@ -370,15 +367,15 @@ table caption {
 
 #nav-section ul {
     list-style: none;
-    margin: 0px;
-    padding: 0px;
+    margin: 0px 0px 0 0;
+    padding: 0px 20px 0 0;
 }
 
-#leftbar a {  font-weight: normal;}
-#leftbar a:link { color: #3399FF; }
-#leftbar a:visited { color: #3399FF; }
+#leftbar a {  font-weight: normal; font-family: georgia;}
+#leftbar a:link { color: #80A1B6: }
+#leftbar a:visited { color: #80A1B6; }
 #leftbar a:active { color: #000000; }
-#leftbar a:hover { color: #F3763F; }
+#leftbar a:hover { color: #002B54; }
 
 #menuarea { width:10em;}
 
@@ -386,11 +383,14 @@ table caption {
     position: relative;
     float: left;
     width: 180px;
-    padding-top: 20px;
-    left:10px;
+	min-height: 600px;
+    padding: 20px;
+	/* hack, need to be fixed */
+    margin: 0 0 500px 40px;
+	align: 
     z-index: 20;
      
-    background-color: #ffffff;
+    background-color: #EBF2F8;
     font-size: 0.9em;
     color: #000000;
 	
@@ -407,22 +407,25 @@ table caption {
 }
 
 #nav-section {
-float: right;
+float: left;
 }
 
 #nav-section span {
         background-repeat: no-repeat;
         background-position: center left;
-        margin-left: 0px;
+        margin: 0px;
         padding: 2px 12px;
-        font-weight : normal
+        font-weight : bold;
+		font-size: 120%;
+		color: #80A1B6;
 		
 }
 #nav-section .pagegroup span {
-        color: #F3763F;
+        color: #80A1B6;
 }
 .pagegroupselected span {
-        color: #F3763F
+        line-height: 160%;
+		
 }
 .pagegroupopen span {
         color: #000000;
@@ -441,7 +444,7 @@ float: right;
         margin: 0px 0px 12px 0px;
         padding: 0px;
         font-weight : normal;
-		font-size: 90%;		
+		font-size: 100%;		
 		}
 
 #nav-section .selectedmenuitemgroup{
@@ -467,9 +470,9 @@ float: right;
 }
 
 #nav-section .menupagetitle {
-        color: #F3763F;
-        padding: 10px 0px 0px 0px;
-        font-style : normal;
+        color: #80A1B6;
+        padding: 0;
+        font-weight : bold;
         margin-right: 10px;
         border-color: #999999;
 }
@@ -610,6 +613,7 @@ acronym { cursor: help; }
     margin-right: 0%;
     padding-bottom: 20px;
     padding-top: 10px;
+	max-width: 50%;
 }
 /*** CD : Lien en bleu lors du survol de la souris... **/
 #content-minitoc-area a:hover   { border: 0px solid #a5b6c6; background: #CFDCED; }
@@ -618,6 +622,7 @@ acronym { cursor: help; }
     list-style-image: url('../themes/images/current.gif');
     font-weight: normal;
 	margin-left: 20px;
+	
 }
 
 li p {
@@ -698,8 +703,8 @@ p.instruction {
     display: none;
 }
 
-a:link { color: #85D0E1; } 
-a:visited { color: #85D0E1; } 
+a:link { color: #80A1B6; } 
+a:visited { color: #80A1B6; } 
 a:hover { color: #000066; }
 
 /* This stuff was in giron.basic.css. Any duplicate code or other code that
@@ -707,7 +712,6 @@ could be combined have been added above */
 
 img { 
 	border: 0; 
-	width: 100%;
 }
 
 .clearboth {
