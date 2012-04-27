@@ -176,46 +176,48 @@
 			{% endcomment %}
 			<ul class="linklist">
             {% ifequal LANGUAGE_CODE "sme" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sme/useoahpa/OAHPAveiledning.html">{% trans "Veiledning" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/sjd/index.sme.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "fi" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sme/useoahpa/OAHPAveiledning.fin.html">{% trans "Veiledning" %}</a></li>
+                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.fin.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "en" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sme/useoahpa/OAHPAveiledning.eng.html">{% trans "Veiledning" %}</a></li>
+                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.eng.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "no" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sme/useoahpa/OAHPAveiledning.nno.html">{% trans "Veiledning" %}</a></li>
+                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.nob.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "ru" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sme/useoahpa/OAHPAveiledning.nno.html">{% trans "Veiledning" %}</a></li>
+                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "sv" %}
-                <li><a href="http://giellatekno.uit.no/oahpa/sme/useoahpa/OAHPAveiledning.rus.html">{% trans "Veiledning" %}</a></li>
+                <li><a href="http://giellatekno.uit.no/oahpa/sjd/index.swe.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "fi" %}
-                <li><a href="http://victorio.uit.no/webdict/index_sme-fin.html">{% trans "Kildin Sámi" %}-{% trans "Finnish" %} {% trans "dictionary" %}</a></li>
+                <li><a href="http://victorio.uit.no/webdict/index_sjd-rus.html">{% trans "Kildin Sámi" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
             {% else %}
-				<li><a href="http://victorio.uit.no/webdict/index_sme-nob.html">{% trans "Kildin Sámi" %}-{% trans "Norwegian" %} {% trans "dictionary" %}</a></li>
+				<li><a href="http://victorio.uit.no/webdict/index_sjd-rus.html">{% trans "Kildin Sámi" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
             {% endifequal %}
+            <!--
             {% ifequal LANGUAGE_CODE "sme" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.html">{% trans "Kildin Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Kildin Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "fi" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.html">{% trans "Kildin Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.html">{% trans "Kildin Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "en" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.eng.html">{% trans "Kildin Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.eng.html">{% trans "Kildin Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "no" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.nob.html">{% trans "Kildin Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.nob.html">{% trans "Kildin Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "ru" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.rus.html">{% trans "Kildin Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.rus.html">{% trans "Kildin Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "sv" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.nob.html">{% trans "Kildin Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/sjd/gramm/grammatihkka.nob.html">{% trans "Kildin Sámi grammar" %}</a></li>
             {% endifequal %}
+            -->
 			</ul>
 
 <!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
