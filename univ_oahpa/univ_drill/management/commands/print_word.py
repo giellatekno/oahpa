@@ -79,9 +79,9 @@ def printword(word_key):
 
 
 class Command(BaseCommand):
-	args = '--tagelement'
+	args = '--word'
 	help = """
-	Search for word forms with missing feedback messages
+	Print all of the relations for a word by the word's lemma (-w)
 	"""
 	option_list = BaseCommand.option_list + (
 		make_option("-w", "--word", dest="word_key", default=False,
