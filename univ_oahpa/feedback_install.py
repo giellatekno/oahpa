@@ -199,6 +199,12 @@ def get_attrs_with_defaults(element, attr_list, defaults):
 	if grade:
 		if x['grade'] == ['Pos']:
 			x['grade'] == ['']
+
+	subclass = x.get('subclass', False)
+	if subclass:
+		if x['subclass'] == ['Active']:
+			x['subclass'] == ['']
+	
 	return x
 
 
@@ -249,9 +255,9 @@ class Feedback_install(object):
 
 	# Each part of speech followed by relevant tag/wordform attributes
 	tag_attribute_names = OrderedDict([
-		("N", ('subclass', 'case', 'number', )),
-		("A", ('subclass', 'case', 'number', 'grade', 'attributive', )),
-		("Num", ('subclass', 'case', 'number',)),
+		("N", ('case', 'number', )),
+		("A", ('case', 'number', 'grade', 'attributive', )),
+		("Num", ('case', 'number',)),
 		("V", ('subclass', 'infinite', 'mood', 'tense', 'personnumber', )),
 	])
 
@@ -562,6 +568,9 @@ class Feedback_install(object):
 			self.default_attributes['grade'].add('Pos')
 			# self.default_attributes['grade'].remove("")
 
+		if self.file_pos == 'V':
+			self.default_attributes['subclass'].add('Active')
+
 		# .iterator() necessary because QuerySet is very large.
 		for f in forms.iterator():
 			total -= 1
@@ -573,6 +582,10 @@ class Feedback_install(object):
 			if self.file_pos == 'A':
 				if not w_key_vals['grade'] in ['Comp', 'Superl']:
 					w_key_vals['grade'] = 'Pos'
+
+			if self.file_pos == 'V':
+				if not w_key_vals['subclass'] in ['Der/PassL', 'Der/PassS', 'Der/AV']:
+					w_key_vals['subclass'] = 'Active'
 
 			w_keys = tuple(w_key_vals.values())
 
