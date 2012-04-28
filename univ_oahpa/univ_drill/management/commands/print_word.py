@@ -63,8 +63,14 @@ def printword(word_key):
 			'qelement__question__question__qid', 
 			'qelement__question__qatype')
 
+		ordered_qms = []
 		for q_m in question_memberships:
 			q_ms = ' - '.join([q for q in q_m[::-1] if q])
+			ordered_qms.append(q_ms)
+
+		ordered_qms.sort()
+		ordered_qms.reverse()
+		for q_ms in ordered_qms:
 			print '\t' + q_ms
 
 		print "--"
