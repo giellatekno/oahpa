@@ -1,0 +1,118 @@
+﻿Config:
+  FSTPATH: "/Users/pyry/gtsvn/gt/sma/bin/"
+  LOOKUP_TOOL: "/Users/pyry/bin/lookup"
+  LOOKUP_FLAGS: ""
+
+  FSTs:
+    Dialects:
+      main: 
+        path: 'isma-norm.fst'
+        name: 'Unrestricted'
+      SH:
+        path: 'isma-SH.restr.fst'
+        name: 'Short forms'
+      L:
+        path: 'isma-L.restr.fst'
+        name: 'Long forms'
+
+WordGeneration:
+   - file:               data_sma/sma/n_smanob.xml
+     paradigmfile:       data_sma/meta/n_paradigms.txt
+     tagfile:            &TAGFILE data_sma/meta/tags.txt
+ 
+   - file:               data_sma/meta/names.xml
+     paradigmfile:       data_sma/meta/prop_paradigms.txt
+     tagfile:            *TAGFILE
+   
+   - file:               data_sma/sma/prop_smanob.xml
+     paradigmfile:       data_sma/meta/prop_paradigms.txt
+     tagfile:            *TAGFILE
+ 
+   - file:               data_sma/sma/num_smanob.xml
+     paradigmfile:       data_sma/meta/num_paradigms.txt
+     tagfile:            *TAGFILE
+   
+   - file:               data_sma/sma/a_smanob.xml
+     paradigmfile:       data_sma/meta/a_paradigms.txt
+     tagfile:            *TAGFILE
+ 
+   - file:               data_sma/sma/v_smanob.xml
+     paradigmfile:       data_sma/meta/v_paradigms.txt
+     tagfile:            *TAGFILE
+ 
+   - file:               data_sma/sma/pronPers_smanob.xml
+     paradigmfile:       data_sma/meta/pron_paradigms.txt
+     tagfile:            *TAGFILE
+  
+  # Non-generating files
+  
+  # smanob
+   - file:               data_sma/sma/multiword_smanob.xml
+   - file:               data_sma/sma/adv_smanob.xml
+   
+   # nobsma
+   - file:               data_sma/nob/a_nobsma.xml
+   - file:               data_sma/nob/n_nobsma.xml
+   - file:               data_sma/nob/v_nobsma.xml
+   - file:               data_sma/nob/adv_nobsma.xml
+   - file:               data_sma/nob/multiword_nobsma.xml
+   - file:               data_sma/nob/prop_nobsma.xml
+   
+   # swesma
+   - file:               data_sma/swe/a_swesma.xml
+   - file:               data_sma/swe/n_swesma.xml
+   - file:               data_sma/swe/v_swesma.xml
+   - file:               data_sma/swe/adv_swesma.xml
+   - file:               data_sma/swe/multiword_swesma.xml
+   - file:               data_sma/swe/prop_swesma.xml
+   
+   # fillings for Morfa-C
+   - file:               data_sma/meta/fillings_smanob.xml
+     paradigmfile:       data_sma/meta/paradigms.txt
+     tagfile:            data_sma/meta/tags.txt
+    
+
+# Semantic supersets
+
+Supersets:              
+    - data_sma/meta/semantical_sets.xml
+
+Feedback:
+  messagefiles:
+    - data_sma/meta/messages.xml
+    - data_sma/meta/messages.eng.xml
+  feedbacks:
+    - wordfile:         data_sma/sma/n_smanob.xml
+      feedbackfile:     data_sma/meta/feedback_nouns.xml
+    - wordfile:         data_sma/sma/v_smanob.xml
+      feedbackfile:     data_sma/meta/feedback_verbs.xml
+
+# Note also the fillings file, which is in vocabulary generation and
+# install
+#
+# YAML notes:
+# &GRAMMAR notation is used to mark a piece of data which will be
+# referred to later, via *GRAMMAR
+
+MorfaC_Install:
+  tags:
+    paradigms:            data_sma/meta/paradigms.txt
+    tags:                 data_sma/meta/tags.txt
+  
+  questionfiles:
+    - questions:          data_sma/meta/noun_questions.xml
+      grammar:            &GRAMMAR data_sma/meta/grammar_defaults.xml
+
+    - questions:          data_sma/meta/verb_questions.xml
+      grammar:            *GRAMMAR
+
+    - questions:          data_sma/meta/more_verb_questions.xml
+      grammar:            *GRAMMAR
+
+    - questions:          data_sma/meta/adjective_questions.xml
+      grammar:            *GRAMMAR
+
+    - questions:          data_sma/meta/pron_questions.xml
+      grammar:            *GRAMMAR
+
+

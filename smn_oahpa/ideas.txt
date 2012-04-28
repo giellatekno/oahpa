@@ -1,0 +1,343 @@
+
+# Some ideas and notes
+
+Most of these ideas may be a lot more general, and not really specific to smaoahpa.
+
+### Things that must be done: 
+
+* Import scripts importing v/V for PoS, needs to be normalized somewhere in import; currently handling uncertainty in other places with iexact
+
+* BUG: Change case after receiving results/successes in morfa results in 404 error
+
+* Behavior of forms are a little bit funky; pressing enter creates a new set instead of submitting work. Unintuitive.
+
+
+Morfa things not working:
+
+ * Case selection menu 
+ * Contracted stems commented out for now because none exist yet
+
+Leksa things not working: 
+
+ * Level selection menu
+ * Language pair selection (commented out everything except sma and nob for now)
+
+
+
+
+### Things that should be fairly easy to do
+
+ * Sessions can be used to track user progress, such that users who haven't cleared browser cookies can return 
+   to see how they're doing
+
+ * Various repeated actions such as reloading word lists can be done in the admin interface, maybe just add a 
+   model for data files containing a path (or allow upload?); and then use admin actions to refresh xml data.
+
+	- Useful, because the people who maintain the data can then update the data in oahpa as they work on XML,
+	  without relying on us to do so. We could just give these permissions in the existing admin interface.
+
+		+ Allowing users to update may require validating data before it is added to DB.
+		
+		+ Also need to test whether existing entries are updated or dumped or what.. If we're logging results
+		  of users' learning, destroying database entries may screw this up.
+
+ * Hard-coded lists can be shifted into the DB, e.g., semantic sets available in leksa, but there should be an
+   easy option for populating the database with these things; perhaps fixtures, yaml or some default XML file.
+
+	- smadrill.views.Gameview
+	- smadrill.forms
+
+### Client requests?
+
+
+### Things I really want to do 
+
+ * Improved logging.
+
+ * A lot of the models for word translations are redundant and can be generic. Currently the code dictates
+   what language pairs are available in the system, and this should not be so.
+
+ * Improve the design/CSS just a bit, more sans-serif, slightly larger fonts
+
+ * Where are the slow parts in the install/data loading scripts? 
+
+ * Take a look at localization/i18n. Are there other i18n packages available, and can they handle less common
+   languages better? There seem to be problems setting up locales for sma, sme, etc., because the admin interface
+   must have a locale for these languages first. Is it possible to split the user-interface i18n from the admin
+   i18n?
+
+ * Perhaps a more AJAX-y test method can be developed to make it easier to continually test on words.
+
+    - A more API-like approach means iPhone/Android apps. And the same API could be used in the web version.
+    - Since this is more of a for-users-own-knowledge/benefit thing, and nothing that requires detailed auditing 
+      of client responses, it could be fairly easy to produce something like this; and just send question/answer 
+      data. The only place this might get more complex is morphological quizzes and syntax quizzes, since 
+      we can't quite expect CG, or an easy way to interact with it to be available on the client side. ;) 
+
+
+
+### Fun things
+
+ - Export data to Quizlet?
+ -
+
+# Meetings
+
+## Problems/todos identified on thursday
+
+TODO: sometimes, however quite seldom, one gets the index out of bounds exception that we had yesterday as the main problem
+ (me and Børre got it each one time)
+@cip_20101110: this bug is still there!
+
+TODO: the bryllupsgabe-bug is not yet fixed: Sjur got
+
+@cip_20101110: this bug I haven't got yet, but that doesn't mean that
+it totally dissappeared!
+
+		kïeredh
+		___________________     om rein 
+		
+		which is the same type of bug.
+		
+		3. what is this?
+		
+		baenie
+		hund    tann
+
+		Hunting the bug:
+			sma->nob
+
+			leekedidh
+			slakte (correct)
+			
+			db says Wordnob w/ slakte as lemma has words in its related set that are leekedidh and leekedh, 
+			although according to xml leekedidh is slakte flere dyr... Perhaps this is a reasonable answer.
+			looking at leekedidh, its translations2nob set contains 'slakte', 'slakte flere dyr' and 'flere'.
+			It appears somehow the db adding script is producing some funky additions.
+			
+			... continuing searching for more eroneous answers.
+
+			another issue with 
+
+			moehrele
+			tantebarn til mors yngre søster
+
+			XML says this should be correct, response is wrong. moehrele has two words in nobsme xml. hmm
+				>>> Word.objects.filter(lemma='moehrele')[0].translations2nob.all()
+				[<Wordnob: tantebarn til mors yngre
+				            søster>, <Wordnob: mosters tantebarn>, <Wordnob: en kvinnes eldre søsters barn>]
+				>>> Word.objects.filter(lemma='moehrele')[1].translations2nob.all()
+				[]
+				>>> Word.objects.filter(lemma='moehrele')[2].translations2nob.all()
+				[]
+			
+			took a look at some more words, and it seems like the database increasingly has more Word (model)
+			words which have duplicate lemmas. I wonder if the install script is having issues adding words when
+			we run the translation... I know it's supposed to be using get_or_create, but it may just not be finding
+			the words properly.
+
+		Added some testing data in testing/bryllups*, since db was getting 'extra' data.
+		
+		
+
+TODO: background and css for the main site
+
+TODO: order of icons for plays on the main site sould be the same as in each individual site
+
+TODO: compiling and installing the localization anew
+
+ * BUG: missing lemma sometimes in leksa nobsme:
+@cip_20101110; this but is still there even after the proper
+converting of nobsma data. This is not a matter of wrong data format
+in the XML files but in either smanob data db feeding (the first time)
+or the nobsma db feeding (on the existing smanob data in the db)
+or generating random sets from the db when playing. (cf. my two emails
+wrt. that to Tron, Lene, and Ryan).
+
+ad. EL-bug in Leksa nobsma:
+Debuggin smaoahpa after lang attribute correction in the data.
+Still found it with 
+___________________ 	åahpanadtedh 
+
+(and now on victorio with
+___________________  	 mojhtelidh )
+
+TODO: Compare these two entries, too.
+
+
+Collecting data sets:
+
+in smanob/scr/v_smanob.xml
+
+   <e>
+      <lg>
+         <l class="IV" pos="v">åahpanadtedh</l>
+      </lg>
+      <stem class="bisyllabic"></stem>
+      <apps>
+         <app name="oahpa">
+            <sources>
+               <book name="åa3" />
+            </sources>
+         </app>
+      </apps>
+      <mg>
+         <tg>
+            <semantics>
+               <sem class="EXPERIENCE_V" />
+               <sem class="LEISURETIME_HOME_V" />
+            </semantics>
+            <tf dict="yes" oa="yes" pos="phrase_v" stat="pref" tcomm="no" xml:lang="nob">bli kjent</tf>
+            <te dict="yes" oa="yes">med flere</te>
+         </tg>
+      </mg>
+   </e>
+.......................
+
+in data_sma/sma/v_smanob.xml
+
+   <e>
+      <lg>
+         <l class="IV" pos="v">åahpanadtedh</l>
+      </lg>
+      <stem class="bisyllabic"/>
+      <apps>
+         <app name="oahpa">
+            <sources>
+               <book name="åa3"/>
+            </sources>
+         </app>
+      </apps>
+      <mg>
+         <tg>
+            <semantics>
+               <sem class="EXPERIENCE_V"/>
+               <sem class="LEISURETIME_HOME_V"/>
+            </semantics>
+            <tf pos="phrase_v" stat="pref" tcomm="no" xml:lang="nob">bli kjent</tf>
+            <te xml:lang="nob">med flere</te>
+         </tg>
+      </mg>
+   </e>
+
+.......................
+
+in data_sma/nob/v_nobsma.xml
+
+   <e>
+      <lg>
+         <l pos="phrase_v">bli kjent</l>
+      </lg>
+      <apps>
+         <app name="oahpa">
+            <sources>
+               <book name="åa3"/>
+               <book name="dej"/>
+               <book name="åa6"/>
+               <book name="åa3"/>
+               <book name="åa6"/>
+            </sources>
+         </app>
+      </apps>
+      <mg>
+         <tg>
+            <semantics>
+               <sem class="EXPERIENCE_V"/>
+               <sem class="LEISURETIME_HOME_V"/>
+            </semantics>
+            <t xml:lang="sma" pos="v">åahpanadtedh</t>
+         </tg>
+      </mg>
+      <mg>
+         <tg>
+            <semantics>
+               <sem class="LEISURETIME_HOME_V"/>
+               <sem class="EXPERIENCE_V"/>
+            </semantics>
+            <t xml:lang="sma" pos="v">åahpenidh</t>
+         </tg>
+      </mg>
+      <mg>
+         <tg>
+            <semantics>
+               <sem class="LEISURETIME_HOME_V"/>
+            </semantics>
+            <t xml:lang="sma" pos="v">åahpenadtedh</t>
+         </tg>
+      </mg>
+   </e>
+
+.......................
+Todo: check with the database sets --> done! 
+ - faulty db feeding 
+    - nob entries with no lemma and no pos
+    - re and te elements fed als own entries
+   state-of-art: done after Ryan's fix? To be checked properly! 
+.......................
+
+.......................
+
+
+
+General observation: To little time dedicated to testing the data!
+The workflow is better than that for the first Sma-Nob dictionary in
+Mac and StarDict format, but still faaaar, faaaar away from what
+Ciprian expected. Reasons will be discussed in an internal meeting
+(CLT).
+
+TODO (Cip): Write collations and revert sorting (for sma -- Trond's
+special wish, Kildin -- Michael's special wish) for the xsl scripts.
+
+## 12/11/2010 Todos
+
+* db first
+ - morfa: verb class in tooltip
+   - db loading script needs to fix this
+   - models
+ - cases, books: leksa -- js exclusion
+ 
+
+
+GENERAL 
+
+	TODO: Get log up and running
+	
+
+LEKSA
+	
+	BUG: Selecting a semantic class does not reset book field to 'all'. Intended?		
+
+MORFA-S VERBS
+
+	TODO: Pronouns
+	TODO: Present, preterite.
+	TODO: Personal pronouns - ped/sma/doc/smadoc/pronouns_for_morfa_v.csv
+		  - See smeoahpa for how pronouns are stored... Are they?
+		    or is it just a dictionary in forms?
+	TODO: Click verb, get dictinoary translation, and verb class
+		  Klasse IV. (Norsk: vite)
+		  - DB loading script
+			bisyllabic - <l class="IV" pos="v" ...>lemma</l>
+			trisyllabic - <l pos="v">lemma</l>
+		  - Model field
+		
+
+NUMRA
+
+	TODO: The 30 character limit must be tested
+	TODO: The cardinals should be added (now only ordinals)
+
+NICETIES
+	
+	? Add wordcount to each category in Leksa and Morfa?
+
+SERVER
+
+	- Explore WSGI implementation with apache somewhere else, figure out what 
+	  the documentation means.
+
+_________________________________________________
+Januar 2011 Røros: Observation, bugs, todo
+_________________________________________________
+tjåegkedh: plukke is NOT accepted, why?
+
