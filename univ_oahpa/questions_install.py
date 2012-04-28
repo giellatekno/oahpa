@@ -403,6 +403,8 @@ class Questions:
 				semty, _ = Semtype.objects.get_or_create(semtype=semclass)
 				qe.semtype = semty
 				qe.save()
+			else:
+				semty = False
 			if task:
 				qe.task=task
 				qe.save()
@@ -417,8 +419,19 @@ class Questions:
 
 			if tagelements:
 				for t in tagelements:
-					print '\t\ttag: ', t.string
+					if semty:
+						ws_ = Word.objects.filter(semtype=semty)
+					else:
+						ws_ = Word.objects.all()
+
+					if ws_.filter(form__tag=t).count() == 0:
+						err_ = "tag:  %s" % t.string
+						if semty:
+							err_ += "\t(no matching forms with semtype %s)" % semty
+						print '\t\t%s' % err_
+						continue
 					if t.pos == p:
+						print '\t\ttag: ', t.string
 						qe.tags.add(t)
 
 			# Create links to words.
@@ -433,9 +446,11 @@ class Questions:
 					word_pks = Word.objects.filter(form__tag__in=qe.tags.all()).filter(semtype=qe.semtype).values_list('pk', flat=True)
 				else:
 					word_pks = Word.objects.filter(form__tag__in=qe.tags.all()).values_list('pk', flat=True)
+
 				word_pks = list(set(word_pks))
 				if len(word_pks) == 0:
 					print 'Error: Elements with zero possibilities not permitted.'
+					print ' > ', qe.qid
 					print ' > ', qe.question
 					print ' > Word tags: %s' % repr(qe.tags.all())
 					print ' > semtypes: %s' % repr(qe.semtype)
