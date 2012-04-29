@@ -14,7 +14,7 @@ import sys
 # # #
 
 def fixtags():
-	from sjd_drill.models import Tag
+	from smn_drill.models import Tag
 	tags = Tag.objects.all()
 
 	print 'Fixing attributes...'

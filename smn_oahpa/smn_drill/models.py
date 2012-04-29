@@ -60,7 +60,7 @@ class BulkManager(models.Manager):
 			postgres = False
 			ignore = 'IGNORE'
 
-		sql = "INSERT %s INTO %s (%s) VALUES %s" % (ignore, "sjd_drill_form_feedback", flds, arg_string,)
+		sql = "INSERT %s INTO %s (%s) VALUES %s" % (ignore, "smn_drill_form_feedback", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
 		transaction.commit()
@@ -74,7 +74,7 @@ class BulkManager(models.Manager):
 		qn = connection.ops.quote_name
 		cursor = connection.cursor()
 
-		table = "sjd_drill_form_feedback"
+		table = "smn_drill_form_feedback"
 		fld = qn('form_id')
 		args = ', '.join([str(f) for f in form_ids])
 
@@ -98,7 +98,7 @@ class BulkManager(models.Manager):
 		values_list = [ r[f] for r in vals for f in fields]
 
 		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
-		sql = "INSERT INTO %s (%s) VALUES %s" % ("sjd_drill_feedback_messages", flds, arg_string,)
+		sql = "INSERT INTO %s (%s) VALUES %s" % ("smn_drill_feedback_messages", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
 		transaction.commit()
@@ -117,7 +117,7 @@ class BulkManager(models.Manager):
 		values_list = [ r[f] for r in vals for f in fields]
 
 		arg_string = ', '.join([u'(' + ', '.join(['%s']*len(fields)) + ')'] * len(vals))
-		sql = "INSERT INTO %s (%s) VALUES %s" % ("sjd_drill_feedback_dialects", flds, arg_string,)
+		sql = "INSERT INTO %s (%s) VALUES %s" % ("smn_drill_feedback_dialects", flds, arg_string,)
 
 		cursor.execute(sql, values_list)
 		transaction.commit()
@@ -319,13 +319,13 @@ class Dialect(models.Model):
 		return smart_unicode(S)
 
 def Translations2(target_lang):
-	if target_lang in ["nob", "rus", "sme", "eng", "deu", "sjd", "no"]:
+	if target_lang in ["nob", "rus", "sme", "eng", "deu", "smn", "no"]:
 		if target_lang == "nob" or "no":	related = 'translations2nob'
 		if target_lang == "rus":	related = 'translations2rus'
 		if target_lang == "sme":	related = 'translations2sme'
 		if target_lang == "eng":	related = 'translations2eng'
 		if target_lang == "deu":	related = 'translations2deu'
-		if target_lang == "sjd":	related = 'translations2sjd'
+		if target_lang == "smn":	related = 'translations2smn'
 		return related
 	else:
 		return None
@@ -481,7 +481,7 @@ class Word(models.Model):
 		self.translations2deu = partial(self.translations2, target_lang='deu')()
 		self.translations2rus = partial(self.translations2, target_lang='rus')()
 		self.translations2sme = partial(self.translations2, target_lang='sme')()
-		self.translations2sjd = partial(self.translations2, target_lang='sjd')()
+		self.translations2smn = partial(self.translations2, target_lang='smn')()
 		
 	def create(self, *args, **kwargs):
 		morphtag = self.morphTag()

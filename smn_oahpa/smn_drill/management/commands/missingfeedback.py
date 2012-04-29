@@ -14,7 +14,7 @@ import sys
 # # #
 
 def findmissing(tfilter=False, count=0):
-	from sjd_drill.models import Form
+	from smn_drill.models import Form
 	from django.db.models import Count
 
 	missing = Form.objects.filter()\
