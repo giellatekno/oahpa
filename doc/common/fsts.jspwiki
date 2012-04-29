@@ -4,15 +4,23 @@ Oahpa is dependent on linguistic resources. Some of them are transducers.
 
 !!The sme transducers
 
-The North Saami transducers are located on victorio, in /opt/smi/sme/bin/. Compile new versions of the fsts when needed.
+The North Saami transducers are located on victorio, in /opt/smi/sme/bin/. 
+Compile new versions of the fsts when needed.
 
 {{{
-ped-sme.fst
-sme-num.fst
-isme-norm.fst
-isme-GG.restr.fst
-isme-KJ.restr.fst
+ped-sme.fst, sme-num.fst, isme-norm.fst, isme-GG.restr.fst, isme-KJ.restr.fst
 }}}
+
+The sme Oahpa uses a particular setup for analysers and transducers, referred to in 
+the file {{univ_oahpa/univ_drill/forms.py}}:
+
+* preprocess = ''/opt/sami/cg/bin/preprocess '' 
+* lookup = ''/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup''
+* fst = ''/opt/smi/sme/bin/ped-sme.fst''
+* lookup2cg = ''/usr/local/bin/lookup2cg''
+* cg3 = ''/usr/local/bin/vislcg3''
+* dis = ''/opt/smi/sme/bin/sme-ped.cg3''
+
 
 
 !!The sma transducers
@@ -20,10 +28,7 @@ isme-KJ.restr.fst
 The South Saami transducers are located on victorio, in /home/smaoahpa/smaoahpa/gtsvn/gt/sma/bin/.
 
 {{{
-isma-L.restr.fst
-isma-SH.restr.fst
-ped-sma.fst
-sma-num.fst
+isma-L.restr.fst, isma-SH.restr.fst, ped-sma.fst, sma-num.fst
 }}}
 
 Smaoahpa has a setting which is used by all of the games and install scripts to locate transducers, as well
