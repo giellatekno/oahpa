@@ -1,49 +1,40 @@
-!!!Maintenance 
-
 This document links to the technical documentation of Oahpa.
 
 Data is stored in xml-files which are installed to a mysql
-database. The Oahpa-programs are developed using the Python Web framework
-[Django|http://www.djangoproject.com/]. The Oahpa web pages are basic
-html, which is enriched with templates and information retrieved from
-the database. 
-
-Everyday maintentance consists of updating the information in the
-database and editing the html-code.
-
-All the commands described in this document have to be run in victorio,
-unless otherwise stated.
+database. Everyday maintentance consists of updating the information in the
+database and editing the html-code. All the commands described in this 
+document have to be run in victorio.
 
 !!Links to dokumentation
-# [General documentation for developers|http://giellatekno.uit.no/oahpa/addlang/index.html]
-# Installing
-## [Installing and running django locally|django.html]
-## [Comments|comments.html]
-# Catalogue structure
-## [An overview|overview.html]  (including info on settings, etc.)
-## [A list of the files and how they work together|http://giellatekno.uit.no/oahpa/addlang/more.html]
-## More to come here...
-# Interface
-## [Updating the interface html|html.html]
-## [Localisation|Localisation.html]
-## [Javascripts|javascripts.html]
-## [Images|images.html]
-## [Grammarlinks|grammarlinks.html]
-## [Special interface for mobile devices|mobile.html]
-# Accessing the analysers
-## [FSTs|fsts.html]
-## [Lookupserver|lookupserver.html]
-## [CG scripts|cgscript.html]
-## [Pregenerated lexicons|pregeneration.html]
-# The programs
-## [MorfaS|MorfaS.html]
-## [Vasta and MorfaC|VastaMorfaC.html]
-## [Sahka|Sahka.html]
-## [Leksa|Leksa.html]
-## [Numra|Numra.html]
-# Daily maintenance
-## [Restarting the httpd server|httpdserver.html]
-## [Restarting MySQL|mysql.html]
-# [Admin interface|admininterface.html]
+* [General documentation for developers|http://giellatekno.uit.no/oahpa/addlang/index.html]
+* Installing
+** [Installing / running django locally|django.html]  // 
+   [Installing comments|comments.html]
+* Catalogue structure
+** [Overview|overview.html]  (settings, …)  //
+ [File list|http://giellatekno.uit.no/oahpa/addlang/more.html]
+* Interface
+** [Updating the interface html|html.html]
+** [Localisation|Localisation.html]
+** [Javascripts|javascripts.html]
+** [Images|images.html]
+** [Grammarlinks|grammarlinks.html]
+** [Special interface for mobile devices|mobile.html]
+* Accessing the analysers
+** [FSTs|fsts.html]
+** [Lookupserver|lookupserver.html]
+** [CG scripts|cgscript.html]
+** [Pregenerated lexicons|pregeneration.html]
+* The programs
+** [MorfaS|MorfaS.html]  // 
+   [Vasta / MorfaC|VastaMorfaC.html]  // 
+   [Sahka|Sahka.html]  //
+   [Leksa|Leksa.html]  //
+   [Numra|Numra.html]
+* Daily maintenance
+** Restarting: [the httpd server|httpdserver.html]  // 
+   [the MySQL|mysql.html]
+** [Putting up emergency error messages for users in case of program malfunction|PuttingUpErrorMessages.html]  __NB!__
+* [Admin interface|admininterface.html]
 
 
