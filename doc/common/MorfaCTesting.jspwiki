@@ -1,0 +1,81 @@
+
+Skript for å teste spørsmålsgenerering i Morfa C.
+
+Skriptet er klar og oppdatert frå sma, og funkar no  på vic. Det er tilgjengeleg i /home/univ_oahpa/univ_oahpa/ ved fylgjande kommando: 
+
+{{{
+python manage.py testquestions --grammarfile $GTHOME/ped/sme/meta/grammar_defaults.xml --questionfile $GTHOME/ped/sme/meta/verb_questions.xml --logfile verbquestions.log
+}}}
+
+Og dokumentasjon er i: 
+
+{{{
+    python manage.py help testquestions
+}}}
+Det einaste kravet er at python er minst versjon 2.6 (som eg trur er installert globalt for alle brukarar på vic).
+
+Skripten køyrer då gjennom alle spørsmål og sjekker om at det finst ord i databasen som svarar til semtype og tagger og andre ting i <element />-node. Om dei ikkje finst, so får ei stor feilmelding som kan hjelpe med å undersøkja kor feil kan vera. Elles om spørsmål er bra, får ein:
+
+{{{
+== QUESTION: vprs0 ==
+ - 1
+    Q: Maid mii bargat odne? (batnit)
+    A: Odne mii __.
+           - batnit
+ - 2
+    Q: Maid doai bargabeahtti odne? (botnit)
+    A: Odne doai __.
+           - botnibeahtti
+ == QUESTION: vprs1sg ==
+ - 1
+    Q: Maid duojár bargá odne? (čuojahit)
+    A: Odne son __.
+           - čuojaha
+ 
+ ... osv
+}}}
+
+Feilmeldinga ser slik ut: og det tek alle informasjon frå <element /> og testar dei ulike delane, då om det finst ein tag, eller ein semtype, den testar om taggen finst med ordformer, og då om semtype finst med ordformer, og til slutt om ord finst som matcher både taggen og semtype. Då er det lett å sjå om det var ord med semtype som mangla, eller ordformer med taggen, eller alle. 
+
+F.eks.)  
+
+{{{
+*** Error in self.queryElements
+    Query failed
+    Question ID: dervv13
+    Question element: u'VERB'
+    Query arguments: {'word__lemma': u'\u010d\xe1jehit', 'word__pos': u'V', 'tag__string': u'V+Der/PassL+V+Ind+Prt+Sg1'}
+    Zero forms found.
+      Subquery:
+        - word__lemma: čájehit
+        => Object count: 77
+      Subquery:
+        - word__pos: V
+        => Object count: 62795
+      Subquery:
+        - tag__string: V+Der/PassL+V+Ind+Prt+Sg1
+        => Object count: 136
+      Subquery:
+        - word__lemma: čájehit
+        - word__pos: V
+        => Object count: 77
+      Subquery:
+        - word__lemma: čájehit
+        - tag__string: V+Der/PassL+V+Ind+Prt+Sg1
+        => Object count: 0
+      Subquery:
+        - word__pos: V
+        - tag__string: V+Der/PassL+V+Ind+Prt+Sg1
+        => Object count: 136
+      Subquery:
+        - word__lemma: čájehit
+        - word__pos: V
+        - tag__string: V+Der/PassL+V+Ind+Prt+Sg1
+        => Object count: 0
+}}}
+
+So her ser eg at čájehit ikkje finst i V+Der/PassL+V+Ind+Prt+Sg1. Men, dette er ein fake feilmelding, då er det ikkje faktisk eit problem med čájehit ;) 
+
+I hjelpteksten finnst det fleire moglegheitar for å begrensa output, f. eks., --qid, der ein kan gjeva f. ex. vprs1, og då testar skripten berre vprs1. Wildcards er moglege og. Eg trur at det er best å køyre med --logfile (eksempel står på byrjinga av eposten), då får ein sjå på output på skjermen samtidig, og output er samla i fila.
+
+Det kan vera grammatiske feil i output, og RECPL og RECDU funkar ikkje i test, men det er ikkje noko stort problem. Også er det no at kva som helst former dukker opp, eg hev ikkje gjort noko i skripten med dialekt enno. 
