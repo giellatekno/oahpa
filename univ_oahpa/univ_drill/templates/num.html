@@ -57,6 +57,11 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.nno.html
     </div>
     
     <ul id="settingsform">
+<!-- emergency tag starts -->    
+    <!--<li>
+{% trans "NB! NB! The Numra game is not working properly, due to technical problems! NB! NB!" %}
+</li>-->    
+<!-- emergency tag ends -->
         {% block setting_items %}
     	<li><label for="id_{{ settingsform.maxnum.name }}">{% trans "Select the range of numerals." %}</label>
     		{{ settingsform.maxnum }}</li>
