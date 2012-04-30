@@ -140,8 +140,15 @@ from univ_drill.models import Form
 from django.db import transaction
 from itertools import product
 
-from django.utils.encoding import force_unicode, force_unicode
+from django.utils.encoding import fix_encoding
 
+def fix_encoding(s):
+	try:
+		s = s.decode('utf-8')
+	except:
+		pass
+	
+	return fix_encoding(s)
 
 try:
 	from collections import OrderedDict
@@ -161,7 +168,7 @@ def get_attrs(item, attr_names):
 	for attr in attr_names:
 		val = item.__getattribute__(attr)
 		if val:
-			vals.append(force_unicode(val))
+			vals.append(fix_encoding(val))
 		else:
 			vals.append('')
 	return vals
@@ -187,11 +194,11 @@ def get_attrs_with_defaults(element, attr_list, defaults):
 			val = defaults.get(attr)
 
 		if isinstance(val, list):
-			val = [force_unicode(s) for s in val]
+			val = [fix_encoding(s) for s in val]
 		elif isinstance(val, set):
-			val = [force_unicode(s) for s in list(val)]
+			val = [fix_encoding(s) for s in list(val)]
 		else:
-			val = [force_unicode(val)]
+			val = [fix_encoding(val)]
 		vals.append(val)
 			
 	x = OrderedDict(zip(attr_list, vals))
@@ -475,7 +482,7 @@ class Feedback_install(object):
 				line = "        %s: %s" % (k, vs)
 				lines.append(line)
 			try:
-				return force_unicode('\n'.join(lines))
+				return fix_encoding('\n'.join(lines))
 			except:
 				return '\n'.join(lines)
 
@@ -598,7 +605,7 @@ class Feedback_install(object):
 
 			# TODO: global dialects?
 
-			w_vals = [f.id, force_unicode(f.word.lemma), f.tag.string, dialects]
+			w_vals = [f.id, fix_encoding(f.word.lemma), f.tag.string, dialects]
 
 			if w_keys in form_keys:
 				form_keys[w_keys].append(w_vals)
@@ -764,7 +771,7 @@ class Feedback_install(object):
 		# TODO: store words with no matches somewhere?
 
 		# Prefetch all feedback ids and msgids: {'bisyllabic_stem': 4, etc ...}
-		feedbackmsg_ids = dict([(force_unicode(msg.msgid), msg.id) 
+		feedbackmsg_ids = dict([(fix_encoding(msg.msgid), msg.id) 
 								for msg in Feedbackmsg.objects.iterator()])
 
 		total_forms = self.form_objects.count()
