@@ -16,10 +16,13 @@
 */
 
 body {
-    margin: 0px 0px 0px 0px; font-family: "Verdana", Helvetica, sans-serif;
-    background-color: #FFFFFF;
+    font-family: "Verdana", Helvetica, sans-serif;
+    background-color: #EBF2F8;
     color: #000000;
     font-size: 90%;
+	/* centers the page in the browser window */
+	margin:0 auto;
+	width:800px;
 	
 }
 
@@ -58,8 +61,8 @@ to view the changes, refresh the view of the file in ones web browser.*/
 
 h1, h2, h3, h4, h5, h6 { font-family: Georgia, Arial, Helvetica, sans-serif; }
 
-h1     { font-size : 2.4em; margin: 25px 0px 0px 0px;  padding: 0px; font-weight: normal; }
-h2     { font-size : 2.0em; margin: 0.9em 0px 0px 0px; padding: 0px; font-weight : normal;}
+h1     { font-size : 2.08em; margin: 25px 0px 0px 0px;  padding: 0px; font-weight: normal; }
+h2     { font-size : 1.29em; margin: 0.9em 0px 0px 0px; padding: 0px; font-weight : normal;}
 h3     { font-size : 1.3em; margin: 0.8em 0px 0px 0px; padding: 0px; font-weight : normal; }
 .h3 { margin: 22px 0px 3px 0px; }
 h4     { font-size : 1.1em; margin: 0.7em 0px 0px 0px; padding: 0px; font-weight : normal; text-align: left; }
@@ -96,9 +99,9 @@ font-weight: 100;
     margin-left: 30px;
     font-family : Verdana, Helvetica, sans-serif;
     font-size: 0.90em;
-	max-width: 900px;
+	max-width: 800px;
 	min-width: 300px;
-	min-height: 1200px;
+/*	height: 100%; */
 /* 	border-style: solid; */	
 }
 
@@ -138,7 +141,7 @@ font-weight: 100;
 
 #content table {
 	border: 0;
-	width: 100%;
+	width: 450px;
 	margin: 10px 10px 10px 0px;
 }
 
@@ -230,16 +233,22 @@ table caption {
     position: relative;
     float: left;
     width: 100%;
-    background-color: white;
+    background-color: #002B54;
 /*     background-image: url("../themes/images/header_white_line.gif"); */
     background-position: bottom left;
     background-repeat: repeat-x;
 	
 }
+/* #header {
+border-bottom-color: #EBF2F8;
+border-bottom-style: dashed;
+border-bottom-width: 2px;
+
+} */
 
 /* branding-logo Template */
 #header .logo {
-    padding: 7px 0px 10px 10px;
+    padding: 0px 0px 0px 0px;
 /*     float: center; */
 /*     text-align: center; */
 /* 	left: 180px; */
@@ -275,7 +284,7 @@ table caption {
 #nav-main {
     font-size: 0.9em;
     clear: both;
-    padding-left: 45px;
+    padding-left: 20px;
     margin: 0;
     list-style: none;
 }
@@ -289,7 +298,7 @@ table caption {
 	border-right: #D1E5F0;
 	border-bottom: #F3763F;
 	border-color: #F3763F;
-	background-color: #fff;
+	background-color: #002B54;
 }
 
 #nav-main li a {
@@ -305,7 +314,7 @@ table caption {
 }
 #nav-main li a:link {  color: #80A1B6; }
 #nav-main li a:visited { color: #80A1B6; }
-#nav-main li a:hover { color: #002B54 }
+#nav-main li a:hover { color: #fff }
 
 #nav-main > li a { width: auto; } /* Rest of IE/Win fix */
 
@@ -383,16 +392,16 @@ table caption {
     position: relative;
     float: left;
     width: 180px;
-	min-height: 600px;
-    padding: 20px;
-	/* hack, need to be fixed */
-    margin: 0 0 500px 40px;
-	align: 
-    z-index: 20;
-     
-    background-color: #EBF2F8;
+/*	min-height: 100%; */
+    padding: 45px 20px 100% 20px;
+    margin: 0 0 0 50px;	
+    z-index: 20;     
+	background-color: #fff;
     font-size: 0.9em;
     color: #000000;
+	border-left-color: #EBF2F8;
+	border-left-style: dotted;
+	border-left-width: 2px 10px;
 	
 }
 
@@ -415,8 +424,8 @@ float: left;
         background-position: center left;
         margin: 0px;
         padding: 2px 12px;
-        font-weight : bold;
-		font-size: 120%;
+        font-weight : regular;
+		font-size: 110%;
 		color: #80A1B6;
 		
 }
@@ -425,6 +434,7 @@ float: left;
 }
 .pagegroupselected span {
         line-height: 160%;
+		font-family: Georgia;
 		
 }
 .pagegroupopen span {
@@ -448,7 +458,7 @@ float: left;
 		}
 
 #nav-section .selectedmenuitemgroup{
-        margin: 0px 0px 6px 8px;
+        margin: 0px 0px 6px 3px;
         padding: 0px;
         /*font-weight : bold;*/ }
 
@@ -458,8 +468,9 @@ float: left;
         background-position: center left;
         font-weight : normal;
         margin-left: 10px;
-		font-size: 110%;
+		font-size: 0.85em;
 		line-height: 160%;
+		font-family: "Verdana";
 }
 
 #nav-section .menupage {
@@ -471,10 +482,14 @@ float: left;
 
 #nav-section .menupagetitle {
         color: #80A1B6;
-        padding: 0;
-        font-weight : bold;
-        margin-right: 10px;
+        padding: 5px 0 5px 0;
+        font-weight : regular;
+        margin-right: 0px;
+		margin-left: -6px;
         border-color: #999999;
+		color: #002B54;
+		font-family: Georgia;
+		font-size: 0.85em;
 }
 
 #nav-section .menupageitemgroup {
@@ -503,10 +518,10 @@ float: left;
         color: #000000;
 }
 
-#leftbar {
-float: right;
-margin-top: 30px;
-}
+ #leftbar {
+	float: right;
+/*	margin-top: 30px; */
+} 
 
 #leftbar #credit {
     text-align: center;
