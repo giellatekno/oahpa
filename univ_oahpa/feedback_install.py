@@ -140,7 +140,7 @@ from univ_drill.models import Form
 from django.db import transaction
 from itertools import product
 
-from django.utils.encoding import smart_unicode
+from django.utils.encoding import smart_unicode, force_unicode
 
 
 try:
@@ -161,7 +161,7 @@ def get_attrs(item, attr_names):
 	for attr in attr_names:
 		val = item.__getattribute__(attr)
 		if val:
-			vals.append(smart_unicode(val))
+			vals.append(force_unicode(val))
 		else:
 			vals.append('')
 	return vals
@@ -286,7 +286,7 @@ class Feedback_install(object):
 
 	def read_messages(self,infile):
 
-		xmlfile=file(infile)
+		xmlfile = file(infile)
 		tree = _dom.parse(infile)
 		lex = tree.getElementsByTagName("messages")[0]
 		lang = lex.getAttribute("xml:lang")		
@@ -571,6 +571,10 @@ class Feedback_install(object):
 		if self.file_pos == 'V':
 			self.default_attributes['subclass'].add('Active')
 
+		# TODO: test this.
+		# if self.file_pos == 'N':
+			# self.default_attributes['rime'].add('0')
+
 		# .iterator() necessary because QuerySet is very large.
 		for f in forms.iterator():
 			total -= 1
@@ -594,7 +598,7 @@ class Feedback_install(object):
 
 			# TODO: global dialects?
 
-			w_vals = [f.id, f.word.lemma, f.tag.string, dialects]
+			w_vals = [f.id, unicode(f.word.lemma), f.tag.string, dialects]
 
 			if w_keys in form_keys:
 				form_keys[w_keys].append(w_vals)
@@ -690,8 +694,16 @@ class Feedback_install(object):
 				
 				def intersect_param_set(param_set):
 					print >> sys.stderr, "Intersecting..."
-					# print list(param_set)[0:10]
+					# for i in list(param_set):
+						# syll, grade, stgh, rime, soggi, case, num = i
+						# if [syll, grade, stgh, rime, soggi] == [u'2syll', u'yes', u'no', u'0', u'i']:
+							# print i
 					intersection = form_keys_key_set & param_set
+					# print "--"
+					# for i in list(form_keys_key_set):
+						# syll, grade, stgh, rime, soggi, case, num = i
+						# if [syll, grade, stgh, rime, soggi] == [u'2syll', u'yes', u'no', u'0', u'i']:
+							# print i
 					# raw_input()
 					for item in intersection:
 						if lemma:
@@ -727,6 +739,9 @@ class Feedback_install(object):
 				print >> sys.stderr, "Permutation count: %d" % prod_count
 				perm_count = 0
 				for perm in Entry(kwargs, tagkwargs).permutations:
+					# p, e, r, m, i, n, a = perm
+					# if [p, e, r] == [u'2syll', u'yes', u'no']:
+						# print perm
 					param_set_.add(tuple(perm))
 
 					perm_count += 1
@@ -746,23 +761,13 @@ class Feedback_install(object):
 
 
 
-		# TODO: store words with no matches somewhere=
+		# TODO: store words with no matches somewhere?
 
 		# Prefetch all feedback ids and msgids: {'bisyllabic_stem': 4, etc ...}
 		feedbackmsg_ids = dict([(msg.msgid, msg.id) 
 								for msg in Feedbackmsg.objects.iterator()])
 
-		# values = ['word__' + w_attr for w_attr in self.word_attr_names] + \
-					# ['tag__' + t_attr for t_attr in self.tag_attr_names] + \
-					# ['id', 'fullform', 'tag__string', 'word__lemma']
-
-		# Get only the things we need.
-		# forms = self.form_objects.only(*values)
 		total_forms = self.form_objects.count()
-
-		# def form_key(f):
-			# return tuple(get_attrs(f.word, self.word_attr_names) + \
-							# get_attrs(f.tag, self.tag_attr_names))
 
 
 		# Now we iterate through the prefetched form attributes and form IDs,
@@ -782,24 +787,6 @@ class Feedback_install(object):
 			msg_id = feedbackmsg_ids.get(f_msg)
 			form_id_msg_id.append((f_id, msg_id))
 
-
-
-		### print >> sys.stdout, "Collecting for insert."
-		### form_to_msgs = []
-		### for form_key, form_info in form_keys.iteritems():
-		### 	total_forms -= 1
-		### 	for inf in form_info:
-		### 		form_id, lemma, tag_string, dialects = inf 
-
-		### 		msg_strings = attrs_and_messages.get(form_key, False)
-
-		### 		if msg_strings:
-		### 			msg_ids = [feedbackmsg_ids.get(msg_string) for msg_string in msg_strings]
-		### 			# If in doubt, print this.
-		### 			form_entry = (lemma, tag_string, msg_strings, form_id, msg_ids)
-		### 			form_to_msgs.append(form_entry)
-		### 		else:
-		### 			continue
 
 		# Expand (id, [msgid, msgid, msgid]) into 
 		#        [(id, msgid), (id, msgid), (id, msgid)]
