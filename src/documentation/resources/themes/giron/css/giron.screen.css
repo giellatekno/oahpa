@@ -562,7 +562,9 @@ float: left;
     position: relative; /* IE bugfix (http://www.dracos.co.uk/web/css/ie6floatbug/) */
     width: 100%;
     background-color: #ffffff;
-    border-top: solid 1px #4C6C8F;
+    border-top-color: #EBF2F8;
+	border-top-style: dotted;
+	border-top-width: 2px 10px;
     color: black;
 }
 #footer .copyright {
@@ -621,14 +623,14 @@ acronym { cursor: help; }
 }
 
 #content-minitoc-area {
-    border-top: dotted 1px #4A6D8C;
-    border-bottom: dotted 1px #4A6D8C;
+    border-top: dotted 1px #80A1B6;
+    border-bottom: dotted 1px  #80A1B6;
     margin-bottom: 15px;
-    margin-left: 30px;
+    margin-left: 0px;
     margin-right: 0%;
-    padding-bottom: 20px;
-    padding-top: 10px;
-	max-width: 50%;
+    padding-bottom: 10px;
+    padding-top: 5px;
+	max-width: 480px;
 }
 /*** CD : Lien en bleu lors du survol de la souris... **/
 #content-minitoc-area a:hover   { border: 0px solid #a5b6c6; background: #CFDCED; }
@@ -636,7 +638,7 @@ acronym { cursor: help; }
 .minitoc {
     list-style-image: url('../themes/images/current.gif');
     font-weight: normal;
-	margin-left: 20px;
+	margin-left: 10px;
 	
 }
 
