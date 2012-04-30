@@ -140,7 +140,7 @@ from univ_drill.models import Form
 from django.db import transaction
 from itertools import product
 
-from django.utils.encoding import fix_encoding
+from django.utils.encoding import force_unicode
 
 def fix_encoding(s):
 	try:
@@ -148,7 +148,7 @@ def fix_encoding(s):
 	except:
 		pass
 	
-	return fix_encoding(s)
+	return force_unicode(s)
 
 try:
 	from collections import OrderedDict
