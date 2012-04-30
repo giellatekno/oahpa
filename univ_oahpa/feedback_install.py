@@ -764,7 +764,7 @@ class Feedback_install(object):
 		# TODO: store words with no matches somewhere?
 
 		# Prefetch all feedback ids and msgids: {'bisyllabic_stem': 4, etc ...}
-		feedbackmsg_ids = dict([(msg.msgid, msg.id) 
+		feedbackmsg_ids = dict([(force_unicode(msg.msgid), msg.id) 
 								for msg in Feedbackmsg.objects.iterator()])
 
 		total_forms = self.form_objects.count()
