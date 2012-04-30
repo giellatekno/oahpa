@@ -140,7 +140,7 @@ from univ_drill.models import Form
 from django.db import transaction
 from itertools import product
 
-from django.utils.encoding import smart_unicode, force_unicode
+from django.utils.encoding import force_unicode, force_unicode
 
 
 try:
@@ -187,11 +187,11 @@ def get_attrs_with_defaults(element, attr_list, defaults):
 			val = defaults.get(attr)
 
 		if isinstance(val, list):
-			val = [smart_unicode(s) for s in val]
+			val = [force_unicode(s) for s in val]
 		elif isinstance(val, set):
-			val = [smart_unicode(s) for s in list(val)]
+			val = [force_unicode(s) for s in list(val)]
 		else:
-			val = [smart_unicode(val)]
+			val = [force_unicode(val)]
 		vals.append(val)
 			
 	x = OrderedDict(zip(attr_list, vals))
@@ -475,7 +475,7 @@ class Feedback_install(object):
 				line = "        %s: %s" % (k, vs)
 				lines.append(line)
 			try:
-				return smart_unicode('\n'.join(lines))
+				return force_unicode('\n'.join(lines))
 			except:
 				return '\n'.join(lines)
 
@@ -598,7 +598,7 @@ class Feedback_install(object):
 
 			# TODO: global dialects?
 
-			w_vals = [f.id, unicode(f.word.lemma), f.tag.string, dialects]
+			w_vals = [f.id, force_unicode(f.word.lemma), f.tag.string, dialects]
 
 			if w_keys in form_keys:
 				form_keys[w_keys].append(w_vals)
