@@ -2270,16 +2270,16 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     #fstdir = "/opt/smi/sme/bin" # on victorio
     fstdir = settings.FST_DIRECTORY
     fst = fstdir + "/ped-sme.fst"
-    #lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"# on victorio
-    lo="/Users/mslm/bin/lookup" # on Heli's machine
-    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
-    lookup2cg = " | /Users/mslm/main/gt/script/lookup2cg" # on Heli's machine
-    #lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
+    lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"# on victorio
+    #lo="/Users/mslm/bin/lookup" # on Heli's machine
+    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
+    #lookup2cg = " | /Users/mslm/main/gt/script/lookup2cg" # on Heli's machine
+    lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
     cg3 = "/usr/local/bin/vislcg3"
-    #preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
-    preprocess = " | /Users/mslm/main/gt/script/preprocess " # on Heli's machine
-    #dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    dis_bin = "/Users/mslm/main/ped/sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
+    preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
+    #preprocess = " | /Users/mslm/main/gt/script/preprocess " # on Heli's machine
+    dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
+    #dis_bin = "/Users/mslm/main/ped/sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
     
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
     
