@@ -5,6 +5,7 @@ Changes required to settings (will elaborate on this more later):
  * add CookieAuthMiddleware
  * add CookieAuth auth backend
  * add Cookie path
+ * add settings.py COOKIE_NAME (path to root that provided the cookie, http://kursa.oahpa.no/)
 
  * see also: views in courses views for cookie_login and cookie_logout
 """
