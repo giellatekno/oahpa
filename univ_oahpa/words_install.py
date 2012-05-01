@@ -6,8 +6,8 @@ from django.utils.encoding import force_unicode
 import sys
 
 from univ_drill.models import * 
-from collections import OrderedDict
-
+#from collections import OrderedDict
+from univ_oahpa.conf.ordereddict import *
 
 # For easier debugging.
 # _D = open('/dev/ttys005', 'w')
