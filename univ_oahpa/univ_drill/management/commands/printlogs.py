@@ -34,7 +34,7 @@ def printLogs(queryset, csv=False, delimiter=False, attrs=False):
 		delimiter = pkwargs['delimiter'] = '|'
 
 		class csv_out:
-			escapechar = ''
+			escapechar = '\\'
 			doublequote = False
 			skipinitialspace = False
 			lineterminator = '\n'
