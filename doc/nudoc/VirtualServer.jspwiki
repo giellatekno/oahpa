@@ -1,0 +1,42 @@
+!!!Virtual Server
+
+Vi har 4 nye servere, Steinar klarer ikke å logge seg på oahpa-serveren, 
+Trond klarer ikke å logge seg på noen av dem. Trond følger opp i forhold 
+til IT-adv.
+
+!!Servere:
+* gtoahpa.uit.no
+* gtweb.uit.no
+* gtsvn.uit.no
+* gtlab.uit.no
+
+
+Heli og Ryan tala om plannen til migrering, oppkøyring av ein ny server. 
+No er beste moglegheit til å byrja med fastcgi (og nginx-- ein annan httpd) 
+fordi me får ein ny server og det er ikkje andre ting som er i drift på den 
+som kan øydeleggjest. Forrige gongen var problemet at det var vanskeleg å 
+testa nye ting når det var andre applikasjoner som var avhengige. Fordel 
+til nginx og fastcgi er at dei er mykje raskare når det er mange brukarar, 
+og mod_python er ikkje lengre offisielt støtta. 
+
+Ryan kan få httpd og Django-appen i drift på ein dag, ikkje inkluderande 
+ting som må endrast i Django appen, om me finn at det er noko som ikkje fungerar.
+Det bør ikkje vera trang til å endra koden for å nytta Oahpa i ein ny miljø, 
+det skal vera noko slik at me ikkje er overraska om det tek litt meir tid til ;) 
+
+!!Då er rekkjefylgje slik: 
+# SSH-tilgang og sudo til Heli og Ryan på ny server
+# Ryan: nginx, fastcgi
+# Ryan & Heli: Kopiera programkod och databas
+# Heli & Ryan: Tillpassa koden (lookupserv)
+# Ryan: Få DNS-rekorder bytta til den nye serveren, vera sikkert 
+  om at CNAME-rekord framleis går til WP/kursa.oahpa.no
+
+I mellomtida tenkte eg at det kan vera godt å få subdomainen test.oahpa.no 
+til å dirigera til den nye Oahpa serveren, berre slik at me hev noko som me 
+hugsar godt i neste dagar, når det er tid til å bytta heilt til den nye serveren 
+frå victorio, kan DNS-rekorden byttest frå victorio til oahpa.
+
+Medan eg arbeider med å få den nye serveren i drift, skal eg skriva ein 
+logg/dokumentasjon til alle andre (spesielt Børre)
+
