@@ -6,40 +6,59 @@ This document tries to give an overview of what is where and why, in the {{ped}}
 !! The content of the ped catalogue
 
 * __adm__
-** Contains reports etc. This folder is not in use, but could be.
-* __art__
-** Our articles. This folder shall be moved to plan/art
+** Contains reports etc. This folder is not in use, but could be. We use doc instead.
 * __build__
 ** This folder is used by the system. Keep off.
 * __doc__
-** This is for the documentation written for us working on Oahpa
+** This is for the documentation written for us working on Oahpa.
+** The catalogue is a bit crowded 
+   (todo: make separate folders for .sh and graffle/pdf files).
+   The .jspwiki files are link pages for the different projects, their
+   files are in LANGdoc. Common doc in common.
 * __dtd__
 ** Here are some dtds. But note that the sma dtd is in the dict
    folder, and some of the sme dtds are in the xml folder.
-* __fin, nob, sma, sme, swe, smj__
-** Both target and Leksa translation folders
 * __forrest.properties__ and __forrest.properties.xml__
 ** Well, forrest files.
 * __images__
 ** Images for Sahka are found here
-* __oahpa__
+* __LANGoahpa__
+** (or rather LANG_oahpa)
 ** This is where all the files for the program is (see below)
 * __qa-test__
 ** This catalogue is obsolete
+* __sma, sme, smj__
+** Target language catalogues (see below)
 * __src__
-** Hmm, what is the difference between this one and __oahpa__ above...
+** A heterogenous bunch. To be documented.
 * __userdoc__
-** This is for documentation for end users (teachers, pupils). It has a 
-   somewhat flat structure at the moment, but will be ordered languagewise.
+** This is for documentation for end users (teachers, pupils). The xml and jspwiki
+   files in this catalogue have been duplicated to subfolders sme, sma, sjd, etc.
+   Only the files in the subfolders are updated.
 
 
-!! The content of the language catalogues
+!! The content of the target language catalogues
 
 These catalogues are heterogenous, for historical reasons.
 
-!sme
+!The new format 
 
-The target language catalogues (sme, sma) have the following content:
+(often called '' the sma format'', named after the first language to use it)
+
+The target language catalogues (sma, etc, ) have the following content 
+(here sma as example langage):
+
+* catalogues corp, inc, meta-data, old-xml, out-xml, __are all obsolete__ and should be removed
+** __Ryan, Heli: check this__
+* __src__
+** contains the lexicon files with L1=sma
+* __nobsma, finsma, swesma...__
+** lexicon files with sma = L2 and a variety of langages as L1
+** The files with target language = L2 are, at the outset, generated.
+
+!The old sme format
+
+The sma and sme catalogues are very different, for the following reason: oahpa proper (the programmer's files) are in $GTLANG/ped for sme, but in pedversions/smaoahpa for sma. There are some sma files in $GTLANG/ped, though, namely the lexica for Leksa.
 
 * __corp__
 ** At the moment, this contains files for VISL
@@ -53,35 +72,19 @@ The target language catalogues (sme, sma) have the following content:
 ** Files for dialogues and questions. 
 ** For sme, the lexicon can be found here (__adjectives.xml, verbs.xml,  nouns.xml, numerals.xml, propernouns.xml__)
 
-!sma
 
-The sma and sme catalogues are very different, for the following reason: oahpa proper (the programmer's files) are in $GTLANG/ped for sme, but in pedversions/smaoahpa for sma. There are some sma files in $GTLANG/ped, though, namely the lexica for Leksa.
-
-* catalogues corp, inc, meta-data, old-xml, out-xml, __are all obsolete__ and should be removed
-* __src__
-** contains the lexicon files with L1=sma (corresponds to the lexion part of the sme/xml content)
-* __engsma__
-** Still not in use
-* __finsma__
-** lexicon files with L1=fin, L2=sma. To be populated
-* __swesma__
-** lexicon files with L1=swe, L2=sma. Work underway
-
-
-!smj, smj
-
-These are not in use
    
 !! The content of the oahpa catalogue
 
-The catalogue contains several python files governing installing and 
-setting up the program.
+The catalogue ''oahpa'' is for the old sme oahpa. ''univ_oahpa'' contains the new sme oahpa.
+The other projects are found in LANG_oahpa (sma_oahpa, etc.). These oahpa catalogues contain 
+several python files governing installing and setting up the program.
 
 
 * ''conf''
 * ''djlocale''
 ** Here we add the interface localisation. See separate documentation
-* ''drill''
+* ''drill (or: LANG_drill)''
 ** python scripts for the drills (i.e., programs, aka games)
 ** ''admin.py'' (Admin interface for Log messages and database.)
 ** ''forms.py'' (Models for accessing the database and generating the drills.)
@@ -101,7 +104,7 @@ setting up the program.
    
 !! The content of the templates catalogue
 
-The catalogue contains several html files with the pages presenting 
+The catalogue ''template'' (under LANG_oahpa) contains several html files with the pages presenting 
 each program.
 
 * ''game.html'' — for answer field, colouring
