@@ -1,0 +1,183 @@
+!!! Møte 02.05.12
+
+
+Til stades: Lene, Ryan, Trond, Heli
+
+!!Saksliste
+* Nye servere
+* Testerutiner
+* Mer info i loggen for Vasta og Sahka
+* Bedre feedback og veiledning for brukerne
+* Morfologisk feedback
+* Bugger
+* Dokumentasjon
+* Neste møte
+
+!! Nye servere
+Vi har 4 nye servere, Steinar klarer ikke å logge seg på oahpa-serveren, 
+Trond klarer ikke å logge seg på noen av dem. Trond følger opp i forhold 
+til IT-adv.
+
+* gtoahpa.uit.no
+* gtweb.uit.no
+* gtsvn.uit.no
+* gtlab.uit.no
+
+
+!! Testerutiner
+Alle bør teste, spesielt etter at man har gjort endringer, så må man teste alle programmer på nettet som endringen kan berøre-
+
+* Heli: Sjå spesielt på Vasta, Sahka, MorfaS. Følge med på loggen. 
+* Ryan: Sjå spesielt på MorfaC, Courses
+
+__TILTAK__
+* Lage liste over testrutiner (__Lene__)
+* Lage liste over testfunksjoner (__Ryan__)
+
+
+!! Mer info i loggen for Vasta og Sahka
+Vi ønsker med i loggen:
+* q-id (VastaS og Sahka, evt. VastaF)
+* brukerens språkvalg
+* VastaS: oppgavelemmaer
+
+__TILTAK__
+* __Heli__ arbeider med dette
+
+!! Bedre feedback og veiledning for brukerne
+[korte forklaringer|http://giellatekno.uit.no/oahpa/sme/gramm/cilgehusat.nno.html]
+
+Lene har laget noen tekster i: helptexts.nob.xml
+
+* som en popup-textruta (tooltip) som hoppar fram när man pekar 
+  på länken med musen (utan att klicka) och försvinner när fokus 
+  är någon annanstans
+
+TILTAK:
+* __Heli__ arbeider med dette.
+* __Lene__ lager flere tekster i: helptexts.nob.xml og deretter på andre språk
+
+
+!! Morfologisk feedback
+
+Passiv verb - feedback fungerer ikke 
+
+TILTAK:
+* Vi kommuniserer om arbeidet i Bug 1336
+* __Ryan og Lene__ arbeider videre med dette
+* __Trond__ hjelper til med testing
+* __Ryan__ skriv dokumentasjonen om feedback og buggen med UTF-8
+
+!! Bugger
+
+! 1334	cri	P2	Heli Uibo	VastaS fungerer ikke
+
+Löst inatt.
+Vi må fjerne feilmeldingsbanneret. NB! NB! The VastaS game is not 
+working properly, due to technical problems! NB! NB!
+
+__Ryan__ - +Dat problem, +Dat kom ikkje inn p.g.a. tags.txt, treng 
+litt meir informasjon frå installeringsskripten for å finne årsaken 
+raskare neste gongen.
+
+! 1309	maj	P2	Heli Uibo	MorfaS Der og MorfaC Der
+dat (okta) og dat (máŋga) På samme måte som MorfaS Pron+Dem
+
+! 1316	maj	P2	Heli Uibo	Vasta: kolon forsvinner
+
+Test pipeline med å fjerne/sette inn kolon.
+
+* GTHOME/script/cgi-scripts/conf.pl <== generer kommandoane, språkval
+* GTHOME/script/cgi-scripts/smi.cgi <== parametriserer kommandoene
+
+{{{
+Line 158 in smi.cgi
+# Remove the unsecure characters from the input.                                                                                                                     
+$text =~ s/[;<>\*\|`&\$!\#\(\)\[\]\{\}:'"]/ /g;
+}}}
+
+! 1335	maj	P2	Heli Uibo	MorfaS - bokvalget fungerer ikke
+
+Framleis ikkje.
+
+! 1319	maj	P3	Ryan Johnson	G3 - actor - Feil i databasen?
+
+* python manage.py print_word -w rišša
+* python manage.py help print_word
+
+rišša  NATURE (og NATUREWORDS) og skal ikke være medlem av noen oppgave!
+Question membership:
+        answer - predsup1 FURNITURE
+        answer - predsup0
+        answer - dervv4
+        
+---
+rišša (THING, OBJECT, CONCRETES)
+Question membership:
+        question - nill1sg
+        question - nill1pl
+        question - ngen0sg
+        question - ngen0pl
+        question - man_luoikkasin
+        question - geaidda
+        question - geaid_leat_2
+        answer - nnompl2
+        answer - nill0
+        answer - nacc0
+
+... men dette ordet får alle former til N og N+G3
+
+
+
+! 1330	maj	P5	Ryan Johnson	MorfaC: pronomen-kongruens 3.pers, bare 'son/sii', ikke '...
+
+Fiksa, blir lukka.
+
+! 1318	nor	P3	Heli Uibo	MorfaC - Der: unngå at samme oppgave presenteres flere ga...
+
+__TILTAK__
+Ryan og Heli ser på dette.
+
+! 1331	nor	P3	Ryan Johnson	Hvordan få inn N+Actor og N+G3 i variablene i MorfaC?
+Med oahpaheaddji og dutki: ordformer er generert, men ikkje installert. ???
+
+__TILTAK__
+* __Ryan__: finn løsning slik at ord er installert. (Kan vera noko +Actor grei)
+s
+
+! 1332	nor	P3	Heli Uibo	MorfaS - personlige pronomener: dat skal ha (okta) og (má...
+
+! 1336	nor	P3	Ryan Johnson	problemer med morfologisk feedback
+Sjå eiga sak.
+
+! 1314	nor	P4	Ryan Johnson	Error log etter generering
+
+! 1190	enh	P5	Trond Trosterud	Grammatikkforklaringer kjem ikkje opp i Safari
+
+Grammatikkforklaringer
+
+* TILLAT POPUP <==== hvis man klikker, så dukker opp ei popup-textruta (tooltip)
+** FUNKER DET IKKE?
+	
+__TILTAK__
+* Heli ser på dette etter at ho har fått til hjelpetekstar i vasta
+	
+
+!! Dokumentasjon
+
+http://giellatekno.uit.no/ped/common/maintenance.html
+
+installering - innhald (xml) - testing 
+
+!! Neste møte
+
+__Tirsdag kl 8.00 i Norge__.
+
+Til neste møte: 
+Dagens bugar og andre ting nevnt i møtereferatet i boks (av det som haster), 
+servarar og test subdomain (frå oahpa.no) tilgjengeleg og arbeidet starta, 
+Lene og Trond planlegger lansering
+
+
+
+
