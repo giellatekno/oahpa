@@ -1,3 +1,8 @@
+This folder does not contain updated dokumentation. To be removed?
+
+
+Old content of this file:
+
 This is the base documentation directory.
 
 skinconf.xml     # This file customizes Forrest for your project. In it, you
