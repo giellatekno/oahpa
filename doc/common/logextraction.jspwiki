@@ -2,41 +2,16 @@
 
 As usual, commands on victorio.
 
-!!For smeoahpa
-
-Go to the oahpa catalogue.
-
-{{{
-mysql -u admin -p
-salasana: 
-
-mysql> use oahpa;
-mysql> select * from drill_log order by game into outfile '/usr/tmp/oahpalog.txt' fields terminated by '|';
-mysql> exit
-}}}
-
-The resulting file can then be gathered. Note that the command will overwrite earlier files in the tmp catalogue. As can be seen, more refined commands are possible (refining the log result).
-
-Logs may also be extracted from the command line directly, and one program at a time. This command prints all the entries:
-
-{{{
-python manage.py [help] printlogs
-}}}
-
-Cf. an actual example:
-
-{{{
-$ python manage.py printlogs --game numra
-numra|2011/12/27|9|9|True|ovcci|None|None
-numra|2011/12/27|1|1|True|okta|None|None
-numra|2011/12/27|3|3|True|golbma|None|None
-}}}
 
 
 
-!!For other oahpa versions
+!!Procedure
 
-Go to the smaoahpa (etc.) catalogue. We use smaoahpa as example, replace with smnoahpa etc.
+We have different language versions. The commands here use ''sma'', replace
+with ''sjd'', etc. For univ_oahpa, replace with ''univ_''. For the __old__ (sme)
+oahpa, remove the prefix, and write only ''oahpa, drill_log'', etc.
+
+On victorio, go to the production catalogue (not actually needed):
 
 {{{
 mysql -u admin -p
@@ -48,3 +23,33 @@ mysql> exit
 }}}
 
 … and correspondingly for the command line option.
+
+To be explicit: here is the command set for old oahpa:
+{{{
+mysql> use oahpa;
+mysql> select * from drill_log order by game into outfile '/usr/tmp/oahpalog.txt' fields terminated by '|';
+}}}
+
+The resulting file can then be gathered. As can be seen, more refined commands 
+are possible (refining the log result).
+
+Logs may also be extracted from the command line directly, and one program 
+at a time. This command prints all the entries:
+
+{{{
+python2.6 manage.py [help] printlogs
+}}}
+
+
+__NB! This command does not work__
+
+Cf. an actual example:
+
+{{{
+$ python2.6 manage.py printlogs --game numra
+numra|2011/12/27|9|9|True|ovcci|None|None
+numra|2011/12/27|1|1|True|okta|None|None
+numra|2011/12/27|3|3|True|golbma|None|None
+}}}
+
+
