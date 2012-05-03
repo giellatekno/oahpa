@@ -40,7 +40,8 @@ class TagError(Exception):
 
 	def __str__(self):
 		msg = ("\n ** Grammars defined in element, but no inflections were found.\n"
-				"    Check that tags.txt and paradigms.txt include all tags.\n"
+				"    Check that tags.txt and paradigms.txt include all tags,\n"
+				"    and parts to tags.\n"
 				"\n"
 				"    Alternatively, ensure that <grammar tag /> is a valid tag,\n"
 				"    or that <grammar pos /> is a valid PoS.\n"
@@ -779,6 +780,8 @@ class Questions:
 				elif Tagset.objects.filter(tagset=item).count() > 0:
 					tagnames = Tagname.objects.filter(tagset__tagset=item)
 					tag_string.append([t.tagname for t in tagnames])
+				else:
+					tag_string.append(item)
 
 			if len(tag_string) > 0:
 				# ++ -> + in order to support % as null in tags.txt
