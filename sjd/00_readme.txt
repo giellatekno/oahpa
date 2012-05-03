@@ -1,12 +1,6 @@
-Docu for translating the xml data from the old to the new format.
+Action points for synchronizing sjdrus with russjd, engsjd, etc.
 
- ==> consult also the ideas in 
+Problem: both sjdrus and russjd have been changed.
+Solution: diff and sync.
 
-main/ped/sma/00_readme.txt
-
- - transform old xml into the new one
- ==> DONE
-
- - revert sjdrus to russjd
- ==> DONE
 
