@@ -13,10 +13,10 @@ word_attrs = [
 	"id",
 	"lemma",
 	"pos",
+	"wordclass",
 	"language",
 	"presentationform",
 	"stem",
-	"wordclass",
 	"valency",
 	"hid",
 	"diphthong",
@@ -34,11 +34,14 @@ word_attrs = [
 ###	"semtype",
 ###	"dialects",
 ###	"source",
-
+### TODO: translations
 
 def printword(word_key):
 	from univ_drill.models import Word
 	ws = Word.objects.filter(lemma=word_key)
+
+	if ws.count() == 0:
+		print >> sys.stderr, "No words found for '%s'." % word_key
 
 	for w in ws:
 		forms = w.form_set.all()
