@@ -8,6 +8,7 @@ import sys
 from univ_drill.models import * 
 #from collections import OrderedDict
 from univ_oahpa.conf.ordereddict import *
+from django.db.utils import IntegrityError
 
 # For easier debugging.
 # _D = open('/dev/ttys005', 'w')
@@ -128,8 +129,9 @@ class Analysis(object):
 		
 		for t in self.tags.split('+'):
 			if linginfo.tagset.has_key(t):
-				tagclass = linginfo.tagset[t]
-				self.classes[tagclass] = t
+				tagclasses = linginfo.tagset[t]
+				for tagclass in tagclasses:
+					self.classes[tagclass] = t
 
 class Entry(object):
 	""" The beginning of a class for parsing entry nodes. 
@@ -938,7 +940,10 @@ class Words(object):
 						'attributive': 		g.get('Attributive',""),
 					}
 
-					t,created=Tag.objects.get_or_create(**tag_kwargs)
+					try:
+						t = Tag.objects.get(string=f.tags)
+					except Tag.DoesNotExist:
+						t = Tag.objects.create(**tag_kwargs)
 
 					t.save()
 
