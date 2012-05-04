@@ -422,12 +422,14 @@ class Questions:
 				for t in tagelements:
 					if semty:
 						ws_ = Word.objects.filter(semtype=semty)
+					elif word_elements:
+						ws_ = word_elements
 					else:
 						ws_ = Word.objects.all()
 
 					if ws_.filter(form__tag=t).count() == 0:
 						err_ = "tag:  %s" % t.string
-						if semty:
+						if semty or word_elements:
 							err_ += "\t(no matching forms with semtype %s)" % semty
 						print '\t\t%s' % err_
 						continue
