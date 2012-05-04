@@ -429,8 +429,11 @@ class Questions:
 
 					if ws_.filter(form__tag=t).count() == 0:
 						err_ = "tag:  %s" % t.string
-						if semty or word_elements:
+						if semty:
 							err_ += "\t(no matching forms with semtype %s)" % semty
+						elif word_elements:
+							err_ += "\t(no matching forms with words: %s)" % ','.join(ws_.values_list('lemma', flat=True))
+
 						print '\t\t%s' % err_
 						continue
 					if t.pos == p:
