@@ -497,6 +497,13 @@ echo "done"
 echo "==================================================="
 
 echo "==================================================="
+echo "adding feedback to passive verbs"
+$P install.py -f $META/v_pass.xml --feedbackfile $META/feedback_passiveverbs.xml
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
 echo "adding feedback to adjectives"
 $P install.py -f $DPS/a_smenob.xml --feedbackfile $META/feedback_adjectives.xml 
 echo " "
