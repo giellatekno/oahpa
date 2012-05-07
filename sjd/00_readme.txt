@@ -15,8 +15,13 @@ Example 1: xxb-variant as stat-pref but there is only the h-variant in sjdrus
 +            <t pos="a" stat="pref">чоаһпэ</t>
 +            <t pos="a">чоаххьпэ</t>
 
+ ==> solution: replace 'чоаһпэ' by 'чоаххьпэ' in the sjdrus-file
+
+
 Example 2: both xxb- and h-variants are in the sjdrus-file as separate entries.
 Why? This seems to be the only occurence, please have a look at it and change it accordingly.
+
+ ==> solution: unify the two entries with the correct spelling variant as lemma
 
 -            <t pos="n" stat="pref">па̄ххьк</t>
 -            <t pos="n">па̄һкь</t>
