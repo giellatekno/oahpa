@@ -287,6 +287,7 @@ class Feedback_install(object):
 		self._feedback_elements = False
 		self._feedback_msg_elements = False
 		self._form_objects = False
+		self._global_form_filter = False
 
 		self._lexicon_dialects = False # TODO: this
 		self._feedback_global_dialect = False # TODO: this
@@ -360,6 +361,17 @@ class Feedback_install(object):
 			root = self.feedbacktree.getElementsByTagName("feedback")[0]
 			self._file_pos = root.getAttribute("pos").capitalize()
 		return self._file_pos
+	
+	@property
+	def global_form_filter(self):
+		if not self._global_form_filter:
+			root = self.feedbacktree.getElementsByTagName("feedback")[0]
+			global_filter = root.getAttribute("tag__string__contains").strip()
+			if global_filter:
+				self._global_form_filter = global_filter
+			else:
+				self._global_form_filter = False
+		return self._global_form_filter
 	
 	@property
 	def feedback_global_dialect(self):
@@ -567,6 +579,8 @@ class Feedback_install(object):
 		print >> sys.stdout, "Fetching wordform attributes."
 		
 		forms = self.form_objects.only(*values) # Get only the things we need.
+		if self.global_form_filter:
+			forms = forms.filter(tag__string__contains=self.global_form_filter)
 		total = forms.count()
 		form_keys = {}
 
@@ -701,17 +715,9 @@ class Feedback_install(object):
 				
 				def intersect_param_set(param_set):
 					print >> sys.stderr, "Intersecting..."
-					# for i in list(param_set):
-						# syll, grade, stgh, rime, soggi, case, num = i
-						# if [syll, grade, stgh, rime, soggi] == [u'2syll', u'yes', u'no', u'0', u'i']:
-							# print i
+
 					intersection = form_keys_key_set & param_set
-					# print "--"
-					# for i in list(form_keys_key_set):
-						# syll, grade, stgh, rime, soggi, case, num = i
-						# if [syll, grade, stgh, rime, soggi] == [u'2syll', u'yes', u'no', u'0', u'i']:
-							# print i
-					# raw_input()
+
 					for item in intersection:
 						if lemma:
 							form_keys[item] = [
