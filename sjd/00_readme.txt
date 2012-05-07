@@ -16,7 +16,7 @@ Example 1: xxb-variant as stat-pref but there is only the h-variant in sjdrus
 +            <t pos="a">чоаххьпэ</t>
 
 Example 2: both xxb- and h-variants are in the sjdrus-file as separate entries.
-Why?
+Why? This seems to be the only occurence, please have a look at it and change it accordingly.
 
 -            <t pos="n" stat="pref">па̄ххьк</t>
 -            <t pos="n">па̄һкь</t>
