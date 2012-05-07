@@ -776,26 +776,27 @@ class Words(object):
 		# 	print >> sys.stdout, ' * No changes detected to word XML, skipping... '
 		# 	return
 
-		w.wordclass = entry.wordtype.capitalize()
-		w.pos = pos
-		w.wordid = w.lemma = lemma
-		# w.presentationform = presentationform
-		w.stem = stem
-		w.rime = rime
-		w.compare = compare
-		w.attrsuffix = attrsuffix
-		w.compsuffix = compsuffix
-		w.soggi = soggi
-		w.gradation = gradation
-		w.diphthong = diphthong
+		if created:
+		    w.wordclass = entry.wordtype.capitalize()
+		    w.pos = pos
+		    w.wordid = w.lemma = lemma
+		    # w.presentationform = presentationform
+		    w.stem = stem
+		    w.rime = rime
+		    w.compare = compare
+		    w.attrsuffix = attrsuffix
+		    w.compsuffix = compsuffix
+		    w.soggi = soggi
+		    w.gradation = gradation
+		    w.diphthong = diphthong
 
-		w.valency = valency
-		w.frequency = frequency
-		OUT_STRS.append(frequency)
-		OUT_STRS.append(geography)
-		w.geography = geography
-		w.hid = hid
-		w.save()
+		    w.valency = valency
+		    w.frequency = frequency
+		    OUT_STRS.append(frequency)
+		    OUT_STRS.append(geography)
+		    w.geography = geography
+		    w.hid = hid
+		    w.save()
 
 		dialect_objects = []
 		
@@ -807,7 +808,7 @@ class Words(object):
 				dial.save()
 			if dialect != NG_DIALECT:
 				dialect_objects.append(dial)
-		
+	
 		# additional dialect mappings
 		# NG - main, NG; but not L and SH
 
