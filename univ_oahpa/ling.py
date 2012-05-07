@@ -433,6 +433,11 @@ class Paradigm:
 							continue
 					else:
 						g_wordtype = g.classes.get('Subclass', False)
+						# subclass is also part of another tag group,
+						# thus not only a subclass, so none.
+						# Kind of hacky, for Der/PassL which
+						if g_wordtype in g.classes.values():
+							g_wordtype = False
 						if g_wordtype:
 							continue
 						else:
