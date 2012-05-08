@@ -2340,6 +2340,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
         ### tasklemmas and taskpos respectively. Tasklemmas and taskpos will be 
         ### sent to CG together with the morph. analysed question and answer.
         tasklemmas = ""
+	logtasklemmas = ""
         for aword in awords:
             print aword
 	        #logfile.write(aword)
@@ -2380,6 +2381,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
                         print malemma
                         print malemma_without_hash
                         tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
+			logtasklemmas = logtasklemmas + " " + malemma_without_hash + " " + taskpos
                     morfanal = morfanal + ans_cohort  # END
                     
         analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
@@ -2599,7 +2601,10 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     p = re.compile(r'<.*?>')
     feedbackmsg = p.sub('', feedbackmsg)
     print feedbackmsg
-    feedbackmsg_id =message_ids[0] # added
+    if message_ids:
+	    feedbackmsg_id = message_ids[0] # added
+    else:
+	    feedbackmsg_id = ""
     print feedbackmsg_id
     today=datetime.date.today()
     log = Log.objects.get_or_create(userinput=self.userans, feedback=feedbackmsg, iscorrect=iscorrect, qid=question_id, example=question, game=self.gametype, date=today, lang=language, messageid = feedbackmsg_id, tasklemmas=logtasklemmas)  # was Log.objects.create()
