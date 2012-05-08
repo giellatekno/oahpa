@@ -1,0 +1,180 @@
+!!! Møte 08.05.12
+
+Til stades: Lene, Ryan, Trond, Heli
+
+
+!!Saksliste
+* Nye servere
+* Testerutiner
+* Mer info i loggen for Vasta og Sahka
+* Bedre feedback og veiledning for brukerne
+* Morfologisk feedback
+* Bugger
+* Oahpa på engelsk
+* Dokumentasjon
+* EUROCALL i Göteborg
+* Neste møte
+
+
+!! Nye servere
+
+* gt-oahpa er oppe, må åpnes port
+* dokumentasjon: admin log - README-admin-gtoahpa.txt (i private), "high level" 
+  dokumentasjon i techdoc/infra/VirtualServers.jspwiki
+* å gjøre: testing og tilpassing av kode
+
+
+__TILTAK__
+* Følgje opp IT-avd for portane 80, 443, 8080 (__Trond__)
+* (__Ryan__) kopierer konfigurasjon til gt-lab
+
+
+!! Testerutiner
+
+[Testerutiner|http://giellatekno.uit.no/ped/common/Testing.html]
+
+Lene har laga eit dokument om rutinene. Det er også viktig å sjekke loggen.
+
+__TILTAK__
+* Følgje opp med lokaliseringa (__ alle til kvar sitt språk? __)
+
+
+!! Mer info i loggen for Vasta og Sahka
+
+Fornyingane fungerer lokalt på Heli si maskin, og er ikkje sjekka inn enno.
+No er Heli attende, og får sjekka inn.
+
+!! Bedre feedback og veiledning for brukerne
+
+Heli arbeider vidare med dette, det er ikkje klart. Deretter lagar Lene
+fleire tekstar.
+
+TILTAK:
+* __Heli__ arbeider med dette.
+* __Lene__ lager flere tekster i: helptexts.nob.xml og deretter på andre språk
+
+!! Morfologisk feedback
+
+Problemet var passive verb. Ryan har testa på victorio, det ser ut til å 
+fungere, jf. [oppgåva her|http://oahpa.uit.no/univ_oahpa/morfac/der/].
+Det fungerer på web.
+
+
+!! Bugger
+
+!1309	maj	P2	Heli Uibo	MorfaS Der og MorfaC Der
+
+MorfaS Der:
+* 'dat (okta)' istedenfor 'son' 
+* 'dat (máŋga)' istedenfor 'sii'. 
+
+A-DER-V: preteritum mangler
+
+NB: Flere bugger i samme bugmelding
+
+!1316	maj	P2	Heli Uibo	Vasta: kolon forsvinner
+
+Heli arbeider med denne.
+
+!1335	maj	P2	Heli Uibo	MorfaS - bokvalget fungerer ikke
+
+Heli arbeider med denne.
+
+!1319	maj	P3	Ryan Johnson	G3 - actor - Feil i databasen?
+Fiksa.
+
+!1331	nor	P3	Ryan Johnson	Hvordan få inn N+Actor og N+G3 i variablene i MorfaC?
+
+Testa under møtet, og og det fungerer.
+
+!1318	nor	P3	Heli Uibo	MorfaC - Der: unngå at samme oppgave presenteres flere ga...
+Heli arbeider med denne.
+
+
+!1332	nor	P3	Heli Uibo	MorfaS - personlige pronomener: dat skal ha (okta) og (má...
+Heli arbeider med denne.
+
+
+!1336	nor	P3	Ryan Johnson	problemer med morfologisk feedback
+Fiksa, og derivasjonsfeedbacken fungerer.
+
+__TILTAK__
+* __Ryan__ skriv litt meir dokumentasjon om problem og Feedback-systemet
+
+!1337	nor	P3	Ryan Johnson	MorfaS A-DER-V: oversetting mangler
+Oversetting er der til norsk. Derimot manglar dei til finsk, sjølv om 
+finsk har omsetjing av passive verb i avleiingsoppgåva.
+
+!1190	enh	P5	Trond Trosterud	Grammatikkforklaringer kjem ikkje opp i Safari
+__TILTAK__
+* Heli ser på dette etter at ho har fått til hjelpetekstar i vasta
+
+!1341	enh	P5	Lene Antonsen	Stems in English
+
+Which terms should we use in English?
+
+Today we have in for sme and sma:
+
+in menu: bisyllabic, trisyllabic and contracted
+In messages for sme: evensyllabic stem, uneven-syllabic stem and contract stem
+In messages for sma: evensyllabic stem and odd-syllabled stem
+disyllabic?!
+
+Lingvistisk: bisyllabic og trisyllabic og contracted stems
+
+(xxx)(xx)
+
+__TILTAK__
+
+* Trond ringer rundt, og ser på Introduction.
+
+!! Oahpa på engelsk
+
+Det er 2249 ord i Oahpa-leksikonet som ikkje er omsett
+
+__TILTAK__
+* __Lene__ tar kontakt med oversetter
+
+
+!! Dokumentasjon
+
+Lene har dokumentert testing, Ryan har dokumentert i koden.
+Referer dit.
+
+
+!! EUROCALL i Göteborg
+
+Her var foredraga våre:
+
+# ''A modular system for porting advanced interactive programs to new, morphology-rich languages'' - med vekt på at systemet fungerer med flere metaspråk i leksikonet. Godtatt.
+# ''Letting CALL make minority language instruction at university level available over a wide area'' - med vekt på fleksibilering av studier, samarbeid mellom universitet og språksentre osv. Oahpa er grammatikklæreren. Godtatt som poster.
+# ''Free user input in a language learning program'' til showcase. Godtatt.
+
+EUROCALL 2012 proceedings 1500-word text, deadline 30th June 2012
+
+Alle tre skal vere ''tekst'' i proceedings. I tillegg skal (2) vere poster 
+og (3) vere demonstrasjon og i det minste ein plakat.
+
+* For (1) må programmerarane med. Her bygger vi på arbeidet med dei ulike versjonane vi har på veg.
+* I (2) er BÁ og Lene sentrale
+* For (3) er det framfor alt Heli og Lene.
+
+Etter konferansen vurderer vi om vi vil sende inn til publisering etterpå.
+
+Vi tar dette som sak på neste møte.
+
+__TILTAK__
+
+* Sjekke inn dummydokument (kopiere frå abstractet) i svn før neste møte.
+* Sjekk kva slags format dei vil ha. Det är Word (http://www.eurocall2012.eu/?id=8)
+
+
+!! Neste møte
+
+
+tirsdag 15.5. kl 8.00
+
+
+
+
+

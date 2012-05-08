@@ -66,7 +66,8 @@ Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-
  [26.3.|nudoc/meetings/120326p.html] //
  [2.4.|nudoc/meetings/120402p.html] //
  [11.4.|nudoc/meetings/120411p.html]  //
- [02.5.|nudoc/meetings/120502p.html] 
+ [02.5.|nudoc/meetings/120502p.html]  //
+ [08.5.|nudoc/meetings/120508p.html] 
 
 
 ! Møte om grafisk formgjeving ~ Čoahkkimat hábmema birra
@@ -80,6 +81,15 @@ Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-
 * [Læringsstier ~ Oahppanbálgát site.uit.no/oahpa|http://kursa.oahpa.no/]  
 * [site.uit.no/oahpa SAM-1031 ja SAM-1030 sisdoallu|nudoc/site.html] 
 * [jietnafiillat ~ listu|nudoc/sound.html] 
+
+!!Testing
+! Testing på web
+
+! Testing av Vasta-, Sahka- og VastaS-oppgaver versus fst og CG skjer i ped/qa_test , les 00_readme . 
+** Filene i regressiontests skal ikke gi noen &grm- eller &sem-tagger. 
+** Hvert spørsmål-svar-par i filene i errortests skal få &grm- eller &sem-tagg.
+** Filene bør testes testsahka.sh og  testvastas.sh hver gang det er gjort større endringer i fst eller sme-ped.cg3.
+
 
 !!Arbeidsdokumenter ~ Bargodokumeanttat
 !Overføring til gtoahpa og gtlab
@@ -110,11 +120,6 @@ Intern dokumentasjonen for ''Interaktiv samiskopplæring på Internett'', (univ-
 * [Genererte pronomener|nudoc/pronounforms.html]
 * Numra: [num2clock|nudoc/gen/numra_num2clock.csv], [clock2num|nudoc/gen/numra_clock2num.csv]  ([testrutine|common/TestingClockFst.html])
 
-!Testing
-* Testing av Vasta-, Sahka- og VastaS-oppgaver skjer i ped/qa_test , les 00_readme . 
-** Filene i regressiontests skal ikke gi noen &grm- eller &sem-tagger. 
-** Hvert spørsmål-svar-par i filene i errortests skal få &grm- eller &sem-tagg.
-** Filene bør testes testsahka.sh og  testvastas.sh hver gang det er gjort større endringer i fst eller sme-ped.cg3.
 
 
 
