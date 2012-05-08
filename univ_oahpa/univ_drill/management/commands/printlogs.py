@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand, CommandError
 # from_yaml(cls, loader, node)
 
 from optparse import make_option
-
+from django.utils.encoding import force_unicode
 import sys
 
 from univ_drill.models import Log
@@ -42,8 +42,8 @@ def printLogs(queryset, csv=False, delimiter=False, attrs=False):
 		
 		csv_out.delimiter = delimiter
 	
-	_fmt = lambda x: [a.encode('utf-8') for a in 
-						x.outputEntry(**pkwargs).split(pkwargs['delimiter'])]
+	_fmt = lambda x: [force_unicode(a).encode('utf-8') for a in 
+						x.outputEntry(**pkwargs).split(pkwargs['delimiter'])]  # added force_unicode() because there seemed to be a decoding problem
 
 	printlines = (_fmt(item) for item in queryset)
 

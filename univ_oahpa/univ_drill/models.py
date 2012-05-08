@@ -222,12 +222,14 @@ class Log(models.Model):
 	userinput = models.CharField(max_length=200)
 	iscorrect = models.BooleanField()
 	correct = models.TextField()
+	qid = models.CharField(max_length=100, null=True) # added
 	example = models.CharField(max_length=200,null=True)
 	feedback = models.CharField(max_length=200,null=True)
 	comment = models.CharField(max_length=200)
-	messageid = models.CharField(max_length=100,null=True)
-	lang = models.CharField(max_length=3)
-
+	messageid = models.CharField(max_length=100,null=True) # added
+	lang = models.CharField(max_length=3) # added
+	tasklemmas = models.CharField(max_length=100, null=True)  # VastaS only, added
+	
 	def outputEntry(self, printattrs=False, delimiter=False):
 		""" Renders log information in a one-line string.
 
@@ -249,9 +251,13 @@ class Log(models.Model):
 				'userinput',
 				'correct',
 				'iscorrect',
+				'qid', #added
 				'example',
 				'feedback',
-				'comment'
+				'comment',
+				'messageid',  # added
+				'lang', # added
+				'tasklemmas'  # added
 			]
 		else:
 			attrs = printattrs

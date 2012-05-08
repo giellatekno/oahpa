@@ -13,7 +13,7 @@ from models import *
 #from univ_oahpa.univ_drill.game import relax
 import datetime
 import socket
-import sys, os
+import sys, os, re
 import itertools
 from random import choice
 
@@ -1795,19 +1795,22 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     noanalysis=False
 
-    fstdir = "/opt/smi/sme/bin"
+    fstdir = "/opt/smi/sme/bin"  # on victorio
     #fstdir = settings.FST_DIRECTORY
     fst = fstdir + "/ped-sme.fst"
+    print fst
     lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup" # on victorio
     #lo="/Users/mslm/bin/lookup" # on Heli's machine
-    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst # on Heli's machine
+    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
+    print lookup
     #lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine
     lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
+    #lookup2cg =" | /Users/mslm/main/gt/script/lookup2cg" # on Heli's machine
     cg3 = "/usr/local/bin/vislcg3"
     preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
     #preprocess = " | /Users/mslm/main/gt/script/preprocess "
     dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    #dis_bin = "../sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
+    #dis_bin = "/Users/mslm/main/ped/sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
         
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
     
@@ -1874,8 +1877,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
             word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
             morfanal = os.popen(word_lookup).readlines()
             for row in morfanal:
-                row = row.strip()
-                cohort = cohort + row + "\n" + "\t"
+                #row = row.strip()
+                cohort = cohort + row
             if not cohort or cohort == w:
                 cohort = w + "\n"
             if cohort=="error":
@@ -1900,13 +1903,13 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
             morfanal = os.popen(word_lookup).readlines()
             ans_cohort=""
             for row in morfanal:
-                row = row.strip()
-                ans_cohort = ans_cohort + row + "\n" + "\t"
+                ans_cohort = ans_cohort + row
             analyzed = analyzed + ans_cohort
    # except socket.timeout:
     #    raise Http404("Technical error, please try again later.")            
 
     #logfile.write(analyzed+"\n")
+    print "morph. analysis:\n",analyzed
     analysis = analysis + analyzed
     analysis = analysis + "\"<.>\"\n\t\".\" CLB"
     analysis = analysis.rstrip()
@@ -1914,6 +1917,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 
     ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
     checked = os.popen(ped_cg3).readlines()
+    print "syntactic analysis:\n",checked
 
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
     messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
@@ -1966,6 +1970,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
             
 
     msg=[]
+    message_ids=[]
     dia_msg = []
     target = ""
     variable=""
@@ -1986,6 +1991,9 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
             if Feedbackmsg.objects.filter(msgid=m).count() > 0:
                 msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
                 message = Feedbacktext.objects.filter(feedbackmsg=msg_el,language=language)[0].message
+                msg_id = msg_el.msgid  # added
+                print msg_id
+                message_ids.append(msg_id)  # added
                 message = message.replace("WORDFORM","\"" + w + "\"") 
                 msg.append(message)
                 if not spelling:
@@ -2013,10 +2021,15 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
         iscorrect=True
 
     feedbackmsg=' '.join(msg)
+    p = re.compile(r'<.*?>')
+    feedbackmsg = p.sub('', feedbackmsg)
+    if message_ids:
+        feedbackmsg_id = message_ids[0]
+    else:
+        feedbackmsg_id = ""
     today=datetime.date.today()
-    log = Log.objects.create(userinput=self.userans,feedback=feedbackmsg,iscorrect=iscorrect,\
-                                       example=question,game=self.gametype,date=today)
-    log.save()           
+    log = Log.objects.get_or_create (userinput=self.userans, feedback=feedbackmsg, iscorrect=iscorrect, qid=utterance_name, example=question, game=self.gametype, date=today, lang=language, messageid = feedbackmsg_id)
+    #log.save()           
         
     variables = []
     variables.append(variable)
@@ -2091,10 +2104,11 @@ class VastaQuestion(OahpaQuestion):
 
         qstring = qstring + "?"
         self.question=qstring
+        question_id = question.qid
 
         # In qagame, all words are considered as answers.
         self.gametype="vasta"
-        self.messages, jee, joo  = self.vasta_is_correct(qstring.encode('utf-8'), qwords, language)
+        self.messages, jee, joo  = self.vasta_is_correct(qstring.encode('utf-8'), qwords, language, question_id)
         
         # set correct and error values
         if correct_val == "correct":
@@ -2267,8 +2281,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 
     noanalysis=False
 
-    #fstdir = "/opt/smi/sme/bin" # on victorio
-    fstdir = settings.FST_DIRECTORY
+    fstdir = "/opt/smi/sme/bin" # on victorio
+    #fstdir = settings.FST_DIRECTORY
     fst = fstdir + "/ped-sme.fst"
     lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"# on victorio
     #lo="/Users/mslm/bin/lookup" # on Heli's machine
@@ -2407,6 +2421,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	       #print cohort
             analysis = analysis + cohort
         tasklemmas = ""
+        logtasklemmas = ""
         for aword in awords:
             print aword
 	       #logfile.write(aword)
@@ -2444,6 +2459,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
                         print malemma
                         print malemma_without_hash
                         tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
+                        logtasklemmas = logtasklemmas + " " + malemma_without_hash + " " + taskpos
                     morfanal = morfanal + ans_cohort  # END
                     
         analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
@@ -2469,11 +2485,11 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     analysis = analysis + "\"<.>\"\n\t\".\" CLB"
     analysis = analysis.rstrip()
     analysis = analysis.replace("\"","\\\"")
-    print analysis
+    print "Morph. analysis: \n", analysis
     #logfile.write(analysis)
     ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
     checked = os.popen(ped_cg3).readlines()
-    #print checked
+    #print "Syntax analysis: \n", checked
 
     wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
     messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
@@ -2526,6 +2542,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 
     msg=[]
     dia_msg = []
+    message_ids = []
     target = ""
     variable=""
     constant=""
@@ -2538,6 +2555,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     #if language == "en" : language = "eng"
     if not language in ["nob","sme","fin","eng","swe"]: language="nob"
 
+    print msgstrings
     for w in msgstrings.keys():
         if found: break
         for m in msgstrings[w].keys():
@@ -2545,9 +2563,14 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
             m = m.replace("&","") 
             if Feedbackmsg.objects.filter(msgid=m).count() > 0:
                 msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
-                message = Feedbacktext.objects.filter(feedbackmsg=msg_el,language=language)[0].message
+                print msg_el
+                message = Feedbacktext.objects.filter(feedbackmsg=msg_el, language=language)[0].message
+                print message
+                msg_id = msg_el.msgid  # added
+                print msg_id
                 message = message.replace("WORDFORM","\"" + w + "\"") 
                 msg.append(message)
+                message_ids.append(msg_id)  # added
                 if not spelling:
                     found=True
                     break                
@@ -2573,10 +2596,14 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
         iscorrect=True
 
     feedbackmsg=' '.join(msg)
+    p = re.compile(r'<.*?>')
+    feedbackmsg = p.sub('', feedbackmsg)
+    print feedbackmsg
+    feedbackmsg_id =message_ids[0] # added
+    print feedbackmsg_id
     today=datetime.date.today()
-    log = Log.objects.create(userinput=self.userans,feedback=feedbackmsg,iscorrect=iscorrect,\
-                                       example=question,game=self.gametype,date=today)
-    log.save()           
+    log = Log.objects.get_or_create(userinput=self.userans, feedback=feedbackmsg, iscorrect=iscorrect, qid=question_id, example=question, game=self.gametype, date=today, lang=language, messageid = feedbackmsg_id, tasklemmas=logtasklemmas)  # was Log.objects.create()
+    #log.save() # not needed?          
         
     variables = []
     variables.append(variable)
