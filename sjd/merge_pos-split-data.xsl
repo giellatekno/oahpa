@@ -159,6 +159,13 @@
 		      <tg xml:lang="sjd">
 			<xsl:variable name="curr_t" select="./mg/tg/t"/>
 			<t pos="{./mg/tg/t/@pos}" stat="pref">
+
+			  <xsl:if test="./@l_alt">
+			    <xsl:attribute name="l_alt">
+			      <xsl:value-of select="normalize-space(./@l_alt)"/>
+			    </xsl:attribute>
+			  </xsl:if>
+			  
 			  <xsl:value-of select="$curr_t"/>
 			</t>
 			<xsl:copy-of select="$t_variants/all_t/t[not(. = $curr_t)]"/>
