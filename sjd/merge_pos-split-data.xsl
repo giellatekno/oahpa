@@ -103,6 +103,12 @@
 		  <xsl:for-each select="current-group()//mg/tg/t">
 		    <t pos="{./@pos}">
 		      
+		      <xsl:if test="./@l_alt">
+			<xsl:attribute name="l_alt">
+			  <xsl:value-of select="normalize-space(./@l_alt)"/>
+			</xsl:attribute>
+		      </xsl:if>
+		      
 		      <xsl:attribute name="sem-cl">
 			<xsl:for-each select="../../semantics/sem">
 			  <xsl:value-of select="@class"/>
