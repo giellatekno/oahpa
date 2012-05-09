@@ -901,7 +901,7 @@ class Feedbacktext(models.Model):
 	"""
 		Message text in messages.xml
 	"""
-	message = models.CharField(max_length=200)
+	message = models.CharField(max_length=400)
 	language = models.CharField(max_length=6)
 	feedbackmsg = models.ForeignKey(Feedbackmsg)
 	order = models.CharField(max_length=3, blank=True)
