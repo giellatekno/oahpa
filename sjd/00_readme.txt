@@ -45,5 +45,8 @@ vs.
 
 @cip's question: why does the first entry HAS an l_alt while the second not?
 
+@Trondtr answers: There are 214 final ьCь and two final ьC. I comment out
+                  the former and leave a question mark on the noun а̄ввьль 
+
 
 
