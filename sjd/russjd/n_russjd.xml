@@ -514,6 +514,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">аббьр</t>
             <t pos="n" sem-cl="WEATHER" src="l2" rus-stat="yes">вуэххт</t>
+            <t pos="n">вуэһт</t>
          </tg>
       </mg>
    </e>
@@ -875,7 +876,7 @@
       </lg>
       <sources>
          <book name="l1"/>
-         <book name="BERLIN"/>
+         <book name="Saamkilsyjjt"/>
       </sources>
       <mg>
          <semantics>
@@ -1310,7 +1311,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">та̄ффьт</t>
             <t pos="n" sem-cl="BODY_OTHER-FOOD_TRADITIONAL" src="l2" rus-stat="yes">та̄ххьт</t>
-            <t pos="n" sem-cl="BODY_OTHER-FOOD_TRADITIONAL" src="l2" rus-stat="yes">та̄һт</t>
+            <t pos="n">та̄һт</t>
          </tg>
       </mg>
    </e>
@@ -1889,20 +1890,42 @@
          </tg>
       </mg>
    </e>
-   <e id="гора_n" stat="pref">
+   <e id="1_гора без растительности_n" stat="pref">
       <lg>
-         <l pos="n">гора</l>
+         <l pos="n">гора без растительности</l>
       </lg>
       <sources>
          <book name="l2"/>
       </sources>
       <mg>
          <semantics>
-            <sem class="NATURE"/>
+            <sem class="PLACE_NATURE"/>
+            <sem class="TRAVEL"/>
          </semantics>
          <tg xml:lang="sjd">
-            <t pos="n" stat="pref">па̄һкь</t>
-            <t pos="n" sem-cl="PLACE_NATURE-TRAVEL" src="l1-Saamkilsyjjt" rus-stat="yes">ка̄ннҍт</t>
+            <t pos="n" stat="pref">па̄ххьк</t>
+            <t pos="n">па̄һкь</t>
+            <t pos="n" sem-cl="PLACE_NATURE" src="Saamkilsyjjt" rus-stat="yes">па̄ххт</t>
+            <t pos="n">па̄һт</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_гора без растительности_n" stat="pref">
+      <lg>
+         <l pos="n">гора без растительности</l>
+      </lg>
+      <sources>
+         <book name="Saamkilsyjjt"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="PLACE_NATURE"/>
+         </semantics>
+         <tg xml:lang="sjd">
+            <t pos="n" stat="pref">па̄ххт</t>
+            <t pos="n">па̄һт</t>
+            <t pos="n" sem-cl="PLACE_NATURE-TRAVEL" src="l2" rus-stat="yes">па̄ххьк</t>
+            <t pos="n">па̄һкь</t>
          </tg>
       </mg>
    </e>
@@ -2549,44 +2572,6 @@
          </tg>
       </mg>
    </e>
-   <e id="гора в тундре_n" stat="pref">
-      <lg>
-         <l pos="n">гора в тундре</l>
-      </lg>
-      <sources>
-         <book name="l2"/>
-         <book name="Saamkilsyjjt"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="PLACE_NATURE"/>
-            <sem class="TRAVEL"/>
-         </semantics>
-         <tg xml:lang="sjd">
-            <t pos="n" stat="pref">па̄ххьк</t>
-            <t pos="n">па̄һкь</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="гора без растительности_n" stat="pref">
-      <lg>
-         <l pos="n">гора без растительности</l>
-      </lg>
-      <sources>
-         <book name="Saamkilsyjjt"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="PLACE_NATURE"/>
-         </semantics>
-         <tg xml:lang="sjd">
-            <t pos="n" stat="pref">па̄ххт</t>
-            <t pos="n">па̄һт</t>
-            <t pos="n" sem-cl="PLACE_NATURE-TRAVEL" src="l2-Saamkilsyjjt" rus-stat="yes">па̄ххьк</t>
-            <t pos="n" sem-cl="PLACE_NATURE-TRAVEL" src="l2-Saamkilsyjjt" rus-stat="yes">па̄һкь</t>
-         </tg>
-      </mg>
-   </e>
    <e id="остров_n" stat="pref">
       <lg>
          <l pos="n">остров</l>
@@ -2779,7 +2764,6 @@
       <mg>
          <semantics>
             <sem class="LIVING_PLACE_HOME"/>
-            <sem class="TRAVEL"/>
          </semantics>
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">байна</t>
@@ -2821,9 +2805,9 @@
          </tg>
       </mg>
    </e>
-   <e id="ребенок_n" stat="pref">
+   <e id="ребёнок_n" stat="pref">
       <lg>
-         <l pos="n">ребенок</l>
+         <l pos="n">ребёнок</l>
       </lg>
       <sources>
          <book name="Saamkilsyjjt"/>
@@ -2836,6 +2820,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">па̄рнэнч</t>
             <t pos="n" sem-cl="RELATIVE" src="l1-Saamkilsyjjt" rus-stat="yes">па̄ррьн</t>
+            <t pos="n" sem-cl="RELATIVE" src="l1-Saamkilsyjjt" rus-stat="yes">па̄ррьшя</t>
          </tg>
       </mg>
    </e>
@@ -3204,6 +3189,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">цыза</t>
             <t pos="n" sem-cl="BIRD" src="Saamkilsyjjt" rus-stat="yes">цызга</t>
+            <t pos="n" sem-cl="DIM_SET-BIRD" src="Saamkilsyjjt" rus-stat="yes">цызга</t>
          </tg>
       </mg>
    </e>
@@ -3538,6 +3524,43 @@
          </semantics>
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">цуэмп</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="1_птички_n" stat="pref">
+      <lg>
+         <l pos="n">птички</l>
+      </lg>
+      <sources>
+         <book name="Saamkilsyjjt"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="DIM_SET"/>
+            <sem class="BIRD"/>
+         </semantics>
+         <tg xml:lang="sjd">
+            <t pos="n" stat="pref">цыза</t>
+            <t pos="n" sem-cl="BIRD" src="Saamkilsyjjt" rus-stat="yes">цызга</t>
+            <t pos="n" sem-cl="DIM_SET-BIRD" src="Saamkilsyjjt" rus-stat="yes">цызга</t>
+         </tg>
+      </mg>
+   </e>
+   <e id="2_птички_n" stat="pref">
+      <lg>
+         <l pos="n">птички</l>
+      </lg>
+      <sources>
+         <book name="Saamkilsyjjt"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="DIM_SET"/>
+            <sem class="BIRD"/>
+         </semantics>
+         <tg xml:lang="sjd">
+            <t pos="n" stat="pref">цызга</t>
+            <t pos="n" sem-cl="DIM_SET-BIRD" src="Saamkilsyjjt" rus-stat="yes">цыза</t>
          </tg>
       </mg>
    </e>
@@ -4452,7 +4475,7 @@
             <t pos="n" stat="pref">пэ̄кс</t>
             <t pos="n" sem-cl="PLACE_WATER-LIVING_PLACE" src="Saamkilsyjjt" rus-stat="yes">вӯнн</t>
             <t pos="n" sem-cl="PLACE_WATER-LIVING_PLACE" src="Saamkilsyjjt" rus-stat="yes">лӯххт</t>
-            <t pos="n">луһт</t>
+            <t pos="n">лӯһт</t>
          </tg>
       </mg>
    </e>
@@ -5579,7 +5602,7 @@
          </semantics>
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">суххк</t>
-             <t pos="n">суһк</t>
+            <t pos="n">суһк</t>
          </tg>
       </mg>
    </e>
@@ -6003,7 +6026,7 @@
          </semantics>
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">воа̄ххц</t>
-             <t pos="n">воа̄һц</t>
+            <t pos="n">воа̄һц</t>
          </tg>
       </mg>
    </e>
@@ -6059,7 +6082,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">чушккабперь</t>
             <t pos="n" sem-cl="CLOTHES-HANDICRAFT_PROD" src="Saamkilsyjjt" rus-stat="yes">куххькэль</t>
-            <t pos="n" sem-cl="CLOTHES-HANDICRAFT_PROD" src="Saamkilsyjjt" rus-stat="yes">куһкель</t>
+            <t pos="n">куһкэль</t>
          </tg>
       </mg>
    </e>
@@ -6129,42 +6152,6 @@
          </semantics>
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">пя̄ӆӆьк</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="1_птички_n" stat="pref">
-      <lg>
-         <l pos="n">птички</l>
-      </lg>
-      <sources>
-         <book name="Saamkilsyjjt"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="DIM_SET"/>
-            <sem class="BIRD"/>
-         </semantics>
-         <tg xml:lang="sjd">
-            <t pos="n" stat="pref">цыза</t>
-            <t pos="n" sem-cl="DIM_SET-BIRD" src="Saamkilsyjjt" rus-stat="yes">цызга</t>
-         </tg>
-      </mg>
-   </e>
-   <e id="2_птички_n" stat="pref">
-      <lg>
-         <l pos="n">птички</l>
-      </lg>
-      <sources>
-         <book name="Saamkilsyjjt"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="DIM_SET"/>
-            <sem class="BIRD"/>
-         </semantics>
-         <tg xml:lang="sjd">
-            <t pos="n" stat="pref">цызга</t>
-            <t pos="n" sem-cl="DIM_SET-BIRD" src="Saamkilsyjjt" rus-stat="yes">цыза</t>
          </tg>
       </mg>
    </e>
@@ -7528,7 +7515,6 @@
             <t pos="n" stat="pref">пеххьпарь</t>
             <t pos="n">пеһпарь</t>
             <t pos="n" sem-cl="FOOD_GROCERY" src="Saamkilsyjjt" rus-stat="yes">пыххьперь</t>
-            <t pos="n" sem-cl="FOOD_GROCERY" src="Saamkilsyjjt" rus-stat="yes">пыһперь</t>
          </tg>
       </mg>
    </e>
@@ -7546,7 +7532,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">пыххьперь</t>
             <t pos="n" sem-cl="FOOD_GROCERY" src="Saamkilsyjjt" rus-stat="yes">пеххьпарь</t>
-            <t pos="n" sem-cl="FOOD_GROCERY" src="Saamkilsyjjt" rus-stat="yes">пеһпарь</t>
+            <t pos="n">пеһпарь</t>
          </tg>
       </mg>
    </e>
@@ -8096,7 +8082,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">те̄пь</t>
             <t pos="n" sem-cl="HANDICRAFT_TOOLS" src="l3" rus-stat="yes">те̄ххьп</t>
-            <t pos="n" sem-cl="HANDICRAFT_TOOLS" src="l3" rus-stat="yes">те̄һпь</t>
+            <t pos="n">те̄һп</t>
          </tg>
       </mg>
    </e>
@@ -8911,7 +8897,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">пе̄лльйхэмь</t>
             <t pos="n" sem-cl="ILLNESS" src="Saamkilsyjjt" rus-stat="yes">куллнаххьтэмь</t>
-            <t pos="n" sem-cl="ILLNESS" src="Saamkilsyjjt" rus-stat="yes">куллнаһтэмь</t>
+            <t pos="n">куллнаһтэмь</t>
          </tg>
       </mg>
    </e>
@@ -9192,10 +9178,9 @@
             <sem class="ILLNESS"/>
          </semantics>
          <tg xml:lang="sjd">
-            <t pos="n" stat="pref">ке̄ххьпнэссжоарркэбп</t>
-            <t pos="n">ке̄һпьнэссжоарркэбп</t>
+            <t pos="n" stat="pref">ке̄ххпьнэссжоарркэбп</t>
             <t pos="n" sem-cl="ILLNESS" src="Saamkilsyjjt" rus-stat="yes">ке̄ххьпнэсспоаввчсэмушш</t>
-            <t pos="n" sem-cl="ILLNESS" src="Saamkilsyjjt" rus-stat="yes">ке̄һпьнэсспоаввчсэмушш</t>
+            <t pos="n">ке̄һпнэсспоаввчсэмушш</t>
          </tg>
       </mg>
    </e>
@@ -9213,7 +9198,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">ке̄ххьпнэсспоаввчсэмушш</t>
             <t pos="n">ке̄һпнэсспоаввчсэмушш</t>
-            <t pos="n" sem-cl="ILLNESS" src="Saamkilsyjjt" rus-stat="yes">ке̄ххпнэссжоарркэбп</t>
+            <t pos="n" sem-cl="ILLNESS" src="Saamkilsyjjt" rus-stat="yes">ке̄ххпьнэссжоарркэбп</t>
          </tg>
       </mg>
    </e>
@@ -9435,7 +9420,7 @@
             <t pos="n" stat="pref">ме̄ххьцла</t>
             <t pos="n">ме̄һцла</t>
             <t pos="n" sem-cl="PROFESSION-ANIMAL_OTHER" src="Saamkilsyjjt" rus-stat="yes">меххьцтэй</t>
-            <t pos="n" sem-cl="PROFESSION-ANIMAL_OTHER" src="Saamkilsyjjt" rus-stat="yes">меһцтэй</t>
+            <t pos="n">меһцтэй</t>
          </tg>
       </mg>
    </e>
@@ -9455,7 +9440,7 @@
             <t pos="n" stat="pref">меххьцтэй</t>
             <t pos="n">меһцтэй</t>
             <t pos="n" sem-cl="PROFESSION-ANIMAL_OTHER" src="Saamkilsyjjt" rus-stat="yes">ме̄ххьцла</t>
-            <t pos="n" sem-cl="PROFESSION-ANIMAL_OTHER" src="Saamkilsyjjt" rus-stat="yes">ме̄һцла</t>
+            <t pos="n">ме̄һцла</t>
          </tg>
       </mg>
    </e>
@@ -10665,7 +10650,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">тӯвас</t>
             <t pos="n" sem-cl="LIVING_PLACE_HOME" src="Saamkilsyjjt" rus-stat="yes">ве̄ххьц</t>
-            <t pos="n" sem-cl="LIVING_PLACE_HOME" src="Saamkilsyjjt" rus-stat="yes">ве̄һц</t>
+            <t pos="n">ве̄һц</t>
          </tg>
       </mg>
    </e>
@@ -11065,7 +11050,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">а̄ввьль</t>
             <t pos="n" sem-cl="LIVING_PLACE_HOME" src="Saamkilsyjjt" rus-stat="yes">куэххьк</t>
-            <t pos="n" sem-cl="LIVING_PLACE_HOME" src="Saamkilsyjjt" rus-stat="yes">куэһк</t>
+            <t pos="n">куэһкь</t>
          </tg>
       </mg>
    </e>
@@ -12643,7 +12628,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">са̄йй</t>
             <t pos="n" sem-cl="PLACE_NATURE-LIVING_PLACE" src="Saamkilsyjjt" rus-stat="yes">па̄йххьк</t>
-            <t pos="n" sem-cl="PLACE_NATURE-LIVING_PLACE" src="Saamkilsyjjt" rus-stat="yes">па̄јјк</t>
+            <t pos="n">па̄јјк</t>
          </tg>
       </mg>
    </e>
@@ -13672,7 +13657,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">са̄ннҍкыррьй</t>
             <t pos="n" sem-cl="SCHOOL_EDUCATION" src="Saamkilsyjjt" rus-stat="yes">соагкнэххьк</t>
-            <t pos="n" sem-cl="SCHOOL_EDUCATION" src="Saamkilsyjjt" rus-stat="yes">соагкнэһк</t>
+            <t pos="n">соагкнэһк</t>
          </tg>
       </mg>
    </e>
@@ -14219,7 +14204,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">шӯррпеййв</t>
             <t pos="n" sem-cl="TIME_EXPRESSION-WEEKDAY" src="Saamkilsyjjt" rus-stat="yes">празднэххьк</t>
-            <t pos="n" sem-cl="TIME_EXPRESSION-WEEKDAY" src="Saamkilsyjjt" rus-stat="yes">празднэһк</t>
+            <t pos="n">празднэһк</t>
          </tg>
       </mg>
    </e>
@@ -14526,7 +14511,7 @@
          <tg xml:lang="sjd">
             <t pos="n" stat="pref">вӯссоарк</t>
             <t pos="n" sem-cl="WEEKDAY" src="Saamkilsyjjt" rus-stat="yes">э̄ххтоарк</t>
-            
+            <t pos="n">э̄һтоарк</t>
          </tg>
       </mg>
    </e>
