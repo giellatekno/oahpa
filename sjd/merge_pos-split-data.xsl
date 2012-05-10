@@ -160,9 +160,9 @@
 			<xsl:variable name="curr_t" select="./mg/tg/t"/>
 			<t pos="{./mg/tg/t/@pos}" stat="pref">
 
-			  <xsl:if test="./@l_alt">
+			  <xsl:if test="$curr_t/@l_alt">
 			    <xsl:attribute name="l_alt">
-			      <xsl:value-of select="normalize-space(./@l_alt)"/>
+			      <xsl:value-of select="normalize-space($curr_t/@l_alt)"/>
 			    </xsl:attribute>
 			  </xsl:if>
 			  
