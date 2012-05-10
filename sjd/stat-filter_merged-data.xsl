@@ -53,18 +53,37 @@
   <xsl:template match="/" name="main">
     <xsl:choose>
       <xsl:when test="doc-available($inFile)">
-	<xsl:variable name="out_tmp">
+	<xsl:result-document href="{$outDir}/{$file_name}.{$e}" format="{$output_format}">
 	  <r>
 	    <xsl:copy-of select="doc($inFile)/r/@*"/>
-	    <xsl:copy-of select="doc($inFile)/r/e[./@stat = 'pref']"/>
+	    <xsl:for-each select="doc($inFile)/r/e[./@stat = 'pref']">
+	      <e>
+		<xsl:copy-of select="./@*"/>
+		<xsl:copy-of select="./lg"/>
+		<xsl:copy-of select="./sources"/>
+		<mg>
+		  <xsl:copy-of select="./mg/semantics"/>
+		  <tg xml:lang="sjd">
+		    <xsl:copy-of select="./mg/tg/@*"/>
+		    <xsl:for-each select="./mg/tg/t">
+		      <t>
+			<xsl:copy-of select="./@*[not(local-name() = 'l_alt')]"/>
+			<xsl:value-of select="."/>
+		      </t>
+		      <xsl:if test="./@l_alt">
+			<t>
+			  <xsl:copy-of select="./@pos"/>
+			  <xsl:value-of select="./@l_alt"/>
+			</t>
+		      </xsl:if>
+		    </xsl:for-each>
+		  </tg>
+		</mg>
+	      </e>
+	    </xsl:for-each>
 	  </r>
-	</xsl:variable>
-	
-	<!-- out -->
-	<xsl:result-document href="{$outDir}/{$file_name}.{$e}" format="{$output_format}">
-	  <xsl:copy-of select="$out_tmp"/>
 	</xsl:result-document>
-
+	
       </xsl:when>
       <xsl:otherwise>
 	<xsl:text>Cannot locate: </xsl:text><xsl:value-of select="$inFile"/><xsl:text>&#xa;</xsl:text>
