@@ -1205,8 +1205,15 @@ class MorfaQuestion(OahpaQuestion):
 			# Odne 'today', ikte 'yesterday'
 			
 			# All pres? 
-			# commented this one out to avoid double odne/ikte
-			#	self.pron = TENSE_PRESENTATION.get(tag.tense, False) + " " + self.pron
+			
+			# son -> dat (okta), sii -> dat (máŋga)
+			# because some verbs are not suitable to use with a human as object:
+
+			if tag.subclass in ["Der/AV","Der/PassL"]:
+				if pronoun == 'son':
+					pronoun = "dat (okta)"
+				elif pronoun == 'sii':
+					pronoun = force_unicode("dat (máŋga)")
 
 			if tag.string.find("Der/AV") > -1 or tag.tense in ['Prs','Prt'] and tag.mood == 'Ind':
 				time = TENSE_PRESENTATION.get(tag.tense, False)
