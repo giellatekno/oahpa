@@ -644,7 +644,8 @@ class BareGame(Game):
 		if pos == "Der":
 			derivation_types = {
 				# 'Der/AV': parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"),
-				'A-DER-V': parse_tag("A+Der/AV+V+Ind+Prs+Person-Number-ConNeg"),
+				#'A-DER-V': parse_tag("A+Der/AV+V+Ind+Prs+Person-Number-ConNeg"),
+				'A-DER-V':parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"), # generalisation: Tense to enable both Prs and Prt
 				'V-DER-PASS': parse_tag("V+Der/PassL+V+Ind+Tense+Person-Number-ConNeg"),
 			}
 
