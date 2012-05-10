@@ -1264,6 +1264,17 @@ class MorfaQuestion(OahpaQuestion):
 
 				if noun_pres:
 					self.lemma += ' (%s)' % force_unicode(noun_pres).encode('utf-8')
+
+			# Personal pronouns:
+			# mun, don, son, mii, dii, sii, moai, doai etc.
+			# plus dat (okta), dat (máŋga)
+
+			if tag.subclass == 'Pers':
+				if self.lemma == 'dat':
+					noun_pres = DEMONSTRATIVE_PRESENTATION.get(tag.personnumber, False)
+					if noun_pres:
+						self.lemma += ' (%s)' % force_unicode(noun_pres).encode('utf-8')
+						
 		
 		log_name = "morfa_%s" % tag.pos
 		try:
