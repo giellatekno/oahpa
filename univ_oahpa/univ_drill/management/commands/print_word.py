@@ -62,6 +62,10 @@ def printword(word_key):
 				dialects = ""
 			print "\t%s\t\t%s\t\t%s" % (form.tag.string, form.fullform, dialects)
 
+		print
+		for translation in w.wordtranslation_set.all():
+			print "\t%s - %s" % (translation.language, translation.definition)
+
 		print '\nQuestion membership:'
 		question_memberships = w.wordqelement_set.all().values_list(
 			'qelement__question__qid',
