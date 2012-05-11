@@ -1,0 +1,216 @@
+
+
+
+Möte sjd-oahpa 11.5.12
+
+Elisabeth, Michael, Trond
+
+
+* Ett eller två varianter (AA, RK) som presentationsform
+* RK -> AA eller AA -> RK
+* Ortografisk variation (utom h, j)
+* Vägen framåt
+
+
+!! Ett eller två varianter (AA, RK) som presentationsform
+
+Olikheter mellan RK / AA:
+
+* ortografiska olikheter: j/й, h/ххь, 
+* dialektal variation: preaspiration eller inte
+* 2. presens sg -к / -х
+
+Namn: Kuruch 1985 / Antonova Bukvar
+
+Situationen i dag:
+
+I analysatoren är båda formerna listad upp parallelt, utan kommentar:
+
+{{{
+LEXICON PRSSUF
++Sg1:%^WG%>а              # ;   ! шоабш>а
++Sg2:%^WG%>ак              # ;   ! шоабш>ак
++Sg2:%^WG%>ах              # ;   ! шоабш>ах
+}}}
+
+I Oahpa är AA huvudform, RK alternant.
+
+{{{
+      <lg>
+         <l pos="n">ся̄ххтар</l>
+         <l_alt orth="rk">ся̄һтар</l_alt>
+      </lg>
+}}}
+
+Konklusion: Vi vil ha samma lösning för sjdoahpa som för aarjel- og smeoahpa.
+
+Men vi vil ha ett lexikon, inte två (dvs. en bas):
+# oahpa
+# fst
+# de tvåspråkiga ordböckerna
+
+
+För morfologin:
+
+{{{
++Sg2+Dial/RK:%^WG%>ак              # ;   ! шоабш>ак
++Sg2+Dial/AA:%^WG%>ах              # ;   ! шоабш>ах
+}}}
+
+
+!! RK -> AA eller AA -> RK
+
+Går det att generera automatisk från en till den andra?
+
+Ja: från һ till хх(ь) (RK till AA), men inte tvärt om.
+
+# ј -> й är möjligt, men inte tvärt om.
+# Problemet er һ
+## хх(ь) -> һ
+## ххь -> ххь
+
+Fördelen med att bruka һ är:
+# vi kan konvertera automatiskt
+# vi har redan en һ-bas i Kuruch sin ordbok
+
+Så kan vi arbeta på två sätt:
+
+# Analogt med sme: Ha ei hovudform (t.d. RK)
+# Generere fire automatar: 
+## ein med AA-lemma, i to variantar:
+### Normativ: godtar bara AA-input
+### Deskriptiv: godtar också RK-input
+## ein med RK-lemma.
+### Normativ: godtar bara RK-input
+### Deskriptiv: godtar också AA-input
+
+
+Vi skall ha __en__ källkod.
+
+Ett lemma, två former:
+{{{
+на̄бь
+на̄бь    на̄һпь+N+Sg+Gen (RK-lemma)
+на̄бь    на̄ххьп+N+Sg+Gen (AA_lemma)
+}}}
+
+Två lemma x två former:
+
+{{{
+на̄һпь    на̄ххьп +?                (RK-lemma-restriktiv)
+на̄һпь    на̄ххьп +N+Sg+Nom (RK-lemma-tolerant)
+
+на̄ххьп    на̄ххьп +?              (RK-lemma-restriktiv)
+на̄ххьп    на̄һпь+N+Sg+Nom  (RK-lemma-tolerant)
+}}}
+
+Vi måste se på olika sätt att implementera det rent praktiskt.
+
+{{{
+Parallelle oppslag:
+
+<l rk="на̄һпь" aa="на̄ххьп">
+
+ на̄һпь 1DA "чашка / cup" ; 
+ на̄ххьп 1DA ;
+
+Konvertering:
+ на̄һпь 1DA "чашка / cup" ; 
+... och därefter konvertera til AA <== problematisk
+
+Kan vi ha ett spellrelax.regex filter under automaten
+
+ на̄һпь 1DA "чашка / cup" ; 
+ на̄ххьп:на̄һпь 1DA ;
+}}}
+
+Sammanfattning, Oahpa:
+
+* Vi skall (senare) ha två varianter i Oahpa, som for sme, sma.
+* Vi återkommer till namn
+* För fst vill vi ha 2 x 2 automater, som vist ovanför
+
+!! Ordbok
+
+För sjd-rus ordbok er det i princip möjligt att laga två. 
+Vi taggar källmaterialet, vart orden kommer från. Receptionsordböckerne
+måste förstå alla former.
+
+Pedagogiska ordböcker, tex. produktionsordböcker rus2sjd bör presentera
+former från bara den ena ortografin.
+
+Vi återkommer.
+
+{{{
+   <e kur_ID="76">
+      <lg>
+         <l pos="n">а̄һкь</l>
+         <infl>
+            <kur_stem case="nom" number="pl" kur_ID="113">а̄кь</kur_stem>
+            <kur_infl class="I" ablaut="1" special="_x_"/>
+         </infl>
+      </lg>
+      <mg km="g">
+         <semantics>
+            <stype>xxx</stype>
+         </semantics>
+         <tg>
+            <t>женщина ___RE замужняя RE___</t>
+         </tg>
+         <tg>
+            <t>баба PROST_REGISTER</t>
+         </tg>
+         <xg type="xxx">
+            <x>вуэммь а̄һкь</x>
+            <xt>старая женщина</xt>
+         </xg>
+         <xg type="xxx">
+            <x>нӯрр а̄һкь</x>
+            <xt>молодая женщина</xt>
+         </xg>
+         <xg type="idiom">
+            <x>вэ̄дз а̄һкь</x>
+            <xt>снежная баба</xt>
+         </xg>
+      </mg>
+   </e>
+ }}}  
+   
+!! Ortografisk variation i Oahpa (utom h, j)
+
+Princip:
+* Felstavningar från vår sida skall bort
+* Variation från vår sida skall vi undvika
+* Variation i läröböckerna vill vi samla under samma lemma
+
+Arbete med ortografisk variation måste bli ämne för en debatt med och
+i det kildinsamiska språksamhället.
+
+пыййе пыйе
+
+Halvpalatalisering är en diskussion i sig.
+
+Den här diskussionen kan vi ta först över konkreta former.
+
+
+!! Vägen framåt
+
+Listan är i prioritetsordning
+
+# Ciprian kan nu konkvertera ny russjd och installera.
+# Vi går genom de kildinsamiska orden, och ser på
+## skrivsätt
+## semantiska sätt
+## ... och vi konverterer och installerer på nytt när det känns så 
+# Integrera dagens Oahpa-leksikon i apertiumdict
+# Engelska, norska, nordsamiska, finska
+## Revidere de engelska översättningarna (__Michael, Trond, Elisabeth__)
+## Konvertera till engsjd och installera i Oahpa
+# Laga infrastruktur för två dialektversioner av sjd-oahpa
+# Se på de andra språken, konvertera och installera
+
+Ordboksarbetet diskuterer vi sen.
+
+
+
+
