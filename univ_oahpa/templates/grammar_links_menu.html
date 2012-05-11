@@ -1,13 +1,20 @@
-﻿{% load cache %}
+{% load cache %}
 {% load i18n %}
+<div align="right">
+<a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/popup.nob.html"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span class="shortinfo">Funker menyn ikke? Tillat popup-vinduer for å se grammatikkforklaringer. </span></a>
+</br>
 {% if grammarlinks %}
 <select id="grammarlink" name="grammarlink">
-	<option value="">{% trans "Grammar explanations" %}</option>
+	<option value="">
+        {% trans "Grammar explanations" %}
+    </option>
     {% cache 500 grammarlinks cache_language %} 
     	{% for link in grammarlinks %}
     		<option value="{{ link.address }}">{{ link.name|capfirst }}</option>
 		{% endfor %}
     {% endcache %} 
 </select>
+
+</div>
 
 {% endif %}
