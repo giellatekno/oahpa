@@ -887,9 +887,6 @@ class BareGame(Game):
 		if pos == 'Pron':
 			word = correct.word
 		
-		# Get word translations for the tooltip
-		target_key = switch_language_code(self.settings['language'][-3::])
-		translations = sum([w.word_answers for w in word.translations2(target_key).all()],[])
 		
 		# Get baseform, matching number; except for in essive where
 		# there is no number, and with Nominative, where the test is
@@ -974,6 +971,30 @@ class BareGame(Game):
 			presentation_ng = presentation
 		
 		presentation_ng = presentation_ng.values_list('fullform',flat=True)
+
+		# Get word translations for the tooltip
+		target_key = switch_language_code(self.settings['language'][-3::])
+
+		# Derivations are different. For now it is very difficult to keep all
+		# things consistent w.r.t. Der/ being part of a word subclass or not,
+        # so for Der we need to look at the word it is derived from, and look
+        # that word up, then get those translation strings. If this is fixed,
+        # then this code should still function.
+		if pos == 'Der':
+			if isinstance(baseform, Word):
+			    root_pos = baseform.pos
+			elif isinstance(baseform, Form):
+			    root_pos = baseform.word.pos
+
+			trans_word = Word.objects\
+			                    .filter(lemma=word.lemma, pos=root_pos)\
+								.annotate(tc=Count('wordtranslation'))\
+								.filter(tc__gt=0)[0]
+			ws = trans_word.translations2(target_key).all()
+		else:
+			ws = word.translations2(target_key).all()
+
+		translations = sum([w.word_answers for w in ws],[])
 		
 		# Check if the form is connegative, if not, set to false.
 
