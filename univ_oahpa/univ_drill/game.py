@@ -109,6 +109,7 @@ class Game(object):
 				self.settings['semtype'].append(semtype)
 
 	def new_game(self):
+		from qagame import QAGame
 		self.form_list = []
 		word_ids = []
 		q_ids = []
@@ -163,13 +164,15 @@ class Game(object):
 				if word_id in set(word_ids): #and not (self.settings['gametype'] == "bare" and self.settings['pron_type'] in ['Rel','Dem']): # If there are less than 5 different lemmas to choose from then this causes a "No questions were able to be generated."
 					continue
 				else: word_ids.append(word_id)
+
 			# The following if-clause has been added to avoid repeated MorfaC questions in one set.	
-			if db_info.has_key('question_id'):  
-				q_id = db_info['question_id']
-				if q_id in set(q_ids):
-					continue
-				else: q_ids.append(q_id)
-				print "Question: ",q_id
+			if isinstance(self, QAGame):
+			    if db_info.has_key('question_id'):  
+				    q_id = db_info['question_id']
+				    if q_id in set(q_ids):
+					    continue
+				    else: q_ids.append(q_id)
+				    print "Question: ",q_id
                 
 			self.form_list.append(form)
 			i = i+1
