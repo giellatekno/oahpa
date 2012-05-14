@@ -23,7 +23,7 @@ my $twig = XML::Twig->new();
 
 my $s = '^'.$mode;
 
-my $lon = 'lookup -flags mbTT -utf8 ./bin/ped-sme.fst';
+my $lon = 'lookup -flags mbTT -utf8 ~/errortag-gt/gt/sme/bin/ped-sme.fst';
 my $tmp_file = "tmp_data.txt";
 my $out_file = "final_data.txt";
 my $command0 = "rm $tmp_file $out_file" ;
@@ -42,7 +42,7 @@ foreach my $test ($root->children('test')){
     foreach my $a ($r->children('a')){
       my $a_txt = $a->text();
       print "question: $q \n s: $s \n answer: $a_txt\n";
-      my $command1 = "echo '$q $s $a_txt' | preprocess | $lon | lookup2cg | " ;
+      my $command1 = "echo '$q $s $a_txt' | preprocess --abbr=../../gt/sme/bin/abbr.txt | $lon | lookup2cg | " ;
       open (TMPFILE, ">>$tmp_file");
       open (CMD1, $command1);
       while (<CMD1>){
@@ -67,18 +67,18 @@ foreach my $test ($root->children('test')){
   print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 }
 
-# my $command2 = "cat $tmp_file | vislcg3 -g ../sme/src/sme-ped.cg3 --trace |" ;
+ my $command2 = "cat $tmp_file | vislcg3 -g ../sme/src/sme-ped.cg3 --trace |" ;
 
-# #    print "$command2\n";
+ #    print "$command2\n";
 
-# open (ENDFILE, ">>$out_file");
+ open (ENDFILE, ">>$out_file");
 
-# open (CMD2, $command2);
-# while (<CMD2>){
-#   print ENDFILE;
-# }
-# close CMD2;
-# close (ENDFILE);     
+ open (CMD2, $command2);
+ while (<CMD2>){
+   print ENDFILE;
+ }
+ close CMD2;
+ close (ENDFILE);     
 
 __END__
 

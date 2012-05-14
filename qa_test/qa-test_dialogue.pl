@@ -43,7 +43,7 @@ foreach my $test ($root->children('test')){
     print "question: $q\n";
     print "answer: $a\n";
 
-    my $command1 = "echo '$q $s $a' | preprocess | $lon | lookup2cg |" ;
+    my $command1 = "echo '$q $s $a' | preprocess --abbr=../../gt/sme/bin/abbr.txt | $lon | lookup2cg |" ;
     open (TMPFILE, ">>$tmp_file");
     open (CMD1, $command1);
     while (<CMD1>){
@@ -74,7 +74,7 @@ foreach my $test ($root->children('test')){
   print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 }
 
-my $command2 = "cat $tmp_file | vislcg3 -g ../sme/src/sme-ped.cg3 --trace |" ;
+my $command2 = "cat $tmp_file | vislcg3 -g ../sme/src/sme-ped.cg3 |" ;
 
 #    print "$command2\n";
 
