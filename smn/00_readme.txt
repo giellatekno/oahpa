@@ -11,3 +11,16 @@ Cip's observation: very many small groups, a lot of singletons
 2. revert data to finsmn
  ==> do it, Cip!
 
+Usual checks:
+
+src>grep -h '<e>' *.xml | wc -l
+    1314
+src>grep -h '<mg' *.xml | wc -l
+    1319
+src>grep -h '<tg' *.xml | wc -l
+    1319
+ ==> more mg-elements than entries; this shouldn't be so!
+ ==> to check
+
+
+
