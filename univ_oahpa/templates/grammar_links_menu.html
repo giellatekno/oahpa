@@ -1,22 +1,7 @@
 {% load cache %}
-{% load i18n %} 
- 
+{% load i18n %}
+
 <div align="right">
-<script type="text/javascript">
-function tillatpopup() {
-//document.write(navigator.userAgent)
-var browser=navigator.userAgent;
-if (browser.search("Safari")>0 && browser.search("Version/5.1")>0) {
-    alert('Tillat popup-vinduer for å se grammatikkforklaringer.');
-    }
-}
-</script>
-<table>
-<tr><td align="right">
-<input type="submit" value="Funker ikke menyen?" onmouseover="tillatpopup()" style="background-color:#ffffff;color:#ffffff;border:none;"/>
-</td></tr>
-<tr>
-<td>
 {% if grammarlinks %}
 <select id="grammarlink" name="grammarlink"">
 	<option value="">
@@ -28,10 +13,6 @@ if (browser.search("Safari")>0 && browser.search("Version/5.1")>0) {
 		{% endfor %}
     {% endcache %} 
 </select>
-</td>
-</tr>
-</table>
-
 </div>
 
 {% endif %}
