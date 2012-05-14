@@ -1730,7 +1730,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 				if answer_tag_el.number=="Sg" or answer_tag_el.case=="Ess" or answer_tag_el.case=="Nom":  #was: qtype="N-NOM-PL"
 					self.lemma = answer_word_el.lemma
 				else:
-					nplforms = Form.objects.filter(word__pk=answer_word, tag__string='N+Pl+Nom')
+					nplforms = Form.objects.filter(word__pk=answer_word, tag__case='Nom', tag__number='Pl')
 					if nplforms.count() > 0:
 						self.lemma = nplforms[0].fullform
 					else:
