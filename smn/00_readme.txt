@@ -20,7 +20,7 @@ src>grep -h '<mg' *.xml | wc -l
 src>grep -h '<tg' *.xml | wc -l
     1319
  ==> more mg-elements than entries; this shouldn't be so!
- ==> to check
+ ==> to check ==> done and corrected
 
 
 
