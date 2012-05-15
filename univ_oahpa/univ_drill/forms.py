@@ -676,16 +676,18 @@ def get_feedback(self, wordform, language):
 		texts = feedback.feedbacktext_set.filter(language=language).order_by('order')
 		feedback_messages.extend([a.message for a in texts])
 
+	try:
+		baseform = wordform.getBaseform()
+	except:
+		baseform = wordform
+	
 	message_list = []
 	if feedback_messages:
 		for text in feedback_messages:
-			text = text.replace('WORDFORM', '"%s"' % wordform.word.lemma)
+			text = text.replace('WORDFORM', '"%s"' % baseform.word.lemma)
 			message_list.append(text)
 	
 	self.feedback = ' \n '.join(list(message_list))
-
-	### print wordform.fullform
-	### print wordform.tag.string
 
 	### print 'stem:' + wordform.word.stem
 	### print 'gradation:' + wordform.word.gradation
