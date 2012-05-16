@@ -15,11 +15,24 @@ __TODO__:
 * Discuss with the Inari Sami (__Trond__)
 * Split the ZZZ in relevant classes 
 
+Note: Semantic class ILLNESS? Naja...
+   <e id="sairaalloinen_a" stat="pref">
+      <lg>
+         <l pos="a">sairaalloinen</l>
+      </lg>
+      <sources>
+         <book name="bio5"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ILLNESS"/>
+         </semantics>
+         <tg xml:lang="smn">
+            <t pos="a" stat="pref">puosâh</t>
+         </tg>
+      </mg>
+   </e>
+
 2. revert data to finsmn
  ==> partly done, the problem is the stat="pref" flag.
 
-Cip2Trond: If there are more than one t-element in the tg-element
-           can I take the first one as pref?
-           
-TT: Yes.           
- ==> DONE!
