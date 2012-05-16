@@ -24,6 +24,7 @@ from models import UserProfile, Course, UserGrade, Activity
 def cookie_login(request, next_page=None, required=False, **kwargs):
 	""" Check for existing site.uit.no cookie
 	"""
+	from django.conf import settings
 
 	if not next_page:
 		next_page = '/univ_oahpa/courses/' # TODO: change next url for deep links
@@ -32,16 +33,31 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
 		request.user.message_set.create(message=message)
 		return HttpResponseRedirect(next_page)
 
+	matching_cookies = [(c, v) for c, v in request.COOKIES.iteritems() 
+								if c.startswith(settings.COOKIE_NAME)]
+
+	try:
+		cookie_name, wp_cookie = matching_cookies[0]
+		wp_username, session, session_hex = wp_cookie.split('%7C')
+		print 'cookie_login: ' + repr(wp_username)
+		cookie_uid = wp_username
+	except:
+		print matching_cookies
+		cookie_uid = False
+
+
 	# TODO: get cookie uid, for now just using a get variable.
-	cookie_uid = request.GET.get('some_cookie')
+	# cookie_uid = request.GET.get('some_cookie')
+
+	# TODO: getting forbidden on first user login, but subsequent logins are
+	# fine
 
 	if cookie_uid:
-		cookie_uid = int(cookie_uid)
 		from django.contrib import auth
 		user = auth.authenticate(cookie_uid=cookie_uid)
 		if user is not None:
 			auth.login(request, user)
-			name = user.first_name or user.username
+			name = user.username
 			message = "Login succeeded. Welcome, %s." % name
 			user.message_set.create(message=message)
 			return HttpResponseRedirect(next_page)
@@ -125,8 +141,10 @@ def courses_main(request):
 		profile = request.user.get_profile()
 	except UserProfile.DoesNotExist:
 		profile = UserProfile.objects.create(user=request.user)
+		profile.save()
 		new_profile = True
 	
+	print "up: " + repr(profile)
 	summary = False
 	
 	if profile.is_student:

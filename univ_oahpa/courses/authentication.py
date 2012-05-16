@@ -36,6 +36,9 @@ class CookieAuthMiddleware(object):
 		elif view_func == cookie_logout:
 			return cookie_logout(request, *view_args, **view_kwargs)
 
+		# TODO: this is now different
+		print settings.COOKIE_NAME
+		print request.path
 		if settings.COOKIE_NAME:
 			if not request.path.startswith(settings.COOKIE_NAME):
 				return None
@@ -75,37 +78,42 @@ class CookieAuth(object):
 		to the next if one fails.
 	"""
 
-	def get_user(self, cookie_uid):
+	def get_user(self, user_id):
+		print "get_user: %d" % user_id
 		try:
-			UP = UserProfile.objects.get(site_cookie=cookie_uid)
+			UP = UserProfile.objects.get(user__id=user_id)
 			return UP.user
 		except UserProfile.DoesNotExist:
-			return self.create_new_user(cookie_uid)
+			return None
 
-	def authenticate(self, cookie_uid=None):
+	def authenticate(self, cookie_uid, **kwargs):
 		# Check the username/password and return a User.
+		print "authenticate: %s" % cookie_uid
 		try:
-			UP = UserProfile.objects.get(site_cookie=cookie_uid)
+			UP = UserProfile.objects.get(user__username=cookie_uid)
 			return UP.user
 		except UserProfile.DoesNotExist:
 			return self.create_new_user(cookie_uid)
 
 		return None
 
-	def create_new_user(self, cookie_uid):
+	def create_new_user(self, cookie_uid, **kwargs):
 		import md5
 
+		print "authenticate: %s" % cookie_uid
 		password = '!^293!' + str(cookie_uid) + '!293^!'
 		password = md5.md5(password).hexdigest()
 
 		U, created = User.objects.get_or_create(username=cookie_uid)
-		# wrong means to set password
 		if created:
 			U.password = password
-		U.save()
+			U.save()
 
-		UP = U.get_profile()
-		UP.site_cookie = cookie_uid
+		print "username: " + repr(U.username)
+		try:
+			UP = U.get_profile()
+		except UserProfile.DoesNotExist:
+			UP = UserProfile.objects.create(user=U)
 		UP.save()
 
 		# add to default site-uit-no course
