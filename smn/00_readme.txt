@@ -9,18 +9,8 @@ Cip's observation: very many small groups, a lot of singletons
  - is there any meta-data/semantical_classes.xml file?
 
 2. revert data to finsmn
- ==> do it, Cip!
+ ==> partly done, the problem is the stat="pref" flag.
 
-Usual checks:
-
-src>grep -h '<e>' *.xml | wc -l
-    1314
-src>grep -h '<mg' *.xml | wc -l
-    1319
-src>grep -h '<tg' *.xml | wc -l
-    1319
- ==> more mg-elements than entries; this shouldn't be so!
- ==> to check ==> done and corrected
-
-
+Cip2Trond: If there are more than one t-element in the tg-element
+           can I take the first one as pref?
 
