@@ -34,5 +34,5 @@ Note: Semantic class ILLNESS? Naja...
    </e>
 
 2. revert data to finsmn
- ==> partly done, the problem is the stat="pref" flag.
+ ==> DONE
 
