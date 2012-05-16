@@ -46,7 +46,6 @@ def aggregate_grades(sender, **kwargs):
 	""" This aggregates all of the users grades into a UserGradeSummary
 		which will then be displayed to instructors.
 	""" 
-	print "aggregate"
 
 	grade_object = kwargs['instance']
 	prof = grade_object.user
@@ -74,10 +73,6 @@ def aggregate_grades(sender, **kwargs):
 ### 	'http://site.uit.no/oahpa/',
 ### ]
 
-
-
-
-
 @disable_for_loaddata
 def create_profile(sender, **kwargs):
 	""" This signal creates UserProfile objects when the Django
@@ -89,6 +84,9 @@ def create_profile(sender, **kwargs):
 	profile, created = UserProfile.objects.get_or_create(user=user_obj)
 	if created:
 		profile.save()
+
+	### No longer using OpenID, but if it needs to come back, need to add
+	### trusted roots on create
 
 	### new_oid, created = OpenID.objects.get_or_create(user=user_obj,
 	### 												openid=user_obj.username,
