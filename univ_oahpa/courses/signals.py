@@ -36,7 +36,7 @@ def disable_for_loaddata(signal_handler):
 	@wraps(signal_handler)
 	def wrapper(*args, **kwargs):
 		for fr in inspect.stack():
-			if inspect.getmodulename(fr[1]) in ['loaddata', 'manage']:
+			if inspect.getmodulename(fr[1]) in ['loaddata']:
 				return
 		signal_handler(*args, **kwargs)
 	return wrapper
@@ -46,6 +46,7 @@ def aggregate_grades(sender, **kwargs):
 	""" This aggregates all of the users grades into a UserGradeSummary
 		which will then be displayed to instructors.
 	""" 
+	print "aggregate"
 
 	grade_object = kwargs['instance']
 	prof = grade_object.user
@@ -67,11 +68,11 @@ def aggregate_grades(sender, **kwargs):
 		gradesummary.save()
 
 
-DEFAULT_ROOTS = [
-	'http://129.242.218.43/wordpress/',
-	'http://site.uit.no/',
-	'http://site.uit.no/oahpa/',
-]
+### DEFAULT_ROOTS = [
+### 	'http://129.242.218.43/wordpress/',
+### 	'http://site.uit.no/',
+### 	'http://site.uit.no/oahpa/',
+### ]
 
 
 
@@ -89,12 +90,12 @@ def create_profile(sender, **kwargs):
 	if created:
 		profile.save()
 
-	new_oid, created = OpenID.objects.get_or_create(user=user_obj,
-													openid=user_obj.username,
-													default=True)
-	for root in DEFAULT_ROOTS:
-		n, _ = new_oid.trustedroot_set.get_or_create(trust_root=root)
-		n.save()
+	### new_oid, created = OpenID.objects.get_or_create(user=user_obj,
+	### 												openid=user_obj.username,
+	### 												default=True)
+	### for root in DEFAULT_ROOTS:
+	### 	n, _ = new_oid.trustedroot_set.get_or_create(trust_root=root)
+	### 	n.save()
 	
 
 	return True
