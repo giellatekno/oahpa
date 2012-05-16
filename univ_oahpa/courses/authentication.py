@@ -120,7 +120,7 @@ class CookieAuth(object):
 		except Course.DoesNotExist:
 			# Create default course, and add root user to it
 			site = Course.objects.create(
-				name='site.uit.no default',
+				name='kursa.oahpa.no default course',
 				identifier='site-default',)
 			root = User.objects.get(pk=1)
 			instructor_group = Group.objects.get(name="Instructors")
