@@ -79,16 +79,13 @@ class CookieAuth(object):
 	"""
 
 	def get_user(self, user_id):
-		print "get_user: %d" % user_id
 		try:
 			UP = UserProfile.objects.get(user__id=user_id)
 			return UP.user
 		except UserProfile.DoesNotExist:
 			return None
 
-	def authenticate(self, cookie_uid, **kwargs):
-		# Check the username/password and return a User.
-		print "authenticate: %s" % cookie_uid
+	def authenticate(self, cookie_uid):
 		try:
 			UP = UserProfile.objects.get(user__username=cookie_uid)
 			return UP.user
@@ -97,10 +94,11 @@ class CookieAuth(object):
 
 		return None
 
-	def create_new_user(self, cookie_uid, **kwargs):
+	def create_new_user(self, cookie_uid):
 		import md5
+		from django.contrib.auth.models import Group
 
-		print "authenticate: %s" % cookie_uid
+		# TODO: random md5
 		password = '!^293!' + str(cookie_uid) + '!293^!'
 		password = md5.md5(password).hexdigest()
 
@@ -109,7 +107,6 @@ class CookieAuth(object):
 			U.password = password
 			U.save()
 
-		print "username: " + repr(U.username)
 		try:
 			UP = U.get_profile()
 		except UserProfile.DoesNotExist:
@@ -117,6 +114,7 @@ class CookieAuth(object):
 		UP.save()
 
 		# add to default site-uit-no course
+		# TODO: rename
 		try:
 			site = Course.objects.get(identifier='site-default')
 		except Course.DoesNotExist:
@@ -125,12 +123,15 @@ class CookieAuth(object):
 				name='site.uit.no default',
 				identifier='site-default',)
 			root = User.objects.get(pk=1)
-			site.courserelationship_set.add(user=root,
-					relationship_type__name='Instructors')
+			instructor_group = Group.objects.get(name="Instructors")
+			site.courserelationship_set.create(user=root,
+					relationship_type=instructor_group)
 			site.save()
 
-		site.courserelationship_set.add(user=U,
-					relationship_type__name='Students')
+		student_group = Group.objects.get(name="Students")
+
+		site.courserelationship_set.create(user=U,
+					relationship_type=student_group)
 		site.save()
 
 		return U
