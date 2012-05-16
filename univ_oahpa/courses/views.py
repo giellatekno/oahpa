@@ -25,6 +25,7 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
 	""" Check for existing site.uit.no cookie
 	"""
 	from django.conf import settings
+	from django.contrib import auth
 
 	if not next_page:
 		next_page = '/univ_oahpa/courses/' # TODO: change next url for deep links
@@ -39,21 +40,14 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
 	try:
 		cookie_name, wp_cookie = matching_cookies[0]
 		wp_username, session, session_hex = wp_cookie.split('%7C')
-		print 'cookie_login: ' + repr(wp_username)
 		cookie_uid = wp_username
 	except:
-		print matching_cookies
 		cookie_uid = False
-
-
-	# TODO: get cookie uid, for now just using a get variable.
-	# cookie_uid = request.GET.get('some_cookie')
 
 	# TODO: getting forbidden on first user login, but subsequent logins are
 	# fine
 
 	if cookie_uid:
-		from django.contrib import auth
 		user = auth.authenticate(cookie_uid=cookie_uid)
 		if user is not None:
 			auth.login(request, user)
@@ -77,6 +71,8 @@ def cookie_logout(request, next_page=None, **kwargs):
 	from django.contrib.auth import logout
 
 	logout(request)
+
+	# TODO: redirect to kursa logout link
 
 	# This can't redirect to cookie_logout, or else there are unlimited
 	# redirects.
@@ -139,12 +135,12 @@ def courses_main(request):
 
 	try:
 		profile = request.user.get_profile()
+		new_profile = False
 	except UserProfile.DoesNotExist:
 		profile = UserProfile.objects.create(user=request.user)
 		profile.save()
 		new_profile = True
 	
-	print "up: " + repr(profile)
 	summary = False
 	
 	if profile.is_student:
