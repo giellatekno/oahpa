@@ -195,7 +195,7 @@ class CourseRelationship(models.Model):
 
 
 from django.db.models.signals import post_save, pre_save
-from signals import create_profile, aggregate_grades, user_presave, course_relationship_postsave
+from .signals import create_profile, aggregate_grades, user_presave, course_relationship_postsave
 
 post_save.connect(create_profile, sender=User, 
 	dispatch_uid="univ_oahpa.courses.models.post_save")
