@@ -319,13 +319,14 @@ class Dialect(models.Model):
 		return smart_unicode(S)
 
 def Translations2(target_lang):
-	if target_lang in ["nob", "rus", "sme", "eng", "deu", "smn", "no"]:
+	if target_lang in ["nob", "fin", "rus", "sme", "eng", "deu", "smn", "no"]:
 		if target_lang == "nob" or "no":	related = 'translations2nob'
 		if target_lang == "rus":	related = 'translations2rus'
 		if target_lang == "sme":	related = 'translations2sme'
 		if target_lang == "eng":	related = 'translations2eng'
 		if target_lang == "deu":	related = 'translations2deu'
 		if target_lang == "smn":	related = 'translations2smn'
+		if target_lang == "fin":	related = 'translations2fin'
 		return related
 	else:
 		return None
