@@ -1,7 +1,7 @@
-import sjdoahpa.settings
+import smnoahpa.settings
 
 try:
-	default = sjdoahpa.settings.DEFAULT_DIALECT
+	default = smnoahpa.settings.DEFAULT_DIALECT
 except:
 	default = 'GG'
 
@@ -11,10 +11,10 @@ def dialect(request):
     return {'dialect': request.session.get('dialect')}
 
 def site_root(request):
-	return {'URL_PREFIX': sjdoahpa.settings.URL_PREFIX}
+	return {'URL_PREFIX': smnoahpa.settings.URL_PREFIX}
 
 def grammarlinks(request):
-	from sjd_drill.models import Grammarlinks
+	from smn_drill.models import Grammarlinks
 	from conf.tools import switch_language_code
 	
 	default_lang = 'nob'
