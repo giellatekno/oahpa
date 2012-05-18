@@ -943,7 +943,7 @@ class LeksaSettings(OahpaSettings):
 			'bisyllabic': False,
 			'contracted': False,
 			'source': 'all',
-			'semtype' : 'YYY',
+			'semtype' : 'HUMAN',
 			'geography' : 'world',
 			'frequency' : ['common'] # added
 			}
