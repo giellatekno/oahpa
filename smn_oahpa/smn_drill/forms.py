@@ -296,10 +296,11 @@ DERIVATION_CHOICES_CONTEXT = (
 )
 
 BOOK_CHOICES = (
-    #('l1', _('Level 1')),
-    #('l2', _('Level 1-2')),
-    #('l3', _('Level 1-3')),
-    ('Saamkilsyjjt', _('Saamkilsyjjt')),
+    ('piras', _('Piras')),
+    ('bio5', _('Bio5')),
+    ('bio3', _('Bio3')),
+    ('ceelhi', _('Ceelhi')),
+    ('puolas', _('Puolas')),
     ('all', _('All')),
 )
 
