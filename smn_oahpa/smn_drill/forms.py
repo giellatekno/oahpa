@@ -328,56 +328,27 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-	('smnrus', _('Kildin Sami to Russian')),
-	('russmn', _('Russian to Kildin Sami')),
-#	('smneng', _('Kildin Sami to English')),
-#	('engsmn', _('English to Kildin Sami')),
-#	('smnfin', _('North Sami to Finnish')),
-#	('finsmn', _('Finnish to North Sami')),
-#   ('smnnob', _('Kildin Sami to Norwegian')),
-#	('nobsmn', _('Norwegian to Kildin Sami')),
-#	('smnsme', _('Kildin Sami to North Sami')),
-#	('smesmn', _('North Sami to Kildin Sami')),
+	('smnfin', _('Inari Sami to Finnish')),
+	('russmn', _('Finnish to Inari Sami')),
 )
 
 NUMLANGUAGE_CHOICES = (
-#	('sme', _('North Sami')),
-#	('smj', _('Lule Sami')),
-#	('sma', _('South Sami')),
-#	('smn', _('Inari Sami')),
-	('smn', _('Kildin Sami')),
-#	('sms', _('Skolt Sami')),
-#	('fin', _('Finnish')),
+	('smn', _('Inari Sami')),
 )
 
+ 619             <sem class="YYY"/>
+  81             <sem class="PLANT"/>
+  76             <sem class=""/>
+  62             <sem class="ANIMAL_OTHER"/>
+  60             <sem class="BODYPART"/>
+
 SEMTYPE_CHOICES = (
-	('KIN', _('family')), 
-    ('HUMAN', _('human')), 
-    ('ANIMAL_FISH', _('animal/fish')),
-    ('BODY', _('body')),
-    ('FOOD_DRINK', _('food/drink')),
-    ('TIME', _('time')),
-    ('CLOTHING', _('clothes')),
-    ('HEALTH', _('health')),
-    ('PLACE', _('place')),
-    ('PLACE_DOMESTIC', _('domestic place')),
-    ('TRAVELING', _('travel')),
-    ('WEATHER', _('weather')),
-    ('NATURE_PHENOMENA', _('nature')),
-    ('PLANT', _('plant')),
-    ('HANDICRAFT', _('handicraft')),
-    ('GRAMMAR_TERMINOLOGY', _('grammar terminology')),
-    ('EDUCATION', _('school/education')),
-    ('EXPRESSIONS', _('expressions')),
-    ('CHURCH', _('church')),
-    ('ABSTRACT_CONCEPTS', _('abstract')), 
-    ('VERB1', _('easy verbs')),
-    ('VERB2', _('intermediate verbs')),
-    ('VERB3', _('difficult verbs')),
-    ('PRONOUN', _('pronoun')),
-    ('NAME', _('name')),
-    ('DIMINUTIVE', _('diminutive')),
-    ('all', _('all')),
+	('YYY', _('yyy')), 
+	('PLANT', _('plant')),
+	('BIRD', _('bird')), 
+	('ANIMAL_OTHER', _('other animal')),
+	('BODYPART', _('bodypart')),
+	('all', _('all')),
 )
 
 NUM_CHOICES = (
