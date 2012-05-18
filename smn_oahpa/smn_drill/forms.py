@@ -336,12 +336,6 @@ NUMLANGUAGE_CHOICES = (
 	('smn', _('Inari Sami')),
 )
 
- 619             <sem class="YYY"/>
-  81             <sem class="PLANT"/>
-  76             <sem class=""/>
-  62             <sem class="ANIMAL_OTHER"/>
-  60             <sem class="BODYPART"/>
-
 SEMTYPE_CHOICES = (
 	('YYY', _('yyy')), 
 	('PLANT', _('plant')),
