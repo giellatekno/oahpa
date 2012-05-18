@@ -329,7 +329,7 @@ VASTAS_NR_OF_TASKWORDS = (
 
 TRANS_CHOICES = (
 	('smnfin', _('Inari Sami to Finnish')),
-	('russmn', _('Finnish to Inari Sami')),
+	('finsmn', _('Finnish to Inari Sami')),
 )
 
 NUMLANGUAGE_CHOICES = (
