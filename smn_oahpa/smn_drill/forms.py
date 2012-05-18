@@ -296,10 +296,10 @@ DERIVATION_CHOICES_CONTEXT = (
 )
 
 BOOK_CHOICES = (
-    ('piras', _('Piras')),
-    ('bio5', _('Bio5')),
-    ('bio3', _('Bio3')),
-    ('ceelhi', _('Ceelhi')),
+    ('piras', _('Pirâstiätu')),
+    ('bio5', _('Biologia 5')),
+    ('bio3', _('Biologia 3')),
+    ('ceelhi', _('Ceelhi tiervuođâid ')),
     ('puolas', _('Puolas')),
     ('all', _('All')),
 )
