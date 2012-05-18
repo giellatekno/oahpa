@@ -21,5 +21,5 @@ do
   echo "   "
 done
 
-#$P install.py --sem $DATA/meta-data/semantical_sets.xml
+$P install.py --sem $DATA/meta-data/semantical_sets.xml
 
