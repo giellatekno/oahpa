@@ -49,9 +49,9 @@
 						{% endifequal %}
 						
 						{% ifequal LANGUAGE_CODE "smn" %}
-							<option value="smn" selected="selected">Kildin Sámi</option>
+							<option value="smn" selected="selected">Inari Sámi</option>
 						{% else %}
-							<option value="smn">Kildin Sámi</option>
+							<option value="smn">Inari Sámi</option>
 						{% endifequal %}
 						
 						{% ifequal LANGUAGE_CODE "en" %}
@@ -85,7 +85,7 @@
 			<!--
 			<form action="/{{ URL_PREFIX }}/dialect/" method="post">
 				<dl>
-					<dt><label for="dialect">{% trans "Kildin Sami dialect" %}</label></dt>
+					<dt><label for="dialect">{% trans "Inari Sami dialect" %}</label></dt>
 					<dd>
 						<input name="next" type="hidden" value="/{{ URL_PREFIX }}/" />
 						<select name="dialect" onChange="javascript:this.form.submit();">
@@ -113,7 +113,7 @@
 		<div id="header">
 			{% block header_content %}
 			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!" /></h1>
-			<h2>Тӣррв!</h2>
+			<h2>Tiervâpuáttim!</h2>
 			{% endblock %}
 		</div>
 
@@ -170,7 +170,7 @@
 			{% comment %}
 			<h3>{% trans "Online reference materials" %}</h3>
 			{% endcomment %}
-			<p class="intro">{% trans "Oahpa is an internet program for youth and grownups learning Kildin Sámi. The program can be adjusted to different themes and levels of difficulty, and it generates new task sets automatically." %}</p>
+			<p class="intro">{% trans "Oahpa is an internet program for youth and grownups learning Inari Sámi. The program can be adjusted to different themes and levels of difficulty, and it generates new task sets automatically." %}</p>
 			{% comment %}
 			<p>{% trans "Oahpa is connected with online reference materials." %}</p>
 			{% endcomment %}
@@ -194,28 +194,28 @@
                 <li><a href="http://giellatekno.uit.no/oahpa/smn/index.eng.html">{% trans "Veiledning" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "fi" %}
-                <li><a href="http://victorio.uit.no/webdict/index_smn-rus.html">{% trans "Kildin Sámi" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
+                <li><a href="http://victorio.uit.no/webdict/index_smn-rus.html">{% trans "Inari Sámi" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
             {% else %}
-				<li><a href="http://victorio.uit.no/webdict/index_smn-rus.html">{% trans "Kildin Sámi" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
+				<li><a href="http://victorio.uit.no/webdict/index_smn-rus.html">{% trans "Inari Sámi" %}-{% trans "Russian" %} {% trans "web dictionary" %}</a></li>
             {% endifequal %}
             <!--
             {% ifequal LANGUAGE_CODE "sme" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/smn/gramm/grammatihkka.html">{% trans "Kildin Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/smn/gramm/grammatihkka.html">{% trans "Inari Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "fi" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/smn/gramm/grammatihkka.html">{% trans "Kildin Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/smn/gramm/grammatihkka.html">{% trans "Inari Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "en" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/smn/gramm/grammatihkka.eng.html">{% trans "Kildin Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/smn/gramm/grammatihkka.eng.html">{% trans "Inari Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "no" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/smn/gramm/grammatihkka.nob.html">{% trans "Kildin Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/smn/gramm/grammatihkka.nob.html">{% trans "Inari Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "ru" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/smn/gramm/grammatihkka.rus.html">{% trans "Kildin Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/smn/gramm/grammatihkka.rus.html">{% trans "Inari Sámi grammar" %}</a></li>
             {% endifequal %}
             {% ifequal LANGUAGE_CODE "sv" %}
-				<li><a href="http://giellatekno.uit.no/oahpa/smn/gramm/grammatihkka.nob.html">{% trans "Kildin Sámi grammar" %}</a></li>
+				<li><a href="http://giellatekno.uit.no/oahpa/smn/gramm/grammatihkka.nob.html">{% trans "Inari Sámi grammar" %}</a></li>
             {% endifequal %}
             -->
 			</ul>
