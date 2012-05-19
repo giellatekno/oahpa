@@ -341,6 +341,7 @@ SEMTYPE_CHOICES = (
     ('BODY', _('body')),
     ('FOOD_DRINK', _('food/drink')),
     ('ANIMAL_FISH', _('animal/fish')),
+    ('BIRDS', _('birds')),
     ('ABSTRACT_CONCEPTS', _('abstract')),
     ('CLOTHING', _('clothing')),
     ('EDUCATION', _('education')),
