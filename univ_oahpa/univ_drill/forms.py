@@ -176,9 +176,9 @@ ADJECTIVE_QUESTION_ANSWER = {
 ADJECTIVE_FILTER_DEFINITION = ['grade', 'stem', 'source']
 
 ADJEX_CHOICES = (
-	('A-ATTR', _('attributive')), 	# A+Nom+Sg -> A+Attr
- 	('A-COMP', _('comparative')),		# A+Nom+Sg -> Comp	
- 	('A-SUPERL', _('superlative')),	# A+Nom+Sg -> Superl
+	('A-ATTR', _('attributive')),	# A+Nom+Sg -> A+Attr
+	('A-COMP', _('comparative')),		# A+Nom+Sg -> Comp	
+	('A-SUPERL', _('superlative')),	# A+Nom+Sg -> Superl
 
 )
 
@@ -279,8 +279,8 @@ LEVEL_CHOICES = (
 
 
 DERIVATION_CHOICES = (
- 	('V-DER-PASS', _('passive derivation')),
- 	('A-DER-V', _('adjective->verb derivation')),
+	('V-DER-PASS', _('passive derivation')),
+	('A-DER-V', _('adjective->verb derivation')),
 )
 
 DERIVATION_QUESTION_ANSWER = {
@@ -291,7 +291,7 @@ DERIVATION_QUESTION_ANSWER = {
 DERIVATION_FILTER_DEFINITION = False
 
 DERIVATION_CHOICES_CONTEXT = (
- 	('A-DER-V', _('adjective->verb derivation')),
+	('A-DER-V', _('adjective->verb derivation')),
 	('DER-PASSV', _('passive derivation')),
 )
 
@@ -433,8 +433,8 @@ DIALOGUE_CHOICES = (
 )
 
 # BOOK_CHOICES = tuple(
-# 	[(source.name, source.name) for source in Source.objects.all()] + \
-# 	[('all', _('ALL'))]
+#	[(source.name, source.name) for source in Source.objects.all()] + \
+#	[('all', _('ALL'))]
 # )
 
 
@@ -613,11 +613,11 @@ def set_correct(self):
 
 def set_settings(self):
 	# self.levels = { 
-	# 		'l1':  ['l1'],
-	# 		'l2':  ['l2', 'l1'], 
-	# 		'l3':  ['l3', 'l2', 'l1'], 
-	# 		'all': ['l3', 'l2', 'l1', 'all'], 
-	# 	}
+	#		'l1':  ['l1'],
+	#		'l2':  ['l2', 'l1'], 
+	#		'l3':  ['l3', 'l2', 'l1'], 
+	#		'all': ['l3', 'l2', 'l1', 'all'], 
+	#	}
 	
 	# Construct arrays for level choices.
 	
@@ -628,15 +628,15 @@ def set_settings(self):
 	# self.levels = {}
 	# self.levels['all'] = [] 
 	# for b in LEVEL_CHOICES:
-	# 	if b[0] != 'all':
-	# 		self.levels[b[0]] = [] 
-	# 		self.levels['all'].append(b[0])
-	# 		
-	# 	self.levels[b[0]].append(b[0])
+	#	if b[0] != 'all':
+	#		self.levels[b[0]] = [] 
+	#		self.levels['all'].append(b[0])
+	#		
+	#	self.levels[b[0]].append(b[0])
 	# 
 	# self.levels['l2'].append('l1')
 	# for b in ['l1', 'l2']:
-	# 	self.levels['l3'].append(b)
+	#	self.levels['l3'].append(b)
 	
 	
 	# Turning these into dictionary type means there's no need to iterate to 
@@ -731,8 +731,8 @@ def select_words(self, qwords, awords):
 			if aword.has_key('qelement'):
 				qelem = aword['qelement']
 				if isinstance(qelem, QElement):  # to exclude MorfaC 
-				    if qelem.task:  # words in VastaS answer frame where task="yes".
-				        selected_awords[syntax]['taskword'] = qelem.task   
+					if qelem.task:  # words in VastaS answer frame where task="yes".
+						selected_awords[syntax]['taskword'] = qelem.task   
 			if aword.has_key('word') and aword['word']:
 				selected_awords[syntax]['word'] = aword['word']
 			else:
@@ -1245,8 +1245,8 @@ class MorfaQuestion(OahpaQuestion):
 			# Various display alternations for pronouns.
 			
 			# Reciprocative:
-			# 	guhtet guoibmámet
-			# 	goabbat guoibmámet
+			#	guhtet guoibmámet
+			#	goabbat guoibmámet
 
 			if tag.subclass == 'Recipr':
 				if tag.possessive.find('PxDu'):
@@ -1258,8 +1258,8 @@ class MorfaQuestion(OahpaQuestion):
 					self.pron = pronoun
 
 			# Demonstrative:
-			# 	dát okta
-			# 	dát máŋga
+			#	dát okta
+			#	dát máŋga
 
 			if tag.subclass == 'Dem':
 				noun_pres = DEMONSTRATIVE_PRESENTATION.get(tag.number, False)
@@ -1810,28 +1810,44 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     """
     Analyzes the answer and returns a message.
     """
+    from django.conf import settings
+
+    # LOOKUP_TOOL = '/usr/bin/lookup'
+    # FST_DIRECTORY = '/opt/smi/sme/bin'
+    # LOOKUP2CG = '/usr/local/bin/lookup2cg'
+    # CG3 = '/usr/local/bin/vislcg3'
+    # PREPROCESS = '/opt/sami/cg/bin/preprocess'
+
+    try:
+        _ = settings.FST_DIRECTORY
+        _ = settings.LOOKUP_TOOL
+        _ = settings.LOOKUP2CG
+        _ = settings.CG3
+        _ = settings.PREPROCESS
+    except:
+        err =  "Check that settings.py contains the following settings:"
+        err += "  FST_DIRECTORY, LOOKUP_TOOL, LOOKUP2CG, CG3, PREPROCESS"
+
+
     if not self.is_valid():
         return None, None, None
 
     noanalysis=False
 
-    fstdir = "/opt/smi/sme/bin"  # on victorio
-    #fstdir = settings.FST_DIRECTORY
+    fstdir = settings.FST_DIRECTORY
     fst = fstdir + "/ped-sme.fst"
     print fst
-    lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup" # on victorio
-    #lo="/Users/mslm/bin/lookup" # on Heli's machine
+    lo = settings.LOOKUP_TOOL
     lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
     print lookup
     #lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine
     lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
     #lookup2cg =" | /Users/mslm/main/gt/script/lookup2cg" # on Heli's machine
-    cg3 = "/usr/local/bin/vislcg3"
-    preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
+    cg3 = settings.CG3
+    preprocess = " | " + settings.PREPROCESS
     #preprocess = " | /Users/mslm/main/gt/script/preprocess "
-    dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    #dis_bin = "/Users/mslm/main/ped/sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
-        
+    dis_bin = settings.FST_DIRECTORY + "/sme-ped.cg3"
+
     vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
     
     self.userans = self.cleaned_data['answer']
@@ -1910,7 +1926,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
         else:
             analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
-	    #logfile.write(analysis+"\n")
+		#logfile.write(analysis+"\n")
 		
 		# analyse words in the answer
 		
@@ -2363,32 +2379,32 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	logtasklemmas = ""
         for aword in awords:
             print aword
-	        #logfile.write(aword)
+			#logfile.write(aword)
             if aword.has_key('taskword') and aword['taskword']:
                 tlemma = aword['fullform']
                 tlemma = force_unicode(tlemma).encode('utf-8')
                 tlemma = tlemma.strip()
                 print tlemma
-		        #logfile.write(tlemma+" ")
+				#logfile.write(tlemma+" ")
                 tasktag = Tag.objects.filter(id=aword['tag'])
                 tasktagstring = tasktag[0].string
                 taskpos = tasktag[0].pos
                 ttag = tasktagstring.replace("+"," ")
                 print ttag
-		        #logfile.write(ttag+"\n")
+				#logfile.write(ttag+"\n")
                 s.send(tlemma)  # on vic
                 word_lookup = s.recv(size)  # on vic
-		        #logfile.write(word_lookup)
+				#logfile.write(word_lookup)
                 ans_cohort=""
                 #print rows
                 rows = word_lookup.split("\n")  # on vic
                 morfanal = ""
                 for row in rows:
                     ans_cohort = ans_cohort + row
-		              #logfile.write(row + "\n")
+					  #logfile.write(row + "\n")
                     malemmas = row.split("\"")
                     if row:
-			             malemma = malemmas[1]
+						 malemma = malemmas[1]
                     malemma_without_hash = malemma.replace('#','')
                     taglist = ttag.split()
                     tag_match = 1
@@ -2397,7 +2413,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
                             tag_match = 0
                     if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
                         print malemmas
-			             #logfile.write(malemma+"\n")
+						 #logfile.write(malemma+"\n")
                         print malemma
                         print malemma_without_hash
                         tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
@@ -2440,35 +2456,35 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
             morfanal = os.popen(word_lookup).readlines()
             for row in morfanal:
                 cohort = cohort + row
-	       #print cohort
+		   #print cohort
             analysis = analysis + cohort
         tasklemmas = ""
         logtasklemmas = ""
         for aword in awords:
             print aword
-	       #logfile.write(aword)
+		   #logfile.write(aword)
             if aword.has_key('taskword') and aword['taskword']:
                 tlemma = aword['fullform']
                 tlemma = force_unicode(tlemma).encode('utf-8')
                 tlemma = tlemma.strip()
                 print tlemma
-		        #logfile.write(tlemma+" ")
+				#logfile.write(tlemma+" ")
                 tasktag = Tag.objects.filter(id=aword['tag'])
                 tasktagstring = tasktag[0].string
                 taskpos = tasktag[0].pos
                 ttag = tasktagstring.replace("+"," ")
                 print ttag
-		        #logfile.write(ttag+"\n")
+				#logfile.write(ttag+"\n")
                 ans_cohort = ""
                 word_lookup = "echo \"" + tlemma + "\"" + lookup + lookup2cg  # on Heli's machine
                 rows = os.popen(word_lookup).readlines()
                 morfanal = ""
                 for row in rows:
                     ans_cohort = ans_cohort + row
-		            #logfile.write(row + "\n")
+					#logfile.write(row + "\n")
                     malemmas = row.split("\"")
                     if row:
-			             malemma = malemmas[1]
+						 malemma = malemmas[1]
                     malemma_without_hash = malemma.replace('#','')
                     taglist = ttag.split()
                     tag_match = 1
@@ -2477,7 +2493,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
                             tag_match = 0
                     if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
                         print malemmas
-			             #logfile.write(malemma+"\n")
+						 #logfile.write(malemma+"\n")
                         print malemma
                         print malemma_without_hash
                         tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
@@ -2498,7 +2514,9 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
             for row in morfanal:
                 ans_cohort = ans_cohort + row
             analyzed = analyzed + ans_cohort
-
+    except Exception, e:
+        print Exception
+        print e
     #except socket.timeout:    
         #raise Http404("Technical error, please try again later.")            
 
@@ -2622,9 +2640,9 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     feedbackmsg = p.sub('', feedbackmsg)
     print feedbackmsg
     if message_ids:
-	    feedbackmsg_id = message_ids[0] # added
+		feedbackmsg_id = message_ids[0] # added
     else:
-	    feedbackmsg_id = ""
+		feedbackmsg_id = ""
     print feedbackmsg_id
     today=datetime.date.today()
     log = Log.objects.get_or_create(userinput=self.userans, feedback=feedbackmsg, iscorrect=iscorrect, qid=question_id, example=question, game=self.gametype, date=today, lang=language, messageid = feedbackmsg_id, tasklemmas=logtasklemmas)  # was Log.objects.create()
@@ -2706,7 +2724,7 @@ class CealkkaQuestion(OahpaQuestion):
         
         relaxed = []
         form_list=[]
-		        
+				
         self.qattrs= {}
         self.aattrs = {}
         for syntax in qwords.keys():
@@ -2750,7 +2768,7 @@ class CealkkaQuestion(OahpaQuestion):
 
         qstring = qstring + "?"
         self.question=qstring
- 	
+	
         self.gametype="cealkka"
         self.messages, jee, joo  = self.cealkka_is_correct(qstring.encode('utf-8'), qwords, awords, language, question.qid)   # was astring, awords for VastaS before
         
