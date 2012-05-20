@@ -15,3 +15,29 @@ mysqld has stopped working. Start it again:
 sudo /etc/init.d/mysqld start
 }}}
 
+
+!!! Dump and import
+
+In order to dump the database into a format that can be imported directly into
+another mysql database server: 
+
+{{{
+mysqldump --compatible=ansi --single-transaction --add-drop-table --set-charset -u USERNAME DATABASENAME -p > database_dump.sql
+}}}
+
+You will be prompted for the user's password, and the dump will begin. By
+default, the dump is produced in stdout, thus it's good to pipe the output to a
+file.
+
+In order to skip a few steps, another possibility is to execute the command via
+SSH and pipe the results directly into a database, _overwriting_ the contents.
+
+{{{
+ssh user@hostname "mysqldump --compatible=ansi --other-options-etc" | python manage.py dbshell
+}}}
+
+You may be prompted for both the password to the source database, and the
+password to the target database, so it can be a good idea to test the parts of
+the process to see. In any case, this provides the means to quickly copy the
+database between servers via a secure protocol, and with no storage of
+temporary files which would contain sensitive data, such as passwords.
