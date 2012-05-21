@@ -1,0 +1,154 @@
+!!! Møte 21.05.12
+
+Til stades: Lene, Ryan, Trond, Heli
+
+!!Saksliste
+* Grensesnittspråkvalgmeny
+* Lokalisering som tooltip
+* Nye servere
+* Innlogging
+* Oahpa på engelsk
+* Artikkelskriving for Eurocall
+* Bugger
+* Neste møte
+
+!!Grensesnittspråkvalgmeny
+Grensesnittspråkvalgmeny skal være på alle drill-sidene, der hvor grammatikkmenyen er idag.
+Grammatikk-menyen flyttes ned ett hakk.
+
+TILTAK:
+* __Heli__ fikser menyene
+
+!! Lokalisering som tooltip
+Grensesnittet skal vises på nordsamisk, men vi tilbyr oversetting på valgt lokaliseringsspråk
+som tooltip ved å holde musa over kombinert med en tast.
+
+!Hjelp for brukerne - alternativer:
+* Forklaring (lokalisert) for brukerne om tooltip som ikke er tooptip.
+* Alternativ: Ein __HELP__ + hjelpeikon -knapp som fungerer som dagens Vasta-S-illativ-tooltip:
+Når musa er der kjem det forklaring på at du må bruke ''tast + mus'' for å
+få opp omsetjing til norsk, engelsk, osb.
+
+TILTAK:
+* __Heli__ fikser dette
+
+!!Nye servere
+Misforståelser om hvem som skulle ta kontakt med IT-adv ang. partisjoneringer og diskplass på server.
+Vi har fått nok diskplass, men ikke riktig fordeling.
+
+
+Det som eg vil finne ut er om det er mogleg for deim å berre flytte fri plass til vg_gtoahpa-lv_root på noko vis. Eg veit ikkje frå /etc/fstab korleis deira system er satt opp, men eg kan tru at harddiskar her er virtuelle eller ein image på deira server, då vert det mulig å få ein større disk.
+
+So er det eit spørsmål: kan me få meir plass på / frå det som er satt opp til /export, eller er det å nytta det som eksisterer no?
+
+! gtoahpa
+
+I dag:
+* root (/): 9.7GB
+* /export: 60GB
+
+
+
+Vi vil ha:
+
+* root (/): alt (bortsett frå boot/swap-partisjoner)
+
+! gtlab
+
+* root: 5GB
+* /media/data: 394GB
+
+Vi vil ha: 
+
+* root: alt (bortsett frå boot/swap-partition)
+
+! gtweb
+
+* root: 5.0GB
+* /media/data: 99GB
+
+
+! gtsvn
+
+* root: 5.0GB
+* /media/data: 493GB
+
+Vi vil ha:
+
+* Sjur veit
+
+__TILTAK__
+
+* __Trond__ tar kontakt med IT
+
+!! Innlogging
+Innlogging funker, brukeren logger inn kursa.oahpa.no, og blir kjent igjen
+ved hjelp av cookie når de trykker login i Oahpa.
+
+Vi trenger Open-ID-mulighet.
+Etterhvert skal Oahpa lukkes slik at brukere må registrere seg for å bruke programmene.
+
+Forslag:
+* Leksa og Numra kan være åpne uten innlogging.
+* "Vil du prøve andre programmer? Trykk her." - dette fører til åpen registrering for innlogging i wordpress
+* etter innlogging: 
+** kort spørreskjema (om brukeren følger undervisning, aldersgruppe, morsmål, kan samisk?)
+** kort instruksjon med valg for å gå tilbake til Oahpa, eller bruke læringsstier i wordpress
+
+__TILTAK__
+* __Ryan__ jobber videre med dette
+
+
+!! Oahpa på engelsk
+Trond har ikke fått svar fra oversetterkandidaten i Finland.
+
+__TILTAK__
+* __Trond__ skaffer oversetter
+
+
+!! Artikkelskriving for Eurocall
+Nå er det sjekka inn templat: trunk/art/2012/eurocall/eu12_proceedings_template.doc
+
+Templat for artikler med 1500 ord, deadline 30.6.
+Early registration deadline 31.5.
+
+Vi arbeider i txt, 
+* amultilingual.txt
+* aexhibition.txt          
+* aless_widely_taught.txt
+
+
+!! Bugger
+
+!1341 lene.antonsen@uit.no	NEW		Stems in English
+Konklusjon for sma og sme: bisyllabic og trisyllabic
+
+__TILTAK__
+* __Trond__ retter i lokaliseringa
+
+!1354 heli.uibo@ut.ee	ASSI		Dialektvalg i leksikonet fungerer ikke
+Heli arbeider med denne, vet var problemet ligger.
+
+
+
+
+!! Neste møte
+tirsdag 29.5 kl 8.00
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
