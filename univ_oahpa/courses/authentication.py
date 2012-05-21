@@ -26,35 +26,43 @@ __all__ = ['CookieAuthMiddleware', 'CookieAuth']
 class CookieAuthMiddleware(object):
 	""" Middleware that allows cookie authentication """
 
+	def get_cookie_user(self, request):
+		matching_cookies = [(c, v) for c, v in request.COOKIES.iteritems() 
+									if c.startswith(settings.COOKIE_NAME)]
+
+		try:
+			cookie_name, wp_cookie = matching_cookies[0]
+			wp_username, session, session_hex = wp_cookie.split('%7C')
+			cookie_uid = wp_username
+		except:
+			cookie_uid = False
+
+		return cookie_uid
+
+		
 	def process_view(self, request, view_func, view_args, view_kwargs):
-		"""Forwards unauthenticated requests to the admin page to the cookie
-		login URL, as well as calls to django.contrib.auth.views.login and
-		logout.
+		""" If the user's session contains a cookie from WordPress, and they
+		are not logged in to Oahpa, then we log them in and continue them on
+		their merry way to the page they entered at. If their cookie is no
+		longer present, yet they are still logged in to Oahpa, they are logged
+		out, and redirected to the logout page. Exceptions are made for certain
+		view functions.
 		"""
+		from django.contrib import auth
+
 		if view_func == cookie_login:
 			return cookie_login(request, *view_args, **view_kwargs)
 		elif view_func == cookie_logout:
 			return cookie_logout(request, *view_args, **view_kwargs)
 
-		# TODO: this is now different
-		print settings.COOKIE_NAME
-		print request.path
-		if settings.COOKIE_NAME:
-			if not request.path.startswith(settings.COOKIE_NAME):
-				return None
-		elif not view_func.__module__.startswith('django.contrib.admin.'):
-			return None
-
-		if request.user.is_authenticated():
-			if request.user.is_staff:
-				return None
-			else:
-				error = ('<h1>Forbidden</h1><p>You do not have staff '
-						 'privileges.</p>')
-				return HttpResponseForbidden(error)
-
-		params = urlencode({REDIRECT_FIELD_NAME: request.get_full_path()})
-		return HttpResponseRedirect(reverse(cookie_login) + '?' + params)
+		cookie_user = self.get_cookie_user(request)
+		if cookie_user and not request.user.is_authenticated():
+			user = auth.authenticate(cookie_uid=cookie_user)
+			if user is not None:
+				auth.login(request, user)
+				return None # request
+		elif not cookie_user and request.user.is_authenticated():
+			return HttpResponseRedirect(reverse(cookie_logout))
 
 
 from courses.models import UserProfile
@@ -114,7 +122,6 @@ class CookieAuth(object):
 		UP.save()
 
 		# add to default site-uit-no course
-		# TODO: rename
 		try:
 			site = Course.objects.get(identifier='site-default')
 		except Course.DoesNotExist:
