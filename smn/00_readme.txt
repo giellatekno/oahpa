@@ -36,3 +36,15 @@ Note: Semantic class ILLNESS? Naja...
 2. revert data to finsmn
  ==> DONE
 
+3. debug and fix Leksa
+ ==> ONGOING
+
+
+Oioioi, was habe ich beim Debuggen gefunden?
+
+<l pos="pp">luus ~ luusâ</l>
+
+
+
+
+
