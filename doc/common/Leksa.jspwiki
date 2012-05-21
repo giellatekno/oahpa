@@ -6,19 +6,28 @@ To be included here: A list of relevant files. While waiting, [see this document
 
 !!Installation
 
+! for sjd and sma
+
+Make a backup of the database (there is a script for it in the db_bakup directory).
+Then make the new database. There is a script ./feed_db.sh to do that in the __lower__ 
+$LANGoahpa directory.
+
+
+! for the other languages
+
 Note that your .bashrc path must be ok. In .bashrc on the machine where
 the installation is, you need a path PYTHONPATH containing also
-the string {{/home/sjdoahpa/:/home/sjdoahpa/sjdoahpa/:/home/sjdoahpa/sjdoa
-hpa/sjddrill}}.
+the string {{/PATH/TO/OAHPA/APPLICATION}}.
 
 Installation is performed via ./install.py with one option. The
 installation must be run for each .xml file (for each language
 direction), here marked with XML, so replace XML with each of the file
-names (todo: make a script for this):
+names (There is a script for sjd and sma, todo: make a script for other lgs):
 
 {{{
     python2.6 install.py --file/-f XML
 }}}
+
 
 Also, superset must be indicated (the {{sjd}} here should be
 replaced with the language code of the language you work on):
@@ -27,7 +36,7 @@ replaced with the language code of the language you work on):
     python2.6 install.py --sem sjd/meta-data/semantical_sets.xml
 }}}
 
-However, for most languages (not sjd, though), installation of Leksa
+For sme and sma installation of Leksa
 is performed in combination with installation of Morfa-S (Morfa-B),
 thus a tagfile and paradigm file must be specified. For more
 information on this, see the Morfa-S documentation, however, the
