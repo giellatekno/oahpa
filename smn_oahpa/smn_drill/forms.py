@@ -299,7 +299,7 @@ BOOK_CHOICES = (
     ('piras', _('Pirâstiätu')),
     ('bio5', _('Biologia 5')),
     ('bio3', _('Biologia 3')),
-    ('ceelhi', _('Ceelhi tiervuođâid ')),
+    ('ceelhi', _('Ceelhi tiervuođâid')),
     ('puolas', _('Puolas')),
     ('all', _('All')),
 )
