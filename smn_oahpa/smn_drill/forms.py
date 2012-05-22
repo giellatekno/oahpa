@@ -796,7 +796,7 @@ class OahpaSettings(forms.Form):
 	
 	def set_default_data(self):
 		self.default_data = {
-					'language' : 'rus',  # sme in univ_oahpa
+					'language' : 'smn',  # sme in univ_oahpa
 					'syll' : ['2syll'],
 					'bisyllabic': 'on',
 					'trisyllabic': False,
@@ -1257,7 +1257,7 @@ class NumSettings(OahpaSettings):
 	numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
 	#numlanguage = forms.ChoiceField(initial='smn', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
 	# TODO: remove mandatory need to set default data, should be done through 'initial' field setting.
-	default_data = {'language' : 'rus', 'numlanguage' : 'smn', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
+	default_data = {'language' : 'smn', 'numlanguage' : 'smn', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
 					
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1363,7 +1363,7 @@ class NumQuestion(OahpaQuestion):
 class KlokkaSettings(NumSettings):
 	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES_PL, widget=forms.RadioSelect)
 	gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
-	default_data = {'language' : 'rus', 'numlanguage' : 'smn', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
+	default_data = {'language' : 'smn', 'numlanguage' : 'smn', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
 					
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1512,7 +1512,7 @@ class KlokkaQuestion(NumQuestion):
 class DatoSettings(KlokkaSettings):
 	gametype = None # Disable gametype (easy, medium, hard)
 
-	default_data = {'language' : 'rus', 'numlanguage' : 'smn', 'numgame': 'string'}
+	default_data = {'language' : 'smn', 'numlanguage' : 'smn', 'numgame': 'string'}
 
 
 class DatoQuestion(KlokkaQuestion):
