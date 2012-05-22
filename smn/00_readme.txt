@@ -60,5 +60,26 @@ Oioioi, was habe ich beim Debuggen gefunden?
 <l pos="prop">sun</l>
 
 
+What does "ca" as pos mean?
+
+<r xml:lang="smn">
+   <e>
+      <lg>
+         <l pos="ca">veikkâ</l>
+      </lg>
+      <sources>
+         <book name="ceelhi"/>
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="YYY"/>
+         </semantics>
+         <tg xml:lang="fin">
+            <t pos="ca" stat="pref">vaikka</t>
+         </tg>
+      </mg>
+   </e>
+
+</r>
 
 
