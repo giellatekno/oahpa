@@ -40,13 +40,9 @@ Note: Semantic class ILLNESS? Naja...
  ==> ONGOING
 
 
-Oioioi, was habe ich beim Debuggen gefunden?
+4. put these entries in a separate mwe-file:
 
-<l pos="pp">luus ~ luusâ</l>
-<l pos="adv">ain-uv</l>
-<l pos="n">huhti-ijjâhâš</l>
 <l pos="n">kärŋilis tääsi</l>
-<l pos="n">valve-ellee</l>
 <l pos="n">kume stielâs</l>
 <l pos="n">lieggâ stielâs</l>
 <l pos="n">kolmâ stielâs</l>
@@ -54,32 +50,6 @@ Oioioi, was habe ich beim Debuggen gefunden?
 <l pos="n">rapu jorgáldâskiärdu</l>
 <l pos="n">stuorrâ syeiniaččin</l>
 <l pos="n">kuuloold tábáhtuvvee hämimolsom</l>
-<l pos="n">lego-pittá</l>
 <l pos="n">stuorrâ čäciluttihâš</l>
 <l pos="n">uccâ čäciluttihâš</l>
-<l pos="prop">sun</l>
-
-
-What does "ca" as pos mean?
-
-<r xml:lang="smn">
-   <e>
-      <lg>
-         <l pos="ca">veikkâ</l>
-      </lg>
-      <sources>
-         <book name="ceelhi"/>
-      </sources>
-      <mg>
-         <semantics>
-            <sem class="YYY"/>
-         </semantics>
-         <tg xml:lang="fin">
-            <t pos="ca" stat="pref">vaikka</t>
-         </tg>
-      </mg>
-   </e>
-
-</r>
-
 
