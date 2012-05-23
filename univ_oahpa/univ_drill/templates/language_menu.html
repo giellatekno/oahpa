@@ -1,0 +1,48 @@
+{% load cache %}
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+<form action="/{{ URL_PREFIX }}/i18n/setlang/" method="post" name="newlang">
+    <dl>
+        <dt><label for="language_select">{% trans "Interface language" %}</label></dt>
+        <dd></dd>
+        <dd style="text-align:right;">
+        <!---<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" /> ---> 
+        <select id="language_select" name="language" onChange="document.newlang.submit();"> 
+						
+            {% ifequal LANGUAGE_CODE "no" %}
+                <option value="no" selected="selected">Norsk</option>
+            {% else %}
+                <option value="no">Norsk</option>
+            {% endifequal %}
+						
+            {% ifequal LANGUAGE_CODE "sme" %}
+                <option value="sme" selected="selected">Davvisámi</option>
+            {% else %}
+                <option value="sme">Davvisámi</option>
+            {% endifequal %}
+						
+            {% ifequal LANGUAGE_CODE "en" %}
+                <option value="en" selected="selected">English</option>
+            {% else %}
+                <option value="en">English</option>
+            {% endifequal %}
+
+            {% ifequal LANGUAGE_CODE "sv" %}
+                <option value="sv" selected="selected">Svenska</option>
+            {% else %}
+                <option value="sv">Svenska</option>
+            {% endifequal %}
+							  
+            {% ifequal LANGUAGE_CODE "fi" %}
+                <option value="fi" selected="selected">Suomi</option> 
+            {% else %}
+                <option value="fi">Suomi</option> 
+            {% endifequal %}
+						 
+        </select>
+        </dd>
+    </dl>
+    <input type="submit" class="hide" value="submit" /> 
+</form>
+    
