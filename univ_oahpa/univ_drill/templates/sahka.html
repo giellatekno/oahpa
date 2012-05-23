@@ -151,13 +151,15 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/sahka.nno.html
 {% block settings %}
 
 {% if forms %}
+<!--- <div class="grammarlinks">
+        {% include 'grammar_links_menu.html' %}
+</div> -->
 <tr><td>
 <!--<p>{% trans "NB! NB! The Sahka game is not working properly, due to technical problems! NB! NB!</p> -->
-<p> {% trans "Answer to the questions with full sentences. Remember big initial letter in placenames." %} </p>
+<p> {% trans "Answer to the questions with full sentences. Remember big initial letter in placenames." %} </br></br></p>
 <hr/>
 </td></tr>
 {% endif %}
-
 
 {% if not forms %}
 

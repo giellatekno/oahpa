@@ -130,8 +130,14 @@ function tillatpopup() {
 <div id="rightcontent">
 	{% block rightcontent %}
 	<a name="content" class="hide">&nbsp;</a>
+
+    <div class="interface_language">
+    {% block language %}   
+        {% include 'language_menu.html' %}
+    {% endblock %}
+    </div>
 	<form action="" method="post" id="gameform" name="gameform">
-		
+	
 	<div id="settings">
 		{% block settings %}{% endblock %}
 	</div>
