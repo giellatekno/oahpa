@@ -1,10 +1,28 @@
 {% extends 'univ_oahpa_main.html' %}
 {% load i18n %}
+{% load trans_to %}
 {{ lang_switch }}
 {% get_available_languages as LANGUAGES %}
 {% get_current_language as LANGUAGE_CODE %}
    
 {% block title %}{% endblock %}
+
+{% block extrajs %}
+<script type="text/javascript">
+function tillatpopup() {
+    //document.write(navigator.userAgent)
+    var browser=navigator.userAgent;
+    if (browser.search("Safari")>0 && browser.search("Version/5.1")>0) 
+    {
+        var mine=window.open('','','width=1, height=1, left=0, top=0, scrollbars=no, titlebar=no, toolbar=no,status=no,resizable=no');
+        if (!mine)
+            alert('Tillat popup-vinduer for å se grammatikkforklaringer.');
+        mine.close();    
+    }
+}
+</script>
+{% endblock %}
+
 	
 {% block bodyclass %} {% endblock %}
 {% block pageclass %}game{% endblock %}
@@ -16,19 +34,6 @@
 
 
 {% block main_content %}
-<script type="text/javascript">
-function tillatpopup() {
-    //document.write(navigator.userAgent)
-    var browser=navigator.userAgent;
-    if (browser.search("Safari")>0 && browser.search("Version/5.1")>0) 
-    {
-        var mine = window.open('','','width=1,height=1,left=0,top=0,scrollbars=no,titlebar=no,toolbar=no,status=no,resizable=no');
-        if (!mine)
-            alert('Tillat popup-vinduer for å se grammatikkforklaringer.');
-        mine.close()    
-    }
-}
-</script>
 <ul id="games_menu" class="small">
 
 	<li class="game">
@@ -80,43 +85,43 @@ function tillatpopup() {
 	<p align="center"><b><span style="color: #993366;font-size:0.8em">Hjelp oss å utvikle Oahpa – svar på et lite <span style="color: #9933FF"><a href="http://kursa.oahpa.no/2012/03/27/sporreskjema/">spørreskjema </a></span>om bruk av noen av programmene.</span></b></p>
         <hr color="#CCCCCC">
 	<div id="navbar">
-		<img width="120" height="120" border="0" src="{{ MEDIA_URL }}/images/{% block imgprefix %}{% endblock %}_big.png" alt="Game logo" onload="tillatpopup()"/>
+		<img width="120" height="120" border="0" src="{{ MEDIA_URL }}/images/{% block imgprefix %}{% endblock %}_big.png" alt="Game logo" onload="tillatpopup();"/>
 		<div class="bigheader">{% block gametitlename %}{% endblock %}</div>
 		{% block navbar %}{% endblock %}
 	</div>
 	
-	<strong>{% trans "Reference materials" %}</strong>
+	<strong class="interface">{% trans_to "Reference materials" "sme" %}<span class="invisible">{% trans "Reference materials" %}</span></strong>
 	<ul class="sidelist small">
-		<li><a target="_blank" href="{% block veiledning %}{% endblock %}">{% trans "Veiledning" %}</a></li>
+		<li><a target="_blank" href="{% block veiledning %}{% endblock %}" class="interface">{% trans_to "Veiledning" "sme" %}<span class="invisible">{% trans "Veiledning" %}</span></a></li>
         {% ifequal LANGUAGE_CODE "fi" %}
-            <li><a target="_blank" href="http://victorio.uit.no/webdict/index_sme-fin.html">{% trans "Dictionary" %}</a></li>
+            <li><a target="_blank" href="http://victorio.uit.no/webdict/index_sme-fin.html" class="interface">{% trans_to "Dictionary" "sme" %}<span class="invisible">{% trans "Dictionary" %}</span></a></li>
         {% else %}
-            <li><a target="_blank" href="http://victorio.uit.no/webdict/index_sme-nob.html">{% trans "Dictionary" %}</a></li>
+            <li><a target="_blank" href="http://victorio.uit.no/webdict/index_sme-nob.html" class="interface">{% trans_to "Dictionary" "sme" %}<span class="invisible">{% trans "Dictionary" %}</span></a></li>
         {% endifequal %}
         {% ifequal LANGUAGE_CODE "sme" %}
-            <li><a target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.html">{% trans "Grammar" %}</a></li>
+            <li><a target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.html" class="interface">{% trans_to "Grammar" "sme" %}<span class="invisible">{% trans "Grammar" %}</span></a></li>
         {% endifequal %}
         {% ifequal LANGUAGE_CODE "fi" %}
-            <li><a target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.html">{% trans "Grammar" %}</a></li>
+            <li><a target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.html" class="interface">{% trans_to "Grammar" "sme" %}<span class="invisible">{% trans "Grammar" %}</span></a></li>
         {% endifequal %}
         {% ifequal LANGUAGE_CODE "en" %}
-            <li><a target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.eng.html">{% trans "Grammar" %}</a></li>
+            <li><a target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.eng.html" class="interface">{% trans_to "Grammar" "sme" %}<span class="invisible">{% trans "Grammar" %}</span></a></li>
         {% endifequal %}
         {% ifequal LANGUAGE_CODE "no" %}
-            <li><a target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.nob.html">{% trans "Grammar" %}</a></li>
+            <li><a target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.nob.html" class="interface">{% trans_to "Grammar" "sme" %}<span class="invisible">{% trans "Grammar" %}</span></a></li>
         {% endifequal %}
         {% ifequal LANGUAGE_CODE "sv" %}
-            <li><a target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.nob.html">{% trans "Grammar" %}</a></li>
+            <li><a target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/grammatihkka.nob.html" class="interface">{% trans_to "Grammar" "sme" %}<span class="invisible">{% trans "Grammar" %}</span></a></li>
         {% endifequal %}
     </ul>
 
-	<strong>{% trans "Online courses" %}</strong>
+	<strong class="interface">{% trans_to "Online courses" "sme" %}<span class="invisible">{% trans "Online courses" %}</span></strong>
 	<ul class="sidelist small">
 		{% if user.is_authenticated %}
-			<li><a href="{% url univ_oahpa.courses.views.courses_main %}">{% trans "View progress" %}</a></li>
-			<li><a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>
+			<li><a href="{% url univ_oahpa.courses.views.courses_main %}" class="interface">{% trans_to "View progress" "sme" %}<span class="invisible">{% trans "View progress" %}</span></a></li>
+			<li><a href="{% url univ_oahpa.courses.urls.logout %}" class="interface">{% trans_to "Log out" "sme" %}<span class="invisible">{% trans "Log out" %}</span></a></li>
 		{% else %}
-    		<li><a href="/univ_oahpa/courses/login/">{% trans "Log in" %}</a></li>
+    		<li><a href="/univ_oahpa/courses/login/" class="interface"> {% trans_to "Log in" "sme" %}<span class="invisible">{% trans "Log in" %}</span></a></li>
     	{% endif %}
     </ul>
 	
@@ -150,6 +155,12 @@ function tillatpopup() {
 	{% endblock %}
 
 </div>
-
+<div class="language_help">
+    <a class="helptext" href="#"><!--<img src="/univ_oahpa/media/images/littleman.png" alt="HELP"/></br>-->{% trans "HELP" %}<span class="shortinfo">{% trans "To get the translation of the user interface text to " %} 
+    {% for lc,la in LANGUAGES %}
+        {% ifequal lc LANGUAGE_CODE %} {% trans la|lower %}{% endifequal %}
+    {% endfor %}
+    {% trans "hold down the [Alt] key while pointing at the text with the mouse." %}</span></a>
+</div>    
 {% endblock %}
 

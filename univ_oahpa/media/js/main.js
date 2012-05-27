@@ -28,6 +28,9 @@ $(document).ready(function(){
 	});
 
 	$('div#settings select').change(formsubmit);
+    
+    $('.interface').mouseenter(translate);
+    $('.interface').mouseleave(restore_attr);
 	
 	disable_autocomplete();
 });
@@ -84,6 +87,21 @@ function reveal_feedback (event) {
 	return false; 
 }
 
+// Create a localisation tooltip for the text on HTML elements with class 
+// "interface" when ALT key is hold down and mouse enteres the HTML element
+function translate(event) {  
+    if (event.altKey || event.altLeft) {
+        $(this).children('span').removeAttr('class');
+        $(this).children('span').setAttribute('class',"shortinfo_lang");      
+    }
+}
+
+function restore_attr(event) {
+    $(this).children('span').setAttribute('class',"invisible");
+    this.setAttribute('class',"interface");    
+}
+
+
 // Switch to next field on enter, at end, go back to first empty field
 // or focus test
 function next_field (event) {
@@ -129,6 +147,7 @@ function SetIndex(list,value) {
 		} 
 	} 
 }
+
 	
 
 
