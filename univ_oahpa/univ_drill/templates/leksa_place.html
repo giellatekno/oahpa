@@ -1,14 +1,15 @@
 {% extends "leksa.html" %}
 {% load i18n %}
+{% load trans_to %}
 
 {% block navbar %}
 <ul class="sidelist">
-	<li><a href="{% url leksa %}">{% trans 'Words' %}</a></li>
-	<li class="selected"><a href="{% url leksa.sted %}">{% trans 'Placenames' %}</a></li>
+	<li><a href="{% url leksa %}" class="interface">{% trans_to 'Words' "sme" %}<span class="invisible">{% trans "Words" %}</span></a></li>
+	<li class="selected"><a href="{% url leksa.sted %}" class="interface">{% trans_to 'Placenames' "sme" %}<span class="invisible">{% trans "Placenames" %}</span></a></li>
 </ul>
 {% endblock %}
 
-{% block instructions %}{% trans "Give translations for placenames." %}{% endblock %}
+{% block instructions %}<t class="interface">{% trans_to "Give translations for placenames." "sme" %}<span class="invisible">{% trans "Give translations for placenames." %}</span></t>{% endblock %}
 
 {% block settings %}
 <div class="grammarlinks">
@@ -16,15 +17,15 @@
 </div>
 
 <ul id="settingsform">
-	<li><label for="{{ settingsform.geography.name }}">{% trans "Geography" %}</label>
+	<li><label for="{{ settingsform.geography.name }}" class="interface">{% trans_to "Geography" "sme" %}<span class="invisible">{% trans "Geography" %}</span></label>
 		{{ settingsform.geography }}</li>
-    <li><label>{% trans "Frequency" %}</label>
+    <li><label class="interface">{% trans_to "Frequency" "sme" %}<span class="invisible">{% trans "Frequency" %}</span></label>
     <ul>
-        <li>{{ settingsform.common }} <label for="id_{{ settingsform.common.name }}">{% trans settingsform.common.name %}</label></li>
-        <li>{{ settingsform.rare }} <label for="id_{{ settingsform.rare.name }}">{% trans settingsform.rare.name %}</label></li>
+        <li>{{ settingsform.common }} <label for="id_{{ settingsform.common.name }}" class="interface">{% trans_to settingsform.common.name "sme" %}<span class="invisible">{% trans settingsform.common.name %}</span></label></li>
+        <li>{{ settingsform.rare }} <label for="id_{{ settingsform.rare.name }}" class="interface">{% trans_to settingsform.rare.name "sme" %}<span class="invisible">{% trans settingsform.rare.name %}</span></label></li>
     </ul>
    <!--- <li><label for="id_{{ settingsform.frequency.name }}">{% trans "Frequency" %}</label> -->    
-	<li><label for="{{ settingsform.transtype.name }}">{% trans "Select the language pair" %}</label>
+	<li><label for="{{ settingsform.transtype.name }}" class="interface">{% trans_to "Select the language pair" "sme" %}<span class="invisible">{% trans "Select the language pair" %}</span></label>
 		{{ settingsform.transtype }}</li>
 </ul>
 

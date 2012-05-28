@@ -1,5 +1,6 @@
 {% extends "num.html" %}
 {% load i18n %}
+{% load trans_to %}
 
 {% block navbar %}
 	{% with "numra_ordinal" as gamename_nav %}
@@ -10,9 +11,9 @@
 {% block instructions %}
   {# TODO: strings for instructions. #}
   {% ifequal gametype "string" %}
-    {% trans "Write a numeral followed by a period. (Ex. 32.)" %}
+    <t class="interface">{% trans_to "Write a numeral followed by a period. (Ex. 32.)" "sme" %}<span class="invisible">{% trans "Write a numeral followed by a period. (Ex. 32.)" %}</span></t>
   {% else %}
-    {% trans "Write the ordinal numbers in North Sámi. (Ex. ovccát)" %}
+    <t class="interface">{% trans_to "Write the ordinal numbers in North Sámi. (Ex. ovccát)" "sme" %}<span class="invisible">{% trans "Write the ordinal numbers in North Sámi. (Ex. ovccát)" %}</span></t>
   {% endifequal %}
 {% endblock %}
 

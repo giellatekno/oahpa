@@ -1,5 +1,6 @@
 {% extends "game.html" %}
 {% load i18n %}
+{% load trans_to %}
 
 {% block helpaddress %}
 {% ifequal LANGUAGE_CODE "no" %}
@@ -14,8 +15,8 @@
 
 {% block navbar %}
 <ul class="sidelist">
-	<li class="selected"><a href="{% url leksa %}">{% trans 'Words' %}</a></li>
-	<li><a href="{% url leksa.sted %}">{% trans 'Placenames' %}</a></li>
+	<li class="selected"><a href="{% url leksa %}" class="interface">{% trans_to 'Words' "sme" %}<span class="invisible">{% trans "Words" %}</span></a></li>
+	<li><a href="{% url leksa.sted %}" class="interface">{% trans_to 'Placenames' "sme" %}<span class="invisible">{% trans "Placenames" %}</span></a></li>
 </ul>
 {% endblock %}
 
@@ -38,7 +39,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.nno.html
 {% endblock %}
 
 {% block instructions %}
-	{% trans "Give translations for words. You can choose set or level, not both." %}
+	<t class="interface">{% trans_to "Give translations for words. You can choose set or level, not both." "sme" %}<span class="invisible">{% trans "Give translations for words. You can choose set or level, not both." %}</span></t>
 {% endblock %}
 
 {% block name %}{% trans "Quizz" %}{% endblock %}
@@ -55,11 +56,11 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.nno.html
 {% trans "NB! NB! The Leksa game is not working properly, due to technical problems! NB! NB!" %}
 </li>-->    
 <!-- emergency tag ends -->
-    	<li><label for="id_{{ settingsform.semtype.name }}">{% trans "Set" %}</label>
+    	<li><label for="id_{{ settingsform.semtype.name }}" class="interface"> {% trans_to "Set" "sme" %}<span class="invisible">{% trans "Set" %}</span></label>
     		{{ settingsform.semtype }}</li>
-    	<li><label for="id_{{ settingsform.transtype.name }}">{% trans "Select the language pair" %}</label>
+    	<li><label for="id_{{ settingsform.transtype.name }}" class="interface"> {% trans_to "Select the language pair" "sme" %}<span class="invisible">{% trans "Select the language pair" %}</span></label>
     		{{ settingsform.transtype }}</li>
-    	<li><label for="id_{{ settingsform.source.name }}">{% trans "Book" %}</label>
+    	<li><label for="id_{{ settingsform.source.name }}" class="interface"> {% trans_to "Book" "sme" %}<span class="invisible">{% trans "Book" %}</span></label>
     		{{ settingsform.source }}</li>
     </ul>
     

@@ -1,5 +1,6 @@
 {% extends "game.html" %}
 {% load i18n %}
+{% load trans_to %}
 
 {% block helpaddress %}
 {% ifequal LANGUAGE_CODE "no" %}
@@ -40,10 +41,9 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/vasta.nno.html
 {% block pagename %}/univ_oahpa/vasta/{% endblock %}
 {% block instructions %}
 {% ifequal gametype "cealkka" %}
-{% trans "Answer the questions with full sentences." %} </br> 
-{% trans "The blue words are given in the primary form. Your task is to write them in the correct grammatical form." %}
+    <t class="interface">{% trans_to "Answer the questions with full sentences. The blue words are given in the primary form. Your task is to write them in the correct grammatical form." "sme" %}<span class="invisible">{% trans "Answer the questions with full sentences. The blue words are given in the primary form. Your task is to write them in the correct grammatical form." %}</span></t>
 {% else %}
-{% trans "Answer to the questions with full sentences. Be aware of that if there is moai/mii in the question, you have to answer with doai/dii. " %}
+    <t class="interface">{% trans_to "Answer to the questions with full sentences. Be aware of that if there is moai/mii in the question, you have to answer with doai/dii. " "sme" %}<span class="invisible">{% trans "Answer to the questions with full sentences. Be aware of that if there is moai/mii in the question, you have to answer with doai/dii. " %}</span></t>
 {% endifequal %}
 {% endblock %}
 
