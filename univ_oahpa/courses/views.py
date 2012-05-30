@@ -2,6 +2,10 @@ from django.template import RequestContext
 # from django.utils.translation import ugettext as _
 from django.http import HttpResponseRedirect, HttpResponseForbidden, Http404
 
+from django.conf import settings
+
+URL_PREFIX = settings.URL_PREFIX
+
 
 def render_to_response(*args, **kwargs):
 	""" Append an attribute onto the response so that we can grab the context
@@ -28,7 +32,8 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
 	from django.contrib import auth
 
 	if not next_page:
-		next_page = '/univ_oahpa/courses/' # TODO: change next url for deep links
+		# TODO: change next url for deep links
+		next_page = '/%s/courses/' % URL_PREFIX
 	if request.user.is_authenticated():
 		message = "You are logged in as %s." % request.user.username
 		request.user.message_set.create(message=message)
@@ -61,7 +66,7 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
 			error = "<h1>Forbidden</h1><p>Login failed.</p>"
 			return HttpResponseForbidden(error)
 	else:
-		return HttpResponseRedirect('/univ_oahpa/courses/standard_login/') # TODO: check
+		return HttpResponseRedirect('/%s/courses/standard_login/' % URL_PREFIX) # TODO: check
 
 
 def cookie_logout(request, next_page=None, **kwargs):
@@ -78,7 +83,7 @@ def cookie_logout(request, next_page=None, **kwargs):
 	# redirects.
 
 	if not next_page:
-		next_page = '/univ_oahpa/courses/logout/'
+		next_page = '/%s/courses/logout/' % URL_PREFIX
 	
 	return HttpResponseRedirect(next_page)
 
