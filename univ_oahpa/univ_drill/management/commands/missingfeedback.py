@@ -24,7 +24,11 @@ def findmissing(tfilter=False, count=0):
 	
 	for m in missing.iterator():
 		s = "%(word__lemma)s\t%(fullform)s\t%(tag__string)s" % m
-		print >> sys.stdout, s.encode('utf-8')
+		try:
+			s = s.encode('utf-8')
+		except:
+			pass
+		print >> sys.stdout, s
 
 class Command(BaseCommand):
 	args = '--tagelement'

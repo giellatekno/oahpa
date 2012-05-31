@@ -2100,8 +2100,8 @@ class VastaQuestion(OahpaQuestion):
 
         super(VastaQuestion, self).__init__(*args, **kwargs)
 
-        maxlength=50
-        answer_size=50
+        maxlength=60
+        answer_size=60
         self.fields['answer'] = forms.CharField(max_length = maxlength, \
                                                 widget=forms.TextInput(\
             attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
@@ -2688,8 +2688,8 @@ class CealkkaQuestion(OahpaQuestion):
 
         super(CealkkaQuestion, self).__init__(*args, **kwargs)
 
-        maxlength=50
-        answer_size=50
+        maxlength=60
+        answer_size=60
         self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
         
         self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
