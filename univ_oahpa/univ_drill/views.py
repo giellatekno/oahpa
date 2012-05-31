@@ -857,6 +857,7 @@ class Cealkkaview(Gameview):
 			'forms': game.form_list,
 			'messages': game.form_list[0].messages,
 			'count': game.count,
+			'score': game.score,
 			'comment': game.comment,
 			'all_correct': game.all_correct,
 			'show_correct': game.show_correct,
