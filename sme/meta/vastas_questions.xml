@@ -323,13 +323,17 @@
       </element>
     </answer>
   </q> 
-   <q level="1" lemmacount="2" id="1_PrsSg2_SgAcc_SgIll">
+   <q level="1" lemmacount="3" id="1_PrsSg2_SgAcc_SgIll">
     <qtype>PRS</qtype>
    <question>
       <text>Geasa galggan njoarrat dál</text>
     </question>
     <answer> 
-      <text>Njoara ITEM NOUN</text>
+      <text>VERB ITEM NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>njoarrat</id>
+      </element>
       <element id="ITEM" task="yes">
         <grammar tag="N+Nountype+Sg+Nom"/>
         <sem class="DRINK"/>
@@ -472,7 +476,7 @@
       </element>
    </answer>
   </q> 
-  <q level="2" lemmacount="3" id="2_PrsSg1_Dem_SgGen_Po">
+  <q level="2" lemmacount="3" id="1_PrsSg1_SgGen_Po">
     <qtype>PRS</qtype>
    <question>
       <text>Gosa manat dál</text>
@@ -1245,7 +1249,7 @@
       </element>
     </answer>
   </q> 
-  <q level="1" lemmacount="2" id="3_PrsSg1_Dem_Ill">
+  <q level="1" lemmacount="2" id="1_PrsSg1_Ill">
     <qtype>PRS</qtype>
    <question>
       <text>Gosa manat dál</text>
@@ -1693,14 +1697,14 @@
       </element>
     </answer>
   </q> 
-  <q level="2" lemmacount="2" id="1_PrtSg3_Cop_Actioess">
+  <q level="2" lemmacount="3" id="1_PrtSg3_Cop_Actioess">
     <qtype>PRT</qtype>
    <question>
       <text>Mo manai ikte</text>
     </question>
     <answer> 
       <text>PERSON AUX oppa áigge VERB</text>
-      <element id="PERSON">
+      <element id="PERSON" task="yes">
         <grammar tag="N+Prop+Sg+Nom"/>
         <sem class="mPERSNAME"/>
       </element>
