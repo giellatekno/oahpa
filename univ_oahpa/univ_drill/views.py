@@ -853,6 +853,7 @@ class Cealkkaview(Gameview):
 
 		c = Context({
 			'settingsform': settings_form,
+			'settings': self.settings,
 			'forms': game.form_list,
 			'messages': game.form_list[0].messages,
 			'count': game.count,
