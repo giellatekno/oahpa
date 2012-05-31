@@ -65,13 +65,15 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.nno.html
 <!-- emergency tag ends -->
         {% block setting_items %}
     	<li><label for="id_{{ settingsform.maxnum.name }}" class="interface">{% trans_to "Select the range of numerals." "sme" %}<span class="invisible">{% trans "Select the range of numerals." %}</span></label>
-    		{{ settingsform.maxnum }}</li>
-    	<li><label for="id_{{ settingsform.numgame.name }}" class="interface">{% trans_to "Select the direction" "sme" %}<span class="invisible">{% trans "Select the direction" %}</span></label>{{ settingsform.numgame }} </li>
+    		{{ settingsform.maxnum }} </li>
+    	<li><label for="id_{{ settingsform.numgame.name }}" class="interface">{% trans_to "Select the direction" "sme" %}<span class="invisible">{% trans "Select the direction" %}</span></label>
+        {{ settingsform.numgame }}
+        </li>
         {% endblock %}
     </ul>
     
     <ul id="submittable">
-        <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
+        <li><t class="interface"> <input type="submit" name="settings" value="{% trans_to "New set" "sme" %}" /><span class="invisible">{% trans "New set" %}</span></t></li>
     </ul>
 {% endblock %}
 

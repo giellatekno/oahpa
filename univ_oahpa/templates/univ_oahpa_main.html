@@ -25,7 +25,8 @@
 		<![endif]-->
 	</head>
 
-	{% load i18n %}			
+	{% load i18n %}
+    {% load trans_to %}			
 
 <body class="{% block bodyclass %}main{% endblock %}">
 	<div id="page" class="{% block pageclass %}{% endblock %}">
@@ -112,8 +113,8 @@
 
 		<div id="content">
 			{% block main_content %}
-			<p align="center"><b><span style="color: #993366">Hjelp oss å utvikle Oahpa – svar på et lite <span style="color: #9933FF"><a href="http://kursa.oahpa.no/2012/03/27/sporreskjema/">spørreskjema </a></span>om bruk av noen av programmene.</span></b></p>
-			<hr color="#CCCCCC">
+<!---			<p align="center"><b><span style="color: #993366">Hjelp oss å utvikle Oahpa – svar på et lite <span style="color: #9933FF"><a href="http://kursa.oahpa.no/2012/03/27/sporreskjema/">spørreskjema </a></span>om bruk av noen av programmene.</span></b></p>
+			<hr color="#CCCCCC">  --->
 			<ul id="games_menu">
                 <li class="game">
 					<a href="{% url morfa_s.noun %}">
@@ -217,14 +218,14 @@
 			{% block deeplink %}
 			{% if deeplink %}
 			<div id="deeplink">
-				<a href="{{ deeplink }}">{% trans 'Link to this exercise' %}</a>
+				<a href="{{ deeplink }}" class="interface" style="color:#0000FF">{% trans_to 'Link to this exercise' "sme" %}<span class="invisible">{% trans 'Link to this exercise' %}</span></a>
 			</div>
 			{% endif %}
 			{% endblock %}
 
-			  <p>
-				  {% trans "Copyright 2011 Universitetet i Troms&oslash; " %}<br />
-			{% trans "Contact" %} oahpa@hum.uit.no</p>
+			  <p> <t class="interface">
+				  {% trans_to "Copyright 2011 Universitetet i Troms&oslash; " "sme" %}<span class="invisible">{% trans "Copyright 2011 Universitetet i Troms&oslash; " %}</span></t><br />
+			<t class="interface">{% trans_to "Contact " "sme" %}<span class="invisible"> {% trans "Contact " %} </span></t>oahpa@hum.uit.no</p>
 			</div>
 		</div>
 	</div>
