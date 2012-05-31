@@ -10,8 +10,8 @@ cat final_data.txt >> sahkafinal_data.txt
 perl qa-test_dialogue.pl regressiontests/firstmeeting_all_corr.xml sahka
 cat final_data.txt >> sahkafinal_data.txt
 grep -v ";" sahkafinal_data.txt | grep "&" | grep -v dia >> sahkatestrapport.txt
-echo " " >> vastatestrapport.txt
-echo "error test" >> vastatestrapport.txt
+echo " " >> sahkatestrapport.txt
+echo "error test" >> sahkatestrapport.txt
 perl qa-test_dialogue.pl errortests/grocerytest.xml sahka
 grep -v "^;" final_data.txt | sed 's/^$/¥/' | tr "\n" "€" | tr "¥" "\n" | egrep -v "&(grm|orth|err|sem)" | egrep '[a-zA-Z]' | tr "€" "\n" >> sahkatestrapport.txt
 less sahkatestrapport.txt
