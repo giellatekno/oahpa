@@ -27,8 +27,14 @@ function tillatpopup() {
 {% block bodyclass %} {% endblock %}
 {% block pageclass %}game{% endblock %}
 
-{# Hide language select menus #}
-{% block language_select %} {% endblock %}
+
+{% block language_select %}
+<div id="interface_language">
+    {% include 'language_menu.html' %}
+</div>
+{% endblock %}
+
+
 
 {% block header_content %} {% endblock %}
 
@@ -136,11 +142,7 @@ function tillatpopup() {
 	{% block rightcontent %}
 	<a name="content" class="hide">&nbsp;</a>
 
-    <div class="interface_language">
-    {% block language %}   
-        {% include 'language_menu.html' %}
-    {% endblock %}
-    </div>
+    
 
 	<form action="" method="post" id="gameform" name="gameform">
 	
@@ -156,6 +158,8 @@ function tillatpopup() {
 	{% endblock %}
 
 </div>
+
+
 <div class="language_help">
     <a class="helptext" href="#"><!--<img src="/univ_oahpa/media/images/littleman.png" alt="HELP"/></br>-->{% trans "HELP" %}<span class="shortinfo">{% trans "To get the translation of the user interface text to " %} 
     {% for lc,la in LANGUAGES %}
