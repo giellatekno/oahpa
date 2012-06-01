@@ -74,7 +74,7 @@ foreach my $test ($root->children('test')){
   print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 }
 
-my $command2 = "cat $tmp_file | vislcg3 -g ../sme/src/sme-ped.cg3 |" ;
+my $command2 = "cat $tmp_file | vislcg3 -g ../sme/src/sme-ped.cg3 --trace |" ;
 
 #    print "$command2\n";
 
