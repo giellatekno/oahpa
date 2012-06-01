@@ -40,7 +40,7 @@
   <xsl:variable name="e" select="$of"/>
 
   <!-- input file, extention of the output file -->
-  <xsl:param name="inFile" select="'vasta_input.txt'"/>
+  <xsl:param name="inFile" select="'vastas_input.txt'"/>
   <xsl:param name="outDir" select="'out'"/>
   <xsl:variable name="file_name" select="substring-before((tokenize($inFile, '/'))[last()], '.txt')"/>
 
