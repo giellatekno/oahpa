@@ -782,18 +782,11 @@ def cmgame(request, pos):
 class Vastaview(Gameview):
 
 	def additional_settings(self, settings_form):
-		self.settings['alladj_context'] = settings_form.alladj_context
-		self.settings['allcase_context'] = settings_form.allcase_context
-		self.settings['allnum_context'] = settings_form.allnum_context
-		self.settings['allsem'] = settings_form.allsem
-		self.settings['allvtype_context'] = settings_form.allvtype_context
-		self.settings['level']  =  '1'  # added by Heli
-		self.settings['gametype'] = "qa"
+		self.settings['level'] = settings_form.data.get('level', '1')
 
 	def change_game_settings(self, game):
+		# These are set before new_game is called
 		game.gametype = "qa"
-		game.level = 1
-		game.settings['level']  =  '1'  # added by Heli
 		game.num_fields = 2
 		return game
 	
