@@ -848,7 +848,7 @@ class Cealkkaview(Gameview):
 		return game
 		
 	def set_gamename(self):
-		self.settings['gamename_key'] = self.settings['level']
+		self.settings['gamename_key'] = 'level %s' % str(self.settings['level'])
 	
 	def context(self, request, game, settings_form):
 		# TODO: seems to be fine, but settings['level'] on the first visit is
