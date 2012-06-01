@@ -779,162 +779,55 @@ def cmgame(request, pos):
 				context_instance=RequestContext(request))
 
 
-### @trackGrade("Vasta")
-### class Vastaview(Gameview):
-### 
-### 	def additional_settings(self, settings_form):
-### 		self.settings['alladj_context'] = settings_form.alladj_context
-### 		self.settings['allcase_context'] = settings_form.allcase_context
-### 		self.settings['allnum_context'] = settings_form.allnum_context
-### 		self.settings['allsem'] = settings_form.allsem
-### 		self.settings['allvtype_context'] = settings_form.allvtype_context
-### 		self.settings['level']  =  '1'  # added by Heli
-### 
-### 	def change_game_settings(self, game):
-### 	    self.settings['gametype'] = "qa"
-### 	    game.num_fields = 2
-### 	    return game
-### 	
-### 	def set_gamename(self):
-### 		if 'gamename_key' not in self.settings:
-### 			self.settings['gamename_key'] = self.settings['gametype']
-### 
-### 	def context(self, request, game, settings_form):
-### 
-### 		c = Context({
-### 			'settingsform': settings_form,
-### 			'settings': self.settings,
-### 			'forms': game.form_list,
-### 			'messages': game.form_list[0].messages,
-### 			'count': game.count,
-### 			'comment': game.comment,
-### 			'all_correct': game.all_correct,
-### 			'show_correct': game.show_correct,
-### 			'gametype': "qa",
-### 			'deeplink': self.create_deeplink(game, settings_form)
-### 			})
-### 		return c
-### 
-### 
-### @trackGrade("Vasta")
-### def vasta(request):
-### 
-### 	vastagame = Vastaview(VastaSettings, QAGame)
-### 	# vastagame.init_settings()
-### 
-### 	c = vastagame.create_game(request)
-### 	return render_to_response('vasta.html', c, 
-### 	                            context_instance=RequestContext(request))
+class Vastaview(Gameview):
 
-class Vastaview:
-
-	def init_settings(self):
-
-		show_data=0
-		self.settings = {}
-		
-	def create_vastagame(self,request):
-
-		count=0
-		correct=0
-
+	def additional_settings(self, settings_form):
+		self.settings['alladj_context'] = settings_form.alladj_context
+		self.settings['allcase_context'] = settings_form.allcase_context
+		self.settings['allnum_context'] = settings_form.allnum_context
+		self.settings['allsem'] = settings_form.allsem
+		self.settings['allvtype_context'] = settings_form.allvtype_context
+		self.settings['level']  =  '1'  # added by Heli
 		self.settings['gametype'] = "qa"
-		
-		if request.method == 'POST':
-			data = request.POST.copy()
 
-			# Settings form is checked and handled.
-			settings_form = VastaSettings(request.POST)
+	def change_game_settings(self, game):
+		game.gametype = "qa"
+		game.level = 1
+		game.settings['level']  =  '1'  # added by Heli
+		game.num_fields = 2
+		return game
+	
+	def set_gamename(self):
+		if 'gamename_key' not in self.settings:
+			gamename = 'level %s' % self.settings['level']
+			self.settings['gamename_key'] = gamename
 
-			for k in settings_form.data.keys():
-				self.settings[k] = settings_form.data[k]
-
-			if request.session.has_key('dialect'):
-				self.settings['dialect'] = request.session['dialect']
-
-			if request.session.has_key('django_language'):
-				self.settings['language'] = request.session['django_language']
-			else:
-				self.settings['language'] = request.COOKIES.get("django_language", None)
-
-			self.settings['allcase_context']=settings_form.allcase_context
-			self.settings['allvtype_context']=settings_form.allvtype_context
-			self.settings['allnum_context']=settings_form.allnum_context
-			self.settings['alladj_context']=settings_form.alladj_context
-			self.settings['allsem']=settings_form.allsem
-
-			if settings_form.data.has_key('book'):
-				self.settings['book'] = settings_form.books[settings_form.data['book']]
-
-			# Vasta
-			game = QAGame(self.settings)
-			game.init_tags()
-			game.num_fields = 2
-
-			game.gametype="qa"
-
-			# If settings are changed, a new game is created
-			# Otherwise the game is created using the user input.
-			if "settings" in data:
-				game.new_game()
-			else:
-				game.check_game(data)
-				game.get_score(data)
-
-		# If there is no POST data, default settings are applied
-		else:
-			settings_form = VastaSettings()
-
-			self.settings['allsem']=settings_form.allsem
-			self.settings['allcase_context']=settings_form.allcase_context
-			self.settings['allvtype_context']=settings_form.allvtype_context
-			self.settings['allnum_context']=settings_form.allnum_context
-			self.settings['alladj_context']=settings_form.alladj_context
-			self.settings['level'] = '1'  # added by Heli
-
-			for k in settings_form.default_data.keys():
-				self.settings[k] = settings_form.default_data[k]
-
-			if request.session.has_key('dialect'):
-				self.settings['dialect'] = request.session['dialect']
-
-			if request.session.has_key('django_language'):
-				self.settings['language'] = request.session['django_language']
-			else:
-				self.settings['language'] = request.COOKIES.get("django_language", None)
-
-			# Vasta
-			game = QAGame(self.settings)
-			game.init_tags()
-			game.gametype="qa"
-			game.num_fields = 2
-
-			game.new_game()
-
-		all_correct = 0
-		if game.form_list[0].error == "correct":
-			all_correct = 1
+	def context(self, request, game, settings_form):
 
 		c = Context({
 			'settingsform': settings_form,
+			'settings': self.settings,
 			'forms': game.form_list,
 			'messages': game.form_list[0].messages,
 			'count': game.count,
+			'score': game.score,
 			'comment': game.comment,
-			'all_correct': all_correct,
+			'all_correct': game.all_correct,
+			'show_correct': game.show_correct,
 			'gametype': "qa",
+			'deeplink': self.create_deeplink(game, settings_form)
 			})
 		return c
 
 
+@trackGrade("Vasta F")
 def vasta(request):
 
-	vastagame = Vastaview()
-	vastagame.init_settings()
-	vastagame.settings['gametype'] = "qa"
+	vastagame = Vastaview(VastaSettings, QAGame)
 
-	c = vastagame.create_vastagame(request)
-	return render_to_response('vasta.html', c, context_instance=RequestContext(request))
+	c = vastagame.create_game(request)
+	return render_to_response('vasta.html', c,
+								context_instance=RequestContext(request))
 
 
 class Cealkkaview(Gameview):
