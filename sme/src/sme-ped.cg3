@@ -5757,7 +5757,7 @@ MAP (&grm-missing-NumLoc) TARGET ("galle" Loc) IF (*1 QDL LINK NOT *1 (Num Loc) 
 MAP (&grm-missing-Ord) TARGET ("gallát") IF (*1 QDL LINK NOT *1 (A Ord) OR Neg BARRIER S-BOUNDARY);
 
 
-MAP (&grm-Px-shouldbe-Loc) TARGET (Nom PxSg3) OR (CGErr)((*-1 QDL BARRIER Loc OR DOPPE OR LOC-Po LINK *-1 TARGETQUESTION-LOC) OR (*-1 QDL BARRIER Loc OR DOPPE OR LOC-Po LINK **-1 (N Loc) LINK -1 ("guhte")))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-Px-error-Loc) TARGET (Nom PxSg3) OR (CGErr)((*-1 QDL BARRIER Loc OR DOPPE OR LOC-Po LINK *-1 TARGETQUESTION-LOC) OR (*-1 QDL BARRIER Loc OR DOPPE OR LOC-Po LINK **-1 (N Loc) LINK -1 ("guhte")))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 MAP (&grm-error-CG) TARGET CGErr (*-1 QDL)(0C CGErr)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
@@ -6450,7 +6450,7 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &grm-should-pers      	you shold answer with a pronoun
 # &grm-habitive			wrong habitiv-construction
 # &sem-answer-with-same-verb 	you should answer with the same verb
-# &grm-Px-shouldbe-Loc
+# &grm-Px-error-Loc
 # &grm-error-CG
 # &grm-not-verb-after-workverb
 # &grm-should-not-Nom
