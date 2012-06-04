@@ -3281,7 +3281,7 @@ SELECT (PxSg2) IF (*-1 (Imprt Sg2) BARRIER NPNHA LINK -1 BOS)(*1 ADVLCASE BARRIE
 SELECT:r923 (PxSg2) IF (0 (N Pl Nom))(*1C (V Sg2) BARRIER NOT-ADV-PCLE OR CLB);
 	## Hearrá Ipmilat galggat gudnejahttit.
 
-SELECT:r924 (PxSg2) IF (0 (N Pl Nom))(*-1 V-TRANS-ACT-NOT-ACT + Sg2 BARRIER SV-BOUNDARY OR Acc LINK NOT 0 A OR Imprt OR Inf);
+SELECT:r924 (PxSg2) IF (0 (N Pl Nom))(*-1 V-TRANS-ACT-NOT-ACT + Sg2 BARRIER SV-BOUNDARY OR Acc LINK NOT 0 A OR Imprt OR Inf OR AUX);
 	## Leat go oaidnán oappát?
 
 REMOVE:r925 (Gen PxSg2) IF (*-1 REALCOPULAS BARRIER SV-BOUNDARY)(NEGATE *-1 (Pron Sg2 Loc)BARRIER S-BOUNDARY)(0 (N Pl Nom))(*1 ("mielde"));
@@ -5448,6 +5448,7 @@ LIST ACCESSV = "atnit" "cielahit" "dadjat" "dahkat" "dulkot" "geavahit" "geahča
 
 
 # Essiv
+MAP (&grm-missing-Ess) TARGET V_ESS (NOT *1 Ess) ;
 MAP (&grm-missing-Ess) TARGET ESS-ADVL-N (NOT 0 Ess LINK -1 VERB LINK *-1 QDL) ;
 MAP (&grm-missing-Ess) TARGET N (NOT 0 Ess LINK -1 Acc LINK -1 ACCESSV LINK *-1 QDL) ;
 MAP (&grm-missing-Ess) TARGET PROFESSION (NOT 0 Ess LINK -1 ("bargat") OR ("doaibmat") LINK *-1 QDL) ;
@@ -5838,7 +5839,7 @@ REMOVE Nom IF (-1 V-TRANS-ACT-NOT-ACT OR DURATION-V LINK -1 NP-HEAD + Nom LINK *
 
 
 MAP (&grm-should-not-Nom) TARGET Nom IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH OR CLB LINK *-1 QDL BARRIER S-BOUNDARY OR Acc)(NOT 0 TIME OR ROUTE OR Rel OR Acc OR ("giitu"))(NOT *1 (N Acc))(NEGATE *-1 ACCEPT-EVERYTHING);
-MAP (&grm-should-Plur) TARGET (Plant Sg Acc) IF (*-1 ("čoaggit") BARRIER NPNH OR CLB LINK *-1 QDL BARRIER S-BOUNDARY OR Acc)(NOT 0 Pl)(NOT *1 (N Acc))(NEGATE *-1 ACCEPT-EVERYTHING);
+MAP (&grm-should-Plur) TARGET (Plant Sg Acc) OR ("lieđđi" Sg Acc) IF (*-1 ("čoaggit") BARRIER NPNH OR CLB LINK *-1 QDL BARRIER S-BOUNDARY OR Acc)(NOT 0 Pl)(NOT *1 (N Acc))(NEGATE *-1 ACCEPT-EVERYTHING);
 	## čoaggit sarridiid
 
 
@@ -6073,7 +6074,7 @@ LIST BOTH-PRS-PRT = gos_du_eadni_lea_eret_adult gos_du_eadni_lea_eret_young gos_
 
 MAP (&grm-incorr-tense) TARGET VFIN + Prs (*-1 QDL BARRIER SV-BOUNDARY LINK *-1 VFIN + Prt LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 MAP (&grm-incorr-tense) TARGET (Prs ConNeg) (*-1 QDL BARRIER SV-BOUNDARY LINK *-1 VFIN + Prt  LINK NOT 0 Prs)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-tense) TARGET (Prt ConNeg) (*-1 Neg BARRIER VERB LINK *-1 QDL BARRIER SV-BOUNDARY LINK *-1 VFIN + Prs LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-tense) TARGET (Prt ConNeg) (*-1 Neg BARRIER VERB LINK *-1 QDL BARRIER SV-BOUNDARY LINK *-1 VFIN + Prs OR (Prs ConNeg) LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 MAP (&grm-incorr-tense) TARGET VFIN + Prt (*-1 QDL BARRIER SV-BOUNDARY LINK NOT 0 BOTH-PRS-PRT LINK *-1 VFIN + Prs LINK NOT 0 Prt)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 
