@@ -224,6 +224,10 @@ LIST IllVErr = IllVErr ;
 LIST ComVErr = ComVErr ;
 LIST CGErr = CGErr ;
 LIST DiphErr = DiphErr ;
+LIST AErr = AErr ;
+LIST AiErr = AiErr ;
+LIST AERR = AErr AiErr ;
+LIST ERR = AErr AiErr CGErr ComVErr IllVErr IllErr DiphErr ;
 
 
 LIST Loc = Loc ;
@@ -1938,10 +1942,16 @@ LIST ARABIC = ("([1-9])*"r) ;
 SET NUMCARD = Num - ARABIC ;
 
 LIST PROBLEMLEMMA = ("duo" N) ("Lea" N) ("ristet" V) ("riestit" V) ("ristat" V) ("Dien" N) ;
-
 REMOVE PROBLEMLEMMA ;
 
+
 REMOVE LowercaseErr ;
+
+LIST ERRLEMMAS = "ahte" ;
+
+REMOVE ERR (0 ERRLEMMAS LINK *-1 QDL) ;
+REMOVE ERR (*1 QDL) ;
+
 SELECT (Pers Du1) (0 ("Moa"))  ;
 
 REMOVE ABBR (0 ("dii") LINK NOT 1 ARABIC) ;
@@ -3538,7 +3548,7 @@ SELECT:r986 PrsPrc IF (NEGATE 0 LEX-N)(1 CC OR COMMA LINK 1 A);
 	# -------------------------------------------
  # The remaining Px readings will be taken care of later.
 
-REMOVE:r992 (PxSg1) ; # IF (0 Ess); # yes, kill'em all
+REMOVE:r992 (PxSg1)(NOT 0 Refl) ; # IF (0 Ess); # yes, kill'em all
 	## Ale bala váldimis Márjjá ruktosat áhkkán. 
 
 REMOVE:r993 (Nom PxSg2);
@@ -5383,7 +5393,7 @@ LIST VERBLEMMA = (".*"r V) ;
 LIST PRONLEMMA = (".*"r Pron) ;
 LIST POLEMMA = (".*"r Po) ;
 LIST NUMLEMMA = (".*"r Num) ;
-
+LIST WORDLEMMA = (".*"r) ;
 
 SELECT $$NOUNLEMMA (0 N LINK *-1 VASTAS LINK 0 $$NOUNLEMMA) ;
 SELECT $$VERBLEMMA (0 VERB LINK *-1 VASTAS LINK 0 $$VERBLEMMA) ;
@@ -5464,6 +5474,7 @@ SELECT Prop (*-1 ACCEPT-EVERYTHING BARRIER NOT-ADV-PCLE)(NOT *1 Prop) ;
 MAP (&dia-target) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
 # Collecting name, the first one if there are many
 MAP (&dia-target) TARGET Prop IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea)) ;
+MAP (&dia-target) TARGET N (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea))(NEGATE *1 (&dia-target)) ;
 
 # Collecting name if it its in the lexicon, the first one if there are many
 MAP (&dia-target) TARGET Prop IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila_adult)) ;
@@ -5507,7 +5518,7 @@ MAP:1 (&grm-notInterj) TARGET Interj IF (-1 WORD LINK NOT 0 QDL)(NEGATE *1 EOS O
 MAP:2 (&grm-notInterj) TARGET Interj IF (NEGATE *-1 QDL BARRIER WORD)(1 WORD)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 SELECT ("viessu" N)(NOT 0 QDL) ; 
-REMOVE Px ;  
+REMOVE Px (NEGATE 0 Refl) ;  
 REMOVE Foc/ba (0 (V Du3)) ;
 
 #LIST SCARFS = guhkki oanehaš ;
@@ -5623,7 +5634,7 @@ SELECT Inf (*-1 VFIN OR PrfPrc OR ConNeg BARRIER NOT-ADV LINK 0 INFV LINK *-1 QD
 # ADVERBS
 # -------
 
-SELECT Adv (-1 VFIN)(NEGATE 0 A LINK *1 N BARRIER NPNH)(NOT 0 OKTA) ;
+SELECT Adv (-1 VFIN)(NEGATE 0 A LINK *1 N BARRIER NPNH)(NOT 0 OKTA OR Adv + AERR) ;
 
 # --------
 # VALENCY
@@ -5759,7 +5770,12 @@ MAP (&grm-missing-Ord) TARGET ("gallát") IF (*1 QDL LINK NOT *1 (A Ord) OR Neg 
 
 MAP (&grm-Px-error-Loc) TARGET (Nom PxSg3) OR (CGErr)((*-1 QDL BARRIER Loc OR DOPPE OR LOC-Po LINK *-1 TARGETQUESTION-LOC) OR (*-1 QDL BARRIER Loc OR DOPPE OR LOC-Po LINK **-1 (N Loc) LINK -1 ("guhte")))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
+SET NOTAERR = WORD - AERR ;
+
+REMOVE:AiErr AERR (0 $$VERBLEMMA + NOTAERR LINK 0 $$VERBLEMMA + AERR) ;
+
 MAP (&grm-error-CG) TARGET CGErr (*-1 QDL)(0C CGErr)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-error-longA) TARGET AErr OR AiErr (*-1 QDL)(0C AiErr OR AErr)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 
 MAP (&grm-missing-Loc) TARGET TARGETQUESTION-LOC IF (*1 QDL LINK NOT *1 LOCHEAD OR Neg)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gos") OR Loc);
@@ -5792,11 +5808,11 @@ MAP (&grm-missing-Nom) TARGET TARGETQUESTION-NOM IF (*1 QDL LINK NOT *1 Nom OR N
 MAP (&grm-missing-Ess) TARGET TARGETQUESTION-ESS IF (*1 QDL LINK NOT *1 Ess OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Ess);
 MAP (&grm-missing-Gen) TARGET TARGETQUESTION-GEN IF (*1 QDL LINK NOT *1 Gen OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Gen)(NEGATE 0 TARGETQUESTION-ACC LINK *1 QDL LINK *1 Acc) ;
 
-REMOVE Acc (0 NP-HEAD-GEN OR (Pron Gen) LINK *-1 COPULAS BARRIER NPNH LINK *-1 QDL)(1C N)(NEGATE *1 ACCEPT-EVERYTHING) ;
+REMOVE Acc (0 NP-HEAD-GEN OR (Pron Gen) LINK *-1 COPULAS BARRIER NPNH LINK *-1 QDL)(1C N)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
-REMOVE Acc (0 NP-HEAD-GEN LINK -1 HUMAN + Gen OR (Pron Gen) LINK *-1 COPULAS BARRIER NPNH LINK *-1 QDL)(1C N)(NEGATE *1 ACCEPT-EVERYTHING) ;
+REMOVE Acc (0 NP-HEAD-GEN LINK -1 HUMAN + Gen OR (Pron Gen) LINK *-1 COPULAS BARRIER NPNH LINK *-1 QDL)(1C N)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
-MAP (&grm-missing-Nom) TARGET (N Acc)(*-1 QDL LINK *-1 TARGETQUESTION-NOM)(*-1 COPULAS BARRIER NPNH LINK -1 HUMAN + Nom OR (Pron Nom))(NEGATE *1 ACCEPT-EVERYTHING);
+MAP (&grm-missing-Nom) TARGET (N Acc)(*-1 QDL LINK *-1 TARGETQUESTION-NOM)(*-1 COPULAS BARRIER NPNH LINK -1 HUMAN + Nom OR (Pron Nom))(NEGATE *-1 ACCEPT-EVERYTHING);
 	## Mun lean du vuotnáma ustiba.
 
 
@@ -6452,6 +6468,7 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &sem-answer-with-same-verb 	you should answer with the same verb
 # &grm-Px-error-Loc
 # &grm-error-CG
+# &grm-error-longA
 # &grm-not-verb-after-workverb
 # &grm-should-not-Nom
 # &grm-Vehicle-Com
