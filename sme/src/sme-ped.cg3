@@ -5459,7 +5459,7 @@ MAP (&grm-missing-Ess) TARGET PROFESSION (NOT 0 Ess LINK -1 ("bargat") OR ("doai
 # The user wants to stop the dialogue
 MAP (&dia-stop) TARGET ("heaitit")(*-1 SAHKA) ; 
 
-MAP (&err-orthProp) TARGET LowercaseErr (*-1 QDL LINK 0 PLACENAME-QUESTION BARRIER Prop)(0 Plc) ;
+MAP (&err-capProp) TARGET LowercaseErr (*-1 QDL LINK 0 PLACENAME-QUESTION BARRIER Prop)(0 Plc) ;
 REMOVE LowercaseErr ;
 
 LIST ACCEPT-EVERYTHING = Makkar_snowboard_child Makkar_snowboard_adult Makkar_snowboard_young Mii_namma_lea dialogue_closing ;
@@ -5502,7 +5502,7 @@ MAP (&grm-missing-Loc) TARGET Prop (*-1 ("leat") OR ("orrut") BARRIER Loc OR S-B
 
 
 # For spellingerrors:
-MAP (&err-spellingerror) TARGET QMRK (*-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING)  ;
+MAP (&err-nonword) TARGET QMRK (*-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING)  ;
 
 
 # na+Pcle can only be initial:
@@ -5654,7 +5654,7 @@ LIST VALENCY-OBJ = N Pron Actio Inf ;
 
 # If a STRICTCOMV is followed by a ANIMATE, then the ANIMATE has to be Com. Exception for Gen + N - e.g. bártni moarsi beatnagiin): 
 MAP (&grm-missing-Com) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE LINK NOT 0 Com)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-error-VCom) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE + ComVErr LINK NOT 0 COM-NOT-ERRORS)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&err-VowCom) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE + ComVErr LINK NOT 0 COM-NOT-ERRORS)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
  
 # If a STRICTCOMV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Com: 
@@ -5769,35 +5769,35 @@ MAP (&grm-missing-NumLoc) TARGET ("galle" Loc) IF (*1 QDL LINK NOT *1 (Num Loc) 
 MAP (&grm-missing-Ord) TARGET ("gallát") IF (*1 QDL LINK NOT *1 (A Ord) OR Neg BARRIER S-BOUNDARY);
 
 
-MAP (&grm-Px-error-Loc) TARGET (Nom PxSg3) OR (CGErr)((*-1 QDL BARRIER Loc OR DOPPE OR LOC-Po LINK *-1 TARGETQUESTION-LOC) OR (*-1 QDL BARRIER Loc OR DOPPE OR LOC-Po LINK **-1 (N Loc) LINK -1 ("guhte")))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&err-grm-Px-Loc) TARGET (Nom PxSg3) OR (CGErr)((*-1 QDL BARRIER Loc OR DOPPE OR LOC-Po LINK *-1 TARGETQUESTION-LOC) OR (*-1 QDL BARRIER Loc OR DOPPE OR LOC-Po LINK **-1 (N Loc) LINK -1 ("guhte")))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 SET NOTAERR = WORD - AERR ;
 
 REMOVE:AiErr AERR (0 $$VERBLEMMA + NOTAERR LINK 0 $$VERBLEMMA + AERR) ;
 
-MAP (&grm-error-CG) TARGET CGErr (*-1 QDL)(0C CGErr)(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-error-longA) TARGET AErr OR AiErr (*-1 QDL)(0C AiErr OR AErr)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&err-CG) TARGET CGErr (*-1 QDL)(0C CGErr)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&err-longA) TARGET AErr OR AiErr (*-1 QDL)(0C AiErr OR AErr)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 
 MAP (&grm-missing-Loc) TARGET TARGETQUESTION-LOC IF (*1 QDL LINK NOT *1 LOCHEAD OR Neg)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gos") OR Loc);
 MAP (&grm-missing-Loc) TARGET ("guhte") IF (1 (N Loc) LINK *1 QDL LINK NOT *1 LOCHEAD OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gos") OR Loc);
 
-MAP (&grm-error-VIll) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK *1C IllVErr BARRIER S-BOUNDARY OR ILLHEAD)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);  
-MAP (&grm-error-VIll) TARGET ("guhte") IF (1 (N Ill) LINK *1 QDL LINK *1C IllVErr BARRIER S-BOUNDARY OR ILLHEAD)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
+MAP (&err-VowIll) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK *1C IllVErr BARRIER S-BOUNDARY OR ILLHEAD)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);  
+MAP (&err-VowIll) TARGET ("guhte") IF (1 (N Ill) LINK *1 QDL LINK *1C IllVErr BARRIER S-BOUNDARY OR ILLHEAD)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
 
-MAP (&grm-error-VCom) TARGET TARGETQUESTION-COM IF (*1 QDL LINK *1C ComVErr BARRIER S-BOUNDARY OR Com)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gii") + Com OR Com);  
-MAP (&grm-error-VCom) TARGET ("guhte") IF (1 (N Com) LINK *1 QDL LINK *1C ComVErr BARRIER S-BOUNDARY OR Com)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gii") + Com OR Com);
-
-
-MAP (&grm-error-VIll) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH OR ILLHEAD LINK *-1 QDL)(0 IllVErr)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill))(NEGATE *-1 ACCEPT-EVERYTHING) ;
-
-MAP (&grm-error-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK *1C IllErr BARRIER S-BOUNDARY OR ILLHEAD)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill); 
-MAP (&grm-error-Ill) TARGET ("guhte") IF (1 (N Ill) LINK *1 QDL LINK *1C IllErr BARRIER S-BOUNDARY OR ILLHEAD)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
+MAP (&err-VowCom) TARGET TARGETQUESTION-COM IF (*1 QDL LINK *1C ComVErr BARRIER S-BOUNDARY OR Com)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gii") + Com OR Com);  
+MAP (&err-VowCom) TARGET ("guhte") IF (1 (N Com) LINK *1 QDL LINK *1C ComVErr BARRIER S-BOUNDARY OR Com)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gii") + Com OR Com);
 
 
-MAP (&grm-error-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH OR ILLHEAD LINK *-1 QDL)(0 IllErr)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&err-VowIll) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH OR ILLHEAD LINK *-1 QDL)(0 IllVErr)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
-MAP (&grm-error-Diph) TARGET DiphErr (0C DiphErr)((*-1 QDL BARRIER ILLHEAD LINK *-1 TARGETQUESTION-ILL LINK -1 BOS) OR (*-1 QDL BARRIER Ill LINK *-1 (N Ill) LINK -1 ("guhte")));
+MAP (&err-Illsuf) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK *1C IllErr BARRIER S-BOUNDARY OR ILLHEAD)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill); 
+MAP (&err-Illsuf) TARGET ("guhte") IF (1 (N Ill) LINK *1 QDL LINK *1C IllErr BARRIER S-BOUNDARY OR ILLHEAD)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
+
+
+MAP (&err-Illsuf) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH OR ILLHEAD LINK *-1 QDL)(0 IllErr)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+
+MAP (&err-Diphsim) TARGET DiphErr (0C DiphErr)((*-1 QDL BARRIER ILLHEAD LINK *-1 TARGETQUESTION-ILL LINK -1 BOS) OR (*-1 QDL BARRIER Ill LINK *-1 (N Ill) LINK -1 ("guhte")));
 
 MAP (&grm-missing-Ill) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK NOT *1 ILLHEAD OR Neg OR ("mielde" Po) BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("liikot") LINK *1 Inf BARRIER NOT-ADV-PCLE)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
 MAP (&grm-missing-Ill) TARGET ("guhte") IF (1 (N Ill) LINK *1 QDL LINK NOT *1 ILLHEAD OR Neg BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
@@ -6407,9 +6407,9 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &sem-not_wordlist
 # &sem-gaffe				gáffe vs. gáfet
 
-# &err-spellingerror    	spellingerror word is not in lexicon
-# &grm-error-Diph
-# &grm-error-VIll
+# &err-nonword    	spellingerror word is not in lexicon
+# &err-Diphsim
+# &err-VowIll
 # &sem-same-adj
 # &sem-same-noun
 # &sem-same-verb
@@ -6427,7 +6427,7 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &grm-missing-Ess      	there should be an essive
 # &grm-missing-Gen      	there should be a genetive
 # &grm-missing-Ill      	there should be an illative
-# &grm-error-Ill			the illative form is missing vowelchange
+# &err-Illsuf			the illative form is missing vowelchange
 # &grm-missing-Loc      	there should be a locative
 # &grm-missing-Nom      	there should be a nominative
 # &grm-Hab-Nom
@@ -6467,9 +6467,9 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &grm-should-pers      	you shold answer with a pronoun
 # &grm-habitive			wrong habitiv-construction
 # &sem-answer-with-same-verb 	you should answer with the same verb
-# &grm-Px-error-Loc
-# &grm-error-CG
-# &grm-error-longA
+# &err-grm-Px-Loc
+# &err-CG
+# &err-longA
 # &grm-not-verb-after-workverb
 # &grm-should-not-Nom
 # &grm-Vehicle-Com
