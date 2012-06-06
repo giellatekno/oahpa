@@ -233,5 +233,12 @@
 			</div>
 		</div>
 	</div>
+    <div class="language_help">
+    <a class="helptext" href="#"><!--<img src="/univ_oahpa/media/images/littleman.png" alt="HELP"/></br>-->{% trans "HELP" %}<span class="shortinfo">{% trans "To get the translation of the user interface text to " %} 
+    {% for lc,la in LANGUAGES %}
+        {% ifequal lc LANGUAGE_CODE %} {% trans la|lower %}{% endifequal %}
+    {% endfor %}
+    {% trans "hold down the [Alt] key while pointing at the text with the mouse." %}</span></a>
+</div> 
 </body>
 </html>
