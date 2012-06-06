@@ -1,5 +1,5 @@
 from django.utils import translation
-from django.utils.translation import ugettext
+from django.utils.translation import ugettext as _
 from django.template import Library, Node,  Variable, TemplateSyntaxError
 register = Library()
 
@@ -8,10 +8,12 @@ class TransNode(Node):
         self.value = Variable(value)
         self.lc = lc
 
-    def render(self, context):        
+    def render(self, context):
+        sess_lang = translation.get_language()
+        print sess_lang        
         translation.activate(self.lc)
-        val = ugettext(self.value.resolve(context))        
-        translation.deactivate()        
+        val = _(self.value.resolve(context))        
+        translation.activate(sess_lang)       
         return val
 
 def trans_to(parser, token):
