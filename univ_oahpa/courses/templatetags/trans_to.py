@@ -9,8 +9,7 @@ class TransNode(Node):
         self.lc = lc
 
     def render(self, context):
-        sess_lang = translation.get_language()
-        print sess_lang        
+        sess_lang = translation.get_language()        
         translation.activate(self.lc)
         val = _(self.value.resolve(context))        
         translation.activate(sess_lang)       
