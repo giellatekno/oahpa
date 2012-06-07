@@ -1,5 +1,6 @@
 {% extends "game.html" %}
 {% load i18n %}
+{% load trans_to %}
 
 {% block addcss %}
 <style type="text/css">
@@ -86,6 +87,7 @@ margin-right:11px;
 {% block extrajs %}
 <script src="{{ MEDIA_URL }}/js/prototype.js" type="text/javascript"></script>
 <script src="{{ MEDIA_URL }}/js/univ_oahpa.js" type="text/javascript"></script>
+<script src="{{ MEDIA_URL }}/js/main.js" type="text/javascript"></script>
 <!--[if lt IE 7]>
 <script defer type="text/javascript" src="{{ MEDIA_URL }}/js/pngfix.js"></script>
 <![endif]-->
@@ -104,7 +106,7 @@ function submitSahka(dia) {
 {% block navbar %}
 {% if not forms %}
 <ul class="sidelist">
-	<li class="selected">{% trans "Select a dialogue" %}</li>
+	<li class="selected"><t class="interface">{% trans_to "Select a dialogue" "sme" %}<span class="invisible">{% trans "Select a dialogue" %}</span></t></li>
 </ul>
 
 {% endif %}
@@ -156,7 +158,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/sahka.nno.html
 </div> -->
 <tr><td>
 <!--<p>{% trans "NB! NB! The Sahka game is not working properly, due to technical problems! NB! NB!</p> -->
-<p> {% trans "Answer to the questions with full sentences. Remember big initial letter in placenames." %} </br></br></p>
+<p class="interface"> {% trans_to "Answer to the questions with full sentences. Remember big initial letter in placenames." "sme" %} <span class="invisible">{% trans "Answer to the questions with full sentences. Remember big initial letter in placenames." %}</span></br></br></p>
 <hr/>
 </td></tr>
 {% endif %}
@@ -178,7 +180,8 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/sahka.nno.html
 <input type="hidden" name="settings" id="settings" />
 <a href="javascript:submitSahka('firstmeeting');">
 <img border="0px" height="250" src="{{ MEDIA_URL }}/images/woman001_small.jpg"/></br>
-{% trans "Meeting with Kare" %}</a>
+<t class="interface">{% trans_to "Meeting with Kare" "sme" %}<span class="invisible">{% trans "Meeting with Kare" %}</span></t>
+</a>
 </td>
 <!-- <td>
 <a href="javascript:submitSahka('firstmeeting_man');">
@@ -198,17 +201,20 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/sahka.nno.html
 <td align="center">
 <a href="javascript:submitSahka('visit');">
 <img border="0px" width="180" height="250" src="{{ MEDIA_URL }}/images/visit001.jpg"/></br>
-{% trans "Visit" %}</a>
+<t class="interface">{% trans_to "Visit" "sme" %}<span class="invisible">{% trans "Visit" %}</span></t>
+</a>
 </td>
 <td align="center">
 <a href="javascript:submitSahka('grocery');">
 <img border="0px" width="200" height="200" src="{{ MEDIA_URL }}/images/grocery.jpg"/></br>
-{% trans "Grocery" %}</a>
+<t class="interface">{% trans_to "Grocery" "sme" %}<span class="invisible">{% trans "Grocery" %}</span></t>
+</a>
 </td>
 <td align="center">
 <a href="javascript:submitSahka('shopadj');">
 <img border="0px" height="200" src="{{ MEDIA_URL }}/images/2scarves_small.jpg"/><br/>
-{% trans "Shop" %}</a>
+<t class="interface">{% trans_to "Shop" "sme" %}<span class="invisible">{% trans "Shop" %}</span></t>
+</a>
 </td>
 </tr>
 </table>

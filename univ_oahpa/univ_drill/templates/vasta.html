@@ -59,7 +59,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/vasta.nno.html
 </font></tr>
 <!-- emergency tag ends -->
 <tr>
-<td>{% trans "Level" %}</td>
+<td class="interface">{% trans_to "Level" "sme" %}<span class="invisible">{% trans "Level" %}</span></td>
 <!-- {% ifequal gametype "cealkka" %}<td>{% trans "Number of task words" %}</td>{% endifequal %} -->
 </tr>
 <tr>
@@ -67,6 +67,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/vasta.nno.html
 <!--  {% ifequal gametype "cealkka" %}<td>{{ settingsform.lemmacount }}</td>{% endifequal %}  -->
 </tr>
 </table>
+</br>
 <input type="submit" name="settings" value="{% trans "New set" %}" />
 <!----<input type="hidden" name="gametype" value="qa" /> --->
 

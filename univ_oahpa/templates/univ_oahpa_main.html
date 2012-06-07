@@ -231,14 +231,16 @@
 				  {% trans_to "Copyright 2011 Universitetet i Troms&oslash; " "sme" %}<span class="invisible">{% trans "Copyright 2011 Universitetet i Troms&oslash; " %}</span></t><br />
 			{% trans "Contact " %}oahpa@hum.uit.no</p>
 			</div>
-		</div>
-	</div>
-    <div class="language_help">
+            {% block tooltip_help %}
+            <div class="language_help_frontpage">
     <a class="helptext" href="#"><!--<img src="/univ_oahpa/media/images/littleman.png" alt="HELP"/></br>-->{% trans "HELP" %}<span class="shortinfo">{% trans "To get the translation of the user interface text to " %} 
     {% for lc,la in LANGUAGES %}
         {% ifequal lc LANGUAGE_CODE %} {% trans la|lower %}{% endifequal %}
     {% endfor %}
     {% trans "hold down the [Alt] key while pointing at the text with the mouse." %}</span></a>
-</div> 
-</body>
+            </div>
+            {% endblock %} 
+		</div>        
+	</div>
+    </body>
 </html>
