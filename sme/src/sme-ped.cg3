@@ -5407,8 +5407,8 @@ LIST ILLERRORS = IllErr IllVErr (DiphErr Ill) ;
 SET ILL-NOT-ERRORS = Ill - ILLERRORS ;
 SET COM-NOT-ERRORS = Com - ComVErr ;
 SET NOUN-NOT-CG-ERRORS = N - CGErr ;
-SET ILLHEAD = (N Ill) OR (A Ill) OR (Pers Ill) OR DOHKO OR ILL-Po OR (Indef Ill) OR (Refl Ill) ;
-SET LOCHEAD = (N Loc) OR (A Loc) OR (Pers Loc) OR DOPPE OR LOC-Po OR (Indef Loc) OR (Refl Loc) ;
+SET ILLHEAD = (N Ill) OR (A Ill) OR (Pers Ill) OR DOHKO OR ILL-Po OR (Indef Ill) OR (Refl Ill) OR (Adv Ill) ;
+SET LOCHEAD = (N Loc) OR (A Loc) OR (Pers Loc) OR DOPPE OR LOC-Po OR (Indef Loc) OR (Refl Loc) OR (Adv Loc) ;
 
 REMOVE ILLERRORS + $$NOUNLEMMA (0 $$NOUNLEMMA + ILL-NOT-ERRORS) ;
 REMOVE ComVErr + $$NOUNLEMMA (0 $$NOUNLEMMA + COM-NOT-ERRORS) ;
@@ -5828,7 +5828,7 @@ MAP (&grm-missing-Ill-PP) TARGET ("gosa") IF (*1 QDL LINK NOT *1 ILLHEAD OR Neg 
 MAP (&grm-missing-Acc) TARGET ("makkár") IF (1 Acc LINK NOT 0 Nom LINK *1 QDL LINK NOT *1 Acc BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Acc);
 MAP (&grm-missing-Nom) TARGET ("makkár") IF (1 Nom LINK NOT 0 Acc LINK *1 QDL LINK NOT *1 Nom OR QMRK BARRIER S-BOUNDARY)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 Nom)(NEGATE *1 MAKKAR-BARGU);
 
-MAP (&grm-Vehicle-Com) TARGET VEHICLE IF (NOT 0 Com LINK *-1 VERB LINK 0 ("vuolgit") OR ("mannat") BARRIER NPNH LINK *-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-Vehicle-Com) TARGET VEHICLE IF (NOT 0 Com LINK *-1 VERB LINK 0 ("vuolgit") OR ("mannat") OR ("vuodjit") BARRIER NPNH LINK *-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 MAP (&grm-Loc-leaving) TARGET PLACE + Loc IF (*-1 VERB LINK 0 ("vuodjit") OR ("vuolgit") OR ("mannat") BARRIER Ill OR VERB OR S-BOUNDARY LINK *-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
@@ -5838,7 +5838,7 @@ REMOVE Nom IF (-1 V-TRANS-ACT-NOT-ACT OR DURATION-V LINK -1 NP-HEAD + Nom LINK *
 REMOVE Nom IF (-1 V-TRANS-ACT-NOT-ACT OR DURATION-V LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(0 Num LINK 1 TIME);
 
 
-MAP (&grm-should-not-Nom) TARGET Nom IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH OR CLB LINK *-1 QDL BARRIER S-BOUNDARY OR Acc)(NOT 0 TIME OR ROUTE OR Rel OR Acc OR ("giitu"))(NOT *1 (N Acc))(NEGATE *-1 ACCEPT-EVERYTHING);
+MAP (&grm-should-not-Nom) TARGET Nom IF (*-1 V-TRANS-ACT-NOT-ACT BARRIER NPNH OR CLB LINK *-1 QDL BARRIER S-BOUNDARY OR Acc)(NOT 0 TIME OR ROUTE OR Rel OR Acc OR ("giitu"))(NOT *1 (N Acc))(NOT 1 COPULAS)(NEGATE *-1 ACCEPT-EVERYTHING);
 MAP (&grm-should-Plur) TARGET (Plant Sg Acc) OR ("lieđđi" Sg Acc) IF (*-1 ("čoaggit") BARRIER NPNH OR CLB LINK *-1 QDL BARRIER S-BOUNDARY OR Acc)(NOT 0 Pl)(NOT *1 (N Acc))(NEGATE *-1 ACCEPT-EVERYTHING);
 	## čoaggit sarridiid
 
@@ -5940,7 +5940,7 @@ MAP (&grm-non-agreement-buorre) TARGET BUORRE IF (*-1 QDL)(NOT 0 (Pl Com) OR (Pl
 LIST GALLE-VIELJA = galle_viellja_ja_oabbá_child galle_viellja_ja_oabbá_young galle_viellja_ja_oabbá_adult ;
 # For making exception for case if the answer is okta + Nom
 
-MAP (&grm-numeral-wrong-case) TARGET (N Sg Nom) IF (NOT 0 Gen OR Acc)(*-1 (Num Sg) BARRIER NOT-ADJ LINK NOT 0 N OR OKTA LINK *-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING);
+MAP (&grm-numeral-wrong-case) TARGET (N Sg Nom) IF (NOT 0 Gen OR Acc)(*-1 (Num Sg) BARRIER NOT-ADJ LINK NOT 0 N OR OKTA LINK *-1 QDL)(NOT 0 Loc OR Gen OR Ill)(NEGATE *-1 ACCEPT-EVERYTHING);
 MAP (&grm-numeral-wrong-case) TARGET (N Sg Gen) IF (NOT 0 Nom)(*-1 OKTA BARRIER NOT-ADJ LINK -1 COPULAS LINK *-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING);
 MAP (&grm-numeral-wrong-case) TARGET (N Sg Gen) IF (NOT 0 Nom)(*-1 OKTA BARRIER NOT-ADJ LINK *-1 GALLE-VIELJA) ;
 MAP (&grm-numeral-wrong-case) TARGET (N Pl Gen) IF (NOT 0 Nom)(*-1 Num BARRIER NOT-ADJ LINK NOT 0 (Pl Gen) OR (Pl Acc) LINK *-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING);
@@ -6031,6 +6031,8 @@ MAP (&sem-answer-with-same-verb) TARGET ConNeg (-1 Neg)(0 $$VERBLEMMA LINK *-1 Q
 #SELECT VERB ;
 
 SELECT V-3 (-1 HAB-ACTOR + Loc LINK *-1 QDL) ;
+
+MAP (&err-1pers-prfprc) TARGET PrfPrc (*-1 QDL LINK NOT 0 ACCEPT-EVERYTHING LINK NOT *1 VFIN);
 
 MAP (&grm-should-be-Vfin) TARGET QDL IF (NOT 0 ACCEPT-EVERYTHING)(NOT *1 VFIN);
 	# You should use a finite verb when answering...
