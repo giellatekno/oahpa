@@ -1,7 +1,5 @@
 correct test
-	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5988 
-	"luhkkár" Hum N Pl Nom AErr &err-longA MAP:5779 
-	"biila" Veh N Sg Acc &grm-Vehicle-Com MAP:5831 SELECT:5858 
+	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5992 
  
 error test
 
@@ -20,7 +18,7 @@ error test
 	"dovdat" V TV Ind Prs Sg2 SELECT:3392:r951 
 "<Máhte>"
 	"Máhtte" N Prop Mal Sg Gen SELECT:2025:r855 
-	"Máhtte" N Prop Mal Sg Acc &dia-target SELECT:2025:r855 ADD:6216 ADD:6216 
+	"Máhtte" N Prop Mal Sg Acc &dia-target SELECT:2025:r855 ADD:6220 ADD:6220 
 "<ja>"
 	"ja" CC 
 "<Márja>"
@@ -49,8 +47,8 @@ error test
 	"leat" V IV Ind Prs ConNeg SELECT:5623 
 	"leat" V IV Ind Prs Pl1 SELECT:5623 
 "<mánaidgárddi>"
-	"mánaidgárdi" Org Build N Sg Gen &dia-target MAP:6221 
-	"mánáidgárdi" Org Build N Sg Gen AErr &dia-target MAP:6221 
+	"mánaidgárdi" Org Build N Sg Gen &dia-target ADD:6225 ADD:6225 
+	"mánáidgárdi" Org Build N Sg Gen AErr &dia-target ADD:6225 ADD:6225 
 "<stoahkanapparáhtta>"
 	"stoahkanapparáhtta" N Sg Nom 
 "<.>"
@@ -105,9 +103,9 @@ error test
 	"birra" Po SELECT:4309:r1142 
 "<ságain>"
 	"ságá" N Sg Com AErr 
-	"sáhka" N Pl Loc &dia-target MAP:6224 
-	"ságá" N Pl Loc AErr &dia-target MAP:6224 
-	"ságat" N Pl Loc &dia-target MAP:6224 
+	"sáhka" N Pl Loc &dia-target ADD:6228 ADD:6228 
+	"ságá" N Pl Loc AErr &dia-target ADD:6228 ADD:6228 
+	"ságat" N Pl Loc &dia-target ADD:6228 ADD:6228 
 	"sáhka" N Sg Com 
 "<.>"
 
@@ -125,8 +123,8 @@ error test
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Gean>"
-	"gii" Pron Rel Sg Acc &dia-target ADD:6216 ADD:6216 
-	"gii" Pron Interr Sg Acc &dia-target ADD:6216 ADD:6216 
+	"gii" Pron Rel Sg Acc &dia-target ADD:6220 ADD:6220 
+	"gii" Pron Interr Sg Acc &dia-target ADD:6220 ADD:6220 
 "<speallu>"
 	"speallu" N Sg Nom 
 	"speallat" V TV Imprt Du1 
@@ -137,29 +135,6 @@ error test
 	"leat" V IV Ind Prs Sg3 
 "<?>"
 	"?" CLB 
-
-
-"<Gosa>"
-	"gosa" Adv SELECT:4980:r1327 
-"<bártnit>"
-	"bárdni" Hum N Pl Nom 
-"<bidjet>"
-	"bidjat" V TV Ind Prs Pl3 SELECT:5591 
-"<čoavdagiid>"
-	"čoavdda" N Pl Acc SELECT:5742 
-"<^qst>"
-	"^qst" QDL vastaf 
-"<sii>"
-	"son" Pron Pers Pl3 Nom 
-"<bidjet>"
-	"bidjat" V TV Ind Prs Pl3 SELECT:3496:r976 
-"<daid>"
-	"dat" Pron Dem Pl Com Attr SELECT:5708 
-	"dát" Pron Dem Pl Com Attr AErr SELECT:5708 
-"<latnjai>"
-	"latnja" Plc N Sg Ill IllVErr 
-	"látnjá" Plant N Sg Ill AErr 
-"<.>"
 
 
 "<Maiguin>"
@@ -173,8 +148,8 @@ error test
 "<Moai>"
 	"mun" Pron Pers Du1 Nom SELECT:1955 
 "<maiguin>"
-	"mii" Pron Rel Pl Com &dia-target MAP:6226 
-	"mii" Pron Interr Pl Com &dia-target MAP:6226 
+	"mii" Pron Rel Pl Com &dia-target ADD:6230 ADD:6230 
+	"mii" Pron Interr Pl Com &dia-target ADD:6230 ADD:6230 
 "<čierasteahppi>"
 	"čierastit" V IV Ind Prs Du2 
 "<.>"
@@ -191,8 +166,8 @@ error test
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Mainna>"
-	"mii" Pron Rel Sg Com &dia-target MAP:6226 
-	"mii" Pron Interr Sg Com &dia-target MAP:6226 
+	"mii" Pron Rel Sg Com &dia-target ADD:6230 ADD:6230 
+	"mii" Pron Interr Sg Com &dia-target ADD:6230 ADD:6230 
 "<moai>"
 	"mun" Pron Pers Du1 Nom 
 "<manne>"
@@ -221,24 +196,6 @@ error test
 	"ruoktot" Adv 
 "<moarsiin>"
 	"moarsi" Hum N Pl Loc 
-	"moarsi" Hum N Sg Com &dia-target MAP:6226 
-"<.>"
-
-
-"<Masa>"
-	"mii" Pron Interr Sg Ill SELECT:5540 
-"<dii>"
-	"don" Pron Pers Pl2 Nom 
-"<álgibehtet>"
-	"álgit" V IV Ind Prs Pl2 
-"<^qst>"
-	"^qst" QDL vastaf 
-"<Mii>"
-	"mun" Pron Pers Pl1 Nom SELECT:3079:r878 
-"<álgit>"
-	"álgit" V IV Ind Prs Pl1 SELECT:3474:r971 
-"<loaktii>"
-	"loakta" N DiphErr Sg Ill 
-	"loakti" N Sg Ill IllVErr 
+	"moarsi" Hum N Sg Com &dia-target ADD:6230 ADD:6230 
 "<.>"
 
