@@ -1,10 +1,7 @@
 correct test
 	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5988 
-	"dát" Pron Dem Sg Nom &grm-should-not-Nom MAP:5841 
-	"dát" Pron Dem Pl Nom &grm-should-not-Nom MAP:5841 
-	"luhkkár" Hum N Pl Nom AErr &grm-error-longA MAP:5779 
-	"mii" Pron Interr Sg Ill &grm-missing-Ill SELECT:5540 MAP:5802 
-	"mii" Pron Interr Sg Ill &grm-missing-Ill SELECT:5540 MAP:5802 
+	"luhkkár" Hum N Pl Nom AErr &err-longA MAP:5779 
+	"biila" Veh N Sg Acc &grm-Vehicle-Com MAP:5831 SELECT:5858 
  
 error test
 
@@ -23,7 +20,7 @@ error test
 	"dovdat" V TV Ind Prs Sg2 SELECT:3392:r951 
 "<Máhte>"
 	"Máhtte" N Prop Mal Sg Gen SELECT:2025:r855 
-	"Máhtte" N Prop Mal Sg Acc &dia-target SELECT:2025:r855 ADD:6214 ADD:6214 
+	"Máhtte" N Prop Mal Sg Acc &dia-target SELECT:2025:r855 ADD:6216 ADD:6216 
 "<ja>"
 	"ja" CC 
 "<Márja>"
@@ -52,8 +49,8 @@ error test
 	"leat" V IV Ind Prs ConNeg SELECT:5623 
 	"leat" V IV Ind Prs Pl1 SELECT:5623 
 "<mánaidgárddi>"
-	"mánaidgárdi" Org Build N Sg Gen &dia-target MAP:6219 
-	"mánáidgárdi" Org Build N Sg Gen AErr &dia-target MAP:6219 
+	"mánaidgárdi" Org Build N Sg Gen &dia-target MAP:6221 
+	"mánáidgárdi" Org Build N Sg Gen AErr &dia-target MAP:6221 
 "<stoahkanapparáhtta>"
 	"stoahkanapparáhtta" N Sg Nom 
 "<.>"
@@ -81,8 +78,8 @@ error test
 	"birra" Po SELECT:4309:r1142 
 "<ságaide>"
 	"ságat" N Pl Ill 
-	"ságá" N Pl Ill AErr 
 	"sáhka" N Pl Ill 
+	"ságá" N Pl Ill AErr 
 "<.>"
 
 
@@ -108,9 +105,9 @@ error test
 	"birra" Po SELECT:4309:r1142 
 "<ságain>"
 	"ságá" N Sg Com AErr 
-	"sáhka" N Pl Loc &dia-target MAP:6222 
-	"ságá" N Pl Loc AErr &dia-target MAP:6222 
-	"ságat" N Pl Loc &dia-target MAP:6222 
+	"sáhka" N Pl Loc &dia-target MAP:6224 
+	"ságá" N Pl Loc AErr &dia-target MAP:6224 
+	"ságat" N Pl Loc &dia-target MAP:6224 
 	"sáhka" N Sg Com 
 "<.>"
 
@@ -128,8 +125,8 @@ error test
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Gean>"
-	"gii" Pron Rel Sg Acc &dia-target ADD:6214 ADD:6214 
-	"gii" Pron Interr Sg Acc &dia-target ADD:6214 ADD:6214 
+	"gii" Pron Rel Sg Acc &dia-target ADD:6216 ADD:6216 
+	"gii" Pron Interr Sg Acc &dia-target ADD:6216 ADD:6216 
 "<speallu>"
 	"speallu" N Sg Nom 
 	"speallat" V TV Imprt Du1 
@@ -176,8 +173,8 @@ error test
 "<Moai>"
 	"mun" Pron Pers Du1 Nom SELECT:1955 
 "<maiguin>"
-	"mii" Pron Rel Pl Com &dia-target MAP:6224 
-	"mii" Pron Interr Pl Com &dia-target MAP:6224 
+	"mii" Pron Rel Pl Com &dia-target MAP:6226 
+	"mii" Pron Interr Pl Com &dia-target MAP:6226 
 "<čierasteahppi>"
 	"čierastit" V IV Ind Prs Du2 
 "<.>"
@@ -194,8 +191,8 @@ error test
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Mainna>"
-	"mii" Pron Rel Sg Com &dia-target MAP:6224 
-	"mii" Pron Interr Sg Com &dia-target MAP:6224 
+	"mii" Pron Rel Sg Com &dia-target MAP:6226 
+	"mii" Pron Interr Sg Com &dia-target MAP:6226 
 "<moai>"
 	"mun" Pron Pers Du1 Nom 
 "<manne>"
@@ -223,8 +220,8 @@ error test
 "<ruoktot>"
 	"ruoktot" Adv 
 "<moarsiin>"
-	"moarsi" Hum N Sg Com &dia-target MAP:6224 
 	"moarsi" Hum N Pl Loc 
+	"moarsi" Hum N Sg Com &dia-target MAP:6226 
 "<.>"
 
 

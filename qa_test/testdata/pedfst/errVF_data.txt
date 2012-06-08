@@ -1,3 +1,66 @@
+
+"<Maid>"
+	"mii" Pron Interr Pl Acc SELECT:5540 
+	"mii" Pron Interr Sg Acc SELECT:5540 
+;	"mii" Pron Rel Pl Gen REMOVE:4570:r1212 
+;	"mii" Pron Interr Pl Gen REMOVE:4570:r1212 
+;	"maid" Interj REMOVE:5515 
+;	"mii" Pron Rel Pl Acc SELECT:5540 
+;	"maid" Adv SELECT:5540 
+;	"mii" Pron Rel Sg Acc SELECT:5540 
+"<doai>"
+	"don" Pron Pers Du2 Nom 
+"<bargabeahtti>"
+	"bargat" V TV Ind Prs Du2 
+"<odne>"
+	"odne" Adv 
+"<^qst>"
+	"^qst" QDL vastaf 
+"<Moai>"
+	"mun" Pron Pers Du1 Nom SELECT:1955 
+;	"Moa" N Prop Plc Sg Ill SELECT:1955 
+"<vudje>"
+	"vuodjat" V IV Ind Prs Du1 &dia-target SELECT:3429:r960 MAP:6219 
+	"vuodjit" V TV Ind Prs Du1 &dia-target SELECT:3429:r960 MAP:6219 
+;	"vuodjat" V IV Ind Prt Pl3 SELECT:3429:r960 
+;	"vuodjit" V TV Ind Prt Pl3 SELECT:3429:r960 
+"<biilla>"
+	"biila" Veh N Sg Acc &grm-Vehicle-Com MAP:5831 SELECT:5858 
+;	"biila" Veh N Sg Gen &grm-Vehicle-Com MAP:5831 SELECT:5858 
+"<.>"
+
+
+"<Gos>"
+	"gos" Adv 
+"<luhkkárat>"
+	"luhkkár" Hum N Pl Nom 
+;	"luhkkár" Hum N Sg Gen PxSg2 REMOVE:3295:r928 
+;	"luhkkár" Hum N Sg Nom PxSg2 REMOVE:3295:r928 
+;	"luhkkár" Hum N Sg Acc PxSg2 REMOVE:3295:r928 
+"<leat>"
+	"leat" V IV Ind Prs Pl3 SELECT:5591 SELECT:5599 
+;	"leat" V IV Inf SELECT:5591 
+;	"leat" V IV Ind Prs ConNeg SELECT:5591 
+;	"leat" V IV Ind Prs Sg2 SELECT:5591 SELECT:5599 
+;	"leat" V IV Ind Prs Pl1 SELECT:5591 SELECT:5599 
+"<^qst>"
+	"^qst" QDL vastaf 
+"<Luhkkarat>"
+	"luhkkár" Hum N Pl Nom AErr &err-longA MAP:5779 
+;	"Luhkkar" N Prop Sur Pl Nom REMOVE:2093:r863 
+;	"luhkkár" Hum N Sg Nom PxSg2 AErr REMOVE:3295:r928 
+;	"luhkkár" Hum N Sg Gen PxSg2 AErr REMOVE:3295:r928 
+;	"luhkkár" Hum N Sg Acc PxSg2 AErr REMOVE:3295:r928 
+"<leat>"
+	"leat" V IV Ind Prs Pl3 SELECT:5599 
+;	"leat" V IV Ind Prs Sg2 SELECT:5599 
+;	"leat" V IV Inf SELECT:5599 
+;	"leat" V IV Ind Prs ConNeg SELECT:5599 
+;	"leat" V IV Ind Prs Pl1 SELECT:5599 
+"<Romssas>"
+	"Romsa" N Prop Plc Sg Loc &dia-target MAP:6224 
+"<.>"
+
 "<Bassá>"
 	"bassit" V TV Ind Prs Sg3 
 	"bassat" V TV Ind Prs Sg3 
@@ -17,7 +80,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Bardni>"
-	"bárdni" Hum N Sg Nom AErr &grm-error-longA MAP:5779 
+	"bárdni" Hum N Sg Nom AErr &err-longA MAP:5779 
 ;	"bárdnat" V IV Imprt Du2 AErr REMOVE:1961 
 ;	"bárdnat" V* IV Actor N Sg Gen AErr REMOVE:2068:r542 
 ;	"bárdnat" V* IV Actor N Sg Acc AErr REMOVE:2068:r542 
@@ -99,7 +162,7 @@
 "<in>"
 	"ii" V IV Neg Ind Sg1 
 "<bovrejet>"
-	"bovrejet" ? &err-spellingerror MAP:5505 
+	"bovrejet" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Dorrot>"
@@ -129,7 +192,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<eat>"
-	"ii" V IV Neg Ind Pl1 &grm-incorr-pers-nr MAP:6053 
+	"ii" V IV Neg Ind Pl1 &grm-incorr-pers-nr MAP:6055 
 "<.>"
 
 "<Geaidda>"
@@ -145,7 +208,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<adden>"
-	"áddet" V TV Ind Prs Sg1 AErr &grm-error-longA SELECT:5623 MAP:5779 
+	"áddet" V TV Ind Prs Sg1 AErr &err-longA SELECT:5623 MAP:5779 
 ;	"ádden" N Sg Gen AErr SELECT:5623 
 ;	"áddet" V* TV Der/NomAct N Sg Gen AErr SELECT:5623 
 ;	"áddet" V TV Ind Prt ConNeg AErr SELECT:5623 
@@ -159,7 +222,7 @@
 	"gáffal" N Sg Acc SELECT:5858 
 ;	"gáffal" N Sg Gen SELECT:5858 
 "<eadniide>"
-	"eadniide" ? &err-spellingerror MAP:5505 
+	"eadniide" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geaidda>"
@@ -175,7 +238,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<adden>"
-	"áddet" V TV Ind Prs Sg1 AErr &grm-error-longA SELECT:5623 MAP:5779 
+	"áddet" V TV Ind Prs Sg1 AErr &err-longA SELECT:5623 MAP:5779 
 ;	"ádden" N Sg Gen AErr SELECT:5623 
 ;	"áddet" V* TV Der/NomAct N Sg Gen AErr SELECT:5623 
 ;	"áddet" V TV Ind Prt ConNeg AErr SELECT:5623 
@@ -189,7 +252,7 @@
 	"gáffal" N Sg Gen 
 	"gáffal" N Sg Acc 
 "<áhkuide>"
-	"áhkku" Hum N Pl Ill &dia-target MAP:6220 
+	"áhkku" Hum N Pl Ill &dia-target MAP:6222 
 "<.>"
 
 "<Geaidda>"
@@ -203,7 +266,7 @@
 	"gáffal" N Sg Acc SELECT:5742 
 ;	"gáffal" N Sg Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<addin>"
 	"addit" V TV Actio Gen 
 	"addit" V TV Actio Nom 
@@ -218,7 +281,7 @@
 	"gáffal" N Sg Gen 
 	"gáffal" N Sg Acc 
 "<áhkuide>"
-	"áhkku" Hum N Pl Ill &dia-target MAP:6220 
+	"áhkku" Hum N Pl Ill &dia-target MAP:6222 
 "<.>"
 
 "<Geaidda>"
@@ -233,11 +296,11 @@
 "<luohttá>"
 	"luohttit" V IV Ind Prs Sg3 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<mun>"
 	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5989 
 "<iin>"
-	"iin" ? &err-spellingerror MAP:5505 
+	"iin" ? &err-nonword MAP:5505 
 "<dieđa>"
 	"dieđa" N Sg Nom 
 "<.>"
@@ -281,7 +344,7 @@
 "<luohttá>"
 	"luohttit" V IV Ind Prs Sg3 
 "<moarsii>"
-	"moarsii" ? &err-spellingerror MAP:5505 
+	"moarsii" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geaidda>"
@@ -331,7 +394,7 @@
 	"teadjabaste" N Sg Acc SELECT:5858 
 ;	"teadjabaste" N Sg Gen SELECT:5858 
 "<munje>"
-	"munje" ? &err-spellingerror MAP:5505 
+	"munje" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geaidda>"
@@ -354,7 +417,7 @@
 "<almas>"
 	"Alm" N Prop LowercaseErr Plc Sg Loc &grm-missing-Ill MAP:5670 
 "<olbmoi>"
-	"olbmoi" ? &err-spellingerror MAP:5505 
+	"olbmoi" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geaidda>"
@@ -403,11 +466,11 @@
 "<almas>"
 	"Alm" N Prop LowercaseErr Plc Sg Loc &grm-missing-Ill MAP:5670 
 "<olbmui>"
-	"olmmoš" Hum N Sg Ill &dia-target MAP:6220 
+	"olmmoš" Hum N Sg Ill &dia-target MAP:6222 
 "<.>"
 
 "<Geaidda>"
-	"gii" Pron Interr Pl Ill &grm-error-VIll SELECT:5540 MAP:5785 
+	"gii" Pron Interr Pl Ill &err-VowIll SELECT:5540 MAP:5785 
 ;	"gii" Pron Rel Pl Ill SELECT:5540 
 "<oabbá>"
 	"oabbá" Hum N Sg Nom 
@@ -424,7 +487,7 @@
 "<suhttá>"
 	"suhttat" V IV Ind Prs Sg3 
 "<ádjii>"
-	"ádji" N Sg Ill IllVErr &grm-error-VIll MAP:5792 
+	"ádji" N Sg Ill IllVErr &err-VowIll MAP:5792 
 "<.>"
 
 "<Geaidda>"
@@ -473,7 +536,7 @@
 ;	"dat" Pron Dem Sg Loc Attr REMOVE:3172:r897 
 ;	"dat" Pron Pers Sg3 Gen SELECT:5858 
 "<nieaiddaide>"
-	"nieaiddaide" ? &err-spellingerror MAP:5505 
+	"nieaiddaide" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geaidda>"
@@ -496,9 +559,9 @@
 	"biergogievdni" N Sg Acc SELECT:5742 
 ;	"biergogievdni" N Sg Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<nieiddaide>"
-	"nieida" Hum N Pl Ill &dia-target MAP:6220 
+	"nieida" Hum N Pl Ill &dia-target MAP:6222 
 "<.>"
 
 "<Geaidda>"
@@ -521,7 +584,7 @@
 ;	"jáhkkit" V* TV Actor N Sg Nom Foc/ba REMOVE:5523 
 ;	"jáhkkit" V* TV Actor N Sg Gen Foc/ba REMOVE:5523 
 "<váhnemai>"
-	"váhnemai" ? &err-spellingerror MAP:5505 
+	"váhnemai" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geaidda>"
@@ -544,7 +607,7 @@
 ;	"jáhkkit" V* TV Actor N Sg Nom Foc/ba REMOVE:5523 
 ;	"jáhkkit" V* TV Actor N Sg Gen Foc/ba REMOVE:5523 
 "<váhnemaidda>"
-	"váhnemaidda" ? &err-spellingerror MAP:5505 
+	"váhnemaidda" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geaidda>"
@@ -567,7 +630,7 @@
 ;	"jáhkkit" V* TV Actor N Sg Nom Foc/ba REMOVE:5523 
 ;	"jáhkkit" V* TV Actor N Sg Gen Foc/ba REMOVE:5523 
 "<váhnemaide>"
-	"váhnemaide" ? &err-spellingerror MAP:5505 
+	"váhnemaide" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geaidda>"
@@ -590,7 +653,7 @@
 ;	"jáhkkit" V* TV Actor N Sg Nom Foc/ba REMOVE:5523 
 ;	"jáhkkit" V* TV Actor N Sg Gen Foc/ba REMOVE:5523 
 "<váhnemaii>"
-	"váhnemaii" ? &err-spellingerror MAP:5505 
+	"váhnemaii" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geaidda>"
@@ -727,13 +790,13 @@
 	"dovdat" V TV Ind Prs Pl2 &sem-answer-with-same-verb MAP:6020 
 ;	"dovdát" V TV Ind Prs Pl2 AErr REMOVE:1953 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<mii>"
 	"mii" Pron Interr Sg Nom 
 	"mii" Pron Rel Sg Nom 
 	"mun" Pron Pers Pl1 Nom 
 "<dovdamet>"
-	"dovdamet" ? &err-spellingerror MAP:5505 
+	"dovdamet" ? &err-nonword MAP:5505 
 "<buohkat>"
 	"buohkat" Pron Indef Pl Nom 
 "<.>"
@@ -823,7 +886,7 @@
 ;	"dovdáhit" V TV Imprt ConNeg AErr SELECT:3474:r971 
 ;	"dovdáhit" V TV VGen AErr SELECT:3474:r971 
 "<olmuid>"
-	"olmuid" ? &err-spellingerror MAP:5505 
+	"olmuid" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geaid>"
@@ -862,13 +925,13 @@
 ;	"mii" Pron Interr Sg Nom SELECT:3068:r875 
 ;	"mii" Pron Rel Sg Nom SELECT:3068:r875 
 "<dovde>"
-	"dovdat" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
+	"dovdat" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
 ;	"dovdat" V TV Ind Prt Pl3 SELECT:5623 
 "<mu>"
-	"mun" Pron Pers Sg1 Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"mun" Pron Pers Sg1 Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"mun" Pron Pers Sg1 Gen SELECT:5858 
 "<vieljja>"
-	"vieljja" ? &err-spellingerror MAP:5505 
+	"vieljja" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geaid>"
@@ -907,11 +970,11 @@
 ;	"mii" Pron Interr Sg Nom SELECT:3068:r875 
 ;	"mii" Pron Rel Sg Nom SELECT:3068:r875 
 "<dovde>"
-	"dovdat" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
+	"dovdat" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
 ;	"dovdat" V TV Ind Prt Pl3 SELECT:5623 
 "<mu>"
 	"mun" Pron Pers Sg1 Gen 
-	"mun" Pron Pers Sg1 Acc &dia-target ADD:6214 ADD:6214 
+	"mun" Pron Pers Sg1 Acc &dia-target ADD:6216 ADD:6216 
 "<viellja>"
 	"viellja" Hum N Sg Nom 
 ;	"viellja" Hum N CGErr Sg Acc REMOVE:5415 
@@ -954,11 +1017,11 @@
 ;	"mii" Pron Interr Sg Nom SELECT:3068:r875 
 ;	"mii" Pron Rel Sg Nom SELECT:3068:r875 
 "<dovde>"
-	"dovdat" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
+	"dovdat" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
 ;	"dovdat" V TV Ind Prt Pl3 SELECT:5623 
 "<vanhemiid>"
-	"vánhen" Hum N Pl Acc AErr &grm-error-longA MAP:5779 SELECT:5858 
-;	"vánhen" Hum N Pl Gen AErr &grm-error-longA MAP:5779 SELECT:5858 
+	"vánhen" Hum N Pl Acc AErr &err-longA MAP:5779 SELECT:5858 
+;	"vánhen" Hum N Pl Gen AErr &err-longA MAP:5779 SELECT:5858 
 "<.>"
 
 "<Geaid>"
@@ -983,13 +1046,13 @@
 	"dovdat" V TV Ind Prs Du2 
 	"dovdát" V TV Ind Prs Du2 AErr 
 "<ahči>"
-	"áhčči" Hum N Sg Acc AErr &grm-error-longA MAP:5779 
-	"áhčči" Hum N Sg Gen AErr &grm-error-longA MAP:5779 
+	"áhčči" Hum N Sg Acc AErr &err-longA MAP:5779 
+	"áhčči" Hum N Sg Gen AErr &err-longA MAP:5779 
 "<ja>"
 	"ja" CC 
 "<eatni>"
 	"eadni" Hum N Sg Gen 
-	"eadni" Hum N Sg Acc &dia-target ADD:6214 ADD:6214 
+	"eadni" Hum N Sg Acc &dia-target ADD:6216 ADD:6216 
 "<.>"
 
 "<Geaid>"
@@ -1014,14 +1077,14 @@
 	"dovdat" V TV Ind Prs Du2 
 	"dovdát" V TV Ind Prs Du2 AErr 
 "<ahčči>"
-	"áhčči" Hum N Sg Nom AErr &grm-error-longA MAP:5779 
+	"áhčči" Hum N Sg Nom AErr &err-longA MAP:5779 
 ;	"áhčči" Hum N CGErr Sg Acc AErr REMOVE:5415 
 ;	"áhčči" Hum N CGErr Sg Gen AErr REMOVE:5415 
 "<ja>"
 	"ja" CC 
 "<eatni>"
 	"eadni" Hum N Sg Gen 
-	"eadni" Hum N Sg Acc &dia-target ADD:6214 ADD:6214 
+	"eadni" Hum N Sg Acc &dia-target ADD:6216 ADD:6216 
 "<.>"
 
 "<Geaid>"
@@ -1063,11 +1126,11 @@
 ;	"dovddadit" V IV Ind Prs ConNeg SELECT:3392:r951 
 ;	"dovddadit" V IV VGen SELECT:3392:r951 
 "<Mahhte>"
-	"Mahhte" N Prop Plc Sg Nom Guess &err-spellingerror SUBSTITUTE:5370 MAP:5505 
+	"Mahhte" N Prop Plc Sg Nom Guess &err-nonword SUBSTITUTE:5370 MAP:5505 
 "<ja>"
 	"ja" CC 
 "<Marrja>"
-	"Marrja" N Prop Plc Sg Nom Guess &err-spellingerror SUBSTITUTE:5370 MAP:5505 
+	"Marrja" N Prop Plc Sg Nom Guess &err-nonword SUBSTITUTE:5370 MAP:5505 
 "<.>"
 
 "<Geaid>"
@@ -1109,11 +1172,11 @@
 ;	"dovddadit" V IV Ind Prs ConNeg SELECT:3392:r951 
 ;	"dovddadit" V IV VGen SELECT:3392:r951 
 "<Máhhte>"
-	"Máhhte" N Prop Plc Sg Nom Guess &err-spellingerror SUBSTITUTE:5370 MAP:5505 
+	"Máhhte" N Prop Plc Sg Nom Guess &err-nonword SUBSTITUTE:5370 MAP:5505 
 "<ja>"
 	"ja" CC 
 "<Marrja>"
-	"Marrja" N Prop Plc Sg Nom Guess &err-spellingerror SUBSTITUTE:5370 MAP:5505 
+	"Marrja" N Prop Plc Sg Nom Guess &err-nonword SUBSTITUTE:5370 MAP:5505 
 "<.>"
 
 "<Geaid>"
@@ -1156,14 +1219,14 @@
 ;	"dovddadit" V IV VGen SELECT:3392:r951 
 "<Máhte>"
 	"Máhtte" N Prop Mal Sg Gen SELECT:2025:r855 
-	"Máhtte" N Prop Mal Sg Acc &dia-target SELECT:2025:r855 ADD:6214 ADD:6214 
+	"Máhtte" N Prop Mal Sg Acc &dia-target SELECT:2025:r855 ADD:6216 ADD:6216 
 ;	"máhttit" V TV Imprt ConNeg SELECT:2025:r855 
 ;	"máhttit" V TV Imprt Sg2 SELECT:2025:r855 
 ;	"máhttit" V TV Ind Prs ConNeg SELECT:2025:r855 
 "<ja>"
 	"ja" CC 
 "<Marrja>"
-	"Marrja" N Prop Plc Sg Nom Guess &err-spellingerror SUBSTITUTE:5370 MAP:5505 
+	"Marrja" N Prop Plc Sg Nom Guess &err-nonword SUBSTITUTE:5370 MAP:5505 
 "<.>"
 
 "<Geaid>"
@@ -1206,7 +1269,7 @@
 ;	"dovddadit" V IV VGen SELECT:3392:r951 
 "<Máhte>"
 	"Máhtte" N Prop Mal Sg Gen SELECT:2025:r855 
-	"Máhtte" N Prop Mal Sg Acc &dia-target SELECT:2025:r855 ADD:6214 ADD:6214 
+	"Máhtte" N Prop Mal Sg Acc &dia-target SELECT:2025:r855 ADD:6216 ADD:6216 
 ;	"máhttit" V TV Imprt ConNeg SELECT:2025:r855 
 ;	"máhttit" V TV Imprt Sg2 SELECT:2025:r855 
 ;	"máhttit" V TV Ind Prs ConNeg SELECT:2025:r855 
@@ -1215,6 +1278,10 @@
 "<Márja>"
 	"Márja" N Prop Fem Sg Nom 
 	"Márjá" N Prop Fem Sg Nom AErr 
+;	"Márjá" N Prop Fem CGErr Sg Gen AErr REMOVE:5415 
+;	"Márjá" N Prop Fem CGErr Sg Acc AErr REMOVE:5415 
+;	"Márja" N Prop Fem CGErr Sg Acc REMOVE:5415 
+;	"Márja" N Prop Fem CGErr Sg Gen REMOVE:5415 
 "<.>"
 
 "<Geaid>"
@@ -1259,7 +1326,7 @@
 	"juo" Adv 
 ;	"juo" Interj REMOVE:4630:r1228 
 "<buohka>"
-	"buohka" ? &err-spellingerror MAP:5505 
+	"buohka" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geaid>"
@@ -1282,7 +1349,7 @@
 "<eai>"
 	"ii" V IV Neg Ind Pl3 
 "<dovdat>"
-	"dovdáhit" V TV Ind Prs ConNeg AErr &grm-error-longA SELECT:5582 MAP:5779 
+	"dovdáhit" V TV Ind Prs ConNeg AErr &err-longA SELECT:5582 MAP:5779 
 ;	"dovdát" V* TV Der/h V VGen AErr REMOVE:2083:r548 
 ;	"dovdát" V* TV Der/h V Imprt Sg2 AErr REMOVE:2083:r548 
 ;	"dovdát" V* TV Der/d V Imprt Sg2 AErr REMOVE:2083:r548 
@@ -1323,7 +1390,7 @@
 "<eai>"
 	"ii" V IV Neg Ind Pl3 
 "<dovda>"
-	"dovdát" V TV Ind Prs ConNeg AErr &grm-error-longA SELECT:5582 MAP:5779 
+	"dovdát" V TV Ind Prs ConNeg AErr &err-longA SELECT:5582 MAP:5779 
 ;	"dovdát" V TV Imprt Sg2 AErr REMOVE:4696 
 ;	"dovdát" V TV Imprt ConNeg AErr REMOVE:4696 
 ;	"dovdát" V TV VGen AErr SELECT:5582 
@@ -1387,7 +1454,7 @@
 	"dovdát" V TV Ind Prs Pl2 AErr 
 	"dovdat" V TV Ind Prs Pl2 
 "<mu>"
-	"mun" Pron Pers Sg1 Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"mun" Pron Pers Sg1 Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"mun" Pron Pers Sg1 Gen SELECT:5858 
 "<.>"
 
@@ -1401,15 +1468,17 @@
 "<speallu>"
 	"speallu" N Sg Nom 
 	"speallat" V TV Imprt Du1 
+;	"speallu" N CGErr Sg Acc REMOVE:1953 
+;	"speallu" N CGErr Sg Gen REMOVE:1953 
 "<dát>"
 	"dát" Pron Dem Sg Nom 
 	"dát" Pron Dem Pl Nom 
 "<lea>"
 	"leat" V IV Ind Prs Sg3 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<gitar>"
-	"gitar" ? &err-spellingerror MAP:5505 
+	"gitar" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geaid>"
@@ -1440,8 +1509,8 @@
 	"leat" V IV Ind Prs Pl1 SELECT:5623 
 ;	"leat" V IV Inf SELECT:5623 
 "<mánaidgarddis>"
-	"mánáidgárdi" Org Build N Sg Loc AErr &grm-error-longA MAP:5779 
-	"mánaidgárdi" Org Build N Sg Loc AErr &grm-error-longA MAP:5779 
+	"mánáidgárdi" Org Build N Sg Loc AErr &err-longA MAP:5779 
+	"mánaidgárdi" Org Build N Sg Loc AErr &err-longA MAP:5779 
 ;	"mánaidgárdi" Org Build N Sg Acc PxSg3 AErr REMOVE:3566:r996 
 ;	"mánáidgárdi" Org Build N Sg Gen PxSg3 AErr REMOVE:3566:r996 
 ;	"mánaidgárdi" Org Build N Sg Gen PxSg3 AErr REMOVE:3566:r996 
@@ -1520,7 +1589,7 @@
 	"leat" V IV Ind Prs Pl1 SELECT:5623 
 ;	"leat" V IV Inf SELECT:5623 
 "<mánaigarddis>"
-	"mánaigarddis" ? &err-spellingerror MAP:5505 
+	"mánaigarddis" ? &err-nonword MAP:5505 
 "<stoahkanapparáhtta>"
 	"stoahkanapparáhtta" N Sg Nom 
 ;	"stoahkanapparáhtta" N CGErr Sg Acc REMOVE:5415 
@@ -1555,7 +1624,7 @@
 	"leat" V IV Ind Prs Pl1 SELECT:5623 
 ;	"leat" V IV Inf SELECT:5623 
 "<mánaigárddis>"
-	"mánaigárddis" ? &err-spellingerror MAP:5505 
+	"mánaigárddis" ? &err-nonword MAP:5505 
 "<stoahkanapparáhtta>"
 	"stoahkanapparáhtta" N Sg Nom 
 ;	"stoahkanapparáhtta" N CGErr Sg Acc REMOVE:5415 
@@ -1590,8 +1659,8 @@
 	"leat" V IV Ind Prs Pl1 SELECT:5623 
 ;	"leat" V IV Inf SELECT:5623 
 "<mánaidgárddi>"
-	"mánaidgárdi" Org Build N Sg Gen &dia-target MAP:6219 
-	"mánáidgárdi" Org Build N Sg Gen AErr &dia-target MAP:6219 
+	"mánaidgárdi" Org Build N Sg Gen &dia-target MAP:6221 
+	"mánáidgárdi" Org Build N Sg Gen AErr &dia-target MAP:6221 
 ;	"mánáidgárdi" Org Build N Sg Acc AErr REMOVE:5812 
 ;	"mánaidgárdi" Org Build N Sg Acc REMOVE:5812 
 "<stoahkanapparáhtta>"
@@ -1622,6 +1691,8 @@
 	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5988 
 "<jáhkkan>"
 	"jáhkka" N Ess 
+	"jáhkkit" V TV AiErr PrfPrc 
+	"jáhkkit" V TV AiErr Ind Prt ConNeg 
 ;	"jáhkka" N Sg Nom PxSg1 REMOVE:3551:r992 
 ;	"jáhkka" N Sg Gen PxSg1 REMOVE:3551:r992 
 ;	"jáhkka" N Sg Acc PxSg1 REMOVE:3551:r992 
@@ -1631,7 +1702,7 @@
 "<lea>"
 	"leat" V IV Ind Prs Sg3 
 "<mu>"
-	"mun" Pron Pers Sg1 Gen &dia-target MAP:6219 
+	"mun" Pron Pers Sg1 Gen &dia-target MAP:6221 
 	"mun" Pron Pers Sg1 Acc 
 "<.>"
 
@@ -1657,7 +1728,7 @@
 	"mielki" N Sg Gen 
 	"mielki" N Sg Acc 
 "<Ristiinnii>"
-	"Ristiinna" N Prop Fem Sg Ill &dia-target MAP:6220 
+	"Ristiinna" N Prop Fem Sg Ill &dia-target MAP:6222 
 "<.>"
 
 "<Gos>"
@@ -1673,10 +1744,10 @@
 "<lea>"
 	"leat" V IV Ind Prs Sg3 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Ruovttus>"
 	"ruovttus" Adv 
-	"ruoktu" Plc N Sg Loc &dia-target MAP:6222 
+	"ruoktu" Plc N Sg Loc &dia-target MAP:6224 
 ;	"ruoktu" Plc N Sg Gen PxSg3 REMOVE:3566:r996 
 ;	"ruoktu" Plc N Sg Acc PxSg3 REMOVE:3566:r996 
 "<.>"
@@ -1736,7 +1807,7 @@
 ;	"mii" Pron Interr Sg Nom SELECT:3068:r875 
 ;	"mii" Pron Rel Sg Nom SELECT:3068:r875 
 "<áigut>"
-	"áigut" V TV Ind Prs Pl1 &dia-target SELECT:5597:sticky MAP:6217 
+	"áigut" V TV Ind Prs Pl1 &dia-target SELECT:5597:sticky MAP:6219 
 ;	"áigut" V TV Imprt Pl1 REMOVE:3480:r973 
 ;	"áigut" V TV Imprt Pl2 REMOVE:3480:r973 
 ;	"áigut" V* TV Actor N Pl Nom SELECT:5597:sticky 
@@ -1748,7 +1819,7 @@
 ;	"čoaggit" V TV Ind Prs Pl1 SELECT:5583 
 ;	"čoaggi" Hum N Actor Pl Nom SELECT:5583 
 "<murjjiid>"
-	"muorji" Plant N Pl Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"muorji" Plant N Pl Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"muorji" Plant N Pl Gen SELECT:5858 
 "<.>"
 
@@ -1813,9 +1884,9 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<moau>"
-	"moau" ? &err-spellingerror MAP:5505 
+	"moau" ? &err-nonword MAP:5505 
 "<hupme>"
-	"hupmat" V TV Ind Prs Du1 &grm-incorr-pers-nr SELECT:5623 MAP:6050 
+	"hupmat" V TV Ind Prs Du1 &grm-incorr-pers-nr SELECT:5623 MAP:6052 
 ;	"hupmat" V TV Ind Prt Pl3 SELECT:5623 
 "<.>"
 
@@ -1845,12 +1916,14 @@
 ;	"gulladit" V TV Imprt ConNeg SELECT:3474:r971 
 ;	"gulladit" V TV Imprt Sg2 SELECT:3474:r971 
 "<ságaid>"
-	"sáhka" N Pl Acc SELECT:5742 
 	"ságat" N Pl Acc SELECT:5742 
+	"sáhka" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
-;	"ságat" N Pl Gen SELECT:5742 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
+;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Dii>"
@@ -1866,11 +1939,13 @@
 	"ságat" N Pl Acc SELECT:5858 
 	"ságá" N Pl Acc AErr SELECT:5858 
 	"sáhka" N Pl Acc SELECT:5858 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:5415 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:5415 
 ;	"ságá" N Pl Gen AErr SELECT:5858 
 ;	"ságat" N Pl Gen SELECT:5858 
 ;	"sáhka" N Pl Gen SELECT:5858 
 "<ránjáin>"
-	"ránjáin" ? &err-spellingerror MAP:5505 
+	"ránjáin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geain>"
@@ -1899,12 +1974,14 @@
 ;	"gulladit" V TV Imprt ConNeg SELECT:3474:r971 
 ;	"gulladit" V TV Imprt Sg2 SELECT:3474:r971 
 "<ságaid>"
-	"sáhka" N Pl Acc SELECT:5742 
 	"ságat" N Pl Acc SELECT:5742 
+	"sáhka" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
-;	"ságat" N Pl Gen SELECT:5742 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
+;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Dii>"
@@ -1920,11 +1997,13 @@
 	"ságat" N Pl Acc SELECT:5858 
 	"ságá" N Pl Acc AErr SELECT:5858 
 	"sáhka" N Pl Acc SELECT:5858 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:5415 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:5415 
 ;	"ságá" N Pl Gen AErr SELECT:5858 
 ;	"ságat" N Pl Gen SELECT:5858 
 ;	"sáhka" N Pl Gen SELECT:5858 
 "<ránjás>"
-	"ránjás" ? &err-spellingerror MAP:5505 
+	"ránjás" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geain>"
@@ -1953,12 +2032,14 @@
 ;	"gulladit" V TV Imprt ConNeg SELECT:3474:r971 
 ;	"gulladit" V TV Imprt Sg2 SELECT:3474:r971 
 "<ságaid>"
-	"sáhka" N Pl Acc SELECT:5742 
 	"ságat" N Pl Acc SELECT:5742 
+	"sáhka" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
-;	"ságat" N Pl Gen SELECT:5742 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
+;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Mii>"
@@ -1993,7 +2074,7 @@
 ;	"dát" Pron Dem Pl Gen AErr SELECT:5708 
 ;	"dat" Pron Dem Pl Gen SELECT:5708 
 "<eatnis>"
-	"eadni" Hum N Sg Loc &dia-target MAP:6222 
+	"eadni" Hum N Sg Loc &dia-target MAP:6224 
 ;	"eadni" Hum N Sg Gen PxSg3 REMOVE:3566:r996 
 ;	"eadni" Hum N Sg Acc PxSg3 REMOVE:3566:r996 
 "<.>"
@@ -2010,6 +2091,8 @@
 	"ságat" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
 ;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
@@ -2025,8 +2108,10 @@
 	"ságat" N Pl Acc 
 	"sáhka" N Pl Acc 
 	"ságá" N Pl Acc AErr 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:5415 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:5415 
 "<Charlottas>"
-	"Charlottas" N Prop Plc Sg Loc Guess &err-spellingerror SUBSTITUTE:5369 MAP:5505 
+	"Charlottas" N Prop Plc Sg Loc Guess &err-nonword SUBSTITUTE:5369 MAP:5505 
 "<.>"
 
 "<Geain>"
@@ -2041,6 +2126,8 @@
 	"ságat" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
 ;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
@@ -2056,8 +2143,10 @@
 	"ságat" N Pl Acc 
 	"sáhka" N Pl Acc 
 	"ságá" N Pl Acc AErr 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:5415 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:5415 
 "<Charlottes>"
-	"Charlotte" N Prop Fem Sg Loc &dia-target MAP:6222 
+	"Charlotte" N Prop Fem Sg Loc &dia-target MAP:6224 
 "<.>"
 
 "<Geain>"
@@ -2085,6 +2174,8 @@
 	"sáhka" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
 ;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
@@ -2119,8 +2210,9 @@
 ;	"birra" Pr SELECT:4309:r1142 
 "<ságaide>"
 	"ságat" N Pl Ill 
-	"ságá" N Pl Ill AErr 
 	"sáhka" N Pl Ill 
+	"ságá" N Pl Ill AErr 
+;	"ságá" N CGErr Pl Ill AErr REMOVE:5415 
 ;	"sáhkat" V TV Ind Prt Du2 REMOVE:5590 
 "<.>"
 
@@ -2149,6 +2241,8 @@
 	"sáhka" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
 ;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
@@ -2183,12 +2277,12 @@
 ;	"birra" Pr SELECT:4309:r1142 
 "<ságain>"
 	"ságá" N Sg Com AErr 
-	"sáhka" N Pl Loc &dia-target MAP:6222 
-	"ságá" N Pl Loc AErr &dia-target MAP:6222 
-	"ságat" N Pl Loc &dia-target MAP:6222 
+	"sáhka" N Pl Loc &dia-target MAP:6224 
+	"ságá" N Pl Loc AErr &dia-target MAP:6224 
+	"ságat" N Pl Loc &dia-target MAP:6224 
 	"sáhka" N Sg Com 
-;	"sáhka" N ComVErr Sg Com REMOVE:5414 
-;	"ságá" N ComVErr Sg Com AErr REMOVE:5414 
+;	"ságá" N CGErr Sg Com AErr REMOVE:5415 
+;	"ságá" N CGErr Pl Loc AErr REMOVE:5415 
 "<.>"
 
 "<Geain>"
@@ -2216,12 +2310,14 @@
 	"sáhka" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
 ;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Si>"
-	"Si" ? &err-spellingerror MAP:5505 
+	"Si" ? &err-nonword MAP:5505 
 "<gullet>"
 	"gullat" V TV Ind Prs Pl3 SELECT:5615 
 ;	"gullet" V* IV Der/d V VGen REMOVE:2083:r548 
@@ -2250,8 +2346,9 @@
 ;	"birra" Pr SELECT:4309:r1142 
 "<ságaide>"
 	"ságat" N Pl Ill 
-	"ságá" N Pl Ill AErr 
 	"sáhka" N Pl Ill 
+	"ságá" N Pl Ill AErr 
+;	"ságá" N CGErr Pl Ill AErr REMOVE:5415 
 ;	"sáhkat" V TV Ind Prt Du2 REMOVE:5590 
 "<.>"
 
@@ -2270,7 +2367,7 @@
 	"dovdat" V TV Ind Prs Pl2 &sem-answer-with-same-verb MAP:6020 
 ;	"dovdát" V TV Ind Prs Pl2 AErr REMOVE:1953 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<mii>"
 	"mii" Pron Interr Sg Nom 
 	"mii" Pron Rel Sg Nom 
@@ -2300,7 +2397,7 @@
 	"dovdat" V TV Ind Prs Du1 SELECT:3429:r960 
 ;	"dovdat" V TV Ind Prt Pl3 SELECT:3429:r960 
 "<piera>"
-	"piera" ? &err-spellingerror MAP:5505 
+	"piera" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gean>"
@@ -2323,11 +2420,11 @@
 	"dovdat" V TV Ind Prs Du1 SELECT:3429:r960 
 ;	"dovdat" V TV Ind Prt Pl3 SELECT:3429:r960 
 "<siessa>"
-	"siessái" A Sg Acc AErr &grm-error-longA MAP:5779 SELECT:5858 
+	"siessái" A Sg Acc AErr &err-longA MAP:5779 SELECT:5858 
 ;	"siessá" Hum N CGErr Sg Gen AErr REMOVE:5415 
 ;	"siessá" Hum N CGErr Sg Acc AErr REMOVE:5415 
-;	"siessá" Hum N Sg Nom AErr &grm-error-longA MAP:5779 REMOVE:5836 
-;	"siessái" A Sg Gen AErr &grm-error-longA MAP:5779 SELECT:5858 
+;	"siessá" Hum N Sg Nom AErr &err-longA MAP:5779 REMOVE:5836 
+;	"siessái" A Sg Gen AErr &err-longA MAP:5779 SELECT:5858 
 "<.>"
 
 "<Gean>"
@@ -2364,7 +2461,7 @@
 "<Mun>"
 	"mun" Pron Pers Sg1 Nom 
 "<dovddat>"
-	"dovdat" V TV Ind Prs Sg2 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6086 
+	"dovdat" V TV Ind Prs Sg2 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6088 
 ;	"dovdat" V* TV Der/d V Imprt Sg2 REMOVE:2083:r548 
 ;	"dovdat" V* TV Der/h V Imprt ConNeg REMOVE:2083:r548 
 ;	"dovdat" V* TV Der/h V Ind Prs ConNeg REMOVE:2083:r548 
@@ -2382,7 +2479,7 @@
 ;	"dovddahit" V TV Ind Prs ConNeg SELECT:5623 SELECT:5627 
 ;	"dovddadit" V IV Ind Prs ConNeg SELECT:5623 SELECT:5627 
 "<telefuvnna>"
-	"telefuvnna" ? &err-spellingerror MAP:5505 
+	"telefuvnna" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gean>"
@@ -2421,7 +2518,7 @@
 ;	"Mo" N Prop LowercaseErr Plc Ess REMOVE:1948 
 ;	"Mo" N Prop LowercaseErr Plc Sg Loc REMOVE:1948 
 "<dovdan>"
-	"dovdát" V TV Ind Prs Sg1 AErr &grm-error-longA SELECT:1970 MAP:5779 
+	"dovdát" V TV Ind Prs Sg1 AErr &err-longA SELECT:1970 MAP:5779 
 ;	"dovdat" V TV PrfPrc SELECT:1970 
 ;	"dovdan" N Sg Gen SELECT:1970 
 ;	"dovdat" V TV Actio Nom SELECT:1970 
@@ -2437,6 +2534,8 @@
 ;	"dovdát" V* TV Der/NomAct N Sg Nom AErr SELECT:1970 
 "<eadni>"
 	"eadni" Hum N Sg Nom &grm-should-not-Nom MAP:5841 
+;	"eadni" Hum N CGErr Sg Gen REMOVE:5415 
+;	"eadni" Hum N CGErr Sg Acc REMOVE:5415 
 "<.>"
 
 "<Gean>"
@@ -2475,7 +2574,7 @@
 ;	"Mo" N Prop LowercaseErr Plc Ess REMOVE:1948 
 ;	"Mo" N Prop LowercaseErr Plc Sg Loc REMOVE:1948 
 "<dovdan>"
-	"dovdát" V TV Ind Prs Sg1 AErr &grm-error-longA SELECT:1970 MAP:5779 
+	"dovdát" V TV Ind Prs Sg1 AErr &err-longA SELECT:1970 MAP:5779 
 ;	"dovdat" V TV PrfPrc SELECT:1970 
 ;	"dovdan" N Sg Gen SELECT:1970 
 ;	"dovdat" V TV Actio Nom SELECT:1970 
@@ -2490,7 +2589,7 @@
 ;	"dovdat" V* TV Der/NomAct N Sg Gen SELECT:1970 
 ;	"dovdát" V* TV Der/NomAct N Sg Nom AErr SELECT:1970 
 "<eatni>"
-	"eadni" Hum N Sg Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"eadni" Hum N Sg Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"eadni" Hum N Sg Gen SELECT:5858 
 "<.>"
 
@@ -2524,15 +2623,17 @@
 ;	"dovddadit" V IV Ind Prs ConNeg SELECT:3392:r951 
 ;	"dovddadit" V IV VGen SELECT:3392:r951 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<mon>"
 	"mun" Pron Pers Sg1 Nom 
 ;	"Mo" N Prop LowercaseErr Plc Ess REMOVE:1948 
 ;	"Mo" N Prop LowercaseErr Plc Sg Loc REMOVE:1948 
 "<dovvdan>"
-	"dovvdan" ? &err-spellingerror MAP:5505 
+	"dovvdan" ? &err-nonword MAP:5505 
 "<eadni>"
 	"eadni" Hum N Sg Nom 
+;	"eadni" Hum N CGErr Sg Gen REMOVE:5415 
+;	"eadni" Hum N CGErr Sg Acc REMOVE:5415 
 "<.>"
 
 "<Gean>"
@@ -2639,7 +2740,7 @@
 "<lea>"
 	"leat" V IV Ind Prs Sg3 
 "<mu>"
-	"mun" Pron Pers Sg1 Gen &dia-target MAP:6219 
+	"mun" Pron Pers Sg1 Gen &dia-target MAP:6221 
 	"mun" Pron Pers Sg1 Acc 
 "<.>"
 
@@ -2660,9 +2761,9 @@
 ;	"leat" V IV Inf SELECT:5591 
 ;	"leat" V IV Ind Prs ConNeg SELECT:5591 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<mu>"
-	"mun" Pron Pers Sg1 Gen &dia-target MAP:6219 
+	"mun" Pron Pers Sg1 Gen &dia-target MAP:6221 
 	"mun" Pron Pers Sg1 Acc 
 "<.>"
 
@@ -2758,7 +2859,7 @@
 	"mun" Pron Pers Du1 Nom &grm-incorr-pers-nr SELECT:1955 MAP:5981 
 ;	"Moa" N Prop Plc Sg Ill SELECT:1955 
 "<see>"
-	"see" ? &err-spellingerror MAP:5505 
+	"see" ? &err-nonword MAP:5505 
 "<dovdet>"
 	"dovdat" V TV Ind Prs Pl3 SELECT:5615 
 ;	"dovdat" V TV Imprt Pl2 REMOVE:4696 
@@ -2801,10 +2902,10 @@
 ;	"dovdat" V TV Imprt Pl2 SELECT:3496:r976 
 ;	"dovdat" V TV Ind Prt Sg2 SELECT:3496:r976 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<mu>"
 	"mun" Pron Pers Sg1 Gen 
-	"mun" Pron Pers Sg1 Acc &dia-target ADD:6214 ADD:6214 
+	"mun" Pron Pers Sg1 Acc &dia-target ADD:6216 ADD:6216 
 "<.>"
 
 "<Gean>"
@@ -2815,6 +2916,8 @@
 "<speallu>"
 	"speallu" N Sg Nom 
 	"speallat" V TV Imprt Du1 
+;	"speallu" N CGErr Sg Acc REMOVE:1953 
+;	"speallu" N CGErr Sg Gen REMOVE:1953 
 "<dát>"
 	"dát" Pron Dem Sg Nom 
 	"dát" Pron Dem Pl Nom 
@@ -2823,13 +2926,15 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Gean>"
-	"gii" Pron Rel Sg Acc &dia-target ADD:6214 ADD:6214 
-	"gii" Pron Interr Sg Acc &dia-target ADD:6214 ADD:6214 
+	"gii" Pron Rel Sg Acc &dia-target ADD:6216 ADD:6216 
+	"gii" Pron Interr Sg Acc &dia-target ADD:6216 ADD:6216 
 ;	"gii" Pron Rel Sg Gen REMOVE:5762 
 ;	"gii" Pron Interr Sg Gen REMOVE:5762 
 "<speallu>"
 	"speallu" N Sg Nom 
 	"speallat" V TV Imprt Du1 
+;	"speallu" N CGErr Sg Acc REMOVE:5415 
+;	"speallu" N CGErr Sg Gen REMOVE:5415 
 "<dát>"
 	"dát" Pron Dem Sg Nom 
 	"dát" Pron Dem Pl Nom 
@@ -2857,9 +2962,9 @@
 ;	"leat" V IV Inf SELECT:5591 
 ;	"leat" V IV Ind Prs ConNeg SELECT:5591 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Sara>"
-	"sárrat" V TV Ind Prs ConNeg AErr &grm-error-longA SELECT:5623 MAP:5779 
+	"sárrat" V TV Ind Prs ConNeg AErr &err-longA SELECT:5623 MAP:5779 
 ;	"Sara" N Prop Fem Sg Acc SELECT:5623 
 ;	"Sara" N Prop Fem Sg Attr SELECT:5623 
 ;	"Sara" N Prop Sur Sg Gen SELECT:5623 
@@ -2920,7 +3025,7 @@
 "<in>"
 	"ii" V IV Neg Ind Sg1 
 "<jahkan>"
-	"jáhkkit" V TV Ind Prs AiErr Sg1 AErr &grm-error-longA MAP:5779 
+	"jáhkkit" V TV Ind Prs AiErr Sg1 AErr &err-longA MAP:5779 
 "<.>"
 
 "<Geasa>"
@@ -2941,7 +3046,7 @@
 "<mun>"
 	"mun" Pron Pers Sg1 Nom 
 "<diede>"
-	"diede" ? &err-spellingerror MAP:5505 
+	"diede" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geasa>"
@@ -2962,7 +3067,7 @@
 "<jáhkán>"
 	"jáhkkit" V TV Ind Prs Sg1 
 "<eadnai>"
-	"eadnai" ? &err-spellingerror MAP:5505 
+	"eadnai" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geasa>"
@@ -2983,7 +3088,7 @@
 "<jáhkán>"
 	"jáhkkit" V TV Ind Prs Sg1 
 "<eatnai>"
-	"eatnai" ? &err-spellingerror MAP:5505 
+	"eatnai" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geasa>"
@@ -3004,7 +3109,7 @@
 "<jáhkán>"
 	"jáhkkit" V TV Ind Prs Sg1 
 "<eatnái>"
-	"eatnái" ? &err-spellingerror MAP:5505 
+	"eatnái" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geasa>"
@@ -3026,11 +3131,11 @@
 	"niibi" N Sg Acc SELECT:5742 
 ;	"niibi" N Sg Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Doai>"
 	"don" Pron Pers Du2 Nom 
 "<addbeahtti>"
-	"addbeahtti" ? &err-spellingerror MAP:5505 
+	"addbeahtti" ? &err-nonword MAP:5505 
 "<dan>"
 	"dát" Pron Dem Sg Ill Attr AErr SELECT:5338:DemAttr 
 	"dat" Pron Dem Sg Ill Attr SELECT:5338:DemAttr 
@@ -3043,7 +3148,7 @@
 ;	"dat" Pron Dem Sg Gen SELECT:5338:DemAttr 
 ;	"dat" Pron Dem Sg Loc Attr SELECT:5338:DemAttr 
 "<áhččái>"
-	"áhčči" Hum N Sg Ill &dia-target MAP:6220 
+	"áhčči" Hum N Sg Ill &dia-target MAP:6222 
 "<.>"
 
 "<Geasa>"
@@ -3089,7 +3194,7 @@
 ;	"dát" Pron Dem Sg Loc Attr AErr SELECT:5708 SELECT:5338:DemAttr 
 ;	"dat" Pron Dem Sg Loc Attr SELECT:5708 SELECT:5338:DemAttr 
 "<áhččái>"
-	"áhčči" Hum N Sg Ill &dia-target MAP:6220 
+	"áhčči" Hum N Sg Ill &dia-target MAP:6222 
 "<.>"
 
 "<Geasa>"
@@ -3109,7 +3214,7 @@
 "<jáhkkibeahtti>"
 	"jáhkkit" V TV Ind Prs Du2 
 "<TVi>"
-	"TVi" N Prop Plc Sg Nom Guess &err-spellingerror SUBSTITUTE:5370 MAP:5505 
+	"TVi" N Prop Plc Sg Nom Guess &err-nonword SUBSTITUTE:5370 MAP:5505 
 "<.>"
 
 "<Geasa>"
@@ -3123,13 +3228,13 @@
 	"jáhkkit" V TV Ind Prs Du1 &sem-answer-with-same-verb SELECT:3429:r960 MAP:6020 
 ;	"jáhkkit" V TV Ind Prt Pl3 SELECT:3429:r960 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Doai>"
 	"don" Pron Pers Du2 Nom 
 "<jáhkkebeahtti>"
-	"jáhkkebeahtti" ? &err-spellingerror MAP:5505 
+	"jáhkkebeahtti" ? &err-nonword MAP:5505 
 "<NAV:i>"
-	"NAV" N ACR Sg Ill &dia-target MAP:6220 
+	"NAV" N ACR Sg Ill &dia-target MAP:6222 
 "<.>"
 
 "<Geasa>"
@@ -3143,9 +3248,9 @@
 	"niibi" N Sg Acc SELECT:5742 
 ;	"niibi" N Sg Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Etnii>"
-	"Etne" N Prop Plc Sg Ill &dia-target MAP:6220 
+	"Etne" N Prop Plc Sg Ill &dia-target MAP:6222 
 "<.>"
 
 "<Geasa>"
@@ -3159,9 +3264,9 @@
 	"niibi" N Sg Acc SELECT:5742 
 ;	"niibi" N Sg Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Villjii>"
-	"viellja" Hum N Sg Ill &dia-target MAP:6220 
+	"viellja" Hum N Sg Ill &dia-target MAP:6222 
 "<.>"
 
 "<Geasa>"
@@ -3177,7 +3282,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<ednii>"
-	"ednet" V TV Ind Prt Sg3 &grm-incorr-pers-nr MAP:6048 
+	"ednet" V TV Ind Prt Sg3 &grm-incorr-pers-nr MAP:6050 
 "<.>"
 
 "<Geasa>"
@@ -3194,9 +3299,9 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<muota>"
-	"muota" ? &err-spellingerror MAP:5505 
+	"muota" ? &err-nonword MAP:5505 
 "<suhtta>"
-	"suhttat" V IV Ind Prs AiErr Sg3 &grm-error-longA MAP:5779 
+	"suhttat" V IV Ind Prs AiErr Sg3 &err-longA MAP:5779 
 "<.>"
 
 "<Geasa>"
@@ -3211,8 +3316,8 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Geasa>"
-	"gii" Pron Rel Sg Ill &dia-target MAP:6220 
-	"gii" Pron Interr Sg Ill &dia-target MAP:6220 
+	"gii" Pron Rel Sg Ill &dia-target MAP:6222 
+	"gii" Pron Interr Sg Ill &dia-target MAP:6222 
 "<mánná>"
 	"mánná" Hum N Sg Nom 
 ;	"mánná" Hum N CGErr Sg Gen REMOVE:5415 
@@ -3229,12 +3334,14 @@
 ;	"gii" Pron Rel Sg Ill SELECT:5540 
 "<risteadni>"
 	"risteadni" Hum N Sg Nom 
+;	"risteadni" Hum N CGErr Sg Acc REMOVE:1953 
+;	"risteadni" Hum N CGErr Sg Gen REMOVE:1953 
 "<suhttá>"
 	"suhttat" V IV Ind Prs Sg3 
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Kare>"
-	"káret" V TV Ind Prs Sg3 AErr &grm-error-longA SELECT:5609 MAP:5779 
+	"káret" V TV Ind Prs Sg3 AErr &err-longA SELECT:5609 MAP:5779 
 ;	"káret" V TV Imprt Sg2 AErr SELECT:5609 
 ;	"Kare" N Prop Sur Sg Acc SELECT:5609 
 ;	"káret" V TV Imprt ConNeg AErr SELECT:5609 
@@ -3252,6 +3359,8 @@
 ;	"suhttat" V IV Imprt ConNeg REMOVE:4696 
 "<risteadni>"
 	"risteadni" Hum N Sg Nom 
+;	"risteadni" Hum N CGErr Sg Acc REMOVE:5415 
+;	"risteadni" Hum N CGErr Sg Gen REMOVE:5415 
 "<.>"
 
 "<Geasa>"
@@ -3268,7 +3377,7 @@
 "<Mun>"
 	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5989 
 "<luohtan>"
-	"luohttit" V IV Ind Prs AiErr Sg1 &grm-error-longA MAP:5779 
+	"luohttit" V IV Ind Prs AiErr Sg1 &err-longA MAP:5779 
 "<ristáhčči>"
 	"ristáhčči" Hum N Sg Nom 
 ;	"ristáhčči" Hum N CGErr Sg Acc REMOVE:5415 
@@ -3318,7 +3427,8 @@
 ;	"luohti" N Sg Nom PxSg1 SELECT:3383:r949 
 ;	"luohti" N Sg Gen PxSg1 SELECT:3383:r949 
 "<ristáhččiin>"
-	"ristáhččiin" ? &err-spellingerror MAP:5505 
+	"ristáhčči" Hum N CGErr Pl Loc &grm-missing-Ill MAP:5670 
+	"ristáhčči" Hum N CGErr Sg Com &grm-missing-Ill MAP:5670 
 "<.>"
 
 "<Geasa>"
@@ -3367,11 +3477,11 @@
 	"niibi" N Sg Acc SELECT:5858 
 ;	"niibi" N Sg Gen SELECT:5858 
 "<siddjide>"
-	"siddjide" ? &err-spellingerror MAP:5505 
+	"siddjide" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geasa>"
-	"gii" Pron Interr Sg Ill &grm-error-Ill SELECT:5540 MAP:5794 
+	"gii" Pron Interr Sg Ill &err-Illsuf SELECT:5540 MAP:5794 
 ;	"gii" Pron Rel Sg Ill SELECT:5540 
 "<sii>"
 	"son" Pron Pers Pl3 Nom 
@@ -3401,11 +3511,11 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<in>"
-	"ii" V IV Neg Ind Sg1 &grm-incorr-pers-nr MAP:6046 
+	"ii" V IV Neg Ind Sg1 &grm-incorr-pers-nr MAP:6048 
 "<mun>"
 	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5989 
 "<tiede>"
-	"tiede" ? &err-spellingerror MAP:5505 
+	"tiede" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geasa>"
@@ -3447,7 +3557,7 @@
 	"son" Pron Pers Sg3 Nom SELECT:3109:r885 
 ;	"son" Pcle SELECT:3109:r885 
 "<jahkka>"
-	"jáhkkit" V TV Ind Prs AiErr Sg3 AErr &grm-error-longA SELECT:3405:r954 MAP:5779 
+	"jáhkkit" V TV Ind Prs AiErr Sg3 AErr &err-longA SELECT:3405:r954 MAP:5779 
 ;	"jáhkka" N Sg Nom AErr SELECT:3405:r954 
 ;	"jáhkka" N CGErr Sg Gen AErr SELECT:3405:r954 
 ;	"jáhkka" N CGErr Sg Acc AErr SELECT:3405:r954 
@@ -3461,7 +3571,7 @@
 "<suhttá>"
 	"suhttat" V IV Ind Prs Sg3 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<mon>"
 	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5989 
 ;	"Mo" N Prop LowercaseErr Plc Ess REMOVE:1948 
@@ -3485,6 +3595,8 @@
 	"ságat" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
 ;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
@@ -3499,15 +3611,17 @@
 ;	"mii" Pron Interr Sg Nom SELECT:5549 
 ;	"mii" Pron Rel Sg Nom SELECT:5549 
 "<lean>"
-	"leat" V IV Ind Prs Sg1 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
+	"leat" V IV Ind Prs Sg1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
 ;	"leat" V IV Ind Prt ConNeg SELECT:5623 
 "<gullabehtet>"
-	"gullát" V TV Ind Prs Pl2 AErr &grm-should-not-Vfin MAP:6100 
-	"gullat" V TV Ind Prs Pl2 &grm-should-not-Vfin MAP:6100 
+	"gullát" V TV Ind Prs Pl2 AErr &grm-should-not-Vfin MAP:6102 
+	"gullat" V TV Ind Prs Pl2 &grm-should-not-Vfin MAP:6102 
 "<ságaid>"
 	"ságat" N Pl Acc SELECT:5858 
 	"sáhka" N Pl Acc SELECT:5858 
 	"ságá" N Pl Acc AErr SELECT:5858 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:5415 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:5415 
 ;	"sáhka" N Pl Gen SELECT:5858 
 ;	"ságá" N Pl Gen AErr SELECT:5858 
 ;	"ságat" N Pl Gen SELECT:5858 
@@ -3534,7 +3648,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Ožžon>"
-	"oažžut" V TV Ind Prt Sg1 &grm-incorr-tense SELECT:1970 MAP:6078 
+	"oažžut" V TV Ind Prt Sg1 &grm-incorr-tense SELECT:1970 MAP:6080 
 	"oažžut" V TV Imprt Sg1 SELECT:1970 
 ;	"oažžut" V* TV Der/PassS V Ind Prt ConNeg SELECT:1970 
 ;	"oažžut" V* TV Der/PassS Der/NomAct N Sg Nom SELECT:1970 
@@ -3549,7 +3663,7 @@
 	"skeaŋka" N Sg Acc 
 	"skeaŋka" N Sg Gen 
 "<eatnis>"
-	"eadni" Hum N Sg Loc &dia-target MAP:6222 
+	"eadni" Hum N Sg Loc &dia-target MAP:6224 
 ;	"eadni" Hum N Sg Gen PxSg3 REMOVE:3566:r996 
 ;	"eadni" Hum N Sg Acc PxSg3 REMOVE:3566:r996 
 "<.>"
@@ -3605,9 +3719,9 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Geir-Oves>"
-	"Geir-Ove" N Prop Mal Sg Loc &dia-target MAP:6222 
+	"Geir-Ove" N Prop Mal Sg Loc &dia-target MAP:6224 
 "<leat>"
-	"leat" V IV Ind Prs Pl3 &grm-incorr-nr SELECT:5623 SELECT:6033 MAP:6059:TEST 
+	"leat" V IV Ind Prs Pl3 &grm-incorr-nr SELECT:5623 SELECT:6033 MAP:6061:TEST 
 ;	"leat" V IV Inf SELECT:5623 
 ;	"leat" V IV Ind Prs Sg2 SELECT:5623 SELECT:6033 
 ;	"leat" V IV Ind Prs ConNeg SELECT:5623 SELECT:6033 
@@ -3646,8 +3760,8 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<geas>"
-	"gii" Pron Rel Sg Loc &dia-target MAP:6222 
-	"gii" Pron Interr Sg Loc &dia-target MAP:6222 
+	"gii" Pron Rel Sg Loc &dia-target MAP:6224 
+	"gii" Pron Interr Sg Loc &dia-target MAP:6224 
 "<lea>"
 	"leat" V IV Ind Prs Sg3 
 "<váralaš>"
@@ -3710,8 +3824,8 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Geas>"
-	"gii" Pron Rel Sg Loc &dia-target MAP:6222 
-	"gii" Pron Interr Sg Loc &dia-target MAP:6222 
+	"gii" Pron Rel Sg Loc &dia-target MAP:6224 
+	"gii" Pron Interr Sg Loc &dia-target MAP:6224 
 "<lea>"
 	"leat" V IV Ind Prs Sg3 
 "<váralaš>"
@@ -3754,12 +3868,14 @@
 ;	"gulladit" V TV Imprt ConNeg SELECT:3474:r971 
 ;	"gulladit" V TV Imprt Sg2 SELECT:3474:r971 
 "<ságaid>"
-	"sáhka" N Pl Acc SELECT:5742 
 	"ságat" N Pl Acc SELECT:5742 
+	"sáhka" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
-;	"ságat" N Pl Gen SELECT:5742 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
+;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Mii>"
@@ -3789,10 +3905,12 @@
 	"sáhka" N Pl Acc AErr SELECT:5858 
 	"ságat" N Pl Acc AErr SELECT:5858 
 	"saga" N Pl Acc SELECT:5858 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:5415 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:5415 
 ;	"ságá" N Pl Gen AErr SELECT:5858 
 ;	"saga" N Pl Gen SELECT:5858 
-;	"sáhka" N Pl Gen AErr SELECT:5858 
 ;	"ságat" N Pl Gen AErr SELECT:5858 
+;	"sáhka" N Pl Gen AErr SELECT:5858 
 "<.>"
 
 "<Geas>"
@@ -3848,7 +3966,7 @@
 	"skeaŋka" N Sg Acc SELECT:5742 
 ;	"skeaŋka" N Sg Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<mii>"
 	"mii" Pron Interr Sg Nom 
 	"mii" Pron Rel Sg Nom 
@@ -3857,7 +3975,7 @@
 	"gii" Pron Rel Sg Loc 
 	"gii" Pron Interr Sg Loc 
 "<skeankka>"
-	"skeankka" ? &err-spellingerror MAP:5505 
+	"skeankka" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geas>"
@@ -3877,7 +3995,7 @@
 	"skeaŋka" N Sg Acc SELECT:5742 
 ;	"skeaŋka" N Sg Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<mii>"
 	"mii" Pron Interr Sg Nom 
 	"mii" Pron Rel Sg Nom 
@@ -3910,6 +4028,8 @@
 	"ságat" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
 ;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
@@ -3917,7 +4037,7 @@
 "<Doai>"
 	"don" Pron Pers Du2 Nom 
 "<gulle>"
-	"gullat" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6086 
+	"gullat" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6088 
 ;	"gullet" V IV Ind Prs Sg3 REMOVE:3411:r956 
 ;	"gullet" V IV Imprt ConNeg REMOVE:4696 
 ;	"gullet" V IV Imprt Sg2 REMOVE:4696 
@@ -3927,8 +4047,10 @@
 "<sagaid>"
 	"saga" N Pl Acc SELECT:5858 
 	"ságá" N Pl Acc AErr SELECT:5858 
-	"sáhka" N Pl Acc AErr SELECT:5858 
 	"ságat" N Pl Acc AErr SELECT:5858 
+	"sáhka" N Pl Acc AErr SELECT:5858 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:5415 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:5415 
 ;	"ságá" N Pl Gen AErr SELECT:5858 
 ;	"saga" N Pl Gen SELECT:5858 
 ;	"sáhka" N Pl Gen AErr SELECT:5858 
@@ -3955,14 +4077,16 @@
 	"ságat" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
 ;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<doai>"
 	"don" Pron Pers Du2 Nom 
 "<gullebeahti>"
-	"gullebeahti" ? &err-spellingerror MAP:5505 
+	"gullebeahti" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geas>"
@@ -3977,6 +4101,8 @@
 	"ságat" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
 ;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
@@ -3988,7 +4114,7 @@
 ;	"dot" Pron Dem Sg Loc Attr REMOVE:5342 
 ;	"dot" Pron Dem Sg Ill Attr REMOVE:5342 
 "<gulan>"
-	"gullat" V TV Ind Prs Sg1 &grm-non-agr-subj-v MAP:6086 
+	"gullat" V TV Ind Prs Sg1 &grm-non-agr-subj-v MAP:6088 
 "<ságaid>"
 	"sáhka" N Pl Gen 
 	"ságá" N Pl Gen AErr 
@@ -3996,8 +4122,10 @@
 	"ságat" N Pl Acc 
 	"sáhka" N Pl Acc 
 	"ságá" N Pl Acc AErr 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:5415 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:5415 
 "<eatnis>"
-	"eadni" Hum N Sg Loc &dia-target MAP:6222 
+	"eadni" Hum N Sg Loc &dia-target MAP:6224 
 ;	"eadni" Hum N Sg Gen PxSg3 REMOVE:3566:r996 
 ;	"eadni" Hum N Sg Acc PxSg3 REMOVE:3566:r996 
 "<.>"
@@ -4031,17 +4159,17 @@
 	"skeaŋka" N Sg Acc SELECT:5742 
 ;	"skeaŋka" N Sg Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oažžobehtet>"
-	"oažžobehtet" ? &err-spellingerror MAP:5505 
+	"oažžobehtet" ? &err-nonword MAP:5505 
 "<skeaŋkka>"
 	"skeaŋka" N Sg Acc 
 	"skeaŋka" N Sg Gen 
 "<váhnemiin>"
 	"váhnen" Hum N Sg Com 
-	"váhnen" Hum N Pl Loc &dia-target MAP:6222 
+	"váhnen" Hum N Pl Loc &dia-target MAP:6224 
 "<.>"
 
 "<Geas>"
@@ -4077,12 +4205,12 @@
 "<Sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oažžubehtet>"
-	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<skeaŋkka>"
 	"skeaŋka" N Sg Acc SELECT:5858 
 ;	"skeaŋka" N Sg Gen SELECT:5858 
 "<váhnemas>"
-	"váhnemas" ? &err-spellingerror MAP:5505 
+	"váhnemas" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geas>"
@@ -4118,13 +4246,13 @@
 "<Sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oažžubehtet>"
-	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<skeaŋkka>"
 	"skeaŋka" N Sg Acc 
 	"skeaŋka" N Sg Gen 
 "<váhnemiin>"
 	"váhnen" Hum N Sg Com 
-	"váhnen" Hum N Pl Loc &dia-target MAP:6222 
+	"váhnen" Hum N Pl Loc &dia-target MAP:6224 
 "<.>"
 
 "<Geas>"
@@ -4160,12 +4288,12 @@
 "<Sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oažžubehtet>"
-	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<skeaŋkka>"
 	"skeaŋka" N Sg Acc SELECT:5858 
 ;	"skeaŋka" N Sg Gen SELECT:5858 
 "<váhnes>"
-	"váhnes" ? &err-spellingerror MAP:5505 
+	"váhnes" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geas>"
@@ -4201,12 +4329,12 @@
 "<Sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oažžubehtet>"
-	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<skeaŋkka>"
 	"skeaŋka" N Sg Acc 
 	"skeaŋka" N Sg Gen 
 "<áhkkus>"
-	"áhkku" Hum N CGErr Sg Loc &grm-Px-error-Loc MAP:5772 
+	"áhkku" Hum N CGErr Sg Loc &err-grm-Px-Loc MAP:5772 
 ;	"áhkku" Hum N Sg Nom PxSg3 REMOVE:3566:r996 
 ;	"áhkku" Hum N CGErr Sg Gen PxSg3 REMOVE:3566:r996 
 ;	"áhkku" Hum N CGErr Sg Acc PxSg3 REMOVE:3566:r996 
@@ -4245,12 +4373,12 @@
 "<Sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oažžubehtet>"
-	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<skeaŋkka>"
 	"skeaŋka" N Sg Acc 
 	"skeaŋka" N Sg Gen 
 "<áhkus>"
-	"áhkku" Hum N Sg Loc &dia-target MAP:6222 
+	"áhkku" Hum N Sg Loc &dia-target MAP:6224 
 ;	"áhkku" Hum N Sg Acc PxSg3 REMOVE:3566:r996 
 ;	"áhkku" Hum N Sg Gen PxSg3 REMOVE:3566:r996 
 "<.>"
@@ -4288,12 +4416,12 @@
 "<Sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oaččuidet>"
-	"oažžut" V TV Ind Prt Pl2 &grm-incorr-tense MAP:6078 
+	"oažžut" V TV Ind Prt Pl2 &grm-incorr-tense MAP:6080 
 "<skeaŋkka>"
 	"skeaŋka" N Sg Acc 
 	"skeaŋka" N Sg Gen 
 "<áhkus>"
-	"áhkku" Hum N Sg Loc &dia-target MAP:6222 
+	"áhkku" Hum N Sg Loc &dia-target MAP:6224 
 ;	"áhkku" Hum N Sg Acc PxSg3 REMOVE:3566:r996 
 ;	"áhkku" Hum N Sg Gen PxSg3 REMOVE:3566:r996 
 "<.>"
@@ -4327,7 +4455,7 @@
 	"skeaŋka" N Sg Acc SELECT:5742 
 ;	"skeaŋka" N Sg Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oččot>"
@@ -4343,7 +4471,7 @@
 	"skeaŋka" N Sg Acc 
 	"skeaŋka" N Sg Gen 
 "<áhkus>"
-	"áhkku" Hum N Sg Loc &dia-target MAP:6222 
+	"áhkku" Hum N Sg Loc &dia-target MAP:6224 
 ;	"áhkku" Hum N Sg Acc PxSg3 REMOVE:3566:r996 
 ;	"áhkku" Hum N Sg Gen PxSg3 REMOVE:3566:r996 
 "<.>"
@@ -4377,16 +4505,16 @@
 	"skeaŋka" N Sg Acc SELECT:5742 
 ;	"skeaŋka" N Sg Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oččuidet>"
-	"oččuidet" ? &err-spellingerror MAP:5505 
+	"oččuidet" ? &err-nonword MAP:5505 
 "<skeaŋkka>"
 	"skeaŋka" N Sg Acc 
 	"skeaŋka" N Sg Gen 
 "<áhkus>"
-	"áhkku" Hum N Sg Loc &dia-target MAP:6222 
+	"áhkku" Hum N Sg Loc &dia-target MAP:6224 
 ;	"áhkku" Hum N Sg Acc PxSg3 REMOVE:3566:r996 
 ;	"áhkku" Hum N Sg Gen PxSg3 REMOVE:3566:r996 
 "<.>"
@@ -4424,12 +4552,12 @@
 "<sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oažžubehtet>"
-	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<skeaŋkka>"
 	"skeaŋka" N Sg Acc SELECT:5858 
 ;	"skeaŋka" N Sg Gen SELECT:5858 
 "<vahnemain>"
-	"vahnemain" ? &err-spellingerror MAP:5505 
+	"vahnemain" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geas>"
@@ -4465,12 +4593,12 @@
 "<sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oažžubehtet>"
-	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<skeaŋkka>"
 	"skeaŋka" N Sg Acc SELECT:5858 
 ;	"skeaŋka" N Sg Gen SELECT:5858 
 "<vahnemas>"
-	"vahnemas" ? &err-spellingerror MAP:5505 
+	"vahnemas" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geas>"
@@ -4506,12 +4634,12 @@
 "<sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oažžubehtet>"
-	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<skeaŋkka>"
 	"skeaŋka" N Sg Acc SELECT:5858 
 ;	"skeaŋka" N Sg Gen SELECT:5858 
 "<váhnein>"
-	"váhnein" ? &err-spellingerror MAP:5505 
+	"váhnein" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geas>"
@@ -4547,12 +4675,12 @@
 "<sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oažžubehtet>"
-	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<skeaŋkka>"
 	"skeaŋka" N Sg Acc SELECT:5858 
 ;	"skeaŋka" N Sg Gen SELECT:5858 
 "<váhnemain>"
-	"váhnemain" ? &err-spellingerror MAP:5505 
+	"váhnemain" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Geas>"
@@ -4588,13 +4716,13 @@
 "<sii>"
 	"son" Pron Pers Pl3 Nom 
 "<oažžubehtet>"
-	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"oažžut" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<skeaŋkka>"
 	"skeaŋka" N Sg Acc 
 	"skeaŋka" N Sg Gen 
 "<váhnemiin>"
 	"váhnen" Hum N Sg Com 
-	"váhnen" Hum N Pl Loc &dia-target MAP:6222 
+	"váhnen" Hum N Pl Loc &dia-target MAP:6224 
 "<.>"
 
 "<Geas>"
@@ -4615,6 +4743,8 @@
 	"ságat" N Pl Acc SELECT:5742 
 ;	"ságá" N Pl Gen AErr REMOVE:1953 
 ;	"ságá" N Pl Acc AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:1953 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:1953 
 ;	"sáhka" N Pl Gen SELECT:5742 
 ;	"ságat" N Pl Gen SELECT:5742 
 "<^qst>"
@@ -4623,11 +4753,11 @@
 	"son" Pron Pers Sg3 Nom SELECT:3103:r883 
 ;	"son" Pcle SELECT:3103:r883 
 "<geas>"
-	"gii" Pron Rel Sg Loc &dia-target MAP:6222 
-	"gii" Pron Interr Sg Loc &dia-target MAP:6222 
+	"gii" Pron Rel Sg Loc &dia-target MAP:6224 
+	"gii" Pron Interr Sg Loc &dia-target MAP:6224 
 "<gulla>"
-	"gullát" V TV Ind Prs Sg3 AErr &grm-error-longA SELECT:3405:r954 MAP:5779 
-	"gullat" V TV Ind Prs AiErr Sg3 &grm-error-longA SELECT:3405:r954 MAP:5779 
+	"gullát" V TV Ind Prs Sg3 AErr &err-longA SELECT:3405:r954 MAP:5779 
+	"gullat" V TV Ind Prs AiErr Sg3 &err-longA SELECT:3405:r954 MAP:5779 
 ;	"gullát" V TV Imprt ConNeg AErr SELECT:3405:r954 
 ;	"gullát" V TV VGen AErr SELECT:3405:r954 
 ;	"gullát" V TV Ind Prs ConNeg AErr SELECT:3405:r954 
@@ -4635,8 +4765,10 @@
 "<sagaid>"
 	"saga" N Pl Acc SELECT:5858 
 	"ságá" N Pl Acc AErr SELECT:5858 
-	"sáhka" N Pl Acc AErr SELECT:5858 
 	"ságat" N Pl Acc AErr SELECT:5858 
+	"sáhka" N Pl Acc AErr SELECT:5858 
+;	"ságá" N CGErr Pl Acc AErr REMOVE:5415 
+;	"ságá" N CGErr Pl Gen AErr REMOVE:5415 
 ;	"ságá" N Pl Gen AErr SELECT:5858 
 ;	"saga" N Pl Gen SELECT:5858 
 ;	"sáhka" N Pl Gen AErr SELECT:5858 
@@ -4672,9 +4804,12 @@
 ;	"oažžut" V* TV Actor N Sg Nom SELECT:3405:r954 
 ;	"oažžut" V* TV Actor N Sg Acc SELECT:3405:r954 
 "<skeanŋkka>"
-	"skeanŋkka" ? &err-spellingerror MAP:5505 
+	"skeanŋkka" ? &err-nonword MAP:5505 
 "<juovlastállus>"
-	"juovlastállu" Hum N Sg Nom PxSg3 &grm-Px-error-Loc MAP:5772 
+	"juovlastállu" Hum N Sg Nom PxSg3 &err-grm-Px-Loc MAP:5772 
+;	"juovlastállu" Hum N CGErr Sg Gen PxSg3 REMOVE:5415 
+;	"juovlastállu" Hum N CGErr Sg Loc REMOVE:5415 
+;	"juovlastállu" Hum N CGErr Sg Acc PxSg3 REMOVE:5415 
 "<.>"
 
 "<Geas>"
@@ -4709,7 +4844,10 @@
 	"skeaŋka" N Sg Gen 
 	"skeaŋka" N Sg Acc 
 "<juovlastállus>"
-	"juovlastállu" Hum N Sg Nom PxSg3 &grm-Px-error-Loc MAP:5772 
+	"juovlastállu" Hum N Sg Nom PxSg3 &err-grm-Px-Loc MAP:5772 
+;	"juovlastállu" Hum N CGErr Sg Gen PxSg3 REMOVE:5415 
+;	"juovlastállu" Hum N CGErr Sg Loc REMOVE:5415 
+;	"juovlastállu" Hum N CGErr Sg Acc PxSg3 REMOVE:5415 
 "<.>"
 
 "<Gosa>"
@@ -4747,7 +4885,7 @@
 	"čoavdda" N Pl Acc SELECT:5858 
 ;	"čoavdda" N Pl Gen SELECT:5858 
 "<fátnasii>"
-	"fátnasii" ? &err-spellingerror MAP:5505 
+	"fátnasii" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -4800,9 +4938,9 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<som>"
-	"som" ? &err-spellingerror MAP:5505 
+	"som" ? &err-nonword MAP:5505 
 "<bidja>"
-	"bidjat" V TV Ind Prs AiErr Sg3 &grm-error-longA MAP:5779 
+	"bidjat" V TV Ind Prs AiErr Sg3 &err-longA MAP:5779 
 "<.>"
 
 "<Gosa>"
@@ -4832,9 +4970,9 @@
 "<bidjá>"
 	"bidjat" V TV Ind Prs Sg3 
 "<coavdagiid>"
-	"coavdagiid" ? &err-spellingerror MAP:5505 
+	"coavdagiid" ? &err-nonword MAP:5505 
 "<lummái>"
-	"lummái" ? &err-spellingerror MAP:5505 
+	"lummái" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -4854,9 +4992,9 @@
 	"čoavdda" N Pl Acc SELECT:5742 
 ;	"čoavdda" N Pl Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Buksi>"
-	"Buksi" ? &err-spellingerror MAP:5505 
+	"Buksi" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -4888,7 +5026,7 @@
 	"čoavdda" N Pl Acc SELECT:5858 
 ;	"čoavdda" N Pl Gen SELECT:5858 
 "<olgui>"
-	"olgui" ? &err-spellingerror MAP:5505 
+	"olgui" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -4953,7 +5091,7 @@
 	"čoavdda" N Pl Acc SELECT:5858 
 ;	"čoavdda" N Pl Gen SELECT:5858 
 "<ovddabealai>"
-	"ovddabealai" ? &err-spellingerror MAP:5505 
+	"ovddabealai" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -5018,7 +5156,7 @@
 	"čoavdda" N Pl Acc SELECT:5858 
 ;	"čoavdda" N Pl Gen SELECT:5858 
 "<ovddabealdii>"
-	"ovddabealdii" ? &err-spellingerror MAP:5505 
+	"ovddabealdii" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -5050,7 +5188,7 @@
 	"čoavdda" N Pl Acc SELECT:5858 
 ;	"čoavdda" N Pl Gen SELECT:5858 
 "<ovddabealii>"
-	"ovddabealii" ? &err-spellingerror MAP:5505 
+	"ovddabealii" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -5070,9 +5208,9 @@
 	"čoavdda" N Pl Acc SELECT:5742 
 ;	"čoavdda" N Pl Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<lummi>"
-	"lummi" ? &err-spellingerror MAP:5505 
+	"lummi" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -5092,11 +5230,11 @@
 	"čoavdda" N Pl Acc SELECT:5742 
 ;	"čoavdda" N Pl Gen SELECT:5742 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<poweradepulvar>"
-	"poweradepulvar" ? &err-spellingerror MAP:5505 
+	"poweradepulvar" ? &err-nonword MAP:5505 
 "<dossii>"
-	"doassa" N Sg Ill &dia-target MAP:6220 
+	"doassa" N Sg Ill &dia-target MAP:6222 
 "<.>"
 
 "<Gosa>"
@@ -5134,7 +5272,7 @@
 ;	"dát" Pron Dem Pl Acc AErr REMOVE:3172:r897 
 ;	"dat" Pron Pers Pl3 Gen SELECT:5858 
 "<feaskkiris>"
-	"feaskkiris" ? &err-spellingerror MAP:5505 
+	"feaskkiris" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -5247,9 +5385,9 @@
 "<sii>"
 	"son" Pron Pers Pl3 Nom 
 "<lahppojedje>"
-	"láhppit" V* TV Der/PassS V Ind Prt Pl3 AErr &grm-incorr-tense MAP:6078 
-	"láhppot" V IV Ind Prt Pl3 AErr &grm-incorr-tense MAP:6078 
-	"lahpat" V* TV Der/PassS V Ind Prt Pl3 &grm-incorr-tense MAP:6078 
+	"láhppit" V* TV Der/PassS V Ind Prt Pl3 AErr &grm-incorr-tense MAP:6080 
+	"láhppot" V IV Ind Prt Pl3 AErr &grm-incorr-tense MAP:6080 
+	"lahpat" V* TV Der/PassS V Ind Prt Pl3 &grm-incorr-tense MAP:6080 
 "<daid>"
 	"dat" Pron Pers Pl3 Gen 
 	"dat" Pron Pers Pl3 Acc 
@@ -5280,11 +5418,11 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<si>"
-	"si" ? &err-spellingerror MAP:5505 
+	"si" ? &err-nonword MAP:5505 
 "<lahppojedje>"
-	"láhppit" V* TV Der/PassS V Ind Prt Pl3 AErr &grm-incorr-tense MAP:6078 
-	"láhppot" V IV Ind Prt Pl3 AErr &grm-incorr-tense MAP:6078 
-	"lahpat" V* TV Der/PassS V Ind Prt Pl3 &grm-incorr-tense MAP:6078 
+	"láhppit" V* TV Der/PassS V Ind Prt Pl3 AErr &grm-incorr-tense MAP:6080 
+	"láhppot" V IV Ind Prt Pl3 AErr &grm-incorr-tense MAP:6080 
+	"lahpat" V* TV Der/PassS V Ind Prt Pl3 &grm-incorr-tense MAP:6080 
 "<daid>"
 	"dat" Pron Pers Pl3 Gen 
 	"dat" Pron Pers Pl3 Acc 
@@ -5330,7 +5468,7 @@
 ;	"manadit" V IV Ind Prs ConNeg SELECT:3392:r951 
 ;	"manadit" V IV Imprt Sg2 SELECT:3392:r951 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Mon>"
 	"Mo" N Prop Plc Ess 
 	"mun" Pron Pers Sg1 Nom 
@@ -5338,7 +5476,7 @@
 	"manna" N Ess 
 	"mannat" V* IV Der/NomAct N Sg Nom 
 	"mannat" V IV Actio Gen 
-	"mannat" V IV PrfPrc 
+	"mannat" V IV PrfPrc &err-1pers-prfprc MAP:6035 
 	"mannan" N Sg Nom 
 	"mannan" N Sg Gen 
 	"mannat" V IV Ind Prt ConNeg 
@@ -5436,7 +5574,7 @@
 "<buorre>"
 	"buorre" A Sg Nom 
 "<manna>"
-	"mannat" V IV Ind Prs AiErr Sg3 &grm-error-longA SELECT:5623 MAP:5779 
+	"mannat" V IV Ind Prs AiErr Sg3 &err-longA SELECT:5623 MAP:5779 
 ;	"mánná" Hum N CGErr Sg Gen AErr REMOVE:5415 
 ;	"mánná" Hum N CGErr Sg Acc AErr REMOVE:5415 
 ;	"mánná" Hum N Sg Nom AErr SELECT:5623 
@@ -5481,9 +5619,9 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<buresta>"
-	"buresta" ? &err-spellingerror MAP:5505 
+	"buresta" ? &err-nonword MAP:5505 
 "<manna>"
-	"mannat" V IV Ind Prs AiErr Sg3 &grm-error-longA SELECT:5623 MAP:5779 
+	"mannat" V IV Ind Prs AiErr Sg3 &err-longA SELECT:5623 MAP:5779 
 ;	"mánná" Hum N CGErr Sg Gen AErr REMOVE:5415 
 ;	"mánná" Hum N CGErr Sg Acc AErr REMOVE:5415 
 ;	"mánná" Hum N Sg Nom AErr SELECT:5623 
@@ -5534,13 +5672,7 @@
 ;	"Man" N Prop LowercaseErr Plc Ess REMOVE:1948 
 ;	"Man" N Prop LowercaseErr Plc Sg Loc REMOVE:1948 
 "<buores>"
-	"bu#ore" Ani N Sg Loc 
-;	"bu#ore" Ani N CGErr Sg Gen PxSg3 REMOVE:3566:r996 
-;	"bu#ore" Ani N CGErr Sg Acc PxSg3 REMOVE:3566:r996 
-;	"bu#ore" Ani N Sg Acc PxSg3 REMOVE:3566:r996 
-;	"bu#ore" Ani N Sg Nom PxSg3 REMOVE:3566:r996 
-;	"bu#ore" Ani N Sg Gen PxSg3 REMOVE:3566:r996 
-;	"bu#ore" Ani N CGErr Sg Loc REMOVE:5415 
+	"buores" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -5577,25 +5709,19 @@
 ;	"manadit" V IV Ind Prs ConNeg SELECT:3392:r951 
 ;	"manadit" V IV Imprt Sg2 SELECT:3392:r951 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<mun>"
 	"mun" Pron Pers Sg1 Nom 
 "<manna>"
-	"manna" N Sg Gen SELECT:5714 
-	"manna" N Sg Acc SELECT:5714 
+	"mánná" Hum N Sg Nom AErr 
+	"manna" N Sg Nom 
+	"manna" N Sg Gen 
+	"manna" N Sg Acc 
 ;	"mannat" V IV Ind Prs AiErr Sg3 REMOVE:3411:r956 
 ;	"mánná" Hum N CGErr Sg Gen AErr REMOVE:5415 
 ;	"mánná" Hum N CGErr Sg Acc AErr REMOVE:5415 
-;	"mánná" Hum N Sg Nom AErr SELECT:5714 
-;	"manna" N Sg Nom SELECT:5714 
 "<buores>"
-	"bu#ore" Ani N Sg Loc 
-;	"bu#ore" Ani N CGErr Sg Gen PxSg3 REMOVE:3566:r996 
-;	"bu#ore" Ani N CGErr Sg Acc PxSg3 REMOVE:3566:r996 
-;	"bu#ore" Ani N Sg Acc PxSg3 REMOVE:3566:r996 
-;	"bu#ore" Ani N Sg Nom PxSg3 REMOVE:3566:r996 
-;	"bu#ore" Ani N Sg Gen PxSg3 REMOVE:3566:r996 
-;	"bu#ore" Ani N CGErr Sg Loc REMOVE:5415 
+	"buores" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -5624,7 +5750,7 @@
 "<mannabeahtti>"
 	"mannat" V IV Ind Prs Du2 
 "<gavpai>"
-	"gavpai" ? &err-spellingerror MAP:5505 
+	"gavpai" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -5672,7 +5798,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Manai>"
-	"mannat" V IV Ind Prt Sg3 &grm-incorr-pers-nr MAP:6048 
+	"mannat" V IV Ind Prt Sg3 &grm-incorr-pers-nr MAP:6050 
 "<gos>"
 	"gos" Adv 
 "<skuvllas>"
@@ -5696,7 +5822,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Manai>"
-	"mannat" V IV Ind Prt Sg3 &grm-incorr-pers-nr MAP:6048 
+	"mannat" V IV Ind Prt Sg3 &grm-incorr-pers-nr MAP:6050 
 "<go>"
 	"go" CS SELECT:4495:r1193 
 ;	"go" Qst Pcle SELECT:4495:r1193 
@@ -5721,9 +5847,9 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Manai>"
-	"mannat" V IV Ind Prt Sg3 &grm-incorr-pers-nr MAP:6048 
+	"mannat" V IV Ind Prt Sg3 &grm-incorr-pers-nr MAP:6050 
 "<lea>"
-	"leat" V IV Ind Prs Sg3 &grm-should-not-Vfin MAP:6100 
+	"leat" V IV Ind Prs Sg3 &grm-should-not-Vfin MAP:6102 
 "<skuvllas>"
 	"skuvla" Org Plc N Sg Loc SELECT:3343:r943 
 ;	"skuvla" Org Plc N Sg Gen PxSg3 SELECT:3343:r943 
@@ -5814,7 +5940,7 @@
 	"go" CS SELECT:4495:r1193 
 ;	"go" Qst Pcle SELECT:4495:r1193 
 "<skuvvlas>"
-	"skuvvlas" ? &err-spellingerror MAP:5505 
+	"skuvvlas" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -5838,7 +5964,7 @@
 ;	"Man" N Prop LowercaseErr Plc Sg Loc REMOVE:1948 
 ;	"Man" N Prop LowercaseErr Plc Ess REMOVE:1948 
 "<Prahai>"
-	"Praha" N Prop Plc Sg Ill &dia-target MAP:6220 
+	"Praha" N Prop Plc Sg Ill &dia-target MAP:6222 
 "<.>"
 
 "<Gosa>"
@@ -5865,13 +5991,13 @@
 ;	"mannat" V IV Imprt Pl2 SELECT:3496:r976 
 ;	"mannet" V IV Ind Prs Pl1 SELECT:3496:r976 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Sii>"
 	"son" Pron Pers Pl3 Nom 
 "<manaigga>"
-	"Man+N+Prop+LowercaseErr+Plc+Cmp#áigga" N Sg Nom AErr &grm-error-longA MAP:5779 
+	"manaigga" ? &err-nonword MAP:5505 
 "<oului>"
-	"Oulu" N Prop LowercaseErr Plc Sg Ill &dia-target MAP:6220 
+	"Oulu" N Prop LowercaseErr Plc Sg Ill &dia-target MAP:6222 
 "<.>"
 
 "<Gosa>"
@@ -5892,7 +6018,7 @@
 ;	"manna" N Sg Gen Foc/ba SELECT:3447:r964 
 ;	"manna" N Sg Nom Foc/ba SELECT:3447:r964 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Moai>"
 	"mun" Pron Pers Du1 Nom &grm-incorr-pers-nr SELECT:1955 MAP:5981 
 ;	"Moa" N Prop Plc Sg Ill SELECT:1955 
@@ -5905,7 +6031,7 @@
 ;	"mánná" Hum N CGErr Sg Acc Foc/ban AErr REMOVE:5415 
 ;	"mánná" Hum N CGErr Sg Gen Foc/ban AErr REMOVE:5415 
 "<veljeä>"
-	"veljeä" ? &err-spellingerror MAP:5505 
+	"veljeä" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -5940,8 +6066,8 @@
 ;	"mannet" V IV Imprt Sg2 SELECT:3429:r960 
 ;	"mannet" V IV Ind Prs ConNeg SELECT:3429:r960 
 "<báikat>"
-	"báikádit" V TV VGen AErr &grm-error-longA MAP:5779 
-	"báikádit" V TV Ind Prs ConNeg AErr &grm-error-longA MAP:5779 
+	"báikádit" V TV VGen AErr &err-longA MAP:5779 
+	"báikádit" V TV Ind Prs ConNeg AErr &err-longA MAP:5779 
 ;	"báikádit" V TV Imprt ConNeg AErr REMOVE:2943 
 ;	"báikádit" V TV Imprt Sg2 AErr REMOVE:2943 
 "<.>"
@@ -5978,7 +6104,7 @@
 ;	"mannet" V IV Imprt Sg2 SELECT:3429:r960 
 ;	"mannet" V IV Ind Prs ConNeg SELECT:3429:r960 
 "<báikii>"
-	"báiki" Plc N Sg Ill &dia-target MAP:6220 
+	"báiki" Plc N Sg Ill &dia-target MAP:6222 
 ;	"báiki" Plc N Sg Ill IllVErr REMOVE:5413 
 "<.>"
 
@@ -6035,16 +6161,13 @@
 ;	"manna" N Sg Gen Foc/ba SELECT:3447:r964 
 ;	"manna" N Sg Nom Foc/ba SELECT:3447:r964 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<doai>"
 	"don" Pron Pers Du2 Nom &grm-incorr-pers-nr MAP:5982 
 "<manabeahti>"
-	"Man+N+Prop+LowercaseErr+Plc+Cmp##áhpi+Plc+N+Cmp#áhtti" N Sg Acc AErr &grm-error-longA MAP:5779 
-	"MAN+N+ACR+Cmp##áhpi+Plc+N+Cmp#áhtti" N Sg Acc AErr &grm-error-longA MAP:5779 
-	"MAN+N+ACR+Cmp##áhpi+Plc+N+Cmp#áhtti" N Sg Gen AErr &grm-error-longA MAP:5779 
-	"MAN+N+ACR+Cmp##áhpi+Plc+N+Cmp#áhti" Wthr N Sg Nom AErr &grm-error-longA MAP:5779 
-	"Man+N+Prop+LowercaseErr+Plc+Cmp##áhpi+Plc+N+Cmp#áhtti" N Sg Gen AErr &grm-error-longA MAP:5779 
-	"Man+N+Prop+LowercaseErr+Plc+Cmp##áhpi+Plc+N+Cmp#áhti" Wthr N Sg Nom AErr &grm-error-longA MAP:5779 
+	"MAN+N+ACR+Cmp##áhpi+Plc+N+Cmp#áhtti" N Sg Acc AErr &err-longA MAP:5779 
+	"MAN+N+ACR+Cmp##áhpi+Plc+N+Cmp#áhtti" N Sg Gen AErr &err-longA MAP:5779 
+	"MAN+N+ACR+Cmp##áhpi+Plc+N+Cmp#áhti" Wthr N Sg Nom AErr &err-longA MAP:5779 
 "<.>"
 
 "<Gosa>"
@@ -6065,16 +6188,13 @@
 ;	"manna" N Sg Gen Foc/ba SELECT:3447:r964 
 ;	"manna" N Sg Nom Foc/ba SELECT:3447:r964 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<doai>"
 	"don" Pron Pers Du2 Nom &grm-incorr-pers-nr MAP:5982 
 "<mannabeahti>"
-	"MANN+N+ACR+Cmp##áhpi+Plc+N+Cmp#áhtti" N Sg Acc AErr &grm-error-longA MAP:5779 
-	"Man+N+Prop+LowercaseErr+Plc+Cmp##náhpi+N+Cmp#áhtti" N Sg Acc AErr &grm-error-longA MAP:5779 
-	"MANN+N+ACR+Cmp##áhpi+Plc+N+Cmp#áhti" Wthr N Sg Nom AErr &grm-error-longA MAP:5779 
-	"Man+N+Prop+LowercaseErr+Plc+Cmp##náhpi+N+Cmp#áhtti" N Sg Gen AErr &grm-error-longA MAP:5779 
-	"MANN+N+ACR+Cmp##áhpi+Plc+N+Cmp#áhtti" N Sg Gen AErr &grm-error-longA MAP:5779 
-	"Man+N+Prop+LowercaseErr+Plc+Cmp##náhpi+N+Cmp#áhti" Wthr N Sg Nom AErr &grm-error-longA MAP:5779 
+	"MANN+N+ACR+Cmp##áhpi+Plc+N+Cmp#áhtti" N Sg Acc AErr &err-longA MAP:5779 
+	"MANN+N+ACR+Cmp##áhpi+Plc+N+Cmp#áhti" Wthr N Sg Nom AErr &err-longA MAP:5779 
+	"MANN+N+ACR+Cmp##áhpi+Plc+N+Cmp#áhtti" N Sg Gen AErr &err-longA MAP:5779 
 "<.>"
 
 "<Gosa>"
@@ -6140,7 +6260,7 @@
 ;	"manna" N Sg Nom Foc/ba REMOVE:5523 
 ;	"manna" N Sg Acc Foc/ba REMOVE:5523 
 "<ruovttui>"
-	"ruovttui" ? &err-spellingerror MAP:5505 
+	"ruovttui" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -6163,7 +6283,7 @@
 	"son" Pron Pers Sg3 Nom SELECT:3109:r885 
 ;	"son" Pcle SELECT:3109:r885 
 "<barga>"
-	"bargat" V TV Ind Prs AiErr Sg3 &grm-error-longA MAP:5779 
+	"bargat" V TV Ind Prs AiErr Sg3 &err-longA MAP:5779 
 "<olgun>"
 	"olgun" Adv SELECT:4767:r1269 
 ;	"olgu" N Ess SELECT:4767:r1269 
@@ -6189,7 +6309,7 @@
 	"son" Pron Pers Sg3 Nom SELECT:3109:r885 
 ;	"son" Pcle SELECT:3109:r885 
 "<bivda>"
-	"bivdit" V TV Ind Prs AiErr Sg3 &grm-error-longA MAP:5779 
+	"bivdit" V TV Ind Prs AiErr Sg3 &err-longA MAP:5779 
 "<olgun>"
 	"olgun" Adv SELECT:4767:r1269 
 ;	"olgu" N Ess SELECT:4767:r1269 
@@ -6210,12 +6330,12 @@
 ;	"mánná" Hum N CGErr Sg Acc AErr REMOVE:1953 
 ;	"mánná" Hum N CGErr Sg Gen AErr REMOVE:1953 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<son>"
 	"son" Pron Pers Sg3 Nom 
 ;	"son" Pcle REMOVE:4056:r1075 
 "<cohkka>"
-	"cohkka" ? &err-spellingerror MAP:5505 
+	"cohkka" ? &err-nonword MAP:5505 
 "<olgun>"
 	"olgun" Adv SELECT:4767:r1269 
 ;	"olgu" N Ess SELECT:4767:r1269 
@@ -6241,7 +6361,7 @@
 	"son" Pron Pers Sg3 Nom SELECT:3109:r885 
 ;	"son" Pcle SELECT:3109:r885 
 "<manna>"
-	"mannat" V IV Ind Prs AiErr Sg3 &grm-error-longA SELECT:5597:sticky MAP:5779 
+	"mannat" V IV Ind Prs AiErr Sg3 &err-longA SELECT:5597:sticky MAP:5779 
 ;	"mánná" Hum N CGErr Sg Acc AErr REMOVE:5415 
 ;	"mánná" Hum N CGErr Sg Gen AErr REMOVE:5415 
 ;	"manna" N Sg Nom SELECT:5597:sticky 
@@ -6273,8 +6393,8 @@
 	"son" Pron Pers Sg3 Nom SELECT:3109:r885 
 ;	"son" Pcle SELECT:3109:r885 
 "<vazza>"
-	"vázzit" V IV Ind Prs AiErr Sg3 AErr &grm-error-longA SELECT:5597:sticky MAP:5779 
-	"vázzát" V IV Ind Prs Sg3 AErr &grm-error-longA SELECT:5597:sticky MAP:5779 
+	"vázzit" V IV Ind Prs AiErr Sg3 AErr &err-longA SELECT:5597:sticky MAP:5779 
+	"vázzát" V IV Ind Prs Sg3 AErr &err-longA SELECT:5597:sticky MAP:5779 
 ;	"vázzát" V IV Imprt ConNeg AErr REMOVE:4696 
 ;	"vázzát" V IV Imprt Sg2 AErr REMOVE:4696 
 ;	"vázzát" V IV Ind Prs ConNeg AErr SELECT:5597:sticky 
@@ -6303,12 +6423,12 @@
 	"son" Pron Pers Sg3 Nom SELECT:3109:r885 
 ;	"son" Pcle SELECT:3109:r885 
 "<bidja>"
-	"bidjat" V TV Ind Prs AiErr Sg3 &grm-error-longA MAP:5779 
+	"bidjat" V TV Ind Prs AiErr Sg3 &err-longA MAP:5779 
 "<čoavdagiid>"
 	"čoavdda" N Pl Acc SELECT:5858 
 ;	"čoavdda" N Pl Gen SELECT:5858 
 "<sehkki>"
-	"sehkki" ? &err-spellingerror MAP:5505 
+	"sehkki" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -6335,7 +6455,7 @@
 	"čoavdda" N Pl Acc SELECT:5858 
 ;	"čoavdda" N Pl Gen SELECT:5858 
 "<beavdai>"
-	"beavdai" ? &err-spellingerror MAP:5505 
+	"beavdai" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -6362,7 +6482,7 @@
 	"čoavdda" N Pl Acc SELECT:5858 
 ;	"čoavdda" N Pl Gen SELECT:5858 
 "<lommi>"
-	"lommi" ? &err-spellingerror MAP:5505 
+	"lommi" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -6389,7 +6509,7 @@
 	"čoavdda" N Pl Acc SELECT:5858 
 ;	"čoavdda" N Pl Gen SELECT:5858 
 "<lummi>"
-	"lummi" ? &err-spellingerror MAP:5505 
+	"lummi" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -6416,7 +6536,7 @@
 	"čoavdda" N Pl Acc SELECT:5858 
 ;	"čoavdda" N Pl Gen SELECT:5858 
 "<sehkki>"
-	"sehkki" ? &err-spellingerror MAP:5505 
+	"sehkki" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -6443,7 +6563,7 @@
 	"čoavdda" N Pl Acc SELECT:5858 
 ;	"čoavdda" N Pl Gen SELECT:5858 
 "<uksi>"
-	"uksi" ? &err-spellingerror MAP:5505 
+	"uksi" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -6470,7 +6590,7 @@
 	"čoavdda" N Pl Acc SELECT:5858 
 ;	"čoavdda" N Pl Gen SELECT:5858 
 "<ukssi>"
-	"ukssi" ? &err-spellingerror MAP:5505 
+	"ukssi" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gosa>"
@@ -6500,7 +6620,7 @@
 	"čoavdda" N Pl Acc SELECT:5858 
 ;	"čoavdda" N Pl Gen SELECT:5858 
 "<beavddái>"
-	"beavddái" ? &err-spellingerror MAP:5505 
+	"beavddái" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gos>"
@@ -6524,7 +6644,7 @@
 "<lea>"
 	"leat" V IV Ind Prs Sg3 
 "<Helsses>"
-	"Helsses" N Prop Plc Sg Loc Guess &err-spellingerror SUBSTITUTE:5369 MAP:5505 
+	"Helsses" N Prop Plc Sg Loc Guess &err-nonword SUBSTITUTE:5369 MAP:5505 
 "<.>"
 
 "<Gos>"
@@ -6552,7 +6672,7 @@
 ;	"leat" V IV Ind Prs ConNeg SELECT:5599 
 ;	"leat" V IV Ind Prs Pl1 SELECT:5599 
 "<konseartal>"
-	"konseartal" ? &err-spellingerror MAP:5505 
+	"konseartal" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gos>"
@@ -6571,9 +6691,9 @@
 ;	"bohtat" V IV Imprt Pl2 REMOVE:4696 
 ;	"boahtit" V IV Imprt Pl2 REMOVE:4696 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Norggas>"
-	"Norga" N Prop Plc Sg Loc &dia-target MAP:6222 
+	"Norga" N Prop Plc Sg Loc &dia-target MAP:6224 
 "<.>"
 
 "<Gos>"
@@ -6589,15 +6709,15 @@
 ;	"leat" V IV Ind Prs Sg2 SELECT:5591 SELECT:5599 
 ;	"leat" V IV Ind Prs Pl1 SELECT:5591 SELECT:5599 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Mii>"
 	"mun" Pron Pers Pl1 Nom &grm-incorr-pers-nr SELECT:3068:r875 MAP:5988 
 ;	"mii" Pron Interr Sg Nom SELECT:3068:r875 
 ;	"mii" Pron Rel Sg Nom SELECT:3068:r875 
 "<hoavddan>"
-	"hoavddan" ? &err-spellingerror MAP:5505 
+	"hoavddan" ? &err-nonword MAP:5505 
 "<njukca>"
-	"njukca" ? &err-spellingerror MAP:5505 
+	"njukca" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gos>"
@@ -6613,7 +6733,7 @@
 ;	"leat" V IV Ind Prs Sg2 SELECT:5591 SELECT:5599 
 ;	"leat" V IV Ind Prs Pl1 SELECT:5591 SELECT:5599 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Mii>"
 	"mun" Pron Pers Pl1 Nom &grm-incorr-pers-nr SELECT:3068:r875 MAP:5988 
 ;	"mii" Pron Interr Sg Nom SELECT:3068:r875 
@@ -6623,7 +6743,7 @@
 ;	"hoavda" Hum N Sg Acc PxSg2 REMOVE:3298:r929 
 ;	"hoavda" Hum N Sg Gen PxSg2 REMOVE:3298:r929 
 "<njukca>"
-	"njukca" ? &err-spellingerror MAP:5505 
+	"njukca" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gos>"
@@ -6639,7 +6759,7 @@
 ;	"leat" V IV Ind Prs Sg2 SELECT:5591 SELECT:5599 
 ;	"leat" V IV Ind Prs Pl1 SELECT:5591 SELECT:5599 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Mii>"
 	"mun" Pron Pers Pl1 Nom &grm-incorr-pers-nr SELECT:3068:r875 MAP:5988 
 ;	"mii" Pron Interr Sg Nom SELECT:3068:r875 
@@ -6647,7 +6767,7 @@
 "<hupman>"
 	"hupma" N Ess 
 	"hupmat" V TV Ind Prt ConNeg 
-	"hupmat" V TV PrfPrc 
+	"hupmat" V TV PrfPrc &err-1pers-prfprc MAP:6035 
 	"hupmat" V* TV Der/NomAct N Sg Gen 
 	"hupmat" V* TV Der/NomAct N Sg Nom 
 	"hupmat" V TV Actio Nom 
@@ -6666,12 +6786,12 @@
 "<finai>"
 	"fitnat" V IV Ind Prt Sg3 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<son>"
 	"son" Pron Pers Sg3 Nom 
 ;	"son" Pcle REMOVE:4056:r1075 
 "<fiinai>"
-	"fiinai" ? &err-spellingerror MAP:5505 
+	"fiinai" ? &err-nonword MAP:5505 
 "<olgun>"
 	"olgun" Adv SELECT:4767:r1269 
 ;	"olgu" N Ess SELECT:4767:r1269 
@@ -6700,7 +6820,7 @@
 "<lea>"
 	"leat" V IV Ind Prs Sg3 
 "<olgan>"
-	"olgan" ? &err-spellingerror MAP:5505 
+	"olgan" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Gos>"
@@ -6712,11 +6832,11 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Rievvar>"
-	"rievvár" Hum N Sg Nom AErr &grm-error-longA MAP:5779 
+	"rievvár" Hum N Sg Nom AErr &err-longA MAP:5779 
 "<lea>"
 	"leat" V IV Ind Prs Sg3 
 "<ruovttus>"
-	"ruoktu" Plc N Sg Loc &dia-target SELECT:3343:r943 MAP:6222 
+	"ruoktu" Plc N Sg Loc &dia-target SELECT:3343:r943 MAP:6224 
 ;	"ruoktu" Plc N Sg Gen PxSg3 SELECT:3343:r943 
 ;	"ruovttus" Adv SELECT:3343:r943 
 ;	"ruoktu" Plc N Sg Acc PxSg3 SELECT:3343:r943 
@@ -6742,7 +6862,7 @@
 "<gal>"
 	"gal" Adv 
 "<harjehallá>"
-	"hárjehallat" V TV Ind Prs Sg3 AErr &grm-error-longA MAP:5779 
+	"hárjehallat" V TV Ind Prs Sg3 AErr &err-longA MAP:5779 
 ;	"hárjehit" V* TV Der/alla V Ind Prs Sg3 AErr REMOVE:2083:r548 
 "<.>"
 
@@ -6765,7 +6885,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<juoiggastit>"
-	"juoiggastit" V IV Ind Prs Pl1 &grm-incorr-pers-nr SELECT:5623 MAP:6053 
+	"juoiggastit" V IV Ind Prs Pl1 &grm-incorr-pers-nr SELECT:5623 MAP:6055 
 ;	"juoigat" V* TV Der/st V Ind Prs Pl1 REMOVE:2083:r548 
 ;	"juoigat" V* TV Der/st V Ind Prs Pl3 REMOVE:2083:r548 
 ;	"juoigat" V* TV Der/st V Inf REMOVE:2083:r548 
@@ -6832,7 +6952,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Bárdnit>"
-	"bárdni" Hum N CGErr Pl Nom &grm-error-CG MAP:5778 
+	"bárdni" Hum N CGErr Pl Nom &err-CG MAP:5778 
 ;	"bárdnat" V IV Imprt Pl2 REMOVE:1961 
 ;	"bárdnat" V* IV Actor N Pl Nom REMOVE:2068:r542 
 "<han>"
@@ -6871,7 +6991,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Bárdnit>"
-	"bárdni" Hum N CGErr Pl Nom &grm-error-CG MAP:5778 
+	"bárdni" Hum N CGErr Pl Nom &err-CG MAP:5778 
 ;	"bárdnat" V IV Imprt Pl2 REMOVE:1961 
 ;	"bárdnat" V* IV Actor N Pl Nom REMOVE:2068:r542 
 "<juoiggastit>"
@@ -6911,7 +7031,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<bardni>"
-	"bárdni" Hum N Sg Nom AErr &grm-error-longA MAP:5779 
+	"bárdni" Hum N Sg Nom AErr &err-longA MAP:5779 
 ;	"bárdnat" V IV Imprt Du2 AErr REMOVE:1961 
 ;	"bárdnat" V* IV Actor N Sg Gen AErr REMOVE:2068:r542 
 ;	"bárdnat" V* IV Actor N Sg Acc AErr REMOVE:2068:r542 
@@ -6920,7 +7040,7 @@
 "<ii>"
 	"ii" V IV Neg Ind Sg3 
 "<barga>"
-	"bargat" V TV Ind Prs AiErr Sg3 &grm-error-longA MAP:5779 
+	"bargat" V TV Ind Prs AiErr Sg3 &err-longA MAP:5779 
 "<maidige>"
 	"mihkkege" v2 Pron Indef Pl Acc SELECT:5858 
 ;	"mihkkege" v2 Pron Indef Pl Gen SELECT:5858 
@@ -6995,11 +7115,12 @@
 "<niegada>"
 	"niegadit" V TV Ind Prs Sg3 
 "<nieidaid>"
-	"nieidaid" ? &err-spellingerror MAP:5505 
+	"nieida" Hum N CGErr Pl Gen &err-CG SELECT:5687 MAP:5778 
+;	"nieida" Hum N CGErr Pl Acc SELECT:5687 
 "<birra>"
-	"birra" Adv 
-	"birra" Pr 
-	"birra" Po 
+	"birra" Po SELECT:4309:r1142 
+;	"birra" Adv SELECT:4309:r1142 
+;	"birra" Pr SELECT:4309:r1142 
 "<.>"
 
 "<Maid>"
@@ -7068,7 +7189,7 @@
 	"son" Pron Pers Sg3 Nom SELECT:3109:r885 
 ;	"son" Pcle SELECT:3109:r885 
 "<niegada>"
-	"niegadit" V TV Ind Prs Sg3 &grm-incorr-tense MAP:6075 
+	"niegadit" V TV Ind Prs Sg3 &grm-incorr-tense MAP:6077 
 "<nieiddaid>"
 	"nieida" Hum N Pl Gen SELECT:5687 
 ;	"nieida" Hum N Pl Acc SELECT:5687 
@@ -7103,12 +7224,12 @@
 	"son" Pron Pers Sg3 Nom SELECT:3109:r885 
 ;	"son" Pcle SELECT:3109:r885 
 "<niegada>"
-	"niegadit" V TV Ind Prs Sg3 &grm-incorr-tense MAP:6075 
+	"niegadit" V TV Ind Prs Sg3 &grm-incorr-tense MAP:6077 
 "<nieiddaid>"
-	"nieida" Hum N Pl Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"nieida" Hum N Pl Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"nieida" Hum N Pl Gen SELECT:5858 
 "<birrá>"
-	"birrá" ? &err-spellingerror MAP:5505 
+	"birrá" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maid>"
@@ -7136,7 +7257,7 @@
 	"son" Pron Pers Sg3 Nom SELECT:3109:r885 
 ;	"son" Pcle SELECT:3109:r885 
 "<niegada>"
-	"niegadit" V TV Ind Prs Sg3 &grm-incorr-tense MAP:6075 
+	"niegadit" V TV Ind Prs Sg3 &grm-incorr-tense MAP:6077 
 "<nieidda>"
 	"nieida" Hum N Sg Gen SELECT:5687 
 ;	"nieida" Hum N Sg Acc SELECT:5687 
@@ -7171,7 +7292,7 @@
 	"son" Pron Pers Sg3 Nom SELECT:3109:r885 
 ;	"son" Pcle SELECT:3109:r885 
 "<niegada>"
-	"niegadit" V TV Ind Prs Sg3 &grm-incorr-tense MAP:6075 
+	"niegadit" V TV Ind Prs Sg3 &grm-incorr-tense MAP:6077 
 "<čáppa>"
 	"čáppat" A Attr 
 ;	"čáppis" A Attr REMOVE:2396:r615 
@@ -7209,7 +7330,7 @@
 	"son" Pron Pers Sg3 Nom SELECT:3109:r885 
 ;	"son" Pcle SELECT:3109:r885 
 "<niegada>"
-	"niegadit" V TV Ind Prs Sg3 &grm-incorr-tense MAP:6075 
+	"niegadit" V TV Ind Prs Sg3 &grm-incorr-tense MAP:6077 
 "<čáppa>"
 	"čáppat" A Attr 
 ;	"čáppis" A Attr REMOVE:2396:r615 
@@ -7249,7 +7370,7 @@
 ;	"bártne-#guovttos" Hum Group N Coll Sg Gen PxSg3 REMOVE:3566:r996 
 ;	"bártne-#guovttos" Hum Group N Coll Sg Acc PxSg3 REMOVE:3566:r996 
 "<juoigat>"
-	"juoigat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6089 
+	"juoigat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6091 
 ;	"juoigat" V TV Inf SELECT:5623 
 "<odne>"
 	"odne" Adv 
@@ -7277,9 +7398,9 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Bártne-guovvtos>"
-	"Bártne-guovvtos" N Prop Plc Sg Loc Guess &err-spellingerror SUBSTITUTE:5369 MAP:5505 
+	"Bártne-guovvtos" N Prop Plc Sg Loc Guess &err-nonword SUBSTITUTE:5369 MAP:5505 
 "<juoigat>"
-	"juoigat" V TV Ind Prs Pl1 &grm-incorr-pers-nr SELECT:5623 MAP:6053 
+	"juoigat" V TV Ind Prs Pl1 &grm-incorr-pers-nr SELECT:5623 MAP:6055 
 ;	"juoigat" V TV Inf SELECT:5623 
 "<odne>"
 	"odne" Adv 
@@ -7305,11 +7426,11 @@
 "<odne>"
 	"odne" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Doai>"
 	"don" Pron Pers Du2 Nom &grm-incorr-pers-nr MAP:5990 
 "<baikibehte>"
-	"baikibehte" ? &err-spellingerror MAP:5505 
+	"baikibehte" ? &err-nonword MAP:5505 
 "<!>"
 	"^excl" CLB 
 
@@ -7335,11 +7456,11 @@
 "<odne>"
 	"odne" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Doai>"
 	"don" Pron Pers Du2 Nom &grm-incorr-pers-nr MAP:5990 
 "<dissabehte>"
-	"dissabehte" ? &err-spellingerror MAP:5505 
+	"dissabehte" ? &err-nonword MAP:5505 
 "<!>"
 	"^excl" CLB 
 
@@ -7365,11 +7486,11 @@
 "<odne>"
 	"odne" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Doai>"
 	"don" Pron Pers Du2 Nom &grm-incorr-pers-nr MAP:5990 
 "<tissabehte>"
-	"tissabehte" ? &err-spellingerror MAP:5505 
+	"tissabehte" ? &err-nonword MAP:5505 
 "<!>"
 	"^excl" CLB 
 
@@ -7395,9 +7516,9 @@
 "<odne>"
 	"odne" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<tetris>"
-	"tetris" ? &err-spellingerror MAP:5505 
+	"tetris" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maid>"
@@ -7420,9 +7541,9 @@
 "<odne>"
 	"odne" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<tetriz>"
-	"tetriz" ? &err-spellingerror MAP:5505 
+	"tetriz" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maid>"
@@ -7447,7 +7568,7 @@
 "<Bártnit>"
 	"bárdni" Hum N Pl Nom 
 "<hárjehallat>"
-	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
+	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6090 
 ;	"hárjehallat" V TV Inf SELECT:5623 
 "<biila>"
 	"biila" Veh N Sg Nom &grm-should-not-Nom MAP:5841 
@@ -7483,7 +7604,7 @@
 "<Bártnit>"
 	"bárdni" Hum N Pl Nom 
 "<hárjehallat>"
-	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
+	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6090 
 ;	"hárjehallat" V TV Inf SELECT:5623 
 "<biila>"
 	"biila" Veh N Sg Nom &grm-should-not-Nom MAP:5841 
@@ -7518,7 +7639,7 @@
 "<Bártnit>"
 	"bárdni" Hum N Pl Nom 
 "<hárjehallat>"
-	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
+	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6090 
 ;	"hárjehallat" V TV Inf SELECT:5623 
 "<biila>"
 	"biila" Veh N Sg Nom &grm-should-not-Nom MAP:5841 
@@ -7551,14 +7672,14 @@
 "<Bártnit>"
 	"bárdni" Hum N Pl Nom 
 "<hárjehallat>"
-	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
+	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6090 
 ;	"hárjehallat" V TV Inf SELECT:5623 
 "<biila>"
 	"biila" Veh N Sg Nom 
 ;	"biila" Veh N CGErr Sg Acc REMOVE:5415 
 ;	"biila" Veh N CGErr Sg Gen REMOVE:5415 
 "<vuoja>"
-	"vuodja" N Sg Acc &dia-target ADD:6214 ADD:6214 
+	"vuodja" N Sg Acc &dia-target ADD:6216 ADD:6216 
 	"vuodjat" V IV Ind Prs ConNeg 
 	"vuodja" N Sg Gen 
 	"vuodjat" V IV VGen 
@@ -7588,13 +7709,13 @@
 "<Bártnit>"
 	"bárdni" Hum N Pl Nom 
 "<hárjehallat>"
-	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
+	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6090 
 ;	"hárjehallat" V TV Inf SELECT:5623 
 "<biilla>"
 	"biila" Veh N Sg Gen 
-	"biila" Veh N Sg Acc &dia-target ADD:6214 ADD:6214 
+	"biila" Veh N Sg Acc &dia-target ADD:6216 ADD:6216 
 "<vuodjat>"
-	"vuodja" N CGErr Pl Nom &grm-error-CG SELECT:5724 MAP:5778 
+	"vuodja" N CGErr Pl Nom &err-CG SELECT:5724 MAP:5778 
 ;	"vuodja" N Sg Nom PxSg2 REMOVE:3298:r929 
 ;	"vuodjat" V IV Ind Prs Pl1 REMOVE:5590 
 ;	"vuodjat" V IV Inf SELECT:5724 
@@ -7622,10 +7743,10 @@
 "<Bártnit>"
 	"bárdni" Hum N Pl Nom 
 "<hárjehallat>"
-	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
+	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6090 
 ;	"hárjehallat" V TV Inf SELECT:5623 
 "<biilla>"
-	"biila" Veh N Sg Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"biila" Veh N Sg Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"biila" Veh N Sg Gen SELECT:5858 
 "<vuodjit>"
 	"vuodjit" V TV Inf 
@@ -7654,13 +7775,13 @@
 "<Bártnit>"
 	"bárdni" Hum N Pl Nom 
 "<hárjehallat>"
-	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
+	"hárjehallat" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6090 
 ;	"hárjehallat" V TV Inf SELECT:5623 
 "<biilla>"
 	"biila" Veh N Sg Gen 
 	"biila" Veh N Sg Acc 
 "<vuoja>"
-	"vuodja" N Sg Acc &dia-target SELECT:5724 ADD:6214 ADD:6214 
+	"vuodja" N Sg Acc &dia-target SELECT:5724 ADD:6216 ADD:6216 
 	"vuodja" N Sg Gen SELECT:5724 
 ;	"vuodjat" V IV Imprt ConNeg REMOVE:4696 
 ;	"vuodjat" V IV Imprt Sg2 REMOVE:4696 
@@ -7690,12 +7811,11 @@
 "<Sii>"
 	"son" Pron Pers Pl3 Nom 
 "<vuodjá>"
-	"vuodjit" V TV Ind Prs Sg3 &grm-non-agr-subj-v MAP:6086 
-	"vuodjat" V IV Ind Prs Sg3 &grm-non-agr-subj-v MAP:6086 
+	"vuodjit" V TV Ind Prs Sg3 &grm-non-agr-subj-v MAP:6088 
+	"vuodjat" V IV Ind Prs Sg3 &grm-non-agr-subj-v MAP:6088 
 "<biillain>"
-	"biila" Veh N Sg Com 
 	"biila" Veh N Pl Loc 
-;	"biila" Veh N ComVErr Sg Com REMOVE:5414 
+	"biila" Veh N Sg Com 
 "<.>"
 
 "<Maid>"
@@ -7718,13 +7838,13 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<bartnit>"
-	"bárdni" Hum N Pl Nom AErr &grm-error-longA MAP:5779 
+	"bárdni" Hum N Pl Nom AErr &err-longA MAP:5779 
 "<barget>"
-	"bargat" V TV Ind Prs Pl3 &dia-target MAP:6217 
+	"bargat" V TV Ind Prs Pl3 &dia-target MAP:6219 
 ;	"bargat" V TV Ind Prt Sg2 REMOVE:3513:r982 
 ;	"bargat" V TV Imprt Pl2 REMOVE:4696 
 "<olggus>"
-	"olgu" N Sg Acc PxSg3 &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"olgu" N Sg Acc PxSg3 &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"olgu" N Sg Gen PxSg3 SELECT:5858 
 "<.>"
 
@@ -7746,7 +7866,7 @@
 "<odne>"
 	"odne" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<bártnit>"
 	"bárdni" Hum N Pl Nom 
 "<.>"
@@ -7781,12 +7901,12 @@
 ;	"oasti" Hum N Actor Pl Nom SELECT:5583 
 ;	"oastit" V TV Ind Prs Pl1 SELECT:5583 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<sii>"
 	"son" Pron Pers Pl3 Nom 
 "<áigu>"
 	"áigut" V* TV Actor N Sg Gen 
-	"áigut" V* TV Actor N Sg Acc &dia-target ADD:6214 ADD:6214 
+	"áigut" V* TV Actor N Sg Acc &dia-target ADD:6216 ADD:6216 
 	"áigut" V* TV Actor N Sg Nom 
 ;	"áigut" V TV Ind Prs Sg3 REMOVE:3411:r956 
 ;	"áigut" V TV Imprt Du1 REMOVE:4696 
@@ -7798,7 +7918,7 @@
 ;	"oasti" Hum N Actor Pl Nom SELECT:5583 
 ;	"oastit" V TV Ind Prs Pl1 SELECT:5583 
 "<biilla>"
-	"biila" Veh N Sg Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"biila" Veh N Sg Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"biila" Veh N Sg Gen SELECT:5858 
 "<.>"
 
@@ -7826,7 +7946,7 @@
 "<mun>"
 	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5978 
 "<ferten>"
-	"fertet" V IV Ind Prs Sg1 &dia-target SELECT:3383:r949 MAP:6217 
+	"fertet" V IV Ind Prs Sg1 &dia-target SELECT:3383:r949 MAP:6219 
 ;	"fertet" V IV Ind Prt ConNeg SELECT:3383:r949 
 ;	"fertet" V IV Actio Nom SELECT:3383:r949 
 ;	"fertet" V IV Actio Gen SELECT:3383:r949 
@@ -7871,13 +7991,13 @@
 "<mun>"
 	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5978 
 "<ferten>"
-	"fertet" V IV Ind Prs Sg1 &dia-target SELECT:3383:r949 MAP:6217 
+	"fertet" V IV Ind Prs Sg1 &dia-target SELECT:3383:r949 MAP:6219 
 ;	"fertet" V IV Ind Prt ConNeg SELECT:3383:r949 
 ;	"fertet" V IV Actio Nom SELECT:3383:r949 
 ;	"fertet" V IV Actio Gen SELECT:3383:r949 
 ;	"fertet" V IV PrfPrc SELECT:3383:r949 
 "<harjahallan>"
-	"harjahallan" ? &err-spellingerror MAP:5505 
+	"harjahallan" ? &err-nonword MAP:5505 
 "<leaksui>"
 	"leaksu" N DiphErr Sg Ill 
 "<.>"
@@ -7906,13 +8026,13 @@
 "<mun>"
 	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5978 
 "<ferten>"
-	"fertet" V IV Ind Prs Sg1 &dia-target SELECT:3383:r949 MAP:6217 
+	"fertet" V IV Ind Prs Sg1 &dia-target SELECT:3383:r949 MAP:6219 
 ;	"fertet" V IV Ind Prt ConNeg SELECT:3383:r949 
 ;	"fertet" V IV Actio Nom SELECT:3383:r949 
 ;	"fertet" V IV Actio Gen SELECT:3383:r949 
 ;	"fertet" V IV PrfPrc SELECT:3383:r949 
 "<hárjahallát>"
-	"hárjahallát" ? &err-spellingerror MAP:5505 
+	"hárjahallát" ? &err-nonword MAP:5505 
 "<leaksui>"
 	"leaksu" N DiphErr Sg Ill 
 "<.>"
@@ -7941,13 +8061,13 @@
 "<mun>"
 	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5978 
 "<ferten>"
-	"fertet" V IV Ind Prs Sg1 &dia-target SELECT:3383:r949 MAP:6217 
+	"fertet" V IV Ind Prs Sg1 &dia-target SELECT:3383:r949 MAP:6219 
 ;	"fertet" V IV Ind Prt ConNeg SELECT:3383:r949 
 ;	"fertet" V IV Actio Nom SELECT:3383:r949 
 ;	"fertet" V IV Actio Gen SELECT:3383:r949 
 ;	"fertet" V IV PrfPrc SELECT:3383:r949 
 "<hárjahalán>"
-	"hárjahalán" ? &err-spellingerror MAP:5505 
+	"hárjahalán" ? &err-nonword MAP:5505 
 "<leaksui>"
 	"leaksu" N DiphErr Sg Ill 
 "<.>"
@@ -7975,9 +8095,9 @@
 	"^qst" QDL vastaf 
 "<mu>"
 	"mun" Pron Pers Sg1 Gen 
-	"mun" Pron Pers Sg1 Acc &dia-target ADD:6214 ADD:6214 
+	"mun" Pron Pers Sg1 Acc &dia-target ADD:6216 ADD:6216 
 "<ferten>"
-	"fertet" V IV Ind Prs Sg1 &grm-incorr-pers-nr SELECT:5623 MAP:6046 
+	"fertet" V IV Ind Prs Sg1 &grm-incorr-pers-nr SELECT:5623 MAP:6048 
 ;	"fertet" V IV Ind Prt ConNeg SELECT:5623 
 ;	"fertet" V IV Actio Nom SELECT:5623 
 ;	"fertet" V IV Actio Gen SELECT:5623 
@@ -8022,7 +8142,7 @@
 "<sii>"
 	"son" Pron Pers Pl3 Nom &grm-incorr-pers-nr MAP:5986 
 "<fertet>"
-	"fertet" V IV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5613 MAP:6086 
+	"fertet" V IV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5613 MAP:6088 
 ;	"fertet" V IV Ind Prs Sg2 SELECT:5613 
 ;	"fertet" V IV Inf SELECT:5613 
 "<dahkat>"
@@ -8065,7 +8185,7 @@
 ;	"mii" Pron Interr Sg Nom SELECT:5549 
 ;	"mii" Pron Rel Sg Nom SELECT:5549 
 "<oaidnibehtet>"
-	"oaidnit" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"oaidnit" V TV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<.>"
 
 "<Maid>"
@@ -8086,13 +8206,13 @@
 "<oaidnibehtet>"
 	"oaidnit" V TV Ind Prs Pl2 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Mii>"
 	"mii" Pron Interr Sg Nom 
 	"mii" Pron Rel Sg Nom 
 	"mun" Pron Pers Pl1 Nom 
 "<oaidnibehti>"
-	"oaidnibehti" ? &err-spellingerror MAP:5505 
+	"oaidnibehti" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maid>"
@@ -8118,7 +8238,7 @@
 	"na" Pcle 
 	"ná" Adv AErr 
 "<ehpet>"
-	"ii" V IV Neg Ind Pl2 &grm-incorr-pers-nr MAP:6054 
+	"ii" V IV Neg Ind Pl2 &grm-incorr-pers-nr MAP:6056 
 "<jur>"
 	"jur" Adv 
 "<maidege>"
@@ -8191,7 +8311,7 @@
 ;	"oasti" Hum N Actor Pl Nom SELECT:3474:r971 
 ;	"oastit" V TV Inf SELECT:3474:r971 
 "<marfi>"
-	"márfi" N Sg Nom AErr &grm-error-longA MAP:5779 
+	"márfi" N Sg Nom AErr &err-longA MAP:5779 
 ;	"márfi" N CGErr Sg Acc AErr REMOVE:5415 
 ;	"márfi" N CGErr Sg Gen AErr REMOVE:5415 
 "<.>"
@@ -8247,17 +8367,17 @@
 "<odne>"
 	"odne" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Moai>"
 	"mun" Pron Pers Du1 Nom SELECT:1955 
 ;	"Moa" N Prop Plc Sg Ill SELECT:1955 
 "<oahpahallan>"
-	"oahpahallat" V IV PrfPrc 
+	"oahpahallat" V IV PrfPrc &err-1pers-prfprc MAP:6035 
 	"oahpahallat" V IV Ind Prt ConNeg 
 	"oahpahallat" V IV Actio Nom 
 	"oahpahallat" V IV Actio Gen 
 "<sámegiela>"
-	"sámegiella" N Sg Acc &dia-target ADD:6214 ADD:6214 
+	"sámegiella" N Sg Acc &dia-target ADD:6216 ADD:6216 
 	"sámegiella" N Sg Gen 
 "<odne>"
 	"odne" Adv 
@@ -8279,12 +8399,12 @@
 "<odne>"
 	"odne" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Moai>"
 	"mun" Pron Pers Du1 Nom SELECT:1955 
 ;	"Moa" N Prop Plc Sg Ill SELECT:1955 
 "<oahpahallan>"
-	"oahpahallat" V IV PrfPrc 
+	"oahpahallat" V IV PrfPrc &err-1pers-prfprc MAP:6035 
 	"oahpahallat" V IV Ind Prt ConNeg 
 	"oahpahallat" V IV Actio Nom 
 	"oahpahallat" V IV Actio Gen 
@@ -8320,8 +8440,8 @@
 ;	"Mo" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 ;	"Moa" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 "<vuoiŋŋastit>"
-	"vuoiŋŋastit" V IV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
-	"vuoiŋŋastit" V IV Ind Prs Pl3 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
+	"vuoiŋŋastit" V IV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
+	"vuoiŋŋastit" V IV Ind Prs Pl3 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
 ;	"vuoigŋat" V* TV Der/st V Inf REMOVE:2083:r548 
 ;	"vuoigŋat" V* TV Der/st V Ind Prt Sg2 REMOVE:2083:r548 
 ;	"vuoigŋat" V* TV Der/st V Ind Prs Pl1 REMOVE:2083:r548 
@@ -8346,9 +8466,9 @@
 "<odne>"
 	"odne" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<bihtatid>"
-	"bihtatid" ? &err-spellingerror MAP:5505 
+	"bihtatid" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maid>"
@@ -8395,7 +8515,7 @@
 "<Mun>"
 	"mun" Pron Pers Sg1 Nom 
 "<logan>"
-	"lohkat" V TV Ind Prs Sg1 &dia-target MAP:6217 
+	"lohkat" V TV Ind Prs Sg1 &dia-target MAP:6219 
 ;	"Logan" N Prop LowercaseErr Plc Sg Nom REMOVE:1948 
 ;	"Logan" N Prop LowercaseErr Plc Sg Gen Allegro REMOVE:1948 
 "<feara_mii>"
@@ -8422,7 +8542,7 @@
 ;	"dot" Pron Dem Sg Acc SELECT:3094:r881 
 ;	"dot" Pron Dem Sg Ill Attr SELECT:3094:r881 
 "<oasttát>"
-	"oastit" V TV Ind Prs Sg2 &sem-answer-with-same-verb MAP:6020 
+	"oastit" V TV Ind Prs Sg2 
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Mun>"
@@ -8431,10 +8551,11 @@
 	"leat" V IV Ind Prs Sg1 SELECT:1970 
 ;	"leat" V IV Ind Prt ConNeg SELECT:1970 
 "<oastan>"
-	"oastan" ? &err-spellingerror MAP:5505 
+	"oastit" V TV AiErr PrfPrc &err-longA SELECT:5584 MAP:5779 
+;	"oastit" V TV AiErr Ind Prt ConNeg SELECT:5584 
 "<mielkki>"
-	"mielki" N Sg Gen 
-	"mielki" N Sg Acc &dia-target ADD:6214 ADD:6214 
+	"mielki" N Sg Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
+;	"mielki" N Sg Gen SELECT:5858 
 "<.>"
 
 "<Maid>"
@@ -8462,9 +8583,9 @@
 	"leat" V IV Ind Prs Sg1 SELECT:1970 
 ;	"leat" V IV Ind Prt ConNeg SELECT:1970 
 "<oasttán>"
-	"oastit" V TV Ind Prs Sg1 &grm-should-not-Vfin MAP:6100 
+	"oastit" V TV Ind Prs Sg1 &grm-should-not-Vfin MAP:6102 
 "<mielkki>"
-	"mielki" N Sg Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"mielki" N Sg Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"mielki" N Sg Gen SELECT:5858 
 "<.>"
 
@@ -8492,7 +8613,7 @@
 "<oasttán>"
 	"oastit" V TV Ind Prs Sg1 
 "<láibea>"
-	"láibea" ? &err-spellingerror MAP:5505 
+	"láibea" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maid>"
@@ -8548,7 +8669,7 @@
 "<oasttán>"
 	"oastit" V TV Ind Prs Sg1 
 "<láibia>"
-	"láibia" ? &err-spellingerror MAP:5505 
+	"láibia" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maid>"
@@ -8602,7 +8723,7 @@
 "<oasttán>"
 	"oastit" V TV Ind Prs Sg1 
 "<láibit>"
-	"láibi" N CGErr Pl Nom &grm-error-CG MAP:5778 
+	"láibi" N CGErr Pl Nom &err-CG MAP:5778 
 "<.>"
 
 "<Maid>"
@@ -8634,9 +8755,9 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Dalolas>"
-	"Dalolas" N Prop Plc Sg Loc Guess &err-spellingerror SUBSTITUTE:5369 MAP:5505 
+	"Dalolas" N Prop Plc Sg Loc Guess &err-nonword SUBSTITUTE:5369 MAP:5505 
 "<aigu>"
-	"áigut" V TV Ind Prs Sg3 AErr &grm-error-longA SELECT:5609 MAP:5779 
+	"áigut" V TV Ind Prs Sg3 AErr &err-longA SELECT:5609 MAP:5779 
 ;	"áigut" V TV Imprt Du1 AErr REMOVE:4696 
 ;	"áigut" V TV Imprt Du2 AErr REMOVE:4696 
 ;	"áigut" V* TV Actor N Sg Nom AErr SELECT:5609 
@@ -8649,7 +8770,7 @@
 ;	"oasti" Hum N Actor Pl Nom SELECT:5583 
 ;	"oastit" V TV Ind Prs Pl1 SELECT:5583 
 "<leaipi>"
-	"leaipi" ? &err-spellingerror MAP:5505 
+	"leaipi" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maid>"
@@ -8679,7 +8800,7 @@
 ;	"mii" Pron Interr Sg Nom SELECT:3068:r875 
 ;	"mii" Pron Rel Sg Nom SELECT:3068:r875 
 "<hupmat>"
-	"hupmat" V TV Ind Prs Pl1 &dia-target SELECT:5597:sticky MAP:6217 
+	"hupmat" V TV Ind Prs Pl1 &dia-target SELECT:5597:sticky MAP:6219 
 ;	"hupma" N Sg Nom PxSg2 REMOVE:3298:r929 
 ;	"hupmat" V TV Inf SELECT:5597:sticky 
 ;	"hupma" N CGErr Pl Nom SELECT:5597:sticky 
@@ -8713,7 +8834,7 @@
 ;	"dii" N ABBR Attr REMOVE:1957 
 ;	"dii" N ABBR Gen REMOVE:1957 
 "<oastit>"
-	"oastit" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
+	"oastit" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
 ;	"oastit" V* TV Actor N Pl Nom REMOVE:2068:r542 
 ;	"oastit" V TV Imprt Pl2 REMOVE:4696 
 ;	"oastit" V TV Inf SELECT:5623 
@@ -8748,18 +8869,18 @@
 ;	"dii" N ABBR Attr REMOVE:1957 
 ;	"dii" N ABBR Gen REMOVE:1957 
 "<oastit>"
-	"oastit" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
+	"oastit" V TV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
 ;	"oastit" V* TV Actor N Pl Nom REMOVE:2068:r542 
 ;	"oastit" V TV Imprt Pl2 REMOVE:4696 
 ;	"oastit" V TV Inf SELECT:5623 
 ;	"oasti" Hum N Actor Pl Nom SELECT:5623 
 "<mielkki>"
 	"mielki" N Sg Gen 
-	"mielki" N Sg Acc &dia-target ADD:6214 ADD:6214 
+	"mielki" N Sg Acc &dia-target ADD:6216 ADD:6216 
 "<ja>"
 	"ja" CC 
 "<láibbi>"
-	"láibi" N Sg Acc &dia-target ADD:6214 ADD:6214 
+	"láibi" N Sg Acc &dia-target ADD:6216 ADD:6216 
 	"láibi" N Sg Gen 
 "<.>"
 
@@ -8795,7 +8916,7 @@
 ;	"oastit" V TV Inf SELECT:5597:sticky 
 ;	"oasti" Hum N Actor Pl Nom SELECT:5597:sticky 
 "<mielkki>"
-	"mielki" N Sg Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"mielki" N Sg Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"mielki" N Sg Gen SELECT:5858 
 "<.>"
 
@@ -8818,12 +8939,12 @@
 "<odne>"
 	"odne" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Moai>"
 	"mun" Pron Pers Du1 Nom &grm-incorr-pers-nr SELECT:1955 MAP:5981 
 ;	"Moa" N Prop Plc Sg Ill SELECT:1955 
 "<guollebivddu>"
-	"guollebivdu" N Sg Acc &dia-target ADD:6214 ADD:6214 
+	"guollebivdu" N Sg Acc &dia-target ADD:6216 ADD:6216 
 	"guollebivdu" N Sg Gen 
 "<.>"
 
@@ -8846,7 +8967,7 @@
 "<odne>"
 	"odne" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Moai>"
 	"mun" Pron Pers Du1 Nom &grm-incorr-pers-nr SELECT:1955 MAP:5981 
 ;	"Moa" N Prop Plc Sg Ill SELECT:1955 
@@ -8885,7 +9006,7 @@
 ;	"Mo" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 ;	"Moa" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 "<dolvo>"
-	"doalvut" V TV Ind Prs Du1 &dia-target SELECT:5597:sticky MAP:6217 
+	"doalvut" V TV Ind Prs Du1 &dia-target SELECT:5597:sticky MAP:6219 
 ;	"doalvut" V* TV Der/PassS V Imprt Sg2 REMOVE:2945:r830 
 ;	"doalvut" V* TV Der/PassS V Imprt ConNeg REMOVE:2945:r830 
 ;	"doalvut" V TV Imprt ConNegII REMOVE:2945:r830 
@@ -8923,8 +9044,8 @@
 ;	"Mo" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 ;	"Moa" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 "<godde>"
-	"goddit" V TV Ind Prs Du1 &dia-target SELECT:5597:sticky MAP:6217 
-	"goaddat" V IV Ind Prs Du1 &dia-target SELECT:5597:sticky MAP:6217 
+	"goddit" V TV Ind Prs Du1 &dia-target SELECT:5597:sticky MAP:6219 
+	"goaddat" V IV Ind Prs Du1 &dia-target SELECT:5597:sticky MAP:6219 
 ;	"goddet" V IV Ind Prs Sg3 REMOVE:3411:r956 
 ;	"goddet" V IV Imprt ConNeg REMOVE:4696 
 ;	"goddet" V IV Imprt Sg2 REMOVE:4696 
@@ -8933,7 +9054,7 @@
 ;	"goddet" V IV Ind Prs ConNeg SELECT:5597:sticky 
 ;	"goddit" V TV Ind Prt Pl3 SELECT:5597:sticky 
 "<luosa>"
-	"luossa" Ani N Sg Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"luossa" Ani N Sg Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"luossa" Ani N Sg Gen SELECT:5858 
 "<.>"
 
@@ -8964,7 +9085,7 @@
 ;	"Mo" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 ;	"Moa" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 "<bivde>"
-	"bivdit" V TV Ind Prs Du1 &dia-target SELECT:5597:sticky MAP:6217 
+	"bivdit" V TV Ind Prs Du1 &dia-target SELECT:5597:sticky MAP:6219 
 ;	"bivdet" V TV Ind Prs Sg3 REMOVE:3411:r956 
 ;	"bivdet" V TV Imprt Sg2 REMOVE:4696 
 ;	"bivdet" V TV Imprt ConNeg REMOVE:4696 
@@ -9000,7 +9121,7 @@
 ;	"Mo" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 ;	"Moa" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 "<bivde>"
-	"bivdit" V TV Ind Prs Du1 &dia-target SELECT:5597:sticky MAP:6217 
+	"bivdit" V TV Ind Prs Du1 &dia-target SELECT:5597:sticky MAP:6219 
 ;	"bivdet" V TV Ind Prs Sg3 REMOVE:3411:r956 
 ;	"bivdet" V TV Imprt Sg2 REMOVE:4696 
 ;	"bivdet" V TV Imprt ConNeg REMOVE:4696 
@@ -9008,7 +9129,7 @@
 ;	"bivdet" V TV Ind Prs ConNeg SELECT:5597:sticky 
 ;	"bivdit" V TV Ind Prt Pl3 SELECT:5597:sticky 
 "<luosa>"
-	"luossa" Ani N Sg Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"luossa" Ani N Sg Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"luossa" Ani N Sg Gen SELECT:5858 
 "<.>"
 
@@ -9106,7 +9227,7 @@
 "<Doai>"
 	"don" Pron Pers Du2 Nom 
 "<oste>"
-	"oastit" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6086 
+	"oastit" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6088 
 ;	"ostet" V TV Ind Prs Sg3 REMOVE:3411:r956 
 ;	"ostet" V TV Imprt Sg2 REMOVE:4696 
 ;	"ostet" V TV Imprt ConNeg REMOVE:4696 
@@ -9114,7 +9235,7 @@
 ;	"ostet" V TV VGen SELECT:5623 
 ;	"ostet" V TV Ind Prs ConNeg SELECT:5623 SELECT:5627 
 "<girjji>"
-	"girji" Txt N Sg Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"girji" Txt N Sg Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"girji" Txt N Sg Gen SELECT:5858 
 "<.>"
 
@@ -9144,7 +9265,7 @@
 "<Doai>"
 	"don" Pron Pers Du2 Nom 
 "<oste>"
-	"oastit" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6086 
+	"oastit" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6088 
 ;	"ostet" V TV Ind Prs Sg3 REMOVE:3411:r956 
 ;	"ostet" V TV Imprt Sg2 REMOVE:4696 
 ;	"ostet" V TV Imprt ConNeg REMOVE:4696 
@@ -9152,7 +9273,7 @@
 ;	"ostet" V TV VGen SELECT:5623 
 ;	"ostet" V TV Ind Prs ConNeg SELECT:5623 SELECT:5627 
 "<girjjiid>"
-	"girji" Txt N Pl Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"girji" Txt N Pl Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"girje" Ani N Pl Acc REMOVE:2999:r847 
 ;	"girje" Ani N Pl Gen REMOVE:2999:r847 
 ;	"girji" Txt N Pl Gen SELECT:5858 
@@ -9193,7 +9314,7 @@
 ;	"ostet" V TV Ind Prs ConNeg SELECT:5597:sticky 
 ;	"ostet" V TV VGen SELECT:5597:sticky 
 "<lávkka>"
-	"lávka" N Sg Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"lávka" N Sg Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"lávka" N Sg Gen SELECT:5858 
 "<.>"
 
@@ -9225,7 +9346,7 @@
 ;	"mii" Pron Interr Sg Nom SELECT:3079:r878 
 ;	"mii" Pron Rel Sg Nom SELECT:3079:r878 
 "<sahta>"
-	"sahta" ? &err-spellingerror MAP:5505 
+	"sahta" ? &err-nonword MAP:5505 
 "<oastit>"
 	"oastit" V TV Ind Prs Pl1 SELECT:3474:r971 
 ;	"oastit" V* TV Actor N Pl Nom REMOVE:2068:r542 
@@ -9233,7 +9354,7 @@
 ;	"oasti" Hum N Actor Pl Nom SELECT:3474:r971 
 ;	"oastit" V TV Inf SELECT:3474:r971 
 "<laiibi>"
-	"laiibi" ? &err-spellingerror MAP:5505 
+	"laiibi" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maid>"
@@ -9264,7 +9385,7 @@
 ;	"mii" Pron Interr Sg Nom SELECT:5549 
 ;	"mii" Pron Rel Sg Nom SELECT:5549 
 "<sahtta>"
-	"sáhttit" V IV Ind Prs AiErr Sg3 AErr &grm-error-longA MAP:5779 
+	"sáhttit" V IV Ind Prs AiErr Sg3 AErr &err-longA MAP:5779 
 "<oastit>"
 	"oastit" V TV Inf SELECT:5583 
 ;	"oastit" V* TV Actor N Pl Nom REMOVE:2068:r542 
@@ -9272,7 +9393,7 @@
 ;	"oasti" Hum N Actor Pl Nom SELECT:5583 
 ;	"oastit" V TV Ind Prs Pl1 SELECT:5583 
 "<laiibi>"
-	"laiibi" ? &err-spellingerror MAP:5505 
+	"laiibi" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maid>"
@@ -9297,11 +9418,11 @@
 ;	"ostet" V TV Imprt Sg2 SELECT:3429:r960 
 ;	"ostet" V TV Imprt ConNeg SELECT:3429:r960 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<powerade>"
-	"powerade" ? &err-spellingerror MAP:5505 
+	"powerade" ? &err-nonword MAP:5505 
 "<pulveriid>"
-	"pulveriid" ? &err-spellingerror MAP:5505 
+	"pulveriid" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maid>"
@@ -9329,7 +9450,7 @@
 "<Doai>"
 	"don" Pron Pers Du2 Nom 
 "<sárgot>"
-	"sárgut" V TV Ind Prs Pl3 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
+	"sárgut" V TV Ind Prs Pl3 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
 ;	"sárgut" V* TV Actor N Sg Acc PxSg2 REMOVE:2068:r542 
 ;	"sárgut" V* TV Actor N Sg Nom PxSg2 REMOVE:2068:r542 
 ;	"sárgut" V* TV Actor N Sg Gen PxSg2 REMOVE:2068:r542 
@@ -9342,7 +9463,7 @@
 ;	"sárgut" V TV Ind Prt Sg2 SELECT:5623 
 ;	"sárggu" N Pl Nom SELECT:5623 
 "<laibi>"
-	"láibi" N Sg Nom AErr &grm-error-longA MAP:5779 
+	"láibi" N Sg Nom AErr &err-longA MAP:5779 
 ;	"láibi" N CGErr Sg Acc AErr REMOVE:5415 
 ;	"láibi" N CGErr Sg Gen AErr REMOVE:5415 
 "<.>"
@@ -9361,7 +9482,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Ii>"
-	"ii" V IV Neg Ind Sg3 &grm-incorr-pers-nr MAP:6048 
+	"ii" V IV Neg Ind Sg3 &grm-incorr-pers-nr MAP:6050 
 "<oainne>"
 	"oaidnit" V TV Ind Prs ConNeg 
 ;	"oaidnit" V TV Imprt ConNeg REMOVE:4696 
@@ -9408,10 +9529,10 @@
 "<oainnát>"
 	"oaidnit" V TV Ind Prs Sg2 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<biilla>"
 	"biila" Veh N Sg Gen 
-	"biila" Veh N Sg Acc &dia-target ADD:6214 ADD:6214 
+	"biila" Veh N Sg Acc &dia-target ADD:6216 ADD:6216 
 "<.>"
 
 "<Maid>"
@@ -9430,9 +9551,9 @@
 "<mun>"
 	"mun" Pron Pers Sg1 Nom 
 "<oainnan>"
-	"oaidnit" V TV Ind Prs AiErr Sg1 &grm-error-longA MAP:5779 
+	"oaidnit" V TV Ind Prs AiErr Sg1 &err-longA MAP:5779 
 "<du>"
-	"don" Pron Pers Sg2 Acc &dia-target SELECT:5858 ADD:6214 ADD:6214 
+	"don" Pron Pers Sg2 Acc &dia-target SELECT:5858 ADD:6216 ADD:6216 
 ;	"don" Pron Pers Sg2 Gen SELECT:5858 
 "<.>"
 
@@ -9458,11 +9579,11 @@
 "<sii>"
 	"son" Pron Pers Pl3 Nom 
 "<barget>"
-	"bargat" V TV Ind Prs Pl3 &dia-target MAP:6217 
+	"bargat" V TV Ind Prs Pl3 &dia-target MAP:6219 
 ;	"bargat" V TV Ind Prt Sg2 REMOVE:3513:r982 
 ;	"bargat" V TV Imprt Pl2 REMOVE:4696 
 "<oahppahi>"
-	"oahppahi" ? &err-spellingerror MAP:5505 
+	"oahppahi" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maid>"
@@ -9481,13 +9602,13 @@
 ;	"oaidnit" V TV Imprt Pl2 SELECT:3496:r976 
 ;	"oaidnit" V TV Ind Prt Sg2 SELECT:3496:r976 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Mii>"
 	"mii" Pron Interr Sg Nom 
 	"mii" Pron Rel Sg Nom 
 	"mun" Pron Pers Pl1 Nom &grm-incorr-pers-nr MAP:5984 
 "<oinnán>"
-	"oinnán" ? &err-spellingerror MAP:5505 
+	"oinnán" ? &err-nonword MAP:5505 
 "<biilla>"
 	"biila" Veh N Sg Gen 
 	"biila" Veh N Sg Acc 
@@ -9522,7 +9643,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Ii>"
-	"ii" V IV Neg Ind Sg3 &grm-incorr-pers-nr MAP:6048 
+	"ii" V IV Neg Ind Sg3 &grm-incorr-pers-nr MAP:6050 
 "<ostet>"
 	"ostet" V TV Inf &grm-should-negV MAP:5998 
 ;	"ostet" V* TV Der/d V Ind Prs ConNeg REMOVE:2083:r548 
@@ -9563,8 +9684,8 @@
 "<soai>"
 	"son" Pron Pers Du3 Nom 
 "<vuoiŋŋastit>"
-	"vuoiŋŋastit" V IV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
-	"vuoiŋŋastit" V IV Ind Prs Pl3 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
+	"vuoiŋŋastit" V IV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
+	"vuoiŋŋastit" V IV Ind Prs Pl3 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
 ;	"vuoigŋat" V* TV Der/st V Inf REMOVE:2083:r548 
 ;	"vuoigŋat" V* TV Der/st V Ind Prt Sg2 REMOVE:2083:r548 
 ;	"vuoigŋat" V* TV Der/st V Ind Prs Pl1 REMOVE:2083:r548 
@@ -9586,22 +9707,24 @@
 	"son" Pron Pers Du3 Nom 
 "<sárguba>"
 	"sárgut" V TV Ind Prs Du3 &sem-answer-with-same-verb SELECT:3447:r964 MAP:6020 
+;	"sárgu" N CGErr Sg Acc Foc/ba REMOVE:1953 
+;	"sárgu" N CGErr Sg Gen Foc/ba REMOVE:1953 
 ;	"sárggu" DiphErr Sg Gen Foc/ba REMOVE:1953 
 ;	"sárggu" DiphErr Sg Acc Foc/ba REMOVE:1953 
 ;	"sárgut" V* TV Actor N Sg Gen Foc/ba REMOVE:2068:r542 
-;	"sárgut" V* TV Actor N Sg Acc Foc/ba REMOVE:2068:r542 
 ;	"sárgut" V* TV Actor N Sg Nom Foc/ba REMOVE:2068:r542 
+;	"sárgut" V* TV Actor N Sg Acc Foc/ba REMOVE:2068:r542 
 ;	"sárgut" V TV Ind Prs Sg3 Foc/ba REMOVE:3411:r956 
 ;	"sárgu" N Sg Nom Foc/ba SELECT:3447:r964 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Soai>"
 	"son" Pron Pers Du3 Nom 
 "<sáeguba>"
-	"sáeguba" ? &err-spellingerror MAP:5505 
+	"sáeguba" ? &err-nonword MAP:5505 
 "<viesuid>"
 	"viessu" Build N Pl Gen 
-	"viessu" Build N Pl Acc &dia-target ADD:6214 ADD:6214 
+	"viessu" Build N Pl Acc &dia-target ADD:6216 ADD:6216 
 "<.>"
 
 "<Maid>"
@@ -9626,9 +9749,9 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Viibeali-guovttos>"
-	"Viibeali-guovttos" N Prop Plc Sg Loc Guess &err-spellingerror SUBSTITUTE:5369 MAP:5505 
+	"Viibeali-guovttos" N Prop Plc Sg Loc Guess &err-nonword SUBSTITUTE:5369 MAP:5505 
 "<bargaba>"
-	"bargat" V TV Ind Prs Du3 &dia-target MAP:6217 
+	"bargat" V TV Ind Prs Du3 &dia-target MAP:6219 
 ;	"bargat" V TV Ind Prs AiErr Sg3 Foc/ba REMOVE:5523 
 "<giella>"
 	"giella" N Sg Nom &grm-should-not-Nom SELECT:1974:r683 MAP:5841 
@@ -9664,7 +9787,7 @@
 ;	"vilbeali-#guovttos" Hum Group N Coll Sg Gen PxSg3 REMOVE:3566:r996 
 ;	"vilbeali-#guovttos" Hum Group N Coll Sg Acc PxSg3 REMOVE:3566:r996 
 "<bargaba>"
-	"bargat" V TV Ind Prs Du3 &dia-target MAP:6217 
+	"bargat" V TV Ind Prs Du3 &dia-target MAP:6219 
 ;	"bargat" V TV Ind Prs AiErr Sg3 Foc/ba REMOVE:3469:r970 
 "<giella>"
 	"giella" N Sg Nom &grm-should-not-Nom SELECT:1974:r683 MAP:5841 
@@ -9700,10 +9823,10 @@
 ;	"vilbeali-#guovttos" Hum Group N Coll Sg Gen PxSg3 REMOVE:3566:r996 
 ;	"vilbeali-#guovttos" Hum Group N Coll Sg Acc PxSg3 REMOVE:3566:r996 
 "<bargaba>"
-	"bargat" V TV Ind Prs Du3 &dia-target MAP:6217 
+	"bargat" V TV Ind Prs Du3 &dia-target MAP:6219 
 ;	"bargat" V TV Ind Prs AiErr Sg3 Foc/ba REMOVE:3469:r970 
 "<giellaa>"
-	"giellaa" ? &err-spellingerror MAP:5505 
+	"giellaa" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maid>"
@@ -9733,10 +9856,10 @@
 ;	"vilbeali-#guovttos" Hum Group N Coll Sg Gen PxSg3 REMOVE:3566:r996 
 ;	"vilbeali-#guovttos" Hum Group N Coll Sg Acc PxSg3 REMOVE:3566:r996 
 "<bargaba>"
-	"bargat" V TV Ind Prs Du3 &dia-target MAP:6217 
+	"bargat" V TV Ind Prs Du3 &dia-target MAP:6219 
 ;	"bargat" V TV Ind Prs AiErr Sg3 Foc/ba REMOVE:3469:r970 
 "<giellat>"
-	"giella" N CGErr Pl Nom &grm-error-CG SELECT:1974:r683 MAP:5778 
+	"giella" N CGErr Pl Nom &err-CG SELECT:1974:r683 MAP:5778 
 ;	"giellat" V TV Ind Prs Pl1 SELECT:1974:r683 
 ;	"giellat" V TV Inf SELECT:1974:r683 
 ;	"giella" N Sg Nom PxSg2 SELECT:1974:r683 REMOVE:3298:r929 
@@ -9815,7 +9938,7 @@
 "<soai>"
 	"son" Pron Pers Du3 Nom 
 "<láibo>"
-	"láibut" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
+	"láibut" V TV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
 ;	"láibut" V TV Imprt ConNegII REMOVE:4696 
 ;	"láibut" V TV Ind Prt Pl3 SELECT:5623 
 ;	"láibut" V TV ConNegII SELECT:5623 
@@ -9840,7 +9963,7 @@
 ;	"niegadit" V TV Inf SELECT:5591 
 ;	"niegadit" V TV Ind Prs Pl1 SELECT:5591 SELECT:5599 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Maid>"
 	"maid" Adv SELECT:5063:r1352 
 ;	"maid" Interj SELECT:5063:r1352 
@@ -9913,7 +10036,7 @@
 ;	"čierastit" V IV Inf SELECT:3474:r971 
 ;	"čierastit" V IV Ind Prt Sg2 SELECT:3474:r971 
 "<buohkiin>"
-	"buohkiin" ? &err-spellingerror MAP:5505 
+	"buohkiin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maiguin>"
@@ -9975,7 +10098,7 @@
 ;	"čierastit" V IV Inf SELECT:3474:r971 
 ;	"čierastit" V IV Ind Prt Sg2 SELECT:3474:r971 
 "<mánaiguin>"
-	"mánná" Hum N Pl Com AErr &grm-error-longA MAP:5779 
+	"mánná" Hum N Pl Com AErr &err-longA MAP:5779 
 "<.>"
 
 "<Maiguin>"
@@ -10006,9 +10129,8 @@
 ;	"čierastit" V IV Inf SELECT:3474:r971 
 ;	"čierastit" V IV Ind Prt Sg2 SELECT:3474:r971 
 "<mánain>"
-	"mánná" Hum N Pl Loc AErr &grm-error-longA MAP:5779 
-	"mánná" Hum N Sg Com AErr &grm-error-longA MAP:5779 
-;	"mánná" Hum N ComVErr Sg Com AErr REMOVE:5414 
+	"mánná" Hum N Pl Loc AErr &err-longA MAP:5779 
+	"mánná" Hum N Sg Com AErr &err-longA MAP:5779 
 "<.>"
 
 "<Maiguin>"
@@ -10025,8 +10147,8 @@
 	"mun" Pron Pers Du1 Nom SELECT:1955 
 ;	"Moa" N Prop Plc Sg Ill SELECT:1955 
 "<maiguin>"
-	"mii" Pron Rel Pl Com &dia-target MAP:6224 
-	"mii" Pron Interr Pl Com &dia-target MAP:6224 
+	"mii" Pron Rel Pl Com &dia-target MAP:6226 
+	"mii" Pron Interr Pl Com &dia-target MAP:6226 
 "<čierasteahppi>"
 	"čierastit" V IV Ind Prs Du2 
 ;	"čierrat" V* IV Der/st V Ind Prs Du2 REMOVE:2083:r548 
@@ -10061,9 +10183,10 @@
 "<mannabehtet>"
 	"mannat" V IV Ind Prs Pl2 
 "<rouktot>"
-	"rouktot" ? &err-spellingerror MAP:5505 
+	"rouktot" ? &err-nonword MAP:5505 
 "<ránnjáiguin>"
-	"ránnjá" Hum N Pl Com &dia-target MAP:6224 
+	"ránnjá" Hum N Pl Com &dia-target MAP:6226 
+;	"ránnjá" Hum N CGErr Pl Com REMOVE:5415 
 "<.>"
 
 "<Maiguin>"
@@ -10097,7 +10220,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<váhneiguin>"
-	"váhneiguin" ? &err-spellingerror MAP:5505 
+	"váhneiguin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maiguin>"
@@ -10131,7 +10254,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<váhnemaiguin>"
-	"váhnemaiguin" ? &err-spellingerror MAP:5505 
+	"váhnemaiguin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maiguin>"
@@ -10165,7 +10288,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<váhniiguin>"
-	"váhniiguin" ? &err-spellingerror MAP:5505 
+	"váhniiguin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maiguin>"
@@ -10199,7 +10322,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<váhnáiguin>"
-	"váhnáiguin" ? &err-spellingerror MAP:5505 
+	"váhnáiguin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maiguin>"
@@ -10215,11 +10338,10 @@
 ;	"čierrat" V* IV Der/st V Ind Prs Sg2 REMOVE:2083:r548 
 ;	"čierastit" V IV Ind Prs Sg2 SELECT:3474:r971 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<gielkkain>"
-	"gielká" N Pl Loc AErr &grm-error-longA MAP:5779 
-	"gielká" N Sg Com AErr &grm-error-longA MAP:5779 
-;	"gielká" N ComVErr Sg Com AErr REMOVE:5414 
+	"gielká" N Pl Loc AErr &err-longA MAP:5779 
+	"gielká" N Sg Com AErr &err-longA MAP:5779 
 "<.>"
 
 "<Maiguin>"
@@ -10237,8 +10359,8 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<čierastat>"
-	"čierastit" V IV Ind Prs Sg2 &grm-incorr-pers-nr MAP:6047 
-	"čierastit" V IV Ind Prs Pl1 &grm-incorr-pers-nr MAP:6053 
+	"čierastit" V IV Ind Prs Sg2 &grm-incorr-pers-nr MAP:6049 
+	"čierastit" V IV Ind Prs Pl1 &grm-incorr-pers-nr MAP:6055 
 ;	"čierrat" V* IV Der/st V Ind Prs Pl1 REMOVE:2083:r548 
 ;	"čierrat" V* IV Der/st V Ind Prs Sg2 REMOVE:2083:r548 
 "<.>"
@@ -10258,8 +10380,8 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<čierastit>"
-	"čierastit" V IV Ind Prs Pl3 &grm-incorr-pers-nr SELECT:5623 MAP:6055 
-	"čierastit" V IV Ind Prs Pl1 &grm-incorr-pers-nr SELECT:5623 MAP:6053 
+	"čierastit" V IV Ind Prs Pl3 &grm-incorr-pers-nr SELECT:5623 MAP:6057 
+	"čierastit" V IV Ind Prs Pl1 &grm-incorr-pers-nr SELECT:5623 MAP:6055 
 ;	"čierrat" V* IV Der/st V Ind Prt Sg2 REMOVE:2083:r548 
 ;	"čierrat" V* IV Der/st V Ind Prs Pl3 REMOVE:2083:r548 
 ;	"čierrat" V* IV Der/st V Ind Prs Pl1 REMOVE:2083:r548 
@@ -10279,13 +10401,13 @@
 	"čierastit" V IV Ind Prs Du1 &sem-answer-with-same-verb MAP:6020 
 ;	"čierrat" V* IV Der/st V Ind Prs Du1 REMOVE:2083:r548 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Doai>"
 	"don" Pron Pers Du2 Nom 
 "<čierasteahtti>"
-	"čierasteahtti" ? &err-spellingerror MAP:5505 
+	"čierasteahtti" ? &err-nonword MAP:5505 
 "<manaiguin>"
-	"mánná" Hum N Pl Com AErr &grm-error-longA MAP:5779 
+	"mánná" Hum N Pl Com AErr &err-longA MAP:5779 
 "<.>"
 
 "<Maiguin>"
@@ -10306,7 +10428,7 @@
 	"čierastit" V IV Ind Prs Du2 
 ;	"čierrat" V* IV Der/st V Ind Prs Du2 REMOVE:2083:r548 
 "<manaiguin>"
-	"mánná" Hum N Pl Com AErr &grm-error-longA MAP:5779 
+	"mánná" Hum N Pl Com AErr &err-longA MAP:5779 
 "<.>"
 
 "<Maiguin>"
@@ -10337,7 +10459,7 @@
 ;	"čierastit" V IV Inf SELECT:5597:sticky 
 ;	"čierastit" V IV Ind Prs Pl1 SELECT:5597:sticky 
 "<gielkáguin>"
-	"gielkáguin" ? &err-spellingerror MAP:5505 
+	"gielkáguin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Maiguin>"
@@ -10368,7 +10490,7 @@
 ;	"čierastit" V IV Inf SELECT:5597:sticky 
 ;	"čierastit" V IV Ind Prs Pl1 SELECT:5597:sticky 
 "<gielkkáguin>"
-	"gielkkáguin" ? &err-spellingerror MAP:5505 
+	"gielkkáguin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Mainna>"
@@ -10391,13 +10513,12 @@
 ;	"mii" Pron Interr Sg Nom SELECT:5549 
 ;	"mii" Pron Rel Sg Nom SELECT:5549 
 "<mannabehtet>"
-	"mannat" V IV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"mannat" V IV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<ruoktot>"
 	"ruoktot" Adv 
 "<biillain>"
-	"biila" Veh N Sg Com &dia-target MAP:6224 
 	"biila" Veh N Pl Loc 
-;	"biila" Veh N ComVErr Sg Com REMOVE:5414 
+	"biila" Veh N Sg Com &dia-target MAP:6226 
 "<.>"
 
 "<Mainna>"
@@ -10446,12 +10567,11 @@
 	"mun" Pron Pers Du1 Nom SELECT:1955 
 ;	"Moa" N Prop Plc Sg Ill SELECT:1955 
 "<čierasteahppi>"
-	"čierastit" V IV Ind Prs Du2 &grm-non-agr-subj-v MAP:6086 
+	"čierastit" V IV Ind Prs Du2 &grm-non-agr-subj-v MAP:6088 
 ;	"čierrat" V* IV Der/st V Ind Prs Du2 REMOVE:2083:r548 
 "<gielkkáin>"
-	"gielká" N Sg Com &dia-target MAP:6224 
+	"gielká" N Sg Com &dia-target MAP:6226 
 	"gielká" N Pl Loc 
-;	"gielká" N ComVErr Sg Com REMOVE:5414 
 "<.>"
 
 "<Mainna>"
@@ -10491,7 +10611,7 @@
 "<Mun>"
 	"mun" Pron Pers Sg1 Nom 
 "<manat>"
-	"mannat" V IV Ind Prs Sg2 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6086 
+	"mannat" V IV Ind Prs Sg2 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6088 
 ;	"mannat" V* IV* Der/h V TV Ind Prs ConNeg REMOVE:2083:r548 
 ;	"mannat" V* IV Der/d V Imprt Sg2 REMOVE:2083:r548 
 ;	"mannat" V* IV* Der/h V TV VGen REMOVE:2083:r548 
@@ -10514,7 +10634,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<nieiddaiguin>"
-	"nieida" Hum N Pl Com &dia-target MAP:6224 
+	"nieida" Hum N Pl Com &dia-target MAP:6226 
 "<.>"
 
 "<Mainna>"
@@ -10554,7 +10674,7 @@
 "<Mun>"
 	"mun" Pron Pers Sg1 Nom 
 "<manat>"
-	"mannat" V IV Ind Prs Sg2 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6086 
+	"mannat" V IV Ind Prs Sg2 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6088 
 ;	"mannat" V* IV* Der/h V TV Ind Prs ConNeg REMOVE:2083:r548 
 ;	"mannat" V* IV Der/d V Imprt Sg2 REMOVE:2083:r548 
 ;	"mannat" V* IV* Der/h V TV VGen REMOVE:2083:r548 
@@ -10577,9 +10697,8 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<nieiddain>"
-	"nieida" Hum N Sg Com &dia-target MAP:6224 
+	"nieida" Hum N Sg Com &dia-target MAP:6226 
 	"nieida" Hum N Pl Loc 
-;	"nieida" Hum N ComVErr Sg Com REMOVE:5414 
 "<.>"
 
 "<Mainna>"
@@ -10612,7 +10731,7 @@
 ;	"čierastit" V IV Actio Nom SELECT:1970 
 ;	"čierrat" V* IV Der/st V Ind Prs Sg1 SELECT:1970 REMOVE:2083:r548 
 "<joarin>"
-	"joarin" ? &err-spellingerror MAP:5505 
+	"joarin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Mainna>"
@@ -10645,9 +10764,8 @@
 ;	"čierastit" V IV Actio Nom SELECT:1970 
 ;	"čierrat" V* IV Der/st V Ind Prs Sg1 SELECT:1970 REMOVE:2083:r548 
 "<mánain>"
-	"mánná" Hum N Sg Com AErr &grm-error-longA MAP:5779 
-	"mánná" Hum N Pl Loc AErr &grm-error-longA MAP:5779 
-;	"mánná" Hum N ComVErr Sg Com AErr REMOVE:5414 
+	"mánná" Hum N Sg Com AErr &err-longA MAP:5779 
+	"mánná" Hum N Pl Loc AErr &err-longA MAP:5779 
 "<.>"
 
 "<Mainna>"
@@ -10669,7 +10787,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Dii>"
 	"don" Pron Pers Pl2 Nom 
 ;	"dii" N ABBR Nom REMOVE:1957 
@@ -10677,10 +10795,10 @@
 ;	"dii" N ABBR Attr REMOVE:1957 
 ;	"dii" N ABBR Gen REMOVE:1957 
 "<manabehtet>"
-	"manabehtet" ? &err-spellingerror MAP:5505 
+	"manabehtet" ? &err-nonword MAP:5505 
 "<skohteriin>"
 	"skohter" N Pl Loc 
-	"skohter" N Sg Com &dia-target MAP:6224 
+	"skohter" N Sg Com &dia-target MAP:6226 
 "<.>"
 
 "<Mainna>"
@@ -10702,7 +10820,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Dii>"
 	"don" Pron Pers Pl2 Nom 
 ;	"dii" N ABBR Nom REMOVE:1957 
@@ -10710,10 +10828,10 @@
 ;	"dii" N ABBR Attr REMOVE:1957 
 ;	"dii" N ABBR Gen REMOVE:1957 
 "<mannabehttet>"
-	"mannabehttet" ? &err-spellingerror MAP:5505 
+	"mannabehttet" ? &err-nonword MAP:5505 
 "<skohteriin>"
 	"skohter" N Pl Loc 
-	"skohter" N Sg Com &dia-target MAP:6224 
+	"skohter" N Sg Com &dia-target MAP:6226 
 "<.>"
 
 "<Mainna>"
@@ -10753,8 +10871,7 @@
 	"ruoktot" Adv 
 "<julggiin>"
 	"juolgi" N Pl Loc 
-	"juolgi" N Sg Com &dia-target MAP:6224 
-;	"juolgi" N ComVErr Sg Com REMOVE:5414 
+	"juolgi" N Sg Com &dia-target MAP:6226 
 "<.>"
 
 "<Mainna>"
@@ -10793,7 +10910,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<juolggain>"
-	"juolggain" ? &err-spellingerror MAP:5505 
+	"juolggain" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Mainna>"
@@ -10832,9 +10949,8 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<nieiddain>"
-	"nieida" Hum N Sg Com &dia-target MAP:6224 
+	"nieida" Hum N Sg Com &dia-target MAP:6226 
 	"nieida" Hum N Pl Loc 
-;	"nieida" Hum N ComVErr Sg Com REMOVE:5414 
 "<.>"
 
 "<Mainna>"
@@ -10873,11 +10989,11 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<áhčáin>"
-	"áhčáin" ? &err-spellingerror MAP:5505 
+	"áhčáin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Mainna>"
-	"mii" Pron Interr Sg Com &grm-missing-Com SELECT:5540 MAP:5805 
+	"mii" Pron Interr Sg Com SELECT:5540 
 ;	"mii" Pron Rel Sg Com SELECT:5540 
 "<mii>"
 	"mun" Pron Pers Pl1 Nom SELECT:3079:r878 
@@ -10912,7 +11028,8 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<áhččiin>"
-	"áhččiin" ? &err-spellingerror MAP:5505 
+	"áhčči" Hum N CGErr Pl Loc &err-CG MAP:5778 
+	"áhčči" Hum N CGErr Sg Com &err-CG MAP:5778 
 "<.>"
 
 "<Mainna>"
@@ -10990,7 +11107,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<áhččáin>"
-	"áhččáin" ? &err-spellingerror MAP:5505 
+	"áhččáin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Mainna>"
@@ -11020,7 +11137,7 @@
 ;	"dii" N ABBR Attr REMOVE:1957 
 ;	"dii" N ABBR Gen REMOVE:1957 
 "<mannat>"
-	"mannat" V IV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
+	"mannat" V IV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
 ;	"mánná" Hum N Sg Nom PxSg2 AErr REMOVE:3298:r929 
 ;	"manna" N Sg Gen PxSg2 REMOVE:3298:r929 
 ;	"manna" N Sg Acc PxSg2 REMOVE:3298:r929 
@@ -11031,7 +11148,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<julggiguin>"
-	"julggiguin" ? &err-spellingerror MAP:5505 
+	"julggiguin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Mainna>"
@@ -11061,7 +11178,7 @@
 ;	"dii" N ABBR Attr REMOVE:1957 
 ;	"dii" N ABBR Gen REMOVE:1957 
 "<mannat>"
-	"mannat" V IV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
+	"mannat" V IV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
 ;	"mánná" Hum N Sg Nom PxSg2 AErr REMOVE:3298:r929 
 ;	"manna" N Sg Gen PxSg2 REMOVE:3298:r929 
 ;	"manna" N Sg Acc PxSg2 REMOVE:3298:r929 
@@ -11072,7 +11189,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<julggiiguin>"
-	"juolgi" N Pl Com &dia-target MAP:6224 
+	"juolgi" N Pl Com &dia-target MAP:6226 
 "<.>"
 
 "<Mainna>"
@@ -11102,7 +11219,7 @@
 ;	"dii" N ABBR Attr REMOVE:1957 
 ;	"dii" N ABBR Gen REMOVE:1957 
 "<mannat>"
-	"mannat" V IV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6086 
+	"mannat" V IV Ind Prs Pl1 &grm-non-agr-subj-v SELECT:5623 MAP:6088 
 ;	"mánná" Hum N Sg Nom PxSg2 AErr REMOVE:3298:r929 
 ;	"manna" N Sg Gen PxSg2 REMOVE:3298:r929 
 ;	"manna" N Sg Acc PxSg2 REMOVE:3298:r929 
@@ -11114,8 +11231,7 @@
 	"ruoktot" Adv 
 "<julggiin>"
 	"juolgi" N Pl Loc 
-	"juolgi" N Sg Com &dia-target MAP:6224 
-;	"juolgi" N ComVErr Sg Com REMOVE:5414 
+	"juolgi" N Sg Com &dia-target MAP:6226 
 "<.>"
 
 "<Mainna>"
@@ -11137,7 +11253,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<dii>"
 	"don" Pron Pers Pl2 Nom 
 ;	"dii" N ABBR Nom REMOVE:1957 
@@ -11155,7 +11271,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<julggiiguin>"
-	"juolgi" N Pl Com &dia-target MAP:6224 
+	"juolgi" N Pl Com &dia-target MAP:6226 
 "<.>"
 
 "<Mainna>"
@@ -11190,7 +11306,7 @@
 ;	"čierastit" V IV Ind Prs Pl3 SELECT:5597:sticky 
 ;	"čierastit" V IV Inf SELECT:5597:sticky 
 "<sabehiidguin>"
-	"sabehiidguin" ? &err-spellingerror MAP:5505 
+	"sabehiidguin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Mainna>"
@@ -11225,7 +11341,7 @@
 ;	"čierastit" V IV Ind Prs Pl3 SELECT:5597:sticky 
 ;	"čierastit" V IV Inf SELECT:5597:sticky 
 "<sabehiiguin>"
-	"sabet" N Pl Com &dia-target MAP:6224 
+	"sabet" N Pl Com &dia-target MAP:6226 
 "<.>"
 
 "<Mainna>"
@@ -11245,9 +11361,9 @@
 ;	"čierastit" V IV Inf SELECT:3474:r971 
 ;	"čierastit" V IV Ind Prt Sg2 SELECT:3474:r971 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<sabehiiguin>"
-	"sabet" N Pl Com &dia-target MAP:6224 
+	"sabet" N Pl Com &dia-target MAP:6226 
 "<.>"
 
 "<Mainna>"
@@ -11269,8 +11385,8 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<čierastit>"
-	"čierastit" V IV Ind Prs Pl3 &grm-incorr-pers-nr SELECT:5623 MAP:6055 
-	"čierastit" V IV Ind Prs Pl1 &grm-incorr-pers-nr SELECT:5623 MAP:6053 
+	"čierastit" V IV Ind Prs Pl3 &grm-incorr-pers-nr SELECT:5623 MAP:6057 
+	"čierastit" V IV Ind Prs Pl1 &grm-incorr-pers-nr SELECT:5623 MAP:6055 
 ;	"čierrat" V* IV Der/st V Ind Prt Sg2 REMOVE:2083:r548 
 ;	"čierrat" V* IV Der/st V Ind Prs Pl3 REMOVE:2083:r548 
 ;	"čierrat" V* IV Der/st V Ind Prs Pl1 REMOVE:2083:r548 
@@ -11294,7 +11410,7 @@
 "<álggán>"
 	"álgit" V IV Ind Prs Sg1 
 "<skuvlii>"
-	"skuvla" Org Plc N Sg Ill &dia-target SELECT:2803:r784 MAP:6220 
+	"skuvla" Org Plc N Sg Ill &dia-target SELECT:2803:r784 MAP:6222 
 ;	"skuvlet" V TV Ind Prt Sg3 SELECT:2803:r784 
 "<.>"
 
@@ -11367,7 +11483,7 @@
 "<Doai>"
 	"don" Pron Pers Du2 Nom 
 "<manne>"
-	"mannat" V IV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6086 
+	"mannat" V IV Ind Prs Du1 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6088 
 ;	"mannet" V IV Ind Prs Sg3 REMOVE:3411:r956 
 ;	"mannet" V IV Imprt ConNeg REMOVE:4696 
 ;	"mannet" V IV Imprt Sg2 REMOVE:4696 
@@ -11378,9 +11494,8 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<biillain>"
-	"biila" Veh N Sg Com &dia-target MAP:6224 
 	"biila" Veh N Pl Loc 
-;	"biila" Veh N ComVErr Sg Com REMOVE:5414 
+	"biila" Veh N Sg Com &dia-target MAP:6226 
 "<.>"
 
 "<Mainna>"
@@ -11404,8 +11519,8 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<Mainna>"
-	"mii" Pron Rel Sg Com &dia-target MAP:6224 
-	"mii" Pron Interr Sg Com &dia-target MAP:6224 
+	"mii" Pron Rel Sg Com &dia-target MAP:6226 
+	"mii" Pron Interr Sg Com &dia-target MAP:6226 
 "<moai>"
 	"mun" Pron Pers Du1 Nom 
 ;	"Mo" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
@@ -11437,15 +11552,16 @@
 	"čierastit" V IV Ind Prs Du1 &sem-answer-with-same-verb MAP:6020 
 ;	"čierrat" V* IV Der/st V Ind Prs Du1 REMOVE:2083:r548 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Doai>"
 	"don" Pron Pers Du2 Nom 
 "<čierasteahhpi>"
-	"čierasteahhpi" ? &err-spellingerror MAP:5505 
+	"čierasteahhpi" ? &err-nonword MAP:5505 
 "<ránnjáin>"
+	"ránnjá" Hum N Sg Com &dia-target MAP:6226 
 	"ránnjá" Hum N Pl Loc 
-	"ránnjá" Hum N Sg Com &dia-target MAP:6224 
-;	"ránnjá" Hum N ComVErr Sg Com REMOVE:5414 
+;	"ránnjá" Hum N CGErr Pl Loc REMOVE:5415 
+;	"ránnjá" Hum N CGErr Sg Com REMOVE:5415 
 "<.>"
 
 "<Mainna>"
@@ -11459,15 +11575,16 @@
 	"čierastit" V IV Ind Prs Du1 &sem-answer-with-same-verb MAP:6020 
 ;	"čierrat" V* IV Der/st V Ind Prs Du1 REMOVE:2083:r548 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Doai>"
 	"don" Pron Pers Du2 Nom 
 "<čierrasteahhpi>"
-	"čierrasteahhpi" ? &err-spellingerror MAP:5505 
+	"čierrasteahhpi" ? &err-nonword MAP:5505 
 "<ránnjáin>"
+	"ránnjá" Hum N Sg Com &dia-target MAP:6226 
 	"ránnjá" Hum N Pl Loc 
-	"ránnjá" Hum N Sg Com &dia-target MAP:6224 
-;	"ránnjá" Hum N ComVErr Sg Com REMOVE:5414 
+;	"ránnjá" Hum N CGErr Pl Loc REMOVE:5415 
+;	"ránnjá" Hum N CGErr Sg Com REMOVE:5415 
 "<.>"
 
 "<Mainna>"
@@ -11481,15 +11598,16 @@
 	"čierastit" V IV Ind Prs Du1 &sem-answer-with-same-verb MAP:6020 
 ;	"čierrat" V* IV Der/st V Ind Prs Du1 REMOVE:2083:r548 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Doai>"
 	"don" Pron Pers Du2 Nom 
 "<čierrasteahppi>"
-	"čierrasteahppi" ? &err-spellingerror MAP:5505 
+	"čierrasteahppi" ? &err-nonword MAP:5505 
 "<ránnjáin>"
+	"ránnjá" Hum N Sg Com &dia-target MAP:6226 
 	"ránnjá" Hum N Pl Loc 
-	"ránnjá" Hum N Sg Com &dia-target MAP:6224 
-;	"ránnjá" Hum N ComVErr Sg Com REMOVE:5414 
+;	"ránnjá" Hum N CGErr Pl Loc REMOVE:5415 
+;	"ránnjá" Hum N CGErr Sg Com REMOVE:5415 
 "<.>"
 
 "<Mainna>"
@@ -11519,7 +11637,7 @@
 "<Sii>"
 	"son" Pron Pers Pl3 Nom 
 "<mannabehtet>"
-	"mannat" V IV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"mannat" V IV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<ruoktot>"
 	"ruoktot" Adv 
 "<vácci>"
@@ -11605,7 +11723,7 @@
 "<.>"
 
 "<Mainna>"
-	"mii" Pron Interr Sg Com &grm-missing-Com SELECT:5540 MAP:5805 
+	"mii" Pron Interr Sg Com SELECT:5540 
 ;	"mii" Pron Rel Sg Com SELECT:5540 
 "<soai>"
 	"son" Pron Pers Du3 Nom 
@@ -11636,7 +11754,8 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<biilain>"
-	"biilain" ? &err-spellingerror MAP:5505 
+	"biila" Veh N CGErr Sg Com &err-CG MAP:5778 
+	"biila" Veh N CGErr Pl Loc &err-CG MAP:5778 
 "<.>"
 
 "<Mainna>"
@@ -11671,7 +11790,7 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<sihkeliiguin>"
-	"sihkeliiguin" ? &err-spellingerror MAP:5505 
+	"sihkeliiguin" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Mainna>"
@@ -11700,9 +11819,10 @@
 "<ruoktot>"
 	"ruoktot" Adv 
 "<moarsiin>"
-	"moarsi" Hum N Sg Com &dia-target MAP:6224 
 	"moarsi" Hum N Pl Loc 
-;	"moarsi" Hum N ComVErr Sg Com REMOVE:5414 
+	"moarsi" Hum N Sg Com &dia-target MAP:6226 
+;	"moarsi" Hum N CGErr Pl Loc REMOVE:5415 
+;	"moarsi" Hum N CGErr Sg Com REMOVE:5415 
 "<.>"
 
 "<Masa>"
@@ -11769,7 +11889,7 @@
 ;	"liikodit" V IV Imprt Sg2 SELECT:3474:r971 
 ;	"liikodit" V IV VGen SELECT:3474:r971 
 "<beaivváši>"
-	"beaivváši" ? &err-spellingerror MAP:5505 
+	"beaivváši" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -11808,7 +11928,7 @@
 ;	"liikodit" V IV Imprt Sg2 SELECT:3474:r971 
 ;	"liikodit" V IV VGen SELECT:3474:r971 
 "<beaivvášii>"
-	"beaivvášii" ? &err-spellingerror MAP:5505 
+	"beaivvášii" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -11847,7 +11967,7 @@
 ;	"liikodit" V IV Imprt Sg2 SELECT:3474:r971 
 ;	"liikodit" V IV VGen SELECT:3474:r971 
 "<beaivvážžii>"
-	"beaivvážžii" ? &err-spellingerror MAP:5505 
+	"beaivvážžii" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -11886,7 +12006,7 @@
 ;	"liikodit" V IV Imprt Sg2 SELECT:3474:r971 
 ;	"liikodit" V IV VGen SELECT:3474:r971 
 "<beivii>"
-	"beivii" ? &err-spellingerror MAP:5505 
+	"beivii" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -11925,7 +12045,7 @@
 ;	"liikodit" V IV Imprt Sg2 SELECT:3474:r971 
 ;	"liikodit" V IV VGen SELECT:3474:r971 
 "<beivái>"
-	"beivái" ? &err-spellingerror MAP:5505 
+	"beivái" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -12005,7 +12125,7 @@
 ;	"liikodit" V IV Imprt Sg2 SELECT:3474:r971 
 ;	"liikodit" V IV VGen SELECT:3474:r971 
 "<gáhkui>"
-	"gáhkui" ? &err-spellingerror MAP:5505 
+	"gáhkui" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -12021,7 +12141,7 @@
 "<liikobehtet>"
 	"liikot" V IV Ind Prs Pl2 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<leksikon>"
 	"leksikon" N Sg Nom 
 ;	"Leksikon" N Prop LowercaseErr Plc Sg Gen REMOVE:1948 
@@ -12044,7 +12164,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<spappastallat>"
-	"spáppastallat" V IV Ind Prs Pl1 AErr &grm-error-longA SELECT:5613 MAP:5779 
+	"spáppastallat" V IV Ind Prs Pl1 AErr &err-longA SELECT:5613 MAP:5779 
 ;	"spáppastallat" V IV Inf AErr SELECT:5613 
 "<.>"
 
@@ -12067,9 +12187,9 @@
 ;	"mii" Pron Interr Sg Nom SELECT:5549 
 ;	"mii" Pron Rel Sg Nom SELECT:5549 
 "<álgibehtet>"
-	"álgit" V IV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6086 
+	"álgit" V IV Ind Prs Pl2 &grm-non-agr-subj-v MAP:6088 
 "<kursii>"
-	"kursa" N Sg Ill &dia-target SELECT:2803:r784 MAP:6220 
+	"kursa" N Sg Ill &dia-target SELECT:2803:r784 MAP:6222 
 ;	"kurset" V TV Ind Prt Sg3 SELECT:2803:r784 
 "<.>"
 
@@ -12171,12 +12291,12 @@
 ;	"Mo" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 ;	"Moa" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 "<illude>"
-	"illudit" V IV Ind Prt Pl3 &grm-incorr-tense MAP:6078 
+	"illudit" V IV Ind Prt Pl3 &grm-incorr-tense MAP:6080 
 "<geassái>"
-	"geassi" Time N Sg Ill &dia-target MAP:6220 
-	"geasis" N Sg Ill &dia-target MAP:6220 
+	"geassi" Time N Sg Ill &dia-target MAP:6222 
+	"geasis" N Sg Ill &dia-target MAP:6222 
 	"geassái" A Sg Nom 
-	"geassi" Ani Veh N Actor Sg Ill &dia-target MAP:6220 
+	"geassi" Ani Veh N Actor Sg Ill &dia-target MAP:6222 
 ;	"geassit" V* TV Actor N Sg Ill REMOVE:2068:r542 
 "<.>"
 
@@ -12195,9 +12315,9 @@
 ;	"Mo" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 ;	"Moa" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 "<illude>"
-	"illudit" V IV Ind Prt Pl3 &grm-incorr-tense MAP:6078 
+	"illudit" V IV Ind Prt Pl3 &grm-incorr-tense MAP:6080 
 "<giessái>"
-	"giessat" V* TV Actor N Sg Ill &dia-target MAP:6220 
+	"giessat" V* TV Actor N Sg Ill &dia-target MAP:6222 
 ;	"giessát" V TV Ind Prt Sg3 REMOVE:5590 
 "<.>"
 
@@ -12216,9 +12336,9 @@
 ;	"Mo" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 ;	"Moa" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 "<illude>"
-	"illudit" V IV Ind Prt Pl3 &grm-incorr-tense MAP:6078 
+	"illudit" V IV Ind Prt Pl3 &grm-incorr-tense MAP:6080 
 "<giesái>"
-	"giesái" ? &err-spellingerror MAP:5505 
+	"giesái" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -12236,9 +12356,9 @@
 ;	"Mo" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 ;	"Moa" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 "<illude>"
-	"illudit" V IV Ind Prt Pl3 &grm-incorr-tense MAP:6078 
+	"illudit" V IV Ind Prt Pl3 &grm-incorr-tense MAP:6080 
 "<mánnái>"
-	"mánná" Hum N Sg Ill &dia-target MAP:6220 
+	"mánná" Hum N Sg Ill &dia-target MAP:6222 
 "<.>"
 
 "<Masa>"
@@ -12256,7 +12376,7 @@
 ;	"Mo" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 ;	"Moa" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
 "<illude>"
-	"illudit" V IV Ind Prt Pl3 &grm-incorr-tense MAP:6078 
+	"illudit" V IV Ind Prt Pl3 &grm-incorr-tense MAP:6080 
 "<mánás>"
 	"mánná" Hum N Sg Loc 
 ;	"mánná" Hum N Sg Acc PxSg3 REMOVE:3566:r996 
@@ -12272,7 +12392,7 @@
 "<illudeahppi>"
 	"illudit" V IV Ind Prs Du2 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<moai>"
 	"mun" Pron Pers Du1 Nom 
 ;	"Mo" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
@@ -12282,10 +12402,10 @@
 ;	"illu" N CGErr Sg Gen REMOVE:5415 
 ;	"illu" N CGErr Sg Acc REMOVE:5415 
 "<geassái>"
-	"geassi" Time N Sg Ill &dia-target MAP:6220 
-	"geasis" N Sg Ill &dia-target MAP:6220 
+	"geassi" Time N Sg Ill &dia-target MAP:6222 
+	"geasis" N Sg Ill &dia-target MAP:6222 
 	"geassái" A Sg Nom 
-	"geassi" Ani Veh N Actor Sg Ill &dia-target MAP:6220 
+	"geassi" Ani Veh N Actor Sg Ill &dia-target MAP:6222 
 ;	"geassit" V* TV Actor N Sg Ill REMOVE:2068:r542 
 "<.>"
 
@@ -12298,7 +12418,7 @@
 "<illudeahppi>"
 	"illudit" V IV Ind Prs Du2 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<moai>"
 	"mun" Pron Pers Du1 Nom 
 ;	"Mo" N Prop LowercaseErr Plc Sg Ill REMOVE:1948 
@@ -12308,7 +12428,7 @@
 ;	"illu" N CGErr Sg Gen REMOVE:5415 
 ;	"illu" N CGErr Sg Acc REMOVE:5415 
 "<giessii>"
-	"giessii" ? &err-spellingerror MAP:5505 
+	"giessii" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -12330,7 +12450,7 @@
 ;	"illu" N CGErr Sg Gen REMOVE:5415 
 ;	"illu" N CGErr Sg Acc REMOVE:5415 
 "<giessái>"
-	"giessát" V TV Ind Prt Sg3 &grm-incorr-tense SELECT:5598 MAP:6078 
+	"giessát" V TV Ind Prt Sg3 &grm-incorr-tense SELECT:5598 MAP:6080 
 ;	"giessat" V* TV Actor N Sg Ill SELECT:5598 
 "<.>"
 
@@ -12343,9 +12463,9 @@
 "<liikobeahtti>"
 	"liikot" V IV Ind Prs Du2 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<cuigat>"
-	"cuigat" ? &err-spellingerror MAP:5505 
+	"cuigat" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -12359,7 +12479,7 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<liikobeahtti>"
-	"liikot" V IV Ind Prs Du2 &grm-incorr-pers-nr MAP:6051 
+	"liikot" V IV Ind Prs Du2 &grm-incorr-pers-nr MAP:6053 
 "<.>"
 
 "<Masa>"
@@ -12371,11 +12491,11 @@
 "<liikobeahtti>"
 	"liikot" V IV Ind Prs Du2 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<masa>"
 	"masá" Adv AErr 
-	"mii" Pron Interr Sg Ill &dia-target MAP:6220 
-	"mii" Pron Rel Sg Ill &dia-target MAP:6220 
+	"mii" Pron Interr Sg Ill &dia-target MAP:6222 
+	"mii" Pron Rel Sg Ill &dia-target MAP:6222 
 "<.>"
 
 "<Masa>"
@@ -12395,7 +12515,7 @@
 "<liikojetne>"
 	"liikot" V IV Ind Prs Du1 
 "<oahpaheaddjai>"
-	"oahpaheaddjai" ? &err-spellingerror MAP:5505 
+	"oahpaheaddjai" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -12415,7 +12535,7 @@
 "<liikojetne>"
 	"liikot" V IV Ind Prs Du1 
 "<oahppaheaddjai>"
-	"oahppaheaddjai" ? &err-spellingerror MAP:5505 
+	"oahppaheaddjai" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -12470,7 +12590,7 @@
 ;	"illudit" V IV Ind Prt ConNeg SELECT:1970 
 ;	"illudit" V IV Actio Gen SELECT:1970 
 "<biillii>"
-	"biillii" ? &err-spellingerror MAP:5505 
+	"biillii" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -12499,8 +12619,6 @@
 "<juovllaid>"
 	"juovllat" N Pl Acc 
 	"juovllat" N Pl Gen 
-;	"Juovla" N Prop LowercaseErr Plc Pl Gen REMOVE:1948 
-;	"Juovla" N Prop LowercaseErr Plc Pl Acc REMOVE:1948 
 "<.>"
 
 "<Masa>"
@@ -12545,7 +12663,7 @@
 ;	"liikot" V IV PrfPrc SELECT:1970 
 ;	"liikot" V* IV Der/NomAct N Sg Nom SELECT:1970 
 "<musihhkii>"
-	"musihhkii" ? &err-spellingerror MAP:5505 
+	"musihhkii" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -12565,9 +12683,9 @@
 "<Mun>"
 	"mun" Pron Pers Sg1 Nom 
 "<álggát>"
-	"álgit" V IV Ind Prs Sg2 &grm-non-agr-subj-v MAP:6086 
+	"álgit" V IV Ind Prs Sg2 &grm-non-agr-subj-v MAP:6088 
 "<skuvlii>"
-	"skuvla" Org Plc N Sg Ill &dia-target SELECT:2803:r784 MAP:6220 
+	"skuvla" Org Plc N Sg Ill &dia-target SELECT:2803:r784 MAP:6222 
 ;	"skuvlet" V TV Ind Prt Sg3 SELECT:2803:r784 
 "<.>"
 
@@ -12597,7 +12715,7 @@
 ;	"liikodit" V IV Imprt Sg2 SELECT:3474:r971 
 ;	"liikodit" V IV VGen SELECT:3474:r971 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Dii>"
 	"don" Pron Pers Pl2 Nom 
 ;	"dii" N ABBR Nom REMOVE:1957 
@@ -12605,9 +12723,9 @@
 ;	"dii" N ABBR Attr REMOVE:1957 
 ;	"dii" N ABBR Gen REMOVE:1957 
 "<liikobehtii>"
-	"liikobehtii" ? &err-spellingerror MAP:5505 
+	"liikobehtii" ? &err-nonword MAP:5505 
 "<laibi>"
-	"láibi" N Sg Nom AErr &grm-error-longA MAP:5779 
+	"láibi" N Sg Nom AErr &err-longA MAP:5779 
 ;	"láibi" N CGErr Sg Acc AErr REMOVE:5415 
 ;	"láibi" N CGErr Sg Gen AErr REMOVE:5415 
 "<.>"
@@ -12644,7 +12762,7 @@
 ;	"mii" Pron Interr Sg Nom SELECT:5549 
 ;	"mii" Pron Rel Sg Nom SELECT:5549 
 "<liiko>"
-	"liikot" V IV Ind Prs Sg3 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6086 
+	"liikot" V IV Ind Prs Sg3 &grm-non-agr-subj-v SELECT:5623 SELECT:5627 MAP:6088 
 ;	"liikot" V IV VGen SELECT:5623 
 ;	"liikot" V IV Imprt ConNeg SELECT:5623 
 ;	"liikot" V IV Imprt Sg2 SELECT:5623 
@@ -12750,7 +12868,7 @@
 ;	"liikodit" V IV VGen SELECT:5597:sticky 
 ;	"liikot" V IV Ind Prs Sg2 SELECT:5597:sticky 
 "<didjiide>"
-	"don" Pron Pers Pl2 Ill &dia-target MAP:6220 
+	"don" Pron Pers Pl2 Ill &dia-target MAP:6222 
 "<.>"
 
 "<Masa>"
@@ -12767,18 +12885,15 @@
 ;	"álgit" V IV Inf SELECT:3474:r971 
 ;	"álgit" V IV Imprt Pl2 SELECT:3474:r971 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<doai>"
 	"don" Pron Pers Du2 Nom &grm-incorr-pers-nr MAP:5982 
 "<oahppun>"
 	"oahppu" N Ess 
 "<munje>"
-	"munje" ? &err-spellingerror MAP:5505 
+	"munje" ? &err-nonword MAP:5505 
 "<samigiella>"
-	"sami#giella" N Sg Nom AErr &grm-error-longA SELECT:1974:r683 MAP:5779 
-;	"sami#giellat" V* TV Actor N Sg Nom AErr SELECT:1974:r683 
-;	"sami#giella" N CGErr Sg Acc AErr SELECT:1974:r683 REMOVE:5415 
-;	"sami#giella" N CGErr Sg Gen AErr SELECT:1974:r683 REMOVE:5415 
+	"samigiella" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -12801,7 +12916,7 @@
 ;	"mii" Pron Interr Sg Nom SELECT:3068:r875 
 ;	"mii" Pron Rel Sg Nom SELECT:3068:r875 
 "<algit>"
-	"álgit" V IV Ind Prs Pl1 AErr &grm-error-longA SELECT:5597:sticky MAP:5779 
+	"álgit" V IV Ind Prs Pl1 AErr &err-longA SELECT:5597:sticky MAP:5779 
 ;	"álgit" V IV Imprt Pl2 AErr REMOVE:3480:r973 
 ;	"álgit" V IV Inf AErr SELECT:5597:sticky 
 ;	"álgit" V* IV Actor N Pl Nom AErr SELECT:5597:sticky 
@@ -12813,7 +12928,7 @@
 "<.>"
 
 "<Masa>"
-	"mii" Pron Interr Sg Ill &grm-missing-Ill SELECT:5540 MAP:5802 
+	"mii" Pron Interr Sg Ill SELECT:5540 
 ;	"masá" Adv AErr REMOVE:1953 
 ;	"mii" Pron Rel Sg Ill SELECT:5540 
 "<mun>"
@@ -12858,11 +12973,11 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<in>"
-	"ii" V IV Neg Ind Sg1 &grm-incorr-pers-nr MAP:6046 
+	"ii" V IV Neg Ind Sg1 &grm-incorr-pers-nr MAP:6048 
 "<mun>"
 	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5978 
 "<tiede>"
-	"tiede" ? &err-spellingerror MAP:5505 
+	"tiede" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -12878,10 +12993,10 @@
 "<Mun>"
 	"mun" Pron Pers Sg1 Nom &grm-incorr-pers-nr MAP:5978 
 "<alggan>"
-	"álgit" V IV Ind Prs AiErr Sg1 AErr &grm-error-longA SELECT:5597:sticky MAP:5779 
+	"álgit" V IV Ind Prs AiErr Sg1 AErr &err-longA SELECT:5597:sticky MAP:5779 
 ;	"álgga" N Ess AErr SELECT:5597:sticky 
 "<skuvlii>"
-	"skuvla" Org Plc N Sg Ill &dia-target SELECT:2803:r784 MAP:6220 
+	"skuvla" Org Plc N Sg Ill &dia-target SELECT:2803:r784 MAP:6222 
 ;	"skuvlet" V TV Ind Prt Sg3 SELECT:2803:r784 
 "<.>"
 
@@ -12926,7 +13041,6 @@
 "<guliin>"
 	"guolli" Ani N Sg Com &grm-missing-Ill MAP:5670 
 	"guolli" Ani N Pl Loc &grm-missing-Ill MAP:5670 
-;	"guolli" Ani N ComVErr Sg Com REMOVE:5414 
 "<.>"
 
 "<Masa>"
@@ -12946,11 +13060,11 @@
 "<in>"
 	"ii" V IV Neg Ind Sg1 
 "<deade>"
-	"deade" ? &err-spellingerror MAP:5505 
+	"deade" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
-	"mii" Pron Interr Sg Ill &grm-missing-Ill SELECT:5540 MAP:5802 
+	"mii" Pron Interr Sg Ill SELECT:5540 
 ;	"masá" Adv AErr REMOVE:1953 
 ;	"mii" Pron Rel Sg Ill SELECT:5540 
 "<soai>"
@@ -12962,15 +13076,15 @@
 "<Doai>"
 	"don" Pron Pers Du2 Nom &grm-incorr-pers-nr MAP:5982 
 "<illudat>"
-	"illudit" V IV Ind Prs Pl1 &grm-non-agr-subj-v MAP:6086 
-	"illudit" V IV Ind Prs Sg2 &grm-non-agr-subj-v MAP:6086 
+	"illudit" V IV Ind Prs Pl1 &grm-non-agr-subj-v MAP:6088 
+	"illudit" V IV Ind Prs Sg2 &grm-non-agr-subj-v MAP:6088 
 "<ihttážii>"
 	"ihttáš" Adv Sg Ill SELECT:5638 
 ;	"ihttáš" A Sg Ill SELECT:5638 
 "<.>"
 
 "<Masa>"
-	"mii" Pron Interr Sg Ill &grm-missing-Ill SELECT:5540 MAP:5802 
+	"mii" Pron Interr Sg Ill SELECT:5540 
 ;	"masá" Adv AErr REMOVE:1953 
 ;	"mii" Pron Rel Sg Ill SELECT:5540 
 "<soai>"
@@ -12982,14 +13096,14 @@
 "<Doai>"
 	"don" Pron Pers Du2 Nom &grm-incorr-pers-nr MAP:5982 
 "<illudetne>"
-	"illudit" V IV Ind Prs Du1 &grm-non-agr-subj-v MAP:6086 
+	"illudit" V IV Ind Prs Du1 &grm-non-agr-subj-v MAP:6088 
 "<ihttážii>"
 	"ihttáš" Adv Sg Ill SELECT:5638 
 ;	"ihttáš" A Sg Ill SELECT:5638 
 "<.>"
 
 "<Masa>"
-	"mii" Pron Interr Sg Ill &grm-missing-Ill SELECT:5540 MAP:5802 
+	"mii" Pron Interr Sg Ill SELECT:5540 
 ;	"masá" Adv AErr REMOVE:1953 
 ;	"mii" Pron Rel Sg Ill SELECT:5540 
 "<soai>"
@@ -13011,7 +13125,7 @@
 "<.>"
 
 "<Masa>"
-	"mii" Pron Interr Sg Ill &grm-missing-Ill SELECT:5540 MAP:5802 
+	"mii" Pron Interr Sg Ill SELECT:5540 
 ;	"masá" Adv AErr REMOVE:1953 
 ;	"mii" Pron Rel Sg Ill SELECT:5540 
 "<soai>"
@@ -13024,14 +13138,14 @@
 	"mun" Pron Pers Du1 Nom &grm-incorr-pers-nr SELECT:1955 MAP:5981 
 ;	"Moa" N Prop Plc Sg Ill SELECT:1955 
 "<illudeaba>"
-	"illudit" V IV Ind Prs Du3 &grm-non-agr-subj-v MAP:6086 
+	"illudit" V IV Ind Prs Du3 &grm-non-agr-subj-v MAP:6088 
 "<ihttážii>"
 	"ihttáš" Adv Sg Ill SELECT:5638 
 ;	"ihttáš" A Sg Ill SELECT:5638 
 "<.>"
 
 "<Masa>"
-	"mii" Pron Interr Sg Ill &grm-missing-Ill SELECT:5540 MAP:5802 
+	"mii" Pron Interr Sg Ill SELECT:5540 
 ;	"masá" Adv AErr REMOVE:1953 
 ;	"mii" Pron Rel Sg Ill SELECT:5540 
 "<soai>"
@@ -13079,11 +13193,11 @@
 "<illudeaba>"
 	"illudit" V IV Ind Prs Du3 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Soai>"
 	"son" Pron Pers Du3 Nom 
 "<illudeabba>"
-	"illudeabba" ? &err-spellingerror MAP:5505 
+	"illudeabba" ? &err-nonword MAP:5505 
 "<ihttážii>"
 	"ihttáš" Adv Sg Ill 
 	"ihttáš" A Sg Ill 
@@ -13098,18 +13212,18 @@
 "<illudeaba>"
 	"illudit" V IV Ind Prs Du3 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Soai>"
 	"son" Pron Pers Du3 Nom 
 "<illudeabá>"
-	"illudeabá" ? &err-spellingerror MAP:5505 
+	"illudeabá" ? &err-nonword MAP:5505 
 "<ihttážii>"
 	"ihttáš" Adv Sg Ill 
 	"ihttáš" A Sg Ill 
 "<.>"
 
 "<Masa>"
-	"mii" Pron Interr Sg Ill &grm-missing-Ill SELECT:5540 MAP:5802 
+	"mii" Pron Interr Sg Ill SELECT:5540 
 ;	"masá" Adv AErr REMOVE:1953 
 ;	"mii" Pron Rel Sg Ill SELECT:5540 
 "<soai>"
@@ -13121,7 +13235,7 @@
 "<Soai>"
 	"son" Pron Pers Du3 Nom 
 "<illudeba>"
-	"illudit" V IV Ind Prt Pl3 Foc/ba &grm-incorr-tense MAP:6078 
+	"illudit" V IV Ind Prt Pl3 Foc/ba &grm-incorr-tense MAP:6080 
 "<ihttážii>"
 	"ihttáš" Adv Sg Ill SELECT:5638 
 ;	"ihttáš" A Sg Ill SELECT:5638 
@@ -13140,8 +13254,8 @@
 	"^qst" QDL vastaf 
 "<Masa>"
 	"masá" Adv AErr 
-	"mii" Pron Interr Sg Ill &dia-target MAP:6220 
-	"mii" Pron Rel Sg Ill &dia-target MAP:6220 
+	"mii" Pron Interr Sg Ill &dia-target MAP:6222 
+	"mii" Pron Rel Sg Ill &dia-target MAP:6222 
 "<son>"
 	"son" Pron Pers Sg3 Nom SELECT:3109:r885 
 ;	"son" Pcle SELECT:3109:r885 
@@ -13186,9 +13300,9 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<in>"
-	"ii" V IV Neg Ind Sg1 &grm-incorr-pers-nr MAP:6046 
+	"ii" V IV Neg Ind Sg1 &grm-incorr-pers-nr MAP:6048 
 "<diedu>"
-	"diedu" ? &err-spellingerror MAP:5505 
+	"diedu" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -13216,9 +13330,9 @@
 ;	"liikot" V IV VGen SELECT:5597:sticky 
 ;	"liikot" V IV Ind Prs ConNeg SELECT:5597:sticky 
 "<falesstallii>"
-	"fales#stálla" N G3 Sg Ill AErr &grm-error-longA MAP:5779 
-	"fales#stálli" N Sg Ill IllVErr AErr &grm-error-longA MAP:5779 
-	"fales#stálle" N G3 Sg Ill AErr &grm-error-longA MAP:5779 
+	"fales#stálla" N G3 Sg Ill AErr &err-longA MAP:5779 
+	"fales#stálli" N Sg Ill IllVErr AErr &err-longA MAP:5779 
+	"fales#stálle" N G3 Sg Ill AErr &err-longA MAP:5779 
 "<.>"
 
 "<Masa>"
@@ -13246,7 +13360,7 @@
 ;	"liikot" V IV VGen SELECT:5597:sticky 
 ;	"liikot" V IV Ind Prs ConNeg SELECT:5597:sticky 
 "<stohgat>"
-	"stohgat" ? &err-spellingerror MAP:5505 
+	"stohgat" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -13274,7 +13388,7 @@
 ;	"liikot" V IV VGen SELECT:5597:sticky 
 ;	"liikot" V IV Ind Prs ConNeg SELECT:5597:sticky 
 "<stokhat>"
-	"stokhat" ? &err-spellingerror MAP:5505 
+	"stokhat" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Masa>"
@@ -13302,9 +13416,9 @@
 ;	"liikot" V IV VGen SELECT:5597:sticky 
 ;	"liikot" V IV Ind Prs ConNeg SELECT:5597:sticky 
 "<vuodjar>"
-	"vuodjar" ? &err-spellingerror MAP:5505 
+	"vuodjar" ? &err-nonword MAP:5505 
 "<biilii>"
-	"biila" Veh N Sg Ill &dia-target SELECT:2445:r638 MAP:6220 
+	"biila" Veh N Sg Ill &dia-target SELECT:2445:r638 MAP:6222 
 ;	"biile" N Sg Ill SELECT:2445:r638 
 "<.>"
 
@@ -13333,9 +13447,9 @@
 ;	"liikot" V IV VGen SELECT:5597:sticky 
 ;	"liikot" V IV Ind Prs ConNeg SELECT:5597:sticky 
 "<vuodjar>"
-	"vuodjar" ? &err-spellingerror MAP:5505 
+	"vuodjar" ? &err-nonword MAP:5505 
 "<biilii>"
-	"biila" Veh N Sg Ill &dia-target SELECT:2445:r638 MAP:6220 
+	"biila" Veh N Sg Ill &dia-target SELECT:2445:r638 MAP:6222 
 ;	"biile" N Sg Ill SELECT:2445:r638 
 "<.>"
 
@@ -13349,7 +13463,7 @@
 "<álgá>"
 	"álgit" V IV Ind Prs Sg3 &sem-answer-with-same-verb MAP:6020 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<Klokka>"
 	"Klokk" N Prop Sur Sg Acc 
 	"Klokk" N Prop Sur Sg Gen 
@@ -13375,7 +13489,7 @@
 "<álgá>"
 	"álgit" V IV Ind Prs Sg3 
 "<filbmái>"
-	"filbmái" ? &err-spellingerror MAP:5505 
+	"filbmái" ? &err-nonword MAP:5505 
 "<.>"
 
 "<Oggot>"
@@ -13402,10 +13516,10 @@
 "<odne>"
 	"odne" Adv 
 "<^qst>"
-	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6035 
+	"^qst" QDL vastaf &grm-should-be-Vfin MAP:6037 
 "<lavvardaga>"
-	"lávvardat" Time N Sg Gen AErr &grm-error-longA MAP:5779 
-	"lávvardat" Time N Sg Acc AErr &grm-error-longA MAP:5779 
+	"lávvardat" Time N Sg Gen AErr &err-longA MAP:5779 
+	"lávvardat" Time N Sg Acc AErr &err-longA MAP:5779 
 "<.>"
 
 "<Čiehkástallet>"
@@ -13422,6 +13536,6 @@
 "<^qst>"
 	"^qst" QDL vastaf 
 "<ii>"
-	"ii" V IV Neg Ind Sg3 &grm-incorr-pers-nr MAP:6048 
+	"ii" V IV Neg Ind Sg3 &grm-incorr-pers-nr MAP:6050 
 "<.>"
 
