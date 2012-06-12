@@ -2,7 +2,7 @@
 {% load i18n %}
 {% load trans_to %}
 
-{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block gamename %}<t class="interface">{% trans_to settings.gamename "sme" %}<span class="invisible">{% trans settings.gamename %}</span></t>{% endblock %}
 {% block instructions %}
   <!-- {% ifequal settings.gametype "bare" %}  -->
     <t class="interface">{% trans_to "Add nouns in correct forms. You get translation if you click the word." "sme" %}<span class="invisible">{% trans "Add nouns in correct forms. You get translation if you click the word." %}</span></t>

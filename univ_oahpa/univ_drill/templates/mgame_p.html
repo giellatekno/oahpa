@@ -3,7 +3,7 @@
 {% load trans_to %}
 
 
-{% block gamename %}{{ settings.gamename }}{% endblock %}
+{% block gamename %}<t class="interface">{% trans_to settings.gamename "sme" %}<span class="invisible">{% trans settings.gamename %}</span></t>{% endblock %}
 {% block instructions %}
     <t class="interface">{% trans_to "Add pronouns in correct forms." "sme" %}<span class="invisible">{% trans "Add pronouns in correct forms." %}</span></t>
 {% endblock %}
