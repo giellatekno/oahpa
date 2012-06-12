@@ -2,7 +2,7 @@ from django.template import Context, RequestContext, loader
 from django.db.models import Q
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _ 
 
 from univ_oahpa.conf.tools import switch_language_code
 
@@ -219,6 +219,8 @@ class Gameview(object):
 			if not self.settings['language']:
 				self.settings['language'] = request.LANGUAGE_CODE
 				request.session['django_language'] = request.LANGUAGE_CODE
+        
+                print "get_settings_form language: "+self.settings['language']
 				
 				
 		#if hasattr(request, 'LANGUAGE_CODE'):
@@ -389,6 +391,7 @@ def leksa_game(request, place=False):
 		template = 'leksa.html'
 
 	sess_lang = request.session.get('django_language')
+	print "sess_lang: "+sess_lang
 
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
@@ -494,8 +497,8 @@ class Morfaview(Gameview):
 		'A-COMP':  _('Practise comparative'),
 		'A-SUPERL':  _('Practise superlative'),
 		'V-DER':  _('Practise verb derivation'),
-		'V-DER-PASS':  _('Practise verb passive derivation'),
-		'DER-PASSV': _('Practise verb passive derivation'),
+		'V-DER-PASS': 'Practise verb passive derivation',
+		'DER-PASSV': 'Practise verb passive derivation',
 		'A-DER-V':  _('Practise adjective to verb derivation'),
 		'ATTRPOS':  _('Practise attributes in positive'),
 		'ATTRCOMP':  _('Practise attributes in comparative'),
