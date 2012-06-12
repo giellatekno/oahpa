@@ -40,7 +40,8 @@
 <!---<input type="hidden" name="rare" value=FALSE /> --->
 
 <ul id="submittable">
-    <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
+    <li><t class="interface"> <input type="submit" name="settings" value="{% trans_to "New set" "sme" %}" /><span class="invisible">{% trans "New set" %}</span></t>
+    </li>
 </ul>
 {% endblock %}
 

@@ -1,5 +1,6 @@
 {% extends "univ_oahpa.html" %}
 {% load i18n %}
+{% load trans_to %}
 {% get_current_language as LANGUAGE_CODE %}
 
 {% block extrajs %}
@@ -128,11 +129,14 @@
 			{% if form.feedback %}
 				<a href="#" class="feedback_link" id="link_feedback-{{ forloop.counter }}">
 					<img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
-					{% trans "help" %}</span>
+					<t class="interface">{% trans_to "help" "sme"%}<span class="invisible">{% trans "help" %}</span></t>
+                    </span>
 				</a>
 			{% else %}
 				<img width="15" height="15" border="0" src="{{ MEDIA_URL }}/images/error.png"/>
-				{% if form.tcomm %}{% trans "This is almost correct!" %}{% endif %}
+				{% if form.tcomm %}
+                    <t class="interface">{% trans_to "This is almost correct!" "sme" %}<span class="invisible">{% trans "This is almost correct!" %}</span></t>
+                {% endif %}
 			{% endif %}
 		
 		{% endifequal %}
@@ -183,10 +187,10 @@
 	{% block submit %}
 	{% if not all_correct %}
 	   {% if not show_correct %}
-	   <input type="submit" name="test" value="{% trans "Test answers" %}"/>
+	   <t class="interface"><input type="submit" name="test" value="{% trans_to "Test answers" "sme" %}"/><span class="invisible">{% trans "Test answers" %}</span></t>
 	   {% endif %}
 	   {% ifequal count 1 %}
-	   <input type="submit" name="show_correct" value="{% trans "Show the correct answers" %}" />
+	   <t class="interface"><input type="submit" name="show_correct" value="{% trans_to "Show the correct answers" "sme" %}" /><span class="invisible">{% trans "Show the correct answers" %}</span></t>
 	   {% endifequal %}
 	{% endif %}
 	{% endblock %}
@@ -194,10 +198,10 @@
     <div id="score">
         {% if 1 %}
             {% if all_correct %}
-                {% trans "Congratulations!" %}<br />
+                <t class="interface">{% trans_to "Congratulations!" "sme" %}<span class="invisible">{% trans "Congratulations!" %}</span></t><br />
 			{% endif %}
             {% if score %}
-                {% trans "Your score:" %} <span class="points">{{ score }}</span>
+                <t class="interface">{% trans_to "Your score:" "sme" %}<span class="invisible">{% trans "Your score:" %}</span></t> <span class="points">{{ score }}</span>
             {% endif %}
 		{% endif %}
 	</div>

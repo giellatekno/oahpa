@@ -68,18 +68,16 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/vasta.nno.html
 </tr>
 </table>
 </br>
-<input type="submit" name="settings" value="{% trans "New set" %}" />
+<t class="interface"> <input type="submit" name="settings" value="{% trans_to "New set" "sme" %}" /><span class="invisible">{% trans "New set" %}</span></t>
 <!----<input type="hidden" name="gametype" value="qa" /> --->
 
 
 {% endblock %}
 
 {% block question %}
-<tr>
-<td><br/>{{ form.question }}</td>
-</tr>
-<tr>
-</br>
+
+{{ form.question }}
+
     {% for w in form.awords %}
         {% if w.taskword %}
             <span style="color:#0000FF">{{ w.fullform }}</span>
@@ -91,29 +89,20 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/vasta.nno.html
         {% endif %}
     {% endfor %}
 
-</tr>
-</br>
 {% endblock %}
 
 {% block submit %}
-<tr>
-<td>
-</td>
-<td>
   {% if not all_correct %}
-  <input type="submit" name="test" value="{% trans "Test answers" %}"/>
+  <t class="interface"><input type="submit" name="test" value="{% trans_to "Test answers" "sme" %}"/><span class="invisible">{% trans "Test answers" %}</span></t>
   {% endif %}
-</td>
-</tr>
 
 {% if messages %}
-<tr><td>
-<table border='1' cellpadding='10' bgcolor='#F9F9F9'>
+</br>
+<table border='1' cellpadding='20' bgcolor='#F9F9F9'>
 <tr><td>
 {% for m in messages %}{{ m|safe }}<br/>{% endfor %}
 </td></tr>
 </table>
-</td></tr>
 {% endif %}
 
 {% endblock %}

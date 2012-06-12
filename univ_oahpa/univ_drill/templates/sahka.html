@@ -244,7 +244,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/sahka.nno.html
 {% if forms %}
 <span align="right">
   {% if not all_correct %}
-  <input type="submit" id="test" name="test" value="{% trans "Answer" %}"/>
+  <t class="interface"><input type="submit" id="test" name="test" value="{% trans_to "Answer" "sme" %}"/><span class="invisible">{% trans "Answer" %}</span></t>
   {% endif %}
 </span>
 

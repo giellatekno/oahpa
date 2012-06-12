@@ -1,10 +1,11 @@
 {% extends "mgame.html" %}
 {% load i18n %}
+{% load trans_to %}
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
   <!-- {% ifequal settings.gametype "bare" %}  -->
-    {% trans "Add nouns in correct forms. You get translation if you click the word." %}
+    <t class="interface">{% trans_to "Add nouns in correct forms. You get translation if you click the word." "sme" %}<span class="invisible">{% trans "Add nouns in correct forms. You get translation if you click the word." %}</span></t>
  <!-- {% else %}
     {% trans "Add nouns in correct forms." %}
   {% endifequal %} -->
@@ -12,17 +13,17 @@
 
 {% block subsetting %}
 	{% ifequal settings.gametype "bare" %}
-	<li><label for="id_{{ settingsform.case.name }}">{% trans "Case" %}</label>
+	<li><label for="id_{{ settingsform.case.name }}" class="interface">{% trans_to "Case" "sme" %}<span class="invisible">{% trans "Case" %}</span></label>
 		{{ settingsform.case }}</li>
-	<li><label>{% trans "Stem" %}</label>
+	<li><label class="interface">{% trans_to "Stem" "sme" %}<span class="invisible">{% trans "Stem" %}</span></label>
 		<ul>
-			<li>{{ settingsform.bisyllabic }} <label for="id_{{ settingsform.bisyllabic.name }}">{% trans "bisyllabic" %}</label></li>
-			<li>{{ settingsform.trisyllabic }} <label for="id_{{ settingsform.trisyllabic.name }}">{% trans "trisyllabic" %}</label></li>
-			<li>{{ settingsform.contracted }} <label for="id_{{ settingsform.contracted.name }}">{% trans "contracted" %}</label></li>
+			<li>{{ settingsform.bisyllabic }} <label for="id_{{ settingsform.bisyllabic.name }}" class="interface">{% trans_to "bisyllabic" "sme" %}<span class="invisible">{% trans "bisyllabic" %}</span></label></li>
+			<li>{{ settingsform.trisyllabic }} <label for="id_{{ settingsform.trisyllabic.name }}" class="interface">{% trans_to "trisyllabic" "sme" %}<span class="invisible">{% trans "trisyllabic" %}</span></label></li>
+			<li>{{ settingsform.contracted }} <label for="id_{{ settingsform.contracted.name }}" class="interface">{% trans_to "contracted" "sme" %}<span class="invisible">{% trans "contracted" %}</span></label></li>
 		</ul>
 	</li>
 	{% else %}
-	<li><label for="id_{{ settingsform.case_context.name }}">{% trans "Case" %}</label>
+	<li><label for="id_{{ settingsform.case_context.name }}" class="interface">{% trans_to "Case" "sme" %}<span class="invisible">{% trans "Case" %}</span></label>
 		{{ settingsform.case_context }}</li>
 	{% endifequal %}
 {% endblock %}

@@ -1,25 +1,26 @@
 {% extends "mgame.html" %}
 {% load i18n %}
+{% load trans_to %}
 
 
 {% block gamename %}{{ settings.gamename }}{% endblock %}
 {% block instructions %}
-    {% trans "Add pronouns in correct forms." %}
+    <t class="interface">{% trans_to "Add pronouns in correct forms." "sme" %}<span class="invisible">{% trans "Add pronouns in correct forms." %}</span></t>
 {% endblock %}
 
 
 {% block subsetting %}
 	{% ifequal settings.gametype "bare" %}
-		<li><label for="id_{{ settingsform.pron_type.name }}">{% trans "Pronoun type" %}</label>
+		<li><label for="id_{{ settingsform.pron_type.name }}" class="interface">{% trans_to "Pronoun type" "sme" %}<span class="invisible">{% trans "Pronoun type" %}</span></label>
 			{{ settingsform.pron_type }}</li>
-		<li><label for="id_{{ settingsform.proncase.name }}">{% trans "Case" %}</label>
+		<li><label for="id_{{ settingsform.proncase.name }}" class="interface">{% trans_to "Case" "sme" %}<span class="invisible">{% trans "Case" %}</span></label>
 			{{ settingsform.proncase }}</li>
 	{% else %}
 	{# context #}
-		<li><label for="id_{{ settingsform.pron_context.name }}">{% trans "Pronoun type" %}</label>
+		<li><label for="id_{{ settingsform.pron_context.name }}" class="interface">{% trans_to "Pronoun type" "sme" %}<span class="invisible">{% trans "Pronoun type" %}</span></label>
 			{{ settingsform.pron_context }}</li>
 		{% ifequal settings.pron_context "P-RECIPR" %}
-			<li><label for="id_{{ settingsform.wordform_type.name }}">{% trans "Reciprocative type" %}</label>
+			<li><label for="id_{{ settingsform.wordform_type.name }}"class="interface">{% trans_to "Reciprocative type" "sme" %}<span class="invisible">{% trans "Reciprocative type" %}</span></label>
 			{{ settingsform.wordform_type }}</li>
 		{% endifequal %}
 	{% endifequal %}

@@ -65,7 +65,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.nno.html
     </ul>
     
     <ul id="submittable">
-        <li><input type="submit" name="settings" value="{% trans "New set" %}" /></li>
+        <li><t class="interface"> <input type="submit" name="settings" value="{% trans_to "New set" "sme" %}" /><span class="invisible">{% trans "New set" %}</span></t></li>
     </ul>
 {% endblock %}
 <input type="submit" name="settings" value="{% trans "New set" %}" />
@@ -77,10 +77,10 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/leksa.nno.html
 {% block submit %}
 {% if not all_correct %}
    {% if not show_correct %}
-   <input type="submit" name="test" value="{% trans "Test answers" %}"/>
+   <t class="interface"><input type="submit" name="test" value="{% trans_to "Test answers" "sme" %}"/><span class="invisible">{% trans "Test answers" %}</span></t>
    {% endif %}
    {% ifequal count 1 %}
-   <input type="submit" name="show_correct" value="{% trans "Show the correct answers" %}" />
+   <t class="interface"><input type="submit" name="show_correct" value="{% trans_to "Show the correct answers" "sme" %}" /><span class="invisible">{% trans "Show the correct answers" %}</span></t>
    {% endifequal %}
 {% endif %}
 {% endblock %}
