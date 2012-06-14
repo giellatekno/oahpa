@@ -899,8 +899,8 @@ class Sahkaview(Cealkkaview):
 	
 	def additional_settings(self, settings_form):
 		self.settings['gametype'] = 'sahka'
-		self.settings['image'] = 'sahka.png'
-		self.settings['wordlist'] = ''
+		self.settings['image'] = settings_form.data.get('image')
+		self.settings['wordlist'] = settings_form.data.get('wordlist')
 		self.settings['dialogue'] = settings_form.data.get('dialogue', '')
 
 		if 'topicnumber' not in self.settings:
@@ -970,6 +970,7 @@ class Sahkaview(Cealkkaview):
 			
 		c = Context({
 			'settingsform': settings_form,
+			'settings': self.settings,
 			'forms': game.form_list,
 			'messages': getmessages(game),
 			'errormsg': errormsg,
