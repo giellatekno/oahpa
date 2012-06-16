@@ -3,6 +3,7 @@
 {% load trans_to %}
 
 {% block addcss %}
+
 <style type="text/css">
 
 html {
@@ -85,12 +86,6 @@ margin-right:11px;
 {% endifequal %}
 {% endblock %}
 {% block extrajs %}
-<script src="{{ MEDIA_URL }}/js/prototype.js" type="text/javascript"></script>
-<script src="{{ MEDIA_URL }}/js/univ_oahpa.js" type="text/javascript"></script>
-<script src="{{ MEDIA_URL }}/js/main.js" type="text/javascript"></script>
-<!--[if lt IE 7]>
-<script defer type="text/javascript" src="{{ MEDIA_URL }}/js/pngfix.js"></script>
-<![endif]-->
 <script type="text/javascript">
 function submitSahka(dia) {
    document.gameform.dialogue.value=dia;
@@ -98,6 +93,13 @@ function submitSahka(dia) {
    return True;
 }
 </script>
+
+<script src="{{ MEDIA_URL }}/js/prototype.js" type="text/javascript"></script>
+<script src="{{ MEDIA_URL }}/js/univ_oahpa.js" type="text/javascript"></script>
+<script src="{{ MEDIA_URL }}/js/main.js" type="text/javascript"></script>
+<!--[if lt IE 7]>
+<script defer type="text/javascript" src="{{ MEDIA_URL }}/js/pngfix.js"></script>
+<![endif]-->
 {% endblock %}
 
 {% block imgprefix %}sahka{% endblock %}
@@ -113,7 +115,7 @@ function submitSahka(dia) {
 
 <!-- Image included from the dialogue -->
 {% if image %}
-<p>&nbsp;<p>
+<p>&nbsp;</p>
 <center>
 <img border="1" width="140" border="0" src="{{ MEDIA_URL }}/images/{{ image }}"/><br/>
 </center>
