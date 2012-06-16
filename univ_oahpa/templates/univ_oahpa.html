@@ -91,7 +91,9 @@ function tillatpopup() {
 <!---	<p align="center"><b><span style="color: #993366;font-size:0.8em">Hjelp oss å utvikle Oahpa – svar på et lite <span style="color: #9933FF"><a href="http://kursa.oahpa.no/2012/03/27/sporreskjema/">spørreskjema </a></span>om bruk av noen av programmene.</span></b></p>
         <hr color="#CCCCCC"> ---->
 	<div id="navbar">
+        {% if gametype != "sahka" or not forms %}
 		<img width="120" height="120" border="0" src="{{ MEDIA_URL }}/images/{% block imgprefix %}{% endblock %}_big.png" alt="Game logo" onload="tillatpopup();"/>
+        {% endif %}
 		<div class="bigheader">{% block gametitlename %}{% endblock %}</div>
 		{% block navbar %}{% endblock %}
 	</div>
