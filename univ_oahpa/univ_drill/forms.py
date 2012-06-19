@@ -138,11 +138,11 @@ CASE_CONTEXT_CHOICES = (
 # 
 PRON_CONTEXT_CHOICES = (
 	#('P-NOM', _('nominative')), Morfa C pronomen nominativ skal fjernes fra menyen dersom oppgavene har ingen hensikt.
-    ('P-PERS', _('personal')),
-    ('P-DEM', _('demonstrative')),
-    ('P-RECIPR', _('reciprocative')),
-    ('P-REFL', _('reflexive')),
-    ('P-REL', _('relative')),
+	('P-PERS', _('personal')),
+	('P-DEM', _('demonstrative')),
+	('P-RECIPR', _('reciprocative')),
+	('P-REFL', _('reflexive')),
+	('P-REL', _('relative')),
 )
 
 WORDFORM_TYPE_CHOICES = (
@@ -231,9 +231,9 @@ NUM_LEVEL_CHOICES = (
 )
 
 NUM_TYPE_CHOICES = (
-    ('CARD', _('cardinal')),
-    ('ORD', _('ordinal')),
-    ('COLL', _('collective')),
+	('CARD', _('cardinal')),
+	('ORD', _('ordinal')),
+	('COLL', _('collective')),
 )
 
 VTYPE_CHOICES = (
@@ -296,22 +296,22 @@ DERIVATION_CHOICES_CONTEXT = (
 )
 
 BOOK_CHOICES = (
-    ('d1', _('Davvin 1')),
-    ('d2', _('Davvin 1-2')),
-    ('d3', _('Davvin 1-3')),
-    ('d4', _('Davvin 1-4')),
-    ('AA', _('Aikio komp.')),
-    ('c1', _('Cealkke 1')),
-    ('c2', _('Cealkke 1-2')),
-    ('c3', _('Cealkke 1-3')),
-    ('c4', _('Cealkke 1-4')),
-    ('sam1031_1', _('SAM-1031-1')),
-    ('sam1031_2', _('SAM-1031-2')),
-    ('algu', _('algu')),
-    ('sara', _('sara')),
-    ('bures', _('Bures bures fas')),
-    ('oaidnalit', _('Oaidnalit')),
-    ('all', _('All')),
+	('d1', _('Davvin 1')),
+	('d2', _('Davvin 1-2')),
+	('d3', _('Davvin 1-3')),
+	('d4', _('Davvin 1-4')),
+	('AA', _('Aikio komp.')),
+	('c1', _('Cealkke 1')),
+	('c2', _('Cealkke 1-2')),
+	('c3', _('Cealkke 1-3')),
+	('c4', _('Cealkke 1-4')),
+	('sam1031_1', _('SAM-1031-1')),
+	('sam1031_2', _('SAM-1031-2')),
+	('algu', _('algu')),
+	('sara', _('sara')),
+	('bures', _('Bures bures fas')),
+	('oaidnalit', _('Oaidnalit')),
+	('all', _('All')),
 )
 
 FREQUENCY_CHOICES = (
@@ -800,8 +800,8 @@ def select_words(self, qwords, awords):
 		if not selected_awords[syntax].has_key('fullform'):
 			selected_awords[syntax]['fullform'] = []
 			selected_awords[syntax]['fullform'].append(syntax)
-        print "selected awords: "
-        print selected_awords
+		print "selected awords: "
+		print selected_awords
 	return selected_awords
 
 
@@ -878,18 +878,28 @@ class OahpaQuestion(forms.Form):
 		today = datetime.date.today()
 		# print ','.join(self.correct_anslist)
 
-		log, c = Log.objects.get_or_create(userinput=self.answer,
-											correct=','.join(self.correct_anslist),
-											iscorrect=self.iscorrect,
-											example=self.example,
-											game=self.game,
-											date=today)
+		log_kwargs = {
+			'userinput': self.answer,
+			'correct': ','.join(self.correct_anslist),
+			'iscorrect': self.iscorrect,
+			'example': self.example,
+			'game': self.game,
+			'date': today
+		}
+		if self.user:
+			log_kwargs['username'] = self.user.username
+		log, c = Log.objects.get_or_create(**log_kwargs)
 	
 	def __init__(self, *args, **kwargs):
 		correct_val = False
 		if 'correct_val' in kwargs:
 			correct_val = kwargs.get('correct_val')
 			kwargs.pop('correct_val')
+
+		if 'user' in kwargs:
+			self.user = kwargs.pop('user')
+		else:
+			self.user = False
 		
 		super(OahpaQuestion, self).__init__(*args, **kwargs)
 		
@@ -945,8 +955,8 @@ class OahpaQuestion(forms.Form):
 
 		#def generate_fields(self,answer_size, maxlength):
 		#	self.fields['answer'] = forms.CharField(max_length = maxlength, \
-         #                                       widget=forms.TextInput(\
-          #  attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event,document.gameform);',}))  # copied from old-oahpa
+		 #									   widget=forms.TextInput(\
+		  #  attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event,document.gameform);',}))  # copied from old-oahpa
 
 # #
 #
@@ -1807,972 +1817,1000 @@ class ContextMorfaQuestion(OahpaQuestion):
 
 
 def vasta_is_correct(self,question,qwords,language,utterance_name=None):
-    """
-    Analyzes the answer and returns a message.
-    """
-    from django.conf import settings
+	"""
+	Analyzes the answer and returns a message.
+	"""
+	from django.conf import settings
 
-    # LOOKUP_TOOL = '/usr/bin/lookup'
-    # FST_DIRECTORY = '/opt/smi/sme/bin'
-    # LOOKUP2CG = '/usr/local/bin/lookup2cg'
-    # CG3 = '/usr/local/bin/vislcg3'
-    # PREPROCESS = '/opt/sami/cg/bin/preprocess'
+	# LOOKUP_TOOL = '/usr/bin/lookup'
+	# FST_DIRECTORY = '/opt/smi/sme/bin'
+	# LOOKUP2CG = '/usr/local/bin/lookup2cg'
+	# CG3 = '/usr/local/bin/vislcg3'
+	# PREPROCESS = '/opt/sami/cg/bin/preprocess'
 
-    try:
-        _ = settings.FST_DIRECTORY
-        _ = settings.LOOKUP_TOOL
-        _ = settings.LOOKUP2CG
-        _ = settings.CG3
-        _ = settings.PREPROCESS
-    except:
-        err =  "Check that settings.py contains the following settings:"
-        err += "  FST_DIRECTORY, LOOKUP_TOOL, LOOKUP2CG, CG3, PREPROCESS"
+	try:
+		_ = settings.FST_DIRECTORY
+		_ = settings.LOOKUP_TOOL
+		_ = settings.LOOKUP2CG
+		_ = settings.CG3
+		_ = settings.PREPROCESS
+	except:
+		err =  "Check that settings.py contains the following settings:"
+		err += "  FST_DIRECTORY, LOOKUP_TOOL, LOOKUP2CG, CG3, PREPROCESS"
 
 
-    if not self.is_valid():
-        return None, None, None
+	if not self.is_valid():
+		return None, None, None
 
-    noanalysis=False
+	noanalysis=False
 
-    fstdir = settings.FST_DIRECTORY
-    fst = fstdir + "/ped-sme.fst"
-    print fst
-    lo = settings.LOOKUP_TOOL
-    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
-    print lookup
-    #lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine
-    lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
-    #lookup2cg =" | /Users/mslm/main/gt/script/lookup2cg" # on Heli's machine
-    cg3 = settings.CG3
-    preprocess = " | " + settings.PREPROCESS
-    #preprocess = " | /Users/mslm/main/gt/script/preprocess "
-    dis_bin = settings.FST_DIRECTORY + "/sme-ped.cg3"
+	fstdir = settings.FST_DIRECTORY
+	fst = fstdir + "/ped-sme.fst"
+	print fst
+	lo = settings.LOOKUP_TOOL
+	lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
+	print lookup
+	#lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine
+	lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
+	#lookup2cg =" | /Users/mslm/main/gt/script/lookup2cg" # on Heli's machine
+	cg3 = settings.CG3
+	preprocess = " | " + settings.PREPROCESS
+	#preprocess = " | /Users/mslm/main/gt/script/preprocess "
+	dis_bin = settings.FST_DIRECTORY + "/sme-ped.cg3"
 
-    vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
-    
-    self.userans = self.cleaned_data['answer']
-    answer = self.userans.rstrip()
-    answer = answer.lstrip()
-    answer = answer.rstrip('.!?,')
+	vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
+	
+	self.userans = self.cleaned_data['answer']
+	answer = self.userans.rstrip()
+	answer = answer.lstrip()
+	answer = answer.rstrip('.!?,')
 
-    self.error = "error"
-                
-    qtext = question
-    qtext = qtext.rstrip('.!?,')
+	self.error = "error"
+				
+	qtext = question
+	qtext = qtext.rstrip('.!?,')
 
-    #logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_log.txt','w')
-    
-    host = 'localhost'
-    port = 9000  # was: 9000, TODO - add to settings.py
-    size = 1024
+	#logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastaF_log.txt','w')
+	
+	host = 'localhost'
+	port = 9000  # was: 9000, TODO - add to settings.py
+	size = 1024
 
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    try:
-        s.connect((host,port)) # on victorio
-        sys.stdout.write('%')
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	try:
+		s.connect((host,port)) # on victorio
+		sys.stdout.write('%')
 
-        analysis = ""
-        question_lookup = "echo \"" + qtext + "\"" + preprocess
-        words = os.popen(question_lookup).readlines()
-        for qword in words: # or qwords ?
-            cohort=""
-            w = qword.lstrip().rstrip()
-            s.send(w)  # on victorio
-            cohort = s.recv(size)
+		analysis = ""
+		question_lookup = "echo \"" + qtext + "\"" + preprocess
+		words = os.popen(question_lookup).readlines()
+		for qword in words: # or qwords ?
+			cohort=""
+			w = qword.lstrip().rstrip()
+			s.send(w)  # on victorio
+			cohort = s.recv(size)
 		  
-            if not cohort or cohort == w:
-                cohort = w + "\n"
-            if cohort=="error":
-                raise Http500
-            analysis = analysis + cohort
+			if not cohort or cohort == w:
+				cohort = w + "\n"
+			if cohort=="error":
+				raise Http500
+			analysis = analysis + cohort
 
-        if self.gametype=="sahka":
-            analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
-        else:
-            analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
+		if self.gametype=="sahka":
+			analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
+		else:
+			analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
 	   #logfile.write(analysis+"\n")
-        data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
-        words = os.popen(data_lookup).readlines()
-        analyzed=""
-        for w in words:
-            w=w.strip()
-            s.send(w)  # on vic
-            analyzed = analyzed + s.recv(size)
-        s.send("q")  # on vic
-        s.close()
+		data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
+		words = os.popen(data_lookup).readlines()
+		analyzed=""
+		for w in words:
+			w=w.strip()
+			s.send(w)  # on vic
+			analyzed = analyzed + s.recv(size)
+		s.send("q")  # on vic
+		s.close()
 
-    except socket.error:    # port 9000 not available => morph. analysis will be done by ped-sme.fst
-        # analyse words in the question
-        analysis = ""
-        question_lookup = "echo \"" + qtext + "\"" + preprocess
-        words = os.popen(question_lookup).readlines()
-        for qword in words: # or qwords ?
-            cohort=""
-            w = qword.lstrip().rstrip()
-            word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-            morfanal = os.popen(word_lookup).readlines()
-            for row in morfanal:
-                #row = row.strip()
-                cohort = cohort + row
-            if not cohort or cohort == w:
-                cohort = w + "\n"
-            if cohort=="error":
-                raise Http500
-            analysis = analysis + cohort
+	except socket.error:	# port 9000 not available => morph. analysis will be done by ped-sme.fst
+		# analyse words in the question
+		analysis = ""
+		question_lookup = "echo \"" + qtext + "\"" + preprocess
+		words = os.popen(question_lookup).readlines()
+		for qword in words: # or qwords ?
+			cohort=""
+			w = qword.lstrip().rstrip()
+			word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+			morfanal = os.popen(word_lookup).readlines()
+			for row in morfanal:
+				#row = row.strip()
+				cohort = cohort + row
+			if not cohort or cohort == w:
+				cohort = w + "\n"
+			if cohort=="error":
+				raise Http500
+			analysis = analysis + cohort
 
-        if self.gametype=="sahka":
-            analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
-        else:
-            analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
+		if self.gametype=="sahka":
+			analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
+		else:
+			analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
 		#logfile.write(analysis+"\n")
 		
 		# analyse words in the answer
 		
-        data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
-        words = os.popen(data_lookup).readlines()
-        analyzed=""
-        for w in words:
-            w=w.strip()	
-            word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-            morfanal = os.popen(word_lookup).readlines()
-            ans_cohort=""
-            for row in morfanal:
-                ans_cohort = ans_cohort + row
-            analyzed = analyzed + ans_cohort
+		data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
+		words = os.popen(data_lookup).readlines()
+		analyzed=""
+		for w in words:
+			w=w.strip()	
+			word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+			morfanal = os.popen(word_lookup).readlines()
+			ans_cohort=""
+			for row in morfanal:
+				ans_cohort = ans_cohort + row
+			analyzed = analyzed + ans_cohort
    # except socket.timeout:
-    #    raise Http404("Technical error, please try again later.")            
+	#	raise Http404("Technical error, please try again later.")			
 
-    #logfile.write(analyzed+"\n")
-    print "morph. analysis:\n",analyzed
-    analysis = analysis + analyzed
-    analysis = analysis + "\"<.>\"\n\t\".\" CLB"
-    analysis = analysis.rstrip()
-    analysis = analysis.replace("\"","\\\"")
+	#logfile.write(analyzed+"\n")
+	print "morph. analysis:\n",analyzed
+	analysis = analysis + analyzed
+	analysis = analysis + "\"<.>\"\n\t\".\" CLB"
+	analysis = analysis.rstrip()
+	analysis = analysis.replace("\"","\\\"")
 
-    ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
-    checked = os.popen(ped_cg3).readlines()
-    print "syntactic analysis:\n",checked
+	ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
+	checked = os.popen(ped_cg3).readlines()
+	print "syntactic analysis:\n",checked
 
-    wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
-    messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
-    targetObj=re.compile(r'^.*\"(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\".*dia-.*$', re.U)
-    # Extract the lemma    
-    constantObj=re.compile(r'^.*\"\<(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\>\".*$', re.U)
-    diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
+	wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
+	messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
+	targetObj=re.compile(r'^.*\"(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\".*dia-.*$', re.U)
+	# Extract the lemma	
+	constantObj=re.compile(r'^.*\"\<(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\>\".*$', re.U)
+	diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
 
-    # Each wordform may have a set of tags.
-    spelling = False
-    msgstrings = {}
-    diastring = "jee"
-    lemma=""
-    for line in checked:
-        line = line.strip()
+	# Each wordform may have a set of tags.
+	spelling = False
+	msgstrings = {}
+	diastring = "jee"
+	lemma=""
+	for line in checked:
+		line = line.strip()
 	   #logfile.write(line+"\n")
 
-        #Find the lemma first
-        matchObj=constantObj.search(line)
-        if matchObj:
-            lemma = matchObj.expand(r'\g<targetString>')
+		#Find the lemma first
+		matchObj=constantObj.search(line)
+		if matchObj:
+			lemma = matchObj.expand(r'\g<targetString>')
 
-        #The wordform
-        matchObj=wordformObj.search(line)
-        if matchObj:
-            wordform = matchObj.expand(r'\g<msgString>')
-            msgstrings[wordform] = {}
-            
-        #grammatical/semantic/other error
-        matchObj=messageObj.search(line)
-        if matchObj:
-            msgstring = matchObj.expand(r'\g<msgString>')
-            if msgstring.count("spellingerror") > 0:
-                spelling = True
-            msgstrings[wordform][msgstring] = 1
+		#The wordform
+		matchObj=wordformObj.search(line)
+		if matchObj:
+			wordform = matchObj.expand(r'\g<msgString>')
+			msgstrings[wordform] = {}
+			
+		#grammatical/semantic/other error
+		matchObj=messageObj.search(line)
+		if matchObj:
+			msgstring = matchObj.expand(r'\g<msgString>')
+			if msgstring.count("spellingerror") > 0:
+				spelling = True
+			msgstrings[wordform][msgstring] = 1
 
-        #Store the baseform if tehre is dia-whatever
-        matchObj=targetObj.search(line)
-        if matchObj:
-            msgstring = matchObj.expand(r'\g<targetString>')
-            msgstrings[wordform]['dia-target'] = msgstring
-            msgstrings[wordform]['dia-lemma'] = lemma
+		#Store the baseform if tehre is dia-whatever
+		matchObj=targetObj.search(line)
+		if matchObj:
+			msgstring = matchObj.expand(r'\g<targetString>')
+			msgstrings[wordform]['dia-target'] = msgstring
+			msgstrings[wordform]['dia-lemma'] = lemma
 
-        # What is the dia-tag?
-        matchObj=diaObj.search(line)
-        if matchObj:
-            msgstring = matchObj.expand(r'\g<targetString>')
-            msgstrings[wordform][msgstring] = 1
-            diastring=msgstring            
-            
+		# What is the dia-tag?
+		matchObj=diaObj.search(line)
+		if matchObj:
+			msgstring = matchObj.expand(r'\g<targetString>')
+			msgstrings[wordform][msgstring] = 1
+			diastring=msgstring			
+			
 
-    msg=[]
-    message_ids=[]
-    dia_msg = []
-    target = ""
-    variable=""
-    constant=""
-    found=False
-    #Interface language    
-    if not language: language = "nob"
-    language = switch_language_code(language)
-    #if language == "no" : language = "nob"
-    #if language == "fi" : language = "fin"
-    #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe"]: language="nob"
-    for w in msgstrings.keys():
-        if found: break
-        for m in msgstrings[w].keys():
-            if spelling and m.count("spelling") == 0: continue
-            m = m.replace("&","") 
-            if Feedbackmsg.objects.filter(msgid=m).count() > 0:
-                msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
-                message = Feedbacktext.objects.filter(feedbackmsg=msg_el,language=language)[0].message
-                msg_id = msg_el.msgid  # added
-                print msg_id
-                message_ids.append(msg_id)  # added
-                message = message.replace("WORDFORM","\"" + w + "\"") 
-                msg.append(message)
-                if not spelling:
-                    found=True
-                    break                
-            else:
-                if m.count("dia-") == 0:
-                    msg.append(m)
-                    if not spelling:
-                        found=True
-                        break
-            if m.count("dia-") > 0:
-                dia_msg.append(m)
-        if msgstrings[w].has_key('dia-target'):
-            constant = msgstrings[w]['dia-lemma']
-            variable = msgstrings[w]['dia-target']
-        if msgstrings[w].has_key('dia-unknown'):
-            constant = msgstrings[w]['dia-lemma']
-            variable = msgstrings[w]['dia-unknown']
+	msg=[]
+	message_ids=[]
+	dia_msg = []
+	target = ""
+	variable=""
+	constant=""
+	found=False
+	#Interface language	
+	if not language: language = "nob"
+	language = switch_language_code(language)
+	#if language == "no" : language = "nob"
+	#if language == "fi" : language = "fin"
+	#if language == "en" : language = "eng"
+	if not language in ["nob","sme","fin","eng","swe"]: language="nob"
+	for w in msgstrings.keys():
+		if found: break
+		for m in msgstrings[w].keys():
+			if spelling and m.count("spelling") == 0: continue
+			m = m.replace("&","") 
+			if Feedbackmsg.objects.filter(msgid=m).count() > 0:
+				msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
+				message = Feedbacktext.objects.filter(feedbackmsg=msg_el,language=language)[0].message
+				msg_id = msg_el.msgid  # added
+				print msg_id
+				message_ids.append(msg_id)  # added
+				message = message.replace("WORDFORM","\"" + w + "\"") 
+				msg.append(message)
+				if not spelling:
+					found=True
+					break				
+			else:
+				if m.count("dia-") == 0:
+					msg.append(m)
+					if not spelling:
+						found=True
+						break
+			if m.count("dia-") > 0:
+				dia_msg.append(m)
+		if msgstrings[w].has_key('dia-target'):
+			constant = msgstrings[w]['dia-lemma']
+			variable = msgstrings[w]['dia-target']
+		if msgstrings[w].has_key('dia-unknown'):
+			constant = msgstrings[w]['dia-lemma']
+			variable = msgstrings[w]['dia-unknown']
 
-    #iscorrect is used only in logging
-    iscorrect=False
-    if not msg:
-        self.error = "correct"
-        iscorrect=True
+	#iscorrect is used only in logging
+	iscorrect=False
+	if not msg:
+		self.error = "correct"
+		iscorrect=True
 
-    feedbackmsg=' '.join(msg)
-    p = re.compile(r'<.*?>')
-    feedbackmsg = p.sub('', feedbackmsg)
-    if message_ids:
-        feedbackmsg_id = message_ids[0]
-    else:
-        feedbackmsg_id = ""
-    today=datetime.date.today()
-    log = Log.objects.get_or_create (userinput=self.userans, feedback=feedbackmsg, iscorrect=iscorrect, qid=utterance_name, example=question, game=self.gametype, date=today, lang=language, messageid = feedbackmsg_id)
-    #log.save()           
-        
-    variables = []
-    variables.append(variable)
-    variables.append(constant)
-    return msg, dia_msg, variables
+	feedbackmsg=' '.join(msg)
+	p = re.compile(r'<.*?>')
+	feedbackmsg = p.sub('', feedbackmsg)
+	if message_ids:
+		feedbackmsg_id = message_ids[0]
+	else:
+		feedbackmsg_id = ""
+	today=datetime.date.today()
+	log_kwargs = {
+		'userinput': self.userans,
+		'feedback': feedbackmsg,
+		'iscorrect': iscorrect,
+		'qid': utterance_name,
+		'example': question,
+		'game': self.gametype,
+		'date': today,
+		'lang': language,
+		'messageid': feedbackmsg_id
+	}
+	if self.user:
+		log_kwargs['username'] = self.user.username
+	log = Log.objects.get_or_create(**log_kwargs)
+	#log.save()		   
+	
+	variables = []
+	variables.append(variable)
+	variables.append(constant)
+	return msg, dia_msg, variables
 
 
 class VastaSettings(OahpaSettings):
 
-    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
-    level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
+	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
+	level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
 
-    def __init__(self, *args, **kwargs):
-        self.set_settings()
-        self.set_default_data()
-        self.default_data['gametype'] = 'qa'
-        super(VastaSettings, self).__init__(*args, **kwargs)
+	def __init__(self, *args, **kwargs):
+		self.set_settings()
+		self.set_default_data()
+		self.default_data['gametype'] = 'qa'
+		super(VastaSettings, self).__init__(*args, **kwargs)
 
 class VastaQuestion(OahpaQuestion):
-    """
-    Questions for vasta
-    """
+	"""
+	Questions for vasta
+	"""
 
-    select_words = select_words
-    vasta_is_correct = vasta_is_correct
-        
-    def __init__(self, question, qwords, language, userans_val, correct_val, *args, **kwargs):                 
+	select_words = select_words
+	vasta_is_correct = vasta_is_correct
+		
+	def __init__(self, question, qwords, language, userans_val, correct_val, *args, **kwargs):				 
 
-        self.init_variables("", userans_val, [])
-        
-        question_widget = forms.HiddenInput(attrs={'value' : question.id})
+		self.init_variables("", userans_val, [])
+		
+		question_widget = forms.HiddenInput(attrs={'value' : question.id})
 
-        super(VastaQuestion, self).__init__(*args, **kwargs)
+		super(VastaQuestion, self).__init__(*args, **kwargs)
 
-        maxlength=60
-        answer_size=60
-        self.fields['answer'] = forms.CharField(max_length = maxlength, \
-                                                widget=forms.TextInput(\
-            attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
+		maxlength=60
+		answer_size=60
+		self.fields['answer'] = forms.CharField(max_length = maxlength, \
+												widget=forms.TextInput(\
+			attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
 
-        self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
+		self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 
-        self.qattrs= {}
-        for syntax in qwords.keys():
-            qword = qwords[syntax]
-            if qword.has_key('word'):
-                self.qattrs['question_word_' + syntax] = qword['word']
-            if qword.has_key('tag') and qword['tag']:
-                self.qattrs['question_tag_' + syntax] = qword['tag']
-            if qword.has_key('fullform') and qword['fullform']:
-                self.qattrs['question_fullform_' + syntax] = qword['fullform'][0]
+		self.qattrs= {}
+		for syntax in qwords.keys():
+			qword = qwords[syntax]
+			if qword.has_key('word'):
+				self.qattrs['question_word_' + syntax] = qword['word']
+			if qword.has_key('tag') and qword['tag']:
+				self.qattrs['question_tag_' + syntax] = qword['tag']
+			if qword.has_key('fullform') and qword['fullform']:
+				self.qattrs['question_fullform_' + syntax] = qword['fullform'][0]
 
-        # Forms question string and answer string out of grammatical elements and other strings.
-        qstring = ""
+		# Forms question string and answer string out of grammatical elements and other strings.
+		qstring = ""
 
-        # Format question string
-        qtext = question.string
-        for w in qtext.split():
-            if not qwords.has_key(w): qstring = qstring + " " + force_unicode(w)
-            else:
-                if qwords[w].has_key('fullform'):
-                    qstring = qstring + " " + force_unicode(qwords[w]['fullform'][0])
-                else:
-                    qstring = qstring + " " + w
-        # this is for -guovttos
-        qstring=qstring.replace(" -","-");
-        qstring=qstring.replace("- ","-");
-                    
-        # Remove leading whitespace and capitalize.
-        qstring = qstring.lstrip()
-        qstring = qstring[0].capitalize() + qstring[1:]
+		# Format question string
+		qtext = question.string
+		for w in qtext.split():
+			if not qwords.has_key(w): qstring = qstring + " " + force_unicode(w)
+			else:
+				if qwords[w].has_key('fullform'):
+					qstring = qstring + " " + force_unicode(qwords[w]['fullform'][0])
+				else:
+					qstring = qstring + " " + w
+		# this is for -guovttos
+		qstring=qstring.replace(" -","-");
+		qstring=qstring.replace("- ","-");
+					
+		# Remove leading whitespace and capitalize.
+		qstring = qstring.lstrip()
+		qstring = qstring[0].capitalize() + qstring[1:]
 
-        qstring = qstring + "?"
-        self.question=qstring
-        question_id = question.qid
+		qstring = qstring + "?"
+		self.question=qstring
+		question_id = question.qid
 
-        # In qagame, all words are considered as answers.
-        self.gametype="vasta"
-        self.messages, jee, joo  = self.vasta_is_correct(qstring.encode('utf-8'), qwords, language, question_id)
-        
-        # set correct and error values
-        if correct_val == "correct":
-            self.error="correct"
+		# In qagame, all words are considered as answers.
+		self.gametype="vasta"
+		self.messages, jee, joo  = self.vasta_is_correct(qstring.encode('utf-8'), qwords, language, question_id)
+		
+		# set correct and error values
+		if correct_val == "correct":
+			self.error="correct"
 
 
 def sahka_is_correct(self,utterance,targets,language):
-    """
-    Analyzes the answer and returns a message.
-    """
-    if not self.is_valid():
-        return False
+	"""
+	Analyzes the answer and returns a message.
+	"""
+	if not self.is_valid():
+		return False
 
-    if not self.cleaned_data.has_key('answer'):
-        return
-    qwords = {}
-    # Split the question to words for analaysis.
+	if not self.cleaned_data.has_key('answer'):
+		return
+	qwords = {}
+	# Split the question to words for analaysis.
 
-    self.messages, self.dia_messages, self.variables = self.vasta_is_correct(utterance.utterance, None, language, utterance.name)
-    #self.variables = [ "Kárášjohka" ]
-    #self.dia_messages = [ "dia-unknown" ]
+	self.messages, self.dia_messages, self.variables = self.vasta_is_correct(utterance.utterance, None, language, utterance.name)
+	#self.variables = [ "Kárášjohka" ]
+	#self.dia_messages = [ "dia-unknown" ]
 
-    if not self.messages:
-        self.error = "correct"
+	if not self.messages:
+		self.error = "correct"
 
-    for answer in self.dia_messages:
-        answer = answer.lstrip("dia-")
-        if answer == "target":
-            self.target = answer
+	for answer in self.dia_messages:
+		answer = answer.lstrip("dia-")
+		if answer == "target":
+			self.target = answer
 
-    
+	
 class SahkaSettings(OahpaSettings):
 
-    #dialogue = forms.ChoiceField(initial='firstmeeting', choices=DIALOGUE_CHOICES, widget=forms.Select)
-    
-    def __init__(self, *args, **kwargs):
-        self.set_settings()
-        self.set_default_data()
-        self.default_data['gametype'] = 'sahka'
-        self.default_data['dialogue_id'] = '1'
-        self.default_data['dialogue'] = 'firstmeeting'
-        self.default_data['topicnumber'] = '0'
-        self.default_data['image'] = 'sahka.png'
-        self.default_data['wordlist'] = ''
-        self.default_data['num_fields'] = '2'
-        super(SahkaSettings, self).__init__(*args, **kwargs)
+	#dialogue = forms.ChoiceField(initial='firstmeeting', choices=DIALOGUE_CHOICES, widget=forms.Select)
+	
+	def __init__(self, *args, **kwargs):
+		self.set_settings()
+		self.set_default_data()
+		self.default_data['gametype'] = 'sahka'
+		self.default_data['dialogue_id'] = '1'
+		self.default_data['dialogue'] = 'firstmeeting'
+		self.default_data['topicnumber'] = '0'
+		self.default_data['image'] = 'sahka.png'
+		self.default_data['wordlist'] = ''
+		self.default_data['num_fields'] = '2'
+		super(SahkaSettings, self).__init__(*args, **kwargs)
 
-        # Link to grammatical explanation for each page
-        self.grammarlinkssme = Grammarlinks.objects.filter(language="sme")
-        self.grammarlinksno = Grammarlinks.objects.filter(language="no")
+		# Link to grammatical explanation for each page
+		self.grammarlinkssme = Grammarlinks.objects.filter(language="sme")
+		self.grammarlinksno = Grammarlinks.objects.filter(language="no")
 
-    def init_hidden(self, topicnumber, num_fields, dialogue, image, wordlist):
-        
-        # Store topicnumber as hidden input to keep track of topics.
-        #print "topicnumber", topicnumber
-        #print "num_fields", num_fields
-        topicnumber = topicnumber
-        num_fields = num_fields
-        dialogue = dialogue
-        image = image
-        wordlist = wordlist
+	def init_hidden(self, topicnumber, num_fields, dialogue, image, wordlist):
+		
+		# Store topicnumber as hidden input to keep track of topics.
+		#print "topicnumber", topicnumber
+		#print "num_fields", num_fields
+		topicnumber = topicnumber
+		num_fields = num_fields
+		dialogue = dialogue
+		image = image
+		wordlist = wordlist
 
 
 class SahkaQuestion(OahpaQuestion):
-    """
-    Sahka: Dialogue game
-    """
+	"""
+	Sahka: Dialogue game
+	"""
 
-    select_words = select_words
-    sahka_is_correct = sahka_is_correct
-    vasta_is_correct = vasta_is_correct
+	select_words = select_words
+	sahka_is_correct = sahka_is_correct
+	vasta_is_correct = vasta_is_correct
 
-    def __init__(self, utterance, qwords, targets, global_targets, language, userans_val, correct_val, *args, **kwargs):                 
-        
-        self.init_variables("", userans_val, [])
+	def __init__(self, utterance, qwords, targets, global_targets, language, userans_val, correct_val, *args, **kwargs):				 
+		
+		self.init_variables("", userans_val, [])
 
-        utterance_widget = forms.HiddenInput(attrs={'value' : utterance.id})        
-        
-        super(SahkaQuestion, self).__init__(*args, **kwargs)
+		utterance_widget = forms.HiddenInput(attrs={'value' : utterance.id})		
+		
+		super(SahkaQuestion, self).__init__(*args, **kwargs)
 
-        if utterance.utttype == "question":
-            maxlength=50
-            answer_size=50
-            self.fields['answer'] = forms.CharField(max_length = maxlength, \
-                                                    widget=forms.TextInput(\
-            attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
+		if utterance.utttype == "question":
+			maxlength=50
+			answer_size=50
+			self.fields['answer'] = forms.CharField(max_length = maxlength, \
+													widget=forms.TextInput(\
+			attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
 
-        self.fields['utterance_id'] = forms.CharField(widget=utterance_widget, required=False)
+		self.fields['utterance_id'] = forms.CharField(widget=utterance_widget, required=False)
 
-        self.global_targets = global_targets
-        #print self.global_targets
-        self.utterance =""
-        self.qattrs={}
+		self.global_targets = global_targets
+		#print self.global_targets
+		self.utterance =""
+		self.qattrs={}
 
-        if utterance:
-            self.utterance_id=utterance.id
-            #self.utterance=utterance.utterance
+		if utterance:
+			self.utterance_id=utterance.id
+			#self.utterance=utterance.utterance
 
-            # Forms question string and answer string out of grammatical elements and other strings.
-            qstring = ""
-            
-            # Format question string
-            qtext = utterance.utterance
-            for w in qtext.split():
-                if not qwords.has_key(w):
-                    qstring = qstring + " " + force_unicode(w)
-                    self.qattrs['question_fullform_' + w] = force_unicode(w)
-                else:
-                    if qwords[w].has_key('fullform'):
-                        qstring = qstring + " " + force_unicode(qwords[w]['fullform'][0])
-                        self.qattrs['question_fullform_' + w] = qwords[w]['fullform'][0]
-                    else:
-                        qstring = qstring + " " + w
-                        self.qattrs['question_fullform_' + w] = w
+			# Forms question string and answer string out of grammatical elements and other strings.
+			qstring = ""
+			
+			# Format question string
+			qtext = utterance.utterance
+			for w in qtext.split():
+				if not qwords.has_key(w):
+					qstring = qstring + " " + force_unicode(w)
+					self.qattrs['question_fullform_' + w] = force_unicode(w)
+				else:
+					if qwords[w].has_key('fullform'):
+						qstring = qstring + " " + force_unicode(qwords[w]['fullform'][0])
+						self.qattrs['question_fullform_' + w] = qwords[w]['fullform'][0]
+					else:
+						qstring = qstring + " " + w
+						self.qattrs['question_fullform_' + w] = w
 
-            # this is for -guovttos
-            qstring=qstring.replace(" -","-");
-            qstring=qstring.replace("- ","-");
-                    
-            # Remove leading whitespace and capitalize.
-            qstring=qstring.replace(" .",".");
-            qstring=qstring.replace(" ?","?");
-            qstring=qstring.replace(" !","!");
+			# this is for -guovttos
+			qstring=qstring.replace(" -","-");
+			qstring=qstring.replace("- ","-");
+					
+			# Remove leading whitespace and capitalize.
+			qstring=qstring.replace(" .",".");
+			qstring=qstring.replace(" ?","?");
+			qstring=qstring.replace(" !","!");
 
-            qstring = qstring.lstrip()
-            if len(qstring)>0:
-                qstring = qstring[0].capitalize() + qstring[1:]
+			qstring = qstring.lstrip()
+			if len(qstring)>0:
+				qstring = qstring[0].capitalize() + qstring[1:]
 
-            self.utterance=qstring
+			self.utterance=qstring
 
-        self.target=""
-        self.constant=""
-        self.dia_messages = ""        
-        self.gametype="sahka"
-        self.variables = []
-        self.variables.append("")
-        self.variables.append("")
-        self.sahka_is_correct(utterance,targets,language)
-        if self.target:
-            variable=""
-            constant=""
-            if utterance.links.filter(target=self.target).count()>0:
-                variable = utterance.links.filter(target=self.target)[0].variable
-                if variable:
-                    self.qattrs['target_' + variable] = self.variables[0]
-                    self.global_targets[variable] = { 'target' : self.variables[0] }
-                constant = utterance.links.filter(target=self.target)[0].constant
-                if constant:
-                    self.qattrs['target_' + constant] = self.variables[1]
-                    self.global_targets[constant] = { 'target' : self.variables[1] }
-        for t in self.global_targets.keys():
-            if not self.qattrs.has_key(t):
-                self.qattrs['target_' + t] = self.global_targets[t]['target']
+		self.target=""
+		self.constant=""
+		self.dia_messages = ""		
+		self.gametype="sahka"
+		self.variables = []
+		self.variables.append("")
+		self.variables.append("")
+		self.sahka_is_correct(utterance,targets,language)
+		if self.target:
+			variable=""
+			constant=""
+			if utterance.links.filter(target=self.target).count()>0:
+				variable = utterance.links.filter(target=self.target)[0].variable
+				if variable:
+					self.qattrs['target_' + variable] = self.variables[0]
+					self.global_targets[variable] = { 'target' : self.variables[0] }
+				constant = utterance.links.filter(target=self.target)[0].constant
+				if constant:
+					self.qattrs['target_' + constant] = self.variables[1]
+					self.global_targets[constant] = { 'target' : self.variables[1] }
+		for t in self.global_targets.keys():
+			if not self.qattrs.has_key(t):
+				self.qattrs['target_' + t] = self.global_targets[t]['target']
 
-        #self.error="correct"
-        self.errormsg = ""
+		#self.error="correct"
+		self.errormsg = ""
 
-        if correct_val == "correct":
-            self.error="correct"
+		if correct_val == "correct":
+			self.error="correct"
 
 ###########
 ## Vasta-S (Cealkka)
 ###########
 def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  #was: question_id=None
-    """
-    Analyzes the answer and returns a message.
-    """
-    if not self.is_valid():
-        return None, None, None
+	"""
+	Analyzes the answer and returns a message.
+	"""
+	if not self.is_valid():
+		return None, None, None
 
-    noanalysis=False
+	noanalysis=False
 
-    fstdir = "/opt/smi/sme/bin" # on victorio
-    #fstdir = settings.FST_DIRECTORY
-    fst = fstdir + "/ped-sme.fst"
-    lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"# on victorio
-    #lo="/Users/mslm/bin/lookup" # on Heli's machine
-    lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
-    #lookup2cg = " | /Users/mslm/main/gt/script/lookup2cg" # on Heli's machine
-    lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
-    cg3 = "/usr/local/bin/vislcg3"
-    preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
-    #preprocess = " | /Users/mslm/main/gt/script/preprocess " # on Heli's machine
-    dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-    #dis_bin = "/Users/mslm/main/ped/sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
-    
-    vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
-    
-    self.userans = self.cleaned_data['answer']
-    answer = self.userans.rstrip()
-    answer = answer.lstrip()
-    answer = answer.rstrip('.!?,')
-    #print answer
+	fstdir = "/opt/smi/sme/bin" # on victorio
+	#fstdir = settings.FST_DIRECTORY
+	fst = fstdir + "/ped-sme.fst"
+	lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"# on victorio
+	#lo="/Users/mslm/bin/lookup" # on Heli's machine
+	lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
+	#lookup2cg = " | /Users/mslm/main/gt/script/lookup2cg" # on Heli's machine
+	lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
+	cg3 = "/usr/local/bin/vislcg3"
+	preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
+	#preprocess = " | /Users/mslm/main/gt/script/preprocess " # on Heli's machine
+	dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
+	#dis_bin = "/Users/mslm/main/ped/sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
+	
+	vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
+	
+	self.userans = self.cleaned_data['answer']
+	answer = self.userans.rstrip()
+	answer = answer.lstrip()
+	answer = answer.rstrip('.!?,')
+	#print answer
 
-    self.error = "error"
-                
-    qtext = question
-    qtext = qtext.rstrip('.!?,')
+	self.error = "error"
+				
+	qtext = question
+	qtext = qtext.rstrip('.!?,')
 
-    #logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastas_log.txt', 'w')
-    host = 'localhost'
-    port = 9000  # was: 9000, TODO - add to settings.py
-    size = 1024
+	#logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/vastas_log.txt', 'w')
+	host = 'localhost'
+	port = 9000  # was: 9000, TODO - add to settings.py
+	size = 1024
 
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    try:
-        s.connect((host,port)) # on vic
-        sys.stdout.write('%')
+	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	try:
+		s.connect((host,port)) # on vic
+		sys.stdout.write('%')
 
-        analysis = ""
-        data_lookup = "echo \"" + qtext + "\"" + preprocess
-        words = os.popen(data_lookup).readlines()
-        print question_id
-        #print words
-        #print qwords
-        for word in words:
-            w=""
-            cohort=""
-            print word
-            # All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
-            w = force_unicode(word).encode('utf-8')
-            w=w.lstrip().rstrip()
-            s.send(w) # on victorio
-            cohort = s.recv(size)
-            analysis = analysis + cohort
-            #logfile.write(analysis+"\n")
-            print analysis
-        ### Lemmas and POS tags of task words are gathered into the variables 
-        ### tasklemmas and taskpos respectively. Tasklemmas and taskpos will be 
-        ### sent to CG together with the morph. analysed question and answer.
-        tasklemmas = ""
-	logtasklemmas = ""
-        for aword in awords:
-            print aword
+		analysis = ""
+		data_lookup = "echo \"" + qtext + "\"" + preprocess
+		words = os.popen(data_lookup).readlines()
+		print question_id
+		#print words
+		#print qwords
+		for word in words:
+			w=""
+			cohort=""
+			print word
+			# All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
+			w = force_unicode(word).encode('utf-8')
+			w=w.lstrip().rstrip()
+			s.send(w) # on victorio
+			cohort = s.recv(size)
+			analysis = analysis + cohort
+			#logfile.write(analysis+"\n")
+			print analysis
+		### Lemmas and POS tags of task words are gathered into the variables 
+		### tasklemmas and taskpos respectively. Tasklemmas and taskpos will be 
+		### sent to CG together with the morph. analysed question and answer.
+		tasklemmas = ""
+		logtasklemmas = ""
+		for aword in awords:
+			print aword
 			#logfile.write(aword)
-            if aword.has_key('taskword') and aword['taskword']:
-                tlemma = aword['fullform']
-                tlemma = force_unicode(tlemma).encode('utf-8')
-                tlemma = tlemma.strip()
-                print tlemma
+			if aword.has_key('taskword') and aword['taskword']:
+				tlemma = aword['fullform']
+				tlemma = force_unicode(tlemma).encode('utf-8')
+				tlemma = tlemma.strip()
+				print tlemma
 				#logfile.write(tlemma+" ")
-                tasktag = Tag.objects.filter(id=aword['tag'])
-                tasktagstring = tasktag[0].string
-                taskpos = tasktag[0].pos
-                ttag = tasktagstring.replace("+"," ")
-                print ttag
+				tasktag = Tag.objects.filter(id=aword['tag'])
+				tasktagstring = tasktag[0].string
+				taskpos = tasktag[0].pos
+				ttag = tasktagstring.replace("+"," ")
+				print ttag
 				#logfile.write(ttag+"\n")
-                s.send(tlemma)  # on vic
-                word_lookup = s.recv(size)  # on vic
+				s.send(tlemma)  # on vic
+				word_lookup = s.recv(size)  # on vic
 				#logfile.write(word_lookup)
-                ans_cohort=""
-                #print rows
-                rows = word_lookup.split("\n")  # on vic
-                morfanal = ""
-                for row in rows:
-                    ans_cohort = ans_cohort + row
+				ans_cohort=""
+				#print rows
+				rows = word_lookup.split("\n")  # on vic
+				morfanal = ""
+				for row in rows:
+					ans_cohort = ans_cohort + row
 					  #logfile.write(row + "\n")
-                    malemmas = row.split("\"")
-                    if row:
+					malemmas = row.split("\"")
+					if row:
 						 malemma = malemmas[1]
-                    malemma_without_hash = malemma.replace('#','')
-                    taglist = ttag.split()
-                    tag_match = 1
-                    for entag in taglist:
-                        if entag not in row:
-                            tag_match = 0
-                    if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
-                        print malemmas
+					malemma_without_hash = malemma.replace('#','')
+					taglist = ttag.split()
+					tag_match = 1
+					for entag in taglist:
+						if entag not in row:
+							tag_match = 0
+					if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
+						print malemmas
 						 #logfile.write(malemma+"\n")
-                        print malemma
-                        print malemma_without_hash
-                        tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
+						print malemma
+						print malemma_without_hash
+						tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
 			logtasklemmas = logtasklemmas + " " + malemma_without_hash + " " + taskpos
-                    morfanal = morfanal + ans_cohort  # END
-                    
-        analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
-        #####
-        print analysis
+			morfanal = morfanal + ans_cohort  # END
+					
+		analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
+		#####
+		print analysis
 	   #logfile.write(analysis)
-        data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
-        word = os.popen(data_lookup).readlines()
-        #print word
-        analyzed=""
-        for c in word:		
-            c=c.strip()
-            print c
-            s.send(c) # on vic
-            analyzed = analyzed + s.recv(size)
-            
-        s.send("q")  # on vic
-        s.close()  # on vic
+		data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
+		word = os.popen(data_lookup).readlines()
+		#print word
+		analyzed=""
+		for c in word:		
+			c=c.strip()
+			print c
+			s.send(c) # on vic
+			analyzed = analyzed + s.recv(size)
+			
+		s.send("q")  # on vic
+		s.close()  # on vic
 
 
-    except socket.error:
-        analysis = ""
-        data_lookup = "echo \"" + qtext + "\"" + preprocess
-        words = os.popen(data_lookup).readlines()
-        print question_id
-        #print words
-        #print qwords
-        for word in words:
-            w=""
-            cohort=""
-            print word
-            # All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
-            w = force_unicode(word).encode('utf-8')
-            w=w.lstrip().rstrip()
-            word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-            morfanal = os.popen(word_lookup).readlines()
-            for row in morfanal:
-                cohort = cohort + row
+	except socket.error:
+		analysis = ""
+		data_lookup = "echo \"" + qtext + "\"" + preprocess
+		words = os.popen(data_lookup).readlines()
+		print question_id
+		#print words
+		#print qwords
+		for word in words:
+			w=""
+			cohort=""
+			print word
+			# All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
+			w = force_unicode(word).encode('utf-8')
+			w=w.lstrip().rstrip()
+			word_lookup = "echo \"" + force_unicode(w).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+			morfanal = os.popen(word_lookup).readlines()
+			for row in morfanal:
+				cohort = cohort + row
 		   #print cohort
-            analysis = analysis + cohort
-        tasklemmas = ""
-        logtasklemmas = ""
-        for aword in awords:
-            print aword
+			analysis = analysis + cohort
+		tasklemmas = ""
+		logtasklemmas = ""
+		for aword in awords:
+			print aword
 		   #logfile.write(aword)
-            if aword.has_key('taskword') and aword['taskword']:
-                tlemma = aword['fullform']
-                tlemma = force_unicode(tlemma).encode('utf-8')
-                tlemma = tlemma.strip()
-                print tlemma
+			if aword.has_key('taskword') and aword['taskword']:
+				tlemma = aword['fullform']
+				tlemma = force_unicode(tlemma).encode('utf-8')
+				tlemma = tlemma.strip()
+				print tlemma
 				#logfile.write(tlemma+" ")
-                tasktag = Tag.objects.filter(id=aword['tag'])
-                tasktagstring = tasktag[0].string
-                taskpos = tasktag[0].pos
-                ttag = tasktagstring.replace("+"," ")
-                print ttag
+				tasktag = Tag.objects.filter(id=aword['tag'])
+				tasktagstring = tasktag[0].string
+				taskpos = tasktag[0].pos
+				ttag = tasktagstring.replace("+"," ")
+				print ttag
 				#logfile.write(ttag+"\n")
-                ans_cohort = ""
-                word_lookup = "echo \"" + tlemma + "\"" + lookup + lookup2cg  # on Heli's machine
-                rows = os.popen(word_lookup).readlines()
-                morfanal = ""
-                for row in rows:
-                    ans_cohort = ans_cohort + row
+				ans_cohort = ""
+				word_lookup = "echo \"" + tlemma + "\"" + lookup + lookup2cg  # on Heli's machine
+				rows = os.popen(word_lookup).readlines()
+				morfanal = ""
+				for row in rows:
+					ans_cohort = ans_cohort + row
 					#logfile.write(row + "\n")
-                    malemmas = row.split("\"")
-                    if row:
+					malemmas = row.split("\"")
+					if row:
 						 malemma = malemmas[1]
-                    malemma_without_hash = malemma.replace('#','')
-                    taglist = ttag.split()
-                    tag_match = 1
-                    for entag in taglist:
-                        if entag not in row:
-                            tag_match = 0
-                    if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
-                        print malemmas
+					malemma_without_hash = malemma.replace('#','')
+					taglist = ttag.split()
+					tag_match = 1
+					for entag in taglist:
+						if entag not in row:
+							tag_match = 0
+					if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
+						print malemmas
 						 #logfile.write(malemma+"\n")
-                        print malemma
-                        print malemma_without_hash
-                        tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
-                        logtasklemmas = logtasklemmas + " " + malemma_without_hash + " " + taskpos
-                    morfanal = morfanal + ans_cohort  # END
-                    
-        analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
-        # analyse the user's answer
-        data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
-        word = os.popen(data_lookup).readlines()
-        #print word
-        analyzed=""
-        for c in word:		
-            c=c.strip()    
-            word_lookup = "echo \"" + force_unicode(c).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
-            morfanal = os.popen(word_lookup).readlines()
-            ans_cohort=""
-            for row in morfanal:
-                ans_cohort = ans_cohort + row
-            analyzed = analyzed + ans_cohort
-    except Exception, e:
-        print Exception
-        print e
-    #except socket.timeout:    
-        #raise Http404("Technical error, please try again later.")            
+						print malemma
+						print malemma_without_hash
+						tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
+						logtasklemmas = logtasklemmas + " " + malemma_without_hash + " " + taskpos
+					morfanal = morfanal + ans_cohort  # END
+					
+		analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
+		# analyse the user's answer
+		data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
+		word = os.popen(data_lookup).readlines()
+		#print word
+		analyzed=""
+		for c in word:		
+			c=c.strip()	
+			word_lookup = "echo \"" + force_unicode(c).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
+			morfanal = os.popen(word_lookup).readlines()
+			ans_cohort=""
+			for row in morfanal:
+				ans_cohort = ans_cohort + row
+			analyzed = analyzed + ans_cohort
+	except Exception, e:
+		print Exception
+		print e
+	#except socket.timeout:	
+		#raise Http404("Technical error, please try again later.")			
 
-    
-    analysis = analysis + analyzed
-    analysis = analysis + "\"<.>\"\n\t\".\" CLB"
-    analysis = analysis.rstrip()
-    analysis = analysis.replace("\"","\\\"")
-    print "Morph. analysis: \n", analysis
-    #logfile.write(analysis)
-    ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
-    checked = os.popen(ped_cg3).readlines()
-    #print "Syntax analysis: \n", checked
+	
+	analysis = analysis + analyzed
+	analysis = analysis + "\"<.>\"\n\t\".\" CLB"
+	analysis = analysis.rstrip()
+	analysis = analysis.replace("\"","\\\"")
+	print "Morph. analysis: \n", analysis
+	#logfile.write(analysis)
+	ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
+	checked = os.popen(ped_cg3).readlines()
+	#print "Syntax analysis: \n", checked
 
-    wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
-    messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
-    targetObj=re.compile(r'^.*\"(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\".*dia-.*$', re.U)
-    # Extract the lemma    
-    constantObj=re.compile(r'^.*\"\<(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\>\".*$', re.U)
-    diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
+	wordformObj=re.compile(r'^\"<(?P<msgString>.*)>\".*$', re.U)
+	messageObj=re.compile(r'^.*(?P<msgString>&(grm|err|sem)[\w-]*)\s*$', re.U)
+	targetObj=re.compile(r'^.*\"(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\".*dia-.*$', re.U)
+	# Extract the lemma	
+	constantObj=re.compile(r'^.*\"\<(?P<targetString>[\wáÁæÆåÅáÁšŠŧŦŋŊøØđĐžZčČ-]*)\>\".*$', re.U)
+	diaObj=re.compile(r'^.*(?P<targetString>&dia-[\w]*)\s*$', re.U)
 
-    # Each wordform may have a set of tags.
-    spelling = False
-    msgstrings = {}
-    diastring = "jee"
-    lemma=""
-    for line in checked:
-        line = line.strip()
+	# Each wordform may have a set of tags.
+	spelling = False
+	msgstrings = {}
+	diastring = "jee"
+	lemma=""
+	for line in checked:
+		line = line.strip()
 
-        #Find the lemma first
-        matchObj=constantObj.search(line)
-        if matchObj:
-            lemma = matchObj.expand(r'\g<targetString>')
+		#Find the lemma first
+		matchObj=constantObj.search(line)
+		if matchObj:
+			lemma = matchObj.expand(r'\g<targetString>')
 
-        #The wordform
-        matchObj=wordformObj.search(line)
-        if matchObj:
-            wordform = matchObj.expand(r'\g<msgString>')
-            msgstrings[wordform] = {}
-            
-        #grammatical/semantic/other error
-        matchObj=messageObj.search(line)
-        if matchObj:
-            msgstring = matchObj.expand(r'\g<msgString>')
-            if msgstring.count("spellingerror") > 0:
-                spelling = True
-            msgstrings[wordform][msgstring] = 1
+		#The wordform
+		matchObj=wordformObj.search(line)
+		if matchObj:
+			wordform = matchObj.expand(r'\g<msgString>')
+			msgstrings[wordform] = {}
+			
+		#grammatical/semantic/other error
+		matchObj=messageObj.search(line)
+		if matchObj:
+			msgstring = matchObj.expand(r'\g<msgString>')
+			if msgstring.count("spellingerror") > 0:
+				spelling = True
+			msgstrings[wordform][msgstring] = 1
 
-        #Store the baseform if there is dia-whatever
-        matchObj=targetObj.search(line)
-        if matchObj:
-            msgstring = matchObj.expand(r'\g<targetString>')
-            msgstrings[wordform]['dia-target'] = msgstring
-            msgstrings[wordform]['dia-lemma'] = lemma
+		#Store the baseform if there is dia-whatever
+		matchObj=targetObj.search(line)
+		if matchObj:
+			msgstring = matchObj.expand(r'\g<targetString>')
+			msgstrings[wordform]['dia-target'] = msgstring
+			msgstrings[wordform]['dia-lemma'] = lemma
 
-        # What is the dia-tag?
-        matchObj=diaObj.search(line)
-        if matchObj:
-            msgstring = matchObj.expand(r'\g<targetString>')
-            msgstrings[wordform][msgstring] = 1
-            diastring=msgstring            
-            
+		# What is the dia-tag?
+		matchObj=diaObj.search(line)
+		if matchObj:
+			msgstring = matchObj.expand(r'\g<targetString>')
+			msgstrings[wordform][msgstring] = 1
+			diastring=msgstring			
+			
 
-    msg=[]
-    dia_msg = []
-    message_ids = []
-    target = ""
-    variable=""
-    constant=""
-    found=False
-    #Interface language    
-    if not language: language = "nob"
-    language = switch_language_code(language)
-    #if language == "no" : language = "nob"
-    #if language == "fi" : language = "fin"
-    #if language == "en" : language = "eng"
-    if not language in ["nob","sme","fin","eng","swe"]: language="nob"
+	msg=[]
+	dia_msg = []
+	message_ids = []
+	target = ""
+	variable=""
+	constant=""
+	found=False
+	#Interface language	
+	if not language: language = "nob"
+	language = switch_language_code(language)
+	#if language == "no" : language = "nob"
+	#if language == "fi" : language = "fin"
+	#if language == "en" : language = "eng"
+	if not language in ["nob","sme","fin","eng","swe"]: language="nob"
 
-    print msgstrings
-    for w in msgstrings.keys():
-        if found: break
-        for m in msgstrings[w].keys():
-            if spelling and m.count("spelling") == 0: continue
-            m = m.replace("&","") 
-            if Feedbackmsg.objects.filter(msgid=m).count() > 0:
-                msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
-                print msg_el
-                message = Feedbacktext.objects.filter(feedbackmsg=msg_el, language=language)[0].message
-                print message
-                msg_id = msg_el.msgid  # added
-                print msg_id
-                message = message.replace("WORDFORM","\"" + w + "\"") 
-                msg.append(message)
-                message_ids.append(msg_id)  # added
-                if not spelling:
-                    found=True
-                    break                
-            else:
-                if m.count("dia-") == 0:
-                    msg.append(m)
-                    if not spelling:
-                        found=True
-                        break
-            if m.count("dia-") > 0:
-                dia_msg.append(m)
-        if msgstrings[w].has_key('dia-target'):
-            constant = msgstrings[w]['dia-lemma']
-            variable = msgstrings[w]['dia-target']
-        if msgstrings[w].has_key('dia-unknown'):
-            constant = msgstrings[w]['dia-lemma']
-            variable = msgstrings[w]['dia-unknown']
+	print msgstrings
+	for w in msgstrings.keys():
+		if found: break
+		for m in msgstrings[w].keys():
+			if spelling and m.count("spelling") == 0: continue
+			m = m.replace("&","") 
+			if Feedbackmsg.objects.filter(msgid=m).count() > 0:
+				msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
+				print msg_el
+				message = Feedbacktext.objects.filter(feedbackmsg=msg_el, language=language)[0].message
+				print message
+				msg_id = msg_el.msgid  # added
+				print msg_id
+				message = message.replace("WORDFORM","\"" + w + "\"") 
+				msg.append(message)
+				message_ids.append(msg_id)  # added
+				if not spelling:
+					found=True
+					break				
+			else:
+				if m.count("dia-") == 0:
+					msg.append(m)
+					if not spelling:
+						found=True
+						break
+			if m.count("dia-") > 0:
+				dia_msg.append(m)
+		if msgstrings[w].has_key('dia-target'):
+			constant = msgstrings[w]['dia-lemma']
+			variable = msgstrings[w]['dia-target']
+		if msgstrings[w].has_key('dia-unknown'):
+			constant = msgstrings[w]['dia-lemma']
+			variable = msgstrings[w]['dia-unknown']
 
-    #iscorrect is used only in logging
-    iscorrect=False
-    if not msg:
-        self.error = "correct"
-        iscorrect=True
+	#iscorrect is used only in logging
+	iscorrect=False
+	if not msg:
+		self.error = "correct"
+		iscorrect=True
 
-    feedbackmsg=' '.join(msg)
-    p = re.compile(r'<.*?>')
-    feedbackmsg = p.sub('', feedbackmsg)
-    print feedbackmsg
-    if message_ids:
+	feedbackmsg=' '.join(msg)
+	p = re.compile(r'<.*?>')
+	feedbackmsg = p.sub('', feedbackmsg)
+	print feedbackmsg
+	if message_ids:
 		feedbackmsg_id = message_ids[0] # added
-    else:
+	else:
 		feedbackmsg_id = ""
-    print feedbackmsg_id
-    today=datetime.date.today()
-    log = Log.objects.get_or_create(userinput=self.userans, feedback=feedbackmsg, iscorrect=iscorrect, qid=question_id, example=question, game=self.gametype, date=today, lang=language, messageid = feedbackmsg_id, tasklemmas=logtasklemmas)  # was Log.objects.create()
-    #log.save() # not needed?          
-        
-    variables = []
-    variables.append(variable)
-    variables.append(constant)
-    return msg, dia_msg, variables
+	print feedbackmsg_id
+	today=datetime.date.today()
+	log_kwargs = {
+		'userinput': self.userans,
+		'feedback': feedbackmsg,
+		'iscorrect': iscorrect,
+		'qid': question_id,
+		'example': question,
+		'game': self.gametype,
+		'date': today,
+		'lang': language,
+		'messageid': feedbackmsg_id,
+		'tasklemmas': logtasklemmas
+	}
+	if self.user:
+		log_kwargs['username'] = self.user.username
+	log = Log.objects.get_or_create(**log_kwargs)
+	# was Log.objects.create()
+	#log.save() # not needed?		  
+		
+	variables = []
+	variables.append(variable)
+	variables.append(constant)
+	return msg, dia_msg, variables
 
 
 class CealkkaSettings(OahpaSettings):
 
-    book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
-    level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
-    lemmacount = forms.ChoiceField(initial='2', choices=VASTAS_NR_OF_TASKWORDS, widget=forms.Select)
+	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
+	level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
+	lemmacount = forms.ChoiceField(initial='2', choices=VASTAS_NR_OF_TASKWORDS, widget=forms.Select)
 
-    def __init__(self, *args, **kwargs):
-        self.set_settings()
-        self.set_default_data()
-        self.default_data['gametype'] = 'cealkka',
-        super(CealkkaSettings, self).__init__(*args, **kwargs)
+	def __init__(self, *args, **kwargs):
+		self.set_settings()
+		self.set_default_data()
+		self.default_data['gametype'] = 'cealkka',
+		super(CealkkaSettings, self).__init__(*args, **kwargs)
 
 class CealkkaQuestion(OahpaQuestion):
-    """
-    Questions for cealkka
-    """
+	"""
+	Questions for cealkka
+	"""
 
-    select_words = select_words
-    cealkka_is_correct = cealkka_is_correct
-        
-    def __init__(self, question, qanswer, qwords, awords, dialect, language, userans_val, correct_val, *args, **kwargs):                 
+	select_words = select_words
+	cealkka_is_correct = cealkka_is_correct
+		
+	def __init__(self, question, qanswer, qwords, awords, dialect, language, userans_val, correct_val, *args, **kwargs):				 
 
-        self.init_variables("", userans_val, [])
-        self.dialect = dialect
-        self.gametype = "cealkka"
-        qtype=question.qtype
-        atext = qanswer.string
-        # print atext
+		self.init_variables("", userans_val, [])
+		self.dialect = dialect
+		self.gametype = "cealkka"
+		qtype=question.qtype
+		atext = qanswer.string
+		# print atext
 
-        question_widget = forms.HiddenInput(attrs={'value' : question.id})
-        answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})  #was: qanswer.id
+		question_widget = forms.HiddenInput(attrs={'value' : question.id})
+		answer_widget = forms.HiddenInput(attrs={'value' : qanswer.id})  #was: qanswer.id
 
-        super(CealkkaQuestion, self).__init__(*args, **kwargs)
+		super(CealkkaQuestion, self).__init__(*args, **kwargs)
 
-        maxlength=60
-        answer_size=60
-        self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
-        
-        self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
+		maxlength=60
+		answer_size=60
+		self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
+		
+		self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
 
-        self.fields['answer'] = forms.CharField(max_length = maxlength, \
-                                                widget=forms.TextInput(\
-        attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
+		self.fields['answer'] = forms.CharField(max_length = maxlength, \
+												widget=forms.TextInput(\
+		attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
 
-        # Select words for the answer
-        astring = ""
-        print "awords that come in CealkkaQuestion as parameter: "
-        print awords
-        selected_awords = self.select_words(qwords, awords)
-                    
-        awords = []
-        for token in atext.split():	   # det här har jag (Heli) hittat på
-            if token.isupper():  # added because of keyerror
-                word = selected_awords[token]
-                if word.has_key('fullform') and word['fullform']:                    
-                    word['fullform'] = force_unicode(word['fullform'][0])
-            else:
-                word = {}
-                word['fullform'] = token
-                word['taskword'] = ""
-            awords.append(word)
-            astring=astring+" "+force_unicode(word['fullform'])
+		# Select words for the answer
+		astring = ""
+		print "awords that come in CealkkaQuestion as parameter: "
+		print awords
+		selected_awords = self.select_words(qwords, awords)
+					
+		awords = []
+		for token in atext.split():	   # det här har jag (Heli) hittat på
+			if token.isupper():  # added because of keyerror
+				word = selected_awords[token]
+				if word.has_key('fullform') and word['fullform']:					
+					word['fullform'] = force_unicode(word['fullform'][0])
+			else:
+				word = {}
+				word['fullform'] = token
+				word['taskword'] = ""
+			awords.append(word)
+			astring=astring+" "+force_unicode(word['fullform'])
 
-        astring = astring.lstrip()
-        #print astring
-        
-        self.awords=awords
-        
-        relaxed = []
-        form_list=[]
+		astring = astring.lstrip()
+		#print astring
+		
+		self.awords=awords
+		
+		relaxed = []
+		form_list=[]
 				
-        self.qattrs= {}
-        self.aattrs = {}
-        for syntax in qwords.keys():
-            qword = qwords[syntax]
-            if qword.has_key('word'):
-                self.qattrs['question_word_' + syntax] = qword['word']
-            if qword.has_key('tag') and qword['tag']:
-                self.qattrs['question_tag_' + syntax] = qword['tag']
-            if qword.has_key('fullform') and qword['fullform']:
-                self.qattrs['question_fullform_' + syntax] = qword['fullform'][0]			
-        for syntax in selected_awords.keys():
-            if selected_awords[syntax].has_key('word'):
-                self.aattrs['answer_word_' + syntax] = selected_awords[syntax]['word']
-            if selected_awords[syntax].has_key('tag'):
-                self.aattrs['answer_tag_' + syntax] = selected_awords[syntax]['tag']
-            if selected_awords[syntax].has_key('fullform') and len(selected_awords[syntax]['fullform']) == 1:
-                self.aattrs['answer_fullform_' + syntax] = selected_awords[syntax]['fullform'][0]
-            if selected_awords[syntax].has_key('taskword'):
-                self.aattrs['answer_taskword_' + syntax] = selected_awords[syntax]['taskword']  # to track the taskword attribute
+		self.qattrs= {}
+		self.aattrs = {}
+		for syntax in qwords.keys():
+			qword = qwords[syntax]
+			if qword.has_key('word'):
+				self.qattrs['question_word_' + syntax] = qword['word']
+			if qword.has_key('tag') and qword['tag']:
+				self.qattrs['question_tag_' + syntax] = qword['tag']
+			if qword.has_key('fullform') and qword['fullform']:
+				self.qattrs['question_fullform_' + syntax] = qword['fullform'][0]			
+		for syntax in selected_awords.keys():
+			if selected_awords[syntax].has_key('word'):
+				self.aattrs['answer_word_' + syntax] = selected_awords[syntax]['word']
+			if selected_awords[syntax].has_key('tag'):
+				self.aattrs['answer_tag_' + syntax] = selected_awords[syntax]['tag']
+			if selected_awords[syntax].has_key('fullform') and len(selected_awords[syntax]['fullform']) == 1:
+				self.aattrs['answer_fullform_' + syntax] = selected_awords[syntax]['fullform'][0]
+			if selected_awords[syntax].has_key('taskword'):
+				self.aattrs['answer_taskword_' + syntax] = selected_awords[syntax]['taskword']  # to track the taskword attribute
 		print question.qid
-        print self.awords		
-        # Forms question string and answer string out of grammatical elements and other strings.
-        qstring = ""
+		print self.awords		
+		# Forms question string and answer string out of grammatical elements and other strings.
+		qstring = ""
 
-        # Format question string
-        qtext = question.string
-        for w in qtext.split():
-            if not qwords.has_key(w): qstring = qstring + " " + force_unicode(w)
-            else:
-                if qwords[w].has_key('fullform'):
-                    qstring = qstring + " " + force_unicode(qwords[w]['fullform'][0])
-                else:
-                    qstring = qstring + " " + w
-        # this is for -guovttos
-        qstring=qstring.replace(" -","-");
-        qstring=qstring.replace("- ","-");
-                    
-        # Remove leading whitespace and capitalize.
-        qstring = qstring.lstrip()
-        qstring = qstring[0].capitalize() + qstring[1:]
+		# Format question string
+		qtext = question.string
+		for w in qtext.split():
+			if not qwords.has_key(w): qstring = qstring + " " + force_unicode(w)
+			else:
+				if qwords[w].has_key('fullform'):
+					qstring = qstring + " " + force_unicode(qwords[w]['fullform'][0])
+				else:
+					qstring = qstring + " " + w
+		# this is for -guovttos
+		qstring=qstring.replace(" -","-");
+		qstring=qstring.replace("- ","-");
+					
+		# Remove leading whitespace and capitalize.
+		qstring = qstring.lstrip()
+		qstring = qstring[0].capitalize() + qstring[1:]
 
-        qstring = qstring + "?"
-        self.question=qstring
+		qstring = qstring + "?"
+		self.question=qstring
 	
-        self.gametype="cealkka"
-        self.messages, jee, joo  = self.cealkka_is_correct(qstring.encode('utf-8'), qwords, awords, language, question.qid)   # was astring, awords for VastaS before
-        
-        # set correct and error values
-        if correct_val == "correct":
-            self.error="correct"
-            
+		self.gametype="cealkka"
+		self.messages, jee, joo  = self.cealkka_is_correct(qstring.encode('utf-8'), qwords, awords, language, question.qid)   # was astring, awords for VastaS before
+		
+		# set correct and error values
+		if correct_val == "correct":
+			self.error="correct"
+			

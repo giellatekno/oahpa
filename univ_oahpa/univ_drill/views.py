@@ -63,7 +63,7 @@ class Gameview(object):
 
 	"""
 
-	def __init__(self, settingsclass, gameclass):
+	def __init__(self, settingsclass, gameclass, request):
 		self.SettingsClass = settingsclass
 		self.GameClass = gameclass
 
@@ -223,6 +223,13 @@ class Gameview(object):
                 print "get_settings_form language: "+self.settings['language']
 				
 				
+		if request.user.is_authenticated():
+			request_user = request.user
+		else:
+			request_user = False
+
+		self.settings['user'] = request_user
+
 		#if hasattr(request, 'LANGUAGE_CODE'):
 		#	self.settings['language'] = request.LANGUAGE_CODE
 
@@ -742,7 +749,7 @@ def morfa_game(request, pos):
 	"""
 		View for Morfa game. Requires pos argument, ['N', 'V', 'A', 'Num']
 	"""
-	mgame = Morfaview(MorfaSettings, BareGame)
+	mgame = Morfaview(MorfaSettings, BareGame, request)
 
 	mgame.settings['pos'] = pos.capitalize()
 	mgame.settings['gametype'] = "bare"
@@ -767,7 +774,7 @@ def morfa_game(request, pos):
 @trackGrade("Contextual Morfa")
 def cmgame(request, pos):
 
-	mgame = Morfaview(MorfaSettings, QAGame)
+	mgame = Morfaview(MorfaSettings, QAGame, request)
 
 	mgame.settings['pos'] = pos.capitalize()
 	mgame.settings['gametype'] = "context"
@@ -823,7 +830,7 @@ class Vastaview(Gameview):
 @trackGrade("Vasta F")
 def vasta(request):
 
-	vastagame = Vastaview(VastaSettings, QAGame)
+	vastagame = Vastaview(VastaSettings, QAGame, request)
 
 	c = vastagame.create_game(request)
 	return render_to_response('vasta.html', c,
@@ -874,7 +881,7 @@ class Cealkkaview(Gameview):
 @trackGrade("Cealkka")
 def cealkka(request):
 
-	cealkkagame = Cealkkaview(CealkkaSettings, CealkkaGame)
+	cealkkagame = Cealkkaview(CealkkaSettings, CealkkaGame, request)
 	cealkkagame.init_settings()
 
 	c = cealkkagame.create_game(request)
@@ -995,7 +1002,7 @@ class Sahkaview(Cealkkaview):
 @trackGrade("Sahka")
 def sahka(request):
 
-	sahkagame = Sahkaview(SahkaSettings, SahkaGame)
+	sahkagame = Sahkaview(SahkaSettings, SahkaGame, request)
 	sahkagame.init_settings()
 
 	c = sahkagame.create_game(request)
