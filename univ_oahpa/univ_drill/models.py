@@ -229,6 +229,7 @@ class Log(models.Model):
 	messageid = models.CharField(max_length=100,null=True) # added
 	lang = models.CharField(max_length=3) # added
 	tasklemmas = models.CharField(max_length=100, null=True)  # VastaS only, added
+	username = models.CharField(max_length=64, null=True)
 	
 	def outputEntry(self, printattrs=False, delimiter=False):
 		""" Renders log information in a one-line string.
@@ -257,7 +258,8 @@ class Log(models.Model):
 				'comment',
 				'messageid',  # added
 				'lang', # added
-				'tasklemmas'  # added
+				'tasklemmas',  # added
+				'username',
 			]
 		else:
 			attrs = printattrs
