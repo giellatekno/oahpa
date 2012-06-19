@@ -63,7 +63,7 @@ class Gameview(object):
 
 	"""
 
-	def __init__(self, settingsclass, gameclass, request):
+	def __init__(self, settingsclass, gameclass):
 		self.SettingsClass = settingsclass
 		self.GameClass = gameclass
 
@@ -749,7 +749,7 @@ def morfa_game(request, pos):
 	"""
 		View for Morfa game. Requires pos argument, ['N', 'V', 'A', 'Num']
 	"""
-	mgame = Morfaview(MorfaSettings, BareGame, request)
+	mgame = Morfaview(MorfaSettings, BareGame)
 
 	mgame.settings['pos'] = pos.capitalize()
 	mgame.settings['gametype'] = "bare"
@@ -774,7 +774,7 @@ def morfa_game(request, pos):
 @trackGrade("Contextual Morfa")
 def cmgame(request, pos):
 
-	mgame = Morfaview(MorfaSettings, QAGame, request)
+	mgame = Morfaview(MorfaSettings, QAGame)
 
 	mgame.settings['pos'] = pos.capitalize()
 	mgame.settings['gametype'] = "context"
@@ -830,7 +830,7 @@ class Vastaview(Gameview):
 @trackGrade("Vasta F")
 def vasta(request):
 
-	vastagame = Vastaview(VastaSettings, QAGame, request)
+	vastagame = Vastaview(VastaSettings, QAGame)
 
 	c = vastagame.create_game(request)
 	return render_to_response('vasta.html', c,
@@ -881,7 +881,7 @@ class Cealkkaview(Gameview):
 @trackGrade("Cealkka")
 def cealkka(request):
 
-	cealkkagame = Cealkkaview(CealkkaSettings, CealkkaGame, request)
+	cealkkagame = Cealkkaview(CealkkaSettings, CealkkaGame)
 	cealkkagame.init_settings()
 
 	c = cealkkagame.create_game(request)
@@ -1002,7 +1002,7 @@ class Sahkaview(Cealkkaview):
 @trackGrade("Sahka")
 def sahka(request):
 
-	sahkagame = Sahkaview(SahkaSettings, SahkaGame, request)
+	sahkagame = Sahkaview(SahkaSettings, SahkaGame)
 	sahkagame.init_settings()
 
 	c = sahkagame.create_game(request)
