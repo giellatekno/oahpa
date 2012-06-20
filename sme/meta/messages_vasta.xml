@@ -4,12 +4,14 @@
   <messages xml:lang="nob"> 
 	<message id="err-no_fst">Beklager – systemet fungerer ikke for øyeblikket.</message>
 	<message id="err-nonword">WORDFORM finnes ikke i vårt leksikon. Kan det være en skrivefeil?</message>
-	<message id="err-capProp">Stedsnavnet skal ha stor forbokstav?</message>
+	<message id="err-capProp">WORDFORM skal ha stor forbokstav?</message>
+	<message id="err-Err">WORDFORM inneholder en skrivefeil?</message>
+	<message id="err-IllErr">WORDFORM er en feilstavet illativ?</message>
 	<message id="err-longA">Du har kanskje glemt å skrive á i WORDFORM</message>
 	<message id="sem-dont-know">Det er for enkelt å svare vet-ikke. Prøv igjen.</message>
 	<message id="grm-should-be-Vfin"><![CDATA[Svaret ditt må alltid inneholde et <a class="helptext" href="#">finitt verb<span class="shortinfo">Et finitt verb er bøyd i person og tid f.eks.: boran, lohká</span></a>. Kan det være en skrivefeil i verbet ditt?]]></message>
 	<message id="grm-soaitit">"soaitit" skal brukes som andre hjelpeverb, f.eks. Mun soaittán boahtit.</message>
-	<message id="grm-should-not-Vfin">Verbet skal ikke være finitt - kanskje infinitiv passer?</message>
+	<message id="grm-should-not-Vfin">WORDFORM skal ikke være finitt verb - kanskje infinitiv passer?</message>
 	<message id="grm-not-verb-after-workverb">Etter "bargat" og "dahkat" passer det ikke med verb.</message>
 	<message id="sem-answer-with-same-verb">Du skal her svare med samme verbet som det spørres med.</message>
 	<message id="sem-neg-verb">Du skal ha med nektingsverb.</message>
@@ -20,31 +22,36 @@
 	<message id="sem-same-num">Du skal bruke tallordet som er oppgitt.</message>
 	<message id="sem-same-po">Du skal bruke postposisjonen som er oppgitt.</message>
 	<message id="grm-habitive"><![CDATA[Husk å bruke <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Lokativ">lokativ<span class="shortinfo">Den som har noe, er i lokativ. Det man har, er i nominativ: Mánás lea spábba. Klikk for å lese mer om lokativ.</span></a>.]]></message>
-	<message id="grm-should-Com"><![CDATA[Det bør være <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Komitativ">komitativ<span class="shortinfo">Kasus for "med": niibbiin, niibbiiguin. Spørreord er: mainna, maiguin, geainna, geaiguin. Klikk for å lese mer om komitativ.</span></a> etter verbet.]]></message>
-	<message id="grm-should-Loc"><![CDATA[Det bør være <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Lokativ">lokativ<span class="shortinfo">Kasus for på/i eller fra: skuvllas, skuvllain. Spørreord er: mas, main, gos. Klikk for å lese mer om lokativ.</span></a> etter verbet.]]></message>
+	<message id="grm-should-Com"><![CDATA[Substantivet bør være i <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Komitativ">komitativ<span class="shortinfo">Kasus for "med": niibbiin, niibbiiguin. Klikk for å lese mer om komitativ.</span></a> etter verbet.]]></message>
+	<message id="grm-should-Loc"><![CDATA[Substantivet bør være i <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Lokativ">lokativ<span class="shortinfo">Kasus for på/i eller fra: skuvllas, skuvllain. Klikk for å lese mer om lokativ.</span></a> etter verbet.]]></message>
 	<message id="err-VowIll">Illativen mangler vokalveksling.</message>
+	<message id="err-VowIllN">WORDFORM er illativ, men mangler vokalveksling.</message>
 	<message id="err-VowCom">Komitativen mangler vokalveksling.</message>
-	<message id="err-Diphsim"><![CDATA[Husk <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Diftongforenkling">diftongforenkling<span class="shortinfo">Diftongen mister den andre vokalen: ea - e, ie - i, uo - u, oa - o. Klikk for å lese mer om diftongforenkling.</span></a>.]]></message>
+	<message id="err-VowComN">WORDFORM er komitativ, men mangler vokalveksling.</message>
+	<message id="err-Diphsim"><![CDATA[WORDFORM mangler <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Diftongforenkling">diftongforenkling<span class="shortinfo">Diftongen mister den andre vokalen: ea - e, ie - i, uo - u, oa - o. Klikk for å lese mer om diftongforenkling.</span></a>.]]></message>
 	<message id="err-Illsuf">Skrivefeil, kanskje en feilstavet illativ?</message>
-	<message id="grm-should-Ill"><![CDATA[Det bør være <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Illativ">illativ<span class="shortinfo">Noen verb, f.eks. liikot, krever illativ: guollái, guliide. Klikk for å lese mer om illativ.</span></a> etter dette verbet.]]></message>
+	<message id="err-IllsufN">WORDFORM er kanskje en feilstavet illativ?</message>
+	<message id="grm-should-Ill"><![CDATA[Et substantiv bør være i <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Illativ">illativ<span class="shortinfo">Noen verb, f.eks. liikot, krever illativ: guollái, guliide. Klikk for å lese mer om illativ.</span></a> etter dette verbet.]]></message>
 	<message id="grm-should-not-Ess"><![CDATA[Det passer ikke med <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Essiv">essiv<span class="shortinfo">Kasus for "som": skuvlan, og for hvilke naturforhold noe hender, eller om hva noe kalles for. Spørreord er: manin, geanin. Klikk for å lese mer om essiv.</span></a>.]]></message>
 	<message id="grm-should-not-PP">Det passer ikke med postposisjon.</message>
 	<message id="grm-incorr-nr">Pass på entall/flertall stemmer overens.</message>
-	<message id="grm-incorr-nr-hab">Verbet skal være i tredjeperson entall eller flertall.</message>
-	<message id="grm-incorr-pers-nr">Er du sikker på at du svarer i riktig person?</message>
+	<message id="grm-incorr-nr-hab">WORDFORM skal være i tredjeperson entall eller flertall.</message>
+	<message id="grm-incorr-pers-nr">Er du sikker på at WORDFORM er i riktig person?</message>
 	<message id="grm-non-agr-subj-v">Husk kongruens mellom subjekt og verbal.</message>
 	<message id="grm-incorr-tense">Er du sikker på at du svarer med riktig tid?</message>
 	<message id="grm-missing-ActEss">Her passer det med aktio essiv.</message>
-	<message id="grm-should-negV">Feil form på verbet etter nektelsesverbet.</message>
+	<message id="grm-should-negV">WORDFORM har feil form, det kommer etter nektelsesverb.</message>
+	<message id="grm-missing-Inf">WORDFORM burde være infinitiv.</message>
 	<message id="grm-should-not-ConNeg">Det passer ikke med to nektelsesformer.</message>
 	<message id="err-grm-Px-Loc"><![CDATA[Mener du lokativ? Husk <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/stadieveksling.nno.html">stadieveksling<span class="shortinfo"> Veksling i konsonantgruppa mellom 1. og 2. stavinga i siste takta, f.eks. giella - giela. Klikk for å lese mer om stadieveksling.</span></a>.]]></message>
 	<message id="err-CG"><![CDATA[Husk <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/stadieveksling.nno.html">stadieveksling<span class="shortinfo"> Veksling i konsonantgruppa mellom 1. og 2. stavinga i siste takta, f.eks. giella - giela. Klikk for å lese mer om stadieveksling.</span></a>.]]></message>
+	<message id="err-1pers-prfprc">Mener du 1. person entall? WORDFORM mangler stadieveksling.</message>
 	<message id="grm-missing-NumSg">Svaret ditt burde inneholde et tallord i entall.</message>
 	<message id="grm-missing-NumPl">Svaret ditt burde inneholde et tallord i flertall.</message>
 	<message id="grm-missing-NumLoc">Svaret ditt burde inneholde et tallord i lokativ.</message>
 	<message id="grm-missing-NNum">Svaret ditt burde inneholde et samlingstall eller numeral i lokativ.</message>
 	<message id="grm-missing-Ord">Svaret ditt burde inneholde et ordenstall.</message>
-	<message id="grm-wrong-case">Er du sikker på at du bruker riktig kasus?</message>
+	<message id="grm-wrong-case">Er du sikker på at WORDFORM har riktig kasus?</message>
     <message id="grm-missing-Acc"><![CDATA[Svaret burde inneholde en <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Akkusativ"> akkusativ <span class="shortinfo"> Kasus for objekt, f.eks. girjji, girjjiid. Spørreord er: maid, man, gean, geaid. Klikk for å lese mer om akkusativ. </span></a>.]]></message>
 	<message id="grm-all-Acc"><![CDATA[Husk <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Akkusativ">akkusativ<span class="shortinfo"> Kasus for objekt, f.eks. girjji, girjjiid. Spørreord er: maid, man, gean, geaid. Klikk for å lese mer om akkusativ. </span></a> for alle ordene som trenger det.]]></message>
 	<message id="grm-missing-Gen"><![CDATA[Svaret burde inneholde en <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Genitiv">genitiv<span class="shortinfo">Kasus for eieform: nissona, nissoniid. Brukes også i post- og preposisjonsuttrykk: nissona luhtte, og etter tallord større enn 1: golbma 'bártni'. Klikk for å lese mer om genitiv.</span></a>.]]></message>
@@ -59,27 +66,30 @@
 	<message id="grm-missing-Loc-PP"><![CDATA[Svaret burde inneholde en <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Lokativ">lokativ<span class="shortinfo">Kasus for på/i eller fra: skuvllas, skuvllain. Spørreord er: mas, main, gos. Klikk for å lese mer om lokativ.</span></a>.]]></message>
 	<message id="grm-missing-Ill-PP"><![CDATA[Svaret burde inneholde en <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Illativ">illativ<span class="shortinfo">Kasus for bevegelse til noe: skuvlii, skuvllaide, eller for mottaker: áhkkui. Spørreord er: gosa, masa, maidda, geasa, geaidda. Klikk for å lese mer om illativ.</span></a>.]]></message>
 	<message id="grm-missing-Gen-PP"><![CDATA[Foran postposisjon skal nomenet være i <a class="helptext" target="_blank" href="http://giellatekno.uit.no/oahpa/sme/gramm/substantiv.nno.html#Genitiv">genitiv<span class="shortinfo">Kasus for eieform: nissona, nissoniid. Brukes også i post- og preposisjonsuttrykk: nissona luhtte, og etter tallord større enn 1: golbma 'bártni'. Klikk for å lese mer om genitiv.</span></a>.]]></message>
+	<message id="grm-should-Ess">WORDFORM skal være i essiv?</message>
+	<message id="grm-should-Gen">WORDFORM skal være i genitiv?</message>
+	<message id="grm-should-Nom">WORDFORM skal være i nominativ?</message>
 	<message id="grm-should-Plur">Det passer bedre med objekt i flertall.</message>
 	<message id="grm-should-LocPP">Er du sikker på at postposisjonen passer i forhold til spørsmålet?</message>
 	<message id="grm-should-IllPP">Er du sikker på at postposisjonen passer i forhold til spørsmålet?</message>
 	<message id="grm-should-not-Nom">Det passer kanskje ikke med nominativ etter et transitivt verb?</message> 
-	<message id="grm-should-pers">Her passer det med et pronomen foran verbet.</message> 
+	<message id="grm-should-pron">Her passer det med et pronomen foran verbet.</message> 
 	<message id="grm-NoEret">Husk "eret" etter stedsnavnet.</message>
 	<message id="grm-non-agreement-Dem">Her skulle det vært kongruens mellom påpekende pronomen og substantiv.</message>
 	<message id="grm-non-agreement-Adj">Her skulle det vært kongruens mellom subjekt og adjektiv.</message>
 	<message id="grm-non-agreement-Num">Her skulle det vært kongruens mellom tallord og substantiv.</message>
 	<message id="grm-non-agreement-buorre">Her skulle det vært kongruens mellom buorre og substantiv.</message>
-	<message id="grm-shouldAttr">Her skulle det vært attributtform.</message>
-	<message id="grm-shouldNotAttr">Her skulle det ikke vært attributtform.</message>
+	<message id="grm-shouldAttr">WORDFORM skal ha attributtform.</message>
+	<message id="grm-shouldNotAttr">WORDFORM skal ikke ha attributtform.</message>
 	<message id="grm-incorr-time-expr">Tidsuttrykket er kanskje ikke helt bra?</message>
 	<message id="grm-incorr-tense-future">Tidsuttrykket burde kanskje ikke vise framover i tid?</message>
 	<message id="grm-incorr-tense-past">Tidsuttrykket burde kanskje ikke vise bakover i tid?</message>
 	<message id="grm-falAdv">"fal" kan ikke være i begynnelsen av setningen.</message>
 	<message id="grm-naPcle">"na" kan bare være i begynnelsen av setningen.</message>
-	<message id="grm-notInterj">En interjeksjon kan bare være i begynnelsen eller slutten av setningen.</message>
+	<message id="grm-notInterj">WORDFORM er interjeksjon og kan bare være i begynnelsen eller slutten av setningen.</message>
 	<message id="sem-not_wordlist">Du må bruke et av ordene i ordlista i venstre marg.</message>
 	<message id="sem-not_correct_adj">Du har ikke brukt riktig adjektiv. Prøv igjen.</message>
 	<message id="sem-not_correct_infl">Du har ikke brukt riktig bøyning av adjektivet. Prøv igjen.</message>
-	<message id="grm-numeral-wrong-case">Sjekk bøyninga av substantivet etter numeralet.</message>
+	<message id="grm-numeral-wrong-case">Sjekk bøyninga av WORDFORM, det kommer etter et tallord.</message>
   </messages> 
 

@@ -5366,8 +5366,8 @@ MAPPING-PREFIX = & ;
 
 # Guesser
 # Ord med  
-SUBSTITUTE (?) (N Prop Plc Sg Loc Guess) TARGET ("<[A-ZÆØÅÄÖČŠÁ].*s>"r ?) ;
-SUBSTITUTE (?) (N Prop Plc Sg Nom Guess) TARGET ("<[A-ZÆØÅÄÖČŠÁ].*>"r ?)(NOT -1 BOS) ;
+#SUBSTITUTE (?) (N Prop Plc Sg Loc Guess) TARGET ("<[A-ZÆØÅÄÖČŠÁ].*s>"r ?) ;
+#SUBSTITUTE (?) (N Prop Plc Sg Nom Guess) TARGET ("<[A-ZÆØÅÄÖČŠÁ].*>"r ?)(NOT -1 BOS) ;
 
           SECTION
 
@@ -5449,9 +5449,9 @@ LIST ACCESSV = "atnit" "cielahit" "dadjat" "dahkat" "dulkot" "geavahit" "geahča
 
 # Essiv
 MAP (&grm-missing-Ess) TARGET V_ESS (NOT *1 Ess) ;
-MAP (&grm-missing-Ess) TARGET ESS-ADVL-N (NOT 0 Ess LINK -1 VERB LINK *-1 QDL) ;
-MAP (&grm-missing-Ess) TARGET N (NOT 0 Ess LINK -1 Acc LINK -1 ACCESSV LINK *-1 QDL) ;
-MAP (&grm-missing-Ess) TARGET PROFESSION (NOT 0 Ess LINK -1 ("bargat") OR ("doaibmat") LINK *-1 QDL) ;
+MAP (&grm-should-Ess) TARGET ESS-ADVL-N (NOT 0 Ess LINK -1 VERB LINK *-1 QDL) ;
+MAP (&grm-should-Ess) TARGET N (NOT 0 Ess LINK -1 Acc LINK -1 ACCESSV LINK *-1 QDL) ;
+MAP (&grm-should-Ess) TARGET PROFESSION (NOT 0 Ess LINK -1 ("bargat") OR ("doaibmat") LINK *-1 QDL) ;
 
 
 # Sahka
@@ -5498,7 +5498,7 @@ ADD (&dia-target) TARGET (N Plc Loc) IF (*-1 QDL BARRIER (&dia-target) LINK 0 SA
 
 
 # Placename should be in locative:
-MAP (&grm-missing-Loc) TARGET Prop (*-1 ("leat") OR ("orrut") BARRIER Loc OR S-BOUNDARY LINK *-1 PLACENAME-QUESTION BARRIER S-BOUNDARY)(NOT 0 LOCHEAD)(NOT *1 Loc BARRIER VERB OR S-BOUNDARY) ;
+MAP (&grm-should-Loc) TARGET Prop (*-1 ("leat") OR ("orrut") BARRIER Loc OR S-BOUNDARY LINK *-1 PLACENAME-QUESTION BARRIER S-BOUNDARY)(NOT 0 LOCHEAD)(NOT *1 Loc BARRIER VERB OR S-BOUNDARY) ;
 
 
 # For spellingerrors:
@@ -5653,30 +5653,30 @@ LIST ACCILLV = "čállit" "muitalit" "jorgalit" ;
 LIST VALENCY-OBJ = N Pron Actio Inf ;
 
 # If a STRICTCOMV is followed by a ANIMATE, then the ANIMATE has to be Com. Exception for Gen + N - e.g. bártni moarsi beatnagiin): 
-MAP (&grm-missing-Com) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE LINK NOT 0 Com)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&err-VowCom) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE + ComVErr LINK NOT 0 COM-NOT-ERRORS)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE LINK NOT 0 Com)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&err-VowComN) TARGET VALENCY-OBJ (*-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(0 ANIMATE + ComVErr LINK NOT 0 COM-NOT-ERRORS)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
  
 # If a STRICTCOMV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Com: 
-MAP (&grm-missing-Com) TARGET VALENCY-OBJ (*-1 ("birget") OR ("birgehallat") OR ("leaikkastallat") OR ("buđaldit") OR ("stoahkat") OR ("duhkoraddat") BARRIER NPNH LINK *-1 QDL)(NOT 0 Com OR Loc OR Ess)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-should-Com) TARGET VALENCY-OBJ (*-1 ("birget") OR ("birgehallat") OR ("leaikkastallat") OR ("buđaldit") OR ("stoahkat") OR ("duhkoraddat") BARRIER NPNH LINK *-1 QDL)(NOT 0 Com OR Loc OR Ess)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 # If a STRICTCOMV is followd by a ANIMATE in Com, then there should be no Po: 
 MAP (&grm-should-not-PP) TARGET Po (-1 ANIMATE + Com LINK *-1 STRICTCOMV BARRIER NPNH LINK *-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 # If a STRICTLOCV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Loc (no Inf is accepted) Exception for Gen + N - e.g. bártni moarsi beatnagis: 
-MAP (&grm-missing-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 LOCHEAD OR Nom)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Gen LINK 1 Actio)(NEGATE 0 Dem LINK *1 (N Loc))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-should-Loc) TARGET VALENCY-OBJ (*-1 STRICTLOCV BARRIER NPNH LINK *-1 QDL)(NOT 0 LOCHEAD OR Nom)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Gen LINK 1 Actio)(NEGATE 0 Dem LINK *1 (N Loc))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 # If a STRICTILLV is followed by a VALENCY-OBJ, then the VALENCY-OBJ has to be Ill, (no Inf is accepted). Exception is "liikot" + Inf, for PP amd for Gen + N - e.g. bártni moarsi beatnagii: 
-MAP (&grm-missing-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH OR Ill LINK *-1 QDL)(NOT 0 ILLHEAD OR Nom)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-should-Ill) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH OR Ill LINK *-1 QDL)(NOT 0 ILLHEAD OR Nom)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 # Noun Ess only after an ESSV (other words can be between): 
 #MAP (&grm-should-not-Ess) TARGET (N Ess) (NOT *-1 ESSV OR ACCESSV BARRIER S-BOUNDARY) ; 
 # LINK *-1 QDL) ;
 
-MAP (&grm-missing-Loc) TARGET LANGUAGE (NOT 0 NP-HEAD-LOC LINK *-1 ("jorgalit") BARRIER LANGUAGE + Loc LINK *-1 QDL)(*1 LANGUAGE BARRIER VERB)(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-missing-Ill) TARGET LANGUAGE (NOT 0 NP-HEAD-ILL OR Loc LINK *-1 ("jorgalit") LINK *-1 QDL)(NOT *1 LANGUAGE)(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-missing-Ill) TARGET LANGUAGE (NOT 0 NP-HEAD-ILL LINK *-1 ACCILLV LINK NOT 0 ("jorgalit") LINK *-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-missing-Ill) TARGET LANGUAGE (NOT 0 NP-HEAD-ILL LINK *-1 LANGUAGE + Loc BARRIER VERB LINK *-1 ("jorgalit") BARRIER VERB LINK *-1 QDL)(NOT *1 LANGUAGE)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-should-Loc) TARGET LANGUAGE (NOT 0 NP-HEAD-LOC LINK *-1 ("jorgalit") BARRIER LANGUAGE + Loc LINK *-1 QDL)(*1 LANGUAGE BARRIER VERB)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-should-Ill) TARGET LANGUAGE (NOT 0 NP-HEAD-ILL OR Loc LINK *-1 ("jorgalit") LINK *-1 QDL)(NOT *1 LANGUAGE)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-should-Ill) TARGET LANGUAGE (NOT 0 NP-HEAD-ILL LINK *-1 ACCILLV LINK NOT 0 ("jorgalit") LINK *-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-should-Ill) TARGET LANGUAGE (NOT 0 NP-HEAD-ILL LINK *-1 LANGUAGE + Loc BARRIER VERB LINK *-1 ("jorgalit") BARRIER VERB LINK *-1 QDL)(NOT *1 LANGUAGE)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 
 
@@ -5790,13 +5790,13 @@ MAP (&err-VowCom) TARGET TARGETQUESTION-COM IF (*1 QDL LINK *1C ComVErr BARRIER 
 MAP (&err-VowCom) TARGET ("guhte") IF (1 (N Com) LINK *1 QDL LINK *1C ComVErr BARRIER S-BOUNDARY OR Com)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gii") + Com OR Com);
 
 
-MAP (&err-VowIll) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH OR ILLHEAD LINK *-1 QDL)(0 IllVErr)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&err-VowIllN) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH OR ILLHEAD LINK *-1 QDL)(0 IllVErr)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 MAP (&err-Illsuf) TARGET TARGETQUESTION-ILL IF (*1 QDL LINK *1C IllErr BARRIER S-BOUNDARY OR ILLHEAD)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill); 
 MAP (&err-Illsuf) TARGET ("guhte") IF (1 (N Ill) LINK *1 QDL LINK *1C IllErr BARRIER S-BOUNDARY OR ILLHEAD)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gosa") OR Ill);
 
 
-MAP (&err-Illsuf) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH OR ILLHEAD LINK *-1 QDL)(0 IllErr)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&err-IllsufN) TARGET VALENCY-OBJ (*-1 STRICTILLV BARRIER NPNH OR ILLHEAD LINK *-1 QDL)(0 IllErr)(NEGATE 0 Inf LINK *-1 ("liikot") BARRIER NPNH)(NEGATE 0 Gen LINK 1 Po)(NEGATE 0 Gen LINK *1 N BARRIER NPNH)(NEGATE 0 Dem LINK *1 (N Ill))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 MAP (&err-Diphsim) TARGET DiphErr (0C DiphErr)((*-1 QDL BARRIER ILLHEAD LINK *-1 TARGETQUESTION-ILL LINK -1 BOS) OR (*-1 QDL BARRIER Ill LINK *-1 (N Ill) LINK -1 ("guhte")));
 
@@ -5817,11 +5817,11 @@ REMOVE Acc (0 NP-HEAD-GEN OR (Pron Gen) LINK *-1 COPULAS BARRIER NPNH LINK *-1 Q
 
 REMOVE Acc (0 NP-HEAD-GEN LINK -1 HUMAN + Gen OR (Pron Gen) LINK *-1 COPULAS BARRIER NPNH LINK *-1 QDL)(1C N)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
-MAP (&grm-missing-Nom) TARGET (N Acc)(*-1 QDL LINK *-1 TARGETQUESTION-NOM)(*-1 COPULAS BARRIER NPNH LINK -1 HUMAN + Nom OR (Pron Nom))(NEGATE *-1 ACCEPT-EVERYTHING);
+MAP (&grm-should-Nom) TARGET (N Acc)(*-1 QDL LINK *-1 TARGETQUESTION-NOM)(*-1 COPULAS BARRIER NPNH LINK -1 HUMAN + Nom OR (Pron Nom))(NEGATE *-1 ACCEPT-EVERYTHING);
 	## Mun lean du vuotnáma ustiba.
 
 
-MAP (&grm-missing-Gen) TARGET HUMAN + Nom IF (NOT 0 Gen LINK 1 HUMAN LINK NOT *1 CC)(*-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING);
+MAP (&grm-should-Gen) TARGET HUMAN + Nom IF (NOT 0 Gen LINK 1 HUMAN LINK NOT *1 CC)(*-1 QDL)(NEGATE *-1 ACCEPT-EVERYTHING);
 
 MAP (&grm-missing-Loc-PP) TARGET ("gos") OR ("gokko") IF (*1 QDL LINK NOT 0 PLACENAME-QUESTION LINK NOT *1 LOCHEAD OR PxSg3 OR Neg)(NEGATE *1 QDL LINK *1 ("vaikko") LINK 1 ("gos") OR Loc);
 	## Gohppu lea beavddi nalde.
@@ -5852,7 +5852,7 @@ MAP (&grm-should-not-Nom) TARGET Nom IF (*-1 V-TRANS-ACT-NOT-ACT OR DURATION-V B
 MAP (&grm-should-not-Nom) TARGET Nom IF (*-1 V-TRANS-ACT-NOT-ACT OR DURATION-V BARRIER NPNH LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(0 Num LINK 1 TIME)(NEGATE *-1 ACCEPT-EVERYTHING);
 
 
-MAP (&grm-habitive) TARGET NP-HEAD (NOT 0 Loc)(-1 QDL LINK -1 Nom LINK -1 NP-HEAD + Loc LINK -1 go)(NEGATE *-1 ACCEPT-EVERYTHING);
+MAP (&grm-Hab) TARGET NP-HEAD (NOT 0 Loc)(-1 QDL LINK -1 Nom LINK -1 NP-HEAD + Loc LINK -1 go)(NEGATE *-1 ACCEPT-EVERYTHING);
 
 
 MAP (&grm-should-LocPP) TARGET Po IF (NOT 0 LOC-Po LINK *-1 QDL LINK *-1 ("gos"));
@@ -6064,13 +6064,13 @@ MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK
 MAP:TEST (&grm-incorr-nr) TARGET ("leat" V Sg3)(*-1 QDL BARRIER (Sg Nom) OR (Sg3 Nom) LINK NOT 0 ACCEPT-EVERYTHING)(1 NUMERALS + Nom LINK *1 N OR EOS BARRIER NOT-ADJ) ; 
 MAP:TEST (&grm-incorr-nr) TARGET ("leat" V Pl3)(*-1 QDL BARRIER (Pl Nom) OR Pl3 LINK NOT 0 ACCEPT-EVERYTHING)((1 OKTA + Nom LINK *1 N BARRIER NOT-ADJ) OR (*1 (N Sg Nom) BARRIER NPNH LINK NOT 0 (N Pl))) ; ; 
 MAP:TEST (&grm-incorr-nr-Hab) TARGET ("leat") (0 V-SG1 OR V-DU)(-1 HAB-ACTOR + Loc LINK *-1 QDL LINK NOT 0 ACCEPT-EVERYTHING)((*1 (N Nom) BARRIER NOT-ADJ) OR (1 Num LINK *1 N BARRIER NOT-ADJ)) ; 
-MAP:TEST (&grm-incorr-nr-hab) TARGET (V Neg Ind)(*-1 HAB-ACTOR + Loc LINK *-1 QDL LINK NOT 0 ACCEPT-EVERYTHING)(NOT 0 Pl3)(1 COPULAS + ConNeg LINK *1 (N Pl Nom) BARRIER NOT-ADJ) ; 
-MAP:TEST (&grm-incorr-nr-hab) TARGET (V Neg Ind)(*-1 HAB-ACTOR + Loc LINK *-1 QDL LINK NOT 0 ACCEPT-EVERYTHING)(NOT 0 Sg3)(1 COPULAS + ConNeg LINK *1 (N Sg Nom) BARRIER NOT-ADJ) ; 
+MAP:TEST (&grm-incorr-nr-Hab) TARGET (V Neg Ind)(*-1 HAB-ACTOR + Loc LINK *-1 QDL LINK NOT 0 ACCEPT-EVERYTHING)(NOT 0 Pl3)(1 COPULAS + ConNeg LINK *1 (N Pl Nom) BARRIER NOT-ADJ) ; 
+MAP:TEST (&grm-incorr-nr-Hab) TARGET (V Neg Ind)(*-1 HAB-ACTOR + Loc LINK *-1 QDL LINK NOT 0 ACCEPT-EVERYTHING)(NOT 0 Sg3)(1 COPULAS + ConNeg LINK *1 (N Sg Nom) BARRIER NOT-ADJ) ; 
 	## Mus lea mánát.
 
-#MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 V-3)(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-#MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 V-3)(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-#MAP (&grm-should-pers) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 DUALIS-NOUN OR (Pers Du3 Nom))(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+#MAP (&grm-should-pron) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 V-3)(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+#MAP (&grm-should-pron) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 V-3)(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+#MAP (&grm-should-pron) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 DUALIS-NOUN OR (Pers Du3 Nom))(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 
 #MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN LINK *-1 Pl3)(NOT 0 Pl3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 #MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN LINK *-1 Sg3)(NOT 0 Sg3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
@@ -6398,89 +6398,114 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 #MAP (&sem-beverage) TARGET DRINKVERB IF (*1 QDL LINK NOT *1 LIQUID)(NEGATE 0 ("juhkat") LINK 0 (Prs Du1) OR (Prs Pl3) OR (Prt Pl3)) ;
 
 
-################
-# LIST OF TAGS #
-################
+##########################
+# LIST OF NAVIGATIONTAGS #
+##########################
+
 # &dia-neg              	negative content
 # &dia-nothing          	anwers is "nothing"
 # &dia-pos              	positive content
 # &dia-target           	answer to the question - can be used in next question
-# &sem-dont-know        	to easy answer - Make a comment for this. 
 # &dia-name
 # &dia-adult
 # &dia-young
 # &dia-child
-# &sem-not_wordlist
-# &sem-gaffe				gáffe vs. gáfet
 
-# &err-nonword    	spellingerror word is not in lexicon
+##########################
+# LIST OF FEEDBACKTAGS #
+##########################
+
+
+# &err-1pers-prfprc
+# &err-CG
 # &err-Diphsim
-# &err-VowIll
-# &sem-same-adj
-# &sem-same-noun
-# &sem-same-verb
-# &sem-not_correct_adj
-# &sem-not_correct_infl
-
-# &grm-NoEret			there should be "eret" 
-# &grm-falAdv           	"fal" can never be initial
-# &grm-naPcle           	"na" can only be initial
-# &grm-notInterj        	Interj can only be initial or final
-
-# &grm-missing-Acc      	there should be an accusative
-# &grm-all-Acc				remember all objects in accusative
-# &grm-missing-Com      	there should be a comitative
-# &grm-missing-Ess      	there should be an essive
-# &grm-missing-Gen      	there should be a genetive
-# &grm-missing-Ill      	there should be an illative
+# &err-Err
+# &err-IllErr
 # &err-Illsuf			the illative form is missing vowelchange
-# &grm-missing-Loc      	there should be a locative
-# &grm-missing-Nom      	there should be a nominative
+# &err-IllsufN			the illative form is missing vowelchange, attached to the noun
+# &err-VowCom
+# &err-VowComN
+# &err-VowIll
+# &err-VowIllN
+# &err-capProp
+# &err-grm-Px-Loc
+# &err-longA
+# &err-no_fst
+# &err-nonword    	spellingerror word is not in lexicon
+
 # &grm-Hab-Nom
-# &grm-missing-Loc-PP   	there should be a Loc or a PP
-# &grm-missing-Ill-PP   	there should be an Ill or a PP
-# &grm-missing-ActEss
-# &grm-missing-NumLoc
-# &grm-should-not-ConNeg
-# &grm-should-not-PP
-
-# &grm-should-LocPP     	you should answer with a LocPo
-# &grm-should-IllPP     	you should answer with an IllPo
-# &grm-missing-Gen-PP   	there should be a Gen in front of the Po
-
-# &grm-wrong-case       	wrong case
-# &grm-incorr-time-expr 	incorrect time expression 
+# &grm-Loc-leaving
+# &grm-NoEret			there should be "eret" 
+grm-Vehicle-Com
+# &grm-all-Acc				remember all objects in accusative
+# &grm-falAdv           	"fal" can never be initial
+# &grm-Hab			wrong habitiv-construction
+# &grm-incorr-nr
+# &grm-incorr-nr-Hab
+# &grm-incorr-pers-nr   	you should answer with another Person-Number
 # &grm-incorr-tense
 # &grm-incorr-tense-future
 # &grm-incorr-tense-past
-# &grm-incorr-pers-nr   	you should answer with another Person-Number
+# &grm-incorr-time-expr 	incorrect time expression 
+# &grm-missing-Acc      	there should be an accusative
+# &grm-missing-ActEss
+# &grm-missing-Com      	there should be a comitative
+# &grm-missing-Ess      	there should be an essive
+# &grm-missing-Gen      	there should be a genetive
+# &grm-missing-Gen-PP   	there should be a Gen in front of the Po
+# &grm-missing-Ill      	there should be an illative
+# &grm-missing-Ill-PP
 # &grm-missing-Inf
-# &grm-missing-NumSg    	You should answer with Num Sg
-# &grm-missing-NumPl    	You should answer with Num Pl
+# &grm-missing-Loc      	there should be a locative
+# &grm-missing-Loc-PP
 # &grm-missing-NNum     	You should answer with Coll
+# &grm-missing-Nom      	there should be a nominative
+# &grm-missing-NumLoc
+# &grm-missing-NumPl    	You should answer with Num Pl
+# &grm-missing-NumSg    	You should answer with Num Sg
 # &grm-missing-Ord      	You should answer with A Ord
-	
-# &grm-non-agreement-Dem    should be agreement
+# &grm-naPcle           	"na" can only be initial
+# &grm-non-agr-subj-v		should be agreement subj/verbal
 # &grm-non-agreement-Adj    should be agreement
+# &grm-non-agreement-Dem    should be agreement
 # &grm-non-agreement-Num    should be agreement
 # &grm-non-agreement-buorre should be agreement
-# &grm-non-agr-subj-v		should be agreement subj/verbal
+# &grm-not-verb-after-workverb
+# &grm-notInterj        	Interj can only be initial or final
+# &grm-numeral-wrong-case
+# &grm-should-Com
+# &grm-should-Ess
+# &grm-should-Gen
+# &grm-should-Ill
+# &grm-should-IllPP     	you should answer with an IllPo
+# &grm-should-Loc
+# &grm-should-LocPP     	you should answer with a LocPo
+# &grm-should-Nom
+# &grm-should-Plur
+# &grm-should-be-Vfin   	your answer should always contain a finite verb
+# &grm-should-negV		wrong verb-form after Neg
+# &grm-should-not-ConNeg
+# &grm-should-not-Nom
+# &grm-should-not-PP
+# &grm-should-not-Vfin  	this verb should not be finite
 # &grm-shouldAttr       	this adjective should have Attr form
 # &grm-shouldNotAttr    	this adjective should be predicative form
-# &grm-should-be-Vfin   	your answer should always contain a finite verb
-# &grm-should-not-Vfin  	this verb should not be finite
-# &grm-should-negV		wrong verb-form after Neg
-# &grm-should-pers      	you shold answer with a pronoun
-# &grm-habitive			wrong habitiv-construction
-# &sem-answer-with-same-verb 	you should answer with the same verb
-# &err-grm-Px-Loc
-# &err-CG
-# &err-longA
-# &grm-not-verb-after-workverb
-# &grm-should-not-Nom
-# &grm-Vehicle-Com
-# &grm-Loc-leaving
-# &grm-numeral-wrong-case
+# &grm-should-pron      	you shold answer with a pronoun
 # &grm-soaitit
-# &orth-prop                    Proper nouns should begin with capital letter
-# &grm-incorr-nr-Hab
+# &grm-wrong-case       	wrong case
+
+# &sem-answer-with-same-verb 	you should answer with the same verb
+# &sem-dont-know        	to easy answer - Make a comment for this. 
+# &sem-neg-verb
+# &sem-not_correct_adj
+# &sem-not_correct_infl
+# &sem-not_wordlist
+# &sem-same-adj
+# &sem-same-noun
+# &sem-same-num
+# &sem-same-po
+# &sem-same-pron
+# &sem-same-verb
+# &sem-not_wordlist
+# &sem-gaffe				gáffe vs. gáfet
+
