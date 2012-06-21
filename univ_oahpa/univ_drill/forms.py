@@ -2726,8 +2726,8 @@ class CealkkaQuestion(OahpaQuestion):
 
 		super(CealkkaQuestion, self).__init__(*args, **kwargs)
 
-		maxlength=60
-		answer_size=60
+		maxlength=70
+		answer_size=70
 		self.fields['question_id'] = forms.CharField(widget=question_widget, required=False)
 		
 		self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
