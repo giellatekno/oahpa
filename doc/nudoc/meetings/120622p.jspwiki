@@ -1,0 +1,100 @@
+!!! Møte om innlogging 22.06.12
+
+Til stades: Lene, Trond, Ryan, Berit-Ánne
+
+!! Innlogging
+* [Dokumentasjon av arbeidet med innlogging|http://giellatekno.uit.no/ped/nudoc/login.html]
+* [Testing login|http://testing.oahpa.no/davvi/courses/]
+* [Production login|http://oahpa.no/davvi/courses/]
+
+!Status quo:
+* oahpa.no/davvi - man må først logge inn på kursa.oahpa.no
+* må lages brukerkonto på kursa.oahpa.no
+* Open ID - må implementeres på wordpress  
+* Informasjon til studentar på /davvi/courses/ 
+
+Vi har no etter kvart mange oahpa-versjonar. Her er eit oversyn:
+
+* Gamle versjonar på victorio:
+** [oahpa.uit.no|http:/oahpa.uit.no] (ur-oahpa)
+** [oahpa.uit.no/univ_oahpa|http://oahpa.uit.no/univ_oahpa] (vinterens utvikling)
+** [oahpa.uit.no/aarjel|http://oahpa.no/aarjel] (ur-sma-oahpa)
+* Nye versjonar på gtoahpa:
+** [oahpa.no/davvi|http://oahpa.no/davvi] (dette skal bli den funksjonelle)
+** [oahpa.no/aarjel|http://oahpa.no/aarjel] 
+* gtlab:
+** [testing.oahpa.no/davvi|http://testing.oahpa.no/davvi] (som namnet seier: testing)
+** [testing.oahpa.no/wordpress|http://testing.oahpa.no/wordpress/] (test wordpress)
+
+Vi vil avslutte dei gamle så snart som råd er, og overføre brukarinformasjonen til dei nye.
+
+Det bør vere mogleg for interessterte å prøve oahpa utan å registrere seg, vi kan ha Numra og Leksa åpne.
+
+Vi vil gjerne la folk bruke facebook-/google-identiteten sin som innlogging.
+
+__TILTAK__
+* __Biret-Ánne__ ser på Buddy-press og course-ware (plugin innafor Buddypress for å gi forskjellige rolle) og skriver mail til oss og Bjørn. Vi må få avklart om Bjørn eller Ryan skal implementere dette.
+* __Ryan__ finn ei løsning til Facebook/Google-autentikasjon i WordPress, om det ikkje finnst allerede i Buddypress
+* __Ryan__ oppdaterer teksten på oahpa/django på innloggingssida som studentar ser om dei prøver å logge inn utan å ha besøkt på WordPress
+* __Ryan__ stenger Morfa-C, Vasta, Morfa-S til folk som ikkje er logga inn etter at open-ID fungerer
+* __Ryan__ skriv ein plan til migrasjon/avslutting på victorio som skjer til slutten av juni
+* __Lene__ informerer Aajege om flytting av åarjel-oahpa. Ingen endringer i åarjel-oahpa ellers.
+
+
+!! Spørsmål om fst-verktøy
+
+! fst-verktøy
+* fst - kommersiell, kjøpt i 2005
+* xfst - ikke-kommersiell, begrensa printing
+* kompilatorer må være av samme generasjon
+
+{{{
+Mappene
+
+/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/
+/opt/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/
+
+inneholder identiske filer, nemleg dei kommersielle verktya.
+
+I desse mappene ligg det også ein symlink:
+* lrwxrwxrwx 1 root root       3 mai  5  2006 xfst -> fst
+
+Dei ikkjekommersielle ligg på:
+Ikke-kommersiell: /usr/local/bin/xfst
+
+~$xfst -v
+xfst-2.10.7 (2.11.1)
+
+Makefile på victorio:
+# Tools used when compiling the transducers
+UFST   = /opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/fst -utf8 $(QUIET)
+CFST   = xfst $(QUIET)
+XFST   = xfst $(QUIET)
+
+Men kompilasjonsprosessen viser til XFST, og ikkje til UFST.
+Ergo er ikkje dei kommersielle verktya i bruk.
+
+gtoahpa:
+[trond@gtoahpa ~]$ xfst -v
+xfst-2.15.7 (libcfsm-2.25.11) (svn 34269)
+
+Trond si maskin:
+~$xfst -v
+xfst-2.13.2 (libcfsm-2.18.2) (svn 31774)
+}}}
+
+
+!!Program til og med august
+
+Ferie: 
+* Berit Ánne og Lene:  7.7 - 12.8
+* Trond 30.6. - 31.7.
+
+August:
+* Euralex 7-11.8 (Trond)
+* Kurs med lærarar 16-17.8
+* Eurocall 22-25.8 (BÁ, Heli, Lene, Trond)
+
+!!Neste møte
+29.8 kl 8.00 - med alle
+
