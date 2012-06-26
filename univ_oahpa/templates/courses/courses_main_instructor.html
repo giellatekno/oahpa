@@ -55,7 +55,7 @@ TODO: internationalization strings
 				</tr>
 				{% endfor %}
 				</table>
-				<p><a href="/univ_oahpa/courses/{{ student.user.id }}">{% trans "More information about this student" %}.</a></p>
+				<p><a href="/{{ URL_PREFIX }}/courses/{{ student.user.id }}">{% trans "More information about this student" %}.</a></p>
 				{% endif %}
 			</li>
 			{% endfor %}
