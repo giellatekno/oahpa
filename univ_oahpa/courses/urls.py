@@ -15,8 +15,8 @@ from courses.views import cookie_login, cookie_logout
 
 urlpatterns = patterns('django.contrib.auth.views',
 	(r'^standard_login/$', login, {'template_name': 'auth/login.html'}),
-	(r'^logout/$', logout, {'template_name': 'auth/logout.html'}),
-	(r'^login/$', cookie_login),
+	(r'^logout/$', logout, {'template_name': 'auth/logout.html'}, name="courses_logout"),
+	(r'^login/$', cookie_login, name="courses_login"),
 	(r'^cookie_logout/$', cookie_logout),
 )
 
@@ -24,6 +24,6 @@ from views import courses_main, instructor_student_detail
 
 urlpatterns += patterns('univ_oahpa.courses.views',
 	(r'^(?P<uid>\d+)/$', instructor_student_detail),
-	(r'^$', courses_main),
+	(r'^$', courses_main, name="courses_index"),
 )
 

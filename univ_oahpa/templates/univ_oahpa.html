@@ -88,8 +88,11 @@ function tillatpopup() {
 </ul>
 <div id="leftcontent">
 
-<!---	<p align="center"><b><span style="color: #993366;font-size:0.8em">Hjelp oss å utvikle Oahpa – svar på et lite <span style="color: #9933FF"><a href="http://kursa.oahpa.no/2012/03/27/sporreskjema/">spørreskjema </a></span>om bruk av noen av programmene.</span></b></p>
-        <hr color="#CCCCCC"> ---->
+	{% comment %}
+<!--	<p align="center"><b><span style="color: #993366;font-size:0.8em">Hjelp oss å utvikle Oahpa – svar på et lite <span style="color: #9933FF"><a href="http://kursa.oahpa.no/2012/03/27/sporreskjema/">spørreskjema </a></span>om bruk av noen av programmene.</span></b></p>
+        <hr color="#CCCCCC"> -->
+	{% endcomment %}
+
 	<div id="navbar">
         {% if gametype != "sahka" or not forms %}
 		<img width="120" height="120" border="0" src="{{ MEDIA_URL }}/images/{% block imgprefix %}{% endblock %}_big.png" alt="Game logo" onload="tillatpopup();"/>
@@ -129,7 +132,7 @@ function tillatpopup() {
 			<li><a href="{% url univ_oahpa.courses.views.courses_main %}" class="interface">{% trans_to "View progress" "sme" %}<span class="invisible">{% trans "View progress" %}</span></a></li>
 			<li><a href="{% url univ_oahpa.courses.urls.logout %}" class="interface">{% trans_to "Log out" "sme" %}<span class="invisible">{% trans "Log out" %}</span></a></li>
 		{% else %}
-    		<li><a href="/univ_oahpa/courses/login/" class="interface"> {% trans_to "Log in" "sme" %}<span class="invisible">{% trans "Log in" %}</span></a></li>
+    	<li><a href="{% url courses_login %}" class="interface"> {% trans_to "Log in" "sme" %}<span class="invisible">{% trans "Log in" %}</span></a></li>
     	{% endif %}
     </ul>
 	
