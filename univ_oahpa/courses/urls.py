@@ -14,16 +14,16 @@ from courses.views import cookie_login, cookie_logout
 # up being logged in.
 
 urlpatterns = patterns('django.contrib.auth.views',
-	(r'^standard_login/$', login, {'template_name': 'auth/login.html'}),
-	(r'^logout/$', logout, {'template_name': 'auth/logout.html'}, name="courses_logout"),
-	(r'^login/$', cookie_login, name="courses_login"),
-	(r'^cookie_logout/$', cookie_logout),
+	url(r'^standard_login/$', login, {'template_name': 'auth/login.html'}),
+	url(r'^logout/$', logout, {'template_name': 'auth/logout.html'}, name="courses_logout"),
+	url(r'^login/$', cookie_login, name="courses_login"),
+	url(r'^cookie_logout/$', cookie_logout),
 )
 
 from views import courses_main, instructor_student_detail
 
 urlpatterns += patterns('univ_oahpa.courses.views',
-	(r'^(?P<uid>\d+)/$', instructor_student_detail),
-	(r'^$', courses_main, name="courses_index"),
+	url(r'^(?P<uid>\d+)/$', instructor_student_detail),
+	url(r'^$', courses_main, name="courses_index"),
 )
 
