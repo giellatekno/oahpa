@@ -2399,6 +2399,9 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		### sent to CG together with the morph. analysed question and answer.
 		tasklemmas = ""
 		logtasklemmas = ""
+		malemma_without_hash = ""
+		taskpos = ""
+		morfanal = ""
 		for aword in awords:
 			print aword
 			#logfile.write(aword)
@@ -2439,13 +2442,13 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 						print malemma
 						print malemma_without_hash
 						tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
-			logtasklemmas = logtasklemmas + " " + malemma_without_hash + " " + taskpos
-			morfanal = morfanal + ans_cohort  # END
+				logtasklemmas = logtasklemmas + " " + malemma_without_hash + " " + taskpos
+				morfanal = morfanal + ans_cohort  # END
 					
 		analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
 		#####
 		print analysis
-	   #logfile.write(analysis)
+	        #logfile.write(analysis)
 		data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
 		word = os.popen(data_lookup).readlines()
 		#print word
@@ -2536,9 +2539,9 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 			for row in morfanal:
 				ans_cohort = ans_cohort + row
 			analyzed = analyzed + ans_cohort
-	except Exception, e:
-		print Exception
-		print e
+	#except Exception, e:
+		#print Exception
+		#print e
 	#except socket.timeout:	
 		#raise Http404("Technical error, please try again later.")			
 
