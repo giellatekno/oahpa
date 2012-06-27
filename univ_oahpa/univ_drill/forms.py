@@ -1851,8 +1851,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
 	print lookup
 	#lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine
-	lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
-	#lookup2cg =" | /Users/mslm/main/gt/script/lookup2cg" # on Heli's machine
+	#lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
+	lookup2cg = " | " + settings.LOOKUP2CG
 	cg3 = settings.CG3
 	preprocess = " | " + settings.PREPROCESS
 	#preprocess = " | /Users/mslm/main/gt/script/preprocess "
@@ -2339,21 +2339,20 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		return None, None, None
 
 	noanalysis=False
-
-	fstdir = "/opt/smi/sme/bin" # on victorio
-	#fstdir = settings.FST_DIRECTORY
-	fst = fstdir + "/ped-sme.fst"
-	lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"# on victorio
-	#lo="/Users/mslm/bin/lookup" # on Heli's machine
-	lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
-	#lookup2cg = " | /Users/mslm/main/gt/script/lookup2cg" # on Heli's machine
-	lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
-	cg3 = "/usr/local/bin/vislcg3"
-	preprocess = " | /opt/sami/cg/bin/preprocess " # on victorio
-	#preprocess = " | /Users/mslm/main/gt/script/preprocess " # on Heli's machine
-	dis_bin = "/opt/smi/sme/bin/sme-ped.cg3" # on victorio
-	#dis_bin = "/Users/mslm/main/ped/sme/src/sme-ped.cg3" # on Heli's machine TODO: add to settings.py
 	
+	fstdir = settings.FST_DIRECTORY
+        fst = fstdir + "/ped-sme.fst"
+        print fst
+        lo = settings.LOOKUP_TOOL
+        lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
+        print lookup
+        #lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine                
+        #lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
+	lookup2cg = " | " + settings.LOOKUP2CG
+        cg3 = settings.CG3
+        preprocess = " | " + settings.PREPROCESS
+        dis_bin = settings.FST_DIRECTORY + "/sme-ped.cg3"
+
 	vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
 	
 	self.userans = self.cleaned_data['answer']
@@ -2479,7 +2478,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 			morfanal = os.popen(word_lookup).readlines()
 			for row in morfanal:
 				cohort = cohort + row
-		   #print cohort
+		        #print cohort
 			analysis = analysis + cohort
 		tasklemmas = ""
 		logtasklemmas = ""
