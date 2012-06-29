@@ -7,23 +7,6 @@
    
 {% block title %}{% endblock %}
 
-{% block extrajs %}
-<script type="text/javascript">
-function tillatpopup() {
-    //document.write(navigator.userAgent)
-    var browser=navigator.userAgent;
-    if (browser.search("Safari")>0 && browser.search("Version/5.1")>0) 
-    {
-        var mine=window.open('','','width=1, height=1, left=0, top=0, scrollbars=no, titlebar=no, toolbar=no,status=no,resizable=no');
-        if (!mine)
-            alert('Tillat popup-vinduer for å se grammatikkforklaringer.');
-        mine.close();    
-    }
-}
-</script>
-{% endblock %}
-
-	
 {% block bodyclass %} {% endblock %}
 {% block pageclass %}game{% endblock %}
 
@@ -95,7 +78,7 @@ function tillatpopup() {
 
 	<div id="navbar">
         {% if gametype != "sahka" or not forms %}
-		<img width="120" height="120" border="0" src="{{ MEDIA_URL }}/images/{% block imgprefix %}{% endblock %}_big.png" alt="Game logo" onload="tillatpopup();"/>
+		<img width="120" height="120" border="0" src="{{ MEDIA_URL }}/images/{% block imgprefix %}{% endblock %}_big.png" alt="Game logo" />
         {% endif %}
 		<div class="bigheader">{% block gametitlename %}{% endblock %}</div>
 		{% block navbar %}{% endblock %}

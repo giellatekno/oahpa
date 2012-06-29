@@ -2,9 +2,21 @@
 
 // TODO: tooltip links does not show link cursor if you hover.
 
+function tillatpopup() {
+    //document.write(navigator.userAgent)
+    var browser=navigator.userAgent;
+    if (browser.search("Safari")>0 && browser.search("Version/5.1")>0) 
+    {
+        var mine=window.open('','','width=1, height=1, left=0, top=0, scrollbars=no, titlebar=no, toolbar=no,status=no,resizable=no');
+        if (!mine)
+            alert('Tillat popup-vinduer for å se grammatikkforklaringer.');
+        mine.close();    
+    }
+}
 
 // Set up event handlers
 $(document).ready(function(){
+	tillatpopup()
 	$('.feedback').hide();
 	set_tooltip_hrefs();
 
@@ -81,7 +93,13 @@ function reveal_tooltip (event) {
 }
 
 function reveal_feedback (event) {
-	reveal_id = event.target.id.match(/(feedback-\d)/)[0];
+	/* Somehow JS seems to be thinking the <t /> node is the event target
+	   so, now we need to get the parent of the event that is a.feedback_link.
+	*/
+	feedback_link = $(event.target).parents('a.feedback_link')[0];
+	reveal_id = feedback_link.id.match(/(feedback-\d)/);
+
+	$('div.language_help').hide()
 	$('.tooltip').hide();
 	$('#' + reveal_id).show();
 	return false; 
