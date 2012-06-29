@@ -1,0 +1,131 @@
+
+!!! Møte 29.06.12
+
+Til stades: Lene, Trond, Ryan, Berit-Ánne, Bjørn, Heli
+
+
+
+Saksliste:
+
+* Innlogging
+* Kursa: wp-løsning
+* Flyttinga til nye servere - status quo
+* Bugger
+* Eurocall
+* Planer for sommeren
+
+!!Kursa: wp-løsning
+
+Vi såg på buddy og courseware. Vi testa. Dei er ulike wordpress, og dei inneber mykje klikking. Det å skrive inn nye tekstar var ikkje så bra som vi håpa. Det blir å koste meir enn det smakar, ser det ut til, så vi prøver andre alternativ i staden:
+
+* utvide funksjonaliteten til kursa (Role scoper)
+** opprette mange grupper:
+*** No: ei finsk gruppe til dei som redigerer dei finske dokumenta
+*** Etterkvart: studentgrupper for kvart kurs med rettigheter til å opprette dokumenter og å skrive i dokumentene til hverandre 
+* kombinert med andre kanalar
+* for kommunikasjon oppfordrar vi studentgruppene til å bruke ulike Google-kanalar
+
+!!Innlogging
+
+* “Social connect” plugins
+** http://wordpress.org/extend/plugins/rpx/
+**  http://wordpress.org/extend/plugins/social-connect/ google, og mange andre
+**  http://wordpress.org/extend/plugins/wp-google-plus-connect/ berre google
+
+Add Google+ Direct Connect Badge & allow your WordPress/BuddyPress users to register or login via their Google+ account & import their stream
+
+Brukergrupper:
+* studenter som er registrert på kurs - de legges inn manuelt og får gruppetilhørighet, vil være mulig å knytte denne til google-konto etter at den er oppretta
+* brukere som ikke er registrert på kurs, ikke skriverettigheter, men som ønsker å bruke materialene - bør fylle ut spørreskjema når de registrerer seg om morsmål, om de følger undervisning, om de kan noe samisk fra før
+
+Ryan implementerer og tester (med hensyn til spørreskjemamoglegheit) - i morgen
+
+
+!!Flyttinga til nye servere - status quo
+oahpa.no/davvi - ok 
+testing.oahpa.no/davvi - ok (igår: testing.oahpa.no/davvi/vastas - nginx error)
+oahpa.no - forrest fungerer fremdeles ikke på gtoahpa (oahpanprográmmat => oahppanprográmmat) - send epost til Børre
+
+!!! flytting todo
+* Sett opp melding til brukarar om flytting flere steder:
+** site.uit.no/oahpa, oahpa.uit.no, oahpa.uit.no/univ_oahpa, oahpa.uit.no/aarjel (Lene)
+** Generell informasjon til alle med konto på victorio om dei nye servarane
+* dumpe databasen på victorio, og kopier den til gtoahpa og gtlab
+* skriv ut alle noverande brukarkontoar, innfør (automatisk eller manuelt) til WP 
+* skriv epost til brukarar om flytting, og at dei må logge inn i WP til staden, men elles er alle kontoinformasjon framleis i systemet - dette har Biret Ánne gjort?
+* oahpa-innloggere må nå logge inn ved kursa.oahpa.no - brukerkontoer må importeres til kursa.oahpa.no
+
+!!Eurocall
+
+NB! Skriv separat svn up inni main/art (dvs. $GTHOME/art)
+
+* poster om samarbeidet med språksentre og læringsstiene, art/2012/eurocall/poster_eurocall2012.graffle og art/2012/eurocall/poster_eurocall2012.pdf  - Lene 
+* artikkel om fleirspråkleg oahpa (“Oahpa for nye språk”) - prøver å få den inn i ICALL strand
+** art/2012/eurocall/multilingual_pres.tex 
+** 2012/eurocall/Amultilingual_abstract.txt (html-fil)
+*** Mål: Morfologirike språk kan vi plugge inn her
+*** (sjd, smn, fin, est, rus)
+*** 1: Numra, Leksa, (sjd, utan vidare) 2: Morfa (sma, treng basis-fst), 3: Vasta, Sahka (sme, treng god fst + cg)
+* demo / courseware om interaktiv Oahpa - prøver å få talk i ICALL strand
+** lage ein Oahpa-plakat på engelsk for eit generelt publikum
+** henge opp den andre posteren også, viss det er plass
+** ta med datamaskiner (og prosjektør??) og vise (også på ein vegg?)
+
+__Tiltak__
+* Skriv tidsplan for Eurocall-artiklane på univ_oahpa-dokumentasjonssida
+
+
+!!Bugger
+
+problemer i utvikling (som ikkje er bugger i bugzilla)
+* sending av epost frå gtlab
+* forrest 
+
+
+
+!1374	blo	sme-oahp	Framsidor til oahpa.no og testing.oahpa.no
+Det er problem med å installere forrest på gtoahpa. Ryan har sendt brev til Sjur og Børre
+Denne har høgaste prioritet.
+
+!1365	maj	sme-oahp	Tooltips-forklaring
+ - fixat
+
+!1354	nor	sme-oahp	Dialektvalg i leksikonet fungerer ikke
+ - Heli arbeider med 
+
+!1372	maj	sme-oahp	Problemer med navigering i Sahka
+ - Heli
+
+!1314	nor	sme-oahp	Error log etter generering
+ - Ryan genererer og sender til Lene
+
+!1379	enh	sme-oahp	Grammatisk feedback kjem ikkje opp
+Det gjeld morfologisk feedback i morfaC og morfaS.
+Prioritert opp til normal.
+
+Ryan og Heli ser på den.
+
+
+
+
+!!Program til og med august
+
+Ferie: 
+* Lene:  7.7 - 12.8
+* Berit Ánne:  7.7 - 6.8
+* Trond 30.6. - 31.7.
+* Ryan tar ikkje ferie, men er tilgjengeleg
+* Heli är tillgänglig för det mesta
+* Bjørn 6.7 - 30.7
+
+August:
+* Euralex 7-11.8 (Trond)
+* Kurs med lærarar 16-17.8
+* Eurocall 22-25.8 (BÁ, Heli, Lene, Trond)
+
+!!Neste møte
+14.8. kl 8.00 - med alle
+
+
+
+
