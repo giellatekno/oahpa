@@ -334,10 +334,11 @@ class Questions:
 			print "\tno inflection for", el_id
 			if len(grammars) > 0:
 				additional_messages = {
-					'Grammar tags available for word id': 
+					'Grammar tags available for word id':
 						sum([a[0] for a in not_found], []),
-					'<grammar /> specified': 
+					'<grammar /> specified':
 						[a[1] for a in not_found],
+					'question id': [qaelement.qid],
 				}
 				raise TagError(additional_messages)
 			return
