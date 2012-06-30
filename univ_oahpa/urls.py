@@ -1,14 +1,15 @@
+import os, sys
+
 from django.conf.urls.defaults import patterns, url, include, handler404, handler500
+from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 
-import os, sys
 here = lambda x: os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), x)
 here_cross = lambda x: os.path.join(os.path.abspath(os.path.dirname(sys.argv[0])), *x)
 
-
-# Uncomment the next two lines to enable the admin:
-from django.contrib import admin
 admin.autodiscover()
+admin.site.login = login_required(admin.site.login)
 
 from settings import URL_PREFIX as prefix
 
@@ -25,6 +26,7 @@ urlpatterns = patterns('',
 	url(r'^%s/' % prefix, include('univ_oahpa.univ_drill.urls')),
 	url(r'^%s/dialect/$' % prefix, 'univ_oahpa.conf.views.dialect'),
 	url(admin_url, include(admin.site.urls)),
+	url(r'^accounts/login/$', 'courses.views.cookie_login'),
 	# (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 	# url(r'^%s/openid/' % prefix, include('openid_provider.urls')),
 )
