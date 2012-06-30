@@ -14,6 +14,25 @@ function tillatpopup() {
     }
 }
 
+function prependTest () {
+  var test_banner;
+  test_banner = $('<div id="test_banner" />');
+  test_banner.css({
+    "position": "absolute",
+    "top": "-2em",
+    "left": "-5em",
+    "z-index": "-1",
+    "background-color": "blue",
+    "color": "white",
+    "letter-spacing": "1px",
+    "padding": "5em 4em 1em 5em",
+    "-webkit-transform": "rotate(-45deg)",
+    "border-bottom": "5px solid #4A4"
+  }).text("Testing!");
+  return $("body").prepend(test_banner);
+};
+
+
 // Set up event handlers
 $(document).ready(function(){
 	tillatpopup()
@@ -43,7 +62,11 @@ $(document).ready(function(){
     
     $('.interface').mouseenter(translate);
     $('.interface').mouseleave(restore_attr);
-	
+
+	if (window.location.host == "testing.oahpa.no") {
+    	prependTest() ;
+    }
+
 	disable_autocomplete();
 });
 
