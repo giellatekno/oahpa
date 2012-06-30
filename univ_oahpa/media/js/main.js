@@ -4,14 +4,19 @@
 
 function tillatpopup() {
     //document.write(navigator.userAgent)
-    var browser=navigator.userAgent;
+    var browser ;
+    browser = navigator.userAgent;
     if (browser.search("Safari")>0 && browser.search("Version/5.1")>0) 
     {
-        var mine=window.open('','','width=1, height=1, left=0, top=0, scrollbars=no, titlebar=no, toolbar=no,status=no,resizable=no');
-        if (!mine)
+        var mine; 
+        mine = window.open('','','width=1, height=1, left=0, top=0, scrollbars=no, titlebar=no, toolbar=no,status=no,resizable=no');
+        if (!mine) {
             alert('Tillat popup-vinduer for å se grammatikkforklaringer.');
-        mine.close();    
+        } else {
+        	mine.close();    
+        }
     }
+    return true ;
 }
 
 function prependTest () {
@@ -35,7 +40,7 @@ function prependTest () {
 
 // Set up event handlers
 $(document).ready(function(){
-	tillatpopup()
+	tillatpopup() ;
 	$('.feedback').hide();
 	set_tooltip_hrefs();
 
