@@ -903,7 +903,7 @@ class Feedbacktext(models.Model):
 	"""
 		Message text in messages.xml
 	"""
-	message = models.CharField(max_length=400)
+	message = models.TextField()
 	language = models.CharField(max_length=6)
 	feedbackmsg = models.ForeignKey(Feedbackmsg)
 	order = models.CharField(max_length=3, blank=True)
