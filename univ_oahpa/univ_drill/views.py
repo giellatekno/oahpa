@@ -397,7 +397,7 @@ def leksa_game(request, place=False):
 		leksagame = Leksaview(LeksaSettings, QuizzGame)
 		template = 'leksa.html'
 
-	sess_lang = request.session.get('django_language', 'nob')
+	sess_lang = request.session.get('django_language')
 
 	if sess_lang:
 		sess_lang = switch_language_code(sess_lang)
