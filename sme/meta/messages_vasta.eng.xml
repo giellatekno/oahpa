@@ -4,12 +4,15 @@
   <messages xml:lang="eng"> 
     <message id="err-no_fst">We are sorry to tell that the system is out of order for the moment.</message>
     <message id="err-nonword">WORDFORM is not found in our lexicon. Could it be a typo?</message>
-    <message id="err-capProp">Rembember that placenames are written with capital letter.</message>
+    <message id="err-capProp">WORDFORM should have initial capital letter?</message>
+	<message id="err-Err">WORDFORM has a typo?</message>
+	<message id="err-IllErr">WORDFORM is a misspelled illative?</message>
     <message id="err-longA">You might have forgotten to write á in WORDFORM</message>
     <message id="sem-dont-know">Answering I-don't-know is too simple. Try again.</message>
-    <message id="grm-should-be-Vfin">Your answer must always contain a finite verb. Could there be a typo in the verbform?</message>
+	<message id="err-1pers-prfprc">Do you mean 1. person singular? WORDFORM should have consonant gradation.</message>
+    <message id="grm-should-be-Vfin"><![CDATA[Your answer must always contain a <a class="helptext" href="#">finite verb<span class="shortinfo">Et finitt verb er bøyd i person og tid f.eks.: boran, lohká</span></a>. Could there be a typo in your verbform?]]></message>
     <message id="grm-soaitit">"soaitit" should be used like other auxilary verbs, e.g. Mun soaittán boahtit.</message>
-    <message id="grm-should-not-Vfin">The verb shall not be finite - perhaps infinitive is appropriate?</message>
+    <message id="grm-should-not-Vfin">WORDFORM shall not be a finite verb - perhaps infinitive is appropriate?</message>
     <message id="grm-not-verb-after-workverb">After "bargat" and "dahkat" another verb is not appropriate.</message>
     <message id="sem-answer-with-same-verb">You should answer with the same verb as was contained in the question.</message>
     <message id="sem-neg-verb">You must use negation verb.</message>
@@ -19,7 +22,7 @@
     <message id="sem-same-pron">You must use the given pronoun.</message>
 	<message id="sem-same-num">You must use the given numeral.</message>
     <message id="sem-same-po">You must use the given postposition.</message>
-    <message id="grm-habitive">Remember to use locative.</message>
+    <message id="grm-Hab"><![CDATA[Remember to use <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.nno.html#Lokativ">locative<span class="shortinfo">The owner is in locative, and what one have, is in nominative: Mánás lea spábba. Click to read more about locative.</span></a>.]]></message>
     <message id="grm-should-Com">You should have comitative after the verb.</message>
     <message id="grm-should-Loc">You should have locative after the verb.</message>
     <message id="err-VowIll">In illative the vowel should change.</message>
