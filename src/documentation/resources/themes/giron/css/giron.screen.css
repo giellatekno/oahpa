@@ -26,6 +26,14 @@ body {
 	
 }
 
+.focus {  
+  color: red; 
+  }
+  
+.formative {  
+  color: green; 
+  }
+  
 p {
   line-height: 160%;
   text-align: left;
@@ -62,7 +70,7 @@ to view the changes, refresh the view of the file in ones web browser.*/
 h1, h2, h3, h4, h5, h6 { font-family: Georgia, Arial, Helvetica, sans-serif; }
 
 h1     { font-size : 2.08em; margin: 25px 0px 0px 0px;  padding: 0px; font-weight: normal; }
-h2     { font-size : 1.29em; margin: 0.9em 0px 0px 0px; padding: 0px; font-weight : normal;}
+h2     { font-size : 1.4em; margin: 0.9em 0px 0px 0px; padding: 0px; font-weight : normal;}
 h3     { font-size : 1.3em; margin: 0.8em 0px 0px 0px; padding: 0px; font-weight : normal; }
 .h3 { margin: 22px 0px 3px 0px; }
 h4     { font-size : 1.1em; margin: 0.7em 0px 0px 0px; padding: 0px; font-weight : normal; text-align: left; }
@@ -84,18 +92,14 @@ padding: 0.5em 0 1em 1em;
   color: white;
 }
 strong {
-font-weight: normal;
-font-variant: normal;
-font-family: "Georgia";
-font-size: 110%;
-font-style: normal;
-font-weight: 100;
+font-weight: bold;
+
 
 }
 
 #content {
 	background: none repeat scroll 0 0 white;
-    padding: 20px 20px 20px 20px;
+    padding: 20px 20px 50px 20px;
     margin-left: 30px;
     font-family : Verdana, Helvetica, sans-serif;
     font-size: 0.90em;
@@ -175,9 +179,9 @@ font-weight: 100;
 table .title { background-color: #000000; }
 .ForrestTable {
     color: #ffffff;
-    background-color: black;
+    background-color: #80A1B6;
     width: 50%;
-    font-size : 100%;
+    font-size : 90%;
     empty-cells: show;
 }
 table caption {
@@ -188,7 +192,7 @@ table caption {
     background-color: #4A6D8C;
 }
 .ForrestTable td {
-    color: black;
+    color: #000;
     background-color: #FFFFFF;
 	
 }
@@ -473,6 +477,7 @@ float: left;
 		font-size: 0.85em;
 		line-height: 160%;
 		font-family: "Verdana";
+	/*	border-bottom: 1px dotted #CCCCCC; */
 }
 
 #nav-section .menupage {
