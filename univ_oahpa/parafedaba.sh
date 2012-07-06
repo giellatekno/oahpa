@@ -1,8 +1,8 @@
 #!/bin/sh
 
 P="python2.7"
-GTHOME="/home/ryan/gtsvn"
-LANGDIR="ped/sme"
+GTHOME="/home/univ_oahpa/"
+LANGDIR="sme/"
 DATA=$GTHOME/$LANGDIR
 DPS="$DATA/src"
 META="$DATA/meta"
@@ -14,6 +14,13 @@ DPF="$DATA/finsme"
 echo "==================================================="
 echo "installing tags and paradigms for Morfa-C"
 $P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "installing grammar links for norwegian"
+$P install.py -i $META/grammatikklinker.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -358,13 +365,6 @@ echo "==================================================="
 echo "==================================================="
 echo "installing Morfa-C questions for derivation"
 $P install.py -g $META/grammar_defaults.xml -q $META/derivation_questions.xml 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
-echo "==================================================="
-echo "installing grammar links for norwegian"
-$P install.py -i $META/grammatikklinker.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
