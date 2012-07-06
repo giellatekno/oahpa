@@ -19,11 +19,19 @@ echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "installing grammar links for norwegian"
+echo "installing grammar links"
 $P install.py -i $META/grammatikklinker.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
+
+echo "==================================================="
+echo "updating translation strings"
+$P manage.py compilemessages 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
 
 ##
 ##  sme->X
