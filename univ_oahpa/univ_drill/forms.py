@@ -2415,17 +2415,19 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 				tasktagstring = tasktag[0].string
 				taskpos = tasktag[0].pos
 				ttag = tasktagstring.replace("+"," ")
+				ttag = force_unicode(ttag).encode('utf-8')
 				print ttag
 				#logfile.write(ttag+"\n")
 				s.send(tlemma)  # on vic
 				word_lookup = s.recv(size)  # on vic
+				word_lookup = force_unicode(word_lookup).encode('utf-8') # added by Heli
 				#logfile.write(word_lookup)
 				ans_cohort=""
 				#print rows
 				rows = word_lookup.split("\n")  # on vic
 				morfanal = ""
 				for row in rows:
-					ans_cohort = ans_cohort + row
+					ans_cohort = ans_cohort + force_unicode(row).encode('utf-8')
 					  #logfile.write(row + "\n")
 					malemmas = row.split("\"")
 					if row:
@@ -2441,11 +2443,11 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 						 #logfile.write(malemma+"\n")
 						print malemma
 						print malemma_without_hash
-						tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
-				logtasklemmas = logtasklemmas + " " + malemma_without_hash + " " + taskpos
+						tasklemmas = tasklemmas + "\n\t\"" + force_unicode(malemma).encode('utf-8') + "\" "+force_unicode(taskpos).encode('utf-8')
+				logtasklemmas = logtasklemmas + " " + force_unicode(malemma_without_hash).encode('utf-8') + " " + force_unicode(taskpos).encode('utf-8')
 				morfanal = morfanal + ans_cohort  # END
 					
-		analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
+		analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + force_unicode(question_id).encode('utf-8') + " " + force_unicode(tasklemmas).encode('utf-8') + "\n"
 		#####
 		print analysis
 	        #logfile.write(analysis)
@@ -2462,7 +2464,9 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		s.send("q")  # on vic
 		s.close()  # on vic
 
-
+	except socket.timeout:
+		raise Http404("Technical error, please try again later.")
+	"""
 	except socket.error:
 		analysis = ""
 		data_lookup = "echo \"" + qtext + "\"" + preprocess
@@ -2542,8 +2546,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	#except Exception, e:
 		#print Exception
 		#print e
-	#except socket.timeout:	
-		#raise Http404("Technical error, please try again later.")			
+	"""
+	
 
 	
 	analysis = analysis + analyzed
@@ -2630,7 +2634,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 				msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
 				print msg_el
 				message = Feedbacktext.objects.filter(feedbackmsg=msg_el, language=language)[0].message
-				print message
+				#print message
 				msg_id = msg_el.msgid  # added
 				print msg_id
 				message = message.replace("WORDFORM","\"" + w + "\"") 
@@ -2663,7 +2667,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	feedbackmsg=' '.join(msg)
 	p = re.compile(r'<.*?>')
 	feedbackmsg = p.sub('', feedbackmsg)
-	print feedbackmsg
+	#print feedbackmsg
 	if message_ids:
 		feedbackmsg_id = message_ids[0] # added
 	else:
