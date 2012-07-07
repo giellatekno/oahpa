@@ -71,8 +71,8 @@ class Questions:
 		
 		semclass = False
 		
-		print
-		print "\tCreating element %s (%s)" % (el_id, qaelement.qatype)
+		elemt_id_msg = "\tCreating element %s (%s)" % (el_id, qaelement.qatype)
+		print >> sys.stdout, elemt_id_msg.encode('utf-8')
 
 		# Syntactic function of the element
 		if self.grammar_defaults.has_key(el_id) and self.grammar_defaults[el_id].syntax:
