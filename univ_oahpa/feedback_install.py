@@ -314,7 +314,7 @@ class Feedback_install(object):
 				# else:
 					# link = node.toxml(encoding="utf-8") # in case the feedback contains a link
 					# message = message + link  
-			print >> sys.stdout, message
+			print >> sys.stdout, message.encode('utf-8')
 			fm, created = Feedbackmsg.objects.get_or_create(msgid=mid)
 			fm.save()
 
