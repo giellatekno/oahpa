@@ -80,8 +80,9 @@ class Questions:
 		else:
 			syntax = el_id
 		
-		if not el: 
-			print '\t', syntax, "No element given."
+		if not el:
+			_msg = syntax, "No element given."
+			print '\t', _msg.encode('utf-8')
 
 		# Some of the answer elements share content of question elements.
 		content_id = ""
