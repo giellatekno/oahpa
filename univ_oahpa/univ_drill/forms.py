@@ -2624,7 +2624,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	#if language == "en" : language = "eng"
 	if not language in ["nob","sme","fin","eng","swe"]: language="nob"
 
-	print msgstrings
+	#print msgstrings
 	for w in msgstrings.keys():
 		if found: break
 		for m in msgstrings[w].keys():
@@ -2632,12 +2632,12 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 			m = m.replace("&","") 
 			if Feedbackmsg.objects.filter(msgid=m).count() > 0:
 				msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
-				print msg_el
+				#print msg_el
 				message = Feedbacktext.objects.filter(feedbackmsg=msg_el, language=language)[0].message
 				#print message
 				msg_id = msg_el.msgid  # added
-				print msg_id
-				message = message.replace("WORDFORM","\"" + w + "\"") 
+				#print msg_id
+				message = message.replace("WORDFORM","\"" + force_unicode(w) + "\"") 
 				msg.append(message)
 				message_ids.append(msg_id)  # added
 				if not spelling:
