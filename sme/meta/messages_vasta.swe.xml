@@ -4,9 +4,12 @@
   <messages xml:lang="swe"> 
     <message id="err-no_fst">Beklager – systemet fungerar inte just nu.</message>
     <message id="err-nonword">WORDFORM finns inte i vårt lexikon. Kan det vara ett skrivfel?</message>
-    <message id="err-capProp">Ortnamn skall skrivas med stor bokstav.</message>
+    <message id="err-capProp">WORDFORM skall skrivas med stor bokstav.</message>
+	<message id="err-Err">WORDFORM inneholder en skrivefeil?</message>
+	<message id="err-IllErr">WORDFORM er en feilstavet illativ?</message>
     <message id="err-longA">Du har kanske glömt att skriva á i WORDFORM</message>
     <message id="sem-dont-know">Det är för enkelt att svara "vet inte". Prova igen.</message>
+	<message id="err-1pers-prfprc">Mener du 1. person entall? WORDFORM mangler stadieveksling.</message>
     <message id="grm-should-be-Vfin"><![CDATA[Ditt svar måste alltid innehålla ett <a class="helptext" href="#">finit verbspan class="shortinfo">Etr finit verb är böjd i person och tid, tex: boran, lohká</span></a>. Kan det vara ett skrivfel i ditt verb?]]></message>
     <message id="grm-soaitit">"soaitit" skall användas som andra hjälpverb, tex.. Mun soaittán boahtit.</message>
     <message id="grm-should-not-Vfin">Verbet skall inte vara finit - kanske infinitiv passar?</message>
@@ -23,19 +26,23 @@
     <message id="grm-should-Com"><![CDATA[Det bör vara  <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.nno.html#Komitativ">komitativ<span class="shortinfo">Kasus för "med": niibbiin, niibbiiguin. Frågeord är: mainna, maiguin, geainna, geaiguin. Klick för att läsa mer om komitativ.</span></a>  efter verbet.]]></message>
     <message id="grm-should-Loc"><![CDATA[Det bör vara  <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.nno.html#Lokativ">lokativ<span class="shortinfo">Kasus för på/i eller från: skuvllas, skuvllain. Frågeord är: mas, main, gos. Klick för att läsa mer om lokativ.</span></a> efter verbet.]]></message>
     <message id="err-VowIll">Illativen har inte vokalväxling.</message>
+	<message id="err-VowIllN">WORDFORM er illativ, men mangler vokalveksling.</message>
     <message id="err-VowCom">Komitativen har inte vokalväxling.</message>
+	<message id="err-VowComN">WORDFORM er komitativ, men mangler vokalveksling.</message>
     <message id="err-Diphsim"><![CDATA[Kom i håg <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.nno.html#Diftongforenkling">diftongförenkling<span class="shortinfo">Diftongen mister den andre vokalen: ea - e, ie - i, uo - u, oa - o. Klick för att läsa mer om diftongforenkling.</span></a>.]]></message>
     <message id="err-Illsuf">Skrivfel, kanske en felstavad illativ?</message>
+	<message id="err-IllsufN">WORDFORM er kanskje en feilstavet illativ?</message>
     <message id="grm-should-Ill"><![CDATA[Det bör vara <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.nno.html#Illativ">illativ<span class="shortinfo">Några verb, tex liikot, kräver illativ: guollái, guliide. Klick för att läsa mer om illativ.</span></a> efter dette verbet.]]></message>
     <message id="grm-should-not-Ess"><![CDATA[Det passar inte med  <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.nno.html#Essiv">essiv<span class="shortinfo">Kasus för "som": skuvlan, och för hvilke naturforhold noe hender, eller om hva noe kalles for. Frågeord är: manin, geanin. Klick för att läsa mer om essiv.</span></a>.]]></message>
     <message id="grm-should-not-PP">Det passar inte med postposition.</message>
 	<message id="grm-incorr-nr">Pass på entall/flertall stemmer overens.</message>
-	<message id="grm-incorr-nr-hab">Verbet skal være i tredjeperson entall eller flertall.</message>
+	<message id="grm-incorr-nr-Hab">Verbet skal være i tredjeperson entall eller flertall.</message>
     <message id="grm-incorr-pers-nr">Är du säker på att du svarar i rätt person?</message>
     <message id="grm-non-agr-subj-v">Kom ihåg kongruens mellan subjekt och verbal.</message>
     <message id="grm-incorr-tense">Är du säker på att du svarar i rätt tidsform?</message>
     <message id="grm-missing-ActEss">Här passar det med aktio essiv.</message>
     <message id="grm-should-negV">Fel form på verbet efter negationsverbet.</message>
+	<message id="grm-missing-Inf">WORDFORM burde være infinitiv.</message>
     <message id="grm-should-not-ConNeg">Det passar inte med två negationsformer.</message>
     <message id="err-grm-Px-Loc"><![CDATA[Menar du lokativ? Kom ihåg  <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/stadieväxling.nno.html">stadieväxling<span class="shortinfo"> Växling i konsonantgruppen mellan 1. och 2. stavelsen i sista takten, tex giella - giela. Klick för att läsa mer om stadieväxling.</span></a>.]]></message>
     <message id="err-CG"><![CDATA[Kom ihåg <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/stadieväxling.nno.html">stadieväxling<span class="shortinfo"> Växling i konsonantgruppen mellan 1. och 2. stavelsen i sista takten, tex giella - giela. Klick för att läsa mer om stadieväxling.</span></a>.]]></message>
@@ -59,11 +66,14 @@
     <message id="grm-missing-Loc-PP"><![CDATA[Svaret borde innehålla en <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.nno.html#Lokativ">lokativ<span class="shortinfo">Kasus för på/i eller från: skuvllas, skuvllain. Frågeord är: mas, main, gos. Klick för att läsa mer om lokativ.</span></a>.]]></message>
     <message id="grm-missing-Ill-PP"><![CDATA[Svaret borde innehålla en <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.nno.html#Illativ">illativ<span class="shortinfo">Kasus för rörelse till något: skuvlii, skuvllaide, eller för mottakare: áhkkui. Frågeord är: gosa, masa, maidda, geasa, geaidda. Klick för att läsa mer om illativ.</span></a>.]]></message>
     <message id="grm-missing-Gen-PP"><![CDATA[Nomenet före postpositionen skall vara i <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.nno.html#Genitiv">genitiv<span class="shortinfo">Kasus för ägoform: nissona, nissoniid. Används också i post- och prepositionsuttryck: nissona luhtte, och efter räkneord større än 1: golbma 'bártni'. Klick för att läsa mer om genitiv.</span></a>.]]></message>
+	<message id="grm-should-Ess">WORDFORM skal være i essiv?</message>
+	<message id="grm-should-Gen">WORDFORM skal være i genitiv?</message>
+	<message id="grm-should-Nom">WORDFORM skal være i nominativ?</message>
 	<message id="grm-should-Plur">Det passar betre med objekt i flertal.</message>
     <message id="grm-should-LocPP">Är du säker på att denna postposition passar in här med tanke på spörsmålet?</message>
     <message id="grm-should-IllPP">Är du säker på att denna postposition passar in här med tanke på spörsmålet?</message>
     <message id="grm-should-not-Nom">Det passar kanske inte med nominativ efter ett transitivt verb?</message> 
-    <message id="grm-should-pers">Här passar det med ett pronomen före verbet.</message> 
+    <message id="grm-should-pron">Här passar det med ett pronomen före verbet.</message> 
     <message id="grm-NoEret">Kom ihåg "eret" efter ortsnamnet.</message>
     <message id="grm-non-agreement-Dem">Här skulle det varit kongruens mellan påpekande pronomen och substantiv.</message>
     <message id="grm-non-agreement-Adj">Här skulle det varit kongruens mellan subjekt och adjektiv.</message>
