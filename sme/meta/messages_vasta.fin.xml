@@ -4,9 +4,12 @@
   <messages xml:lang="fin"> 
     <message id="err-no_fst">Valitettavasti ohjelma ei toimi juuri nyt.</message>
     <message id="err-nonword">WORDFORM ei löydy leksikostamme. Onkohan sanassa kirjoitusvirhe?</message>
-    <message id="err-capProp">Muista, että paikannimillä pitää olla suuri alkukirjain.</message>
-    <message id="err-longA">Don dáiddát vajálduhttán čállit á dán sanis: WORDFORM</message>
+    <message id="err-capProp">Sanassa WORDFORM pitää ehkä olla suuri alkukirjain?</message>
+	<message id="err-Err">Sanassa WORDFORM on ehkä kirjoitusvirhe?</message>
+	<message id="err-IllErr">Voiko WORDFORM ehkä olla väärin kirjoitettu illatiivi?</message>
+    <message id="err-longA">Sinä olet ehkä unohtanut kirjoittaa á sanassa WORDFORM</message>
     <message id="sem-dont-know">On liian yksinkertaista vastata en-tiedä. Yritä uudestaan.</message>
+	<message id="err-1pers-prfprc">Tarkoitatko yksikön 1. persoona? WORDFORM-muodosta puuttuu astevaihtelu.</message>
     <message id="grm-should-be-Vfin"><![CDATA[Vastauksessasi pitäisi olla <a class="helptext" href="#">finiittinen verbi<span class="shortinfo">Finiittiverbi on taivutettu persoonassa ja ajassa, esim.: boran, lohká</span></a>. Olisiko kyseessä kirjoitusvirhe?]]></message>
     <message id="grm-soaitit">"soaitit"-verbiä pitää käyttää samalla tavalla kuin muut apuverbit, esim. Mun soaittán boahtit.</message>
     <message id="grm-should-not-Vfin">Verbin ei pitäisi olla finiittinen - ehkä infinitiivi sopisi?</message>
@@ -19,23 +22,27 @@
     <message id="sem-same-pron">Sinun pitää käyttää annettua pronomenia.</message>
 	<message id="sem-same-num">Sinun pitää käyttää annettua lukusanaa.</message>
     <message id="sem-same-po">Sinun pitää käyttää annettua postpositiota.</message>
-    <message id="grm-habitive"><![CDATA[Muista käyttää <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Lokatiiva">lokatiivia<span class="shortinfo">Saamessa on sama omistusrakenne kuon suomessa, mutta omistaja on lokatiivissa. Omistettu on nominatiivissa: : Mánás lea spábba. Klikkaa lukeaksesi enemmän lokatiivista.</span></a>.]]>.</message>
-    <message id="grm-should-Com"><![CDATA[WORDFORM pitää olla <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Komitatiiva">komitatiivissa<span class="shortinfo">Suom komitatiivin lisäksi saamen komitatiivi vastaa myös suomen "lla": niibbiin, "veitsellä". Klikkaa lukealsesi enemmän komitatiivista.</span></a> verbin jälkeen.]]></message>
+    <message id="grm-Hab"><![CDATA[Muista käyttää <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Lokatiiva">lokatiivia<span class="shortinfo">Saamessa on sama omistusrakenne kuon suomessa, mutta omistaja on lokatiivissa. Omistettu on nominatiivissa: : Mánás lea spábba. Klikkaa lukeaksesi enemmän lokatiivista.</span></a>.]]>.</message>
+    <message id="grm-should-Com"><![CDATA[WORDFORM pitää olla <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Komitatiiva">komitatiivissa<span class="shortinfo">Suom komitatiivin lisäksi saamen komitatiivi vastaa myös suomen "lla": niibbiin, "veitsellä". Klikkaa lukeaksesi enemmän komitatiivista.</span></a> verbin jälkeen.]]></message>
     <message id="grm-should-Loc"><![CDATA[WORDFORM pitää olla <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Lokatiiva">lokatiivissa<span class="shortinfo">Lokatiivi vastaa suomen allatiiviin, inessiivin, allatiiviin ja ablatiivin. Muodot ovat skuvllas, skuvllain. Klikkaa lukeaksesi enemmän lokatiivista.</span></a> verbin jälkeen.]]>.</message>
     <message id="err-VowIll">Vokaalin pitää muuttua illatiivissa.</message>
-    <message id="err-VowCom">Vokaalin pitää muuttua komiatiivissa.</message>
+	<message id="err-VowIllN">WORDFORM on illatiivissa, mutta vokaalivaihtelu puuttuu.</message>
+    <message id="err-VowCom">Vokaalin pitää muuttua komitatiivissa.</message>
+	<message id="err-VowComN">WORDFORM on komitatiivissa, mutta vokaalivaihtelu puuttuu.</message>
     <message id="err-Diphsim"><![CDATA[WORDFORM-muodosta puuttuu <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Diftoŋganjuolgan">diftongin oikeneminen<span class="shortinfo">Diftongi menettää toisen vokalin: ea - e, ie - i, uo - u, oa - o. Klikkaa lukeaksesi enemmän diftongoikenemisesta.</span></a>.]]>.</message>
     <message id="err-Illsuf">Kirjoitusvirhe, ehkä väärin kirjoitettu illatiivi?</message>
+	<message id="err-IllsufN">WORDFORM lienee väärin kirjoitettu illatiivi?</message>
     <message id="grm-should-Ill"><![CDATA[WORDFORM pitää olla <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Illatiiva">illatiivissa<span class="shortinfo">Tietyt verbit, esim. liikot, vaativat illatiivia: guollái, guliide (ks. suomen pidän kalasta). Klikkaa lukeaksesi enemmän illatiivista.</span></a> tämän verbin jälkeen.]]>.</message>
     <message id="grm-should-not-Ess"><![CDATA[<a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Essiiva">Essiivi<span class="shortinfo">Saamen essiivi vastaa suomen essiiviä JA translatiivia. Kysymyssanat: manin, geanin. Klikkaa lukeaksesi enemmän essiivista.</span></a>.]]> ei sovi tähän.</message>
     <message id="grm-should-not-PP">Postpositio ei sovi tähän.</message>
 	<message id="grm-incorr-nr">Ovttaidlohku ja máŋggaidlohku galget heivet oktii.</message>
-	<message id="grm-incorr-nr-hab">Vearba galgá leat goalmmát persovnnas ovttaidlgus dahje máŋggaidlogus.</message>
-    <message id="grm-incorr-pers-nr">Oletko varma, että olet käyttänyt oikeaa persoonaa?</message>
+	<message id="grm-incorr-nr-Hab">WORDFORM pitää olla yksikön tai monikon kolmannessa persoonassa.</message>
+    <message id="grm-incorr-pers-nr">Oletko varma, että WORDFORM on oikeassa persoonaa?</message>
     <message id="grm-non-agr-subj-v">Muista kongruenssi subjektin ja verbin välillä.</message>
     <message id="grm-incorr-tense">Oletko varma, että käytät oikeaa aikamuotoa?</message>
     <message id="grm-missing-ActEss">Tähän sopii aktio essiivi.</message>
-    <message id="grm-should-negV">Kieltoverbin jälkeinen verbimuoto on virheellinen.</message>
+    <message id="grm-should-negV">WORDFORM on väärässä muodossa, muista, että se tässä tulee kieltoverbin jälkeen.</message>
+	<message id="grm-missing-Inf">WORDFORM pitää olla infinitiivimuodossa.</message>
     <message id="grm-should-not-ConNeg">Ei sovi kirjoittaa kaksi kieltomuotoa.</message>
     <message id="err-grm-Px-Loc"><![CDATA[Pitikö WORDFORM olla lokatiivissa? Muista <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/stadieveksling.html">astevaihtelu<span class="shortinfo"> Saamen astevaihtelu on laajempi kuin suomen, se koskee miltei kaikkia konsonanttia, esim. giella - giela. Klikkaa lukeaksesi enemmän astevaihtelusta.</span></a>.]]>.</message>
     <message id="err-CG"><![CDATA[Muista <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/stadieveksling.html">astevaihtelu<span class="shortinfo"> Saamen astevaihtelu on laajempi kuin suomen, se koskee miltei kaikkia konsonanttia, esim. giella - giela. Klikkaa lukeaksesi enemmän astevaihtelusta.</span></a>.]]></message>
@@ -44,21 +51,24 @@
     <message id="grm-missing-NumLoc">Vastauksen pitää sisältää lukusana lokatiivissa.</message>
     <message id="grm-missing-NNum">Vastauksen pitää sisältää kollektiiviluku tai lukusana lokatiivissa.</message>
     <message id="grm-missing-Ord">Vastauksesi pitää sisältää järjestysluku.</message>
-    <message id="grm-wrong-case">Oletko varma, että sinulla on oikea sija?</message>
+    <message id="grm-wrong-case">Oletko varma, että sanalla WORDFORM on oikea sijamuoto?</message>
     <message id="grm-missing-Acc"><![CDATA[Vastauksessa tulee käyttää <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Akkusatiiva"> akkusatiivia <span class="shortinfo"> Objektin sija, huom., että akkusatiivi on saamessa genetiivin kaltainen myös monikossa, ei vaan yksikössä, kuten suomessa, esim. girjji, girjjiid. Kysymyssanat: maid, man, gean, geaid. Klikkaa lukeaksesi enemmän akkusatiivista. </span></a>.]]></message>
     <message id="grm-all-Acc"><![CDATA[Muista <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Akkusatiiva"> akkusatiivia <span class="shortinfo"> Objektin sija, huom., että akkusatiivi on saamessa genetiivin kaltainen myös monikossa, ei vaan yksikössä, kuten suomessa, esim. girjji, girjjiid. Kysymyssanat: maid, man, gean, geaid. Klikkaa lukeaksesi enemmän akkusatiivista. </span></a>  joka sanassa, joka tarvitsee sitä.]]> </message>
     <message id="grm-missing-Gen"><![CDATA[Vastauksessa tulee käyttää <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Genitiiva">genetiiviä<span class="shortinfo">Genetiivi vastaa suomen genetiivia, mutta myös usein partitiivia: nissona, nissoniid. Sitä käytetään sekä post- ja prepositioilmauksissa: nissona luhtte, birra jandora, ja lukusanojen jälkeen: golbma 'bártni'. Klikkaa lukeaksesi enemmän genetiivistä.</span></a>.]]></message>
-    <message id="grm-missing-Com"><![CDATA[Vastauksessa tulee käyttää <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Komitatiiva">komitatiivia<span class="shortinfo">Suom komitatiivin lisäksi saamen komitatiivi vastaa myös suomen "lla": niibbiin, "veitsellä". Klikkaa lukealsesi enemmän komitatiivista.</span></a> verbin jälkeen.]]></message>
+    <message id="grm-missing-Com"><![CDATA[Vastauksessa tulee käyttää <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Komitatiiva">komitatiivia<span class="shortinfo">Suom komitatiivin lisäksi saamen komitatiivi vastaa myös suomen "lla": niibbiin, "veitsellä". Klikkaa lukeaksesi enemmän komitatiivista.</span></a> verbin jälkeen.]]></message>
     <message id="grm-missing-Ill"><![CDATA[Vastauksessa tulee käyttää <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Illatiiva">illatiivia<span class="shortinfo">Tietyt verbit, esim. liikot, vaativat illatiivia: guollái, guliide (ks. suomen pidän kalasta). Klikkaa lukeaksesi enemmän illatiivista.</span></a>.]]></message>
-    <message id="grm-missing-Loc">Vastauksessa tulee käyttää lokatiivia.</message>
-    <message id="grm-Hab-Nom">Se, mikä jollakulla on, pitää olla nominatiivissa.</message>
+    <message id="grm-missing-Loc"><![CDATA[Vastauksessa tulee käyttää <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Lokatiiva">lokatiivia<span class="shortinfo">Lokatiivi vastaa suomen inessiviä, allatiivia, elatiivia ja ablatiivia. Klikkaa lukeaksesi enemmän lokatiivista.</span></a>.]]></message>
+    <message id="grm-Hab-Nom"><![CDATA[Se, mikä jollakulla on, pitää olla  <a class="helptext" target="_blank" http://oahpa.no/sme/gramm/syntaks.html#%27mus-lea%27-cealkagat+ja+eksistensiála+cealkagat">nominatiivissa<span class="shortinfo">, myös kieltolauseessa. Esim.: Mánás lea / ii leat spábba. Klikkaa lukeaksesi enemmän tästä.</span></a>.]]>.</message>
     <message id="grm-missing-Nom"><![CDATA[Vastauksessa tulee käyttää <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Nominatiiva">nominatiivi<span class="shortinfo">Nominatiivi vastaa suomen nominatiivia, esim. gussa, gusat, mutta sitä ei käytetä monikko-objektin sijana. Kysymyssanat: mii, mat, gii, geat. Klikkaa lukeaksesi enemmän nominatiivista.</span></a>.]]></message>
-    <message id="grm-missing-Ess">Vastauksessa tulee käyttää essiiviä.</message>
-    <message id="grm-Vehicle-Com">Ajoneuvon pitää olla komitatiivissa.</message>
+    <message id="grm-missing-Ess"><![CDATA[Vastauksessa tulee käyttää <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Essiiva">essiiviä.<span class="shortinfo">Essiivi vastaa suomen esiiviä ja translatiivia. Kysymyssanat ovat: manin, geanin. Klikkaa lukeaksesi enemmän essiivistä.</span></a>.]]></message>
+    <message id="grm-Vehicle-Com"><![CDATA[Ajoneuvon pitää olla <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Komitatiiva">komitatiivissa<span class="shortinfo">Suom komitatiivin lisäksi saamen komitatiivi vastaa myös suomen "lla": niibbiin, "veitsellä". Klikkaa lukeaksesi enemmän komitatiivista.</span></a> verbin jälkeen.]]></message>
     <message id="grm-Loc-leaving">HUOM! lokatiivi kattaa sekä (suomen) illatiivin että elatiivin.</message>
-    <message id="grm-missing-Loc-PP">Vastauksessa tulee käyttää lokatiivia.</message>
-    <message id="grm-missing-Ill-PP">Vastauksessa tulee käyttää illatiivia.</message>
-    <message id="grm-missing-Gen-PP">Postposition edessä nomini on genetiivissä.</message>
+    <message id="grm-missing-Loc-PP"><![CDATA[Vastauksessa tulee käyttää <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Lokatiiva">lokatiivia<span class="shortinfo">Lokatiivi vastaa suomen inessiviä, allatiivia, elatiivia ja ablatiivia. Klikkaa lukeaksesi enemmän lokatiivista.</span></a>.]]></message>
+    <message id="grm-missing-Ill-PP"><![CDATA[Vastauksessa tulee käyttää <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Illatiiva">illatiivia<span class="shortinfo">Tietyt verbit, esim. liikot, vaativat illatiivia: guollái, guliide (ks. suomen pidän kalasta). Klikkaa lukeaksesi enemmän illatiivista.</span></a>.]]></message>
+    <message id="grm-missing-Gen-PP"><![CDATA[Postposition edessä nomini on <a class="helptext" target="_blank" href="http://oahpa.no/sme/gramm/substantiv.html#Genitiiva">genetiivissä<span class="shortinfo">Genetiivi vastaa suomen genetiivia, mutta myös usein partitiivia: nissona, nissoniid. Sitä käytetään sekä post- ja prepositioilmauksissa: nissona luhtte, birra jandora, ja lukusanojen jälkeen: golbma 'bártni'. Klikkaa lukeaksesi enemmän genetiivistä.</span></a>.]]></message>
+	<message id="grm-should-Ess">WORDFORM pitää mielummin olla essivissä?</message>
+	<message id="grm-should-Gen">WORDFORM pitää mielummin olla genetiivissä?</message>
+	<message id="grm-should-Nom">WORDFORM pitää mielummin olla nominatiivissä?</message>
 	<message id="grm-should-Plur">Objekti pitää olla monikossa.</message>
     <message id="grm-should-LocPP">Oletko varma, että postpositio sopii kysymykseen?</message>
     <message id="grm-should-IllPP">Oletko varma, että postpositio sopii kysymykseen?</message>
@@ -69,17 +79,17 @@
     <message id="grm-non-agreement-Adj">Muista kongruenssi subjektin ja adjektiivin välissä.</message>
     <message id="grm-non-agreement-Num">Muista kongruenssi lukusanan ja substantiivin välissä.</message>
     <message id="grm-non-agreement-buorre">Muista kongruenssi buorre-adjektiivin ja substantiivin välissä.</message>
-    <message id="grm-shouldAttr">Tarvitset tässä attribuuttimuotoa.</message>
-    <message id="grm-shouldNotAttr">Attributtimuoto ei sovi tähän.</message>
+    <message id="grm-shouldAttr">WORDFORM kaipaa attribuuttimuotoa.</message>
+    <message id="grm-shouldNotAttr">WORDFORM ei pidä olla attributtimuodossa tässä.</message>
     <message id="grm-incorr-time-expr">Ajan ilmaisu ei ehkä sovi tähän?</message>
     <message id="grm-incorr-tense-future">Ajan ilmaisu, joka viittaa ajassa eteenpäin ei ehkä sovi tähän?</message>
     <message id="grm-incorr-tense-past">Ajan ilmaisu, joka viittaa ajassa taaksepäin ei ehkä sovi tähän?</message>
     <message id="grm-falAdv">"fal" ei voi esiintyä lauseen alussa.</message>
     <message id="grm-naPcle">"na" ei voi esiintyä lauseen alussa.</message>
-    <message id="grm-notInterj">Interjektio esiintyy ainoastaan lauseen alussa tai lopussa.</message>
+    <message id="grm-notInterj">WORDFORM on interjektio ja esiintyy ainoastaan lauseen alussa tai lopussa.</message>
     <message id="sem-not_wordlist">Käytä tässä sanoja vasemman reunan sanalistasta.</message>
     <message id="sem-not_correct_adj">Et käyttänyt oikeaa adjektiivia. Yritä uudestaan.</message>
     <message id="sem-not_correct_infl">Et käyttänyt oikeaa adjektiivimuotoa. Yritä uudestaan.</message>
-    <message id="grm-numeral-wrong-case">Tarkista substantiivin taivutus lukusanan jälkeen.</message>
+    <message id="grm-numeral-wrong-case">Tarkista WORDFORM-sanan taivutus, se tulee lukusanan jälkeen.</message>
   </messages> 
 
