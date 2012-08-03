@@ -1,0 +1,49 @@
+
+# Infrastructure
+# Localisation
+# Lingustic analysers
+# Lexicon
+
+!!! Infrastructure
+
+The catalogues ped/rus_oahpa and ped/rus have been set up, and
+references are changed from sjd to rus (but not tested).
+
+Many linguistic settings are still made for Sami, and not changed.
+There is reference to stem type and not to gender, etc.
+
+__TODO__
+* Read documentation
+* Go through ped/rus_oahpa and ped/rus, correct and add files
+
+!!! Localisation
+
+__TODO__
+* Generate the django.po files, and translate.
+
+!!! Lingustic analysers
+
+__TODO__
+* Get fsts from Apertium, either sh-ru or udm-rus.
+* Get more lexemes from wiktionary
+* make an analyser and put it in main/gt/rus/src
+* Goal: Paradigm generation
+
+!!! Lexicon
+
+__TODO__
+
+* Write the words of the UiT textbook (appr 1000) on the form
+  ''lemma_POS_SEMCLASS_nobtrans_engtrans''
+* Store them in {{main/st/rus/oahpa/leksa.csv}}
+* Translate the result to xml files and store them in {{main/ped/rus/src}}, 
+  the structure should be the same as for the other languages.
+
+!!! Django setup on the server
+
+North and South Sami run on gtoahpa.uit.no, and Kildin and Inari Sami
+run on victorio.uit.no. The goal is to have all oahpa versions running on
+gtoahpa.uit.no. We need a catalogue for rusoahpa next to smaoahpa on gtoapha.
+
+
+
