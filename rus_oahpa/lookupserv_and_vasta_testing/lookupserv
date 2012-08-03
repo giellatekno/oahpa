@@ -1,0 +1,82 @@
+#! /bin/bash
+#
+# lookupserv
+# start and stop lookup server for oahpa
+#
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+server="/opt/smi/common/bin/lookupserv.py"
+[ -f "$server" ] || exit 0
+RETVAL=0
+
+function start()
+{
+    # don't start again if it's already started
+    #[ ! -f /var/lock/subsys/lookupserv ] || exit 0
+    echo -n $"Starting lookup server: "
+	daemon $server >/var/log/lserv.log 2>&1 &
+    RETVAL=$?
+	echo
+    #if [ $RETVAL -eq 0 ] ; then
+    #   touch /var/lock/subsys/lookupserv
+    #fi
+}
+
+function stop()
+{
+#    if [ -f /var/lock/subsys/lookupserv ] ; then
+       echo  -n $"Stopping lookup server: "
+	   LPID=$(ps ax | grep 'python.*/opt/smi/common/bin/lookupserv.py' | grep -v grep | cut -c 1-6)
+	   echo $LPID
+	   kill -1 $LPID
+       RETVAL=$?
+       if [ $RETVAL -ne 0 ]; then
+		   kill -HUP $LPID
+		   RETVAL=$?
+	   fi
+       #if [ $RETVAL -ne 0 ]; then
+	#	   failure
+	#   else
+	#	   success
+       #if [ $RETVAL -eq 0 ] ; then
+       #   rm -f /var/lock/subsys/lookupserv
+       #fi
+	   killproc lookupserv
+	   echo
+#    fi
+}
+
+function restart()
+{
+    stop
+    start
+}
+
+function condrestart()
+{
+    if [ -f /var/lock/subsys/lookupserv ] ; then
+        restart
+    fi
+}
+
+case "$1" in 
+    start)
+       start
+       ;;
+    stop)
+       stop
+       ;;
+    restart)
+       restart
+       ;;
+    condrestart)
+       condrestart
+       ;;
+    *)
+       echo $"Usage: $0 {start|stop|restart|status|condrestart}"
+       exit 1
+esac
+
+exit 0
