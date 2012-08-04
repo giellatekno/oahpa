@@ -1,0 +1,21 @@
+
+
+The Russian Wiktionary gives two types of information about its words:
+
+# The Zaliznjak number
+# An inflectional template number.
+
+According to Apertium experience, the Zaliznjak number in itself is not
+sufficient to generate all the paradigm forms. Instead, they use a script, 
+[ruwiktionaryextract.pl], which gives the output depicted in 
+[ruwiktionaryextractoutput.txt].
+
+From the full paradigm given in the output, they find the maximal common 
+suffix string, and make the paradigm patterns, here for nominals and verbs:
+
+* [apertium_rus_conj.txt] 
+* [apertium_rus_decl.txt]
+
+Important for rusoahpa is to get an fst which is easy to maintain.
+
+
