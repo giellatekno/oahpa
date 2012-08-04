@@ -1,7 +1,7 @@
 
 # Infrastructure
 # Localisation
-# Lingustic analysers
+# Linguistic analysers
 # Lexicon
 
 !!! Infrastructure
@@ -21,13 +21,15 @@ __TODO__
 __TODO__
 * Generate the django.po files, and translate.
 
-!!! Lingustic analysers
+
+!!! Linguistic analysers
 
 __TODO__
-* Get fsts from Apertium, either sh-ru or udm-rus.
-* Get more lexemes from wiktionary
+* Get fsts from [Apertium|http://wiki.apertium.org/wiki/Russian], either sh-ru or udm-rus.
+* Get more lexemes from [Wiktionary|http://dumps.wikimedia.org/ruwiktionary/]. There are many download options, the one we want is probably called ''pages-articles.xml.bz2''.
 * make an analyser and put it in main/gt/rus/src
-* Goal: Paradigm generation
+* Goal: Paradigm generation, later also text analysis
+
 
 !!! Lexicon
 
@@ -39,11 +41,13 @@ __TODO__
 * Translate the result to xml files and store them in {{main/ped/rus/src}}, 
   the structure should be the same as for the other languages.
 
+
 !!! Django setup on the server
 
 North and South Sami run on gtoahpa.uit.no, and Kildin and Inari Sami
 run on victorio.uit.no. The goal is to have all oahpa versions running on
-gtoahpa.uit.no. We need a catalogue for rusoahpa next to smaoahpa on gtoapha.
+gtoahpa.uit.no. We need a catalogue for rusoahpa next to smaoahpa on
+the gtoapha.uit.no server.
 
 
 
