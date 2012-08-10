@@ -5,16 +5,16 @@
 * One entry for each PoS
 * Semantic sets, devided with comma
 * Translations, devided with comma. The first one is "fasit"
+* underscore only as separator
 
 {{{
 ruslemma_PoS_SEMSET1, SEMSET2_danish1, danish2_norw1, norw2_english1, english2
 }}}
 
-!If different meanings belong to different semantic classes, then several entries
+!If different meanings belong to different semantic classes, use semicolon
 e.g. beaivi på nordsamisk
 {{{
-beaivi_N_TIME_dag_dag_day
-beaivi_N_NATURE, WEATHER_sol_sol_sun
+beaivi_N_TIME_dag_dag_day;NATURE, WEATHER_sol_sol_sun
 }}}
 
 !If you don't know: xxx
