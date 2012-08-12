@@ -1882,7 +1882,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 		sys.stdout.write('%')
 
 		analysis = ""
-		question_lookup = "echo \"" + qtext + "\"" + preprocess
+		question_lookup = "echo \"" + force_unicode(qtext).encode('utf-8') + "\"" + preprocess
 		words = os.popen(question_lookup).readlines()
 		for qword in words: # or qwords ?
 			cohort=""
@@ -1894,28 +1894,28 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 				cohort = w + "\n"
 			if cohort=="error":
 				raise Http500
-			analysis = analysis + cohort
+			analysis = analysis + force_unicode(cohort).encode('utf-8')
 
 		if self.gametype=="sahka":
-			analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
+			analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + force_unicode(utterance_name).encode('utf-8') +"\n"
 		else:
 			analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
 	   #logfile.write(analysis+"\n")
-		data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
+		data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
 		words = os.popen(data_lookup).readlines()
 		analyzed=""
 		for w in words:
 			w=w.strip()
 			s.send(w)  # on vic
-			analyzed = analyzed + s.recv(size)
+			analyzed = analyzed + force_unicode(s.recv(size)).encode('utf-8')
 		s.send("q")  # on vic
 		s.close()
 
 	except socket.error:	# port 9000 not available => morph. analysis will be done by ped-sme.fst
 		# analyse words in the question
 		analysis = ""
-		question_lookup = "echo \"" + qtext + "\"" + preprocess
+		question_lookup = "echo \"" + force_unicode(qtext).encode('utf-8') + "\"" + preprocess
 		words = os.popen(question_lookup).readlines()
 		for qword in words: # or qwords ?
 			cohort=""
@@ -1924,7 +1924,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 			morfanal = os.popen(word_lookup).readlines()
 			for row in morfanal:
 				#row = row.strip()
-				cohort = cohort + row
+				cohort = cohort + force_unicode(row).encode('utf-8')
 			if not cohort or cohort == w:
 				cohort = w + "\n"
 			if cohort=="error":
@@ -1932,7 +1932,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 			analysis = analysis + cohort
 
 		if self.gametype=="sahka":
-			analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + utterance_name +"\n"
+			analysis = analysis + "\"<^qdl_id>\"\n\t\"^sahka\" QDL " + force_unicode(utterance_name).encode('utf-8') +"\n"
 		else:
 			analysis = analysis + "\"<^qst>\"\n\t\"^qst\" QDL\n"
 
@@ -1940,7 +1940,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 		
 		# analyse words in the answer
 		
-		data_lookup = "echo \"" + answer.encode('utf-8') + "\"" + preprocess
+		data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
 		words = os.popen(data_lookup).readlines()
 		analyzed=""
 		for w in words:
@@ -2040,7 +2040,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 				msg_id = msg_el.msgid  # added
 				print msg_id
 				message_ids.append(msg_id)  # added
-				message = message.replace("WORDFORM","\"" + w + "\"") 
+				message = message.replace("WORDFORM","\"" + force_unicode(w) + "\"") 
 				msg.append(message)
 				if not spelling:
 					found=True
@@ -2346,7 +2346,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
         lo = settings.LOOKUP_TOOL
         lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
         print lookup
-        #lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine                
+        #lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine   
         #lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
 	lookup2cg = " | " + settings.LOOKUP2CG
         cg3 = settings.CG3
@@ -2377,23 +2377,28 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		sys.stdout.write('%')
 
 		analysis = ""
-		data_lookup = "echo \"" + qtext + "\"" + preprocess
-		words = os.popen(data_lookup).readlines()
-		print question_id
+		question_lookup = "echo \"" + qtext + "\"" + preprocess
+		words = os.popen(question_lookup).readlines()
+		#print question_id
 		#print words
 		#print qwords
 		for word in words:
 			w=""
 			cohort=""
-			print word
+			#print word
 			# All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
 			w = force_unicode(word).encode('utf-8')
 			w=w.lstrip().rstrip()
-			s.send(w) # on victorio
+			s.send(w) # sends a word to lookupserv
 			cohort = s.recv(size)
-			analysis = analysis + cohort
-			#logfile.write(analysis+"\n")
-			print analysis
+			if not cohort or cohort == w:
+				cohort = w + "\n"
+			if cohort=="error":
+				raise Http500
+			#logfile.write(cohort+"\n")
+			analysis = analysis + force_unicode(cohort).encode('utf-8')
+		#logfile.write(analysis+"\n")
+			#print analysis
 		### Lemmas and POS tags of task words are gathered into the variables 
 		### tasklemmas and taskpos respectively. Tasklemmas and taskpos will be 
 		### sent to CG together with the morph. analysed question and answer.
@@ -2403,35 +2408,35 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		taskpos = ""
 		morfanal = ""
 		for aword in awords:
-			print aword
+			#print aword
 			#logfile.write(aword)
 			if aword.has_key('taskword') and aword['taskword']:
 				tlemma = aword['fullform']
 				tlemma = force_unicode(tlemma).encode('utf-8')
 				tlemma = tlemma.strip()
-				print tlemma
+				#print tlemma
 				#logfile.write(tlemma+" ")
 				tasktag = Tag.objects.filter(id=aword['tag'])
 				tasktagstring = tasktag[0].string
 				taskpos = tasktag[0].pos
 				ttag = tasktagstring.replace("+"," ")
 				ttag = force_unicode(ttag).encode('utf-8')
-				print ttag
+				#print ttag
 				#logfile.write(ttag+"\n")
 				s.send(tlemma)  # on vic
-				word_lookup = s.recv(size)  # on vic
-				word_lookup = force_unicode(word_lookup).encode('utf-8') # added by Heli
+				word_lookup = force_unicode(s.recv(size)).encode('utf-8')  # on vic
 				#logfile.write(word_lookup)
 				ans_cohort=""
 				#print rows
 				rows = word_lookup.split("\n")  # on vic
 				morfanal = ""
 				for row in rows:
-					ans_cohort = ans_cohort + force_unicode(row).encode('utf-8')
-					  #logfile.write(row + "\n")
+					row = force_unicode(row).encode('utf-8')
+					ans_cohort = ans_cohort + row
+					#logfile.write(row + "\n")
 					malemmas = row.split("\"")
 					if row:
-						 malemma = malemmas[1]
+						 malemma = force_unicode(malemmas[1]).encode('utf-8')
 					malemma_without_hash = malemma.replace('#','')
 					taglist = ttag.split()
 					tag_match = 1
@@ -2439,17 +2444,17 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 						if entag not in row:
 							tag_match = 0
 					if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
-						print malemmas
+						#print malemmas
 						 #logfile.write(malemma+"\n")
-						print malemma
-						print malemma_without_hash
-						tasklemmas = tasklemmas + "\n\t\"" + force_unicode(malemma).encode('utf-8') + "\" "+force_unicode(taskpos).encode('utf-8')
+						#print malemma
+						#print malemma_without_hash
+						tasklemmas = force_unicode(tasklemmas).encode('utf-8') + "\n\t\"" + force_unicode(malemma).encode('utf-8') + "\" "+ force_unicode(taskpos).encode('utf-8')
 				logtasklemmas = logtasklemmas + " " + force_unicode(malemma_without_hash).encode('utf-8') + " " + force_unicode(taskpos).encode('utf-8')
-				morfanal = morfanal + ans_cohort  # END
+				morfanal = morfanal + force_unicode(ans_cohort).encode('utf-8')  # END
 					
-		analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + force_unicode(question_id).encode('utf-8') + " " + force_unicode(tasklemmas).encode('utf-8') + "\n"
+		analysis = force_unicode(analysis).encode('utf-8') + "\"<^vastas>\"\n\t\"^vastas\" QDL " + force_unicode(question_id).encode('utf-8') + " " + force_unicode(tasklemmas).encode('utf-8') + "\n"
 		#####
-		print analysis
+		#print analysis
 	        #logfile.write(analysis)
 		data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
 		word = os.popen(data_lookup).readlines()
@@ -2477,7 +2482,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		for word in words:
 			w=""
 			cohort=""
-			print word
+			#print word
 			# All the words will go through morph.analyser, even if they have a tag-attribute already. We do it to avoid problems with compound words.
 			w = force_unicode(word).encode('utf-8')
 			w=w.lstrip().rstrip()
@@ -2490,22 +2495,22 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		tasklemmas = ""
 		logtasklemmas = ""
 		for aword in awords:
-			print aword
-		   #logfile.write(aword)
+			#print aword
+			#logfile.write(aword)
 			if aword.has_key('taskword') and aword['taskword']:
 				tlemma = aword['fullform']
 				tlemma = force_unicode(tlemma).encode('utf-8')
 				tlemma = tlemma.strip()
-				print tlemma
+				#print tlemma
 				#logfile.write(tlemma+" ")
 				tasktag = Tag.objects.filter(id=aword['tag'])
 				tasktagstring = tasktag[0].string
 				taskpos = tasktag[0].pos
 				ttag = tasktagstring.replace("+"," ")
-				print ttag
+				#print ttag
 				#logfile.write(ttag+"\n")
 				ans_cohort = ""
-				word_lookup = "echo \"" + tlemma + "\"" + lookup + lookup2cg  # on Heli's machine
+				word_lookup = "echo \"" + force_unicode(tlemma).encode('utf-8') + "\"" + lookup + lookup2cg  # on Heli's machine
 				rows = os.popen(word_lookup).readlines()
 				morfanal = ""
 				for row in rows:
@@ -2521,15 +2526,15 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 						if entag not in row:
 							tag_match = 0
 					if tag_match and tlemma == malemma_without_hash:  # 'Sg Nom' or 'V Inf' is not enough - exact tag sequence needed, and also need to compare the primary form to the analysed word, to resolve ambiguities
-						print malemmas
+						#print malemmas
 						 #logfile.write(malemma+"\n")
-						print malemma
-						print malemma_without_hash
-						tasklemmas = tasklemmas + "\n\t\"" + malemma + "\" "+taskpos
+						#print malemma
+						#print malemma_without_hash
+						tasklemmas = tasklemmas + "\n\t\"" + force_unicode(malemma).encode('utf-8') + "\" "+taskpos
 						logtasklemmas = logtasklemmas + " " + malemma_without_hash + " " + taskpos
 					morfanal = morfanal + ans_cohort  # END
 					
-		analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + tasklemmas + "\n"
+		analysis = analysis + "\"<^vastas>\"\n\t\"^vastas\" QDL " + question_id + " " + force_unicode(tasklemmas).encode('utf-8') + "\n"
 		# analyse the user's answer
 		data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
 		word = os.popen(data_lookup).readlines()
@@ -2554,7 +2559,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	analysis = analysis + "\"<.>\"\n\t\".\" CLB"
 	analysis = analysis.rstrip()
 	analysis = analysis.replace("\"","\\\"")
-	print "Morph. analysis: \n", analysis
+	#print "Morph. analysis: \n", analysis
 	#logfile.write(analysis)
 	ped_cg3 = "echo \"" + analysis + "\"" + vislcg3
 	checked = os.popen(ped_cg3).readlines()
@@ -2672,7 +2677,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		feedbackmsg_id = message_ids[0] # added
 	else:
 		feedbackmsg_id = ""
-	print feedbackmsg_id
+	#print feedbackmsg_id
 	today=datetime.date.today()
 	log_kwargs = {
 		'userinput': self.userans,
@@ -2801,7 +2806,7 @@ class CealkkaQuestion(OahpaQuestion):
 				if qwords[w].has_key('fullform'):
 					qstring = qstring + " " + force_unicode(qwords[w]['fullform'][0])
 				else:
-					qstring = qstring + " " + w
+					qstring = qstring + " " + force_unicode(w)
 		# this is for -guovttos
 		qstring=qstring.replace(" -","-");
 		qstring=qstring.replace("- ","-");
