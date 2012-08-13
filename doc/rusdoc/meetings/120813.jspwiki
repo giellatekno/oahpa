@@ -1,0 +1,124 @@
+
+Ciprian, Kristine, Lene, Pavel, Tore, Trond
+
+
+!!Leksikonformat
+
+Som vist. Men i tillegg treng vi også kjønn/klasse:
+
+
+* Lemma
+* Kjønn/klasse
+** ma masculine animate
+** mi masculine inanimate
+** n neuter
+** fa feminine in -a/-я
+** fx feminine in -ь
+* Semantikk og omsetjing som vist andre stader
+
+Kapittel: Skriv inn nøyaktig kapittelnummer, så slår vi dei evt.
+saman etterpå.
+
+
+!!Semantiske sett
+
+Dette har vi diskutert. Vi vil ha semantiske taggar frå det russiske 
+nasjonalkorpuset, men også eigne.
+
+
+!!Underinndeling i Morfa
+
+* sykkel* syk-
+* nøkkel syk-
+* kjøkken
+
+# Bruke paradigmene
+## Wiktionary genererer paradigmer med trykk.
+   Gjöre om det til xml, og bruke fullformene til MySQL
+# Lage ein automat med trykk
+# Bruke andre? Dei fleste er lukka.
+
+
+Konklusjon: 
+
+Först: Ta fulle trykkmerka paradigme frå Wiktionary og
+overföre til xml
+
+Deretter: Lag fst for vidareutvikling
+
+
+
+!! Teknisk, innstallering
+
+rusoahpa
+
+
+!!Numra
+
+!Grunntal
+
+ok.
+
+! Ordenstal
+
+Ordenstal: Ikkje 6., men 6-й
+
+__TILTAK__
+* Endre fst 
+
+
+! Time
+
+Time-autometen har feil for heile timer
+
+__TILTAK__
+* Rette fst for klokkeslett (Pavel)
+* Lage to klokkeslett-automatar, og lage rammesetning + forklaring (Pavel, Trond)
+
+
+! Dato
+
+Funkar ikkje i det heile
+
+Den skal også vere i stereo: tidspunkt og nøyaktig tidspunkt
+
+Årstal som del av dato ??
+
+__TILTAK__
+
+Dato-automaten på beina (Den fungerer delvis) (Pavel, Trond)
+
+
+
+!!Oppsett av maskiner
+
+* xcode (IT-avd)
+* Xerox-verkty (Trond)
+* SubEthaEdit (Tore til Kristine)
+
+
+__TILTAK__
+
+* Tore og Kristine skaffar xcode
+* Deretter ekskursjon til Plan 5
+* konto til Kristine
+* Sette opp epost for rusoahpa-gruppe
+
+
+!!Neste steg
+
+
+* xml med fulle paradigmer
+* Lage alfaversjon av Leksa og MorfaS
+
+
+!!Neste møte
+
+Trond og/eller Pavel kallar inn.
+
+
+
+
+
+
+
