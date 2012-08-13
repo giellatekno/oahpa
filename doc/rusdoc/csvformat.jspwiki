@@ -2,25 +2,27 @@
 
 !! Format 
 * Only one ruslemma
-* One entry for each PoS (one word can have two PoS)
+* Only one PoS (two PoS -> two entries)
+* One gender-code
+* Capitle nr
 * Semantic sets, devided with comma
 * Translations, devided with comma. The first one is "fasit"
 * Comma and underscore are used only as separators
 * Danish translation before norwegian translation because it is more convenient (the wordlist in the textbook is rus-dan)
 
 {{{
-ruslemma_PoS_SEMSET1, SEMSET2_danish1, danish2_norw1, norw2_english1, english2
+ruslemma_PoS_Gender_Cap_SEMSET1, SEMSET2_danish1, danish2_norw1, norw2_english1, english2
 }}}
 
 !If different meanings belong to different semantic classes, use semicolon
 e.g. "beaivi" in North Sami:
 {{{
-beaivi_N_TIME_dag_dag_day;NATURE, WEATHER_sol_sol_sun
+beaivi_N_Gender_Cap_TIME_dag_dag_day;NATURE, WEATHER_sol_sol_sun
 }}}
 
 !If you don't know the information, write "xxx"
 {{{
-ruslemma_xxx_SEMSET_danish_norw_xxx
+ruslemma_N_Gender_Cap_SEMSET_danish_norw_xxx
 }}}
 
 
