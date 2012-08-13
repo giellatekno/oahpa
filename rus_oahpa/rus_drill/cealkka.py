@@ -8,7 +8,7 @@ from models import *
 from forms import *
 from game import Game
 
-import rusoahpa.settings as settings
+import rus_oahpa.settings as settings
 
 try:
 	DEFAULT_DIALECT = settings.DEFAULT_DIALECT

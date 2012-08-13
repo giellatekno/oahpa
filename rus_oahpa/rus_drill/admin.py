@@ -1,4 +1,4 @@
-from rusoahpa.rus_drill.models import Log, Word, Semtype, Source, Form, Tag, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
+from rus_oahpa.rus_drill.models import Log, Word, Semtype, Source, Form, Tag, Feedbackmsg, Feedbacktext, Question, QElement, WordQElement, WordTranslation
 from django.contrib import admin
 from django.contrib.contenttypes import generic
 
@@ -15,8 +15,8 @@ class FormInline(admin.TabularInline):
 # 	raw_id_fields = ('wordnob',)
 
 class WordAdmin(admin.ModelAdmin):
-	list_display = ('lemma','wordid','pos','stem', 'sem_types_admin', 'source_admin','soggi','valency')
-	list_filter = ['pos','stem','semtype','source', 'soggi'] 
+	list_display = ('lemma','wordid','pos','stem', 'sem_types_admin', 'source_admin','gender','animate', 'inflection_class', 'stress_class', 'reflexive')
+	list_filter = ['pos','stem','semtype','source', 'inflection_class', 'stress_class']
 	search_fields = ['lemma', 'semtype__semtype']
 	inlines = [FormInline] # TODO: , WordTranslationInline]
 	# raw_id_fields = ('wordtranslation_set', )
@@ -44,4 +44,3 @@ admin.site.register(Feedbacktext)
 admin.site.register(Feedbackmsg)
 admin.site.register(Word, WordAdmin)
 admin.site.register(Log, LogAdmin)
-

@@ -4,16 +4,16 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	    <title>{% block title %}{% endblock %}</title>
-		
+
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/main.css"/>
 		<!--[if gte IE 7]>
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/ie_fixes.css"/>
 		<![endif]-->
-		
+
 		{% comment %}
 		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}/css/mobile.css"/>
 		{% endcomment %}
-		
+
 		{% block extracss %}
 		{% endblock %}
 
@@ -25,13 +25,13 @@
 		<![endif]-->
 	</head>
 
-	{% load i18n %}			
+	{% load i18n %}
 
 <body class="{% block bodyclass %}main{% endblock %}">
 	<div id="page" class="{% block pageclass %}{% endblock %}">
 		<div id="headerimg"><a href="/{{ URL_PREFIX }}/"><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!"/></a></div>
 		<a class="hide" href="#content">Skip to content</a>
-		
+
 		{% block language_select %}
 		<div id="language_options">
 			{% get_current_language as LANGUAGE_CODE %}
@@ -41,13 +41,13 @@
 					<dd>
 						<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
 						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
-						
+
 						{% ifequal LANGUAGE_CODE "ru" %}
 							<option value="ru" selected="selected">Pусский язык</option>
 						{% else %}
 							<option value="ru">Pусский язык</option>
 						{% endifequal %}
-						
+
 						{% ifequal LANGUAGE_CODE "en" %}
 							<option value="en" selected="selected">English</option>
 						{% else %}
@@ -59,7 +59,7 @@
 						{% else %}
 							<option value="no">Norsk</option>
 						{% endifequal %}
-							  
+
 					</select>
 					</dd>
 				</dl>
@@ -79,7 +79,7 @@
 							{% else %}
 								<option value="GG">{% trans 'GG' %}</option>
 								<option value="KJ" selected="selected">{% trans 'KJ' %}</option>
-							{% endifequal %}  
+							{% endifequal %}
 						{% else %}
 							<option value="GG">{% trans 'GG' %}</option>
 							<option value="KJ">{% trans 'KJ' %}</option>
@@ -92,11 +92,11 @@
 			-->
 		</div>
 		{% endblock %}
-		
+
 		<div id="header">
 			{% block header_content %}
 			<h1><img src="{{ MEDIA_URL }}/images/Oahpa_logo0001.png" alt="OAHPA!" /></h1>
-			<h2>Тӣррв!</h2>
+			<h2>Добро пожаловать!</h2>
 			{% endblock %}
 		</div>
 
@@ -110,7 +110,7 @@
 						<span>{% trans "Practise morphology" %}</span>
 					</a>
 				</li>
-				
+
         <!--        <li class="game">
 					<a href="{% url vasta_s %}">
 						<span>VASTA</span><br />
@@ -125,7 +125,7 @@
 						<span>{% trans "Words and translations" %}</span>
 					</a>
 				</li>
-			
+
 			<ul id="games_menu">
 
 				<li class="game">
@@ -207,7 +207,7 @@
 <!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
 			{% endblock %}
 		</div>
-		
+
 		<div id="footer">
 			<div id="copyright">
 			{% block deeplink %}

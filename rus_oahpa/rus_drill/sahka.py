@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from rusoahpa.rus_drill.models import *
-from rusoahpa.rus_drill.forms import *
+from rus_oahpa.rus_drill.models import *
+from rus_oahpa.rus_drill.forms import *
 from django.db.models import Q
-from rusoahpa.rus_drill.game import Game
+from rus_oahpa.rus_drill.game import Game
 from random import randint
 
 class SahkaGame(Game):
