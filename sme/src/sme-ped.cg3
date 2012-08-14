@@ -6301,7 +6301,7 @@ ADD (&dia-basadanlatnja) TARGET SAHKA IF (0 NOT-ACC-ROOM)(*1 (&dia-target) BARRI
 
 ADD (&sem-not_wordlist) TARGET SAHKA IF (0 (Maid_juhkat))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
 
-ADD (&sem-gaffe) TARGET N (0 GAFFE + Sg LINK *-1 (makkar_juhkamusaid)) ;
+ADD (&sem-deadjagaffeSg) TARGET N (0 GAFFE + Sg LINK *-1 (makkar_juhkamusaid)) ;
 
 ADD (&dia-gaffe) TARGET N (0 ("gáffe") OR ("káffe") LINK 0 (&dia-target)) ;
 
@@ -6510,5 +6510,5 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &sem-same-pron
 # &sem-same-verb
 # &sem-not_wordlist
-# &sem-gaffe				gáffe vs. gáfet
+# &sem-deadjagaffeSg				gáffe vs. gáfet
 
