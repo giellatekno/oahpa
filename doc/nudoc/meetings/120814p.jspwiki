@@ -1,0 +1,125 @@
+!!! Møte 14.08.12
+
+Til stades: Lene, Trond, Ryan, Berit-Ánne, Heli
+
+!! Saksliste:
+
+* Flyttinga til nye servere - status quo
+* Innlogging
+* WordPress
+* Bugger
+* Eurocall
+
+
+!! Flyttinga til nye servere - status quo 
+
+Vi vil halde på oahpa-loggen for dei konkrete studentane. Det må med i
+migreringa. (__Ryan__)
+{{{
+UTF-8
+svn: Can't convert string from native encoding to 'UTF-8':
+svn: ?\208?\189?\208?\181?\208?\177?\208?\190.jpg
+[trond@gtoahpa main]$ em
+
+ny .bashrc-fil
+# UTF-8                                                                                                                 
+#######                                                                                                                 
+export LANG=nb_NO.UTF-8
+export LOCALE=nb_NO.UTF-8  # dette er rett
+export LESSCHARSET='utf-8'
+export LC_CTYPE=nb_NO.UTF-8
+export LC_ALL=nb_NO.UTF-8
+
+gammal .bashrc-fil
+#export LANG=nb_NO.UTF-8                                                                                                
+#export LOCALE=UTF-8          # dette er feil                                                                                          
+#export LESSCHARSET='utf-8'                                                                                             
+}}}
+
+
+
+! todo
+
+Gå gjennom denne lista og sjekk at det er gjort.
+
+* Sett opp melding til brukarar om flytting flere steder:
+** site.uit.no/oahpa - dette er gjort
+** oahpa.uit.no, oahpa.uit.no/univ_oahpa, oahpa.uit.no/aarjel (__Ryan__)
+** Generell informasjon til alle med konto på victorio om dei nye servarane (__Trond__)
+* dumpe databasen på victorio, og kopier den til gtoahpa og gtlab  (__Ryan__)
+* skriv ut alle noverande brukarkontoar, innfør (automatisk eller manuelt) til WP. Dette kan ikke gjøres noe med hvis ikke det er oppgitt epost-adresse, dvs studenter og lærere
+* skriv epost til brukarar om flytting, og at dei må logge inn i WP til staden, men elles er alle kontoinformasjon framleis i systemet. Dette har Biret Ánne gjort
+* oahpa-innloggere må nå logge inn ved kursa.oahpa.no - brukerkontoer må importeres til kursa.oahpa.no
+
+
+!!Innlogging og WordPress
+
+Registreringsskjema i Kursa? Kva er status med skjemaet i WP testing?
+Ryan snakker med Bjørn om denne. 
+Biret-Ánne, Bjørn og Ryan diskuterer disse tingene.
+Ryan lager en test instructor i WP og Django, for å vise korleis lærarane logger seg inn for å sjå studentane sine karakterar 
+
+Fra siste møte:
+* “Social connect” plugins
+** http://wordpress.org/extend/plugins/rpx/
+**  http://wordpress.org/extend/plugins/social-connect/ google, og mange andre
+**  http://wordpress.org/extend/plugins/wp-google-plus-connect/ berre google
+
+Add Google+ Direct Connect Badge & allow your WordPress/BuddyPress users to register or login via their Google+ account & import their stream
+
+Brukergrupper:
+* studenter som er registrert på kurs - de legges inn manuelt og får gruppetilhørighet, vil være mulig å knytte denne til google-konto etter at den er oppretta
+* brukere som ikke er registrert på kurs, ikke skriverettigheter, men som ønsker å bruke materialene - bør fylle ut spørreskjema når de registrerer seg om morsmål, om de følger undervisning, om de kan noe samisk fra før
+
+Ryan implementerer og tester (med hensyn til spørreskjemamoglegheit) 
+
+!!Bugger
+
+!1354	nor	P3	Othe	heli.uibo@ut.ee	ASSI		Dialektvalg i leksikonet fungerer ikke
+Heli jobber med denne. Ryan har hatt samme problem med sma-oahpa, og kan evt hjelpe.
+
+!1365	maj	P2	Othe	heli.uibo@ut.ee	ASSI		Tooltips-forklaring
+Denne er OK.
+
+!1370	blo	P1	Othe	heli.uibo@ut.ee	ASSI		Sahka og VastaS fungerer ikke
+Denne er OK.
+
+!1372	maj	P3	Othe	heli.uibo@ut.ee	NEW		Problemer med navigering i Sahka
+Heli jobber med denne, sammen med Lene.
+
+!1384	maj	P5	Othe	heli.uibo@ut.ee	NEW		dyplinking fungerer ikke i oahpa.no/davvi
+Ryan tar denne. Format skal vera det samme, problemet er berre at dei ikkje funker, men ein kan framleis klikke på "Liŋka dán hárjehussii" og få ein djuplink.
+
+!1386	maj	P2	Othe	heli.uibo@ut.ee	ASSI		Språkvalg fungerer ikke
+Dette problemet gjelder en bestemt Safari-versjon
+oahpa.no/davvi Safari 5.1.7 funkar, men oahpa.no/davvi Safari 6.0, Mac 10.7.4 funkar ikkje :-(. Denne bugen prioriteres ikke, da den gir marginale problemer for brukerne. --> P5
+Heli kan [melde den inn til Safari|http://browsers.about.com/od/safar1/ss/safaribugreport_8.htm]
+* Eg vel engelsk, og den hoppar attende til finsk
+
+
+!!Eurocall
+
+NB! Skriv separat svn up inni main/art (dvs. $GTHOME/art)
+
+* poster om samarbeidet med språksentre og læringsstiene, art/2012/eurocall/poster_eurocall2012.graffle og art/2012/eurocall/poster_eurocall2012.pdf: __Lene__ hovedansvarlig
+** 25.8. 10:30-11:15
+Room: AK 136 Room: AK 137 Room: AK 138
+6. Letting CALL make minority language instruction at university level available over a wide area
+Lene Antonsen, Berit Anne Bals Baal, Trond Trosterud
+
+* talk om fleirspråkleg oahpa (“Oahpa for nye språk”) - den er med i ICALL-strand: __Trond__ hovedansvarlig
+** Torsdag 23.8. 14:00-14:30 Parallel Session B2 – 1 Room AK2 136, Building A, Faculty of Education Strand: ICALL 
+A modular system for porting advanced interactive programs to new, morphology-rich languages
+Lene Antonsen, Ciprian Gerstenberger, Trond Trosterud, Heli Uibo  -- Ryans navn også med
+
+* demo / courseware om interaktiv Oahpa: __Lene__ hovedansvarlig
+** Onsdag 22.8 - 18.00-18.30 – Educational Showcases Session 3 – 2	Room AK2 137
+Free user input in a language learning program Lene Antonsen, Ciprian Gestenberger, Trond Trosterud, Heli Uibo
+
+
+
+!! Neste møte
+mandag 20.8 kl. 8.00 (uten Heli)
+
+
+
