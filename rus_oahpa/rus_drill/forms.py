@@ -61,11 +61,11 @@ POS_CHOICES = (
 CASE_CHOICES = (
 	('NOMPL', _('plural')),
 	('N-ACC', _('accusative')),
-	('N-ILL', _('illative')),
+	('N-DAT', _('dative')),
 	('N-LOC', _('locative')),
-	('N-COM', _('comitative')),
+	('N-INS', _('instrumental')),
 	('N-GEN', _('genitive')),
-	('N-ESS', _('essive')),
+	('N-GEN', _('genitive 2')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -87,20 +87,28 @@ NOUN_FILTER_DEFINITION = ['stem', 'source']
 # Pers - akk, gen, ill, lok, kom
 # Dem - akk, gen, ill, lok, kom
 CASE_CHOICES_PRONOUN = (
+	('NOMPL', _('plural')),
 	('N-ACC', _('accusative')),
-	('N-ILL', _('illative')),
+	('N-DAT', _('dative')),
 	('N-LOC', _('locative')),
-	('N-COM', _('comitative')),
+	('N-INS', _('instrumental')),
 	('N-GEN', _('genitive')),
-	# ('N-ESS', _('essive')),
 )
+
+# 	('N-ACC', _('accusative')),
+# 	('N-ILL', _('illative')),
+# 	('N-LOC', _('locative')),
+# 	('N-COM', _('comitative')),
+# 	('N-GEN', _('genitive')),
+# 	# ('N-ESS', _('essive')),
+# )
 
 PRONOUN_QUESTION_ANSWER = {
 	# gametype			question		answer
 	'N-ACC': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Acc')],
-	'N-ILL': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Ill')],
+#	'N-ILL': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Ill')],
 	'N-LOC': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Loc')],
-	'N-COM': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Com')],
+#	'N-COM': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Com')],
 	'N-GEN': [('Pron+Subclass+NumberN+Nom', 'Pron+Subclass+NumberN+Gen')],
 }
 
@@ -126,10 +134,10 @@ CASE_CONTEXT_CHOICES = (
 	('N-NOM-PL', _('plural')),
 	('N-ACC', _('accusative')),
 	('N-GEN', _('genitive')),
-	('N-ILL', _('illative')),
+#	('N-ILL', _('illative')),
 	('N-LOC', _('locative')),
-	('N-COM', _('comitative')),
-	('N-ESS', _('essive')),
+#	('N-COM', _('comitative')),
+#	('N-ESS', _('essive')),
 	('N-MIX', _('mix')),
 )
 
@@ -166,11 +174,11 @@ ADJECTIVE_QUESTION_ANSWER = {
 	'NOMPL': [('A+Sg+Nom', 'A+Pl+Nom')],
 	'ATTR': [('A+Sg+Nom', 'A+Attr')],
 	'N-ACC': [('A+NumberA+Nom', 'A+NumberN+Acc')],
-	'N-ILL': [('A+NumberA+Nom', 'A+NumberN+Ill')],
+#	'N-ILL': [('A+NumberA+Nom', 'A+NumberN+Ill')],
 	'N-LOC': [('A+NumberA+Nom', 'A+NumberN+Loc')],
-	'N-COM': [('A+NumberA+Nom', 'A+NumberN+Com')],
+#	'N-COM': [('A+NumberA+Nom', 'A+NumberN+Com')],
 	'N-GEN': [('A+NumberA+Nom', 'A+NumberN+Gen')],
-	'N-ESS': [('A+NumberA+Nom', 'A+Ess')],
+#	'N-ESS': [('A+NumberA+Nom', 'A+Ess')],
 }
 
 ADJECTIVE_FILTER_DEFINITION = ['grade', 'stem', 'source']
@@ -201,9 +209,9 @@ NUM_CONTEXT_CHOICES = (
 	('NUM-ATTR', _('attributive')),
 	('NUM-NOM-PL', _('plural')),
 	('NUM-ACC', _('accusative')),
-	('NUM-ILL', _('illative')),
+#	('NUM-ILL', _('illative')),
 	('NUM-LOC', _('locative')),
-	('NUM-COM', _('comitative')),
+#	('NUM-COM', _('comitative')),
 	('COLL-NUM', _('collective')),
 	('ORD-NUM', _('ordinals')),
 )
@@ -211,16 +219,16 @@ NUM_CONTEXT_CHOICES = (
 NUM_BARE_CHOICES = (
 	('NOMPL', _('plural')),
 	('N-ACC', _('accusative')),
-	('N-ILL', _('illative')),
+#	('N-ILL', _('illative')),
 	('N-LOC', _('locative')),
-	('N-COM', _('comitative')),
+#	('N-COM', _('comitative')),
 )
 
 NUMERAL_QUESTION_ANSWER = {
 	# gametype			question		answer
-	'N-ESS': [('Num+NumberN+Nom', 'Num+Ess')],
+#	'N-ESS': [('Num+NumberN+Nom', 'Num+Ess')],
 	'N-LOC': [('Num+NumberN+Nom', 'Num+NumberN+Loc')],
-	'N-ILL': [('Num+NumberN+Nom', 'Num+NumberN+Ill')],
+#	'N-ILL': [('Num+NumberN+Nom', 'Num+NumberN+Ill')],
 }
 
 NUMERAL_FILTER_DEFINITION = ['stem', 'source']
@@ -817,7 +825,7 @@ class OahpaSettings(forms.Form):
 					'contracted': False,
 					'level' : 'all',
 					'lemmacount' : '2',
-					'case': 'N-ILL', # Need a new default case here
+					'case': 'N-GEN', # Need a new default case here
 					'pos' : 'N',
 					'vtype' : 'PRS',
 					'adjcase' : 'NOM',
@@ -1063,19 +1071,24 @@ class MorfaSettings(OahpaSettings):
 
 		This is a separate form from the one which validates questions and
 		answers.
+
+		PI: this is quite hardcoded (and it wasn't exactly
+		easy finding where the N-ILL default value in
+		$home/morfa/ came from, because instead of an
+		exception there was a relatively unhelpful 404 error.
 	"""
-	case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
+	case = forms.ChoiceField(initial='N-GEN', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
-	proncase = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
+	proncase = forms.ChoiceField(initial='N-GEN', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
 	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
-	num_bare = forms.ChoiceField(initial='N-ILL', choices=NUM_BARE_CHOICES, widget=forms.Select)
+	num_bare = forms.ChoiceField(initial='N-GEN', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
 	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
 	derivation_type_context = forms.ChoiceField(initial='DER-PASSV', choices=DERIVATION_CHOICES_CONTEXT, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
-	case_context = forms.ChoiceField(initial='N-ILL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
+	case_context = forms.ChoiceField(initial='N-GEN', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-PERS', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)

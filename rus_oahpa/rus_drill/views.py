@@ -43,12 +43,12 @@ def updating(request):
 class Gameview(object):
 	""" Gameview is instantiated with a Settings object and a Game object,
 	then called with create_game()
-	
+
 		game = GameView(drill.forms.Settings, drill.game.Game)
-		
+
 		Alter settings as necessary...
 
-		game.settings['pos'] = pos.capitalize8)
+		game.settings['pos'] = pos.capitalize()
 		game.settings['gametype'] = "bare"
 
 		Then run create_game with the request, which checks for POST or GET
@@ -56,7 +56,7 @@ class Gameview(object):
 		drill.game/drill.$qagame objects, and returns a context.
 
 		c = game.create_game(request)
-	
+
 	If there are any additional settings which are always set, these may be
 	set by overriding the additional_settings method. (See documentation on
 	that method.)
@@ -112,11 +112,11 @@ class Gameview(object):
 		return '?' + '&'.join(key_values)
 
 	def change_game_settings(self, game):
-		""" If any settings need to be set before Game.new_game is called, 
+		""" If any settings need to be set before Game.new_game is called,
 		they are set here. """
 
 		return game
-	
+
 	def additional_settings(self, settings_form):
 		""" Override this method if any additional settings need to be applied
 		to the game before it returns a context. This is called within the
@@ -131,7 +131,7 @@ class Gameview(object):
 		selects through the user interface.  """
 
 		pass
-	
+
 	def set_gamename(self):
 		""" Sets the courses log name subtype for the game.
 		"""
@@ -144,7 +144,7 @@ class Gameview(object):
 		instance) and is_new_game, a boolean value that is True if a user has
 		just landed on the particular game, or whether the user has adjusted
 		the settings and created a new set.
-		
+
 		Goal here is to deal with all of the GET/POST differences, such that
 		other methods can act on the resulting data without worrying about
 		whether has come via POST or GET.
@@ -170,7 +170,7 @@ class Gameview(object):
 			settings_form = self.SettingsClass(data_src, **initial_kwargs)
 		else:
 			settings_form = self.SettingsClass(data_src)
-		
+
 		# If the settings form has any data in it, the user has modified
 		# settings or just come to Oahpa via a link with GET data. It is most
 		# likely that the user has come by link, and thus we need to fill out
@@ -201,9 +201,9 @@ class Gameview(object):
 				settings_form = self.SettingsClass()
 			settings_source = settings_form.default_data
 			new_game = True
-		
+
 		# All form creation operations are complete, so now we copy form values
-		# to the game settings object. 
+		# to the game settings object.
 		for k in settings_source.keys():
 			if k not in self.settings:
 				self.settings[k] = settings_source[k]
@@ -219,12 +219,12 @@ class Gameview(object):
 			if not self.settings['language']:
 				self.settings['language'] = request.LANGUAGE_CODE
 				request.session['django_language'] = request.LANGUAGE_CODE
-				
-				
+
+
 		#if hasattr(request, 'LANGUAGE_CODE'):
 		#	self.settings['language'] = request.LANGUAGE_CODE
 
-		# TODO: should probably be moved out 
+		# TODO: should probably be moved out
 		# to individual game object self.syll_settings(settings_form)
 
 		# If 'settings' exists in data, user has clicked 'new set'
@@ -232,7 +232,7 @@ class Gameview(object):
 			new_game = True
 
 		return settings, settings_form, new_game
-	
+
 	def create_game(self, request, **init_kwargs):
 		""" Instantiate the Game object, check answers and return the context
 		for the view. """
@@ -252,7 +252,7 @@ class Gameview(object):
 		# and check whether or not the answers are correct or incorrect.
 
 		game = self.GameClass(self.settings)
-		
+
 		self.set_gamename()
 
 		if is_new_game:
@@ -269,7 +269,7 @@ class Gameview(object):
 			if "show_correct" in settings_form.data:
 				game.show_correct = 1
 
-		
+
 
 		return self.context(request, game, settings_form)
 
@@ -291,7 +291,7 @@ class Leksaview(Gameview):
 			semtype = ', '.join(semtype)
 
 		self.settings['gamename_key'] = "%s - %s" % (semtype, transtype)
-		
+
 	def context(self, request, game, settings_form):
 
 		return Context({
@@ -310,7 +310,7 @@ class Leksaview(Gameview):
 class LeksaPlaceview(Gameview):
 
 	def additional_settings(self, settings_form):
-		
+
 		def true_false_filter(val):
 			if val in ['on', 'On', u'on', u'On']:
 				return True
@@ -345,11 +345,11 @@ class LeksaPlaceview(Gameview):
 				settings_form.data['rare'] = 'on'
 			else:
 				settings_form.data['rare'] = None
-		
-		
+
+
 # 		if len(self.settings['frequency']) == 0:
 # 			self.settings['frequency'].append('common')
-			
+
 		self.settings['geography'] = []
 
 		if 'geography' in settings_form.data:
@@ -357,7 +357,7 @@ class LeksaPlaceview(Gameview):
 
 	def deeplink_keys(self, game, settings_form):
 		return ['semtype', 'geography', 'common', 'rare', 'transtype', 'source']
-	
+
 	def set_gamename(self):
 		geog = self.settings['geography']
 		freq = ', '.join(self.settings['frequency'])
@@ -376,7 +376,7 @@ class LeksaPlaceview(Gameview):
 			'deeplink': self.create_deeplink(game, settings_form),
 			})
 
-	
+
 
 @trackGrade("Leksa")
 def leksa_game(request, place=False):
@@ -406,10 +406,10 @@ def leksa_game(request, place=False):
 
 
 class Numview(Gameview):
-	
+
 	def set_gamename(self):
 		self.settings['gamename_key'] = ''
-	
+
 	def deeplink_keys(self, game, settings_form):
 		keys = ['numgame', 'maxnum']
 
@@ -481,31 +481,31 @@ def dato(request):
 
 class Morfaview(Gameview):
 	gamenames = {
-		'ATTR':  _('Practise attributes'),
-		'A-ATTR':  _('Practise attributes'),
-		'A-NOM':  _('Practise adjectives in nominative'),
-		'A-ILL':  _('Practise adjectives in illative'),
-		'A-ACC':  _('Practise adjectives in accusative'),
-		'A-COM':  _('Practise adjectives in comitative'),
-		'A-ESS':  _('Practise adjectives in essive'),
-		'A-GEN':  _('Practise adjectives in genitive'),
-		'A-NOM-PL':  _('Practise adjectives in plural'),
-		'N-LOC':  _('Practise adjectives in locative'),
-		'A-COMP':  _('Practise comparative'),
-		'A-SUPERL':  _('Practise superlative'),
-		'V-DER':  _('Practise verb derivation'),
-		'V-DER-PASS':  _('Practise verb passive derivation'),
-		'DER-PASSV': _('Practise verb passive derivation'),
-		'A-DER-V':  _('Practise adjective to verb derivation'),
-		'ATTRPOS':  _('Practise attributes in positive'),
-		'ATTRCOMP':  _('Practise attributes in comparative'),
-		'ATTRSUP':  _('Practise attributes in superlative'),
-		'PREDPOS':  _('Practise predicative in positive'),
-		'PREDCOMP':  _('Practise predicative in comparative'),
-		'PREDSUP':  _('Practise predicative in superlative'),
-		'NUM-ATTR':  _('Practise numeral attributes'),
-		'NOMPL':  _('Practise plural'),
-		'NOM':  _('Practise nominative'),
+		# 'ATTR':  _('Practise attributes'),
+		# 'A-ATTR':  _('Practise attributes'),
+		# 'A-NOM':  _('Practise adjectives in nominative'),
+		# 'A-ILL':  _('Practise adjectives in illative'),
+		# 'A-ACC':  _('Practise adjectives in accusative'),
+		# 'A-COM':  _('Practise adjectives in comitative'),
+		# 'A-ESS':  _('Practise adjectives in essive'),
+		# 'A-GEN':  _('Practise adjectives in genitive'),
+		# 'A-NOM-PL':  _('Practise adjectives in plural'),
+		# 'N-LOC':  _('Practise adjectives in locative'),
+		# 'A-COMP':  _('Practise comparative'),
+		# 'A-SUPERL':  _('Practise superlative'),
+		# 'V-DER':  _('Practise verb derivation'),
+		# 'V-DER-PASS':  _('Practise verb passive derivation'),
+		# 'DER-PASSV': _('Practise verb passive derivation'),
+		# 'A-DER-V':  _('Practise adjective to verb derivation'),
+		# 'ATTRPOS':  _('Practise attributes in positive'),
+		# 'ATTRCOMP':  _('Practise attributes in comparative'),
+		# 'ATTRSUP':  _('Practise attributes in superlative'),
+		# 'PREDPOS':  _('Practise predicative in positive'),
+		# 'PREDCOMP':  _('Practise predicative in comparative'),
+		# 'PREDSUP':  _('Practise predicative in superlative'),
+		# 'NUM-ATTR':  _('Practise numeral attributes'),
+		# 'NOMPL':  _('Practise plural'),
+		# 'NOM':  _('Practise nominative'),
 		'N-NOM':  _('Practise nominative'),
 		'N-ILL':  _('Practise illative'),
 		'N-ACC':  _('Practise accusative'),
@@ -515,87 +515,87 @@ class Morfaview(Gameview):
 		'N-NOM-PL':  _('Practise plural'),
 		'N-LOC':  _('Practise locative'),
 		'N-MIX':  _('Practise a mix'),
-		'V-MIX':  _('Practise a mix'),
-		'A-MIX':  _('Practise a mix'),
-		'P-MIX':  _('Practise a mix'),
-		'NUM-ILL':  _('Practise numerals in illative'),
-		'NUM-ACC':  _('Practise numerals in accusative'),
-		'NUM-COM':  _('Practise numerals in comitative'),
-		'NUM-ESS':  _('Practise numerals in essive'),
-		'NUM-GEN':  _('Practise numerals in genitive'),
-		'NUM-NOM-PL':  _('Practise numerals in plural'),
-		'NUM-LOC':  _('Practise numerals in locative'),
-		'COLL-NUM':  _('Practise collective numerals'),
-		'ORD-NUM':  _('Practise ordinal numbers'),
-		'ORD-N-ILL':  _('Practise ordinal numerals in illative'),
-		'ORD-N-ACC':  _('Practise ordinal numerals in accusative'),
-		'ORD-N-COM':  _('Practise ordinal numerals in comitative'),
-		'ORD-N-ESS':  _('Practise ordinal numerals in essive'),
-		'ORD-N-GEN':  _('Practise ordinal numerals in genitive'),
-		'ORD-N-NOM-PL':  _('Practise ordinal numerals in plural'),
-		'ORD-N-LOC':  _('Practise ordinal numerals in locative'),
-		'COLL-N-ILL':  _('Practise collective numerals in illative'),
-		'COLL-N-ACC':  _('Practise collective numerals in accusative'),
-		'COLL-N-COM':  _('Practise collective numerals in comitative'),
-		'COLL-N-ESS':  _('Practise collective numerals in essive'),
-		'COLL-N-GEN':  _('Practise collective numerals in genitive'),
-		'COLL-NOMPL':  _('Practise collective numerals in plural'),
-		'COLL-N-LOC':  _('Practise collective numerals in locative'),
-		'PRS':  _('Practise present'),
-		'PRT':  _('Practise past'),
-		'PRF':  _('Practise perfect'),
-		'GER':  _('Practise gerund'),
-		'COND':  _('Practise conditional'),
-		'IMPRT':  _('Practise imperative'),
-		'POT':  _('Practise potential'),
-		'V-PRS':  _('Practise present'),
-		'V-PRT':  _('Practise past'),
-		'V-PRF':  _('Practise perfect'),
-		'V-GER':  _('Practise gerund'),
-		'V-COND':  _('Practise conditional'),
-		'V-IMPRT':  _('Practise imperative'),
-		'V-POT':  _('Practise potential'),
-		'P-PERS':  _('Practise '),
-		'P-RECIPR':  _('Practise reciprocative pronouns'),
-		'P-REFL':  _('Practise reflexive pronouns'),
-    	'P-REL': _('Practise relative pronouns'),
-		'P-DEM':  _('Practise demonstrative pronouns'),
+		# 'V-MIX':  _('Practise a mix'),
+		# 'A-MIX':  _('Practise a mix'),
+		# 'P-MIX':  _('Practise a mix'),
+		# 'NUM-ILL':  _('Practise numerals in illative'),
+		# 'NUM-ACC':  _('Practise numerals in accusative'),
+		# 'NUM-COM':  _('Practise numerals in comitative'),
+		# 'NUM-ESS':  _('Practise numerals in essive'),
+		# 'NUM-GEN':  _('Practise numerals in genitive'),
+		# 'NUM-NOM-PL':  _('Practise numerals in plural'),
+		# 'NUM-LOC':  _('Practise numerals in locative'),
+		# 'COLL-NUM':  _('Practise collective numerals'),
+		# 'ORD-NUM':  _('Practise ordinal numbers'),
+		# 'ORD-N-ILL':  _('Practise ordinal numerals in illative'),
+		# 'ORD-N-ACC':  _('Practise ordinal numerals in accusative'),
+		# 'ORD-N-COM':  _('Practise ordinal numerals in comitative'),
+		# 'ORD-N-ESS':  _('Practise ordinal numerals in essive'),
+		# 'ORD-N-GEN':  _('Practise ordinal numerals in genitive'),
+		# 'ORD-N-NOM-PL':  _('Practise ordinal numerals in plural'),
+		# 'ORD-N-LOC':  _('Practise ordinal numerals in locative'),
+		# 'COLL-N-ILL':  _('Practise collective numerals in illative'),
+		# 'COLL-N-ACC':  _('Practise collective numerals in accusative'),
+		# 'COLL-N-COM':  _('Practise collective numerals in comitative'),
+		# 'COLL-N-ESS':  _('Practise collective numerals in essive'),
+		# 'COLL-N-GEN':  _('Practise collective numerals in genitive'),
+		# 'COLL-NOMPL':  _('Practise collective numerals in plural'),
+		# 'COLL-N-LOC':  _('Practise collective numerals in locative'),
+		# 'PRS':  _('Practise present'),
+		# 'PRT':  _('Practise past'),
+		# 'PRF':  _('Practise perfect'),
+		# 'GER':  _('Practise gerund'),
+		# 'COND':  _('Practise conditional'),
+		# 'IMPRT':  _('Practise imperative'),
+		# 'POT':  _('Practise potential'),
+		# 'V-PRS':  _('Practise present'),
+		# 'V-PRT':  _('Practise past'),
+		# 'V-PRF':  _('Practise perfect'),
+		# 'V-GER':  _('Practise gerund'),
+		# 'V-COND':  _('Practise conditional'),
+		# 'V-IMPRT':  _('Practise imperative'),
+		# 'V-POT':  _('Practise potential'),
+		# 'P-PERS':  _('Practise '),
+		# 'P-RECIPR':  _('Practise reciprocative pronouns'),
+		# 'P-REFL':  _('Practise reflexive pronouns'),
+		# 'P-REL': _('Practise relative pronouns'),
+		# 'P-DEM':  _('Practise demonstrative pronouns'),
 	}
 
-	def syll_settings(self,settings_form):
+	# def syll_settings(self,settings_form):
 
-		def true_false_filter(val):
-			if val in ['on', 'On', u'on', u'On']:
-				return True
-			else:
-				return False
+	# 	def true_false_filter(val):
+	# 		if val in ['on', 'On', u'on', u'On']:
+	# 			return True
+	# 		else:
+	# 			return False
 
-		bisyl = settings_form.data.get('bisyllabic', None)
-		trisyl = settings_form.data.get('trisyllabic', None)
-		cont = settings_form.data.get('contracted', None)
+	# 	bisyl = settings_form.data.get('bisyllabic', None)
+	# 	trisyl = settings_form.data.get('trisyllabic', None)
+	# 	cont = settings_form.data.get('contracted', None)
 
-		if 'syll' not in self.settings:
-			self.settings['syll'] = []
+	# 	if 'syll' not in self.settings:
+	# 		self.settings['syll'] = []
 
-		# Special treatment of settings_form.data['bisyllabic'] since 
-		# it is set by default.
-		
-		if true_false_filter(bisyl):
-			self.settings['syll'].append('2syll')
-			settings_form.data['bisyllabic'] = 'on'
-		else:
-			settings_form.data['bisyllabic'] = None
+	# 	# Special treatment of settings_form.data['bisyllabic'] since
+	# 	# it is set by default.
 
-		if true_false_filter(trisyl):
-			self.settings['syll'].append('3syll')
-		if true_false_filter(cont):
-			self.settings['syll'].append('Csyll')
-		if len(self.settings['syll']) == 0:
-			self.settings['syll'].append('2syll')
+	# 	if true_false_filter(bisyl):
+	# 		self.settings['syll'].append('2syll')
+	# 		settings_form.data['bisyllabic'] = 'on'
+	# 	else:
+	# 		settings_form.data['bisyllabic'] = None
 
-		self.settings['syll'] = list(set(self.settings['syll']))
+	# 	if true_false_filter(trisyl):
+	# 		self.settings['syll'].append('3syll')
+	# 	if true_false_filter(cont):
+	# 		self.settings['syll'].append('Csyll')
+	# 	if len(self.settings['syll']) == 0:
+	# 		self.settings['syll'].append('2syll')
 
-	
+	# 	self.settings['syll'] = list(set(self.settings['syll']))
+
+
 	def deeplink_keys(self, game, settings_form):
 		""" The MorfaSettings form has a lot of values in it, so we need to
 		prune the deeplink values down a bit. The reason there is a need for
@@ -644,11 +644,11 @@ class Morfaview(Gameview):
 			'language' : self.settings['language'],
 			'deeplink': self.create_deeplink(game, settings_form),
 			})
-	
+
 	def additional_settings(self, settings_form):
 
 		self.settings['allcase'] = settings_form.allcase
-		self.syll_settings(settings_form)
+#		self.syll_settings(settings_form)
 		self.settings['allnum_type'] = settings_form.allnum_type  # added by Heli
 
 	def set_gamename(self):
@@ -712,21 +712,21 @@ class Morfaview(Gameview):
 			names.append(subname)
 
 		# 2syll/3syll/Csyll
-		if 'syll' in self.settings:
-			sylls = '/'.join(self.settings['syll'])
-		else:
-			sylls = ''
+		# if 'syll' in self.settings:
+		# 	sylls = '/'.join(self.settings['syll'])
+		# else:
+		# 	sylls = ''
 
-		# Append syllable types if set
-		if sylls and self.settings['pos'] not in ["Pron", "Num"]:
-			names.append(sylls)
-			
+		# # Append syllable types if set
+		# if sylls and self.settings['pos'] not in ["Pron", "Num"]:
+		# 	names.append(sylls)
+
 		#if 'num_type' in self.settings:  # added by Heli. I am not sure if it works.
 		#	num_type = self.settings['num_type']
-		#	names.append(num_type) 
+		#	names.append(num_type)
 
-		self.settings['gamename_key'] = ' - '.join(names) 
-		
+		self.settings['gamename_key'] = ' - '.join(names)
+
 
 
 # @timeit
@@ -784,14 +784,14 @@ class Vastaview:
 
 		show_data=0
 		self.settings = {}
-		
+
 	def create_vastagame(self,request):
 
 		count=0
 		correct=0
 
 		self.settings['gametype'] = "qa"
-		
+
 		if request.method == 'POST':
 			data = request.POST.copy()
 
@@ -893,7 +893,7 @@ class Cealkkaview(Gameview):
 	""" View for Cealkka, main difference here is context, and cealkka requires
 	one form set.
 	"""
-	
+
 	def deeplink_keys(self, game, settings_form):
 		return ['level']  # removed lemmacount
 
@@ -906,11 +906,11 @@ class Cealkkaview(Gameview):
 
 		game.num_fields = 2
 		return game
-		
+
 	def set_gamename(self):
 		if 'gamename_key' not in self.settings:
 			self.settings['gamename_key'] = self.settings['gametype']
-	
+
 	def context(self, request, game, settings_form):
 
 		c = Context({
@@ -943,7 +943,7 @@ class Sahkaview(Cealkkaview):
 	has separate methods to call the creation of a new game and to continue
 	with an existing game. There are also some attributes that must always be
 	set, such as the image, and wordlist.  """
-	
+
 	def deeplink_keys(self, game, settings_form):
 		return ['dialogue', 'topicnumber']
 
@@ -953,7 +953,7 @@ class Sahkaview(Cealkkaview):
 									self.settings['dialogue']])
 
 			self.settings['gamename_key'] = game_name
-	
+
 	def additional_settings(self, settings_form):
 		self.settings['gametype'] = 'sahka'
 		self.settings['image'] = 'sahka.png'
@@ -981,7 +981,7 @@ class Sahkaview(Cealkkaview):
 		# and check whether or not the answers are correct or incorrect.
 		#
 		game = self.GameClass(self.settings)
-		
+
 		self.set_gamename()
 
 		if is_new_game:
@@ -997,12 +997,12 @@ class Sahkaview(Cealkkaview):
 			game.check_game(settings_form.data)
 
 			# If the last answer was correct, add new field
-			# 
+			#
 			if game.form_list[game.num_fields-2].error == "correct":
 				game.update_game(
-					len(game.form_list)+1, 
+					len(game.form_list)+1,
 					game.form_list[game.num_fields-2])
-		
+
 		settings_form.init_hidden(
 			game.settings['topicnumber'],
 			game.num_fields,
@@ -1024,7 +1024,7 @@ class Sahkaview(Cealkkaview):
 		errormsg = ""
 		for f in game.form_list:
 			errormsg = errormsg + f.errormsg
-			
+
 		c = Context({
 			'settingsform': settings_form,
 			'forms': game.form_list,
@@ -1056,4 +1056,3 @@ def sahka(request):
 
 	c = sahkagame.create_game(request)
 	return render_to_response('sahka.html', c, context_instance=RequestContext(request))
-

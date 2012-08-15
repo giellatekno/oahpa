@@ -78,14 +78,14 @@ l.attrib.update({'pos': 'n',
                  'type': 'mi'})
 l.text = data['lemma']
 analysis = etree.SubElement(lg, 'analysis')
-analysis.text = 'N_Inanim_1_a_Sg_Nom'
+analysis.text = 'N_Sg_Nom'
 mp = etree.SubElement(lg, 'mini_paradigm')
 
 for case in [x for x in data.keys() if x != 'lemma']:
     for number in data[case].keys():
         if data[case][number]:
             mini_analysis = etree.SubElement(mp, 'analysis')
-            analysis_string = 'N_Inanim_1_a_%s_%s' % (number, case)
+            analysis_string = 'N_%s_%s' % (number, case)
             mini_analysis.set('ms', analysis_string)
             wf = etree.SubElement(mini_analysis, 'wordform')
             wf.text = data[case][number]

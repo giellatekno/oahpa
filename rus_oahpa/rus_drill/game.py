@@ -322,24 +322,27 @@ class BareGame(Game):
 
 	casetable = {
 		'NOMPL': 'Nom',
-		'ATTR': 'Attr',
-		'PRED': 'Pred',
+		# 'ATTR': 'Attr',
+		# 'PRED': 'Pred',
 		#'N-NOM': 'Nom',
-		'N-ILL': 'Ill',
-		'N-ESS': 'Ess',
+		# 'N-ILL': 'Ill',
+		# 'N-ESS': 'Ess',
 		'N-GEN': 'Gen',
 		'N-LOC': 'Loc',
 		'N-ACC': 'Acc',
-		'N-COM': 'Com',
-		'A-ATTR': 'Attr',
-		'COMP': 'Comp', # was: A-COMP
-		'SUPERL': 'Superl', # was: A-SUPERL
-		'POS':'',
-		'CARD': '', # CARD, ORD, COLL added for implementing num_type choice
-		'ORD': 'A+Ord',
-		'COLL': 'N+Coll',
-		'A-DER-V': 'A+Der/AV+V',
-		'V-DER-PASS': '',
+		'N-LOC2': 'Loc2',
+		'N-INS': 'Ins',
+		'N-DAT': 'Dat',
+		# 'N-COM': 'Com',
+		# 'A-ATTR': 'Attr',
+		# 'COMP': 'Comp', # was: A-COMP
+		# 'SUPERL': 'Superl', # was: A-SUPERL
+		# 'POS':'',
+		# 'CARD': '', # CARD, ORD, COLL added for implementing num_type choice
+		# 'ORD': 'A+Ord',
+		# 'COLL': 'N+Coll',
+		# 'A-DER-V': 'A+Der/AV+V',
+		# 'V-DER-PASS': '',
 		'': '',
 	}
 
@@ -422,23 +425,23 @@ class BareGame(Game):
 					if source:
 						random_form = random_form.filter(word__source__name__in=[source])
 
-				if filter_ == 'stem':
-					bisyl = ['2syll', 'bisyllabic']
-					trisyl = ['3syll', 'trisyllabic']
-					Csyl = ['Csyll', 'contracted'] # added for sme
+				# if filter_ == 'stem':
+				# 	bisyl = ['2syll', 'bisyllabic']
+				# 	trisyl = ['3syll', 'trisyllabic']
+				# 	Csyl = ['Csyll', 'contracted'] # added for sme
 
-					syll = True and	self.settings.get('syll') or ['']
+				# 	syll = True and	self.settings.get('syll') or ['']
 
-					sylls = []
-					for item in syll:
-						if item in bisyl:
-							sylls.append('2syll')
-						if item in trisyl:
-							sylls.append('3syll')
-						if item in Csyl:
-							sylls.append('Csyll')
+				# 	sylls = []
+				# 	for item in syll:
+				# 		if item in bisyl:
+				# 			sylls.append('2syll')
+				# 		if item in trisyl:
+				# 			sylls.append('3syll')
+				# 		if item in Csyl:
+				# 			sylls.append('Csyll')
 
-					random_form = random_form.filter(word__stem__in=sylls)
+				# 	random_form = random_form.filter(word__stem__in=sylls)
 
 			# If there are forms left, we select one
 			if random_form.count() > 0:
@@ -468,7 +471,7 @@ class BareGame(Game):
 
 		syll = True and	self.settings.get('syll')	or ['']
 		case = True and	self.settings.get('case')	or   ""
-		levels = True and self.settings.get('level')   or   []
+#		levels = True and self.settings.get('level')   or   []
 		adjcase = True and self.settings.get('adjcase') or   ""
 		pron_type = True and self.settings.get('pron_type') or   ""
 		proncase = True and self.settings.get('proncase') or   ""
@@ -516,25 +519,25 @@ class BareGame(Game):
 			"Der": derivation_type,
 		}
 
-		sylls = []
-		bisyl = ['2syll', 'bisyllabic']
-		trisyl = ['3syll', 'trisyllabic']
-		Csyl = ['Csyll', 'contracted'] # added for sme
+		# sylls = []
+		# bisyl = ['2syll', 'bisyllabic']
+		# trisyl = ['3syll', 'trisyllabic']
+		# Csyl = ['Csyll', 'contracted'] # added for sme
 
-		for item in syll:
-			if item in bisyl:
-				sylls.append('2syll')
-			if item in trisyl:
-				sylls.append('3syll')
-			if item in Csyl:
-				sylls.append('Csyll')
+		# for item in syll:
+		# 	if item in bisyl:
+		# 		sylls.append('2syll')
+		# 	if item in trisyl:
+		# 		sylls.append('3syll')
+		# 	if item in Csyl:
+		# 		sylls.append('Csyll')
 
-		if pos == 'Pron':
-			syll = ['']
+		# if pos == 'Pron':
+		# 	syll = ['']
 
 		case = self.casetable[pos_tables[pos]]
 		grade = self.casetable[grade]
-		num_type = self.casetable[num_type] # added by Heli
+		num_type = self.casetable.get('num_type', '') # added by Heli, changed by Pavel to skip an exception, change this back I suppose
 
 		pos_mood_tense = {
 			"PRS":	("Ind", "Prs", ""),
@@ -662,7 +665,7 @@ class BareGame(Game):
 			# TODO: combine all subclasses so forms can be fetched
 			if pos == 'Pron':
 				sylls = False
-				TAG_QUERY = TAG_QUERY & Q(subclass=pron_type) & Q(number__in=['', 'Du', 'Pl', 'Sg'])  # Sg added by Heli
+				TAG_QUERY = TAG_QUERY & Q(subclass=pron_type) & Q(number__in=['', 'Pl', 'Sg'])  # Sg added by Heli, Du removed by Pavel
 			elif pos2 == 'Num':
 				sylls = False
 				TAG_QUERY = TAG_QUERY & Q(subclass=subclass)
@@ -1226,7 +1229,6 @@ class Klokka(NumGame):
 				fstfile = self.answers_fst
 
 			output, err = self.generate_forms(forms, fstfile)
-			import pdb; pdb.set_trace();
 
 			num_list = self.clean_fst_output(output)
 			num_list = self.strip_unknown(num_list)
