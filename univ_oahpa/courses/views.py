@@ -1,5 +1,4 @@
 from django.template import RequestContext
-# from django.utils.translation import ugettext as _
 from django.http import HttpResponseRedirect, HttpResponseForbidden, Http404
 
 from django.conf import settings
@@ -48,9 +47,6 @@ def cookie_login(request, next_page=None, required=False, **kwargs):
 		cookie_uid = wp_username
 	except:
 		cookie_uid = False
-
-	# TODO: getting forbidden on first user login, but subsequent logins are
-	# fine
 
 	if cookie_uid:
 		user = auth.authenticate(cookie_uid=cookie_uid)
@@ -107,7 +103,11 @@ def trackGrade(gamename, request, c):
 				Morfa - N-ILL - Bisyllabic
 				Morfa - PRS - Trisyllabic
 	"""
-	SETTINGS = c['settingsform'].data
+	try:
+		SETTINGS = c['settingsform'].data
+	except TypeError:
+		print repr(c)
+		return
 	
 	if c['show_correct'] == 1 or c['all_correct'] == 1:
 		if request.user.is_authenticated() and not request.user.is_anonymous():
