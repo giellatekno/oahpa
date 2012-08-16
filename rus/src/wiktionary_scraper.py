@@ -5,13 +5,13 @@ from lxml import etree
 import StringIO
 import re
 
-case_labels = {u'именительный': 'nom',
-               u'родительный': 'gen',
-               u'дательный': 'dat',
-               u'винительный': 'acc',
-               u'творительный': 'ins',
-               u'предложный': 'loc',
-               u'разделительный падеж': 'gen2'}
+case_labels = {u'именительный': 'Nom',
+               u'родительный': 'Gen',
+               u'дательный': 'Dat',
+               u'винительный': 'Acc',
+               u'творительный': 'Ins',
+               u'предложный': 'Loc',
+               u'разделительный падеж': 'Gen2'}
 
 
 try:
@@ -44,16 +44,16 @@ for tr in root.cssselect("table[rules='all'] tr"):
     if len(tds) == 3:
         row_label = tds[0].cssselect('a')[0].get('title')
         row_case = case_labels[row_label]
-        if row_case == 'nom':
+        if row_case == 'Nom':
             data.update({'lemma': tds[1].text_content().replace(u'\u0301', '')}) # remove the stress mark
         sg = strip_empty(tds[1])
         pl = strip_empty(tds[2])
         if sg or pl:
             data[row_case] = dict()
         if sg:
-            data[row_case]['sg'] = sg
+            data[row_case]['Sg'] = sg
         if pl:
-            data[row_case]['pl'] = pl
+            data[row_case]['Pl'] = pl
 
 
 

@@ -168,8 +168,9 @@ class Game(object):
 			i = i+1
 
 		# print len(self.form_list)
-		if tries == maxtries:
-			raise Http404('No questions were able to be generated.')
+		# if tries == maxtries:
+		# 	raise Http404('No questions were able to be generated.')
+		# PI: just for debugging
 		if not self.form_list:
 			# No questions found, so the quiz_id must have been bad.
 			raise Http404('Invalid quiz id.')
@@ -330,7 +331,7 @@ class BareGame(Game):
 		'N-GEN': 'Gen',
 		'N-LOC': 'Loc',
 		'N-ACC': 'Acc',
-		'N-LOC2': 'Loc2',
+		'N-GEN2': 'Gen2',
 		'N-INS': 'Ins',
 		'N-DAT': 'Dat',
 		# 'N-COM': 'Com',
@@ -351,7 +352,7 @@ class BareGame(Game):
 		from .forms import GAME_TYPE_DEFINITIONS
 		from .forms import GAME_FILTER_DEFINITIONS
 
-		if self.settings.has_key('pos'):
+		if 'pos' in self.settings:
 			pos = self.settings['pos']
 
 		# Where to find the game type for each POS
@@ -476,7 +477,7 @@ class BareGame(Game):
 		pron_type = True and self.settings.get('pron_type') or   ""
 		proncase = True and self.settings.get('proncase') or   ""
 		derivation_type = True and self.settings.get('derivation_type') or   ""
-		grade = True and self.settings.get('grade')  or  ""
+#		grade = True and self.settings.get('grade')  or  ""
 		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
 		source = ""
 
@@ -536,7 +537,7 @@ class BareGame(Game):
 		# 	syll = ['']
 
 		case = self.casetable[pos_tables[pos]]
-		grade = self.casetable[grade]
+		grade = self.casetable.get('grade', '')
 		num_type = self.casetable.get('num_type', '') # added by Heli, changed by Pavel to skip an exception, change this back I suppose
 
 		pos_mood_tense = {
@@ -776,28 +777,34 @@ class BareGame(Game):
 			while no_form and count < 10:
 
 				# Pronouns are a bit different, so we need to resort the tags
+				# PI: Huh? Seems all the same to me. Anyway...
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
 				random_word = tag.form_set.filter(word__language=L1)
 
-				if not tag.pos in ['Pron', 'Num'] and \
-					tag.string.find('Der') < 0:
-					random_word = random_word.filter(word__semtype__semtype="MORFAS")
+				# PI: commented out, b/c at this stage
+				# where the Morfa-S semtype has not
+				# been set up we just end up whacking
+				# the random_word set
 
-				if tag.pos == 'Pron':
-					random_word = random_word\
-									.exclude(word__stem='nubbi')
-				if sylls:
-					random_word = random_word.filter(word__stem__in=sylls)
-				if source:
-					random_word = random_word.filter(word__source__in=source)
+				# if not tag.pos in ['Pron', 'Num'] and \
+				# 	tag.string.find('Der') < 0:
+				# 	random_word = random_word.filter(word__semtype__semtype="MORFAS")
 
-				if pos2 == 'Num':
-					if subclass == 'Ord':
-						random_word = random_word.filter(word__lemma__in=smallnum_ord)  # added to constrain the set of ordinal numerals
-					elif subclass == 'Coll':
-						random_word = random_word.filter(word__lemma__in=smallnum_coll) # constrains the set of collective numerals
+				# if tag.pos == 'Pron':
+				# 	random_word = random_word\
+				# 					.exclude(word__stem='nubbi')
+				# # if sylls:
+				# # 	random_word = random_word.filter(word__stem__in=sylls)
+				# if source:
+				# 	random_word = random_word.filter(word__source__in=source)
+
+				# if pos2 == 'Num':
+				# 	if subclass == 'Ord':
+				# 		random_word = random_word.filter(word__lemma__in=smallnum_ord)  # added to constrain the set of ordinal numerals
+				# 	elif subclass == 'Coll':
+				# 		random_word = random_word.filter(word__lemma__in=smallnum_coll) # constrains the set of collective numerals
 
 				if random_word.count() > 0:
 					random_form = random_word.order_by('?')[0]
@@ -835,7 +842,7 @@ class BareGame(Game):
 
 
 	def create_form(self, db_info, n, data=None):
-		if not db_info.has_key('word_id'):
+		if not 'word_id' in db_info:
 			return None, None
 
 		if self.settings.has_key('dialect'):

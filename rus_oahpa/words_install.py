@@ -105,11 +105,16 @@ class Analysis(object):
 
 	def getTag(self):
 
+		# PI: this is a huge gotcha. The Python code mostly
+		# manipulates variations of 'pos', but tags.txt _must_
+		# have 'Wordclass'. Docs needed (Or ideally a saner
+		# tags.txt setup.)
+
 		tag_kwargs = {
 			'string': self.tags,
 			'pos': self.classes.get('Wordclass', ""),
 			'number': self.classes.get('Number',""),
-			'gender': self.classes.get('Gender', ""),  # PI
+			'gender': self.classes.get('Gender', ""),  # PI: added for Russian
 			'case': self.classes.get('Case',""),
 #			'possessive': self.classes.get('Possessive',""),
 #			'grade': self.classes.get('Grade',""),
@@ -121,6 +126,7 @@ class Analysis(object):
 #			'subclass': self.classes.get('Subclass',""),
 			'attributive': self.classes.get('Attributive',"")
 		}
+
 
 		t, created = Tag.objects.get_or_create(**tag_kwargs)
 		t.save()
@@ -134,9 +140,10 @@ class Analysis(object):
 		self.form, self.tags = analysis
 
 		for t in self.tags.split('+'):
-			if linginfo.tagset.has_key(t):
-				tagclass = linginfo.tagset[t]
-				self.classes[tagclass] = t
+			nt = t.lower().capitalize() # PI: normalize the tags, this is what bit me
+			if nt in linginfo.tagset:
+				tagclass = linginfo.tagset[nt]
+				self.classes[tagclass] = nt
 
 class Entry(object):
 	""" The beginning of a class for parsing entry nodes.
@@ -157,6 +164,9 @@ class Entry(object):
             	   <wordform>dov</wordform>
             	</analysis>
             </mini_paradigm>
+
+
+
 
 			# TODO:	<analysis ms="Pron_Pers_Pl1_Ill" dial="NG">
 		"""

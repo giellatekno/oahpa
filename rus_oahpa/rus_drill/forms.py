@@ -65,7 +65,7 @@ CASE_CHOICES = (
 	('N-LOC', _('locative')),
 	('N-INS', _('instrumental')),
 	('N-GEN', _('genitive')),
-	('N-GEN', _('genitive 2')),
+	('N-GEN2', _('genitive 2')),
 )
 
 # For now this is just a part of a test, used in game.Game.get_db_info_new
@@ -910,25 +910,24 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		if hasattr(self, 'translang'):
-			if self.translang == 'sjd':   # was: sme
+			if self.translang == 'ru':   # PI: was: sjd
  				# Relax spellings.
 				accepted_answers = [force_unicode(item) for item in accepted_answers]
 				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
 				# need to subtract legal answers and make an only relaxed list.
 				relaxings = [item for item in forms if force_unicode(item) not in accepted_answers]
-			else:
+			# else:
+				# PI: commented out at this stage
+				# # add infinitives as possible answers
+				# if self.word.pos == 'V':
+				# 	if self.translang in infinitives_sub and infinitives_add:
+				# 		infin_s = infinitives_sub[self.translang]
+				# 		infin_a = infinitives_add[self.translang]
+				# 		lemma = re.compile(infin_s)
+				# 		infins = [lemma.sub(infin_a, force_unicode(ax)) for ax in accepted_answers]
+				# 		accepted_answers = infins + accepted_answers
 
-				# add infinitives as possible answers
-				if self.word.pos == 'V':
-					if self.translang in infinitives_sub and infinitives_add:
-						infin_s = infinitives_sub[self.translang]
-						infin_a = infinitives_add[self.translang]
-
-						lemma = re.compile(infin_s)
-						infins = [lemma.sub(infin_a, force_unicode(ax)) for ax in accepted_answers]
-						accepted_answers = infins + accepted_answers
-
-				forms = accepted_answers
+				# forms = accepted_answers
 
 		self.correct_anslist = [force_unicode(item) for item in accepted_answers] + \
 							   [force_unicode(f) for f in forms]
@@ -1159,7 +1158,8 @@ class MorfaQuestion(OahpaQuestion):
 		except AttributeError:
 			self.lemma = baseform
 
-		self.wordclass = word.wordclass
+		# self.wordclass = word.wordclass
+		# PI: seems to be only used for verbs at this point, so just commenting out
 		if not self.pron:
 			self.pron = False
 
@@ -1696,8 +1696,8 @@ class ContextMorfaQuestion(OahpaQuestion):
 			xl = transl[0]
 			self.translations = xl.definition
 
-		if answer_word_el.pos == 'V':
-			self.wordclass = answer_word_el.wordclass
+		# if answer_word_el.pos == 'V':
+		# 	self.wordclass = answer_word_el.wordclass
 
 		# If the asked word is in Pl, generate nominal form
 
@@ -1751,7 +1751,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 		astring = astring[0].capitalize() + astring[1:]
 		qstring = qstring[0].capitalize() + qstring[1:]
 
-		qstring = qstring + "?"
+		qstring = qstring + "?"pp
 		# Add dot if the last word is not the open question.
 		if astring.count("!")==0 and not astring[-1]=="Q":
 			astring = astring + "."
