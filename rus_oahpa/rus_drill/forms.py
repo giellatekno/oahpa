@@ -59,12 +59,17 @@ POS_CHOICES = (
 )
 
 CASE_CHOICES = (
-	('NOMPL', _('plural')),
-	('N-ACC', _('accusative')),
-	('N-DAT', _('dative')),
-	('N-LOC', _('locative')),
-	('N-INS', _('instrumental')),
-	('N-GEN', _('genitive')),
+	('N-NOM-PL', _('nominative plural')),
+	('N-ACC-SG', _('accusative singular')),
+	('N-ACC-PL', _('accusative plural')),
+	('N-DAT-SG', _('dative singular')),
+	('N-DAT-PL', _('dative plural')),
+	('N-LOC-SG', _('locative singular')),
+	('N-LOC-PL', _('locative plural')),
+	('N-INS-SG', _('instrumental singular')),
+	('N-INS-PL', _('instrumental plural')),
+	('N-GEN-SG', _('genitive singular')),
+	('N-GEN-PL', _('genitive plural')),
 	('N-GEN2', _('genitive 2')),
 )
 
@@ -825,7 +830,7 @@ class OahpaSettings(forms.Form):
 					'contracted': False,
 					'level' : 'all',
 					'lemmacount' : '2',
-					'case': 'N-GEN', # Need a new default case here
+					'case': 'N-GEN-SG', # Need a new default case here
 					'pos' : 'N',
 					'vtype' : 'PRS',
 					'adjcase' : 'NOM',
@@ -1751,7 +1756,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 		astring = astring[0].capitalize() + astring[1:]
 		qstring = qstring[0].capitalize() + qstring[1:]
 
-		qstring = qstring + "?"pp
+		qstring = qstring + "?"
 		# Add dot if the last word is not the open question.
 		if astring.count("!")==0 and not astring[-1]=="Q":
 			astring = astring + "."

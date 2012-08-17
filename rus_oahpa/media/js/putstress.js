@@ -4,5 +4,6 @@ $(function add_stress () {
 	    previous_input_box = $(this).prevAll('input').last() ;
 	    current_text = previous_input_box.attr('value');
 	    previous_input_box.attr('value', current_text + "́");
+	    previous_input_box.focus();
 	});
 })

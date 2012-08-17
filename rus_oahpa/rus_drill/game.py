@@ -322,28 +322,18 @@ class Game(object):
 class BareGame(Game):
 
 	casetable = {
-		'NOMPL': 'Nom',
-		# 'ATTR': 'Attr',
-		# 'PRED': 'Pred',
-		#'N-NOM': 'Nom',
-		# 'N-ILL': 'Ill',
-		# 'N-ESS': 'Ess',
-		'N-GEN': 'Gen',
-		'N-LOC': 'Loc',
-		'N-ACC': 'Acc',
-		'N-GEN2': 'Gen2',
-		'N-INS': 'Ins',
-		'N-DAT': 'Dat',
-		# 'N-COM': 'Com',
-		# 'A-ATTR': 'Attr',
-		# 'COMP': 'Comp', # was: A-COMP
-		# 'SUPERL': 'Superl', # was: A-SUPERL
-		# 'POS':'',
-		# 'CARD': '', # CARD, ORD, COLL added for implementing num_type choice
-		# 'ORD': 'A+Ord',
-		# 'COLL': 'N+Coll',
-		# 'A-DER-V': 'A+Der/AV+V',
-		# 'V-DER-PASS': '',
+		'N-NOM-PL': ('Nom', 'Pl'),
+		'N-GEN-SG': ('Gen', 'Sg'),
+		'N-GEN-PL': ('Gen', 'Pl'),
+		'N-DAT-SG': ('Dat', 'Sg'),
+		'N-DAT-PL': ('Dat', 'Pl'),
+		'N-ACC-SG': ('Acc', 'Sg'),
+		'N-ACC-PL': ('Acc', 'Pl'),
+		'N-INS-SG': ('Ins', 'Sg'),
+		'N-INS-PL': ('Ins', 'Pl'),
+		'N-LOC-SG': ('Loc', 'Sg'),
+		'N-LOC-PL': ('Loc', 'Pl'),
+		'N-GEN2': ('Gen2', 'Sg'),
 		'': '',
 	}
 
@@ -357,7 +347,7 @@ class BareGame(Game):
 
 		# Where to find the game type for each POS
 		pos_gametype_keys = {
-			'N': 'case',
+			'N': ('case', 'number'),
 			'V': 'vtype',
 			'Der': 'derivation_type',
 			'A': 'adjcase',
@@ -472,6 +462,7 @@ class BareGame(Game):
 
 		syll = True and	self.settings.get('syll')	or ['']
 		case = True and	self.settings.get('case')	or   ""
+		number = self.settings.get('number', '')
 #		levels = True and self.settings.get('level')   or   []
 		adjcase = True and self.settings.get('adjcase') or   ""
 		pron_type = True and self.settings.get('pron_type') or   ""
@@ -536,7 +527,7 @@ class BareGame(Game):
 		# if pos == 'Pron':
 		# 	syll = ['']
 
-		case = self.casetable[pos_tables[pos]]
+		case, number = self.casetable[pos_tables[pos]]
 		grade = self.casetable.get('grade', '')
 		num_type = self.casetable.get('num_type', '') # added by Heli, changed by Pavel to skip an exception, change this back I suppose
 
@@ -567,14 +558,15 @@ class BareGame(Game):
 				pos2 = 'Num'
 				subclass='Coll'
 
-		number = ["Sg","Pl",""]
+		# PI changed
+		# number = ["Sg","Pl",""]
 
-		if case == "Ess":
-			number = [""]
-		elif case == "Nom" and pos != "Pron":
-			number = ["Pl"]
-		else:
-			number = ["Sg","Pl"]
+		# if case == "Ess":
+		# 	number = [""]
+		# elif case == "Nom" and pos != "Pron":
+		# 	number = ["Pl"]
+		# else:
+		# 	number = ["Sg","Pl"]
 
 		# A+Sg+Nom
 
@@ -584,11 +576,11 @@ class BareGame(Game):
 
 		# following value is in case
 		# A+Attr
-		if pos == 'A':
-			if "Attr" in [attributive, case]:
-				attributive = "Attr"
-				case = ""
-				number = [""]
+		# if pos == 'A':
+		# 	if "Attr" in [attributive, case]:
+		# 		attributive = "Attr"
+		# 		case = ""
+		# 		number = [""]
 
 		maxnum, i = 20, 0
 
@@ -660,7 +652,7 @@ class BareGame(Game):
 
 			if pos == 'N':
 				TAG_QUERY = TAG_QUERY & \
-							Q(number__in=number)
+							Q(number=number)
 
 			# 'Pers' subclass for pronouns, otherwise none.
 			# TODO: combine all subclasses so forms can be fetched
@@ -745,18 +737,18 @@ class BareGame(Game):
 				 QUERY = QUERY & Q(source__name=source)
 
 
-		smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta",
-					"čieža", "gávcci","ovcci","logi"]
-		smallnum_ord = ["vuosttaš", "nubbi", "goalmmát", "njealját", "viđát",
-						"guđát", "čihččet", "gávccát", "ovccát", "logát"]
-		smallnum_coll = ["guovttis", "guovttes", "golmmas", "njealjis",
-						"viđás", "guđás", "čiežas", "gávccis","ovccis","logis"]
+		# smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta",
+		# 			"čieža", "gávcci","ovcci","logi"]
+		# smallnum_ord = ["vuosttaš", "nubbi", "goalmmát", "njealját", "viđát",
+		# 				"guđát", "čihččet", "gávccát", "ovccát", "logát"]
+		# smallnum_coll = ["guovttis", "guovttes", "golmmas", "njealjis",
+		# 				"viđás", "guđás", "čiežas", "gávccis","ovccis","logis"]
 
-		if pos == 'Num': # and subclass == '': # PI
-			QUERY = QUERY & Q(lemma__in=smallnum)
+		# if pos == 'Num': # and subclass == '': # PI
+		# 	QUERY = QUERY & Q(lemma__in=smallnum)
 
-		if pos2 == 'Num': # and subclass == 'Ord': # PI
-			QUERY = QUERY & Q(lemma__in=smallnum_ord)
+		# if pos2 == 'Num': # and subclass == 'Ord': # PI
+		# 	QUERY = QUERY & Q(lemma__in=smallnum_ord)
 
 		error = "Morfa.get_db_info: Database is improperly loaded.\
 				 There are no Words, Tags or Forms, or the query\
