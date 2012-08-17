@@ -23,8 +23,6 @@ from courses.models import Course
 
 __all__ = ['CookieAuthMiddleware', 'CookieAuth']
 
-PTS = open('/dev/pts/5', 'w')
-
 class CookieAuthMiddleware(object):
 	""" Middleware that allows cookie authentication """
 
