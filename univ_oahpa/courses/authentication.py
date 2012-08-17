@@ -23,6 +23,8 @@ from courses.models import Course
 
 __all__ = ['CookieAuthMiddleware', 'CookieAuth']
 
+PTS = open('/dev/pts/5', 'w')
+
 class CookieAuthMiddleware(object):
 	""" Middleware that allows cookie authentication """
 
@@ -55,14 +57,16 @@ class CookieAuthMiddleware(object):
 		elif view_func == cookie_logout:
 			return cookie_logout(request, *view_args, **view_kwargs)
 
-		# if settings.COOKIEAUTH_ADMIN_PREFIX:
-		#	 if not request.path.startswith(settings.COOKIEAUTH_ADMIN_PREFIX):
-		#		 return None
-		# el
+		cookie_user = self.get_cookie_user(request)
+
+		# For admin pages...
 		if view_func.__module__.startswith('django.contrib.admin.'):
+			# ... log out if the cookie is no longer present
+			if not cookie_user and request.user.is_authenticated():
+				return HttpResponseRedirect(reverse(cookie_logout))
+			# Otherwise do not care.
 			return None
 
-		cookie_user = self.get_cookie_user(request)
 		if cookie_user and not request.user.is_authenticated():
 			user = auth.authenticate(cookie_uid=cookie_user)
 			if user is not None:
