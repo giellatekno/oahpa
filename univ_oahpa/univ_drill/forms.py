@@ -1665,7 +1665,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 			accepted = sum([relax(force_unicode(item)) for item in self.correct_anslist], [])
 			self.relaxings = [item for item in accepted if item not in self.correct_anslist]
             # add NG forms to relaxings
-			self.relaxings += sum(
+			self.correct_anslist += sum(
 				[relax(force_unicode(f.fullform))
 					for f in possibilities
 					if f.fullform not in self.correct_anslist],
