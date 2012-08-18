@@ -741,6 +741,7 @@ class Morfaview(Gameview):
 		self.settings['gamename_key'] = ' - '.join(names) 
 		
 
+# PTS = open('/dev/pts/5', 'w')
 
 # @timeit
 @trackGrade("Morfa")
@@ -748,6 +749,8 @@ def morfa_game(request, pos):
 	"""
 		View for Morfa game. Requires pos argument, ['N', 'V', 'A', 'Num']
 	"""
+	# print >> PTS, request.path
+	# print >> PTS, request.path_info
 	mgame = Morfaview(MorfaSettings, BareGame)
 
 	mgame.settings['pos'] = pos.capitalize()
