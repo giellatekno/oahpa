@@ -800,8 +800,8 @@ def select_words(self, qwords, awords):
 		if not selected_awords[syntax].has_key('fullform'):
 			selected_awords[syntax]['fullform'] = []
 			selected_awords[syntax]['fullform'].append(syntax)
-		print "selected awords: "
-		print selected_awords
+		# print "selected awords: "
+		# print selected_awords
 	return selected_awords
 
 
@@ -821,8 +821,8 @@ class OahpaSettings(forms.Form):
 	set_settings = set_settings
 	
 	def clean(self):
-		x = self.cleaned_data['bisyllabic']
-		print 'clean: ', x
+		# x = self.cleaned_data.get('bisyllabic'
+		# print 'clean: ', x
 		return self.cleaned_data
 	
 	def set_default_data(self):
@@ -1275,7 +1275,10 @@ class MorfaQuestion(OahpaQuestion):
 				noun_pres = DEMONSTRATIVE_PRESENTATION.get(tag.number, False)
 
 				if noun_pres:
-					self.lemma += ' (%s)' % force_unicode(noun_pres).encode('utf-8')
+					# self.lemma is unicode, concatenating results in
+					# encoding error
+					self.lemma += u' (%s)' % noun_pres
+					self.lemma = force_unicode(self.lemma).encode('utf-8')
 
 			# Personal pronouns:
 			# mun, don, son, mii, dii, sii, moai, doai etc.
@@ -1285,10 +1288,12 @@ class MorfaQuestion(OahpaQuestion):
 				if self.lemma == 'dat':
 					noun_pres = DEMONSTRATIVE_PRESENTATION.get(tag.personnumber, False)
 					if noun_pres:
-						self.lemma += ' (%s)' % force_unicode(noun_pres).encode('utf-8')
+						self.lemma += u' (%s)' % noun_pres
+						self.lemma = force_unicode(self.lemma).encode('utf-8')
 						
 		
 		log_name = "morfa_%s" % tag.pos
+		self.tag = force_unicode(self.tag).encode('utf-8')
 		try:
 			self.is_correct(log_name, self.lemma + "+" + self.tag)
 		except TypeError:
@@ -1611,8 +1616,9 @@ class ContextMorfaQuestion(OahpaQuestion):
 			
 			# 'onkeydown':'javascript:return process(this, event,document.gameform);'
 	
-	def __init__(self, question, qanswer, \
-				 qwords, awords, dialect, language, userans_val, correct_val, *args, **kwargs):
+	def __init__(self, question, qanswer, question_words, answer_words,
+				dialect, language, userans_val, correct_val, *args, **kwargs):
+		# TODO: userans_val and accept_list, something here.
 		self.init_variables("", userans_val, [])
 		self.lemma = ""
 		self.dialect = dialect
@@ -1640,10 +1646,15 @@ class ContextMorfaQuestion(OahpaQuestion):
 		self.fields['answer_id'] = forms.CharField(widget=answer_widget, required=False)
 
 		# Select words for the the answer
-		selected_awords = self.select_words(qwords, awords)
+		selected_awords = self.select_words(question_words, answer_words)
+		answer_task = selected_awords.get(task)
+		tag_id = answer_task.get('tag')
+		wrd_id = answer_task.get('word')
+		form_lemma = answer_task.get('fullform')
+		possibilities = Form.objects.filter(tag__pk=tag_id, word__pk=wrd_id)
 
 		relaxed = []
-		form_list=[]
+		form_list = []
 		
 		if not selected_awords.has_key(task):
 			raise Http404(task + " " + atext + " " + str(qanswer.id))			
@@ -1653,6 +1664,13 @@ class ContextMorfaQuestion(OahpaQuestion):
 			
 			accepted = sum([relax(force_unicode(item)) for item in self.correct_anslist], [])
 			self.relaxings = [item for item in accepted if item not in self.correct_anslist]
+            # add NG forms to relaxings
+			self.relaxings += sum(
+				[relax(force_unicode(f.fullform))
+					for f in possibilities
+					if f.fullform not in self.correct_anslist],
+				[])
+
 			self.correct_anslist.extend(self.relaxings)
 			log_w = Word.objects.get(id=selected_awords[task]['word'])
 			w_str = log_w.lemma
@@ -1663,12 +1681,19 @@ class ContextMorfaQuestion(OahpaQuestion):
 			self.is_correct(log_name, log_value)
 			self.correct_ans = self.correct_anslist[0]
 
-		self.correct_anslist = [force_unicode(item) for item in accepted] 
-				
+		self.correct_anslist = [force_unicode(item) for item in accepted]
+
+		# # Include all dialect forms/NG forms.
+		# self.accepted_anslist = sum(
+		# 	[relax(force_unicode(f.fullform))
+		# 		for f in possibilities
+		# 		if f.fullform not in self.correct_anslist],
+		# 	[])
+
 		self.qattrs = {}
-		self.aattrs = {}		
-		for syntax in qwords.keys():
-			qword = qwords[syntax]
+		self.aattrs = {}
+		for syntax in question_words.keys():
+			qword = question_words[syntax]
 			if qword.has_key('word'):
 				self.qattrs['question_word_' + syntax] = qword['word']
 			if qword.has_key('tag') and qword['tag']:
@@ -1691,15 +1716,15 @@ class ContextMorfaQuestion(OahpaQuestion):
 		# Format question string
 		qtext = question.string
 		for w in qtext.split():
-			if not qwords.has_key(w):
+			if not question_words.has_key(w):
 				qstring = qstring + " " + force_unicode(w)
 			else:
-				if qwords[w].has_key('fullform'):
-					qstring = qstring + " " + force_unicode(qwords[w]['fullform'][0])
+				if question_words[w].has_key('fullform'):
+					qstring = qstring + " " + force_unicode(question_words[w]['fullform'][0])
 				else:
 					qstring = qstring + " " + force_unicode(w)
-		qstring=qstring.replace(" -","-")
-		qstring=qstring.replace(" .",".")
+		qstring = qstring.replace(" -","-")
+		qstring = qstring.replace(" .",".")
 		
 		
 		try:
