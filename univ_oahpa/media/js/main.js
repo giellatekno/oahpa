@@ -61,6 +61,7 @@ $(document).ready(function(){
 	$('select#grammarlink').change(function (e) {
 			link = $('select#grammarlink#').val();
 			window.open(link);
+			return false;
 	});
 
 	$('div#settings select').change(formsubmit);
