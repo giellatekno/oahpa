@@ -33,15 +33,11 @@ def findmissing(tfilter=False, count=0):
 class Command(BaseCommand):
 	args = '--tagelement'
 	help = """
-	Strips tags of an element and then merges them all.
+	Search for word forms with missing feedback messages
 	"""
 	option_list = BaseCommand.option_list + (
 		make_option("-t", "--tagelement", dest="tagelement", default=False,
 						  help="Tag element to search for"),
-		make_option("-d", "--dryrun", dest="dryrun", default="True",
-						  help="List tags matching element instead of merging"),
-		
-		# TODO: question iterations count
 	)
 
 	def handle(self, *args, **options):
