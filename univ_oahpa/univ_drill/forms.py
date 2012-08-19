@@ -2289,6 +2289,7 @@ class SahkaQuestion(OahpaQuestion):
 
 		if utterance:
 			self.utterance_id=utterance.id
+			self.utterance_type=utterance.utttype # Heli: This was needed to make utterance type accessible in templates.
 			#self.utterance=utterance.utterance
 
 			# Forms question string and answer string out of grammatical elements and other strings.
