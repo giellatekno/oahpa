@@ -1,0 +1,69 @@
+﻿# Infinitive marking
+
+XML Data is assumed to not include infinitive marking for lemmas. Following is a shortened example entry from a South Sámi / Norwegian data file (v_smanob.xml):
+
+   <e>
+      <lg>
+         <l diph="yes" p3p="åenede" pos="v" stem="3syll">åeniedidh</l>
+      </lg>
+      <stem class="trisyllabic"></stem>
+      <sources>
+         <book name="åa6" />
+      </sources>
+      <mg>
+         <semantics>
+            <sem class="ABSTRACT" />
+         </semantics>
+         <tg xml:lang="nob">
+            <t pos="v" stat="pref" tcomm="no">avkorte</t>
+            <t pos="v" stat="notpref" tcomm="no">forkorte</t>
+            <tf tcomm="no">gjøre kortere</tf>
+         </tg>
+         <tg xml:lang="swe">
+            <t pos="v" stat="pref" tcomm="no">förkorta</t>
+         </tg>
+
+		... etc
+	</e>
+
+Note missing å for Norwegian, and missing att for Swedish. Assuming that infinitive information is defined in settings.py, these will automatically be added so that the system recognizes å avkorte and avkorte as acceptable answers in exercizes where Norwegian-language answers are expected.
+
+## Editing settings.py for infinitives
+
+The settings.py file needs to include two variables, one to add infinitive information and one to subtract it. Unfortunately at the moment, it cannot be simpler.
+
+INFINITIVE_SUBTRACT = {
+	'nob': ur'^(?P<inf>å )?(?P<lemma>.*)$',
+	'swe': ur'^(?P<inf>att )?(?P<lemma>.*)$',
+	'eng': ur'^(?P<inf>to )?(?P<lemma>.*)$',
+	'deu': ur'^(?P<inf>zu )?(?P<lemma>.*)$',
+}
+
+INFINITIVE_ADD = {
+	'nob': ur'å \g<lemma>',
+	'swe': ur'att \g<lemma>',
+	'eng': ur'to \g<lemma>',
+	'deu': ur'zu \g<lemma>',
+}
+
+The variables are both dictionaries, and require a key/value pair for the language abbreviation (3-letter ISO name that is used in all data files), and a regular expression. INFINITIVE_SUBTRACT regular expressions are meant to be matching expressions which include a match group for the infinitive (including spaces if necesssary), and a match group for the lemma, which should basically be everything else.
+
+The other variable, INFINITIVE_ADD has a regular expression which is equivalent to a Python replace expression, including a group for the lemma \g<lemma> (which corresponds to (?P<lemma>.*), and the infinitive string.
+
+Although all the languages in the example set here have infinitive particles which come before the lemma, it would be possible to craft strings for infinitive markers which follow.
+
+INFINITIVE_SUBTRACT = {
+	...
+	'gne': ur'^(?P<lemma>.*)(?P<inf> ot)?$',
+}
+
+INFINITIVE_ADD = {
+	...
+	'gne': ur'\g<lemma> ot',
+}
+
+## Python regular expression notes
+
+The SUBTRACT string needs to include a group for <inf> which is optional. This is done by inserting a question mark after the match group: (?P<inf>asdf )?.
+
+Also note that if there are any spaces or punctuation included with the infinitive, these must be included as well.

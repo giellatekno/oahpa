@@ -1,0 +1,30 @@
+Files required for Morfa-C (in order of installation):
+
+ * n_, v_, a_, pron_, prop_
+ * fillings
+ * tags.txt
+ * questions.xml
+
+
+
+Common errors: 
+
+ * not task: means that the Question/QElement objects have been installed, but during the installation process Words or Forms matching the tag semantic type may not have been located.
+ > Solution: check that forms are being generated, check that words can be found with that semantic type.
+
+ * Database not properly loaded.
+ Two possible solutions: 
+  * There are no questions installed of this type
+  * The type does not exist in forms.py, and the code cannot handle the type listed. 
+ 	 	 
+
+ * IndexError
+
+ * Random (0, 0, 0) error
+
+ * SUBJ appearing
+
+ * MAINV appearing
+
+
+

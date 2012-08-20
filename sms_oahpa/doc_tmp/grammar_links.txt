@@ -1,0 +1,39 @@
+﻿# Some notes on grammar links
+
+## Installation
+
+python install.py -i data_sma/meta/grammatikklinker.txt
+
+For now, the process gets the language setting for the link from the URL. I assume that all files will be named including a language code, e.g.: http://victorio.uit.no/some/path/to/verbs.nob.txt
+
+It is possible to include all languages in one file, but it's best to separate them into separate files, e.g., data_sma/meta/grammatikklinker.swe.txt.
+
+When installing the links, the old ones will automatically be deleted and replaced.
+
+## Usage notes
+
+The language displayed will be the same as the user's session language / interface language. If a particular language is not installed, then the default language is nob.
+
+The link list is cached based on session language, because these are unexpected to change, and it's nice to save one database query per view.
+
+Link lists are cached to /var/tmp/smaoahpa_cache
+
+## Troubleshooting
+
+If new languages are implemented and for some reason not showing up, the system will fail silently and display the default language (norwegian), which is defined in conf.context_processors.grammarlinks.
+
+In addition to testing that code, check settings.py, which must have a dictionary of ISO codes.
+
+OLD_NEW_ISO_CODES = {
+	"fi": "fin",
+	"ru": "rus",
+	"en": "eng",
+	"no": "nob",
+	"de": "deu",
+	"sv": "swe",
+	"sma": "sma",
+}
+
+It is hoped that new, three-character ISO codes will be in use, and thus they will not be translated by smadrill.forms.switch_language_code, but if for some reason the system is still using old ISO codes, and a language that is not in the above list has been installed, it is important to add a translation pair.
+
+
