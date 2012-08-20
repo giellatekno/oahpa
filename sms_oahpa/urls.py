@@ -16,16 +16,16 @@ admin_url = r'^%s/admin/' % prefix
 
 urlpatterns = patterns('',
 	# Example:
-	# (r'^sjdoahpa/', include('sjdoahpa.foo.urls')),
-	url(r'^%s/$' % prefix, 'sjdoahpa.sjd_drill.views.index'),
+	# (r'^smsoahpa/', include('smsoahpa.foo.urls')),
+	url(r'^%s/$' % prefix, 'smsoahpa.sms_drill.views.index'),
 	url(r'^%s/i18n/' % prefix, include('django.conf.urls.i18n')),
 	url(r'^%s/media/(?P<path>.*)$' % prefix, 'django.views.static.serve',
 			  	{'document_root': settings.MEDIA_ROOT}),
-	url(r'^%s/courses/' % prefix, include('sjdoahpa.courses.urls')),
-	url(r'^%s/' % prefix, include('sjdoahpa.sjd_drill.urls')),
-	url(r'^%s/dialect/$' % prefix, 'sjdoahpa.conf.views.dialect'),
+	url(r'^%s/courses/' % prefix, include('smsoahpa.courses.urls')),
+	url(r'^%s/' % prefix, include('smsoahpa.sms_drill.urls')),
+	url(r'^%s/dialect/$' % prefix, 'smsoahpa.conf.views.dialect'),
 	url(admin_url, include(admin.site.urls)),
 	# (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-	#url(r'^%s/openid/' % prefix, include('sjdoahpa.openid_provider.urls')),
+	#url(r'^%s/openid/' % prefix, include('smsoahpa.openid_provider.urls')),
 )
 
