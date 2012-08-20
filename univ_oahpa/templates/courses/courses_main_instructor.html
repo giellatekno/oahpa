@@ -16,7 +16,11 @@ TODO: internationalization strings
 	{# Add blocktrans and trans tags #}
 	<div id="courses">
 		<ul id="subnav">
-			<li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li>
+			{#  <li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li> #}
+			{% if user.is_staff %}
+			<li><a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "Grade summary" %}</a></li>
+			<li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
+			{% endif %}
 		</ul>
 		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
 

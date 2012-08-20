@@ -148,7 +148,7 @@ def courses_main(request):
 	
 	summary = False
 	
-	if profile.is_student:
+	if profile.is_student or request.GET.get('student_view', False):
 		summary = profile.usergradesummary_set.all()
 		if summary.count() == 0:
 			new_profile = True
@@ -157,7 +157,11 @@ def courses_main(request):
 	if profile.is_student:
 		template = 'courses/courses_main.html'
 	elif profile.is_instructor:
-		template = 'courses/courses_main_instructor.html'
+		if request.GET.get('student_view', False):
+			template = 'courses/courses_main.html'
+			is_student = True
+		else:
+			template = 'courses/courses_main_instructor.html'
 	
 	c = {
 		'user':  request.user,

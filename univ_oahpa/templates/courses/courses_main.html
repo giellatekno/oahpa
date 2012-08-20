@@ -14,7 +14,11 @@ TODO: link in user interface
 	{# Add blocktrans and trans tags #}
 	<div id="courses">
 		<ul id="subnav">
-			<li><a href="{% url univ_oahpa.courses.urls.logout %}">Log out</a></li>
+			<li><a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>
+			{% if user.is_staff %}
+			<li><a href="/{{ URL_PREFIX }}/courses/">{% trans "Course overview" %}</a></li>
+			<li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
+			{% endif %}
 		</ul>
 		<h2>{% trans 'Welcome' %}, {{ user.username }}!</h2>
 		{% if is_student %}
@@ -53,7 +57,7 @@ TODO: link in user interface
 
 			{% endif %}
 		{% else %}
-			<p>{% trans "You are a course instructor." %}</p>
+		<p>{% trans "You are a course instructor." %} {% trans "To view your own grade summary," %} <a href="/{{ URL_PREFIX }}/courses/?student_view=True">{% trans "click here" %}</a></p>
 			<p><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "View students' grades" %}</a></p>
 		{% endif %}
 	</div>
