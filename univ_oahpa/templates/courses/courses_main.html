@@ -15,8 +15,10 @@ TODO: link in user interface
 	<div id="courses">
 		<ul id="subnav">
 			<li><a href="{% url univ_oahpa.courses.urls.logout %}">{% trans "Log out" %}</a></li>
-			{% if user.is_staff %}
+			{% if profile.is_instructor %}
 			<li><a href="/{{ URL_PREFIX }}/courses/">{% trans "Course overview" %}</a></li>
+			{% endif %}
+			{% if user.is_staff %}
 			<li><a href="/{{ URL_PREFIX }}/admin/courses/">{% trans "Admin interface" %}</a></li>
 			{% endif %}
 		</ul>
