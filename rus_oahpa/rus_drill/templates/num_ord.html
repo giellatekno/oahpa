@@ -10,8 +10,8 @@
 {% block instructions %}
   {# TODO: strings for instructions. #}
   {% ifequal gametype "string" %}
-    {% trans "Write a numeral followed by a period. (Ex. 32.)" %}
+    {% trans "Write a numeral followed by -й (for example, 32-й). Please keep to this format." %}
   {% else %}
-    {% trans "Write the ordinal numbers in Russian. (Ex. двенадцатый)" %}
+    {% trans "Write the ordinal numbers in Russian (for example, двенадцатый). Stress marks are not necessary here." %}
   {% endifequal %}
 {% endblock %}

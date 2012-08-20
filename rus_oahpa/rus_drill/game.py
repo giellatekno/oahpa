@@ -9,6 +9,7 @@ from django.db.models import Q, Count
 from django.http import HttpResponse, Http404
 from django.shortcuts import get_list_or_404, render_to_response
 from django.core.exceptions import ObjectDoesNotExist
+from django.utils.encoding import smart_str, smart_unicode
 from random import randint
 
 import os
@@ -1020,10 +1021,10 @@ class NumGame(Game):
 
 		random_num = randint(1, int(self.settings['maxnum']))
 
-		db_info['numeral_id'] = str(random_num)
+		db_info['numeral_id'] = smart_str(random_num)
 
 		if self.settings['gametype'] == 'ord':
-			db_info['numeral_id'] += "."
+			db_info['numeral_id'] += u"-й"
 
 		return db_info
 
@@ -1060,7 +1061,7 @@ class NumGame(Game):
 
 		t = Timer(5, kill_proc)
 		t.start()
-		output, err = num_proc.communicate(forms)
+		output, err = num_proc.communicate(forms.encode("utf-8"))
 
 		return output, err
 
@@ -1093,7 +1094,7 @@ class NumGame(Game):
 			elif gametype == 'numeral':
 				fstfile = self.answers_fst
 
-			output, err = self.generate_forms(forms, fstfile)
+			output, err = self.generate_forms(smart_unicode(forms), fstfile)
 
 			num_list = self.clean_fst_output(output)
 			num_list = self.strip_unknown(num_list)
@@ -1142,6 +1143,8 @@ class NumGame(Game):
 		# production paths
 		lookup = "%s\n" % db_info['numeral_id']
 		output, err = self.generate_forms(lookup, fstfile)
+
+		#import pdb; pdb.set_trace()
 
 		num_tmp = output.splitlines()
 		num_list = []
