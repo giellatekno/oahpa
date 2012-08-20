@@ -431,7 +431,7 @@ class BareGame(Game):
 				# 		if item in trisyl:
 				# 			sylls.append('3syll')
 				# 		if item in Csyl:
-				# 			sylls.append('Csyll')
+				# 	nnn		sylls.append('Csyll')
 
 				# 	random_form = random_form.filter(word__stem__in=sylls)
 

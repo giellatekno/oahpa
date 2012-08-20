@@ -830,7 +830,7 @@ class OahpaSettings(forms.Form):
 					'contracted': False,
 					'level' : 'all',
 					'lemmacount' : '2',
-					'case': 'N-GEN-SG', # Need a new default case here
+					'case': 'N-NOM-PL', # Need a new default case here
 					'pos' : 'N',
 					'vtype' : 'PRS',
 					'adjcase' : 'NOM',
@@ -1081,9 +1081,9 @@ class MorfaSettings(OahpaSettings):
 		$home/morfa/ came from, because instead of an
 		exception there was a relatively unhelpful 404 error.
 	"""
-	case = forms.ChoiceField(initial='N-GEN', choices=CASE_CHOICES, widget=forms.Select)
+	case = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
-	proncase = forms.ChoiceField(initial='N-GEN', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
+	proncase = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
 	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
 	num_bare = forms.ChoiceField(initial='N-GEN', choices=NUM_BARE_CHOICES, widget=forms.Select)
@@ -1092,7 +1092,7 @@ class MorfaSettings(OahpaSettings):
 	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
 	derivation_type_context = forms.ChoiceField(initial='DER-PASSV', choices=DERIVATION_CHOICES_CONTEXT, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
-	case_context = forms.ChoiceField(initial='N-GEN', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
+	case_context = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-PERS', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)

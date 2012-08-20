@@ -739,6 +739,8 @@ def morfa_game(request, pos):
 	"""
 		View for Morfa game. Requires pos argument, ['N', 'V', 'A', 'Num']
 	"""
+
+
 	mgame = Morfaview(MorfaSettings, BareGame)
 
 	mgame.settings['pos'] = pos.capitalize()
@@ -752,6 +754,7 @@ def morfa_game(request, pos):
 		template = 'mgame_%s.html' % pos.lower()[0]
 
 	c = mgame.create_game(request)
+
 
 	return render_to_response(template, c,
 				context_instance=RequestContext(request))
