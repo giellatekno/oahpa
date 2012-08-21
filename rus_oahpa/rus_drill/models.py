@@ -262,11 +262,10 @@ class Word(models.Model):
 			mphon = False
 		if not mphon:
 			kwargs = {
-				'stem':		 self.stem,
 				'gender':	self.gender,
 				'animate':	self.animate,
 				'declension':	self.declension,
-				'reflexive':		self.reflexive,
+				'reflexive':	self.reflexive,
 			}
 
 			morphtag, create = MorphPhonTag.objects.get_or_create(**kwargs)

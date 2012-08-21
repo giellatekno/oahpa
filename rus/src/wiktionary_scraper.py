@@ -89,9 +89,9 @@ def parse_htmlfile_noun(srcfile):
     else:
         animate = 'anim'
 
-    gender_table = { u'мужской': 'm',
-                     u'женский': 'f',
-                     u'средний': 'n' }
+    gender_table = { u'мужской': 'masc',
+                     u'женский': 'fem',
+                     u'средний': 'neut' }
     gender_re = re.compile(u'(\w+)\ род', re.U)
     gender_match = re.search(gender_re, grammar_text)
     gender = gender_table[gender_match.group(1)]

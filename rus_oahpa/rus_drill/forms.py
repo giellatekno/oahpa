@@ -146,6 +146,14 @@ CASE_CONTEXT_CHOICES = (
 	('N-MIX', _('mix')),
 )
 
+NOUN_TYPE_CHOICES =(
+	('N-FEM-3', _('feminine 3rd declension')),
+	('N-FEM-1', _('feminine 1st declension')),
+	('N-MASC-INANIM', _('masculine inanimate')),
+	('N-MASC-ANIM', _('masculine animate')),
+	('N-NEUT', _('neuter')),
+	)
+
 #
 # No inessive or essive, and no choice between nom sg. and pl, but nom sg and pl come together.
 #
@@ -1102,6 +1110,7 @@ class MorfaSettings(OahpaSettings):
 	trisyllabic = forms.BooleanField(required=False, initial=False)
 	contracted = forms.BooleanField(required=False, initial=False)
 	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
+	noun_class = forms.ChoiceField(initial='N-M-INANIM', choices=NOUN_TYPE_CHOICES, widget=forms.Select)
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
