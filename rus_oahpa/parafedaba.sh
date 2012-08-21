@@ -13,7 +13,7 @@ DPN="$DATA/nobrus"
 
 echo "==================================================="
 echo "installing tags and paradigms for Morfa-C"
-$P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>error.log
+$P install.py -r $META/paradigms.txt -t $META/tags.txt -b # 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -22,8 +22,8 @@ echo "==================================================="
 ## Trying to set up Russian
 
 echo "==================================================="
-echo "feeding db with $DPS/kompot.xml"
-$P install.py --file $DPS/kompot.xml --tagfile $META/tags.txt --paradigmfile $META/paradigms.txt 2>error.log
+echo "feeding db with $DPS/n_ru.xml"
+$P install.py --file $DPS/n_rus.xml --tagfile $META/tags.txt --paradigmfile $META/paradigms.txt # 2>error.log
 echo " "
 echo "done"
 echo "==================================================="

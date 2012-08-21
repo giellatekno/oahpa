@@ -212,27 +212,11 @@ class Entry(object):
 		# This list must be revised for Russian.
 
 		l_attrs = [
-			("attr", None),
 			("class", "wordclass"),
-			("dial", None),
-			("diph", None),
-			("gen_only", None),
-			("hid", None),
-			("margo", None),
-			("nr", None),
-			("p3p", None),
 			("pos", None),
-			("gradation", None),
-			("diphthong", None),
-			("rime", None),
-			("attrsuffix", None),
-			("compsuffix", None),
-			("soggi", None),
-			("stem", None),
-			("type", "wordtype"),
-			("umlaut", None),
-			("vow", None),
-			("xml:lang", None),
+			("animate", None),
+			("declension", None),
+			("gender", None)
 
 		]
 
@@ -710,13 +694,13 @@ class Words(object):
 
 		# Part of speech information
 		pos = entry.pos
-		hid = entry.hid
+#		hid = entry.hid
 
-		if entry.hid:
-			hid = int(entry.hid)
-			exist_kwargs['hid'] = hid
-		else:
-			hid = None
+		# if entry.hid:
+		# 	hid = int(entry.hid)
+		# 	exist_kwargs['hid'] = hid
+		# else:
+		# 	hid = None
 
 		pos = pos.upper()
 		if pos.startswith('PHRASE'):
@@ -728,26 +712,29 @@ class Words(object):
 
 		exist_kwargs['pos'] = pos
 
-		if entry.soggi:
-			soggi = entry.soggi
+		# if entry.soggi:
+		# 	soggi = entry.soggi
 
-		if entry.attrsuffix:
-			attrsuffix = entry.attrsuffix
+		# if entry.attrsuffix:
+		# 	attrsuffix = entry.attrsuffix
 
-		if entry.compsuffix:
-			compsuffix = entry.compsuffix
+		# if entry.compsuffix:
+		# 	compsuffix = entry.compsuffix
 
-		if entry.diphthong:
-			diphthong = entry.diphthong
+		# if entry.diphthong:
+		# 	diphthong = entry.diphthong
 
-		if entry.gradation:
-			gradation = entry.gradation
+		# if entry.gradation:
+		# 	gradation = entry.gradation
 
-		if entry.stem:
-			stem = entry.stem
+		# if entry.stem:
+		# 	stem = entry.stem
 
-		if entry.rime:
-			rime = entry.rime
+		# if entry.rime:
+		# 	rime = entry.rime
+		animate = None or entry.animate
+		gender = None or entry.gender
+		declension = None or entry.declension
 
 
 		trisyllabic = ['3syll', '3', 'trisyllabic']
@@ -796,21 +783,24 @@ class Words(object):
 		w.pos = pos
 		w.wordid = w.lemma = lemma
 		# w.presentationform = presentationform
-		w.stem = stem
-		w.rime = rime
-		w.compare = compare
-		w.attrsuffix = attrsuffix
-		w.compsuffix = compsuffix
-		w.soggi = soggi
-		w.gradation = gradation
-		w.diphthong = diphthong
+		# w.stem = stem
+		# w.rime = rime
+		# w.compare = compare
+		# w.attrsuffix = attrsuffix
+		# w.compsuffix = compsuffix
+		# w.soggi = soggi
+		# w.gradation = gradation
+		# w.diphthong = diphthong
+		w.gender = gender
+		w.animate = animate
+		w.declension = declension
 
 		w.valency = valency
 		w.frequency = frequency
 		OUT_STRS.append(frequency)
 		OUT_STRS.append(geography)
 		w.geography = geography
-		w.hid = hid
+#		w.hid = hid
 		w.save()
 
 		dialect_objects = []
@@ -830,14 +820,16 @@ class Words(object):
 		main_dialect = Dialect.objects.get(dialect='main')
 		ng_dialect = Dialect.objects.get(dialect=NG_DIALECT)
 
-		if entry.dial:
-			dialect, created = Dialect.objects.get_or_create(dialect=entry.dial)
-			if created:
-				dialect.name = DIALECTS[entry.dial][1]
-				dialect.save()
-			if entry.dial != NG_DIALECT:
-				dialect_objects.append(dial)
-		else:
+		# PI changed to get it out of the way
+		try:
+			if entry.dial:
+				dialect, created = Dialect.objects.get_or_create(dialect=entry.dial)
+				if created:
+					dialect.name = DIALECTS[entry.dial][1]
+					dialect.save()
+					if entry.dial != NG_DIALECT:
+						dialect_objects.append(dial)
+		except:
 			dialect = False
 
 		if entry.lemma_analyses:

@@ -131,8 +131,9 @@ class MorphPhonTag(models.Model): # redone for Russian
 	stem		 = models.CharField(max_length=20)
 	gender           = models.CharField(max_length=20)
 	animate          = models.CharField(max_length=20)
-	inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
-	stress_class     = models.CharField(max_length=20) # Zaliznyak's stress class
+	# inflection_class = models.CharField(max_length=20) # Zaliznyak's number class
+	# stress_class     = models.CharField(max_length=20) # Zaliznyak's stress class
+	declension       = models.CharField(max_length=20) # Doing it this way until an fst is up
 	reflexive        = models.NullBooleanField(blank=True)
 
 # PI: Zaliznyak's codes aren't sufficient to get the correct conjugation
@@ -150,8 +151,8 @@ class MorphPhonTag(models.Model): # redone for Russian
 		attrs = [self.stem,
 			 self.gender,
 			 self.animate,
-			 self.inflection_class,
-			 self.stress_class,
+			 self.declension,
+#			 self.stress_class,
 			 self.reflexive]
 
 		S = smart_unicode('/'.join([a for a in attrs if a.strip()])).encode('utf-8')
@@ -161,8 +162,8 @@ class MorphPhonTag(models.Model): # redone for Russian
 		unique_together = ("stem",
 				   "gender",
 				   "animate",
-				   "inflection_class",
-				   "stress_class",
+				   "declension",
+#				   "stress_class",
 				   "reflexive",)
 
 
@@ -224,8 +225,7 @@ class Word(models.Model):
 	stem = models.CharField(max_length=20)
 	animate = models.CharField(max_length=20) # PI: could be boolean?
 	gender = models.CharField(max_length=20)
-	inflection_class = models.CharField(max_length=20)
-	stress_class = models.CharField(max_length=20)
+	declension = models.CharField(max_length=20)
 	reflexive = models.NullBooleanField(blank=True)
 
 	# wordclass = models.CharField(max_length=8)
@@ -265,8 +265,7 @@ class Word(models.Model):
 				'stem':		 self.stem,
 				'gender':	self.gender,
 				'animate':	self.animate,
-				'inflection_class':	self.inflection_class,
-				'stress_class':		 self.stress_class,
+				'declension':	self.declension,
 				'reflexive':		self.reflexive,
 			}
 
