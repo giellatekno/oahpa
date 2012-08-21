@@ -1230,7 +1230,7 @@ class Klokka(NumGame):
 			elif gametype == 'numeral':
 				fstfile = self.answers_fst
 
-			output, err = self.generate_forms(forms, fstfile)
+			output, err = self.generate_forms(smart_unicode(forms), fstfile)
 
 			num_list = self.clean_fst_output(output)
 			num_list = self.strip_unknown(num_list)
