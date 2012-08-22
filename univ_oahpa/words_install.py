@@ -34,13 +34,13 @@ try:
 except:
 	print """Dialects not defined in settings.py... 
 		DIALECTS = {
-			'main': ('isma-norm.fst', 'Unrestricted'),
-			'SH': ('isma-SH.restr.fst', 'Short forms'),
-			'L': ('isma-L.restr.fst', 'Long forms'),
-			'NG': (None, 'Non-Presented forms'),
+            'main': ('oahpa-isme-norm.fst', 'Unrestricted'),
+            'GG': ('isme-GG.restr.fst', 'Western'),
+            'KJ': ('isme-KJ.restr.fst', 'Eastern'),
+            'NG': (None, 'Non-Presented forms'),
 		}
 
-		DEFAULT_DIALECT = 'SH'
+		DEFAULT_DIALECT = 'GG'
 		NONGEN_DIALECT = 'NG'
 	"""
 	sys.exit(2)
@@ -275,7 +275,21 @@ class Entry(object):
 
 		self.frequency = [_attribute(b, "class") for b in frequency]
 		self.geography = [_attribute(b, "class") for b in geography]
+		
+	def processDialects(self):  # added by Heli
+		""" Handles nodes such as...
+			<dialect class ="NOT-KJ"/>
+		"""
 
+		n = self.node
+
+		try:
+			dialect = _elements(n, "dialect")[0]
+			d = _attribute(dialect, "class")
+			self.excl_dialect = d[-2:]  # NOT-KJ -> KJ
+		except IndexError:
+			self.excl_dialect = False
+			
 
 	def _handleSemantics(self, node):
 		"""  Handles nodes such as...
@@ -404,6 +418,7 @@ class Entry(object):
 			self.exclude = _attribute(e_node, 'exclude')
 			self.processLG()
 			self.processSources()
+			self.processDialects()  # added by Heli
 			self.processMeaningGroups()
 			self.make_checksum()
 		except Exception, e:
@@ -645,6 +660,18 @@ class Words(object):
 			w.source.add(book_entry)
 			w.save()
 
+	def add_dialects(self,entry,w):
+		for dialect, dial_data in DIALECTS.items():  # fill the dialect field of the Word object - added by Heli
+			dial, created = Dialect.objects.get_or_create(dialect=dialect)
+			if created:
+				if VERBOSE:
+					print >> _STDOUT, "Added dialects to Word ", dialect.encode('utf-8')
+			dial.name = dial_data[1]
+			dial.save()
+			if dialect != NG_DIALECT and dialect != entry.excl_dialect:
+				w.dialects.add(dial)
+				w.save()
+    
 	def store_word(self,entry,linginfo,mainlang,paradigmfile,delete,append_only=False):
 		OUT_STRS = []
 		ERR_STRS = []
@@ -655,7 +682,7 @@ class Words(object):
 		# Intialize null variables
 		stem, forms, gradation, rime						=	[""]*4
 		wordclass, attrsuffix, compsuffix, soggi, valency	=	[""]*5
-		compare, frequency, geography, presentationform	=	[""]*4
+		compare, frequency, geography, presentationform, excl_dialect	=	[""]*5
 
 		diphthong = "no"
 		
@@ -689,6 +716,9 @@ class Words(object):
 
 		if entry.geography:
 			geography = entry.geography[0]
+			
+		if entry.excl_dialect:  # Heli
+			excl_dialect = entry.excl_dialect
 
 		# Part of speech information
 		pos = entry.pos
@@ -789,13 +819,12 @@ class Words(object):
 			w.soggi = soggi
 			w.gradation = gradation
 			w.diphthong = diphthong
-
 			w.valency = valency
 			w.frequency = frequency
 			OUT_STRS.append(frequency)
 			OUT_STRS.append(geography)
 			w.geography = geography
-			w.hid = hid
+			w.hid = hid 
 			w.save()
 
 		dialect_objects = []
@@ -991,6 +1020,10 @@ class Words(object):
 		if changes_to_xml:
 			if entry.sources:
 				self.add_sources(entry, w)
+        
+		if changes_to_xml:
+			if excl_dialect:
+				self.add_dialects(entry, w)
 		
 		if changes_to_xml:
 			for mgroup in entry.meanings:
