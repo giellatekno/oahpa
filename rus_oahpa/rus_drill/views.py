@@ -652,6 +652,7 @@ class Morfaview(Gameview):
 	def additional_settings(self, settings_form):
 
 		self.settings['allcase'] = settings_form.allcase
+		self.settings['allnoun_class'] = settings_form.allnoun_class
 #		self.syll_settings(settings_form)
 		self.settings['allnum_type'] = settings_form.allnum_type  # added by Heli
 

@@ -338,118 +338,120 @@ class BareGame(Game):
 		'': '',
 	}
 
-	def get_db_info_new(self, db_info):
 
-		from .forms import GAME_TYPE_DEFINITIONS
-		from .forms import GAME_FILTER_DEFINITIONS
+	# PI: commented out, as it seems to be WIP
+	# def get_db_info_new(self, db_info):
 
-		if 'pos' in self.settings:
-			pos = self.settings['pos']
+	# 	from .forms import GAME_TYPE_DEFINITIONS
+	# 	from .forms import GAME_FILTER_DEFINITIONS
 
-		# Where to find the game type for each POS
-		pos_gametype_keys = {
-			'N': ('case', 'number'),
-			'V': 'vtype',
-			'Der': 'derivation_type',
-			'A': 'adjcase',
-			'Num': 'num_bare',
-			'Pron': 'proncase',
-		}
-		game_type_location = pos_gametype_keys.get(pos, False)
-		gametype = self.settings.get(game_type_location, False)
+	# 	if 'pos' in self.settings:
+	# 		pos = self.settings['pos']
 
-		if not game_type_location:
-			raise Http404("Undefined POS-form relationship, or wrong type.")
+	# 	# Where to find the game type for each POS
+	# 	pos_gametype_keys = {
+	# 		'N': ('case', 'number'),
+	# 		'V': 'vtype',
+	# 		'Der': 'derivation_type',
+	# 		'A': 'adjcase',
+	# 		'Num': 'num_bare',
+	# 		'Pron': 'proncase',
+	# 	}
+	# 	game_type_location = pos_gametype_keys.get(pos, False)
+	# 	gametype = self.settings.get(game_type_location, False)
 
-		if not gametype:
-			raise Http404("Game type was not set on the form object.")
+	# 	if not game_type_location:
+	# 		raise Http404("Undefined POS-form relationship, or wrong type.")
 
-
-		game_types = GAME_TYPE_DEFINITIONS.get(pos, False)
-		game_filters = GAME_FILTER_DEFINITIONS.get(pos, False)
-
-		if not game_types:
-			raise Http404("Undefined POS in game_type_definitions")
+	# 	if not gametype:
+	# 		raise Http404("Game type was not set on the form object.")
 
 
-		possible_types = game_types.get(gametype, False)
-		if not possible_types:
-			raise Http404("Undefined type %s" % gametype)
+	# 	game_types = GAME_TYPE_DEFINITIONS.get(pos, False)
+	# 	game_filters = GAME_FILTER_DEFINITIONS.get(pos, False)
 
-		question, answer = choice(possible_types)
-
-		answer_tags = parse_tag(answer)
-
-		TAG_QUERY = Q(string__in=answer_tags)
-
-		tags = Tag.objects.filter(TAG_QUERY).order_by('?')
-
-		if len(tags) == 0:
-			t_q = str(TAG_QUERY)
-			raise Http404("Oops, no tags matching query!\n\n\t\n%s" % t_q)
+	# 	if not game_types:
+	# 		raise Http404("Undefined POS in game_type_definitions")
 
 
-		# Pronoun type and grade must be filtered here because it affects the
-		# set of tags available for the next step.
+	# 	possible_types = game_types.get(gametype, False)
+	# 	if not possible_types:
+	# 		raise Http404("Undefined type %s" % gametype)
 
-		# TODO: grade
+	# 	question, answer = choice(possible_types)
 
-		# PI: temporary removal
-		# if 'pron_type' in game_filters:
-		# 	ptype = True and self.settings.get('pron_type') or False
-		# 	# print ptype
-		# 	if ptype:
-		# 		tags = tags.filter(subclass=ptype)
-		# 		# print tags
+	# 	answer_tags = parse_tag(answer)
 
-		# select a random tag and set of forms associated with it to begin
-		tag = tags[0]
-		random_form = tag.form_set.order_by('?')
+	# 	TAG_QUERY = Q(string__in=answer_tags)
 
-		no_forms = True
-		failure_count = 0
+	# 	tags = Tag.objects.filter(TAG_QUERY).order_by('?')
 
-		while no_forms and failure_count < 10:
+	# 	if len(tags) == 0:
+	# 		t_q = str(TAG_QUERY)
+	# 		raise Http404("Oops, no tags matching query!\n\n\t\n%s" % t_q)
 
-			for filter_ in game_filters:
-				if filter_ == 'source':
-					source = True and self.settings.get('book') or False
-					if source:
-						random_form = random_form.filter(word__source__name__in=[source])
 
-				# if filter_ == 'stem':
-				# 	bisyl = ['2syll', 'bisyllabic']
-				# 	trisyl = ['3syll', 'trisyllabic']
-				# 	Csyl = ['Csyll', 'contracted'] # added for sme
+	# 	# Pronoun type and grade must be filtered here because it affects the
+	# 	# set of tags available for the next step.
 
-				# 	syll = True and	self.settings.get('syll') or ['']
+	# 	# TODO: grade
 
-				# 	sylls = []
-				# 	for item in syll:
-				# 		if item in bisyl:
-				# 			sylls.append('2syll')
-				# 		if item in trisyl:
-				# 			sylls.append('3syll')
-				# 		if item in Csyl:
-				# 			sylls.append('Csyll')
+	# 	# PI: temporary removal
+	# 	# if 'pron_type' in game_filters:
+	# 	# 	ptype = True and self.settings.get('pron_type') or False
+	# 	# 	# print ptype
+	# 	# 	if ptype:
+	# 	# 		tags = tags.filter(subclass=ptype)
+	# 	# 		# print tags
 
-				# 	random_form = random_form.filter(word__stem__in=sylls)
+	# 	# select a random tag and set of forms associated with it to begin
+	# 	tag = tags[0]
+	# 	random_form = tag.form_set.order_by('?')
 
-			# If there are forms left, we select one
-			if random_form.count() > 0:
-				no_forms = False
-				break
-			else:
-				# Otherwise try a new tag and form set and run through the
-				# filters again
-				tag = tags.order_by('?')[0]
-				random_form = tag.form_set.order_by('?')
-				failure_count += 1
-				continue
+	# 	no_forms = True
+	# 	failure_count = 0
 
-		random_form = random_form[0]
-		db_info['word_id'] = random_form.word.id
-		db_info['tag_id'] = tag.id
+	# 	while no_forms and failure_count < 10:
+
+	# 		for filter_ in game_filters:
+	# 			if filter_ == 'source':
+	# 				source = True and self.settings.get('book') or False
+	# 				if source:
+	# 					random_form = random_form.filter(word__source__name__in=[source])
+
+	# 			# if filter_ == 'stem':
+	# 			# 	bisyl = ['2syll', 'bisyllabic']
+	# 			# 	trisyl = ['3syll', 'trisyllabic']
+	# 			# 	Csyl = ['Csyll', 'contracted'] # added for sme
+
+	# 			# 	syll = True and	self.settings.get('syll') or ['']
+
+	# 			# 	sylls = []
+	# 			# 	for item in syll:
+	# 			# 		if item in bisyl:
+	# 			# 			sylls.append('2syll')
+	# 			# 		if item in trisyl:
+	# 			# 			sylls.append('3syll')
+	# 			# 		if item in Csyl:
+	# 			# 			sylls.append('Csyll')
+
+	# 			# 	random_form = random_form.filter(word__stem__in=sylls)
+
+	# 		# If there are forms left, we select one
+	# 		if random_form.count() > 0:
+	# 			no_forms = False
+	# 			break
+	# 		else:
+	# 			# Otherwise try a new tag and form set and run through the
+	# 			# filters again
+	# 			tag = tags.order_by('?')[0]
+	# 			random_form = tag.form_set.order_by('?')
+	# 			failure_count += 1
+	# 			continue
+
+	# 	random_form = random_form[0]
+	# 	db_info['word_id'] = random_form.word.id
+	# 	db_info['tag_id'] = tag.id
 
 
 
@@ -464,6 +466,7 @@ class BareGame(Game):
 		syll = True and	self.settings.get('syll')	or ['']
 		case = True and	self.settings.get('case')	or   ""
 		number = self.settings.get('number', '')
+		noun_class = self.settings.get('noun_class', '')
 #		levels = True and self.settings.get('level')   or   []
 		adjcase = True and self.settings.get('adjcase') or   ""
 		pron_type = True and self.settings.get('pron_type') or   ""
@@ -476,14 +479,7 @@ class BareGame(Game):
 		mood, tense, infinite, attributive = "", "", "", ""
 
 		num_bare = ""
-		# if self.settings.has_key('syll'):
-		# 	syll = self.settings['syll']
-		# if self.settings.has_key('case'):
-		# 	case = self.settings['case']
-		# if self.settings.has_key('level'):
-		# 	levels = self.settings['level']
-		# if self.settings.has_key('adjcase'):
-		# 	adjcase = self.settings['adjcase']
+
 		if 'source' in self.settings:  # was: book, but in forms.py it is called source
 			source = self.settings['source']
 			if source.lower() != 'all':
@@ -622,7 +618,10 @@ class BareGame(Game):
 				return list(product(*map(make_list, tags)))
 
 			tag_string = []
-			for item in tag.split('+'):
+
+			normalized_tag = [tagname.lower().capitalize() for tagname in tag.split('+')]
+
+			for item in normalized_tag:
 				if Tagname.objects.filter(tagname=item).count() > 0:
 					tag_string.append(item)
 				elif Tagset.objects.filter(tagset=item).count() > 0:
@@ -633,6 +632,7 @@ class BareGame(Game):
 				return ['+'.join(item) for item in fill_out(tag_string)]
 			else:
 				return False
+
 
 		if pos == "Der":
 			derivation_types = {
@@ -654,6 +654,8 @@ class BareGame(Game):
 			if pos == 'N':
 				TAG_QUERY = TAG_QUERY & \
 							Q(number=number)
+
+
 
 			# 'Pers' subclass for pronouns, otherwise none.
 			# TODO: combine all subclasses so forms can be fetched
@@ -764,6 +766,20 @@ class BareGame(Game):
 		# 	UI_Dialect = DEFAULT_DIALECT
 
 		try:
+
+			WORD_FILTER = Q()
+			normalized_noun_class = [item.lower().capitalize() for item in noun_class.split('-')]
+			for item in normalized_noun_class:
+				tagname = Tagname.objects.get(tagname=item)
+				tagset = tagname.tagset
+				# Oh Lisp macros, where are ye?
+				if tagset.tagset == 'Animate':
+					WORD_FILTER = WORD_FILTER & Q(word__animate=tagname.tagname.lower())
+				elif tagset.tagset == 'Declension':
+					WORD_FILTER = WORD_FILTER & Q(word__declension=tagname.tagname.lower())
+				elif tagset.tagset == 'Gender':
+					WORD_FILTER = WORD_FILTER & Q(word__gender=tagname.tagname.lower())
+
 			tag = tags.order_by('?')[0]
 			no_form = True
 			count = 0
@@ -774,7 +790,7 @@ class BareGame(Game):
 				if tag.pos == 'Pron':
 					tag = tags.order_by('?')[0]
 
-				random_word = tag.form_set.filter(word__language=L1)
+				random_word = tag.form_set.filter(WORD_FILTER, word__language=L1)
 
 				# PI: commented out, b/c at this stage
 				# where the Morfa-S semtype has not
@@ -1143,8 +1159,6 @@ class NumGame(Game):
 		# production paths
 		lookup = "%s\n" % db_info['numeral_id']
 		output, err = self.generate_forms(lookup, fstfile)
-
-		#import pdb; pdb.set_trace()
 
 		num_tmp = output.splitlines()
 		num_list = []

@@ -87,7 +87,7 @@ NOUN_QUESTION_ANSWER = {
 	'N-ESS': [('N+NumberN+Nom', 'N+Ess')],
 }
 
-NOUN_FILTER_DEFINITION = ['stem', 'source']
+NOUN_FILTER_DEFINITION = ['animacy', 'declension', 'gender', 'source']
 
 # Pers - akk, gen, ill, lok, kom
 # Dem - akk, gen, ill, lok, kom
@@ -663,6 +663,7 @@ def set_settings(self):
 	self.sources = dict(BOOK_CHOICES).keys()
 	self.geography = dict(GEOGRAPHY_CHOICES).keys()
 	self.frequency = dict(FREQUENCY_CHOICES).keys() # added by Heli
+	self.allnoun_class = dict(NOUN_TYPE_CHOICES).keys() # added by Pavel
 
 
 # comment
@@ -858,7 +859,8 @@ class OahpaSettings(forms.Form):
 					'frequency' : [],
 					'num_bare' : 'N-NOM', # Need a new default case here
 					'adj_context' : 'ATTRPOS',
-					'source' : 'all'}
+					'source' : 'all',
+					'noun_class': 'N-MASC-INANIM'}
 
 
 
@@ -1110,7 +1112,9 @@ class MorfaSettings(OahpaSettings):
 	trisyllabic = forms.BooleanField(required=False, initial=False)
 	contracted = forms.BooleanField(required=False, initial=False)
 	grade = forms.ChoiceField(initial='POS', choices=GRADE_CHOICES, widget=forms.Select)
-	noun_class = forms.ChoiceField(initial='N-M-INANIM', choices=NOUN_TYPE_CHOICES, widget=forms.Select)
+
+	# PI added
+	noun_class = forms.ChoiceField(initial='N-MASC-INANIM', choices=NOUN_TYPE_CHOICES, widget=forms.Select)
 
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
