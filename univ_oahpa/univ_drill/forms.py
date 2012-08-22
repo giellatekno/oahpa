@@ -2065,7 +2065,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 				msg_id = msg_el.msgid  # added
 				print msg_id
 				message_ids.append(msg_id)  # added
-				message = message.replace("WORDFORM","\"" + force_unicode(w).encode('utf-8') + "\"") 
+				#w = force_unicode(w).encode('utf-8')
+				message = message.replace("WORDFORM","\"" + force_unicode(w) + "\"") 
 				msg.append(message)
 				if not spelling:
 					found=True
