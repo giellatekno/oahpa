@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from sjdoahpa.sjd_drill.models import *
-from sjdoahpa.sjd_drill.forms import *
+from smsoahpa.sms_drill.models import *
+from smsoahpa.sms_drill.forms import *
 
-from sjdoahpa.conf.tools import switch_language_code
+from smsoahpa.conf.tools import switch_language_code
 
 from django.db.models import Q, Count
 from django.http import HttpResponse, Http404
@@ -15,7 +15,7 @@ import os
 import re
 import itertools
 
-import sjdoahpa.settings
+import smsoahpa.settings
 
 # DEBUG = open('/dev/ttys001', 'w')
 
@@ -23,23 +23,23 @@ from random import choice
 from .forms import PRONOUNS_LIST
 
 try:
-	L1 = sjdoahpa.settings.L1
+	L1 = smsoahpa.settings.L1
 except:
-	L1 = 'sjd'  # was: sme
+	L1 = 'sms'  # was: sme
 
 try:
-	LOOKUP_TOOL = sjdoahpa.settings.LOOKUP_TOOL
+	LOOKUP_TOOL = smsoahpa.settings.LOOKUP_TOOL
 except:
 	LOOKUP_TOOL = 'lookup'
 
 
 try:
-	FST_DIRECTORY = sjdoahpa.settings.FST_DIRECTORY
+	FST_DIRECTORY = smsoahpa.settings.FST_DIRECTORY
 except:
 	FST_DIRECTORY = False
 
 try:
-	DEFAULT_DIALECT = sjdoahpa.settings.DEFAULT_DIALECT
+	DEFAULT_DIALECT = smsoahpa.settings.DEFAULT_DIALECT
 except:
 	DEFAULT_DIALECT = None
 
@@ -998,8 +998,8 @@ class BareGame(Game):
 
 
 class NumGame(Game):
-	generate_fst = 'sjd-num.fst'
-	answers_fst = 'sjd-inum.fst'
+	generate_fst = 'sms-num.fst'
+	answers_fst = 'sms-inum.fst'
 	
 	def get_db_info(self, db_info):
 		""" Options supplied by views
@@ -1171,8 +1171,8 @@ class Klokka(NumGame):
 
 	QuestionForm = KlokkaQuestion
 	
-	generate_fst = 'iclock-sjd.fst'
-	answers_fst = 'clock-sjd.fst'
+	generate_fst = 'iclock-sms.fst'
+	answers_fst = 'clock-sms.fst'
 
 	error_msg = "Morfa.Klokka.create_form: Database is improperly loaded, \
 					 or Numra is unable to look up words."
@@ -1307,8 +1307,8 @@ class Dato(Klokka):
 
 	# QuestionForm = DatoQuestion
 	
-	generate_fst = 'idate-sjd.fst'
-	answers_fst = 'date-sjd.fst'
+	generate_fst = 'idate-sms.fst'
+	answers_fst = 'date-sms.fst'
 
 	error_msg = "Dato.create_form: Database is improperly loaded, \
 					 or Dato is unable to look up forms."

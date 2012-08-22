@@ -6,7 +6,7 @@ from optparse import make_option
 
 import sys
 
-from sjd_drill.models import Tag
+from sms_drill.models import Tag
 
 def merge(queryset):
     main = queryset[0]

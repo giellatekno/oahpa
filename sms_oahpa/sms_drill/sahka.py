@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from sjdoahpa.sjd_drill.models import *
-from sjdoahpa.sjd_drill.forms import *
+from smsoahpa.sms_drill.models import *
+from smsoahpa.sms_drill.forms import *
 from django.db.models import Q
-from sjdoahpa.sjd_drill.game import Game
+from smsoahpa.sms_drill.game import Game
 from random import randint
 
 class SahkaGame(Game):

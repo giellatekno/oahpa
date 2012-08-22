@@ -4,13 +4,13 @@ from django.db.models import Q
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import force_unicode
-import sjdoahpa.settings as settings
+import smsoahpa.settings as settings
 
-from sjdoahpa.conf.tools import switch_language_code
+from smsoahpa.conf.tools import switch_language_code
 
 from models import *
 #from game import * 
-#from sjd_oahpa.sjd_drill.game import relax
+#from sms_oahpa.sms_drill.game import relax
 import datetime
 import socket
 import sys, os
@@ -327,16 +327,16 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
-	('sjdrus', _('Kildin Sami to Russian')),
-	('russjd', _('Russian to Kildin Sami')),
-#	('sjdeng', _('Kildin Sami to English')),
-#	('engsjd', _('English to Kildin Sami')),
-#	('sjdfin', _('North Sami to Finnish')),
-#	('finsjd', _('Finnish to North Sami')),
-#   ('sjdnob', _('Kildin Sami to Norwegian')),
-#	('nobsjd', _('Norwegian to Kildin Sami')),
-#	('sjdsme', _('Kildin Sami to North Sami')),
-#	('smesjd', _('North Sami to Kildin Sami')),
+	('smsrus', _('Skolt Sami to Russian')),
+	('russms', _('Russian to Skolt Sami')),
+#	('smseng', _('Skolt Sami to English')),
+#	('engsms', _('English to Skolt Sami')),
+#	('smsfin', _('Skolt Sami to Finnish')),
+#	('finsms', _('Finnish to Skolt Sami')),
+#   ('smsnob', _('Skolt Sami to Norwegian')),
+#	('nobsms', _('Norwegian to Skolt Sami')),
+#	('smssme', _('Skolt Sami to North Sami')),
+#	('smesms', _('North Sami to Skolt Sami')),
 )
 
 NUMLANGUAGE_CHOICES = (
@@ -344,8 +344,8 @@ NUMLANGUAGE_CHOICES = (
 #	('smj', _('Lule Sami')),
 #	('sma', _('South Sami')),
 #	('smn', _('Inari Sami')),
-	('sjd', _('Kildin Sami')),
-#	('sms', _('Skolt Sami')),
+	('sms', _('Skolt Sami')),
+#	('sjd', _('Kildin Sami')),
 #	('fin', _('Finnish')),
 )
 
@@ -505,8 +505,8 @@ GAME_FILTER_DEFINITIONS = {
 
 import re
 
-from sjdoahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
-from sjdoahpa.settings import INFINITIVE_ADD as infinitives_add
+from smsoahpa.settings import INFINITIVE_SUBTRACT as infinitives_sub
+from smsoahpa.settings import INFINITIVE_ADD as infinitives_add
 
 def relax(strict):
 	"""Returns a list of relaxed possibilities, making changes by relax_pairs.
@@ -912,7 +912,7 @@ class OahpaQuestion(forms.Form):
 		forms = []
 		relaxings = []
 		if hasattr(self, 'translang'):
-			if self.translang == 'sjd':   # was: sme
+			if self.translang == 'sms':   # was: sme
  				# Relax spellings.
 				accepted_answers = [force_unicode(item) for item in accepted_answers]
 				forms = sum([relax(force_unicode(item)) for item in accepted_answers], [])
@@ -961,7 +961,7 @@ class LeksaSettings(OahpaSettings):
 	source = forms.ChoiceField(initial='all', choices=BOOK_CHOICES)
 	# level = forms.ChoiceField(initial='all', choices=LEVEL_CHOICES, widget=forms.Select(attrs={'onchange':'javascript:return SetIndex(document.gameform.semtype,this.value);',}))
 	
-	default_data = {'gametype' : 'bare', 'language' : 'sjd', 'dialogue' : 'GG', 
+	default_data = {'gametype' : 'bare', 'language' : 'sms', 'dialogue' : 'GG', 
 			'syll' : [], 
 			'bisyllabic': False,
 			'trisyllabic': False,
@@ -1279,9 +1279,9 @@ class MorfaQuestion(OahpaQuestion):
 class NumSettings(OahpaSettings):
 	maxnum = forms.ChoiceField(initial='10', choices=NUM_CHOICES, widget=forms.RadioSelect)
 	numgame = forms.ChoiceField(initial='numeral', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
-	#numlanguage = forms.ChoiceField(initial='sjd', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
+	#numlanguage = forms.ChoiceField(initial='sms', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
 	# TODO: remove mandatory need to set default data, should be done through 'initial' field setting.
-	default_data = {'language' : 'rus', 'numlanguage' : 'sjd', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
+	default_data = {'language' : 'rus', 'numlanguage' : 'sms', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'numeral'}
 					
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1387,7 +1387,7 @@ class NumQuestion(OahpaQuestion):
 class KlokkaSettings(NumSettings):
 	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES_PL, widget=forms.RadioSelect)
 	gametype = forms.ChoiceField(initial='kl1', choices=KLOKKA_CHOICES, widget=forms.RadioSelect)
-	default_data = {'language' : 'rus', 'numlanguage' : 'sjd', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
+	default_data = {'language' : 'rus', 'numlanguage' : 'sms', 'dialogue' : 'GG', 'gametype' : 'kl1', 'numgame': 'string'}
 					
 	def __init__(self, *args, **kwargs):
 		self.set_settings()
@@ -1536,7 +1536,7 @@ class KlokkaQuestion(NumQuestion):
 class DatoSettings(KlokkaSettings):
 	gametype = None # Disable gametype (easy, medium, hard)
 
-	default_data = {'language' : 'rus', 'numlanguage' : 'sjd', 'numgame': 'string'}
+	default_data = {'language' : 'rus', 'numlanguage' : 'sms', 'numgame': 'string'}
 
 
 class DatoQuestion(KlokkaQuestion):
@@ -1814,7 +1814,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    #logfile = open('/home/sjd_oahpa/sjd_oahpa/sjd_drill/vastaF_log.txt','w')
+    #logfile = open('/home/sms_oahpa/sms_oahpa/sms_drill/vastaF_log.txt','w')
     
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
@@ -2286,7 +2286,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
     qtext = question
     qtext = qtext.rstrip('.!?,')
 
-    logfile = open('/home/sjdoahpa/sjdoahpa/sjd_drill/vastas_log.txt', 'w')
+    logfile = open('/home/smsoahpa/smsoahpa/sms_drill/vastas_log.txt', 'w')
     host = 'localhost'
     port = 9000  # was: 9000, TODO - add to settings.py
     size = 1024

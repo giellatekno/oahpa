@@ -40,7 +40,7 @@ def _firstelement(e, x):
         return None
 
 
-from sjd_drill.models import Tagname, Tagset, Form
+from sms_drill.models import Tagname, Tagset, Form
 
 def parse_tag(tag):
     """ Iterate through a tag string by chunks, and check for tag sets
@@ -1178,7 +1178,7 @@ class Command(BaseCommand):
     )
 
     def test_agreement(self):
-        fname = 'sjd_drill/management/commands/testquestions_agreement_defs.yaml'
+        fname = 'sms_drill/management/commands/testquestions_agreement_defs.yaml'
 
         agr = Agreement(fname)
 
@@ -1255,7 +1255,7 @@ class Command(BaseCommand):
 
         qpath = options['questionfile']
         gpath = options['grammarfile']
-        agreement_defs = 'sjd_drill/management/commands/testquestions_agreement_defs.yaml'
+        agreement_defs = 'sms_drill/management/commands/testquestions_agreement_defs.yaml'
 
         iterations = int(options['itercount'])
         test_qid = options['qid']
