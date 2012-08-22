@@ -1,8 +1,8 @@
 from django.conf.urls.defaults import *
 
 # Example wordpress ID:
-# http://oahpa.uit.no:8080/sjd_oahpa/openid/ryan
-# http://oahpa.uit.no/sjd_oahpa/openid/ryan
+# http://oahpa.uit.no:8080/sms_oahpa/openid/ryan
+# http://oahpa.uit.no/sms_oahpa/openid/ryan
 
 # TODO: oahpa or wordpress are doing weird things with usernames in WP, which get set to a url.
 #       need to fix this 

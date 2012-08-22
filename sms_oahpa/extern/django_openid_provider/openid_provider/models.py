@@ -42,5 +42,5 @@ class TrustedRoot(models.Model):
 # from signals import create_openid
 # 
 # post_save.connect(create_openid, sender=User, 
-# 	dispatch_uid="sjd_oahpa.openid_provider.models.post_save")
+# 	dispatch_uid="sms_oahpa.openid_provider.models.post_save")
 
