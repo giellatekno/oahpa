@@ -14,23 +14,20 @@
 
 
 {% block veiledning %}
-{% ifequal LANGUAGE_CODE "sme" %}
+<!--{% ifequal LANGUAGE_CODE "sms" %}
 http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.html
-{% endifequal %}
+{% endifequal %}-->
 {% ifequal LANGUAGE_CODE "fi" %}
 http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.fin.html
-{% endifequal %}
-{% ifequal LANGUAGE_CODE "en" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.eng.html
-{% endifequal %}
-{% ifequal LANGUAGE_CODE "no" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.nno.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "ru" %}
 http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.rus.html
 {% endifequal %}
-{% ifequal LANGUAGE_CODE "sv" %}
+{% ifequal LANGUAGE_CODE "no" %}
 http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.nno.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "en" %}
+http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.eng.html
 {% endifequal %}
 {% endblock %}
 
