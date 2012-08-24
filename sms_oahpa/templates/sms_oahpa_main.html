@@ -41,29 +41,18 @@
 					<dd>
 						<input name="next" type="hidden" value="{% block pagename %}{% endblock %}" />
 						<select id="language_select" name="language" onChange="javascript:this.form.submit();">
-						
-						{% ifequal LANGUAGE_CODE "ru" %}
-							<option value="ru" selected="selected">Pусский язык</option>
-						{% else %}
-							<option value="ru">Pусский язык</option>
-						{% endifequal %}
-						
-						{% ifequal LANGUAGE_CODE "sms" %}
-							<option value="sms" selected="selected">Skolt Sámi</option>
-						{% else %}
-							<option value="sms">Skolt Sámi</option>
-						{% endifequal %}
-						
-						{% ifequal LANGUAGE_CODE "en" %}
-							<option value="en" selected="selected">English</option>
-						{% else %}
-							<option value="en">English</option>
-						{% endifequal %}
 
+						  
 						{% ifequal LANGUAGE_CODE "no" %}
 							<option value="no" selected="selected">Norsk</option>
 						{% else %}
 							<option value="no">Norsk</option>
+						{% endifequal %}
+							  
+						{% ifequal LANGUAGE_CODE "ru" %}
+							<option value="ru" selected="selected">Pусский язык</option>
+						{% else %}
+							<option value="ru">Pусский язык</option>
 						{% endifequal %}
 							  
 						{% ifequal LANGUAGE_CODE "fi" %}
@@ -71,12 +60,13 @@
 						{% else %}
 						 	<option value="fi">Suomi</option> 
 						{% endifequal %}
-                                                {% ifequal LANGUAGE_CODE "sme" %}
-							<option value="sme" selected="selected">Davvisámi</option>
+							  
+						{% ifequal LANGUAGE_CODE "en" %}
+							<option value="en" selected="selected">English</option>
 						{% else %}
-							<option value="sme">Davvisámi</option>
+							<option value="en">English</option>
 						{% endifequal %}
-						 
+
 					</select>
 					</dd>
 				</dl>
