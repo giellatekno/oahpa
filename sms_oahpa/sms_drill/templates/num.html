@@ -12,22 +12,24 @@
 {% block gametitlename %}NUMRA{% endblock %}
 {% block imgprefix %}numra{% endblock %}
 
-
 {% block veiledning %}
-<!--{% ifequal LANGUAGE_CODE "sms" %}
+{% ifequal LANGUAGE_CODE "sme" %}
 http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.html
-{% endifequal %}-->
+{% endifequal %}
 {% ifequal LANGUAGE_CODE "fi" %}
 http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.fin.html
 {% endifequal %}
-{% ifequal LANGUAGE_CODE "ru" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.rus.html
+{% ifequal LANGUAGE_CODE "en" %}
+http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.eng.html
 {% endifequal %}
 {% ifequal LANGUAGE_CODE "no" %}
 http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.nno.html
 {% endifequal %}
-{% ifequal LANGUAGE_CODE "en" %}
-http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.eng.html
+{% ifequal LANGUAGE_CODE "ru" %}
+http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.rus.html
+{% endifequal %}
+{% ifequal LANGUAGE_CODE "sv" %}
+http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.nno.html
 {% endifequal %}
 {% endblock %}
 
@@ -46,7 +48,7 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/numra.eng.html
   {% ifequal gametype "string" %}
     {% trans "Enter the numeral. (Ex. 8)" %}
   {% else %}
-    {% trans "Enter the Skolt Sámi number. (Ex. kääuˊc)." %}
+    {% trans "Enter the Kildin Sámi number. (Ex. аххц)." %}
   {% endifequal %}
 {% endblock %}
 
