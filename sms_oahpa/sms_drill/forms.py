@@ -327,17 +327,17 @@ VASTAS_NR_OF_TASKWORDS = (
 )
 
 TRANS_CHOICES = (
+	('smsnob', _('Skolt Sami to Norwegian')),
+	('nobsms', _('Norwegian to Skolt Sami')),
 	('smsrus', _('Skolt Sami to Russian')),
 	('russms', _('Russian to Skolt Sami')),
-#	('smseng', _('Skolt Sami to English')),
-#	('engsms', _('English to Skolt Sami')),
-#	('smsfin', _('Skolt Sami to Finnish')),
-#	('finsms', _('Finnish to Skolt Sami')),
-#   ('smsnob', _('Skolt Sami to Norwegian')),
-#	('nobsms', _('Norwegian to Skolt Sami')),
+	('smsfin', _('Skolt Sami to Finnish')),
+	('finsms', _('Finnish to Skolt Sami')),
+	('smseng', _('Skolt Sami to English')),
+	('engsms', _('English to Skolt Sami')),
 #	('smssme', _('Skolt Sami to North Sami')),
 #	('smesms', _('North Sami to Skolt Sami')),
-)
+	)
 
 NUMLANGUAGE_CHOICES = (
 #	('sme', _('North Sami')),
