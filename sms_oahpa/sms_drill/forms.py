@@ -350,32 +350,11 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-	('KIN', _('family')), 
     ('HUMAN', _('human')), 
     ('ANIMAL_FISH', _('animal/fish')),
-    ('BODY', _('body')),
     ('FOOD_DRINK', _('food/drink')),
-    ('TIME', _('time')),
-    ('CLOTHING', _('clothes')),
-    ('HEALTH', _('health')),
-    ('PLACE', _('place')),
-    ('PLACE_DOMESTIC', _('domestic place')),
-    ('TRAVELING', _('travel')),
-    ('WEATHER', _('weather')),
     ('NATURE_PHENOMENA', _('nature')),
-    ('PLANT', _('plant')),
-    ('HANDICRAFT', _('handicraft')),
-    ('GRAMMAR_TERMINOLOGY', _('grammar terminology')),
-    ('EDUCATION', _('school/education')),
-    ('EXPRESSIONS', _('expressions')),
-    ('CHURCH', _('church')),
     ('ABSTRACT_CONCEPTS', _('abstract')), 
-    ('VERB1', _('easy verbs')),
-    ('VERB2', _('intermediate verbs')),
-    ('VERB3', _('difficult verbs')),
-    ('PRONOUN', _('pronoun')),
-    ('NAME', _('name')),
-    ('DIMINUTIVE', _('diminutive')),
     ('all', _('all')),
 )
 
