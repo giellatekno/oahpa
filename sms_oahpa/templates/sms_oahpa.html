@@ -72,10 +72,17 @@
 	<strong>{% trans "Reference materials" %}</strong>
 	<ul class="sidelist small">
 		<li><a href="{% block veiledning %}{% endblock %}">{% trans "Veiledning" %}</a></li>
+        {% ifequal LANGUAGE_CODE "no" %}
+            <li><a href="http://victorio.uit.no/webdict/index_sms-nob.html">{% trans "Dictionary" %}</a></li>
+        {% endifequal %}
         {% ifequal LANGUAGE_CODE "fi" %}
             <li><a href="http://victorio.uit.no/webdict/index_sms-fin.html">{% trans "Dictionary" %}</a></li>
-        {% else %}
-            <li><a href="http://victorio.uit.no/webdict/index_sms-nob.html">{% trans "Dictionary" %}</a></li>
+        {% endifequal %}
+        {% ifequal LANGUAGE_CODE "en" %}
+            <li><a href="http://victorio.uit.no/webdict/index_sms-eng.html">{% trans "Dictionary" %}</a></li>
+        {% endifequal %}
+        {% ifequal LANGUAGE_CODE "ru" %}
+            <li><a href="http://victorio.uit.no/webdict/index_sms-rus.html">{% trans "Dictionary" %}</a></li>
         {% endifequal %}
         {% ifequal LANGUAGE_CODE "no" %}
             <li><a href="http://oahpa.no/sms/grammar/grammar.html">{% trans "Grammar" %}</a></li>
