@@ -145,7 +145,7 @@ class Sahka:
                                                                topic=t,\
                                                                name=u['name'])
                 if u['word']:
-                    _msg = "Adding wordlist", u['text']
+                    _msg = "Adding wordlist " + u['text']
                     print >> sys.stdout, _msg.encode('utf-8')
                     self.add_wordlist(u['word'],utt)
                 utt.save()
