@@ -81,7 +81,7 @@ class Questions:
 			syntax = el_id
 		
 		if not el:
-			_msg = syntax, "No element given."
+			_msg = "\t%s - %s" % (syntax, "No element given.")
 			print '\t', _msg.encode('utf-8')
 
 		# Some of the answer elements share content of question elements.
