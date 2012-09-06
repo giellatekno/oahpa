@@ -780,7 +780,11 @@ def select_words(self, qwords, awords):
 								tag__id=selected_awords[syntax]['tag'],
 							)
 				
-				excl = form_list.exclude(dialects__dialect='NG')
+				if dialect == 'KJ':  # dialect selection for the Word objects
+				    wrong_dialect = 'GG'
+				else:
+				    wrong_dialect = 'KJ'
+				excl = form_list.exclude(dialects__dialect='NG').exclude(word__dialects__dialect=wrong_dialect)  # added by Heli
 
 				if excl.count() > 0:
 					form_list = excl
@@ -1146,6 +1150,7 @@ class MorfaQuestion(OahpaQuestion):
 		lemma_widget = forms.HiddenInput(attrs={'value': word.id})
 		tag_widget = forms.HiddenInput(attrs={'value': tag.id})
 		self.translang = 'sme'
+		self.dialect = dialect
 		kwargs['correct_val'] = correct_val
 		super(MorfaQuestion, self).__init__(*args, **kwargs)
 		
@@ -1323,7 +1328,7 @@ class NumSettings(OahpaSettings):
 	numgame = forms.ChoiceField(initial='string', choices=NUMGAME_CHOICES, widget=forms.RadioSelect)
 	numlanguage = forms.ChoiceField(initial='sme', choices=NUMLANGUAGE_CHOICES, widget=forms.RadioSelect)
 	# TODO: remove mandatory need to set default data, should be done through 'initial' field setting.
-	default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'dialogue' : 'GG', 'maxnum' : '10', 'numgame': 'string'}
+	default_data = {'language' : 'nob', 'numlanguage' : 'sme', 'dialect' : 'GG', 'maxnum' : '10', 'numgame': 'string'}  # dialogue = 'GG' ???
 					
 	def __init__(self, *args, **kwargs):
 		self.set_settings()

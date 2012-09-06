@@ -372,7 +372,8 @@ class MorphPhonTag(models.Model):
 							"soggi",)
 def leksa_filter(Model,
 					lang=False, 
-					tx_lang=False, 
+					tx_lang=False,
+					wrong_dialect=False, 
 					semtype_incl=False, 
 					semtype_excl=False, 
 					source=False, 
@@ -387,8 +388,6 @@ def leksa_filter(Model,
 	
 	QUERY['language'] = lang
 	QUERY['wordtranslation__language'] = tx_lang
-	
-	# Heli: I think that the next if-clause is relevant only for leksa-place ?
 	
 	if geography:
 		QUERY['geography'] = geography
@@ -408,7 +407,7 @@ def leksa_filter(Model,
 	if source and source not in ['all', 'All']:
 		QUERY['source__name__in'] = [source]
 	
-	query_set = Model.objects.exclude(**EXCL).filter(**QUERY).order_by('?')[:10]
+	query_set = Model.objects.exclude(**EXCL).exclude(dialects__dialect=wrong_dialect).filter(**QUERY).order_by('?')[:10]
 	query_ids = query_set.values_list('id', 'lemma')
 
 	return query_ids

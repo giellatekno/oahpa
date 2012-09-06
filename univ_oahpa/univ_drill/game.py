@@ -161,7 +161,7 @@ class Game(object):
 			# Do not generate same question twice
 			if word_id:
 				num = num + 1
-				if word_id in set(word_ids): #and not (self.settings['gametype'] == "bare" and self.settings['pron_type'] in ['Rel','Dem']): # If there are less than 5 different lemmas to choose from then this causes a "No questions were able to be generated."
+				if word_id in set(word_ids):  #and not (self.settings['gametype'] == "bare" and self.settings['pron_type'] in ['Rel','Dem']): # If there are less than 5 different lemmas to choose from then this causes a "No questions were able to be generated."
 					continue
 				else: word_ids.append(word_id)
 
@@ -846,6 +846,10 @@ class BareGame(Game):
 			UI_Dialect = self.settings['dialect']
 		else:
 			UI_Dialect = DEFAULT_DIALECT
+		if UI_Dialect == 'KJ':
+			wrong_dialect = 'GG'
+		else:
+			wrong_dialect = 'KJ'
 
 		language = self.settings['language']
 		pos = self.settings['pos']
@@ -874,6 +878,8 @@ class BareGame(Game):
 			form_list = word.form_set.filter(tag__string__in=tag_strings)
 		else:
 			form_list = word.form_set.filter(tag=tag)
+        
+		form_list = form_list.exclude(word__dialects__dialect=wrong_dialect)  # take into account the dialect information attached to the Word objects
 		
 		if not form_list:
 			raise Form.DoesNotExist
@@ -906,12 +912,12 @@ class BareGame(Game):
 				
 			#	NOTE: Need to use getBaseform on Form object, not Word, 
 			#	because Word.getBaseform doesn't pay attention to number.
-		
+			
 			if self.settings.has_key('dialect'):
 				UI_Dialect = self.settings['dialect']
 			else:
 				UI_Dialect = DEFAULT_DIALECT
-			
+						
 			# Derived forms need return_all=False otherwise derived infinitive
 			# forms may be returned, and we need them to be underived in
 			# presentation of the question wordform.
@@ -924,10 +930,10 @@ class BareGame(Game):
 
 			bfs = form.getBaseform(match_num=match_number, return_all=True)
 
-			excluded = bfs.exclude(dialects__dialect='NG')
+			excluded = bfs.exclude(dialects__dialect='NG')  # added by Heli
 			if excluded.count() == 0:
 				excluded = bfs
-				
+			#print excluded	
 			filtered = excluded.filter(dialects__dialect=UI_Dialect)
 		
 			# If no non-NG forms are found, then we have to display those.
@@ -951,7 +957,7 @@ class BareGame(Game):
 		except IndexError:
 			if len(base_forms) == 0:
 				baseform = form.getBaseform(match_num=match_number)
-		
+
 		# All possible form presentations
 		accepted_answers = form_list.values_list('fullform', flat=True)
 		
@@ -1397,6 +1403,16 @@ class QuizzGame(Game):
 		source_language = self.settings['transtype'][0:3]
 		target_language = self.settings['transtype'][-3::]
 		QueryModel = Word
+				
+		if self.settings.has_key('dialect'):
+			UI_Dialect = self.settings['dialect']
+		else:
+			UI_Dialect = DEFAULT_DIALECT
+				
+		if UI_Dialect == 'KJ':
+			wrong_dialect = 'GG'
+		else:
+			wrong_dialect = 'KJ'
 		 	
 		# Excludes
 		excl = ['exclude_' + self.settings['transtype']]
@@ -1411,7 +1427,8 @@ class QuizzGame(Game):
 		
 		if not self.query_set:
 			leksa_kwargs = {'lang': source_language, 
-							'tx_lang': target_language}
+							'tx_lang': target_language,
+							'wrong_dialect': wrong_dialect}
 			
 			excl.append('mPERSNAME')
 
@@ -1447,7 +1464,6 @@ class QuizzGame(Game):
 				leksa_kwargs['frequency'] = list(set(kw_frequency))
 
 			word_set = leksa_filter(QueryModel, **leksa_kwargs)
-
 			self.query_set = word_set
 		
 		try:
