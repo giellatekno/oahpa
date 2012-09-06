@@ -780,11 +780,7 @@ def select_words(self, qwords, awords):
 								tag__id=selected_awords[syntax]['tag'],
 							)
 				
-				if dialect == 'KJ':  # dialect selection for the Word objects
-				    wrong_dialect = 'GG'
-				else:
-				    wrong_dialect = 'KJ'
-				excl = form_list.exclude(dialects__dialect='NG').exclude(word__dialects__dialect=wrong_dialect)  # added by Heli
+				excl = form_list.exclude(dialects__dialect='NG')
 
 				if excl.count() > 0:
 					form_list = excl
