@@ -100,6 +100,11 @@ class QAGame(Game):
 		else:
 			dialect = DEFAULT_DIALECT
 
+		if dialect == 'KJ':
+			wrong_dialect = 'GG'
+		else:
+			wrong_dialect = 'KJ'
+
 		word=None
 		if tag_el.pos=="Num" and self.settings.has_key('num_level') and str(self.settings['num_level'])=="1":
 			smallnum = ["1","2","3","4","5","6","7","8","9","10"]
@@ -108,9 +113,8 @@ class QAGame(Game):
 			if word.count() > 0:
 				word = word.order_by('?')[0]
 		else:
-			# Do not filter dialect here
-			possible_words = Word.objects.filter(wordqelement__qelement=qelement,
-												form__tag=tag_el.id)
+			# Do not filter form-level dialect here
+			possible_words = Word.objects.filter(wordqelement__qelement=qelement,form__tag=tag_el.id).exclude(dialects__dialect=wrong_dialect)  # Take into account the word-level dialect information (NOT-KJ vs NOT-GG)
 			if possible_words.count() > 0:
 				word = possible_words.order_by('?')[0]
 
@@ -442,13 +446,9 @@ class QAGame(Game):
 			dialect = self.settings['dialect']
 		else:
 			dialect = DEFAULT_DIALECT
-                if dialect == 'KJ':
-                    wrong_dialect = 'GG'
-                else:
-                    wrong_dialect = 'KJ'
 
-		excl = form_set.exclude(dialects__dialect='NG').exclude(word__dialects__dialect=wrong_dialect)  # exclude words marked with NOT-KJ vs NOT-GG
-
+		excl = form_set.exclude(dialects__dialect='NG')
+		
 		if excl.count() > 0:
 			form_set = excl
 
