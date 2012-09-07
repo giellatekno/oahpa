@@ -23,6 +23,7 @@ class QAGame(Game):
 		self.generated_syntaxes = list()
 		super(QAGame, self).__init__(*args, **kwargs)
 		self.init_tags()
+		
 	
 	def init_tags(self):
 		"""
@@ -36,7 +37,7 @@ class QAGame(Game):
 		# Default tense and mood for testing
 		self.tense = "Prs"
 		self.mood = "Ind"
-		self.gametype = "morfa" # why morfa? it is "qa"
+		self.gametype = "morfa"
 				
 		# TODO: check this in smeoahpa, possible source of error.
 		# Values for pairs QPN-APN
@@ -441,8 +442,12 @@ class QAGame(Game):
 			dialect = self.settings['dialect']
 		else:
 			dialect = DEFAULT_DIALECT
+                if dialect == 'KJ':
+                    wrong_dialect = 'GG'
+                else:
+                    wrong_dialect = 'KJ'
 
-		excl = form_set.exclude(dialects__dialect='NG')
+		excl = form_set.exclude(dialects__dialect='NG').exclude(word__dialects__dialect=wrong_dialect)  # exclude words marked with NOT-KJ vs NOT-GG
 
 		if excl.count() > 0:
 			form_set = excl
@@ -1031,6 +1036,7 @@ class QAGame(Game):
 			dialect = self.settings['dialect']
 		else:
 			dialect = DEFAULT_DIALECT
+			
 		# TODO: language setting
 		language = "nob"
 		if self.settings.has_key('language'):
