@@ -20,32 +20,34 @@ list of words in each set, see [here|semsets/SkoltSamiSemsets.html]).
 |  8 | SENSE
 |  3 | TIME
 
-<!-- new sets (work in progress)-->
+The following supersets and subsets are not active yet, but will be used in the next generation of Oahpa!-nuõrti (work in progress)
 
 !!Superset PLACE (Placenames [only proper nouns])
 * PLACE_NAME - proper nouns denoting towns, siidas, etc.
-* PLACE_COUNTRY - proper nowns denoting countries and other administrative units (like Norway, fylke, lääni, oblast, etc.)
-<!--* PLACE_DISTRICT - areas, landscapes (like Varanger, Kola peninsula)-->
+* PLACE_COUNTRY - proper nowns denoting countries and other administrative units (like "Norway", "Finnmark fylke", "Sør-Varanger kommune", etc.)
+<!--* PLACE_DISTRICT - areas, landscapes (like Varanger, Kola peninsula) [so far no instances in sms2X dictionary]-->
 * PLACE_RIVER - proper nouns denoting rivers
-<!--* PLACE_MOUNTAIN - proper nouns denoting mountains-->
+<!--* PLACE_MOUNTAIN - proper nouns denoting mountains [so far no instances in sms2X dictionary]-->
 * PLACE_LAKE - proper nouns denoting lakes
 
 !!Superset PERSON (Person names [only proper nouns])
 * PERSNAME_FEMALE - proper nouns denoting females
 * PERSNAME_MALE - proper nouns denoting males
 
-!!Supersett HUMAN (Menneske/menneskelignende)
-* HUMAN_PEOPLE - slike som ikke passer inn i de to andre, f.eks. kvinne, mann, tyv
-<!--* HUMAN_MYTH - hulder, draug, troll, stallo -->
-* HUMAN_FAMILY - father, sister
-* HUMAN_VERBAL -
-* HUMAN_ADVERBAL - homeward (??)
+!!Superset PLANT (Plant names)
+* PLANT_BERRY - 
+* PLANT_TREE - trees and shrubs
+
+!!Supersett HUMAN (people/people-like)
+* HUMAN_PEOPLE - "womans", "child", "king"; also groups of humans: "farmers", "native people", "American"; also "hei!"; also pronouns denoting humans: "who?", "I"
+<!--* HUMAN_MYTH - hulder, draug, troll, stallo [perhaps not here]-->
+* HUMAN_FAMILY - "father", "sister"; also "clan", "surname"
+* HUMAN_VERBAL - <!--[probably needs re-thinking]-->
+* HUMAN_ADVERBAL - "homeward" <!--[probably needs re-thinking]-->
 
 !!Superset SOCIETY
-* SOCIETY_NATION - American, Norwegian, Sámi (also adjectives, like Russian, Sámi ??), also "king"
-* SOCIETY_NAME - names and naming of humans or groups of humans
-* SOCIETY_PROFESSION - names of professions
-* SOCIETY_ORGANIZATION - "parliament", "politics"
+* SOCIETY_PROFESSION - names of professions; also words for concepts related to working life
+* SOCIETY_ORGANIZATION - "parliament"; also words for concepts related to politics
 * SOCIETY_RELIGION -
 * SOCIETY_ECONOMY -
 
@@ -55,32 +57,37 @@ list of words in each set, see [here|semsets/SkoltSamiSemsets.html]).
 
 !!Superset INSTRUMENT
 * INSTRUMENT_MUSIC - 
+* INSTRUMENT_TOOL -
 
-!!Superset NATURE
-* NATURE_MATERIAL
+!!Superset TIME
+* TIME_NATURE - natural cycles: "sun", "day", "season", "weekday"; also names of the latter
+* TIME_UNIT - "hour"
+* TIME_OTHER - "beginning" <!--[probably needs re-thinking]-->
 
 !!Superset ANIMAL
-* ANIMAL_FISH - (wild) fish
-* ANIMAL_BIRD - (wild) bird
-* ANIMAL_DOM - domestic, not reindeer
+* ANIMAL_FISH - names for (wild) fish and words for other related concepts
+* ANIMAL_BIRD - names for (wild) birds and words for other related concepts
+* ANIMAL_DOMESTIC - names for domestic animals and words for other related concepts
+<!--* ANIMAL_PET -[so far no instances in sms2X dictionary]-->
 * ANIMAL_MAMMAL -
-* ANIMAL_INSECT
-* ANIMAL_VERBAL
+* ANIMAL_INSECT -
+* ANIMAL_VERBAL - <!--[probably needs re-thinking]-->
 
 !!Superset REINDEER
 * REINDEER_HERDING
 
 !!Superset FOOD (food and drink
 * FOOD_VERBAL
-* FOOD_GROCERY - items related to buying food
-* FOOD_NATURE - items related to hunting/fishing/gathering food
+* FOOD_GROCERY - words for concepts related to buying/exchanging/etc. food
+* FOOD_NATURE - words for concepts related to hunting/fishing/gathering/etc. food
 
 !!Superset NATURE
-* NATURE_TOWN - "village", "town" (toponymy belonging to human settlements)
+* NATURE_HUMAN - words for toponymy or other concepts belonging to human settlements: "village", "town", "street"
+* NATURE_MATERIAL - "concrete/betong/betoni"
 * NATURE_SENSE - adjectives, etc.
 
 !!Superset BODY
-* BODY_ADVERBAL
+* BODY_ADVERBAL <!--[probably needs re-thinking]-->
 * BODY_PART
 
 !!Superset LANGUAGE (literatur/grammar/text)
