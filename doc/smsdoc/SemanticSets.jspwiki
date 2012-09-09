@@ -45,6 +45,9 @@ The following supersets and subsets are not active yet, but will be used in the 
 * HUMAN_VERBAL - <!--[probably needs re-thinking]-->
 * HUMAN_ADVERBAL - "homeward" <!--[probably needs re-thinking]-->
 
+!!Superset SENSE
+* SENSE
+
 !!Superset SOCIETY
 * SOCIETY_PROFESSION - names of professions; also words for concepts related to working life
 * SOCIETY_ORGANIZATION - "parliament"; also words for concepts related to politics
@@ -64,13 +67,16 @@ The following supersets and subsets are not active yet, but will be used in the 
 * TIME_UNIT - "hour"
 * TIME_OTHER - "beginning" <!--[probably needs re-thinking]-->
 
+!!Superset CLOTHING
+* CLOTHING_WHOLE
+
 !!Superset ANIMAL
 * ANIMAL_FISH - names for (wild) fish and words for other related concepts
 * ANIMAL_BIRD - names for (wild) birds and words for other related concepts
 * ANIMAL_DOMESTIC - names for domestic animals and words for other related concepts
 <!--* ANIMAL_PET -[so far no instances in sms2X dictionary]-->
 * ANIMAL_MAMMAL -
-* ANIMAL_INSECT -
+* ANIMAL_INSECT - also other small animals, which are not insects like "spider"
 * ANIMAL_VERBAL - <!--[probably needs re-thinking]-->
 
 !!Superset REINDEER
@@ -79,16 +85,26 @@ The following supersets and subsets are not active yet, but will be used in the 
 !!Superset FOOD (food and drink
 * FOOD_VERBAL
 * FOOD_GROCERY - words for concepts related to buying/exchanging/etc. food
-* FOOD_NATURE - words for concepts related to hunting/fishing/gathering/etc. food
+* FOOD_NATURE - words for concepts related to hunting/fishing/gathering/etc. (not slaughtering) food
+* FOOD_DISH
+* FOOD_SLAUGHTER - words for concepts related to slaughtering food
 
 !!Superset NATURE
 * NATURE_HUMAN - words for toponymy or other concepts belonging to human settlements: "village", "town", "street"
+* NATURE_ENVIRONMENT - toponomy
 * NATURE_MATERIAL - "concrete/betong/betoni"
 * NATURE_SENSE - adjectives, etc.
+
+!!Superset PROPERTY
+* PROPERTY_QUANTITY
+* PROPERTY_COLOR
+* PROPERTY_SENSE
+* PROPERTY_QUALITY
 
 !!Superset BODY
 * BODY_ADVERBAL <!--[probably needs re-thinking]-->
 * BODY_PART
+* BODY_HEALING
 
 !!Superset LANGUAGE (literatur/grammar/text)
 * LANGUAGE_OTHER
@@ -100,3 +116,7 @@ The following supersets and subsets are not active yet, but will be used in the 
 
 !!Superset EDUCATION
 * EDUCATION_SUBJECT
+
+!!Superset SPACE
+* SPACE_MOTION
+* SPACE_POSITION
