@@ -20,103 +20,115 @@ list of words in each set, see [here|semsets/SkoltSamiSemsets.html]).
 |  8 | SENSE
 |  3 | TIME
 
-The following supersets and subsets are not active yet, but will be used in the next generation of Oahpa!-nuõrti (work in progress)
+The following supersets and subsets are not active yet, but will be used in the next generation of Oahpa!-nuõrti (work in progress).
 
-!!Superset PLACE (Placenames [only proper nouns])
-* PLACE_NAME - proper nouns denoting towns, siidas, etc.
-* PLACE_COUNTRY - proper nowns denoting countries and other administrative units (like "Norway", "Finnmark fylke", "Sør-Varanger kommune", etc.)
-<!--* PLACE_DISTRICT - areas, landscapes (like Varanger, Kola peninsula) [so far no instances in sms2X dictionary]-->
-* PLACE_RIVER - proper nouns denoting rivers
-<!--* PLACE_MOUNTAIN - proper nouns denoting mountains [so far no instances in sms2X dictionary]-->
-* PLACE_LAKE - proper nouns denoting lakes
+Note that these are ''semantic concepts'' and different parts-of-speech can occur in each set! Compare [WOLD|http://wold.livingsources.org/meaning] for a classification of general semantic concepts. Note also that each dictionary entry usually have different semantic tags for Oahpa!.
 
-!!Superset PERSON (Person names [only proper nouns])
-* PERSNAME_FEMALE - proper nouns denoting females
-* PERSNAME_MALE - proper nouns denoting males
+!!Supersett HUMAN (people/people-like, kinship, society, religion), in Oahpa! called "Menneske" 
+<!--includes WOLD "2. Kinship" + "11. Possession" + "19. Social and political relations" + "21. Law" + "22. Religion and belief"-->
+* HUMAN_PEOPLE - "womans", "child", "king"; also groups of humans: "farmers", "native people"; also "hei!"; also pronouns denoting humans: "who?", "I"; includes also specNATIONALITY: "American"
+* HUMAN_MYTHOLOGY - "hulder", "draug", "troll", "stallo"
+* HUMAN_FAMILY - termKINSHIP: "father", "sister"; also words for concepts related to the family: "clan", "surname"; also "homewards", "home"; also "to live (in a place)"; also relations with friends outside the family: "to_sit_and_drink_coffee/tea"  
+* HUMAN_RELIGION - "Bible", "bishop", "to pray"
+* HUMAN_SOCIAL - "parliament"; also words for concepts related to politics; words for concepts related to law
+* HUMAN_POSSESSION - "to give", "to sell"
 
-!!Superset PLANT (Plant names)
-* PLANT_BERRY - 
-* PLANT_TREE - trees and shrubs
+!!Superset SPACE, in Oahpa called "Rom"
+<!-- inludes WOLD "10. Motion" + "12. Spatial relations"-->
+* SPACE_MOTION - "howewards", "into", "to leave", "car"
+* SPACE_POSITION - "in", "behind", "to sit", "at home"
+* SPACE_RELATION - "small"
 
-!!Supersett HUMAN (people/people-like)
-* HUMAN_PEOPLE - "womans", "child", "king"; also groups of humans: "farmers", "native people", "American"; also "hei!"; also pronouns denoting humans: "who?", "I"
-<!--* HUMAN_MYTH - hulder, draug, troll, stallo [perhaps not here]-->
-* HUMAN_FAMILY - "father", "sister"; also "clan", "surname"
-* HUMAN_VERBAL - <!--[probably needs re-thinking]-->
-* HUMAN_ADVERBAL - "homeward" <!--[probably needs re-thinking]-->
-
-!!Superset SENSE
-* SENSE
-
-!!Superset SOCIETY
-* SOCIETY_PROFESSION - names of professions; also words for concepts related to working life
-* SOCIETY_ORGANIZATION - "parliament"; also words for concepts related to politics
-* SOCIETY_RELIGION -
-* SOCIETY_ECONOMY -
-
-!!Superset BUILDING
-* BUILDING_DWELLING - "hut", "house"
-* BUILDING_FURNITURE - "bed",
-
-!!Superset INSTRUMENT
-* INSTRUMENT_MUSIC - 
-* INSTRUMENT_TOOL -
-
-!!Superset TIME
-* TIME_NATURE - natural cycles: "sun", "day", "season", "weekday"; also names of the latter
-* TIME_UNIT - "hour"
-* TIME_OTHER - "beginning" <!--[probably needs re-thinking]-->
-
-!!Superset CLOTHING
-* CLOTHING_WHOLE
-
-!!Superset ANIMAL
-* ANIMAL_FISH - names for (wild) fish and words for other related concepts
-* ANIMAL_BIRD - names for (wild) birds and words for other related concepts
-* ANIMAL_DOMESTIC - names for domestic animals and words for other related concepts
-<!--* ANIMAL_PET -[so far no instances in sms2X dictionary]-->
-* ANIMAL_MAMMAL -
-* ANIMAL_INSECT - also other small animals, which are not insects like "spider"
-* ANIMAL_VERBAL - <!--[probably needs re-thinking]-->
-
-!!Superset REINDEER
-* REINDEER_HERDING
-
-!!Superset FOOD (food and drink
-* FOOD_VERBAL
-* FOOD_GROCERY - words for concepts related to buying/exchanging/etc. food
-* FOOD_NATURE - words for concepts related to hunting/fishing/gathering/etc. (not slaughtering) food
-* FOOD_DISH
-* FOOD_SLAUGHTER - words for concepts related to slaughtering food
-
-!!Superset NATURE
-* NATURE_HUMAN - words for toponymy or other concepts belonging to human settlements: "village", "town", "street"
-* NATURE_ENVIRONMENT - toponomy
-* NATURE_MATERIAL - "concrete/betong/betoni"
-* NATURE_SENSE - adjectives, etc.
-
-!!Superset PROPERTY
-* PROPERTY_QUANTITY
-* PROPERTY_COLOR
-* PROPERTY_SENSE
-* PROPERTY_QUALITY
-
-!!Superset BODY
-* BODY_ADVERBAL <!--[probably needs re-thinking]-->
+!!Superset BODY, in Oahpa! called "Kropp"
 * BODY_PART
-* BODY_HEALING
+* BODY_HEALTH - "to die", "medicine", "to hurt", "sleep"
 
-!!Superset LANGUAGE (literatur/grammar/text)
-* LANGUAGE_OTHER
-* LANGUAGE_TEXT
+!!Superset SENSE, in Oahpa! called "Mengd, egenskap og sinne"
+<!-- includes WOLD "13. Quantity" + 15. Sense perception" + "16. Emotions and values" + "17. Cognition"-->
+* SENSE_PERCEPTION - termCOLOR
+* SENSE_COGNITION - also quantity
+* SENSE_EMOTION
+* SENSE_QUANTITY - also "Euro"
 
-!!Superset TRAVEL
-* TRAVEL_MOTION
-* TRAVEL_VEHICLE
+!!Superset HOUSE, in Oahpa! called "Hus"
+<-- inludes WOLD "7. The house"-->
+* HOUSE_DWELLING - "hut", "house", "to live"
+* HOUSE_FURNITURE - "bed"
 
-!!Superset EDUCATION
-* EDUCATION_SUBJECT
+!!Superset WORK (economy, education, laisure, profession, sports, work), in Oahpa! called "Arbeid og fritid"
+<!-- inludes WOLD "9. Basic actions and technology" + "11. Possession" + "20. Warfare and hunting"-->
+* WORK_ECONOMY - words for concepts related to working life: "to work", "the work", "experienced", "bankaccount", "to hunt", "shop", "to buy", "to slaughter"; also termDUODJI, also specPROFESSION
+* WORK_MUSIC - 
+* WORK_TOOL - tools and machines
+* WORK_SCHOOL
+* WORK_TRAVEL - "car", "airplane"
+* WORK_LAISURE - "to swim"
 
-!!Superset SPACE
-* SPACE_MOTION
-* SPACE_POSITION
+!!Superset TIME, in Oahpa! called "Tid"
+<!-- includes WOLD "14. Time"-->
+* TIME_CYCLE - natural cycles: "sun", "day", "tomorrow", "season", "weekday"; also specTIME
+* TIME_UNIT - units or amounts of time: "hour", "long", "quickly", "new"
+* TIME_POINT - "beginning", "origin"
+
+!!Superset CLOTH, in Oahpa! called "Klær"
+<!-- inludes WOLD "6. Clothing and grooming"-->
+* CLOTH_WHOLE
+* CLOTH_PART
+* CLOTH_MATERIAL
+* CLOTH_PIECE - other pieces made of cloth, leather, etc.
+
+!!Superset ZOO, on Oahpa! called "Djur"
+<!-- includes WOLD "3. Animals"-->
+* ZOO_FISH - names for (wild) fish and words for related concepts
+* ZOO_BIRD - names for (wild) birds and words for related concepts
+* ZOO_MAMMAL - names for (wild) mammals and words for related concepts
+* ZOO_INSECT - names for small animals, including non-insects: "spider", "louse", "butterfly"
+* ZOO_PET - names for domestic (house) animals and words for related concepts: "aquarium"
+* ZOO_DOMESTIC - names for domestic (farm) animals and words for related concepts (except reindeer)
+* ZOO_REINDEER - incl. termREINDEER
+
+!!Superset BOT, in Oahpa! called "Plant"
+<!-- includes WOLD: "8. Agriculture and vegetation"-->
+* BOT_TREE - trees and shrubs
+* BOT_BERRY - 
+* BOT_GRASS - flowers, grasses, etc.; also mushrooms
+
+!!Superset FOOD, in Oahpa! called "Mat og drikker"
+<!-- includes WOLD: "5. Food and drink"-->
+* FOOD_GROCERY - words for concepts typically related to buying/exchanging/etc. food
+* FOOD_NATURE - words for concepts typically related to hunting/fishing/gathering/etc. food
+* FOOD_DISH - also "eating", "drinking", also words for food production: "cooking", "fire", "smoke"
+
+!!Superset ENVIR, in Oahpa! called "Verld"
+<!-- includes WOLD "1. The physical world"-->
+* ENVIR_ELEMENT - "earth", "water", "air", "fire"; also materials: "concrete/betong/betoni", "sand"; also cosmic: "moon", "star", etc.
+* ENVIR_WEATHER - "cloud", "rain", "storm"
+* ENVIR_TOPONOMY - "forrest"; also termTOPONOMY
+* ENVIR_SETTLEMENT - words for toponymy or other concepts belonging to human settlements: "village", "town", "street"
+
+!!Superset LANG, in Oahpa! called "Språk"
+<!-- includes WOLD "18. Speech and language"-->
+* LANG_TEXT
+* LANG_SPEECH
+
+<!--for the future: possible propername sets inside LEKSA
+*PLACENAMES
+*PERSONNAMES
+-->
+
+<!--for the future: possible species sets inside LEKSA
+*PLANTNAMES
+*ANIMALNAMES
+*TIMENAMES (weekdays and months)
+*PROFESSIONNAMES
+*NATIONNAMES
+-->
+
+<!--for the future: possible terminology sets inside LEKSA
+*REINDEER (reindeer terminology)
+*DUODJI (handycraft terminology)
+
+*KINSHIP (kinship terminology)
+*TOPONOMY (toponymic terminology)
+*NAUTIC (nautic terminology)
+-->
