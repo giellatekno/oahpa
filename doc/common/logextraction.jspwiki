@@ -25,7 +25,16 @@ mysql> exit
 
 … and correspondingly for the command line option.
 
-To be explicit: here is the command set for old oahpa:
+Note that the command on gtoahpa is
+
+{{{
+mysql -u root -p
+}}}
+
+The relevant variables are found in the file {{pro...}}.
+
+Here is the command set for old oahpa:
+
 {{{
 mysql> use oahpa;
 mysql> select * from drill_log order by game into outfile '/usr/tmp/oahpalog.txt' fields terminated by '|';
@@ -38,13 +47,12 @@ Logs may also be extracted from the command line directly, and one program
 at a time. This command prints all the entries:
 
 {{{
-python2.6 manage.py [help] printlogs
+python manage.py printlogs 
 }}}
 
+Note that this demands python 2.6 on some machines and 2.7 on others.
 
-__NB! This command does not work__
-
-Cf. an actual example:
+Cf. an actual example, with the option --game set (no option gives all programs):
 
 {{{
 $ python2.6 manage.py printlogs --game numra
