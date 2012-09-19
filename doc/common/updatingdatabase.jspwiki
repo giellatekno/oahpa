@@ -54,7 +54,7 @@ python install.py -d -f ../sme/xml/nouns.xml
 }}}
 
 To add the new words to the semantic supersets, update the semantic
-classes [Semantic classes|maintenance.html#Semantic+classes].
+classes [Semantic classes|OahpaTechnicalDocumentation.html#Semantic+classes].
 
 Both Sami and Norwegian lexicons are installed using the same command. The
 language information is extracted from the xml-file. Do not specify paradigm 
@@ -93,7 +93,7 @@ python install.py --places -f ../sme/xml/propernouns.xml
 }}}
 
 Use option -d to remove entries from the database the same way as from
-[lexicons|maintenance.html#Lexicons].
+[lexicons|OahpaTechnicalDocumentation.html#Lexicons].
 
 !!Semantic classes
 
@@ -115,6 +115,6 @@ SEMTYPE_CHOICES = (
 
 The string in small letters is the string that appears in the menu in
 English version. To translate for the other languages, follow the
-steps in [Localisation|maintenance.html#Localisation]. In addition, 
+steps in [Localisation|OahpaTechnicalDocumentation.html#Localisation]. In addition, 
 the changes in {{forms.py}} require that the server is restarted 
 (sudo httpd restart). 
