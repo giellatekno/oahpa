@@ -324,6 +324,7 @@ LIST Sup = Sup ;
 LIST Actio = Actio ;
 
 LIST Actor = Actor ;
+LIST G3 = G3 ;
 LIST VAbess = VAbess ;
 
 # Derivation
@@ -701,7 +702,7 @@ SET CRD = COMMA OR CC OR NEGFOC OR XGO OR ("/") OR ("-") OR DADE ;
  # Here come some adverbs that have identical twins in other POS. 
  # If these are found in Adv contexts, we treat them as adverbs.
 
-LIST ADV-LACCAT = "absoluhtalaš" "agálaččat" "aitosaččat" ("aktiiva" Der/laš) ("aktiivva" Der/laš) "almmolaš" "analogalaš" "automáhtalaš" "álgoálgosaš" "álgovuolggalaš" "árbevirolaš" "beaivválaččat" "biologalaš" ("buhttenriekti" Der/laš) ("bustávva" Der/laš) "čálalaččat" "čearddalaš" "dábálaš"  "duođalaččat" ("dutkanpolitihkka" Der/laš) "eahpedábálaš" "eahpeformálalaš" "eahpekritihkalaš" "eahpevirggálaš" "eaktodáhtolaččat" "ekologalaš" "ekologálaš" "ekonomálaš" "eksplisihtalaš" ("elektrovdna" Der/laš) "eahpitkeahttá" ("etihkka" Der/laš) "etymologalaš" "fágalaš" "fonehtalaš" "fonologalaš" "fonotávttalaš" "formálalaš" ("fysiologa" Der/laš) "gaskamearálaš" "geavatlaččat" ("gealbu" Der/laš) ("geografa" Der/laš) ("geográfa" Der/laš) ("giella" Der/laš) ("girkoriekti" Der/laš) "globálalaččat" ("gorri" Der/laš) "govttolaš" "hálddahuslaš" "historjjálaš" "ideologalaš" "iešheanálaš" "implisihtalaččat" "jahkásaččat" "jeavddalaččat" ("jietnadatoahppa" Der/laš) ("juridihkka" Der/laš) "konkrehtalaš" ("kritihkka" Der/laš) "kronologalaš" ("kulturhistorjá" Der/laš) ("kulturpolitihkka" Der/laš) ("kultuvra" Der/laš) "logihkalaš" ("luohtu" Der/laš) ("máŋggafága" Der/laš) "mekánalaš" ("metoda" Der/laš) "moralalaš" "morálalaš" "morfologalaš" "našuvnnalaš" "negatiivalaš" "negatiivvalaš" "njálmmálaččat" "njuolgguslaččat" ("oaiveášši" Der/laš) "obbalaš" "obbalohkái" "oktasaččat" "oktilaš" "ollislaččat" "oppalaččat" "optimalalaččat" "ovttabealálaš" "ovttajienalaš" "ovttamielalaš" "pedagogalaš" ("politihkka" Der/laš) ("praktihkka" Der/laš) ("prinsihppa" Der/laš) ("priváhtariekti" Der/laš) "profehtalaš" "psykologalaš" "ráfálaččat" ("reálapolitihkka" Der/laš) ("riektehistorjá" Der/laš) ("riekti" Der/laš) "riikkaidgaskasaš" "sámegielalaš" ("riikkagoddi" Der/laš) ("ruhta" Der/laš) "rumašlaš" "sámepolitihkalaš" "sekundáralaččat" "semantihkalaš" ("servodatávki" Der/laš) ("siviilariekti" Der/laš) "sosiálalaš" ("stáhtapolitihkka" Der/laš) "strategalaš" ("suorgepolitihkka" Der/laš) ("teknihkka" Der/laš) "teorehtalaš" ("topográfa" Der/laš) ("váldoášši" Der/laš) ("virgi" Der/laš) ("vierru" Der/laš) ;
+LIST ADV-LACCAT = "absoluhtalaš" "agálaččat" "aitosaččat" "aktiivvalaš" "almmolaš" "analogalaš" "automáhtalaš" "álgoálgosaš" "álgovuolggalaš" "árbevirolaš" "beaivválaččat" "biologalaš" ("buhttenriekti" Der/laš) ("bustávva" Der/laš) "čálalaččat" "čearddalaš" "dábálaš"  "duođalaččat" ("dutkanpolitihkka" Der/laš) "eahpedábálaš" "eahpeformálalaš" "eahpekritihkalaš" "eahpevirggálaš" "eaktodáhtolaččat" "ekologalaš" "ekologálaš" "ekonomálaš" "eksplisihtalaš" "elektrovnnalaš" ("eahpidit" VAbess) ("etihkka" Der/laš) "etymologalaš" "fágalaš" "fonehtalaš" "fonologalaš" "fonotávttalaš" "formálalaš" ("fysiologa" Der/laš) "gaskamearálaš" "geavatlaš" "gelbbolaš" ("geografa" Der/laš) "geográfalaš" "gielalaš" ("girkoriekti" Der/laš) "globálalaččat" ("gorri" Der/laš) "govttolaš" "hálddahuslaš" "historjjálaš" "ideologalaš" "iešheanálaš" "implisihtalaččat" "jahkásaččat" "jeavddalaččat" ("jietnadatoahppa" Der/laš) "juridihkalaš" "konkrehtalaš" "kritihkalaš" "kronologalaš" "kulturhistorjjálaš" "kulturpolitihkalaš" "kultuvrralaš" "logihkalaš" ("luohtu" Der/laš) "máŋggafágalaš"  "mekánalaš" ("metoda" Der/laš) "moralalaš" "morálalaš" "morfologalaš" "našuvnnalaš" "negatiivvalaš" "njálmmálaččat" "njuolgguslaččat" ("oaiveášši" Der/laš) "obbalaš" "obbalohkái" "oktasaččat" "oktilaš" "ollislaččat" "oppalaččat" "optimalalaččat" "ovttabealálaš" "ovttajienalaš" "ovttamielalaš" "pedagogalaš" ("politihkka" Der/laš) ("praktihkka" Der/laš) ("prinsihppa" Der/laš) ("priváhtariekti" Der/laš) "profehtalaš" "psykologalaš" "ráfálaččat" ("reálapolitihkka" Der/laš) ("riektehistorjá" Der/laš) ("riekti" Der/laš) "riikkaidgaskasaš" "sámegielalaš" ("riikkagoddi" Der/laš) ("ruhta" Der/laš) "rumašlaš" "sámepolitihkalaš" "sekundáralaččat" "semantihkalaš" ("servodatávki" Der/laš) ("siviilariekti" Der/laš) "sosiálalaš" ("stáhtapolitihkka" Der/laš) "strategalaš" ("teknihkka" Der/laš) "teorehtalaš" "topográfalas" ("váldoášši" Der/laš) "virggálaš" "virolaš" ;
 
 LIST ADV-AFTER-NUM = "geardde" ;
 
@@ -939,7 +940,7 @@ SET DYNAMIC-V = ACTIVITY-V OR MOVEMENT-V OR VERBAL-ACTIVITY-V OR HUMAN-AGENT-V O
 # - - - - - - - - - - -
     # in combination with verbs
 
-LIST COM-ADV = "fárrolaga" "oktan" "oktanaga" "ovtta#mielas" "ovttas" "ovttas#ráđiid" "searválagaid" "searválaga" "searvál" "searvála" ;
+LIST COM-ADV = "fárrolaga" "oktan" "oktanaga" "ovtta#mielas" "ovttas" "ovttas#ráđiid" "searválagaid" "searválaga" ;
 
     # Could also be perceived as particles within complexs verbs.
     
@@ -948,7 +949,7 @@ LIST COM-ADV = "fárrolaga" "oktan" "oktanaga" "ovtta#mielas" "ovttas" "ovttas#r
 # Other adverb sets
 # - - - - - - - - - 
 
-LIST GRADE-ADV =  "áibbas" "beare" "duođaid"  ("eanet" Adv) "erenoamán" "erenoamáš" "earenoamáš" "hirbmat" "hui" "ila" "issoras" ("man" Adv) "menddo" "nu" "oalle" "oba" "olu" ("oppa" Adv) "seamma" "seammá" ("veaháš" Adv) "vehá" "veháš" "veahá" "veaháš" ;
+LIST GRADE-ADV =  "áibbas" "beare" "dušše" ("eanet" Adv) "erenoamán" "erenoamáš" "hirbmat" "hui" "ila" "issoras" ("man" Adv) "measta" "menddo" "muhtun_muddui" "nu" "oalle" "oba" ("oppa" Adv) "sakka" "seammá" ("veaháš" Adv) "vehá" "veháš" "veahá" "veaháš" "viehka" ;
 
 
 # Adjectives
@@ -976,6 +977,11 @@ LIST TIME-A-FUTURE = "boahtte" "čuovvovaš"   ;
 LIST TIME-A-PAST = "čuovvovaš" "maŋemus" "maŋimus" "ovddit" ("mannat" PrfPrc) ("vássit" PrfPrc)   ;
 
 SET TIME-A = TIME-A-FUTURE OR TIME-A-PAST ;
+
+LIST DURATION-A = "heila" "eanas" "eanet" "geažo" "geažos" "guhkki" "obba" "oba" "ollis" "oppa" "visot" ;
+
+LIST DURATION-ADV = "meastui" "measta" "masá" "varga" "vargui" "vargahui" "goasii" "goase" ;
+
 
 
 # NP sets defined according to their morphosyntactic features
@@ -1080,7 +1086,7 @@ SET W-NOT-ACC-GEN = WORD - Acc - Gen ;
 
 # Nominal sets defined according to their morphophonological properties
   
-LIST NOM-GEN-NOUN = "ILO-tráktáhta" "TV-kamera" "agens" "agitáhtor" "ahkit" "akkumuláhtor" "aksiálláger" "aktuáhtor" "album" "alladeattacirggon" "allodatsárggon" "almmuhantávval" "alpinsuodjegahpir" "amaryllis" "ametysta" "analfabehta" "analysáhtor" "antikristus" "apoastal" "apoasttal" "apostal" "apotehkár" "apparáhta" "arena" "aristokráhta" "artoteahka" "askedihtor" "asymtohta" "asynkronmohtor" "atlas" "audition" "automáhta" "autoritehta" "avistaveksel" "azzil" "bahtaboskkan" "dearvvašvuođadutkanguovddáš" "dutkanguovddáš" "guovddáš" "identitehta" "identitehtta" "jolá" "journála" "lága" "pláhta" "plána" "psykiatriija" "stáhta" "ulbmil" "unduláhta" "universitehta" "vahkku" "valuhta" "velositehta" "videoteahka" "viskositehta" "vuollenohta" "ákšu" "ánnuitehta" "ássi" "ášši" "čitnahydráhta" "čáhcecrossa" "šlipsa" "CD-siŋgel" "ILO-tráktáhta" "Kárášjohsuopman" "TV-kamera" "Vær-varsom-plakáhta" "advokáhta" "affrikáhta" "agens" "aggregáhta" "agitáhtor" "ahkit" "akkumuláhtor" "aksiálláger" "aktivitehta" "aktoealit" "aktováhnen" "aktuáhtor" "album" "alesgahcin" "alesgahtin" "alfabehta" "alin" "alken" "alladeattacirggon" "allodatsárggon" "almennet" "almennet" "almmiseasan" "almmuhandávval" "almmuhantávval" "alpinsuodjegahpir" "alášgohcet" "alášsinut" "amaryllis" "ametysta" "analfabehta" "analysáhtor" "androgen" "antikristus" "aortauvssot" "apoastal" "apoasttal" "apostal" "apoteahka" "apotehka" "apotehkár" "apparáhta" "arena" "aristokráhta" "arsen" "artoteahka" "askedihtor" "asymtohta" "asynkronmohtor" "atlas" "atomafápmorusttet" "audition" "automáhta" "autoritehta" "aviisadoalan" "avistaveksel" "azzil" "bahtaboskkan" "bajitforminttár" "baján" "ballin" "balsam" "balsámabohppel" "bargomárkan" "bargoátnjal" "baromehtar" "baromehter" "bartagávpot" "baskkot" "bassaladdanrusttet" "bassasat" "bađošgaccet" "bađošgaccet" "beahcebáhcat" "beahcehurggán" "beahcemihttár" "beahcečukkon" "beahcet" "bealdobiššan" "bealdoduhpát" "bealdomáđir" "bealdorettet" "bealdosennet" "bealdosennet" "bealdosáhpán" "bealljeboskkan" "bealljemuhtter" "bealljerokkan" "bealljeskuhran" "bealljesuojan" "bearbil" "bearpmet" "bearral" "beasseskoabit" "beatnatsarrit" "beavkkan" "beavváš" "befála" "bejot" "bensinmohtor" "benzen" "beron" "berylla" "bevkor" "beštor" "biblioteahka" "bibliotehka" "bidjet" "biebmoprosessor" "biebmorieban" "biebmováhnen" "biebmováhnen" "bieggaskoarkil" "biehkan" "biehtan" "biehtán" "biellán" "biergoguhppár" "biergoátnjal" "bieskán" "bievval" "bieđan" "bihcabáhcat" "bihcir" "bihkkasuohpan" "bihppor" "biibal" "biibbal" "biihtár" "biikanáhkat" "bijat" "bijat" "bijat" "bijat" "bikket" "bilkkár" "bilkár" "billár" "bilttet" "bippal" "birrajándor" "birrin" "bismmar" "bismmáčoahkkin" "bismmáidčoahkkin" "bissobeahcet" "bitumen" "bivddár" "bivttasbažán" "bivttasbožán" "bivval" "bivššut" "biđggon" "biškkon" "boahtal" "boaisán" "boaisán" "boalddán" "boaldinmohtor" "boaldomohtor" "boalvár" "boaran" "boargar" "boargár" "boargár" "boastasteampal" "boastasteampil" "boazoeaiggát" "boazoealát" "boazoisit" "boazosuohkan" "boađđocivkkán" "boaššobearpmet" "bodnerivot" "bohccerusttet" "bohccečuohpan" "bohppel" "bohtalraban" "bohtehtos" "bohtás" "boimmon" "boksaraban" "boles" "bolfegaccet" "bolfegaccet" "bolgenšelggon" "bolot" "bonteheavval" "bonus" "boran" "borgár" "borjat" "borranátnal" "borranátnjal" "bosan" "boson" "botehtos" "botkkon" "botnit" "bovkor" "bođosvuohtan" "boŋkor" "božán" "brensel" "bubmol" "buddhatempel" "buhtat" "buhtet" "buijár" "buikkár" "buikár" "buimman" "buktinhámman" "bulddán" "bulet" "bulkor" "bulmmot" "bulžžet" "bumbol" "bumeránskka" "bummal" "bummol" "buohccedivššár" "buohkaidčoahkkin" "buohkkistáhta" "buoiddat" "buolašsuohpan" "buollinbiškkon" "buolát" "buorat" "buoráš" "buoskár" "buovnnjat" "buovnnjatsáhpán" "buozan" "buozanvuohta" "buošan" "buošut" "buošát" "bupmol" "burbor" "burpur" "burrut" "busir" "busságeahpil" "buvrorisen" "buđet" "bužan" "bábirráiggan" "bábirčanan" "báhcat" "báhkin" "báhkkol" "báhkkon" "báhpačeabet" "báhtter" "báhttergealddán" "báikkiisit" "báikkikásus" "báimman" "báitat" "báktegáiskkit" "báktegájan" "bálges" "bálkásoalddát" "bállat" "bálvalanámmát" "bálát" "bárel" "bárggeš" "bárggon" "báron" "bárral" "báson" "básár" "bátnerokkan" "báđar" "báŋkoeaiggát" "bážan" "cagan" "cakkan" "cakkat" "ceakkokartotehka" "ceakkosymptohta" "centilihtter" "centimehtar" "centimehter" "centilittar" "chilibihppor" "cieban" "ciebat" "cielan" "cievan" "cihran" "cinemateahka" "cirggon" "civkkan" "coagan" "cokkan" "cuppol" "dahkumagnehta" "datostempel" "davvevizar" "deaggafiskesloppan" "deaggalivkkár" "deaggamáđir" "deahkketonus" "dearppát" "dearvvašvuođadivššár" "deattareguláhtor" "deattán" "deattán" "deavut" "debehta" "dehkar" "dehálašvuođaortnet" "dekstor" "delár" "demens" "denara" "deret" "desilihtar" "desilihtter" "devnnet" "devon" "diaprojektor" "diamehtar" "diamehter" "diehppelieđat" "diehppelieđat" "dielkočuoivvat" "diesel" "dieselmohtor" "dievŋŋat" "diggár" "dihtor" "diibmoduojár" "diibmodávval" "dikkel" "dikkelbotnet" "dikkár" "diktáhtor" "diktár" "dikšár" "dilot" "dines" "dipmabiššan" "direktora" "direktoráhta" "diret" "dirgget" "diskotehka" "divat" "divat" "diversitehta" "divššár" "doaibmaalmmáiortnet" "doaibmaolmmáiortnet" "doaibmaoperator" "doaibmavádjet" "doaimmár" "doaján" "doalan" "doaresbielkalovtton" "doarjjaortnet" "doavkkan" "dohkkáteáhter" "dollarieban" "dollár" "domisiilaveksel" "dopmonjaman" "doron" "dorresáhpán" "dorrát" "doškkon" "dronnet" "drumbugoazan" "drámáteáhter" "dudnar" "duhpát" "duhpátguhkkár" "duhtodatárvooperáhtor" "duhátjuolggat" "duivil" "dulbenjurssan" "dulján" "duljár" "dulját" "dumon" "duodjár" "duojár" "duolbagavreheavval" "duolbaheavval" "duolbaluovččan" "duolbbár" "duolddan" "duolljeuvssot" "duollár" "duolmman" "duolmmanšelggon" "duolvačuoivvat" "duolvvár" "duopmokapihttal" "duopmár" "duottarbusságeahpil" "duottarhávvar" "duottarsáhpal" "durbbon" "durján" "dustton" "dutkkon" "dutnar" "duvddabearpmet" "duvhllár" "duvssár" "duđan" "dádel" "dággir" "dáhpa" "dáhton" "dáiddár" "dáidár" "dáigejierit" "dájet" "dájon" "dálar" "dálon" "dálssár" "dálueamit" "dáluisit" "dálveruoivil" "dálvvet" "dándor" "dápmot" "dápmot" "dássádahttingiikan" "dávllat" "dávllet" "dávttat" "dávval" "dávvir" "dávžžan" "eagáš" "eahket" "eahket" "eahkit" "eahpeipmil" "eahppel" "eaiggát" "ealet" "ealit" "eallin" "ealán" "ealát" "ealát" "eamiálbmot" "eamit" "eanabihttáeaiggát" "eanaeaiggát" "eanamuolddat" "eananmuolddat" "eappel" "eappelgeađgečukkon" "earán" "eatnaneaiggát" "eavddár" "eaŋgal" "eaŋkal" "ebel" "ebmoslieđat" "ebmoslieđat" "edet" "ednen" "ehpel" "eisseváldegeavat" "ekonomiija" "ekonomiijaortnet" "eksamen" "eksempel" "eksosgássarusttet" "eksosarusttet" "eksámen" "ekváhtor" "elmohtor" "elorgel" "el-botkkon" "el-mihttár" "el-molon" "el-távval" "el-visppon" "elektrihkkár" "elektrisitehta" "endor" "endossáhta" "entitehta" "eppel" "erttet" "essea" "estimáhtor" "etnisitehta" "ettet" "evangelium" "evaŋgelium" "eváŋgiljon" "examen" "eŋgel" "facultatum" "fahkon" "fakta" "faktora" "fakultehta" "falan" "falat" "fanasmohtor" "faskkan" "faskkon" "fasttat" "feambil" "fearan" "fearkil" "fearrán" "fearrán" "fearán" "feber" "femininitehta" "feminitehta" "fenomen" "feodálaortnet" "ferkkon" "fidjol" "fidnár" "fiehtar" "fiehtat" "fierán" "fievrran" "fihkon" "fiiber" "fiikkon" "fiikon" "filbmaprojektor" "finddár" "finer" "firet" "firon" "fiskesbeštor" "fiskesiris" "fiskesloppan" "fiskesmáđir" "fiskesvizar" "fiskár" "fitnet" "flundar" "flygel" "fláneallatávval" "foahpir" "fokus" "fokusáhtor" "folin" "formel" "forum" "fototeahka" "fránsos" "fuohpuš" "fuolkeálbmot" "fuođđarrájan" "fábel" "fáhkan" "fáksa" "fáktor" "fállevizar" "fálskkár" "fálttet" "fálttet" "fánen" "fánten" "fápmorusttet" "fáskir" "fássol" "fássoldoalan" "fástadoavtterortnet" "fáŋgal" "gaccat" "gaccet" "gacceš" "gaccir" "gaccon" "gahpan" "gahpir" "gahčanpartihkal" "gaibbat" "gaigŋir" "gaigŋirbismmar" "gaikár" "galbmagáhkkor" "galjat" "galjot" "galján" "gallup" "galmmihanmekanihkkár" "galmmihanskáhpe" "gardnjil" "gargŋil" "garrasinut" "gaskagoartil" "gaskan" "gavjanjaman" "gazir" "gazzasáhpal" "gazzaš" "geafeguhkkár" "geahpil" "geahčedoalan" "geahčedulbenjurssan" "geaidnogievkkan" "geaigán" "geaisár" "gealddán" "gealut" "gearret" "gearret" "geaset" "geassegollet" "geasseuniversitehta" "geassečoavjjet" "geassečuččot" "geastegiivvár" "geasán" "geavat" "geavllet" "gehpot" "gehtet" "gemináhta" "generalmajora" "generáhtor" "gerddon" "geret" "geson" "gieddemáđir" "gieddesinut" "giehtagoazan" "giehtaheavval" "giehtaláiddot" "gieimman" "gierdodagan" "gieressabet" "gierrán" "gievkan" "gievkkan" "gieđalatláiddot" "gihlar" "gihtet" "giikan" "giikar" "giikkár" "giippár" "giittosrohkos" "giljon" "gilkkan" "gilkor" "gilljočearret" "gilljočearrit" "gilljon" "gillár" "gilomehtar" "gilomehter" "gilon" "gilvvasáhpal" "girdihámman" "girdihávvar" "girdisáhpán" "girjedoalan" "girjegorddet" "girjelivkkár" "girkolaščoahkkin" "giron" "gisor" "gissel" "gissor" "gittadávvir" "gittačoahkkin" "givgás" "giškon" "gluten" "glykogen" "glyptoteahka" "goadjin" "goadjin" "goaffar" "goahppil" "goaivvan" "goaktil" "goallár" "goalšovizar" "goapmir" "goaran" "goarat" "goarkagoarvvet" "goartil" "goarvvet" "goaskin" "goaskit" "goatnil" "goatnjil" "goazan" "goađeeamit" "goađeisit" "goaŧŧočeabet" "goban" "goddesáhpán" "goden" "gohpeheavval" "gohpeluovččan" "gohrat" "goidoš" "goidár" "goikehivsset" "goikesallitbállat" "goikket" "goivvon" "golbmačiehkasárggon" "golddán" "golggiidusrusttet" "golggiidusrusttet" "golggot" "gollehámster" "gollerieban" "gollen" "golmmačiegat" "golmmet" "golár" "gontor" "goppás" "goppát" "gorddet" "gorddán" "gorut" "gosttet" "gosttet" "gottesáhpal" "gottur" "govddon" "govllon" "govvaalbum" "govvadáiddár" "gozihančoahkkin" "goččor" "goččár" "gođán" "granáhta" "gubar" "gudjor" "guhkan" "guhkat" "guhkesheavval" "guhkesáiggeulbmil" "guhkkár" "guhppil" "guhppár" "guhtal" "guikkut" "gulbmár" "gulkkan" "gullosuojan" "gulmmet" "gulmmit" "gummistevvel" "gummisáppát" "guoccat" "guodjavizar" "guohkan" "guohppar" "guohár" "guoihgáhrit" "guoik'gáhrit" "guoimmáš" "guoirrat" "guolban" "guolbbagorddet" "guolebeahcet" "guollegoaskin" "guolleguhppár" "guolleipmil" "guolleátnal" "guolleátnjal" "guollečearret" "guorbban" "guorbbat" "guorpmat" "guorvil" "guossagaccet" "guossagaccet" "guossavizar" "guosttačurrot" "guotnjar" "guotta" "guottet" "guottet" "guovddut" "guovddášdopmonjaman" "guovddášguppol" "guovssat" "guovttedávttatmohtor" "guovtteiđot" "guovtteiđot" "guovžur" "guppar" "guppol" "guppás" "gurbbet" "gurbmon" "guret" "gurpmat" "gurraluođđaláger" "gurrašluppot" "gurvvon" "gusasáhpal" "guvhllár" "guvllár" "guzat" "guččor" "guččár" "guđahasmehtar" "guškil" "guššát" "gádjit" "gáfesilon" "gáffal" "gáhkkobažán" "gáhkkobožán" "gáhkkor" "gáhpol" "gáhrit" "gáhrot" "gáhta" "gáhtegismmos" "gáhtir" "gáiddusdárkon" "gáiskkit" "gáisábusságeahpil" "gájet" "gájot" "gákkan" "gálbbečeabet" "gálddat" "gálddát" "gálgan" "gálgandoalan" "gálggan" "gálggan" "gálgoš" "gálkorieban" "gálkon" "gálljin" "gállot" "gálssot" "gálvagorddet" "gálvokartotehka" "gálán" "gámmir" "gámmár" "gándil" "gándin" "gáneš" "gántor" "gárdesáhpán" "gárdevizar" "gárdin" "gárdin" "gárdnagas" "gárjil" "gáron" "gársan" "gártnit" "gárven" "gáskkit" "gáskkát" "gásor" "gássaduolmman" "gássor" "gásár" "gását" "gávgil" "gávlorievttat" "gávlovuoján" "gávpegámmár" "gávpot" "gávpotteáhter" "gávra" "gávreheavval" "gávrret" "gávrret" "gávval" "gáŋgen" "gášan" "habitualitehta" "hallusinogen" "halogen" "hammondorgel" "haran" "harem" "haŋkinváiddon" "heaggaustit" "heahkel" "heahpat" "heakkel" "heartavizar" "heastagohrát" "heavval" "heittot" "heittot" "heksaedar" "helikopter" "helvet" "herkken" "hertnet" "herttot" "heđen" "heŋggon" "hihtat" "hilbbot" "hillaruovssut" "hiller" "historihkkár" "hivsset" "hiŋkkan" "hoagan" "hoaiddár" "hoalan" "hoapmir" "hoavkkát" "hoavrran" "hoaššaháigir" "hombil" "hommet" "honet" "honnet" "hopmir" "hubat" "huikkan" "huitor" "humaniora" "humbil" "humor" "hyasinta" "hydrogen" "hyperbel" "hypoteahka" "hypotenus" "háigir" "hálddahusortnet" "háleštanskihpár" "hállár" "hálvvát" "hámman" "hámsson" "hánar" "hánat" "hándal" "hápman" "hárddan" "hárddán" "hárpmon" "hárset" "hársit" "hárát" "hárččet" "háskil" "hássel" "hásselsáhpán" "hávdegámmár" "hávlár" "hávskár" "hávvar" "háŋgil" "identitehtta" "identitehta" "idjagozán" "iešeaiggát" "ieš-pronomen" "iežasveksel" "ihkkon" "ihkon" "ihtosinut" "iissot" "iissot" "imaš" "immunitehta" "inspektoráhta" "indefinihttapronomen" "infiltrašuvdnarusttet" "intensitehta" "internehta" "internáhta" "interrogatiivapronomen" "intranehta" "invaliditehta" "ipmet" "ipmil" "ipmit" "irján" "isit" "iskkár" "ivssut" "ivssut" "iđat" "iđit" "iđitrohkos" "jahkeduhát" "jahkečoahkkin" "jalleš" "jaman" "jarin" "jaspis" "jeaggebiššan" "jeaggeguškil" "jeaggemáđir" "jeaggesáhpal" "jeaggevizar" "jeara" "jester" "jiehkkoheavval" "jiellat" "jienastanseattal" "jieret" "jierit" "jietnaváiddon" "jievjun" "jipmil" "jobbár" "johkahávvar" "johtinláger" "johtinsabet" "jonssot" "jorbaoaivvatspihkár" "jorbbot" "jorin" "jorranáksil" "jorredoalan" "jorreláger" "joule" "journalnummar" "jovssus" "juhkanlásedoalan" "julii" "jumeš" "junii" "junior" "juogut" "juohkopássár" "juolgedoalan" "juolgenohta" "juolut" "juomit" "juovlaeahket" "juovlakáktus" "jury" "jurán" "jusleksikon" "justerstempela" "justitiarius" "justitiárius" "juvlii" "juvllii" "juvnii" "juvnnii" "juŋgel" "juŋkor" "jálás" "jámet" "jámit" "jándor" "kajennebihppor" "kaleandar" "kalkulator" "kalkuláhtor" "kamela" "kamera" "kandidáhta" "kapihttal" "kapihttal" "karbohydráhta" "kardeaksa" "karoten" "kartoteahka" "kartotehka" "kasus" "katalysáhtor" "katehta" "katekehta" "keaisár" "keallár" "kefir" "keret" "kervel" "kievkkan" "kihtet" "kiikkár" "kiippár" "kilomehtar" "kilomehter" "kilomettar" "kinemateahka" "kinoteahka" "kirkolaščoahkkin" "klassihkkár" "kliissár" "klimáhta" "klyxa" "koordináhta" "koordináhtor" "koaffar" "koartil" "kodicilla" "kodisilla" "koffar" "komehta" "kommeantapartihkkal" "kondensáhtor" "konfoluhttanjolon" "konserváhtor" "konsuláhta" "kontor" "konttor" "korinta" "koriánder" "korpus" "korreláhta" "kosttet" "kreativitehta" "kreatsa" "kredihttarehket" "kriminalitehta" "kritera" "krysoprasa" "krysolihtta" "kráhter" "kubbel" "kullár" "kuntepillar" "kuráhtor" "kuššát" "kvalitehtta" "kvantifikáhtor" "kvantitehtta" "kviteret" "kvohta" "káfesilon" "káffal" "káhkal" "káhtekismmos" "kámmir" "kámmár" "kánel" "kántor" "kápihttal" "kárven" "kásus" "kávrret" "kávval" "labirinta" "labyrinta" "ladni" "laktapartihkkal" "laktin" "lappekodisilla" "laser" "lassiárvodivat" "lasttat" "lađan" "lađasjuolggat" "lađasjuolggat" "leaggán" "leanadáiddár" "ledjon" "legitimitehta" "leibor" "leksikon" "lektor" "lektoráhta" "lieggaáibmorusttet" "liekkan" "liekkasmihttár" "lievdenjaman" "lievlanjaman" "lieđđeširan" "lihpar" "lihtar" "lihtor" "lihttar" "lihtter" "lihttostáhta" "liidnakláva" "liigebefála" "liigemodula" "liktenheavval" "likviditehta" "linddor" "linjen" "linjjá" "linjár" "linnjen" "linnjár" "lisensiáhta" "litnet" "littar" "livat" "livnnet" "livttesrisen" "liánttabužan" "loabát" "loahppakommunikeá" "loddevirus" "lohkanortnet" "lohkir" "lohkkeraban" "lohkkir" "lojan" "lojat" "lokkon" "lokálakásus" "lottegazzasáhpal" "lottáš" "lovppár" "lovpár" "lovttan" "lovtton" "luffel" "luhkkár" "luhtat" "luhtehasčukkon" "luhtet" "luksus" "luleš" "lummor" "luohkkáskihpár" "luohpet" "luoimman" "luojan" "luosat" "luossaveajet" "luostesáhpán" "luosttat" "luotnegáffal" "luottut" "luovat" "luovddat" "luovvar" "luovččan" "luovččanšluppot" "luođđadoalan" "luođđaláger" "lutton" "luvddon" "lyra" "ládjogahpir" "láfol" "láfon" "láger" "lágut" "láhken" "láhkán" "láhten" "láiddon" "láiddot" "láidon" "láidun" "láikkan" "láittaheavval" "láittan" "láittán" "láittár" "láktor" "lámbor" "lánnot" "lántor" "lánuorat" "láseraban" "láserčálán" "láskutkartotehka" "láttat" "láttat" "láttán" "lávet" "lávgolovtton" "lávkkon" "lávllon" "lávot" "lávár" "láđđemuzet" "láđđečáhpot" "lášmmut" "magnehta" "majestehta" "majora" "majoritehta" "mammon" "manager" "mandel" "mandáhta" "manin" "manin" "manna" "manomehtar" "maoriálbmot" "maraton" "marmora" "martihkkal" "maskulinitehta" "master" "matemátihkka" "matrikkel" "matrikkelnummar" "maŋŋebismmar" "maŋŋestávval" "maŋŋeáksil" "maŋŋeánnuitehta" "maŋŋešelggon" "maŋŋeš" "maššir" "meahcceluovvar" "meahccelávet" "meahcceváran" "meahcet" "meahcit" "meaisil" "meargŋun" "mearragoaskin" "mearraháskil" "mearraálbmot" "meassár" "meađđen" "meaštár" "mediateahka" "mediatehka" "medieteahka" "megon" "mehtar" "mehter" "meinnet" "meisset" "mekanihkkár" "meren" "meres" "merkkon" "messet" "mettar" "miehtegieđageavat" "mielduopmár" "mieleaiggát" "miellavádjet" "miesegahpir" "miesttavizar" "mieđut" "mihttár" "mikrobotkkán" "mikrodoaimmár" "miktam" "millimehtar" "millimehter" "minikumma" "minister" "minoritehta" "moarrun" "modalitehta" "modernitehta" "modifikáhtor" "modula" "modus" "mohtor" "mohtorcrossa" "mohtorliekkan" "moivvár" "moksin" "molon" "molssagákkan" "molsson" "molybden" "monin" "monin" "morddár" "mordár" "mosat" "motocrossa" "moxa" "muffa" "muhkebiđggon" "muhkkebulkor" "muhtor" "muhtter" "muitonummir" "mulggon" "muohtaskohter" "muohtaskuhter" "muolddat" "muorrafaskkon" "muorragoarvvet" "muorraguppol" "muorraipmil" "muovjejieret" "muoŧáš" "muoŧŧal" "murdinmolsson" "museum" "musihkkár" "muslim" "muzet" "muzetčuoivvat" "muđon" "myhta" "myrra" "myrra" "mádjit" "máhkan" "máhta" "máiddon" "májor" "málesrisen" "málgor" "málljar" "málár" "mámmon" "mándel" "mánus" "máran" "márbmor" "márffon" "márgár" "márkan" "márkan" "máron" "másomman" "máttil" "máđir" "naleš" "nammagilkor" "nammaláhpan" "nammaláhpat" "nannán" "našunalteáhter" "neahpát" "nealggár" "neavttár" "neillet" "nelet" "nelet" "nelot" "nenetsa" "nettorehket" "nieidagearret" "nieidalihtor" "nieidasahpal" "nieiddasnisson" "nihkkel" "nihppel" "niikun" "niitosáhpal" "niitosáhpán" "nirbbet" "nisson" "nissun" "nivssat" "njalddán" "njaman" "njamat" "njeahcet" "njealjejuvllat" "njealječiegat" "njealjit" "njeccon" "njelot" "njiezat" "njigan" "njigon" "njiman" "njoalveláger" "njoammil" "njoazan" "njolon" "njomon" "njozon" "njuikkon" "njulggot" "njunneduhpát" "njuolggogolmmačiegat" "njuolggosátneortnet" "njuolggut" "njuorat" "njuorddut" "njuorjjočázet" "njuorjjot" "njuovan" "njuovvanrusttet" "njuovččalieđat" "njuovččalieđat" "njuozat" "njurggan" "njurggon" "njuvddán" "njuvvat" "njágan" "njáhcosabet" "njáhcosuohpan" "njáhkaveajet" "njálbmefidjol" "noahtal" "nohta" "nomen" "nomináhta" "notáhta" "novrrán" "nuhtat" "nuhtot" "nulpogahpir" "nummar" "nummir" "nummár" "nuortagáiskkit" "nuorttut" "nuvan" "nuvttat" "nuvttot" "nábor" "nábot" "nábár" "náhpol" "náhpul" "náhpur" "nálloláger" "náskál" "nástefinddár" "návet" "oaffar" "oagan" "oaivegávpot" "oaiveipmil" "oaiveisit" "oaivejoran" "oaiveskuvrin" "oaivil" "oalesheavval" "oalgedoalan" "oapman" "oarjelsámegielarena" "oarján" "oassálasti" "oaván" "obbabihppor" "obbagárdin" "obbarehket" "obersta" "observatora" "ogon" "ohter" "oiddot" "oidnovihtan" "okkon" "oksygen" "oktaedar" "oktoealit" "oktoorut" "ollesčoahkkin" "ollut" "ollut" "olmmošjoren" "olmmošjoren" "olmmošjorán" "olssot" "olus" "olut" "olut" "omen" "omman" "opera" "operáhtor" "opmir" "oppatráilar" "oppal" "oppasrievttat" "orakel" "orbbeš" "orbbešgoartil" "ordel" "ordil" "orgel" "orgil" "orrit" "ortnet" "orut" "oskál" "otnáš" "ovdagáffal" "ovdagávpot" "ovdaánnuitehta" "ovdašelggon" "ovddasrohkos" "ovsttán" "ovttaiđot" "ovttaiđot" "ovttasdoaibmanarena" "ovttaseaiggát" "ovttet" "ođat" "ođut" "paradiijás" "paradiás" "paradoksa" "parlamentarihkkár" "parlamentihkkár" "partihkkal" "parábel" "passivitehta" "personnummir" "philosophicum" "pinakoteahka" "plakáhta" "plenum" "pohtehtos" "poles" "poleskámmir" "politiadvokáhta" "politihkkar" "politihkkár" "pollen" "preassa" "predikáhta" "predikáhtor" "prioritehta" "priváhta" "proavás" "proavás" "produktivitehta" "profehta" "professor" "professoráhtta" "projektor" "promilla" "pronomen" "prorektor" "proseassa" "proselyhtta" "prosessor" "purpur" "pyramida" "pássár" "raban" "rabasčoahkkin" "rabárber" "radiáhtor" "radiálláger" "ragat" "rahpot" "ravddat" "ravggon" "realitehta" "refleaksaveahčir" "regressáhta" "reahkajálás" "reahpen" "reaidnár" "reainnár" "reantár" "refereanssat" "referáhta" "regeantanummar" "regel" "reguláhtor" "rehket" "rekambiorehket" "rekel" "rektor" "rektáŋgel" "relatiivapronomen" "relativitehta" "reportár" "resiprohkapronomen" "rettet" "revolver" "revolvár" "revy" "reáktor" "ribat" "ribon" "riddasáhpal" "riddomáđir" "riddár" "rieban" "riehkan" "riehtet" "riejan" "riekteregel" "rievssat" "rievttigeavat" "rievvár" "riffal" "riffel" "rigearár" "rihcit" "rihkkoheavval" "rihkon" "riikaráđđeadel" "riikačoahkkin" "riikkabeaiveortnet" "rikkearár" "risváhnen" "risváhnen" "risen" "ristváhnen" "ristvánhen" "ristarieban" "rivot" "rivttár" "rivut" "roabát" "roahkan" "roahnit" "roamšejierit" "roatnet" "rockár" "rogon" "rohkkil" "rohkos" "rohkot" "rohpegeaigán" "rohtogaccet" "rohtogaccet" "rohtomáđir" "rohtovizar" "rohtor" "roibbon" "rokkan" "roman" "romaniálbmot" "romat" "ronnet" "rosgeret" "rosttot" "rottet" "rubel" "ruhkos" "ruhmut" "ruivvan" "ruksesfeber" "ruksesguškil" "ruksesluovvar" "ruksesrieban" "ruksesruoivil" "ruksessinut" "ruksessáhpán" "rullaláger" "rullit" "ruohkan" "ruohttaeahket" "ruoinnan" "ruoinnat" "ruoivil" "ruossariddár" "ruossarieban" "ruovdegulmmet" "ruovdegákkan" "ruovdemáđe" "ruovssut" "ruovttogoatnil" "ruovttot" "ruovttudivššár" "ruođat" "ruoškemándel" "ruoššagearvil" "ruoššaguovssat" "ruoššanjoammil" "ruoššaállat" "ruoššaállat" "ruppal" "rusen" "rusttet" "rutnot" "ruŋkul" "ruškkut" "rábbegoaskin" "rábit" "rábon" "rábát" "rádjesoalddát" "rádár" "ráhnit" "ráhtogoaskin" "ráiggan" "rájan" "rájuskartotehka" "rámmát" "ránan" "ránat" "rándat" "ránesbeštor" "ránesháigir" "ráneslivkkár" "ránesrieban" "ránessáhpán" "ránsel" "ránsos" "rántet" "ráppár" "rásselohkkovizar" "rásttesvizar" "rátnogođđinstuolet" "rátnostuolet" "rávdnjeaggregáhta" "rávnnut" "rávrran" "rávál" "ráđđedagat" "ráđđečoahkkin" "sabet" "sabit" "safira" "sahenrusttet" "sahánrusttet" "salbiehtár" "salpehtter" "sallit" "sallit" "saláhta" "sampel" "sardonyksa" "sarrit" "sarrit" "sasttet" "savvon" "seagan" "seahkkanjurggan" "seahkot" "seaibbat" "seakkagorddet" "seakkasáhpal" "seakŋáš" "searvogoazan" "seasan" "seattal" "seavdnjat" "seavnnját" "seaŋganisson" "seder" "sehpet" "seivvon" "sekel" "sekkor" "sektor" "seller" "selota" "semi-tráilar" "senet" "senet" "senior" "sennet" "sensitivitehta" "sentimehtar" "sentimehter" "senáhta" "sepmon" "septeamber" "septeambár" "serrat" "sesamsiepman" "seđel" "siepman" "sierat" "sierraoaivil" "sierrán" "sierát" "siessal" "siffar" "sihkkel" "sihkon" "sihkor" "siidagasvuoján" "siiddaisit" "siidošelggon" "siiggát" "silan" "silar" "silon" "sirkil" "sirkus" "sirot" "sirot" "sirát" "sisbandy" "sis-bandy" "sistesuorpmat" "sisttet" "sitara" "sitron" "sitáhta" "sitáhtta" "siviila" "sivjjot" "sivjjot" "sivnnát" "skabilken" "skabusrisen" "skarlagen" "skeaikkan" "skeaŋkár" "skeijár" "skerttet" "skievttár" "skiffar" "skihkár" "skihpár" "skilan" "skillet" "skirttet" "skoaran" "skoarkil" "skoavit" "skohtal" "skohter" "skohttal" "skoret" "skovlot" "skreaddár" "skruvvabonjan" "skruvvadoalan" "skruvvačárvvon" "skuhter" "skuhttár" "skuibor" "skumot" "skuoggir" "skuoggun" "skuoggun" "skuohtal" "skupmot" "skurbban" "skurbbet" "skurvvát" "skuter" "skuvlaskihpár" "skádjaseasan" "skáhčir" "skájan" "skárbban" "skárben" "skávval" "skávžžet" "smaragda" "smarágda" "smeargil" "smávvaboargár" "snelkkon" "snielut" "snihkkár" "snihppar" "sniiggár" "snuibagahpir" "snuohtar" "snuolggár" "snuvssa" "snuđđor" "snáhpot" "snáhput" "snárket" "snávggut" "soabat" "soadjesáhpán" "soahkesáhpán" "soahtesoalddát" "soalddát" "soandegeasehanbulkor" "soavvil" "soađan" "sohken" "soidnár" "solidaritehta" "solon" "sosialdemokráhta" "sotkkon" "sovkken" "spanut" "spažut" "speadjal" "speadjár" "speallan" "speissedálar" "speisset" "spektra" "spenáhta" "spetakkel" "spiertačáhput" "spihkár" "spiikkár" "spináhta" "spivkkár" "spoavár" "sponsor" "spontaheavval" "spáillit" "sruvabonjan" "sráŋgaspihkár" "sráŋgaspiikkár" "stabilitehta" "stadi" "stadion" "stahtor" "stahtus" "stajár" "stalinorgel" "standárden" "steaikaoapman" "steallenihppel" "steampal" "steampil" "steikentermomihttár" "stellet" "stempel" "stetoskohpa" "stevdnevihtan" "stevnnet" "stevvel" "stihkagálssot" "stihkagálssot" "stihkágálssot" "stihkágálssot" "stipendiáhta" "stivrračoahkkin" "stivrran" "stivrrár" "stoagan" "stoahčat" "stoahčet" "stoahčet" "stoavkkan" "stoberaban" "stohpoortnet" "stokkáŋkor" "stuoraháskil" "stuorat" "stuorrageavjjat" "stuorragávpot" "stuorraháskil" "stuorramáđir" "stuorraneillet" "stáhkkár" "stáhta" "stáhtaadvokáhta" "stáhtaborgár" "stáhtus" "stáidnár" "stáinnat" "stáinnir" "stálledoalan" "stálobárggeš" "stámbbut" "stárrerutnot" "stávval" "stáđut" "subordináhtor" "substituhta" "substráhta" "suhkkol" "suhkol" "suite" "suittet" "suittet" "sukkol" "sukseassa" "suksessa" "sulfáhta" "sulin" "suodjegahpir" "suodjár" "suohkan" "suohkat" "suohkatrisen" "suohpal" "suohpan" "suoidnespábbačárvvon" "suoidnevahát" "suoidnevahát" "suoivvan" "suojan" "suoksačurot" "suoksačurrot" "suonat" "suonjan" "suonjarláger" "suonjir" "suopman" "suorat" "suorit" "suorpmat" "suovvarieban" "suoŋir" "suvddár" "suvdár" "suverenitehta" "suvvol" "suđiláttán" "sveisenboalddán" "svisker" "syhkkel" "sykkel" "synkronmohtor" "sábbát" "sábel" "sábát" "sádel" "sáfrán" "ságel" "sággegahpir" "ságát" "sáhcodagan" "sáhkel" "sáhkát" "sáhpal" "sáhpel" "sáhpit" "sáhppesjieret" "sáhpán" "sáhtán" "sákkil" "sákkin" "sálkor" "sálon" "sámediggepolitihkkár" "sámmál" "sánddat" "sándil" "sáppat" "sáppát" "sárggon" "sátneortnet" "sáttat" "sávdnjeheavval" "sávzzasinut" "sáđgin" "sáŋgár" "sŋiran" "tabernakel" "tableahtta" "tabuláhtor" "taffel" "taiga" "taksi" "teknihkkár" "telefonnummar" "telefonnummir" "telefončoahkkin" "tempel" "tempus" "teret" "termostáhta" "terror" "terrárium" "tetraedar" "tevnnet" "teáhter" "tiggár" "tihttel" "timotemos" "tingeltangel" "tomáhta" "topasa" "totem" "trailer" "traktor" "transformáhtor" "transistor" "trasáhta" "trinitrotoluen" "trippel" "triáŋgel" "trompehta" "trumpehta" "tráilar" "tráktor" "tráktáhta" "tulján" "tuljár" "tulját" "tuohpis" "tuollár" "turbomohtor" "turnus" "táhka" "táhkkal" "távval" "uksabearpmet" "ulbmil" "unduláhta" "universitehta" "unnitálbmot" "upmol" "urbil" "urbán" "urmáhkár" "ustit" "uvssot" "uđámat" "vadnin" "vahát" "vajahasgorddán" "valat" "valljivuođaortnet" "valmuesiepman" "valuhta" "varit" "varit" "variábel" "variáhtor" "varradeaddomihttár" "varraheahpat" "veabel" "veahkkedivššár" "veahkkeprofessor" "veahkkár" "veahčir" "veaikeboson" "veajet" "veaksel" "veaksil" "veallan" "veambil" "vearret" "vearrolivnnet" "vearromartihkkal" "vearál" "veattat" "veattán" "vehikkel" "veivár" "veksel" "vektor" "velositehta" "ventiilalovttan" "venzzon" "verrát" "vevvel" "veđor" "videoteahka" "viehkat" "viehta" "vielggut" "vieljaš" "vielljaálbmot" "viessohoaiddár" "viessohoiddár" "viessosáhpán" "vihtan" "viissár" "viisár" "viivvut" "vilgesbihppor" "vilgesbohppel" "vilgesháigir" "vilgesloppan" "vilgesluovvar" "vilgesmáđir" "vilgessennet" "vilgessennet" "vilgon" "vintán" "viskositehta" "vispil" "visppon" "vissir" "visttan" "vizar" "viđačiegat" "viŋkil" "voltamihttár" "vuhpon" "vujon" "vuobirs" "vuobis" "vuohes" "vuohtan" "vuohtan" "vuoidannihppel" "vuoiddasbožán" "vuoigatvuođakánsler" "vuoigŋan" "vuojahanrusttet" "vuoján" "vuoktaborštadoalan" "vuoktagaccet" "vuoktagaccet" "vuoktaláfol" "vuolahasdoaján" "vuolan" "vuollenohta" "vuopman" "vuorjjan" "vuorjjat" "vuostegieđageavat" "vuosttut" "vuostáheavval" "vuovddit" "vuovdegaccet" "vuovdegaccet" "vuovdegoddesáhpán" "vuovdegáiskkit" "vuovdesáhpal" "vuovdesáhpán" "vuovdeveasen" "vuovdevizar" "vuođđoisit" "vuskkon" "vádjit" "vádjit" "váhkar" "váhkol" "váhnen" "váhttar" "váhtter" "váibbat" "váibmouvssot" "váiddon" "váivván" "válbor" "váldoguottet" "váldoragat" "váldosuopman" "vánhen" "váran" "várrehusgolmmačiegat" "várvvár" "váskkir" "vátnemielat" "vátnen" "váđas" "váđir" "váđot" "weblogan" "áddjot" "áddjut" "ádel" "áhkil" "áhkkut" "áhkkut" "áhkkár" "áhperievssat" "áhttán" "áhččemin" "áibmesákkan" "áibmobismmar" "áiccan" "áidesáhpal" "áigedávval" "áigetávval" "áigečáján" "áinnut" "áirohopmir" "ákkil" "áksil" "áktor" "álbmot" "álgoálbmot" "álin" "állan" "állat" "állat" "álon" "álssetluovvar" "áltár" "ámmat" "ámmát" "ánnuitehta" "ápmil" "ápmir" "áppes" "áppet" "ápril" "áren" "árggan" "árkacokkan" "árraiđit" "árran" "ártnot" "árvodávvir" "árvoortnet" "ásat" "ásen" "ásii" "ásii" "ássi" "ávggos" "ávgos" "ávil" "ávjjur" "ávskár" "ávvir" "áŋkor" "østrogen" "č.ortnet" "čalbmealán" "čalbmeoaidnovihtan" "čalmmeoaidnovihtan" "čalán" "čanan" "časkinváiddon" "časkkan" "čavil" "čavččat" "čađan" "čeabet" "čeabetnjárččet" "čeabát" "čeahcet" "čeahcit" "čearpmat" "čearret" "čearret" "čearrit" "čeaskkut" "čeavllit" "čelččen" "čerggon" "čeŋkkešgoartil" "čiegusoaivil" "čiehgahpir" "čiehkadagan" "čiekčansabet" "čiekčár" "čielgedoalan" "čitnahydráhta" "čiŋkkon" "čoahkkin" "čoahkkingivssár" "čoahkkinortnet" "čoahkkár" "čoakkán" "čoakkán" "čoarveheavval" "čoaskin" "čoavddabonjan" "čoavjjet" "čogat" "čohkkundoalan" "čolon" "čorggut" "čuget" "čukkon" "čulggon" "čunugoallár" "čuohpan" "čuoigansabet" "čuoiggan" "čuoihgahpir" "čuoivvat" "čuojan" "čuolan" "čuonan" "čuorbban" "čuorggat" "čuorggut" "čuotnan" "čuovgadávval" "čuovgagilkor" "čurot" "čurrot" "čuvdegoartil" "čužot" "čábbon" "čáhcebulkor" "čáhcecrossa" "čáhcefápmorusttet" "čáhcenjaman" "čáhcesabet" "čáhcesáhpán" "čáhceviehkat" "čáhceásat" "čáhpot" "čáhppesbihppor" "čáhppesdávval" "čáhppesgaccet" "čáhppesgaccet" "čáhppesháigir" "čáhppesjierit" "čáhppesrieban" "čáhppesvizar" "čáhppesváđot" "čáhput" "čáihnegaccet" "čálat" "čálggat" "čálgoortnet" "čálán" "čámbohkal" "čámbokkal" "čáppon" "čárvvon" "čázet" "čázit" "šealggut" "šeaman" "šelgesčuoivvat" "šelggon" "šibit" "šiivagoazan" "šilljočuččot" "šilljočuččot" "širan" "šleaŋgačuoivvat" "šlembbon" "šleđggon" "šleŋggon" "šliippár" "šlimir" "šlipsa" "šloahpar" "šlohtor" "šlubbooaivvat" "šluppot" "šlámbor" "šláŋŋačárvvon" "šoaran" "šoavkkut" "šolár" "šombbár" "šođbbut" "šuokŋagáffal" "šuvon" "šáhčir" "šávan" ;
+LIST NOM-GEN-NOUN = "ILO-traktáhta" "TV-kámera" "agens" "agitáhtor" "ahkit" "akkumuláhtor" "aksiálláger" "aktuáhtor" "album" "alladeattacirggon" "allodatsárggon" "almmuhantávval" "alpinsuodjegahpir" "amaryllis" "ametysta" "analfabehta" "analysáhtor" "antikristus" "apoastal" "apoasttal" "apostal" "apotehkár" "apparáhta" "arena" "aristokráhta" "artoteahka" "askedihtor" "asymtohta" "asynkronmohtor" "atlas" "audition" "automáhta" "autoritehta" "avistaveksel" "azzil" "bahtaboskkan" "dearvvašvuođadutkanguovddáš" "dutkanguovddáš" "guovddáš" "identitehta" "jolá" "journála" "lága" "pláhta" "plána" "psykiatriija" "stáhta" "ulbmil" "unduláhta" "universitehta" "vahkku" "valuhta" "velositehta" "videoteahka" "viskositehta" "vuollenohta" "ákšu" "ánnuitehta" "ássi" "ášši" "čitnahydráhta" "čáhcecrossa" "šlipsa" "CD-siŋgel" "Kárášjoh#suopman" "Vær-varsom-plakáhta" "advokáhta" "affrikáhta" "agens" "aggregáhta" "agitáhtor" "ahkit" "akkumuláhtor" "aksiálláger" "aktivitehta" "aktoealit" "aktováhnen" "aktuáhtor" "album" "alesgahcin" "alesgahtin" "alfabehta" "alken" "alladeattacirggon" "allodatsárggon" "almennet" "almennet" "almmiseasan" "almmuhandávval" "almmuhantávval" "alpinsuodjegahpir" "alášgohcet" "alášsinut" "amaryllis" "ametysta" "analfabehta" "analysáhtor" "androgena" "antikristus" "aortauvssot" "apoastal" "apoasttal" "apostal" "apoteahka" "apotehka" "apotehkár" "apparáhta" "arena" "aristokráhta" "arsena" "artoteahka" "askedihtor" "asymtohta" "asynkronmohtor" "atlas" "atomafápmorusttet" "audition" "automáhta" "autoritehta" "aviisadoalan" "avistaveksel" "azzil" "bahtaboskkan" "bajitforminttár" "baján" "ballin" "balsam" "balsámabohppel" "bargomárkan" "bargoátnjal" "baromehtar" "baromehter" "bartagávpot" "baskkot" "bassaladdanrusttet" "bassasat" "bađošgaccet" "bađošgaccet" "beahcebáhcat" "beahcehurggán" "beahcemihttár" "beahcečukkon" "beahcet" "bealdobiššan" "bealdoduhpát" "bealdomáđir" "bealdorettet" "bealdosennet" "bealdosennet" "bealdosáhpán" "bealljeboskkan" "bealljemuhtter" "bealljerokkan" "bealljeskuhran" "bealljesuojan" "bearbil" "bearpmet" "bearral" "beasseskoabit" "beatnatsarrit" "beavkkan" "beavváš" "befála" "bejot" "bensinmohtor" "benzena" "beron" "berylla" "bevkor" "beštor" "biblioteahka" "bibliotehka" "bidjet" "biebmoprosessor" "biebmorieban" "biebmováhnen" "biebmováhnen" "bieggaskoarkil" "biehkan" "biehtan" "biehtán" "biellán" "biergoguhppár" "biergoátnjal" "bieskán" "bievval" "bieđan" "bihcabáhcat" "bihcir" "bihkkasuohpan" "bihppor" "biibbal" "biihtár" "biikanáhkat" "bijat" "bijat" "bijat" "bijat" "bikket" "bilkkár" "bilkár" "billár" "bilttet" "bippal" "birrajándor" "birrin" "bismmar" "bismmáčoahkkin" "bismmáidčoahkkin" "bissobeahcet" "bitumen" "bivddár" "bivttasbažán" "bivttasbožán" "bivval" "bivššut" "biđggon" "biškkon" "boahtal" "boaisán" "boaisán" "boalddán" "boaldinmohtor" "boaldomohtor" "boalvár" "boaran" "boargar" "boargár" "boargár" "boastasteampal" "boastasteampil" "boazoeaiggát" "boazoealát" "boazoisit" "boazosuohkan" "boađđocivkkán" "boaššobearpmet" "bodnerivot" "bohccerusttet" "bohccečuohpan" "bohppel" "bohtalraban" "bohtehtos" "bohtás" "boimmon" "boksaraban" "boles" "bolfegaccet" "bolfegaccet" "bolgenšelggon" "bolot" "bonteheavval" "bonus" "boran" "borgár" "borjat" "borranátnal" "borranátnjal" "bosan" "boson" "botehtos" "botkkon" "botnit" "bovkor" "bođosvuohtan" "boŋkor" "božán" "brensel" "bubmol" "buddhatempel" "buhtat" "buhtet" "buijár" "buikkár" "buikár" "buimman" "buktinhámman" "bulddán" "bulet" "bulkor" "bulmmot" "bulžžet" "bumbol" "bumeránskka" "bummal" "bummol" "buohccedivššár" "buohkaidčoahkkin" "buoiddat" "buolašsuohpan" "buollinbiškkon" "buolát" "buorat" "buoráš" "buoskár" "buovnnjat" "buovnnjatsáhpán" "buozan" "buozanvuohta" "buošan" "buošut" "buošát" "bupmol" "burbor" "burpur" "burrut" "busir" "busságeahpil" "buvrorisen" "buđet" "bužan" "bábirráiggan" "bábirčanan" "báhcat" "báhkin" "báhkkol" "báhkkon" "báhpačeabet" "báhtter" "báhttergealddán" "báikkiisit" "báikkikásus" "báimman" "báitat" "báktegáiskkit" "báktegájan" "bálges" "bálkásoalddát" "bállat" "bálvalanámmát" "bálát" "bárel" "bárggeš" "bárggon" "báron" "bárral" "báson" "básár" "bátnerokkan" "báđar" "báŋkoeaiggát" "bážan" "cagan" "cakkan" "cakkat" "ceakkokartotehka" "ceakkosymptohta" "centilihtter" "centimehtar" "centimehter" "centilittar" "chilibihppor" "cieban" "ciebat" "cielan" "cievan" "cihran" "cinemateahka" "cirggon" "civkkan" "coagan" "cokkan" "cuppol" "dahkumagnehta" "datostempel" "davvevizar" "deaggafiskesloppan" "deaggalivkkár" "deaggamáđir" "deahkketonus" "dearppát" "dearvvašvuođadivššár" "deattareguláhtor" "deattán" "deattán" "deavut" "debehta" "dehkar" "dehálašvuođaortnet" "dekstor" "delár" "demens" "denara" "deret" "desilihtar" "desilihtter" "devnnet" "devon" "diaprojektor" "diamehtar" "diamehter" "diehppelieđat" "diehppelieđat" "dielkočuoivvat" "diesel" "dieselmohtor" "dievŋŋat" "diggár" "dihtor" "diibmoduojár" "diibmodávval" "dikkel" "dikkelbotnet" "dikkár" "diktáhtor" "diktár" "dikšár" "dilot" "dines" "dipmabiššan" "direktoráhta" "diret" "dirgget" "diskotehka" "divat" "divat" "diversitehta" "divššár" "doaibmaalmmáiortnet" "doaibmaolmmáiortnet" "doaibmaoperator" "doaibmavádjet" "doaimmár" "doaján" "doalan" "doaresbielkalovtton" "doarjjaortnet" "doavkkan" "dohkkáteáhter" "dollarieban" "dollár" "domisiilaveksel" "dopmonjaman" "doron" "dorresáhpán" "dorrát" "doškkon" "dronnet" "drumbugoazan" "drámáteáhter" "dudnar" "duhpát" "duhpátguhkkár" "duhtodatárvooperáhtor" "duhátjuolggat" "duivil" "dulbenjurssan" "dulján" "duljár" "dulját" "dumon" "duodjár" "duojár" "duolbagavreheavval" "duolbaheavval" "duolbaluovččan" "duolbbár" "duolddan" "duolljeuvssot" "duollár" "duolmman" "duolmmanšelggon" "duolvačuoivvat" "duolvvár" "duopmokapihttal" "duopmár" "duottarbusságeahpil" "duottarhávvar" "duottarsáhpal" "durbbon" "durján" "dustton" "dutkkon" "dutnar" "duvddabearpmet" "duvhllár" "duvssár" "duđan" "dádel" "dággir" "dáhpa" "dáhton" "dáiddár" "dáidár" "dáigejierit" "dájet" "dájon" "dálar" "dálon" "dálssár" "dálueamit" "dáluisit" "dálveruoivil" "dálvvet" "dándor" "dápmot" "dápmot" "dássádahttingiikan" "dávllat" "dávllet" "dávttat" "dávval" "dávvir" "dávžžan" "eagáš" "eahket" "eahket" "eahkit" "eahpeipmil" "eahppel" "eaiggát" "ealet" "ealit" "eallin" "ealán" "ealát" "ealát" "eamiálbmot" "eamit" "eanabihttáeaiggát" "eanaeaiggát" "eanamuolddat" "eananmuolddat" "eappel" "eappelgeađgečukkon" "earán" "eatnaneaiggát" "eavddár" "eaŋgal" "eaŋkal" "ebel" "ebmoslieđat" "ebmoslieđat" "edet" "ednen" "ehpel" "eisseváldegeavat" "ekonomiija" "ekonomiijaortnet" "eksamen" "eksempel" "eksosgássarusttet" "eksosarusttet" "eksámen" "ekváhtor" "elmohtor" "elorgel" "el-botkkon" "el-mihttár" "el-molon" "el-távval" "el-visppon" "elektrihkkár" "elektrisitehta" "endor" "endossáhta" "entitehta" "eppel" "erttet" "essea" "estimáhtor" "etnisitehta" "ettet" "evangelium" "evaŋgelium" "eváŋgiljon" "examen" "eŋgel" "facultatum" "fahkon" "fakta" "faktora" "fakultehta" "falan" "falat" "fanasmohtor" "faskkan" "faskkon" "fasttat" "feambil" "fearan" "fearkil" "fearrán" "fearrán" "fearán" "feber" "femininitehta" "feminitehta" "fenomen" "feodálaortnet" "ferkkon" "fidjol" "fidnár" "fiehtar" "fiehtat" "fierán" "fievrran" "fihkon" "fiiber" "fiikkon" "fiikon" "filbmaprojektor" "finddár" "finer" "firet" "firon" "fiskesbeštor" "fiskesiris" "fiskesloppan" "fiskesmáđir" "fiskesvizar" "fiskár" "fitnet" "flundar" "flygel" "fláneallatávval" "foahpir" "fokus" "fokusáhtor" "folin" "formel" "forum" "fototeahka" "fránsos" "fuohpuš" "fuolkeálbmot" "fuođđarrájan" "fábel" "fáhkan" "fáksa" "fáktor" "fállevizar" "fálskkár" "fálttet" "fálttet" "fánen" "fánten" "fápmorusttet" "fáskir" "fássol" "fássoldoalan" "fástadoavtterortnet" "fáŋgal" "gaccat" "gaccet" "gacceš" "gaccir" "gaccon" "gahpan" "gahpir" "gahčanpartihkal" "gaibbat" "gaigŋir" "gaigŋirbismmar" "gaikár" "galbmagáhkkor" "galjat" "galjot" "galján" "gallup" "galmmihanmekanihkkár" "galmmihanskáhppe" "gardnjil" "gargŋil" "garrasinut" "gaskagoartil" "gaskan" "gavjanjaman" "gazir" "gazzasáhpal" "gazzaš" "geafeguhkkár" "geahpil" "geahčedoalan" "geahčedulbenjurssan" "geaidnogievkkan" "geaigán" "geaisár" "gealddán" "gealut" "gearret" "gearret" "geaset" "geassegollet" "geasseuniversitehta" "geassečoavjjet" "geassečuččot" "geastegiivvár" "geasán" "geavat" "geavllet" "gehpot" "gemináhta" "generalmajora" "generáhtor" "gerddon" "geret" "geson" "gieddemáđir" "gieddesinut" "giehtagoazan" "giehtaheavval" "giehtaláiddot" "gieimman" "gierdodagan" "gieressabet" "gierrán" "gievkan" "gievkkan" "gieđalatláiddot" "gihlar" "gihtet" "giikan" "giikar" "giikkár" "giippár" "giittosrohkos" "giljon" "gilkkan" "gilkor" "gilljočearret" "gilljočearrit" "gilljon" "gillár" "gilomehtar" "gilomehter" "gilon" "gilvvasáhpal" "girdihámman" "girdihávvar" "girdisáhpán" "girjedoalan" "girjegorddet" "girjelivkkár" "girkolaščoahkkin" "giron" "gisor" "gissel" "gissor" "gittadávvir" "gittačoahkkin" "givgás" "giškon" "gluten" "glykogen" "glyptoteahka" "goadjin" "goadjin" "goaffar" "goahppil" "goaivvan" "goaktil" "goallár" "goalšovizar" "goapmir" "goaran" "goarat" "goarkagoarvvet" "goartil" "goarvvet" "goaskin" "goaskit" "goatnil" "goatnjil" "goazan" "goađeeamit" "goađeisit" "goaŧŧočeabet" "goban" "goddesáhpán" "goden" "gohpeheavval" "gohpeluovččan" "gohrat" "goidoš" "goidár" "goikehivsset" "goikesallitbállat" "goikket" "goivvon" "golbmačiehkasárggon" "golddán" "golggiidusrusttet" "golggiidusrusttet" "golggot" "gollehámster" "gollerieban" "gollen" "golmmačiegat" "golmmet" "golár" "gontor" "goppás" "goppát" "gorddet" "gorddán" "gorut" "gosttet" "gosttet" "gottesáhpal" "gottur" "govddon" "govllon" "govvaalbum" "govvadáiddár" "gozihančoahkkin" "goččor" "goččár" "gođán" "granáhta" "gubar" "gudjor" "guhkan" "guhkat" "guhkesheavval" "guhkesáiggeulbmil" "guhkkár" "guhppil" "guhppár" "guhtal" "guikkut" "gulbmár" "gulkkan" "gullosuojan" "gulmmet" "gulmmit" "gummistevvel" "gummisáppát" "guoccat" "guodjavizar" "guohkan" "guohppar" "guohár" "guoihgáhrit" "guoik'gáhrit" "guoimmáš" "guoirrat" "guolban" "guolbbagorddet" "guolebeahcet" "guollegoaskin" "guolleguhppár" "guolleipmil" "guolleátnal" "guolleátnjal" "guollečearret" "guorbban" "guorbbat" "guorpmat" "guorvil" "guossagaccet" "guossagaccet" "guossavizar" "guosttačurrot" "guotnjar" "guotta" "guottet" "guottet" "guovddut" "guovddášdopmonjaman" "guovddášguppol" "guovssat" "guovttedávttatmohtor" "guovtteiđot" "guovtteiđot" "guovžur" "guppar" "guppol" "guppás" "gurbbet" "gurbmon" "guret" "gurpmat" "gurraluođđaláger" "gurrašluppot" "gurvvon" "gusasáhpal" "guvhllár" "guvllár" "guzat" "guččor" "guččár" "guđahasmehtar" "guškil" "guššát" "gádjit" "gáfesilon" "gáffal" "gáhkkobažán" "gáhkkobožán" "gáhkkor" "gáhpol" "gáhrit" "gáhrot" "gáhta" "gáhtegismmos" "gáhtir" "gáiddusdárkon" "gáiskkit" "gáisábusságeahpil" "gájet" "gájot" "gákkan" "gálbbečeabet" "gálddat" "gálddát" "gálgan" "gálgandoalan" "gálggan" "gálggan" "gálgoš" "gálkorieban" "gálkon" "gálljin" "gállot" "gálssot" "gálvagorddet" "gálvokartotehka" "gálán" "gámmir" "gámmár" "gándil" "gándin" "gáneš" "gántor" "gárdesáhpán" "gárdevizar" "gárdin" "gárdin" "gárdnagas" "gárjil" "gáron" "gársan" "gártnit" "gárvet" "gáskkit" "gáskkát" "gásor" "gássaduolmman" "gássor" "gásár" "gását" "gávgil" "gávlorievttat" "gávlovuoján" "gávpegámmár" "gávpot" "gávpotteáhter" "gávra" "gávreheavval" "gávrret" "gávrret" "gávval" "gáŋgen" "gášan" "habitualitehta" "hallusinogen" "halogen" "hammondorgel" "haran" "harem" "haŋkinváiddon" "heaggaustit" "heahkel" "heahpat" "heakkel" "heartavizar" "heastagohrát" "heavval" "heittot" "heittot" "heksaedar" "helikopter" "helvet" "herkken" "hertnet" "herttot" "heđen" "heŋggon" "hihtat" "hilbbot" "hillaruovssut" "hiller" "historihkkár" "hivsset" "hivsset" "hiŋkkan" "hoagan" "hoaiddár" "hoalan" "hoapmir" "hoavkkát" "hoavrran" "hoaššaháigir" "hombil" "hommet" "honet" "honnet" "hopmir" "hubat" "huikkan" "huitor" "humaniora" "humbil" "humor" "hyasinta" "hydrogen" "hyperbel" "hypoteahka" "hypotenus" "háigir" "hálddahusortnet" "háleštanskihpár" "hállár" "hálvvát" "hámman" "hámsson" "hánar" "hánat" "hándal" "hápman" "hárddan" "hárddán" "hárpmon" "hárset" "hársit" "hárát" "hárččet" "háskil" "hássel" "hásselsáhpán" "hávdegámmár" "hávlár" "hávskár" "hávvar" "háŋgil" "identitehta" "idjagozán" "iešeaiggát" "ieš-pronomen" "iežasveksel" "ihkkon" "ihkon" "ihtosinut" "iissot" "iissot" "imaš" "immunitehta" "inspektoráhta" "indefinihttapronomen" "infiltrašuvdnarusttet" "intensitehta" "internehta" "internáhta" "interrogatiivapronomen" "intranehta" "invaliditehta" "ipmet" "ipmil" "ipmit" "irján" "isit" "iskkár" "ivssut" "ivssut" "iđat" "iđit" "iđitrohkos" "jahkeduhát" "jahkečoahkkin" "jalleš" "jaman" "jarin" "jaspis" "jeaggebiššan" "jeaggeguškil" "jeaggemáđir" "jeaggesáhpal" "jeaggevizar" "jeara" "jester" "jiehkkoheavval" "jiellat" "jienastanseattal" "jieret" "jierit" "jietnaváiddon" "jievjun" "jipmil" "jobbár" "johkahávvar" "johtinláger" "johtinsabet" "jonssot" "jorbaoaivvatspihkár" "jorbbot" "jorin" "jorranáksil" "jorredoalan" "jorreláger" "joule" "journalnummar" "jovssus" "juhkanlásedoalan" "julii" "jumeš" "junii" "junior" "juogut" "juohkopássár" "juolgedoalan" "juolgenohta" "juolut" "juomit" "juovlaeahket" "juovlakáktus" "jury" "jurán" "jusleksikon" "justerstempela" "justitiarius" "justitiárius" "juvlii" "juvllii" "juvnii" "juvnnii" "juŋgel" "juŋkor" "jálás" "jámet" "jámit" "jándor" "kajennebihppor" "kaleandar" "kalkulator" "kalkuláhtor" "kamela" "kámera" "kandidáhta" "kapihtal" "karbohydráhta" "kardeaksa" "karoten" "kartoteahka" "kartotehka" "kasus" "katalysáhtor" "katehta" "katekehta" "keaisár" "keallár" "kefir" "keret" "kervel" "kievkkan" "kihtet" "kiikkár" "kiippár" "kilomehtar" "kilomehter" "kilomettar" "kinemateahka" "kinoteahka" "kirkolaščoahkkin" "klassihkkár" "kliissár" "klimáhta" "klyxa" "koordináhta" "koordináhtor" "koaffar" "koartil" "kodicilla" "kodisilla" "koffar" "komehta" "kommeantapartihkkal" "kondensáhtor" "konfoluhttanjolon" "konserváhtor" "konsuláhta" "kontor" "konttor" "korinta" "koriánder" "korpus" "korreláhta" "kosttet" "kreativitehta" "kreatsa" "kredihttarehket" "kriminalitehta" "kritera" "krysoprasa" "krysolihtta" "kráhter" "kubbel" "kullár" "kuntepillar" "kuráhtor" "kuššát" "kvalitehtta" "kvantifikáhtor" "kvantitehtta" "kvantitehta" "kviteret" "kvohta" "káfesilon" "káffal" "káhkal" "káhtekismmos" "kámmir" "kámmár" "kánel" "kántor" "kápihttal"  "kásus" "kávrret" "kávval" "labirinta" "labyrinta" "ladni" "laktapartihkkal" "laktin" "lappekodisilla" "laser" "lassiárvodivat" "lasttat" "lađan" "lađasjuolggat" "lađasjuolggat" "leaggán" "leanadáiddár" "ledjon" "legitimitehta" "leibor" "leksikon" "lektor" "lektoráhta" "lieggaáibmorusttet" "liekkan" "liekkasmihttár" "lievdenjaman" "lievlanjaman" "lieđđeširan" "lihpar" "lihtar" "lihtor" "lihttar" "lihtter" "lihttostáhta" "liidnakláva" "liigebefála" "liigemodula" "liktenheavval" "likviditehta" "linddor" "linjen" "linjjá" "linjár" "linnjen" "linnjár" "lisensiáhta" "litnet" "littar" "livat" "livnnet" "livttesrisen" "liánttabužan" "loabát" "loahppakommunikeá" "loddevirus" "lohkanortnet" "lohkir" "lohkkeraban" "lohkkir" "lojan" "lojat" "lokkon" "lokálakásus" "lottegazzasáhpal" "lottáš" "lovppár" "lovpár" "lovttan" "lovtton" "luffel" "luhkkár" "luhtat" "luhtehasčukkon" "luhtet" "luksus" "luleš" "lummor" "luohkkáskihpár" "luohpet" "luoimman" "luojan" "luosat" "luossaveajet" "luostesáhpán" "luosttat" "luotnegáffal" "luottut" "luovat" "luovddat" "luovvar" "luovččan" "luovččanšluppot" "luođđadoalan" "luođđaláger" "lutton" "luvddon" "lyra" "ládjogahpir" "láfol" "láfon" "láger" "lágut" "láhken" "láhkán" "láhten" "láiddon" "láiddot" "láidon" "láidun" "láikkan" "láittaheavval" "láittan" "láittán" "láittár" "láktor" "lánnot" "lántor" "lánuorat" "láseraban" "láserčálán" "láskutkartotehka" "láttat" "láttat" "láttán" "lávet" "lávgolovtton" "lávkkon" "lávllon" "lávot" "lávár" "láđđemuzet" "láđđečáhpot" "lášmmut" "magnehta" "majestehta" "majora" "majoritehta" "mammon" "manager" "mandel" "mandáhta" "manin" "manin" "manna" "manomehtar" "maoriálbmot" "maraton" "marmora" "martihkkal" "maskulinitehta" "master" "matemátihkka" "matrikkel" "matrikkelnummar" "maŋŋebismmar" "maŋŋestávval" "maŋŋeáksil" "maŋŋeánnuitehta" "maŋŋešelggon" "maŋŋeš" "maššir" "meahcceluovvar" "meahccelávet" "meahcceváran" "meahcet" "meahcit" "meaisil" "meargŋun" "mearragoaskin" "mearraháskil" "mearraálbmot" "meassár" "meađđen" "meaštár" "mediateahka" "mediatehka" "medieteahka" "megon" "mehtar" "mehter" "meinnet" "meisset" "mekanihkkár" "meren" "meres" "merkkon" "messet" "mettar" "miehtegieđageavat" "mielduopmár" "mieleaiggát" "miellavádjet" "miesegahpir" "miesttavizar" "mieđut" "mihttár" "mikrobotkkán" "mikrodoaimmár" "miktam" "millimehtar" "millimehter" "minikumma" "minister" "minoritehta" "moarrun" "moarsi" "modalitehta" "modernitehta" "modifikáhtor" "modula" "modus" "mohtor" "mohtorcrossa" "mohtorliekkan" "moivvár" "moksin" "molon" "molssagákkan" "molsson" "molybden" "monin" "monin" "morddár" "mordár" "mosat" "motocrossa" "moxa" "muffa" "muhkebiđggon" "muhkkebulkor" "muhtor" "muhtter" "muitonummir" "mulggon" "muohtaskohter" "muohtaskuhter" "muolddat" "muorrafaskkon" "muorragoarvvet" "muorraguppol" "muorraipmil" "muovjejieret" "muoŧáš" "muoŧŧal" "murdinmolsson" "museum" "musihkkár" "muslim" "muzet" "muzetčuoivvat" "muđon" "myhta" "myrra" "mádjit" "máhkan" "máhta" "máiddon" "májor" "málesrisen" "málgor" "málljar" "málár" "mámmon" "mándel" "mánus" "máran" "márbmor" "márffon" "márgár" "márkan" "márkan" "máron" "másomman" "máttil" "máđir" "naleš" "nammagilkor" "nammaláhpan" "nammaláhpat" "nannán" "našunalteáhter" "neahpát" "nealggár" "neavttár" "neillet" "nelet" "nelet" "nelot" "nenetsa" "nettorehket" "nieidagearret" "nieidalihtor" "nieidasahpal" "nieiddasnisson" "nihkkel" "nihppel" "niikun" "niitosáhpal" "niitosáhpán" "nirbbet" "nisson" "nissun" "nivssat" "njalddán" "njaman" "njamat" "njeahcet" "njealjejuvllat" "njealječiegat" "njealjit" "njeccon" "njelot" "njiezat" "njigan" "njigon" "njiman" "njoalveláger" "njoammil" "njoazan" "njolon" "njomon" "njozon" "njuikkon" "njulggot" "njunneduhpát" "njuolggogolmmačiegat" "njuolggosátneortnet" "njuolggut" "njuorat" "njuorddut" "njuorjjočázet" "njuorjjot" "njuovan" "njuovvanrusttet" "njuovččalieđat" "njuovččalieđat" "njuozat" "njurggan" "njurggon" "njuvddán" "njuvvat" "njágan" "njáhcosabet" "njáhcosuohpan" "njáhkaveajet" "njálbmefidjol" "noahtal" "nohta" "nomen" "nomináhta" "notáhta" "novrrán" "nuhtat" "nuhtot" "nulpogahpir" "nummar" "nummir" "nummár" "nuortagáiskkit" "nuorttut" "nuvan" "nuvttat" "nuvttot" "nábor" "nábot" "nábár" "náhpol" "náhpul" "náhpur" "nálloláger" "náskál" "nástefinddár" "návet" "oaffar" "oagan" "oaivegávpot" "oaiveipmil" "oaiveisit" "oaivejoran" "oaiveskuvrin" "oaivil" "oalesheavval" "oalgedoalan" "oapman" "oarjelsámegielarena" "oarján" "oassálasti" "oaván" "obbabihppor" "obbagárdin" "obbarehket" "obersta" "ogon" "ohter" "oiddot" "oidnovihtan" "okkon" "oksygen" "oktaedar" "oktoealit" "oktoorut" "ollesčoahkkin" "ollut" "ollut" "olmmošjoren" "olmmošjoren" "olmmošjorán" "olssot" "olus" "olut" "olut" "omen" "omman" "opera" "operáhtor" "opmir" "oppatráilar" "oppal" "oppasrievttat" "orakel" "orbbeš" "orbbešgoartil" "ordel" "ordil" "orgel" "orgil" "orrit" "ortnet" "orut" "oskál" "otnáš" "ovdagáffal" "ovdagávpot" "ovdaánnuitehta" "ovdašelggon" "ovddasrohkos" "ovsttán" "ovttaiđot" "ovttaiđot" "ovttasdoaibmanarena" "ovttaseaiggát" "ovttet" "ođat" "ođut" "paradiijás" "paradiás" "paradoksa" "parlamentarihkkár" "parlamentihkkár" "partihkkal" "parábel" "passivitehta" "personnummir" "philosophicum" "pinakoteahka" "plakáhta" "plenum" "pohtehtos" "poles" "poleskámmir" "politiadvokáhta" "politihkkar" "politihkkár" "pollen" "preassa" "predikáhta" "predikáhtor" "prioritehta" "priváhta" "proavás" "proavás" "produktivitehta" "profehta" "professor" "professoráhtta" "projektor" "promilla" "pronomen" "prorektor" "proseassa" "proselyhtta" "prosessor" "purpur" "pyramida" "pássár" "raban" "rabasčoahkkin" "rabárber" "radiáhtor" "radiálaláger" "ragat" "rahpot" "ravddat" "ravggon" "realitehta" "refleaksaveahčir" "regressáhta" "reahkajálás" "reahpen" "reaidnár" "reainnár" "reantár" "refereanssat" "referáhta" "regeantanummar" "regel" "reguláhtor" "rehket" "rekambiorehket" "rekel" "rektor" "rektáŋgel" "relatiivapronomen" "relativitehta" "reportár" "resiprohkapronomen" "rettet" "revolver" "revolvár" "revy" "reáktor" "ribat" "ribon" "riddasáhpal" "riddomáđir" "riddár" "rieban" "riehkan" "riehtet" "riejan" "riekteregel" "rievssat" "rievttigeavat" "rievvár" "riffal" "riffel" "rigearár" "rihcit" "rihkkoheavval" "rihkon" "riikkaráđđeadel" "riikkačoahkkin" "riikkabeaiveortnet" "rikkearár" "risváhnen" "risváhnen" "risen" "ristváhnen" "ristarieban" "rivot" "rivttár" "rivut" "roabát" "roahkan" "roahnit" "roamšejierit" "roatnet" "rockár" "rogon" "rohkkil" "rohkos" "rohkot" "rohpegeaigán" "rohtogaccet" "rohtogaccet" "rohtomáđir" "rohtovizar" "rohtor" "roibbon" "rokkan" "roman" "romaniálbmot" "romat" "ronnet" "rosgeret" "rosttot" "rottet" "rubel" "ruhkos" "ruhmut" "ruivvan" "ruksesfeber" "ruksesguškil" "ruksesluovvar" "ruksesrieban" "ruksesruoivil" "ruksessinut" "ruksessáhpán" "rullaláger" "rullit" "ruohkan" "ruohttaeahket" "ruoinnan" "ruoinnat" "ruoivil" "ruossariddár" "ruossarieban" "ruovdegulmmet" "ruovdegákkan" "ruovdemáđe" "ruovssut" "ruovttogoatnil" "ruovttot" "ruovttudivššár" "ruođat" "ruoškemándel" "ruoššagearvil" "ruoššaguovssat" "ruoššanjoammil" "ruoššaállat" "ruoššaállat" "ruppal" "rusen" "rusttet" "rutnot" "ruŋkul" "ruškkut" "rábbegoaskin" "rábit" "rábon" "rábát" "rádjesoalddát" "rádár" "ráhnit" "ráhtogoaskin" "ráiggan" "rájan" "rájuskartotehka" "rámmát" "ránan" "ránat" "rándat" "ránesbeštor" "ránesháigir" "ráneslivkkár" "ránesrieban" "ránessáhpán" "ránsel" "ránsos" "rántet" "ráppár" "rásselohkkovizar" "rásttesvizar" "rátnogođđinstuolet" "rátnostuolet" "rávdnjeaggregáhta" "rávnnut" "rávrran" "rávál" "ráđđedagat" "ráđđečoahkkin" "sabet" "sabit" "safira" "sahenrusttet" "sahánrusttet" "salbiehtár" "salpehtter" "sallit" "sallit" "saláhta" "sampel" "sardonyksa" "sarrit" "sarrit" "sasttet" "savvon" "seagan" "seahkkanjurggan" "seahkot" "seaibbat" "seakkagorddet" "seakkasáhpal" "seakŋáš" "searvogoazan" "seasan" "seattal" "seavdnjat" "seavnnját" "seaŋganisson" "seder" "sehpet" "seivvon" "sekel" "sekkor" "sektor" "seller" "selota" "semi-tráilar" "senet" "senet" "senior" "sennet" "sensitivitehta" "sentimehtar" "sentimehter" "senáhta" "sepmon" "septeamber" "septeambár" "serrat" "sesamsiepman" "seđel" "siepman" "sierat" "sierraoaivil" "sierrán" "sierát" "siessal" "siffar" "sihkkel" "sihkon" "sihkor" "siidagasvuoján" "siiddaisit" "siidošelggon" "siiggát" "silan" "silar" "silon" "sirkil" "sirkus" "sirot" "sirot" "sirát" "sisbandy" "sis-bandy" "sistesuorpmat" "sisttet" "sitara" "sitron" "sitáhta" "sitáhtta" "siviila" "sivjjot" "sivjjot" "sivnnát" "skabilken" "skabusrisen" "skarlagen" "skeaikkan" "skeaŋkár" "skeijár" "skerttet" "skievttár" "skiffar" "skihkár" "skihpár" "skilan" "skillet" "skirttet" "skoaran" "skoarkil" "skoavit" "skohtal" "skohter" "skohttal" "skoret" "skovlot" "skreaddár" "skruvvabonjan" "skruvvadoalan" "skruvvačárvvon" "skuhter" "skuhttár" "skuibor" "skumot" "skuoggir" "skuoggun" "skuoggun" "skuohtal" "skupmot" "skurbban" "skurbbet" "skurvvát" "skuter" "skuvlaskihpár" "skádjaseasan" "skáhčir" "skájan" "skárbban" "skárben" "skávval" "skávžžet" "smaragda" "smarágda" "smeargil" "smávvaboargár" "snelkkon" "snielut" "snihkkár" "snihppar" "sniiggár" "sniikkár" "snuibagahpir" "snuohtar" "snuolggár" "snuvssa" "snuđđor" "snáhpot" "snáhput" "snárket" "snávggut" "soabat" "soadjesáhpán" "soahkesáhpán" "soahtesoalddát" "soalddát" "soandegeasehanbulkor" "soavvil" "soađan" "sohken" "soidnár" "solidaritehta" "solon" "sosialdemokráhta" "sotkkon" "sovkken" "spanut" "spažut" "speadjal" "speadjár" "speallan" "speissedálar" "speisset" "spektra" "spenáhta" "spetakkel" "spiertačáhput" "spihkár" "spiikkár" "spináhta" "spivkkár" "spoavár" "sponsor" "spontaheavval" "spáillit" "sruvabonjan" "sráŋgaspihkár" "sráŋgaspiikkár" "stabilitehta" "stadi" "stadion" "stahtor" "stahtus" "stajár" "stalinorgel" "standárden" "steaikaoapman" "steallenihppel" "steampal" "steampil" "steikentermomihttár" "stellet" "stempel" "stetoskohpa" "stevdnevihtan" "stevnnet" "stevvel" "stihkagálssot" "stihkagálssot" "stihkágálssot" "stihkágálssot" "stipendiáhta" "stivrračoahkkin" "stivrran" "stivrrár" "stoagan" "stoahčat" "stoahčet" "stoahčet" "stoavkkan" "stoberaban" "stohpoortnet" "stokkáŋkor" "stuoraháskil" "stuorat" "stuorrageavjjat" "stuorragávpot" "stuorraháskil" "stuorramáđir" "stuorraneillet" "stáhkkár" "stáhta" "stáhtaadvokáhta" "stáhtaborgár" "stáhtus" "stáidnár" "stáinnat" "stáinnir" "stálledoalan" "stálobárggeš" "stámbbut" "stárrerutnot" "stávval" "stáđut" "subordináhtor" "substituhta" "substráhta" "suhkkol" "suhkol" "sukkol" "sukseassa" "suksessa" "sulfáhta" "sulin" "suodjegahpir" "suodjár" "suohkan" "suohkat" "suohkatrisen" "suohpal" "suohpan" "suoidnespábbačárvvon" "suoidnevahát" "suoidnevahát" "suoivvan" "suojan" "suoksačurot" "suoksačurrot" "suonat" "suonjan" "suonjarláger" "suonjir" "suopman" "suorat" "suorit" "suorpmat" "suovvarieban" "suoŋir" "suvddár" "suvdár" "suverenitehta" "suvvol" "suđiláttán" "sveisenboalddán" "svisker" "syhkkel" "sykkel" "synkronmohtor" "sábbát" "sábel" "sábát" "sádel" "sáfrán" "ságel" "sággegahpir" "ságát" "sáhcodagan" "sáhkel" "sáhkát" "sáhpal" "sáhpit" "sáhppesjieret" "sáhpán" "sáhtán" "sákkil" "sákkin" "sálkor" "sálon" "sámediggepolitihkkár" "sámmál" "sánddat" "sándil" "sáppat" "sáppát" "sárggon" "sátneortnet" "sáttat" "sávdnjeheavval" "sávzzasinut" "sáđgin" "sáŋgár" "sŋiran" "tabernakel" "tableahtta" "tabuláhtor" "taffel" "taiga" "taksi" "teknihkkár" "telefonnummar" "telefonnummir" "telefončoahkkin" "tempel" "tempus" "teret" "termostáhta" "terror" "terrárium" "tetraedar" "tevnnet" "teáhter" "tiggár" "tihttel" "timotemos" "tingeltangel" "tomáhta" "topasa" "totem" "trailer" "traktor" "transformáhtor" "transistor" "trasáhta" "trinitrotoluen" "trippel" "triáŋgel" "trompehta" "trumpehta" "tráilar" "tráktor" "traktáhta" "tulján" "tuljár" "tulját" "tuohpis" "tuollár" "turbomohtor" "turnus" "táhka" "táhkkal" "távval" "uksabearpmet" "ulbmil" "unduláhta" "universitehta" "unnitálbmot" "upmol" "urbil" "urbán" "urmáhkár" "ustit" "uvssot" "uđámat" "vadnin" "vahát" "vajahasgorddán" "valat" "valljivuođaortnet" "valmuesiepman" "valuhta" "varit" "varit" "variábel" "variáhtor" "varradeaddomihttár" "varraheahpat" "veabel" "veahkkedivššár" "veahkkeprofessor" "veahkkár" "veahčir" "veaikeboson" "veajet" "veaksel" "veaksil" "veallan" "veambil" "vearret" "vearrolivnnet" "vearromartihkkal" "vearál" "veattat" "veattán" "vehikkel" "veivár" "veksel" "vektor" "velositehta" "ventiilalovttan" "venzzon" "verrát" "vevvel" "veđor" "videoteahka" "viehkat" "vielggut" "vieljaš" "vielljaálbmot" "viessohoaiddár" "viessohoiddár" "viessosáhpán" "vihtan" "viissár" "viisár" "viivvut" "vilgesbihppor" "vilgesbohppel" "vilgesháigir" "vilgesloppan" "vilgesluovvar" "vilgesmáđir" "vilgessennet" "vilgessennet" "vilgon" "vintán" "viskositehta" "vispil" "visppon" "vissir" "visttan" "vizar" "viđačiegat" "viŋkil" "voltamihttár" "vuhpon" "vujon" "vuobirs" "vuobis" "vuohes" "vuohtan" "vuohtan" "vuoidannihppel" "vuoiddasbožán" "vuoigatvuođakánsler" "vuoigŋan" "vuojahanrusttet" "vuoján" "vuoktaborštadoalan" "vuoktagaccet" "vuoktagaccet" "vuoktaláfol" "vuolahasdoaján" "vuolan" "vuollenohta" "vuopman" "vuorjjan" "vuorjjat" "vuostegieđageavat" "vuosttut" "vuostáheavval" "vuovddit" "vuovdegaccet" "vuovdegaccet" "vuovdegoddesáhpán" "vuovdegáiskkit" "vuovdesáhpal" "vuovdesáhpán" "vuovdeveasen" "vuovdevizar" "vuođđoisit" "vuskkon" "vádjit" "vádjit" "váhkar" "váhkol" "váhnen" "váhttar" "váhtter" "váibbat" "váibmouvssot" "váiddon" "váivván" "válbor" "váldoguottet" "váldoragat" "váldosuopman" "váran" "várrehusgolmmačiegat" "várvvár" "váskkir" "vátnemielat" "vátnen" "váđas" "váđir" "váđot" "weblogan" "áddjot" "áddjut" "ádel" "áhkil" "áhkkut" "áhkkut" "áhkkár" "áhperievssat" "áhttán" "áhččemin" "áibmesákkan" "áibmobismmar" "áiccan" "áidesáhpal" "áigedávval" "áigetávval" "áigečáján" "áinnut" "áirohopmir" "ákkil" "áksil" "áktor" "álbmot" "álgoálbmot" "állan" "állat" "állat" "álon" "álssetluovvar" "áltár" "ámmat" "ámmát" "ánnuitehta" "ápmil" "ápmir" "áppes" "áppet" "ápril" "áren" "árggan" "árkacokkan" "árraiđit" "árran" "ártnot" "árvodávvir" "árvoortnet" "ásat" "ásen" "ásii" "ásii" "ássi" "ávggos" "ávgos" "ávil" "ávjjur" "ávskár" "ávvir" "áŋkor" "østrogen" "č.ortnet" "čalbmealán" "čalbmeoaidnovihtan" "čalmmeoaidnovihtan" "čalán" "čanan" "časkinváiddon" "časkkan" "čavil" "čavččat" "čađan" "čeabet" "čeabetnjárččet" "čeabát" "čeahcet" "čeahcit" "čearpmat" "čearret" "čearret" "čearrit" "čeaskkut" "čeavllit" "čelččen" "čerggon" "čeŋkkešgoartil" "čiegusoaivil" "čiehgahpir" "čiehkadagan" "čiekčansabet" "čiekčár" "čielgedoalan" "čitnahydráhta" "čiŋkkon" "čoahkkin" "čoahkkingivssár" "čoahkkinortnet" "čoahkkár" "čoakkán" "čoakkán" "čoarveheavval" "čoaskin" "čoavddabonjan" "čoavjjet" "čogat" "čohkkundoalan" "čolon" "čorggut" "čuget" "čukkon" "čulggon" "čunugoallár" "čuohpan" "čuoigansabet" "čuoiggan" "čuoihgahpir" "čuoivvat" "čuojan" "čuolan" "čuonan" "čuorbban" "čuorggat" "čuorggut" "čuotnan" "čuovgadávval" "čuovgagilkor" "čurot" "čurrot" "čuvdegoartil" "čužot" "čábbon" "čáhcebulkor" "čáhcecrossa" "čáhcefápmorusttet" "čáhcenjaman" "čáhcesabet" "čáhcesáhpán" "čáhceviehkat" "čáhceásat" "čáhpot" "čáhppesbihppor" "čáhppesdávval" "čáhppesgaccet" "čáhppesgaccet" "čáhppesháigir" "čáhppesjierit" "čáhppesrieban" "čáhppesvizar" "čáhppesváđot" "čáhput" "čáihnegaccet" "čálat" "čálggat" "čálgoortnet" "čálán" "čámbohkal" "čámbokkal" "čáppon" "čárvvon" "čázet" "čázit" "šealggut" "šeaman" "šelgesčuoivvat" "šelggon" "šibit" "šiivagoazan" "šilljočuččot" "šilljočuččot" "širan" "šleaŋgačuoivvat" "šlembbon" "šleđggon" "šleŋggon" "šliippár" "šlimir" "šlipsa" "šloahpar" "šlohtor" "šlubbooaivvat" "šluppot" "šlámbor" "šláŋŋačárvvon" "šoaran" "šoavkkut" "šolár" "šombbár" "šođbbut" "šuokŋagáffal" "šuvon" "šáhčir" "šávan" ;
 
    # in singular, Nom=Gen=Acc. The C-final ones are poetic short genitives
    # for the GAHPIR nouns, the V-final ones are either STAHTA ones or they
@@ -1100,14 +1106,14 @@ LIST NOUN-PO = "áigi" "gaskan" "gaskka" "gaskkas" "guovddáš" "ovddas" "vuost�
 # The LAHKA set family
 # - - - - - - - - - - 
 
-LIST LAGA = (".*bargolága"r) "spábbačiekčanlága" ;
+LIST LAGA = (".*bargo#lága"r) "spábbačiekčan#lága" ;
 
-LIST LAGALAHKA = (".*bargoláhka"r) "spábbačiekčanláhka" ; 
+LIST LAGALAHKA = (".*bargo#láhka"r) "spábbačiekčan#láhka" "sierraláhka" ; 
 
 SET LAHKA = (".*láhka"r) - LAGALAHKA ;
 
 
-LIST LAHKA-MOD = "almennet" "almmolašvuohta" "apotehka" "arkiiva" "áhpenuohtástit" "álbmotoadju" "bargi" "bargobiras" "báikenamma" "bákti" "bátnedearvvašvuođabálvalus" "bivdu" "boazodoallu" "čázádat" "dálkkas" "dásseárvu" "deatnu" "dearvvašvuođabargi" "dearvvašvuohta" "dearvvašvuođafitnodat" "dearvvašvuođabargiidláhka" "dearvvašvuođaregisttar" "divššohasvuoigatvuohta" "doaibmi" "eana" "eanasuodjaleapmi" "eanavuovdin" "elliidsuodjaleapmi" "energiija" "fápmudus" "Finnmárku" "friddjasuohkan" "fuođđu" "gávpot" "geaidnu" "gearggusvuohta" "gielddadearvvašvuođabálvalus" "gielda" "gilioppalašeana" "girku" "golli" "guollebiebman" "háhkankonsešuvdna" "hálddašeapmi" "heaggadieđut" "huksen" "industrikonsešuvdna" "jávrebivdu" "joatkkaoahpahus" "johtolat" "konsešuvdna" "kulturmuitu" "lavdnjeloggut" "lotnolasealáhusabargi" "luodda" "luonddusuodjalus" "luopmu" "luossa" "mánáidgárdi" "mánáidsuodjalusbálvalus" "mearraguolásteapmi" "mearraresursa" "minerála" "mohtorjohtolat" "muddet" "namma" "Norga" "norga" "oahpahallat" "oahpahus" "oahppu" "oassálastinláhka" "olgunastin" "olmmošvuoigatvuohta" "oktasašsápmi" "pasieantavuoigatvuohta" ("ráŋggáštit" Der/eapmi) "resursahálddašeapmi" "riekteveahkki" "sáivabivdu" "sápmi" "searvan" "sierra" "spesialistadearvvašvuođabálvalus" "stáhtaborgárriekti" "stáhtafitnodat" "tuollu" "uhccimusmihttonjuolggadus" "varasguolli" "várri" "vearrodahku" "vearru" "vuođđu" "vuođđoskuvla" "vuovdedoallu" "vuovdegáhttet" "vuovdi" "1789" "1842" "1863" "1888" "1899-#bivdu" "1899" "1920-várri" "1933" "1965" "1975-#várri" ;
+LIST LAHKA-MOD = "almennet" "almmolašvuohta" "apotehka" "arkiiva" "áhpenuohtástit" "álbmotoadju" "bargi" "bargobiras" "báikenamma" "bákti" "bátnedearvvašvuođabálvalus" "bivdu" "boazodoallu" "čázádat" "dálkkas" "dásseárvu" "deatnu" "dearvvašvuođabargi" "dearvvašvuohta" "dearvvašvuođafitnodat" "dearvvašvuođabargiidláhka" "dearvvašvuođaregisttar" "divššohasvuoigatvuohta" "doaibmi" "eana" "eana#suodjaleapmi" "eana#vuovdin" "elliidsuodjaleapmi" "energiija" "fápmudus" "Finnmárku" "friddjasuohkan" "fuođđu" "gávpot" "geaidnu" "gearggusvuohta" "gieldda#dearvvašvuođabálvalus" "gielda" "gili#oppalašeana" "girku" "golli" "guollebiebman" "háhkan#konsešuvdna" "hálddašeapmi" "heaggadieđut" "huksen" "industrikonsešuvdna" "jávrebivdu" "joatkkaoahpahus" "johtolat" "konsešuvdna" "kulturmuitu" "lavdnjeloggut" "lotnolasealáhusabargi" "luodda" "luonddu#suodjalus" "luopmu" "luossa" "mánáidgárdi" "mánáidsuodjalus#bálvalus" "mearraguolásteapmi" "mearraresursa" "minerála" "mohtorjohtolat" "muddet" "namma" "Norga" "norga" "oahpahallat" "oahpahus" "oahppu" "oassálastinláhka" "olgunastin" "olmmošvuoigatvuohta" "oktasašsápmi" "pasieantavuoigatvuohta" ("ráŋggáštit" Der/NomAct) "resursahálddašeapmi" "riekteveahkki" "sáivabivdu" "sápmi" "searvan" "sierra" "spesialistadearvvašvuođabálvalus" "stáhtaborgárriekti" "stáhtafitnodat" "tuollu" "uhccimusmihttonjuolggadus" "varas#guolli" "várri" "vearro#dahku" "vearru" "vuođđu" "vuođđoskuvla" "vuovdedoallu" "vuovdegáhttet" "vuovdi" "1789" "1842" "1863" "1888" "1899-#bivdu" "1899" "1920-#várri" "1933" "1965" "1975-#várri" ;
  
 # This list is for lahka compounds written with two single words
 
@@ -1134,7 +1140,7 @@ LIST LAHKA-POST = "bokte" "olis" "mielde" "vuođul" ;
 SET NOT-LAHKA = N - LAHKA ;
 
    
-LIST GIELDA = "fylkkagielda" "gielda" "guovddášgielda" "hálddašangielda" "riddogielda" "ruovttugielda" "sámegielda" "Sámegielda" "vuotnagielda" ;
+LIST GIELDA = "fylkkagielda" "gielda" "guovddášgielda" "hálddašangielda" "riddogielda" "ruovttugielda" "sámegielda" "vuotnagielda" ;
  
   # We need this set because there is ambiguity between "gielda"+Gen/Acc and "gieldda"+Nom.
 
@@ -1163,14 +1169,14 @@ LIST MANNU = "ođđajagemánnu" "ođđajagimánnu" "guovvamánnu" "njukčamánnu
 
 # Duomma:ii
 
-LIST AIGODAT = "áigi" (".*áigodat"r) "álgo#áigi" "bargo#áigi" "soahte#áigi" "soahte#gaska#áigi" ;
+LIST AIGODAT = "áigi" (".*áigodat"r) "álgoáigi" "bargoáigi" "soahteáigi" "soahtegaskaáigi" ;
  
 # Duomma:lea      
 
 LIST VAHKKU-DUR = "beaivi" "jándor" "bodda" "čakča" "čakčageassi" "čakčaseavdnjat" "čuohtejahki" "dálvi" "diibmu" "eahket" "eahketbodda" "geassi" "giđđa" "idja" "iđit" "iđitbodda" "jahki" "jahkebealle" "jahkečuohti" "kaleanddarjahki" "loahppajahki" "mánnu" "minukta" "njealjádasjahki" "skuvlajahki" "tiibma" "vahkkoloahppa" "vahkku" ;
 # these are periodes and can be Acc
 
-LIST VAHKKU-TIME = "b" "bievlajahki" "bivdoáigi" (".*beaivi"r) "D-beaivi" "dienasjahki" "doaibmajahki" "eamiálbmotjahki" "earrejahki" "gaskaidja" "geardi"  "luomejahki" "luopmojahki" "mihcamárra" "muorjejahki" "nissonjahki" "vuoitojahki" "vuođđoskuvlavahkku" ("[0-9]*#-jahki"r) ("[0-9]*-#jahki"r) "[0-9]*-[0-9]*-#jahki"  "[0-9]*-[0-9]*-#lohku" ("[0-9]*-#lohku"r) ("[0-9]*#-lohku"r) ;
+LIST VAHKKU-TIME = "b" "beassážat" "bievlajahki" "bivdoáigi" (".*beaivi"r) "d-beaivi" "dienasjahki" "doaibmajahki" "eamiálbmotjahki" "earrejahki" "gaskaidja" "geardi" "juovllat" "juovlabassi" "luomejahki" "luopmojahki" "mihcamárat" "muorjejahki" "nissonjahki" "vuoitojahki" "vuođđoskuvla#vahkku" ("[0-9]*-#jahki"r) ("[0-9]*-#jahki"r) "[0-9]*-[0-9]*-#jahki"  "[0-9]*-[0-9]*-#lohku" ("[0-9]*-#lohku"r) ("[0-9]*-#lohku"r) ;
 
  # The quoteless jahki here is since the preprocessor is not fine-tuned
  # yet, it still gives '"1870-" # jahki N Sg Com'. # lets see if "dbm" works
@@ -1182,12 +1188,12 @@ LIST NUM-JAHKI = "jahki" "skuvlajahki" ;
 
     # Years which can be numerated
  
-LIST PARTTIME = "čavččabealle" ;
+LIST PARTTIME = "čavčča#bealle" ;
 	# This set is for finding Gen in expressions like PARTTIME OR TIME Gen.
 
 LIST AIGI = "áigi" (".*áigi"r) ; 
 
-LIST SP-BEAIVI = "albmáimannanbeaivi" "bargočoahkkinbeaivi" "beassášbeaivi" "mánnodat" "vuossárga" "disdat" "maŋŋebárga" "gaskavahkku" "duorastat" "bearjadat" "juovlabeaivi" "lávvardat" "lávvordat" "sotnabeaivi" "sábbát" "skilleduorastat" ;
+LIST SP-BEAIVI = "albmáimannan#beaivi" "bargočoahkkin#beaivi" "beassášbeaivi" "mánnodat" "vuossárga" "disdat" "maŋŋebárga" "gaskavahkku" "duorastat" "bearjadat" "juovlabeaivi" "lávvardat" "lávvordat" "sotnabeaivi" "sábbát" "skilleduorastat" ;
 
 LIST GEN-BEAIVI = "álbmotbeaivi" "árgabeaivi" "bargobeaivi" "beaivi" "duopmobeaivi" "riegádanbeaivi" "skuvlabeaivi"  ;
 # General-beaivi can have Gen modifier, like "skuvlla árgabeaivi".
@@ -1222,7 +1228,7 @@ LIST VOLUME = "cl" "lihtar" (".*lihtter"r) "dl" "lihtter" "ml"  ;
 
 LIST WEIGHT = "mg" "kg" "kilo" "kilu" "gilo" "tonna" ;
 
-LIST LENGTH = "čuoldabadji" "dumá" "fierbmebadji" "gaska" "miila" (".*mehtar"r) (".*mehter"r) "mehtar" "mehter" "sente" "cm" "tumá" "állan" "salla" ;
+LIST LENGTH = "čuolda#badji" "dumá" "fierbme#badji" "gaska" "miila" (".*mehtar"r) (".*mehter"r) "mehtar" "mehter" "sente" "cm" "tumá" "állan" "salla" ;
 
 LIST TEMPERATURE = "buolašceahkki" "buolašgráda" "lieggaceahkki" "lieggagráda" ;
 
@@ -1253,11 +1259,11 @@ LIST PEOPLE-NUM = "guovttis" "golmmas" "njealjis" "viđas" "guđas" "čiežas" "
 # Numerus
 # - - - -
 
-LIST PL-NOUN = "beaivváščalbmeláset" "beassážat" "biddu" "čalbmeláset" "čázet" "fáhcca" "gállot" "gálssot" "gáma" "gistta" "goikket" "gummestevvel" "heajat" "hellodagat" "juovllat" "mállásat" "nagir" "njealljejuvllat" "njuorjjot" "nuhtat" "nuvttat" "nuvttot" "sabet" "sáppat" "sisttet" "skárri" "skuovva" "stevvel" "suohkku" "suorbmafáhcca" "suorpmat" "ullofáhcca" "ullosuohkku" "vuotta" ("[0-9]*#-jahki"r) ("[0-9]*-[0-9]*-#jahki"r) ("[0-9]*-#jahki"r) ;
+LIST PL-NOUN = "áiru" "beaivváščalbmeláset" "beassážat" "biddu" "čalbmeláset" "čázet" "fáhcca" "gállot" "gálssot" "gáma" "gistta" "goikket" "gummestevvel" "heajat" "hellodagat" "juovllat" "mállásat" "nagir" "njealljejuvllat" "njuorjjot" "nuhtat" "nuvttat" "nuvttot" "sabet" "sáppat" "sisttet" "skárrit" "skierat" "skuovva" "stevvel" "suohkku" "suorbmafáhcca" "suorpmahat" "ullofáhcca" "ullo#suohkku" "vuotta" "viljjit" ("[0-9]*-#jahki"r) ("[0-9]*-[0-9]*-#jahki"r) ("[0-9]*-#jahki"r) ;
  
  # Nominals that appear with plural numerals.
  
-LIST SG-WORD = ("addit" Der/upmi) "almmolašvuohta" "anistupmi" "arvi" "álgu" "áŋgirvuohta" "ávvu" "ballu" "bealli" "boazodoallu" "borakeahttáivuohta" ("buorredáhtolaš" Der/vuohta) "doaivu" "dárogiella" "Finnmárkkuláhka" "fuolalašvuohta" "gaskkamuddu" "gávvilvuohta" ("geargat" Der/vuohta) "geavaheapmi" "gelbbolašvuohta" "giellageavaheapmi" "giellapolitihkka" ("giitevaš" Der/vuohta) ("gudnejahttit" Actio) "fápmu"  ("guovttegielalaš" Der/vuohta) "hearvásvuohta" "illu" "ipmárdus" "isitvuohta" ("juotna" Der/laš Der/vuohta) "kulturduogáš" "kulturgelbbolašvuohta" "loahppa" ("máŋggabealat" Der/vuohta) "mielki" "miella" "moraš" "muohta" "musihkka" "oamedovdu" "olahahttivuohta" "ovddasvástádus" "ovttasbargu" "ovttadássásašvuohta" "politihkka" "ráffi" "ráfi" "ráhkisvuohta" "riska" "roahkkatvuohta" "sámegiella" "sámegielmáhttu" "sámekultuvra" "unnitlogupolitihkka" "ustitvuohta" ("vanhurskkis" Der/vuohta) "vásáhusduogáš" ("veahkaválddálaš" Der/vuohta) ("vuordnut" Actio)   ;
+LIST SG-WORD = ("addit" Der/upmi) "almmolašvuohta" "anistupmi" "arvi" "álgu" "áŋgirvuohta" "ávvu" "ballu" "bealli" "boazodoallu" "borakeahttáivuohta" ("buorredáhtolaš" Der/vuohta) "doaivu" "dárogiella" "Finnmárkoláhka" "fuolalašvuohta" "gaskkamuddu" "gávvilvuohta" ("geargat" Der/vuohta) "geavaheapmi" "gelbbolašvuohta" "giellageavaheapmi" "giellapolitihkka" ("giitevaš" Der/vuohta) ("gudnejahttit" Actio) "fápmu"  ("guovttegielalaš" Der/vuohta) "hearvásvuohta" "illu" "ipmárdus" "isitvuohta" ("juotna" Der/laš Der/vuohta) "kulturduogáš" "kulturgelbbolašvuohta" "loahppa" ("máŋggabealat" Der/vuohta) "mielki" "miella" "moraš" "muohta" "musihkka" "oamedovdu" "olahahttivuohta" "ovddasvástádus" "ovttasbargu" "ovttadássásašvuohta" "politihkka" "ráffi" "ráfi" "ráhkisvuohta" "riska" "roahkkatvuohta" "sámegiella" "sámegielmáhttu" "sámekultuvra" "unnitlogupolitihkka" "ustitvuohta" ("vanhurskkis" Der/vuohta) "vásáhusduogáš" ("veahkaválddálaš" Der/vuohta) ("vuordnut" Actio)   ;
 
 # Words that are used in singular unless their plurality is stressed by words such as "goappeš", "goappašat", "earálágan", "máŋgalágan" or Num or Ord.
 
@@ -1268,7 +1274,7 @@ LIST SG-WORD = ("addit" Der/upmi) "almmolašvuohta" "anistupmi" "arvi" "álgu" "
 LIST VUOHKI = (".*vuohki"r) "vuohki" ;
 # Usually in comitative, see rule
   
-LIST N-NOPXLIST = "atnu" "almmolašvuohta" "áibmu" "áigemearri" "áigi" "álbmotjienasteapmi" "álgoálgu" "álgostávval" "álgovuorru" "álgu" "álki" ("árvidit" Actio) "bargoáigi" "báhkka" ("beaivádit" Actio)  "beaivi" "bievlajahki" "boahtteáigi" "boahtu"  "boazodoallu" "boraspire" "cealkka"  "čáppagirjjálašvuohta" "čiegus" "čiehča" "dievasčoahkkin" "dilli"  "divregiksi"  "dollagáddi" "dološ" "eahket" "Finnmárkkuopmodat" "geatnegas" "geavat" "gaskkamuddo" "gárvi" "genitiivahápmi" "giellageavaheapmi" "girkosiida"  "hálddašanguovlu" "jahki" "jođán" "johgáddi" "johtu" "kilo" "láhka" "leansmánneárvvošteapmi" "loahppa" "logaheapmi" "lohku" "lohpi" "luondu" "maŋŋi" "máŋggaidlohku" "meallu"  ("meannudit" Actio) "mielladearvvašvuođadikšu" "nuoraidskuvladássi" "nuppádas" "nuppát" ("oahpahit" Actio) "ođas" "ođđajahki" "oktavuohta" "olle" "olmmoš" "ortnet" "ovttaoaivil" "ovttaidlohku"  "predikatiiva" "ráfi" "rávásmanahki"  "riektegeavat" "riikkaarkivára" "sápmelaš" "sisriika" "sivva" "Skjerstad-ášši" "smávvaskuvladássi" "soaittáhat" "stáhtaráđđi" "unnitlogugiella" "vahkku" "valljodat" "viiddis" "viso" "vuokta" ("[0-9]*#-lohku"r) ;
+LIST N-NOPXLIST = "atnu" "almmolašvuohta" "áibmu" "áigemearri" "áigi" "álbmotjienasteapmi" "álgo#álgu" "álgostávval" "álgovuorru" "álgu" "álki" ("árvidit" Actio) "bargoáigi" "báhkka" ("beaivádit" Actio)  "beaivi" "bievlajahki" "boahtteáigi" "boahtu"  "boazodoallu" "boraspire" "cealkka"  "čáppagirjjálašvuohta" "čiegus" "čiehča" "dievasčoahkkin" "dilli"  "divre#giksi"  "dollagáddi" "dološ" "eahket" "Finnmárkkuopmodat" "geatnegas" "geavat" "gaskkamuddo" "gárvi" "genitiivahápmi" "giellageavaheapmi" "girkosiida"  "hálddašanguovlu" "jahki" "jođán" "johgáddi" "johtu" "kilo" "láhka" "leansmánneárvvošteapmi" "loahppa" "logaheapmi" "lohku" "lohpi" "luondu" "maŋŋi" "máŋggaidlohku" "meallu"  ("meannudit" Actio) "mielladearvvašvuođa#dikšu" "nuoraidskuvladássi" "nuppádas" "nuppát" ("oahpahit" Actio) "ođas" "ođđajahki" "oktavuohta" "olle" "olmmoš" "ortnet" "ovttaidlohku"  "predikatiiva" "ráfi" "rávásmanahki"  "riektegeavat" "riikkaarkivára" "sápmelaš" "sisriika" "sivva" "Skjerstad-ášši" "smávvaskuvladássi" "soaittáhat" "stáhtaráđđi" "unnitlogugiella" "vahkku" "valljodat" "viiddis" "viso" "vuokta" ("[0-9]*-#lohku"r) ;
 
  # Nominals that probably do not have a Px ('1600-logus').
 
@@ -1284,10 +1290,10 @@ LIST N-PX = "áhčči" "bárdni" "biigá" "boadnji" "eadni" "eammi" "gáibmi" "g
 
 # subcategorizing for a particular case
 
-LIST LOC-COMPL-NOUN = "ávki" "árvalus" "dovdu" "ipmárdus" "ovda#mearka" "sáhka" ;
+LIST LOC-COMPL-NOUN = "ávki" "árvalus" "dovdu" "ipmárdus" "ovdamearka" "sáhka" ;
 
   # Nouns that take a locative
-  # There is also an idiomatic use of "ovda#mearka" in the constructions "ovdamearkka dihte" and "ovdamearka" (Ess).
+  # There is also an idiomatic use of "ovdamearka" in the constructions "ovdamearkka dihte" and "ovdamearka" (Ess).
   
 
 LIST COM-COMPL-NOUN = "bargu" "čoahkkin" "gaskavuohta" "lihkku" ("oktavuohta" Nom) ("oktavuohta" Acc) "ovttaoaivil" "ovttasbargočoahkkin" "ovttasbargu" "ovttasbargošiehtadus" "šiehtadus" ;
@@ -1297,7 +1303,7 @@ SET LOC-HEAD = LOCV OR LOC-COMPL-NOUN ;
 SET COM-HEAD = COMV OR OKTII-V OR COM-COMPL-NOUN ;
 
   
-LIST PREGEN = "álgogeahčen" "beallemuttus" "beallemuddu" ("bealli" N Sg Loc) "gaskamuddu" "gaskkamuddu" ("gaskavuohta" N Sg Loc) "loahpageahčen" ("miella" N Sg Loc) "oktavuohta" "ovttasbargu" ;
+LIST PREGEN = "álggogeahčen" "beallemuttus" "beallemuddu" ("bealli" N Sg Loc) "gaskamuddu" "gaskkamuddo" "gaskkamuddu" ("gaskavuohta" N Sg Loc) "loahpageahčen" ("miella" N Sg Loc) "oktavuohta" "ovttasbargu" ;
 
  # Nouns and adjectives that take a preceding genitive.
  
@@ -1307,7 +1313,7 @@ LIST PREGEN = "álgogeahčen" "beallemuttus" "beallemuddu" ("bealli" N Sg Loc) "
 # -------------
 
 
-LIST FAMILY-ONLY-HUMAN = (Prop Mal) (Prop Fem) (Prop Sur) "áddjut" "áhkká" "áhkkut" "bárdnemánná" "boadnji" "čeahci" "čeahcit" "dálueamit" "eahki" "eamit" "eammi" "eanu" "goaski" "guoibmi" "isit" "lunta" "mánáidmánná" "mannji" "máttaráddjá" "máttaráhkku" "muoŧŧá" "muoŧŧal" "náittosguoibmi" "neahpi" "oabbá" "oabbábealli" "oambealli" "oappáš" "oarpmealli" "oskuguoibmi" "ristvánhen" "siessal" "siessá" "vieljaš" "viellja" "vielljabealli" "vilbealli" "vuohppa" "vuonáhkku" "vuoni" ;
+LIST FAMILY-ONLY-HUMAN = (Prop Mal) (Prop Fem) (Prop Sur) "áddjut" "áhkká" "áhkkut" "bárdnemánná" "boadnji" "čeahci" "čeahcit" "dálueamit" "eahki" "eamit" "eammi" "eanu" "goaski" "guoibmi" "irgi" "isit" "lunta" "mánáidmánná" "mannji" "máttaráddjá" "máttaráhkku" "moarsi" "muoŧŧá" "muoŧŧal" "náittosguoibmi" "neahpi" "oabbá" "oabbábealle" "oambealle" "oappáš" "oarpmealle" "osku#guoibmi" "ristváhnen" (".*sássa"r) "siessal" "siessá" "vieljaš" "viellja" "vielljabealli" "vilbealle" "vuohppa" "vuonáhkku" "vuoni" ;
 # These can only be possessed by HUMAN-INDIVIDUAL, HUMAN-GROUP, PROFESSION, OFFICE, HUM-FUNCTION, ABSTR-TEXT
 
 LIST FAMILY-ALSO-ABSTRACT = "áhčči" "áddjá" "áhkku" "bearaš" "eadni" "oapmahaš" "sohka" "sohkagoddi" "váhnen" "veahka" ;
@@ -1315,7 +1321,7 @@ LIST FAMILY-ALSO-ABSTRACT = "áhčči" "áddjá" "áhkku" "bearaš" "eadni" "oap
 
 SET FAMILY = FAMILY-ONLY-HUMAN OR FAMILY-ALSO-ABSTRACT ;
 
-LIST NON-FAMILY = "almmáiolmmoš" "álbmotguoibmi" "ámmátolmmoš" "bálvalanguoibmi" "bárdni" "bártnáš" "dievdoolmmoš" "eaŋkilolmmoš" "gánda" "guossi" "kránnjá" "lagamuš" "mánná" "mánáš" "nieida" "nieiddaš" "nisson" "nissonolmmoš" "nisu" "Norgga-ustit" "nuorra" "ollesolmmoš" "oskuguoibmi" "oskuviellja" "olmmái" "olmmoš" "ránnjá" "rávisolmmoš" "sámemánná" "sámenisson" "sámenisu" "sámenuorra" "siidaguoibmi" "siidaguoibmenisu" "skibir" "skihpár" "smávvagánda" "ustit" "verdde" "viissis" ;
+LIST NON-FAMILY = "almmáiolmmoš" "álbmotguoibmi" "ámmátolmmoš" "bálvalanguoibmi" "bárdni" "bártnáš" "dievdoolmmoš" "eaŋkilolmmoš" "gánda" "guossi" "kránnjá" "lagamuš" "mánná" "mánáš" "nieida" "nieiddaš" "nisson" "nissonolmmoš" "nisu" "Norgga-ustit" "nuorra" "ollesolmmoš" "osku#guoibmi" "oskkuviellja" "olmmái" "olmmoš" "ránnjá" "rumaš" "rávisolmmoš" "sámemánná" "sámenisson" "sámenisu" "sámenuorra" "siidaguoibmi" "siidaguoibme#nisu" "skibir" "skihpár" "smávvagánda" "ustit" "verdde" "viissis" ;
 # These can be possessed by HUMAN-INDIVIDUAL, HUMAN-GROUP, PROFESSION, OFFICE, HUM-FUNCTION, ABSTR-TEXT, EDUCATION, PLACE (minus NATURE-PLACE), Prop Plc, NATION, EDUCATION, ORGANIZATION, INSTITUTION and INDUSTRY.
 
 LIST HUMAN-LIKE = "beahtu" "beargalat" "eŋgel" "háldi" "hearrá" "ipmil" "stállu" "suodjalus#eŋgel" "ulda" ;
@@ -1326,39 +1332,39 @@ LIST HUMAN-GROUP =  "almennet" "almmolašvuohta" "álbmot" (".*álbmot"r) (".*be
   ## group of humans that connot be a building at the same time
    # Duomma:lea 
  
-LIST PROFESSION1 = (".*advokahta"r) (".*duopmár"r) "arkeologa" (".*artista"r) (".*assisteanta"r) (".*áittardeaddji"r) "ákšoalmmái" (".*bargi"r) "ámmátolmmái" "ámmátolmmoš" (".*mánni"r) (".*hoavda"r) (".*meannudeaddji"r) 
-(".*geahčči"r) (".*bagadalli"r) (".*bagadeaddji"r) (".*konsuleanta"r) "bargoveahka" "bassaleaddji" "bassi" "báhkkár" "báhppa" "bálvaleaddji" (".*čálli"r) ("bearremánnat" Actor) "bibliotekára" (".*biigá"r) "biiladivvu" (".*vuovdi"r) "birasgáhttenráđđeaddi" (".*terapevta"r)  (".*terapeuta"r) "bisma" "bismá" "bispa" (".*bivdi"r) (".*hábmejeaddji"r) "boanda" "boazodoalli" "boazosápmelaš" "boazosápmi" "bolesmeašttir" (".*vuoddji"r) "buvttadeaddji" 
+LIST PROFESSION1 = (".*advokáhta"r) (".*advokáhtta"r) (".*duopmár"r) "arkeologa" (".*artista"r) (".*assisteanta"r) (".*áittardeaddji"r) "ákšo#almmái" (".*bargi"r) "ámmátolmmái" "ámmátolmmoš" (".*mánni"r) (".*hoavda"r) (".*meannudeaddji"r) 
+(".*geahčči"r) (".*bagadalli"r) (".*bagadeaddji"r) (".*konsuleanta"r) "bargoveahka" "bassaleaddji" "bassi" "báhkár" "báhppa" "bálvaleaddji" (".*čálli"r) "bearremánni" "bibliotekára" (".*biigá"r) ("biiladivvut" Actor) (".*vuovdi"r) "birasgáhttenráđđeaddi" (".*terapevta"r)  (".*terapeuta"r) "bisma" "bismá" "bispa" (".*bivdi"r) (".*hábmejeaddji"r) "boanda" "boazodoalli" "boazosápmelaš" "boazosápmi" "bolesmeašttir" (".*vuoddji"r) "buvttadeaddji" 
 "čalbmeáhkku" "čalbmeeadni" "čálaoahppavaš" "čiekči" "čorgejeaddji" (".*čuojaheaddji"r) 
-"dáidár" "dáiddár" "dálon" "dálueamit" "dáluisit" "dárkkisteaddji" "davvisápmi" (".*dikšu"r) (".*direktevra"r) (".*dirigeanta"r) (".*divššár"r) (".*doaimmaheaddji"r) (".*doavttir"r) "dulka" ("duodjeoahpahallat" Actor) "duojár" (".*duopmar"r) (".*dutki"r) 
-"ealáhusdoalli" "eallodoalli" "eanandoalli" "eananhearrá" (".*sadjásaš"r) "eatnandoalli"
+"dáidár" "dáiddár" "dálon" "dálueamit" "dáluisit" "dárkkisteaddji" "davvisápmi" (".*dikšu"r) (".*direktevra"r) (".*dirigeanta"r) (".*divššár"r) (".*doaimmaheaddji"r) (".*doavttir"r) "dulka" "duojár" (".*duopmar"r) (".*dutki"r) 
+"ealáhusdoalli" "eallo#doalli" "eanadoalli" "eananhearrá" (".*sadjásaš"r) "eatnandoalli"
 "fáldi" "fitnodatdoaibmi" "fitnodatoamasteaddji" 
-"gávpejas" "giellaráđđi" (".*veahkki"r) "girdi" "girkobálvaleaddji" "girkodulka" "gollerávdi" "gonagas" "govvadáidár" "govvadáiddár" "govvedeaddji" "govvejeaddji" "guođoheaddji" "guolásteaddji"
-"hárjeheaddji" (".*teknihkar"r) (".*jođiheaddji"r) "johttisápmi" "johttisápmelaš" (".*journalista"r) "keaisár" "kirurga" "koahkka" "korefereanta" "kursaoahppi" 
+"gávpejas" "giellaráđđi" (".*veahkki"r) "girdi" "girko#bálvaleaddji" "girkodulka" "gollerávdi" "gonagas" "govva#dáidár" "govvadáiddár" ("govvet" Actor) "govvejeaddji" "guođoheaddji" "guolásteaddji"
+"hárjeheaddji" (".*teknihkar"r) (".*jođiheaddji"r) "johttisápmi" "johttisápmelaš" (".*journalista"r) "keaisár" "kirurga" "koahkka" "korefereanta" "kursa#oahppi" 
 "lágideaddji" "láibu" "lávlu" "leanut" "logopeda" "luhkkár" 
-"máilmmemeašttir" "máhttájeaddji" "máttasápmi" "mearraalmmái" "mearraolmmái" "mearrasápmi" "mišuneara" "museábargi" "musihkkadahkki" "musihkkár"
-"návetvázzi" "neavttár" "njunušjurista" "noaidi" "oahpahalli" (".*oahpaheaddji"r) "oahppi" "oaivadeaddji" "oaivámuš" "ođashoavda" "ođaslohkki" "ossodatdirektevra" "ossodatdirektøra" 
-"parkerenfákta" "pedagoga" "plánejeaddji" "poliisa" "politiija" "prentejeaddji" "profehta" "professor" 
-"rádjefákta" "rádjesoalddat" "ráđđeaddi" "ráđđeolmmái" "rávdi" "reaŋga" "redaktevra" "rehketdoallodárkkisteaddji"  "rehketdoalli" "rektor" "ruhttejeaddji" "ruvdnaprinsa" "ruvvejeaddji" 
-"sámedikkeráđđi" "sámeduojár" "sárdnideaddji" "sávzadoalli" "sealgeeadni" "sester" "silbarávdi" "snihkkár" "soalddat" "sosionoma" "spábbačiekčanhárjeheaddji" "spábbačiekči" "stipendiáhta" "studeanta" "sundi" "suohkanbáhppa" "suohkanplánejeaddji" 
-"šibitdoalli"  "telefonvástideaddji" "tuollár" "turistaofelaš" "uksafákta" "universitehtalektor"  
+"máilmmemeašttir" "máhttájeaddji" "máttasápmi" "mearraalmmái" "mearraolmmái" "mearrasápmi" "mišuneara" "museá#bargi" "musihkka#dahkki" "musihkkár"
+"návetvázzi" "neavttár" "njunušjurista" "noaidi" (".*oahpahalli"r) (".*oahpaheaddji"r) "oahppi" ("oaivadit" Actor) "oaivámuš" "ođas#hoavda" "ođas#lohkki" "ossodatdirektevra" "ossodatdirektøra" 
+"parkerenfákta" "pedagoga" "plánejeaddji" "poliisa" "politiija" ("prentet" Actor) "profehta" "professor" 
+"rádjefákta" "rádjesoalddát" "ráđđeaddi" "ráđđeolmmái" "rávdi" "reaŋga" "redaktevra" "rehketdoallodárkkisteaddji"  "rehketdoalli" "rektor" "ruhttejeaddji" "ruvdnaprinsa" ("ruvvet" Actor) 
+"sámediggeráđđi" "sáme#duojár" "sárdnideaddji" "sávzadoalli" "sealgeeadni" "sester" "silbarávdi" "snihkkár" "soalddát" "sosionoma" "spábbačiekčan#hárjeheaddji" "spábbačiekči" "stipendiáhta" "studeanta" "sundi" "suohkanbáhppa" "suohkan#plánejeaddji" 
+"šibitdoalli" "taksivuoddji" "telefonvástideaddji" "tuollár" "turistaofelaš" "uksafákta" "universitehtalektor"  
 "váldodoaimmaheaddji" "viessohoiddár"  "vuoktačuohppi" ;
 
 SET PROFESSION = PROFESSION1 - Prop ;
 
-LIST OFFICE = "áirras" "ámtamánni" "bajitbáhppa" "bearašminister"  "biebmoministtar"  "birasgáhttenministtar" "boazodoallohoavda" "dearvvašvuođaministtar" "dekána" "eanadoallominister" "farao" "fylkkaráđđi" "gielddaminister" "guolástusminister" "justisministtar" "kulturminister" "leansmánni" "ministtar" "nissonáirras" "politihkar" "politihkkár" "ságadoalli" "Sámedemokráhtta" "sámedikkeáirras" "Sámediggepresideanta" "sámediggepresideanta" "sátnejođiheaddji" "sosiálaministtar" "stáhtaministtar" "stivralahttu" "suodjalusminister" "ovdaolmmoš" "presideanta" "stáhtaráđđi" "várrepresideanta" ;
+LIST OFFICE = "áirras" "ámtamánni" "bajitbáhppa" "boazodoallohoavda" (".*čálli"r) "dekána" "farao" "fylkkaráđđi" "gonagas" "leansmánni" "minister" "ministtar" (".*ministtar"r) (".*minister"r) "nisson#áirras" "politihkar" "politihkkár" "prinseassa" "ruvdnaprinseassa" "ságadoalli" "Sámedemokráhtta" "sámedikkeáirras" "Sámediggepresideanta" "sámediggepresideanta" "sátnejođiheaddji" "stivralahttu" "ovdaolmmoš" "presideanta" "stáhtaráđđi" "várrepresideanta" ;
 
 
-LIST HUM-FUNCTION =  "Bergen-soalddát" "kandidáhtta" "kandidáhta" "nomáda" "oahppanolmmoš" "oktavuođaolmmoš" "olbmobárdni" "pasienta" "ráđđealmmái" "riikavuloš" "sámedemokráhtta" "skohtervuoddji" "soahteolmmái" "stáhtaboargár" ("suddu" Der/laš) "turista" "virgeguoibmi" "virgeolmmoš" "vuorasolmmoš" ;
+LIST HUM-FUNCTION =  "Bergen-soalddát" "kandidáhtta" "kandidáhta" "nomáda" "oahppan#olmmoš" "oktavuođaolmmoš" "olbmobárdni" "pasieanta" "ráđđealmmái" "riika#vuloš" "sámedemokráhtta" "skohtervuoddji" "soahteolmmái" "stáhtaboargár" ("suddu" Der/laš) "turista" "virge#guoibmi" "virgeolmmoš" "vuorasolmmoš" ;
  #XXX bad name
  # Don´t add veahkki + Ess.
  
-LIST HUM-ATTR =  "bassi" "divššohas" "eananeaiggát" "eaiggát" "eatnigielhálli" "fástaássi"  "gávttehas" "informánta"  "lestadiánalaš" "sámegielat" ("suddu" Der/laš) ;
+LIST HUM-ATTR =  "bassi" "divššohas" "eananeaiggát" "eaiggát" "eatnigielhálli" "fástaássi" "gávttehas" "informánta"  "lestadiánalaš" "sámegielat" "suttolaš" ;
     # adjectival
 
-LIST HUM-VERB = "ássi" "boaris" "bálvaleaddji" "bálvalanguoibmi" "boazoeaiggát" "dállodoalli" "eananeaiggát" "geavaheaddji" "giliássi" "muitaleaddji" "ovttasássi" "riikkaássi"  "vuotnaássi" "vuostebelle" "vuostebealli" ;
+LIST HUM-VERB = "ássi" "boaris" "bálvaleaddji" "bálvalanguoibmi" "boazoeaiggát" "dállodoalli" "eananeaiggát" "geavaheaddji" "gili#ássi" "muitaleaddji" "ovttasássi" "riikka#ássi"  "vuotnaássi" "vuostebelle" "vuostebealli" ;
     # vearbal
 
-LIST NATIONAL-IDENTITY-NOT-SAPMI = "badjesápmelaš" "dáčča" "dánskalaš" "duiskkalaš" "Enodatsápmelaš" "Guovdageainsápmelaš" "guovdageaidnolaš" "hollándalaš" "indiána" "israellaš" "judálaš" "juvddálaš" "julevsápmelaš" "lullisápmelaš" "Maya-indiána" "njávdánsápmelaš" "nuortalaš" "oarjesápmelaš" "olgoriikkalaš" "palestinalaš" "romalaš" "romer" "ruotasuopmelaš" "Ruošša-Sápmelaš" "samarialaš" "siseatnansápmelaš" "Suonjilsápmelaš" "Várjjatsápmelaš" "vuotnasápmelaš" ;
+LIST NATIONAL-IDENTITY-NOT-SAPMI = "badjesápmelaš" "dáčča" "dánskalaš" "duiskalaš" "Enodatsápmelaš" "Guovdageainsápmelaš" "guovdageaidnolaš" "hollándalaš" "indiána" "israellaš" "judálaš" "juvddálaš" "julevsápmelaš" "lullisápmelaš" "maya-#indiána" "njávdánsápmelaš" "nuortalaš" "oarjesápmelaš" "olgoriikalaš" "palestinalaš" "romalaš" "romer" "ruotasuopmelaš" "ruošša-#sápmelaš" "samarialaš" "siseatnansápmelaš" "Suonjilsápmelaš" "Várjjatsápmelaš" "vuotnasápmelaš" ;
 
      # Also regional identity 
  # Duomma:lea
@@ -1384,15 +1390,15 @@ LIST GEN-ANIMAL = "ábegáhttu" "ásen" "beana" "bohkká" "bussá" "čeavrris" "
 
 LIST HUNT-ANIMAL = "ealga" "rievssat" ;
 
-LIST BOAZU = "áldu" "boazu" "čearpmat" "čora" "eallu" "heargi" "miessi" "sarvvis" "vierro#boazu" "vuonjal" ;
+LIST BOAZU = "áldu" "boazu" "čearpmat" "čora" "eallu" "heargi" "miessi" "sarvvis" "vierroboazu" "vuonjal" ;
 
-LIST FISH = "bálddis" "čuska" "dápmot" "diddi" "diksu" "dorskeguolli" "dorski" "duovvi" "gilot" "guolli" "hávga" "juksu" "luosjuolgi" "luossa" "luossaguolli" "luossanálli" "muortu" "sallit" "sáidi" "sáivaguolli" "šákšadorski" "stábbasáidi" "stáinnir" "stuorasáidi" "rutnot" "veajet" ;
+LIST FISH = "bálddis" "čuska" "dápmot" "diddi" "diksu" "dorske#guolli" "dorski" "duovvi" "gilot" "guolli" "hávga" "juksu" "luosjuolgi" "luossa" "luossaguolli" "luossanálli" "muortu" "sallit" "sáidi" "sáivaguolli" "šákša#dorski" "stábbasáidi" "stáinnir" "stuorasáidi" "rutnot" "veajet" ;
 
-LIST ANIMAL-GROUP = "čora" "eallu" "heargeráidu" ;
+LIST ANIMAL-GROUP = "čora" "eallu" "hearge#ráidu" ;
 
 SET ANIMAL = GEN-ANIMAL OR HUNT-ANIMAL OR BOAZU OR FISH ;
 
-LIST BIRD = "ákta" "báiski" "bovttáš" "cagan" "čearret" "gáddeloddi" "gáiru" "mearaloddi" "skávli" "skuolfi" "šuoršu"  "albatrossa" "alitbađuš" "alitgaccet" "alitoaigaccet" "bakku" "bastesuorsi" "bađošgaccet" "beahcebáhcatloddi" "beahceloddi" "bealdocihci" "bealdogarjá" "bealdovuorra" "bealgeloddi" "bealljeloađgu" "bealljerásttis" "bearalskuolfi" "beasterages" "beibboš" "beibbošcihci" "beibbošcizáš" "belddošvizar" "beškkoš" "beštor" "bieggafálli" "biehkan" "bigán" "bihcabasčáihni" "bihcebasgáski" "bihcebasčáihni" "bissehávka" "bižus" "boaimmáš" "boallonjukča" "boađđocivkkán" "borjjastit" "borsenjunni" "bovttáš" "bulddogas" "bumbá" "buoidegaccet" "buokčat" "buokči" "bupmálaš" "bursanjunni" "bussáskuolfi" "buvvedat" "báiski" "bákteduvvá" "bárbmofálli" "bávgoš" "cagan" "cagán" "cielláš" "cihceskuolfi" "cihrrelastavizar" "civkaleivvoš" "cizašfálli" "cizopaš" "cizot" "davvelastavizar" "davveloddi" "davvevizar" "deaggačáihni" "deaggebáiski" "deaggecihci" "dearbmerásttis" "derpmoš" "dieldá" "dielkoduvvá" "dihtti" "diksobáhppa" "dirrelihká" "doadjosuorsi" "dokta" "dovtta" "duoršu" "duottarbižus" "duottarcivkaleivvoš" "duvvá" "duvvárásttis" "dálvebeštor" "dálveruoivil" "dálvi" "dážaboaimmáš" "dážasuorsi" "fasána" "fiehta" "fiervávierru" "fierváviroš" "fiskesbeštor" "fiskescihci" "fiskescižáš" "fiskesgaccet" "fiskesjievžžan" "fiskesnjungáhkkor" "fiskesvizar" "fiŋka" "gaccepaš" "gaccet" "gahperbáiski" "gahpervizar" "garjá" "gassanjunni" "gazzaloddi" "gazzebiehtár" "geađgejorgu" "geađgerásttis" "giegabiigá" "giehka" "giehpavuonccis" "giellavealgu" "gierdoduvvá" "gierdorásttis" "gierdosuorsi" "gierdočuonjá" "gierra" "giljobaš" "gilljobaš" "gilvabeštor" "girjebáhcatloddi" "girjelivkkár" "giron" "goahcceloddi" "goahppil" "goahppilgálli" "goahtegoljaš" "goalsi" "goalsoruoššehas" "goalšovizar" "goarga" "goargaloddi" "goargŋohaŋŋá" "goaski" "goaskin" "gollaš" "gollebeibboš" "gollecihci" "gollegahpir" "golli" "golláš" "gorgeshávda" "gorgeslihkká" "govuskuolfi" "gođaloddi" "gožuvuoražas" "guoikgáhrit" "guoikgárri" "guoksa" "guolbbavierru" "guolbbaviroš" "guolbbačoavžžu" "guollefálli" "guollečearret" "guorga" "guossabáhcatloddi" "guossagaccet" "guossaruossanjunni" "guossavizar" "guovssat" "guovssoloddi" "gussagoalsi" "guškilvierru" "guškilviroš" "guškkástat" "gáddebuvvet" "gáddeskirvi" "gáddevierru" "gáddeviroš" "gáhkkor" "gáiru" "gállat" "gálli" "gállit" "gáranas" "gáranasloddi" "gárggogoalsi" "gárgogoalsi" "gávlačuonjá" "hálkaloddi" "haŋŋá" "heartavizar" "hoaššacihci" "hurrat" "hurri" "hurrigoahppil" "hurričukčá" "háigir" "háigirloddi" "hálka" "hálkagonagas" "hálkačielkkis" "háskil" "hávda" "idjaskuolfi" "jeaggefálli" "jeaggemeahkástat" "jeaggečoavžžu" "jeaggehávut" "kanárialoddi" "keaisárpingviidna" "jiekŋačielkkis" "jiesmi" "jievjaskuolfi" "jievželoddi" "jávresopmir" "leahttofálli" "leahttospálfu" "leaibeloddi" "leivvoš" "lidnu" "liidn-elláš" "liin-elláš" "litnut" "livkkár" "loađgu" "loddi" "loddegonagas" "loddejievži" "luhkkaloddi" "láfol" "láhtospálfu" "látteguoksa" "látteguovssat" "láttovuonccis" "láŋgá" "meahkástat" "mearragoaski" "mearragoaskin" "mearragáiru" "mearračuonji" "mearračuonjá" "miellespálfu" "miesttacihci" "miesttarásttis" "miesttavizar" "miesttašurrevizar" "moldecizáš" "muhkkecizáš" "muogir" "muorracivkkán" "muorragakcu" "mákreallačearret" "niehttegarjá" "niitocivkkán" "njukča" "njurggu" "njurgut" "noaideloddi" "nuortacihci" "nuortalastavizar" "nuorti" "náhkkesoadjá" "oanehisnjunčuonjá" "paradiisaloddi" "pelikanloddi" "pingviidna" "ribeskáiti" "riddocivkaleivvoš" "riddovierru" "riddoviroš" "rievssat" "rievssatcižáš" "rievssatfálli" "roavgogonagas" "rohtogaccet" "rohtovizar" "rohtočoavžu" "rohtočoavžžu" "ruksesbađoš" "ruksesbeibboš" "ruksescivkaleivvoš" "ruksesfiehta" "ruksesguškil" "ruksesjuolčoavžžu" "ruksesruivil" "ruksesruoivil" "ruksesrásttis" "ruksessoadjá" "ruksessuorrehávut" "ruoivil" "ruonábeibboš" "ruonácihci" "ruonácizáš" "ruonájuolčoavžžu" "ruonáčáihni" "ruossalasnjunni" "ruovddagas" "ruovdecihci" "ruovdecizáš" "ruođa" "ruoššaboaimmáš" "ruoššaskire" "ruoššaskirri" "ruoššaállat" "ránescihci" "ránescizáš" "ránesháigir" "ráneslivkkár" "ránesrásttis" "ránesskuolfi" "ránesskávli" "ránessnárttal" "ránesčuonjá" "ránesčáihni" "rásttis" "rávgoš" "salletgáiru" "sallitgáiru" "seallecižáš" "siessemohkki" "sieđgacivkkán" "sildegáiru" "silkebuokča" "sitronbeštor" "skierru" "skilkeskálka" "skire" "skirri" "skiŋgegaccet" "skoarra" "skuolfi" "skutnjaloddi" "skáhpeloddi" "skáiti" "skárfa" "skárfačielkkis" "skávli" "snárttal" "soadjanjálla" "sopmir" "spoađđoduoršu" "spálfu" "stoarbmaloddi" "stoarbmaspálfu" "stohkkegaccet" "stohkkerievdu" "stohkkespálfu" "stohpoháigir" "stohpospálfu" "struhcca" "struhccaloddi" "stuorrafiehta" "stuorragiljobaš" "stuorraguškil" "stuorraguškkástat" "stuorrameahkástat" "stuorraskáiti" "stuorraskávli" "stuorravuodja" "stuorravuojaš" "stuorračarkkus" "stuorračoavžu" "stuorračoavžžu" "stuorračuonjá" "stálobeibboš" "stárra" "suoidnesuorsi" "suoidnečiksa" "suolaskáiti" "suorrespálfu" "suorsi" "suotnjoliráš" "suotnjočoavžžu" "suovkacihci" "suvlá" "sáhcomeahkástat" "sáhpánboaimmáš" "sáhpánskuolfi" "sáivahávda" "sávjahávda" "sávzaloddi" "toardnagarjá" "toardnagájon" "uhcabuokča" "uhcabuvvedat" "uhcabáiski" "uhcaciellá" "uhcacihci" "uhcameahkástat" "uhcanjukča" "uhcasaddi" "uhcavierru" "uhcaviroš" "uhcačoavžžu" "uhcačáihni" "ummolcizáš" "upmolcizáš" "unduláhtta" "uvlohávut" "varraloddi" "veastareaddji" "vigláčoavžžu" "vilgesnierčuonjá" "vilgessoadjaskávli" "vilgesummolcizáš" "vilgesvierru" "vilgesviroš" "vilgesčoavžu" "vilgesčoavžžu" "vilgessealčáihni" "vintán" "vuoncáčivga" "vuoncávaris" "vizardit" "vuodja" "vuojaš" "vuoktafiehta" "vuoktagaccet" "vuoktagoalsi" "vuoktaláfol" "vuoktaskárfa" "vuonccis" "vuonccisloddi" "vuoražas" "vuorččis" "vuovdaduvvá" "vuovdecivkaleivvoš" "vuovdegaccet" "vuovdeloddi" "vuovdemeahkástat" "vuovderásttis" "vuovdevizar" "vuovdevuorččis" "vuovdečoavžu" "vuovdečoavžžu" "ábirievssat" "áhpedokta" "áhpedovtta" "áhpeháskil" "áhpehávda" "áhpelihkká" "áhpespálfu" "ákta" "állat" "čarkkus" "čearret" "čiekčá" "čielkkis" "čierggesrásttis" "čiksa" "čoađgi" "čukčá" "čuohtegielas" "čuohtegiella" "čuonji" "čuonjá" "čuonjáfálli" "čáhcebávgoš" "čáhcevuonccis" "čáhppesbađošguškil" "čáhppesbuokča" "čáhppessealbeštor" "čáhppesgaccet" "čáhppesrásttis" "čáhppesčoavji" "čáhppesčoavžu" "čáhppesčoavžžu" "čáihnecizáš" "čáihnegaccet" "čáihni" "šilljocihci" ;
+LIST BIRD = "ákta" "báiski" "bovttáš" "cagan" "čearret" "gádde#loddi" "gáiru" "mearaloddi" "skávli" "skuolfi" "šuoršu"  "albatrossa" "alitbađuš" "alitgaccet" "alitoaigaccet" "bakku" "bastesuorsi" "bađošgaccet" "beahcebáhcatloddi" "beahceloddi" "bealdocihci" "bealdo#garjá" "bealdo#vuorra" "bealgeloddi" "beallje#loađgu" "bealljerásttis" "bearalskuolfi" "beasterages" "beibboš" "beibbošcihci" "beibbošcizáš" "belddoš#vizar" "beškkoš" "beštor" "bieggafálli" "biehkan" "bigán" "bihcabasčáihni" "bihcebasgáski" "bihcebasčáihni" "bissehávka" "bižus" "boaimmáš" "boallonjukča" "boađđocivkkán" "borjjastit" "borsenjunni" "bovttáš" "bulddogas" "bumbá" "buoidegaccet" "buokčat" "buokči" "bupmálaš" "bursanjunni" "bussáskuolfi" "buvvedat" "báiski" "bákteduvvá" "bárbmofálli" "bávgoš" "cagan" "cagán" "cielláš" "cihceskuolfi" "cihrrelastavizar" "civkaleivvoš" "cizášfálli" "cizopaš" "cizot" "davvelastavizar" "davveloddi" "davvevizar" "deaggačáihni" "deagge#báiski" "deaggecihci" "dearbmerásttis" "derpmoš" "dieldá" "dielkoduvvá" "dihtti" "diksobáhppa" "dirre#lihká" "doadjosuorsi" "dokta" "dovtta" "duoršu" "duottarbižus" "duottarcivkaleivvoš" "duvvá" "duvvárásttis" "dálvebeštor" "dálveruoivil" "dálvi" "dážaboaimmáš" "dážasuorsi" "fasána" "fiehta" "fiervá#vierru" "fierváviroš" "fiskesbeštor" "fiskescihci" "fiskescižáš" "fiskesgaccet" "fiskesjievžžan" "fiskesnjungáhkkor" "fiskesvizar" "fiŋka" "gaccepaš" "gaccet" "gahperbáiski" "gahpervizar" "garjá" "gassa#njunni" "gazzaloddi" "gazzebiehtár" "geađgejorgu" "geađgerásttis" "giega#biigá" "giehka" "giehpa#vuonccis" "giellavealgu" "gierdo#duvvá" "gierdorásttis" "gierdosuorsi" "gierdo#čuonjá" "gierra" "giljobaš" "gilljobaš" "gilvabeštor" "girjebáhcatloddi" "girjelivkkár" "giron" "goahcce#loddi" "goahppil" "goahppil#gálli" "goahtegoljaš" "goalsi" "goalsoruoššehas" "goalšovizar" "goarga" "goargaloddi" "goargŋohaŋŋá" "goaski" "goaskin" "gollaš" "gollebeibboš" "gollecihci" "golle#gahpir" "golli" "golláš" "gorges#hávda" "gorgeslihkká" "govuskuolfi" "gođa#loddi" "gožu#vuoražas" "guoikgáhrit" "guoikgárri" "guoksa" "guolbba#vierru" "guolbbaviroš" "guolbba#čoavžžu" "guollefálli" "guollečearret" "guorga" "guossabáhcatloddi" "guossagaccet" "guossaruossanjunni" "guossavizar" "guovssat" "guovssoloddi" "gussagoalsi" "guškil#vierru" "guškil#viroš" "guškkástat" "gáddebuvvet" "gáddeskirvi" "gádde#vierru" "gáddeviroš" "gáhkkor" "gáiru" "gállat" "gálli" "gállit" "gáranas" "gáranas#loddi" "gárggogoalsi" "gárgo#goalsi" "gávlačuonjá" "hálkaloddi" "haŋŋá" "heartavizar" "hoaššacihci" "hurrat" "hurri" "hurri#goahppil" "hurri#čukčá" "háigir" "háigir#loddi" "hálka" "hálkagonagas" "hálka#čielkkis" "háskil" "hávda" "idja#skuolfi" "jeaggefálli" "jeaggemeahkástat" "jeagge#čoavžžu" "jeaggehávut" "kanárialoddi" "keaisár#pingviidna" "jiekŋačielkkis" "jiesmi" "jievjaskuolfi" "jievželoddi" "jávresopmir" "leahttofálli" "leahttospálfu" "leaibeloddi" "leivvoš" "lidnu" "liidn-elláš" "liin-elláš" "litnut" "livkkár" "loađgu" "loddi" "loddegonagas" "loddejievži" "luhkka#loddi" "láfol" "láhtospálfu" "látteguoksa" "látteguovssat" "láttovuonccis" "láŋgá" "meahkástat" "mearragoaskin" "mearragáiru" "mearra#čuonji" "mearračuonjá" "miellespálfu" "miesttacihci" "miesttarásttis" "miesttavizar" "miesttašurrevizar" "moldecizáš" "muhkkecizáš" "muogir" "muorracivkkán" "muorragakcu" "mákreallačearret" "niehttegarjá" "niitocivkkán" "njukča" "njurggu" "njurgut" "noaide#loddi" "nuortacihci" "nuortalastavizar" "nuorti" "náhkke#soadjá" "oanehisnjunčuonjá" "paradiisa#loddi" "pelikanloddi" "pingviidna" "ribeskáiti" "riddocivkaleivvoš" "riddo#vierru" "riddoviroš" "rievssat" "rievssatcižáš" "rievssatfálli" "roavgogonagas" "rohtogaccet" "rohtovizar" "rohtočoavžu" "rohtočoavžžu" "rukses#bađoš" "ruksesbeibboš" "ruksescivkaleivvoš" "ruksesfiehta" "ruksesguškil" "ruksesjuolčoavžžu" "ruksesruivil" "ruksesruoivil" "ruksesrásttis" "rukses#soadjá" "ruksessuorrehávut" "ruoivil" "ruonábeibboš" "ruonácihci" "ruonácizáš" "ruonájuolčoavžžu" "ruoná#čáihni" "ruossalas#njunni" "ruovddagas" "ruovdecihci" "ruovdecizáš" "ruođa" "ruoššaboaimmáš" "ruoššaskire" "ruošša#skirri" "ruoššaállat" "ránescihci" "ránescizáš" "ránesháigir" "ráneslivkkár" "ránesrásttis" "ránesskuolfi" "ránes#skávli" "ránessnárttal" "ránesčuonjá" "ránesčáihni" "rásttis" "rávgoš" "salletgáiru" "sallitgáiru" "seallecižáš" "siesse#mohkki" "sieđgacivkkán" "sildegáiru" "silkebuokča" "sitronbeštor" "skierru" "skilkeskálka" "skire" "skirri" "skiŋgegaccet" "skoarra" "skuolfi" "skutnjaloddi" "skáhpeloddi" "skáiti" "skárfa" "skárfa#čielkkis" "skávli" "snárttal" "soadja#njálla" "sopmir" "spoađđo#duoršu" "spálfu" "stoarbmaloddi" "stoarbmaspálfu" "stohkkegaccet" "stohkkerievdu" "stohkkespálfu" "stohpoháigir" "stohpospálfu" "struhcca" "struhccaloddi" "stuorrafiehta" "stuorragiljobaš" "stuorraguškil" "stuorraguškkástat" "stuorrameahkástat" "stuorraskáiti" "stuorraskávli" "stuorravuodja" "stuorravuojaš" "stuorračarkkus" "stuorračoavžu" "stuorračoavžžu" "stuorračuonjá" "stálobeibboš" "stárra" "suoidnesuorsi" "suoidnečiksa" "suolaskáiti" "suorrespálfu" "suorsi" "suotnjoliráš" "suotnjočoavžžu" "suovkacihci" "suvlá" "sáhcomeahkástat" "sáhpánboaimmáš" "sáhpánskuolfi" "sáiva#hávda" "sávjahávda" "sávza#loddi" "toardnagarjá" "toardnagájon" "uhcabuokča" "uhcabuvvedat" "uhca#báiski" "uhcaciellá" "uhcacihci" "uhcameahkástat" "uhca#njukča" "uhca#saddi" "uhca#vierru" "uhcaviroš" "uhca#čoavžžu" "uhca#čáihni" "ummolcizáš" "upmolcizáš" "unduláhtta" "uvlohávut" "varra#loddi" "veastareaddji" "vigláčoavžžu" "vilgesnierčuonjá" "vilges#soadja#skávli" "vilgesummolcizáš" "vilges#vierru" "vilges#viroš" "vilges#čoavžu" "vilges#čoavžžu" "vilgessealčáihni" "vintán" "vuoncáčivga" "vuoncávaris" "vizardit" "vuodja" "vuojaš" "vuoktafiehta" "vuoktagaccet" "vuoktagoalsi" "vuoktaláfol" "vuoktaskárfa" "vuonccis" "vuonccisloddi" "vuoražas" "vuorččis" "vuovdaduvvá" "vuovdecivkaleivvoš" "vuovdegaccet" "vuovde#loddi" "vuovdemeahkástat" "vuovderásttis" "vuovdevizar" "vuovde#vuorččis" "vuovde#čoavžu" "vuovdečoavžžu" "ábirievssat" "áhpedokta" "áhpedovtta" "áhpe#háskil" "áhpehávda" "áhpelihkká" "áhpespálfu" "ákta" "állat" "čarkkus" "čearret" "čiekčá" "čielkkis" "čierggesrásttis" "čiksa" "čoađgi" "čukčá" "čuohtegielas" "čuohtegiella" "čuonji" "čuonjá" "čuonjáfálli" "čáhcebávgoš" "čáhcevuonccis" "čáhppes#bađoš#guškil" "čáhppesbuokča" "čáhppessealbeštor" "čáhppesgaccet" "čáhppesrásttis" "čáhppesčoavji" "čáhppes#čoavžu" "čáhppesčoavžžu" "čáihnecizáš" "čáihnegaccet" "čáihni" "šilljocihci" ;
 
 
 SET ANIMATE = HUMAN OR ANIMAL ;
@@ -1400,21 +1406,21 @@ SET ANIMATE = HUMAN OR ANIMAL ;
 
 # Things
 
-LIST TOOL = "áibmi" "ákšu" "bargobierggas" "baste" "bastevuogga" "báddi" "báddenrusttet" "beana" "bieggamillorusttet" "bierggas" "bissu" "bivttas" "boazonjuovvanniibi" "bohtal" "borramuš" "buiku" "buođđu" 
+LIST TOOL = "áibmi" "ákšu" "bargobierggas" "baste" "bastevuogga" "báddi" "báddenrusttet" "beana" "bieggamillorusttet" "bierggas" "bissu" "bivttas" "boazonjuovvan#niibi" "bohtal" "borramuš" "buiku" "buođđu" 
 "čáhci" "čála" "čuoibmi" "datneárpu" "dáidda" "dálkkas" "dihtor" "dihtormašiidna" "doarta" "dolgevuogga" "dolla" "dorte" "duodji" "duorgu" "ettetviidni" "fierbmi" 
-"gáddenuohtti" "gáidánuohtti" "gáffal" "gazirdanniibi" "giehta" "giehtamihttu" "giehtaváđđu" "gievdni" "giikan" "goallunstoahku" "gohppu" "golgadat" "gollebánno" "gurutgiehta" 
-"hárpa" "HV-bissu" "jávrevuogga" "joddu" "joddu-buođđu" "kohppa" "kruvdnu" 
-"láhkki" "liidna" "liidnesihkaldat" "luovosbeana" "luossavuogga" "luovosfierbmi" "lyra" 
-"mašiidna" "miehkki" "mihttu" "millo" "millu" "mobiltelefovdna" "mohtorsahá" "muorječoaggi" "muorravuogga" "nállu" "niibi" "njuovvanniibi" 
-"oaggunstággu" "oaggunstávra" "olgešgiehta" "olju" "roahkkefierbmi" "ruhta" "ruvdnu" 
-"sahá" "sáiti" "sálti" "seaila" "siibma" "sihkaldat" "sirpe" "skárbban" "skierra" "snáldu" "soabbi" "soavvelvuogga" "speallanmášiidna" "spihkár" "stággu" "stávra" "stivrran" "suohpan" "suorbma" 
-"váđđu" "veahkkemohtor" "veaikebaste" "vealgi" "viidni" "vuogga" "vuoiddas" "vuoigŋanmašiidna" ;
+"gáddenuohtti" "gáidánuohtti" "gáffal" "gazirdanniibi" "giehta" "giehtamihttu" "giehtaváđđu" "gievdni" "giikan" "goallunstoahku" "gohppu" "golgadat" "golle#bánno" "gurotgiehta" 
+"hárpa" "HV-#bissu" "jávre#vuogga" "joddu" "joddu-#buođđu" "kohppa" "kruvdnu" 
+"láhkki" "liidna" "liidnesihkaldat" "luovosbeana" "luossa#vuogga" "luovos#fierbmi" "lyra" 
+"mašiidna" "miehkki" "mihttu" "millo" "millu" "mobiltelefovdna" "mohtorsahá" "muorječoaggi" "muorra#vuogga" "nállu" "niibi" "njuovvan#niibi" 
+"oaggunstággu" "oaggunstávrá" "olgešgiehta" "olju" "roahkkefierbmi" "ruhta" "ruvdnu" 
+"sahá" "sáiti" "sálti" "seaila" "siibma" "sihkaldat" "sirpe" "skárbban" "skierat" "snáldu" "soabbi" "soavvelvuogga" "speallan#mašiidna" "spihkár" "stággu" "stávrá" "stivrran" "suohpan" "suorbma" 
+"váđđu" "veahkkemohtor" "veaikebaste" "vealgi" "viidni" "vuogga" "vuoiddas" "vuoigŋan#mašiidna" ;
 
    # Those could be further subdivided into: kitchen tools, working tools, hunting tools, fishing tools, writing tools...
   
 
 # preliminary name for the set:
-LIST ABSTR-T =  "ášši" "bargobearráigeahčču" "bargodearvvašvuođabálvalus" "bearráigeahčču" "cummá" "dánsa" "dánsu" "dearvvašvuođageahčču" "doarjja" "eallin" "fápmu" "gásta" "geahčču" "gullu" "heagga" "jahkebargu" "láhkavuođđudus"  "mearka" "oahppu" "oaidninvuohki" "preassadoarjja" "ruhtadoarjja" "soabadanproseassa" "sosialiserenproseassa" "suvli" "varra" ;
+LIST ABSTR-T =  "ášši" "bargobearráigeahčču" "bargodearvvašvuođa#bálvalus" "bearráigeahčču" "cummá" "dánsa" "dánsu" "dearvvašvuođageahčču" "doarjja" "eallin" "fápmu" "gásta" "geahčču" "gullu" "heagga" "jahkebargu" "láhkavuođđudus"  "mearka" "oahppu" "oaidninvuohki" "preassadoarjja" "ruhtadoarjja" "soabadanproseassa" "sosialiserenproseassa" "suvli" "varra" ;
 
 LIST SINGLE-SOUND = "fonema" "jietna" "jietnadat" "loahppajietnadat" "vokála" ;
 
@@ -1429,9 +1435,9 @@ LIST SATNI = "adjektiiva" "advearba" "bárahisstávvalvearba" "boazosápmelašte
 
     ## tool for verbal activity
 
-LIST WORD-PARTS = "akseantamearka" "bustávva" "B-#bustávva" "C-#bustávva" "goallossáhcu" "gravismearka" "stávval" ;
+LIST WORD-PARTS = "akseantamearka" "bustávva" "b-bustávva" "c-bustávva" "goallos#sáhcu" "gravismearka" "stávval" ;
 
-LIST SIGN = "akseantamearka" "čuokkis" "duppalčuokkis" "gažaldatmearka" "goallossáhcu" "gravismearka" ;
+LIST SIGN = "akseantamearka" "čuokkis" "duppalčuokkis" "gažaldatmearka" "goallos#sáhcu" "gravismearka" ;
 
 SET ABSTR-TOOL = SOUND OR ABSTR-T ;
 
@@ -1444,13 +1450,15 @@ SET ABSTR-TOOL = SOUND OR ABSTR-T ;
 # - - - - - - - - - - - - - - - -
 
     
-LIST CLOTHES = "báidi" "beaska" "bivttas" "boagán" "buksa" "čikŋabivttas" "čuvla" "dálvebivttas" "dorka" "gákti" "gárvu" "geassebivttas" "kamelguolgabivttas" "láđđebivttas" "láđđegákti" "liidnegákti" "náhkkeboagán" "olgguldasbivttas" "sámebivttas" "sisbáidi" "sistegákti" "sámegákti" "T-báidi" ;
+LIST CLOTHES = "avvi" "báidi" (".*báidi"r) "beaska" "(".*bealjus"r)" "bivttas" "boagán" (".*boagán"r)  (".*buksa"r) (".*buser"r) (".*busir"r) (".*bivttas"r) "čalbmeláset" (".*čuhppa"r) "čuvla" "dorka" "fáhcca" "(".*gahpir"r)" "gákti" "gárvu" (".*gákti"r) "gistta" (".*hámet"r) (".*liidni"r) (".*luhkka"r) "rahpot" (".*readdju"r) (".*reddjo"r) "T-báidi" (".*váhcca"r) (".*váhttu"r) (".*vuolpu"r);
+
+LIST FOOD = (".*biebmu"r) (".*biergu"r) (".*borramuš"r)  (".*muorji"r) "fuođar" (".*guolli"r) "gordni" (".*mális"r) (".*jáffu"r) "jokŋa"  (".*láibi"r) "mális" "málli" "márfi" "niesti" "sarrit" "spelle" (".*gáhkku"r) ;
    
 
-LIST LIQUID = "bohccomielki"  "buolleviidni" "buollinviidna" "čáhci" "čáhppesmuorjesákta" "čielgamielki" "deadja" "duolvačáhci" "gáffe" "gáiccamielki" "gearra" "goden" "gusamielki" "jugus" "juhkamuš" "mielki" "ruksesviidni" "sarritsákta" "sáivačáhci" "sákta" "sávzzamielki" "suvrramielki" "viidna" "viidni" "vilgesviidni" "vuola" "vuolla"  ;
+LIST LIQUID = "bohccomielki" "bruvsa" "buolleviidni" "buolleviidna"  "buollin#viidna" "buollánviidna" "buollánviidni" "čáhci" "čáhppesmuorjesákta" "čielgamielki" "deadja" "duolva#čáhci" "gáffe" "gáiccamielki" "gearra" "girkoviidna" "girkoviidni" "goden" "gusamielki" "jugus" "juhkamuš" "kirkoviidna" "kirkoviidni" "mielki" "rihppaviidna" "rihppaviidni" "ruksesviidna" "ruksesviidni" "sarritsákta" "sáivačáhci" "sákta" "sávzzamielki" "suvramielki" "viidna" "viidni" "vilgesviidna" "vilgesviidni" "vuola" "vuolla"  ;
 
     
-LIST PLANT = "alášbađverássi" "alitdiehpperássi" "ávža" "báhpačehporaš" "beahci" "bastilislátnjá" "beahceguolbba" "beatnatnjuovččarássi" "biehtárguhkká" "biehtárrássi" "bievlaguolbba" "boallorássi" "biellodaŋas" "biellorássi" "cizašvuolpu" "duopma" "duottarbusságeahpil" "fiikkonmuorra" "fiskesrássi" "gálla" "gámasuoidni" "gáiski" "gáskálas" "gieddeguolbba" "gieddemáđir" "gollerássi" "guossa" "heasttagazzarássi" "horbmá" "jámešbátni" "jeagil" "juopmu" "lastamuorra" "lageš" "leaibi" "miestta" "muotkenjárgaguolbba" "niittoguolbba" "njálanjuovčča" "oaivejeagil" "oaksi" "rásseguolbba" "reatká" "sállja" "sieđga" "skáhpi" "skierri" "soahki" "suhpi" "uvlorássi" "vándádivga" "vilgesmáđir" "vuodjarássi" "vuovdeguolbba" ;
+LIST PLANT = "alášbađverássi" "alitdiehpperássi" "ávža" "báhpačehporaš" "beahci" "bastilislátnjá" "beahceguolbba" "beatnatnjuovččarássi" "biehtárguhkká" "biehtárrássi" "bievlaguolbba" "boallorássi" "biello#daŋas" "biellorássi" "cizáš#vuolpu" "duopma" "duottarbusságeahpil" "fiikkonmuorra" "fiskesrássi" "gálla" "gámasuoidni" "gáiski" "gáskálas" "gieddeguolbba" "gieddemáđir" "gollerássi" "guossa" "heasttagazzarássi" "horbmá" "jámešbátni" "jeagil" "juopmu" "lastamuorra" "lageš" "leaibi" "miestta" "muotkenjárgaguolbba" "niittoguolbba" "njálanjuovčča" "oaivejeagil" "oaksi" "rásseguolbba" "reatká" "sállja" "sieđga" "skáhpi" "skierri" "soahki" "suhpi" "uvlo#rássi" "vándádivga" "vilgesmáđir" "vuodjarássi" "vuovdeguolbba" ;
 
     # Plants could be actors in fairytales (Alice)
     
@@ -1460,86 +1468,73 @@ LIST CONTAINER = "bohtal" "čáhcelihtti" "dáigelihtti"  "eappir" "fárppal" "g
   #Those always function as units too, such as in: A bottle of water.
 
 # People can be inside them:
-LIST SPACIOUS-VEHICLE = "áhpeguolástanfanas" "biila" "boastabiila" "borjjasfanas" "borjjasvanca" "buohccebiila" "buohccibiila" "bussa" "busse" "čáhcegirdi" "dámpa" "drošša" "drošše" "fanas" "fievru" "gádjunhelikopter" "gálvobiila" "gávpotbussa" "gávpotbusse" "girjebusse" "geaksu" "girdi" "guollefanas" "guorbmebiila" "helikopter" "johkafanas" "láivi" "minibussa" "minibusse" "mohtorfanas" "mohtorfievru" "mohtorvanca" "njealjit" "njealljejuvllat" "olgoriikkafeastonuohttefanas" "ruvttobiila" "skuvlabiila" "skuvlabussa" "skuvlabusse" "suhkkivanca" "tákse" "táksi" "traktor" "tráktor" "vanas" "vanca" ;
+LIST SPACIOUS-VEHICLE = "áhpeguolástanfanas" "biila" "boastabiila" "borjjasfanas" "borjjasvanca" "buohccebiila" "buohccibiila" "bussa" "busse" "čáhce#girdi" "dámpa" "drošša" "drošše" "fanas" "fievru" "gádjunhelikopter" "gálvobiila" "gávpotbussa" "gávpotbusse" "girjebusse" "geaksu" "girdi" "guollefanas" "guorbmebiila" "helikopter" "johkafanas" "láivi" "minibussa" "minibusse" "mohtorfanas" "mohtorfievru" "mohtorvanca" "njealjit" "njealljejuvllat" "olgoriikkafeastonuohttefanas" "ruvttobiila" "skuvla#biila" "skuvlabusse" "suhkkivanca" "tákse" "táksi" "toga" "traktor" "tráktor" "vanas" "vanca";
 
 # People cannot be inside them:
-LIST SMALL-VEHICLE = "ásen" "beana" "fievrošibit" "heargi" "heasta" "mánásihkkel" "meahccesihkkel" "mohtorgielká" "mohtorsihkkel" "mopeda" "nieidamánásihkkel" "njealljejuvllat" "sihkkel" "skohter" "skuter" "sykkel" "njealjejuvlageassi" "čiekčansihkkel" ;
+LIST SMALL-VEHICLE = "ásen" "beana" "fievrošibit" "heargi" "heasta" "mánáid#sihkkel" "meahccesihkkel" "mohtorgielká" "mohtorsihkkel" "mopeda" "nieidamáná#sihkkel" "njealljejuvllat" "sihkkel" "skohter" "skuter" "sykkel" "njealjejuvlageassi" "čiekčansihkkel" ;
 
 SET VEHICLE = SPACIOUS-VEHICLE OR SMALL-VEHICLE ;
 
-LIST TEXT = "álbmotlohkanlistu" "áviissačálus" "áššegirje" "áššegirji" "álgoálbmotgažaldat" "aviisa" "áviisa" "áššebábir" "áššelogahallan" 
-"bargobihttá" "bargoprográmma" "bassivádjoluslávlla" "báikenammalistu" "beavdegirji" "beavdegirječálus" "biraslogahalla" "bivdobálkáčálus" "b-johtočálus" "bláđđi" "boađuslogahallan" "bođumearrádus" "bušeahttapoasta" 
-"čálus" "čála" "cealkámuš" "čujuhuslistu" "čujuhuslogahallan" "čuovus" 
-"dárogielteaksta" "dásádatlogahallan" "dieđáhus" "dienaslistu" "diggelogahallan" "dihtorčálus"   "divššohasjournála" "dokumeanta" "duollogirje" "duollogirji" "duopmočálus" 
-"e-poasta" "eanagirji" "eanaopmodatlogahallan" "eksamen" "eksamenbihttá" 
-"fáddásiidu" "fágačálus" "fáksa" "fápmudusmearrádus"
-"gáldu" "GAB-logahallan" "geahččalanprográmma" "giddodatlogahallan" "girji" "girkogirje" "girkogirji" 
-"hálddahusmearrádus" "huksenlogahallan" 
-"jahkedieđáhus" "jahkelogahallan" "jietnagirji" "johttičálus" "journála" "journálačállin" "journáladiehtu" "johtučálus" "johtočálus" 
-"kárta" "lasta" "láhka" "láhkačálus" "láhkamearrádus" "láhkateaksta" "láđđi" "leaksu" "listu" "logahallan" 
-"mátkemuitalus" "mannohaddelogahallan" "málbmalogahallan" "mearkalogahallan" "mearrádusdokumeanta" "miellahttologahallan" "mollengeađgelogahallan" "mielddus" 
-"nammalistu" "neahttasiidu" "nuppástuhttinprográmma" "oahppogirji" "oahppoprográmma" "oaivečálus" "ON-raporta" "opmodatlogahalla" 
-"preassadieđáhus" "raporta" "ráfáidahttinmearrádus" "reive" "riektedieđa" "romána" "ruovttubargu" "ruovttueksamen" "ruovttusiidu" 
-"Sápmelaš-bláđđi" "sámekonvenšuvdna" "sámečálus" "sámegielteaksta" "sárdni" "sátnegirje" "sátnegirji" "sitáhtta" "statistihkka" "stuorradiggedieđáhus" 
-"teaksta" "telegrámma" 
-"váidda" "vaháteallilogahalla" "vealgelogahallan" "vearrologahallan" "vuođđolágamearrádus" "vuoigatvuođavuođđoáššebábir" "vuoigatvuođagažaldat" ;
+LIST TEXT = (".*listu"r) (".*čálus"r) (".*girji"r) (".*-girji"r) (".*gažaldat"r) (".*aviisa"r) (".*áviisa"r) (".*bábir"r) (".*logahallan"r) 
+"bargobihttá" (".*prográmma"r) (".*lávlla"r) (".*bláđđi"r) (".*mearrádus"r) "bušeahttapoasta" (".*čála"r) (".*cealkámuš"r) "čuovus" 
+(".*teaksta"r) (".*dieđáhus"r) (".*journála"r) "dokumeanta" (".*girje"r)  
+"e-poasta" (".*eksamen"r) "eksamenbihttá" 
+"fáddá#siidu" "fáksa" "gáldu" "gullugovva" "journála#čállin" "journáladiehtu" 
+"kárta" "lasta" "láhka" "láđđi" "leaksu" "mátkemuitalus" "mielddus" 
+"neahttasiidu" "novealla" (".*raporta"r) (".*reive"r) "riektedieđa" "romána" "ruovttubargu" "ruovttusiidu" (".*konvenšuvdna"r)  "sárdni" "sitáhtta" "statistihkka" "telegrámma" "váidda" ;
 
   # A potential place (locative?) for sth. written.
   # Maybe one should differentiate between written and spoken texts
 
-LIST ABSTR-TEXT = "alimusriektemearrádus" "almennetmearrádus" "almmuhusteakstaevttohus" "areálaplána" "áideplána" "áigeplána" "áittardanplána" "ákšuvdnaplána" "álbmotmeahcceplána" "álbmotriektemearrádus" "árvalus" "ássanplána" "bartaplána" "bábermearrádus" "bábirmearrádus" "bággolonistanmearrádus" "bálvalusplána" "bivdoáigemearrádus" "bivdomearrádus" "boazodoalloláhkaevttohus" "borasdávdaplána" "boarrásiidplána" "boazodoalloplána" "buoridanplána" "buhtadusortnet" "bušeahttaevttohus"  "buhtadanmearrádus" "buoridanevttohus" "bušeahttamearrádus" "bušeahttamálleevttohus" 
-"cuvccas" "čađahanmearrádus" "čađahanplána" "čoahkkeplána"
-"dearvvašvuođaplána" "departemeantaevttohus" "diibmojuohkoplána" "diehtojuohkinplána"  "dievasčoahkkinmearrádus" "diggemearrádus" "divvunplána" "doaibmabidjoevttohus" "doaibmaplána" "doallo-ortnet" "doalloplána" "doarjjaortnet" "dulvadanevttohus" "dulvadanmearrádus" "dulvadanplána" "dutkanplána" "duodjeoahppoplána" "duodjeplána"
-"eaktu" "eanačujuhus" "eanačujuhancealkámuš" "eanandoalloplána" "eanaháldenplána" "eananjuohkinmearrádus" "eanaláhkamearrádus" "eanamihtidannjuolggadus" "eananvuovdinnjuolggadus" "eanavuovdinmearrádus" "eanetlohkomearrádus" "eaŋkalmearrádus" "earremearrádus" "ekonomiijaplána" "elfápmoháhkanplána" "energiplána" "eSápmiplána" "EU-mearrádus" "evttohus" 
-"fáddáevttohus" "fágaplána" "fágaidoahppoplána" "fápmudusmearrádus" "fálesráfáiduhttinmearrádus" "fievrridanplána" "finnmárkkuláhkaevttohus" "friddjasuohkanmearrádus" "fylkkadiggemearrádus" "fylkkageaidnoplána" "fylkkaoasseplána" "fylkkaplána" "fylkkaplánaevttohus" 
-"geaskoevttohus" "gažaldat" "gáhtteneaktu" "gáhttenplána" "gárrenmirkoplána" "gáržžidanevttohus" "gáržžidanmearrádus" "gávpemearrádus" "geasku" "geaidnoplána" "gealboplána" "geavahanplána" "gelbbolašvuođaplána" "gelbbolašvuođaloktenplána" "generálplána" "gielddaoasseplána" "gielddaplána" "giellagažaldat" "giellamearrádus" "giellanjuolggadus" "giellaoahppaplána" "giellaovddidanplána" "guođoheaddjibartaplána" "guolástanmearrádus" "guollebivdomearrádus" "guovddášlihttu" "guovttegielalašvuođaplána"
-"haddeevttohus" "haddemearrádus" "hálddašandoaibmaplána" "hálddašanortnet" "hálddahusplána" "hálddašanmearrádus" "heivehanplána" "huksenáššemearrádus" "huksenplána" "ILO-soahpamuš" "investerenplána" "IO-plána" "IT-doaibmaplána" "jahkeplána" "jearaldat" "jođihanplána" "johtolatdorvvolašvuođaplána" "journálavurkenortnet"
-"konsešuvdnamearrádus" "kultursuodjalanmearrádus" "kulturplána" "kulturviessoplána"
-"lasihanplána" "láhkarievdadanevttohus" "láhkaásahusmearrádus" "láhkaevttohus" "láhkamearrádus" "láhkamuddenevttohus" "láhkarievdadanevttohus" "láhttoevttohus" "láigohaneanavuovdinmearrádus" "lávdegoddeevttohus" "lihttoláigohanmearrádus" "luođaleaktu" "lonuhanmearrádus" "luossabivdomearrádus" 
-"máinnas" "mánáidgárdeplána" "márkanplána" "mátkeplána" "mearrádus" "mearrádusevttohus" "mearrahápmanplána" "muddenmearrádus" "muddenplána" "muitalus" "murjenmearrádus" "muorračuohppanplána" "murrenmearrádus" 
-"nannenplána" "njuolggadus" "njuolggadusevttohus" "nuoraidplána" "nuppástusevttohus" 
-"oahppoplána" "oanidanmearrádus" "ođastusevttohus" "orohatplána" "ovdaplána" "ovddidanplána" "ollašuhttinplána" "ovttastahttinmearrádus" "plánaevttohus" "plánamearrádus" "prejudikáhtamearrádus" "prinsihppamearrádus" "prošeaktaplána" 
-"ráfáiduhttinplána" "ráhkadanplána" "rámmaplána" "ráŋggáštusmearrádus" "rávdnjevuogádatplána" "resolušuvdna" "riektecealkámuš" "riektemearrádus" "rievdadanevttohus" "riikkaoasseplána" "rusttetplána" "ruvkeplána"
-"sámekodisilla" "Sámediggeplána" "sámeguovllumearrádus" "sámemearrádus" "sierralohpemearrádus" "sierramearrádus" "sisdoallomearrádus" "skuvlaplána" "skuvlenplána" "soahpamuševttohus" "sosialplána" "sosiálaplána" "spiehkastanmearrádus" "stivrramearrádus" "strategiijaplána" "suodjalanevttohus" "suodjalanmearrádus" "suodjalanplána" "suorgeplána" "suvdinplána"
+LIST ABSTR-TEXT = "alimusriektemearrádus" "almennetmearrádus" "almmuhusteakstaevttohus" "areálaplána" "áideplána" "áigeplána" "áittardanplána" "ákšuvdnaplána" "álbmotmeahcceplána" "álbmotriektemearrádus" "árvalus" "ássanplána" "bartaplána" "báber#mearrádus" "bábir#mearrádus" "bággolonistanmearrádus" "bálvalusplána" "bivdoáige#mearrádus" "bivdomearrádus" "boazodoalloláhkaevttohus" "borasdávda#plána" "boarrásiidplána" "boazodoalloplána" "buoridanplána" "buhtadusortnet" "bušeahttaevttohus"  "buhtadanmearrádus" "buoridanevttohus" "bušeahttamearrádus" "bušeahttamálleevttohus" 
+"cuvccas" "čađahanmearrádus" "čađahan#plána" "čoahkke#plána"
+"dearvvašvuođa#plána" "departemeantaevttohus" "diibmo#juohko#plána" "diehtojuohkinplána"  "dievasčoahkkinmearrádus" "digge#mearrádus" "divvun#plána" "doaibmabidjoevttohus" "doaibmaplána" "doallo-ortnet" "doallo#plána" "doarjjaortnet" "dulvadanevttohus" "dulvadan#mearrádus" "dulvadan#plána" "dutkanplána" "duodjeoahppo#plána" "duodje#plána"
+"eaktu" "eanačujuhus" "eanačujuhancealkámuš" "eanandoalloplána" "eana#hálden#plána" "eananjuohkin#mearrádus" "eanaláhka#mearrádus" "eanamihtidannjuolggadus" "eanan#vuovdin#njuolggadus" "eana#vuovdin#mearrádus" "eanetlohkomearrádus" "eaŋkal#mearrádus" "earre#mearrádus" "ekonomiijaplána" "elfápmo#háhkan#plána" "energi#plána" "eSápmiplána" "EU-mearrádus" "evttohus" 
+"fáddáevttohus" "fágaplána" "fágaid#oahppoplána" "fápmudusmearrádus" "fálesráfáiduhttinmearrádus" "fievrridanplána" "finnmárkkuláhkaevttohus" "friddjasuohkan#mearrádus" "fylkkadigge#mearrádus" "fylkkageaidnoplána" "fylkka#oasseplána" "fylkkaplána" "fylkkaplánaevttohus" 
+"geaskoevttohus" "gažaldat" "gáhtteneaktu" "gáhttenplána" "gárrenmirko#plána" "gáržžidanevttohus" "gáržžidan#mearrádus" "gávpe#mearrádus" "geasku" "geaidnoplána" "gealbo#plána" "geavahan#plána" "gelbbolašvuođa#plána" "gelbbolašvuođaloktenplána" "generálplána" "gieldda#oasseplána" "gielddaplána" "giellagažaldat" "giella#mearrádus" "giellanjuolggadus" "giella#oahppaplána" "giella#ovddidanplána" "guođoheaddjibartaplána" "guolástanmearrádus" "guollebivdo#mearrádus" "guovddášlihttu" "guovttegielalašvuođaplána"
+"haddeevttohus" "hadde#mearrádus" "hálddašan#doaibmaplána" "hálddašanortnet" "hálddahus#plána" "hálddašan#mearrádus" "heivehan#plána" "huksenášše#mearrádus" "huksenplána" "ILO-soahpamuš" "investerenplána" "IO-plána" "IT-#doaibmaplána" "jahkeplána" "jearaldat" "jođihanplána" "johtolatdorvvolašvuođaplána" "journálavurkenortnet"
+"konsešuvdna#mearrádus" "kultursuodjalanmearrádus" "kulturplána" "kulturviessoplána"
+"lasihan#plána" "láhkarievdadanevttohus" "láhkaásahusmearrádus" "láhkaevttohus" "láhkamearrádus" "láhkamuddenevttohus" "láhkarievdadanevttohus" "láhttoevttohus" "láigohan#eana#vuovdin#mearrádus" "lávdegoddeevttohus" "lihttoláigohanmearrádus" "luođaleaktu" "lonuhanmearrádus" "luossabivdo#mearrádus" 
+"máinnas" "mánáidgárde#plána" "márkan#plána" "mátkeplána" "mearrádus" "mearrádusevttohus" "mearra#hápman#plána" "mudden#mearrádus" "muddenplána" "muitalus" "murjen#mearrádus" "muorračuohppan#plána" "murren#mearrádus" 
+"nannen#plána" "njuolggadus" "njuolggadusevttohus" "nuoraidplána" "nuppástusevttohus" 
+"oahppoplána" "oanidan#mearrádus" "ođastusevttohus" "orohatplána" "ovda#plána" "ovddidanplána" "ollašuhttinplána" "ovttastahttinmearrádus" "plánaevttohus" "plána#mearrádus" "prejudikáhtamearrádus" "prinsihppamearrádus" "prošeaktaplána" 
+"ráfáiduhttinplána" "ráhkadan#plána" "rámmaplána" "ráŋggáštusmearrádus" "rávdnjevuogádatplána" "resolušuvdna" "riektecealkámuš" "riektemearrádus" "rievdadanevttohus" "riikkaoasse#plána" "rusttetplána" "ruvke#plána"
+"sáme#kodisilla" "sámediggeplána" "sáme#guovllu#mearrádus" "sáme#mearrádus" "sierralohpe#mearrádus" "sierra#mearrádus" "sisdoallo#mearrádus" "skuvla#plána" "skuvlen#plána" "soahpamuševttohus" "sosial#plána" "sosiálaplána" "spiehkastanmearrádus" "stivrramearrádus" "strategiijaplána" "suodjalanevttohus" "suodjalanmearrádus" "suodjalanplána" "suorge#plána" "suvdin#plána"
 "teáhterplána" "tearbmaevttohus" "traktáhtamearrádus" 
-"váiddamearrádus" "váldesirdinmearrádus" "váldogeaidnoplána" "váldomearrádus" "várddusplána" "veajuiduhttinplána" "vearromearrádus" "vearuhanmearrádus" "viiddidanplána" "virgáibidjannjuolggadus" "vuođđoláhkaevttohus" "vuođđoláhkamearrádus" "vuođđomearrádus" "vuoruhanplána" "vuovdedoalloplána" "vuovdemearrádus" "Wienersoahpamuš" 
-"1873#-mearrádus" "1967#-mearrádus" ;
+"váiddamearrádus" "váldesirdinmearrádus" "váldo#geaidnoplána" "váldo#mearrádus" "várddus#plána" "veajuiduhttinplána" "vearromearrádus" "vearuhanmearrádus" "viiddidanplána" "virgáibidjan#njuolggadus" "vuođđoláhkaevttohus" "vuođđoláhka#mearrádus" "vuođđo#mearrádus" "vuoruhan#plána" "vuovdedoallo#plána" "vuovde#mearrádus" "Wienersoahpamuš" 
+"1873-#mearrádus" "1967-#mearrádus" ;
 
   # A potential place (locative?) for sth. written, spoken or abstract activity 
   
 # Part-whole for human
 
-LIST BODY = "ámadadju" "bahta" "bahtaráigi" "bállosuotna" "bátni" "beađbelađas" "bealgi" "beallji" "bierggas" "biežadákti" "billu" "buđđá" "čalbmedeahkki" "čalbmi" "čatnangođđu" "čeabet" "čelččen" "čeŋkkeš" "čibbeskálžu" "čibbi" "čižžebátni" "čielgeađa" "čielgedákti" "čielgi" "čoalli" "čoamohas" "čoarbbealdeahkki" "čoarbbeallađas" "čoarbbealli" "čoavji" "čorbma" "čorbmaoassi" "čorbmaváimmus" "čorbmavuođđu" "čotta" "čuožžamasdeahkki" "čurti" "čuvdi" "dábba" "dáđvi" "dáktegođus" "dákti" "dávdi" "deahkkegođus" "deahkki" "erttet" "erttetdeahkki" "gahpárus" "gahperus" "gardnjil" "gaskasuorbma" "gassačoalli" "gassaváhkká" "gáddu" "gáibi" "gállu" "gánis" "gátnis" "geađđi" "geahpis" "giegir" "giehta" "giehtadeahkki" "giehtagávva" "giehtaláhpi" "giehtaramas" "giehtaruohtta" "giehtasealgi" "giehtaváibmu" "giehtaváimmus" "gilga" "goapmirváimmus" "goaŧŧočotta" "goaŧŧu" "goikedákti" "gullu" "guoggomas" "guoggomasráksá" "gurutgiehta" "hárdu" "heaggaroasmmoheapmi" "jarri" "juolgebealgi" "juolgečelččen" "juolgegávva" "juolgelađas" "juolgeláhpi" "juolgemátta" "juolgesuorbma" "juolgevuođđu" "juolgi" "lađas" "láhpelađas" "manin" "mannejođas" "manneráksá" "maŋŋebuoidi" "mánágoahtečotta" "mánágoahti" "mielganjunni" "monimuš" "monin" "monnejođas" "monneráksá" "morčesuotna" "morči" "muohtu" "náhpi" "niehkki" "nierra" "niskegohpi" "niski" "njálbmi" "njiehcehas" "njunni" "njuovčča" "oaiveassi" "oaivečohkka" "oaivi" "oalgedeahkki" "oalgenorasdeahkki" "oalgenorasváhkká" "oalgi" "oalul" "obbalággá" "orbbeš" "raddi" "rápma" "rumaš" "rumašgolggus" "rumašlahttu" "rumašnjalbi" "sáhppesuvri" "rumašgolggus" "rumašlahttu" "rumašnjalbi" "sáhppesuvri" "siidu" "siskkitbeallji" "sotkenoalli" "spirralat" "suolbmudanoalli" "suorbma" "suorbmageahči" "šušmi" "váhkkádeahkki" "váibmu" "vuohččecuozza" "vuoivvas" "vuokta" "vuolit" "oassi" "gieđas" "vuorggu" ;
+LIST BODY = "alimat" "aski" "ámadadju" "bahta" "bahtačalbmi" "bahtaráigi" "bavssa" "bállosuotna" "bátni" "beađbelađas" "bealgi" "beallji" "bierggas" "biežadákti" "billu" "buđđá" "bullječalbmi" "čalbmečiehka" "čalbmedeahkki" "čalbmegolláš" "čalbmegulbmi" "čalbmeguolga" "čalbmeluopma" "čalbmi" "čatnangođđu" "čeabet" "čelččen" "čeŋkkeš" "čibbeskálžu" "čibbi" "čižžebátni" "čižži" "čielgeađa" "čielgedákti" "čielgi" "čoalli" "čoamohas" "čoarbbealdeahkki" "čoarbbeallađas" "čoarbbealli" "čoavji" "čorbma" "čorbmaoassi" "čorbmaváimmus" "čorbma#vuođđu" "čotta" "čuožžamasdeahkki" "čurti" "čuvdi" "dábba" "dáđvi" "dáktegođus" "dákti" "dávdi" "deahkkegođus" "deahkki" "erttet" "erttetdeahkki" "gahpárus" "gahperus" "ganjalčalbmi" "gardnjil" "gaskasuorbma" "gassačoalli" "gassaváhkká" "gáddu" "gáibi" "gállu" "gánis" "gátnis" "geađđi" "geahpis" "giegir" "giehta" "giehtadeahkki" "giehtagávva" "giehtaláhpi" "giehtaramas" "giehtaruohtas" "giehtasealgi" "giehtaváibmu" "giehtaváimmus" "gilga" "gipsajuolgi" "goapmirváimmus" "goaŧŧočotta" "goaŧŧu" "goikedákti" "gorut" "gullu" "guoggomas" "guoggomasráksá" "gurotgiehta" "hárdu" "heaggaroasmmoheapmi" "jarri" "juolgebealgi" "juolgečelččen" "juolgedeahkki" "juolgegávva" "juolgelađas" "juolgeláhpi" "juolgemátta" "juolgesuorbma" "juolgevuođđu" "juolgi" "lađas" "láhpe#lađas" "manin"  "maŋŋebuoidi" "mánágoahtečotta" "mánágoahti" "mielganjunni" "monimuš" "monin" "monnejođas" "monneráksá" "morčesuotna" "morči" "muohtu" "náhpi" "niehkki" "nierra" "niskegohpi" "niski" "njálbmi" "njiehcehas" "njunni" "njuovčča" "oaiveassi" "oaivečohkka" "oaivi" "oalgedeahkki" "oalgenorasdeahkki" "oalgenorasváhkká" "oalgi" "oalul" "obbalággá" "orbbeš" "raddi" "rápma" "rumaš" "rumaš#golggus" "rumašlahttu" "rumašnjalbi" "sáhppesuvri" "rumašlahttu" "rumašnjalbi" "salla" "sáhppesuvri" "siidu" "siskkitbeallji" "sotkenoalli" "spirralat" "suolbmudanoalli" "suorbma" "suorbmageahči" "šušmi" "váhkkádeahkki" "váibmu" "vuohččecuozza" "vuoivvas" "vuokta" "vuolit" "vuorggu";
 
     # entities which not necessarily are tools
 
 # Places
-LIST BUILDING = "áiti" "ámmátskuvla" "biebmorámbuvri" "barta" "badjedállu" "boasta" "buohcciidsiida" "buohcciviessu" "buvda" "buvri" 
-"dállu" "dálveskuvla" "dálveviessu" "eanandoalloallaskuvla" "fáŋgaviessu" "fiervábuvri" 
-"geaidnogievkkan" "geardeviessu" "geassebuvri" "goahti" "gávpi" "gielddaskuvla" "girku" "hotealla"
-"internáhttaskuvla" "inšenevraallaskuvla" "kafeá" "krambuvda" "kulturskuvla"  "láđđu" "láhtu" "lávvu" "lonuhusgávpi" 
-"mánáidskuvla" "mearrabuvri" "mearraskuvla" "musihkkaallaskuvla" "návet" "návetgoahti" "návsti" "návstu" "nuoraidskuvla" 
-"oktasašbarta" "orrunviessu" "poasta" "priváhtaskuvla" "ráidoviessu" "rámbuvri" "rámbuvra" "rásseláđđu" "riikaskuvla" "riikabuohcciviessu" 
+LIST BUILDING = "áiti" "ámmátskuvla" "biebmorámbuvri" "barta" "badjedállu" "boasta" "buohcciidsiida" "buohcceviessu" "buvda" "buvri" 
+"dállu" "dálve#skuvla" "dálveviessu" "eanandoalloallaskuvla" "fáŋgaviessu" "fiervábuvri" 
+"geaidnogievkkan" "geardeviessu" "geasse#buvri" "goahti" "gávpi" "gieldda#skuvla" "girku" "hotealla"
+"internáhttaskuvla" "inšenevra#allaskuvla" "kaféa" "krámbuvda" "kulturskuvla"  "láđđu" "láhtu" "lávvu" "lonuhusgávpi" 
+"mánáidskuvla" "mearra#buvri" "mearraskuvla" "musihkka#allaskuvla" "návet" "návetgoahti" "návsti" "návstu" "nuoraidskuvla" 
+"oktasašbarta" "orrunviessu" "poasta" "priváhtaskuvla" "ráido#viessu" "rámbuvri" "rámbuvra" "rásseláđđu" "riika#skuvla" "riika#buohcceviessu" 
 "sámeskuvla" "skuvla" "stálla" "stálle" "stállja" "stohpu" "synagoga" "šloahtta" 
-"tempel" "tuolloviessu"  "universiteahta" "viessu" "visti" ;
+"tempel" "tuolloviessu"  "universiteahtta" "viessu" "visti";
 
-LIST GENERAL-PLACE = "aktoráđđenguovlu" "albmi" "almmiravda" "almmiriika" "areála" "atnueana" "Árjepluovi-guovlu" "ásodatguovlu" "ássanbáiki" "ássanguovlu" 
-"badjegeardi" "badjeeana" "badjeeanan" "bartaguovlu" "báikegoddi" "báiki" "báktehárji" "bealdu" "bieggabáiki" "biras" "bivdoguovlu" "boazodoalloguovlu" "boazoguovlu" "boazoguohtoneana" "boazoguohtoneanan" "buođđosadji" 
-"čakčaeana" "čakčaeana" "čakčaeanan" "čakčabáiki" "čakčaorohat" "čiegus" "čoahkkebáiki" 
-"dálvebáiki" "dálveeanan" "dálveeana" "dálveguohtoneana" "dálveguohtunguovlu" "dálveorohat" "dáruiduhttinguovlu" "davviguovlu"  "davviriika" "davvisiida" "dánssabáiki" "diggebáiki" "dimbbarčuohppansadji" "distribušuvdnaguovlu" "doaibmaguovlu" "dollagáddi" "duiskaeana" "duottarguovlu" "dutkanguovlu" "eanandoallo-eana" "eanandoalloeana"  "eanadoalloguovlu" "eretfárrenguovlu" "earresadji" "fabrihkkaguovlu" "fanasláttasadji" "fágabiras" 
-"gáddebáiki" "gádderavda" "gáhttenguovlu" "gávpebáiki" "gávpemárkan" "gávpot" "gávpotpoarta" "geahččanguovlu" "geaidnoguorra" "geaidnoravda" "geassebáiki" "geasseeana" "geasseeanan" "geasseguohtoneanan" "geasseguohtoneana" "geasseorohat" "geassesadji" "geavahanguovlu" "gilli" "giliguovlu" "giddagasbáiki" "giđđabáiki" "gieddeeana" "giliguovlu" "gilvvagárdi" "gilvvohallanbáiki" "girkogárdi" "guovlu" "goahtesadji" "goikeeana" "goikeeanan" "guoddinseaŋga" "guohtunguovlu" "guolástanguovlu" "guolástusguovlu" "guollebáiki" "guollebivdosadji" "guohtoneana" "guohtoneanan" "guohtuneana" "guottetbáiki" "guovddášguovlu"
-"hálddašanguovlu" "hámman" "hávdeeanan" "hávdeeana" "helvet" "jeaggeeanan" "jeaggeeana" "jeaggeeanan" "jeagelguovlu" "jeagelguohtuneana" "jienastanbáiki" "johtinguovlu" "julevsámeguovlu" 
-"kálkaeana" "kontineanta" "konvenšuvdnaguovlu"
-"lagašguovlu" "lassieana" "láigoeana" "leansmánniguovlu" "LNF-guovlu" "lulliguovlu" "lullisámeguovlu"  "luomeeana" "luossabáiki" "luonddubiras" 
-"mandáhttaguovlu" "máilbmečiehka" "máilbmi" "márkan" "máttaguovlu" "máttasámiguovlu" "meahcceeana" "meahccegilli" "meahceguovlu" "mearraloddeguovlu" "mearrasámiguovlu" "mearrasuodjalusguovlu" "njáskanbáiki" "njunušsadji" "nuortaeana"
-"oahppobáiki" "oaivegállobáiki" "oktasašeana" "oktasašeanan" "oktasašguohtoneanan""oktasašguovlu" "oktasašorohat" "olgobáiki" "olgoriika" "orohat" "orrunbáiki" "orrunguovlu" "priváhtaeana" 
-"rasttidanbáiki" "ravdaguovlu" "rádjaguovlu" "rádjeguovlu" "rádjeguohtunguovlu" "ránnáriika" "riddoeana" "riddoguovlu" "riggodatguovlu" "riika" "ruoktu" "ruovdemáđidja" "ruovttueanan" "ruovttueana" "ruovttuguovlu"
-"sadji" "sáidebáiki" "seahkalasgiellaguovlu" "šákšadorskeguovlu" "sámieana" "sámeeana" "sámigielatguovlu" "sámevearroeana" "sámeguovlu" "sámiguovlu" "siseatnanguovlu" "sohkaguovlu" "sallju" "searveguovlu" "siida" "siseana" "skáhpponguovlu" "skoaltabáiki" "skuvlabiras" (".*šillju"r) "SOF-guovlu" "stáhtaeana" "stáhtaálbmotguovlu" "stáhtasadji" "suopmanguovlu" 
-"TV-šearbma"
-"váhneneana" "váhneneanan" "váldoássanguovlu" "várdobáiki" "vearroeana" "viessosadji" "viesttarbađaeana" "virgebáiki" "vuoiŋŋastanbáiki" "vuotnaguovlu" "vuolggaguovlu" "vuopmeeana" "vuovdeguovlu" ;
+LIST GENERAL-PLACE = "albmi" "almmiravda" "almmiriika" "areála" "atnueana" (".*guovlu"r) "ássanbáiki" 
+"badjegeardi" "badjeeana" "báikegoddi" "báiki" "báktehárji" "bealdu" "biegga#báiki" "biras" "boazoguohtoneana" "buođđosadji" 
+"čakčaeana" "čakčaeana" "čakča#báiki" "čakčaorohat" "čiegus" "čoahkkebáiki" 
+"dálvebáiki" "dálveeana" "dálveguohtoneana" "dálveorohat" "davviriika" "davvisiida" "dánssa#báiki" "diggebáiki" "dimbbar#čuohppan#sadji" "dollagáddi" "duiska#eana" "eanandoallo-#eana" "eanandoalloeana" "earre#sadji" "fanasláttasadji" "fágabiras" 
+"gádde#báiki" "gádde#ravda" "gávpebáiki" "gávpe#márkan" "gávpot" "gávpotpoarta" "geaidnoguorra" "geaidnoravda" "geassebáiki" "geasseeana" "geasseguohtoneana" "geasseorohat" "geassesadji" "gilli" "giddagas#báiki" "giđđa#báiki" "gieddeeana" "gilvvagárdi" "gilvvohallan#báiki" "girkogárdi" "goahtesadji" "goikeeana" "guoddin#seaŋga" "guollebáiki" "guollebivdosadji" "guohtoneana" "guohtuneana" "guottetbáiki" "hámman" "hávdeeana" "helvet" "jeaggeeana"  "jeagelguohtuneana" "jienastanbáiki"  
+"kálka#eana" "kontineanta" "lassieana" "láigoeana" "luome#eana" "luossabáiki" "luonddu#biras" "máilbme#čiehka" "máilbmi" "márkan"   "meahcceeana" "meahcce#gilli" "njáskan#báiki" "njunuš#sadji" "nuortaeana"
+"oahppo#báiki" "oaivegállobáiki" "oktasašeana" "oktasašorohat" "olgobáiki" "olgoriika" "orohat" "orrunbáiki" "priváhtaeana" 
+"rasttidanbáiki" "ránnáriika" "riddo#eana" "riika" "ruoktu" "ruovdemáđidja" "ruovttueana"
+"sadji" "sáidebáiki" "sámieana" "sáme#eana" "sámevearroeana"  "sallju" "siida" "siseana" "skoaltabáiki" "skuvlabiras" (".*šillju"r) "stáhtaeana"  "stáhtasadji" 
+"TV-šearbma" "váhneneana" "várdobáiki" "vearroeana" "viessosadji" "viesttarbađaeana" "virge#báiki" "vuoiŋŋastanbáiki"  "vuopme#eana" ;
 
-LIST NATURE-PLACE = "almennet" "ávži" "bákti" "beahcevuovdi" "borri" "buollánávži" "coagis" "čázádat" "čolpi" "darfejeaggi" "dearbmi" "duottarjávri" "duottaroassi" "eatnu"
-"fielbmá" "fiervá" "gáisá" "gáisi" "gárggu" "gárgu" "gieddi" "gievajeaggi" "gohpi" "gohppi" "gorži" "guolbban" "gurra" "jávri" "jávregáddi" "jeaggi" "jiehkki" "johka" "johkagaska" "johkagáddi" "johkaleahki" "johkanjálbmi" 
+LIST NATURE-PLACE = "almennet" "ávži" "bákti" "beahcevuovdi" "borri" "buollán#ávži" "coagis" "čázádat" "čolpi" "darfejeaggi" "dearbmi" "duottarjávri" "duottaroassi" "eatnu"
+"fielbmá" "fiervá" "gáisá" "gáisi" "gárggu" "gárgu" "gieddi" "gieva#jeaggi" "gohpi" "gohppi" "gorži" "guolbba" "gurra" "jávri" "jávregáddi" "jeaggi" "jiehkki" "johka" "johka#gaska" "johkagáddi" "johkaleahki" "johkanjálbmi" 
 "láddu" "láttu" "latnja" "lavdnjejeaggi" "leahki" "lokta" "luohkká" "luokta" "luondu" "luoppal" "luossajohka" "meahccegieddi" "mearra" "mielli" "mohkki" "muotki" "njárga" "njunni" "oaivi" "oalgejohka" "oalgi" "orda" "orrit" 
 "reašši" "riddogáddi" "riddu" "riidi" "ruovttugieddi" "soahkevuovdi" "stealli" "várrevielti" "várri" "vearroduottar" "vielti" "vuohppi" "vuotnabahta" "vuotnagáddi" ;
 
@@ -1547,11 +1542,11 @@ LIST NATURE-PLACE = "almennet" "ávži" "bákti" "beahcevuovdi" "borri" "buollá
 
     ## (probably often place) They are often tools - they are not probably Pl Loc.
 
-LIST SETTLEMENT-PLACE = "ássanguovlu" "duottar" "eana" "eanaguovlu" "eanan" "eatnan" "gáddi" "geassesiida" "Gennesaretjávregáddi" "gilli" "guovlu" "mátkeguovlu" "meahcci" "mearragáddi" "njárga" "riddu" "sámisiida" "siseatnansiida" "sisvuotna" "suolu" (".*jávregáddi"r) "vággi" "vuotna" "vuotnabahta" "vuotnagáddi" "vuotnaguovlu" "vuovdi" ;
+LIST SETTLEMENT-PLACE = "ássanguovlu" "duottar" "eana" "eanaguovlu" "gáddi" "geassesiida" "Gennesaretjávregáddi" "gilli" "guovlu" "mátkeguovlu" "meahcci" "mearragáddi" "njárga" "riddu" "sámisiida" "siseana" "siseatnansiida" "sisvuotna" "suolu" (".*jávregáddi"r) "vággi" "vuotna" "vuotnabahta" "vuotnagáddi" "vuotnaguovlu" "vuovdi" ;
 
 SET GEOGRAPHICAL-PLACE = NATURE-PLACE OR SETTLEMENT-PLACE ;
 
-LIST GEN-POLITICAL-PLACE = "gávpot" "gilli" "girkosuohkan" "fylka" "mearragáttesuohkan" "miellahttosuohkan" "orohat" "rádji" "riddosuohkan" "riika" "riikarádji" "ruovttugávpot" "sámeeana" "Sámeeana" "siseatnangilli" "siseatnansuohkan" "stáhta" "suohkan" "válgabiire" "vuotnagávpot" "vuotnasuohkan" ;
+LIST GEN-POLITICAL-PLACE = "gávpot" "gilli" "girko#suohkan" "fylka" "mearragáttesuohkan" "miellahttosuohkan" "orohat" "rádji" "riddo#suohkan" "riika" "riikkarádji" "ruovttugávpot" "sáme#eana" "Sámeeana" "siseatnangilli" "siseatnansuohkan" "stáhta" "suohkan" "válgabiire" "vuotnagávpot" "vuotnasuohkan" ;
 
   ## can also function as an actor
   
@@ -1559,9 +1554,9 @@ LIST FYLKA = "Finnmárku" "Finnmarku" "Romsa" "Nordlánda" "Lulli-Trøndelag" "D
        "Hedmárku" "Akershus" "Buskerud" "Vestfold" "Østfold" "Aust-Agder" "Vest-Agder"
        "Rogalánda" "Hordalánda" "Opplánda" "Fjordane" "Romsdal" "Telemark" ;
 
-LIST NORGA = "Dánmárku-Norga" "davvi-Norga" "Davvi-Norga" "gaska-Norga" "Norga" "norga" "norggabealli" "Norgga-ruoŧŧa" ;
+LIST NORGA = "Dánmárku-#Norga" "Danmárku-#Norga" "Davvinorga" "Davvi-Norga" "Gaska-Norga" "Norga" "norga" "norggabealli" "Norga-#Ruoŧŧa" ;
 
-LIST NATION-NOT-NORGA = "Columbia" "Duiska" "Frankriika" "Guatemala" "Israel" "Kanada" "Láhten-Amerihká" "náššuvdna" "riika" "Ruošša" "Ruoŧŧa" "Sápmi" "sápmi" "Skandinávia" "stáhta" "Suopma" "Suopma-Ruošša" ;
+LIST NATION-NOT-NORGA = "Columbia" "Duiska" "Frankriika" "Guatemala" "Israel" "Kanada" "Láhten-Amerihká" "naššuvdna" "riika" "Ruošša" "Ruoŧŧa" "Sápmi" "sápmi" "Skandinávia" "stáhta" "Suopma" "Suopma-#Ruošša" ;
 
     
 SET NATION = NATION-NOT-NORGA OR NORGA ;
@@ -1585,7 +1580,7 @@ LIST WATER = "ája" "áhpi" "álddis" "basseaŋŋa" "čáhci" "cázádat" "Deanu
 LIST GOAHTI-PLACE = "árran" "boaššu" "loaidu" "reahpenráigi" "soggi" ;
  
 
-LIST ROOM = "bargomárkankantuvra" "bártniidhivsset" "biergodiehtojuohkinkantuvra" "boazodoallokantuvra" "čájáhuslatnja" "ealáhuskantuvra" "ealáhuskántuvra" "eamiálbmotkantuvra" "eanajuohkinkantuvra" "eananvuovdinkantuvra" "eanavuovdinkantuvra" "feaskkir" "fylkkaeanadoallokantuvra" "gámmár" "gámmir" "garáša" "gievkkan" "guovllukántuvra" "guovllukantuvra" "hivsset" "informašuvdnakántuvra" "kántuvra" "kantuvra" "klássalatnja" "leansmánnekantuvra" "lášmmohallansále" "lášmmohallansálla" "livnnetkantuvra" "livnnetkántuvra" "lokta" "luohkkálatnja" "molssodanlatnja" "nieiddaidhivsset" "nohkkanlatnja" "oađđenlatnja" "oađđinlatnja" "oahpaheaddjilatnja" "sallju" "skuvlalatnja" "sosiálkantuvra" "stohpu" "studio" "šillju" ;
+LIST ROOM = "bargomárkankantuvra" "bártniidhivsset" "biergodiehtojuohkinkantuvra" "boazodoallokantuvra" "čájáhuslatnja" "ealáhuskantuvra" "eamiálbmotkantuvra" "eanajuohkinkantuvra" "eananvuovdinkantuvra" "eanavuovdinkantuvra" "feaskkir" "fylkkaeanadoallokantuvra" "gámmár" "gámmir" "garáša" "gievkkan" "guovllukantuvra" "hivsset" "informašuvdnakantuvra" "kantuvra" "klássalatnja" "leansmánnekantuvra" "lášmmohallan#sále" "lášmmohallan#sálla" "livnnetkantuvra" "lokta" "luohkkálatnja" "molssodanlatnja" "nieiddaidhivsset" "nohkkanlatnja" "oađđenlatnja" "oađđinlatnja" "oahpaheaddjilatnja" "sallju" "skuvlalatnja" "sosiálkantuvra" "stohpu" "studio" "šillju" ;
 
 SET PLACE = GEOGRAPHICAL-PLACE OR POLITICAL-PLACE OR GENERAL-PLACE OR ROUTE OR BUILDING OR ROOM OR GOAHTI-PLACE ;
 
@@ -1595,27 +1590,20 @@ SET PLACE = GEOGRAPHICAL-PLACE OR POLITICAL-PLACE OR GENERAL-PLACE OR ROUTE OR B
 LIST ORGANIZATION = (Prop Org) "alimusriekti" "álbmotallaskuvla" "allaskuvla" "ámmátorganisašuvdna" "ámmátskuvla" "ámtadiggi" "ásahus" "bargokantuvra" "báhpaskuvla" "báikkálašsearvi" "bálvalandoaibma" "bearráigeahččanorgána" "bellodat" "birasgáhttendepartemeanta" "boazodoallosearvi" "buohccestohpu" "buohcceviessu" "buohcciidsiida" 
 "dearvvašvuođaásahus" "dearvvašvuođafitnodat" "departemeanta" "departementa" "dearvvašvuođadutkanguovddáš" "diggi" "doaibmaguovddáš" "duopmostuollu" "dutkandepartemeanta" "dutkanráđđi" 
 "ealáhusráđđi" "eanandoallodepartemeanta" "eanandoallodepartementa" "eanandoallosearvi" "eananjuohkindiggi" "eiseváldi" "etáhta" "etáhtta" 
-"fakultehta" "Finnmárkkukommišuvdna" "firbmá" "fitnodat" "fylkkagielda" 
-"geahččodoaibma" "geahččoeiseváldi" "gelbbolašvuođaguovddáš" "giddagas" "gieldadepartementa" "gielddadiggi" "giellaguovddaš" "giellaossodat" "giellaráđđi" "girjerájus" "girku" "girkoráđđi" "gozihankomitea" "guolástandepartemeanta" "guovddášeiseváldi" "guovddášsearvi" "guovllustivra" "guovllubuohcceviessu" 
-"hálddašanorgána" "hálddahus" "dearvvašvuođaásahus" "dearvvašvuođaguovddáš" "fylkkadiggi" "instituhtta" "institušuvdna" "IT-ovttadat" 
-"jándorásahus" "jienastanstivra" "joatkkaskuvla" "johttisámisearvi" "justisdepartemeanta" "justiskomitea" "kantuvra" "klinihkka" "komitea" "komišuvdna" "kulturlávdegoddi" "kulturmuitoráđđi" "láhkaásahus" "lávdegoddi" "Luondduhálddašandirektoráhta" "luondduhálddašan-direktoráhta" "luondduhálddašandirektoráhta" "mánáidgárdi" "mánáidskuvla" "media" "meieriija" "militeara" "musea" 
-"našunáldiggi" "nuoraidskuvla" "oahpahusdoaibma" "oahpaheaddjisearvi" "oahpahusráđđi" "olgoriikkadepartemeanta" "organisašuvdna" "orgána" "ossodat" "ovdaskuvla" "parlameantta" "psykiatriijabuohcceviessu" "preassa" "ráđđehus" "ráđđi" "regulerenráđđi" "riekteásahus" "riikasearvi" "riikkasearvi"
-"Sámediggeráđđi" "Sámediggeráđđi" "Sámediggi" "sámediggi" "sámeinstitušuvdna" "sámekomitea" "Sámelávdegoddi" "sámemišuvdna" "sámemusea" "sámiráđđi" "sámesiida" "sámeskuvllastivra" "sámivuoigatvuođalávdegoddi" "searvegoddi" "searvi" "servodat" "sierraduopmostuollu" "skuvla" "skuvlakantuvra" "skuvlla" "stáhta" "stuorradiggi" "suodjalankomitea" "suohkan" "suohkanstivra" "synagoga" 
-"universiteahtta" "universitehta" "universitehtabuohcceviessu" "virgáibidjanráđđi" "vuođđoskuvla"  "vuoigatvuođalávdegoddi"
-"dearvvašvuođastašuvdna" "gielda" "riddogielda" "ruovttugielda" "sámegielda" "Sámegielda" "válgalávdegoddi" "vuotnagielda" ;
+"fakultehta" "Finnmárkokommišuvdna" "firbmá" "fitnodat" "fylkkagielda" 
+"geahččo#doaibma" "geahččoeiseváldi" "gelbbolašvuođaguovddáš" "giddagas" "gieldadepartementa" "gieldda#diggi" "giellaguovddáš" "giellaossodat" "giellaráđđi" "girjerájus" "girku" "girkoráđđi" "gozihankomitea" "guolástandepartemeanta" "guovddášeiseváldi" "guovddášsearvi" "guovllustivra" "guovllubuohcceviessu" 
+"hálddašanorgána" "hálddahus" "hállehus" "dearvvašvuođaásahus" "dearvvašvuođaguovddáš" "fylkkadiggi" "instituhtta" "institušuvdna" "IT-ovttadat" 
+"jándor#ásahus" "jienastanstivra" "joatkkaskuvla" "johttisámisearvi" "justisdepartemeanta" "justiskomitea" "kantuvra" "klinihkka" "komitea" "komišuvdna" "kulturlávdegoddi" "kulturmuitoráđđi" "láhkaásahus" "lávdegoddi" "Luondduhálddašandirektoráhta" "luondduhálddašan-direktoráhta" "luondduhálddašandirektoráhta" "mánáidgárdi" "mánáidskuvla" "media" "meieriija" "militeara" "musea" 
+"našunála#diggi" "nuoraidskuvla" "oahpahusdoaibma" "oahpaheaddjisearvi" "oahpahusráđđi" "olgoriikkadepartemeanta" "organisašuvdna" "orgána" "ossodat" "ovdaskuvla" "parlameanta" "psykiatriijabuohcceviessu" "preassa" "ráđđehus" "ráđđi" "regulerenráđđi" "riekteásahus" "riikkasearvi"
+"sámediggeráđđi" "Sámediggeráđđi" "Sámediggi" "sámediggi" "sámeinstitušuvdna" "sámekomitea" "sámelávdegoddi" "sámemišuvdna" "sámemusea" "Sámiráđđi" "sámesiida" "sámeskuvllastivra" "sámivuoigatvuođalávdegoddi" "searvegoddi" "searvi" "servodat" "sierraduopmostuollu" "skuvla" "skuvlakantuvra" "stáhta" "stuorradiggi" "suodjalankomitea" "suohkan" "suohkanstivra" "synagoga" 
+"universiteahtta" "universitehta" "universitehtabuohcceviessu" "virgáibidjan#ráđđi" "vuođđoskuvla"  "vuoigatvuođalávdegoddi"
+"dearvvašvuođastašuvdna" "gielda" "riddogielda" "ruovttugielda" "sámegielda" "válgalávdegoddi" "vuotnagielda" ;
  
 # those can both be buildings and represent humans
  # Duomma:lea
 
-LIST INSTITUTION = "audiopedagogabálvalus" "álgobálvalus" "álgodearvvašvuođabálvalus" "bagadanbálvalus" "báikenammabálvalus" "bálvalus" "bátnedearvvašvuođabálvalus" "bearráigeahččanbálvalus" "bibliotehkabálvalus" "birrajándorbálvalus" "bolesbálvalus" "čállinbálvalus" 
-"databálvalus" "dábálašdoavtterbálvalus" "dálveluoddabálvalus" "dearvvašvuođabálvalus" "dearvvašvuođageahčču" "dieđihanbálvalus" "diehtojuohkinbálvalus" "divvunbálvalus" "doarjjabálvalus" "dulkonbálvalus" "duollobálvalus" 
-"fierpmádatbálvalus" "fysioterapiijabálvalus" "fitnodatdearvvašvuođabálvalus" "fuolahusbálvalus" "fuollabálvalus" 
-"gádjunbálvalus" "geahččoortnet" "gielddadearvvašvuođabálvalus" "girjerádjobálvalus" "girjerájusbálvalus" "girkoráđđi" "gohccibálvalus" "govdafierpmádatbálvalus" "gulahallanbálvalus" "guovddáš" "huksehanbálvalus" 
-"instituhtta" "inšenevrabálvalus" "jordamorbálvalus" "jorgalanbálvalus" "konsuleantabálvalus" "kulturráđđi"
-"maŋŋáhárjehallanbálvalus" "mánáidsuodjalus" "mánáidsuodjalusbálvalus" "meahccebálvalus"  "mielladearvvašvuođasuodjalus" "militearbálvalus" "neahttabálvalus" "nuoraidbálvalus" 
-"oaivadanbálvalus" "oahpahusbálvalus" "oassebálvalus" "olgoipmilbálvalus"  "oskkubálvalus" 
-"PP-bálvalus" "poastabálvalus" "ráfibálvalus" "ruovttobálvalus" "ruovttubálvalus" "sámegielbálvalus" "searvegodderáđđi" "servodatbálvalus" "sihkarvuođabálvalus" "skuvladearvvašvuođabálvalus" "soalddátbálvalus" "sosiálabálvalus" "spesialistabálvalus" "spesialistadearvvašvuođabálvalus" "spesialistadearvvašvuođa-bálvalus" "suodjalanbálvalus" 
-"telebálvalus" "telematihkkabálvalus" "vákšunbálvalus" "Várrebálvalus" "vuođđodearvvašvuođabálvalus" "vuostebálvalus" "Vuovdebálvalus" ;
+LIST INSTITUTION = (".*bálvalus"r) "bálvalus" "geahččoortnet" "guovddáš" 
+"instituhtta" "kulturráđđi" "searvegodderáđđi" ;
 
 # the previous items can both represent abstract processes and humans
  # Duomma:lea
@@ -1629,20 +1617,20 @@ LIST MEDIA = "media" "oahpahus#rádio" "radio" "rádio" "televišuvdna" "TV" ;
 # Two aspects: Place and institution:
 # and a couple of other words that do not really have to do with that
 # suits "vázzit" + Acc
-LIST EDUCATION = "allaskuvla" "allaskuvlaoahppu" "álbmotallaskuvla" "álbmotallaskuvlaoahppu" "álgooahppu" "ámmátskuvla" "artiumkursa" "badjedássi" "báhpaskuvla" "befálaoahppu" "boazodoallofága" "boazodoallosuorgi" "boazodoallofágaoahppu"
-"dásseárvofága" "doavttirskuvla" "dulkaoahppu" "duodjekursa" "duodjeoahppu" "eanandoalloallaskuvla" "fága" "fidnoskuvla" 
-"gaskaskuvla" "gávpeoahpposkuvla" "giellafága" "giellagursa" "gierdoskuvla" "gohttehatskuvla" "gursa" "joatkkaoahppu" "joatkkaskuvla" "julevsámegieloahppu" "kursa" "luohkká" "luonddufága" "mánáidskuvla" "musihkkadiibmu" "musihkkaskuvla" "musihkkasuorgi" "musihkkaallaskuvla" "nuoraidskuvla" 
-"oahpaheaddjiallaskuvla" "oahpaheaddjeoahppu" "oahpaheaddjioahppu"   "oahppofálaldat" "oahppoinstitušuvdna" "oahpaheaiskuvla" "oahpaheaiallaskuvla" "oahppoásahus" "oahppodássi" "oahppu" "ovdaskuvla" "páhpaskuvla" "rávesolbmuidskuvla" "rávisolbmuidskuvla" "rekruttskuvla" "rihppaskuvla" 
-"sámegielfága" "sámegielgaskafága" "seminára" "skuvla" "skuvlla" "smávvaskuvla" "sotnabeaiskuvla" "stáhtainternáhtta" "stáhtainternáhta" "stuorraskuvla" "teaterallaskuvla" "teáhterallaskuvla" "universiteahtta" "universitehta" "veahkkeskuvla" "verddeskuvla" "vuođđoskuvla" "vuolledássi" ;
+LIST EDUCATION = "allaskuvla" "allaskuvlaoahppu" "álbmotallaskuvla" "álbmotallaskuvlaoahppu" "álgooahppu" "ámmátskuvla" "artiumkursa" "badjedássi" "báhpaskuvla" "befálaoahppu" "boazodoallofága" "boazodoallosuorgi" "boazodoallofága#oahppu"
+"dásseárvo#fága" "doavttirskuvla" "dulkaoahppu" "duodjekursa" "duodjeoahppu" "eanandoalloallaskuvla" "fága" "fidnoskuvla" 
+"gaskaskuvla" "gávpeoahpposkuvla" "giellafága" "giellagursa" "gierdoskuvla" "gohttehatskuvla" "gursa" "joatkkakursa" "joatkkaoahppu" "joatkkaskuvla" "julevsámegieloahppu" "kursa" "luohkká" "luonddufága" "mánáidskuvla" "musihkkadiibmu" "musihkkaskuvla" "musihkka#suorgi" "musihkka#allaskuvla" "nuoraidskuvla" 
+"oahpaheaddjiallaskuvla" "oahpaheaddjeoahppu" "oahpaheaddjioahppu"   "oahppofálaldat" "oahppoinstitušuvdna" "oahpaheaiskuvla" "oahppoásahus" "oahppodássi" "oahppu" "ovdaskuvla" "páhpaskuvla" "rávesolbmuidskuvla" "rávisolbmuidskuvla" "rekruttskuvla" "rihppaskuvla" 
+"sámegielfága" "sámegiel#gaskafága" "seminára" "skuvla" "smávvaskuvla" "sotnabeaiskuvla" "stáhtainternáhtta" "stáhtainternáhta" "stuorraskuvla" "teáhterallaskuvla" "universiteahtta" "universitehta" "veahkkeskuvla" "verddeskuvla" "vuođđoskuvla" "vuolledássi" ;
 
 # suits to LANGUAGE Gen
-LIST LESSON =  "álgogursa" "dáiddaoahpahus" "gaskafága" "gealbu" "gelbbolašvuohta" "giellaovdáneapmi" "fálaldat" "joatkkafáddá" "joatkkagursa" "lávdaoahppofálaldat" "lohkanbajeoahppu" "máhttu" "musihkkadiibmu" "oahppa" "oahppofálaldat" "oahpahus" "váldofága" "vuođđofága" ;
+LIST LESSON =  "álgogursa" "dáidda#oahpahus" "gaskafága" "gealbu" "gelbbolašvuohta" "giellaovdáneapmi" "fálaldat" "joatkkafáddá" "joatkkagursa" "lávdaoahppofálaldat" "lohkanbájioahppu" "máhttu" "musihkkadiibmu" "oahppa" "oahppofálaldat" "oahpahus" "váldofága" "vuođđofága" ;
  
 
-LIST OTHER-INDUSTRY = "bálvalusealáhus" "biedjobivdu" "bivdu" "boazoealáhus" "boazodoallu" "Deanubivdu" "duodji" "ealáhus" "ealáhusdoaibma" "eanandoallu" "eanadoalloealáhus"  "eksportaealáhus" "fuođđobivdu" 
-"geasseguollebivdu" "giđđaguollebivdu" "goddebivdu" "guollebiebmanealáhus" "guollebivdu" "industriija" "johkaluossabivdu" "lassiealáhus" "luossabivdu" "lotnolasealáhus"  
+LIST OTHER-INDUSTRY = "bálvalusealáhus" "biedjo#bivdu" "bivdu" "boazoealáhus" "boazodoallu" "Deanubivdu" "duodji" "ealáhus" "ealáhusdoaibma" "eanandoallu" "eanadoallo#ealáhus"  "eksportaealáhus" "fuođđobivdu" 
+"geasse#guollebivdu" "giđđa#guollebivdu" "goddebivdu" "guollebiebmanealáhus" "guollebivdu" "industriija" "johka#luossabivdu" "lassiealáhus" "luossabivdu" "lotnolasealáhus"  
 "mátkeealáhus"  "mátkkoštanealáhus" "meahcceealáhus" "mearradoalloealáhus" "riektepolitihkka" "rievssatbivdu" "ruvkedoaibma" 
-"sáivaguollebivdu" "sáivabivdu" "sáivaguollebivdu"  "sosiálapolitihkka"  "šákšadorskebivdu" "šákšadorskebivdu" "sámeduodji" "sámeealáhus" "smávvabivdu" "šibitdoallu" "tertiearaealáhus" "vuoddoealáhus" "vuođđoealáhus" ;
+"sáivaguolle#bivdu" "sáivabivdu" "sosiálapolitihkka"  "šákša#dorske#bivdu" "sámeduodji" "sáme#ealáhus" "smávva#bivdu" "šibitdoallu" "tertiearaealáhus" "vuođđoealáhus" ;
 
 # Not related to certain political verbs
  # Duomma:lea
@@ -1653,13 +1641,13 @@ LIST POLITICAL-INDUSTRY = (".*politihkka"r) ;
  
 SET INDUSTRY = POLITICAL-INDUSTRY OR OTHER-INDUSTRY ;
 
-LIST RIEKTEDILLI = "bajithearrávuohta" "bálvalusfálaldat" "čearddalašvuohta" "diggegirji" "dilálašvuohta" "ealáhusvuođđu" "eallindiliváttisvuohta" "eanajuohkinsuohkan"  "eanadoallobuvttadeapmi" "eanavuovdinkantuvra"  "hálddašeapmi" "kultuvra" "matrihkal" "meahcceriggodat" "opmodat" "rádjemearka" "rádji" "rádjá" "resursageavaheapmi" "riektedilli" "riekteáddejupmi" "riddomearraguovlu" "sierraortnet" "stáhtaeana"  "suodjalanguovlu" "váldi" "váldofierpmádat" "vearronjuolggadus" "vuoigatvuođadilálašvuohta" "vuoigatvuohta" "vuovdeatnu" "vuovdenjuolggadus" "suverenitehta" "kulturdoarjja" ;
+LIST RIEKTEDILLI = "bajithearrávuohta" "bálvalusfálaldat" "čearddalašvuohta" "diggegirji" "dilálašvuohta" "ealáhus#vuođđu" "eallindiliváttisvuohta" "eanajuohkinsuohkan"  "eanadoallobuvttadeapmi" "eanavuovdinkantuvra"  "hálddašeapmi" "kultuvra" "matrihkal" "meahcceriggodat" "opmodat" "rádjemearka" "rádji" "rádjá" "resursageavaheapmi" "riektedilli" "riekteáddejupmi" "riddomearraguovlu" "sierraortnet" "stáhtaeana"  "suodjalanguovlu" "váldi" "váldofierpmádat" "vearro#njuolggadus" "vuoigatvuođadilálašvuohta" "vuoigatvuohta" "vuovdeatnu" "vuovde#njuolggadus" "suverenitehta" "kulturdoarjja" ;
 
 # FYLKA in front of the set is usually in Gen.
 
 
 
-LIST SAMEDIGGI-GEN = "autoritehta" "áirras" "árvokommišuvdnalahttu" ("ásahit" Actio) "bargu" "bušeahtta" "bušeahttamearrádus" "bušeahttavuogádat" "coahkkinortnet" "čielggadeapmi" "čilgehus" "čoahkkin" "čoahkkinortnet" "dievasčoahkkin" "doaibma" "doaimmahat" "ealáhusfoanda" "ekonomiijahálddašeapmi" "ekonomiijastivren" "hálddašanapparáhtta" "jahkedieđáhus" "jahke-dieđáhus" "joavku" "kulturviessobušeahtta" "lahttu" "mearrádus" "njuolggadus" "nuoraidkonferánsa" "oaidnu" ("oassálastit" Actio)  "ollesáigepolitihkkár" "opposišuvdna"  "ovttasbargoaktøra" "politihkkár" "rehketdoallu" "sadji" "ságajođiheaddji" "šiehtadusmálle" "ulbmil" "váldoášši" "váldohálddahus" ;
+LIST SAMEDIGGI-GEN = "autoritehta" "áirras" "árvokommišuvdnalahttu" ("ásahit" Actio) "bargu" "bušeahtta" "bušeahttamearrádus" "bušeahttavuogádat" "čielggadeapmi" "čilgehus" "čoahkkin" "čoahkkinortnet" "dievasčoahkkin" "doaibma" "doaimmahat" "ealáhusfoanda" "ekonomiijahálddašeapmi" "ekonomiijastivret" "hálddašanapparáhtta" "jahkedieđáhus" "jahke-#dieđáhus" "joavku" "kulturviessobušeahtta" "lahttu" "mearrádus" "njuolggadus" "nuoraidkonferánsa" "oaidnu" ("oassálastit" Actio)  "ollesáigepolitihkkár" "opposišuvdna"  "ovttasbargoaktøra" "politihkkár" "rehketdoallu" "sadji" "ságajođiheaddji" "šiehtadusmálle" "ulbmil" "váldoášši" "váldohálddahus" ;
 
 SET ACTOR = ANIMATE OR INSTITUTION OR ORGANIZATION ;
 
@@ -1676,40 +1664,40 @@ LIST STATE = "bahávuohta" ("dearvvas" Der/vuohta) "gaskavuohta" "miella#dearvva
 
   # can represent a concrete entity
 
-LIST MONEY = "ánsu" "árvu" "bálká" "beaiveruhta" "buorrin" "bušeahtta" "čoahkkinbuhtadus" "dearvvasvuođabálvalusmearreruhta" "dienas" "divat" "doarjja" "duksaruhta"
-"dutkanruhta" "fuolahanbálká" "giellaruhta" "giellaprošeaktaruhta" "gollu" "guovttegielalašvuođaruhta" "haddi" 
-"jahkebušeahtta" "juolludeapmi" "juolludus" "kulturmearreruhta" "lassiruhta" "liigudeapmi" "máksu" "mátkkoštangollu" 
-"oahpaheddjiidbálká"  "preassadoarjja" "prošeaktaruhta" "reantu" "ruhta" "ruoššaruhta" "sáhkku" "sisaboahtu" "spealloruhta" "stáhtadoaibma" "tienas" "veahkkeruhta" "vealgi" "vearru" "vuoitu" ;
+LIST MONEY = "ánsu" "árvu" "bálká" (".*bálká"r)  "buorrin" "bušeahtta" (".*bušeahtta"r) "čoahkkinbuhtadus" "dearvvasvuođabálvalusmearreruhta" "dienas" "divat" "doarjja"
+"fuolahan#bálká" "giellaprošeaktaruhta" "gollu" "guovttegielalašvuođaruhta" "haddi" 
+("juolludit" Der/NomAct) "juolludus" "kulturmearreruhta" ("liigudit" Der/NomAct) "máksu" "mátkkoštangollu" 
+"preassadoarjja" "reantu" "ruhta" (".*ruhta"r) "sáhkku" "sisaboahtu" "stáhtadoaibma" "tienas" "vealgi" "vearru" "vuoitu";
 
     # Ambiguous with respect to concreteness, either the symbolic amount or the concrete coins and bills
 
 
  
 LIST GEN-CONCEPT = "anistupmi" "álgu" "áŋgirvuohta" "áigumuš" "árbevierru" "ávžžuhus" 
-"ballu" "bálvaleapmi" "bálvaluskvaliteahtta" "bargomálle" "boađus" "dárbu" "dássi" "diehtu" "doaibma" "duođaštangeatnegasvuohta" "duogaš" "eaiggátvuohta" "eallinvuohki" "erohus" "evttohus" 
+"ballu" "bálvaleapmi" "bálvaluskvaliteahtta" "bargomálle" "boađus" "dárbu" "dássi" "diehtu" "doaibma" "duođaštangeatnegasvuohta" "duogáš" "eaiggátvuohta" "eallinvuohki" "erohus" "evttohus" 
 "fádda" "friddjavuohta" "fuolalašvuohta" "gaskamearri" "gaskaoapmi" ("geargat" Der/vuohta) "geatnegasvuohta" "gelbbolašvuohta" ("gudnejahttit" Actio) "gudni" "guollebivdovuoigatvuohta" "hállu" "hástalus" "isitvuohta" 
 "konflikta" "kontákta" "kulturduogáš" "kulturmáhttu" "kvaliteahtta" "loahppa" "loatnaetymologiija" "lohpi" 
-"máhttu" ("máŋggabealat" Der/vuohta) "miella" "mihttomearri" "mihttomearri" "molssaeaktu" "muitu" "oamedovdu" "oktavuohta" "olahahttivuohta" "ovdamearka" "ovddasvástádus" "ovttadássásašvuohta" "perspektiiva" 
+"máhttu" ("máŋggabealat" Der/vuohta) "miella" "mihttomearri" "molssaeaktu" "muitu" "oamedovdu" "oktavuohta" "olahahttivuohta" "ovdamearka" "ovddasvástádus" "ovttadássásašvuohta" "perspektiiva" 
 "ráffi" "ráfi" "ráhkisvuohta" "rámma" "riekteprinsihppa" "rolla" "sámegielmáhttu" "sámekultuvra" "sihkkarastinstrategiija" "strategiija" "šiehtadallanfáddá" "symbolasystema" 
-"ulbmil" "ustitvuohta" ("vanhurskkis" Der/vuohta) "váibmu" "váikkuhanfápmu" "váikkuhus" "váldosivva" "vásáhusduogáš" "vearrivuohta" "virgelohpi" "vuordámuš" 
-"bivdovuoigatvuohta" "geavahanvuoigatvuohta" "guolástanvuoigatvuohta" "jienastanvuoigatvuohta" "eanangeavahanvuoigatvuohta" "oamastanvuoigatvuohta" "mearraguollevuoigatvuohta" "teltenvuoigatvuohta" "sierravuoigatvuohta" "murjenvuoigatvuohta" "láigovuoigatvuohta" "láigohanvuoigatvuohta" "bivdinvuoigatvuohta""guohtunvuoigatvuohta" "eananoamastanvuoigatvuohta" "eanangeavahanvuoigatvuohta" "vuođđovuoigatvuohta" ;
+"ulbmil" "ustitvuohta" ("vanhurskkis" Der/vuohta) "váibmu" "váikkuhanfápmu" "váikkuhus" "váldosivva" "vásáhusduogáš" "vearrivuohta" "virgelohpi" "vuordámuš" "vuoigatvuohta"
+"bivdovuoigatvuohta" "geavahanvuoigatvuohta" "guolástanvuoigatvuohta" "jienastanvuoigatvuohta" "eanageavahanvuoigatvuohta" "oamastanvuoigatvuohta" "mearraguollevuoigatvuohta" "teltenvuoigatvuohta" "sierravuoigatvuohta" "murjenvuoigatvuohta" "láigovuoigatvuohta" "láigohanvuoigatvuohta" "bivdinvuoigatvuohta" "guohtunvuoigatvuohta" "eananoamastanvuoigatvuohta" "eanangeavahanvuoigatvuohta" "vuođđovuoigatvuohta" ;
  
   # very abstract
   # Adding words to this set, consider if they suit to the SG-WORD-set as well. 
   
-LIST MOD-CONCEPT = "eanandoalloálggahan#ulbmil" ;
+LIST MOD-CONCEPT = "eanandoallo#álggahan#ulbmil" ;
 
     #for quite specified concepts, that has probably an effect on its potential to be modified.
     
 
    
-LIST STRUCTURE = "álgu" "loahppa" "struktuvra" "maŋŋegeahči" "lasáhus" "loahpageahči" "álgogeahči" "álgooassi" "sisdoallu" "veršuvdna" ;
+LIST STRUCTURE = "álgu" "loahppa" "struktuvra" "maŋŋegeahči" "lasáhus" "loahppageahči" "álgogeahči" "álgo#oassi" "sisdoallu" "veršuvdna" ;
 
 LIST PROPERTY = "burrodat" "fastivuohta" "hedjodat" "allodat" "gassodat" "kvaliteahtta" "sturrodat" "guhkkodat" "govdodat" "hápmi" "ivdni" "fearga" "dovdomearka" "iešvuohta" "viidodat" ;
 
 LIST MOD-PROPERTY = "bálvaluskvaliteahtta" ;
 
-LIST IDEOLOGY = "buddhisma" "kommunisma" "osku" "sosialdarwinisma" ;
+LIST IDEOLOGY = "buddhisma" "kommunisma" "osku" "sosial#darwinisma" ;
 
 SET CONCEPT = GEN-CONCEPT OR STRUCTURE OR PROPERTY OR IDEOLOGY ;
 
@@ -1719,7 +1707,7 @@ LIST ACTIVITY = "aktivitehta" "báikenammadutkamuš" "boazodoallodutkamuš" "ča
   # semantically comparable to Actio forms + lexicalized Actio forms.
   # probably change of state in the course of time
   
-LIST PROCESS = "duodje#proseassa" "kárten#proseassa" "mearridan#proseassa" "mearridan#prosessa" "oahppo#proseassa" "revitaliseren#proseassa" ;
+LIST PROCESS = (".*proseassa"r) ;
 
     # Reminds of time sets
     
@@ -1730,7 +1718,7 @@ LIST DILLI = (".*dilli"r) ;
 
   # Likely to be locative in most contexts
   
-LIST WEATHER-SITUATION = "beaivvádat" "bievla" "buolaš" "dálki" "dálkedilálašvuohta" "fiertu" "goalki" "siivu" "jođádat" "liekkas" "linádat" "oppas" "riđđu" "muohtti" "ilbmi" "balva" "čuoika" "čoaskin" "biegga" "nuorttadat" "davádat" "oarjjádat" "luládat" "orjješbiegga" "nuortabiegga" "obbadálki" "balvadálki" "balvailbmi" "arvi" "savda" "savdaarvi" "liehmu" "láfubiegga" "baján" "johtti" "gállu" "jiella" "hieibma" "šlahtti" "seaŋáš" "borga" "guoldu" "dobadat" "dobádat" "dulvi" "moarri" "geardni" "cuoŋu" "jealahas" "jalahas" "geasádat" "dálvvádat" "jáldu" "lievhnu" "galmma" "guostta" "čođđolat" "čođđálat" "sealádat" "šearádat" "bálgu" "bálggádat" "geamádat" "goikkádat" ;
+LIST WEATHER-SITUATION = "beaivvádat" "bievla" "buolaš" "dálki" "dálkedilálašvuohta" "fiertu" "goalki" "siivu" "jođádat" "liekkas" "linádat" "oppas" "riđđu" "muohtti" "ilbmi" "balva" "čuoika" "čoaskin" "biegga" "nuorttadat" "davádat" "oarjjádat" "luládat" "orjješbiegga" "nuortabiegga" "obbadálki" "balvadálki" "balva#ilbmi" "arvi" "savda" "savda#arvi" "liehmu" "láfubiegga" "baján" "johtti" "gállu" "jiella" "hieibma" "šlahtti" "seaŋáš" "borga" "guoldu" "dobadat" "dulvi" "moarri" "geardni" "cuoŋu" "jealahas" "jalahas" "geasádat" "dálvvádat" "jáldu" "lievhnu" "galmma" "guostta" "čođđolat" "čođđálat" "sealádat" "šearádat" "bálgu" "bálggádat" ;
 
  # 
 
@@ -1739,33 +1727,33 @@ SET SITUATION = DILLI OR WEATHER-SITUATION ;
 SET ACTOR-ROLE = HUMAN OR ORGANIZATION OR POLITICAL-PLACE OR EDUCATION ;
  # Institution: Restricting possible actor subjects.
 
-LIST EVENT-TOOL-ACTIVITY = (Actio) "addin" "dearvvašvuođa#iskkadeapmi" "goddin" "hárjehallan" "jápmin" "ráđđádallan" "šiehtadallan" "vázzin" ;
+LIST EVENT-TOOL-ACTIVITY = (Actio) "addin" "dearvvašvuođaiskkadeapmi" "goddin" "hárjehallan" "jápmin" "ráđđádallan" "šiehtadallan" "vázzin" ;
 
-LIST EVENT = "avádatčoahkkin" "álbmotčoahkkin" "ámtadiggečoahkkin" "bargiidčoahkkin" "bajimusčoahkkin" "beassášmárkan" "bismmačoahkkin" "buohkaidčoahkkin" "boazodoallošiehtadallan" "budjeahttačoahkkin" 
-"cup" "čakčamárkan" "čoahkkin" "Čuoigancup" "dievasčoahkkin" "digaštallančoahkkin" "diggečoahkkin" "dutkančoahkkin" "erenoamáščoahkkin" "fáddáčoahkkin" "feasta" "festivála" "fitnodatčoahkkin"
+LIST EVENT = "avádatčoahkkin" "álbmotčoahkkin" "ámtadigge#čoahkkin" "bargiidčoahkkin" "bajimusčoahkkin" "beassášmárkan" "bismmačoahkkin" "buohkaidčoahkkin" "boazodoallošiehtadallan" "budjeahttačoahkkin" 
+"cup" "čakča#márkan" "čoahkkin" "čuoigan#cup" "dievasčoahkkin" "digaštallančoahkkin" "digge#čoahkkin" "dutkančoahkkin" "erenoamáščoahkkin" "fáddáčoahkkin" "feasta" "festivála" "fitnodatčoahkkin"
 "gielddaválga" "girkočoahkkin" "gittačoahkkin" "gozihančoahkkin" "gulaskuddančoahkkin" "guossečoahkkin" "gulaskuddančoahkkin" 
-"headja" "heargegilvu" "jahkečoahkkin" "joavkočoahkkin" "joavko-čoahkkin" "juovlamárkan" "juristtačoahkkin" "konferánsa" "konsearta" "kursa" "lávdegottečoahkkin" "loahppačoahkkin" "luoddačoahkkin" "lávdegoddečoahkkin" 
-"máilmmesoahti" "mátki" "mearridanproseassa" "miellahttočoahkkin" "ministtarčoahkkin" "miellačájehančoahkkin" "miellahtočoahkkin" "njunusčoahkkin" "nominašuvdnačoahkkin" "nášunalčoahkkin" 
-"ođđaorganiserenčoahkkin" "oktavuohtačoahkkin" "oktasaščoahkkin" "ovttasbargočoahkkin" "olgoriikaministerčoahkkin" "ollesčoahkkin" "proseassa" 
+"heajat" "heargegilvu" "jahkečoahkkin" "joavkočoahkkin" "joavko-#čoahkkin" "juovla#márkan" "juristtačoahkkin" "konferánsa" "konsearta" "kursa" "lávdegottečoahkkin" "loahppačoahkkin" "luoddačoahkkin" "lávdegoddečoahkkin" 
+"máilmmesoahti" "mátki" "mearridanproseassa" "ministtarčoahkkin" "miellačájehančoahkkin" "miellahttočoahkkin" "njunuščoahkkin" "nominašuvdnačoahkkin" "nášunála#čoahkkin" 
+"ođđa#organiseren#čoahkkin" "oktavuohtačoahkkin" "oktasaščoahkkin" "ovttasbargočoahkkin" "olgoriikaministerčoahkkin" "ollesčoahkkin" "proseassa" 
 "ráđđádallančoahkkin" "ráđđečoahkkin" "ráđđehusčoahkkin" "ráhkkanančoahkkin" "ráhkkananstivračoahkkin" "riektečoahkkin" "riikkačoahkkin" "ruhkos" 
-"ságaškuššančoahkkin" "sámečoahkkin" "sámediggeválga" "sámediggeválga" "Sámediggeválga" "sámemeašttirgilvu" "Sámi-meašttirgilvu" "sámemusihkkafestivála" "siidačoahkkin" "soahti" "stivračoahkkin" "suokkardančoahkkin" 
+"ságaškuššančoahkkin" "sáme#čoahkkin" "sámediggeválga" "sámediggeválga" "sámemeašttirgilvu" "Sámi-meašttirgilvu" "sámemusihkkafestivála" "siida#čoahkkin" "soahti" "stivračoahkkin" "suokkardančoahkkin" 
 "telefončoahkkin" 
 "Varangerfestivála" "váldočoahkkin" "válga" "vuosttaldančoahkkin" "vuođđudančoahkkin" "váhnenčoahkkin" "válgačoahkkin" "vuosttaščájálmas" ;
  #XXX bad name, too general
 
 SET ABSTR-PLACE = ORGANIZATION OR INSTITUTION OR EVENT OR EDUCATION OR INDUSTRY OR SITUATION ;
 
-LIST ILLNESS = "albmasuoigi" "allergiija" "anemiija" "ástandávda" "árbedávda" "báhti" "bátnevárka" "bátnevearka" "bárku" "bárkodávda" "bearri" "boazodávda" "boahkkodávda" "boahkku" "borasdávda" "buohcu" "buohcuvuohta" "buollán" "buozalmas" "čáhcedávda" "čižžeborasdávda" "čoavjebávččas" "čoavjebonjahat" "čoavjedávda" "čottadávda" "dávda" "dohppehallandávda" "eksema" "fiskesdávda" "fiskesfeber" "gárrenávnnas" "gárrenávnnasváttisvuohta" "gárrendilli" "geahpesdávda" "geahppesdávda" "geahppesvihki" "golgadandávda" "golgodávda" "golgovihki" "guolledávda" "infekšuvdnadávda" "influensa" "jápmindávda" "juhkanvuohta" "lađasdávda" "lađasleasmedávda" "leasmedávda" "leasmi" "liikedávda" "logahasdávda" "luossadávda" "luhčadávda" "mánáiddávda" "mánnodávda" "nissondávda" "njoammudávda" "nuorvu" "nuoskkesdávda" "oaivvesvuohta" "obbondávda" "rabiesdávda" "ráŋka" "rohttodávda" "rohttudávda" "rohtudávda" "ruodnu" "skihpa" "časkásanváddu" "seargadávda" "sismáhtodávda" "sisváddu" "skurbbetdávda" "sogadávda" "sogaváddu" "sohkardávda" "spánskadávda" "speallandávda" "suohtta" "tuberkulosadávda" "varrasonahat" "váddu" "vátnedávda" "vihki" "virusdávda" "vuolši" "vuorri" ;
+LIST ILLNESS = "albmasuoigi" "allergiija" "anemiija" "ástandávda" "árbedávda" "báhti" "bátnevárka" "bátnevearka" "bárku" "bárkodávda" "bearri" "boazodávda" "boahkkodávda" "boahkku" "borasdávda" "buohcu" "buohcuvuohta" "buollán" "buozalmas" "čáhcedávda" "čižžeborasdávda" "čoavjebávččas" "čoavjebonjahat" "čoavjedávda" "čottadávda" "dávda" "dohppehallan#dávda" "eksema" "fiskesdávda" "fiskes#feber" "gárrenávnnas" "gárrenávnnasváttisvuohta" "gárrendilli" "geahpesdávda" "geahppesdávda" "geahppesvihki" "golgadan#dávda" "golgodávda" "golgovihki" "guolledávda" "infekšuvdnadávda" "influeansa" "jápmindávda" "juhkanvuohta" "lađasdávda" "lađasleasmedávda" "leasmedávda" "leasmi" "liikedávda" "logahasdávda" "luossadávda" "luhčadávda" "mánáid#dávda" "mánodávddat" "nisson#dávda" "njoammudávda" "nuorvu" "nuoskkesdávda" "oaivvesvuohta" "obbondávda" "rabiesdávda" "ráŋka" "rohttodávda" "rohttudávda" "rohtudávda" "ruodnu" "skihpa" "časkásanváddu" "seargadávda" "sismáhtodávda" "sisváddu" "skurbbetdávda" "sogadávda" "sogaváddu" "sohkardávda" "spánskadávda" "speallandávda" "suohtta" "tuberkulosadávda" "varrasonahat" "váddu" "vátnedávda" "vihki" "virusdávda" "vuolši" "vuorri" ;
 
 
 # Sets denoting relations
 
-LIST OASSI = "gonagasoassi" "riikaoassi" "oassi" "teakstaoassi" "váldooassi" ;
+LIST OASSI = "gonagasoassi" "riika#oassi" "oassi" "teakstaoassi" "váldooassi" ;
  
 	# Might be useful for partitive constructions.	
 	# Try to make a set of nouns wich not will be Gen in a AccGen string.
 	
-LIST HEADOFPARTS = "nisson#oassi" "oassi" "váldo#oassi" "bealli" "guhtemuš" "goappašat" "proseanta" "%" ;
+LIST HEADOFPARTS = "nissonoassi" "oassi" "váldooassi" "bealli" "guhtemuš" "goappašat" "proseanta" "%" ;
 
   # This may be a better partitive set.	
 
@@ -1817,7 +1805,7 @@ SET NOT-CC = WORD - CC ;
 
 SET NOT-PCLE = WORD - Pcle ;
 
-LIST COMPAR = "dávjjit" "eanet" "earalágan" "eará" "earret" "seammás" "seamma#lágan" "seamma#lágán" "seamma#láhkai" ;
+LIST COMPAR = ("dávji" A Comp) "eanet" "earalágan" "eará" "earret" "seammás" "seammalágan" "seamma_láhkái" ;
  
  # These combine with "go" Pcle, but COMPAR stands for 'comparison' rather than
  # 'comparative'.
@@ -2033,13 +2021,7 @@ SELECT:r857 Prop IF (0 NATION LINK 0 ADVLCASE LINK NOT 0 ("sápmi") LINK NOT 0 Q
 	
 REMOVE:r858 Prop IF (*-1 BOS OR (":") BARRIER WORD)(0 Loc LINK NOT 0 Plc OR QDL)(1 NP-HEAD-NOM LINK 1 VFIN LINK 1 NP-HEAD-ACC) ;
 	## Sokkis sii seailluhit diŋggaid.	
-
-REMOVE:r861 ("sámiráđđi") IF (0 ("Sámiráđđi"));
-  	## Dán gáibideigga foandda hoavda Per Edvard Klemetsen ja Norgga Sámiráđi ovdaolmmoš Aslak Nils Sara gielddaministaris Arne Rettedalas geainna soai maŋŋebárgga deaivvadeigga Oslos. 
   
-REMOVE:r862 ("Norggabealli") IF (0 ("norggabealli"));
-  	## Norggabeali áirasat ledje Olav Mathis Eira..
-
   
 REMOVE:r864 Prop IF (NEGATE -1 (Prop Attr))(0 ("jávri") OR ("guhkki") OR ("kap") OR ("klubbu") OR ("arena") OR ("arvat") OR ("bassi") LINK NOT 0 QDL) ;
   # Philosophy is that these are nouns rather than names.
@@ -2179,7 +2161,7 @@ REMOVE:r561 Der/veara IF (0 ("veara"));
  # This rule deals with those -aččat words that could be nouns or adjectives 
  # but not adverbs. 
 
-REMOVE:r562 Adv IF (0 ("áššeoassi" Der/laš) OR ("bosnialaš") OR ("čuovvovaš") OR ("dánskalaš") OR ("Davvinorga" Der/laš) OR ("davvinorga" Der/laš) OR ("davviriikkalaš") OR ("dehálaš") OR ("duiskkalaš") OR ("eahpeduhtavaš") OR ("egyptalaš") OR ("gávpi" Der/laš) OR ("gávppašanbealle" Der/laš) OR ("geavahanriekti" Der/laš) OR ("greikalaš") OR ("gullevaš") OR ("guovdageaidnulaš") OR ("hollándalaš") OR ("julevsápmelaš") OR ("juvddálaš") OR ("kretalaš") OR ("lulli-norga" Der/laš) OR ("máksu" Der/laš) OR ("norgalaš") OR ("nuortalaš") OR ("oarjesápmelaš") OR ("ohcejohkalaš") OR ("palestinalaš") OR ("romalaš") OR ("sadjásaš") OR ("sápmelaš") OR ("sogalaš") OR ("sorjavaš") OR ("sullasaš") OR ("suddu" Der/laš) OR ("vepselaš") LINK NOT 0 QDL); 
+#REMOVE:r562 Adv ("čuovvovaš") OR ("dehálaš") OR ("eahpeduhtavaš") OR ("gávppašanbealle" Der/laš) OR ("geavahanriekti" Der/laš) OR  ("máksu" Der/laš) OR ("sogalaš") OR ("sorjavaš") OR ("sullasaš") OR ("suddu" Der/laš) OR ("vepselaš")); 
 
 REMOVE:r563 Adv IF (0 (A Attr))(1 SPATIALNOUN);
 	## fásta saji
@@ -2260,7 +2242,7 @@ REMOVE:r584 Actio IF (0 ("eallin"));
  # Words of which both the singular (-laš) and the plural (-laččat)
  # are probably nouns:
 
-SELECT:r585 N IF (0 ("Álttásápmelaš") OR ("Anársápmelaš") OR ("badjesápmelaš") OR ("boazosápmelaš") OR ("dálolaš") OR ("Deanusápmelaš") OR ("duottarsápmelaš") OR ("eanaláigolaš") OR ("Guovdageaidnu" Der/laš) OR ("guovdageaidnulaš") OR ("johttisápmelaš") OR ("láddelaš") OR ("mearrasápmelaš") OR ("Ohcejoga-sápmelaš") OR ("Porsáŋggusápmelaš") OR ("riddosápmelaš") OR ("Ruoššasápmelaš") OR ("samarialaš") OR ("skoaltasápmelaš") OR ("Várjjat-sápmelaš") OR ("Várjjatsápmelaš") OR ("várresápmelaš") OR ("vuotnasápmelaš") LINK NOT 0 QDL);
+SELECT:r585 N IF (0 ("Álttásápmelaš") OR ("anársápmelaš") OR ("badjesápmelaš") OR ("boazosápmelaš") OR ("dálolaš") OR ("Deanusápmelaš") OR ("duottarsápmelaš") OR ("eanaláigolaš") OR ("Guovdageaidnu" Der/laš) OR ("guovdageaidnulaš") OR ("johttisápmelaš") OR ("láddelaš") OR ("mearrasápmelaš") OR ("Ohcejoga-#sápmelaš") OR ("Porsáŋggusápmelaš") OR ("riddo#sápmelaš") OR ("ruoššasápmelaš") OR ("samarialaš") OR ("skoaltasápmelaš") OR ("Várjjat-#sápmelaš") OR ("Várjjatsápmelaš") OR ("várre#sápmelaš") OR ("vuotnasápmelaš"));
 
 	## ...gos boazosápmelaččat sáhttet jođihit boazodoaluset.
 
@@ -2268,7 +2250,7 @@ SELECT:r585 N IF (0 ("Álttásápmelaš") OR ("Anársápmelaš") OR ("badjesápm
  # but could be adjectives when they appear in the singular form. The rule is 
  # designed to hit the (Pl Nom) forms.
 
-SELECT:r586 (N Pl Nom) IF (0 ("egyptalaš") OR ("greikalaš") OR (".*sápmelaš"r) OR ("juvddálaš") OR ("kretalaš") OR ("nuortalaš") OR ("olgo#riikkalaš") OR ("romalaš") OR ("sogalaš"));
+SELECT:r586 (N Pl Nom) IF (0 ("egyptalaš") OR ("greikalaš") OR (".*sápmelaš"r) OR ("juvddálaš") OR ("kretalaš") OR ("nuortalaš") OR ("olgoriikalaš") OR ("romalaš") OR ("sogalaš"));
 
 	## Sápmelaččat orro maid skandinávalaš njárgga siskkimus guovlluin.
 	## ...ja doppe ásse dušše nuortalaččat. 
@@ -2355,20 +2337,17 @@ SELECT:r612 ("guhtta") IF (0 ("guđđa"))(1 ("geardde") OR (N Loc)) ;
 	# - - - - - - - - - - - - - - - - 
 	# where we have two dictionary forms and in other than nominative get two analyses
 	
-LIST LEMMA1 = "agibeaivái" "álbmot" "álggahit" "árran" "biebmobázahusat" "beassáš" "boadnji" "boasttuvuohta" "boazoeamit" "boazolohku" "čoahkkin" "čuvla" "dálueamit" (".*diibmu"r) "eanaláigoboahtu"
-"gárrenoaivvis" "gávnnit" "gaskkamuddu" "goađeeamit" "heastabiergasat" (".*kruvdno"r) "guollebivdu" (".*gursa"r) "kaleandar" (".*keallir"r)
-"lihpar" ("[0-9]*-lohku"r) (".*millu"r) (".*mirko"r) "moattis" "moraš" (".*crossa"r) (".*muslima"r)
-"násti" ("*.násti"r) (".*neavva"r) "njealjádaskilomehter" "nuorttanásti" 
-"oambealli" "oppalohkái" "ovdagihtii" (".*rádji"r) "ruvdno" "sáhpán"
-(".*studeanta"r) (".*suoivva"r) "unnitlohku" (".*valuhtta"r) "vilbealli" ;
+LIST LEMMA1 = "álbmot" "álggahit" "árran" "bealleheggii" "beassážat" "boadnji" "boalvvir" "čábmit" "cuovkkas" "čáppat" "čoahkkin" "čuvla" "dálkkas"  "eanaláigo#boahtu" "e-boasta" "Elle"
+"gárrenoaivvis" "gáfet" "gaskkamuddu" (".*geaisár") (".*-girji"r)   (".*kruvdno"r) (".*gursa"r) "kaleandar" (".*keallir"r)
+"lihpar" ("[0-9]*-lohku"r) ("mieđihit") (".*millu"r) (".*mirko"r) "moattis" "moraš" (".*crossa"r) (".*muslima"r)
+"násti" ("*.násti"r) (".*neavva"r) "njealjádaskilomehter" "oapman" "oambealle" "oppalohkái" "ovdagihtii" (".*rádji"r) "ruvdno" "ruošša#čuhti" "ruovttoguvlui" "sáhpán" "sámegiel" "seakteruovddit" "sierralágan" (".*studeanta"r) (".*suoivva"r) "unnitlohku" (".*valuhtta"r) "váibmosuotna" "válbmasii" "vilbealle" "visot" "vuollái" ;
     # first dictionary form
 
-LIST LEMMA2 = ("agibeaivi" Ill) "álbmut" ("álgga" N* Der/heapmi) "ára" ("beassi" Der/Dimin) "biebmobázahus" "boadnjá" "boasttovuohta" "boazoeapmi" "boazoloahku" "čoahkki" "čuvlla" "dálueapmi" (".*diibmu"r) "eanaláigoboađđu"
-"gárrenoaivi" "gávdni" "gaskkamuddo" "goađeeapmi" (".*kruvdnu"r) "guollebivddus" (".*gurse"r) "heastabierggas" "kaleanddar" (".*keallár"r)
-"libar" ("[0-9]*-loahku"r) ("[0-9]*-logus"r) (".*millo"r) (".*mirku"r) (".*mirkko"r) "moattes" "mora" (".*cross"r) (".*muslim"r)
-"náste" (".*náste"r) (".*neava"r) "njealjádaskilomehter" "nuorttanástá" 
-"oambealle" "ovdagiehta" "oppalohki" (".*rádjá"r) "ruvdnu" "sábin"
-(".*studenta"r) (".*suoivvan"r) "unnitloahku" (".*valuhta"r) "vilbealle" ;
+LIST LEMMA2 = "álbmut" ("álgga" N* Der1 Der2 Der/heapmi) "ára" "bealleheagga" ("beassi" Der/Dimin)  "boadnjá" "boalvár" "čápmit" "cuovka" "čáppis" "čoahkki" "čuvlla" "dálka"  "eanaláigo#boađđu" "E-boasta" "Elli"
+"gárren#oaivi" "gáffe" "gaskkamuddo" (".*geaissir") (".*-girjjis"r)  (".*kruvdnu"r) (".*gurse"r) "kaleanddar" (".*keallár"r)
+"libar" ("[0-9]*-loahku"r) ("[0-9]*-logus"r)  ("mieđidit") (".*millo"r) (".*mirku"r) (".*mirkko"r) "moattes" "mora" (".*cross"r) (".*muslim"r)
+"náste" (".*náste"r) (".*neava"r) "njealjádaskilomehter" "oama" "oambealle" "ovdagiehta" "oppalohki" (".*rádjá"r) "ruvdnu" "ruošša#čuđđi" "ruovttoguovlu" "sábin"
+"sámegiel" "seakteruovdi" "sierraláhka" (".*studenta"r) (".*suoivvan"r)  "unnitloahku" (".*valuhta"r) "válmmas" "váibmosuonat" "vilbealle" "viso" "vuolli" ;
 
 REMOVE:r613 LEMMA2 IF (0 LEMMA1 LINK NOT 0 QDL);
 
@@ -2377,21 +2356,21 @@ REMOVE:r613 LEMMA2 IF (0 LEMMA1 LINK NOT 0 QDL);
     # - - - - - - - -
     # ambigous with respect to case, in which case one should not simply remove lemma2 (such as AMB-LEMMA2 Nom could be AMB-LEMMA1 Gen/Acc)
             
-LIST AMB-LEMMA1 =  (".*Afrihká"r) (".*Amerihká"r) (".*bearal"r) "biibal" (".*bovra"r) (".*eanan"r)
+LIST AMB-LEMMA1 =  (".*Afrihká"r) (".*Amerihká"r) (".*bearal"r) (".*bovra"r) 
 (".*fenomena"r) (".*gámmir"r)  (".*guolbba"r)
-(".*kaleandar"r) "keaissir" "lassá" (".*lassá"r) (".*kapihtal"r)(".*meašttir"r) "Njuorggánsavvon"
+(".*kaleandar"r) "keaissir" "lassá" (".*lassá"r) (".*kapihtal"r)(".*meašttir"r) 
 (".*partihkal"r) (".*politihkar"r) "savu" "skážir" (".*skibir"r) (".*speajal"r) (".*spigir"r) "varis" (".*varis"r)  ;
 
-LIST AMB-LEMMA2 =  (".*Afrihkká"r) (".*Amerihkká"r) (".*bearral"r) "biibbal" (".*bovrra"r) (".*eatnan"r) (".*eana"r)
+LIST AMB-LEMMA2 =  (".*Afrihkká"r) (".*Amerihkká"r) (".*bearral"r)  (".*bovrra"r) 
 (".*fenomen"r) (".*gámmár"r)  (".*guolban"r) 
-(".*kaleanddar"r) (".*kapihttal"r) "keaisár" "lasá" (".*lasá"r) (".*meaštár"r) "Njuorggánsavu"
+(".*kaleanddar"r) (".*kapihtal"r) "keaisár" "lasá" (".*lasá"r) (".*meaštár"r) 
 (".*partihkkal"r) (".*politihkkar"r) "savvon" (".*skihpár"r) "skáhčir" (".*spihkár"r) (".*speadjal"r) "varris" (".*varris"r) ;
 
 REMOVE:r614 AMB-LEMMA2 IF (0 AMB-LEMMA1 LINK NEGATE 0 (Sg Nom) LINK NOT 0 Px)(NOT 0 QDL);
 
-LIST LEMMA-ADJ1 = "asehaš" "čáppat" "eahpe#sihkar" "guorus" "geafi" "njálggat" "oppalaš" "sihkar" ;
+LIST LEMMA-ADJ1 = "asehaš" "čáppat" "eahpesihkar" "guorus" "njálggat" "oppalaš" "sihkar" ;
 
-LIST LEMMA-ADJ2 = "aseheapmi" "čáppis" "eahpe#sihkkar" "guoros" "geaffi" "njálggis" "oppal" "sihkkar" ;
+LIST LEMMA-ADJ2 = "aseheapme" "čáppis" "eahpesihkar" "guoros"  "njálggis" "oppal" "sihkar" ;
 
 REMOVE:r615 LEMMA-ADJ2 + A IF (0 LEMMA-ADJ1 LINK NOT 0 QDL);
 
@@ -2408,26 +2387,26 @@ SELECT:r623 (".*nisu"r) (0 (".*nisson"r) LINK 0 (Sg Nom) LINK 0 Px) ;
 
   	## Gielddat sáhttet eambbo ulbmillaččat stivret iežaset servodaga ealáhusovdáneami, nu ahte sin gielda šáddá buore gieldan maiddái nissoniidda orrut.
 
-    # ahki vs. sahki
-    # - - - - - - - -
-SELECT:r624 ("vuorasahki") IF (0 ("vuorasahki"));
 
-	# áigi vs. ráigi
-	# - - - - - - - 
-SELECT:r625 ("máttaráigi") IF (0 ("máttaráigi"));
+
+	# albmi vs. almmái
+	# - - - - - - - - -	
+SELECT ("albmi")(0 Ill LINK *-1 ("čohkket") OR ("ihtit") OR ("bajás") OR ("máhccat") OR ("váldit") OR ("mannat") OR ("čállit" Der/PassL) BARRIER SV-BOUNDARY) ;	
+	## Muhto čohkkejehket alccceseattet dávviriid albmái.
+
+SELECT ("albmi")(0 Ill LINK *1 ("rahpat") BARRIER SV-BOUNDARY) ;	
 
     # áitit vs. náitit
     # - - - - - - - - -
 SELECT:r626 ("goddináitit") IF (0 ("goddináitit")); 
 
-    # almmái vs. albmi
-    # - - - - - - - - -
-SELECT:r627 ("badjealmmái") IF (0 ("badjealbmi"));    
-SELECT:r628 ("ráđđealmmái") IF (0 ("ráđđealbmi"));
 
-    # báitta vs. báitat
+    # bassi
     # - - - - - - - - -
-SELECT:r629 ("beaivebáitta") IF (0 ("beaivebáitat"));    
+REMOVE Actor IF (0 ("bassi" Ess) LINK 1 VFIN);    
+REMOVE N IF (0 (A Ess) LINK *0 OPREDV);  
+	## Maŋŋá jápmimis de aliduvvui Gonagas Olav bassin.  
+	# Try to make a general rule.
 
 
 	# bealle
@@ -2436,18 +2415,11 @@ REMOVE:r635 (".*bealli"r) (0 (".*bealle"r));
 REMOVE:r636 (".*bealis"r) (0 (".*bealle"r));
   	## Sin jahkásaš johtolagat sáhtte leat čuđiidge kilomehteriid, dat olle dála Suomabeale vuovdeguovlluid dálveorohagain Jiekŋameara rittu geasseorohagaide.
   	
-    # bidju vs. biedju
-    # - - - - - - - - -
-SELECT:r637 ("doaibma#bidju") IF (0 ("doaibma#biedju"));
 
     # biile vs. biila
     # - - - - - - - -
 SELECT:r638 VEHICLE IF (0 (".*biile"r));
     
-    # bivdu vs. bivddus
-    # - - - - - - - - -
-SELECT:r639 ("gas#reabbá#bivdu") IF (0 ("gas#reabbá#bivddus"));
-SELECT:r640 ("godde#bivdu") IF (0 ("godde#bivddus"));
     
     # boahtu vs. boađđu vs. boađus
     # - - - - - - - - - - - - - - -
@@ -2459,13 +2431,14 @@ SELECT:r660 ("boađus") IF (-1 COPULAS)(0 ("boahtu"))(1 Num);
 SELECT:r661 ("boađus") IF (0 ("boahtu"))(1 COPULAS)(2 Num);
 	## Maŋŋil láivves vuosttaš vuoru lei boađus 0-0.
 
-    # čálus vs. čállu
-    # - - - - - - - - -
-SELECT:r663 ("oaivečálus") IF (0 ("oaivečállu"));
+	# borri
+	# - - - -
+REMOVE Actor (0 ("borri") LINK *-1 (Num Gen))	;
+
 
     # čiekči vs. čiekčá
     # - - - - - - - - -
-SELECT:r664 ("fallehančiekči") IF (0 ("fallehančiekčá"));
+SELECT:r664 ("fallehan#čiekči") IF (0 ("fallehan#čiekčá"));
 SELECT:r665 ("čiekči") (0 ("čiekčá") LINK *0 ("spábba") BARRIER S-BOUNDARY);
 
 
@@ -2477,16 +2450,7 @@ SELECT:r666 (".*čoahkkin"r) (0 (".*čoahkki"r)) ;
 	# čuođi vs čuohti
 	# - - -
 SELECT:r667 ("čuohti") IF (0 ("čuđđi"))(1 MEASURE) ;
-  	## Sin jahkásaš johtolagat sáhtte leat čuđiidge kilomehteriid, dat olle dála Suomabeale vuovdeguovlluid dálveorohagain Jiekŋameara rittu geasseorohagaide.
-  	
-  	# čuohti
-	# - - - -
-SELECT:r669 ("jahkečuohti")(0 ("jahkečuđđi"));
-	## Finnmárkolaččat ledje atnán vuvddiid jahkečuđiid.
-
-    # Dávvirat vs. Dávvir
-    # - - - - - - - - - -
-SELECT:r671 ("Vuorká-Dávvirat") IF (0 ("Vuorká-Dávvir"));
+  	## Sin jahkásaš johtolagat sáhtte leat čuđiidge kilomehteriid, ja olle dálá Suomabeale vuovdeguovlluid dálveorohagain Jiekŋameara rittu geasseorohagaide.
 
 	# doložis vs. doallu Der/Dimin Loc
 	# - - - - - - - - - - - - - - - - - 
@@ -2499,12 +2463,12 @@ REMOVE:r675 ("eapmi" Pl) IF (*1 V-SG BARRIER VFIN OR S-BOUNDARY);
 
 	# eana
 	# - - - 	
-REMOVE:r677 Sg IF (*-1 ("stáhta") OR ("priváhta") OR ("matrikuleret"))(0 ("eanan" Pl Loc));
+LIST EANAN = "eana"  ;    
+
+REMOVE:r677 Sg IF (*-1 ("stáhta") OR ("priváhta") OR ("matrikuleret"))(0 ("eana" Pl Loc));
     ## Stáhta eatnamiin.
+SELECT ("eana") (0 EANAN) ; 
    
-    # fálli vs. fális
-    # - - - - - - - -
-SELECT:r678 ("vuoncáfálli") IF (0 ("vuoncáfális"));
 
 	# geardu vs geardut
 	# - - - - - - - -
@@ -2512,10 +2476,11 @@ IFF:r542a ("geardut" V Prs Sg3) (NEGATE *0 VFIN BARRIER CLB) ;
 	## Go golmma geardu golmmain, de šaddá ovcci.
 
 
-    # geassi vs. geasis
+    # geassi vs. geasis vs. geassi
     # - - - - - - - - -
-SELECT:r680 ("giđđageassi") IF (0 ("giđđageasis"));
-SELECT:r674 ("čakčageassi") IF (0 ("čakčageasis"));
+REMOVE Actor (0 ("geassi") LINK -1 DURATION-A OR TIME-A) ;
+REMOVE Actor (0 ("geassi")) ; #  This is preliminary
+
 
 
 	# gielda vs gieldda
@@ -2536,20 +2501,6 @@ REMOVE V (0 ("giitu" N) LINK NOT 0 QDL) ;
 SELECT:r684 ("gilvu") (0 Adv LINK NOT 0 QDL LINK *0 ("vuoitit") BARRIER SV-BOUNDARY);
 
 
-    # gollu vs. goallu
-    # - - - - - - - - -
-SELECT:r685 ("liigegollu") IF (0 ("liigegoallu"));
-
-    # goarta vs. gorta 
-    # - - - - - - - - -
-SELECT:r686 (".*goarta"r) (0 (".*goarta"r)) ;
-
-    # guorra
-    # - - - -
-LIST GUORRA = "áideguorra" "gáddeguorra" "geaidnoguorra" "luoddaguorra" "seaidneguorra" "uksaguorra" ;
-
-SELECT:r687 GUORRA (0 GUORRA) ;
-
 	# guovddáš 
 	# - - - - -
 SELECT:r693 Attr IF (0 ("guovddáš"))(1 N LINK NOT 0 TIME OR PLACE); 
@@ -2567,30 +2518,22 @@ SELECT:r693 Attr IF (0 ("guovddáš"))(1 N LINK NOT 0 TIME OR PLACE);
 
     # gurra
     # - - -
-SELECT:r696 ("Skiippagurra") IF (0 ("Skiippaguorra"));
+
 SELECT:r697 ("báktegurra") IF (0 ("bákteguorra"));
 SELECT:r698 ("lássagurra") IF (0 ("lássaguorra"));
-
-    # jahki vs. njahki
-    # - - - - - - - - -
-LIST JAHKI = "gođđinjahki" "lohkanjahki" "nissonjahki" "spábbačiekčanjahki" "váranjahki" ;
-
-SELECT:r699 JAHKI (0 JAHKI);
- 
-  
-	# jienastuslohku
-	# - - - - - - - -
-SELECT:r704 ("jienastuslohku") IF (0 ("jienastusloahku"));
-  	## Go galgá beassat fárrui sámi jienastuslohkui, de ferte...
   	
     # juogus vs. jugus
     # - - - - - - - - -
-LIST JUOGUS =  "Finnmárkkujuogus" "fylkkajuogus" "nissonjuogus" "nuoraidjuogus" ;
-SELECT:r705 JUOGUS IF (0 JUOGUS);
-SELECT:r709 ("juogus") IF (-1 NATION OR SUOPMA OR SAPMI LINK 0 Gen)(0 ("jugus"));
 
-LIST JUGUS = "ráhkesvuođa#jugus" "sohkar#jugus" ;
-SELECT:r710 JUGUS IF (0 JUGUS);
+LIST DRINK-V = "juhkat" "návddašit" "šlaggat" ;
+
+SELECT ("jugus") (0 ("juogus") LINK *0 DRINK-V BARRIER S-BOUNDARY) ;
+	## Áhčis biográfiijas Vest geažida mo duon erenomáš juhkosa návddašeapmi skihpáriiguin lei šaddagoahtán dehálaš áigegollun maŋŋá go lei máhccan ruoktot.
+
+SELECT:jugus ("jugus") (0 ("juogus" Acc) LINK *0 FOOD + Acc BARRIER S-BOUNDARY) ;
+
+SELECT:r709 ("juogus") IF (-1 NATION + Gen OR SUOPMA + Gen OR SAPMI + Gen)(0 ("jugus")) ;
+# LINK NOT *0 ("juhkat"));
 
 	# lága vs láhka
 	# - - - -
@@ -2709,8 +2652,7 @@ SELECT:r746 ("láhka") IF (*1 CC LINK *1C LAHKA OR TEXT OR ("stáhta") BARRIER N
 
     # lávka/lávki vs. lávke
     # - - - - - - - - - - -
-SELECT:r747 ("jiehtanaslávki") IF (0 ("jiehtanaslávke"));
-SELECT:r748 ("skuvlalávka") IF (0 ("skuvlalávke"));
+SELECT:r747 ("jiehtanas#lávki") IF (0 ("jiehtanas#lávke"));
 
   	# logi
   	# - - -
@@ -2725,7 +2667,7 @@ SELECT:r750 LOHKU IF (0 LOHKU LINK NOT 0 QDL);
 
     # luohkká vs. luohká vs. luohkki
     # - - - - - - - - - - - - - - - -
-LIST LUOHKKA = "gártnetluohkká" "njuikunluohkká" "skuvllaluohkká" ;
+LIST LUOHKKA = "gártnet#luohkká" "njuikun#luohkká" ;
 
 SELECT:r757 LUOHKKA IF (0 LUOHKKA LINK NOT 0 QDL);
 
@@ -2740,12 +2682,9 @@ REMOVE:r3586 ("málli") IF (*-1 go BARRIER NPNH LINK -1 ("duoldat"))(0 ("mális"
 
 	## Duolddaža go mális vel?	
   
-    # mánni vs. mánná
+    # mánni vs. mánná vs mánná G3
     # - - - - - - - -
-SELECT:r761 ("ámtamánni") IF (0 ("ámtamánná"));
-SELECT:r762 ("fylkkamánni") IF (0 ("fylkkamánná"));
-    ## fylkkamánnái
-SELECT:r763 ("lágamánni") IF (0 ("lágamánná"));
+REMOVE G3 (0 ("mánná") LINK NEGATE *-1 ("borrat") BARRIER NOT-ADV-PCLE LINK *1 NP-HEAD-NOM BARRIER NOT-ADV-PCLE) ; # Vi må lage flere regler for når det kan være G3. i NT er det mánna
 
 	# meastagis
 SELECT:r764 N IF (0 ("measta" Adv Foc/gis)); 	
@@ -2760,17 +2699,14 @@ SELECT ("moalla") IF (NOT 0 QDL)(-1 ("rabas"));
 SELECT:r766 ("moalla") IF (*-1 MOALLA-V BARRIER SV-BOUNDARY)(0 ("molla" Ill));  
 SELECT:r768 ("moalla") IF (*-1 ("bidjat") OR ("mannat") BARRIER SV-BOUNDARY)(0 ("molla" Ill));  
 
-    # oalli vs. olli
-    # - - - - - - - -
-SELECT:r770 ("mearkaoalli") IF (0 ("mearkaolli"));
 
     # ráhppa vs. tráhppa
     # - - - - - - - - - - 
-SELECT:r772 ("dápmotráhppa") IF (0 ("dápmotráhppa"));
+SELECT:r772 ("dápmot#ráhppa") IF (0 ("dápmo#tráhppa"));
 
     # reavri vs. revre
     # - - - - - - - - -
-SELECT:r773 ("ruovderevre") IF (0 ("ruovdereavri"));   
+SELECT:r773 ("ruovde#revre") IF (0 ("ruovde#reavri"));   
 
     # riggi vs. rikkis
     # - - - - - - - - -
@@ -2779,11 +2715,15 @@ SELECT:r774 ("riggi") IF (*0 ("dolla") OR ("lávvu") OR ("báhti") OR ("árran")
 
     # ruoktu vs. rukto/ruktu
     # - - - - - - - - - - - -
-SELECT:r776 ("beaiveruoktu") IF (0 ("beaiveruktu"));
-SELECT:r777 ("mánáidruoktu") IF (0 ("mánáidruktu"));
+SELECT:r777 ("ruoktu") IF (0 Px);
+	## Ale bala váldimis Márjjá ruktosat áhkkán.
 
-SELECT:r778 ("poastaruktu") IF (0 ("poastaruoktu"));
-SELECT:r779 ("turnearuktu") IF (0 ("turnearuvtto"));
+SELECT:r778 ("poasta#ruktu") IF (0 ("poasta#ruoktu"));
+SELECT:r779 ("turnea#ruktu") IF (0 ("turnea#ruvtto"));
+
+    # ruvke vs ruvki
+    # - - - - - - - -
+SELECT:r780 ("urána#ruvke") IF (0 ("urána#ruvki"));
 
 
     # sadji vs sadjin
@@ -2826,17 +2766,12 @@ SELECT:r791 ("varrateasta") IF (0 ("varrateasta"));
 
 	# testameanta vs. testamentet
 	# - - - - - - - - - -
-REMOVE:r792 V IF (-1 ("ođđa"))(0 ("testameanta"));	
+REMOVE:r792 V IF (-1 ("ođas"))(0 ("testameanta"));	
 
-
-    # verdde vs. veardi
-    # - - - - - - - - -
-SELECT:r794 ("bargoverdde") IF (0 ("bargoveardi"));
-SELECT:r795 ("gávppeverdde") IF (0 ("gávppeveardi"));
 
 	# viergi vs. virgi
 	# - - - - - - - -
-LIST VIRGI = (".*assisteantavirgi"r) "áššemeannudanvirgi" "bagadusvirgi" "beallevirgi" "bestenvirgi" "dieđavirgi" "DRO-virgi" (".*dutkanvirgi"r) (".*fágavirgi"r) "giellavirgi" (".*konsuleantavirgi"r) (".*bargivirgi"r) "guođohanvirgi" "guođoheaddjivirgi" (".*ráđđeaddivirgi"r) "hálddahusvirgi" (".*hoavdavirgi"r) "hovdenvirgi" "II-virgi" (".*jođiheaddjivirgi"r) (".*journalistavirgi"r) "lassivirgi" (".*bargovirgi"r) "njunušvirgi" (".*oahpaheaddjivirgi"r) "oahpaheaivirgi" "oaivadeaddjivirgi" "oalgevirgi" "oassevirgi" "oččodanvirgi" "rekrutterenvirgi" "prošeaktavirgi" "spesialistavirgi" (".*áhttavirgi"r) "stipeandiahttavirgi" (".*fáldevirgi"r) ;
+LIST VIRGI = "áššemeannudan#virgi" "DRO-#virgi" (".*dutkan#virgi"r) "II-#virgi" "journalista#virgi" (".*fálde#virgi"r) ;
 
 LIST VIRGI-V = "almmuhit" "árvalit" "ásahit" "bealljemerket" "dagahit" "deavdit" "geahpedit" "gilvalit" "gustot" "gusket" "hálddašit" "heaittihit" "lasihit" "nannet" "ohcat" "ruhtadit" ;
 
@@ -2875,7 +2810,7 @@ SELECT:r807 ("virgi") IF (1 ("guoskevaš") LINK 1 ("resursa"))(0 ("viergi" Ill))
 SELECT:r808 ("virgi") IF (*1 ("hálddahus") BARRIER NPNH)(0 ("viergi" Ill)) ;   
 SELECT:r809 ("virgi") IF (0 ("viergi" Ill) LINK *-1 ("ohcat") BARRIER SV-BOUNDARY);  
     
-SELECT:r810 ("virgi") IF (0 ("viergi") LINK *-1 BOS LINK *1 ("virgáibidjat") OR ("váldobidjan") OR ("bálká")) ;    
+SELECT:r810 ("virgi") IF (0 ("viergi") LINK *-1 BOS LINK *1 ("virgáibidjat") OR ("váldo#bidjan") OR ("bálká")) ;    
 
 SELECT:r811 ("virgi") IF (0 ("viergi" Gen))(1 VIRGI-NOUN BARRIER NOT-ADJ) ;
 	## Mii váldit Finnmárkku olggobeale virggiid goluid, maiguin ásahit dakkár gelbbolašvuođa...
@@ -2908,12 +2843,6 @@ REMOVE:r822 N IF (0 ("gaskasaš") LINK NOT 0 QDL);
 
 REMOVE N IF (-1 Gen LINK *-1 ("eret") BARRIER NPNH)(0 ("ovddas") LINK NOT 0 QDL) ;	
 	## Váldet din dávviriiddát eret mu ovddas!
-
-
-	# Temporal expressions with locative case
-	# ---------------------------------------
-SELECT:r823 (N Sg Loc) IF (0 MANNU) ; # To avoid "skábma#mánus" N Sg Nom.
-	## Dat hávdáduvvojedje Álahedjui skábmamánus 1997.
 
 	# Southern Locative vs. Essive
 	# ----------------------------
@@ -2967,7 +2896,7 @@ REMOVE:r835 Foc IF (0 Actio OR PrfPrc OR VGen);
 REMOVE:r837 Foc/ba IF (0 Du3)(1 go) ;	
 
 REMOVE:r838 VGen IF (0 ("nala") OR ("čuvvodit") OR ("geahččat"));
-REMOVE:r839 VGen IF (-1 ("Skallagrimsson") OR ("Suoma"))(0 ("saga") OR ("gáidá"));
+REMOVE:r839 VGen IF (-1 ("Skallagrimsson") OR ("Suopma"))(0 ("saga") OR ("gáidá"));
 SELECT:r840 Po IF (0 ("mielddistit"))(1 ("buktit"));
 
 SELECT:r3512 (Actio Gen) IF (1 ("veara"));
@@ -5006,10 +4935,10 @@ REMOVE:r1336 VGen IF (0 ("gusto"));
 
 	# hárve
 	# - - -
-SELECT:r1337 Adv IF (*-1 VFIN BARRIER S-BOUNDARY LINK NOT 0 Neg)(NOT 0 QDL)(0 ("hárve"));
+SELECT:r1337 Adv IF (*-1 VFIN BARRIER S-BOUNDARY LINK NOT 0 Neg)(0 ("hárve"));
 	## Prinsihpalaš gažaldagat leat leamaš baicce hárve Norgga duopmostuoluin.
 
-REMOVE:r1338 ("hárvet") IF (NEGATE *-1 PLANT OR ("bealdu") OR ("eana") OR ("eanan") OR ("eatnan") OR ("gieddi") OR ("tráktor") OR ("traktor") BARRIER S-BOUNDARY)(0 Adv)(NEGATE *1 PLANT OR ("bealdu") OR ("eana") OR ("eanan") OR ("eatnan") OR ("gieddi") OR ("tráktor") OR ("traktor") BARRIER S-BOUNDARY);
+REMOVE:r1338 ("hárvet") IF (NEGATE *-1 PLANT OR ("bealdu") OR ("eana") OR ("gieddi") OR ("tráktor") OR ("traktor") BARRIER S-BOUNDARY)(0 Adv)(NEGATE *1 PLANT OR ("bealdu") OR EANAN OR ("gieddi") OR ("tráktor") OR ("traktor") BARRIER S-BOUNDARY);
 	## Boazoealáhusas ovddasteaddjit hárve vuosttaldit viessohuksema.
 
 REMOVE:r1339 ("hárvat") IF (0 Adv)(*0 Acc OR Ill BARRIER S-BOUNDARY);
@@ -5573,7 +5502,7 @@ REMOVE ("Dan") (0 Pron) ;
 # VERBS 1 
 # -------
 
-LIST MIELLA = "árbe#vierru" "bággu" "buorre" "dárbu" "dilli" "lohpi" "miella" "riekti" "vejolašvuohta" "vuohki" "vuoigatvuohta" "vuorru" ;
+LIST MIELLA = "árbevierru" "bággu" "buorre" "dárbu" "dilli" "lohpi" "miella" "riekti" "vejolašvuohta" "vuohki" "vuoigatvuohta" "vuorru" ;
 
 SELECT VFIN (-1 BOS)(1 go) ; 
 REMOVE VFIN (-1 go LINK -2 BOS) ; 
@@ -6128,10 +6057,10 @@ MAP (&grm-non-agreement-Adj) TARGET (A Sg Nom) IF (*-1 COPULAS BARRIER NOT-ADV L
 SET TIME-MOD = TIME-A OR ("nubbi" Indef Gen) OR (Dem Gen) ;
 LIST TIME-GEN-WITH-MOD = "jándor" "bodda" "čakča" "čakčageassi" "giđđageassi" "čakčadálvi" "giđđadálvi" "dálvi" "geassi" "giđđa" "skábmaáigi" "skábmadálvi" "skábma" "eahketbodda" "idja" "iđitbodda" "jahki" "jahkebealle" "kaleanddarjahki" "loahppajahki" "njealjádasjahki" "skuvlajahki"  "eamiálbmotjahki" "gaskaidja" "luomejahki" "muorjejahki" ;
 
-LIST TIME-GEN = "beaivi" "mihcamárat" "albmáimannanbeaivi" "bargočoahkkinbeaivi" "beassášbeaivi" "mánnodat" "vuossárga" "disdat" "maŋŋebárga" "gaskavahkku" "duorastat" "bearjadat" "juovlabeaivi" "lávvardat" "lávvordat" "sotnabeaivi" "sábbát" "skilleduorastat" "riegádanbeaivi" "juovllat" "beassážat" "hellodagat" "ovdditbeaivi" ;
+LIST TIME-GEN = "beaivi" "mihcamárat" "albmáimannan#beaivi" "bargočoahkkin#beaivi" "beassášbeaivi" "mánnodat" "vuossárga" "disdat" "maŋŋebárga" "gaskavahkku" "duorastat" "bearjadat" "juovlabeaivi" "lávvardat" "lávvordat" "sotnabeaivi" "sábbát" "skilleduorastat" "riegádanbeaivi" "juovllat" "beassážat" "hellodagat" "ovddit#beaivi" ;
 
 
-LIST TIME-LOC = "čuohtejahki" "diibmu" "eahket" "jahkečuohti" "mánnu" "minukta" "tiibma" "vahkkoloahppa" "vahkku" "bivdoáigi" "ođđajagemánnu" "ođđajagimánnu" "guovvamánnu" "njukčamánnu" "njuvččamánnu" "cuoŋománnu" "cuoŋosmánnu" "gáranasmánnu" "miessemánnu" "geassemánnu" "suoidnemánnu" "borgemánnu" "šnjilčamánnu" "šnjilžamánnu" "čakčamánnu" "golggotmánnu" "skábmamánnu" "ritnemánnu" "juovlamánnu" "boaresáigi" "vássánáigi" ; 
+LIST TIME-LOC = "čuohtejahki" "diibmu" "eahket" "jahkečuohti" "mánnu" "minukta" "tiibma" "vahkkoloahppa" "vahkku" "bivdoáigi" "ođđajagemánnu" "guovvamánnu" "njukčamánnu" "njuvččamánnu" "cuoŋománnu" "cuoŋosmánnu" "gáranasmánnu" "miessemánnu" "geassemánnu" "suoidnemánnu" "borgemánnu" "šnjilčamánnu" "šnjilžamánnu" "čakčamánnu" "golggotmánnu" "skábmamánnu" "ritnemánnu" "juovlamánnu" "boaresáigi" "vássánáigi" ; 
 
 LIST TIME-ADV = "dál" "dalle" "eske" "dovle" "duvle" "ovdal" "gieskat" "odne" "ikte" "ihttin" "beaivet" "ihkku" "iđđes" "eahkes" "diibmá" "dolin" "hárve" "dávjá" "álo" "čakčat" "dálvet" "dálvit" "geassit" "geasset" "giđđat" ; 
 
