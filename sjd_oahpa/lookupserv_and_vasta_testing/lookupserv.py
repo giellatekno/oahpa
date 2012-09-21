@@ -29,7 +29,8 @@ class Server:
         #fstdir="/Users/saara/gt/sme/bin"
         #lo="/Users/saara/bin/lookup"
         fstdir="/opt/smi/sme/bin"
-        lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
+        lo = "/usr/local/bin/lookup"
+        #lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup" # not commercial
         #logfile= "/home/saara/foo.log"
         logfile= "/var/log/lserv.log"
         f = open(logfile, 'a')        

@@ -48,7 +48,8 @@ if options.qid: qasettings['qid'] = options.qid
 #dis = "/Users/saara/ped/sme/src/sme-ped.cg3"
 
 fstdir="/opt/smi/sme/bin"
-lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup"
+lo = "/usr/local/bin/lookup"
+#lo = "/opt/sami/xerox/c-fsm/ix86-linux2.6-gcc3.4/bin/lookup" # commercial
 lookup2cg = " | lookup2cg"
 cg3 = "vislcg3"
 preprocess = " | /usr/local/bin/preprocess "
