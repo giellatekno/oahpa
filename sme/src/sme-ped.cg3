@@ -5908,19 +5908,19 @@ MAP (&grm-incorr-pers-nr) TARGET (Pers Nom)  (NOT 0 Pl1)(*-1 QDL BARRIER S-BOUND
 
 
 # Answer with the correct pronoun:
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg1) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Sg2)(NEGATE *-1 QDL LINK **-1 (Pers Nom Sg2))(NEGATE *-1 ACCEPT-EVERYTHING);
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg2) (*-1 QDL BARRIER S-BOUNDARY  LINK *-1 (Pers Nom) LINK NOT 0 Sg1)(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Sg3) (*-1 QDL BARRIER S-BOUNDARY  LINK *-1 (Pers Nom) LINK NOT 0 Sg3)(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 SAHKA LINK *-1 (Pers Nom) LINK NOT 0 Du2)(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du2) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Du1) (NEGATE *-1 ACCEPT-EVERYTHING);
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Du3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Du3) (NEGATE *-1 ACCEPT-EVERYTHING);
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 SAHKA LINK *-1 (Pers Nom) LINK NOT 0 Pl2)(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl2) (*-1 QDL BARRIER S-BOUNDARY  LINK *-1 (Pers Nom) LINK NOT 0 Pl1)(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom Pl3) (*-1 QDL BARRIER S-BOUNDARY  LINK *-1 (Pers Nom) LINK NOT 0 Pl3)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-pron) TARGET (Pers Nom Sg1) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Sg2)(NEGATE *-1 QDL LINK **-1 (Pers Nom Sg2))(NEGATE *-1 ACCEPT-EVERYTHING);
+MAP (&grm-incorr-persnr-pron) TARGET (Pers Nom Sg2) (*-1 QDL BARRIER S-BOUNDARY  LINK *-1 (Pers Nom) LINK NOT 0 Sg1)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-pron) TARGET (Pers Nom Sg3) (*-1 QDL BARRIER S-BOUNDARY  LINK *-1 (Pers Nom) LINK NOT 0 Sg3)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-pron) TARGET (Pers Nom Du1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 SAHKA LINK *-1 (Pers Nom) LINK NOT 0 Du2)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-pron) TARGET (Pers Nom Du2) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Du1) (NEGATE *-1 ACCEPT-EVERYTHING);
+MAP (&grm-incorr-persnr-pron) TARGET (Pers Nom Du3) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 (Pers Nom) LINK NOT 0 Du3) (NEGATE *-1 ACCEPT-EVERYTHING);
+MAP (&grm-incorr-persnr-pron) TARGET (Pers Nom Pl1) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 SAHKA LINK *-1 (Pers Nom) LINK NOT 0 Pl2)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-pron) TARGET (Pers Nom Pl2) (*-1 QDL BARRIER S-BOUNDARY  LINK *-1 (Pers Nom) LINK NOT 0 Pl1)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-pron) TARGET (Pers Nom Pl3) (*-1 QDL BARRIER S-BOUNDARY  LINK *-1 (Pers Nom) LINK NOT 0 Pl3)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 NUM-QUESTION LINK *-1 (N Pl Nom) LINK NOT 0 Inf OR Sg)(NOT 0 Pl3)(NEGATE *-1 ACCEPT-EVERYTHING)(NEGATE 1 JAHKKIT LINK 1 ("ahte")) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU OR ACCEPT-EVERYTHING LINK *-1 VERB LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION OR Pl)(NOT 0 Sg3) ;
-MAP (&grm-incorr-pers-nr) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 DUALIS-NOUN)(NOT 0 Du3)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-pron) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 NUM-QUESTION LINK *-1 (N Pl Nom) LINK NOT 0 Inf OR Sg)(NOT 0 Pl3)(NEGATE *-1 ACCEPT-EVERYTHING)(NEGATE 1 JAHKKIT LINK 1 ("ahte")) ;
+MAP (&grm-incorr-persnr-pron) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK NOT 0 MAKKAR-BARGU OR ACCEPT-EVERYTHING LINK *-1 VERB LINK *-1 (N Sg Nom) LINK NOT 0 DUALIS-NOUN OR NUM-QUESTION OR Pl)(NOT 0 Sg3) ;
+MAP (&grm-incorr-persnr-pron) TARGET (Pers Nom) (*-1 QDL BARRIER S-BOUNDARY LINK *-1 DUALIS-NOUN)(NOT 0 Du3)(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 
 # -------
@@ -5974,20 +5974,20 @@ MAP (&grm-should-not-ConNeg) TARGET VERB IF (0 ConNeg LINK *-1 ConNeg BARRIER NO
 
 
 # SAHKA: Answer with the correct verbform if there is no Pers:
-MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK 0 SAHKA LINK *-1 VFIN LINK NOT 0 Du1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK 0 SAHKA LINK *-1 VFIN LINK NOT 0 Pl1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-v) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK 0 SAHKA LINK *-1 VFIN LINK NOT 0 Du1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-v) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK 0 SAHKA LINK *-1 VFIN LINK NOT 0 Pl1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 # VASTA: Answer with the correct verbform if there is no Pers:
-MAP (&grm-incorr-pers-nr) TARGET (V Sg1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 MAKKAR-BARGU LINK NEGATE **-1 VFIN LINK  0 Sg2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Sg2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Sg1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (*-1 QDL BARRIER S-BOUNDARY OR Nom OR VFIN LINK *-1 VFIN LINK NOT 0 Sg3 LINK NOT *-1 ("galle"))(NEGATE 0 ("leat") OR Neg LINK *-1 QDL LINK *-1 go LINK -1 ("leat") LINK -1 BOS)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 DOYOUHAVE)(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Sg3) (0 COPULAS LINK *-1 Loc BARRIER NOT-ADV-PCLE LINK *-1 QDL BARRIER S-BOUNDARY)(1 NUMERALS LINK *1 N BARRIER NOT-Attr-CC-Adv)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 DOYOUHAVE)(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA LINK *-1 VFIN LINK NOT 0 Du2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Du2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Du1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Du3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Du3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA LINK *-1 VFIN LINK NOT 0 Pl2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) (NEGATE *-1 ACCEPT-EVERYTHING);
-MAP (&grm-incorr-pers-nr) TARGET (V Pl2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Pl1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
-MAP (&grm-incorr-pers-nr) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Pl3)(NEGATE 0 COPULAS LINK *-1 Loc LINK *-1 QDL)(NEGATE *-1 (hálbiduvvon_galvvut) OR DOYOUHAVE)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-v) TARGET (V Sg1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 MAKKAR-BARGU LINK NEGATE **-1 VFIN LINK  0 Sg2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-v) TARGET (V Sg2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Sg1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-v) TARGET (V Sg3) (*-1 QDL BARRIER S-BOUNDARY OR Nom OR VFIN LINK *-1 VFIN LINK NOT 0 Sg3 LINK NOT *-1 ("galle"))(NEGATE 0 ("leat") OR Neg LINK *-1 QDL LINK *-1 go LINK -1 ("leat") LINK -1 BOS)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 DOYOUHAVE)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-v) TARGET (V Sg3) (0 COPULAS LINK *-1 Loc BARRIER NOT-ADV-PCLE LINK *-1 QDL BARRIER S-BOUNDARY)(1 NUMERALS LINK *1 N BARRIER NOT-Attr-CC-Adv)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 DOYOUHAVE)(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-v) TARGET (V Du1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA LINK *-1 VFIN LINK NOT 0 Du2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-v) TARGET (V Du2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Du1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-v) TARGET (V Du3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Du3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-v) TARGET (V Pl1) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK NOT 0 SAHKA LINK *-1 VFIN LINK NOT 0 Pl2)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) (NEGATE *-1 ACCEPT-EVERYTHING);
+MAP (&grm-incorr-persnr-v) TARGET (V Pl2) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Pl1)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+MAP (&grm-incorr-persnr-v) TARGET (V Pl3) (*-1 QDL BARRIER S-BOUNDARY OR Nom LINK *-1 VFIN LINK NOT 0 Pl3)(NEGATE 0 COPULAS LINK *-1 Loc LINK *-1 QDL)(NEGATE *-1 (hálbiduvvon_galvvut) OR DOYOUHAVE)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 #copulas
 MAP:TEST (&grm-incorr-nr) TARGET ("leat" V Sg3)(*-1 QDL BARRIER (Sg Nom) OR (Sg3 Nom) LINK NOT 0 ACCEPT-EVERYTHING)(1 NUMERALS + Nom LINK *1 N OR EOS BARRIER NOT-ADJ) ; 
@@ -6001,9 +6001,9 @@ MAP:TEST (&grm-incorr-nr-Hab) TARGET (V Neg Ind)(*-1 HAB-ACTOR + Loc LINK *-1 QD
 #MAP (&grm-should-pron) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 V-3)(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 #MAP (&grm-should-pron) TARGET VFIN (*-1 QDL BARRIER Nom OR Loc OR S-BOUNDARY LINK *-1 DUALIS-NOUN OR (Pers Du3 Nom))(0 V-3 LINK NOT 0 Neg)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
 
-#MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN LINK *-1 Pl3)(NOT 0 Pl3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-#MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN LINK *-1 Sg3)(NOT 0 Sg3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
-MAP (&grm-incorr-pers-nr) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN LINK *-1 DUALIS-NOUN)(NOT 0 Du3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
+#MAP (&grm-incorr-persnr-v) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN LINK *-1 Pl3)(NOT 0 Pl3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+#MAP (&grm-incorr-persnr-v) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN LINK *-1 Sg3)(NOT 0 Sg3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop)) ;
+MAP (&grm-incorr-persnr-v) TARGET VFIN (*-1 QDL BARRIER Nom OR S-BOUNDARY OR VFIN LINK *-1 DUALIS-NOUN)(NOT 0 Du3)(NEGATE *-1 SAHKA LINK *1 (&dia-stop))(NEGATE *-1 ACCEPT-EVERYTHING) ;
 
 LIST BOTH-PRS-PRT = gos_du_eadni_lea_eret_adult gos_du_eadni_lea_eret_young gos_du_eadni_lea_eret_child gos_du_ahcci_lea_eret_adult gos_du_ahcci_lea_eret_young gos_du_ahcci_lea_eret_child ;
 
@@ -6374,7 +6374,8 @@ MAP (&sem-not_correct_infl) TARGET QDL IF (0 (adj_galjibut))(*1 ("gallji") BARRI
 # &grm-Hab			wrong habitiv-construction
 # &grm-incorr-nr
 # &grm-incorr-nr-Hab
-# &grm-incorr-pers-nr   	you should answer with another Person-Number
+# &grm-incorr-persnr-v   	you should answer with another Person-Number
+# &grm-incorr-persnr-pron   	you should answer with another Person-Number
 # &grm-incorr-tense
 # &grm-incorr-tense-future
 # &grm-incorr-tense-past
