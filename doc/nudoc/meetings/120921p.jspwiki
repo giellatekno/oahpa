@@ -2,23 +2,280 @@
 Til stades: Heli, Ryan, Lene, Trond, Bjørn
 
 !! Saksliste
-
 * wordpress og servere
 * avslutte gamle oahpa
 * sørsamisk morfa
 * Feedback: gratulasjonsalternativer
 * Px i Morfa
-* Ny Vasta
 * Endringer i Sahka
+* Ny Vasta
 * Teksta
 * Bugliste
+
+
+!! Wordpress og servere
+
+! single eller multi
+Vi lar den nordsamiske wp være der den er og installerer multi-site på gtweb / gtoahpa (?).
+
+Dermed kan vi eventuelt (?) inkludere nordsamisk seinare.
+
+Mono- og multisite vil ha same funksjonalitet. Så lenge vi berre skal ha kursstier 
+vil dei ulike språkversjonane vere lik.
+
+Bjørn: Eg såg på multisite-oppsett for ulike tidsskrift på Open Journal System, 
+for å vurdere om det var betre med ein eller fleire. Det viste seg at ingen 
+fikk det til sjøl om det sko fungere i teorien.
+
+Lene: Universitets-siten har alle på ein site, med url http://site.uit.no/NAMN. 
+Vi vil ha det omvendt: http://NAMN.oahpa.no. Er det eit problem?
+
+Ryan: Nei, det går bra. Björn har funne ein plugin som ordnar
+
+! gtweb vs. gtoapha
+
+Dette er webprogram. Bør det vere på gtweb eller gtoahpa?
+Vi tar det på ein servar: __gtoahpa__.
+
+* Dermed blir alt oahpa-relatert liggande på gtoahpa, 
+  bortsett frå eksperimentelt arbeid, som er på gtlab, som vanleg.
+
+! Layout
+
+Lene: Same tema, men ulik farge.
+
+Bjørn: Viktig for oss er å ha servaren sjølv, slik at vi ikkje
+treng å sende nye tema bort til support, som så lagar eitt nytt 
+tema for kvar oppdatering. På ein eigen servar kan sørsamisk
+og nordsamisk ha separate tema.
+
+
+! Arbeidsplan framover
+
+* Ryan tek kontakt med domainregistrar for å få kuvsje.oahpa.no til gtoahpa
+** Dette er no gjort, og {{kuvsje.oahpa.no}} er registrert i DNS.
+* Ryan installerer WordPress på gtoahpa
+* Bjørn lagar tema
+* Oppstartsmøte i lag med Aajege i neste veke.
+* Plugins frå kursa.oahpa.no skal inn på den nye installasjonen, 
+  lagt inn ein og ein på vanleg måte.
+** Plugin for å bygge menyar er viktig
+** Plugin for å administrere studentar hit og dit er ikkje like prekær (Role Scoper)
+** Jf. liste over installerte plugins.
+* Ordne passord til Bjørn på nye servarar (Trond)
+
+Arbeidsperspektiv: Aajege brukar vinteren til å lage læringssti, studentane
+kjem først etter vinteren (sein vår/haust?).
+
+Jf. også nyoppretta 
+[heimeside for Sørsamisk 2|http://giellatekno.uit.no/ped/sma2-oahpa.html]. 
+
+!! Ordbok i margen
+
+Bjørn har lagt inn kode som er svært fin. Dette skjer ikkje som html-kode,
+men som javascript.
+
+Ordboka opnast i nytt vindu sjølv
+om brukaren har "nye vindauge i tab". Denne løysinga er eigentleg betre
+enn ordbok innføyd i sida. Dermed kan ordboka bli ståande også viss folk
+gjer andre ting, t.d. skriv i Word.
+
+Det vi no må gjere er å reinse vindauget frå lista over 20 ordbøker
+i venstre marg (vi erstattar dei med lenkje "fleire ordbøker
+
+
+!! Avslutte gamle oahpa
+
+Ta vare på gamle loggar
+
+Vil brukarar på gamle Oahpa få tilgang til nye Oahpa, eller må dei 
+registrere seg på nytt?
+
+Dei må:
+# registrere seg i WordPress
+# deretter registrere seg i nye Oahpa
+
+Viss dei vil ha tilgang til det gamle brukarnamnet
+
+* Alle lenkjer fører til ei side som fortel
+** at Oahpa er flytta
+** og at vi har ny, forbetra funksjonalitet
+** og lenkjar vidare til hovudsida på nye Oahpa.
+* Lene skriv brev til involverte samisklærarar og fortel om flyttinga
+
+! Arbeidsplan
+* __Heli__ endrar url-ane
+* __Lene__ skriv info-side
+* __Lene__ sendar brev til samisklærarar
+
+
+!! Sørsamisk morfa
+
+Lene hadde møte med sørsamisk Aajege denne veka, jf. referat.
+
+[se heimeside for Sørsamisk 2|http://giellatekno.uit.no/ped/sma2-oahpa.html]. 
+
+Arbeidsplan for nyutvikling av sjølve Oahpa
+
+!Utvide Morfa-S med fleire verbgrupper. I dag:
+# likestava
+# ulikestava
+
+!Dei vil ha desse kategoriane, som avkryssingsboksar og ikkje rullemeny
+(poenget er at det skal vere mogleg å velje fleire kategoriar)
+# likestava I
+# likestava II 
+# likestava III 
+# likestava IV 
+# likestava V
+# likestava VI 
+# ulikestava
+
+Informasjon om verbklassene ligg i filene. Databasen må installerast på nytt.
+Jf. {{v_smanob.xml}}, der klassane er merka class="IV", etc., dvs. I - VI.
+
+{{{
+  <e exclude="smanob">
+      <lg>
+         <l class="IV" pos="v" stem="2syll" vow="aa">aatedh</l>
+      </lg>
+      <stem class="bisyllabic"></stem>
+}}}
+
+For nyinstallering av databasen: bruk victorio: /opt/smi/sma/bin/
+Lene finn eit revisjonsnummer. Siste oppdatering var: oktober 2011
+
+__Tiltaksliste__
+
+* Dette gjøres (og dokumenteres) av (__Heli, Ryan__)
+
+
+
+!! Feedback: gratulasjonsalternativer
+
+Denne og neste saker er oppfølgjing frå 
+[eit idemyldringsmøte frå Göteborg|http://giellatekno.uit.no/ped/nudoc/meetings/120824.html]
+under EUROCALL med Heli, Lene, Trond
+
+
+Gratulasjonstekst ved 0-1-2-3-4-5 rett svar: Gratulasjonane bør 
+vere berre på samisk, og ha stor og triveleg variasjon innafor dei 6 ulike alternativa.
+
+
+!! Px i Morfa
+
+Lene vil utvide med possessive suffiks. NB, ikkje heile systemet, men
+pedagogisk tilrettelagte delar av systemet.
+
+__Tiltaksliste__
+* Lene gjer det lingvistiske grunnarbeidet
+* Deretter ser vi på implementeringa
+
+!! Endringer i Sahka
+
+Her har Lene og Heli starta arbeidet.
+
+Problemet er at dialogane er for lange, elevane avsluttar ikkje kvar dialog.
+Lene har no delt opp ein katalog, og Heli har installert på si maskin.
+Deretter skal Heli sjå på korleis det er mogleg å gå vidare utan rett svar.
+Ei god løysing kan vere å køyre ein (to?) runde/rundar med retting, og deretter
+spørje brukaren "dette er feil, men vil du likevel vidare?" og gå vidare med "JA".
+
+Eit anna alternativ kan vere å tilby ein fasit, og deretter gå vidare.
+
+Eit tredje kan vere å gje studenten eit __framlegg__ til svar, som studenten
+så skal lime inn og evt. endre. Dette inneber at vi må skrive inn fasitsvar på alle
+spørsmåla.
+
+__Vedtak__: Vi går får det tredje spørsmålet.
+
+Vi har glømt å legge inn eit grammatikkvindauge i Sahka (det finst i alle andre program).
+Det må inn.
+
+__Tiltaksliste__
+
+* Lage oppsett for fasitsvvar (__Heli__)
+* Lage fasitsvar (__Lene__) 
+* Implementere systemet (__Heli__)
+* Legge til grammatikk på toppen (__Heli__)
+
+Vi prioriterer Sahka over Morfa.
+
+
+!! Ny Vasta
+
+Lene har lagt inn meir feedback, og meir pedagogisk feedback med mindre
+lingvistisk sjargong. Ingen feilmeldingar ved installering.
+
+Bruk same Vasta-oppsett som før. Setting: Folk er i ein butikk (klesbutikk, matbutikk).
+
+Dette kjem etter kvart.
+
+__Tiltaksliste__
+* Lage kildefiler, sørge for bilder/tegninger (__Lene__) 
+
+
+!! Gamle og ny FST?
+
+Spørsmål: Sahka og Vasta, også på gtoahpa, bruker gamle fst-ar med kommersielle 
+analysatorar.
+
+Vi bruker ein eigen ped-fst (ped-sme.fst) som Lene kompilerer på ein branch.
+
+Det er berre å endre ei linje i conf.pl
+
+eg satt i ro
+eg skriv i staden:
+gtoahpa settings.py
+
+{{{
+LOOKUP_TOOL = '/usr/bin/lookup'
+FST_DIRECTORY = '/opt/smi/sme/bin'
+LOOKUP2CG = '/usr/local/bin/lookup2cg'
+CG3 = '/usr/local/bin/vislcg3'
+PREPROCESS = '/opt/sami/cg/bin/preprocess'
+}}}
+
+det ville ha vore eit problem med å skifte versjon frå gammal til ny kjeldekode
+men det problemet har vi de facto løyst ved at vi har migrert til nye kompilatorar.
+
+Konklusjonen er mao. at vi kan ignorere oahpa for gammal -> ny -migrering.
+
+
+Men no skal vi stenge gamle Oahpa.
+
+[Det er ei bugmelding|http://giellatekno.uit.no/bugzilla/show_bug.cgi?id=948].
+
+Det det gjeld oahpa-versjonane på victorio (desse skal uansett over til gtlab):
+* bdoahpa, eveoahpa, komoahpa, sjdoahpa, sjeoahpa, smnoahpa, smsoahpa, yrkoahpa
+
+
+!! Teksta
+[se idemyldringsmøte frå Göteborg|http://giellatekno.uit.no/ped/nudoc/meetings/120824.html]
+
+Vi vil ta utgangpunkt i [WerTi|http://sifnos.sfs.uni-tuebingen.de/WERTi/] og 
+[WerTi - ny|http://www.purl.org/net/WERTi/], 
+som er programmert i Java. Heli håpar vi kan ta koden som den er, men det vil ikkje 
+vere enkelt.
+
+Tidsplan: Alt på beina før sommaren.
 
 
 !! Bugliste
 
 !1386	heli.uibo@ut.ee	ASSI			Safari 6: språkvalg blir overkjørt av default språkvalg
 
+
 !1399	ryan.txanson@gmail.com	NEW		mangler automatisk omstarting av services på gtoahpa
 
+Dette er ein ny bug. For 3-4 veker sidan var gtoahpa og gtlab nede. Dei vart starta om.
+Httpservaren, django og mysql var nede. Poenget er å få ein automatisk omstart på
+desse programma etter at dei virtuelle servarane har vore nede.
+
+Tiltak: Ryan gjer dette sjølv + dokumenterer det.
+
+!! Neste møte
+
+Mandag 1.10.2012 kl 8.30
 
 
