@@ -13,11 +13,11 @@ use dumpdata to export:
       auth.User \
       courses.UserProfile \
       courses.UserGrade \
-      courses.UserGradeSummary 
+      courses.UserGradeSummary
 
 Ordering of export important.
 
-auth.user 
+auth.user
  - remove "pk"
  - remove "is_active", "is_superuser", "is_staff"
  - remove "groups"
@@ -56,6 +56,23 @@ class Fixer(object):
                 d.pop(key)
         return d
     
+class Activity(Fixer):
+    activity_pks_to_names = {
+    }
+
+    remove_keys = ['pk']
+
+    def getActivity(self, aid):
+    	return self.activity_pks_to_names.get(aid, False)
+
+    def fix(self, a):
+        # pop keys, store pk-to-name
+        self.activity_pks_to_names[a.get('pk')] = a.get('fields').get('name')
+        return self.popKeys(a.copy())
+
+    def __init__(self):
+        pass
+
 
 class AuthUser(Fixer):
     user_pks_to_names = {
@@ -98,39 +115,57 @@ class UserProfile(Fixer):
         # pop keys
         return self.popKeys(up)
 
-    def __init__(self, authusers):
+    def __init__(self, authusers, activities):
         self.authusers = authusers
+        self.activities = activities
 
 class UserGrade(UserProfile):
 
     remove_keys = ['pk']
 
-class UserGradeSummary(UserProfile):
+    def fix(self, ug):
+        # Replace game with game__name, pass on to super for further
+        # edits
+    	_ug = ug.copy()
+    	_ug_fields = _ug.get('fields')
+
+    	gamename = self.activities.getActivity(_ug_fields.pop('game'))
+    	_ug_fields['game__name'] = gamename
+    	_ug['fields'] = _ug_fields
+    	return super(UserGrade, self).fix(_ug)
+
+class UserGradeSummary(UserGrade):
 
     remove_keys = ['pk']
 
 
 def main(infile, outfile):
     authusers = AuthUser()
+    activities = Activity()
+
     model_funcs = {
         'auth.user': authusers,
-        'courses.userprofile': UserProfile(authusers),
-        'courses.usergrade': UserGrade(authusers),
-        'courses.usergradesummary': UserGradeSummary(authusers),
+        'courses.activity': activities,
+        'courses.userprofile': UserProfile(authusers, activities),
+        'courses.usergrade': UserGrade(authusers, activities),
+        'courses.usergradesummary': UserGradeSummary(authusers, activities),
     }
 
     with open(infile, 'r') as F:
         json_data = json.load(F)
 
-    print len(json_data)
-    new_data = []
-    for item in json_data:
+    def replace(item):
         modelname = item.get('model')
-        newitem = model_funcs.get(modelname).fix(item)
-        new_data.append(newitem)
-    
+        # print json.dumps(item)
+        # print '--'
+        # print json.dumps(newitem)
+        # raw_input()
+    	return model_funcs.get(modelname).fix(item)
+
+    print >> sys.stderr, "%d items read." % len(json_data)
     with open(outfile, 'w') as F:
-        json.dump(new_data, F, indent=2)
+        json.dump(map(replace, json_data), F, indent=2)
+    print >> sys.stderr, "Done."
     
 
 if __name__ == "__main__":
