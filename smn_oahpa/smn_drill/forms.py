@@ -337,22 +337,11 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-    ('HUMAN', _('human')),
-    ('BODY', _('body')),
-    ('FOOD_DRINK', _('food/drink')),
-    ('ANIMAL_FISH', _('animal/fish')),
-    ('BIRDS', _('birds')),
-    ('ABSTRACT_CONCEPTS', _('abstract')),
-    ('CLOTHING', _('clothing')),
-    ('EDUCATION', _('education')),
-    ('HEALTH', _('health')),
-    ('NATURE_PHENOMENA', _('nature')),
-    ('PLACE', _('place')),
-    ('PLANTS', _('plants')),
-    ('TIMEDATE', _('time')),
-    ('TRAVEL', _('travel')),
-    ('VERB', _('verb')),
-    ('OTHER', _('other')),
+    ('YYY', _('general')),
+    ('BODYPART', _('body')),
+    ('PLANT', _('plants')),
+    ('BIRD', _('birds')),
+    ('ABSTRACT', _('abstract')),
 )
 
 NUM_CHOICES = (
@@ -924,7 +913,7 @@ class OahpaQuestion(forms.Form):
 # #
 
 class LeksaSettings(OahpaSettings):
-	semtype = forms.ChoiceField(initial='HUMAN', choices=SEMTYPE_CHOICES)
+	semtype = forms.ChoiceField(initial='YYY', choices=SEMTYPE_CHOICES)
 	transtype = forms.ChoiceField(choices=TRANS_CHOICES, widget=forms.Select)
 	# For placename quizz
 	geography = forms.ChoiceField(initial='world', choices=GEOGRAPHY_CHOICES)
