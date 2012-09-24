@@ -913,7 +913,7 @@ class OahpaQuestion(forms.Form):
 # #
 
 class LeksaSettings(OahpaSettings):
-	semtype = forms.ChoiceField(initial='YYY', choices=SEMTYPE_CHOICES)
+	semtype = forms.ChoiceField(initial='BODYPART', choices=SEMTYPE_CHOICES)
 	transtype = forms.ChoiceField(choices=TRANS_CHOICES, widget=forms.Select)
 	# For placename quizz
 	geography = forms.ChoiceField(initial='world', choices=GEOGRAPHY_CHOICES)
@@ -933,7 +933,7 @@ class LeksaSettings(OahpaSettings):
 			'bisyllabic': False,
 			'contracted': False,
 			'source': 'all',
-			'semtype' : 'HUMAN',
+			'semtype' : 'BODYPART',
 			'geography' : 'world',
 			'frequency' : ['common'] # added
 			}
