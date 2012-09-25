@@ -2351,6 +2351,14 @@ LIST LEMMA2 = "álbmut" ("álgga" N* Der1 Der2 Der/heapmi) "ára" "bealleheagga"
 
 REMOVE:r613 LEMMA2 IF (0 LEMMA1 LINK NOT 0 QDL);
 
+# Lemmaer fra oahpa-leksikonet som kan bli brukt i vastas-oppgaver, og dermed bør ha en entydig lemma-analyse i grunnform.
+
+LIST OAHPALEMMA1 = "boađus" "buvssat" "báhpagárdin" "bálggus" "dálkkas" "ealáhat" "eamit" "fielbmá" "goppás" "guovssat" "guđas" "gáhta" "gávcci" "gávccis" "gárastat" "gávnnit" "hoahkan" "juogus" "logi" "lužas" "láttat" "láttu" "láhka" "máhka" "nisu" "ovcci" "riegádanbeaivedearvvuođat" "rohtu" "saláhta" "sarrit" "sisbuvssat" "skire" "skohtercrossa" "solon" "suohpan" "surbmit" "sáttu" "sárggis" "vuotna" "áhpi" "čieža" "čoahkkin" "čálus"   ;
+
+LIST OAHPALEMMA2 = "boahtu" "buksa" "báhpagárdi" "bálgu" "dálka" "ealát" "eapmi" "fielmmis" "gobbá" "guoksa" "guđđa" "gáhtta" "gákci" "gárra" "gávdni" "hoahka" "juohku" "lohki" "luhča" "ládda" "láddu" "láhkka" "máhkka" "nissu" "okci" "riegádanbeaivedearvvuohta" "rohttu" "saláhtta" "sarri" "sisbuksa" "skirri" "skohtercross" "solo" "suohpa" "surbmi" "sáddu" "sárgi" "vuodna" "áhppi" "čiehča" "čoahkki" "čállu"   ;
+
+REMOVE OAHPALEMMA2 IF (0 OAHPALEMMA1 LINK NOT 0 QDL);
+
 
     # ambigous lemma
     # - - - - - - - -
