@@ -224,7 +224,7 @@ class Log(models.Model):
 	correct = models.TextField()
 	qid = models.CharField(max_length=100, null=True) # added
 	example = models.CharField(max_length=200,null=True)
-	feedback = models.CharField(max_length=200,null=True)
+	feedback = models.TextField()
 	comment = models.CharField(max_length=200)
 	messageid = models.CharField(max_length=100,null=True) # added
 	lang = models.CharField(max_length=3) # added
