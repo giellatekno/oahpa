@@ -43,12 +43,15 @@
     <utt type="question" name="Maid_juhkat">
 	<word class="DRINK"/>
       <text>Dás oainnát makkár juhkamušat mus leat. Maid háliidat juhkat?</text>
-      <alt variable="DRINK" >
-	<text>Mun buvttán dutnje DRINK</text>
+      <alt target="target" variable="DRINK" link="Buvttan_dutnje"/>
+      <alt target="default" link="juhkat_closing"/>
+    </utt>
+
+    <utt type="question" name="Buvttan_dutnje">
+	<text>Mun buvttán dutnje DRINK . Mo dus manná?</text>
 	<element id="DRINK">
 	  <grammar tag="N+Sg+Acc"/>
 	</element> 
-      </alt>
       <alt target="default" link="juhkat_closing"/>
     </utt>  
     
