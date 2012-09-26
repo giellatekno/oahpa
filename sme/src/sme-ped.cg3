@@ -6196,6 +6196,10 @@ LIST ROOMS = "stohpu" "gievkkan"  "kievkkan" "oađđenlatnja" "oađđinlatnja" "
 #LIST DRINK = bruvsa sákta mielki viidni vuola gáfet deajat minerálačáhci ;
 LIST DRINK = "bruvsa" "sákta" "mielki" "viidni" "viidna" "vuola" "vuolla" "gáfet" "deajat" "káfet" "teajat" "minerálačáhci" "gáffe" "káffe" "deadja" "teadja" ;
 
+#LIST DRINK-COFFEEBREAK = bruvsa sákta mielki vuola čáhci ;
+LIST DRINK-COFFEEBREAK = "bruvsa" "sákta" "mielki" "viidni" "viidna" "vuola" "vuolla" "minerálačáhci" "gáffe" "káffe" "deadja" "teadja" ;
+
+
 LIST GAFFE = "gáffe" "káffe" "deadja" "teadja" ;
 
 #LIST CANDY =  šuhkoláda lákcajiekŋa keavssat čottanjálgát ;
@@ -6236,7 +6240,7 @@ ADD (&dia-hivsset) TARGET SAHKA IF (0 (gosa_bidjat_TV))(*1 ("hivsset") BARRIER N
 
 ADD (&dia-basadanlatnja) TARGET SAHKA IF (0 NOT-ACC-ROOM)(*1 (&dia-target) BARRIER Neg LINK 0 ("basadanlatnja"))  ;
 
-ADD (&sem-not_wordlist) TARGET SAHKA IF (0 (Maid_juhkat))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK)  ;
+ADD (&sem-not_wordlist) TARGET SAHKA IF (0 (Maid_juhkat))(*1 (&dia-target) BARRIER Neg LINK NOT 0 DRINK-COFFEEBREAK)  ;
 
 ADD (&sem-deadjagaffeSg) TARGET N (0 GAFFE + Sg LINK *-1 (makkar_juhkamusaid)) ;
 
