@@ -60,8 +60,15 @@ class CookieAuthMiddleware(object):
 		# For admin pages...
 		if view_func.__module__.startswith('django.contrib.admin.'):
 			# ... log out if the cookie is no longer present
-			if not cookie_user and request.user.is_authenticated():
-				return HttpResponseRedirect(reverse(cookie_logout))
+			if cookie_user:
+				if not request.user.is_authenticated():
+					user = auth.authenticate(cookie_uid=cookie_user)
+					if user is not None:
+						auth.login(request, user)
+			else:
+				if request.user.is_authenticated():
+					return HttpResponseRedirect(reverse(cookie_logout))
+
 			# Otherwise do not care.
 			return None
 
