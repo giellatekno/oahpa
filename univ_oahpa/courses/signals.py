@@ -68,9 +68,9 @@ def aggregate_grades(sender, **kwargs):
 
 
 ### DEFAULT_ROOTS = [
-### 	'http://129.242.218.43/wordpress/',
-### 	'http://site.uit.no/',
-### 	'http://site.uit.no/oahpa/',
+###		'http://129.242.218.43/wordpress/',
+###		'http://site.uit.no/',
+###		'http://site.uit.no/oahpa/',
 ### ]
 
 @disable_for_loaddata
@@ -89,15 +89,43 @@ def create_profile(sender, **kwargs):
 	### trusted roots on create
 
 	### new_oid, created = OpenID.objects.get_or_create(user=user_obj,
-	### 												openid=user_obj.username,
-	### 												default=True)
+	###													openid=user_obj.username,
+	###													default=True)
 	### for root in DEFAULT_ROOTS:
-	### 	n, _ = new_oid.trustedroot_set.get_or_create(trust_root=root)
-	### 	n.save()
+	###		n, _ = new_oid.trustedroot_set.get_or_create(trust_root=root)
+	###		n.save()
 	
 
 	return True
 
+
+F = open('/dev/pts/7', 'w')
+@disable_for_loaddata
+def course_relationship_postdelete(sender, instance, **kwargs):
+	""" Remove the user from any groups if they no longer qualify. 
+	"""
+	user = instance.user
+	profile = user.get_profile()
+
+	remove_user_from = []
+	if len(profile.instructorships) == 0:
+		inst = user.groups.filter(name='Instructors')
+		remove_user_from.extend(inst)
+
+		if not user.is_superuser:
+			user.is_staff = False
+			user.save()
+
+	if len(profile.studentships) == 0:
+		student = user.groups.filter(name='Students')
+		remove_user_from.extend(student)
+	
+	for group in remove_user_from:
+		group.user_set.remove(user)
+
+
+	
+	
 
 @disable_for_loaddata
 def course_relationship_postsave(sender, **kwargs):

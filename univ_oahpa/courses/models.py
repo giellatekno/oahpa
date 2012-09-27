@@ -201,8 +201,8 @@ class CourseRelationship(models.Model):
 							"relationship_type",)
 
 
-from django.db.models.signals import post_save, pre_save
-from .signals import create_profile, aggregate_grades, user_presave, course_relationship_postsave
+from django.db.models.signals import post_save, pre_save, post_delete
+from .signals import *
 
 post_save.connect(create_profile, sender=User, 
 	dispatch_uid="univ_oahpa.courses.models.post_save")
@@ -212,6 +212,9 @@ post_save.connect(aggregate_grades, sender=UserGrade,
 
 post_save.connect(course_relationship_postsave, sender=CourseRelationship,
 	dispatch_uid="univ_oahpa.courses.models.post_save")
+
+post_delete.connect(course_relationship_postdelete, sender=CourseRelationship,
+	dispatch_uid="univ_oahpa.courses.models.pre_save")
 
 pre_save.connect(user_presave, sender=User,
 	dispatch_uid="univ_oahpa.courses.models.pre_save")
