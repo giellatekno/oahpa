@@ -43,6 +43,13 @@ class UserProfile(models.Model):
 		return [a.course for a in crs]
 	
 	@property
+	def studentships(self):
+		crs = self.user.courserelationship_set\
+					.filter(relationship_type__name='Students')
+
+		return [a.course for a in crs]
+	
+	@property
 	def is_instructor(self):
 		grs = self.user.groups.values_list('name', flat=True)
 		if 'Instructors' in grs:

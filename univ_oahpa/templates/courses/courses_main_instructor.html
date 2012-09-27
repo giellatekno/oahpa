@@ -26,7 +26,7 @@ TODO: internationalization strings
 
 		<p>{% trans "You are a course instructor." %}</p>
 		{# cache 300 courses user.username #}
-		{% for course in courses %}
+		{% for course in profile.instructorships %}
 		<div class="instructor_course">
 			<h3>{{ course.identifier }} - {{ course.name }}</h3>
 			<p>{% trans "Course content is available online" %}: <a href="{{ course.site_link }}">{{ course.site_link }}</a></p>

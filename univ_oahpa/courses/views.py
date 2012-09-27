@@ -170,9 +170,7 @@ def courses_main(request):
 		'new_profile':  new_profile,
 		'is_student':  is_student,
 		'summaries':  summary,
-		'courses': Course.objects.filter(
-									courserelationship__user=request.user)\
-								 .distinct(),
+		'courses': profile.studentships
 	}
 
 	return render_to_response(template, 
