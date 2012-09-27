@@ -13,7 +13,8 @@
       <alt target="default">
 	<text>De manne stohpui.</text>
       </alt>
-    </utt>
+ 	<facit>Juo, de manne.</facit>   
+ 	</utt>
   
     <utt type="question" name="Manne_go_gievkkanii">
       <text>Gievkkanis lea maid vuogas čohkkát. Lássaráiggis oaidná meara. Manne go gievkkanii?</text>
@@ -23,6 +24,7 @@
       <alt target="default">
 	<text>Dalle manne stohpui.</text>
       </alt>
+ 	<facit>Juo, de manne.</facit>   
     </utt>
 
     <utt type="closing" name="cohkkat_closing">
@@ -38,6 +40,7 @@
       <alt target="neg" link="Maid_juhkat"/>
       <alt target="default"><text>Mus ii leat.</text>
       </alt>
+ 	<facit>Háliidan deaja.</facit>   
     </utt>  
     
     <utt type="question" name="Maid_juhkat">
@@ -45,6 +48,7 @@
       <text>Dás oainnát makkár juhkamušat mus leat. Maid háliidat juhkat?</text>
       <alt target="target" variable="DRINK" link="Buvttan_dutnje"/>
       <alt target="default" link="juhkat_closing"/>
+ 	<facit>Háliidan čázi.</facit>   
     </utt>
 
     <utt type="question" name="Buvttan_dutnje">
@@ -53,24 +57,28 @@
 	  <grammar tag="N+Sg+Acc"/>
 	</element> 
       <alt target="default" link="juhkat_closing"/>
+ 	<facit>Mus manná hui bures.</facit>   
     </utt>  
     
     <utt type="question" name="Haliidat_go_honnega">
       <text>Háliidat go honnega?</text>
       <alt target="neg" link="Geavahat_go_sohkkara"/>
       <alt target="default" link="Geavahat_go_mielkki"/>
+ 	<facit>In hálit.</facit>   
     </utt>
     
     <utt type="question" name="Geavahat_go_sohkkara">
       <text>Geavahat go sohkkara?</text>
       <alt target="default" link="Geavahat_go_mielkki"/>   
+ 	<facit>In geavat.</facit>   
     </utt>
     
     <utt type="question" name="Geavahat_go_mielkki">
       <text>Geavahat go mielkki?</text>
       <alt target="default">
-	<text>Dá lea dutnje. Leage buorre.</text>
+	<text>Dá lea gohppu. Leage buorre.</text>
       </alt>
+ 	<facit>De geavahan.</facit>   
     </utt>
     
     
@@ -87,6 +95,7 @@
       <text>Háliidat go gáhku?</text>
       <alt target="pos"><text>Mun buvttán gáhku!</text></alt>
       <alt target="default"><text>In sáhte fállat eará odne.</text></alt>
+ 	<facit>De háliidan.</facit>   
     </utt>
     
     <utt type="closing" name="gahkku_closing">
