@@ -395,7 +395,7 @@ def leksa_game(request, place=False):
 		if sess_lang == 'smn':  # was: sme
 			sess_lang = 'rus'  # was: nob
 	else:
-		sess_lang = 'nob'
+		sess_lang = 'fin'
 
 	default_langpair = 'smn%s' % sess_lang  # was: sme
 
