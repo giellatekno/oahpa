@@ -337,11 +337,23 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-    ('HUMAN', _('human')),
-    ('BODY', _('body')),
-    ('PLANTS', _('plants')),
-    ('BIRDS', _('birds')),
-    ('ABSTRACT_CONCEPTS', _('abstract')),
+	('HUMAN', _('human')),
+	('BODY', _('body')),
+	('PLANTS', _('plants')),
+	('BIRDS', _('birds')),
+	('ABSTRACT_CONCEPTS', _('abstract')),
+	('ANIMAL_FISH', _('animal/fish')),
+	('CLOTHING', _('clothing')),
+	('EDUCATION', _('education')),
+	('FOOD_DRINK', _('food/drink')),
+	('HEALTH', _('health')),
+	('NATURE_PHENOMENA', _('nature')),
+	('OTHER', _('other')),
+	('PLACE', _('place')),
+	('TIMEDATE', _('time and date')),
+	('TRAVEL', _('travel')),
+	('VERB', _('verbs')),
+	('all', _('all')),
 )
 
 NUM_CHOICES = (
