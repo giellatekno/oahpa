@@ -1,4 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+* about
+* northsami sme-in-sme ==» L2, res, res
+* smegramm  in-sme ==» res, res
+* northsami2 visl-in-sme ==» L2, res
+* norwegian  sme-in-nob ==» L2, res, res
+* smegramm  sme-in-nob ==» res, res
+* norwegian2 sma-in-nob ==» index, L2, res, res
+* smagramm,  in-nob ==» res, res
+* norwegian3 visl-in-nob ==» index, L2, res, res
+* finnish    sme-in-fin ==» index, L2, res, res
+* swedish    sme-in-swe ==» index, L2, res, res
+* english    sme-in-ent ==» index, L2, res, res
+* russian    sjd-in-rus ==» index, L2, res, res
+* smegramm   in-eng ==» res, res
+* english2   visl-in-eng ==» index, L2, res, res
+* extending ==» index, ...
+-->
 
 <site label="OAHPA!" href="" xmlns="http://apache.org/forrest/linkmap/1.0" tab="">
   <about label="Intro" tab="OAHPA!">
@@ -68,14 +86,14 @@
     <cealkkacoavdinmuorra label="Cealkkamuorra" href="sme/usevisl/cealkkamuorraravvagat.html"/>
     <killerfiller label="Killerfiller" href="sme/usevisl/Killerfiller_sme.html"/>
     <animalquiz label="Animal Quiz" href="sme/usevisl/animalquiz.html"/>
-  </L2>
+   </L2>
    <res label="VISL-veahkki">
     <satneluohkat  label="Sátneluohkát" href="sme/usevisl/satneluohkat.html"/>
     <cealkkalahtut  label="Cealkkačoavdin" href="sme/usevisl/cealkkalahtut.html"/>
     <paradigmat  label="Grammatihkka" href="sme/gramm/grammatihkka.html"/>
     <analyseren  label="Teakstaanalyseren" href="sme/usevisl/analyseren.html"/>
   </res>
- <res label="Hjem">
+  <res label="Hjem">
     <valdosiidu  label="Hovedmeny" href="index.html"/>
   </res>
   </northsami2>
@@ -246,6 +264,7 @@
     <valdosiidu  label="Main menu" href="index.eng.html"/>
   </res>
   </english>
+  
   <russian label="Menu" tab="OAHPAkildin_inRussian">
     <index label="Добро пожаловать" href="index.rus.html" description="Welcome oahpa"/>
   <L2 label="OAHPA-kildin">
@@ -262,6 +281,173 @@
     <valdosiidu  label="Main menu" href="index.rus.html"/>
   </res>
   </russian>
+
+  <english_sjd label="Menu" tab="OAHPAkildin_inEnglish">
+    <index label="Welcome" href="index.eng.html" description="Welcome oahpa"/>
+  <L2 label="OAHPA-kildin">
+    <bagadus label="Introduction" href="sjd/index.eng.html"/>
+     <numra label="Numra" href="sjd/useoahpa/numra.eng.html"/>
+     <leksa label="Leksa" href="sjd/useoahpa/leksa.eng.html"/>
+    <satnevuorka  label="Wordlist" href="sjd/useoahpa/satnevuorka.rus.html"/>
+  </L2>
+  <res label="Resources">
+    <satneluohkat  label="Parts of speech" href="sme/usevisl/satneluohkat.eng.html"/>
+    <satnegirji  label="Dictionaries" href="sme/usevisl/satnegirji.eng.html"/>
+  </res>
+  <res label="Home">
+    <valdosiidu  label="Main menu" href="index.eng.html"/>
+  </res>
+  </english_sjd>
+
+  <finnish_sjd label="Menu" tab="OAHPAkildin_inFinnish">
+    <index label="Tervetuloa" href="index.fin.html" description="Tervetuloa oahpaan"/>
+  <L2 label="OAHPA-kildin">
+    <bagadus label="Johdanto" href="sjd/index.fin.html"/>
+     <numra label="Numra" href="sjd/useoahpa/numra.fin.html"/>
+     <leksa label="Leksa" href="sjd/useoahpa/leksa.fin.html"/>
+    <satnevuorka  label="Sanalista" href="sjd/useoahpa/satnevuorka.rus.html"/>
+  </L2>
+  <res label="Resources">
+    <satneluohkat  label="Sanaluokat" href="sme/usevisl/satneluohkat.fin.html"/>
+    <satnegirji  label="Sanakirjat" href="sme/usevisl/satnegirji.fin.html"/>
+  </res>
+  <res label="Home">
+    <valdosiidu  label="Päävalikko" href="index.fin.html"/>
+  </res>
+  </finnish_sjd>
+
+  <norwegian_sjd label="Menu" tab="OAHPAkildin_inNorwegian">
+    <index label="Velkommen" href="index.nob.html" description="Velkommen til oahpa"/>
+  <L2 label="OAHPA-kildin">
+    <bagadus label="Introduksjon" href="sjd/index.nob.html"/>
+     <numra label="Numra" href="sjd/useoahpa/numra.nob.html"/>
+     <leksa label="Leksa" href="sjd/useoahpa/leksa.nob.html"/>
+    <satnevuorka  label="Ordliste" href="sjd/useoahpa/satnevuorka.rus.html"/>
+  </L2>
+  <res label="Resources">
+    <satneluohkat  label="Ordklasser" href="sme/usevisl/satneluohkat.nob.html"/>
+    <satnegirji  label="Ordbøker" href="sme/usevisl/satnegirji.nob.html"/>
+  </res>
+  <res label="Home">
+    <valdosiidu  label="Hovedmeny" href="index.nob.html"/>
+  </res>
+  </norwegian_sjd>
+
+
+
+  <russian_sms label="Menu" tab="OAHPAnuorti_inRussian">
+    <index label="Welcome" href="index.rus.html" description="Welcome oahpa"/>
+  <L2 label="OAHPA-nuorti">
+    <bagadus label="Introduction" href="sms/index.rus.html"/>
+  </L2>
+  <res label="Resources">
+    <satneluohkat  label="Parts of speech" href="sme/usevisl/satneluohkat.eng.html"/>
+    <satnegirji  label="Dictionaries" href="sme/usevisl/satnegirji.eng.html"/>
+  </res>
+  <res label="Home">
+    <valdosiidu  label="Main menu" href="index.rus.html"/>
+  </res>
+  </russian_sms>
+
+
+  <english_sms label="Menu" tab="OAHPAnuorti_inEnglish">
+    <index label="Welcome" href="index.eng.html" description="Welcome oahpa"/>
+  <L2 label="OAHPA-nuorti">
+    <bagadus label="Introduction" href="sms/index.eng.html"/>
+  </L2>
+  <res label="Resources">
+    <satneluohkat  label="Parts of speech" href="sme/usevisl/satneluohkat.eng.html"/>
+    <satnegirji  label="Dictionaries" href="sme/usevisl/satnegirji.eng.html"/>
+  </res>
+  <res label="Home">
+    <valdosiidu  label="Main menu" href="index.eng.html"/>
+  </res>
+  </english_sms>
+
+  <finnish_sms label="Menu" tab="OAHPAnuorti_inFinnish">
+    <index label="Tervetuloa" href="index.fin.html" description="Tervetuloa oahpaan"/>
+  <L2 label="OAHPA-nuorti">
+    <bagadus label="Johdanto" href="sms/index.fin.html"/>
+    <satnevuorka  label="Sanalista" href="sms/useoahpa/satnevuorka.fin.html"/>
+  </L2>
+  <res label="Resources">
+    <satneluohkat  label="Sanaluokat" href="sme/usevisl/satneluohkat.fin.html"/>
+    <satnegirji  label="Sanakirjat" href="sme/usevisl/satnegirji.fin.html"/>
+  </res>
+  <res label="Home">
+    <valdosiidu  label="Päävalikko" href="index.fin.html"/>
+  </res>
+  </finnish_sms>
+
+  <norwegian_sms label="Menu" tab="OAHPAnuorti_inNorwegian">
+    <index label="Velkommen" href="index.html" description="Velkommen til oahpa"/>
+  <L2 label="OAHPA-nuorti">
+    <bagadus label="Introduksjon" href="sms/index.html"/>
+    <satnevuorka  label="Ordliste" href="sms/useoahpa/satnevuorka.nob.html"/>
+  </L2>
+  <res label="Resources">
+    <satneluohkat  label="Ordklasser" href="sme/usevisl/satneluohkat.nob.html"/>
+    <satnegirji  label="Ordbøker" href="sme/usevisl/satnegirji.nob.html"/>
+  </res>
+  <res label="Home">
+    <valdosiidu  label="Hovedmeny" href="index.nob.html"/>
+  </res>
+  </norwegian_sms>
+
+
+
+  <english_smn label="Menu" tab="OAHPAaanaar_inEnglish">
+    <index label="Welcome" href="index.eng.html" description="Welcome oahpa"/>
+  <L2 label="OAHPA-aanaar">
+    <bagadus label="Introduction" href="smn/index.eng.html"/>
+     <numra label="Numra" href="smn/useoahpa/numra.eng.html"/>
+     <leksa label="Leksa" href="smn/useoahpa/leksa.eng.html"/>
+  </L2>
+  <res label="Resources">
+    <satneluohkat  label="Parts of speech" href="sme/usevisl/satneluohkat.eng.html"/>
+    <satnegirji  label="Dictionaries" href="sme/usevisl/satnegirji.eng.html"/>
+  </res>
+  <res label="Home">
+    <valdosiidu  label="Main menu" href="index.eng.html"/>
+  </res>
+  </english_smn>
+
+  <finnish_smn label="Menu" tab="OAHPAaanaar_inFinnish">
+    <index label="Tervetuloa" href="index.fin.html" description="Tervetuloa oahpaan"/>
+  <L2 label="OAHPA-aanaar">
+    <bagadus label="Johdanto" href="smn/index.html"/>
+     <numra label="Numra" href="smn/useoahpa/numra.fin.html"/>
+     <leksa label="Leksa" href="smn/useoahpa/leksa.fin.html"/>
+    <satnevuorka  label="Sanalista" href="smn/useoahpa/satnevuorka.fin.html"/>
+  </L2>
+  <res label="Resources">
+    <satneluohkat  label="Sanaluokat" href="sme/usevisl/satneluohkat.fin.html"/>
+    <satnegirji  label="Sanakirjat" href="sme/usevisl/satnegirji.fin.html"/>
+  </res>
+  <res label="Home">
+    <valdosiidu  label="Päävalikko" href="index.fin.html"/>
+  </res>
+  </finnish_smn>
+
+  <norwegian_smn label="Menu" tab="OAHPAaanaar_inNorwegian">
+    <index label="Velkommen" href="index.nob.html" description="Velkommen til oahpa"/>
+  <L2 label="OAHPA-aanaar">
+    <bagadus label="Introduksjon" href="smn/index.nob.html"/>
+     <numra label="Numra" href="smn/useoahpa/numra.nob.html"/>
+     <leksa label="Leksa" href="smn/useoahpa/leksa.nob.html"/>
+    <satnevuorka  label="Ordliste" href="smn/useoahpa/satnevuorka.nob.html"/>
+  </L2>
+  <res label="Resources">
+    <satneluohkat  label="Ordklasser" href="sme/usevisl/satneluohkat.nob.html"/>
+    <satnegirji  label="Ordbøker" href="sme/usevisl/satnegirji.nob.html"/>
+  </res>
+  <res label="Home">
+    <valdosiidu  label="Hovedmeny" href="index.nob.html"/>
+  </res>
+  </norwegian_smn>
+
+
+
   <smegramm label="Meny" tab="gramm_English">
   <res label="Grammar">
     <substintro  label="Nouns - intro" href="sme/gramm/substintro.eng.html"/>
