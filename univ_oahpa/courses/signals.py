@@ -99,7 +99,6 @@ def create_profile(sender, **kwargs):
 	return True
 
 
-F = open('/dev/pts/7', 'w')
 @disable_for_loaddata
 def course_relationship_postdelete(sender, instance, **kwargs):
 	""" Remove the user from any groups if they no longer qualify. 
