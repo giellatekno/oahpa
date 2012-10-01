@@ -1,0 +1,153 @@
+!!! Møte 01.10.12
+Til stades: Heli, Ryan, Lene, Trond
+
+!! Saksliste
+* Wordpress og servere
+* Avslutte gamle oahpa
+* Sørsamisk morfa
+* Sahka
+* Feedback for Vaska og Sahka
+* Dict
+* Bugliste
+* Enaresamisk Oahpa
+* Kotus-ordboka
+* Neste møte
+
+!! wordpress og servere
+
+Kuvsje er flytta inn, Aajege starter å lage sma-stier. Lene har hatt möte med
+Aajege, det ser ut til å fungere. Eit lite problem er å laste
+opp filer via interface. Dette har Ryan fiksa (jf. mail i natt).
+Det er ei mappe til opplasting som WP vil lage sjölv, men som 
+programmet ikkje hadde løyve til.
+
+* __Spørsmål__: Skal vi helst ha store filer utanfor WP, med lenkjer i
+  staden?
+* __Svar, Ryan__: Nei, det bør gå bra å lagre filer i WP også.
+
+! Opplasting med SSH til kuvsje
+
+
+WP Media sti: /home/kursa/www-data/wp-content/uploads/
+
+Lenkje til sørsamisk læringssti: 
+[http://kuvsje.oahpa.no/|http://kuvsje.oahpa.no/]
+
+!! Avslutte gamle oahpa
+
+* Lene har laga infoside
+* Heli har ändrat url-ar
+* Skrive epost til [ovttas.no|http://ovttas.no] (og evt. andre) om nye url-er
+
+http://oahpa.uit.no/univ_oahpa/ (denne ligg på victorio, og skal bli lagt ned)
+
+Ryan har laga eit script for å eksportere frå victorio-oahpa til gtoahpa.
+
+! Arbeidsplan
+* __Heli__ legger ned http://oahpa.uit.no/univ_oahpa
+* __Ryan__ ekporterer logger og brukerstatistikker fra http://oahpa.uit.no/univ_oahpa
+* __Lene__ sendar brev til samisklærarar, ovttas.no osv
+
+
+!! Sørsamisk morfa
+
+Ryan oppdaterte databasen sist natt, og han har også laga en backup.
+svn revisjon 59359
+Morfologisk feedback er ikke på plass.
+
+Arbeidsplan for nyutvikling av sjølve Oahpa
+
+!Utvide Morfa-S med fleire verbgrupper. I dag:
+# likestava
+# ulikestava
+
+!Dei vil ha desse kategoriane, som avkryssingsboksar og ikkje rullemeny
+(poenget er at det skal vere mogleg å velje fleire kategoriar)
+# likestava I
+# likestava II 
+# likestava III 
+# likestava IV 
+# likestava V
+# likestava VI 
+# ulikestava
+
+Informasjon om verbklassene ligg i filene. Databasen må installerast på nytt.
+Jf. {{v_smanob.xml}}, der klassane er merka class="IV", etc., dvs. I - VI.
+
+{{{
+  <e exclude="smanob">
+      <lg>
+         <l class="IV" pos="v" stem="2syll" vow="aa">aatedh</l>
+      </lg>
+      <stem class="bisyllabic"></stem>
+}}}
+
+
+__Tiltaksliste__
+
+* Dette gjøres (og dokumenteres) av (__Ryan__)
+* Se på installeringslog fra generering, og teste (__Lene__)
+
+
+!! Sahka
+
+Vi fortsetter med å la brukeren kunne be om fasitsvar. Vi eksperimenterer med
+coffeebreak-dialogen.
+
+__Tiltaksliste__
+
+* Lage oppsett for fasitsvar (__Heli__)
+* Implementere systemet (__Heli__)
+
+
+!! Feedback for vasta og sahka
+Feedbackfilene for vasta og sahka er kraftig forbedra på norsk og engelsk.
+Samisk og finsk må også oppdateres. For finsk linkes det til samisk grammatikk.
+
+__Tiltaksliste__
+
+* __Lene__ oppdaterer den samiske fila
+* __Trond__ kopierer fra samisk og oversetter til finsk, de messages som er endra.
+
+!! Dict
+Fjerne lista over ordbøker i venstre marg
+
+__Tiltaksliste__
+
+* Lage en sluttbrukerside pr språkpar i tillegg til dagens løsning (__Trond__) 
+** index.html kan vere sida med alle språkpar, og index_LANG1-LANG2 skal vere utan
+   venstremarg, men med lenkje til index.html (''andre ordbøker'') oppe til høgre.
+   
+
+!! Bugliste
+
+! 1386 ryan.txanson@gmail.com	Safari 6: språkvalg blir overkjørt av default språkvalg
+! 1399 ryan.txanson@gmail.com	mangler automatisk omstarting av services på gtoahpa
+! 1449 lene.antonsen@uit.no	sme morfac er nede
+
+
+!! Enaresamisk Oahpa
+
+Ryan, Ciprian og Trond har fått enaresamisk oahpa på nett. Trond har publisert info
+på facebookgruppa.
+Der var det stor begeistring, mange likes, og ein del konkrete kommentarar.
+Trond skreiv så 
+[ei evaluering|http://http://giellatekno.uit.no/ped/smndoc/InarinsaamenOahpaStatus.html].
+
+!! Kotus-ordboka
+
+Dette blir tema i Oulu. Ryan har sett på den.
+For å få ut ordpar er det ein relasjonell database, så vi må lage ein query for å 
+få ut alle ordpar.
+
+Michael Rießler har sett på dette, og det finst xslt-script for å endre database-xml
+til eit meir brukbart format.
+
+Ryan sender ein mail om kva han har funne ut før torsdag.
+
+!! Neste møte
+* mandag 15.10 kl 8.30
+
+
+
+
