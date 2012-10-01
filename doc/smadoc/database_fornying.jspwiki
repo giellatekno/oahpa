@@ -1,0 +1,62 @@
+! Database updating 
+
+These are the steps to follow to update the lexicon, and Morfa-S and Morfa-C questions, without destroying user activity logs. 
+
+1. Backup logs and database
+
+The database includes user logs of course, but it's good to have an easier-to-access file with just the access logs as well.
+
+It may not always be necessary to make a database backup (in the event that you need to reinstall many times, or are just working on a development server), but if one hasn't been done recently on a production server, then it is a good idea. ;)
+
+{{{
+	python2.7 manage.py printlogs > logs.txt
+
+	mysqldump --compatible=ansi --single-transaction --add-drop-table --set-charset -u USERNAME DATABASENAME -p > database.sql
+
+}}}
+
+The database file should be bzipped (bzip -9 database.sql), and moved somewhere out of the smaoahpa directory. On gtoahpa the smaoahpa user has a backups directory in its home directory. Copy the file there, and follow the date format. 
+2. Update svn in data_sma/
+
+{{{
+    svn up data_sma/
+}}}
+
+3. Recompile FSTs
+
+In the FST directory for sma, the following commands generate all of the FSTs, including Numra, and Klokka
+
+{{{
+    make TARGET=sma
+    make ifst-restr GTLANG=sma DIALECT=L
+    make ifst-restr GTLANG=sma DIALECT=SH
+    
+    make num.fst GTLANG=sma
+    make inum.fst GTLANG=sma
+    
+    make date-sma.fst GTLANG=sma
+    make idate-sma.fst GTLANG=sma
+}}}
+
+
+4. Clear smadrill data minus logs
+
+{{{
+	python2.7 manage.py sqlclear smadrill | grep -v '_log' | python2.7 manage.py dbshell
+}}}
+
+5. Sync the database to recreate the destroyed tables
+
+{{{
+	python manage.py syncdb
+}}}
+
+6. Run the database installation script
+
+{{{
+	./parafedaba.sh
+}}}
+
+... And keep an eye on the output. When it's done, error.log will contain the errors from the installation process. You can also tail -f error.log to watch while the process runs.
+
+
