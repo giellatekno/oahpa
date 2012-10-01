@@ -100,11 +100,6 @@ class QAGame(Game):
 		else:
 			dialect = DEFAULT_DIALECT
 
-		if dialect == 'KJ':
-			wrong_dialect = 'GG'
-		else:
-			wrong_dialect = 'KJ'
-
 		word=None
 		if tag_el.pos=="Num" and self.settings.has_key('num_level') and str(self.settings['num_level'])=="1":
 			smallnum = ["1","2","3","4","5","6","7","8","9","10"]
@@ -114,11 +109,15 @@ class QAGame(Game):
 				word = word.order_by('?')[0]
 		else:
 			# Do not filter form-level dialect here
-			possible_words = Word.objects.filter(wordqelement__qelement=qelement,form__tag=tag_el.id).exclude(dialects__dialect=wrong_dialect)  # Take into account the word-level dialect information (NOT-KJ vs NOT-GG)
+			# take into account the word-level dialect information (NOT-KJ vs NOT-GG)
+			possible_words = self.filter_set_by_dialect(
+				Word.objects.filter(wordqelement__qelement=qelement,form__tag=tag_el.id),
+				negative=True
+			)
 			if possible_words.count() > 0:
 				word = possible_words.order_by('?')[0]
 
-		form_set_filter = self.filter_forms_by_dialect(
+		form_set_filter = self.filter_set_by_dialect(
 							word.form_set.filter(tag=tag_el.id))
 		
 		if word and form_set_filter.count()>0:
@@ -147,7 +146,7 @@ class QAGame(Game):
 		form = None
 				
 		if lemma and tag_el:
-			form_set = self.filter_forms_by_dialect(tag_el.form_set.all())
+			form_set = self.filter_set_by_dialect(tag_el.form_set.all())
 
 			if qelement:
 				if qelement.semtype:
@@ -168,7 +167,7 @@ class QAGame(Game):
 
 				# word = word_set[0]
 
-				form_set = self.filter_forms_by_dialect(word.form_set.filter(tag=tag_el))
+				form_set = self.filter_set_by_dialect(word.form_set.filter(tag=tag_el))
 
 				form = form_set[0]
 
@@ -179,7 +178,7 @@ class QAGame(Game):
 			info = {'word': form.word.id, 'tag': tag_el.id, 'fullform': [ fullform ]}
 			words.append(info)
 		elif word:
-			form_list = self.filter_forms_by_dialect(word.form_set.all())
+			form_list = self.filter_set_by_dialect(word.form_set.all())
 
 			if tag_el:
 				form_list = form_list.filter(tag=tag_el)
@@ -438,14 +437,19 @@ class QAGame(Game):
 		# Return the ready qwords list.			
 		return qwords
 
-	def filter_forms_by_dialect(self, form_set):
-		""" Filters forms by the current session dialect
+	def filter_set_by_dialect(self, form_set, negative=True):
+		""" Filters forms by the current session dialect. If negative=True,
+			then filter by the other dialects that are not the session dialect
+			(to account for NOT-KJ, NOT-GG, etc.)
 		"""
 
 		if self.settings.has_key('dialect'):
 			dialect = self.settings['dialect']
 		else:
 			dialect = DEFAULT_DIALECT
+
+		if negative:
+			dialect = Dialect.objects.exclude(dialect__in=['NG', 'main', dialect])[0].dialect
 
 		excl = form_set.exclude(dialects__dialect='NG')
 		
@@ -526,7 +530,7 @@ class QAGame(Game):
 		_refl_tag = _refl_qelement.tags.get(possessive=_refl_person)
 
 		# Get RPRON forms, tags, word element
-		_refl_forms = self.filter_forms_by_dialect(_refl_tag.form_set.all())
+		_refl_forms = self.filter_set_by_dialect(_refl_tag.form_set.all())
 		_refl_word = _refl_forms.order_by('?')[0].word
 		_refl_fullforms = _refl_forms.values_list('fullform', flat=True)
 
