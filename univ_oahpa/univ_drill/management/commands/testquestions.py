@@ -40,7 +40,7 @@ def _firstelement(e, x):
         return None
 
 
-from univ_drill.models import Tagname, Tagset, Form
+from univ_drill.models import Tagname, Tagset, Form, filter_set_by_dialect
 
 def parse_tag(tag):
     """ Iterate through a tag string by chunks, and check for tag sets
@@ -603,6 +603,7 @@ class QObj(GrammarDefaults):
     def filter_dialect(self, formqueryset):
         """ TODO: make this faster """
         return formqueryset
+        return filter_set_by_dialect(formqueryset, self.dialect)
         if not self.dialect:
             return formqueryset
 

@@ -211,6 +211,33 @@ class BulkManager(models.Manager):
 	# 	
 	# 	super(Feedback, self).save(*args, **kwargs)
 
+def filter_set_by_dialect(form_set, dialect):
+	from django.db.models import Q
+
+	QUERY = Q(~Q(dialects__dialect='NG'), 
+			Q(dialects__dialect=dialect) | \
+			Q(dialects__isnull=True))
+	
+	result = form_set.filter(QUERY)
+
+	if result.count() == 0:
+		return form_set
+	else:
+		return result
+
+	# excl = form_set.exclude(dialects__dialect='NG')
+	# 
+	# if excl.count() > 0:
+	# 	form_set = excl
+
+	# dialect_forms = form_set.filter(dialects__dialect__in=[dialect, None])
+
+	# if dialect_forms.count() > 0:
+	# 	form_set = dialect_forms
+
+	# return form_set
+
+
 class Comment(models.Model):
 	lang = models.CharField(max_length=5)	
 	comment = models.CharField(max_length=100)	

@@ -961,8 +961,7 @@ class BareGame(Game):
 		# All possible form presentations
 		accepted_answers = form_list.values_list('fullform', flat=True)
 		
-		# Just the ones we want to present for just one dialect
-		presentation = form_list.filter(dialects=Q_DIALECT)
+		presentation = filter_set_by_dialect(form_list, Q_DIALECT)
 
 		if pos == 'Der':
 			presentation = presentation.filter(tag__string__contains='PassL')
@@ -971,15 +970,7 @@ class BareGame(Game):
 		if presentation.count() == 0:
 			presentation = form_list
 		
-		# Exclude those that shouldn't be displayed, but should be accepted
-		presentation_ng = presentation.exclude(dialects__dialect='NG')
-
-		# Unless this results in no forms somehow, in which case we display
-		# them anyway... 
-		if presentation_ng.count() == 0:
-			presentation_ng = presentation
-		
-		presentation_ng = presentation_ng.values_list('fullform',flat=True)
+		presentation_ng = presentation.values_list('fullform',flat=True)
 
 		# Get word translations for the tooltip
 		target_key = switch_language_code(self.settings['language'][-3::])

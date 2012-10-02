@@ -780,16 +780,7 @@ def select_words(self, qwords, awords):
 								tag__id=selected_awords[syntax]['tag'],
 							)
 				
-				excl = form_list.exclude(dialects__dialect='NG')
-
-				if excl.count() > 0:
-					form_list = excl
-
-				form_list_dialects = form_list.filter(dialects__dialect=self.dialect)
-
-				if form_list_dialects.count() > 0:
-					form_list = form_list_dialects
-
+				form_list = filter_set_by_dialect(form_list, self.dialect)
 				if form_list.count() > 0:
 					fullf = []
 					for f in form_list:
@@ -1784,10 +1775,11 @@ class ContextMorfaQuestion(OahpaQuestion):
 
 		# Retrieve feedback information
 		try:
-			answer_word_form = Form.objects.exclude(dialects__dialect='NG')\
-										.filter(word__pk=answer_word, 
-												tag=answer_tag_el, 
-												dialects__dialect=self.dialect)
+			answer_word_forms = Form.objects.filter(word__pk=answer_word,
+													tag=answer_tag_el)
+
+			answer_word_forms = filter_set_by_dialect(answer_word_forms, self.dialect)
+												
 			answer_word_form = answer_word_form[0]
 		except:
 			answer_word_form = False
