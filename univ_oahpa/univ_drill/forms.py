@@ -2232,13 +2232,14 @@ class SahkaSettings(OahpaSettings):
 		self.default_data['image'] = 'sahka.png'
 		self.default_data['wordlist'] = ''
 		self.default_data['num_fields'] = '2'
+		self.default_data['attempts'] = 0
 		super(SahkaSettings, self).__init__(*args, **kwargs)
 
 		# Link to grammatical explanation for each page
 		self.grammarlinkssme = Grammarlinks.objects.filter(language="sme")
 		self.grammarlinksno = Grammarlinks.objects.filter(language="no")
 
-	def init_hidden(self, topicnumber, num_fields, dialogue, image, wordlist):
+	def init_hidden(self, topicnumber, num_fields, dialogue, image, wordlist, attempts):
 		
 		# Store topicnumber as hidden input to keep track of topics.
 		#print "topicnumber", topicnumber
@@ -2248,6 +2249,7 @@ class SahkaSettings(OahpaSettings):
 		dialogue = dialogue
 		image = image
 		wordlist = wordlist
+		attempts = attempts
 
 
 class SahkaQuestion(OahpaQuestion):
@@ -2263,7 +2265,8 @@ class SahkaQuestion(OahpaQuestion):
 		
 		self.init_variables("", userans_val, [])
 
-		utterance_widget = forms.HiddenInput(attrs={'value' : utterance.id})		
+		utterance_widget = forms.HiddenInput(attrs={'value' : utterance.id})
+		facit_widget = forms.HiddenInput(attrs={'value' : utterance.facit})		
 		
 		super(SahkaQuestion, self).__init__(*args, **kwargs)
 
@@ -2275,6 +2278,7 @@ class SahkaQuestion(OahpaQuestion):
 			attrs={'size': answer_size, 'onkeydown':'javascript:return process(this, event, document.gameform);',}))
 
 		self.fields['utterance_id'] = forms.CharField(widget=utterance_widget, required=False)
+		self.fields['facit'] = forms.CharField(widget=facit_widget, required=False)
 
 		self.global_targets = global_targets
 		#print self.global_targets
@@ -2283,9 +2287,8 @@ class SahkaQuestion(OahpaQuestion):
 
 		if utterance:
 			self.utterance_id=utterance.id
-			self.utterance_type=utterance.utttype # Heli: This was needed to make utterance type accessible in templates.
 			#self.utterance=utterance.utterance
-
+						
 			# Forms question string and answer string out of grammatical elements and other strings.
 			qstring = ""
 			
@@ -2344,9 +2347,12 @@ class SahkaQuestion(OahpaQuestion):
 
 		#self.error="correct"
 		self.errormsg = ""
+		self.correct_answers = utterance.facit
+		self.utterance_type=utterance.utttype # Heli: This was needed to make utterance type accessible in templates.
 
 		if correct_val == "correct":
 			self.error="correct"
+			
 
 ###########
 ## Vasta-S (Cealkka)

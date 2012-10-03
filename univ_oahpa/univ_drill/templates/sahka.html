@@ -240,26 +240,40 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/sahka.nno.html
 <input type="hidden" name="wordlist" value="{{ wordlist }}" />
 <input type="hidden" name="gametype" value="sahka" />
 <input type="hidden" name="dialogue" value="{{ dialogue }}" />
+<input type="hidden" name="attempts" value="{{ attempts }}" />
 {% endblock %}
 
+{% for form in forms %} 
 {% block question %}
-
-{% if forms %} 
 {% if form.utterance %}
     {{ form.utterance }}
 {% endif %}
-{% endif %}
-{% endblock %}
+  {% if show_correct %}
+		{% ifequal form.error "error" %}			
+            <span style="margin-top:10px; margin-bottom:10px; display:table; border-style:solid; border-width:2px; border-color:#00FF99; border-radius:7px; padding:5px;">{{ form.correct_answers }}</span> 
+            {{ form.answer }}
+            
+        {% endifequal %}
+  {% endif %}
+ {% endblock %}
+
 
 {% block submit %}
 {% if forms %}
+
 <span align="right">
   {% if not all_correct %}
-  <t class="interface"><input type="submit" id="test" name="test" value="{% trans_to "Answer" "sme" %}"/><span class="invisible">{% trans "Answer" %}</span></t>
+    <t class="interface"><input type="submit" id="test" name="test" value="{% trans_to "Answer" "sme" %}"/><span class="invisible">{% trans "Answer" %}</span></t>
+  {% if not show_correct %}  
+  {% if attempts > 1 %}
+	   <t class="interface"><input type="submit" name="show_correct" value="{% trans_to "Show an example of the correct answer" "sme" %}" /><span class="invisible">{% trans "Show an example of the correct answer" %}</span></t>
   {% endif %}
-</span>
+  {% endif %}
+  {% endif %}
+  </span>
+ {% endif %}
 
-{% endif %}
+
 {% if messages %}
 </br>
 </br>
@@ -271,5 +285,6 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/sahka.nno.html
 {% endif %}
 
 {% endblock submit %}
+{% endfor %}
 
 

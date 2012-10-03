@@ -107,7 +107,7 @@ class SahkaGame(Game):
                 
             form, jee  = self.create_form(db_info, counter, 0)
             self.form_list.append(form)
-
+            self.attempts = 0
             self.num_fields = self.num_fields+1
             if not utterance.utttype == "question":
                 self.update_game(counter+1, form)               
@@ -129,7 +129,7 @@ class SahkaGame(Game):
                     #print "OK"
                     break
             if not nextlink:
-                if prev_utterance.links.filter(target="default"):
+                if prev_utterance.links.filter(target="default"): 
                     nextlink = prev_utterance.links.filter(target="default")[0]
             if nextlink:
 
@@ -153,7 +153,7 @@ class SahkaGame(Game):
                 if utterance.utttype == "closing":
                     self.settings['topicnumber'] = int(utterance.topic.number) + 1
                 if not utterance.utttype == "question":
-                    self.update_game(counter+1, form)               
+                    self.update_game(counter+1, form)             
                 return
 
             else:
@@ -177,7 +177,7 @@ class SahkaGame(Game):
                 self.settings['topicnumber'] = int(utterance.topic.number) + 1
                 self.update_game(counter+1, form)
                 return
-            
+        
         if not self.form_list:
             # No questions found, so the quiz_id must have been bad.
             raise Http404('Invalid quiz id.')
@@ -197,8 +197,7 @@ class SahkaGame(Game):
             for t in target_els:
                 targets.append(force_unicode(t.target))
         qwords = db_info['qwords']
-        global_targets = db_info['global_targets']
-
+        global_targets = db_info['global_targets']       
         form = (SahkaQuestion(utterance, qwords, targets, global_targets, language, db_info['userans'], db_info['correct'], data, prefix=n))
 
         return form, None

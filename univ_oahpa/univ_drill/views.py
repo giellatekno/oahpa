@@ -911,6 +911,7 @@ class Sahkaview(Cealkkaview):
 		self.settings['image'] = settings_form.data.get('image')
 		self.settings['wordlist'] = settings_form.data.get('wordlist')
 		self.settings['dialogue'] = settings_form.data.get('dialogue', '')
+		self.settings['attempts'] = int(settings_form.data.get('attempts',0))
 
 		if 'topicnumber' not in self.settings:
 			self.settings['topicnumber'] = 0
@@ -942,11 +943,17 @@ class Sahkaview(Cealkkaview):
 			game.settings['dialogue'] = settings_form.data.get('dialogue', '')
 			game.settings['topicnumber'] = 0
 			game.settings['wordlist'] = ""
+			game.settings['attempts'] = 0
 			game.num_fields = 1
 			game.update_game(1)
 		else:
 			game.num_fields = int(settings_form.data.get('num_fields', 1))
+
 			game.check_game(settings_form.data)
+			#game.get_score(settings_form.data)
+
+			if "show_correct" in settings_form.data:
+				game.show_correct = 1
 
 			# If the last answer was correct, add new field
 			# 
@@ -954,13 +961,18 @@ class Sahkaview(Cealkkaview):
 				game.update_game(
 					len(game.form_list)+1, 
 					game.form_list[game.num_fields-2])
+				game.settings['attempts'] = 0
+			else:
+				game.settings['attempts'] = game.settings['attempts'] + 1
 		
 		settings_form.init_hidden(
 			game.settings['topicnumber'],
 			game.num_fields,
   			game.settings['dialogue'],
   			game.settings['image'],
-  			game.settings['wordlist'])
+  			game.settings['wordlist'],
+  			game.settings['attempts'])
+  		#print game.num_fields," nr of attempts ",game.settings['attempts']
 
 		return self.context(request, game, settings_form)
 
@@ -984,6 +996,7 @@ class Sahkaview(Cealkkaview):
 			'messages': getmessages(game),
 			'errormsg': errormsg,
 			'count': game.count,
+			'attempts': game.settings['attempts'],
 			'score': game.score,
 			'comment': game.comment,
 			'gametype': self.settings['gametype'],

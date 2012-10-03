@@ -72,11 +72,11 @@
                 {% ifequal form.error "correct" %}
                     <span class="correct">{{ form.userans }}</span> 
                 {% else %}
-                    {% ifequal form.error "error" %}
+                    {% if form.error == "error" and gametype != "sahka" %}
                         <span class="incorrect">{{ form.userans }}</span>
                     {% else %}
                         <span class="blankentry">________________</span>{# Blank answer, this gets hidden via CSS in leksa and morfa, but not morfac #}
-                    {% endifequal %}
+                    {% endif %}
                 {% endifequal %}
 		
                 {% if form.pron_imp %}
@@ -142,7 +142,7 @@
             <dl>
         {% endif %}
     {% endif %} {# game not sahka or (non-empty sahka form and utterance type question) #}
-    
+    {% ifnotequal gametype "sahka" %}
 	<span class="rightpart">
 	{% if show_correct %}
 		{% ifnotequal form.error "correct" %}
@@ -157,6 +157,7 @@
 	
 	{% endif %}
 	</span>
+    {% endifnotequal %}
     
 	{{ form.word_id }}
 	{{ form.conneg }}

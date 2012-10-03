@@ -1017,6 +1017,7 @@ class Utterance(models.Model):
     name = models.CharField(max_length=200,blank=True,null=True)
     topic = models.ForeignKey('Topic')
     formlist = models.ManyToManyField(Form)
+    facit = models.CharField(max_length=400,blank=True,null=True)
 
 class UElement(models.Model):
     utterance=models.ForeignKey(Utterance, null=True)
