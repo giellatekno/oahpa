@@ -52,6 +52,7 @@ def printword(word_key):
 				print "%s:\t%s" % (attr, v)
 
 		print 'semtypes: %s' % ', '.join(w.semtype.all().values_list('semtype', flat=True))
+		print 'dialects: %s' % ', '.join(w.dialects.all().values_list('dialect', flat=True))
 		print 'sources: %s' % ', '.join(w.source.all().values_list('name', flat=True))
 		print 'Wordforms: %d forms generated\n' % forms.count()
 		for form in w.form_set.all():
