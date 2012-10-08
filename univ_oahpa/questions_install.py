@@ -9,7 +9,7 @@ import sys
 import re
 import string
 import codecs
-
+from django.utils.encoding import force_unicode
 def monitor(function):
 	from functools import wraps
 
@@ -81,8 +81,8 @@ class Questions:
 			syntax = el_id
 		
 		if not el:
-			_msg = "\t%s - %s" % (syntax, "No element given.")
-			print '\t', _msg.encode('utf-8')
+			_msg = '\t%s - %s' % (syntax, "No element given.")
+			print _msg.encode('utf-8')
 
 		# Some of the answer elements share content of question elements.
 		content_id = ""
@@ -117,8 +117,8 @@ class Questions:
 											 syntax=q.syntax,
 											 gametype=qaelement.gametype)  # added by Heli
 				# copy = QElement.objects.get(question=qaelement.question,
-				# 									identifier=el_id,
-				# 									syntax=q.syntax)
+				#									identifier=el_id,
+				#									syntax=q.syntax)
 				# mark as a copy
 				q.copy_set.add(qe)
 				qe.save()
@@ -432,10 +432,10 @@ class Questions:
 					if ws_.filter(form__tag=t).count() == 0:
 						err_ = "tag:  %s" % t.string
 						if semty:
-							err_ += "\t(no matching forms with semtype %s)" % semty
+							err_ += u"\t(no matching forms with semtype %s)" % semty
 						elif word_elements:
-							err_ += "\t(no matching forms with words: %s)" % ','.join(ws_.values_list('lemma', flat=True))
-
+							_msg = force_unicode(','.join(ws_.values_list('lemma', flat=True)))
+							err_ += u"\t(no matching forms with words: %s)" % _msg
 						print '\t\t%s' % err_
 						continue
 					if t.pos == p:
