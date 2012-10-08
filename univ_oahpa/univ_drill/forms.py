@@ -1665,11 +1665,12 @@ class ContextMorfaQuestion(OahpaQuestion):
 
 			self.correct_anslist.extend(self.relaxings)
 			log_w = Word.objects.get(id=selected_awords[task]['word'])
-			w_str = log_w.lemma
+			w_str = force_unicode(log_w.lemma).encode('utf-8')
 			w_pos = log_w.pos
-			t_str = Tag.objects.get(id=selected_awords[task]['tag']).string
+			t_str = force_unicode(Tag.objects.get(id=selected_awords[task]['tag']).string).encode('utf-8')
 			log_name = "contextual_morfa_" + w_pos
 			log_value = '%s+%s' % (w_str, t_str)
+			log_value = ""
 			self.is_correct(log_name, log_value)
 			self.correct_ans = self.correct_anslist[0]
 
