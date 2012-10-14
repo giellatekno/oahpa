@@ -323,7 +323,7 @@ LIST Ger = Ger ;
 LIST Sup = Sup ;
 LIST Actio = Actio ;
 
-LIST Actor = Actor ;
+LIST NomAg = NomAg ;
 LIST G3 = G3 ;
 LIST VAbess = VAbess ;
 
@@ -382,7 +382,9 @@ LIST Der/duohkai = Der/duohkai ;
 LIST Der/vuolle = Der/vuolle ;
 LIST Der/vuollai = Der/vuollai ;
 LIST Der/vuolde = Der/vuolde ;
+LIST Der/NomAg = Der/NomAg ;
 
+LIST Actor = NomAg Der/NomAg ;
 
 # Semantic tags
 # -------------
@@ -454,8 +456,8 @@ SET WORD-NOTDE = WORD - ("de") ;
 LIST V-DER = Der/adda Der/alla Der/asti Der/d Der/g Der/h Der/halla Der/hudda Der/huhtti Der/huvva Der/j Der/l Der/ahtti Der/st Der/stuvva Der/goahti ;
  #Der/Pass ;
 
-LIST N-DER = Der/eaddji Der/Dimin Der/eamoš Der/eapmi Der/heapmi Der/n Der/š Der/muš Der/upmi Der/us Der/vuohta (V* Actor) ;
- # Actio ;
+LIST N-DER = Der/eaddji Der/Dimin Der/eamoš Der/eapmi Der/heapmi Der/n Der/š Der/muš Der/upmi Der/us Der/vuohta Der/NomAg ;
+ # Der/NomAct ;
 
 LIST A-DER = Der/diibmosaš Der/eaddji Der/geahtes Der/keahtes Der/heapmi Der/lágan Der/laš Der/meahttun (V* A);
 
@@ -726,10 +728,10 @@ SETS
 # Verbs
 # -----
 # Hmm V*?
-SET VERB = V - (V N);
+SET VERB = V - Der/NomAct - Der/NomAg;
   # V is all readings with a V tag in them, VERB should
             # be the ones without an N tag following the V  
-SET VERB-NOT-ACTIO = V - (V N) - Actio ;
+SET VERB-NOT-ACTIO = V - Der/NomAct - Actio ;
             
 SET LEX-V = VERB - V-DER;
        # VERB but not V-DER
@@ -778,9 +780,9 @@ SET V-TRANS-ACT = V-TRANS - (TV Der/Pass) ;
  
 SET V-TRANS-ACT-NOT-AUX = V-TRANS - Der/Pass - AUX ;
 
-SET V-TRANS-ACT-NOT-ACT = V-TRANS - Der/Pass - Der/n - Actio - Actor - PrsPrc - Attr OR (TV Actio Ess) ;
+SET V-TRANS-ACT-NOT-ACT = V-TRANS - Der/Pass - Der/n - Actio - Der/NomAg - PrsPrc - Attr OR (TV Actio Ess) ;
 
-SET V-TRANS-ACT-NOT-ACT-NOT-AUX = V-TRANS - Der/Pass - Der/n - Actio - Actor - AUX OR (Actio Ess) ;
+SET V-TRANS-ACT-NOT-ACT-NOT-AUX = V-TRANS - Der/Pass - Der/n - Actio - Der/NomAct - Der/NomAg - AUX OR (Actio Ess) ;
 
 
 # Sets for verbs choosing oblique objects or adverbials
@@ -795,7 +797,7 @@ LIST STVLIST = (IV Der/ahtti) (IV Der/h) "addit" "amašit" "atnit" "ánssášit"
 SET STV = STVLIST - Der/Pass ;
 
 	
-SET STV-NOT-ACT = STV - (Actio Nom) - (Actio Gen) - (Actio Acc) - (Actio Loc) - (Actio Ill) - (Actio  Com) - Actor ;
+SET STV-NOT-ACT = STV - (Actio Nom) - (Actio Gen) - (Actio Loc) - (Actio  Com) - Der/NomAg - Der/NomAct  ;
 	
 LIST LOCV = "ávkkástallat" "ballat" "beassat" "beroštit" "biehttalit" "bihtit" "ceavzit" "dinet" "dolkat" "eastadallat" "eastadit" "fuolahit" "fuollat" "geargat" "heaitit" "ilbmat" "jearrat" "luohpat" "máinnašit" "nohkkot" "oassálastit" "spiehkastit" "váruhit" "vástidit" ;
 
@@ -1017,7 +1019,7 @@ SET PRE-NP-HEAD = (Prop Attr) OR (Prop Gen) OR (A Attr) OR (ABBR Attr) OR ("buor
          (PrfPrc) OR PrsPrc OR (A Ord) ;
          # The strict version of items that can only be premodifiers, not parts of the predicate
          
-SET V-PRE-NP = PrfPrc OR PrsPrc OR (V* Actor) OR Actio OR (V A) OR (Ind Prs Sg3) OR (Ind Prs Sg1) OR (Imprt Prs Du2) ;
+SET V-PRE-NP = PrfPrc OR PrsPrc OR Der/NomAg OR Actio OR Der/NomAct OR (Ind Prs Sg3) OR (Ind Prs Sg1) OR (Imprt Prs Du2) ;
     # to be used together with PRE-NP-HEAD before @>N is disambiguated
          
 SET NP-MEMBER   = PRE-NP-HEAD OR N ;
@@ -1263,7 +1265,7 @@ LIST PL-NOUN = "áiru" "beaivváščalbmeláset" "beassážat" "biddu" "čalbmel
  
  # Nominals that appear with plural numerals.
  
-LIST SG-WORD = ("addit" Der/upmi) "almmolašvuohta" "anistupmi" "arvi" "álgu" "áŋgirvuohta" "ávvu" "ballu" "bealli" "boazodoallu" "borakeahttáivuohta" ("buorredáhtolaš" Der/vuohta) "doaivu" "dárogiella" "Finnmárkoláhka" "fuolalašvuohta" "gaskkamuddu" "gávvilvuohta" ("geargat" Der/vuohta) "geavaheapmi" "gelbbolašvuohta" "giellageavaheapmi" "giellapolitihkka" ("giitevaš" Der/vuohta) ("gudnejahttit" Actio) "fápmu"  ("guovttegielalaš" Der/vuohta) "hearvásvuohta" "illu" "ipmárdus" "isitvuohta" ("juotna" Der/laš Der/vuohta) "kulturduogáš" "kulturgelbbolašvuohta" "loahppa" ("máŋggabealat" Der/vuohta) "mielki" "miella" "moraš" "muohta" "musihkka" "oamedovdu" "olahahttivuohta" "ovddasvástádus" "ovttasbargu" "ovttadássásašvuohta" "politihkka" "ráffi" "ráfi" "ráhkisvuohta" "riska" "roahkkatvuohta" "sámegiella" "sámegielmáhttu" "sámekultuvra" "unnitlogupolitihkka" "ustitvuohta" ("vanhurskkis" Der/vuohta) "vásáhusduogáš" ("veahkaválddálaš" Der/vuohta) ("vuordnut" Actio)   ;
+LIST SG-WORD = ("addit" Der/upmi) "almmolašvuohta" "anistupmi" "arvi" "álgu" "áŋgirvuohta" "ávvu" "ballu" "bealli" "boazodoallu" "borakeahttáivuohta" ("buorredáhtolaš" Der/vuohta) "doaivu" "dárogiella" "Finnmárkoláhka" "fuolalašvuohta" "gaskkamuddu" "gávvilvuohta" ("geargat" Der/vuohta) "geavaheapmi" "gelbbolašvuohta" "giellageavaheapmi" "giellapolitihkka" ("giitevaš" Der/vuohta) ("gudnejahttit" Der/NomAct) "fápmu"  ("guovttegielalaš" Der/vuohta) "hearvásvuohta" "illu" "ipmárdus" "isitvuohta" ("juotna" Der/laš Der/vuohta) "kulturduogáš" "kulturgelbbolašvuohta" "loahppa" ("máŋggabealat" Der/vuohta) "mielki" "miella" "moraš" "muohta" "musihkka" "oamedovdu" "olahahttivuohta" "ovddasvástádus" "ovttasbargu" "ovttadássásašvuohta" "politihkka" "ráffi" "ráfi" "ráhkisvuohta" "riska" "roahkkatvuohta" "sámegiella" "sámegielmáhttu" "sámekultuvra" "unnitlogupolitihkka" "ustitvuohta" ("vanhurskkis" Der/vuohta) "vásáhusduogáš" ("veahkaválddálaš" Der/vuohta) ("vuordnut" Der/NomAct)   ;
 
 # Words that are used in singular unless their plurality is stressed by words such as "goappeš", "goappašat", "earálágan", "máŋgalágan" or Num or Ord.
 
@@ -1274,7 +1276,7 @@ LIST SG-WORD = ("addit" Der/upmi) "almmolašvuohta" "anistupmi" "arvi" "álgu" "
 LIST VUOHKI = (".*vuohki"r) "vuohki" ;
 # Usually in comitative, see rule
   
-LIST N-NOPXLIST = "atnu" "almmolašvuohta" "áibmu" "áigemearri" "áigi" "álbmotjienasteapmi" "álgo#álgu" "álgostávval" "álgovuorru" "álgu" "álki" ("árvidit" Actio) "bargoáigi" "báhkka" ("beaivádit" Actio)  "beaivi" "bievlajahki" "boahtteáigi" "boahtu"  "boazodoallu" "boraspire" "cealkka"  "čáppagirjjálašvuohta" "čiegus" "čiehča" "dievasčoahkkin" "dilli"  "divre#giksi"  "dollagáddi" "dološ" "eahket" "Finnmárkkuopmodat" "geatnegas" "geavat" "gaskkamuddo" "gárvi" "genitiivahápmi" "giellageavaheapmi" "girkosiida"  "hálddašanguovlu" "jahki" "jođán" "johgáddi" "johtu" "kilo" "láhka" "leansmánneárvvošteapmi" "loahppa" "logaheapmi" "lohku" "lohpi" "luondu" "maŋŋi" "máŋggaidlohku" "meallu"  ("meannudit" Actio) "mielladearvvašvuođa#dikšu" "nuoraidskuvladássi" "nuppádas" "nuppát" ("oahpahit" Actio) "ođas" "ođđajahki" "oktavuohta" "olle" "olmmoš" "ortnet" "ovttaidlohku"  "predikatiiva" "ráfi" "rávásmanahki"  "riektegeavat" "riikkaarkivára" "sápmelaš" "sisriika" "sivva" "Skjerstad-ášši" "smávvaskuvladássi" "soaittáhat" "stáhtaráđđi" "unnitlogugiella" "vahkku" "valljodat" "viiddis" "viso" "vuokta" ("[0-9]*-#lohku"r) ;
+LIST N-NOPXLIST = "atnu" "almmolašvuohta" "áibmu" "áigemearri" "áigi" "álbmotjienasteapmi" "álgo#álgu" "álgostávval" "álgovuorru" "álgu" "álki" ("árvidit" Der/NomAct) "bargoáigi" "báhkka" ("beaivádit" Der/NomAct)  "beaivi" "bievlajahki" "boahtteáigi" "boahtu"  "boazodoallu" "boraspire" "cealkka"  "čáppagirjjálašvuohta" "čiegus" "čiehča" "dievasčoahkkin" "dilli"  "divre#giksi"  "dollagáddi" "dološ" "eahket" "Finnmárkkuopmodat" "geatnegas" "geavat" "gaskkamuddo" "gárvi" "genitiivahápmi" "giellageavaheapmi" "girkosiida"  "hálddašanguovlu" "jahki" "jođán" "johgáddi" "johtu" "kilo" "láhka" "leansmánneárvvošteapmi" "loahppa" "logaheapmi" "lohku" "lohpi" "luondu" "maŋŋi" "máŋggaidlohku" "meallu"  ("meannudit" Der/NomAct) "mielladearvvašvuođa#dikšu" "nuoraidskuvladássi" "nuppádas" "nuppát" ("oahpahit" Der/NomAct) "ođas" "ođđajahki" "oktavuohta" "olle" "olmmoš" "ortnet" "ovttaidlohku"  "predikatiiva" "ráfi" "rávásmanahki"  "riektegeavat" "riikkaarkivára" "sápmelaš" "sisriika" "sivva" "Skjerstad-ášši" "smávvaskuvladássi" "soaittáhat" "stáhtaráđđi" "unnitlogugiella" "vahkku" "valljodat" "viiddis" "viso" "vuokta" ("[0-9]*-#lohku"r) ;
 
  # Nominals that probably do not have a Px ('1600-logus').
 
@@ -1333,18 +1335,18 @@ LIST HUMAN-GROUP =  "almennet" "almmolašvuohta" "álbmot" (".*álbmot"r) (".*be
    # Duomma:lea 
  
 LIST PROFESSION1 = (".*advokáhta"r) (".*advokáhtta"r) (".*duopmár"r) "arkeologa" (".*artista"r) (".*assisteanta"r) (".*áittardeaddji"r) "ákšo#almmái" (".*bargi"r) "ámmátolmmái" "ámmátolmmoš" (".*mánni"r) (".*hoavda"r) (".*meannudeaddji"r) 
-(".*geahčči"r) (".*bagadalli"r) (".*bagadeaddji"r) (".*konsuleanta"r) "bargoveahka" "bassaleaddji" "bassi" "báhkár" "báhppa" "bálvaleaddji" (".*čálli"r) "bearremánni" "bibliotekára" (".*biigá"r) ("biiladivvut" Actor) (".*vuovdi"r) "birasgáhttenráđđeaddi" (".*terapevta"r)  (".*terapeuta"r) "bisma" "bismá" "bispa" (".*bivdi"r) (".*hábmejeaddji"r) "boanda" "boazodoalli" "boazosápmelaš" "boazosápmi" "bolesmeašttir" (".*vuoddji"r) "buvttadeaddji" 
+(".*geahčči"r) (".*bagadalli"r) (".*bagadeaddji"r) (".*konsuleanta"r) "bargoveahka" "bassaleaddji" "bassi" "báhkár" "báhppa" "bálvaleaddji" (".*čálli"r) "bearremánni" "bibliotekára" (".*biigá"r) ("biila#divvut" Der/NomAg) (".*vuovdi"r) "birasgáhttenráđđeaddi" (".*terapevta"r)  (".*terapeuta"r) "bisma" "bismá" "bispa" (".*bivdi"r) (".*hábmejeaddji"r) "boanda" "boazodoalli" "boazosápmelaš" "boazosápmi" "bolesmeašttir" (".*vuoddji"r) "buvttadeaddji" 
 "čalbmeáhkku" "čalbmeeadni" "čálaoahppavaš" "čiekči" "čorgejeaddji" (".*čuojaheaddji"r) 
 "dáidár" "dáiddár" "dálon" "dálueamit" "dáluisit" "dárkkisteaddji" "davvisápmi" (".*dikšu"r) (".*direktevra"r) (".*dirigeanta"r) (".*divššár"r) (".*doaimmaheaddji"r) (".*doavttir"r) "dulka" "duojár" (".*duopmar"r) (".*dutki"r) 
 "ealáhusdoalli" "eallo#doalli" "eanadoalli" "eananhearrá" (".*sadjásaš"r) "eatnandoalli"
 "fáldi" "fitnodatdoaibmi" "fitnodatoamasteaddji" 
-"gávpejas" "giellaráđđi" (".*veahkki"r) "girdi" "girko#bálvaleaddji" "girkodulka" "gollerávdi" "gonagas" "govva#dáidár" "govvadáiddár" ("govvet" Actor) "govvejeaddji" "guođoheaddji" "guolásteaddji"
+"gávpejas" "giellaráđđi" (".*veahkki"r) "girdi" "girko#bálvaleaddji" "girkodulka" "gollerávdi" "gonagas" "govva#dáidár" "govvadáiddár" ("govvet" Der/NomAg) "govvejeaddji" "guođoheaddji" "guolásteaddji"
 "hárjeheaddji" (".*teknihkar"r) (".*jođiheaddji"r) "johttisápmi" "johttisápmelaš" (".*journalista"r) "keaisár" "kirurga" "koahkka" "korefereanta" "kursa#oahppi" 
 "lágideaddji" "láibu" "lávlu" "leanut" "logopeda" "luhkkár" 
 "máilmmemeašttir" "máhttájeaddji" "máttasápmi" "mearraalmmái" "mearraolmmái" "mearrasápmi" "mišuneara" "museá#bargi" "musihkka#dahkki" "musihkkár"
-"návetvázzi" "neavttár" "njunušjurista" "noaidi" (".*oahpahalli"r) (".*oahpaheaddji"r) "oahppi" ("oaivadit" Actor) "oaivámuš" "ođas#hoavda" "ođas#lohkki" "ossodatdirektevra" "ossodatdirektøra" 
-"parkerenfákta" "pedagoga" "plánejeaddji" "poliisa" "politiija" ("prentet" Actor) "profehta" "professor" 
-"rádjefákta" "rádjesoalddát" "ráđđeaddi" "ráđđeolmmái" "rávdi" "reaŋga" "redaktevra" "rehketdoallodárkkisteaddji"  "rehketdoalli" "rektor" "ruhttejeaddji" "ruvdnaprinsa" ("ruvvet" Actor) 
+"návetvázzi" "neavttár" "njunušjurista" "noaidi" (".*oahpahalli"r) (".*oahpaheaddji"r) "oahppi" ("oaivadit" NomAg) "oaivámuš" "ođas#hoavda" "ođas#lohkki" "ossodatdirektevra" "ossodatdirektøra" 
+"parkerenfákta" "pedagoga" "plánejeaddji" "poliisa" "politiija" ("prentet" Der/NomAg) "profehta" "professor" 
+"rádjefákta" "rádjesoalddát" "ráđđeaddi" "ráđđeolmmái" "rávdi" "reaŋga" "redaktevra" "rehketdoallodárkkisteaddji"  "rehketdoalli" "rektor" "ruhttejeaddji" "ruvdnaprinsa" ("ruvvet" Der/NomAg) 
 "sámediggeráđđi" "sáme#duojár" "sárdnideaddji" "sávzadoalli" "sealgeeadni" "sester" "silbarávdi" "snihkkár" "soalddát" "sosionoma" "spábbačiekčan#hárjeheaddji" "spábbačiekči" "stipendiáhta" "studeanta" "sundi" "suohkanbáhppa" "suohkan#plánejeaddji" 
 "šibitdoalli" "taksivuoddji" "telefonvástideaddji" "tuollár" "turistaofelaš" "uksafákta" "universitehtalektor"  
 "váldodoaimmaheaddji" "viessohoiddár"  "vuoktačuohppi" ;
@@ -1647,7 +1649,7 @@ LIST RIEKTEDILLI = "bajithearrávuohta" "bálvalusfálaldat" "čearddalašvuohta
 
 
 
-LIST SAMEDIGGI-GEN = "autoritehta" "áirras" "árvokommišuvdnalahttu" ("ásahit" Actio) "bargu" "bušeahtta" "bušeahttamearrádus" "bušeahttavuogádat" "čielggadeapmi" "čilgehus" "čoahkkin" "čoahkkinortnet" "dievasčoahkkin" "doaibma" "doaimmahat" "ealáhusfoanda" "ekonomiijahálddašeapmi" "ekonomiijastivret" "hálddašanapparáhtta" "jahkedieđáhus" "jahke-#dieđáhus" "joavku" "kulturviessobušeahtta" "lahttu" "mearrádus" "njuolggadus" "nuoraidkonferánsa" "oaidnu" ("oassálastit" Actio)  "ollesáigepolitihkkár" "opposišuvdna"  "ovttasbargoaktøra" "politihkkár" "rehketdoallu" "sadji" "ságajođiheaddji" "šiehtadusmálle" "ulbmil" "váldoášši" "váldohálddahus" ;
+LIST SAMEDIGGI-GEN = "autoritehta" "áirras" "árvokommišuvdnalahttu" ("ásahit" Der/NomAct) "bargu" "bušeahtta" "bušeahttamearrádus" "bušeahttavuogádat" "čielggadeapmi" "čilgehus" "čoahkkin" "čoahkkinortnet" "dievasčoahkkin" "doaibma" "doaimmahat" "ealáhusfoanda" "ekonomiijahálddašeapmi" "ekonomiijastivret" "hálddašanapparáhtta" "jahkedieđáhus" "jahke-#dieđáhus" "joavku" "kulturviessobušeahtta" "lahttu" "mearrádus" "njuolggadus" "nuoraidkonferánsa" "oaidnu" ("oassálastit" Der/NomAct)  "ollesáigepolitihkkár" "opposišuvdna"  "ovttasbargoaktøra" "politihkkár" "rehketdoallu" "sadji" "ságajođiheaddji" "šiehtadusmálle" "ulbmil" "váldoášši" "váldohálddahus" ;
 
 SET ACTOR = ANIMATE OR INSTITUTION OR ORGANIZATION ;
 
@@ -1675,7 +1677,7 @@ LIST MONEY = "ánsu" "árvu" "bálká" (".*bálká"r)  "buorrin" "bušeahtta" ("
  
 LIST GEN-CONCEPT = "anistupmi" "álgu" "áŋgirvuohta" "áigumuš" "árbevierru" "ávžžuhus" 
 "ballu" "bálvaleapmi" "bálvaluskvaliteahtta" "bargomálle" "boađus" "dárbu" "dássi" "diehtu" "doaibma" "duođaštangeatnegasvuohta" "duogáš" "eaiggátvuohta" "eallinvuohki" "erohus" "evttohus" 
-"fádda" "friddjavuohta" "fuolalašvuohta" "gaskamearri" "gaskaoapmi" ("geargat" Der/vuohta) "geatnegasvuohta" "gelbbolašvuohta" ("gudnejahttit" Actio) "gudni" "guollebivdovuoigatvuohta" "hállu" "hástalus" "isitvuohta" 
+"fádda" "friddjavuohta" "fuolalašvuohta" "gaskamearri" "gaskaoapmi" ("geargat" Der/vuohta) "geatnegasvuohta" "gelbbolašvuohta" ("gudnejahttit" Der/NomAct) "gudni" "guollebivdovuoigatvuohta" "hállu" "hástalus" "isitvuohta" 
 "konflikta" "kontákta" "kulturduogáš" "kulturmáhttu" "kvaliteahtta" "loahppa" "loatnaetymologiija" "lohpi" 
 "máhttu" ("máŋggabealat" Der/vuohta) "miella" "mihttomearri" "molssaeaktu" "muitu" "oamedovdu" "oktavuohta" "olahahttivuohta" "ovdamearka" "ovddasvástádus" "ovttadássásašvuohta" "perspektiiva" 
 "ráffi" "ráfi" "ráhkisvuohta" "rámma" "riekteprinsihppa" "rolla" "sámegielmáhttu" "sámekultuvra" "sihkkarastinstrategiija" "strategiija" "šiehtadallanfáddá" "symbolasystema" 
@@ -1704,7 +1706,7 @@ SET CONCEPT = GEN-CONCEPT OR STRUCTURE OR PROPERTY OR IDEOLOGY ;
   
 LIST ACTIVITY = "aktivitehta" "báikenammadutkamuš" "boazodoallodutkamuš" "čađaheapmi" "dearvvašvuođadutkan" "eallinbirasdutkamuš" "fuolaheapmi" "geahčastat" "gilledutkamuš" "guorahallan" "heahtebargu" "loatnadutkamuš" "lodden" "mátki" "návetbargu" "sámedutkamuš" "sisafárren" "substráhtadutkamuš" "šiehtadallan" ;
 
-  # semantically comparable to Actio forms + lexicalized Actio forms.
+  # semantically comparable to Actio forms + Der/NomAct.
   # probably change of state in the course of time
   
 LIST PROCESS = (".*proseassa"r) ;
@@ -1727,7 +1729,7 @@ SET SITUATION = DILLI OR WEATHER-SITUATION ;
 SET ACTOR-ROLE = HUMAN OR ORGANIZATION OR POLITICAL-PLACE OR EDUCATION ;
  # Institution: Restricting possible actor subjects.
 
-LIST EVENT-TOOL-ACTIVITY = (Actio) "addin" "dearvvašvuođaiskkadeapmi" "goddin" "hárjehallan" "jápmin" "ráđđádallan" "šiehtadallan" "vázzin" ;
+LIST EVENT-TOOL-ACTIVITY = Der/NomAct "addin" "dearvvašvuođaiskkadeapmi" "goddin" "hárjehallan" "jápmin" "ráđđádallan" "šiehtadallan" "vázzin" ;
 
 LIST EVENT = "avádatčoahkkin" "álbmotčoahkkin" "ámtadigge#čoahkkin" "bargiidčoahkkin" "bajimusčoahkkin" "beassášmárkan" "bismmačoahkkin" "buohkaidčoahkkin" "boazodoallošiehtadallan" "budjeahttačoahkkin" 
 "cup" "čakča#márkan" "čoahkkin" "čuoigan#cup" "dievasčoahkkin" "digaštallančoahkkin" "digge#čoahkkin" "dutkančoahkkin" "erenoamáščoahkkin" "fáddáčoahkkin" "feasta" "festivála" "fitnodatčoahkkin"
@@ -1990,7 +1992,7 @@ REMOVE:r1300 VFIN IF (0 ("dušše"))(*1 VFIN BARRIER S-BOUNDARY);
 REMOVE:r1301 VFIN IF (-1 ("leat"))(0 ("dušše"));
 	## Leamaš dušše vihtta dorski nuhtiin.
 
-REMOVE:r1302 Actor IF (0 ("duššat")); 	# Make a set for non-agentive verbs?
+REMOVE:r1302 Der/NomAg IF (0 ("duššat")); 	# Make a set for non-agentive verbs?
 	## Oktagaslaš olbmo lonuheami dohkálašvuohta lea stáhtii geavadis duššin.
 
 SELECT:r1303 Adv IF (*-1 BOC BARRIER NOT-PCLE)(0 ADV-NOT-VERB LINK NOT 0 QDL);
@@ -2049,7 +2051,7 @@ SELECT:r541 Prop IF (NEGATE -1 BOS)(0 Adv LINK NOT 0 (Plc Der/t) OR QDL);
 
 REMOVE:r542 N-DER IF (0 LEX-N LINK NOT 0 Ess);
 	## Dat lea oahpaheaddjin doppe.	
- # Since Actio was included in the N-DER set, this rule now removes
+ # Since Der/NomAct was included in the N-DER set, this rule now removes
  # many Actios. This may be unfortunate. If so, the remedy is to remove
  # Actio from the N-DER set.
  
@@ -2229,12 +2231,6 @@ REMOVE:r582 (A Comp) IF (-1 DYNAMIC-V)(0 Adv LINK NOT 0 ("eanet"));
 SELECT:r583 Adv IF (*-1 ("mannat") BARRIER NOT-ADV-PCLE)(0 ("galmmas") LINK NOT 0 QDL);
 	## In mannan galmmas, muhto veallájin guhká.	
  
-	# Lexical N versus Actio
-	# ----------------------
-
-REMOVE:r584 Actio IF (0 ("eallin"));
-	## Dat geaidnu lea seaggi mii doallu eallimii.
- # other nouns?
 
 	# Nouns, not adverbs or adjectives 
 	# --------------------------------
@@ -2411,7 +2407,7 @@ SELECT:r626 ("goddináitit") IF (0 ("goddináitit"));
 
     # bassi
     # - - - - - - - - -
-REMOVE Actor IF (0 ("bassi" Ess) LINK 1 VFIN);    
+REMOVE NomAg IF (0 ("bassi" Ess) LINK 1 VFIN);    
 REMOVE N IF (0 (A Ess) LINK *0 OPREDV);  
 	## Maŋŋá jápmimis de aliduvvui Gonagas Olav bassin.  
 	# Try to make a general rule.
@@ -2441,7 +2437,7 @@ SELECT:r661 ("boađus") IF (0 ("boahtu"))(1 COPULAS)(2 Num);
 
 	# borri
 	# - - - -
-REMOVE Actor (0 ("borri") LINK *-1 (Num Gen))	;
+REMOVE NomAg (0 ("borri") LINK *-1 (Num Gen))	;
 
 
     # čiekči vs. čiekčá
@@ -2486,8 +2482,8 @@ IFF:r542a ("geardut" V Prs Sg3) (NEGATE *0 VFIN BARRIER CLB) ;
 
     # geassi vs. geasis vs. geassi
     # - - - - - - - - -
-REMOVE Actor (0 ("geassi") LINK -1 DURATION-A OR TIME-A) ;
-REMOVE Actor (0 ("geassi")) ; #  This is preliminary
+REMOVE NomAg (0 ("geassi") LINK -1 DURATION-A OR TIME-A) ;
+REMOVE NomAg (0 ("geassi")) ; #  This is preliminary
 
 
 
@@ -2648,8 +2644,8 @@ SELECT:r742 ("láhka") IF (0 ("lága"))(*1 LAHKA) ;
   	## Go teavsttas lea guhkes láhkanamahus, de sáhttá lága namahusa bidjat aisttonmearkkaid sisa.
   # This one might make trouble for "lága".  
 
-SELECT:r743 ("láhka") IF (0 ("lága"))(1 CC OR COMMA LINK 1 ("konvenšuvdna") OR ("láhkaásahit" Actio) OR ("láhkaovdabargu") OR ("politihkka") OR ("ekonomiija") OR ("riektegeavat") OR ("hálddašit" Actio));
-SELECT:r744 ("láhka") IF (0 ("lága"))(-1 CC OR COMMA LINK -1 ("konvenšuvdna") OR ("láhkaásahit" Actio) OR ("láhkaovdabargu") OR ("politihkka") OR ("ekonomiija") OR ("riektegeavat") OR ("hálddašit" Actio));  	
+SELECT:r743 ("láhka") IF (0 ("lága"))(1 CC OR COMMA LINK 1 ("konvenšuvdna") OR ("láhkaásahit" Der/NomAct) OR ("láhkaovdabargu") OR ("politihkka") OR ("ekonomiija") OR ("riektegeavat") OR ("hálddašit" Der/NomAct));
+SELECT:r744 ("láhka") IF (0 ("lága"))(-1 CC OR COMMA LINK -1 ("konvenšuvdna") OR ("láhkaásahit" Der/NomAct) OR ("láhkaovdabargu") OR ("politihkka") OR ("ekonomiija") OR ("riektegeavat") OR ("hálddašit" Der/NomAct));  	
 	## Gihpa gieđahallá maid vuoigatvuođaid, mat vuođđuduvvet lágaide ja konvenšuvnnaide.
   	## Sámi perspektiiva lea mielde dehálaš dearvvašvuođa- ja sosiálpolitihkalaš guorahallamiin ja mearrádusdokumeanttain, nugo lágain, láhkaásahusain ja bagadusmateriálain.
   
@@ -2786,7 +2782,7 @@ LIST VIRGI-V = "almmuhit" "árvalit" "ásahit" "bealljemerket" "dagahit" "deavdi
 LIST VIRGI-ADJ = "almmolaš" "bealle" "bissovaš" "bistevaš" "dieđalaš" "fásta" "girkolaš" ("girku" N* Der1 Der/laš) "hálddahuslaš" "lassi" "mearrideaddji" "rabas" "sadjásaš" "2/3" "7,5" ;
 
 # Verbs are in actio:
-LIST VIRGI-NOUN = ("ásahit" Actio) "bálká" ("deavdit" Actio) "doaibmagollu" "gollu" ("heaittihit" Actio) "lohku" ("virgáibidjat" Actio) ;
+LIST VIRGI-NOUN = ("ásahit" Der/NomAct) "bálká" ("deavdit" Der/NomAct) "doaibmagollu" "gollu" ("heaittihit" Der/NomAct) "lohku" ("virgáibidjat" Der/NomAct) ;
 
 LIST VIRGI-LOC-NOUN = "almmuhusteaksta" "vuorrobargu" ;
 
@@ -3766,7 +3762,7 @@ REMOVE:r1017 A IF (NEGATE -1 ("mii" Sg Gen))(0 N LINK NOT 0 QDL)(NEGATE 0 Comp O
 SELECT:r1018 VFIN IF (1 go)(*2 ("ahte") BARRIER NOT-ADV);
 	## Dáhtut go ahte mii gáikut dat eret?
 
-REMOVE:r1019 VFIN IF (-1 BOC)(0 NP-HEAD-SG-NOM LINK NOT 0 Actor)(1C V-SG3);  # Pga vanlig med fin + fin i elevsetninger
+REMOVE:r1019 VFIN IF (-1 BOC)(0 NP-HEAD-SG-NOM LINK NOT 0 Der/NomAg)(1C V-SG3);  # Pga vanlig med fin + fin i elevsetninger
 	## Lásse lea mus reaŋgan.
  # Here I am careful, and require the V-SG3 to be a secure reading.
 
@@ -3825,7 +3821,7 @@ REMOVE:r1029 Adv IF (NEGATE *-1 (Pl Nom) BARRIER S-BOUNDARY)(0 (N Pl Nom) LINK N
 REMOVE:r1030 V IF (-1C Dem)(NOT 0 QDL)(1 V-IND-FIN);	
 	## Dán báhkis šaddá čáppa gohppu.
 
-REMOVE:r1031 V IF (-1 BOC)(0 N LINK NOT 0 ("leat") OR (V* Actor))(1 ("go"))(2 VFIN LINK NOT 0 Adv OR Imprt);	
+REMOVE:r1031 V IF (-1 BOC)(0 N LINK NOT 0 ("leat") OR Der/NomAg)(1 ("go"))(2 VFIN LINK NOT 0 Adv OR Imprt);	
 	## Ádjás go lea ođđa fanas?
 
 REMOVE:r1032 (V Ind) IF (-1 Dem)(0 N)(1C (V Ind));
