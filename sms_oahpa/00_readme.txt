@@ -17,6 +17,48 @@ Compiling the current database (sms_common.xml) into Oahpa!-nuõrti
 
 0. First split sms_common.xml according to different pos. Ciprian, what do you think?
 
+===========
+cip: starting now...
+
+note_01: ambiguous format
+
+        <e meta="03">
+                <lg>
+                        <l pos="pcle">-i</l>
+                </lg>
+                <sources>
+                        <book name="kurss" lesson="1"/>
+                </sources>
+                <mg>
+                        <semantics>
+                                <sem class="xxx"/>
+                        </semantics>
+                        <tg xml:lang="rus">
+                                <t pos="pcle">ведь</t>
+                        </tg>
+                        <tg xml:lang="rus">
+                                <t pos="pcle">же</t>
+                        </tg>
+                        <tg xml:lang="fin">
+                                <t pos="pcle">-pa</t>
+                                <t pos="pcle">-pä</t>
+                        </tg>
+                        <tg xml:lang="fin">
+                                <t pos="pcle">-han</t>
+                                <t pos="pcle">-hän</t>
+                        </tg>
+
+ todo: 
+     either you put 
+        (a) all the t-elements under a single tg-element
+        (b) split the meaning group into two (or how many you need)
+        (c) split the entrie into two (or how many you need)
+
+As far as I remember, I the dict-format we have one dict-entry with several
+meaning groups, while in the Ohapa-dicts we have as many entries as meaning groups.
+
+=========
+
 1. Overwrite (delete) the current Oahpa!-nuōrti (which was only a preliminary version of book="100").
 
 2. For LEKSA use only entries tagged as <book name="200"> (for which <book name="100"> is a subset), but exclude <mg>s of entries tagged as <mg oahpa="excl">.
