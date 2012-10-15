@@ -19,19 +19,11 @@ echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "installing grammar links"
+echo "installing grammar links for norwegian"
 $P install.py -i $META/grammatikklinker.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
-
-echo "==================================================="
-echo "updating translation strings"
-$P manage.py compilemessages 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
-
 
 ##
 ##  sme->X
@@ -478,6 +470,13 @@ echo "==================================================="
 echo "==================================================="
 echo "Installing dialogues for Sahka - visit"
 $P install.py -k $META/dialogue_visit.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
+echo "Installing dialogues for Sahka - coffee break"
+$P install.py -k $META/dialogue_coffee.txt 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
