@@ -2,6 +2,7 @@
 Til stades: Heli, Ryan, Lene, Trond
 
 !! Saksliste
+
 * smaoahpa-oppdatering
 * Oahpa 2.0
 * Møte med OY
@@ -13,6 +14,155 @@ Til stades: Heli, Ryan, Lene, Trond
 * Bugliste
 * Neste møte
 
+!! smaoahpa-oppdatering
+
+Bruk same fst (r. 59359) som sist. Lene har gjort oppdateringar i Oahpa-leksikon.
+
+Ulikestava verb har ikkje underinndeling, det er likestava I-VI + ulikestava.
+
+ulikestava, odd, trisyllabic, 3syll, uneven (!) er ulike namn på same stammeklasse. I
+oahpa-leksikonet står det __3syll__.
+
+Vi sett __alle__ som default, og bør gjere det same også på andre ordklasser og andre
+språkversjonar (t.d. substantiv i univ-oahpa).
+
+Skrive oss bak øret: Vi har ikkje stadnamn i Morfa-S/B. For å få det til kan vi merke
+dei som {{<sem class="MORFAS"/>}}  bli med i Morfa-S/B i leksikonfilene (vi vil ikkje ha alle namn, berre dei
+
+__TILTAK__
+
+* __Ryan__ genererer på nytt (1+V, 2+V)
+* __Ryan__ implementerer djuplinking
+* __Lene__ merker geografiske namn med {{<sem class="MORFAS"/>}} før neste oppdatering
+
+
+!! Oahpa 2.0
+
+I pedversions/oahpa_ideas/ped/oahpa/IDEAS skriv Ryan notatar i fila {{ideas}}.
+Vi les dokumentet og tar det opp på neste møte.
+
+
+
+!! Møte med OY
+
+Lene, Trond hadde møte med OY når vi likevel var i Oulu. Det var godt oppmøte frå deira
+side, og stort engasjement. Ante Aikio ville gjerne arbeide med smn og sms, både Oahpa, 
+ordboksmateriale og fst. Vi diskuterte også Kotus-ordboka.
+
+Oahpa: Dei på møtet meinte det ville vere høveleg å bruke det. Lene laga ein eigen Oulu-sti
+i WordPress. Elles har ingenting skjedd.
+
+Anni-Siri Länsmann sa at OY hadde ein del pengar dei kunne bruke til å tilpasse Oahpa til
+Oulu-formål. Eit mogleg bruksområde vil vere å bruke Oahpa som førebuingsamateriale for 
+studentar som les til opptaksprøven.
+
+Viss vi får studentar i Finland til å bruke Oahpa vil Oahpa-loggen bli meir interessant enn før,
+i og med at vi då vil få ulik språkbakgrunn hos studentane som variabel.
+
+__TILTAK__
+* ___Lene__ skriver sammendrag fra møtet med OY
+
+
+!! Default i Oahpa: sme og sma
+
+
+* Alle stammeklasser som default, og ikkje berre likestava
+* Nominativ fleirtal som default, og ikkje illativ
+
+På VISL er det en fellesinnlogging (Ronja Røverdatter) for dem som ikke vil registrere seg, det kan være en ide for oss også.
+
+Vi kan ha Leksa, Numra og MorfaS NomPl åpne, resten må man logge inn for å bruke. Ved innnlogging er det et lite spørreskjema:
+morsmål, alder, følger man undervisning eller ikke 
+
+!! Endringer av innlogging og statistikk
+
+Feedback: graf + farge-kode etter hvilke oppgavetyper man har gjort, hvor mange ganger og resultat
+
+__TILTAK__
+* __Lene__ lager forslag til kriterier for fargekode
+* __Ryan__ legger til i loggen:
+** ip-landskode eller grensesnitt-språkkode
+** brukernavn (for dem som har logga inn)
+
+
+!! Kotus-ordboka
+Ryan har laga script for 
+
+{{{
+sme fin; fin; 
+til 
+sme fin
+sme fin
+}}}
+
+
+{{{
+abessiiva_N_abessiivi
+ablatiiva_N_ablatiivi
+abohtta_N_apotti
+abskissa_N_abskissa
+abstrákta_A_abstrakti
+addáladdat_V_anniskella
+addáladdat_V_jaella
+addáladdat_V_läksyttää
+addálas_A_antelias
+? no analysis on left - addes_A_antelias
+? no analysis on right - addi_A_antava
+addi_N_antaja
+addi_A_antelias
+? no analysis on right - addilit_V_antaa (kohteliaassa pyynnössä)
+? no analysis on right - addilit_V_antaa (nopeasti)
+addit_V_antaa
+addit_V_sallia
+}}} 
+
+
+Denne lista er over ord i {{words/dicts/smefin/inc/algu_not_smefin.csv}} som manglar i usme. Ord i parantes er dagens skrivemåte.
+
+addes, álggalaš, alimas, allii, álloset (alloset), álloska (alloska), anekeahttái (anekeahttá), ánssáškeahttái (ánssáškeahttá), arat, arveš, bajus, bážekeahttái (bážekeahttá), bažekeahttái (bažekeahttá), beasakeahttái (beasakeahttá), bivastuhkes, buokčagas, buorggár, buotdin, börsa, čiehčča-, cissadahkes, cullat, čuvdda, dadnái, dáhtanaga, dearba-, die-, diggojahkes, diimmohala, duhkodat, duhkorahkes, dulppul, dulpu, duŋgadas, duohččagas-, duohččas, duohttá, dusen, duset, dut, fárvealla, gáidagas, gákci-, gaŋggo-, gaŋkko-, gárremaš-, gas, geallagas, gearʼ, gierremas, goađelut-, gorde-, gozastit, guđoldat-, gulámuddu, guoggaras, guoikʼgáhrit, guvʼčalbmi, háhtis, harca-, háskár (hávskár), heavsmán, heavuš, heggeš, hiđuid, háđuid, hilbbut, ipmiltis (ipmilhis), jáhkkeš, jánnoar, jieŋkʼgávli, josgo, klovkken, kyš, láhppagas, leahkkái, leašgoahtit, liidnʼelláš, máhco-, máhken, mearamus, náđet, námmʼoaivi, njirvat, njirvvas, njoaiddumus, ohkolahkes, ovttot, páhkkašuvvat, peaila, pe, preantár, preanttidit, profeittá, provsta, rieivalit, rihcce-, rihcu-, rindeozai, roašmi, ruggii, ruobbʼoaivi, sarat, seahčat, seainnabealle (seainnebealle), sieiddas, sis-, snogastahkii, sodjagas, šokča, spárva-, spierta, spildar-, streaŋggár, suoibma-, táhkka, vealit, veasttamus, villavággu, vuolildus-, vuordagas, vuorddáhas-, vuorddáhus
+
+
+__TILTAK__
+
+* Lene rettar i dokumentet {{words/dicts/smefin/inc/algu_not_smefin.csv}} 
+* Ryan legg deretter til to kolonner: POS for sme og for fin
+* Trond ser på resultet og lagar xml-format (evt. i lag med Ciprian)
+* Tilsvarande med den engelske.
+
+!! Sahka
+
+Når man har gjort feil 2 ganger, tilbys man "Vis forslag til svar" - og man får et forslag som er markert som forslag.
+Brukeren kan kopiere denne inn, eller kan omformulere.
+
+__TILTAK__
+* ___Lene__ legger til fasit i alle dialogene
+* ___Lene__ deler firstmeeting opp i deler
+* Når alt fungerer som det skal, implementerer __Heli__ dette i offisiell Oahpa
+
+
+!! Feedback for Vaska og Sahka
+
+
+__TILTAK__
+* ___Lene__ gjør som avtalt på siste møte
+
+
+
+!! Bugliste
+
+! 1448	Ryan Johnson	sma: Morfologisk feedback i Morfa er delvis borte
+Dette kan bli testa i testing. 
+
+! 1452	Lene Antonsen	Knapp for å få fram url dyplinking mangler	
+
+! 1458	Lene Antonsen	verbene govledh+1 og govledh+2 ble ikke generert
+Generer på nytt, jf. bugmeldinga.
+
+!! Övrigt
+oahpa.uit.no/univ_oahpa har lagts ner
+
+!! Neste møte
+* tirsdag 30.10 kl 8.00
 
 
 
