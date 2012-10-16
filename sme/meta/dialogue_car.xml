@@ -21,6 +21,7 @@
       <alt target="target" variable="CAR" link="Lea_go_buorre_biila_adult"/>
       <alt target="pos" link="Makkar_biila_adult"/>
       <alt target="default" link="Leat_go_dus_sihkkelat_adult"/>
+ 	<facit>Ii leat. dahje Mus lea.</facit>   
     </utt>
     <utt type="question" name="Makkar_biila_adult">
       <text>Makkár biila dus lea?</text>
@@ -28,14 +29,15 @@
       <alt target="unknown" variable="CAR" link="Lea_go_dat_biila_adult"/>
       <alt target="neg" link="Háliidat_go_oastit_mu_biilla_adult"/>
       <alt target="default" link="biila_closing_adult"/>
+ 	<facit>Mus lea Volvo.</facit>   
     </utt>
 
     <utt type="question" name="Lea_go_dat_biila_adult">
       <text>Lea go dat albma biila?</text>
-      <alt target="pos" link="Lea_go_buorre_biila_adult">
+      <alt target="default" link="Leat_go_dus_sihkkelat_adult">
 	<text>Ja nu!</text>
       </alt>
-      <alt target="default" link="Makkar_biila_adult"/>
+ 	<facit>Juo, de lea.</facit>   
     </utt>
 
     
@@ -47,6 +49,7 @@
 	<text>Lean gullan ahte lea buorre biila.</text>
       </alt>
       <alt target="default" link="Háliidat_go_oastit_mu_biilla_adult"/>
+ 	<facit>Juo, de lea.</facit>   
     </utt>
     
     <utt type="question" name="Leat_go_dus_sihkkelat_adult">
@@ -57,6 +60,7 @@
       <alt target="default" link="dialogue_closing">
 	<text>Dahká buori sihkkelastit.</text>
       </alt>
+ 	<facit>Mus eai leat sihkkelat.</facit>   
     </utt>
         
     <utt type="question" name="Háliidat_go_oastit_mu_biilla_adult">
@@ -67,6 +71,7 @@
       <alt target="default" link="biila_closing_adult">
 	<text>In háliit dattetge vuovdit dan.</text>
       </alt> 
+ 	<facit>Juo, de háliidan.</facit>   
     </utt>
 
     <utt type="closing" name="biila_closing_adult" link="dialogue_closing">
