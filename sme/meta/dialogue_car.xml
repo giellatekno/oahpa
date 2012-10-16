@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dialogue PUBLIC "-//UIT//DTD Corpus V1.0//EN" "dialogues.dtd">
+
+<!-- $Id: dialogue_firstmeeting.xml 25996 2009-05-13 08:21:34Z lene $ -->
+
+<dialogue name="car">
+
+  <topic name="Buorre_beaivi" image="biila.jpg">
+    <utt type="opening" name="buorre_beaivi">
+      <text>Buorre beaivi! Mun lean Elle!</text>
+    </utt>
+  </topic>  
+
+  
+  <topic name="biila_adult">
+    <utt type="opening" name="biila_adult_opening">
+      <text>Mus lea hui buorre biila, Toyota Jaris.</text>
+    </utt>
+    <utt type="question" name="Lea_go_dus_biila_adult">
+      <text>Lea go dus biila?</text>
+      <alt target="target" variable="CAR" link="Lea_go_buorre_biila_adult"/>
+      <alt target="pos" link="Makkar_biila_adult"/>
+      <alt target="default" link="Leat_go_dus_sihkkelat_adult"/>
+    </utt>
+    <utt type="question" name="Makkar_biila_adult">
+      <text>Makkár biila dus lea?</text>
+      <alt target="target" variable="CAR" link="Lea_go_buorre_biila_adult"/>
+      <alt target="unknown" variable="CAR" link="Lea_go_dat_biila_adult"/>
+      <alt target="neg" link="Háliidat_go_oastit_mu_biilla_adult"/>
+      <alt target="default" link="biila_closing_adult"/>
+    </utt>
+
+    <utt type="question" name="Lea_go_dat_biila_adult">
+      <text>Lea go dat albma biila?</text>
+      <alt target="pos" link="Lea_go_buorre_biila_adult">
+	<text>Ja nu!</text>
+      </alt>
+      <alt target="default" link="Makkar_biila_adult"/>
+    </utt>
+
+    
+    <utt type="question" name="Lea_go_buorre_biila_adult">
+      <text>Lea go CAR buorre biila?</text> <!--The CAR is target from last question! -->
+      <element id="CAR">
+      </element> 
+      <alt target="pos" link="biila_closing_adult">
+	<text>Lean gullan ahte lea buorre biila.</text>
+      </alt>
+      <alt target="default" link="Háliidat_go_oastit_mu_biilla_adult"/>
+    </utt>
+    
+    <utt type="question" name="Leat_go_dus_sihkkelat_adult">
+      <text>Leat go dus sihkkelat?</text>
+      <alt target="neg" link="Háliidat_go_oastit_mu_biilla_adult">
+	  <text>Dalle fertet birget sihkkeliid haga.</text>
+      </alt>
+      <alt target="default" link="dialogue_closing">
+	<text>Dahká buori sihkkelastit.</text>
+      </alt>
+    </utt>
+        
+    <utt type="question" name="Háliidat_go_oastit_mu_biilla_adult">
+      <text>Háliidat go oastit mu biilla?</text>
+      <alt target="neg" link="biila_closing_adult">
+	<text>Dalle fertet ohcat eará biilla.</text>
+      </alt>
+      <alt target="default" link="biila_closing_adult">
+	<text>In háliit dattetge vuovdit dan.</text>
+      </alt> 
+    </utt>
+
+    <utt type="closing" name="biila_closing_adult" link="dialogue_closing">
+      <text>Mun lean hui duhtavaš iežan biillain.</text>
+    </utt>
+  </topic>
+
+
+  <!-- Same closing for all. -->
+
+  <topic name="farewell">
+    <utt type="closing" name="dialogue_closing">
+      <text>Lei suohtas dáikit duinna.</text>
+    </utt>
+  </topic>  
+
+
+</dialogue>
