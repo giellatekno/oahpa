@@ -44,7 +44,6 @@
       <!-- How old are you? 1-5 child, 6-20 young, 21-100 adult -->
       <alt target="young" link="Váccát_go_skuvlla_young"/>
       <alt target="child" link="Leat_go_álgán_skuvlii_child"/>
-      <alt target="adult" link="Leat_go_barggus_adult"/>
       <alt target="default" link="Leat_go_barggus_adult"/>
  	<facit>Mun lean 23 jagi boaris.</facit>   
     </utt>
@@ -56,7 +55,6 @@
       <utt type="question" name="Leat_go_barggus_adult">
 	<text>Leat go barggus?</text>
 	<!-- Do you work??-->
-	<alt target="pass" link="work_or_school_closing_adult"/>
 	<alt target="pos" link="Makkár_bargu_dus_lea_adult"/>
 	<alt target="default" link="work_or_school_closing_adult"/>
  	<facit>In leat.</facit>   
@@ -132,7 +130,6 @@
       <utt type="question" name="Leat_go_barggus_young">
 	<text>Leat go barggus?</text>
 	<!-- Do you work??-->
-	<alt target="pass" link="skuvla_closing_young"/>
 	<alt target="pos" link="Makkár_bargu_dus_lea_young"/>
 	<alt target="default" link="skuvla_closing_young"/>
  	<facit>Juo, mun lean barggus.</facit>   
