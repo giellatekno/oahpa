@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dialogue PUBLIC "-//UIT//DTD Corpus V1.0//EN" "dialogues.dtd">
+
+<!-- $Id: dialogue_firstmeeting.xml 25996 2009-05-13 08:21:34Z lene $ -->
+
+<dialogue name="hello">
+
+  <topic name="Buorre_beaivi" image="littleman.png">
+    <utt type="opening" name="buorre_beaivi">
+      <text>Buorre beaivi! Mun lean Heaika!</text>
+    </utt>
+  </topic>  
+
+  <topic name="presentation">
+    <utt type="question" name="Mii_namma_lea">
+      <text>Mii du namma lea?</text>
+      <alt target="target" constant="NAME" link="Gos_don_leat_eret">
+	<text>Bures NAME . Suohtas go don leat čállimin muinna odne. </text>	
+	<element id="NAME">
+	</element> 
+      </alt>
+      <alt target="default" link="Gos_don_leat_eret"/>
+    </utt>
+
+    <utt type="question" name="Gos_don_leat_eret">
+      <text>Mun lean Heahtás eret. Gos don leat eret?</text>
+      <alt target="target" variable="PLACENAME" link="presentation_closing">
+	<text>Gal PLACENAME lea buorre báiki.</text>
+      </alt>
+      <alt target="default" link="presentation_closing"/>
+    </utt>
+
+    <utt type="closing" name="presentation_closing">
+      <text>Mun orun Kárášjogas dán áigge.</text>
+    </utt>
+  </topic>
+  
+  <topic name="age">
+    <utt type="opening" name="age_opening">
+      <text>Mun lean 40 jagi boaris.</text>
+    </utt>
+
+    <utt type="question" name="Man_boaris_don_leat">
+      <text>Man boaris don leat?</text>
+      <!-- How old are you? 1-5 child, 6-20 young, 21-100 adult -->
+      <alt target="young" link="Váccát_go_skuvlla_young"/>
+      <alt target="child" link="Leat_go_álgán_skuvlii_child"/>
+      <alt target="adult" link="Leat_go_barggus_adult"/>
+      <alt target="default" link="Leat_go_barggus_adult"/>
+    </utt>
+  </topic>
+
+  <!-- This part is for adults, and default. -->
+ 
+  <topic name="work_adult">    
+      <utt type="question" name="Leat_go_barggus_adult">
+	<text>Leat go barggus?</text>
+	<!-- Do you work??-->
+	<alt target="pass" link="work_or_school_closing_adult"/>
+	<alt target="pos" link="Makkár_bargu_dus_lea_adult"/>
+	<alt target="default" link="work_or_school_closing_adult"/>
+      </utt>
+    
+      <utt type="question" name="Makkár_bargu_dus_lea_adult">
+	<text>Makkár bargu dus lea?</text>
+	<!-- What kind of job do you have?-->
+	<alt target="default" link="work_or_school_closing_adult"/>
+      </utt>
+    
+      <utt type="closing" name="work_or_school_closing_adult">
+	<text>Ja nu!</text>
+      </utt>
+
+  </topic>
+
+  <topic name="married_adult">
+    <utt type="question" name="leat_go_naitalan_adult">
+      <text>Mun lean náitalan. Leat go don náitalan?</text>
+	<alt target="default" link="leat_go_dus_mánát_adult"/>
+    </utt>
+    
+    <utt type="question" name="leat_go_dus_mánát_adult">
+      <text>Mus leat guokte máná, guokte nieidda. Leat go dus mánát?</text>
+      <alt target="pos" link="galle_máná_adult"/>
+      <alt target="default" link="gos_du_eadni_lea_eret_adult"/>
+    </utt>
+
+    <utt type="question" name="galle_máná_adult">
+      <text>Galle máná dus leat?</text>
+      <alt target="default" link="married_closing_adult"/>
+    </utt>
+
+    <utt type="closing" name="married_closing_adult">
+      <text>Doaivvun ahte du mielas lea ortnegis ahte jearan veaháš, go lea mu vuohki oahpásmuvvat dutnje.</text>
+    </utt>
+  </topic>  
+
+
+    <utt type="question" name="galle_viellja_ja_oabbá_adult">
+      <text>Mus leat golbma vielja. Galle vielja ja oappá dus leat?</text>
+      <alt target="default" link="family_closing_adult"/>
+    </utt>
+
+    <utt type="closing" name="family_closing_adult" link="dialogue_closing">
+      <text>Suohtas gullat.</text>
+    </utt>
+  </topic>  
+  
+
+  <!-- This part is for young. -->
+  <topic name="skuvla_young">
+      <utt type="question" name="Váccát_go_skuvlla_young">
+	<text>Mun barggan Sámedikkis. Váccát go skuvlla?</text>
+	<alt target="pos" link="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla_young"/>
+	<alt target="default" link="Leat_go_barggus_young"/>
+      </utt>
+    
+      <utt type="question" name="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla_young">
+	<text>Váccát go vuođđoskuvlla vai joatkkaskuvlla?</text>
+	<!--<alt target="neg" link="Makkár_skuvlla_don_váccát_dalle"/> -->
+	<alt target="default" link="skuvla_closing_young"/>
+      </utt>
+
+      <utt type="question" name="Leat_go_barggus_young">
+	<text>Leat go barggus?</text>
+	<!-- Do you work??-->
+	<alt target="pass" link="skuvla_closing_young"/>
+	<alt target="pos" link="Makkár_bargu_dus_lea_young"/>
+	<alt target="default" link="skuvla_closing_young"/>
+      </utt>
+    
+      <utt type="question" name="Makkár_bargu_dus_lea_young">
+	<text>Makkár bargu dus lea?</text>
+	<!-- What kind of job do you have?-->
+	<alt target="default" link="skuvla_closing_young"/>
+      </utt>
+    
+      <utt type="closing" name="skuvla_closing_young" link="dialogue_closing">
+	<text>Ja nu!</text>
+      </utt>
+  </topic>
+
+
+  <!-- This part is for child. -->
+
+  <topic name="skuvla_child">
+
+      <utt type="question" name="Leat_go_álgán_skuvlii_child">
+	<text>Leat go álgán skuvlii?</text>
+	<alt target="default" link="skuvla__closing_child"/>
+    </utt>
+    
+      <utt type="closing" name="skuvla__closing_child" link="dialogue_closing">
+	<text>Ja nu!</text>
+      </utt>
+
+  </topic>
+
+
+
+  <!-- Same closing for all. -->
+
+  <topic name="farewell">
+    <utt type="closing" name="dialogue_closing">
+      <text>Lei suohtas oahpásmuvvat dutnje, NAME .</text>
+    </utt>
+  </topic>  
+
+
+</dialogue>
