@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dialogue PUBLIC "-//UIT//DTD Corpus V1.0//EN" "dialogues.dtd">
+
+<dialogue name="hello">
+
+  <topic name="Buorre_beaivi" image="man_small.jpg">
+    <utt type="opening" name="buorre_beaivi">
+      <text>Buorre beaivi! Mun lean Heaika!</text>
+    </utt>
+  </topic>  
+
+  <topic name="presentation">
+    <utt type="question" name="Mii_namma_lea">
+      <text>Mii du namma lea?</text>
+      <alt target="target" constant="NAME" link="Gos_don_leat_eret">
+	<text>Bures NAME . Suohtas go don leat čállimin muinna odne.</text>	
+	<element id="NAME">
+	</element> 
+      </alt>
+    </utt>
+
+    <utt type="question" name="Gos_don_leat_eret">
+      <text>Mun lean Heahtás eret. Gos don leat eret?</text>
+      <alt target="target" variable="PLACENAME" link="presentation_closing">
+	<text>Gal PLACENAME lea buorre báiki.</text>
+      </alt>
+    </utt>
+
+    <utt type="closing" name="presentation_closing">
+      <text>Mun orun Kárášjogas dán áigge.</text>
+    </utt>
+  </topic>
+  
+  <topic name="age">
+    <utt type="opening" name="age_opening">
+      <text>Mun lean 40 jagi boaris.</text>
+    </utt>
+
+    <utt type="question" name="Man_boaris_don_leat">
+      <text>Man boaris don leat?</text>
+      <!-- How old are you? 1-5 child, 6-20 young, 21-100 adult -->
+      <alt target="young" link="Váccát_go_skuvlla_young"/>
+      <alt target="child" link="Leat_go_álgán_skuvlii_child"/>
+    </utt>
+  </topic>
+ 
+  <topic name="work_adult">    
+      <utt type="question" name="Leat_go_barggus_adult">
+	<text>Mun barggan skohtergávppis. Leat go barggus dán áigge?</text>
+	<!-- Do you work??-->
+	<alt target="neg" link="Váccát_go_skuvlla_adult"/>
+      </utt>
+  </topic>
+
+   <topic name="skuvla_adult">
+      <utt type="question" name="Váccát_go_skuvlla_adult">
+	<text>Váccát go skuvlla?</text>
+      </utt>
+        
+      <utt type="closing" name="work_closing">
+	<text>Ja nu!</text>
+      </utt>
+
+  </topic>
+
+  <topic name="married_adult">
+    <utt type="question" name="leat_go_naitalan_adult">
+      <text>Mun lean náitalan. Leat go don náitalan?</text>
+    </utt>
+    
+    <utt type="question" name="leat_go_dus_mánát_adult">
+      <text>Leat go dus mánát?</text>
+      <alt target="pos" link="galle_máná_adult"/>
+    </utt>
+
+    <utt type="question" name="galle_máná_adult">
+      <text>Mus leat golbma máná. Galle máná dus leat?</text>
+    </utt>
+
+    <utt type="closing" name="married_closing_adult">
+      <text>Mun jearan veaháš, go lea suohtas oahpásmuvvat dutnje.</text>
+    </utt>
+  </topic>  
+
+  <topic name="family_adult">
+    <utt type="question" name="galle_viellja_ja_oabbá_adult">
+      <text>Mus leat golbma vielja. Galle vielja ja oappá dus leat?</text>
+    </utt>
+
+    <utt type="closing" name="family_closing_adult" link="dialogue_closing">
+      <text>Suohtas gullat.</text>
+    </utt>
+  </topic>  
+  
+
+  <!-- This part is for young. -->
+  <topic name="skuvla_young">
+      <utt type="question" name="Váccát_go_skuvlla_young">
+	<text>Mun barggan skohtergávppis. Váccát go skuvlla?</text>
+	<alt target="pos" link="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla_young"/>
+      </utt>
+
+      <utt type="question" name="Leat_go_barggus_young">
+	<text>Leat go barggus?</text>
+      </utt>
+    
+      <utt type="question" name="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla_young">
+	<text>Váccát go vuođđoskuvlla vai joatkkaskuvlla?</text>
+      </utt>
+
+        
+      <utt type="closing" name="skuvla_closing_young" link="dialogue_closing">
+	<text>Ja nu!</text>
+      </utt>
+  </topic>
+
+
+  <!-- This part is for child. -->
+
+  <topic name="skuvla_child">
+
+      <utt type="question" name="Leat_go_álgán_skuvlii_child">
+	<text>Leat go álgán skuvlii?</text>
+	<text>Ja nu!</text>
+     </utt>
+
+  </topic>
+
+
+
+  <!-- Same closing for all. -->
+
+  <topic name="farewell">
+    <utt type="closing" name="dialogue_closing">
+      <text>Lei suohtas oahpásmuvvat dutnje, NAME .</text>
+    </utt>
+  </topic>  
+
+
+</dialogue>
