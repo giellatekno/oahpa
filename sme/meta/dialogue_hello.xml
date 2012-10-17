@@ -53,21 +53,21 @@
  
   <topic name="work_adult">    
       <utt type="question" name="Leat_go_barggus_adult">
-	<text>Leat go barggus?</text>
+	<text>Mun barggan skohtergávppis. Leat go barggus dán áigge?</text>
 	<!-- Do you work??-->
-	<alt target="pos" link="Makkár_bargu_dus_lea_adult"/>
-	<alt target="default" link="work_or_school_closing_adult"/>
+	<alt target="neg" link="Váccát_go_skuvlla_adult"/>
+	<alt target="default" link="work_closing"/>
  	<facit>In leat.</facit>   
       </utt>
-    
-      <utt type="question" name="Makkár_bargu_dus_lea_adult">
-	<text>Makkár bargu dus lea?</text>
-	<!-- What kind of job do you have?-->
-	<alt target="default" link="work_or_school_closing_adult"/>
- 	<facit>Mun barggan skohtergávppis.</facit>   
+
+   <topic name="skuvla_adult">
+      <utt type="question" name="Váccát_go_skuvlla_adult">
+	<text>Váccát go skuvlla?</text>
+	<alt target="default" link="work_closing"/>
+ 	<facit>Juo, mun váccán skuvlla.</facit>   
       </utt>
-    
-      <utt type="closing" name="work_or_school_closing_adult">
+        
+      <utt type="closing" name="work_closing">
 	<text>Ja nu!</text>
       </utt>
 
@@ -81,20 +81,20 @@
     </utt>
     
     <utt type="question" name="leat_go_dus_mánát_adult">
-      <text>Mus leat guokte máná, guokte nieidda. Leat go dus mánát?</text>
+      <text>Leat go dus mánát?</text>
       <alt target="pos" link="galle_máná_adult"/>
-      <alt target="default" link="dialogue_closing"/>
+      <alt target="default" link="married_closing_adult"/>
  	<facit>Mus leat.</facit>   
     </utt>
 
     <utt type="question" name="galle_máná_adult">
-      <text>Galle máná dus leat?</text>
+      <text>Mus leat golbma máná. Galle máná dus leat?</text>
       <alt target="default" link="married_closing_adult"/>
- 	<facit>Mus leat golbma máná.</facit>   
+ 	<facit>Mus lea okta mánná.</facit>   
     </utt>
 
     <utt type="closing" name="married_closing_adult">
-      <text>Doaivvun ahte du mielas lea ortnegis ahte jearan veaháš, go lea mu vuohki oahpásmuvvat dutnje.</text>
+      <text>Mun jearan veaháš, go lea suohtas oahpásmuvvat dutnje.</text>
     </utt>
   </topic>  
 
@@ -114,7 +114,7 @@
   <!-- This part is for young. -->
   <topic name="skuvla_young">
       <utt type="question" name="Váccát_go_skuvlla_young">
-	<text>Mun barggan Sámedikkis. Váccát go skuvlla?</text>
+	<text>Mun barggan skohtergávppis. Váccát go skuvlla?</text>
 	<alt target="pos" link="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla_young"/>
 	<alt target="default" link="Leat_go_barggus_young"/>
  	<facit>Juo, mun váccán skuvlla.</facit>   
@@ -130,18 +130,10 @@
       <utt type="question" name="Leat_go_barggus_young">
 	<text>Leat go barggus?</text>
 	<!-- Do you work??-->
-	<alt target="pos" link="Makkár_bargu_dus_lea_young"/>
 	<alt target="default" link="skuvla_closing_young"/>
  	<facit>Juo, mun lean barggus.</facit>   
       </utt>
-    
-      <utt type="question" name="Makkár_bargu_dus_lea_young">
-	<text>Makkár bargu dus lea?</text>
-	<!-- What kind of job do you have?-->
-	<alt target="default" link="skuvla_closing_young"/>
- 	<facit>Mun lean oahpaheaddji.</facit>   
-      </utt>
-    
+        
       <utt type="closing" name="skuvla_closing_young" link="dialogue_closing">
 	<text>Ja nu!</text>
       </utt>
