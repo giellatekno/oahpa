@@ -5419,11 +5419,11 @@ ADD (&dia-target) TARGET Prop IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namm
 ADD (&dia-target) TARGET N (*-1 QDL BARRIER (&dia-target) LINK 0 (Mii_namma_lea))(NEGATE *1 (&dia-target)) ;
 
 # Collecting name if it its in the lexicon, the first one if there are many
-ADD (&dia-target) TARGET Prop IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila_adult)) ;
+ADD (&dia-target) TARGET Prop OR ACR IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila_adult)) ;
 
 # Collecting car name, if it is not in the lexicon - for SAHKA
 MAP (&dia-unknown) TARGET QMRK IF (*-1 QDL BARRIER (&dia-target) LINK 0 (Makkar_biila_adult)) ;
-MAP (&dia-unknown) TARGET N IF (NOT 0 Obj)(*-1 QDL BARRIER (&dia-target) OR (&dia-unknown) LINK 0 (Makkar_biila_adult))(NOT *1 (&dia-target) OR (&dia-unknown)) ;
+MAP (&dia-unknown) TARGET N IF (NOT 0 Prop OR ACR)(*-1 QDL BARRIER (&dia-target) OR (&dia-unknown) LINK 0 (Makkar_biila_adult))(NOT *1 (&dia-target) OR (&dia-unknown)) ;
 
 # Collecting place name, if it is  in the lexicon - for SAHKA
 ADD (&dia-target) TARGET (N Plc Loc) IF (*-1 QDL BARRIER (&dia-target) LINK 0 SAHKA LINK *-1 ("orrut") LINK *-1 ("gos" Adv)) ;
@@ -6121,7 +6121,7 @@ LIST CAR = Lea_go_dus_biila_adult ;
 
 MAP (&dia-pass) TARGET QDL (0 (leat_go_dus_mánát_adult) LINK *1 Num)(NOT 0 VASTAS);
 MAP (&dia-pass) TARGET PROFESSION IF (*-1 QDL LINK 0 BARGGUS);
-MAP (&dia-pass) TARGET Prop (*-1 QDL + CAR);
+MAP (&dia-pass) TARGET Prop OR ACR (*-1 QDL + CAR);
 
 
 ADD (&dia-neg) TARGET QDL IF (*1 Neg BARRIER S-BOUNDARY)(0 SAHKA);
