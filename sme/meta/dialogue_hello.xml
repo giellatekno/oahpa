@@ -14,7 +14,7 @@
   <topic name="presentation">
     <utt type="question" name="Mii_namma_lea">
       <text>Mii du namma lea?</text>
-      <alt target="target" constant="NAME" link="Gos_don_leat_eret">
+      <alt target="target" constant="NAME">
 	<text>Bures NAME . Suohtas go don leat čállimin muinna odne.</text>	
 	<element id="NAME">
 	</element> 
@@ -23,7 +23,7 @@
 
     <utt type="question" name="Gos_don_leat_eret">
       <text>Mun lean Heahtás eret. Gos don leat eret?</text>
-      <alt target="target" variable="PLACENAME" link="presentation_closing">
+      <alt target="target" variable="PLACENAME">
 	<text>Gal PLACENAME lea buorre báiki.</text>
       </alt>
  	<facit>Mun lean Romssas eret.</facit>   
@@ -44,7 +44,6 @@
       <!-- How old are you? 1-5 child, 6-20 young, 21-100 adult -->
       <alt target="young" link="Váccát_go_skuvlla_young"/>
       <alt target="child" link="Leat_go_álgán_skuvlii_child"/>
-      <alt target="default" link="Leat_go_barggus_adult"/>
  	<facit>Mun lean 23 jagi boaris.</facit>   
     </utt>
   </topic>
@@ -64,7 +63,6 @@
    <topic name="skuvla_adult">
       <utt type="question" name="Váccát_go_skuvlla_adult">
 	<text>Váccát go skuvlla?</text>
-	<alt target="default" link="work_closing"/>
  	<facit>Juo, mun váccán skuvlla.</facit>   
       </utt>
         
@@ -77,7 +75,6 @@
   <topic name="married_adult">
     <utt type="question" name="leat_go_naitalan_adult">
       <text>Mun lean náitalan. Leat go don náitalan?</text>
-	<alt target="default" link="leat_go_dus_mánát_adult"/>
  	<facit>De lean.</facit>   
     </utt>
     
@@ -90,7 +87,6 @@
 
     <utt type="question" name="galle_máná_adult">
       <text>Mus leat golbma máná. Galle máná dus leat?</text>
-      <alt target="default" link="married_closing_adult"/>
  	<facit>Mus lea okta mánná.</facit>   
     </utt>
 
@@ -102,12 +98,11 @@
   <topic name="family_adult">
     <utt type="question" name="galle_viellja_ja_oabbá_adult">
       <text>Mus leat golbma vielja. Galle vielja ja oappá dus leat?</text>
-      <alt target="default" link="family_closing_adult"/>
  	<facit>Mus leat guokte oappá ja okta viellja.</facit>   
     </utt>
 
     <utt type="closing" name="family_closing_adult" link="dialogue_closing">
-      <text>Suohtas gullat.</text>
+      <text>Mun deaivvadan dávjá iežan vieljaiguin.</text>
     </utt>
   </topic>  
   
@@ -123,15 +118,12 @@
     
       <utt type="question" name="Váccát_go_vuođđoskuvlla_vai_joatkkaskuvlla_young">
 	<text>Váccát go vuođđoskuvlla vai joatkkaskuvlla?</text>
-	<!--<alt target="neg" link="Makkár_skuvlla_don_váccát_dalle"/> -->
 	<alt target="default" link="skuvla_closing_young"/>
  	<facit>Mun váccán joatkkaskuvlla.</facit>   
       </utt>
 
       <utt type="question" name="Leat_go_barggus_young">
 	<text>Leat go barggus?</text>
-	<!-- Do you work??-->
-	<alt target="default" link="skuvla_closing_young"/>
  	<facit>Juo, mun lean barggus.</facit>   
       </utt>
         
@@ -147,7 +139,6 @@
 
       <utt type="question" name="Leat_go_álgán_skuvlii_child">
 	<text>Leat go álgán skuvlii?</text>
-	<alt target="default" link="dialogue_closing"/>
 	<text>Ja nu!</text>
   	<facit>Juo, lean álgán skuvlii.</facit>   
      </utt>
