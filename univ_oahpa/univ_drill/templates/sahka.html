@@ -180,16 +180,18 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/sahka.nno.html
 <tr><td align="center">
 <input type="hidden" name="dialogue" id="id_dialogue" />
 <input type="hidden" name="settings" id="settings" />
-<a href="javascript:submitSahka('firstmeeting');">
-<img border="0px" height="250" src="{{ MEDIA_URL }}/images/woman001_small.jpg"/></br>
-<t class="interface">{% trans_to "Meeting with Kare" "sme" %}<span class="invisible">{% trans "Meeting with Kare" %}</span></t>
+<a href="javascript:submitSahka('hello');">
+<img border="0px" height="250" src="{{ MEDIA_URL }}/images/man_small.jpg"/></br>
+<t class="interface">{% trans_to "Buorre beaivi" "sme" %}<span class="invisible">{% trans "Buorre beaivi" %}</span></t>
 </a>
 </td>
-<!-- <td>
-<a href="javascript:submitSahka('firstmeeting_man');">
-<img border="0px" width="108"  src="{{ MEDIA_URL }}/images/man_small.jpg"/></br>
-{% trans "Meeting with Hansa" %}</a>
-</td><td>
+<td align="center">
+<a href="javascript:submitSahka('car');">
+<img border="0px" height="180"  src="{{ MEDIA_URL }}/images/biila.jpg"/></br>
+<t class="interface">{% trans_to "Biila" "sme" %}<span class="invisible">{% trans "Biila" %}</span></t>
+</a>
+</td>
+<!----<td>
 <a href="javascript:submitSahka('firstmeeting_girl');">
 <img border="0px" width="100"  src="{{ MEDIA_URL }}/images/girl_small.jpg"/></br>
 {% trans "Meeting with Lisa" %}</a>
@@ -200,13 +202,6 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/sahka.nno.html
 </td>
 </tr>
 <tr> --->
-<td align="center">
-<a href="javascript:submitSahka('visit');">
-<img border="0px" width="180" height="250" src="{{ MEDIA_URL }}/images/visit001.jpg"/></br>
-<t class="interface">{% trans_to "Visit" "sme" %}<span class="invisible">{% trans "Visit" %}</span></t>
-</a>
-</td>
-
 <td align="center" valign="middle">
 <a href="javascript:submitSahka('coffee');">
 <img border="0px" height="120" width="120" src="{{ MEDIA_URL }}/images/dialogue_coffee.png"/><br/>
@@ -215,6 +210,13 @@ http://giellatekno.uit.no/oahpa/sme/useoahpa/sahka.nno.html
 </td>
 </tr>
 <tr>
+<td align="center">
+<a href="javascript:submitSahka('visit');">
+<img border="0px" width="180" height="250" src="{{ MEDIA_URL }}/images/visit001.jpg"/></br>
+<t class="interface">{% trans_to "Visit" "sme" %}<span class="invisible">{% trans "Visit" %}</span></t>
+</a>
+</td>
+
 <td align="center">
 <a href="javascript:submitSahka('grocery');">
 <img border="0px" width="200" height="200" src="{{ MEDIA_URL }}/images/grocery.jpg"/></br>
