@@ -15,7 +15,7 @@
     <utt type="question" name="Mii_namma_lea">
       <text>Mii du namma lea?</text>
       <alt target="target" constant="NAME">
-	<text>Bures NAME . Moai áigo hupmat biilla birra.</text>	
+	<text>Buorre go asttat hupmat muinna, NAME . </text>	
 	<element id="NAME">
 	</element> 
       </alt>
@@ -24,17 +24,17 @@
     
   <topic name="biila">
     <utt type="opening" name="biila_adult_opening">
-      <text>Mus lea hui buorre biila, Toyota Jaris.</text>
+      <text></text>
     </utt>
     <utt type="question" name="Lea_go_dus_biila_adult">
-      <text>Lea go dus biila?</text>
+      <text>Moai áigo hupmat biillaid birra. Lea go dus biila?</text>
       <alt target="target" variable="CAR" link="Lea_go_buorre_biila_adult"/>
       <alt target="pos" link="Makkar_biila_adult"/>
       <alt target="default" link="Leat_go_dus_sihkkelat_adult"/>
  	<facit>Ii leat. dahje Mus lea.</facit>   
     </utt>
     <utt type="question" name="Makkar_biila_adult">
-      <text>Makkár biila dus lea?</text>
+      <text>Mus lea hui buorre biila, Toyota. Makkár biila dus lea?</text>
       <alt target="target" variable="CAR" link="Lea_go_buorre_biila_adult"/>
       <alt target="unknown" variable="CAR" link="Lea_go_dat_biila_adult"/>
       <alt target="neg" link="Háliidat_go_oastit_mu_biilla_adult"/>
