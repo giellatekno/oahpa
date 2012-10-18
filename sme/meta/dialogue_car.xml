@@ -38,16 +38,7 @@
       <alt target="target" variable="CAR" link="Lea_go_buorre_biila_adult"/>
       <alt target="unknown" variable="CAR" link="Lea_go_dat_biila_adult"/>
       <alt target="neg" link="Háliidat_go_oastit_mu_biilla_adult"/>
-      <alt target="default" link="biila_closing_adult"/>
  	<facit>Mus lea Volvo.</facit>   
-    </utt>
-
-    <utt type="question" name="Lea_go_dat_biila_adult">
-      <text>Lea go dat albma biila?</text>
-      <alt target="default" link="Leat_go_dus_sihkkelat_adult">
-	<text>Ja nu!</text>
-      </alt>
- 	<facit>Juo, de lea.</facit>   
     </utt>
 
     
@@ -55,12 +46,20 @@
       <text>Lea go CAR buorre biila?</text> <!--The CAR is target from last question! -->
       <element id="CAR">
       </element> 
-      <alt target="pos" link="biila_closing_adult">
+      <alt target="pos" link="dialogue_closing">
 	<text>Lean gullan ahte lea buorre biila.</text>
       </alt>
       <alt target="default" link="Háliidat_go_oastit_mu_biilla_adult"/>
  	<facit>Juo, de lea.</facit>   
     </utt>
+
+    <utt type="question" name="Lea_go_dat_biila_adult">
+      <text>Lea go dat albma biila?</text>
+	<text>Ja nu!</text>
+ 	<facit>Juo, de lea.</facit>   
+    </utt>
+
+
     
     <utt type="question" name="Leat_go_dus_sihkkelat_adult">
       <text>Leat go dus sihkkelat?</text>
@@ -75,10 +74,10 @@
         
     <utt type="question" name="Háliidat_go_oastit_mu_biilla_adult">
       <text>Háliidat go oastit mu biilla?</text>
-      <alt target="neg" link="biila_closing_adult">
+      <alt target="neg">
 	<text>Dalle fertet ohcat eará biilla.</text>
       </alt>
-      <alt target="default" link="dialogue_closing">
+      <alt target="default">
 	<text>In háliit dattetge vuovdit dan. Mun lean hui duhtavaš iežan biillain.</text>
       </alt> 
  	<facit>Juo, de háliidan.</facit>   
