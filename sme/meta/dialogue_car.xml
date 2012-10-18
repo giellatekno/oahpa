@@ -5,14 +5,24 @@
 
 <dialogue name="car">
 
-  <topic name="Buorre_beaivi" image="biila.jpg">
+  <topic name="Buorre_beaivi_car" image="biila.jpg">
     <utt type="opening" name="buorre_beaivi">
       <text>Buorre beaivi! Mun lean Elle!</text>
     </utt>
   </topic>  
-
   
-  <topic name="biila_adult">
+  <topic name="presentation_car">
+    <utt type="question" name="Mii_namma_lea">
+      <text>Mii du namma lea?</text>
+      <alt target="target" constant="NAME">
+	<text>Bures NAME . Moai áigo hupmat biilla birra.</text>	
+	<element id="NAME">
+	</element> 
+      </alt>
+    </utt>
+  </topic>  
+    
+  <topic name="biila">
     <utt type="opening" name="biila_adult_opening">
       <text>Mus lea hui buorre biila, Toyota Jaris.</text>
     </utt>
@@ -68,21 +78,15 @@
       <alt target="neg" link="biila_closing_adult">
 	<text>Dalle fertet ohcat eará biilla.</text>
       </alt>
-      <alt target="default" link="biila_closing_adult">
-	<text>In háliit dattetge vuovdit dan.</text>
+      <alt target="default" link="dialogue_closing">
+	<text>In háliit dattetge vuovdit dan. Mun lean hui duhtavaš iežan biillain.</text>
       </alt> 
  	<facit>Juo, de háliidan.</facit>   
-    </utt>
-
-    <utt type="closing" name="biila_closing_adult" link="dialogue_closing">
-      <text>Mun lean hui duhtavaš iežan biillain.</text>
     </utt>
   </topic>
 
 
-  <!-- Same closing for all. -->
-
-  <topic name="farewell">
+  <topic name="farewell_car">
     <utt type="closing" name="dialogue_closing">
       <text>Lei suohtas dáikit duinna.</text>
     </utt>
