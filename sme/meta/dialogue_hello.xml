@@ -52,7 +52,7 @@
  
   <topic name="work_adult">    
       <utt type="question" name="Leat_go_barggus_adult">
-	<text>Mun barggan skohtergávppis. Leat go barggus dán áigge?</text>
+	<text>Mun barggan skohtergávppis. Leat go don barggus dán áigge?</text>
 	<!-- Do you work??-->
 	<alt target="neg" link="Váccát_go_skuvlla_adult"/>
 	<alt target="default" link="work_closing"/>
@@ -96,13 +96,9 @@
   </topic>  
 
   <topic name="family_adult">
-    <utt type="question" name="galle_viellja_ja_oabbá_adult">
+    <utt type="question" name="galle_viellja_ja_oabbá_adult" link="dialogue_closing">
       <text>Mus leat golbma vielja. Galle vielja ja oappá dus leat?</text>
  	<facit>Mus leat guokte oappá ja okta viellja.</facit>   
-    </utt>
-
-    <utt type="closing" name="family_closing_adult" link="dialogue_closing">
-      <text>Mun deaivvadan dávjá iežan vieljaiguin.</text>
     </utt>
   </topic>  
   
