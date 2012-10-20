@@ -12,6 +12,14 @@ DPF="$DATA/finsme"
 #WORDS=$GTHOME/words/dicts/smenob/src
 
 echo "==================================================="
+echo "fixing collation to utf-8"
+cat fix_collation.sql | $P manage.py dbshel
+echo "==================================================="
+echo " "
+echo "done"
+echo "==================================================="
+
+echo "==================================================="
 echo "installing tags and paradigms for Morfa-C"
 $P install.py -r $META/paradigms.txt -t $META/tags.txt -b 2>>error.log
 echo " "

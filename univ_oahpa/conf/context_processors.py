@@ -6,9 +6,9 @@ except:
 	default = 'GG'
 
 def dialect(request):
-    if not request.session.get('dialect'):
-    	request.session['dialect'] = default
-    return {'dialect': request.session.get('dialect')}
+	if not request.session.get('dialect'):
+		request.session['dialect'] = default
+	return {'dialect': request.session.get('dialect')}
 
 def site_root(request):
 	return {'URL_PREFIX': univ_oahpa.settings.URL_PREFIX}
