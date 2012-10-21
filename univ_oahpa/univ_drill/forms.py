@@ -1188,22 +1188,29 @@ class MorfaQuestion(OahpaQuestion):
 		self.tag = tag.string
 		
 		if tag.pos == "V": 
+			_pronoun_presentation = False
+			_tense_presentation = False
+			_neg_presentation = False
+			_number_presentation = False
 			if not self.pron:
 				if tag.string.find("ConNeg") > -1:
 					# TODO: New choice for every refresh, fix!
 					pers = conneg_agr
 					pronoun = self.PronPNBase[pers]
 					neg_verb = NEGATIVE_VERB_PRES[pers]
-
-					self.pron = '%s %s' % (pronoun, neg_verb)
+					
+					_pronoun_presentation = pronoun
+					_neg_presentation = neg_verb
 				elif tag.personnumber:
 					pronbase = self.PronPNBase[tag.personnumber]
 					pronoun = pronbase
+					_pronoun_presentation = pronoun
 					self.pron = pronoun
 					
 					if self.pron and tag.mood == "Imprt":
 						self.pron_imp = "(" + self.pron + ")"
 						self.pron = ""
+						_pronoun_presentation = False
 					# TODO: conneg only in Prs
 			
 			# Odne 'today', ikte 'yesterday'
@@ -1221,7 +1228,7 @@ class MorfaQuestion(OahpaQuestion):
 
 			if tag.string.find("Der/AV") > -1 or tag.tense in ['Prs','Prt'] and tag.mood == 'Ind':
 				time = TENSE_PRESENTATION.get(tag.tense, False)
-				self.pron = ' '.join([time, pronoun])
+				_tense_presentation = time
 
 			elif ("+Der/Pass" in tag.string) and ("+V" in tag.string):
 				# Odne mun ___
@@ -1234,13 +1241,19 @@ class MorfaQuestion(OahpaQuestion):
 				if not pers:
 					pers = conneg_agr
 				time = TENSE_PRESENTATION.get(tag.tense, False) 
+				_tense_presentation = time
 				pronoun = PASSIVE_PRONOUNS_LIST[pers]
+				_pronoun_presentation = pronoun
 
 				number = ''
 				if pers in ['Sg3', 'Pl3']:
 					number = '(%s)' % DEMONSTRATIVE_PRESENTATION.get(tag.personnumber, False)
+					_number_presentation = number
 
-				self.pron = ' '.join([time, pronoun, number])
+			self.pron = ' '.join([a for a in [_tense_presentation,
+											  _pronoun_presentation,
+											  _number_presentation,
+											  _neg_presentation] if a])
 
 			
 		if tag.pos == "Pron":
