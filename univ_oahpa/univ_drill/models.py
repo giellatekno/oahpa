@@ -290,6 +290,9 @@ class Log(models.Model):
 				'lang', # added
 				'tasklemmas',  # added
 				'username',
+				'user_ip',
+				'user_country',
+				'user_city',
 			]
 		else:
 			attrs = printattrs
