@@ -54,6 +54,10 @@ have installed them to another path.
 	GEOIP_COUNTRY = 'GeoIP.dat'
 	GEOIP_CITY = 'GeoLiteCity.dat'
 
+## Additional django docs
+
+https://docs.djangoproject.com/en/dev/ref/contrib/gis/geoip/#example
+
 """
 
 from django.contrib.gis.utils import GeoIP
