@@ -441,22 +441,22 @@ echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "Installing dialogues for Sahka - firstmeeting - boy"
-$P install.py -k $META/dialogue_firstmeeting_boy.xml 2>>error.log
+echo "Installing dialogues for Sahka - hello"
+$P install.py -k $META/dialogue_hello.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "Installing dialogues for Sahka - firstmeeting - girl"
-$P install.py -k $META/dialogue_firstmeeting_girl.xml 2>>error.log
+echo "Installing dialogues for Sahka - car"
+$P install.py -k $META/dialogue_car.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
 
 echo "==================================================="
-echo "Installing dialogues for Sahka - firstmeeting - man"
-$P install.py -k $META/dialogue_firstmeeting_man.xml 2>>error.log
+echo "Installing dialogues for Sahka - coffee break"
+$P install.py -k $META/dialogue_coffee.xml 2>>error.log
 echo " "
 echo "done"
 echo "==================================================="
@@ -482,12 +482,6 @@ echo " "
 echo "done"
 echo "==================================================="
 
-echo "==================================================="
-echo "Installing dialogues for Sahka - coffee break"
-$P install.py -k $META/dialogue_coffee.txt 2>>error.log
-echo " "
-echo "done"
-echo "==================================================="
 
 # TODO: 
 # fixtagattributes
