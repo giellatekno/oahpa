@@ -1,17 +1,18 @@
 """
 
 TODO: access/error logs for univ_oahpa on gtlab
-
 TODO: request IP test
-
-TODO: ip address
-TODO: country code
-TODO: city code
-
+TODO: extract information and include in Log object creation. Include caching of
+      lookups in user session to save time for users who are using the system
+      a lot.
 
 Basic notes on Geo IP resolving
 
 # Installation
+
+## Table alterations for univ_drill.log
+
+See geo/sql_changes.sql but be careful on production servers.
 
 ## Install geoip C library
 
