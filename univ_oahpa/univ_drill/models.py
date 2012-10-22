@@ -259,7 +259,7 @@ class Log(models.Model):
 	username = models.CharField(max_length=64, null=True)
 	user_ip = models.IPAddressField(blank=True, null=True)
 	user_country = models.CharField(max_length=8, blank=True, null=True)
-	user_city = models.CharField(max_length=30, blank=True, null=True)
+	# user_city = models.CharField(max_length=30, blank=True, null=True)
 	
 	def outputEntry(self, printattrs=False, delimiter=False):
 		""" Renders log information in a one-line string.
@@ -292,7 +292,7 @@ class Log(models.Model):
 				'username',
 				'user_ip',
 				'user_country',
-				'user_city',
+				# 'user_city',
 			]
 		else:
 			attrs = printattrs

@@ -1021,7 +1021,8 @@ class BareGame(Game):
 					data=data,
 					prefix=n,
 					conneg=db_info['conneg'],
-					user=self.settings["user"])
+					user=self.settings["user"],
+					user_country=self.settings["user_country"])
 				)
 		return morph, word.id
 		
@@ -1192,7 +1193,8 @@ class NumGame(Game):
 					data=data,
 					prefix=n,
 					game=self,
-					user=self.settings["user"])
+					user=self.settings["user"],
+					user_country=self.settings["user_country"])
 				)
 		
 		return form, numstring
@@ -1539,7 +1541,8 @@ class QuizzGame(Game):
 					db_info['correct'],
 					data,
 					prefix=n,
-					user=self.settings["user"]))
+					user=self.settings["user"],
+					user_country=self.settings["user_country"]))
 		return form, word.id
 
 

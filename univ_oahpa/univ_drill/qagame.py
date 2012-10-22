@@ -1035,11 +1035,13 @@ class QAGame(Game):
 			# print answer.string
 			form = (ContextMorfaQuestion(question, answer, \
 										 db_info['qwords'], db_info['awords'], dialect, language,\
-										 db_info['userans'], db_info['correct'], data, prefix=n, user=self.settings['user']))
+										 db_info['userans'], db_info['correct'], data, prefix=n, user=self.settings['user'],
+										 user_country=self.settings["user_country"]))
 		else:
 			form = (VastaQuestion(question, \
 								  db_info['qwords'], language, \
-								  db_info['userans'], db_info['correct'], data, prefix=n, user=self.settings['user']))
+								  db_info['userans'], db_info['correct'], data, prefix=n, user=self.settings['user'],
+								  user_country=self.settings["user_country"]))
 			
 		#print "awords:", db_info['awords']
 		#print "awords ...................."
