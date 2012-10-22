@@ -54,6 +54,26 @@ have installed them to another path.
 	GEOIP_COUNTRY = 'GeoIP.dat'
 	GEOIP_CITY = 'GeoLiteCity.dat'
 
+Add the context processor to add country to user session info
+
+	"univ_oahpa.geo.session_country"
+
+
+## Potential problems
+
+### request.META has no 'REMOTE_ADDR'
+
+Check that nginx is passing this in the fastcgi configuration, if not, add
+
+	fastcgi_param REMOTE_ADDR $remote_addr;
+
+### only IPs tracked are 127.0.0.1
+
+Nginx proxy definitions need to have the following: 
+
+	proxy_set_header   X-Real-IP        $remote_addr;
+	proxy_set_header   X-Forwarded-For  $remote_addr;
+
 ## Additional django docs
 
 https://docs.djangoproject.com/en/dev/ref/contrib/gis/geoip/#example
@@ -62,11 +82,25 @@ https://docs.djangoproject.com/en/dev/ref/contrib/gis/geoip/#example
 
 from django.contrib.gis.utils import GeoIP
 
+def session_country(request):
+	from geo.resolver import getCountryFromIP
+	user_country = False
+	if not request.session.get('country'):
+		_ip = request.META['HTTP_X_REAL_IP']
+		result = getCountryFromIP(_ip)
+		if result:
+			user_country = result.get('country_code')
+			request.session['country'] = user_country
+	else:
+		user_country = request.session.get('country')
+	return {'user_country': user_country}
+
+
 def getCountryFromIP(ip_as_string):
 	_geo = GeoIP()
 	return _geo.country(ip_as_string)
 
-def getCityFromIP(ip_as_string):
-	_geo = GeoIP()
-	return _geo.city(ip_as_string)
+# def getCityFromIP(ip_as_string):
+# 	_geo = GeoIP()
+# 	return _geo.city(ip_as_string)
 
