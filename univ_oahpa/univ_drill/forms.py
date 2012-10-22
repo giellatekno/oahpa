@@ -879,6 +879,9 @@ class OahpaQuestion(forms.Form):
 		}
 		if self.user:
 			log_kwargs['username'] = self.user.username
+		if self.user_country:
+			log_kwargs['user_country'] = self.user_country
+
 		log, c = Log.objects.get_or_create(**log_kwargs)
 	
 	def __init__(self, *args, **kwargs):
@@ -891,6 +894,11 @@ class OahpaQuestion(forms.Form):
 			self.user = kwargs.pop('user')
 		else:
 			self.user = False
+
+		if 'user_country' in kwargs:
+			self.user_country = kwargs.pop('user_country')
+		else:
+			self.user_country = False
 		
 		super(OahpaQuestion, self).__init__(*args, **kwargs)
 		
@@ -2120,6 +2128,8 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	}
 	if self.user:
 		log_kwargs['username'] = self.user.username
+	if self.user_country:
+		log_kwargs['user_country'] = self.user_country
 	log = Log.objects.get_or_create(**log_kwargs)
 	#log.save()		   
 	
@@ -2733,6 +2743,8 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	}
 	if self.user:
 		log_kwargs['username'] = self.user.username
+	if self.user_country:
+		log_kwargs['user_country'] = self.user_country
 	log = Log.objects.get_or_create(**log_kwargs)
 	# was Log.objects.create()
 	#log.save() # not needed?		  
