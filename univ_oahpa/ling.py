@@ -280,7 +280,8 @@ class Paradigm:
 		if not wordtype.strip():
 			wordtype = ""
 		else:
-			wordtype = '+' + wordtype.capitalize()
+			w, rest = wordtype[0], wordtype[1::]
+			wordtype = '+' + w.capitalize() + rest
 
 		if self.paradigms.has_key(pos):
 			for a in self.paradigms[pos]:
