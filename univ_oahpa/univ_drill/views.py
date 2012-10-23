@@ -211,6 +211,8 @@ class Gameview(object):
 		# Settings values which aren't set from the form, but from the session
 		if request.session.has_key('country'):
 			self.settings['user_country'] = request.session['country']
+		else:
+			self.settings['user_country'] = False
 
 		if request.session.has_key('dialect'):
 			self.settings['dialect'] = request.session['dialect']

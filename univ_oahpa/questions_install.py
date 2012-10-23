@@ -311,9 +311,11 @@ class Questions:
 							# Should pop those that don't match, or else
 							# problems may arise
 							# TODO: this for other POS
+							fenc = lambda x: force_unicode(x).encode('utf-8')
+							possible_forms = [repr(w.lemma) + '+' + form.tag.string
+												for form in w.form_set.all()]
 							not_found.append(
-								(list(set([w.lemma + '+' + form.tag.string
-									for form in w.form_set.all()])), 
+								(list(set(possible_forms)), 
 								t.string)
 							)
 							words['Pron'].pop(words['Pron'].index(w))

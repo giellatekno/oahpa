@@ -684,7 +684,8 @@ def get_feedback(self, wordform, language):
 	message_list = []
 	if feedback_messages:
 		for text in feedback_messages:
-			text = text.replace('WORDFORM', '"%s"' % baseform.word.lemma)
+			fenc = lambda x: force_unicode(x)
+			text = text.replace('WORDFORM', '"%s"' % fenc(baseform.word.lemma))
 			message_list.append(text)
 	
 	self.feedback = ' \n '.join(list(message_list))
