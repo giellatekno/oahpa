@@ -1682,7 +1682,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 			self.correct_anslist += sum(
 				[relax(force_unicode(f.fullform))
 					for f in possibilities
-					if f.fullform not in self.correct_anslist],
+					if force_unicode(f.fullform) not in self.correct_anslist],
 				[])
 
 			self.correct_anslist.extend(self.relaxings)
