@@ -430,6 +430,17 @@ echo " "
 echo "done"
 echo "==================================================="
 
+echo "==================================================="
+echo "Checking for differences in feedback files"
+$P check_feedback.py $META/messages_vasta.xml \
+    $META/messages_vasta.fin.xml \
+    $META/messages_vasta.sme.xml \
+    $META/messages_vasta.eng.xml \
+    $META/messages_vasta.swe.xml
+echo " "
+echo "done"
+echo "==================================================="
+
 #####
 # Sahka
 #####
