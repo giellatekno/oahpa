@@ -2,7 +2,12 @@
 
 TODO: access/error logs for univ_oahpa on gtlab
 
-Basic notes on Geo IP resolving
+# Basic notes on Geo IP resolving
+
+Additional changes have been made in univ_drill to ensure that user_country is
+stored in Logs, if that setting is available in the session. This module handles
+getting the country code data into the session, and requires the use of a C
+library, GeoIP, and its relevant data files. Compilation is easy.
 
 # Installation
 
@@ -56,7 +61,7 @@ Add the context processor to add country to user session info
 
 ## Potential problems
 
-### request.META has no 'REMOTE_ADDR'
+### request.META has no 'REMOTE_ADDR', or 'HTTP_X_REAL_IP'
 
 Check that nginx is passing this in the fastcgi configuration, if not, add
 
