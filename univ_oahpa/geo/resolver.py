@@ -56,8 +56,7 @@ have installed them to another path.
 
 Add the context processor to add country to user session info
 
-	"univ_oahpa.geo.session_country"
-
+	"univ_oahpa.geo.resolver.session_country"
 
 ## Potential problems
 
@@ -83,7 +82,11 @@ https://docs.djangoproject.com/en/dev/ref/contrib/gis/geoip/#example
 from django.contrib.gis.utils import GeoIP
 
 def session_country(request):
+	""" Add 'user_country' to context and 'country' to request.session, only
+	perform lookup once per session.  """
+
 	from geo.resolver import getCountryFromIP
+
 	user_country = False
 	if not request.session.get('country'):
 		_ip = request.META['HTTP_X_REAL_IP']
@@ -95,12 +98,7 @@ def session_country(request):
 		user_country = request.session.get('country')
 	return {'user_country': user_country}
 
-
 def getCountryFromIP(ip_as_string):
 	_geo = GeoIP()
 	return _geo.country(ip_as_string)
-
-# def getCityFromIP(ip_as_string):
-# 	_geo = GeoIP()
-# 	return _geo.city(ip_as_string)
 
