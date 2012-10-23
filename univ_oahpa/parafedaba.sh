@@ -13,7 +13,7 @@ DPF="$DATA/finsme"
 
 echo "==================================================="
 echo "fixing collation to utf-8"
-cat fix_collation.sql | $P manage.py dbshel
+cat fix_collation.sql | $P manage.py dbshell
 echo "==================================================="
 echo " "
 echo "done"
