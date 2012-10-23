@@ -2,10 +2,14 @@
 We need regular testing, and the testing should be documented.
 
 __Important:__ Always test Oahpa online after you have done any of the following:
-(1) installed something into the database (words, questions, feedback messages)
-(2) made changes into the templates (.html-files)
-(3) made changes into the Python (.py) files
-In case of (3), you have to restart the web services (httpd on victorio, fastcgi on gtoahpa and gtlab) to see the effect of the changes. [More information and concrete commands|httpdserver.html] 
+
+(#) installed something into the database (words, questions, feedback messages)
+(#) made changes into the templates (.html-files)
+(#) made changes into the Python (.py) files
+
+In case of (3), you have to restart the web server (httpd on victorio, fastcgi on gtoahpa and gtlab) to see the effect of the changes. 
+
+[More information and concrete commands|httpdserver.html] 
 
 !!Test routines, also without knowing North Sami
 * [Testing Leksa on the web|LeksaTesting.html]
