@@ -1,10 +1,6 @@
 """
 
 TODO: access/error logs for univ_oahpa on gtlab
-TODO: request IP test
-TODO: extract information and include in Log object creation. Include caching of
-      lookups in user session to save time for users who are using the system
-      a lot.
 
 Basic notes on Geo IP resolving
 
@@ -18,7 +14,7 @@ See geo/sql_changes.sql but be careful on production servers.
 
 The C library is required for the geodjango GeoIP object to be able to perform lookups, and what we need out of this is the path of libGeoIP.so
 
-    wget http://www.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
+    wget http://www.maxmind.com/download/geoip/api/c/GeoIP.tar.gz
     tar zxvf GeoIP.dat.gz
     cd into directory
     mkdir /home/univ_oahpa/univ_oahpa/geo/geoip
