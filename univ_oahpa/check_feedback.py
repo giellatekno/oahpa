@@ -1,127 +1,21 @@
+#!/usr/bin/env python2.7
 # -*- coding: utf-8 -*-
 """
+USAGE
+-----
 
- * XML Structure
- * Install script structure
- * Future?
-
-FEEDBACK AND XML-SOURCE
--------- --- ----------
-
-Feedback message files have the following structure:
-
-	<?xml version="1.0" encoding="utf-8"?>
-	<messages xml:lang="fin"> 
-		<message order="A" id="case1">WORDFORM has ... </message>  
-		<message order="A" id="case2">WORDFORM has ... </message>  
-		<message order="A" id="case3">WORDFORM has ... </message>  
-		<message order="A" id="case4">WORDFORM has ... </message>  
-		<message order="B" id="number1"> and is in singular.</message>  
-		<message order="B" id="number2"> and is in plural.</message>  
-	</messages>
-
-In this case the id attribute corresponds to the message id, and the
-order attribute corresponds to the order that the message will appear
-in in the user interface. Orders are specified with the letters A-Z,
-and if an order is not specified, it is assumed that this message will
-come first, before A.
-
-Nouns: attributes required: pos, soggi, stem, case/case2, number
-
-	<l> nodes in messages.xml and n_smanob must match for
-		pos, soggi, stem
-	
-	Remaining inflectional items, case and number, come from the tag.
-				
-	feedback_nouns.xml: 
-	
-	<feedback pos="N">
-	  <stems>
-		<l stem="2syll">
-		  <msg pos="n">bisyllabic_stem</msg>
-		</l>
-		<l stem="3syll">
-		  <msg pos="n">trisyllabic_stem</msg>
-		</l>
-
-		<l stem="3syll" soggi="a">
-		  <msg case="Ill">soggi_a</msg>
-		  <msg case="Ine">soggi_a</msg>
-		  <msg case="Ela">soggi_a</msg>
-		  <msg case="Com" number="Sg">soggi_a</msg>
-		  <msg case="Ess">soggi_a</msg>
-		  <note>daktarasse, vuanavasse, e/o > a</note>
-		</l>
-	 </stems>
-	</feedback>
-	
-	
-	n_smanob.xml:
-	
-	<e>
-	  <lg>
-		 <l margo="e" pos="n" soggi="e" stem="3syll">aagkele</l>
-	  </lg>
-	  { ... SNIP ... }
-	</e>
-	
-Verbs: Mostly the same. <l/>s match for class, stem, pos
-inflectional information from Tag object pertaining to mood, tense, personnumber.
-
-FEEDBACK DATA STRUCTURE
-
-Remember that this code runs once per word, and not on a huge set of words,
-so it should ideally be returning only one Feedback object.
-
-Feedback objects are then linked to Feedbackmsg objects, which contain
-message IDs, such as soggi_o, class_1, which then link to Feedbacktext objects
-which contain the corresponding messages in other languages.
-
-Feedback objects should be linked to multiple Feedbackmsg items (typically, 3)
-which individually contain class, syllable and umlaut information.
-
-Feedback.messages.all()
-
-INSTALL PROCESS
-------- -------
-
-The install process is invoked with a lexicon file and a feedback file: 
-
-    python feedback_install.py -f word_file.xml --feedbackfile feedback_file.xml
-
-The outcome of the install process is currently such that there is a Feedback
-object in the database for each possible permutation of morphosyntactic
-features, which correspond to both Word object attributes (morphophonology
-mostly, rime, stem type, inflectional class, etc.) and Tag object attributes
-(morphosyntactic mostly, person tense, number, etc.)
-
-This results in many objects being generated, and as such the process may take
-a long time depending on the kind of data being installed. There are several
-optimizations in place, however: inserts are run in batch, not by the typical
-Model.objects.create() method, and before this, all objects and database
-relationships that need to be represented in these batch inserts are fetched,
-with every query cached in python objects. At best, the script will run in 2
-minutes, at worst, 30 minutes.
-
-EDITING
--------
-
-In order to add new morphosyntactic classes, there are several places that may
-need to be checked. Usually it's a good idea to pick a feature that is similar
-to the one being implemented, and search through the file. 
-
-Some comments are marked with #NEW_ATTRIBUTES, so search through the file for
-these for a hint at where to start.
+Specify each file name as a separate argument
 
 
-FUTURE
-------
+	python2.7 check_feedback.py ../sme/meta/messages_vasta.xml \
+   						   	   ../sme/meta/messages_vasta.fin.xml \
+   						   	   ../sme/meta/messages_vasta.sme.xml \
+   						   	   ../sme/meta/messages_vasta.eng.xml \
+   						   	   ../sme/meta/messages_vasta.swe.xml
 
-Enterprising individuals who are willing to optimize more may consider altering
-the model structure, such that Feedbackmsg objects are associated directly with
-Form objects, saving the need to create tons of Feedback objects with all the
-various permutations of morphosyntactic features.
-
+Script will check all permutations of these files to figure out which msgids
+are missing from one or many, missing items are printed to stderr (for
+inclusion in error log), and calculation in progress is printed to stdout.
 
 """
 
