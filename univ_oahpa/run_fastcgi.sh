@@ -1,7 +1,7 @@
 ﻿#!/bin/bash
 
 PROJDIR="/home/univ_oahpa/univ_oahpa/"
-PIDFILE="$PROJDIR/fastcgi.pid"
+PIDFILE="/home/univ_oahpa/univ_oahpa/fastcgi.pid"
 P="python2.7"
 PORT=3032
 
