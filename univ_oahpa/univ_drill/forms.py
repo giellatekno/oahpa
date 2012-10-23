@@ -826,13 +826,13 @@ class OahpaSettings(forms.Form):
 					'contracted': False,
 					'level' : 'all',
 					'lemmacount' : ['2','3','4'], # was: '2', but we have removed the lemmacount menu from the GUI
-					'case': 'N-ILL',
+					'case': 'NOMPL',
 					'pos' : 'N',
 					'vtype' : 'PRS',
 					'adjcase' : 'ATTR',
 					'number' : '',
 					'pron_type': 'Pers',
-					'proncase' : 'N-ILL',
+					'proncase' : 'NOMPL',
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
 					'case_context' : 'N-ILL',
 					'vtype_context' : 'V-PRS',
@@ -844,7 +844,7 @@ class OahpaSettings(forms.Form):
 					'derivation_type_context' : 'DER-PASSV', # was V-DER
 					'geography': 'world',
 					'frequency' : [],
-					'num_bare' : 'N-ILL',
+					'num_bare' : 'NOMPL',
 					'adj_context' : 'ATTRPOS',
 					'source' : 'all'}
 
@@ -1091,12 +1091,12 @@ class MorfaSettings(OahpaSettings):
 		This is a separate form from the one which validates questions and
 		answers.
 	"""
-	case = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES, widget=forms.Select)
+	case = forms.ChoiceField(initial='NOMPL', choices=CASE_CHOICES, widget=forms.Select)
 	pron_type = forms.ChoiceField(initial='PERS', choices=PRONOUN_SUBCLASSES, widget=forms.Select)
-	proncase = forms.ChoiceField(initial='N-ILL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
+	proncase = forms.ChoiceField(initial='NOMPL', choices=CASE_CHOICES_PRONOUN, widget=forms.Select)
 	adjcase = forms.ChoiceField(initial='ATTR', choices=ADJCASE_CHOICES, widget=forms.Select)  # was ADJEX_CHOICES
 	vtype = forms.ChoiceField(initial='PRS', choices=VTYPE_CHOICES, widget=forms.Select)
-	num_bare = forms.ChoiceField(initial='N-ILL', choices=NUM_BARE_CHOICES, widget=forms.Select)
+	num_bare = forms.ChoiceField(initial='NOMPL', choices=NUM_BARE_CHOICES, widget=forms.Select)
 	num_level = forms.ChoiceField(initial='1', choices=NUM_LEVEL_CHOICES, widget=forms.Select)
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
 	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
