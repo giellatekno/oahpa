@@ -23,7 +23,7 @@ to interpret tool.
 !!Fastcgi processes (gtoahpa, gtlab)
 
 Stacks using nginx also use separate processes for python, and php
-applications. For python and Django applications, these are managed
+applications. For __python and Django applications__, these are managed
 via the package flup, and each Oahpa instance has a script checked in in its
 root directory, {{{run_fastcgi.sh}}}, which stores a PID to a file to halt
 old processes and start new ones.
@@ -34,7 +34,7 @@ To start oahpa fastcgi instances, one simply needs to:
 	sudo ./run_fastcgi.sh
 }}}
 
-__ If running the scripts results in error: __
+__ If running of the script results in error: __
 {{{
     ./run_fastcgi.sh: line 10: kill: (332) - Ingen slik prosess
 }}}
@@ -47,7 +47,7 @@ then the process id saved in the file fastcgi.pid is wrong. In such a case you n
 gives you a list of all fastcgi processes. There should be 6 processes for smaoahpa and 6 processes for univ_oahpa. Check the time when the first process for univ_oahpa (alt. smaoahpa) started (the process that generates the remaining 5 processes). Write the PID of the process into the file fastcgi.pid and run the script run_fastcgi.sh again. 
 
 
-PHP applications, Wordpress in our case, are managed by a global server process,
+__PHP applications__, Wordpress in our case, are managed by a global server process,
 php-fpm. To restart this process: 
 
 {{{
