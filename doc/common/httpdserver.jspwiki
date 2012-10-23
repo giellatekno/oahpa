@@ -34,6 +34,18 @@ To start oahpa fastcgi instances, one simply needs to:
 	sudo ./run_fastcgi.sh
 }}}
 
+__ If running the scripts results in error: __
+{{{
+./run_fastcgi.sh: line 10: kill: (332) - Ingen slik prosess
+}}}
+
+the process id saved in the file fastcgi.pid is wrong. In such a case you need to change the file. The command
+{{{
+ps -ef | grep 'fcgi'
+}}}
+gives you a list of all fastcgi processes. There should be 6 processes for smaoahpa and 6 processes for univ_oahpa. Check the time when the first process for univ_oahpa (alt. smaoahpa) started (the process that generates the remaining 5 processes). Write the ID of the process into the pid-file and run the script run_fastcgi.sh again. 
+
+
 PHP applications, Wordpress in our case, are managed by a global server process,
 php-fpm. To restart this process: 
 
