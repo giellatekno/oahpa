@@ -158,6 +158,7 @@ class Game(object):
 			except ObjectDoesNotExist:
 				continue
 			possible_max = db_info.get('possible_question_count', 50)
+			print possible_max
 						
 			# Do not generate same question twice for Morfa-S
 			if word_id:
@@ -178,7 +179,7 @@ class Game(object):
 			if isinstance(self, QAGame):
 				if db_info.has_key('question_id'):
 					q_id = db_info['question_id']
-					if possible_max >= 5:
+					if possible_max > 5:
 						if q_id in set(q_ids):
 							continue
 					q_ids.append(q_id)
