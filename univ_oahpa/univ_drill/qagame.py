@@ -876,10 +876,12 @@ class QAGame(Game):
 
 		### Generate question. If it fails, select another one.
 		i, max_ = 0, 20
+		possible_count = False
 		while not qwords and i < max_:
 			i += 1
 			question = Question.objects.filter(question_query)
 
+			possible_count = question.count()
 			if question.count() > 0:
 				question = question.order_by('?')[0]
 			else:
@@ -892,6 +894,7 @@ class QAGame(Game):
 
 		db_info['qwords'] = qwords
 		db_info['question_id'] = question.id
+		db_info['possible_question_count'] = possible_count
 		
 		return db_info, question
 
