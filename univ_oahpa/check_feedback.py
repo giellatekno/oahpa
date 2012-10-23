@@ -101,6 +101,8 @@ def read_messages(infiles):
 		print >> sys.stderr, ' ! Missing feedback messages in one or many files:'
 		for a in list(total_differences):
 			print >> sys.stderr, '    ' + a
+			missing_files = [f for f, _is in file_sets.items() if a not in _is]
+			print >> sys.stderr, '    ' + ', '.join(missing_files)
 		print >> sys.stderr, ''
 	else:
 		print >> sys.stdout, " * No asymmetricalities between feedback files"
