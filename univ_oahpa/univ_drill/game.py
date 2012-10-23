@@ -157,23 +157,31 @@ class Game(object):
 				raise e
 			except ObjectDoesNotExist:
 				continue
+			possible_max = db_info.get('possible_question_count', 50)
 						
-			# Do not generate same question twice
+			# Do not generate same question twice for Morfa-S
 			if word_id:
 				num = num + 1
-				if word_id in set(word_ids):  #and not (self.settings['gametype'] == "bare" and self.settings['pron_type'] in ['Rel','Dem']): # If there are less than 5 different lemmas to choose from then this causes a "No questions were able to be generated."
+				if word_id in set(word_ids):
+					#and not (self.settings['gametype'] == "bare"
+					# and self.settings['pron_type'] in
+					# ['Rel','Dem']): # If there are less than 5
+					# different lemmas to choose from then this causes
+					# a "No questions were able to be generated."
 					continue
 				else: word_ids.append(word_id)
 
-			# The following if-clause has been added to avoid repeated MorfaC questions in one set.	
+			# The following if-clause has been added to avoid repeated
+			# MorfaC questions in one set, however, if there are less
+			# than 5 possible questions for a particular query, we
+			# ignore this, and repeats are fine.
 			if isinstance(self, QAGame):
-			    if db_info.has_key('question_id'):  
-				    q_id = db_info['question_id']
-				    if q_id in set(q_ids):
-					    continue
-				    else: q_ids.append(q_id)
-				    print "Question: ",q_id
-                
+				if db_info.has_key('question_id'):
+					q_id = db_info['question_id']
+					if possible_max >= 5:
+						if q_id in set(q_ids):
+							continue
+					q_ids.append(q_id)
 			self.form_list.append(form)
 			i = i+1
 		
