@@ -35,8 +35,9 @@ def monitor(function):
 
 class TagError(Exception):
 	
-	def __init__(self, additional_messages=False):
+	def __init__(self, filename, additional_messages=False):
 		self.additional_messages = additional_messages
+		self.filename = filename
 
 	def __str__(self):
 		msg = ("\n ** Grammars defined in element, but no inflections were found.\n"
@@ -48,7 +49,10 @@ class TagError(Exception):
 				"\n"
 				"    If the element specification includes an <id />, ensure that\n"
 				"    the <id /> refers to a word in the database that has forms  \n"
-				"    with the tags specified.\n")
+				"    with the tags specified.\n"
+				"\n"
+				"\n"
+				"	Error occurred in " + self.filename + "\n")
 		if self.additional_messages:
 			for k, v in self.additional_messages.iteritems():
 				values = "\n".join(["        %s" % i for i in v])
@@ -341,7 +345,7 @@ class Questions:
 						[a[1] for a in not_found],
 					'question id': [qaelement.qid],
 				}
-				raise TagError(additional_messages)
+				raise TagError(self.infile_name, additional_messages)
 			return
 
 		if not tagelements: 
@@ -534,6 +538,8 @@ class Questions:
 
 	def read_questions(self, infile, grammarfile):
 
+		self.infile_name = infile
+		self.grammarfile_name = grammarfile
 		xmlfile=file(infile)
 		tree = _dom.parse(infile)
 
