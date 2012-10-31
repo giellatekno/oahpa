@@ -1,0 +1,177 @@
+!!! Møte 31.10.12
+
+Til stades: Heli, Ryan, Lene, Trond
+
+
+!! Saksliste
+
+* smaoahpa-oppdatering
+* Endringer av innlogging og statistikk
+* Kotus-ordboka
+* Sahka
+* Feedback for Vaska og Sahka
+* Bugliste
+* Neste møte
+* Oahpa 2.0
+
+
+!! smaoahpa-oppdatering
+
+! Djuplinking på gtoahpa
+
+Dette har førsteprioritet, for å unngå dobbeltarbeid.
+Det fungerer på gtlab. Lenkja blir lang, men det fungerer.
+
+
+
+! Verbgruppeval på gtoahpa
+
+Det er lett å implementere på gtoahpa, men om natta.
+Ryan har testa på gtlab. OBS: ikke: word class men: verb group
+
+* sma: verbedåehkie
+* eng: verb group
+* nob: verbgruppe
+
+
+! Tooltips
+
+Aajege har møte i dag, vi får høyre konklusjon.
+
+__TILTAK__
+* __Ryan__ implementerer djuplinking og verbgruppevalg på gtoahpa
+
+!! Endringer av innlogging og statistikk
+
+I loggen er det nå land-ip-nr (bør implementeres også i sma-oahpa): NO, SE, US, FI, osv. (Landskode kjem til siste plassen i linje)
+
+    morfa_V|2012/10/31|fillen|fillejuvvon,fillejuvvon|False|None|fillet+V+Der/PassL+V+Ind+Prs+Sg1|None|None|None|None|None|None|None|NO
+    morfa_V|2012/10/30|leaikkastalaide|leaikkastalaide,leaikkastalaide|True|None|leaikkastallat+V+Ind+Prt+Du2|None|None|None|None|None|None|None|SE
+
+Google-analytics 
+
+* http://google.com/analytics
+
+
+__TILTAK__
+* __Ryan__ google.analytics på eller sender info om hvordan til oss andre: 
+** http://kursa.oahpa.no/
+** http://oahpa.no/davvi/
+** http://oahpa.no/aarjel/
+** http://giellatekno.uit.no/
+* __Lene__ lager forslag til kriterier for fargekode, se forrige møte
+
+!! Sahka
+Det er tre nye kortere dialoger.
+Nå er det forslag til fasit til alle svar på alle dialoger, etter at studenten har svart to ganger feil.
+
+Lene og Marika skal arbeide videre med flere dialoger: [dokumentasjon|http://kursa.oahpa.no/sahka]
+
+
+!! Feedback for Vasta og Sahka
+
+Lene har begynt arbeidet med å redusere størrelsen på ped-sme.fst. 
+Den er nå 20 % mindre i forhold til tidligere:
+* ped-sme.fst     324.9 Mb. 3787063 states.
+* tidligere:  398.8Mb.  4739590 states 
+
+
+Jfr. ordinære fst:
+* sme-norm.fst: 43.7 Mb. 525465 states, 1120644 arcs, Circular.
+* sme.fst: 47.1 Mb. 543974 states, 1236325 arcs, Circular.
+* sma/: 8.1 Mb. 92057 states, 215191 arcs, Circular.
+
+Kommando for å måle fst: Last inn i xfst og be om storleik:
+
+{{{
+xfst -e "load sme.fst"
+size
+}}}
+
+Problemer med å få feedback presentert i riktig rekkefølge, se bug 1477.
+Messages er i riktig rekkefølge i dagabasen, men blir likevel presentert i feil rekkefølge
+for brukeren.
+
+
+{{{
+univ_drill_feedbackmsg
+id	msgid
+...
+223	err-no_fst
+224	err-nonword
+225	err-capProp
+226	err-Err
+227	err-IllErr
+228	err-longA
+229	sem-dont-know
+230	grm-incorr-persnr-pron
+231	err-1pers-prfprc
+232	grm-should-be-Vfin
+233	grm-soaitit
+234	grm-should-not-Vfin
+235	grm-not-verb-after-workverb
+236	sem-answer-with-same-verb
+237	sem-neg-verb
+238	sem-same-verb
+239	sem-same-noun
+240	sem-same-adj
+241	sem-same-pron
+242	sem-same-num
+243	sem-same-po
+244	grm-Hab
+245	grm-should-Com
+...
+}}}
+
+__TILTAK__
+* __Heli__ undersøker dette
+
+
+!! Kotus-ordboka
+
+Status quo for sme-fin-ordboka vår:
+* Trond har lagt til nye ord frå kotus til smefin, no totalt 9692 (fra ca 3500)
+* Trond har sett på ei missing-liste frå smenob-arbeidet, og omsett 1186 lemma.
+
+Av dei 9692 er det 86 som ikkje er i fst :
+
+dánáigge, veahkil, arat, arveš, bivastuhkes, cissadahkes, dadnái, diggojahkes, 
+duhkorahkes, gierremas, guđoldat-, hegges, heggeš, háskár, jáhkkeš, klovkken, 
+leahkkái, máhken, njirvvas, njoaiddumus, ohkolahkes, rihcu-, ruggii, seahčat, 
+sieiddas, vealit, veasttamus, čuvdda, ealáskahttin dihtii, Ipmel, diimmohala, 
+dulppul, duohttige, dut, dáhtanaga, hiđuid, háđuid, ovttot, seainnabealle, 
+snogastahkii, daihe, josgo, kyš, kyš, duođe, goaseai, vuorddemat, vuorddesmat, 
+dáidi, laiggasbuđet, márjjábeaivi, rihppa, viener, várta, skieryt, buorggár, 
+duhkordalˈli, dulpu, dusen, duset, fárvealla, gaŋggo-, gearʼ, guvʼčalbmi, 
+heavuš, jieŋkʼgávli, námmʼoaivi, náđet, peaila, provsta, sreaŋggár, streaŋggár, 
+táhkka, vuorddáhus-, čiehččalogi, bealdi, luhtti, maŋábealdi, olggobealdi, 
+guvrradit, cullat, gozastit, hiđástuvvat, leašgoahtit, njirvat, páhkkašuvvat, 
+
+I tillegg kan det vere ein del som ikkje er leksikalisert.
+
+Steg framover:
+
+# legge ut som webordbok 
+# arbeide med lukka ordklasser, og deretter lage VD
+# Frekvensliste frå news slik at det er mogleg å lese Ávvir
+
+__TILTAK__
+* __Trond og Lene__ trekker OY med i arbeidet med ordboka
+
+
+!! Oahpa 2.0
+
+Vi tar det opp på neste møte.
+
+!! Deepdict
+Lene foreslår å bruke [den svenske språkbankens korpusgrensesnitt|http://spraakbanken.gu.se/korp/] for vår korpora:
+
+Denne kan også brukes for dependensordbok, så dermed slipper vi å bruke DeepDict.
+
+!! Neste møte
+Om artikkelskriving til ReCall e.l.: onsdag 7.11 kl. 15.00 
+
+Oahpa-møte: 13.11 kl. 8.30
+
+
+
