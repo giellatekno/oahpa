@@ -1,8 +1,24 @@
-
 !!!Restarting the httpd server
 
 On {{{gtoahpa}}} and {{{gtlab}}}, Apache/httpd is not in use for serving HTML
 and other applications, and nginx is in use. 
+
+!! In case of emergencies... 
+
+On gtoahpa, if for some reason the processes do not restart via chkconfig, 
+inspect via {{{ps aux}}} or {{{top}}} to find out what is or isn't running.
+
+Once missing processes have been identified, the proper order that all services
+should be started in (given dependencies between them) is:
+
+ * mysqld
+ * nginx
+ * php-fpm
+ * lookupserv
+ * univ_oahpa / smaoahpa / rusoahpa
+
+For this use the command {{{ sudo service NAME start }}}, or alternatively
+restart, if necessary.
 
 !!Nginx (gtoahpa, gtlab)
 
@@ -11,7 +27,7 @@ files specifically for nginx. However, should the system reboot and nginx not
 survive this reboot, here is what you need to do: 
 
 {{{
-sudo service nginx restart
+    sudo service nginx restart
 }}}
 
 Pay attention to the output, and trouble any errors that come up.
@@ -54,6 +70,13 @@ php-fpm. To restart this process:
 	sudo service php-fpm restart
 }}}
 
+On both gtoahpa and gtlab, univ_oahpa, smaoahpa and rusoahpa have their own
+init.d scripts, so they may also be restarted via the service command, with the
+usual subcommands: restart, stop, start.
+
+{{{
+    sudo service smaoahpa restart
+}}}
 
 !!Apache/httpd (victorio)
 
