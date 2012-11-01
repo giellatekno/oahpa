@@ -2037,7 +2037,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 		matchObj=messageObj.search(line)
 		if matchObj:
 			msgstring = matchObj.expand(r'\g<msgString>')
-			if msgstring.count("spellingerror") > 0:
+			if msgstring.count("nonword") > 0:  # was: spelling
 				spelling = True
 			msgstrings[wordform][msgstring] = 1
 
@@ -2073,7 +2073,7 @@ def vasta_is_correct(self,question,qwords,language,utterance_name=None):
 	for w in msgstrings.keys():
 		if found: break
 		for m in msgstrings[w].keys():
-			if spelling and m.count("spelling") == 0: continue
+			if spelling and m.count("nonword") == 0: continue
 			m = m.replace("&","") 
 			if Feedbackmsg.objects.filter(msgid=m).count() > 0:
 				msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
@@ -2646,7 +2646,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		matchObj=messageObj.search(line)
 		if matchObj:
 			msgstring = matchObj.expand(r'\g<msgString>')
-			if msgstring.count("spellingerror") > 0:
+			if msgstring.count("nonword") > 0:   # was: spellingerror
 				spelling = True
 			msgstrings[wordform][msgstring] = 1
 
@@ -2684,7 +2684,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	for w in msgstrings.keys():
 		if found: break
 		for m in msgstrings[w].keys():
-			if spelling and m.count("spelling") == 0: continue
+			if spelling and m.count("nonword") == 0: continue  # was: spelling
 			m = m.replace("&","") 
 			if Feedbackmsg.objects.filter(msgid=m).count() > 0:
 				msg_el = Feedbackmsg.objects.filter(msgid=m)[0]
