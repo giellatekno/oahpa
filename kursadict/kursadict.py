@@ -7,9 +7,9 @@ A service that provides JSON and RESTful lookups to webdict xml trie files.
 
 ### /lookup/<from_language>/<to_language>/
 
-    POST JSON format: 
-    
-        Object object: 
+    POST JSON format:
+
+        Object object:
            {"lookup": "fest"}
 
         Optional parameter: type
@@ -20,9 +20,6 @@ A service that provides JSON and RESTful lookups to webdict xml trie files.
 
            Run lookup string through lemmatizer, and look those results up in
            XML lexicon files.
-
-        Optional parameter: fst lookup first
-           # TODO: grab lookups from lookupserver, then return results
 
 ### /auto/<language>
 
@@ -125,8 +122,8 @@ FSTs = {
 
 
 def cleanLookups(lookup_string):
-    """ 
-        Clean XFST lookup text into 
+    """
+        Clean XFST lookup text into
 
         [('keenaa', ['keen+V+1Sg+Ind+Pres', 'keen+V+3SgM+Ind+Pres']),
          ('keentaa', ['keen+V+2Sg+Ind+Pres', 'keen+V+3SgF+Ind+Pres'])]
@@ -134,7 +131,7 @@ def cleanLookups(lookup_string):
     """
 
     analysis_chunks = [a for a in lookup_string.split('\n\n') if a.strip()]
-    
+
     cleaned = []
     for chunk in analysis_chunks:
         lemmas = []
@@ -148,13 +145,13 @@ def cleanLookups(lookup_string):
         lemma = list(set(lemmas))[0]
 
         append_ = (lemma, analyses)
-        
+
         cleaned.append(append_)
 
     return cleaned
-        
 
-def lookupInFST(lookups_list, 
+
+def lookupInFST(lookups_list,
                 fstfile):
 
     import subprocess
@@ -164,28 +161,28 @@ def lookupInFST(lookups_list,
 
     gen_norm_command = ' '.join([LOOKUP_TOOL, fstfile])
     gen_norm_command = gen_norm_command.split(' ')
-    
+
     lookup_proc = subprocess.Popen(gen_norm_command,
-                                    stdin=subprocess.PIPE, 
-                                    stdout=subprocess.PIPE, 
+                                    stdin=subprocess.PIPE,
+                                    stdout=subprocess.PIPE,
                                     stderr=subprocess.PIPE)
- 
+
     def kill_proc(proc=lookup_proc):
-        try: 
+        try:
             proc.kill()
             _cmdError = ''.join(gen_norm_command)
             raise Http404("Process for %s took too long." % _cmdError)
         except OSError:
             pass
         return
- 
+
     t = Timer(5, kill_proc)
     t.start()
-    
+
     output, err = lookup_proc.communicate(lookup_string)
 
     return cleanLookups(output)
-    
+
 
 def lemmatizer(language, lookup):
     fstfile = FSTs.get(language, False)
