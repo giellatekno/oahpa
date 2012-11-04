@@ -65,10 +65,11 @@ TODO: inline textLookup option to only perform lookup if word is selected with
       if response.success == false
         console.log "No words found."
       $(result_elem).html ""
-      for lookup in response.result.lookups
-      	$(result_elem).append $("""
-      	    <p>#{lookup.left} (#{lookup.pos}) &mdash; #{lookup.right}</p>
-      	""")
+      for result in response.result
+      	for lookup in result.lookups
+      	  $(result_elem).append $("""
+      	      <p>#{lookup.left} (#{lookup.pos}) &mdash; #{lookup.right}</p>
+      	  """)
 
     if (string != "")
       source_lang = 'sme'
@@ -130,10 +131,11 @@ TODO: inline textLookup option to only perform lookup if word is selected with
           if response.success == false
             console.log "No words found."
           $(result_elem).html ""
-          for lookup in response.result.lookups
-          	$(result_elem).append $("""
-          	    <p>#{lookup.left} (#{lookup.pos}) &mdash; #{lookup.right}</p>
-          	""")
+          for result in response.result
+          	for lookup in result.lookups
+          	  $(result_elem).append $("""
+          	      <p>#{lookup.left} (#{lookup.pos}) &mdash; #{lookup.right}</p>
+          	  """)
         
         $.ajax
           url: "http://localhost:5000/lookup/#{source_lang}/#{target_lang}/"
