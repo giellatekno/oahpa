@@ -49,7 +49,7 @@ TODO: autocomplete from all left language lemmas, build cache and save
 
 TODO: caching
 """
-
+from crossdomain import crossdomain
 app = Flask(__name__)
 
 class XMLDict(object):
@@ -98,11 +98,21 @@ def lookupXML(_from, _to, lookup, lookup_type=False):
         return {'error': "Unknown language pair"}
 
 @app.route('/lookup/<from_language>/<to_language>/', methods=['GET', 'POST'])
+@crossdomain(origin='*')
 def lookup(from_language, to_language):
     success = False
+    data = False
 
-    lookup_key = request.json.get('lookup', False)
-    lookup_type = request.json.get('type', False)
+    if request.method == "POST":
+        if request.json:
+            data = request.json
+        # Mimetype not sent correctly
+        if request.form:
+            data = json.loads(request.form.keys()[0])
+
+    if data:
+        lookup_key = data.get('lookup', False)
+        lookup_type = data.get('type', False)
 
     if lookup_key:
         result = lookupXML(from_language, to_language, lookup_key, lookup_type)
