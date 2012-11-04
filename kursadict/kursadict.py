@@ -1,8 +1,7 @@
 from flask import Flask, request, json
 # -*- encoding: utf-8 -*-
-
 """
-A service that provides JSON and RESTful lookups to webdict xml files.
+A service that provides JSON and RESTful lookups to webdict xml trie files.
 
 ## Endpints
 
@@ -21,13 +20,21 @@ A service that provides JSON and RESTful lookups to webdict xml files.
 
 ### /auto/<language>
 
-Autocomplete for jQuery's autocomplete plugin
+Autocomplete for jQuery's autocomplete plugin, available from: http://jqueryui.com/autocomplete/
 
+TODO: return array of lemmas formatted such:
+
+    [ { label: "Choice1", value: "value1" }, ... ]
 
 ## Testing via cURL
 
-    curl -X POST -H "Content-type: application/json" -d ' {"lookup": "fest" } ' http://localhost:5000/lookup/nob/sme/
-    curl -X POST -H "Content-type: application/json" -d ' {"lookup": "fest", "type": "startswith" } ' http://localhost:5000/lookup/nob/sme/
+    curl -X POST -H "Content-type: application/json" \
+         -d ' {"lookup": "fest" } ' \
+         http://localhost:5000/lookup/nob/sme/
+
+    curl -X POST -H "Content-type: application/json" \
+         -d ' {"lookup": "fest", "type": "startswith" } \
+         ' http://localhost:5000/lookup/nob/sme/
 
 ## Installing
 
@@ -46,6 +53,7 @@ TODO: caching
 app = Flask(__name__)
 
 class XMLDict(object):
+    # TODO: reverse option, and do lookups on 'r' side instead.
     def __init__(self, filename):
         from lxml import etree
         self.tree = etree.parse(filename)
@@ -73,6 +81,9 @@ class XMLDict(object):
 
 language_pairs = {
     ('nob', 'sme'): XMLDict(filename='nob-sme-lr-trie.xml'),
+    # TODO: ('fin', 'sme'): XMLDict(filename='nob-sme-lr-trie.xml'),
+    # TODO: ('sme', 'nob'): XMLDict(filename='nob-sme-lr-trie.xml',
+    #                               reverse=True),
 }
 
 def lookupXML(_from, _to, lookup, lookup_type=False):
