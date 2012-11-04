@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type='text/javascript' src='jquery.1.7.2.js'></script>
+        <script type='text/javascript' src='jquery.kursadict.js'></script>
+        <script type='text/javascript' src='jquery.textselect.event.js'></script>
+        <script type='text/javascript'>
+            jQuery(document).ready(function (){
+                // Register the input form with options
+                jQuery('#kursadict').kursaDict();
+
+                // Enable options for inline clicking
+            });
+        </script>
+    </head>
+
+    <body>
+        <h3>Inline mode</h3>
+        <p>Den her er ein test tekst, der ein får klikka på eit ord, og so får betydninga.
+        </p>
+
+        <h3>Search form</h3>
+        <form id="kursadict">
+            <input type="text" name="lookup" value="feste"></input>
+            <input type="submit" name="search" id="search"></input>
+            <div id="results">
+                
+            </div>
+        </form>
+    </body>
+</html>
+
