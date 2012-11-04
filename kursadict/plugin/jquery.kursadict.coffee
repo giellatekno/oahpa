@@ -54,11 +54,60 @@ TODO: inline textLookup option to only perform lookup if word is selected with
 # Wrap jQuery and add plugin functionality
 ( jQuery ($) ->
 
+  lookupSelectEvent = (evt, string, element) ->
+    # TODO: set source and target language somehow
+    #
+    # TODO: select another way
+    result_elem = $('#results')
+
+    # TODO: option for displaying this in tooltip instead
+    cleanResponse = (response) ->
+      if response.success == false
+        console.log "No words found."
+      $(result_elem).html ""
+      for lookup in response.result.lookups
+      	$(result_elem).append $("""
+      	    <p>#{lookup.left} (#{lookup.pos}) &mdash; #{lookup.right}</p>
+      	""")
+
+    if (string != "")
+      source_lang = 'sme'
+      target_lang = 'nob'
+      lookup_string = string
+
+      post_data =
+        lookup: lookup_string
+        lemmatize: true
+
+      $.ajax
+        url: "http://localhost:5000/lookup/#{source_lang}/#{target_lang}/"
+        type: "POST"
+        dataType: "json"
+        data: JSON.stringify post_data
+        cache: true
+        success: cleanResponse
+        fail: () ->
+          console.log "omg2"
+
+  ##
+   # $(document).selectToLookup();
+   #
+   #
+   ## 
+
+  $.fn.selectToLookup = (opts) ->
+    opts = $.extend {}, $.fn.selectToLookup.options, opts
+    $(document).bind('textselect', lookupSelectEvent)
+
+
+  ##
+   # $('#divname').kursadict();
+   #
+   #
+   ## 
+    
   $.fn.kursaDict = (opts) ->
     opts = $.extend {}, $.fn.kursaDict.options, opts
-
-    submitWord = (word) ->
-      console.log "submitted"
 
     this.each ->
       elem = $(this)
@@ -66,6 +115,9 @@ TODO: inline textLookup option to only perform lookup if word is selected with
 
       elem.submit () =>
         lookup_value = $(this).find('input[name="lookup"]').val()
+
+        target_lang = $(this).find('select[name="target_lang"]').val()
+        source_lang = $(this).find('input[name="source_lang"]').val()
 
         post_data =
           lookup: lookup_value
@@ -84,7 +136,7 @@ TODO: inline textLookup option to only perform lookup if word is selected with
           	""")
         
         $.ajax
-          url: 'http://localhost:5000/lookup/nob/sme/'
+          url: "http://localhost:5000/lookup/#{source_lang}/#{target_lang}/"
           type: "POST"
           dataType: "json"
           data: JSON.stringify post_data
