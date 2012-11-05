@@ -112,10 +112,10 @@ def lookupXML(_from, _to, lookup, lookup_type=False):
 ##
 ##
 
-LOOKUP_TOOL = '/Users/pyry/bin/lookup -flags mbTT -utf8 -d'
+LOOKUP_TOOL = '/usr/bin/lookup -flags mbTT -utf8 -d'
 
 FSTs = {
-    'sme': '/Users/pyry/gtsvn/gt/sme/bin/sme.fst',
+    'sme': '/opt/smi/sme/bin/sme.fst',
     # 'sma': '/opt/smi/sma/bin/sma.fst',
     # 'smj': '/opt/smi/smj/bin/smj.fst',
 }
@@ -210,8 +210,11 @@ def lemmatizer(language, lookup):
 ##
 ##
 
+@app.route('/kursadict/test/', methods=['GET'])
+def testapp():
+	return "omg!"
 
-@app.route('/lookup/<from_language>/<to_language>/', methods=['GET', 'POST'])
+@app.route('/kursadict/lookup/<from_language>/<to_language>/', methods=['GET', 'POST'])
 @crossdomain(origin='*')
 def lookupWord(from_language, to_language):
     success = False
