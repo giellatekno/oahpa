@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <!-- these are not required, but just for demonstration -->
         <link href="main.css" rel="stylesheet" />
 
@@ -22,7 +23,8 @@
                 jQuery(document).selectToLookup({
                   tooltip: true,
                   sourceLanguage: "sme",
-                  targetLanguageSelect: "select[name='target_lang']"
+                  targetLanguageSelect:
+                    "input[name='target_lang']:checked"
                 });
             });
         </script>
@@ -34,45 +36,66 @@
             <p>Hold Alt or option (⌥) while selecting or double clicking
                 on a word to select it, and a result will appear. To
                 reveal or dismiss it, simply hover over the now
-                highlighted word.</p>
-            <p>Wikipedia lea friddja diehtosátnegirji badjel 270 gielain.
+                highlighted word. Language is selected from the form
+                below.</p>
+            <blockquote><p>Wikipedia lea friddja diehtosátnegirji badjel 270 gielain.
                 Dan čállet eaktodáhtolaš geavaheaddjit miehtá máilmmi. Dan
                 sisdoalu lea lohpi kopieret ja geavahit almmolaččat. Maid
-                Don sáhtát juste dál rievdadit ja dievasmahttit
+                don sáhtát juste dál rievdadit ja dievasmahttit
                 Wikipedia-artihkkaliid, dahje álggahit áibbas ođđa
                 artihkkala Wikipediai. Dávjá lea buorre jorgalit
                 artihkkaliid dáro-, ruoŧa-, suoma-, dahje eŋgelasgiel
                 Wikipediain. Wikipedia-prošeakta álggii jagis 2001 ja dál
                 gávdnojit badjel 20 miljovnna artihkkala, main 6,520 leat
-                davvisámegielat Wikipedias.</p>
+                davvisámegielat Wikipedias.</p></blockquote>
+
+            <p>This works anywhere you can highlight text, not just in
+                the above paragraph.</p>
 
             <h3>Search form</h3>
             <div class="kursadict_container">
-                <form id="kursadict">
-                  <fieldset>
-                    <div class="input-append">
-                        <input type="text" name="lookup"></input>
-                        <button type="submit" class="btn" name="search">Submit</button>
-                    </div>
-                    <br />
-                    <input type="hidden" name="source_lang" value="sme" />
-                    <label for="target_lang">Tooltip and search
-                        language</label>
-                    <select name="target_lang" id="target_lang">
-                      <option value="nob">Norwegian</option>
-                      <option value="fin">Finnish</option>
-                    </select>
-                  </fieldset>
+                <form id="kursadict" class="form-inline">
+                   <div class="input-append">
+                       <input type="text" name="lookup" placeholder="Search term"></input>
+                       <button type="submit" class="btn" name="search">Go</button>
+                       <br />
+                       <label class="radio inline">
+                           <input type="radio" name="target_lang"
+                           value="nob" checked="checked">
+                           Norwegian
+                           </input>
+                        </label>
+                       <label class="radio inline">
+                           <input type="radio" name="target_lang"
+                           value="fin">
+                           Finnish 
+                           </input>
+                        </label>
+                       <!--
+                       <select name="target_lang" id="target_lang"
+                           style="width: auto">
+                           <option value="nob">-&gt;Norwegian</option>
+                         <option value="fin">-&gt;Finnish</option>
+                       </select>
+                       -->
+                   </div>
+
+                  <input type="hidden" name="source_lang" value="sme" />
 
                   <div id="results"></div>
-
                 </form>
+
             </div>
             <h3>Minor issues</h3>
             <ul>
                 <li>If a word appears multiple times in the text, the
                     tooltip will be inserted in the first instance. This
                     can be fixed.</li>
+                <li>Sometimes a tooltip gets stuck open until the user
+                    hovers on the highlighted word again.</li>
+                <li>Highlighting text to search won't work on mobile
+                    browsers, and another solution will be
+                    necessary</li>
             </ul>
         </div>
     </body>

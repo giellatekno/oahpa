@@ -28,6 +28,8 @@ jQuery.
 TODO: language dropdowns for nob-sme fin-sme, etc., autodetect from browser
       language first, fall back to nob otherwise
 
+TODO: loading indicator / user feedback for when something is in progress.
+
 ###
 
 # Wrap jQuery and add plugin functionality
@@ -145,14 +147,16 @@ TODO: language dropdowns for nob-sme fin-sme, etc., autodetect from browser
     opts = $.extend {}, $.fn.kursaDict.options, opts
 
     this.each ->
+      
       elem = $(this)
       result_elem = $(this).find('#results')
 
       elem.submit () =>
         lookup_value = $(this).find('input[name="lookup"]').val()
 
-        target_lang = $(this).find('select[name="target_lang"]').val()
+        target_lang = $(this).find('input[name="target_lang"]:checked').val()
         source_lang = $(this).find('input[name="source_lang"]').val()
+        console.log target_lang
 
         post_data =
           lookup: lookup_value
