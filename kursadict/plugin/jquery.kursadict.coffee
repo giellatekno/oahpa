@@ -29,13 +29,18 @@ TODO: autodetect from browser language first, fall back to nob otherwise
 
 TODO: debugging for misc browsers where there are issues.
 
+TODO: check globally for wraps instead of just in element, remove them;
+      make sure .classname is much more random
+
+TODO: prevent window url from updating with form submit params
+
 
 ###
 
 # Wrap jQuery and add plugin functionality
 ( jQuery ($) ->
 
-  API_HOST = "http://localhost:5000/"
+  API_HOST = "http://testing.oahpa.no/"
 
   initSpinner = () ->
     ###
