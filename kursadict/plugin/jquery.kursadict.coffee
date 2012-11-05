@@ -107,7 +107,7 @@ TODO: loading indicator / user feedback for when something is in progress.
         lemmatize: true
 
       $.ajax
-        url: "http://localhost:5000/lookup/#{source_lang}/#{target_lang}/"
+        url: "http://testing.oahpa.no/kursadict/lookup/#{source_lang}/#{target_lang}/"
         type: "POST"
         dataType: "json"
         data: JSON.stringify post_data
@@ -176,7 +176,7 @@ TODO: loading indicator / user feedback for when something is in progress.
               """)
         
         $.ajax
-          url: "http://localhost:5000/lookup/#{source_lang}/#{target_lang}/"
+          url: "http://testing.oahpa.no/kursadict/lookup/#{source_lang}/#{target_lang}/"
           type: "POST"
           dataType: "json"
           data: JSON.stringify post_data
