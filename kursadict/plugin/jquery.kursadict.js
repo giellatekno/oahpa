@@ -26,18 +26,41 @@ jQuery.
 
 ## TODOs
 
-TODO: language dropdowns for nob-sme fin-sme, etc., autodetect from browser
-      language first, fall back to nob otherwise
+TODO: autodetect from browser language first, fall back to nob otherwise
 
-TODO: loading indicator / user feedback for when something is in progress.
+TODO: loading indicator for dictionary form
+TODO: loading indicator for popup
+
+TODO: form - error message for no results
+TODO: tooltip - error message for no results
+
+TODO: debugging for misc browsers where there are issues.
 */
 
 (jQuery(function($) {
-  var lookupSelectEvent;
+  var API_HOST, initSpinner, lookupSelectEvent;
+  API_HOST = "http://localhost:5000/";
+  initSpinner = function() {
+    var spinner, spinnerExists;
+    spinnerExists = $('body').find('spinner');
+    if (spinnerExists.length === 0) {
+      spinner = $("<img src=\"img/spinner.gif\" class=\"spinner\" />");
+      spinner.css({
+        display: "none",
+        position: "absolute",
+        top: "0px",
+        right: "0px"
+      });
+      $('body').append(spinner);
+      return spinner;
+    }
+    return spinnerExists;
+  };
   lookupSelectEvent = function(evt, string, element, opts) {
-    var cleanResponse, lookup_string, post_data, result_elem, source_lang, target_lang,
+    var cleanResponse, lookup_string, post_data, result_elem, source_lang, spinner, target_lang,
       _this = this;
     result_elem = $('#results');
+    spinner = initSpinner();
     cleanResponse = function(response) {
       var lookup, result, result_string, result_strings, _i, _j, _k, _len, _len1, _len2, _new_html, _ref, _ref1, _results, _str, _tooltipTarget, _tooltipTitle, _wrapElement;
       if (response.success === false) {
@@ -108,10 +131,16 @@ TODO: loading indicator / user feedback for when something is in progress.
         lemmatize: true
       };
       return $.ajax({
-        url: "http://testing.oahpa.no/kursadict/lookup/" + source_lang + "/" + target_lang + "/",
-        type: "POST",
+        beforeSend: function(args) {
+          return spinner.show();
+        },
+        complete: function(args) {
+          return spinner.hide();
+        },
+        url: "" + opts.api_host + "/kursadict/lookup/" + source_lang + "/" + target_lang + "/",
+        type: "GET",
         dataType: "json",
-        data: JSON.stringify(post_data),
+        data: post_data,
         cache: true,
         success: cleanResponse,
         fail: function() {
@@ -134,17 +163,19 @@ TODO: loading indicator / user feedback for when something is in progress.
   $.fn.selectToLookup.options = {
     tooltip: false,
     sourceLanguage: "sme",
-    targetLanguageSelect: "select[name='target_lang']"
+    targetLanguageSelect: "select[name='target_lang']",
+    api_host: API_HOST
   };
-  return $.fn.kursaDict = function(opts) {
+  $.fn.kursaDict = function(opts) {
     opts = $.extend({}, $.fn.kursaDict.options, opts);
     return this.each(function() {
-      var elem, result_elem,
+      var elem, result_elem, spinner,
         _this = this;
       elem = $(this);
       result_elem = $(this).find('#results');
+      spinner = initSpinner();
       return elem.submit(function() {
-        var cleanResponse, lookup_value, post_data, source_lang, target_lang;
+        var cleanResponse, lookup_value, post_data, source_lang, target_lang, unknownWord;
         lookup_value = $(_this).find('input[name="lookup"]').val();
         target_lang = $(_this).find('input[name="target_lang"]:checked').val();
         source_lang = $(_this).find('input[name="source_lang"]').val();
@@ -156,12 +187,19 @@ TODO: loading indicator / user feedback for when something is in progress.
           post_data.type = 'startswith';
           post_data.lookup = post_data.lookup.replace('*', '');
         }
+        unknownWord = function(response) {
+          $(result_elem).append($("<p>Unknown word.</p>"));
+          return false;
+        };
         cleanResponse = function(response) {
           var lookup, result, _i, _len, _ref, _results;
-          if (response.success === false) {
-            console.log("No words found.");
-          }
           $(result_elem).html("");
+          if (response.success === false) {
+            unknownWord();
+          }
+          if ((response.result.length === 1) && !response.result[0].lookups) {
+            unknownWord();
+          }
           _ref = response.result;
           _results = [];
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -180,19 +218,29 @@ TODO: loading indicator / user feedback for when something is in progress.
           return _results;
         };
         $.ajax({
-          url: "http://testing.oahpa.no/kursadict/lookup/" + source_lang + "/" + target_lang + "/",
-          type: "POST",
+          beforeSend: function(args) {
+            return spinner.show();
+          },
+          complete: function(args) {
+            return spinner.hide();
+          },
+          url: "" + opts.api_host + "/kursadict/lookup/" + source_lang + "/" + target_lang + "/",
+          type: "GET",
+          data: post_data,
           dataType: "json",
-          data: JSON.stringify(post_data),
           cache: true,
           success: cleanResponse,
           fail: function() {
-            return console.log("omg2");
+            return console.log("Could not connect.");
           }
         });
         console.log("submitted");
         return false;
       });
     });
+  };
+  return $.fn.kursaDict.options = {
+    api_host: API_HOST,
+    formIDName: "#kursadict"
   };
 }))(jQuery);
