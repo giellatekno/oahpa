@@ -32,73 +32,81 @@
 
     <body>
         <div id="content">
-            <h3>Inline mode</h3>
-            <p>Hold Alt or option (⌥) while selecting or double clicking
-                on a word to select it, and a result will appear. To
-                reveal or dismiss it, simply hover over the now
-                highlighted word. Language is selected from the form
-                below.</p>
-            <blockquote><p>Wikipedia lea friddja diehtosátnegirji badjel 270 gielain.
-                Dan čállet eaktodáhtolaš geavaheaddjit miehtá máilmmi. Dan
-                sisdoalu lea lohpi kopieret ja geavahit almmolaččat. Maid
-                don sáhtát juste dál rievdadit ja dievasmahttit
-                Wikipedia-artihkkaliid, dahje álggahit áibbas ođđa
-                artihkkala Wikipediai. Dávjá lea buorre jorgalit
-                artihkkaliid dáro-, ruoŧa-, suoma-, dahje eŋgelasgiel
-                Wikipediain. Wikipedia-prošeakta álggii jagis 2001 ja dál
-                gávdnojit badjel 20 miljovnna artihkkala, main 6,520 leat
-                davvisámegielat Wikipedias.</p></blockquote>
+            <div class="row">
+                <div class="span9">
+                    <h3>Inline mode</h3>
+                    <p>Hold Alt or option (⌥) while selecting or double clicking
+                        on a word to select it, and a result will appear. To
+                        reveal or dismiss it, simply hover over the now
+                        highlighted word. Language is selected from the form
+                        below.</p>
+                    <blockquote><p>Wikipedia lea friddja diehtosátnegirji badjel 270 gielain.
+                        Dan čállet eaktodáhtolaš geavaheaddjit miehtá máilmmi. Dan
+                        sisdoalu lea lohpi kopieret ja geavahit almmolaččat. Maid
+                        don sáhtát juste dál rievdadit ja dievasmahttit
+                        Wikipedia-artihkkaliid, dahje álggahit áibbas ođđa
+                        artihkkala Wikipediai. Dávjá lea buorre jorgalit
+                        artihkkaliid dáro-, ruoŧa-, suoma-, dahje eŋgelasgiel
+                        Wikipediain. Wikipedia-prošeakta álggii jagis 2001 ja dál
+                        gávdnojit badjel 20 miljovnna artihkkala, main 6,520 leat
+                        davvisámegielat Wikipedias.</p></blockquote>
 
-            <p>This works anywhere you can highlight text, not just in
-                the above paragraph.</p>
+                    <p>This works anywhere you can highlight text, not just in
+                        the above paragraph.</p>
+                </div>
+                <div class="span3">
+                    <h3>Search form</h3>
+                    <div class="kursadict_container">
+                        <form id="kursadict" class="form-inline">
+                           <div class="input-append">
+                               <input type="text" name="lookup" placeholder="Search term"></input>
+                               <button type="submit" class="btn" name="search">Go</button>
+                               <br />
+                               <label class="radio inline">
+                                   <input type="radio" name="target_lang"
+                                   value="nob" checked="checked">
+                                   Norwegian
+                                   </input>
+                                </label>
+                               <label class="radio inline">
+                                   <input type="radio" name="target_lang"
+                                   value="fin">
+                                   Finnish 
+                                   </input>
+                                </label>
+                               <!--
+                               <select name="target_lang" id="target_lang"
+                                   style="width: auto">
+                                   <option value="nob">-&gt;Norwegian</option>
+                                 <option value="fin">-&gt;Finnish</option>
+                               </select>
+                               -->
+                           </div>
 
-            <h3>Search form</h3>
-            <div class="kursadict_container">
-                <form id="kursadict" class="form-inline">
-                   <div class="input-append">
-                       <input type="text" name="lookup" placeholder="Search term"></input>
-                       <button type="submit" class="btn" name="search">Go</button>
-                       <br />
-                       <label class="radio inline">
-                           <input type="radio" name="target_lang"
-                           value="nob" checked="checked">
-                           Norwegian
-                           </input>
-                        </label>
-                       <label class="radio inline">
-                           <input type="radio" name="target_lang"
-                           value="fin">
-                           Finnish 
-                           </input>
-                        </label>
-                       <!--
-                       <select name="target_lang" id="target_lang"
-                           style="width: auto">
-                           <option value="nob">-&gt;Norwegian</option>
-                         <option value="fin">-&gt;Finnish</option>
-                       </select>
-                       -->
-                   </div>
+                          <input type="hidden" name="source_lang" value="sme" />
 
-                  <input type="hidden" name="source_lang" value="sme" />
-
-                  <br />
-                  <br />
-                  <div id="results"></div>
-                </form>
-
+                          <br />
+                          <br />
+                          <div id="results"></div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <h3>Minor issues</h3>
-            <ul>
-                <li>If a word appears multiple times in the text, the
-                    tooltip will be inserted in the first instance. This
-                    can be fixed.</li>
-                <li>Sometimes a tooltip gets stuck open until the user
-                    hovers on the highlighted word again.</li>
-                <li>Highlighting text to search won't work on mobile
-                    browsers, and another solution will be
-                    necessary</li>
-            </ul>
+            <div class="row">
+                <div class="span12">
+                <h3>Minor issues</h3>
+                <ul>
+                    <li>If a word appears multiple times in the text, the
+                        tooltip will be inserted in the first instance. This
+                        can be fixed.</li>
+                    <li>Sometimes a tooltip gets stuck open until the user
+                        hovers on the highlighted word again.</li>
+                    <li>Highlighting text to search won't work on mobile
+                        browsers, and another solution will be
+                        necessary</li>
+                </ul>
+                </div>
+            </div>
         </div>
     </body>
 </html>
