@@ -1,0 +1,20 @@
+Utilities:
+  lookup_path: '/usr/bin/lookup'
+  lookup_opts: '-flags mbTT -utf8 -d'
+
+FSTs:
+  sme: '/opt/smi/sme/bin/sme.fst' 
+
+Dictionaries:
+  - source: nob
+    target: sme
+    path: 'nob-sme-lr-trie.xml'
+
+  - source: sme
+    target: nob
+    path: 'sme-nob-lr-trie.xml'
+
+  - source: sme
+    target: fin
+    path: 'sme-fin-lr-trie.xml'
+

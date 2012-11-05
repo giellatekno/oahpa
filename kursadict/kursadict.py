@@ -1,7 +1,14 @@
-from flask import Flask, request, json
+#!/usr/bin/env python
 # -*- encoding: utf-8 -*-
 """
 A service that provides JSON and RESTful lookups to webdict xml trie files.
+
+## Configuration
+
+Configuration settings for paths to FSTs, utility programs and
+dictionary files must be set in `app.config.yaml`. A sample file is
+checked in as `app.config.yaml.in`, so copy this file, edit the settings
+and then launch the service.
 
 ## Endpints
 
@@ -44,7 +51,7 @@ TODO: return array of lemmas formatted such:
 
 TODO: document flask installation
 TODO: flask wsgi/fcgi thing
-
+TODO: move settings, lookup tool path, fst paths, etc., to somewhere clear
 
 ## Todos
 
@@ -57,9 +64,55 @@ TODO: response for no result
 
 """
 
+import sys
+
+from flask import Flask, request, json
 from crossdomain import crossdomain
 
 app = Flask(__name__)
+
+class AppConf(object):
+    @property
+    def dictionaries(self):
+    	dicts = self.opts.get('Dictionaries')
+    	language_pairs = {}
+    	for item in dicts:
+    		source = item.get('source')
+    		target = item.get('target')
+    		path = item.get('path')
+    		language_pairs[(source, target)] = path
+    	return language_pairs
+
+    @property
+    def FSTs(self):
+    	fsts = self.opts.get('FSTs')
+    	for k, v in fsts.iteritems():
+    	    try:
+    	        open(v, 'r')
+    	    except IOError:
+    	    	sys.exit('FST for %s, %s, does not exist. Check path in app.config.yaml.' % (k, v))
+    	return fsts
+
+    @property
+    def lookup_command(self):
+        apps = self.opts.get('Utilities')
+        cmd = apps.get('lookup_path')
+        try:
+        	open(cmd, 'r')
+        except IOError:
+        	sys.exit('Lookup utility (%s) does not exist' % cmd)
+        cmd_opts = apps.get('lookup_opts', False)
+        if cmd_opts:
+        	cmd += ' ' + cmd_opts
+        return cmd
+
+    def __init__(self):
+        import yaml
+        with open('app.config.yaml', 'r') as F:
+            config = yaml.load(F)
+        self.opts = config
+        
+settings = AppConf()
 
 class XMLDict(object):
     """ XML dictionary class. Initiate with a file path, exposes methods
@@ -90,11 +143,8 @@ class XMLDict(object):
         w_nodes = self.tree.findall('.//w[@v="%s"]' % lemma)
         return map(clean_node, w_nodes)
 
-language_pairs = {
-    ('nob', 'sme'): XMLDict(filename='nob-sme-lr-trie.xml'),
-    ('sme', 'nob'): XMLDict(filename='sme-nob-lr-trie.xml'),
-    ('sme', 'fin'): XMLDict(filename='sme-fin-lr-trie.xml'),
-}
+_language_pairs = settings.dictionaries
+language_pairs = dict([(k, XMLDict(filename=v)) for k, v in _language_pairs.iteritems()])
 
 def lookupXML(_from, _to, lookup, lookup_type=False):
     _dict = language_pairs.get((_from, _to), False)
@@ -112,14 +162,9 @@ def lookupXML(_from, _to, lookup, lookup_type=False):
 ##
 ##
 
-LOOKUP_TOOL = '/usr/bin/lookup -flags mbTT -utf8 -d'
+LOOKUP_TOOL = settings.lookup_command
 
-FSTs = {
-    'sme': '/opt/smi/sme/bin/sme.fst',
-    # 'sma': '/opt/smi/sma/bin/sma.fst',
-    # 'smj': '/opt/smi/smj/bin/smj.fst',
-}
-
+FSTs = settings.FSTs
 
 def cleanLookups(lookup_string):
     """
