@@ -95,12 +95,13 @@ class AppConf(object):
 
     @property
     def lookup_command(self):
+        import os
+        def is_exe(fpath):
+            return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
         apps = self.opts.get('Utilities')
         cmd = apps.get('lookup_path')
-        try:
-            open(cmd, 'r')
-        except IOError:
-            sys.exit('Lookup utility (%s) does not exist' % cmd)
+        if not is_exe(cmd):
+            sys.exit('Lookup utility (%s) does not exist, or you have no exec permissions' % cmd)
         cmd_opts = apps.get('lookup_opts', False)
         if cmd_opts:
             cmd += ' ' + cmd_opts
