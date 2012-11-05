@@ -74,36 +74,36 @@ app = Flask(__name__)
 class AppConf(object):
     @property
     def dictionaries(self):
-    	dicts = self.opts.get('Dictionaries')
-    	language_pairs = {}
-    	for item in dicts:
-    		source = item.get('source')
-    		target = item.get('target')
-    		path = item.get('path')
-    		language_pairs[(source, target)] = path
-    	return language_pairs
+        dicts = self.opts.get('Dictionaries')
+        language_pairs = {}
+        for item in dicts:
+            source = item.get('source')
+            target = item.get('target')
+            path = item.get('path')
+            language_pairs[(source, target)] = path
+        return language_pairs
 
     @property
     def FSTs(self):
-    	fsts = self.opts.get('FSTs')
-    	for k, v in fsts.iteritems():
-    	    try:
-    	        open(v, 'r')
-    	    except IOError:
-    	    	sys.exit('FST for %s, %s, does not exist. Check path in app.config.yaml.' % (k, v))
-    	return fsts
+        fsts = self.opts.get('FSTs')
+        for k, v in fsts.iteritems():
+            try:
+                open(v, 'r')
+            except IOError:
+                sys.exit('FST for %s, %s, does not exist. Check path in app.config.yaml.' % (k, v))
+        return fsts
 
     @property
     def lookup_command(self):
         apps = self.opts.get('Utilities')
         cmd = apps.get('lookup_path')
         try:
-        	open(cmd, 'r')
+            open(cmd, 'r')
         except IOError:
-        	sys.exit('Lookup utility (%s) does not exist' % cmd)
+            sys.exit('Lookup utility (%s) does not exist' % cmd)
         cmd_opts = apps.get('lookup_opts', False)
         if cmd_opts:
-        	cmd += ' ' + cmd_opts
+            cmd += ' ' + cmd_opts
         return cmd
 
     def __init__(self):
@@ -249,7 +249,6 @@ def lemmatizer(language, lookup):
     return list(lemmas)
 
 
-
 ##
 ##  Endpoints
 ##
@@ -257,26 +256,19 @@ def lemmatizer(language, lookup):
 
 @app.route('/kursadict/test/', methods=['GET'])
 def testapp():
-	return "omg!"
+    return "omg!"
 
-@app.route('/kursadict/lookup/<from_language>/<to_language>/', methods=['GET', 'POST'])
+@app.route('/kursadict/lookup/<from_language>/<to_language>/',
+           methods=['GET'])
 @crossdomain(origin='*')
 def lookupWord(from_language, to_language):
     success = False
     data = False
     lemmatize = False
 
-    if request.method == "POST":
-        if request.json:
-            data = request.json
-        # Mimetype not sent correctly
-        if request.form:
-            data = json.loads(request.form.keys()[0])
-
-    if data:
-        lookup_key = data.get('lookup', False)
-        lookup_type = data.get('type', False)
-        lemmatize = data.get('lemmatize', False)
+    lookup_key = request.args.get('lookup', False)
+    lookup_type = request.args.get('type', False)
+    lemmatize = request.args.get('lemmatize', False)
 
     if lemmatize and not lookup_type:
         lookup_key = lemmatizer(from_language, lookup_key)
@@ -309,4 +301,6 @@ if __name__ == "__main__":
     # NOTE: remove debug later
     app.debug = True
     app.run()
+
+# vim: set ts=4 sw=4 tw=72 syntax=python expandtab :
 
