@@ -18,29 +18,29 @@ Install node.js and npm, and then coffeescript.
 Must be compiled with --bare, to prevent function wrapping that disables
 jQuery.
 
-    coffee --compile --bare jquery.kursadict.coffee  
+    coffee --compile --bare jquery.kursadict.coffee
 
 ## watch
 
-    coffee --compile --watch --bare jquery.kursadict.coffee  
+    coffee --compile --watch --bare jquery.kursadict.coffee
 
 ## TODOs
 
 TODO: autodetect from browser language first, fall back to nob otherwise
 
-TODO: loading indicator for dictionary form
-TODO: loading indicator for popup
-
-TODO: form - error message for no results
-TODO: tooltip - error message for no results
-
 TODO: debugging for misc browsers where there are issues.
 */
 
 (jQuery(function($) {
-  var API_HOST, initSpinner, lookupSelectEvent;
+  var API_HOST, cleanTooltipResponse, initSpinner, lookupSelectEvent;
   API_HOST = "http://localhost:5000/";
   initSpinner = function() {
+    /*
+            spinner popup in right corner; `spinner = initSpinner()` to
+            create or find, then usual `spinner.show()` or `.hide()` as
+            needed.
+    */
+
     var spinner, spinnerExists;
     spinnerExists = $('body').find('spinner');
     if (spinnerExists.length === 0) {
@@ -56,74 +56,71 @@ TODO: debugging for misc browsers where there are issues.
     }
     return spinnerExists;
   };
+  cleanTooltipResponse = function(string, element, response, opts) {
+    /*
+            Clean response from tooltip $.ajax query, and display results
+    */
+
+    var lookup, result, result_string, result_strings, _i, _j, _k, _len, _len1, _len2, _new_html, _ref, _ref1, _results, _str, _tooltipTarget, _tooltipTitle, _wrapElement;
+    if (opts.tooltip) {
+      $(element).find('a.tooltip_target').each(function() {
+        $(this).popover('destroy');
+        return $(this).replaceWith(this.childNodes);
+      });
+      _wrapElement = "<a style=\"font-style: italic; border: 1px solid #CEE; padding: 0 2px\" \n   class=\"tooltip_target\">" + string + "</a>";
+      _new_html = $(element).html().replace(string, _wrapElement);
+      $(element).html(_new_html);
+    }
+    result_strings = [];
+    _ref = response.result;
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      result = _ref[_i];
+      _ref1 = result.lookups;
+      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+        lookup = _ref1[_j];
+        result_string = "<em>" + lookup.left + "</em> (" + lookup.pos + ") &mdash; " + lookup.right;
+        result_strings.push(result_string);
+      }
+    }
+    if (result_strings.length === 0 || response.success === false) {
+      if (opts.tooltip) {
+        _tooltipTitle = 'Unknown word';
+      }
+    }
+    if (opts.tooltip) {
+      if (!_tooltipTitle) {
+        _tooltipTitle = string;
+      }
+      _tooltipTarget = $(element).find('a.tooltip_target');
+      _tooltipTarget.popover({
+        title: _tooltipTitle,
+        content: $("<p />").html(result_strings.join('<br />')).html(),
+        html: true,
+        placement: 'bottom',
+        trigger: 'hover'
+      });
+      return _tooltipTarget.popover('show');
+    } else {
+      $(result_elem).html("");
+      _results = [];
+      for (_k = 0, _len2 = result_strings.length; _k < _len2; _k++) {
+        _str = result_strings[_k];
+        _results.push($(result_elem).append($("<p />").html(_str)));
+      }
+      return _results;
+    }
+  };
   lookupSelectEvent = function(evt, string, element, opts) {
-    var cleanResponse, lookup_string, post_data, result_elem, source_lang, spinner, target_lang,
+    var lookup_string, post_data, result_elem, source_lang, spinner, target_lang,
       _this = this;
-    result_elem = $('#results');
+    result_elem = $(opts.formResults);
     spinner = initSpinner();
-    cleanResponse = function(response) {
-      var lookup, result, result_string, result_strings, _i, _j, _k, _len, _len1, _len2, _new_html, _ref, _ref1, _results, _str, _tooltipTarget, _tooltipTitle, _wrapElement;
-      if (response.success === false) {
-        console.log("No words found.");
-        return false;
-      }
-      if (opts.tooltip) {
-        $(element).find('a.tooltip_target').each(function() {
-          $(this).popover('destroy');
-          return $(this).replaceWith(this.childNodes);
-        });
-        _wrapElement = "<a style=\"font-style: italic; border: 1px solid #CEE; padding: 0 2px\" \n   class=\"tooltip_target\">" + string + "</a>";
-        _new_html = $(element).html().replace(string, _wrapElement);
-        $(element).html(_new_html);
-      }
-      result_strings = [];
-      _ref = response.result;
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        result = _ref[_i];
-        _ref1 = result.lookups;
-        for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-          lookup = _ref1[_j];
-          result_string = "<em>" + lookup.left + "</em> (" + lookup.pos + ") &mdash; " + lookup.right;
-          result_strings.push(result_string);
-        }
-      }
-      if (result_strings.length === 0) {
-        if (opts.tooltip) {
-          _tooltipTitle = 'Unknown word';
-        }
-      }
-      if (opts.tooltip) {
-        if (!_tooltipTitle) {
-          _tooltipTitle = string;
-        }
-        _tooltipTarget = $(element).find('a.tooltip_target');
-        _tooltipTarget.popover({
-          title: _tooltipTitle,
-          content: $("<p />").html(result_strings.join('<br />')).html(),
-          html: true,
-          placement: 'bottom',
-          trigger: 'hover'
-        });
-        _tooltipTarget.popover().click(function(e) {
-          return $(e).popover('destroy');
-        });
-        return _tooltipTarget.popover('show');
-      } else {
-        $(result_elem).html("");
-        _results = [];
-        for (_k = 0, _len2 = result_strings.length; _k < _len2; _k++) {
-          _str = result_strings[_k];
-          _results.push($(result_elem).append($("<p />").html(_str)));
-        }
-        return _results;
-      }
-    };
+    string = string.trim();
     if ((string.length > 60) || (string.search(' ') > -1)) {
       return false;
     }
     if (string !== "") {
       source_lang = opts.sourceLanguage;
-      console.log(source_lang);
       target_lang = $(opts.targetLanguageSelect).val();
       lookup_string = string;
       post_data = {
@@ -142,9 +139,16 @@ TODO: debugging for misc browsers where there are issues.
         dataType: "json",
         data: post_data,
         cache: true,
-        success: cleanResponse,
-        fail: function() {
-          return console.log("omg2");
+        success: function(response) {
+          return cleanTooltipResponse(string, element, response, opts);
+        },
+        error: function() {
+          $('body').find('.errornav').remove();
+          $('body').append($("<div class=\"errornav navbar-inverse navbar-fixed-bottom\">\n  <div class=\"navbar-inner\">\n    <div class=\"container\">\n      <p><strong>Error!</strong> Could not connect to dictionary server. <a href=\"#\" class=\"dismiss\">Close</a>.</p>\n    </div>\n  </div>\n</div>"));
+          return $('body').find('.errornav .dismiss').click(function() {
+            $('body .errornav').remove();
+            return false;
+          });
         }
       });
     }
@@ -161,10 +165,11 @@ TODO: debugging for misc browsers where there are issues.
     return $(document).bind('textselect', holdingOption);
   };
   $.fn.selectToLookup.options = {
-    tooltip: false,
+    api_host: API_HOST,
+    formResults: "#results",
     sourceLanguage: "sme",
     targetLanguageSelect: "select[name='target_lang']",
-    api_host: API_HOST
+    tooltip: false
   };
   $.fn.kursaDict = function(opts) {
     opts = $.extend({}, $.fn.kursaDict.options, opts);
@@ -179,7 +184,6 @@ TODO: debugging for misc browsers where there are issues.
         lookup_value = $(_this).find('input[name="lookup"]').val();
         target_lang = $(_this).find('input[name="target_lang"]:checked').val();
         source_lang = $(_this).find('input[name="source_lang"]').val();
-        console.log(target_lang);
         post_data = {
           lookup: lookup_value
         };
@@ -230,17 +234,18 @@ TODO: debugging for misc browsers where there are issues.
           dataType: "json",
           cache: true,
           success: cleanResponse,
-          fail: function() {
-            return console.log("Could not connect.");
+          error: function() {
+            $(result_elem).find('.alert').remove();
+            return $(result_elem).append($("<div class=\"alert\">\n  <strong>Error!</strong> could not connect to dictionary server.\n</div>"));
           }
         });
-        console.log("submitted");
         return false;
       });
     });
   };
   return $.fn.kursaDict.options = {
     api_host: API_HOST,
-    formIDName: "#kursadict"
+    formIDName: "#kursadict",
+    formResults: "#results"
   };
 }))(jQuery);

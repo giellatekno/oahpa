@@ -263,9 +263,8 @@ def testapp():
 @crossdomain(origin='*')
 def lookupWord(from_language, to_language):
     success = False
-    data = False
-    lemmatize = False
 
+    # URL parameters
     lookup_key = request.args.get('lookup', False)
     lookup_type = request.args.get('type', False)
     lemmatize = request.args.get('lemmatize', False)
@@ -282,6 +281,8 @@ def lookupWord(from_language, to_language):
             result = lookupXML(from_language, to_language,
                                _key, lookup_type)
             result['input'] = _key
+            if len(result['lookups']) == 0:
+                result['lookups'] = False
             results.append(result)
 
         results = sorted(results, key=lambda x: len(x['input']), reverse=True)
