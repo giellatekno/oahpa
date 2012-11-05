@@ -5,22 +5,7 @@ A jQuery plugin for enabling the Kursadict functionality
 
 HTML header
 
-    <script type='text/javascript' src='jquery.1.7.2.js'></script>
-    <script type='text/javascript' src='jquery.kursadict.js'></script>
-    <script type='text/javascript' src='jquery.textselect.event.js'></script>
-    <script type='text/javascript'>
-        jQuery(document).ready(function (){
-            // Register the input form with options, replace ID here with ID of form
-            jQuery('#kursadict').kursaDict();
-
-            // Enable options for inline clicking, preferably <p /> elements
-            jQuery('CSS > selector > to > elements > to > watch').textLookup();
-
-            // May define multiple of these
-            jQuery('div.someDiv p').textLookup();
-
-        });
-    </script>
+TODO: clarify how to install this somewhere.
 
 
 # Development / testing
@@ -43,37 +28,76 @@ jQuery.
 TODO: language dropdowns for nob-sme fin-sme, etc., autodetect from browser
       language first, fall back to nob otherwise
 
-TODO: inline textLookup option to display result in form lookup div,
-      or to use bootstrap popovers
-
-TODO: inline textLookup option to only perform lookup if word is selected with
-      CTRL/Option, etc
-
 ###
 
 # Wrap jQuery and add plugin functionality
 ( jQuery ($) ->
 
-  lookupSelectEvent = (evt, string, element) ->
+  lookupSelectEvent = (evt, string, element, opts) ->
     # TODO: set source and target language somehow
+    #   - use form select widget, or alternatively display some buttons
+    #   in the tooltip? 
     #
-    # TODO: select another way
+    # TODO: select this div another way
     result_elem = $('#results')
 
     # TODO: option for displaying this in tooltip instead
-    cleanResponse = (response) ->
+    cleanResponse = (response) =>
       if response.success == false
+        # TODO: make error visible to the user
         console.log "No words found."
-      $(result_elem).html ""
+        return false
+      
+      # For tooltip we need to wrap the search word in a span.
+      if opts.tooltip
+        $(element).find('a.tooltip_target').each () ->
+          $(this).popover('destroy')
+          $(this).replaceWith(this.childNodes)
+
+        _wrapElement = """
+        <a style="font-style: italic; border: 1px solid #CEE; padding: 0 2px" 
+           class="tooltip_target">#{string}</a>
+        """
+
+        _new_html = $(element).html().replace(string, _wrapElement)
+        $(element).html(_new_html)
+
+      # Compile result strings
+      result_strings = []
       for result in response.result
-      	for lookup in result.lookups
-      	  $(result_elem).append $("""
-      	      <p>#{lookup.left} (#{lookup.pos}) &mdash; #{lookup.right}</p>
-      	  """)
+        for lookup in result.lookups
+          result_string = "<em>#{lookup.left}</em> (#{lookup.pos}) &mdash; #{lookup.right}"
+          result_strings.push(result_string)
+      
+      if result_strings.length == 0
+        if opts.tooltip
+          _tooltipTitle = 'Unknown word'
+      
+      if opts.tooltip
+        if !_tooltipTitle
+          _tooltipTitle = string
+        _tooltipTarget = $(element).find('a.tooltip_target')
+        _tooltipTarget.popover
+          title: _tooltipTitle
+          content: $("<p />").html(result_strings.join('<br />')).html()
+          html: true
+          placement: 'bottom'
+          trigger: 'hover'
+        _tooltipTarget.popover().click (e) ->
+          $(e).popover('destroy')
+        _tooltipTarget.popover('show')
+      else
+        $(result_elem).html ""
+        for _str in result_strings
+          $(result_elem).append $("<p />").html(_str)
+
+    if (string.length > 60) or (string.search(' ') > -1)
+      return false
 
     if (string != "")
-      source_lang = 'sme'
-      target_lang = 'nob'
+      source_lang = opts.sourceLanguage
+      console.log source_lang
+      target_lang = $(opts.targetLanguageSelect).val()
       lookup_string = string
 
       post_data =
@@ -98,7 +122,17 @@ TODO: inline textLookup option to only perform lookup if word is selected with
 
   $.fn.selectToLookup = (opts) ->
     opts = $.extend {}, $.fn.selectToLookup.options, opts
-    $(document).bind('textselect', lookupSelectEvent)
+
+    holdingOption = (evt, string, element) =>
+      if evt.altKey
+        lookupSelectEvent(evt, string, element, opts)
+    
+    $(document).bind('textselect', holdingOption)
+   
+  $.fn.selectToLookup.options =
+    tooltip: false
+    sourceLanguage: "sme"
+    targetLanguageSelect: "select[name='target_lang']"
 
 
   ##
@@ -132,10 +166,10 @@ TODO: inline textLookup option to only perform lookup if word is selected with
             console.log "No words found."
           $(result_elem).html ""
           for result in response.result
-          	for lookup in result.lookups
-          	  $(result_elem).append $("""
-          	      <p>#{lookup.left} (#{lookup.pos}) &mdash; #{lookup.right}</p>
-          	  """)
+            for lookup in result.lookups
+              $(result_elem).append $("""
+                  <p>#{lookup.left} (#{lookup.pos}) &mdash; #{lookup.right}</p>
+              """)
         
         $.ajax
           url: "http://localhost:5000/lookup/#{source_lang}/#{target_lang}/"
@@ -149,11 +183,6 @@ TODO: inline textLookup option to only perform lookup if word is selected with
 
         console.log "submitted"
         return false
-
-  # $.fn.kursaDict = (opts) ->
-  #   opts = $.extend {}, $.fn.pullQuote.options, opts
-  #   this.each ->
-  #     console.log "omg"
 
   # $.fn.kursaDict.options =
   #   formIDName: "#kursadict"

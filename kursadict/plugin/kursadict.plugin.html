@@ -8,6 +8,9 @@
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 
         <script type='text/javascript' src='jquery.1.7.2.js'></script>
+        <script type='text/javascript' src='bootstrap/js/bootstrap-tooltip.js'></script>
+        <script type='text/javascript' src='bootstrap/js/bootstrap-popover.js'></script>
+
         <script type='text/javascript' src='jquery.textselect.event.js'></script>
         <script type='text/javascript' src='jquery.kursadict.js'></script>
         <script type='text/javascript'>
@@ -16,7 +19,11 @@
                 jQuery('#kursadict').kursaDict();
 
                 // Enable options for inline clicking
-                jQuery(document).selectToLookup();
+                jQuery(document).selectToLookup({
+                  tooltip: true,
+                  sourceLanguage: "sme",
+                  targetLanguageSelect: "select[name='target_lang']"
+                });
             });
         </script>
     </head>
@@ -24,6 +31,10 @@
     <body>
         <div id="content">
             <h3>Inline mode</h3>
+            <p>Hold Alt or option (⌥) while selecting or double clicking
+                on a word to select it, and a result will appear. To
+                reveal or dismiss it, simply hover over the now
+                highlighted word.</p>
             <p>Wikipedia lea friddja diehtosátnegirji badjel 270 gielain.
                 Dan čállet eaktodáhtolaš geavaheaddjit miehtá máilmmi. Dan
                 sisdoalu lea lohpi kopieret ja geavahit almmolaččat. Maid
@@ -45,6 +56,8 @@
                     </div>
                     <br />
                     <input type="hidden" name="source_lang" value="sme" />
+                    <label for="target_lang">Tooltip and search
+                        language</label>
                     <select name="target_lang" id="target_lang">
                       <option value="nob">Norwegian</option>
                       <option value="fin">Finnish</option>
@@ -55,6 +68,12 @@
 
                 </form>
             </div>
+            <h3>Minor issues</h3>
+            <ul>
+                <li>If a word appears multiple times in the text, the
+                    tooltip will be inserted in the first instance. This
+                    can be fixed.</li>
+            </ul>
         </div>
     </body>
 </html>
