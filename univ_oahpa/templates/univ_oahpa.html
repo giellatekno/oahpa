@@ -15,9 +15,11 @@
 <div id="interface_language">
     {% include 'language_menu.html' %} 
 </div>
+{% if gametype != 'sahka' and gametype != 'string' and gametype != 'numeral' and gametype != 'k1' and gametype != 'k2' and gametype != 'k3' %}
 <div id="dialect_selection">
     {% include 'dialect_menu.html' %}
 </div>
+{% endif %}
 {% endblock %}
 
 
