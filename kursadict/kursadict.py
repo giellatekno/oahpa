@@ -65,6 +65,9 @@ TODO: new xml format from webdicts
   -> ordbok-xml + fst
   1. den du har brukt: ordbok-xml + fst
 
+  TODO: possibility for including tags in response that are associated
+        with each lemma analysis
+
 
 /detailedlookup/sme/fin/wordform.html
 /detailedlookup/sme/fin/wordform/json
@@ -143,31 +146,35 @@ settings = AppConf()
 class XMLDict(object):
     """ XML dictionary class. Initiate with a file path, exposes methods
     for searching in XML.
+
+    Entries are only cleaned resulting in lg/l/text(), lg/l@pos, and
+    mg/tg/t/text() with self.cleanEntry. Probably easier to make mixins
+    that add to this functionality?
     """
-    def __init__(self, filename):
+    def __init__(self, filename, tree=False):
         from lxml import etree
-        self.tree = etree.parse(filename)
+        if not tree:
+            self.tree = etree.parse(filename)
+        else:
+            self.tree = tree
+
+    def cleanEntry(self, e):
+        l = e.find('lg/l')
+        left_text = l.text
+        left_pos = l.get('pos')
+        ts = e.findall('mg/tg/t')
+        right_text = [t.text for t in ts]
+        return {'left': left_text, 'pos': left_pos, 'right': right_text}
 
     def lookupLemmaStartsWith(self, lemma):
-        def clean_node(node):
-            left = node.find('l')
-            left_text = left.text
-            left_pos = left.find('s').get('n')
-            right_text = node.find('r').text
-            return {'left': left_text, 'pos': left_pos, 'right': right_text}
-        _xpath = './/w[starts-with(@v, "%s")]' % lemma
+        _xpath = './/e[starts-with(lg/l/text(), "%s")]' % lemma
         w_nodes = self.tree.xpath(_xpath)
-        return map(clean_node, w_nodes)
+        return map(self.cleanEntry, w_nodes)
 
     def lookupLemma(self, lemma):
-        def clean_node(node):
-            left = node.find('l')
-            left_text = left.text
-            left_pos = left.find('s').get('n')
-            right_text = node.find('r').text
-            return {'left': left_text, 'pos': left_pos, 'right': right_text}
-        w_nodes = self.tree.findall('.//w[@v="%s"]' % lemma)
-        return map(clean_node, w_nodes)
+        _xpath = './/e[lg/l/text() = "%s"]' % lemma
+        w_nodes = self.tree.xpath(_xpath)
+        return map(self.cleanEntry, w_nodes)
 
 _language_pairs = settings.dictionaries
 language_pairs = dict([(k, XMLDict(filename=v)) for k, v in _language_pairs.iteritems()])
