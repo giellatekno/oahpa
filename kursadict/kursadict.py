@@ -10,23 +10,12 @@ dictionary files must be set in `app.config.yaml`. A sample file is
 checked in as `app.config.yaml.in`, so copy this file, edit the settings
 and then launch the service.
 
-## Endpints
+## Endpoints
 
 ### /lookup/<from_language>/<to_language>/
 
-    POST JSON format:
+See below in function docstring
 
-        Object object:
-           {"lookup": "fest"}
-
-        Optional parameter: type
-           {"lookup": "fest", "type": "startswith"}
-
-        Optional parameter: lemmatize
-           {"lookup": "geavaheaddjit", "lemmatize": true}
-
-           Run lookup string through lemmatizer, and look those results up in
-           XML lexicon files.
 
 ### /auto/<language>
 
@@ -100,6 +89,9 @@ from crossdomain import crossdomain
 app = Flask(__name__)
 
 class AppConf(object):
+    """ An object for exposing the settings in app.config.yaml in a nice
+    objecty way, and validating some of the contents.
+    """
     @property
     def dictionaries(self):
         dicts = self.opts.get('Dictionaries')
@@ -113,6 +105,7 @@ class AppConf(object):
 
     @property
     def FSTs(self):
+        """ Iterate and check that FSTs exist """
         fsts = self.opts.get('FSTs')
         for k, v in fsts.iteritems():
             try:
@@ -123,13 +116,18 @@ class AppConf(object):
 
     @property
     def lookup_command(self):
+        """ Check that the lookup command is executable and user has
+        permissions to execute. """
         import os
         def is_exe(fpath):
             return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
+        
         apps = self.opts.get('Utilities')
         cmd = apps.get('lookup_path')
+        
         if not is_exe(cmd):
-            sys.exit('Lookup utility (%s) does not exist, or you have no exec permissions' % cmd)
+            sys.exit('Lookup utility (%s) does not exist, \
+                      or you have no exec permissions' % cmd)
         cmd_opts = apps.get('lookup_opts', False)
         if cmd_opts:
             cmd += ' ' + cmd_opts
@@ -231,6 +229,9 @@ def cleanLookups(lookup_string):
 
 def lookupInFST(lookups_list,
                 fstfile):
+    """ Send the lookup string(s) to an external FST process. Kill the process
+    after 5 seconds if no response seems to be coming.
+    """
 
     import subprocess
     from threading import Timer
@@ -241,9 +242,9 @@ def lookupInFST(lookups_list,
     gen_norm_command = gen_norm_command.split(' ')
 
     lookup_proc = subprocess.Popen(gen_norm_command,
-                                    stdin=subprocess.PIPE,
-                                    stdout=subprocess.PIPE,
-                                    stderr=subprocess.PIPE)
+                                   stdin=subprocess.PIPE,
+                                   stdout=subprocess.PIPE,
+                                   stderr=subprocess.PIPE)
 
     def kill_proc(proc=lookup_proc):
         try:
@@ -262,15 +263,19 @@ def lookupInFST(lookups_list,
     return cleanLookups(output)
 
 
-def lemmatizer(language, lookup):
-    fstfile = FSTs.get(language, False)
+def lemmatizer(language_iso, lookup_string):
+    """ Given a language code and lookup string, returns a list of lemma
+    strings, repeats will not be repeated.
+    """
+    fstfile = FSTs.get(language_iso, False)
     if not fstfile:
         print "No FST for language."
         return False
 
-    if isinstance(lookup, unicode):
-        lookup = lookup.encode('utf-8')
-    results = lookupInFST([lookup], fstfile)
+    if isinstance(lookup_string, unicode):
+        lookup_string = lookup_string.encode('utf-8')
+    
+    results = lookupInFST([lookup_string], fstfile)
 
     lemmas = set()
 
@@ -289,12 +294,58 @@ def lemmatizer(language, lookup):
 
 @app.route('/kursadict/test/', methods=['GET'])
 def testapp():
+    """ A test route to make sure FCGI or WSGI or whatever is working.
+    """
     return "omg!"
 
 @app.route('/kursadict/lookup/<from_language>/<to_language>/',
            methods=['GET'])
 @crossdomain(origin='*')
 def lookupWord(from_language, to_language):
+    """
+    Returns a simplified set of JSON for dictionary, with 'success' to mark
+    whether there were no errors. Additional URL parameters are available to
+    control the lookup type or whether the lookup is lemmatized before being
+    run through the lexicon.
+
+    Path parameters:
+
+        /kursadict/lookup/<from_language>/<to_language>/
+
+        Follow the ISO code.
+
+        TODO: 404 error for missing languages
+
+    URL parameters:
+
+        lookup - the string to search for
+        lemmatize - true/false
+        type - none, or 'startswith'
+
+    Output:
+
+        {
+            "result": [
+                {
+                    "input": "viidni",
+                    "lookups": [
+                        {
+                            "right": [
+                                "vin"
+                            ],
+                            "pos": "n",
+                            "left": "viidni"
+                        }
+                    ]
+                }
+            ],
+            "success": true
+        }
+
+    If there are multiple results from lemmatizing, they are included in the
+    "results" list.
+
+    """
     success = False
 
     # URL parameters
