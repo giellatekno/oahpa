@@ -28,13 +28,16 @@ TODO: return array of lemmas formatted such:
 
 ## Testing via cURL
 
+### Submit post data with JSON
+
     curl -X POST -H "Content-type: application/json" \
          -d ' {"lookup": "fest" } ' \
          http://localhost:5000/lookup/nob/sme/
 
-    curl -X POST -H "Content-type: application/json" \
-         -d ' {"lookup": "fest", "type": "startswith" } \
-         ' http://localhost:5000/lookup/nob/sme/
+### Submit GET data with parameters, and JSON response
+
+    curl -X GET -H "Content-type: application/json" \
+           http://localhost:5000/detail/sme/nob/geađgi/
 
 ## Installing
 
@@ -141,15 +144,20 @@ class AppConf(object):
         
 settings = AppConf()
 
+##
+##  Lexicon
+##
+##
+
 class XMLDict(object):
-    """ XML dictionary class. Initiate with a file path, exposes methods
-    for searching in XML.
+    """ XML dictionary class. Initiate with a file path or an already parsed
+    tree, exposes methods for searching in XML.
 
     Entries are only cleaned resulting in lg/l/text(), lg/l@pos, and
     mg/tg/t/text() with self.cleanEntry. Probably easier to make mixins
     that add to this functionality?
     """
-    def __init__(self, filename, tree=False):
+    def __init__(self, filename=False, tree=False):
         from lxml import etree
         if not tree:
             self.tree = etree.parse(filename)
@@ -164,18 +172,45 @@ class XMLDict(object):
         right_text = [t.text for t in ts]
         return {'left': left_text, 'pos': left_pos, 'right': right_text}
 
+    def XPath(self, query):
+        return map(self.cleanEntry, self.tree.xpath(query))
+
     def lookupLemmaStartsWith(self, lemma):
         _xpath = './/e[starts-with(lg/l/text(), "%s")]' % lemma
-        w_nodes = self.tree.xpath(_xpath)
-        return map(self.cleanEntry, w_nodes)
+        return self.XPath(_xpath)
 
     def lookupLemma(self, lemma):
         _xpath = './/e[lg/l/text() = "%s"]' % lemma
-        w_nodes = self.tree.xpath(_xpath)
-        return map(self.cleanEntry, w_nodes)
+        return self.XPath(_xpath)
 
-_language_pairs = settings.dictionaries
-language_pairs = dict([(k, XMLDict(filename=v)) for k, v in _language_pairs.iteritems()])
+    def lookupLemmaPOS(self, lemma, pos):
+        _xpath = './/e[lg/l/text() = "%s" and lg/l/@pos = "%s"]' % (lemma, pos.lower())
+        return self.XPath(_xpath)
+
+class DetailedEntries(XMLDict):
+    def cleanEntry(self, e):
+        l = e.find('lg/l')
+        mg = e.findall('mg')
+
+        meaningGroups = []
+        for tg in e.findall('mg/tg'):
+            _ex = [(xg.find('x').text, xg.find('xt').text) for xg in tg.findall('xg')]
+            _tg = {
+                'translations': [t.text for t in tg.findall('t')],
+                'examples': _ex
+            }
+            meaningGroups.append(_tg)
+
+        return {
+            'lemma': l.text,
+            'pos': l.get('pos'),
+            'context': l.get('context'),
+            'meaningGroups': meaningGroups
+
+        }
+
+language_pairs = dict([ (k, XMLDict(filename=v))
+                         for k, v in settings.dictionaries.iteritems() ])
 
 def lookupXML(_from, _to, lookup, lookup_type=False):
     _dict = language_pairs.get((_from, _to), False)
@@ -185,6 +220,18 @@ def lookupXML(_from, _to, lookup, lookup_type=False):
                 return {'lookups': _dict.lookupLemmaStartsWith(lookup)}
         return {'lookups': _dict.lookupLemma(lookup)}
 
+    else:
+        return {'error': "Unknown language pair"}
+
+
+def detailedLookupXML(_from, _to, lookup, pos):
+    lexicon = language_pairs.get((_from, _to), False)
+    # wrap in mixin for detailed results
+    detailed_tree = DetailedEntries(tree=lexicon.tree)
+
+    if lexicon and detailed_tree:
+        # TODO: include PoS
+        return {'lookups': detailed_tree.lookupLemmaPOS(lookup, pos)}
     else:
         return {'error': "Unknown language pair"}
 
@@ -263,6 +310,32 @@ def lookupInFST(lookups_list,
     return cleanLookups(output)
 
 
+def lemmatizeWithTags(language_iso, lookup_string):
+    """ Given a language code and lookup string, returns a list of lemma
+    strings, repeats will not be repeated.
+    """
+    fstfile = FSTs.get(language_iso, False)
+    if not fstfile:
+        print "No FST for language."
+        return False
+
+    if isinstance(lookup_string, unicode):
+        lookup_string = lookup_string.encode('utf-8')
+
+    results = lookupInFST([lookup_string], fstfile)
+
+    lemmas = dict()
+
+    for _input, analyses in results:
+        for analysis in analyses:
+            lemma, _, tag = analysis.partition('+')
+            if not lemma.decode('utf-8') in lemmas:
+                lemmas[lemma.decode('utf-8')] = set([tag])
+            else:
+                lemmas[lemma.decode('utf-8')].add(tag)
+
+    return lemmas
+
 def lemmatizer(language_iso, lookup_string):
     """ Given a language code and lookup string, returns a list of lemma
     strings, repeats will not be repeated.
@@ -274,7 +347,7 @@ def lemmatizer(language_iso, lookup_string):
 
     if isinstance(lookup_string, unicode):
         lookup_string = lookup_string.encode('utf-8')
-    
+
     results = lookupInFST([lookup_string], fstfile)
 
     lemmas = set()
@@ -380,6 +453,59 @@ def lookupWord(from_language, to_language):
         'result': results,
         'success': success
     })
+
+
+@app.route('/kursadict/detail/<from_language>/<to_language>/<wordform>/<format>',
+           methods=['GET'])
+@crossdomain(origin='*')
+def wordDetail(from_language, to_language, wordform, format):
+
+    # All lookups in XML must go through analyzer, because we need POS
+    # info for a good lookup.
+    analyzed = lemmatizeWithTags(from_language, wordform)
+
+    # Collect lemmas and tags
+    _result_formOf = []
+    for form, tags in analyzed.iteritems():
+        for tag in tags:
+            pos, _, rest = tag.partition('+')
+            _result_formOf.append((form, pos, tag))
+
+    # Now collect XML lookups
+    _result_lookups = []
+    for lemma, pos, tag in _result_formOf:
+        xml_result = detailedLookupXML(from_language,
+                                       to_language,
+                                       lemma,
+                                       pos)
+        if len(xml_result['lookups']) == 0:
+            xml_result = False
+
+        _result_lookups.append({
+            'lookups': xml_result,
+            'input': (lemma, pos, tag)
+        })
+
+    detailed_result = {
+        "formOf": _result_formOf,
+        "lookups": _result_lookups
+    }
+
+    # TODO: generate paradigm from lemma and pos
+    # TODO: paradigms stored in config file
+
+    # for each result in _result_lookups, add another key with paradigm,
+    # so that even words that aren't present in XML get a paradigm
+    # generated
+
+    # TODO: HTML and JSON representation switch
+    result = json.dumps({
+        "success": True,
+        "result": detailed_result
+    }, indent=4)
+
+    return result
+
 
 
 if __name__ == "__main__":

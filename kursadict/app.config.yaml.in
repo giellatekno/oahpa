@@ -3,18 +3,40 @@ Utilities:
   lookup_opts: '-flags mbTT -utf8 -d'
 
 FSTs:
-  sme: '/opt/smi/sme/bin/sme.fst' 
+  sme: '/opt/smi/sme/bin/sme.fst'
+  sme_gen: '/opt/smi/sme/bin/isme-norm.fst'
 
 Dictionaries:
-  - source: nob
-    target: sme
-    path: 'nob-sme-lr-trie.xml'
-
   - source: sme
     target: nob
-    path: 'sme-nob-lr-trie.xml'
+    path: 'dicts/sme-nob.all.xml'
 
   - source: sme
     target: fin
-    path: 'sme-fin-lr-trie.xml'
+    path: 'dicts/sme-fin.all.xml'
+
+Paradigms:
+  sme:
+    - pos: "A"
+      tags:
+        - "A+Attr"
+        - "A+Sg+Nom"
+        - "A+Pl+Nom"
+
+    - pos: "N"
+      tags:
+        - "N+Sg+Nom"
+        - "N+Pl+Nom"
+        - "N+Sg+Acc"
+        - "N+Pl+Acc"
+        - "N+Sg+Loc"
+        - "N+Pl+Loc"
+
+    - pos: "V"
+      tags:
+        - "V+Inf"
+        - "V+Ind+Prs+Sg1"
+        - "V+Ind+Prs+Sg3"
+        - "V+Ind+Prt+Sg1"
+        - "V+Ind+Prt+Sg3"
 
