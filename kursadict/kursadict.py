@@ -420,6 +420,7 @@ def lookupWord(from_language, to_language):
 
     """
     success = False
+    results = False
 
     # URL parameters
     lookup_key = request.args.get('lookup', False)
