@@ -55,12 +55,37 @@ TODO: move settings, lookup tool path, fst paths, etc., to somewhere clear
 
 ## Todos
 
-TODO: autocomplete from all left language lemmas, build cache and save
-      to pickle on each run, then use pickle
-
 TODO: caching
 
 TODO: response for no result
+
+TODO: new xml format from webdicts
+
+/lookup/sme/fin/?lookup=word&analyze=true
+  -> ordbok-xml + fst
+  1. den du har brukt: ordbok-xml + fst
+
+
+/detailedlookup/sme/fin/wordform.html
+/detailedlookup/sme/fin/wordform/json
+  2. wordlink og slektningar: ordform-artiklar som html-lenkjer
+     - fullform list (main/gt/sme/testing)
+       gtsvn/gt/sme/testing/codes/dict/
+
+    viesu (gen of <link>viessu</link>) = hus
+
+    gtsvn/gt/sme/testing/make-gen-dict
+
+
+TODO: autocomplete from all left language lemmas, build cache and save
+      to pickle on each run, then use pickle
+
+
+## Compiling XML
+
+    java -Xmx2048m -Dfile.encoding=UTF8 net.sf.saxon.Transform \
+        -it:main /path/to/gtsvn/words/scripts/collect-dict-parts.xsl \
+        inDir=/path/to/gtsvn/words/dicts/smenob/src/ > OUTFILE.xml
 
 """
 
