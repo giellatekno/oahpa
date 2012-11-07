@@ -12,6 +12,8 @@ TODO: clarify how to install this somewhere.
 
 Install node.js and npm, and then coffeescript.
 
+TODO: write more
+
 ## building
 
 Must be compiled with --bare, to prevent function wrapping that disables
@@ -23,15 +25,43 @@ jQuery.
 
     coffee --compile --watch --bare jquery.kursadict.coffee
 
-## TODOs
+Or.
+
+    ./compile_and_watch.sh
+
+
+## TODOs / Features
+
+TODO: need an interface for managing options that isn't the search form,
+      maybe a little tab popping out of the side like with the user voice /
+      feedback app thing.
+
+      - Icon?
+        http://www.iconeasy.com/icon/png/System/Sticker%20Pack%202/Dictionary.png
+        http://upload.wikimedia.org/wikipedia/en/d/d1/Dictionary_Icon.png
+
+        maybe one with ášŋ or some clearly sámi symbols
+
+        maybe just make my own without an additional .png requirement?
+
+     - options:
+
+       - target language
+       - detail level of information display
+       - place of display: tooltip/banner
+       - device options: tablet / normal computer
+
 
 TODO: autodetect from browser language first, fall back to nob otherwise
 
-TODO: debugging for misc browsers where there are issues.
 
-TODO: check globally for wraps instead of just in element, remove them;
-      make sure .classname is much more random
+## TODOs / Bugs
 
+TODO: display tooltip in correct location if a word appears multiple times.
+TODO: Når ordet er nesten på enden av nettlesarvindaugo, hengjer popup
+      litt utafor vindaugo, so er det vanskeleg å lesa. 
+TODO: IE on all OSes seems to select a whole paragraph after a word has been
+      selected. There is probably some way to prevent this from occurring.
 TODO: prevent window url from updating with form submit params
 
 
@@ -71,6 +101,7 @@ jQuery(document).ready ($) ->
     ###
     
     # For tooltip we need to wrap the search word in a span.
+    # TODO: search whole document
     if opts.tooltip
       $(element).find('a.tooltip_target').each () ->
         $(this).popover('destroy')
