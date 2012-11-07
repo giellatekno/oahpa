@@ -38,9 +38,13 @@ TODO: prevent window url from updating with form submit params
 ###
 
 # Wrap jQuery and add plugin functionality
-( jQuery ($) ->
+jQuery(document).ready ($) ->
 
-  API_HOST = "http://testing.oahpa.no/"
+  # API_HOST = "http://testing.oahpa.no/"
+  if window.location.hostname == 'localhost'
+    API_HOST = "http://localhost:5000/"
+  else if window.location.hostname == 'testing.oahpa.no'
+    API_HOST = "http://#{window.location.hostname}/"
 
   initSpinner = () ->
     ###
@@ -116,7 +120,7 @@ TODO: prevent window url from updating with form submit params
 
     spinner = initSpinner()
 
-    string = string.trim()
+    string = $.trim(string)
 
     if (string.length > 60) or (string.search(' ') > -1)
       return false
@@ -148,7 +152,7 @@ TODO: prevent window url from updating with form submit params
               <div class="errornav navbar-inverse navbar-fixed-bottom">
                 <div class="navbar-inner">
                   <div class="container">
-                    <p><strong>Error!</strong> Could not connect to dictionary server. <a href="#" class="dismiss">Close</a>.</p>
+                    <p><strong>Error!</strong> Could not connect to dictionary server (host: #{opts.api_host}. <a href="#" class="dismiss">Close</a>.</p>
                   </div>
                 </div>
               </div>
@@ -244,7 +248,7 @@ TODO: prevent window url from updating with form submit params
             $(result_elem).find('.alert').remove()
             $(result_elem).append $("""
               <div class="alert">
-                <strong>Error!</strong> could not connect to dictionary server.
+                <strong>Error!</strong> could not connect to dictionary server (#{opts.api_host}).
               </div>
             """)
 
@@ -256,5 +260,5 @@ TODO: prevent window url from updating with form submit params
     formResults: "#results"
 
 # End jQuery wrap
-) jQuery
+
 

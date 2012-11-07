@@ -36,9 +36,13 @@ TODO: check globally for wraps instead of just in element, remove them;
 TODO: prevent window url from updating with form submit params
 */
 
-(jQuery(function($) {
+jQuery(document).ready(function($) {
   var API_HOST, cleanTooltipResponse, initSpinner, lookupSelectEvent;
-  API_HOST = "http://testing.oahpa.no/";
+  if (window.location.hostname === 'localhost') {
+    API_HOST = "http://localhost:5000/";
+  } else if (window.location.hostname === 'testing.oahpa.no') {
+    API_HOST = "http://" + window.location.hostname + "/";
+  }
   initSpinner = function() {
     /*
             spinner popup in right corner; `spinner = initSpinner()` to
@@ -120,7 +124,7 @@ TODO: prevent window url from updating with form submit params
       _this = this;
     result_elem = $(opts.formResults);
     spinner = initSpinner();
-    string = string.trim();
+    string = $.trim(string);
     if ((string.length > 60) || (string.search(' ') > -1)) {
       return false;
     }
@@ -149,7 +153,7 @@ TODO: prevent window url from updating with form submit params
         },
         error: function() {
           $('body').find('.errornav').remove();
-          $('body').append($("<div class=\"errornav navbar-inverse navbar-fixed-bottom\">\n  <div class=\"navbar-inner\">\n    <div class=\"container\">\n      <p><strong>Error!</strong> Could not connect to dictionary server. <a href=\"#\" class=\"dismiss\">Close</a>.</p>\n    </div>\n  </div>\n</div>"));
+          $('body').append($("<div class=\"errornav navbar-inverse navbar-fixed-bottom\">\n  <div class=\"navbar-inner\">\n    <div class=\"container\">\n      <p><strong>Error!</strong> Could not connect to dictionary server (host: " + opts.api_host + ". <a href=\"#\" class=\"dismiss\">Close</a>.</p>\n    </div>\n  </div>\n</div>"));
           return $('body').find('.errornav .dismiss').click(function() {
             $('body .errornav').remove();
             return false;
@@ -241,7 +245,7 @@ TODO: prevent window url from updating with form submit params
           success: cleanResponse,
           error: function() {
             $(result_elem).find('.alert').remove();
-            return $(result_elem).append($("<div class=\"alert\">\n  <strong>Error!</strong> could not connect to dictionary server.\n</div>"));
+            return $(result_elem).append($("<div class=\"alert\">\n  <strong>Error!</strong> could not connect to dictionary server (" + opts.api_host + ").\n</div>"));
           }
         });
         return false;
@@ -253,4 +257,4 @@ TODO: prevent window url from updating with form submit params
     formIDName: "#kursadict",
     formResults: "#results"
   };
-}))(jQuery);
+});
