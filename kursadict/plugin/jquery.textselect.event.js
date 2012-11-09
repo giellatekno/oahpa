@@ -25,6 +25,8 @@
             // If the called event originates from a inputbox/form element (in FF), use that
             // to get the selected text (FF doesn't trigger getSelection() on input
             // elements natively)
+            // TODO: if user clicks on radio, and event fails, do
+            // something else
             var el = $(evt.originalEvent.target).is(':input') ?
                 evt.originalEvent.target :
                 undefined;
@@ -32,6 +34,23 @@
             return el && +el.selectionEnd ? 
                 $(el).val().substring(el.selectionStart, el.selectionEnd) :
                 (winSel || docSel.createRange().text || "").toString();
+        },
+
+        // Helper to grab index of currently selected text
+        getSelectedIndex = function (evt) {
+
+            var el = $(evt.originalEvent.target).is(':input') ?
+                evt.originalEvent.target :
+                undefined;
+
+            if (el && +el.selectionEnd) {
+            	var thing = el.selectionStart;
+            	var index = el.selectionStart;
+            } else {
+            	var thing = winSel || docSel.createRange() || "",
+            	    index = thing.baseOffset;
+            }
+            return index ;
         },
 
         // Helper to grab which common ancestor the text has
@@ -75,6 +94,7 @@
                 // Grab currently selected text and its common ancestor element
                 var
                     curText = getSelected(evt),
+                    curIndex = getSelectedIndex(evt),
                     conElement = $(evt.originalEvent.target).is(':input') ?
                         getOrigin(evt.originalEvent.target) :
                         getOrigin();
@@ -86,13 +106,13 @@
     
                     // Set currently selected text (and element) to the actual currently
                     // selected text and element
-                    selObj = { str : curText, el : conElement };
+                    selObj = { str : curText, el : conElement, index : curIndex };
     
                     // Change event type to our custom event
                     evt.type = 'textselect';
     
                     // Fire the simulated event
-                    $.event.trigger(evt, [selObj.str, selObj.el]);
+                    $.event.trigger(evt, [selObj.str, selObj.el, selObj.index]);
                 }
             }
         };
