@@ -1,0 +1,54 @@
+/* @override http://localhost:8000/jquery.kursadict.css */
+
+/*
+ *  Some overrides for bootstrap
+ *
+ */
+
+#webdict_options .control-group label {
+    width: 100px;
+}
+
+#webdict_options .controls {
+    margin-left: 130px;
+    margin-right: 20px;
+}
+
+#webdict_options {
+    position: fixed;
+    left: -5px;
+    top: 30%;
+    width: auto;
+    height: auto;
+    padding: .25em;
+    // opacity: .3;
+}
+
+#webdict_options.open {
+    opacity: 1;
+}
+
+#webdict_options.hidden .well {
+    background-color: #CCC ;
+    padding: 5px;
+    border: double #777;
+    border-left: none;
+}
+
+#webdict_options .trigger a {
+    color: #111;
+
+}
+
+#webdict_options:hover {
+    opacity: 1;
+}
+
+#webdict_options .option_panel {
+//    display: none;    
+}
+
+
+#webdict_options form {
+	padding:  10px;
+}
