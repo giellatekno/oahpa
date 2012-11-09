@@ -208,6 +208,7 @@ jQuery(document).ready ($) ->
     index    = getActualIndex(selection)
     indexMax = index + string.length
 
+    # TODO: quick fix for IE, fix the selection event plugin instead
     if not index
       index = $(selection.element).html().search(string)
       indexMax = index + string.length
@@ -223,11 +224,9 @@ jQuery(document).ready ($) ->
          class="tooltip_target">#{string}</a>
       """
 
-      console.log [index, indexMax]
       [_left, _mid, _right] = [$(element).html().slice(0, index),
                                $(element).html().slice(index, indexMax),
                                $(element).html().slice(indexMax)]
-      console.log _left
 
       _mid_new = _mid.replace(string, _wrapElement)
       _new_html = _left + _mid_new + _right

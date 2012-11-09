@@ -166,9 +166,7 @@ jQuery(document).ready(function($) {
         return $(this).replaceWith(this.childNodes);
       });
       _wrapElement = "<a style=\"font-style: italic; border: 1px solid #CEE; padding: 0 2px\" \n   class=\"tooltip_target\">" + string + "</a>";
-      console.log([index, indexMax]);
       _ref = [$(element).html().slice(0, index), $(element).html().slice(index, indexMax), $(element).html().slice(indexMax)], _left = _ref[0], _mid = _ref[1], _right = _ref[2];
-      console.log(_left);
       _mid_new = _mid.replace(string, _wrapElement);
       _new_html = _left + _mid_new + _right;
       $(element).html(_new_html);
