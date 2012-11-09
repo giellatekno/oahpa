@@ -156,6 +156,10 @@ jQuery(document).ready(function($) {
     element = selection.element;
     index = getActualIndex(selection);
     indexMax = index + string.length;
+    if (!index) {
+      index = selection.element.html().search(string);
+      indexMax = index + string.length;
+    }
     if (opts.tooltip) {
       $(element).find('a.tooltip_target').each(function() {
         $(this).popover('destroy');
