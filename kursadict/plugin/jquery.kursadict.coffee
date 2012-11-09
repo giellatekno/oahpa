@@ -209,7 +209,7 @@ jQuery(document).ready ($) ->
     indexMax = index + string.length
 
     if not index
-      index = selection.element.html().search(string)
+      index = $(selection.element).html().search(string)
       indexMax = index + string.length
     
     # For tooltip we need to wrap the search word in a span.

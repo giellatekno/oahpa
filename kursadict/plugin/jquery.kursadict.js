@@ -157,7 +157,7 @@ jQuery(document).ready(function($) {
     index = getActualIndex(selection);
     indexMax = index + string.length;
     if (!index) {
-      index = selection.element.html().search(string);
+      index = $(selection.element).html().search(string);
       indexMax = index + string.length;
     }
     if (opts.tooltip) {
