@@ -70,11 +70,11 @@ TODO: lookup timeout
 # Wrap jQuery and add plugin functionality
 jQuery(document).ready ($) ->
 
-  # API_HOST = "http://testing.oahpa.no/"
-  if window.location.hostname == 'localhost'
-    API_HOST = "http://localhost:5000/"
-  else if window.location.hostname == 'testing.oahpa.no'
-    API_HOST = "http://#{window.location.hostname}/"
+  API_HOST = "http://testing.oahpa.no/"
+  # if window.location.hostname == 'localhost'
+  #   API_HOST = "http://localhost:5000/"
+  # else if window.location.hostname == 'testing.oahpa.no'
+  #   API_HOST = "http://#{window.location.hostname}/"
 
   Templates =
     OptionsTab: (args) ->
@@ -139,7 +139,7 @@ jQuery(document).ready ($) ->
        <div class="errornav navbar-inverse navbar-fixed-bottom">
          <div class="navbar-inner">
            <div class="container">
-             <p><strong>Error!</strong> Could not connect to dictionary server (host: #{host}.
+             <p><strong>Error!</strong> Could not connect to dictionary server (host: #{host}).
                 <a href="#" class="dismiss">Close</a>.</p>
            </div>
          </div>
@@ -219,9 +219,11 @@ jQuery(document).ready ($) ->
          class="tooltip_target">#{string}</a>
       """
 
+      console.log [index, indexMax]
       [_left, _mid, _right] = [$(element).html().slice(0, index),
                                $(element).html().slice(index, indexMax),
                                $(element).html().slice(indexMax)]
+      console.log _left
 
       _mid_new = _mid.replace(string, _wrapElement)
       _new_html = _left + _mid_new + _right
@@ -305,9 +307,9 @@ jQuery(document).ready ($) ->
             index: index
           }
           cleanTooltipResponse(selection, response, opts)
-        error: () ->
+        error: () =>
           $(document).find('body').find('.errornav').remove()
-          $(document).find('body').append ErrorBar {
+          $(document).find('body').append Templates.ErrorBar {
             host: opts.hostname
           }
 

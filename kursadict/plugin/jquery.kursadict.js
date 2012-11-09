@@ -68,11 +68,7 @@ TODO: lookup timeout
 
 jQuery(document).ready(function($) {
   var API_HOST, Templates, cleanTooltipResponse, getActualIndex, initSpinner, lookupSelectEvent;
-  if (window.location.hostname === 'localhost') {
-    API_HOST = "http://localhost:5000/";
-  } else if (window.location.hostname === 'testing.oahpa.no') {
-    API_HOST = "http://" + window.location.hostname + "/";
-  }
+  API_HOST = "http://testing.oahpa.no/";
   Templates = {
     OptionsTab: function(args) {
       var el;
@@ -101,7 +97,7 @@ jQuery(document).ready(function($) {
     ErrorBar: function(args) {
       var el, host;
       host = args.host;
-      el = $("<div class=\"errornav navbar-inverse navbar-fixed-bottom\">\n  <div class=\"navbar-inner\">\n    <div class=\"container\">\n      <p><strong>Error!</strong> Could not connect to dictionary server (host: " + host + ".\n         <a href=\"#\" class=\"dismiss\">Close</a>.</p>\n    </div>\n  </div>\n</div>");
+      el = $("<div class=\"errornav navbar-inverse navbar-fixed-bottom\">\n  <div class=\"navbar-inner\">\n    <div class=\"container\">\n      <p><strong>Error!</strong> Could not connect to dictionary server (host: " + host + ").\n         <a href=\"#\" class=\"dismiss\">Close</a>.</p>\n    </div>\n  </div>\n</div>");
       el.find('.errornav .dismiss').click(function() {
         $(document).find('body .errornav').remove();
         return false;
@@ -166,7 +162,9 @@ jQuery(document).ready(function($) {
         return $(this).replaceWith(this.childNodes);
       });
       _wrapElement = "<a style=\"font-style: italic; border: 1px solid #CEE; padding: 0 2px\" \n   class=\"tooltip_target\">" + string + "</a>";
+      console.log([index, indexMax]);
       _ref = [$(element).html().slice(0, index), $(element).html().slice(index, indexMax), $(element).html().slice(indexMax)], _left = _ref[0], _mid = _ref[1], _right = _ref[2];
+      console.log(_left);
       _mid_new = _mid.replace(string, _wrapElement);
       _new_html = _left + _mid_new + _right;
       $(element).html(_new_html);
@@ -262,7 +260,7 @@ jQuery(document).ready(function($) {
         },
         error: function() {
           $(document).find('body').find('.errornav').remove();
-          return $(document).find('body').append(ErrorBar({
+          return $(document).find('body').append(Templates.ErrorBar({
             host: opts.hostname
           }));
         }
