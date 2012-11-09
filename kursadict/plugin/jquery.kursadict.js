@@ -13,6 +13,8 @@ TODO: clarify how to install this somewhere.
 
 Install node.js and npm, and then coffeescript.
 
+TODO: write more
+
 ## building
 
 Must be compiled with --bare, to prevent function wrapping that disables
@@ -24,25 +26,89 @@ jQuery.
 
     coffee --compile --watch --bare jquery.kursadict.coffee
 
-## TODOs
+Or.
+
+    ./compile_and_watch.sh
+
+
+## TODOs / Features
+
+TODO: need an interface for managing options that isn't the search form,
+      maybe a little tab popping out of the side like with the user voice /
+      feedback app thing.
+
+      - Icon?
+        http://www.iconeasy.com/icon/png/System/Sticker%20Pack%202/Dictionary.png
+        http://upload.wikimedia.org/wikipedia/en/d/d1/Dictionary_Icon.png
+
+        maybe one with ášŋ or some clearly sámi symbols
+
+        maybe just make my own without an additional .png requirement?
+
+     - options:
+
+       - target language
+       - detail level of information display
+       - place of display: tooltip/banner
+       - device options: tablet / normal computer
+
 
 TODO: autodetect from browser language first, fall back to nob otherwise
 
-TODO: debugging for misc browsers where there are issues.
 
-TODO: check globally for wraps instead of just in element, remove them;
-      make sure .classname is much more random
+## TODOs / Bugs
 
+TODO: Når ordet er nesten på enden av nettlesarvindaugo, hengjer popup
+      litt utafor vindaugo, so er det vanskeleg å lesa. 
+TODO: IE on all OSes seems to select a whole paragraph after a word has been
+      selected. There is probably some way to prevent this from occurring.
 TODO: prevent window url from updating with form submit params
+TODO: lookup timeout
 */
 
 jQuery(document).ready(function($) {
-  var API_HOST, cleanTooltipResponse, initSpinner, lookupSelectEvent;
+  var API_HOST, Templates, cleanTooltipResponse, getActualIndex, initSpinner, lookupSelectEvent;
   if (window.location.hostname === 'localhost') {
     API_HOST = "http://localhost:5000/";
   } else if (window.location.hostname === 'testing.oahpa.no') {
     API_HOST = "http://" + window.location.hostname + "/";
   }
+  Templates = {
+    OptionsTab: function(args) {
+      var el;
+      el = $("<div id=\"webdict_options\" class=\"hidden\">\n  <div class=\"well\">\n  <a class=\"close\" href=\"#\" style=\"display: none;\">&times;</a>\n  <div class=\"trigger\">\n    <h1><a href=\"#\" class=\"open\">Á</a></h1>\n  </div>\n\n  <div class=\"option_panel\" style=\"display: none;\">\n    <ul class=\"nav nav-pills\">\n      <li class=\"active\">\n        <a href=\"#\">Options</a>\n      </li>\n      <li><a href=\"#\">About</a></li>\n    </ul>\n    <form class=\"\">\n      <label class=\"control-label\" for=\"inputEmail\">Dictionary</label>\n       <label class=\"radio\">\n        <input type=\"radio\" name=\"language_pair\" id=\"language_pair1\" value=\"smenob\" checked>\n        Northern Sámi -> Norwegian\n      </label>\n      <label class=\"radio\">\n        <input type=\"radio\" name=\"language_pair\" id=\"language_pair2\" value=\"smefin\">\n        Northern Sámi -> Finnish\n      </label> \n      <br />\n      <label class=\"checkbox\">\n       <input type=\"checkbox\" name=\"detail_level\" />\n       Extra info\n      </label>\n      <button type=\"submit\" class=\"btn\">Save</button>\n    </div>\n  </div>\n  </form>\n</div>");
+      el.find('.trigger').click(function() {
+        var optsp;
+        optsp = el.find('div.option_panel');
+        optsp.toggle();
+        return el.find('a.close').toggle();
+      });
+      el.find('a.close').click(function() {
+        var optsp;
+        optsp = el.find('div.option_panel');
+        optsp.toggle();
+        return el.find('a.close').toggle();
+      });
+      el.find('form').submit(function() {
+        var optsp;
+        optsp = el.find('div.option_panel');
+        optsp.toggle();
+        el.find('a.close').toggle();
+        return false;
+      });
+      return el;
+    },
+    ErrorBar: function(args) {
+      var el, host;
+      host = args.host;
+      el = $("<div class=\"errornav navbar-inverse navbar-fixed-bottom\">\n  <div class=\"navbar-inner\">\n    <div class=\"container\">\n      <p><strong>Error!</strong> Could not connect to dictionary server (host: " + host + ".\n         <a href=\"#\" class=\"dismiss\">Close</a>.</p>\n    </div>\n  </div>\n</div>");
+      el.find('.errornav .dismiss').click(function() {
+        $(document).find('body .errornav').remove();
+        return false;
+      });
+      return el;
+    }
+  };
   initSpinner = function() {
     /*
             spinner popup in right corner; `spinner = initSpinner()` to
@@ -51,7 +117,7 @@ jQuery(document).ready(function($) {
     */
 
     var spinner, spinnerExists;
-    spinnerExists = $('body').find('spinner');
+    spinnerExists = $(document).find('.spinner');
     if (spinnerExists.length === 0) {
       spinner = $("<img src=\"img/spinner.gif\" class=\"spinner\" />");
       spinner.css({
@@ -60,34 +126,70 @@ jQuery(document).ready(function($) {
         top: "0px",
         right: "0px"
       });
-      $('body').append(spinner);
+      $(document).find('body').append(spinner);
       return spinner;
     }
     return spinnerExists;
   };
-  cleanTooltipResponse = function(string, element, response, opts) {
+  getActualIndex = function(selection) {
+    var baseOffset, extentOffset, last, _left, _ref;
+    _ref = selection.index, baseOffset = _ref[0], extentOffset = _ref[1];
+    if (baseOffset === extentOffset) {
+      _left = $(selection.element).html().slice(0, baseOffset);
+      last = _left.match(/[^\s.]*$/);
+      if (last[0] !== "") {
+        return baseOffset - last[0].length;
+      } else {
+        return baseOffset;
+      }
+    } else {
+      return baseOffset;
+    }
+    return selection.index[0];
+  };
+  cleanTooltipResponse = function(selection, response, opts) {
     /*
             Clean response from tooltip $.ajax query, and display results
     */
 
-    var lookup, result, result_string, result_strings, _i, _j, _k, _len, _len1, _len2, _new_html, _ref, _ref1, _results, _str, _tooltipTarget, _tooltipTitle, _wrapElement;
+    var clean_right, element, i, index, indexMax, lookup, r, result, result_string, result_strings, right, string, _i, _j, _k, _l, _left, _len, _len1, _len2, _len3, _mid, _mid_new, _new_html, _ref, _ref1, _ref2, _ref3, _results, _right, _str, _tooltipTarget, _tooltipTitle, _wrapElement;
+    if (!selection.index) {
+      console.log("no index!");
+    }
+    string = selection.string;
+    element = selection.element;
+    index = getActualIndex(selection);
+    indexMax = index + string.length;
     if (opts.tooltip) {
       $(element).find('a.tooltip_target').each(function() {
         $(this).popover('destroy');
         return $(this).replaceWith(this.childNodes);
       });
       _wrapElement = "<a style=\"font-style: italic; border: 1px solid #CEE; padding: 0 2px\" \n   class=\"tooltip_target\">" + string + "</a>";
-      _new_html = $(element).html().replace(string, _wrapElement);
+      _ref = [$(element).html().slice(0, index), $(element).html().slice(index, indexMax), $(element).html().slice(indexMax)], _left = _ref[0], _mid = _ref[1], _right = _ref[2];
+      _mid_new = _mid.replace(string, _wrapElement);
+      _new_html = _left + _mid_new + _right;
       $(element).html(_new_html);
     }
     result_strings = [];
-    _ref = response.result;
-    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      result = _ref[_i];
-      _ref1 = result.lookups;
-      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-        lookup = _ref1[_j];
-        result_string = "<em>" + lookup.left + "</em> (" + lookup.pos + ") &mdash; " + lookup.right;
+    _ref1 = response.result;
+    for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
+      result = _ref1[_i];
+      _ref2 = result.lookups;
+      for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
+        lookup = _ref2[_j];
+        if (lookup.right.length > 1) {
+          clean_right = [];
+          _ref3 = lookup.right;
+          for (i = _k = 0, _len2 = _ref3.length; _k < _len2; i = ++_k) {
+            r = _ref3[i];
+            clean_right.push("" + (i + 1) + ". " + r);
+          }
+          right = clean_right.join(', ');
+        } else {
+          right = lookup.right[0];
+        }
+        result_string = "<em>" + lookup.left + "</em> (" + lookup.pos + ") &mdash; " + right;
         result_strings.push(result_string);
       }
     }
@@ -112,15 +214,15 @@ jQuery(document).ready(function($) {
     } else {
       $(result_elem).html("");
       _results = [];
-      for (_k = 0, _len2 = result_strings.length; _k < _len2; _k++) {
-        _str = result_strings[_k];
+      for (_l = 0, _len3 = result_strings.length; _l < _len3; _l++) {
+        _str = result_strings[_l];
         _results.push($(result_elem).append($("<p />").html(_str)));
       }
       return _results;
     }
   };
-  lookupSelectEvent = function(evt, string, element, opts) {
-    var lookup_string, post_data, result_elem, source_lang, spinner, target_lang,
+  lookupSelectEvent = function(evt, string, element, index, opts) {
+    var langpair, lookup_string, post_data, result_elem, source_lang, spinner, target_lang,
       _this = this;
     result_elem = $(opts.formResults);
     spinner = initSpinner();
@@ -129,8 +231,9 @@ jQuery(document).ready(function($) {
       return false;
     }
     if (string !== "") {
-      source_lang = opts.sourceLanguage;
-      target_lang = $(opts.targetLanguageSelect).val();
+      langpair = $(opts.langPairSelect).val();
+      source_lang = langpair.slice(0, 3);
+      target_lang = langpair.slice(3, 6);
       lookup_string = string;
       post_data = {
         lookup: lookup_string,
@@ -149,36 +252,61 @@ jQuery(document).ready(function($) {
         data: post_data,
         cache: true,
         success: function(response) {
-          return cleanTooltipResponse(string, element, response, opts);
+          var selection;
+          selection = {
+            string: string,
+            element: element,
+            index: index
+          };
+          return cleanTooltipResponse(selection, response, opts);
         },
         error: function() {
-          $('body').find('.errornav').remove();
-          $('body').append($("<div class=\"errornav navbar-inverse navbar-fixed-bottom\">\n  <div class=\"navbar-inner\">\n    <div class=\"container\">\n      <p><strong>Error!</strong> Could not connect to dictionary server (host: " + opts.api_host + ". <a href=\"#\" class=\"dismiss\">Close</a>.</p>\n    </div>\n  </div>\n</div>"));
-          return $('body').find('.errornav .dismiss').click(function() {
-            $('body .errornav').remove();
-            return false;
-          });
+          $(document).find('body').find('.errornav').remove();
+          return $(document).find('body').append(ErrorBar({
+            host: opts.hostname
+          }));
         }
       });
     }
   };
   $.fn.selectToLookup = function(opts) {
-    var holdingOption,
+    var clean, holdingOption,
       _this = this;
     opts = $.extend({}, $.fn.selectToLookup.options, opts);
-    holdingOption = function(evt, string, element) {
+    if (opts.displayOptions) {
+      $(document).find('body').append(Templates.OptionsTab());
+    }
+    holdingOption = function(evt, string, element, index) {
       if (evt.altKey) {
-        return lookupSelectEvent(evt, string, element, opts);
+        lookupSelectEvent(evt, string, element, index, opts);
       }
+      return false;
     };
-    return $(document).bind('textselect', holdingOption);
+    clean = function(event) {
+      var parent, parents, _i, _len, _results;
+      parents = [];
+      $(document).find('a.tooltip_target').each(function() {
+        parents.push($(this).parent());
+        $(this).popover('destroy');
+        return $(this).replaceWith(this.childNodes);
+      });
+      _results = [];
+      for (_i = 0, _len = parents.length; _i < _len; _i++) {
+        parent = parents[_i];
+        _results.push(parent.html(parent.html()));
+      }
+      return _results;
+    };
+    $(document).bind('textselect', holdingOption);
+    return $(document).bind('click', clean);
   };
   $.fn.selectToLookup.options = {
     api_host: API_HOST,
     formResults: "#results",
     sourceLanguage: "sme",
-    targetLanguageSelect: "select[name='target_lang']",
-    tooltip: false
+    langPairSelect: "#webdict_options *[name='language_pair']:checked",
+    tooltip: true,
+    displayOptions: true
   };
   $.fn.kursaDict = function(opts) {
     opts = $.extend({}, $.fn.kursaDict.options, opts);

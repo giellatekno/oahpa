@@ -7,6 +7,7 @@
 
         <!-- These are required for everything to work -->
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="jquery.kursadict.css" rel="stylesheet" />
 
         <script type='text/javascript' src='jquery.1.7.2.js'></script>
         <script type='text/javascript' src='bootstrap/js/bootstrap-tooltip.js'></script>
@@ -22,9 +23,7 @@
                 // Enable options for inline clicking
                 jQuery(document).selectToLookup({
                   tooltip: true,
-                  sourceLanguage: "sme",
-                  targetLanguageSelect:
-                    "input[name='target_lang']:checked"
+                  displayOptions: true
                 });
             });
         </script>

@@ -57,12 +57,12 @@ TODO: autodetect from browser language first, fall back to nob otherwise
 
 ## TODOs / Bugs
 
-TODO: display tooltip in correct location if a word appears multiple times.
 TODO: Når ordet er nesten på enden av nettlesarvindaugo, hengjer popup
       litt utafor vindaugo, so er det vanskeleg å lesa. 
 TODO: IE on all OSes seems to select a whole paragraph after a word has been
       selected. There is probably some way to prevent this from occurring.
 TODO: prevent window url from updating with form submit params
+TODO: lookup timeout
 
 
 ###
@@ -76,13 +76,87 @@ jQuery(document).ready ($) ->
   else if window.location.hostname == 'testing.oahpa.no'
     API_HOST = "http://#{window.location.hostname}/"
 
+  Templates =
+    OptionsTab: (args) ->
+      el = $("""
+        <div id="webdict_options" class="hidden">
+          <div class="well">
+          <a class="close" href="#" style="display: none;">&times;</a>
+          <div class="trigger">
+            <h1><a href="#" class="open">Á</a></h1>
+          </div>
+
+          <div class="option_panel" style="display: none;">
+            <ul class="nav nav-pills">
+              <li class="active">
+                <a href="#">Options</a>
+              </li>
+              <li><a href="#">About</a></li>
+            </ul>
+            <form class="">
+              <label class="control-label" for="inputEmail">Dictionary</label>
+               <label class="radio">
+                <input type="radio" name="language_pair" id="language_pair1" value="smenob" checked>
+                Northern Sámi -> Norwegian
+              </label>
+              <label class="radio">
+                <input type="radio" name="language_pair" id="language_pair2" value="smefin">
+                Northern Sámi -> Finnish
+              </label> 
+              <br />
+              <label class="checkbox">
+               <input type="checkbox" name="detail_level" />
+               Extra info
+              </label>
+              <button type="submit" class="btn">Save</button>
+            </div>
+          </div>
+          </form>
+        </div>
+      """)
+
+      el.find('.trigger').click () ->
+        optsp = el.find('div.option_panel')
+        optsp.toggle()
+        el.find('a.close').toggle()
+
+      el.find('a.close').click () ->
+        optsp = el.find('div.option_panel')
+        optsp.toggle()
+        el.find('a.close').toggle()
+
+      el.find('form').submit () ->
+        optsp = el.find('div.option_panel')
+        optsp.toggle()
+        el.find('a.close').toggle()
+        return false
+      
+      return el
+
+    ErrorBar: (args) ->
+      host = args.host
+      el = $("""
+       <div class="errornav navbar-inverse navbar-fixed-bottom">
+         <div class="navbar-inner">
+           <div class="container">
+             <p><strong>Error!</strong> Could not connect to dictionary server (host: #{host}.
+                <a href="#" class="dismiss">Close</a>.</p>
+           </div>
+         </div>
+       </div>
+       """)
+      el.find('.errornav .dismiss').click () ->
+        $(document).find('body .errornav').remove()
+        return false
+      return el
+
   initSpinner = () ->
     ###
         spinner popup in right corner; `spinner = initSpinner()` to
         create or find, then usual `spinner.show()` or `.hide()` as
         needed.
     ###
-    spinnerExists = $('body').find('spinner')
+    spinnerExists = $(document).find('.spinner')
     if spinnerExists.length == 0
       spinner = $("""<img src="img/spinner.gif" class="spinner" />""")
       spinner.css {
@@ -91,17 +165,50 @@ jQuery(document).ready ($) ->
         top: "0px"
         right: "0px"
       }
-      $('body').append(spinner)
+      $(document).find('body').append(spinner)
       return spinner
     return spinnerExists
 
-  cleanTooltipResponse = (string, element, response, opts) ->
+
+
+
+  getActualIndex = (selection) ->
+    # Need to adjust the selection index when the user double clicks a
+    # word, the selection index returned from the selection event is the
+    # character at the point of the click, so, the text of the element
+    # needs to be split.  The baseOffset is also the same as the
+    # extentOffset.
+    #
+
+    [baseOffset, extentOffset] = selection.index
+    # regex on _left slice to get length of word that is cut off
+    # subtract length, return
+
+    if baseOffset == extentOffset
+      _left = $(selection.element).html().slice(0, baseOffset)
+      last = _left.match /[^\s.]*$/
+      if last[0] != ""
+        return baseOffset - last[0].length
+      else
+      	return baseOffset
+    else
+      return baseOffset
+
+    return selection.index[0]
+     
+  cleanTooltipResponse = (selection, response, opts) ->
     ###
         Clean response from tooltip $.ajax query, and display results
     ###
+    if not selection.index
+      console.log("no index!")
+
+    string   = selection.string
+    element  = selection.element
+    index    = getActualIndex(selection)
+    indexMax = index + string.length
     
     # For tooltip we need to wrap the search word in a span.
-    # TODO: search whole document
     if opts.tooltip
       $(element).find('a.tooltip_target').each () ->
         $(this).popover('destroy')
@@ -112,14 +219,27 @@ jQuery(document).ready ($) ->
          class="tooltip_target">#{string}</a>
       """
 
-      _new_html = $(element).html().replace(string, _wrapElement)
+      [_left, _mid, _right] = [$(element).html().slice(0, index),
+                               $(element).html().slice(index, indexMax),
+                               $(element).html().slice(indexMax)]
+
+      _mid_new = _mid.replace(string, _wrapElement)
+      _new_html = _left + _mid_new + _right
       $(element).html(_new_html)
 
     # Compile result strings
     result_strings = []
     for result in response.result
       for lookup in result.lookups
-        result_string = "<em>#{lookup.left}</em> (#{lookup.pos}) &mdash; #{lookup.right}"
+        if lookup.right.length > 1
+          clean_right = []
+          for r, i in lookup.right
+          	clean_right.push "#{i+1}. #{r}"
+          right = clean_right.join(', ')
+        else
+          right = lookup.right[0]
+
+        result_string = "<em>#{lookup.left}</em> (#{lookup.pos}) &mdash; #{right}"
         result_strings.push(result_string)
     
     if result_strings.length == 0 or response.success == false
@@ -145,8 +265,10 @@ jQuery(document).ready ($) ->
       for _str in result_strings
         $(result_elem).append $("<p />").html(_str)
 
+
+
   
-  lookupSelectEvent = (evt, string, element, opts) ->
+  lookupSelectEvent = (evt, string, element, index, opts) ->
     result_elem = $(opts.formResults)
 
     spinner = initSpinner()
@@ -157,8 +279,9 @@ jQuery(document).ready ($) ->
       return false
 
     if (string != "")
-      source_lang = opts.sourceLanguage
-      target_lang = $(opts.targetLanguageSelect).val()
+      langpair = $(opts.langPairSelect).val()
+      source_lang = langpair.slice(0, 3)
+      target_lang = langpair.slice(3, 6)
       lookup_string = string
 
       post_data =
@@ -176,21 +299,19 @@ jQuery(document).ready ($) ->
         data: post_data
         cache: true
         success: (response) =>
-          cleanTooltipResponse(string, element, response, opts)
+          selection = {
+            string: string
+            element: element
+            index: index
+          }
+          cleanTooltipResponse(selection, response, opts)
         error: () ->
-          $('body').find('.errornav').remove()
-          $('body').append $("""
-              <div class="errornav navbar-inverse navbar-fixed-bottom">
-                <div class="navbar-inner">
-                  <div class="container">
-                    <p><strong>Error!</strong> Could not connect to dictionary server (host: #{opts.api_host}. <a href="#" class="dismiss">Close</a>.</p>
-                  </div>
-                </div>
-              </div>
-          """)
-          $('body').find('.errornav .dismiss').click () ->
-            $('body .errornav').remove()
-            return false
+          $(document).find('body').find('.errornav').remove()
+          $(document).find('body').append ErrorBar {
+            host: opts.hostname
+          }
+
+
 
   ##
    # $(document).selectToLookup();
@@ -198,21 +319,41 @@ jQuery(document).ready ($) ->
    #
    ## 
 
+
+
   $.fn.selectToLookup = (opts) ->
     opts = $.extend {}, $.fn.selectToLookup.options, opts
 
-    holdingOption = (evt, string, element) =>
-      if evt.altKey
-        lookupSelectEvent(evt, string, element, opts)
+    if opts.displayOptions
+      $(document).find('body').append Templates.OptionsTab()
+    # TODO: defaults if otherwise
     
+    holdingOption = (evt, string, element, index) =>
+      if evt.altKey
+        lookupSelectEvent(evt, string, element, index, opts)
+      return false
+    
+    clean = (event) ->
+      parents = []
+      $(document).find('a.tooltip_target').each () ->
+        parents.push $(this).parent()
+        $(this).popover('destroy')
+        $(this).replaceWith(this.childNodes)
+      # Set parent html to be parent html, for some reason this allows
+      # all following click/lookup events to be properly registered
+      for parent in parents
+        parent.html parent.html()
+
     $(document).bind('textselect', holdingOption)
+    $(document).bind('click', clean)
    
   $.fn.selectToLookup.options =
     api_host: API_HOST
     formResults: "#results"
     sourceLanguage: "sme"
-    targetLanguageSelect: "select[name='target_lang']"
-    tooltip: false
+    langPairSelect: "#webdict_options *[name='language_pair']:checked"
+    tooltip: true
+    displayOptions: true
 
 
   ##
