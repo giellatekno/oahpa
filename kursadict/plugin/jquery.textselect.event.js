@@ -48,7 +48,9 @@
             	var index = el.selectionStart;
             } else {
             	var thing = winSel || docSel.createRange() || "",
-            	    index = [thing.baseOffset, thing.extentOffset];
+            	    index = thing.baseOffset && thing.extentOffset ? 
+            	            [thing.baseOffset, thing.extentOffset] :
+            	            [thing.anchorOffset, thing.focusOffset] ;
             }
             return index ;
         },
