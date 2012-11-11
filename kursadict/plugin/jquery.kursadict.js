@@ -46,6 +46,8 @@ TODO: autodetect from browser language first, fall back to nob otherwise
 TODO: IE on all OSes seems to select a whole paragraph after a word has been
       selected. There is probably some way to prevent this from occurring.
 
+TODO: IE sometimes still does not notice the first lookup
+
 TODO: prevent window url from updating with form submit params
 
 TODO: lookup timeout -- set on $.ajax, but sometimes seems not to work?
@@ -244,16 +246,16 @@ jQuery(document).ready(function($) {
         },
         trigger: 'hover'
       });
+      _tooltipTarget.popover('show');
       if (window.getSelection) {
         if (window.getSelection().empty) {
-          window.getSelection().empty();
+          return window.getSelection().empty();
         } else if (window.getSelection().removeAllRanges) {
-          window.getSelection().removeAllRanges();
+          return window.getSelection().removeAllRanges();
         }
       } else if (document.selection) {
-        document.selection.empty();
+        return document.selection.empty();
       }
-      return _tooltipTarget.popover('show');
     }
   };
   lookupSelectEvent = function(evt, string, element, index, opts) {
