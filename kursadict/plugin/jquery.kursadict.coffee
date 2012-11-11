@@ -32,87 +32,90 @@ Or.
 
 ## TODOs / Features
 
-TODO: need an interface for managing options that isn't the search form,
-      maybe a little tab popping out of the side like with the user voice /
-      feedback app thing.
-
-      - Icon?
-        http://www.iconeasy.com/icon/png/System/Sticker%20Pack%202/Dictionary.png
-        http://upload.wikimedia.org/wikipedia/en/d/d1/Dictionary_Icon.png
-
-        maybe one with ášŋ or some clearly sámi symbols
-
-        maybe just make my own without an additional .png requirement?
-
-     - options:
-
-       - target language
-       - detail level of information display
-       - place of display: tooltip/banner
-       - device options: tablet / normal computer
-
+TODO: options:
+      - target language
+      - detail level of information display
+      - place of display: tooltip/banner
+      - device options: tablet / normal computer
 
 TODO: autodetect from browser language first, fall back to nob otherwise
 
-
 ## TODOs / Bugs
 
-TODO: Når ordet er nesten på enden av nettlesarvindaugo, hengjer popup
-      litt utafor vindaugo, so er det vanskeleg å lesa. 
 TODO: IE on all OSes seems to select a whole paragraph after a word has been
       selected. There is probably some way to prevent this from occurring.
-TODO: prevent window url from updating with form submit params
-TODO: lookup timeout
 
+TODO: prevent window url from updating with form submit params
+
+TODO: lookup timeout -- set on $.ajax, but sometimes seems not to work?
+
+TODO: Opera on Windows - alt+click context window
+
+TODO: add a non-alt/opt version. maybe banner along the bottom that
+      allows lookup when  text is highlighted
 
 ###
 
 # Wrap jQuery and add plugin functionality
 jQuery(document).ready ($) ->
 
-  API_HOST = "http://testing.oahpa.no/"
-  # if window.location.hostname == 'localhost'
-  #   API_HOST = "http://localhost:5000/"
-  # else if window.location.hostname == 'testing.oahpa.no'
-  #   API_HOST = "http://#{window.location.hostname}/"
+  # API_HOST = "http://testing.oahpa.no/"
+  if window.location.hostname == 'localhost'
+    API_HOST = "http://localhost:5000/"
+  else if window.location.hostname == 'testing.oahpa.no'
+    API_HOST = "http://#{window.location.hostname}/"
 
   Templates =
-    OptionsTab: (args) ->
-      el = $("""
-        <div id="webdict_options" class="hidden">
-          <div class="well">
-          <a class="close" href="#" style="display: none;">&times;</a>
-          <div class="trigger">
-            <h1><a href="#" class="open">Á</a></h1>
-          </div>
+    OptionsMenu: (opts) ->
+      # TODO: navmenu fixed at bottom containing language option, and 
+      #       lookup button
+      return "omg"
+    
+    OptionsTab: (opts) ->
+      languageOption = (data, i) ->
+        if i+1 == 1
+          checked = "checked"
+        else
+          checked = ""
 
-          <div class="option_panel" style="display: none;">
-            <ul class="nav nav-pills">
-              <li class="active">
-                <a href="#">Options</a>
-              </li>
-              <li><a href="#">About</a></li>
-            </ul>
-            <form class="">
-              <label class="control-label" for="inputEmail">Dictionary</label>
-               <label class="radio">
-                <input type="radio" name="language_pair" id="language_pair1" value="smenob" checked>
-                Northern Sámi -> Norwegian
-              </label>
-              <label class="radio">
-                <input type="radio" name="language_pair" id="language_pair2" value="smefin">
-                Northern Sámi -> Finnish
-              </label> 
-              <br />
-              <label class="checkbox">
-               <input type="checkbox" name="detail_level" />
-               Extra info
-              </label>
-              <button type="submit" class="btn">Save</button>
-            </div>
-          </div>
-          </form>
+        """
+        <label class="radio">
+          <input type="radio" 
+                 name="language_pair" 
+                 id="language_pair#{i+1}" 
+                 value="#{data.from.iso}#{data.to.iso}" #{checked}>
+          #{data.from.name} -> #{data.to.name}
+        </label>
+        """
+    
+      el = $("""
+      <div id="webdict_options" class="hidden">
+        <div class="well">
+        <a class="close" href="#" style="display: none;">&times;</a>
+        <div class="trigger">
+          <h1><a href="#" class="open">Á</a></h1>
         </div>
+
+        <div class="option_panel" style="display: none;">
+          <ul class="nav nav-pills">
+            <li class="active">
+              <a href="#">Options</a>
+            </li>
+            <li><a href="#">About</a></li>
+          </ul>
+          <form class="">
+            <label class="control-label" for="inputEmail">Dictionary</label>
+            #{opts.dictionaries.map(languageOption).join('\n')}
+            <br />
+            <label class="checkbox">
+             <input type="checkbox" name="detail_level" />
+             Extra info
+            </label>
+            <button type="submit" class="btn">Save</button>
+          </div>
+        </div>
+        </form>
+      </div>
       """)
 
       el.find('.trigger').click () ->
@@ -170,6 +173,26 @@ jQuery(document).ready ($) ->
     return spinnerExists
 
 
+  ## Some global ajax stuff
+  ##
+  ## 
+
+  $.ajaxSetup
+    type: "GET"
+    timeout: 10 * 1000
+    beforeSend: (args) ->
+      spinner = initSpinner()
+      spinner.show()
+    complete: (args) ->
+      spinner = initSpinner()
+      spinner.hide()
+    dataType: "json"
+    cache: true
+    error: () =>
+      $(document).find('body').find('.errornav').remove()
+      $(document).find('body').append Templates.ErrorBar {
+        host: API_HOST
+      }
 
 
   getActualIndex = (selection) ->
@@ -184,6 +207,7 @@ jQuery(document).ready ($) ->
     # regex on _left slice to get length of word that is cut off
     # subtract length, return
 
+    # Doubleclick
     if baseOffset == extentOffset
       _left = $(selection.element).html().slice(0, baseOffset)
       last = _left.match /[^\s.]*$/
@@ -210,27 +234,30 @@ jQuery(document).ready ($) ->
 
     # TODO: quick fix for IE, fix the selection event plugin instead
     if not index
+      console.log "no index!!"
       index = $(selection.element).html().search(string)
       indexMax = index + string.length
     
-    # For tooltip we need to wrap the search word in a span.
+    # For tooltip we need to wrap the search word in link, but going
+    # based off of the index of the searched word to account for
+    # multiple words.
     if opts.tooltip
-      $(element).find('a.tooltip_target').each () ->
-        $(this).popover('destroy')
-        $(this).replaceWith(this.childNodes)
-
       _wrapElement = """
       <a style="font-style: italic; border: 1px solid #CEE; padding: 0 2px" 
          class="tooltip_target">#{string}</a>
       """
 
-      [_left, _mid, _right] = [$(element).html().slice(0, index),
-                               $(element).html().slice(index, indexMax),
-                               $(element).html().slice(indexMax)]
+      _elem_html            = $(element).html()
+
+      [_left, _mid, _right] = [ _elem_html.slice(0, index)
+                              , _elem_html.slice(index, indexMax)
+                              , _elem_html.slice(indexMax)
+                              ]
 
       _mid_new = _mid.replace(string, _wrapElement)
       _new_html = _left + _mid_new + _right
-      $(element).html(_new_html)
+
+      $(element).html _new_html
 
     # Compile result strings
     result_strings = []
@@ -251,6 +278,7 @@ jQuery(document).ready ($) ->
       if opts.tooltip
         _tooltipTitle = 'Unknown word'
 
+    # TODO: move all this into a template or something
     # Use either bootstrap tooltip, or display in dictionary #results
     # div.
     if opts.tooltip
@@ -261,22 +289,32 @@ jQuery(document).ready ($) ->
         title: _tooltipTitle
         content: $("<p />").html(result_strings.join('<br />')).html()
         html: true
-        placement: 'bottom'
+        placement: () =>
+          if _tooltipTarget[0].offsetLeft < 125
+            'right'
+          else
+          	'bottom'
         trigger: 'hover'
       
+      # Remove selection
+      if window.getSelection
+        # Chrome
+      	if window.getSelection().empty
+      	  window.getSelection().empty()
+      	# Firefox
+      	else if window.getSelection().removeAllRanges
+          window.getSelection().removeAllRanges()
+      # IE
+      else if document.selection
+      	document.selection.empty()
+      # Done
       _tooltipTarget.popover('show')
-    else
-      $(result_elem).html ""
-      for _str in result_strings
-        $(result_elem).append $("<p />").html(_str)
 
 
 
   
   lookupSelectEvent = (evt, string, element, index, opts) ->
     result_elem = $(opts.formResults)
-
-    spinner = initSpinner()
 
     string = $.trim(string)
 
@@ -294,15 +332,8 @@ jQuery(document).ready ($) ->
         lemmatize: true
 
       $.ajax
-        beforeSend: (args) ->
-          spinner.show()
-        complete: (args) ->
-          spinner.hide()
         url: "#{opts.api_host}/kursadict/lookup/#{source_lang}/#{target_lang}/"
-        type: "GET"
-        dataType: "json"
         data: post_data
-        cache: true
         success: (response) =>
           selection = {
             string: string
@@ -310,11 +341,6 @@ jQuery(document).ready ($) ->
             index: index
           }
           cleanTooltipResponse(selection, response, opts)
-        error: () =>
-          $(document).find('body').find('.errornav').remove()
-          $(document).find('body').append Templates.ErrorBar {
-            host: opts.hostname
-          }
 
 
 
@@ -329,9 +355,9 @@ jQuery(document).ready ($) ->
   $.fn.selectToLookup = (opts) ->
     opts = $.extend {}, $.fn.selectToLookup.options, opts
 
+    # TODO: device / OptionsMenu
     if opts.displayOptions
-      $(document).find('body').append Templates.OptionsTab()
-    # TODO: defaults if otherwise
+      $(document).find('body').append Templates.OptionsTab(opts)
     
     holdingOption = (evt, string, element, index) =>
       if evt.altKey
@@ -346,8 +372,9 @@ jQuery(document).ready ($) ->
         $(this).replaceWith(this.childNodes)
       # Set parent html to be parent html, for some reason this allows
       # all following click/lookup events to be properly registered
-      for parent in parents
-        parent.html parent.html()
+      if parents.length > 0
+        for parent in parents
+          parent.html parent.html()
 
     $(document).bind('textselect', holdingOption)
     $(document).bind('click', clean)
@@ -359,6 +386,24 @@ jQuery(document).ready ($) ->
     langPairSelect: "#webdict_options *[name='language_pair']:checked"
     tooltip: true
     displayOptions: true
+    dictionaries: [
+      {
+        from:
+          iso: 'sme'
+          name: 'Northern Sámi'
+        to:
+          iso: 'nob'
+          name: 'Norwegian (bokmål)'
+      },
+      {
+        from:
+          iso: 'sme'
+          name: 'Northern Sámi'
+        to:
+          iso: 'fin'
+          name: 'Finnish'
+      },
+    ]
 
 
   ##
@@ -374,8 +419,6 @@ jQuery(document).ready ($) ->
       
       elem = $(this)
       result_elem = $(this).find('#results')
-
-      spinner = initSpinner()
 
       elem.submit () =>
         lookup_value = $(this).find('input[name="lookup"]').val()
@@ -411,23 +454,9 @@ jQuery(document).ready ($) ->
               """)
         
         $.ajax
-          beforeSend: (args) ->
-            spinner.show()
-          complete: (args) ->
-            spinner.hide()
           url: "#{opts.api_host}/kursadict/lookup/#{source_lang}/#{target_lang}/"
-          type: "GET"
           data: post_data
-          dataType: "json"
-          cache: true
           success: cleanResponse
-          error: () ->
-            $(result_elem).find('.alert').remove()
-            $(result_elem).append $("""
-              <div class="alert">
-                <strong>Error!</strong> could not connect to dictionary server (#{opts.api_host}).
-              </div>
-            """)
 
         return false
 

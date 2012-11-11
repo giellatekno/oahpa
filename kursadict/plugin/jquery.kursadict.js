@@ -33,46 +33,53 @@ Or.
 
 ## TODOs / Features
 
-TODO: need an interface for managing options that isn't the search form,
-      maybe a little tab popping out of the side like with the user voice /
-      feedback app thing.
-
-      - Icon?
-        http://www.iconeasy.com/icon/png/System/Sticker%20Pack%202/Dictionary.png
-        http://upload.wikimedia.org/wikipedia/en/d/d1/Dictionary_Icon.png
-
-        maybe one with ášŋ or some clearly sámi symbols
-
-        maybe just make my own without an additional .png requirement?
-
-     - options:
-
-       - target language
-       - detail level of information display
-       - place of display: tooltip/banner
-       - device options: tablet / normal computer
-
+TODO: options:
+      - target language
+      - detail level of information display
+      - place of display: tooltip/banner
+      - device options: tablet / normal computer
 
 TODO: autodetect from browser language first, fall back to nob otherwise
 
-
 ## TODOs / Bugs
 
-TODO: Når ordet er nesten på enden av nettlesarvindaugo, hengjer popup
-      litt utafor vindaugo, so er det vanskeleg å lesa. 
 TODO: IE on all OSes seems to select a whole paragraph after a word has been
       selected. There is probably some way to prevent this from occurring.
+
 TODO: prevent window url from updating with form submit params
-TODO: lookup timeout
+
+TODO: lookup timeout -- set on $.ajax, but sometimes seems not to work?
+
+TODO: Opera on Windows - alt+click context window
+
+TODO: add a non-alt/opt version. maybe banner along the bottom that
+      allows lookup when  text is highlighted
 */
 
 jQuery(document).ready(function($) {
-  var API_HOST, Templates, cleanTooltipResponse, getActualIndex, initSpinner, lookupSelectEvent;
-  API_HOST = "http://testing.oahpa.no/";
+  var API_HOST, Templates, cleanTooltipResponse, getActualIndex, initSpinner, lookupSelectEvent,
+    _this = this;
+  if (window.location.hostname === 'localhost') {
+    API_HOST = "http://localhost:5000/";
+  } else if (window.location.hostname === 'testing.oahpa.no') {
+    API_HOST = "http://" + window.location.hostname + "/";
+  }
   Templates = {
-    OptionsTab: function(args) {
-      var el;
-      el = $("<div id=\"webdict_options\" class=\"hidden\">\n  <div class=\"well\">\n  <a class=\"close\" href=\"#\" style=\"display: none;\">&times;</a>\n  <div class=\"trigger\">\n    <h1><a href=\"#\" class=\"open\">Á</a></h1>\n  </div>\n\n  <div class=\"option_panel\" style=\"display: none;\">\n    <ul class=\"nav nav-pills\">\n      <li class=\"active\">\n        <a href=\"#\">Options</a>\n      </li>\n      <li><a href=\"#\">About</a></li>\n    </ul>\n    <form class=\"\">\n      <label class=\"control-label\" for=\"inputEmail\">Dictionary</label>\n       <label class=\"radio\">\n        <input type=\"radio\" name=\"language_pair\" id=\"language_pair1\" value=\"smenob\" checked>\n        Northern Sámi -> Norwegian\n      </label>\n      <label class=\"radio\">\n        <input type=\"radio\" name=\"language_pair\" id=\"language_pair2\" value=\"smefin\">\n        Northern Sámi -> Finnish\n      </label> \n      <br />\n      <label class=\"checkbox\">\n       <input type=\"checkbox\" name=\"detail_level\" />\n       Extra info\n      </label>\n      <button type=\"submit\" class=\"btn\">Save</button>\n    </div>\n  </div>\n  </form>\n</div>");
+    OptionsMenu: function(opts) {
+      return "omg";
+    },
+    OptionsTab: function(opts) {
+      var el, languageOption;
+      languageOption = function(data, i) {
+        var checked;
+        if (i + 1 === 1) {
+          checked = "checked";
+        } else {
+          checked = "";
+        }
+        return "<label class=\"radio\">\n  <input type=\"radio\" \n         name=\"language_pair\" \n         id=\"language_pair" + (i + 1) + "\" \n         value=\"" + data.from.iso + data.to.iso + "\" " + checked + ">\n  " + data.from.name + " -> " + data.to.name + "\n</label>";
+      };
+      el = $("<div id=\"webdict_options\" class=\"hidden\">\n  <div class=\"well\">\n  <a class=\"close\" href=\"#\" style=\"display: none;\">&times;</a>\n  <div class=\"trigger\">\n    <h1><a href=\"#\" class=\"open\">Á</a></h1>\n  </div>\n\n  <div class=\"option_panel\" style=\"display: none;\">\n    <ul class=\"nav nav-pills\">\n      <li class=\"active\">\n        <a href=\"#\">Options</a>\n      </li>\n      <li><a href=\"#\">About</a></li>\n    </ul>\n    <form class=\"\">\n      <label class=\"control-label\" for=\"inputEmail\">Dictionary</label>\n      " + (opts.dictionaries.map(languageOption).join('\n')) + "\n      <br />\n      <label class=\"checkbox\">\n       <input type=\"checkbox\" name=\"detail_level\" />\n       Extra info\n      </label>\n      <button type=\"submit\" class=\"btn\">Save</button>\n    </div>\n  </div>\n  </form>\n</div>");
       el.find('.trigger').click(function() {
         var optsp;
         optsp = el.find('div.option_panel');
@@ -127,6 +134,28 @@ jQuery(document).ready(function($) {
     }
     return spinnerExists;
   };
+  $.ajaxSetup({
+    type: "GET",
+    timeout: 10 * 1000,
+    beforeSend: function(args) {
+      var spinner;
+      spinner = initSpinner();
+      return spinner.show();
+    },
+    complete: function(args) {
+      var spinner;
+      spinner = initSpinner();
+      return spinner.hide();
+    },
+    dataType: "json",
+    cache: true,
+    error: function() {
+      $(document).find('body').find('.errornav').remove();
+      return $(document).find('body').append(Templates.ErrorBar({
+        host: API_HOST
+      }));
+    }
+  });
   getActualIndex = function(selection) {
     var baseOffset, extentOffset, last, _left, _ref;
     _ref = selection.index, baseOffset = _ref[0], extentOffset = _ref[1];
@@ -148,7 +177,8 @@ jQuery(document).ready(function($) {
             Clean response from tooltip $.ajax query, and display results
     */
 
-    var clean_right, element, i, index, indexMax, lookup, r, result, result_string, result_strings, right, string, _i, _j, _k, _l, _left, _len, _len1, _len2, _len3, _mid, _mid_new, _new_html, _ref, _ref1, _ref2, _ref3, _results, _right, _str, _tooltipTarget, _tooltipTitle, _wrapElement;
+    var clean_right, element, i, index, indexMax, lookup, r, result, result_string, result_strings, right, string, _elem_html, _i, _j, _k, _left, _len, _len1, _len2, _mid, _mid_new, _new_html, _ref, _ref1, _ref2, _ref3, _right, _tooltipTarget, _tooltipTitle, _wrapElement,
+      _this = this;
     if (!selection.index) {
       console.log("no index!");
     }
@@ -157,16 +187,14 @@ jQuery(document).ready(function($) {
     index = getActualIndex(selection);
     indexMax = index + string.length;
     if (!index) {
+      console.log("no index!!");
       index = $(selection.element).html().search(string);
       indexMax = index + string.length;
     }
     if (opts.tooltip) {
-      $(element).find('a.tooltip_target').each(function() {
-        $(this).popover('destroy');
-        return $(this).replaceWith(this.childNodes);
-      });
       _wrapElement = "<a style=\"font-style: italic; border: 1px solid #CEE; padding: 0 2px\" \n   class=\"tooltip_target\">" + string + "</a>";
-      _ref = [$(element).html().slice(0, index), $(element).html().slice(index, indexMax), $(element).html().slice(indexMax)], _left = _ref[0], _mid = _ref[1], _right = _ref[2];
+      _elem_html = $(element).html();
+      _ref = [_elem_html.slice(0, index), _elem_html.slice(index, indexMax), _elem_html.slice(indexMax)], _left = _ref[0], _mid = _ref[1], _right = _ref[2];
       _mid_new = _mid.replace(string, _wrapElement);
       _new_html = _left + _mid_new + _right;
       $(element).html(_new_html);
@@ -207,25 +235,31 @@ jQuery(document).ready(function($) {
         title: _tooltipTitle,
         content: $("<p />").html(result_strings.join('<br />')).html(),
         html: true,
-        placement: 'bottom',
+        placement: function() {
+          if (_tooltipTarget[0].offsetLeft < 125) {
+            return 'right';
+          } else {
+            return 'bottom';
+          }
+        },
         trigger: 'hover'
       });
-      return _tooltipTarget.popover('show');
-    } else {
-      $(result_elem).html("");
-      _results = [];
-      for (_l = 0, _len3 = result_strings.length; _l < _len3; _l++) {
-        _str = result_strings[_l];
-        _results.push($(result_elem).append($("<p />").html(_str)));
+      if (window.getSelection) {
+        if (window.getSelection().empty) {
+          window.getSelection().empty();
+        } else if (window.getSelection().removeAllRanges) {
+          window.getSelection().removeAllRanges();
+        }
+      } else if (document.selection) {
+        document.selection.empty();
       }
-      return _results;
+      return _tooltipTarget.popover('show');
     }
   };
   lookupSelectEvent = function(evt, string, element, index, opts) {
-    var langpair, lookup_string, post_data, result_elem, source_lang, spinner, target_lang,
+    var langpair, lookup_string, post_data, result_elem, source_lang, target_lang,
       _this = this;
     result_elem = $(opts.formResults);
-    spinner = initSpinner();
     string = $.trim(string);
     if ((string.length > 60) || (string.search(' ') > -1)) {
       return false;
@@ -240,17 +274,8 @@ jQuery(document).ready(function($) {
         lemmatize: true
       };
       return $.ajax({
-        beforeSend: function(args) {
-          return spinner.show();
-        },
-        complete: function(args) {
-          return spinner.hide();
-        },
         url: "" + opts.api_host + "/kursadict/lookup/" + source_lang + "/" + target_lang + "/",
-        type: "GET",
-        dataType: "json",
         data: post_data,
-        cache: true,
         success: function(response) {
           var selection;
           selection = {
@@ -259,12 +284,6 @@ jQuery(document).ready(function($) {
             index: index
           };
           return cleanTooltipResponse(selection, response, opts);
-        },
-        error: function() {
-          $(document).find('body').find('.errornav').remove();
-          return $(document).find('body').append(Templates.ErrorBar({
-            host: opts.hostname
-          }));
         }
       });
     }
@@ -274,7 +293,7 @@ jQuery(document).ready(function($) {
       _this = this;
     opts = $.extend({}, $.fn.selectToLookup.options, opts);
     if (opts.displayOptions) {
-      $(document).find('body').append(Templates.OptionsTab());
+      $(document).find('body').append(Templates.OptionsTab(opts));
     }
     holdingOption = function(evt, string, element, index) {
       if (evt.altKey) {
@@ -290,12 +309,14 @@ jQuery(document).ready(function($) {
         $(this).popover('destroy');
         return $(this).replaceWith(this.childNodes);
       });
-      _results = [];
-      for (_i = 0, _len = parents.length; _i < _len; _i++) {
-        parent = parents[_i];
-        _results.push(parent.html(parent.html()));
+      if (parents.length > 0) {
+        _results = [];
+        for (_i = 0, _len = parents.length; _i < _len; _i++) {
+          parent = parents[_i];
+          _results.push(parent.html(parent.html()));
+        }
+        return _results;
       }
-      return _results;
     };
     $(document).bind('textselect', holdingOption);
     return $(document).bind('click', clean);
@@ -306,16 +327,36 @@ jQuery(document).ready(function($) {
     sourceLanguage: "sme",
     langPairSelect: "#webdict_options *[name='language_pair']:checked",
     tooltip: true,
-    displayOptions: true
+    displayOptions: true,
+    dictionaries: [
+      {
+        from: {
+          iso: 'sme',
+          name: 'Northern Sámi'
+        },
+        to: {
+          iso: 'nob',
+          name: 'Norwegian (bokmål)'
+        }
+      }, {
+        from: {
+          iso: 'sme',
+          name: 'Northern Sámi'
+        },
+        to: {
+          iso: 'fin',
+          name: 'Finnish'
+        }
+      }
+    ]
   };
   $.fn.kursaDict = function(opts) {
     opts = $.extend({}, $.fn.kursaDict.options, opts);
     return this.each(function() {
-      var elem, result_elem, spinner,
+      var elem, result_elem,
         _this = this;
       elem = $(this);
       result_elem = $(this).find('#results');
-      spinner = initSpinner();
       return elem.submit(function() {
         var cleanResponse, lookup_value, post_data, source_lang, target_lang, unknownWord;
         lookup_value = $(_this).find('input[name="lookup"]').val();
@@ -359,22 +400,9 @@ jQuery(document).ready(function($) {
           return _results;
         };
         $.ajax({
-          beforeSend: function(args) {
-            return spinner.show();
-          },
-          complete: function(args) {
-            return spinner.hide();
-          },
           url: "" + opts.api_host + "/kursadict/lookup/" + source_lang + "/" + target_lang + "/",
-          type: "GET",
           data: post_data,
-          dataType: "json",
-          cache: true,
-          success: cleanResponse,
-          error: function() {
-            $(result_elem).find('.alert').remove();
-            return $(result_elem).append($("<div class=\"alert\">\n  <strong>Error!</strong> could not connect to dictionary server (" + opts.api_host + ").\n</div>"));
-          }
+          success: cleanResponse
         });
         return false;
       });
