@@ -79,7 +79,7 @@ TODO: autocomplete from all left language lemmas, build cache and save
 import sys
 import logging
 
-from flask import Flask, request, json
+from flask import Flask, request, json, render_template
 from crossdomain import crossdomain
 
 app = Flask(__name__)
@@ -92,7 +92,30 @@ class AppConf(object):
     objecty way, and validating some of the contents.
     """
     @property
+    def baseforms(self):
+        if self._baseforms:
+            return self._baseforms
+
+        lang_baseforms = self.opts.get('Baseforms')
+
+        self._baseforms = lang_baseforms
+        return self._baseforms
+
+    @property
+    def paradigms(self):
+        if self._paradigms:
+            return self._paradigms
+
+        lang_paradigms = self.opts.get('Paradigms')
+
+        self._paradigms = lang_paradigms
+        return self._paradigms
+        
+    @property
     def dictionaries(self):
+        if self._dictionaries:
+            return self._dictionaries
+
         dicts = self.opts.get('Dictionaries')
         language_pairs = {}
         for item in dicts:
@@ -100,6 +123,8 @@ class AppConf(object):
             target = item.get('target')
             path = item.get('path')
             language_pairs[(source, target)] = path
+
+        self._dictionaries = language_pairs
         return language_pairs
 
     @property
@@ -133,6 +158,10 @@ class AppConf(object):
         return cmd
 
     def __init__(self):
+        self._dictionaries = False
+        self._paradigms    = False
+        self._baseforms    = False
+
         import yaml
         with open('app.config.yaml', 'r') as F:
             config = yaml.load(F)
@@ -305,6 +334,16 @@ def lookupInFST(lookups_list,
 
     return cleanLookups(output)
 
+def generateFromList(language_iso, lookup_strings):
+    fstfile = FSTs.get(language_iso + '_gen', False)
+    if not fstfile:
+        print "No FST for language."
+        return False
+    
+    results = lookupInFST(lookup_strings, fstfile)
+
+    return results
+
 
 def lemmatizeWithTags(language_iso, lookup_string):
     """ Given a language code and lookup string, returns a list of lemma
@@ -465,7 +504,7 @@ def lookupWord(from_language, to_language):
     })
 
 
-@app.route('/kursadict/detail/<from_language>/<to_language>/<wordform>/<format>',
+@app.route('/kursadict/detail/<from_language>/<to_language>/<wordform>.<format>',
            methods=['GET'])
 @crossdomain(origin='*')
 def wordDetail(from_language, to_language, wordform, format):
@@ -484,10 +523,12 @@ def wordDetail(from_language, to_language, wordform, format):
     # Now collect XML lookups
     _result_lookups = []
     for lemma, pos, tag in _result_formOf:
+
         xml_result = detailedLookupXML(from_language,
                                        to_language,
                                        lemma,
                                        pos)
+
         if len(xml_result['lookups']) == 0:
             xml_result = False
 
@@ -498,21 +539,24 @@ def wordDetail(from_language, to_language, wordform, format):
 
     detailed_result = {
         "formOf": _result_formOf,
-        "lookups": _result_lookups
+        "lookups": _result_lookups,
+        "input": wordform,
     }
 
+    lang_paradigms = settings.paradigms.get('sme')
+    lang_baseforms = settings.baseforms.get('sme')
+
     # TODO: generate paradigm from lemma and pos
-    # TODO: paradigms stored in config file
+    for _r in _result_lookups:
+        lemma, pos, tag = _r.get('input')
+        paradigm = lang_paradigms.get(pos)
+        if tag in lang_baseforms.get(pos):
+            generate_strings = ['%s+%s' % (lemma, _t) for _t in paradigm]
+            _r['paradigms'] = generateFromList(from_language, generate_strings)
+        else:
+            _r['paradigms'] = False
 
-    # for each result in _result_lookups, add another key with paradigm,
-    # so that even words that aren't present in XML get a paradigm
-    # generated
 
-    # TODO: HTML and JSON representation switch
-    result = json.dumps({
-        "success": True,
-        "result": detailed_result
-    }, indent=4)
 
     # TODO: log result
     # result_lemmas = set()
@@ -524,12 +568,19 @@ def wordDetail(from_language, to_language, wordform, format):
 
     # app.logger.info('%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas)))
 
-    return result
+    if format == 'json':
+        result = json.dumps({
+            "success": True,
+            "result": detailed_result
+        }, indent=4)
+        return result
+    elif format == 'html':
+        print detailed_result.keys()
+        return render_template('word_detail.html', result=detailed_result)
 
 
 
 if __name__ == "__main__":
-    # NOTE: remove debug later
     app.debug = True
     app.run()
 

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="{{url_for('static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" />
+        
+    </head>
+
+    <body>
+        <div class="row">
+            <div class="span10 offset1">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+
+</html>

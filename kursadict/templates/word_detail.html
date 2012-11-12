@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{%- if result.formOf %}
+    <h3>{{ result.input }} is a possible form of ... </h3>
+    <dl>
+    {% for form, pos, tag in result.formOf %}
+        <dt>{{ form }}</dt>
+        <dd>{{ tag }}</dd>
+    {%- endfor -%}
+    </dl>
+{%- endif -%}
+
+{% for res in result.lookups %}
+    <br />
+    {% if res.lookups %}
+        {{ res.lookups }}
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
+
