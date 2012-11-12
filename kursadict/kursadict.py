@@ -53,14 +53,6 @@ TODO: response for no result
 
 TODO: new xml format from webdicts
 
-/lookup/sme/fin/?lookup=word&analyze=true
-  -> ordbok-xml + fst
-  1. den du har brukt: ordbok-xml + fst
-
-  TODO: possibility for including tags in response that are associated
-        with each lemma analysis
-
-
 /detailedlookup/sme/fin/wordform.html
 /detailedlookup/sme/fin/wordform/json
   2. wordlink og slektningar: ordform-artiklar som html-lenkjer
@@ -85,11 +77,15 @@ TODO: autocomplete from all left language lemmas, build cache and save
 """
 
 import sys
+import logging
 
 from flask import Flask, request, json
 from crossdomain import crossdomain
 
 app = Flask(__name__)
+
+useLogFile = logging.FileHandler('user_log.txt')
+app.logger.addHandler(useLogFile)
 
 class AppConf(object):
     """ An object for exposing the settings in app.config.yaml in a nice
@@ -423,7 +419,7 @@ def lookupWord(from_language, to_language):
     results = False
 
     # URL parameters
-    lookup_key = request.args.get('lookup', False)
+    lookup_key = user_input = request.args.get('lookup', False)
     lookup_type = request.args.get('type', False)
     lemmatize = request.args.get('lemmatize', False)
 
@@ -449,6 +445,19 @@ def lookupWord(from_language, to_language):
             success = False
         else:
             success = True
+
+        if 'lookups' in result:
+            if not result['lookups']:
+                success = False
+
+    result_lemmas = set()
+    if success:
+        for result in results:
+            for lookup in result.get('lookups', []):
+                result_lemmas.add(lookup.get('left'))
+    result_lemmas = list(result_lemmas)
+
+    app.logger.info('%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas)))
 
     return json.dumps({
         'result': results,
@@ -504,6 +513,16 @@ def wordDetail(from_language, to_language, wordform, format):
         "success": True,
         "result": detailed_result
     }, indent=4)
+
+    # TODO: log result
+    # result_lemmas = set()
+    # if success:
+    #     for result in results:
+    #         for lookup in result.get('lookups', []):
+    #             result_lemmas.add(lookup.get('left'))
+    # result_lemmas = list(result_lemmas)
+
+    # app.logger.info('%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas)))
 
     return result
 
