@@ -79,6 +79,10 @@ TODO: autocomplete from all left language lemmas, build cache and save
 import sys
 import logging
 
+from werkzeug.contrib.cache import SimpleCache
+cache = SimpleCache()
+
+
 from flask import Flask, request, json, render_template
 from crossdomain import crossdomain
 
@@ -509,64 +513,81 @@ def lookupWord(from_language, to_language):
 @crossdomain(origin='*')
 def wordDetail(from_language, to_language, wordform, format):
 
-    # All lookups in XML must go through analyzer, because we need POS
-    # info for a good lookup.
-    analyzed = lemmatizeWithTags(from_language, wordform)
+    cache_key = '/detail/%s/%s/%s.%s' % (from_language, to_language, wordform, format)
 
-    # Collect lemmas and tags
-    _result_formOf = []
-    for form, tags in analyzed.iteritems():
-        for tag in tags:
-            pos, _, rest = tag.partition('+')
-            _result_formOf.append((form, pos, tag))
+    if app.caching_enabled:
+        cached_result = cache.get(cache_key)
+    else:
+        cached_result = None
 
-    # Now collect XML lookups
-    _result_lookups = []
-    for lemma, pos, tag in _result_formOf:
+    if cached_result is None:
 
-        xml_result = detailedLookupXML(from_language,
-                                       to_language,
-                                       lemma,
-                                       pos)
+        lang_paradigms = settings.paradigms.get('sme')
+        lang_baseforms = settings.baseforms.get('sme')
+        # All lookups in XML must go through analyzer, because we need POS
+        # info for a good lookup.
+        analyzed = lemmatizeWithTags(from_language, wordform)
 
-        if len(xml_result['lookups']) == 0:
-            xml_result = False
+        # Collect lemmas and tags
+        _result_formOf = []
+        for form, tags in analyzed.iteritems():
+            for tag in tags:
+                pos, _, rest = tag.partition('+')
+                _result_formOf.append((form, pos, tag))
 
-        _result_lookups.append({
-            'lookups': xml_result,
-            'input': (lemma, pos, tag)
-        })
+        # Now collect XML lookups
+        _result_lookups = []
+        for lemma, pos, tag in _result_formOf:
 
-    detailed_result = {
-        "formOf": _result_formOf,
-        "lookups": _result_lookups,
-        "input": wordform,
-    }
+            # Only look up word when there is a baseform
+            paradigm = lang_paradigms.get(pos)
+            if tag in lang_baseforms.get(pos):
+                xml_result = detailedLookupXML(from_language,
+                                               to_language,
+                                               lemma,
+                                               pos)
 
-    lang_paradigms = settings.paradigms.get('sme')
-    lang_baseforms = settings.baseforms.get('sme')
+                if len(xml_result['lookups']) == 0:
+                    xml_result = False
 
-    # TODO: generate paradigm from lemma and pos
-    for _r in _result_lookups:
-        lemma, pos, tag = _r.get('input')
-        paradigm = lang_paradigms.get(pos)
-        if tag in lang_baseforms.get(pos):
-            generate_strings = ['%s+%s' % (lemma, _t) for _t in paradigm]
-            _r['paradigms'] = generateFromList(from_language, generate_strings)
-        else:
-            _r['paradigms'] = False
+                _result_lookups.append({
+                    'lookups': xml_result,
+                    'input': (lemma, pos, tag)
+                })
+            else:
+                continue
+
+        detailed_result = {
+            "formOf": _result_formOf,
+            "lookups": _result_lookups,
+            "input": wordform,
+        }
+
+        # TODO: generate paradigm from lemma and pos
+        for _r in _result_lookups:
+            lemma, pos, tag = _r.get('input')
+            paradigm = lang_paradigms.get(pos)
+            if tag in lang_baseforms.get(pos):
+                generate_strings = ['%s+%s' % (lemma, _t) for _t in paradigm]
+                _r['paradigms'] = generateFromList(from_language, generate_strings)
+            else:
+                _r['paradigms'] = False
 
 
+        cache.set(cache_key, detailed_result, timeout=5*60)
+    else:
+        detailed_result = cached_result
 
-    # TODO: log result
-    # result_lemmas = set()
-    # if success:
-    #     for result in results:
-    #         for lookup in result.get('lookups', []):
-    #             result_lemmas.add(lookup.get('left'))
-    # result_lemmas = list(result_lemmas)
 
-    # app.logger.info('%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas)))
+        # TODO: log result
+        # result_lemmas = set()
+        # if success:
+        #     for result in results:
+        #         for lookup in result.get('lookups', []):
+        #             result_lemmas.add(lookup.get('left'))
+        # result_lemmas = list(result_lemmas)
+
+        # app.logger.info('%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas)))
 
     if format == 'json':
         result = json.dumps({
@@ -582,6 +603,7 @@ def wordDetail(from_language, to_language, wordform, format):
 
 if __name__ == "__main__":
     app.debug = True
+    app.caching_enabled = True
     app.run()
 
 # vim: set ts=4 sw=4 tw=72 syntax=python expandtab :

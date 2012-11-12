@@ -15,28 +15,43 @@ Dictionaries:
     target: fin
     path: 'dicts/sme-fin.all.xml'
 
+# Tags to accept as the dictionary form for each POS, e.g., want to show
+# paradigms for words that can be analyzed with this form
+Baseforms:
+  sme:
+    V:
+      - "V+IV+Inf"
+      - "V+TV+Inf"
+      - "V+Inf"
+
+    A:
+      - "A+Attr"
+
+    N:
+      - "N+Sg+Nom"
+      - "N+G3+Sg+Nom"
+      - "N+Prop+Sg+Nom"
+
+
 Paradigms:
   sme:
-    - pos: "A"
-      tags:
-        - "A+Attr"
-        - "A+Sg+Nom"
-        - "A+Pl+Nom"
+    A:
+      - "A+Attr"
+      - "A+Sg+Nom"
+      - "A+Pl+Nom"
 
-    - pos: "N"
-      tags:
-        - "N+Sg+Nom"
-        - "N+Pl+Nom"
-        - "N+Sg+Acc"
-        - "N+Pl+Acc"
-        - "N+Sg+Loc"
-        - "N+Pl+Loc"
+    N:
+      - "N+Sg+Nom"
+      - "N+Sg+Acc"
+      - "N+Sg+Loc"
+      - "N+Pl+Nom"
+      - "N+Pl+Acc"
+      - "N+Pl+Loc"
 
-    - pos: "V"
-      tags:
-        - "V+Inf"
-        - "V+Ind+Prs+Sg1"
-        - "V+Ind+Prs+Sg3"
-        - "V+Ind+Prt+Sg1"
-        - "V+Ind+Prt+Sg3"
+    V:
+     - "V+Inf"
+     - "V+Ind+Prs+Sg1"
+     - "V+Ind+Prs+Sg3"
+     - "V+Ind+Prt+Sg1"
+     - "V+Ind+Prt+Sg3"
 
