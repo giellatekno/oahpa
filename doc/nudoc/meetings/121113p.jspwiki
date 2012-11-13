@@ -1,0 +1,207 @@
+!!! Møte 13.11.12
+
+Til stades: Heli, Ryan, Lene, Trond
+
+
+!! Saksliste
+
+* Oahpa 2.0
+* PX i Morfa
+* WERTI
+* Neste møte
+
+
+!! Oahpa 2.0
+pedversions/oahpa_ideas/ped/oahpa/IDEAS
+* Henger sammen med multi-artikkelen vår
+* front-end og back-end - ta vekk grammatikk fra selve koden
+* grammatikk i egne konfigurasjonsfiler
+* automatisering av testing osv.
+* Rus-Oahpa: leksikonet nesten ferdig
+* Pavel er enig med Ryan
+* arbeide med utviklinga under Rus-Oahpa, pluss bruke GT-penger
+
+__TILTAK__
+* __Trond__ snakker med Laura (om økonomi og programmerar)
+
+
+!! PX i Morfa
+Bare for en del ord, må merkes i leksikonet: slektninger og personlige gjenstander, klær og kroppsdeler
+
+Bare entall for ordene, nomin
+
+Vi deler Px-paradigmet. Gruppe 1 først, og ikkje til heile leksikonet.
+
+# slektningar
+# Andre
+## verkty
+## klær
+## kroppsdelar
+
+Vi kan følgje mønsteret frå passivgenereringa for å implementere.
+
+For passiv har vi eiga paradigmefil, og vi kan lage ei eiga fil for
+desse på same måte.
+
+Plassering i Morfa-S-panelet (* = default):
+
+
+! Liste over Px
+
+{{{
+
+Gruppe 1:
+
++N+Sg+Acc+PxDu1
++N+Sg+Acc+PxDu2
++N+Sg+Acc+PxDu3
++N+Sg+Acc+PxPl1
++N+Sg+Acc+PxPl2
++N+Sg+Acc+PxPl3
++N+Sg+Acc+PxSg1
++N+Sg+Acc+PxSg2
++N+Sg+Acc+PxSg3
++N+Sg+Com+PxDu1
++N+Sg+Com+PxDu2
++N+Sg+Com+PxDu3
++N+Sg+Com+PxPl1
++N+Sg+Com+PxPl2
++N+Sg+Com+PxPl3
++N+Sg+Com+PxSg1
++N+Sg+Com+PxSg2
++N+Sg+Com+PxSg3
++N+Sg+Gen+PxDu1
++N+Sg+Gen+PxDu2
++N+Sg+Gen+PxDu3
++N+Sg+Gen+PxPl1
++N+Sg+Gen+PxPl2
++N+Sg+Gen+PxPl3
++N+Sg+Gen+PxSg1
++N+Sg+Gen+PxSg2
++N+Sg+Gen+PxSg3
++N+Sg+Ill+PxDu1
++N+Sg+Ill+PxDu2
++N+Sg+Ill+PxDu3
++N+Sg+Ill+PxPl1
++N+Sg+Ill+PxPl2
++N+Sg+Ill+PxPl3
++N+Sg+Ill+PxSg1
++N+Sg+Ill+PxSg2
++N+Sg+Ill+PxSg3
++N+Sg+Loc+PxDu1
++N+Sg+Loc+PxDu2
++N+Sg+Loc+PxDu3
++N+Sg+Loc+PxPl1
++N+Sg+Loc+PxPl2
++N+Sg+Loc+PxPl3
++N+Sg+Loc+PxSg1
++N+Sg+Loc+PxSg2
++N+Sg+Loc+PxSg3
+
+Gruppe 2:
+
++N+Sg+Nom+PxDu1
++N+Sg+Nom+PxDu2
++N+Sg+Nom+PxDu3
++N+Sg+Nom+PxPl1
++N+Sg+Nom+PxPl2
++N+Sg+Nom+PxPl3
++N+Sg+Nom+PxSg1
++N+Sg+Nom+PxSg2
++N+Sg+Nom+PxSg3
+
+Gruppe 3:
+
++N+Ess+PxDu1
++N+Ess+PxDu2
++N+Ess+PxDu3
++N+Ess+PxPl1
++N+Ess+PxPl2
++N+Ess+PxPl3
++N+Ess+PxSg1
++N+Ess+PxSg2
++N+Ess+PxSg3
++N+Pl+Acc+PxDu1
++N+Pl+Acc+PxDu2
++N+Pl+Acc+PxDu3
++N+Pl+Acc+PxPl1
++N+Pl+Acc+PxPl2
++N+Pl+Acc+PxPl3
++N+Pl+Acc+PxSg1
++N+Pl+Acc+PxSg2
++N+Pl+Acc+PxSg3
++N+Pl+Com+PxDu1
++N+Pl+Com+PxDu2
++N+Pl+Com+PxDu3
++N+Pl+Com+PxPl1
++N+Pl+Com+PxPl2
++N+Pl+Com+PxPl3
++N+Pl+Com+PxSg1
++N+Pl+Com+PxSg2
++N+Pl+Com+PxSg3
++N+Pl+Gen+PxDu1
++N+Pl+Gen+PxDu2
++N+Pl+Gen+PxDu3
++N+Pl+Gen+PxPl1
++N+Pl+Gen+PxPl2
++N+Pl+Gen+PxPl3
++N+Pl+Gen+PxSg1
++N+Pl+Gen+PxSg2
++N+Pl+Gen+PxSg3
++N+Pl+Ill+PxDu1
++N+Pl+Ill+PxDu2
++N+Pl+Ill+PxDu3
++N+Pl+Ill+PxPl1
++N+Pl+Ill+PxPl2
++N+Pl+Ill+PxPl3
++N+Pl+Ill+PxSg1
++N+Pl+Ill+PxSg2
++N+Pl+Ill+PxSg3
++N+Pl+Loc+PxDu1
++N+Pl+Loc+PxDu2
++N+Pl+Loc+PxDu3
++N+Pl+Loc+PxPl1
++N+Pl+Loc+PxPl2
++N+Pl+Loc+PxPl3
++N+Pl+Loc+PxSg1
++N+Pl+Loc+PxSg2
++N+Pl+Loc+PxSg3
++N+Pl+Nom+PxDu1
++N+Pl+Nom+PxDu2
++N+Pl+Nom+PxDu3
++N+Pl+Nom+PxPl1
++N+Pl+Nom+PxPl2
++N+Pl+Nom+PxPl3
++N+Pl+Nom+PxSg1
++N+Pl+Nom+PxSg2
++N+Pl+Nom+PxSg3
+
+}}}
+
+__TILTAK__
+* __Lene__ lager filer av samme type som for passive verb
+
+!! WERTI
+Heli har lese. Prosjektet har nytt namn, __view__.
+
+[Heimeside|http://sifnos.sfs.uni-tuebingen.de/VIEW/index.jsp?content=intro]
+
+Det er mogleg å ta ei nettside, velje ordklasse, og arbeide med det.
+* programmet markeret ordklasse
+* brukeren skal finne ordklasse
+* brukeren skal skrive riktig ordform inn
+* brukeren skal velge fra en liste
+* View fungerer for Tysk, engelsk og spansk, i Firefox.
+
+__TILTAK__
+* __Lene__ lager en plan over hvilke oppgavetyper vi ønsker   
+* __Lene__ tar kontakt med Tubingen for å avklare kontaktperson, kopi til Heli
+* __Heli__ arbeider videre med koden
+
+!! Neste møte
+Om artikkelskriving til ReCall e.l.: onsdag 14.11 kl. 8.30 
+
+Oahpa-møte: tirsdag 27.11 kl. 8.30
+
+
+
