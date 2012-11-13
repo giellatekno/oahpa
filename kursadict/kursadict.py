@@ -304,7 +304,8 @@ def cleanLookups(lookup_string):
 
 
 def lookupInFST(lookups_list,
-                fstfile):
+                fstfile,
+                decodeOutput=False):
     """ Send the lookup string(s) to an external FST process. Kill the process
     after 5 seconds if no response seems to be coming.
     """
@@ -336,6 +337,9 @@ def lookupInFST(lookups_list,
 
     output, err = lookup_proc.communicate(lookup_string)
 
+    if decodeOutput:
+        output = output.decode('utf-8')
+
     return cleanLookups(output)
 
 def generateFromList(language_iso, lookup_strings):
@@ -343,8 +347,8 @@ def generateFromList(language_iso, lookup_strings):
     if not fstfile:
         print "No FST for language."
         return False
-    
-    results = lookupInFST(lookup_strings, fstfile)
+
+    results = lookupInFST(lookup_strings, fstfile, decodeOutput=True)
 
     return results
 
@@ -596,10 +600,18 @@ def wordDetail(from_language, to_language, wordform, format):
         }, indent=4)
         return result
     elif format == 'html':
-        print detailed_result.keys()
         return render_template('word_detail.html', result=detailed_result)
 
 
+from flask import Markup
+import urllib
+@app.template_filter('urlencode')
+def urlencode_filter(s):
+    if type(s) == 'Markup':
+        s = s.unescape()
+    s = s.encode('utf8')
+    s = urllib.quote_plus(s)
+    return Markup(s)
 
 if __name__ == "__main__":
     app.debug = True

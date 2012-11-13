@@ -1,22 +1,64 @@
 {% extends 'base.html' %}
 {% block content %}
 
-{%- if result.formOf %}
-    <h3>{{ result.input }} is a possible form of ... </h3>
-    <dl>
-    {% for form, pos, tag in result.formOf %}
-        <dt>{{ form }}</dt>
-        <dd>{{ tag }}</dd>
-    {%- endfor -%}
-    </dl>
-{%- endif -%}
+<div class="row">
 
-{% for res in result.lookups %}
-    <br />
-    {% if res.lookups %}
-        {{ res.lookups }}
-    {% endif %}
-{% endfor %}
+    <div class="span8">
+
+        {% for res in result.lookups %}
+            <br />
+            {% if res.lookups %}
+            <h4>{{ res.input[0] }} ({{ res.input[1] }}) </h4>
+            {% if res.paradigms %}
+                <h5> {%- for t in res.paradigms -%}
+                      {%- for form in t[1] -%} {{ form }} {%- if not loop.last %}, {% endif -%}{%- endfor %}
+                      {%- if not loop.last %}, {% endif -%}
+                    {%- endfor -%}
+                </h5>
+            {% endif %}
+            
+            </h4>
+                {% for tg in res.lookups.lookups %}
+                        <ul>
+                        {% for mg in tg.meaningGroups %}
+                            <li>
+                            {%- for txl in mg.translations -%}
+                            {{ txl }}{%- if not loop.last %}, {% endif -%}
+                            {%- endfor -%}
+                            {%- if mg.examples -%}
+                            <dl>
+                                {%- for from, to in mg.examples %}
+                                <dt>{{ from }}</dt>
+                                <dd>{{ to }}</dd>
+                                {%- endfor %}
+                            </dl>
+                            {% endif -%}
+                            </li>
+                        {% endfor %}
+                        </ul>
+                {% endfor %}
+            {% endif %}
+
+        {% endfor %}
+
+    </div>
+
+    <div class="span2">
+
+        {%- if result.formOf %}
+            <h4>{{ result.input }} is a possible form of ... </h4>
+            <dl>
+            {% for form, pos, tag in result.formOf %}
+                <dt><a href="{{ form|urlencode }}.html">{{ form }}</a></dt>
+                <dd>{{ tag }}</dd>
+            {%- endfor -%}
+            </dl>
+        {%- endif -%}
+
+    </div>
+
+
+</div>
 
 {% endblock %}
 
