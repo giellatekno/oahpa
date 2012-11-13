@@ -86,7 +86,8 @@ from werkzeug.contrib.cache import SimpleCache
 from crossdomain import crossdomain
 
 cache = SimpleCache()
-app = Flask(__name__)
+app = Flask(__name__, 
+    static_url_path='/kursadict/static',)
 
 useLogFile = logging.FileHandler('user_log.txt')
 app.logger.addHandler(useLogFile)
