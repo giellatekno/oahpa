@@ -15,6 +15,7 @@ Dictionaries:
     target: fin
     path: 'dicts/sme-fin.all.xml'
 
+
 # Tags to accept as the dictionary form for each POS, e.g., want to show
 # paradigms for words that can be analyzed with this form
 Baseforms:
@@ -32,6 +33,10 @@ Baseforms:
       - "N+G3+Sg+Nom"
       - "N+Prop+Sg+Nom"
 
+    Hum:
+      - "Hum+N+Sg+Nom"
+      - "Hum+N+G3+Sg+Nom"
+      - "Hum+N+Prop+Sg+Nom"
 
 Paradigms:
   sme:
@@ -49,9 +54,17 @@ Paradigms:
       - "N+Pl+Loc"
 
     V:
-     - "V+Inf"
-     - "V+Ind+Prs+Sg1"
-     - "V+Ind+Prs+Sg3"
-     - "V+Ind+Prt+Sg1"
-     - "V+Ind+Prt+Sg3"
+      - "V+Inf"
+      - "V+Ind+Prs+Sg1"
+      - "V+Ind+Prs+Sg3"
+      - "V+Ind+Prt+Sg1"
+      - "V+Ind+Prt+Sg3"
+
+    Hum:
+      - "Hum+N+Sg+Nom"
+      - "Hum+N+Sg+Acc"
+      - "Hum+N+Sg+Loc"
+      - "Hum+N+Pl+Nom"
+      - "Hum+N+Pl+Acc"
+      - "Hum+N+Pl+Loc"
 
