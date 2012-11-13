@@ -78,14 +78,14 @@ TODO: autocomplete from all left language lemmas, build cache and save
 
 import sys
 import logging
+import urllib
 
+from lxml import etree
+from flask import Flask, request, json, render_template, Markup
 from werkzeug.contrib.cache import SimpleCache
-cache = SimpleCache()
-
-
-from flask import Flask, request, json, render_template
 from crossdomain import crossdomain
 
+cache = SimpleCache()
 app = Flask(__name__)
 
 useLogFile = logging.FileHandler('user_log.txt')
@@ -187,7 +187,6 @@ class XMLDict(object):
     that add to this functionality?
     """
     def __init__(self, filename=False, tree=False):
-        from lxml import etree
         if not tree:
             self.tree = etree.parse(filename)
         else:
@@ -512,6 +511,8 @@ def lookupWord(from_language, to_language):
     })
 
 
+# TODO: there's some point in rendering the html where there are many
+#       keys of 'lookups': res.lookups.lookups. Need to fix.
 @app.route('/kursadict/detail/<from_language>/<to_language>/<wordform>.<format>',
            methods=['GET'])
 @crossdomain(origin='*')
@@ -583,15 +584,15 @@ def wordDetail(from_language, to_language, wordform, format):
         detailed_result = cached_result
 
 
-        # TODO: log result
-        # result_lemmas = set()
-        # if success:
-        #     for result in results:
-        #         for lookup in result.get('lookups', []):
-        #             result_lemmas.add(lookup.get('left'))
-        # result_lemmas = list(result_lemmas)
+    # TODO: log result
+    # result_lemmas = set()
+    # if success:
+    #     for result in results:
+    #         for lookup in result.get('lookups', []):
+    #             result_lemmas.add(lookup.get('left'))
+    # result_lemmas = list(result_lemmas)
 
-        # app.logger.info('%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas)))
+    # app.logger.info('%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas)))
 
     if format == 'json':
         result = json.dumps({
@@ -602,9 +603,10 @@ def wordDetail(from_language, to_language, wordform, format):
     elif format == 'html':
         return render_template('word_detail.html', result=detailed_result)
 
+##
+## Template filters
+##
 
-from flask import Markup
-import urllib
 @app.template_filter('urlencode')
 def urlencode_filter(s):
     if type(s) == 'Markup':
