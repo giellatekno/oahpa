@@ -407,6 +407,11 @@ def lemmatizer(language_iso, lookup_string):
 ##
 ##
 
+@app.route('/kursadict/lookup', methods=['GET'])
+def wordDetailDocs():
+    return """TODO: Public-facing API documentation"""
+
+
 @app.route('/kursadict/test/', methods=['GET'])
 def testapp():
     """ A test route to make sure FCGI or WSGI or whatever is working.
@@ -510,6 +515,10 @@ def lookupWord(from_language, to_language):
         'success': success
     })
 
+
+@app.route('/kursadict/detail', methods=['GET'])
+def wordDetailDocs():
+    return "TODO: Public-facing API documentation"
 
 # TODO: there's some point in rendering the html where there are many
 #       keys of 'lookups': res.lookups.lookups. Need to fix.
