@@ -72,7 +72,7 @@ def parse_tag(tag):
 			tag_string.append([t.tagname for t in tagnames])
 
 	if len(tag_string) > 0:
-		return ['+'.join(item) for item in fill_out(tag_string)]
+		return ['+'.join(item).replace('++', '+') for item in fill_out(tag_string)]
 	else:
 		return False
 
@@ -350,6 +350,7 @@ class BareGame(Game):
 		'N-LOC': 'Loc',
 		'N-ACC': 'Acc', 
 		'N-COM': 'Com',
+		'N-NOM': 'Nom',
 		'A-ATTR': 'Attr',
 		'COMP': 'Comp', # was: A-COMP
 		'SUPERL': 'Superl', # was: A-SUPERL
@@ -357,6 +358,9 @@ class BareGame(Game):
 		'CARD': '', # CARD, ORD, COLL added for implementing num_type choice
 		'ORD': 'A+Ord',
 		'COLL': 'N+Coll',
+		'N-PX-GROUP1': 'Acc', # TODO: populate case in similar way to pronouns 
+		'N-PX-GROUP2': 'Nom', # TODO: populate case in similar way to pronouns 
+		'N-PX-GROUP3': 'Acc', # TODO: populate case in similar way to pronouns 
 		'A-DER-V': 'A+Der/AV+V',
 		'V-DER-PASS': '',
 		'': '',
@@ -372,13 +376,15 @@ class BareGame(Game):
 
 		# Where to find the game type for each POS
 		pos_gametype_keys = {
-			'N': 'case', 
+			'N': 'case',
 			'V': 'vtype',
 			'Der': 'derivation_type',
+			'Px': 'possessive_type',
 			'A': 'adjcase',
 			'Num': 'num_bare',
 			'Pron': 'proncase',
 		}
+
 		game_type_location = pos_gametype_keys.get(pos, False)
 		gametype = self.settings.get(game_type_location, False)
 
@@ -477,11 +483,11 @@ class BareGame(Game):
 
 
 	def get_db_info(self, db_info):
-		
+
 		if self.settings.has_key('pos'):
 			pos = self.settings['pos']
 
-		
+
 		syll = True and	self.settings.get('syll')	or ['']
 		case = True and	self.settings.get('case')	or   ""
 		levels = True and self.settings.get('level')   or   []
@@ -489,21 +495,16 @@ class BareGame(Game):
 		pron_type = True and self.settings.get('pron_type') or   ""
 		proncase = True and self.settings.get('proncase') or   ""
 		derivation_type = True and self.settings.get('derivation_type') or   ""
+		possessive_case = True and self.settings.get('possessive_case') or   ""
+		possessive_type = True and self.settings.get('possessive_type') or   ""
 		grade = True and self.settings.get('grade')  or  ""
 		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
 		source = ""
-		
+
 		mood, tense, infinite, attributive = "", "", "", ""
 
 		num_bare = ""
-		# if self.settings.has_key('syll'):
-		# 	syll = self.settings['syll']
-		# if self.settings.has_key('case'):
-		# 	case = self.settings['case']
-		# if self.settings.has_key('level'):
-		# 	levels = self.settings['level']
-		# if self.settings.has_key('adjcase'):
-		# 	adjcase = self.settings['adjcase']
+
 		if self.settings.has_key('book'):
 			source = self.settings['book']
 			if source.lower() != 'all':
@@ -529,7 +530,8 @@ class BareGame(Game):
 			"Num":  num_bare,
 			"V":	"",
 			"Pron": proncase,
-			"Der": derivation_type, 
+			"Der": derivation_type,
+			"Px": possessive_type,
 		}
 		
 		sylls = []
@@ -547,8 +549,18 @@ class BareGame(Game):
 		
 		if pos == 'Pron':
 			syll = ['']
+
+		if pos == 'Px':
+			syll = bisyl + trisyl + Csyl
 		
-		case = self.casetable[pos_tables[pos]]
+		if pos == 'Px':
+			print 'omg'
+			print possessive_case
+			case = self.casetable[possessive_case]
+			print case
+		else:
+			case = self.casetable[pos_tables[pos]]
+
 		grade = self.casetable[grade]
 		num_type = self.casetable[num_type] # added by Heli
 		
@@ -608,6 +620,7 @@ class BareGame(Game):
 		
 		# Exclude derivations by default
 		TAG_EXCLUDES = Q(subclass__contains='Der')
+		# TODO: Px ?
 		
 		FORM_FILTER = False
 
@@ -625,43 +638,28 @@ class BareGame(Game):
 		#     ]
 		#
 		# And it will save the need for a lot of lines of code.
-		def parse_tag(tag):
-			""" Iterate through a tag string by chunks, and check for tag sets
-			and tag names. Return the reassembled tag on success. """
-
-			def fill_out(tags):
-				from itertools import product
-
-				def make_list(item):
-					if type(item) == list:
-						return item
-					else:
-						return [item]
-
-				return list(product(*map(make_list, tags)))
-
-			tag_string = []
-			for item in tag.split('+'):
-				if Tagname.objects.filter(tagname=item).count() > 0:
-					tag_string.append(item)
-				elif Tagset.objects.filter(tagset=item).count() > 0:
-					tagnames = Tagname.objects.filter(tagset__tagset=item)
-					tag_string.append([t.tagname for t in tagnames])
-
-			if len(tag_string) > 0:
-				return ['+'.join(item) for item in fill_out(tag_string)]
-			else:
-				return False
 
 		if pos == "Der":
 			derivation_types = {
 				# 'Der/AV': parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"),
 				#'A-DER-V': parse_tag("A+Der/AV+V+Ind+Prs+Person-Number-ConNeg"),
-				'A-DER-V':parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"), # generalisation: Tense to enable both Prs and Prt
+				# generalisation: Tense to enable both Prs and Prt
+				'A-DER-V': parse_tag("A+Der/AV+V+Mood+Tense+Person-Number"), 
 				'V-DER-PASS': parse_tag("V+Der/PassL+V+Ind+Tense+Person-Number-ConNeg"),
 			}
 
 			TAG_QUERY = Q(string__in=derivation_types[derivation_type])
+			TAG_EXCLUDES = False
+			sylls = False
+			source = False
+
+		if pos == 'Px':
+			from forms import POSSESSIVE_QUESTION_ANSWER
+			possessive_types = dict(
+				[(key, parse_tag(qa[0][1]))
+				for key, qa in POSSESSIVE_QUESTION_ANSWER.iteritems()]
+			)
+			TAG_QUERY = Q(string__in=possessive_types[possessive_type])
 			TAG_EXCLUDES = False
 			sylls = False
 			source = False
@@ -704,15 +702,17 @@ class BareGame(Game):
 			
 		if pos == 'A':
 			if pos2 == 'Num':
-				 sylls = False
-				 TAG_QUERY = TAG_QUERY & Q(subclass=subclass) & Q(case=case) & Q(attributive='') & Q(grade='')
-			else:	 
-				 TAG_QUERY = TAG_QUERY & \
-						 Q(subclass='') & \
+				sylls = False
+				TAG_QUERY = TAG_QUERY & Q(subclass=subclass) & Q(case=case) & Q(attributive='') & Q(grade='')
+			else:
+				TAG_QUERY = TAG_QUERY & \
+						Q(subclass='') & \
 						Q(attributive=attributive) & \
 						Q(grade=grade) & \
 						Q(case=case) & \
 						Q(number__in=number)
+		if pos == 'Px':
+			TAG_QUERY = TAG_QUERY & Q(case=case)
 		
 		# filter can include several queries, exclude must have only one
 		# to work successfully
@@ -732,31 +732,24 @@ class BareGame(Game):
 		if tags.count() == 0:
 			keys = ['pos', 'case', 'tense', 'mood', 'attributive', 'grade', 'number']
 			values = [pos, case, tense, mood, attributive, grade, number]
-			error = "Morfa.get_db_info: Database is improperly loaded.\
-					 No tags for the query were found.\n\n\
-					 %s\n\n\
-					 %s" % (TAG_QUERY, SUB_QUERY)
+			error = """Morfa.get_db_info: Database is improperly loaded.
+					No tags for the query were found.\n\n
+					%s\n\n
+					%s""" % (TAG_QUERY, SUB_QUERY)
 
 			if TAG_EXCLUDES:
 				error += "\nexcludes: %s" % TAG_EXCLUDES
 
 			raise Http404(error)
 		
-		"""if self.settings['pos'] == "Num":
-			if self.settings.has_key('num_level') and str(self.settings['num_level']) == "1":
-			"""
-		
-		#		QUERY = Q(pos__iexact=pos) & Q(presentationform__in=smallnum)
-		#	else:
-		#		QUERY = Q(pos__iexact=pos)
 		if pos == 'Num' or pos2 == 'Num':
-			  QUERY = Q(pos__iexact=pos) & Q(form__tag__subclass=subclass)
+			QUERY = Q(pos__iexact=pos) & Q(form__tag__subclass=subclass)
 		else:
 			# levels is not what we're looking for
-			  QUERY = Q(pos__iexact=pos) & Q(stem__in=syll)
-			  if source and source not in ['all', 'All']:
-				 QUERY = QUERY & Q(source__name=source)
-			  
+			QUERY = Q(pos__iexact=pos) & Q(stem__in=syll)
+			if source and source not in ['all', 'All']:
+				QUERY = QUERY & Q(source__name=source)
+			
 		
 		smallnum = ["okta", "guokte", "golbma", "njeallje", "vihtta", "guhtta",
 					"čieža", "gávcci","ovcci","logi"]
@@ -771,9 +764,9 @@ class BareGame(Game):
 		if pos2 == 'Num' and subclass == 'Ord':
 			QUERY = QUERY & Q(lemma__in=smallnum_ord)
 					  				
-		error = "Morfa.get_db_info: Database is improperly loaded.\
-				 There are no Words, Tags or Forms, or the query\
-				 is not returning any."
+		error = """Morfa.get_db_info: Database is improperly loaded.
+		There are no Words, Tags or Forms, or the query
+		is not returning any."""
 		NoWordsFound = Http404(error)
 		
 		# settings dialect?
@@ -794,6 +787,7 @@ class BareGame(Game):
 
 				random_word = tag.form_set.filter(word__language=L1)
 
+				# TODO: Px
 				if not tag.pos in ['Pron', 'Num'] and \
 					tag.string.find('Der') < 0:
 					random_word = random_word.filter(word__semtype__semtype="MORFAS")
@@ -885,6 +879,7 @@ class BareGame(Game):
 			elif 'Der/PassS' in tag.string:
 				tag_strings.append(tag.string.replace('PassS', 'PassL'))
 			form_list = word.form_set.filter(tag__string__in=tag_strings)
+		# TODO: Px
 		else:
 			form_list = word.form_set.filter(tag=tag)
         
@@ -893,10 +888,10 @@ class BareGame(Game):
 		if not form_list:
 			raise Form.DoesNotExist
 
-		# TODO: check this, there may be some forms that need to be filtered
-		# here instead.
 		if pos == 'Der':
 			correct = form_list.filter(tag__string__contains='PassL')
+
+		# TODO: Px
 
 		correct = form_list[0]
 		
@@ -931,6 +926,13 @@ class BareGame(Game):
 			# forms may be returned, and we need them to be underived in
 			# presentation of the question wordform.
 			if pos == 'Der':
+				try:
+					bfs = form.getBaseform(match_num=match_number, return_all=False)
+				except:
+					bfs = [form.word]
+				return bfs
+			
+			if pos == 'Px':
 				try:
 					bfs = form.getBaseform(match_num=match_number, return_all=False)
 				except:
@@ -974,6 +976,11 @@ class BareGame(Game):
 
 		if pos == 'Der':
 			presentation = presentation.filter(tag__string__contains='PassL')
+
+		# TODO: Px
+		if pos == 'Px':
+			print 'presentation'
+			print presentation
 		
 		# Unless there aren't any ... 
 		if presentation.count() == 0:
@@ -1000,6 +1007,7 @@ class BareGame(Game):
 								.annotate(tc=Count('wordtranslation'))\
 								.filter(tc__gt=0)[0]
 			ws = trans_word.translations2(target_key).all()
+		# TODO: Px
 		else:
 			ws = word.translations2(target_key).all()
 
@@ -1014,6 +1022,10 @@ class BareGame(Game):
 		if not db_info.get('conneg', False):
 			db_info['conneg'] = False
 
+		print word
+		print tag
+		print baseform
+		print accepted_answers
 		morph = (MorfaQuestion(
 					word=word,
 					tag=tag,

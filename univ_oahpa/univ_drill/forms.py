@@ -283,9 +283,44 @@ DERIVATION_CHOICES = (
 	('A-DER-V', _('adjective->verb derivation')),
 )
 
+POSSESSIVE_CHOICES = (
+    ('N-PX-GROUP1', _('Family')),
+    ('N-PX-GROUP2', _('Other')),
+    ('N-PX-GROUP3', _('All')),
+)
+
+POSSESSIVE_GROUP1_CASE = (
+	('N-ACC', _('accusative')),
+	('N-COM', _('comitative')),
+	('N-GEN', _('genitive')),
+	('N-ILL', _('illative')),
+	('N-LOC', _('locative')),
+	('N-NOM', _('nominative')),
+)
+
+POSSESSIVE_GROUP2_CASE = (
+	('N-NOM', _('nominative')),
+)
+
+POSSESSIVE_GROUP3_CASE = (
+	('N-ACC', _('accusative')),
+	('N-ILL', _('illative')),
+	('N-LOC', _('locative')),
+	('N-COM', _('comitative')),
+	('N-GEN', _('genitive')),
+	('N-ESS', _('essive')),
+	('N-NOM', _('nominative')),
+)
+
+
 DERIVATION_QUESTION_ANSWER = {
 	'A-DER-V': [('A+Sg+Nom', 'A+Der/AV+V+Ind+Prs+Person-Number')],
+}
 
+POSSESSIVE_QUESTION_ANSWER = {
+    'N-PX-GROUP1': [('N+Number+Nom', 'N+NPxNumber+PxCase1+Possessive')],
+    'N-PX-GROUP2': [('N+Number+Nom', 'N+NPxNumber+PxCase2+Possessive')],
+    'N-PX-GROUP3': [('N+Number+Nom', 'N+NPxNumber+PxCase3+Possessive')],
 }
 
 DERIVATION_FILTER_DEFINITION = False
@@ -486,6 +521,7 @@ ALL_CHOICES = [
 GAME_TYPE_DEFINITIONS = {
 	'A': ADJECTIVE_QUESTION_ANSWER,
 	'Der': DERIVATION_QUESTION_ANSWER,
+	'Px': POSSESSIVE_QUESTION_ANSWER,
 	'N': NOUN_QUESTION_ANSWER,
 	'Num': NUMERAL_QUESTION_ANSWER,
 	'Pron': PRONOUN_QUESTION_ANSWER,
@@ -495,6 +531,7 @@ GAME_TYPE_DEFINITIONS = {
 GAME_FILTER_DEFINITIONS = {
 	'A': ADJECTIVE_FILTER_DEFINITION,
 	'Der': DERIVATION_FILTER_DEFINITION,
+	'Px': POSSESSIVE_QUESTION_ANSWER,
 	'N': NOUN_FILTER_DEFINITION,
 	'Num': NUMERAL_FILTER_DEFINITION,
 	'Pron': PRONOUN_FILTER_DEFINITION,
@@ -842,6 +879,8 @@ class OahpaSettings(forms.Form):
 					'num_type' : 'CARD',  # added by Heli
 					'derivation_type' : 'V-DER-PASS',
 					'derivation_type_context' : 'DER-PASSV', # was V-DER
+					'possessive_type': 'N-PX-GROUP1',
+					'possessive_case': 'N-ACC',
 					'geography': 'world',
 					'frequency' : [],
 					'num_bare' : 'NOMPL',
@@ -1101,12 +1140,15 @@ class MorfaSettings(OahpaSettings):
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
 	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
 	derivation_type_context = forms.ChoiceField(initial='DER-PASSV', choices=DERIVATION_CHOICES_CONTEXT, widget=forms.Select)
+    # TODO: Px - N-ACC here, but problem is N-NOM isn't available in all
+    # types
+	possessive_case = forms.ChoiceField(initial='N-NOM', choices=POSSESSIVE_GROUP1_CASE, widget=forms.Select)
+	possessive_type = forms.ChoiceField(initial='N-PX-GROUP1', choices=POSSESSIVE_CHOICES, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
 	vtype_context = forms.ChoiceField(initial='V-PRS', choices=VTYPE_CONTEXT_CHOICES, widget=forms.Select)
 	pron_context = forms.ChoiceField(initial='P-PERS', choices=PRON_CONTEXT_CHOICES, widget=forms.Select)
-	wordform_type = forms.ChoiceField(initial='', choices=WORDFORM_TYPE_CHOICES, widget=forms.Select)
 	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select) 
 	bisyllabic = forms.BooleanField(required=False, initial=True)
 	trisyllabic = forms.BooleanField(required=False, initial=True)
@@ -1130,6 +1172,13 @@ class MorfaSettings(OahpaSettings):
 			if 'pron_type' in post_data:
 				if post_data['pron_type'].lower() in ['refl', 'recipr']:
 					self.fields['proncase'].choices = RECIP_REFL_CHOICES
+
+			if 'possessive_type' in post_data:
+			    self.fields['possessive_case'].choices = {
+			        'N-PX-GROUP1': POSSESSIVE_GROUP1_CASE,
+			        'N-PX-GROUP2': POSSESSIVE_GROUP2_CASE,
+			        'N-PX-GROUP3': POSSESSIVE_GROUP3_CASE,
+			    }[post_data['possessive_type']]
 
 
 
