@@ -499,7 +499,7 @@ def dato(request):
 # tooltips.
 class Morfaview(Gameview):
 	gamenames = {
-		'ATTR': 'Practise attributes',  
+		'ATTR': 'Practise attributes',
 		'A-ATTR': 'Practise attributes',
 		'A-NOM': 'Practise adjectives in nominative',
 		'A-ILL': 'Practise adjectives in illative',
@@ -515,6 +515,9 @@ class Morfaview(Gameview):
 		'V-DER-PASS': 'Practise verb passive derivation',
 		'DER-PASSV': 'Practise verb passive derivation',
 		'A-DER-V': 'Practise adjective to verb derivation',
+		'N-PX-GROUP1': 'Practise noun possessive suffixes',
+		'N-PX-GROUP2': 'Practise noun possessive suffixes',
+		'N-PX-GROUP3': 'Practise noun possessive suffixes',
 		'ATTRPOS': 'Practise attributes in positive',
 		'ATTRCOMP': 'Practise attributes in comparative',
 		'ATTRSUP':  'Practise attributes in superlative',
@@ -576,7 +579,7 @@ class Morfaview(Gameview):
 		'P-PERS':  'Practise ',
 		'P-RECIPR':  'Practise reciprocative pronouns',
 		'P-REFL':  'Practise reflexive pronouns',
-    	'P-REL': 'Practise relative pronouns',
+		'P-REL': 'Practise relative pronouns',
 		'P-DEM':  'Practise demonstrative pronouns',
 	}
 
@@ -723,6 +726,11 @@ class Morfaview(Gameview):
 			else:
 				gamename_key = self.settings['derivation_type_context']
 
+		# A-DER-V
+		if self.settings['pos'] == "Px":
+			if self.settings['gametype'] == "bare":
+				gamename_key = self.settings['possessive_type']
+
 		self.settings['gamename'] = self.gamenames[gamename_key]
 		names = [self.settings['pos'], gamename_key]
 
@@ -743,19 +751,15 @@ class Morfaview(Gameview):
 		#	num_type = self.settings['num_type']
 		#	names.append(num_type) 
 
-		self.settings['gamename_key'] = ' - '.join(names) 
-		
-
-# PTS = open('/dev/pts/5', 'w')
+		self.settings['gamename_key'] = ' - '.join(names)
 
 # @timeit
 @trackGrade("Morfa")
 def morfa_game(request, pos):
 	"""
-		View for Morfa game. Requires pos argument, ['N', 'V', 'A', 'Num']
+		View for Morfa game. Requires pos argument, ['N', 'V', 'A', 'Num', 'Px']
 	"""
-	# print >> PTS, request.path
-	# print >> PTS, request.path_info
+
 	mgame = Morfaview(MorfaSettings, BareGame)
 
 	mgame.settings['pos'] = pos.capitalize()
@@ -765,6 +769,8 @@ def morfa_game(request, pos):
 		template = 'mgame_l.html'
 	elif pos == 'Der':
 		template = 'mgame_der.html'
+	elif pos == 'Px':
+		template = 'mgame_px.html'
 	else:
 		template = 'mgame_%s.html' % pos.lower()[0]
 
