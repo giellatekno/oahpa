@@ -287,15 +287,15 @@ DERIVATION_CHOICES = (
 )
 
 POSSESSIVE_CHOICES = (
-    ('N-PX-GROUP1', _('Family')),
-    ('N-PX-GROUP2', _('Other')),
-    ('N-PX-GROUP3', _('All')),
+	('N-PX-GROUP1', _('Family')),
+	('N-PX-GROUP2', _('Other')),
+	('N-PX-GROUP3', _('All')),
 )
 
 POSSESSIVE_CHOICE_SEMTYPES = dict((
-    ('N-PX-GROUP1', ['FAMILY']),
-    ('N-PX-GROUP2', ['BODYPART', 'ANIMAL', 'PXPROPERTY',]),
-    ('N-PX-GROUP3', ['BODYPART', 'ANIMAL', 'PXPROPERTY', 'FAMILY',]),
+	('N-PX-GROUP1', ['FAMILY']),
+	('N-PX-GROUP2', ['BODYPART', 'ANIMAL', 'PXPROPERTY',]),
+	('N-PX-GROUP3', ['BODYPART', 'ANIMAL', 'PXPROPERTY', 'FAMILY',]),
 ))
 
 POSSESSIVE_GROUP1_CASE = (
@@ -304,7 +304,6 @@ POSSESSIVE_GROUP1_CASE = (
 	('N-GEN', _('genitive')),
 	('N-ILL', _('illative')),
 	('N-LOC', _('locative')),
-	('N-NOM', _('nominative')),
 )
 
 POSSESSIVE_GROUP2_CASE = (
@@ -327,9 +326,9 @@ DERIVATION_QUESTION_ANSWER = {
 }
 
 POSSESSIVE_QUESTION_ANSWER = {
-    'N-PX-GROUP1': [('N+Number+Nom', 'N+NPxNumber+PxCase1+Possessive')],
-    'N-PX-GROUP2': [('N+Number+Nom', 'N+NPxNumber+PxCase2+Possessive')],
-    'N-PX-GROUP3': [('N+Number+Nom', 'N+NPxNumber+PxCase3+Possessive')],
+	'N-PX-GROUP1': [('N+Number+Nom', 'N+NPxNumber+PxCase1+Possessive')],
+	'N-PX-GROUP2': [('N+Number+Nom', 'N+NPxNumber+PxCase2+Possessive')],
+	'N-PX-GROUP3': [('N+Number+Nom', 'N+NPxNumber+PxCase3+Possessive')],
 }
 
 DERIVATION_FILTER_DEFINITION = False
@@ -889,7 +888,7 @@ class OahpaSettings(forms.Form):
 					'derivation_type' : 'V-DER-PASS',
 					'derivation_type_context' : 'DER-PASSV', # was V-DER
 					'possessive_type': 'N-PX-GROUP1',
-					'possessive_case': 'N-ACC',
+					'possessive_case': "N-ACC",
 					'geography': 'world',
 					'frequency' : [],
 					'num_bare' : 'NOMPL',
@@ -1149,9 +1148,9 @@ class MorfaSettings(OahpaSettings):
 	num_type = forms.ChoiceField(initial='CARD',choices=NUM_TYPE_CHOICES, widget=forms.Select)
 	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
 	derivation_type_context = forms.ChoiceField(initial='DER-PASSV', choices=DERIVATION_CHOICES_CONTEXT, widget=forms.Select)
-    # TODO: Px - N-ACC here, but problem is N-NOM isn't available in all
-    # types
-	possessive_case = forms.ChoiceField(initial='N-NOM', choices=POSSESSIVE_GROUP1_CASE, widget=forms.Select)
+	# TODO: Px - N-ACC here, but problem is N-NOM isn't available in all
+	# types
+	possessive_case = forms.ChoiceField(initial=None, choices=POSSESSIVE_GROUP1_CASE, widget=forms.Select, required=False)
 	possessive_type = forms.ChoiceField(initial='N-PX-GROUP1', choices=POSSESSIVE_CHOICES, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
@@ -1182,12 +1181,30 @@ class MorfaSettings(OahpaSettings):
 				if post_data['pron_type'].lower() in ['refl', 'recipr']:
 					self.fields['proncase'].choices = RECIP_REFL_CHOICES
 
-			if 'possessive_type' in post_data:
-			    self.fields['possessive_case'].choices = {
-			        'N-PX-GROUP1': POSSESSIVE_GROUP1_CASE,
-			        'N-PX-GROUP2': POSSESSIVE_GROUP2_CASE,
-			        'N-PX-GROUP3': POSSESSIVE_GROUP3_CASE,
-			    }[post_data['possessive_type']]
+			_ptype = post_data.get('possessive_type', False)
+			if _ptype:
+				self.fields['possessive_case'].choices = {
+					'N-PX-GROUP1': POSSESSIVE_GROUP1_CASE,
+					'N-PX-GROUP2': POSSESSIVE_GROUP2_CASE,
+					'N-PX-GROUP3': POSSESSIVE_GROUP3_CASE,
+				}[post_data['possessive_type']]
+
+			### # check against choices in new set and select
+			### # default if not present
+			### if _pcase:
+			### 	_possible_cases = [
+			### 		a[0] for a in self.fields['possessive_case'].choices
+			### 	]
+			### 	if not _pcase in _possible_cases:
+			### 		print "omg problems"
+			### 		_new_default = self.fields['possessive_case'].choices[0][0]
+			### 		self.fields['possessive_case'].default = _new_default
+
+			### print self.fields['possessive_case']
+			### _new_default = self.fields['possessive_case'].choices[0][0]
+			### self.fields['possessive_case'].default = _new_default
+			### self.fields['possessive_case'].initial = _new_default
+
 
 
 
@@ -1745,7 +1762,7 @@ class ContextMorfaQuestion(OahpaQuestion):
 			
 			accepted = sum([relax(force_unicode(item)) for item in self.correct_anslist], [])
 			self.relaxings = [item for item in accepted if item not in self.correct_anslist]
-            # add NG forms to relaxings
+			# add NG forms to relaxings
 			self.correct_anslist += sum(
 				[relax(force_unicode(f.fullform))
 					for f in possibilities
@@ -2459,17 +2476,17 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 	noanalysis=False
 	
 	fstdir = settings.FST_DIRECTORY
-        fst = fstdir + "/ped-sme.fst"
-        print fst
-        lo = settings.LOOKUP_TOOL
-        lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
-        print lookup
-        #lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine   
-        #lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
+	fst = fstdir + "/ped-sme.fst"
+	print fst
+	lo = settings.LOOKUP_TOOL
+	lookup = " | " + lo + " -flags mbTT -utf8 -d " + fst
+	print lookup
+	#lookup2cg = " | /Users/pyry/gtsvn/gt/script/lookup2cg" # on Ryan's machine   
+	#lookup2cg = " | /usr/local/bin/lookup2cg " # on victorio
 	lookup2cg = " | " + settings.LOOKUP2CG
-        cg3 = settings.CG3
-        preprocess = " | " + settings.PREPROCESS
-        dis_bin = settings.FST_DIRECTORY + "/sme-ped.cg3"
+	cg3 = settings.CG3
+	preprocess = " | " + settings.PREPROCESS
+	dis_bin = settings.FST_DIRECTORY + "/sme-ped.cg3"
 
 	vislcg3 = " | " + cg3 + " --grammar " + dis_bin + " -C UTF-8"
 	
@@ -2573,7 +2590,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 		analysis = force_unicode(analysis).encode('utf-8') + "\"<^vastas>\"\n\t\"^vastas\" QDL " + force_unicode(question_id).encode('utf-8') + " " + force_unicode(tasklemmas).encode('utf-8') + "\n"
 		#####
 		#print analysis
-	        #logfile.write(analysis)
+		#logfile.write(analysis)
 		data_lookup = "echo \"" + force_unicode(answer).encode('utf-8') + "\"" + preprocess
 		word = os.popen(data_lookup).readlines()
 		#print word
@@ -2608,7 +2625,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 			morfanal = os.popen(word_lookup).readlines()
 			for row in morfanal:
 				cohort = cohort + row
-		        #print cohort
+				#print cohort
 			analysis = analysis + cohort
 		tasklemmas = ""
 		logtasklemmas = ""

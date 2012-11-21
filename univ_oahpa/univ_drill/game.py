@@ -554,6 +554,11 @@ class BareGame(Game):
 			syll = bisyl + trisyl + Csyl
 		
 		if pos == 'Px':
+			# Hacky, if possessive_case is not set, then we can assume
+			# it's nominative for the one type where nominative exists
+			# but isn't in the other types
+			if not possessive_case:
+				possessive_case = 'N-NOM'
 			case = self.casetable[possessive_case]
 		else:
 			case = self.casetable[pos_tables[pos]]
