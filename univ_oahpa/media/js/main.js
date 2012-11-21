@@ -64,6 +64,10 @@ $(document).ready(function(){
 			return false;
 	});
 
+	$('select[name="possessive_type"]').change(function (e) {
+		$('select[name="possessive_case"]')[0].value = '';
+	});
+
 	$('div#settings select').change(formsubmit);
     
     $('.interface').mouseenter(translate);
