@@ -58,6 +58,13 @@ echo " "
 echo "done"
 echo "==================================================="
 
+# NOTE: --append here, so that the install only adds the forms, but doesn't delete existing ones.
+echo "==================================================="
+echo "feeding db with $DPS/n_px.xml"
+$P install.py --file $META/n_px.xml --tagfile $META/tags.txt --paradigmfile $META/n_px_paradigms.txt --append 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
 
 echo "==================================================="
 echo "feeding db with $DPS/num_smenob.xml"
