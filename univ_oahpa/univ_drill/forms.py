@@ -29,8 +29,8 @@ PASSIVE_PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'dat',
 		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
 
 POSSESSIVE_PRONOUNS_LIST = {'Sg1':'mu', 'Sg2':'du', 'Sg3':'su',
-		  'Pl1':'min', 'Pl2':'din', 'Pl3':'sii',
-		  'Du1':'munno', 'Du2':'dutno', 'Du3':'sutno'}
+		  'Pl1':'min', 'Pl2':'din', 'Pl3':'sin',
+		  'Du1':'munno', 'Du2':'dudno', 'Du3':'sudno'}
 
 NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 		  'Pl1':'eat', 'Pl2':'ehpet', 'Pl3':'eai',
