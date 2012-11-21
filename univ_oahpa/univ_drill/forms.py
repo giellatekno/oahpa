@@ -292,6 +292,12 @@ POSSESSIVE_CHOICES = (
     ('N-PX-GROUP3', _('All')),
 )
 
+POSSESSIVE_CHOICE_SEMTYPES = dict((
+    ('N-PX-GROUP1', ['FAMILY']),
+    ('N-PX-GROUP2', ['BODYPART', 'ANIMAL', 'PXPROPERTY',]),
+    ('N-PX-GROUP3', ['BODYPART', 'ANIMAL', 'PXPROPERTY', 'FAMILY',]),
+))
+
 POSSESSIVE_GROUP1_CASE = (
 	('N-ACC', _('accusative')),
 	('N-COM', _('comitative')),
@@ -1242,10 +1248,15 @@ class MorfaQuestion(OahpaQuestion):
 			
 		if tag.pos == "N":
 			self.case = tag.case
-			if tag.string.find('+Px'):
+			if tag.possessive:
 				pers = tag.possessive.replace('Px', '')
 				pronoun = POSSESSIVE_PRONOUNS_LIST[pers]
-				self.pron = '(%s)' % pronoun
+				num = DEMONSTRATIVE_PRESENTATION.get(tag.number, False)
+				if num:
+					num = ' ' + num
+				else:
+					num = ''
+				self.pron = '(%s%s)' % (pronoun, num)
 
 		if tag.pos == 'Pron':
 			self.case = tag.case

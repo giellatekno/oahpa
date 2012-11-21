@@ -554,10 +554,7 @@ class BareGame(Game):
 			syll = bisyl + trisyl + Csyl
 		
 		if pos == 'Px':
-			print 'omg'
-			print possessive_case
 			case = self.casetable[possessive_case]
-			print case
 		else:
 			case = self.casetable[pos_tables[pos]]
 
@@ -654,11 +651,12 @@ class BareGame(Game):
 			source = False
 
 		if pos == 'Px':
-			from forms import POSSESSIVE_QUESTION_ANSWER
+			from forms import POSSESSIVE_QUESTION_ANSWER, POSSESSIVE_CHOICE_SEMTYPES
 			possessive_types = dict(
 				[(key, parse_tag(qa[0][1]))
 				for key, qa in POSSESSIVE_QUESTION_ANSWER.iteritems()]
 			)
+			semtypes = POSSESSIVE_CHOICE_SEMTYPES[possessive_type]
 			TAG_QUERY = Q(string__in=possessive_types[possessive_type])
 			TAG_EXCLUDES = False
 			sylls = False
