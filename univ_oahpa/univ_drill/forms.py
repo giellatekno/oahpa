@@ -28,6 +28,9 @@ PASSIVE_PRONOUNS_LIST = {'Sg1':'mun', 'Sg2':'don', 'Sg3':'dat',
 		  'Pl1':'mii', 'Pl2':'dii', 'Pl3':'dat',
 		  'Du1':'moai', 'Du2':'doai', 'Du3':'soai'}
 
+POSSESSIVE_PRONOUNS_LIST = {'Sg1':'mu', 'Sg2':'du', 'Sg3':'su',
+		  'Pl1':'min', 'Pl2':'din', 'Pl3':'sii',
+		  'Du1':'munno', 'Du2':'dutno', 'Du3':'sutno'}
 
 NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 		  'Pl1':'eat', 'Pl2':'ehpet', 'Pl3':'eai',
@@ -1239,6 +1242,10 @@ class MorfaQuestion(OahpaQuestion):
 			
 		if tag.pos == "N":
 			self.case = tag.case
+			if tag.string.find('+Px'):
+				pers = tag.possessive.replace('Px', '')
+				pronoun = POSSESSIVE_PRONOUNS_LIST[pers]
+				self.pron = '(%s)' % pronoun
 
 		if tag.pos == 'Pron':
 			self.case = tag.case
