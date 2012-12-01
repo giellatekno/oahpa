@@ -404,17 +404,6 @@ def lemmatizer(language_iso, lookup_string):
 ##
 ##
 
-@app.route('/kursadict/lookup', methods=['GET'])
-def wordDetailDocs():
-    return """TODO: Public-facing API documentation"""
-
-
-@app.route('/kursadict/test/', methods=['GET'])
-def testapp():
-    """ A test route to make sure FCGI or WSGI or whatever is working.
-    """
-    return "omg!"
-
 @app.route('/kursadict/lookup/<from_language>/<to_language>/',
            methods=['GET'])
 @crossdomain(origin='*')
@@ -513,16 +502,31 @@ def lookupWord(from_language, to_language):
     })
 
 
-@app.route('/kursadict/detail', methods=['GET'])
-def wordDetailDocs():
-    return "TODO: Public-facing API documentation"
-
 # TODO: there's some point in rendering the html where there are many
 #       keys of 'lookups': res.lookups.lookups. Need to fix.
 @app.route('/kursadict/detail/<from_language>/<to_language>/<wordform>.<format>',
            methods=['GET'])
 @crossdomain(origin='*')
 def wordDetail(from_language, to_language, wordform, format):
+    """
+    Returns a detailed set of information, in JSON or HTML, given a specific
+    wordform.
+
+    Path parameters:
+
+        /kursadict/detail/<from_language>/<to_language>/<wordform>.<format>
+    
+    See /kursadict/languages for an overview of supported language pairs, and
+    supply the ISO code for <from_language> and <to_language>. <wordform> may
+    be any word form in the source language, as the form will be passed through
+    a morphological analyzer.
+
+    <format> must be either json, or html.
+    
+      Ex.) /kursadict/detail/sme/nob/orrut.html
+           /kursadict/detail/sme/nob/orrut.json
+
+    """
 
     cache_key = '/detail/%s/%s/%s.%s' % (from_language, to_language, wordform, format)
     wordform = wordform.encode('utf-8')
@@ -609,6 +613,23 @@ def wordDetail(from_language, to_language, wordform, format):
         return result
     elif format == 'html':
         return render_template('word_detail.html', result=detailed_result)
+
+##
+## Public Docs
+##
+
+@app.route('/kursadict/lookup/', methods=['GET'])
+def wordLookupDocs():
+    from cgi import escape
+    _lookup_doc = escape(lookupWord.__doc__)
+    return '<html><body><pre>%s</pre></body></html>' % _lookup_doc
+
+@app.route('/kursadict/detail/', methods=['GET'])
+def wordDetailDocs():
+    from cgi import escape
+    _lookup_doc = escape(wordDetail.__doc__)
+    return '<html><body><pre>%s</pre></body></html>' % _lookup_doc
+
 
 ##
 ## Template filters
