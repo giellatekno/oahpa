@@ -47,23 +47,6 @@ TODO: move settings, lookup tool path, fst paths, etc., to somewhere clear
 
 ## Todos
 
-TODO: caching
-
-TODO: response for no result
-
-TODO: new xml format from webdicts
-
-/detailedlookup/sme/fin/wordform.html
-/detailedlookup/sme/fin/wordform/json
-  2. wordlink og slektningar: ordform-artiklar som html-lenkjer
-     - fullform list (main/gt/sme/testing)
-       gtsvn/gt/sme/testing/codes/dict/
-
-    viesu (gen of <link>viessu</link>) = hus
-
-    gtsvn/gt/sme/testing/make-gen-dict
-
-
 TODO: autocomplete from all left language lemmas, build cache and save
       to pickle on each run, then use pickle
 
