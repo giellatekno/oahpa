@@ -342,8 +342,21 @@ def lookupInFST(lookups_list,
 
     return cleanLookups(output)
 
+def encodeOrFail(S):
+    try:
+        return S.encode('utf-8')
+    except:
+        return S
+
+def decodeOrFail(S):
+    try:
+        return S.decode('utf-8')
+    except:
+        return S
+
 def generateFromList(language_iso, lookup_strings):
     fstfile = FSTs.get(language_iso + '_gen', False)
+    lookup_strings = map(encodeOrFail, lookup_strings)
     if not fstfile:
         print "No FST for language."
         return False
@@ -529,6 +542,7 @@ def wordDetailDocs():
 def wordDetail(from_language, to_language, wordform, format):
 
     cache_key = '/detail/%s/%s/%s.%s' % (from_language, to_language, wordform, format)
+    wordform = wordform.encode('utf-8')
 
     if app.caching_enabled:
         cached_result = cache.get(cache_key)
@@ -575,7 +589,7 @@ def wordDetail(from_language, to_language, wordform, format):
         detailed_result = {
             "formOf": _result_formOf,
             "lookups": _result_lookups,
-            "input": wordform,
+            "input": wordform.decode('utf-8'),
         }
 
         # TODO: generate paradigm from lemma and pos
