@@ -521,6 +521,10 @@ def wordDetail(from_language, to_language, wordform, format):
       Ex.) /kursadict/detail/sme/nob/orrut.html
            /kursadict/detail/sme/nob/orrut.json
 
+    <wordform> is generally expected to be UTF-8, and most web browsers
+    automatically encode unicode in URLs to UTF-8, however it may be that
+    services using this endpoint will need to make sure to do the conversion.
+
     """
 
     cache_key = '/detail/%s/%s/%s.%s' % (from_language, to_language, wordform, format)
