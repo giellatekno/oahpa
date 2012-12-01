@@ -81,7 +81,15 @@ jQuery(document).ready(function($) {
         }
         return "<label class=\"radio\">\n  <input type=\"radio\" \n         name=\"language_pair\" \n         id=\"language_pair" + (i + 1) + "\" \n         value=\"" + data.from.iso + data.to.iso + "\" " + checked + ">\n  " + data.from.name + " -> " + data.to.name + "\n</label>";
       };
-      el = $("<div id=\"webdict_options\" class=\"hidden\">\n  <div class=\"well\">\n  <a class=\"close\" href=\"#\" style=\"display: none;\">&times;</a>\n  <div class=\"trigger\">\n    <h1><a href=\"#\" class=\"open\">Á</a></h1>\n  </div>\n\n  <div class=\"option_panel\" style=\"display: none;\">\n    <ul class=\"nav nav-pills\">\n      <li class=\"active\">\n        <a href=\"#\">Options</a>\n      </li>\n      <li><a href=\"#\">About</a></li>\n    </ul>\n    <form class=\"\">\n      <label class=\"control-label\" for=\"inputEmail\">Dictionary</label>\n      " + (opts.dictionaries.map(languageOption).join('\n')) + "\n      <br />\n      <label class=\"checkbox\">\n       <input type=\"checkbox\" name=\"detail_level\" />\n       Extra info\n      </label>\n      <button type=\"submit\" class=\"btn\">Save</button>\n    </div>\n  </div>\n  </form>\n</div>");
+      el = $("<div id=\"webdict_options\" class=\"hidden\">\n  <div class=\"well\">\n  <a class=\"close\" href=\"#\" style=\"display: none;\">&times;</a>\n  <div class=\"trigger\">\n    <h1><a href=\"#\" class=\"open\">Á</a></h1>\n  </div>\n\n  <div class=\"option_panel\" style=\"display: none;\">\n    <ul class=\"nav nav-pills\">\n      <li class=\"active\">\n        <a href=\"#\" data-target=\"#options\">Options</a>\n      </li>\n      <li><a href=\"#\" data-target=\"#about\">About</a></li>\n    </ul>\n    <div id=\"options\" class=\"minipanel\">\n      <form class=\"\">\n        <label class=\"control-label\" for=\"inputEmail\">Ordbok</label>\n        " + (opts.dictionaries.map(languageOption).join('\n')) + "\n        <button type=\"submit\" class=\"btn\" id=\"save\">Save</button>\n      </form>\n    </div>\n    <div id=\"about\" style=\"display: none;\" class=\"minipanel\">\n    <p>To look up a word, hold Alt (or Option/⌥ on Macs) and double click a word. If the popup disappears, either hover over the link that is created, or click anywhere on the screen, and then try again.</p>\n    <p>To report problems, <a href=\"mailto:\">contact us</a>.</p>\n    </div>\n  </div>\n</div>");
+      el.find('ul.nav-pills a').click(function(evt) {
+        var target_element;
+        target_element = $(evt.target).attr('data-target');
+        el.find('ul.nav-pills a').parent('li').removeClass('active');
+        $(evt.target).parent('li').addClass('active');
+        el.find('div.minipanel').hide();
+        return el.find(target_element).show();
+      });
       el.find('.trigger').click(function() {
         var optsp;
         optsp = el.find('div.option_panel');
@@ -179,7 +187,7 @@ jQuery(document).ready(function($) {
             Clean response from tooltip $.ajax query, and display results
     */
 
-    var clean_right, element, i, index, indexMax, lookup, r, result, result_string, result_strings, right, string, _elem_html, _i, _j, _k, _left, _len, _len1, _len2, _mid, _mid_new, _new_html, _ref, _ref1, _ref2, _ref3, _right, _tooltipTarget, _tooltipTitle, _wrapElement,
+    var clean_right, element, i, index, indexMax, lookup, r, result, result_string, result_strings, right, string, _elem_html, _i, _j, _k, _left, _len, _len1, _len2, _mid, _mid_new, _new_html, _ref, _ref1, _ref2, _right, _tooltipTarget, _tooltipTitle, _wrapElement,
       _this = this;
     if (!selection.index) {
       console.log("no index!");
@@ -196,23 +204,25 @@ jQuery(document).ready(function($) {
     if (opts.tooltip) {
       _wrapElement = "<a style=\"font-style: italic; border: 1px solid #CEE; padding: 0 2px\" \n   class=\"tooltip_target\">" + string + "</a>";
       _elem_html = $(element).html();
-      _ref = [_elem_html.slice(0, index), _elem_html.slice(index, indexMax), _elem_html.slice(indexMax)], _left = _ref[0], _mid = _ref[1], _right = _ref[2];
+      _left = _elem_html.slice(0, index);
+      _mid = _elem_html.slice(index, indexMax);
+      _right = _elem_html.slice(indexMax);
       _mid_new = _mid.replace(string, _wrapElement);
       _new_html = _left + _mid_new + _right;
       $(element).html(_new_html);
     }
     result_strings = [];
-    _ref1 = response.result;
-    for (_i = 0, _len = _ref1.length; _i < _len; _i++) {
-      result = _ref1[_i];
-      _ref2 = result.lookups;
-      for (_j = 0, _len1 = _ref2.length; _j < _len1; _j++) {
-        lookup = _ref2[_j];
+    _ref = response.result;
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      result = _ref[_i];
+      _ref1 = result.lookups;
+      for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+        lookup = _ref1[_j];
         if (lookup.right.length > 1) {
           clean_right = [];
-          _ref3 = lookup.right;
-          for (i = _k = 0, _len2 = _ref3.length; _k < _len2; i = ++_k) {
-            r = _ref3[i];
+          _ref2 = lookup.right;
+          for (i = _k = 0, _len2 = _ref2.length; _k < _len2; i = ++_k) {
+            r = _ref2[i];
             clean_right.push("" + (i + 1) + ". " + r);
           }
           right = clean_right.join(', ');
@@ -285,7 +295,11 @@ jQuery(document).ready(function($) {
             element: element,
             index: index
           };
-          return cleanTooltipResponse(selection, response, opts);
+          cleanTooltipResponse(selection, response, opts);
+          if (document.selection) {
+            console.log("document.selection!");
+            return document.selection.empty();
+          }
         }
       });
     }
@@ -334,20 +348,20 @@ jQuery(document).ready(function($) {
       {
         from: {
           iso: 'sme',
-          name: 'Northern Sámi'
+          name: 'Nordsamisk'
         },
         to: {
           iso: 'nob',
-          name: 'Norwegian (bokmål)'
+          name: 'Norsk (bokmål)'
         }
       }, {
         from: {
           iso: 'sme',
-          name: 'Northern Sámi'
+          name: 'Nordsamisk'
         },
         to: {
           iso: 'fin',
-          name: 'Finnish'
+          name: 'Finsk'
         }
       }
     ]

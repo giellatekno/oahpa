@@ -101,24 +101,31 @@ jQuery(document).ready ($) ->
         <div class="option_panel" style="display: none;">
           <ul class="nav nav-pills">
             <li class="active">
-              <a href="#">Options</a>
+              <a href="#" data-target="#options">Options</a>
             </li>
-            <li><a href="#">About</a></li>
+            <li><a href="#" data-target="#about">About</a></li>
           </ul>
-          <form class="">
-            <label class="control-label" for="inputEmail">Dictionary</label>
-            #{opts.dictionaries.map(languageOption).join('\n')}
-            <br />
-            <label class="checkbox">
-             <input type="checkbox" name="detail_level" />
-             Extra info
-            </label>
-            <button type="submit" class="btn">Save</button>
+          <div id="options" class="minipanel">
+            <form class="">
+              <label class="control-label" for="inputEmail">Ordbok</label>
+              #{opts.dictionaries.map(languageOption).join('\n')}
+              <button type="submit" class="btn" id="save">Save</button>
+            </form>
+          </div>
+          <div id="about" style="display: none;" class="minipanel">
+          <p>To look up a word, hold Alt (or Option/⌥ on Macs) and double click a word. If the popup disappears, either hover over the link that is created, or click anywhere on the screen, and then try again.</p>
+          <p>To report problems, <a href="mailto:">contact us</a>.</p>
           </div>
         </div>
-        </form>
       </div>
       """)
+
+      el.find('ul.nav-pills a').click (evt) ->
+        target_element = $(evt.target).attr('data-target')
+        el.find('ul.nav-pills a').parent('li').removeClass('active')
+        $(evt.target).parent('li').addClass('active')
+        el.find('div.minipanel').hide()
+        el.find(target_element).show()
 
       el.find('.trigger').click () ->
         optsp = el.find('div.option_panel')
@@ -212,6 +219,7 @@ jQuery(document).ready ($) ->
     # Doubleclick
     if baseOffset == extentOffset
       _left = $(selection.element).html().slice(0, baseOffset)
+      # TODO: hyphen
       last = _left.match /[^\s.]*$/
       if last[0] != ""
         return baseOffset - last[0].length
@@ -249,15 +257,14 @@ jQuery(document).ready ($) ->
          class="tooltip_target">#{string}</a>
       """
 
-      _elem_html            = $(element).html()
+      _elem_html = $(element).html()
 
-      [_left, _mid, _right] = [ _elem_html.slice(0, index)
-                              , _elem_html.slice(index, indexMax)
-                              , _elem_html.slice(indexMax)
-                              ]
+      _left      = _elem_html.slice(0, index)
+      _mid       = _elem_html.slice(index, indexMax)
+      _right     = _elem_html.slice(indexMax)
 
-      _mid_new = _mid.replace(string, _wrapElement)
-      _new_html = _left + _mid_new + _right
+      _mid_new   = _mid.replace(string, _wrapElement)
+      _new_html  = _left + _mid_new + _right
 
       $(element).html _new_html
 
@@ -286,7 +293,9 @@ jQuery(document).ready ($) ->
     if opts.tooltip
       if !_tooltipTitle
         _tooltipTitle = string
+      
       _tooltipTarget = $(element).find('a.tooltip_target')
+
       _tooltipTarget.popover
         title: _tooltipTitle
         content: $("<p />").html(result_strings.join('<br />')).html()
@@ -344,6 +353,9 @@ jQuery(document).ready ($) ->
             index: index
           }
           cleanTooltipResponse(selection, response, opts)
+          if document.selection
+          	console.log "document.selection!"
+          	document.selection.empty()
 
 
 
@@ -393,18 +405,18 @@ jQuery(document).ready ($) ->
       {
         from:
           iso: 'sme'
-          name: 'Northern Sámi'
+          name: 'Nordsamisk'
         to:
           iso: 'nob'
-          name: 'Norwegian (bokmål)'
+          name: 'Norsk (bokmål)'
       },
       {
         from:
           iso: 'sme'
-          name: 'Northern Sámi'
+          name: 'Nordsamisk'
         to:
           iso: 'fin'
-          name: 'Finnish'
+          name: 'Finsk'
       },
     ]
 
