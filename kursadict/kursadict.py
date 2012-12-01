@@ -42,14 +42,11 @@ TODO: return array of lemmas formatted such:
 ## Installing
 
 TODO: document flask installation
-TODO: flask wsgi/fcgi thing
-TODO: move settings, lookup tool path, fst paths, etc., to somewhere clear
 
 ## Todos
 
 TODO: autocomplete from all left language lemmas, build cache and save
       to pickle on each run, then use pickle
-
 
 ## Compiling XML
 
@@ -502,8 +499,6 @@ def lookupWord(from_language, to_language):
     })
 
 
-# TODO: there's some point in rendering the html where there are many
-#       keys of 'lookups': res.lookups.lookups. Need to fix.
 @app.route('/kursadict/detail/<from_language>/<to_language>/<wordform>.<format>',
            methods=['GET'])
 @crossdomain(origin='*')
@@ -593,7 +588,6 @@ def wordDetail(from_language, to_language, wordform, format):
         cache.set(cache_key, detailed_result, timeout=5*60)
     else:
         detailed_result = cached_result
-
 
     # TODO: log result
     # result_lemmas = set()
