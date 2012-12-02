@@ -4,20 +4,18 @@
         <meta charset="UTF-8">
         <!-- these are not required, but just for demonstration -->
         <link href="main.css" rel="stylesheet" />
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
 
         <!-- These are required for everything to work -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="jquery.kursadict.css" rel="stylesheet" />
-
         <script type='text/javascript' src='jquery.1.7.2.js'></script>
-        <script type='text/javascript' src='bootstrap/js/bootstrap-tooltip.js'></script>
-        <script type='text/javascript' src='bootstrap/js/bootstrap-popover.js'></script>
 
-        <script type='text/javascript' src='jquery.textselect.event.js'></script>
+        <!-- Here's the important part... -->
+        <link href="jquery.kursadict.css" rel="stylesheet" />
         <script type='text/javascript' src='jquery.kursadict.js'></script>
         <script type='text/javascript'>
             jQuery(document).ready(function (){
                 // Register the input form with options
+                // NOTE: this doesn't need to be included for mouseclick lookups
                 jQuery('#kursadict').kursaDict();
 
                 // Enable options for inline clicking
@@ -27,6 +25,8 @@
                 });
             });
         </script>
+        <!-- end -->
+
     </head>
 
     <body>

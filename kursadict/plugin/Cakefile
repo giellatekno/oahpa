@@ -41,7 +41,13 @@ build = (callback) ->
     callback?() if code is 0
 
 task 'min', 'minify compiled *.js file', ->
-  exec "#{config.yuic} #{outJS}.js -o #{outJS}.min.js", exerr
+  exec "uglifyjs jquery.kursadict.js -o jquery.kursadict.min.js", exerr
+
+task 'clean', 'Clean compiled files', ->
+  fs.unlinkSync 'jquery.kursadict.js'
+  print 'removed jquery.kursadict.js\n'
+  fs.unlinkSync 'jquery.kursadict.css'
+  print 'removed jquery.kursadict.css\n'
 
 task 'build', 'Compile jQuery dependencies and dictapi', ->
   build()
