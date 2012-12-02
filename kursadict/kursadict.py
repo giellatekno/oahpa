@@ -487,8 +487,10 @@ def lookupWord(from_language, to_language):
     result_lemmas = set()
     if success:
         for result in results:
-            for lookup in result.get('lookups', []):
-                result_lemmas.add(lookup.get('left'))
+            result_lookups = result.get('lookups')
+            if result_lookups:
+                for lookup in result_lookups:
+                    result_lemmas.add(lookup.get('left'))
     result_lemmas = list(result_lemmas)
 
     app.logger.info('%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas)))
