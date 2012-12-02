@@ -1,0 +1,53 @@
+fs = require 'fs'
+{print} = require 'util'
+{spawn} = require 'child_process'
+
+
+# TODO: also build and minify stylesheet?
+
+deps = [
+  'src/bootstrap-tooltip.js'
+  'src/bootstrap-popover.js'
+  'src/jquery.textselect.event.js'
+  'src/jquery.kursadict.js'
+]
+
+stylesheets = [
+  'src/bootstrap.custom.css'
+  'src/jquery.kursadict.css'
+]
+
+concatCSS = (callback) ->
+  concated = ''
+  for file in stylesheets
+  	out = fs.readFileSync file
+  	concated += out
+  fs.writeFileSync 'jquery.kursadict.css', concated
+
+concat = (callback) ->
+  concated = ''
+  for file in deps
+  	newF = fs.readFileSync file
+  	concated += newF
+  fs.writeFileSync 'jquery.kursadict.js', concated
+
+build = (callback) ->
+  coffee = spawn 'coffee', ['--compile', '--bare', 'src/jquery.kursadict.coffee']
+  coffee.stderr.on 'data', (data) ->
+    process.stderr.write data.toString()
+  coffee.stdout.on 'data', (data) ->
+    print data.toString()
+  coffee.on 'exit', (code) ->
+    callback?() if code is 0
+
+task 'min', 'minify compiled *.js file', ->
+  exec "#{config.yuic} #{outJS}.js -o #{outJS}.min.js", exerr
+
+task 'build', 'Compile jQuery dependencies and dictapi', ->
+  build()
+  concat()
+  concatCSS()
+  print "Output stored to jquery.kursadict.js and jquery.kursadict.css\n"
+
+
+# vim: set ts=4 sw=4 tw=0 syntax=coffee :
