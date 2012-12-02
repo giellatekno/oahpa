@@ -3,6 +3,20 @@
  *
  */
 
+#webdict_options .well {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+#webdict_options a {
+    text-decoration: none;
+}
+
+#webdict_options ul, #webdict_options ol {
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
 #webdict_options .control-group label {
     width: 100px;
 }
@@ -37,6 +51,8 @@
 	padding: 0 .85em;
 	font-size: 90%;
     width: 16em;
+    line-height: 1.2em;
+    margin: 0 0 0 0;
 }
 
 #webdict_options form label.control-label {
@@ -67,4 +83,12 @@ button#save {
 
 #webdict_options form {
 	padding:  10px;
+}
+
+#webdict_options, .tooltip, .popover {
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+}
+
+.popover {
+    font-weight: lighter;
 }
