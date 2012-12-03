@@ -257,7 +257,7 @@ class ReverseLookups(XMLDict):
         ts_pos = [t.get('pos') for t in ts]
 
         l = e.find('lg/l')
-        right_text = l.text
+        right_text = [l.text]
 
         return {'left': ts_text, 'pos': ts_pos, 'right': right_text}
 
@@ -520,20 +520,41 @@ def lookupWord(from_language, to_language):
     lemmatize = request.args.get('lemmatize', False)
 
     if lemmatize and not lookup_type:
-        lookup_key = lemmatizer(from_language, lookup_key)
+        lemmatized_lookup_key = lemmatizer(from_language, lookup_key)
+    else:
+        lemmatized_lookup_key = False
 
-    if lookup_key:
-        if not isinstance(lookup_key, list):
-            lookup_key = [lookup_key]
+    if lemmatized_lookup_key:
+        if not isinstance(lemmatized_lookup_key, list):
+            lemmatized_lookup_key = [lemmatized_lookup_key]
 
         results = []
-        for _key in lookup_key:
+        for _key in lemmatized_lookup_key:
             result = lookupXML(from_language, to_language,
                                _key, lookup_type)
             result['input'] = _key
             if len(result['lookups']) == 0:
                 result['lookups'] = False
             results.append(result)
+
+        results = sorted(results, key=lambda x: len(x['input']), reverse=True)
+
+        if 'error' in result:
+            success = False
+        else:
+            success = True
+
+        if 'lookups' in result:
+            if not result['lookups']:
+                success = False
+    else:
+
+        result = lookupXML(from_language, to_language,
+                           lookup_key, lookup_type)
+        result['input'] = lookup_key
+        if len(result['lookups']) == 0:
+            result['lookups'] = False
+        results = [result]
 
         results = sorted(results, key=lambda x: len(x['input']), reverse=True)
 
