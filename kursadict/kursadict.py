@@ -48,13 +48,6 @@ TODO: document flask installation
 TODO: autocomplete from all left language lemmas, build cache and save
       to pickle on each run, then use pickle
 
-TODO: for now the reverse versions of the dictionaries are not ready, so
-we're using the same file but just different xpath lookups. it may be
-that some dictionaries don't really work well with this, so we'll need
-to develop a config option for marking them as reversable or not.
-
-    tag: #reversed
-
 ## Compiling XML
 
     java -Xmx2048m -Dfile.encoding=UTF8 net.sf.saxon.Transform \
@@ -205,7 +198,7 @@ class XMLDict(object):
     def cleanEntry(self, e):
         l = e.find('lg/l')
         left_text = l.text
-        left_pos = l.get('pos')
+        left_pos = list(set(l.get('pos')))
         ts = e.findall('mg/tg/t')
         right_text = [t.text for t in ts]
         return {'left': left_text, 'pos': left_pos, 'right': right_text}
@@ -249,7 +242,6 @@ class DetailedEntries(XMLDict):
 
 class ReverseLookups(XMLDict):
     """
-    NOTE: #reversed
 
     1. use only entries that have the attribute usage="vd" at entry
     level
@@ -260,16 +252,14 @@ class ReverseLookups(XMLDict):
     """
 
     def cleanEntry(self, e):
-        """ TODO: need to reverse this
-        """
-        # print etree.tostring(e, pretty_print=True)
-        l = e.find('lg/l')
-        left_text = l.text
-        left_pos = l.get('pos')
         ts = e.findall('mg/tg/t')
-        right_text = [t.text for t in ts]
+        ts_text = [t.text for t in ts]
+        ts_pos = [t.get('pos') for t in ts]
 
-        return {'left': left_text, 'pos': left_pos, 'right': right_text}
+        l = e.find('lg/l')
+        right_text = l.text
+
+        return {'left': ts_text, 'pos': ts_pos, 'right': right_text}
 
     def lookupLemmaStartsWith(self, lemma):
         _xpath = './/e[mg/tg/t/starts-with(text(), "%s")]' % lemma
@@ -288,7 +278,6 @@ class ReverseLookups(XMLDict):
 language_pairs = dict([ (k, XMLDict(filename=v))
                          for k, v in settings.dictionaries.iteritems() ])
 
-# NOTE: #reversed
 reverse_language_pairs = dict([ ((k[1], k[0]), ReverseLookups(filename=v))
                               for k, v in settings.reversable_dictionaries.iteritems() ])
 
@@ -473,10 +462,6 @@ def lemmatizer(language_iso, lookup_string):
 ##  Endpoints
 ##
 ##
-@app.route('/kursadict/testreverse/', methods=['GET'])
-def reverseLookupTest():
-    print lookupXML('nob', 'sme', 'gate')
-    return ""
 
 @app.route('/kursadict/lookup/<from_language>/<to_language>/',
            methods=['GET'])
@@ -567,7 +552,14 @@ def lookupWord(from_language, to_language):
             result_lookups = result.get('lookups')
             if result_lookups:
                 for lookup in result_lookups:
-                    result_lemmas.add(lookup.get('left'))
+                    l_left = lookup.get('left')
+                    # Reversed lookups return list
+                    if isinstance(l_left, list):
+                        for _l in l_left:
+                            result_lemmas.add(_l)
+                    else:
+                        result_lemmas.add(lookup.get('left'))
+
     result_lemmas = list(result_lemmas)
 
     app.logger.info('%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas)))
@@ -609,6 +601,12 @@ def wordDetail(from_language, to_language, wordform, format):
     cache_key = '/detail/%s/%s/%s.%s' % (from_language, to_language, wordform, format)
     wordform = wordform.encode('utf-8')
 
+    if (from_language, to_language) in reverse_language_pairs:
+        if format == 'json':
+            return json.dumps(" * Detailed view not supported for this language pair")
+        elif format == 'html':
+            return " * Detailed view not supported for this language pair"
+
     if app.caching_enabled:
         cached_result = cache.get(cache_key)
     else:
@@ -616,18 +614,19 @@ def wordDetail(from_language, to_language, wordform, format):
 
     if cached_result is None:
 
-        lang_paradigms = settings.paradigms.get('sme')
-        lang_baseforms = settings.baseforms.get('sme')
+        lang_paradigms = settings.paradigms.get(from_language)
+        lang_baseforms = settings.baseforms.get(from_language)
         # All lookups in XML must go through analyzer, because we need POS
         # info for a good lookup.
         analyzed = lemmatizeWithTags(from_language, wordform)
 
         # Collect lemmas and tags
         _result_formOf = []
-        for form, tags in analyzed.iteritems():
-            for tag in tags:
-                pos, _, rest = tag.partition('+')
-                _result_formOf.append((form, pos, tag))
+        if analyzed:
+            for form, tags in analyzed.iteritems():
+                for tag in tags:
+                    pos, _, rest = tag.partition('+')
+                    _result_formOf.append((form, pos, tag))
 
         # Now collect XML lookups
         _result_lookups = []
