@@ -48,6 +48,13 @@ TODO: document flask installation
 TODO: autocomplete from all left language lemmas, build cache and save
       to pickle on each run, then use pickle
 
+TODO: for now the reverse versions of the dictionaries are not ready, so
+we're using the same file but just different xpath lookups. it may be
+that some dictionaries don't really work well with this, so we'll need
+to develop a config option for marking them as reversable or not.
+
+    tag: #reversed
+
 ## Compiling XML
 
     java -Xmx2048m -Dfile.encoding=UTF8 net.sf.saxon.Transform \
@@ -218,8 +225,61 @@ class DetailedEntries(XMLDict):
 
         }
 
+class ReverseLookups(XMLDict):
+    """
+    NOTE: #reversed
+
+    1. use only entries that have the attribute usage="vd" at entry
+    level e.g.
+
+        <e src="gt" usage="vd">
+        <e usage="vd" src="sk">
+        <e usage="vd">
+
+    2. for nobsme, don't use entries with reverse="no" at entry level
+    e.g.
+
+        <e reverse="no" usage="vd">
+    """
+
+    def cleanEntry(self, e):
+        """ TODO: need to reverse this
+        """
+        l = e.find('lg/l')
+        left_text = l.text
+        left_pos = l.get('pos')
+        ts = e.findall('mg/tg/t')
+        right_text = [t.text for t in ts]
+        return {'left': left_text, 'pos': left_pos, 'right': right_text}
+
+    def lookupLemmaStartsWith(self, lemma):
+        """ TODO: need to reverse this
+        """
+        _xpath = './/e[starts-with(lg/l/text(), "%s")]' % lemma
+        return self.XPath(_xpath)
+
+    def lookupLemma(self, lemma):
+        """ TODO: need to reverse this
+        """
+        _xpath = './/e[lg/l/text() = "%s"]' % lemma
+        return self.XPath(_xpath)
+
+    def lookupLemmaPOS(self, lemma, pos):
+        """ TODO: need to reverse this
+        """
+        _xpath = './/e[lg/l/text() = "%s" and lg/l/@pos = "%s"]' % (lemma, pos.lower())
+        return self.XPath(_xpath)
+
+
 language_pairs = dict([ (k, XMLDict(filename=v))
                          for k, v in settings.dictionaries.iteritems() ])
+
+# NOTE: #reversed
+reverse_language_pairs = dict([ ((k[1], k[0]), ReverseLookups(filename=v))
+                              for k, v in settings.dictionaries.iteritems() ])
+
+language_pairs.update(reverse_language_pairs)
+
 
 def lookupXML(_from, _to, lookup, lookup_type=False):
     _dict = language_pairs.get((_from, _to), False)
