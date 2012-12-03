@@ -23,15 +23,15 @@ appFiles = deps + stylesheets
 concatCSS = (callback) ->
   concated = ''
   for file in stylesheets
-  	out = fs.readFileSync file
-  	concated += out
+    out = fs.readFileSync file
+    concated += out
   fs.writeFileSync 'jquery.kursadict.css', concated
 
 concat = (callback) ->
   concated = ''
   for file in deps
-  	newF = fs.readFileSync file
-  	concated += newF
+    newF = fs.readFileSync file
+    concated += newF
   fs.writeFileSync 'jquery.kursadict.js', concated
 
 build = (callback) ->
