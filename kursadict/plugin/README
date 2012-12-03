@@ -1,0 +1,19 @@
+# Developing
+
+## node.js and npm
+
+Install these first, and then run
+
+    npm install
+
+Which will read package.json, and install the development packages to help
+
+## Cake
+
+... is just a build system like Make, but for node/coffeescript
+projects. It facilitates compiling and combining all the
+dependencies into two files.
+
+    cake build
+
+Will compile for all targets.

@@ -412,6 +412,14 @@ jQuery(document).ready ($) ->
       },
       {
         from:
+          iso: 'nob'
+          name: 'Norsk (bokmål)'
+        to:
+          iso: 'sme'
+          name: 'Nordsamisk'
+      },
+      {
+        from:
           iso: 'sme'
           name: 'Nordsamisk'
         to:
@@ -435,11 +443,18 @@ jQuery(document).ready ($) ->
       elem = $(this)
       result_elem = $(this).find('#results')
 
-      elem.submit () =>
-        lookup_value = $(this).find('input[name="lookup"]').val()
+      # set up dropdown events for selecting language pair
+      $(this).find('#langpairs li a').click (obj) =>
+        new_val = $(obj.target).attr('data-value')
+        elem.find('button span.val_name').html "#{new_val.slice(0,3)}->#{new_val.slice(3,6)}"
+        elem.find('input[name="target_lang"]').val new_val
 
-        target_lang = $(this).find('input[name="target_lang"]:checked').val()
-        source_lang = $(this).find('input[name="source_lang"]').val()
+      elem.submit () =>
+        lookup_value = elem.find('input[name="lookup"]').val()
+
+        lang_pair = $(this).find('input[name="target_lang"]').val()
+        source_lang = lang_pair.slice(0,3)
+        target_lang = lang_pair.slice(3,6)
 
         post_data =
           lookup: lookup_value

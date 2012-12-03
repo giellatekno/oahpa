@@ -1,11 +1,12 @@
 fs = require 'fs'
-{print} = require 'util'
+util = require 'util'
 {spawn} = require 'child_process'
 
 
 # TODO: also build and minify stylesheet?
 
 deps = [
+  'src/bootstrap-dropdown.js'
   'src/bootstrap-tooltip.js'
   'src/bootstrap-popover.js'
   'src/jquery.textselect.event.js'
@@ -16,6 +17,8 @@ stylesheets = [
   'src/bootstrap.custom.css'
   'src/jquery.kursadict.css'
 ]
+
+appFiles = deps + stylesheets
 
 concatCSS = (callback) ->
   concated = ''
@@ -36,24 +39,37 @@ build = (callback) ->
   coffee.stderr.on 'data', (data) ->
     process.stderr.write data.toString()
   coffee.stdout.on 'data', (data) ->
-    print data.toString()
+    util.print data.toString()
   coffee.on 'exit', (code) ->
     callback?() if code is 0
+    concat()
+
+task 'watch', 'Watch prod source files and build changes', ->
+  invoke 'build'
+  util.log "Watching for changes in src"
+
+  for file in appFiles then do (file) ->
+    fs.watchFile file, (curr, prev) ->
+      if +curr.mtime isnt +prev.mtime
+        util.log "Saw change in #{file}"
+        util.log 'Whoa. Saw a change. Building. Hold plz.'
+        invoke 'build'
 
 task 'min', 'minify compiled *.js file', ->
   exec "uglifyjs jquery.kursadict.js -o jquery.kursadict.min.js", exerr
 
 task 'clean', 'Clean compiled files', ->
   fs.unlinkSync 'jquery.kursadict.js'
-  print 'removed jquery.kursadict.js\n'
+  util.print 'removed jquery.kursadict.js\n'
+  fs.unlinkSync 'src/jquery.kursadict.js'
+  util.print 'removed src/jquery.kursadict.js\n'
   fs.unlinkSync 'jquery.kursadict.css'
-  print 'removed jquery.kursadict.css\n'
+  util.print 'removed jquery.kursadict.css\n'
 
 task 'build', 'Compile jQuery dependencies and dictapi', ->
   build()
-  concat()
   concatCSS()
-  print "Output stored to jquery.kursadict.js and jquery.kursadict.css\n"
+  util.print "Output stored to jquery.kursadict.js and jquery.kursadict.css\n"
 
 
 # vim: set ts=4 sw=4 tw=0 syntax=coffee :
