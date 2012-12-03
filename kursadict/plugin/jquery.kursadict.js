@@ -916,7 +916,7 @@ jQuery(document).ready(function($) {
   lookupSelectEvent = function(evt, string, element, index, opts) {
     var langpair, lookup_string, post_data, result_elem, source_lang, target_lang,
       _this = this;
-    result_elem = $(opts.formResults);
+    result_elem = $(document).find(opts.formResults);
     string = $.trim(string);
     if ((string.length > 60) || (string.search(' ') > -1)) {
       return false;
@@ -955,6 +955,7 @@ jQuery(document).ready(function($) {
     opts = $.extend({}, $.fn.selectToLookup.options, opts);
     if (opts.displayOptions) {
       $(document).find('body').append(Templates.OptionsTab(opts));
+      window.optTab = $(document).find('#webdict_options');
     }
     holdingOption = function(evt, string, element, index) {
       if (evt.altKey) {
@@ -1030,7 +1031,7 @@ jQuery(document).ready(function($) {
       $(this).find('#langpairs li a').click(function(obj) {
         var new_val;
         new_val = $(obj.target).attr('data-value');
-        elem.find('button span.val_name').html("" + (new_val.slice(0, 3)) + "-" + (new_val.slice(3, 6)));
+        elem.find('button span.val_name').html("" + (new_val.slice(0, 3)) + "->" + (new_val.slice(3, 6)));
         return elem.find('input[name="target_lang"]').val(new_val);
       });
       return elem.submit(function() {

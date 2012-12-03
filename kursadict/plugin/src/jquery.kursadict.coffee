@@ -326,7 +326,7 @@ jQuery(document).ready ($) ->
 
   
   lookupSelectEvent = (evt, string, element, index, opts) ->
-    result_elem = $(opts.formResults)
+    result_elem = $(document).find(opts.formResults)
 
     string = $.trim(string)
 
