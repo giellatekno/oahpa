@@ -373,10 +373,17 @@ jQuery(document).ready ($) ->
     # TODO: device / OptionsMenu
     if opts.displayOptions
       $(document).find('body').append Templates.OptionsTab(opts)
+      window.optTab = $(document).find('#webdict_options')
     
     holdingOption = (evt, string, element, index) =>
       if evt.altKey
         lookupSelectEvent(evt, string, element, index, opts)
+      # TODO: one idea for how to handle lookups wtihout alt/option key
+      # else
+      #   window.optTab.find('.well').addClass('highlight')
+      #   window.optTab.find('.well a.open').click (o) =>
+      #     lookupSelectEvent(evt, string, element, index, opts)
+      #     return false
       return false
     
     clean = (event) ->
