@@ -104,6 +104,27 @@ class AppConf(object):
         return self._paradigms
         
     @property
+    def reversable_dictionaries(self):
+        if self._reversable_dictionaries:
+            return self._reversable_dictionaries
+
+        def isReversable(d):
+            if d.get('reversable', False):
+                return d
+
+        dicts = filter(isReversable, self.opts.get('Dictionaries'))
+        language_pairs = {}
+        for item in dicts:
+            
+            source = item.get('source')
+            target = item.get('target')
+            path = item.get('path')
+            language_pairs[(source, target)] = path
+
+        self._reversable_dictionaries = language_pairs
+        return language_pairs
+
+    @property
     def dictionaries(self):
         if self._dictionaries:
             return self._dictionaries
@@ -150,9 +171,10 @@ class AppConf(object):
         return cmd
 
     def __init__(self):
-        self._dictionaries = False
-        self._paradigms    = False
-        self._baseforms    = False
+        self._dictionaries            = False
+        self._reversable_dictionaries = False
+        self._paradigms               = False
+        self._baseforms               = False
 
         import yaml
         with open('app.config.yaml', 'r') as F:
@@ -230,44 +252,36 @@ class ReverseLookups(XMLDict):
     NOTE: #reversed
 
     1. use only entries that have the attribute usage="vd" at entry
-    level e.g.
+    level
 
-        <e src="gt" usage="vd">
-        <e usage="vd" src="sk">
-        <e usage="vd">
+    2. don't use entries with reverse="no" at entry level
 
-    2. for nobsme, don't use entries with reverse="no" at entry level
-    e.g.
-
-        <e reverse="no" usage="vd">
+    3. search by e/mg/tg/t/text() instead of /e/lg/l/text()
     """
 
     def cleanEntry(self, e):
         """ TODO: need to reverse this
         """
+        # print etree.tostring(e, pretty_print=True)
         l = e.find('lg/l')
         left_text = l.text
         left_pos = l.get('pos')
         ts = e.findall('mg/tg/t')
         right_text = [t.text for t in ts]
+
         return {'left': left_text, 'pos': left_pos, 'right': right_text}
 
     def lookupLemmaStartsWith(self, lemma):
-        """ TODO: need to reverse this
-        """
-        _xpath = './/e[starts-with(lg/l/text(), "%s")]' % lemma
+        _xpath = './/e[mg/tg/t/starts-with(text(), "%s")]' % lemma
         return self.XPath(_xpath)
 
     def lookupLemma(self, lemma):
-        """ TODO: need to reverse this
-        """
-        _xpath = './/e[lg/l/text() = "%s"]' % lemma
-        return self.XPath(_xpath)
+        _xpath = './/e[mg/tg/t/text() = "%s" and @usage = "vd" and not(@reverse)]'
+        return self.XPath(_xpath % lemma)
 
     def lookupLemmaPOS(self, lemma, pos):
-        """ TODO: need to reverse this
-        """
-        _xpath = './/e[lg/l/text() = "%s" and lg/l/@pos = "%s"]' % (lemma, pos.lower())
+        _xpath = './/e[mg/tg/t/text() = "%s" and @usage = "vd" and not(@reverse) and mg/tg/t/@pos = "%s"]'
+        _xpath = _xpath % (lemma, pos.lower())
         return self.XPath(_xpath)
 
 
@@ -276,10 +290,9 @@ language_pairs = dict([ (k, XMLDict(filename=v))
 
 # NOTE: #reversed
 reverse_language_pairs = dict([ ((k[1], k[0]), ReverseLookups(filename=v))
-                              for k, v in settings.dictionaries.iteritems() ])
+                              for k, v in settings.reversable_dictionaries.iteritems() ])
 
 language_pairs.update(reverse_language_pairs)
-
 
 def lookupXML(_from, _to, lookup, lookup_type=False):
     _dict = language_pairs.get((_from, _to), False)
@@ -460,6 +473,10 @@ def lemmatizer(language_iso, lookup_string):
 ##  Endpoints
 ##
 ##
+@app.route('/kursadict/testreverse/', methods=['GET'])
+def reverseLookupTest():
+    print lookupXML('nob', 'sme', 'gate')
+    return ""
 
 @app.route('/kursadict/lookup/<from_language>/<to_language>/',
            methods=['GET'])
