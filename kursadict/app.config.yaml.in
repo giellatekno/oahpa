@@ -1,10 +1,14 @@
-Utilities:
-  lookup_path: '/usr/bin/lookup'
-  lookup_opts: '-flags mbTT -utf8 -d'
-
-FSTs:
-  sme: '/opt/smi/sme/bin/sme.fst'
-  sme_gen: '/opt/smi/sme/bin/isme-norm.fst'
+Morphology:
+  sme:
+    tool: '/Users/pyry/bin/lookup'
+    file: '/Users/pyry/gtsvn/gt/sme/bin/sme.fst'
+    inverse_file: '/Users/pyry/gtsvn/gt/sme/bin/isme-norm.fst'
+    format: 'xfst'
+  nob:
+    tool: '/path/to/obt-osx'
+    file: False
+    inverse_file: False
+    format: 'obt'
 
 Dictionaries:
   - source: sme
