@@ -64,6 +64,7 @@ from lxml import etree
 from flask import Flask, request, json, render_template, Markup
 from werkzeug.contrib.cache import SimpleCache
 from crossdomain import crossdomain
+from config import settings
 
 cache = SimpleCache()
 app = Flask(__name__, 
@@ -72,109 +73,6 @@ app = Flask(__name__,
 useLogFile = logging.FileHandler('user_log.txt')
 app.logger.addHandler(useLogFile)
 
-class AppConf(object):
-    """ An object for exposing the settings in app.config.yaml in a nice
-    objecty way, and validating some of the contents.
-    """
-    @property
-    def baseforms(self):
-        if self._baseforms:
-            return self._baseforms
-
-        lang_baseforms = self.opts.get('Baseforms')
-
-        self._baseforms = lang_baseforms
-        return self._baseforms
-
-    @property
-    def paradigms(self):
-        if self._paradigms:
-            return self._paradigms
-
-        lang_paradigms = self.opts.get('Paradigms')
-
-        self._paradigms = lang_paradigms
-        return self._paradigms
-        
-    @property
-    def reversable_dictionaries(self):
-        if self._reversable_dictionaries:
-            return self._reversable_dictionaries
-
-        def isReversable(d):
-            if d.get('reversable', False):
-                return d
-
-        dicts = filter(isReversable, self.opts.get('Dictionaries'))
-        language_pairs = {}
-        for item in dicts:
-            
-            source = item.get('source')
-            target = item.get('target')
-            path = item.get('path')
-            language_pairs[(source, target)] = path
-
-        self._reversable_dictionaries = language_pairs
-        return language_pairs
-
-    @property
-    def dictionaries(self):
-        if self._dictionaries:
-            return self._dictionaries
-
-        dicts = self.opts.get('Dictionaries')
-        language_pairs = {}
-        for item in dicts:
-            source = item.get('source')
-            target = item.get('target')
-            path = item.get('path')
-            language_pairs[(source, target)] = path
-
-        self._dictionaries = language_pairs
-        return language_pairs
-
-    @property
-    def FSTs(self):
-        """ Iterate and check that FSTs exist """
-        fsts = self.opts.get('FSTs')
-        for k, v in fsts.iteritems():
-            try:
-                open(v, 'r')
-            except IOError:
-                sys.exit('FST for %s, %s, does not exist. Check path in app.config.yaml.' % (k, v))
-        return fsts
-
-    @property
-    def lookup_command(self):
-        """ Check that the lookup command is executable and user has
-        permissions to execute. """
-        import os
-        def is_exe(fpath):
-            return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
-        
-        apps = self.opts.get('Utilities')
-        cmd = apps.get('lookup_path')
-        
-        if not is_exe(cmd):
-            sys.exit('Lookup utility (%s) does not exist, \
-                      or you have no exec permissions' % cmd)
-        cmd_opts = apps.get('lookup_opts', False)
-        if cmd_opts:
-            cmd += ' ' + cmd_opts
-        return cmd
-
-    def __init__(self):
-        self._dictionaries            = False
-        self._reversable_dictionaries = False
-        self._paradigms               = False
-        self._baseforms               = False
-
-        import yaml
-        with open('app.config.yaml', 'r') as F:
-            config = yaml.load(F)
-        self.opts = config
-        
-settings = AppConf()
 
 ##
 ##  Lexicon
@@ -328,15 +226,17 @@ def decodeOrFail(S):
 from morphology import XFST, OBT, Morphology
 
 # TODO: use settings
-morphologies = {
-    'sme': XFST(lookup_tool='/Users/pyry/bin/lookup',
-                fst_file='/Users/pyry/gtsvn/gt/sme/bin/sme.fst',
-                ifst_file='/Users/pyry/gtsvn/gt/sme/bin/isme-norm.fst') >> \
-           Morphology('sme'),
+# morphologies = {
+#     'sme': XFST(lookup_tool='/Users/pyry/bin/lookup',
+#                 fst_file='/Users/pyry/gtsvn/gt/sme/bin/sme.fst',
+#                 ifst_file='/Users/pyry/gtsvn/gt/sme/bin/isme-norm.fst') >> \
+#            Morphology('sme'),
+# 
+#     'nob': OBT('/Users/pyry/gtsvn/st/nob/obt/bin/mtag-osx64') >> \
+#            Morphology('nob'),
+# }
 
-    'nob': OBT('/Users/pyry/gtsvn/st/nob/obt/bin/mtag-osx64') >> \
-           Morphology('nob'),
-}
+morphologies = settings.morphologies
 
 ##
 ##  Endpoints
@@ -539,7 +439,6 @@ def wordDetail(from_language, to_language, wordform, format):
                 _ft = morph.tool.formatTag(tag)
                 _result_formOf.append((lemma, pos, _ft))
 
-        print _result_formOf
         # Now collect XML lookups
         _result_lookups = []
         _lemma_pos_exists = []
@@ -547,7 +446,7 @@ def wordDetail(from_language, to_language, wordform, format):
         for lemma, pos, tag in _result_formOf:
 
             if (lemma, pos) in _lemma_pos_exists:
-            	continue
+                continue
             # Only look up word when there is a baseform
             paradigm = lang_paradigms.get(pos)
             baseforms = lang_baseforms.get(pos, False)
