@@ -539,10 +539,15 @@ def wordDetail(from_language, to_language, wordform, format):
                 _ft = morph.tool.formatTag(tag)
                 _result_formOf.append((lemma, pos, _ft))
 
+        print _result_formOf
         # Now collect XML lookups
         _result_lookups = []
+        _lemma_pos_exists = []
+
         for lemma, pos, tag in _result_formOf:
 
+            if (lemma, pos) in _lemma_pos_exists:
+            	continue
             # Only look up word when there is a baseform
             paradigm = lang_paradigms.get(pos)
             baseforms = lang_baseforms.get(pos, False)
@@ -559,6 +564,7 @@ def wordDetail(from_language, to_language, wordform, format):
                     'lookups': xml_result,
                     'input': (lemma, pos, tag)
                 })
+                _lemma_pos_exists.append((lemma, pos))
             else:
                 continue
 
