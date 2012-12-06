@@ -311,78 +311,6 @@ def detailedLookupXML(_from, _to, lookup, pos):
 ##
 ##
 
-LOOKUP_TOOL = settings.lookup_command
-
-FSTs = settings.FSTs
-
-def cleanLookups(lookup_string):
-    """
-        Clean XFST lookup text into
-
-        [('keenaa', ['keen+V+1Sg+Ind+Pres', 'keen+V+3SgM+Ind+Pres']),
-         ('keentaa', ['keen+V+2Sg+Ind+Pres', 'keen+V+3SgF+Ind+Pres'])]
-
-    """
-
-    analysis_chunks = [a for a in lookup_string.split('\n\n') if a.strip()]
-
-    cleaned = []
-    for chunk in analysis_chunks:
-        lemmas = []
-        analyses = []
-
-        for part in chunk.split('\n'):
-            lemma, _, analysis = part.partition('\t')
-            lemmas.append(lemma)
-            analyses.append(analysis)
-
-        lemma = list(set(lemmas))[0]
-
-        append_ = (lemma, analyses)
-
-        cleaned.append(append_)
-
-    return cleaned
-
-
-def lookupInFST(lookups_list,
-                fstfile,
-                decodeOutput=False):
-    """ Send the lookup string(s) to an external FST process. Kill the process
-    after 5 seconds if no response seems to be coming.
-    """
-
-    import subprocess
-    from threading import Timer
-
-    lookup_string = '\n'.join(lookups_list)
-
-    gen_norm_command = ' '.join([LOOKUP_TOOL, fstfile])
-    gen_norm_command = gen_norm_command.split(' ')
-
-    lookup_proc = subprocess.Popen(gen_norm_command,
-                                   stdin=subprocess.PIPE,
-                                   stdout=subprocess.PIPE,
-                                   stderr=subprocess.PIPE)
-
-    def kill_proc(proc=lookup_proc):
-        try:
-            proc.kill()
-            _cmdError = ''.join(gen_norm_command)
-            raise Http404("Process for %s took too long." % _cmdError)
-        except OSError:
-            pass
-        return
-
-    t = Timer(5, kill_proc)
-    t.start()
-
-    output, err = lookup_proc.communicate(lookup_string)
-
-    if decodeOutput:
-        output = output.decode('utf-8')
-
-    return cleanLookups(output)
 
 def encodeOrFail(S):
     try:
@@ -396,67 +324,18 @@ def decodeOrFail(S):
     except:
         return S
 
-def generateFromList(language_iso, lookup_strings):
-    fstfile = FSTs.get(language_iso + '_gen', False)
-    lookup_strings = map(encodeOrFail, lookup_strings)
-    if not fstfile:
-        print "No FST for language."
-        return False
 
-    results = lookupInFST(lookup_strings, fstfile, decodeOutput=True)
+from morphology import XFST, OBT, Morphology
 
-    return results
+morphologies = {
+    'sme': XFST(lookup_tool='/Users/pyry/bin/lookup',
+                fst_file='/Users/pyry/gtsvn/gt/sme/bin/sme.fst',
+                ifst_file='/Users/pyry/gtsvn/gt/sme/bin/isme-norm.fst') >> \
+           Morphology('sme'),
 
-
-def lemmatizeWithTags(language_iso, lookup_string):
-    """ Given a language code and lookup string, returns a list of lemma
-    strings, repeats will not be repeated.
-    """
-    fstfile = FSTs.get(language_iso, False)
-    if not fstfile:
-        print "No FST for language."
-        return False
-
-    if isinstance(lookup_string, unicode):
-        lookup_string = lookup_string.encode('utf-8')
-
-    results = lookupInFST([lookup_string], fstfile)
-
-    lemmas = dict()
-
-    for _input, analyses in results:
-        for analysis in analyses:
-            lemma, _, tag = analysis.partition('+')
-            if not lemma.decode('utf-8') in lemmas:
-                lemmas[lemma.decode('utf-8')] = set([tag])
-            else:
-                lemmas[lemma.decode('utf-8')].add(tag)
-
-    return lemmas
-
-def lemmatizer(language_iso, lookup_string):
-    """ Given a language code and lookup string, returns a list of lemma
-    strings, repeats will not be repeated.
-    """
-    fstfile = FSTs.get(language_iso, False)
-    if not fstfile:
-        print "No FST for language."
-        return False
-
-    if isinstance(lookup_string, unicode):
-        lookup_string = lookup_string.encode('utf-8')
-
-    results = lookupInFST([lookup_string], fstfile)
-
-    lemmas = set()
-
-    for _input, analyses in results:
-        for analysis in analyses:
-            lemma, _, tag = analysis.partition('+')
-            lemmas.add(lemma.decode('utf-8'))
-
-    return list(lemmas)
-
+    'nob': OBT('/Users/pyry/gtsvn/st/nob/obt/bin/mtag-osx64') >> \
+           Morphology('nob'),
+}
 
 ##
 ##  Endpoints
@@ -511,6 +390,7 @@ def lookupWord(from_language, to_language):
     "results" list.
 
     """
+
     success = False
     results = False
 
@@ -520,7 +400,10 @@ def lookupWord(from_language, to_language):
     lemmatize = request.args.get('lemmatize', False)
 
     if lemmatize and not lookup_type:
-        lemmatized_lookup_key = lemmatizer(from_language, lookup_key)
+        lemm_ = morphologies.get(from_language, False)
+        if lemm_:
+            lemmatizer = lemm_.lemmatize
+        lemmatized_lookup_key = lemmatizer(lookup_key)
     else:
         lemmatized_lookup_key = False
 
@@ -619,6 +502,8 @@ def wordDetail(from_language, to_language, wordform, format):
 
     """
 
+    from morphology import lemmatizeWithTags, generateFromList
+
     cache_key = '/detail/%s/%s/%s.%s' % (from_language, to_language, wordform, format)
     wordform = wordform.encode('utf-8')
 
@@ -639,15 +524,19 @@ def wordDetail(from_language, to_language, wordform, format):
         lang_baseforms = settings.baseforms.get(from_language)
         # All lookups in XML must go through analyzer, because we need POS
         # info for a good lookup.
-        analyzed = lemmatizeWithTags(from_language, wordform)
+        morph = morphologies.get(from_language, False)
+        analyzed = morph.analyze(wordform)
 
         # Collect lemmas and tags
         _result_formOf = []
         if analyzed:
-            for form, tags in analyzed.iteritems():
-                for tag in tags:
-                    pos, _, rest = tag.partition('+')
-                    _result_formOf.append((form, pos, tag))
+            for form, lemma, tag in analyzed:
+                # TODO: try with OBT
+                if lemma == '?' or tag == '?':
+                    continue
+                pos, _tag = tag[0], tag[1::]
+                _ft = morph.tool.formatTag(tag)
+                _result_formOf.append((lemma, pos, _ft))
 
         # Now collect XML lookups
         _result_lookups = []
@@ -682,8 +571,11 @@ def wordDetail(from_language, to_language, wordform, format):
             lemma, pos, tag = _r.get('input')
             paradigm = lang_paradigms.get(pos)
             if tag in lang_baseforms.get(pos):
-                generate_strings = ['%s+%s' % (lemma, _t) for _t in paradigm]
-                _r['paradigms'] = generateFromList(from_language, generate_strings)
+                if paradigm:
+                    form_tags = [_t.split('+') for _t in paradigm]
+                    _r['paradigms'] = morph.generate(lemma, form_tags)
+                else:
+                    _r['paradigms'] = False
             else:
                 _r['paradigms'] = False
 

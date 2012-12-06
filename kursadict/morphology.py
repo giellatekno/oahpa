@@ -235,6 +235,12 @@ class XFST(object):
         output, err = self._exec(lookup_string, cmd=self.icmd)
         return self.clean(output)
 
+    def tagUnknown(self, analysis):
+        if '+?' in analysis:
+            return True
+        else:
+            return False
+
     def formatTag(self, parts):
         return '+'.join(parts)
 
@@ -244,11 +250,11 @@ class XFST(object):
 
 
 class OBT(XFST):
-	""" TODO: this is almost like CG, so separate out those things if necessary.
-	"""
+    """ TODO: this is almost like CG, so separate out those things if necessary.
+    """
+
     def clean(self, _output):
-        """
-            Clean CG lookup text into
+        """ Clean CG lookup text into
 
             [('keenaa', ['keen+V+1Sg+Ind+Pres', 'keen+V+3SgM+Ind+Pres']),
              ('keentaa', ['keen+V+2Sg+Ind+Pres', 'keen+V+3SgF+Ind+Pres'])]
@@ -310,6 +316,7 @@ class Morphology(object):
         for tag, forms in res:
             unknown = False
             for f in forms:
+                # TODO: how does OBT handle unknown?
                 if '+?' in f:
                     unknown = True
 
@@ -338,6 +345,31 @@ class Morphology(object):
                 lemmas.add(self.tool.splitAnalysis(analysis)[0])
 
         return list(lemmas)
+
+    def analyze(self, form):
+        """ For a wordform, return a list of lemmas and analyses
+            Return in form of:
+            [(form, lemma, ['Verb', 'Inf']),
+             (form, lemma, ['Verb', 'Inf']),
+            ]
+        """
+        lookups = self.tool.lookup([form])
+
+        unknown = False
+        cleaned = []
+        for _input, tags in lookups:
+            for tag in tags:
+                # TODO: how does OBT handle unknown?
+                if '+?' in tag:
+                    unknown = True
+                    cleaned.append((_input, '?', '?'))
+                else:
+                    tag = self.tool.splitAnalysis(tag)
+                    lemma = tag[0]
+                    _tag = tag[1::]
+                    cleaned.append((_input, lemma, _tag))
+
+        return cleaned
 
     def __init__(self, languagecode):
         self.langcode = languagecode
@@ -399,6 +431,9 @@ def examples():
                 print '  ' + ' '.join(tag) + ' => ' + form
         else:
             print '  ' + ' '.join(tag) + ':   unknown'
+
+    for a in sme.analyze(u'gullot'):
+        print '  ' + a
 
 if __name__ == "__main__":
     examples()
