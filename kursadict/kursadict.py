@@ -327,6 +327,7 @@ def decodeOrFail(S):
 
 from morphology import XFST, OBT, Morphology
 
+# TODO: use settings
 morphologies = {
     'sme': XFST(lookup_tool='/Users/pyry/bin/lookup',
                 fst_file='/Users/pyry/gtsvn/gt/sme/bin/sme.fst',
@@ -544,7 +545,8 @@ def wordDetail(from_language, to_language, wordform, format):
 
             # Only look up word when there is a baseform
             paradigm = lang_paradigms.get(pos)
-            if tag in lang_baseforms.get(pos):
+            baseforms = lang_baseforms.get(pos, False)
+            if baseforms:
                 xml_result = detailedLookupXML(from_language,
                                                to_language,
                                                lemma,
@@ -602,6 +604,135 @@ def wordDetail(from_language, to_language, wordform, format):
         return result
     elif format == 'html':
         return render_template('word_detail.html', result=detailed_result)
+
+@app.route('/kursadict/notify/<from_language>/<to_language>/<wordform>.html',
+           methods=['GET'])
+@crossdomain(origin='*')
+def wordNotification(from_language, to_language, wordform):
+    """
+    Returns a simplified set of JSON for dictionary, with 'success' to mark
+    whether there were no errors. Additional URL parameters are available to
+    control the lookup type or whether the lookup is lemmatized before being
+    run through the lexicon.
+
+    Path parameters:
+
+        /kursadict/lookup/<from_language>/<to_language>/
+
+        Follow the ISO code.
+
+        TODO: 404 error for missing languages
+
+    URL parameters:
+
+        lookup - the string to search for
+        lemmatize - true/false
+        type - none, or 'startswith'
+
+    Output:
+
+        {
+            "result": [
+                {
+                    "input": "viidni",
+                    "lookups": [
+                        {
+                            "right": [
+                                "vin"
+                            ],
+                            "pos": "n",
+                            "left": "viidni"
+                        }
+                    ]
+                }
+            ],
+            "success": true
+        }
+
+    If there are multiple results from lemmatizing, they are included in the
+    "results" list.
+
+    """
+
+    success = False
+    results = False
+
+    # URL parameters
+    lookup_key = user_input = wordform
+    lookup_type = False
+    lemmatize = True
+
+    if lemmatize and not lookup_type:
+        lemm_ = morphologies.get(from_language, False)
+        if lemm_:
+            lemmatizer = lemm_.lemmatize
+        lemmatized_lookup_key = lemmatizer(lookup_key)
+    else:
+        lemmatized_lookup_key = False
+
+    if lemmatized_lookup_key:
+        if not isinstance(lemmatized_lookup_key, list):
+            lemmatized_lookup_key = [lemmatized_lookup_key]
+
+        results = []
+        for _key in lemmatized_lookup_key:
+            result = lookupXML(from_language, to_language,
+                               _key, lookup_type)
+            result['input'] = _key
+            if len(result['lookups']) == 0:
+                result['lookups'] = False
+            results.append(result)
+
+        results = sorted(results, key=lambda x: len(x['input']), reverse=True)
+
+        if 'error' in result:
+            success = False
+        else:
+            success = True
+
+        if 'lookups' in result:
+            if not result['lookups']:
+                success = False
+    else:
+
+        result = lookupXML(from_language, to_language,
+                           lookup_key, lookup_type)
+        result['input'] = lookup_key
+        if len(result['lookups']) == 0:
+            result['lookups'] = False
+        results = [result]
+
+        results = sorted(results, key=lambda x: len(x['input']), reverse=True)
+
+        if 'error' in result:
+            success = False
+        else:
+            success = True
+
+        if 'lookups' in result:
+            if not result['lookups']:
+                success = False
+
+    result_lemmas = set()
+    if success:
+        for result in results:
+            result_lookups = result.get('lookups')
+            if result_lookups:
+                for lookup in result_lookups:
+                    l_left = lookup.get('left')
+                    # Reversed lookups return list
+                    if isinstance(l_left, list):
+                        for _l in l_left:
+                            result_lemmas.add(_l)
+                    else:
+                        result_lemmas.add(lookup.get('left'))
+
+    result_lemmas = list(result_lemmas)
+
+    app.logger.info('%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas)))
+
+    return render_template('word_notify.html', result=results, success=success, input=user_input)
+
 
 ##
 ## Public Docs

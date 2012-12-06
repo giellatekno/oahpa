@@ -307,6 +307,20 @@ class OBT(XFST):
 
 class Morphology(object):
 
+    def cleanTag(self, tag):
+        exclusions = [
+            'Ani', 'Body', 'Build', 'Clth', 'Edu', 'Event', 'Fem',
+            'Food', 'Group', 'Hum', 'Mal', 'Measr', 'Obj', 'Org',
+            'Plant', 'Plc', 'Route', 'Sur', 'Time', 'Txt', 'Veh', 'Wpn',
+            'Wthr', 'Allegro', 'v1', 'v2', 'v3', 'v4',
+        ]
+        cleaned = []
+        for p in tag:
+            if p in exclusions:
+                continue
+            cleaned.append(p)
+        return cleaned
+
     def generate(self, lemma, tagsets):
         """ Run the lookup command, parse output into
             [(lemma, ['Verb', 'Inf'], ['form1', 'form2'])]
@@ -323,7 +337,7 @@ class Morphology(object):
             if not unknown:
                 parts = self.tool.splitAnalysis(tag)
                 lemma = parts[0]
-                tag = parts[1::]
+                tag = self.cleanTag(parts[1::])
                 reformatted.append((lemma, tag, forms))
             else:
                 parts = self.tool.splitAnalysis(tag)
@@ -366,7 +380,7 @@ class Morphology(object):
                 else:
                     tag = self.tool.splitAnalysis(tag)
                     lemma = tag[0]
-                    _tag = tag[1::]
+                    _tag = self.cleanTag(tag[1::])
                     cleaned.append((_input, lemma, _tag))
 
         return cleaned
