@@ -54,6 +54,14 @@ TODO: autocomplete from all left language lemmas, build cache and save
         -it:main /path/to/gtsvn/words/scripts/collect-dict-parts.xsl \
         inDir=/path/to/gtsvn/words/dicts/smenob/src/ > OUTFILE.xml
 
+    may need to also include -cp ~/lib/saxon9.jar
+
+### Note about macs with saxon
+
+Can be installed by brew
+
+    brew install saxon
+
 """
 
 import sys
@@ -223,19 +231,6 @@ def decodeOrFail(S):
         return S
 
 
-from morphology import XFST, OBT, Morphology
-
-# TODO: use settings
-# morphologies = {
-#     'sme': XFST(lookup_tool='/Users/pyry/bin/lookup',
-#                 fst_file='/Users/pyry/gtsvn/gt/sme/bin/sme.fst',
-#                 ifst_file='/Users/pyry/gtsvn/gt/sme/bin/isme-norm.fst') >> \
-#            Morphology('sme'),
-# 
-#     'nob': OBT('/Users/pyry/gtsvn/st/nob/obt/bin/mtag-osx64') >> \
-#            Morphology('nob'),
-# }
-
 morphologies = settings.morphologies
 
 ##
@@ -403,7 +398,7 @@ def wordDetail(from_language, to_language, wordform, format):
 
     """
 
-    from morphology import lemmatizeWithTags, generateFromList
+    user_input = wordform
 
     cache_key = '/detail/%s/%s/%s.%s' % (from_language, to_language, wordform, format)
     wordform = wordform.encode('utf-8')
@@ -460,7 +455,7 @@ def wordDetail(from_language, to_language, wordform, format):
                     xml_result = False
 
                 _result_lookups.append({
-                    'lookups': xml_result,
+                    'entries': xml_result,
                     'input': (lemma, pos, tag)
                 })
                 _lemma_pos_exists.append((lemma, pos))
@@ -468,8 +463,8 @@ def wordDetail(from_language, to_language, wordform, format):
                 continue
 
         detailed_result = {
-            "formOf": _result_formOf,
-            "lookups": _result_lookups,
+            "analyses": _result_formOf,
+            "lexicon": _result_lookups,
             "input": wordform.decode('utf-8'),
         }
 
@@ -486,26 +481,36 @@ def wordDetail(from_language, to_language, wordform, format):
             else:
                 _r['paradigms'] = False
 
-
         cache.set(cache_key, detailed_result, timeout=5*60)
     else:
         detailed_result = cached_result
 
-    # TODO: log result
-    # result_lemmas = set()
-    # if success:
-    #     for result in results:
-    #         for lookup in result.get('lookups', []):
-    #             result_lemmas.add(lookup.get('left'))
-    # result_lemmas = list(result_lemmas)
+    _lookup = detailed_result.get('lexicon')
 
-    # app.logger.info('%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas)))
+    if len(_lookup) > 0:
+        success = True
+        result_lemmas = list(set([entry['input'][0] for entry in detailed_result['lexicon']]))
+        _meanings = []
+        for lexeme in detailed_result['lexicon']:
+            if lexeme['entries']:
+                for entry in lexeme['entries']['lookups']:
+                    _entry_tx = []
+                    for mg in entry['meaningGroups']:
+                        _entry_tx.append(mg['translations'])
+                    _meanings.append(list(sum(_entry_tx, [])))
+        tx_set = '; '.join([', '.join(a) for a in _meanings])
+    else:
+        success = False
+        result_lemmas = ['-']
+        tx_set = '-'
+
+    app.logger.info('%s\t%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas), tx_set))
 
     if format == 'json':
         result = json.dumps({
             "success": True,
             "result": detailed_result
-        }, indent=4)
+        })
         return result
     elif format == 'html':
         return render_template('word_detail.html', result=detailed_result)
@@ -669,9 +674,8 @@ def urlencode_filter(s):
     return Markup(s)
 
 if __name__ == "__main__":
-    app.debug = True
     app.caching_enabled = True
-    app.run()
+    app.run(debug=True, use_reloader=False)
 
 # vim: set ts=4 sw=4 tw=72 syntax=python expandtab :
 
