@@ -347,12 +347,15 @@ def lookupWord(from_language, to_language):
                 success = False
 
     result_lemmas = set()
+    tx_set = set()
     if success:
         for result in results:
             result_lookups = result.get('lookups')
             if result_lookups:
                 for lookup in result_lookups:
                     l_left = lookup.get('left')
+                    l_right = ', '.join(lookup.get('right'))
+                    tx_set.add(l_right)
                     # Reversed lookups return list
                     if isinstance(l_left, list):
                         for _l in l_left:
@@ -360,9 +363,10 @@ def lookupWord(from_language, to_language):
                     else:
                         result_lemmas.add(lookup.get('left'))
 
-    result_lemmas = list(result_lemmas)
+    result_lemmas = ', '.join(list(result_lemmas))
+    meanings = '; '.join(list(tx_set))
 
-    app.logger.info('%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas)))
+    app.logger.info('%s\t%s\t%s\t%s' % (user_input, str(success), result_lemmas, meanings))
 
     return json.dumps({
         'result': results,
@@ -624,12 +628,15 @@ def wordNotification(from_language, to_language, wordform):
                 success = False
 
     result_lemmas = set()
+    tx_set = set()
     if success:
         for result in results:
             result_lookups = result.get('lookups')
             if result_lookups:
                 for lookup in result_lookups:
                     l_left = lookup.get('left')
+                    l_right = ', '.join(lookup.get('right'))
+                    tx_set.add(l_right)
                     # Reversed lookups return list
                     if isinstance(l_left, list):
                         for _l in l_left:
@@ -637,9 +644,10 @@ def wordNotification(from_language, to_language, wordform):
                     else:
                         result_lemmas.add(lookup.get('left'))
 
-    result_lemmas = list(result_lemmas)
+    result_lemmas = ', '.join(list(result_lemmas))
+    meanings = '; '.join(list(tx_set))
 
-    app.logger.info('%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas)))
+    app.logger.info('%s\t%s\t%s\t%s' % (user_input, str(success), result_lemmas, meanings))
 
     return render_template('word_notify.html', result=results, success=success, input=user_input)
 
@@ -675,7 +683,7 @@ def urlencode_filter(s):
 
 if __name__ == "__main__":
     app.caching_enabled = True
-    app.run(debug=True, use_reloader=False)
+    app.run(debug=True)
 
 # vim: set ts=4 sw=4 tw=72 syntax=python expandtab :
 
