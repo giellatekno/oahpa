@@ -137,6 +137,11 @@ jQuery(document).ready ($) ->
         optsp.toggle()
         el.find('a.close').toggle()
 
+      el.find('input[name="language_pair"][type="radio"]').click (e) ->
+        store_val = $(e.target).val()
+        DSt.set('kursadict-select-langpair', store_val)
+        return true
+
       el.find('form').submit () ->
         optsp = el.find('div.option_panel')
         optsp.toggle()
@@ -162,7 +167,7 @@ jQuery(document).ready ($) ->
         return false
       return el
 
-  initSpinner = () ->
+  initSpinner = (imgPath) ->
     ###
         spinner popup in right corner; `spinner = initSpinner()` to
         create or find, then usual `spinner.show()` or `.hide()` as
@@ -170,7 +175,7 @@ jQuery(document).ready ($) ->
     ###
     spinnerExists = $(document).find('.spinner')
     if spinnerExists.length == 0
-      spinner = $("""<img src="img/spinner.gif" class="spinner" />""")
+      spinner = $("""<img src="#{imgPath}" class="spinner" />""")
       spinner.css {
         display: "none"
         position: "absolute"
@@ -365,15 +370,20 @@ jQuery(document).ready ($) ->
    #
    ## 
 
-
-
   $.fn.selectToLookup = (opts) ->
     opts = $.extend {}, $.fn.selectToLookup.options, opts
+    spinner = initSpinner(opts.spinnerImg)
 
     # TODO: device / OptionsMenu
     if opts.displayOptions
       $(document).find('body').append Templates.OptionsTab(opts)
       window.optTab = $(document).find('#webdict_options')
+
+    # Recall stored language pair from session
+    previous_langpair = DSt.get('kursadict-select-langpair')
+    if previous_langpair
+      _select = "input[type=\"radio\"][value=\"#{previous_langpair}\"]"
+      _opt = window.optTab.find(_select).attr('checked', 'checked')
     
     holdingOption = (evt, string, element, index) =>
       if evt.altKey
@@ -404,6 +414,7 @@ jQuery(document).ready ($) ->
   $.fn.selectToLookup.options =
     api_host: API_HOST
     formResults: "#results"
+    spinnerImg: "dev/img/spinner.gif"
     sourceLanguage: "sme"
     langPairSelect: "#webdict_options *[name='language_pair']:checked"
     tooltip: true
@@ -451,10 +462,24 @@ jQuery(document).ready ($) ->
       result_elem = $(this).find('#results')
 
       # set up dropdown events for selecting language pair
+      # Also store the default value in localStorage using DSt.js
+      #
       $(this).find('#langpairs li a').click (obj) =>
         new_val = $(obj.target).attr('data-value')
-        elem.find('button span.val_name').html "#{new_val.slice(0,3)}->#{new_val.slice(3,6)}"
+        elem.find('button span.val_name').html(
+          "#{new_val.slice(0,3)}->#{new_val.slice(3,6)}"
+        )
         elem.find('input[name="target_lang"]').val new_val
+        DSt.set('kursadict-form-langpair', new_val)
+      
+      # Recall previous value if stored in session.
+      previous_setting = DSt.get('kursadict-form-langpair')
+      if previous_setting
+        elem.find('input[name="target_lang"]').val previous_setting
+        elem.find('button span.val_name').html(
+          "#{previous_setting.slice(0,3)}->#{previous_setting.slice(3,6)}"
+        )
+
 
       elem.submit () =>
         lookup_value = elem.find('input[name="lookup"]').val()
