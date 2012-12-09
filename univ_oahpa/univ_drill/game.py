@@ -17,8 +17,6 @@ import itertools
 
 import univ_oahpa.settings
 
-# DEBUG = open('/dev/ttys001', 'w')
-
 from random import choice
 from .forms import PRONOUNS_LIST
 
@@ -497,6 +495,8 @@ class BareGame(Game):
 		derivation_type = True and self.settings.get('derivation_type') or   ""
 		possessive_case = True and self.settings.get('possessive_case') or   ""
 		possessive_type = True and self.settings.get('possessive_type') or   ""
+		possessive_number = True and self.settings.get('possessive_number') or   ""
+
 		grade = True and self.settings.get('grade')  or  ""
 		num_type = True and self.settings.get('num_type') or ""  # added to get num_type from settings
 		source = ""
@@ -662,7 +662,12 @@ class BareGame(Game):
 				for key, qa in POSSESSIVE_QUESTION_ANSWER.iteritems()]
 			)
 			semtypes = POSSESSIVE_CHOICE_SEMTYPES[possessive_type]
-			TAG_QUERY = Q(string__in=possessive_types[possessive_type])
+			if possessive_number == 'N-SG':
+				number = ['Sg']
+			else:
+				number = ['Pl']
+			p_type = possessive_types[possessive_type]
+			TAG_QUERY = Q(string__in=p_type, number__in=number)
 			TAG_EXCLUDES = False
 			sylls = False
 			source = False

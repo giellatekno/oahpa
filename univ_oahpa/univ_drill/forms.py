@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- encoding: utf-8 -*-
 from django import forms
 from django.db.models import Q
 from django.http import Http404
@@ -292,6 +292,11 @@ POSSESSIVE_CHOICES = (
 	('N-PX-GROUP3', _('All')),
 )
 
+POSSESSIVE_NUMBER_CHOICES = (
+	('N-SG', _('Singular')),
+	('N-PL', _('Plural')),
+)
+
 POSSESSIVE_CHOICE_SEMTYPES = dict((
 	('N-PX-GROUP1', ['FAMILY']),
 	('N-PX-GROUP2', ['BODYPART', 'ANIMAL', 'PXPROPERTY',]),
@@ -299,6 +304,7 @@ POSSESSIVE_CHOICE_SEMTYPES = dict((
 ))
 
 POSSESSIVE_GROUP1_CASE = (
+	('N-NOM', _('nominative')),
 	('N-ACC', _('accusative')),
 	('N-COM', _('comitative')),
 	('N-GEN', _('genitive')),
@@ -887,7 +893,10 @@ class OahpaSettings(forms.Form):
 					'num_type' : 'CARD',  # added by Heli
 					'derivation_type' : 'V-DER-PASS',
 					'derivation_type_context' : 'DER-PASSV', # was V-DER
+
 					'possessive_type': 'N-PX-GROUP1',
+					'possessive_number': 'N-SG',
+
 					'possessive_case': "N-ACC",
 					'geography': 'world',
 					'frequency' : [],
@@ -1152,6 +1161,7 @@ class MorfaSettings(OahpaSettings):
 	# types
 	possessive_case = forms.ChoiceField(initial=None, choices=POSSESSIVE_GROUP1_CASE, widget=forms.Select, required=False)
 	possessive_type = forms.ChoiceField(initial='N-PX-GROUP1', choices=POSSESSIVE_CHOICES, widget=forms.Select)
+	possessive_number = forms.ChoiceField(initial='N-SG', choices=POSSESSIVE_NUMBER_CHOICES, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)
