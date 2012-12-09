@@ -10,13 +10,13 @@ jQuery(document).ready(function (){
 });
 
 
-// TODO: contextual trigger
-chrome.contextMenus.create({
-  title: "Oza '%s' sátnegirjjis",
-  contexts: ["page", "selection"],
-  onclick: function(info, tab) {
-    var notification;
-    notification = webkitNotifications.createHTMLNotification("http://testing.oahpa.no/kursadict/notify/sme/nob/" + info.selectionText + ".html");
-    return notification.show();
-  }
-});
+// // TODO: contextual trigger
+// chrome.contextMenus.create({
+//   title: "Oza '%s' sátnegirjjis",
+//   contexts: ["page", "selection"],
+//   onclick: function(info, tab) {
+//     var notification;
+//     notification = webkitNotifications.createHTMLNotification("http://testing.oahpa.no/kursadict/notify/sme/nob/" + info.selectionText + ".html");
+//     return notification.show();
+//   }
+// });
