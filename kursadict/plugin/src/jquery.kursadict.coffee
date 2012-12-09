@@ -433,6 +433,11 @@ jQuery(document).ready ($) ->
           "#{previous_setting.slice(0,3)}->#{previous_setting.slice(3,6)}"
         )
 
+      elem.find('input[name="lookup"]').keydown (event) ->
+        if event.keyCode == 13
+          elem.submit()
+          return false
+        return true
 
       elem.submit () =>
         lookup_value = elem.find('input[name="lookup"]').val()
@@ -450,7 +455,7 @@ jQuery(document).ready ($) ->
 
         unknownWord = (response) ->
           $(result_elem).append $("""
-            <p>Unknown word.</p>
+            <p xml:lang="no" class="alert">Ukjent ord.</p>
           """)
           return false
 
@@ -459,13 +464,15 @@ jQuery(document).ready ($) ->
 
           if (response.success == false)
             unknownWord()
-          if (response.result.length == 1) and not response.result[0].lookups
+          else if (response.result.length == 1) and not response.result[0].lookups
             unknownWord()
 
           for result in response.result
             for lookup in result.lookups
+              result_list = lookup.right.join(', ')
+              
               $(result_elem).append $("""
-                <p>#{lookup.left} (#{lookup.pos}) &mdash; #{lookup.right}</p>
+                <p>#{lookup.left} (#{lookup.pos}) &mdash; #{result_list}</p>
               """)
         
         $.ajax

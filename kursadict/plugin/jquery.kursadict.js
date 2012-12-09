@@ -1008,6 +1008,13 @@ jQuery(document).ready(function($) {
         elem.find('input[name="target_lang"]').val(previous_setting);
         elem.find('button span.val_name').html("" + (previous_setting.slice(0, 3)) + "->" + (previous_setting.slice(3, 6)));
       }
+      elem.find('input[name="lookup"]').keydown(function(event) {
+        if (event.keyCode === 13) {
+          elem.submit();
+          return false;
+        }
+        return true;
+      });
       return elem.submit(function() {
         var cleanResponse, lang_pair, lookup_value, post_data, source_lang, target_lang, unknownWord;
         lookup_value = elem.find('input[name="lookup"]').val();
@@ -1022,16 +1029,15 @@ jQuery(document).ready(function($) {
           post_data.lookup = post_data.lookup.replace('*', '');
         }
         unknownWord = function(response) {
-          $(result_elem).append($("<p>Unknown word.</p>"));
+          $(result_elem).append($("<p xml:lang=\"no\" class=\"alert\">Ukjent ord.</p>"));
           return false;
         };
         cleanResponse = function(response) {
-          var lookup, result, _i, _len, _ref, _results;
+          var lookup, result, result_list, _i, _len, _ref, _results;
           $(result_elem).html("");
           if (response.success === false) {
             unknownWord();
-          }
-          if ((response.result.length === 1) && !response.result[0].lookups) {
+          } else if ((response.result.length === 1) && !response.result[0].lookups) {
             unknownWord();
           }
           _ref = response.result;
@@ -1044,7 +1050,8 @@ jQuery(document).ready(function($) {
               _results1 = [];
               for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
                 lookup = _ref1[_j];
-                _results1.push($(result_elem).append($("<p>" + lookup.left + " (" + lookup.pos + ") &mdash; " + lookup.right + "</p>")));
+                result_list = lookup.right.join(', ');
+                _results1.push($(result_elem).append($("<p>" + lookup.left + " (" + lookup.pos + ") &mdash; " + result_list + "</p>")));
               }
               return _results1;
             })());

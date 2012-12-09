@@ -558,6 +558,8 @@ button.btn.btn-mini,input[type="submit"].btn.btn-mini{*padding-top:1px;*padding-
 .well-small{padding:9px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
 .close{float:right;font-size:20px;font-weight:bold;line-height:20px;color:#000000;text-shadow:0 1px 0 #ffffff;opacity:0.2;filter:alpha(opacity=20);}.close:hover{color:#000000;text-decoration:none;cursor:pointer;opacity:0.4;filter:alpha(opacity=40);}
 button.close{padding:0;cursor:pointer;background:transparent;border:0;-webkit-appearance:none;}
+/* @override http://localhost:8000/jquery.kursadict.css */
+
 /*
  *  Some overrides for bootstrap
  *
@@ -658,10 +660,16 @@ button#save {
     font-weight: lighter;
 }
 
+#results p:first-child {
+    margin-top: .5em;
+}
+
 #results p {
-    padding: 10px 20px;
-    font-size: 120%;
+    padding: 5px 20px;
+    margin:  0 0 0 0;
+    font-size: 100%;
     font-weight: lighter;
+    font-family: sans-serif;
 }
 
 ul.dropdown-menu[role="menu"] li a {
