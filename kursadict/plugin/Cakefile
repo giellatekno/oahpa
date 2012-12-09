@@ -1,5 +1,6 @@
 fs = require 'fs'
 util = require 'util'
+wrench = require 'wrench'
 {spawn} = require 'child_process'
 
 # TODO: also minify stylesheet?
@@ -20,6 +21,11 @@ stylesheets = [
 ]
 
 appFiles = deps + stylesheets
+
+compiledFiles = [
+  'jquery.kursadict.css',
+  'jquery.kursadict.js'
+]
 
 concatCSS = (callback) ->
   concated = ''
@@ -45,6 +51,19 @@ build = (callback) ->
     callback?() if code is 0
     concat()
 
+
+buildChrome = (callback) ->
+  pluginTargetDir = 'bin/chrome/'
+  # copy to bin/chrome/
+
+  # copy compiled files compiledFiles
+  wrench.copyDirSyncRecursive('src/chrome', 'bin/chrome')
+
+  # cp compiledFiles
+  for file in compiledFiles
+    _in = fs.readFileSync file
+    fs.writeFileSync "bin/chrome/#{file}", _in
+
 task 'watch', 'Watch prod source files and build changes', ->
   invoke 'build'
   util.log "Watching for changes in src"
@@ -66,6 +85,11 @@ task 'clean', 'Clean compiled files', ->
   util.print 'removed src/jquery.kursadict.js\n'
   fs.unlinkSync 'jquery.kursadict.css'
   util.print 'removed jquery.kursadict.css\n'
+  wrench.rmdirSyncRecursive('bin/chrome/')
+
+task 'build-chrome', 'Compile the chrome plugin', ->
+  buildChrome()
+  util.print "Everything now in bin/chrome/\n"
 
 task 'build', 'Compile jQuery dependencies and dictapi', ->
   build()
