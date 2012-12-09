@@ -1,12 +1,18 @@
 Morphology:
   sme:
-    tool: '/Users/pyry/bin/lookup'
+    tool: &LOOKUP '/Users/pyry/bin/lookup'
     file: '/Users/pyry/gtsvn/gt/sme/bin/sme.fst'
     inverse_file: '/Users/pyry/gtsvn/gt/sme/bin/isme-norm.fst'
     format: 'xfst'
   nob:
-    tool: '/path/to/obt-osx'
+    tool: '/Users/pyry/gtsvn/st/nob/obt/bin/mtag-osx64'
     format: 'obt'
+  sma:
+    tool: *LOOKUP
+    file: '/Users/pyry/gtsvn/langs/sma/src/analyser-gt-desc.xfst'
+    inverse_file: '/Users/pyry/gtsvn/langs/sma/src/generator-gt-norm.xfst'
+    format: 'xfst'
+
 
 
 Dictionaries:

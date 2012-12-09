@@ -100,11 +100,11 @@ class AppConf(object):
 
             try:
                 self._morphologies[iso] = m_format(**kwargs) >> Morphology(iso)
-            except:
+            except Exception, e:
                 print "Error initializing morphology"
                 print iso
                 print kwargs
-                print _in_kwargs
+                print _kwargs_in
 
         return self._morphologies
 
