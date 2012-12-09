@@ -36,6 +36,11 @@
     // opacity: .3;
 }
 
+#webdict_options h1 {
+    margin: .45em 0 ;
+    line-height: 1em;
+}
+
 #webdict_options.open {
     opacity: 1;
 }
@@ -52,7 +57,7 @@
 	font-size: 90%;
     width: 16em;
     line-height: 1.2em;
-    margin: 0 0 0 0;
+    margin: .4em 0 ;
 }
 
 #webdict_options form label.control-label {
@@ -97,4 +102,9 @@ button#save {
     padding: 10px 20px;
     font-size: 120%;
     font-weight: lighter;
+}
+
+ul.dropdown-menu[role="menu"] li a {
+	font-family: sans-serif;
+	text-decoration: none;
 }
