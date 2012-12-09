@@ -2,16 +2,17 @@ fs = require 'fs'
 util = require 'util'
 {spawn} = require 'child_process'
 
-
-# TODO: also build and minify stylesheet?
+# TODO: also minify stylesheet?
 
 deps = [
   'src/bootstrap-dropdown.js'
   'src/bootstrap-tooltip.js'
   'src/bootstrap-popover.js'
+  'src/DSt.js'
   'src/jquery.textselect.event.js'
   'src/jquery.kursadict.js'
 ]
+
 
 stylesheets = [
   'src/bootstrap.custom.css'
