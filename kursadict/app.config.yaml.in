@@ -8,7 +8,12 @@ Morphology:
     tool: '/path/to/obt-osx'
     format: 'obt'
 
+
 Dictionaries:
+#   - source: sme
+#     target: smj
+#     path: 'dicts/sme-smj.all.xml'
+  
   - source: sme
     target: nob
     path: 'dicts/sme-nob.all.xml'
@@ -18,10 +23,27 @@ Dictionaries:
     target: fin
     path: 'dicts/sme-fin.all.xml'
 
+  - source: sma
+    target: nob
+    path: 'dicts/sma-nob.all.xml'
+
+  - source: nob
+    target: sma
+    path: 'dicts/nob-sma.all.xml'
+
 
 # Tags to accept as the dictionary form for each POS, e.g., want to show
 # paradigms for words that can be analyzed with this form
 Baseforms:
+  sma:
+    V: 
+      - "V+IV+Inf"
+      - "V+TV+Inf"
+      - "V+Inf"
+
+    N:
+      - "N+Sg+Nom"
+
   sme:
     V:
       - "V+IV+Inf"
@@ -30,6 +52,9 @@ Baseforms:
 
     A:
       - "A+Attr"
+
+    Adv:
+      - 'Adv'
 
     N:
       - "N+Sg+Nom"
@@ -42,7 +67,17 @@ Baseforms:
       - "Hum+N+Prop+Sg+Nom"
 
 Paradigms:
+  sma:
+    N:
+      - "N+Sg+Nom"
+      - "N+Pl+Nom"
+      - "N+Sg+Ill"
+      - "N+Sg+Ine"
+      - "N+Pl+Ill"
+      - "N+Pl+Ine"
+
   sme:
+
     A:
       - "A+Attr"
       - "A+Sg+Nom"
