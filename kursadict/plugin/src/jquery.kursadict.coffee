@@ -1,44 +1,6 @@
 ###
 A jQuery plugin for enabling the Kursadict functionality
 
-# Installation
-
-HTML header
-
-TODO: clarify how to install this somewhere.
-
-
-# Development / testing
-
-Install node.js and npm, and then coffeescript.
-
-TODO: write more
-
-## building
-
-Must be compiled with --bare, to prevent function wrapping that disables
-jQuery.
-
-    coffee --compile --bare jquery.kursadict.coffee
-
-## watch
-
-    coffee --compile --watch --bare jquery.kursadict.coffee
-
-Or.
-
-    ./compile_and_watch.sh
-
-
-## TODOs / Features
-
-TODO: options:
-      - target language
-      - detail level of information display
-      - place of display: tooltip/banner
-      - device options: tablet / normal computer
-
-TODO: autodetect from browser language first, fall back to nob otherwise
 
 ## TODOs / Bugs
 
@@ -53,19 +15,13 @@ TODO: lookup timeout -- set on $.ajax, but sometimes seems not to work?
 
 TODO: Opera on Windows - alt+click context window
 
-TODO: add a non-alt/opt version. maybe banner along the bottom that
-      allows lookup when  text is highlighted
-
 ###
 
 # Wrap jQuery and add plugin functionality
 jQuery(document).ready ($) ->
 
   # API_HOST = "http://testing.oahpa.no/"
-  if window.location.hostname == 'localhost'
-    API_HOST = "http://localhost:5000/"
-  else if window.location.hostname == 'testing.oahpa.no'
-    API_HOST = "http://#{window.location.hostname}/"
+  API_HOST = "http://localhost:5000/"
 
   Templates =
     OptionsMenu: (opts) ->
@@ -292,9 +248,6 @@ jQuery(document).ready ($) ->
       if opts.tooltip
         _tooltipTitle = 'Unknown word'
 
-    # TODO: move all this into a template or something
-    # Use either bootstrap tooltip, or display in dictionary #results
-    # div.
     if opts.tooltip
       if !_tooltipTitle
         _tooltipTitle = string

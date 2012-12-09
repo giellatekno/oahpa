@@ -9,6 +9,16 @@ are looking at.
 1.) Getting this to work when manually included in a website without disturbing
     the website's own CSS and JS.
 
+    - TODO: make the search form results a bit prettier.
+
+    - TODO: Internationalization of help text to nob, sme, fin, other languages
+      supported
+
+    - TODO: Alternate means of triggering lookups so that there is no necessity
+      to hold Alt/Opt while clicking, for devices that do not have this.
+      Potentially also, displaying the result lookup in another format for
+      mobile devices (Popup banner fixed to the bottom edge?).
+
 2.) Including this in browser plugins for the biggest and easiest browsers to
     develop for. (Also, creating build targets for these in the Cakefile).
 
@@ -16,6 +26,15 @@ are looking at.
     and injects the necessary scripts and CSS files.
 
 (1) is almost done now.
+
+See also: jquery.kursadict.coffee TODOs.
+
+## Installation of plugin for a specific site
+
+See `kursadict.plugin.html` for an example of the bare minimum. Note the code
+required for the search form.
+
+TODO: write more.
 
 ## Developing
 
