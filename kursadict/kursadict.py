@@ -75,7 +75,7 @@ from crossdomain import crossdomain
 from config import settings
 
 cache = SimpleCache()
-app = Flask(__name__, 
+app = Flask(__name__,
     static_url_path='/kursadict/static',)
 
 useLogFile = logging.FileHandler('user_log.txt')
@@ -104,7 +104,7 @@ class XMLDict(object):
     def cleanEntry(self, e):
         l = e.find('lg/l')
         left_text = l.text
-        left_pos = list(set(l.get('pos')))
+        left_pos = l.get('pos')
         ts = e.findall('mg/tg/t')
         right_text = [t.text for t in ts]
         return {'left': left_text, 'pos': left_pos, 'right': right_text}
@@ -155,6 +155,7 @@ class ReverseLookups(XMLDict):
     2. don't use entries with reverse="no" at entry level
 
     3. search by e/mg/tg/t/text() instead of /e/lg/l/text()
+
     """
 
     def cleanEntry(self, e):
@@ -368,6 +369,7 @@ def lookupWord(from_language, to_language):
 
     app.logger.info('%s\t%s\t%s\t%s' % (user_input, str(success), result_lemmas, meanings))
 
+    print results
     return json.dumps({
         'result': results,
         'success': success
