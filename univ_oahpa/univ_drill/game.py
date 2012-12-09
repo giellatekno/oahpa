@@ -31,6 +31,7 @@ except:
 	LOOKUP_TOOL = 'lookup'
 
 
+
 try:
 	FST_DIRECTORY = univ_oahpa.settings.FST_DIRECTORY
 except:
@@ -662,12 +663,14 @@ class BareGame(Game):
 				for key, qa in POSSESSIVE_QUESTION_ANSWER.iteritems()]
 			)
 			semtypes = POSSESSIVE_CHOICE_SEMTYPES[possessive_type]
+			p_type = possessive_types[possessive_type]
 			if possessive_number == 'N-SG':
 				number = ['Sg']
+				p_type = [a for a in p_type if 'PxSg' in a]
 			else:
 				number = ['Pl']
-			p_type = possessive_types[possessive_type]
-			TAG_QUERY = Q(string__in=p_type, number__in=number)
+				p_type = [a for a in p_type if 'PxDu' in a or 'PxPl' in a]
+			TAG_QUERY = Q(string__in=p_type) # , number__in=number)
 			TAG_EXCLUDES = False
 			sylls = False
 			source = False
@@ -736,6 +739,10 @@ class BareGame(Game):
 
 		if TAG_EXCLUDES:
 			tags = tags.exclude(TAG_EXCLUDES)
+		
+		if pos == 'Px':
+			tags = tags.annotate(pxc=Count('form')).exclude(pxc=0)
+
 
 		if tags.count() == 0:
 			keys = ['pos', 'case', 'tense', 'mood', 'attributive', 'grade', 'number']

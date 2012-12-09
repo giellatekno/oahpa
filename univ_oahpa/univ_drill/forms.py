@@ -304,8 +304,8 @@ POSSESSIVE_CHOICE_SEMTYPES = dict((
 ))
 
 POSSESSIVE_GROUP1_CASE = (
-	('N-NOM', _('nominative')),
 	('N-ACC', _('accusative')),
+	('N-NOM', _('nominative')),
 	('N-COM', _('comitative')),
 	('N-GEN', _('genitive')),
 	('N-ILL', _('illative')),
@@ -332,9 +332,9 @@ DERIVATION_QUESTION_ANSWER = {
 }
 
 POSSESSIVE_QUESTION_ANSWER = {
-	'N-PX-GROUP1': [('N+Number+Nom', 'N+NPxNumber+PxCase1+Possessive')],
-	'N-PX-GROUP2': [('N+Number+Nom', 'N+NPxNumber+PxCase2+Possessive')],
-	'N-PX-GROUP3': [('N+Number+Nom', 'N+NPxNumber+PxCase3+Possessive')],
+	'N-PX-GROUP1': [('N+NumberN+Nom', 'N+NPxNumber+PxCase1+Possessive')],
+	'N-PX-GROUP2': [('N+NumberN+Nom', 'N+NPxNumber+PxCase2+Possessive')],
+	'N-PX-GROUP3': [('N+NumberN+Nom', 'N+NPxNumber+PxCase3+Possessive')],
 }
 
 DERIVATION_FILTER_DEFINITION = False
