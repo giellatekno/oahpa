@@ -8,7 +8,7 @@
 
         <!-- These are required for everything to work, but they may be
              installed somewhere already, if adding to an existing site. -->
-        <script type='text/javascript' src='dev/jquery.1.7.2.js'></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
         <!-- Here's the important part... -->
         <link href="jquery.kursadict.css" rel="stylesheet" />
@@ -22,7 +22,8 @@
                 // Enable options for inline clicking
                 jQuery(document).selectToLookup({
                   tooltip: true,
-                  displayOptions: true
+                  displayOptions: true,
+                  spinnerImg: 'dev/img/spinner.gif'
                 });
             });
         </script>
