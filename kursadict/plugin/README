@@ -1,4 +1,36 @@
-# Developing
+# What is this?
+
+This is a module for providing access to a dictionary API, giving users access
+to lexical information without need to understand what word or wordform they
+are looking at.
+
+## Goals and TODOs
+
+1.) Getting this to work when manually included in a website without disturbing
+    the website's own CSS and JS.
+
+2.) Including this in browser plugins for the biggest and easiest browsers to
+    develop for. (Also, creating build targets for these in the Cakefile).
+
+3.) A means of inclusion of this module via a proxy service, which takes a URL
+    and injects the necessary scripts and CSS files.
+
+(1) is almost done now.
+
+## Developing
+
+You will need some tools to help develop and compile the modules here, namely
+node.js and npm. Otherwise, this module uses both JavaScript, and CoffeeScript[1],
+the latter of which is a fabulous (completely) JavaScript compliant abstraction
+from JavaScript which makes many programming concepts more accessible. It is
+kind of another language, but not really, and is very easy to switch over to
+using.
+
+    [1]: http://coffeescript.org
+
+Coffeescript quickly compiles into JavaScript, but in addition, there are some
+other handy tools available in the Node.js 'system' that are necessary for 
+compiling the modules here into a minimum of files, and a variety of targets.
 
 ## node.js and npm
 
@@ -17,3 +49,60 @@ dependencies into two files.
     cake build
 
 Will compile for all targets.
+
+## Twitter Bootstrap
+
+Twitter Bootstrap is in use for CSS and JavaScript conveniences like popups,
+tooltips, and form elements. There is also a little custom code to handle
+dropdown buttons in forms.
+
+If this needs to be included in a place where Bootstrap's CSS reset (and
+basically its full install) would mess with local stylesheets too much, it is
+necessary to use a subset of Bootstrap which is downloadable from their website.
+
+However, note that the sample HTML file here includes the full bootstrap CSS, 
+which can be disabled for testing, but also note that the JS utilities from 
+Bootstrap and jQuery are compiled in to the final .js file, with one exception:
+the base jQuery library is not included (yet?). These dependencies are clearly
+listed in the HTML file to show how installation of the module works.
+
+So...
+
+If you need to make changes and require more parts of Twitter Bootstrap, 
+here is the list of things that are in use here. Unfortunately Bootstrap 
+provides no easy way to check off everything you need
+
+http://twitter.github.com/bootstrap/customize.html#variables
+
+Uncheck everything, and select:
+
+Base CSS
+ * Labels and badges
+ * Forms
+ * Buttons
+ * Icons
+
+Components
+ * Button groups and dropdowns
+ * Navs, tabs, and pills
+ * Navbar
+ * Alerts
+
+Miscellaneous
+ * Wells
+ * Close icon
+
+JS Components
+ * Tooltips
+ * Popovers
+ * Dropdowns
+
+2 jQuery Plugins
+ * Modals
+ * Dropdowns
+ * Tooltips
+ * Popovers
+ * Buttons
+ * Typeahead
+
+
