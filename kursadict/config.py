@@ -138,9 +138,6 @@ class AppConf(object):
         with open('app.config.yaml', 'r') as F:
             config = yaml.load(F)
         self.opts = config
-        
+
 settings = AppConf()
 
-if __name__ == "__main__":
-    settings = AppConf()
-    print settings.morphologies
