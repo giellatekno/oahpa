@@ -5,20 +5,20 @@
 
     <div class="span6">
 
-        {% for res in result.lookups %}
+
+        {% for lexeme in result.lexicon %}
             <br />
-            {% if res.lookups %}
-            <h4>{{ res.input[0] }} ({{ res.input[1] }}) </h4>
-            {% if res.paradigms %}
-                <h5> {%- for t in res.paradigms -%}
-                      {%- for form in t[1] -%} {{ form }} {%- if not loop.last %}, {% endif -%}{%- endfor %}
-                      {%- if not loop.last %}, {% endif -%}
+            {% if lexeme.entries %}
+            <h4>{{ lexeme.input[0] }} ({{ lexeme.input[1] }}) </h4>
+            {% if lexeme.paradigms %}
+                <h5> {%- for lemma, tag, form in lexeme.paradigms -%}
+                      {{ '/'.join(form) }} {%- if not loop.last %}, {% endif -%}
                     {%- endfor -%}
                 </h5>
             {% endif %}
             
             </h4>
-                {% for tg in res.lookups.lookups %}
+                {% for tg in lexeme.entries.lookups %}
                         <ul>
                         {% for mg in tg.meaningGroups %}
                             <li>
@@ -45,10 +45,10 @@
 
     <div class="span2">
 
-        {%- if result.formOf %}
+        {%- if result.analyses %}
             <h4>{{ result.input }} is a possible form of ... </h4>
             <dl>
-            {% for form, pos, tag in result.formOf %}
+            {% for form, pos, tag in result.analyses %}
                 <dt><a href="{{ form|urlencode }}.html">{{ form }}</a></dt>
                 <dd>{{ tag }}</dd>
             {%- endfor -%}
