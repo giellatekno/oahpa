@@ -1,0 +1,138 @@
+!!! Møte 10.11.12
+
+
+Til stades: Heli, Ryan, Lene, Trond
+
+
+!! Saksliste
+
+* Omorganisering av projektsida
+* PX i Morfa
+* Oahpa2
+* Multiartikkelen
+* Dict javascript-plugin
+* View (teaksta)
+* Bugs
+* Neste møte
+
+
+!! Omorganisering av projektsida
+Lene har prøvd å gjøre [projektsida|http://giellatekno.uit.no/ped/univ-oahpa.html]  mer oversiktlig
+
+!! PX i Morfa
+
+[Px i MorfaS|http://testing.oahpa.no/davvi/morfas/s/px/]
+
+__TILTAK__
+* betydningar mangler, oversetting må skrives inn i n_px-fila. Fila flyttes over i src-katalogen (__Lene__)
+* lokalisering, kjøre skript, oversette (__Trond, Lene__)
+* Lage Morfa-C oppgaver (__Lene__)
+
+!! Oahpa2
+Det er søkt om 50.000 fra utdanningsfondet til programmerer for russisk oahpa.
+
+!! Multiartikkelen
+Ryan har fått kontakt med en som har brukt Rosetta Stone for Navajo: dårlig på grammatikk og kostbart
+
+[Betalingskurs i ojibwe, med demo|http://www.grassrootsindigenousmultimedia.org/index.php?option=com_content&view=article&id=49&Itemid=57]
+
+Sitat fra dokumentasjon om kurset: Grammar Information at Your Fingertips
+Quickly and easily access grammar information on any word you come across. Expand your knowledge of how a word is used in context. Find out the part of speech, how a word is inflected, or read a grammar tutorial.
+
+The declarative memory system learns and remembers vocabulary words, phrases and even short sentences.
+The procedural memory system learns the skills of applying grammar and producing language.
+
+
+http://mokennon2.albion.edu/ohelp.htm
+http://ojibwe.lib.umn.edu/
+http://ojibwe.lib.umn.edu/main-entry/nisidotaadiwag-vai
+
+!! Dict javascript-plugin
+
+smenob med gt-fst, nobsme med OBT. Det fungerer, men treng arbeid med stylesheets.
+
+http://i.imgur.com/5sRFr.jpg
+
+Muligheter:
+# implementere i kursa
+# url-basert – man trenger ikke å installere (testa i x, x og x) 
+# plugin for forskjellige nettlesere, må installeres
+## [wordlink|http://www2.smo.uhi.ac.uk/wordlink/] - krever at vår dict gjøres om til en url-basert:
+http://url/til/ordform -> http://testing.oahpa.no/kursadict/detail/sme/nob/orrut.html
+# hva skal være med i API, hva kan vi bidra?
+
+
+Språkpar:
+* sme<->nob
+* sme<->fin 
+* sma<->nob (NB: eigen FST til sma-ordboka)
+* sme<->eng (må lages først i apertiumformat)
+* kom<->eng/fin/rus (words/dicts/kom2X/src + analysator: langs/kpv/
+* myv<->fin
+
+
+http://testing.oahpa.no/plugin/kursadict.plugin.html#
+
+__TILTAK__
+* Legge ut kotus sme-eng på dict (__Trond__)
+* Ta kontakt med amerikanske samer om forbedring av ordboka (__Lene__)
+* Finne oversetter for sme-eng Oahpa (__Lene__)
+* Inkludere testing.oahpa.no/kursadict i wordlink (__Trond__ kontaktar Skottland)
+* URL nederst på detaljert sida tilbake til GT/divvun (__Ryan__)
+* Bestemme på kva slags output det vert på detaljert sida når det gjeld ordform som er generert av sme-norm (__Trond__)
+
+
+!! View (teaksta)
+Heli har begynt å utforske koden. Det finnes flere utviklingsgrener 
+
+* core er best dokumentert 
+* cg3 passer kanskje best for oss 
+
+
+{{{
+Hernandez lrec2012 UIMA 
+EnhanceXMLAnnotator</node>
+        <node>GenericRelevanceAnnotator</node>
+        <node>OpenNlpTokenizer</node>
+        <node>OpenNlpSentenceDetector</node>
+}}}
+
+
+Disse filene skal brukes i pipeline:
+* /opt/smi/sme/bin/abbr.txt
+* /opt/smi/sme/bin/sme.fst
+* /opt/smi/sme/bin/sme-dis.rle eller
+* /opt/smi/sme/bin/sme-dis.bin
+
+Lingivister: Hugs å logge endringar i fst i {{priv/admin/README-admin-smi.txt}}.
+
+{{{
+cat text | preprocess --abbr=abbr.txt | \
+lookup -flags mbTT -utf8 /opt/smi/sme/bin/sme.fst | \
+lookup2cg | vislcg3 -g sme-dis.rle
+}}}
+
+For testing
+* http://avvir.no
+* http://www.lapinkansa.fi/Sagat
+
+[Vår dokumentasjonsside om Teaksta|http://giellatekno.uit.no/ped/nudoc/teaksta.html]
+
+
+
+!! Bugs
+Vi har ingen åpne bugger for smeOahpa og vi kan lukke de alle (?) smaOahpa-bugger (__Lene__)
+
+
+!! Neste møte
+
+__28.12.12 kl 8.30__
+
+
+
+
+
+
+
+
+
