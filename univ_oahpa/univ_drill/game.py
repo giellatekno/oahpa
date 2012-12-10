@@ -669,7 +669,7 @@ class BareGame(Game):
 				p_type = [a for a in p_type if 'PxSg' in a]
 			else:
 				number = ['Pl']
-				p_type = [a for a in p_type if 'PxDu' in a or 'PxPl' in a]
+				# p_type = [a for a in p_type if 'PxDu' in a or 'PxPl' in a]
 			TAG_QUERY = Q(string__in=p_type) # , number__in=number)
 			TAG_EXCLUDES = False
 			sylls = False

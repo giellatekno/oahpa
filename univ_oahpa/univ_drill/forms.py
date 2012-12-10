@@ -304,8 +304,8 @@ POSSESSIVE_CHOICE_SEMTYPES = dict((
 ))
 
 POSSESSIVE_GROUP1_CASE = (
-	('N-ACC', _('accusative')),
 	('N-NOM', _('nominative')),
+	('N-ACC', _('accusative')),
 	('N-COM', _('comitative')),
 	('N-GEN', _('genitive')),
 	('N-ILL', _('illative')),
