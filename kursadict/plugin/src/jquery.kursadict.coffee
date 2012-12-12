@@ -82,6 +82,7 @@ jQuery(document).ready ($) ->
         $(evt.target).parent('li').addClass('active')
         el.find('div.minipanel').hide()
         el.find(target_element).show()
+        return false
 
       el.find('.trigger').click () ->
         optsp = el.find('div.option_panel')
@@ -98,7 +99,7 @@ jQuery(document).ready ($) ->
         DSt.set('kursadict-select-langpair', store_val)
         return true
 
-      el.find('form').submit () ->
+      .find('form').submit () ->
         optsp = el.find('div.option_panel')
         optsp.toggle()
         el.find('a.close').toggle()
@@ -132,12 +133,6 @@ jQuery(document).ready ($) ->
     spinnerExists = $(document).find('.spinner')
     if spinnerExists.length == 0
       spinner = $("""<img src="#{imgPath}" class="spinner" />""")
-      spinner.css {
-        display: "none"
-        position: "absolute"
-        top: "0px"
-        right: "0px"
-      }
       $(document).find('body').append(spinner)
       return spinner
     return spinnerExists

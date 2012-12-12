@@ -688,7 +688,8 @@ jQuery(document).ready(function($) {
         el.find('ul.nav-pills a').parent('li').removeClass('active');
         $(evt.target).parent('li').addClass('active');
         el.find('div.minipanel').hide();
-        return el.find(target_element).show();
+        el.find(target_element).show();
+        return false;
       });
       el.find('.trigger').click(function() {
         var optsp;
@@ -707,8 +708,7 @@ jQuery(document).ready(function($) {
         store_val = $(e.target).val();
         DSt.set('kursadict-select-langpair', store_val);
         return true;
-      });
-      el.find('form').submit(function() {
+      }).find('form').submit(function() {
         var optsp;
         optsp = el.find('div.option_panel');
         optsp.toggle();
@@ -739,12 +739,6 @@ jQuery(document).ready(function($) {
     spinnerExists = $(document).find('.spinner');
     if (spinnerExists.length === 0) {
       spinner = $("<img src=\"" + imgPath + "\" class=\"spinner\" />");
-      spinner.css({
-        display: "none",
-        position: "absolute",
-        top: "0px",
-        right: "0px"
-      });
       $(document).find('body').append(spinner);
       return spinner;
     }
