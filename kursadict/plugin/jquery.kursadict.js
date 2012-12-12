@@ -873,7 +873,7 @@ jQuery(document).ready(function($) {
     var langpair, lookup_string, post_data, result_elem, source_lang, target_lang,
       _this = this;
     result_elem = $(document).find(opts.formResults);
-    string = $.trim(string);
+    string = $.trim(string).replace(/\b[-.,()&$#!\[\]{}"]+\B|\B[-.,()&$#!\[\]{}"]+\b/g, "");
     if ((string.length > 60) || (string.search(' ') > -1)) {
       return false;
     }

@@ -281,7 +281,9 @@ jQuery(document).ready ($) ->
   lookupSelectEvent = (evt, string, element, index, opts) ->
     result_elem = $(document).find(opts.formResults)
 
-    string = $.trim(string)
+    # Remove punctuation, some browsers select it by default with double
+    # click
+    string = $.trim(string).replace(/\b[-.,()&$#!\[\]{}"]+\B|\B[-.,()&$#!\[\]{}"]+\b/g, "")
 
     if (string.length > 60) or (string.search(' ') > -1)
       return false
