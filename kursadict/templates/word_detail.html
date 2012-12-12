@@ -1,64 +1,67 @@
 {% extends 'base.html' %}
+
+{% block left %}
+    {%- if result.analyses %}
+        <strong>{{ result.input }} is a possible form of ... </strong>
+        <dl>
+        {% for form, pos, tag in result.analyses %}
+            <dt><a href="{{ form|urlencode }}.html">{{ form }}</a></dt>
+            <dd>{{ tag }}</dd>
+        {%- endfor -%}
+        </dl>
+    {%- endif -%}
+{% endblock %}
+
+{% block placeholder %}
+    {{ user_input }}
+{% endblock %}
+
 {% block content %}
 
-<div class="row">
+    {% for lexeme in result.lexicon %}
+        <div class="row">
+        {% if lexeme.entries %}
+            <div class="span">
+            <p class="lead">{{ lexeme.input[0] }} ({{ lexeme.input[1] }}) </p>
 
-    <div class="span6">
+            {% for tg in lexeme.entries.lookups %}
+                <ul>
+                    {% for mg in tg.meaningGroups %}
+                        <li>
+                        {%- for txl in mg.translations -%}
+                        {{ txl }}{%- if not loop.last %}, {% endif -%}
+                        {%- endfor -%}
+                        {%- if mg.examples -%}
+                        <br />
+                        <br />
+                        <blockquote>
+                        <dl>
+                            {%- for from, to in mg.examples %}
+                            <dt>{{ from }}</dt>
+                            <dd>{{ to }}</dd>
+                            {%- endfor %}
+                        </dl>
+                        </blockquote>
+                        {% endif -%}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+            </div>
 
-
-        {% for lexeme in result.lexicon %}
-            <br />
-            {% if lexeme.entries %}
-            <h4>{{ lexeme.input[0] }} ({{ lexeme.input[1] }}) </h4>
-            {% if lexeme.paradigms %}
-                <h5> {%- for lemma, tag, form in lexeme.paradigms -%}
-                      {{ '/'.join(form) }} {%- if not loop.last %}, {% endif -%}
+            <div class="span2">
+                {% if lexeme.paradigms %}
+                    <dl class="dl-horizontal">
+                    {%- for lemma, tag, form in lexeme.paradigms -%}
+                        <dt>{{ ' '.join(tag) }}</dt>
+                        <dd>{{ '/'.join(form) }}</dd>
                     {%- endfor -%}
-                </h5>
-            {% endif %}
-            
-            </h4>
-                {% for tg in lexeme.entries.lookups %}
-                        <ul>
-                        {% for mg in tg.meaningGroups %}
-                            <li>
-                            {%- for txl in mg.translations -%}
-                            {{ txl }}{%- if not loop.last %}, {% endif -%}
-                            {%- endfor -%}
-                            {%- if mg.examples -%}
-                            <dl>
-                                {%- for from, to in mg.examples %}
-                                <dt>{{ from }}</dt>
-                                <dd>{{ to }}</dd>
-                                {%- endfor %}
-                            </dl>
-                            {% endif -%}
-                            </li>
-                        {% endfor %}
-                        </ul>
-                {% endfor %}
-            {% endif %}
-
-        {% endfor %}
-
+                    </dl>
+                {% endif %}
+            </div>
+        {% endif %}
     </div>
-
-    <div class="span2">
-
-        {%- if result.analyses %}
-            <h4>{{ result.input }} is a possible form of ... </h4>
-            <dl>
-            {% for form, pos, tag in result.analyses %}
-                <dt><a href="{{ form|urlencode }}.html">{{ form }}</a></dt>
-                <dd>{{ tag }}</dd>
-            {%- endfor -%}
-            </dl>
-        {%- endif -%}
-
-    </div>
-
-
-</div>
+    {% endfor %}
 
 {% endblock %}
 

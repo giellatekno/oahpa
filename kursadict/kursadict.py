@@ -519,7 +519,7 @@ def wordDetail(from_language, to_language, wordform, format):
         })
         return result
     elif format == 'html':
-        return render_template('word_detail.html', result=detailed_result)
+        return render_template('word_detail.html', result=detailed_result, user_input=user_input)
 
 @app.route('/kursadict/notify/<from_language>/<to_language>/<wordform>.html',
            methods=['GET'])
@@ -669,6 +669,14 @@ def wordDetailDocs():
     from cgi import escape
     _lookup_doc = escape(wordDetail.__doc__)
     return '<html><body><pre>%s</pre></body></html>' % _lookup_doc
+
+##
+## Public pages
+##
+
+@app.route('/kursadict/', methods=['GET'])
+def index():
+    return render_template('index')
 
 
 ##
