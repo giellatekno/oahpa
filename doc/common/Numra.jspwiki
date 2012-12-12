@@ -1,4 +1,6 @@
-!!!Documentation for programmers
+Documentation for programmers
+
+!!!Class inheritance structure
 
 The class inheritance structure for Numra, Klokka and Dato is the same in both the classes in smadrill.game and smadrill.forms, with the classes getting progressively simpler, where Dato is the simplest. 
 
@@ -64,10 +66,11 @@ The transducers behind numra are (where $LANG is the iso code for your language)
 
 The files governing the four programs are ''num.html, num_ord.html, clock.html, date.html''. These files are found here:
 
-* for sme: ''ped/oahpa/drill/templates/''
+* for sme, smn, sjd, rus: ''ped/OAHPA/drill/templates/'', where 
+** OAHPA = univ_oahpa, smn_oahpa, sjd_oahpa, rus_oahpa, respectively (in $GTHOME/ped/ )
 * for sma and other languages: ''pedversions/smaoahpa/smadrill/templates/''
 
-These files refer to the fsts via the working smaoahpa catalogue on victorio, in the catalogue {{gtsvn/gt/sma/bin/}}.
+These files refer to the fsts on victorio, in the opt catalogue there.
 
 !!!Documentation of the content production
 
@@ -76,25 +79,37 @@ These files refer to the fsts via the working smaoahpa catalogue on victorio, in
 
 !!!The different types of Numra
 
-There are four different subprograms.
+There are four different subprograms, each with its transducers in the opt catalogue.
 
-!!Numra cardinal
+!! The transducers
 
-* $LANG-num.fst
-* $LANG-inum.fst
-
-!!Numra ordinal
+!Numra cardinal
 
 * $LANG-num.fst
 * $LANG-inum.fst
 
-!!Numra clock
+!Numra ordinal
+
+* $LANG-num.fst
+* $LANG-inum.fst
+
+!Numra clock
 
 * clock-$LANG.fst
 * iclock-lang.fst
 
-!!Numra date
+!Numra date
 
 * clock-$LANG.fst
 * iclock-lang.fst
+
+!! The source files
+The source files are in $LANG/src/translations/*.lexc for newinfra, in gt/sme/src/ and st/LANG/src for the old ones.
+
+!!!Documenting +Use/NG and +Use/NA
+
+tbw.
+
+Note especially $GTLANG/gt/Makefile; it seems +Use/NA has no function (it removes all strings).
+
 
