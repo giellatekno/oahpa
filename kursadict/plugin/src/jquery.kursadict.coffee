@@ -99,7 +99,7 @@ jQuery(document).ready ($) ->
         DSt.set('kursadict-select-langpair', store_val)
         return true
 
-      .find('form').submit () ->
+      el.find('form').submit () ->
         optsp = el.find('div.option_panel')
         optsp.toggle()
         el.find('a.close').toggle()
@@ -180,7 +180,7 @@ jQuery(document).ready ($) ->
       if last[0] != ""
         return baseOffset - last[0].length
       else
-      	return baseOffset
+        return baseOffset
     else
       return baseOffset
 
@@ -231,7 +231,7 @@ jQuery(document).ready ($) ->
         if lookup.right.length > 1
           clean_right = []
           for r, i in lookup.right
-          	clean_right.push "#{i+1}. #{r}"
+            clean_right.push "#{i+1}. #{r}"
           right = clean_right.join(', ')
         else
           right = lookup.right[0]
@@ -257,7 +257,7 @@ jQuery(document).ready ($) ->
           if _tooltipTarget[0].offsetLeft < 125
             'right'
           else
-          	'bottom'
+            'bottom'
         trigger: 'hover'
       
       # Done
@@ -266,14 +266,14 @@ jQuery(document).ready ($) ->
       # Remove selection
       if window.getSelection
         # Chrome
-      	if window.getSelection().empty
-      	  window.getSelection().empty()
-      	# Firefox
-      	else if window.getSelection().removeAllRanges
+        if window.getSelection().empty
+          window.getSelection().empty()
+        # Firefox
+        else if window.getSelection().removeAllRanges
           window.getSelection().removeAllRanges()
       # IE
       else if document.selection
-      	document.selection.empty()
+        document.selection.empty()
 
 
 
@@ -307,8 +307,8 @@ jQuery(document).ready ($) ->
           }
           cleanTooltipResponse(selection, response, opts)
           if document.selection
-          	console.log "document.selection!"
-          	document.selection.empty()
+            console.log "document.selection!"
+            document.selection.empty()
 
 
 

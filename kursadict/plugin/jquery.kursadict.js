@@ -708,7 +708,8 @@ jQuery(document).ready(function($) {
         store_val = $(e.target).val();
         DSt.set('kursadict-select-langpair', store_val);
         return true;
-      }).find('form').submit(function() {
+      });
+      el.find('form').submit(function() {
         var optsp;
         optsp = el.find('div.option_panel');
         optsp.toggle();
