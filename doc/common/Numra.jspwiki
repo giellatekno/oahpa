@@ -108,8 +108,12 @@ The source files are in $LANG/src/translations/*.lexc for newinfra, in gt/sme/sr
 
 !!!Documenting +Use/NG and +Use/NA
 
-tbw.
+* +Use/NG  = not-generate, for ped generation isme-ped.fst                                                                    
+* +Use/NA  = not-analyse, for restricting analyses needed for MT generation not to pop up elsewhere  
 
+Thus, we should restrict the +Use/NA flag to strings we do not want in Oahpa...
+
+But this is not how it is used.            
 Note especially $GTLANG/gt/Makefile; it seems +Use/NA has no function (it removes all strings).
 
 
