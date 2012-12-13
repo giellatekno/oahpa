@@ -1,0 +1,39 @@
+Features to develop at some point:
+
+ * added a copy of lookupserv.py, with some tweaks to generalize it for
+   any lookup process. This will speed up lookups tons, since the
+   slowest part is the process starting up. If each Morphology class had
+   its own lookupserv that was automatically launched with the main
+   service, things will go a lot faster. It may be there is a better way
+   to do subprocesses for an application like this, but for now this
+   will work. any improvements will just be drop-in replacements.
+
+
+Server errors: 
+
+ * eaktodáhtolaš
+ * orru + N? -
+   http://testing.oahpa.no/kursadict/detail/sme/nob/orru.html
+
+ * G3 generation
+
+
+== 
+
+Neste stigar
+
+1. implementer plugin i kursa
+2. url-basert  sti for å installera heller iframe eller noko anna via proxy
+3. plugin for forskjellige nettlesere: chrome, firefox
+4. forsida som macdict
+
+--
+
+Språkpar:
+* sme<->nob
+* sme<->fin 
+* sma<->nob (NB: eigen FST til sma-ordboka)
+* sme<->eng (må lages først i apertiumformat)
+* kom<->eng/fin/rus (words/dicts/kom2X/src + analysator: langs/kpv/
+* myv<->fin
+
