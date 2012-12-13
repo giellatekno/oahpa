@@ -8,6 +8,9 @@ Features to develop at some point:
    process take up more memory. Maybe should provide an individual
    process for each language pair? Should be easy to split off new
    processes by pair/endpoint. Note also werkzeug DispatcherMiddleware
+   and PathDispatcher: http://flask.pocoo.org/docs/patterns/appdispatch/
+
+
 
  * added a copy of lookupserv.py, with some tweaks to generalize it for
    any lookup process. This will speed up lookups tons, since the
