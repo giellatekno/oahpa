@@ -4,137 +4,6 @@
 Morphological tools
 """
 
-# TODO: from yaml FSTs = settings.FSTs
-
-def lookupInFST(lookups_list,
-                fstfile,
-                decodeOutput=False):
-    """ Send the lookup string(s) to an external FST process. Kill the process
-    after 5 seconds if no response seems to be coming.
-    """
-
-    import subprocess
-    from threading import Timer
-
-    lookup_string = '\n'.join(lookups_list)
-
-    gen_norm_command = ' '.join([LOOKUP_TOOL, fstfile])
-    gen_norm_command = gen_norm_command.split(' ')
-
-    lookup_proc = subprocess.Popen(gen_norm_command,
-                                   stdin=subprocess.PIPE,
-                                   stdout=subprocess.PIPE,
-                                   stderr=subprocess.PIPE)
-
-    def kill_proc(proc=lookup_proc):
-        try:
-            proc.kill()
-            _cmdError = ''.join(gen_norm_command)
-            raise Http404("Process for %s took too long." % _cmdError)
-        except OSError:
-            pass
-        return
-
-    t = Timer(5, kill_proc)
-    t.start()
-
-    output, err = lookup_proc.communicate(lookup_string)
-
-    if decodeOutput:
-        output = output.decode('utf-8')
-
-    return cleanLookupsXFST(output)
-
-
-def lemmatizer(language_iso, lookup_string):
-    """ Given a language code and lookup string, returns a list of lemma
-    strings, repeats will not be repeated.
-    """
-    fstfile = FSTs.get(language_iso, False)
-    if not fstfile:
-        print "No FST for language."
-        return False
-
-    if isinstance(lookup_string, unicode):
-        lookup_string = lookup_string.encode('utf-8')
-
-    results = lookupInFST([lookup_string], fstfile)
-
-    lemmas = set()
-
-    for _input, analyses in results:
-        for analysis in analyses:
-            lemma, _, tag = analysis.partition('+')
-            lemmas.add(lemma.decode('utf-8'))
-
-    return list(lemmas)
-
-def lemmatizeWithTags(language_iso, lookup_string):
-    """ Given a language code and lookup string, returns a list of lemma
-    strings, repeats will not be repeated.
-    """
-    fstfile = FSTs.get(language_iso, False)
-    if not fstfile:
-        print "No FST for language."
-        return False
-
-    if isinstance(lookup_string, unicode):
-        lookup_string = lookup_string.encode('utf-8')
-
-    results = lookupInFST([lookup_string], fstfile)
-
-    lemmas = dict()
-
-    for _input, analyses in results:
-        for analysis in analyses:
-            lemma, _, tag = analysis.partition('+')
-            if not lemma.decode('utf-8') in lemmas:
-                lemmas[lemma.decode('utf-8')] = set([tag])
-            else:
-                lemmas[lemma.decode('utf-8')].add(tag)
-
-    return lemmas
-
-def generateFromList(language_iso, lookup_strings):
-    fstfile = FSTs.get(language_iso + '_gen', False)
-    lookup_strings = map(encodeOrFail, lookup_strings)
-    if not fstfile:
-        print "No FST for language."
-        return False
-
-    results = lookupInFST(lookup_strings, fstfile, decodeOutput=True)
-
-    return results
-
-def cleanLookupsXFST(lookup_string):
-    """
-        Clean XFST lookup text into
-
-        [('keenaa', ['keen+V+1Sg+Ind+Pres', 'keen+V+3SgM+Ind+Pres']),
-         ('keentaa', ['keen+V+2Sg+Ind+Pres', 'keen+V+3SgF+Ind+Pres'])]
-
-    """
-
-    analysis_chunks = [a for a in lookup_string.split('\n\n') if a.strip()]
-
-    cleaned = []
-    for chunk in analysis_chunks:
-        lemmas = []
-        analyses = []
-
-        for part in chunk.split('\n'):
-            lemma, _, analysis = part.partition('\t')
-            lemmas.append(lemma)
-            analyses.append(analysis)
-
-        lemma = list(set(lemmas))[0]
-
-        append_ = (lemma, analyses)
-
-        cleaned.append(append_)
-
-    return cleaned
-
 class XFST(object):
 
     def splitTagByCompound(self, analysis):
@@ -427,27 +296,9 @@ class Morphology(object):
 
 
 def examples():
-    xfst = XFST(lookup_tool='/Users/pyry/bin/lookup',
-                fst_file='/Users/pyry/somorph-priv.git/bin/som.fst',
-                ifst_file='/Users/pyry/somorph-priv.git/bin/isom.fst')
-
-    som = xfst >> Morphology('som')
-
-    print ' -- som --'
-    print ' wanaagsan: '
-    for a in som.lemmatize('wanaagsan'):
-        print '  ' + a
-
-    print ' keen'
-    generate = som.generate('keen', [['V', 'Inf'],
-                                ['V', '1Sg', 'Ind', 'Past'],
-                                ['V', '2Sg', 'Ind', 'Past']])
-    for lem, tag, forms in generate:
-        for form in forms:
-            print '  ' + ' '.join(tag) + ' => ' + form
+    # TODO: make this into tests
 
     obt = OBT('/Users/pyry/gtsvn/st/nob/obt/bin/mtag-osx64')
-
 
     nob = obt >> Morphology('nob')
     print
@@ -486,14 +337,6 @@ def examples():
     for a in sme.analyze(u'gullot'):
         print '  %s	%s	%s' % (a[0], a[1], '+'.join(a[2]))
 
-def examples():
-    smexfst = XFST(lookup_tool='/Users/pyry/bin/lookup',
-                   fst_file='/Users/pyry/gtsvn/gt/sme/bin/sme.fst',
-                   ifst_file='/Users/pyry/gtsvn/gt/sme/bin/isme.fst',
-                   options={'compoundBoundary': "+Cmp#"})
-
-    sme = smexfst >> Morphology('sme')
-
     print ' -- analyze with compounds -- '
     for a in sme.analyze(u'juovlaspábbačiekčangilvu', split_compounds=True):
         print '  %s	%s	%s' % (a[0], a[1], '+'.join(a[2]))
@@ -501,7 +344,6 @@ def examples():
     print ' -- analyze -- '
     for a in sme.analyze(u'juovlaspábbačiekčangilvu'):
         print '  %s	%s	%s' % (a[0], a[1], '+'.join(a[2]))
-    raw_input()
 
     print
     print ' -- sme --'
