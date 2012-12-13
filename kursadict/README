@@ -1,0 +1,46 @@
+# Vuosttaš neahttasánit server process
+
+## Overview
+
+A service using the [Flask][1] framework to serve up dictionary entries
+using XML lexica and morphological analyzer services. Returns data in
+JSON, and some HTML.
+
+ [1]: http://flask.pocoo.org/
+
+## Installing
+
+Use virtualenv to create an environment with requirements.txt, and set
+up a webserver to direct requests to kursadict.py.
+
+## Developing
+
+### TODOs
+
+See `TODOs`.
+
+### Modules
+
+#### kursadict.py 
+
+Contains functions for views and endpoints. This is where some of the
+magic happens.
+
+#### config.py
+
+Contains a class for loading and validating configs.
+
+#### morphology.py
+
+Contains tools for handling morphological analysis, generation and
+lemmatization and other things via external processes. Some configs
+are specified in app.config.yaml
+
+#### crossdomain.py 
+
+### Other important things
+
+#### templates/
+
+Format is Jinja2.
+

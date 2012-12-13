@@ -1,5 +1,14 @@
 Features to develop at some point:
 
+ * Use something other than werkzeug's default cache, once things are
+   ready for actual use.
+
+ * lxml loading of trees is slow-- but queries are fast, however
+   additional dictionaries slow things down a bit and naturally make one
+   process take up more memory. Maybe should provide an individual
+   process for each language pair? Should be easy to split off new
+   processes by pair/endpoint. Note also werkzeug DispatcherMiddleware
+
  * added a copy of lookupserv.py, with some tweaks to generalize it for
    any lookup process. This will speed up lookups tons, since the
    slowest part is the process starting up. If each Morphology class had
