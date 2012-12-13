@@ -137,6 +137,13 @@ def cleanLookupsXFST(lookup_string):
 
 class XFST(object):
 
+    def splitTagByCompound(self, analysis):
+        _cmp =  self.options.get('compoundBoundary', False)
+        if _cmp:
+            return analysis.split(_cmp)
+        else:
+            return [analysis]
+
     def clean(self, _output):
         """
             Clean XFST lookup text into
@@ -166,6 +173,7 @@ class XFST(object):
 
         return cleaned
 
+    # TODO: need to cache eeeeeeeeeeeeverything.
     def _exec(self, _input, cmd, timeout=5):
         """ Execute a process, but kill it after 5 seconds. Generally
         we expect small things here, not big things.
@@ -205,8 +213,9 @@ class XFST(object):
 
         return (output, err)
 
-    def __init__(self, lookup_tool, fst_file, ifst_file=False):
+    def __init__(self, lookup_tool, fst_file, ifst_file=False, options={}):
         self.cmd = "%s -flags mbTT %s" % (lookup_tool, fst_file)
+        self.options = {'compoundBoundary': "+Cmp#"}
 
         if ifst_file:
             self.icmd = "%s -flags mbTT %s" % (lookup_tool, ifst_file)
@@ -301,8 +310,9 @@ class OBT(XFST):
     def splitAnalysis(self, analysis):
         return analysis.split(' ')
 
-    def __init__(self, lookup_tool):
+    def __init__(self, lookup_tool, options={}):
         self.cmd = lookup_tool
+        self.options = options
 
 
 class Morphology(object):
@@ -349,18 +359,28 @@ class Morphology(object):
         return reformatted
 
 
-    def lemmatize(self, form):
+    def lemmatize(self, form, split_compounds=False):
         """ For a wordform, return a list of lemmas
         """
         lookups = self.tool.lookup([form])
-        lemmas = set()
-        for _form, analyses in lookups:
-            for analysis in analyses:
-                lemmas.add(self.tool.splitAnalysis(analysis)[0])
+        if split_compounds:
+            lemmas = []
+            for _form, analyses in lookups:
+                decompounded = sum(map(self.tool.splitTagByCompound, analyses), [])
+                for analysis in decompounded:
+                    _lem = self.tool.splitAnalysis(analysis)[0]
+                    if _lem not in lemmas:
+                        lemmas.append(_lem)
+        else:
+            lemmas = set()
+            for _form, analyses in lookups:
+                for analysis in analyses:
+                    lemmas.add(self.tool.splitAnalysis(analysis)[0])
+            lemmas = list(lemmas)
 
-        return list(lemmas)
+        return lemmas
 
-    def analyze(self, form):
+    def analyze(self, form, split_compounds=False):
         """ For a wordform, return a list of lemmas and analyses
             Return in form of:
             [(form, lemma, ['Verb', 'Inf']),
@@ -371,17 +391,34 @@ class Morphology(object):
 
         unknown = False
         cleaned = []
-        for _input, tags in lookups:
-            for tag in tags:
-                # TODO: how does OBT handle unknown?
-                if '+?' in tag:
-                    unknown = True
-                    cleaned.append((_input, '?', '?'))
-                else:
-                    tag = self.tool.splitAnalysis(tag)
-                    lemma = tag[0]
-                    _tag = self.cleanTag(tag[1::])
-                    cleaned.append((_input, lemma, _tag))
+        if split_compounds:
+            for _input, tags in lookups:
+                for tag in tags:
+                    # TODO: how does OBT handle unknown?
+                    if '+?' in tag:
+                        unknown = True
+                        cleaned.append((_input, '?', '?'))
+                    else:
+                        decompounded = self.tool.splitTagByCompound(tag)
+                        for analysis in decompounded:
+                            _t = self.tool.splitAnalysis(analysis)
+                            lemma = _t[0]
+                            _tag = self.cleanTag(_t[1::])
+                            _new = (_input, lemma, _tag)
+                            if _new not in cleaned:
+                                cleaned.append(_new)
+        else:
+            for _input, tags in lookups:
+                for tag in tags:
+                    # TODO: how does OBT handle unknown?
+                    if '+?' in tag:
+                        unknown = True
+                        cleaned.append((_input, '?', '?'))
+                    else:
+                        tag = self.tool.splitAnalysis(tag)
+                        lemma = tag[0]
+                        _tag = self.cleanTag(tag[1::])
+                        cleaned.append((_input, lemma, _tag))
 
         return cleaned
 
@@ -447,6 +484,40 @@ def examples():
             print '  ' + ' '.join(tag) + ':   unknown'
 
     for a in sme.analyze(u'gullot'):
+        print '  %s	%s	%s' % (a[0], a[1], '+'.join(a[2]))
+
+def examples():
+    smexfst = XFST(lookup_tool='/Users/pyry/bin/lookup',
+                   fst_file='/Users/pyry/gtsvn/gt/sme/bin/sme.fst',
+                   ifst_file='/Users/pyry/gtsvn/gt/sme/bin/isme.fst',
+                   options={'compoundBoundary': "+Cmp#"})
+
+    sme = smexfst >> Morphology('sme')
+
+    print ' -- analyze with compounds -- '
+    for a in sme.analyze(u'juovlaspábbačiekčangilvu', split_compounds=True):
+        print '  %s	%s	%s' % (a[0], a[1], '+'.join(a[2]))
+
+    print ' -- analyze -- '
+    for a in sme.analyze(u'juovlaspábbačiekčangilvu'):
+        print '  %s	%s	%s' % (a[0], a[1], '+'.join(a[2]))
+    raw_input()
+
+    print
+    print ' -- sme --'
+    print ' mánnat: '
+    for a in sme.lemmatize(u'mánnat'):
+        print '  ' + a
+
+    print ' -- lemmatize -- '
+    for a in sme.lemmatize(u'spábbačiekčangilvu'):
+        print '  ' + a
+
+    print ' -- lemmatize with compounds -- '
+    for a in sme.lemmatize(u'juovlaspábbačiekčangilvu', split_compounds=True):
+        print '  ' + a
+    print ' -- lemmatize -- '
+    for a in sme.lemmatize(u'juovlaspábbačiekčangilvu'):
         print '  ' + a
 
 if __name__ == "__main__":

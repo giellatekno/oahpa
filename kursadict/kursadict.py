@@ -300,7 +300,7 @@ def lookupWord(from_language, to_language):
         lemm_ = morphologies.get(from_language, False)
         if lemm_:
             lemmatizer = lemm_.lemmatize
-        lemmatized_lookup_key = lemmatizer(lookup_key)
+        lemmatized_lookup_key = lemmatizer(lookup_key, split_compounds=True)
     else:
         lemmatized_lookup_key = False
 
@@ -403,8 +403,11 @@ def wordDetail(from_language, to_language, wordform, format):
     services using this endpoint will need to make sure to do the conversion.
 
     """
+    import hashlib
 
     user_input = wordform
+    if not format in ['json', 'html']:
+        return "Invalid format. Only json and html allowed."
 
     cache_key = '/detail/%s/%s/%s.%s' % (from_language, to_language, wordform, format)
     wordform = wordform.encode('utf-8')
@@ -427,12 +430,15 @@ def wordDetail(from_language, to_language, wordform, format):
         # All lookups in XML must go through analyzer, because we need POS
         # info for a good lookup.
         morph = morphologies.get(from_language, False)
-        analyzed = morph.analyze(wordform)
+        analyzed = morph.analyze(wordform, split_compounds=True)
+
+        def lemmaLen(a):
+            return len(a[1])
 
         # Collect lemmas and tags
         _result_formOf = []
         if analyzed:
-            for form, lemma, tag in analyzed:
+            for form, lemma, tag in sorted(analyzed, key=lemmaLen, reverse=True):
                 # TODO: try with OBT
                 if lemma == '?' or tag == '?':
                     continue
@@ -446,6 +452,7 @@ def wordDetail(from_language, to_language, wordform, format):
 
         for lemma, pos, tag in _result_formOf:
 
+            print (lemma, pos, tag)
             if (lemma, pos) in _lemma_pos_exists:
                 continue
             # Only look up word when there is a baseform
@@ -475,13 +482,32 @@ def wordDetail(from_language, to_language, wordform, format):
         }
 
         # TODO: generate paradigm from lemma and pos
+        # TODO: ideally the things here need to be going to an external
+        # socket server thing analogous to lookupserv for Oahpa/Sahka.
+        # also, for ease of use it needs to be something that the
+        # Morphology or XFST or OBT classes spawn and keeps track of
+        # For now, just caching things on the hope that this begins to
+        # save time.
+
         for _r in _result_lookups:
             lemma, pos, tag = _r.get('input')
             paradigm = lang_paradigms.get(pos)
             if tag in lang_baseforms.get(pos):
+                _cache_key = hashlib.md5()
+                _cache_key.update('generation-%s-' % from_language)
+                _cache_key.update(lemma.encode('utf-8'))
                 if paradigm:
                     form_tags = [_t.split('+') for _t in paradigm]
-                    _r['paradigms'] = morph.generate(lemma, form_tags)
+                    _cache_tags = '|'.join(['+'.join(a) for a in form_tags]).encode('utf-8')
+                    _cache_key.update(_cache_tags)
+                    hexhash = _cache_key.hexdigest()
+                    _is_cached = cache.get(hexhash)
+                    if _is_cached:
+                        _r['paradigms'] = _is_cached
+                    else:
+                        _generate = morph.generate(lemma, form_tags)
+                        cache.set(hexhash, _generate)
+                        _r['paradigms'] = _generate
                 else:
                     _r['paradigms'] = False
             else:
