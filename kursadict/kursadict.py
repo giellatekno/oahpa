@@ -711,7 +711,7 @@ def wordDetailDocs():
 # TODO: config
 from collections import OrderedDict
 
-language_pairs = OrderedDict([
+language_pair_descriptions = OrderedDict([
     # pair
    (('sme', 'nob'), {
         # internationalized names (must be unicode type)
@@ -732,37 +732,48 @@ language_pairs = OrderedDict([
         'nob': ( u"finsk"   , u"nordsamisk"    ),
     }),
 
-   (('xsme', 'fin'), {
-        'eng': (  u"Northern Sámi", u"Finnish"  ),
-        'nob': (  u"nordsamisk"   , u"finsk"    ),
-    }),
-   (('xfin', 'sme'), {
-        'eng': ( u"Finnish" , u"Northern Sámi" ),
-        'nob': ( u"finsk"   , u"nordsamisk"    ),
-    }),
-
-   (('zsme', 'fin'), {
-        'eng': (  u"Northern Sámi", u"Finnish"  ),
-        'nob': (  u"nordsamisk"   , u"finsk"    ),
-    }),
-   (('zfin', 'sme'), {
-        'eng': ( u"Finnish" , u"Northern Sámi" ),
-        'nob': ( u"finsk"   , u"nordsamisk"    ),
-    }),
-
 ])
 
-# For direct links
-@app.route('/kursadict/<_from>/<_to>/', methods=['GET'])
+# For direct links, form submission.
+@app.route('/kursadict/<_from>/<_to>/', methods=['GET', 'POST'])
 def indexWithLangs(_from, _to):
-    return render_template('index.html', language_pairs=language_pairs, _from=_from, _to=_to)
+    lookup_val = request.form.get('lookup', False)
+
+    if request.method == 'POST' and lookup_val:
+        lemm_ = morphologies.get(_from, False)
+        if lemm_:
+            lemmatizer = lemm_.lemmatize
+        lemmatized_lookup_key = lemmatizer(lookup_val, split_compounds=True)
+
+        if not isinstance(lemmatized_lookup_key, list):
+            lemmatized_lookup_key = [lemmatized_lookup_key]
+
+        results = []
+        for _key in lemmatized_lookup_key:
+            result = lookupXML(_from, _to, _key)
+            result['input'] = _key
+            if len(result['lookups']) == 0:
+                result['lookups'] = False
+            results.append(result)
+
+        results = sorted(results, key=lambda x: len(x['input']), reverse=True)
+    else:
+        results = False
+        user_input = ''
+
+    return render_template('index.html',
+                           language_pairs=language_pair_descriptions,
+                           _from=_from,
+                           _to=_to,
+                           user_input=lookup_val,
+                           word_searches=results)
 
 
 
 @app.route('/kursadict/', methods=['GET'])
 def index():
     # TODO: config langauges
-    return render_template('index.html', language_pairs=language_pairs, _from='sme', _to='nob')
+    return render_template('index.html', language_pairs=language_pair_descriptions, _from='sme', _to='nob')
 
 
 ##

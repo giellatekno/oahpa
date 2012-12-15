@@ -1,4 +1,6 @@
-﻿.navbar {
+/* @override http://localhost:5000/kursadict/static/css/base.css */
+
+.navbar {
     margin-bottom: 40px;
 }
 
@@ -38,10 +40,19 @@ ul.nav-stacked li {
     width: 100%;
 }
 
-ul.nav-stacked li.active {
+ul.nav-stacked li.active a {
     background-color: #0088CC;
     color: #FFF;
+    opacity: 1;
 }
+
+ul.nav-stacked li a:hover, ul.nav-stacked li.active a:hover {
+	background-color: #0088CC;
+	color: #FFF;
+	opacity: 1;
+}
+
+
 
 ul.nav-stacked li.active span {
     color: #FFF;
@@ -57,3 +68,10 @@ content .page-header {
     margin-top: 0px;
 }
 
+div.results, div.results p {
+	font-size: 120%;
+}
+
+div.results ol {
+	margin-left: 2em;
+}

@@ -27,28 +27,49 @@
                 </ul>
             </div>
             <div class="span8">
-                <form id="kursadict" class="form-inline">
+                <h3>{%- for iso_pair, names in language_pairs.iteritems() %}
+                    {% if iso_pair[0] == _from and iso_pair[1] == _to %}
+                    {%- for lang, name in names.iteritems() %}
+                        <span class="lang_name" lang="{{ lang }}">{{ name[0] }} -&gt; {{ name[1] }}</span>
+                    {% endfor -%}
+                    {% endif %}
+                    {% endfor -%}
+                    <span style="font-size: 80%">(<a href="/kursadict/{{ _to }}/{{ _from }}/">⇄ Swap</a>)</span></h3>
+
+                <form id="kursadict" class="form-inline"
+                    method="post"
+                    action="/kursadict/{{ _from }}/{{ _to }}/">
                     <div class="input-append">
-                        <input type="text" name="lookup" placeholder="ohcesátni"></input>
-                        <button type="swap" class="btn" name="switch" class="add-on">⇄</button>
-                        <span class="add-on">sme-&gt;nob</span>
+                        <input type="text" 
+                               name="lookup" 
+                               {% if user_input -%}value="{{ user_input }}"{% endif %}
+                               placeholder="ohcesátni"></input>
                         <button type="submit" class="btn" name="search">Oza</button>
                     </div>
-                    <input type="hidden" name="target_lang" value="smenob"></input>
                 </form>
-                <p>orrut (v) – </p>
-                <ol>
-                    <li>være</li>
-                    <li>bli</li>
-                    <li>bo</li>
-                    <li>synes</li>
-                </ol>
-                <p>mannat (v) —</p>
-                <ol>
-                <li>gå</li>
-                <li>dra</li>
-                <li>reise</li>
-                </ol>
+
+                {% if word_searches %}
+                <div class="results">
+                    {% for lexeme in word_searches %}
+                    {% if lexeme.lookups %}
+
+                        {% for lookup in lexeme.lookups %}
+                        <p><a href="/kursadict/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html">{{ lookup.left }}</a> ({{ lookup.pos }}) – </p>
+                        <ol>
+                            {% for tx in lookup.right %}
+                            <li>{{ tx }}</li>
+                            {% endfor %}
+                        </ol>
+                        {% endfor %}
+
+                    {% else %}
+                        <p>Ukjent ord: {{ lexeme.input }}</l>
+                    {% endif %}
+
+                    {% endfor %}
+                    
+                </div>
+                {% endif %}
             </div>
             
         </div>
