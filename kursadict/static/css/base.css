@@ -1,0 +1,59 @@
+﻿.navbar {
+    margin-bottom: 40px;
+}
+
+content {
+    display: block;
+    min-height: 425px;
+}
+
+footer {
+    background-color: #BBB;
+    border-top: 1px solid #888;
+    position: relative;
+    bottom: 0;
+    height: 150px;
+}
+
+#uitlogo {
+    position: relative;
+    margin: 0 auto;
+}
+
+footer .inline {
+    display: block;
+    list-style-type: "none";
+    margin: 0 auto;
+    position: relative;
+    vertical-align: middle;
+    width: 100px;
+}
+
+footer .inline li {
+    display: table-cell;
+    padding-right: 5px;
+}
+
+ul.nav-stacked li {
+    width: 100%;
+}
+
+ul.nav-stacked li.active {
+    background-color: #0088CC;
+    color: #FFF;
+}
+
+ul.nav-stacked li.active span {
+    color: #FFF;
+}
+
+/* Example lang attribute selections */
+
+.lang_name:lang(eng) {
+    display: none;
+}
+
+content .page-header {
+    margin-top: 0px;
+}
+

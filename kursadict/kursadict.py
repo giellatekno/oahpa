@@ -97,6 +97,7 @@ class XMLDict(object):
     """
     def __init__(self, filename=False, tree=False):
         if not tree:
+            print "parsing %s" % filename
             self.tree = etree.parse(filename)
         else:
             self.tree = tree
@@ -110,6 +111,7 @@ class XMLDict(object):
         return {'left': left_text, 'pos': left_pos, 'right': right_text}
 
     def XPath(self, query):
+        print "Querying: %s" % query
         return map(self.cleanEntry, self.tree.xpath(query))
 
     def lookupLemmaStartsWith(self, lemma):
@@ -177,16 +179,25 @@ class ReverseLookups(XMLDict):
         return self.XPath(_xpath % lemma)
 
     def lookupLemmaPOS(self, lemma, pos):
-        _xpath = './/e[mg/tg/t/text() = "%s" and @usage = "vd" and not(@reverse) and mg/tg/t/@pos = "%s"]'
-        _xpath = _xpath % (lemma, pos.lower())
+        _xpath = ' and '.join(
+            [ './/e[mg/tg/t/text() = "%s"' % lemma
+            , '@usage = "vd"'
+            , 'not(@reverse)'
+            , 'mg/tg/t/@pos = "%s"]' % pos.lower()
+            ]
+        )
         return self.XPath(_xpath)
 
 
-language_pairs = dict([ (k, XMLDict(filename=v))
-                         for k, v in settings.dictionaries.iteritems() ])
+language_pairs = dict(
+    [ (k, XMLDict(filename=v))
+      for k, v in settings.dictionaries.iteritems() ]
+)
 
-reverse_language_pairs = dict([ ((k[1], k[0]), ReverseLookups(filename=v))
-                              for k, v in settings.reversable_dictionaries.iteritems() ])
+reverse_language_pairs = dict(
+    [ ((k[1], k[0]), ReverseLookups(filename=v))
+      for k, v in settings.reversable_dictionaries.iteritems() ]
+)
 
 language_pairs.update(reverse_language_pairs)
 
@@ -369,7 +380,6 @@ def lookupWord(from_language, to_language):
 
     app.logger.info('%s\t%s\t%s\t%s' % (user_input, str(success), result_lemmas, meanings))
 
-    print results
     return json.dumps({
         'result': results,
         'success': success
@@ -452,7 +462,6 @@ def wordDetail(from_language, to_language, wordform, format):
 
         for lemma, pos, tag in _result_formOf:
 
-            print (lemma, pos, tag)
             if (lemma, pos) in _lemma_pos_exists:
                 continue
             # Only look up word when there is a baseform
@@ -699,10 +708,61 @@ def wordDetailDocs():
 ##
 ## Public pages
 ##
+# TODO: config
+from collections import OrderedDict
+
+language_pairs = OrderedDict([
+    # pair
+   (('sme', 'nob'), {
+        # internationalized names (must be unicode type)
+        'eng': (u"Northern Sámi", u"Norwegian (Bokmål)"),
+        'nob': (u"nordsamisk", u"norsk (bokmål)"),
+    }),
+   (('nob', 'sme'), {
+        'eng': (  u"Norwegian (Bokmål)", u"Northern Sámi"  ),
+        'nob': (  u"norsk (bokmål)"    , u"nordsamisk"     ),
+    }),
+
+   (('sme', 'fin'), {
+        'eng': (  u"Northern Sámi", u"Finnish"  ),
+        'nob': (  u"nordsamisk"   , u"finsk"    ),
+    }),
+   (('fin', 'sme'), {
+        'eng': ( u"Finnish" , u"Northern Sámi" ),
+        'nob': ( u"finsk"   , u"nordsamisk"    ),
+    }),
+
+   (('xsme', 'fin'), {
+        'eng': (  u"Northern Sámi", u"Finnish"  ),
+        'nob': (  u"nordsamisk"   , u"finsk"    ),
+    }),
+   (('xfin', 'sme'), {
+        'eng': ( u"Finnish" , u"Northern Sámi" ),
+        'nob': ( u"finsk"   , u"nordsamisk"    ),
+    }),
+
+   (('zsme', 'fin'), {
+        'eng': (  u"Northern Sámi", u"Finnish"  ),
+        'nob': (  u"nordsamisk"   , u"finsk"    ),
+    }),
+   (('zfin', 'sme'), {
+        'eng': ( u"Finnish" , u"Northern Sámi" ),
+        'nob': ( u"finsk"   , u"nordsamisk"    ),
+    }),
+
+])
+
+# For direct links
+@app.route('/kursadict/<_from>/<_to>/', methods=['GET'])
+def indexWithLangs(_from, _to):
+    return render_template('index.html', language_pairs=language_pairs, _from=_from, _to=_to)
+
+
 
 @app.route('/kursadict/', methods=['GET'])
 def index():
-    return render_template('index')
+    # TODO: config langauges
+    return render_template('index.html', language_pairs=language_pairs, _from='sme', _to='nob')
 
 
 ##

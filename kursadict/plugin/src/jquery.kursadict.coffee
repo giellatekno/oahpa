@@ -339,11 +339,17 @@ jQuery(document).ready ($) ->
       if evt.altKey
         lookupSelectEvent(evt, string, element, index, opts)
       # TODO: one idea for how to handle lookups wtihout alt/option key
+      # May need to just do a doubleclick like this:
+      # https://gist.github.com/399624
+      #
       # else
-      #   window.optTab.find('.well').addClass('highlight')
-      #   window.optTab.find('.well a.open').click (o) =>
-      #     lookupSelectEvent(evt, string, element, index, opts)
-      #     return false
+      #   if string != ''
+      #     window.optTab.find('.well').addClass('highlight')
+      #     window.optTab.find('.well a.open').click (o) =>
+      #       lookupSelectEvent(evt, string, element, index, opts)
+      #       return false
+      #   else
+      #     window.optTab.find('.well').removeClass('highlight')
       return false
     
     clean = (event) ->

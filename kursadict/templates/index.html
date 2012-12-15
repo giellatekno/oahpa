@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block search_li %}
+{% endblock %}
+
+{% block search_li_form %}
+{% endblock %}
+
+    <!--
+        <p>A web-based, open-sourced dictionary that analyzes what you
+            type to give more meaningful results.</p>
+        -->
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="span4">
+                <ul class="nav nav-tabs nav-stacked">
+                {% for iso_pair, names in language_pairs.iteritems() %}
+                    <li class="{%- if iso_pair[0] == _from and iso_pair[1] == _to %}active{% endif -%}">
+                        <a href="/kursadict/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
+                        {% for lang, name in names.iteritems() %}
+                            <span class="lang_name" lang="{{ lang }}">{{ name[0] }} ↔ {{ name[1] }}</span>
+                        {% endfor %}
+                        </a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div class="span8">
+                <form id="kursadict" class="form-inline">
+                    <div class="input-append">
+                        <input type="text" name="lookup" placeholder="ohcesátni"></input>
+                        <button type="swap" class="btn" name="switch" class="add-on">⇄</button>
+                        <span class="add-on">sme-&gt;nob</span>
+                        <button type="submit" class="btn" name="search">Oza</button>
+                    </div>
+                    <input type="hidden" name="target_lang" value="smenob"></input>
+                </form>
+                <p>orrut (v) – </p>
+                <ol>
+                    <li>være</li>
+                    <li>bli</li>
+                    <li>bo</li>
+                    <li>synes</li>
+                </ol>
+                <p>mannat (v) —</p>
+                <ol>
+                <li>gå</li>
+                <li>dra</li>
+                <li>reise</li>
+                </ol>
+            </div>
+            
+        </div>
+
+<!--
+    <div class="container">
+        <br />
+        <br />
+        <br />
+        <hr class="soften">
+        <div class="marketing">
+            <div class="row-fluid">
+                <div class="span4">
+                <h1>Open source, open data</h1>
+                <p class="marketing-byline">Built on data you can use,
+                    and with an open API for word information, and
+                    linguistic tools.</p>
+                </div>
+                <div class="span4">
+                <h1>Open source, open data</h1>
+                <p class="marketing-byline">Built on data you can use,
+                    and with an open API for word information, and
+                    linguistic tools.</p>
+                </div>
+                <div class="span4">
+                <h1>Open source, open data</h1>
+                <p class="marketing-byline">Built on data you can use,
+                    and with an open API for word information, and
+                    linguistic tools.</p>
+                </div>
+            </div>
+        </div>
+-->
+    </div>
+
+    </div>
+    <br />
+{% endblock %}

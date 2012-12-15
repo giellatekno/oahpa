@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block extra_css %}
+<link href="{{url_for('static', filename='css/detail.css')}}" rel="stylesheet" />
+{% endblock %}
+
 {% block left %}
     {%- if result.analyses %}
         <strong>{{ result.input }} is a possible form of ... </strong>
@@ -16,16 +20,16 @@
     {{ user_input }}
 {% endblock %}
 
-{% block content %}
+{% block content_right %}
 
     {% for lexeme in result.lexicon %}
-        <div class="row">
+    <div class="row">
         {% if lexeme.entries %}
             <div class="span">
             <p class="lead">{{ lexeme.input[0] }} ({{ lexeme.input[1] }}) </p>
 
             {% for tg in lexeme.entries.lookups %}
-                <ul>
+                <ul class="meanings">
                     {% for mg in tg.meaningGroups %}
                         <li>
                         {%- for txl in mg.translations -%}
@@ -34,7 +38,7 @@
                         {%- if mg.examples -%}
                         <br />
                         <br />
-                        <blockquote>
+                        <blockquote class="examples">
                         <dl>
                             {%- for from, to in mg.examples %}
                             <dt>{{ from }}</dt>

@@ -1,15 +1,23 @@
+Now: 
+
+ * index page
+ * search and autocomplete
+ * direct links to language-pairs
+
+
 Features to develop at some point:
+
+ * Levenshtein difference for words that don't turn up lexical entries?
+   e.g., manna -> mánná 
 
  * Use something other than werkzeug's default cache, once things are
    ready for actual use.
 
- * lxml loading of trees is slow-- but queries are fast, however
-   additional dictionaries slow things down a bit and naturally make one
-   process take up more memory. Maybe should provide an individual
-   process for each language pair? Should be easy to split off new
-   processes by pair/endpoint. Note also werkzeug DispatcherMiddleware
-   and PathDispatcher: http://flask.pocoo.org/docs/patterns/appdispatch/
-
+ * lxml tree parsing and queries are fast enough, maybe occasional slowness 
+   is still a memory issue?  Maybe should provide an individual process
+   for each language pair? Should be easy to split off new processes by
+   pair/endpoint. Note also werkzeug DispatcherMiddleware and
+   PathDispatcher: http://flask.pocoo.org/docs/patterns/appdispatch/
 
 
  * added a copy of lookupserv.py, with some tweaks to generalize it for

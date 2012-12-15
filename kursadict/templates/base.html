@@ -5,26 +5,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="{{url_for('static', filename='bootstrap/css/bootstrap.css')}}" rel="stylesheet" />
         <link href="{{url_for('static', filename='bootstrap/css/bootstrap-layouts.css')}}" rel="stylesheet" />
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script type="text/javascript" src="{{url_for('static', filename='bootstrap/js/bootstrap-dropdown.js')}}"></script>
         
         <!--[if lt IE 9]>
               <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
             <![endif]-->
-        <style type="text/css">
-            .navbar {
-                margin-bottom: 40px;
-            }
-            footer {
-                background-color: #BBB;
-                border-top: 1px solid #888;
-                position: inline;
-                bottom: 0;
-            }
-            content {
-                display: block;
-                min-height: 500px;
-            }
-        </style>
+
+        <link href="{{url_for('static', filename='css/base.css')}}" rel="stylesheet" />
+
+        {% block extra_css %}
+        {% endblock %}
+
     </head>
 
     <body>
@@ -34,17 +26,31 @@
                     <div class="container-fluid">
                         <a class="brand" href="/">Vuosttaš Neahttasánit</a>
                         <ul class="nav">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="/neahttasanit">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Contact</a></li>
+                            {% block search_li %}
                             <li clas="dropdown">
                                 <a href="#" id="langselect" class="dropdown-toggle" data-toggle="dropdown">sme->nob <b class="caret"></b></a>
-                                <ul class="dropdown-menu" role="menu" aria-labelledby="langselect">
-                                    <li><a href="#">nordsamisk->norsk</a></li>
-                                </ul>
+                            <ul class="dropdown-menu" id="langpairs" role="menu"
+                                data-for="target_lang">
+                              <li class="selected"><a tabindex="-1" href="#"
+                                      data-value="smenob">nordsamisk -> norsk</a></li>
+                              <li><a tabindex="-1" href="#"
+                                      data-value="smefin">nordsamisk -> finsk</a></li>
+                              <li><a tabindex="-1" href="#"
+                                      data-value="smesmj">nordsamisk -> lulesamisk</a></li>
+                              <li><a tabindex="-1" href="#"
+                                      data-value="nobsme">norsk -> nordsamisk</a></li>
+                            </ul>
                             </li>
+                            {% endblock %}
                         </ul>
+                        {% block search_li_form %}
                         <form class="navbar-search pull-left">
                             <input type="text" class="search-query" placeholder="{% block placeholder %}Search{% endblock %}">
                         </form>
+                        {% endblock %}
                     </div>
                 </div>
             </div>
@@ -53,6 +59,7 @@
 
         <div class="container">
             <content>
+                {% block content %}
                 <div class="container-fluid">
                     {% block layout %}
                         <div class="span4">
@@ -62,25 +69,29 @@
                             </div>
                         </div>
                         <div class="span10">
-                            {% block content %}
+                            {% block content_right %}
                             {% endblock %}
                         </div>
                     {% endblock %}
                 </div>
+                {% endblock %}
             </content>
         </div>
 
         <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="span6 offset2">
-                        <p class="lead">
-                            <ul class="inline">
-                                <li><a href="http://giellatekno.uit.no">Giellatekno</a></li>
-                                <li><icon class="icon-star-empty" /></li>
-                                <li><a href="http://divvun.no">Divvun</a></li>
-                            </ul>
-                        </p>
+            <!-- TODO: link to json -->
+            <!-- 
+            <ul class="undertabs nav nav-pills">
+                <li><a href="#">JSON</a></li>
+            </ul>
+            -->
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span4 offset1">
+                        <img src="{{url_for('static', filename='img/uitlogo.png')}}" id="uitlogo" width="100" height="100" class="pull-right"></img>
+                    </div>
+                    <div class="span4">
+                        <p class="lead">Created with free and open-source language tools from <em><a href="http://giellatekno.uit.no">Giellatekno</a></em>, a Sámi Language Technology group at the <a href="http://uit.no">University of Tromsø</a>.</p>
                     </div>
                 </div>
             </div>

@@ -24,7 +24,6 @@ class Server:
         self.server = None
         self.threads = []
         self.lookup = cmd
-        self.port = port
 
         logfile= "proc.%s.log" % name
         f = open(logfile, 'a')
