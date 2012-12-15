@@ -126,6 +126,11 @@ class XMLDict(object):
         _xpath = './/e[lg/l/text() = "%s" and lg/l/@pos = "%s"]' % (lemma, pos.lower())
         return self.XPath(_xpath)
 
+    def lookupLemmaPOSAndType(self, lemma, pos, _type):
+        # TODO: case insensitive pos?
+        _xpath = './/e[lg/l/text() = "%s" and (lg/l/@pos = "%s" or lg/l/@pos = "%s") and lg/l/@type = "%s"]' % (lemma, pos.lower(), pos, _type)
+        return self.XPath(_xpath)
+
 class DetailedEntries(XMLDict):
     def cleanEntry(self, e):
         l = e.find('lg/l')
@@ -144,8 +149,8 @@ class DetailedEntries(XMLDict):
             'lemma': l.text,
             'pos': l.get('pos'),
             'context': l.get('context'),
-            'meaningGroups': meaningGroups
-
+            'meaningGroups': meaningGroups,
+            'type': l.get('type')
         }
 
 class ReverseLookups(XMLDict):
@@ -213,13 +218,16 @@ def lookupXML(_from, _to, lookup, lookup_type=False):
         return {'error': "Unknown language pair"}
 
 
-def detailedLookupXML(_from, _to, lookup, pos):
+def detailedLookupXML(_from, _to, lookup, pos, _type=False):
     lexicon = language_pairs.get((_from, _to), False)
     # wrap in mixin for detailed results
     detailed_tree = DetailedEntries(tree=lexicon.tree)
 
     if lexicon and detailed_tree:
         # TODO: include PoS
+        if _type:
+            if _type.strip():
+                return {'lookups': detailed_tree.lookupLemmaPOSAndType(lookup, pos, _type)}
         return {'lookups': detailed_tree.lookupLemmaPOS(lookup, pos)}
     else:
         return {'error': "Unknown language pair"}
@@ -449,6 +457,7 @@ def wordDetail(from_language, to_language, wordform, format):
         _result_formOf = []
         if analyzed:
             for form, lemma, tag in sorted(analyzed, key=lemmaLen, reverse=True):
+
                 # TODO: try with OBT
                 if lemma == '?' or tag == '?':
                     continue
@@ -462,6 +471,15 @@ def wordDetail(from_language, to_language, wordform, format):
 
         for lemma, pos, tag in _result_formOf:
 
+            # TODO: generalize for other languages
+            _sp = morph.tool.splitAnalysis(tag)
+            if len(_sp) >= 2:
+                _type = _sp[1]
+                if _type not in [u'NomAg', 'G3']:
+                    _type = False
+            else:
+                _type = False
+
             if (lemma, pos) in _lemma_pos_exists:
                 continue
             # Only look up word when there is a baseform
@@ -471,14 +489,15 @@ def wordDetail(from_language, to_language, wordform, format):
                 xml_result = detailedLookupXML(from_language,
                                                to_language,
                                                lemma,
-                                               pos)
+                                               pos,
+                                               _type=_type)
 
                 if len(xml_result['lookups']) == 0:
                     xml_result = False
 
                 _result_lookups.append({
                     'entries': xml_result,
-                    'input': (lemma, pos, tag)
+                    'input': (lemma, pos, tag, _type)
                 })
                 _lemma_pos_exists.append((lemma, pos))
             else:
@@ -490,7 +509,6 @@ def wordDetail(from_language, to_language, wordform, format):
             "input": wordform.decode('utf-8'),
         }
 
-        # TODO: generate paradigm from lemma and pos
         # TODO: ideally the things here need to be going to an external
         # socket server thing analogous to lookupserv for Oahpa/Sahka.
         # also, for ease of use it needs to be something that the
@@ -498,15 +516,19 @@ def wordDetail(from_language, to_language, wordform, format):
         # For now, just caching things on the hope that this begins to
         # save time.
 
+        # TODO: either clean this up or comment.
         for _r in _result_lookups:
-            lemma, pos, tag = _r.get('input')
+            lemma, pos, tag, _type = _r.get('input')
             paradigm = lang_paradigms.get(pos)
             if tag in lang_baseforms.get(pos):
                 _cache_key = hashlib.md5()
                 _cache_key.update('generation-%s-' % from_language)
                 _cache_key.update(lemma.encode('utf-8'))
                 if paradigm:
-                    form_tags = [_t.split('+') for _t in paradigm]
+                    _pos_type = [pos]
+                    if _type:
+                        _pos_type.append(_type)
+                    form_tags = [_pos_type + _t.split('+') for _t in paradigm]
                     _cache_tags = '|'.join(['+'.join(a) for a in form_tags]).encode('utf-8')
                     _cache_key.update(_cache_tags)
                     hexhash = _cache_key.hexdigest()
@@ -743,6 +765,7 @@ def indexWithLangs(_from, _to):
         lemm_ = morphologies.get(_from, False)
         if lemm_:
             lemmatizer = lemm_.lemmatize
+        # TODO: what to do if no lemmatizer available
         lemmatized_lookup_key = lemmatizer(lookup_val, split_compounds=True)
 
         if not isinstance(lemmatized_lookup_key, list):
