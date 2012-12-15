@@ -84,7 +84,7 @@ class XFST(object):
 
     def __init__(self, lookup_tool, fst_file, ifst_file=False, options={}):
         self.cmd = "%s -flags mbTT %s" % (lookup_tool, fst_file)
-        self.options = {'compoundBoundary': "+Cmp#"}
+        self.options = options
 
         if ifst_file:
             self.icmd = "%s -flags mbTT %s" % (lookup_tool, ifst_file)
@@ -108,7 +108,7 @@ class XFST(object):
 
         lookups_list = []
         for tag in tags:
-            lookups_list.append(self.formatTag([lemma] + tag))
+            lookups_list.append(self.formatTag([lemma] + tag, inverse=True))
         lookup_string = '\n'.join(lookups_list)
         output, err = self._exec(lookup_string, cmd=self.icmd)
         return self.clean(output)
@@ -119,13 +119,23 @@ class XFST(object):
         else:
             return False
 
-    def formatTag(self, parts):
-        return '+'.join(parts)
+    def formatTag(self, parts, inverse=False):
+        if inverse:
+            delim = self.options.get('inverse_tagsep',
+                self.options.get('tagsep', '+'))
+        else:
+            delim = self.options.get('tagsep', '+')
+        return delim.join(parts)
 
-    def splitAnalysis(self, analysis):
+    def splitAnalysis(self, analysis, inverse=False):
         """ u'lemma+Tag+Tag+Tag' -> [u'lemma', u'Tag', u'Tag', u'Tag'] """
-        return analysis.split('+')
+        if inverse:
+            delim = self.options.get('inverse_tagsep',
+                self.options.get('tagsep', '+'))
+        else:
+            delim = self.options.get('tagsep', '+')
 
+        return analysis.split(delim)
 
 class OBT(XFST):
     """ TODO: this is almost like CG, so separate out those things if necessary.
@@ -214,12 +224,12 @@ class Morphology(object):
                     unknown = True
 
             if not unknown:
-                parts = self.tool.splitAnalysis(tag)
+                parts = self.tool.splitAnalysis(tag, inverse=True)
                 lemma = parts[0]
                 tag = self.cleanTag(parts[1::])
                 reformatted.append((lemma, tag, forms))
             else:
-                parts = self.tool.splitAnalysis(tag)
+                parts = self.tool.splitAnalysis(tag, inverse=True)
                 lemma = parts[0]
                 tag = parts[1::]
                 forms = False
@@ -311,21 +321,28 @@ def examples():
     for a in nob.lemmatize(u'tålt'):
         print '  ' + a
 
+    sme_options = {
+        'compoundBoundary': "  + #",
+        'tagsep': ' ',
+        'inverse_tagsep': '+',
+    }
+
     smexfst = XFST(lookup_tool='/Users/pyry/bin/lookup',
-                   fst_file='/Users/pyry/gtsvn/gt/sme/bin/sme.fst',
-                   ifst_file='/Users/pyry/gtsvn/gt/sme/bin/isme.fst')
+                   fst_file='/Users/pyry/gtsvn/gt/sme/bin/n-sme.fst',
+                   ifst_file='/Users/pyry/gtsvn/gt/sme/bin/isme.fst',
+                   options=sme_options)
 
     sme = smexfst >> Morphology('sme')
     print
-    print ' -- sme --'
+    print ' -- sme lemmatize --'
     print ' mánnat: '
-    for a in sme.lemmatize(u'mánnat'):
+    for a in sme.lemmatize(u'mannat'):
         print '  ' + a
 
-    generate = sme.generate(u'mánnat', [['V', 'TV', 'Inf'],
-                                ['V', 'TV', 'Ind', 'Prs', 'Sg1'],
-                                ['V', 'TV', 'Ind', 'Pst', 'Sg2'],
-                                ['V', 'TV', 'Ind', 'Prt', 'Sg2']]
+    generate = sme.generate(u'mannat', [['V', 'Inf'],
+                                ['V', 'Ind', 'Prs', 'Sg1'],
+                                ['V', 'Ind', 'Pst', 'Sg2'],
+                                ['V', 'Ind', 'Prt', 'Sg2']]
                                 )
     for lem, tag, forms in generate:
         if forms:
@@ -335,21 +352,15 @@ def examples():
             print '  ' + ' '.join(tag) + ':   unknown'
 
     for a in sme.analyze(u'gullot'):
-        print '  %s	%s	%s' % (a[0], a[1], '+'.join(a[2]))
+        print '  %s %s  %s' % (a[0], a[1], ' '.join(a[2]))
 
     print ' -- analyze with compounds -- '
     for a in sme.analyze(u'juovlaspábbačiekčangilvu', split_compounds=True):
-        print '  %s	%s	%s' % (a[0], a[1], '+'.join(a[2]))
+        print '  %s %s  %s' % (a[0], a[1], ' '.join(a[2]))
 
     print ' -- analyze -- '
     for a in sme.analyze(u'juovlaspábbačiekčangilvu'):
-        print '  %s	%s	%s' % (a[0], a[1], '+'.join(a[2]))
-
-    print
-    print ' -- sme --'
-    print ' mánnat: '
-    for a in sme.lemmatize(u'mánnat'):
-        print '  ' + a
+        print '  %s %s  %s' % (a[0], a[1], ' '.join(a[2]))
 
     print ' -- lemmatize -- '
     for a in sme.lemmatize(u'spábbačiekčangilvu'):
@@ -358,6 +369,7 @@ def examples():
     print ' -- lemmatize with compounds -- '
     for a in sme.lemmatize(u'juovlaspábbačiekčangilvu', split_compounds=True):
         print '  ' + a
+
     print ' -- lemmatize -- '
     for a in sme.lemmatize(u'juovlaspábbačiekčangilvu'):
         print '  ' + a

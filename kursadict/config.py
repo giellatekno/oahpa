@@ -98,6 +98,9 @@ class AppConf(object):
             if 'inverse_file' in _kwargs_in:
                 kwargs['ifst_file'] = _kwargs_in['inverse_file']
 
+            if 'options' in _kwargs_in:
+                kwargs['options'] = _kwargs_in['options']
+
             try:
                 self._morphologies[iso] = m_format(**kwargs) >> Morphology(iso)
             except Exception, e:
