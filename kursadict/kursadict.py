@@ -239,7 +239,6 @@ def detailedLookupXML(_from, _to, lookup, pos, _type=False):
     detailed_tree = DetailedEntries(tree=lexicon.tree)
 
     if lexicon and detailed_tree:
-        # TODO: include PoS
         if _type:
             if _type.strip():
                 return {'lookups': detailed_tree.lookupLemmaPOSAndType(lookup, pos, _type)}
@@ -745,10 +744,6 @@ def wordDetailDocs():
 ##
 ## Public pages
 ##
-# TODO: config
-from collections import OrderedDict
-
-language_pair_descriptions = settings.pair_definitions
 
 # For direct links, form submission.
 @app.route('/kursadict/<_from>/<_to>/', methods=['GET', 'POST'])
@@ -787,7 +782,7 @@ def indexWithLangs(_from, _to):
     if len(errors) == 0:
         errors = False
     return render_template('index.html',
-                           language_pairs=language_pair_descriptions,
+                           language_pairs=settings.pair_definitions,
                            _from=_from,
                            _to=_to,
                            user_input=lookup_val,
@@ -798,8 +793,7 @@ def indexWithLangs(_from, _to):
 
 @app.route('/kursadict/', methods=['GET'])
 def index():
-    # TODO: config langauges
-    return render_template('index.html', language_pairs=language_pair_descriptions, _from='sme', _to='nob')
+    return render_template('index.html', language_pairs=settings.pair_definitions, _from='sme', _to='nob')
 
 
 ##
