@@ -1,26 +1,30 @@
+# This option set is not used outside of providing shortcuts for
+# following settings.
+Tools:
+  xfst_lookup: &LOOKUP '/usr/bin/lookup'
+  gthome: &GTHOME '/home/ryan/gtsvn'
+
 Morphology:
   sme:
-    tool: &LOOKUP '/Users/pyry/bin/lookup'
-    file: '/Users/pyry/gtsvn/gt/sme/bin/sme.fst'
-    inverse_file: '/Users/pyry/gtsvn/gt/sme/bin/isme-norm.fst'
+    tool: *LOOKUP 
+    file: [*GTHOME, "/gt/sme/bin/n-sme.fst"]
+    inverse_file: [*GTHOME, "/gt/sme/bin/isme-norm.fst"]
     format: 'xfst'
     options:
       compoundBoundary: "  + #"
       tagsep: ' '
       inverse_tagsep: '+'
   nob:
-    tool: '/Users/pyry/gtsvn/st/nob/obt/bin/mtag-osx64'
+    tool: [*GTHOME, '/st/nob/obt/bin/mtag-osx64']
     format: 'obt'
   sma:
     tool: *LOOKUP
-    file: '/Users/pyry/gtsvn/langs/sma/src/analyser-gt-desc.xfst'
-    inverse_file: '/Users/pyry/gtsvn/langs/sma/src/generator-gt-norm.xfst'
+    file: [*GTHOME, '/langs/sma/src/analyser-gt-desc.xfst']
+    inverse_file: [*GTHOME, '/langs/sma/src/generator-gt-norm.xfst']
     format: 'xfst'
     options:
-      compoundBoundary: "+Cmp#"
       tagsep: '+'
       inverse_tagsep: '+'
-
 
 Languages:
   - iso: sme
@@ -48,19 +52,23 @@ Languages:
       eng: "English"
       nob: "engelsk"
 
+# This also dictates the order of the dictionaries in the UI for now.
 Dictionaries:
-#   - source: sme
-#     target: smj
-#     path: 'dicts/sme-smj.all.xml'
-  
   - source: sme
     target: nob
     path: 'dicts/sme-nob.all.xml'
-    reversable: True
+
+  - source: nob
+    target: sme
+    path: 'dicts/nob-sme.all.xml'
 
   - source: sme
     target: fin
     path: 'dicts/sme-fin.all.xml'
+
+  - source: fin
+    target: sme
+    path: 'dicts/fin-sme.all.xml'
 
   - source: sma
     target: nob
@@ -69,6 +77,7 @@ Dictionaries:
   - source: nob
     target: sma
     path: 'dicts/nob-sma.all.xml'
+
 
 
 # Tags to accept as the dictionary form for each POS, e.g., want to show
@@ -82,12 +91,13 @@ Baseforms:
 
     N:
       - "N+Sg+Nom"
+      - "N+SgNomCmp"
+      - "N+SgCmp"
 
   sme:
     V:
-      - "V+IV+Inf"
-      - "V+TV+Inf"
-      - "V+Inf"
+      - "V"
+      - "V inf."
 
     A:
       - "A+Attr"
@@ -96,52 +106,56 @@ Baseforms:
       - 'Adv'
 
     N:
-      - "N+Sg+Nom"
-      - "N+G3+Sg+Nom"
-      - "N+Prop+Sg+Nom"
+      - "N ent. nom."
+      - "N hum. nom."
+      - "N NomAg ent. nom."
+      - "N"
 
-    Hum:
-      - "Hum+N+Sg+Nom"
-      - "Hum+N+G3+Sg+Nom"
-      - "Hum+N+Prop+Sg+Nom"
-
+# TODO: help text
 Paradigms:
   sma:
     N:
-      - "N+Sg+Nom"
-      - "N+Pl+Nom"
-      - "N+Sg+Ill"
-      - "N+Sg+Ine"
-      - "N+Pl+Ill"
-      - "N+Pl+Ine"
+      - "Sg+Nom"
+      - "Pl+Nom"
+      - "Sg+Ill"
+      - "Sg+Ine"
+      - "Pl+Ill"
+      - "Pl+Ine"
+    V:
+      - "Ind+Prs+Sg1"
+      - "Ind+Prt+Sg1"
+      - "ConNeg"
 
   sme:
 
     A:
-      - "A+Attr"
-      - "A+Sg+Nom"
-      - "A+Pl+Nom"
+      - "Attr"
+      - "Sg+Nom"
+      - "Pl+Nom"
 
+    # attr.         fiinna (bivttas)
+    # pl. nom.          fiidnát fiidnásat
+    # komp. attr.           fiidnát fiidnásat
+    # komp. sg. nom.            fiidnát fiidnásat fiidnásabbo
+    # superl. sg. nom.          fiidnámus fiidnásamos
+
+    # Adding N+G3 from lex
     N:
-      - "N+Sg+Nom"
-      - "N+Sg+Acc"
-      - "N+Sg+Loc"
-      - "N+Pl+Nom"
-      - "N+Pl+Acc"
-      - "N+Pl+Loc"
+      - "Sg+Gen"
+      - "Sg+Ill"
+      - "Pl+Ill"
 
+    # Adding V+ and potential V subtypes via lexicon.
     V:
-      - "V+Inf"
-      - "V+Ind+Prs+Sg1"
-      - "V+Ind+Prs+Sg3"
-      - "V+Ind+Prt+Sg1"
-      - "V+Ind+Prt+Sg3"
+      - "Ind+Prs+Sg1"
+      - "Ind+Prt+Sg1"
+      - "Ind+Prs+ConNeg"
 
-    Hum:
-      - "Hum+N+Sg+Nom"
-      - "Hum+N+Sg+Acc"
-      - "Hum+N+Sg+Loc"
-      - "Hum+N+Pl+Nom"
-      - "Hum+N+Pl+Acc"
-      - "Hum+N+Pl+Loc"
+TagTransforms:
+  sme:
+    V: "verb"
+    N: "subst."
+    A: "adj."
+    NomAg: "aktor"
+    G3: ""
 
