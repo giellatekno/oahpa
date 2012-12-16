@@ -23,7 +23,7 @@ class AppConf(object):
 
         self._paradigms = lang_paradigms
         return self._paradigms
-        
+    
     @property
     def reversable_dictionaries(self):
         if self._reversable_dictionaries:
@@ -36,7 +36,6 @@ class AppConf(object):
         dicts = filter(isReversable, self.opts.get('Dictionaries'))
         language_pairs = {}
         for item in dicts:
-            
             source = item.get('source')
             target = item.get('target')
             path = item.get('path')
@@ -161,24 +160,14 @@ class AppConf(object):
 
         return self._morphologies
 
-    @property
-    def lookup_command(self):
-        """ Check that the lookup command is executable and user has
-        permissions to execute. """
-        import os
-        def is_exe(fpath):
-            return os.path.isfile(fpath) and os.access(fpath, os.X_OK)
-        
-        apps = self.opts.get('Utilities')
-        cmd = apps.get('lookup_path')
-        
-        if not is_exe(cmd):
-            sys.exit('Lookup utility (%s) does not exist, \
-                      or you have no exec permissions' % cmd)
-        cmd_opts = apps.get('lookup_opts', False)
-        if cmd_opts:
-            cmd += ' ' + cmd_opts
-        return cmd
+    def test(self, silent=False):
+        for item in dir(self):
+            if not item.startswith('_') and item != 'test':
+                if silent:
+                    self.__getattribute__(item)
+                else:
+                    print item
+                    print self.__getattribute__(item)
 
     def __init__(self):
         self._languages               = False
@@ -193,16 +182,10 @@ class AppConf(object):
         with open('app.config.yaml', 'r') as F:
             config = yaml.load(F)
         self.opts = config
+        self.test(silent=True)
 
 settings = AppConf()
 
 if __name__ == "__main__":
-    # for a in settings.dictionaries:
-    #     print a
-    settings.pair_definitions
-    print '--'
-    for a in settings.pair_definitions:
-        print a
-    print "Success!"
-    print settings.morphologies
+    settings.test(silent=False)
 
