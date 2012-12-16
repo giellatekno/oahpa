@@ -101,6 +101,16 @@ class XMLDict(object):
             self.tree = etree.parse(filename)
         else:
             self.tree = tree
+        self.xpath_evaluator = etree.XPathDocumentEvaluator(self.tree)
+
+        # Initialize XPath queries
+        regexpNS = "http://exslt.org/regular-expressions"
+        self.lemmaStartsWith = etree.XPath('.//e[starts-with(lg/l/text(), $lemma)]')
+        self.lemma = etree.XPath('.//e[lg/l/text() = $lemma]')
+        self.lemmaPOS = etree.XPath(".//e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, 'i')]",
+                                    namespaces={'re':regexpNS})
+        self.lemmaPOSAndType = etree.XPath(".//e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, 'i') and lg/l/@type = $_type]",
+                                    namespaces={'re':regexpNS})
 
     def cleanEntry(self, e):
         l = e.find('lg/l')
@@ -110,26 +120,22 @@ class XMLDict(object):
         right_text = [t.text for t in ts]
         return {'left': left_text, 'pos': left_pos, 'right': right_text}
 
-    def XPath(self, query):
-        print "Querying: %s" % query
-        return map(self.cleanEntry, self.tree.xpath(query))
+    def XPath(self, xpathobj, *args, **kwargs):
+        print "Querying: %s" % xpathobj.path
+        print "With: %s, %s" % (repr(args), repr(kwargs))
+        return map(self.cleanEntry, xpathobj(self.tree, *args, **kwargs))
 
     def lookupLemmaStartsWith(self, lemma):
-        _xpath = './/e[starts-with(lg/l/text(), "%s")]' % lemma
-        return self.XPath(_xpath)
+        return self.XPath(self.lemmaStartsWith, lemma=lemma)
 
     def lookupLemma(self, lemma):
-        _xpath = './/e[lg/l/text() = "%s"]' % lemma
-        return self.XPath(_xpath)
+        return self.XPath(self.lemma, lemma=lemma)
 
     def lookupLemmaPOS(self, lemma, pos):
-        _xpath = './/e[lg/l/text() = "%s" and lg/l/@pos = "%s"]' % (lemma, pos.lower())
-        return self.XPath(_xpath)
+        return self.XPath(self.lemmaPOS, lemma=lemma, pos=pos)
 
     def lookupLemmaPOSAndType(self, lemma, pos, _type):
-        # TODO: case insensitive pos?
-        _xpath = './/e[lg/l/text() = "%s" and (lg/l/@pos = "%s" or lg/l/@pos = "%s") and lg/l/@type = "%s"]' % (lemma, pos.lower(), pos, _type)
-        return self.XPath(_xpath)
+        return self.XPath(self.lemmaPOSAndType, lemma=lemma, pos=pos, _type=_type)
 
 class DetailedEntries(XMLDict):
     def cleanEntry(self, e):
@@ -199,10 +205,19 @@ language_pairs = dict(
       for k, v in settings.dictionaries.iteritems() ]
 )
 
-reverse_language_pairs = dict(
-    [ ((k[1], k[0]), ReverseLookups(filename=v))
-      for k, v in settings.reversable_dictionaries.iteritems() ]
-)
+# reverse_language_pairs = dict(
+#     [ ((k[1], k[0]), ReverseLookups(filename=v))
+#       for k, v in settings.reversable_dictionaries.iteritems() ]
+# )
+
+reverse_language_pairs = {}
+
+for k, v in settings.reversable_dictionaries.iteritems():
+    has_root = language_pairs.get((k[0], k[1]))
+    if has_root:
+        reverse_language_pairs[(k[1], k[0])] = ReverseLookups(tree=has_root.tree)
+    else:
+        reverse_language_pairs[(k[1], k[0])] = ReverseLookups(filename=v)
 
 language_pairs.update(reverse_language_pairs)
 
@@ -761,12 +776,15 @@ language_pair_descriptions = OrderedDict([
 def indexWithLangs(_from, _to):
     lookup_val = request.form.get('lookup', False)
 
+    errors = []
     if request.method == 'POST' and lookup_val:
         lemm_ = morphologies.get(_from, False)
         if lemm_:
             lemmatizer = lemm_.lemmatize
-        # TODO: what to do if no lemmatizer available
-        lemmatized_lookup_key = lemmatizer(lookup_val, split_compounds=True)
+            # TODO: what to do if no lemmatizer available
+            lemmatized_lookup_key = lemmatizer(lookup_val, split_compounds=True)
+        else:
+            lemmatized_lookup_key = lookup_val
 
         if not isinstance(lemmatized_lookup_key, list):
             lemmatized_lookup_key = [lemmatized_lookup_key]
@@ -775,7 +793,10 @@ def indexWithLangs(_from, _to):
         for _key in lemmatized_lookup_key:
             result = lookupXML(_from, _to, _key)
             result['input'] = _key
-            if len(result['lookups']) == 0:
+            if 'error' in result:
+                errors.append(result['error'])
+                result['lookups'] = False
+            elif len(result['lookups']) == 0:
                 result['lookups'] = False
             results.append(result)
 
@@ -784,12 +805,15 @@ def indexWithLangs(_from, _to):
         results = False
         user_input = ''
 
+    if len(errors) == 0:
+        errors = False
     return render_template('index.html',
                            language_pairs=language_pair_descriptions,
                            _from=_from,
                            _to=_to,
                            user_input=lookup_val,
-                           word_searches=results)
+                           word_searches=results,
+                           errors=errors)
 
 
 
