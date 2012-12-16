@@ -135,10 +135,18 @@ class AppConf(object):
                 sys.exit()
 
             if 'file' in _kwargs_in:
-                kwargs['fst_file'] = _kwargs_in['file']
+                if isinstance(_kwargs_in['file'], list):
+                    _kwf = ''.join(_kwargs_in['file'])
+                else:
+                    _kwf = _kwargs_in['file']
+                kwargs['fst_file'] = _kwf
             
             if 'inverse_file' in _kwargs_in:
-                kwargs['ifst_file'] = _kwargs_in['inverse_file']
+                if isinstance(_kwargs_in['inverse_file'], list):
+                    _kwfi = ''.join(_kwargs_in['inverse_file'])
+                else:
+                    _kwfi = _kwargs_in['inverse_file']
+                kwargs['ifst_file'] = _kwfi
 
             if 'options' in _kwargs_in:
                 kwargs['options'] = _kwargs_in['options']
@@ -187,4 +195,14 @@ class AppConf(object):
         self.opts = config
 
 settings = AppConf()
+
+if __name__ == "__main__":
+    # for a in settings.dictionaries:
+    #     print a
+    settings.pair_definitions
+    print '--'
+    for a in settings.pair_definitions:
+        print a
+    print "Success!"
+    print settings.morphologies
 
