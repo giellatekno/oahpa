@@ -57,8 +57,17 @@
                 {% if lexeme.paradigms %}
                     <dl class="dl-horizontal">
                     {%- for lemma, tag, form in lexeme.paradigms -%}
-                        <dt>{{ ' '.join(tag) }}</dt>
-                        <dd>{{ '/'.join(form) }}</dd>
+
+                        {% if tag %}
+                            <dt>{{ ' '.join(tag) }}</dt>
+                        {% endif %}
+
+                        {% if form %}
+                            <dd>{{ '/'.join(form) }}</dd>
+                        {% else %}
+                            <dd>?</dd>
+                        {% endif %}
+
                     {%- endfor -%}
                     </dl>
                 {% endif %}

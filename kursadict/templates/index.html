@@ -30,7 +30,7 @@
                 <h3>{%- for iso_pair, names in language_pairs.iteritems() %}
                     {% if iso_pair[0] == _from and iso_pair[1] == _to %}
                     {%- for lang, name in names.iteritems() %}
-                        <span class="lang_name" lang="{{ lang }}">{{ name[0] }} -&gt; {{ name[1] }}</span>
+                        <span class="lang_name" lang="{{ lang }}">{{ name[0] }} → {{ name[1] }}</span>
                     {% endfor -%}
                     {% endif %}
                     {% endfor -%}
@@ -64,7 +64,17 @@
                         {% endfor %}
 
                     {% else %}
-                        <p>Ukjent ord: {{ lexeme.input }}</l>
+                        {% if errors %}
+                            <div class="alert">
+                                <ul>
+                                    {% for error in errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% else %}
+                            <p>Ukjent ord: {{ lexeme.input }}</l>
+                        {% endif %}
                     {% endif %}
 
                     {% endfor %}
