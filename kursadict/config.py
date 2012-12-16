@@ -1,3 +1,4 @@
+import sys
 
 class AppConf(object):
     """ An object for exposing the settings in app.config.yaml in a nice
@@ -45,12 +46,22 @@ class AppConf(object):
         return language_pairs
 
     @property
+    def languages(self):
+        if not self._languages:
+            self._languages = {}
+            for lang in self.opts.get('Languages'):
+                self._languages[lang.get('iso')] = lang.get('name')
+
+        return self._languages
+    
+    @property
     def dictionaries(self):
+        from collections import OrderedDict
         if self._dictionaries:
             return self._dictionaries
 
         dicts = self.opts.get('Dictionaries')
-        language_pairs = {}
+        language_pairs = OrderedDict()
         for item in dicts:
             source = item.get('source')
             target = item.get('target')
@@ -59,6 +70,37 @@ class AppConf(object):
 
         self._dictionaries = language_pairs
         return language_pairs
+
+    @property
+    def pair_definitions(self):
+        from collections import OrderedDict
+
+        if not self._pair_definitions:
+            self._pair_definitions = OrderedDict()
+            _par_defs = {}
+            for key, path in self.dictionaries.iteritems():
+                _from, _to = key
+                _from_langs = self.languages[_from]
+                _to_langs = self.languages[_to]
+                _lang_isos = set(_from_langs.keys()) & set(_to_langs.keys())
+
+                _missing = set(_from_langs.keys()) ^ set(_to_langs.keys())
+                if _missing:
+                    print >> sys.stderr, "Missing some name translations for"
+                    print >> sys.stderr, ', '.join(list(_missing))
+                    print >> sys.stderr, "Check Languages in app.config.yaml"
+                    sys.exit()
+
+                _names_by_iso = {}
+                for iso in _lang_isos:
+                    _names_by_iso[iso] = (_from_langs[iso], _to_langs[iso])
+
+                _par_defs[key] = _names_by_iso
+
+            for k, v in self.dictionaries.iteritems():
+                self._pair_definitions[k] = _par_defs[k]
+
+        return self._pair_definitions
 
     @property
     def morphologies(self):
@@ -131,6 +173,8 @@ class AppConf(object):
         return cmd
 
     def __init__(self):
+        self._languages               = False
+        self._pair_definitions        = False
         self._dictionaries            = False
         self._reversable_dictionaries = False
         self._paradigms               = False

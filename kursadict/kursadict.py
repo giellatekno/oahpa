@@ -748,28 +748,7 @@ def wordDetailDocs():
 # TODO: config
 from collections import OrderedDict
 
-language_pair_descriptions = OrderedDict([
-    # pair
-   (('sme', 'nob'), {
-        # internationalized names (must be unicode type)
-        'eng': (u"Northern Sámi", u"Norwegian (Bokmål)"),
-        'nob': (u"nordsamisk", u"norsk (bokmål)"),
-    }),
-   (('nob', 'sme'), {
-        'eng': (  u"Norwegian (Bokmål)", u"Northern Sámi"  ),
-        'nob': (  u"norsk (bokmål)"    , u"nordsamisk"     ),
-    }),
-
-   (('sme', 'fin'), {
-        'eng': (  u"Northern Sámi", u"Finnish"  ),
-        'nob': (  u"nordsamisk"   , u"finsk"    ),
-    }),
-   (('fin', 'sme'), {
-        'eng': ( u"Finnish" , u"Northern Sámi" ),
-        'nob': ( u"finsk"   , u"nordsamisk"    ),
-    }),
-
-])
+language_pair_descriptions = settings.pair_definitions
 
 # For direct links, form submission.
 @app.route('/kursadict/<_from>/<_to>/', methods=['GET', 'POST'])
