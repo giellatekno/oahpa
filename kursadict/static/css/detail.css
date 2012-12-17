@@ -1,4 +1,6 @@
-﻿.well dd {
+/* @override http://localhost:5000/kursadict/static/css/detail.css */
+
+.well dd {
     word-wrap: break-word;
 }
 
@@ -15,3 +17,20 @@ blockquote.examples dd {
     margin-top: .25em;
 }
 
+ul.meanings li {
+	color: #000;
+}
+
+dl.dl-horizontal dd {
+	position: relative;
+}
+
+dl dd .extraexpand .extralabel {
+	position: absolute;
+	right: -100px;
+	top: 0px;
+}
+
+.extra_forms {
+	display: none;
+}

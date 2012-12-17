@@ -1,8 +1,11 @@
 Now: 
 
- * index page
- * search and autocomplete
- * direct links to language-pairs
+ * search and autocomplete: bootstrap typeahead
+ * split off generation errors into another file 
+
+    errorLog = logging.FileHandler('error_log.txt')
+    app.logger.addHandler(errorLog)
+
 
 
 Features to develop at some point:
@@ -13,12 +16,10 @@ Features to develop at some point:
  * Use something other than werkzeug's default cache, once things are
    ready for actual use.
 
- * lxml tree parsing and queries are fast enough, maybe occasional slowness 
-   is still a memory issue?  Maybe should provide an individual process
-   for each language pair? Should be easy to split off new processes by
-   pair/endpoint. Note also werkzeug DispatcherMiddleware and
-   PathDispatcher: http://flask.pocoo.org/docs/patterns/appdispatch/
-
+ * Maybe should provide an individual process for each language pair?
+   Should be easy to split off new processes by pair/endpoint. Note also
+   werkzeug DispatcherMiddleware and PathDispatcher:
+   http://flask.pocoo.org/docs/patterns/appdispatch/
 
  * added a copy of lookupserv.py, with some tweaks to generalize it for
    any lookup process. This will speed up lookups tons, since the

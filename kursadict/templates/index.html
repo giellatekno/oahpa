@@ -1,5 +1,34 @@
 {% extends 'base.html' %}
 
+{% block extra_css %}
+{# https://gist.github.com/1866577 #}
+<script type="text/javascript" src="{{url_for('static', filename='bootstrap/js/bootstrap-typeahead-fork.js')}}"></script>
+
+<script type="text/javascript">
+$('.typeahead').typeahead({
+  process: function(typeahead, results) {
+    console.log(results);
+  },
+  source: function(typeahead, query) {
+    var lang,
+      _this = this;
+    console.log(typeahead);
+    console.log(query);
+    console.log(this);
+    lang = typeahead.attr('data-language');
+    return $.ajax({
+      url: "/kursadict/autocomplete/?q=" + query,
+      success: function(data) {
+        console.log(data);
+        return typeahead.process(data);
+      }
+    });
+  },
+  property: "name"
+});
+</script>
+{% endblock %}
+
 {% block search_li %}
 {% endblock %}
 
@@ -42,9 +71,15 @@
                     <div class="input-append">
                         <input type="text" 
                                name="lookup" 
+                               data-language="{{ _from }}"
+                               data-provide="typeahead"
                                {% if user_input -%}value="{{ user_input }}"{% endif %}
                                placeholder="ohcesátni"></input>
-                           <button type="submit" class="btn" name="search">Oza</button>
+                               <button type="submit" class="btn" name="search">
+                                   <span class="i18n" lang="sme">Oza</span>
+                                   <span class="i18n" lang="nob">Søk</span>
+                                   <span class="i18n" lang="eng">Search</span>
+                               </button>
                            Advansert
                     </div>
                 </form>
