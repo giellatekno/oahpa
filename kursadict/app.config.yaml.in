@@ -14,9 +14,18 @@ Morphology:
       compoundBoundary: "  + #"
       tagsep: ' '
       inverse_tagsep: '+'
+  # Trying out fst
+  # nob:
+  #   tool: [*GTHOME, '/st/nob/obt/bin/mtag-osx64']
+  #   format: 'obt'
   nob:
-    tool: [*GTHOME, '/st/nob/obt/bin/mtag-osx64']
-    format: 'obt'
+    tool: *LOOKUP
+    file: [*GTHOME, '/st/nob/bin/nob.fst']
+    inverse_file: [*GTHOME, '/st/nob/bin/inob.fst']
+    format: 'xfst'
+    options:
+      tagsep: '+'
+      inverse_tagsep: '+'
   sma:
     tool: *LOOKUP
     file: [*GTHOME, '/langs/sma/src/analyser-gt-desc.xfst']
@@ -111,6 +120,18 @@ Baseforms:
       - "N NomAg ent. nom."
       - "N"
 
+  nob:
+    V:
+      - "V"
+      - "V+Inf"
+    N:
+      - "N"
+      - "N+Sg+Indef"
+    A:
+      - "A+Pos+Msc+Sg+Indef"
+      - "A+Pos+Fem+Sg+Indef"
+      - "A+Pos+MF+Sg+Indef"
+
 # TODO: help text
 Paradigms:
   sma:
@@ -146,6 +167,14 @@ Paradigms:
       - "Ind+Prs+Sg1"
       - "Ind+Prt+Sg1"
       - "Ind+Prs+ConNeg"
+
+  nob:
+    V:
+      - "Imp"
+      - "Ind+Prs"
+      - "Ind+Prt"
+      - "PrfPtc"
+
 
 TagTransforms:
   sme:
