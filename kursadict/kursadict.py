@@ -272,6 +272,18 @@ morphologies = settings.morphologies
 ##
 ##
 
+@app.route('/kursadict/autocomplete/<language>/',
+           methods=['GET'])
+@crossdomain(origin='*')
+def autocomplete(language):
+    autos = [
+        {'value': 'omg1'},
+        {'value': 'omg2'},
+        {'value': 'omg3'},
+    ]
+    return json.dumps(autos)
+
+
 @app.route('/kursadict/lookup/<from_language>/<to_language>/',
            methods=['GET'])
 @crossdomain(origin='*')
@@ -558,7 +570,7 @@ def wordDetail(from_language, to_language, wordform, format):
             else:
                 _r['paradigms'] = False
 
-        cache.set(cache_key, detailed_result, timeout=5*60)
+        cache.set(cache_key, detailed_result)
     else:
         detailed_result = cached_result
 
@@ -810,7 +822,7 @@ def urlencode_filter(s):
 
 if __name__ == "__main__":
     app.caching_enabled = True
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=False)
 
 # vim: set ts=4 sw=4 tw=72 syntax=python expandtab :
 
