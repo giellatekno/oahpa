@@ -456,11 +456,14 @@ def wordDetail(from_language, to_language, wordform, format):
     cache_key = '/detail/%s/%s/%s.%s' % (from_language, to_language, wordform, format)
     wordform = wordform.encode('utf-8')
 
-    if (from_language, to_language) in reverse_language_pairs:
+    def unsupportedLang(more='.'):
         if format == 'json':
-            return json.dumps(" * Detailed view not supported for this language pair")
+            return json.dumps(" * Detailed view not supported for this language pair" + more)
         elif format == 'html':
-            return " * Detailed view not supported for this language pair"
+            return " * Detailed view not supported for this language pair" + more
+
+    if (from_language, to_language) in reverse_language_pairs:
+        return unsupportedLang()
 
     if app.caching_enabled:
         cached_result = cache.get(cache_key)
@@ -470,7 +473,11 @@ def wordDetail(from_language, to_language, wordform, format):
     if cached_result is None:
 
         lang_paradigms = settings.paradigms.get(from_language)
+        if not lang_paradigms:
+            return unsupportedLang(', no paradigm defined.')
         lang_baseforms = settings.baseforms.get(from_language)
+        if not lang_baseforms:
+            return unsupportedLang(', no baseforms defined.')
         # All lookups in XML must go through analyzer, because we need POS
         # info for a good lookup.
         morph = morphologies.get(from_language, False)
@@ -509,7 +516,7 @@ def wordDetail(from_language, to_language, wordform, format):
             if (lemma, pos) in _lemma_pos_exists:
                 continue
             # Only look up word when there is a baseform
-            paradigm = lang_paradigms.get(pos)
+            paradigm = lang_paradigms.get(pos, False)
             baseforms = lang_baseforms.get(pos, False)
             if baseforms:
                 xml_result = detailedLookupXML(from_language,
@@ -602,7 +609,13 @@ def wordDetail(from_language, to_language, wordform, format):
         })
         return result
     elif format == 'html':
-        return render_template('word_detail.html', result=detailed_result, user_input=user_input)
+        return render_template('word_detail.html',
+                               language_pairs=settings.pair_definitions,
+                               result=detailed_result,
+                               user_input=user_input,
+                               _from=from_language,
+                               _to=to_language)
+
 
 @app.route('/kursadict/notify/<from_language>/<to_language>/<wordform>.html',
            methods=['GET'])

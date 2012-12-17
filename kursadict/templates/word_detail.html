@@ -36,13 +36,17 @@
                </button>
                <ul class="dropdown-menu" id="langpairs" role="menu"
                    data-for="target_lang">
-                 {# TODO: fetch from settings #}
-                 <li class="selected"><a tabindex="-1" href="#"
-                         data-value="smenob">nordsamisk → norsk</a></li>
-                 <li><a tabindex="-1" href="#"
-                         data-value="nobsme">norsk → nordsamisk</a></li>
-                 <li><a tabindex="-1" href="#"
-                         data-value="smefin">nordsamisk → finsk</a></li>
+
+                {# TODO: dropdown select to language pair for form submit #}
+                {% for iso_pair, names in language_pairs.iteritems() %}
+                 <li class="selected{%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}"><a tabindex="-1" href="#"
+                         data-value="{{ iso_pair[0]}}{{ iso_pair[1] }}">
+                        {% for lang, name in names.iteritems() %}
+                            <span class="i18n" lang="{{ lang }}">{{ name[0] }} → {{ name[1] }}</span>
+                        {% endfor %}
+                    </a></li>
+                {% endfor %}
+                 
                </ul>
              <input type="text" name="lookup"
                     placeholder="{{ user_input }}" style="width: 10em;"></input>
