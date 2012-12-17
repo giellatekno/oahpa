@@ -128,7 +128,11 @@ class AppConf(object):
                 sys.exit()
 
             if 'tool' in _kwargs_in:
-                kwargs['lookup_tool'] = _kwargs_in['tool']
+                if isinstance(_kwargs_in['tool'], list):
+                    _kwt = ''.join(_kwargs_in['tool'])
+                else:
+                    _kwt = _kwargs_in['tool']
+                kwargs['lookup_tool'] = _kwt
             else:
                 print "Lookup tool missing"
                 sys.exit()
