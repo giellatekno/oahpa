@@ -2,7 +2,8 @@
 
 {% block extra_css %}
 {# https://gist.github.com/1866577 #}
-<script type="text/javascript" src="{{url_for('static', filename='bootstrap/js/bootstrap-typeahead-fork.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-collapse.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-typeahead-fork.js')}}"></script>
 
 <script type="text/javascript">
 $('.typeahead').typeahead({
@@ -40,13 +41,26 @@ $('.typeahead').typeahead({
             type to give more meaningful results.</p>
         -->
 
+
+{% block extra_nav %}
+        {% for iso_pair, names in language_pairs.iteritems() %}
+            <li class="visible-thin hidden-desktop hidden-tablet {%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}">
+                <a href="/kursadict/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
+                {% for lang, name in names.iteritems() %}
+                    <span class="lang_name" lang="{{ lang }}">{{ name[0] }} ↔ {{ name[1] }}</span>
+                {% endfor %}
+                </a></li>
+        {% endfor %}
+{% endblock %}
+
+
 {% block content %}
     <div class="container-fluid">
-        <div class="row">
-            <div class="span4">
-                <ul class="nav nav-tabs nav-stacked">
+        <div class="row-fluid">
+            <div class="span4 hidden-phone">
+                <ul class="nav nav-collapse nav-tabs nav-stacked">
                 {% for iso_pair, names in language_pairs.iteritems() %}
-                    <li class="{%- if iso_pair[0] == _from and iso_pair[1] == _to %}active{% endif -%}">
+                    <li class="{%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}">
                         <a href="/kursadict/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
                         {% for lang, name in names.iteritems() %}
                             <span class="lang_name" lang="{{ lang }}">{{ name[0] }} ↔ {{ name[1] }}</span>
@@ -56,14 +70,15 @@ $('.typeahead').typeahead({
                 </ul>
             </div>
             <div class="span8">
-                <h3>{%- for iso_pair, names in language_pairs.iteritems() %}
+                <h4 id="dict_title">{%- for iso_pair, names in language_pairs.iteritems() %}
                     {% if iso_pair[0] == _from and iso_pair[1] == _to %}
                     {%- for lang, name in names.iteritems() %}
                         <span class="lang_name" lang="{{ lang }}">{{ name[0] }} → {{ name[1] }}</span>
                     {% endfor -%}
                     {% endif %}
                     {% endfor -%}
-                    <span style="font-size: 80%">(<a href="/kursadict/{{ _to }}/{{ _from }}/">⇄ Swap</a>)</span></h3>
+                    <br class="visible-phone" />
+                    <span style="font-size: 80%">(<a href="/kursadict/{{ _to }}/{{ _from }}/">⇄ Swap</a>)</span></h4>
 
                 <form id="kursadict" class="form-inline"
                     method="post"

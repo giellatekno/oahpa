@@ -2,30 +2,66 @@
 
 {% block extra_css %}
 <link href="{{url_for('static', filename='css/detail.css')}}" rel="stylesheet" />
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-collapse.js')}}"></script>
 {% endblock %}
 
-{% block left %}
+{% block float_right %}
     {%- if result.analyses %}
+    <div class="well">
         <strong>{{ result.input }} is a possible form of ... </strong>
-        <dl>
-        {% for form, pos, tag in result.analyses %}
+        <dl class="possible_analyses">
+            {% for grouper, forms in result.analyses|groupby(0) %}
+            <dt>{{ grouper }}</dt>
+            <dd><ul class="possible_forms">{% for form, pos, tag in forms %}<li>{{ tag }}</li>{% endfor %}</ul></dd>
+            {% endfor %}
+
+        {# for form, pos, tag in result.analyses %}
             <dt><a href="{{ form|urlencode }}.html">{{ form }}</a></dt>
             <dd>{{ tag }}</dd>
-        {%- endfor -%}
+        {%- endfor -#}
         </dl>
+    </div>
     {%- endif -%}
 {% endblock %}
 
-{% block placeholder %}
-    {{ user_input }}
-{% endblock %}
-
-{% block content_right %}
+{% block content_left %}
+    <div class="row-fluid">
+       <div class="span12">
+         <form id="kursadict" class="form-inline pull-left">
+           <div class="input-prepend input-append">
+             <div class="btn-group">
+               <button class="btn dropdown-toggle" data-toggle="dropdown">
+                   <span class="val_name">{{ _from }}→{{ _to }}</span>
+                 <span class="caret"></span>
+               </button>
+               <ul class="dropdown-menu" id="langpairs" role="menu"
+                   data-for="target_lang">
+                 {# TODO: fetch from settings #}
+                 <li class="selected"><a tabindex="-1" href="#"
+                         data-value="smenob">nordsamisk → norsk</a></li>
+                 <li><a tabindex="-1" href="#"
+                         data-value="nobsme">norsk → nordsamisk</a></li>
+                 <li><a tabindex="-1" href="#"
+                         data-value="smefin">nordsamisk → finsk</a></li>
+               </ul>
+             <input type="text" name="lookup"
+                    placeholder="{{ user_input }}" style="width: 10em;"></input>
+             <div class="btn-group">
+              <button type="submit" class="btn" name="search">Oza</button>
+             </div>
+             <input type="hidden" name="target_lang" value="smenob"></input>
+           </div>
+           </div>
+          <div id="results"></div>
+        </form>
+       </div>
+       <br />
+    </div>
 
     {% for lexeme in result.lexicon %}
-    <div class="row">
+    <div class="row-fluid lexeme">
         {% if lexeme.entries %}
-            <div class="span">
+            <div class="span6">
             <p class="lead">{{ lexeme.input[0] }} ({{ lexeme.input[1] }}) </p>
 
             {% for tg in lexeme.entries.lookups %}
@@ -36,7 +72,6 @@
                         {{ txl }}{%- if not loop.last %}, {% endif -%}
                         {%- endfor -%}
                         {%- if mg.examples -%}
-                        <br />
                         <br />
                         <blockquote class="examples">
                         <dl>
@@ -53,9 +88,9 @@
             {% endfor %}
             </div>
 
-            <div class="span2">
+            <div class="span4">
                 {% if lexeme.paradigms %}
-                    <dl class="dl-horizontal">
+                    <dl class="dl-horizontal miniparadigm">
                     {%- for lemma, tag, form in lexeme.paradigms -%}
 
                         {% if tag %}

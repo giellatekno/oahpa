@@ -3,11 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="{{url_for('static', filename='bootstrap/css/bootstrap.css')}}" rel="stylesheet" />
+        <link href="{{url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet" />
+        <link href="{{url_for('static', filename='css/bootstrap-responsive.css')}}" rel="stylesheet" />
+
+        {# 
         <link href="{{url_for('static', filename='bootstrap/css/bootstrap-layouts.css')}}" rel="stylesheet" />
+        #}
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script type="text/javascript" src="{{url_for('static', filename='bootstrap/js/bootstrap-dropdown.js')}}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-dropdown.js')}}"></script>
         
         <!--[if lt IE 9]>
               <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -24,35 +28,23 @@
         <header>
             <div class="navbar navbar-static-top">
                 <div class="navbar-inner">
-                    <div class="container-fluid">
+                    <div class="container">
+                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".main-nav">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </a>
                         <a class="brand" href="/kursadict/">Vuosttaš Neahttasánit</a>
-                        <ul class="nav">
-                            <li><a href="/kursadict/">Home</a></li>
-                            <li><a href="/kursadict/plugins/">Plugins</a></li>
-                            <li><a href="/kursadict/about/">About</a></li>
-                            <li><a href="/kursadict/contact/">Contact</a></li>
-                            {% block search_li %}
-                            <li clas="dropdown">
-                                <a href="#" id="langselect" class="dropdown-toggle" data-toggle="dropdown">sme→nob <b class="caret"></b></a>
-                            <ul class="dropdown-menu" id="langpairs" role="menu"
-                                data-for="target_lang">
-                              {# TODO: get pairs from settings #}
-                              <li class="selected"><a tabindex="-1" href="#"
-                                      data-value="smenob">nordsamisk → norsk</a></li>
-                              <li><a tabindex="-1" href="#"
-                                      data-value="smefin">nordsamisk → finsk</a></li>
-                              <li><a tabindex="-1" href="#"
-                                      data-value="smesmj">nordsamisk → lulesamisk</a></li>
-                              <li><a tabindex="-1" href="#"
-                                      data-value="nobsme">norsk → nordsamisk</a></li>
+                        <div class="nav-collapse main-nav">
+                            <ul class="nav">
+                                <li><a href="/kursadict/">Home</a></li>
+                                <li><a href="/kursadict/plugins/">Plugins</a></li>
+                                <li><a href="/kursadict/about/">About</a></li>
+                                {% block extra_nav %}
+                                {% endblock %}
                             </ul>
-                            </li>
-                            {% endblock %}
-                        </ul>
+                        </div>
                         {% block search_li_form %}
-                        <form class="navbar-search pull-left">
-                            <input type="text" class="search-query" placeholder="{% block placeholder %}Search{% endblock %}">
-                        </form>
                         {% endblock %}
                     </div>
                 </div>
@@ -64,18 +56,18 @@
             <content>
                 {% block content %}
                 <div class="container-fluid">
-                    {% block layout %}
-                        <div class="span4">
-                            <div class="well">
-                            {% block left %}
-                            {% endblock %}
+                    <div class="row-fluid">
+                        {% block layout %}
+                            <div class="span9">
+                                {% block content_left %}
+                                {% endblock %}
                             </div>
-                        </div>
-                        <div class="span10">
-                            {% block content_right %}
-                            {% endblock %}
-                        </div>
-                    {% endblock %}
+                            <div class="span3">
+                                {% block float_right %}
+                                {% endblock %}
+                            </div>
+                        {% endblock %}
+                    </div>
                 </div>
                 {% endblock %}
             </content>

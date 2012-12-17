@@ -1,5 +1,10 @@
 /* @override http://localhost:5000/kursadict/static/css/detail.css */
 
+div.lexeme {
+    border-bottom: 5px solid #EEE;
+    margin-bottom: 15px;
+}
+
 .well dd {
     word-wrap: break-word;
 }
@@ -12,6 +17,10 @@ ul.meanings li {
     font-size: 120%;
 }
 
+blockquote.examples {
+	margin-top: 0;
+}
+
 blockquote.examples dd {
     margin-bottom: .5em ;
     margin-top: .25em;
@@ -21,7 +30,11 @@ ul.meanings li {
 	color: #000;
 }
 
-dl.dl-horizontal dd {
+dl.miniparadigm {
+	margin-left: 1em;
+}
+
+dl.miniparadigm dd {
 	position: relative;
 }
 
@@ -31,6 +44,23 @@ dl dd .extraexpand .extralabel {
 	top: 0px;
 }
 
+.extralabel {
+	display: none;
+}
+
 .extra_forms {
 	display: none;
+}
+
+dl.possible_analyses dd {
+	margin-left: 0;
+	padding-left: 0;
+}
+ul.possible_forms {
+	list-style-type: none; 
+	margin-left: 0em;
+}
+
+ul.possible_forms li {
+	margin-left: 0;
 }
