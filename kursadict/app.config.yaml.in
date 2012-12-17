@@ -4,6 +4,9 @@ Tools:
   xfst_lookup: &LOOKUP '/usr/bin/lookup'
   gthome: &GTHOME '/home/ryan/gtsvn'
 
+# Morphological system definitions. Since YAML variables aren't able to
+# be used in concatenating strings, certain paths with references must
+# be lists. These are concatenated automatically.
 Morphology:
   sme:
     tool: *LOOKUP 
@@ -35,6 +38,7 @@ Morphology:
       tagsep: '+'
       inverse_tagsep: '+'
 
+# Language names which are displayed in the UI.
 Languages:
   - iso: sme
     name:
@@ -89,8 +93,11 @@ Dictionaries:
 
 
 
-# Tags to accept as the dictionary form for each POS, e.g., want to show
-# paradigms for words that can be analyzed with this form
+# These are the accepted forms for which we will display dictionary
+# entries in the detailed word view. If a word can be analyzed with
+# one of these analyses, then we assume it is a "baseform"/dictionary
+# form.
+#
 Baseforms:
   sma:
     V: 
@@ -132,7 +139,10 @@ Baseforms:
       - "A+Pos+Fem+Sg+Indef"
       - "A+Pos+MF+Sg+Indef"
 
-# TODO: help text
+# Paradigms that are generated and displayed with words that have a
+# baseform match in their analysis. Here the POS and Wordtype are not
+# included, because these will be applied automatically
+#
 Paradigms:
   sma:
     N:
