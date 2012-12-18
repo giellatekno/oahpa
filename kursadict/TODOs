@@ -1,5 +1,7 @@
 Now: 
 
+ * analysis of search word on front page
+
  * search and autocomplete: bootstrap typeahead
 
  * form on detail view
@@ -26,10 +28,10 @@ Now:
 
 Testing notes:
 
- * <-> arrow in chrome does not appear on browserstack, probably font
+ * windows, chrome: <-> arrow does not appear on browserstack, probably font
    issue
 
- * ie8, width of page is kind of funky; responsive doesn't seem to work
+ * windows, ie8: width of page is kind of funky; responsive doesn't seem to work
    perfectly. maybe can conditionally exclude this for IE8. It's fine in
    IE9, though, but there could be a little more space between the
    analysis div and the word results.
