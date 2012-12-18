@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Vuosttaš Digisánit
+Plugin Name: Vuosttaš Neahttasánit
 Plugin URI: http://giellatekno.uit.no
 Description: A plugin for providing access to dictionaries via clicking.
 Version: 0.0.1
@@ -32,25 +32,24 @@ function load_dict_scripts () {
 }
 
 
-/*
- *  error_reporting(E_ALL);
- *  class NS_SearchForm {
- *    function control(){
- *      echo 'I am a control panel';
- *    }
- *    function widget($args){
- *      $snippet = fopen("search_form_snippet.html", "r");
- *      echo $args['before_widget'];
- *      echo $args['before_title'] . 'Vuosttaš Neahttasánit' . $args['after_title'];
- *      echo $snippet;
- *      echo $args['after_widget'];
- *    }
- *    function register(){
- *      register_sidebar_widget('Vuosttaš Neahttasánit', array('Widget_name', 'widget'));
- *      register_widget_control('Vuosttaš Neahttasánit', array('Widget_name', 'control'));
- *    }
- *  }
- */
+
+error_reporting(E_ALL);
+class NS_SearchForm {
+  function control(){
+    echo 'I am a control panel';
+  }
+  function widget($args){
+    $snippet = fopen("search_form_snippet.html", "r");
+    echo $args['before_widget'];
+    echo $args['before_title'] . 'Vuosttaš Neahttasánit' . $args['after_title'];
+    echo $snippet;
+    echo $args['after_widget'];
+  }
+  function register(){
+    register_sidebar_widget('Vuosttaš Neahttasánit', array('Widget_name', 'widget'));
+    register_widget_control('Vuosttaš Neahttasánit', array('Widget_name', 'control'));
+  }
+}
 
 function vn_init() {
     add_action("widgets_init", array('Widget_name', 'register'));
