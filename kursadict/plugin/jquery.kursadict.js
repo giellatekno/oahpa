@@ -665,7 +665,7 @@ TODO: Opera on Windows - alt+click context window
 jQuery(document).ready(function($) {
   var API_HOST, Templates, cleanTooltipResponse, getActualIndex, initSpinner, lookupSelectEvent,
     _this = this;
-  API_HOST = "http://localhost:5000/";
+  API_HOST = "http://testing.oahpa.no/";
   Templates = {
     OptionsMenu: function(opts) {
       return "omg";
