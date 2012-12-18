@@ -64,6 +64,18 @@ buildChrome = (callback) ->
     _in = fs.readFileSync file
     fs.writeFileSync "bin/chrome/#{file}", _in
 
+buildWordpress = (callback) ->
+  pluginTargetDir = 'bin/wordpress/'
+  # copy to bin/chrome/
+
+  # copy compiled files compiledFiles
+  wrench.copyDirSyncRecursive('src/wordpress', 'bin/wordpress')
+
+  # cp compiledFiles
+  for file in compiledFiles
+    _in = fs.readFileSync file
+    fs.writeFileSync "bin/wordpress/vuosttasdigisanit/#{file}", _in
+
 task 'watch', 'Watch prod source files and build changes', ->
   invoke 'build'
   util.log "Watching for changes in src"
@@ -90,6 +102,10 @@ task 'clean', 'Clean compiled files', ->
 task 'build-chrome', 'Compile the chrome plugin', ->
   buildChrome()
   util.print "Everything now in bin/chrome/\n"
+
+task 'build-wordpress', 'Compile the wordpress plugin', ->
+  buildWordpress()
+  util.print "Everything now in bin/wordpress/\n"
 
 task 'build', 'Compile jQuery dependencies and dictapi', ->
   build()
