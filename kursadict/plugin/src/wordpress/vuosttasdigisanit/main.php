@@ -11,7 +11,7 @@ License: GPL2
 
 function load_dict_css () {
     wp_enqueue_style( 'my_style'
-                    , 'jquery.kursadict.css'
+                    , plugins_url('/jquery.kursadict.css', __FILE__)
                     );
 }
 
@@ -19,36 +19,48 @@ function load_dict_scripts () {
     // NOTE: probably already available wp_enqueue_script('jquery');
 
     wp_enqueue_script( 'gt-ns-jquery'
-                     , '/wp-content/plugins/vuosttasdigisanit/jquery.kursadict.js'
+                     , plugins_url('/jquery.kursadict.js', __FILE__)
+                     , array('jquery')
+                     , '1.7.2'
                      ) ;
 
     wp_enqueue_script( 'gt-ns-main'
-                     , '/wp-content/plugins/vuosttasdigisanit/main.js'
+                     , plugins_url('/main.js', __FILE__)
+                     , array('jquery', 'gt-ns-jquery')
                      ) ;
 
 }
 
-add_action('ns-css-init', 'load_dict_css');
-add_action('ns-init', 'load_dict_scripts');
 
-error_reporting(E_ALL);
-add_action("widgets_init", array('Widget_name', 'register'));
-class NS_SearchForm {
-  function control(){
-    echo 'I am a control panel';
-  }
-  function widget($args){
-    $snippet = fopen("search_form_snippet.html", "r");
-    echo $args['before_widget'];
-    echo $args['before_title'] . 'Vuosttaš Neahttasánit' . $args['after_title'];
-    echo $snippet;
-    echo $args['after_widget'];
-  }
-  function register(){
-    register_sidebar_widget('Vuosttaš Neahttasánit', array('Widget_name', 'widget'));
-    register_widget_control('Vuosttaš Neahttasánit', array('Widget_name', 'control'));
-  }
+/*
+ *  error_reporting(E_ALL);
+ *  class NS_SearchForm {
+ *    function control(){
+ *      echo 'I am a control panel';
+ *    }
+ *    function widget($args){
+ *      $snippet = fopen("search_form_snippet.html", "r");
+ *      echo $args['before_widget'];
+ *      echo $args['before_title'] . 'Vuosttaš Neahttasánit' . $args['after_title'];
+ *      echo $snippet;
+ *      echo $args['after_widget'];
+ *    }
+ *    function register(){
+ *      register_sidebar_widget('Vuosttaš Neahttasánit', array('Widget_name', 'widget'));
+ *      register_widget_control('Vuosttaš Neahttasánit', array('Widget_name', 'control'));
+ *    }
+ *  }
+ */
+
+function vn_init() {
+    add_action("widgets_init", array('Widget_name', 'register'));
+
+    if (!is_admin()) {
+        load_dict_css();
+        load_dict_scripts();
+    }
 }
 
-?>
+add_action('init', 'vn_init');
 
+?>
