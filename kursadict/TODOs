@@ -2,16 +2,40 @@ Now:
 
  * search and autocomplete: bootstrap typeahead
 
- * switch from bootstrap static to bootstrap fluid 
+ * form on detail view
 
  * about page, contact page, plugin page, etc.
 
+ * internationalization, language selection for interface
+
+ * update all names from kursadict to vuosttas neahttasánit in some way,
+   maybe 
+
+ * need to figure out how to show links to detailed view from main view
+   best, f.eks., in nob->sme there are links to detail for nob, but
+   probably we want sma.
+
+ * maybe make it clearer that one can bookmark specific dictionaries,
+   e.g. /sme/nob/ or whatever.
+
+ * begin testing for /omg/bbq/ just to make sure there are 404s
+
+ * a little more color?
+
+ * advanced search form: here we get to have some nerdy linguistic fun.
+
+Testing notes:
+
+ * <-> arrow in chrome does not appear on browserstack, probably font
+   issue
+
+ * ie8, width of page is kind of funky; responsive doesn't seem to work
+   perfectly. maybe can conditionally exclude this for IE8. It's fine in
+   IE9, though, but there could be a little more space between the
+   analysis div and the word results.
 
 
 Features to develop at some point:
-
- * Levenshtein difference for words that don't turn up lexical entries?
-   e.g., manna -> mánná 
 
  * Use something other than werkzeug's default cache, once things are
    ready for actual use.
@@ -32,11 +56,7 @@ Features to develop at some point:
 
 Server errors: 
 
- * eaktodáhtolaš
- * orru + N? -
-   http://testing.oahpa.no/kursadict/detail/sme/nob/orru.html
-
- * G3 generation
+ * TEST: G3 generation
 
 
 == 
