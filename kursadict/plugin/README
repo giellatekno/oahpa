@@ -42,6 +42,8 @@ TODO: write more.
 
 ## Developing
 
+### Developing with the core files 
+
 You will need some tools to help develop and compile the modules here, namely
 node.js and npm. Otherwise, this module uses both JavaScript, and CoffeeScript[1],
 the latter of which is a fabulous (completely) JavaScript compliant abstraction
@@ -55,7 +57,7 @@ Coffeescript quickly compiles into JavaScript, but in addition, there are some
 other handy tools available in the Node.js 'system' that are necessary for 
 compiling the modules here into a minimum of files, and a variety of targets.
 
-## node.js and npm
+#### node.js and npm
 
 Install these first, and then run
 
@@ -63,7 +65,7 @@ Install these first, and then run
 
 Which will read package.json, and install the development packages to help
 
-## Cake
+#### Cake
 
 ... is just a build system like Make, but for node/coffeescript
 projects. It facilitates compiling and combining all the
@@ -142,4 +144,12 @@ concurrently.
 
 * http://www.firebreath.org/
 
+### Wordpress plugin development
+
+`cake build`, followed by `cake build-wordpress`.
+
+#### Gotchas
+
+* PHP: make sure there are no spaces or newlines after the `?>` in 
+  any of the PHP files, or wordpress will freak out and nothing will load.
 
