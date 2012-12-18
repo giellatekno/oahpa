@@ -671,17 +671,22 @@ jQuery(document).ready(function($) {
       return "omg";
     },
     OptionsTab: function(opts) {
-      var el, languageOption;
-      languageOption = function(data, i) {
-        var checked;
-        if (i + 1 === 1) {
-          checked = "checked";
-        } else {
-          checked = "";
+      var el, makeLanguageOption;
+      makeLanguageOption = function(options) {
+        var checked, data, i, options_block, _i, _len;
+        options_block = [];
+        for (i = _i = 0, _len = options.length; _i < _len; i = ++_i) {
+          data = options[i];
+          if (i + 1 === 1) {
+            checked = "checked";
+          } else {
+            checked = "";
+          }
+          options_block.push("<label class=\"radio\">\n  <input type=\"radio\" \n         name=\"language_pair\" \n         id=\"language_pair" + (i + 1) + "\" \n         value=\"" + data.from.iso + data.to.iso + "\" " + checked + ">\n  " + data.from.name + " -> " + data.to.name + "\n</label>");
         }
-        return "<label class=\"radio\">\n  <input type=\"radio\" \n         name=\"language_pair\" \n         id=\"language_pair" + (i + 1) + "\" \n         value=\"" + data.from.iso + data.to.iso + "\" " + checked + ">\n  " + data.from.name + " -> " + data.to.name + "\n</label>";
+        return options_block.join('\n');
       };
-      el = $("<div id=\"webdict_options\" class=\"hidden\">\n  <div class=\"well\">\n  <a class=\"close\" href=\"#\" style=\"display: none;\">&times;</a>\n  <div class=\"trigger\">\n    <h1><a href=\"#\" class=\"open\">Á</a></h1>\n  </div>\n\n  <div class=\"option_panel\" style=\"display: none;\">\n    <ul class=\"nav nav-pills\">\n      <li class=\"active\">\n        <a href=\"#\" data-target=\"#options\">Options</a>\n      </li>\n      <li><a href=\"#\" data-target=\"#about\">About</a></li>\n    </ul>\n    <div id=\"options\" class=\"minipanel\">\n      <form class=\"\">\n        <label class=\"control-label\" for=\"inputEmail\">Ordbok</label>\n        " + (opts.dictionaries.map(languageOption).join('\n')) + "\n        <button type=\"submit\" class=\"btn\" id=\"save\">Save</button>\n      </form>\n    </div>\n    <div id=\"about\" style=\"display: none;\" class=\"minipanel\">\n    <p>To look up a word, hold Alt (or Option/⌥ on Macs) and double click a word. If the popup disappears, either hover over the link that is created, or click anywhere on the screen, and then try again.</p>\n    <p>To report problems, <a href=\"mailto:\">contact us</a>.</p>\n    </div>\n  </div>\n</div>");
+      el = $("<div id=\"webdict_options\" class=\"hidden\">\n  <div class=\"well\">\n  <a class=\"close\" href=\"#\" style=\"display: none;\">&times;</a>\n  <div class=\"trigger\">\n    <h1><a href=\"#\" class=\"open\">Á</a></h1>\n  </div>\n\n  <div class=\"option_panel\" style=\"display: none;\">\n    <ul class=\"nav nav-pills\">\n      <li class=\"active\">\n        <a href=\"#\" data-target=\"#options\">Options</a>\n      </li>\n      <li><a href=\"#\" data-target=\"#about\">About</a></li>\n    </ul>\n    <div id=\"options\" class=\"minipanel\">\n      <form class=\"\">\n        <label class=\"control-label\" for=\"inputEmail\">Ordbok</label>\n        " + (makeLanguageOption(opts.dictionaries)) + "\n        <button type=\"submit\" class=\"btn\" id=\"save\">Save</button>\n      </form>\n    </div>\n    <div id=\"about\" style=\"display: none;\" class=\"minipanel\">\n    <p>To look up a word, hold Alt (or Option/⌥ on Macs) and double click a word. If the popup disappears, either hover over the link that is created, or click anywhere on the screen, and then try again.</p>\n    <p>To report problems, <a href=\"mailto:\">contact us</a>.</p>\n    </div>\n  </div>\n</div>");
       el.find('ul.nav-pills a').click(function(evt) {
         var target_element;
         target_element = $(evt.target).attr('data-target');
