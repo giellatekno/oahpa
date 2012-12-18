@@ -29,21 +29,24 @@ jQuery(document).ready ($) ->
       return "omg"
     
     OptionsTab: (opts) ->
-      languageOption = (data, i) ->
-        if i+1 == 1
-          checked = "checked"
-        else
-          checked = ""
+      makeLanguageOption = (options) ->
+        options_block = []
+        for data, i in options
+          if i+1 == 1
+            checked = "checked"
+          else
+            checked = ""
 
-        """
-        <label class="radio">
-          <input type="radio" 
-                 name="language_pair" 
-                 id="language_pair#{i+1}" 
-                 value="#{data.from.iso}#{data.to.iso}" #{checked}>
-          #{data.from.name} -> #{data.to.name}
-        </label>
-        """
+          options_block.push """
+          <label class="radio">
+            <input type="radio" 
+                   name="language_pair" 
+                   id="language_pair#{i+1}" 
+                   value="#{data.from.iso}#{data.to.iso}" #{checked}>
+            #{data.from.name} -> #{data.to.name}
+          </label>
+          """
+        return options_block.join('\n')
     
       el = $("""
       <div id="webdict_options" class="hidden">
@@ -63,7 +66,7 @@ jQuery(document).ready ($) ->
           <div id="options" class="minipanel">
             <form class="">
               <label class="control-label" for="inputEmail">Ordbok</label>
-              #{opts.dictionaries.map(languageOption).join('\n')}
+              #{makeLanguageOption(opts.dictionaries)}
               <button type="submit" class="btn" id="save">Save</button>
             </form>
           </div>
