@@ -100,36 +100,45 @@ $('.typeahead').typeahead({
                 </form>
 
                 {% if word_searches %}
-                <div class="results">
-                    {% for lexeme in word_searches %}
-                    {% if lexeme.lookups %}
+                    <div class="results">
+                        {% for lexeme in word_searches %}
+                        {% if lexeme.lookups %}
 
-                        {% for lookup in lexeme.lookups %}
-                        <p><a href="/kursadict/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html">{{ lookup.left }}</a> ({{ lookup.pos }}) – </p>
-                        <ol>
-                            {% for tx in lookup.right %}
-                            <li>{{ tx }}</li>
+                            {% for lookup in lexeme.lookups %}
+                            <p><a href="/kursadict/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html">{{ lookup.left }}</a> ({{ lookup.pos }}) – </p>
+                            <ol>
+                                {% for tx in lookup.right %}
+                                <li>{{ tx }}</li>
+                                {% endfor %}
+                            </ol>
                             {% endfor %}
-                        </ol>
-                        {% endfor %}
 
-                    {% else %}
-                        {% if errors %}
-                            <div class="alert">
-                                <ul>
-                                    {% for error in errors %}
-                                    <li>{{ error }}</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
                         {% else %}
-                            <p>Ukjent ord: {{ lexeme.input }}</l>
+                            {% if errors %}
+                                <div class="alert">
+                                    <ul>
+                                        {% for error in errors %}
+                                        <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% else %}
+                                <p>Ukjent ord: {{ lexeme.input }}</l>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
 
-                    {% endfor %}
-                    
-                </div>
+                        {% endfor %}
+                        
+                    </div>
+                {% else %}
+                    <div class="alert alert-success">
+                        <p>
+                            <span class="i18n" lang="nob">Søk etter et ord, eller ordform for å få analyse og betydning.</span>
+                            <span class="i18n" lang="fin">Kirjoita sana, eli sananmuoto saadakseen analyyseja ja tarkoitukseja.</span>
+                            <span class="i18n" lang="eng">Search for a word, or a word form for a word analysis and definition.</span>
+                            <span class="i18n" lang="sme"></span>
+                        </p>
+                    </div>
                 {% endif %}
             </div>
             
