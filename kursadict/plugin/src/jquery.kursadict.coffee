@@ -20,8 +20,7 @@ TODO: Opera on Windows - alt+click context window
 # Wrap jQuery and add plugin functionality
 jQuery(document).ready ($) ->
 
-  # API_HOST = "http://testing.oahpa.no/"
-  API_HOST = "http://localhost:5000/"
+  API_HOST = "http://testing.oahpa.no/"
 
   Templates =
     OptionsMenu: (opts) ->

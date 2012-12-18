@@ -55,8 +55,10 @@ function vn_init() {
     add_action("widgets_init", array('Widget_name', 'register'));
 
     if (!is_admin()) {
-        load_dict_css();
-        load_dict_scripts();
+        if (current_user_can( 'manage_options' )) {
+            load_dict_css();
+            load_dict_scripts();
+        }
     }
 }
 

@@ -74,7 +74,7 @@ buildWordpress = (callback) ->
   # cp compiledFiles
   for file in compiledFiles
     _in = fs.readFileSync file
-    fs.writeFileSync "bin/wordpress/vuosttasdigisanit/#{file}", _in
+    fs.writeFileSync "bin/wordpress/vuosttasneahttasanit/#{file}", _in
 
 task 'watch', 'Watch prod source files and build changes', ->
   invoke 'build'
