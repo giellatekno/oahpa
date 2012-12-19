@@ -3,7 +3,7 @@
 Plugin Name: Vuosttaš Neahttasánit
 Plugin URI: http://giellatekno.uit.no
 Description: A plugin for providing access to dictionaries via clicking.
-Version: 0.0.1
+Version: 0.0.2
 Author: Ryan Johnson / Giellatekno
 Author URI: http://giellatekno.uit.no/
 License: GPL2
