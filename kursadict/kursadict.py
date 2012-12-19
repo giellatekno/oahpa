@@ -498,6 +498,7 @@ def wordDetail(from_language, to_language, wordform, format):
         # POS info for a good lookup.
         morph = morphologies.get(from_language, False)
         analyzed = morph.analyze(wordform, split_compounds=True)
+        # NOTE: #formanalysis
 
         # Collect lemmas and tags
         _result_formOf = []
@@ -835,7 +836,7 @@ def indexWithLangs(_from, _to):
     if len(errors) == 0:
         errors = False
 
-    # TODO: include form analysis of user input
+    # TODO: include form analysis of user input #formanalysis
     return render_template('index.html',
                            language_pairs=settings.pair_definitions,
                            _from=_from,
