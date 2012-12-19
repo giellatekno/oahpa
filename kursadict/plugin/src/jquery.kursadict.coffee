@@ -238,6 +238,18 @@ jQuery(document).ready ($) ->
             'bottom'
         trigger: 'hover'
       
+      # TODO: rangy remove selection?
+      # Remove selection
+      if window.getSelection
+        # Chrome
+        if window.getSelection().empty
+          window.getSelection().empty()
+        # Firefox
+        else if window.getSelection().removeAllRanges
+          window.getSelection().removeAllRanges()
+      # IE
+      else if document.selection
+        document.selection.empty()
       # Done
       _tooltipTarget.popover('show')
 
@@ -299,6 +311,7 @@ jQuery(document).ready ($) ->
     
     holdingOption = (evt) =>
       clean(evt)
+
       if evt.altKey
         element = evt.target
         range = getFirstRange()
