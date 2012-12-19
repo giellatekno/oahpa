@@ -28,30 +28,17 @@
 
 ## Testing notes for JS click plugin:
 
- * win7/ie9 , spinner does not disappear sometimes
-
- * norsk-samisk: when you get a word that comes as a result of analysis, "word
-   not found", but the word is presented anyway
+ * EASY: norsk-samisk: when you get a word that comes as a result of analysis,
+   "word not found", but the word is presented anyway
 
  * samisk-norsk: safari and firefox on mac, nothing shows up for words that
    aren't found
 
- * compare safari, firefox - kapittel 4.1 - skuvla -> skuvlii
+ * compare safari, firefox - kapittel 4.1 - skuvla -> skuvlii - works, but
+   there's one error that needs to be caught for firefox, for some reason.
 
  * opt-doubleclick: need to make a note about this
 
- * win7 sp1 - firefox 17 - popups do not disappear
- * win7 sp1 - ie 9.0.8112.16421 - doesn't work at all
-
- * js plugin: selection.index missing in winxp/IE8; same for win7/IE8, but the
-   latter has console. missing index means that the selection gets triggered
-   only for the first occurrance of a word. There may be a better JS library
-   for this, which is 'rangy', however a little work would be necessary to
-   integrate it with a text selection event. For now, IE9 is enough, until
-   other bugs are fixed, _unless_ this same bug turns up in other browsers,
-   which it might...
-
-       http://code.google.com/p/rangy/
 
 ## Testing notes for web interface to VN: 
 
