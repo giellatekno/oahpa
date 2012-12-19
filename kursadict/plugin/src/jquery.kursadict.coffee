@@ -4,9 +4,6 @@ A jQuery plugin for enabling the Kursadict functionality
 
 ## TODOs / Bugs
 
-TODO: IE on all OSes seems to select a whole paragraph after a word has been
-      selected. There is probably some way to prevent this from occurring.
-
 TODO: IE sometimes still does not notice the first lookup
 
 TODO: prevent window url from updating with form submit params
@@ -90,11 +87,13 @@ jQuery(document).ready ($) ->
         optsp = el.find('div.option_panel')
         optsp.toggle()
         el.find('a.close').toggle()
+        return false
 
       el.find('a.close').click () ->
         optsp = el.find('div.option_panel')
         optsp.toggle()
         el.find('a.close').toggle()
+        return false
 
       el.find('input[name="language_pair"][type="radio"]').click (e) ->
         store_val = $(e.target).val()
@@ -161,70 +160,47 @@ jQuery(document).ready ($) ->
         host: API_HOST
       }
 
+  ##
+  ## Some rangy helper functions 
+  ## 
 
-  getActualIndex = (selection) ->
-    # Need to adjust the selection index when the user double clicks a
-    # word, the selection index returned from the selection event is the
-    # character at the point of the click, so, the text of the element
-    # needs to be split.  The baseOffset is also the same as the
-    # extentOffset.
-    #
+  getFirstRange = ->
+    sel = rangy.getSelection()
+    (if sel.rangeCount then sel.getRangeAt(0) else null)
+  
+  cloneContents = (range) ->
+    range.cloneContents().textContent
+  
+  surroundRange = (range, surrounder) ->
+    if range
+      try
+        range.surroundContents surrounder
+      catch ex
+        if (ex instanceof rangy.RangeException \
+            or Object::toString.call(ex) is "[object RangeException]") \
+            and ex.code is 1
+          alert """Unable to surround range because range partially selects a
+                   non-text node. See DOM Level 2 Range spec for more
+                   information.\n\n""" + ex
+        else
+          alert "Unexpected errror: " + ex
 
-    [baseOffset, extentOffset] = selection.index
-    # regex on _left slice to get length of word that is cut off
-    # subtract length, return
-
-    # Doubleclick
-    if baseOffset == extentOffset
-      _left = $(selection.element).html().slice(0, baseOffset)
-      # TODO: hyphen
-      last = _left.match /[^\s.]*$/
-      if last[0] != ""
-        return baseOffset - last[0].length
-      else
-        return baseOffset
-    else
-      return baseOffset
-
-    return selection.index[0]
-     
+   
   cleanTooltipResponse = (selection, response, opts) ->
     ###
         Clean response from tooltip $.ajax query, and display results
     ###
-    if not selection.index
-      console.log("no index!")
 
     string   = selection.string
     element  = selection.element
-    index    = getActualIndex(selection)
-    indexMax = index + string.length
+    range    = selection.range
 
-    # TODO: quick fix for IE, fix the selection event plugin instead
-    if not index
-      console.log "no index!!"
-      index = $(selection.element).html().search(string)
-      indexMax = index + string.length
-    
-    # For tooltip we need to wrap the search word in link, but going
-    # based off of the index of the searched word to account for
-    # multiple words.
     if opts.tooltip
-      _wrapElement = """
+      _wrapElement = $("""
       <a style="font-style: italic; border: 1px solid #CEE; padding: 0 2px" 
          class="tooltip_target">#{string}</a>
-      """
-
-      _elem_html = $(element).html()
-
-      _left      = _elem_html.slice(0, index)
-      _mid       = _elem_html.slice(index, indexMax)
-      _right     = _elem_html.slice(indexMax)
-
-      _mid_new   = _mid.replace(string, _wrapElement)
-      _new_html  = _left + _mid_new + _right
-
-      $(element).html _new_html
+      """)[0]
+      surroundRange(range, _wrapElement)
 
     # Compile result strings
     result_strings = []
@@ -265,22 +241,8 @@ jQuery(document).ready ($) ->
       # Done
       _tooltipTarget.popover('show')
 
-      # Remove selection
-      if window.getSelection
-        # Chrome
-        if window.getSelection().empty
-          window.getSelection().empty()
-        # Firefox
-        else if window.getSelection().removeAllRanges
-          window.getSelection().removeAllRanges()
-      # IE
-      else if document.selection
-        document.selection.empty()
-
-
-
   
-  lookupSelectEvent = (evt, string, element, index, opts) ->
+  lookupSelectEvent = (evt, string, element, range, opts) ->
     result_elem = $(document).find(opts.formResults)
 
     # Remove punctuation, some browsers select it by default with double
@@ -290,29 +252,26 @@ jQuery(document).ready ($) ->
     if (string.length > 60) or (string.search(' ') > -1)
       return false
 
-    if (string != "")
-      langpair = $(opts.langPairSelect).val()
-      source_lang = langpair.slice(0, 3)
-      target_lang = langpair.slice(3, 6)
-      lookup_string = string
+    langpair = $(opts.langPairSelect).val()
+    # "aaabbb"
+    source_lang = langpair.slice(0, 3)
+    target_lang = langpair.slice(3, 6)
+    lookup_string = string
 
-      post_data =
-        lookup: lookup_string
-        lemmatize: true
+    post_data =
+      lookup: lookup_string
+      lemmatize: true
 
-      $.ajax
-        url: "#{opts.api_host}/kursadict/lookup/#{source_lang}/#{target_lang}/"
-        data: post_data
-        success: (response) =>
-          selection = {
-            string: string
-            element: element
-            index: index
-          }
-          cleanTooltipResponse(selection, response, opts)
-          if document.selection
-            console.log "document.selection!"
-            document.selection.empty()
+    $.ajax
+      url: "#{opts.api_host}/kursadict/lookup/#{source_lang}/#{target_lang}/"
+      data: post_data
+      success: (response) =>
+        selection = {
+          string: string
+          element: element
+          range: range
+        }
+        cleanTooltipResponse(selection, response, opts)
 
 
 
@@ -326,6 +285,7 @@ jQuery(document).ready ($) ->
     opts = $.extend {}, $.fn.selectToLookup.options, opts
     spinner = initSpinner(opts.spinnerImg)
 
+    
     # TODO: device / OptionsMenu
     if opts.displayOptions
       $(document).find('body').append Templates.OptionsTab(opts)
@@ -337,9 +297,16 @@ jQuery(document).ready ($) ->
       _select = "input[type=\"radio\"][value=\"#{previous_langpair}\"]"
       _opt = window.optTab.find(_select).attr('checked', 'checked')
     
-    holdingOption = (evt, string, element, index) =>
+    holdingOption = (evt) =>
+      clean()
       if evt.altKey
-        lookupSelectEvent(evt, string, element, index, opts)
+        element = event.target
+        range = getFirstRange()
+        string = cloneContents(range)
+        if range and string
+          lookupSelectEvent(event, string, element, range, opts)
+        return false
+
       # TODO: one idea for how to handle lookups wtihout alt/option key
       # May need to just do a doubleclick like this:
       # https://gist.github.com/399624
@@ -352,7 +319,6 @@ jQuery(document).ready ($) ->
       #       return false
       #   else
       #     window.optTab.find('.well').removeClass('highlight')
-      return false
     
     clean = (event) ->
       parents = []
@@ -366,8 +332,7 @@ jQuery(document).ready ($) ->
         for parent in parents
           parent.html parent.html()
 
-    $(document).bind('textselect', holdingOption)
-    $(document).bind('click', clean)
+    $(document).bind('click', holdingOption)
    
   $.fn.selectToLookup.options =
     api_host: API_HOST
