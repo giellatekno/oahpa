@@ -298,13 +298,13 @@ jQuery(document).ready ($) ->
       _opt = window.optTab.find(_select).attr('checked', 'checked')
     
     holdingOption = (evt) =>
-      clean()
+      clean(evt)
       if evt.altKey
-        element = event.target
+        element = evt.target
         range = getFirstRange()
         string = cloneContents(range)
         if range and string
-          lookupSelectEvent(event, string, element, range, opts)
+          lookupSelectEvent(evt, string, element, range, opts)
         return false
 
       # TODO: one idea for how to handle lookups wtihout alt/option key
