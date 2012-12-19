@@ -70,6 +70,7 @@ import urllib
 
 from lxml import etree
 from flask import Flask, request, json, render_template, Markup
+from flask import abort
 from werkzeug.contrib.cache import SimpleCache
 from crossdomain import crossdomain
 from config import settings
@@ -123,7 +124,7 @@ class XMLDict(object):
     def XPath(self, xpathobj, *args, **kwargs):
         print "Querying: %s" % xpathobj.path
         print "With: %s, %s" % (repr(args), repr(kwargs))
-        return map(self.cleanEntry, xpathobj(self.tree, *args, **kwargs))
+        return map(self.cleanEntry, xpathobj(self.tree, *args, **kwargs)) or False
 
     def lookupLemmaStartsWith(self, lemma):
         return self.XPath(self.lemmaStartsWith, lemma=lemma)
@@ -158,6 +159,25 @@ class DetailedEntries(XMLDict):
             'meaningGroups': meaningGroups,
             'type': l.get('type')
         }
+
+class AutocompleteTrie(XMLDict):
+
+    @property
+    def allLemmas(self):
+        """ Returns iterator for all lemmas.
+        """
+        return (e.text for e in self.tree.findall('e/lg/l'))
+
+    def autocomplete(self, query):
+        return sorted(list(self.trie.autocomplete(query)))
+
+    def __init__(self, *args, **kwargs):
+        super(AutocompleteTrie, self).__init__(*args, **kwargs)
+
+        from trie import Trie
+        self.trie = Trie()
+        self.trie.update(self.allLemmas)
+
 
 class ReverseLookups(XMLDict):
     """
@@ -205,11 +225,6 @@ language_pairs = dict(
       for k, v in settings.dictionaries.iteritems() ]
 )
 
-# reverse_language_pairs = dict(
-#     [ ((k[1], k[0]), ReverseLookups(filename=v))
-#       for k, v in settings.reversable_dictionaries.iteritems() ]
-# )
-
 reverse_language_pairs = {}
 
 for k, v in settings.reversable_dictionaries.iteritems():
@@ -223,28 +238,73 @@ language_pairs.update(reverse_language_pairs)
 
 def lookupXML(_from, _to, lookup, lookup_type=False):
     _dict = language_pairs.get((_from, _to), False)
-    if _dict:
-        if lookup_type:
-            if lookup_type == 'startswith':
-                return {'lookups': _dict.lookupLemmaStartsWith(lookup)}
-        return {'lookups': _dict.lookupLemma(lookup)}
 
-    else:
+    if not _dict:
         return {'error': "Unknown language pair"}
+
+    if lookup_type:
+        if lookup_type == 'startswith':
+            result = _dict.lookupLemmaStartsWith(lookup)
+    else:
+        result = _dict.lookupLemma(lookup)
+
+    return {'lookups': result,
+            'input': lookup,
+            }
+
+def logSimpleLookups(user_input, results):
+    # This is all just for logging
+    success = False
+    result_lemmas = set()
+    tx_set = set()
+
+    for result in results:
+        result_lookups = result.get('lookups')
+        if result_lookups:
+            success = True
+            for lookup in result_lookups:
+                l_left = lookup.get('left')
+                l_right = ', '.join(lookup.get('right'))
+                tx_set.add(l_right)
+                result_lemmas.add(lookup.get('left'))
+
+    result_lemmas = ', '.join(list(result_lemmas))
+    meanings = '; '.join(list(tx_set))
+
+    app.logger.info('%s\t%s\t%s\t%s' % (user_input, str(success), result_lemmas, meanings))
+
+    
+
+def lookupsInXML(_from, _to, lookups, lookup_type=False):
+    from functools import partial
+    _look = partial(lookupXML,
+                    _from=_from,
+                    _to=_to,
+                    lookup_type=lookup_type)
+
+    results = map(lambda x: _look(lookup=x), lookups)
+    success = any([(not ('error' in r) and bool(r.get('lookups', False)))
+                   for r in results])
+
+    return results, success
 
 
 def detailedLookupXML(_from, _to, lookup, pos, _type=False):
     lexicon = language_pairs.get((_from, _to), False)
-    # wrap in mixin for detailed results
+    if not lexicon:
+        raise Exception("Undefined language pair %s %s" % (_from, _to))
+
     detailed_tree = DetailedEntries(tree=lexicon.tree)
 
-    if lexicon and detailed_tree:
-        if _type:
-            if _type.strip():
-                return {'lookups': detailed_tree.lookupLemmaPOSAndType(lookup, pos, _type)}
-        return {'lookups': detailed_tree.lookupLemmaPOS(lookup, pos)}
+    args = [lookup, pos]
+    if _type:
+        if _type.strip():
+            args.append(_type)
+            lookupfunc = detailed_tree.lookupLemmaPosAndType
     else:
-        return {'error': "Unknown language pair"}
+        lookupfunc = detailed_tree.lookupLemmaPOS
+
+    return lookupfunc(*args)
 
 ##
 ##  Lemmatization
@@ -272,6 +332,10 @@ morphologies = settings.morphologies
 ##
 ##
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
 @app.route('/kursadict/autocomplete/<language>/',
            methods=['GET'])
 @crossdomain(origin='*')
@@ -282,7 +346,6 @@ def autocomplete(language):
         {'value': 'omg3'},
     ]
     return json.dumps(autos)
-
 
 @app.route('/kursadict/lookup/<from_language>/<to_language>/',
            methods=['GET'])
@@ -333,86 +396,38 @@ def lookupWord(from_language, to_language):
 
     """
 
+    if (from_language, to_language) not in settings.dictionaries:
+        abort(404)
+
     success = False
     results = False
 
     # URL parameters
     lookup_key = user_input = request.args.get('lookup', False)
-    lookup_type = request.args.get('type', False)
-    lemmatize = request.args.get('lemmatize', False)
+    lookup_type             = request.args.get('type', False)
+    lemmatize               = request.args.get('lemmatize', False)
 
-    if lemmatize and not lookup_type:
-        lemm_ = morphologies.get(from_language, False)
-        if lemm_:
-            lemmatizer = lemm_.lemmatize
-        lemmatized_lookup_key = lemmatizer(lookup_key, split_compounds=True)
+    if lookup_key == False:
+        return json.dumps(" * lookup undefined")
+
+    # Is there a lemmatizer?
+    lemm_ = morphologies.get(from_language, False)
+    if lemm_:
+        lemmatizer = lemm_.lemmatize
+
+    if lemmatize and lemmatizer and not lookup_type:
+        lookup_keys = lemmatizer(lookup_key, split_compounds=True)
     else:
-        lemmatized_lookup_key = False
+        lookup_keys = [lookup_key]
 
-    if lemmatized_lookup_key:
-        if not isinstance(lemmatized_lookup_key, list):
-            lemmatized_lookup_key = [lemmatized_lookup_key]
+    results, success = lookupsInXML(from_language, to_language,
+                                    lookup_keys, lookup_type)
 
-        results = []
-        for _key in lemmatized_lookup_key:
-            result = lookupXML(from_language, to_language,
-                               _key, lookup_type)
-            result['input'] = _key
-            if len(result['lookups']) == 0:
-                result['lookups'] = False
-            results.append(result)
+    results = sorted(results,
+                     key=lambda x: len(x['input']),
+                     reverse=True)
 
-        results = sorted(results, key=lambda x: len(x['input']), reverse=True)
-
-        if 'error' in result:
-            success = False
-        else:
-            success = True
-
-        if 'lookups' in result:
-            if not result['lookups']:
-                success = False
-    else:
-
-        result = lookupXML(from_language, to_language,
-                           lookup_key, lookup_type)
-        result['input'] = lookup_key
-        if len(result['lookups']) == 0:
-            result['lookups'] = False
-        results = [result]
-
-        results = sorted(results, key=lambda x: len(x['input']), reverse=True)
-
-        if 'error' in result:
-            success = False
-        else:
-            success = True
-
-        if 'lookups' in result:
-            if not result['lookups']:
-                success = False
-
-    result_lemmas = set()
-    tx_set = set()
-    if success:
-        for result in results:
-            result_lookups = result.get('lookups')
-            if result_lookups:
-                for lookup in result_lookups:
-                    l_left = lookup.get('left')
-                    l_right = ', '.join(lookup.get('right'))
-                    tx_set.add(l_right)
-                    # Reversed lookups return list
-                    if isinstance(l_left, list):
-                        for _l in l_left:
-                            result_lemmas.add(_l)
-                    else:
-                        result_lemmas.add(lookup.get('left'))
-
-    result_lemmas = ', '.join(list(result_lemmas))
-    meanings = '; '.join(list(tx_set))
-
-    app.logger.info('%s\t%s\t%s\t%s' % (user_input, str(success), result_lemmas, meanings))
+    logSimpleLookups(user_input, results)
 
     return json.dumps({
         'result': results,
@@ -458,9 +473,10 @@ def wordDetail(from_language, to_language, wordform, format):
 
     def unsupportedLang(more='.'):
         if format == 'json':
-            return json.dumps(" * Detailed view not supported for this language pair" + more)
+            _err = " * Detailed view not supported for this language pair" + more
+            return json.dumps(_err)
         elif format == 'html':
-            return " * Detailed view not supported for this language pair" + more
+            abort(404)
 
     if (from_language, to_language) in reverse_language_pairs:
         return unsupportedLang()
@@ -478,18 +494,15 @@ def wordDetail(from_language, to_language, wordform, format):
         lang_baseforms = settings.baseforms.get(from_language)
         if not lang_baseforms:
             return unsupportedLang(', no baseforms defined.')
-        # All lookups in XML must go through analyzer, because we need POS
-        # info for a good lookup.
+        # All lookups in XML must go through analyzer, because we need
+        # POS info for a good lookup.
         morph = morphologies.get(from_language, False)
         analyzed = morph.analyze(wordform, split_compounds=True)
-
-        def lemmaLen(a):
-            return len(a[1])
 
         # Collect lemmas and tags
         _result_formOf = []
         if analyzed:
-            for form, lemma, tag in sorted(analyzed, key=lemmaLen, reverse=True):
+            for form, lemma, tag in sorted(analyzed, reverse=True):
 
                 # TODO: try with OBT
                 if lemma == '?' or tag == '?':
@@ -504,7 +517,7 @@ def wordDetail(from_language, to_language, wordform, format):
 
         for lemma, pos, tag in _result_formOf:
 
-            # TODO: generalize for other languages
+            # TODO: generalize for other languages, use tagsets
             _sp = morph.tool.splitAnalysis(tag)
             if len(_sp) >= 2:
                 _type = _sp[1]
@@ -525,11 +538,13 @@ def wordDetail(from_language, to_language, wordform, format):
                                                pos,
                                                _type=_type)
 
-                if len(xml_result['lookups']) == 0:
-                    xml_result = False
+                if xml_result:
+                    res = {'lookups': xml_result}
+                else:
+                    res = False
 
                 _result_lookups.append({
-                    'entries': xml_result,
+                    'entries': res,
                     'input': (lemma, pos, tag, _type)
                 })
                 _lemma_pos_exists.append((lemma, pos))
@@ -549,28 +564,39 @@ def wordDetail(from_language, to_language, wordform, format):
         # For now, just caching things on the hope that this begins to
         # save time.
 
+        def cacheKey(lang, lemma, generation_tags):
+            """ key is something like generation-LANG-LEMMA-TAG|TAG|TAG
+            """
+            _cache_tags = '|'.join(['+'.join(a) for a in generation_tags])
+
+            _cache_key = hashlib.md5()
+            _cache_key.update('generation-%s-' % from_language)
+            _cache_key.update(lemma.encode('utf-8'))
+            _cache_key.update(_cache_tags.encode('utf-8'))
+            return _cache_key.hexdigest()
+
+
         # TODO: either clean this up or comment.
         for _r in _result_lookups:
             lemma, pos, tag, _type = _r.get('input')
             paradigm = lang_paradigms.get(pos)
             if tag in lang_baseforms.get(pos):
-                _cache_key = hashlib.md5()
-                _cache_key.update('generation-%s-' % from_language)
-                _cache_key.update(lemma.encode('utf-8'))
                 if paradigm:
                     _pos_type = [pos]
                     if _type:
                         _pos_type.append(_type)
                     form_tags = [_pos_type + _t.split('+') for _t in paradigm]
-                    _cache_tags = '|'.join(['+'.join(a) for a in form_tags]).encode('utf-8')
-                    _cache_key.update(_cache_tags)
-                    hexhash = _cache_key.hexdigest()
-                    _is_cached = cache.get(hexhash)
+
+                    morphology_cache_key = cacheKey(from_language,
+                                                    lemma,
+                                                    form_tags)
+
+                    _is_cached = cache.get(morphology_cache_key)
                     if _is_cached:
                         _r['paradigms'] = _is_cached
                     else:
                         _generate = morph.generate(lemma, form_tags)
-                        cache.set(hexhash, _generate)
+                        cache.set(morphology_cache_key, _generate)
                         _r['paradigms'] = _generate
                 else:
                     _r['paradigms'] = False
@@ -674,6 +700,9 @@ def wordNotification(from_language, to_language, wordform):
     lookup_type = False
     lemmatize = True
 
+    if (from_language, to_language) not in settings.dictionaries:
+        abort(404)
+
     if lemmatize and not lookup_type:
         lemm_ = morphologies.get(from_language, False)
         if lemm_:
@@ -773,39 +802,40 @@ def wordDetailDocs():
 # For direct links, form submission.
 @app.route('/kursadict/<_from>/<_to>/', methods=['GET', 'POST'])
 def indexWithLangs(_from, _to):
-    lookup_val = request.form.get('lookup', False)
+    user_input = lookup_val = request.form.get('lookup', False)
 
     errors = []
     if request.method == 'POST' and lookup_val:
         lemm_ = morphologies.get(_from, False)
         if lemm_:
             lemmatizer = lemm_.lemmatize
-            # TODO: what to do if no lemmatizer available
-            lemmatized_lookup_key = lemmatizer(lookup_val, split_compounds=True)
+
+        if lemmatizer:
+            lookup_keys = lemmatizer(lookup_val, split_compounds=True)
         else:
-            lemmatized_lookup_key = lookup_val
+            lookup_keys = [lookup_val]
 
-        if not isinstance(lemmatized_lookup_key, list):
-            lemmatized_lookup_key = [lemmatized_lookup_key]
+        results, success = lookupsInXML(_from, _to, lookup_keys)
 
-        results = []
-        for _key in lemmatized_lookup_key:
-            result = lookupXML(_from, _to, _key)
-            result['input'] = _key
-            if 'error' in result:
-                errors.append(result['error'])
-                result['lookups'] = False
-            elif len(result['lookups']) == 0:
-                result['lookups'] = False
-            results.append(result)
+        # TODO: ukjent ord `gollet` -> gollehit, gollet, gollat
+        # sort so that recognized word is at top, rest are shown as a
+        # possible form of _
+        # Maybe this logic should be done in template instead, 
+        # print results
+        results = sorted(results,
+                         key=lambda x: len(x['input']),
+                         reverse=True)
 
-        results = sorted(results, key=lambda x: len(x['input']), reverse=True)
+        logSimpleLookups(user_input, results)
+
     else:
         results = False
         user_input = ''
 
     if len(errors) == 0:
         errors = False
+
+    # TODO: include form analysis of user input
     return render_template('index.html',
                            language_pairs=settings.pair_definitions,
                            _from=_from,
@@ -814,6 +844,9 @@ def indexWithLangs(_from, _to):
                            word_searches=results,
                            errors=errors)
 
+@app.route('/kursadict/about/', methods=['GET'])
+def about():
+    return render_template('about.html')
 
 
 @app.route('/kursadict/', methods=['GET'])

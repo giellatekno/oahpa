@@ -4,6 +4,84 @@
 Morphological tools
 """
 
+class Tagset(object):
+    def __init__(self, name, members):
+        self.name = name
+        self.members = members
+    def __str__(self):
+        return '<Tagset: "%s">' % self.name
+
+class Tagsets(object):
+    def __init__(self, set_definitions):
+        self.sets = {}
+        self.set_definitions = set_definitions
+        self.createTagSets()
+    def createTagSets(self):
+        for name, tags in self.set_definitions.iteritems():
+            tagset = Tagset(name, tags)
+            self.set(name, tagset)
+    def get(self, name):
+        return self.sets.get(name, False)
+    def __getitem__(self, key):
+        return self.get(key)
+    def set(self, name, tagset):
+        self.sets[name] = tagset
+
+class Tag(object):
+    """ A model for tags. Can be used as an iterator, as well.
+
+    >>> for part in Tag('N+G3+Sg+Ill', '+'):
+    >>>     print part
+
+    Also, indexing is the same as Tag.getTagByTagset()
+
+    >>> _type = Tagset('type', ['G3', 'NomAg'])
+    >>> _case = Tagset('case', ['Nom', 'Ill', 'Loc'])
+    >>> _ng3illsg = Tag('N+G3+Sg+Ill', '+')
+    >>> _ng3illsg[_type]
+    'G3'
+    >>> _ng3illsg[_case]
+    'Ill'
+
+    TODO: maybe also contains for tag parts and tagsets
+
+    TODO: begin integrating Tag and Tagsets into morphology code below,
+    will help when generalizing the lexicon-morphology 'type' and 'pos'
+    stuff. E.g., in `sme`, we look up words by 'pos' and 'type' when it
+    exists, but in other languages this will be different. As such, we
+    will need `Tag`, and `Tagset` and `Tagsets` to mitigate this.
+
+    Also, will need some sort of lexicon lookup definition in configs,
+    to describe how to bring these items together.
+    """
+    def __init__(self, string, sep):
+        self.tag_string = string
+        self.sep = sep
+        self.parts = self.tag_string.split(sep)
+    def __getitem__(self, b):
+        """ Overloading the xor operator to produce the tag piece that
+        belongs to a given tagset. """
+        if not isinstance(b, Tagset):
+            raise TypeError("Second value must be a tagset")
+        return self.getTagByTagset(b)
+    def __iter__(self):
+        for x in self.parts:
+            yield x
+    def __str__(self):
+        return '<Tag: %s>' % self.sep.join(self.parts)
+    def getTagByTagset(self, tagset):
+        for p in self.parts:
+            if p in tagset.members:
+                return p
+    def splitByTagset(self, tagset):
+        """
+        >>> tagset = Tagset('compound', ['Cmp#'])
+        >>> tag = Tag('N+Cmp#+N+Sg+Nom')
+        >>> tag.splitByTagset(tagset)
+        [<Tag: N>, <Tag: N+Sg+Nom>]
+        """
+        raise NotImplementedError
+
 class XFST(object):
 
     def splitTagByCompound(self, analysis):
@@ -93,11 +171,16 @@ class XFST(object):
 
     def __rshift__(left, right):
         right.tool = left
+        left.logger = right.logger
         return right
 
     def lookup(self, lookups_list):
         lookup_string = '\n'.join(lookups_list)
         output, err = self._exec(lookup_string, cmd=self.cmd)
+        if len(output) == 0 and len(err) > 0:
+            name = self.__class__.__name__
+            msg = """%(name)s: %(err)s""" % locals()
+            self.logger.error(msg.strip())
         return self.clean(output)
 
     def inverselookup(self, lemma, tags):
@@ -222,6 +305,9 @@ class Morphology(object):
                 # TODO: how does OBT handle unknown?
                 if '+?' in f:
                     unknown = True
+                    msg = self.tool.__class__.__name__ + ': ' + \
+                         tag + '\t' + '|'.join(forms)
+                    self.tool.logger.error(msg)
 
             if not unknown:
                 parts = self.tool.splitAnalysis(tag, inverse=True)
@@ -301,8 +387,18 @@ class Morphology(object):
 
         return cleaned
 
-    def __init__(self, languagecode):
+    def __init__(self, languagecode, tagsets={}):
         self.langcode = languagecode
+
+        import logging
+        logfile = logging.FileHandler('morph_log.txt')
+        FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
+        self.logger = logging.Logger('morphology', level=0)
+        self.logger.setLevel(logging.ERROR)
+        self.logger.addHandler(logfile)
+
+        self.tagsets = Tagsets(tagsets)
+
 
 
 def examples():
@@ -344,12 +440,23 @@ def examples():
                                 ['V', 'Ind', 'Pst', 'Sg2'],
                                 ['V', 'Ind', 'Prt', 'Sg2']]
                                 )
+    
     for lem, tag, forms in generate:
         if forms:
             for form in forms:
                 print '  ' + ' '.join(tag) + ' => ' + form
         else:
             print '  ' + ' '.join(tag) + ':   unknown'
+
+    generate = sme.generate(u'eaktodáhtolašš', [['A', 'Attr'], ])
+    
+    for lem, tag, forms in generate:
+        if forms:
+            for form in forms:
+                print '  ' + ' '.join(tag) + ' => ' + form
+        else:
+            print '  ' + ' '.join(tag) + ':   unknown'
+
 
     for a in sme.analyze(u'gullot'):
         print '  %s %s  %s' % (a[0], a[1], ' '.join(a[2]))
@@ -374,6 +481,27 @@ def examples():
     for a in sme.lemmatize(u'juovlaspábbačiekčangilvu'):
         print '  ' + a
 
+def tag_examples():
+    setdefs = {
+        'type': ["NomAg", "G3"],
+        'person': ["Sg1", "Sg2", "Sg3"],
+    }
+
+    tagsets = Tagsets(setdefs)
+    tag_test = Tag('N+NomAg+Sg+Ill', sep='+')
+    print tag_test
+
+    _type = tagsets['type']
+    for m in _type.members:
+        print m
+
+    print tag_test.getTagByTagset(_type)
+    print tag_test[_type]
+
+    for item in tag_test:
+        print item
+
 if __name__ == "__main__":
-    examples()
+    # examples()
+    tag_examples()
 
