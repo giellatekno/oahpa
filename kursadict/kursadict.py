@@ -842,6 +842,7 @@ def indexWithLangs(_from, _to):
                            _to=_to,
                            user_input=lookup_val,
                            word_searches=results,
+                           analyses=False,
                            errors=errors)
 
 @app.route('/kursadict/about/', methods=['GET'])

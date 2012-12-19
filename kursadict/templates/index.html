@@ -101,34 +101,53 @@ $('.typeahead').typeahead({
 
                 {% if word_searches %}
                     <div class="results">
-                        {% for lexeme in word_searches %}
-                        {% if lexeme.lookups %}
+                        <div class="row-fluid">
+                            <span class="span6">
+                            {% for lexeme in word_searches %}
+                            {% if lexeme.lookups %}
 
-                            {% for lookup in lexeme.lookups %}
-                            <p><a href="/kursadict/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html">{{ lookup.left }}</a> ({{ lookup.pos }}) – </p>
-                            <ol>
-                                {% for tx in lookup.right %}
-                                <li>{{ tx }}</li>
+                                {% for lookup in lexeme.lookups %}
+                                <p><a href="/kursadict/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html">{{ lookup.left }}</a> ({{ lookup.pos }}) – </p>
+                                <ol>
+                                    {% for tx in lookup.right %}
+                                    <li>{{ tx }}</li>
+                                    {% endfor %}
+                                </ol>
                                 {% endfor %}
-                            </ol>
-                            {% endfor %}
 
-                        {% else %}
-                            {% if errors %}
-                                <div class="alert">
-                                    <ul>
-                                        {% for error in errors %}
-                                        <li>{{ error }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
                             {% else %}
-                                <p>Ukjent ord: {{ lexeme.input }}</l>
+                                {% if errors %}
+                                    <div class="alert">
+                                        <ul>
+                                            {% for error in errors %}
+                                            <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                {% else %}
+                                    <p>Ukjent ord: {{ lexeme.input }}</l>
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
 
-                        {% endfor %}
+                            {% endfor %}
+                            </span>
+
+                            <div class="span3">
+                                {%- if analyses %}
+                                <div class="well">
+                                    <strong>{{ user_input }} is a possible form of ... </strong>
+                                    <dl class="possible_analyses">
+                                        {% for grouper, forms in analyses|groupby(0) %}
+                                        <dt>{{ grouper }}</dt>
+                                        <dd><ul class="possible_forms">{% for form, pos, tag in forms %}<li>{{ tag }}</li>{% endfor %}</ul></dd>
+                                        {% endfor %}
+                                    </dl>
+                                </div>
+                                {%- endif -%}
+                            </div>
+
                         
+                        </div>
                     </div>
                 {% else %}
                     <div class="alert alert-success">
