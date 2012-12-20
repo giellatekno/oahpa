@@ -622,13 +622,7 @@ A jQuery plugin for enabling the Kursadict functionality
 
 ## TODOs / Bugs
 
-TODO: IE sometimes still does not notice the first lookup
-
 TODO: prevent window url from updating with form submit params
-
-TODO: lookup timeout -- set on $.ajax, but sometimes seems not to work?
-
-TODO: Opera on Windows - alt+click context window
 */
 
 jQuery(document).ready(function($) {
@@ -757,6 +751,9 @@ jQuery(document).ready(function($) {
   };
   surroundRange = function(range, surrounder) {
     if (range) {
+      if (!range.canSurroundContents()) {
+        return false;
+      }
       try {
         return range.surroundContents(surrounder);
       } catch (ex) {
@@ -770,7 +767,7 @@ jQuery(document).ready(function($) {
   };
   cleanTooltipResponse = function(selection, response, opts) {
     /*
-            Clean response from tooltip $.ajax query, and display results
+            Clean response from tooltip $.getJSON query, and display results
     */
 
     var clean_right, element, i, lookup, r, range, result, result_string, result_strings, right, string, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _tooltipTarget, _tooltipTitle, _wrapElement,
@@ -840,7 +837,7 @@ jQuery(document).ready(function($) {
     }
   };
   lookupSelectEvent = function(evt, string, element, range, opts) {
-    var langpair, lookup_string, post_data, result_elem, source_lang, target_lang,
+    var langpair, lookup_string, post_data, result_elem, source_lang, target_lang, url,
       _this = this;
     result_elem = $(document).find(opts.formResults);
     string = $.trim(string).replace(/\b[-.,()&$#!\[\]{}"]+\B|\B[-.,()&$#!\[\]{}"]+\b/g, "");
@@ -855,18 +852,15 @@ jQuery(document).ready(function($) {
       lookup: lookup_string,
       lemmatize: true
     };
-    return $.ajax({
-      url: "" + opts.api_host + "/kursadict/lookup/" + source_lang + "/" + target_lang + "/",
-      data: post_data,
-      success: function(response) {
-        var selection;
-        selection = {
-          string: string,
-          element: element,
-          range: range
-        };
-        return cleanTooltipResponse(selection, response, opts);
-      }
+    url = "" + opts.api_host + "/kursadict/lookup/" + source_lang + "/" + target_lang + "/";
+    return $.getJSON(url + '?callback=?', post_data, function(response) {
+      var selection;
+      selection = {
+        string: string,
+        element: element,
+        range: range
+      };
+      return cleanTooltipResponse(selection, response, opts);
     });
   };
   $.fn.selectToLookup = function(opts) {
@@ -981,7 +975,7 @@ jQuery(document).ready(function($) {
         return true;
       });
       return elem.submit(function() {
-        var cleanResponse, lang_pair, lookup_value, post_data, source_lang, target_lang, unknownWord;
+        var cleanResponse, lang_pair, lookup_value, post_data, source_lang, target_lang, unknownWord, url;
         lookup_value = elem.find('input[name="lookup"]').val();
         lang_pair = $(_this).find('input[name="target_lang"]').val();
         source_lang = lang_pair.slice(0, 3);
@@ -1023,16 +1017,30 @@ jQuery(document).ready(function($) {
           }
           return _results;
         };
-        $.ajax({
-          url: "" + opts.api_host + "/kursadict/lookup/" + source_lang + "/" + target_lang + "/",
-          data: post_data,
-          success: cleanResponse
-        });
+        url = "" + opts.api_host + "/kursadict/lookup/" + source_lang + "/" + target_lang + "/";
+        $.getJSON(url + '?callback=?', post_data, cleanResponse);
         return false;
       });
     });
   };
-  return $.fn.kursaDict.options = {
+  $.fn.kursaDict.options = {
+    api_host: API_HOST,
+    formIDName: "#kursadict",
+    formResults: "#results"
+  };
+  $.fn.kursaDictTest = function(opts) {
+    var cleanResp, data;
+    opts = $.extend({}, $.fn.kursaDict.options, opts);
+    cleanResp = function(response) {
+      console.log("Can connect.");
+      return console.log(response);
+    };
+    data = {
+      lookup: "mannat"
+    };
+    return $.getJSON("" + opts.api_host + "/kursadict/lookup/sme/nob/?callback=?", data, cleanResp);
+  };
+  return $.fn.kursaDictTest.options = {
     api_host: API_HOST,
     formIDName: "#kursadict",
     formResults: "#results"
