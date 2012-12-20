@@ -4,13 +4,7 @@ A jQuery plugin for enabling the Kursadict functionality
 
 ## TODOs / Bugs
 
-TODO: IE sometimes still does not notice the first lookup
-
 TODO: prevent window url from updating with form submit params
-
-TODO: lookup timeout -- set on $.ajax, but sometimes seems not to work?
-
-TODO: Opera on Windows - alt+click context window
 
 ###
 
@@ -173,6 +167,10 @@ jQuery(document).ready ($) ->
   
   surroundRange = (range, surrounder) ->
     if range
+      if not range.canSurroundContents()
+      	# TODO: should be possible to recover from this sometimes, as
+      	# non-FF browsers do not have this issue
+      	return false
       try
         range.surroundContents surrounder
       catch ex
@@ -188,7 +186,7 @@ jQuery(document).ready ($) ->
    
   cleanTooltipResponse = (selection, response, opts) ->
     ###
-        Clean response from tooltip $.ajax query, and display results
+        Clean response from tooltip $.getJSON query, and display results
     ###
 
     string   = selection.string
@@ -238,7 +236,6 @@ jQuery(document).ready ($) ->
             'bottom'
         trigger: 'hover'
       
-      # TODO: rangy remove selection?
       # Remove selection
       if window.getSelection
         # Chrome
@@ -274,16 +271,18 @@ jQuery(document).ready ($) ->
       lookup: lookup_string
       lemmatize: true
 
-    $.ajax
-      url: "#{opts.api_host}/kursadict/lookup/#{source_lang}/#{target_lang}/"
-      data: post_data
-      success: (response) =>
+    url = "#{opts.api_host}/kursadict/lookup/#{source_lang}/#{target_lang}/"
+    $.getJSON(
+      url + '?callback=?'
+      post_data
+      (response) =>
         selection = {
           string: string
           element: element
           range: range
         }
         cleanTooltipResponse(selection, response, opts)
+    )
 
 
 
@@ -321,8 +320,6 @@ jQuery(document).ready ($) ->
         return false
 
       # TODO: one idea for how to handle lookups wtihout alt/option key
-      # May need to just do a doubleclick like this:
-      # https://gist.github.com/399624
       #
       # else
       #   if string != ''
@@ -458,10 +455,12 @@ jQuery(document).ready ($) ->
                 <p>#{lookup.left} (#{lookup.pos}) &mdash; #{result_list}</p>
               """)
         
-        $.ajax
-          url: "#{opts.api_host}/kursadict/lookup/#{source_lang}/#{target_lang}/"
-          data: post_data
-          success: cleanResponse
+        url = "#{opts.api_host}/kursadict/lookup/#{source_lang}/#{target_lang}/"
+        $.getJSON(
+          url + '?callback=?'
+          post_data
+          cleanResponse
+        )
 
         return false
 
@@ -470,6 +469,23 @@ jQuery(document).ready ($) ->
     formIDName: "#kursadict"
     formResults: "#results"
 
+  $.fn.kursaDictTest = (opts) ->
+    opts = $.extend {}, $.fn.kursaDict.options, opts
+    cleanResp = (response) ->
+      console.log "Can connect."
+      console.log response
+    data = {
+      lookup: "mannat"
+    }
+    $.getJSON(
+      "#{opts.api_host}/kursadict/lookup/sme/nob/?callback=?",
+      data,
+      cleanResp
+    )
+
+  $.fn.kursaDictTest.options =
+    api_host: API_HOST
+    formIDName: "#kursadict"
+    formResults: "#results"
+
 # End jQuery wrap
-
-
