@@ -3,15 +3,16 @@ util = require 'util'
 wrench = require 'wrench'
 {spawn} = require 'child_process'
 {exec} = require 'child_process'
+uglify = require "uglify-js"
 
 # TODO: also minify stylesheet?
+# TODO: include giellatekno license in compiled JS files
 
 deps = [
   'src/bootstrap-dropdown.js'
   'src/bootstrap-tooltip.js'
   'src/bootstrap-popover.js'
   'src/DSt.js'
-  # 'src/jquery.textselect.event.js'
   'src/rangy-core.js'
   'src/jquery.kursadict.js'
 ]
@@ -29,6 +30,20 @@ compiledFiles = [
   'jquery.kursadict.js'
 ]
 
+compress = (callback) ->
+  util.print "\n Compressing... bin/jquery.kursadict.js\n"
+  all = (fs.readFileSync 'bin/jquery.kursadict.js').toString()
+
+  ast = uglify.parser.parse all
+  out = fs.openSync "bin/jquery.kursadict.min.js", "w+"
+
+  ast = uglify.uglify.ast_mangle ast
+  ast = uglify.uglify.ast_squeeze ast
+
+  fs.writeSync out, uglify.uglify.gen_code(ast)
+
+  util.print "\n Minified! to jquery.kursadict.min.js\n"
+
 concatCSS = (callback) ->
   concated = ''
   for file in stylesheets
@@ -43,6 +58,7 @@ concat = (callback) ->
     concated += newF
   fs.writeFileSync 'bin/jquery.kursadict.js', concated
   fs.unlinkSync 'src/jquery.kursadict.js'
+  compress()
 
 zipWordpress = (callback) ->
   args = [
@@ -77,9 +93,7 @@ buildChrome = (callback) ->
     fs.writeFileSync "bin/chrome/#{file}", _in
 
 buildWordpress = (callback) ->
-  # TODO: spawn zip bin/wordpress/vuosttasneahttasanit bin/wordpress/vuosttasneahttasanit/*
   pluginTargetDir = 'bin/wordpress/'
-  # copy to bin/chrome/
 
   # copy compiled files compiledFiles
   wrench.copyDirSyncRecursive('src/wordpress', 'bin/wordpress')
@@ -116,7 +130,10 @@ task 'build-wordpress', 'Compile the wordpress plugin', ->
   zipWordpress()
   util.print "Everything now in bin/wordpress/\n, zipped version created."
 
-task 'build', 'Compile jQuery dependencies and dictapi', ->
+task "compress", 'Uglify JS', (params)->
+  compress()
+
+task 'build', 'Compile jQuery dependencies and dictapi, and compress', ->
   build()
   concatCSS()
   util.print "Output stored to jquery.kursadict.js and jquery.kursadict.css\n"
