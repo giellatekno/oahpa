@@ -69,7 +69,7 @@ import logging
 import urllib
 
 from lxml import etree
-from flask import Flask, request, json, render_template, Markup
+from flask import Flask, request, json, render_template, Markup, Response
 from flask import abort
 from werkzeug.contrib.cache import SimpleCache
 from crossdomain import crossdomain
@@ -406,6 +406,7 @@ def lookupWord(from_language, to_language):
     lookup_key = user_input = request.args.get('lookup', False)
     lookup_type             = request.args.get('type', False)
     lemmatize               = request.args.get('lemmatize', False)
+    has_callback            = request.args.get('callback', False)
 
     if lookup_key == False:
         return json.dumps(" * lookup undefined")
@@ -429,10 +430,17 @@ def lookupWord(from_language, to_language):
 
     logSimpleLookups(user_input, results)
 
-    return json.dumps({
+    data = json.dumps({
         'result': results,
         'success': success
     })
+
+    if has_callback:
+        data = '%s(%s)' % (has_callback, data)
+
+    return Response(response=data,
+                    status=200,
+                    mimetype="application/json")
 
 
 @app.route('/kursadict/detail/<from_language>/<to_language>/<wordform>.<format>',
