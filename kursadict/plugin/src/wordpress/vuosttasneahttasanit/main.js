@@ -3,10 +3,13 @@ jQuery(document).ready(function (){
     // NOTE: this doesn't need to be included for mouseclick lookups
     // jQuery('#kursadict').kursaDict();
 
+    // Grab from WP's localize object
+    spinner_path = plugin_paths.spinner ;
+
     // Enable options for inline clicking
     jQuery(document).selectToLookup({
       tooltip: true,
       displayOptions: true,
-      spinnerImg: 'spinner.gif'
+      spinnerImg: spinner_path
     });
 });

@@ -29,6 +29,15 @@ function load_dict_scripts () {
                      , array('jquery', 'gt-ns-jquery')
                      ) ;
 
+    $plugin_paths = array(
+        'spinner' => plugins_url('/img/spinner.gif', __FILE__),
+    ) ;
+
+    wp_localize_script( 'gt-ns-main', 
+                        'plugin_paths', 
+                        $plugin_paths
+                        ) ;
+
 }
 
 
