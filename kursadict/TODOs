@@ -2,9 +2,12 @@
 
  * analysis of search word on front page
 
+ * ordering of results on front page if a word is not found in the
+   lexicon -- maybe just include these in the analysis block only?
+
  * search and autocomplete: bootstrap typeahead
 
- * form on detail view
+ * search form on detail view
 
  * about page, contact page, plugin page, etc.
 
@@ -29,15 +32,14 @@
 ## Testing notes for JS click plugin:
 
  * EASY: norsk-samisk: when you get a word that comes as a result of analysis,
-   "word not found", but the word is presented anyway
-
- * samisk-norsk: safari and firefox on mac, nothing shows up for words that
-   aren't found
+   "Unknown word", but the word is presented anyway -- seems to be success
+   value from backend is causing this. with fjerdeplass for instance, fjerde
+   has a hit, but not plass, yet it's still an error
 
  * compare safari, firefox - kapittel 4.1 - skuvla -> skuvlii - works, but
    there's one error that needs to be caught for firefox, for some reason.
 
- * opt-doubleclick: need to make a note about this
+ * opt-doubleclick or opt-select: need to make a note about this
 
 
 ## Testing notes for web interface to VN: 
@@ -90,6 +92,10 @@
  * sme<->fin 
  * sma<->nob (NB: eigen FST til sma-ordboka)
  * sme<->eng (må lages først i apertiumformat)
+
+For these the formatting isn't quite right, so that collect-dict-parts.xsl
+won't produce anything.
+
  * kom<->eng/fin/rus (words/dicts/kom2X/src + analysator: langs/kpv/
  * myv<->fin
 
