@@ -2,6 +2,7 @@ fs = require 'fs'
 util = require 'util'
 wrench = require 'wrench'
 {spawn} = require 'child_process'
+{exec} = require 'child_process'
 
 # TODO: also minify stylesheet?
 
@@ -10,7 +11,8 @@ deps = [
   'src/bootstrap-tooltip.js'
   'src/bootstrap-popover.js'
   'src/DSt.js'
-  'src/jquery.textselect.event.js'
+  # 'src/jquery.textselect.event.js'
+  'src/rangy-core.js'
   'src/jquery.kursadict.js'
 ]
 
@@ -32,14 +34,24 @@ concatCSS = (callback) ->
   for file in stylesheets
     out = fs.readFileSync file
     concated += out
-  fs.writeFileSync 'jquery.kursadict.css', concated
+  fs.writeFileSync 'bin/jquery.kursadict.css', concated
 
 concat = (callback) ->
   concated = ''
   for file in deps
     newF = fs.readFileSync file
     concated += newF
-  fs.writeFileSync 'jquery.kursadict.js', concated
+  fs.writeFileSync 'bin/jquery.kursadict.js', concated
+  fs.unlinkSync 'src/jquery.kursadict.js'
+
+zipWordpress = (callback) ->
+  args = [
+    'zip'
+    'bin/wordpress/vuosttasneahttasanit'
+    'bin/wordpress/vuosttasneahttasanit/*'
+    'bin/wordpress/vuosttasneahttasanit/img/*'
+  ]
+  exec args.join(' ')
 
 build = (callback) ->
   coffee = spawn 'coffee', ['--compile', '--bare', 'src/jquery.kursadict.coffee']
@@ -61,10 +73,11 @@ buildChrome = (callback) ->
 
   # cp compiledFiles
   for file in compiledFiles
-    _in = fs.readFileSync file
+    _in = fs.readFileSync 'bin/' + file
     fs.writeFileSync "bin/chrome/#{file}", _in
 
 buildWordpress = (callback) ->
+  # TODO: spawn zip bin/wordpress/vuosttasneahttasanit bin/wordpress/vuosttasneahttasanit/*
   pluginTargetDir = 'bin/wordpress/'
   # copy to bin/chrome/
 
@@ -73,7 +86,7 @@ buildWordpress = (callback) ->
 
   # cp compiledFiles
   for file in compiledFiles
-    _in = fs.readFileSync file
+    _in = fs.readFileSync 'bin/' + file
     fs.writeFileSync "bin/wordpress/vuosttasneahttasanit/#{file}", _in
 
 task 'watch', 'Watch prod source files and build changes', ->
@@ -91,13 +104,8 @@ task 'min', 'minify compiled *.js file', ->
   exec "uglifyjs jquery.kursadict.js -o jquery.kursadict.min.js", exerr
 
 task 'clean', 'Clean compiled files', ->
-  fs.unlinkSync 'jquery.kursadict.js'
-  util.print 'removed jquery.kursadict.js\n'
-  fs.unlinkSync 'src/jquery.kursadict.js'
-  util.print 'removed src/jquery.kursadict.js\n'
-  fs.unlinkSync 'jquery.kursadict.css'
-  util.print 'removed jquery.kursadict.css\n'
-  wrench.rmdirSyncRecursive('bin/chrome/')
+  wrench.rmdirSyncRecursive('bin/')
+  wrench.mkdirSyncRecursive('bin/')
 
 task 'build-chrome', 'Compile the chrome plugin', ->
   buildChrome()
@@ -105,7 +113,8 @@ task 'build-chrome', 'Compile the chrome plugin', ->
 
 task 'build-wordpress', 'Compile the wordpress plugin', ->
   buildWordpress()
-  util.print "Everything now in bin/wordpress/\n"
+  zipWordpress()
+  util.print "Everything now in bin/wordpress/\n, zipped version created."
 
 task 'build', 'Compile jQuery dependencies and dictapi', ->
   build()
