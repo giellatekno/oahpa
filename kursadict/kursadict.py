@@ -166,10 +166,13 @@ class AutocompleteTrie(XMLDict):
     def allLemmas(self):
         """ Returns iterator for all lemmas.
         """
-        return (e.text for e in self.tree.findall('e/lg/l'))
+        return (e.text for e in self.tree.findall('e/lg/l') if e.text)
 
     def autocomplete(self, query):
-        return sorted(list(self.trie.autocomplete(query)))
+        if not self.trie:
+            return []
+        else:
+            return sorted(list(self.trie.autocomplete(query)))
 
     def __init__(self, *args, **kwargs):
         super(AutocompleteTrie, self).__init__(*args, **kwargs)
@@ -177,7 +180,12 @@ class AutocompleteTrie(XMLDict):
         print "* Preparing autocomplete trie..."
         from trie import Trie
         self.trie = Trie()
-        self.trie.update(self.allLemmas)
+        try:
+            self.trie.update(self.allLemmas)
+        except:
+            print "Trie processing error"
+            print list(self.allLemmas)
+            self.trie = False
 
 
 class ReverseLookups(XMLDict):
@@ -308,7 +316,7 @@ def detailedLookupXML(_from, _to, lookup, pos, _type=False):
     if _type:
         if _type.strip():
             args.append(_type)
-            lookupfunc = detailed_tree.lookupLemmaPosAndType
+            lookupfunc = detailed_tree.lookupLemmaPOSAndType
     else:
         lookupfunc = detailed_tree.lookupLemmaPOS
 
@@ -504,8 +512,33 @@ def wordDetail(from_language, to_language, wordform, format):
     if not format in ['json', 'html']:
         return "Invalid format. Only json and html allowed."
 
-    cache_key = '/detail/%s/%s/%s.%s' % (from_language, to_language, wordform, format)
     wordform = wordform.encode('utf-8')
+
+    # NOTE: these options are mostly for detail views that are linked to
+    # from the initial page's search. Everything should work without
+    # them, and with all or some of them.
+
+    # Do we filter analyzed forms and lookups by pos? 
+    pos_filter = request.args.get('pos_filter', False)
+    # Do we want to analyze compounds?
+    no_compounds = request.args.get('no_compounds', False)
+    # Should we match the input lemma with the analyzed lemma?
+    lemma_match = request.args.get('lemma_match', False)
+
+    cache_key = u'/detail/%s/%s/%s.%s?pos_filter=%r&no_compounds=%r&lemma_match=%r' % \
+                ( from_language
+                , to_language
+                , wordform.decode('utf-8')
+                , format
+                , pos_filter
+                , no_compounds
+                , lemma_match
+                )
+
+    if no_compounds or lemma_match:
+        want_more_detail = True
+    else:
+        want_more_detail = False
 
     def unsupportedLang(more='.'):
         if format == 'json':
@@ -533,7 +566,10 @@ def wordDetail(from_language, to_language, wordform, format):
         # All lookups in XML must go through analyzer, because we need
         # POS info for a good lookup.
         morph = morphologies.get(from_language, False)
-        analyzed = morph.analyze(wordform, split_compounds=True)
+        if no_compounds:
+            analyzed = morph.analyze(wordform)
+        else:
+            analyzed = morph.analyze(wordform, split_compounds=True)
         # NOTE: #formanalysis
 
         # Collect lemmas and tags
@@ -551,6 +587,12 @@ def wordDetail(from_language, to_language, wordform, format):
         # Now collect XML lookups
         _result_lookups = []
         _lemma_pos_exists = []
+
+        if lemma_match:
+            print wordform
+            print _result_formOf
+            _result_formOf = [(lem, pos, tag) for lem, pos, tag in _result_formOf
+                              if lem == wordform.decode('utf-8')]
 
         for lemma, pos, tag in _result_formOf:
 
@@ -677,7 +719,8 @@ def wordDetail(from_language, to_language, wordform, format):
                                result=detailed_result,
                                user_input=user_input,
                                _from=from_language,
-                               _to=to_language)
+                               _to=to_language,
+                               more_detail_link=want_more_detail)
 
 
 @app.route('/kursadict/notify/<from_language>/<to_language>/<wordform>.html',
@@ -843,20 +886,23 @@ def indexWithLangs(_from, _to):
 
     errors = []
     if request.method == 'POST' and lookup_val:
-        lemm_ = morphologies.get(_from, False)
-        if lemm_:
-            lemmatizer = lemm_.lemmatize
+        morph = morphologies.get(_from, False)
 
-        if lemmatizer:
-            lookup_keys = lemmatizer(lookup_val, split_compounds=True)
+        if morph:
+            # lookup_keys = lemmatizer(lookup_val, split_compounds=True)
+            analyzed = morph.analyze(lookup_val, split_compounds=True)
+            # Collect lemmas and tags
+            _result_formOf = []
+            lookup_keys = [lemma for f, lemma, tag in analyzed if lemma != '?' or tag != '?']
             if lookup_keys:
                 lookup_keys.append(lookup_val)
             else:
                 lookup_keys = [lookup_val]
         else:
             lookup_keys = [lookup_val]
+            analyzed = False
 
-        results, success = lookupsInXML(_from, _to, lookup_keys)
+        results, success = lookupsInXML(_from, _to, list(set(lookup_keys)))
 
         # TODO: ukjent ord `gollet` -> gollehit, gollet, gollat
         # sort so that recognized word is at top, rest are shown as a
@@ -877,12 +923,14 @@ def indexWithLangs(_from, _to):
 
         if not results:
             results = False
+            analyzed = False
 
         show_info = False
     else:
         results = False
         user_input = ''
         show_info = True
+        analyzed = False
 
     if len(errors) == 0:
         errors = False
@@ -894,7 +942,7 @@ def indexWithLangs(_from, _to):
                            _to=_to,
                            user_input=lookup_val,
                            word_searches=results,
-                           analyses=False,
+                           analyses=analyzed,
                            errors=errors,
                            show_info=show_info)
 
@@ -905,7 +953,11 @@ def about():
 
 @app.route('/kursadict/', methods=['GET'])
 def index():
-    return render_template('index.html', language_pairs=settings.pair_definitions, _from='sme', _to='nob', show_info=True)
+    return render_template('index.html',
+                           language_pairs=settings.pair_definitions,
+                           _from='sme',
+                           _to='nob',
+                           show_info=True)
 
 
 ##
