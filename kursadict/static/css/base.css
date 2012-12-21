@@ -103,3 +103,21 @@ h4#dict_title {
     background-image: linear-gradient(to bottom, #CCC, #DDD);
 }
 
+/* NOTE: make smaller */
+dl.possible_analyses dt {
+	font-weight: lighter; 
+	font-style: italic;
+}
+dl.possible_analyses dd {
+	margin-left: 0;
+	padding-left: 0;
+}
+ul.possible_forms {
+	list-style-type: none; 
+	margin-left: 0em;
+}
+
+ul.possible_forms li {
+	margin-left: .5em;
+	font-size: 80%;
+}
