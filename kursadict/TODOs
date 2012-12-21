@@ -1,11 +1,7 @@
 ## Next: 
 
- * analysis of search word on front page
-
  * ordering of results on front page if a word is not found in the
    lexicon -- maybe just include these in the analysis block only?
-
- * search and autocomplete: bootstrap typeahead
 
  * search form on detail view
 
@@ -15,10 +11,6 @@
 
  * update all names from kursadict to vuosttas neahttasánit in some way,
    maybe 
-
- * need to figure out how to show links to detailed view from main view
-   best, f.eks., in nob->sme there are links to detail for nob, but
-   probably we want sma.
 
  * maybe make it clearer that one can bookmark specific dictionaries,
    e.g. /sme/nob/ or whatever.
@@ -31,13 +23,8 @@
 
 ## Testing notes for JS click plugin:
 
- * EASY: norsk-samisk: when you get a word that comes as a result of analysis,
-   "Unknown word", but the word is presented anyway -- seems to be success
-   value from backend is causing this. with fjerdeplass for instance, fjerde
-   has a hit, but not plass, yet it's still an error
-
- * compare safari, firefox - kapittel 4.1 - skuvla -> skuvlii - works, but
-   there's one error that needs to be caught for firefox, for some reason.
+ * Firefox error - kapittel 4.1 - skuvla -> skuvlii - works, but there's
+   not skuvla
 
  * opt-doubleclick or opt-select: need to make a note about this
 
