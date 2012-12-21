@@ -174,6 +174,7 @@ class AutocompleteTrie(XMLDict):
     def __init__(self, *args, **kwargs):
         super(AutocompleteTrie, self).__init__(*args, **kwargs)
 
+        print "* Preparing autocomplete trie..."
         from trie import Trie
         self.trie = Trie()
         self.trie.update(self.allLemmas)
@@ -235,6 +236,13 @@ for k, v in settings.reversable_dictionaries.iteritems():
         reverse_language_pairs[(k[1], k[0])] = ReverseLookups(filename=v)
 
 language_pairs.update(reverse_language_pairs)
+
+autocomplete_tries = {}
+
+for k, v in language_pairs.iteritems():
+    has_root = language_pairs.get(k)
+    if has_root:
+        autocomplete_tries[k] = AutocompleteTrie(tree=has_root.tree)
 
 def lookupXML(_from, _to, lookup, lookup_type=False):
     _dict = language_pairs.get((_from, _to), False)
@@ -332,20 +340,40 @@ morphologies = settings.morphologies
 ##
 ##
 
+def fmtForCallback(serialized_json, callback):
+    if not callback:
+        return serialized_json
+    else:
+        return "%s(%s)" % (callback, serialized_json)
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
 
-@app.route('/kursadict/autocomplete/<language>/',
+@app.route('/kursadict/autocomplete/<from_language>/<to_language>/',
            methods=['GET'])
 @crossdomain(origin='*')
-def autocomplete(language):
-    autos = [
-        {'value': 'omg1'},
-        {'value': 'omg2'},
-        {'value': 'omg3'},
-    ]
-    return json.dumps(autos)
+def autocomplete(from_language, to_language):
+    # URL parameters
+    lookup_key = user_input = request.args.get('lookup', False)
+    lemmatize               = request.args.get('lemmatize', False)
+    has_callback            = request.args.get('callback', False)
+
+    autocompleter = autocomplete_tries.get((from_language, to_language), False)
+
+    if not autocompleter:
+        return fmtForCallback(
+                json.dumps(" * No autocomplete for this language pair."),
+                has_callback)
+
+    autos = autocompleter.autocomplete(lookup_key)
+
+    # Only lemmatize if nothing returned from autocompleter?
+
+    return Response(response=fmtForCallback(json.dumps(autos), has_callback),
+                    status=200,
+                    mimetype="application/json")
 
 @app.route('/kursadict/lookup/<from_language>/<to_language>/',
            methods=['GET'])
@@ -821,6 +849,10 @@ def indexWithLangs(_from, _to):
 
         if lemmatizer:
             lookup_keys = lemmatizer(lookup_val, split_compounds=True)
+            if lookup_keys:
+                lookup_keys.append(lookup_val)
+            else:
+                lookup_keys = [lookup_val]
         else:
             lookup_keys = [lookup_val]
 
@@ -831,15 +863,26 @@ def indexWithLangs(_from, _to):
         # possible form of _
         # Maybe this logic should be done in template instead, 
         # print results
-        results = sorted(results,
-                         key=lambda x: len(x['input']),
-                         reverse=True)
+        def hasLookups(l):
+            if l.get('lookups', False) == False:
+                return False
+            return True
+
 
         logSimpleLookups(user_input, results)
 
+        results = sorted(filter(hasLookups, results),
+                         key=lambda x: len(x['input']),
+                         reverse=True)
+
+        if not results:
+            results = False
+
+        show_info = False
     else:
         results = False
         user_input = ''
+        show_info = True
 
     if len(errors) == 0:
         errors = False
@@ -852,7 +895,8 @@ def indexWithLangs(_from, _to):
                            user_input=lookup_val,
                            word_searches=results,
                            analyses=False,
-                           errors=errors)
+                           errors=errors,
+                           show_info=show_info)
 
 @app.route('/kursadict/about/', methods=['GET'])
 def about():
@@ -861,7 +905,7 @@ def about():
 
 @app.route('/kursadict/', methods=['GET'])
 def index():
-    return render_template('index.html', language_pairs=settings.pair_definitions, _from='sme', _to='nob')
+    return render_template('index.html', language_pairs=settings.pair_definitions, _from='sme', _to='nob', show_info=True)
 
 
 ##

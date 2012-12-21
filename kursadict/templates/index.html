@@ -3,31 +3,27 @@
 {% block extra_css %}
 {# https://gist.github.com/1866577 #}
 <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-collapse.js')}}"></script>
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-dropdown.js')}}"></script>
 <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-typeahead-fork.js')}}"></script>
-
 <script type="text/javascript">
-$('.typeahead').typeahead({
-  process: function(typeahead, results) {
-    console.log(results);
-  },
-  source: function(typeahead, query) {
-    var lang,
-      _this = this;
-    console.log(typeahead);
-    console.log(query);
-    console.log(this);
-    lang = typeahead.attr('data-language');
-    return $.ajax({
-      url: "/kursadict/autocomplete/?q=" + query,
-      success: function(data) {
-        console.log(data);
-        return typeahead.process(data);
-      }
+$(document).ready( function() {
+    $('input[name="lookup"]').typeahead({
+        items: 5,
+        source: function (typeahead, query) {
+            var _from = typeahead.$element.attr('data-language-from')
+                , _to = typeahead.$element.attr('data-language-to')
+                , url = '/kursadict/autocomplete/' + _from + '/' + _to + '/'
+                ;
+            console.log(_to);
+            console.log(url);
+            return $.get(url, { lookup: query }, function (data) {
+                return typeahead.process(data);
+            });
+        }
     });
-  },
-  property: "name"
 });
 </script>
+
 {% endblock %}
 
 {% block search_li %}
@@ -86,8 +82,8 @@ $('.typeahead').typeahead({
                     <div class="input-append">
                         <input type="text" 
                                name="lookup" 
-                               data-language="{{ _from }}"
-                               data-provide="typeahead"
+                               data-language-from="{{ _from }}"
+                               data-language-to="{{ _to }}"
                                {% if user_input -%}value="{{ user_input }}"{% endif %}
                                placeholder="ohcansátni"></input>
                                <button type="submit" class="btn" name="search">
@@ -150,6 +146,18 @@ $('.typeahead').typeahead({
                         </div>
                     </div>
                 {% else %}
+                    {% if not show_info %}
+                    <div class="alert alert-error">
+                        <p>
+                            <span class="i18n" lang="nob">Ord {{ user_input }} ikke funnet.</span>
+                            <span class="i18n" lang="fin">Sana {{ user_input }} ei löytynyt.</span>
+                            <span class="i18n" lang="eng">Word {{ user_input }} not found.</span>
+                            <span class="i18n" lang="sme"></span>
+                        </p>
+                    </div>
+                    {% endif %}
+                {% endif %}
+                {% if show_info %}
                     <div class="alert alert-success">
                         <p>
                             <span class="i18n" lang="nob">Søk etter et ord, eller ordform for å få analyse og betydning.</span>
