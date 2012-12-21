@@ -592,6 +592,11 @@ def wordDetail(from_language, to_language, wordform, format):
             _result_formOf = [(lem, pos, tag) for lem, pos, tag in _result_formOf
                               if lem == wordform.decode('utf-8')]
 
+        if pos_filter:
+            _result_formOf = [(lem, pos, tag) for lem, pos, tag in _result_formOf
+                              if pos.upper() == pos_filter.upper()]
+
+
         for lemma, pos, tag in _result_formOf:
 
             # TODO: generalize for other languages, use tagsets

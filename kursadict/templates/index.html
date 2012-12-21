@@ -104,7 +104,7 @@ $(document).ready( function() {
                             {% if lexeme.lookups %}
 
                                 {% for lookup in lexeme.lookups %}
-                                <p><a href="/kursadict/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html?no_compounds=true&lemma_match=true">
+                                <p><a href="/kursadict/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html?no_compounds=true&lemma_match=true&pos_filter={{ lookup.pos }}">
                                         {{ lookup.left }}
                                 </a> ({{ lookup.pos }}) – </p>
                                 <ol>
