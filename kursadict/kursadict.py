@@ -589,8 +589,6 @@ def wordDetail(from_language, to_language, wordform, format):
         _lemma_pos_exists = []
 
         if lemma_match:
-            print wordform
-            print _result_formOf
             _result_formOf = [(lem, pos, tag) for lem, pos, tag in _result_formOf
                               if lem == wordform.decode('utf-8')]
 
