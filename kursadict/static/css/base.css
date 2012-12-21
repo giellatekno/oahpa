@@ -93,3 +93,13 @@ div.results ol {
 h4#dict_title {
 	margin-top: 0px;
 }
+
+.dropdown-menu .active > a, .dropdown-menu .active > a:hover {
+    background-color: #DDD;
+    background-image: -moz-linear-gradient(top, #CCC, #DDD);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#CCC), to(#DDD));
+    background-image: -webkit-linear-gradient(top, #CCC, #DDD);
+    background-image: -o-linear-gradient(top, #CCC, #DDD);
+    background-image: linear-gradient(to bottom, #CCC, #DDD);
+}
+
