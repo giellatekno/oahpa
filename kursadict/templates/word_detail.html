@@ -123,5 +123,13 @@
     </div>
     {% endfor %}
 
+    {% if more_detail_link %}
+        <p>
+            <a href="/kursadict/detail/{{ _from }}/{{ _to }}/{{ user_input }}.html">
+                <span class="i18n" lang="nob">Vil du se mer informasjon om ordet?</span>
+            </a>
+        </p>
+    {% endif %}
+
 {% endblock %}
 
