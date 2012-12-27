@@ -211,7 +211,6 @@ msgid "Copyright 2011 Universitetet i Troms&oslash; "
 msgstr "Copyright 2012 Universitetet i Tromsø"
 
 #: templates/univ_oahpa_main.html:232
-#, fuzzy
 msgid "Contact "
 msgstr "Kontakt"
 
@@ -557,7 +556,7 @@ msgstr "Brukernavn eller passord stemte ikke. Prøv igjen."
 
 #: templates/auth/login.html:15
 msgid "You are currently logged in."
-msgstr ""
+msgstr "Nå er du innlogget."
 
 #: templates/auth/login.html:15
 msgid "Log out?"
@@ -568,48 +567,48 @@ msgid "Please log in to continue."
 msgstr "Logg inn for å fortsette..."
 
 #: templates/auth/login.html:38
-#, fuzzy
 msgid ""
 "If you are participating in a course at <a href=\"http://kursa.oahpa.no/"
 "\">http://kursa.oahpa.no/</a> and are seeing this page, you must log in "
 "there first, and then come back here and log in. If this does not work, make "
 "sure that your browser allows cookies."
 msgstr ""
-"Hvis du deltar på et kurs ved <a href=\"http://site.uit.no/\">http://site."
-"uit.no/</a> og besøker denne sida må du logge inn på site.uit.no først.  "
-"Hvis du allerede har gjort det kan du klikke <a href=\"/univ_oahpa/login/"
-"\">her</a> for å forsøke å logge inn igjen. Hvis det fremdeles ikke "
-"fungerer, så forsikre deg om at du ikke har slått av cookies i nettleseren."
+"Hvis du deltar på et kurs ved <a href=\"http://kursa.oahpa.no/\">http://kursa."
+"oahpa.no/</a> og besøker denne sida må du logge inn der først, og så logge inn.  "
+"Hvis du allerede har gjort det må du forsikre deg om at du ikke "
+"har slått av cookies i nettleseren."
 
 #: templates/auth/logout.html:6
 msgid "You have been logged out from Oahpa."
-msgstr ""
+msgstr "Nå er du logget ut av Oahpa"
 
 #: templates/auth/logout.html:6
 msgid "Click to log out from Kursa to complete the process."
-msgstr ""
+msgstr "Klikk for å logge ut av Kursa for å avslutte prosessen"
 
 #: templates/auth/logout.html:7
 msgid ""
 "If you do not log out from kursa, you will be automatically logged back in "
 "again."
 msgstr ""
+"Hvis du ikke logger ut fra Kursa vil du bli logget inn igjen automatisk."
 
 #: templates/auth/logout.html:7
 msgid ""
 "If you are seeing this page and do not expect to, you have likely been "
 "logged out from Kursa, and you will need to log in again."
 msgstr ""
+"Hvis du ser denne sida, og ikke hadde forventet å se den, "
+"har du sannsynligvis blitt logget ut fra Kursa, og du må logge inn igjen."
 
 #: templates/courses/courses_main.html:19
-#, fuzzy
 msgid "Course overview"
-msgstr "Se framgang"
+msgstr "Kursoversikt"
 
 #: templates/courses/courses_main.html:22
 #: templates/courses/courses_main_instructor.html:22
 msgid "Admin interface"
-msgstr ""
+msgstr "Administratorgrensesnitt"
 
 #: templates/courses/courses_main.html:25
 #: templates/courses/courses_main_instructor.html:25
@@ -665,20 +664,19 @@ msgstr "Du er kursinstruktør."
 
 #: templates/courses/courses_main.html:62
 msgid "To view your own grade summary,"
-msgstr ""
+msgstr "For å se karakteroversikta di, "
 
 #: templates/courses/courses_main.html:62
 msgid "click here"
-msgstr ""
+msgstr "klikk her"
 
 #: templates/courses/courses_main.html:63
 msgid "View students' grades"
 msgstr "Se studentresultater"
 
 #: templates/courses/courses_main_instructor.html:21
-#, fuzzy
 msgid "Grade summary"
-msgstr "Grammatikk"
+msgstr "Karakteroversikt"
 
 #: templates/courses/courses_main_instructor.html:32
 msgid "Course content is available online"
@@ -1091,23 +1089,20 @@ msgid "adjective->verb derivation"
 msgstr "Avledning adjektiv->verb"
 
 #: univ_drill/forms.py:290
-#, fuzzy
 msgid "Family"
 msgstr "Slekt"
 
 #: univ_drill/forms.py:291
-#, fuzzy
 msgid "Other"
 msgstr "andre"
 
 #: univ_drill/forms.py:296
 msgid "Singular"
-msgstr ""
+msgstr "Entall"
 
 #: univ_drill/forms.py:297
-#, fuzzy
 msgid "Plural"
-msgstr "nominativ flertall"
+msgstr "Nominativ flertall"
 
 #: univ_drill/forms.py:307 univ_drill/forms.py:316 univ_drill/forms.py:326
 msgid "nominative"
@@ -1387,19 +1382,19 @@ msgstr "vanskelig"
 
 #: univ_drill/forms.py:475
 msgid "Firstmeeting"
-msgstr ""
+msgstr "Firstmeeting"
 
 #: univ_drill/forms.py:476
 msgid "Firstmeeting boy"
-msgstr ""
+msgstr "Firstmeeting boy"
 
 #: univ_drill/forms.py:477
 msgid "Firstmeeting girl"
-msgstr ""
+msgstr "Firstmeeting girl"
 
 #: univ_drill/forms.py:478
 msgid "Firstmeeting man"
-msgstr ""
+msgstr "Firstmeeting man"
 
 #: univ_drill/forms.py:479 univ_drill/templates/sahka.html:216
 msgid "Visit"
@@ -1570,9 +1565,8 @@ msgid "Derivations"
 msgstr "Avledninger"
 
 #: univ_drill/templates/mgame.html:42
-#, fuzzy
 msgid "Possessives"
-msgstr "essiv"
+msgstr "Possessivsuffiks"
 
 #: univ_drill/templates/mgame.html:56
 msgid "Morphology"
@@ -1646,7 +1640,7 @@ msgstr "Resiprok"
 
 #: univ_drill/templates/mgame_px.html:16 univ_drill/templates/mgame_px.html:18
 msgid "Possessive type"
-msgstr ""
+msgstr "Possessivtype"
 
 #: univ_drill/templates/mgame_v.html:8
 msgid "Add verbs in correct forms. You get translation if you click the word."
@@ -1732,11 +1726,11 @@ msgstr ""
 
 #: univ_drill/templates/sahka.html:185
 msgid "Buorre beaivi"
-msgstr ""
+msgstr "Buorre beaivi"
 
 #: univ_drill/templates/sahka.html:191
 msgid "Biila"
-msgstr ""
+msgstr "Biila"
 
 #: univ_drill/templates/sahka.html:197
 msgid "Meeting with Lisa"
@@ -1748,7 +1742,7 @@ msgstr "Oahpásmuva Lemehii"
 
 #: univ_drill/templates/sahka.html:208
 msgid "Gáffeboddu"
-msgstr ""
+msgstr "Gáffeboddu"
 
 #: univ_drill/templates/sahka.html:229
 msgid "Shop"
@@ -1759,9 +1753,8 @@ msgid "Answer"
 msgstr "Svar"
 
 #: univ_drill/templates/sahka.html:271
-#, fuzzy
 msgid "Show an example of the correct answer"
-msgstr "Vis korrekt svar"
+msgstr "Vis et eksempel på korrekt svar"
 
 #: univ_drill/templates/vasta.html:17
 msgid "Vasta-S"
