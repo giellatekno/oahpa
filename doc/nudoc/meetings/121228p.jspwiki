@@ -12,6 +12,7 @@ Til stades: Heli, Ryan, Lene, Trond
 * sma i ped vs branches
 * Artikler
 * Bugliste
+* Info om kurs om fst
 * Neste møte
 
 
@@ -36,7 +37,7 @@ sudo service univ_oahpa restart
 sudo service smaoahpa restart
 }}}
 
-Dokumentasjon: http://giellatekno.uit.no/ped/common/httpdserver.html
+[Dokumentasjon|http://giellatekno.uit.no/ped/common/httpdserver.html]
 
 __TILTAK__
 * __Ryan__: skriv om service univ_oahpa/smaoahpa/nginx på dokumentasjonssida 
@@ -45,15 +46,14 @@ __TILTAK__
 
 http://testing.oahpa.no/davvi/morfas/s/px/
 
-se bug nr 1546
-
-Oppgaver for MorfaC: meta/px_questions.xml
-Menyvalg: acc, gen, ill, loc, com (nominativ og mix etterhvert, foreløpig finnes ikke oppgaver for det) 
-
-Kan det bli problemer med de andre oppgavene, f.eks. N+Nountype+Sg+Com i forhold til
+* Løse MorfaS bug nr 1546
+* MorfaC: 
+** Oppgaver: meta/px_questions.xml
+** Menyvalg: acc, gen, ill, loc, com (nominativ og mix etterhvert, foreløpig finnes ikke oppgaver for det) 
+** Potensielle bugger:
+*** Problemer med de andre substantivoppgavene, f.eks. N+Nountype+Sg+Com i forhold til
 <grammar tag="N+Nountype+Sg+Com+PxSg3"/>
-
-Actor => NomAg (sjekk installeringfilene)
+*** Actor => NomAg (sjekk installeringfilene)
 
 __TILTAK__
 * __Heli__ ser på bug i MorfaS
@@ -62,8 +62,6 @@ __TILTAK__
 
 
 !! Dict javascript-plugin
-
-! Neahttadigisánit
 
 Denne er nå installert i kursa som en wordpress-plugin
 
@@ -109,14 +107,14 @@ __TILTAK__
 * __Trond__ legg til ord frå nobsme (ca. 4300) som manglar i nob.fst
 
 
-! Neste steg
+! Neste steg når både sme og sma er ferdig
 
 Disambiguering av input.
 
 !! View (teaksta)
-Har jobbat med att installera VIEW på min egen maskin, för att kunna göra utvecklingsarbetet lokalt - testa på den lokala webbservern (Tomcat).
+Heli har jobbat med att installera VIEW på sin egen maskin, för att kunna göra utvecklingsarbetet lokalt - testa på den lokala webbservern (Tomcat).
 Problem - koden kompileras inte (även den ursprungliga core-branchen). Har skrivit till Marion Zepf.
-Maven
+Program: Maven
 
 Dokumentasjonsside for [Teaksta|http://giellatekno.uit.no/ped/nudoc/teaksta.html]
 
@@ -156,11 +154,11 @@ Ryan: Vi bruker ikkje Use/NA i Oahpa likevel, men rekkjefølgja av fst-output.
 __TILTAK__
 * __Trond og Sjur__ fölgjer opp Ryan sin siste kommentar i bugen.
 
-! 1458   verbene govledh+1 og govledh+2 ble ikke generert
-! 1448   Morfologisk feedback i Morfa er delvis borte	
+! 1458 sma:   verbene govledh+1 og govledh+2 ble ikke generert
+! 1448 sma:  Morfologisk feedback i Morfa er delvis borte	
 Ingen hast med disse to, vi venter til ny infra fungerer fordi da får vi med andre rettinger og oppdateringer
 
-! 1452	Knapp for å få fram url dyplinking mangler	
+! 1452 sma:	Knapp for å få fram url dyplinking mangler	
 Lene har sendt mail til Sissel og Marit om manglende oversetting til sørsamisk
 
 !! Artikler
@@ -182,7 +180,7 @@ Oneliner: Bruk av fst for å få til en dynamisk nettordbok.
 * Ikkje behov for installering
 * Teknisk (__Ryan__)
 
-! Kurs om fst
+!! Kurs om fst
 7-14.1 fst-kurs i Helsinki. Lærere: Trond og Sjur
 [Om kurset|http://giellatekno.uit.no/plan/kone/LexcCourse.html] 
  
