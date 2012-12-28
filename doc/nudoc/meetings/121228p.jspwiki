@@ -1,0 +1,192 @@
+!!! Møte 28.12.12
+
+Til stades: Heli, Ryan, Lene, Trond
+
+
+!! Saksliste
+
+* httpd (restart av server)
+* Morfa px
+* Dict javascript-plugin
+* View (teaksta)
+* sma i ped vs branches
+* Artikler
+* Bugliste
+* Neste møte
+
+
+
+!! httpd (restart av server): gtlab og gtoahpa
+
+Kommandoen 'sudo /etc/init.d/httpd restart' er for apache.
+No bruker vi nginx, som ikkje treng omstart.
+
+Her er kommandoane:
+
+{{{
+sudo /home/univ_oahpa/univ_oahpa/run_fastcgi.sh
+sudo /home/smaoahpa/smaoahpa/run_fastcgi.sh
+}}}
+
+Dei treng
+
+{{{
+sudo service nginx restart
+sudo service univ_oahpa restart
+sudo service smaoahpa restart
+}}}
+
+Dokumentasjon: http://giellatekno.uit.no/ped/common/httpdserver.html
+
+__TILTAK__
+* __Ryan__: skriv om service univ_oahpa/smaoahpa/nginx på dokumentasjonssida 
+
+!! Morfa px
+
+http://testing.oahpa.no/davvi/morfas/s/px/
+
+se bug nr 1546
+
+Oppgaver for MorfaC: meta/px_questions.xml
+Menyvalg: acc, gen, ill, loc, com (nominativ og mix etterhvert, foreløpig finnes ikke oppgaver for det) 
+
+Kan det bli problemer med de andre oppgavene, f.eks. N+Nountype+Sg+Com i forhold til
+<grammar tag="N+Nountype+Sg+Com+PxSg3"/>
+
+Actor => NomAg (sjekk installeringfilene)
+
+__TILTAK__
+* __Heli__ ser på bug i MorfaS
+* __Heli__ installerer i MorfaC
+* __Lene, Trond__ arbeider videre med lokaliseringa
+
+
+!! Dict javascript-plugin
+
+! Neahttadigisánit
+
+Denne er nå installert i kursa som en wordpress-plugin
+
+Framover:
+
+# Proxytjener (proxyserver) (webside som tilbyr å lese andre websider med neahttadigisánit), evt bokmerke som man klikker når man er på den siden man vil lese, og omdirigeringa skjer automatisk
+# plugin for hver nettleser som brukeren installerer
+
+http://no.wikipedia.org/wiki/Proxytjener
+
+Namn: __Neahttadigisánit__
+
+i metainformasjonen bør det være: samisk ordbok, sátnegirji, dictionary (for søk)
+
+* http://sanit.oahpa.no -> http://sanit.oahpa.no/sme/nob/
+* http://baakoeh.oahpa.no -> http://baakoeh.oahpa.no/sma/nob/
+
+Norsk analyse er med nob.fst, ikkje med oslo-bergen-t.
+
+main/st/nob/src/nob-lex.txt
+
+Trond hadde kommentert ut dynamisk samansetjing, no kommentert inn att.
+
+{{{
+OBT: 
+"<studietilbud>"
+	"studietilbud" subst prop <<<
+
+
+http://dicts.uit.no
+
+studietilbud
+studietilbud	studie+N#+Cmp+tilbud+N+Neu+Pl+Indef
+studietilbud	studie+N#+Cmp+tilbud+N+Neu+Sg+Indef
+}}}
+
+OBT kan ikkje generere (?), vi bruker nob.fst.
+
+Bug: __Mellomrom__ er "unknown word".
+
+__TILTAK__
+* __Ryan__ arbeider videre med dette
+* __Trond__ legg til ord frå nobsme (ca. 4300) som manglar i nob.fst
+
+
+! Neste steg
+
+Disambiguering av input.
+
+!! View (teaksta)
+Har jobbat med att installera VIEW på min egen maskin, för att kunna göra utvecklingsarbetet lokalt - testa på den lokala webbservern (Tomcat).
+Problem - koden kompileras inte (även den ursprungliga core-branchen). Har skrivit till Marion Zepf.
+Maven
+
+Dokumentasjonsside for [Teaksta|http://giellatekno.uit.no/ped/nudoc/teaksta.html]
+
+!! sma i ped vs branches
+
+Status quo: 
+* sma
+** Lingvistiske data ligg i main/ped/sma
+** Alt anna for sma ligg i branches/pedversions/smaoahpa/
+* sme, sjd, smn, sms, rus ligg i main/ped
+* Andre eksperimentelle språk: eve, kom, sje, sjt, smj, yrk ligg i branches
+** Av desse er vel kom, sje, smj moglege kandidatar for vidareutvikling
+
+Vi vil:
+* Ha alle språk i main/ped.
+* Unngå svn:externals i data_sma/
+
+__TILTAK__
+* __Ryan__ flytter sma-filene til main/ped/
+* __Trond__ dokumenterer underskogen av eksperimentelle oahpaversjonar
+* Dei andre språka skal Ciprian flytte. Vi tar det seinare, i samband med
+  multi.
+
+!! Bugliste
+! 1538	P2	Number, clock and date fst's are not properly documentet,... 
+
+{{{
+main/langs/sma/src/transcriptions/
+numbers.lexc
+clock.lexc
+date.lexc
+}}}
+
+Use/NG og Use/NA
+Ryan: Vi bruker ikkje Use/NA i Oahpa likevel, men rekkjefølgja av fst-output.
+
+__TILTAK__
+* __Trond og Sjur__ fölgjer opp Ryan sin siste kommentar i bugen.
+
+! 1458   verbene govledh+1 og govledh+2 ble ikke generert
+! 1448   Morfologisk feedback i Morfa er delvis borte	
+Ingen hast med disse to, vi venter til ny infra fungerer fordi da får vi med andre rettinger og oppdateringer
+
+! 1452	Knapp for å få fram url dyplinking mangler	
+Lene har sendt mail til Sissel og Marit om manglende oversetting til sørsamisk
+
+!! Artikler
+! Multiartikkelen
+
+notatene er flyttet til: art/2013/oahpa_multi/
+
+__TILTAK__
+* Flytte sjølve multi-artikkelen etter (__Trond__)
+
+! Nodalida
+Deadline 21. januar.
+
+art/2013/nodalida/
+
+Oneliner: Bruk av fst for å få til en dynamisk nettordbok.
+
+* Dekningsgrad (__Trond, Lene__, jf. også LexicoNordica)
+* Ikkje behov for installering
+* Teknisk (__Ryan__)
+
+! Kurs om fst
+7-14.1 fst-kurs i Helsinki. Lærere: Trond og Sjur
+[Om kurset|http://giellatekno.uit.no/plan/kone/LexcCourse.html] 
+ 
+!! Neste møte
+Onsdag 30.1.13 kl 9.00
+
+
