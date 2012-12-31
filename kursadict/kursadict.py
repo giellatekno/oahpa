@@ -359,8 +359,12 @@ def fmtForCallback(serialized_json, callback):
 def page_not_found(e):
     return render_template('404.html'), 404
 
+# TODO: Keeping the old endpoints until all dependent apps are migrated
+#       to the new ones.
+@app.route('/autocomplete/<from_language>/<to_language>/',
+           methods=['GET'], endpoint="autocomplete")
 @app.route('/kursadict/autocomplete/<from_language>/<to_language>/',
-           methods=['GET'])
+           methods=['GET'], endpoint="autocomplete-compat")
 @crossdomain(origin='*')
 def autocomplete(from_language, to_language):
     # URL parameters
@@ -383,9 +387,13 @@ def autocomplete(from_language, to_language):
                     status=200,
                     mimetype="application/json")
 
+# TODO: Keeping the old endpoints until all dependent apps are migrated
+#       to the new ones.
+@app.route('/lookup/<from_language>/<to_language>/',
+           methods=['GET'], endpoint="lookup")
 @app.route('/kursadict/lookup/<from_language>/<to_language>/',
-           methods=['GET'])
-@crossdomain(origin='*')
+           methods=['GET'], endpoint="lookup-compat")
+# @crossdomain(origin='*')
 def lookupWord(from_language, to_language):
     """
     Returns a simplified set of JSON for dictionary, with 'success' to mark
@@ -479,9 +487,13 @@ def lookupWord(from_language, to_language):
                     mimetype="application/json")
 
 
+# TODO: Keeping the old endpoints until all dependent apps are migrated
+#       to the new ones.
+@app.route('/detail/<from_language>/<to_language>/<wordform>.<format>',
+           methods=['GET'], endpoint="detail")
 @app.route('/kursadict/detail/<from_language>/<to_language>/<wordform>.<format>',
-           methods=['GET'])
-@crossdomain(origin='*')
+           methods=['GET'], endpoint="detail-compat")
+# @crossdomain(origin='*')
 def wordDetail(from_language, to_language, wordform, format):
     """
     Returns a detailed set of information, in JSON or HTML, given a specific
@@ -725,10 +737,13 @@ def wordDetail(from_language, to_language, wordform, format):
                                _to=to_language,
                                more_detail_link=want_more_detail)
 
-
+# TODO: Keeping the old endpoints until all dependent apps are migrated
+#       to the new ones.
+@app.route('/notify/<from_language>/<to_language>/<wordform>.html',
+           methods=['GET'], endpoint="notify")
 @app.route('/kursadict/notify/<from_language>/<to_language>/<wordform>.html',
-           methods=['GET'])
-@crossdomain(origin='*')
+           methods=['GET'], endpoint="notify-compat")
+# @crossdomain(origin='*')
 def wordNotification(from_language, to_language, wordform):
     """
     Returns a simplified set of JSON for dictionary, with 'success' to mark
@@ -866,13 +881,19 @@ def wordNotification(from_language, to_language, wordform):
 ## Public Docs
 ##
 
+# TODO: Keeping the old endpoints until all dependent apps are migrated
+#       to the new ones.
+@app.route('/lookup/', methods=['GET'], endpoint="lookup-doc")
 @app.route('/kursadict/lookup/', methods=['GET'])
 def wordLookupDocs():
     from cgi import escape
     _lookup_doc = escape(lookupWord.__doc__)
     return '<html><body><pre>%s</pre></body></html>' % _lookup_doc
 
-@app.route('/kursadict/detail/', methods=['GET'])
+# TODO: Keeping the old endpoints until all dependent apps are migrated
+#       to the new ones.
+@app.route('/detail/', methods=['GET'], endpoint="detail-doc")
+@app.route('/kursadict/detail/', methods=['GET'], endpoint="detail-compat")
 def wordDetailDocs():
     from cgi import escape
     _lookup_doc = escape(wordDetail.__doc__)
@@ -883,7 +904,7 @@ def wordDetailDocs():
 ##
 
 # For direct links, form submission.
-@app.route('/kursadict/<_from>/<_to>/', methods=['GET', 'POST'])
+@app.route('/<_from>/<_to>/', methods=['GET', 'POST'])
 def indexWithLangs(_from, _to):
     user_input = lookup_val = request.form.get('lookup', False)
 
@@ -949,12 +970,15 @@ def indexWithLangs(_from, _to):
                            errors=errors,
                            show_info=show_info)
 
-@app.route('/kursadict/about/', methods=['GET'])
+@app.route('/about/', methods=['GET'])
 def about():
     return render_template('about.html')
 
+@app.route('/plugins/', methods=['GET'])
+def plugins():
+    return render_template('plugins.html')
 
-@app.route('/kursadict/', methods=['GET'])
+@app.route('/', methods=['GET'], endpoint="canonical-root")
 def index():
     return render_template('index.html',
                            language_pairs=settings.pair_definitions,
