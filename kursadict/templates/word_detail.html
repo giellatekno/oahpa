@@ -82,22 +82,41 @@
             {% for tg in lexeme.entries.lookups %}
                 <ul class="meanings">
                     {% for mg in tg.meaningGroups %}
-                        <li>
-                        {%- for txl in mg.translations -%}
-                        {{ txl }}{%- if not loop.last %}, {% endif -%}
-                        {%- endfor -%}
-                        {%- if mg.examples -%}
-                        <br />
-                        <blockquote class="examples">
-                        <dl>
-                            {%- for from, to in mg.examples %}
-                            <dt>{{ from }}</dt>
-                            <dd>{{ to }}</dd>
-                            {%- endfor %}
-                        </dl>
-                        </blockquote>
-                        {% endif -%}
-                        </li>
+                        {% if mg.language and mg.language == _to %}
+                            <li>
+                            {%- for txl in mg.translations -%}
+                            {{ txl }}{%- if not loop.last %}, {% endif -%}
+                            {%- endfor -%}
+                            {%- if mg.examples -%}
+                            <br />
+                            <blockquote class="examples">
+                            <dl>
+                                {%- for from, to in mg.examples %}
+                                <dt>{{ from }}</dt>
+                                <dd>{{ to }}</dd>
+                                {%- endfor %}
+                            </dl>
+                            </blockquote>
+                            {% endif -%}
+                            </li>
+                        {% elif not mg.language %}
+                            <li>
+                            {%- for txl in mg.translations -%}
+                            {{ txl }}{%- if not loop.last %}, {% endif -%}
+                            {%- endfor -%}
+                            {%- if mg.examples -%}
+                            <br />
+                            <blockquote class="examples">
+                            <dl>
+                                {%- for from, to in mg.examples %}
+                                <dt>{{ from }}</dt>
+                                <dd>{{ to }}</dd>
+                                {%- endfor %}
+                            </dl>
+                            </blockquote>
+                            {% endif -%}
+                            </li>
+                        {% endif %}
                     {% endfor %}
                 </ul>
             {% endfor %}

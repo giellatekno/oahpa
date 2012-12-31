@@ -83,190 +83,24 @@ useLogFile = logging.FileHandler('user_log.txt')
 app.logger.addHandler(useLogFile)
 
 
+def encodeOrFail(S):
+    try:
+        return S.encode('utf-8')
+    except:
+        return S
+
+def decodeOrFail(S):
+    try:
+        return S.decode('utf-8')
+    except:
+        return S
+
+
+
 ##
-##  Lexicon
+##  Endpoints
 ##
 ##
-
-class XMLDict(object):
-    """ XML dictionary class. Initiate with a file path or an already parsed
-    tree, exposes methods for searching in XML.
-
-    Entries are only cleaned resulting in lg/l/text(), lg/l@pos, and
-    mg/tg/t/text() with self.cleanEntry. Probably easier to make mixins
-    that add to this functionality?
-    """
-    def __init__(self, filename=False, tree=False):
-        if not tree:
-            print "parsing %s" % filename
-            self.tree = etree.parse(filename)
-        else:
-            self.tree = tree
-        self.xpath_evaluator = etree.XPathDocumentEvaluator(self.tree)
-
-        # Initialize XPath queries
-        regexpNS = "http://exslt.org/regular-expressions"
-        self.lemmaStartsWith = etree.XPath('.//e[starts-with(lg/l/text(), $lemma)]')
-        self.lemma = etree.XPath('.//e[lg/l/text() = $lemma]')
-        self.lemmaPOS = etree.XPath(".//e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, 'i')]",
-                                    namespaces={'re':regexpNS})
-        self.lemmaPOSAndType = etree.XPath(".//e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, 'i') and lg/l/@type = $_type]",
-                                    namespaces={'re':regexpNS})
-
-    def cleanEntry(self, e):
-        l = e.find('lg/l')
-        left_text = l.text
-        left_pos = l.get('pos')
-        ts = e.findall('mg/tg/t')
-        right_text = [t.text for t in ts]
-        return {'left': left_text, 'pos': left_pos, 'right': right_text}
-
-    def XPath(self, xpathobj, *args, **kwargs):
-        print "Querying: %s" % xpathobj.path
-        print "With: %s, %s" % (repr(args), repr(kwargs))
-        return map(self.cleanEntry, xpathobj(self.tree, *args, **kwargs)) or False
-
-    def lookupLemmaStartsWith(self, lemma):
-        return self.XPath(self.lemmaStartsWith, lemma=lemma)
-
-    def lookupLemma(self, lemma):
-        return self.XPath(self.lemma, lemma=lemma)
-
-    def lookupLemmaPOS(self, lemma, pos):
-        return self.XPath(self.lemmaPOS, lemma=lemma, pos=pos)
-
-    def lookupLemmaPOSAndType(self, lemma, pos, _type):
-        return self.XPath(self.lemmaPOSAndType, lemma=lemma, pos=pos, _type=_type)
-
-class DetailedEntries(XMLDict):
-    def cleanEntry(self, e):
-        l = e.find('lg/l')
-        mg = e.findall('mg')
-
-        meaningGroups = []
-        for tg in e.findall('mg/tg'):
-            _ex = [(xg.find('x').text, xg.find('xt').text) for xg in tg.findall('xg')]
-            _tg = {
-                'translations': [t.text for t in tg.findall('t')],
-                'examples': _ex
-            }
-            meaningGroups.append(_tg)
-
-        return {
-            'lemma': l.text,
-            'pos': l.get('pos'),
-            'context': l.get('context'),
-            'meaningGroups': meaningGroups,
-            'type': l.get('type')
-        }
-
-class AutocompleteTrie(XMLDict):
-
-    @property
-    def allLemmas(self):
-        """ Returns iterator for all lemmas.
-        """
-        return (e.text for e in self.tree.findall('e/lg/l') if e.text)
-
-    def autocomplete(self, query):
-        if not self.trie:
-            return []
-        else:
-            return sorted(list(self.trie.autocomplete(query)))
-
-    def __init__(self, *args, **kwargs):
-        super(AutocompleteTrie, self).__init__(*args, **kwargs)
-
-        print "* Preparing autocomplete trie..."
-        from trie import Trie
-        self.trie = Trie()
-        try:
-            self.trie.update(self.allLemmas)
-        except:
-            print "Trie processing error"
-            print list(self.allLemmas)
-            self.trie = False
-
-
-class ReverseLookups(XMLDict):
-    """
-
-    1. use only entries that have the attribute usage="vd" at entry
-    level
-
-    2. don't use entries with reverse="no" at entry level
-
-    3. search by e/mg/tg/t/text() instead of /e/lg/l/text()
-
-    """
-
-    def cleanEntry(self, e):
-        ts = e.findall('mg/tg/t')
-        ts_text = [t.text for t in ts]
-        ts_pos = [t.get('pos') for t in ts]
-
-        l = e.find('lg/l')
-        right_text = [l.text]
-
-        return {'left': ts_text, 'pos': ts_pos, 'right': right_text}
-
-    def lookupLemmaStartsWith(self, lemma):
-        _xpath = './/e[mg/tg/t/starts-with(text(), "%s")]' % lemma
-        return self.XPath(_xpath)
-
-    def lookupLemma(self, lemma):
-        _xpath = './/e[mg/tg/t/text() = "%s" and @usage = "vd" and not(@reverse)]'
-        return self.XPath(_xpath % lemma)
-
-    def lookupLemmaPOS(self, lemma, pos):
-        _xpath = ' and '.join(
-            [ './/e[mg/tg/t/text() = "%s"' % lemma
-            , '@usage = "vd"'
-            , 'not(@reverse)'
-            , 'mg/tg/t/@pos = "%s"]' % pos.lower()
-            ]
-        )
-        return self.XPath(_xpath)
-
-
-language_pairs = dict(
-    [ (k, XMLDict(filename=v))
-      for k, v in settings.dictionaries.iteritems() ]
-)
-
-reverse_language_pairs = {}
-
-for k, v in settings.reversable_dictionaries.iteritems():
-    has_root = language_pairs.get((k[0], k[1]))
-    if has_root:
-        reverse_language_pairs[(k[1], k[0])] = ReverseLookups(tree=has_root.tree)
-    else:
-        reverse_language_pairs[(k[1], k[0])] = ReverseLookups(filename=v)
-
-language_pairs.update(reverse_language_pairs)
-
-autocomplete_tries = {}
-
-for k, v in language_pairs.iteritems():
-    has_root = language_pairs.get(k)
-    if has_root:
-        autocomplete_tries[k] = AutocompleteTrie(tree=has_root.tree)
-
-def lookupXML(_from, _to, lookup, lookup_type=False):
-    _dict = language_pairs.get((_from, _to), False)
-
-    if not _dict:
-        return {'error': "Unknown language pair"}
-
-    if lookup_type:
-        if lookup_type == 'startswith':
-            result = _dict.lookupLemmaStartsWith(lookup)
-    else:
-        result = _dict.lookupLemma(lookup)
-
-    return {'lookups': result,
-            'input': lookup,
-            }
 
 def logSimpleLookups(user_input, results):
     # This is all just for logging
@@ -289,71 +123,25 @@ def logSimpleLookups(user_input, results):
 
     app.logger.info('%s\t%s\t%s\t%s' % (user_input, str(success), result_lemmas, meanings))
 
-    
-
-def lookupsInXML(_from, _to, lookups, lookup_type=False):
-    from functools import partial
-    _look = partial(lookupXML,
-                    _from=_from,
-                    _to=_to,
-                    lookup_type=lookup_type)
-
-    results = map(lambda x: _look(lookup=x), lookups)
-    success = any([(not ('error' in r) and bool(r.get('lookups', False)))
-                   for r in results])
-
-    return results, success
-
-
-def detailedLookupXML(_from, _to, lookup, pos, _type=False):
-    lexicon = language_pairs.get((_from, _to), False)
-    if not lexicon:
-        raise Exception("Undefined language pair %s %s" % (_from, _to))
-
-    detailed_tree = DetailedEntries(tree=lexicon.tree)
-
-    args = [lookup, pos]
-    if _type:
-        if _type.strip():
-            args.append(_type)
-            lookupfunc = detailed_tree.lookupLemmaPOSAndType
-    else:
-        lookupfunc = detailed_tree.lookupLemmaPOS
-
-    return lookupfunc(*args)
-
-##
-##  Lemmatization
-##
-##
-
-
-def encodeOrFail(S):
-    try:
-        return S.encode('utf-8')
-    except:
-        return S
-
-def decodeOrFail(S):
-    try:
-        return S.decode('utf-8')
-    except:
-        return S
-
 
 morphologies = settings.morphologies
 
-##
-##  Endpoints
-##
-##
+from lexicon import Lexicon
+
+lexicon = Lexicon(settings)
+language_pairs = lexicon.language_pairs
+autocomplete_tries = lexicon.autocomplete_tries
+
+def zipNoTruncate(a, b):
+    def tup(*bbq):
+        return tuple(bbq)
+    return map(tup, a, b)
 
 def fmtForCallback(serialized_json, callback):
     if not callback:
         return serialized_json
     else:
         return "%s(%s)" % (callback, serialized_json)
-
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -465,8 +253,8 @@ def lookupWord(from_language, to_language):
     else:
         lookup_keys = [lookup_key]
 
-    results, success = lookupsInXML(from_language, to_language,
-                                    lookup_keys, lookup_type)
+    results, success = lexicon.lookups(from_language, to_language,
+                                       lookup_keys, lookup_type)
 
     results = sorted(results,
                      key=lambda x: len(x['input']),
@@ -559,7 +347,7 @@ def wordDetail(from_language, to_language, wordform, format):
         elif format == 'html':
             abort(404)
 
-    if (from_language, to_language) in reverse_language_pairs:
+    if (from_language, to_language) in lexicon.reverse_language_pairs:
         return unsupportedLang()
 
     if app.caching_enabled:
@@ -626,11 +414,11 @@ def wordDetail(from_language, to_language, wordform, format):
             paradigm = lang_paradigms.get(pos, False)
             baseforms = lang_baseforms.get(pos, False)
             if baseforms:
-                xml_result = detailedLookupXML(from_language,
-                                               to_language,
-                                               lemma,
-                                               pos,
-                                               _type=_type)
+                xml_result = lexicon.detailedLookup(from_language,
+                                                    to_language,
+                                                    lemma,
+                                                    pos,
+                                                    _type=_type)
 
                 if xml_result:
                     res = {'lookups': xml_result}
@@ -735,7 +523,8 @@ def wordDetail(from_language, to_language, wordform, format):
                                user_input=user_input,
                                _from=from_language,
                                _to=to_language,
-                               more_detail_link=want_more_detail)
+                               more_detail_link=want_more_detail,
+                               zip=zipNoTruncate)
 
 # TODO: Keeping the old endpoints until all dependent apps are migrated
 #       to the new ones.
@@ -892,12 +681,12 @@ def wordLookupDocs():
 
 # TODO: Keeping the old endpoints until all dependent apps are migrated
 #       to the new ones.
-@app.route('/detail/', methods=['GET'], endpoint="detail-doc")
-@app.route('/kursadict/detail/', methods=['GET'], endpoint="detail-compat")
-def wordDetailDocs():
-    from cgi import escape
-    _lookup_doc = escape(wordDetail.__doc__)
-    return '<html><body><pre>%s</pre></body></html>' % _lookup_doc
+# @app.route('/detail/', methods=['GET'], endpoint="detail-doc")
+# @app.route('/kursadict/detail/', methods=['GET'], endpoint="detail-compat")
+# def wordDetailDocs():
+#     from cgi import escape
+#     _lookup_doc = escape(wordDetail.__doc__)
+#     return '<html><body><pre>%s</pre></body></html>' % _lookup_doc
 
 ##
 ## Public pages
@@ -926,7 +715,7 @@ def indexWithLangs(_from, _to):
             lookup_keys = [lookup_val]
             analyzed = False
 
-        results, success = lookupsInXML(_from, _to, list(set(lookup_keys)))
+        results, success = lexicon.lookups(_from, _to, list(set(lookup_keys)))
 
         # TODO: ukjent ord `gollet` -> gollehit, gollet, gollat
         # sort so that recognized word is at top, rest are shown as a
@@ -968,7 +757,8 @@ def indexWithLangs(_from, _to):
                            word_searches=results,
                            analyses=analyzed,
                            errors=errors,
-                           show_info=show_info)
+                           show_info=show_info,
+                           zip=zipNoTruncate)
 
 @app.route('/about/', methods=['GET'])
 def about():
