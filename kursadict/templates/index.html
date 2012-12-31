@@ -62,15 +62,6 @@ $(document).ready( function() {
 {% endblock %}
 
 {% block content %}
-    <div class="language_select">
-        {# TODO: flags? Or is the use of one flag unfair to other languages with the same flag#}
-        <ul class="pull-right">
-            <li><a href="#" data-lang="sme">sme</a></li>
-            <li><a href="#" data-lang="nob">nob</a></li>
-            <li><a href="#" data-lang="fin">fin</a></li>
-            <li><a href="#" data-lang="eng">eng</a></li>
-        </ul>
-    </div>
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span4 hidden-phone">
@@ -109,6 +100,7 @@ $(document).ready( function() {
                                <button type="submit" class="btn" name="search">
                                    <span class="i18n" lang="sme">Oza</span>
                                    <span class="i18n" lang="nob">Søk</span>
+                                   <span class="i18n" lang="fin">Hae</span>
                                    <span class="i18n" lang="eng">Search</span>
                                </button>
                            Advansert
@@ -154,7 +146,13 @@ $(document).ready( function() {
                                         </ul>
                                     </div>
                                 {% else %}
-                                    <p>Ukjent ord: {{ lexeme.input }}</l>
+                                    <p>
+                                        <span class="i18n" lang="nob">Ukjent ord:</span>
+                                        <span class="i18n" lang="sme">Amas sátni:</span>
+                                        <span class="i18n" lang="fin">Tietämätön sana:</span>
+                                        <span class="i18n" lang="nob">Unknown word:</span>
+                                        {{ lexeme.input }}
+                                    </p>
                                 {% endif %}
                             {% endif %}
 
@@ -185,7 +183,7 @@ $(document).ready( function() {
                             <span class="i18n" lang="nob">Ord {{ user_input }} ikke funnet.</span>
                             <span class="i18n" lang="fin">Sana {{ user_input }} ei löytynyt.</span>
                             <span class="i18n" lang="eng">Word {{ user_input }} not found.</span>
-                            <span class="i18n" lang="sme"></span>
+                            <span class="i18n" lang="sme">Sátni {{ user_input }} ii gávdnon.</span>
                         </p>
                     </div>
                     {% endif %}
@@ -196,7 +194,7 @@ $(document).ready( function() {
                             <span class="i18n" lang="nob">Søk etter et ord, eller ordform for å få analyse og betydning.</span>
                             <span class="i18n" lang="fin">Kirjoita sana, eli sananmuoto saadakseen analyyseja ja tarkoitukseja.</span>
                             <span class="i18n" lang="eng">Search for a word, or a word form for a word analysis and definition.</span>
-                            <span class="i18n" lang="sme"></span>
+                            <span class="i18n" lang="sme">i18n: Søk etter et ord, eller ordform for å få analyse og betydning.</span>
                         </p>
                     </div>
                 {% endif %}

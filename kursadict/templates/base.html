@@ -3,11 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {# TODO: meta keywords and description
+        <meta name="keywords" content="">
+        <!-- In each language, with 2-char ISO -->
+        <meta name="description" lang="se" content="">
+        <meta name="description" lang="fi" content="">
+        <meta name="description" lang="no" content="">
+        <meta name="description" lang="sv" content="">
+        <meta name="description" lang="en" content="">
+        #}
+
         <link href="{{url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet" />
         <link href="{{url_for('static', filename='css/bootstrap-responsive.css')}}" rel="stylesheet" />
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-dropdown.js')}}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='js/DSt.js')}}"></script>
         
         <!--[if lt IE 9]>
               <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -18,6 +29,23 @@
         <title>Neahttadigisánit{% block title %}{% endblock %}</title>
         {% block extra_css %}
         {% endblock %}
+
+        <script type="text/javascript">
+            // Language select
+            $(document).ready(function(){
+            	var has_lang = DSt.get('nds-ui-lang');
+            	if (has_lang) {
+            	    $('body').prop('lang', has_lang);
+            	}
+            	$('#language_select a').click( function(evt) {
+            		var lang = $(evt.target) ;
+            		var iso  = lang.attr('data-lang');
+            		DSt.set('nds-ui-lang', iso);
+            		$('body').prop('lang', iso);
+            		return false;
+            	});
+            });
+        </script>
 
     </head>
 
@@ -34,9 +62,26 @@
                         <a class="brand" href="/">Neahttadigisánit</a>
                         <div class="nav-collapse main-nav">
                             <ul class="nav">
-                                <li><a href="/">Home</a></li>
-                                <li><a href="/plugins/">Plugins</a></li>
-                                <li><a href="/about/">About</a></li>
+                                <li><a href="/">
+                                        <span class="i18n" lang="sme">Home</span>
+                                        <span class="i18n" lang="nob">Home</span>
+                                        <span class="i18n" lang="fin">Home</span>
+                                        <span class="i18n" lang="eng">Home</span>
+                                </a></li>
+                                <li>
+                                    <a href="/plugins/">
+                                        <span class="i18n" lang="sme">Plugins</span>
+                                        <span class="i18n" lang="nob">Plugins</span>
+                                        <span class="i18n" lang="fin">Plugins</span>
+                                        <span class="i18n" lang="eng">Plugins</span>
+                                    </a>
+                                </li>
+                                <li><a href="/about/">
+                                        <span class="i18n" lang="sme">About</span>
+                                        <span class="i18n" lang="nob">About</span>
+                                        <span class="i18n" lang="fin">About</span>
+                                        <span class="i18n" lang="eng">About</span>
+                                </a></li>
                                 {% block extra_nav %}
                                 {% endblock %}
                             </ul>
@@ -45,6 +90,15 @@
                         {% endblock %}
                     </div>
                 </div>
+            </div>
+            <div id="language_select">
+                {# TODO: flags? Or is the use of one flag unfair to other languages with the same flag #}
+                <ul class="pull-right">
+                    <li><a href="#" data-lang="sme">sme</a></li>
+                    <li><a href="#" data-lang="nob">nob</a></li>
+                    <li><a href="#" data-lang="fin">fin</a></li>
+                    <li><a href="#" data-lang="eng">eng</a></li>
+                </ul>
             </div>
         </header>
 
@@ -83,7 +137,12 @@
                         <img src="{{url_for('static', filename='img/uitlogo.png')}}" id="uitlogo" width="100" height="100" class="pull-right"></img>
                     </div>
                     <div class="span4">
-                        <p class="lead">Created with free and open-source language tools from <em><a href="http://giellatekno.uit.no">Giellatekno</a></em>, a Sámi Language Technology group at the <a href="http://uit.no">University of Tromsø</a>.</p>
+                        <p class="lead">
+                            <span class="i18n" lang="sme">i18n TODO: Created with free and open-source language tools from <em><a href="http://giellatekno.uit.no">Giellatekno</a></em>, a Sámi Language Technology group at the <a href="http://uit.no">University of Tromsø</a>.</span>
+                            <span class="i18n" lang="nob">i18n TODO: Created with free and open-source language tools from <em><a href="http://giellatekno.uit.no">Giellatekno</a></em>, a Sámi Language Technology group at the <a href="http://uit.no">University of Tromsø</a>.</span>
+                            <span class="i18n" lang="fin">i18n TODO: Created with free and open-source language tools from <em><a href="http://giellatekno.uit.no">Giellatekno</a></em>, a Sámi Language Technology group at the <a href="http://uit.no">University of Tromsø</a>.</span>
+                            <span class="i18n" lang="eng">Created with free and open-source language tools from <em><a href="http://giellatekno.uit.no">Giellatekno</a></em>, a Sámi Language Technology group at the <a href="http://uit.no">University of Tromsø</a>.</span>
+                        </p>
                     </div>
                 </div>
             </div>
