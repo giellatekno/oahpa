@@ -77,7 +77,7 @@ from config import settings
 
 cache = SimpleCache()
 app = Flask(__name__,
-    static_url_path='/kursadict/static',)
+    static_url_path='/static',)
 
 useLogFile = logging.FileHandler('user_log.txt')
 app.logger.addHandler(useLogFile)
