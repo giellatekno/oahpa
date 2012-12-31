@@ -12,7 +12,7 @@ $(document).ready( function() {
         source: function (typeahead, query) {
             var _from = typeahead.$element.attr('data-language-from')
                 , _to = typeahead.$element.attr('data-language-to')
-                , url = '/kursadict/autocomplete/' + _from + '/' + _to + '/'
+                , url = '/autocomplete/' + _from + '/' + _to + '/'
                 ;
             console.log(_to);
             console.log(url);
@@ -32,23 +32,16 @@ $(document).ready( function() {
 {% block search_li_form %}
 {% endblock %}
 
-    <!--
-        <p>A web-based, open-sourced dictionary that analyzes what you
-            type to give more meaningful results.</p>
-        -->
-
-
 {% block extra_nav %}
         {% for iso_pair, names in language_pairs.iteritems() %}
             <li class="visible-thin hidden-desktop hidden-tablet {%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}">
-                <a href="/kursadict/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
+                <a href="/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
                 {% for lang, name in names.iteritems() %}
                     <span class="lang_name" lang="{{ lang }}">{{ name[0] }} ↔ {{ name[1] }}</span>
                 {% endfor %}
                 </a></li>
         {% endfor %}
 {% endblock %}
-
 
 {% block content %}
     <div class="container-fluid">
@@ -57,7 +50,7 @@ $(document).ready( function() {
                 <ul class="nav nav-collapse nav-tabs nav-stacked">
                 {% for iso_pair, names in language_pairs.iteritems() %}
                     <li class="{%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}">
-                        <a href="/kursadict/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
+                        <a href="/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
                         {% for lang, name in names.iteritems() %}
                             <span class="lang_name" lang="{{ lang }}">{{ name[0] }} ↔ {{ name[1] }}</span>
                         {% endfor %}
@@ -74,11 +67,11 @@ $(document).ready( function() {
                     {% endif %}
                     {% endfor -%}
                     <br class="visible-phone" />
-                    <span style="font-size: 80%">(<a href="/kursadict/{{ _to }}/{{ _from }}/">⇄ Swap</a>)</span></h4>
+                    <span style="font-size: 80%">(<a href="/{{ _to }}/{{ _from }}/">⇄ Swap</a>)</span></h4>
 
-                <form id="kursadict" class="form-inline"
+                <form id="neahttasaanit" class="form-inline"
                     method="post"
-                    action="/kursadict/{{ _from }}/{{ _to }}/">
+                    action="/{{ _from }}/{{ _to }}/">
                     <div class="input-append">
                         <input type="text" 
                                name="lookup" 
@@ -99,17 +92,17 @@ $(document).ready( function() {
                 {% if word_searches %}
                     <div class="results">
                         <div class="row-fluid">
-                            <span class="span6">
+                            <span class="span7">
                             {% for lexeme in word_searches %}
                             {% if lexeme.lookups %}
 
                                 {% for lookup in lexeme.lookups %}
-                                <p><a href="/kursadict/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html?no_compounds=true&lemma_match=true&pos_filter={{ lookup.pos }}">
+                                <p><a href="/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html?no_compounds=true&lemma_match=true&pos_filter={{ lookup.pos }}">
                                         {{ lookup.left }}
                                 </a> ({{ lookup.pos }}) – </p>
                                 <ol>
                                     {% for tx in lookup.right %}
-                                    <li><a href="/kursadict/detail/{{ _to }}/{{ _from }}/{{ tx }}.html?no_compounds=true&lemma_match=true">
+                                    <li><a href="/detail/{{ _to }}/{{ _from }}/{{ tx }}.html?no_compounds=true&lemma_match=true">
                                             {{ tx }}
                                     </a></li>
 
@@ -134,7 +127,7 @@ $(document).ready( function() {
                             {% endfor %}
                             </span>
 
-                            <div class="span6">
+                            <div class="span5">
                                 {%- if analyses %}
                                 <div class="well">
                                     <p style="font-size: 95%;"><em>{{ user_input }}</em> is a possible form of ... </p>

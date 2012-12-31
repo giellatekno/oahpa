@@ -1,1 +1,1 @@
-coffee --compile --watch --bare jquery.kursadict.coffee
+coffee --compile --watch --bare jquery.neahttadigisanit.coffee

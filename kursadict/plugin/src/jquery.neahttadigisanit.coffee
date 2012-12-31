@@ -91,7 +91,7 @@ jQuery(document).ready ($) ->
 
       el.find('input[name="language_pair"][type="radio"]').click (e) ->
         store_val = $(e.target).val()
-        DSt.set('kursadict-select-langpair', store_val)
+        DSt.set('digisanit-select-langpair', store_val)
         return true
 
       el.find('form').submit () ->
@@ -271,7 +271,7 @@ jQuery(document).ready ($) ->
       lookup: lookup_string
       lemmatize: true
 
-    url = "#{opts.api_host}/kursadict/lookup/#{source_lang}/#{target_lang}/"
+    url = "#{opts.api_host}/lookup/#{source_lang}/#{target_lang}/"
     $.getJSON(
       url + '?callback=?'
       post_data
@@ -303,7 +303,7 @@ jQuery(document).ready ($) ->
       window.optTab = $(document).find('#webdict_options')
 
     # Recall stored language pair from session
-    previous_langpair = DSt.get('kursadict-select-langpair')
+    previous_langpair = DSt.get('digisanit-select-langpair')
     if previous_langpair
       _select = "input[type=\"radio\"][value=\"#{previous_langpair}\"]"
       _opt = window.optTab.find(_select).attr('checked', 'checked')
@@ -381,13 +381,13 @@ jQuery(document).ready ($) ->
 
 
   ##
-   # $('#divname').kursadict();
+   # $('#divname').digisanit();
    #
    #
    ## 
     
-  $.fn.kursaDict = (opts) ->
-    opts = $.extend {}, $.fn.kursaDict.options, opts
+  $.fn.digiSanit = (opts) ->
+    opts = $.extend {}, $.fn.digiSanit.options, opts
 
     this.each ->
       
@@ -403,10 +403,10 @@ jQuery(document).ready ($) ->
           "#{new_val.slice(0,3)}->#{new_val.slice(3,6)}"
         )
         elem.find('input[name="target_lang"]').val new_val
-        DSt.set('kursadict-form-langpair', new_val)
+        DSt.set('digisanit-form-langpair', new_val)
       
       # Recall previous value if stored in session.
-      previous_setting = DSt.get('kursadict-form-langpair')
+      previous_setting = DSt.get('digisanit-form-langpair')
       if previous_setting
         elem.find('input[name="target_lang"]').val previous_setting
         elem.find('button span.val_name').html(
@@ -455,7 +455,7 @@ jQuery(document).ready ($) ->
                 <p>#{lookup.left} (#{lookup.pos}) &mdash; #{result_list}</p>
               """)
         
-        url = "#{opts.api_host}/kursadict/lookup/#{source_lang}/#{target_lang}/"
+        url = "#{opts.api_host}/lookup/#{source_lang}/#{target_lang}/"
         $.getJSON(
           url + '?callback=?'
           post_data
@@ -464,13 +464,13 @@ jQuery(document).ready ($) ->
 
         return false
 
-  $.fn.kursaDict.options =
+  $.fn.digiSanit.options =
     api_host: API_HOST
-    formIDName: "#kursadict"
+    formIDName: "#digisanit"
     formResults: "#results"
 
-  $.fn.kursaDictTest = (opts) ->
-    opts = $.extend {}, $.fn.kursaDict.options, opts
+  $.fn.digiSanitTest = (opts) ->
+    opts = $.extend {}, $.fn.digiSanit.options, opts
     cleanResp = (response) ->
       console.log "Can connect."
       console.log response
@@ -478,14 +478,14 @@ jQuery(document).ready ($) ->
       lookup: "mannat"
     }
     $.getJSON(
-      "#{opts.api_host}/kursadict/lookup/sme/nob/?callback=?",
+      "#{opts.api_host}/lookup/sme/nob/?callback=?",
       data,
       cleanResp
     )
 
-  $.fn.kursaDictTest.options =
+  $.fn.digiSanitTest.options =
     api_host: API_HOST
-    formIDName: "#kursadict"
+    formIDName: "#digisanit"
     formResults: "#results"
 
 # End jQuery wrap

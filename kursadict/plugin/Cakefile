@@ -14,63 +14,63 @@ deps = [
   'src/bootstrap-popover.js'
   'src/DSt.js'
   'src/rangy-core.js'
-  'src/jquery.kursadict.js'
+  'src/jquery.neahttadigisanit.js'
 ]
 
 
 stylesheets = [
   'src/bootstrap.custom.css'
-  'src/jquery.kursadict.css'
+  'src/jquery.neahttadigisanit.css'
 ]
 
 appFiles = deps + stylesheets
 
 compiledFiles = [
-  'jquery.kursadict.css',
-  'jquery.kursadict.js'
+  'jquery.neahttadigisanit.css',
+  'jquery.neahttadigisanit.js'
 ]
 
 compress = (callback) ->
-  util.print "\n Compressing... bin/jquery.kursadict.js\n"
-  all = (fs.readFileSync 'bin/jquery.kursadict.js').toString()
+  util.print "\n Compressing... bin/jquery.neahttadigisanit.js\n"
+  all = (fs.readFileSync 'bin/jquery.neahttadigisanit.js').toString()
 
   ast = uglify.parser.parse all
-  out = fs.openSync "bin/jquery.kursadict.min.js", "w+"
+  out = fs.openSync "bin/jquery.neahttadigisanit.min.js", "w+"
 
   ast = uglify.uglify.ast_mangle ast
   ast = uglify.uglify.ast_squeeze ast
 
   fs.writeSync out, uglify.uglify.gen_code(ast)
 
-  util.print "\n Minified! to jquery.kursadict.min.js\n"
+  util.print "\n Minified! to jquery.neahttadigisanit.min.js\n"
 
 concatCSS = (callback) ->
   concated = ''
   for file in stylesheets
     out = fs.readFileSync file
     concated += out
-  fs.writeFileSync 'bin/jquery.kursadict.css', concated
+  fs.writeFileSync 'bin/jquery.neahttadigisanit.css', concated
 
 concat = (callback) ->
   concated = ''
   for file in deps
     newF = fs.readFileSync file
     concated += newF
-  fs.writeFileSync 'bin/jquery.kursadict.js', concated
-  fs.unlinkSync 'src/jquery.kursadict.js'
+  fs.writeFileSync 'bin/jquery.neahttadigisanit.js', concated
+  fs.unlinkSync 'src/jquery.neahttadigisanit.js'
   compress()
 
 zipWordpress = (callback) ->
   args = [
     'zip'
-    'bin/wordpress/vuosttasneahttasanit'
-    'bin/wordpress/vuosttasneahttasanit/*'
-    'bin/wordpress/vuosttasneahttasanit/img/*'
+    'bin/wordpress/neahttadigisanit'
+    'bin/wordpress/neahttadigisanit/*'
+    'bin/wordpress/neahttadigisanit/img/*'
   ]
   exec args.join(' ')
 
 build = (callback) ->
-  coffee = spawn 'coffee', ['--compile', '--bare', 'src/jquery.kursadict.coffee']
+  coffee = spawn 'coffee', ['--compile', '--bare', 'src/jquery.neahttadigisanit.coffee']
   coffee.stderr.on 'data', (data) ->
     process.stderr.write data.toString()
   coffee.stdout.on 'data', (data) ->
@@ -101,7 +101,7 @@ buildWordpress = (callback) ->
   # cp compiledFiles
   for file in compiledFiles
     _in = fs.readFileSync 'bin/' + file
-    fs.writeFileSync "bin/wordpress/vuosttasneahttasanit/#{file}", _in
+    fs.writeFileSync "bin/wordpress/neahttadigisanit/#{file}", _in
 
 task 'watch', 'Watch prod source files and build changes', ->
   invoke 'build'
@@ -115,7 +115,7 @@ task 'watch', 'Watch prod source files and build changes', ->
         invoke 'build'
 
 task 'min', 'minify compiled *.js file', ->
-  exec "uglifyjs jquery.kursadict.js -o jquery.kursadict.min.js", exerr
+  exec "uglifyjs jquery.neahttadigisanit.js -o jquery.neahttadigisanit.min.js", exerr
 
 task 'clean', 'Clean compiled files', ->
   wrench.rmdirSyncRecursive('bin/')
@@ -136,7 +136,7 @@ task "compress", 'Uglify JS', (params)->
 task 'build', 'Compile jQuery dependencies and dictapi, and compress', ->
   build()
   concatCSS()
-  util.print "Output stored to jquery.kursadict.js and jquery.kursadict.css\n"
+  util.print "Output stored to jquery.neahttadigisanit.js and jquery.neahttadigisanit.css\n"
 
 
 # vim: set ts=4 sw=4 tw=0 syntax=coffee :

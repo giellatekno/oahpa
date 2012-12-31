@@ -52,7 +52,7 @@ class AppConf(object):
                 self._languages[lang.get('iso')] = lang.get('name')
 
         return self._languages
-    
+
     @property
     def dictionaries(self):
         from collections import OrderedDict

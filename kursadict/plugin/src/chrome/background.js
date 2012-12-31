@@ -16,7 +16,7 @@ jQuery(document).ready(function (){
 //   contexts: ["page", "selection"],
 //   onclick: function(info, tab) {
 //     var notification;
-//     notification = webkitNotifications.createHTMLNotification("http://testing.oahpa.no/kursadict/notify/sme/nob/" + info.selectionText + ".html");
+//     notification = webkitNotifications.createHTMLNotification("http://testing.oahpa.no/notify/sme/nob/" + info.selectionText + ".html");
 //     return notification.show();
 //   }
 // });

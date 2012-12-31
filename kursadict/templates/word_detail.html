@@ -3,6 +3,17 @@
 {% block extra_css %}
 <link href="{{url_for('static', filename='css/detail.css')}}" rel="stylesheet" />
 <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-collapse.js')}}"></script>
+<!-- <script type="text/javascript" src="{{url_for('static', filename='js/dropdown-button.js')}}"></script> -->
+<script type="text/javascript">
+  $(document).ready() {
+   $(document).find('#langpairs li a').click(function(obj) {
+     var new_val;
+     new_val = $(obj.target).attr('data-value');
+     elem.find('button span.val_name').html("" + (new_val.slice(0, 3)) + "->" + (new_val.slice(3, 6)));
+     elem.find('input[name="target_lang"]').val(new_val);
+   });
+  };
+</script>
 {% endblock %}
 
 {% block float_right %}

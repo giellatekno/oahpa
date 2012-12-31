@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: Vuosttaš Neahttasánit
-Plugin URI: http://giellatekno.uit.no
+Plugin Name: Neahttadigisánit
+Plugin URI: http://sanit.oahpa.no
 Description: A plugin for providing access to dictionaries via clicking.
 Version: 0.0.2
 Author: Ryan Johnson / Giellatekno
@@ -11,7 +11,7 @@ License: GPL2
 
 function load_dict_css () {
     wp_enqueue_style( 'my_style'
-                    , plugins_url('/jquery.kursadict.css', __FILE__)
+                    , plugins_url('/jquery.neahttadigisanit.css', __FILE__)
                     );
 }
 
@@ -19,7 +19,7 @@ function load_dict_scripts () {
     // NOTE: probably already available wp_enqueue_script('jquery');
 
     wp_enqueue_script( 'gt-ns-jquery'
-                     , plugins_url('/jquery.kursadict.js', __FILE__)
+                     , plugins_url('/jquery.neahttadigisanit.js', __FILE__)
                      , array('jquery')
                      , '1.7.2'
                      ) ;
@@ -50,13 +50,13 @@ class NS_SearchForm {
   function widget($args){
     $snippet = fopen("search_form_snippet.html", "r");
     echo $args['before_widget'];
-    echo $args['before_title'] . 'Vuosttaš Neahttasánit' . $args['after_title'];
+    echo $args['before_title'] . 'Neahttadigisánit' . $args['after_title'];
     echo $snippet;
     echo $args['after_widget'];
   }
   function register(){
-    register_sidebar_widget('Vuosttaš Neahttasánit', array('Widget_name', 'widget'));
-    register_widget_control('Vuosttaš Neahttasánit', array('Widget_name', 'control'));
+    register_sidebar_widget('Neahttadigisánit', array('Widget_name', 'widget'));
+    register_widget_control('Neahttadigisánit', array('Widget_name', 'control'));
   }
 }
 
