@@ -55,13 +55,22 @@ $(document).ready( function() {
             <li class="visible-thin hidden-desktop hidden-tablet {%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}">
                 <a href="/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
                 {% for lang, name in names.iteritems() %}
-                    <span class="lang_name" lang="{{ lang }}">{{ name[0] }} ↔ {{ name[1] }}</span>
+                    <span class="i18n" lang="{{ lang }}">{{ name[0] }} ↔ {{ name[1] }}</span>
                 {% endfor %}
                 </a></li>
         {% endfor %}
 {% endblock %}
 
 {% block content %}
+    <div class="language_select">
+        {# TODO: flags? Or is the use of one flag unfair to other languages with the same flag#}
+        <ul class="pull-right">
+            <li><a href="#" data-lang="sme">sme</a></li>
+            <li><a href="#" data-lang="nob">nob</a></li>
+            <li><a href="#" data-lang="fin">fin</a></li>
+            <li><a href="#" data-lang="eng">eng</a></li>
+        </ul>
+    </div>
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span4 hidden-phone">
@@ -70,7 +79,7 @@ $(document).ready( function() {
                     <li class="{%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}">
                         <a href="/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
                         {% for lang, name in names.iteritems() %}
-                            <span class="lang_name" lang="{{ lang }}">{{ name[0] }} ↔ {{ name[1] }}</span>
+                            <span class="i18n" lang="{{ lang }}">{{ name[0] }} ↔ {{ name[1] }}</span>
                         {% endfor %}
                         </a></li>
                 {% endfor %}
@@ -80,7 +89,7 @@ $(document).ready( function() {
                 <h4 id="dict_title">{%- for iso_pair, names in language_pairs.iteritems() %}
                     {% if iso_pair[0] == _from and iso_pair[1] == _to %}
                     {%- for lang, name in names.iteritems() %}
-                        <span class="lang_name" lang="{{ lang }}">{{ name[0] }} → {{ name[1] }}</span>
+                        <span class="i18n" lang="{{ lang }}">{{ name[0] }} → {{ name[1] }}</span>
                     {% endfor -%}
                     {% endif %}
                     {% endfor -%}

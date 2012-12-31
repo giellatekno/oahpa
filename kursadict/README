@@ -44,3 +44,21 @@ are specified in app.config.yaml
 
 Format is Jinja2.
 
+Internationalisation is carried out with lang attributes, and the i18n
+class. The value of lang() in body sets the language for the document,
+and translations are written in span elements with class="i18n" and 
+corresponding language ISO code.
+
+	<body lang="nob">
+	    <h1>
+	        <span class="i18n" lang="sme">Bures</span>
+	        <span class="i18n" lang="nob">Hei</span>
+	        <span class="i18n" lang="fin">Moi</span>
+	    </h1>
+	</body>
+
+CSS (static/css/base.css) then handles the display of these via 'feature
+agreement' selectors.  When JavaScript changes body:lang to another
+language, the changes are automatically propagated to all elements with
+class="i18n" and a corresponding language setting.
+
