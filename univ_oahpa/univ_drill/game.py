@@ -20,6 +20,7 @@ import univ_oahpa.settings
 from random import choice
 from .forms import PRONOUNS_LIST
 
+
 try:
 	L1 = univ_oahpa.settings.L1
 except:
@@ -440,6 +441,12 @@ class BareGame(Game):
 		while no_forms and failure_count < 10:
 
 			for filter_ in game_filters:
+				if filter_ == 'semtype':
+					possessive_type = True and self.settings.get('possessive_type') or   ""
+					if possessive_type:
+						semtypes = POSSESSIVE_CHOICE_SEMTYPES[possessive_type]
+						random_form = random_form.filter(word__semtype_semtype__in=semtypes)
+					
 				if filter_ == 'source':
 					source = True and self.settings.get('book') or False
 					if source:
@@ -532,9 +539,10 @@ class BareGame(Game):
 			"V":	"",
 			"Pron": proncase,
 			"Der": derivation_type,
-			"Px": possessive_type,
+			"Px": possessive_type,  # possessive_type is about semtypes (family, other, all)
 		}
 		
+		semtypes = False  # needed for Px
 		sylls = []
 		bisyl = ['2syll', 'bisyllabic']
 		trisyl = ['3syll', 'trisyllabic']
@@ -559,7 +567,7 @@ class BareGame(Game):
 			# it's nominative for the one type where nominative exists
 			# but isn't in the other types
 			if not possessive_case:
-				possessive_case = 'N-NOM'
+				possessive_case = 'N-ACC'  # was: N-NOM
 			case = self.casetable[possessive_case]
 		else:
 			case = self.casetable[pos_tables[pos]]
@@ -665,12 +673,20 @@ class BareGame(Game):
 			semtypes = POSSESSIVE_CHOICE_SEMTYPES[possessive_type]
 			p_type = possessive_types[possessive_type]
 			if possessive_number == 'N-SG':
-				number = ['Sg']
+				#number = ['Sg']
 				p_type = [a for a in p_type if 'PxSg' in a]
-			else:
-				number = ['Pl']
-				# p_type = [a for a in p_type if 'PxDu' in a or 'PxPl' in a]
+			elif possessive_number == 'N-DU':
+				p_type = [a for a in p_type if 'PxDu' in a]
+		        else:
+				p_type = [a for a in p_type if 'PxPl' in a]
+				#number = ['Pl']
+				#p_type = [a for a in p_type if 'PxDu' in a or 'PxPl' in a]
 			TAG_QUERY = Q(string__in=p_type) # , number__in=number)
+			if 'PXPROPERTY' in semtypes or case == 'Nom':
+				number = ['Sg','Pl','']
+			else:
+				number = ['Sg']
+			
 			TAG_EXCLUDES = False
 			sylls = False
 			source = False
@@ -802,7 +818,6 @@ class BareGame(Game):
 
 				random_word = tag.form_set.filter(word__language=L1)
 
-				# TODO: Px
 				if not tag.pos in ['Pron', 'Num'] and \
 					tag.string.find('Der') < 0:
 					random_word = random_word.filter(word__semtype__semtype="MORFAS")
@@ -814,7 +829,8 @@ class BareGame(Game):
 					random_word = random_word.filter(word__stem__in=sylls)
 				if source:
 					random_word = random_word.filter(word__source__in=source)
-				
+				if semtypes:
+					random_word = random_word.filter(word__semtype__semtype__in=semtypes)
 				if pos2 == 'Num':
 					if subclass == 'Ord':
 						random_word = random_word.filter(word__lemma__in=smallnum_ord)  # added to constrain the set of ordinal numerals 
@@ -1021,8 +1037,9 @@ class BareGame(Game):
 			                    .filter(lemma=word.lemma, pos=root_pos)\
 								.annotate(tc=Count('wordtranslation'))\
 								.filter(tc__gt=0)[0]
-			ws = trans_word.translations2(target_key).all()
-		# TODO: Px
+			ts = trans_word.translations2(target_key).all()
+		elif pos == 'Px':
+			ws = baseform.word.translations2(target_key).all()
 		else:
 			ws = word.translations2(target_key).all()
 
@@ -1037,10 +1054,6 @@ class BareGame(Game):
 		if not db_info.get('conneg', False):
 			db_info['conneg'] = False
 
-		print word
-		print tag
-		print baseform
-		print accepted_answers
 		morph = (MorfaQuestion(
 					word=word,
 					tag=tag,

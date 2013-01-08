@@ -294,6 +294,7 @@ POSSESSIVE_CHOICES = (
 
 POSSESSIVE_NUMBER_CHOICES = (
 	('N-SG', _('Singular')),
+	('N-DU', _('Dual')),
 	('N-PL', _('Plural')),
 )
 
@@ -313,13 +314,13 @@ POSSESSIVE_GROUP1_CASE = (
 )
 
 POSSESSIVE_GROUP2_CASE = (
-    ('N-ACC', _('accusative')),
+	('N-ACC', _('accusative')),
 	('N-ILL', _('illative')),
 	('N-LOC', _('locative')),
 	('N-COM', _('comitative')),
 	('N-GEN', _('genitive')),
 	('N-ESS', _('essive')),
-	('N-NOM', _('nominative')),
+	#('N-NOM', _('nominative')),
 )
 
 POSSESSIVE_GROUP3_CASE = (
@@ -342,6 +343,8 @@ POSSESSIVE_QUESTION_ANSWER = {
 	'N-PX-GROUP2': [('N+NumberN+Nom', 'N+NPxNumber+PxCase2+Possessive')],
 	'N-PX-GROUP3': [('N+NumberN+Nom', 'N+NPxNumber+PxCase3+Possessive')],
 }
+
+POSSESSIVE_FILTER_DEFINITION = ['semtype']  # Heli
 
 DERIVATION_FILTER_DEFINITION = False
 
@@ -551,7 +554,8 @@ GAME_TYPE_DEFINITIONS = {
 GAME_FILTER_DEFINITIONS = {
 	'A': ADJECTIVE_FILTER_DEFINITION,
 	'Der': DERIVATION_FILTER_DEFINITION,
-	'Px': POSSESSIVE_QUESTION_ANSWER,
+	'Px': POSSESSIVE_FILTER_DEFINITION,
+	#'Px': POSSESSIVE_QUESTION_ANSWER,  # Is that correct?
 	'N': NOUN_FILTER_DEFINITION,
 	'Num': NUMERAL_FILTER_DEFINITION,
 	'Pron': PRONOUN_FILTER_DEFINITION,
@@ -1164,8 +1168,8 @@ class MorfaSettings(OahpaSettings):
 	derivation_type = forms.ChoiceField(initial='V-DER-PASS', choices=DERIVATION_CHOICES, widget=forms.Select)
 	derivation_type_context = forms.ChoiceField(initial='DER-PASSV', choices=DERIVATION_CHOICES_CONTEXT, widget=forms.Select)
 	# TODO: Px - N-ACC here, but problem is N-NOM isn't available in all
-	# types
-	possessive_case = forms.ChoiceField(initial=None, choices=POSSESSIVE_GROUP1_CASE, widget=forms.Select, required=False)
+	# types. was: initial=None
+	possessive_case = forms.ChoiceField(initial='N-ACC', choices=POSSESSIVE_GROUP1_CASE, widget=forms.Select, required=False)
 	possessive_type = forms.ChoiceField(initial='N-PX-GROUP1', choices=POSSESSIVE_CHOICES, widget=forms.Select)
 	possessive_number = forms.ChoiceField(initial='N-SG', choices=POSSESSIVE_NUMBER_CHOICES, widget=forms.Select)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
