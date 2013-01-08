@@ -319,8 +319,6 @@ POSSESSIVE_GROUP2_CASE = (
 	('N-LOC', _('locative')),
 	('N-COM', _('comitative')),
 	('N-GEN', _('genitive')),
-	('N-ESS', _('essive')),
-	#('N-NOM', _('nominative')),
 )
 
 POSSESSIVE_GROUP3_CASE = (
@@ -329,7 +327,6 @@ POSSESSIVE_GROUP3_CASE = (
 	('N-LOC', _('locative')),
 	('N-COM', _('comitative')),
 	('N-GEN', _('genitive')),
-	('N-ESS', _('essive')),
 	('N-NOM', _('nominative')),
 )
 
