@@ -23,6 +23,7 @@ urlpatterns = patterns('univ_oahpa.univ_drill.views',
 	# url(r'^numra_clock/hard/$', 'num_clock', {'clocktype': 'kl3'}), 
 
 	# Contextual morfas
+	url(r'^morfac/s/px/$', 'cmgame', {'pos': 'Px'}, name="morfa_c.px"),
 	url(r'^morfac/der/$', 'cmgame', {'pos': 'Der'}, name="morfa_c.der"),
 	url(r'^morfac/s/$', 'cmgame', {'pos': 'n'}),
 	url(r'^morfac/v/$', 'cmgame', {'pos': 'v'}, name="morfa_c.verb"),
