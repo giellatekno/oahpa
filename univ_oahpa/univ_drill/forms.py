@@ -330,6 +330,14 @@ POSSESSIVE_GROUP3_CASE = (
 	('N-NOM', _('nominative')),
 )
 
+POSSESSIVE_CONTEXT_CHOICES = (
+	('PX-ACC', _('accusative')),
+	('PX-ILL', _('illative')),
+	('PX-LOC', _('locative')),
+	('PX-COM', _('comitative')),
+	('PX-GEN', _('genitive')),
+)
+
 
 DERIVATION_QUESTION_ANSWER = {
 	'A-DER-V': [('A+Sg+Nom', 'A+Der/AV+V+Ind+Prs+Person-Number')],
@@ -524,7 +532,8 @@ ALL_CHOICES = [
 	NUM_CONTEXT_CHOICES,
 	NUM_LEVEL_CHOICES,
 	NUM_TYPE_CHOICES, 
-	POS_CHOICES, 
+	POS_CHOICES,
+	POSSESSIVE_CONTEXT_CHOICES, 
 	PRONOUN_SUBCLASSES, 
 	PRON_CONTEXT_CHOICES,
 	RECIP_REFL_CHOICES, 
@@ -905,6 +914,7 @@ class OahpaSettings(forms.Form):
 					'possessive_number': 'N-SG',
 
 					'possessive_case': "N-ACC",
+					'possessive_case_context': 'PX-ACC',  # MorfaC px
 					'geography': 'world',
 					'frequency' : [],
 					'num_bare' : 'NOMPL',
@@ -1169,6 +1179,7 @@ class MorfaSettings(OahpaSettings):
 	possessive_case = forms.ChoiceField(initial='N-ACC', choices=POSSESSIVE_GROUP1_CASE, widget=forms.Select, required=False)
 	possessive_type = forms.ChoiceField(initial='N-PX-GROUP1', choices=POSSESSIVE_CHOICES, widget=forms.Select)
 	possessive_number = forms.ChoiceField(initial='N-SG', choices=POSSESSIVE_NUMBER_CHOICES, widget=forms.Select)
+	possessive_case_context = forms.ChoiceField(initial='PX-ACC',choices=POSSESSIVE_CONTEXT_CHOICES, widget=forms.Select, required=False)
 	num_context = forms.ChoiceField(initial='NUM-ATTR', choices=NUM_CONTEXT_CHOICES, widget=forms.Select)
 	case_context = forms.ChoiceField(initial='N-NOM-PL', choices=CASE_CONTEXT_CHOICES, widget=forms.Select)
 	adj_context = forms.ChoiceField(initial='ATTR', choices=ADJ_CONTEXT_CHOICES, widget=forms.Select)

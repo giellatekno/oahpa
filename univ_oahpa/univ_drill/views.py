@@ -518,6 +518,11 @@ class Morfaview(Gameview):
 		'N-PX-GROUP1': 'Practise noun possessive suffixes',
 		'N-PX-GROUP2': 'Practise noun possessive suffixes',
 		'N-PX-GROUP3': 'Practise noun possessive suffixes',
+		'PX-ACC': 'Practise noun possessive suffixes in accusative',
+		'PX-ILL': 'Practise noun possessive suffixes in illative',
+		'PX-LOC': 'Practise noun possessive suffixes in locative',
+		'PX-GEN': 'Practise noun possessive suffixes in genitive',
+		'PX-COM': 'Practise noun possessive suffixes in comitative',
 		'ATTRPOS': 'Practise attributes in positive',
 		'ATTRCOMP': 'Practise attributes in comparative',
 		'ATTRSUP':  'Practise attributes in superlative',
@@ -726,10 +731,12 @@ class Morfaview(Gameview):
 			else:
 				gamename_key = self.settings['derivation_type_context']
 
-		# A-DER-V
+		# Px
 		if self.settings['pos'] == "Px":
 			if self.settings['gametype'] == "bare":
 				gamename_key = self.settings['possessive_type']
+			else:
+				gamename_key = self.settings['possessive_case_context']
 
 		self.settings['gamename'] = self.gamenames[gamename_key]
 		names = [self.settings['pos'], gamename_key]
@@ -796,6 +803,8 @@ def cmgame(request, pos):
 		p = 'l'
 	elif pos == 'Der':
 		p = 'der'
+        elif pos == 'Px':
+		  p = 'px'
 	else:
 		p = pos.lower()[0]
 

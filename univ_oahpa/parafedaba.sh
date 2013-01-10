@@ -384,6 +384,13 @@ echo " "
 echo "done"
 echo "==================================================="
 
+echo "==================================================="
+echo "installing Morfa-C questions for noun possessive suffixes"
+$P install.py -g $META/grammar_defaults.xml -q $META/px_questions.xml 2>>error.log
+echo " "
+echo "done"
+echo "==================================================="
+
 ###################
 # Vasta and VastaS
 ###################
