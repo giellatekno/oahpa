@@ -14,7 +14,7 @@ Unicode. The English texts in the html-pages should be ascii.
 Whenever the texts in the page are updated, the translations need to be checked and updated as well. 
 {{{
 cd ped/oahpa
-django-admin.py makemessages -a
+python manage.py makemessages -a
 svn ci -m "new generated files" locale/fi/LC_MESSAGES/django.po
    ... etc. for the other files. 
 }}}
@@ -30,7 +30,7 @@ After fixing the files update the official directory and compile the messages.
 {{{
 cd ped/oahpa/
 svn up
-django-admin.py compilemessages
+python manage.py compilemessages
 }}}
 
 If you are not allowed to compile the messages (the machine requires
