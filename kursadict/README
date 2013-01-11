@@ -11,7 +11,16 @@ JSON, and some HTML.
 ## Installing
 
 Use virtualenv to create an environment with requirements.txt, and set
-up a webserver to direct requests to kursadict.py.
+up a webserver to direct requests to neahttadigisanit.fcgi.
+
+### Dependencies to check
+
+* svn up main/words/dicts/
+* svn up main/gt/
+* svn up main/langs
+
+Rebuild the dictionaries using make_dicts.sh, and check the languages in
+app.config.yaml, and recompile the corresponding FSTs.
 
 ## Developing
 
