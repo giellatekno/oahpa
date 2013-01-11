@@ -10,22 +10,6 @@ dictionary files must be set in `app.config.yaml`. A sample file is
 checked in as `app.config.yaml.in`, so copy this file, edit the settings
 and then launch the service.
 
-## Endpoints
-
-### /lookup/<from_language>/<to_language>/
-
-See below in function docstring
-
-
-### /auto/<language>
-
-Autocomplete for jQuery's autocomplete plugin, available from:
-  http://jqueryui.com/autocomplete/
-
-TODO: return array of lemmas formatted such:
-
-    [ { label: "Choice1", value: "value1" }, ... ]
-
 ## Testing via cURL
 
 ### Submit post data with JSON
@@ -41,7 +25,19 @@ TODO: return array of lemmas formatted such:
 
 ## Installing
 
-TODO: document flask installation
+See requirements.txt. Ideally, use virtualenv to create a new Python
+virtual environment, and use requirements.txt to automatically install
+all of the required packages.
+
+You can test that it's worked by running this file with python-- if you
+see no errors, and dictionaries are parsed, and autocomplete tries are
+prepared, things are working. Finally, the app will state which host and
+port it is running on. For developing locally, this is all you need.
+
+### Production environments
+
+There is a separate fcgi script which is meant to be used with nginx for
+production environments.
 
 ## Todos
 
@@ -72,7 +68,6 @@ from lxml import etree
 from flask import Flask, request, json, render_template, Markup, Response
 from flask import abort
 from werkzeug.contrib.cache import SimpleCache
-from crossdomain import crossdomain
 from config import settings
 
 cache = SimpleCache()
@@ -153,7 +148,6 @@ def page_not_found(e):
            methods=['GET'], endpoint="autocomplete")
 @app.route('/kursadict/autocomplete/<from_language>/<to_language>/',
            methods=['GET'], endpoint="autocomplete-compat")
-@crossdomain(origin='*')
 def autocomplete(from_language, to_language):
     # URL parameters
     lookup_key = user_input = request.args.get('lookup', False)
@@ -181,7 +175,6 @@ def autocomplete(from_language, to_language):
            methods=['GET'], endpoint="lookup")
 @app.route('/kursadict/lookup/<from_language>/<to_language>/',
            methods=['GET'], endpoint="lookup-compat")
-# @crossdomain(origin='*')
 def lookupWord(from_language, to_language):
     """
     Returns a simplified set of JSON for dictionary, with 'success' to mark
@@ -281,7 +274,6 @@ def lookupWord(from_language, to_language):
            methods=['GET'], endpoint="detail")
 @app.route('/kursadict/detail/<from_language>/<to_language>/<wordform>.<format>',
            methods=['GET'], endpoint="detail-compat")
-# @crossdomain(origin='*')
 def wordDetail(from_language, to_language, wordform, format):
     """
     Returns a detailed set of information, in JSON or HTML, given a specific
@@ -532,7 +524,6 @@ def wordDetail(from_language, to_language, wordform, format):
            methods=['GET'], endpoint="notify")
 @app.route('/kursadict/notify/<from_language>/<to_language>/<wordform>.html',
            methods=['GET'], endpoint="notify-compat")
-# @crossdomain(origin='*')
 def wordNotification(from_language, to_language, wordform):
     """
     Returns a simplified set of JSON for dictionary, with 'success' to mark
