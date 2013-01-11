@@ -50,8 +50,8 @@ class XMLDict(object):
         return {'left': left_text, 'pos': left_pos, 'right': right_text, 'lang': right_langs}
 
     def XPath(self, xpathobj, *args, **kwargs):
-        print "Querying: %s" % xpathobj.path
-        print "With: %s, %s" % (repr(args), repr(kwargs))
+        # print "Querying: %s" % xpathobj.path
+        # print "With: %s, %s" % (repr(args), repr(kwargs))
         return map(self.cleanEntry, xpathobj(self.tree, *args, **kwargs)) or False
 
     def lookupLemmaStartsWith(self, lemma):
@@ -72,7 +72,6 @@ class DetailedEntries(XMLDict):
         mg = e.findall('mg')
 
         def orFalse(l):
-            print l
             if len(l) > 0:
                 return l[0]
             else:
@@ -86,7 +85,6 @@ class DetailedEntries(XMLDict):
                 'examples': _ex,
                 'language': orFalse(tg.xpath('@xml:lang'))
             }
-            print _tg
             meaningGroups.append(_tg)
 
         return {
