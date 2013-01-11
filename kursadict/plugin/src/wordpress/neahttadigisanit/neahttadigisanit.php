@@ -3,7 +3,7 @@
 Plugin Name: Neahttadigisánit
 Plugin URI: http://sanit.oahpa.no
 Description: A plugin for providing access to dictionaries via clicking.
-Version: 0.0.2
+Version: 0.0.3
 Author: Ryan Johnson / Giellatekno
 Author URI: http://giellatekno.uit.no/
 License: GPL2
@@ -63,11 +63,12 @@ class NS_SearchForm {
 function vn_init() {
     add_action("widgets_init", array('Widget_name', 'register'));
 
+    // Only load plugin on non-admin pages.
     if (!is_admin()) {
-        if (current_user_can( 'manage_options' )) {
-            load_dict_css();
-            load_dict_scripts();
-        }
+        // NOTE: this is how to restrict only to admins.
+        // if (current_user_can( 'manage_options' )) { }
+        load_dict_css();
+        load_dict_scripts();
     }
 }
 
