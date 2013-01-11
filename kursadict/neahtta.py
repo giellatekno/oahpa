@@ -97,7 +97,7 @@ def decodeOrFail(S):
 ##
 ##
 
-def logSimpleLookups(user_input, results):
+def logSimpleLookups(user_input, results, from_language, to_language):
     # This is all just for logging
     success = False
     result_lemmas = set()
@@ -116,7 +116,13 @@ def logSimpleLookups(user_input, results):
     result_lemmas = ', '.join(list(result_lemmas))
     meanings = '; '.join(list(tx_set))
 
-    app.logger.info('%s\t%s\t%s\t%s' % (user_input, str(success), result_lemmas, meanings))
+    app.logger.info('%s\t%s\t%s\t%s\t%s\t%s' % (user_input,
+                                                str(success),
+                                                result_lemmas,
+                                                meanings,
+                                                from_language,
+                                                to_language
+                                                ))
 
 
 morphologies = settings.morphologies
@@ -249,7 +255,7 @@ def lookupWord(from_language, to_language):
                      key=lambda x: len(x['input']),
                      reverse=True)
 
-    logSimpleLookups(user_input, results)
+    logSimpleLookups(user_input, results, from_language, to_language)
 
     data = json.dumps({
         'result': results,
@@ -494,7 +500,12 @@ def wordDetail(from_language, to_language, wordform, format):
         result_lemmas = ['-']
         tx_set = '-'
 
-    app.logger.info('%s\t%s\t%s\t%s' % (user_input, str(success), ', '.join(result_lemmas), tx_set))
+    app.logger.info('%s\t%s\t%s\t%s\t%s\t%s' % (user_input,
+                                                str(success),
+                                                ', '.join(result_lemmas),
+                                                tx_set,
+                                                from_language,
+                                                to_language))
 
     if format == 'json':
         result = json.dumps({
@@ -644,7 +655,13 @@ def wordNotification(from_language, to_language, wordform):
     result_lemmas = ', '.join(list(result_lemmas))
     meanings = '; '.join(list(tx_set))
 
-    app.logger.info('%s\t%s\t%s\t%s' % (user_input, str(success), result_lemmas, meanings))
+    app.logger.info('%s\t%s\t%s\t%s\t%s\t%s' % (user_input,
+                                                str(success),
+                                                result_lemmas,
+                                                meanings,
+                                                from_language,
+                                                to_language
+                                                ))
 
     return render_template('word_notify.html', result=results, success=success, input=user_input)
 
@@ -709,7 +726,7 @@ def indexWithLangs(_from, _to):
             return True
 
 
-        logSimpleLookups(user_input, results)
+        logSimpleLookups(user_input, results, _from, _to)
 
         results = sorted(filter(hasLookups, results),
                          key=lambda x: len(x['input']),
