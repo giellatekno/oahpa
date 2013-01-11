@@ -11,7 +11,7 @@ TODO: prevent window url from updating with form submit params
 # Wrap jQuery and add plugin functionality
 jQuery(document).ready ($) ->
 
-  API_HOST = "http://testing.oahpa.no/"
+  API_HOST = "http://sanit.oahpa.no/"
 
   Templates =
     OptionsMenu: (opts) ->
@@ -356,26 +356,50 @@ jQuery(document).ready ($) ->
       {
         from:
           iso: 'sme'
-          name: 'Nordsamisk'
+          name: 'nordsamisk'
         to:
           iso: 'nob'
-          name: 'Norsk (bokmål)'
+          name: 'norsk (bokmål)'
       },
       {
         from:
           iso: 'nob'
-          name: 'Norsk (bokmål)'
+          name: 'norsk (bokmål)'
         to:
           iso: 'sme'
-          name: 'Nordsamisk'
+          name: 'nordsamisk'
       },
       {
         from:
           iso: 'sme'
-          name: 'Nordsamisk'
+          name: 'nordsamisk'
         to:
           iso: 'fin'
-          name: 'Finsk'
+          name: 'finsk'
+      },
+      {
+        from:
+          iso: 'fin'
+          name: 'finsk'
+        to:
+          iso: 'sme'
+          name: 'nordsamisk'
+      },
+      {
+        from:
+          iso: 'sma'
+          name: 'sørsamisk'
+        to:
+          iso: 'nob'
+          name: 'norsk (bokmål)'
+      },
+      {
+        from:
+          iso: 'nob'
+          name: 'norsk (bokmål)'
+        to:
+          iso: 'sma'
+          name: 'sørsamisk'
       },
     ]
 
