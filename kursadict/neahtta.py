@@ -36,8 +36,8 @@ port it is running on. For developing locally, this is all you need.
 
 ### Production environments
 
-There is a separate fcgi script which is meant to be used with nginx for
-production environments.
+There is a separate fcgi script (neahttadigisanit.fcgi) which is meant
+to be used with nginx for production environments.
 
 ## Todos
 
@@ -146,8 +146,6 @@ def page_not_found(e):
 #       to the new ones.
 @app.route('/autocomplete/<from_language>/<to_language>/',
            methods=['GET'], endpoint="autocomplete")
-@app.route('/kursadict/autocomplete/<from_language>/<to_language>/',
-           methods=['GET'], endpoint="autocomplete-compat")
 def autocomplete(from_language, to_language):
     # URL parameters
     lookup_key = user_input = request.args.get('lookup', False)
@@ -173,8 +171,6 @@ def autocomplete(from_language, to_language):
 #       to the new ones.
 @app.route('/lookup/<from_language>/<to_language>/',
            methods=['GET'], endpoint="lookup")
-@app.route('/kursadict/lookup/<from_language>/<to_language>/',
-           methods=['GET'], endpoint="lookup-compat")
 def lookupWord(from_language, to_language):
     """
     Returns a simplified set of JSON for dictionary, with 'success' to mark
@@ -184,7 +180,7 @@ def lookupWord(from_language, to_language):
 
     Path parameters:
 
-        /kursadict/lookup/<from_language>/<to_language>/
+        /lookup/<from_language>/<to_language>/
 
         Follow the ISO code.
 
@@ -272,8 +268,6 @@ def lookupWord(from_language, to_language):
 #       to the new ones.
 @app.route('/detail/<from_language>/<to_language>/<wordform>.<format>',
            methods=['GET'], endpoint="detail")
-@app.route('/kursadict/detail/<from_language>/<to_language>/<wordform>.<format>',
-           methods=['GET'], endpoint="detail-compat")
 def wordDetail(from_language, to_language, wordform, format):
     """
     Returns a detailed set of information, in JSON or HTML, given a specific
@@ -281,17 +275,17 @@ def wordDetail(from_language, to_language, wordform, format):
 
     Path parameters:
 
-        /kursadict/detail/<from_language>/<to_language>/<wordform>.<format>
+        /detail/<from_language>/<to_language>/<wordform>.<format>
     
-    See /kursadict/languages for an overview of supported language pairs, and
+    TODO: See /languages for an overview of supported language pairs, and
     supply the ISO code for <from_language> and <to_language>. <wordform> may
     be any word form in the source language, as the form will be passed through
     a morphological analyzer.
 
     <format> must be either json, or html.
     
-      Ex.) /kursadict/detail/sme/nob/orrut.html
-           /kursadict/detail/sme/nob/orrut.json
+      Ex.) /detail/sme/nob/orrut.html
+           /detail/sme/nob/orrut.json
 
     <wordform> is generally expected to be UTF-8, and most web browsers
     automatically encode unicode in URLs to UTF-8, however it may be that
@@ -522,8 +516,6 @@ def wordDetail(from_language, to_language, wordform, format):
 #       to the new ones.
 @app.route('/notify/<from_language>/<to_language>/<wordform>.html',
            methods=['GET'], endpoint="notify")
-@app.route('/kursadict/notify/<from_language>/<to_language>/<wordform>.html',
-           methods=['GET'], endpoint="notify-compat")
 def wordNotification(from_language, to_language, wordform):
     """
     Returns a simplified set of JSON for dictionary, with 'success' to mark
@@ -533,7 +525,7 @@ def wordNotification(from_language, to_language, wordform):
 
     Path parameters:
 
-        /kursadict/lookup/<from_language>/<to_language>/
+        /lookup/<from_language>/<to_language>/
 
         Follow the ISO code.
 
@@ -664,7 +656,6 @@ def wordNotification(from_language, to_language, wordform):
 # TODO: Keeping the old endpoints until all dependent apps are migrated
 #       to the new ones.
 @app.route('/lookup/', methods=['GET'], endpoint="lookup-doc")
-@app.route('/kursadict/lookup/', methods=['GET'])
 def wordLookupDocs():
     from cgi import escape
     _lookup_doc = escape(lookupWord.__doc__)
@@ -673,7 +664,6 @@ def wordLookupDocs():
 # TODO: Keeping the old endpoints until all dependent apps are migrated
 #       to the new ones.
 # @app.route('/detail/', methods=['GET'], endpoint="detail-doc")
-# @app.route('/kursadict/detail/', methods=['GET'], endpoint="detail-compat")
 # def wordDetailDocs():
 #     from cgi import escape
 #     _lookup_doc = escape(wordDetail.__doc__)

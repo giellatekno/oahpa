@@ -37,7 +37,7 @@
             	if (has_lang) {
             	    $('body').prop('lang', has_lang);
             	}
-            	$('#language_select a').click( function(evt) {
+            	$('#language_select a.lang').click( function(evt) {
             		var lang = $(evt.target) ;
             		var iso  = lang.attr('data-lang');
             		DSt.set('nds-ui-lang', iso);
@@ -92,13 +92,23 @@
                 </div>
             </div>
             <div id="language_select">
-                {# TODO: flags? Or is the use of one flag unfair to other languages with the same flag #}
-                <ul class="pull-right">
-                    <li><a href="#" data-lang="sme">sme</a></li>
-                    <li><a href="#" data-lang="nob">nob</a></li>
-                    <li><a href="#" data-lang="fin">fin</a></li>
-                    <li><a href="#" data-lang="eng">eng</a></li>
+                <ul class="nav nav-pills pull-right">
+                  <li class="dropdown">
+                    <a class="dropdown-toggle"
+                       data-toggle="dropdown"
+                       href="#">
+                        Language
+                        <b class="caret"></b>
+                      </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="lang" href="#" data-lang="sme">sme</a></li>
+                        <li><a class="lang" href="#" data-lang="nob">nob</a></li>
+                        <li><a class="lang" href="#" data-lang="fin">fin</a></li>
+                        <li><a class="lang" href="#" data-lang="eng">eng</a></li>
+                    </ul>
+                  </li>
                 </ul>
+                {# TODO: flags? Or is the use of one flag unfair to other languages with the same flag #}
             </div>
         </header>
 

@@ -38,7 +38,7 @@
 {% block content_left %}
     <div class="row-fluid">
        <div class="span12">
-         <form id="kursadict" class="form-inline pull-left">
+         <form id="neahttadigisanit" class="form-inline pull-left">
            <div class="input-prepend input-append">
              <div class="btn-group">
                <button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -155,11 +155,10 @@
 
     {% if more_detail_link %}
         <p>
-            <a href="/kursadict/detail/{{ _from }}/{{ _to }}/{{ user_input }}.html">
+            <a href="/detail/{{ _from }}/{{ _to }}/{{ user_input }}.html">
                 <span class="i18n" lang="nob">Vil du se mer informasjon om ordet?</span>
             </a>
         </p>
     {% endif %}
 
 {% endblock %}
-
