@@ -1,7 +1,7 @@
 #!/bin/sh
 
-PROJDIR="/home/ryan/gtsvn/ped/kursadict"
-ENVDIR="$PROJDIR/env/"
+PROJDIR="/home/neahtta/kursadict"
+ENVDIR="/home/neahtta/neahtta_env"
 PIDFILE="$PROJDIR/pidfile.pid"
 
 # PROJDIR="/home/neahtta/kursadict/"
