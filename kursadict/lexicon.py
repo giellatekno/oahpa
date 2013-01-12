@@ -46,6 +46,8 @@ class XMLDict(object):
                     right_langs.append(_rl[0])
                 else:
                     right_langs.append(False)
+        else:
+            right_langs = []
 
         return {'left': left_text, 'pos': left_pos, 'right': right_text, 'lang': right_langs}
 
