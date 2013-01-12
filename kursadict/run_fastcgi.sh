@@ -1,7 +1,12 @@
-﻿#!/bin/sh
-PROJDIR="/home/neahtta/kursadict/"
-ENVDIR="/home/neahtta/neahtta_env/"
-PIDFILE="/home/neahtta/kursadict/pidfile.pid"
+#!/bin/sh
+
+PROJDIR="/home/ryan/gtsvn/ped/kursadict"
+ENVDIR="$PROJDIR/env/"
+PIDFILE="$PROJDIR/pidfile.pid"
+
+# PROJDIR="/home/neahtta/kursadict/"
+# ENVDIR="/home/neahtta/neahtta_env/"
+# PIDFILE="/home/neahtta/kursadict/pidfile.pid"
 
 . $ENVDIR/bin/activate
 
@@ -11,10 +16,6 @@ if [ -f $PIDFILE ]; then
     rm -f -- $PIDFILE
 fi
 
-exec /usr/bin/env - \
-  PYTHONPATH="../python:.." \
+python manage.py runfcgi --pidfile=pidfile.pid --host=127.0.0.1 --port=2323 --method=fork --daemonize
   # python manage.py runfcgi method=prefork host=127.0.0.1 port=$PORT pidfile=$PIDFILE
-  python manage.py runfcgi --method=fork --host=127.0.0.1 --port=2323 --pidfile=$PIDFILE --daemonize
-
-# python manage.py runfcgi --method=fork --host=127.0.0.1 --port=2323 --pidfile=pidfile.pid --daemonize
 
