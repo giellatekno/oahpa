@@ -64,11 +64,13 @@ import sys
 import logging
 import urllib
 
-from lxml import etree
 from flask import Flask, request, json, render_template, Markup, Response
 from flask import abort
+
 from werkzeug.contrib.cache import SimpleCache
-from config import settings
+
+from config import *
+from utils import *
 
 cache = SimpleCache()
 app = Flask(__name__,
@@ -77,19 +79,8 @@ app = Flask(__name__,
 useLogFile = logging.FileHandler('user_log.txt')
 app.logger.addHandler(useLogFile)
 
-
-def encodeOrFail(S):
-    try:
-        return S.encode('utf-8')
-    except:
-        return S
-
-def decodeOrFail(S):
-    try:
-        return S.decode('utf-8')
-    except:
-        return S
-
+app.config = Config('.', defaults=app.config)
+app.config.from_yamlfile('app.config.yaml')
 
 
 ##
@@ -97,52 +88,10 @@ def decodeOrFail(S):
 ##
 ##
 
-def logSimpleLookups(user_input, results, from_language, to_language):
-    # This is all just for logging
-    success = False
-    result_lemmas = set()
-    tx_set = set()
-
-    for result in results:
-        result_lookups = result.get('lookups')
-        if result_lookups:
-            success = True
-            for lookup in result_lookups:
-                l_left = lookup.get('left')
-                l_right = ', '.join(lookup.get('right'))
-                tx_set.add(l_right)
-                result_lemmas.add(lookup.get('left'))
-
-    result_lemmas = ', '.join(list(result_lemmas))
-    meanings = '; '.join(list(tx_set))
-
-    app.logger.info('%s\t%s\t%s\t%s\t%s\t%s' % (user_input,
-                                                str(success),
-                                                result_lemmas,
-                                                meanings,
-                                                from_language,
-                                                to_language
-                                                ))
 
 
-morphologies = settings.morphologies
-
-from lexicon import Lexicon
-
-lexicon = Lexicon(settings)
-language_pairs = lexicon.language_pairs
-autocomplete_tries = lexicon.autocomplete_tries
-
-def zipNoTruncate(a, b):
-    def tup(*bbq):
-        return tuple(bbq)
-    return map(tup, a, b)
-
-def fmtForCallback(serialized_json, callback):
-    if not callback:
-        return serialized_json
-    else:
-        return "%s(%s)" % (callback, serialized_json)
+# language_pairs = app.config.lexicon.language_pairs
+# autocomplete_tries = app.config.lexicon.autocomplete_tries
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -153,6 +102,8 @@ def page_not_found(e):
 @app.route('/autocomplete/<from_language>/<to_language>/',
            methods=['GET'], endpoint="autocomplete")
 def autocomplete(from_language, to_language):
+
+    autocomplete_tries = app.config.lexicon.autocomplete_tries
     # URL parameters
     lookup_key = user_input = request.args.get('lookup', False)
     lemmatize               = request.args.get('lemmatize', False)
@@ -223,7 +174,7 @@ def lookupWord(from_language, to_language):
 
     """
 
-    if (from_language, to_language) not in settings.dictionaries:
+    if (from_language, to_language) not in app.config.dictionaries:
         abort(404)
 
     success = False
@@ -239,7 +190,7 @@ def lookupWord(from_language, to_language):
         return json.dumps(" * lookup undefined")
 
     # Is there a lemmatizer?
-    lemm_ = morphologies.get(from_language, False)
+    lemm_ = app.config.morphologies.get(from_language, False)
     if lemm_:
         lemmatizer = lemm_.lemmatize
 
@@ -248,14 +199,14 @@ def lookupWord(from_language, to_language):
     else:
         lookup_keys = [lookup_key]
 
-    results, success = lexicon.lookups(from_language, to_language,
-                                       lookup_keys, lookup_type)
+    results, success = app.config.lexicon.lookups(from_language, to_language,
+                                                  lookup_keys, lookup_type)
 
     results = sorted(results,
                      key=lambda x: len(x['input']),
                      reverse=True)
 
-    logSimpleLookups(user_input, results, from_language, to_language)
+    logSimpleLookups(app, user_input, results, from_language, to_language)
 
     data = json.dumps({
         'result': results,
@@ -317,7 +268,8 @@ def wordDetail(from_language, to_language, wordform, format):
     # Should we match the input lemma with the analyzed lemma?
     lemma_match = request.args.get('lemma_match', False)
 
-    cache_key = u'/detail/%s/%s/%s.%s?pos_filter=%r&no_compounds=%r&lemma_match=%r' % \
+    _pattern = u'/detail/%s/%s/%s.%s?pos_filter=%r&no_compounds=%r&lemma_match=%r'
+    cache_key =  _pattern % \
                 ( from_language
                 , to_language
                 , wordform.decode('utf-8')
@@ -339,7 +291,7 @@ def wordDetail(from_language, to_language, wordform, format):
         elif format == 'html':
             abort(404)
 
-    if (from_language, to_language) in lexicon.reverse_language_pairs:
+    if (from_language, to_language) in app.config.lexicon.reverse_language_pairs:
         return unsupportedLang()
 
     if app.caching_enabled:
@@ -349,15 +301,15 @@ def wordDetail(from_language, to_language, wordform, format):
 
     if cached_result is None:
 
-        lang_paradigms = settings.paradigms.get(from_language)
+        lang_paradigms = app.config.paradigms.get(from_language)
         if not lang_paradigms:
             return unsupportedLang(', no paradigm defined.')
-        lang_baseforms = settings.baseforms.get(from_language)
+        lang_baseforms = app.config.baseforms.get(from_language)
         if not lang_baseforms:
             return unsupportedLang(', no baseforms defined.')
         # All lookups in XML must go through analyzer, because we need
         # POS info for a good lookup.
-        morph = morphologies.get(from_language, False)
+        morph = app.config.morphologies.get(from_language, False)
         if no_compounds:
             analyzed = morph.analyze(wordform)
         else:
@@ -381,12 +333,14 @@ def wordDetail(from_language, to_language, wordform, format):
         _lemma_pos_exists = []
 
         if lemma_match:
-            _result_formOf = [(lem, pos, tag) for lem, pos, tag in _result_formOf
-                              if lem == wordform.decode('utf-8')]
+            _result_formOf = [ (lem, pos, tag)
+                               for lem, pos, tag in _result_formOf
+                               if lem == wordform.decode('utf-8') ]
 
         if pos_filter:
-            _result_formOf = [(lem, pos, tag) for lem, pos, tag in _result_formOf
-                              if pos.upper() == pos_filter.upper()]
+            _result_formOf = [ (lem, pos, tag)
+                               for lem, pos, tag in _result_formOf
+                               if pos.upper() == pos_filter.upper() ]
 
 
         for lemma, pos, tag in _result_formOf:
@@ -406,11 +360,11 @@ def wordDetail(from_language, to_language, wordform, format):
             paradigm = lang_paradigms.get(pos, False)
             baseforms = lang_baseforms.get(pos, False)
             if baseforms:
-                xml_result = lexicon.detailedLookup(from_language,
-                                                    to_language,
-                                                    lemma,
-                                                    pos,
-                                                    _type=_type)
+                xml_result = app.config.lexicon.detailedLookup(from_language,
+                                                               to_language,
+                                                               lemma,
+                                                               pos,
+                                                               _type=_type)
 
                 if xml_result:
                     res = {'lookups': xml_result}
@@ -485,7 +439,9 @@ def wordDetail(from_language, to_language, wordform, format):
 
     if len(_lookup) > 0:
         success = True
-        result_lemmas = list(set([entry['input'][0] for entry in detailed_result['lexicon']]))
+        result_lemmas = list(set([
+            entry['input'][0] for entry in detailed_result['lexicon']
+        ]))
         _meanings = []
         for lexeme in detailed_result['lexicon']:
             if lexeme['entries']:
@@ -515,7 +471,7 @@ def wordDetail(from_language, to_language, wordform, format):
         return result
     elif format == 'html':
         return render_template('word_detail.html',
-                               language_pairs=settings.pair_definitions,
+                               language_pairs=app.config.pair_definitions,
                                result=detailed_result,
                                user_input=user_input,
                                _from=from_language,
@@ -581,11 +537,11 @@ def wordNotification(from_language, to_language, wordform):
     lookup_type = False
     lemmatize = True
 
-    if (from_language, to_language) not in settings.dictionaries:
+    if (from_language, to_language) not in app.config.dictionaries:
         abort(404)
 
     if lemmatize and not lookup_type:
-        lemm_ = morphologies.get(from_language, False)
+        lemm_ = app.config.morphologies.get(from_language, False)
         if lemm_:
             lemmatizer = lemm_.lemmatize
         lemmatized_lookup_key = lemmatizer(lookup_key)
@@ -663,7 +619,10 @@ def wordNotification(from_language, to_language, wordform):
                                                 to_language
                                                 ))
 
-    return render_template('word_notify.html', result=results, success=success, input=user_input)
+    return render_template('word_notify.html',
+                           result=results,
+                           success=success,
+                           input=user_input)
 
 
 ##
@@ -695,16 +654,20 @@ def wordLookupDocs():
 def indexWithLangs(_from, _to):
     user_input = lookup_val = request.form.get('lookup', False)
 
+    if (_from, _to) not in app.config.dictionaries:
+        abort(404)
+
     errors = []
     if request.method == 'POST' and lookup_val:
-        morph = morphologies.get(_from, False)
+        morph = app.config.morphologies.get(_from, False)
 
         if morph:
             # lookup_keys = lemmatizer(lookup_val, split_compounds=True)
             analyzed = morph.analyze(lookup_val, split_compounds=True)
             # Collect lemmas and tags
             _result_formOf = []
-            lookup_keys = [lemma for f, lemma, tag in analyzed if lemma != '?' or tag != '?']
+            lookup_keys = [lemma for f, lemma, tag in analyzed
+                           if lemma != '?' or tag != '?']
             if lookup_keys:
                 lookup_keys.append(lookup_val)
             else:
@@ -713,7 +676,8 @@ def indexWithLangs(_from, _to):
             lookup_keys = [lookup_val]
             analyzed = False
 
-        results, success = lexicon.lookups(_from, _to, list(set(lookup_keys)))
+        _lookups = list(set(lookup_keys))
+        results, success = app.config.lexicon.lookups(_from, _to, _lookups)
 
         # TODO: ukjent ord `gollet` -> gollehit, gollet, gollat
         # sort so that recognized word is at top, rest are shown as a
@@ -726,7 +690,7 @@ def indexWithLangs(_from, _to):
             return True
 
 
-        logSimpleLookups(user_input, results, _from, _to)
+        logSimpleLookups(app, user_input, results, _from, _to)
 
         results = sorted(filter(hasLookups, results),
                          key=lambda x: len(x['input']),
@@ -748,7 +712,7 @@ def indexWithLangs(_from, _to):
 
     # TODO: include form analysis of user input #formanalysis
     return render_template('index.html',
-                           language_pairs=settings.pair_definitions,
+                           language_pairs=app.config.pair_definitions,
                            _from=_from,
                            _to=_to,
                            user_input=lookup_val,
@@ -769,7 +733,7 @@ def plugins():
 @app.route('/', methods=['GET'], endpoint="canonical-root")
 def index():
     return render_template('index.html',
-                           language_pairs=settings.pair_definitions,
+                           language_pairs=app.config.pair_definitions,
                            _from='sme',
                            _to='nob',
                            show_info=True)
