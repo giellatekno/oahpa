@@ -17,5 +17,4 @@ if [ -f $PIDFILE ]; then
 fi
 
 python manage.py runfcgi --pidfile=pidfile.pid --host=127.0.0.1 --port=2323 --method=fork --daemonize
-  # python manage.py runfcgi method=prefork host=127.0.0.1 port=$PORT pidfile=$PIDFILE
 
