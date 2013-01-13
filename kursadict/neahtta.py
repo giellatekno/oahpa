@@ -89,7 +89,6 @@ app.config.from_yamlfile('app.config.yaml')
 ##
 
 
-
 # language_pairs = app.config.lexicon.language_pairs
 # autocomplete_tries = app.config.lexicon.autocomplete_tries
 
@@ -624,6 +623,49 @@ def wordNotification(from_language, to_language, wordform):
                            success=success,
                            input=user_input)
 
+proxy_shim = """
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<!-- Here's the important part... -->
+<link href="http://localhost:5000/static/css/jquery.neahttadigisanit.css" rel="stylesheet" />
+<link href="http://localhost:5000/static/js/jquery.neahttadigisanit.min.js" rel="stylesheet" />
+
+<script type='text/javascript'>
+    $(document).ready(function (){
+        // Enable options for inline clicking
+        $(document).selectToLookup({
+          tooltip: true,
+          displayOptions: true,
+          spinnerImg: 'dev/img/spinner.gif'
+        });
+    });
+</script>
+"""
+
+
+@app.route('/read/', methods=['GET', 'POST'])
+def embed():
+    from lxml import sax
+    from flask import render_template_string
+    from xml.dom.minidom import parse
+    # url = 'http://avvir.no'
+    # r = requests.get(url)
+    # if r == 200:
+    #     text = r.text
+    with open('index.html') as F:
+        text = F.read()
+        head, split, rest = text.partition('</head>')
+        script = proxy_shim
+        combined = head + script + split + rest
+
+        # TODO: filename as unique hash, delete periodically
+        cache_path = 'prox/asdfbbq.html'
+        with open('static/' + cache_path, 'w') as X:
+            X.write(combined)
+
+    # TODO: need a thing with options, so, iframes?
+    return render_template('proxy_iframe.html',
+                           iframe_path=cache_path,)
 
 ##
 ## Public Docs
