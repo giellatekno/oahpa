@@ -30,7 +30,7 @@
         <dl class="possible_analyses">
             {% for grouper, forms in result.analyses|groupby(0) %}
             <dt>{{ grouper }}</dt>
-            <dd><ul class="possible_forms">{% for form, pos, tag in forms %}<li>{{ tag }}</li>{% endfor %}</ul></dd>
+            <dd><ul class="possible_forms">{% for form, pos, tag in forms %}<li>{{ tag|tagfilter(_from) }}</li>{% endfor %}</ul></dd>
             {% endfor %}
 
         {# for form, pos, tag in result.analyses %}
@@ -66,9 +66,10 @@
                         {% endfor %}
                     </a></li>
                 {% endfor %}
-                 
                </ul>
              <input type="text" name="lookup"
+                    autocorrect="off"
+                    autocapitalize="off"
                     placeholder="{{ user_input }}"></input>
              <div class="btn-group">
                <button type="submit" class="btn" name="search">
@@ -141,7 +142,7 @@
                     {%- for lemma, tag, form in lexeme.paradigms -%}
 
                         {% if tag %}
-                            <dt>{{ ' '.join(tag) }}</dt>
+                            <dt>{{ ' '.join(tag)|tagfilter(_from)  }}</dt>
                         {% endif %}
 
                         {# TODO: bootstrap accordian #}

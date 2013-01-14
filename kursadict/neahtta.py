@@ -785,6 +785,17 @@ def index():
 ## Template filters
 ##
 
+@app.template_filter('tagfilter')
+def urlencode_filter(s, lang_iso):
+    filters = app.config.tag_filters.get(lang_iso, False)
+    if filters:
+        filtered = []
+        for part in s.split(' '):
+            filtered.append(filters.get(part, part))
+        return ' '.join(filtered)
+    else:
+        return s
+
 @app.template_filter('urlencode')
 def urlencode_filter(s):
     if type(s) == 'Markup':

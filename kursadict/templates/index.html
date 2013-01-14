@@ -93,6 +93,8 @@ $(document).ready( function() {
                     <div class="input-append">
                         <input type="text" 
                                name="lookup" 
+                               autocorrect="off"
+                               autocapitalize="off"
                                data-language-from="{{ _from }}"
                                data-language-to="{{ _to }}"
                                {% if user_input -%}value="{{ user_input }}"{% endif %}
@@ -103,7 +105,6 @@ $(document).ready( function() {
                                    <span class="i18n" lang="fin">Hae</span>
                                    <span class="i18n" lang="eng">Search</span>
                                </button>
-                           Advansert
                     </div>
                 </form>
 
@@ -166,7 +167,7 @@ $(document).ready( function() {
                                     <dl class="possible_analyses">
                                         {% for grouper, forms in analyses|groupby(0) %}
                                         <dt>{{ grouper }}</dt>
-                                        <dd><ul class="possible_forms">{% for form, pos, tag in forms %}<li>{{ ' '.join(tag) }}</li>{% endfor %}</ul></dd>
+                                        <dd><ul class="possible_forms">{% for form, pos, tag in forms %}<li>{{ ' '.join(tag)|tagfilter(_from) }}</li>{% endfor %}</ul></dd>
                                         {% endfor %}
                                     </dl>
                                 </div>
