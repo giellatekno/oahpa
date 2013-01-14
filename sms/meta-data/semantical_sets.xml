@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Specify subsets for sematic supersets here-->
 
-<!-- the new classes (no subclasses for now), see also 00readme
-* HUMAN
-* SPACE
-* BODY
-* SENSE
-* HOUSE "Hus"
-* WORK
-* TIME
-* ZOO
-* BOT
-* FOOD
-* ENVIR-->
+<!-- the new classes (no subclasses for now), see also 00_readme-->
+<lexicon>
+    <sem class="HUMAN"/>
+    <sem class="SPACE"/>
+    <sem class="BODY"/>
+    <sem class="SENSE"/>
+    <sem class="HOUSE"/>
+    <sem class="WORK"/>
+    <sem class="TIME"/>
+    <sem class="ZOO"/>
+    <sem class="BOT"/>
+    <sem class="FOOD"/>
+    <sem class="ENVIR"/>
+</lexicon>
 
+<!--
 <lexicon>
   <subclasses class="ABSTRACT_CONCEPTS">
     <sem class="ABSTRACT"/>
@@ -40,3 +43,5 @@
     <sem class="PLANT"/>
   </subclasses>
 </lexicon>
+-->
+
