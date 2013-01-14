@@ -28,13 +28,13 @@ Micha (old note):
 
 1. Overwrite (delete) the current Oahpa!-nuōrti (which was only a preliminary version of book="100").
 
-2. For LEKSA use only entries tagged as <book name="200"> (for which <book name="100"> is a subset), but exclude <mg>s of entries tagged as <mg oahpa="excl">.
+2. For LEKSA use only entries tagged as <book name="200"> in sms2X (for which <book name="100"> is a subset), but exclude <mg>s of entries tagged as <mg oahpa="excl">.
 
 3. For the Placename game in LEKSA use entries tagged as <l pos="pn" class="place"> (if not <mg oahpa="excl">).
 
 4. Three book names: "all", "100", "200".
 
-5. Semantic sets for the new version:
+5. Semantic sets for the new version (defined in ~/meta-data):
 * HUMAN "Menneske"
 * SPACE "Rom"
 * BODY "Kropp"
@@ -46,7 +46,7 @@ Micha (old note):
 * BOT "Plant"
 * FOOD "Mat og drikk"
 * ENVIR "Verld"
-For now we use only these supersets. Two sets (LANG "Språk" and CLOTH "Klær") are still excluded because we have not enough entries yet.
+For now we use only these supersets. Two sets (LANG "Språk" and CLOTH "Klær") are still excluded because we have not enough entries there yet.
 
 6. dis/preferred variants in <l> and <t>
 * in <l> I mark only dispreferred variants (oahpa="dispref"), i.e. a translation variant which is accepted as answer in the reversed x-sms LEKSA game without being shown as the right answer
