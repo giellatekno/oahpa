@@ -103,6 +103,12 @@ sms db update 20130114:
 
  ==> Das ist nichts!
 
+<tg xml:lang="LANG">
+  <t .../>
+  <t .../>
+  <t .../>
+</tg>
+
 =====
 
 
