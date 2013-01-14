@@ -899,7 +899,7 @@ class OahpaSettings(forms.Form):
 					'adjcase' : 'ATTR',
 					'number' : '',
 					'pron_type': 'Pers',
-					'proncase' : 'NOMPL',
+					'proncase' : 'N-ACC', # was 'NOMPL'
 					'grade' : '',  # was: '' 'Pos' is not a good idea beacuse it is implicit in the database.
 					'case_context' : 'N-NOM-PL',
 					'vtype_context' : 'V-PRS',
