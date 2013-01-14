@@ -64,3 +64,36 @@ ul.possible_forms {
 ul.possible_forms li {
 	margin-left: 0;
 }
+
+@media (max-width: 550px) {
+	.lexeme p.lead {
+		margin-bottom: .5em;
+	}
+	
+	ul.meanings {
+		margin-left: 2.5em;
+	}
+	
+	/* Fix display of mini-paradigm for mobile width */
+	.lexeme > div {
+		position: inherit;
+	}
+	
+	.miniparadigm {
+		position: relative;
+		left: -10px;
+		margin: 0 0 0 0;
+		padding: 0 0 0 0;
+	}
+	
+	.dl-horizontal dt {
+    	float: left;
+    	width: auto;
+    	clear: none;
+    	text-align: left;
+	}
+  
+	.dl-horizontal dd {
+		margin-left: 7em;
+	}
+}

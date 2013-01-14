@@ -1,4 +1,6 @@
-/* @override http://localhost:5000/static/css/base.css */
+/* @override 
+	http://localhost:5000/static/css/base.css
+*/
 
 .navbar {
     margin-bottom: 40px;
@@ -7,6 +9,12 @@
 content {
     display: block;
     min-height: 425px;
+}
+
+@media (max-width: 550px) {
+	content {
+		margin-top: -20px;
+	}
 }
 
 footer {
@@ -40,6 +48,29 @@ footer .inline li {
     display: table-cell;
     padding-right: 5px;
 }
+
+
+@media (max-width: 550px) {
+	footer {
+    	margin-left: -20px;
+    	margin-right: -20px;
+    	padding: 0 40px;
+    	padding-bottom: 35px;
+	}
+	
+	p.lead {
+		font-size: 120%;
+		line-height: 1.3em;
+	}
+	
+	#uitlogo {
+		top: 25px;
+		width: 50px;
+		height: 50px;
+		margin-bottom: 40px;
+	}
+}
+
 
 ul.nav-stacked li {
     width: 100%;
@@ -90,7 +121,6 @@ body:lang(fin) span.i18n:lang(fin) {
 body:lang(eng) span.i18n:lang(eng) {
 	display: inline;
 }
-
 
 content .page-header {
     margin-top: 0px;
@@ -143,4 +173,15 @@ a.brand {
 .main-nav .nav li a {
     color: #3A3;
     font-weight: light;
+}
+
+@media (max-width: 550px) {
+	form#neahttasaanit input {
+		font-size: 20px;
+	}
+	
+	form#neahttasaanit {
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
 }
