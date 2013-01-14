@@ -24,7 +24,43 @@ The planned next version of Oahpa!-nuõrti (to be compiled in intermediate steps
 * book="termm" - different term(inological) lists, which are not completely included in the textbook or the basic vocabulary lists.
 
 =====
-CG (old note):
+Micha (old note):
+
+1. Overwrite (delete) the current Oahpa!-nuōrti (which was only a preliminary version of book="100").
+
+2. For LEKSA use only entries tagged as <book name="200"> (for which <book name="100"> is a subset), but exclude <mg>s of entries tagged as <mg oahpa="excl">.
+
+3. For the Placename game in LEKSA use entries tagged as <l pos="pn" class="place"> (if not <mg oahpa="excl">).
+
+4. Three book names: "all", "100", "200".
+
+5. Semantic sets for the new version:
+* HUMAN "Menneske"
+* SPACE "Rom"
+* BODY "Kropp"
+* SENSE "Egenskap, mengd, sinne"
+* HOUSE "Hus"
+* WORK "Arbeid og fritid"
+* TIME "Tid"
+* ZOO "Djur"
+* BOT "Plant"
+* FOOD "Mat og drikk"
+* ENVIR "Verld"
+For now we use only these supersets. Two sets (LANG "Språk" and CLOTH "Klær") are still excluded because we have not enough entries yet.
+
+6. dis/preferred variants in <l> and <t>
+* in <l> I mark only dispreferred variants (oahpa="dispref"), i.e. a translation variant which is accepted as answer in the reversed x-sms LEKSA game without being shown as the right answer
+* in <t> I mark only the preferred variant (oahpa="pref"), i.e. a translation variant which is always shown as the right answer in the sms-x LEKSA game
+* oahpa="excl" in <t> marks variants which are excluded from the LEKSA game
+
+A few more conventions:
+* Accepted but not recommended entries are
+** dialectal variants of sms lemmata (like <lv variant="dial" source="1991">kueˊhtt</lv>)
+** diminutive and attributive derivations of sms-lemmata (like _piânˈnǥaž_ tagged as <der gloss="dim">piânˈnǥaž</der> or _jorbb_ tagged as <der gloss="attr">jorbb</der>)
+** inflected forms of translations (like _длинен_ tagged as <t pos="a:attr" pred="длинен">длинный</t> or _tørt, tørre_ tagged as <t pos="a:utr" n="tørt" pl="tørre">tørr</t>)
+
+=====
+Cip (old note):
 For Opahpa-update, only entries with book=200 be use:
 sms2X>grep '<e ' _spittOutCorpus/*.xml | wc -l
      269
@@ -51,7 +87,9 @@ _200-book_entry>grep '<mg' *.xml | wc -l
      i.e., one entry per mg!
 
 =====
-CG: sms db update 20130114:
+Cip: 
+
+sms db update 20130114:
 
 src>comm -12 new_sms-db.txt old_sms-db.txt | wc -l
       51
@@ -61,4 +99,8 @@ src>comm -13 new_sms-db.txt old_sms-db.txt | wc -l
       47
 Ergo: There are 47 entries in the old db that are not covered by the new one.
     ==> merging the two dbs.
+
+=====
+
+
 
