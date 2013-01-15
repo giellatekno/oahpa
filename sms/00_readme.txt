@@ -142,6 +142,9 @@ Das mag ich nicht (vgl. mit dem element semantics oder example):
             <te>for that reason</te>
          </tg>
 
+rus2sms
+         <l pos="con">потому что</l>
+         <l pos="con">потому, что</l>
 
 =====
 
