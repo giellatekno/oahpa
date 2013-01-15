@@ -131,6 +131,11 @@ check pos and l value (it seems to be a re-item):
    <l pos="a">ikke av planter</l>
    <l pos="a">av planter</l>
 
+aha: this is not a <t> but a <tr> and what is YOUR interpretation of it?
+
+            <tr>anything but plants</tr>
+            <tr>ikke av planter</tr>
+
 =====
 
 
