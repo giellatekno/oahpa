@@ -109,6 +109,24 @@ sms db update 20130114:
   <t .../>
 </tg>
 
+check pos values:
+
+>          <l pos="mwe_n">fremre lår</l>
+>       </lg>
+>       <sources>
+>          <book name="200" BEDLAN_ID="220"/>
+>       </sources>
+>       <mg>
+>          <semantics>
+>             <sem class="BODY">PART</sem>
+>          </semantics>
+>          <tg xml:lang="sms">
+>             <t pos="a">ruõidd</t>
+>          </tg>
+>       </mg>
+>    </e>
+
+
 =====
 
 
