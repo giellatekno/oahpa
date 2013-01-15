@@ -136,6 +136,13 @@ aha: this is not a <t> but a <tr> and what is YOUR interpretation of it?
             <tr>anything but plants</tr>
             <tr>ikke av planter</tr>
 
+Das mag ich nicht (vgl. mit dem element semantics oder example):
+         <tg xml:lang="eng">
+            <t pos="adv" oahpa="pref">therefore</t>
+            <te>for that reason</te>
+         </tg>
+
+
 =====
 
 
