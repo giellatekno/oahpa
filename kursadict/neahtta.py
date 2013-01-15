@@ -644,6 +644,18 @@ proxy_shim = """
     'host': 'localhost:5000', # TODO: live host
 }
 
+# TODO:
+# TODO: minify and url-encode javascript:blah
+bookmarklet = """
+(function () {
+    var script  = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src  = 'https://secure.branch.com/assets/bookmarklet/bookmarklet.m.js';
+    document.body.appendChild(script);
+})();
+
+"""
+
 
 @app.route('/read/', methods=['GET', 'POST'])
 def embed():
@@ -652,31 +664,69 @@ def embed():
     from xml.dom.minidom import parse
 
     # Allow submission via bookmarklet, e.g., "Read this page!"
-    target = request.form.get('target_url')
-    # validate url
+    target = request.form.get('target_url', False)
+    # TODO: validate url
 
     if request.method == 'GET':
         return render_template('proxy_reader.html')
 
-    # TODO: check if request header is text html, otherwise DO NOT SAVE
-    # url = 'http://avvir.no'
-    # r = requests.get(url)
-    # if r == 200:
-    #     text = r.text
+    def proxy_error(msg):
+        return render_template('proxy_error.html', error=msg)
+    
+    # TODO: store client IPs in cache, if number of requests exceeds a given
+    # limit within a certain time frame, prevent the user from performing
+    # additional requests, inform them.
+    # proxy_error(msg="Disallowed content type <%s>" % content_type)
+    # rate_limited = """ You have performed too many requests in a short
+    # time. If you believe you have received this message in error, please
+    # contact us. """
 
-    with open('index.html') as F:
-        text = F.read()
+    def tmpFileName(url, session_id):
+        """ key is something like reader-url-session-date
+        """
+        from datetime import datetime
+        _now = datetime.now().strftime('%Y-%m-%d-%H-%M')
+        _cache_key = hashlib.md5()
+        _cache_key.update('reader-%s-' % url)
+        _cache_key.update(session_id)
+        _cache_key.update(datetime)
+        return _cache_key.hexdigest()
+    
+    client_ip = request.remote_addr
+    temp_filename = tmpFileName(target, client_ip)
+
+
+    # Supply some custom headers
+    headers = {
+        # Since we function as a proxy service, we want to tell the client we 
+        # connect to who is requesting the information. In the event that someone
+        # discovers our service and begins abusing it, we want to be able to help
+        # investigate.
+        'X-Forwarded-For': "%s, %s" % (client_ip, host),
+        # Who we are
+        'User-Agent': 'Neahttadigisánit (Linux x86_64; Python Requests; giellatekno.uit.no)',
+    }
+
+    # Check that header is actually a page, not something sketchy.
+    h = requests.head(target, headers=headers)
+    content_type = h.headers.get('content-type', '')
+    if not content_type.find('text/html') > -1:
+        proxy_error(msg="Disallowed content type <%s>" % content_type)
+
+    # Do the actual request
+    r = requests.get(target, headers=headers)
+    if r == 200:
+        text = r.text
         head, split, rest = text.partition('</head>')
         script = proxy_shim
         combined = head + script + split + rest
-        # combined = head + split + rest
 
-        # TODO: filename as unique hash, delete periodically
-        cache_path = 'prox/asdfbbq.html'
+        # TODO: delete periodically
+        cache_path = 'prox/' + temp_filename
         with open('static/' + cache_path, 'w') as X:
             X.write(combined)
 
-    # TODO: need a thing with options, so, iframes?
+    # TODO: what options need to be outside of the iframe?
     return render_template('proxy_iframe.html',
                            iframe_path=cache_path,)
 
