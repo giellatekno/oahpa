@@ -127,6 +127,10 @@ check pos values:
 >    </e>
 
 
+check pos and l value (it seems to be a re-item):
+   <l pos="a">ikke av planter</l>
+   <l pos="a">av planter</l>
+
 =====
 
 
