@@ -627,8 +627,8 @@ proxy_shim = """
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 <!-- Here's the important part... -->
-<link href="http://localhost:5000/static/css/jquery.neahttadigisanit.css" rel="stylesheet" />
-<link href="http://localhost:5000/static/js/jquery.neahttadigisanit.min.js" rel="stylesheet" />
+<link href="http://%(host)s/static/css/jquery.neahttadigisanit.css" rel="stylesheet"></link>
+<script type="text/javascript" src="http://%(host)s/static/js/jquery.neahttadigisanit.min.js"></script>
 
 <script type='text/javascript'>
     $(document).ready(function (){
@@ -636,11 +636,13 @@ proxy_shim = """
         $(document).selectToLookup({
           tooltip: true,
           displayOptions: true,
-          spinnerImg: 'dev/img/spinner.gif'
+          spinnerImg: 'http://%(host)s/static/img/spinner.gif'
         });
     });
 </script>
-"""
+""" % {
+    'host': 'localhost:5000', # TODO: live host
+}
 
 
 @app.route('/read/', methods=['GET', 'POST'])
@@ -648,15 +650,26 @@ def embed():
     from lxml import sax
     from flask import render_template_string
     from xml.dom.minidom import parse
+
+    # Allow submission via bookmarklet, e.g., "Read this page!"
+    target = request.form.get('target_url')
+    # validate url
+
+    if request.method == 'GET':
+        return render_template('proxy_reader.html')
+
+    # TODO: check if request header is text html, otherwise DO NOT SAVE
     # url = 'http://avvir.no'
     # r = requests.get(url)
     # if r == 200:
     #     text = r.text
+
     with open('index.html') as F:
         text = F.read()
         head, split, rest = text.partition('</head>')
         script = proxy_shim
         combined = head + script + split + rest
+        # combined = head + split + rest
 
         # TODO: filename as unique hash, delete periodically
         cache_path = 'prox/asdfbbq.html'

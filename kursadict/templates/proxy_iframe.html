@@ -1,0 +1,35 @@
+﻿{% extends 'base.html' %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block content %}
+<h3>Reading</h3>
+
+{# Controls of some sort here, catch link clicks, etc. Also, need to
+   record user IP addresses. #}
+
+<iframe
+    id="neahtta_reader"
+    src="{{url_for('static', filename=iframe_path)}}">
+</iframe>
+<script type="text/javascript">
+    var inner_doc = document.getElementsByTagName('iframe')[0] ;
+    var elems = 
+    $(inner_doc.contentWindow.document).ready(
+        function() {
+            elems = $(document.getElementsByTagName('iframe')[0].contentWindow.document).find('a')
+            $(elems).click(
+                function(obj) {
+                    alert(obj.target)
+                    return false;
+                }
+            )
+        }
+    );
+</script>
+
+{% endblock %}
+
+{% block footer_block %} {% endblock %}
+

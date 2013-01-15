@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block extra_js %}
+{% endblock %}
+
+{% block content %}
+<div class="row-fluid">
+    <div class="span5">
+        <h3>Read a page</h3>
+        <form id="reader"
+              method="post"
+              action="/read/">
+
+            <div class="input-append">
+                <input type="text" 
+                       name="target_url" 
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="http://avvir.no"></input>
+                       <button type="submit" class="btn" name="search">
+                           <span class="i18n" lang="sme">Loga</span>
+                           <span class="i18n" lang="nob">Les</span>
+                           <span class="i18n" lang="fin">Lue</span>
+                           <span class="i18n" lang="eng">Read</span>
+                       </button>
+            </div>
+        </form>
+        <p>Enter a URL below that you wish to read, and the Neahttadigisánit
+            plugin will be installed in the page for you to read and
+            Alt/Opt+Double Click on words that you do not know.
+        </p>
+
+    </div>
+    <div class="span7">
+        <br />
+        <p class="lead">Example</p>
+        <img src="#" id="reader_screenshot" />
+    </div>
+
+</form>
+
+{% endblock %}
+
+{% block footer_block %} {% endblock %}
+

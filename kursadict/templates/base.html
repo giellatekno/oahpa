@@ -48,6 +48,8 @@
             	});
             });
         </script>
+        {% block extra_js %}
+        {% endblock %}
 
     </head>
 
@@ -136,6 +138,7 @@
             </content>
         </div>
 
+        {% block footer_block %}
         <footer class="footer">
             <!-- TODO: link to json -->
             <!-- 
@@ -159,6 +162,7 @@
                 </div>
             </div>
         </footer>
+        {% endblock %}
 
     </body>
 
