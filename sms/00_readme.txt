@@ -28,8 +28,7 @@ Preparing/Updating sms data:
 
 The usual cycle:
 1. filter relevant entries from the sms2X source files:
-
-
+   extract_book-200-e.xsl inDir=$GTHOME/main/words/dicts/sms2X/src
 
 2. revert sms2xxx to xxx2sms
    sms_revert.xsl
