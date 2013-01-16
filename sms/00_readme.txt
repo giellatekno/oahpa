@@ -27,26 +27,23 @@ The planned next version of Oahpa!-nuõrti (to be compiled in intermediate steps
 Preparing/Updating sms data:
 
 The usual cycle:
-2. revert sms2X to xxx2sms
-   _revert_sms-data.xsl
- -> result files in some tmp dir (reverted2xxx)
+1. filter relevant entries from the sms2X source files:
+
+
+
+2. revert sms2xxx to xxx2sms
+   sms_revert.xsl
 
 3. redistribute the reverted files by pos (some pos values might be different as the file name generated)
-   pos-split_reverted-data.xsl  
- -> result files in some tmp dir (pos_redistr_xxx)
+   sms_pos-split_reverted.xsl
 
-
- ==> no need for that any longer 4. in pos_redistr_xxx: merge collect POS and phrase_POS in one file POS_xxxsma.xml
 5. merge the possible doublings
-   merge_pos-split-data.xsl inFile=pos_redistr_xxx/a_xxxsma.xml
- -> result files in to_filter_xxx dir
+   sms_merge_pos-split.xsl inFile=pos_redistr_xxx/a_xxxsma.xml
 
 6. filter away the entries without stat="pref"
-   stat-filter_merged-data.xsl 
- -> result files in xxx dir
+   sms_filter_merged.xsl inFile=.....
 
-7. re-create the smaoahpa db on victorio:
-
+ ==> re-build the smaoahpa db on victorio
 
 =====
 Micha (old note):
