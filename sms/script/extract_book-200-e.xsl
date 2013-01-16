@@ -46,7 +46,7 @@
 
 
   <xsl:param name="inFile" select="'_x_'"/>
-  <xsl:param name="inDir" select="'_xxx_'"/>
+  <xsl:param name="inDir" select="'~/main/words/dicts/sms2X/src'"/>
   <xsl:param name="outDir" select="'my_200-book_entry'"/>
 
   <xsl:variable name="debug" select="true()"/>
