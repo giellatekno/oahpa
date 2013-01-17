@@ -724,6 +724,7 @@ def set_settings(self):
 	self.sources = dict(BOOK_CHOICES).keys()
 	self.geography = dict(GEOGRAPHY_CHOICES).keys()
 	self.frequency = dict(FREQUENCY_CHOICES).keys() # added by Heli
+	self.syll = dict(SYLLABLE_VALUES).keys() # added by Heli
 
 
 # comment
@@ -887,10 +888,10 @@ class OahpaSettings(forms.Form):
 	def set_default_data(self):
 		self.default_data = {
 					'language' : 'sme', # why rus ?
-					'syll' : ['2syll'],
-					'bisyllabic': 'on',
-					'trisyllabic': False,
-					'contracted': False,
+					'syll' : ['2syll','3syll','Csyll'],
+					'bisyllabic': True,  # was 'on'
+					'trisyllabic': True,
+					'contracted': True,
 					'level' : 'all',
 					'lemmacount' : ['2','3','4'], # was: '2', but we have removed the lemmacount menu from the GUI
 					'case': 'NOMPL',
@@ -916,7 +917,7 @@ class OahpaSettings(forms.Form):
 					'possessive_case': "N-ACC",
 					'possessive_case_context': 'PX-ACC',  # MorfaC px
 					'geography': 'world',
-					'frequency' : [],
+					'frequency' : ['common'],
 					'num_bare' : 'NOMPL',
 					'adj_context' : 'ATTRPOS',
 					'source' : 'all'}
@@ -1055,7 +1056,6 @@ class LeksaSettings(OahpaSettings):
 			'syll' : [], 
 			'bisyllabic': False,
 			'trisyllabic': False,
-			'bisyllabic': False,
 			'contracted': False,
 			'source': 'all',
 			'semtype' : 'HUMAN',

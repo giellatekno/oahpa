@@ -591,7 +591,7 @@ class Morfaview(Gameview):
 	def syll_settings(self,settings_form):
 
 		def true_false_filter(val):
-			if val in ['on', 'On', u'on', u'On']:
+			if val in ['on', 'On', u'on', u'On','True']:
 				return True
 			else:
 				return False
@@ -614,8 +614,16 @@ class Morfaview(Gameview):
 
 		if true_false_filter(trisyl):
 			self.settings['syll'].append('3syll')
+			settings_form.data['trisyllabic'] = 'on'
+		else:
+			settings_form.data['trisyllabic'] = None
+	
 		if true_false_filter(cont):
 			self.settings['syll'].append('Csyll')
+			settings_form.data['contracted'] = 'on'
+		else:
+			settings_form.data['contracted'] = None
+
 		if len(self.settings['syll']) == 0:
 			self.settings['syll'].append('2syll')
 
