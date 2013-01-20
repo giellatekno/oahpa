@@ -1,6 +1,8 @@
 import sys
 
-class AppConf(object):
+from flask import Config
+
+class Config(Config):
     """ An object for exposing the settings in app.config.yaml in a nice
     objecty way, and validating some of the contents.
     """
@@ -43,6 +45,12 @@ class AppConf(object):
 
         self._reversable_dictionaries = language_pairs
         return language_pairs
+
+    @property
+    def tag_filters(self):
+        if not self._tag_filters:
+            self._tag_filters = self.opts.get('TagTransforms')
+        return self._tag_filters
 
     @property
     def languages(self):
@@ -173,7 +181,7 @@ class AppConf(object):
                     print item
                     print self.__getattribute__(item)
 
-    def __init__(self):
+    def from_yamlfile(self, filename='app.config.yaml'):
         self._languages               = False
         self._pair_definitions        = False
         self._dictionaries            = False
@@ -181,14 +189,21 @@ class AppConf(object):
         self._paradigms               = False
         self._baseforms               = False
         self._morphologies            = False
+        self._tag_filters             = False
 
         import yaml
         with open('app.config.yaml', 'r') as F:
             config = yaml.load(F)
         self.opts = config
         self.test(silent=True)
+        # Prepare lexica
 
-settings = AppConf()
+        from lexicon import Lexicon
+        self.lexicon = Lexicon(self)
+
+        return True
+
+# settings = AppConf()
 
 if __name__ == "__main__":
     settings.test(silent=False)
