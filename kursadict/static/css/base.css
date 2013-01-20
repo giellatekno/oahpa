@@ -1,5 +1,5 @@
 /* @override 
-	http://localhost:5000/static/css/base.css
+    http://localhost:5000/static/css/base.css
 */
 
 .navbar {
@@ -12,9 +12,9 @@ content {
 }
 
 @media (max-width: 550px) {
-	content {
-		margin-top: -20px;
-	}
+    content {
+        margin-top: -20px;
+    }
 }
 
 footer {
@@ -51,24 +51,24 @@ footer .inline li {
 
 
 @media (max-width: 550px) {
-	footer {
-    	margin-left: -20px;
-    	margin-right: -20px;
-    	padding: 0 40px;
-    	padding-bottom: 35px;
-	}
-	
-	p.lead {
-		font-size: 120%;
-		line-height: 1.3em;
-	}
-	
-	#uitlogo {
-		top: 25px;
-		width: 50px;
-		height: 50px;
-		margin-bottom: 40px;
-	}
+    footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding: 0 40px;
+        padding-bottom: 35px;
+    }
+    
+    p.lead {
+        font-size: 120%;
+        line-height: 1.3em;
+    }
+    
+    #uitlogo {
+        top: 25px;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 40px;
+    }
 }
 
 
@@ -83,9 +83,9 @@ ul.nav-stacked li.active a {
 }
 
 ul.nav-stacked li a:hover, ul.nav-stacked li.active a:hover {
-	background-color: #0088CC;
-	color: #FFF;
-	opacity: 1;
+    background-color: #0088CC;
+    color: #FFF;
+    opacity: 1;
 }
 
 
@@ -107,19 +107,19 @@ ul.nav-stacked li.active span {
 /* Set by feature agreement with body, so, change body element, all
  * elements under follow. See README for more info. */
 body:lang(nob) span.i18n:lang(nob) {
-	display: inline;
+    display: inline;
 }
 
 body:lang(sme) span.i18n:lang(sme) {
-	display: inline;
+    display: inline;
 }
 
 body:lang(fin) span.i18n:lang(fin) {
-	display: inline;
+    display: inline;
 }
 
 body:lang(eng) span.i18n:lang(eng) {
-	display: inline;
+    display: inline;
 }
 
 content .page-header {
@@ -127,15 +127,15 @@ content .page-header {
 }
 
 div.results, div.results p {
-	font-size: 120%;
+    font-size: 120%;
 }
 
 div.results ol {
-	margin-left: 2em;
+    margin-left: 2em;
 }
 
 h4#dict_title {
-	margin-top: 0px;
+    margin-top: 0px;
 }
 
 .dropdown-menu .active > a, .dropdown-menu .active > a:hover {
@@ -149,21 +149,21 @@ h4#dict_title {
 
 /* NOTE: make smaller */
 dl.possible_analyses dt {
-	font-weight: lighter; 
-	font-style: italic;
+    font-weight: lighter; 
+    font-style: italic;
 }
 dl.possible_analyses dd {
-	margin-left: 0;
-	padding-left: 0;
+    margin-left: 0;
+    padding-left: 0;
 }
 ul.possible_forms {
-	list-style-type: none; 
-	margin-left: 0em;
+    list-style-type: none; 
+    margin-left: 0em;
 }
 
 ul.possible_forms li {
-	margin-left: .5em;
-	font-size: 80%;
+    margin-left: .5em;
+    font-size: 80%;
 }
 /* A little more color */
 a.brand {
@@ -176,12 +176,21 @@ a.brand {
 }
 
 @media (max-width: 550px) {
-	form#neahttasaanit input {
-		font-size: 20px;
-	}
-	
-	form#neahttasaanit {
-		margin-top: 1em;
-		margin-bottom: 1em;
-	}
+    form#neahttasaanit input {
+        font-size: 20px;
+    }
+    
+    form#neahttasaanit {
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+}
+
+#neahtta_reader {
+    display: block;
+    position: absolute;
+    top: 120px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
 }
