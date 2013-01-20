@@ -63,24 +63,34 @@ Can be installed by brew
 import sys
 import logging
 import urllib
+from   flask                          import ( Flask
+                                             , request
+                                             , json
+                                             , render_template
+                                             , Markup
+                                             , Response
+                                             , abort
+                                             )
 
-from flask import Flask, request, json, render_template, Markup, Response
-from flask import abort
-
-from werkzeug.contrib.cache import SimpleCache
-
-from config import *
-from utils import *
+from   werkzeug.contrib.cache         import SimpleCache
+from   config                         import *
+from   utils                          import *
+from   logging                        import getLogger
 
 cache = SimpleCache()
 app = Flask(__name__,
     static_url_path='/static',)
 
-useLogFile = logging.FileHandler('user_log.txt')
-app.logger.addHandler(useLogFile)
 
 app.config = Config('.', defaults=app.config)
 app.config.from_yamlfile('app.config.yaml')
+
+# Configure user_log
+user_log = getLogger("user_log")
+useLogFile = logging.FileHandler('user_log.txt')
+user_log.addHandler(useLogFile)
+user_log.setLevel("INFO")
+
 
 
 ##
@@ -198,26 +208,33 @@ def lookupWord(from_language, to_language):
     else:
         lookup_keys = [lookup_key]
 
-    results, success = app.config.lexicon.lookups(from_language, to_language,
-                                                  lookup_keys, lookup_type)
+    results, success = app.config.lexicon.lookups( from_language
+                                                 , to_language
+                                                 , lookup_keys
+                                                 , lookup_type
+                                                 )
 
-    results = sorted(results,
-                     key=lambda x: len(x['input']),
-                     reverse=True)
+    results = sorted( results
+                    , key=lambda x: len(x['input'])
+                    , reverse=True
+                    )
 
-    logSimpleLookups(app, user_input, results, from_language, to_language)
+    logSimpleLookups( user_input
+                    , results
+                    , from_language
+                    , to_language
+                    )
 
-    data = json.dumps({
-        'result': results,
-        'success': success
-    })
+    data = json.dumps({ 'result': results
+                      , 'success': success })
 
     if has_callback:
         data = '%s(%s)' % (has_callback, data)
 
-    return Response(response=data,
-                    status=200,
-                    mimetype="application/json")
+    return Response( response=data
+                   , status=200
+                   , mimetype="application/json"
+                   )
 
 
 # TODO: Keeping the old endpoints until all dependent apps are migrated
@@ -359,11 +376,12 @@ def wordDetail(from_language, to_language, wordform, format):
             paradigm = lang_paradigms.get(pos, False)
             baseforms = lang_baseforms.get(pos, False)
             if baseforms:
-                xml_result = app.config.lexicon.detailedLookup(from_language,
-                                                               to_language,
-                                                               lemma,
-                                                               pos,
-                                                               _type=_type)
+                xml_result = app.config.lexicon.detailedLookup( from_language
+                                                              , to_language
+                                                              , lemma
+                                                              , pos
+                                                              , _type=_type
+                                                              )
 
                 if xml_result:
                     res = {'lookups': xml_result}
@@ -455,12 +473,13 @@ def wordDetail(from_language, to_language, wordform, format):
         result_lemmas = ['-']
         tx_set = '-'
 
-    app.logger.info('%s\t%s\t%s\t%s\t%s\t%s' % (user_input,
-                                                str(success),
-                                                ', '.join(result_lemmas),
-                                                tx_set,
-                                                from_language,
-                                                to_language))
+    user_log.info('%s\t%s\t%s\t%s\t%s\t%s' % ( user_input
+                                               , str(success)
+                                               , ', '.join(result_lemmas)
+                                               , tx_set
+                                               , from_language
+                                               , to_language)
+                                               )
 
     if format == 'json':
         result = json.dumps({
@@ -469,14 +488,15 @@ def wordDetail(from_language, to_language, wordform, format):
         })
         return result
     elif format == 'html':
-        return render_template('word_detail.html',
-                               language_pairs=app.config.pair_definitions,
-                               result=detailed_result,
-                               user_input=user_input,
-                               _from=from_language,
-                               _to=to_language,
-                               more_detail_link=want_more_detail,
-                               zip=zipNoTruncate)
+        return render_template( 'word_detail.html'
+                              , language_pairs=app.config.pair_definitions
+                              , result=detailed_result
+                              , user_input=user_input
+                              , _from=from_language
+                              , _to=to_language
+                              , more_detail_link=want_more_detail
+                              , zip=zipNoTruncate
+                              )
 
 # TODO: Keeping the old endpoints until all dependent apps are migrated
 #       to the new ones.
@@ -610,42 +630,50 @@ def wordNotification(from_language, to_language, wordform):
     result_lemmas = ', '.join(list(result_lemmas))
     meanings = '; '.join(list(tx_set))
 
-    app.logger.info('%s\t%s\t%s\t%s\t%s\t%s' % (user_input,
-                                                str(success),
-                                                result_lemmas,
-                                                meanings,
-                                                from_language,
-                                                to_language
-                                                ))
+    user_log.info('%s\t%s\t%s\t%s\t%s\t%s' % ( user_input
+                                               , str(success)
+                                               , result_lemmas
+                                               , meanings
+                                               , from_language
+                                               , to_language
+                                               ,
+                                               ))
 
-    return render_template('word_notify.html',
-                           result=results,
-                           success=success,
-                           input=user_input)
+    return render_template( 'word_notify.html'
+                          , result=results
+                          , success=success
+                          , input=user_input
+                          )
 
 proxy_shim = """
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script
+    src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+</script>
 
-<!-- Here's the important part... -->
-<link href="http://%(host)s/static/css/jquery.neahttadigisanit.css" rel="stylesheet"></link>
-<script type="text/javascript" src="http://%(host)s/static/js/jquery.neahttadigisanit.min.js"></script>
+<link
+    href="http://%(host)s/static/css/jquery.neahttadigisanit.css"
+    rel="stylesheet">
+</link>
+
+<script
+    type="text/javascript"
+    src="http://%(host)s/static/js/jquery.neahttadigisanit.min.js">
+</script>
 
 <script type='text/javascript'>
     $(document).ready(function (){
-        // Enable options for inline clicking
         $(document).selectToLookup({
-          tooltip: true,
-          displayOptions: true,
-          spinnerImg: 'http://%(host)s/static/img/spinner.gif'
+            tooltip: true,
+            displayOptions: true,
+            spinnerImg: 'http://%(host)s/static/img/spinner.gif'
         });
     });
-</script>
-""" % {
-    'host': 'localhost:5000', # TODO: live host
-}
+</script>""" % { 'host': 'localhost:5000' # TODO: live host
+               }
 
 # TODO:
 # TODO: minify and url-encode javascript:blah
+# TODO: http://jsbeautifier.org/
 bookmarklet = """
 (function () {
     var script  = document.createElement('script');
@@ -659,8 +687,8 @@ bookmarklet = """
 
 @app.route('/read/', methods=['GET', 'POST'])
 def embed():
-    from lxml import sax
-    from flask import render_template_string
+    from lxml            import sax
+    from flask           import render_template_string
     from xml.dom.minidom import parse
 
     # Allow submission via bookmarklet, e.g., "Read this page!"
@@ -679,7 +707,8 @@ def embed():
     # proxy_error(msg="Disallowed content type <%s>" % content_type)
     # rate_limited = """ You have performed too many requests in a short
     # time. If you believe you have received this message in error, please
-    # contact us. """
+    # contact us. Or consider installing the bookmarklet.
+    # """
 
     def tmpFileName(url, session_id):
         """ key is something like reader-url-session-date
@@ -795,7 +824,7 @@ def indexWithLangs(_from, _to):
             return True
 
 
-        logSimpleLookups(app, user_input, results, _from, _to)
+        logSimpleLookups(user_input, results, _from, _to)
 
         results = sorted(filter(hasLookups, results),
                          key=lambda x: len(x['input']),
@@ -816,16 +845,17 @@ def indexWithLangs(_from, _to):
         errors = False
 
     # TODO: include form analysis of user input #formanalysis
-    return render_template('index.html',
-                           language_pairs=app.config.pair_definitions,
-                           _from=_from,
-                           _to=_to,
-                           user_input=lookup_val,
-                           word_searches=results,
-                           analyses=analyzed,
-                           errors=errors,
-                           show_info=show_info,
-                           zip=zipNoTruncate)
+    return render_template( 'index.html'
+                          , language_pairs=app.config.pair_definitions
+                          , _from=_from
+                          , _to=_to
+                          , user_input=lookup_val
+                          , word_searches=results
+                          , analyses=analyzed
+                          , errors=errors
+                          , show_info=show_info
+                          , zip=zipNoTruncate
+                          )
 
 @app.route('/about/', methods=['GET'])
 def about():
@@ -837,11 +867,12 @@ def plugins():
 
 @app.route('/', methods=['GET'], endpoint="canonical-root")
 def index():
-    return render_template('index.html',
-                           language_pairs=app.config.pair_definitions,
-                           _from='sme',
-                           _to='nob',
-                           show_info=True)
+    return render_template( 'index.html'
+                          , language_pairs=app.config.pair_definitions
+                          , _from='sme'
+                          , _to='nob'
+                          , show_info=True
+                          )
 
 
 ##
