@@ -103,6 +103,36 @@ buildWordpress = (callback) ->
     _in = fs.readFileSync 'bin/' + file
     fs.writeFileSync "bin/wordpress/neahttadigisanit/#{file}", _in
 
+buildBookmarklet = (callback) ->
+  # dev/jquery.1.7.2.js  (minified)
+  # bin/jquery.neahttadigisanit.min.js 
+  # src/bookmarklet.init.js (not minified)
+
+  util.print "\n Compressing... src/neahttadigisanit.init.js\n"
+  all = (fs.readFileSync 'src/neahttadigisanit.init.js').toString()
+
+  ast = uglify.parser.parse all
+  out = fs.openSync "bin/neahttadigisanit.init.min.js", "w+"
+
+  ast = uglify.uglify.ast_mangle ast
+  ast = uglify.uglify.ast_squeeze ast
+
+  # fs.writeSync out, uglify.uglify.gen_code(ast)
+  fs.writeSync out, all
+
+  util.print "\n Minified! to neahttadigisanit.init.min.js\n"
+
+  _fs = (fs.readFileSync 'dev/jquery.1.7.2.js').toString() +
+        (fs.readFileSync 'bin/jquery.neahttadigisanit.min.js').toString() +
+        (fs.readFileSync 'bin/neahttadigisanit.init.min.js').toString()
+  out = fs.openSync "bin/bookmarklet.min.js", "w+"
+  fs.writeSync out, _fs
+
+  out = fs.openSync "../static/js/bookmarklet.min.js", "w+"
+  fs.writeSync out, _fs
+
+
+
 task 'watch', 'Watch prod source files and build changes', ->
   invoke 'build'
   util.log "Watching for changes in src"
@@ -130,6 +160,10 @@ task 'build-wordpress', 'Compile the wordpress plugin', ->
   zipWordpress()
   util.print "Everything now in bin/wordpress/\n, zipped version created."
 
+task 'build-bookmarklet', 'Compile the plugin and jQuery to be downloaded by a bookmarklet', ->
+  buildBookmarklet()
+  util.print "Bookmarklet compiled to bin/bookmarklet.min.js"
+
 task "compress", 'Uglify JS', (params)->
   compress()
 
@@ -137,6 +171,7 @@ task 'build', 'Compile jQuery dependencies and dictapi, and compress', ->
   build()
   concatCSS()
   util.print "Output stored to jquery.neahttadigisanit.js and jquery.neahttadigisanit.css\n"
+  util.print "Be sure also to compile the other targets: build-chrome, build-wordpress, build-bookmarklet if those need to be updated."
 
 
 # vim: set ts=4 sw=4 tw=0 syntax=coffee :
