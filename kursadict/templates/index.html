@@ -124,14 +124,14 @@ $(document).ready( function() {
                                     {% for (tx, lang) in zip(lookup.right, lookup.lang) %}
                                     {% if lang %}
                                         {% if lang == _to %}
-                                        <li><a href="/detail/{{ _to }}/{{ _from }}/{{ tx }}.html?no_compounds=true&lemma_match=true">
-                                                {{ tx }}
-                                        </a></li>
+                                        <li><a href="/detail/{{ _to }}/{{ _from }}/{{ tx.tx }}.html?no_compounds=true&lemma_match=true">
+                                                {{ tx.tx }}
+                                        </a> {% if tx.re %}({{ tx.re }}){% endif %}</li>
                                         {% endif %}
                                     {% else %}
-                                        <li><a href="/detail/{{ _to }}/{{ _from }}/{{ tx }}.html?no_compounds=true&lemma_match=true">
-                                                {{ tx }}
-                                        </a></li>
+                                        <li><a href="/detail/{{ _to }}/{{ _from }}/{{ tx.tx }}.html?no_compounds=true&lemma_match=true">
+                                                {{ tx.tx }}
+                                        </a> {% if tx.re %}({{ tx.re }}){% endif %}</li>
                                     {% endif %}
                                     {% endfor %}
                                 </ol>

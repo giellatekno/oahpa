@@ -861,11 +861,20 @@ def indexWithLangs(_from, _to):
             return True
 
 
-        logSimpleLookups(user_input, results, _from, _to)
+        deduplicated = []
+        keys = []
+        for r in results:
+            if not hasLookups(r) or r.get('input') in keys:
+                continue
+            else:
+                deduplicated.append(r)
+                keys.append(r.get('input'))
 
-        results = sorted(filter(hasLookups, results),
-                         key=lambda x: len(x['input']),
-                         reverse=True)
+        # TODO: logIndexLookups(user_input, results, _from, _to)
+        results = sorted( deduplicated
+                        , key=lambda x: len(x['input'])
+                        , reverse=True
+                        )
 
         if not results:
             results = False

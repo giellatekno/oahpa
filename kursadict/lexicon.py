@@ -86,9 +86,24 @@ class FrontPageFormat(XMLDict):
         l = e.find('lg/l')
         left_text = l.text
         left_pos = l.get('pos')
-        ts = e.findall('mg/tg/t')
-        right_text = [t.text for t in ts]
-        _right_langs = [t.getparent().xpath('@xml:lang') for t in ts]
+        tgs = e.findall('mg/tg')
+
+        right_nodes = []
+        for tg in tgs:
+            re = tg.find('re')
+            try:
+                re = re.text
+            except AttributeError:
+                re = ''
+
+            tx = tg.find('t')
+            text = tx.text
+
+            right_nodes.append({ 'tx': text
+                               , 're': re
+                               })
+
+        _right_langs = [t.xpath('@xml:lang') for t in tgs]
         if _right_langs:
             right_langs = []
             for _rl in _right_langs:
@@ -101,7 +116,7 @@ class FrontPageFormat(XMLDict):
 
         return { 'left': left_text
                , 'pos': left_pos
-               , 'right': right_text
+               , 'right': right_nodes
                , 'lang': right_langs
                }
 
@@ -301,9 +316,9 @@ class Lexicon(object):
         if lookup_type:
             if lookup_type.strip():
                 args.append(lookup_type)
-                lookupfunc = frontpageformat.lookupLemmaStartsWith
+                lookupfunc = frontpageformat.lookupLemma
         else:
-            lookupfunc = frontpageformat.lookupLemmaStartsWith
+            lookupfunc = frontpageformat.lookupLemma
 
         result = lookupfunc(*args)
         return { 'lookups': result
