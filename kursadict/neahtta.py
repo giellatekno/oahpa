@@ -848,7 +848,7 @@ def indexWithLangs(_from, _to):
             analyzed = False
 
         _lookups = list(set(lookup_keys))
-        results, success = app.config.lexicon.lookups(_from, _to, _lookups)
+        results, success = app.config.lexicon.frontPageLookups(_from, _to, _lookups)
 
         # TODO: ukjent ord `gollet` -> gollehit, gollet, gollat
         # sort so that recognized word is at top, rest are shown as a

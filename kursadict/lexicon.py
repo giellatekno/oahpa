@@ -12,6 +12,14 @@ class XMLDict(object):
     Entries are only cleaned resulting in lg/l/text(), lg/l@pos, and
     mg/tg/t/text() with self.cleanEntry. Probably easier to make mixins
     that add to this functionality?
+
+    This is mostly used in lookups for the JSON api, but also for the
+    main search view. Thus, editing requires care to not disturb the
+    JSON API functionality.
+
+    # TODO: write some tests to ensure that breakage can be found
+    # quickly.
+
     """
     def __init__(self, filename=False, tree=False):
         if not tree:
@@ -49,7 +57,11 @@ class XMLDict(object):
         else:
             right_langs = []
 
-        return {'left': left_text, 'pos': left_pos, 'right': right_text, 'lang': right_langs}
+        return { 'left': left_text
+               , 'pos': left_pos
+               , 'right': right_text
+               , 'lang': right_langs
+               }
 
     def XPath(self, xpathobj, *args, **kwargs):
         # print "Querying: %s" % xpathobj.path
@@ -67,6 +79,31 @@ class XMLDict(object):
 
     def lookupLemmaPOSAndType(self, lemma, pos, _type):
         return self.XPath(self.lemmaPOSAndType, lemma=lemma, pos=pos, _type=_type)
+
+class FrontPageFormat(XMLDict):
+
+    def cleanEntry(self, e):
+        l = e.find('lg/l')
+        left_text = l.text
+        left_pos = l.get('pos')
+        ts = e.findall('mg/tg/t')
+        right_text = [t.text for t in ts]
+        _right_langs = [t.getparent().xpath('@xml:lang') for t in ts]
+        if _right_langs:
+            right_langs = []
+            for _rl in _right_langs:
+                if len(_rl) > 0:
+                    right_langs.append(_rl[0])
+                else:
+                    right_langs.append(False)
+        else:
+            right_langs = []
+
+        return { 'left': left_text
+               , 'pos': left_pos
+               , 'right': right_text
+               , 'lang': right_langs
+               }
 
 class DetailedEntries(XMLDict):
     def cleanEntry(self, e):
@@ -220,6 +257,8 @@ class Lexicon(object):
 
         return lookupfunc(*args)
 
+
+
     def lookup(self, _from, _to, lookup, lookup_type=False):
         _dict = self.language_pairs.get((_from, _to), False)
 
@@ -251,3 +290,36 @@ class Lexicon(object):
 
         return results, success
 
+    def frontPageLookup(self, _from, _to, lookup, lookup_type=False):
+        lexicon = self.language_pairs.get((_from, _to), False)
+        if not lexicon:
+            raise Exception("Undefined language pair %s %s" % (_from, _to))
+
+        frontpageformat = FrontPageFormat(tree=lexicon.tree)
+
+        args = [lookup]
+        if lookup_type:
+            if lookup_type.strip():
+                args.append(lookup_type)
+                lookupfunc = frontpageformat.lookupLemmaStartsWith
+        else:
+            lookupfunc = frontpageformat.lookupLemmaStartsWith
+
+        result = lookupfunc(*args)
+        return { 'lookups': result
+               , 'input': lookup
+               }
+
+    def frontPageLookups(self, _from, _to, lookups, lookup_type=False):
+        from functools import partial
+
+        _look = partial(self.frontPageLookup,
+                        _from=_from,
+                        _to=_to,
+                        lookup_type=lookup_type)
+
+        results = map(lambda x: _look(lookup=x), lookups)
+        success = any([(not ('error' in r) and bool(r.get('lookups', False)))
+                       for r in results])
+
+        return results, success
