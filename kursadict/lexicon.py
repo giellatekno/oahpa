@@ -92,6 +92,10 @@ class FrontPageFormat(XMLDict):
         for tg in tgs:
             re = tg.find('re')
             te = tg.find('te')
+            _ex = [ (xg.find('x').text, xg.find('xt').text)
+                    for xg in tg.findall('xg') ]
+            if len(_ex) == 0:
+                _ex = False
 
             if te is not None:      te = te.text
             else:                   te = ''
@@ -111,6 +115,7 @@ class FrontPageFormat(XMLDict):
             right_nodes.append({ 'tx': text
                                , 're': ', '.join([a for a in [re, te] if a])
                                , 'link': link
+                               , 'examples': _ex
                                })
 
         _right_langs = [t.xpath('@xml:lang') for t in tgs]

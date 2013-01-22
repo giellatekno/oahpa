@@ -653,27 +653,6 @@ def wordNotification(from_language, to_language, wordform):
                           , input=user_input
                           )
 
-proxy_shim = """
-<script
-    src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
-</script>
-
-<link
-    href="http://%(host)s/static/css/jquery.neahttadigisanit.css"
-    rel="stylesheet">
-</link>
-
-<script
-    type="text/javascript"
-    src="http://%(host)s/static/js/jquery.neahttadigisanit.min.js">
-</script>
-
-<script
-    type="text/javascript"
-    src="http://%(host)s/static/js/neahttadigisanit.init.js">
-</script> """ % { 'host': 'localhost:5000' # TODO: live host
-                }
-
 # TODO:
 # TODO: minify and url-encode javascript:blah
 # TODO: http://jsbeautifier.org/
@@ -721,80 +700,10 @@ bookmarklet_minified = """(function(){var e="http://digitesting.oahpa.no";var t=
 
 bookmarklet_escaped = """(function()%7Bvar%20e%3D%22http%3A%2F%2Fdigitesting.oahpa.no%22%3Bvar%20t%3Ddocument.createElement(%22link%22)%3Bt.href%3De%2B%22%2Fstatic%2Fcss%2Fjquery.neahttadigisanit.css%22%3Bt.rel%3D%22stylesheet%22%3Bdocument.head.appendChild(t)%3Bvar%20n%3Ddocument.createElement(%22script%22)%3Bn.type%3D%22text%2Fjavascript%22%3Bn.src%3De%2B%22%2Fstatic%2Fjs%2Fbookmarklet.min.js%22%3Bwindow.NDS_API_HOST%3De%3Bdocument.body.appendChild(n)%7D)()"""
 
-@app.route('/read/', methods=['GET', 'POST'])
+@app.route('/read/', methods=['GET'])
 def embed():
-    from lxml            import sax
-    from flask           import render_template_string
-    from xml.dom.minidom import parse
-
-    # Allow submission via bookmarklet, e.g., "Read this page!"
-    target = request.form.get('target_url', False)
-    # TODO: validate url
-
-    if request.method == 'GET':
-        bkmklt = bookmarklet_escaped
-        return render_template('proxy_reader.html', bookmarklet=bkmklt)
-
-    def proxy_error(msg):
-        return render_template('proxy_error.html', error=msg)
-    
-    # TODO: store client IPs in cache, if number of requests exceeds a given
-    # limit within a certain time frame, prevent the user from performing
-    # additional requests, inform them.
-    # proxy_error(msg="Disallowed content type <%s>" % content_type)
-    # rate_limited = """ You have performed too many requests in a short
-    # time. If you believe you have received this message in error, please
-    # contact us. Or consider installing the bookmarklet.
-    # """
-
-    def tmpFileName(url, session_id):
-        """ key is something like reader-url-session-date
-        """
-        from datetime import datetime
-        _now = datetime.now().strftime('%Y-%m-%d-%H-%M')
-        _cache_key = hashlib.md5()
-        _cache_key.update('reader-%s-' % url)
-        _cache_key.update(session_id)
-        _cache_key.update(datetime)
-        return _cache_key.hexdigest()
-    
-    client_ip = request.remote_addr
-    temp_filename = tmpFileName(target, client_ip)
-
-
-    # Supply some custom headers
-    headers = {
-        # Since we function as a proxy service, we want to tell the client we 
-        # connect to who is requesting the information. In the event that someone
-        # discovers our service and begins abusing it, we want to be able to help
-        # investigate.
-        'X-Forwarded-For': "%s, %s" % (client_ip, host),
-        # Who we are
-        'User-Agent': 'Neahttadigisánit (Linux x86_64; Python Requests; giellatekno.uit.no)',
-    }
-
-    # Check that header is actually a page, not something sketchy.
-    h = requests.head(target, headers=headers)
-    content_type = h.headers.get('content-type', '')
-    if not content_type.find('text/html') > -1:
-        proxy_error(msg="Disallowed content type <%s>" % content_type)
-
-    # Do the actual request
-    r = requests.get(target, headers=headers)
-    if r == 200:
-        text = r.text
-        head, split, rest = text.partition('</head>')
-        script = proxy_shim
-        combined = head + script + split + rest
-
-        # TODO: delete periodically
-        cache_path = 'prox/' + temp_filename
-        with open('static/' + cache_path, 'w') as X:
-            X.write(combined)
-
-    # TODO: what options need to be outside of the iframe?
-    return render_template('proxy_iframe.html',
-                           iframe_path=cache_path,)
+    bkmklt = bookmarklet_escaped
+    return render_template('proxy_reader.html', bookmarklet=bkmklt)
 
 ##
 ## Public Docs

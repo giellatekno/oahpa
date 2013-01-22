@@ -50,26 +50,7 @@ footer .inline li {
 }
 
 
-@media (max-width: 550px) {
-    footer {
-        margin-left: -20px;
-        margin-right: -20px;
-        padding: 0 40px;
-        padding-bottom: 35px;
-    }
-    
-    p.lead {
-        font-size: 120%;
-        line-height: 1.3em;
-    }
-    
-    #uitlogo {
-        top: 25px;
-        width: 50px;
-        height: 50px;
-        margin-bottom: 40px;
-    }
-}
+/* Mobile-specific */
 
 
 ul.nav-stacked li {
@@ -175,22 +156,80 @@ a.brand {
     font-weight: light;
 }
 
+
+#reader_screenshot {
+    border: 1px solid #BBB;
+    box-shadow: 3px 3px 3px #DDD;
+    width: 100%;
+    height: 100%;
+}
+
+.main_search .examples {
+	margin-left: -1.5em;
+}
+
+.main_search .examples dd {
+	margin-bottom: 1em;
+	margin-top: .5em;
+}
+
+div.button-padding {
+	width: 100%;
+	padding: 5px 5px 10px;
+}
+
+/* Mobile-specific tweaks */
 @media (max-width: 550px) {
+	
+	h4#dict_title {
+		font-size: 115%;
+		text-align: right;
+		margin-bottom: 0em;
+	}
+	
     form#neahttasaanit input {
         font-size: 20px;
     }
     
     form#neahttasaanit {
-        margin-top: 1em;
-        margin-bottom: 1em;
+        margin-top: 1.5em;
+        margin-bottom: 1.5em;
     }
-}
-
-#neahtta_reader {
-    display: block;
-    position: absolute;
-    top: 120px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
+    
+    footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding: 0 40px;
+        padding-bottom: 35px;
+    }
+    
+    p.lead {
+        font-size: 120%;
+        line-height: 1.3em;
+    }
+    
+    #uitlogo {
+        top: 25px;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 40px;
+    }
+    
+	.main_search .examples {
+		font-size: 90%;
+	}
+	.main_search .examples dt {
+		font-weight: 400;
+	}
+	
+	.main_search .examples dd {
+		font-weight: lighter;
+		margin-left: 0;
+		font-style: italic;
+	}
+	
+	.results ol {
+		margin-bottom: 2.5em;
+		margin-top: 1em;
+	}
 }

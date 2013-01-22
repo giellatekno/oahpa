@@ -6,42 +6,33 @@
 {% block content %}
 <div class="row-fluid">
     <div class="span5">
-        <h3>Read a page</h3>
-        <form id="reader"
-              method="post"
-              action="/read/">
-
-            <div class="input-append">
-                <input type="text" 
-                       name="target_url" 
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="http://avvir.no"></input>
-                       <button type="submit" class="btn" name="search">
-                           <span class="i18n" lang="sme">Loga</span>
-                           <span class="i18n" lang="nob">Les</span>
-                           <span class="i18n" lang="fin">Lue</span>
-                           <span class="i18n" lang="eng">Read</span>
-                       </button>
-            </div>
-        </form>
-        <p>Enter a URL below that you wish to read, and the Neahttadigisánit
-            plugin will be installed in the page for you to read and
-            Alt/Opt+Double Click on words that you do not know.
-        </p>
+        <h3>Neahttadigisánit Reader</h3>
 
         <h4>Bookmarklet</h4>
         <p>Drag and drop the following link to your Bookmark toolbar,
             then click it when you are on a page you wish to read. The
-            service will automatically be installed.</p>
-        <p class="label"><a href="javascript:{{- bookmarklet|safe -}}" style="color:#FFF">Read
+            service will automatically be installed, and you will see a
+            menu icon on the left-hand side of the page.</p>
+        <p>In order to look up a word, hold Alt or Option (⌥) and double
+            click the word. The service will will connect to this
+            website and return dictionary entries after a brief
+            pause.</p>
+        <p>To change the dictionary, click the menu icon.</p>
+        <p class="label"><a href="javascript:{{- bookmarklet|safe -}}" style="color:#111">Read
                 with Neahttadigisánit</a></p>
+        <h4>Bugs?</h4>
+        <p>If you encounter bugs, or the bookmarklet does not work on a
+            particular page, contact us with the page URL or details of
+            what you were reading when you encountered the problem.</p>
+        <p>We do not store any private data, but we do collect
+            individual dictionary lookups for statistics and to improve
+            the dictionary.</p>
 
     </div>
     <div class="span7">
         <br />
-        <p class="lead">Example</p>
-        <img src="#" id="reader_screenshot" />
+        <p class="lead">&nbsp;</p>
+        <img id="reader_screenshot" src="{{url_for('static', filename='img/reader_example.png')}}" id="uitlogo"></img>
     </div>
 
 </form>
