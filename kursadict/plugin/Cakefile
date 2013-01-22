@@ -130,6 +130,7 @@ buildBookmarklet = (callback) ->
 
   out = fs.openSync "../static/js/bookmarklet.min.js", "w+"
   fs.writeSync out, _fs
+  util.print "\n Compiled to bin/bookmarklet.min.js and ../static/js/bookmarklet.min.js\n"
 
 
 
