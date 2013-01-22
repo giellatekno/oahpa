@@ -91,16 +91,26 @@ class FrontPageFormat(XMLDict):
         right_nodes = []
         for tg in tgs:
             re = tg.find('re')
-            try:
-                re = re.text
-            except AttributeError:
-                re = ''
+            te = tg.find('te')
+
+            if te is not None:      te = te.text
+            else:                   te = ''
+
+            if re is not None:      re = re.text
+            else:                   re = ''
 
             tx = tg.find('t')
-            text = tx.text
+            link = True
+            if (tx is None) and (te is not None):
+                text = te
+                te = ''
+                link = False
+            else:
+                text = tx.text
 
             right_nodes.append({ 'tx': text
-                               , 're': re
+                               , 're': ', '.join([a for a in [re, te] if a])
+                               , 'link': link
                                })
 
         _right_langs = [t.xpath('@xml:lang') for t in tgs]
@@ -131,6 +141,7 @@ class DetailedEntries(XMLDict):
             else:
                 return False
 
+        # TODO: <re> nodes
         meaningGroups = []
         for tg in e.findall('mg/tg'):
             _ex = [(xg.find('x').text, xg.find('xt').text) for xg in tg.findall('xg')]
