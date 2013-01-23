@@ -1415,7 +1415,7 @@ class MorfaQuestion(OahpaQuestion):
 				if self.lemma == 'dat':
 					noun_pres = DEMONSTRATIVE_PRESENTATION.get(tag.personnumber, False)
 					if noun_pres:
-						self.lemma = self.lemma + force_unicode(noun_pres).encode('utf-8')
+						self.lemma = self.lemma + ' (' + force_unicode(noun_pres).encode('utf-8') + ')'
 						#self.lemma += u' (%s)' % noun_pres
 						#self.lemma = force_unicode(self.lemma).encode('utf-8')
 						
