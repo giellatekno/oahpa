@@ -800,6 +800,20 @@ def indexWithLangs(_from, _to):
                 return False
             return True
 
+        def reduceLookups(l):
+            _ls = l.get('lookups')
+            _txks = []
+            _new_ls = []
+            for _l in _ls:
+                _left = _l.get('left')
+                if _left in _txks:
+                    continue
+                else:
+                    _new_ls.append(_l)
+                    _txks.append(_left)
+            l['lookups'] = _new_ls
+            return l
+
 
         deduplicated = []
         keys = []
@@ -807,7 +821,7 @@ def indexWithLangs(_from, _to):
             if not hasLookups(r) or r.get('input') in keys:
                 continue
             else:
-                deduplicated.append(r)
+                deduplicated.append(reduceLookups(r))
                 keys.append(r.get('input'))
 
         # TODO: logIndexLookups(user_input, results, _from, _to)

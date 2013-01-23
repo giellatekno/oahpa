@@ -161,13 +161,10 @@ class DetailedEntries(XMLDict):
             if re is not None:      re = re.text
             else:                   re = ''
 
-            print tx, te, re
             if (len(tx) == 0) and (te is not None):
-                print "omg1"
                 text = [te, re]
                 te = ''
             else:
-                print "omg2"
                 text = [_tx.text for _tx in tx]
 
             meaningGroups.append(
