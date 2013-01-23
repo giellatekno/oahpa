@@ -81,7 +81,7 @@ cache = SimpleCache()
 app = Flask(__name__,
     static_url_path='/static',)
 
-
+app.jinja_env.line_statement_prefix = '#'
 app.config = Config('.', defaults=app.config)
 app.config.from_yamlfile('app.config.yaml')
 
@@ -101,6 +101,22 @@ user_log.setLevel("INFO")
 
 # language_pairs = app.config.lexicon.language_pairs
 # autocomplete_tries = app.config.lexicon.autocomplete_tries
+
+##
+## Template filters
+##
+
+@app.template_filter('tagfilter')
+def tagfilter(s, lang_iso):
+    filters = app.config.tag_filters.get(lang_iso, False)
+    if filters:
+        filtered = []
+        for part in s.split(' '):
+            filtered.append(filters.get(part, part))
+        return ' '.join(filtered)
+    else:
+        return s
+
 
 @app.template_filter('urlencode')
 def urlencode_filter(s):
@@ -141,8 +157,6 @@ def autocomplete(from_language, to_language):
                     status=200,
                     mimetype="application/json")
 
-# TODO: Keeping the old endpoints until all dependent apps are migrated
-#       to the new ones.
 @app.route('/lookup/<from_language>/<to_language>/',
            methods=['GET'], endpoint="lookup")
 def lookupWord(from_language, to_language):
@@ -222,7 +236,24 @@ def lookupWord(from_language, to_language):
                                                  , lookup_type
                                                  )
 
-    results = sorted( results
+    def filterPOS(r):
+        def fixTag(t):
+            t_pos = t.get('pos', False)
+            if not t_pos:
+                return t
+            t['pos'] = tagfilter(t_pos, from_language)
+            return t
+
+        lookups = r.get('lookups')
+
+        if not lookups:
+            return r
+        else:
+            r['lookups'] = map(fixTag, lookups)
+
+        return r
+
+    results = sorted( map(filterPOS, results)
                     , key=lambda x: len(x['input'])
                     , reverse=True
                     )
@@ -703,7 +734,7 @@ bookmarklet_escaped = """(function()%7Bvar%20e%3D%22http%3A%2F%2Fdigitesting.oah
 @app.route('/read/', methods=['GET'])
 def embed():
     bkmklt = bookmarklet_escaped
-    return render_template('proxy_reader.html', bookmarklet=bkmklt)
+    return render_template('reader.html', bookmarklet=bkmklt)
 
 ##
 ## Public Docs
@@ -829,21 +860,6 @@ def index():
                           , show_info=True
                           )
 
-
-##
-## Template filters
-##
-
-@app.template_filter('tagfilter')
-def tagfilter(s, lang_iso):
-    filters = app.config.tag_filters.get(lang_iso, False)
-    if filters:
-        filtered = []
-        for part in s.split(' '):
-            filtered.append(filters.get(part, part))
-        return ' '.join(filtered)
-    else:
-        return s
 
 if __name__ == "__main__":
     app.caching_enabled = True

@@ -178,6 +178,24 @@ div.button-padding {
 	padding: 5px 5px 10px;
 }
 
+
+.main_search .examples {
+	margin-left: -2em;
+}
+
+.main_search .examples dl {
+	margin-top: 0;}
+.main_search .examples dt {
+	font-weight: 400;
+}
+
+.main_search .examples dd {
+	font-weight: lighter;
+	margin-left: 0;
+	font-style: italic;
+}
+
+
 /* Mobile-specific tweaks */
 @media (max-width: 550px) {
 	
@@ -214,21 +232,17 @@ div.button-padding {
         height: 50px;
         margin-bottom: 40px;
     }
-    
+
 	.main_search .examples {
 		font-size: 90%;
 	}
-	.main_search .examples dt {
-		font-weight: 400;
-	}
-	
-	.main_search .examples dd {
-		font-weight: lighter;
-		margin-left: 0;
-		font-style: italic;
-	}
 	
 	.results ol {
+		margin-top: 1em;
+		margin-bottom: 1em;
+	}
+	
+	.results ol:last-child {
 		margin-bottom: 2.5em;
 		margin-top: 1em;
 	}

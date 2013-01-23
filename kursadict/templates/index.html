@@ -129,53 +129,27 @@ $(document).ready( function() {
                 {% if word_searches %}
                     <div class="results">
                         <div class="row-fluid">
-                            <span class="span7">
+                            <span class="span8">
                             {% for lexeme in word_searches %}
                             {% if lexeme.lookups %}
 
                                 {% for lookup in lexeme.lookups %}
                                 <p><a href="/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html?no_compounds=true&lemma_match=true&pos_filter={{ lookup.pos }}">
                                         {{ lookup.left }}
-                                </a> ({{ lookup.pos }}) – </p>
-                                <ol>
-                                    {% for (tx, lang) in zip(lookup.right, lookup.lang) %}
-                                    {% if lang %}
-                                        {% if lang == _to %}
-                                        <li>{% if tx.link %}<a href="/detail/{{ _to }}/{{ _from }}/{{ tx.tx }}.html?no_compounds=true&lemma_match=true">{% endif %}
-                                                {{ tx.tx }}
-                                            {% if tx.link %}</a>{% endif %} {% if tx.re %}({{ tx.re }}){% endif %}
-                                            {% if tx.examples %}
-                                                <div class="example_set">
-                                                    <div class="button-padding">
-                                                        <button class="btn btn-small visible-phone">Examples</button>
-                                                    </div>
-                                                    <blockquote class="examples hidden-phone">
-                                                    <dl>
-                                                        {%- for f_ex, t_ex in tx.examples %}
-                                                        <dt>{{ f_ex }}</dt>
-                                                        <dd>{{ t_ex }}</dd>
-                                                        {%- endfor %}
-                                                    </dl>
-                                                    </blockquote>
-                                                </div>
-                                            {% endif %}
-                                        </li>
-                                        {% endif %}
-                                    {% else %}
-                                        <li>{% if tx.link %}<a href="/detail/{{ _to }}/{{ _from }}/{{ tx.tx }}.html?no_compounds=true&lemma_match=true">{% endif %}
-                                                {{ tx.tx }}
-                                        {% if tx.link %}</a>{% endif %} {% if tx.re %}({{ tx.re }}){% endif %}
-                                        <blockquote class="examples">
-                                        <dl>
-                                            {%- for f_ex, t_ex in tx.examples %}
-                                            <dt>{{ f_ex }}</dt>
-                                            <dd>{{ t_ex }}</dd>
-                                            {%- endfor %}
-                                        </dl>
-                                        </blockquote>
-                                    </li>
-                                    {% endif %}
-                                    {% endfor %}
+                                </a> ({{ lookup.pos|tagfilter(_from) }}) &ndash; </p>
+                                <ol>{%- for (tx, lang) in zip(lookup.right, lookup.lang) -%}
+                                        {%- if lang -%}
+                                            {%- if lang == _to -%}
+                                                <li>
+                                                    {%- include 'main_page_li.html' -%}
+                                                </li>
+                                            {%- endif -%}
+                                        {%- else -%}
+                                            <li>
+                                                {%- include 'main_page_li.html' -%}
+                                            </li>
+                                        {%- endif -%}
+                                    {%- endfor -%}
                                 </ol>
                                 {% endfor %}
 
@@ -202,7 +176,7 @@ $(document).ready( function() {
                             {% endfor %}
                             </span>
 
-                            <div class="span5">
+                            <div class="span4">
                                 {%- if analyses %}
                                 <div class="well">
                                     <p style="font-size: 95%;"><em>{{ user_input }}</em> is a possible form of ... </p>

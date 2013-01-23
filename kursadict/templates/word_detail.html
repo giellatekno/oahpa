@@ -32,11 +32,6 @@
             <dt>{{ grouper }}</dt>
             <dd><ul class="possible_forms">{% for form, pos, tag in forms %}<li>{{ tag|tagfilter(_from) }}</li>{% endfor %}</ul></dd>
             {% endfor %}
-
-        {# for form, pos, tag in result.analyses %}
-            <dt><a href="{{ form|urlencode }}.html">{{ form }}</a></dt>
-            <dd>{{ tag }}</dd>
-        {%- endfor -#}
         </dl>
     </div>
     {%- endif -%}
@@ -91,45 +86,15 @@
     <div class="row-fluid lexeme">
         {% if lexeme.entries %}
             <div class="span6">
-            <p class="lead">{{ lexeme.input[0] }} ({{ lexeme.input[1] }}) </p>
+            <p class="lead">{{ lexeme.input[0] }} ({{ lexeme.input[1]|tagfilter(_from) }}) </p>
 
             {% for tg in lexeme.entries.lookups %}
                 <ul class="meanings">
                     {% for mg in tg.meaningGroups %}
                         {% if mg.language and mg.language == _to %}
-                            <li>
-                            {%- for txl in mg.translations -%}
-                            {{ txl }}{%- if not loop.last %}, {% endif -%}
-                            {%- endfor -%}
-                            {%- if mg.examples -%}
-                            <br />
-                            <blockquote class="examples">
-                            <dl>
-                                {%- for from, to in mg.examples %}
-                                <dt>{{ from }}</dt>
-                                <dd>{{ to }}</dd>
-                                {%- endfor %}
-                            </dl>
-                            </blockquote>
-                            {% endif -%}
-                            </li>
+                            <li>{% include 'word_detail_li.html' %}</li>
                         {% elif not mg.language %}
-                            <li>
-                            {%- for txl in mg.translations -%}
-                            {{ txl }}{%- if not loop.last %}, {% endif -%}
-                            {%- endfor -%}
-                            {%- if mg.examples -%}
-                            <br />
-                            <blockquote class="examples">
-                            <dl>
-                                {%- for from, to in mg.examples %}
-                                <dt>{{ from }}</dt>
-                                <dd>{{ to }}</dd>
-                                {%- endfor %}
-                            </dl>
-                            </blockquote>
-                            {% endif -%}
-                            </li>
+                            <li>{% include 'word_detail_li.html' %}</li>
                         {% endif %}
                     {% endfor %}
                 </ul>

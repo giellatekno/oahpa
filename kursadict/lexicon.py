@@ -103,14 +103,14 @@ class FrontPageFormat(XMLDict):
             if re is not None:      re = re.text
             else:                   re = ''
 
-            tx = tg.find('t')
+            tx = tg.findall('t')
             link = True
             if (tx is None) and (te is not None):
                 text = te
                 te = ''
                 link = False
             else:
-                text = tx.text
+                text = ', '.join([_tx.text for _tx in tx])
 
             right_nodes.append({ 'tx': text
                                , 're': ', '.join([a for a in [re, te] if a])
@@ -147,23 +147,45 @@ class DetailedEntries(XMLDict):
                 return False
 
         # TODO: <re> nodes
+        # TODO: te re go here
+        # TODO: template needs it too
         meaningGroups = []
         for tg in e.findall('mg/tg'):
-            _ex = [(xg.find('x').text, xg.find('xt').text) for xg in tg.findall('xg')]
-            _tg = {
-                'translations': [t.text for t in tg.findall('t')],
-                'examples': _ex,
-                'language': orFalse(tg.xpath('@xml:lang'))
-            }
-            meaningGroups.append(_tg)
+            tx = tg.findall('t')
+            te = tg.findall('te')
+            re = tg.findall('re')
 
-        return {
-            'lemma': l.text,
-            'pos': l.get('pos'),
-            'context': l.get('context'),
-            'meaningGroups': meaningGroups,
-            'type': l.get('type')
-        }
+            if te is not None:      te = ', '.join([_te.text for _te in te])
+            else:                   te = ''
+
+            if re is not None:      re = ', '.join([_re.text for _re in re])
+            else:                   re = ''
+
+            print tx, te, re
+            if (tx is None) and (te is not None):
+                print "omg1"
+                text = [te, re]
+                te = ''
+            else:
+                print "omg2"
+                text = [_tx.text for _tx in tx]
+
+            meaningGroups.append(
+                { 'annotations': ', '.join([a for a in [re, te] if a])
+                , 'translations': text
+                , 'examples': [ ( xg.find('x').text
+                                , xg.find('xt').text )
+                                for xg in tg.findall('xg') ]
+                , 'language': orFalse(tg.xpath('@xml:lang'))
+                }
+            )
+
+        return { 'lemma': l.text
+               , 'pos': l.get('pos')
+               , 'context': l.get('context')
+               , 'meaningGroups': meaningGroups
+               , 'type': l.get('type')
+               }
 
 class AutocompleteTrie(XMLDict):
 

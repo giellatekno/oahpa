@@ -1,0 +1,20 @@
+﻿{%- if tx.link -%}
+    <a href="/detail/{{ _to }}/{{ _from }}/{{ tx.tx }}.html?no_compounds=true&lemma_match=true">
+{%- endif -%}{{ tx.tx }}
+{%- if tx.link -%}</a>{%- endif %}
+{% if tx.re %} ({{ tx.re }}){% endif %}
+{% if tx.examples %}
+    <div class="example_set">
+        <div class="button-padding">
+            <button class="btn btn-small visible-phone">Examples</button>
+        </div>
+        <blockquote class="examples hidden-phone">
+        <dl>
+            # for f_ex, t_ex in tx.examples
+            <dt>{{ f_ex }}</dt>
+            <dd>{{ t_ex }}</dd>
+            # endfor
+        </dl>
+        </blockquote>
+    </div>
+{% endif %}
