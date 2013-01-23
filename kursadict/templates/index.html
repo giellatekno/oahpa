@@ -40,6 +40,7 @@ $(document).ready( function() {
         submit.prop("disabled", true);
     });
 
+    {#
     $('.example_set button').click(function(evt) {
     	var target = $(evt.target).parents('.example_set')
     	                          .find('blockquote.examples') ;
@@ -55,6 +56,7 @@ $(document).ready( function() {
     	    }) ;
     	}
     });
+    #} 
 });
 </script>
 
@@ -132,7 +134,6 @@ $(document).ready( function() {
                             <span class="span8">
                             {% for lexeme in word_searches %}
                             {% if lexeme.lookups %}
-
                                 {% for lookup in lexeme.lookups %}
                                 <p><a href="/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html?no_compounds=true&lemma_match=true&pos_filter={{ lookup.pos }}">
                                         {{ lookup.left }}
@@ -152,7 +153,6 @@ $(document).ready( function() {
                                     {%- endfor -%}
                                 </ol>
                                 {% endfor %}
-
                             {% else %}
                                 {% if errors %}
                                     <div class="alert">
