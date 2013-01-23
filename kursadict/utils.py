@@ -49,7 +49,7 @@ def logIndexLookups(user_input, results, from_language, to_language):
             success = True
             for lookup in result_lookups:
                 l_left = lookup.get('left')
-                l_right = ', '.join(lookup.get('right'))
+                l_right = ', '.join([_l.get('tx') for _l in lookup.get('right')])
                 tx_set.add(l_right)
                 result_lemmas.add(lookup.get('left'))
 

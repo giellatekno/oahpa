@@ -824,7 +824,7 @@ def indexWithLangs(_from, _to):
                 deduplicated.append(reduceLookups(r))
                 keys.append(r.get('input'))
 
-        # TODO: logIndexLookups(user_input, results, _from, _to)
+        logIndexLookups(user_input, results, _from, _to)
         results = sorted( deduplicated
                         , key=lambda x: len(x['input'])
                         , reverse=True
