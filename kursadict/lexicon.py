@@ -152,17 +152,17 @@ class DetailedEntries(XMLDict):
         meaningGroups = []
         for tg in e.findall('mg/tg'):
             tx = tg.findall('t')
-            te = tg.findall('te')
-            re = tg.findall('re')
+            te = tg.find('te')
+            re = tg.find('re')
 
-            if te is not None:      te = ', '.join([_te.text for _te in te])
+            if te is not None:      te = te.text
             else:                   te = ''
 
-            if re is not None:      re = ', '.join([_re.text for _re in re])
+            if re is not None:      re = re.text
             else:                   re = ''
 
             print tx, te, re
-            if (tx is None) and (te is not None):
+            if (len(tx) == 0) and (te is not None):
                 print "omg1"
                 text = [te, re]
                 te = ''
