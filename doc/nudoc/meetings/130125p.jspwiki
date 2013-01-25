@@ -1,0 +1,223 @@
+!!! Møte 25.01.13
+
+Til stades: Ryan, Lene, Trond
+
+!! Saksliste
+
+* Artikkel
+* Fstdict og plugin
+* Neste møte
+
+!! Artikkel
+Kan vi bruke korpuset med typos? Dekningen er likevel bra, over 90 %.
+
+Eller skal vi lage et nytt korpus? Lene legger til tekster fra Ávvir osv.
+
+Tabell 2: Også lage prosenter om ordformer (unifisere materialet)
+
+facebook = 20% utan samisk tastatur.
+
+Disposisjon for artikkelen:
+
+# Intro
+## There is...
+## Kanskje dette: fst needed for comprehension dict: 
+   few lemma form in running text, non-obvious lemma + compound sprachbund
+## muligheter med fst, legge til hva som helst (facebook, nno + nob osv)
+## Disposisjon av artikkel
+# Motivasjon for dictionaries 
+## Samisk - morfologi + sprachbund
+## hjelp til lese samiske tekster -> samer kan skrive samisk
+## Installeringsvanskar
+## også nevne fin-sme (for samer i norge) og nob-sme (for samer i finland) - morfologien gjør fin-sme bedre og fordi språkene ligger nært hverandre så blir resultatet bra selv med lite arbeid
+## Previous approach: listing morphological forms, referring to lemma article. We did this because this is how it is done
+Referere til Lingsofts Parrot
+# Building..
+## bookmarklet til staden for chrome plugin
+# Evaluation
+## fst dict __Denne 4.1 opp til motivation__ + legg til note om suprasegmental morfologi korjaamo+ssa / bođii - boahtit
+## testing on corpus
+## facebook fst
+## sma: Trond ordnar materiale, Lene køyrar sme-testane for sma også.
+# Doing more  Generalising the fst dic
+## finsme: x lemma i finsme-ordbok + fst = y% dekning på z løpande ord 
+  (90% av ord i finsk tekst er ikkje grunnform)
+## nno - nob
+## Poenget frå multi-artikkelen: Try this at home: 
+  Viss språket ditt er på denne lista så køyr (fst + tospråklig ordliste)
+  den tospråklege ordlista di vil med dette til og med bli brukbar...
+# Conclusion
+# Acknowledgments
+## Sjur, Ciprian, Berit-Merete, Márjá
+
+!!! Fstdict og plugin
+
+
+
+!!Filtrere svaret (evt bare for plugin-varianten, eksempelordet er:
+__boazodoallobearráigehččiid__ gir:
+
+{{{
+boazodoallobearráigeahčči (s.) – reindriftsinspektør
+bearráigeahččat (v.) – ﻿inspisere
+bearráigeahčči (s.) – ﻿oppsynsmann
+boazodoallu (s.) – ﻿reindrift
+doallu (s.) – ﻿driftsenhet, drift
+doalut (s.) – ﻿arrangement
+boazu (s.) – ﻿rein, reinsdyr
+
+slik er analysen:
+boazodoallobearráigehččiid
+boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doalut+Event+N+SgNomCmp+Cmp#bearráigeahčči+Hum+N+NomAg+Pl+Gen
+boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doalut+Event+N+SgNomCmp+Cmp#bearráigeahčči+Hum+N+NomAg+Pl+Acc
+boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doalut+Event+N+SgNomCmp+Cmp#bearráigeahččat+V+TV+Der/NomAg+N+Pl+Gen
+boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doalut+Event+N+SgNomCmp+Cmp#bearráigeahččat+V+TV+Der/NomAg+N+Pl+Acc
+boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doallu+N+SgNomCmp+Cmp#bearráigeahčči+Hum+N+NomAg+Pl+Gen
+boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doallu+N+SgNomCmp+Cmp#bearráigeahčči+Hum+N+NomAg+Pl+Acc
+boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doallu+N+SgNomCmp+Cmp#bearráigeahččat+V+TV+Der/NomAg+N+Pl+Gen
+boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doallu+N+SgNomCmp+Cmp#bearráigeahččat+V+TV+Der/NomAg+N+Pl+Acc
+boazodoallobearráigehččiid	boazodoallu+N+SgNomCmp+Cmp#bearráigeahčči+Hum+N+NomAg+Pl+Gen
+boazodoallobearráigehččiid	boazodoallu+N+SgNomCmp+Cmp#bearráigeahčči+Hum+N+NomAg+Pl+Acc
+boazodoallobearráigehččiid	boazodoallu+N+SgNomCmp+Cmp#bearráigeahččat+V+TV+Der/NomAg+N+Pl+Gen
+boazodoallobearráigehččiid	boazodoallu+N+SgNomCmp+Cmp#bearráigeahččat+V+TV+Der/NomAg+N+Pl+Acc
+boazodoallobearráigehččiid	boazodoallobearráigeahčči+Hum+N+NomAg+Pl+Gen
+boazodoallobearráigehččiid	boazodoallobearráigeahčči+Hum+N+NomAg+Pl+Acc
+}}}
+
+
+Tilsvarende for derivasjoner, eksempelord er:
+boradeimmet
+
+boradit (v.) – spise, ete, ha et måltid
+borrat (v.) – ﻿spise, ete, etse
+
+Slik er analysen:
+boradeimmet
+boradeimmet	borrat+V+TV+Der/d+V+Ind+Prt+Pl1
+boradeimmet	boradit+V+TV+Ind+Prt+Pl1
+
+
+* Regel 1: __Hvis det finnes en analyse uten #, så fjern analysene med #__
+* Regel 2: __Hvis det finnes en analyse uten Der/, så fjern analysene med Der/__
+
+
+# Vanleg ordbok: Berre leksikaliserte, berre korrekt samisk
+# Studentordbok: Også dynamisk samansetjing, men berre korrekt samisk
+# Facebookordbok: Berre leksikaliserte, men også iPhone-samisk
+
+Denne lista kan vi ha inn i artikkelen også.
+
+!! Legge til informasjon om morfologi
+
+Ved å filtrere analysene slik som i forrige sak, så har man god plass i vinduet til å legge til morfologi (plugin-varianten):
+
+boazodoallobearráigehččiid
+N Pl Acc eller N Pl Gen av boazodoallobearráigeahčči (s.) – reindriftsinspektør
+
+!! Context i miniparadigmet
+I adjektiv-fila er det info om context:
+{{{
+<l context="bivttas" pos="a">fiskat</l>
+
+Denne infoen kan brukes slik i miniparadigmet:
+adj. Attr   		alit (bivttas)     <========
+adj. Pl Nom  		alihat
+adj. Comp Attr		alihit
+adj. Comp Sg Nom 	alihit
+adj. Superl Sg Nom	aliheamos
+}}}
+
+Også i numeralfila er det context:
+
+{{{
+<l context="gápmagat" pos="num">guokte</l>
+}}}
+
+Den skal vises for plural-fomen i miniparadigmet:
+guovttit (gápmagat)
+
+!! Manglende informasjon for numeraler
+For numeraler får jeg ingen informasjon eller miniparadigme når jeg velger Mer informasjon.
+
+!! Feil i presentasjon av morfologi
+Selve ordboka (ikke plugin):
+
+{{{
+gaskabeivviid is a possible form of ...
+
+gaskabeivviid   <== her skal det være lemma, ikke ordform
+s.
+s. fl. akk.
+s. fl. gen.
+s. fl. akk.
+s. fl. gen.
+s. fl. akk.
+s. fl. gen.
+}}}
+
+Her burde det ha stått:
+
+{{{
+gaskabeivviid is a possible form of ...
+
+gaskabeaivvit
+s. fl. akk.
+s. fl. gen.
+gaskabeaivi
+s. fl. akk.
+s. fl. gen.
+beaivi
+s. fl. akk.
+s. fl. gen.
+}}}
+
+{{{
+baakoegærjah is a possible form of ...
+
+baakoegærjah  <== skulle stå: baakoegærja
+N SgNomCmp Cmp#gærja N Pl Nom
+N Pl Nom
+}}}
+
+Fjerne fra analysen som blir presentert til brukerne: aktor, nom.Ag., G3, G7. Denne informasjonen får brukerne i miniparadigmet.
+
+!! Facebook-ordbok
+
+sme-nob:
+På facebook er 20 % av teksten skrive utan samisk tastatur. Trond har laga eit spellrelax-filter som sjekkar for áčđŋšŧž når det står acdnstz, og til og med for áčđŋšŧž når det står ACDNSTZ (Pekka Sammallahti, og med han også ein del andre, skriv slik: oaZZut for oažžut). Trond tenkte vi kunne kompilere med den (eg vil utvide fst-repertoaret til ein facebook-sme.fst), så kunne vi ha eit alternativ nederst på lista, "Blogg-ordbok, facebook-ordbok" el.l. ("forstår samisk utan samiske bokstavar").
+
+!! Kombinert norsk/nynorsk-ordbok
+
+nob-sme: Ordboka vår er for bokmål. Trond tenkte å lage den også for å forstå nynorsk tekst:
+
+# leggje til ei fil med ubøyelege nynorsk-ord: ikkje har ikke som lemma, osv.
+# leggje til nynorskmorfologi for felles opne ord (maskulin får ''-ar, -ane'' i tillegg til ''-er, -ene'').
+
+Så kan vi lage ein dict-nob.fst, og bruke den
+
+!! Lokalisering
+Det kommer etterhvert, Ryan har en plan.
+
+!! Frekvenssortering av mg i entryene
+Vi ønsker å få de mest generelle oversettingene øverst i lista som presenteres for brukeren (eks. gå), og derfor vil vi merke disse mg med en attributt, og deretter sortere internt i hver entry. Dette vil forbedre presentasjonen også i fstdict.
+
+!! tf mangler - må legges til
+
+{{{
+ <lg>
+         <l pos="n">boaššu</l>
+         <lc>boaššus</lc>
+         <lc>boššui</lc>
+      </lg>
+      <mg>
+         <tg xml:lang="nob">
+            <tf pos="phrase_n">den innerste plassen i telt eller gamme</tf>
+         </tg>
+      </mg>
+}}}
+
+Lene lager en liste over ordformer som bør sjekkes, se også denne: [sjekkliste for den nykompilerte ordboka (VD)|http://giellatekno.uit.no/doc/dicts/checklist.html] 
+
+!! Neste møte
+Mandag 28.1 kl 8.00
+
