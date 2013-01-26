@@ -324,14 +324,26 @@ class Morphology(object):
         return reformatted
 
 
-    def lemmatize(self, form, split_compounds=False):
+    def lemmatize(self, form, split_compounds=False, non_compound_only=False):
         """ For a wordform, return a list of lemmas
         """
+        def remove_compound_analyses(_a):
+            _cmp =  self.tool.options.get('compoundBoundary', False)
+            if _cmp in _a:
+                return False
+            else:
+                return True
+
         lookups = self.tool.lookup([form])
+
         if split_compounds:
             lemmas = []
             for _form, analyses in lookups:
                 decompounded = sum(map(self.tool.splitTagByCompound, analyses), [])
+                if non_compound_only:
+                    has_non_compound = filter(remove_compound_analyses, analyses)
+                    if len(has_non_compound) > 0:
+                        decompounded = has_non_compound
                 for analysis in decompounded:
                     _lem = self.tool.splitAnalysis(analysis)[0]
                     if _lem not in lemmas:
@@ -339,6 +351,10 @@ class Morphology(object):
         else:
             lemmas = set()
             for _form, analyses in lookups:
+                if non_compound_only:
+                    has_non_compound = filter(remove_compound_analyses, analyses)
+                    if len(has_non_compound) > 0:
+                        analyses = has_non_compound
                 for analysis in analyses:
                     lemmas.add(self.tool.splitAnalysis(analysis)[0])
             lemmas = list(lemmas)
@@ -399,6 +415,21 @@ class Morphology(object):
 
         self.tagsets = Tagsets(tagsets)
 
+def sme_test():
+    sme_options = {
+        'compoundBoundary': "  + #",
+        'tagsep': ' ',
+        'inverse_tagsep': '+',
+    }
+
+    smexfst = XFST(lookup_tool='/Users/pyry/bin/lookup',
+                   fst_file='/Users/pyry/gtsvn/gt/sme/bin/n-sme.fst',
+                   ifst_file='/Users/pyry/gtsvn/gt/sme/bin/isme.fst',
+                   options=sme_options)
+
+    sme = smexfst >> Morphology('sme')
+
+    return sme
 
 
 def examples():
@@ -417,18 +448,7 @@ def examples():
     for a in nob.lemmatize(u'tålt'):
         print '  ' + a
 
-    sme_options = {
-        'compoundBoundary': "  + #",
-        'tagsep': ' ',
-        'inverse_tagsep': '+',
-    }
-
-    smexfst = XFST(lookup_tool='/Users/pyry/bin/lookup',
-                   fst_file='/Users/pyry/gtsvn/gt/sme/bin/n-sme.fst',
-                   ifst_file='/Users/pyry/gtsvn/gt/sme/bin/isme.fst',
-                   options=sme_options)
-
-    sme = smexfst >> Morphology('sme')
+    sme = sme_test()
     print
     print ' -- sme lemmatize --'
     print ' mánnat: '
