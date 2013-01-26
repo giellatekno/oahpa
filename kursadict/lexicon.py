@@ -83,6 +83,9 @@ class XMLDict(object):
 class FrontPageFormat(XMLDict):
 
     def cleanEntry(self, e):
+        # TODO: it would be nice to generalize this out to the settings
+        # using a list of XPATH, and just string formatting to
+        # prioritize what gets displayed and how
         l = e.find('lg/l')
         left_text = l.text
         left_pos = l.get('pos')
@@ -92,8 +95,11 @@ class FrontPageFormat(XMLDict):
         for tg in tgs:
             re = tg.find('re')
             te = tg.find('te')
+            tf = tg.find('tf')
+
             _ex = [ (xg.find('x').text, xg.find('xt').text)
                     for xg in tg.findall('xg') ]
+
             if len(_ex) == 0:
                 _ex = False
 
@@ -103,13 +109,28 @@ class FrontPageFormat(XMLDict):
             if re is not None:      re = re.text
             else:                   re = ''
 
+            if tf is not None:      tf = tf.text
+            else:                   tf = ''
+
             tx = tg.findall('t')
+
             link = True
-            if (tx is None) and (te is not None):
+
+            if (not tx) and (te):
                 text = te
                 te = ''
                 link = False
+            elif (not tx) and (re):
+                text = re
+                re = ''
+                link = False
+            elif (not tx) and (tf):
+                text = tf
+                tf = ''
+                link = False
             else:
+                if len(tx) > 1:
+                    link = False
                 text = ', '.join([_tx.text for _tx in tx])
 
             right_nodes.append({ 'tx': text

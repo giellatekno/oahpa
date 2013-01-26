@@ -2,15 +2,97 @@
 
 ## Next: 
 
+ * does this work with following proposed change about compound display? 
+    mánnageahččijuovlaspábbačiekčangilvvus
+    mánnageahčči-juovlaspábbačiekčangilvvus
+    boazodoallobearráigeahččispábbačiekčangilvu
+
  * see: email from lene
 
- * <tf /> node
+   * Manglende informasjon for numeraler - legg til paradigme  - ogso sjekk detailed
 
- * test: boaššu: te/re? -- tf
+   * Legge til informasjon om morfologi
+   
+       Ved å filtrere analysene slik som i forrige sak, så har man god plass i vinduet til å legge til morfologi (plugin-varianten):
+   
+       boazodoallobearráigehččiid
+       N Pl Acc eller N Pl Gen av boazodoallobearráigeahčči (s.) – reindriftsinspektør
+   
+       !! Context i miniparadigmet
+       I adjektiv-fila er det info om context:
+       {{{
+       <l context="bivttas" pos="a">fiskat</l>
+   
+       Denne infoen kan brukes slik i miniparadigmet:
+       adj. Attr   		alit (bivttas)     <========
+       adj. Pl Nom  		alihat
+       adj. Comp Attr		alihit
+       adj. Comp Sg Nom 	alihit
+       adj. Superl Sg Nom	aliheamos
+       }}}
+   
+       Også i numeralfila er det context:
+   
+       {{{
+       <l context="gápmagat" pos="num">guokte</l>
+       }}}
+   
+       Den skal vises for plural-fomen i miniparadigmet:
+       guovttit (gápmagat)
+
+   * Filtrere svaret (evt bare for plugin-varianten, eksempelordet er:
+   
+       __boazodoallobearráigehččiid__ gir:
+       {{{
+       boazodoallobearráigeahčči (s.) – reindriftsinspektør
+       bearráigeahččat (v.) – ﻿inspisere
+       bearráigeahčči (s.) – ﻿oppsynsmann
+       boazodoallu (s.) – ﻿reindrift
+       doallu (s.) – ﻿driftsenhet, drift
+       doalut (s.) – ﻿arrangement
+       boazu (s.) – ﻿rein, reinsdyr
+   
+       slik er analysen:
+       boazodoallobearráigehččiid
+       boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doalut+Event+N+SgNomCmp+Cmp#bearráigeahčči+Hum+N+NomAg+Pl+Gen
+       boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doalut+Event+N+SgNomCmp+Cmp#bearráigeahčči+Hum+N+NomAg+Pl+Acc
+       boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doalut+Event+N+SgNomCmp+Cmp#bearráigeahččat+V+TV+Der/NomAg+N+Pl+Gen
+       boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doalut+Event+N+SgNomCmp+Cmp#bearráigeahččat+V+TV+Der/NomAg+N+Pl+Acc
+       boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doallu+N+SgNomCmp+Cmp#bearráigeahčči+Hum+N+NomAg+Pl+Gen
+       boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doallu+N+SgNomCmp+Cmp#bearráigeahčči+Hum+N+NomAg+Pl+Acc
+       boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doallu+N+SgNomCmp+Cmp#bearráigeahččat+V+TV+Der/NomAg+N+Pl+Gen
+       boazodoallobearráigehččiid	boazu+Ani+N+SgNomCmp+Cmp#doallu+N+SgNomCmp+Cmp#bearráigeahččat+V+TV+Der/NomAg+N+Pl+Acc
+       boazodoallobearráigehččiid	boazodoallu+N+SgNomCmp+Cmp#bearráigeahčči+Hum+N+NomAg+Pl+Gen
+       boazodoallobearráigehččiid	boazodoallu+N+SgNomCmp+Cmp#bearráigeahčči+Hum+N+NomAg+Pl+Acc
+       boazodoallobearráigehččiid	boazodoallu+N+SgNomCmp+Cmp#bearráigeahččat+V+TV+Der/NomAg+N+Pl+Gen
+       boazodoallobearráigehččiid	boazodoallu+N+SgNomCmp+Cmp#bearráigeahččat+V+TV+Der/NomAg+N+Pl+Acc
+       boazodoallobearráigehččiid	boazodoallobearráigeahčči+Hum+N+NomAg+Pl+Gen
+       boazodoallobearráigehččiid	boazodoallobearráigeahčči+Hum+N+NomAg+Pl+Acc
+       }}}
+   
+   
+   * Tilsvarende for derivasjoner, eksempelord er:
+   
+       boradeimmet
+   
+       boradit (v.) – spise, ete, ha et måltid
+       borrat (v.) – ﻿spise, ete, etse
+   
+       Slik er analysen:
+       boradeimmet
+       boradeimmet	borrat+V+TV+Der/d+V+Ind+Prt+Pl1
+       boradeimmet	boradit+V+TV+Ind+Prt+Pl1
+   
+   
+    * Regel 1: __Hvis det finnes en analyse uten #, så fjern analysene med #__
+    * Regel 2: __Hvis det finnes en analyse uten Der/, så fjern analysene med Der/__
+
+ * facebook modus  -- different fst same dictionary 
 
  * css - ex.) davimus in smenob; padding funny on examples 
+ * css - consistency between detailed and list view?
 
- * word test-list  -  http://giellatekno.uit.no/doc/dicts/checklist.html
+ * word test-list - http://giellatekno.uit.no/doc/dicts/checklist.html
 
  * fin-sme: multiple words in api, wtf
 

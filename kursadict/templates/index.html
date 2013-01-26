@@ -182,8 +182,10 @@ $(document).ready( function() {
                                     <p style="font-size: 95%;"><em>{{ user_input }}</em> is a possible form of ... </p>
                                     <dl class="possible_analyses">
                                         {% for grouper, forms in analyses|groupby(0) %}
-                                        <dt>{{ grouper }}</dt>
-                                        <dd><ul class="possible_forms">{% for form, pos, tag in forms %}<li>{{ ' '.join(tag)|tagfilter(_from) }}</li>{% endfor %}</ul></dd>
+                                            {% for form, lemma, tag in forms %}
+                                            <dt>{{ lemma }}</dt>
+                                            <dd><ul class="possible_forms"><li>{{ ' '.join(tag)|tagfilter(_from) }}</li></ul></dd>
+                                            {% endfor %}
                                         {% endfor %}
                                     </dl>
                                 </div>

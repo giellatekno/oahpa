@@ -216,6 +216,7 @@ def lookupWord(from_language, to_language):
     lookup_type             = request.args.get('type', False)
     lemmatize               = request.args.get('lemmatize', False)
     has_callback            = request.args.get('callback', False)
+    pretty                  = request.args.get('pretty', False)
 
     if lookup_key == False:
         return json.dumps(" * lookup undefined")
@@ -226,7 +227,10 @@ def lookupWord(from_language, to_language):
         lemmatizer = lemm_.lemmatize
 
     if lemmatize and lemmatizer and not lookup_type:
-        lookup_keys = lemmatizer(lookup_key, split_compounds=True)
+        lookup_keys = lemmatizer( lookup_key
+                                , split_compounds=True
+                                , non_compound_only=True
+                                )
     else:
         lookup_keys = [lookup_key]
 
@@ -267,8 +271,17 @@ def lookupWord(from_language, to_language):
     data = json.dumps({ 'result': results
                       , 'success': success })
 
+
+    if pretty:
+        data = json.dumps( json.loads(data)
+                         , sort_keys=True
+                         , indent=4
+                         , separators=(',', ': ')
+                         )
+
     if has_callback:
         data = '%s(%s)' % (has_callback, data)
+
 
     return Response( response=data
                    , status=200

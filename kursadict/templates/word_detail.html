@@ -29,8 +29,10 @@
         <strong>{{ result.input }} is a possible form of ... </strong>
         <dl class="possible_analyses">
             {% for grouper, forms in result.analyses|groupby(0) %}
-            <dt>{{ grouper }}</dt>
-            <dd><ul class="possible_forms">{% for form, pos, tag in forms %}<li>{{ tag|tagfilter(_from) }}</li>{% endfor %}</ul></dd>
+                {% for lemma, pos, tag in forms %}
+                <dt>{{ lemma }}</dt>
+                <dd><ul class="possible_forms"><li>{{ tag|tagfilter(_from) }}</li></ul></dd>
+                {% endfor %}
             {% endfor %}
         </dl>
     </div>
