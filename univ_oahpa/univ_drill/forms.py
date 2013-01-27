@@ -39,6 +39,7 @@ NEGATIVE_VERB_PRES = {'Sg1':'in', 'Sg2':'it', 'Sg3':'ii',
 TENSE_PRESENTATION = {
 	'Prt': u'ikte',
 	'Prs': u'odne',
+	'PrfPrc': u'lea',
 }
 
 RECIPROCATIVE_PRESENTATION = {
@@ -1349,6 +1350,9 @@ class MorfaQuestion(OahpaQuestion):
 
 			if tag.string.find("Der/AV") > -1 or tag.tense in ['Prs','Prt'] and tag.mood == 'Ind':
 				time = TENSE_PRESENTATION.get(tag.tense, False)
+				_tense_presentation = time
+			elif tag.string == "V+PrfPrc":
+				time = TENSE_PRESENTATION.get(tag.infinite, False)
 				_tense_presentation = time
 
 			elif ("+Der/Pass" in tag.string) and ("+V" in tag.string):
