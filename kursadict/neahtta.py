@@ -230,6 +230,7 @@ def lookupWord(from_language, to_language):
         lookup_keys = lemmatizer( lookup_key
                                 , split_compounds=True
                                 , non_compound_only=True
+                                , no_derivations=True
                                 )
     else:
         lookup_keys = [lookup_key]

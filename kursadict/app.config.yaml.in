@@ -15,6 +15,7 @@ Morphology:
     format: 'xfst'
     options:
       compoundBoundary: "  + #"
+      derivationMarker: "suff."
       tagsep: ' '
       inverse_tagsep: '+'
   # Trying out fst
@@ -28,6 +29,7 @@ Morphology:
     format: 'xfst'
     options:
       compoundBoundary: "#+Cmp+"
+      derivationMarker: "+Der"
       tagsep: '+'
       inverse_tagsep: '+'
   sma:
@@ -36,6 +38,7 @@ Morphology:
     inverse_file: [*GTHOME, '/langs/sma/src/generator-gt-norm.xfst']
     format: 'xfst'
     options:
+      derivationMarker: "+Der"
       tagsep: '+'
       inverse_tagsep: '+'
   fin:

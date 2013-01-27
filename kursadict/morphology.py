@@ -324,26 +324,43 @@ class Morphology(object):
         return reformatted
 
 
-    def lemmatize(self, form, split_compounds=False, non_compound_only=False):
+    def lemmatize(self, form, split_compounds=False, non_compound_only=False, no_derivations=False):
         """ For a wordform, return a list of lemmas
         """
         def remove_compound_analyses(_a):
             _cmp =  self.tool.options.get('compoundBoundary', False)
+            if not _cmp:
+                return True
             if _cmp in _a:
                 return False
             else:
                 return True
+
+        def remove_derivations(_a):
+            _der = self.tool.options.get('derivationMarker', False)
+            if not _der:
+                return True
+            if _der in _a:
+                return False
+            else:
+                return True
+
 
         lookups = self.tool.lookup([form])
 
         if split_compounds:
             lemmas = []
             for _form, analyses in lookups:
-                decompounded = sum(map(self.tool.splitTagByCompound, analyses), [])
                 if non_compound_only:
                     has_non_compound = filter(remove_compound_analyses, analyses)
                     if len(has_non_compound) > 0:
                         decompounded = has_non_compound
+                else:
+                    decompounded = sum(map(self.tool.splitTagByCompound, analyses), [])
+                if no_derivations:
+                    has_non_derivation = filter(remove_derivations, decompounded)
+                    if len(has_non_derivation) > 0:
+                        decompounded = has_non_derivation
                 for analysis in decompounded:
                     _lem = self.tool.splitAnalysis(analysis)[0]
                     if _lem not in lemmas:
@@ -355,6 +372,10 @@ class Morphology(object):
                     has_non_compound = filter(remove_compound_analyses, analyses)
                     if len(has_non_compound) > 0:
                         analyses = has_non_compound
+                if no_derivations:
+                    has_non_derivation = filter(remove_derivations, analyses)
+                    if len(has_non_derivation) > 0:
+                        analyses = has_non_derivation
                 for analysis in analyses:
                     lemmas.add(self.tool.splitAnalysis(analysis)[0])
             lemmas = list(lemmas)
@@ -418,6 +439,7 @@ class Morphology(object):
 def sme_test():
     sme_options = {
         'compoundBoundary': "  + #",
+        'derivationMarker': "suff.",
         'tagsep': ' ',
         'inverse_tagsep': '+',
     }
