@@ -166,6 +166,7 @@ class FrontPageFormat(XMLDict):
                }
 
 class DetailedEntries(XMLDict):
+
     def cleanEntry(self, e):
         l = e.find('lg/l')
 
@@ -189,6 +190,7 @@ class DetailedEntries(XMLDict):
             tx = tg.findall('t')
             te = tg.find('te')
             re = tg.find('re')
+            tf = tg.find('tf')
 
             if te is not None:      te = te.text
             else:                   te = ''
@@ -196,11 +198,21 @@ class DetailedEntries(XMLDict):
             if re is not None:      re = re.text
             else:                   re = ''
 
-            if (len(tx) == 0) and (te is not None):
-                text = [te, re]
+            if tf is not None:      tf = tf.text
+            else:                   tf = ''
+
+            if (not tx) and (te):
+                text = te
                 te = ''
+            elif (not tx) and (re):
+                text = re
+                re = ''
+            elif (not tx) and (tf):
+                text = tf
+                tf = ''
             else:
-                text = [_tx.text for _tx in tx]
+                text = ', '.join([_tx.text for _tx in tx])
+
 
             meaningGroups.append(
                 { 'annotations': ', '.join([a for a in [re, te] if a])

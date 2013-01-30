@@ -519,7 +519,7 @@ def wordDetail(from_language, to_language, wordform, format):
                     _entry_tx = []
                     for mg in entry['meaningGroups']:
                         _entry_tx.append(mg['translations'])
-                    _meanings.append(list(sum(_entry_tx, [])))
+                    _meanings.append(_entry_tx)
         tx_set = '; '.join([', '.join(a) for a in _meanings])
     else:
         success = False

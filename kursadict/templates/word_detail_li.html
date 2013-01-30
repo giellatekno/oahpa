@@ -1,6 +1,4 @@
-{%- for txl in mg.translations -%}
-{{ txl }}{%- if not loop.last %}, {% endif -%}
-{%- endfor -%}
+{{ mg.translations }}
 {% if mg.annotations %} ({{ mg.annotations }}){% endif %}
 {%- if mg.examples -%}
 <br />
