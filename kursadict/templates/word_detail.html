@@ -91,53 +91,38 @@
     {% for lexeme in result.lexicon %}
     <div class="row-fluid lexeme">
         {% if lexeme.entries %}
-            <div class="span6">
-            <p class="lead">{{ lexeme.input[0] }} ({{ lexeme.input[1]|tagfilter(_from) }}) </p>
-
-            {% for tg in lexeme.entries.lookups %}
-                <ul class="meanings">
-                    {% for mg in tg.meaningGroups %}
-                        {% if mg.language and mg.language == _to %}
-                            <li>{% include 'word_detail_li.html' %}</li>
-                        {% elif not mg.language %}
-                            <li>{% include 'word_detail_li.html' %}</li>
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-            {% endfor %}
-            </div>
-
-            <div class="span4">
+            <div class="span12">
+                {# This is the non-mobile version, otherwise we display it below #}
                 {% set context = lexeme.entries.lookups[0].lemma_context %}
                 {% if lexeme.paradigms %}
-                    <dl class="dl-horizontal miniparadigm">
-                    {%- for lemma, tag, form in lexeme.paradigms -%}
+                    <div class="pull-right hidden-phone">
+                        {% include 'detail_paradigm_dl.html' %}
+                    </div>
+                {% endif %}
+                <p class="lead">{{ lexeme.input[0] }} ({{ lexeme.input[1]|tagfilter(_from) }}) </p>
 
-                        {% if tag %}
-                            <dt>{{ ' '.join(tag)|tagfilter(_from)  }}</dt>
-                        {% endif %}
+                {% for tg in lexeme.entries.lookups %}
+                    <ul class="meanings">
+                        {% for mg in tg.meaningGroups %}
+                            {% if mg.language and mg.language == _to %}
+                                <li>{% include 'word_detail_li.html' %}</li>
+                            {% elif not mg.language %}
+                                <li>{% include 'word_detail_li.html' %}</li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
 
-                        {% if form %}
-                        <dd>
-                            {%- for f in form -%}
-                                {%- if loop.first  %}{{ f }}
-                                    {% if loop.length > 1 -%}<a class="extraexpand" href="#"><span class="label extralabel">+</span></a>{%- endif -%}
-                                {%- endif -%}
-                            {%- endfor -%} 
-                            <span class="extra_forms" id="extras">
-                                {%- for f in form -%}
-                                    {%- if not loop.first %}{{ f }} {% endif -%}
-                                {%- endfor -%}
-                            </span>
-                            {% if loop.first and context %} ({{ context }}){% endif %}
-                        </dd>
-                        {% else %}
-                            <dd>?</dd>
-                        {% endif %}
-                    {%- endfor -%}
-                    </dl>
+                {# This is the non-mobile version, otherwise we display it below #}
+                {% set context = lexeme.entries.lookups[0].lemma_context %}
+                {% if lexeme.paradigms %}
+                    <div class="pull-left hidden-desktop hidden-tablet">
+                        {% include 'detail_paradigm_dl.html' %}
+                    </div>
                 {% endif %}
             </div>
+
+
         {% endif %}
     </div>
     {% endfor %}

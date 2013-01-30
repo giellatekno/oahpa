@@ -1,0 +1,27 @@
+<dl class="dl-horizontal miniparadigm">
+{%- for lemma, tag, form in lexeme.paradigms -%}
+
+    {% if tag %}
+        <dt>{{ ' '.join(tag)|tagfilter(_from)  }}</dt>
+    {% endif %}
+
+    {% if form %}
+    <dd>
+        {%- for f in form -%}
+            {%- if loop.first  %}{{ f }}
+                {% if loop.length > 1 -%}<a class="extraexpand" href="#"><span class="label extralabel">+</span></a>{%- endif -%}
+            {%- endif -%}
+        {%- endfor -%} 
+        <span class="extra_forms" id="extras">
+            {%- for f in form -%}
+                {%- if not loop.first %}{{ f }} {% endif -%}
+            {%- endfor -%}
+        </span>
+        {% if loop.first and context %} ({{ context }}){% endif %}
+    </dd>
+    {% else %}
+        <dd>?</dd>
+    {% endif %}
+{%- endfor -%}
+</dl>
+
