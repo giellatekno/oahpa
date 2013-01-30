@@ -358,7 +358,7 @@ class Morphology(object):
                 else:
                     decompounded = sum(map(self.tool.splitTagByCompound, analyses), [])
                 if no_derivations:
-                    has_non_derivation = filter(remove_derivations, decompounded)
+                    has_non_derivation = filter(remove_derivations, analyses)
                     if len(has_non_derivation) > 0:
                         decompounded = has_non_derivation
                 for analysis in decompounded:

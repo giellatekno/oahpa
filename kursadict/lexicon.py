@@ -44,6 +44,9 @@ class XMLDict(object):
         l = e.find('lg/l')
         left_text = l.text
         left_pos = l.get('pos')
+        left_context = l.get('context')
+        if left_context == None:
+        	left_context = False
         ts = e.findall('mg/tg/t')
         right_text = [t.text for t in ts]
         _right_langs = [t.getparent().xpath('@xml:lang') for t in ts]
@@ -58,6 +61,7 @@ class XMLDict(object):
             right_langs = []
 
         return { 'left': left_text
+               , 'context': left_context
                , 'pos': left_pos
                , 'right': right_text
                , 'lang': right_langs
@@ -90,6 +94,10 @@ class FrontPageFormat(XMLDict):
         left_text = l.text
         left_pos = l.get('pos')
         tgs = e.findall('mg/tg')
+
+        left_context = l.get('context')
+        if left_context == None:
+        	left_context = False
 
         right_nodes = []
         for tg in tgs:
@@ -151,6 +159,7 @@ class FrontPageFormat(XMLDict):
             right_langs = []
 
         return { 'left': left_text
+               , 'context': left_context
                , 'pos': left_pos
                , 'right': right_nodes
                , 'lang': right_langs
@@ -159,6 +168,11 @@ class FrontPageFormat(XMLDict):
 class DetailedEntries(XMLDict):
     def cleanEntry(self, e):
         l = e.find('lg/l')
+
+        left_context = l.get('context')
+        if left_context == None:
+        	left_context = False
+
         mg = e.findall('mg')
 
         def orFalse(l):
@@ -198,9 +212,13 @@ class DetailedEntries(XMLDict):
                 }
             )
 
+        left_context = l.get('context')
+        if left_context == None:
+        	left_context = False
+
         return { 'lemma': l.text
+               , 'lemma_context': left_context
                , 'pos': l.get('pos')
-               , 'context': l.get('context')
                , 'meaningGroups': meaningGroups
                , 'type': l.get('type')
                }

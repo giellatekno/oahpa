@@ -31,7 +31,11 @@
             {% for grouper, forms in result.analyses|groupby(0) %}
                 {% for lemma, pos, tag in forms %}
                 <dt>{{ lemma }}</dt>
-                <dd><ul class="possible_forms"><li>{{ tag|tagfilter(_from) }}</li></ul></dd>
+                <dd>
+                    <ul class="possible_forms">
+                        <li>{{ tag|tagfilter(_from) }}</li>
+                    </ul>
+                </dd>
                 {% endfor %}
             {% endfor %}
         </dl>
@@ -104,6 +108,7 @@
             </div>
 
             <div class="span4">
+                {% set context = lexeme.entries.lookups[0].lemma_context %}
                 {% if lexeme.paradigms %}
                     <dl class="dl-horizontal miniparadigm">
                     {%- for lemma, tag, form in lexeme.paradigms -%}
@@ -112,20 +117,23 @@
                             <dt>{{ ' '.join(tag)|tagfilter(_from)  }}</dt>
                         {% endif %}
 
-                        {# TODO: bootstrap accordian #}
                         {% if form %}
                         <dd>
-                        {%- for f in form -%}{%- if loop.first %}{{ f }} {% if loop.length > 1 -%}<a class="extraexpand" href="#"><span class="label extralabel">+</span></a>{%- endif -%}{%- endif -%}{%- endfor -%}
-                            <span class="extra_forms" id="extras">
                             {%- for f in form -%}
-                            {%- if not loop.first %}{{ f }} {% endif -%}
-                            {%- endfor -%}
+                                {%- if loop.first  %}{{ f }}
+                                    {% if loop.length > 1 -%}<a class="extraexpand" href="#"><span class="label extralabel">+</span></a>{%- endif -%}
+                                {%- endif -%}
+                            {%- endfor -%} 
+                            <span class="extra_forms" id="extras">
+                                {%- for f in form -%}
+                                    {%- if not loop.first %}{{ f }} {% endif -%}
+                                {%- endfor -%}
                             </span>
+                            {% if loop.first and context %} ({{ context }}){% endif %}
                         </dd>
                         {% else %}
                             <dd>?</dd>
                         {% endif %}
-
                     {%- endfor -%}
                     </dl>
                 {% endif %}
