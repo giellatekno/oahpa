@@ -345,45 +345,35 @@ class Morphology(object):
             else:
                 return True
 
+        def maybe_filter(function, iterable):
+            result = filter(function, iterable)
+            if len(result) > 0:
+                return result
+            else:
+                return iterable
+
 
         lookups = self.tool.lookup([form])
 
-        if split_compounds:
-            lemmas = []
-            for _form, analyses in lookups:
+        lemmas = set()
 
-                if non_compound_only:
-                    has_non_compound = filter(remove_compound_analyses, analyses)
-                    if len(has_non_compound) > 0:
-                        analyses = decompounded = has_non_compound
-                else:
-                    decompounded = sum(map(self.tool.splitTagByCompound, analyses), [])
+        for _form, analyses in lookups:
 
-                if no_derivations:
-                    has_non_derivation = filter(remove_derivations, analyses)
-                    if len(has_non_derivation) > 0:
-                        decompounded = has_non_derivation
+            if non_compound_only:
+                analyses = maybe_filter(remove_compound_analyses, analyses)
 
-                for analysis in decompounded:
-                    _lem = self.tool.splitAnalysis(analysis)[0]
-                    if _lem not in lemmas:
-                        lemmas.append(_lem)
-        else:
-            lemmas = set()
-            for _form, analyses in lookups:
-                if non_compound_only:
-                    has_non_compound = filter(remove_compound_analyses, analyses)
-                    if len(has_non_compound) > 0:
-                        analyses = has_non_compound
-                if no_derivations:
-                    has_non_derivation = filter(remove_derivations, analyses)
-                    if len(has_non_derivation) > 0:
-                        analyses = has_non_derivation
-                for analysis in analyses:
-                    lemmas.add(self.tool.splitAnalysis(analysis)[0])
-            lemmas = list(lemmas)
+            if no_derivations:
+                analyses = maybe_filter(remove_derivations, analyses)
 
-        return lemmas
+            if split_compounds:
+                analyses = sum( map(self.tool.splitTagByCompound, analyses)
+                              , []
+                              )
+
+            for analysis in analyses:
+                lemmas.add(self.tool.splitAnalysis(analysis)[0])
+
+        return list(lemmas)
 
     def analyze(self, form, split_compounds=False):
         """ For a wordform, return a list of lemmas and analyses
@@ -482,15 +472,22 @@ def sme_compound_test():
                        , non_compound_only=True
                        )
 
-    print "Split compounds"
+    print "Strip compounds"
     print sme.lemmatize( u'báhčinsearvi'
                        , non_compound_only=True
                        )
 
-    print "Strip compounds"
+    print "Split compounds"
     print sme.lemmatize( u'báhčinsearvi'
                        , split_compounds=True
                        )
+    
+    print sme.lemmatize( u'boazodoallošiehtadallanlávdegotti'
+                       , split_compounds=True
+                       , non_compound_only=True
+                       , no_derivations=True
+                       )
+
 def examples():
     # TODO: make this into tests
 
