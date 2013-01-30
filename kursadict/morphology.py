@@ -351,16 +351,19 @@ class Morphology(object):
         if split_compounds:
             lemmas = []
             for _form, analyses in lookups:
+
                 if non_compound_only:
                     has_non_compound = filter(remove_compound_analyses, analyses)
                     if len(has_non_compound) > 0:
-                        decompounded = has_non_compound
+                        analyses = decompounded = has_non_compound
                 else:
                     decompounded = sum(map(self.tool.splitTagByCompound, analyses), [])
+
                 if no_derivations:
                     has_non_derivation = filter(remove_derivations, analyses)
                     if len(has_non_derivation) > 0:
                         decompounded = has_non_derivation
+
                 for analysis in decompounded:
                     _lem = self.tool.splitAnalysis(analysis)[0]
                     if _lem not in lemmas:
@@ -453,7 +456,41 @@ def sme_test():
 
     return sme
 
+def sme_compound_test():
+    # TODO: make UnitTests out of these.
+    sme = sme_test()
 
+    print "No options"
+    print sme.lemmatize(u'báhčinsearvi')
+
+    print "Strip derivation, compounds, but also split compounds"
+    print sme.lemmatize( u'báhčinsearvi'
+                       , split_compounds=True
+                       , non_compound_only=True
+                       , no_derivations=True
+                       )
+
+    print "Strip derivation, but also split compounds"
+    print sme.lemmatize( u'báhčinsearvi'
+                       , split_compounds=True
+                       , no_derivations=True
+                       )
+
+    print "Strip compounds, but also split compounds"
+    print sme.lemmatize( u'báhčinsearvi'
+                       , split_compounds=True
+                       , non_compound_only=True
+                       )
+
+    print "Split compounds"
+    print sme.lemmatize( u'báhčinsearvi'
+                       , non_compound_only=True
+                       )
+
+    print "Strip compounds"
+    print sme.lemmatize( u'báhčinsearvi'
+                       , split_compounds=True
+                       )
 def examples():
     # TODO: make this into tests
 
@@ -545,5 +582,7 @@ def tag_examples():
 
 if __name__ == "__main__":
     # examples()
-    tag_examples()
+    # tag_examples()
+    sme_compound_test()
+
 
