@@ -112,7 +112,7 @@ def tagfilter(s, lang_iso):
     if filters:
         filtered = []
         for part in s.split(' '):
-            filtered.append(filters.get(part, part))
+            filtered.append(filters.get(part.lower(), part))
         return ' '.join(filtered)
     else:
         return s
