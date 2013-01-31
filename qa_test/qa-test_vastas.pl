@@ -23,7 +23,6 @@ my $twig = XML::Twig->new();
 
 my $s = '^'.$mode;
 
-#my $lon = 'lookup -flags mbTT -utf8 ~/gtsvn/gt/sme/bin/sme-norm.fst';
 my $lon = 'lookup -flags mbTT -utf8 ~/errortag-gt/gt/sme/bin/ped-sme.fst';
 my $tmp_file = "tmp_data.txt";
 my $out_file = "final_data.txt";
@@ -55,7 +54,7 @@ foreach my $test ($root->children('test')){
 	  s/^(\s+\"\^vastas\"\s+)(\?.*)$/$1$i/;
 	  print TMPFILE;
 	  foreach my $l ($r->children('l')){
-	    print TMPFILE "         \"$l->{'att'}->{'base'}\" $l->{'att'}->{'pos'}\n";
+	    print TMPFILE "\t \"$l->{'att'}->{'base'}\" $l->{'att'}->{'pos'}\n";
 	  }
 	}
       }
@@ -68,7 +67,7 @@ foreach my $test ($root->children('test')){
   print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n";
 }
 
- my $command2 = "cat $tmp_file | vislcg3 -g ../sme/src/sme-ped.cg3 --trace |" ;
+ my $command2 = "cat $tmp_file | vislcg3 -g ../sme/src/sme-ped.cg3  |" ;
 
  #    print "$command2\n";
 
