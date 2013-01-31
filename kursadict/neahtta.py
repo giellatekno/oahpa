@@ -324,7 +324,7 @@ def wordDetail(from_language, to_language, wordform, format):
     if not format in ['json', 'html']:
         return "Invalid format. Only json and html allowed."
 
-    wordform = wordform.encode('utf-8')
+    wordform = decodeOrFail(wordform)
 
     # NOTE: these options are mostly for detail views that are linked to
     # from the initial page's search. Everything should work without
@@ -341,7 +341,7 @@ def wordDetail(from_language, to_language, wordform, format):
     cache_key =  _pattern % \
                 ( from_language
                 , to_language
-                , wordform.decode('utf-8')
+                , wordform
                 , format
                 , pos_filter
                 , no_compounds
@@ -404,13 +404,37 @@ def wordDetail(from_language, to_language, wordform, format):
         if lemma_match:
             _result_formOf = [ (lem, pos, tag)
                                for lem, pos, tag in _result_formOf
-                               if lem == wordform.decode('utf-8') ]
+                               if lem == wordform ]
 
         if pos_filter:
             _result_formOf = [ (lem, pos, tag)
                                for lem, pos, tag in _result_formOf
                                if pos.upper() == pos_filter.upper() ]
+        
+        # This is to lookup words that are done when user clicks on link
+        # on front page, thus containing pos_filter
+        if wordform and pos_filter:
+            xml_result = app.config.lexicon.detailedLookup( from_language
+                                                          , to_language
+                                                          , wordform
+                                                          , pos_filter
+                                                          , False
+                                                          )
+            if xml_result:
+                res = {'lookups': xml_result}
+            else:
+                res = False
 
+            # see #lexicalized
+            print type(wordform)
+            print repr(wordform)
+            _result_lookups.append({
+                'entries': res,
+                'input': (wordform, pos_filter, 'LEXICALIZED', False)
+            })
+
+        # TODO: bare lookup of word startswith if there is no
+        # pos_filter, lemma_match, or no_compounds
 
         for lemma, pos, tag in _result_formOf:
 
@@ -452,7 +476,7 @@ def wordDetail(from_language, to_language, wordform, format):
         detailed_result = {
             "analyses": _result_formOf,
             "lexicon": _result_lookups,
-            "input": wordform.decode('utf-8'),
+            "input": wordform,
         }
 
         # TODO: ideally the things here need to be going to an external
@@ -478,6 +502,9 @@ def wordDetail(from_language, to_language, wordform, format):
         for _r in _result_lookups:
             lemma, pos, tag, _type = _r.get('input')
             paradigm = lang_paradigms.get(pos)
+            # See: #lexicalized
+            if tag == 'LEXICALIZED':
+                continue
             if tag in lang_baseforms.get(pos):
                 if paradigm:
                     _pos_type = [pos]
@@ -527,12 +554,13 @@ def wordDetail(from_language, to_language, wordform, format):
         tx_set = '-'
 
     user_log.info('%s\t%s\t%s\t%s\t%s\t%s' % ( user_input
-                                               , str(success)
-                                               , ', '.join(result_lemmas)
-                                               , tx_set
-                                               , from_language
-                                               , to_language)
-                                               )
+                                             , str(success)
+                                             , ', '.join(result_lemmas)
+                                             , tx_set
+                                             , from_language
+                                             , to_language
+                                             )
+                 )
 
     if format == 'json':
         result = json.dumps({
