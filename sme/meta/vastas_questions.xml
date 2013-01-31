@@ -1758,6 +1758,90 @@
       </element>
     </answer>
   </q> 
+  <q level="2" lemmacount="3" id="1_PrtSg1_Verb_Attr_Acc">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Mannet go heajaide ikte</text>
+    </question>
+    <answer> 
+      <text>De mannen, ja VERB ADJ NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>coggat</id>
+      </element>
+      <element id="ADJ" task="yes">
+        <grammar tag="A+Sg+Nom"/>
+        <sem class="COLOUR"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mPARTY_CLOTHING"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="3" id="1_PrtSg3_Verb_Attr_Acc">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Manai go PERSON heajaide ikte</text>
+      <element id="PERSON">
+        <grammar tag="N+Prop+Sg+Nom"/>
+        <sem class="mFEM"/>
+      </element>
+    </question>
+    <answer> 
+      <text>De manai, ja VERB ADJ NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>coggat</id>
+      </element>
+      <element id="ADJ" task="yes">
+        <grammar tag="A+Sg+Nom"/>
+        <sem class="COLOUR"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mPARTY_CLOTHING"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="3" id="1_PrtSg1_Verb_Acc_Ess">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Maid don barget mannan geasi</text>
+    </question>
+    <answer> 
+      <text>Mun VERB NOUN ADJ</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <id>málet</id>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="mPRIV_BUILDING"/>
+      </element>
+      <element id="ADJ" task="yes">
+        <grammar tag="A+Sg+Nom"/>
+        <sem class="COLOUR"/>
+      </element>
+    </answer>
+  </q> 
+  <q level="2" lemmacount="2" id="1_PrtSg1_Verb_Acc">
+    <qtype>PRT</qtype>
+   <question>
+      <text>Maid don barget mannan vahkus</text>
+    </question>
+    <answer> 
+      <text>Mun VERB olles NOUN</text>
+      <element id="VERB" task="yes">
+        <grammar tag="V+Inf"/>
+        <sem class="mACTIVITY"/>
+      </element>
+      <element id="NOUN" task="yes">
+        <grammar tag="N+Sg+Nom"/>
+        <sem class="WEEKDAY"/>
+      </element>
+    </answer>
+  </q> 
 
 </questions>
 
