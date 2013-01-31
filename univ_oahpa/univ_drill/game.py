@@ -469,7 +469,7 @@ class BareGame(Game):
 							sylls.append('Csyll')
 
 					random_form = random_form.filter(word__stem__in=sylls)
-
+					
 			# If there are forms left, we select one 
 			if random_form.count() > 0:
 				no_forms = False
@@ -699,7 +699,7 @@ class BareGame(Game):
 			if pos == 'N':
 				TAG_QUERY = TAG_QUERY & \
 							Q(possessive="") & \
-							Q(number__in=number)
+							Q(number__in=number) # exclude possessive forms
 
 			# 'Pers' subclass for pronouns, otherwise none.
 			# TODO: combine all subclasses so forms can be fetched
@@ -973,6 +973,8 @@ class BareGame(Game):
 			bfs = form.getBaseform(match_num=match_number, return_all=True)
 
 			excluded = bfs.exclude(dialects__dialect='NG')  # added by Heli
+			if pos == 'N':
+			     excluded = excluded.exclude(tag__string__icontains="Px")  # added to avoid possessive forms N+Sg+Nom+PxSg1 as base forms
 			if excluded.count() == 0:
 				excluded = bfs
 			#print excluded	
