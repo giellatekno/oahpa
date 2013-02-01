@@ -891,11 +891,12 @@ def indexWithLangs(_from, _to):
             _new_ls = []
             for _l in _ls:
                 _left = _l.get('left')
-                if _left in _txks:
+                _l_pos = _l.get('pos')
+                if (_left, _l_pos) in _txks:
                     continue
                 else:
                     _new_ls.append(_l)
-                    _txks.append(_left)
+                    _txks.append((_left, _l_pos))
             l['lookups'] = _new_ls
             return l
 
