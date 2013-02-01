@@ -114,6 +114,8 @@ user_log.setLevel("INFO")
 
 @app.template_filter('tagfilter')
 def tagfilter(s, lang_iso):
+    if not s:
+        return s
     filters = app.config.tag_filters.get(lang_iso, False)
     if filters:
         filtered = []
@@ -453,9 +455,29 @@ def wordDetail(from_language, to_language, wordform, format):
                 'entries': res,
                 'input': (wordform, pos_filter, 'LEXICALIZED', False)
             })
+        elif (not pos_filter):
+            xml_result = app.config.lexicon.detailedLookup( from_language
+                                                          , to_language
+                                                          , wordform
+                                                          , False
+                                                          , False
+                                                          )
+            if xml_result:
+                res = {'lookups': xml_result}
+            else:
+                res = False
 
-        # TODO: bare lookup of word startswith if there is no
-        # pos_filter, lemma_match, or no_compounds
+            # no POS was given in the input, so we grab it from the
+            # lookups
+            pos_attempts = list(set([r.get('pos') for r in xml_result]))
+            if len(pos_attempts) == 1:
+                pos_filter = pos_attempts[0]
+
+            # see #lexicalized
+            _result_lookups.append({
+                'entries': res,
+                'input': (wordform, pos_filter, 'LEXICALIZED', False)
+            })
 
         for lemma, pos, tag in _result_formOf:
 

@@ -341,7 +341,7 @@ class Lexicon(object):
         self.autocomplete_tries = autocomplete_tries
 
 
-    def detailedLookup(self, _from, _to, lookup, pos, _type=False):
+    def detailedLookup(self, _from, _to, lookup, pos=False, _type=False):
         lexicon = self.language_pairs.get((_from, _to), False)
         if not lexicon:
             raise Exception("Undefined language pair %s %s" % (_from, _to))
@@ -354,7 +354,11 @@ class Lexicon(object):
                 args.append(_type)
                 lookupfunc = detailed_tree.lookupLemmaPOSAndType
         else:
-            lookupfunc = detailed_tree.lookupLemmaPOS
+            if pos:
+                lookupfunc = detailed_tree.lookupLemmaPOS
+            else:
+                lookupfunc = detailed_tree.lookupLemma
+                args = [args[0]]
 
         return lookupfunc(*args)
 
