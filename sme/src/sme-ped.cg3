@@ -838,7 +838,7 @@ LIST TIMEOBJECT-V = "addit" "atnit" "árvalit" "bálvalit"  "čuovvut" "deavdit"
 
     # might take time as an object
     
-LIST DURATION-V = "ádjánit" "ássat" "bistit" "orrut" ;
+LIST DURATION-V = "ádjánit" "ássat" "bistit" "orrut" "váccašit" ;
 
 LIST DADJAT = "dadjat" "lohkat" "muitalit" ;
 # This set is for  cealkkavástta: DADJAT + Acc + Inf or PrfPrc
@@ -5791,8 +5791,8 @@ MAP (&grm-should-Plur) TARGET (Plant Sg Acc) OR ("lieđđi" Sg Acc) IF (*-1 ("č
 
 
 # Acc when time
-MAP (&grm-should-Acc-time) TARGET Nom IF (*-1 V-TRANS-ACT-NOT-ACT OR DURATION-V BARRIER NPNH LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(0 TIME)(NEGATE *-1 ACCEPT-EVERYTHING);
-MAP (&grm-should-Acc-time) TARGET Nom IF (*-1 V-TRANS-ACT-NOT-ACT OR DURATION-V BARRIER NPNH LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(0 Num LINK 1 TIME)(NEGATE *-1 ACCEPT-EVERYTHING);
+MAP (&grm-should-Acc-time) TARGET TIME + Nom IF (*-1 VERB OR DURATION-V BARRIER NPNH LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(0 TIME)(NEGATE *-1 ACCEPT-EVERYTHING);
+MAP (&grm-should-Acc-time) TARGET (Num Nom) IF (*-1 VERB OR DURATION-V BARRIER NPNH LINK -1 NP-HEAD + Nom LINK *-1 QDL BARRIER S-BOUNDARY)(0 Num LINK 1 TIME)(NEGATE *-1 ACCEPT-EVERYTHING);
 
 
 MAP (&grm-Hab) TARGET NP-HEAD (NOT 0 Loc)(-1 QDL LINK -1 Nom LINK -1 NP-HEAD + Loc LINK -1 go)(NEGATE *-1 ACCEPT-EVERYTHING);
