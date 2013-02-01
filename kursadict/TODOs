@@ -1,7 +1,21 @@
 ## Commits
 
+ * adding tags to lookup plugin endpoint (need to rebuild JS)
+ * fix tagfilter so no additional spaces end up when tag is filtered to null
+
 
 ## Next: 
+
+ * translation strings: there are some small tricky areas, namely translation
+   of language names. May need to somehow force these to be included somehow
+   if there is no yaml string extractor
+
+   	   http://babel.edgewall.org/wiki/Documentation/setup.html
+
+   maybe need to write custom extractor and yaml flag in config
+   	   http://babel.edgewall.org/wiki/Documentation/messages.html
+
+ * rebuild js to include analyses.
 
  * báffa - N in FST, pos="a" in lexicon
    vuollásaš - detail, not generating

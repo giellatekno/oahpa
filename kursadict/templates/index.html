@@ -119,10 +119,13 @@ $(document).ready( function() {
                                {% if user_input -%}value="{{ user_input }}"{% endif %}
                                placeholder="ohcansátni"></input>
                                <button type="submit" class="btn" name="search">
+                                   <span>{% trans %}Search{% endtrans %}</span>
+                                   {# 
                                    <span class="i18n" lang="sme">Oza</span>
                                    <span class="i18n" lang="nob">Søk</span>
                                    <span class="i18n" lang="fin">Hae</span>
                                    <span class="i18n" lang="eng">Search</span>
+                                   #}
                                </button>
                     </div>
                 </form>
@@ -182,7 +185,7 @@ $(document).ready( function() {
                             <div class="span4">
                                 {%- if analyses %}
                                 <div class="well">
-                                    <p style="font-size: 95%;"><em>{{ user_input }}</em> is a possible form of ... </p>
+                                    <p style="font-size: 95%;"><em>{{ user_input }}</em>{% trans user_input=user_input %} is a possible form of ... {% endtrans %}</p>
                                     <dl class="possible_analyses">
                                         {% for grouper, forms in analyses|groupby(0) %}
                                             {% for form, lemma, tag in forms %}

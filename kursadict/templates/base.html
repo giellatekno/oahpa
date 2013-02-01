@@ -67,24 +67,15 @@
                         <div class="nav-collapse main-nav">
                             <ul class="nav">
                                 <li><a href="/">
-                                        <span class="i18n" lang="sme">Home</span>
-                                        <span class="i18n" lang="nob">Home</span>
-                                        <span class="i18n" lang="fin">Home</span>
-                                        <span class="i18n" lang="eng">Home</span>
+                                        <span>{% trans %}Home{% endtrans %}</span>
                                 </a></li>
                                 <li>
                                     <a href="/read/">
-                                        <span class="i18n" lang="sme">Plugins</span>
-                                        <span class="i18n" lang="nob">Plugins</span>
-                                        <span class="i18n" lang="fin">Plugins</span>
-                                        <span class="i18n" lang="eng">Plugins</span>
+                                        <span>{% trans %}Plugins{% endtrans %}</span>
                                     </a>
                                 </li>
                                 <li><a href="/about/">
-                                        <span class="i18n" lang="sme">About</span>
-                                        <span class="i18n" lang="nob">About</span>
-                                        <span class="i18n" lang="fin">About</span>
-                                        <span class="i18n" lang="eng">About</span>
+                                        <span>{% trans %}About{% endtrans %}</span>
                                 </a></li>
                                 {% block extra_nav %}
                                 {% endblock %}
@@ -101,10 +92,11 @@
                     <a class="dropdown-toggle"
                        data-toggle="dropdown"
                        href="#">
-                        Language
+                            {% trans %}Language{% endtrans %}
                         <b class="caret"></b>
                       </a>
                     <ul class="dropdown-menu">
+                        {# TODO: language select #}
                         <li><a class="lang" href="#" data-lang="sme">sme</a></li>
                         <li><a class="lang" href="#" data-lang="nob">nob</a></li>
                         <li><a class="lang" href="#" data-lang="fin">fin</a></li>
@@ -153,10 +145,7 @@
                     </div>
                     <div class="span4">
                         <p class="lead">
-                            <span class="i18n" lang="sme">i18n TODO: Created with free and open-source language tools from <em><a href="http://giellatekno.uit.no">Giellatekno</a></em>, a Sámi Language Technology group at the <a href="http://uit.no">University of Tromsø</a>.</span>
-                            <span class="i18n" lang="nob">i18n TODO: Created with free and open-source language tools from <em><a href="http://giellatekno.uit.no">Giellatekno</a></em>, a Sámi Language Technology group at the <a href="http://uit.no">University of Tromsø</a>.</span>
-                            <span class="i18n" lang="fin">i18n TODO: Created with free and open-source language tools from <em><a href="http://giellatekno.uit.no">Giellatekno</a></em>, a Sámi Language Technology group at the <a href="http://uit.no">University of Tromsø</a>.</span>
-                            <span class="i18n" lang="eng">Created with free and open-source language tools from <em><a href="http://giellatekno.uit.no">Giellatekno</a></em>, a Sámi Language Technology group at the <a href="http://uit.no">University of Tromsø</a>.</span>
+                            <span>{% trans %}Created with free and open-source language tools from <em><a href="http://giellatekno.uit.no">Giellatekno</a></em>, a Sámi Language Technology group at the <a href="http://uit.no">University of Tromsø</a>.{% endtrans %}</span>
                         </p>
                     </div>
                 </div>

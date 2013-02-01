@@ -26,7 +26,7 @@
 {% block float_right %}
     {%- if result.analyses %}
     <div class="well">
-        <strong>{{ result.input }} is a possible form of ... </strong>
+        <strong>{{ result.input }} {% trans %}is a possible form of ... {% endtrans %}</strong>
         <dl class="possible_analyses">
             {% for grouper, forms in result.analyses|groupby(0) %}
                 {% for lemma, pos, tag in forms %}
@@ -58,6 +58,7 @@
                <ul class="dropdown-menu" id="langpairs" role="menu"
                    data-for="target_lang">
 
+                {# TODO: i18n #}
                 {# TODO: dropdown select to language pair for form submit #}
                 {% for iso_pair, names in language_pairs.iteritems() %}
                  <li class="selected{%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}"><a tabindex="-1" href="#"
@@ -74,10 +75,7 @@
                     placeholder="{{ user_input }}"></input>
              <div class="btn-group">
                <button type="submit" class="btn" name="search">
-                   <span class="i18n" lang="sme">Oza</span>
-                   <span class="i18n" lang="nob">Søk</span>
-                   <span class="i18n" lang="fin">Hae</span>
-                   <span class="i18n" lang="eng">Search</span>
+                   <span>{% trans %}Search{% endtrans %}</span>
                </button>
              </div>
            </div>
@@ -130,7 +128,7 @@
     {% if more_detail_link %}
         <p>
             <a href="/detail/{{ _from }}/{{ _to }}/{{ user_input }}.html">
-                <span class="i18n" lang="nob">Vil du se mer informasjon om ordet?</span>
+                <span>{% trans %}More information about this word{% endtrans %}</span>
             </a>
         </p>
     {% endif %}
