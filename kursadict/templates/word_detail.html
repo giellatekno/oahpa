@@ -29,14 +29,14 @@
         <strong>{{ result.input }} {% trans %}is a possible form of ... {% endtrans %}</strong>
         <dl class="possible_analyses">
             {% for grouper, forms in result.analyses|groupby(0) %}
-                {% for lemma, pos, tag in forms %}
-                <dt>{{ lemma }}</dt>
+                <dt>{{ grouper }}</dt>
                 <dd>
                     <ul class="possible_forms">
+                {% for lemma, pos, tag in forms %}
                         <li>{{ tag|tagfilter(_from) }}</li>
+                {% endfor %}
                     </ul>
                 </dd>
-                {% endfor %}
             {% endfor %}
         </dl>
     </div>
