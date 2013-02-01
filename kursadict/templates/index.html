@@ -164,10 +164,13 @@ $(document).ready( function() {
                                     </div>
                                 {% else %}
                                     <p>
-                                        <span class="i18n" lang="nob">Ukjent ord:</span>
+                                        {#
+                                        <span class="i18n" lang="nob">{% trans %}Ukjent ord:{% trans %}</span>
                                         <span class="i18n" lang="sme">Amas sátni:</span>
                                         <span class="i18n" lang="fin">Tietämätön sana:</span>
                                         <span class="i18n" lang="nob">Unknown word:</span>
+                                        #}
+                                        <span>{% trans %}Unknown word:{% endtrans %}</span>
                                         {{ lexeme.input }}
                                     </p>
                                 {% endif %}
@@ -199,10 +202,13 @@ $(document).ready( function() {
                     {% if not show_info %}
                     <div class="alert alert-error">
                         <p>
+                            <span>{% trans input=user_input %}Word {{ input }} not found.{% endtrans %}</span>
+                            {# 
                             <span class="i18n" lang="nob">Ord {{ user_input }} ikke funnet.</span>
                             <span class="i18n" lang="fin">Sana {{ user_input }} ei löytynyt.</span>
                             <span class="i18n" lang="eng">Word {{ user_input }} not found.</span>
                             <span class="i18n" lang="sme">Sátni {{ user_input }} ii gávdnon.</span>
+                            #}
                         </p>
                     </div>
                     {% endif %}
@@ -210,10 +216,12 @@ $(document).ready( function() {
                 {% if show_info %}
                     <div class="alert alert-success">
                         <p>
+                            <span>{% trans %}Search for a word, or a word form for a word analysis and definition.{% endtrans %}</span>
+                            {# 
                             <span class="i18n" lang="nob">Søk etter et ord, eller ordform for å få analyse og betydning.</span>
                             <span class="i18n" lang="fin">Kirjoita sana, eli sananmuoto saadakseen analyyseja ja tarkoitukseja.</span>
-                            <span class="i18n" lang="eng">Search for a word, or a word form for a word analysis and definition.</span>
                             <span class="i18n" lang="sme">i18n: Søk etter et ord, eller ordform for å få analyse og betydning.</span>
+                            #}
                         </p>
                     </div>
                 {% endif %}
