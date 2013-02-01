@@ -395,6 +395,16 @@ VASTA_LEVELS = (
 	('3', _('Third level')),
 )
 
+VASTAS_LEVELS = (
+	('1', _('Level 1')),
+	('2', _('Level 2')),
+	('3', _('Level 3')),
+	('12', _('Level 1-2')),
+	('13', _('Level 1-3')),
+	#('all', _('All')),
+)
+
+
 VASTAS_NR_OF_TASKWORDS = (
 	('2', _('2')),
 	('3', _('3')),
@@ -542,6 +552,7 @@ ALL_CHOICES = [
 	SYLLABLE_VALUES,
 	TRANS_CHOICES, 
 	VASTA_LEVELS,
+	VASTAS_LEVELS,
 	VASTAS_NR_OF_TASKWORDS, 
 	VERB_CLASSES,
 	VTYPE_CHOICES, 
@@ -2877,7 +2888,7 @@ def cealkka_is_correct(self,question,qwords,awords,language,question_id=None):  
 class CealkkaSettings(OahpaSettings):
 
 	book = forms.ChoiceField(initial='all', choices=BOOK_CHOICES, widget=forms.Select)
-	level = forms.ChoiceField(initial='1', choices=VASTA_LEVELS, widget=forms.Select)
+	level = forms.ChoiceField(initial='13', choices=VASTAS_LEVELS, widget=forms.Select)
 	lemmacount = forms.ChoiceField(initial='2', choices=VASTAS_NR_OF_TASKWORDS, widget=forms.Select)
 
 	def __init__(self, *args, **kwargs):
