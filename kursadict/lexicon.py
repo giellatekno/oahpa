@@ -46,9 +46,58 @@ class XMLDict(object):
         left_pos = l.get('pos')
         left_context = l.get('context')
         if left_context == None:
-        	left_context = False
+            left_context = False
+
         ts = e.findall('mg/tg/t')
-        right_text = [t.text for t in ts]
+        tgs = e.findall('mg/tg')
+        # right_text = [t.text for t in ts]
+        right_text = []
+
+        for tg in tgs:
+            text = False
+            re = tg.find('re')
+            te = tg.find('te')
+            tf = tg.find('tf')
+
+            _ex = [ (xg.find('x').text, xg.find('xt').text)
+                    for xg in tg.findall('xg') ]
+
+            if len(_ex) == 0:
+                _ex = False
+
+            if te is not None:      te = te.text
+            else:                   te = ''
+
+            if re is not None:      re = re.text
+            else:                   re = ''
+
+            if tf is not None:      tf = tf.text
+            else:                   tf = ''
+
+            tx = tg.findall('t')
+
+            link = True
+
+            if (not tx) and (te):
+                text = te
+                te = ''
+                link = False
+            elif (not tx) and (re):
+                text = re
+                re = ''
+                link = False
+            elif (not tx) and (tf):
+                text = tf
+                tf = ''
+                link = False
+            else:
+                if len(tx) > 1:
+                    link = False
+                text = ', '.join([_tx.text for _tx in tx])
+
+            right_text.append(text)
+
+
         _right_langs = [t.getparent().xpath('@xml:lang') for t in ts]
         if _right_langs:
             right_langs = []
@@ -97,7 +146,7 @@ class FrontPageFormat(XMLDict):
 
         left_context = l.get('context')
         if left_context == None:
-        	left_context = False
+            left_context = False
 
         right_nodes = []
         for tg in tgs:
@@ -172,7 +221,7 @@ class DetailedEntries(XMLDict):
 
         left_context = l.get('context')
         if left_context == None:
-        	left_context = False
+            left_context = False
 
         mg = e.findall('mg')
 
@@ -226,7 +275,7 @@ class DetailedEntries(XMLDict):
 
         left_context = l.get('context')
         if left_context == None:
-        	left_context = False
+            left_context = False
 
         return { 'lemma': l.text
                , 'lemma_context': left_context
