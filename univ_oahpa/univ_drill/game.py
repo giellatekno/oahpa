@@ -1039,7 +1039,7 @@ class BareGame(Game):
 			                    .filter(lemma=word.lemma, pos=root_pos)\
 								.annotate(tc=Count('wordtranslation'))\
 								.filter(tc__gt=0)[0]
-			ts = trans_word.translations2(target_key).all()
+			ws = trans_word.translations2(target_key).all()  # was ts
 		elif pos == 'Px':
 			ws = baseform.word.translations2(target_key).all()
 		else:
