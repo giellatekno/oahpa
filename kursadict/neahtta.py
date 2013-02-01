@@ -464,20 +464,20 @@ def wordDetail(from_language, to_language, wordform, format):
                                                           )
             if xml_result:
                 res = {'lookups': xml_result}
+
+                # no POS was given in the input, so we grab it from the
+                # lookups
+                pos_attempts = list(set([r.get('pos') for r in xml_result]))
+                if len(pos_attempts) == 1:
+                    pos_filter = pos_attempts[0]
+
+                # see #lexicalized
+                _result_lookups.append({
+                    'entries': res,
+                    'input': (wordform, pos_filter, 'LEXICALIZED', False)
+                })
             else:
                 res = False
-
-            # no POS was given in the input, so we grab it from the
-            # lookups
-            pos_attempts = list(set([r.get('pos') for r in xml_result]))
-            if len(pos_attempts) == 1:
-                pos_filter = pos_attempts[0]
-
-            # see #lexicalized
-            _result_lookups.append({
-                'entries': res,
-                'input': (wordform, pos_filter, 'LEXICALIZED', False)
-            })
 
         for lemma, pos, tag in _result_formOf:
 
