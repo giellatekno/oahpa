@@ -1,112 +1,110 @@
 ## Commits
 
-
 ## Next: 
 
- * translation strings: there are some small tricky areas, namely translation
-   of language names. May need to somehow force these to be included somehow
-   if there is no yaml string extractor
+ * translation strings: 
 
    	   http://babel.edgewall.org/wiki/Documentation/setup.html
-
-   maybe need to write custom extractor and yaml flag in config
    	   http://babel.edgewall.org/wiki/Documentation/messages.html
    	   http://pyyaml.org/wiki/PyYAMLDocumentation (!!python/unicode, !!python/gettext?)
 
-   custom extractor requires a bit more work than necessary right now, will
-   just sneak language names into .po files via .py file instead of .yaml
+   for now for language names, will sneak them into .po files via .py file instead of .yaml
 
  * rebuild js to include analyses.
 
- * báffa - N in FST, pos="a" in lexicon
-   vuollásaš - detail, not generating
-   http://localhost:5000/detail/sme/nob/vuoll%C3%A1sa%C5%A1.html?no_compounds=true&lemma_match=true&pos_filter=a
-  
- * jahkejuvla, jietnadeapmi - missing lexicalized analysis in sme,
-   present in lexicon
-    - nuoraiddássi
-    - ođasvuorká
-    - problem only on front page, because detail goes through FST first
+ * paradigm documentation here: http://giellatekno.uit.no/doc/dicts/dictionarywork.html
 
- * PoS on <l />
- 
- * These all seem to have a similar issue
-     TODO: pos="cc" - missing detail
-     TODO: pos="cs" - missing detail
-     TODO: pos="i" - missing detail
-     TODO: pos="n" - mismatch between detail and index, jietnadeapmi
-     missing in detail, present in index; index includes search in
-     lexicon, detail only goes via lexicon?
-     TODO: http://localhost:5000/detail/sme/nob/jahkejuvla.html
- 
- * Some other kind of problem:
-     TODO: pos="po" - missing in index, check detail
-       - lahka does not work
-       - luhtte works
-       - lusa works
-     TODO: pos="pr" - index search, but also detail
-       - maŋŋá readings not all present, adv only, has pr and po
-     TODO: pos="prop" - prop missing on detail
-       - Olgoriikadepartemeanta - missing in detail, also note that s.
-       reading does not generate
-     TODO: pos="prsprc"
-       - badjelgeahčči ? what to relabel this as in user interface
+ * paradigm/word stuff
+
+     * see notes from user who is testing, and if any of them change with the
+       following fixes:
+
+     * báffa - N in FST, pos="a" in lexicon
+       vuollásaš - detail, not generating
+       http://localhost:5000/detail/sme/nob/vuoll%C3%A1sa%C5%A1.html?no_compounds=true&lemma_match=true&pos_filter=a
+      
+     * jahkejuvla, jietnadeapmi - missing lexicalized analysis in sme,
+       present in lexicon
+        - nuoraiddássi
+        - ođasvuorká
+        - problem only on front page, because detail goes through FST first
+
+     * PoS on <l />
+     
+     * These all seem to have a similar issue
+         TODO: pos="cc" - missing detail
+         TODO: pos="cs" - missing detail
+         TODO: pos="i" - missing detail
+         TODO: pos="n" - mismatch between detail and index, jietnadeapmi
+         missing in detail, present in index; index includes search in
+         lexicon, detail only goes via lexicon?
+         TODO: http://localhost:5000/detail/sme/nob/jahkejuvla.html
+     
+     * Some other kind of problem:
+         TODO: pos="po" - missing in index, check detail
+           - lahka does not work
+           - luhtte works
+           - lusa works
+         TODO: pos="pr" - index search, but also detail
+           - maŋŋá readings not all present, adv only, has pr and po
+         TODO: pos="prop" - prop missing on detail
+           - Olgoriikadepartemeanta - missing in detail, also note that s.
+           reading does not generate
+         TODO: pos="prsprc"
+           - badjelgeahčči ? what to relabel this as in user interface
 
 
- * boaššohuvvat - missing derived analysis on front page
+     * boaššohuvvat - missing derived analysis on front page
 
- * does this work with following proposed change about compound display? 
-    mánnageahččijuovlaspábbačiekčangilvvus
-    mánnageahčči-juovlaspábbačiekčangilvvus
-    boazodoallobearráigeahččispábbačiekčangilvu
+     * does this work with following proposed change about compound display? 
+        mánnageahččijuovlaspábbačiekčangilvvus
+        mánnageahčči-juovlaspábbačiekčangilvvus
+        boazodoallobearráigeahččispábbačiekčangilvu
 
- * boazodoallošiehtadallanlávdegoddi
+     * boazodoallošiehtadallanlávdegoddi
 
- * group paradigms by lemma to shorten list
+     * group paradigms by lemma to shorten list
 
- * numbers: generating of compound numbers doesn't work currently, guokte
-            works, guoktenuppelohkái doesn't
+     * numbers: generating of compound numbers doesn't work currently, guokte
+                works, guoktenuppelohkái doesn't
 
- * see: email from lene
+     * see: email from lene
 
-   * Manglende informasjon for numeraler - legg til paradigme  - ogso sjekk detailed
+       * Manglende informasjon for numeraler - legg til paradigme  - ogso sjekk detailed
 
-   * Legge til informasjon om morfologi
-   
-       Ved å filtrere analysene slik som i forrige sak, så har man god plass i vinduet til å legge til morfologi (plugin-varianten):
-   
-       boazodoallobearráigehččiid
-       N Pl Acc eller N Pl Gen av boazodoallobearráigeahčči (s.) – reindriftsinspektør
-   
-       !! Context i miniparadigmet
-       I adjektiv-fila er det info om context:
-       {{{
-           <l context="bivttas" pos="a">fiskat</l>
+       * Legge til informasjon om morfologi
        
-           Denne infoen kan brukes slik i miniparadigmet:
-           adj. Attr   		alit (bivttas)     <========
-           adj. Pl Nom  		alihat
-           adj. Comp Attr		alihit
-           adj. Comp Sg Nom 	alihit
-           adj. Superl Sg Nom	aliheamos
-       }}}
-   
-       Også i numeralfila er det context:
-   
-       {{{
-           <l context="gápmagat" pos="num">guokte</l>
-       }}}
-   
-       Den skal vises for plural-fomen i miniparadigmet:
-       guovttit (gápmagat)
+           Ved å filtrere analysene slik som i forrige sak, så har man god plass i vinduet til å legge til morfologi (plugin-varianten):
+       
+           boazodoallobearráigehččiid
+           N Pl Acc eller N Pl Gen av boazodoallobearráigeahčči (s.) – reindriftsinspektør
+       
+           !! Context i miniparadigmet
+           I adjektiv-fila er det info om context:
+           {{{
+               <l context="bivttas" pos="a">fiskat</l>
+           
+               Denne infoen kan brukes slik i miniparadigmet:
+               adj. Attr   		alit (bivttas)     <========
+               adj. Pl Nom  		alihat
+               adj. Comp Attr		alihit
+               adj. Comp Sg Nom 	alihit
+               adj. Superl Sg Nom	aliheamos
+           }}}
+       
+           Også i numeralfila er det context:
+       
+           {{{
+               <l context="gápmagat" pos="num">guokte</l>
+           }}}
+       
+           Den skal vises for plural-fomen i miniparadigmet:
+           guovttit (gápmagat)
 
    
  * google analytics
 
  * facebook modus  -- different fst same dictionary 
-
- * css - ex.) davimus in smenob; padding funny on examples 
- * css - consistency between detailed and list view?
 
  * word test-list - http://giellatekno.uit.no/doc/dicts/checklist.html
 
