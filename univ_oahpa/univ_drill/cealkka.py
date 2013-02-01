@@ -760,13 +760,17 @@ class CealkkaGame(Game):
                  #   lemmacount=int(self.settings['lemmacount'])
                 #else:
                  #   lemmacount=2		
-		q_count = Question.objects.filter(gametype="cealkka", level__lte=level).count()
+
 		if level == 12: 
+			q_count = Question.objects.filter(gametype="cealkka", level__lte=2).count()
 			question = Question.objects.filter(gametype="cealkka", level__lte=2)[randint(0,q_count-1)]  
 		elif level == 13:
+			q_count = Question.objects.filter(gametype="cealkka", level__lte=3).count()
 			question = Question.objects.filter(gametype="cealkka", level__lte=3)[randint(0,q_count-1)]  
 		else:  # level 1, 2 or 3
-			question = Question.objects.filter(gametype="cealkka", level=level)[randint(0,q_count-1)]   # removed lemmacount filter lemmacount=lemmacount
+			q_count = Question.objects.filter(gametype="cealkka", level=level).count()
+			question = Question.objects.filter(gametype="cealkka", level=level)[randint(0,q_count-1)]
+  # removed lemmacount filter lemmacount=lemmacount
 		#print level
 		#print lemmacount 
 		#question = Question.objects.get(id="107")
