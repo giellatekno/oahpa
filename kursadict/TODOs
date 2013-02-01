@@ -1,8 +1,5 @@
 ## Commits
 
- * adding tags to lookup plugin endpoint (need to rebuild JS)
- * fix tagfilter so no additional spaces end up when tag is filtered to null
-
 
 ## Next: 
 
@@ -14,6 +11,10 @@
 
    maybe need to write custom extractor and yaml flag in config
    	   http://babel.edgewall.org/wiki/Documentation/messages.html
+   	   http://pyyaml.org/wiki/PyYAMLDocumentation (!!python/unicode, !!python/gettext?)
+
+   custom extractor requires a bit more work than necessary right now, will
+   just sneak language names into .po files via .py file instead of .yaml
 
  * rebuild js to include analyses.
 
