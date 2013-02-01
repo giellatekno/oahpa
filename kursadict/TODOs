@@ -23,36 +23,9 @@
        vuollásaš - detail, not generating
        http://localhost:5000/detail/sme/nob/vuoll%C3%A1sa%C5%A1.html?no_compounds=true&lemma_match=true&pos_filter=a
       
-     * jahkejuvla, jietnadeapmi - missing lexicalized analysis in sme,
-       present in lexicon
-        - nuoraiddássi
-        - ođasvuorká
-        - problem only on front page, because detail goes through FST first
-
      * PoS on <l />
-     
-     * These all seem to have a similar issue
-         TODO: pos="cc" - missing detail
-         TODO: pos="cs" - missing detail
-         TODO: pos="i" - missing detail
-         TODO: pos="n" - mismatch between detail and index, jietnadeapmi
-         missing in detail, present in index; index includes search in
-         lexicon, detail only goes via lexicon?
-         TODO: http://localhost:5000/detail/sme/nob/jahkejuvla.html
-     
-     * Some other kind of problem:
-         TODO: pos="po" - missing in index, check detail
-           - lahka does not work
-           - luhtte works
-           - lusa works
-         TODO: pos="pr" - index search, but also detail
-           - maŋŋá readings not all present, adv only, has pr and po
-         TODO: pos="prop" - prop missing on detail
-           - Olgoriikadepartemeanta - missing in detail, also note that s.
-           reading does not generate
-         TODO: pos="prsprc"
-           - badjelgeahčči ? what to relabel this as in user interface
-
+     * lahka - showing two copies of adv. reading
+       maŋŋá - same problem
 
      * boaššohuvvat - missing derived analysis on front page
 
