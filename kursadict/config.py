@@ -2,6 +2,14 @@ import sys
 
 from flask import Config
 
+import yaml
+
+def gettext_yaml_wrapper(loader, node):
+	from flaskext.babel import lazy_gettext as _
+	return _(node.value)
+
+yaml.add_constructor('!_', gettext_yaml_wrapper)
+
 class Config(Config):
     """ An object for exposing the settings in app.config.yaml in a nice
     objecty way, and validating some of the contents.
@@ -191,7 +199,6 @@ class Config(Config):
         self._morphologies            = False
         self._tag_filters             = False
 
-        import yaml
         with open('app.config.yaml', 'r') as F:
             config = yaml.load(F)
         self.opts = config
@@ -203,8 +210,9 @@ class Config(Config):
 
         return True
 
-# settings = AppConf()
 
 if __name__ == "__main__":
-    settings.test(silent=False)
+    with open('app.config.yaml', 'r') as F:
+        config = yaml.load(F)
+        print config.get('Languages')
 

@@ -324,9 +324,28 @@ class Morphology(object):
         return reformatted
 
 
-    def lemmatize(self, form, split_compounds=False, non_compound_only=False, no_derivations=False):
+    def lemmatize(self, form, split_compounds=False,
+                  non_compound_only=False, no_derivations=False, output_tags=False):
         """ For a wordform, return a list of lemmas
         """
+        class Lemma(object):
+            def __key(lem_obj):
+                return (lem_obj.lemma, lem_obj.pos, self.tool.formatTag(lem_obj.tag))
+            def __eq__(x, y):
+                return x.__key() == y.__key()
+            def __hash__(lem_obj):
+                return hash(lem_obj.__key())
+            def __unicode__(lem_obj):
+                return lem_obj.lemma
+            def __repr__(lem_obj):
+                _lem, _pos, _tag = lem_obj.__key()
+                return '<Lemma: %s, %s, %s>' % (_lem, _pos, _tag)
+            def __init__(lem_obj, lemma, pos, tag, _input=False):
+                lem_obj.lemma = lemma
+                lem_obj.pos = pos
+                lem_obj.tag = tag
+                lem_obj.input = _input
+
         def remove_compound_analyses(_a):
             _cmp =  self.tool.options.get('compoundBoundary', False)
             if not _cmp:
@@ -352,7 +371,6 @@ class Morphology(object):
             else:
                 return iterable
 
-
         lookups = self.tool.lookup([form])
 
         lemmas = set()
@@ -371,7 +389,10 @@ class Morphology(object):
                               )
 
             for analysis in analyses:
-                lemmas.add(self.tool.splitAnalysis(analysis)[0])
+                _an_parts = self.tool.splitAnalysis(analysis)
+                _lem, _pos, _analysis = _an_parts[0], _an_parts[1], _an_parts[2::]
+                lem = Lemma(_lem, _pos, _analysis, form)
+                lemmas.add(lem)
 
         return list(lemmas)
 
@@ -445,6 +466,29 @@ def sme_test():
     sme = smexfst >> Morphology('sme')
 
     return sme
+
+def sme_derivation_test():
+    sme = sme_test()
+
+    test_words = [
+        u'borahuvvat',
+        u'juhkaluvvan'
+    ]
+    for w in test_words:
+        print "No options"
+        print sme.lemmatize(w)
+
+        print "/lookup/ lemmatizer"
+        print sme.lemmatize( w
+                           , split_compounds=True
+                           , non_compound_only=True
+                           , no_derivations=True
+                           )
+        
+        print "/ search analyzer"
+        print sme.analyze( w
+                         , split_compounds=True
+                         )
 
 def sme_compound_test():
     # TODO: make UnitTests out of these.
@@ -580,6 +624,6 @@ def tag_examples():
 if __name__ == "__main__":
     # examples()
     # tag_examples()
-    sme_compound_test()
-
+    # sme_compound_test()
+    sme_derivation_test()
 

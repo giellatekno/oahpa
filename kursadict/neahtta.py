@@ -77,13 +77,19 @@ from   config                         import *
 from   utils                          import *
 from   logging                        import getLogger
 
+from   flaskext.babel                 import Babel
+from   flaskext.babel                 import lazy_gettext as _lazy
+from   flaskext.babel                 import gettext as _
+
 cache = SimpleCache()
 app = Flask(__name__,
     static_url_path='/static',)
 
 app.jinja_env.line_statement_prefix = '#'
+app.jinja_env.add_extension('jinja2.ext.i18n')
 app.config = Config('.', defaults=app.config)
 app.config.from_yamlfile('app.config.yaml')
+babel = Babel(app)
 
 # Configure user_log
 user_log = getLogger("user_log")
@@ -113,7 +119,7 @@ def tagfilter(s, lang_iso):
         filtered = []
         for part in s.split(' '):
             filtered.append(filters.get(part.lower(), part))
-        return ' '.join(filtered)
+        return ' '.join([a for a in filtered if a.strip()])
     else:
         return s
 
@@ -204,6 +210,7 @@ def lookupWord(from_language, to_language):
     "results" list.
 
     """
+    from collections import defaultdict
 
     if (from_language, to_language) not in app.config.dictionaries:
         abort(404)
@@ -227,11 +234,12 @@ def lookupWord(from_language, to_language):
         lemmatizer = lemm_.lemmatize
 
     if lemmatize and lemmatizer and not lookup_type:
-        lookup_keys = lemmatizer( lookup_key
-                                , split_compounds=True
-                                , non_compound_only=True
-                                , no_derivations=True
-                                )
+        lemmas = lemmatizer( lookup_key
+                           , split_compounds=True
+                           , non_compound_only=True
+                           , no_derivations=True
+                           )
+        lookup_keys = list(set([l.lemma for l in lemmas]))
     else:
         lookup_keys = [lookup_key]
 
@@ -263,6 +271,20 @@ def lookupWord(from_language, to_language):
                     , reverse=True
                     )
 
+
+    tags = False
+    tags = [(l.lemma, ' '.join(l.tag)) for l in lemmas]
+    tags = map( lambda (l, x): (l, tagfilter(x, from_language))
+              , list(set(tags))
+              )
+
+    # make a list of tuples containing (lemma, [tag, tag, tag])
+    tag_s = defaultdict(list)
+    for _lem, _tag in tags:
+        tag_s[_lem].append(_tag)
+
+    tag_lookups =  list(tag_s.iteritems())
+
     logSimpleLookups( user_input
                     , results
                     , from_language
@@ -270,6 +292,7 @@ def lookupWord(from_language, to_language):
                     )
 
     data = json.dumps({ 'result': results
+                      , 'tags': tag_lookups
                       , 'success': success })
 
 
@@ -322,7 +345,7 @@ def wordDetail(from_language, to_language, wordform, format):
 
     user_input = wordform
     if not format in ['json', 'html']:
-        return "Invalid format. Only json and html allowed."
+        return _("Invalid format. Only json and html allowed.")
 
     wordform = decodeOrFail(wordform)
 
@@ -426,8 +449,6 @@ def wordDetail(from_language, to_language, wordform, format):
                 res = False
 
             # see #lexicalized
-            print type(wordform)
-            print repr(wordform)
             _result_lookups.append({
                 'entries': res,
                 'input': (wordform, pos_filter, 'LEXICALIZED', False)
