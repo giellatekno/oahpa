@@ -1,6 +1,11 @@
+
+
+
 ## Commits
 
 ## Next: 
+
+ * doubling: http://localhost:5000/detail/sme/nob/mealgat.html
 
  * translation strings: 
 
@@ -16,14 +21,21 @@
 
  * paradigm/word stuff
 
-     * see notes from user who is testing, and if any of them change with the
-       following fixes:
+     * notes from Laura, words that are left over to fix
 
-     * báffa - N in FST, pos="a" in lexicon
-       vuollásaš - detail, not generating
-       http://localhost:5000/detail/sme/nob/vuoll%C3%A1sa%C5%A1.html?no_compounds=true&lemma_match=true&pos_filter=a
-      
-     * PoS on <l />
+        - ikkje i FST
+            oakkastemen
+            gámppás
+            ortnetmielde
+            aiddi
+
+        - i FST, ikkje i leksikon (TODO: vis fram analysene sjølv om betydninga ikkje finst)
+            holvasa -> holvvas
+
+        - i FST, mogleg /Der problem ... framleis
+            juhkaluvvan
+
+
      * lahka - showing two copies of adv. reading
        maŋŋá - same problem
 
@@ -35,8 +47,6 @@
         boazodoallobearráigeahččispábbačiekčangilvu
 
      * boazodoallošiehtadallanlávdegoddi
-
-     * group paradigms by lemma to shorten list
 
      * numbers: generating of compound numbers doesn't work currently, guokte
                 works, guoktenuppelohkái doesn't
