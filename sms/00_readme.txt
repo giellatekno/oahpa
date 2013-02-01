@@ -5,25 +5,18 @@ Documentation for smsoahpa at http://victorio.uit.no/cgi-bin/wiki/index.php/Smso
 =====
 State of the art:
 
-Currently, our preliminary version of Oahpa!-nuõrti includes one "book", which is actually not a schoolbook, but just a list of basic vocabulary:
+Currently, our preliminary version of Oahpa!-nuõrti includes two "books", which are actually not schoolbooks, but just lists of basic vocabulary:
 * book="100" (~100 words)
-Tagging of semantic fields for these words is also only preliminary.
-
-=====
-Current plans:
-
-The next version of Oahpa!-nuõrti, currently in the works, will include all entries tagged with:
 * book="200" (~200 words)
-This is still only a list of basic vocabulary, but it will already be useful for teaching beginners. Tagging of semantic fields for these words will also be improved.
 
 =====
-Future plans:
+Next compilation:
 
-The planned next version of Oahpa!-nuõrti (to be compiled in intermediate steps) will include all entries tagged with:
+The planned next version of Oahpa!-nuõrti should include all entries tagged with:
 * book="kurss" (schoolbook in Finnish, Russian and Norwegian versions, see the Norwegian version here: http://omnibus.uni-freiburg.de/~mr5496/downl/Kurss_nob.pdf)
+MR is currently working on including the words in the dictionary database.
 
-I would also like to include
-*place and person names (from src file pn_sms2X.xml)
+Also a "place name game" should be included in LEKSA (from src dictionary files: pn_sms2X.xml)
 
 =====
 Futurefuture…
