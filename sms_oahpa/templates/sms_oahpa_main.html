@@ -189,6 +189,26 @@
         {% ifequal LANGUAGE_CODE "ru" %}
             <li><a href="http://victorio.uit.no/webdict/index_sms-rus.html">{% trans "Dictionary" %}</a></li>
         {% endifequal %}
+            <!--please check, whether or not the following code is correct; if it is, please remove the comment, and let this part compile as well (during the next compilation, it is not important now)
+            {% ifequal LANGUAGE_CODE "sme" %}
+				<li><a href="http://oahpa.no/sms/grammar/grammar.eng.html">{% trans "Skolt Sámi grammar" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "fi" %}
+				<li><a href="http://oahpa.no/sms/grammar/grammar.fin.html">{% trans "Skolt Sámi grammar" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "en" %}
+				<li><a href="http://oahpa.no/sms/grammar/grammar.eng.html">{% trans "Skolt Sámi grammar" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "no" %}
+				<li><a href="http://oahpa.no/sms/grammar/grammar.html">{% trans "Skolt Sámi grammar" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "ru" %}
+				<li><a href="http://oahpa.no/sms/grammar/grammar.rus.html">{% trans "Skolt Sámi grammar" %}</a></li>
+            {% endifequal %}
+            {% ifequal LANGUAGE_CODE "sv" %}
+				<li><a href="http://oahpa.no/sms/grammar/grammar.html">{% trans "Skolt Sámi grammar" %}</a></li>
+            {% endifequal %}
+            -->
 			</ul>
 
 <!---			<p>{% trans "Are you visiting this site as part of a course?" %} <a href="{% url courses.views.courses_main %}">{% trans "Log in here" %}</a></p> -->
