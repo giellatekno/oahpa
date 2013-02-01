@@ -21,7 +21,13 @@ Future plans:
 
 The planned next version of Oahpa!-nuõrti (to be compiled in intermediate steps) will include all entries tagged with:
 * book="kurss" (schoolbook in Finnish, Russian and Norwegian versions, see the Norwegian version here: http://omnibus.uni-freiburg.de/~mr5496/downl/Kurss_nob.pdf)
-* book="termm" - different term(inological) lists, which are not completely included in the textbook or the basic vocabulary lists.
+
+I would also like to include
+*place and person names (from src file pn_sms2X.xml)
+
+=====
+Futurefuture…
+*"termm" - different term(inological) lists, which are not completely included in the textbook or the basic vocabulary lists.
 
 =====
 Preparing/Updating sms data:
