@@ -130,13 +130,13 @@ AVAILABLE_LOCALE_ISO_TRANSFORM = {
 ## into the <body /> @lang attribute.
 
 def iso_filter(_iso):
-	return AVAILABLE_LOCALE_ISO_TRANSFORM.get(_iso, _iso)
+    return AVAILABLE_LOCALE_ISO_TRANSFORM.get(_iso, _iso)
 
 @app.before_request
 def append_session_globals():
-	loc = get_locale()
-	app.jinja_env.globals['session_locale'] = loc
-	app.jinja_env.globals['session_locale_long_iso'] = iso_filter(loc)
+    loc = get_locale()
+    app.jinja_env.globals['session_locale'] = loc
+    app.jinja_env.globals['session_locale_long_iso'] = iso_filter(loc)
 
 @babel.localeselector
 def get_locale():
@@ -145,6 +145,8 @@ def get_locale():
         return ses_lang
     else:
         ses_lang = request.accept_languages.best_match(AVAILABLE_LOCALES)
+        if not ses_lang:
+            ses_lang = 'se'
         session.locale = ses_lang
         app.jinja_env.globals['session'] = session
     return ses_lang
