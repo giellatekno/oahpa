@@ -58,7 +58,7 @@
 
     </head>
 
-    <body lang="{{ session_locale_long_iso }}" class="{% block bodyclass %}{% endblock %}">
+    <body lang="{% if session_locale_long_iso %}{{ session_locale_long_iso }}{% else %}sme{% endif %}" class="{% block bodyclass %}{% endblock %}">
         <header>
             <div class="navbar navbar-static-top">
                 <div class="navbar-inner">
