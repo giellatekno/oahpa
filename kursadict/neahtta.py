@@ -65,6 +65,7 @@ import logging
 import urllib
 from   flask                          import ( Flask
                                              , request
+                                             , g
                                              , json
                                              , render_template
                                              , Markup
@@ -90,6 +91,7 @@ app.jinja_env.add_extension('jinja2.ext.i18n')
 app.config = Config('.', defaults=app.config)
 app.config.from_yamlfile('app.config.yaml')
 babel = Babel(app)
+babel.init_app(app)
 
 # Configure user_log
 user_log = getLogger("user_log")
@@ -97,6 +99,14 @@ useLogFile = logging.FileHandler('user_log.txt')
 user_log.addHandler(useLogFile)
 user_log.setLevel("INFO")
 
+AVAILABLE_LOCALES = [ 'se'
+                    , 'no'
+                    , 'fi'
+                    ]
+
+@babel.localeselector
+def get_locale():
+    return request.accept_languages.best_match(AVAILABLE_LOCALES)
 
 
 ##
