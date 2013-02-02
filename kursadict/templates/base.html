@@ -31,6 +31,8 @@
 
         <link href="{{url_for('static', filename='css/base.css')}}" rel="stylesheet" />
 
+        <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-collapse.js')}}"></script>
+        <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-dropdown.js')}}"></script>
         {% block extra_css %}
         {% endblock %}
 
@@ -113,27 +115,14 @@
         </div>
 
         {% block footer_block %}
-        <div id="i18n_translations">
-            <ul class="nav nav-pills">
-              <li class="dropup">
-                <a class="dropdown-toggle"
-                   data-toggle="dropdown"
-                   href="#">
-                    <b class="caret"></b>
-                    Language
-                  </a>
-                <ul class="dropdown-menu">
-                    <li><a href="/locale/se/">North Sámi</a></li>
-                    <li><a href="/locale/no/">Norwegian</a></li>
-                    <li><a href="/locale/fi/">Finnish</a></li>
-                    {#
-                    {% for locale in internationalizations %}
-                        <li><a href="#">{{ locale }}</a></li>
-                    {% endfor %}
-                    #}
-                </ul>
-              </li>
-            </ul>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span2 offset10">
+                    <div class="pull-right">
+                        {% include 'language_select.html' %}
+                    </div>
+                </div>
+            </div>
         </div>
         <footer class="footer">
             <!-- TODO: link to json -->
