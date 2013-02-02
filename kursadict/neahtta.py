@@ -84,6 +84,7 @@ from   flaskext.babel                 import Babel
 from   flaskext.babel                 import lazy_gettext as _lazy
 from   flaskext.babel                 import gettext as _
 
+
 cache = SimpleCache()
 app = Flask(__name__,
     static_url_path='/static',)
@@ -270,6 +271,7 @@ def lookupWord(from_language, to_language):
                            )
         lookup_keys = list(set([l.lemma for l in lemmas]))
     else:
+        lemmas = False
         lookup_keys = [lookup_key]
 
     results, success = app.config.lexicon.lookups( from_language
@@ -301,18 +303,21 @@ def lookupWord(from_language, to_language):
                     )
 
 
-    tags = False
-    tags = [(l.lemma, ' '.join(l.tag)) for l in lemmas]
-    tags = map( lambda (l, x): (l, tagfilter(x, from_language))
-              , list(set(tags))
-              )
+    if lemmas:
+        tags = False
+        tags = [(l.lemma, ' '.join(l.tag)) for l in lemmas]
+        tags = map( lambda (l, x): (l, tagfilter(x, from_language))
+                  , list(set(tags))
+                  )
 
-    # make a list of tuples containing (lemma, [tag, tag, tag])
-    tag_s = defaultdict(list)
-    for _lem, _tag in tags:
-        tag_s[_lem].append(_tag)
+        # make a list of tuples containing (lemma, [tag, tag, tag])
+        tag_s = defaultdict(list)
+        for _lem, _tag in tags:
+            tag_s[_lem].append(_tag)
 
-    tag_lookups =  list(tag_s.iteritems())
+        tag_lookups =  list(tag_s.iteritems())
+    else:
+        tag_lookups = []
 
     logSimpleLookups( user_input
                     , results
