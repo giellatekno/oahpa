@@ -37,27 +37,28 @@
         {% endblock %}
 
         <script type="text/javascript">
+            // TODO: update
             // Language select
-            $(document).ready(function(){
-            	var has_lang = DSt.get('nds-ui-lang');
-            	if (has_lang) {
-            	    $('body').prop('lang', has_lang);
-            	}
-            	$('#language_select a.lang').click( function(evt) {
-            		var lang = $(evt.target) ;
-            		var iso  = lang.attr('data-lang');
-            		DSt.set('nds-ui-lang', iso);
-            		$('body').prop('lang', iso);
-            		return false;
-            	});
-            });
+            // $(document).ready(function(){
+            // 	var has_lang = DSt.get('nds-ui-lang');
+            // 	if (has_lang) {
+            // 	    $('body').prop('lang', has_lang);
+            // 	}
+            // 	$('#language_select a.lang').click( function(evt) {
+            // 		var lang = $(evt.target) ;
+            // 		var iso  = lang.attr('data-lang');
+            // 		DSt.set('nds-ui-lang', iso);
+            // 		$('body').prop('lang', iso);
+            // 		return false;
+            // 	});
+            // });
         </script>
         {% block extra_js %}
         {% endblock %}
 
     </head>
 
-    <body lang="nob" class="{% block bodyclass %}{% endblock %}">
+    <body lang="{{ session_locale_long_iso }}" class="{% block bodyclass %}{% endblock %}">
         <header>
             <div class="navbar navbar-static-top">
                 <div class="navbar-inner">

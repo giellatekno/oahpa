@@ -117,6 +117,27 @@ AVAILABLE_LOCALES = [ 'se'
                     , 'fi'
                     ]
 
+AVAILABLE_LOCALE_ISO_TRANSFORM = {
+    'se': 'sme',
+    'no': 'nob',
+    'fi': 'fin',
+    'en': 'eng',
+    'sma': 'sma',
+}
+
+## These things are sort of a temporary fix for some of the localization
+## that runs off of CSS selectors, in order to include the 3 digit ISO
+## into the <body /> @lang attribute.
+
+def iso_filter(_iso):
+	return AVAILABLE_LOCALE_ISO_TRANSFORM.get(_iso, _iso)
+
+@app.before_request
+def append_session_globals():
+	loc = get_locale()
+	app.jinja_env.globals['session_locale'] = loc
+	app.jinja_env.globals['session_locale_long_iso'] = iso_filter(loc)
+
 @babel.localeselector
 def get_locale():
     ses_lang = session.get('locale', None)
@@ -125,6 +146,7 @@ def get_locale():
     else:
         ses_lang = request.accept_languages.best_match(AVAILABLE_LOCALES)
         session.locale = ses_lang
+        app.jinja_env.globals['session'] = session
     return ses_lang
 
 ##
