@@ -65,6 +65,8 @@ import logging
 import urllib
 from   flask                          import ( Flask
                                              , request
+                                             , redirect
+                                             , session
                                              , g
                                              , json
                                              , render_template
@@ -90,6 +92,16 @@ app.jinja_env.line_statement_prefix = '#'
 app.jinja_env.add_extension('jinja2.ext.i18n')
 app.config = Config('.', defaults=app.config)
 app.config.from_yamlfile('app.config.yaml')
+
+try:
+    with open('secret_key.do.not.check.in', 'r') as F:
+        key = F.readlines()[0].strip()
+    app.config['SECRET_KEY'] = key
+except IOError:
+    print >> sys.stderr, "You need to generate a secret key, and store it in a file with the following name: "
+    print >> sys.stderr, 'secret_key.do.not.check.in'
+    sys.exit()
+
 babel = Babel(app)
 babel.init_app(app)
 
@@ -106,8 +118,13 @@ AVAILABLE_LOCALES = [ 'se'
 
 @babel.localeselector
 def get_locale():
-    return request.accept_languages.best_match(AVAILABLE_LOCALES)
-
+    ses_lang = session.get('locale', None)
+    if ses_lang is not None:
+        return ses_lang
+    else:
+        ses_lang = request.accept_languages.best_match(AVAILABLE_LOCALES)
+        session.locale = ses_lang
+    return ses_lang
 
 ##
 ##  Endpoints
@@ -961,10 +978,26 @@ def about():
 def plugins():
     return render_template('plugins.html')
 
+@app.route('/locale/<iso>/', methods=['GET'])
+def set_locale(iso):
+    from flaskext.babel import refresh
+
+    session['locale'] = iso
+    # Refresh the localization infos, and send the user back whence they
+    # came.
+    refresh()
+    ref = request.referrer
+    if ref is not None:
+        return redirect(request.referrer)
+    else:
+        return redirect('/')
+
 @app.route('/', methods=['GET'], endpoint="canonical-root")
 def index():
+    # TODO: locales and language names
     return render_template( 'index.html'
                           , language_pairs=app.config.pair_definitions
+                          , internationalizations=AVAILABLE_LOCALES
                           , _from='sme'
                           , _to='nob'
                           , show_info=True

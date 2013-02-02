@@ -3,6 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Neahttadigisánit{% block title %}{% endblock %}</title>
+
+	    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}" type="image/x-icon">
+	    <link rel="icon" href="{{url_for('static', filename='favicon.ico')}}" type="image/x-icon">
+
         {# TODO: meta keywords and description
         <meta name="keywords" content="samisk ordbok,nordsamisk,sørsamisk,finsk,norsk">
         <!-- In each language, with 2-char ISO -->
@@ -15,11 +21,8 @@
 
         <link href="{{url_for('static', filename='css/bootstrap.css')}}" rel="stylesheet" />
         <link href="{{url_for('static', filename='css/bootstrap-responsive.css')}}" rel="stylesheet" />
-	<link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}" type="image/x-icon">
-	<link rel="icon" href="{{url_for('static', filename='favicon.ico')}}" type="image/x-icon">
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-        <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-dropdown.js')}}"></script>
         <script type="text/javascript" src="{{url_for('static', filename='js/DSt.js')}}"></script>
         
         <!--[if lt IE 9]>
@@ -28,7 +31,6 @@
 
         <link href="{{url_for('static', filename='css/base.css')}}" rel="stylesheet" />
 
-        <title>Neahttadigisánit{% block title %}{% endblock %}</title>
         {% block extra_css %}
         {% endblock %}
 
@@ -86,26 +88,6 @@
                     </div>
                 </div>
             </div>
-            <div id="language_select">
-                <ul class="nav nav-pills pull-right">
-                  <li class="dropdown">
-                    <a class="dropdown-toggle"
-                       data-toggle="dropdown"
-                       href="#">
-                            {% trans %}Language{% endtrans %}
-                        <b class="caret"></b>
-                      </a>
-                    <ul class="dropdown-menu">
-                        {# TODO: language select #}
-                        <li><a class="lang" href="#" data-lang="sme">sme</a></li>
-                        <li><a class="lang" href="#" data-lang="nob">nob</a></li>
-                        <li><a class="lang" href="#" data-lang="fin">fin</a></li>
-                        <li><a class="lang" href="#" data-lang="eng">eng</a></li>
-                    </ul>
-                  </li>
-                </ul>
-                {# TODO: flags? Or is the use of one flag unfair to other languages with the same flag #}
-            </div>
         </header>
 
 
@@ -131,6 +113,28 @@
         </div>
 
         {% block footer_block %}
+        <div id="i18n_translations">
+            <ul class="nav nav-pills">
+              <li class="dropup">
+                <a class="dropdown-toggle"
+                   data-toggle="dropdown"
+                   href="#">
+                    <b class="caret"></b>
+                    Language
+                  </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/locale/se/">North Sámi</a></li>
+                    <li><a href="/locale/no/">Norwegian</a></li>
+                    <li><a href="/locale/fi/">Finnish</a></li>
+                    {#
+                    {% for locale in internationalizations %}
+                        <li><a href="#">{{ locale }}</a></li>
+                    {% endfor %}
+                    #}
+                </ul>
+              </li>
+            </ul>
+        </div>
         <footer class="footer">
             <!-- TODO: link to json -->
             <!-- 
