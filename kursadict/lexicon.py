@@ -40,7 +40,7 @@ class XMLDict(object):
             ".//e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, 'i') and lg/l/@type = $_type]",
             namespaces={'re':regexpNS})
 
-    def cleanEntry(self, e):
+    def cleanEntry(self, e, **result_filters):
         l = e.find('lg/l')
         left_text = l.text
         left_pos = l.get('pos')
@@ -48,9 +48,15 @@ class XMLDict(object):
         if left_context == None:
             left_context = False
 
-        ts = e.findall('mg/tg/t')
-        tgs = e.findall('mg/tg')
-        # right_text = [t.text for t in ts]
+        target_lang = result_filters.get('target_lang', False)
+
+        if target_lang:
+            ts = e.xpath("mg/tg[@xml:lang='%s']/t" % target_lang)
+            tgs = e.xpath("mg/tg[@xml:lang='%s']" % target_lang)
+        else:
+            ts = e.findall('mg/tg/t')
+            tgs = e.findall('mg/tg')
+
         right_text = []
 
         for tg in tgs:
@@ -119,23 +125,44 @@ class XMLDict(object):
     def XPath(self, xpathobj, *args, **kwargs):
         # print "Querying: %s" % xpathobj.path
         # print "With: %s, %s" % (repr(args), repr(kwargs))
-        return map(self.cleanEntry, xpathobj(self.tree, *args, **kwargs)) or False
+        rs = kwargs.get('result_filters', {})
+        if rs:
+            kwargs.pop('result_filters')
 
-    def lookupLemmaStartsWith(self, lemma):
-        return self.XPath(self.lemmaStartsWith, lemma=lemma)
+        return map( lambda e: self.cleanEntry(e, **rs)
+                  , xpathobj(self.tree, *args, **kwargs)
+                  ) or False
 
-    def lookupLemma(self, lemma):
-        return self.XPath(self.lemma, lemma=lemma)
+    def lookupLemmaStartsWith(self, lemma, target_lang=False):
+        return self.XPath( self.lemmaStartsWith
+                         , lemma=lemma
+                         , result_filters={ 'target_lang': target_lang }
+                         )
 
-    def lookupLemmaPOS(self, lemma, pos):
-        return self.XPath(self.lemmaPOS, lemma=lemma, pos=pos)
+    def lookupLemma(self, lemma, target_lang=False):
+        return self.XPath( self.lemma
+                         , lemma=lemma
+                         , result_filters={ 'target_lang': target_lang }
+                         )
 
-    def lookupLemmaPOSAndType(self, lemma, pos, _type):
-        return self.XPath(self.lemmaPOSAndType, lemma=lemma, pos=pos, _type=_type)
+    def lookupLemmaPOS(self, lemma, pos, target_lang=False):
+        return self.XPath( self.lemmaPOS
+                         , lemma=lemma
+                         , pos=pos
+                         , result_filters={ 'target_lang': target_lang }
+                         )
+
+    def lookupLemmaPOSAndType(self, lemma, pos, _type, target_lang=False):
+        return self.XPath( self.lemmaPOSAndType
+                         , lemma=lemma
+                         , pos=pos
+                         , _type=_type
+                         , result_filters={ 'target_lang': target_lang }
+                         )
 
 class FrontPageFormat(XMLDict):
 
-    def cleanEntry(self, e):
+    def cleanEntry(self, e, **result_filters):
         # TODO: it would be nice to generalize this out to the settings
         # using a list of XPATH, and just string formatting to
         # prioritize what gets displayed and how
@@ -216,7 +243,7 @@ class FrontPageFormat(XMLDict):
 
 class DetailedEntries(XMLDict):
 
-    def cleanEntry(self, e):
+    def cleanEntry(self, e, **result_filters):
         l = e.find('lg/l')
 
         left_context = l.get('context')
@@ -421,9 +448,9 @@ class Lexicon(object):
 
         if lookup_type:
             if lookup_type == 'startswith':
-                result = _dict.lookupLemmaStartsWith(lookup)
+                result = _dict.lookupLemmaStartsWith(lookup, _to)
         else:
-            result = _dict.lookupLemma(lookup)
+            result = _dict.lookupLemma(lookup, _to)
 
         return {'lookups': result,
                 'input': lookup,
@@ -433,10 +460,11 @@ class Lexicon(object):
     def lookups(self, _from, _to, lookups, lookup_type=False):
         from functools import partial
 
-        _look = partial(self.lookup,
-                        _from=_from,
-                        _to=_to,
-                        lookup_type=lookup_type)
+        _look = partial( self.lookup
+                       , _from=_from
+                       , _to=_to
+                       , lookup_type=lookup_type
+                       )
 
         results = map(lambda x: _look(lookup=x), lookups)
         success = any([(not ('error' in r) and bool(r.get('lookups', False)))
