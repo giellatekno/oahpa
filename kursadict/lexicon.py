@@ -53,7 +53,8 @@ class XMLDict(object):
         if target_lang:
             ts = e.xpath("mg/tg[@xml:lang='%s']/t" % target_lang)
             tgs = e.xpath("mg/tg[@xml:lang='%s']" % target_lang)
-        else:
+
+        if not target_lang or len(tgs) == 0:
             ts = e.findall('mg/tg/t')
             tgs = e.findall('mg/tg')
 
@@ -175,7 +176,8 @@ class FrontPageFormat(XMLDict):
         if target_lang:
             ts = e.xpath("mg/tg[@xml:lang='%s']/t" % target_lang)
             tgs = e.xpath("mg/tg[@xml:lang='%s']" % target_lang)
-        else:
+
+        if not target_lang or len(tgs) == 0:
             ts = e.findall('mg/tg/t')
             tgs = e.findall('mg/tg')
 
@@ -271,7 +273,8 @@ class DetailedEntries(XMLDict):
         if target_lang:
             ts = e.xpath("mg/tg[@xml:lang='%s']/t" % target_lang)
             tgs = e.xpath("mg/tg[@xml:lang='%s']" % target_lang)
-        else:
+
+        if not target_lang or len(tgs) == 0:
             ts = e.findall('mg/tg/t')
             tgs = e.findall('mg/tg')
 
