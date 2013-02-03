@@ -492,49 +492,6 @@ def wordDetail(from_language, to_language, wordform, format):
                                for lem, pos, tag in _result_formOf
                                if pos.upper() == pos_filter.upper() ]
         
-        # This is to lookup words that are done when user clicks on link
-        # on front page, thus containing pos_filter
-        if wordform and pos_filter:
-            xml_result = app.config.lexicon.detailedLookup( from_language
-                                                          , to_language
-                                                          , wordform
-                                                          , pos_filter
-                                                          , False
-                                                          )
-            if xml_result:
-                res = {'lookups': xml_result}
-            else:
-                res = False
-
-            # see #lexicalized
-            _result_lookups.append({
-                'entries': res,
-                'input': (wordform, pos_filter, 'LEXICALIZED', False)
-            })
-        elif (not pos_filter):
-            xml_result = app.config.lexicon.detailedLookup( from_language
-                                                          , to_language
-                                                          , wordform
-                                                          , False
-                                                          , False
-                                                          )
-            if xml_result:
-                res = {'lookups': xml_result}
-
-                # no POS was given in the input, so we grab it from the
-                # lookups
-                pos_attempts = list(set([r.get('pos') for r in xml_result]))
-                if len(pos_attempts) == 1:
-                    pos_filter = pos_attempts[0]
-
-                # see #lexicalized
-                _result_lookups.append({
-                    'entries': res,
-                    'input': (wordform, pos_filter, 'LEXICALIZED', False)
-                })
-            else:
-                res = False
-
         for lemma, pos, tag in _result_formOf:
 
             # TODO: generalize for other languages, use tagsets
@@ -571,6 +528,49 @@ def wordDetail(from_language, to_language, wordform, format):
                 _lemma_pos_exists.append((lemma, pos))
             else:
                 continue
+
+        # This is to lookup words that are done when user clicks on link
+        # on front page, thus containing pos_filter
+        if wordform and pos_filter and len(_result_lookups) == 0:
+            xml_result = app.config.lexicon.detailedLookup( from_language
+                                                          , to_language
+                                                          , wordform
+                                                          , pos_filter
+                                                          , False
+                                                          )
+            if xml_result:
+                res = {'lookups': xml_result}
+            else:
+                res = False
+
+            # see #lexicalized
+            _result_lookups.append({
+                'entries': res,
+                'input': (wordform, pos_filter, 'LEXICALIZED', False)
+            })
+        elif (not pos_filter) and len(_result_lookups) == 0:
+            xml_result = app.config.lexicon.detailedLookup( from_language
+                                                          , to_language
+                                                          , wordform
+                                                          , False
+                                                          , False
+                                                          )
+            if xml_result:
+                res = {'lookups': xml_result}
+
+                # no POS was given in the input, so we grab it from the
+                # lookups
+                pos_attempts = list(set([r.get('pos') for r in xml_result]))
+                if len(pos_attempts) == 1:
+                    pos_filter = pos_attempts[0]
+
+                # see #lexicalized
+                _result_lookups.append({
+                    'entries': res,
+                    'input': (wordform, pos_filter, 'LEXICALIZED', False)
+                })
+            else:
+                res = False
 
         detailed_result = {
             "analyses": _result_formOf,
