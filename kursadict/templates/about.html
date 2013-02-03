@@ -3,7 +3,7 @@
 <style type="text/css">
 .marketing h1 {
     margin: 0px 0 10px;
-    font-size: 60px;
+    font-size: 45px;
     font-weight: 200;
     line-height: 1;
     letter-spacing: -1px;
@@ -35,6 +35,15 @@
     color: rgb(224, 224, 4);
 }
 
+@media (max-width: 550px) {
+	.hero-unit {
+		margin-bottom: 0em;
+	}
+	.marketing .row-fluid span h3 {
+		margin-top: .75em;
+	}
+}
+
 
 </style>
 
@@ -48,7 +57,7 @@
              is in the header anyway #}
           <h1 class="hidden-phone">Neahttadigisánit</h1>
           <p class="lead" style="margin-bottom: .25em;">{% trans %}A dictionary that understands what you're looking for.{% endtrans %}</p>
-          <p style="font-size: 80%; margin-top: .5em;"><em>(... And is mobile-friendly!)</em></p>
+          <p style="font-size: 80%; margin-top: .5em;"><em>{% trans %}(... And is mobile-friendly!){% endtrans %}</em></p>
         </div>
         <div class="row-fluid">
             <span class="span4">
