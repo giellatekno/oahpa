@@ -67,6 +67,7 @@ $(document).ready( function() {
 {% endblock %}
 
 {% block extra_nav %}
+        {# Dictionaries #}
         {% for iso_pair, names in language_pairs.iteritems() %}
             <li class="visible-thin hidden-desktop hidden-tablet {%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}">
                 <a href="/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
@@ -90,7 +91,31 @@ $(document).ready( function() {
                         {% for lang, name in names.iteritems() %}
                             <span class="i18n" lang="{{ lang }}">{{ name[0] }} ↔ {{ name[1] }}</span>
                         {% endfor %}
-                        </a></li>
+                        </a>
+                    </li>
+                    {# Start a new nav if there are variants #}
+                    {# TODO: make this work from config settings, for now hard-coded #}
+                    {#
+                    {%- if iso_pair[0] == 'sme' and iso_pair[1] == 'nob' and iso_pair[0] == _from and iso_pair[1] == _to %}
+                    </ul>
+                    <span class="nav-header variantnote">Written variant</span>
+                    <ul class="nav nav-collapse nav-tabs nav-stacked subnavcoloring">
+                        <li class="active"><a href="/sme/nob/">Standard (áčđŋšŧž)</a></li>
+                        <li><a href="/sme/nob/SoMe/">Social Media (acdnstz)</a></li>
+                    </ul>
+                    <ul class="nav nav-collapse nav-tabs nav-stacked">
+                    {%- endif -%}
+
+                    {%- if iso_pair[0] == 'sme' and iso_pair[1] == 'fin' and iso_pair[0] == _from and iso_pair[1] == _to %}
+                    </ul>
+                    <span class="nav-header variantnote">Written variant</span>
+                    <ul class="nav nav-collapse nav-tabs nav-stacked subnavcoloring">
+                        <li class="active"><a href="/sme/nob/">Standard (áčđŋšŧž)</a></li>
+                        <li><a href="/sme/nob/SoMe/">Social Media (acdnstz)</a></li>
+                    </ul>
+                    <ul class="nav nav-collapse nav-tabs nav-stacked">
+                    {%- endif -%}
+                    #}
                 {% endfor %}
                 </ul>
             </div>
