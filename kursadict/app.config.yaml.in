@@ -9,7 +9,7 @@ Tools:
 # be lists. These are concatenated automatically.
 Morphology:
   sme:
-    tool: *LOOKUP 
+    tool: *LOOKUP
     file: [*GTHOME, "/gt/sme/bin/n-sme.fst"]
     inverse_file: [*GTHOME, "/gt/sme/bin/dict-isme-norm.fst"]
     format: 'xfst'
@@ -18,10 +18,6 @@ Morphology:
       derivationMarker: "suff."
       tagsep: ' '
       inverse_tagsep: '+'
-  # Trying out fst
-  # nob:
-  #   tool: [*GTHOME, '/st/nob/obt/bin/mtag-osx64']
-  #   format: 'obt'
   nob:
     tool: *LOOKUP
     file: [*GTHOME, '/st/nob/bin/nob.fst']
@@ -48,6 +44,7 @@ Morphology:
     format: 'xfst'
     options:
       compoundBoundary: "+Use/Circ#"
+      derivationMarker: "+Der"
       tagsep: '+'
       inverse_tagsep: '+'
 
@@ -55,7 +52,7 @@ Languages:
   - iso: sme
     name:
       sme: "davvisámegiella"
-      eng: "Northern Sámi"
+      eng: !_ "Northern Sámi"
       nob: "nordsamisk"
       fin: "pohjoissaame"
 
@@ -86,42 +83,122 @@ Languages:
       eng: "English"
       nob: "engelsk"
       fin: "englanti"
+
 # This also dictates the order of the dictionaries in the UI for now.
 Dictionaries:
   - source: sme
     target: nob
     path: 'dicts/sme-nob.all.xml'
 
-  - source: nob
-    target: sme
-    path: 'dicts/nob-sme.all.xml'
+  # - source: nob
+  #   target: sme
+  #   path: 'dicts/nob-sme.all.xml'
 
-  - source: sme
-    target: fin
-    path: 'dicts/sme-fin.all.xml'
+  # - source: sme
+  #   target: fin
+  #   path: 'dicts/sme-fin.all.xml'
 
-  - source: fin
-    target: sme
-    path: 'dicts/fin-sme.all.xml'
+  # - source: fin
+  #   target: sme
+  #   path: 'dicts/fin-sme.all.xml'
 
   - source: sma
     target: nob
     path: 'dicts/sma-nob.all.xml'
 
-  - source: nob
-    target: sma
-    path: 'dicts/nob-sma.all.xml'
+  # - source: nob
+  #   target: sma
+  #   path: 'dicts/nob-sma.all.xml'
+
+# Abstracting display formats out here, because there are different
+# requirements for different languages and different wordforms.
+
+# Build up an iterable for all entries, including display format parsers
+DisplayFormats:
+
+  "sme-nob.all.xml":
+    search_patterns:
+      'lemmaStartsWith': 
+        './/e[starts-with(lg/l/text(), $lemma)]'
+      'lemma': 
+        './/e[lg/l/text() = $lemma]'
+      'lemmaPOS': 
+         ".//e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, 'i')]"
+      'lemmaPOSAndType':
+         ".//e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, 'i') and lg/l/@type = $_type]"
+
+    # [
+    #   { 'string': "lemma (context)",
+    #     'translations': [
+    #       'translation (annotation)',
+    #       'translation',
+    #       'translation',
+    #   ]
+    # ]
+
+    # TODO: not yet implemented, but a good idea for when things get too
+    # language-specific in Lexicon class or templates.
+    entry:
+      tag: "e"
+      path: ".//e"
+      formats:
+        - "%(lemma)s (%(context)s)"
+        - "%(lemma)s (%(pos)s)"
+        - "%(lemma)s"
+      string_variables:
+        lemma: ".//l/text()"
+        context: ".//l/@context"
+        pos: ".//l/@pos"
+      translations:
+        tag: "mg"
+        path: ".//mg"
+        formats:
+          - "%(translation)s (%(re)s)"
+          - "%(translation)s (%(te)s)"
+          - "%(translation)s (%(tf)s)"
+          - "(%(re)s)"
+          - "(%(te)s)"
+          - "(%(tf)s)"
+        string_variables:
+          translation: ".//tg[@xml:lang = $lang]/t/text()"
+          re:          ".//tg[@xml:lang = $lang]/re/text()"
+          te:          ".//tg[@xml:lang = $lang]/te/text()"
 
 
+# TODO: need a more specialized system for paradigm recognition and
+#       form generation, for example: jietnadeapmi is V+Actio+Nom
+#       but we need to be able to generate these without trying other
+#       forms for V, since it is effectively nominal.
+#
+#       For example, what if labels are attached to the baseforms as
+#       they are recognized, which are then used to generate paradigms,
+#       e.g., if we have a form with V+Actio+Nom, this means we generate
+#       the VActioNom paradigm:
+#
+#       Baseforms:
+#         sme:
+#           ("V+Actio+Nom", "VActioNom")
+#
+#       Paradigms:
+#         sme:
+#           V:
+#             - "Act+Ind+Prt+Sg1"
+#             - "Act+Ind+Pst+Sg3"
+#             - "Pss+Ind+Prt+Pe4"
+#           VActioNom:
+#             - "V+TV+Der/NomAct+N+Sg+Gen"
+#             - "V+TV+Der/NomAct+N+Pl+Gen"
+#
+# TODO: It may also be worth applying some sort of nicknames to the
+# actual paradigm tags themselves, to aid localization
 
-# Tags to accept as the dictionary form for each POS, e.g., want to show
-# paradigms for words that can be analyzed with this form
 Baseforms:
   sma:
     V: 
       - "V+IV+Inf"
       - "V+TV+Inf"
       - "V+Inf"
+      - "V+Actio+Nom"
 
     N:
       - "N+Sg+Nom"
@@ -135,6 +212,7 @@ Baseforms:
     V:
       - "V+Inf"
       - "V+Act+InfA+Sg+Lat"
+      - "V+Act+Nom"
 
     Adv:
       - "Adv"
@@ -146,6 +224,12 @@ Baseforms:
       - "Pron+Qu+Sg+Nom"
  
   sme:
+    CC:
+      - "CC"
+    
+    CS:
+      - "CS"
+
     V:
       - "V"
       - "V inf."
@@ -221,6 +305,7 @@ Paradigms:
       - "Pl+Nom"
       - "Pl+Gen"
 
+    # TODO: annotation
     # attr.                     fiinna (bivttas)
     # pl. nom.                  fiidnát fiidnásat
     # komp. attr.               fiidnát fiidnásat
@@ -248,13 +333,46 @@ Paradigms:
 
 TagSets:
   sme:
-    pos: ["N", "V", "A", "Pr", "Po"]
+    pos: ["N", "V", "A", "Pr", "Po", "Num"]
     type: ["NomAg", "G3", "aktor"]
 
 # Note, these come from dictionary fst, so tag parts are mostly 
 # already translated
 # TODO: i18n
 TagTransforms:
+  sma:
+    V: "v."
+    N: "s."
+    A: "adj."
+    # TODO: test that it actually goes away
+    NomAg: ""
+    G3: ""
+    G7: ""
+    Adv: "adv."
+
+    v: "v."
+    n: "s."
+    a: "adj."
+    nomag: ""
+    g3: "g3."
+    g7: ""
+    adv: "adv."
+    cc: "konj."
+    cs: "konj."
+    i: "interj."
+    npl: "pl. s."
+    num: "num."
+    pcle: "part."
+    phrase_adv: "adv."
+    phrase_a: "adj."
+    phrase_i: "interj."
+    phrase_n: "s."
+    phrase_prop: "egennavn"
+    po: "postp."
+    pr: "prep."
+    pron: "pron."
+    prop: "egennavn"
+
   sme:
     V: "v."
     N: "s."
