@@ -1,5 +1,3 @@
-
-
 # Finnish translations for PROJECT.
 # Copyright (C) 2013 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
@@ -9,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-02-01 01:54-0600\n"
+"POT-Creation-Date: 2013-02-02 21:54-0600\n"
 "PO-Revision-Date: 2013-02-01 01:55-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fi <LL@li.org>\n"
@@ -19,7 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: neahtta.py:348
+#: language_names.py:9 templates/language_select.html:11
+msgid "North Sámi"
+msgstr "pohjoissaame"
+
+#: language_names.py:10 templates/language_select.html:13
+msgid "Finnish"
+msgstr "suomi"
+
+#: language_names.py:11 templates/language_select.html:12
+msgid "Norwegian"
+msgstr "norja"
+
+#: language_names.py:12
+msgid "South Sámi"
+msgstr "eteläsaame"
+
+#: neahtta.py:406
 msgid "Invalid format. Only json and html allowed."
 msgstr "Kelvoton muoto. Hyväksytään vain json ja html"
 
@@ -28,8 +42,8 @@ msgid ""
 "Whoops! The page you requested was not found. If you think you are "
 "receiving this in error, please contact us."
 msgstr ""
-"Oho! Etsimääsi sivua ei löytynyt. Jos olet sitä mieltä, "
-"että sivun olisi pitänyt löytyä, ota yhteyttä meihin."
+"Oho! Etsimääsi sivua ei löytynyt. Jos olet sitä mieltä, että sivun olisi "
+"pitänyt löytyä, ota yhteyttä meihin."
 
 #: templates/about.html:50
 msgid "A dictionary that understands what you're looking for."
@@ -68,8 +82,7 @@ msgstr ""
 "Kaikki tässä perustuu avoimeen lähdekoodiin. Jos suunnittelet\n"
 "appin tekemistä tai tutkimusprojektia, mihin tarvitset lingvistisiä\n"
 "resursseja, niin  <a class=\"blue\"\n"
-"                href=\"http://giellatekno.uit.no/\">Giellatekno</a>"
-"\n"
+"                href=\"http://giellatekno.uit.no/\">Giellatekno</a>\n"
 "kotisivulta löydät tietoja sanalistojen ja morfologisten\n"
 "ja syntaktisten analysaattorien käytöstä."
 
@@ -89,120 +102,125 @@ msgstr ""
 msgid "gå, dra, reise"
 msgstr "mennä, lähteä"
 
-#: templates/base.html:70
+#: templates/base.html:77
 msgid "Home"
 msgstr "Koti"
 
-#: templates/base.html:74
+#: templates/base.html:81
 msgid "Plugins"
 msgstr ""
 
-
-#: templates/base.html:78
+#: templates/base.html:85
 msgid "About"
 msgstr "Meistä"
 
-#: templates/base.html:95
-msgid "Language"
-msgstr "Kieli"
-
-#: templates/base.html:148
+#: templates/base.html:144
 msgid ""
 "Created with free and open-source language tools from <em><a "
 "href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, a Sámi Language "
 "Technology group at the <a href=\"http://uit.no\">University of "
 "Tromsø</a>."
 msgstr ""
-"Luotu  <em><a href=\"http://giellatekno.uit.no/index.fin.html\">Giellateknon</a></em> "
-"vapaan ja avoimen lähdekoodin avulla. Giellatekno on  "
-"<a href=\"http://uit.no\">Tromssan yliopiston</a> "
-"kieliteknologian tutkimusryhmä."
+"Luotu  <em><a "
+"href=\"http://giellatekno.uit.no/index.fin.html\">Giellateknon</a></em> "
+"vapaan ja avoimen lähdekoodin avulla. Giellatekno on  <a "
+"href=\"http://uit.no\">Tromssan yliopiston</a> kieliteknologian "
+"tutkimusryhmä."
 
-#: templates/index.html:122 templates/word_detail.html:78
+#: templates/index.html:120 templates/word_detail.html:77
 msgid "Search"
 msgstr "Etsi"
 
-#: templates/index.html:176
+#: templates/index.html:166
 msgid "Unknown word:"
 msgstr "Tuntematon sana:"
 
-#: templates/index.html:188
+#: templates/index.html:178
 msgid " is a possible form of ... "
 msgstr " on mahdollinen muoto sanasta ... "
 
-#: templates/index.html:208
+#: templates/index.html:204
 #, python-format
 msgid "Word %(input)s not found."
 msgstr "Sanaa %(input%) ei löytynyt."
 
-#: templates/index.html:222
+#: templates/index.html:218
 msgid "Search for a word, or a word form for a word analysis and definition."
 msgstr "Etsi sanaa tai sanamuotoa analyysia ja käännöstä varten."
 
-#: templates/reader.html:9
+#: templates/language_select.html:8
+msgid "Language"
+msgstr "Kieli"
+
+#: templates/reader.html:10
 msgid "Neahttadigisánit Reader"
 msgstr "Neahttadigisánit Lukija"
 
-#: templates/reader.html:11
+#: templates/reader.html:12
 msgid "Bookmarklet"
 msgstr "Kirjanmerkki"
 
-#: templates/reader.html:12
+#: templates/reader.html:13
 msgid ""
 "Drag and drop the following link to your Bookmark toolbar,\n"
-"            then click it when you are on a page you wish to read. The\n"
-"            service will automatically be installed, and you will see a\n"
-"            menu icon on the left-hand side of the page."
+"                then click it when you are on a page you wish to read. "
+"The\n"
+"                service will automatically be installed, and you will see"
+" a\n"
+"                menu icon on the left-hand side of the page."
 msgstr ""
 "Vedä ja laita seuraava linkki Kirjanmerkki-valikkoosi.\n"
 "Kun olet nettisivulla, jota haluat lukea, klikkaat kirjanmerkkiä.\n"
 "Lukusanakirja asennetaan automaattisesti, ja näet valikkosymbolin\n"
 "<em>Á</em> sivun vasemassa reunassa."
 
-#: templates/reader.html:16
+#: templates/reader.html:17
 msgid ""
 "In order to look up a word, hold Alt or Option (⌥) and double\n"
-"            click the word. The service will will connect to this\n"
-"            website and return dictionary entries after a brief\n"
-"            pause."
+"                click the word. The service will will connect to this\n"
+"                website and return dictionary entries after a brief\n"
+"                pause."
 msgstr ""
-"Etsiäksesi sanaa, paina <em>Alt</em> tai <em>Option</em> (⌥) ja kaksoisklikkaa\n"
+"Etsiäksesi sanaa, paina <em>Alt</em> tai <em>Option</em> (⌥) ja "
+"kaksoisklikkaa\n"
 "sanaa. Palvelu ottaa yhteyttä tähän nettisivuun ja antaa sinulle\n"
 "käännöksen lyhyen tauon jälkeen."
 
-#: templates/reader.html:21
+#: templates/reader.html:22
 msgid "Read with Neahttadigisánit"
 msgstr "Lue Neahttadigisánit-sanakirjan avulla"
 
-#: templates/reader.html:22
+#: templates/reader.html:23
 msgid "Bugs?"
 msgstr "Virheitä?"
 
-#: templates/reader.html:23
+#: templates/reader.html:24
 msgid ""
 "If you encounter bugs, or the bookmarklet does not work on a\n"
-"            particular page, contact us with the page URL or details of\n"
-"            what you were reading when you encountered the problem."
+"                particular page, contact us with the page URL or details "
+"of\n"
+"                what you were reading when you encountered the problem."
 msgstr ""
 "Jos löydät virheitä, tai jos kirjanmerkki ei toimii tietyllä\n"
 "nettisivulla, voit ottaa yhteyttä meihin, ja kertoa sivun URL\n"
 "ja mitä olit lukemassa kun sanakirja ei toiminut."
 
-#: templates/reader.html:26
+#: templates/reader.html:27
 msgid ""
 "We do not store any private data, but we do collect\n"
-"            individual dictionary lookups for statistics and to improve\n"
-"            the dictionary."
+"                individual dictionary lookups for statistics and to "
+"improve\n"
+"                the dictionary."
 msgstr ""
 "Me emme tallenna yksityisiä tietoja, mutta keräamme\n"
 "yksittäisiä sanahakuja tilastoa ja sanakirjan\n"
 "parantamista varten."
 
-#: templates/word_detail.html:29
+#: templates/word_detail.html:28
 msgid "is a possible form of ... "
 msgstr "on mahdollinen muoto sanasta ..."
 
-#: templates/word_detail.html:131
+#: templates/word_detail.html:130
 msgid "More information about this word"
 msgstr "Lisätietoa tästä sanasta"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-02-01 01:54-0600\n"
+"POT-Creation-Date: 2013-02-02 21:54-0600\n"
 "PO-Revision-Date: 2013-02-01 01:55-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: se <LL@li.org>\n"
@@ -17,7 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: neahtta.py:348
+#: language_names.py:9 templates/language_select.html:11
+msgid "North Sámi"
+msgstr ""
+
+#: language_names.py:10 templates/language_select.html:13
+msgid "Finnish"
+msgstr ""
+
+#: language_names.py:11 templates/language_select.html:12
+msgid "Norwegian"
+msgstr ""
+
+#: language_names.py:12
+msgid "South Sámi"
+msgstr ""
+
+#: neahtta.py:406
 msgid "Invalid format. Only json and html allowed."
 msgstr "Formáhta ii doaimma. Dušše json ja html doibmet."
 
@@ -25,8 +41,9 @@ msgstr "Formáhta ii doaimma. Dušše json ja html doibmet."
 msgid ""
 "Whoops! The page you requested was not found. If you think you are "
 "receiving this in error, please contact us."
-msgstr "Vuoi! Siidu ii gávdno. Jus du mielas galggašii gávdnot, "
-"de dáhttut du váldit oktavuođa minguin."
+msgstr ""
+"Vuoi! Siidu ii gávdno. Jus du mielas galggašii gávdnot, \"\n"
+"\"de dáhttut du váldit oktavuođa minguin."
 
 #: templates/about.html:50
 msgid "A dictionary that understands what you're looking for."
@@ -45,7 +62,8 @@ msgid ""
 msgstr ""
 "Buot (dahje goitge measta buot) mii\n"
 "                    guoská vehádatgielaide, galggašii leat nuvttá.\n"
-"                    Dás gávnnat nuvttá sátnegirjjiid, ja eará analyserenreaidduid"
+"                    Dás gávnnat nuvttá sátnegirjjiid, ja eará "
+"analyserenreaidduid"
 
 #: templates/about.html:62
 msgid "Open-Source"
@@ -62,11 +80,11 @@ msgid ""
 "                files, and morphological and syntactic analyzers."
 msgstr ""
 "Buot dás vuođđuduvvo rabas gáldokodareaidduide. Leatgo\n"
-"				 pláneme app dahje dutkanprošeavtta mii dárbbaša\n"
+"\t\t\t\t pláneme app dahje dutkanprošeavtta mii dárbbaša\n"
 "                lingvisttalaš resurssaid? <a class=\"blue\"\n"
-"                href=\"http://giellatekno.uit.no/\">Giellatekno</a>"
-"\n"
-"                ruovttusiiddus gávnnat dieđuid das mo don beasat geavahit sátnelisttuid,\n"
+"                href=\"http://giellatekno.uit.no/\">Giellatekno</a>\n"
+"                ruovttusiiddus gávnnat dieđuid das mo don beasat geavahit"
+" sátnelisttuid,\n"
 "                fiillaid ja morfologalaš ja syntávssalaš analysáhtoriid."
 
 #: templates/about.html:71
@@ -77,125 +95,136 @@ msgstr "Lingvisttalaš vuođđu"
 msgid ""
 "Write what you wish, and the dictionary will analyze it to break apart "
 "compound words and find base forms."
-msgstr ""
-"Čále maid háliidat, ja sátnegirji ohcá vuođđohámiid. "
+msgstr "Čále maid háliidat, ja sátnegirji ohcá vuođđohámiid. "
 
 #: templates/about.html:78
 msgid "gå, dra, reise"
 msgstr "gå, dra, reise"
 
-#: templates/base.html:70
+#: templates/base.html:77
 msgid "Home"
 msgstr "Ruoktu"
 
-#: templates/base.html:74
+#: templates/base.html:81
 msgid "Plugins"
 msgstr "Lohkanveahkki"
 
-#: templates/base.html:78
+#: templates/base.html:85
 msgid "About"
 msgstr "Min birra"
 
-#: templates/base.html:95
-msgid "Language"
-msgstr "Giella"
-
-#: templates/base.html:148
+#: templates/base.html:144
 msgid ""
 "Created with free and open-source language tools from <em><a "
 "href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, a Sámi Language "
 "Technology group at the <a href=\"http://uit.no\">University of "
 "Tromsø</a>."
 msgstr ""
-"Ráhkaduvvon <em><a "href=\"http://giellatekno.uit.no\">Giellatekno</a></em> "
-"nuvttá ja rabas gáldokoda giellareaidduiguin. Giellatekno "
-"lea <a href=\"http://uit.no\">Romssa universitehta</a> " 
-"sámi giellateknologiija joavku."
+"Ráhkaduvvon <em><a "
+"\"href=\"http://giellatekno.uit.no\">Giellatekno</a></em> nuvttá ja rabas"
+" gáldokoda giellareaidduiguin. Giellatekno lea <a "
+"href=\"http://uit.no\">Romssa universitehta</a> sámi giellateknologiija "
+"joavku."
 
-#: templates/index.html:122 templates/word_detail.html:78
+#: templates/index.html:120 templates/word_detail.html:77
 msgid "Search"
 msgstr "Oza"
 
-#: templates/index.html:176
+#: templates/index.html:166
 msgid "Unknown word:"
 msgstr "Amas sátni"
 
-#: templates/index.html:188
+#: templates/index.html:178
 msgid " is a possible form of ... "
 msgstr " lea vejolaččat dán sáni hápmi:"
 
-#: templates/index.html:208
+#: templates/index.html:204
 #, python-format
 msgid "Word %(input)s not found."
 msgstr "Sátni %(input)s ii gávdnon."
 
-#: templates/index.html:222
+#: templates/index.html:218
 msgid "Search for a word, or a word form for a word analysis and definition."
 msgstr "Oza sáni, dahje sojahuvvon sátnehámi mii dalle analyserejuvvo."
 
-#: templates/reader.html:9
+#: templates/language_select.html:8
+msgid "Language"
+msgstr "Giella"
+
+#: templates/reader.html:10
 msgid "Neahttadigisánit Reader"
 msgstr "Neahttadigisániid lohkanveahkki"
 
-#: templates/reader.html:11
+#: templates/reader.html:12
 msgid "Bookmarklet"
 msgstr "Girjemearka"
 
-#: templates/reader.html:12
+#: templates/reader.html:13
+#, fuzzy
 msgid ""
 "Drag and drop the following link to your Bookmark toolbar,\n"
-"            then click it when you are on a page you wish to read. The\n"
-"            service will automatically be installed, and you will see a\n"
-"            menu icon on the left-hand side of the page."
+"                then click it when you are on a page you wish to read. "
+"The\n"
+"                service will automatically be installed, and you will see"
+" a\n"
+"                menu icon on the left-hand side of the page."
 msgstr ""
 "Gease liŋkka iežat girjemearkafállui. Coahkkal girjemearkka\n"
 "            go leat neahttasiiddus maid háliidat lohkat.\n"
 "            Bálvalus sajáiduvvá automáhtalaččat, ja gurut ravddas\n"
 "            ihtá dalle fállu gos sáhtát válljet giela."
 
-#: templates/reader.html:16
+#: templates/reader.html:17
+#, fuzzy
 msgid ""
 "In order to look up a word, hold Alt or Option (⌥) and double\n"
-"            click the word. The service will will connect to this\n"
-"            website and return dictionary entries after a brief\n"
-"            pause."
+"                click the word. The service will will connect to this\n"
+"                website and return dictionary entries after a brief\n"
+"                pause."
 msgstr ""
-"Go áiggut ohcat sáni, doala <em>Alt</em> dahje <em>Option</em> (⌥) ja duppalcoahkkal\n"
+"Go áiggut ohcat sáni, doala <em>Alt</em> dahje <em>Option</em> (⌥) ja "
+"duppalcoahkkal\n"
 "            sáni. Bálvalus váldá oktavuođa dáinna siidduin ja addá\n"
 "            dutnje jorgalusa. Ádjána binnáš.\n"
 
-#: templates/reader.html:21
+#: templates/reader.html:22
 msgid "Read with Neahttadigisánit"
 msgstr "Loga Neahttadigisániid lohkanvehkiin"
 
-#: templates/reader.html:22
+#: templates/reader.html:23
 msgid "Bugs?"
 msgstr "Meattáhusat?"
 
-#: templates/reader.html:23
+#: templates/reader.html:24
+#, fuzzy
 msgid ""
 "If you encounter bugs, or the bookmarklet does not work on a\n"
-"            particular page, contact us with the page URL or details of\n"
-"            what you were reading when you encountered the problem."
+"                particular page, contact us with the page URL or details "
+"of\n"
+"                what you were reading when you encountered the problem."
 msgstr ""
-"Jus fuobmát meattáhusaid, dahje jus girjemearka ii doaimma dihto neahttasiiddus,\n"
-"            de váldde oktavuođa minguin, ja muital siiddu URL ja maid don ledjet\n"
+"Jus fuobmát meattáhusaid, dahje jus girjemearka ii doaimma dihto "
+"neahttasiiddus,\n"
+"            de váldde oktavuođa minguin, ja muital siiddu URL ja maid don"
+" ledjet\n"
 "            lohkame dalle go vuogádat ii doaibman."
 
-#: templates/reader.html:26
+#: templates/reader.html:27
+#, fuzzy
 msgid ""
 "We do not store any private data, but we do collect\n"
-"            individual dictionary lookups for statistics and to improve\n"
-"            the dictionary."
+"                individual dictionary lookups for statistics and to "
+"improve\n"
+"                the dictionary."
 msgstr ""
 "Mii eat vurke priváhta dieđuid, muhto mii vurket sániid maid ozat\n"
 "            statistihkkii ja sátnegirjji buorideapmái."
 
-#: templates/word_detail.html:29
+#: templates/word_detail.html:28
 msgid "is a possible form of ... "
 msgstr "lea vejolaččat dán sáni hápmi: "
 
-#: templates/word_detail.html:131
+#: templates/word_detail.html:130
 msgid "More information about this word"
 msgstr "Eanet dieđut dán sáni birra"
 

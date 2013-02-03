@@ -37,7 +37,11 @@ First generate messages.pot (.po template file)
 
     pybabel extract -F babel.cfg -k lazy_gettext -o messages.pot .
 
-Then create some translations into different locales:
+Update to find new strings and automatically merge:
+
+    pybabel update -i messages.pot -d translations
+
+Or, create some translations into different locales:
 
     pybabel init -i messages.pot -d translations -l no
     pybabel init -i messages.pot -d translations -l sma
@@ -47,10 +51,6 @@ Then compile:
 
     pybabel compile -d translations
 
-
-Update to find new strings and automatically merge:
-
-    pybabel update -i messages.pot -d translations
 
 
 

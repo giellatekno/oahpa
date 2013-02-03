@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-02-01 01:54-0600\n"
+"POT-Creation-Date: 2013-02-02 21:54-0600\n"
 "PO-Revision-Date: 2013-02-01 01:54-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -17,7 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: neahtta.py:348
+#: language_names.py:9 templates/language_select.html:11
+msgid "North Sámi"
+msgstr ""
+
+#: language_names.py:10 templates/language_select.html:13
+msgid "Finnish"
+msgstr ""
+
+#: language_names.py:11 templates/language_select.html:12
+msgid "Norwegian"
+msgstr ""
+
+#: language_names.py:12
+msgid "South Sámi"
+msgstr ""
+
+#: neahtta.py:406
 msgid "Invalid format. Only json and html allowed."
 msgstr "Ugyldig format. Bare json og html er tillatt."
 
@@ -26,8 +42,8 @@ msgid ""
 "Whoops! The page you requested was not found. If you think you are "
 "receiving this in error, please contact us."
 msgstr ""
-"Oi! Vi fant ikke sida du så etter. Hvis du tror dette "
-"er på grunn av en feil vil vi bli glad om du kontakter oss."
+"Oi! Vi fant ikke sida du så etter. Hvis du tror dette er på grunn av en "
+"feil vil vi bli glad om du kontakter oss."
 
 #: templates/about.html:50
 msgid "A dictionary that understands what you're looking for."
@@ -66,8 +82,7 @@ msgstr ""
 "Alt her er basert på åpen kildekode. Har du ideer for\n"
 "en app eller et forskingsprosjekt som trenger lingvistiske\n"
 "ressurser? Se <a class=\"blue\"\n"
-" href=\"http://giellatekno.uit.no/\">Giellateknos</a>"
-"\n"
+" href=\"http://giellatekno.uit.no/\">Giellateknos</a>\n"
 "nettside for å få vite hvordan du kan få tilgang til leksikonfiler\n"
 "og morfologiske og syntaktiske analyseprogram."
 
@@ -87,23 +102,19 @@ msgstr ""
 msgid "gå, dra, reise"
 msgstr ""
 
-#: templates/base.html:70
+#: templates/base.html:77
 msgid "Home"
 msgstr "Hjem"
 
-#: templates/base.html:74
+#: templates/base.html:81
 msgid "Plugins"
 msgstr "Utvidelser"
 
-#: templates/base.html:78
+#: templates/base.html:85
 msgid "About"
 msgstr "Om oss"
 
-#: templates/base.html:95
-msgid "Language"
-msgstr "Språk"
-
-#: templates/base.html:148
+#: templates/base.html:144
 msgid ""
 "Created with free and open-source language tools from <em><a "
 "href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, a Sámi Language "
@@ -111,95 +122,108 @@ msgid ""
 "Tromsø</a>."
 msgstr ""
 "Laga med språkverktøy basert på gratis og åpen kildekode fra <em><a "
-"href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, Senter "
-"for samisk språkteknologi ved <a href=\"http://uit.no\">Universitetet i "
+"href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, Senter for "
+"samisk språkteknologi ved <a href=\"http://uit.no\">Universitetet i "
 "Tromsø</a>."
 
-#: templates/index.html:122 templates/word_detail.html:78
+#: templates/index.html:120 templates/word_detail.html:77
 msgid "Search"
 msgstr "Søk"
 
-#: templates/index.html:176
+#: templates/index.html:166
 msgid "Unknown word:"
 msgstr "Ukjent ord:"
 
-#: templates/index.html:188
+#: templates/index.html:178
 msgid " is a possible form of ... "
 msgstr " er en mulig form av ... "
 
-#: templates/index.html:208
+#: templates/index.html:204
 #, python-format
 msgid "Word %(input)s not found."
 msgstr "Ordet %(input)s ikke funnet."
 
-#: templates/index.html:222
+#: templates/index.html:218
 msgid "Search for a word, or a word form for a word analysis and definition."
 msgstr "Søk etter et ord eller ei ordform for å få analyse og betydning."
 
-#: templates/reader.html:9
+#: templates/language_select.html:8
+msgid "Language"
+msgstr "Språk"
+
+#: templates/reader.html:10
 msgid "Neahttadigisánit Reader"
 msgstr "Neahttadigisánit Leser"
 
-#: templates/reader.html:11
+#: templates/reader.html:12
 msgid "Bookmarklet"
 msgstr "Bokmerke"
 
-#: templates/reader.html:12
+#: templates/reader.html:13
+#, fuzzy
 msgid ""
 "Drag and drop the following link to your Bookmark toolbar,\n"
-"            then click it when you are on a page you wish to read. The\n"
-"            service will automatically be installed, and you will see a\n"
-"            menu icon on the left-hand side of the page."
+"                then click it when you are on a page you wish to read. "
+"The\n"
+"                service will automatically be installed, and you will see"
+" a\n"
+"                menu icon on the left-hand side of the page."
 msgstr ""
 "Dra og dropp denne lenka til bokmerkelinja di,\n"
 "deretter klikker du på den hver gang du har funnet ei side\n"
 "du gjerne vil lese. Tjenesten vil bli installert automatisk,\n"
 "og du ser et menyikon (<em>Á</em>) på venstre side av nettsida."
 
-#: templates/reader.html:16
+#: templates/reader.html:17
+#, fuzzy
 msgid ""
 "In order to look up a word, hold Alt or Option (⌥) and double\n"
-"            click the word. The service will will connect to this\n"
-"            website and return dictionary entries after a brief\n"
-"            pause."
+"                click the word. The service will will connect to this\n"
+"                website and return dictionary entries after a brief\n"
+"                pause."
 msgstr ""
-"For å slå opp et ord holder du <em>Alt</em> eller <em>Option</em> (⌥) nede\n"
+"For å slå opp et ord holder du <em>Alt</em> eller <em>Option</em> (⌥) "
+"nede\n"
 "og dobbelklikker på ordet. Tjenesten vil kontakte denne nettsida\n"
 "og returnere ordboksoppslag etter en kort pause."
 
-#: templates/reader.html:21
+#: templates/reader.html:22
 msgid "Read with Neahttadigisánit"
 msgstr "Les med Neahttadigisánit"
 
-#: templates/reader.html:22
+#: templates/reader.html:23
 msgid "Bugs?"
 msgstr "Feil?"
 
-#: templates/reader.html:23
+#: templates/reader.html:24
+#, fuzzy
 msgid ""
 "If you encounter bugs, or the bookmarklet does not work on a\n"
-"            particular page, contact us with the page URL or details of\n"
-"            what you were reading when you encountered the problem."
+"                particular page, contact us with the page URL or details "
+"of\n"
+"                what you were reading when you encountered the problem."
 msgstr ""
 "Hvis du finner feil, eller hvis bokmerket ikke fungerer for\n"
 "ei viss side må du gjerne kontakte oss. Si i tilfelle fra hvilken\n"
 "side det gjaldt eller hva som var problemet."
 
-#: templates/reader.html:26
+#: templates/reader.html:27
+#, fuzzy
 msgid ""
 "We do not store any private data, but we do collect\n"
-"            individual dictionary lookups for statistics and to improve\n"
-"            the dictionary."
+"                individual dictionary lookups for statistics and to "
+"improve\n"
+"                the dictionary."
 msgstr ""
 "Vi lagrer ingen private data eller individuelle brukerdata, men\n"
 "vi samler statistikk over hvilke ordboksoppslag som blir gjort,\n"
 "for å rette mangler og forbedre ordboka."
 
-#: templates/word_detail.html:29
+#: templates/word_detail.html:28
 msgid "is a possible form of ... "
 msgstr "er ei mulig form av ... "
 
-#: templates/word_detail.html:131
+#: templates/word_detail.html:130
 msgid "More information about this word"
 msgstr "Mer informasjon om dette ordet"
 

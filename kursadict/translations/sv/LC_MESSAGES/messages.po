@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-02-01 01:54-0600\n"
+"POT-Creation-Date: 2013-02-02 21:54-0600\n"
 "PO-Revision-Date: 2013-02-01 01:55-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: sv <LL@li.org>\n"
@@ -17,7 +17,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: neahtta.py:348
+#: language_names.py:9 templates/language_select.html:11
+msgid "North Sámi"
+msgstr ""
+
+#: language_names.py:10 templates/language_select.html:13
+msgid "Finnish"
+msgstr ""
+
+#: language_names.py:11 templates/language_select.html:12
+msgid "Norwegian"
+msgstr ""
+
+#: language_names.py:12
+msgid "South Sámi"
+msgstr ""
+
+#: neahtta.py:406
 msgid "Invalid format. Only json and html allowed."
 msgstr ""
 
@@ -72,23 +88,19 @@ msgstr ""
 msgid "gå, dra, reise"
 msgstr ""
 
-#: templates/base.html:70
+#: templates/base.html:77
 msgid "Home"
 msgstr ""
 
-#: templates/base.html:74
+#: templates/base.html:81
 msgid "Plugins"
 msgstr ""
 
-#: templates/base.html:78
+#: templates/base.html:85
 msgid "About"
 msgstr ""
 
-#: templates/base.html:95
-msgid "Language"
-msgstr ""
-
-#: templates/base.html:148
+#: templates/base.html:144
 msgid ""
 "Created with free and open-source language tools from <em><a "
 "href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, a Sámi Language "
@@ -96,78 +108,86 @@ msgid ""
 "Tromsø</a>."
 msgstr ""
 
-#: templates/index.html:122 templates/word_detail.html:78
+#: templates/index.html:120 templates/word_detail.html:77
 msgid "Search"
 msgstr ""
 
-#: templates/index.html:176
+#: templates/index.html:166
 msgid "Unknown word:"
 msgstr ""
 
-#: templates/index.html:188
+#: templates/index.html:178
 msgid " is a possible form of ... "
 msgstr ""
 
-#: templates/index.html:208
+#: templates/index.html:204
 #, python-format
 msgid "Word %(input)s not found."
 msgstr ""
 
-#: templates/index.html:222
+#: templates/index.html:218
 msgid "Search for a word, or a word form for a word analysis and definition."
 msgstr ""
 
-#: templates/reader.html:9
+#: templates/language_select.html:8
+msgid "Language"
+msgstr ""
+
+#: templates/reader.html:10
 msgid "Neahttadigisánit Reader"
 msgstr ""
 
-#: templates/reader.html:11
+#: templates/reader.html:12
 msgid "Bookmarklet"
 msgstr ""
 
-#: templates/reader.html:12
+#: templates/reader.html:13
 msgid ""
 "Drag and drop the following link to your Bookmark toolbar,\n"
-"            then click it when you are on a page you wish to read. The\n"
-"            service will automatically be installed, and you will see a\n"
-"            menu icon on the left-hand side of the page."
+"                then click it when you are on a page you wish to read. "
+"The\n"
+"                service will automatically be installed, and you will see"
+" a\n"
+"                menu icon on the left-hand side of the page."
 msgstr ""
 
-#: templates/reader.html:16
+#: templates/reader.html:17
 msgid ""
 "In order to look up a word, hold Alt or Option (⌥) and double\n"
-"            click the word. The service will will connect to this\n"
-"            website and return dictionary entries after a brief\n"
-"            pause."
-msgstr ""
-
-#: templates/reader.html:21
-msgid "Read with Neahttadigisánit"
+"                click the word. The service will will connect to this\n"
+"                website and return dictionary entries after a brief\n"
+"                pause."
 msgstr ""
 
 #: templates/reader.html:22
-msgid "Bugs?"
+msgid "Read with Neahttadigisánit"
 msgstr ""
 
 #: templates/reader.html:23
+msgid "Bugs?"
+msgstr ""
+
+#: templates/reader.html:24
 msgid ""
 "If you encounter bugs, or the bookmarklet does not work on a\n"
-"            particular page, contact us with the page URL or details of\n"
-"            what you were reading when you encountered the problem."
+"                particular page, contact us with the page URL or details "
+"of\n"
+"                what you were reading when you encountered the problem."
 msgstr ""
 
-#: templates/reader.html:26
+#: templates/reader.html:27
 msgid ""
 "We do not store any private data, but we do collect\n"
-"            individual dictionary lookups for statistics and to improve\n"
-"            the dictionary."
+"                individual dictionary lookups for statistics and to "
+"improve\n"
+"                the dictionary."
 msgstr ""
 
-#: templates/word_detail.html:29
+#: templates/word_detail.html:28
 msgid "is a possible form of ... "
 msgstr ""
 
-#: templates/word_detail.html:131
+#: templates/word_detail.html:130
 msgid "More information about this word"
 msgstr ""
 
