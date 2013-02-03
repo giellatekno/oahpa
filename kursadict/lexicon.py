@@ -169,7 +169,15 @@ class FrontPageFormat(XMLDict):
         l = e.find('lg/l')
         left_text = l.text
         left_pos = l.get('pos')
-        tgs = e.findall('mg/tg')
+
+        target_lang = result_filters.get('target_lang', False)
+
+        if target_lang:
+            ts = e.xpath("mg/tg[@xml:lang='%s']/t" % target_lang)
+            tgs = e.xpath("mg/tg[@xml:lang='%s']" % target_lang)
+        else:
+            ts = e.findall('mg/tg/t')
+            tgs = e.findall('mg/tg')
 
         left_context = l.get('context')
         if left_context == None:
@@ -258,11 +266,17 @@ class DetailedEntries(XMLDict):
             else:
                 return False
 
-        # TODO: <re> nodes
-        # TODO: te re go here
-        # TODO: template needs it too
+        target_lang = result_filters.get('target_lang', False)
+
+        if target_lang:
+            ts = e.xpath("mg/tg[@xml:lang='%s']/t" % target_lang)
+            tgs = e.xpath("mg/tg[@xml:lang='%s']" % target_lang)
+        else:
+            ts = e.findall('mg/tg/t')
+            tgs = e.findall('mg/tg')
+
         meaningGroups = []
-        for tg in e.findall('mg/tg'):
+        for tg in tgs:
             tx = tg.findall('t')
             te = tg.find('te')
             re = tg.find('re')
@@ -383,6 +397,8 @@ class ReverseLookups(XMLDict):
 # TODO: settings.lexicon?
 class Lexicon(object):
 
+    # TODO: can reduce complexity of this by including format in lookup
+    # calls, and removing additional lookup functions.
     def __init__(self, settings):
 
         language_pairs = dict(
@@ -425,6 +441,7 @@ class Lexicon(object):
         detailed_tree = DetailedEntries(tree=lexicon.tree)
 
         args = [lookup, pos]
+        kwargs = {'target_lang': _to}
         if _type:
             if _type.strip():
                 args.append(_type)
@@ -436,7 +453,7 @@ class Lexicon(object):
                 lookupfunc = detailed_tree.lookupLemma
                 args = [args[0]]
 
-        return lookupfunc(*args)
+        return lookupfunc(*args, **kwargs)
 
 
 
@@ -480,6 +497,7 @@ class Lexicon(object):
         frontpageformat = FrontPageFormat(tree=lexicon.tree)
 
         args = [lookup]
+        kwargs = {'target_lang': _to}
         if lookup_type:
             if lookup_type.strip():
                 args.append(lookup_type)
@@ -487,7 +505,7 @@ class Lexicon(object):
         else:
             lookupfunc = frontpageformat.lookupLemma
 
-        result = lookupfunc(*args)
+        result = lookupfunc(*args, **kwargs)
         return { 'lookups': result
                , 'input': lookup
                }

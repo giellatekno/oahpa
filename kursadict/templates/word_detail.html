@@ -105,11 +105,7 @@
                 {% for tg in lexeme.entries.lookups %}
                     <ul class="meanings">
                         {% for mg in tg.meaningGroups %}
-                            {% if mg.language and mg.language == _to %}
-                                <li>{% include 'word_detail_li.html' %}</li>
-                            {% elif not mg.language %}
-                                <li>{% include 'word_detail_li.html' %}</li>
-                            {% endif %}
+                            <li>{% include 'word_detail_li.html' %}</li>
                         {% endfor %}
                     </ul>
                 {% endfor %}
