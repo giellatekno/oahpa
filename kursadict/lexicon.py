@@ -34,10 +34,10 @@ class XMLDict(object):
         self.lemmaStartsWith = etree.XPath('.//e[starts-with(lg/l/text(), $lemma)]')
         self.lemma = etree.XPath('.//e[lg/l/text() = $lemma]')
         self.lemmaPOS = etree.XPath(
-            ".//e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, 'i')]",
+            './/e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, "i")]',
             namespaces={'re':regexpNS})
         self.lemmaPOSAndType = etree.XPath(
-            ".//e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, 'i') and lg/l/@type = $_type]",
+            './/e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, "i") and lg/l/@type = $_type]',
             namespaces={'re':regexpNS})
 
     def cleanEntry(self, e, **result_filters):
@@ -147,6 +147,9 @@ class XMLDict(object):
                          )
 
     def lookupLemmaPOS(self, lemma, pos, target_lang=False):
+        # Can't insert variables in EXSLT expressions within a compiled
+        # xpath statement, so doing this.
+        pos = "^%s$" % pos
         return self.XPath( self.lemmaPOS
                          , lemma=lemma
                          , pos=pos
@@ -154,6 +157,7 @@ class XMLDict(object):
                          )
 
     def lookupLemmaPOSAndType(self, lemma, pos, _type, target_lang=False):
+        pos = "^%s$" % pos
         return self.XPath( self.lemmaPOSAndType
                          , lemma=lemma
                          , pos=pos
