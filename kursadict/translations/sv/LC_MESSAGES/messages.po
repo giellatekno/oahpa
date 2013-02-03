@@ -19,37 +19,39 @@ msgstr ""
 
 #: language_names.py:9 templates/language_select.html:11
 msgid "North Sámi"
-msgstr ""
+msgstr "Nordsamiska"
 
 #: language_names.py:10 templates/language_select.html:13
 msgid "Finnish"
-msgstr ""
+msgstr "Finska"
 
 #: language_names.py:11 templates/language_select.html:12
 msgid "Norwegian"
-msgstr ""
+msgstr "Norska"
 
 #: language_names.py:12
 msgid "South Sámi"
-msgstr ""
+msgstr "Sydsamisk"
 
 #: neahtta.py:406
 msgid "Invalid format. Only json and html allowed."
-msgstr ""
+msgstr "Ogiltigt format. Bara json och html tillåtit"
 
 #: templates/404.html:51
 msgid ""
 "Whoops! The page you requested was not found. If you think you are "
 "receiving this in error, please contact us."
 msgstr ""
+"Oj då! Sidan du frågade efter kunde inte hittas. Om du tycker "
+"du inte borde få det här felmeddelandet, så var god kontakta oss."
 
 #: templates/about.html:50
 msgid "A dictionary that understands what you're looking for."
-msgstr ""
+msgstr "En ordbok som förstår vad du letar efter."
 
 #: templates/about.html:55
 msgid "Free"
-msgstr ""
+msgstr "Gratis"
 
 #: templates/about.html:56
 msgid ""
@@ -58,10 +60,13 @@ msgid ""
 "                    you'll find free dictionaries, and other analytical\n"
 "                    tools."
 msgstr ""
+"Allt (eller nästan allt, i varje fall) som\n"
+"gäller minoritetsspråk borda vara gratis. Här\n"
+"hittar du gratis och fria ordböcker och andra analysverktyg."
 
 #: templates/about.html:62
 msgid "Open-Source"
-msgstr ""
+msgstr "Öppen källkod"
 
 #: templates/about.html:63
 msgid ""
@@ -73,32 +78,40 @@ msgid ""
 "                website for information on how to get access to lexicon\n"
 "                files, and morphological and syntactic analyzers."
 msgstr ""
+"Allt här är baserad på öppen källkod. Har du en idé till en\n"
+"app eller forskningsprojekt som behöver språkliga resurser?\n"
+"Se <a class=\"blue\" href=\"http://giellatekno.uit.no/\">Giellateknos</a>\n"
+"webbplats för information om hur du får tillgång till lexiconfiler och\n"
+"morfologiska och syntaktiska analysatorer."
+
 
 #: templates/about.html:71
 msgid "Linguistic basis"
-msgstr ""
+msgstr "Lingvistisk grund"
 
 #: templates/about.html:72
 msgid ""
 "Write what you wish, and the dictionary will analyze it to break apart "
 "compound words and find base forms."
 msgstr ""
+"Skriv vilked ord du vill, och ordboken kommer att analysera den, "
+"ta isär sammansatta ord och hitta basformer."
 
 #: templates/about.html:78
 msgid "gå, dra, reise"
-msgstr ""
+msgstr "gå, dra, reise"
 
 #: templates/base.html:77
 msgid "Home"
-msgstr ""
+msgstr "Hem"
 
 #: templates/base.html:81
 msgid "Plugins"
-msgstr ""
+msgstr "Plugins"
 
 #: templates/base.html:85
 msgid "About"
-msgstr ""
+msgstr "Om oss"
 
 #: templates/base.html:144
 msgid ""
@@ -107,39 +120,43 @@ msgid ""
 "Technology group at the <a href=\"http://uit.no\">University of "
 "Tromsø</a>."
 msgstr ""
+"Skapad med språkverktyg grundat på fri och öppen källkod från <em><a "
+"href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, Senter for "
+"samisk språkteknologi vid <a href=\"http://uit.no\">Universitetet i "
+"Tromsö</a>."
 
 #: templates/index.html:120 templates/word_detail.html:77
 msgid "Search"
-msgstr ""
+msgstr "Sök"
 
 #: templates/index.html:166
 msgid "Unknown word:"
-msgstr ""
+msgstr "Okänt ord"
 
 #: templates/index.html:178
 msgid " is a possible form of ... "
-msgstr ""
+msgstr " är en möjlig form av ... "
 
 #: templates/index.html:204
 #, python-format
 msgid "Word %(input)s not found."
-msgstr ""
+msgstr "Ord %(input) hittades inte."
 
 #: templates/index.html:218
 msgid "Search for a word, or a word form for a word analysis and definition."
-msgstr ""
+msgstr "Sök efter ett ord eller en ordform för en ordanalys och definition."
 
 #: templates/language_select.html:8
 msgid "Language"
-msgstr ""
+msgstr "Språk"
 
 #: templates/reader.html:10
 msgid "Neahttadigisánit Reader"
-msgstr ""
+msgstr "Neahttadigisánit Läsordbok"
 
 #: templates/reader.html:12
 msgid "Bookmarklet"
-msgstr ""
+msgstr "Bokmärke"
 
 #: templates/reader.html:13
 msgid ""
@@ -150,6 +167,10 @@ msgid ""
 " a\n"
 "                menu icon on the left-hand side of the page."
 msgstr ""
+"Dra och släpp fäljande länk till din bokmärkelinje,\n"
+"klicka på den när du är på en sida som du vill läsa.\n"
+"Tjänsten installeras automatiskt, och du kommer at se en\n"
+"meny-ikon längst til vänster på sidan." 
 
 #: templates/reader.html:17
 msgid ""
@@ -158,14 +179,17 @@ msgid ""
 "                website and return dictionary entries after a brief\n"
 "                pause."
 msgstr ""
+"För att slå upp ett ord håller du dere <em>Alt</em> eller <em>Option</em>\n"
+" (⌥) och duppeltklickar på ordet. Tjänsten ansluter till sidan och\n"
+"returnerar inom kort med et uppslag ur ordboken."
 
 #: templates/reader.html:22
 msgid "Read with Neahttadigisánit"
-msgstr ""
+msgstr "Läs med  Neahttadigisánit"
 
 #: templates/reader.html:23
 msgid "Bugs?"
-msgstr ""
+msgstr "Fel?"
 
 #: templates/reader.html:24
 msgid ""
@@ -174,6 +198,8 @@ msgid ""
 "of\n"
 "                what you were reading when you encountered the problem."
 msgstr ""
+"Om du påträffar fel eller bokmärket inte fungerar på en viss sida,\n"
+"kontakta oss med webbadress eller berätta vad du läste när du stötte på problem."
 
 #: templates/reader.html:27
 msgid ""
@@ -182,12 +208,15 @@ msgid ""
 "improve\n"
 "                the dictionary."
 msgstr ""
+"Vi sparar inte några privata data, men vi samlar\n"
+"individuella ordboksuppslagningar fär statistik, och\n"
+"för att förbättra ordboken."
 
 #: templates/word_detail.html:28
 msgid "is a possible form of ... "
-msgstr ""
+msgstr "er en mäjlig form av ... "
 
 #: templates/word_detail.html:130
 msgid "More information about this word"
-msgstr ""
+msgstr "Mer inmormation om detta ord"
 
