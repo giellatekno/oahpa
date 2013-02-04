@@ -39,7 +39,7 @@ First generate messages.pot (.po template file)
 
 Update to find new strings and automatically merge:
 
-    pybabel update -i messages.pot -d translations
+    pybabel update -i translations/messages.pot -d translations
 
 Or, create some translations into different locales:
 

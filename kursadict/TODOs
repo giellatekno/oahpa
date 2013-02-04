@@ -1,6 +1,9 @@
 
 ## Commits
 
+ * separating presentation from queries in lexicon
+ * TODO: test everything again
+
 ## Next: 
 
  * fin->sme yllättää - difference between index and detail
@@ -18,6 +21,14 @@
  * reader page: funky padding on footer again, but only in some screen widths
 
  * paradigm documentation here: http://giellatekno.uit.no/doc/dicts/dictionarywork.html
+
+ * 100% accurate paradigm generation for each language could be a bit difficult
+   to achieve via a config file, need to think over some possibilities for
+   allowing custom python functions to be stored somewhere outside of the rest
+   of the code, which are easy to edit and add. 
+   
+   will need individual functions which can filter set of tags to be generated,
+   provide new tags, alter tags, and also have access to lexicon entry node.
 
  * paradigm/word stuff
 

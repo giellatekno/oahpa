@@ -198,13 +198,13 @@ $(document).ready( function() {
 
                             {% endfor %}
                             {% if not successful_entry_exists %}
-                            <p>{% trans %}Definition not found for:{% endtrans %}</p>
-                            <ul class="unknown_lexemes">
-                            {% for lexeme in word_searches %}
-                                <li>{{ lexeme.input }}</li>
-                            {% endfor %}
-                            </ul>
-                            <p class="lead">&nbsp;</p>
+                                <p>{% trans %}Definition not found for:{% endtrans %}</p>
+                                <ul class="unknown_lexemes">
+                                {% for lexeme in word_searches %}
+                                    <li>{{ lexeme.input }}</li>
+                                {% endfor %}
+                                </ul>
+                                <p class="lead">&nbsp;</p>
                             {% endif %}
                             </span>
 
@@ -238,12 +238,6 @@ $(document).ready( function() {
                     <div class="alert alert-error">
                         <p>
                             <span>{% trans input=user_input %}Word {{ input }} not found.{% endtrans %}</span>
-                            {# 
-                            <span class="i18n" lang="nob">Ord {{ user_input }} ikke funnet.</span>
-                            <span class="i18n" lang="fin">Sana {{ user_input }} ei löytynyt.</span>
-                            <span class="i18n" lang="eng">Word {{ user_input }} not found.</span>
-                            <span class="i18n" lang="sme">Sátni {{ user_input }} ii gávdnon.</span>
-                            #}
                         </p>
                     </div>
                     {% endif %}
@@ -252,11 +246,6 @@ $(document).ready( function() {
                     <div class="alert alert-success">
                         <p>
                             <span>{% trans %}Search for a word, or a word form for a word analysis and definition.{% endtrans %}</span>
-                            {# 
-                            <span class="i18n" lang="nob">Søk etter et ord, eller ordform for å få analyse og betydning.</span>
-                            <span class="i18n" lang="fin">Kirjoita sana, eli sananmuoto saadakseen analyyseja ja tarkoitukseja.</span>
-                            <span class="i18n" lang="sme">i18n: Søk etter et ord, eller ordform for å få analyse og betydning.</span>
-                            #}
                         </p>
                     </div>
                 {% endif %}
@@ -264,35 +253,6 @@ $(document).ready( function() {
             
         </div>
 
-<!--
-    <div class="container">
-        <br />
-        <br />
-        <br />
-        <hr class="soften">
-        <div class="marketing">
-            <div class="row-fluid">
-                <div class="span4">
-                <h1>Open source, open data</h1>
-                <p class="marketing-byline">Built on data you can use,
-                    and with an open API for word information, and
-                    linguistic tools.</p>
-                </div>
-                <div class="span4">
-                <h1>Open source, open data</h1>
-                <p class="marketing-byline">Built on data you can use,
-                    and with an open API for word information, and
-                    linguistic tools.</p>
-                </div>
-                <div class="span4">
-                <h1>Open source, open data</h1>
-                <p class="marketing-byline">Built on data you can use,
-                    and with an open API for word information, and
-                    linguistic tools.</p>
-                </div>
-            </div>
-        </div>
--->
     </div>
 
     </div>

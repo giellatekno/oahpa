@@ -265,6 +265,7 @@ def lookupWord(from_language, to_language):
 
     """
     from collections import defaultdict
+    from lexicon import SimpleJSON
 
     if (from_language, to_language) not in app.config.dictionaries:
         abort(404)
@@ -274,7 +275,6 @@ def lookupWord(from_language, to_language):
 
     # URL parameters
     lookup_key = user_input = request.args.get('lookup', False)
-    lookup_type             = request.args.get('type', False)
     lemmatize               = request.args.get('lemmatize', False)
     has_callback            = request.args.get('callback', False)
     pretty                  = request.args.get('pretty', False)
@@ -287,7 +287,7 @@ def lookupWord(from_language, to_language):
     if lemm_:
         lemmatizer = lemm_.lemmatize
 
-    if lemmatize and lemmatizer and not lookup_type:
+    if lemmatize and lemmatizer:
         lemmas = lemmatizer( lookup_key
                            , split_compounds=True
                            , non_compound_only=True
@@ -298,11 +298,18 @@ def lookupWord(from_language, to_language):
         lemmas = False
         lookup_keys = [lookup_key]
 
+    # [lemma, lemma, lemma] -> [(lemma, XMLNodes)]
     results, success = app.config.lexicon.lookups( from_language
                                                  , to_language
                                                  , lookup_keys
-                                                 , lookup_type
                                                  )
+
+    # [(lemma, XMLNodes)] -> [(lemma, generator(AlmostJSON))]
+    formatted_results = map( lambda (k, r): ( k
+                                            , SimpleJSON(r)
+                                            )
+                           , results
+                           )
 
     def filterPOS(r):
         def fixTag(t):
@@ -311,21 +318,15 @@ def lookupWord(from_language, to_language):
                 return t
             t['pos'] = tagfilter(t_pos, from_language)
             return t
+        return map(fixTag, r)
 
-        lookups = r.get('lookups')
-
-        if not lookups:
-            return r
-        else:
-            r['lookups'] = map(fixTag, lookups)
-
-        return r
-
-    results = sorted( map(filterPOS, results)
-                    , key=lambda x: len(x['input'])
+    # [(lemma, generator(AlmostJSON))] -> [(lemma, AlmostJSON)]
+    results = sorted( map( lambda (_in, result): (_in, filterPOS(result))
+                         , formatted_results
+                         )
+                    , key=lambda (_in, result): len(_in)
                     , reverse=True
                     )
-
 
     if lemmas:
         tags = False
@@ -343,15 +344,19 @@ def lookupWord(from_language, to_language):
     else:
         tag_lookups = []
 
+    result_with_input = [ {'input': _in, 'lookups': result}
+                          for _in, result in results ]
+
     logSimpleLookups( user_input
-                    , results
+                    , result_with_input
                     , from_language
                     , to_language
                     )
 
-    data = json.dumps({ 'result': results
+    data = json.dumps({ 'result': result_with_input
                       , 'tags': tag_lookups
-                      , 'success': success })
+                      , 'success': success
+                      })
 
 
     if pretty:
@@ -401,6 +406,8 @@ def wordDetail(from_language, to_language, wordform, format):
     """
     import hashlib
 
+    from lexicon import DetailedFormat
+
     user_input = wordform
     if not format in ['json', 'html']:
         return _("Invalid format. Only json and html allowed.")
@@ -441,8 +448,8 @@ def wordDetail(from_language, to_language, wordform, format):
         elif format == 'html':
             abort(404)
 
-    if (from_language, to_language) in app.config.lexicon.reverse_language_pairs:
-        return unsupportedLang()
+    # if (from_language, to_language) in app.config.lexicon.reverse_language_pairs:
+    #     return unsupportedLang()
 
     if app.caching_enabled:
         cached_result = cache.get(cache_key)
@@ -509,18 +516,20 @@ def wordDetail(from_language, to_language, wordform, format):
             paradigm = lang_paradigms.get(pos, False)
             baseforms = lang_baseforms.get(pos, False)
             if baseforms:
-                xml_result = app.config.lexicon.detailedLookup( from_language
-                                                              , to_language
-                                                              , lemma
-                                                              , pos
-                                                              , _type=_type
-                                                              )
+                xml_result = app.config.lexicon.lookup( from_language
+                                                      , to_language
+                                                      , lemma=lemma
+                                                      , pos=pos
+                                                      , pos_type=_type
+                                                      )
 
                 if xml_result:
-                    res = {'lookups': xml_result}
+                    res = { 'lookups': list(DetailedFormat( xml_result
+                                           , target_lang=to_language
+                                           ))
+                    }
                 else:
                     res = False
-                    node = False
 
                 _result_lookups.append({
                     'entries': res,
@@ -533,14 +542,18 @@ def wordDetail(from_language, to_language, wordform, format):
         # This is to lookup words that are done when user clicks on link
         # on front page, thus containing pos_filter
         if wordform and pos_filter and len(_result_lookups) == 0:
-            xml_result = app.config.lexicon.detailedLookup( from_language
-                                                          , to_language
-                                                          , wordform
-                                                          , pos_filter
-                                                          , False
-                                                          )
+            xml_result = app.config.lexicon.lookup( from_language
+                                                  , to_language
+                                                  , lemma=wordform
+                                                  , pos=pos_filter
+                                                  , pos_type=False
+                                                  , _format=DetailedFormat
+                                                  )
             if xml_result:
-                res = {'lookups': xml_result}
+                res = { 'lookups': list(DetailedFormat( xml_result
+                                       , target_lang=to_language
+                                       ))
+                }
             else:
                 res = False
 
@@ -550,14 +563,18 @@ def wordDetail(from_language, to_language, wordform, format):
                 'input': (wordform, pos_filter, 'LEXICALIZED', False)
             })
         elif (not pos_filter) and len(_result_lookups) == 0:
-            xml_result = app.config.lexicon.detailedLookup( from_language
-                                                          , to_language
-                                                          , wordform
-                                                          , False
-                                                          , False
-                                                          )
+            xml_result = app.config.lexicon.lookup( from_language
+                                                  , to_language
+                                                  , wordform
+                                                  , False
+                                                  , False
+                                                  , _format=DetailedFormat
+                                                  )
             if xml_result:
-                res = {'lookups': xml_result}
+                res = { 'lookups': list(DetailedFormat( xml_result
+                                       , target_lang=to_language
+                                       ))
+                }
 
                 # no POS was given in the input, so we grab it from the
                 # lookups
@@ -610,9 +627,9 @@ def wordDetail(from_language, to_language, wordform, format):
 
             paradigm = lang_paradigms.get(pos)
             # See: #lexicalized
-            if tag == 'LEXICALIZED':
-                continue
-            if tag in lang_baseforms.get(pos):
+            # if tag == 'LEXICALIZED':
+            #     continue
+            if tag in lang_baseforms.get(pos, []):
                 if paradigm:
                     _pos_type = [pos]
                     if _type:
@@ -686,202 +703,10 @@ def wordDetail(from_language, to_language, wordform, format):
                               , zip=zipNoTruncate
                               )
 
-# TODO: Keeping the old endpoints until all dependent apps are migrated
-#       to the new ones.
-@app.route('/notify/<from_language>/<to_language>/<wordform>.html',
-           methods=['GET'], endpoint="notify")
-def wordNotification(from_language, to_language, wordform):
-    """
-    Returns a simplified set of JSON for dictionary, with 'success' to mark
-    whether there were no errors. Additional URL parameters are available to
-    control the lookup type or whether the lookup is lemmatized before being
-    run through the lexicon.
-
-    Path parameters:
-
-        /lookup/<from_language>/<to_language>/
-
-        Follow the ISO code.
-
-        TODO: 404 error for missing languages
-
-    URL parameters:
-
-        lookup - the string to search for
-        lemmatize - true/false
-        type - none, or 'startswith'
-
-    Output:
-
-        {
-            "result": [
-                {
-                    "input": "viidni",
-                    "lookups": [
-                        {
-                            "right": [
-                                "vin"
-                            ],
-                            "pos": "n",
-                            "left": "viidni"
-                        }
-                    ]
-                }
-            ],
-            "success": true
-        }
-
-    If there are multiple results from lemmatizing, they are included in the
-    "results" list.
-
-    """
-
-    success = False
-    results = False
-
-    # URL parameters
-    lookup_key = user_input = wordform
-    lookup_type = False
-    lemmatize = True
-
-    if (from_language, to_language) not in app.config.dictionaries:
-        abort(404)
-
-    if lemmatize and not lookup_type:
-        lemm_ = app.config.morphologies.get(from_language, False)
-        if lemm_:
-            lemmatizer = lemm_.lemmatize
-        lemmatized_lookup_key = lemmatizer(lookup_key)
-    else:
-        lemmatized_lookup_key = False
-
-    if lemmatized_lookup_key:
-        if not isinstance(lemmatized_lookup_key, list):
-            lemmatized_lookup_key = [lemmatized_lookup_key]
-
-        results = []
-        for _key in lemmatized_lookup_key:
-            result = lookupXML(from_language, to_language,
-                               _key, lookup_type)
-            result['input'] = _key
-            if len(result['lookups']) == 0:
-                result['lookups'] = False
-            results.append(result)
-
-        results = sorted(results, key=lambda x: len(x['input']), reverse=True)
-
-        if 'error' in result:
-            success = False
-        else:
-            success = True
-
-        if 'lookups' in result:
-            if not result['lookups']:
-                success = False
-    else:
-
-        result = lookupXML(from_language, to_language,
-                           lookup_key, lookup_type)
-        result['input'] = lookup_key
-        if len(result['lookups']) == 0:
-            result['lookups'] = False
-        results = [result]
-
-        results = sorted(results, key=lambda x: len(x['input']), reverse=True)
-
-        if 'error' in result:
-            success = False
-        else:
-            success = True
-
-        if 'lookups' in result:
-            if not result['lookups']:
-                success = False
-
-    result_lemmas = set()
-    tx_set = set()
-    if success:
-        for result in results:
-            result_lookups = result.get('lookups')
-            if result_lookups:
-                for lookup in result_lookups:
-                    l_left = lookup.get('left')
-                    l_right = ', '.join(lookup.get('right'))
-                    tx_set.add(l_right)
-                    # Reversed lookups return list
-                    if isinstance(l_left, list):
-                        for _l in l_left:
-                            result_lemmas.add(_l)
-                    else:
-                        result_lemmas.add(lookup.get('left'))
-
-    result_lemmas = ', '.join(list(result_lemmas))
-    meanings = '; '.join(list(tx_set))
-
-    user_log.info('%s\t%s\t%s\t%s\t%s\t%s' % ( user_input
-                                               , str(success)
-                                               , result_lemmas
-                                               , meanings
-                                               , from_language
-                                               , to_language
-                                               ,
-                                               ))
-
-    return render_template( 'word_notify.html'
-                          , result=results
-                          , success=success
-                          , input=user_input
-                          )
-
-# TODO:
-# TODO: minify and url-encode javascript:blah
-# TODO: http://jsbeautifier.org/
-
-# TODO: assuming loading of the above will be asynchronous, any way
-# to make sure init triggers only when all the other aboves have
-# loaded?
-#
-# TODO: test for jQuery and version, maybe add it if it doesn't
-# exist in the page
-
-# This code works if you copy paste it into the browser's console,
-# however in order for it to work as a bookmarklet, it must be URL
-# encoded.
-bookmarklet = """
-(function () {
-    var NDS_API_HOST    = 'http://localhost:5000' ;
-    
-    var nds_css      = document.createElement('link');
-        nds_css.href = NDS_API_HOST + '/static/css/jquery.neahttadigisanit.css';
-        nds_css.rel  = 'stylesheet' ;
-
-    document.head.appendChild(nds_css) ;
-    
-    var nds_book      = document.createElement('script');
-        nds_book.type = 'text/javascript';
-        nds_book.src  = NDS_API_HOST + '/static/js/bookmarklet.min.js' ;
-
-    window.NDS_API_HOST = NDS_API_HOST ;
-    document.body.appendChild(nds_book) ;
-})();
-"""
-
-# This is the end product of minifying the above, but note that some of
-# this code will need to be urlencoded if support for older browsers is
-# desired.
-bookmarklet_minified = """(function(){var e="http://digitesting.oahpa.no";var t=document.createElement("link");t.href=e+"/static/css/jquery.neahttadigisanit.css";t.rel="stylesheet";document.head.appendChild(t);var n=document.createElement("script");n.type="text/javascript";n.src=e+"/static/js/bookmarklet.min.js";window.NDS_API_HOST=e;document.body.appendChild(n)})()"""
-
-# This part should be url encoded and inserted within the following
-# (function()HERE)()
-# This is because older browsers sometimes have issues with longer
-# bookmarks; it may be that this plugin is also not supported on those
-# browsers, but just in case...
-# http://meyerweb.com/eric/tools/dencoder/
-
-bookmarklet_escaped = """(function()%7Bvar%20e%3D%22http%3A%2F%2Fdigitesting.oahpa.no%22%3Bvar%20t%3Ddocument.createElement(%22link%22)%3Bt.href%3De%2B%22%2Fstatic%2Fcss%2Fjquery.neahttadigisanit.css%22%3Bt.rel%3D%22stylesheet%22%3Bdocument.head.appendChild(t)%3Bvar%20n%3Ddocument.createElement(%22script%22)%3Bn.type%3D%22text%2Fjavascript%22%3Bn.src%3De%2B%22%2Fstatic%2Fjs%2Fbookmarklet.min.js%22%3Bwindow.NDS_API_HOST%3De%3Bdocument.body.appendChild(n)%7D)()"""
 
 @app.route('/read/', methods=['GET'])
-def embed():
+def bookmarklet():
+    from bookmarklet_code import bookmarklet_escaped
     bkmklt = bookmarklet_escaped
     return render_template('reader.html', bookmarklet=bkmklt)
 
@@ -912,6 +737,7 @@ def wordLookupDocs():
 # For direct links, form submission.
 @app.route('/<_from>/<_to>/', methods=['GET', 'POST'])
 def indexWithLangs(_from, _to):
+    from lexicon import FrontPageFormat
     user_input = lookup_val = request.form.get('lookup', False)
 
     if (_from, _to) not in app.config.dictionaries:
@@ -923,9 +749,8 @@ def indexWithLangs(_from, _to):
         morph = app.config.morphologies.get(_from, False)
 
         if morph:
-            # lookup_keys = lemmatizer(lookup_val, split_compounds=True)
             analyzed = morph.analyze(lookup_val, split_compounds=True)
-            # Collect lemmas and tags
+
             _result_formOf = []
             lookup_keys = [lemma for f, lemma, tag in analyzed
                            if lemma != '?' or tag != '?']
@@ -938,55 +763,35 @@ def indexWithLangs(_from, _to):
             analyzed = False
 
         _lookups = list(set(lookup_keys))
-        results, success = app.config.lexicon.frontPageLookups(_from, _to, _lookups)
 
-        # TODO: ukjent ord `gollet` -> gollehit, gollet, gollat
-        # sort so that recognized word is at top, rest are shown as a
-        # possible form of _
-        # Maybe this logic should be done in template instead, 
-        # print results
-        def hasLookups(l):
-            if l.get('lookups', False) == False:
-                return False
-            return True
+        # [lemma, lemma, lemma] -> [(lemma, XMLNodes)]
+        results, success = app.config.lexicon.lookups(_from, _to, _lookups)
 
-        def reduceLookups(l):
-            _ls = l.get('lookups')
-            _txks = []
-            _new_ls = []
-            for _l in _ls:
-                _left = _l.get('left')
-                _l_pos = _l.get('pos')
-                if (_left, _l_pos) in _txks:
-                    continue
-                else:
-                    _new_ls.append(_l)
-                    _txks.append((_left, _l_pos))
-            l['lookups'] = _new_ls
-            return l
-
-
-        deduplicated = []
-        keys = []
-        for r in results:
-            if not hasLookups(r) or r.get('input') in keys:
-                successful_entry_exists = True
-                continue
-            else:
-                deduplicated.append(reduceLookups(r))
-                keys.append(r.get('input'))
+        fmtkwargs = {'target_lang': _to}
+        # [(lemma, XMLNodes)] -> [(lemma, generator(AlmostJSON))]
+        formatted_results = map( lambda (k, r): ( k
+                                                , FrontPageFormat(r, **fmtkwargs)
+                                                )
+                               , results
+                               )
 
         # When to display unknowns
         successful_entry_exists = False
-        for r in results:
-            if hasLookups(r):
+        for (_in, r) in results:
+            if r:
                 successful_entry_exists = True
 
-        logIndexLookups(user_input, results, _from, _to)
-        results = sorted( results
-                        , key=lambda x: len(x['input'])
+
+        # [(lemma, generator(AlmostJSON))] -> [(lemma, AlmostJSON)]
+        results = sorted( formatted_results
+                        , key=lambda (_in, result): len(_in)
                         , reverse=True
                         )
+
+        results = [ {'input': _in, 'lookups': list(result)}
+                    for _in, result in results ]
+
+        logIndexLookups(user_input, results, _from, _to)
 
         if not results:
             results = False

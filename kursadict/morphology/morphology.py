@@ -82,6 +82,47 @@ class Tag(object):
         """
         raise NotImplementedError
 
+class MorphologicalRestrictions(object):
+    """ Class for collecting functions marked with decorators that
+    provide special handling of tags. One class instantiated in
+    morphology module: `generation_restriction`.
+
+        @generation_restriction.tag_filter_for_iso('sme')
+        def someFunction(form, tags, xml_node):
+            ... some processing on tags, may be conditional, etc.
+            return form, tags, xml_node
+
+    Each time morphology.generation is run, the args will be passed
+    through all of these functions in the order that they were
+    registered, allowing for language-specific conditional rules for
+    filtering.
+    """
+
+    def restrict_tagsets(self, lang_code, function):
+        def decorate(*args):
+            newargs = args
+            for f in self.registry[lang_code]:
+                newargs = f(*newargs)
+            return function(*newargs)
+        return decorate
+
+    def tag_filter_for_iso(self, language_iso):
+        """ Register a function for a language ISO
+        """
+        def wrapper(restrictor_function):
+            self.registry[language_iso].append(restrictor_function)
+            print 'Registered %s generation restriction for %s ' % \
+                  ( restrictor_function.__name__
+                  , language_iso
+                  )
+        return wrapper
+
+    def __init__(self):
+        from collections import defaultdict
+        self.registry = defaultdict(list)
+
+generation_restriction = MorphologicalRestrictions()
+
 class XFST(object):
 
     def splitTagByCompound(self, analysis):
@@ -276,7 +317,6 @@ class OBT(XFST):
         self.cmd = lookup_tool
         self.options = options
 
-
 class Morphology(object):
 
     def cleanTag(self, tag):
@@ -293,7 +333,7 @@ class Morphology(object):
             cleaned.append(p)
         return cleaned
 
-    def generate(self, lemma, tagsets):
+    def generate(self, lemma, tagsets, node=None):
         """ Run the lookup command, parse output into
             [(lemma, ['Verb', 'Inf'], ['form1', 'form2'])]
         """
@@ -438,8 +478,18 @@ class Morphology(object):
 
         return cleaned
 
+    def restrict_tagsets(self, function):
+        def decorate(*args, **kwargs):
+            return function(*args, **kwargs)
+        return decorate
+
     def __init__(self, languagecode, tagsets={}):
         self.langcode = languagecode
+
+        if generation_restriction:
+            self.generate = generation_restriction.restrict_tagsets(languagecode, self.generate)
+        else:
+            self.generate = self.restrict_tagsets(self.generate)
 
         import logging
         logfile = logging.FileHandler('morph_log.txt')
@@ -466,6 +516,65 @@ def sme_test():
     sme = smexfst >> Morphology('sme')
 
     return sme
+
+def sme_test_restrictions():
+
+    sme_options = {
+        'compoundBoundary': "  + #",
+        'derivationMarker': "suff.",
+        'tagsep': ' ',
+        'inverse_tagsep': '+',
+    }
+
+    smexfst = XFST(lookup_tool='/Users/pyry/bin/lookup',
+                   fst_file='/Users/pyry/gtsvn/gt/sme/bin/n-sme.fst',
+                   ifst_file='/Users/pyry/gtsvn/gt/sme/bin/isme.fst',
+                   options=sme_options)
+
+    sme = smexfst >> Morphology('sme')
+
+    return sme
+
+
+def sme_restricted_generation():
+    sme = sme_test()
+    sme_restr = sme_test_restrictions()
+
+    test_words = [
+        u'mannat',
+        # u'dahkat'
+    ]
+    test_tags = [
+        u'V+Ind+Prs+Sg1'.split('+'),
+        u'V+Ind+Prs+Sg2'.split('+'),
+        u'V+Ind+Prs+Sg3'.split('+'),
+        u'V+Ind+Prt+Sg3'.split('+'),
+        u'V+Ind+Prs+Pl3'.split('+'),
+        u'V+Ind+Prt+Pl3'.split('+'),
+    ]
+    print "restricted"
+    for w in test_words:
+        gens = sme.generate(w, test_tags, False)
+        print w
+        for l in gens:
+            if l[2]:
+                for f in l[2]:
+                    print '\t' + f + '\t' + '+'.join(l[1])
+            else:
+                print '\t' + 'NOPE'
+
+    print "unrestricted"
+    for w in test_words:
+        gens = sme_restr.generate(w, test_tags, False)
+        print w
+        for l in gens:
+            if l[2]:
+                for f in l[2]:
+                    print '\t' + f + '\t' + '+'.join(l[1])
+            else:
+                print '\t' + 'NOPE'
+
+
 
 def sme_derivation_test():
     sme = sme_test()
@@ -625,5 +734,8 @@ if __name__ == "__main__":
     # examples()
     # tag_examples()
     # sme_compound_test()
-    sme_derivation_test()
+    # sme_derivation_test()
+    sme_restricted_generation()
+
+
 

@@ -11,11 +11,13 @@ def impersonal_verbs(form, tags, node):
         context = node.xpath('.//l/@context')
 
         if ("upers" in context) or ("dat" in context):
-            tags = [
+            new_tags = [
                 'V+Ind+Prs+Sg3'.split('+'),
                 'V+Ind+Prt+Sg3'.split('+'),
                 'V+Ind+Prs+ConNeg'.split('+'),
             ]
+
+            return form, new_tags, node
 
     return form, tags, node
 
@@ -44,7 +46,5 @@ def compound_numerals(form, tags, node):
                 'Num+Sg+Loc'.split('+'),
             ]
     return form, tags, node
-
-
 
 
