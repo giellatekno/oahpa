@@ -189,21 +189,19 @@ $(document).ready( function() {
                                             {% endfor %}
                                         </ul>
                                     </div>
-                                {% else %}
-                                    <p>
-                                        {#
-                                        <span class="i18n" lang="nob">{% trans %}Ukjent ord:{% trans %}</span>
-                                        <span class="i18n" lang="sme">Amas sátni:</span>
-                                        <span class="i18n" lang="fin">Tietämätön sana:</span>
-                                        <span class="i18n" lang="nob">Unknown word:</span>
-                                        #}
-                                        <span>{% trans %}Unknown word:{% endtrans %}</span>
-                                        {{ lexeme.input }}
-                                    </p>
                                 {% endif %}
                             {% endif %}
 
                             {% endfor %}
+                            {% if not successful_entry_exists %}
+                            <p class="lead">{% trans %}Definition not found for:{% endtrans %}</p>
+                            <ul class="unknown_lexemes">
+                            {% for lexeme in word_searches %}
+                                <li>{{ lexeme.input }}</li>
+                            {% endfor %}
+                            </ul>
+                            <p class="lead">&nbsp;</p>
+                            {% endif %}
                             </span>
 
                             <div class="span4">

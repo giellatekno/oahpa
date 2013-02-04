@@ -909,6 +909,7 @@ def indexWithLangs(_from, _to):
     if (_from, _to) not in app.config.dictionaries:
         abort(404)
 
+    successful_entry_exists = False
     errors = []
     if request.method == 'POST' and lookup_val:
         morph = app.config.morphologies.get(_from, False)
@@ -961,10 +962,17 @@ def indexWithLangs(_from, _to):
         keys = []
         for r in results:
             if not hasLookups(r) or r.get('input') in keys:
+                successful_entry_exists = True
                 continue
             else:
                 deduplicated.append(reduceLookups(r))
                 keys.append(r.get('input'))
+
+        # When to display unknowns
+        successful_entry_exists = False
+        for r in results:
+            if hasLookups(r):
+                successful_entry_exists = True
 
         logIndexLookups(user_input, results, _from, _to)
         results = sorted( results
@@ -997,6 +1005,7 @@ def indexWithLangs(_from, _to):
                           , errors=errors
                           , show_info=show_info
                           , zip=zipNoTruncate
+                          , successful_entry_exists=successful_entry_exists
                           )
 
 @app.route('/about/', methods=['GET'])
