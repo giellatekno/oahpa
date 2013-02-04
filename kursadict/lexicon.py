@@ -330,6 +330,7 @@ class DetailedEntries(XMLDict):
                , 'pos': l.get('pos')
                , 'meaningGroups': meaningGroups
                , 'type': l.get('type')
+               , 'node': e
                }
 
 class AutocompleteTrie(XMLDict):

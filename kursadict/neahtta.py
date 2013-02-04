@@ -520,6 +520,7 @@ def wordDetail(from_language, to_language, wordform, format):
                     res = {'lookups': xml_result}
                 else:
                     res = False
+                    node = False
 
                 _result_lookups.append({
                     'entries': res,
@@ -600,6 +601,13 @@ def wordDetail(from_language, to_language, wordform, format):
         # TODO: either clean this up or comment.
         for _r in _result_lookups:
             lemma, pos, tag, _type = _r.get('input')
+            try:
+                _nodes = [a.get('node') for a in _r.get('entries').get('lookups')]
+                node = _nodes[0]
+            except:
+                _nodes = []
+                node = False
+
             paradigm = lang_paradigms.get(pos)
             # See: #lexicalized
             if tag == 'LEXICALIZED':
@@ -619,7 +627,7 @@ def wordDetail(from_language, to_language, wordform, format):
                     if _is_cached:
                         _r['paradigms'] = _is_cached
                     else:
-                        _generate = morph.generate(lemma, form_tags)
+                        _generate = morph.generate(lemma, form_tags, node)
                         cache.set(morphology_cache_key, _generate)
                         _r['paradigms'] = _generate
                 else:
