@@ -194,7 +194,7 @@ $(document).ready( function() {
 
                             {% endfor %}
                             {% if not successful_entry_exists %}
-                            <p class="lead">{% trans %}Definition not found for:{% endtrans %}</p>
+                            <p>{% trans %}Definition not found for:{% endtrans %}</p>
                             <ul class="unknown_lexemes">
                             {% for lexeme in word_searches %}
                                 <li>{{ lexeme.input }}</li>
