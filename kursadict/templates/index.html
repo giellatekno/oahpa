@@ -4,6 +4,13 @@
 {# https://gist.github.com/1866577 #}
 <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-typeahead-fork.js')}}"></script>
 <script type="text/javascript">
+
+// For Firefox: reenable buttons when back button is pressed
+$(window).bind("unload", function() {
+    $('input[type="text"]', this).attr('readonly', false);
+    $('button[type="submit"]', this).attr('disabled', false);
+});
+
 $(document).ready( function() {
     $('input[name="lookup"]').typeahead({
         items: 5,
@@ -94,6 +101,7 @@ $(document).ready( function() {
                         </a>
                     </li>
                     {# Start a new nav if there are variants #}
+                    {# TODO: include in mobile menu somehow #}
                     {# TODO: make this work from config settings, for now hard-coded #}
                     {#
                     {%- if iso_pair[0] == 'sme' and iso_pair[1] == 'nob' and iso_pair[0] == _from and iso_pair[1] == _to %}
