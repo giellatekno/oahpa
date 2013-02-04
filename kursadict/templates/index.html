@@ -7,8 +7,8 @@
 
 // For Firefox: reenable buttons when back button is pressed
 $(window).bind("unload", function() {
-    $('input', this).attr('readonly', false);
-    $('button', this).attr('disabled', false);
+    $('input').attr('readonly', false);
+    $('button').attr('disabled', false);
 });
 
 $(document).ready( function() {
@@ -27,6 +27,10 @@ $(document).ready( function() {
                 return [] ;
             }
         }
+    });
+    $('input').focus(function(evt) {
+        $('input').attr('readonly', false);
+        $('button').attr('disabled', false);
     });
     // Discourage submission if there is nothing to submit
     $('form').submit(function(evt) {
