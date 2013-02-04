@@ -3,27 +3,19 @@
 
 ## Next: 
 
- * i18n: test that đŧščážŋ on the about page, and such, are visible on windows and random machines to make sure 
-   it finds a font with sámi characters
- * i18n on gtoahpa and gtlab - automatic redirect doesn't seem to work yet,
-   header missing from nginx?
+ * fin->sme yllättää - difference between index and detail
 
  * is there anything that i've done in the past 5 days that needs documentation in forrest?
 
  * XML build process because 
     * doubling: http://sanit.oahpa.no/detail/fin/sme/tiet%C3%A4%C3%A4.html?no_compounds=true&lemma_match=true&pos_filter=v
-    * doubling: http://localhost:5000/detail/sme/nob/mealgat.html
 
- * translation strings: 
-   	* http://babel.edgewall.org/wiki/Documentation/setup.html
-   	* http://babel.edgewall.org/wiki/Documentation/messages.html
-   	* http://pyyaml.org/wiki/PyYAMLDocumentation (!!python/unicode, !!python/gettext?)
-    * for now for language names, will sneak them into .po files via .py file instead of .yaml
+ * update js plugins
+   - include analyses
+   - 'unknown' title may need to change now 
+   - also, is there a way to unload the bookmarklet completely either via the same bookmarklet, but without refreshing? 
 
- * rebuild js to include analyses.
-
- * reader page: funky padding on footer again
- * about page: padding on h3s on mobile
+ * reader page: funky padding on footer again, but only in some screen widths
 
  * paradigm documentation here: http://giellatekno.uit.no/doc/dicts/dictionarywork.html
 
@@ -37,38 +29,14 @@
             ortnetmielde
             aiddi
 
-        - i FST, ikkje i leksikon (TODO: vis fram analysene sjølv om betydninga ikkje finst)
-            holvasa -> holvvas
-
-        - i FST, mogleg /Der problem ... framleis
-            juhkaluvvan
-
-
-     * lahka - showing two copies of adv. reading
-       maŋŋá - same problem
-
-     * boaššohuvvat - missing derived analysis on front page
-
-     * does this work with following proposed change about compound display? 
-        mánnageahččijuovlaspábbačiekčangilvvus
-        mánnageahčči-juovlaspábbačiekčangilvvus
-        boazodoallobearráigeahččispábbačiekčangilvu
-
-     * boazodoallošiehtadallanlávdegoddi
+     * boaššohuvvat - missing derived analysis on front pag
 
      * numbers: generating of compound numbers doesn't work currently, guokte
                 works, guoktenuppelohkái doesn't
 
      * see: email from lene
 
-       * Manglende informasjon for numeraler - legg til paradigme  - ogso sjekk detailed
-
        * Legge til informasjon om morfologi
-       
-           Ved å filtrere analysene slik som i forrige sak, så har man god plass i vinduet til å legge til morfologi (plugin-varianten):
-       
-           boazodoallobearráigehččiid
-           N Pl Acc eller N Pl Gen av boazodoallobearráigeahčči (s.) – reindriftsinspektør
        
            !! Context i miniparadigmet
            I adjektiv-fila er det info om context:
@@ -99,12 +67,6 @@
 
  * word test-list - http://giellatekno.uit.no/doc/dicts/checklist.html
 
- * fin-sme: multiple words in api, wtf
-
- * mwe in detailed view
-   man láhkái -> 
-   http://localhost:5000/detail/fin/sme/mill%C3%A4%20lailla.html?no_compounds=true&lemma_match=true
-
  * detailed page needs autocomplete for form
 
  * dropdown events on mobile are a bit funny for the menu on the
@@ -118,19 +80,6 @@
 
  -- 
 
- * http://packages.python.org/Flask-Babel/
-   * nøkkelformer
-
- * styling of language select-- flags, or not?
-
- * about page, contact page, plugin page, etc.
-
- * update all names from kursadict to neahttadigisánit in some way,
-   maybe 
-
- * maybe make it clearer that one can bookmark specific dictionaries,
-   e.g. /sme/nob/ or whatever.
-
  * Once all this is together, optimize memory usage, with specific
    attention to gtlab / gtoahpa, may be a better way to have multiple
    threads/greenlets/etc running while parsing trees into only one
@@ -141,9 +90,6 @@
  * Easier means of keeping track of updating FST and lexicon
    dependencies from svn? or at least checking in svn if there are
    updates, not necessarily fetching them
-
- * ordering of results on front page if a word is not found in the
-   lexicon -- maybe just include these in the analysis block only?
 
  * advanced search form: here we get to have some nerdy linguistic fun.
 
@@ -190,28 +136,16 @@
    will work. any improvements will just be drop-in replacements.
 
 
-## Server errors: 
-
- * TEST: G3 generation
-
-
-## Priorities
-
- 1. implementer plugin i kursa
- 2. url-basert  sti for å installera heller iframe eller noko anna via proxy
- 3. plugin for forskjellige nettlesere: chrome, firefox
- 4. forsida som macdict
 
 ### Språkpar:
 
- * sme<->nob
- * sme<->fin 
- * sma<->nob (NB: eigen FST til sma-ordboka)
  * sme<->eng (må lages først i apertiumformat)
 
-For these the formatting isn't quite right, so that collect-dict-parts.xsl
-won't produce anything.
+ * kom<->eng/fin/rus (words/dicts/kom2X/src + analysator: langs/kpv/)
+   - <pos /> element may make some things difficult-- either can include this
+     as a possible place to search for pos if <l pos /> isn't set, or wait for
+     updated ormat.
 
- * kom<->eng/fin/rus (words/dicts/kom2X/src + analysator: langs/kpv/
  * myv<->fin
+   - needs lexicon?
 
