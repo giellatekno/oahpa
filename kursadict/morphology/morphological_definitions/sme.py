@@ -3,6 +3,8 @@
 # NOTE: if copying this for a new language, remember to make sure that
 # it's being imported in __init__.py
 
+# * paradigm documentation here: http://giellatekno.uit.no/doc/dicts/dictionarywork.html
+
 from morphology import generation_restriction
 
 LEX_TO_FST = {
@@ -14,18 +16,6 @@ LEX_TO_FST = {
     'prop': 'Prop',
     'v': 'V',
 }
-
-@generation_restriction.tag_filter_for_iso('sma')
-def lexicon_pos_to_fst_sma(form, tags, node=None):
-
-    new_tags = []
-    for t in tags:
-        _t = []
-        for p in t:
-            _t.append(LEX_TO_FST.get(p, p))
-        new_tags.append(_t)
-
-    return form, new_tags, node
 
 
 @generation_restriction.tag_filter_for_iso('sme')
@@ -57,16 +47,41 @@ def impersonal_verbs(form, tags, node=None):
     return form, tags, node
 
 @generation_restriction.tag_filter_for_iso('sme')
-def proper_nouns(form, tags, node):
-    # TODO: this only works if we have pos="n" type="prop"
+def common_noun_pluralia_tanta(form, tags, node):
+    """ Pluralia tanta common noun
+
+    `ruossalassánit` with <l nr="Pl" /> requires only plural
+    paradigm.
+    """
     if len(node) > 0:
-        pos = node.xpath('.//l/@pos')
-        _type = node.xpath('.//l/@type')
-        if ("prop" in pos) or ("prop" in _type):
+        nr = node.xpath('.//l/@nr')
+        if ("pl" in nr) or ("Pl" in nr):
             tags = [
-                'N+Prop+Sg+Gen'.split('+'),
-                'N+Prop+Sg+Ill'.split('+'),
-                'N+Prop+Sg+Loc'.split('+'),
+                'N+Pl+Nom'.split('+'),
+                'N+Pl+Ill'.split('+'),
+                'N+Pl+Loc'.split('+'),
+            ]
+
+    return form, tags, node
+
+@generation_restriction.tag_filter_for_iso('sme')
+def proper_noun_pluralia_tanta(form, tags, node):
+    """ Pluralia tanta
+
+    `Gállábártnit` with <l nr="Pl" /> requires only plural
+    paradigm.
+
+    Note, there is a singularia tanta, but this may require a separate
+    rule, as it mostly concerns pronouns.
+    """
+    if len(node) > 0:
+        _type = node.xpath('.//l/@type')
+        nr = node.xpath('.//l/@nr')
+        if (("pl" in nr) or ("Pl" in nr)) and ("Prop" in _type):
+            tags = [
+                'N+Prop+Pl+Gen'.split('+'),
+                'N+Prop+Pl+Ill'.split('+'),
+                'N+Prop+Pl+Loc'.split('+'),
             ]
 
     return form, tags, node
