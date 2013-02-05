@@ -269,6 +269,16 @@ Baseforms:
 # TODO: help text
 Paradigms:
   sma:
+    NUM:
+      - "Sg+Nom"
+      - "Pl+Nom"
+      - "Sg+Ill"
+      - "Sg+Ine"
+      - "Pl+Ill"
+      - "Pl+Ine"
+    PROP:
+      - "Sg+Ill"
+      - "Sg+Ine"
     N:
       - "Sg+Nom"
       - "Pl+Nom"
@@ -278,8 +288,13 @@ Paradigms:
       - "Pl+Ine"
     V:
       - "Ind+Prs+Sg1"
+      - "Ind+Prs+Sg3"
+      - "Ind+Prs+Pl3"
       - "Ind+Prt+Sg1"
-      - "ConNeg"
+      - "Ind+Prs+ConNeg"
+      - "PrfPrc"
+      - "Ger"
+      - "VGen"
   fin:
 
     N:
@@ -300,7 +315,7 @@ Paradigms:
       - "Comp+Sg+Nom"
       - "Superl+Sg+Nom"
 
-    Num:
+    NUM:
       - "Sg+Ill"
       - "Pl+Nom"
       - "Pl+Gen"
@@ -317,6 +332,10 @@ Paradigms:
       - "Sg+Gen"
       - "Sg+Ill"
       - "Pl+Ill"
+    PROP:
+      - "Sg+Gen"
+      - "Sg+Ill"
+      - "Sg+Loc"
 
     # Adding V+ and potential V subtypes via lexicon.
     V:
