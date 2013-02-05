@@ -132,6 +132,10 @@ buildBookmarklet = (callback) ->
   fs.writeSync out, _fs
   util.print "\n Compiled to bin/bookmarklet.min.js and ../static/js/bookmarklet.min.js\n"
 
+  _css = (fs.readFileSync 'bin/jquery.neahttadigisanit.css').toString()
+  _cssout = fs.openSync "../static/css/jquery.neahttadigisanit.css", "w+"
+  fs.writeSync _cssout, _css
+  util.print "\n Copied CSS to ../static/css/jquery.neahttadigisanit.css\n"
 
 
 task 'watch', 'Watch prod source files and build changes', ->

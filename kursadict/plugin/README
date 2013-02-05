@@ -6,32 +6,18 @@ are looking at.
 
 ## Goals and TODOs
 
-1.) Getting this to work when manually included in a website without disturbing
-    the website's own CSS and JS.
+- TODO: hs.fi has problems showing the options tab, should be a good place to test
 
-    - TODO: test function for changing hostname of API
+- TODO: test function for changing hostname of API
 
-    - TODO: make the search form results a bit prettier.
+- TODO: Internationalization of help text to nob, sme, fin, other languages
+  supported
 
-    - TODO: Internationalization of help text to nob, sme, fin, other languages
-      supported
+- TODO: Alternate means of triggering lookups so that there is no necessity
+  to hold Alt/Opt while clicking, for devices that do not have this.
+  Potentially also, displaying the result lookup in another format for
+  mobile devices (Popup banner fixed to the bottom edge?).
 
-    - TODO: Alternate means of triggering lookups so that there is no necessity
-      to hold Alt/Opt while clicking, for devices that do not have this.
-      Potentially also, displaying the result lookup in another format for
-      mobile devices (Popup banner fixed to the bottom edge?).
-
-2.) Including this in browser plugins for the biggest and easiest browsers to
-    develop for. (Also, creating build targets for these in the Cakefile).
-
-   - Chrome pretty much works, but need to move configuration into popup thing.
-
-   - Explore Firefox and Safari, and maybe IE.
-
-3.) A means of inclusion of this module via a proxy service, which takes a URL
-    and injects the necessary scripts and CSS files.
-
-See also: jquery.kursadict.coffee TODOs.
 
 ## Installation of plugin for a specific site
 
