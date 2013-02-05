@@ -5,9 +5,44 @@
 
 from morphology import generation_restriction
 
+LEX_TO_FST = {
+    'a': 'A',
+    'adv': 'Adv',
+    'n': 'N',
+    'npl': 'N',
+    'num': 'Num',
+    'prop': 'Prop',
+    'v': 'V',
+}
+
+@generation_restriction.tag_filter_for_iso('sma')
+def lexicon_pos_to_fst_sma(form, tags, node=None):
+
+    new_tags = []
+    for t in tags:
+        _t = []
+        for p in t:
+            _t.append(LEX_TO_FST.get(p, p))
+        new_tags.append(_t)
+
+    return form, new_tags, node
+
+
 @generation_restriction.tag_filter_for_iso('sme')
-def impersonal_verbs(form, tags, node):
-    if node is not None:
+def lexicon_pos_to_fst(form, tags, node=None):
+
+    new_tags = []
+    for t in tags:
+        _t = []
+        for p in t:
+            _t.append(LEX_TO_FST.get(p, p))
+        new_tags.append(_t)
+
+    return form, new_tags, node
+
+@generation_restriction.tag_filter_for_iso('sme')
+def impersonal_verbs(form, tags, node=None):
+    if node is not None and node:
         context = node.xpath('.//l/@context')
 
         if ("upers" in context) or ("dat" in context):
@@ -24,10 +59,11 @@ def impersonal_verbs(form, tags, node):
 @generation_restriction.tag_filter_for_iso('sme')
 def proper_nouns(form, tags, node):
     # TODO: this only works if we have pos="n" type="prop"
-    if node is not None:
-        pos = node.xpath('.//l/@type')
-
-        if ("prop" in pos):
+    if node is not None and node:
+        pos = node.xpath('.//l/@pos')
+        _type = node.xpath('.//l/@type')
+        print tags
+        if ("prop" in pos) or ("prop" in _type):
             tags = [
                 'N+Prop+Sg+Gen'.split('+'),
                 'N+Prop+Sg+Ill'.split('+'),
@@ -38,7 +74,7 @@ def proper_nouns(form, tags, node):
 
 @generation_restriction.tag_filter_for_iso('sme')
 def compound_numerals(form, tags, node):
-    if node is not None:
+    if node is not None and node:
         if 'num' in node.xpath('.//l/@pos'):
             tags = [
                 'Num+Sg+Gen'.split('+'),

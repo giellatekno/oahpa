@@ -365,7 +365,7 @@ class Morphology(object):
 
 
     def lemmatize(self, form, split_compounds=False,
-                  non_compound_only=False, no_derivations=False, output_tags=False):
+                  non_compound_only=False, no_derivations=False):
         """ For a wordform, return a list of lemmas
         """
         class Lemma(object):
@@ -412,6 +412,17 @@ class Morphology(object):
                 return iterable
 
         lookups = self.tool.lookup([form])
+
+        # Check for unknown
+
+        unknown = False
+        for k, v in lookups:
+            for a in v:
+                if '?' in a:
+                    unknown = True
+
+        if unknown:
+            return False
 
         lemmas = set()
 

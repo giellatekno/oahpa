@@ -72,15 +72,15 @@ class EntryNodeIterator(object):
 
         if not tx:
             if te_text:
-                text, te_text = te_text, ''
+                text, te_text = [te_text], ''
             elif re_text:
-                text, re_text = re_text, ''
+                text, re_text = [re_text], ''
             elif tf_text:
-                text, tf_text = tf_text, ''
-            lang = False
+                text, tf_text = [tf_text], ''
         else:
             text = [_tx.text for _tx in tx]
-            lang = tg.xpath('@xml:lang')
+
+        lang = tg.xpath('@xml:lang')
 
         annotations = [a for a in [te_text, re_text, tf_text] if a.strip()]
 

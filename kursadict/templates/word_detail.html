@@ -31,9 +31,9 @@
                 <dt>{{ grouper }}</dt>
                 <dd>
                     <ul class="possible_forms">
-                {% for lemma, pos, tag in forms %}
-                        <li>{{ tag|tagfilter(_from) }}</li>
-                {% endfor %}
+                        {% for lemma, pos, tag in forms %}
+                            <li>{{ pos|tagfilter(_from) }} {{ tag|tagfilter(_from) }}</li>
+                        {% endfor %}
                     </ul>
                 </dd>
             {% endfor %}
@@ -90,7 +90,7 @@
         {% if lexeme.entries %}
             <div class="span12">
                 {# This is the non-mobile version, otherwise we display it below #}
-                {% set context = lexeme.entries.lookups[0].lemma_context %}
+                {% set context = lexeme.entries.lemma_context %}
                 {% if lexeme.paradigms %}
                     <div class="pull-right hidden-phone">
                         {% include 'detail_paradigm_dl.html' %}
@@ -102,16 +102,14 @@
                     <p class="lead">{{ lexeme.input[0] }} ({{ lexeme.entries.lookups[0].pos|tagfilter(_from) }}) </p>
                 {% endif %}
 
-                {% for tg in lexeme.entries.lookups %}
-                    <ul class="meanings">
-                        {% for mg in tg.meaningGroups %}
-                            <li>{% include 'word_detail_li.html' %}</li>
-                        {% endfor %}
-                    </ul>
-                {% endfor %}
+                <ul class="meanings">
+                    {% for mg in lexeme.entries.meaningGroups %}
+                        <li>{% include 'word_detail_li.html' %}</li>
+                    {% endfor %}
+                </ul>
 
                 {# This is the non-mobile version, otherwise we display it below #}
-                {% set context = lexeme.entries.lookups[0].lemma_context %}
+                {% set context = lexeme.entries.lemma_context %}
                 {% if lexeme.paradigms %}
                     <div class="pull-left hidden-desktop hidden-tablet">
                         {% include 'detail_paradigm_dl.html' %}

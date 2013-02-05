@@ -171,7 +171,11 @@ def tagfilter(s, lang_iso):
     filters = app.config.tag_filters.get(lang_iso, False)
     if filters:
         filtered = []
-        for part in s.split(' '):
+        if isinstance(s, list):
+            parts = s
+        else:
+            parts = s.split(' ')
+        for part in parts:
             filtered.append(filters.get(part.lower(), part))
         return ' '.join([a for a in filtered if a.strip()])
     else:
@@ -189,6 +193,8 @@ def urlencode_filter(s):
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
+
+
 
 # TODO: Keeping the old endpoints until all dependent apps are migrated
 #       to the new ones.
@@ -282,34 +288,11 @@ def lookupWord(from_language, to_language):
     if lookup_key == False:
         return json.dumps(" * lookup undefined")
 
+    # TODO: may have to translate this.
     # Is there a lemmatizer?
-    lemm_ = app.config.morphologies.get(from_language, False)
-    if lemm_:
-        lemmatizer = lemm_.lemmatize
-
-    if lemmatize and lemmatizer:
-        lemmas = lemmatizer( lookup_key
-                           , split_compounds=True
-                           , non_compound_only=True
-                           , no_derivations=True
-                           )
-        lookup_keys = list(set([l.lemma for l in lemmas]))
-    else:
-        lemmas = False
-        lookup_keys = [lookup_key]
-
-    # [lemma, lemma, lemma] -> [(lemma, XMLNodes)]
-    results, success = app.config.lexicon.lookups( from_language
-                                                 , to_language
-                                                 , lookup_keys
-                                                 )
-
-    # [(lemma, XMLNodes)] -> [(lemma, generator(AlmostJSON))]
-    formatted_results = map( lambda (k, r): ( k
-                                            , SimpleJSON(r)
-                                            )
-                           , results
-                           )
+    # lemm_ = app.config.morphologies.get(from_language, False)
+    # if lemm_:
+    #     lemmatizer = lemm_.lemmatize
 
     def filterPOS(r):
         def fixTag(t):
@@ -318,34 +301,35 @@ def lookupWord(from_language, to_language):
                 return t
             t['pos'] = tagfilter(t_pos, from_language)
             return t
-        return map(fixTag, r)
+        return fixTag(r)
 
-    # [(lemma, generator(AlmostJSON))] -> [(lemma, AlmostJSON)]
-    results = sorted( map( lambda (_in, result): (_in, filterPOS(result))
-                         , formatted_results
-                         )
-                    , key=lambda (_in, result): len(_in)
-                    , reverse=True
-                    )
+    from morpho_lexicon import MorphoLexicon
 
-    if lemmas:
-        tags = False
-        tags = [(l.lemma, ' '.join(l.tag)) for l in lemmas]
-        tags = map( lambda (l, x): (l, tagfilter(x, from_language))
-                  , list(set(tags))
-                  )
+    mlex = MorphoLexicon(app.config)
 
-        # make a list of tuples containing (lemma, [tag, tag, tag])
-        tag_s = defaultdict(list)
-        for _lem, _tag in tags:
-            tag_s[_lem].append(_tag)
+    xml_nodes, analyses = mlex.lookup( lookup_key
+                                     , source_lang=from_language
+                                     , target_lang=to_language
+                                     , split_compounds=True
+                                     , non_compound_only=True
+                                     , no_derivations=True
+                                     )
 
-        tag_lookups =  list(tag_s.iteritems())
+    if analyses:
+        tags = [(a.lemma, tagfilter(a.pos, from_language) + ' ' + ' '.join(a.tag)) for a in analyses]
     else:
-        tag_lookups = []
+        tags = []
 
-    result_with_input = [ {'input': _in, 'lookups': result}
-                          for _in, result in results ]
+    result = SimpleJSON( xml_nodes
+                       , target_lang=to_language
+                       )
+
+    result = map(filterPOS, list(result))
+
+    if len(result) > 0:
+        success = True
+
+    result_with_input = [{'input': lookup_key, 'lookups': result}]
 
     logSimpleLookups( user_input
                     , result_with_input
@@ -354,7 +338,8 @@ def lookupWord(from_language, to_language):
                     )
 
     data = json.dumps({ 'result': result_with_input
-                      , 'tags': tag_lookups
+                      , 'tags': tags
+                      , 'tag_msg': _(" is a possible form of ... ")
                       , 'success': success
                       })
 
@@ -406,6 +391,7 @@ def wordDetail(from_language, to_language, wordform, format):
     """
     import hashlib
 
+    from morpho_lexicon import MorphoLexicon
     from lexicon import DetailedFormat
 
     user_input = wordform
@@ -420,10 +406,11 @@ def wordDetail(from_language, to_language, wordform, format):
 
     # Do we filter analyzed forms and lookups by pos? 
     pos_filter = request.args.get('pos_filter', False)
-    # Do we want to analyze compounds?
-    no_compounds = request.args.get('no_compounds', False)
     # Should we match the input lemma with the analyzed lemma?
     lemma_match = request.args.get('lemma_match', False)
+
+    # Do we want to analyze compounds?
+    no_compounds = request.args.get('no_compounds', False)
 
     _pattern = u'/detail/%s/%s/%s.%s?pos_filter=%r&no_compounds=%r&lemma_match=%r'
     cache_key =  _pattern % \
@@ -448,9 +435,6 @@ def wordDetail(from_language, to_language, wordform, format):
         elif format == 'html':
             abort(404)
 
-    # if (from_language, to_language) in app.config.lexicon.reverse_language_pairs:
-    #     return unsupportedLang()
-
     if app.caching_enabled:
         cached_result = cache.get(cache_key)
     else:
@@ -460,140 +444,60 @@ def wordDetail(from_language, to_language, wordform, format):
 
         lang_paradigms = app.config.paradigms.get(from_language)
         if not lang_paradigms:
-            return unsupportedLang(', no paradigm defined.')
-        lang_baseforms = app.config.baseforms.get(from_language)
-        if not lang_baseforms:
-            return unsupportedLang(', no baseforms defined.')
-        # All lookups in XML must go through analyzer, because we need
-        # POS info for a good lookup.
+             unsupportedLang(', no paradigm defined.')
+        # lang_baseforms = app.config.baseforms.get(from_language)
+        # if not lang_baseforms:
+        #     return unsupportedLang(', no baseforms defined.')
+
         morph = app.config.morphologies.get(from_language, False)
+
         if no_compounds:
-            analyzed = morph.analyze(wordform)
+            _split = True
+            _non_c = True
+            _non_d = False
         else:
-            analyzed = morph.analyze(wordform, split_compounds=True)
-        # NOTE: #formanalysis
+            _split = True
+            _non_c = False
+            _non_d = False
 
-        # Collect lemmas and tags
-        _result_formOf = []
-        if analyzed:
-            for form, lemma, tag in sorted(analyzed, reverse=True):
 
-                # TODO: try with OBT
-                if lemma == '?' or tag == '?':
-                    continue
-                pos, _tag = tag[0], tag[1::]
-                _ft = morph.tool.formatTag(tag)
-                _result_formOf.append((lemma, pos, _ft))
+        mlex = MorphoLexicon(app.config)
+        xml_nodes, analyses = mlex.lookup( wordform
+                                         , source_lang=from_language
+                                         , target_lang=to_language
+                                         , split_compounds=_split
+                                         , non_compounds_only=_non_c
+                                         , no_derivations=_non_d
+                                         )
 
-        # Now collect XML lookups
-        _result_lookups = []
-        _lemma_pos_exists = []
+        # TODO: move generation to detailed format? thus node correct
+        # pos, tags, etc., are available
+        res = list(DetailedFormat(xml_nodes, target_lang=to_language))
 
-        if lemma_match:
-            _result_formOf = [ (lem, pos, tag)
-                               for lem, pos, tag in _result_formOf
-                               if lem == wordform ]
+        lex_results = []
+        for r in res:
+            lemma = r.get('lemma')
+            pos = r.get('pos')
+            _type = r.get('type')
+            input_info = (lemma, pos, '', _type)
+            lex_results.append({
+                'entries': r,
+                'input': input_info,
+            })
 
         if pos_filter:
-            _result_formOf = [ (lem, pos, tag)
-                               for lem, pos, tag in _result_formOf
-                               if pos.upper() == pos_filter.upper() ]
-        
-        for lemma, pos, tag in _result_formOf:
+            lex_results = [ r for r in lex_results
+                            if r.get('input')[1].upper() == pos_filter.upper() ]
+        if lemma_match:
+            lex_results = [ r for r in lex_results
+                            if r.get('input')[0] == wordform ]
 
-            # TODO: generalize for other languages, use tagsets
-            _sp = morph.tool.splitAnalysis(tag)
-            if len(_sp) >= 2:
-                _type = _sp[1]
-                if _type not in [u'NomAg', 'G3']:
-                    _type = False
-            else:
-                _type = False
-
-            if (lemma, pos) in _lemma_pos_exists:
-                continue
-            # Only look up word when there is a baseform
-            paradigm = lang_paradigms.get(pos, False)
-            baseforms = lang_baseforms.get(pos, False)
-            if baseforms:
-                xml_result = app.config.lexicon.lookup( from_language
-                                                      , to_language
-                                                      , lemma=lemma
-                                                      , pos=pos
-                                                      , pos_type=_type
-                                                      )
-
-                if xml_result:
-                    res = { 'lookups': list(DetailedFormat( xml_result
-                                           , target_lang=to_language
-                                           ))
-                    }
-                else:
-                    res = False
-
-                _result_lookups.append({
-                    'entries': res,
-                    'input': (lemma, pos, tag, _type)
-                })
-                _lemma_pos_exists.append((lemma, pos))
-            else:
-                continue
-
-        # This is to lookup words that are done when user clicks on link
-        # on front page, thus containing pos_filter
-        if wordform and pos_filter and len(_result_lookups) == 0:
-            xml_result = app.config.lexicon.lookup( from_language
-                                                  , to_language
-                                                  , lemma=wordform
-                                                  , pos=pos_filter
-                                                  , pos_type=False
-                                                  , _format=DetailedFormat
-                                                  )
-            if xml_result:
-                res = { 'lookups': list(DetailedFormat( xml_result
-                                       , target_lang=to_language
-                                       ))
-                }
-            else:
-                res = False
-
-            # see #lexicalized
-            _result_lookups.append({
-                'entries': res,
-                'input': (wordform, pos_filter, 'LEXICALIZED', False)
-            })
-        elif (not pos_filter) and len(_result_lookups) == 0:
-            xml_result = app.config.lexicon.lookup( from_language
-                                                  , to_language
-                                                  , wordform
-                                                  , False
-                                                  , False
-                                                  , _format=DetailedFormat
-                                                  )
-            if xml_result:
-                res = { 'lookups': list(DetailedFormat( xml_result
-                                       , target_lang=to_language
-                                       ))
-                }
-
-                # no POS was given in the input, so we grab it from the
-                # lookups
-                pos_attempts = list(set([r.get('pos') for r in xml_result]))
-                if len(pos_attempts) == 1:
-                    pos_filter = pos_attempts[0]
-
-                # see #lexicalized
-                _result_lookups.append({
-                    'entries': res,
-                    'input': (wordform, pos_filter, 'LEXICALIZED', False)
-                })
-            else:
-                res = False
+        analyses = [(l.lemma, l.pos, l.tag) for l in analyses]
 
         detailed_result = {
-            "analyses": _result_formOf,
-            "lexicon": _result_lookups,
             "input": wordform,
+            "analyses": analyses,
+            "lexicon": lex_results,
         }
 
         # TODO: ideally the things here need to be going to an external
@@ -616,39 +520,32 @@ def wordDetail(from_language, to_language, wordform, format):
 
 
         # TODO: either clean this up or comment.
-        for _r in _result_lookups:
+        for _r in lex_results:
             lemma, pos, tag, _type = _r.get('input')
             try:
-                _nodes = [a.get('node') for a in _r.get('entries').get('lookups')]
-                node = _nodes[0]
+                node = _r.get('entries').get('node')
             except:
-                _nodes = []
                 node = False
 
-            paradigm = lang_paradigms.get(pos)
-            # See: #lexicalized
-            # if tag == 'LEXICALIZED':
-            #     continue
-            if tag in lang_baseforms.get(pos, []):
-                if paradigm:
-                    _pos_type = [pos]
-                    if _type:
-                        _pos_type.append(_type)
-                    form_tags = [_pos_type + _t.split('+') for _t in paradigm]
+            paradigm = lang_paradigms.get(pos.upper())
 
-                    morphology_cache_key = cacheKey(from_language,
-                                                    lemma,
-                                                    form_tags)
+            if paradigm:
+                _pos_type = [pos]
+                if _type:
+                    _pos_type.append(_type)
+                form_tags = [_pos_type + _t.split('+') for _t in paradigm]
 
-                    _is_cached = cache.get(morphology_cache_key)
-                    if _is_cached:
-                        _r['paradigms'] = _is_cached
-                    else:
-                        _generate = morph.generate(lemma, form_tags, node)
-                        cache.set(morphology_cache_key, _generate)
-                        _r['paradigms'] = _generate
+                morphology_cache_key = cacheKey(from_language,
+                                                lemma,
+                                                form_tags)
+
+                _is_cached = cache.get(morphology_cache_key)
+                if _is_cached:
+                    _r['paradigms'] = _is_cached
                 else:
-                    _r['paradigms'] = False
+                    _generate = morph.generate(lemma, form_tags, node)
+                    cache.set(morphology_cache_key, _generate)
+                    _r['paradigms'] = _generate
             else:
                 _r['paradigms'] = False
 
@@ -666,11 +563,10 @@ def wordDetail(from_language, to_language, wordform, format):
         _meanings = []
         for lexeme in detailed_result['lexicon']:
             if lexeme['entries']:
-                for entry in lexeme['entries']['lookups']:
-                    _entry_tx = []
-                    for mg in entry['meaningGroups']:
-                        _entry_tx.append(mg['translations'])
-                    _meanings.append(_entry_tx)
+                _entry_tx = []
+                for mg in lexeme['entries']['meaningGroups']:
+                    _entry_tx.append(mg['translations'])
+                _meanings.append(_entry_tx)
         tx_set = '; '.join([', '.join(a) for a in _meanings])
     else:
         success = False
@@ -738,6 +634,8 @@ def wordLookupDocs():
 @app.route('/<_from>/<_to>/', methods=['GET', 'POST'])
 def indexWithLangs(_from, _to):
     from lexicon import FrontPageFormat
+    from morpho_lexicon import MorphoLexicon
+
     user_input = lookup_val = request.form.get('lookup', False)
 
     if (_from, _to) not in app.config.dictionaries:
@@ -745,64 +643,44 @@ def indexWithLangs(_from, _to):
 
     successful_entry_exists = False
     errors = []
+
+    results = False
+    analyses = False
+
     if request.method == 'POST' and lookup_val:
-        morph = app.config.morphologies.get(_from, False)
 
-        if morph:
-            analyzed = morph.analyze(lookup_val, split_compounds=True)
+        mlex = MorphoLexicon(app.config)
 
-            _result_formOf = []
-            lookup_keys = [lemma for f, lemma, tag in analyzed
-                           if lemma != '?' or tag != '?']
-            if lookup_keys:
-                lookup_keys.append(lookup_val)
-            else:
-                lookup_keys = [lookup_val]
-        else:
-            lookup_keys = [lookup_val]
-            analyzed = False
+        xml_nodes, analyses = mlex.lookup( lookup_val
+                                         , source_lang=_from
+                                         , target_lang=_to
+                                         , split_compounds=True
+                                         )
 
-        _lookups = list(set(lookup_keys))
-
-        # [lemma, lemma, lemma] -> [(lemma, XMLNodes)]
-        results, success = app.config.lexicon.lookups(_from, _to, _lookups)
+        analyses = [(lem.input, lem.lemma, [lem.pos] + lem.tag) for lem in analyses]
 
         fmtkwargs = {'target_lang': _to}
         # [(lemma, XMLNodes)] -> [(lemma, generator(AlmostJSON))]
-        formatted_results = map( lambda (k, r): ( k
-                                                , FrontPageFormat(r, **fmtkwargs)
-                                                )
-                               , results
-                               )
+        formatted_results = list(FrontPageFormat(xml_nodes, **fmtkwargs))
 
         # When to display unknowns
         successful_entry_exists = False
-        for (_in, r) in results:
-            if r:
-                successful_entry_exists = True
+        if len(formatted_results) > 0:
+            successful_entry_exists = True
 
-
-        # [(lemma, generator(AlmostJSON))] -> [(lemma, AlmostJSON)]
         results = sorted( formatted_results
-                        , key=lambda (_in, result): len(_in)
+                        , key=lambda (r): len(r.get('left'))
                         , reverse=True
                         )
 
-        results = [ {'input': _in, 'lookups': list(result)}
-                    for _in, result in results ]
+        results = [ {'input': lookup_val, 'lookups': results} ]
 
         logIndexLookups(user_input, results, _from, _to)
 
-        if not results:
-            results = False
-            analyzed = False
-
         show_info = False
     else:
-        results = False
         user_input = ''
         show_info = True
-        analyzed = False
 
     if len(errors) == 0:
         errors = False
@@ -814,7 +692,7 @@ def indexWithLangs(_from, _to):
                           , _to=_to
                           , user_input=lookup_val
                           , word_searches=results
-                          , analyses=analyzed
+                          , analyses=analyses
                           , errors=errors
                           , show_info=show_info
                           , zip=zipNoTruncate

@@ -2,7 +2,7 @@
     <a href="/detail/{{ _to }}/{{ _from }}/{{ tx.tx }}.html?no_compounds=true&lemma_match=true">
 {%- endif -%}{{ tx.tx }}
 {%- if tx.link -%}</a>{%- endif %}
-{% if tx.re %} ({{ tx.re }}){% endif %}
+{% if tx.re %} ({% for annotation in tx.re %}{{ annotation }}{% endfor %}){% endif %}
 {% if tx.examples %}
     <div class="example_set">
         {# 
