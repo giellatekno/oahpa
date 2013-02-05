@@ -29,14 +29,16 @@ def lexicon_pos_to_fst_sma(form, tags, node=None):
 
 @generation_restriction.tag_filter_for_iso('sma')
 def include_hid_in_gen(form, tags, node):
+    new_tags = tags[:]
+
     if len(node) > 0:
         hid = node.xpath('.//l/@hid')
         if hid:
             hid = hid[0]
-        new_tags = []
-        for tag in tags:
-            ntag = [hid] + tag
-            new_tags.append(ntag)
+            new_tags = []
+            for tag in tags:
+                ntag = [hid] + tag
+                new_tags.append(ntag)
 
     return form, new_tags, node
 

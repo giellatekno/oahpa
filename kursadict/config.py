@@ -125,6 +125,7 @@ class Config(Config):
         self._morphologies = {}
 
         from morphology import XFST, OBT, Morphology, generation_restriction
+        morph_cache = self.get('cache', False)
 
         formats = {
             'xfst': XFST,
@@ -171,14 +172,7 @@ class Config(Config):
             if 'options' in _kwargs_in:
                 kwargs['options'] = _kwargs_in['options']
 
-            try:
-                self._morphologies[iso] = m_format(**kwargs) >> Morphology(iso)
-            except Exception, e:
-                print "Error initializing morphology"
-                print iso
-                print kwargs
-                print _kwargs_in
-
+            self._morphologies[iso] = m_format(**kwargs) >> Morphology(iso, cache=morph_cache)
         return self._morphologies
 
     def test(self, silent=False):

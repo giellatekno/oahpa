@@ -91,6 +91,7 @@ app = Flask(__name__,
 
 app.jinja_env.line_statement_prefix = '#'
 app.jinja_env.add_extension('jinja2.ext.i18n')
+app.config['cache'] = cache
 app.config = Config('.', defaults=app.config)
 app.config.from_yamlfile('app.config.yaml')
 
@@ -389,8 +390,6 @@ def wordDetail(from_language, to_language, wordform, format):
     services using this endpoint will need to make sure to do the conversion.
 
     """
-    import hashlib
-
     from morpho_lexicon import MorphoLexicon
     from lexicon import DetailedFormat
 
@@ -413,15 +412,15 @@ def wordDetail(from_language, to_language, wordform, format):
     no_compounds = request.args.get('no_compounds', False)
 
     _pattern = u'/detail/%s/%s/%s.%s?pos_filter=%r&no_compounds=%r&lemma_match=%r'
-    cache_key =  _pattern % \
-                ( from_language
-                , to_language
-                , wordform
-                , format
-                , pos_filter
-                , no_compounds
-                , lemma_match
-                )
+    entry_cache_key =  _pattern % \
+                      ( from_language
+                      , to_language
+                      , wordform
+                      , format
+                      , pos_filter
+                      , no_compounds
+                      , lemma_match
+                      )
 
     if no_compounds or lemma_match:
         want_more_detail = True
@@ -436,7 +435,7 @@ def wordDetail(from_language, to_language, wordform, format):
             abort(404)
 
     if app.caching_enabled:
-        cached_result = cache.get(cache_key)
+        cached_result = cache.get(entry_cache_key)
     else:
         cached_result = None
 
@@ -500,26 +499,7 @@ def wordDetail(from_language, to_language, wordform, format):
             "lexicon": lex_results,
         }
 
-        # TODO: ideally the things here need to be going to an external
-        # socket server thing analogous to lookupserv for Oahpa/Sahka.
-        # also, for ease of use it needs to be something that the
-        # Morphology or XFST or OBT classes spawn and keeps track of
-        # For now, just caching things on the hope that this begins to
-        # save time.
-
-        def cacheKey(lang, lemma, generation_tags):
-            """ key is something like generation-LANG-LEMMA-TAG|TAG|TAG
-            """
-            _cache_tags = '|'.join(['+'.join(a) for a in generation_tags])
-
-            _cache_key = hashlib.md5()
-            _cache_key.update('generation-%s-' % from_language)
-            _cache_key.update(lemma.encode('utf-8'))
-            _cache_key.update(_cache_tags.encode('utf-8'))
-            return _cache_key.hexdigest()
-
-
-        # TODO: either clean this up or comment.
+        # Generate each paradigm.
         for _r in lex_results:
             lemma, pos, tag, _type = _r.get('input')
             try:
@@ -535,21 +515,12 @@ def wordDetail(from_language, to_language, wordform, format):
                     _pos_type.append(_type)
                 form_tags = [_pos_type + _t.split('+') for _t in paradigm]
 
-                morphology_cache_key = cacheKey(from_language,
-                                                lemma,
-                                                form_tags)
-
-                _is_cached = cache.get(morphology_cache_key)
-                if _is_cached:
-                    _r['paradigms'] = _is_cached
-                else:
-                    _generate = morph.generate(lemma, form_tags, node)
-                    cache.set(morphology_cache_key, _generate)
-                    _r['paradigms'] = _generate
+                _generate = morph.generate(lemma, form_tags, node)
+                _r['paradigms'] = _generate
             else:
                 _r['paradigms'] = False
 
-        cache.set(cache_key, detailed_result)
+        cache.set(entry_cache_key, detailed_result)
     else:
         detailed_result = cached_result
 

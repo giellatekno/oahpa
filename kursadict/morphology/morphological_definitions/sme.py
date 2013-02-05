@@ -42,7 +42,7 @@ def lexicon_pos_to_fst(form, tags, node=None):
 
 @generation_restriction.tag_filter_for_iso('sme')
 def impersonal_verbs(form, tags, node=None):
-    if node is not None and node:
+    if len(node) > 0:
         context = node.xpath('.//l/@context')
 
         if ("upers" in context) or ("dat" in context):
@@ -59,10 +59,9 @@ def impersonal_verbs(form, tags, node=None):
 @generation_restriction.tag_filter_for_iso('sme')
 def proper_nouns(form, tags, node):
     # TODO: this only works if we have pos="n" type="prop"
-    if node is not None and node:
+    if len(node) > 0:
         pos = node.xpath('.//l/@pos')
         _type = node.xpath('.//l/@type')
-        print tags
         if ("prop" in pos) or ("prop" in _type):
             tags = [
                 'N+Prop+Sg+Gen'.split('+'),
@@ -74,7 +73,7 @@ def proper_nouns(form, tags, node):
 
 @generation_restriction.tag_filter_for_iso('sme')
 def compound_numerals(form, tags, node):
-    if node is not None and node:
+    if len(node) > 0:
         if 'num' in node.xpath('.//l/@pos'):
             tags = [
                 'Num+Sg+Gen'.split('+'),

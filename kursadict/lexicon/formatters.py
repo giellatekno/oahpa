@@ -17,12 +17,15 @@ class EntryNodeIterator(object):
         pos = l.get('pos')
         context = l.get('context')
         type = l.get('type')
+        hid = l.get('hid')
         if context == None:
             context = False
         if type == None:
             type = False
+        if hid == None:
+            hid = False
 
-        return lemma, pos, context, type
+        return lemma, pos, context, type, hid
 
     def tg_nodes(self, entry):
         target_lang = self.query_kwargs.get('target_lang', False)
@@ -103,7 +106,7 @@ class SimpleJSON(EntryNodeIterator):
     """
 
     def clean(self, e):
-        lemma, lemma_pos, lemma_context, _ = self.l_node(e)
+        lemma, lemma_pos, lemma_context, _, lemma_hid = self.l_node(e)
         tgs, ts = self.tg_nodes(e)
 
         translations = map(self.find_translation_text, tgs)
@@ -115,12 +118,13 @@ class SimpleJSON(EntryNodeIterator):
                , 'pos': lemma_pos
                , 'right': right_text
                , 'lang': right_langs
+               , 'hid': lemma_hid
                }
 
 
 class DetailedFormat(EntryNodeIterator):
     def clean(self, e):
-        lemma, lemma_pos, lemma_context, lemma_type = self.l_node(e)
+        lemma, lemma_pos, lemma_context, lemma_type, lemma_hid = self.l_node(e)
         tgs, ts = self.tg_nodes(e)
 
         meaningGroups = []
@@ -141,6 +145,7 @@ class DetailedFormat(EntryNodeIterator):
         return { 'lemma': lemma
                , 'lemma_context': lemma_context
                , 'pos': lemma_pos
+               , 'hid': lemma_hid
                , 'meaningGroups': meaningGroups
                , 'type': lemma_type
                , 'node': e
@@ -149,7 +154,7 @@ class DetailedFormat(EntryNodeIterator):
 class FrontPageFormat(EntryNodeIterator):
 
     def clean(self, e):
-        lemma, lemma_pos, lemma_context, lemma_type = self.l_node(e)
+        lemma, lemma_pos, lemma_context, lemma_type, lemma_hid = self.l_node(e)
         tgs, ts = self.tg_nodes(e)
 
         right_nodes = []
@@ -176,6 +181,7 @@ class FrontPageFormat(EntryNodeIterator):
                , 'pos': lemma_pos
                , 'right': right_nodes
                , 'lang': right_langs
+               , 'hid': lemma_hid
                }
 
 

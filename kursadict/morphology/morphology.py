@@ -337,6 +337,15 @@ class Morphology(object):
         """ Run the lookup command, parse output into
             [(lemma, ['Verb', 'Inf'], ['form1', 'form2'])]
         """
+        if len(node) > 0:
+            key = self.generate_cache_key(lemma, tagsets, node)
+        else:
+            key = self.generate_cache_key(lemma, tagsets)
+
+        _is_cached = self.cache.get(key)
+        if _is_cached:
+            return _is_cached
+
         res = self.tool.inverselookup(lemma, tagsets)
         reformatted = []
         for tag, forms in res:
@@ -361,6 +370,7 @@ class Morphology(object):
                 forms = False
                 reformatted.append((lemma, tag, forms))
 
+        _is_cached = self.cache.set(key, reformatted)
         return reformatted
 
 
@@ -494,13 +504,39 @@ class Morphology(object):
             return function(*args, **kwargs)
         return decorate
 
-    def __init__(self, languagecode, tagsets={}):
+
+    def generate_cache_key(self, lemma, generation_tags, node=False):
+        """ key is something like generation-LANG-nodehash-TAG|TAG|TAG
+        """
+
+        #     morphology_cache_key = cacheKey(from_language,
+        #                                     node,
+        #                                     form_tags)
+        import hashlib
+        _cache_tags = '|'.join(['+'.join(a) for a in generation_tags])
+
+        _cache_key = hashlib.md5()
+        _cache_key.update('generation-%s-' % self.langcode)
+        _cache_key.update(lemma.encode('utf-8'))
+        if len(node) > 0:
+            node_hash = node.__hash__()
+            _cache_key.update(str(node_hash))
+        _cache_key.update(_cache_tags.encode('utf-8'))
+        return _cache_key.hexdigest()
+
+
+    def __init__(self, languagecode, tagsets={}, cache=False):
         self.langcode = languagecode
 
         if generation_restriction:
             self.generate = generation_restriction.restrict_tagsets(languagecode, self.generate)
         else:
             self.generate = self.restrict_tagsets(self.generate)
+
+        if cache:
+            self.cache = cache
+        else:
+            self.cache = False
 
         import logging
         logfile = logging.FileHandler('morph_log.txt')
