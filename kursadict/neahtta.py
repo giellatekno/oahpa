@@ -180,7 +180,10 @@ def tagfilter(s, lang_iso):
             filtered.append(filters.get(part.lower(), part))
         return ' '.join([a for a in filtered if a.strip()])
     else:
-        return s
+        if isinstance(s, list):
+            return ' '.join(s)
+        else:
+            return s
 
 
 @app.template_filter('urlencode')
