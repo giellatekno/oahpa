@@ -27,10 +27,22 @@ def lexicon_pos_to_fst_sma(form, tags, node=None):
 
     return form, new_tags, node
 
+@generation_restriction.tag_filter_for_iso('sma')
+def include_hid_in_gen(form, tags, node):
+    if len(node) > 0:
+        hid = node.xpath('.//l/@hid')
+        if hid:
+            hid = hid[0]
+        new_tags = []
+        for tag in tags:
+            ntag = [hid] + tag
+            new_tags.append(ntag)
+
+    return form, new_tags, node
 
 @generation_restriction.tag_filter_for_iso('sma')
 def proper_nouns(form, tags, node):
-    if node is not None and node:
+    if len(node) > 0:
         pos = node.xpath('.//l/@pos')
         _type = node.xpath('.//l/@type')
 
