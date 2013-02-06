@@ -429,9 +429,6 @@ def wordDetail(from_language, to_language, wordform, format):
         lang_paradigms = app.config.paradigms.get(from_language)
         if not lang_paradigms:
             unsupportedLang(', no paradigm defined.')
-        # lang_baseforms = app.config.baseforms.get(from_language)
-        # if not lang_baseforms:
-        #     return unsupportedLang(', no baseforms defined.')
 
         morph = app.config.morphologies.get(from_language, False)
 

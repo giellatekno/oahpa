@@ -5,8 +5,8 @@ from flask import Config
 import yaml
 
 def gettext_yaml_wrapper(loader, node):
-	from flaskext.babel import lazy_gettext as _
-	return _(node.value)
+    from flaskext.babel import lazy_gettext as _
+    return _(node.value)
 
 yaml.add_constructor('!_', gettext_yaml_wrapper)
 
@@ -14,15 +14,6 @@ class Config(Config):
     """ An object for exposing the settings in app.config.yaml in a nice
     objecty way, and validating some of the contents.
     """
-    @property
-    def baseforms(self):
-        if self._baseforms:
-            return self._baseforms
-
-        lang_baseforms = self.opts.get('Baseforms')
-
-        self._baseforms = lang_baseforms
-        return self._baseforms
 
     @property
     def paradigms(self):
@@ -33,7 +24,7 @@ class Config(Config):
 
         self._paradigms = lang_paradigms
         return self._paradigms
-    
+
     @property
     def reversable_dictionaries(self):
         if self._reversable_dictionaries:
@@ -161,7 +152,7 @@ class Config(Config):
                 else:
                     _kwf = _kwargs_in['file']
                 kwargs['fst_file'] = _kwf
-            
+
             if 'inverse_file' in _kwargs_in:
                 if isinstance(_kwargs_in['inverse_file'], list):
                     _kwfi = ''.join(_kwargs_in['inverse_file'])
@@ -204,10 +195,4 @@ class Config(Config):
         self.lexicon = Lexicon(self)
 
         return True
-
-
-if __name__ == "__main__":
-    with open('app.config.yaml', 'r') as F:
-        config = yaml.load(F)
-        print config.get('Languages')
 
