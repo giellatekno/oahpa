@@ -67,7 +67,6 @@ from   flask                          import ( Flask
                                              , request
                                              , redirect
                                              , session
-                                             , g
                                              , json
                                              , render_template
                                              , Markup
@@ -76,12 +75,11 @@ from   flask                          import ( Flask
                                              )
 
 from   werkzeug.contrib.cache         import SimpleCache
-from   config                         import *
+from   config                         import Config
 from   utils                          import *
 from   logging                        import getLogger
 
 from   flaskext.babel                 import Babel
-from   flaskext.babel                 import lazy_gettext as _lazy
 from   flaskext.babel                 import gettext as _
 
 
@@ -100,8 +98,9 @@ try:
         key = F.readlines()[0].strip()
     app.config['SECRET_KEY'] = key
 except IOError:
-    print >> sys.stderr, "You need to generate a secret key, and store it in a file with the following name: "
-    print >> sys.stderr, 'secret_key.do.not.check.in'
+    print >> sys.stderr, """
+    You need to generate a secret key, and store it in a file with the
+    following name: secret_key.do.not.check.in """
     sys.exit()
 
 babel = Babel(app)
@@ -198,19 +197,15 @@ def urlencode_filter(s):
 def page_not_found(e):
     return render_template('404.html'), 404
 
-
-
-# TODO: Keeping the old endpoints until all dependent apps are migrated
-#       to the new ones.
 @app.route('/autocomplete/<from_language>/<to_language>/',
            methods=['GET'], endpoint="autocomplete")
 def autocomplete(from_language, to_language):
 
     autocomplete_tries = app.config.lexicon.autocomplete_tries
     # URL parameters
-    lookup_key = user_input = request.args.get('lookup', False)
-    lemmatize               = request.args.get('lemmatize', False)
-    has_callback            = request.args.get('callback', False)
+    lookup_key   = request.args.get('lookup', False)
+    lemmatize    = request.args.get('lemmatize', False)
+    has_callback = request.args.get('callback', False)
 
     autocompleter = autocomplete_tries.get((from_language, to_language), False)
 
@@ -274,29 +269,22 @@ def lookupWord(from_language, to_language):
     "results" list.
 
     """
-    from collections import defaultdict
     from lexicon import SimpleJSON
 
     if (from_language, to_language) not in app.config.dictionaries:
         abort(404)
 
     success = False
-    results = False
 
     # URL parameters
     lookup_key = user_input = request.args.get('lookup', False)
+    # TODO: remove option from JS
     lemmatize               = request.args.get('lemmatize', False)
     has_callback            = request.args.get('callback', False)
     pretty                  = request.args.get('pretty', False)
 
-    if lookup_key == False:
+    if lookup_key is False:
         return json.dumps(" * lookup undefined")
-
-    # TODO: may have to translate this.
-    # Is there a lemmatizer?
-    # lemm_ = app.config.morphologies.get(from_language, False)
-    # if lemm_:
-    #     lemmatizer = lemm_.lemmatize
 
     def filterPOS(r):
         def fixTag(t):
@@ -320,7 +308,11 @@ def lookupWord(from_language, to_language):
                                      )
 
     if analyses:
-        tags = [(a.lemma, tagfilter(a.pos, from_language) + ' ' + ' '.join(a.tag)) for a in analyses]
+        def filterPOSAndTag(analysis):
+            filtered_pos = tagfilter(analysis.pos, from_language)
+            joined = filtered_pos + ' ' + ' '.join(analysis.tag)
+            return (analysis.lemma, joined)
+        tags = map(filterPOSAndTag, analyses)
     else:
         tags = []
 
@@ -347,7 +339,6 @@ def lookupWord(from_language, to_language):
                       , 'success': success
                       })
 
-
     if pretty:
         data = json.dumps( json.loads(data)
                          , sort_keys=True
@@ -357,7 +348,6 @@ def lookupWord(from_language, to_language):
 
     if has_callback:
         data = '%s(%s)' % (has_callback, data)
-
 
     return Response( response=data
                    , status=200
@@ -377,14 +367,14 @@ def wordDetail(from_language, to_language, wordform, format):
     Path parameters:
 
         /detail/<from_language>/<to_language>/<wordform>.<format>
-    
+
     TODO: See /languages for an overview of supported language pairs, and
     supply the ISO code for <from_language> and <to_language>. <wordform> may
     be any word form in the source language, as the form will be passed through
     a morphological analyzer.
 
     <format> must be either json, or html.
-    
+
       Ex.) /detail/sme/nob/orrut.html
            /detail/sme/nob/orrut.json
 
@@ -406,7 +396,7 @@ def wordDetail(from_language, to_language, wordform, format):
     # from the initial page's search. Everything should work without
     # them, and with all or some of them.
 
-    # Do we filter analyzed forms and lookups by pos? 
+    # Do we filter analyzed forms and lookups by pos?
     pos_filter = request.args.get('pos_filter', False)
     # Should we match the input lemma with the analyzed lemma?
     lemma_match = request.args.get('lemma_match', False)
@@ -414,16 +404,8 @@ def wordDetail(from_language, to_language, wordform, format):
     # Do we want to analyze compounds?
     no_compounds = request.args.get('no_compounds', False)
 
-    _pattern = u'/detail/%s/%s/%s.%s?pos_filter=%r&no_compounds=%r&lemma_match=%r'
-    entry_cache_key =  _pattern % \
-                      ( from_language
-                      , to_language
-                      , wordform
-                      , format
-                      , pos_filter
-                      , no_compounds
-                      , lemma_match
-                      )
+    # Cache key by URL
+    entry_cache_key = u'%s?%s' % (request.path, request.query_string)
 
     if no_compounds or lemma_match:
         want_more_detail = True
@@ -432,8 +414,8 @@ def wordDetail(from_language, to_language, wordform, format):
 
     def unsupportedLang(more='.'):
         if format == 'json':
-            _err = " * Detailed view not supported for this language pair" + more
-            return json.dumps(_err)
+            _err = " * Detailed view not supported for this language pair"
+            return json.dumps(_err + " " + more)
         elif format == 'html':
             abort(404)
 
@@ -446,7 +428,7 @@ def wordDetail(from_language, to_language, wordform, format):
 
         lang_paradigms = app.config.paradigms.get(from_language)
         if not lang_paradigms:
-             unsupportedLang(', no paradigm defined.')
+            unsupportedLang(', no paradigm defined.')
         # lang_baseforms = app.config.baseforms.get(from_language)
         # if not lang_baseforms:
         #     return unsupportedLang(', no baseforms defined.')
@@ -461,7 +443,6 @@ def wordDetail(from_language, to_language, wordform, format):
             _split = True
             _non_c = False
             _non_d = False
-
 
         mlex = MorphoLexicon(app.config)
         xml_nodes, analyses = mlex.lookup( wordform
@@ -487,12 +468,22 @@ def wordDetail(from_language, to_language, wordform, format):
                 'input': input_info,
             })
 
+        def _byPOS(r):
+            if r.get('input')[1].upper() == pos_filter.upper():
+                return True
+            else:
+                return False
+
+        def _byLemma(r):
+            if r.get('input')[0] == wordform:
+                return True
+            else:
+                return False
+
         if pos_filter:
-            lex_results = [ r for r in lex_results
-                            if r.get('input')[1].upper() == pos_filter.upper() ]
+            lex_results = filter(_byPOS, lex_results)
         if lemma_match:
-            lex_results = [ r for r in lex_results
-                            if r.get('input')[0] == wordform ]
+            lex_results = filter(_byLemma, lex_results)
 
         analyses = [(l.lemma, l.pos, l.tag) for l in analyses]
 
@@ -584,16 +575,12 @@ def bookmarklet():
 ## Public Docs
 ##
 
-# TODO: Keeping the old endpoints until all dependent apps are migrated
-#       to the new ones.
-@app.route('/lookup/', methods=['GET'], endpoint="lookup-doc")
-def wordLookupDocs():
-    from cgi import escape
-    _lookup_doc = escape(lookupWord.__doc__)
-    return '<html><body><pre>%s</pre></body></html>' % _lookup_doc
+# @app.route('/lookup/', methods=['GET'], endpoint="lookup-doc")
+# def wordLookupDocs():
+#     from cgi import escape
+#     _lookup_doc = escape(lookupWord.__doc__)
+#     return '<html><body><pre>%s</pre></body></html>' % _lookup_doc
 
-# TODO: Keeping the old endpoints until all dependent apps are migrated
-#       to the new ones.
 # @app.route('/detail/', methods=['GET'], endpoint="detail-doc")
 # def wordDetailDocs():
 #     from cgi import escape
@@ -631,7 +618,8 @@ def indexWithLangs(_from, _to):
                                          , split_compounds=True
                                          )
 
-        analyses = [(lem.input, lem.lemma, [lem.pos] + lem.tag) for lem in analyses]
+        analyses = [(lem.input, lem.lemma, [lem.pos] + lem.tag)
+                    for lem in analyses]
 
         fmtkwargs = {'target_lang': _to}
         # [(lemma, XMLNodes)] -> [(lemma, generator(AlmostJSON))]
@@ -697,7 +685,6 @@ def set_locale(iso):
 
 @app.route('/', methods=['GET'], endpoint="canonical-root")
 def index():
-    # TODO: locales and language names
     return render_template( 'index.html'
                           , language_pairs=app.config.pair_definitions
                           , internationalizations=AVAILABLE_LOCALES
@@ -712,4 +699,3 @@ if __name__ == "__main__":
     app.run(debug=True, use_reloader=False)
 
 # vim: set ts=4 sw=4 tw=72 syntax=python expandtab :
-
