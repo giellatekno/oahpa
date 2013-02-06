@@ -1,4 +1,6 @@
 # -*- encoding: utf-8 -*-
+""" sma-specific overrides, and pregenerated paradigm selection.
+"""
 
 # NOTE: if copying this for a new language, remember to make sure that
 # it's being imported in __init__.py
