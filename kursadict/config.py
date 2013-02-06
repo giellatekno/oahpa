@@ -124,7 +124,7 @@ class Config(Config):
 
         self._morphologies = {}
 
-        from morphology import XFST, OBT, Morphology, generation_restriction
+        from morphology import XFST, OBT, Morphology
         morph_cache = self.get('cache', False)
 
         formats = {
