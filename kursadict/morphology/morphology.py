@@ -8,6 +8,7 @@ class Tagset(object):
     def __init__(self, name, members):
         self.name = name
         self.members = members
+
     def __str__(self):
         return '<Tagset: "%s">' % self.name
 
@@ -16,14 +17,18 @@ class Tagsets(object):
         self.sets = {}
         self.set_definitions = set_definitions
         self.createTagSets()
+
     def createTagSets(self):
         for name, tags in self.set_definitions.iteritems():
             tagset = Tagset(name, tags)
             self.set(name, tagset)
+
     def get(self, name):
         return self.sets.get(name, False)
+
     def __getitem__(self, key):
         return self.get(key)
+
     def set(self, name, tagset):
         self.sets[name] = tagset
 
@@ -58,21 +63,26 @@ class Tag(object):
         self.tag_string = string
         self.sep = sep
         self.parts = self.tag_string.split(sep)
+
     def __getitem__(self, b):
         """ Overloading the xor operator to produce the tag piece that
         belongs to a given tagset. """
         if not isinstance(b, Tagset):
             raise TypeError("Second value must be a tagset")
         return self.getTagByTagset(b)
+
     def __iter__(self):
         for x in self.parts:
             yield x
+
     def __str__(self):
         return '<Tag: %s>' % self.sep.join(self.parts)
+
     def getTagByTagset(self, tagset):
         for p in self.parts:
             if p in tagset.members:
                 return p
+
     def splitByTagset(self, tagset):
         """
         >>> tagset = Tagset('compound', ['Cmp#'])
@@ -151,7 +161,7 @@ pregeneration_tag_rewrites = PregenerationTagRewrites()
 class XFST(object):
 
     def splitTagByCompound(self, analysis):
-        _cmp =  self.options.get('compoundBoundary', False)
+        _cmp = self.options.get('compoundBoundary', False)
         if _cmp:
             return analysis.split(_cmp)
         else:
@@ -194,8 +204,10 @@ class XFST(object):
         import subprocess
         from threading import Timer
 
-        try:     _input = _input.encode('utf-8')
-        except:  pass
+        try:
+            _input = _input.encode('utf-8')
+        except:
+            pass
 
         lookup_proc = subprocess.Popen(cmd.split(' '),
                                        stdin=subprocess.PIPE,
@@ -217,12 +229,16 @@ class XFST(object):
         output, err = lookup_proc.communicate(_input)
 
         if output:
-            try:     output = output.decode('utf-8')
-            except:  pass
+            try:
+                output = output.decode('utf-8')
+            except:
+                pass
 
         if err:
-            try:     err = err.decode('utf-8')
-            except:  pass
+            try:
+                err = err.decode('utf-8')
+            except:
+                pass
 
         return (output, err)
 
@@ -245,12 +261,12 @@ class XFST(object):
         output, err = self._exec(lookup_string, cmd=self.cmd)
         if len(output) == 0 and len(err) > 0:
             name = self.__class__.__name__
-            msg = """%(name)s: %(err)s""" % locals()
+            msg = """%s: %s""" % (name, err)
             self.logger.error(msg.strip())
         return self.clean(output)
 
     def inverselookup(self, lemma, tags):
-
+        import sys
         if not self.icmd:
             print >> sys.stderr, " * Inverse lookups not available."
             return False
@@ -287,7 +303,8 @@ class XFST(object):
         return analysis.split(delim)
 
 class OBT(XFST):
-    """ TODO: this is almost like CG, so separate out those things if necessary.
+    """ TODO: this is almost like CG, so separate out those things if
+    necessary.
     """
 
     def clean(self, _output):
@@ -328,7 +345,7 @@ class OBT(XFST):
 
             lemma = list(set(lemmas))[0]
 
-            form = form[2:len(form)-2]
+            form = form[2:len(form) - 2]
             append_ = (form, tags)
 
             cleaned.append(append_)
@@ -344,6 +361,7 @@ class OBT(XFST):
 
 class Morphology(object):
 
+    # TODO: language specific, need to sneak this out to an override
     def cleanTag(self, tag):
         exclusions = [
             'Ani', 'Body', 'Build', 'Clth', 'Edu', 'Event', 'Fem',
@@ -381,8 +399,6 @@ class Morphology(object):
             return _is_cached
 
         if pregenerated:
-            print "omg, pregenerated forms"
-            print pregenerated
             _is_cached = self.cache.set(key, pregenerated)
             return pregenerated
 
@@ -413,23 +429,30 @@ class Morphology(object):
         _is_cached = self.cache.set(key, reformatted)
         return reformatted
 
-
     def lemmatize(self, form, split_compounds=False,
                   non_compound_only=False, no_derivations=False):
         """ For a wordform, return a list of lemmas
         """
         class Lemma(object):
             def __key(lem_obj):
-                return (lem_obj.lemma, lem_obj.pos, self.tool.formatTag(lem_obj.tag))
+                return ( lem_obj.lemma
+                       , lem_obj.pos
+                       , self.tool.formatTag(lem_obj.tag)
+                       )
+
             def __eq__(x, y):
                 return x.__key() == y.__key()
+
             def __hash__(lem_obj):
                 return hash(lem_obj.__key())
+
             def __unicode__(lem_obj):
                 return lem_obj.lemma
+
             def __repr__(lem_obj):
                 _lem, _pos, _tag = lem_obj.__key()
                 return '<Lemma: %s, %s, %s>' % (_lem, _pos, _tag)
+
             def __init__(lem_obj, lemma, pos, tag, _input=False):
                 lem_obj.lemma = lemma
                 lem_obj.pos = pos
@@ -437,7 +460,7 @@ class Morphology(object):
                 lem_obj.input = _input
 
         def remove_compound_analyses(_a):
-            _cmp =  self.tool.options.get('compoundBoundary', False)
+            _cmp = self.tool.options.get('compoundBoundary', False)
             if not _cmp:
                 return True
             if _cmp in _a:
@@ -491,7 +514,9 @@ class Morphology(object):
 
             for analysis in analyses:
                 _an_parts = self.tool.splitAnalysis(analysis)
-                _lem, _pos, _analysis = _an_parts[0], _an_parts[1], _an_parts[2::]
+                _lem      = _an_parts[0]
+                _pos      = _an_parts[1]
+                _analysis = _an_parts[2::]
                 lem = Lemma(_lem, _pos, _analysis, form)
                 lemmas.add(lem)
 
@@ -506,14 +531,12 @@ class Morphology(object):
         """
         lookups = self.tool.lookup([form])
 
-        unknown = False
         cleaned = []
         if split_compounds:
             for _input, tags in lookups:
                 for tag in tags:
                     # TODO: how does OBT handle unknown?
                     if '+?' in tag:
-                        unknown = True
                         cleaned.append((_input, '?', '?'))
                     else:
                         decompounded = self.tool.splitTagByCompound(tag)
@@ -527,9 +550,7 @@ class Morphology(object):
         else:
             for _input, tags in lookups:
                 for tag in tags:
-                    # TODO: how does OBT handle unknown?
                     if '+?' in tag:
-                        unknown = True
                         cleaned.append((_input, '?', '?'))
                     else:
                         tag = self.tool.splitAnalysis(tag)
@@ -539,19 +560,9 @@ class Morphology(object):
 
         return cleaned
 
-    def restrict_tagsets(self, function):
-        def decorate(*args, **kwargs):
-            return function(*args, **kwargs)
-        return decorate
-
-
     def generate_cache_key(self, lemma, generation_tags, node=False):
         """ key is something like generation-LANG-nodehash-TAG|TAG|TAG
         """
-
-        #     morphology_cache_key = cacheKey(from_language,
-        #                                     node,
-        #                                     form_tags)
         import hashlib
         _cache_tags = '|'.join(['+'.join(a) for a in generation_tags])
 
@@ -564,19 +575,15 @@ class Morphology(object):
         _cache_key.update(_cache_tags.encode('utf-8'))
         return _cache_key.hexdigest()
 
-
     def __init__(self, languagecode, tagsets={}, cache=False):
         self.langcode = languagecode
 
-        if pregeneration_tag_rewrites:
-            self.generate = pregeneration_tag_rewrites.apply_pregenerated_forms( 
-                languagecode, self.generate
-            )
-            self.generate = pregeneration_tag_rewrites.restrict_tagsets( 
-                languagecode, self.generate
-            )
-        else:
-            self.generate = self.restrict_tagsets(self.generate)
+        self.generate = pregeneration_tag_rewrites.apply_pregenerated_forms(
+            languagecode, self.generate
+        )
+        self.generate = pregeneration_tag_rewrites.restrict_tagsets(
+            languagecode, self.generate
+        )
 
         if cache:
             self.cache = cache
@@ -585,7 +592,6 @@ class Morphology(object):
 
         import logging
         logfile = logging.FileHandler('morph_log.txt')
-        FORMAT = '%(asctime)-15s %(clientip)s %(user)-8s %(message)s'
         self.logger = logging.Logger('morphology', level=0)
         self.logger.setLevel(logging.ERROR)
         self.logger.addHandler(logfile)
@@ -666,8 +672,6 @@ def sme_restricted_generation():
             else:
                 print '\t' + 'NOPE'
 
-
-
 def sme_derivation_test():
     sme = sme_test()
 
@@ -685,7 +689,7 @@ def sme_derivation_test():
                            , non_compound_only=True
                            , no_derivations=True
                            )
-        
+
         print "/ search analyzer"
         print sme.analyze( w
                          , split_compounds=True
@@ -726,7 +730,7 @@ def sme_compound_test():
     print sme.lemmatize( u'báhčinsearvi'
                        , split_compounds=True
                        )
-    
+
     print sme.lemmatize( u'boazodoallošiehtadallanlávdegotti'
                        , split_compounds=True
                        , non_compound_only=True
@@ -761,7 +765,7 @@ def examples():
                                 ['V', 'Ind', 'Pst', 'Sg2'],
                                 ['V', 'Ind', 'Prt', 'Sg2']]
                                 )
-    
+
     for lem, tag, forms in generate:
         if forms:
             for form in forms:
@@ -770,14 +774,13 @@ def examples():
             print '  ' + ' '.join(tag) + ':   unknown'
 
     generate = sme.generate(u'eaktodáhtolašš', [['A', 'Attr'], ])
-    
+
     for lem, tag, forms in generate:
         if forms:
             for form in forms:
                 print '  ' + ' '.join(tag) + ' => ' + form
         else:
             print '  ' + ' '.join(tag) + ':   unknown'
-
 
     for a in sme.analyze(u'gullot'):
         print '  %s %s  %s' % (a[0], a[1], ' '.join(a[2]))
@@ -828,6 +831,3 @@ if __name__ == "__main__":
     # sme_compound_test()
     # sme_derivation_test()
     sme_restricted_generation()
-
-
-
