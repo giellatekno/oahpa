@@ -3,7 +3,7 @@
 # NOTE: if copying this for a new language, remember to make sure that
 # it's being imported in __init__.py
 
-from morphology import generation_restriction
+from morphology import pregeneration_tag_rewrites as rewrites
 
 LEX_TO_FST = {
     'a': 'A',
@@ -15,7 +15,37 @@ LEX_TO_FST = {
     'v': 'V',
 }
 
-@generation_restriction.tag_filter_for_iso('sma')
+@rewrites.pregenerated_form_selector('sma')
+def pregenerate_sma(form, tags, node):
+    _has_mini_paradigm = node.xpath('.//mini_paradigm[1]')
+
+    _has_lemma_ref     = node.xpath('.//lemma_ref')
+    if len(_has_lemma_ref) > 0:
+        return form, [], node, []
+    if len(_has_mini_paradigm) == 0:
+        return form, tags, node
+    else:
+        mp = _has_mini_paradigm[0]
+
+    def analysis_node(node):
+        """ Node ->
+            ("lemma", ["Pron", "Sg", "Tag"], ["wordform", "wordform"])
+        """
+        tag = node.xpath('.//@ms')
+        if len(tag) > 0:
+            tag = tag[0].split('_')
+        else:
+            tag = []
+
+        wfs = node.xpath('.//wordform/text()')
+
+        return (form, tag, wfs)
+
+    analyses = map(analysis_node, mp.xpath('.//analysis'))
+
+    return form, tags, node, analyses
+
+@rewrites.tag_filter_for_iso('sma')
 def lexicon_pos_to_fst_sma(form, tags, node=None):
 
     new_tags = []
@@ -27,7 +57,7 @@ def lexicon_pos_to_fst_sma(form, tags, node=None):
 
     return form, new_tags, node
 
-@generation_restriction.tag_filter_for_iso('sma')
+@rewrites.tag_filter_for_iso('sma')
 def include_hid_in_gen(form, tags, node):
     new_tags = tags[:]
 
@@ -42,7 +72,7 @@ def include_hid_in_gen(form, tags, node):
 
     return form, new_tags, node
 
-@generation_restriction.tag_filter_for_iso('sma')
+@rewrites.tag_filter_for_iso('sma')
 def proper_nouns(form, tags, node):
     if len(node) > 0:
         pos = node.xpath('.//l/@pos')
@@ -58,7 +88,7 @@ def proper_nouns(form, tags, node):
     return form, tags, node
 
 
-@generation_restriction.tag_filter_for_iso('sma')
+@rewrites.tag_filter_for_iso('sma')
 def sma_common_noun_pluralia_tanta(form, tags, node):
     if len(node) > 0:
         num = node.xpath('.//l/@num')

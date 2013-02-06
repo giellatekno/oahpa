@@ -82,12 +82,12 @@ class Tag(object):
         """
         raise NotImplementedError
 
-class MorphologicalRestrictions(object):
+class PregenerationTagRewrites(object):
     """ Class for collecting functions marked with decorators that
     provide special handling of tags. One class instantiated in
-    morphology module: `generation_restriction`.
+    morphology module: `pregeneration_tag_rewrites`.
 
-        @generation_restriction.tag_filter_for_iso('sme')
+        @pregeneration_tag_rewrites.tag_filter_for_iso('sme')
         def someFunction(form, tags, xml_node):
             ... some processing on tags, may be conditional, etc.
             return form, tags, xml_node
@@ -106,6 +106,29 @@ class MorphologicalRestrictions(object):
             return function(*newargs)
         return decorate
 
+    def apply_pregenerated_forms(self, lang_code, function):
+        def decorate(*args):
+            newargs = args
+            f = self.pregenerators.get(lang_code, False)
+            if f:
+                newargs = f(*newargs)
+            return function(*newargs)
+        return decorate
+
+    def pregenerated_form_selector(self, language_iso):
+        """ The function that this decorates is used to select and
+        construct a pregenerated paradigm for a given word and XML node.
+
+        Only one may be defined.
+        """
+        def wrapper(pregenerated_selector_function):
+            self.pregenerators[language_iso] = pregenerated_selector_function
+            print 'Registered %s pregenerated form selector for %s ' % \
+                  ( pregenerated_selector_function.__name__
+                  , language_iso
+                  )
+        return wrapper
+
     def tag_filter_for_iso(self, language_iso):
         """ Register a function for a language ISO
         """
@@ -119,9 +142,11 @@ class MorphologicalRestrictions(object):
 
     def __init__(self):
         from collections import defaultdict
-        self.registry = defaultdict(list)
 
-generation_restriction = MorphologicalRestrictions()
+        self.registry      = defaultdict(list)
+        self.pregenerators = defaultdict(list)
+
+pregeneration_tag_rewrites = PregenerationTagRewrites()
 
 class XFST(object):
 
@@ -333,9 +358,18 @@ class Morphology(object):
             cleaned.append(p)
         return cleaned
 
-    def generate(self, lemma, tagsets, node=None):
+    def generate(self, lemma, tagsets, node=None, pregenerated=None):
         """ Run the lookup command, parse output into
             [(lemma, ['Verb', 'Inf'], ['form1', 'form2'])]
+
+            If pregenerated, we pass the forms in using the same
+            structure as the analyzed output. The purpose here is that
+            pregenerated forms in lexicon may differ from language to
+            language, and we want to allow processing for that to occur
+            elsewhere.
+
+            TODO: cache pregenerated forms, return them.
+
         """
         if len(node) > 0:
             key = self.generate_cache_key(lemma, tagsets, node)
@@ -345,6 +379,12 @@ class Morphology(object):
         _is_cached = self.cache.get(key)
         if _is_cached:
             return _is_cached
+
+        if pregenerated:
+            print "omg, pregenerated forms"
+            print pregenerated
+            _is_cached = self.cache.set(key, pregenerated)
+            return pregenerated
 
         res = self.tool.inverselookup(lemma, tagsets)
         reformatted = []
@@ -528,8 +568,13 @@ class Morphology(object):
     def __init__(self, languagecode, tagsets={}, cache=False):
         self.langcode = languagecode
 
-        if generation_restriction:
-            self.generate = generation_restriction.restrict_tagsets(languagecode, self.generate)
+        if pregeneration_tag_rewrites:
+            self.generate = pregeneration_tag_rewrites.apply_pregenerated_forms( 
+                languagecode, self.generate
+            )
+            self.generate = pregeneration_tag_rewrites.restrict_tagsets( 
+                languagecode, self.generate
+            )
         else:
             self.generate = self.restrict_tagsets(self.generate)
 

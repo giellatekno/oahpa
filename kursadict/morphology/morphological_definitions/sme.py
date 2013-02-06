@@ -5,7 +5,7 @@
 
 # * paradigm documentation here: http://giellatekno.uit.no/doc/dicts/dictionarywork.html
 
-from morphology import generation_restriction
+from morphology import pregeneration_tag_rewrites as rewrites
 
 LEX_TO_FST = {
     'a': 'A',
@@ -18,7 +18,7 @@ LEX_TO_FST = {
 }
 
 
-@generation_restriction.tag_filter_for_iso('sme')
+@rewrites.tag_filter_for_iso('sme')
 def lexicon_pos_to_fst(form, tags, node=None):
 
     new_tags = []
@@ -30,7 +30,7 @@ def lexicon_pos_to_fst(form, tags, node=None):
 
     return form, new_tags, node
 
-@generation_restriction.tag_filter_for_iso('sme')
+@rewrites.tag_filter_for_iso('sme')
 def impersonal_verbs(form, tags, node=None):
     if len(node) > 0:
         context = node.xpath('.//l/@context')
@@ -46,7 +46,7 @@ def impersonal_verbs(form, tags, node=None):
 
     return form, tags, node
 
-@generation_restriction.tag_filter_for_iso('sme')
+@rewrites.tag_filter_for_iso('sme')
 def common_noun_pluralia_tanta(form, tags, node):
     """ Pluralia tanta common noun
 
@@ -64,7 +64,7 @@ def common_noun_pluralia_tanta(form, tags, node):
 
     return form, tags, node
 
-@generation_restriction.tag_filter_for_iso('sme')
+@rewrites.tag_filter_for_iso('sme')
 def proper_noun_pluralia_tanta(form, tags, node):
     """ Pluralia tanta
 
@@ -86,7 +86,7 @@ def proper_noun_pluralia_tanta(form, tags, node):
 
     return form, tags, node
 
-@generation_restriction.tag_filter_for_iso('sme')
+@rewrites.tag_filter_for_iso('sme')
 def compound_numerals(form, tags, node):
     if len(node) > 0:
         if 'num' in node.xpath('.//l/@pos'):

@@ -3,7 +3,7 @@ from morphology import ( Tagsets
                        , XFST
                        , OBT
                        , Morphology
-                       , generation_restriction
+                       , pregeneration_tag_rewrites
                        )
 
 # Import to register the functions
@@ -13,6 +13,7 @@ __all__ = [ 'XFST'
           , 'OBT'
           , 'Morphology'
           , 'morphological_definitions'
-          , 'generation_restriction'
+          # , 'generation_restriction'
+          , 'pregeneration_tag_rewrites'
           ]
 
