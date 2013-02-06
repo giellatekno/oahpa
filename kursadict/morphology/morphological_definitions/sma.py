@@ -16,6 +16,19 @@ LEX_TO_FST = {
 }
 
 @generation_restriction.tag_filter_for_iso('sma')
+def adj_pos_fix(form, tags, node=None):
+
+    new_tags = []
+    for t in tags:
+        _t = []
+        for p in t:
+            _t.append(LEX_TO_FST.get(p, p))
+        new_tags.append(_t)
+
+    return form, new_tags, node
+
+
+@generation_restriction.tag_filter_for_iso('sma')
 def lexicon_pos_to_fst_sma(form, tags, node=None):
 
     new_tags = []
@@ -53,6 +66,19 @@ def proper_nouns(form, tags, node):
                 'N+Prop+Sg+Gen'.split('+'),
                 'N+Prop+Sg+Ill'.split('+'),
                 'N+Prop+Sg+Ine'.split('+'),
+            ]
+
+    return form, tags, node
+
+
+@generation_restriction.tag_filter_for_iso('sma')
+def sma_common_noun_pluralia_tanta(form, tags, node):
+    if len(node) > 0:
+        num = node.xpath('.//l/@num')
+        if ("pl" in num) or ("Pl" in num):
+            tags = [
+                '+'.join(tag).replace('Sg', 'Pl').split('+')
+                for tag in tags
             ]
 
     return form, tags, node
