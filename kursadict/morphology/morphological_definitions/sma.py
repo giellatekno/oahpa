@@ -16,19 +16,6 @@ LEX_TO_FST = {
 }
 
 @generation_restriction.tag_filter_for_iso('sma')
-def adj_pos_fix(form, tags, node=None):
-
-    new_tags = []
-    for t in tags:
-        _t = []
-        for p in t:
-            _t.append(LEX_TO_FST.get(p, p))
-        new_tags.append(_t)
-
-    return form, new_tags, node
-
-
-@generation_restriction.tag_filter_for_iso('sma')
 def lexicon_pos_to_fst_sma(form, tags, node=None):
 
     new_tags = []
