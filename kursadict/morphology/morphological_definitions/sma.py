@@ -11,7 +11,8 @@ LEX_TO_FST = {
     'a': 'A',
     'adv': 'Adv',
     'n': 'N',
-    'npl': 'N', # TODO: npl filter
+    # TODO: npl filter
+    'npl': 'N',
     'num': 'Num',
     'prop': 'Prop',
     'v': 'V',
@@ -94,11 +95,16 @@ def proper_nouns(form, tags, node):
 def sma_common_noun_pluralia_tanta(form, tags, node):
     if len(node) > 0:
         num = node.xpath('.//l/@num')
-        if ("pl" in num) or ("Pl" in num):
+        nr  = node.xpath('.//l/@nr')
+        numera = False
+        if len(num) > 0:
+            numera = num[0].lower()
+        if len(nr) > 0:
+            numera = nr[0].lower()
+        if numera == "pl":
             tags = [
                 '+'.join(tag).replace('Sg', 'Pl').split('+')
                 for tag in tags
             ]
 
     return form, tags, node
-
