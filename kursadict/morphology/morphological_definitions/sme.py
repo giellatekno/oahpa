@@ -78,6 +78,22 @@ def impersonal_verbs(form, tags, node=None):
     return form, tags, node
 
 @rewrites.tag_filter_for_iso('sme')
+def reciprocal_verbs(form, tags, node=None):
+    if len(node) > 0:
+        context = node.xpath('.//l/@context')
+
+        if ("sii" in context):
+            new_tags = [
+                'V+Ind+Prs+Pl3'.split('+'),
+                'V+Ind+Prt+Pl3'.split('+'),
+                'V+Ind+Prs+ConNeg'.split('+'),
+            ]
+
+            return form, new_tags, node
+
+    return form, tags, node
+
+@rewrites.tag_filter_for_iso('sme')
 def common_noun_pluralia_tanta(form, tags, node):
     """ Pluralia tanta common noun
 
@@ -128,9 +144,63 @@ def compound_numerals(form, tags, node):
             ]
     return form, tags, node
 
-# @rewrites.postgeneration_filter_for_iso('sme')
-# def verb_context(generated_result, *generation_input_args):
-#     print "omg"
-#     print generated_result
-#     print generation_input_args
-#     return generated_result
+context_for_tags = {
+    ("mun", "V+Ind+Prs+Sg1"):       "(odne mun) %(word_form)s",
+    ("mun", "V+Ind+Prt+Sg1"):       "(ikte mun) %(word_form)s",
+    ("mun", "V+Ind+Prs+ConNeg"):    "(in) %(word_form)s",
+
+    # EX: ciellat
+    ("dat", "V+Ind+Prs+Sg3"):       "(odne dat) %(word_form)s",
+    ("dat", "V+Ind+Prt+Sg3"):       "(ikte dat) %(word_form)s",
+    ("dat", "V+Ind+Prs+ConNeg"):    "(ii) %(word_form)s",
+
+    # EX: deaivvadit
+    # TODO: requires a tag filter above to include Pl3 in paradigm
+    ("sii", "V+Ind+Prs+Pl3"):       "(odne sii) %(word_form)s",
+    ("sii", "V+Ind+Prt+Pl3"):       "(ikte sii) %(word_form)s",
+    ("sii", "V+Ind+Prs+ConNeg"):    "(eai) %(word_form)s",
+
+    # EX: bieggat
+    ("upers", "V+Ind+Prs+Sg1"):       "(odne) %(word_form)s",
+    ("upers", "V+Ind+Prt+Sg1"):       "(ikte) %(word_form)s",
+    ("upers", "V+Ind+Prs+ConNeg"):    "(ii) %(word_form)s",
+
+}
+
+@rewrites.postgeneration_filter_for_iso('sme')
+def verb_context(generated_result, *generation_input_args):
+    # lemma = generation_input_args[0]
+    # tags  = generation_input_args[1]
+    node  = generation_input_args[2]
+
+    if len(node) == 0:
+        return generated_result
+
+    context = node.xpath('.//l/@context')
+
+    if len(context) > 0:
+        context = context[0]
+    else:
+        return generated_result
+
+    def apply_context(form):
+        lemma, tag, forms = form
+        tag = '+'.join(tag)
+
+        context_formatter = context_for_tags.get((context, tag), False)
+        if context_formatter:
+            formatted = []
+            for f in forms:
+                f = context_formatter % {'word_form': f}
+                formatted.append(f)
+            formatted_forms = formatted
+        else:
+            print "* No context rule specified for %s and %s" % (context, tag)
+            print "  but context exists in node."
+            formatted_forms = forms
+
+        tag = tag.split('+')
+
+        return (lemma, tag, formatted_forms)
+
+    return map(apply_context, generated_result)
