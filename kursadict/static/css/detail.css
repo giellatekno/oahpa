@@ -1,4 +1,7 @@
-/* @override http://localhost:5000/static/css/detail.css */
+/* @override 
+	http://localhost:5000/static/css/detail.css
+	http://digitesting.oahpa.no/static/css/detail.css
+*/
 
 div.lexeme {
     border-bottom: 5px solid #EEE;
@@ -37,6 +40,10 @@ dl dd .extraexpand .extralabel {
 	position: absolute;
 	right: -100px;
 	top: 0px;
+}
+
+dl.miniparadigm dt {
+	text-overflow: none !important;
 }
 
 .extralabel {
