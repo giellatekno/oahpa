@@ -8,16 +8,8 @@
     {% if form %}
     <dd>
         {%- for f in form -%}
-            {%- if loop.first  %}{{ f }}
-                {% if loop.length > 1 -%}<a class="extraexpand" href="#"><span class="label extralabel">+</span></a>{%- endif -%}
-            {%- endif -%}
-        {%- endfor -%} 
-        <span class="extra_forms" id="extras">
-            {%- for f in form -%}
-                {%- if not loop.first %}{{ f }} {% endif -%}
-            {%- endfor -%}
-        </span>
-        {% if loop.first and context %} ({{ context }}){% endif %}
+            {{ f }}<br/>
+        {%- endfor -%}
     </dd>
     {% else %}
         <dd>?</dd>
