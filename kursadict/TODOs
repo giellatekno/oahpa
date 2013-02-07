@@ -1,53 +1,22 @@
 
 ## Commits
 
-## Next: 
+## Next:
 
- * closed PoS classes
+ * Legge til informasjon om morfologi -- this is language specific, and
+   also word/paradigm specific. behavior for following is very different:
+     
+     context="mun"          -- v. prs. s1. - (mun) manan
+     context="bivttas"      -- adj. attr.  - alit (bivttas)
+     context="gápmagat"     -- num. ??     - guovttit (gápmagat)
 
- * pron pregenerated forms
+ * lemma context -- maybe need another thing in morphological_definitions for it.
 
  * bookmarklet unload on additional click
 
- * reader page: funky padding on footer again, but only in some screen widths
-
- * paradigm/word stuff
-
-     * notes from Laura, words that are left over to fix
-
-        - ikkje i FST
-            oakkastemen
-            gámppás
-            ortnetmielde
-            aiddi
-
-     * boaššohuvvat - missing derived analysis on front page still.
-
-     * see: email from lene
-
-       * Legge til informasjon om morfologi
-       
-           !! Context i miniparadigmet
-           I adjektiv-fila er det info om context:
-           {{{
-               <l context="bivttas" pos="a">fiskat</l>
-           
-               Denne infoen kan brukes slik i miniparadigmet:
-               adj. Attr   		alit (bivttas)     <========
-               adj. Pl Nom  		alihat
-               adj. Comp Attr		alihit
-               adj. Comp Sg Nom 	alihit
-               adj. Superl Sg Nom	aliheamos
-           }}}
-       
-           Også i numeralfila er det context:
-       
-           {{{
-               <l context="gápmagat" pos="num">guokte</l>
-           }}}
-       
-           Den skal vises for plural-fomen i miniparadigmet:
-           guovttit (gápmagat)
+ * thoughts about detailed entry display: sma shows verb class (I, IV, II), sme
+   doesn't, also potentially transitivity. need a place to make it easy to
+   format display lang-by-lang
    
  * google analytics
 
@@ -61,8 +30,6 @@
    detailed view, and it is impossible to select a new language pair
 
  * when to show "more information" link?
-
- * demo image needs to be updated to fix inconsistencies in format
 
  * use logger's own log message formatter
 

@@ -93,6 +93,9 @@ app.config['cache'] = cache
 app.config = Config('.', defaults=app.config)
 app.config.from_yamlfile('app.config.yaml')
 
+from morpho_lexicon import MorphoLexicon
+app.morpholexicon = MorphoLexicon(app.config)
+
 try:
     with open('secret_key.do.not.check.in', 'r') as F:
         key = F.readlines()[0].strip()
@@ -295,9 +298,7 @@ def lookupWord(from_language, to_language):
             return t
         return fixTag(r)
 
-    from morpho_lexicon import MorphoLexicon
-
-    mlex = MorphoLexicon(app.config)
+    mlex = app.morpholeicon
 
     xml_nodes, analyses = mlex.lookup( lookup_key
                                      , source_lang=from_language
@@ -383,7 +384,6 @@ def wordDetail(from_language, to_language, wordform, format):
     services using this endpoint will need to make sure to do the conversion.
 
     """
-    from morpho_lexicon import MorphoLexicon
     from lexicon import DetailedFormat
 
     user_input = wordform
@@ -441,7 +441,7 @@ def wordDetail(from_language, to_language, wordform, format):
             _non_c = False
             _non_d = False
 
-        mlex = MorphoLexicon(app.config)
+        mlex = app.morpholexicon
         xml_nodes, analyses = mlex.lookup( wordform
                                          , source_lang=from_language
                                          , target_lang=to_language
@@ -592,7 +592,8 @@ def bookmarklet():
 @app.route('/<_from>/<_to>/', methods=['GET', 'POST'])
 def indexWithLangs(_from, _to):
     from lexicon import FrontPageFormat
-    from morpho_lexicon import MorphoLexicon
+
+    mlex = app.morpholexicon
 
     user_input = lookup_val = request.form.get('lookup', False)
 
@@ -607,7 +608,7 @@ def indexWithLangs(_from, _to):
 
     if request.method == 'POST' and lookup_val:
 
-        mlex = MorphoLexicon(app.config)
+        mlex = app.morpholexicon
 
         xml_nodes, analyses = mlex.lookup( lookup_val
                                          , source_lang=_from
