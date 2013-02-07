@@ -298,7 +298,7 @@ def lookupWord(from_language, to_language):
             return t
         return fixTag(r)
 
-    mlex = app.morpholeicon
+    mlex = app.morpholexicon
 
     xml_nodes, analyses = mlex.lookup( lookup_key
                                      , source_lang=from_language
