@@ -3,9 +3,10 @@
 # NOTE: if copying this for a new language, remember to make sure that
 # it's being imported in __init__.py
 
-# * paradigm documentation here: http://giellatekno.uit.no/doc/dicts/dictionarywork.html
+# * paradigm documentation here:
+#   http://giellatekno.uit.no/doc/dicts/dictionarywork.html
 
-from morphology import pregeneration_tag_rewrites as rewrites
+from morphology import generation_overrides as rewrites
 
 LEX_TO_FST = {
     'a': 'A',
@@ -16,6 +17,36 @@ LEX_TO_FST = {
     'prop': 'Prop',
     'v': 'V',
 }
+
+@rewrites.pregenerated_form_selector('sme')
+def pregenerate_sme(form, tags, node):
+    _has_mini_paradigm = node.xpath('.//mini_paradigm[1]')
+
+    _has_lemma_ref     = node.xpath('.//lemma_ref')
+    if len(_has_lemma_ref) > 0:
+        return form, [], node, []
+    if len(_has_mini_paradigm) == 0:
+        return form, tags, node
+    else:
+        mp = _has_mini_paradigm[0]
+
+    def analysis_node(node):
+        """ Node ->
+            ("lemma", ["Pron", "Sg", "Tag"], ["wordform", "wordform"])
+        """
+        tag = node.xpath('.//@ms')
+        if len(tag) > 0:
+            tag = tag[0].split('_')
+        else:
+            tag = []
+
+        wfs = node.xpath('.//wordform/text()')
+
+        return (form, tag, wfs)
+
+    analyses = map(analysis_node, mp.xpath('.//analysis'))
+
+    return form, tags, node, analyses
 
 
 @rewrites.tag_filter_for_iso('sme')
@@ -97,4 +128,9 @@ def compound_numerals(form, tags, node):
             ]
     return form, tags, node
 
-
+# @rewrites.postgeneration_filter_for_iso('sme')
+# def verb_context(generated_result, *generation_input_args):
+#     print "omg"
+#     print generated_result
+#     print generation_input_args
+#     return generated_result

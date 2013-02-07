@@ -5,7 +5,7 @@
 # NOTE: if copying this for a new language, remember to make sure that
 # it's being imported in __init__.py
 
-from morphology import pregeneration_tag_rewrites as rewrites
+from morphology import generation_overrides as rewrites
 
 LEX_TO_FST = {
     'a': 'A',

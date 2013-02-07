@@ -92,12 +92,12 @@ class Tag(object):
         """
         raise NotImplementedError
 
-class PregenerationTagRewrites(object):
+class GenerationOverrides(object):
     """ Class for collecting functions marked with decorators that
     provide special handling of tags. One class instantiated in
-    morphology module: `pregeneration_tag_rewrites`.
+    morphology module: `generation_overrides`.
 
-        @pregeneration_tag_rewrites.tag_filter_for_iso('sme')
+        @generation_overrides.tag_filter_for_iso('sme')
         def someFunction(form, tags, xml_node):
             ... some processing on tags, may be conditional, etc.
             return form, tags, xml_node
@@ -106,14 +106,38 @@ class PregenerationTagRewrites(object):
     through all of these functions in the order that they were
     registered, allowing for language-specific conditional rules for
     filtering.
+
+    There is also a post-generation tag rewrite decorator registry function
     """
 
+    ##
+    ### Here are the functions that apply all the rules
+    ##
+
     def restrict_tagsets(self, lang_code, function):
+        """ This runs through each function in the tagset restriction
+        registry, and applies it to the input arguments of the decorated
+        function.
+        """
         def decorate(*args):
             newargs = args
             for f in self.registry[lang_code]:
                 newargs = f(*newargs)
             return function(*newargs)
+        return decorate
+
+    def process_generation_output(self, lang_code, function):
+        """ This runs the generator function, and applies all of the
+        function contexts to the output. Or in other words, this
+        decorator works on the output of the decorated function, but
+        also captures the input arguments, making them available to each
+        function in the registry.
+        """
+        def decorate(*input_args):
+            generated_forms = function(*input_args)
+            for f in self.postgeneration_processors[lang_code]:
+                generated_forms = f(generated_forms, *input_args)
+            return generated_forms
         return decorate
 
     def apply_pregenerated_forms(self, lang_code, function):
@@ -125,6 +149,10 @@ class PregenerationTagRewrites(object):
             return function(*newargs)
         return decorate
 
+    ##
+    ### Here are the decorators
+    ##
+
     def pregenerated_form_selector(self, language_iso):
         """ The function that this decorates is used to select and
         construct a pregenerated paradigm for a given word and XML node.
@@ -133,9 +161,9 @@ class PregenerationTagRewrites(object):
         """
         def wrapper(pregenerated_selector_function):
             self.pregenerators[language_iso] = pregenerated_selector_function
-            print 'Registered %s pregenerated form selector for %s ' % \
-                  ( pregenerated_selector_function.__name__
-                  , language_iso
+            print '%s overrides: registered static paradigm selector - %s' % \
+                  ( language_iso
+                  , pregenerated_selector_function.__name__
                   )
         return wrapper
 
@@ -144,9 +172,21 @@ class PregenerationTagRewrites(object):
         """
         def wrapper(restrictor_function):
             self.registry[language_iso].append(restrictor_function)
-            print 'Registered %s generation restriction for %s ' % \
-                  ( restrictor_function.__name__
-                  , language_iso
+            print '%s overrides: registered pregeneration tag filterer - %s' %\
+                  ( language_iso
+                  , restrictor_function.__name__
+                  )
+        return wrapper
+
+    def postgeneration_filter_for_iso(self, language_iso):
+        """ Register a function for a language ISO
+        """
+        def wrapper(restrictor_function):
+            self.postgeneration_processors[language_iso]\
+                .append(restrictor_function)
+            print '%s overrides: registered entry context formatter - %s' %\
+                  ( language_iso
+                  , restrictor_function.__name__
                   )
         return wrapper
 
@@ -156,7 +196,9 @@ class PregenerationTagRewrites(object):
         self.registry      = defaultdict(list)
         self.pregenerators = defaultdict(list)
 
-pregeneration_tag_rewrites = PregenerationTagRewrites()
+        self.postgeneration_processors = defaultdict(list)
+
+generation_overrides = GenerationOverrides()
 
 class XFST(object):
 
@@ -578,10 +620,13 @@ class Morphology(object):
     def __init__(self, languagecode, tagsets={}, cache=False):
         self.langcode = languagecode
 
-        self.generate = pregeneration_tag_rewrites.apply_pregenerated_forms(
+        self.generate = generation_overrides.apply_pregenerated_forms(
             languagecode, self.generate
         )
-        self.generate = pregeneration_tag_rewrites.restrict_tagsets(
+        self.generate = generation_overrides.restrict_tagsets(
+            languagecode, self.generate
+        )
+        self.generate = generation_overrides.process_generation_output(
             languagecode, self.generate
         )
 

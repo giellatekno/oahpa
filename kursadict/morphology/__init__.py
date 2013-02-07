@@ -6,7 +6,7 @@ from morphology import ( Tagsets
                        , XFST
                        , OBT
                        , Morphology
-                       , pregeneration_tag_rewrites
+                       , generation_overrides
                        )
 
 # Import to register the functions
@@ -16,6 +16,5 @@ __all__ = [ 'XFST'
           , 'OBT'
           , 'Morphology'
           , 'morphological_definitions'
-          , 'pregeneration_tag_rewrites'
+          , 'generation_overrides'
           ]
-
