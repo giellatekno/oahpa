@@ -54,6 +54,35 @@
             // 		return false;
             // 	});
             // });
+{#
+            var _im_listening = false;
+            $(document).ready(function(){
+                $(window).resize(function(o){
+                    $('a.last').html(window.outerHeight);
+
+                });
+                $("input").focus(function(o){
+                    $('#keyboard').show();
+                    // $('#keyboard').css({top:window.outerHeight + "px"});
+                    var _h = window.outerHeight - $('#keyboard').height();
+                    $('#keyboard').css({top: _h-100})
+
+                    if (!_im_listening) {
+                        $('#keyboard a').click(function(_char){
+                            _im_listening = true;
+                            var _val = $(o.target).val()
+                              , _c   = $(_char.target).attr('data-char')
+                              ;
+                            $(o.target).val(_val + _c)
+                                       .trigger("keyup")
+                                       .focus()
+                                       ;
+                            return false;
+                        });
+                    }
+                });
+            });
+#}
         </script>
         {% block extra_js %}
         {% endblock %}
@@ -114,6 +143,25 @@
                     </div>
                 </div>
                 {% endblock %}
+
+                {#
+                <div id="keyboard" class="navbar navbar-inverse navbar-fixed-bottom">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <ul class="nav">
+                                <li><a href="#" data-char="á">á</a></li>
+                                <li><a href="#" data-char="ŋ">ŋ</a></li>
+                                <li><a href="#" data-char="š">š</a></li>
+                                <li><a href="#" data-char="ž">ž</a></li>
+                                <li><a href="#" data-char="č">č</a></li>
+                                <li><a href="#" data-char="ŧ">ŧ</a></li>
+                                <li><a href="#" data-char="đ">đ</a></li>
+                                <li><a href="#" class="last"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                #}
             </content>
         </div>
 

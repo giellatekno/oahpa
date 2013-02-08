@@ -97,23 +97,24 @@ $(document).ready( function() {
             <div class="span4 hidden-phone">
                 <ul class="nav nav-collapse nav-tabs nav-stacked">
                 {% for iso_pair, names in language_pairs.iteritems() %}
-                    <li class="{%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}">
-                        <a href="/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
-                        {% for lang, name in names.iteritems() %}
-                            <span class="i18n" lang="{{ lang }}">{{ name[0] }} ↔ {{ name[1] }}</span>
-                        {% endfor %}
-                        </a>
-                    </li>
+                    {% if iso_pair[0] != "SoMe" %}
+                        <li class="{%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}">
+                            <a href="/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
+                            {% for lang, name in names.iteritems() %}
+                                <span class="i18n" lang="{{ lang }}">{{ name[0] }} ↔ {{ name[1] }}</span>
+                            {% endfor %}
+                            </a>
+                        </li>
+                    {% endif %}
                     {# Start a new nav if there are variants #}
                     {# TODO: include in mobile menu somehow #}
                     {# TODO: make this work from config settings, for now hard-coded #}
-                    {#
                     {%- if iso_pair[0] == 'sme' and iso_pair[1] == 'nob' and iso_pair[0] == _from and iso_pair[1] == _to %}
                     </ul>
                     <span class="nav-header variantnote">Written variant</span>
                     <ul class="nav nav-collapse nav-tabs nav-stacked subnavcoloring">
                         <li class="active"><a href="/sme/nob/">Standard (áčđŋšŧž)</a></li>
-                        <li><a href="/sme/nob/SoMe/">Social Media (acdnstz)</a></li>
+                        <li><a href="/SoMe/nob/">Social Media (acdnstz)</a></li>
                     </ul>
                     <ul class="nav nav-collapse nav-tabs nav-stacked">
                     {%- endif -%}
@@ -123,11 +124,10 @@ $(document).ready( function() {
                     <span class="nav-header variantnote">Written variant</span>
                     <ul class="nav nav-collapse nav-tabs nav-stacked subnavcoloring">
                         <li class="active"><a href="/sme/nob/">Standard (áčđŋšŧž)</a></li>
-                        <li><a href="/sme/nob/SoMe/">Social Media (acdnstz)</a></li>
+                        <li><a href="/SoMe/fin/">Social Media (acdnstz)</a></li>
                     </ul>
                     <ul class="nav nav-collapse nav-tabs nav-stacked">
                     {%- endif -%}
-                    #}
                 {% endfor %}
                 </ul>
             </div>
@@ -174,7 +174,11 @@ $(document).ready( function() {
                             {% for lexeme in word_searches %}
                             {% if lexeme.lookups %}
                                 {% for lookup in lexeme.lookups %}
-                                <p><a href="/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html?no_compounds=true&lemma_match=true&pos_filter={{ lookup.pos }}">
+                                {% if _from == "SoMe" %}
+                                    <p><a href="/detail/sme/{{ _to }}/{{ lookup.left }}.html?e_node={{ lookup.entry_hash }}">
+                                {% else %}
+                                    <p><a href="/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html?e_node={{ lookup.entry_hash }}">
+                                {% endif %}
                                         {{ lookup.left }}
                                 </a> ({{ lookup.pos|tagfilter(_from) }}) &ndash; </p>
                                 <ol>{%- for tx in lookup.right -%}
