@@ -1,5 +1,9 @@
 /* @override http://localhost:5000/static/css/base.css */
 
+.container-fluid {
+	padding: 0 0;
+}
+
 .navbar {
     margin-bottom: 40px;
 }
@@ -214,8 +218,28 @@ ul.unknown_lexemes {
 	list-style: circle;
 }
 
+#keyboard {
+    display: none;
+    position: fixed;
+    top: 20px;
+    // bottom: 0;
+    margin-bottom:0;
+}
+
+#keyboard ul {
+    margin-left: 2em;
+}
+#keyboard a {
+    color: #88F;
+    font-size: 150%;
+    font-weight: 300;
+}
+
 /* Mobile-specific tweaks */
 @media (max-width: 550px) {
+    #keyboard {
+        display: none;
+    }
 	
 	h4#dict_title {
 		font-size: 115%;

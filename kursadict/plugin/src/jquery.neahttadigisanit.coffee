@@ -216,9 +216,9 @@ jQuery(document).ready ($) ->
         result_strings.push(result_string)
 
     # Append tags
-    if response.tags
-      tags = (t[1] for t in response.tags).join(', ')
-      result_strings.push("<span class='tags'><em>#{tags}</em></span>")
+    # if response.tags
+    #   tags = (t[1] for t in response.tags).join(', ')
+    #   result_strings.push("<span class='tags'><em>#{tags}</em></span>")
     
     if result_strings.length == 0 or response.success == false
       if opts.tooltip
