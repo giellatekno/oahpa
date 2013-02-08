@@ -564,10 +564,11 @@ class BareGame(Game):
 		
 		if pos == 'Px':
 			# Hacky, if possessive_case is not set, then we can assume
-			# it's nominative for the one type where nominative exists
-			# but isn't in the other types
+			# it's nominative for the one type where nominative exists (FAMILY)
 			if not possessive_case:
-				possessive_case = 'N-ACC'  # was: N-NOM
+			     possessive_case = 'N-NOM' 
+			elif possessive_case == 'N-NOM' and possessive_type == 'N-PX-GROUP2':   # to avoid the crash with case=NOM, type=OTHER 
+				possessive_case = 'N-ACC'
 			case = self.casetable[possessive_case]
 		else:
 			case = self.casetable[pos_tables[pos]]

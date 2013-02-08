@@ -1229,21 +1229,31 @@ class MorfaSettings(OahpaSettings):
 					'N-PX-GROUP3': POSSESSIVE_GROUP3_CASE,
 				}[post_data['possessive_type']]
 
-			### # check against choices in new set and select
+			### # check the case against choices in new set and select
 			### # default if not present
+			### problem occurs because nominative is not among the possible cases for possessive type 'other' (not 'family')
+			### _pcase = post_data.get('possessive_case', False)
 			### if _pcase:
-			### 	_possible_cases = [
-			### 		a[0] for a in self.fields['possessive_case'].choices
-			### 	]
-			### 	if not _pcase in _possible_cases:
-			### 		print "omg problems"
-			### 		_new_default = self.fields['possessive_case'].choices[0][0]
-			### 		self.fields['possessive_case'].default = _new_default
+			###	if _pcase == 'N-NOM' and _ptype == 'N-PX-GROUP2':
+			###		_new_default = 'N-ACC'
+			###	else:
+			###		_new_default = _pcase
+			###	self.fields['possessive_case'].default = _new_default
+			###	self.fields['possessive_case'].initial = _new_default
+			###	self.default_data['possessive_case'] = _new_default
+
+			### if _pcase:
+			 ###	_possible_cases = [
+			 ###		a[0] for a in self.fields['possessive_case'].choices
+			 ###	]
+			 ###	if not _pcase in _possible_cases:
+			 ###		print "omg problems"
+			 ###		_new_default = 'N-ACC' # self.fields['possessive_case'].choices[0][0]
+			 ###		self.fields['possessive_case'].default = _new_default
 
 			### print self.fields['possessive_case']
+			### _new_default = 'N-ACC'
 			### _new_default = self.fields['possessive_case'].choices[0][0]
-			### self.fields['possessive_case'].default = _new_default
-			### self.fields['possessive_case'].initial = _new_default
 
 
 
