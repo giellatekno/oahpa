@@ -1,6 +1,4 @@
-﻿# -*- encoding: utf-8 -*-
-
-### Morpho-Lexical interface
+﻿### Morpho-Lexical interface
 ###
 ### ... to simplify all the stuff in the views below
 
@@ -111,80 +109,80 @@ class MorphoLexicon(object):
         self.lexicon = config.lexicon
 
 
-if __name__ == "__main__":
-    from neahtta import app
-
-    from lexicon import SimpleJSON
-
-    tests = [
-        # 'jietnadeapmi',
-        # 'lahka',
-        # 'dahkat',
-        # 'diehtit',
-        # u'oađđit',
-        # u'spábbačiekčangilvu',
-        u'juovlaspábbačiekčangilvu',
-        u'diehtosátnegirji'
-    ]
-
-    morph_kwargs = {
-        'source_lang': 'sme',
-        'target_lang': 'nob',
-
-        'split_compounds': True,
-        'non_compound_only': True,
-        'no_derivations': True,
-    }
-
-    mlex = MorphoLexicon(app.config)
-    for test in tests:
-        xml_nodes, tags = mlex.lookup(test, **morph_kwargs)
-        print xml_nodes
-        print list(SimpleJSON(xml_nodes))
-    raw_input()
-
-    tests = [
-        'vite',
-        u'nær',
-        'gjøre',
-        'uttale',
-    ]
-
-    morph_kwargs = {
-        'source_lang': 'nob',
-        'target_lang': 'sme',
-
-        'split_compounds': True,
-        'non_compound_only': True,
-        'no_derivations': True,
-    }
-
-    mlex = MorphoLexicon(app.config)
-    for test in tests:
-        xml_nodes = mlex.lookup(test, **morph_kwargs)
-        print list(SimpleJSON(xml_nodes))
-    raw_input()
-
-    tests = [
-        u'aehtjaahka',
-        u'gööktesh',
-        u'göövtedh',
-    ]
-
-    morph_kwargs = {
-        'source_lang': 'sma',
-        'target_lang': 'nob',
-
-        'split_compounds': True,
-        'non_compound_only': True,
-        'no_derivations': True,
-    }
-
-    mlex = MorphoLexicon(app.config)
-    for test in tests:
-        xml_nodes = mlex.lookup(test, **morph_kwargs)
-        pres_kwargs = {'target_lang': morph_kwargs.get('target_lang')}
-        print list(SimpleJSON(xml_nodes, **pres_kwargs))
-    raw_input()
+# if __name__ == "__main__":
+#     from neahtta import app
+# 
+#     from lexicon import SimpleJSON
+# 
+#     tests = [
+#         # 'jietnadeapmi',
+#         # 'lahka',
+#         # 'dahkat',
+#         # 'diehtit',
+#         # u'oađđit',
+#         # u'spábbačiekčangilvu',
+#         u'juovlaspábbačiekčangilvu',
+#         u'diehtosátnegirji'
+#     ]
+# 
+#     morph_kwargs = {
+#         'source_lang': 'sme',
+#         'target_lang': 'nob',
+# 
+#         'split_compounds': True,
+#         'non_compound_only': True,
+#         'no_derivations': True,
+#     }
+# 
+#     mlex = MorphoLexicon(app.config)
+#     for test in tests:
+#         xml_nodes, tags = mlex.lookup(test, **morph_kwargs)
+#         print xml_nodes
+#         print list(SimpleJSON(xml_nodes))
+#     raw_input()
+# 
+#     tests = [
+#         'vite',
+#         u'nær',
+#         'gjøre',
+#         'uttale',
+#     ]
+# 
+#     morph_kwargs = {
+#         'source_lang': 'nob',
+#         'target_lang': 'sme',
+# 
+#         'split_compounds': True,
+#         'non_compound_only': True,
+#         'no_derivations': True,
+#     }
+# 
+#     mlex = MorphoLexicon(app.config)
+#     for test in tests:
+#         xml_nodes = mlex.lookup(test, **morph_kwargs)
+#         print list(SimpleJSON(xml_nodes))
+#     raw_input()
+# 
+#     tests = [
+#         u'aehtjaahka',
+#         u'gööktesh',
+#         u'göövtedh',
+#     ]
+# 
+#     morph_kwargs = {
+#         'source_lang': 'sma',
+#         'target_lang': 'nob',
+# 
+#         'split_compounds': True,
+#         'non_compound_only': True,
+#         'no_derivations': True,
+#     }
+# 
+#     mlex = MorphoLexicon(app.config)
+#     for test in tests:
+#         xml_nodes = mlex.lookup(test, **morph_kwargs)
+#         pres_kwargs = {'target_lang': morph_kwargs.get('target_lang')}
+#         print list(SimpleJSON(xml_nodes, **pres_kwargs))
+#     raw_input()
 
 
