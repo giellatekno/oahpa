@@ -13,11 +13,19 @@ Morphology:
     file: [*GTHOME, "/gt/sme/bin/n-sme.fst"]
     inverse_file: [*GTHOME, "/gt/sme/bin/dict-isme-norm.fst"]
     format: 'xfst'
-    options:
+    options: &sme_fst_options
       compoundBoundary: "  + #"
       derivationMarker: "suff."
       tagsep: ' '
       inverse_tagsep: '+'
+  # TODO: file paths on gtoahpa
+  SoMe:
+    tool: *LOOKUP
+    file: [*GTHOME, "/gt/sme/bin/some-n-sme.fst"]
+    inverse_file: [*GTHOME, "/gt/sme/bin/dict-isme-norm.fst"]
+    format: 'xfst'
+    options:
+      <<: *sme_fst_options
   nob:
     tool: *LOOKUP
     file: [*GTHOME, '/st/nob/bin/nob.fst']
@@ -52,9 +60,18 @@ Languages:
   - iso: sme
     name:
       sme: "davvisámegiella"
-      eng: !_ "Northern Sámi"
+      eng: "Northern Sámi"
+      # eng: !_ "Northern Sámi"
       nob: "nordsamisk"
       fin: "pohjoissaame"
+
+  - iso: SoMe
+    name:
+      sme: "davvisámegiella (#SoMe)"
+      eng: "Northern Sámi (#SoMe)"
+      # eng: !_ "Northern Sámi"
+      nob: "nordsamisk (#SoMe)"
+      fin: "pohjoissaame (#SoMe)"
 
   - iso: nob
     name:
@@ -89,26 +106,46 @@ Dictionaries:
   - source: sme
     target: nob
     path: 'dicts/sme-nob.all.xml'
+  #   variants:
+  #     SoMe:
+  #       sme: 
+  #         fst: 'SmeSoMe'
 
-  - source: nob
-    target: sme
-    path: 'dicts/nob-sme.all.xml'
+  # TODO: this needs to be redone as a variant of dictionary above, for now
+  # just treating it as an individual thing; reason is because all that differs
+  # is FST, not lexicon, so everything relating to the lexicon needs to be handled
+  # as though SoMe is sme. (e.g., detailed links should go to sme, not SoMe)
+  - source: SoMe
+    target: nob
+    path: 'dicts/sme-nob.all.xml'
+
+  # - source: nob
+  #   target: sme
+  #   path: 'dicts/nob-sme.all.xml'
 
   - source: sme
     target: fin
     path: 'dicts/sme-fin.all.xml'
+  #   variants:
+  #     SoMe:
+  #       sme: 
+  #         fst: 'SmeSoMe'
 
-  - source: fin
-    target: sme
-    path: 'dicts/fin-sme.all.xml'
+  - source: SoMe
+    target: fin
+    path: 'dicts/sme-fin.all.xml'
+
+  # - source: fin
+  #   target: sme
+  #   path: 'dicts/fin-sme.all.xml'
 
   - source: sma
     target: nob
     path: 'dicts/sma-nob.all.xml'
 
-  - source: nob
-    target: sma
-    path: 'dicts/nob-sma.all.xml'
+  # - source: nob
+  #   target: sma
+  #   path: 'dicts/nob-sma.all.xml'
 
 # Abstracting display formats out here, because there are different
 # requirements for different languages and different wordforms.
@@ -208,7 +245,7 @@ Paradigms:
       - "Act+Ind+Pst+Sg3"
       - "Pss+Ind+Prt+Pe4"
 
-  sme:
+  sme: &smeparadigms
     PRON:
       - "Pregenerate"
     A:
@@ -245,6 +282,9 @@ Paradigms:
       - "Ind+Prt+Sg1"
       - "Ind+Prs+ConNeg"
 
+  SoMe: 
+    <<: *smeparadigms
+  
   nob:
     V:
       - "Imp"
@@ -294,7 +334,7 @@ TagTransforms:
     pron: "pron."
     prop: "egennavn"
 
-  sme:
+  sme: &smetagrelabels
     V: "v."
     N: "s."
     A: "adj."
@@ -327,6 +367,9 @@ TagTransforms:
     pron: "pron."
     prop: "egennavn"
 
+  SoMe: 
+    <<: *smetagrelabels
+  
   nob:
     V: "v."
     N: "s."
