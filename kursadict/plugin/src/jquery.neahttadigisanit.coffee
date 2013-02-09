@@ -12,6 +12,7 @@ TODO: prevent window url from updating with form submit params
 jQuery(document).ready ($) ->
 
   API_HOST = "http://sanit.oahpa.no/"
+  # API_HOST = "http://localhost:5000/"
 
   Templates =
     OptionsMenu: (opts) ->
@@ -29,13 +30,9 @@ jQuery(document).ready ($) ->
             checked = ""
 
           options_block.push """
-          <label class="radio">
-            <input type="radio" 
-                   name="language_pair" 
-                   id="language_pair#{i+1}" 
-                   value="#{data.from.iso}#{data.to.iso}" #{checked}>
+            <option value="#{data.from.iso}-#{data.to.iso}">
             #{data.from.name} -> #{data.to.name}
-          </label>
+            </option>
           """
         return options_block.join('\n')
     
@@ -50,20 +47,28 @@ jQuery(document).ready ($) ->
         <div class="option_panel" style="display: none;">
           <ul class="nav nav-pills">
             <li class="active">
-              <a href="#" data-target="#options">Options</a>
+              <a href="#" data-target="#options">Instillinger</a>
             </li>
-            <li><a href="#" data-target="#about">About</a></li>
+            <li><a href="#" data-target="#about">Om ordboka</a></li>
           </ul>
           <div id="options" class="minipanel">
             <form class="">
               <label class="control-label" for="inputEmail">Ordbok</label>
+              <select type="radio" 
+                     name="language_pair" 
               #{makeLanguageOption(opts.dictionaries)}
-              <button type="submit" class="btn" id="save">Save</button>
+              </select>
+              <br />
+              <button type="submit" class="btn" id="save">Lagre</button>
             </form>
           </div>
           <div id="about" style="display: none;" class="minipanel">
-          <p>To look up a word, hold Alt (or Option/⌥ on Macs) and double click a word. If the popup disappears, either hover over the link that is created, or click anywhere on the screen, and then try again.</p>
-          <p>To report problems, <a href="mailto:">contact us</a>.</p>
+          <p>For å slå opp et ord holder du <em>Alt</em> eller <em>Option</em> (⌥) nede og dobbelklikker på ordet. Tjenesten vil kontakte denne nettsida og returnere ordboksoppslag etter en kort pause.</p>
+          <p>
+          
+          </p>
+          <p>Hvis du finner feil, eller hvis bokmerket ikke fungerer for ei viss side <a href="mailto:giellatekno@hum.uit.no">må du gjerne kontakte oss</a>. Si i tilfelle fra hvilken side det gjaldt eller hva som var problemet.
+          </p>
           </div>
         </div>
       </div>
@@ -89,8 +94,9 @@ jQuery(document).ready ($) ->
         el.find('a.close').toggle()
         return false
 
-      el.find('input[name="language_pair"][type="radio"]').click (e) ->
+      el.find('select[name="language_pair"]').change (e) ->
         store_val = $(e.target).val()
+        console.log store_val
         DSt.set('digisanit-select-langpair', store_val)
         return true
 
@@ -268,8 +274,7 @@ jQuery(document).ready ($) ->
 
     langpair = $(opts.langPairSelect).val()
     # "aaabbb"
-    source_lang = langpair.slice(0, 3)
-    target_lang = langpair.slice(3, 6)
+    [source_lang, target_lang] = langpair.split('-')
     lookup_string = string
 
     post_data =
@@ -310,8 +315,8 @@ jQuery(document).ready ($) ->
     # Recall stored language pair from session
     previous_langpair = DSt.get('digisanit-select-langpair')
     if previous_langpair
-      _select = "input[type=\"radio\"][value=\"#{previous_langpair}\"]"
-      _opt = window.optTab.find(_select).attr('checked', 'checked')
+      _select = "select[name='language_pair']"
+      _opt = window.optTab.find(_select).val(previous_langpair)
     
     holdingOption = (evt) =>
       clean(evt)
@@ -354,7 +359,7 @@ jQuery(document).ready ($) ->
     formResults: "#results"
     spinnerImg: "dev/img/spinner.gif"
     sourceLanguage: "sme"
-    langPairSelect: "#webdict_options *[name='language_pair']:checked"
+    langPairSelect: "#webdict_options *[name='language_pair']"
     tooltip: true
     displayOptions: true
     dictionaries: [
@@ -364,12 +369,20 @@ jQuery(document).ready ($) ->
           name: 'nordsamisk'
         to:
           iso: 'nob'
-          name: 'norsk (bokmål)'
+          name: 'norsk'
+      },
+      {
+        from:
+          iso: 'SoMe'
+          name: 'nordsamisk (#SoMe)'
+        to:
+          iso: 'nob'
+          name: 'norsk'
       },
       {
         from:
           iso: 'nob'
-          name: 'norsk (bokmål)'
+          name: 'norsk'
         to:
           iso: 'sme'
           name: 'nordsamisk'
@@ -378,6 +391,14 @@ jQuery(document).ready ($) ->
         from:
           iso: 'sme'
           name: 'nordsamisk'
+        to:
+          iso: 'fin'
+          name: 'finsk'
+      },
+      {
+        from:
+          iso: 'SoMe'
+          name: 'nordsamisk (#SoMe)'
         to:
           iso: 'fin'
           name: 'finsk'
@@ -426,21 +447,18 @@ jQuery(document).ready ($) ->
       # set up dropdown events for selecting language pair
       # Also store the default value in localStorage using DSt.js
       #
-      $(this).find('#langpairs li a').click (obj) =>
-        new_val = $(obj.target).attr('data-value')
-        elem.find('button span.val_name').html(
-          "#{new_val.slice(0,3)}->#{new_val.slice(3,6)}"
-        )
-        elem.find('input[name="target_lang"]').val new_val
-        DSt.set('digisanit-form-langpair', new_val)
+      # $(this).find('#langpairs li a').click (obj) =>
+      #   new_val = $(obj.target).attr('data-value')
+      #   elem.find('button span.val_name').html(
+      #     "#{new_val.slice(0,3)}->#{new_val.slice(3,6)}"
+      #   )
+      #   elem.find('select[name="target_lang"]').val new_val
+      #   DSt.set('digisanit-form-langpair', new_val)
       
       # Recall previous value if stored in session.
-      previous_setting = DSt.get('digisanit-form-langpair')
-      if previous_setting
-        elem.find('input[name="target_lang"]').val previous_setting
-        elem.find('button span.val_name').html(
-          "#{previous_setting.slice(0,3)}->#{previous_setting.slice(3,6)}"
-        )
+      # previous_setting = DSt.get('digisanit-form-langpair')
+      # if previous_setting
+      #   elem.find('select[name="target_lang"]').val previous_setting
 
       elem.find('input[name="lookup"]').keydown (event) ->
         if event.keyCode == 13
