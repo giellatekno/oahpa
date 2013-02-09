@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="google-site-verification" content="9N9Tebim_a2IszkaT9fE2Q3tgIaHiAkAmUpfeJyVHnA" />
         {# TODO: enable indexing by removing following #}
-        <meta name="robots" content="noindex">
+        <meta name="robots" content="index">
         <title>Neahttadigisánit{% block title %}{% endblock %}</title>
 
 	    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}" type="image/x-icon">
@@ -166,9 +166,9 @@
         </div>
 
         {% block footer_block %}
-        <div class="container-fluid">
+        <div class="container">
             <div class="row-fluid">
-                <div class="span2 offset10">
+                <div class="span12">
                     <div class="pull-right">
                         {% include 'language_select.html' %}
                     </div>
