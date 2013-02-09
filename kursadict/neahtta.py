@@ -151,7 +151,7 @@ def get_locale():
         if 'baakoeh' in request.host:
             ses_lang = 'no'
         elif (u'sanit' in request.host) or (u'sánit' in request.host):
-            ses_lang = 'fi'
+            ses_lang = 'se'
         else:
             ses_lang = request.accept_languages.best_match(AVAILABLE_LOCALES)
         session.locale = ses_lang
