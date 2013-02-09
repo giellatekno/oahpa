@@ -400,6 +400,8 @@ def wordDetail(from_language, to_language, wordform, format):
     pos_filter = request.args.get('pos_filter', False)
     # Should we match the input lemma with the analyzed lemma?
     lemma_match = request.args.get('lemma_match', False)
+    # From the front page-- match the hash of the lxml element
+    e_node = request.args.get('e_node', False)
 
     # Do we want to analyze compounds?
     no_compounds = request.args.get('no_compounds', False)
@@ -477,6 +479,15 @@ def wordDetail(from_language, to_language, wordform, format):
             else:
                 return False
 
+        def _byNodeHash(r):
+            node = r.get('entries').get('entry_hash')
+            if node == e_node:
+                return True
+            else:
+                return False
+
+        if e_node:
+            lex_results = filter(_byNodeHash, lex_results)
         if pos_filter:
             lex_results = filter(_byPOS, lex_results)
         if lemma_match:

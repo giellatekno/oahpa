@@ -7,7 +7,12 @@
 #   http://giellatekno.uit.no/doc/dicts/dictionarywork.html
 
 from morphology import generation_overrides as rewrites
+from lexicon import lexicon_overrides as lexicon
 
+
+# TODO: include SoMe variants subst. -> N, etc
+# TODO: may need to filter these before lookup in lexicon too, after
+# analysis. 
 LEX_TO_FST = {
     'a': 'A',
     'adv': 'Adv',
@@ -16,7 +21,28 @@ LEX_TO_FST = {
     'num': 'Num',
     'prop': 'Prop',
     'v': 'V',
+
+    'subst': 'N',
+    'subst.': 'N',
+    'verb': 'V',
+    'adj.': 'A',
+    'adj': 'A',
+    'adv.': 'Adv',
+    'adv': 'Adv',
+
 }
+
+@lexicon.pre_lookup_tag_rewrite_for_iso('sme')
+def pos_to_fst(*args, **kwargs):
+    if 'lemma' in kwargs and 'pos' in kwargs:
+        _k = kwargs['pos'].replace('.', '').replace('+', '')
+        new_pos = LEX_TO_FST.get(_k, False)
+        if new_pos:
+            kwargs['pos'] = new_pos
+        else:
+            print "Missing LEX_TO_FST pair for %s" % _k
+            print "in morphology.morphological_definitions.sme"
+    return args, kwargs
 
 @rewrites.pregenerated_form_selector('sme')
 def pregenerate_sme(form, tags, node):

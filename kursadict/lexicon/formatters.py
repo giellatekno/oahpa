@@ -142,6 +142,14 @@ class DetailedFormat(EntryNodeIterator):
                 }
             )
 
+        # Make our own hash, 'cause lxml won't
+        entry_hash = [ unicode(lemma)
+                     , unicode(lemma_context)
+                     , unicode(lemma_pos)
+                     , ','.join(sorted([t['translations'] for t in meaningGroups]))
+                     ]
+        entry_hash = str('-'.join(entry_hash).__hash__())
+
         return { 'lemma': lemma
                , 'lemma_context': lemma_context
                , 'pos': lemma_pos
@@ -149,6 +157,7 @@ class DetailedFormat(EntryNodeIterator):
                , 'meaningGroups': meaningGroups
                , 'type': lemma_type
                , 'node': e
+               , 'entry_hash': entry_hash
                }
 
 class FrontPageFormat(EntryNodeIterator):
@@ -176,12 +185,19 @@ class FrontPageFormat(EntryNodeIterator):
                                , 'examples': self.examples(tg)
                                })
 
+        # Make our own hash, 'cause lxml won't
+        entry_hash = [ unicode(lemma)
+                     , unicode(lemma_context)
+                     , unicode(lemma_pos)
+                     , ','.join(sorted([t['tx'] for t in right_nodes]))
+                     ]
+        entry_hash = str('-'.join(entry_hash).__hash__())
+
         return { 'left': lemma
                , 'context': lemma_context
                , 'pos': lemma_pos
                , 'right': right_nodes
                , 'lang': right_langs
                , 'hid': lemma_hid
+               , 'entry_hash': entry_hash
                }
-
-

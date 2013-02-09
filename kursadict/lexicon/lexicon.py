@@ -5,6 +5,67 @@
 ##
 ##
 
+class LexiconOverrides(object):
+    """ Class for collecting functions marked with decorators that
+    provide special handling of tags. One class instantiated in
+    morphology module: `generation_overrides`.
+
+        @generation_overrides.tag_filter_for_iso('sme')
+        def someFunction(form, tags, xml_node):
+            ... some processing on tags, may be conditional, etc.
+            return form, tags, xml_node
+
+    Each time morphology.generation is run, the args will be passed
+    through all of these functions in the order that they were
+    registered, allowing for language-specific conditional rules for
+    filtering.
+
+    There is also a post-generation tag rewrite decorator registry function
+    """
+
+    ##
+    ### Here are the functions that apply all the rules
+    ##
+
+    def process_prelookups(self, function):
+        """ This runs the generator function, and applies all of the
+        function contexts to the output. Or in other words, this
+        decorator works on the output of the decorated function, but
+        also captures the input arguments, making them available to each
+        function in the registry.
+        """
+        def decorate(*args, **kwargs):
+            _from = args[0]
+            newargs = args
+            newkwargs = kwargs
+            for f in self.prelookup_processors[_from]:
+                newargs, newkwargs = f(*newargs, **newkwargs)
+            return function(*newargs, **newkwargs)
+        return decorate
+
+    ##
+    ### Here are the decorators
+    ##
+
+    def pre_lookup_tag_rewrite_for_iso(self, language_iso):
+        """ Register a function for a language ISO
+        """
+        def wrapper(restrictor_function):
+            self.prelookup_processors[language_iso]\
+                .append(restrictor_function)
+            print '%s overrides: lexicon pre-lookup arg rewriter - %s' %\
+                  ( language_iso
+                  , restrictor_function.__name__
+                  )
+        return wrapper
+
+    def __init__(self):
+        from collections import defaultdict
+
+        self.prelookup_processors = defaultdict(list)
+
+lexicon_overrides = LexiconOverrides()
+
 class XMLDict(object):
     """ XML dictionary class. Initiate with a file path or an already parsed
     tree, exposes methods for searching in XML.
@@ -138,6 +199,10 @@ class Lexicon(object):
         language_pairs = dict(
             [ (k, XMLDict(filename=v))
               for k, v in settings.dictionaries.iteritems() ]
+        )
+
+        self.lookup = lexicon_overrides.process_prelookups(
+            self.lookup
         )
 
         # reverse_language_pairs = {}
