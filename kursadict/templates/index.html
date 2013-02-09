@@ -109,22 +109,23 @@ $(document).ready( function() {
                     {# Start a new nav if there are variants #}
                     {# TODO: include in mobile menu somehow #}
                     {# TODO: make this work from config settings, for now hard-coded #}
-                    {%- if iso_pair[0] == 'sme' and iso_pair[1] == 'nob' and iso_pair[0] == _from and iso_pair[1] == _to %}
+                    {%- if iso_pair[0] in ['sme', 'SoMe'] and iso_pair[1] == 'nob' and iso_pair[0] == _from and iso_pair[1] == _to %}
                     </ul>
-                    <span class="nav-header variantnote">Written variant</span>
+                    <span class="nav-header variantnote">{% trans %}Written variant{% endtrans %}</span>
                     <ul class="nav nav-collapse nav-tabs nav-stacked subnavcoloring">
-                        <li class="active"><a href="/sme/nob/">Standard (áčđŋšŧž)</a></li>
-                        <li><a href="/SoMe/nob/">Social Media (acdnstz)</a></li>
+                        <li{% if _from == "sme" %} class="active"{% endif %}><a href="/sme/nob/">{% trans %}Standard (<em>áčđŋšŧž</em>){% endtrans %}</a></li>
+                        <li{% if _from == "SoMe" %} class="active"{% endif %}><a href="/SoMe/nob/">{% trans %}Social Media (incl. <em>acdnstz</em>){% endtrans %}</a></li>
                     </ul>
                     <ul class="nav nav-collapse nav-tabs nav-stacked">
                     {%- endif -%}
 
-                    {%- if iso_pair[0] == 'sme' and iso_pair[1] == 'fin' and iso_pair[0] == _from and iso_pair[1] == _to %}
+
+                    {%- if iso_pair[0] in ['sme', 'SoMe'] and iso_pair[1] == 'fin' and iso_pair[0] == _from and iso_pair[1] == _to %}
                     </ul>
-                    <span class="nav-header variantnote">Written variant</span>
+                    <span class="nav-header variantnote">{% trans %}Written variant{% endtrans %}</span>
                     <ul class="nav nav-collapse nav-tabs nav-stacked subnavcoloring">
-                        <li class="active"><a href="/sme/nob/">Standard (áčđŋšŧž)</a></li>
-                        <li><a href="/SoMe/fin/">Social Media (acdnstz)</a></li>
+                        <li{% if _from == "sme" %} class="active"{% endif %}><a href="/sme/nob/">{% trans %}Standard (<em>áčđŋšŧž</em>){% endtrans %}</a></li>
+                        <li{% if _from == "SoMe" %} class="active"{% endif %}><a href="/SoMe/fin/">{% trans %}Social Media (incl. <em>acdnstz</em>){% endtrans %}</a></li>
                     </ul>
                     <ul class="nav nav-collapse nav-tabs nav-stacked">
                     {%- endif -%}
@@ -139,7 +140,7 @@ $(document).ready( function() {
                     {% endfor -%}
                     {% endif %}
                     {% endfor -%}
-                    <span style="font-size: 80%">(<a href="/{{ _to }}/{{ _from }}/">⇄ Swap</a>)</span></h4>
+                    <span style="font-size: 80%">(<a href="/{{ _to }}/{{ _from }}/">⇄ {% trans %}Swap{% endtrans %}</a>)</span></h4>
 
                 <form id="neahttasaanit" class="form-inline"
                     method="post"
@@ -156,12 +157,6 @@ $(document).ready( function() {
                                placeholder="ohcansátni"></input>
                                <button type="submit" class="btn" name="search">
                                    <span>{% trans %}Search{% endtrans %}</span>
-                                   {# 
-                                   <span class="i18n" lang="sme">Oza</span>
-                                   <span class="i18n" lang="nob">Søk</span>
-                                   <span class="i18n" lang="fin">Hae</span>
-                                   <span class="i18n" lang="eng">Search</span>
-                                   #}
                                </button>
                     </div>
                 </form>
@@ -250,6 +245,12 @@ $(document).ready( function() {
                     <div class="alert alert-success">
                         <p>
                             <span>{% trans %}Search for a word, or a word form for a word analysis and definition.{% endtrans %}</span>
+                            {% if _from == "SoMe" %}
+                            <br />
+                            <br />
+                            <span><strong>NB</strong>: {% trans %}You selected #SoMe, the variant for social media, which means that the letters acdnstz
+                                will be accepted as áčđŋšŧž in addition to their usual values.{% endtrans %}</span>
+                            {% endif %}
                         </p>
                     </div>
                 {% endif %}
