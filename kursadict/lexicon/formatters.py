@@ -81,7 +81,7 @@ class EntryNodeIterator(object):
             elif tf_text:
                 text, tf_text = [tf_text], ''
         else:
-            text = [_tx.text for _tx in tx]
+            text = [_tx.text for _tx in tx if _tx.text is not None]
 
         lang = tg.xpath('@xml:lang')
 
