@@ -14,21 +14,27 @@ from lexicon import lexicon_overrides as lexicon
 # TODO: may need to filter these before lookup in lexicon too, after
 # analysis. 
 LEX_TO_FST = {
+
     'a': 'A',
+    'adj': 'A',
+    'adp': 'Adp',
     'adv': 'Adv',
+    'aktor': 'NomAg',
+    'egen': 'Prop',
+    'interj': 'Interj',
+    'konj': 'CC',
     'n': 'N',
     'npl': 'N',
     'num': 'Num',
+    'part': 'Pcle',
+    'postp': 'Po',
+    'prep': 'Pr',
+    'pron': 'Pron',
     'prop': 'Prop',
-    'v': 'V',
-
+    'subj': 'CS',
     'subst': 'N',
+    'v': 'V',
     'verb': 'V',
-    'adj': 'A',
-    'adv': 'Adv',
-    # TODO: CC and CS ambiguous. :[
-    'konj': 'CC',
-
 }
 
 @lexicon.pre_lookup_tag_rewrite_for_iso('sme')
