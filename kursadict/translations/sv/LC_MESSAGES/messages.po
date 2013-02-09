@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-02-02 21:54-0600\n"
+"POT-Creation-Date: 2013-02-08 20:33-0600\n"
 "PO-Revision-Date: 2013-02-01 01:55-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: sv <LL@li.org>\n"
@@ -33,7 +33,11 @@ msgstr "Norska"
 msgid "South Sámi"
 msgstr "Sydsamisk"
 
-#: neahtta.py:406
+#: neahtta.py:339 templates/index.html:213
+msgid " is a possible form of ... "
+msgstr " är en möjlig form av ... "
+
+#: neahtta.py:391
 msgid "Invalid format. Only json and html allowed."
 msgstr "Ogiltigt format. Bara json och html tillåtit"
 
@@ -42,18 +46,22 @@ msgid ""
 "Whoops! The page you requested was not found. If you think you are "
 "receiving this in error, please contact us."
 msgstr ""
-"Oj då! Sidan du frågade efter kunde inte hittas. Om du tycker "
-"du inte borde få det här felmeddelandet, så var god kontakta oss."
+"Oj då! Sidan du frågade efter kunde inte hittas. Om du tycker du inte "
+"borde få det här felmeddelandet, så var god kontakta oss."
 
-#: templates/about.html:50
+#: templates/about.html:67
 msgid "A dictionary that understands what you're looking for."
 msgstr "En ordbok som förstår vad du letar efter."
 
-#: templates/about.html:55
+#: templates/about.html:68
+msgid "(... And is mobile-friendly!)"
+msgstr ""
+
+#: templates/about.html:72
 msgid "Free"
 msgstr "Gratis"
 
-#: templates/about.html:56
+#: templates/about.html:73
 msgid ""
 "Everything (or, well, almost everything) that\n"
 "                    concerns minority languages should be free. Here\n"
@@ -64,11 +72,11 @@ msgstr ""
 "gäller minoritetsspråk borda vara gratis. Här\n"
 "hittar du gratis och fria ordböcker och andra analysverktyg."
 
-#: templates/about.html:62
+#: templates/about.html:79
 msgid "Open-Source"
 msgstr "Öppen källkod"
 
-#: templates/about.html:63
+#: templates/about.html:80
 msgid ""
 "Everything here is based on open-source tools. Do you\n"
 "                have an idea for an app or research project that needs\n"
@@ -80,40 +88,87 @@ msgid ""
 msgstr ""
 "Allt här är baserad på öppen källkod. Har du en idé till en\n"
 "app eller forskningsprojekt som behöver språkliga resurser?\n"
-"Se <a class=\"blue\" href=\"http://giellatekno.uit.no/\">Giellateknos</a>\n"
+"Se <a class=\"blue\" href=\"http://giellatekno.uit.no/\">Giellateknos</a>"
+"\n"
 "webbplats för information om hur du får tillgång till lexiconfiler och\n"
 "morfologiska och syntaktiska analysatorer."
 
-
-#: templates/about.html:71
+#: templates/about.html:88
 msgid "Linguistic basis"
 msgstr "Lingvistisk grund"
 
-#: templates/about.html:72
+#: templates/about.html:89
 msgid ""
 "Write what you wish, and the dictionary will analyze it to break apart "
 "compound words and find base forms."
 msgstr ""
-"Skriv vilked ord du vill, och ordboken kommer att analysera den, "
-"ta isär sammansatta ord och hitta basformer."
+"Skriv vilked ord du vill, och ordboken kommer att analysera den, ta isär "
+"sammansatta ord och hitta basformer."
 
-#: templates/about.html:78
+#: templates/about.html:95
 msgid "gå, dra, reise"
 msgstr "gå, dra, reise"
 
-#: templates/base.html:77
+#: templates/about.html:102
+msgid "Source material"
+msgstr ""
+
+#: templates/about.html:110
+msgid ""
+"North Sámi → Norwegian builds on Nils Jernsletten's dictionary "
+"<em>Álgosátnegirji</em>, but here it has been more than doubled in "
+"content."
+msgstr ""
+
+#: templates/about.html:111
+msgid ""
+"Norwegian → North Sámi is a converted version of North Sámi → Norwegian, "
+"but we have also revised the content and added frequent words from "
+"Norwegian."
+msgstr ""
+
+#: templates/about.html:115
+msgid ""
+"The dictionaries for South Sámi and Norwegian build on material prepared "
+"by Albert Jåma and Tove Brustad in the <a class=\"blue\" "
+"href=\"http://www.ruovatsijte.no/\">Hemnes Sámi Organization</a>, but has"
+" in addition gained words from <a class=\"blue\" "
+"href=\"http://giellatekno.uit.no/\">Giellatekno</a> and <a class=\"blue\""
+" href=\"http://aajege.no/\">Aajege</a>'s work with the Southern Sámi <a "
+"class=\"blue\" href=\"http://oahpa.no\">Oahpa</a>."
+msgstr ""
+
+#: templates/about.html:119
+msgid ""
+"Dictionaries for North Sámi and Finnish are based on lexical material "
+"from the <a class=\"green\" href=\"http://kotus.fi\">Institute for the "
+"Languages of Finland</a>, and from Giellatekno's work with the North Sámi"
+"  <a class=\"green\" href=\"http://oahpa.no\">Oahpa</a>. In addition, we "
+"have included frequent words from North Sámi, but especially from "
+"Finnish."
+msgstr ""
+
+#: templates/about.html:120
+msgid "Each of the dictionaries contains about 11,000 base words."
+msgstr ""
+
+#: templates/about.html:128
+msgid "More to come..."
+msgstr ""
+
+#: templates/base.html:106
 msgid "Home"
 msgstr "Hem"
 
-#: templates/base.html:81
+#: templates/base.html:110
 msgid "Plugins"
 msgstr "Plugins"
 
-#: templates/base.html:85
+#: templates/base.html:114
 msgid "About"
 msgstr "Om oss"
 
-#: templates/base.html:144
+#: templates/base.html:186
 msgid ""
 "Created with free and open-source language tools from <em><a "
 "href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, a Sámi Language "
@@ -125,40 +180,60 @@ msgstr ""
 "samisk språkteknologi vid <a href=\"http://uit.no\">Universitetet i "
 "Tromsö</a>."
 
-#: templates/index.html:120 templates/word_detail.html:77
+#: templates/index.html:114 templates/index.html:125
+msgid "Written variant"
+msgstr ""
+
+#: templates/index.html:116 templates/index.html:127
+msgid "Standard (<em>áčđŋšŧž</em>)"
+msgstr ""
+
+#: templates/index.html:117 templates/index.html:128
+msgid "Social Media (incl. <em>acdnstz</em>)"
+msgstr ""
+
+#: templates/index.html:143
+msgid "Swap"
+msgstr ""
+
+#: templates/index.html:159 templates/word_detail.html:84
 msgid "Search"
 msgstr "Sök"
 
-#: templates/index.html:166
-msgid "Unknown word:"
-msgstr "Okänt ord"
+#: templates/index.html:200
+msgid "Definition not found for:"
+msgstr ""
 
-#: templates/index.html:178
-msgid " is a possible form of ... "
-msgstr " är en möjlig form av ... "
-
-#: templates/index.html:204
+#: templates/index.html:239
 #, python-format
 msgid "Word %(input)s not found."
 msgstr "Ord %(input) hittades inte."
 
-#: templates/index.html:218
+#: templates/index.html:247
 msgid "Search for a word, or a word form for a word analysis and definition."
 msgstr "Sök efter ett ord eller en ordform för en ordanalys och definition."
+
+#: templates/index.html:251
+msgid ""
+"You selected #SoMe, the variant for social media, which means that the "
+"letters acdnstz\n"
+"                                will be accepted as áčđŋšŧž in addition "
+"to their usual values."
+msgstr ""
 
 #: templates/language_select.html:8
 msgid "Language"
 msgstr "Språk"
 
-#: templates/reader.html:10
+#: templates/reader.html:9
 msgid "Neahttadigisánit Reader"
 msgstr "Neahttadigisánit Läsordbok"
 
-#: templates/reader.html:12
+#: templates/reader.html:14
 msgid "Bookmarklet"
 msgstr "Bokmärke"
 
-#: templates/reader.html:13
+#: templates/reader.html:15
 msgid ""
 "Drag and drop the following link to your Bookmark toolbar,\n"
 "                then click it when you are on a page you wish to read. "
@@ -170,28 +245,33 @@ msgstr ""
 "Dra och släpp fäljande länk till din bokmärkelinje,\n"
 "klicka på den när du är på en sida som du vill läsa.\n"
 "Tjänsten installeras automatiskt, och du kommer at se en\n"
-"meny-ikon längst til vänster på sidan." 
+"meny-ikon längst til vänster på sidan."
 
-#: templates/reader.html:17
+#: templates/reader.html:19
+msgid "Read with Neahttadigisánit"
+msgstr "Läs med  Neahttadigisánit"
+
+#: templates/reader.html:20
 msgid ""
 "In order to look up a word, hold Alt or Option (⌥) and double\n"
 "                click the word. The service will will connect to this\n"
 "                website and return dictionary entries after a brief\n"
 "                pause."
 msgstr ""
-"För att slå upp ett ord håller du dere <em>Alt</em> eller <em>Option</em>\n"
+"För att slå upp ett ord håller du dere <em>Alt</em> eller <em>Option</em>"
+"\n"
 " (⌥) och duppeltklickar på ordet. Tjänsten ansluter till sidan och\n"
 "returnerar inom kort med et uppslag ur ordboken."
 
-#: templates/reader.html:22
-msgid "Read with Neahttadigisánit"
-msgstr "Läs med  Neahttadigisánit"
+#: templates/reader.html:24
+msgid "To change the dictionary, click the menu icon."
+msgstr ""
 
-#: templates/reader.html:23
+#: templates/reader.html:25
 msgid "Bugs?"
 msgstr "Fel?"
 
-#: templates/reader.html:24
+#: templates/reader.html:26
 msgid ""
 "If you encounter bugs, or the bookmarklet does not work on a\n"
 "                particular page, contact us with the page URL or details "
@@ -199,9 +279,10 @@ msgid ""
 "                what you were reading when you encountered the problem."
 msgstr ""
 "Om du påträffar fel eller bokmärket inte fungerar på en viss sida,\n"
-"kontakta oss med webbadress eller berätta vad du läste när du stötte på problem."
+"kontakta oss med webbadress eller berätta vad du läste när du stötte på "
+"problem."
 
-#: templates/reader.html:27
+#: templates/reader.html:29
 msgid ""
 "We do not store any private data, but we do collect\n"
 "                individual dictionary lookups for statistics and to "
@@ -212,11 +293,14 @@ msgstr ""
 "individuella ordboksuppslagningar fär statistik, och\n"
 "för att förbättra ordboken."
 
-#: templates/word_detail.html:28
+#: templates/word_detail.html:35
 msgid "is a possible form of ... "
 msgstr "er en mäjlig form av ... "
 
-#: templates/word_detail.html:130
+#: templates/word_detail.html:196
 msgid "More information about this word"
 msgstr "Mer inmormation om detta ord"
+
+#~ msgid "Unknown word:"
+#~ msgstr "Okänt ord"
 
