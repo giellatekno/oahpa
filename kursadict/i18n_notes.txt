@@ -35,7 +35,7 @@ Thus the new locale will be able to be initialized with the init command below.
 
 First generate messages.pot (.po template file)
 
-    pybabel extract -F babel.cfg -k lazy_gettext -o messages.pot .
+    pybabel extract -F babel.cfg -k lazy_gettext -o translations/messages.pot .
 
 Update to find new strings and automatically merge:
 

@@ -100,9 +100,7 @@ $(document).ready( function() {
                     {% if iso_pair[0] != "SoMe" %}
                         <li class="{%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}">
                             <a href="/{{ iso_pair[0] }}/{{ iso_pair[1] }}/">
-                            {% for lang, name in names.iteritems() %}
-                                <span class="i18n" lang="{{ lang }}">{{ name[0] }} ↔ {{ name[1] }}</span>
-                            {% endfor %}
+                            <span>{{ iso_pair[0]|iso_to_i18n }} ↔ {{ iso_pair[1]|iso_to_i18n }}</span>
                             </a>
                         </li>
                     {% endif %}

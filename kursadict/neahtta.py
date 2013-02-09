@@ -167,6 +167,12 @@ def get_locale():
 ## Template filters
 ##
 
+@app.template_filter('iso_to_i18n')
+def append_language_names_i18n(s):
+    from language_names import NAMES
+    return NAMES.get(s, s)
+
+
 @app.template_filter('tagfilter')
 def tagfilter(s, lang_iso):
     if not s:
