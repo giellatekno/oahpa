@@ -1,20 +1,44 @@
 
-## Commits
+## Before launch completed, notes
+
+ * \#SoME-nob  - works with what was currently checked in, returning variants
+   for manna (mannat, mánná, maŋŋá) fair amount of "hacks" in place, e.g., this
+   is not completely a product of things in the config file, thus a few
+   rewrites are necessary to make it so later, but this should be ready for
+   launch as is.
+
+ * SoMe-nob, SoMe-fin in menu of plugin
+
+ * on gtoahpa: couldn't find updated \#SoME FST, so compiled in neahtta home dir
+
+ * most updates implemented on gtoahpa now, just for testing
+
+ * new text on about page, some strings to translate yet
+
+ * switch over bookmarklet to using sanit instead of digitesting, also test to
+  see that this is where requests really are going.
+
+ * languages translated, but use dictionary list in config to populate list.
+
 
 ## Before launch
 
- * #SoME-nob 
-
+ * compile translation strings
+ * check for new translation tags
  * compile dictionaries, fsts
- * new text on about page
  * analytics
- * check log on gtlab
+
+ * TODO: go through configuration locations and make sure that all in opt is updated
 
 nice to have:
 
+ * plugin localization -- copied norwegian for now.
+ * rebuild wordpress plugin, install on kursa 
 
  * Tag part translation/localization: v. Ind Prs Pl3 -> definitions in all languages
    - main/gt/common/src/tag-no.regex
+
+ * autocomplete SoMe variant so people don't have to type in whatever, but include multiple options as potential menu selections.
 
 ## Next:
 
@@ -29,6 +53,8 @@ nice to have:
    - main/gt/common/src/tag-no.regex
 
  * Glossary page explaining each tag part. 
+
+ * mobile menu language variant display
 
  * bookmarklet unload on additional click
 
