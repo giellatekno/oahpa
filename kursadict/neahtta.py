@@ -147,9 +147,13 @@ def get_locale():
     if ses_lang is not None:
         return ses_lang
     else:
-        ses_lang = request.accept_languages.best_match(AVAILABLE_LOCALES)
-        if not ses_lang:
-            ses_lang = 'se'
+        ses_lang = 'se'
+        if 'baakoeh' in request.host:
+            ses_lang = 'no'
+        elif (u'sanit' in request.host) or (u'sánit' in request.host):
+            ses_lang = 'fi'
+        else:
+            ses_lang = request.accept_languages.best_match(AVAILABLE_LOCALES)
         session.locale = ses_lang
         app.jinja_env.globals['session'] = session
     return ses_lang
