@@ -3,6 +3,7 @@
 Tools:
   xfst_lookup: &LOOKUP '/usr/bin/lookup'
   gthome: &GTHOME '/home/neahtta/gtsvn'
+  opt: &OPT '/opt/smi'
 
 # Morphological system definitions. Since YAML variables aren't able to
 # be used in concatenating strings, certain paths with references must
@@ -10,8 +11,8 @@ Tools:
 Morphology:
   sme:
     tool: *LOOKUP
-    file: [*GTHOME, "/gt/sme/bin/n-sme.fst"]
-    inverse_file: [*GTHOME, "/gt/sme/bin/dict-isme-norm.fst"]
+    file: [*OPT, "/sme/bin/n-sme.fst"]
+    inverse_file: [*OPT, "/sme/bin/dict-isme-norm.fst"]
     format: 'xfst'
     options: &sme_fst_options
       compoundBoundary: "  + #"
@@ -21,8 +22,8 @@ Morphology:
   # TODO: file paths on gtoahpa
   SoMe:
     tool: *LOOKUP
-    file: [*GTHOME, "/gt/sme/bin/some-n-sme.fst"]
-    inverse_file: [*GTHOME, "/gt/sme/bin/dict-isme-norm.fst"]
+    file: [*GTHOME, "/gt/sme/bin/n-some-sme.fst"]
+    inverse_file: [*OPT, "/sme/bin/dict-isme-norm.fst"]
     format: 'xfst'
     options:
       <<: *sme_fst_options
@@ -119,9 +120,9 @@ Dictionaries:
     target: nob
     path: 'dicts/sme-nob.all.xml'
 
-  # - source: nob
-  #   target: sme
-  #   path: 'dicts/nob-sme.all.xml'
+  - source: nob
+    target: sme
+    path: 'dicts/nob-sme.all.xml'
 
   - source: sme
     target: fin
@@ -135,17 +136,17 @@ Dictionaries:
     target: fin
     path: 'dicts/sme-fin.all.xml'
 
-  # - source: fin
-  #   target: sme
-  #   path: 'dicts/fin-sme.all.xml'
+  - source: fin
+    target: sme
+    path: 'dicts/fin-sme.all.xml'
 
   - source: sma
     target: nob
     path: 'dicts/sma-nob.all.xml'
 
-  # - source: nob
-  #   target: sma
-  #   path: 'dicts/nob-sma.all.xml'
+  - source: nob
+    target: sma
+    path: 'dicts/nob-sma.all.xml'
 
 # Abstracting display formats out here, because there are different
 # requirements for different languages and different wordforms.
