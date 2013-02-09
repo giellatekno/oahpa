@@ -31,7 +31,7 @@ jQuery(document).ready ($) ->
 
           options_block.push """
             <option value="#{data.from.iso}-#{data.to.iso}">
-            #{data.from.name} -> #{data.to.name}
+            #{data.from.name} -&gt; #{data.to.name}
             </option>
           """
         return options_block.join('\n')
@@ -55,7 +55,7 @@ jQuery(document).ready ($) ->
             <form class="">
               <label class="control-label" for="inputEmail">Ordbok</label>
               <select type="radio" 
-                     name="language_pair" 
+                     name="language_pair">
               #{makeLanguageOption(opts.dictionaries)}
               </select>
               <br />
