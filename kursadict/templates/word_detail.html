@@ -2,22 +2,41 @@
 
 {% block extra_css %}
 <link href="{{url_for('static', filename='css/detail.css')}}" rel="stylesheet" />
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-typeahead-fork.js')}}"></script>
 <!-- <script type="text/javascript" src="{{url_for('static', filename='js/dropdown-button.js')}}"></script> -->
 <script type="text/javascript">
   $(document).ready( function() {
+    $('input[name="lookup"]').typeahead({
+      items: 5,
+      source: function (typeahead, query) {
+        var _from = $(document).find('#neahttadigisanit').attr('action').split('/')[1]
+          , _to   = $(document).find('#neahttadigisanit').attr('action').split('/')[2]
+          , url = '/autocomplete/' + _from + '/' + _to + '/'
+          ;
+        if (query.length > 1) {
+          return $.get(url, { lookup: query }, function (data) {
+            return typeahead.process(data);
+          });
+        } else {
+          return [] ;
+        }
+      }
+    });
+
    $(document).find('#langpairs li a').click(function(obj) {
      var elem    = $(obj.target).parent('a');
      var new_val = $(obj.target).attr('data-value') ||
                    $(elem).attr('data-value') ;
-     var _from = new_val.slice(0, 3)
-       , _to   = new_val.slice(3, 6)
+     var _from = new_val.split('-')[0]
+       , _to   = new_val.split('-')[1]
        ;
      var _url   = "/" + (_from) + "/" + (_to) + "/"
-       , _label = "" + (_from) + "->" + (_to)
+       , _label = "" + (_from) + " → " + (_to)
        ;
      $(document).find('#neahttadigisanit button span.val_name').html(_label);
      $(document).find('#neahttadigisanit').attr('action', _url);
    });
+
   });
   $(document).keypress(function(event) {
     // console.log(event.which);
@@ -57,7 +76,7 @@
                action="/{{ _from }}/{{ _to }}/">
            <div class="input-prepend input-append">
              <div class="btn-group">
-               <button class="btn dropdown-toggle" data-toggle="dropdown">
+               <button type="button" class="btn dropdown-toggle" data-toggle="dropdown">
                    <span class="val_name">{{ _from }}→{{ _to }}</span>
                  <span class="caret"></span>
                </button>
@@ -68,23 +87,21 @@
                 {# TODO: dropdown select to language pair for form submit #}
                 {% for iso_pair, names in language_pairs.iteritems() %}
                  <li class="selected{%- if iso_pair[0] == _from and iso_pair[1] == _to %} active{% endif -%}"><a tabindex="-1" href="#"
-                         data-value="{{ iso_pair[0]}}{{ iso_pair[1] }}">
-                        {% for lang, name in names.iteritems() %}
-                            <span class="i18n" lang="{{ lang }}">{{ name[0] }} → {{ name[1] }}</span>
-                        {% endfor %}
+                         data-value="{{ iso_pair[0]}}-{{ iso_pair[1] }}">
+                        <span>{{ iso_pair[0]|iso_to_i18n }} ↔ {{ iso_pair[1]|iso_to_i18n }}</span>
                     </a></li>
                 {% endfor %}
                </ul>
+             </div>
              <input type="text" name="lookup"
                     autocorrect="off"
                     autocapitalize="off"
                     placeholder="{{ user_input }}"></input>
              <div class="btn-group">
-               <button type="submit" class="btn" name="search">
+               <button type="submit" type="button" class="btn" name="search">
                    <span>{% trans %}Search{% endtrans %}</span>
                </button>
              </div>
-           </div>
            </div>
           <div id="results"></div>
         </form>
