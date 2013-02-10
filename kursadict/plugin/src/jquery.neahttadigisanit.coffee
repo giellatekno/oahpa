@@ -31,7 +31,7 @@ jQuery(document).ready ($) ->
 
           options_block.push """
             <option value="#{data.from.iso}-#{data.to.iso}">
-            #{data.from.name} -&gt; #{data.to.name}
+            #{data.from.name} → #{data.to.name}
             </option>
           """
         return options_block.join('\n')
@@ -173,10 +173,12 @@ jQuery(document).ready ($) ->
   
   surroundRange = (range, surrounder) ->
     if range
+      console.log "found a range"
       if not range.canSurroundContents()
-      	# TODO: should be possible to recover from this sometimes, as
-      	# non-FF browsers do not have this issue
-      	return false
+        console.log "this error has occurred."
+        # TODO: should be possible to recover from this sometimes, as
+        # non-FF browsers do not have this issue
+        return false
       try
         range.surroundContents surrounder
       catch ex
@@ -221,14 +223,29 @@ jQuery(document).ready ($) ->
         result_string = "<em>#{lookup.left}</em> (#{lookup.pos}) &mdash; #{right}"
         result_strings.push(result_string)
 
-    # Append tags
-    # if response.tags
-    #   tags = (t[1] for t in response.tags).join(', ')
-    #   result_strings.push("<span class='tags'><em>#{tags}</em></span>")
     
+    langpair = DSt.get('digisanit-select-langpair')
+    [_f_from, _t_to] = langpair.split('-')
+    current_pair = $.fn.selectToLookup.options.dictionaries.filter (e) =>
+      if e.from.iso == _f_from and e.to.iso == _t_to
+        return true
+      else
+        return false
+    if current_pair.length > 0
+      _cp = current_pair[0]
+      current_pair_names = "#{_cp.from.name} → #{_cp.to.name}"
+    else
+      current_pair_names = ""
+
     if result_strings.length == 0 or response.success == false
       if opts.tooltip
-        _tooltipTitle = 'Unknown word'
+        _tooltipTitle = 'Ukjent ord'
+        console.log response.tags
+        result_strings.push("<span class='tags'><em>Du bruker #{current_pair_names}</em></span>")
+        if response.tags.length > 0
+          _tooltipTitle = 'Betydning ikke funnet'
+        ##  tags = ("<li><em>#{t[1]}</em></li>" for t in response.tags).join(', ')
+        ##  result_strings.push("<span class='tags'><ul>#{tags}</ul></span>")
 
     if opts.tooltip
       if !_tooltipTitle
@@ -346,12 +363,10 @@ jQuery(document).ready ($) ->
         parents.push $(this).parent()
         $(this).popover('destroy')
         $(this).replaceWith(this.childNodes)
-      # Set parent html to be parent html, for some reason this allows
-      # all following click/lookup events to be properly registered
-      if parents.length > 0
-        for parent in parents
-          parent.html parent.html()
 
+      $(document).find('a.tooltip_target').contents().unwrap()
+
+    window.cleanTooltips = clean
     $(document).bind('click', holdingOption)
    
   $.fn.selectToLookup.options =
