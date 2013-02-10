@@ -1,33 +1,11 @@
 ﻿### Morpho-Lexical interface
 ###
-### ... to simplify all the stuff in the views below
 
+# TODO: do not display analyzed lexical entries for words with mini-paradigms,
+# e.g., lemma_ref contents should be stripped.
 
-# /lookup/
-
-#         lemmas = lemmatizer( lookup_key
-#                            , split_compounds=True
-#                            , non_compound_only=True
-#                            , no_derivations=True
-#                            )
-#         lookup_keys = list(set([l.lemma for l in lemmas]))
-# 
-#     # [lemma, lemma, lemma] -> [(lemma, XMLNodes)]
-#     results, success = app.config.lexicon.lookups( from_language
-#                                                  , to_language
-#                                                  , lookup_keys
-#                                                  )
-
-# /detail/
-
-#     xml_result = app.config.lexicon.lookup( from_language
-#                                           , to_language
-#                                           , lemma=lemma
-#                                           , pos=pos
-#                                           , pos_type=_type
-#                                           )
-# 
-
+# Will need to operate on the output of lookup(), and this is language
+# specific, so decorator registry thing is probably good here.
 
 class MorphoLexicon(object):
     morphology_kwarg_names = [
@@ -57,7 +35,8 @@ class MorphoLexicon(object):
         # TODO: if analyses dropping componuds results in lexicalized
         # form that does not exist in lexicon, then fall back to
         # compounds?
-        analyses = self.analyzers.get(source_lang).lemmatize(wordform, **morph_kwargs)
+        analyzer = self.analyzers.get(source_lang)
+        analyses = analyzer.lemmatize(wordform, **morph_kwargs)
 
         if analyses:
             lookup_lemmas = [l.lemma for l in analyses]
