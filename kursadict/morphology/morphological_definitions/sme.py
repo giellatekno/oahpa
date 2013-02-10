@@ -9,12 +9,7 @@
 from morphology import generation_overrides as rewrites
 from lexicon import lexicon_overrides as lexicon
 
-
-# TODO: include SoMe variants subst. -> N, etc
-# TODO: may need to filter these before lookup in lexicon too, after
-# analysis. 
 LEX_TO_FST = {
-
     'a': 'A',
     'adj': 'A',
     'adp': 'Adp',
@@ -37,6 +32,8 @@ LEX_TO_FST = {
     'verb': 'V',
 }
 
+# This is called before any lookup is done, regardless of whether it
+# came from analysis or not.
 @lexicon.pre_lookup_tag_rewrite_for_iso('sme')
 def pos_to_fst(*args, **kwargs):
     if 'lemma' in kwargs and 'pos' in kwargs:
@@ -61,6 +58,18 @@ def some_pos_to_fst(*args, **kwargs):
             print "in morphology.morphological_definitions.sme"
     return args, kwargs
 
+# TODO: may no longer need to remove elements from tags now that those
+# that are presented to users come directly from the pretty presentation
+# analyzer, however other languages may need this, so here is a model.
+# @rewrites.post_analysis_processor_for_iso('sme')
+# def test_f(generated_forms, *input_args, **input_kwargs):
+#     exclusions = [
+#         'Ani', 'Body', 'Build', 'Clth', 'Edu', 'Event', 'Fem',
+#         'Food', 'Group', 'Hum', 'Mal', 'Measr', 'Obj', 'Org',
+#         'Plant', 'Plc', 'Route', 'Sur', 'Time', 'Txt', 'Veh', 'Wpn',
+#         'Wthr', 'Allegro', 'v1', 'v2', 'v3', 'v4',
+#     ]
+#     return generated_forms
 
 @rewrites.pregenerated_form_selector('sme')
 def pregenerate_sme(form, tags, node):
@@ -248,3 +257,7 @@ def verb_context(generated_result, *generation_input_args):
         return (lemma, tag, formatted_forms)
 
     return map(apply_context, generated_result)
+
+# TODO: post-generated tag rewrites for sme, because FST must have
+# +These+Kinds+Of+Tags
+# @rewrites.postgeneration_filter_for_iso('sme')

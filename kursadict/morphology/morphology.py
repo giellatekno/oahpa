@@ -140,6 +140,21 @@ class GenerationOverrides(object):
             return generated_forms
         return decorate
 
+    def process_analysis_output(self, lang_code, function):
+        """ This runs the analysis function, and applies all of the
+        function contexts to the output. Or in other words, this
+        decorator works on the output of the decorated function, but
+        also captures the input arguments, making them available to each
+        function in the registry.
+        """
+        def decorate(*input_args, **input_kwargs):
+            generated_forms = function(*input_args, **input_kwargs)
+            for f in self.postanalyzers[lang_code]:
+                generated_forms = f(generated_forms, *input_args, **input_kwargs)
+            return generated_forms
+        return decorate
+
+
     def apply_pregenerated_forms(self, lang_code, function):
         def decorate(*args):
             newargs = args
@@ -152,6 +167,18 @@ class GenerationOverrides(object):
     ##
     ### Here are the decorators
     ##
+
+    def post_analysis_processor_for_iso(self, language_iso):
+        """ For language specific processing after analysis is completed,
+        for example, stripping tags before presentation to users.
+        """
+        def wrapper(postanalysis_function):
+            self.postanalyzers[language_iso].append(postanalysis_function)
+            print '%s overrides: registered post-analysis processor - %s' % \
+                  ( language_iso
+                  , postanalysis_function.__name__
+                  )
+        return wrapper
 
     def pregenerated_form_selector(self, language_iso):
         """ The function that this decorates is used to select and
@@ -195,6 +222,7 @@ class GenerationOverrides(object):
 
         self.registry      = defaultdict(list)
         self.pregenerators = defaultdict(list)
+        self.postanalyzers = defaultdict(list)
 
         self.postgeneration_processors = defaultdict(list)
 
@@ -403,21 +431,6 @@ class OBT(XFST):
 
 class Morphology(object):
 
-    # TODO: language specific, need to sneak this out to an override
-    def cleanTag(self, tag):
-        exclusions = [
-            'Ani', 'Body', 'Build', 'Clth', 'Edu', 'Event', 'Fem',
-            'Food', 'Group', 'Hum', 'Mal', 'Measr', 'Obj', 'Org',
-            'Plant', 'Plc', 'Route', 'Sur', 'Time', 'Txt', 'Veh', 'Wpn',
-            'Wthr', 'Allegro', 'v1', 'v2', 'v3', 'v4',
-        ]
-        cleaned = []
-        for p in tag:
-            if p in exclusions:
-                continue
-            cleaned.append(p)
-        return cleaned
-
     def generate(self, lemma, tagsets, node=None, pregenerated=None):
         """ Run the lookup command, parse output into
             [(lemma, ['Verb', 'Inf'], ['form1', 'form2'])]
@@ -459,7 +472,7 @@ class Morphology(object):
             if not unknown:
                 parts = self.tool.splitAnalysis(tag, inverse=True)
                 lemma = parts[0]
-                tag = self.cleanTag(parts[1::])
+                tag = parts[1::]
                 reformatted.append((lemma, tag, forms))
             else:
                 parts = self.tool.splitAnalysis(tag, inverse=True)
@@ -493,6 +506,9 @@ class Morphology(object):
 
             def __repr__(lem_obj):
                 _lem, _pos, _tag = lem_obj.__key()
+                _lem = unicode(_lem).encode('utf-8')
+                _pos = unicode(_pos).encode('utf-8')
+                _tag = unicode(_tag).encode('utf-8')
                 return '<Lemma: %s, %s, %s>' % (_lem, _pos, _tag)
 
             def __init__(lem_obj, lemma, pos, tag, _input=False):
@@ -564,44 +580,6 @@ class Morphology(object):
 
         return list(lemmas)
 
-    def analyze(self, form, split_compounds=False):
-        """ For a wordform, return a list of lemmas and analyses
-            Return in form of:
-            [(form, lemma, ['Verb', 'Inf']),
-             (form, lemma, ['Verb', 'Inf']),
-            ]
-        """
-        lookups = self.tool.lookup([form])
-
-        cleaned = []
-        if split_compounds:
-            for _input, tags in lookups:
-                for tag in tags:
-                    # TODO: how does OBT handle unknown?
-                    if '+?' in tag:
-                        cleaned.append((_input, '?', '?'))
-                    else:
-                        decompounded = self.tool.splitTagByCompound(tag)
-                        for analysis in decompounded:
-                            _t = self.tool.splitAnalysis(analysis)
-                            lemma = _t[0]
-                            _tag = self.cleanTag(_t[1::])
-                            _new = (_input, lemma, _tag)
-                            if _new not in cleaned:
-                                cleaned.append(_new)
-        else:
-            for _input, tags in lookups:
-                for tag in tags:
-                    if '+?' in tag:
-                        cleaned.append((_input, '?', '?'))
-                    else:
-                        tag = self.tool.splitAnalysis(tag)
-                        lemma = tag[0]
-                        _tag = self.cleanTag(tag[1::])
-                        cleaned.append((_input, lemma, _tag))
-
-        return cleaned
-
     def generate_cache_key(self, lemma, generation_tags, node=False):
         """ key is something like generation-LANG-nodehash-TAG|TAG|TAG
         """
@@ -629,6 +607,9 @@ class Morphology(object):
         self.generate = generation_overrides.process_generation_output(
             languagecode, self.generate
         )
+        self.lemmatize = generation_overrides.process_analysis_output(
+            languagecode, self.lemmatize
+        )
 
         if cache:
             self.cache = cache
@@ -642,237 +623,3 @@ class Morphology(object):
         self.logger.addHandler(logfile)
 
         self.tagsets = Tagsets(tagsets)
-
-def sme_test():
-    sme_options = {
-        'compoundBoundary': "  + #",
-        'derivationMarker': "suff.",
-        'tagsep': ' ',
-        'inverse_tagsep': '+',
-    }
-
-    smexfst = XFST(lookup_tool='/Users/pyry/bin/lookup',
-                   fst_file='/Users/pyry/gtsvn/gt/sme/bin/n-sme.fst',
-                   ifst_file='/Users/pyry/gtsvn/gt/sme/bin/isme.fst',
-                   options=sme_options)
-
-    sme = smexfst >> Morphology('sme')
-
-    return sme
-
-def sme_test_restrictions():
-
-    sme_options = {
-        'compoundBoundary': "  + #",
-        'derivationMarker': "suff.",
-        'tagsep': ' ',
-        'inverse_tagsep': '+',
-    }
-
-    smexfst = XFST(lookup_tool='/Users/pyry/bin/lookup',
-                   fst_file='/Users/pyry/gtsvn/gt/sme/bin/n-sme.fst',
-                   ifst_file='/Users/pyry/gtsvn/gt/sme/bin/isme.fst',
-                   options=sme_options)
-
-    sme = smexfst >> Morphology('sme')
-
-    return sme
-
-
-def sme_restricted_generation():
-    sme = sme_test()
-    sme_restr = sme_test_restrictions()
-
-    test_words = [
-        u'mannat',
-        # u'dahkat'
-    ]
-    test_tags = [
-        u'V+Ind+Prs+Sg1'.split('+'),
-        u'V+Ind+Prs+Sg2'.split('+'),
-        u'V+Ind+Prs+Sg3'.split('+'),
-        u'V+Ind+Prt+Sg3'.split('+'),
-        u'V+Ind+Prs+Pl3'.split('+'),
-        u'V+Ind+Prt+Pl3'.split('+'),
-    ]
-    print "restricted"
-    for w in test_words:
-        gens = sme.generate(w, test_tags, False)
-        print w
-        for l in gens:
-            if l[2]:
-                for f in l[2]:
-                    print '\t' + f + '\t' + '+'.join(l[1])
-            else:
-                print '\t' + 'NOPE'
-
-    print "unrestricted"
-    for w in test_words:
-        gens = sme_restr.generate(w, test_tags, False)
-        print w
-        for l in gens:
-            if l[2]:
-                for f in l[2]:
-                    print '\t' + f + '\t' + '+'.join(l[1])
-            else:
-                print '\t' + 'NOPE'
-
-def sme_derivation_test():
-    sme = sme_test()
-
-    test_words = [
-        u'borahuvvat',
-        u'juhkaluvvan'
-    ]
-    for w in test_words:
-        print "No options"
-        print sme.lemmatize(w)
-
-        print "/lookup/ lemmatizer"
-        print sme.lemmatize( w
-                           , split_compounds=True
-                           , non_compound_only=True
-                           , no_derivations=True
-                           )
-
-        print "/ search analyzer"
-        print sme.analyze( w
-                         , split_compounds=True
-                         )
-
-def sme_compound_test():
-    # TODO: make UnitTests out of these.
-    sme = sme_test()
-
-    print "No options"
-    print sme.lemmatize(u'báhčinsearvi')
-
-    print "Strip derivation, compounds, but also split compounds"
-    print sme.lemmatize( u'báhčinsearvi'
-                       , split_compounds=True
-                       , non_compound_only=True
-                       , no_derivations=True
-                       )
-
-    print "Strip derivation, but also split compounds"
-    print sme.lemmatize( u'báhčinsearvi'
-                       , split_compounds=True
-                       , no_derivations=True
-                       )
-
-    print "Strip compounds, but also split compounds"
-    print sme.lemmatize( u'báhčinsearvi'
-                       , split_compounds=True
-                       , non_compound_only=True
-                       )
-
-    print "Strip compounds"
-    print sme.lemmatize( u'báhčinsearvi'
-                       , non_compound_only=True
-                       )
-
-    print "Split compounds"
-    print sme.lemmatize( u'báhčinsearvi'
-                       , split_compounds=True
-                       )
-
-    print sme.lemmatize( u'boazodoallošiehtadallanlávdegotti'
-                       , split_compounds=True
-                       , non_compound_only=True
-                       , no_derivations=True
-                       )
-
-def examples():
-    # TODO: make this into tests
-
-    obt = OBT('/Users/pyry/gtsvn/st/nob/obt/bin/mtag-osx64')
-
-    nob = obt >> Morphology('nob')
-    print
-    print ' -- nob --'
-    print ' ingen: '
-    for a in nob.lemmatize(u'ingen'):
-        print '  ' + a
-
-    print ' tålt: '
-    for a in nob.lemmatize(u'tålt'):
-        print '  ' + a
-
-    sme = sme_test()
-    print
-    print ' -- sme lemmatize --'
-    print ' mánnat: '
-    for a in sme.lemmatize(u'mannat'):
-        print '  ' + a
-
-    generate = sme.generate(u'mannat', [['V', 'Inf'],
-                                ['V', 'Ind', 'Prs', 'Sg1'],
-                                ['V', 'Ind', 'Pst', 'Sg2'],
-                                ['V', 'Ind', 'Prt', 'Sg2']]
-                                )
-
-    for lem, tag, forms in generate:
-        if forms:
-            for form in forms:
-                print '  ' + ' '.join(tag) + ' => ' + form
-        else:
-            print '  ' + ' '.join(tag) + ':   unknown'
-
-    generate = sme.generate(u'eaktodáhtolašš', [['A', 'Attr'], ])
-
-    for lem, tag, forms in generate:
-        if forms:
-            for form in forms:
-                print '  ' + ' '.join(tag) + ' => ' + form
-        else:
-            print '  ' + ' '.join(tag) + ':   unknown'
-
-    for a in sme.analyze(u'gullot'):
-        print '  %s %s  %s' % (a[0], a[1], ' '.join(a[2]))
-
-    print ' -- analyze with compounds -- '
-    for a in sme.analyze(u'juovlaspábbačiekčangilvu', split_compounds=True):
-        print '  %s %s  %s' % (a[0], a[1], ' '.join(a[2]))
-
-    print ' -- analyze -- '
-    for a in sme.analyze(u'juovlaspábbačiekčangilvu'):
-        print '  %s %s  %s' % (a[0], a[1], ' '.join(a[2]))
-
-    print ' -- lemmatize -- '
-    for a in sme.lemmatize(u'spábbačiekčangilvu'):
-        print '  ' + a
-
-    print ' -- lemmatize with compounds -- '
-    for a in sme.lemmatize(u'juovlaspábbačiekčangilvu', split_compounds=True):
-        print '  ' + a
-
-    print ' -- lemmatize -- '
-    for a in sme.lemmatize(u'juovlaspábbačiekčangilvu'):
-        print '  ' + a
-
-def tag_examples():
-    setdefs = {
-        'type': ["NomAg", "G3"],
-        'person': ["Sg1", "Sg2", "Sg3"],
-    }
-
-    tagsets = Tagsets(setdefs)
-    tag_test = Tag('N+NomAg+Sg+Ill', sep='+')
-    print tag_test
-
-    _type = tagsets['type']
-    for m in _type.members:
-        print m
-
-    print tag_test.getTagByTagset(_type)
-    print tag_test[_type]
-
-    for item in tag_test:
-        print item
-
-if __name__ == "__main__":
-    # examples()
-    # tag_examples()
-    # sme_compound_test()
-    # sme_derivation_test()
-    sme_restricted_generation()
