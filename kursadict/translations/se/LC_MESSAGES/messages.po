@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-02-08 20:33-0600\n"
+"POT-Creation-Date: 2013-02-10 17:30-0600\n"
 "PO-Revision-Date: 2013-02-01 01:55-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: se <LL@li.org>\n"
@@ -21,23 +21,27 @@ msgstr ""
 msgid "North Sámi"
 msgstr "Davvisámegiella"
 
-#: language_names.py:10 templates/language_select.html:13
+#: language_names.py:10
+msgid "North Sámi (#SoMe)"
+msgstr ""
+
+#: language_names.py:11 templates/language_select.html:13
 msgid "Finnish"
 msgstr "Suomagiella"
 
-#: language_names.py:11 templates/language_select.html:12
+#: language_names.py:12 templates/language_select.html:12
 msgid "Norwegian"
 msgstr "Dárogiella"
 
-#: language_names.py:12
+#: language_names.py:13
 msgid "South Sámi"
 msgstr "Lullisámegiella"
 
-#: neahtta.py:339 templates/index.html:213
+#: neahtta.py:354 templates/index.html:207
 msgid " is a possible form of ... "
 msgstr " lea vejolaččat dán sáni hápmi:"
 
-#: neahtta.py:391
+#: neahtta.py:406
 msgid "Invalid format. Only json and html allowed."
 msgstr "Formáhta ii doaimma. Dušše json ja html doibmet."
 
@@ -113,6 +117,10 @@ msgstr "gå, dra, reise"
 msgid "Source material"
 msgstr "Gáldomateriálat"
 
+#: templates/about.html:109
+msgid "sme ↔ nob"
+msgstr ""
+
 #: templates/about.html:110
 msgid ""
 "North Sámi → Norwegian builds on Nils Jernsletten's dictionary "
@@ -131,6 +139,10 @@ msgstr ""
 "Dáru-davvisámi lea Davvisámi-daru sátnegirjji speadjalaston veršuvdna "
 "masa mii leat lásihan dábálaš dárogiel sániid. "
 
+#: templates/about.html:114
+msgid "sma ↔ nob"
+msgstr ""
+
 #: templates/about.html:115
 msgid ""
 "The dictionaries for South Sámi and Norwegian build on material prepared "
@@ -143,11 +155,15 @@ msgid ""
 msgstr ""
 "Lullisámi sátnegirjjit vuođđuduvvojit Albert Jåma ja Tove Brustad "
 "ráhkadan sátnelisttuide mat gávdnojit dás: <a class=\"blue\" "
-"href=\"http://www.ruovatsijte.no/\">Hemnes Sámi Searvi</a>, "
-"muhto dasa lassin leaba <a class=\"blue\" "
-"href=\"http://giellatekno.uit.no/\">Giellatekno</a> ja <a class=\"blue\""
-" href=\"http://aajege.no/\">Aajege</a> lasihan sániid barggadettiin "
+"href=\"http://www.ruovatsijte.no/\">Hemnes Sámi Searvi</a>, muhto dasa "
+"lassin leaba <a class=\"blue\" "
+"href=\"http://giellatekno.uit.no/\">Giellatekno</a> ja <a class=\"blue\" "
+"href=\"http://aajege.no/\">Aajege</a> lasihan sániid barggadettiin "
 "lullisámi <a class=\"blue\" href=\"http://oahpa.no\">Oahpain</a>."
+
+#: templates/about.html:118
+msgid "sme ↔ fin"
+msgstr ""
 
 #: templates/about.html:119
 msgid ""
@@ -161,14 +177,13 @@ msgstr ""
 "Davvisámi-suoma-davvisámi sátnegirjjit vuođđoduvvojit Giellatekno <a "
 "class=\"green\" href=\"http://oahpa.no\">Oahpa</a>-bargui ja "
 "sátnelisttuide maid leat ožžon dán ásahusas: <a class=\"green\" "
-"href=\"http://kotus.fi\">Forskingscentralen för de inhemska språken "
-"i Helsingfors</a>. Mii leat maid lasihan dábálaš davvisámegiela ja "
+"href=\"http://kotus.fi\">Forskingscentralen för de inhemska språken i "
+"Helsingfors</a>. Mii leat maid lasihan dábálaš davvisámegiela ja "
 "erenoamážit suomagiela sániid. "
 
 #: templates/about.html:120
 msgid "Each of the dictionaries contains about 11,000 base words."
-msgstr ""
-"Juohke sátnegirjjis leat su. 11000 vuođđosáni. "
+msgstr "Juohke sátnegirjjis leat su. 11000 vuođđosáni. "
 
 #: templates/about.html:128
 msgid "More to come..."
@@ -198,48 +213,48 @@ msgstr ""
 " gáldokoda reaidduiguin. Giellatekno lea <a href=\"http://uit.no\">Romssa"
 " universitehta</a> sámi giellateknologiija joavku."
 
-#: templates/index.html:114 templates/index.html:125
+#: templates/index.html:110 templates/index.html:121
 msgid "Written variant"
 msgstr "Čállinvuohki"
 
-#: templates/index.html:116 templates/index.html:127
+#: templates/index.html:112 templates/index.html:123
 msgid "Standard (<em>áčđŋšŧž</em>)"
 msgstr "Standárda (<em>áčđŋšŧž</em>)"
 
-#: templates/index.html:117 templates/index.html:128
+#: templates/index.html:113 templates/index.html:124
 msgid "Social Media (incl. <em>acdnstz</em>)"
 msgstr "Sosiála media (maiddái <em>acdnstz</em>)"
 
-#: templates/index.html:143
+#: templates/index.html:137
 msgid "Swap"
 msgstr "Molsso"
 
-#: templates/index.html:159 templates/word_detail.html:84
+#: templates/index.html:153 templates/word_detail.html:102
 msgid "Search"
 msgstr "Oza"
 
-#: templates/index.html:200
+#: templates/index.html:194
 msgid "Definition not found for:"
 msgstr "Ii gávnna:"
 
-#: templates/index.html:239
+#: templates/index.html:233
 #, python-format
 msgid "Word %(input)s not found."
 msgstr "Sátni %(input)s ii gávdnon."
 
-#: templates/index.html:247
+#: templates/index.html:241
 msgid "Search for a word, or a word form for a word analysis and definition."
 msgstr "Oza sáni, dahje sojahuvvon sátnehámi mii dalle analyserejuvvo."
 
-#: templates/index.html:251
+#: templates/index.html:245
 msgid ""
 "You selected #SoMe, the variant for social media, which means that the "
 "letters acdnstz\n"
 "                                will be accepted as áčđŋšŧž in addition "
 "to their usual values."
 msgstr ""
-"Don válljejit #SoMe sosiála media várás, ja dat mearkkaša ahte "
-"bustávat acdnstz\n"
+"Don válljejit #SoMe sosiála media várás, ja dat mearkkaša ahte bustávat "
+"acdnstz\n"
 "                                dohkkehuvvojit maiddái áčđŋšŧž:n."
 
 #: templates/language_select.html:8
@@ -266,7 +281,8 @@ msgstr ""
 "Gease rukses liŋkka iežat girjemearka-/favorihttafállui. Coahkkal\n"
 "            girjemearkka go leat neahttasiiddus maid háliidat\n"
 "            lohkat. Bálvalus sajáiduvvá automáhtalaččat, ja gurut\n"
-"            ravddas ihtá dalle fállu (<em>Á</em>) gos sáhtát válljet giela."
+"            ravddas ihtá dalle fállu (<em>Á</em>) gos sáhtát válljet "
+"giela."
 
 #: templates/reader.html:19
 msgid "Read with Neahttadigisánit"
@@ -314,14 +330,11 @@ msgstr ""
 "Mii eat vurke priváhta dieđuid, muhto mii vurket sániid maid ozat\n"
 "            statistihka ja sátnegirjji buorideami dihte."
 
-#: templates/word_detail.html:35
+#: templates/word_detail.html:54
 msgid "is a possible form of ... "
 msgstr "lea vejolaččat dán sáni hápmi: "
 
-#: templates/word_detail.html:196
+#: templates/word_detail.html:220
 msgid "More information about this word"
 msgstr "Eanet dieđut dán sáni birra"
-
-#~ msgid "Unknown word:"
-#~ msgstr "Amas sátni"
 

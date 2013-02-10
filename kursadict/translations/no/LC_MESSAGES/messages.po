@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-02-08 20:33-0600\n"
+"POT-Creation-Date: 2013-02-10 17:30-0600\n"
 "PO-Revision-Date: 2013-02-01 01:54-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: no <LL@li.org>\n"
@@ -21,23 +21,27 @@ msgstr ""
 msgid "North Sámi"
 msgstr "Nordsamisk"
 
-#: language_names.py:10 templates/language_select.html:13
+#: language_names.py:10
+msgid "North Sámi (#SoMe)"
+msgstr ""
+
+#: language_names.py:11 templates/language_select.html:13
 msgid "Finnish"
 msgstr "Finsk"
 
-#: language_names.py:11 templates/language_select.html:12
+#: language_names.py:12 templates/language_select.html:12
 msgid "Norwegian"
 msgstr "Norsk"
 
-#: language_names.py:12
+#: language_names.py:13
 msgid "South Sámi"
 msgstr "Sørsamisk"
 
-#: neahtta.py:339 templates/index.html:213
+#: neahtta.py:354 templates/index.html:207
 msgid " is a possible form of ... "
 msgstr " er en mulig form av ... "
 
-#: neahtta.py:391
+#: neahtta.py:406
 msgid "Invalid format. Only json and html allowed."
 msgstr "Ugyldig format. Bare json og html er tillatt."
 
@@ -114,6 +118,10 @@ msgstr "gå, dra, reise"
 msgid "Source material"
 msgstr "Kildematerial"
 
+#: templates/about.html:109
+msgid "sme ↔ nob"
+msgstr ""
+
 #: templates/about.html:110
 msgid ""
 "North Sámi → Norwegian builds on Nils Jernsletten's dictionary "
@@ -132,6 +140,10 @@ msgstr ""
 "Norsk → nordsamisk er en snudd versjon av Nordsamisk-norsk, der vi i "
 "tillegg har revidert artiklene, og lagt til frekvente ord fra norsk."
 
+#: templates/about.html:114
+msgid "sma ↔ nob"
+msgstr ""
+
 #: templates/about.html:115
 msgid ""
 "The dictionaries for South Sámi and Norwegian build on material prepared "
@@ -147,8 +159,12 @@ msgstr ""
 "href=\"http://www.ruovatsijte.no/\">Hemnes Samiske Forening</a>, men har "
 "i tillegg fått ord fra <a class=\"blue\" "
 "href=\"http://giellatekno.uit.no/\">Giellatekno</a> og <a class=\"blue\" "
-"href=\"http://aajege.no/\">Aajege</a> sitt arbeid med sørsamisk "
-"<a class=\"blue\" href=\"http://oahpa.no\">Oahpa</a>. "
+"href=\"http://aajege.no/\">Aajege</a> sitt arbeid med sørsamisk <a "
+"class=\"blue\" href=\"http://oahpa.no\">Oahpa</a>. "
+
+#: templates/about.html:118
+msgid "sme ↔ fin"
+msgstr ""
 
 #: templates/about.html:119
 msgid ""
@@ -163,14 +179,12 @@ msgstr ""
 "class=\"green\" href=\"http://kotus.fi\">Forskingscentralen för de "
 "inhemska språken</a> i Helsingfors, fra Giellatekno sitt arbeid med "
 "nordsamisk <a class=\"green\" href=\"http://oahpa.no\">Oahpa</a>. I "
-"tillegg har vi lagt til frekvente ord fra nordsamisk og "
-"særlig fra finsk. "
-
+"tillegg har vi lagt til frekvente ord fra nordsamisk og særlig fra finsk."
+" "
 
 #: templates/about.html:120
 msgid "Each of the dictionaries contains about 11,000 base words."
-msgstr ""
-"Hver av ordbøkene inneholder ca. 11000 grunnord."
+msgstr "Hver av ordbøkene inneholder ca. 11000 grunnord."
 
 #: templates/about.html:128
 msgid "More to come..."
@@ -200,40 +214,40 @@ msgstr ""
 "samisk språkteknologi ved <a href=\"http://uit.no\">Universitetet i "
 "Tromsø</a>."
 
-#: templates/index.html:114 templates/index.html:125
+#: templates/index.html:110 templates/index.html:121
 msgid "Written variant"
 msgstr "Skriftspråksvariant"
 
-#: templates/index.html:116 templates/index.html:127
+#: templates/index.html:112 templates/index.html:123
 msgid "Standard (<em>áčđŋšŧž</em>)"
 msgstr ""
 
-#: templates/index.html:117 templates/index.html:128
+#: templates/index.html:113 templates/index.html:124
 msgid "Social Media (incl. <em>acdnstz</em>)"
 msgstr "Sosiale media (inkl. <em>acdnstz</em>)"
 
-#: templates/index.html:143
+#: templates/index.html:137
 msgid "Swap"
 msgstr "Snu"
 
-#: templates/index.html:159 templates/word_detail.html:84
+#: templates/index.html:153 templates/word_detail.html:102
 msgid "Search"
 msgstr "Søk"
 
-#: templates/index.html:200
+#: templates/index.html:194
 msgid "Definition not found for:"
 msgstr "Vi fant ingen oversetting for:"
 
-#: templates/index.html:239
+#: templates/index.html:233
 #, python-format
 msgid "Word %(input)s not found."
 msgstr "Ordet %(input)s ikke funnet."
 
-#: templates/index.html:247
+#: templates/index.html:241
 msgid "Search for a word, or a word form for a word analysis and definition."
 msgstr "Søk etter et ord eller ei ordform for å få analyse og betydning."
 
-#: templates/index.html:251
+#: templates/index.html:245
 msgid ""
 "You selected #SoMe, the variant for social media, which means that the "
 "letters acdnstz\n"
@@ -285,8 +299,9 @@ msgstr ""
 
 #: templates/reader.html:24
 msgid "To change the dictionary, click the menu icon."
-msgstr "Du kan skifte språk i ordboka ved å klikke på "
-"menyikonet (<em>Á</em>)."
+msgstr ""
+"Du kan skifte språk i ordboka ved å klikke på \"\n"
+"\"menyikonet (<em>Á</em>)."
 
 #: templates/reader.html:25
 msgid "Bugs?"
@@ -314,14 +329,11 @@ msgstr ""
 "vi samler statistikk over hvilke ordboksoppslag som blir gjort,\n"
 "for å rette mangler og forbedre ordboka."
 
-#: templates/word_detail.html:35
+#: templates/word_detail.html:54
 msgid "is a possible form of ... "
 msgstr "er ei mulig form av ... "
 
-#: templates/word_detail.html:196
+#: templates/word_detail.html:220
 msgid "More information about this word"
 msgstr "Mer informasjon om dette ordet"
-
-#~ msgid "Unknown word:"
-#~ msgstr "Ukjent ord:"
 

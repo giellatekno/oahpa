@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-02-08 20:33-0600\n"
+"POT-Creation-Date: 2013-02-10 17:30-0600\n"
 "PO-Revision-Date: 2013-02-01 01:55-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fi <LL@li.org>\n"
@@ -21,23 +21,27 @@ msgstr ""
 msgid "North Sámi"
 msgstr "pohjoissaame"
 
-#: language_names.py:10 templates/language_select.html:13
+#: language_names.py:10
+msgid "North Sámi (#SoMe)"
+msgstr ""
+
+#: language_names.py:11 templates/language_select.html:13
 msgid "Finnish"
 msgstr "suomi"
 
-#: language_names.py:11 templates/language_select.html:12
+#: language_names.py:12 templates/language_select.html:12
 msgid "Norwegian"
 msgstr "norja"
 
-#: language_names.py:12
+#: language_names.py:13
 msgid "South Sámi"
 msgstr "eteläsaame"
 
-#: neahtta.py:339 templates/index.html:213
+#: neahtta.py:354 templates/index.html:207
 msgid " is a possible form of ... "
 msgstr " on mahdollinen muoto sanasta ... "
 
-#: neahtta.py:391
+#: neahtta.py:406
 msgid "Invalid format. Only json and html allowed."
 msgstr "Kelvoton muoto. Hyväksytään vain json ja html"
 
@@ -114,6 +118,10 @@ msgstr "mennä, lähteä"
 msgid "Source material"
 msgstr "Lähdemateriaalia"
 
+#: templates/about.html:109
+msgid "sme ↔ nob"
+msgstr ""
+
 #: templates/about.html:110
 msgid ""
 "North Sámi → Norwegian builds on Nils Jernsletten's dictionary "
@@ -123,18 +131,20 @@ msgstr ""
 "Pohjoissaame → norja perustuu Nils Jernslettenin sanakirjaan "
 "<em>Álgosátnegirji</em>, mutta sisältä on kaksinkertaistettu."
 
-
-
 #: templates/about.html:111
 msgid ""
 "Norwegian → North Sámi is a converted version of North Sámi → Norwegian, "
 "but we have also revised the content and added frequent words from "
 "Norwegian."
 msgstr ""
-"Norja → pohjoissaame on käännetty versio "
-"Pohjoissaame → norja -sanakirjasta, mutta me olemme myös lisännet "
-"tavallisia norjalaisia sanoja. Sanakirja tunnistaa myös tavallisimmat "
-"nykynorjan sanat ja taivutusmuodot."
+"Norja → pohjoissaame on käännetty versio Pohjoissaame → norja "
+"-sanakirjasta, mutta me olemme myös lisännet tavallisia norjalaisia "
+"sanoja. Sanakirja tunnistaa myös tavallisimmat nykynorjan sanat ja "
+"taivutusmuodot."
+
+#: templates/about.html:114
+msgid "sma ↔ nob"
+msgstr ""
 
 #: templates/about.html:115
 msgid ""
@@ -146,14 +156,17 @@ msgid ""
 " href=\"http://aajege.no/\">Aajege</a>'s work with the Southern Sámi <a "
 "class=\"blue\" href=\"http://oahpa.no\">Oahpa</a>."
 msgstr ""
-"Eteläsaame - norja -sanakirjat perustuvat  Albert Jåman ja Tove Brustadin "
-"materiaaliin (ks. <a class=\"blue\" "
-"href=\"http://www.ruovatsijte.no/\">Hemnes Samiske Forening</a>) "
-"sen lisäksi on lisätty sanoja <a class=\"blue\" "
+"Eteläsaame - norja -sanakirjat perustuvat  Albert Jåman ja Tove Brustadin"
+" materiaaliin (ks. <a class=\"blue\" "
+"href=\"http://www.ruovatsijte.no/\">Hemnes Samiske Forening</a>) sen "
+"lisäksi on lisätty sanoja <a class=\"blue\" "
 "href=\"http://giellatekno.uit.no/\">Giellateknon</a> ja <a class=\"blue\""
 " href=\"http://aajege.no/\">Aajegen</a> työstä eteläsaamen <a "
 "class=\"blue\" href=\"http://oahpa.no\">Oahpan</a> parissa."
 
+#: templates/about.html:118
+msgid "sme ↔ fin"
+msgstr ""
 
 #: templates/about.html:119
 msgid ""
@@ -168,13 +181,12 @@ msgstr ""
 "href=\"http://kotus.fi\">Kotimaisten kielten tutkimuskeskuksen</a> <a "
 "class=\"green\" href=\"kaino.kotus.fi/algu/\">Álgu</a>-projektin "
 "sanastoihin ja Giellateknon työhön pohjoissaamen <a class=\"green\" "
-"href=\"http://oahpa.no\">Oahpan</a> parissa. Sen lisäksi olemme "
-"lisännet tavallisia suomenkielisiä sanoja. "
+"href=\"http://oahpa.no\">Oahpan</a> parissa. Sen lisäksi olemme lisännet "
+"tavallisia suomenkielisiä sanoja. "
 
 #: templates/about.html:120
 msgid "Each of the dictionaries contains about 11,000 base words."
-msgstr ""
-"Jokainen sanakirja sisältaa n. 11000 hakusanaa. "
+msgstr "Jokainen sanakirja sisältaa n. 11000 hakusanaa. "
 
 #: templates/about.html:128
 msgid "More to come..."
@@ -205,40 +217,40 @@ msgstr ""
 "href=\"http://uit.no\">Tromssan yliopiston</a> kieliteknologian "
 "tutkimusryhmä."
 
-#: templates/index.html:114 templates/index.html:125
+#: templates/index.html:110 templates/index.html:121
 msgid "Written variant"
 msgstr "Kirjakielen versio"
 
-#: templates/index.html:116 templates/index.html:127
+#: templates/index.html:112 templates/index.html:123
 msgid "Standard (<em>áčđŋšŧž</em>)"
 msgstr "Standardi (<em>áčđŋšŧž</em>)"
 
-#: templates/index.html:117 templates/index.html:128
+#: templates/index.html:113 templates/index.html:124
 msgid "Social Media (incl. <em>acdnstz</em>)"
 msgstr "Sosiaalimedia (myös <em>acdnstz</em>)"
 
-#: templates/index.html:143
+#: templates/index.html:137
 msgid "Swap"
 msgstr "Vaihda"
 
-#: templates/index.html:159 templates/word_detail.html:84
+#: templates/index.html:153 templates/word_detail.html:102
 msgid "Search"
 msgstr "Etsi"
 
-#: templates/index.html:200
+#: templates/index.html:194
 msgid "Definition not found for:"
 msgstr "Käännös ei löydetty sanalle tai sanoille"
 
-#: templates/index.html:239
+#: templates/index.html:233
 #, python-format
 msgid "Word %(input)s not found."
 msgstr "Sanaa %(input%) ei löytynyt."
 
-#: templates/index.html:247
+#: templates/index.html:241
 msgid "Search for a word, or a word form for a word analysis and definition."
 msgstr "Etsi sanaa tai sanamuotoa analyysia ja käännöstä varten."
 
-#: templates/index.html:251
+#: templates/index.html:245
 msgid ""
 "You selected #SoMe, the variant for social media, which means that the "
 "letters acdnstz\n"
@@ -248,7 +260,6 @@ msgstr ""
 "Valitsit #SoMe, eli sosiaalisen median versio. Se tarkoittaa, ettö "
 "kirjaimet acdnstz hyväksytään kirjainten\n"
 " áčđŋšŧž versioina, tavallisen tulkintansa lisäksi."
-
 
 #: templates/language_select.html:8
 msgid "Language"
@@ -322,14 +333,11 @@ msgstr ""
 "yksittäisiä sanahakuja tilastoa ja sanakirjan\n"
 "parantamista varten."
 
-#: templates/word_detail.html:35
+#: templates/word_detail.html:54
 msgid "is a possible form of ... "
 msgstr "on mahdollinen muoto sanasta ..."
 
-#: templates/word_detail.html:196
+#: templates/word_detail.html:220
 msgid "More information about this word"
 msgstr "Lisätietoa tästä sanasta"
-
-#~ msgid "Unknown word:"
-#~ msgstr "Tuntematon sana:"
 
