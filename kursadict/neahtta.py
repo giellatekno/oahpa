@@ -176,6 +176,11 @@ def append_language_names_i18n(s):
     from language_names import NAMES
     return NAMES.get(s, s)
 
+@app.template_filter('to_xml_string')
+def to_xml_string(n):
+    from lxml import etree
+    return etree.tostring(n, pretty_print=True, encoding="utf-8").decode('utf-8')
+
 
 @app.template_filter('tagfilter')
 def tagfilter(s, lang_iso):
@@ -505,10 +510,18 @@ def wordDetail(from_language, to_language, wordform, format):
 
         analyses = [(l.lemma, l.pos, l.tag) for l in analyses]
 
+        try:
+            node_texts = [ to_xml_string(n.get('entries').get('node'))
+                           for n in lex_results
+                           if n.get('entries').get('node') ]
+        except:
+            node_texts = []
+
         detailed_result = {
             "input": wordform,
             "analyses": analyses,
             "lexicon": lex_results,
+            "node_texts": node_texts
         }
 
         # Generate each paradigm.

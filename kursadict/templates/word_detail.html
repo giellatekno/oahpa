@@ -146,6 +146,13 @@
         
     </div>
     {% endfor %}
+
+    <div id="xml-debug" class="debug-hidden" style="display: none;">
+        <h4>XML Entries</h4>
+        {% for node_text in result.node_texts %}
+        <pre><code>{{ node_text }}</code></pre>
+        {% endfor %}
+    </div>
     
     <style>
         /* Responsive tests
