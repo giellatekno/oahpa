@@ -22,7 +22,10 @@ Morphology:
   # TODO: file paths on gtoahpa
   SoMe:
     tool: *LOOKUP
-    file: [*GTHOME, "/gt/sme/bin/n-some-sme.fst"]
+    # NOTE: some-sme.fst is a copy of n-sme.fst, but compiled with the tag
+    # rewrites, but also with the norwegian-language format tags, otherwise
+    # there will be errors.
+    file: [*OPT, "/sme/bin/some-sme.fst"] 
     inverse_file: [*OPT, "/sme/bin/dict-isme-norm.fst"]
     format: 'xfst'
     options:
@@ -39,8 +42,8 @@ Morphology:
       inverse_tagsep: '+'
   sma:
     tool: *LOOKUP
-    file: [*GTHOME, '/langs/sma/src/analyser-gt-desc.xfst']
-    inverse_file: [*GTHOME, '/langs/sma/src/generator-gt-norm.xfst']
+    file: [*OPT, '/sma/bin/dict-sma.fst']
+    inverse_file: [*OPT, '/sma/bin/isma-dict.fst']
     format: 'xfst'
     options:
       derivationMarker: "+Der"
