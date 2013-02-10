@@ -319,6 +319,24 @@ jQuery(document).ready ($) ->
    #
    ## 
 
+  getNextHighestZindex = (obj) ->
+    highestIndex = 0
+    currentIndex = 0
+    elArray = Array()
+    if obj
+      elArray = obj.getElementsByTagName("*")
+    else
+      elArray = document.getElementsByTagName("*")
+    i = 0
+  
+    while i < elArray.length
+      if elArray[i].currentStyle
+        currentIndex = parseFloat(elArray[i].currentStyle["zIndex"])
+      else currentIndex = parseFloat(document.defaultView.getComputedStyle(elArray[i], null).getPropertyValue("z-index"))  if window.getComputedStyle
+      highestIndex = currentIndex  if not isNaN(currentIndex) and currentIndex > highestIndex
+      i++
+    highestIndex + 1
+  
   $.fn.selectToLookup = (opts) ->
     opts = $.extend {}, $.fn.selectToLookup.options, opts
     spinner = initSpinner(opts.spinnerImg)
@@ -328,6 +346,8 @@ jQuery(document).ready ($) ->
     if opts.displayOptions
       $(document).find('body').append Templates.OptionsTab(opts)
       window.optTab = $(document).find('#webdict_options')
+      ### Over 9000?!! ###
+      window.optTab.css('z-index', getNextHighestZindex() + 9000)
 
     # Recall stored language pair from session
     previous_langpair = DSt.get('digisanit-select-langpair')
