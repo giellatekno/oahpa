@@ -25,6 +25,12 @@ Blah blah.
 
 == Changelog ==
 
+= 0.1.0 = 
+
+* Using sanit.oahpa.no API
+* language select menu instead of radio buttons, too many languages :)
+* Help text translated in Norwegian for now, better localization on the way
+
 = 0.0.2 =
 
 Base JS updated, includes fixes for Windows, Mac browsers, overall better compatibility.

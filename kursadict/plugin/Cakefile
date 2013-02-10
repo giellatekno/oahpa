@@ -60,14 +60,14 @@ concat = (callback) ->
   fs.unlinkSync 'src/jquery.neahttadigisanit.js'
   compress()
 
-zipWordpress = (callback) ->
-  args = [
-    'zip'
-    'bin/wordpress/neahttadigisanit'
-    'bin/wordpress/neahttadigisanit/*'
-    'bin/wordpress/neahttadigisanit/img/*'
-  ]
-  exec args.join(' ')
+# zipWordpress = (callback) ->
+#   args = [
+#     'zip'
+#     'bin/wordpress/neahttadigisanit'
+#     'bin/wordpress/neahttadigisanit/*'
+#     'bin/wordpress/neahttadigisanit/img/*'
+#   ]
+#   exec args.join(' ')
 
 build = (callback) ->
   coffee = spawn 'coffee', ['--compile', '--bare', 'src/jquery.neahttadigisanit.coffee']
@@ -162,8 +162,8 @@ task 'build-chrome', 'Compile the chrome plugin', ->
 
 task 'build-wordpress', 'Compile the wordpress plugin', ->
   buildWordpress()
-  zipWordpress()
-  util.print "Everything now in bin/wordpress/\n, zipped version created."
+  # zipWordpress()
+  util.print "Everything now in bin/wordpress/\n, to install in WP, zip the files and upload"
 
 task 'build-bookmarklet', 'Compile the plugin and jQuery to be downloaded by a bookmarklet', ->
   buildBookmarklet()
