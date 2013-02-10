@@ -350,15 +350,15 @@ NUMLANGUAGE_CHOICES = (
 )
 
 SEMTYPE_CHOICES = (
-    ('HUMAN', _('Human')),
+    ('HUMAN', _('Humans')),
     ('SPACE', _('Space')),
     ('BODY', _('Body')),
     ('SENSE', _('Sense')),    
     ('HOUSE', _('House')),
     ('WORK', _('Work/Leisure')),
     ('TIME', _('Time')),
-    ('ZOO', _('Animal')),
-    ('BOT', _('Plant')),
+    ('ZOO', _('Animals')),
+    ('BOT', _('Plants')),
     ('FOOD', _('Food/Drink')),
     ('ENVIR', _('Nature')),
     ('all', _('All')),
