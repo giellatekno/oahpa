@@ -37,7 +37,7 @@ jQuery(document).ready ($) ->
         return options_block.join('\n')
     
       el = $("""
-      <div id="webdict_options" class="hidden">
+      <div id="webdict_options">
         <div class="well">
         <a class="close" href="#" style="display: none;">&times;</a>
         <div class="trigger">
@@ -332,11 +332,16 @@ jQuery(document).ready ($) ->
     while i < elArray.length
       if elArray[i].currentStyle
         currentIndex = parseFloat(elArray[i].currentStyle["zIndex"])
-      else currentIndex = parseFloat(document.defaultView.getComputedStyle(elArray[i], null).getPropertyValue("z-index"))  if window.getComputedStyle
-      highestIndex = currentIndex  if not isNaN(currentIndex) and currentIndex > highestIndex
+      else
+        if window.getComputedStyle
+          currentIndex = parseFloat(document.defaultView.getComputedStyle(elArray[i], null)
+                         .getPropertyValue("z-index"))
+      if not isNaN(currentIndex) and currentIndex > highestIndex
+        highestIndex = currentIndex
       i++
-    highestIndex + 1
+    return highestIndex + 1
   
+  window.getNextHighestZindex = getNextHighestZindex
   $.fn.selectToLookup = (opts) ->
     opts = $.extend {}, $.fn.selectToLookup.options, opts
     spinner = initSpinner(opts.spinnerImg)
