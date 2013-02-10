@@ -111,7 +111,7 @@ jQuery(document).ready ($) ->
     ErrorBar: (args) ->
       host = args.host
       el = $("""
-       <div class="errornav navbar-inverse navbar-fixed-bottom">
+       <div id="nds_errors" class="errornav navbar-inverse navbar-fixed-bottom">
          <div class="navbar-inner">
            <div class="container">
              <p><strong>Error!</strong> Could not connect to dictionary server (host: #{host}).
@@ -120,8 +120,8 @@ jQuery(document).ready ($) ->
          </div>
        </div>
        """)
-      el.find('.errornav .dismiss').click () ->
-        $(document).find('body .errornav').remove()
+      el.find('a.dismiss').click () ->
+        $('body .errornav').remove()
         return false
       return el
 
@@ -157,7 +157,7 @@ jQuery(document).ready ($) ->
     error: () =>
       $(document).find('body').find('.errornav').remove()
       $(document).find('body').append Templates.ErrorBar {
-        host: API_HOST
+        host: window.NDS_API_HOST || API_HOST
       }
 
   ##
