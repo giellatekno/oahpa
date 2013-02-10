@@ -41,6 +41,9 @@ Update to find new strings and automatically merge:
 
     pybabel update -i translations/messages.pot -d translations
 
+    * Note, you may need to regenerate messages.pot first in order for
+      new strings to be merged in
+
 Or, create some translations into different locales:
 
     pybabel init -i messages.pot -d translations -l no
