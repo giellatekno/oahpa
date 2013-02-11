@@ -115,6 +115,10 @@
                                 </a></li>
                                 {% block extra_nav %}
                                 {% endblock %}
+                                <li class="display-phone hidden-tablet hidden-desktop"><span>{% trans %}Interface language{% endtrans %}</span></li>
+                                <li class="display-phone hidden-tablet hidden-desktop"><a href="/locale/se/">{% trans %}North Sámi{% endtrans %}</a></li>
+                                <li class="display-phone hidden-tablet hidden-desktop"><a href="/locale/no/">{% trans %}Norwegian{% endtrans %}</a></li>
+                                <li class="display-phone hidden-tablet hidden-desktop"><a href="/locale/fi/">{% trans %}Finnish{% endtrans %}</a></li>
                             </ul>
                             {% include 'language_select.html' %}
                         </div>
