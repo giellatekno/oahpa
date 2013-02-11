@@ -631,7 +631,7 @@ TODO: prevent window url from updating with form submit params
 */
 
 jQuery(document).ready(function($) {
-  var API_HOST, Templates, cleanTooltipResponse, cloneContents, getFirstRange, getNextHighestZindex, initSpinner, lookupSelectEvent, surroundRange,
+  var API_HOST, Templates, cleanTooltipResponse, cloneContents, getFirstRange, initSpinner, lookupSelectEvent, surroundRange,
     _this = this;
   API_HOST = "http://sanit.oahpa.no/";
   Templates = {
@@ -681,7 +681,6 @@ jQuery(document).ready(function($) {
       el.find('select[name="language_pair"]').change(function(e) {
         var store_val;
         store_val = $(e.target).val();
-        console.log(store_val);
         DSt.set('digisanit-select-langpair', store_val);
         return true;
       });
@@ -757,9 +756,7 @@ jQuery(document).ready(function($) {
   };
   surroundRange = function(range, surrounder) {
     if (range) {
-      console.log("found a range");
       if (!range.canSurroundContents()) {
-        console.log("this error has occurred.");
         return false;
       }
       try {
@@ -827,7 +824,6 @@ jQuery(document).ready(function($) {
     if (result_strings.length === 0 || response.success === false) {
       if (opts.tooltip) {
         _tooltipTitle = 'Ukjent ord';
-        console.log(response.tags);
         result_strings.push("<span class='tags'><em>Du bruker " + current_pair_names + "</em></span>");
         if (response.tags.length > 0) {
           _tooltipTitle = 'Betydning ikke funnet';
@@ -880,7 +876,7 @@ jQuery(document).ready(function($) {
       lemmatize: true
     };
     url = "" + opts.api_host + "/lookup/" + source_lang + "/" + target_lang + "/";
-    return $.getJSON(url + '?callback=?', post_data, function(response) {
+    $.getJSON(url + '?callback=?', post_data, function(response) {
       var selection;
       selection = {
         string: string,
@@ -889,34 +885,8 @@ jQuery(document).ready(function($) {
       };
       return cleanTooltipResponse(selection, response, opts);
     });
+    return false;
   };
-  getNextHighestZindex = function(obj) {
-    var currentIndex, elArray, highestIndex, i;
-    highestIndex = 0;
-    currentIndex = 0;
-    elArray = Array();
-    if (obj) {
-      elArray = obj.getElementsByTagName("*");
-    } else {
-      elArray = document.getElementsByTagName("*");
-    }
-    i = 0;
-    while (i < elArray.length) {
-      if (elArray[i].currentStyle) {
-        currentIndex = parseFloat(elArray[i].currentStyle["zIndex"]);
-      } else {
-        if (window.getComputedStyle) {
-          currentIndex = parseFloat(document.defaultView.getComputedStyle(elArray[i], null).getPropertyValue("z-index"));
-        }
-      }
-      if (!isNaN(currentIndex) && currentIndex > highestIndex) {
-        highestIndex = currentIndex;
-      }
-      i++;
-    }
-    return highestIndex + 1;
-  };
-  window.getNextHighestZindex = getNextHighestZindex;
   $.fn.selectToLookup = function(opts) {
     var clean, holdingOption, previous_langpair, spinner, _opt, _select,
       _this = this;
@@ -928,12 +898,16 @@ jQuery(document).ready(function($) {
       /* Over 9000?!!
       */
 
-      window.optTab.css('z-index', getNextHighestZindex() + 9000);
+      window.optTab.css('z-index', 9000);
     }
     previous_langpair = DSt.get('digisanit-select-langpair');
     if (previous_langpair) {
       _select = "select[name='language_pair']";
       _opt = window.optTab.find(_select).val(previous_langpair);
+    } else {
+      _select = "select[name='language_pair']";
+      _opt = window.optTab.find(_select).val();
+      previous_langpair = DSt.set('digisanit-select-langpair', _opt);
     }
     holdingOption = function(evt) {
       var element, range, string;
@@ -947,6 +921,7 @@ jQuery(document).ready(function($) {
         }
         return false;
       }
+      return false;
     };
     clean = function(event) {
       var parents;
