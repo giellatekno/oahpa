@@ -618,7 +618,10 @@ def bookmarklet_example_page():
                                 .replace( 'bookmarklet.min.js'
                                         , 'bookmarklet.js'
                                         )
-    return render_template('reader_example.html', bookmarklet=bkmklt)
+    return render_template( 'reader_example.html'
+                          , bookmarklet_local=bkmklt
+                          , bookmarklet=bookmarklet_escaped
+                          )
 
 
 
