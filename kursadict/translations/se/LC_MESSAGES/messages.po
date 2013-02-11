@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-02-10 17:30-0600\n"
+"POT-Creation-Date: 2013-02-10 23:44-0600\n"
 "PO-Revision-Date: 2013-02-01 01:55-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: se <LL@li.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: language_names.py:9 templates/language_select.html:11
+#: language_names.py:9 templates/base.html:119
+#: templates/language_select.html:10
 msgid "North Sámi"
 msgstr "Davvisámegiella"
 
@@ -25,11 +26,13 @@ msgstr "Davvisámegiella"
 msgid "North Sámi (#SoMe)"
 msgstr "Davvisámegiella (#SoMe)"
 
-#: language_names.py:11 templates/language_select.html:13
+#: language_names.py:11 templates/base.html:121
+#: templates/language_select.html:12
 msgid "Finnish"
 msgstr "Suomagiella"
 
-#: language_names.py:12 templates/language_select.html:12
+#: language_names.py:12 templates/base.html:120
+#: templates/language_select.html:11
 msgid "Norwegian"
 msgstr "Dárogiella"
 
@@ -37,11 +40,11 @@ msgstr "Dárogiella"
 msgid "South Sámi"
 msgstr "Lullisámegiella"
 
-#: neahtta.py:354 templates/index.html:207
+#: neahtta.py:359 templates/index.html:207
 msgid " is a possible form of ... "
 msgstr " lea vejolaččat dán sáni hápmi:"
 
-#: neahtta.py:406
+#: neahtta.py:411
 msgid "Invalid format. Only json and html allowed."
 msgstr "Formáhta ii doaimma. Dušše json ja html doibmet."
 
@@ -53,19 +56,19 @@ msgstr ""
 "Vuoi! Siidu ii gávdno. Jus du mielas galggašii gávdnot, \"\n"
 "\"de dáhttut du váldit oktavuođa minguin."
 
-#: templates/about.html:67
+#: templates/about.html:71
 msgid "A dictionary that understands what you're looking for."
 msgstr "Sátnegirji mii ipmirda maid don leat ohcame."
 
-#: templates/about.html:68
+#: templates/about.html:72
 msgid "(... And is mobile-friendly!)"
 msgstr "(... ja doaibmá mobiilatelefovnnas!)"
 
-#: templates/about.html:72
+#: templates/about.html:76
 msgid "Free"
 msgstr "Nuvttá"
 
-#: templates/about.html:73
+#: templates/about.html:77
 msgid ""
 "Everything (or, well, almost everything) that\n"
 "                    concerns minority languages should be free. Here\n"
@@ -77,11 +80,11 @@ msgstr ""
 "                    Dás gávnnat nuvttá sátnegirjjiid, ja eará "
 "analyserenreaidduid."
 
-#: templates/about.html:79
+#: templates/about.html:83
 msgid "Open-Source"
 msgstr "Rabas gáldokoda"
 
-#: templates/about.html:80
+#: templates/about.html:84
 msgid ""
 "Everything here is based on open-source tools. Do you\n"
 "                have an idea for an app or research project that needs\n"
@@ -99,29 +102,29 @@ msgstr ""
 " sátnelisttuid,\n"
 "                fiillaid ja morfologalaš ja syntávssalaš analysáhtoriid."
 
-#: templates/about.html:88
+#: templates/about.html:92
 msgid "Linguistic basis"
 msgstr "Lingvisttalaš vuođđu"
 
-#: templates/about.html:89
+#: templates/about.html:93
 msgid ""
 "Write what you wish, and the dictionary will analyze it to break apart "
 "compound words and find base forms."
 msgstr "Čále maid háliidat, ja sátnegirji ohcá vuođđohámi."
 
-#: templates/about.html:95
+#: templates/about.html:99
 msgid "gå, dra, reise"
 msgstr "gå, dra, reise"
 
-#: templates/about.html:102
+#: templates/about.html:106
 msgid "Source material"
 msgstr "Gáldomateriálat"
 
-#: templates/about.html:109
+#: templates/about.html:113
 msgid "sme ↔ nob"
 msgstr "Davvisámegiella ↔ dárogiella"
 
-#: templates/about.html:110
+#: templates/about.html:114
 msgid ""
 "North Sámi → Norwegian builds on Nils Jernsletten's dictionary "
 "<em>Álgosátnegirji</em>, but here it has been more than doubled in "
@@ -130,7 +133,7 @@ msgstr ""
 "Davvisámi-dáru lea ráhkaduvvon Nils Jernslettena Álgosátnegirjji vuođul, "
 "muhto sátnevuorká lea duppalastojuvvon. "
 
-#: templates/about.html:111
+#: templates/about.html:115
 msgid ""
 "Norwegian → North Sámi is a converted version of North Sámi → Norwegian, "
 "but we have also revised the content and added frequent words from "
@@ -139,11 +142,11 @@ msgstr ""
 "Dáru-davvisámi lea Davvisámi-daru sátnegirjji speadjalaston veršuvdna "
 "masa mii leat lásihan dábálaš dárogiel sániid. "
 
-#: templates/about.html:114
+#: templates/about.html:118
 msgid "sma ↔ nob"
 msgstr "Lullisámegiella ↔ dárogiella"
 
-#: templates/about.html:115
+#: templates/about.html:119
 msgid ""
 "The dictionaries for South Sámi and Norwegian build on material prepared "
 "by Albert Jåma and Tove Brustad in the <a class=\"blue\" "
@@ -161,11 +164,11 @@ msgstr ""
 "href=\"http://aajege.no/\">Aajege</a> lasihan sániid barggadettiin "
 "lullisámi <a class=\"blue\" href=\"http://oahpa.no\">Oahpain</a>."
 
-#: templates/about.html:118
+#: templates/about.html:122
 msgid "sme ↔ fin"
 msgstr "Davvisámegiella ↔ suomagiella"
 
-#: templates/about.html:119
+#: templates/about.html:123
 msgid ""
 "Dictionaries for North Sámi and Finnish are based on lexical material "
 "from the <a class=\"green\" href=\"http://kotus.fi\">Institute for the "
@@ -181,11 +184,11 @@ msgstr ""
 "Helsingfors</a>. Mii leat maid lasihan dábálaš davvisámegiela ja "
 "erenoamážit suomagiela sániid. "
 
-#: templates/about.html:120
+#: templates/about.html:124
 msgid "Each of the dictionaries contains about 11,000 base words."
 msgstr "Juohke sátnegirjjis leat su. 11000 vuođđosáni. "
 
-#: templates/about.html:128
+#: templates/about.html:132
 msgid "More to come..."
 msgstr "Boahtá eanet..."
 
@@ -201,7 +204,11 @@ msgstr "Lohkanveahkki"
 msgid "About"
 msgstr "Min birra"
 
-#: templates/base.html:186
+#: templates/base.html:118
+msgid "Interface language"
+msgstr ""
+
+#: templates/base.html:181
 msgid ""
 "Created with free and open-source language tools from <em><a "
 "href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, a Sámi Language "
@@ -257,7 +264,7 @@ msgstr ""
 "acdnstz\n"
 "                                dohkkehuvvojit maiddái áčđŋšŧž:n."
 
-#: templates/language_select.html:8
+#: templates/language_select.html:6
 msgid "Language"
 msgstr "Giella"
 

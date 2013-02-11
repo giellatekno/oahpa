@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-02-10 17:30-0600\n"
+"POT-Creation-Date: 2013-02-10 23:44-0600\n"
 "PO-Revision-Date: 2013-02-01 01:55-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fi <LL@li.org>\n"
@@ -17,7 +17,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: language_names.py:9 templates/language_select.html:11
+#: language_names.py:9 templates/base.html:119
+#: templates/language_select.html:10
 msgid "North Sámi"
 msgstr "pohjoissaame"
 
@@ -25,11 +26,13 @@ msgstr "pohjoissaame"
 msgid "North Sámi (#SoMe)"
 msgstr "pohjoissaame (#SoMe)"
 
-#: language_names.py:11 templates/language_select.html:13
+#: language_names.py:11 templates/base.html:121
+#: templates/language_select.html:12
 msgid "Finnish"
 msgstr "suomi"
 
-#: language_names.py:12 templates/language_select.html:12
+#: language_names.py:12 templates/base.html:120
+#: templates/language_select.html:11
 msgid "Norwegian"
 msgstr "norja"
 
@@ -37,11 +40,11 @@ msgstr "norja"
 msgid "South Sámi"
 msgstr "eteläsaame"
 
-#: neahtta.py:354 templates/index.html:207
+#: neahtta.py:359 templates/index.html:207
 msgid " is a possible form of ... "
 msgstr " on mahdollinen muoto sanasta ... "
 
-#: neahtta.py:406
+#: neahtta.py:411
 msgid "Invalid format. Only json and html allowed."
 msgstr "Kelvoton muoto. Hyväksytään vain json ja html"
 
@@ -53,19 +56,19 @@ msgstr ""
 "Oho! Etsimääsi sivua ei löytynyt. Jos olet sitä mieltä, että sivun olisi "
 "pitänyt löytyä, ota yhteyttä meihin."
 
-#: templates/about.html:67
+#: templates/about.html:71
 msgid "A dictionary that understands what you're looking for."
 msgstr "Sanakirja, joka ymmärtää, mitä etsit."
 
-#: templates/about.html:68
+#: templates/about.html:72
 msgid "(... And is mobile-friendly!)"
 msgstr "(... Ja on kännykkä-ystävällinen!)"
 
-#: templates/about.html:72
+#: templates/about.html:76
 msgid "Free"
 msgstr "Ilmainen"
 
-#: templates/about.html:73
+#: templates/about.html:77
 msgid ""
 "Everything (or, well, almost everything) that\n"
 "                    concerns minority languages should be free. Here\n"
@@ -77,11 +80,11 @@ msgstr ""
 "Tästä löydät vapaat ja ilmaiset sanakirjat, ja\n"
 "muita analyysityökaluja."
 
-#: templates/about.html:79
+#: templates/about.html:83
 msgid "Open-Source"
 msgstr "Avoin lähdekoodi"
 
-#: templates/about.html:80
+#: templates/about.html:84
 msgid ""
 "Everything here is based on open-source tools. Do you\n"
 "                have an idea for an app or research project that needs\n"
@@ -98,11 +101,11 @@ msgstr ""
 "kotisivulta löydät tietoja sanalistojen ja morfologisten\n"
 "ja syntaktisten analysaattorien käytöstä."
 
-#: templates/about.html:88
+#: templates/about.html:92
 msgid "Linguistic basis"
 msgstr "Lingvistinen perusta"
 
-#: templates/about.html:89
+#: templates/about.html:93
 msgid ""
 "Write what you wish, and the dictionary will analyze it to break apart "
 "compound words and find base forms."
@@ -110,19 +113,19 @@ msgstr ""
 "Kirjoita haluamasi sana, ja sanakirja analysoi sitä ja jakaa\n"
 "mahdolliset yhdyssanat osiinsa."
 
-#: templates/about.html:95
+#: templates/about.html:99
 msgid "gå, dra, reise"
 msgstr "mennä, lähteä"
 
-#: templates/about.html:102
+#: templates/about.html:106
 msgid "Source material"
 msgstr "Lähdemateriaalia"
 
-#: templates/about.html:109
+#: templates/about.html:113
 msgid "sme ↔ nob"
 msgstr "Pohjoissaame ↔ norja"
 
-#: templates/about.html:110
+#: templates/about.html:114
 msgid ""
 "North Sámi → Norwegian builds on Nils Jernsletten's dictionary "
 "<em>Álgosátnegirji</em>, but here it has been more than doubled in "
@@ -131,7 +134,7 @@ msgstr ""
 "Pohjoissaame → norja perustuu Nils Jernslettenin sanakirjaan "
 "<em>Álgosátnegirji</em>, mutta sisältä on kaksinkertaistettu."
 
-#: templates/about.html:111
+#: templates/about.html:115
 msgid ""
 "Norwegian → North Sámi is a converted version of North Sámi → Norwegian, "
 "but we have also revised the content and added frequent words from "
@@ -142,11 +145,11 @@ msgstr ""
 "sanoja. Sanakirja tunnistaa myös tavallisimmat nykynorjan sanat ja "
 "taivutusmuodot."
 
-#: templates/about.html:114
+#: templates/about.html:118
 msgid "sma ↔ nob"
 msgstr "Eteläsaame ↔ norja"
 
-#: templates/about.html:115
+#: templates/about.html:119
 msgid ""
 "The dictionaries for South Sámi and Norwegian build on material prepared "
 "by Albert Jåma and Tove Brustad in the <a class=\"blue\" "
@@ -164,11 +167,11 @@ msgstr ""
 " href=\"http://aajege.no/\">Aajegen</a> työstä eteläsaamen <a "
 "class=\"blue\" href=\"http://oahpa.no\">Oahpan</a> parissa."
 
-#: templates/about.html:118
+#: templates/about.html:122
 msgid "sme ↔ fin"
 msgstr "Pohjoissaame ↔ suomi"
 
-#: templates/about.html:119
+#: templates/about.html:123
 msgid ""
 "Dictionaries for North Sámi and Finnish are based on lexical material "
 "from the <a class=\"green\" href=\"http://kotus.fi\">Institute for the "
@@ -184,11 +187,11 @@ msgstr ""
 "href=\"http://oahpa.no\">Oahpan</a> parissa. Sen lisäksi olemme lisännet "
 "tavallisia suomenkielisiä sanoja. "
 
-#: templates/about.html:120
+#: templates/about.html:124
 msgid "Each of the dictionaries contains about 11,000 base words."
 msgstr "Jokainen sanakirja sisältaa n. 11000 hakusanaa. "
 
-#: templates/about.html:128
+#: templates/about.html:132
 msgid "More to come..."
 msgstr "Lisää tulossa..."
 
@@ -204,7 +207,11 @@ msgstr "Laajennuksia"
 msgid "About"
 msgstr "Meistä"
 
-#: templates/base.html:186
+#: templates/base.html:118
+msgid "Interface language"
+msgstr ""
+
+#: templates/base.html:181
 msgid ""
 "Created with free and open-source language tools from <em><a "
 "href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, a Sámi Language "
@@ -261,7 +268,7 @@ msgstr ""
 "kirjaimet acdnstz hyväksytään kirjainten\n"
 " áčđŋšŧž versioina, tavallisen tulkintansa lisäksi."
 
-#: templates/language_select.html:8
+#: templates/language_select.html:6
 msgid "Language"
 msgstr "Kieli"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-02-10 17:30-0600\n"
+"POT-Creation-Date: 2013-02-10 23:44-0600\n"
 "PO-Revision-Date: 2013-02-01 01:54-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: sma <LL@li.org>\n"
@@ -18,7 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: language_names.py:9 templates/language_select.html:11
+#: language_names.py:9 templates/base.html:119
+#: templates/language_select.html:10
 msgid "North Sámi"
 msgstr ""
 
@@ -26,11 +27,13 @@ msgstr ""
 msgid "North Sámi (#SoMe)"
 msgstr ""
 
-#: language_names.py:11 templates/language_select.html:13
+#: language_names.py:11 templates/base.html:121
+#: templates/language_select.html:12
 msgid "Finnish"
 msgstr ""
 
-#: language_names.py:12 templates/language_select.html:12
+#: language_names.py:12 templates/base.html:120
+#: templates/language_select.html:11
 msgid "Norwegian"
 msgstr ""
 
@@ -38,11 +41,11 @@ msgstr ""
 msgid "South Sámi"
 msgstr ""
 
-#: neahtta.py:354 templates/index.html:207
+#: neahtta.py:359 templates/index.html:207
 msgid " is a possible form of ... "
 msgstr ""
 
-#: neahtta.py:406
+#: neahtta.py:411
 msgid "Invalid format. Only json and html allowed."
 msgstr ""
 
@@ -52,19 +55,19 @@ msgid ""
 "receiving this in error, please contact us."
 msgstr ""
 
-#: templates/about.html:67
+#: templates/about.html:71
 msgid "A dictionary that understands what you're looking for."
 msgstr ""
 
-#: templates/about.html:68
+#: templates/about.html:72
 msgid "(... And is mobile-friendly!)"
 msgstr ""
 
-#: templates/about.html:72
+#: templates/about.html:76
 msgid "Free"
 msgstr ""
 
-#: templates/about.html:73
+#: templates/about.html:77
 msgid ""
 "Everything (or, well, almost everything) that\n"
 "                    concerns minority languages should be free. Here\n"
@@ -72,11 +75,11 @@ msgid ""
 "                    tools."
 msgstr ""
 
-#: templates/about.html:79
+#: templates/about.html:83
 msgid "Open-Source"
 msgstr ""
 
-#: templates/about.html:80
+#: templates/about.html:84
 msgid ""
 "Everything here is based on open-source tools. Do you\n"
 "                have an idea for an app or research project that needs\n"
@@ -87,47 +90,47 @@ msgid ""
 "                files, and morphological and syntactic analyzers."
 msgstr ""
 
-#: templates/about.html:88
+#: templates/about.html:92
 msgid "Linguistic basis"
 msgstr ""
 
-#: templates/about.html:89
+#: templates/about.html:93
 msgid ""
 "Write what you wish, and the dictionary will analyze it to break apart "
 "compound words and find base forms."
 msgstr ""
 
-#: templates/about.html:95
+#: templates/about.html:99
 msgid "gå, dra, reise"
 msgstr ""
 
-#: templates/about.html:102
+#: templates/about.html:106
 msgid "Source material"
 msgstr ""
 
-#: templates/about.html:109
+#: templates/about.html:113
 msgid "sme ↔ nob"
 msgstr ""
 
-#: templates/about.html:110
+#: templates/about.html:114
 msgid ""
 "North Sámi → Norwegian builds on Nils Jernsletten's dictionary "
 "<em>Álgosátnegirji</em>, but here it has been more than doubled in "
 "content."
 msgstr ""
 
-#: templates/about.html:111
+#: templates/about.html:115
 msgid ""
 "Norwegian → North Sámi is a converted version of North Sámi → Norwegian, "
 "but we have also revised the content and added frequent words from "
 "Norwegian."
 msgstr ""
 
-#: templates/about.html:114
+#: templates/about.html:118
 msgid "sma ↔ nob"
 msgstr ""
 
-#: templates/about.html:115
+#: templates/about.html:119
 msgid ""
 "The dictionaries for South Sámi and Norwegian build on material prepared "
 "by Albert Jåma and Tove Brustad in the <a class=\"blue\" "
@@ -138,11 +141,11 @@ msgid ""
 "class=\"blue\" href=\"http://oahpa.no\">Oahpa</a>."
 msgstr ""
 
-#: templates/about.html:118
+#: templates/about.html:122
 msgid "sme ↔ fin"
 msgstr ""
 
-#: templates/about.html:119
+#: templates/about.html:123
 msgid ""
 "Dictionaries for North Sámi and Finnish are based on lexical material "
 "from the <a class=\"green\" href=\"http://kotus.fi\">Institute for the "
@@ -152,11 +155,11 @@ msgid ""
 "Finnish."
 msgstr ""
 
-#: templates/about.html:120
+#: templates/about.html:124
 msgid "Each of the dictionaries contains about 11,000 base words."
 msgstr ""
 
-#: templates/about.html:128
+#: templates/about.html:132
 msgid "More to come..."
 msgstr ""
 
@@ -172,7 +175,11 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: templates/base.html:186
+#: templates/base.html:118
+msgid "Interface language"
+msgstr ""
+
+#: templates/base.html:181
 msgid ""
 "Created with free and open-source language tools from <em><a "
 "href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, a Sámi Language "
@@ -221,7 +228,7 @@ msgid ""
 "to their usual values."
 msgstr ""
 
-#: templates/language_select.html:8
+#: templates/language_select.html:6
 msgid "Language"
 msgstr ""
 
