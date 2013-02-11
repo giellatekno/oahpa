@@ -179,7 +179,12 @@ def append_language_names_i18n(s):
 @app.template_filter('to_xml_string')
 def to_xml_string(n):
     from lxml import etree
-    return etree.tostring(n, pretty_print=True, encoding="utf-8").decode('utf-8')
+    if 'entries' in n:
+        if 'node' in n.get('entries'):
+            node = n['entries']['node']
+            _str = etree.tostring(node, pretty_print=True, encoding="utf-8")
+            return _str.decode('utf-8')
+    return ''
 
 
 @app.template_filter('tagfilter')
@@ -511,9 +516,7 @@ def wordDetail(from_language, to_language, wordform, format):
         analyses = [(l.lemma, l.pos, l.tag) for l in analyses]
 
         try:
-            node_texts = [ to_xml_string(n.get('entries').get('node'))
-                           for n in lex_results
-                           if n.get('entries').get('node') ]
+            node_texts = map(to_xml_string, lex_results)
         except:
             node_texts = []
 

@@ -248,8 +248,6 @@ def verb_context(generated_result, *generation_input_args):
                 formatted.append(f)
             formatted_forms = formatted
         else:
-            print "* No context rule specified for %s and %s" % (context, tag)
-            print "  but context exists in node."
             formatted_forms = forms
 
         tag = tag.split('+')
