@@ -323,12 +323,12 @@ POSSESSIVE_GROUP2_CASE = (
 )
 
 POSSESSIVE_GROUP3_CASE = (
+    ('N-NOM', _('nominative')),
 	('N-ACC', _('accusative')),
 	('N-ILL', _('illative')),
 	('N-LOC', _('locative')),
 	('N-COM', _('comitative')),
 	('N-GEN', _('genitive')),
-	('N-NOM', _('nominative')),
 )
 
 POSSESSIVE_CONTEXT_CHOICES = (
