@@ -156,7 +156,7 @@ a.brand {
     color: #800 !important;
 }
 
-.main-nav .nav li a {
+.main-nav > .nav > li > a {
     color: #3A3;
     font-weight: light;
 }
@@ -210,13 +210,6 @@ div.button-padding {
 	font-style: italic;
 }
 
-#i18n_translations {
-    padding-top: 2em; 
-}
-
-#i18n_translations .dropdown-menu {
-    margin-left: -6.5em;
-}
 ul.unknown_lexemes {
 	list-style: circle;
 }
@@ -255,6 +248,9 @@ ul.unknown_lexemes {
 
 /* Mobile-specific tweaks */
 @media (max-width: 550px) {
+    #i18n_translations {
+        float: left;
+    }
     #keyboard {
         display: none;
     }
