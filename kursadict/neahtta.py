@@ -609,6 +609,18 @@ def bookmarklet_debug():
                                         )
     return render_template('reader.html', bookmarklet=bkmklt)
 
+@app.route('/read/example/', methods=['GET'])
+def bookmarklet_example_page():
+    from bookmarklet_code import bookmarklet_escaped
+    bkmklt = bookmarklet_escaped.replace( 'sanit.oahpa.no'
+                                        , 'localhost%3A5000'
+                                        )\
+                                .replace( 'bookmarklet.min.js'
+                                        , 'bookmarklet.js'
+                                        )
+    return render_template('reader_example.html', bookmarklet=bkmklt)
+
+
 
 @app.route('/read/', methods=['GET'])
 def bookmarklet():
