@@ -343,7 +343,6 @@ class BareGame(Game):
 		'NOMPL': 'Nom', 
 		'ATTR': 'Attr',
 		'PRED': 'Pred', 
-		#'N-NOM': 'Nom',
 		'N-ILL': 'Ill', 
 		'N-ESS': 'Ess', 
 		'N-GEN': 'Gen',
@@ -358,9 +357,9 @@ class BareGame(Game):
 		'CARD': '', # CARD, ORD, COLL added for implementing num_type choice
 		'ORD': 'A+Ord',
 		'COLL': 'N+Coll',
-		'N-PX-GROUP1': 'Acc', # TODO: populate case in similar way to pronouns 
-		'N-PX-GROUP2': 'Nom', # TODO: populate case in similar way to pronouns 
-		'N-PX-GROUP3': 'Acc', # TODO: populate case in similar way to pronouns 
+		'N-PX-GROUP1': 'Nom', # TODO: populate case in similar way to pronouns 
+		'N-PX-GROUP2': 'Acc', # was: Nom TODO: populate case in similar way to pronouns 
+		'N-PX-GROUP3': 'Nom', # TODO: populate case in similar way to pronouns 
 		'A-DER-V': 'A+Der/AV+V',
 		'V-DER-PASS': '',
 		'': '',
@@ -541,7 +540,8 @@ class BareGame(Game):
 			"Der": derivation_type,
 			"Px": possessive_type,  # possessive_type is about semtypes (family, other, all)
 		}
-		
+
+		logfile = open('/home/univ_oahpa/univ_oahpa/univ_drill/morfas_log.txt', 'w')
 		semtypes = False  # needed for Px
 		sylls = []
 		bisyl = ['2syll', 'bisyllabic']
@@ -673,20 +673,19 @@ class BareGame(Game):
 			)
 			semtypes = POSSESSIVE_CHOICE_SEMTYPES[possessive_type]
 			p_type = possessive_types[possessive_type]
+			if 'PXPROPERTY' not in semtypes:
+				possessive_number = 'N-SG'
 			if possessive_number == 'N-SG':
-				#number = ['Sg']
-				p_type = [a for a in p_type if 'PxSg' in a]
+				if case == 'Nom':
+					p_type = [a for a in p_type if 'PxSg1' in a or 'PxSg2' in a]  # there are no forms in the database with case='Nom' and possessive='PxSg3'
+				else:
+					p_type = [a for a in p_type if 'PxSg' in a]
 			elif possessive_number == 'N-DU':
 				p_type = [a for a in p_type if 'PxDu' in a]
 		        else:
 				p_type = [a for a in p_type if 'PxPl' in a]
-				#number = ['Pl']
-				#p_type = [a for a in p_type if 'PxDu' in a or 'PxPl' in a]
-			TAG_QUERY = Q(string__in=p_type) # , number__in=number)
-			if 'PXPROPERTY' in semtypes or case == 'Nom':
-				number = ['Sg','Pl','']
-			else:
-				number = ['Sg']
+			
+			TAG_QUERY = Q(string__in=p_type)
 			
 			TAG_EXCLUDES = False
 			sylls = False
@@ -741,6 +740,7 @@ class BareGame(Game):
 						Q(number__in=number)
 		if pos == 'Px':
 			TAG_QUERY = TAG_QUERY & Q(case=case)
+			logfile.write(pos+" "+case+" ")
 		
 		# filter can include several queries, exclude must have only one
 		# to work successfully
@@ -800,7 +800,7 @@ class BareGame(Game):
 		There are no Words, Tags or Forms, or the query
 		is not returning any."""
 		NoWordsFound = Http404(error)
-		
+
 		# settings dialect?
 		if self.settings.has_key('dialect'):
 			UI_Dialect = self.settings['dialect']
@@ -809,9 +809,10 @@ class BareGame(Game):
 
 		try:
 			tag = tags.order_by('?')[0]
+			logfile.write(tag.string)
 			no_form = True
 			count = 0
-			while no_form and count < 10:
+			while no_form and count < 10: 
 
 				# Pronouns are a bit different, so we need to resort the tags
 				if tag.pos == 'Pron':
@@ -824,8 +825,7 @@ class BareGame(Game):
 					random_word = random_word.filter(word__semtype__semtype="MORFAS")
 
 				if tag.pos == 'Pron':
-					random_word = random_word\
-									.exclude(word__stem='nubbi')
+					random_word = random_word.exclude(word__stem='nubbi')
 				if sylls:
 					random_word = random_word.filter(word__stem__in=sylls)
 				if source:
@@ -841,16 +841,19 @@ class BareGame(Game):
 				if random_word.count() > 0:
 					random_form = random_word.order_by('?')[0]
 					random_word = random_form.word
+					logfile.write(random_word.lemma)
 					no_form = False
 					break
 				elif random_word.count() == 1:
 					random_form = random_word[0]
 					random_word = random_form.word
+					logfile.write(random_word.lemma)
 					break
 				else:
 					count += 1
 					continue
 
+			#logfile.write(random_word.lemma) # for debugging - why we get 'QuerySet' object has no attribute 'id' ?
 			db_info['word_id'] = random_word.id
 			db_info['tag_id'] = tag.id
 			if tag.string.lower().find('conneg') > -1:
@@ -1012,9 +1015,9 @@ class BareGame(Game):
 			presentation = presentation.filter(tag__string__contains='PassL')
 
 		# TODO: Px
-		if pos == 'Px':
-			print 'presentation'
-			print presentation
+		#if pos == 'Px':
+		#	print 'presentation'
+		#	print presentation
 		
 		# Unless there aren't any ... 
 		if presentation.count() == 0:
