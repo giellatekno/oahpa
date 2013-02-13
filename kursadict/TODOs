@@ -1,44 +1,30 @@
 
-## Before launch completed, notes
 
- * \#SoME-nob  - works with what was currently checked in, returning variants
-   for manna (mannat, mánná, maŋŋá) fair amount of "hacks" in place, e.g., this
-   is not completely a product of things in the config file, thus a few
-   rewrites are necessary to make it so later, but this should be ready for
-   launch as is.
+## Critical
 
- * SoMe-nob, SoMe-fin in menu of plugin
+ * do not analyze if miniparadigm exists, e.g., searching for munnje 
+   results in mun, but we only want to see munnje.
 
- * on gtoahpa: couldn't find updated \#SoME FST, so compiled in neahtta home dir
+ * vise miniparadigmene fra de statiske filene 
+   - sjekk at alle pos er med
 
- * most updates implemented on gtoahpa now, just for testing
-
- * new text on about page, some strings to translate yet
-
- * switch over bookmarklet to using sanit instead of digitesting, also test to
-  see that this is where requests really are going.
-
- * languages translated, but use dictionary list in config to populate list.
-
-
-## Before launch
-
- * compile translation strings
- * check for new translation tags
- * compile dictionaries, fsts
- * analytics
+ * Link til read i selve ordbok-grensesnittet -- kor?
+   -- "Vil du ha oversatt ord i en tekst?" 
+   -- "Háliidatgo jorgalahttit sániid teavsttas?"
+   -- "Haluatko käännöksen tekstissä esiintyvään sanaan?"
 
  * TODO: go through configuration locations and make sure that all in opt is updated
 
 nice to have:
 
- * plugin localization -- copied norwegian for now.
- * rebuild wordpress plugin, install on kursa 
+ * footer links to divvun, oahpa, kursa, giellatekno
 
  * Tag part translation/localization: v. Ind Prs Pl3 -> definitions in all languages
    - main/gt/common/src/tag-no.regex
 
  * autocomplete SoMe variant so people don't have to type in whatever, but include multiple options as potential menu selections.
+
+ * SoMe means xml file is parsed twice, fix
 
 ## Next:
 
@@ -75,12 +61,19 @@ nice to have:
 
  -- 
 
+ * Version numbers for bookmarklet source, and bookmarklet, need means of
+   alerting people to grab a new copy, and what version is in use for debugging.
+
  * Once all this is together, optimize memory usage, with specific
    attention to gtlab / gtoahpa, may be a better way to have multiple
    threads/greenlets/etc running while parsing trees into only one
    thread.
 
 ## Would be nice
+
+ * ping google with sitemap 
+    http://en.wikipedia.org/wiki/Sitemaps
+    http://support.google.com/webmasters/bin/answer.py?hl=en&answer=183669
 
  * Easier means of keeping track of updating FST and lexicon
    dependencies from svn? or at least checking in svn if there are
