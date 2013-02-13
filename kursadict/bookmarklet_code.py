@@ -54,3 +54,7 @@ bookmarklet_escaped = """(function()%7Bvar%20e%3D%22http%3A%2F%2Fsanit.oahpa.no%
 
 bookmarklet_escaped = """(function()%7Bvar%20e%3D%22http%3A%2F%2Fsanit.oahpa.no%22%3Bvar%20t%3Ddocument.createElement(%22link%22)%3Bt.href%3De%2B%22%2Fstatic%2Fcss%2Fjquery.neahttadigisanit.css%22%3Bt.rel%3D%22stylesheet%22%3Bvar%20n%3Ddocument.createElement(%22script%22)%3Bn.type%3D%22text%2Fjavascript%22%3Bn.src%3De%2B%22%2Fstatic%2Fjs%2Fbookmarklet.min.js%22%3Bwindow.NDS_API_HOST%3De%3Bif(window.location.hostname%3D%3D%22skuvla.info%22%26%26window.frames.length%3E0)%7Bvar%20r%3Br%3Dwindow.frames%5B1%5D%3Br.window.NDS_API_HOST%3Dwindow.NDS_API_HOST%3Br.document.getElementsByTagName(%22head%22)%5B0%5D.appendChild(t)%3Br.document.getElementsByTagName(%22body%22)%5B0%5D.appendChild(n)%7Delse%7Bdocument.getElementsByTagName(%22head%22)%5B0%5D.appendChild(t)%3Bdocument.getElementsByTagName(%22body%22)%5B0%5D.appendChild(n)%7D%7D)()"""
 
+prod_host = "sanit.oahpa.no"
+demo_host = "localhost%3A5000"
+
+
