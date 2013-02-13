@@ -96,7 +96,6 @@ jQuery(document).ready ($) ->
 
       el.find('select[name="language_pair"]').change (e) ->
         store_val = $(e.target).val()
-        console.log store_val
         DSt.set('digisanit-select-langpair', store_val)
         return true
 
@@ -173,9 +172,7 @@ jQuery(document).ready ($) ->
   
   surroundRange = (range, surrounder) ->
     if range
-      console.log "found a range"
       if not range.canSurroundContents()
-        console.log "this error has occurred."
         # TODO: should be possible to recover from this sometimes, as
         # non-FF browsers do not have this issue
         return false
@@ -240,7 +237,6 @@ jQuery(document).ready ($) ->
     if result_strings.length == 0 or response.success == false
       if opts.tooltip
         _tooltipTitle = 'Ukjent ord'
-        console.log response.tags
         result_strings.push("<span class='tags'><em>Du bruker #{current_pair_names}</em></span>")
         if response.tags.length > 0
           _tooltipTitle = 'Betydning ikke funnet'
@@ -310,6 +306,7 @@ jQuery(document).ready ($) ->
         }
         cleanTooltipResponse(selection, response, opts)
     )
+    return false
 
 
 
@@ -319,29 +316,30 @@ jQuery(document).ready ($) ->
    #
    ## 
 
-  getNextHighestZindex = (obj) ->
-    highestIndex = 0
-    currentIndex = 0
-    elArray = Array()
-    if obj
-      elArray = obj.getElementsByTagName("*")
-    else
-      elArray = document.getElementsByTagName("*")
-    i = 0
-  
-    while i < elArray.length
-      if elArray[i].currentStyle
-        currentIndex = parseFloat(elArray[i].currentStyle["zIndex"])
-      else
-        if window.getComputedStyle
-          currentIndex = parseFloat(document.defaultView.getComputedStyle(elArray[i], null)
-                         .getPropertyValue("z-index"))
-      if not isNaN(currentIndex) and currentIndex > highestIndex
-        highestIndex = currentIndex
-      i++
-    return highestIndex + 1
-  
-  window.getNextHighestZindex = getNextHighestZindex
+  # getNextHighestZindex = (obj) ->
+  #   highestIndex = 0
+  #   currentIndex = 0
+  #   elArray = Array()
+  #   if obj
+  #     elArray = obj.getElementsByTagName("*")
+  #   else
+  #     elArray = document.getElementsByTagName("*")
+  #   i = 0
+  # 
+  #   while i < elArray.length
+  #     if elArray[i].currentStyle
+  #       currentIndex = parseFloat(elArray[i].currentStyle["zIndex"])
+  #     else
+  #       if window.getComputedStyle
+  #         currentIndex = parseFloat(document.defaultView.getComputedStyle(elArray[i], null)
+  #                        .getPropertyValue("z-index"))
+  #     if not isNaN(currentIndex) and currentIndex > highestIndex
+  #       highestIndex = currentIndex
+  #     i++
+  #   return highestIndex + 1
+  # 
+  # window.getNextHighestZindex = getNextHighestZindex
+
   $.fn.selectToLookup = (opts) ->
     opts = $.extend {}, $.fn.selectToLookup.options, opts
     spinner = initSpinner(opts.spinnerImg)
@@ -352,13 +350,18 @@ jQuery(document).ready ($) ->
       $(document).find('body').append Templates.OptionsTab(opts)
       window.optTab = $(document).find('#webdict_options')
       ### Over 9000?!! ###
-      window.optTab.css('z-index', getNextHighestZindex() + 9000)
+      # window.optTab.css('z-index', getNextHighestZindex() + 9000)
+      window.optTab.css('z-index', 9000)
 
     # Recall stored language pair from session
     previous_langpair = DSt.get('digisanit-select-langpair')
     if previous_langpair
       _select = "select[name='language_pair']"
       _opt = window.optTab.find(_select).val(previous_langpair)
+    else
+      _select = "select[name='language_pair']"
+      _opt = window.optTab.find(_select).val()
+      previous_langpair = DSt.set('digisanit-select-langpair', _opt)
     
     holdingOption = (evt) =>
       clean(evt)
@@ -370,6 +373,7 @@ jQuery(document).ready ($) ->
         if range and string
           lookupSelectEvent(evt, string, element, range, opts)
         return false
+      return false
 
       # TODO: one idea for how to handle lookups wtihout alt/option key
       #
