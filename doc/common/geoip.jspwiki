@@ -69,7 +69,7 @@ Add the context processor to add country to user session info
 
 !! Potential problems
 
-!!! request.META has no 'REMOTE_ADDR', or 'HTTP_X_REAL_IP'
+!!! request.META has no REMOTE_ADDR, or HTTP_X_REAL_IP
 
 Check that nginx is passing this in the fastcgi configuration, if not, add
 
