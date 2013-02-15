@@ -58,7 +58,7 @@ def some_pos_to_fst(*args, **kwargs):
         if new_pos:
             kwargs['pos'] = new_pos
         else:
-            morph_log.error("Missing LEX_TO_FST pair for %s" % _k)
+            morph_log.error("Missing LEX_TO_FST pair for %s" % _k.encode('utf-8'))
             morph_log.error("in morphology.morphological_definitions.sme")
     return args, kwargs
 
