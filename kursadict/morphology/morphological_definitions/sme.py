@@ -6,6 +6,8 @@
 # * paradigm documentation here:
 #   http://giellatekno.uit.no/doc/dicts/dictionarywork.html
 
+from logging import getLogger
+
 from morphology import generation_overrides as rewrites
 from lexicon import lexicon_overrides as lexicon
 
@@ -32,6 +34,8 @@ LEX_TO_FST = {
     'verb': 'V',
 }
 
+morph_log = getLogger('morphology')
+
 # This is called before any lookup is done, regardless of whether it
 # came from analysis or not.
 @lexicon.pre_lookup_tag_rewrite_for_iso('sme')
@@ -42,8 +46,8 @@ def pos_to_fst(*args, **kwargs):
         if new_pos:
             kwargs['pos'] = new_pos
         else:
-            print "Missing LEX_TO_FST pair for %s" % _k
-            print "in morphology.morphological_definitions.sme"
+            morph_log.error("Missing LEX_TO_FST pair for %s" % _k.encode('utf-8'))
+            morph_log.error("in morphology.morphological_definitions.sme")
     return args, kwargs
 
 @lexicon.pre_lookup_tag_rewrite_for_iso('SoMe')
@@ -54,8 +58,8 @@ def some_pos_to_fst(*args, **kwargs):
         if new_pos:
             kwargs['pos'] = new_pos
         else:
-            print "Missing LEX_TO_FST pair for %s" % _k
-            print "in morphology.morphological_definitions.sme"
+            morph_log.error("Missing LEX_TO_FST pair for %s" % _k)
+            morph_log.error("in morphology.morphological_definitions.sme")
     return args, kwargs
 
 # TODO: may no longer need to remove elements from tags now that those

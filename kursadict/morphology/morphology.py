@@ -618,7 +618,7 @@ class Morphology(object):
 
         import logging
         logfile = logging.FileHandler('morph_log.txt')
-        self.logger = logging.Logger('morphology', level=0)
+        self.logger = logging.getLogger('morphology')
         self.logger.setLevel(logging.ERROR)
         self.logger.addHandler(logfile)
 
