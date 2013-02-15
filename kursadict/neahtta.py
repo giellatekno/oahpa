@@ -598,6 +598,10 @@ def wordDetail(from_language, to_language, wordform, format):
                               , zip=zipNoTruncate
                               )
 
+@app.route('/read/ie8_instructions/', methods=['GET'])
+def ie8_instrux():
+    return render_template('reader_ie8_notice.html')
+
 @app.route('/read/debug/', methods=['GET'])
 def bookmarklet_debug():
     from bookmarklet_code import bookmarklet_escaped
@@ -622,8 +626,6 @@ def bookmarklet_example_page():
                           , bookmarklet_local=bkmklt
                           , bookmarklet=bookmarklet_escaped
                           )
-
-
 
 @app.route('/read/', methods=['GET'])
 def bookmarklet():

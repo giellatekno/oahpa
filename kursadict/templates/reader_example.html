@@ -1,14 +1,51 @@
 {% extends 'base.html' %}
 
 {% block extra_js %}
+<script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-modal.js')}}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+            // "MSIE 8.0"
+            var uagent = navigator.userAgent ;
+
+            $('p#browser_version').html(navigator.userAgent);
+
+            $('#notifications').modal({
+                backdrop: true,
+                keyboard: true,
+                remote: 'http://localhost:5000/read/ie8_instructions/',
+            }) ;
+
+            $('#close_modal').click(function() {
+                $('#notifications').modal('hide');
+            }) ;
+    });
+</script>
+
 {% endblock %}
 
 {% block content %}
+{# Modal alert block #}
+<div class="modal hide fade" id="notifications">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>{% trans %}Additional instructions{% endtrans %}</h3>
+    </div>
+    <div class="modal-body"><!-- Text here will be fetched from external page --></div>
+    <div class="modal-footer">
+    <a href="#" class="btn btn-primary" id="close_modal">Continue</a>
+    </div>
+</div>
+
 <div class="container-fluid">
     <div class="row-fluid">
         <h3>Test Cases</h3>
         <p class="label" id="bookmarklet"><a href="javascript:{{- bookmarklet|safe -}}">NDS Reader sanit.oahpa.no - unminified</a></p>
+        <br />
         <p class="label" id="bookmarklet"><a href="javascript:{{- bookmarklet_local|safe -}}">NDS Reader localhost:5000 - unminified</a></p>
+    </div>
+    <div class="row-fluid">
+        <h3>Browser version</h3>
+        <p id="browser_version"></p>
     </div>
     <div class="row-fluid">
         <div class="span3">
