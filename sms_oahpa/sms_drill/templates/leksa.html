@@ -13,12 +13,12 @@
 {% block imgprefix %}leksa{% endblock %}
 
 
-<!-- {% block navbar %} -->
-<!-- <ul class="sidelist"> -->
-<!-- 	<li class="selected"><a href="{% url leksa %}">{% trans 'Words' %}</a></li> -->
-<!-- 	<li><a href="{% url leksa.sted %}">{% trans 'Names' %}</a></li> -->
-<!-- </ul> -->
-<!-- {% endblock %} -->
+{% block navbar %}
+<ul class="sidelist">
+	<li class="selected"><a href="{% url leksa %}">{% trans 'Words' %}</a></li>
+	<!-- <li><a href="{% url leksa.sted %}">{% trans 'Names' %}</a></li> -->
+</ul>
+{% endblock %}
 
 {% block veiledning %}
 {% ifequal LANGUAGE_CODE "sme" %}
