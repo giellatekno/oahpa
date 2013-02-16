@@ -12,7 +12,8 @@
             $('#notifications').modal({
                 backdrop: true,
                 keyboard: true,
-                remote: 'http://localhost:5000/read/ie8_instructions/',
+                // TODO: get hostname automatically
+                remote: 'http://{{ hostname }}/read/ie8_instructions/',
             }) ;
 
             $('#close_modal').click(function() {

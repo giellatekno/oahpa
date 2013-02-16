@@ -622,9 +622,11 @@ def bookmarklet_example_page():
                                 .replace( 'bookmarklet.min.js'
                                         , 'bookmarklet.js'
                                         )
+    hostname = request.host
     return render_template( 'reader_example.html'
                           , bookmarklet_local=bkmklt
                           , bookmarklet=bookmarklet_escaped
+                          , hostname=hostname
                           )
 
 @app.route('/read/', methods=['GET'])
