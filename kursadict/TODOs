@@ -1,6 +1,21 @@
 
 
-## Critical
+## Ideas for additional new language pairs and language group services
+
+ * svn move to apps/neahttadigisánit, apps/nds
+
+ * language specific overrides for lexicon formatting (e.g., sma verb class not
+   present in sme)
+
+ * reader plugin fetch language lists from server, store in localstorage;
+   remove hardcoded dictionary list in reader plugin source
+
+## post launch TODOs:
+
+ * do some mobile agent sniffing on the / route to redirect mobile users to
+   \#SoMe/nob, and add a note visible only on mobile display widths about 
+   \#SoMe, so that users whose user agent is not clear enough will see 
+   that this exists anyway.
 
  * do not analyze if miniparadigm exists, e.g., searching for munnje 
    results in mun, but we only want to see munnje.
@@ -14,8 +29,6 @@
    -- "Haluatko käännöksen tekstissä esiintyvään sanaan?"
 
  * TODO: go through configuration locations and make sure that all in opt is updated
-
-nice to have:
 
  * footer links to divvun, oahpa, kursa, giellatekno
 
@@ -68,6 +81,8 @@ nice to have:
    attention to gtlab / gtoahpa, may be a better way to have multiple
    threads/greenlets/etc running while parsing trees into only one
    thread.
+
+   Note: http://blog.pythonisito.com/2012/07/gevent-and-greenlets.html
 
 ## Would be nice
 
