@@ -245,52 +245,30 @@ def autocomplete(from_language, to_language):
                     status=200,
                     mimetype="application/json")
 
+# TODO: @app.route('/lookup/languages/')
+#
+#       for discovering available dictionaries for the reader plugin
+#       alternately, store this in a variable when the bookmarklet is
+#       downloaded; this needs to be available as soon as the plugin
+#       becomes available
+
 @app.route('/lookup/<from_language>/<to_language>/',
            methods=['GET'], endpoint="lookup")
 def lookupWord(from_language, to_language):
     """
-    Returns a simplified set of JSON for dictionary, with 'success' to mark
-    whether there were no errors. Additional URL parameters are available to
-    control the lookup type or whether the lookup is lemmatized before being
-    run through the lexicon.
+    .. http:post:: /lookup/(string:from_language)/(string:to_language)
 
-    Path parameters:
+       Looks up a query in the lexicon. Lookups are lemmatized first,
+       but the non-lemmatized input is also checked in the lexicon.
 
-        /lookup/<from_language>/<to_language>/
+       :param from_language: the source language of the lookup
+       :param to_language:   the target language to display translations
+       :form lookup: the search word.
 
-        Follow the ISO code.
-
-        TODO: 404 error for missing languages
-
-    URL parameters:
-
-        lookup - the string to search for
-        lemmatize - true/false
-        type - none, or 'startswith'
-
-    Output:
-
-        {
-            "result": [
-                {
-                    "input": "viidni",
-                    "lookups": [
-                        {
-                            "right": [
-                                "vin"
-                            ],
-                            "pos": "n",
-                            "left": "viidni"
-                        }
-                    ]
-                }
-            ],
-            "success": true
-        }
-
-    If there are multiple results from lemmatizing, they are included in the
-    "results" list.
-
+       :throws Http404: In the event that the language pair does not exist.
+       :returns:
+           JSON data is returned with the help of the formatter
+           :py:class:`lexicon.formatters.SimpleJSON`
     """
     from lexicon import SimpleJSON
 
@@ -301,8 +279,6 @@ def lookupWord(from_language, to_language):
 
     # URL parameters
     lookup_key = user_input = request.args.get('lookup', False)
-    # TODO: remove option from JS
-    lemmatize               = request.args.get('lemmatize', False)
     has_callback            = request.args.get('callback', False)
     pretty                  = request.args.get('pretty', False)
 
@@ -382,26 +358,55 @@ def lookupWord(from_language, to_language):
            methods=['GET'], endpoint="detail")
 def wordDetail(from_language, to_language, wordform, format):
     """
-    Returns a detailed set of information, in JSON or HTML, given a specific
-    wordform.
+    .. http:get::
+              /detail/(string:from)/(string:to)/(string:wordform).(string:fmt)
 
-    Path parameters:
+        Look up up a query in the lexicon (including lemmatizing input,
+        and the lexicon against the input sans lemmatization), returning
+        translation information, word analyses, and sample paradigms for
+        words and tags which support it.
 
-        /detail/<from_language>/<to_language>/<wordform>.<format>
+        :samp:`/detail/sme/nob/orrut.html`
+        :samp:`/detail/sme/nob/orrut.json`
 
-    TODO: See /languages for an overview of supported language pairs, and
-    supply the ISO code for <from_language> and <to_language>. <wordform> may
-    be any word form in the source language, as the form will be passed through
-    a morphological analyzer.
+        There are additional GET form parameters to control the sorting
+        and display of the output.
 
-    <format> must be either json, or html.
+        :param from: the source language
+        :param to: the target language
+        :param wordform:
+            the wordform to be analyzed. If in doubt, encode and escape
+            the string into UTF-8, and URL encode it. Some browser do
+            this automatically and present the URL in a user-readable
+            format, but mostly, the app does not seem to care.
+        :param fmt:
+            the data format to return the result in. `json` and `html`
+            are currently accepted.
 
-      Ex.) /detail/sme/nob/orrut.html
-           /detail/sme/nob/orrut.json
+        :form pos_filter:
+            Filter the analyzed forms so that only forms with a PoS
+            matching `pos_filter` are displayed.
+        :type pos_filter: str
+        :form lemma_match:
+            Filter the results so that the lemma in the input must match
+            the lemma in the analyzed form.
+        :type lemma_match: bool
+        :form no_compounds:
+            Whether or not to analyze compounds.
+            True or False.
+        :type no_compounds: bool
+        :form e_node:
+            This value is only used if the user arrives at this page via
+            a link on the front pageg results, `e_node` is a unique
+            identifier for the XML document.
 
-    <wordform> is generally expected to be UTF-8, and most web browsers
-    automatically encode unicode in URLs to UTF-8, however it may be that
-    services using this endpoint will need to make sure to do the conversion.
+        :throws Http404:
+            In the event that the language pair or format does not exist.
+
+        :returns:
+            Data is looked up and formatted using
+            :py:class:`lexicon.formatters.DetailedFormat`, and returned
+            in `html` using the template `word_detail.html`
 
     """
     from lexicon import DetailedFormat
