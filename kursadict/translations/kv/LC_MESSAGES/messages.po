@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-02-10 23:44-0600\n"
+"POT-Creation-Date: 2013-02-28 14:58-0600\n"
 "PO-Revision-Date: 2013-02-22 17:27-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: kv <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: language_names.py:9 templates/base.html:119
+#: language_names.py:9 templates/base.html:132
 #: templates/language_select.html:10
 msgid "North Sámi"
 msgstr ""
@@ -27,12 +27,12 @@ msgstr ""
 msgid "North Sámi (#SoMe)"
 msgstr ""
 
-#: language_names.py:11 templates/base.html:121
+#: language_names.py:11 templates/base.html:134
 #: templates/language_select.html:12
 msgid "Finnish"
 msgstr ""
 
-#: language_names.py:12 templates/base.html:120
+#: language_names.py:12 templates/base.html:133
 #: templates/language_select.html:11
 msgid "Norwegian"
 msgstr ""
@@ -41,11 +41,11 @@ msgstr ""
 msgid "South Sámi"
 msgstr ""
 
-#: neahtta.py:359 templates/index.html:207
+#: neahtta.py:335 templates/index.html:207
 msgid " is a possible form of ... "
 msgstr ""
 
-#: neahtta.py:411
+#: neahtta.py:416
 msgid "Invalid format. Only json and html allowed."
 msgstr ""
 
@@ -55,19 +55,23 @@ msgid ""
 "receiving this in error, please contact us."
 msgstr ""
 
-#: templates/about.html:71
+#: templates/about.html:65 templates/base.html:127
+msgid "About"
+msgstr ""
+
+#: templates/about.html:75
 msgid "A dictionary that understands what you're looking for."
 msgstr ""
 
-#: templates/about.html:72
+#: templates/about.html:76
 msgid "(... And is mobile-friendly!)"
 msgstr ""
 
-#: templates/about.html:76
+#: templates/about.html:80
 msgid "Free"
 msgstr ""
 
-#: templates/about.html:77
+#: templates/about.html:81
 msgid ""
 "Everything (or, well, almost everything) that\n"
 "                    concerns minority languages should be free. Here\n"
@@ -75,11 +79,11 @@ msgid ""
 "                    tools."
 msgstr ""
 
-#: templates/about.html:83
+#: templates/about.html:87
 msgid "Open-Source"
 msgstr ""
 
-#: templates/about.html:84
+#: templates/about.html:88
 msgid ""
 "Everything here is based on open-source tools. Do you\n"
 "                have an idea for an app or research project that needs\n"
@@ -90,47 +94,47 @@ msgid ""
 "                files, and morphological and syntactic analyzers."
 msgstr ""
 
-#: templates/about.html:92
+#: templates/about.html:96
 msgid "Linguistic basis"
 msgstr ""
 
-#: templates/about.html:93
+#: templates/about.html:97
 msgid ""
 "Write what you wish, and the dictionary will analyze it to break apart "
 "compound words and find base forms."
 msgstr ""
 
-#: templates/about.html:99
+#: templates/about.html:103
 msgid "gå, dra, reise"
 msgstr ""
 
-#: templates/about.html:106
+#: templates/about.html:110
 msgid "Source material"
 msgstr ""
 
-#: templates/about.html:113
+#: templates/about.html:117
 msgid "sme ↔ nob"
 msgstr ""
 
-#: templates/about.html:114
+#: templates/about.html:118
 msgid ""
 "North Sámi → Norwegian builds on Nils Jernsletten's dictionary "
 "<em>Álgosátnegirji</em>, but here it has been more than doubled in "
 "content."
 msgstr ""
 
-#: templates/about.html:115
+#: templates/about.html:119
 msgid ""
 "Norwegian → North Sámi is a converted version of North Sámi → Norwegian, "
 "but we have also revised the content and added frequent words from "
 "Norwegian."
 msgstr ""
 
-#: templates/about.html:118
+#: templates/about.html:122
 msgid "sma ↔ nob"
 msgstr ""
 
-#: templates/about.html:119
+#: templates/about.html:123
 msgid ""
 "The dictionaries for South Sámi and Norwegian build on material prepared "
 "by Albert Jåma and Tove Brustad in the <a class=\"blue\" "
@@ -141,11 +145,11 @@ msgid ""
 "class=\"blue\" href=\"http://oahpa.no\">Oahpa</a>."
 msgstr ""
 
-#: templates/about.html:122
+#: templates/about.html:126
 msgid "sme ↔ fin"
 msgstr ""
 
-#: templates/about.html:123
+#: templates/about.html:127
 msgid ""
 "Dictionaries for North Sámi and Finnish are based on lexical material "
 "from the <a class=\"green\" href=\"http://kotus.fi\">Institute for the "
@@ -155,31 +159,27 @@ msgid ""
 "Finnish."
 msgstr ""
 
-#: templates/about.html:124
+#: templates/about.html:128
 msgid "Each of the dictionaries contains about 11,000 base words."
 msgstr ""
 
-#: templates/about.html:132
+#: templates/about.html:136
 msgid "More to come..."
 msgstr ""
 
-#: templates/base.html:106
+#: templates/base.html:119
 msgid "Home"
 msgstr ""
 
-#: templates/base.html:110
+#: templates/base.html:123
 msgid "Plugins"
 msgstr ""
 
-#: templates/base.html:114
-msgid "About"
-msgstr ""
-
-#: templates/base.html:118
+#: templates/base.html:131
 msgid "Interface language"
 msgstr ""
 
-#: templates/base.html:181
+#: templates/base.html:194
 msgid ""
 "Created with free and open-source language tools from <em><a "
 "href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, a Sámi Language "
@@ -216,11 +216,18 @@ msgstr ""
 msgid "Word %(input)s not found."
 msgstr ""
 
-#: templates/index.html:241
+#: templates/index.html:242
+msgid ""
+"If you are using a device without a Sámi keyboard, consider using <a "
+"href=\"/SoMe/nob/\">social media mode</a>, which allows you to type "
+"<em>acdnstz</em> for <em>áčđŋšŧž</em>."
+msgstr ""
+
+#: templates/index.html:246
 msgid "Search for a word, or a word form for a word analysis and definition."
 msgstr ""
 
-#: templates/index.html:245
+#: templates/index.html:250
 msgid ""
 "You selected #SoMe, the variant for social media, which means that the "
 "letters acdnstz\n"
@@ -232,15 +239,19 @@ msgstr ""
 msgid "Language"
 msgstr ""
 
-#: templates/reader.html:9
+#: templates/reader.html:4 templates/reader.html:21
 msgid "Neahttadigisánit Reader"
 msgstr ""
 
-#: templates/reader.html:14
+#: templates/reader.html:26
+msgid "WARNING!! We have problems with Internet Explorer 8!"
+msgstr ""
+
+#: templates/reader.html:27
 msgid "Bookmarklet"
 msgstr ""
 
-#: templates/reader.html:15
+#: templates/reader.html:28
 msgid ""
 "Drag and drop the following link to your Bookmark toolbar,\n"
 "                then click it when you are on a page you wish to read. "
@@ -250,11 +261,11 @@ msgid ""
 "                menu icon on the left-hand side of the page."
 msgstr ""
 
-#: templates/reader.html:19
+#: templates/reader.html:32
 msgid "Read with Neahttadigisánit"
 msgstr ""
 
-#: templates/reader.html:20
+#: templates/reader.html:33
 msgid ""
 "In order to look up a word, hold Alt or Option (⌥) and double\n"
 "                click the word. The service will will connect to this\n"
@@ -262,15 +273,15 @@ msgid ""
 "                pause."
 msgstr ""
 
-#: templates/reader.html:24
+#: templates/reader.html:37
 msgid "To change the dictionary, click the menu icon."
 msgstr ""
 
-#: templates/reader.html:25
+#: templates/reader.html:38
 msgid "Bugs?"
 msgstr ""
 
-#: templates/reader.html:26
+#: templates/reader.html:39
 msgid ""
 "If you encounter bugs, or the bookmarklet does not work on a\n"
 "                particular page, contact us with the page URL or details "
@@ -278,7 +289,7 @@ msgid ""
 "                what you were reading when you encountered the problem."
 msgstr ""
 
-#: templates/reader.html:29
+#: templates/reader.html:42
 msgid ""
 "We do not store any private data, but we do collect\n"
 "                individual dictionary lookups for statistics and to "
