@@ -665,6 +665,15 @@ def bookmarklet():
 def indexWithLangs(_from, _to):
     from lexicon import FrontPageFormat
 
+    # mobile test for most common browsers
+    mobile = False
+    if request.user_agent.platform in ['iphone', 'android']:
+        mobile = True
+
+    iphone = False
+    if request.user_agent.platform == 'iphone':
+        iphone = True
+
     mlex = app.morpholexicon
 
     user_input = lookup_val = request.form.get('lookup', False)
@@ -729,6 +738,8 @@ def indexWithLangs(_from, _to):
                           , show_info=show_info
                           , zip=zipNoTruncate
                           , successful_entry_exists=successful_entry_exists
+                          , mobile=mobile
+                          , iphone=iphone
                           )
 
 @app.route('/about/', methods=['GET'])
@@ -755,7 +766,14 @@ def set_locale(iso):
 
 @app.route('/', methods=['GET'], endpoint="canonical-root")
 def index():
+
+    iphone = False
+    if request.user_agent.platform == 'iphone':
+        iphone = True
+
+    mobile = False
     if request.user_agent.platform in ['iphone', 'android']:
+        mobile = True
         # Only redirect if the user isn't coming back to the home page
         # from somewhere within the app.
         if request.referrer and request.host:
@@ -770,6 +788,8 @@ def index():
                           , _from='sme'
                           , _to='nob'
                           , show_info=True
+                          , mobile=mobile
+                          , iphone=iphone
                           )
 
 

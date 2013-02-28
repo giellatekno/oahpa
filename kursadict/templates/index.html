@@ -1,9 +1,15 @@
 {% extends 'base.html' %}
 
 {% block extra_css %}
+
+{% if iphone %}
+    <script type="text/javascript" src="{{url_for('static', filename='js/mobile-bookmark-bubble.js')}}"></script>
+{% endif %}
+
 {# https://gist.github.com/1866577 #}
 <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap-typeahead-fork.js')}}"></script>
 <script type="text/javascript">
+
 
 // For Firefox: reenable buttons when back button is pressed
 $(window).bind("unload", function() {
