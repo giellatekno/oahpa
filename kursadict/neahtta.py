@@ -434,7 +434,7 @@ def wordDetail(from_language, to_language, wordform, format):
     # Cache key by URL
     entry_cache_key = u'%s?%s' % (request.path, request.query_string)
 
-    if no_compounds or lemma_match:
+    if no_compounds or lemma_match or e_node:
         want_more_detail = True
     else:
         want_more_detail = False
