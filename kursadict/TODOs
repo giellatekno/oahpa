@@ -1,22 +1,49 @@
+## post launch TODOs:
 
+ * internationalization flags instead 
+   main/xtdoc/gtuit/src/documentation/content/xdocs/images
 
-## Ideas for additional new language pairs and language group services
+ * internationalization language select -- use respective language names
+   for each language, e.g., davvisámegiela, norsk, suomea
+
+ * SoMe means xml file is parsed twice, fix
+
+--
+
+ begin splitting language groups, considerations: 
+
+   - language lists on server, language lists in plugin
+   - configuration files-- need a way to specify where dictionaries are visible, 
+     or start splitting up language pairs by service; make new server services 
+     for sme and sma, with their own configurations
+   - dictionary entry formatter, different language groups vary
+   
+   - specify which configuration file from command line
+
+--
 
  * svn move to apps/neahttadigisánit, apps/nds
 
- * language specific overrides for lexicon formatting (e.g., sma verb class not
-   present in sme)
+ * certificates, nginx configs?
 
- * reader plugin fetch language lists from server, store in localstorage;
-   remove hardcoded dictionary list in reader plugin source
+ * plugin: click save, does not automatically dismiss
 
-## post launch TODOs:
+ * plugin: IE8 warning popup
 
- * do some mobile agent sniffing on the / route to redirect mobile users to
-   \#SoMe/nob, and add a note visible only on mobile display widths about 
-   \#SoMe, so that users whose user agent is not clear enough will see 
-   that this exists anyway.
+ * reader plugin fetch language lists from server in some way, store in
+   localstorage; remove hardcoded dictionary list in reader plugin source
 
+ * plugin: i18n - fetch from server, store in localstorage, or store
+   localization strings in variable that is set when the user sees the
+   bookmarklet install page
+
+ * language pair splitting by domain, also for plugin list.
+     * baakoeh -> only sma pairs
+     * sánit   -> only sme pairs
+
+ * translate the mobile bookmark bubble, maybe modify/write one for
+   android, where the process is a little more complex
+ 
  * do not analyze if miniparadigm exists, e.g., searching for munnje 
    results in mun, but we only want to see munnje.
 
@@ -36,8 +63,6 @@
    - main/gt/common/src/tag-no.regex
 
  * autocomplete SoMe variant so people don't have to type in whatever, but include multiple options as potential menu selections.
-
- * SoMe means xml file is parsed twice, fix
 
 ## Next:
 
