@@ -755,6 +755,15 @@ def set_locale(iso):
 
 @app.route('/', methods=['GET'], endpoint="canonical-root")
 def index():
+    if request.user_agent.platform in ['iphone', 'android']:
+        # Only redirect if the user isn't coming back to the home page
+        # from somewhere within the app.
+        if request.referrer and request.host:
+            if not request.host in request.referrer:
+                return redirect('/SoMe/nob/')
+        else:
+            return redirect('/SoMe/nob/')
+
     return render_template( 'index.html'
                           , language_pairs=app.config.pair_definitions
                           , internationalizations=AVAILABLE_LOCALES
