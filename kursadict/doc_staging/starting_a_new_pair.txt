@@ -36,6 +36,20 @@ vuovdi  vuovdi subst. aktor ent. nom.
 vuovdi  vuovdi subst. aktor ent. akk.
 vuovdi  vuovdi subst. aktor ent. gen.
 
+##### Spell relax FST
+
+Spell relaxing FSTs should follow the exact same format as the lookup
+FST, but naturally point to the normative lemmas, or whatever lemmas
+will be used in lookups in the lexicon. These could be of two types:
+
+ 1.) Normalizing non-standard spellings
+ 2.) Compensating for keyboards without certain characters
+ 3.) Switching orthographies, e.g., accepting latin for cyrillic, 
+     or vice versa.
+
+Whatever the use case, the analyzed lemma must match up with the lexicon
+entry.
+
 ##### Compound marking
 
 Must have a defined (and consistent) method for marking compounds:
