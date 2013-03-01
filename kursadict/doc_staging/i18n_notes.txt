@@ -50,8 +50,8 @@ virtualenv enabled:
 
 ## Initializing a translation
 
-    pybabel init -i messages.pot -d translations -l no
-    pybabel init -i messages.pot -d translations -l sma
+    pybabel init -i translations/messages.pot -d translations -l no
+    pybabel init -i translations/messages.pot -d translations -l sma
     etc
 
 
@@ -84,4 +84,32 @@ doesn't work, there are probably problems with virtualenv.
 Typically you should see something like:
 
     (neahtta_env)[neahtta@gtoahpa gtsvn/]$
+
+
+# ISO notes and internationalization language code vs. lexicon/FST language code
+
+Because most browsers report what language they use using the 2-character ISO 639-1
+code, any localization that has a 2-character code, (north sámi has `se`, so
+lucky!), we must use this code. If it doesn't, then creating new localizations with
+the 3-character code (ISO 639-2) will be necessary. Also, neahtta.py may not actually handle 
+some of these 3-character localizations as well, so this will need to be fixed.
+
+
+## Currently supported localizations:
+
+May be found in translations/, but for ease of finding out:
+
+1.) se (sme)
+2.) fi
+3.) no (nob)
+
+Internationalization languages on the way:
+
+4.) sma
+5.) ru
+6.) myv
+7.) mrj
+8.) kv (kpv)
+    TODO: is this actually what komi users' browsers report?
+9.) lv (lav)
 
