@@ -38,6 +38,10 @@ morph_log = getLogger('morphology')
 
 # This is called before any lookup is done, regardless of whether it
 # came from analysis or not.
+
+# NOTE: some mwe will mess things up here a bit, in that pos is
+# passed in with part of the mwe. Thus, if there is no POS, do
+# nothing.
 @lexicon.pre_lookup_tag_rewrite_for_iso('sme')
 def pos_to_fst(*args, **kwargs):
     if 'lemma' in kwargs and 'pos' in kwargs:
@@ -75,6 +79,8 @@ def some_pos_to_fst(*args, **kwargs):
 #     ]
 #     return generated_forms
 
+# TODO: simplify this decorator process. really only need
+# pregenerate_sme(node) -> returning analyses
 @rewrites.pregenerated_form_selector('sme')
 def pregenerate_sme(form, tags, node):
     _has_mini_paradigm = node.xpath('.//mini_paradigm[1]')

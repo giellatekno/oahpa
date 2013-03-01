@@ -20,6 +20,12 @@
    
    - specify which configuration file from command line
 
+   - simplify language override decorators so that they are easier to construct
+     for new languages. too many variables passed in and out that may
+     not be clear (e.g. pregenerated_form_selector decorates a function that
+     really only needs to take a node element and return forms, yet, takes
+     form and tags, and returns all these things.
+
 --
 
  * svn move to apps/neahttadigisánit, apps/nds
