@@ -1,7 +1,6 @@
 # Default locale, but use ISO 2 code or whatever corresponds to what is
 # in the translations directory.
 
-# TODO: implement these, but putting them here for now.
 ApplicationSettings:
   default_locale: "se"
   default_pair: ["sme", "nob"]
@@ -262,7 +261,7 @@ TagSets:
 # already translated
 # TODO: i18n
 TagTransforms:
-  sma:
+  [sma, nob]:
     V: "v."
     N: "s."
     A: "adj."
@@ -295,7 +294,7 @@ TagTransforms:
     pron: "pron."
     prop: "egennavn"
 
-  sme: &smetagrelabels
+  [sme, nob]: &smetagrelabels
     V: "v."
     N: "s."
     A: "adj."
@@ -328,10 +327,10 @@ TagTransforms:
     pron: "pron."
     prop: "egennavn"
 
-  SoMe: 
+  [SoMe, nob]: 
     <<: *smetagrelabels
   
-  nob:
+  [nob, sme]:
     V: "v."
     N: "s."
     A: "adj."

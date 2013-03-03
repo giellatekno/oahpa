@@ -71,7 +71,23 @@ class Config(Config):
     @property
     def tag_filters(self):
         if not self._tag_filters:
-            self._tag_filters = self.yaml.get('TagTransforms')
+            tag_filters = self.yaml.get('TagTransforms')
+
+            self._tag_filters = {}
+            for k, v in tag_filters.iteritems():
+                try:
+                    _new_k = k.replace('(', '').replace(')', '')
+                    _f, _, _t = _new_k.partition(',')
+                    _f = _f.strip()
+                    _t = _t.strip()
+                except Exception:
+                    raise RuntimeError('Error parsing language pair key'
+                                       ' for %s in TagTransforms. '
+                                       'Use format (sme, nob). In file'
+                                       ' %s' %
+                                       (k, self.filename))
+
+                self._tag_filters[(_f, _t)] = v
         return self._tag_filters
 
     @property

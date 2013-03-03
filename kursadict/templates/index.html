@@ -217,7 +217,7 @@ $(document).ready( function() {
                                     <p><a href="/detail/{{ _from }}/{{ _to }}/{{ lookup.left }}.html?e_node={{ lookup.entry_hash }}">
                                 {% endif %}
                                         {{ lookup.left }}
-                                </a> ({{ lookup.pos|tagfilter(_from) }}) &ndash; </p>
+                                </a> ({{ lookup.pos|tagfilter(_from, _to) }}) &ndash; </p>
                                 <ol>{%- for tx in lookup.right -%}
                                         <li>
                                             {%- include 'main_page_li.html' -%}
@@ -260,7 +260,7 @@ $(document).ready( function() {
                                                 <dt>
                                                     <ul class="possible_forms">
                                                         {% for form, lemma, tag in lemmafs %}
-                                                            <li>{{ ' '.join(tag)|tagfilter(_from) }}</li>
+                                                            <li>{{ ' '.join(tag)|tagfilter(_from, _to) }}</li>
                                                         {% endfor %}
                                                     </ul>
                                                 </dd>

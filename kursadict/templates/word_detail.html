@@ -58,7 +58,7 @@
                 <dd>
                     <ul class="possible_forms">
                         {% for lemma, pos, tag in forms %}
-                            <li>{{ pos|tagfilter(_from) }} {{ tag|tagfilter(_from) }}</li>
+                            <li>{{ pos|tagfilter(_from, _to) }} {{ tag|tagfilter(_from, _to) }}</li>
                         {% endfor %}
                     </ul>
                 </dd>
@@ -121,9 +121,9 @@
                     </div>
                 {% endif %}
                 {% if lexeme.input[1] %}
-                    <p class="lead">{{ lexeme.input[0] }} ({{ lexeme.input[1]|tagfilter(_from) }}) </p>
+                    <p class="lead">{{ lexeme.input[0] }} ({{ lexeme.input[1]|tagfilter(_from, _to) }}) </p>
                 {% else %}
-                    <p class="lead">{{ lexeme.input[0] }} ({{ lexeme.entries.lookups[0].pos|tagfilter(_from) }}) </p>
+                    <p class="lead">{{ lexeme.input[0] }} ({{ lexeme.entries.lookups[0].pos|tagfilter(_from, _to) }}) </p>
                 {% endif %}
 
                 <ul class="meanings">

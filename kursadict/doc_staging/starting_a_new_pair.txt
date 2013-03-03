@@ -7,7 +7,7 @@
  
  * FSTs (described below)
  
- * tag pairs, FST -> user-friendly format
+ * lists of tag pairs, what is in FST to convert to what users will see
  
  * lists of paradigms for parts of speech, which can be either as
    detailed as one paradigm per part of speech, or several paradigms for
@@ -35,6 +35,7 @@
     vuovdi  vuovdi subst. aktor ent. nom.
     vuovdi  vuovdi subst. aktor ent. akk.
     vuovdi  vuovdi subst. aktor ent. gen.
+
 
 ##### Spell relax FST
 
@@ -96,10 +97,11 @@ of all of these things to formulate rules.
 
 
 
+## For programmers
 
+### Language-specific rules
 
-## Language-specific rules
-### (... for programmers)
+Will write more in this section a bit later.
 
 Language-specific rules are carried out via python functions, which are
 decorated by a function in a library that gives them purpose.
@@ -137,10 +139,4 @@ depends on an attribute in the lexical entry.
 #### Pregenerated forms
 
 #### Tag string manipulations
-
-
-
-
-###
-
 

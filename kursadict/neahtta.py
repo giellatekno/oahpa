@@ -189,10 +189,10 @@ def to_xml_string(n):
 
 
 @app.template_filter('tagfilter')
-def tagfilter(s, lang_iso):
+def tagfilter(s, lang_iso, targ_lang):
     if not s:
         return s
-    filters = app.config.tag_filters.get(lang_iso, False)
+    filters = app.config.tag_filters.get((lang_iso, targ_lang), False)
     if filters:
         filtered = []
         if isinstance(s, list):
@@ -291,7 +291,7 @@ def lookupWord(from_language, to_language):
             t_pos = t.get('pos', False)
             if not t_pos:
                 return t
-            t['pos'] = tagfilter(t_pos, from_language)
+            t['pos'] = tagfilter(t_pos, from_language, to_language)
             return t
         return fixTag(r)
 
@@ -307,7 +307,7 @@ def lookupWord(from_language, to_language):
 
     if analyses:
         def filterPOSAndTag(analysis):
-            filtered_pos = tagfilter(analysis.pos, from_language)
+            filtered_pos = tagfilter(analysis.pos, from_language, to_language)
             joined = filtered_pos + ' ' + ' '.join(analysis.tag)
             return (analysis.lemma, joined)
         tags = map(filterPOSAndTag, analyses)
