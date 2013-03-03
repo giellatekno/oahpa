@@ -90,8 +90,9 @@ app = Flask(__name__,
 app.jinja_env.line_statement_prefix = '#'
 app.jinja_env.add_extension('jinja2.ext.i18n')
 app.config['cache'] = cache
+
 app.config = Config('.', defaults=app.config)
-app.config.from_yamlfile('app.config.yaml')
+app.config.from_envvar('NDS_CONFIG')
 
 from morpho_lexicon import MorphoLexicon
 app.morpholexicon = MorphoLexicon(app.config)
