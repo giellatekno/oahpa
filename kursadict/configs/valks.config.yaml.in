@@ -17,39 +17,13 @@ Tools:
 # be used in concatenating strings, certain paths with references must
 # be lists. These are concatenated automatically.
 Morphology:
-  sme:
+  myv:
     tool: *LOOKUP
-    file: [*OPT, "/sme/bin/n-sme.fst"]
-    inverse_file: [*OPT, "/sme/bin/dict-isme-norm.fst"]
-    format: 'xfst'
-    options: &sme_fst_options
-      compoundBoundary: "  + #"
-      derivationMarker: "suff."
-      tagsep: ' '
-      inverse_tagsep: '+'
-  SoMe:
-    tool: *LOOKUP
-    file: [*OPT, "/sme/bin/some-sme.fst"] 
-    inverse_file: [*OPT, "/sme/bin/dict-isme-norm.fst"]
+    file: [*GTHOME, '/langs/myv/src/analyser-gt-desc.xfst']
+    inverse_file: [*GTHOME, '/langs/myv/src/generator-gt-norm.xfst']
     format: 'xfst'
     options:
-      <<: *sme_fst_options
-  nob:
-    tool: *LOOKUP
-    file: [*GTHOME, '/st/nob/bin/nob.fst']
-    inverse_file: [*GTHOME, '/st/nob/bin/inob.fst']
-    format: 'xfst'
-    options:
-      compoundBoundary: "#+Cmp+"
-      derivationMarker: "+Der"
-      tagsep: '+'
-      inverse_tagsep: '+'
-  sma:
-    tool: *LOOKUP
-    file: [*OPT, '/sma/bin/dict-sma.fst']
-    inverse_file: [*OPT, '/sma/bin/isma-dict.fst']
-    format: 'xfst'
-    options:
+      compoundBoundary: "+Use/Circ#"
       derivationMarker: "+Der"
       tagsep: '+'
       inverse_tagsep: '+'
@@ -65,24 +39,41 @@ Morphology:
       inverse_tagsep: '+'
 
 Languages:
-  - iso: sme
+  - iso: myv
     name:
-      sme: "davvisámegiella"
-      eng: "Northern Sámi"
-      # eng: !_ "Northern Sámi"
-      nob: "nordsamisk"
-      fin: "pohjoissaame"
+      eng: "komi"
+      nob: "komi"
+      fin: "komi"
+  - iso: eng
+    name:
+      eng: "english"
+      nob: "english"
+      fin: "english"
+  - iso: fin
+    name:
+      eng: "finnish"
+      nob: "finnish"
+      fin: "finnish"
+  - iso: rus
+    name:
+      eng: "russian"
+      nob: "russian"
+      fin: "russian"
 
 
 # This also dictates the order of the dictionaries in the UI for now.
 Dictionaries:
   - source: myv
-    target: rus
-    path: 'dicts/myv-rus.all.xml'
+    target: eng
+    path: 'dicts/kom2x.all.xml'
 
-  - source: rus
-    target: myv
-    path: 'dicts/rus-myv.all.xml'
+  - source: myv
+    target: fin
+    path: 'dicts/kom2x.all.xml'
+
+  - source: myv
+    target: rus
+    path: 'dicts/kom2x.all.xml'
 
 # Abstracting display formats out here, because there are different
 # requirements for different languages and different wordforms.

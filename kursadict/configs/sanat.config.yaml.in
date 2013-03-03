@@ -11,48 +11,22 @@ ApplicationSettings:
 Tools:
   xfst_lookup: &LOOKUP '/usr/bin/lookup'
   gthome: &GTHOME '/home/neahtta/gtsvn'
-  opt: &OPT '/opt/smi'
+  opt: &OPT '/opt/b'
 
 # Morphological system definitions. Since YAML variables aren't able to
 # be used in concatenating strings, certain paths with references must
 # be lists. These are concatenated automatically.
 Morphology:
-  sme:
-    tool: *LOOKUP
-    file: [*OPT, "/sme/bin/n-sme.fst"]
-    inverse_file: [*OPT, "/sme/bin/dict-isme-norm.fst"]
-    format: 'xfst'
-    options: &sme_fst_options
-      compoundBoundary: "  + #"
-      derivationMarker: "suff."
-      tagsep: ' '
-      inverse_tagsep: '+'
-  SoMe:
-    tool: *LOOKUP
-    file: [*OPT, "/sme/bin/some-sme.fst"] 
-    inverse_file: [*OPT, "/sme/bin/dict-isme-norm.fst"]
-    format: 'xfst'
-    options:
-      <<: *sme_fst_options
-  nob:
-    tool: *LOOKUP
-    file: [*GTHOME, '/st/nob/bin/nob.fst']
-    inverse_file: [*GTHOME, '/st/nob/bin/inob.fst']
-    format: 'xfst'
-    options:
-      compoundBoundary: "#+Cmp+"
-      derivationMarker: "+Der"
-      tagsep: '+'
-      inverse_tagsep: '+'
-  sma:
-    tool: *LOOKUP
-    file: [*OPT, '/sma/bin/dict-sma.fst']
-    inverse_file: [*OPT, '/sma/bin/isma-dict.fst']
-    format: 'xfst'
-    options:
-      derivationMarker: "+Der"
-      tagsep: '+'
-      inverse_tagsep: '+'
+  # olo:
+  #   tool: *LOOKUP
+  #   file: [*OPT, "/olo/bin/n-sme.fst"]
+  #   inverse_file: [*OPT, "/olo/bin/dict-iolo-norm.fst"]
+  #   format: 'xfst'
+  #   options: &sme_fst_options
+  #     compoundBoundary: "  + #"
+  #     derivationMarker: "suff."
+  #     tagsep: ' '
+  #     inverse_tagsep: '+'
   fin:
     tool: *LOOKUP
     file: [*GTHOME, '/langs/fin/src/analyser-gt-desc.xfst']
@@ -65,13 +39,18 @@ Morphology:
       inverse_tagsep: '+'
 
 Languages:
-  - iso: sme
+  - iso: olo
     name:
-      sme: "davvisámegiella"
-      eng: "Northern Sámi"
+      fin: "olonets"
+      eng: "olonets"
       # eng: !_ "Northern Sámi"
-      nob: "nordsamisk"
-      fin: "pohjoissaame"
+      nob: "olonets"
+  - iso: fin
+    name:
+      fin: "suomi"
+      eng: "finnish"
+      # eng: !_ "Northern Sámi"
+      nob: "finsk"
 
 
 # This also dictates the order of the dictionaries in the UI for now.
