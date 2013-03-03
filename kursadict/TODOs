@@ -6,25 +6,27 @@
  * internationalization language select -- use respective language names
    for each language, e.g., davvisámegiela, norsk, suomea
 
- * SoMe means xml file is parsed twice, fix
-
 --
 
  begin splitting language groups, considerations: 
 
    - language lists on server, language lists in plugin
+
    - configuration files-- need a way to specify where dictionaries are visible, 
      or start splitting up language pairs by service; make new server services 
      for sme and sma, with their own configurations
+
    - dictionary entry formatter, different language groups vary
    
-   - specify which configuration file from command line
-
    - simplify language override decorators so that they are easier to construct
      for new languages. too many variables passed in and out that may
      not be clear (e.g. pregenerated_form_selector decorates a function that
      really only needs to take a node element and return forms, yet, takes
      form and tags, and returns all these things.
+
+   - having multiple groups is going to result in different information
+     in about pages, and different translations to be managed. this could
+     potentially be difficult to manage, but there is a solution.
 
 --
 

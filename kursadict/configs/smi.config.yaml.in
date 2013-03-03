@@ -1,3 +1,10 @@
+# Default locale, but use ISO 2 code or whatever corresponds to what is
+# in the translations directory.
+
+# TODO: implement these, but putting them here for now.
+ApplicationSettings:
+  default_locale: "se"
+
 # This option set is not used outside of providing shortcuts for
 # following settings.
 Tools:
@@ -153,58 +160,6 @@ Dictionaries:
 
 # Abstracting display formats out here, because there are different
 # requirements for different languages and different wordforms.
-
-# Build up an iterable for all entries, including display format parsers
-DisplayFormats:
-
-  "sme-nob.all.xml":
-    search_patterns:
-      'lemmaStartsWith': 
-        './/e[starts-with(lg/l/text(), $lemma)]'
-      'lemma': 
-        './/e[lg/l/text() = $lemma]'
-      'lemmaPOS': 
-         ".//e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, 'i')]"
-      'lemmaPOSAndType':
-         ".//e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, 'i') and lg/l/@type = $_type]"
-
-    # [
-    #   { 'string': "lemma (context)",
-    #     'translations': [
-    #       'translation (annotation)',
-    #       'translation',
-    #       'translation',
-    #   ]
-    # ]
-
-    # TODO: not yet implemented, but a good idea for when things get too
-    # language-specific in Lexicon class or templates.
-    entry:
-      tag: "e"
-      path: ".//e"
-      formats:
-        - "%(lemma)s (%(context)s)"
-        - "%(lemma)s (%(pos)s)"
-        - "%(lemma)s"
-      string_variables:
-        lemma: ".//l/text()"
-        context: ".//l/@context"
-        pos: ".//l/@pos"
-      translations:
-        tag: "mg"
-        path: ".//mg"
-        formats:
-          - "%(translation)s (%(re)s)"
-          - "%(translation)s (%(te)s)"
-          - "%(translation)s (%(tf)s)"
-          - "(%(re)s)"
-          - "(%(te)s)"
-          - "(%(tf)s)"
-        string_variables:
-          translation: ".//tg[@xml:lang = $lang]/t/text()"
-          re:          ".//tg[@xml:lang = $lang]/re/text()"
-          te:          ".//tg[@xml:lang = $lang]/te/text()"
-
 
 # TODO: help text
 Paradigms:
