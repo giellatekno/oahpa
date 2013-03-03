@@ -261,7 +261,7 @@ TagSets:
 # already translated
 # TODO: i18n
 TagTransforms:
-  [sma, nob]:
+  (sma, nob):
     V: "v."
     N: "s."
     A: "adj."
@@ -294,7 +294,7 @@ TagTransforms:
     pron: "pron."
     prop: "egennavn"
 
-  [sme, nob]: &smetagrelabels
+  (sme, nob): &smetagrelabels
     V: "v."
     N: "s."
     A: "adj."
@@ -327,10 +327,10 @@ TagTransforms:
     pron: "pron."
     prop: "egennavn"
 
-  [SoMe, nob]: 
+  (SoMe, nob):
     <<: *smetagrelabels
   
-  [nob, sme]:
+  (nob, sme):
     V: "v."
     N: "s."
     A: "adj."
