@@ -1,0 +1,143 @@
+# Default locale, but use ISO 2 code or whatever corresponds to what is
+# in the translations directory.
+
+ApplicationSettings:
+  default_locale: "ru"
+  default_pair: ["olo", "fin"]
+  mobile_default_pair: false
+
+# This option set is not used outside of providing shortcuts for
+# following settings.
+Tools:
+  xfst_lookup: &LOOKUP '/usr/bin/lookup'
+  gthome: &GTHOME '/home/neahtta/gtsvn'
+  opt: &OPT '/opt/smi'
+
+# Morphological system definitions. Since YAML variables aren't able to
+# be used in concatenating strings, certain paths with references must
+# be lists. These are concatenated automatically.
+Morphology:
+  sme:
+    tool: *LOOKUP
+    file: [*OPT, "/sme/bin/n-sme.fst"]
+    inverse_file: [*OPT, "/sme/bin/dict-isme-norm.fst"]
+    format: 'xfst'
+    options: &sme_fst_options
+      compoundBoundary: "  + #"
+      derivationMarker: "suff."
+      tagsep: ' '
+      inverse_tagsep: '+'
+  SoMe:
+    tool: *LOOKUP
+    file: [*OPT, "/sme/bin/some-sme.fst"] 
+    inverse_file: [*OPT, "/sme/bin/dict-isme-norm.fst"]
+    format: 'xfst'
+    options:
+      <<: *sme_fst_options
+  nob:
+    tool: *LOOKUP
+    file: [*GTHOME, '/st/nob/bin/nob.fst']
+    inverse_file: [*GTHOME, '/st/nob/bin/inob.fst']
+    format: 'xfst'
+    options:
+      compoundBoundary: "#+Cmp+"
+      derivationMarker: "+Der"
+      tagsep: '+'
+      inverse_tagsep: '+'
+  sma:
+    tool: *LOOKUP
+    file: [*OPT, '/sma/bin/dict-sma.fst']
+    inverse_file: [*OPT, '/sma/bin/isma-dict.fst']
+    format: 'xfst'
+    options:
+      derivationMarker: "+Der"
+      tagsep: '+'
+      inverse_tagsep: '+'
+  fin:
+    tool: *LOOKUP
+    file: [*GTHOME, '/langs/fin/src/analyser-gt-desc.xfst']
+    inverse_file: [*GTHOME, '/langs/fin/src/generator-gt-norm.xfst']
+    format: 'xfst'
+    options:
+      compoundBoundary: "+Use/Circ#"
+      derivationMarker: "+Der"
+      tagsep: '+'
+      inverse_tagsep: '+'
+
+Languages:
+  - iso: sme
+    name:
+      sme: "davvisámegiella"
+      eng: "Northern Sámi"
+      # eng: !_ "Northern Sámi"
+      nob: "nordsamisk"
+      fin: "pohjoissaame"
+
+
+# This also dictates the order of the dictionaries in the UI for now.
+Dictionaries:
+  - source: olo
+    target: fin
+    path: 'dicts/olo-fin.all.xml'
+
+
+# Abstracting display formats out here, because there are different
+# requirements for different languages and different wordforms.
+
+# Paradigms for generation on detailed pages. Leave POS out of tags,
+# this is supplied automatically. Otherwise use generation FST tag
+# format.
+Paradigms:
+  olo:
+    PRON:
+      - "Pregenerate"
+    N:
+      - "Sg+Nom"
+      - "Sg+Gen"
+      - "Sg+Ill"
+      - "Pl+Ill"
+    A:
+      - "Sg+Nom"
+      - "Comp+Sg+Nom"
+      - "Superl+Sg+Nom"
+    V:
+      - "Ind+Prs+Sg1"
+      - "Ind+Prs+Sg3"
+      - "Ind+Prs+Pl3"
+      - "Ind+Prt+Sg1"
+      - "ConNeg"
+      - "PrfPrc"
+      - "Ger"
+      - "VGen"
+
+
+TagSets:
+  olo:
+    pos: ["N", "V", "A", "Pr", "Po", "Num"]
+    type: ["NomAg", "G3", "aktor"]
+
+# (sourcelang, targlang)
+# V: "v."
+# FST format: "user friendly"
+TagTransforms:
+
+  (olo, rus):
+    V: "v."
+    N: "s."
+    A: "adj."
+
+  (liv, rus):
+    V: "v."
+    N: "s."
+    A: "adj."
+
+  (olo, olo):
+    V: "v."
+    N: "s."
+    A: "adj."
+
+  (liv, liv):
+    V: "v."
+    N: "s."
+    A: "adj."
+
