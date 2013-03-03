@@ -66,6 +66,8 @@ class LexiconOverrides(object):
 
 lexicon_overrides = LexiconOverrides()
 
+PARSED_TREES = {}
+
 class XMLDict(object):
     """ XML dictionary class. Initiate with a file path or an already parsed
     tree, exposes methods for searching in XML.
@@ -76,22 +78,36 @@ class XMLDict(object):
     """
     def __init__(self, filename=False, tree=False):
         if not tree:
-            print "parsing %s" % filename
-            self.tree = etree.parse(filename)
+            if filename not in PARSED_TREES:
+                print "parsing %s" % filename
+                self.tree = etree.parse(filename)
+                PARSED_TREES[filename] = self.tree
+            else:
+                self.tree = PARSED_TREES[filename]
         else:
             self.tree = tree
         self.xpath_evaluator = etree.XPathDocumentEvaluator(self.tree)
 
         # Initialize XPath queries
         regexpNS = "http://exslt.org/regular-expressions"
-        self.lemmaStartsWith = etree.XPath('.//e[starts-with(lg/l/text(), $lemma)]')
+
+        self.lemmaStartsWith = etree.XPath(
+            './/e[starts-with(lg/l/text(), $lemma)]'
+        )
+
         self.lemma = etree.XPath('.//e[lg/l/text() = $lemma]')
+
         self.lemmaPOS = etree.XPath(
             './/e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, "i")]',
-            namespaces={'re':regexpNS})
+            namespaces={'re': regexpNS})
+
         self.lemmaPOSAndType = etree.XPath(
-            './/e[lg/l/text() = $lemma and re:match(lg/l/@pos, $pos, "i") and lg/l/@type = $_type]',
-            namespaces={'re':regexpNS})
+            ' and '.join([ './/e[lg/l/text() = $lemma'
+                         , 're:match(lg/l/@pos, $pos, "i")'
+                         , 'lg/l/@type = $_type]'
+                         ])
+            , namespaces={'re': regexpNS}
+        )
 
     def XPath(self, xpathobj, *args, **kwargs):
         return xpathobj(self.tree, *args, **kwargs)
@@ -178,8 +194,12 @@ class ReverseLookups(XMLDict):
         return self.XPath(_xpath)
 
     def lookupLemma(self, lemma):
-        _xpath = './/e[mg/tg/t/text() = "%s" and @usage = "vd" and not(@reverse)]'
-        return self.XPath(_xpath % lemma)
+        _xpath = [ './/e[mg/tg/t/text() = "%s"' % lemma
+                 , '@usage = "vd"'
+                 , 'not(@reverse)]'
+                 ]
+        _xpath = ' and '.join(_xpath)
+        return self.XPath(_xpath)
 
     def lookupLemmaPOS(self, lemma, pos):
         _xpath = ' and '.join(
@@ -205,23 +225,7 @@ class Lexicon(object):
             self.lookup
         )
 
-        # reverse_language_pairs = {}
-
-        # for k, v in settings.reversable_dictionaries.iteritems():
-        #     _key =      (k[0], k[1])
-        #     _reverse  = (k[1], k[0])
-
-        #     has_root = language_pairs.get(_key)
-
-        #     if has_root:
-        #         reverse_language_pairs[_reverse] = ReverseLookups(tree=has_root.tree)
-        #     else:
-        #         reverse_language_pairs[_reverse] = ReverseLookups(filename=v)
-
-        # language_pairs.update(reverse_language_pairs)
-
         self.language_pairs = language_pairs
-        # self.reverse_language_pairs = reverse_language_pairs
 
         autocomplete_tries = {}
         for k, v in language_pairs.iteritems():
@@ -296,4 +300,3 @@ class Lexicon(object):
         success = any([res for l, res in results])
 
         return results, success
-
