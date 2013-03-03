@@ -16,11 +16,34 @@ class Config(Config):
     """
 
     @property
+    def default_language_pair(self):
+        _p = self.yaml.get('ApplicationSettings', {})\
+                      .get('default_pair', False)
+        if _p:
+            return _p
+        else:
+            raise RuntimeError('Default language pair not specified in '
+                               'config file %s, in ApplicationSettings.' %
+                               self.filename)
+
+    @property
+    def mobile_redirect_pair(self):
+        _p = self.yaml.get('ApplicationSettings', {})\
+                      .get('mobile_default_pair', None)
+        if _p is not None:
+            return _p
+        else:
+            raise RuntimeError('Mobile redirect pair not specified in '
+                               'config file %s, in ApplicationSettings.'
+                               ' If none, specify with false.' %
+                               self.filename)
+
+    @property
     def paradigms(self):
         if self._paradigms:
             return self._paradigms
 
-        lang_paradigms = self.opts.get('Paradigms')
+        lang_paradigms = self.yaml.get('Paradigms')
 
         self._paradigms = lang_paradigms
         return self._paradigms
@@ -34,7 +57,7 @@ class Config(Config):
             if d.get('reversable', False):
                 return d
 
-        dicts = filter(isReversable, self.opts.get('Dictionaries'))
+        dicts = filter(isReversable, self.yaml.get('Dictionaries'))
         language_pairs = {}
         for item in dicts:
             source = item.get('source')
@@ -48,14 +71,14 @@ class Config(Config):
     @property
     def tag_filters(self):
         if not self._tag_filters:
-            self._tag_filters = self.opts.get('TagTransforms')
+            self._tag_filters = self.yaml.get('TagTransforms')
         return self._tag_filters
 
     @property
     def languages(self):
         if not self._languages:
             self._languages = {}
-            for lang in self.opts.get('Languages'):
+            for lang in self.yaml.get('Languages'):
                 self._languages[lang.get('iso')] = lang.get('name')
 
         return self._languages
@@ -66,7 +89,7 @@ class Config(Config):
         if self._dictionaries:
             return self._dictionaries
 
-        dicts = self.opts.get('Dictionaries')
+        dicts = self.yaml.get('Dictionaries')
         language_pairs = OrderedDict()
         for item in dicts:
             source = item.get('source')
@@ -123,7 +146,7 @@ class Config(Config):
             'obt': OBT,
         }
 
-        for iso, _kwargs_in in self.opts.get('Morphology').iteritems():
+        for iso, _kwargs_in in self.yaml.get('Morphology').iteritems():
             conf_format = _kwargs_in.get('format', False)
             kwargs = {}
 
@@ -197,7 +220,7 @@ class Config(Config):
                                variable_name)
         return self.from_yamlfile(rv, silent=silent)
 
-    def from_yamlfile(self, filename='app.config.yaml', silent=False):
+    def from_yamlfile(self, filename, silent=False):
         self._languages               = False
         self._pair_definitions        = False
         self._dictionaries            = False
@@ -207,9 +230,10 @@ class Config(Config):
         self._morphologies            = False
         self._tag_filters             = False
 
-        with open('app.config.yaml', 'r') as F:
+        with open(filename, 'r') as F:
             config = yaml.load(F)
-        self.opts = config
+        self.yaml = config
+        self.filename = filename
         self.test(silent=True)
         # Prepare lexica
 

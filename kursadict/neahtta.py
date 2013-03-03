@@ -642,22 +642,6 @@ def bookmarklet():
     return render_template('reader.html', bookmarklet=bkmklt)
 
 ##
-## Public Docs
-##
-
-# @app.route('/lookup/', methods=['GET'], endpoint="lookup-doc")
-# def wordLookupDocs():
-#     from cgi import escape
-#     _lookup_doc = escape(lookupWord.__doc__)
-#     return '<html><body><pre>%s</pre></body></html>' % _lookup_doc
-
-# @app.route('/detail/', methods=['GET'], endpoint="detail-doc")
-# def wordDetailDocs():
-#     from cgi import escape
-#     _lookup_doc = escape(wordDetail.__doc__)
-#     return '<html><body><pre>%s</pre></body></html>' % _lookup_doc
-
-##
 ## Public pages
 ##
 
@@ -768,26 +752,31 @@ def set_locale(iso):
 @app.route('/', methods=['GET'], endpoint="canonical-root")
 def index():
 
+    default_from, default_to = app.config.default_language_pair
+    mobile_redir = app.config.mobile_redirect_pair
+
     iphone = False
     if request.user_agent.platform == 'iphone':
         iphone = True
 
     mobile = False
-    if request.user_agent.platform in ['iphone', 'android']:
-        mobile = True
-        # Only redirect if the user isn't coming back to the home page
-        # from somewhere within the app.
-        if request.referrer and request.host:
-            if not request.host in request.referrer:
-                return redirect('/SoMe/nob/')
-        else:
-            return redirect('/SoMe/nob/')
+    if mobile_redir:
+        target_url = '/%s/%s/' % tuple(mobile_redir)
+        if request.user_agent.platform in ['iphone', 'android']:
+            mobile = True
+            # Only redirect if the user isn't coming back to the home page
+            # from somewhere within the app.
+            if request.referrer and request.host:
+                if not request.host in request.referrer:
+                    return redirect(target_url)
+            else:
+                return redirect(target_url)
 
     return render_template( 'index.html'
                           , language_pairs=app.config.pair_definitions
                           , internationalizations=AVAILABLE_LOCALES
-                          , _from='sme'
-                          , _to='nob'
+                          , _from=default_from
+                          , _to=default_to
                           , show_info=True
                           , mobile=mobile
                           , iphone=iphone
