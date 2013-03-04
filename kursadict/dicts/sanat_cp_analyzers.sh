@@ -11,6 +11,10 @@ sudo mkdir -p /opt/smi/liv/bin/
 sudo cp $GTHOME/langs/liv/src/analyser-gt-desc.xfst  /opt/smi/liv/bin/liv.fst
 sudo cp $GTHOME/langs/liv/src/generator-gt-norm.xfst /opt/smi/liv/bin/iliv.fst
 
+sudo mkdir -p /opt/smi/izh/bin/
+sudo cp $GTHOME/langs/izh/src/analyser-gt-desc.xfst  /opt/smi/izh/bin/izh.fst
+sudo cp $GTHOME/langs/izh/src/generator-gt-norm.xfst /opt/smi/izh/bin/iizh.fst
+
 sudo mkdir -p /opt/smi/fkv/bin/
 sudo cp $GTHOME/langs/fkv/src/analyser-gt-desc.xfst  /opt/smi/fkv/bin/fkv.fst
 sudo cp $GTHOME/langs/fkv/src/generator-gt-norm.xfst /opt/smi/fkv/bin/ifkv.fst
