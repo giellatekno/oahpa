@@ -1,11 +1,9 @@
 # Non-linguistic settings.
 ApplicationSettings:
-  # TODO: implement
   app_name: "Neahttadigisánit"
   default_locale: "se"
   default_pair: ["sme", "nob"]
   mobile_default_pair: ["SoMe", "nob"]
-  # TODO: implement
   locales_available:
     - sme
     - nob
@@ -81,49 +79,15 @@ Morphology:
 Languages:
   - iso: sme
     name:
-      sme: "davvisámegiella"
       eng: "Northern Sámi"
       # TODO: formats for YAML parsing? 
       # eng: !_ "Northern Sámi"
       # eng: !!python/gettext "Northern Sámi"
-      nob: "nordsamisk"
-      fin: "pohjoissaame"
-
   - iso: SoMe
-    name:
-      sme: "davvisámegiella (#SoMe)"
-      eng: "Northern Sámi (#SoMe)"
-      # eng: !_ "Northern Sámi"
-      nob: "nordsamisk (#SoMe)"
-      fin: "pohjoissaame (#SoMe)"
-
   - iso: nob
-    name:
-      sme: "dárogiella"
-      eng: "Norwegian"
-      nob: "norsk"
-      fin: "norja"
-
   - iso: fin
-    name:
-      sme: "suomagiella"
-      eng: "Finnish"
-      nob: "finsk"
-      fin: "suomi"
-
   - iso: sma
-    name:
-      sme: "lullisámegiella"
-      eng: "Southern Sámi"
-      nob: "sørsamisk"
-      fin: "eteläsaame"
-
   - iso: eng
-    name:
-      sme: "eŋgelasgiella"
-      eng: "English"
-      nob: "engelsk"
-      fin: "englanti"
 
 # Here are the actual definitions of what dictionaries are available in the
 # system. What is presented in the UI also adheres to the order that is here.
