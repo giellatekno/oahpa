@@ -2,6 +2,7 @@
 # in the translations directory.
 
 ApplicationSettings:
+  app_name: "Neahttadigisánit"
   default_locale: "ru"
   default_pair: ["olo", "fin"]
   mobile_default_pair: false
@@ -17,7 +18,7 @@ Tools:
   xfst_lookup: &LOOKUP '/usr/bin/lookup'
   gthome: &GTHOME '/home/neahtta/gtsvn'
   opt: &OPT '/opt/b'
-
+ 
 # Morphological system definitions. Since YAML variables aren't able to
 # be used in concatenating strings, certain paths with references must
 # be lists. These are concatenated automatically.
@@ -66,9 +67,9 @@ Languages:
       nob: "finsk"
   - iso: liv
     name:
-      fin: "livvi"
-      eng: "livvi"
-      nob: "livvi"
+      fin: "liivi"
+      eng: "Livonian"
+      nob: "livisk"
 
 
 # This also dictates the order of the dictionaries in the UI for now.
@@ -93,12 +94,15 @@ Paradigms:
       - "Pregenerate"
     N:
       - "Sg+Par"
+      - "Sg+Apr"
       - "Sg+Gen"
       - "Pl+Par"
     V:
-      - "Act+Ind+Prt+Sg1"
-      - "Act+Ind+Pst+Sg3"
-      - "Pss+Ind+Prt+Pe4"
+      - "Ind+Prs+ScSg1"
+      - "Ind+Prs+ScSg3"
+      - "Ind+Prs+ScPl3"
+      - "Ind+Prt+ScSg1"
+  
   liv:
     PRON:
       - "Pregenerate"
@@ -107,9 +111,9 @@ Paradigms:
       - "Sg+Gen"
       - "Pl+Par"
     V:
-      - "Act+Ind+Prt+Sg1"
-      - "Act+Ind+Pst+Sg3"
-      - "Pss+Ind+Prt+Pe4"
+      - "Ind+Prs+Sg1"
+      - "Ind+ConNeg+Sg"
+      - "Ind+Prt+Sg1"
 
 
 TagSets:
