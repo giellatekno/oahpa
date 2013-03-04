@@ -195,6 +195,8 @@ def to_xml_string(n):
 def tagfilter(s, lang_iso, targ_lang):
     if not s:
         return s
+
+    print lang_iso, targ_lang
     filters = app.config.tag_filters.get((lang_iso, targ_lang), False)
     if filters:
         filtered = []
@@ -203,14 +205,21 @@ def tagfilter(s, lang_iso, targ_lang):
         else:
             parts = s.split(' ')
         for part in parts:
-            filtered.append(filters.get(part.lower(), part))
+            # try part, and if it doesn't work, then try part.lower()
+            _f_part = filters.get( part
+                                 , filters.get( part.lower()
+                                              , part
+                                              )
+                                 )
+            filtered.append(_f_part)
+
         return ' '.join([a for a in filtered if a.strip()])
     else:
         if isinstance(s, list):
             return ' '.join(s)
         else:
             return s
-
+    return s
 
 @app.template_filter('urlencode')
 def urlencode_filter(s):
