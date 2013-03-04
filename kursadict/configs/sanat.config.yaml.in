@@ -1,6 +1,3 @@
-# Default locale, but use ISO 2 code or whatever corresponds to what is
-# in the translations directory.
-
 ApplicationSettings:
   app_name: "Neahttadigisánit"
   default_locale: "ru"
@@ -12,21 +9,15 @@ ApplicationSettings:
     - liv
     - lv
 
-# This option set is not used outside of providing shortcuts for
-# following settings.
 Tools:
   xfst_lookup: &LOOKUP '/usr/bin/lookup'
-  gthome: &GTHOME '/home/neahtta/gtsvn'
-  opt: &OPT '/opt/b'
+  opt: &OPT '/opt/smi/'
  
-# Morphological system definitions. Since YAML variables aren't able to
-# be used in concatenating strings, certain paths with references must
-# be lists. These are concatenated automatically.
 Morphology:
   olo:
     tool: *LOOKUP
-    file: [*GTHOME, '/langs/olo/src/analyser-gt-desc.xfst']
-    inverse_file: [*GTHOME, '/langs/olo/src/generator-gt-norm.xfst']
+    file: [*OPT, '/olo/bin/olo.fst']
+    inverse_file: [*OPT, '/olo/bin/iolo.fst']
     format: 'xfst'
     options:
       compoundBoundary: "+Use/Circ#"
@@ -35,8 +26,8 @@ Morphology:
       inverse_tagsep: '+'
   fin:
     tool: *LOOKUP
-    file: [*GTHOME, '/langs/fin/src/analyser-gt-desc.xfst']
-    inverse_file: [*GTHOME, '/langs/fin/src/generator-gt-norm.xfst']
+    file: [*OPT, '/fin/bin/fin.fst']
+    inverse_file: [*OPT, '/fin/bin/ifin.fst']
     format: 'xfst'
     options:
       compoundBoundary: "+Use/Circ#"
@@ -45,18 +36,8 @@ Morphology:
       inverse_tagsep: '+'
   liv:
     tool: *LOOKUP
-    file: [*GTHOME, '/langs/liv/src/analyser-gt-desc.xfst']
-    inverse_file: [*GTHOME, '/langs/liv/src/generator-gt-norm.xfst']
-    format: 'xfst'
-    options:
-      compoundBoundary: "+Use/Circ#"
-      derivationMarker: "+Der"
-      tagsep: '+'
-      inverse_tagsep: '+'
-  liv:
-    tool: *LOOKUP
-    file: [*GTHOME, '/langs/fkv/src/analyser-gt-desc.xfst']
-    inverse_file: [*GTHOME, '/langs/fkv/src/generator-gt-norm.xfst']
+    file: [*OPT, '/fkv/bin/fkv.fst']
+    inverse_file: [*OPT, '/fkv/bin/ifkv.fst']
     format: 'xfst'
     options:
       compoundBoundary: "+Use/Circ#"
@@ -95,6 +76,11 @@ Languages:
       fin: "kvääni"
       eng: "Kven"
       nob: "kvensk"
+  - iso: nob
+    name:
+      fin: "norsk"
+      eng: "Norwegian"
+      nob: "norsk"
 
 
 # This also dictates the order of the dictionaries in the UI for now.
@@ -142,6 +128,31 @@ Paradigms:
       - "Ind+Prs+Sg1"
       - "Ind+ConNeg+Sg"
       - "Ind+Prt+Sg1"
+
+  fkv:
+    PRON:
+      - "Pregenerate"
+    N:
+      - "Sg+Par"
+      - "Sg+Gen"
+      - "Pl+Par"
+    V:
+      - "Ind+Prs+Sg1"
+      - "Ind+ConNeg+Sg"
+      - "Ind+Prt+Sg1"
+
+  fin:
+    PRON:
+      - "Pregenerate"
+    N:
+      - "Sg+Par"
+      - "Sg+Gen"
+      - "Pl+Par"
+    V:
+      - "Ind+Prs+Sg1"
+      - "Ind+ConNeg+Sg"
+      - "Ind+Prt+Sg1"
+
 
 
 TagSets:
