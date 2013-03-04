@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# This is a temporary solution until I figure out the right way of 
+# This is a temporary solution until I figure out the right way of
 # getting Babel to compile strings out of app.config.yaml
 
 # Here are all the names of the languages used in dictionaries, for
@@ -29,4 +29,12 @@ NAMES = dict([
     ('fin', _(u"Finnish")),
     ('nob', _(u"Norwegian")),
 
+])
+
+# Only put the exceptional ISOs here
+ISO_TRANSFORMS = dict([
+    ('se', 'sme'),
+    ('no', 'nob'),
+    ('fi', 'fin'),
+    ('en', 'eng'),
 ])

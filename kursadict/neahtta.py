@@ -118,13 +118,8 @@ user_log.setLevel("INFO")
 
 
 # TODO: locales_available
-AVAILABLE_LOCALE_ISO_TRANSFORM = {
-    'se': 'sme',
-    'no': 'nob',
-    'fi': 'fin',
-    'en': 'eng',
-    'sma': 'sma',
-}
+from language_names import ISO_TRANSFORMS
+AVAILABLE_LOCALE_ISO_TRANSFORM = ISO_TRANSFORMS
 
 ## These things are sort of a temporary fix for some of the localization
 ## that runs off of CSS selectors, in order to include the 3 digit ISO
