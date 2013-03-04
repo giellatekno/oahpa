@@ -1,47 +1,44 @@
 # TODAY
 
-* URLs
+* lexicon formatters
+
+## Olo discoveries
+
+Missing translations still show up in the interface, e.g., mehiläine
+
+    <tg xml:lang="fin">
+        <t pos="N"/>
+    </tg>
+
+## Liv discoveries
+
+Likely you know already, but part of speech needs to be consistent with
+analyzer PoS, and this will allow paradigm generation
+
+    <l pos="VT">aigõ</l>
+
+However, valency should not be lost, and this can be marked in an
+attribute.
+
+
+## Myv discoveries
+
+filter on tg xml:lang isn't working somehow.
+Lots of doubled entries, so i am using only a subset of the files in src
+
+
+## post launch TODOs:
+
+ * URLs
 
     myv, mdf: valks.oahpa.no
+    olo, izh, liv: sanat.oahpa.no
+
     mrh, mrj: muter.oahpa.no
     kpv: kyv.oahpa.no
     yrk: vada.oahpa.no
-    dei austersjöfinske: sanat.oahpa.no olo, izh, liv
 
     prioritet 1: liv<-> fin, myv<->___ 
-
-* fst -> user friendly tags / differentiate between interface language
-
-  conf file to jaska and trond: 
-
-    FST tags -> User friendly ruler
-
-    liv_LV
-    olo_RU
-    kpv_RU
-    mrj_RU
-    mhr_RU
-    mdf_RU
-    yrk_RU
-    myv_RU
-
-* convert JSP wiki stuff
-
-* lexicon formatters
-
-
-* xml files
-
-    main/langs/LANG/src/morphology/stems/*.xml
-    kpv ligg i main/words/dicts/komX/
-
-    olo: test 
-    liv: test
-    --
-    kpv, mrj, mhr, mdf, yrk, myv
-   
-
-## post launch TODOs:
 
  * internationalization flags instead 
    main/xtdoc/gtuit/src/documentation/content/xdocs/images
