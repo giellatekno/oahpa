@@ -127,11 +127,13 @@
                                         <span>{% trans %}About{% endtrans %}</span>
                                 </a></li>
                                 {% block extra_nav %}
+                                {# TODO: locales available #}
                                 {% endblock %}
                                 <li class="display-phone hidden-tablet hidden-desktop"><span>{% trans %}Interface language{% endtrans %}</span></li>
-                                <li class="display-phone hidden-tablet hidden-desktop"><a href="/locale/se/">{% trans %}North Sámi{% endtrans %}</a></li>
-                                <li class="display-phone hidden-tablet hidden-desktop"><a href="/locale/no/">{% trans %}Norwegian{% endtrans %}</a></li>
-                                <li class="display-phone hidden-tablet hidden-desktop"><a href="/locale/fi/">{% trans %}Finnish{% endtrans %}</a></li>
+                                {% for iso in internationalizations %}
+                                <li class="display-phone hidden-tablet hidden-desktop">
+                                    <a href="/locale/{{ iso }}/">{{ iso|iso_to_i18n }}</a></li>
+                                {% endfor %}
                             </ul>
                             {% include 'language_select.html' %}
                         </div>

@@ -6,17 +6,27 @@
 # internationalization.
 from flaskext.babel import lazy_gettext as _
 NAMES = dict([
+    # sanit
     ('sme', _(u"North Sámi")),
     ('SoMe', _(u"North Sámi (#SoMe)")),
-    ('fin', _(u"Finnish")),
-    ('nob', _(u"Norwegian")),
+
+    # baakoeh
     ('sma', _(u"South Sámi")),
-    #
+
+    # kyv
     ('kpv', _(u"Komi")),
+
+    # sanat
     ('fkv', _(u"Kven")),
     ('liv', _(u"Livonian")),
     ('olo', _(u"Olonetsian")),
+    ('izh', _(u"Izhorian")),
 
+    # valks
     ('myv', _(u"Erzya Mordvin")),
+
+    # target languages
+    ('fin', _(u"Finnish")),
+    ('nob', _(u"Norwegian")),
 
 ])

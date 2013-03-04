@@ -27,6 +27,28 @@ class Config(Config):
                                self.filename)
 
     @property
+    def locales_available(self):
+        _p = self.yaml.get('ApplicationSettings', {})\
+                      .get('locales_available', False)
+        if _p:
+            return _p
+        else:
+            raise RuntimeError('locales_available not specified in '
+                               'config file %s, in ApplicationSettings.' %
+                               self.filename)
+
+    @property
+    def default_locale(self):
+        _p = self.yaml.get('ApplicationSettings', {})\
+                      .get('default_locale', False)
+        if _p:
+            return _p
+        else:
+            raise RuntimeError('default_locale not specified in '
+                               'config file %s, in ApplicationSettings.' %
+                               self.filename)
+
+    @property
     def mobile_redirect_pair(self):
         _p = self.yaml.get('ApplicationSettings', {})\
                       .get('mobile_default_pair', None)

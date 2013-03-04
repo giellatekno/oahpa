@@ -8,6 +8,7 @@ ApplicationSettings:
     - fi
     - liv
     - lv
+    - izh
 
 Tools:
   xfst_lookup: &LOOKUP '/usr/bin/lookup'
@@ -54,6 +55,16 @@ Morphology:
       derivationMarker: "+Der"
       tagsep: '+'
       inverse_tagsep: '+'
+  izh:
+    tool: *LOOKUP
+    file: [*OPT, '/izh/bin/izh.fst']
+    inverse_file: [*OPT, '/izh/bin/iizh.fst']
+    format: 'xfst'
+    options:
+      compoundBoundary: "+Use/Circ#"
+      derivationMarker: "+Der"
+      tagsep: '+'
+      inverse_tagsep: '+'
 
 Languages:
   - iso: olo
@@ -76,6 +87,11 @@ Languages:
       fin: "kvääni"
       eng: "Kven"
       nob: "kvensk"
+  - iso: izh
+    name:
+      fin: "Izhorian"
+      eng: "Izhorian"
+      nob: "Izhorian"
   - iso: nob
     name:
       fin: "norsk"
@@ -91,6 +107,9 @@ Dictionaries:
   - source: liv
     target: fin
     path: 'dicts/liv-fin.all.xml'
+  - source: izh
+    target: fin
+    path: 'dicts/izh-fin.all.xml'
   - source: fkv 
     target: nob
     path: 'dicts/fkv-nob.all.xml'
@@ -153,6 +172,18 @@ Paradigms:
       - "Ind+ConNeg+Sg"
       - "Ind+Prt+Sg1"
 
+  izh:
+    PRON:
+      - "Pregenerate"
+    N:
+      - "Sg+Par"
+      - "Sg+Gen"
+      - "Pl+Par"
+    V:
+      - "Ind+Prs+Sg1"
+      - "Ind+ConNeg+Sg"
+      - "Ind+Prt+Sg1"
+
 
 
 TagSets:
@@ -189,4 +220,10 @@ TagTransforms:
     V: "v."
     N: "s."
     A: "adj."
+
+  (izh, fin):
+    V: "v."
+    N: "s."
+    A: "adj."
+
 

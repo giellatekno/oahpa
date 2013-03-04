@@ -116,11 +116,8 @@ useLogFile = logging.FileHandler('user_log.txt')
 user_log.addHandler(useLogFile)
 user_log.setLevel("INFO")
 
-AVAILABLE_LOCALES = [ 'se'
-                    , 'no'
-                    , 'fi'
-                    ]
 
+# TODO: locales_available
 AVAILABLE_LOCALE_ISO_TRANSFORM = {
     'se': 'sme',
     'no': 'nob',
@@ -142,19 +139,21 @@ def append_session_globals():
     app.jinja_env.globals['session_locale'] = loc
     app.jinja_env.globals['session_locale_long_iso'] = iso_filter(loc)
 
+@app.context_processor
+def add_languages():
+    print app.config.locales_available
+    return dict(internationalizations=app.config.locales_available)
+
 @babel.localeselector
 def get_locale():
     ses_lang = session.get('locale', None)
+    locales = app.config.locales_available
     if ses_lang is not None:
         return ses_lang
     else:
-        ses_lang = 'se'
-        if 'baakoeh' in request.host:
-            ses_lang = 'no'
-        elif (u'sanit' in request.host) or (u'sánit' in request.host):
-            ses_lang = 'se'
-        else:
-            ses_lang = request.accept_languages.best_match(AVAILABLE_LOCALES)
+        ses_lang = app.config.default_locale
+        if not app.config.default_locale:
+            ses_lang = request.accept_languages.best_match(locales)
         session.locale = ses_lang
         app.jinja_env.globals['session'] = session
     return ses_lang
@@ -781,7 +780,6 @@ def index():
 
     return render_template( 'index.html'
                           , language_pairs=app.config.pair_definitions
-                          , internationalizations=AVAILABLE_LOCALES
                           , _from=default_from
                           , _to=default_to
                           , show_info=True
