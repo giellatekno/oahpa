@@ -29,6 +29,11 @@ NAMES = dict([
     ('fin', _(u"Finnish")),
     ('nob', _(u"Norwegian")),
 
+    ('ru', _(u"Russian")),
+    ('fi', _(u"Finnish")),
+    ('no', _(u"Norwegian")),
+    ('lv', _(u"Latvian")),
+
 ])
 
 # Only put the exceptional ISOs here

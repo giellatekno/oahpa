@@ -116,8 +116,6 @@ useLogFile = logging.FileHandler('user_log.txt')
 user_log.addHandler(useLogFile)
 user_log.setLevel("INFO")
 
-
-# TODO: locales_available
 from language_names import ISO_TRANSFORMS
 AVAILABLE_LOCALE_ISO_TRANSFORM = ISO_TRANSFORMS
 
@@ -136,7 +134,6 @@ def append_session_globals():
 
 @app.context_processor
 def add_languages():
-    print app.config.locales_available
     return dict(internationalizations=app.config.locales_available)
 
 @babel.localeselector
