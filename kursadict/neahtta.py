@@ -136,6 +136,18 @@ def append_session_globals():
 def add_languages():
     return dict(internationalizations=app.config.locales_available)
 
+@app.context_processor
+def define_app_name():
+    return dict(app_name=app.config.app_name)
+
+@app.context_processor
+def define_app_meta():
+    return dict(app_meta_desc=app.config.meta_description)
+
+@app.context_processor
+def define_app_meta_keywords():
+    return dict(app_meta_keywords=app.config.meta_keywords)
+
 @babel.localeselector
 def get_locale():
     ses_lang = session.get('locale', None)

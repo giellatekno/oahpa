@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 import sys
 
 from flask import Config
@@ -8,6 +9,8 @@ def gettext_yaml_wrapper(loader, node):
     from flaskext.babel import lazy_gettext as _
     return _(node.value)
 
+# TODO: make this work, or figure out how babel wants a parser for yaml
+# constructed.
 yaml.add_constructor('!_', gettext_yaml_wrapper)
 
 class Config(Config):
@@ -38,6 +41,17 @@ class Config(Config):
                                self.filename)
 
     @property
+    def app_name(self):
+        _p = self.yaml.get('ApplicationSettings', {})\
+                      .get('app_name', u"Neahttadigisánit")
+        if _p:
+            return _p
+        else:
+            raise RuntimeError('app_name not specified in '
+                               'config file %s, in ApplicationSettings.' %
+                               self.filename)
+
+    @property
     def default_locale(self):
         _p = self.yaml.get('ApplicationSettings', {})\
                       .get('default_locale', False)
@@ -45,6 +59,28 @@ class Config(Config):
             return _p
         else:
             raise RuntimeError('default_locale not specified in '
+                               'config file %s, in ApplicationSettings.' %
+                               self.filename)
+
+    @property
+    def meta_keywords(self):
+        _p = self.yaml.get('ApplicationSettings', {})\
+                      .get('meta_keywords', False)
+        if _p:
+            return _p
+        else:
+            raise RuntimeError('meta_keywords not specified in '
+                               'config file %s, in ApplicationSettings.' %
+                               self.filename)
+
+    @property
+    def meta_description(self):
+        _p = self.yaml.get('ApplicationSettings', {})\
+                      .get('meta_description', False)
+        if _p:
+            return _p
+        else:
+            raise RuntimeError('meta_description not specified in '
                                'config file %s, in ApplicationSettings.' %
                                self.filename)
 

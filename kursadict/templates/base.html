@@ -7,19 +7,27 @@
         {# TODO: enable indexing by removing following #}
         <meta name="robots" content="index">
         {% block meta_title %}
-        <meta name="title" content="Neahttadigisánit">
+        <meta name="title" content="{{ app_name }}">
         {% endblock %}
 
         {% block meta_description %}
-        <meta name="description" content="Gratis online mobilvennlige nordsamiske og sørsamiske ordbøker">
+            {% if app_meta_desc %}
+                <meta name="description" content="{{ app_meta_desc }}">
+            {% else %}
+                <meta name="description" content="Gratis online mobilvennlige nordsamiske og sørsamiske ordbøker">
+            {% endif %}
         {% endblock %}
 
-        <meta name="keywords" content="samisk ordbok, på nett, mobil ordbok, ordbok app, 
-            sanakirjat, sanakirja, sátnegirjjit, sátnegirji, nordsamisk,
-            sørsamisk, finsk, norsk, pohjoissaame, davvisámegiella north sámi,
-            south sámi, norwegian, finnish, sámegiella, sámi language,
-            lullisámegiella, sørsamisk, mobil ordbok">
-        <title>Neahttadigisánit{% block title %}{% endblock %}</title>
+        {% if app_meta_keywords %}
+            <meta name="keywords" content="{{ app_meta_keywords }}">
+        {% else %}
+            <meta name="keywords" content="samisk ordbok, på nett, mobil ordbok, ordbok app, 
+                sanakirjat, sanakirja, sátnegirjjit, sátnegirji, nordsamisk,
+                sørsamisk, finsk, norsk, pohjoissaame, davvisámegiella north sámi,
+                south sámi, norwegian, finnish, sámegiella, sámi language,
+                lullisámegiella, sørsamisk, mobil ordbok">
+        {% endif %}
+        <title>{{ app_name }}{% block title %}{% endblock %}</title>
 
 	    <link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}" type="image/x-icon">
 	    <link rel="icon" href="{{url_for('static', filename='favicon.ico')}}" type="image/x-icon">
@@ -112,7 +120,7 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </a>
-                        <a class="brand" href="/">Neahttadigisánit</a>
+                        <a class="brand" href="/">{{ app_name }}</a>
                         <div class="nav-collapse main-nav">
                             <ul class="nav">
                                 <li><a href="/">

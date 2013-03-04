@@ -1,14 +1,18 @@
 ApplicationSettings:
-  app_name: "Neahttadigisánit"
+  app_name: "Nettidigisanat"
   default_locale: "ru"
   default_pair: ["olo", "fin"]
   mobile_default_pair: false
   locales_available:
-    - olo
     - fi
-    - liv
     - lv
-    - izh
+    - ru
+  # TODO: someone will have to decide on the meta keywords and
+  # descriptions for google.
+  meta_description: >
+     Free, mobile-friendly dictionaries for Olonetsian, Livonian, and Kven.
+  meta_keywords: >
+     kven, olonets, olonetsian, livonian, livvi, liivi 
 
 Tools:
   xfst_lookup: &LOOKUP '/usr/bin/lookup'
@@ -68,36 +72,11 @@ Morphology:
 
 Languages:
   - iso: olo
-    name:
-      fin: "olonets"
-      eng: "olonets"
-      nob: "olonets"
   - iso: fin
-    name:
-      fin: "suomi"
-      eng: "finnish"
-      nob: "finsk"
   - iso: liv
-    name:
-      fin: "liivi"
-      eng: "Livonian"
-      nob: "livisk"
   - iso: fkv
-    name:
-      fin: "kvääni"
-      eng: "Kven"
-      nob: "kvensk"
   - iso: izh
-    name:
-      fin: "Izhorian"
-      eng: "Izhorian"
-      nob: "Izhorian"
   - iso: nob
-    name:
-      fin: "norsk"
-      eng: "Norwegian"
-      nob: "norsk"
-
 
 # This also dictates the order of the dictionaries in the UI for now.
 Dictionaries:
