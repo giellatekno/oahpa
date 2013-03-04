@@ -36,7 +36,10 @@ class MorphoLexicon(object):
         # form that does not exist in lexicon, then fall back to
         # compounds?
         analyzer = self.analyzers.get(source_lang)
-        analyses = analyzer.lemmatize(wordform, **morph_kwargs)
+        try:
+            analyses = analyzer.lemmatize(wordform, **morph_kwargs)
+        except AttributeError:
+            analyses = []
 
         if analyses:
             lookup_lemmas = [l.lemma for l in analyses]
@@ -45,8 +48,6 @@ class MorphoLexicon(object):
 
         xml_results = []
         for analysis in list(set(analyses)):
-            lem = analysis.lemma
-            pos = analysis.pos
             lex_kwargs = {
                 'lemma': analysis.lemma,
                 'pos': analysis.pos,
