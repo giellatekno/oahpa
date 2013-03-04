@@ -5,6 +5,11 @@ ApplicationSettings:
   default_locale: "ru"
   default_pair: ["olo", "fin"]
   mobile_default_pair: false
+  locales_available:
+    - olo
+    - fi
+    - liv
+    - lv
 
 # This option set is not used outside of providing shortcuts for
 # following settings.
@@ -17,20 +22,30 @@ Tools:
 # be used in concatenating strings, certain paths with references must
 # be lists. These are concatenated automatically.
 Morphology:
-  # olo:
-  #   tool: *LOOKUP
-  #   file: [*OPT, "/olo/bin/n-sme.fst"]
-  #   inverse_file: [*OPT, "/olo/bin/dict-iolo-norm.fst"]
-  #   format: 'xfst'
-  #   options: &sme_fst_options
-  #     compoundBoundary: "  + #"
-  #     derivationMarker: "suff."
-  #     tagsep: ' '
-  #     inverse_tagsep: '+'
+  olo:
+    tool: *LOOKUP
+    file: [*GTHOME, '/langs/olo/src/analyser-gt-desc.xfst']
+    inverse_file: [*GTHOME, '/langs/olo/src/generator-gt-norm.xfst']
+    format: 'xfst'
+    options:
+      compoundBoundary: "+Use/Circ#"
+      derivationMarker: "+Der"
+      tagsep: '+'
+      inverse_tagsep: '+'
   fin:
     tool: *LOOKUP
     file: [*GTHOME, '/langs/fin/src/analyser-gt-desc.xfst']
     inverse_file: [*GTHOME, '/langs/fin/src/generator-gt-norm.xfst']
+    format: 'xfst'
+    options:
+      compoundBoundary: "+Use/Circ#"
+      derivationMarker: "+Der"
+      tagsep: '+'
+      inverse_tagsep: '+'
+  liv:
+    tool: *LOOKUP
+    file: [*GTHOME, '/langs/liv/src/analyser-gt-desc.xfst']
+    inverse_file: [*GTHOME, '/langs/liv/src/generator-gt-norm.xfst']
     format: 'xfst'
     options:
       compoundBoundary: "+Use/Circ#"
@@ -43,14 +58,17 @@ Languages:
     name:
       fin: "olonets"
       eng: "olonets"
-      # eng: !_ "Northern Sámi"
       nob: "olonets"
   - iso: fin
     name:
       fin: "suomi"
       eng: "finnish"
-      # eng: !_ "Northern Sámi"
       nob: "finsk"
+  - iso: liv
+    name:
+      fin: "livvi"
+      eng: "livvi"
+      nob: "livvi"
 
 
 # This also dictates the order of the dictionaries in the UI for now.
@@ -58,6 +76,9 @@ Dictionaries:
   - source: olo
     target: fin
     path: 'dicts/olo-fin.all.xml'
+  - source: liv
+    target: fin
+    path: 'dicts/liv-fin.all.xml'
 
 
 # Abstracting display formats out here, because there are different
@@ -71,23 +92,24 @@ Paradigms:
     PRON:
       - "Pregenerate"
     N:
-      - "Sg+Nom"
+      - "Sg+Par"
       - "Sg+Gen"
-      - "Sg+Ill"
-      - "Pl+Ill"
-    A:
-      - "Sg+Nom"
-      - "Comp+Sg+Nom"
-      - "Superl+Sg+Nom"
+      - "Pl+Par"
     V:
-      - "Ind+Prs+Sg1"
-      - "Ind+Prs+Sg3"
-      - "Ind+Prs+Pl3"
-      - "Ind+Prt+Sg1"
-      - "ConNeg"
-      - "PrfPrc"
-      - "Ger"
-      - "VGen"
+      - "Act+Ind+Prt+Sg1"
+      - "Act+Ind+Pst+Sg3"
+      - "Pss+Ind+Prt+Pe4"
+  liv:
+    PRON:
+      - "Pregenerate"
+    N:
+      - "Sg+Par"
+      - "Sg+Gen"
+      - "Pl+Par"
+    V:
+      - "Act+Ind+Prt+Sg1"
+      - "Act+Ind+Pst+Sg3"
+      - "Pss+Ind+Prt+Pe4"
 
 
 TagSets:
