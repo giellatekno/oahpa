@@ -221,6 +221,10 @@ def urlencode_filter(s):
 def page_not_found(e):
     return render_template('404.html'), 404
 
+@app.errorhandler(500)
+def server_error(e, *args, **kwargs):
+    return render_template('500.html', error=e), 500
+
 @app.route('/autocomplete/<from_language>/<to_language>/',
            methods=['GET'], endpoint="autocomplete")
 def autocomplete(from_language, to_language):
@@ -541,7 +545,10 @@ def wordDetail(from_language, to_language, wordform, format):
             except:
                 node = False
 
-            paradigm = lang_paradigms.get(pos.upper())
+            if pos is None:
+                error_msg = "POS for entry is None\n"
+                error_msg += "\n" + '\n'.join(node_texts)
+                abort(500, error_msg)
 
             if paradigm:
                 _pos_type = [pos]
