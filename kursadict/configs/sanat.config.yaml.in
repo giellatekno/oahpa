@@ -53,6 +53,16 @@ Morphology:
       derivationMarker: "+Der"
       tagsep: '+'
       inverse_tagsep: '+'
+  liv:
+    tool: *LOOKUP
+    file: [*GTHOME, '/langs/fkv/src/analyser-gt-desc.xfst']
+    inverse_file: [*GTHOME, '/langs/fkv/src/generator-gt-norm.xfst']
+    format: 'xfst'
+    options:
+      compoundBoundary: "+Use/Circ#"
+      derivationMarker: "+Der"
+      tagsep: '+'
+      inverse_tagsep: '+'
 
 Languages:
   - iso: olo
@@ -70,6 +80,11 @@ Languages:
       fin: "liivi"
       eng: "Livonian"
       nob: "livisk"
+  - iso: kpv
+    name:
+      fin: "kvääni"
+      eng: "Kven"
+      nob: "kvensk"
 
 
 # This also dictates the order of the dictionaries in the UI for now.
@@ -80,6 +95,9 @@ Dictionaries:
   - source: liv
     target: fin
     path: 'dicts/liv-fin.all.xml'
+  - source: kpv 
+    target: nob
+    path: 'dicts/kpv-nob.all.xml'
 
 
 # Abstracting display formats out here, because there are different
@@ -142,6 +160,11 @@ TagTransforms:
     A: "adj."
 
   (liv, liv):
+    V: "v."
+    N: "s."
+    A: "adj."
+
+  (kpv, nob):
     V: "v."
     N: "s."
     A: "adj."
