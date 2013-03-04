@@ -11,5 +11,11 @@ NAMES = dict([
     ('fin', _(u"Finnish")),
     ('nob', _(u"Norwegian")),
     ('sma', _(u"South Sámi")),
-])
+    #
+    ('kpv', _(u"Komi")),
+    ('liv', _(u"Livonian")),
+    ('olo', _(u"Olonetsian")),
 
+    ('myv', _(u"Erzya Mordvin")),
+
+])
