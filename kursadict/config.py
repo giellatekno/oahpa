@@ -117,7 +117,7 @@ class Config(Config):
         if not self._languages:
             self._languages = {}
             for lang in self.yaml.get('Languages'):
-                self._languages[lang.get('iso')] = lang.get('name')
+                self._languages[lang.get('iso')] = lang.get('name', {})
 
         return self._languages
 
@@ -224,7 +224,9 @@ class Config(Config):
             if 'options' in _kwargs_in:
                 kwargs['options'] = _kwargs_in['options']
 
-            self._morphologies[iso] = m_format(**kwargs) >> Morphology(iso, cache=morph_cache)
+            self._morphologies[iso] = \
+                m_format(**kwargs) >> Morphology(iso, cache=morph_cache)
+
         return self._morphologies
 
     def test(self, silent=False):
@@ -279,4 +281,3 @@ class Config(Config):
         self.lexicon = Lexicon(self)
 
         return True
-
