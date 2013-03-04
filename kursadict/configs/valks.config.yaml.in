@@ -2,11 +2,12 @@
 # in the translations directory.
 
 ApplicationSettings:
+  app_name: "Neahttadigisánit"
   default_locale: "se"
-  default_pair: ["myv", "rus"]
+  default_pair: ["kpv", "rus"]
   mobile_default_pair: false
   locales_available:
-    - myv
+    - kpv
     - rus
     - fin
 
@@ -22,10 +23,10 @@ Tools:
 # be used in concatenating strings, certain paths with references must
 # be lists. These are concatenated automatically.
 Morphology:
-  myv:
+  kpv:
     tool: *LOOKUP
-    file: [*GTHOME, '/langs/myv/src/analyser-gt-desc.xfst']
-    inverse_file: [*GTHOME, '/langs/myv/src/generator-gt-norm.xfst']
+    file: [*GTHOME, '/langs/kpv/src/analyser-gt-desc.xfst']
+    inverse_file: [*GTHOME, '/langs/kpv/src/generator-gt-norm.xfst']
     format: 'xfst'
     options:
       compoundBoundary: "+Use/Circ#"
@@ -44,7 +45,7 @@ Morphology:
       inverse_tagsep: '+'
 
 Languages:
-  - iso: myv
+  - iso: kpv
     name:
       eng: "komi"
       nob: "komi"
@@ -68,15 +69,15 @@ Languages:
 
 # This also dictates the order of the dictionaries in the UI for now.
 Dictionaries:
-  - source: myv
+  - source: kpv
     target: eng
     path: 'dicts/kom2x.all.xml'
 
-  - source: myv
+  - source: kpv
     target: fin
     path: 'dicts/kom2x.all.xml'
 
-  - source: myv
+  - source: kpv
     target: rus
     path: 'dicts/kom2x.all.xml'
 
@@ -87,7 +88,7 @@ Dictionaries:
 # this is supplied automatically. Otherwise use generation FST tag
 # format.
 Paradigms:
-  myv:
+  kpv:
     PRON:
       - "Pregenerate"
     N:
@@ -111,7 +112,7 @@ Paradigms:
 
 
 TagSets:
-  myv:
+  kpv:
     pos: ["N", "V", "A", "Pr", "Po", "Num"]
     type: ["NomAg", "G3", "aktor"]
 
@@ -124,7 +125,7 @@ TagSets:
 
 TagTransforms:
 
-  (myv, rus):
+  (kpv, rus):
     V: "v."
     N: "s."
     A: "adj."
@@ -134,7 +135,7 @@ TagTransforms:
     N: "s."
     A: "adj."
 
-  (myv, myv):
+  (kpv, kpv):
     V: "v."
     N: "s."
     A: "adj."
