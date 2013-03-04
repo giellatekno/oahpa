@@ -1,9 +1,6 @@
-# Default locale, but use ISO 2 code or whatever corresponds to what is
-# in the translations directory.
-
 ApplicationSettings:
   app_name: "Neahttadigisánit"
-  default_locale: "se"
+  default_locale: "ru"
   default_pair: ["myv", "rus"]
   mobile_default_pair: false
   locales_available:
@@ -11,22 +8,15 @@ ApplicationSettings:
     - rus
     - fin
 
-
-# This option set is not used outside of providing shortcuts for
-# following settings.
 Tools:
   xfst_lookup: &LOOKUP '/usr/bin/lookup'
-  gthome: &GTHOME '/home/neahtta/gtsvn'
-  opt: &OPT '/opt/smi'
+  opt: &OPT '/opt/smi/'
 
-# Morphological system definitions. Since YAML variables aren't able to
-# be used in concatenating strings, certain paths with references must
-# be lists. These are concatenated automatically.
 Morphology:
   myv:
     tool: *LOOKUP
-    file: [*GTHOME, '/langs/myv/src/analyser-gt-desc.xfst']
-    inverse_file: [*GTHOME, '/langs/myv/src/generator-gt-norm.xfst']
+    file: [*OPT, '/myv/bin/myv.fst']
+    inverse_file: [*OPT, '/myv/bin/imyv.fst']
     format: 'xfst'
     options:
       compoundBoundary: "+Use/Circ#"
@@ -35,8 +25,8 @@ Morphology:
       inverse_tagsep: '+'
   fin:
     tool: *LOOKUP
-    file: [*GTHOME, '/langs/fin/src/analyser-gt-desc.xfst']
-    inverse_file: [*GTHOME, '/langs/fin/src/generator-gt-norm.xfst']
+    file: [*OPT, '/fin/bin/fin.fst']
+    inverse_file: [*OPT, '/fin/bin/ifin.fst']
     format: 'xfst'
     options:
       compoundBoundary: "+Use/Circ#"
@@ -66,8 +56,6 @@ Languages:
       nob: "russian"
       fin: "russian"
 
-
-# This also dictates the order of the dictionaries in the UI for now.
 Dictionaries:
   - source: myv
     target: eng
@@ -81,12 +69,6 @@ Dictionaries:
     target: rus
     path: 'dicts/myv-all.xml'
 
-# Abstracting display formats out here, because there are different
-# requirements for different languages and different wordforms.
-
-# Paradigms for generation on detailed pages. Leave POS out of tags,
-# this is supplied automatically. Otherwise use generation FST tag
-# format.
 Paradigms:
   myv:
     PRON:
@@ -116,13 +98,10 @@ TagSets:
     pos: ["N", "V", "A", "Pr", "Po", "Num"]
     type: ["NomAg", "G3", "aktor"]
 
-# Note, these come from dictionary fst, so tag parts are mostly 
-# already translated
 
 # (sourcelang, targlang)
 # V: "v."
 # FST format: "user friendly"
-
 TagTransforms:
 
   (myv, rus):
