@@ -15,5 +15,12 @@ java -Xmx2048m -cp ~/lib/saxon9.jar -Dfile.encoding=UTF8 net.sf.saxon.Transform 
     inDir=`pwd`/liv/ > liv-fin.all.xml
 rm -rf liv
 
+echo "Compiling kpv-nob.all.xml"
+mkdir kpv
+cp $GTHOME/langs/kpv/src/morphology/stems/*.xml `pwd`/kpv/
+java -Xmx2048m -cp ~/lib/saxon9.jar -Dfile.encoding=UTF8 net.sf.saxon.Transform \
+    -it:main $GTHOME/words/dicts/scripts/collect-dict-parts.xsl \
+    inDir=`pwd`/kpv/ > kpv-nob.all.xml
+rm -rf kpv
 
 echo "Done"
