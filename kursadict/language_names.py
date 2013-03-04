@@ -13,6 +13,7 @@ NAMES = dict([
     ('sma', _(u"South Sámi")),
     #
     ('kpv', _(u"Komi")),
+    ('fkv', _(u"Kven")),
     ('liv', _(u"Livonian")),
     ('olo', _(u"Olonetsian")),
 
