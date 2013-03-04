@@ -4,10 +4,10 @@
 ApplicationSettings:
   app_name: "Neahttadigisánit"
   default_locale: "se"
-  default_pair: ["kpv", "rus"]
+  default_pair: ["myv", "rus"]
   mobile_default_pair: false
   locales_available:
-    - kpv
+    - myv
     - rus
     - fin
 
@@ -23,10 +23,10 @@ Tools:
 # be used in concatenating strings, certain paths with references must
 # be lists. These are concatenated automatically.
 Morphology:
-  kpv:
+  myv:
     tool: *LOOKUP
-    file: [*GTHOME, '/langs/kpv/src/analyser-gt-desc.xfst']
-    inverse_file: [*GTHOME, '/langs/kpv/src/generator-gt-norm.xfst']
+    file: [*GTHOME, '/langs/myv/src/analyser-gt-desc.xfst']
+    inverse_file: [*GTHOME, '/langs/myv/src/generator-gt-norm.xfst']
     format: 'xfst'
     options:
       compoundBoundary: "+Use/Circ#"
@@ -45,11 +45,11 @@ Morphology:
       inverse_tagsep: '+'
 
 Languages:
-  - iso: kpv
+  - iso: myv
     name:
-      eng: "komi"
-      nob: "komi"
-      fin: "komi"
+      eng: "Erzya Mordvin"
+      nob: "Erzya Mordvin"
+      fin: "Erzya Mordvin"
   - iso: eng
     name:
       eng: "english"
@@ -69,17 +69,17 @@ Languages:
 
 # This also dictates the order of the dictionaries in the UI for now.
 Dictionaries:
-  - source: kpv
+  - source: myv
     target: eng
-    path: 'dicts/kom2x.all.xml'
+    path: 'dicts/myv.all.xml'
 
-  - source: kpv
+  - source: myv
     target: fin
-    path: 'dicts/kom2x.all.xml'
+    path: 'dicts/myv.all.xml'
 
-  - source: kpv
+  - source: myv
     target: rus
-    path: 'dicts/kom2x.all.xml'
+    path: 'dicts/myv.all.xml'
 
 # Abstracting display formats out here, because there are different
 # requirements for different languages and different wordforms.
@@ -88,7 +88,7 @@ Dictionaries:
 # this is supplied automatically. Otherwise use generation FST tag
 # format.
 Paradigms:
-  kpv:
+  myv:
     PRON:
       - "Pregenerate"
     N:
@@ -112,7 +112,7 @@ Paradigms:
 
 
 TagSets:
-  kpv:
+  myv:
     pos: ["N", "V", "A", "Pr", "Po", "Num"]
     type: ["NomAg", "G3", "aktor"]
 
@@ -125,7 +125,7 @@ TagSets:
 
 TagTransforms:
 
-  (kpv, rus):
+  (myv, rus):
     V: "v."
     N: "s."
     A: "adj."
@@ -135,7 +135,7 @@ TagTransforms:
     N: "s."
     A: "adj."
 
-  (kpv, kpv):
+  (myv, myv):
     V: "v."
     N: "s."
     A: "adj."
