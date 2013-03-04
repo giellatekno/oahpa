@@ -63,6 +63,16 @@ Morphology:
       derivationMarker: "+Der"
       tagsep: '+'
       inverse_tagsep: '+'
+  fkv:
+    tool: *LOOKUP
+    file: [*OPT, '/fkv/bin/fkv.fst']
+    inverse_file: [*OPT, '/fkv/bin/ifkv.fst']
+    format: 'xfst'
+    options:
+      compoundBoundary: "+Use/Circ#"
+      derivationMarker: "+Der"
+      tagsep: '+'
+      inverse_tagsep: '+'
 
 Languages:
   - iso: olo
@@ -80,7 +90,7 @@ Languages:
       fin: "liivi"
       eng: "Livonian"
       nob: "livisk"
-  - iso: kpv
+  - iso: fkv
     name:
       fin: "kvääni"
       eng: "Kven"
@@ -95,9 +105,9 @@ Dictionaries:
   - source: liv
     target: fin
     path: 'dicts/liv-fin.all.xml'
-  - source: kpv 
+  - source: fkv 
     target: nob
-    path: 'dicts/kpv-nob.all.xml'
+    path: 'dicts/fkv-nob.all.xml'
 
 
 # Abstracting display formats out here, because there are different
@@ -164,7 +174,7 @@ TagTransforms:
     N: "s."
     A: "adj."
 
-  (kpv, nob):
+  (fkv, nob):
     V: "v."
     N: "s."
     A: "adj."
