@@ -235,7 +235,7 @@ jQuery(document).ready ($) ->
     
     langpair = DSt.get('digisanit-select-langpair')
     [_f_from, _t_to] = langpair.split('-')
-    current_pair = $.fn.selectToLookup.options.dictionaries.filter (e) =>
+    current_pair = window.nds_opts.dictionaries.filter (e) =>
       if e.from.iso == _f_from and e.to.iso == _t_to
         return true
       else
@@ -500,7 +500,7 @@ jQuery(document).ready ($) ->
 
         unknownWord = (response) ->
           $(result_elem).append $("""
-            <p xml:lang="no" class="alert">Ukjent ord.</p>
+            <p xml:lang="no" class="alert">#{_("Unknown word")}</p>
           """)
           return false
 
