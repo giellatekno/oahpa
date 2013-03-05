@@ -6,6 +6,7 @@ ApplicationSettings:
   locales_available:
     - fi
     - lv
+    - kpv
     - ru
   # TODO: someone will have to decide on the meta keywords and
   # descriptions for google.
@@ -185,10 +186,17 @@ TagTransforms:
     N: "s."
     A: "adj."
 
-  (olo, olo):
+  (olo, olo): &olo_olo
     V: "v."
     N: "s."
     A: "adj."
+    Ind: ""
+    Prs: "prs."
+
+  (olo, fin):
+    <<: *olo_olo
+    # NB: example override of inherited key/value pairs
+    Ind: "ind."
 
   (liv, liv):
     V: "v."
