@@ -688,7 +688,11 @@ def bookmarklet_configs():
 @app.route('/read/', methods=['GET'])
 def bookmarklet():
     from bookmarklet_code import bookmarklet_escaped
+    from urllib import quote_plus
     bkmklt = bookmarklet_escaped
+    bkmklt = bookmarklet_escaped.replace( 'sanit.oahpa.no'
+                                        , quote_plus(request.host)
+                                        )
     return render_template('reader.html', bookmarklet=bkmklt)
 
 ##

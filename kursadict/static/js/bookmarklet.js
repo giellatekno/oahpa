@@ -631,9 +631,24 @@ TODO: prevent window url from updating with form submit params
 */
 
 jQuery(document).ready(function($) {
-  var API_HOST, Templates, cleanTooltipResponse, cloneContents, getFirstRange, initSpinner, lookupSelectEvent, surroundRange,
+  var API_HOST, Templates, cleanTooltipResponse, cloneContents, fakeGetText, getFirstRange, initSpinner, lookupSelectEvent, surroundRange, _,
     _this = this;
-  API_HOST = "http://sanit.oahpa.no/";
+  fakeGetText = function(string) {
+    /* Want to mark strings as requiring gettext somehow, so that
+        a babel or other extractor can find them.
+    */
+
+    var localized;
+    localized = window.nds_opts.localization[string];
+    if (localized != null) {
+      return localized;
+    } else {
+      return string;
+    }
+  };
+  _ = fakeGetText;
+  API_HOST = "http://localhost:5000/";
+  API_HOST = window.NDS_API_HOST || API_HOST;
   Templates = {
     OptionsMenu: function(opts) {
       return "omg";
@@ -654,7 +669,7 @@ jQuery(document).ready(function($) {
         }
         return options_block.join('\n');
       };
-      el = $("<div id=\"webdict_options\">\n  <div class=\"well\">\n  <a class=\"close\" href=\"#\" style=\"display: none;\">&times;</a>\n  <div class=\"trigger\">\n    <h1><a href=\"#\" class=\"open\">Á</a></h1>\n  </div>\n\n  <div class=\"option_panel\" style=\"display: none;\">\n    <ul class=\"nav nav-pills\">\n      <li class=\"active\">\n        <a href=\"#\" data-target=\"#options\">Instillinger</a>\n      </li>\n      <li><a href=\"#\" data-target=\"#about\">Om ordboka</a></li>\n    </ul>\n    <div id=\"options\" class=\"minipanel\">\n      <form class=\"\">\n        <label class=\"control-label\" for=\"inputEmail\">Ordbok</label>\n        <select type=\"radio\" \n               name=\"language_pair\">\n        " + (makeLanguageOption(opts.dictionaries)) + "\n        </select>\n        <br />\n        <button type=\"submit\" class=\"btn\" id=\"save\">Lagre</button>\n      </form>\n    </div>\n    <div id=\"about\" style=\"display: none;\" class=\"minipanel\">\n    <p>For å slå opp et ord holder du <em>Alt</em> eller <em>Option</em> (⌥) nede og dobbelklikker på ordet. Tjenesten vil kontakte denne nettsida og returnere ordboksoppslag etter en kort pause.</p>\n    <p>\n    \n    </p>\n    <p>Hvis du finner feil, eller hvis bokmerket ikke fungerer for ei viss side <a href=\"mailto:giellatekno@hum.uit.no\">må du gjerne kontakte oss</a>. Si i tilfelle fra hvilken side det gjaldt eller hva som var problemet.\n    </p>\n    </div>\n  </div>\n</div>");
+      el = $("<div id=\"webdict_options\">\n  <div class=\"well\">\n  <a class=\"close\" href=\"#\" style=\"display: none;\">&times;</a>\n  <div class=\"trigger\">\n    <h1><a href=\"#\" class=\"open\">" + (_("Á")) + "</a></h1>\n  </div>\n\n  <div class=\"option_panel\" style=\"display: none;\">\n    <ul class=\"nav nav-pills\">\n      <li class=\"active\">\n        <a href=\"#\" data-target=\"#options\">" + (_("Options")) + "</a>\n      </li>\n      <li><a href=\"#\" data-target=\"#about\">" + (_("About")) + "</a></li>\n    </ul>\n    <div id=\"options\" class=\"minipanel\">\n      <form class=\"\">\n        <label class=\"control-label\" for=\"inputEmail\">" + (_("Language")) + "</label>\n        <select type=\"radio\" \n               name=\"language_pair\">\n        " + (makeLanguageOption(opts.dictionaries)) + "\n        </select>\n        <br />\n        <button type=\"submit\" class=\"btn\" id=\"save\">" + (_('Save')) + "</button>\n      </form>\n    </div>\n    <div id=\"about\" style=\"display: none;\" class=\"minipanel\">\n    <p>" + (_("In order to look up a word, hold down the <em>Alt</em> or <em>Option</em> (⌥) key, and doubleclick on a word. The service will contact the dictionary, and return a word after a short pause.")) + "</p>\n    <p> </p>\n    <p>" + (_('If you find a bug, or if the bookmark does not work on a specific page <a href="mailto:giellatekno@hum.uit.no">please contact us</a>. Tell us what page didn\'t work, or what you did when you discovered the problem.')) + "\n    </p>\n    </div>\n  </div>\n</div>");
       el.find('ul.nav-pills a').click(function(evt) {
         var target_element;
         target_element = $(evt.target).attr('data-target');
@@ -696,7 +711,7 @@ jQuery(document).ready(function($) {
     ErrorBar: function(args) {
       var el, host;
       host = args.host;
-      el = $("<div id=\"nds_errors\" class=\"errornav navbar-inverse navbar-fixed-bottom\">\n  <div class=\"navbar-inner\">\n    <div class=\"container\">\n      <p><strong>Error!</strong> Could not connect to dictionary server (host: " + host + ").\n         <a href=\"#\" class=\"dismiss\">Close</a>.</p>\n    </div>\n  </div>\n</div>");
+      el = $("<div id=\"nds_errors\" class=\"errornav navbar-inverse navbar-fixed-bottom\">\n  <div class=\"navbar-inner\">\n    <div class=\"container\">\n      <p><strong>" + (_("Error!")) + "</strong> " + (_("Could not connect to dictionary server")) + " (host: " + host + ").\n         <a href=\"#\" class=\"dismiss\">" + (_("Close")) + "</a>.</p>\n    </div>\n  </div>\n</div>");
       el.find('a.dismiss').click(function() {
         $('body .errornav').remove();
         return false;
@@ -738,7 +753,7 @@ jQuery(document).ready(function($) {
     error: function() {
       $(document).find('body').find('.errornav').remove();
       return $(document).find('body').append(Templates.ErrorBar({
-        host: window.NDS_API_HOST || API_HOST
+        host: API_HOST
       }));
     }
   });
@@ -808,7 +823,7 @@ jQuery(document).ready(function($) {
     }
     langpair = DSt.get('digisanit-select-langpair');
     _ref3 = langpair.split('-'), _f_from = _ref3[0], _t_to = _ref3[1];
-    current_pair = $.fn.selectToLookup.options.dictionaries.filter(function(e) {
+    current_pair = window.nds_opts.dictionaries.filter(function(e) {
       if (e.from.iso === _f_from && e.to.iso === _t_to) {
         return true;
       } else {
@@ -823,10 +838,10 @@ jQuery(document).ready(function($) {
     }
     if (result_strings.length === 0 || response.success === false) {
       if (opts.tooltip) {
-        _tooltipTitle = 'Ukjent ord';
-        result_strings.push("<span class='tags'><em>Du bruker " + current_pair_names + "</em></span>");
+        _tooltipTitle = _('Ukjent ord');
+        result_strings.push("<span class='tags'><em>" + (_('You are using')) + " " + current_pair_names + "</em></span>");
         if (response.tags.length > 0) {
-          _tooltipTitle = 'Betydning ikke funnet';
+          _tooltipTitle = _('Betydning ikke funnet');
         }
       }
     }
@@ -888,53 +903,83 @@ jQuery(document).ready(function($) {
     return false;
   };
   $.fn.selectToLookup = function(opts) {
-    var clean, holdingOption, previous_langpair, spinner, _opt, _select,
+    var extendLanguageOpts, initializeWithSettings, recallLanguageOpts, spinner, storeConfigs, stored_config, url,
       _this = this;
     opts = $.extend({}, $.fn.selectToLookup.options, opts);
+    window.nds_opts = opts;
     spinner = initSpinner(opts.spinnerImg);
-    if (opts.displayOptions) {
-      $(document).find('body').append(Templates.OptionsTab(opts));
-      window.optTab = $(document).find('#webdict_options');
-      /* Over 9000?!!
-      */
+    initializeWithSettings = function() {
+      var clean, holdingOption, previous_langpair, _opt, _select,
+        _this = this;
+      if (window.nds_opts.displayOptions) {
+        $(document).find('body').append(Templates.OptionsTab(window.nds_opts));
+        window.optTab = $(document).find('#webdict_options');
+        /* Over 9000?!!
+        */
 
-      window.optTab.css('z-index', 9000);
-    }
-    previous_langpair = DSt.get('digisanit-select-langpair');
-    if (previous_langpair) {
-      _select = "select[name='language_pair']";
-      _opt = window.optTab.find(_select).val(previous_langpair);
-    } else {
-      _select = "select[name='language_pair']";
-      _opt = window.optTab.find(_select).val();
-      previous_langpair = DSt.set('digisanit-select-langpair', _opt);
-    }
-    holdingOption = function(evt) {
-      var element, range, string;
-      clean(evt);
-      if (evt.altKey) {
-        element = evt.target;
-        range = getFirstRange();
-        string = cloneContents(range);
-        if (range && string) {
-          lookupSelectEvent(evt, string, element, range, opts);
+        window.optTab.css('z-index', 9000);
+      }
+      previous_langpair = DSt.get('digisanit-select-langpair');
+      if (previous_langpair) {
+        _select = "select[name='language_pair']";
+        _opt = window.optTab.find(_select).val(previous_langpair);
+      } else {
+        _select = "select[name='language_pair']";
+        _opt = window.optTab.find(_select).val();
+        previous_langpair = DSt.set('digisanit-select-langpair', _opt);
+      }
+      holdingOption = function(evt) {
+        var element, range, string;
+        clean(evt);
+        if (evt.altKey) {
+          element = evt.target;
+          range = getFirstRange();
+          string = cloneContents(range);
+          if (range && string) {
+            lookupSelectEvent(evt, string, element, range, window.nds_opts);
+          }
+          return false;
         }
         return false;
-      }
-      return false;
+      };
+      clean = function(event) {
+        var parents;
+        parents = [];
+        $(document).find('a.tooltip_target').each(function() {
+          parents.push($(this).parent());
+          $(this).popover('destroy');
+          return $(this).replaceWith(this.childNodes);
+        });
+        return $(document).find('a.tooltip_target').contents().unwrap();
+      };
+      window.cleanTooltips = clean;
+      return $(document).bind('click', holdingOption);
     };
-    clean = function(event) {
-      var parents;
-      parents = [];
-      $(document).find('a.tooltip_target').each(function() {
-        parents.push($(this).parent());
-        $(this).popover('destroy');
-        return $(this).replaceWith(this.childNodes);
-      });
-      return $(document).find('a.tooltip_target').contents().unwrap();
+    storeConfigs = function(response) {
+      DSt.set('nds-languages', response.dictionaries);
+      DSt.set('nds-localization', response.localization);
+      DSt.set('nds-stored-config', "true");
+      return true;
     };
-    window.cleanTooltips = clean;
-    return $(document).bind('click', holdingOption);
+    extendLanguageOpts = function(response) {
+      window.r_test = response;
+      window.nds_opts.dictionaries = response.dictionaries;
+      window.nds_opts.localization = response.localization;
+      storeConfigs(response);
+      return initializeWithSettings();
+    };
+    recallLanguageOpts = function() {
+      window.nds_opts.dictionaries = DSt.get('nds-languages');
+      window.nds_opts.localization = DSt.get('nds-localization');
+      return initializeWithSettings();
+    };
+    stored_config = DSt.get('nds-stored-config');
+    if (!stored_config) {
+      url = "" + opts.api_host + "/read/config/";
+      return $.getJSON(url + '?callback=?', extendLanguageOpts);
+    } else {
+      return recallLanguageOpts();
+    }
   };
   $.fn.selectToLookup.options = {
     api_host: API_HOST,
@@ -953,69 +998,6 @@ jQuery(document).ready(function($) {
         to: {
           iso: 'nob',
           name: 'norsk'
-        }
-      }, {
-        from: {
-          iso: 'SoMe',
-          name: 'nordsamisk (#SoMe)'
-        },
-        to: {
-          iso: 'nob',
-          name: 'norsk'
-        }
-      }, {
-        from: {
-          iso: 'nob',
-          name: 'norsk'
-        },
-        to: {
-          iso: 'sme',
-          name: 'nordsamisk'
-        }
-      }, {
-        from: {
-          iso: 'sme',
-          name: 'nordsamisk'
-        },
-        to: {
-          iso: 'fin',
-          name: 'finsk'
-        }
-      }, {
-        from: {
-          iso: 'SoMe',
-          name: 'nordsamisk (#SoMe)'
-        },
-        to: {
-          iso: 'fin',
-          name: 'finsk'
-        }
-      }, {
-        from: {
-          iso: 'fin',
-          name: 'finsk'
-        },
-        to: {
-          iso: 'sme',
-          name: 'nordsamisk'
-        }
-      }, {
-        from: {
-          iso: 'sma',
-          name: 'sørsamisk'
-        },
-        to: {
-          iso: 'nob',
-          name: 'norsk (bokmål)'
-        }
-      }, {
-        from: {
-          iso: 'nob',
-          name: 'norsk (bokmål)'
-        },
-        to: {
-          iso: 'sma',
-          name: 'sørsamisk'
         }
       }
     ]
@@ -1048,7 +1030,7 @@ jQuery(document).ready(function($) {
           post_data.lookup = post_data.lookup.replace('*', '');
         }
         unknownWord = function(response) {
-          $(result_elem).append($("<p xml:lang=\"no\" class=\"alert\">Ukjent ord.</p>"));
+          $(result_elem).append($("<p xml:lang=\"no\" class=\"alert\">" + (_("Unknown word")) + "</p>"));
           return false;
         };
         cleanResponse = function(response) {
@@ -1077,7 +1059,7 @@ jQuery(document).ready(function($) {
           }
           return _results;
         };
-        url = "" + opts.api_host + "/lookup/" + source_lang + "/" + target_lang + "/";
+        url = "" + window.nds_opts.api_host + "/lookup/" + source_lang + "/" + target_lang + "/";
         $.getJSON(url + '?callback=?', post_data, cleanResponse);
         return false;
       });
@@ -1098,7 +1080,7 @@ jQuery(document).ready(function($) {
     data = {
       lookup: "mannat"
     };
-    return $.getJSON("" + opts.api_host + "/lookup/sme/nob/?callback=?", data, cleanResp);
+    return $.getJSON("" + window.nds_opts.api_host + "/lookup/sme/nob/?callback=?", data, cleanResp);
   };
   return $.fn.digiSanitTest.options = {
     api_host: API_HOST,
