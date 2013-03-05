@@ -25,6 +25,8 @@ jQuery(document).ready ($) ->
 
   # API_HOST = "http://sanit.oahpa.no/"
   API_HOST = "http://localhost:5000/"
+  # Check for the 
+  API_HOST = window.NDS_API_HOST || API_HOST
 
   Templates =
     OptionsMenu: (opts) ->
@@ -34,8 +36,6 @@ jQuery(document).ready ($) ->
     
     OptionsTab: (opts) ->
       makeLanguageOption = (options) ->
-        console.log "pairs"
-        console.log options
         options_block = []
         for data, i in options
           if i+1 == 1
@@ -168,7 +168,7 @@ jQuery(document).ready ($) ->
     error: () =>
       $(document).find('body').find('.errornav').remove()
       $(document).find('body').append Templates.ErrorBar {
-        host: window.NDS_API_HOST || API_HOST
+        host: API_HOST
       }
 
   ##
