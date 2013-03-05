@@ -12,17 +12,6 @@ content {
     display: block;
 }
 
-footer {
-    background-color: #BBB;
-    border-top: 1px solid #888;
-    position: relative;
-    height: 150px;
-    padding-top: 15px;
-    padding-bottom: 25px;
-    
-    margin-top: -150;
-    clear: both; 
-}
 
 #uitlogo {
     padding-top: .5em;
@@ -82,22 +71,8 @@ ul.nav-stacked li.active span {
     display: none;
 }
 
-/* Set by feature agreement with body, so, change body element, all
- * elements under follow. See README for more info. */
-body:lang(nob) span.i18n:lang(nob) {
-    display: inline;
-}
-
-body:lang(sme) span.i18n:lang(sme) {
-    display: inline;
-}
-
-body:lang(fin) span.i18n:lang(fin) {
-    display: inline;
-}
-
-body:lang(eng) span.i18n:lang(eng) {
-    display: inline;
+#wrap {
+    min-height: 280px;
 }
 
 content .page-header {
@@ -245,6 +220,19 @@ ul.unknown_lexemes {
 /* Footer
 -------------------------------------------------- */
 
+footer {
+    background-color: #BBB;
+    border-top: 1px solid #888;
+    position: relative;
+    height: 150px;
+
+    // padding-top: 15px;
+    // padding-bottom: 25px;
+    // 
+    // margin-top: -150px;
+    // clear: both; 
+}
+
 .footer {
   text-align: center;
   padding: 30px 0;
@@ -266,12 +254,12 @@ ul.unknown_lexemes {
 
 @media (max-width: 767px) {
   /* Unfloat the back to top link in footer */
-  .footer {
-    margin-left: -20px;
-    margin-right: -20px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
+  // .footer {
+  //   margin-left: -20px;
+  //   margin-right: -20px;
+  //   padding-left: 20px;
+  //   padding-right: 20px;
+  // }
   .footer p {
     margin-bottom: 9px;
   }
@@ -280,8 +268,8 @@ ul.unknown_lexemes {
 @media (max-width: 480px) {
   /* Tighten up footer */
   .footer {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    // padding-top: 20px;
+    // padding-bottom: 20px;
   }
 }
 
@@ -303,8 +291,8 @@ ul.unknown_lexemes {
     footer {
         margin-left: -20px;
         margin-right: -20px;
-        padding: 0 40px;
-        padding-bottom: 35px;
+    //     padding: 0 40px;
+    //     padding-bottom: 35px;
     }
 }
 
@@ -334,8 +322,8 @@ ul.unknown_lexemes {
     footer {
         margin-left: -20px;
         margin-right: -20px;
-        padding: 0 40px;
-        padding-bottom: 35px;
+    //     padding: 0 40px;
+    //     padding-bottom: 35px;
     }
     
     p.lead {
