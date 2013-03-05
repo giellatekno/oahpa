@@ -196,7 +196,6 @@ def tagfilter(s, lang_iso, targ_lang):
     if not s:
         return s
 
-    print lang_iso, targ_lang
     filters = app.config.tag_filters.get((lang_iso, targ_lang), False)
     if filters:
         filtered = []
