@@ -30,6 +30,8 @@ jQuery(document).ready ($) ->
     
     OptionsTab: (opts) ->
       makeLanguageOption = (options) ->
+        console.log "pairs"
+        console.log options
         options_block = []
         for data, i in options
           if i+1 == 1
@@ -322,6 +324,7 @@ jQuery(document).ready ($) ->
 
   $.fn.selectToLookup = (opts) ->
     opts = $.extend {}, $.fn.selectToLookup.options, opts
+    window.nds_opts = opts
     spinner = initSpinner(opts.spinnerImg)
 
     # TODO: find a way to mark strings as gettextable, maybe use cake
@@ -331,35 +334,49 @@ jQuery(document).ready ($) ->
     #       extend options
     #       also check browser language and make sure this is included
     #       in request somehow.
-    
+
     # TODO: device / OptionsMenu
-    if opts.displayOptions
-      $(document).find('body').append Templates.OptionsTab(opts)
-      window.optTab = $(document).find('#webdict_options')
-      ### Over 9000?!! ###
-      window.optTab.css('z-index', 9000)
 
-    # Recall stored language pair from session
-    previous_langpair = DSt.get('digisanit-select-langpair')
-    if previous_langpair
-      _select = "select[name='language_pair']"
-      _opt = window.optTab.find(_select).val(previous_langpair)
-    else
-      _select = "select[name='language_pair']"
-      _opt = window.optTab.find(_select).val()
-      previous_langpair = DSt.set('digisanit-select-langpair', _opt)
-    
-    holdingOption = (evt) =>
-      clean(evt)
+    initializeSettings = () ->
+      if window.nds_opts.displayOptions
+        $(document).find('body').append Templates.OptionsTab(window.nds_opts)
+        window.optTab = $(document).find('#webdict_options')
+        ### Over 9000?!! ###
+        window.optTab.css('z-index', 9000)
 
-      if evt.altKey
-        element = evt.target
-        range = getFirstRange()
-        string = cloneContents(range)
-        if range and string
-          lookupSelectEvent(evt, string, element, range, opts)
+      # Recall stored language pair from session
+      previous_langpair = DSt.get('digisanit-select-langpair')
+      if previous_langpair
+        _select = "select[name='language_pair']"
+        _opt = window.optTab.find(_select).val(previous_langpair)
+      else
+        _select = "select[name='language_pair']"
+        _opt = window.optTab.find(_select).val()
+        previous_langpair = DSt.set('digisanit-select-langpair', _opt)
+      
+      holdingOption = (evt) =>
+        clean(evt)
+
+        if evt.altKey
+          element = evt.target
+          range = getFirstRange()
+          string = cloneContents(range)
+          if range and string
+            lookupSelectEvent(evt, string, element, range, window.nds_opts)
+          return false
         return false
-      return false
+
+    extendLanguageOpts = (response) =>
+      window.r_test = response
+      window.nds_opts.dictionaries = response.dictionaries
+      initializeSettings()
+
+    url = "#{opts.api_host}/read/config/"
+    $.getJSON(
+      url + '?callback=?'
+      extendLanguageOpts
+    )
+
 
       # TODO: one idea for how to handle lookups wtihout alt/option key
       #
@@ -476,7 +493,7 @@ jQuery(document).ready ($) ->
                 <p>#{lookup.left} (#{lookup.pos}) &mdash; #{result_list}</p>
               """)
         
-        url = "#{opts.api_host}/lookup/#{source_lang}/#{target_lang}/"
+        url = "#{window.nds_opts.api_host}/lookup/#{source_lang}/#{target_lang}/"
         $.getJSON(
           url + '?callback=?'
           post_data
@@ -499,7 +516,7 @@ jQuery(document).ready ($) ->
       lookup: "mannat"
     }
     $.getJSON(
-      "#{opts.api_host}/lookup/sme/nob/?callback=?",
+      "#{window.nds_opts.api_host}/lookup/sme/nob/?callback=?",
       data,
       cleanResp
     )
