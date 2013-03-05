@@ -1,10 +1,22 @@
 # TODAY
 
-* check tagtransforms new format, does it work? 
+* plugin language list from server
+  * set hostname from NDS_API_HOST, which is probably hardcoded
+    somewhere now within the bookmarklet code sent in /read/
+
+  * internationalization for plugin, collect strings.
+
 * lexicon formatters
+
 * mdf
+
 * other dictionaries page, listing links to other groups
-* nginx configs on gtlab for new domains
+
+## All
+
+If there isn't an xml:lang match for the target language, the other languages
+show up for now. This is because the sme-nob format is ideal, and sma-nob is
+just as good, but has many more hits.
 
 ## Olo discoveries
 
@@ -71,6 +83,13 @@ Lots of doubled entries, so i am using only a subset of the files in src
      potentially be difficult to manage, but there is a solution.
 
 --
+
+ * bookmark icon for iOS
+
+    /apple-touch-icon-57x57-precomposed.png
+    /apple-touch-icon-57x57.png 
+    /apple-touch-icon-precomposed.png 
+    /apple-touch-icon.png 
 
  * svn move to apps/neahttadigisánit, apps/nds
 
