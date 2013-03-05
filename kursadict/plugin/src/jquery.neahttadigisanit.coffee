@@ -15,7 +15,11 @@ jQuery(document).ready ($) ->
     ### Want to mark strings as requiring gettext somehow, so that
         a babel or other extractor can find them.
     ###
-    return string
+    localized = window.nds_opts.localization[string]
+    if localized?
+      return localized
+    else
+      return string
 
   _ = fakeGetText
 
@@ -63,7 +67,7 @@ jQuery(document).ready ($) ->
           </ul>
           <div id="options" class="minipanel">
             <form class="">
-              <label class="control-label" for="inputEmail">#{ _("Dictionary") }</label>
+              <label class="control-label" for="inputEmail">#{ _("Language") }</label>
               <select type="radio" 
                      name="language_pair">
               #{makeLanguageOption(opts.dictionaries)}
@@ -337,7 +341,10 @@ jQuery(document).ready ($) ->
 
     # TODO: device / OptionsMenu
 
-    initializeSettings = () ->
+    # This runs after either we get the response from the server about
+    # language pairs and internationalization, or recover it from local
+    # storage.
+    initializeWithSettings = () ->
       if window.nds_opts.displayOptions
         $(document).find('body').append Templates.OptionsTab(window.nds_opts)
         window.optTab = $(document).find('#webdict_options')
@@ -366,40 +373,60 @@ jQuery(document).ready ($) ->
           return false
         return false
 
+      clean = (event) ->
+        parents = []
+        $(document).find('a.tooltip_target').each () ->
+          parents.push $(this).parent()
+          $(this).popover('destroy')
+          $(this).replaceWith(this.childNodes)
+
+        $(document).find('a.tooltip_target').contents().unwrap()
+
+      window.cleanTooltips = clean
+      $(document).bind('click', holdingOption)
+
+    storeConfigs = (response) ->
+      # store in local storage
+      DSt.set('nds-languages',    response.dictionaries)
+      DSt.set('nds-localization', response.localization)
+      DSt.set('nds-stored-config', "true")
+      return true
+
+
     extendLanguageOpts = (response) =>
       window.r_test = response
       window.nds_opts.dictionaries = response.dictionaries
-      initializeSettings()
+      window.nds_opts.localization = response.localization
+      storeConfigs(response)
+      initializeWithSettings()
 
-    url = "#{opts.api_host}/read/config/"
-    $.getJSON(
-      url + '?callback=?'
-      extendLanguageOpts
-    )
+    recallLanguageOpts = () =>
+      window.nds_opts.dictionaries = DSt.get('nds-languages')
+      window.nds_opts.localization = DSt.get('nds-localization')
+      initializeWithSettings()
+
+    stored_config = DSt.get('nds-stored-config')
+    if not stored_config
+      url = "#{opts.api_host}/read/config/"
+      $.getJSON(
+        url + '?callback=?'
+        extendLanguageOpts
+      )
+    else
+      recallLanguageOpts()
 
 
-      # TODO: one idea for how to handle lookups wtihout alt/option key
-      #
-      # else
-      #   if string != ''
-      #     window.optTab.find('.well').addClass('highlight')
-      #     window.optTab.find('.well a.open').click (o) =>
-      #       lookupSelectEvent(evt, string, element, index, opts)
-      #       return false
-      #   else
-      #     window.optTab.find('.well').removeClass('highlight')
+    # TODO: one idea for how to handle lookups wtihout alt/option key
+    #
+    # else
+    #   if string != ''
+    #     window.optTab.find('.well').addClass('highlight')
+    #     window.optTab.find('.well a.open').click (o) =>
+    #       lookupSelectEvent(evt, string, element, index, opts)
+    #       return false
+    #   else
+    #     window.optTab.find('.well').removeClass('highlight')
     
-    clean = (event) ->
-      parents = []
-      $(document).find('a.tooltip_target').each () ->
-        parents.push $(this).parent()
-        $(this).popover('destroy')
-        $(this).replaceWith(this.childNodes)
-
-      $(document).find('a.tooltip_target').contents().unwrap()
-
-    window.cleanTooltips = clean
-    $(document).bind('click', holdingOption)
    
   $.fn.selectToLookup.options =
     api_host: API_HOST
