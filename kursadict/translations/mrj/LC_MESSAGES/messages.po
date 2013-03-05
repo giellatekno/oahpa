@@ -20,12 +20,16 @@ msgstr ""
 
 #: language_names.py:10
 msgid "North Sámi"
-msgstr ""
+msgstr "йыдвел саам йӹлмӹ"
 
 #: language_names.py:11
 msgid "North Sámi (#SoMe)"
-msgstr ""
+msgstr "йыдвел саам йӹлмӹ (#SoMe)"
 
+<<<<<<< .mine
+#: language_names.py:11 templates/base.html:121
+#: templates/language_select.html:12
+=======
 #: language_names.py:14
 msgid "South Sámi"
 msgstr ""
@@ -56,15 +60,15 @@ msgstr ""
 
 #: language_names.py:29 language_names.py:33
 msgid "Finnish"
-msgstr ""
+msgstr "финн йӹлмӹ"
 
 #: language_names.py:30 language_names.py:34
 msgid "Norwegian"
-msgstr ""
+msgstr "норвежский йӹлмӹ"
 
 #: language_names.py:32
 msgid "Russian"
-msgstr ""
+msgstr "кечӹвӓлвел саам йӹлмӹ"
 
 #: language_names.py:35
 msgid "Latvian"
@@ -72,17 +76,15 @@ msgstr ""
 
 #: neahtta.py:351 templates/index.html:255
 msgid " is a possible form of ... "
-msgstr ""
+msgstr " техень шамак форма лин кердеш ти шамак гӹц ... "
 
 #: neahtta.py:432
 msgid "Invalid format. Only json and html allowed."
-msgstr ""
+msgstr "Самынь шамак форма. Акцептируялтеш лач json дӓ html системывлӓштӹ"
 
 #: templates/404.html:51
-msgid ""
-"Whoops! The page you requested was not found. If you think you are "
-"receiving this in error, please contact us."
-msgstr ""
+msgid "Whoops! The page you requested was not found. If you think you are receiving this in error, please contact us."
+msgstr "Ой! Кӹчӓлмӹ ӹлӹштӓшет ак моалт. Шанымаштет ти ӹлӹштӓш лишӓшлык ылеш гӹнь, мӓлӓннӓ увертӓрӹ."
 
 #: templates/500.html:51
 msgid "Whoops! There was some kind of error."
@@ -92,31 +94,35 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: templates/about.html:75
+#: templates/about.html:71
 msgid "A dictionary that understands what you're looking for."
-msgstr ""
+msgstr "Лӹмдер, кыды ынгыла, мам кӹчӓлӓт."
+
+#: templates/about.html:72
+msgid "(... And is mobile-friendly!)"
+msgstr "(... Дӓ сотовый телефоныштат кычылташ лиэш!)"
 
 #: templates/about.html:76
-msgid "(... And is mobile-friendly!)"
-msgstr ""
-
-#: templates/about.html:80
 msgid "Free"
-msgstr ""
+msgstr "Такешок"
 
-#: templates/about.html:81
+#: templates/about.html:77
 msgid ""
 "Everything (or, well, almost everything) that\n"
 "                    concerns minority languages should be free. Here\n"
 "                    you'll find free dictionaries, and other analytical\n"
 "                    tools."
 msgstr ""
+"Цилӓ (ӓль почти цилӓ манмыла), ма\n"
+"чӹдӹ шотан йӹлмӹвлӓ доно кӹлдӓлтӹн, такешок лишӓшлык.\n"
+"Тиштӹшӹ лӹмдервлӓ дӓ вес аналитический йӧнвлӓ, \n"
+"цилӓ нинӹ такешок ылыт."
 
-#: templates/about.html:87
+#: templates/about.html:83
 msgid "Open-Source"
-msgstr ""
+msgstr "Avoin lähdekoodi. Виш трансляторлык код, тӹнгӓлтӹш код, исходный код"
 
-#: templates/about.html:88
+#: templates/about.html:84
 msgid ""
 "Everything here is based on open-source tools. Do you\n"
 "                have an idea for an app or research project that needs\n"
@@ -126,63 +132,82 @@ msgid ""
 "                website for information on how to get access to lexicon\n"
 "                files, and morphological and syntactic analyzers."
 msgstr ""
+"Тиштӹ цилӓ виш тӹнгӓлтӹш кодеш негӹцлӓлтеш, базируялтеш. Иктӓ-махань\n"
+"концепцим шӹмлӹнет гӹнь ӓли шӹмлӹмӹ проект пӓшӓм планирует,\n" 
+"дӓ кыдывлӓн иктешлӹмӓштӹ лингвистический ресурсвлӓм кычылтнет гӹнь\n"
+"ти ссылкышты <a class=\"blue\"\n"
+"                href=\"http://giellatekno.uit.no/\">Giellatekno</a>\n"
+"шамак лексиконвлӓ гишӓн, морфологический дӓ\n" 
+"синтактический анализаторвлӓм кычылтмы гишӓн информацим кӹчӓл мон кердӓт."
 
-#: templates/about.html:96
+#: templates/about.html:92
 msgid "Linguistic basis"
-msgstr ""
+msgstr "Лингвистический негӹц"
 
-#: templates/about.html:97
+#: templates/about.html:93
 msgid ""
 "Write what you wish, and the dictionary will analyze it to break apart "
 "compound words and find base forms."
 msgstr ""
+"Иктӓ-махань шамакым сирӹ, шамак толшеш кок компонент гӹц шалгышы шамакым\n
+"(кок важан шамакым), лӹмдер тӹдӹм анализируя дӓ грамматический анализӹм ӹштен пуа:  кок компонентеш шелеш дтм."
 
-#: templates/about.html:103
+#: templates/about.html:99
 msgid "gå, dra, reise"
-msgstr ""
+msgstr "кеӓш, ашкедӓш"
 
-#: templates/about.html:110
+#: templates/about.html:106
 msgid "Source material"
-msgstr ""
+msgstr "Кычылтмы материал"
 
-#: templates/about.html:117
+#: templates/about.html:113
 msgid "sme ↔ nob"
-msgstr ""
+msgstr "йыдвел саамла ↔ норвежскийлӓ"
 
-#: templates/about.html:118
+#: templates/about.html:114
 msgid ""
 "North Sámi → Norwegian builds on Nils Jernsletten's dictionary "
 "<em>Álgosátnegirji</em>, but here it has been more than doubled in "
 "content."
 msgstr ""
+"Йыдвел саамла → норвежскийлӓ лӹмдер Нильс Йернслеттенӹн <em>Álgosátnegirji</em> лӹмдереш негӹцлӓлтеш, дӓ тӹлец пасна шамаквлӓм кок гӓнӓэш шукемдӹмӹ,йишӓрӹмӹ."
 
-#: templates/about.html:119
+#: templates/about.html:115
 msgid ""
 "Norwegian → North Sámi is a converted version of North Sámi → Norwegian, "
 "but we have also revised the content and added frequent words from "
 "Norwegian."
 msgstr ""
+"Норвежскийлӓ → йыдвел саамла вариантым Йыдвел саамла → норвежскийлӓ лӹмдер гӹц модифицируйымы, дӓ норвежский йӹлмӹштӹ шукы гӓнӓ вӓшлиӓлтшӹ шамаквлӓм тӹшкӹ йишӓрӹмӹ, пыртымы."
 
-#: templates/about.html:122
+#: templates/about.html:118
 msgid "sma ↔ nob"
-msgstr ""
+msgstr "йыдвел саамла ↔ норвежскийлӓ"
 
-#: templates/about.html:123
+#: templates/about.html:119
 msgid ""
-"The dictionaries for South Sámi and Norwegian build on material prepared "
-"by Albert Jåma and Tove Brustad in the <a class=\"blue\" "
+"The dictionaries for South Sámi and Norwegian build on material prepared\n"
+"by Albert Jåma and Tove Brustad in the <a class=\"blue\ к\n" "
 "href=\"http://www.ruovatsijte.no/\">Hemnes Sámi Organization</a>, but has"
 " in addition gained words from <a class=\"blue\" "
 "href=\"http://giellatekno.uit.no/\">Giellatekno</a> and <a class=\"blue\""
 " href=\"http://aajege.no/\">Aajege</a>'s work with the Southern Sámi <a "
 "class=\"blue\" href=\"http://oahpa.no\">Oahpa</a>."
 msgstr ""
+"Кечӹвӓлвел саамла - норвежскийлӓ лӹмдер Альберт Йоман дӓ Туве Брустадын материалеш негӹцлӓлтеш ( <a class=\"blue\" "
+"href=\"http://www.ruovatsijte.no/\">Hemnes Samiske Forening</a>),\n"
+"тидӹн гӹц пасна шамаквлӓм нӓлмӹ техень пӓшӓвлӓ гӹц\n"
+"<a class=\"blue\" "
+"href=\"http://giellatekno.uit.no/\">Giellateknon</a> \n"
+"<a class=\"blue\""
+" href=\"http://aajege.no/\">Aajegen</a> \n"
+ <a ""class=\"blue\" href=\"http://oahpa.no\">Oahpan</a> "
 
-#: templates/about.html:126
+#: templates/about.html:122
 msgid "sme ↔ fin"
-msgstr ""
+msgstr "йыдвел саамла ↔ финлӓ"
 
-#: templates/about.html:127
+#: templates/about.html:123
 msgid ""
 "Dictionaries for North Sámi and Finnish are based on lexical material "
 "from the <a class=\"green\" href=\"http://kotus.fi\">Institute for the "
@@ -191,26 +216,39 @@ msgid ""
 "have included frequent words from North Sámi, but especially from "
 "Finnish."
 msgstr ""
+"Йыдвел саамла дӓ финлӓ лӹмдервлӓ негӹцлӓлтӹт Финляндиштӹш KOTUS-ын проект материалвлӓэш <a class=\"green\" "
+"href=\"http://kotus.fi\">Kotimaisten kielten tutkimuskeskuksen</a> <a "
+"class=\"green\" href=\"kaino.kotus.fi/algu/\">Álgu</a>"
+"дӓ тенгеок материалвлӓм нӓлмӹ Giellаtekno-н пӓшӓвлӓ гӹц <a class=\"green\" "
+"href=\"http://oahpa.no\">Oahpan</a>. 
+"Тӹлец пасна финн йӹлмӹштӹ шукы гӓнӓ вӓшлиӓлтшӹ шамаквлӓм тӹшкӹ йишӓрӹмӹ."
 
 #: templates/about.html:128
 msgid "Each of the dictionaries contains about 11,000 base words."
-msgstr ""
+msgstr "Лӹмдервлӓш иктӓ 11000 шамак-артикль рӓдӹ пыртымы."
 
 #: templates/about.html:136
 msgid "More to come..."
-msgstr ""
+msgstr "Толшаш жепӹштӹ эче лит..."
 
 #: templates/base.html:127
 msgid "Home"
-msgstr ""
+msgstr "Туан пӧрт"
 
 #: templates/base.html:131
 msgid "Plugins"
-msgstr ""
+msgstr "Йишӓрӹмӓшвлӓ"
 
+<<<<<<< .mine
+#: templates/base.html:114
+msgid "About"
+msgstr "Тидӹ гишӓн"
+
+#: templates/base.html:118
+=======
 #: templates/base.html:140
 msgid "Interface language"
-msgstr ""
+msgstr "Интерфейс-йӹлмӹ"
 
 #: templates/base.html:204
 msgid ""
@@ -219,22 +257,28 @@ msgid ""
 "Technology group at the <a href=\"http://uit.no\">University of "
 "Tromsø</a>."
 msgstr ""
+"Ти программа  <em><a "
+"href=\"http://giellatekno.uit.no/index.fin.html\">Giellateknon</a></em> "
+"такешок кычылташ лимӹ дӓ цилӓлӓн виш ылшы тӹнгӓлтӹш кодеш базируялтеш.
+Тромсӧ университетӹштӹшӹ <a "
+"href=\"http://uit.no\">Tromssan yliopiston</a> 
+Giellatekno- йӹлмӹ технологим шӹмлӹшӹ группа тидӹм шанен лыктын дӓ виӓнгден."
 
 #: templates/index.html:158 templates/index.html:169
 msgid "Written variant"
-msgstr ""
+msgstr "Литературный йӹлмӹ вариант"
 
 #: templates/index.html:160 templates/index.html:171
 msgid "Standard (<em>áčđŋšŧž</em>)"
-msgstr ""
+msgstr "Стандартный йӹлмӹ (<em>áčđŋšŧž</em> буквавлӓ кычылталтыт)"
 
 #: templates/index.html:161 templates/index.html:172
 msgid "Social Media (incl. <em>acdnstz</em>)"
-msgstr ""
+msgstr "Социальный меди (кышты техень <em>acdnstz</em> буквавлӓ кычылталтыт)"
 
 #: templates/index.html:185
 msgid "Swap"
-msgstr ""
+msgstr "Вашталты"
 
 #: templates/index.html:199
 msgid "ohcansátni"
@@ -242,16 +286,16 @@ msgstr ""
 
 #: templates/index.html:201 templates/word_detail.html:102
 msgid "Search"
-msgstr ""
+msgstr "Кӹчӓл"
 
 #: templates/index.html:242
 msgid "Definition not found for:"
-msgstr ""
+msgstr "Ти шамакын сӓрӹмӹ формыжы тиштӹ уке, ак моалт."
 
 #: templates/index.html:281
 #, python-format
 msgid "Word %(input)s not found."
-msgstr ""
+msgstr "Техень шамак %(input%) тиштӹ уке, ак моалт."
 
 #: templates/index.html:290
 msgid ""
@@ -262,7 +306,7 @@ msgstr ""
 
 #: templates/index.html:294
 msgid "Search for a word, or a word form for a word analysis and definition."
-msgstr ""
+msgstr "Кӹчӓл шамакым ӓль шамак формым, кыдын грамматический анализжӹм ужнет ӓль кыдым сӓрӹнет."
 
 #: templates/index.html:298
 msgid ""
@@ -271,24 +315,26 @@ msgid ""
 "                                will be accepted as áčđŋšŧž in addition "
 "to their usual values."
 msgstr ""
+"Шамак толшеш #SoMe-версим, ӓли социальный медиштӹшӹ версим, айырет лижӹ.\n"
+"Тидӹ мам анжыкта: текстӹштӹ acdnstz буквавлӓм áčđŋšŧž вӓреш кычылт кердӹнӓ, какляка дӓ точкывлӓ гӹц пасна ылшы буквавлӓм семӹньвлӓэш ана лык."
 
 #: templates/language_select.html:6
 msgid "Language"
-msgstr ""
+msgstr "Йӹлмӹ"
 
-#: templates/reader.html:4 templates/reader.html:21
+#: templates/reader.html:9
 msgid "Neahttadigisánit Reader"
-msgstr ""
+msgstr "Neahttadigisánit Lukija. Neahttadigisánit лыдмаш программа"
 
 #: templates/reader.html:26
 msgid "WARNING!! We have problems with Internet Explorer 8!"
 msgstr ""
 
-#: templates/reader.html:27
+#: templates/reader.html:14
 msgid "Bookmarklet"
-msgstr ""
+msgstr "Kirjanmerkki. Лыдмы пӓлӹ. Лыдмы пӓлдӹртӹш"
 
-#: templates/reader.html:28
+#: templates/reader.html:15
 msgid ""
 "Drag and drop the following link to your Bookmark toolbar,\n"
 "                then click it when you are on a page you wish to read. "
@@ -297,42 +343,57 @@ msgid ""
 " a\n"
 "                menu icon on the left-hand side of the page."
 msgstr ""
+"Ӱлнӹ якшаргын анжыктымы линкӹм Лыдмы пӓлдӹртӹшвлӓшкет шыпшылын,вӓрӓнгдӓрӹ.\n"
+"Интернетӹштӹшӹ иктӓ-махань текстӹм лыдат гӹнь, иктӓ шамакым ат ынгылы лижӹ,\n" "тӹнӓм Лыдмы пӓлдӹртӹшӹштӹ ылшы линкӹм темдӓл.\n"
+"инет-лӹмдер лыдмы текстет сага автоматически шӹндӓлтеш шӹндӓрӓлтеш, дӓ\n"
+"лыдмы ӹлӹштӓшетӹн шалахай монгырышты <em>Á</em> меню символ доно анжыкталтеш."
 
-#: templates/reader.html:32
+#: templates/reader.html:19
 msgid "Read with Neahttadigisánit"
-msgstr ""
+msgstr "Лыд Neahttadigisánit-лӹмдер доно"
 
-#: templates/reader.html:33
+#: templates/reader.html:20
 msgid ""
 "In order to look up a word, hold Alt or Option (⌥) and double\n"
 "                click the word. The service will will connect to this\n"
 "                website and return dictionary entries after a brief\n"
 "                pause."
 msgstr ""
+"Иктӓ-махань шамакым анжалнет гӹнь,\n"
+"Иктӓ-махань шамакын переводжым, сӓрӹмӹ формыжым анжалнет гӹнь,\n"
+"Alt-клавишӹм ӓль альтернативный Option (⌥)-клавишӹм темдӓл шӹнден,\n"
+"кӹчӓлмӹ шамакетӹм кок гӓнӓ темдӓл. Сервер ти интернет-сайтыш лӓктеш дӓ\n"
+"выртышты сӓрӹмӹ шамакым лыктын пуа, анжыкта, пӓлдӹртӓ."
 
-#: templates/reader.html:37
+#: templates/reader.html:24
 msgid "To change the dictionary, click the menu icon."
-msgstr ""
+msgstr "Вес лӹмдерӹм пачнет ӓль лӹмдерӹн йӹлмӹм вашталтынет гӹнь, меню символым, меню пӓлӹм темдӓл"
 
-#: templates/reader.html:38
+#: templates/reader.html:25
 msgid "Bugs?"
-msgstr ""
+msgstr "Самыньвлӓ?"
 
-#: templates/reader.html:39
+#: templates/reader.html:26
 msgid ""
 "If you encounter bugs, or the bookmarklet does not work on a\n"
 "                particular page, contact us with the page URL or details "
 "of\n"
 "                what you were reading when you encountered the problem."
 msgstr ""
+"Самыньвлӓм цаклет гӹнь, ӓли иктӓ лыдмы пӓлдӹртӹш\n" 
+"кыды-тидӹ ӹлӹштӓшӹштӹ ак функционируйы гӹнь,\n"
+"тидӹ гишӓн информацим, кыды вӓре лӹмдер лӓктӹшӹм пуде, функционируйыде\n"
+"дӓ ӹлӹштӓшӹн URL-адресшӹм пӓлдӹртен, сирен колтен кердӓт." 
 
-#: templates/reader.html:42
+#: templates/reader.html:29
 msgid ""
 "We do not store any private data, but we do collect\n"
 "                individual dictionary lookups for statistics and to "
 "improve\n"
 "                the dictionary."
 msgstr ""
+"Тишкӹ конкретный эдем гишӓн информацим ана погы, ма-шон шамак дӓ фразывлӓм\n"
+"нӹнӹм переген кодаш манын дӓ лӹмдерӹм виӓнгдӓш, шӓрӓш манын постаренӓ."
 
 #: templates/reader_example.html:32
 msgid "Additional instructions"
@@ -347,9 +408,9 @@ msgstr ""
 
 #: templates/word_detail.html:54
 msgid "is a possible form of ... "
-msgstr ""
+msgstr "техень шамак форма лин кердеш ти шамак гӹц ..."
 
 #: templates/word_detail.html:220
 msgid "More information about this word"
-msgstr ""
+msgstr "Ти шамак гишӓн йишӓртӹш информаци тиштӹ"
 
