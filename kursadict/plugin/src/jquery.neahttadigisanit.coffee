@@ -11,8 +11,16 @@ TODO: prevent window url from updating with form submit params
 # Wrap jQuery and add plugin functionality
 jQuery(document).ready ($) ->
 
-  API_HOST = "http://sanit.oahpa.no/"
-  # API_HOST = "http://localhost:5000/"
+  fakeGetText = (string) ->
+    ### Want to mark strings as requiring gettext somehow, so that
+        a babel or other extractor can find them.
+    ###
+    return string
+
+  _ = fakeGetText
+
+  # API_HOST = "http://sanit.oahpa.no/"
+  API_HOST = "http://localhost:5000/"
 
   Templates =
     OptionsMenu: (opts) ->
@@ -41,33 +49,31 @@ jQuery(document).ready ($) ->
         <div class="well">
         <a class="close" href="#" style="display: none;">&times;</a>
         <div class="trigger">
-          <h1><a href="#" class="open">Á</a></h1>
+          <h1><a href="#" class="open">#{_("Á")}</a></h1>
         </div>
 
         <div class="option_panel" style="display: none;">
           <ul class="nav nav-pills">
             <li class="active">
-              <a href="#" data-target="#options">Instillinger</a>
+              <a href="#" data-target="#options">#{ _("Options") }</a>
             </li>
-            <li><a href="#" data-target="#about">Om ordboka</a></li>
+            <li><a href="#" data-target="#about">#{ _("About") }</a></li>
           </ul>
           <div id="options" class="minipanel">
             <form class="">
-              <label class="control-label" for="inputEmail">Ordbok</label>
+              <label class="control-label" for="inputEmail">#{ _("Dictionary") }</label>
               <select type="radio" 
                      name="language_pair">
               #{makeLanguageOption(opts.dictionaries)}
               </select>
               <br />
-              <button type="submit" class="btn" id="save">Lagre</button>
+              <button type="submit" class="btn" id="save">#{_('Save')}</button>
             </form>
           </div>
           <div id="about" style="display: none;" class="minipanel">
-          <p>For å slå opp et ord holder du <em>Alt</em> eller <em>Option</em> (⌥) nede og dobbelklikker på ordet. Tjenesten vil kontakte denne nettsida og returnere ordboksoppslag etter en kort pause.</p>
-          <p>
-          
-          </p>
-          <p>Hvis du finner feil, eller hvis bokmerket ikke fungerer for ei viss side <a href="mailto:giellatekno@hum.uit.no">må du gjerne kontakte oss</a>. Si i tilfelle fra hvilken side det gjaldt eller hva som var problemet.
+          <p>#{ _("In order to look up a word, hold down the <em>Alt</em> or <em>Option</em> (⌥) key, and doubleclick on a word. The service will contact the dictionary, and return a word after a short pause.") }</p>
+          <p> </p>
+          <p>#{ _('If you find a bug, or if the bookmark does not work on a specific page <a href="mailto:giellatekno@hum.uit.no">please contact us</a>. Tell us what page didn\'t work, or what you did when you discovered the problem.') }
           </p>
           </div>
         </div>
@@ -113,8 +119,8 @@ jQuery(document).ready ($) ->
        <div id="nds_errors" class="errornav navbar-inverse navbar-fixed-bottom">
          <div class="navbar-inner">
            <div class="container">
-             <p><strong>Error!</strong> Could not connect to dictionary server (host: #{host}).
-                <a href="#" class="dismiss">Close</a>.</p>
+             <p><strong>#{_("Error!")}</strong> #{_("Could not connect to dictionary server")} (host: #{host}).
+                <a href="#" class="dismiss">#{_("Close")}</a>.</p>
            </div>
          </div>
        </div>
@@ -236,10 +242,10 @@ jQuery(document).ready ($) ->
 
     if result_strings.length == 0 or response.success == false
       if opts.tooltip
-        _tooltipTitle = 'Ukjent ord'
-        result_strings.push("<span class='tags'><em>Du bruker #{current_pair_names}</em></span>")
+        _tooltipTitle = _('Ukjent ord')
+        result_strings.push("<span class='tags'><em>#{_('You are using')} #{current_pair_names}</em></span>")
         if response.tags.length > 0
-          _tooltipTitle = 'Betydning ikke funnet'
+          _tooltipTitle = _('Betydning ikke funnet')
         ##  tags = ("<li><em>#{t[1]}</em></li>" for t in response.tags).join(', ')
         ##  result_strings.push("<span class='tags'><ul>#{tags}</ul></span>")
 
@@ -308,49 +314,29 @@ jQuery(document).ready ($) ->
     )
     return false
 
-
-
   ##
    # $(document).selectToLookup();
    #
    #
    ## 
 
-  # getNextHighestZindex = (obj) ->
-  #   highestIndex = 0
-  #   currentIndex = 0
-  #   elArray = Array()
-  #   if obj
-  #     elArray = obj.getElementsByTagName("*")
-  #   else
-  #     elArray = document.getElementsByTagName("*")
-  #   i = 0
-  # 
-  #   while i < elArray.length
-  #     if elArray[i].currentStyle
-  #       currentIndex = parseFloat(elArray[i].currentStyle["zIndex"])
-  #     else
-  #       if window.getComputedStyle
-  #         currentIndex = parseFloat(document.defaultView.getComputedStyle(elArray[i], null)
-  #                        .getPropertyValue("z-index"))
-  #     if not isNaN(currentIndex) and currentIndex > highestIndex
-  #       highestIndex = currentIndex
-  #     i++
-  #   return highestIndex + 1
-  # 
-  # window.getNextHighestZindex = getNextHighestZindex
-
   $.fn.selectToLookup = (opts) ->
     opts = $.extend {}, $.fn.selectToLookup.options, opts
     spinner = initSpinner(opts.spinnerImg)
 
+    # TODO: find a way to mark strings as gettextable, maybe use cake
+    #       build process to extract them to something simple.
+
+    # TODO: check localstorage, fetch language JSON from /read/config/
+    #       extend options
+    #       also check browser language and make sure this is included
+    #       in request somehow.
     
     # TODO: device / OptionsMenu
     if opts.displayOptions
       $(document).find('body').append Templates.OptionsTab(opts)
       window.optTab = $(document).find('#webdict_options')
       ### Over 9000?!! ###
-      # window.optTab.css('z-index', getNextHighestZindex() + 9000)
       window.optTab.css('z-index', 9000)
 
     # Recall stored language pair from session
@@ -414,63 +400,7 @@ jQuery(document).ready ($) ->
         to:
           iso: 'nob'
           name: 'norsk'
-      },
-      {
-        from:
-          iso: 'SoMe'
-          name: 'nordsamisk (#SoMe)'
-        to:
-          iso: 'nob'
-          name: 'norsk'
-      },
-      {
-        from:
-          iso: 'nob'
-          name: 'norsk'
-        to:
-          iso: 'sme'
-          name: 'nordsamisk'
-      },
-      {
-        from:
-          iso: 'sme'
-          name: 'nordsamisk'
-        to:
-          iso: 'fin'
-          name: 'finsk'
-      },
-      {
-        from:
-          iso: 'SoMe'
-          name: 'nordsamisk (#SoMe)'
-        to:
-          iso: 'fin'
-          name: 'finsk'
-      },
-      {
-        from:
-          iso: 'fin'
-          name: 'finsk'
-        to:
-          iso: 'sme'
-          name: 'nordsamisk'
-      },
-      {
-        from:
-          iso: 'sma'
-          name: 'sørsamisk'
-        to:
-          iso: 'nob'
-          name: 'norsk (bokmål)'
-      },
-      {
-        from:
-          iso: 'nob'
-          name: 'norsk (bokmål)'
-        to:
-          iso: 'sma'
-          name: 'sørsamisk'
-      },
+      }
     ]
 
 
