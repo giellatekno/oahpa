@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-03-04 07:24+0100\n"
+"POT-Creation-Date: 2013-03-04 18:24-0600\n"
 "PO-Revision-Date: 2013-02-23 10:06+0200\n"
 "Last-Translator: Jack Rueter <rueter.jack@gmail.com>\n"
 "Language-Team: myv <LL@li.org>\n"
@@ -17,54 +17,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: language_names.py:9 templates/base.html:132
-#: templates/language_select.html:10
+#: language_names.py:10
 msgid "North Sámi"
 msgstr "Пелевеёнксонь саамонь кель"
 
-#: language_names.py:10
+#: language_names.py:11
 msgid "North Sámi (#SoMe)"
 msgstr "Пелевеёнксонь саамонь кель (#SoMe)"
 
-#: language_names.py:11 templates/base.html:134
-#: templates/language_select.html:12
-msgid "Finnish"
-msgstr "Финнэнь кель"
-
-#: language_names.py:12 templates/base.html:133
-#: templates/language_select.html:11
-msgid "Norwegian"
-msgstr "Норвегень кель"
-
-#: language_names.py:13
+#: language_names.py:14
 msgid "South Sámi"
 msgstr "Чиньэлеёнксонь саамонь кель"
 
-#: language_names.py:15
+#: language_names.py:17
 msgid "Komi"
 msgstr "Коми"
 
-#: language_names.py:16
+#: language_names.py:20
 msgid "Kven"
 msgstr "Квен"
 
-#: language_names.py:17
+#: language_names.py:21
 msgid "Livonian"
 msgstr "Лив"
 
-#: language_names.py:18
+#: language_names.py:22
 msgid "Olonetsian"
 msgstr "Ливви"
 
-#: language_names.py:20
+#: language_names.py:23
+msgid "Izhorian"
+msgstr ""
+
+#: language_names.py:26
 msgid "Erzya Mordvin"
 msgstr "Эрзя"
 
-#: neahtta.py:336 templates/index.html:255
+#: language_names.py:29 language_names.py:33
+msgid "Finnish"
+msgstr "Финнэнь кель"
+
+#: language_names.py:30 language_names.py:34
+msgid "Norwegian"
+msgstr "Норвегень кель"
+
+#: language_names.py:32
+msgid "Russian"
+msgstr ""
+
+#: language_names.py:35
+msgid "Latvian"
+msgstr ""
+
+#: neahtta.py:351 templates/index.html:255
 msgid " is a possible form of ... "
 msgstr "валпарцунось маштови саемс истямо валсто ..."
 
-#: neahtta.py:417
+#: neahtta.py:432
 msgid "Invalid format. Only json and html allowed."
 msgstr "Амаштовикс формат. Ансяк json-т -- html-т маштовить"
 
@@ -72,10 +81,13 @@ msgstr "Амаштовикс формат. Ансяк json-т -- html-т маш�
 msgid ""
 "Whoops! The page you requested was not found. If you think you are "
 "receiving this in error, please contact us."
+msgstr "Теня! Лопа, конанть вешить а муеви. Бути арсят манявинек,сюлмавт мартонок."
+
+#: templates/500.html:51
+msgid "Whoops! There was some kind of error."
 msgstr ""
-"Теня! Лопа, конанть вешить а муеви. Бути арсят манявинек,"
-"сюлмавт мартонок."
-#: templates/about.html:65 templates/base.html:127
+
+#: templates/about.html:65 templates/base.html:135
 msgid "About"
 msgstr "Минденек"
 
@@ -192,19 +204,19 @@ msgstr "Эрьвейке валкссонть 11.000-шка апак скака�
 msgid "More to come..."
 msgstr "Таго мезе лиси..."
 
-#: templates/base.html:119
+#: templates/base.html:127
 msgid "Home"
 msgstr "Ушодома тарка"
 
-#: templates/base.html:123
+#: templates/base.html:131
 msgid "Plugins"
 msgstr "Текникань поладкст"
 
-#: templates/base.html:131
+#: templates/base.html:140
 msgid "Interface language"
 msgstr "Важодема келесь"
 
-#: templates/base.html:194
+#: templates/base.html:204
 msgid ""
 "Created with free and open-source language tools from <em><a "
 "href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, a Sámi Language "
@@ -227,6 +239,10 @@ msgstr ""
 #: templates/index.html:185
 msgid "Swap"
 msgstr "Полавтыть"
+
+#: templates/index.html:199
+msgid "ohcansátni"
+msgstr ""
 
 #: templates/index.html:201 templates/word_detail.html:102
 msgid "Search"
@@ -285,8 +301,8 @@ msgid ""
 " a\n"
 "                menu icon on the left-hand side of the page."
 msgstr ""
-"Кундыка Ловнома тешксэнть ды аравтык кедьёнкслазнэс."
-"                Мейле, зярдо пачкодят истямо лопас, конань ловновлик\n"
+"Кундыка Ловнома тешксэнть ды аравтык кедьёнкслазнэс.                "
+"Мейле, зярдо пачкодят истямо лопас, конань ловновлик\n"
 "                Лезксэсь сонсь аравтови-ладяви, меню ярликенть нейсак\n"
 "                лопанть керш крайнесэ."
 

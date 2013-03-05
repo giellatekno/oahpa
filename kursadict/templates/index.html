@@ -196,7 +196,7 @@ $(document).ready( function() {
                                data-language-from="{{ _from }}"
                                data-language-to="{{ _to }}"
                                {% if user_input -%}value="{{ user_input }}"{% endif %}
-                               placeholder="ohcansátni"></input>
+                               placeholder="{% trans %}ohcansátni{% endtrans %}"></input>
                                <button type="submit" class="btn" name="search">
                                    <span>{% trans %}Search{% endtrans %}</span>
                                </button>

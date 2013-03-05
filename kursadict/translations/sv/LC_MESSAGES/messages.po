@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-03-04 07:24+0100\n"
+"POT-Creation-Date: 2013-03-04 18:24-0600\n"
 "PO-Revision-Date: 2013-02-01 01:55-0600\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: sv <LL@li.org>\n"
@@ -17,54 +17,63 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 0.9.6\n"
 
-#: language_names.py:9 templates/base.html:132
-#: templates/language_select.html:10
+#: language_names.py:10
 msgid "North Sámi"
 msgstr "Nordsamiska"
 
-#: language_names.py:10
+#: language_names.py:11
 msgid "North Sámi (#SoMe)"
 msgstr ""
 
-#: language_names.py:11 templates/base.html:134
-#: templates/language_select.html:12
-msgid "Finnish"
-msgstr "Finska"
-
-#: language_names.py:12 templates/base.html:133
-#: templates/language_select.html:11
-msgid "Norwegian"
-msgstr "Norska"
-
-#: language_names.py:13
+#: language_names.py:14
 msgid "South Sámi"
 msgstr "Sydsamisk"
 
-#: language_names.py:15
+#: language_names.py:17
 msgid "Komi"
 msgstr ""
 
-#: language_names.py:16
+#: language_names.py:20
 msgid "Kven"
 msgstr ""
 
-#: language_names.py:17
+#: language_names.py:21
 msgid "Livonian"
 msgstr ""
 
-#: language_names.py:18
+#: language_names.py:22
 msgid "Olonetsian"
 msgstr ""
 
-#: language_names.py:20
+#: language_names.py:23
+msgid "Izhorian"
+msgstr ""
+
+#: language_names.py:26
 msgid "Erzya Mordvin"
 msgstr ""
 
-#: neahtta.py:336 templates/index.html:255
+#: language_names.py:29 language_names.py:33
+msgid "Finnish"
+msgstr "Finska"
+
+#: language_names.py:30 language_names.py:34
+msgid "Norwegian"
+msgstr "Norska"
+
+#: language_names.py:32
+msgid "Russian"
+msgstr ""
+
+#: language_names.py:35
+msgid "Latvian"
+msgstr ""
+
+#: neahtta.py:351 templates/index.html:255
 msgid " is a possible form of ... "
 msgstr " är en möjlig form av ... "
 
-#: neahtta.py:417
+#: neahtta.py:432
 msgid "Invalid format. Only json and html allowed."
 msgstr "Ogiltigt format. Bara json och html tillåtit"
 
@@ -76,7 +85,11 @@ msgstr ""
 "Oj då! Sidan du frågade efter kunde inte hittas. Om du tycker du inte "
 "borde få det här felmeddelandet, så var god kontakta oss."
 
-#: templates/about.html:65 templates/base.html:127
+#: templates/500.html:51
+msgid "Whoops! There was some kind of error."
+msgstr ""
+
+#: templates/about.html:65 templates/base.html:135
 msgid "About"
 msgstr "Om oss"
 
@@ -199,19 +212,19 @@ msgstr ""
 msgid "More to come..."
 msgstr ""
 
-#: templates/base.html:119
+#: templates/base.html:127
 msgid "Home"
 msgstr "Hem"
 
-#: templates/base.html:123
+#: templates/base.html:131
 msgid "Plugins"
 msgstr "Plugins"
 
-#: templates/base.html:131
+#: templates/base.html:140
 msgid "Interface language"
 msgstr ""
 
-#: templates/base.html:194
+#: templates/base.html:204
 msgid ""
 "Created with free and open-source language tools from <em><a "
 "href=\"http://giellatekno.uit.no\">Giellatekno</a></em>, a Sámi Language "
@@ -237,6 +250,10 @@ msgstr ""
 
 #: templates/index.html:185
 msgid "Swap"
+msgstr ""
+
+#: templates/index.html:199
+msgid "ohcansátni"
 msgstr ""
 
 #: templates/index.html:201 templates/word_detail.html:102
