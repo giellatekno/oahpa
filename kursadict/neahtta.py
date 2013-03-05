@@ -653,6 +653,38 @@ def bookmarklet_example_page():
                           , hostname=hostname
                           )
 
+@app.route('/read/config/', methods=['GET'])
+def bookmarklet_configs():
+    """ Compile a JSON response containing dictionary pairs,
+    and internationalization strings.
+    """
+    from language_names import NAMES
+    from flaskext.babel import gettext as _g
+
+    has_callback = request.args.get('callback', False)
+
+    # TODO: request locale, force set on following operations...
+    # TODO: somehow find the strings from the plugin...
+
+    dictionaries = [
+        { 'from': {'iso': _from, 'name': unicode(NAMES.get(_from))}
+        , 'to':   {'iso': _to,   'name': unicode(NAMES.get(_to))}
+        }
+        for _from, _to in app.config.dictionaries.keys()
+    ]
+
+    data = { 'dictionaries': dictionaries
+           , 'localization': { 'languages': _g('Language')
+                             }
+           }
+
+    formatted = fmtForCallback(json.dumps(data), has_callback)
+
+    return Response( response=formatted
+                   , status=200
+                   , mimetype="application/json"
+                   )
+
 @app.route('/read/', methods=['GET'])
 def bookmarklet():
     from bookmarklet_code import bookmarklet_escaped
