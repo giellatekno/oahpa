@@ -135,6 +135,21 @@ function reveal_feedback (event) {
 	$('div.language_help').hide()
 	$('.tooltip').hide();
 	$('#' + reveal_id).show();
+    //
+    // TODO: feedback tracking
+    //
+    // waiting to see some test events in analytics data to make sure it works, then will
+    // write the code
+    //
+    // _gaq.push(['_trackEvent', event_type, event_title, event_desc])
+    //
+    // ex.)
+    // _gaq.push([ '_trackEvent'
+    //           , "Test-MorfaFeedback"
+    //           , "Morfa-S Nom-Pl"
+    //           , '"eahppel" har ulikestavelsesstamme uten stadieveksling. -at-ending.'
+    //           ])
+    //
 	return false; 
 }
 
