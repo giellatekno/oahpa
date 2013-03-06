@@ -30,9 +30,13 @@ NAMES = dict([
     ('nob', _(u"Norwegian")),
 
     ('ru', _(u"Russian")),
+    ('rus', _(u"Russian")),
+
     ('fi', _(u"Finnish")),
     ('no', _(u"Norwegian")),
+    ('nob', _(u"Norwegian")),
     ('lv', _(u"Latvian")),
+    ('eng', _(u"English")),
 
 ])
 
