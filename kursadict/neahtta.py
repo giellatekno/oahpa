@@ -561,6 +561,8 @@ def wordDetail(from_language, to_language, wordform, format):
                 error_msg += "\n" + '\n'.join(node_texts)
                 abort(500, error_msg)
 
+            paradigm = lang_paradigms.get(pos, False)
+
             if paradigm:
                 _pos_type = [pos]
                 if _type:
