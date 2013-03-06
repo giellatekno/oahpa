@@ -196,9 +196,6 @@ function reveal_feedback (event) {
       ;
 
     var google_event_args = ['_trackevent', event_type, event_title, feedback_event_desc];
-    if (console) {
-        console.log(google_event_args);
-    }
 
     _gaq.push(google_event_args)
     //
