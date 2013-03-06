@@ -41,8 +41,8 @@ Morphology:
       inverse_tagsep: '+'
   liv:
     tool: *LOOKUP
-    file: [*OPT, '/fkv/bin/fkv.fst']
-    inverse_file: [*OPT, '/fkv/bin/ifkv.fst']
+    file: [*OPT, '/liv/bin/liv.fst']
+    inverse_file: [*OPT, '/liv/bin/iliv.fst']
     format: 'xfst'
     options:
       compoundBoundary: "+Use/Circ#"
