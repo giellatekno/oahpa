@@ -135,20 +135,77 @@ function reveal_feedback (event) {
 	$('div.language_help').hide()
 	$('.tooltip').hide();
 	$('#' + reveal_id).show();
+
+    // If the Google isn't with us, skip the rest.
+    // if (typeof _gaq !== "undefined" && _gaq !== null) {
+    // 	return false ;
+    // }
+
+	var feedback_event_desc = $('#' + reveal_id).html().replace(/\n/g, ' ').replace(/ [ ]*/g, ' ') ;
+
+	// Figure out what the form select element is, and also thus what the exercize is.
+	var morfas_type_form = [ 'form select[name="case"]'
+	                       , 'form select[name="vtype"]'
+	                       , 'form select[name="adjcase"]'
+	                       , 'form select[name="num_bare"]'
+	                       , 'form select[name="pron_type"]'
+	                       , 'form select[name="derivation_type"]'
+	                       , 'form select[name="possessive_case"]'
+	                       ] ;
+
+    morfas_elem = false;
+    for (_i = 0, _len = morfas_type_form.length; _i < _len; _i++) {
+        a = morfas_type_form[_i];
+        if ($(a).length > 0) {
+            morfas_elem = $(a);
+        }
+    }
+
+
+	// also for morfac, separately.
+	// NB: the names of these are sometimes different from the name of those above
+	var morfac_type_form = [ 'form select[name="case_context"]'
+	                       , 'form select[name="vtype_context"]'
+	                       , 'form select[name="adjcase_context"]'
+	                       , 'form select[name="num_bare_context"]'
+	                       , 'form select[name="pron_context"]'
+	                       , 'form select[name="derivation_type_context"]'
+	                       , 'form select[name="possessive_case_context"]'
+                           ] ;
+
+    morfac_elem = false;
+    for (_i = 0, _len = morfac_type_form.length; _i < _len; _i++) {
+        a = morfac_type_form[_i];
+        if ($(a).length > 0) {
+            morfac_elem = $(a);
+        }
+    }
+
+    if (typeof morfas_elem !== "undefined" && morfas_elem !== null) {
+        var game_type = morfas_elem.val()
+          , game_name = "MorfaS"
+          ;
+    } else if (typeof morfac_elem !== "undefined" && morfac_elem !== null) {
+        var game_type = morfac_elem.val()
+          , game_name = "MorfaC"
+          ;
+    }
+
+    var event_title = game_name + " " + game_type 
+      ,  event_type = "FeedbackClick" 
+      ;
+
+    var google_event_args = ['_trackevent', event_type, event_title, feedback_event_desc];
+    if (console) {
+        console.log(google_event_args);
+    }
+
+    _gaq.push(google_event_args)
     //
     // TODO: feedback tracking
     //
     // waiting to see some test events in analytics data to make sure it works, then will
     // write the code
-    //
-    // _gaq.push(['_trackEvent', event_type, event_title, event_desc])
-    //
-    // ex.)
-    // _gaq.push([ '_trackEvent'
-    //           , "Test-MorfaFeedback"
-    //           , "Morfa-S Nom-Pl"
-    //           , '"eahppel" har ulikestavelsesstamme uten stadieveksling. -at-ending.'
-    //           ])
     //
 	return false; 
 }
