@@ -195,7 +195,7 @@ function reveal_feedback (event) {
       ,  event_type = "FeedbackClick" 
       ;
 
-    var google_event_args = ['_trackevent', event_type, event_title, feedback_event_desc];
+    var google_event_args = ['_trackEvent', event_type, event_title, feedback_event_desc];
 
     _gaq.push(google_event_args)
     //
