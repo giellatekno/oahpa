@@ -132,6 +132,9 @@ function reveal_feedback (event) {
 	feedback_link = $(event.target).parents('a.feedback_link')[0];
 	reveal_id = feedback_link.id.match(/(feedback-\d)/);
 
+	if ($('#' + reveal_id).is(':visible')) {
+		return false;
+	}
 	$('div.language_help').hide()
 	$('.tooltip').hide();
 	$('#' + reveal_id).show();
