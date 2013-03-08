@@ -666,7 +666,12 @@ def bookmarklet_configs():
     has_callback = request.args.get('callback', False)
 
     # TODO: request locale, force set on following operations...
-    # TODO: somehow find the strings from the plugin...
+    # TODO: is there a way to request strings from a specific doc. in
+    #       babel, or will we need to send all the strings on the first
+    #       run of the plugin?
+    #
+    #        - see univ_oahpa's translation filter thing, should
+    #          contain some code that may be able to be reused
 
     dictionaries = [
         { 'from': {'iso': _from, 'name': unicode(NAMES.get(_from))}
