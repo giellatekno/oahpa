@@ -13,8 +13,26 @@ jQuery(document).ready ($) ->
 
   fakeGetText = (string) ->
     ### Want to mark strings as requiring gettext somehow, so that
-        a babel or other extractor can find them.
+        a babel can find them.
+
+        NB: Babel only has a javascript extractor, so, just compile this
+        with cake: 
+
+            cake clean
+            cake build
+            cake build-bookmarklet
+
+        Then when you run pybabel's extract command, it will find the
+        strings in the unminified source in static/js/.
+
+        Internationalizations are downloaded and stored in localStorage
+        on the first run of the plugin. Translations should degrade to
+        english if they are missing, or the localization is not present.
+
+        The system will not store multiple localizations at a time, so
+        we assume the user does not really want to switch.
     ###
+    
     localized = window.nds_opts.localization[string]
     if localized?
       return localized
@@ -248,10 +266,10 @@ jQuery(document).ready ($) ->
 
     if result_strings.length == 0 or response.success == false
       if opts.tooltip
-        _tooltipTitle = _('Ukjent ord')
+        _tooltipTitle = _('Unknown word')
         result_strings.push("<span class='tags'><em>#{_('You are using')} #{current_pair_names}</em></span>")
         if response.tags.length > 0
-          _tooltipTitle = _('Betydning ikke funnet')
+          _tooltipTitle = _('Meaning not found')
         ##  tags = ("<li><em>#{t[1]}</em></li>" for t in response.tags).join(', ')
         ##  result_strings.push("<span class='tags'><ul>#{tags}</ul></span>")
 
