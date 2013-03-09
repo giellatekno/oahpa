@@ -37,7 +37,22 @@ NAMES = dict([
     ('nob', _(u"Norwegian")),
     ('lv', _(u"Latvian")),
     ('eng', _(u"English")),
+])
 
+LOCALISATION_NAMES_BY_LANGUAGE = dict([
+    ('sme', u"Davvisámegiella"),
+    ('sma', u"Åarjelsaemien"),
+    ('ru', u"Руский"),
+    ('olo', u"olo"),
+    ('no', u"Norsk"),
+    ('myv', u"myv"),
+    ('lv', u"lv"),
+    ('liv', u"liv"),
+    ('kpv', u"kpv"),
+    ('izh', u"izh"),
+    ('fkv', u"fkv"),
+    ('fi', u"Suomi"),
+    ('eng', u"English"),
 ])
 
 # Only put the exceptional ISOs here

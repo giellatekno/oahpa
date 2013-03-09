@@ -13,7 +13,7 @@
         <ul class="dropdown-menu">
             {% for iso in internationalizations %}
             <li><a href="/locale/{{ iso }}/">
-                <img class="i18n_flag" src="{{url_for('static', filename='img/flags/' + iso + '_20x15.png')}}"></img> {{ iso|iso_to_i18n }}</a></li>
+                <img class="i18n_flag" src="{{url_for('static', filename='img/flags/' + iso + '_20x15.png')}}"></img> {{ iso|iso_to_language_own_name }}</a></li>
             {% endfor %}
         </ul>
       </li>

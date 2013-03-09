@@ -116,7 +116,7 @@ useLogFile = logging.FileHandler('user_log.txt')
 user_log.addHandler(useLogFile)
 user_log.setLevel("INFO")
 
-from language_names import ISO_TRANSFORMS
+from language_names import ISO_TRANSFORMS, LOCALISATION_NAMES_BY_LANGUAGE
 AVAILABLE_LOCALE_ISO_TRANSFORM = ISO_TRANSFORMS
 
 ## These things are sort of a temporary fix for some of the localization
@@ -125,6 +125,7 @@ AVAILABLE_LOCALE_ISO_TRANSFORM = ISO_TRANSFORMS
 
 def iso_filter(_iso):
     return AVAILABLE_LOCALE_ISO_TRANSFORM.get(_iso, _iso)
+
 
 @app.before_request
 def append_session_globals():
@@ -174,6 +175,10 @@ def get_locale():
 ##
 ## Template filters
 ##
+
+@app.template_filter('iso_to_language_own_name')
+def iso_to_language_own_name(_iso):
+    return LOCALISATION_NAMES_BY_LANGUAGE.get(_iso, _iso)
 
 @app.template_filter('iso_to_i18n')
 def append_language_names_i18n(s):
@@ -660,10 +665,19 @@ def bookmarklet_configs():
     """ Compile a JSON response containing dictionary pairs,
     and internationalization strings.
     """
+    # see how rosetta gets all the strings
+    # for a particular language, etc.:
+    #     https://github.com/mbi/django-rosetta
+    from flaskext.babel import get_locale, get_translations, refresh, pgettext
     from language_names import NAMES
     from flaskext.babel import gettext as _g
 
     has_callback = request.args.get('callback', False)
+    # babel.core.Locale
+    sess_lang = get_locale()
+    print sess_lang
+    print dir(sess_lang)
+    print type(sess_lang)
 
     # TODO: request locale, force set on following operations...
     # TODO: is there a way to request strings from a specific doc. in
