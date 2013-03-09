@@ -140,7 +140,9 @@
                                 <li class="display-phone hidden-tablet hidden-desktop"><span>{% trans %}Interface language{% endtrans %}</span></li>
                                 {% for iso in internationalizations %}
                                 <li class="display-phone hidden-tablet hidden-desktop">
-                                    <a href="/locale/{{ iso }}/">{{ iso|iso_to_i18n }}</a></li>
+                                    <a href="/locale/{{ iso }}/">
+                                        <img class="i18n_flag" src="{{url_for('static', filename='img/flags/' + iso + '.png')}}"></img> {{ iso|iso_to_i18n }}</a>
+                                </li>
                                 {% endfor %}
                             </ul>
                             {% include 'language_select.html' %}

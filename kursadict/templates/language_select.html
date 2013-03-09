@@ -1,14 +1,19 @@
+
     <ul id="i18n_translations" class="nav nav-pills pull-right hidden-phone">
       <li class="dropdown">
         <a class="dropdown-toggle"
            data-toggle="dropdown"
            href="#">
-            {% trans %}Language{% endtrans %}
+            {% trans %}<span class="reposition_hide">Language</span>{% endtrans %}
+            {% for iso in internationalizations %}
+                <img class="i18n_flag" src="{{url_for('static', filename='img/flags/' + iso + '.png')}}"></img>
+            {% endfor %}
             <b class="caret"></b>
           </a>
         <ul class="dropdown-menu">
             {% for iso in internationalizations %}
-            <li><a href="/locale/{{ iso }}/">{{ iso|iso_to_i18n }}</a></li>
+            <li><a href="/locale/{{ iso }}/">
+                <img class="i18n_flag" src="{{url_for('static', filename='img/flags/' + iso + '.png')}}"></img> {{ iso|iso_to_i18n }}</a></li>
             {% endfor %}
         </ul>
       </li>

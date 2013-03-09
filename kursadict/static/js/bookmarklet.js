@@ -838,10 +838,10 @@ jQuery(document).ready(function($) {
     }
     if (result_strings.length === 0 || response.success === false) {
       if (opts.tooltip) {
-        _tooltipTitle = _('Ukjent ord');
+        _tooltipTitle = _('Unknown word');
         result_strings.push("<span class='tags'><em>" + (_('You are using')) + " " + current_pair_names + "</em></span>");
         if (response.tags.length > 0) {
-          _tooltipTitle = _('Betydning ikke funnet');
+          _tooltipTitle = _('Meaning not found');
         }
       }
     }

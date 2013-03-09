@@ -1,5 +1,12 @@
 /* @override http://localhost:5000/static/css/base.css */
 
+.reposition_hide {
+    position: absolute;
+
+    left: -6000px;
+    top: -6000px;
+}
+
 .container-fluid {
 	padding: 0 0;
 }
@@ -250,6 +257,12 @@ footer {
 }
 .footer-links li:first-child {
   padding-left: 0;
+}
+
+img.i18n_flag {
+  height: 15px;
+  width: 20px;
+  border: 1px solid #BBB;
 }
 
 @media (max-width: 767px) {
