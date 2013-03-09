@@ -1,16 +1,29 @@
 # TODAY
 
-* plugin language list from server
-  * set hostname from NDS_API_HOST, which is probably hardcoded
-    somewhere now within the bookmarklet code sent in /read/
+ * bookmarklet needs version number, so that bookmark javascript can check if
+   user needs to update. this is necessary for new language group changes,
+   because of hostname changes. bookmark should also check that if a version
+   number does not exist, this also means users need to update. 
 
-  * internationalization for plugin, collect strings.
+   can include new bookmark in popup message as well, thus, everyone will
+   be happy.
 
-* lexicon formatters
+ * flag images for all languages, just in case they end up with localizations
 
-* mdf
+ * språknamn etter språk
 
-* other dictionaries page, listing links to other groups
+ * plugin localization: figure out how to serve the right strings
+   to external .js service, need to extract specific .po strings 
+ 
+ * flags for languages
+ 
+ * lexicon formatters
+ 
+ * mdf
+ 
+ * other dictionaries page, listing links to other groups
+ 
+ * separate group-specific about templates for dictionaries?
 
 ## All
 
@@ -59,30 +72,6 @@ Lots of doubled entries, so i am using only a subset of the files in src
 
  * internationalization language select -- use respective language names
    for each language, e.g., davvisámegiela, norsk, suomea
-
---
-
- begin splitting language groups, considerations: 
-
-   - language lists on server, language lists in plugin
-
-   - configuration files-- need a way to specify where dictionaries are visible, 
-     or start splitting up language pairs by service; make new server services 
-     for sme and sma, with their own configurations
-
-   - dictionary entry formatter, different language groups vary
-   
-   - simplify language override decorators so that they are easier to construct
-     for new languages. too many variables passed in and out that may
-     not be clear (e.g. pregenerated_form_selector decorates a function that
-     really only needs to take a node element and return forms, yet, takes
-     form and tags, and returns all these things.
-
-   - having multiple groups is going to result in different information
-     in about pages, and different translations to be managed. this could
-     potentially be difficult to manage, but there is a solution.
-
---
 
  * bookmark icon for iOS
 
