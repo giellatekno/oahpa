@@ -42,7 +42,7 @@ NAMES = dict([
 LOCALISATION_NAMES_BY_LANGUAGE = dict([
     # TODO: where I was unsure about language names, I included some
     # form of "kieli", so, someone should check what the common practice
-    # is amongst these language groups. 
+    # is amongst these language groups.
     ('sme', u"Davvisámegiella"),
     ('sma', u"Åarjelsaemien gïele"),
     ('ru', u"Руский"),

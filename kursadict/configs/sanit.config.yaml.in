@@ -2,16 +2,14 @@
 # in the translations directory.
 
 ApplicationSettings:
-  # TODO: implement
   app_name: "Neahttadigisánit"
   default_locale: "se"
   default_pair: ["sme", "nob"]
   mobile_default_pair: ["SoMe", "nob"]
-  # TODO: implement
   locales_available:
-    - sme
-    - nob
-    - fin
+    - "sme"
+    - "no"
+    - "fi"
 
   meta_description: >
      Gratis online mobilvennlige nordsamiske ordbøker 
@@ -42,7 +40,6 @@ Morphology:
       derivationMarker: "suff."
       tagsep: ' '
       inverse_tagsep: '+'
-  # TODO: file paths on gtoahpa
   SoMe:
     tool: *LOOKUP
     # NOTE: some-sme.fst is a copy of n-sme.fst, but compiled with the tag
@@ -117,15 +114,7 @@ Dictionaries:
   - source: sme
     target: nob
     path: 'dicts/sme-nob.all.xml'
-  #   variants:
-  #     SoMe:
-  #       sme: 
-  #         fst: 'SmeSoMe'
 
-  # TODO: this needs to be redone as a variant of dictionary above, for now
-  # just treating it as an individual thing; reason is because all that differs
-  # is FST, not lexicon, so everything relating to the lexicon needs to be handled
-  # as though SoMe is sme. (e.g., detailed links should go to sme, not SoMe)
   - source: SoMe
     target: nob
     path: 'dicts/sme-nob.all.xml'
@@ -137,10 +126,6 @@ Dictionaries:
   - source: sme
     target: fin
     path: 'dicts/sme-fin.all.xml'
-  #   variants:
-  #     SoMe:
-  #       sme: 
-  #         fst: 'SmeSoMe'
 
   - source: SoMe
     target: fin
@@ -153,7 +138,7 @@ Dictionaries:
 # Abstracting display formats out here, because there are different
 # requirements for different languages and different wordforms.
 
-# TODO: help text
+# for help see sample config file.
 Paradigms:
   fin:
     N:
@@ -179,14 +164,7 @@ Paradigms:
       - "Pl+Nom"
       - "Pl+Gen"
 
-    # TODO: annotation
-    # attr.                     fiinna (bivttas)
-    # pl. nom.                  fiidnát fiidnásat
-    # komp. attr.               fiidnát fiidnásat
-    # komp. sg. nom.            fiidnát fiidnásat fiidnásabbo
-    # superl. sg. nom.          fiidnámus fiidnásamos
-
-    # Adding N+G3 from lex
+    # N+G3 is generated using morphological overrides (sme.py)
     N:
       - "Sg+Gen"
       - "Sg+Ill"
@@ -196,7 +174,6 @@ Paradigms:
       - "Sg+Ill"
       - "Sg+Loc"
 
-    # Adding V+ and potential V subtypes via lexicon.
     V:
       - "Ind+Prs+Sg1"
       - "Ind+Prt+Sg1"
@@ -219,13 +196,11 @@ TagSets:
 
 # Note, these come from dictionary fst, so tag parts are mostly 
 # already translated
-# TODO: i18n
 TagTransforms:
   (sme, nob): &smetagrelabels
     V: "v."
     N: "s."
     A: "adj."
-    # TODO: test that it actually goes away
     NomAg: ""
     G3: ""
     G7: ""
@@ -258,35 +233,7 @@ TagTransforms:
     <<: *smetagrelabels
   
   (nob, sme):
-    V: "v."
-    N: "s."
-    A: "adj."
-    # TODO: test that it actually goes away
-    NomAg: ""
-    G3: ""
-    G7: ""
-    Adv: "adv."
+    <<: *smetagrelabels
 
-    v: "v."
-    n: "s."
-    a: "adj."
-    nomag: ""
-    g3: "g3."
-    g7: ""
-    adv: "adv."
-    cc: "konj."
-    cs: "konj."
-    i: "interj."
-    npl: "pl. s."
-    num: "num."
-    pcle: "part."
-    phrase_adv: "adv."
-    phrase_a: "adj."
-    phrase_i: "interj."
-    phrase_n: "s."
-    phrase_prop: "egennavn"
-    po: "postp."
-    pr: "prep."
-    pron: "pron."
-    prop: "egennavn"
+  # TODO: sme, fin tags
 

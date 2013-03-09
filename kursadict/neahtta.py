@@ -633,6 +633,10 @@ def wordDetail(from_language, to_language, wordform, format):
 def ie8_instrux():
     return render_template('reader_ie8_notice.html')
 
+@app.route('/read/update/', methods=['GET'])
+def reader_update():
+    return render_template('reader_update.html')
+
 @app.route('/read/debug/', methods=['GET'])
 def bookmarklet_debug():
     from bookmarklet_code import bookmarklet_escaped
@@ -706,6 +710,10 @@ def bookmarklet_configs():
                    , mimetype="application/json"
                    )
 
+@app.route('/more/', methods=['GET'])
+def more_dictionaries():
+    return render_template('more_dictionaries.html')
+
 @app.route('/read/', methods=['GET'])
 def bookmarklet():
     from bookmarklet_code import bookmarklet_escaped
@@ -714,7 +722,11 @@ def bookmarklet():
     bkmklt = bookmarklet_escaped.replace( 'sanit.oahpa.no'
                                         , quote_plus(request.host)
                                         )
-    return render_template('reader.html', bookmarklet=bkmklt)
+
+    return render_template( 'reader.html'
+                          , bookmarklet=bkmklt
+                          , language_pairs=app.config.pair_definitions
+                          )
 
 ##
 ## Public pages

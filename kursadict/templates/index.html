@@ -133,6 +133,7 @@ $(document).ready( function() {
                 <span>{{ iso_pair[0]|iso_to_i18n }} ↔ {{ iso_pair[1]|iso_to_i18n }}</span>
                 </a></li>
         {% endfor %}
+        <li class="visible-thin hidden-desktop hidden-tablet"><a href="/more/">{% trans %}Other dictionaries{% endtrans %}</a></li>
 {% endblock %}
 
 {% block bodyclass %}main_search{% endblock %}
@@ -175,6 +176,7 @@ $(document).ready( function() {
                     {%- endif -%}
                 {% endfor %}
                 </ul>
+                <p><a href="/more/" class="other_link">{% trans %}Other dictionaries{% endtrans %}</a></p>
             </div>
             <div class="span8">
                 <h4 id="dict_title">{%- for iso_pair, names in language_pairs.iteritems() %}

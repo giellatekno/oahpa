@@ -18,11 +18,8 @@
 {% block content %}
 <div class="container-fluid">
     <div class="row-fluid">
+        <div class="span5 offset1">
         <h3>{% trans %}Neahttadigisánit Reader{% endtrans %}</h3>
-    </div>
-    <div class="row-fluid">
-
-        <div class="span5">
             <p><font color="#FF0000">{% trans %}WARNING!! We have problems with Internet Explorer 8!{% endtrans %}</font></p>
             <h4>{% trans %}Bookmarklet{% endtrans %}</h4>
             <p>{% trans %}Drag and drop the following link to your Bookmark toolbar,
@@ -43,9 +40,20 @@
                 individual dictionary lookups for statistics and to improve
                 the dictionary.{% endtrans %}</p>
         </div>
-        <div class="span7">
-            <h4>&nbsp;</h4>
+        <div class="span4">
+            <h3>&nbsp;</h3>
             <img id="reader_screenshot" src="{{url_for('static', filename='img/reader_example.png')}}" id="uitlogo"></img>
+            <br />
+            <br />
+            <h4>{% trans %}Includes{% endtrans %}</h4>
+            <ul>
+                {% for iso_pair, names in language_pairs.iteritems() %}
+                    <li class="">
+                        <em>{{ iso_pair[0]|iso_to_i18n }} → {{ iso_pair[1]|iso_to_i18n }}</em>
+                    </li>
+                {% endfor %}
+            </ul>
+            <p>{% trans %}If you are looking for other languages, please see our <a href="/more/">other dictionaries</a>.{% endtrans %}</p>
         </div>
     </div>
 

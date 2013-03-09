@@ -46,6 +46,8 @@ jQuery(document).ready ($) ->
   # Check for the 
   API_HOST = window.NDS_API_HOST || API_HOST
 
+  EXPECT_BOOKMARKLET_VERSION = '0.0.3'
+
   Templates =
     OptionsMenu: (opts) ->
       # TODO: navmenu fixed at bottom containing language option, and 
@@ -219,6 +221,10 @@ jQuery(document).ready ($) ->
           alert "Unexpected errror: " + ex
 
    
+  ##
+  ## NDS Functionality
+  ## 
+
   cleanTooltipResponse = (selection, response, opts) ->
     ###
         Clean response from tooltip $.getJSON query, and display results
@@ -344,18 +350,39 @@ jQuery(document).ready ($) ->
    #
    ## 
 
+  newVersionNotify = () ->
+    notifyWindow = $("""
+    <div class="modal hide fade" id="notifications">
+        <div class="modal-header">
+            <button 
+                type="button" 
+                class="close" 
+                data-dismiss="modal" 
+                aria-hidden="true">&times;</button>
+            <h3>Maybe the header is too short</h3>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-primary" id="close_modal">Continue</a>
+        </div>
+    </div>
+    """)
+    $(document).find('body').prepend notifyWindow
+
+    $(document).find('#notifications').modal({
+      backdrop: true,
+      keyboard: true,
+      remote: "#{API_HOST}/read/update/"
+    })
+
+    $('#close_modal').click () ->
+      $('#notifications').modal('hide')
+
+
   $.fn.selectToLookup = (opts) ->
     opts = $.extend {}, $.fn.selectToLookup.options, opts
     window.nds_opts = opts
     spinner = initSpinner(opts.spinnerImg)
-
-    # TODO: find a way to mark strings as gettextable, maybe use cake
-    #       build process to extract them to something simple.
-
-    # TODO: check localstorage, fetch language JSON from /read/config/
-    #       extend options
-    #       also check browser language and make sure this is included
-    #       in request somehow.
 
     # TODO: device / OptionsMenu
 
@@ -423,15 +450,24 @@ jQuery(document).ready ($) ->
       window.nds_opts.localization = DSt.get('nds-localization')
       initializeWithSettings()
 
-    stored_config = DSt.get('nds-stored-config')
-    if not stored_config
-      url = "#{opts.api_host}/read/config/"
-      $.getJSON(
-        url + '?callback=?'
-        extendLanguageOpts
-      )
-    else
-      recallLanguageOpts()
+    # TODO: check bookmark version, display popups to notify user of
+    # additional things, ie8, or outdated bookmark code.
+
+    version_ok = semver.gte( EXPECT_BOOKMARKLET_VERSION
+                           , window.NDS_BOOKMARK_VERSION
+                           )
+
+    newVersionNotify()
+    if version_ok
+      stored_config = DSt.get('nds-stored-config')
+      if not stored_config
+        url = "#{opts.api_host}/read/config/"
+        $.getJSON(
+          url + '?callback=?'
+          extendLanguageOpts
+        )
+      else
+        recallLanguageOpts()
 
 
     # TODO: one idea for how to handle lookups wtihout alt/option key

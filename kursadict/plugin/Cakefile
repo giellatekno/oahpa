@@ -12,7 +12,9 @@ deps = [
   'src/bootstrap-dropdown.js'
   'src/bootstrap-tooltip.js'
   'src/bootstrap-popover.js'
+  'src/bootstrap-modal.js'
   'src/DSt.js'
+  'src/semver.js'
   'src/rangy-core.js'
   'src/jquery.neahttadigisanit.js'
 ]
@@ -107,6 +109,8 @@ buildBookmarklet = (callback) ->
   # dev/jquery.1.7.2.js  (minified)
   # bin/jquery.neahttadigisanit.min.js 
   # src/bookmarklet.init.js (not minified)
+  #
+  # TODO: minify bookmark.js to ../static/js/bookmark.min.js
 
   util.print "\n Compressing... src/neahttadigisanit.init.js\n"
   all = (fs.readFileSync 'src/neahttadigisanit.init.js').toString()
