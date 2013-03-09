@@ -40,17 +40,20 @@ NAMES = dict([
 ])
 
 LOCALISATION_NAMES_BY_LANGUAGE = dict([
+    # TODO: where I was unsure about language names, I included some
+    # form of "kieli", so, someone should check what the common practice
+    # is amongst these language groups. 
     ('sme', u"Davvisámegiella"),
-    ('sma', u"Åarjelsaemien"),
+    ('sma', u"Åarjelsaemien gïele"),
     ('ru', u"Руский"),
-    ('olo', u"olo"),
+    ('olo', u"Livvin kieli"), # TODO: flag
     ('no', u"Norsk"),
-    ('myv', u"myv"),
-    ('lv', u"lv"),
-    ('liv', u"liv"),
-    ('kpv', u"kpv"),
-    ('izh', u"izh"),
-    ('fkv', u"fkv"),
+    ('myv', u"Эрзянь кель"), # TODO: flag
+    ('lv', u"Latviešu valoda"),
+    ('liv', u"Līvõ kēļ"), # TODO: flag
+    ('kpv', u"Коми кыв"), # TODO: flag
+    ('izh', u"Ižoran keel"), # TODO: flag
+    ('fkv', u"Kveenin kieli"), # TODO: flag
     ('fi', u"Suomi"),
     ('eng', u"English"),
 ])
