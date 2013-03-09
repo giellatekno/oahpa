@@ -1,22 +1,13 @@
 # TODAY
 
  * TODO: refresh settings button in plugin
+  - run this when the bookmarklet is updated also
+
+ * notifications window being cranky
 
  * cakefile include build bookmark.min.js
 
- * dictionaries supported on bookmarklet download page
- 
- * other dictionaries page
-
- * bookmarklet needs version number, so that bookmark javascript can check if
-   user needs to update. this is necessary for new language group changes,
-   because of hostname changes. bookmark should also check that if a version
-   number does not exist, this also means users need to update. 
-
-   can include new bookmark in popup message as well, thus, everyone will
-   be happy.
-
-   r. 71209 i all fall, funkar med alt.
+ * bookmarklet version checking
 
  * plugin localization: figure out how to serve the right strings
    to external .js service, need to extract specific .po strings 
@@ -33,35 +24,6 @@
 
  * autocomplete parse only once per file
 
-## All
-
-If there isn't an xml:lang match for the target language, the other languages
-show up for now. This is because the sme-nob format is ideal, and sma-nob is
-just as good, but has many more hits.
-
-## Olo discoveries
-
-Missing translations still show up in the interface, e.g., mehiläine
-
-    <tg xml:lang="fin">
-        <t pos="N"/>
-    </tg>
-
-## Liv discoveries
-
-Likely you know already, but part of speech needs to be consistent with
-analyzer PoS, and this will allow paradigm generation
-
-    <l pos="VT">aigõ</l>
-
-However, valency should not be lost, and this can be marked in an
-attribute.
-
-
-## Myv discoveries
-
-Lots of doubled entries, so i am using only a subset of the files in src
-
 ## post launch TODOs:
 
  * URLs
@@ -74,12 +36,6 @@ Lots of doubled entries, so i am using only a subset of the files in src
     yrk: vada.oahpa.no
 
     prioritet 1: liv<-> fin, myv<->___ 
-
- * internationalization flags instead 
-   main/xtdoc/gtuit/src/documentation/content/xdocs/images
-
- * internationalization language select -- use respective language names
-   for each language, e.g., davvisámegiela, norsk, suomea
 
  * bookmark icon for iOS
 
@@ -95,17 +51,6 @@ Lots of doubled entries, so i am using only a subset of the files in src
  * plugin: click save, does not automatically dismiss
 
  * plugin: IE8 warning popup
-
- * reader plugin fetch language lists from server in some way, store in
-   localstorage; remove hardcoded dictionary list in reader plugin source
-
- * plugin: i18n - fetch from server, store in localstorage, or store
-   localization strings in variable that is set when the user sees the
-   bookmarklet install page
-
- * language pair splitting by domain, also for plugin list.
-     * baakoeh -> only sma pairs
-     * sánit   -> only sme pairs
 
  * translate the mobile bookmark bubble, maybe modify/write one for
    android, where the process is a little more complex
