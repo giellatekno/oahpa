@@ -379,9 +379,9 @@ jQuery(document).ready ($) ->
     # version notify
     newVersionNotify = () ->
       $.getJSON(
-        'http://localhost:5000/read/update/json/' + '?callback=?'
+        API_HOST + '/read/update/json/' + '?callback=?'
         (response) ->
-          $(document).find('body').prepend(
+          $(document).find('body').append(
             Templates.NotifyWindow(response)
           )
           $(document).find('#notifications').modal({
@@ -398,6 +398,25 @@ jQuery(document).ready ($) ->
             return false
       )
       return false
+
+    ie8Notify = () ->
+      $.getJSON(
+        'http://localhost:5000/read/ie8_instructions/json/' + '?callback=?'
+        (response) ->
+          $(document).find('body').prepend(
+            Templates.NotifyWindow(response)
+          )
+          $(document).find('#notifications').modal({
+            backdrop: true
+            keyboard: true
+          })
+          $('#close_modal').click () ->
+            $('#notifications').modal('hide')
+            DSt.set('nds-ie8-dismissed', true)
+            return false
+      )
+      return true
+
 
     # This runs after either we get the response from the server about
     # language pairs and internationalization, or recover it from local
@@ -467,16 +486,34 @@ jQuery(document).ready ($) ->
     # additional things, ie8, or outdated bookmark code.
 
     version_ok = false
-    console.log EXPECT_BOOKMARKLET_VERSION
-    console.log window.NDS_BOOKMARK_VERSION
-    console.log version_ok
 
     if window.NDS_BOOKMARK_VERSION
       version_ok = semver.gte( window.NDS_BOOKMARK_VERSION
                              , EXPECT_BOOKMARKLET_VERSION
                              )
 
+    console.log EXPECT_BOOKMARKLET_VERSION
+    console.log window.NDS_BOOKMARK_VERSION
+    console.log version_ok
+
+    uagent = navigator.userAgent
+
+    old_ie = false
+    dismissed = false
+    if "MSIE 8.0" in uagent
+      old_ie = true
+      dismissed = DSt.get('nds-ie8-dismissed')
+    else
+      # TODO: for testing only
+      old_ie = true
+      dismissed = DSt.get('nds-ie8-dismissed')
+      # old_ie = false
+
     if version_ok
+      if old_ie
+        console.log "ie8 detected"
+        if not dismissed
+          ie8Notify()
       stored_config = DSt.get('nds-stored-config')
       if not stored_config
         url = "#{opts.api_host}/read/config/"
