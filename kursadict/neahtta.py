@@ -633,9 +633,38 @@ def wordDetail(from_language, to_language, wordform, format):
 def ie8_instrux():
     return render_template('reader_ie8_notice.html')
 
+@app.route('/read/ie8_instructions/json/', methods=['GET'])
+def reader_update_json():
+    # Force template into json response
+    has_callback = request.args.get('callback', False)
+    r = render_template('reader_ie8_notice.html')
+
+    formatted = fmtForCallback(json.dumps(r), has_callback)
+    return Response( response=formatted
+                   , status=200
+                   , mimetype="application/json"
+                   )
+
 @app.route('/read/update/', methods=['GET'])
 def reader_update():
-    return render_template('reader_update.html')
+    return render_template('reader_update.html', bookmarklet=bkmklt)
+
+@app.route('/read/update/json/', methods=['GET'])
+def reader_update_json():
+    from bookmarklet_code import bookmarklet_escaped
+    bkmklt = bookmarklet_escaped.replace( 'sanit.oahpa.no'
+                                        , 'localhost%3A5000'
+                                        )
+    # Force template into json response
+    has_callback = request.args.get('callback', False)
+    r = render_template('reader_update.html', bookmarklet=bkmklt)
+
+    formatted = fmtForCallback(json.dumps(r), has_callback)
+
+    return Response( response=formatted
+                   , status=200
+                   , mimetype="application/json"
+                   )
 
 @app.route('/read/debug/', methods=['GET'])
 def bookmarklet_debug():

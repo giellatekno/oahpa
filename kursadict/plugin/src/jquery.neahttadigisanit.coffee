@@ -49,6 +49,26 @@ jQuery(document).ready ($) ->
   EXPECT_BOOKMARKLET_VERSION = '0.0.3'
 
   Templates =
+    NotifyWindow: (text) ->
+      return $("""
+        <div class="modal hide fade" id="notifications">
+            <div class="modal-header">
+                <button 
+                    type="button" 
+                    class="close" 
+                    data-dismiss="modal" 
+                    aria-hidden="true">&times;</button>
+                <h3>Neahttadigisánit</h3>
+            </div>
+            <div class="modal-body">#{text}</div>
+            <div class="modal-footer">
+                <a href="#" class="btn btn-primary" id="close_modal">
+                  Continue
+                </a>
+            </div>
+        </div>
+        """)
+
     OptionsMenu: (opts) ->
       # TODO: navmenu fixed at bottom containing language option, and 
       #       lookup button
@@ -350,41 +370,34 @@ jQuery(document).ready ($) ->
    #
    ## 
 
-  newVersionNotify = () ->
-    notifyWindow = $("""
-    <div class="modal hide fade" id="notifications">
-        <div class="modal-header">
-            <button 
-                type="button" 
-                class="close" 
-                data-dismiss="modal" 
-                aria-hidden="true">&times;</button>
-            <h3>Maybe the header is too short</h3>
-        </div>
-        <div class="modal-body"></div>
-        <div class="modal-footer">
-            <a href="#" class="btn btn-primary" id="close_modal">Continue</a>
-        </div>
-    </div>
-    """)
-    $(document).find('body').prepend notifyWindow
-
-    $(document).find('#notifications').modal({
-      backdrop: true,
-      keyboard: true,
-      remote: "#{API_HOST}/read/update/"
-    })
-
-    $('#close_modal').click () ->
-      $('#notifications').modal('hide')
-
 
   $.fn.selectToLookup = (opts) ->
     opts = $.extend {}, $.fn.selectToLookup.options, opts
     window.nds_opts = opts
     spinner = initSpinner(opts.spinnerImg)
 
-    # TODO: device / OptionsMenu
+    # version notify
+    newVersionNotify = () ->
+      $.getJSON(
+        'http://localhost:5000/read/update/json/' + '?callback=?'
+        (response) ->
+          $(document).find('body').prepend(
+            Templates.NotifyWindow(response)
+          )
+          $(document).find('#notifications').modal({
+            backdrop: true
+            keyboard: true
+          })
+          $('#close_modal').click () ->
+            $('#notifications').modal('hide')
+            DSt.set('digisanit-select-langpair', null)
+            DSt.set('nds-languages', null)
+            DSt.set('nds-localization', null)
+            DSt.set('nds-stored-config', null)
+            window.location.reload()
+            return false
+      )
+      return false
 
     # This runs after either we get the response from the server about
     # language pairs and internationalization, or recover it from local
@@ -453,11 +466,16 @@ jQuery(document).ready ($) ->
     # TODO: check bookmark version, display popups to notify user of
     # additional things, ie8, or outdated bookmark code.
 
-    version_ok = semver.gte( EXPECT_BOOKMARKLET_VERSION
-                           , window.NDS_BOOKMARK_VERSION
-                           )
+    version_ok = false
+    console.log EXPECT_BOOKMARKLET_VERSION
+    console.log window.NDS_BOOKMARK_VERSION
+    console.log version_ok
 
-    newVersionNotify()
+    if window.NDS_BOOKMARK_VERSION
+      version_ok = semver.gte( window.NDS_BOOKMARK_VERSION
+                             , EXPECT_BOOKMARKLET_VERSION
+                             )
+
     if version_ok
       stored_config = DSt.get('nds-stored-config')
       if not stored_config
@@ -468,7 +486,10 @@ jQuery(document).ready ($) ->
         )
       else
         recallLanguageOpts()
-
+      return false
+    else
+      newVersionNotify()
+      return false
 
     # TODO: one idea for how to handle lookups wtihout alt/option key
     #

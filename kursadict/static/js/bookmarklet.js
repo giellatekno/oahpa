@@ -527,7 +527,547 @@ jQuery.noConflict();
   , template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
   })
 
-}(window.jQuery);var DSt=(function(){var a={version:0.002005,get:function(b){var c=localStorage.getItem(b);if(c===undefined||c===null){c="null"}else{c=c.toString()}return JSON.parse(c)},set:function(b,c){return localStorage.setItem(b,JSON.stringify(c))},store:function(b){if(typeof(b)=="string"){b=document.getElementById(b)}if(!b||b.name==""){return this}var c=a._form_elt_key(b);if(b.type=="checkbox"){a.set(c,b.checked?1:0)}else{if(b.type=="radio"){a.set(c,a._radio_value(b))}else{a.set(c,b.value||"")}}return this},recall:function(b){if(typeof(b)=="string"){b=document.getElementById(b)}if(!b||b.name==""){return this}var c=a._form_elt_key(b);var d=a.get(c);if(b.type=="checkbox"){b.checked=!!d}else{if(b.type=="radio"){if(b.value==d){b.checked=true}}else{b.value=d||""}}return this},_form_elt_key:function(b){return"_form_"+b.form.name+"_field_"+b.name},_radio_value:function(e){if(typeof(e)=="string"){e=document.getElementById(e)}var f=e.form.elements[e.name];var b=f.length;var d=null;for(var c=0;c<b;c++){if(f[c].checked){d=f[c].value}}return d},recall_form:function(b){return a._apply_fn_to_form_inputs(b,a.recall)},store_form:function(b){return a._apply_fn_to_form_inputs(b,a.store)},_apply_fn_to_form_inputs:function(e,c){if(typeof(e)=="string"){e=document.getElementById(e)}var f=e.elements.length;for(var b=0;b<f;b++){var d=e.elements[b];if(d.tagName=="TEXTAREA"||d.tagName=="INPUT"&&d.type!="file"&&d.type!="button"&&d.type!="image"&&d.type!="password"&&d.type!="submit"&&d.type!="reset"){c(d)}}return this},_storage_types:function(){var b="";for(var c in window){if(c=="sessionStorage"||c=="globalStorage"||c=="localStorage"||c=="openDatabase"){b+=b?(" "+c):c}}return b},javascript_accepts_trailing_comma:false};return a})();/*
+}(window.jQuery);/* =========================================================
+ * bootstrap-modal.js v2.2.1
+ * http://twitter.github.com/bootstrap/javascript.html#modals
+ * =========================================================
+ * Copyright 2012 Twitter, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ========================================================= */
+
+
+!function ($) {
+
+  "use strict"; // jshint ;_;
+
+
+ /* MODAL CLASS DEFINITION
+  * ====================== */
+
+  var Modal = function (element, options) {
+    this.options = options
+    this.$element = $(element)
+      .delegate('[data-dismiss="modal"]', 'click.dismiss.modal', $.proxy(this.hide, this))
+    this.options.remote && this.$element.find('.modal-body').load(this.options.remote)
+  }
+
+  Modal.prototype = {
+
+      constructor: Modal
+
+    , toggle: function () {
+        return this[!this.isShown ? 'show' : 'hide']()
+      }
+
+    , show: function () {
+        var that = this
+          , e = $.Event('show')
+
+        this.$element.trigger(e)
+
+        if (this.isShown || e.isDefaultPrevented()) return
+
+        this.isShown = true
+
+        this.escape()
+
+        this.backdrop(function () {
+          var transition = $.support.transition && that.$element.hasClass('fade')
+
+          if (!that.$element.parent().length) {
+            that.$element.appendTo(document.body) //don't move modals dom position
+          }
+
+          that.$element
+            .show()
+
+          if (transition) {
+            that.$element[0].offsetWidth // force reflow
+          }
+
+          that.$element
+            .addClass('in')
+            .attr('aria-hidden', false)
+
+          that.enforceFocus()
+
+          transition ?
+            that.$element.one($.support.transition.end, function () { that.$element.focus().trigger('shown') }) :
+            that.$element.focus().trigger('shown')
+
+        })
+      }
+
+    , hide: function (e) {
+        e && e.preventDefault()
+
+        var that = this
+
+        e = $.Event('hide')
+
+        this.$element.trigger(e)
+
+        if (!this.isShown || e.isDefaultPrevented()) return
+
+        this.isShown = false
+
+        this.escape()
+
+        $(document).off('focusin.modal')
+
+        this.$element
+          .removeClass('in')
+          .attr('aria-hidden', true)
+
+        $.support.transition && this.$element.hasClass('fade') ?
+          this.hideWithTransition() :
+          this.hideModal()
+      }
+
+    , enforceFocus: function () {
+        var that = this
+        $(document).on('focusin.modal', function (e) {
+          if (that.$element[0] !== e.target && !that.$element.has(e.target).length) {
+            that.$element.focus()
+          }
+        })
+      }
+
+    , escape: function () {
+        var that = this
+        if (this.isShown && this.options.keyboard) {
+          this.$element.on('keyup.dismiss.modal', function ( e ) {
+            e.which == 27 && that.hide()
+          })
+        } else if (!this.isShown) {
+          this.$element.off('keyup.dismiss.modal')
+        }
+      }
+
+    , hideWithTransition: function () {
+        var that = this
+          , timeout = setTimeout(function () {
+              that.$element.off($.support.transition.end)
+              that.hideModal()
+            }, 500)
+
+        this.$element.one($.support.transition.end, function () {
+          clearTimeout(timeout)
+          that.hideModal()
+        })
+      }
+
+    , hideModal: function (that) {
+        this.$element
+          .hide()
+          .trigger('hidden')
+
+        this.backdrop()
+      }
+
+    , removeBackdrop: function () {
+        this.$backdrop.remove()
+        this.$backdrop = null
+      }
+
+    , backdrop: function (callback) {
+        var that = this
+          , animate = this.$element.hasClass('fade') ? 'fade' : ''
+
+        if (this.isShown && this.options.backdrop) {
+          var doAnimate = $.support.transition && animate
+
+          this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
+            .appendTo(document.body)
+
+          this.$backdrop.click(
+            this.options.backdrop == 'static' ?
+              $.proxy(this.$element[0].focus, this.$element[0])
+            : $.proxy(this.hide, this)
+          )
+
+          if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
+
+          this.$backdrop.addClass('in')
+
+          doAnimate ?
+            this.$backdrop.one($.support.transition.end, callback) :
+            callback()
+
+        } else if (!this.isShown && this.$backdrop) {
+          this.$backdrop.removeClass('in')
+
+          $.support.transition && this.$element.hasClass('fade')?
+            this.$backdrop.one($.support.transition.end, $.proxy(this.removeBackdrop, this)) :
+            this.removeBackdrop()
+
+        } else if (callback) {
+          callback()
+        }
+      }
+  }
+
+
+ /* MODAL PLUGIN DEFINITION
+  * ======================= */
+
+  $.fn.modal = function (option) {
+    return this.each(function () {
+      var $this = $(this)
+        , data = $this.data('modal')
+        , options = $.extend({}, $.fn.modal.defaults, $this.data(), typeof option == 'object' && option)
+      if (!data) $this.data('modal', (data = new Modal(this, options)))
+      if (typeof option == 'string') data[option]()
+      else if (options.show) data.show()
+    })
+  }
+
+  $.fn.modal.defaults = {
+      backdrop: true
+    , keyboard: true
+    , show: true
+  }
+
+  $.fn.modal.Constructor = Modal
+
+
+ /* MODAL DATA-API
+  * ============== */
+
+  $(document).on('click.modal.data-api', '[data-toggle="modal"]', function (e) {
+    var $this = $(this)
+      , href = $this.attr('href')
+      , $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) //strip for ie7
+      , option = $target.data('modal') ? 'toggle' : $.extend({ remote:!/#/.test(href) && href }, $target.data(), $this.data())
+
+    e.preventDefault()
+
+    $target
+      .modal(option)
+      .one('hide', function () {
+        $this.focus()
+      })
+  })
+
+}(window.jQuery);
+var DSt=(function(){var a={version:0.002005,get:function(b){var c=localStorage.getItem(b);if(c===undefined||c===null){c="null"}else{c=c.toString()}return JSON.parse(c)},set:function(b,c){return localStorage.setItem(b,JSON.stringify(c))},store:function(b){if(typeof(b)=="string"){b=document.getElementById(b)}if(!b||b.name==""){return this}var c=a._form_elt_key(b);if(b.type=="checkbox"){a.set(c,b.checked?1:0)}else{if(b.type=="radio"){a.set(c,a._radio_value(b))}else{a.set(c,b.value||"")}}return this},recall:function(b){if(typeof(b)=="string"){b=document.getElementById(b)}if(!b||b.name==""){return this}var c=a._form_elt_key(b);var d=a.get(c);if(b.type=="checkbox"){b.checked=!!d}else{if(b.type=="radio"){if(b.value==d){b.checked=true}}else{b.value=d||""}}return this},_form_elt_key:function(b){return"_form_"+b.form.name+"_field_"+b.name},_radio_value:function(e){if(typeof(e)=="string"){e=document.getElementById(e)}var f=e.form.elements[e.name];var b=f.length;var d=null;for(var c=0;c<b;c++){if(f[c].checked){d=f[c].value}}return d},recall_form:function(b){return a._apply_fn_to_form_inputs(b,a.recall)},store_form:function(b){return a._apply_fn_to_form_inputs(b,a.store)},_apply_fn_to_form_inputs:function(e,c){if(typeof(e)=="string"){e=document.getElementById(e)}var f=e.elements.length;for(var b=0;b<f;b++){var d=e.elements[b];if(d.tagName=="TEXTAREA"||d.tagName=="INPUT"&&d.type!="file"&&d.type!="button"&&d.type!="image"&&d.type!="password"&&d.type!="submit"&&d.type!="reset"){c(d)}}return this},_storage_types:function(){var b="";for(var c in window){if(c=="sessionStorage"||c=="globalStorage"||c=="localStorage"||c=="openDatabase"){b+=b?(" "+c):c}}return b},javascript_accepts_trailing_comma:false};return a})();;(function (exports) { // nothing in here is node-specific.
+
+// See http://semver.org/
+// This implementation is a *hair* less strict in that it allows
+// v1.2.3 things, and also tags that don't begin with a char.
+
+var semver = "\\s*[v=]*\\s*([0-9]+)"        // major
+           + "\\.([0-9]+)"                  // minor
+           + "\\.([0-9]+)"                  // patch
+           + "(-[0-9]+-?)?"                 // build
+           + "([a-zA-Z-+][a-zA-Z0-9-\.:]*)?" // tag
+  , exprComparator = "^((<|>)?=?)\s*("+semver+")$|^$"
+  , xRangePlain = "[v=]*([0-9]+|x|X|\\*)"
+                + "(?:\\.([0-9]+|x|X|\\*)"
+                + "(?:\\.([0-9]+|x|X|\\*)"
+                + "([a-zA-Z-][a-zA-Z0-9-\.:]*)?)?)?"
+  , xRange = "((?:<|>)=?)?\\s*" + xRangePlain
+  , exprLoneSpermy = "(?:~>?)"
+  , exprSpermy = exprLoneSpermy + xRange
+  , expressions = exports.expressions =
+    { parse : new RegExp("^\\s*"+semver+"\\s*$")
+    , parsePackage : new RegExp("^\\s*([^\/]+)[-@](" +semver+")\\s*$")
+    , parseRange : new RegExp(
+        "^\\s*(" + semver + ")\\s+-\\s+(" + semver + ")\\s*$")
+    , validComparator : new RegExp("^"+exprComparator+"$")
+    , parseXRange : new RegExp("^"+xRange+"$")
+    , parseSpermy : new RegExp("^"+exprSpermy+"$")
+    }
+
+
+Object.getOwnPropertyNames(expressions).forEach(function (i) {
+  exports[i] = function (str) {
+    return ("" + (str || "")).match(expressions[i])
+  }
+})
+
+exports.rangeReplace = ">=$1 <=$7"
+exports.clean = clean
+exports.compare = compare
+exports.rcompare = rcompare
+exports.satisfies = satisfies
+exports.gt = gt
+exports.gte = gte
+exports.lt = lt
+exports.lte = lte
+exports.eq = eq
+exports.neq = neq
+exports.cmp = cmp
+exports.inc = inc
+
+exports.valid = valid
+exports.validPackage = validPackage
+exports.validRange = validRange
+exports.maxSatisfying = maxSatisfying
+
+exports.replaceStars = replaceStars
+exports.toComparators = toComparators
+
+function stringify (version) {
+  var v = version
+  return [v[1]||'', v[2]||'', v[3]||''].join(".") + (v[4]||'') + (v[5]||'')
+}
+
+function clean (version) {
+  version = exports.parse(version)
+  if (!version) return version
+  return stringify(version)
+}
+
+function valid (version) {
+  if (typeof version !== "string") return null
+  return exports.parse(version) && version.trim().replace(/^[v=]+/, '')
+}
+
+function validPackage (version) {
+  if (typeof version !== "string") return null
+  return version.match(expressions.parsePackage) && version.trim()
+}
+
+// range can be one of:
+// "1.0.3 - 2.0.0" range, inclusive, like ">=1.0.3 <=2.0.0"
+// ">1.0.2" like 1.0.3 - 9999.9999.9999
+// ">=1.0.2" like 1.0.2 - 9999.9999.9999
+// "<2.0.0" like 0.0.0 - 1.9999.9999
+// ">1.0.2 <2.0.0" like 1.0.3 - 1.9999.9999
+var starExpression = /(<|>)?=?\s*\*/g
+  , starReplace = ""
+  , compTrimExpression = new RegExp("((<|>)?=|<|>)\\s*("
+                                    +semver+"|"+xRangePlain+")", "g")
+  , compTrimReplace = "$1$3"
+
+function toComparators (range) {
+  var ret = (range || "").trim()
+    .replace(expressions.parseRange, exports.rangeReplace)
+    .replace(compTrimExpression, compTrimReplace)
+    .split(/\s+/)
+    .join(" ")
+    .split("||")
+    .map(function (orchunk) {
+      return orchunk
+        .replace(new RegExp("(" + exprLoneSpermy + ")\\s+"), "$1")
+        .split(" ")
+        .map(replaceXRanges)
+        .map(replaceSpermies)
+        .map(replaceStars)
+        .join(" ").trim()
+    })
+    .map(function (orchunk) {
+      return orchunk
+        .trim()
+        .split(/\s+/)
+        .filter(function (c) { return c.match(expressions.validComparator) })
+    })
+    .filter(function (c) { return c.length })
+  return ret
+}
+
+function replaceStars (stars) {
+  return stars.trim().replace(starExpression, starReplace)
+}
+
+// "2.x","2.x.x" --> ">=2.0.0- <2.1.0-"
+// "2.3.x" --> ">=2.3.0- <2.4.0-"
+function replaceXRanges (ranges) {
+  return ranges.split(/\s+/)
+               .map(replaceXRange)
+               .join(" ")
+}
+
+function replaceXRange (version) {
+  return version.trim().replace(expressions.parseXRange,
+                                function (v, gtlt, M, m, p, t) {
+    var anyX = !M || M.toLowerCase() === "x" || M === "*"
+               || !m || m.toLowerCase() === "x" || m === "*"
+               || !p || p.toLowerCase() === "x" || p === "*"
+      , ret = v
+
+    if (gtlt && anyX) {
+      // just replace x'es with zeroes
+      ;(!M || M === "*" || M.toLowerCase() === "x") && (M = 0)
+      ;(!m || m === "*" || m.toLowerCase() === "x") && (m = 0)
+      ;(!p || p === "*" || p.toLowerCase() === "x") && (p = 0)
+      ret = gtlt + M+"."+m+"."+p+"-"
+    } else if (!M || M === "*" || M.toLowerCase() === "x") {
+      ret = "*" // allow any
+    } else if (!m || m === "*" || m.toLowerCase() === "x") {
+      // append "-" onto the version, otherwise
+      // "1.x.x" matches "2.0.0beta", since the tag
+      // *lowers* the version value
+      ret = ">="+M+".0.0- <"+(+M+1)+".0.0-"
+    } else if (!p || p === "*" || p.toLowerCase() === "x") {
+      ret = ">="+M+"."+m+".0- <"+M+"."+(+m+1)+".0-"
+    }
+    return ret
+  })
+}
+
+// ~, ~> --> * (any, kinda silly)
+// ~2, ~2.x, ~2.x.x, ~>2, ~>2.x ~>2.x.x --> >=2.0.0 <3.0.0
+// ~2.0, ~2.0.x, ~>2.0, ~>2.0.x --> >=2.0.0 <2.1.0
+// ~1.2, ~1.2.x, ~>1.2, ~>1.2.x --> >=1.2.0 <1.3.0
+// ~1.2.3, ~>1.2.3 --> >=1.2.3 <1.3.0
+// ~1.2.0, ~>1.2.0 --> >=1.2.0 <1.3.0
+function replaceSpermies (version) {
+  return version.trim().replace(expressions.parseSpermy,
+                                function (v, gtlt, M, m, p, t) {
+    if (gtlt) throw new Error(
+      "Using '"+gtlt+"' with ~ makes no sense. Don't do it.")
+
+    if (!M || M.toLowerCase() === "x") {
+      return ""
+    }
+    // ~1 == >=1.0.0- <2.0.0-
+    if (!m || m.toLowerCase() === "x") {
+      return ">="+M+".0.0- <"+(+M+1)+".0.0-"
+    }
+    // ~1.2 == >=1.2.0- <1.3.0-
+    if (!p || p.toLowerCase() === "x") {
+      return ">="+M+"."+m+".0- <"+M+"."+(+m+1)+".0-"
+    }
+    // ~1.2.3 == >=1.2.3- <1.3.0-
+    t = t || "-"
+    return ">="+M+"."+m+"."+p+t+" <"+M+"."+(+m+1)+".0-"
+  })
+}
+
+function validRange (range) {
+  range = replaceStars(range)
+  var c = toComparators(range)
+  return (c.length === 0)
+       ? null
+       : c.map(function (c) { return c.join(" ") }).join("||")
+}
+
+// returns the highest satisfying version in the list, or undefined
+function maxSatisfying (versions, range) {
+  return versions
+    .filter(function (v) { return satisfies(v, range) })
+    .sort(compare)
+    .pop()
+}
+function satisfies (version, range) {
+  version = valid(version)
+  if (!version) return false
+  range = toComparators(range)
+  for (var i = 0, l = range.length ; i < l ; i ++) {
+    var ok = false
+    for (var j = 0, ll = range[i].length ; j < ll ; j ++) {
+      var r = range[i][j]
+        , gtlt = r.charAt(0) === ">" ? gt
+               : r.charAt(0) === "<" ? lt
+               : false
+        , eq = r.charAt(!!gtlt) === "="
+        , sub = (!!eq) + (!!gtlt)
+      if (!gtlt) eq = true
+      r = r.substr(sub)
+      r = (r === "") ? r : valid(r)
+      ok = (r === "") || (eq && r === version) || (gtlt && gtlt(version, r))
+      if (!ok) break
+    }
+    if (ok) return true
+  }
+  return false
+}
+
+// return v1 > v2 ? 1 : -1
+function compare (v1, v2) {
+  var g = gt(v1, v2)
+  return g === null ? 0 : g ? 1 : -1
+}
+
+function rcompare (v1, v2) {
+  return compare(v2, v1)
+}
+
+function lt (v1, v2) { return gt(v2, v1) }
+function gte (v1, v2) { return !lt(v1, v2) }
+function lte (v1, v2) { return !gt(v1, v2) }
+function eq (v1, v2) { return gt(v1, v2) === null }
+function neq (v1, v2) { return gt(v1, v2) !== null }
+function cmp (v1, c, v2) {
+  switch (c) {
+    case ">": return gt(v1, v2)
+    case "<": return lt(v1, v2)
+    case ">=": return gte(v1, v2)
+    case "<=": return lte(v1, v2)
+    case "==": return eq(v1, v2)
+    case "!=": return neq(v1, v2)
+    case "===": return v1 === v2
+    case "!==": return v1 !== v2
+    default: throw new Error("Y U NO USE VALID COMPARATOR!? "+c)
+  }
+}
+
+// return v1 > v2
+function num (v) {
+  return v === undefined ? -1 : parseInt((v||"0").replace(/[^0-9]+/g, ''), 10)
+}
+function gt (v1, v2) {
+  v1 = exports.parse(v1)
+  v2 = exports.parse(v2)
+  if (!v1 || !v2) return false
+
+  for (var i = 1; i < 5; i ++) {
+    v1[i] = num(v1[i])
+    v2[i] = num(v2[i])
+    if (v1[i] > v2[i]) return true
+    else if (v1[i] !== v2[i]) return false
+  }
+  // no tag is > than any tag, or use lexicographical order.
+  var tag1 = v1[5] || ""
+    , tag2 = v2[5] || ""
+
+  // kludge: null means they were equal.  falsey, and detectable.
+  // embarrassingly overclever, though, I know.
+  return tag1 === tag2 ? null
+         : !tag1 ? true
+         : !tag2 ? false
+         : tag1 > tag2
+}
+
+function inc (version, release) {
+  version = exports.parse(version)
+  if (!version) return null
+
+  var parsedIndexLookup =
+    { 'major': 1
+    , 'minor': 2
+    , 'patch': 3
+    , 'build': 4 }
+  var incIndex = parsedIndexLookup[release]
+  if (incIndex === undefined) return null
+
+  var current = num(version[incIndex])
+  version[incIndex] = current === -1 ? 1 : current + 1
+
+  for (var i = incIndex + 1; i < 5; i ++) {
+    if (num(version[i]) !== -1) version[i] = "0"
+  }
+
+  if (version[4]) version[4] = "-" + version[4]
+  version[5] = ""
+
+  return stringify(version)
+}
+})(typeof exports === "object" ? exports : semver = {})
+/*
  Rangy, a cross-browser JavaScript range and selection library
  http://code.google.com/p/rangy/
 
@@ -631,11 +1171,28 @@ TODO: prevent window url from updating with form submit params
 */
 
 jQuery(document).ready(function($) {
-  var API_HOST, Templates, cleanTooltipResponse, cloneContents, fakeGetText, getFirstRange, initSpinner, lookupSelectEvent, surroundRange, _,
+  var API_HOST, EXPECT_BOOKMARKLET_VERSION, Templates, cleanTooltipResponse, cloneContents, fakeGetText, getFirstRange, initSpinner, lookupSelectEvent, surroundRange, _,
     _this = this;
   fakeGetText = function(string) {
     /* Want to mark strings as requiring gettext somehow, so that
-        a babel or other extractor can find them.
+        a babel can find them.
+    
+        NB: Babel only has a javascript extractor, so, just compile this
+        with cake: 
+    
+            cake clean
+            cake build
+            cake build-bookmarklet
+    
+        Then when you run pybabel's extract command, it will find the
+        strings in the unminified source in static/js/.
+    
+        Internationalizations are downloaded and stored in localStorage
+        on the first run of the plugin. Translations should degrade to
+        english if they are missing, or the localization is not present.
+    
+        The system will not store multiple localizations at a time, so
+        we assume the user does not really want to switch.
     */
 
     var localized;
@@ -649,7 +1206,11 @@ jQuery(document).ready(function($) {
   _ = fakeGetText;
   API_HOST = "http://localhost:5000/";
   API_HOST = window.NDS_API_HOST || API_HOST;
+  EXPECT_BOOKMARKLET_VERSION = '0.0.3';
   Templates = {
+    NotifyWindow: function(text) {
+      return $("<div class=\"modal hide fade\" id=\"notifications\">\n    <div class=\"modal-header\">\n        <button \n            type=\"button\" \n            class=\"close\" \n            data-dismiss=\"modal\" \n            aria-hidden=\"true\">&times;</button>\n        <h3>Neahttadigisánit</h3>\n    </div>\n    <div class=\"modal-body\">" + text + "</div>\n    <div class=\"modal-footer\">\n        <a href=\"#\" class=\"btn btn-primary\" id=\"close_modal\">\n          Continue\n        </a>\n    </div>\n</div>");
+    },
     OptionsMenu: function(opts) {
       return "omg";
     },
@@ -903,11 +1464,30 @@ jQuery(document).ready(function($) {
     return false;
   };
   $.fn.selectToLookup = function(opts) {
-    var extendLanguageOpts, initializeWithSettings, recallLanguageOpts, spinner, storeConfigs, stored_config, url,
+    var extendLanguageOpts, initializeWithSettings, newVersionNotify, recallLanguageOpts, spinner, storeConfigs, stored_config, url, version_ok,
       _this = this;
     opts = $.extend({}, $.fn.selectToLookup.options, opts);
     window.nds_opts = opts;
     spinner = initSpinner(opts.spinnerImg);
+    newVersionNotify = function() {
+      $.getJSON('http://localhost:5000/read/update/json/' + '?callback=?', function(response) {
+        $(document).find('body').prepend(Templates.NotifyWindow(response));
+        $(document).find('#notifications').modal({
+          backdrop: true,
+          keyboard: true
+        });
+        return $('#close_modal').click(function() {
+          $('#notifications').modal('hide');
+          DSt.set('digisanit-select-langpair', null);
+          DSt.set('nds-languages', null);
+          DSt.set('nds-localization', null);
+          DSt.set('nds-stored-config', null);
+          window.location.reload();
+          return false;
+        });
+      });
+      return false;
+    };
     initializeWithSettings = function() {
       var clean, holdingOption, previous_langpair, _opt, _select,
         _this = this;
@@ -973,12 +1553,25 @@ jQuery(document).ready(function($) {
       window.nds_opts.localization = DSt.get('nds-localization');
       return initializeWithSettings();
     };
-    stored_config = DSt.get('nds-stored-config');
-    if (!stored_config) {
-      url = "" + opts.api_host + "/read/config/";
-      return $.getJSON(url + '?callback=?', extendLanguageOpts);
+    version_ok = false;
+    console.log(EXPECT_BOOKMARKLET_VERSION);
+    console.log(window.NDS_BOOKMARK_VERSION);
+    console.log(version_ok);
+    if (window.NDS_BOOKMARK_VERSION) {
+      version_ok = semver.gte(window.NDS_BOOKMARK_VERSION, EXPECT_BOOKMARKLET_VERSION);
+    }
+    if (version_ok) {
+      stored_config = DSt.get('nds-stored-config');
+      if (!stored_config) {
+        url = "" + opts.api_host + "/read/config/";
+        $.getJSON(url + '?callback=?', extendLanguageOpts);
+      } else {
+        recallLanguageOpts();
+      }
+      return false;
     } else {
-      return recallLanguageOpts();
+      newVersionNotify();
+      return false;
     }
   };
   $.fn.selectToLookup.options = {
