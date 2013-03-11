@@ -41,9 +41,9 @@ jQuery(document).ready ($) ->
     
     localized = window.nds_opts.localization[string]
     if localized?
-      return localized
-    else
-      return string
+      if localized
+        return localized
+    return string
 
   _ = fakeGetText
 
