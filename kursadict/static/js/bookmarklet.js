@@ -1170,9 +1170,18 @@ A jQuery plugin for enabling the Kursadict functionality
 TODO: prevent window url from updating with form submit params
 */
 
+var __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+
 jQuery(document).ready(function($) {
-  var API_HOST, EXPECT_BOOKMARKLET_VERSION, Templates, cleanTooltipResponse, cloneContents, fakeGetText, getFirstRange, initSpinner, lookupSelectEvent, surroundRange, _,
+  var API_HOST, EXPECT_BOOKMARKLET_VERSION, Templates, cleanTooltipResponse, cloneContents, fakeGetText, first, getFirstRange, initSpinner, lookupSelectEvent, surroundRange, _,
     _this = this;
+  first = function(somearray) {
+    if (somearray.length > 0) {
+      return somearray[0];
+    } else {
+      return false;
+    }
+  };
   fakeGetText = function(string) {
     /* Want to mark strings as requiring gettext somehow, so that
         a babel can find them.
@@ -1198,18 +1207,19 @@ jQuery(document).ready(function($) {
     var localized;
     localized = window.nds_opts.localization[string];
     if (localized != null) {
-      return localized;
-    } else {
-      return string;
+      if (localized) {
+        return localized;
+      }
     }
+    return string;
   };
   _ = fakeGetText;
-  API_HOST = "http://localhost:5000/";
+  API_HOST = "http://sanit.oahpa.no/";
   API_HOST = window.NDS_API_HOST || API_HOST;
   EXPECT_BOOKMARKLET_VERSION = '0.0.3';
   Templates = {
     NotifyWindow: function(text) {
-      return $("<div class=\"modal hide fade\" id=\"notifications\">\n    <div class=\"modal-header\">\n        <button \n            type=\"button\" \n            class=\"close\" \n            data-dismiss=\"modal\" \n            aria-hidden=\"true\">&times;</button>\n        <h3>Neahttadigisánit</h3>\n    </div>\n    <div class=\"modal-body\">" + text + "</div>\n    <div class=\"modal-footer\">\n        <a href=\"#\" class=\"btn btn-primary\" id=\"close_modal\">\n          Continue\n        </a>\n    </div>\n</div>");
+      return $("<div class=\"modal hide fade\" id=\"notifications\">\n    <div class=\"modal-header\">\n        <button \n            type=\"button\"\n            class=\"close\"\n            data-dismiss=\"modal\"\n            aria-hidden=\"true\">&times;</button>\n        <h3>Neahttadigisánit</h3>\n    </div>\n    <div class=\"modal-body\">" + text + "</div>\n    <div class=\"modal-footer\">\n        <a href=\"#\" class=\"btn btn-primary\" id=\"close_modal\">\n          Continue\n        </a>\n    </div>\n</div>");
     },
     OptionsMenu: function(opts) {
       return "omg";
@@ -1248,6 +1258,13 @@ jQuery(document).ready(function($) {
         return false;
       });
       el.find('a.close').click(function() {
+        var optsp;
+        optsp = el.find('div.option_panel');
+        optsp.toggle();
+        el.find('a.close').toggle();
+        return false;
+      });
+      el.find('button#save').click(function() {
         var optsp;
         optsp = el.find('div.option_panel');
         optsp.toggle();
@@ -1351,7 +1368,7 @@ jQuery(document).ready(function($) {
             Clean response from tooltip $.getJSON query, and display results
     */
 
-    var clean_right, current_pair, current_pair_names, element, i, langpair, lookup, r, range, result, result_string, result_strings, right, string, _cp, _f_from, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3, _t_to, _tooltipTarget, _tooltipTitle, _wrapElement,
+    var clean_right, current_pair_names, element, i, langpair, lookup, r, range, result, result_string, result_strings, right, string, _cp, _f_from, _i, _j, _k, _len, _len1, _len2, _ref, _ref1, _ref2, _ref3, _t_to, _tooltipTarget, _tooltipTitle, _wrapElement,
       _this = this;
     string = selection.string;
     element = selection.element;
@@ -1384,15 +1401,10 @@ jQuery(document).ready(function($) {
     }
     langpair = DSt.get('digisanit-select-langpair');
     _ref3 = langpair.split('-'), _f_from = _ref3[0], _t_to = _ref3[1];
-    current_pair = window.nds_opts.dictionaries.filter(function(e) {
-      if (e.from.iso === _f_from && e.to.iso === _t_to) {
-        return true;
-      } else {
-        return false;
-      }
-    });
-    if (current_pair.length > 0) {
-      _cp = current_pair[0];
+    _cp = first(window.nds_opts.dictionaries.filter(function(e) {
+      return e.from.iso === _f_from && e.to.iso === _t_to;
+    }));
+    if (_cp) {
       current_pair_names = "" + _cp.from.name + " → " + _cp.to.name;
     } else {
       current_pair_names = "";
@@ -1437,7 +1449,7 @@ jQuery(document).ready(function($) {
     }
   };
   lookupSelectEvent = function(evt, string, element, range, opts) {
-    var langpair, lookup_string, post_data, result_elem, source_lang, target_lang, url, _ref,
+    var langpair, lookup_string, post_data, result_elem, source_lang, target_lang, uri, url, _cp, _ref,
       _this = this;
     result_elem = $(document).find(opts.formResults);
     string = $.trim(string).replace(/\b[-.,()&$#!\[\]{}"]+\B|\B[-.,()&$#!\[\]{}"]+\b/g, "");
@@ -1447,11 +1459,20 @@ jQuery(document).ready(function($) {
     langpair = $(opts.langPairSelect).val();
     _ref = langpair.split('-'), source_lang = _ref[0], target_lang = _ref[1];
     lookup_string = string;
+    _cp = first(window.nds_opts.dictionaries.filter(function(e) {
+      return e.from.iso === source_lang && e.to.iso === target_lang;
+    }));
+    if (_cp != null) {
+      uri = _cp.uri;
+    } else {
+      uri = false;
+    }
+    window.cp = _cp;
     post_data = {
       lookup: lookup_string,
       lemmatize: true
     };
-    url = "" + opts.api_host + "/lookup/" + source_lang + "/" + target_lang + "/";
+    url = "" + opts.api_host + "/" + uri;
     $.getJSON(url + '?callback=?', post_data, function(response) {
       var selection;
       selection = {
@@ -1464,14 +1485,14 @@ jQuery(document).ready(function($) {
     return false;
   };
   $.fn.selectToLookup = function(opts) {
-    var extendLanguageOpts, initializeWithSettings, newVersionNotify, recallLanguageOpts, spinner, storeConfigs, stored_config, url, version_ok,
+    var dismissed, extendLanguageOpts, extendLanguageOptsAndInit, fetchConfigs, ie8Notify, initializeWithSettings, newVersionNotify, old_ie, recallLanguageOpts, spinner, storeConfigs, stored_config, uagent, url, version_ok, _ref,
       _this = this;
     opts = $.extend({}, $.fn.selectToLookup.options, opts);
     window.nds_opts = opts;
     spinner = initSpinner(opts.spinnerImg);
     newVersionNotify = function() {
-      $.getJSON('http://localhost:5000/read/update/json/' + '?callback=?', function(response) {
-        $(document).find('body').prepend(Templates.NotifyWindow(response));
+      $.getJSON(API_HOST + '/read/update/json/' + '?callback=?', function(response) {
+        $(document).find('body').append(Templates.NotifyWindow(response));
         $(document).find('#notifications').modal({
           backdrop: true,
           keyboard: true
@@ -1487,6 +1508,21 @@ jQuery(document).ready(function($) {
         });
       });
       return false;
+    };
+    ie8Notify = function() {
+      $.getJSON('http://localhost:5000/read/ie8_instructions/json/' + '?callback=?', function(response) {
+        $(document).find('body').prepend(Templates.NotifyWindow(response));
+        $(document).find('#notifications').modal({
+          backdrop: true,
+          keyboard: true
+        });
+        return $('#close_modal').click(function() {
+          $('#notifications').modal('hide');
+          DSt.set('nds-ie8-dismissed', true);
+          return false;
+        });
+      });
+      return true;
     };
     initializeWithSettings = function() {
       var clean, holdingOption, previous_langpair, _opt, _select,
@@ -1546,27 +1582,53 @@ jQuery(document).ready(function($) {
       window.nds_opts.dictionaries = response.dictionaries;
       window.nds_opts.localization = response.localization;
       storeConfigs(response);
+    };
+    fetchConfigs = function() {
+      var url;
+      url = "" + opts.api_host + "/read/config/";
+      return $.getJSON(url + '?callback=?', extendLanguageOpts);
+    };
+    extendLanguageOptsAndInit = function(response) {
+      extendLanguageOpts(response);
       return initializeWithSettings();
     };
     recallLanguageOpts = function() {
-      window.nds_opts.dictionaries = DSt.get('nds-languages');
-      window.nds_opts.localization = DSt.get('nds-localization');
+      var dicts, locales;
+      locales = DSt.get('nds-localization');
+      if (typeof locales === "string") {
+        locales = JSON.parse(locales);
+      }
+      window.nds_opts.localization = locales;
+      dicts = DSt.get('nds-languages');
+      if (typeof dicts === "string") {
+        dicts = JSON.parse(dicts);
+      }
+      window.nds_opts.dictionaries = dicts;
       return initializeWithSettings();
     };
     version_ok = false;
-    console.log(EXPECT_BOOKMARKLET_VERSION);
-    console.log(window.NDS_BOOKMARK_VERSION);
-    console.log(version_ok);
     if (window.NDS_BOOKMARK_VERSION) {
       version_ok = semver.gte(window.NDS_BOOKMARK_VERSION, EXPECT_BOOKMARKLET_VERSION);
     }
+    uagent = navigator.userAgent;
+    _ref = [false, false], old_ie = _ref[0], dismissed = _ref[1];
+    if (__indexOf.call(uagent, "MSIE 8.0") >= 0) {
+      old_ie = true;
+      dismissed = DSt.get('nds-ie8-dismissed');
+    }
     if (version_ok) {
+      if (old_ie) {
+        console.log("ie8 detected");
+        if (!dismissed) {
+          ie8Notify();
+        }
+      }
       stored_config = DSt.get('nds-stored-config');
-      if (!stored_config) {
-        url = "" + opts.api_host + "/read/config/";
-        $.getJSON(url + '?callback=?', extendLanguageOpts);
-      } else {
+      if (stored_config != null) {
         recallLanguageOpts();
+      } else {
+        url = "" + opts.api_host + "/read/config/";
+        $.getJSON(url + '?callback=?', extendLanguageOptsAndInit);
       }
       return false;
     } else {
@@ -1591,7 +1653,8 @@ jQuery(document).ready(function($) {
         to: {
           iso: 'nob',
           name: 'norsk'
-        }
+        },
+        uri: '/lookup/sme/nob/'
       }
     ]
   };
