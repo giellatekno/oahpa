@@ -11,6 +11,12 @@ TODO: prevent window url from updating with form submit params
 # Wrap jQuery and add plugin functionality
 jQuery(document).ready ($) ->
 
+  first = (somearray) ->
+    if somearray.length > 0
+      return somearray[0]
+    else
+      return false
+
   fakeGetText = (string) ->
     ### Want to mark strings as requiring gettext somehow, so that
         a babel can find them.
@@ -41,9 +47,9 @@ jQuery(document).ready ($) ->
 
   _ = fakeGetText
 
-  # API_HOST = "http://sanit.oahpa.no/"
-  API_HOST = "http://localhost:5000/"
-  # Check for the 
+  API_HOST = "http://sanit.oahpa.no/"
+  # API_HOST = "http://localhost:5000/"
+  # Check for the
   API_HOST = window.NDS_API_HOST || API_HOST
 
   EXPECT_BOOKMARKLET_VERSION = '0.0.3'
@@ -54,9 +60,9 @@ jQuery(document).ready ($) ->
         <div class="modal hide fade" id="notifications">
             <div class="modal-header">
                 <button 
-                    type="button" 
-                    class="close" 
-                    data-dismiss="modal" 
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
                     aria-hidden="true">&times;</button>
                 <h3>Neahttadigisánit</h3>
             </div>
@@ -141,6 +147,12 @@ jQuery(document).ready ($) ->
         return false
 
       el.find('a.close').click () ->
+        optsp = el.find('div.option_panel')
+        optsp.toggle()
+        el.find('a.close').toggle()
+        return false
+      
+      el.find('button#save').click () ->
         optsp = el.find('div.option_panel')
         optsp.toggle()
         el.find('a.close').toggle()
@@ -279,13 +291,11 @@ jQuery(document).ready ($) ->
     
     langpair = DSt.get('digisanit-select-langpair')
     [_f_from, _t_to] = langpair.split('-')
-    current_pair = window.nds_opts.dictionaries.filter (e) =>
-      if e.from.iso == _f_from and e.to.iso == _t_to
-        return true
-      else
-        return false
-    if current_pair.length > 0
-      _cp = current_pair[0]
+
+    _cp = first window.nds_opts.dictionaries.filter (e) =>
+      e.from.iso == _f_from and e.to.iso == _t_to
+    
+    if _cp
       current_pair_names = "#{_cp.from.name} → #{_cp.to.name}"
     else
       current_pair_names = ""
@@ -296,8 +306,6 @@ jQuery(document).ready ($) ->
         result_strings.push("<span class='tags'><em>#{_('You are using')} #{current_pair_names}</em></span>")
         if response.tags.length > 0
           _tooltipTitle = _('Meaning not found')
-        ##  tags = ("<li><em>#{t[1]}</em></li>" for t in response.tags).join(', ')
-        ##  result_strings.push("<span class='tags'><ul>#{tags}</ul></span>")
 
     if opts.tooltip
       if !_tooltipTitle
@@ -346,11 +354,22 @@ jQuery(document).ready ($) ->
     [source_lang, target_lang] = langpair.split('-')
     lookup_string = string
 
+    _cp = first window.nds_opts.dictionaries.filter (e) =>
+      e.from.iso == source_lang and e.to.iso == target_lang
+    
+    if _cp?
+      uri = _cp.uri
+    else
+      uri = false
+
+    window.cp = _cp
+
     post_data =
       lookup: lookup_string
       lemmatize: true
 
-    url = "#{opts.api_host}/lookup/#{source_lang}/#{target_lang}/"
+    url = "#{opts.api_host}/#{uri}"
+
     $.getJSON(
       url + '?callback=?'
       post_data
@@ -469,21 +488,46 @@ jQuery(document).ready ($) ->
       DSt.set('nds-stored-config', "true")
       return true
 
-
     extendLanguageOpts = (response) =>
       window.r_test = response
       window.nds_opts.dictionaries = response.dictionaries
       window.nds_opts.localization = response.localization
       storeConfigs(response)
+      return
+
+    fetchConfigs = () ->
+      url = "#{opts.api_host}/read/config/"
+      $.getJSON(
+        url + '?callback=?'
+        extendLanguageOpts
+      )
+
+    extendLanguageOptsAndInit = (response) =>
+      extendLanguageOpts(response)
       initializeWithSettings()
 
     recallLanguageOpts = () =>
-      window.nds_opts.dictionaries = DSt.get('nds-languages')
-      window.nds_opts.localization = DSt.get('nds-localization')
+      # Sometimes this ends up not getting parsed from JSON
+      # automatically from DSt.get, even though .set properly stores it.
+      locales = DSt.get('nds-localization')
+      if typeof locales == "string"
+        locales = JSON.parse locales
+      window.nds_opts.localization = locales
+
+      dicts = DSt.get('nds-languages')
+      if typeof dicts == "string"
+        dicts = JSON.parse dicts
+      window.nds_opts.dictionaries = dicts
+
       initializeWithSettings()
 
-    # TODO: check bookmark version, display popups to notify user of
-    # additional things, ie8, or outdated bookmark code.
+
+    ##
+    ## Check the version of the bookmark and compare with what the
+    ## plugin desires, and also check for IE8. If either of these is
+    ## true, then we display some notifications to the user that they
+    ## need to change some settings or update.
+    ##
 
     version_ok = false
 
@@ -492,22 +536,11 @@ jQuery(document).ready ($) ->
                              , EXPECT_BOOKMARKLET_VERSION
                              )
 
-    console.log EXPECT_BOOKMARKLET_VERSION
-    console.log window.NDS_BOOKMARK_VERSION
-    console.log version_ok
-
     uagent = navigator.userAgent
-
-    old_ie = false
-    dismissed = false
+    [old_ie, dismissed] = [false, false]
     if "MSIE 8.0" in uagent
       old_ie = true
       dismissed = DSt.get('nds-ie8-dismissed')
-    else
-      # TODO: for testing only
-      old_ie = true
-      dismissed = DSt.get('nds-ie8-dismissed')
-      # old_ie = false
 
     if version_ok
       if old_ie
@@ -515,14 +548,14 @@ jQuery(document).ready ($) ->
         if not dismissed
           ie8Notify()
       stored_config = DSt.get('nds-stored-config')
-      if not stored_config
+      if stored_config?
+        recallLanguageOpts()
+      else
         url = "#{opts.api_host}/read/config/"
         $.getJSON(
           url + '?callback=?'
-          extendLanguageOpts
+          extendLanguageOptsAndInit
         )
-      else
-        recallLanguageOpts()
       return false
     else
       newVersionNotify()
@@ -538,8 +571,8 @@ jQuery(document).ready ($) ->
     #       return false
     #   else
     #     window.optTab.find('.well').removeClass('highlight')
-    
-   
+
+
   $.fn.selectToLookup.options =
     api_host: API_HOST
     formResults: "#results"
@@ -556,6 +589,7 @@ jQuery(document).ready ($) ->
         to:
           iso: 'nob'
           name: 'norsk'
+        uri: '/lookup/sme/nob/'
       }
     ]
 
