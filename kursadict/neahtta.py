@@ -634,7 +634,7 @@ def ie8_instrux():
     return render_template('reader_ie8_notice.html')
 
 @app.route('/read/ie8_instructions/json/', methods=['GET'])
-def reader_update_json():
+def ie8_instrux_json():
     # Force template into json response
     has_callback = request.args.get('callback', False)
     r = render_template('reader_ie8_notice.html')
@@ -693,6 +693,21 @@ def bookmarklet_example_page():
                           , hostname=hostname
                           )
 
+def fetch_messages(locale=app.config.default_locale):
+    from polib import pofile
+
+    try:
+        _pofile = pofile('translations/%s/LC_MESSAGES/messages.po' % locale)
+    except:
+        return {}
+
+    jsentries = filter( lambda x: any(['.js' in a[0] for a in x.occurrences])
+                      , list(_pofile)
+                      )
+
+    return dict( [(e.msgid, e.msgstr or False) for e in jsentries] )
+
+
 @app.route('/read/config/', methods=['GET'])
 def bookmarklet_configs():
     """ Compile a JSON response containing dictionary pairs,
@@ -706,30 +721,20 @@ def bookmarklet_configs():
     from flaskext.babel import gettext as _g
 
     has_callback = request.args.get('callback', False)
-    # babel.core.Locale
-    sess_lang = get_locale()
-    print sess_lang
-    print dir(sess_lang)
-    print type(sess_lang)
+    sess_lang = request.args.get('language', get_locale())
 
-    # TODO: request locale, force set on following operations...
-    # TODO: is there a way to request strings from a specific doc. in
-    #       babel, or will we need to send all the strings on the first
-    #       run of the plugin?
-    #
-    #        - see univ_oahpa's translation filter thing, should
-    #          contain some code that may be able to be reused
+    translated_messages = fetch_messages(sess_lang)
 
     dictionaries = [
         { 'from': {'iso': _from, 'name': unicode(NAMES.get(_from))}
         , 'to':   {'iso': _to,   'name': unicode(NAMES.get(_to))}
+        , 'uri': "/lookup/%s/%s/" % (_from, _to)
         }
         for _from, _to in app.config.dictionaries.keys()
     ]
 
     data = { 'dictionaries': dictionaries
-           , 'localization': { 'languages': _g('Language')
-                             }
+           , 'localization': translated_messages
            }
 
     formatted = fmtForCallback(json.dumps(data), has_callback)
