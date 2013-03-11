@@ -3,15 +3,17 @@
  * change cache settings for plugin js in nginx configs, some browsers are
    unwilling to get a new version even when it exists.
 
- * TODO: refresh settings button in plugin
-  - run this when the bookmarklet is updated also
+ * test remaining browser notes
+
+ * refresh settings button in plugin
 
  * cakefile include build bookmark.min.js
 
- * plugin localization: figure out how to serve the right strings
-   to external .js service, need to extract specific .po strings 
- 
  * lexicon formatters
+
+   - thoughts about detailed entry display: sma shows verb class (I, IV, II),
+     sme doesn't, also potentially transitivity. need a place to make it easy
+     to format display lang-by-lang
  
  * mdf
  
@@ -45,10 +47,6 @@
 
  * certificates, nginx configs?
 
- * plugin: click save, does not automatically dismiss
-
- * plugin: IE8 warning popup
-
  * translate the mobile bookmark bubble, maybe modify/write one for
    android, where the process is a little more complex
  
@@ -63,14 +61,10 @@
    -- "Háliidatgo jorgalahttit sániid teavsttas?"
    -- "Haluatko käännöksen tekstissä esiintyvään sanaan?"
 
- * TODO: go through configuration locations and make sure that all in opt is updated
-
- * footer links to divvun, oahpa, kursa, giellatekno
-
  * Tag part translation/localization: v. Ind Prs Pl3 -> definitions in all languages
    - main/gt/common/src/tag-no.regex
 
- * autocomplete SoMe variant so people don't have to type in whatever, but include multiple options as potential menu selections.
+ * autocomplete SoMe variant
 
 ## Next:
 
@@ -89,10 +83,6 @@
  * mobile menu language variant display
 
  * bookmarklet unload on additional click
-
- * thoughts about detailed entry display: sma shows verb class (I, IV, II), sme
-   doesn't, also potentially transitivity. need a place to make it easy to
-   format display lang-by-lang
    
  * word test-list - http://giellatekno.uit.no/doc/dicts/checklist.html
 
@@ -101,14 +91,9 @@
  * dropdown events on mobile are a bit funny for the menu on the
    detailed view, and it is impossible to select a new language pair
 
- * when to show "more information" link?
-
  * use logger's own log message formatter
 
  -- 
-
- * Version numbers for bookmarklet source, and bookmarklet, need means of
-   alerting people to grab a new copy, and what version is in use for debugging.
 
  * Once all this is together, optimize memory usage, with specific
    attention to gtlab / gtoahpa, may be a better way to have multiple
@@ -118,10 +103,6 @@
    Note: http://blog.pythonisito.com/2012/07/gevent-and-greenlets.html
 
 ## Would be nice
-
- * ping google with sitemap 
-    http://en.wikipedia.org/wiki/Sitemaps
-    http://support.google.com/webmasters/bin/answer.py?hl=en&answer=183669
 
  * Easier means of keeping track of updating FST and lexicon
    dependencies from svn? or at least checking in svn if there are
@@ -134,24 +115,7 @@
  * Firefox error - kapittel 4.1 - skuvla -> skuvlii - works, but there's
    not skuvla
 
- * opt-doubleclick or opt-select: need to make a note about this
-
-
-## Testing notes for web interface to VN: 
-
- * windows, chrome: <-> arrow does not appear on browserstack, probably font
-   issue
-
- * windows, ie8: width of page is kind of funky; responsive doesn't seem to work
-   perfectly. maybe can conditionally exclude this for IE8. It's fine in
-   IE9, though, but there could be a little more space between the
-   analysis div and the word results.
-
- * iPad - footer is in an odd position
-
- * A little more padding between analyses when they are collapsed below search
-   results, maybe just padding on search results
-   
+   TODO: test
 
 ## Features to develop at some point:
 
@@ -171,17 +135,4 @@
    to do subprocesses for an application like this, but for now this
    will work. any improvements will just be drop-in replacements.
 
-
-
-### Språkpar:
-
- * sme<->eng (må lages først i apertiumformat)
-
- * kom<->eng/fin/rus (words/dicts/kom2X/src + analysator: langs/kpv/)
-   - <pos /> element may make some things difficult-- either can include this
-     as a possible place to search for pos if <l pos /> isn't set, or wait for
-     updated ormat.
-
- * myv<->fin
-   - needs lexicon?
 
